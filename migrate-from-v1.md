@@ -215,6 +215,21 @@
 - 移除 activeColor、voidColor、iconSize，通过 checkedIcon、uncheckedIcon 实现
 - 增加受控 value 与非受控 defaultValue，移除 modelValue
 #### SearchBar
+- 删除 `className`，内置
+- 删除 `clearSize`，样式默认
+- 删除 `background`，使用 CSS 变量实现
+- 删除 `inputBackground`，使用 CSS 变量实现
+- 删除 `align`，使用 CSS 变量
+- 新增 `left` 和 `right`，为 `ReactNode` 节点，可自定义内容
+- 删除 `leftoutIcon` 和 `labal`，使用 `left` 实现
+- 删除 `rightoutIcon` 和 `actionText`，使用 `right` 实现
+- 删除 `leftinIcon`，使用 `leftIn` 实现
+- 删除 `rightinIcon`，使用 `rightIn` 实现
+- 删除 `onClickLeftinIcon`，用户可使用 `left` 来实现事件处理
+- 删除 `onClickLeftoutIcon`，用户可使用 `left` 来实现事件处理
+- 删除 `onClickRightinIcon`，用户可使用 `right` 来实现事件处理
+- 删除 `onClickRightoutIcon`，用户可使用 `right` 来实现事件处理
+
 #### ShortPassword
 #### TextArea
 - maxlength 重命名为 maxLength

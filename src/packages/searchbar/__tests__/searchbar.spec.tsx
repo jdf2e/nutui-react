@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import ConfigProvider from '@/packages/configprovider'
 import Searchbar from '@/packages/searchbar'
 
 test('basic usage', () => {
@@ -24,7 +25,15 @@ test('should limit maxlength of input value when using maxlength prop', () => {
 
 test('Background settings inside and outside the search box', () => {
   const { container } = render(
-    <Searchbar background="red" inputBackground="green" align="right" />
+    <ConfigProvider
+      theme={{
+        nutuiSearchbarBackground: 'red',
+        nutuiSearchbarInputBackground: 'green',
+        nutuiSearchbarInputTextAlign: 'right',
+      }}
+    >
+      <Searchbar />
+    </ConfigProvider>
   )
   expect(container.querySelector('.nut-searchbar')).toHaveAttribute(
     'style',
@@ -40,11 +49,11 @@ test('Background settings inside and outside the search box', () => {
 })
 
 test('Search box text settings', () => {
-  const { container } = render(<Searchbar label="文本" actionText="确定" />)
-  expect(container.querySelector('.nut-searchbar__label')?.innerHTML).toBe(
+  const { container } = render(<Searchbar left="文本" actionText="确定" />)
+  expect(container.querySelector('.nut-searchbar__left')?.innerHTML).toBe(
     '文本'
   )
-  expect(
-    container.querySelector('.nut-searchbar__action-text')?.innerHTML
-  ).toBe('确定')
+  expect(container.querySelector('.nut-searchbar__right')?.innerHTML).toBe(
+    '确定'
+  )
 })

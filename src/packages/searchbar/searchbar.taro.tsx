@@ -1,11 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
-import { getEnv } from '@tarojs/taro'
 import { CircleClose, Search } from '@nutui/icons-react-taro'
-import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-type TIconDirection = 'in-left' | 'out-left' | 'in-right' | 'out-right'
 
 export interface SearchBarProps extends BasicComponent {
   /** 文本值	 */
@@ -14,37 +10,20 @@ export interface SearchBarProps extends BasicComponent {
   placeholder?: string
   /** 搜索框形状，可选值为 round	 */
   shape?: 'square' | 'round'
-  /** 自定义class名	 */
-  className?: string
   /** 是否禁用输入框	 */
   disabled?: boolean
   /** 最大输入长度	 */
   maxLength?: number
   /** 是否启用清除图标，点击清除图标后会清空输入框	 */
   clearable?: boolean
-  clearSize?: string | number
-  /** 搜索框外部背景色	 */
-  background?: string
-  /** 搜索框背景色	 */
-  inputBackground?: string
-  /** 输入框内容对齐方式	 */
-  align?: string
   /** 是否将输入框设为只读状态，只读状态下无法输入内容   */
   readOnly?: boolean
   /**  是否自动聚焦，iOS 系统不支持该属性	 */
   autoFocus?: boolean
-  /** 搜索框左侧文本	 */
-  label?: React.ReactNode
-  /** 输入框内 左icon   */
-  leftinIcon?: React.ReactNode
-  /** 输入框内 右icon  */
-  rightinIcon?: React.ReactNode
-  /** 输入框外 左icon  */
-  leftoutIcon?: React.ReactNode
-  /** 输入框外 右icon  */
-  rightoutIcon?: React.ReactNode
-  /** 取消按钮文字	 */
-  actionText?: React.ReactNode
+  left: React.ReactNode
+  right: React.ReactNode
+  leftIn: React.ReactNode
+  rightIn: React.ReactNode
   /**  确定搜索时触发	 */
   onSearch?: (val: string) => void
   /** 输入框内容变化时触发	 */
@@ -59,14 +38,6 @@ export interface SearchBarProps extends BasicComponent {
   onCancel?: () => void
   /** 点击输入区域时触发	 */
   onClickInput?: (event: Event) => void
-  /** 点击输入框内左侧图标时触发	 */
-  onClickLeftinIcon?: (value: string, event: Event) => void
-  /** 点击输入框外左侧图标时触发	 */
-  onClickLeftoutIcon?: (value: string, event: Event) => void
-  /** 点击输入框内右侧图标时触发	 */
-  onClickRightinIcon?: (value: string, event: Event) => void
-  /** 点击输入框外右侧图标时触发	 */
-  onClickRightoutIcon?: (value: string, event: Event) => void
 }
 
 const defaultProps = {
@@ -76,12 +47,12 @@ const defaultProps = {
   disabled: false,
   maxLength: 9999,
   clearable: true,
-  clearSize: '12px',
-  align: 'left',
-  readonly: true,
+  readOnly: false,
   autoFocus: false,
-  label: '',
-  leftinIcon: <Search size="12" />,
+  left: '',
+  right: '',
+  rightIn: '',
+  leftIn: <Search size="12" />,
 } as SearchBarProps
 export const SearchBar: FunctionComponent<
   Partial<SearchBarProps> &
@@ -90,7 +61,7 @@ export const SearchBar: FunctionComponent<
       'onChange' | 'onFocus' | 'onBlur'
     >
 > = (props) => {
-  const searchbarBem = bem('searchbar')
+  const classPrefix = 'nut-searchbar'
 
   const { locale } = useConfig()
   const searchRef = useRef<HTMLInputElement>(null)
@@ -103,16 +74,12 @@ export const SearchBar: FunctionComponent<
     disabled,
     maxLength,
     clearable,
-    clearSize,
-    align,
     readOnly,
     autoFocus,
-    label,
-    actionText,
-    leftinIcon,
-    rightinIcon,
-    leftoutIcon,
-    rightoutIcon,
+    right,
+    left,
+    leftIn,
+    rightIn,
     onChange,
     onFocus,
     onBlur,
@@ -120,22 +87,15 @@ export const SearchBar: FunctionComponent<
     onCancel,
     onSearch,
     onClickInput,
-    onClickLeftinIcon,
-    onClickLeftoutIcon,
-    onClickRightinIcon,
-    onClickRightoutIcon,
   } = {
     ...defaultProps,
     ...props,
   }
 
-  const alignClass = `${align}`
-
   const forceFocus = () => {
     const searchSelf: HTMLInputElement | null = searchRef.current
     searchSelf && searchSelf.focus()
   }
-
   const change = (event: Event) => {
     const { value } = event.target as any
     onChange && onChange?.(value, event)
@@ -152,21 +112,18 @@ export const SearchBar: FunctionComponent<
     const { value } = event.target as any
     onBlur && onBlur?.(value, event)
   }
-
   useEffect(() => {
     setValue(props.value)
   }, [props.value])
-
   useEffect(() => {
     autoFocus && forceFocus()
   }, [autoFocus])
-
   const renderField = () => {
     return (
       <input
-        className={`${searchbarBem('input')}  ${searchbarBem(alignClass)} ${
-          shape === 'round' ? searchbarBem('round') : ''
-        } ${clearable ? searchbarBem('input-clear') : ''}`}
+        className={`${classPrefix}__input ${
+          shape === 'round' ? `${classPrefix}__round` : ''
+        } ${clearable ? `${classPrefix}__input-clear` : ''}`}
         ref={searchRef}
         style={{ ...props.style }}
         value={value || ''}
@@ -182,78 +139,44 @@ export const SearchBar: FunctionComponent<
       />
     )
   }
-
   const clickInput = (e: Event) => {
     onClickInput && onClickInput(e)
   }
 
-  const renderLeftinIcon = () => {
-    if (!leftinIcon) return null
+  const renderLeftIn = () => {
+    if (!leftIn) return null
     return (
-      <div
-        className={`${searchbarBem('leftin-icon')} ${searchbarBem('icon')}`}
-        onClick={(e: any) => clickLeftIcon('in-left', e)}
-      >
-        {leftinIcon}
+      <div className={`${classPrefix}__leftin ${classPrefix}__icon`}>
+        {leftIn}
       </div>
     )
   }
-  const renderLeftoutIcon = () => {
-    if (!leftoutIcon) return null
-    return (
-      <div
-        className={`${searchbarBem('leftout-icon')}`}
-        onClick={(e: any) => clickLeftIcon('out-left', e)}
-      >
-        {leftoutIcon}
-      </div>
-    )
-  }
-  const clickLeftIcon = (flag: TIconDirection, event: Event) => {
-    if (flag === 'in-left') {
-      onClickLeftinIcon && onClickLeftinIcon(value as string, event)
-    } else {
-      onClickLeftoutIcon && onClickLeftoutIcon(value as string, event)
-    }
+  const renderLeft = () => {
+    if (!left) return null
+    return <div className={`${classPrefix}__left`}>{left}</div>
   }
 
-  const renderRightinIcon = () => {
-    if (!rightinIcon) return null
+  const renderRightIn = () => {
+    if (!rightIn) return null
     return (
-      <div
-        className={`${searchbarBem('rightin-icon')} ${searchbarBem('icon')}`}
-        onClick={(e: any) => clickRightIcon('in-right', e)}
-      >
-        {rightinIcon}
+      <div className={`${classPrefix}__rightin ${classPrefix}__icon`}>
+        {rightIn}
       </div>
     )
   }
-  const renderRightoutIcon = () => {
-    if (!rightoutIcon) return null
-    return (
-      <div
-        className={`${searchbarBem('rightout-icon')}`}
-        onClick={(e: any) => clickRightIcon('out-right', e)}
-      >
-        {rightoutIcon}
-      </div>
-    )
-  }
-  const clickRightIcon = (flag: TIconDirection, event: Event) => {
-    if (flag === 'in-left') {
-      onClickRightinIcon && onClickRightinIcon(value as string, event)
-    } else {
-      onClickRightoutIcon && onClickRightoutIcon(value as string, event)
-    }
+
+  const renderRight = () => {
+    if (!right) return null
+    return <div className={`${classPrefix}__right`}>{right}</div>
   }
 
   const handleClear = () => {
     return (
       <div
-        className={`${searchbarBem('clear')} ${rightinIcon ? 'pos-right' : ''}`}
+        className={`${classPrefix}__clear ${rightIn ? 'pos-right' : ''}`}
         onClick={(e: any) => clearaVal(e)}
       >
-        <CircleClose size={clearSize} color="#555" />
+        <CircleClose color="#555" size={12} />
       </div>
     )
   }
@@ -267,17 +190,6 @@ export const SearchBar: FunctionComponent<
     forceFocus()
   }
 
-  const renderRightLabel = () => {
-    if (actionText) {
-      return (
-        <div className={searchbarBem('action-text')} onClick={search}>
-          {actionText}
-        </div>
-      )
-    }
-    return null
-  }
-
   const onKeypress = (e: any) => {
     if (e.keyCode === 13) {
       if (typeof e.cancelable !== 'boolean' || e.cancelable) {
@@ -287,44 +199,21 @@ export const SearchBar: FunctionComponent<
     }
   }
 
-  const search = () => {
-    onSearch && onSearch(value as string)
-  }
-
-  const cancel = () => {
-    onCancel && onCancel()
-  }
-  const renderLabel = () => {
-    if (label) {
-      return <div className={searchbarBem('label')}>{label}</div>
-    }
-    return null
-  }
-
-  const envClass = () => {
-    return getEnv() === 'WEB' ? 'nut-searchbar-taro' : ''
-  }
-
   return (
     <div
-      className={`${searchbarBem()} ${envClass()} ${
-        disabled ? searchbarBem('disabled') : ''
+      className={`${classPrefix} ${
+        disabled ? `${classPrefix}__disabled` : ''
       }  ${className || ''}`}
-      style={{ ...props.style, background: props.background }}
+      style={{ ...props.style }}
     >
-      {renderLeftoutIcon()}
-      {renderLabel()}
-      <div
-        className={`${searchbarBem('content')}`}
-        style={{ background: props.inputBackground }}
-      >
-        {renderLeftinIcon()}
+      {renderLeft()}
+      <div className={`${classPrefix}__content`}>
+        {renderLeftIn()}
         <div className="nut-searchbar__input-box">{renderField()}</div>
-        {renderRightinIcon()}
+        {renderRightIn()}
         {clearable && value && handleClear()}
       </div>
-      {renderRightoutIcon()}
-      {renderRightLabel()}
+      {renderRight()}
     </div>
   )
 }
