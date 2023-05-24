@@ -13,9 +13,7 @@ import { Toast } from '@nutui/nutui-react';
 
 ## 代码演示
 
-### 基础用法
-
-#### 文字提示
+### 文字提示
 
 :::demo
 
@@ -43,7 +41,7 @@ export default App
 ```
 :::
 
-#### 标题提示
+### 标题提示
 
 :::demo
 
@@ -73,7 +71,7 @@ const App = () => {
 export default App
 ```
 :::
-#### 成功提示
+### 成功提示
 
 :::demo
 
@@ -105,7 +103,7 @@ export default App
 :::
 
 
-#### 失败提示
+### 失败提示
 
 :::demo
 
@@ -137,7 +135,7 @@ export default App
 :::
 
 
-#### 警告提示
+### 警告提示
 
 :::demo
 
@@ -169,7 +167,7 @@ export default App
 :::
 
 
-#### 加载提示
+### 加载提示
 
 :::demo
 
@@ -200,9 +198,7 @@ export default App
 ```
 :::
 
-
-
-#### 展示时长设置
+### 展示时长设置
 
 :::demo
 
@@ -256,7 +252,7 @@ export default App
 ```
 :::
 
-#### Toast自定义底部高度
+### Toast自定义底部高度
 
 :::demo
 
@@ -288,8 +284,7 @@ export default App
 ```
 :::
 
-
-#### 加载Loading带非透明罩
+### 加载Loading带非透明罩
 
 :::demo
 
