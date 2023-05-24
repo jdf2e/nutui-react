@@ -325,7 +325,7 @@ export default App;
 
 ### Props
 
-| 字段 | 说明 | 类型 | 默认值
+| 属性 | 说明 | 类型 | 默认值
 | ----- | ----- | ----- | -----
 | startTime | 开始时间 | number | `Date.now()`
 | endTime | 结束时间 |  number | `Date.now()`
@@ -351,7 +351,7 @@ export default App;
 
 ### Event
 
-| 字段 | 说明 | 回调参数
+| 属性 | 说明 | 回调参数
 | ----- | ----- | ----- 
 | onEnd | 倒计时结束时回调函数 | 无
 | onPaused | 暂停倒计时回调函数 | 剩余时间戳

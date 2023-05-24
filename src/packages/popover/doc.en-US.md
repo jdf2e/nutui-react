@@ -220,7 +220,7 @@ export default App;
 
 ### Props
 
-| Attribute | Description | Type | Default |
+| Property | Description | Type | Default |
 |----------------|---------------------------------|---------|------------|
 | list          | list of options                          | List[]   | `[]`        |
 | visible      | whether to show                 | boolean  | `false`     |

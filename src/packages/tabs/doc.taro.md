@@ -545,7 +545,7 @@ export default App;
 
 ### Props
 
-| 参数 | 说明 | 类型 | 默认值 |
+| 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | value | 当前激活 tab 面板的值 | `number \| string` | `0` |
 | defaultValue | 初始化激活 tab 的值 | `number \| string` | `0` |
@@ -564,7 +564,7 @@ export default App;
 
 ### Props
 
-| 参数 | 说明 | 类型 | 默认值 |
+| 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | title | 标题 | `string` | `-` |
 | value | 标签 Key , 匹配的标识符, 默认为索引值 | `string\| number` | `-` |

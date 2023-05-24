@@ -332,6 +332,10 @@
   - `circleColor` 重名为 `color`
   - `pathColor` 重名为 `background`
 #### Collapse
+- 新增 defaultActiveName 非受控
+- activeName 改为受控方式
+- subTitle 重命名为 extra
+- onChange 参数变更为 activeName, name, status
 #### CountDown
 #### Ellipsis
 - 新增className和style属性的支持
@@ -385,6 +389,11 @@
 - 新增 lazy 属性，支持每次进入可视区时展示进度条动画
 - 新增 delay 属性，表示延迟数据加载时长
 #### Skeleton
+- loading 重命名为 visible
+- row 重命名为 rows
+- 移除 width，通过 css 变量 skeleton-line-width 实现
+- 移除 height，通过 css 变量 skeleton-line-height 实现
+- 移除 round，通过 css 变量 skeleton-line-border-radius 实现
 #### Steps
 - current 重命名为 value
 - onClickStep 重命名为 onStepClick

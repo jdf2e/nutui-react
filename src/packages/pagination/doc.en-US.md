@@ -154,7 +154,7 @@ export default App;
     
 ### Props
     
-| Attribute           | Description                             | Type                      | Default            |
+| Property | Description                             | Type                      | Default            |
 | -------------- | -------------------------------- | ------------------------- | ----------------- |
 | value     | current page number, controlled value                         | number                    | -                 |
 | defaultValue   | default page number, uncontrolled value                         | number                    | `1`                 |

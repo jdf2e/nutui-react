@@ -235,7 +235,7 @@ export default App;
 
 ### Props
 
-| 字段 | 说明 | 类型 | 默认值 |
+| 属性 | 说明 | 类型 | 默认值 |
 |----- | ----- | ----- | ----- |
 | percent | 百分比 | `number` | `0` |
 | color | 进度条线条颜色 | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)` |

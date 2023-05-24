@@ -95,7 +95,7 @@ export default App;
 ## API
 
 ### Props
-| Attribute         | Description                             | Type   | Default           |
+| Property | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
 | width       | Width of watermark     | number           | `120`                |
 | height      | Height of watermark               | number           | `64`                 |

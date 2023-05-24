@@ -1,8 +1,9 @@
 // generate nutui.react.ts file for dev or build
 const config = require('../src/config.json')
-var glob = require('glob')
+const glob = require('glob')
 const path = require('path')
 const fs = require('fs-extra')
+
 let importStr = ``
 let importMarkdownStr = ``
 let importOnlineEditScssStr = ``
@@ -14,7 +15,7 @@ const raws = []
 
 config.nav.map((item) => {
   item.packages.forEach((element) => {
-    let { name, show, type, exportEmpty, exclude } = element
+    let { name, show, exportEmpty, exclude } = element
     if (exclude) return
     if (show || exportEmpty) {
       importStr += `import ${name} from '@/packages/${name.toLowerCase()}';\n`

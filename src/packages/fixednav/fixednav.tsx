@@ -5,8 +5,8 @@ import Overlay from '@/packages/overlay'
 import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-type Direction = 'right' | 'left'
-type Position = {
+export type FixedNavDirection = 'right' | 'left'
+export type FixedNavPosition = {
   top?: string
   bottom?: string
 }
@@ -17,8 +17,8 @@ export interface FixedNavProps extends BasicComponent {
   list: Array<any>
   activeText: string
   inactiveText: string
-  position: Position
-  type: Direction
+  position: FixedNavPosition
+  type: FixedNavDirection
   onChange: (item: any) => void
   onSelect: (item: any, event: MouseEvent) => void
   content: React.ReactNode

@@ -354,7 +354,7 @@ export const CustomRender: FunctionComponent<
       {privateType === 'custom' && (
         <div className={b('region-con')}>
           <ul className={b('region-group')}>
-            {regionList[tabName[tabIndex] as SelectedRegionType].map(
+            {(regionList[tabName[tabIndex] as SelectedRegionType] as any).map(
               (item: RegionData | CustomRegionData, index: number) => {
                 return (
                   <li key={index} className={b('region-item')}>

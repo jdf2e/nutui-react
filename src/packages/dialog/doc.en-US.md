@@ -148,7 +148,7 @@ export default App;
 
 ### Props
 
-| Attribute    | Description | Type    | Default    |
+| Property | Description | Type    | Default    |
 |---------|----------------------|---------|-----------|
 | visible | Whether the dialog box is visible| `boolean`| - |
 | title | title| `ReactNode` | -|
