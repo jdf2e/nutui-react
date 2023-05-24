@@ -133,7 +133,7 @@ const App = () => {
         value={value}
         tips={
           <>
-            <HeartFill1 width={11} height={11} />
+            <HeartFill1 size={11} />
             自定义提示语
           </>
         }
