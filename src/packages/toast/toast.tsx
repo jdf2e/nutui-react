@@ -3,14 +3,23 @@ import Notification, { NotificationProps } from './Notification'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 let messageInstance: any = null
+
+export type ToastPositionType = 'top' | 'bottom' | 'center'
+export type ToastIconType =
+  | 'success'
+  | 'fail'
+  | 'loading'
+  | 'warn'
+  | React.ReactNode
+
 export interface ToastProps extends BasicComponent {
   id?: string
   duration?: number
-  position?: 'top' | 'bottom' | 'center'
+  position?: ToastPositionType
   title?: string
   closeOnOverlayClick?: boolean
   size?: string | number
-  icon?: 'success' | 'fail' | 'loading' | 'warn' | React.ReactNode
+  icon?: ToastIconType
   content?: React.ReactNode
   onClose?: () => void
   contentClassName?: string

@@ -4,6 +4,8 @@ import { Failure, Loading, Success, Tips } from '@nutui/icons-react-taro'
 import Overlay from '@/packages/overlay/index'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
+export type ToastPositionType = 'top' | 'bottom' | 'center'
+
 export interface ToastProps extends BasicComponent {
   id?: string
   maskClassName?: string
@@ -13,7 +15,7 @@ export interface ToastProps extends BasicComponent {
   iconSize: string
   msg: string | React.ReactNode
   duration: number
-  position?: 'top' | 'center' | 'bottom'
+  position?: ToastPositionType
   type: string
   title: string
   closeOnOverlayClick: boolean
