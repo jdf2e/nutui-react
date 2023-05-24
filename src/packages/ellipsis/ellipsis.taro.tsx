@@ -71,7 +71,6 @@ export const Ellipsis: FunctionComponent<
   let originHeight = 0 // 原始高度
   const refRandomId = Math.random().toString(36).slice(-8)
   const widthRef: any = useRef('auto')
-  const widthControlRef: any = useRef(`${width ? `${width}px` : 'auto'}`)
 
   let widthBase = [14, 10, 7, 8.4, 10] // 中、英(大)、英(小)、数字、其他字符的基础宽度
   let symbolTextWidth: any = widthBase[0] * 0.7921
@@ -317,7 +316,11 @@ export const Ellipsis: FunctionComponent<
           {!exceeded ? (
             <div
               className="nut-ellipsis-wordbreak"
-              style={{ width: `${widthControlRef.current}` }}
+              style={{
+                width: `${
+                  !Number.isNaN(Number(width)) ? `${width}px` : 'auto'
+                }`,
+              }}
             >
               {content}
             </div>
@@ -326,7 +329,11 @@ export const Ellipsis: FunctionComponent<
             <>
               <div
                 className="nut-ellipsis-wordbreak"
-                style={{ width: `${widthControlRef.current}` }}
+                style={{
+                  width: `${
+                    !Number.isNaN(Number(width)) ? `${width}px` : 'auto'
+                  }`,
+                }}
               >
                 {ellipsis.current?.leading}
                 {ellipsis.current?.leading && symbol}
@@ -348,7 +355,13 @@ export const Ellipsis: FunctionComponent<
           ) : null}
           {exceeded && expanded ? (
             <>
-              <div style={{ width: `${widthControlRef.current}` }}>
+              <div
+                style={{
+                  width: `${
+                    !Number.isNaN(Number(width)) ? `${width}px` : 'auto'
+                  }`,
+                }}
+              >
                 {content}
               </div>
               {expandText ? (
