@@ -1,33 +1,37 @@
-import React, { FunctionComponent, ReactNode, useEffect, useState } from 'react'
+import React, { FunctionComponent, ReactNode, useEffect, useMemo } from 'react'
 import { Tips } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import Popup from '@/packages/popup/index.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { PopupProps } from '@/packages/popup/popup.taro'
+import { usePropsValue } from '@/utils/use-props-value'
 
 export interface ShortPasswordProps extends PopupProps {
+  value: string
+  visible: boolean
+  plain: boolean
   title: ReactNode
   description: ReactNode
   tips: ReactNode
-  visible: boolean
-  value: string | number
-  error: ReactNode
   hideFooter: boolean
   length: number
+  error: ReactNode
   autoFocus: boolean
   onFocus: () => void
-  onChange: (value: string | number) => void
-  onConfirm: (value: string | number) => void
+  onChange: (value: string) => void
+  onConfirm: (value: string) => void
   onCancel: () => void
   onClose: () => void
   onTips: () => void
-  onComplete: (value: string | number) => void
+  onComplete: (value: string) => void
 }
 
 const defaultProps = {
   ...ComponentDefaults,
+  value: '',
   visible: false,
+  plain: false,
   hideFooter: true,
   length: 6, // 1~6
   autoFocus: false,
@@ -45,8 +49,11 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
     error,
     hideFooter,
     length,
+    plain,
     style,
     className,
+    closeable,
+    autoFocus,
     onFocus,
     onChange,
     onConfirm,
@@ -54,19 +61,32 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
     onCancel,
     onClose,
     onComplete,
-    autoFocus,
+    onClickOverlay,
+    onClickCloseIcon,
     ...rest
-  } = props
-  const classPrefix = 'nut-shortpassword'
-  const range = (val: number) => {
-    return Math.min(Math.max(4, val), 6)
+  } = {
+    ...defaultProps,
+    ...props,
   }
-  const [comLen, setComLen] = useState<number>(range(length as number))
-  const [inputValue, setInputValue] = useState<number | string>('')
+  const classPrefix = 'nut-shortpassword'
+  const comLen = useMemo(() => {
+    return Math.min(Math.max(4, length || 4), 6)
+  }, [length])
+  const format = (val: string) => {
+    return val.slice(0, comLen)
+  }
+  const [inputValue, setInputValue] = usePropsValue<string>({ value, onChange })
   useEffect(() => {
-    if (typeof value !== 'undefined') {
-      setInputValue(value)
+    if (autoFocus) {
+      onFocus && onFocus()
     }
+  }, [])
+  useEffect(() => {
+    const val = format(value)
+    if (val.length >= comLen) {
+      onComplete && onComplete(val)
+    }
+    setInputValue(format(value))
   }, [value])
   const sure = () => {
     onConfirm && onConfirm(inputValue)
@@ -92,16 +112,23 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
         <div className={`${classPrefix}__description`}>
           {description || locale.shortpassword.description}
         </div>
-
         <div className={`${classPrefix}__input`} onClick={onFocus}>
           <div className={`${classPrefix}__input-site`} />
           <div className={`${classPrefix}__input-fake`}>
             {[...new Array(comLen).keys()].map((item, index) => {
               return (
                 <div className={`${classPrefix}__input-fake__li`} key={index}>
-                  {String(inputValue).length > index ? (
-                    <div className={`${classPrefix}__input-fake__li__icon`} />
-                  ) : null}
+                  {inputValue.length > index && (
+                    <>
+                      {plain ? (
+                        inputValue[index]
+                      ) : (
+                        <div
+                          className={`${classPrefix}__input-fake__li__icon`}
+                        />
+                      )}
+                    </>
+                  )}
                 </div>
               )
             })}

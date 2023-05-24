@@ -32,8 +32,8 @@ const ShortPasswordDemo = () => {
   const [visible3, setVisible3] = useState(false)
   const [visible4, setVisible4] = useState(false)
   const [visible5, setVisible5] = useState(false)
-  const [value, setValue] = useState<string | number>('')
-  const change = (value: number | string) => {
+  const [value, setValue] = useState<string>('')
+  const change = (value: string) => {
     console.log(value)
     setValue(value)
   }
@@ -58,6 +58,7 @@ const ShortPasswordDemo = () => {
       <ShortPassword
         visible={visible1}
         value={value}
+        plain
         onFocus={() => setVisible2(true)}
         onClose={() => {
           setVisible1(false)

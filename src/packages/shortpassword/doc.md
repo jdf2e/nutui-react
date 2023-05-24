@@ -39,7 +39,7 @@ const App = () => {
        />
         <ShortPassword
         visible={visible}
-        modelValue={value}
+        value={value}
         onClose={() => close()}
         onChange={(value) => setValue(value)}
        />
@@ -82,7 +82,7 @@ const App = () => {
        />
         <ShortPassword
           visible={visible}
-          modelValue={value}
+          value={value}
           tipsIcon={<HeartFill1 />}
           iconSize={16}
           onClose={() => close()}
@@ -129,7 +129,7 @@ const App = () => {
        />
         <ShortPassword
         visible={visible}
-        modelValue={value}
+        value={value}
         onChange={(value) => setValue(value)}
         onClose={() => close()}
         length={4}
@@ -172,7 +172,7 @@ const App = () => {
        />
        <ShortPassword
         visible={visible}
-        modelValue={value}
+        value={value}
         onChange={(value) => setValue(value)}
         onClose={() => close()}
         onTips={() => onTips()}
@@ -192,8 +192,9 @@ export default App;
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| modelValue | 内容 | `string \| number` | - |
+| value | 密码字符串 | `string` | - |
 | visible | 是否展示短密码框 | `boolean` | `false` |
+| plain | 是否展示明文 | `boolean` | `false` |
 | title | 标题 | `ReactNode` | `请输入密码` |
 | description | 密码框描述 | `ReactNode` | `您使用了虚拟资产，请进行验证` |
 | tips | 提示语 | `ReactNode` | `忘记密码` |
@@ -201,17 +202,13 @@ export default App;
 | length | 密码长度，取值为4~6 | `number` | `6` |
 | error | 错误信息提示 | `ReactNode` | - |
 | autoFocus | 自动聚焦 | `boolean` | `false` |
-
-### Events
-
-| 事件名 | 说明 | 回调参数 |
-| --- | --- | --- |
-| onChange | 输入密码时触发事件 | 当前输入框值value |
-| onConfirm | 点击确认时触发事件 | 当前输入框值value |
-| onCancel | 点击取消时触发事件 | \- |
-| onClose | 点击关闭图标和遮罩时触发事件 | \- |
-| onTips | 点击忘记密码时触发事件 | \- |
-| onComplete | 输入完成的回调 | 当前输入框值value |
+| onChange | 输入密码时触发事件 | `(value) => void` | - |
+| onConfirm | 点击确认时触发事件 | `(value) => void` | - |
+| onCancel | 点击取消时触发事件 | - | - |
+| onClose | 点击关闭图标和遮罩时触发事件 | - | - |
+| onTips | 点击忘记密码时触发事件 | - | - |
+| onComplete | 输入完成的回调 | `(value) => void` | - |
+| onFocus | 输入框聚焦 | - | - |
 
 ## 主题定制
 

@@ -39,7 +39,7 @@ const App = () => {
        />
         <ShortPassword
         visible={visible}
-        modelValue={value}
+        value={value}
         onClose={() => close()}
         onChange={(value) => setValue(value)}
        />
@@ -82,7 +82,7 @@ const App = () => {
        />
         <ShortPassword
           visible={visible}
-          modelValue={value}
+          value={value}
           tipsIcon={<HeartFill1 />}
           iconSize={16}
           onClose={() => close()}
@@ -129,7 +129,7 @@ const App = () => {
        />
         <ShortPassword
         visible={visible}
-        modelValue={value}
+        value={value}
         onChange={(value) => setValue(value)}
         onClose={() => close()}
         length={4}
@@ -172,7 +172,7 @@ const App = () => {
        />
         <ShortPassword
         visible={visible}
-        modelValue={value}
+        value={value}
         onChange={(value) => setValue(value)}
         onClose={() => close()}
         onTips={() => onTips()}
@@ -192,8 +192,9 @@ export default App;
 
 | Attribute | Description | Type | Default |
 | --- | --- | --- | --- |
-| modelValue | Current value | `string \| number` | - |
+| value | password value | `string` | - |
 | visible | Whether to show shortpassword | `boolean` | `false` |
+| plain | Whether to show plaintext | `boolean` | `false` |
 | title | title | `ReactNode` | `Please input a password` |
 | description | description | `ReactNode` | `Verify` |
 | tips | tips | `ReactNode` | `Forget password` |
@@ -201,17 +202,13 @@ export default App;
 | length | ShortPassword lenght The value is 4~6 | `number` | `6` |
 | error | Error message | `ReactNode` | - |
 | autoFocus | Be focused when ShortPassword is displayed | `boolean` | `false` |
-
-### Events
-
-| Event | Description | Arguments |
-| --- | --- | --- |
-| onChange | Trigger event when password is entered | value |
-| onConfirm | Trigger event when true is clicked | value |
-| onCancel | Trigger an event when the popup layer is clicked or canceled | \- |
-| onClose | Trigger an event when the close icon is clicked | \- |
-| onTips | Trigger an event when the forget password is clicked | \- |
-| onComplete | Input complete callback | value |
+| onChange | Trigger event when password is entered | `(value) => void` | - |
+| onConfirm | Trigger event when true is clicked | `(value) => void` | - |
+| onCancel | Trigger an event when the popup layer is clicked or canceled | - | - |
+| onClose | Trigger an event when the close icon is clicked | - | - |
+| onTips | Trigger an event when the forget password is clicked | - | - |
+| onComplete | Input complete callback | `(value) => void` | - |
+| onFocus | input focus | - | - |
 
 ## Theming
 
