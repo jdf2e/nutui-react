@@ -67,8 +67,12 @@ const ShortPasswordDemo = () => {
       <ShortPassword
         visible={visible2}
         modelValue={value}
-        tipsIcon={<HeartFill1 />}
-        iconSize={16}
+        tips={
+          <>
+            <HeartFill1 width={11} height={11} />
+            自定义提示语
+          </>
+        }
         onClose={() => {
           setVisible2(false)
           setValue('')

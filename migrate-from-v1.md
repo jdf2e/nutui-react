@@ -216,10 +216,11 @@
 - 增加受控 value 与非受控 defaultValue，移除 modelValue
 #### SearchBar
 #### ShortPassword
-- 移除 closeOnOverlayClick，默认支持透传 Popup 属性
 - desc 重命名为 description
 - noButton 重命名为 hideFooter
 - onOk 重命名为 onConfirm
+- 移除 closeOnClickOverlay，默认支持透传 Popup 属性
+- title、description、tips 类型修改为 ReactNode
 #### TextArea
 - maxlength 重命名为 maxLength
 - readonly 重命名为 readOnly

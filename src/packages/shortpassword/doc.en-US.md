@@ -194,15 +194,13 @@ export default App;
 | --- | --- | --- | --- |
 | modelValue | Current value | `string \| number` | - |
 | visible | Whether to show shortpassword | `boolean` | `false` |
-| title | title | `string` | `Please input a password` |
-| description | description | `string` | `Verify` |
-| tips | tips | `string` | `Forget password` |
+| title | title | `ReactNode` | `Please input a password` |
+| description | description | `ReactNode` | `Verify` |
+| tips | tips | `ReactNode` | `Forget password` |
 | hideFooter | whether to hide the bottom button | `boolean` | `true` |
 | length | ShortPassword lenght The value is 4~6 | `number` | `6` |
 | errorMsg | Error message | `string` | - |
 | autoFocus | Be focused when ShortPassword is displayed | `boolean` | `false` |
-| tipsIcon | icon of forget tips | `ReactNode` | - |
-| iconSize | size of icon | `string \| number` | `11` |
 
 ### Events
 

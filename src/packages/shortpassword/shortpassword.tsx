@@ -13,11 +13,9 @@ import { ComponentDefaults } from '@/utils/typings'
 import { PopupProps } from '../popup/popup'
 
 export interface ShortPasswordProps extends PopupProps {
-  title: string
-  description: string
-  tips: string
-  tipsIcon: ReactNode
-  iconSize: string | number
+  title: ReactNode
+  description: ReactNode
+  tips: ReactNode
   visible: boolean
   modelValue: string | number
   errorMsg: string
@@ -34,7 +32,6 @@ export interface ShortPasswordProps extends PopupProps {
 
 const defaultProps = {
   ...ComponentDefaults,
-  iconSize: 11,
   visible: false,
   hideFooter: true,
   length: 6, // 1~6
@@ -54,8 +51,6 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
     title,
     description,
     tips,
-    tipsIcon,
-    iconSize,
     visible,
     modelValue,
     errorMsg,
@@ -122,18 +117,6 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
     onConfirm && onConfirm(inputValue)
   }
 
-  const renderIcon = (size: string | number = '11px') => {
-    return React.isValidElement(tipsIcon) ? (
-      React.cloneElement<any>(tipsIcon, {
-        ...tipsIcon.props,
-        width: size,
-        height: size,
-      })
-    ) : (
-      <Tips width={size} height={size} />
-    )
-  }
-
   return (
     <Popup
       style={{
@@ -181,19 +164,16 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
         </div>
         <div className={`${classPrefix}__message`}>
           <div className={`${classPrefix}__message__error`}>{errorMsg}</div>
-          {tips || locale.shortpassword.tips ? (
-            <div className={`${classPrefix}__message__forget`}>
-              {renderIcon(iconSize)}
-              <div
-                className={`${classPrefix}__message__forget-tips`}
-                onClick={onTips}
-              >
-                {tips || locale.shortpassword.tips}
-              </div>
-            </div>
-          ) : null}
+          <div className={`${classPrefix}__message__forget`} onClick={onTips}>
+            {tips || (
+              <>
+                <Tips width={11} height={11} style={{ marginRight: '3px' }} />
+                {locale.shortpassword.tips}
+              </>
+            )}
+          </div>
         </div>
-        {!hideFooter ? (
+        {!hideFooter && (
           <div className={`${classPrefix}__footer`}>
             <div
               className={`${classPrefix}__footer__cancel`}
@@ -201,14 +181,11 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
             >
               {locale.cancel}
             </div>
-            <div
-              className={`${classPrefix}__footer__sure`}
-              onClick={() => sure()}
-            >
+            <div className={`${classPrefix}__footer__sure`} onClick={sure}>
               {locale.confirm}
             </div>
           </div>
-        ) : null}
+        )}
       </div>
     </Popup>
   )

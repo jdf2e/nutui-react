@@ -194,15 +194,13 @@ export default App;
 | --- | --- | --- | --- |
 | modelValue | 内容 | `string \| number` | - |
 | visible | 是否展示短密码框 | `boolean` | `false` |
-| title | 标题 | `string` | `请输入密码` |
-| description | 密码框描述 | `string` | `您使用了虚拟资产，请进行验证` |
-| tips | 提示语 | `string` | `忘记密码` |
+| title | 标题 | `ReactNode` | `请输入密码` |
+| description | 密码框描述 | `ReactNode` | `您使用了虚拟资产，请进行验证` |
+| tips | 提示语 | `ReactNode` | `忘记密码` |
 | hideFooter | 是否隐藏底部按钮 | `boolean` | `true` |
 | length | 密码长度，取值为4~6 | `number` | `6` |
 | errorMsg | 错误信息提示 | `string` | - |
 | autoFocus | 自动聚焦 | `boolean` | `false` |
-| tipsIcon | 忘记密碼提示icon | `ReactNode` | - |
-| iconSize | 图标大小 | `string \| number` | `11` |
 
 ### Events
 
