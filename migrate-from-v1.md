@@ -287,6 +287,7 @@
 - `style` 属性通过继承实现
 
 #### AnimatingNumbers
+
 - `maxLen` 重命名为 `length`
 - `endNumber` 重命名为 `value`, 类型改为 `string|number`
 - `delaySpeed` 重命名为 `delay`
