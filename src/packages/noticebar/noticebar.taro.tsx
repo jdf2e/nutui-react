@@ -4,34 +4,24 @@ import React, {
   useRef,
   FunctionComponent,
   MouseEvent,
-  CSSProperties,
   useMemo,
   ReactNode,
 } from 'react'
-
-import classNames from 'classnames'
-import bem from '@/utils/bem'
-import { getRectByTaro } from '../../utils/use-client-rect'
-
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { Close, Notice } from '@nutui/icons-react-taro'
+import classNames from 'classnames'
+import { getRectByTaro } from '../../utils/use-client-rect'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface NoticeBarProps extends BasicComponent {
-  // 滚动方向  across 横向 vertical 纵向
   direction: string
-  className?: string
-  style?: CSSProperties
   list: any
-  standTime: number
-  complexAm: boolean
+  duration: number
   height: number
-  text: string
-  closeMode: boolean
-  wrapable: boolean
+  content: string
+  closeable: boolean
+  wrap: boolean
   leftIcon: ReactNode
   rightIcon: ReactNode
-  color: string
-  background: string
   delay: string | number
   scrollable: boolean | null
   speed: number
@@ -44,19 +34,15 @@ export interface NoticeBarProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
-  // 滚动方向  across 横向 vertical 纵向
-  direction: 'across',
+  direction: 'horizontal',
   list: [],
-  standTime: 1000,
-  complexAm: false,
+  duration: 1000,
   height: 40,
-  text: '',
-  closeMode: false,
-  wrapable: false,
+  content: '',
+  closeable: false,
+  wrap: false,
   leftIcon: null,
   rightIcon: null,
-  color: '',
-  background: '',
   delay: 1,
   scrollable: null,
   speed: 50,
@@ -71,16 +57,13 @@ export const NoticeBar: FunctionComponent<
     style,
     direction,
     list,
-    standTime,
-    complexAm,
+    duration,
     height,
-    text,
-    closeMode,
-    wrapable,
+    content,
+    closeable,
+    wrap,
     leftIcon,
     rightIcon,
-    color,
-    background,
     delay,
     scrollable,
     speed,
@@ -94,27 +77,26 @@ export const NoticeBar: FunctionComponent<
     ...props,
   }
 
-  const wrap = useRef<HTMLDivElement>(null)
-  const content = useRef<HTMLDivElement>(null)
+  const classPrefix = 'nut-noticebar'
+  const wrapRef = useRef<HTMLDivElement>(null)
+  const contentRef = useRef<HTMLDivElement>(null)
   const [showNoticeBar, SetShowNoticeBar] = useState(true)
   const scrollList: any = useRef([])
   const [wrapWidth, SetWrapWidth] = useState(0)
   const [firstRound, SetFirstRound] = useState(true)
-  const [duration, SetDuration] = useState(0)
+  const [animationDuration, SetAnimationDuration] = useState(0)
   const [offsetWidth, SetOffsetW] = useState(0)
   const [animationClass, SetAnimationClass] = useState('')
   const [animate, SetAnimate] = useState(false)
-  const [distance, SetDistance] = useState(0)
   const [timer, SetTimer] = useState(0)
   const [isCanScroll, SetIsCanScroll] = useState<null | boolean>(null)
-
   const isVertical = direction === 'vertical'
   const [rect, setRect] = useState(null as any | null)
   let active = 0
   const [ready, setReady] = useState(false)
   const container = useRef<any>(null)
   const innerRef = useRef<any>(null)
-  const _swiper = useRef<any>({
+  const swiperRef = useRef<any>({
     moving: false,
     autoplayTimer: null,
     width: 0,
@@ -125,7 +107,6 @@ export const NoticeBar: FunctionComponent<
 
   const [childOffset, setChildOffset] = useState<any[]>([])
   const [offset, setOffset] = useState(0)
-
   const { childs, childCount } = useMemo(() => {
     let childCount = 0
     const childs: any = React.Children.map(children, (child) => {
@@ -138,9 +119,7 @@ export const NoticeBar: FunctionComponent<
       childCount,
     }
   }, [children])
-
   let trackSize = childCount * Number(height)
-
   const minOffset = (() => {
     if (rect) {
       const base = isVertical ? rect.height : rect.width
@@ -155,16 +134,12 @@ export const NoticeBar: FunctionComponent<
         scrollList.current = [].concat(childs)
       } else {
         scrollList.current = [].concat(list)
-        // startRollEasy()
         setTimeout(() => {
           startRollEasy()
-        }, Number(standTime))
+        }, Number(duration))
       }
-      setTimeout(() => {
-        complexAm && startRoll()
-      }, Number(standTime))
     } else {
-      initScrollWrap(text)
+      initScrollWrap(content)
     }
     return () => {
       // 销毁事件
@@ -173,8 +148,8 @@ export const NoticeBar: FunctionComponent<
   }, [])
 
   useEffect(() => {
-    initScrollWrap(text)
-  }, [text])
+    initScrollWrap(content)
+  }, [content])
 
   useEffect(() => {
     if (list && list.length) {
@@ -187,11 +162,11 @@ export const NoticeBar: FunctionComponent<
       return
     }
     setTimeout(async () => {
-      if (!wrap.current || !content.current) {
+      if (!wrapRef.current || !contentRef.current) {
         return
       }
-      const warpRes = await getRectByTaro(wrap.current)
-      const contentRes = await getRectByTaro(content.current)
+      const warpRes = await getRectByTaro(wrapRef.current)
+      const contentRes = await getRectByTaro(contentRef.current)
       const wrapW = warpRes.width
       const offsetW = contentRes.width
       const canScroll = scrollable == null ? offsetW > wrapW : scrollable
@@ -199,7 +174,7 @@ export const NoticeBar: FunctionComponent<
       if (canScroll) {
         SetWrapWidth(wrapW)
         SetOffsetW(offsetW)
-        SetDuration(offsetW / speed)
+        SetAnimationDuration(offsetW / speed)
         SetAnimationClass('play')
       } else {
         SetAnimationClass('')
@@ -213,7 +188,7 @@ export const NoticeBar: FunctionComponent<
 
   const onClickIcon = (event: MouseEvent) => {
     event.stopPropagation()
-    SetShowNoticeBar(!closeMode)
+    SetShowNoticeBar(!closeable)
     close && close(event)
     onClose && onClose(event)
   }
@@ -221,24 +196,18 @@ export const NoticeBar: FunctionComponent<
   const onAnimationEnd = () => {
     SetFirstRound(false)
     setTimeout(() => {
-      SetDuration((offsetWidth + wrapWidth) / speed)
+      SetAnimationDuration((offsetWidth + wrapWidth) / speed)
       SetAnimationClass('play-infinite')
     }, 0)
   }
 
-  /**
-   * 滚动方式一
-   */
   const startRollEasy = () => {
     showhorseLamp()
     const time =
       height / speed / 4 < 1
         ? Number((height / speed / 4).toFixed(1)) * 1000
         : ~~(height / speed / 4) * 1000
-    const timerCurr = window.setInterval(
-      showhorseLamp,
-      time + Number(standTime)
-    )
+    const timerCurr = window.setInterval(showhorseLamp, time + Number(duration))
     SetTimer(timerCurr)
   }
   const showhorseLamp = () => {
@@ -254,56 +223,30 @@ export const NoticeBar: FunctionComponent<
     }, time)
   }
 
-  const startRoll = () => {
-    const timerCurr = window.setInterval(() => {
-      const chunk = 100
-      for (let i = 0; i < chunk; i++) {
-        scroll(i, !(i < chunk - 1))
-      }
-    }, Number(standTime) + 100 * speed)
-    SetTimer(timerCurr)
-  }
-  const scroll = (n: number, last: boolean) => {
-    SetAnimate(true)
-    setTimeout(() => {
-      let long = distance
-      long -= height / 100
-      SetDistance(long)
-      if (last) {
-        scrollList.current.push(scrollList.current[0])
-        scrollList.current.shift()
-        SetDistance(0)
-        SetAnimate(false)
-      }
-    }, n * speed)
-  }
   /**
    * 点击滚动单元
    */
-
   const handleClickIcon = (event: MouseEvent) => {
     event.stopPropagation()
-    SetShowNoticeBar(!closeMode)
+    SetShowNoticeBar(!closeable)
     close && close(event)
     onClose && onClose(event)
   }
 
   const isEllipsis = () => {
     if (isCanScroll == null) {
-      return wrapable
+      return wrap
     }
-    return !isCanScroll && !wrapable
+    return !isCanScroll && !wrap
   }
 
   const contentStyle = {
     animationDelay: `${firstRound ? delay : 0}s`,
-    animationDuration: `${duration}s`,
+    animationDuration: `${animationDuration}s`,
     transform: `translateX(${firstRound ? 0 : `${wrapWidth}px`})`,
   }
 
   const barStyle = {
-    color,
-    background,
     height: isVertical ? `${height}px` : '',
   }
 
@@ -314,36 +257,26 @@ export const NoticeBar: FunctionComponent<
   const noDuring =
     height / speed < 1 ? (height / speed).toFixed(1) : ~~(height / speed)
   const horseLampStyle = {
-    transform: complexAm ? `translateY(${distance}px)` : '',
     transition: animate
       ? `all ${duringTime === 0 ? noDuring : duringTime}s`
       : '',
     marginTop: animate ? `-${height}px` : '',
   }
 
-  const b = bem('noticebar')
-  const noticebarClass = classNames({
-    'nut-noticebar-page': true,
-    withicon: closeMode,
-    close: closeMode,
-    wrapable,
-  })
-
   /**
    * 垂直自定义滚动方式
    */
-
   const init = (active = +0) => {
     if (!container?.current) return
     setTimeout(async () => {
       const rects = await getRectByTaro(container?.current)
       const _active = Math.max(Math.min(childCount - 1, active), 0)
-      const _height = rects.height
+      const _height = rects?.height
       trackSize = childCount * Number(_height)
       const targetOffset = getOffset(_active)
-      _swiper.current.moving = true
+      swiperRef.current.moving = true
       if (ready) {
-        _swiper.current.moving = false
+        swiperRef.current.moving = false
       }
       active = _active
       setRect(rects)
@@ -374,17 +307,17 @@ export const NoticeBar: FunctionComponent<
 
   // 清除定时器
   const stopAutoPlay = () => {
-    clearTimeout(_swiper.current.autoplayTimer)
-    _swiper.current.autoplayTimer = null
+    clearTimeout(swiperRef.current.autoplayTimer)
+    swiperRef.current.autoplayTimer = null
   }
   // 定时轮播
   const autoplay = () => {
     if (childCount <= 1) return
     stopAutoPlay()
-    _swiper.current.autoplayTimer = setTimeout(() => {
+    swiperRef.current.autoplayTimer = setTimeout(() => {
       next()
       autoplay()
-    }, Number(standTime) + 100 * speed)
+    }, Number(duration) + 100 * speed)
   }
 
   // 切换方法
@@ -394,7 +327,6 @@ export const NoticeBar: FunctionComponent<
     // 父级容器偏移量
     const targetOffset = getOffset(targetActive, offset)
     // 如果循环，调整开头结尾图片位置
-
     if (Array.isArray(children) && children[0] && targetOffset !== minOffset) {
       const rightBound = targetOffset < minOffset
       childOffset[0] = rightBound ? trackSize : 0
@@ -418,7 +350,7 @@ export const NoticeBar: FunctionComponent<
     resettPosition()
     requestFrame(() => {
       requestFrame(() => {
-        _swiper.current.moving = false
+        swiperRef.current.moving = false
         move({
           pace: 1,
         })
@@ -431,15 +363,13 @@ export const NoticeBar: FunctionComponent<
 
   const getStyle = (moveOffset = offset) => {
     const target = innerRef.current
-
     let _offset = 0
-
     // 容器高度-元素高度
-    const val = rect.height - height
+    const val = rect?.height - height
     _offset = moveOffset + Number(active === childCount - 1 && val / 2)
 
     target.style.transitionDuration = `${
-      _swiper.current.moving ? 0 : standTime
+      swiperRef.current.moving ? 0 : duration
     }ms`
     target.style.height = `${Number(height) * childCount}px`
     target.style.transform = `translate3D(0,${_offset}px,0)`
@@ -462,7 +392,6 @@ export const NoticeBar: FunctionComponent<
   const getActive = (pace: number) => {
     if (pace) {
       const _active = active + pace
-
       return range(_active, -1, childCount)
     }
     return active
@@ -483,7 +412,7 @@ export const NoticeBar: FunctionComponent<
   }
   // 重置首尾位置信息
   const resettPosition = () => {
-    _swiper.current.moving = true
+    swiperRef.current.moving = true
     if (active <= -1) {
       move({ pace: childCount })
     }
@@ -491,21 +420,27 @@ export const NoticeBar: FunctionComponent<
       move({ pace: -childCount })
     }
   }
+
+  const noticebarClass = classNames({
+    'nut-noticebar-page': true,
+    withicon: closeable,
+    close: closeable,
+    wrap,
+  })
+
   useEffect(() => {
     return () => {
       stopAutoPlay()
     }
   }, [])
   return (
-    <div className={`${b()} ${className || ''}`} style={style}>
-      {showNoticeBar && direction === 'across' ? (
+    <div className={`${classPrefix} ${className || ''}`} style={style}>
+      {showNoticeBar && direction === 'horizontal' ? (
         <div className={noticebarClass} style={barStyle} onClick={handleClick}>
-          <div className="left-icon">
-            {leftIcon || <Notice size={16} color={color} />}
-          </div>
-          <div ref={wrap} className="wrap">
+          <div className="left-icon">{leftIcon || <Notice size={16} />}</div>
+          <div ref={wrapRef} className="wrap">
             <div
-              ref={content}
+              ref={contentRef}
               className={`content ${animationClass} ${
                 isEllipsis() ? 'nut-ellipsis' : ''
               }`}
@@ -513,12 +448,12 @@ export const NoticeBar: FunctionComponent<
               onAnimationEnd={onAnimationEnd}
             >
               {children}
-              {text}
+              {content}
             </div>
           </div>
-          {closeMode || rightIcon ? (
+          {closeable || rightIcon ? (
             <div className="right-icon" onClick={onClickIcon}>
-              {rightIcon || <Close size={12} color={color} />}
+              {rightIcon || <Close size={12} />}
             </div>
           ) : null}
         </div>
@@ -532,24 +467,22 @@ export const NoticeBar: FunctionComponent<
         >
           {leftIcon ? <div className="left-icon">{leftIcon}</div> : null}
           {children ? (
-            <>
-              <div className="nut-noticebar__inner" ref={innerRef}>
-                {scrollList.current.map((item: string, index: number) => {
-                  return (
-                    <div
-                      className="scroll-inner "
-                      style={itemStyle(index)}
-                      key={index}
-                      onClick={(e) => {
-                        handleItemClick(e, item)
-                      }}
-                    >
-                      {item}
-                    </div>
-                  )
-                })}
-              </div>
-            </>
+            <div className="nut-noticebar__inner" ref={innerRef}>
+              {scrollList.current.map((item: string, index: number) => {
+                return (
+                  <div
+                    className="scroll-inner "
+                    style={itemStyle(index)}
+                    key={index}
+                    onClick={(e) => {
+                      handleItemClick(e, item)
+                    }}
+                  >
+                    {item}
+                  </div>
+                )
+              })}
+            </div>
           ) : (
             <div className="horseLamp_list" style={horseLampStyle}>
               {scrollList.current.map((item: string, index: number) => {
@@ -575,8 +508,7 @@ export const NoticeBar: FunctionComponent<
               handleClickIcon(e)
             }}
           >
-            {rightIcon ||
-              (closeMode ? <Close size={12} color={color} /> : null)}
+            {rightIcon || (closeable ? <Close size={12} /> : null)}
           </div>
         </div>
       ) : null}

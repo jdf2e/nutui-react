@@ -1,10 +1,10 @@
 # Cell 
 
-### Intro
+## Intro
 
 The cell is a single display item in the list.
 
-### Install
+## Install
 
 ```ts
 import { Cell, CellGroup } from '@nutui/nutui-react'
@@ -115,6 +115,26 @@ export default App
 
 :::
 
+### Vertical Center
+
+You can align the left and right contents of the cell vertically through the 'center' attribute.
+
+:::demo
+
+```tsx
+import React from 'react'
+import { Cell } from '@nutui/nutui-react'
+
+const App = () => {
+  return (
+    <Cell align="center"  title="Title" description="Description" extra="Desc" />
+  )
+}
+export default App
+```
+
+:::
+
 ### Link | CellGroup Usage
 
 :::demo
@@ -135,7 +155,6 @@ const App = () => {
     }
   }
   return (
-    <>
       <CellGroup
         title="Link | CellGroup Usage"
         extra="Usage nut-cell-group support title extra"
@@ -161,7 +180,6 @@ const App = () => {
         ) => onJumpclick(event, 'https://jd.com')}
         />
       </CellGroup>
-    </>
   )
 }
 export default App
@@ -169,22 +187,29 @@ export default App
 
 :::
 
-### Vertical Center
+### Grouping usage
 
-You can align the left and right contents of the cell vertically through the 'center' attribute.
+The 'divider' property allows you to keep the lower edge from being displayed between cells.
 
 :::demo
 
 ```tsx
-import React from 'react'
-import { Cell } from '@nutui/nutui-react'
+import  React from "react"
+import { CellGroup, Cell } from '@nutui/nutui-react'
 
 const App = () => {
   return (
-    <Cell align="center"  title="Title" description="Description" extra="Desc" />
-  )
-}
-export default App
+     <CellGroup
+        divider={false}
+        title="Grouping usage"
+        description="The bottom edge is not displayed between cells"
+    >
+        <Cell title="Title" extra="extra" />
+        <Cell title="Title" extra="extra" />
+    </CellGroup>
+  );
+};
+export default App;
 ```
 
 :::
@@ -194,14 +219,15 @@ export default App
 
 ### CellGroup Prop
 
-| Attribute | Description | Type   | Default |
+| Property | Description | Type   | Default |
 |-------|----------|--------|--------|
 | title | Title | ReactNode | -      |
 | description  | ReactNode | string | -      |
+| divider | Whether there are dividers between cells | boolean | `true`    |
 
 ### Cell Prop
 
-| Attribute         | Description                                                                                              | Type             | Default          |
+| Property | Description                                                                                              | Type             | Default          |
 |-------------------|----------------------------------------------------------------------------------------------------------|------------------|------------------|
 | title             | Title                      |  ReactNode           | -      |
 | description          | Description                           |  ReactNode           | -      |

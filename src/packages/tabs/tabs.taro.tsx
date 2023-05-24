@@ -1,13 +1,13 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { ScrollView, View } from '@tarojs/components'
-import { createSelectorQuery } from '@tarojs/taro'
 import classNames from 'classnames'
 import { JoySmile } from '@nutui/icons-react-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import TabPane from '@/packages/tabpane/index.taro'
 import { usePropsValue } from '@/utils/use-props-value'
+import { useForceUpdate } from '@/utils/use-force-update'
 
-type Title = {
+export type TabsTitle = {
   title: string
   disabled: boolean
   active?: boolean
@@ -75,7 +75,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   const navRef = useRef<HTMLDivElement>(null)
 
   const getTitles = () => {
-    const titles: Title[] = []
+    const titles: TabsTitle[] = []
     React.Children.forEach(children, (child: any, idx) => {
       if (React.isValidElement(child)) {
         const props: any = child?.props
@@ -91,8 +91,22 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     return titles
   }
 
-  const titles = useRef<Title[]>(getTitles())
-
+  const titles = useRef<TabsTitle[]>(getTitles())
+  const forceUpdate = useForceUpdate()
+  useEffect(() => {
+    titles.current = getTitles()
+    let current: string | number = ''
+    titles.current.forEach((title) => {
+      if (title.value === value) {
+        current = value
+      }
+    })
+    if (current !== '' && current !== value) {
+      setValue(current)
+    } else {
+      forceUpdate()
+    }
+  }, [children])
   const classes = classNames(
     classPrefix,
     `${classPrefix}--${direction}`,
@@ -123,7 +137,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     scrollIntoRef.current = scrollToIndex < 0 ? 0 : scrollToIndex
   }, [value])
 
-  const tabChange = (item: Title, index: number) => {
+  const tabChange = (item: TabsTitle, index: number) => {
     onClick && onClick(item.value)
     if (item.disabled) {
       return

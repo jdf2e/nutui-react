@@ -240,12 +240,12 @@ export default App;
 |---------------|------------|--------|--------|
 | title | 标签页的标题 | `ReactNode` | -     |
 | icon | 自定义图标 | `ReactNode` | - |
-| value   | 显示的内容，支持数字、字符和自定义内容  | `ReactNode`  | -         |
+| value   | 徽标中显示的内容，支持数字、字符和自定义内容  | `ReactNode`  | -         |
 | max     | value 为数值时，最大值 | `number`  | `99`   |
-| dot     | 是否为小点 | `boolean` | `false`   |
-| top     | 上下偏移量，支持单位设置，可设置为：5 等 | `number`  | `0`       |
-| right   | 左右偏移量，支持单位设置，可设置为：5 等 | `number`  | `0`       |
-| color   | 徽标背景颜色,默认值为当前主题色 | `string`  | `` |
+| dot     | 徽标是否为小点 | `boolean` | `false`   |
+| top     | 徽标的上下偏移量，支持单位设置，可设置为：5 等 | `number`  | `0`       |
+| right   | 徽标的左右偏移量，支持单位设置，可设置为：5 等 | `number`  | `0`       |
+| color   | 徽标的背景颜色，默认值为当前主题色 | `string`  | `` |
 
 ## 主题定制
 

@@ -66,7 +66,7 @@ export default App
 
 ### AnimatingNumbers.CountUp Props
 
-| Props | Description | Type | Default |
+| Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | length | Set the maximum display length, the number of bits is not enough, the number of bits before the zero | `number` | `0` |
 | value | The end value, | `string` | `number` |

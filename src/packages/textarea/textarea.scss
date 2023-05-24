@@ -1,13 +1,3 @@
-.nut-theme-dark {
-  .nut-textarea {
-    background: $dark5;
-
-    &__textarea {
-      color: $dark1;
-    }
-  }
-}
-
 .nut-textarea {
   position: relative;
   width: 100%;
@@ -34,7 +24,6 @@
   }
 
   &__textarea {
-    // min-height: $textarea-height;
     outline: none;
     display: block;
     box-sizing: border-box;
@@ -43,13 +32,17 @@
     margin: 0;
     padding: 0;
     font-size: $textarea-font;
-    line-height: $textarea-text-line-height;
     color: $textarea-text-color;
     caret-color: $textarea-text-curror-color;
     text-align: left;
     background-color: transparent;
     border: 0;
     resize: none;
+
+    .taro-textarea {
+      background-color: transparent;
+      resize: none;
+    }
   }
 
   .cpoyText {

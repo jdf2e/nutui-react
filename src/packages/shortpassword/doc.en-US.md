@@ -182,7 +182,7 @@ export default App;
 
 ### Props
 
-| Attribute      | Description                                      | Type   | Default |
+| Property | Description                                      | Type   | Default |
 |--------------|----------------------------------|--------|------------------|
 | modelValue         | Current value                | string \| number | -                |
 | visible        | Whether to show shortpassword                         | boolean | `false`              |

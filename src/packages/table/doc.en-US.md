@@ -1,16 +1,17 @@
 #  Table
 
-### Intro
+## Intro
 
 Used to display the basic table
 
-### Install
+## Install
 ```ts
 // react
 import { Table } from '@nutui/nutui-react';
 ```
 
 
+## Demo
 ### Basic Usage
 
 :::demo
@@ -567,7 +568,7 @@ const App = () => {
   return <Table
           columns={columns5}
           data={data5}
-          onSorter={handleSorter}
+          onSort={handleSorter}
           style={{ background: '#fff' }}
         />;
 };
@@ -638,7 +639,7 @@ const App = () => {
   return <Table
           columns={columns5}
           data={data5}
-          onSorter={handleSorter}
+          onSort={handleSorter}
           style={{ background: '#fff' }}
           sorterIcon={<TriangleDown width="12px" height="12px" />}
         />;
@@ -648,41 +649,30 @@ export default App;
 :::
 
 
-## API
+## Table
 
 ### Props
 
-| Attribute         | Description                             | Type   | Default           |
-|--------------|----------------------------------|--------|------------------|
-| bordered         | Show border | 	boolean | `true`                |
-| columns         | Header data | 	TableColumnProps[] | `[]`                |
-| data         | Table data | 	Object[] | `[]`                |
-| summary         | Show profile | 	ReactNode | -                |
-| striped         | Whether the stripes alternate light and dark | 	boolean | `false`                |
-| showHeader`v1.4.11`         | Show Header | 	boolean | `true`                |
-| noData         | Custom noData | 	ReactNode | -                |
-| sorterIcon`v2.0.0`         | Sort icon | 	ReactNode | `<DownArrow />`               |
-
-
+| Property | Description | Type   | Default           |
+|--------------|-------------------|--------|------------------|
+| bordered         | Show border | 	`boolean` | `true` |
+| columns         | Header data | 	TableColumnProps[] | `[]` |
+| data | Table data | 	Object[] | `[]` |
+| summary | Show profile | 	ReactNode | `-` |
+| striped         | Whether the stripes alternate light and dark | 	`boolean` | `false`                |
+| showHeader   | Show Header | 	`boolean` | `true` |
+| noData | Custom noData | 	ReactNode | `-` |
+| sorterIcon    | Sort icon | 	ReactNode | `<DownArrow />` |
 
 ### TableColumnProps
-
-| Attribute         | Description                             | Type   | Default           |
-|--------------|----------------------------------|--------|------------------|
-| key         | Unique identification of the column | 	string | -                |
-| title         | Header title | 	string | -                |
-| align         |Alignment of columns, optional values`left`,`center`,`right`  | 	string | `left`                |
-| sorter         | sort，optional values `true`,`function`, `default`, Where `default` means that you may depend on the interface after clicking, `function` you can return a specific sorting function, `default` indicates that the default sorting algorithm is adopted | 	boolean \| Function \| string | -                |
-| render         | Custom render column data, high priority | 	Function(record) | -                |
-
-
-
-### Events
-
-| Event | Description           | Arguments     |
-|--------|----------------|--------------|
-| onSorter  | Click the sort button to trigger | `item: TableColumnProps, data: Array<any>` |
-
+| Property         | Description | Type   | Default           |
+|--------------|--------------|--------|------------------|
+| key | Unique identification of the column | 	`string` | `-` |
+| title | Header title | 	`string` | `-` |
+| align |Alignment of columns, optional values`left`,`center`,`right`  | 	`string` | `left` |
+| sorter | sort，optional values `true`,`function`, `default`, Where `default` means that you may depend on the interface after clicking, `function` you can return a specific sorting function, `default` indicates that the default sorting algorithm is adopted | 	`boolean \| Function \| string` | `-` |
+| render | Custom render column data, high priority | 	Function(record) | `-` |
+| onSort  | Click the sort button to trigger | `item: TableColumnProps, data: Array<any>` |
 
 ## Theming
 
@@ -690,9 +680,9 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-table-border-color | `#ececec` |
-| --nutui-table-cols-padding | `10px` |
-| --nutui-table-tr-even-bg-color | `$gray4` |
-| --nutui-table-tr-odd-bg-color | `$gray6` |
+| Name | Description | Default Value |
+| --- | --- | --- |
+| --nutui-table-border-color | table border color | `#ececec` |
+| --nutui-table-cols-padding | table columns padding value | `10px` |
+| --nutui-table-tr-even-background-color | table even rows background color | `$gray4` |
+| --nutui-table-tr-odd-background-color | table odd rows background color  | `$gray6` |
