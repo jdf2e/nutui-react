@@ -193,7 +193,7 @@ export default App;
 
 ### Props
 
-| Attribute | Description | Type | Default |
+| Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | value | Value, arrow up if greater than zero, arrow down if less than zero | `number` | `-` |
 | digits | Decimal precision | `number` | `2` |
