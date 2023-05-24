@@ -18,7 +18,7 @@ export interface ShortPasswordProps extends PopupProps {
   tips: ReactNode
   visible: boolean
   modelValue: string | number
-  errorMsg: string
+  error: ReactNode
   hideFooter: boolean
   length: number
   autoFocus: boolean
@@ -53,7 +53,7 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
     tips,
     visible,
     modelValue,
-    errorMsg,
+    error,
     hideFooter,
     length,
     style,
@@ -163,7 +163,7 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
           </div>
         </div>
         <div className={`${classPrefix}__message`}>
-          <div className={`${classPrefix}__message__error`}>{errorMsg}</div>
+          <div className={`${classPrefix}__message__error`}>{error}</div>
           <div className={`${classPrefix}__message__forget`} onClick={onTips}>
             {tips || (
               <>

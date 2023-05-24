@@ -198,7 +198,7 @@ export default App;
 | tips | 提示语 | `ReactNode` | `忘记密码` |
 | hideFooter | 是否隐藏底部按钮 | `boolean` | `true` |
 | length | 密码长度，取值为4~6 | `number` | `6` |
-| errorMsg | 错误信息提示 | `string` | - |
+| error | 错误信息提示 | `ReactNode` | - |
 | autoFocus | 自动聚焦 | `boolean` | `false` |
 
 ### Events
