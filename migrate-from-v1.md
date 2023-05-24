@@ -376,7 +376,9 @@
 #### Skeleton
 - loading 重命名为 visible
 - row 重命名为 rows
-- 移除 width、height、round，通过 css 变量实现
+- 移除 width，通过 css 变量 skeleton-line-width 实现
+- 移除 height，通过 css 变量 skeleton-line-height 实现
+- 移除 round，通过 css 变量 skeleton-line-border-radius 实现
 #### Steps
 - current 重命名为 value
 - onClickStep 重命名为 onStepClick
