@@ -213,9 +213,9 @@ export default App;
 | list | source data | `Array` | - |
 | containerHeight | container height | `number` | `Get the element offsetWidth or offsetHeight, which is given by CSS` |
 | ItemRender | virtual function rendered by the parent of the list | `React.FC` | - |
-| itemHeight | Item height, if not height, the first screen single maximum height | `string` | - |
+| itemHeight | Item height, if not height, the first screen single maximum height | `number` | `66` |
 | itemEqual | the sizes of items are consistent | `boolean` | `true` |
 | overscan | In addition to the default elements in the viewport, there is an additional number of items to render | `number` | `2` |
 | key | the key name of item in list, index as default | `string` | - |
 | direction | horizontal or vertical | `string` | `vertical` |
-| onScroll | scroll event | `(event) => void` | - |
+| onScroll | scroll to end | `() => void` | - |

@@ -16,18 +16,3 @@ export interface PositionType {
   left?: number
   right: number
 }
-
-export interface BasicVirtualListProps {
-  className?: string
-  style?: React.CSSProperties
-  list: Array<Data> // 获取数据
-  containerHeight?: number // 容器大小
-  ItemRender?: React.FC<any> // virtual 列表父节点渲染的函数，默认为 (items, ref) => <ul ref={ref}>{items}</ul>
-  itemHeight?: number // 预估高度
-  itemEqual?: boolean // item 固定大小，默认是true
-  direction?: 'vertical' | 'horizontal' // 方向，默认值 vertical，可选值 horizontal
-  overscan?: number // 除了视窗里面默认的元素, 还需要额外渲染的, 避免滚动过快, 渲染不及时,默认是2
-  onScroll?: (...args: any[]) => any // 滑动到底部执行的函数
-  key?: string // 遍历时生成item 的唯一key,默认是index,建议传入resources的数据具体的某个唯一值的字段
-  locale?: { [key in string]: string }
-}

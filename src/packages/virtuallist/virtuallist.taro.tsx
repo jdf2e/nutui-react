@@ -7,48 +7,50 @@ import React, {
 } from 'react'
 import { ScrollView } from '@tarojs/components'
 import { getSystemInfoSync } from '@tarojs/taro'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import { PositionType, VirtualListState } from './type'
+import { Data, PositionType, VirtualListState } from './type'
 import { binarySearch, initPositinoCache, updateItemSize } from './utils'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export type VirtualListProps = {
-  className?: string | any
-  style?: React.CSSProperties
-  list: any // 获取数据
-  containerHeight?: number // 容器大小
-  ItemRender?: any // virtual 列表父节点渲染的函数，默认为 (items, ref) => <div ref={ref}>{items}</div>
-  itemEqual?: boolean // item 固定大小，默认是true
-  itemHeight?: number // 预估元素高度
-  overscan?: number // 除了视窗里面默认的元素, 还需要额外渲染的, 避免滚动过快, 渲染不及时,默认是2
-  onScroll?: (...args: any[]) => any // 滑动到底部执行的函数
-  key?: any // 遍历时生成item 的唯一key,默认是index,建议传入resources的数据具体的某个唯一值的字段
-  locale?: any
+const clientHeight = getSystemInfoSync().windowHeight - 5 || 667
+// const clientWidth = getSystemInfoSync().windowWidth || 375
+
+export interface VirtualListProps extends BasicComponent {
+  list: Array<Data>
+  containerHeight: number
+  ItemRender: React.FC<any>
+  itemHeight: number
+  itemEqual: boolean
+  overscan: number
+  onScroll: () => void
+  key: string
 }
 const defaultProps = {
-  list: [],
+  ...ComponentDefaults,
+  list: [] as Array<Data>,
+  containerHeight: clientHeight,
   itemHeight: 66,
   itemEqual: true,
   overscan: 2,
 } as VirtualListProps
 
-const clientHeight = getSystemInfoSync().windowHeight - 5 || 667
-const clientWidth = getSystemInfoSync().windowWidth || 375
-
 export const VirtualList: FunctionComponent<
   VirtualListProps & React.HTMLAttributes<HTMLDivElement>
 > = (props: VirtualListProps) => {
   const {
-    list = [],
+    list,
     ItemRender,
-    itemHeight = 66,
-    itemEqual = true,
-    overscan = 2,
+    itemHeight,
+    itemEqual,
+    overscan,
     key,
     onScroll,
     className,
-    containerHeight = clientHeight,
+    containerHeight,
     ...rest
-  } = props
+  } = {
+    ...defaultProps,
+    ...props,
+  }
 
   const [startOffset, setStartOffset] = useState(0)
   const [start, setStart] = useState(0)

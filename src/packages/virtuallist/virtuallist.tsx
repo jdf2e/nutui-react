@@ -5,8 +5,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { useConfig } from '@/packages/configprovider'
-import { BasicVirtualListProps, VirtualListState, PositionType } from './type'
+import type { Data, VirtualListState, PositionType } from './type'
 import {
   initPositinoCache,
   getListTotalSize,
@@ -14,26 +13,47 @@ import {
   getEndIndex,
   updateItemSize,
 } from './utils'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export type VirtualListProps = BasicVirtualListProps
-const defaultProps = {} as VirtualListProps
+export interface VirtualListProps extends BasicComponent {
+  list: Array<Data>
+  containerHeight: number
+  ItemRender: React.FC<any>
+  itemHeight: number
+  itemEqual: boolean
+  direction: 'vertical' | 'horizontal'
+  overscan: number
+  onScroll: () => void
+  key: string
+}
+const defaultProps = {
+  ...ComponentDefaults,
+  list: [] as Array<Data>,
+  itemHeight: 66,
+  itemEqual: true,
+  direction: 'vertical',
+  overscan: 2,
+} as VirtualListProps
 
-export const VirtualList: FunctionComponent<VirtualListProps> = (
-  props: VirtualListProps
+export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
+  props
 ) => {
   const {
-    list = [],
+    list,
     ItemRender,
-    itemEqual = true,
-    itemHeight = 200,
-    direction = 'vertical',
-    overscan = 2,
+    itemEqual,
+    itemHeight,
+    direction,
+    overscan,
     key,
     onScroll,
     className,
     containerHeight,
     ...rest
-  } = props
+  } = {
+    ...defaultProps,
+    ...props,
+  }
   const horizontal = direction === 'horizontal'
   const sizeKey = horizontal ? 'width' : 'height'
   const scrollKey = horizontal ? 'scrollLeft' : 'scrollTop'
