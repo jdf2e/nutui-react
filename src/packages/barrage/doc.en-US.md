@@ -57,7 +57,7 @@ export default App;
 
 ### Props
 
-| Attribute         | Description                             | Type   | Default           |
+| Property | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
 | barrageList         | Barrage list data               | Array | `[]`              |
 | frequency        | The time interval between the occurrence of each barrage in the visual area                         | number | `500`               |

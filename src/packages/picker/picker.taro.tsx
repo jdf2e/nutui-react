@@ -5,209 +5,121 @@ import React, {
   RefObject,
   ForwardRefRenderFunction,
 } from 'react'
-import { View } from '@tarojs/components'
+import classNames from 'classnames'
+import Taro from '@tarojs/taro'
+import { View, PickerView, PickerViewColumn } from '@tarojs/components'
 import Popup from '@/packages/popup/index.taro'
-import PickerSlot from './pickerSlot.taro'
+import PickerPanel from './pickerpanel.taro'
 import useRefs from '@/utils/use-refs'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import bem from '@/utils/bem'
+import { PickerOption } from './types'
+import { usePropsValue } from '@/utils/use-props-value'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface PickerOption {
-  text: string | number
-  value: string | number
-  disabled?: string
-  children?: PickerOption[]
-  className?: string | number
-}
-export interface PickerProps {
+export interface PickerProps extends BasicComponent {
   visible: boolean
   title?: string
-  listData: (PickerOption | PickerOption[])[]
-  defaultValueData?: (number | string)[]
-  className?: ''
-  style?: React.CSSProperties
+  options: (PickerOption | PickerOption[])[]
+  value?: (number | string)[]
+  defaultValue?: (number | string)[]
   threeDimensional?: boolean
-  swipeDuration: number | string
+  duration: number | string
   onConfirm?: (
-    selectedValue: (string | number)[],
-    selectedOptions: PickerOption[]
+    selectedOptions: PickerOption[],
+    selectedValue: (string | number)[]
   ) => void
   onClose?: (
-    selectedValue: (string | number)[],
-    selectedOptions: PickerOption[]
+    selectedOptions: PickerOption[],
+    selectedValue: (string | number)[]
   ) => void
-  onCloseUpdate?: (
+  afterClose?: (
+    selectedOptions: PickerOption[],
     selectedValue: (string | number)[],
-    list: PickerOption[],
     pickerRef: RefObject<HTMLDivElement>
   ) => void
   onChange?: (
-    index: number,
-    value: (string | number)[],
-    selectedOptions: PickerOption[]
+    selectedOptions: PickerOption[],
+    selectedValue: (string | number)[],
+    columnIndex: number
   ) => void
 }
-
+const defaultProps = {
+  ...ComponentDefaults,
+  visible: false,
+  title: '',
+  options: [],
+  value: [],
+  defaultValue: [],
+  threeDimensional: true,
+  duration: 1000,
+} as PickerProps
 const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
   (props, ref) => {
     const { locale } = useConfig()
     const {
       visible,
       title,
-      listData = [],
-      defaultValueData,
-      onConfirm,
-      onClose,
-      onCloseUpdate,
-      onChange,
+      options = [],
+      defaultValue = [],
       className,
       style,
       threeDimensional,
-      swipeDuration,
+      duration,
+      onConfirm,
+      onClose,
+      afterClose,
+      onChange,
       ...rest
-    } = props
-
-    const [chooseValueData, setchooseValueData] = useState<
+    } = { ...defaultProps, ...props }
+    const classPrefix = 'nut-picker'
+    const classes = classNames(classPrefix, className)
+    const [selectedValue, setSelectedValue] = usePropsValue<
       Array<string | number>
-    >([]) // 选择的数据的 value 值, 每一条数据的 value 值
-    const [columnIndex, setcolumnIndex] = useState<number>(0) // 选中列
+    >({
+      value: props.value,
+      defaultValue: [...defaultValue],
+      finalValue: [...defaultValue],
+      onChange: (val) => {
+        props.onConfirm?.(setSelectedOptions(), val)
+      },
+    })
+    const [currentValue, setCurrentValue] = useState<number[]>([])
+    const [columnIndex, setColumnIndex] = useState<number>(0) // 选中列
     const pickerRef = useRef<any>(null)
     const [refs, setRefs] = useRefs()
     const [columnsList, setColumnsList] = useState<PickerOption[][]>([]) // 格式化后每一列的数据
-    const b = bem('picker')
-
     const isConfirmEvent = useRef(false)
 
-    // 默认值修改
-    useEffect(() => {
-      if (
-        defaultValueData &&
-        defaultValueData.length !== 0 &&
-        defaultValueData.toString() !== chooseValueData.toString()
-      ) {
-        const data = [...defaultValueData]
-        setchooseValueData(data)
-        setColumnsList(normalListData() as PickerOption[][])
-      }
-    }, [defaultValueData])
-
-    // 选中值进行修改
-    useEffect(() => {
-      onChange && onChange(columnIndex, chooseValueData, selectedOptions())
-      if (isConfirmEvent.current) {
-        isConfirmEvent.current = false
-        onConfirm && onConfirm(chooseValueData, selectedOptions())
-      }
-    }, [chooseValueData])
-
-    // 列表格式修改
-    useEffect(() => {
-      init()
-    }, [listData])
-
-    const closeActionSheet = () => {
-      onClose && onClose(chooseValueData, selectedOptions())
-      onCloseUpdate &&
-        onCloseUpdate(chooseValueData, selectedOptions(), pickerRef)
-    }
-    // 点击确定
-    const confirm = () => {
-      let movings = false
-      refs.forEach((_ref: any) => {
-        if (_ref.moving) movings = true
-        _ref.stopMomentum()
-      })
-
-      if (movings) {
-        isConfirmEvent.current = true
-      } else {
-        onConfirm && onConfirm(chooseValueData, selectedOptions())
+    // 级联数据格式化
+    const formatCascade = (
+      columns: PickerOption[],
+      values: (number | string)[]
+    ) => {
+      const formatted: PickerOption[][] = []
+      let columnOptions: PickerOption = {
+        text: '',
+        value: '',
+        children: columns,
       }
 
-      onClose && onClose(chooseValueData, selectedOptions())
-
-      setTimeout(() => {
-        isConfirmEvent.current = false
-      }, 0)
-    }
-
-    const selectedOptions = () => {
-      const optins: PickerOption[] = []
-      columnsList.map((column: PickerOption[], index: number) => {
-        let currOptions = []
-        currOptions = column.filter(
-          (item) => item.value === chooseValueData[index]
+      let columnIndex = 0
+      while (columnOptions && columnOptions.children) {
+        const options: PickerOption[] = columnOptions.children
+        const value = values[columnIndex]
+        let index = options.findIndex(
+          (columnItem) => columnItem.value === value
         )
-        if (currOptions[0]) {
-          optins.push(currOptions[0])
-        } else {
-          column[0] && optins.push(column[0])
-        }
-
-        return column
-      })
-
-      return optins
-    }
-
-    // 选择每一列的数据
-    const chooseItem = (option: PickerOption, columnIndex: number) => {
-      if (option && Object.keys(option).length) {
-        // 是否移动后是否与之前有差异
-        if (chooseValueData[columnIndex] !== option.value) {
-          if (columnsType() === 'cascade') {
-            chooseValueData[columnIndex] = option.value ? option.value : ''
-            setchooseValueData([...chooseValueData])
-
-            let index = columnIndex
-            let cursor = option
-            while (cursor && cursor.children && cursor.children[0]) {
-              chooseValueData[index + 1] = cursor.children[0].value
-              setchooseValueData([...chooseValueData])
-              index++
-              const cc = cursor.children[0]
-              cursor = cc
-            }
-            // 当前改变列的下一列 children 值为空
-            if (cursor && cursor.children) {
-              chooseValueData[index + 1] = ''
-              setchooseValueData([...chooseValueData])
-            }
-
-            setColumnsList(normalListData() as PickerOption[][])
-          } else {
-            setchooseValueData((data) => {
-              const cdata = [...data]
-              cdata[columnIndex] = Object.prototype.hasOwnProperty.call(
-                option,
-                'value'
-              )
-                ? option.value
-                : ''
-              return cdata
-            })
-          }
-          setcolumnIndex(columnIndex)
-        }
+        if (index === -1) index = 0
+        columnOptions = columnOptions.children[index]
+        columnIndex++
+        formatted.push(options)
       }
+      return formatted
     }
-    // 传入的数据格式化
-    const normalListData = () => {
-      const type = columnsType()
 
-      switch (type) {
-        case 'multiple':
-          return listData
-        case 'cascade':
-          // 级联数据处理
-          return formatCascade(listData as PickerOption[], chooseValueData)
-        default:
-          return [listData]
-      }
-    }
-    // 每一列的类型
+    // 数据类型：多列、嵌套、单列
     const columnsType = () => {
-      const firstColumn: PickerOption | PickerOption[] = listData[0]
+      const firstColumn: PickerOption | PickerOption[] = options[0]
       if (firstColumn) {
         if (Array.isArray(firstColumn)) {
           return 'multiple'
@@ -219,100 +131,256 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       return 'single'
     }
 
-    // 级联数据格式化
-    const formatCascade = (
-      columns: PickerOption[],
-      defaultValues: (number | string)[]
-    ) => {
-      const formatted: PickerOption[][] = []
-      let cursor: PickerOption = {
-        text: '',
-        value: '',
-        children: columns,
+    // 传入的数据格式化
+    const normalListData = () => {
+      const type = columnsType()
+      switch (type) {
+        case 'multiple':
+          return options
+        case 'cascade':
+          // 级联数据处理
+          return formatCascade(options as PickerOption[], selectedValue)
+        default:
+          return [options]
       }
-
-      let columnIndex = 0
-
-      while (cursor && cursor.children) {
-        const options: PickerOption[] = cursor.children
-        const value = defaultValues[columnIndex]
-        let index = options.findIndex(
-          (columnItem) => columnItem.value === value
-        )
-        if (index === -1) index = 0
-        cursor = cursor.children[index]
-
-        columnIndex++
-        formatted.push(options)
-      }
-
-      return formatted
     }
-
     const init = () => {
-      const data: (string | number)[] = []
-
       const normalData: PickerOption[][] = normalListData() as PickerOption[][]
-
       setColumnsList(normalData)
-
+      // 初始化默认选中数据
+      const data: (string | number)[] = []
       normalData.length > 0 &&
         normalData.map((item) => {
           item[0] && data.push(item[0].value)
           return item
         })
 
-      if (!defaultValueData && chooseValueData.length === 0) {
-        setchooseValueData([...data])
+      if (!defaultValue.length && selectedValue.length === 0) {
+        setSelectedValue([...data])
       }
     }
 
-    const renderToolbar = () => {
+    useEffect(() => {
+      if (!visible) {
+        return
+      }
+      init()
+    }, [options, visible])
+
+    const setSelectedOptions = () => {
+      const options: PickerOption[] = []
+      let currOptions = []
+      columnsList.forEach((columnOptions: PickerOption[], index: number) => {
+        currOptions = columnOptions.filter(
+          (item) => item.value === selectedValue[index]
+        )
+        if (currOptions[0]) {
+          options.push(currOptions[0])
+        } else {
+          columnOptions[0] && options.push(columnOptions[0])
+        }
+      })
+      return options
+    }
+
+    const defaultValuesConvert = () => {
+      const defaultIndexs: number[] = []
+      if (selectedValue.length > 0) {
+        selectedValue.forEach((value, index) => {
+          for (let i = 0; i < columnsList?.[index]?.length; i++) {
+            if (columnsList[index][i].value === value) {
+              defaultIndexs.push(i)
+              break
+            }
+          }
+        })
+      } else if (columnsList && columnsList.length > 0) {
+        columnsList.forEach((item) => {
+          defaultIndexs.push(0)
+          item.length > 0 && selectedValue.push(item[0].value)
+        })
+      }
+
+      return defaultIndexs
+    }
+
+    // 选中值进行修改
+    useEffect(() => {
+      if (!visible) {
+        return
+      }
+      Taro.getEnv() !== 'WEB' && setCurrentValue(defaultValuesConvert())
+      onChange && onChange(setSelectedOptions(), selectedValue, columnIndex)
+      if (isConfirmEvent.current) {
+        isConfirmEvent.current = false
+        onConfirm && onConfirm(setSelectedOptions(), selectedValue)
+      }
+    }, [selectedValue, columnsList, visible])
+
+    // 更新已选择数据
+    const chooseItem = (columnOptions: PickerOption, columnIndex: number) => {
+      if (columnOptions && Object.keys(columnOptions).length) {
+        // 切换数据后，数据有变动才触发。
+        if (selectedValue[columnIndex] !== columnOptions.value) {
+          if (columnsType() === 'cascade') {
+            selectedValue[columnIndex] = columnOptions.value || ''
+            setSelectedValue([...selectedValue])
+
+            while (columnOptions?.children?.[0]) {
+              selectedValue[columnIndex + 1] = columnOptions.children[0].value
+              setSelectedValue([...selectedValue])
+              columnIndex++
+              columnOptions = columnOptions.children[0]
+            }
+            // 当前改变列的下一列 children 值为空
+            if (columnOptions?.children?.length) {
+              selectedValue[columnIndex + 1] = ''
+              setSelectedValue([...selectedValue])
+            }
+            setColumnsList(normalListData() as PickerOption[][])
+          } else {
+            // @ts-ignore
+            setSelectedValue((data) => {
+              const cdata = [...data]
+              cdata[columnIndex] = Object.prototype.hasOwnProperty.call(
+                columnOptions,
+                'value'
+              )
+                ? columnOptions.value
+                : ''
+              return cdata
+            })
+          }
+          setColumnIndex(columnIndex)
+        }
+      }
+    }
+    // 点击确定
+    const confirm = () => {
+      let movings = false
+      refs.forEach((ref: any) => {
+        if (ref.moving) movings = true
+        ref.stopMomentum()
+      })
+      if (movings) {
+        isConfirmEvent.current = true
+      } else {
+        onConfirm && onConfirm(setSelectedOptions(), selectedValue)
+        closePicker()
+      }
+      setTimeout(() => {
+        isConfirmEvent.current = false
+      }, 0)
+    }
+
+    const closePicker = () => {
+      onClose && onClose(setSelectedOptions(), selectedValue)
+      afterClose && afterClose(setSelectedOptions(), selectedValue, pickerRef)
+    }
+
+    const renderTitleBar = () => {
       return (
-        <div className={b('control')}>
-          <span className={b('cancel-btn')} onClick={() => closeActionSheet()}>
+        <div className={`${classPrefix}__control`}>
+          <span
+            className={`${classPrefix}__cancel-btn`}
+            onClick={() => closePicker()}
+          >
             {locale.cancel}
           </span>
-          <div className={b('title')}>{title || ''}</div>
-          <span className={b('confirm-btn')} onClick={confirm}>
+          <div className={`${classPrefix}__title`}>{title || ''}</div>
+          <span className={`${classPrefix}__confirm-btn`} onClick={confirm}>
             {locale.confirm}
           </span>
         </div>
       )
     }
+
+    const [pickingStatus, setPickingStatus] = useState(false)
+
+    const pickerStart = () => {
+      setPickingStatus(true)
+    }
+
+    const pickerEnd = () => {
+      setPickingStatus(false)
+    }
+
+    const pickerChange = (data: any) => {
+      const prevDefaultValue = currentValue
+      let changeIndex = 0
+      // 判断变化的是第几个
+      const list = data.detail.value
+      for (let i = 0, len = list.length; i < len; i++) {
+        if (prevDefaultValue[i] !== list[i]) {
+          changeIndex = i
+          break
+        }
+      }
+
+      // 选择的是哪个 option
+      chooseItem(
+        columnsList[changeIndex][data.detail.value[changeIndex]],
+        changeIndex
+      )
+    }
+
     return (
       <Popup
         visible={visible}
         position="bottom"
         onClose={() => {
-          closeActionSheet()
+          closePicker()
         }}
       >
-        <View
-          className={`${b()} ${className || ''}`}
-          style={style}
-          {...rest}
-          catchMove
-        >
-          {renderToolbar()}
-          <div className={b('panel')} ref={pickerRef}>
-            {columnsList?.map((item, index) => {
-              return (
-                <PickerSlot
-                  ref={setRefs(index)}
-                  defaultValue={chooseValueData?.[index]}
-                  listData={item}
-                  threeDimensional={threeDimensional}
-                  chooseItem={(value: PickerOption, index: number) =>
-                    chooseItem(value, index)
-                  }
-                  swipeDuration={swipeDuration}
-                  key={index}
-                  keyIndex={index}
-                  itemShow={visible}
-                />
-              )
-            })}
+        <View className={classes} style={style} {...rest} catchMove>
+          {renderTitleBar()}
+          <div className={`${classPrefix}__panel`} ref={pickerRef}>
+            {Taro.getEnv() === 'WEB' ? (
+              columnsList?.map((item, index) => {
+                return (
+                  <PickerPanel
+                    ref={setRefs(index)}
+                    defaultValue={selectedValue?.[index]}
+                    options={item}
+                    threeDimensional={threeDimensional}
+                    chooseItem={(value: PickerOption, index: number) =>
+                      chooseItem(value, index)
+                    }
+                    duration={duration}
+                    key={index}
+                    keyIndex={index}
+                    itemShow={visible}
+                  />
+                )
+              })
+            ) : (
+              <PickerView
+                ref={pickerRef}
+                value={currentValue}
+                immediateChange
+                onPickStart={pickerStart}
+                onChange={pickerChange}
+                onPickEnd={pickerEnd}
+                className="nut-picker-view-panel"
+              >
+                {columnsList?.map((columnOptions, index) => {
+                  return (
+                    <PickerViewColumn key={`col${index}`}>
+                      {columnOptions.map((item, index) => {
+                        return (
+                          <View
+                            key={item.value || index}
+                            className="nut-picker-roller-item-title"
+                          >
+                            <>{item.text || item}</>
+                          </View>
+                        )
+                      })}
+                    </PickerViewColumn>
+                  )
+                })}
+              </PickerView>
+            )}
           </div>
         </View>
       </Popup>

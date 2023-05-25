@@ -16,7 +16,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 export interface AudioProps extends BasicComponent {
   src: string
   muted: boolean
-  autoplay: boolean
+  autoPlay: boolean
   loop: boolean
   preload: string
   type: string
@@ -33,7 +33,7 @@ const defaultProps = {
   ...ComponentDefaults,
   src: '',
   muted: false,
-  autoplay: false,
+  autoPlay: false,
   loop: false,
   preload: 'auto',
   type: 'progress',
@@ -53,7 +53,7 @@ export const Audio: FunctionComponent<
     src,
     style,
     muted,
-    autoplay,
+    autoPlay,
     loop,
     preload,
     type,
@@ -83,7 +83,7 @@ export const Audio: FunctionComponent<
     duration: '00:00:00',
     second: 0,
     hanMuted: props.muted,
-    playing: props.autoplay,
+    playing: props.autoPlay,
     handPlaying: false,
   })
   const classPrefix = 'nut-audio'
@@ -179,9 +179,11 @@ export const Audio: FunctionComponent<
           <div className="time">{currentDuration}</div>
           <div className={`${classPrefix}__progress-bar-wrapper`}>
             <Range
-              modelValue={percent}
-              hiddenTag
-              hiddenRange
+              value={percent}
+              onChange={(val: any) => setPercent(val)}
+              currentDescription={null}
+              maxDescription={null}
+              minDescription={null}
               inactive-color="#cccccc"
               active-color="#fa2c19"
             />
@@ -257,7 +259,7 @@ export const Audio: FunctionComponent<
 
   const handleCanplay = (e: any) => {
     setIsCanPlay(true)
-    if (props.autoplay && !playing) {
+    if (props.autoPlay && !playing) {
       AudioRef && AudioRef.current && AudioRef.current.play()
     }
     if (AudioRef.current) {

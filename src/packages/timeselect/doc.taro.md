@@ -48,7 +48,7 @@ const TimeSelectDemo = () => {
   }
   const handleSelect = (selectTimeData) => {
     SetVisible1(false)
-    Toast.text(`您选择了: ${JSON.stringify(selectTimeData)}`)
+    Toast.show(`您选择了: ${JSON.stringify(selectTimeData)}`)
   }
   const handlePannelChange = (pannelKey, selectTimeData) => {
     console.log('pannelKey, selectTimeData: ', pannelKey, selectTimeData)
@@ -87,7 +87,7 @@ export default TimeSelectDemo
 
 ### TimeSelect Prop
 
-| 字段                   | 说明                                                | 是否必传             | 类型    | 默认值 |
+| 属性 | 说明                                                | 是否必传             | 类型    | 默认值 |
 |------------------------|----------------------------------------------------|--------|------------|---------|
 | visible                 | 是否显示弹层                                      | 是       | boolean  | `false`|
 | height                 | 弹层的高度                                         | 否     | string  | `20%`|
@@ -99,14 +99,14 @@ export default TimeSelectDemo
 
 ### dates
 
-| 字段                   | 说明                                                             | 类型    | 默认值 |
+| 属性 | 说明                                                             | 类型    | 默认值 |
 |------------------------|----------------------------------------------------------------|---------|------|
 | date                 | 显示的名称                                            | string  | - |
 | paneKey           | 唯一标识，和 currentKey 一起标识当前选择的天            | number、string  | `0`|
 
 ### times
 
-| 字段                   | 说明                                                             | 类型    | 默认值 |
+| 属性 | 说明                                                             | 类型    | 默认值 |
 |------------------------|----------------------------------------------------------------|---------|------|
 | key                 | 唯一标识，和 paneKey、currentKey 一起标识当前选择的天              | Array  | `[]`|
 | list                 | 可选时间列表                                                        | Array  | `[]`|

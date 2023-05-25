@@ -66,7 +66,7 @@ export default App
 
 ### AnimatingNumbers.CountUp Props
 
-| 參數       | 說明                               | 類型    | 默認值 |
+| 屬性 | 說明                               | 類型    | 默認值 |
 | ---------- | ---------------------------------- | ------- | ------ |
 | maxLen     | 設置最大展示長度，長度不夠按位補 0 | number  | `0`      |
 | endNumer   | 結束值,必填項                      | string  | -     |

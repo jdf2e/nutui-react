@@ -11,7 +11,7 @@ exports[`prop title description extra 1`] = `
       链接 | 分组用法
     </div>
     <div
-      class="nut-cell-group__wrap"
+      class="nut-cell-group__wrap nut-cell-group__wrap--divider"
     >
       <div
         class="nut-cell"

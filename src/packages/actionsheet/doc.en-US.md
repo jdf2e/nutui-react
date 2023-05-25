@@ -210,7 +210,7 @@ export default App;
 
 ## Prop
 
-| Attribute | Description | Type    | Default    |
+| Property | Description | Type    | Default    |
 |------------------|----------- ------|---------|-----------|
 | visible       | Mask layer visible  | boolean | `false`     |
 | cancelText`v2.0.0`       | Cancel Text | string  | `Cancel`    |
@@ -225,7 +225,7 @@ export default App;
 
 ## Event
 
-| Attribute   | Description               | Arguments                          |
+| Property | Description               | Arguments                          |
 |--------|--------------------|-----------------------------------|
 | onChoose | Triggered after selection       | Selected list item item, selected index value index |
 | onCancel | Triggered when onCancel copy is clicked | none                                |

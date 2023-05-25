@@ -144,7 +144,7 @@ const App = () => {
   const [visible,setVisible] = useState(false)
   const [value,setValue] = useState('')
    const onTips = () => {
-    Toast.text('執行忘記密碼提示語')
+    Toast.show('執行忘記密碼提示語')
   }
    const close = ()=>{
     setVisible(false)
@@ -180,7 +180,7 @@ export default App;
 
 ### Props
 
-| 參數         | 說明                             | 類型   | 默認值           |
+| 屬性 | 說明                             | 類型   | 默認值           |
 |--------------|----------------------------------|--------|------------------|
 | modelValue         | 內容               | string \| number | -                |
 | visible        | 是否展示短密碼框                         | boolean | `false`              |

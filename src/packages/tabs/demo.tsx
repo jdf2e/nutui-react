@@ -76,7 +76,7 @@ const TabsDemo = () => {
   const [tab7value, setTab7value] = useState<string | number>('c1')
   const [tab8value, setTab8value] = useState<string | number>('0')
   const [tab9value, setTab9value] = useState<string | number>('0')
-  const [list8, setList8] = useState(Array.from(new Array(2).keys()))
+  const [list8, setList8] = useState<any>([])
   const list4 = Array.from(new Array(10).keys())
   const list5 = Array.from(new Array(2).keys())
   const list6 = [
@@ -98,9 +98,8 @@ const TabsDemo = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      list8.push(999)
       setTab8value(2)
-      setList8(list8)
+      setList8(Array.from(new Array(3).keys()))
     }, 3000)
   }, [])
 
@@ -175,7 +174,7 @@ const TabsDemo = () => {
           <Tabs.TabPane title="Tab 3" />
         </Tabs>
         <Swiper
-          initPage={0}
+          defaultValue={0}
           loop={false}
           ref={swiperRef}
           onChange={(page) => {
@@ -260,7 +259,7 @@ const TabsDemo = () => {
             setTab8value(value)
           }}
         >
-          {list8.map((item) => (
+          {list8.map((item: any) => (
             <Tabs.TabPane key={item} title={`Tab ${item}`}>
               Tab {item}
             </Tabs.TabPane>

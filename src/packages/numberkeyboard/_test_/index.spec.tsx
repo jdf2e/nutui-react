@@ -15,28 +15,28 @@ test('should match snapshot', async () => {
   const { container } = render(<NumberKeyboard visible />)
   expect(container).toMatchSnapshot()
 })
-test('should match customKey snapshot', async () => {
+test('should match custom snapshot', async () => {
   const { container } = render(
-    <NumberKeyboard visible type="rightColumn" customKey={['.', 'x', 'r']} />
+    <NumberKeyboard visible type="rightColumn" custom={['.', 'x', 'r']} />
   )
-  expect(container.querySelector('.finish')).toHaveTextContent('完成')
+  expect(container.querySelector('.confirm')).toHaveTextContent('完成')
   expect(container).toMatchSnapshot()
 })
 test('default keyboard custom keyboard', async () => {
   const { container } = render(
-    <NumberKeyboard visible customKey={['.', 'x', 'r']} />
+    <NumberKeyboard visible custom={['.', 'x', 'r']} />
   )
   expect(container.querySelectorAll('.key')[10]).toHaveTextContent('0')
 })
 test('Has title and custom keyboard length greater than 1', async () => {
   const { container } = render(
-    <NumberKeyboard visible title="标题" customKey={['.', 'x', 'r']} />
+    <NumberKeyboard visible title="标题" custom={['.', 'x', 'r']} />
   )
   expect(container.querySelectorAll('.key')[10]).toHaveTextContent('0')
 })
 test('Has title and custom keyboard length equal 1', async () => {
   const { container } = render(
-    <NumberKeyboard visible title="标题" customKey={['.']} />
+    <NumberKeyboard visible title="标题" custom={['.']} />
   )
   expect(container.querySelectorAll('.key')[9]).toHaveTextContent('.')
 })
@@ -46,7 +46,7 @@ test('should shuffle key order when using random-key prop', async () => {
     value = Number(v)
   }
   const { container } = render(
-    <NumberKeyboard visible randomKeys onChange={onChange} />
+    <NumberKeyboard visible random onChange={onChange} />
   )
   const keys: number[] = []
   const clickKeys: number[] = []
@@ -73,14 +73,14 @@ test('should emit close event after clicking collapse key', () => {
 })
 test('should render title and close button correctly', () => {
   const { container } = render(<NumberKeyboard visible title="默认键盘" />)
-  const title = container.querySelector('.nut-numberkeyboard__header__tit')
+  const title = container.querySelector('.nut-numberkeyboard__header__title')
   expect(title).toHaveTextContent('默认键盘')
 })
 
-test('should render finish button correctly', () => {
+test('should render confirm button correctly', () => {
   const { container } = render(
     <NumberKeyboard visible type="rightColumn" confirmText="支付" />
   )
-  const title = container.querySelector('.finish')
+  const title = container.querySelector('.confirm')
   expect(title).toHaveTextContent('支付')
 })

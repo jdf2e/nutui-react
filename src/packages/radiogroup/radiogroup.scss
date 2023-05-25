@@ -1,51 +1,13 @@
-.nut-theme-dark {
-  .nut-radiogroup {
-    &--vertical {
-      .nut-radio {
-        &__label {
-          margin-right: 5px;
-        }
-
-        &__button {
-          background-color: $dark4;
-          border: 1px solid $dark6;
-        }
-
-        &__button--active {
-          border-color: $radio-label-button-border-color;
-        }
-      }
-    }
-
-    &--horizontal {
-      .nut-radio {
-        &__label {
-          margin-right: 5px;
-        }
-
-        &__button {
-          background-color: $dark4;
-          border: 1px solid $dark6;
-        }
-
-        &__button--active {
-          border-color: $radio-label-button-border-color;
-        }
-      }
-    }
-  }
-}
-
 .nut-radiogroup {
   .nut-radio {
-    margin-bottom: 5px;
+    margin: $radiogroup-radio-margin;
 
     &__label {
-      margin-right: 5px;
+      margin: $radiogroup-radio-label-margin;
     }
 
     &__button {
-      background-color: $gray4;
+      background-color: $radio-button-background;
     }
   }
 
@@ -56,12 +18,8 @@
         justify-content: space-between;
       }
 
-      &__label {
-        margin-right: 5px;
-      }
-
       &__button {
-        border: 1px solid $gray6;
+        border: 1px solid $radio-button-background;
       }
 
       &__button--active {
@@ -74,13 +32,21 @@
   &--horizontal {
     .nut-radio {
       display: inline-flex;
-      margin-right: 20px;
 
-      &--round {
-        .nut-radio__label {
-          margin: 0 6px;
-        }
+      &__button {
+        border: 1px solid $gray6;
+      }
+
+      &__button--active {
+        border-color: $radio-label-button-border-color;
+        background-color: $radio-label-button-background;
       }
     }
+  }
+
+  .nut-radio__button--active.nut-radio__button--disabled {
+    background: $radio-button-disabled-active-background;
+    color: $radio-button-disabled-active-color;
+    border: 1px solid $radio-button-disabled-active-border-color;
   }
 }

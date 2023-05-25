@@ -243,7 +243,7 @@ export default App;
 ## Badge
 ### Props
 
-| Attribute    | Description | Type    | Default    |
+| Property | Description | Type    | Default    |
 |---------|----------------------|---------|-----------|
 | value   | value to show, eg number、charctor and custom content | `ReactNode`  |  | - |
 | max     | when value is number, it's the max size | `number`  | `99`   |

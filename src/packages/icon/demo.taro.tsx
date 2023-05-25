@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import '@nutui/icons-react-taro/dist/style_iconfont.css'
 import { Add, IconFontConfig, IconFont } from '@nutui/icons-react-taro'
@@ -6,6 +6,7 @@ import { useTranslate } from '@/sites/assets/locale/taro'
 import { Cell, CellGroup, Toast } from '@/packages/nutui.react.taro'
 import '@/packages/icon/demo.scss'
 import Header from '@/sites/components/header'
+import { camelCase } from '@/utils/camel-case'
 
 interface T {
   '84aa6bce': string
@@ -15,13 +16,14 @@ interface T {
   '7aeb5407': string
   f2e6c6d6: string
 }
+
 const generateCopyText = (name: string) => {
-  return `<IconFont name="${name}"></IconFont>`
+  return `<${camelCase(name, { pascalCase: true })} />`
 }
 const generateAMCopyText = (icon: any) => {
-  return `
-  <IconFont name="${icon.name}"
-    className="${`nut-icon-${icon['animation-name']}  nut-icon-${icon['animation-time']}`}"/>`
+  return `<${camelCase(icon.name, {
+    pascalCase: true,
+  })} className="${`nut-icon-${icon['animation-name']}  nut-icon-${icon['animation-time']}`}" />`
 }
 const copyTag = (text: string) => {
   const input = document.createElement('input')
@@ -30,7 +32,6 @@ const copyTag = (text: string) => {
   input.select()
   if (document.execCommand('copy')) {
     document.execCommand('copy')
-    // Toast.text(`Copy: ${text}`)
   }
   document.body.removeChild(input)
 }
@@ -91,11 +92,38 @@ const IconDemo = () => {
     },
   })
 
+  const [state, setState] = useState({
+    msg: '',
+    type: 'text',
+    cover: false,
+    visible: false,
+    duration: 2,
+    closeOnOverlayClick: false,
+    title: '',
+    bottom: '',
+    icon: '',
+    center: true,
+  })
+
   return (
     <>
       <Header />
       <style>{style}</style>
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <Toast
+          msg={state.msg}
+          visible={state.visible}
+          type={state.type}
+          duration={state.duration}
+          icon={state.icon}
+          closeOnOverlayClick={state.closeOnOverlayClick}
+          onClose={() => {
+            setState({
+              ...state,
+              visible: false,
+            })
+          }}
+        />
         <h2>{translated.svg}</h2>
         <Cell>
           <Add color="red" />
@@ -133,7 +161,14 @@ const IconDemo = () => {
                     return (
                       <li
                         key={Math.random()}
-                        onClick={() => copyTag(generateCopyText(icon))}
+                        onClick={() => {
+                          copyTag(generateCopyText(icon))
+                          setState({
+                            ...state,
+                            visible: true,
+                            msg: generateCopyText(icon),
+                          })
+                        }}
                       >
                         <IconFont name={icon} />
                         <span>{icon}</span>
@@ -154,7 +189,14 @@ const IconDemo = () => {
                     return (
                       <li
                         key={icon.name}
-                        onClick={() => copyTag(generateAMCopyText(icon))}
+                        onClick={() => {
+                          copyTag(generateAMCopyText(icon))
+                          setState({
+                            ...state,
+                            visible: true,
+                            msg: generateCopyText(icon),
+                          })
+                        }}
                       >
                         <IconFont
                           name={icon.name}

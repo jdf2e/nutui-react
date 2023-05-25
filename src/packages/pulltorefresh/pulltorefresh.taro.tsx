@@ -1,23 +1,14 @@
-import React, {
-  FunctionComponent,
-  ReactNode,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
-import { useDrag } from '@use-gesture/react'
-import { animated, useSpring } from '@react-spring/web'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import { getScrollParent } from '@/utils/get-scroll-parent'
+import React, { FunctionComponent, ReactNode, useRef, useState } from 'react'
+import { ITouchEvent, View } from '@tarojs/components'
+import { useConfig } from '@/packages/configprovider/index.taro'
+import { useTouch } from '@/utils/use-touch'
 import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
 import { sleep } from '@/utils/sleep'
-import { passiveSupported } from '@/utils/supports-passive'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type PullStatus = 'pulling' | 'canRelease' | 'refreshing' | 'complete'
 
-export interface PullToRefreshProps {
-  className: string
-  style: React.CSSProperties
+export interface PullToRefreshProps extends BasicComponent {
   onRefresh: () => Promise<any>
   pullingText: ReactNode
   canReleaseText: ReactNode
@@ -27,11 +18,12 @@ export interface PullToRefreshProps {
   headHeight: number
   threshold: number
   disabled: boolean
+  scrollTop: number
   renderText: (status: PullStatus) => ReactNode
-  children: React.ReactNode
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   pullingText: '',
   canReleaseText: '',
   refreshingText: '',
@@ -40,12 +32,15 @@ const defaultProps = {
   disabled: false,
   headHeight: 40,
   threshold: 60,
+  scrollTop: 0,
   onRefresh: () => {},
 } as PullToRefreshProps
 export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
   p
 ) => {
+  const classPrefix = 'nut-pulltorefresh'
   const { locale } = useConfig()
+  const touch = useTouch()
   const props: PullToRefreshProps = {
     ...defaultProps,
     ...p,
@@ -59,117 +54,9 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
 
   const headHeight = props.headHeight
   const threshold = props.threshold
-
-  const [status, setStatus] = useState<PullStatus>('pulling')
-
-  const [springStyles, api] = useSpring(() => ({
-    from: { height: 0 },
-    config: {
-      tension: 300,
-      friction: 30,
-      clamp: true,
-    },
-  }))
-
-  const elementRef = useRef<HTMLDivElement>(null)
   const pullingRef = useRef(false)
-
-  useEffect(() => {
-    elementRef.current?.addEventListener('touchmove', () => {})
-  }, [])
-  async function doRefresh() {
-    api.start({ height: headHeight })
-    setStatus('refreshing')
-    try {
-      await props.onRefresh()
-      setStatus('complete')
-    } catch (e) {
-      api.start({
-        to: async (next) => {
-          await next({ height: 0 })
-          setStatus('pulling')
-        },
-      })
-
-      throw e
-    }
-    if (props.completeDelay > 0) {
-      await sleep(props.completeDelay)
-    }
-    api.start({
-      to: async (next) => {
-        await next({ height: 0 })
-        setStatus('pulling')
-      },
-    })
-  }
-
-  useDrag(
-    (state) => {
-      if (status === 'refreshing' || status === 'complete') return
-
-      const { event } = state
-
-      // 最后一个事件，检查是否可以刷新或是否是开始状态（第一个状态也是最后一个状态）
-      if (state.last) {
-        pullingRef.current = false
-        if (status === 'canRelease') {
-          doRefresh()
-        } else {
-          api.start({ height: 0 })
-        }
-        return
-      }
-
-      function getScrollTop(element: Window | Element) {
-        return 'scrollTop' in element ? element.scrollTop : element.scrollY
-      }
-      // 手指位置
-      const [, y] = state.movement
-      // 第一个事件，并且手指位置大于0
-      if (state.first && y > 0) {
-        const target = state.event.target
-        if (!target || !(target instanceof Element)) return
-        let scrollParent = getScrollParent(target)
-        while (true) {
-          if (!scrollParent) return
-          const scrollTop = getScrollTop(scrollParent)
-          if (scrollTop > 0) {
-            return
-          }
-          // 查找到 window 说明到顶了
-          if (scrollParent instanceof Window) {
-            break
-          }
-          // 递归查找
-          scrollParent = getScrollParent(scrollParent.parentNode as Element)
-        }
-        pullingRef.current = true
-      }
-
-      if (!pullingRef.current) return
-
-      if (event.cancelable) {
-        event.preventDefault()
-      }
-      event.stopPropagation()
-      const height = Math.max(
-        rubberbandIfOutOfBounds(y, 0, 0, headHeight * 5, 0.5),
-        0
-      )
-      api.start({ height })
-      setStatus(height > threshold ? 'canRelease' : 'pulling')
-    },
-    {
-      pointer: { touch: true },
-      axis: 'y',
-      target: elementRef,
-      enabled: !props.disabled,
-      eventOptions: (passiveSupported
-        ? { passive: false }
-        : false) as AddEventListenerOptions,
-    }
-  )
+  const [status, setStatus] = useState<PullStatus>('pulling')
+  const [height, setHeight] = useState(0)
 
   const renderStatusText = () => {
     if (props.renderText) {
@@ -182,18 +69,80 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
     if (status === 'complete') return props.completeText
     return ''
   }
+
+  const handleTouchStart: any = (e: ITouchEvent) => {
+    touch.start(e as any)
+  }
+  const handleTouchMove: any = (e: ITouchEvent) => {
+    if (props.scrollTop > 0) {
+      return
+    }
+    if (status === 'refreshing' || status === 'complete') return
+    // touch 的封装不好，比如在使用高度控制的时候，就很迷
+    touch.move(e as any)
+    if (touch.isVertical()) {
+      pullingRef.current = true
+      setHeight(
+        Math.max(
+          rubberbandIfOutOfBounds(touch.deltaY, 0, 0, headHeight * 5, 0.5),
+          0
+        )
+      )
+      setStatus(height > threshold ? 'canRelease' : 'pulling')
+    }
+  }
+
+  async function doRefresh() {
+    setHeight(headHeight)
+    setStatus('refreshing')
+    try {
+      await props.onRefresh()
+      setStatus('complete')
+    } catch (e) {
+      setHeight(0)
+      setStatus('pulling')
+      throw e
+    }
+    if (props.completeDelay > 0) {
+      await sleep(props.completeDelay)
+    }
+    setHeight(0)
+    setStatus('pulling')
+  }
+
+  const handleTouchEnd: any = () => {
+    pullingRef.current = false
+    if (status === 'canRelease') {
+      doRefresh()
+    } else {
+      // 时序问题，可能会先setStatus再修改heightRef，导致下拉不到位后组件不会自动回弹
+      setHeight(0)
+      // heightRef.current = 0
+      setStatus('pulling')
+    }
+  }
+  const springStyles = {
+    height: `${height}px`,
+    ...(!pullingRef.current ? { transition: 'height .3s ease' } : {}),
+  }
   return (
-    <animated.div ref={elementRef} className="nut-pulltorefresh">
-      <animated.div style={springStyles} className="nut-pulltorefresh-head">
+    <View
+      className={`${classPrefix} ${props.className}`}
+      style={props.style}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+    >
+      <View style={springStyles} className={`${classPrefix}-head`}>
         <div
-          className="nut-pulltorefresh-head-content"
+          className={`${classPrefix}-head-content`}
           style={{ height: headHeight }}
         >
           {renderStatusText()}
         </div>
-      </animated.div>
-      <div className="nut-pulltorefresh-content">{props.children}</div>
-    </animated.div>
+      </View>
+      <div className={`${classPrefix}-content`}>{props.children}</div>
+    </View>
   )
 }
 

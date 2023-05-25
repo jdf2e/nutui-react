@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import {
   Cell,
@@ -7,9 +8,6 @@ import {
   VirtualList,
 } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
-
-const { RadioGroup } = Radio
 
 const ListDemo = () => {
   const [translated] = useTranslate<any>({
@@ -149,14 +147,14 @@ const ListDemo = () => {
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <CellGroup>
           <Cell>
-            <RadioGroup
+            <Radio.Group
               value={radioVal}
               onChange={handleChange}
               direction="horizontal"
             >
               <Radio value="1">{translated.text1}</Radio>
               <Radio value="2">{translated.text2}</Radio>
-            </RadioGroup>
+            </Radio.Group>
           </Cell>
         </CellGroup>
         <div style={{ height: '100%' }}>{showNode()}</div>

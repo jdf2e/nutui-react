@@ -292,20 +292,22 @@ describe('Cascader', () => {
       <Cascader
         value={['福建', '福州', '鼓楼区']}
         options={mockKeyConfigOptions}
-        valueKey="name"
-        textKey="name"
-        childrenKey="items"
+        optionKey={{
+          valueKey: 'name',
+          textKey: 'name',
+          childrenKey: 'items',
+        }}
       />
     )
     expect(container).toMatchSnapshot()
   })
 
-  it('options with convertConfig', async () => {
+  it('options with format', async () => {
     const { container } = render(
       <Cascader
         value={['广东省', '广州市']}
         options={mockConvertOptions}
-        convertConfig={{
+        format={{
           topId: 0,
           idKey: 'nodeId',
           pidKey: 'nodePid',
@@ -381,7 +383,7 @@ describe('Cascader', () => {
   //       visible
   //       value={['A0', 'A12', 'A21']}
   //       lazy
-  //       lazyLoad={(node: any, resolve: (children: any) => void) => {
+  //       onLoad={(node: any, resolve: (children: any) => void) => {
   //         setTimeout(() => {
   //           if (node.root) {
   //             resolve([
@@ -411,7 +413,7 @@ describe('Cascader', () => {
     const { container } = render(
       <Cascader
         lazy
-        lazyLoad={(node: any, resolve: (children: any) => void) => {
+        onLoad={(node: any, resolve: (children: any) => void) => {
           setTimeout(() => {
             setTimeout(() => {
               // root表示第一层数据

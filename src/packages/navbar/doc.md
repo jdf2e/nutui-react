@@ -32,13 +32,13 @@ const App = () => {
         }
         left={<Close width={12} />}
         right={
-        <span onClick={(e) =>  Toast.text('icon')}>
+        <span onClick={(e) =>  Toast.show('icon')}>
             <Share />
         </span>
         }
-        onClickBack={(e) =>  Toast.text("返回")}
+        onClickBack={(e) =>  Toast.show("返回")}
     >
-        <span onClick={(e) =>  Toast.text("标题")}>
+        <span onClick={(e) =>  Toast.show("标题")}>
         订单详情
         </span>
     </NavBar>
@@ -59,14 +59,14 @@ const App = () => {
   return ( 
     <NavBar
         right={
-        <span onClick={(e) =>  Toast.text('清空')}>
+        <span onClick={(e) =>  Toast.show('清空')}>
             清空
         </span>
         }
         back={<Left name="left" color="#979797" />}
-        onClickBack={(e) =>  Toast.text("返回")}
+        onClickBack={(e) =>  Toast.show("返回")}
     >
-        <span onClick={(e) =>  Toast.text("标题")}>
+        <span onClick={(e) =>  Toast.show("标题")}>
         浏览记录
         </span>
     </NavBar>
@@ -89,18 +89,18 @@ const App = () => {
         back={<Left name="left" color="#979797" />}
         right={
         <>
-            <span onClick={(e) =>  Toast.text('编辑')}>
+            <span onClick={(e) =>  Toast.show('编辑')}>
             编辑
             </span>
-            <MoreX onClick={(e) =>  Toast.text('icon')} />
+            <MoreX onClick={(e) =>  Toast.show('icon')} />
         </>
         }
-        onClickBack={(e) =>  Toast.text("返回")}
+        onClickBack={(e) =>  Toast.show("返回")}
     >
-        <span onClick={(e) =>  Toast.text("标题")}>
+        <span onClick={(e) =>  Toast.show("标题")}>
         购物车
         </span>
-        <i style={{ marginLeft: '5px' }} onClick={(e) =>  Toast.text('icon')}>
+        <i style={{ marginLeft: '5px' }} onClick={(e) =>  Toast.show('icon')}>
             <Cart2 />
         </i>
     </NavBar>
@@ -124,13 +124,13 @@ const App = () => {
          back={<Left name="left" color="#979797" />}
           right={
             <>
-              <span onClick={(e) =>  Toast.text("编辑")}>
+              <span onClick={(e) =>  Toast.show("编辑")}>
                 编辑
               </span>
-              <MoreX onClick={(e) =>  Toast.text('icon')} />
+              <MoreX onClick={(e) =>  Toast.show('icon')} />
             </>
           }
-          onClickBack={(e) =>  Toast.text("返回")}
+          onClickBack={(e) =>  Toast.show("返回")}
         >
             <Tabs value={tab1value} onChange={({ paneKey }) => { setTab1value(paneKey) }}>
               <TabPane title="Tab 1"> Tab 1 </TabPane>
@@ -149,7 +149,7 @@ export default App;
 
 ### Props  
 
-| 字段 | 说明 | 类型    | 默认值  |
+| 属性 | 说明 | 类型    | 默认值  |
 |------------|--------------------|---------|---------|
 | right | 右侧内容 | ReactNode  | -       |
 | left        | 左侧内容，渲染在返回区域的右侧 | ReactNode  | -       |   

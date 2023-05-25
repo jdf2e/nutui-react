@@ -1,10 +1,10 @@
 #  NoticeBar 
 
-### Intro
+## Intro
 
 Used to display a group of message notifications in a continuons loop.
 
-### Install
+## Install
 
 ```javascript
 // react
@@ -25,7 +25,7 @@ const App = () => {
     const text = 'Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.'
     return (
       <>
-        <NoticeBar text={text} />
+        <NoticeBar content={content} />
       </>
     )
 }
@@ -46,12 +46,12 @@ const App = () => {
     return (
       <>
         <NoticeBar
-            text="Nutui is a mobile terminal component library."
+            content="Nutui is a mobile terminal component library."
             scrollable
         />
 
         <NoticeBar 
-            text="Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience." scrollable={false} 
+            content="Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience." scrollable={false} 
         />
       </>
     )
@@ -76,11 +76,11 @@ const App = () => {
     }
     return (
       <>
-       <NoticeBar closeMode click={hello}>
+       <NoticeBar closeable click={hello}>
           Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.
         </NoticeBar>
         <br />
-        <NoticeBar closeMode rightIcon={<CircleClose />} click={hello}>
+        <NoticeBar closeable rightIcon={<CircleClose />} click={hello}>
           Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.
         </NoticeBar>
         <br />
@@ -95,9 +95,9 @@ export default App
 :::
 
 
-### Wrapable
+### wrap
 
-When text is long, you can enable multi-line display by setting the wrapable property.
+When text is long, you can enable multi-line display by setting the wrap property.
 
 :::demo
 
@@ -109,7 +109,7 @@ const App = () => {
     const text = 'Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.'
     
     return (
-      <NoticeBar text={text} wrapable />
+      <NoticeBar content={text} wrap />
     )
 }
 export default App
@@ -135,11 +135,11 @@ const App = () => {
             direction="vertical"
             list={horseLamp1}
             speed={10}
-            standTime={1000}
+            duration={1000}
             onClick={(e) => {
               go(e.target.innerHtml)
             }}
-            closeMode
+            closeable
           />
         </div>
     )
@@ -166,7 +166,7 @@ const App = () => {
             direction="vertical"
             list={horseLamp2}
             speed={10}
-            standTime={2000}
+            duration={2000}
             leftIcon={<Image src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png" />}
             onClick={(e) => {
               console.log('listClick', e.target)
@@ -197,8 +197,8 @@ const App = () => {
 
     return (
       <>
-        <NoticeBar direction="vertical" height={50} speed={10} standTime={1000}
-        closeMode
+        <NoticeBar direction="vertical" height={50} speed={10} duration={1000}
+        closeable
         onClose={() => {console.log('close')}}>
         {horseLamp3.map((item, index) => {
             return (
@@ -222,8 +222,6 @@ export default App
 ```
 :::
 
-
-
 ### Vertical Scroll Custom Right Icon
 
 :::demo
@@ -242,7 +240,7 @@ const App = () => {
             direction="vertical"
             list={horseLamp1}
             speed={10}
-            standTime={1000}
+            duration={1000}
             onClickItem={(e, v) => {
               console.log('onclick-custom', v)
             }}
@@ -256,44 +254,34 @@ export default App
 :::
 
 
-## API
+## NoticeBar
 
-### Prop
+### Props
 
-| Attribute     | Description                                               | Type          | Default |
-| ---------- | ---------------------------------------------------------- | ------------- | ------ |
-| direction  | Rolling direction                                  | string        | `across`  |
-| text       | Notice text content                                | string        |  -      |
-| closeMode  | Whether to enable the off mode                     | boolean       | `false`   |
-| leftIcon   | Left Icon                                          | ReactNode        | -       |
-| rightIcon  | Right Icon                                         | ReactNode        | -       |
-| color      | Text Color                                         | string        | -       |
-| background | Background                                         | string        | -       |
-| delay      | Delay time                                         | string \| number | `1`       |
-| scrollable | Whether to scroll content                          | boolean       | `true`    |
-| speed      | Scrolling speed (px/s)                             | number         | `50`      |
-| wrapable | Whether to enable text wrap                        | boolean       | `false`    |
+| Property     | Description | Type          | Default |
+| ---------- | --------------------------- | ------------- | ------ |
+| direction  | Rolling direction | `string`        | `horizontal`  |
+| content       | Notice text content | `string`        |  -      |
+| closeable  | Whether to enable the off mode | `boolean`       | `false`   |
+| leftIcon   | Left Icon | `ReactNode`        | -       |
+| rightIcon  | Right Icon | `ReactNode`        | -       |
+| delay      | Delay time | `string \| number` | `1`       |
+| scrollable | Whether to scroll content | `boolean`       | `true`    |
+| speed      | Scrolling speed (px/s) | `number`         | `50`      |
+| wrap | Whether to enable text wrap | `boolean`       | `false`    |
+| onClick      | Emitted when NoticeBar is clicked       | `(event: any) => void` |
+| onClose      | Emitted when NoticeBar is closed        | `(event: any) => void` |
+| onClickItem  | Emitted when the currently displayed information is clicked when scrolling multiple pieces of data vertically | `(event: any, value: any) => void` |
 
-### Prop（direction=vertical）
+### Props（direction=vertical）
 
-| Attribute    | Description                             | Type     | Default          |
-|--------------|-----------------------------------------|----------|------------------|
-| list         | List                                    | Array    | `[]`               |
-| speed        | Scrolling speed                         | number   | `50`               |
-| standTime    | Show time(millisecond)                  | number   | `1000`             |
-| complexAm    | Complex animation                       | boolean  | `false`            |
-| height       | height                                  | number   | `40`               |
-| closeMode    | Whether to enable the off mode          | boolean  | `false`            |
-
-### Event
-
-| Attribute  | Description                             | Arguments     |
-| ---------- | --------------------------------------- | ------------ |
-| onClick      | Emitted when NoticeBar is clicked       | `event: Event` |
-| onClose      | Emitted when NoticeBar is closed        | `event: Event` |
-| onClickItem  | Emitted when the currently displayed information is clicked when scrolling multiple pieces of data vertically | `event: Event, listItem` |
-
-
+| Property    | Description | Type     | Default          |
+|--------------|-----------------------|----------|------------------|
+| list         | List | `Array`    | `[]`               |
+| speed        | Scrolling speed | `number`   | `50`               |
+| duration    | Show time(millisecond) | `number`   | `1000` |
+| height       | height | `number`   | `40` |
+| closeable    | Whether to enable the off mode | `boolean`  | `false`            |
 
 ## Theming
 
@@ -301,16 +289,16 @@ export default App
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-noticebar-background | `rgba(251, 248, 220, 1)` |
-| --nutui-noticebar-color | `#d9500b` |
-| --nutui-noticebar-font-size | `14px` |
-| --nutui-noticebar-height | `40px` |
-| --nutui-noticebar-line-height | `24px` |
-| --nutui-noticebar-left-icon-width | `16px` |
-| --nutui-noticebar-right-icon-width | `16px` |
-| --nutui-noticebar-box-padding | `0 16px` |
-| --nutui-noticebar-wrapable-padding | `16px` |
-| --nutui-noticebar-lefticon-margin | `0px 10px` |
-| --nutui-noticebar-righticon-margin | `0px 10px` |
+| Name | Description | Default Value |
+| --- | --- | --- |
+| --nutui-noticebar-background |noticebar background | `rgba(251, 248, 220, 1)` |
+| --nutui-noticebar-color | noticebar  color |`#d9500b` |
+| --nutui-noticebar-font-size |noticebar font size | `14px` |
+| --nutui-noticebar-height | noticebar height | `40px` |
+| --nutui-noticebar-line-height | noticebar line height | `24px` |
+| --nutui-noticebar-left-icon-width | noticebar left icon width | `16px` |
+| --nutui-noticebar-right-icon-width | noticebar right icon width | `16px` |
+| --nutui-noticebar-box-padding |noticebar box padding  | `0 16px` |
+| --nutui-noticebar-wrap-padding | noticebar wrap padding | `16px` |
+| --nutui-noticebar-lefticon-margin | noticebar lefticon margin | `0px 10px` |
+| --nutui-noticebar-righticon-margin | noticebar righticon margin | `0px 10px` |

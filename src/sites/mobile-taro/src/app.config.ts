@@ -67,6 +67,7 @@ const subPackages = [
       'pages/notify/index',
       'pages/popover/index',
       'pages/popup/index',
+      'pages/pulltorefresh/index',
       'pages/skeleton/index',
       'pages/swipe/index',
       'pages/toast/index',

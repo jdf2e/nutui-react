@@ -8,7 +8,7 @@ export interface IndicatorProps {
 }
 const defaultProps = {
   total: 3,
-  current: 1,
+  current: 0,
   direction: 'horizontal',
 } as IndicatorProps
 
@@ -26,17 +26,15 @@ export const Indicator: FunctionComponent<
   })
   const renderElement = () => {
     const childs: ReactNode[] = []
-    for (let item = 1; item <= total; item++) {
+    for (let item = 0; item < total; item++) {
       childs.push(
         item === current ? (
-          <>
-            {children || (
-              <div
-                key={item}
-                className={`${classPrefix}__dot ${classPrefix}__active`}
-              />
-            )}
-          </>
+          children || (
+            <div
+              key={item}
+              className={`${classPrefix}__dot ${classPrefix}__active`}
+            />
+          )
         ) : (
           <div key={item} className={`${classPrefix}__dot`} />
         )

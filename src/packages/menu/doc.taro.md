@@ -270,7 +270,7 @@ export default App
 
 ### Props
 
-| 参数                  | 说明                           | 类型                    | 默认值  |
+| 属性 | 说明                           | 类型                    | 默认值  |
 |---------------------|--------------------------------|-------------------------|---------|
 | activeColor         | 选项的选中态图标颜色           | string                  | `#F2270C` |
 | closeOnOverlayClick | 是否在点击遮罩层后关闭菜单     | boolean                 | `true`    |
@@ -282,7 +282,7 @@ export default App
 
 ### Props
 
-| 参数                          | 说明                                    | 类型    | 默认值           |
+| 属性 | 说明                                    | 类型    | 默认值           |
 |-------------------------------|-----------------------------------------|---------|------------------|
 | title                         | 菜单项标题                              | string  | 当前选中项文字   |
 | options           | 选项数组                                | array           | -                |
@@ -290,8 +290,6 @@ export default App
 | columns                          | 可以设置一行展示多少列 options          | number  | `1`                |
 | icon      | 自定义选项图标                          | React.ReactNode | `Check`          |
 | direction            | 菜单展开方向，可选值为up                | string  | `down`           |
-| activeClassName    | 选项选中时自定义标题样式类              | string  | -                |
-| inactiveClassName  | 选项非选中时自定义标题样式类            | string  | -                |
 | onChange | 选择 option 之后触发 | 选择的 value | - |
 
 ### Ref

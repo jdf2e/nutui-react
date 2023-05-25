@@ -1,10 +1,10 @@
 # Radio
 
-### Introduction
+## Intro
 
 Used to single select in a set of alternatives
 
-### Install
+## Install
 
 ``` ts
 // react
@@ -12,10 +12,9 @@ import { Radio } from '@nutui/nutui-react';
 
 ```
 
-## Basic Usage
+## Demo
 
-Tie the value of the current option by the label. And must be used in
-conjunction with Radio.RadioGroup and Radio
+### Basic Usage
 
 :::demo
 
@@ -26,21 +25,44 @@ import { Radio } from '@nutui/nutui-react';
 const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
-    <Radio.RadioGroup value={radioVal}>
-      <Radio value="1">Option 1</Radio>
-      <Radio disabled value="2">Option 2</Radio>
-      <Radio value="3">Option 3</Radio>
-    </Radio.RadioGroup>
-    <Radio.RadioGroup value={radioVal} textPosition="left">
-      <Radio value="1">Option 1</Radio>
-      <Radio disabled value="2">Option 2</Radio>
-      <Radio value="3">Option 3</Radio>
-    </Radio.RadioGroup>
-    <Radio.RadioGroup value={radioVal}>
-      <Radio shape="button" value="1">Option 1</Radio>
-      <Radio disabled shape="button" value="2">Option 2</Radio>
-      <Radio shape="button" value="3">Option 3</Radio>
-    </Radio.RadioGroup>
+    <Radio defaultChecked>Option 1</Radio>
+    <Radio defaultChecked disabled>
+      Option 1
+    </Radio>
+    <Radio.Group defaultValue="1">
+      <Radio value="1" disabled>
+        Option1
+      </Radio>
+      <Radio value="2">Option2</Radio>
+      <Radio value="3">Option3</Radio>
+    </Radio.Group>
+    <Radio.Group disabled defaultValue="1">
+      <Radio value="1">Option1</Radio>
+      <Radio value="2">Option2</Radio>
+      <Radio value="3">Option3</Radio>
+    </Radio.Group>
+    <Radio.Group defaultValue="1">
+      <Radio shape="button" disabled value="1">
+        Option1
+      </Radio>
+      <Radio shape="button" value="2">
+        Option2
+      </Radio>
+      <Radio shape="button" value="3">
+        Option3
+      </Radio>
+    </Radio.Group>
+    <Radio.Group disabled defaultValue="1">
+      <Radio shape="button" value="1">
+        Option1
+      </Radio>
+      <Radio shape="button" value="2">
+        Option2
+      </Radio>
+      <Radio shape="button" value="3">
+        Option3
+      </Radio>
+    </Radio.Group>
   </>
 }
 export default RadioGroupLast;
@@ -59,21 +81,35 @@ import { Radio } from '@nutui/nutui-react';
 const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
-    <Radio.RadioGroup value={radioVal} direction="horizontal">
+    <Radio.Group defaultValue="1" direction="horizontal">
       <Radio value="1">Option 1</Radio>
-      <Radio disabled value="2">Option 2</Radio>
+      <Radio disabled value="2">
+        Option 2
+      </Radio>
       <Radio value="3">Option 3</Radio>
-    </Radio.RadioGroup>
-    <Radio.RadioGroup value={radioVal} textPosition="left" direction="horizontal">
+    </Radio.Group>
+    <Radio.Group
+      defaultValue="1"
+      labelPosition="left"
+      direction="horizontal"
+    >
       <Radio value="1">Option 1</Radio>
-      <Radio disabled value="2">Option 2</Radio>
+      <Radio disabled value="2">
+        Option 2
+      </Radio>
       <Radio value="3">Option 3</Radio>
-    </Radio.RadioGroup>
-    <Radio.RadioGroup value={radioVal} direction="horizontal">
-      <Radio value="1">Option 1</Radio>
-      <Radio disabled value="2">Option 2</Radio>
-      <Radio value="3">Option 3</Radio>
-    </Radio.RadioGroup>
+    </Radio.Group>
+    <Radio.Group defaultValue="1" direction="horizontal">
+      <Radio shape="button" value="1">
+        Option 1
+      </Radio>
+      <Radio shape="button" disabled value="2">
+        Option 2
+      </Radio>
+      <Radio shape="button" value="3">
+        Option 3
+      </Radio>
+    </Radio.Group>
   </>
 }
 export default RadioGroupLast;
@@ -92,10 +128,14 @@ import { Radio } from '@nutui/nutui-react';
 const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
-    <Radio.RadioGroup value={radioVal}>
-      <Radio value="1" iconSize="15">Size 15</Radio>
-      <Radio value="2" iconSize="12">Size 12</Radio>
-    </Radio.RadioGroup>
+    <Radio
+      style={{
+        '--nut-icon-width': '12px',
+        '--nutui-icon-height': '12px',
+      }}
+    >
+      自定义尺寸
+    </Radio>
   </>
 }
 export default RadioGroupLast;
@@ -105,24 +145,24 @@ export default RadioGroupLast;
 
 ## Customize the icon
 
-It is recommended that 'icon' and 'checkedIcon' be modified together
+It is recommended that 'icon' and 'activeIcon' be modified together
 
 :::demo
 
 ```tsx
 import React, { useState } from 'react';
 import { Radio } from '@nutui/nutui-react';
-import { CheckList } from '@nutui/icons-react'
+import { Checklist } from '@nutui/icons-react'
 
 const RadioGroupLast = () => {
   const [radioVal] = useState('1')
   return <>
-    <Radio.RadioGroup value={radioVal}>
-      <Radio value="1" icon={<CheckList/>}
-             checkedIcon={<CheckList/>}>Custom icons</Radio>
-      <Radio value="2" icon={<CheckList/>}
-             checkedIcon={<CheckList/>}>Custom icons</Radio>
-    </Radio.RadioGroup>
+    <Radio
+      icon={<Checklist />}
+      activeIcon={<Checklist style={{ color: 'red' }} />}
+    >
+      Custom Icon
+    </Radio>
   </>
 }
 export default RadioGroupLast;
@@ -139,15 +179,15 @@ import React, { useState } from 'react';
 import { Radio } from '@nutui/nutui-react';
 
 const RadioGroupLast = () => {
-  const [radioVal] = useState('1')
-  const handleChange = (v) => {
-    console.log(v)
-  }
+  const [checkedValue] = useState(1)
   return <>
-    <Radio.RadioGroup value={radioVal} onChange={handleChange}>
-      <Radio value="1">Trigger event</Radio>
-      <Radio value="2">Trigger event</Radio>
-    </Radio.RadioGroup>
+    <Radio.Group
+      defaultValue={checkedValue}
+      onChange={(value) => Toast.show(value)}
+    >
+      <Radio value={1}>Trigger Event</Radio>
+      <Radio value={2}>Trigger Event</Radio>
+    </Radio.Group>
   </>
 }
 export default RadioGroupLast;
@@ -184,59 +224,66 @@ const RadioGroupOptions = () => {
     console.log(v)
     setRadioVal(v)
   }
-  return <Radio.RadioGroup options={optionsDemo1} value={radioVal} onChange={handleChange}></Radio.RadioGroup>
+  return <Radio.Group options={optionsDemo1} value={radioVal}
+                      onChange={handleChange} />
 }
 export default RadioGroupOptions;
 ```
 
 :::
 
-## Prop
+## Radio
 
-### Radio
+### Props
 
-| Props          | Description                                                                               | Type | Default |
-|----------------|-------------------------------------------------------------------------------------------| ----- |---------|
-| disabled         | Disable the selection                                                                     | `boolean`                 | `false` |
-| iconSize        | The default icon size                                                                     | `string`、`number`          | `18`    |
-| icon        | [Icon Name] (#/icon), before selecting (it is recommended to modify it with 'checkedIcon') | `ReactNode`                  | `CheckNormal`  |
-| checkedIcon | [Icon Name] (#/icon), selected (it is recommended to modify it with 'icon')               | `ReactNode`                  | `CheckChecked`  |
-| value            | Value is carrying identification, used in Group mode                                      | `string`、`number`、`boolean` | -       |
-| shape            | Shape, with optional values of button, round,                                             | `string`                  | round   |
+| Property | Description | Type | Default |
+|----------------|-----------------------------------------|-----------------------------|------------------|
+| checked | specifies whether it is currently checked | `boolean` | - |
+| defaultChecked | Initially checked or not | `boolean` | - |
+| disabled | Whether to disable selection | `boolean` | `false` |
+| value | The identification value carried, used in Group mode | `string \| number` | - |
+| labelPosition | The position of the text | `left \| right` | `right` |
+| icon | [icon name](#/icon), before selection (it is recommended to modify it together with `activeIcon`) | `ReactNode` | `'CheckNormal'` |
+| activeIcon | [icon name](#/icon), after selected (it is recommended to modify it together with `icon`) | `ReactNode` | `'CheckChecked'` |
+| shape | shape | `'button' \| 'round'` | round |
+| onChange | Triggered when the checked state changes | `(checked: boolean) => void` | `-` |
 
-### Radio.RadioGroup
+## Radio.Group
 
-| Props          | Description | Type | Default          |
-|----------------| ----- | ----- |------------------|
-| value       | The identifier of the currently selected item, which is selected when the label value is consistent with the | `string`、`number`、`boolean` | -          |
-| textPosition | Where the text is located, optional values: 'left', 'right' | `string`                  | `right`    |
-| direction     | Use horizontal and vertical directions The optional values horizontal, vertical, | `string`                  | `vertical` |
-| options `v1.3.10`     | Render radios by configuring options      | Array                  | `Array<{ label: string value: string disabled?: boolean }` |
+### Props
 
-## Radio.RadioGroup Event
-
-| Props    | Description | Callback parameters|
-|----------| ----- | ----- |
-| onChange | Triggers | when the value changes The currently selected label value (label) [there is a value after setting the label, the default is empty] |
+| Property | Description | Type | Default |
+|---------------|-------------|------------------------------------------------------------|------------------|
+| value | identifier of the currently selected item | `string \| number` | - |
+| labelPosition | The position of the text | `left \| right` | `right` |
+| disabled | Whether to disable | `boolean` | `false` |
+| direction | use landscape orientation | `horizontal \| vertical` | `vertical` |
+| options | Configure options to render radio buttons | `Array<{ label: string value: string disabled?: boolean }` | `-` |
+| onChange | Triggered when the value changes | `(value: string \| number) => void` | `-` |
 
 ## Theming
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+The component provides the following CSS
+Variables, which can be used for custom styles, please refer to [ConfigProvider Components](#/zh-CN/component/configprovider) for usage methods.
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-radio-label-font-color | ` $gray1` |
-| --nutui-radio-label-font-active-color | `  $primary-color` |
-| --nutui-radio-label-disable-color | `  $gray3` |
-| --nutui-radio-icon-disable-color | `  $gray2` |
-| --nutui-radio-label-button-border-color | `  $primary-color` |
-| --nutui-radio-label-button-background | `  rgba(250, 44, 25, 0.05)` |
-| --nutui-radio-label-margin-left | ` 15px` |
-| --nutui-radio-button-border-radius | `  15px` |
-| --nutui-radio-label-font-size | ` 14px` |
-| --nutui-radio-button-font-size | ` 12px` |
-| --nutui-radio-button-padding | ` 5px 18px` |
-| --nutui-radio-icon-font-size | ` 18px` |
-| --nutui-radio-icon-disable-color2 | `  $gray3` |
+| Name | Description | Default |
+| --- |-------------------|---------------------------|
+| --nutui-radio-label-font-color | font color | `$gray1` |
+| --nutui-radio-label-font-active-color | The selected font color in the button state | `$primary-color` |
+| --nutui-radio-label-disable-color | disabled font color for label | `$gray3` |
+| --nutui-radio-icon-disable-color | disabled font color for label | `$gray2` |
+| --nutui-radio-label-button-border-color | shape is the border color of the button | `$primary-color` |
+| --nutui-radio-label-button-background | shape is the background color of the button | `rgba(250, 44, 25, 0.05)` |
+| --nutui-radio-label-margin-left | left margin of label | `15px` |
+| --nutui-radio-label-font-size | font size | `14px` |
+| --nutui-radio-button-border-radius | The shape is the rounded corner of the button | `15px` |
+| --nutui-radio-button-font-size | shape is the font size of the button | `12px` |
+| --nutui-radio-button-padding | The shape is the padding of the button | `5px 18px` |
+| --nutui-radio-icon-disable-color2 | disabled color for icon | `$gray3` |
+| --nutui-radiogroup-radio-margin | Margin of each radio in Group mode | `0 20px 5px 0` |
+| --nutui-radiogroup-radio-label-margin | Label margin in each radio in Group mode | `0 5px 0 5px` |
+| --nutui-radio-button-disabled-active-background | Selected and disabled background color in button mode | `rgba(0, 0, 0, 0.15)` |
+| --nutui-radio-button-disabled-active-color | The font color that is selected and disabled in button mode | `rgba(0, 0, 0, 0.25)` |
+| --nutui-radio-button-disabled-active-border-color | Selected and disabled border color in button mode | `rgba(211, 211, 211, 0.15)` |

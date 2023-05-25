@@ -42,7 +42,7 @@ const ShortPasswordDemo = () => {
     SetShow(true)
   }
   const onTips = () => {
-    // Toast.text('执行忘记密码提示语')
+    // Toast.show('执行忘记密码提示语')
     toastShow(translated.forgetPassword)
   }
   return (

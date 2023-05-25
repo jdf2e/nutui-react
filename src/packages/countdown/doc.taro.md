@@ -346,6 +346,7 @@ export default App;
 
 ### Props
 
+
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | startTime | 开始时间 | `number` | `Date.now()` |
@@ -383,6 +384,7 @@ export default App;
 | start | 开始倒计时 | `() => void` |
 | pause | 暂停倒计时 | `() => void` |
 | reset | 重设倒计时，若 auto-start 为 true，重设后会自动开始倒计时 | `() => void` |
+
 
 ## 主题定制
 

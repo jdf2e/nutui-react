@@ -1,34 +1,83 @@
 # Icon
 
-### Introduce
+## Intro
 
-Icon set based on IconFont fonts, which can be used through the Icon component.
+Install the @nutui/icons-react icon component package independently. Two usage methods are provided (Svg on demand, IconFont in full).
+## Install
 
-### Install
-
-``` javascript
-// react
-import { Icon } from '@nutui/nutui-react';
+```bash
+npm i --save @nutui/icons-react
 ```
-
 ## Demo
+### Method 1: Svg is used on demand
+How to load components on demand, see @nutui/icons-react/dist/types/index.d.ts for options
 
-### Basic usage
+```html
+import { Add } from '@nutui/icons-react';
 
-The `name` attribute of `Icon` supports passing in icon names or image links.
+<Add color='red' />
+```
+
+
+<icon-demo />
+
+```
+where the component library internally uses Svg as:
+Loading,Location,Location2,Check,Close,Left,Service,Top,Right,CheckNormal,Checked,CheckDisabled,DownArrow,JoySmile,Image,ImageError,CircleClose,MaskClose,Minus,Plus,ArrowUp2,ArrowDown2,Notice,CheckChecked,StarN,Tips,Loading1,TriangleUp,TriangleDown,Photograph,Failure,Del,Link,Download
+```
+
+## SVG Icon
+### Props
+
+| Property   | Description                             | Type             | Default |
+|--------|----------------------------------|------------------|--------|
+| name   | Icon name or image link               | `string`           | -      |
+| color  | icon color                         | `string`           | -      |
+| width  | Icon size, such as `20px` `2em` `2rem` | `string \| object` | -      |
+| height | Icon size, such as `20px` `2em` `2rem` | `string \| object` | -      |
+| onClick | Triggered when the icon is clicked | `event: Event` | `-` |
+
+## Method 2: Use IconFont in full
+
+```js
+import { IconFont } from '@nutui/icons-react'
+```
+
+### Basic
+
+The `name` attribute of `Icon` supports passing in the icon name or image link.
 
 :::demo
 ```tsx
 import React from "react";
-import { Icon } from '@nutui/nutui-react';
+import { IconFont } from '@nutui/icons-react'
 
 const App = () => {
   return <>
-    <Icon name="dongdong" />
-    <Icon name="JD" />
-    <Icon size="40"
-          name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png" />
+    <IconFont name="dongdong" />
+    <IconFont name="JD"/>
+    <IconFont size="40"  name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"/>
+  </>
+}
+export default App;
 
+```
+:::
+
+### Icon color
+
+The `color` property of `Icon` is used to set the color of the icon.
+
+:::demo
+```tsx
+import React from "react";
+import { IconFont } from '@nutui/icons-react'
+
+const App = () => {
+  return <>
+    <IconFont name="dongdong" color="#fa2c19" />
+    <IconFont name="dongdong" color="#64b578" />
+    <IconFont name="JD" color="#fa2c19" />
   </>
 }
 
@@ -36,56 +85,33 @@ export default App;
 ```
 :::
 
-### Color
+### Icon size
 
-The 'color' property of 'Icon' is used to set the color of the icon.
+The `size` attribute of `Icon` is used to set the size of the icon, and the default unit is `px`.
 
 :::demo
 ```tsx
 import React from "react";
-import { Icon } from '@nutui/nutui-react';
+import { IconFont } from '@nutui/icons-react'
 
 const App = () => {
   return <>
-    <Icon name="dongdong" color="#fa2c19" />
-    <Icon name="dongdong" color="#64b578" />
-    <Icon name="JD" color="#fa2c19" />
+    <IconFont name="dongdong" />
+    <IconFont name="dongdong" size="24" />
+    <IconFont name="dongdong" size="16" />
   </>
 }
 
 export default App;
 ```
 :::
+### Custom icon
 
-### Size
+If you need to use more icons based on the existing Icon, you can import the font file and CSS file corresponding to the third-party iconfont, and then use it directly in the Icon component.
 
-The 'size' property of 'Icon' is used to set the size of the icon, with the
-default unit being 'px'.
+> Solution 1 Introduce [iconfont](https://www.iconfont.cn/) Recommend this solution
 
-:::demo
-```tsx
-import React from "react";
-import { Icon } from '@nutui/nutui-react';
-
-const App = () => {
-  return <>
-    <Icon name="dongdong" />
-    <Icon name="dongdong" size="24" />
-    <Icon name="dongdong" size="16" />
-  </>
-}
-
-export default App;
-```
-:::
-
-### custom iconfont
-
-If you need to use more icons based on the existing Icon, you can import the font file and CSS file corresponding to the third-party iconfont, and then you can use it directly in the Icon component.
-
-> use [iconfont](https://www.iconfont.cn/)   recommend
-
-1：first in [iconfont](https://www.iconfont.cn/) generate your custom Icon file and download it to the local project  [Docs](https://www.iconfont.cn/help/detail?spm=a313x.7781069.1998910419.d8d11a391&helptype=code)
+Step 1: First generate your custom Icon file in [iconfont](https://www.iconfont.cn/), download and store it in the local project [detailed instructions](https://www.iconfont.cn/help /detail?spm=a313x.7781069.1998910419.d8d11a391&helptype=code)
 
 ``` bash
 /assets/font/demo.css
@@ -98,32 +124,31 @@ If you need to use more icons based on the existing Icon, you can import the fon
 /assets/font/iconfont.woff2
 ```
 
-2：project entry file main.js add `iconfont.css`
+Step 2: Project entry file main.js references `iconfont.css`
 
 
 ``` javascript
 import './assets/font/iconfont.css';
 ```
 
-3：use
+Step 3:
 
 ```tsx
-// fontClassName 指定类名为默认 iconfont
-// classPrefix 指定默认 icon
-// name 值根据 iconfont.css 中值对应填写
+// fontClassName specifies the class name as the default iconfont
+// classPrefix specifies the default icon
+// The name value is filled in according to the value in iconfont.css
 import React from 'react'
-import Icon from '@nutui/nutui-react'
+import { IconFont } from '@nutui/icons-react'
 
 const App = () => {
-return <Icon fontClassName="iconfont" classPrefix='icon' name="close"/>
+  return <IconFont fontClassName="iconfont" classPrefix='icon' name="close"/>
 }
 ```
 
-
-> Use a third-party custom font library
+> Solution 2: Third-party custom font library
 
 ```css
-/* Introduce third-party or custom font icon styles */
+/* Import third-party or custom font icon styles */
 @font-face {
   font-family: 'my-icon';
   src: url('./my-icon.ttf') format('truetype');
@@ -140,35 +165,30 @@ return <Icon fontClassName="iconfont" classPrefix='icon' name="close"/>
 
 ```tsx
 import React from "react";
-import { Icon } from '@nutui/nutui-react';
+import { IconFont } from '@nutui/icons-react'
 
 const App = () => {
   return <>
-    <Icon fontClassName="my-icon" classPrefix="icon" name="extra" />
+    <IconFont fontClassName="my-icon" classPrefix="icon" name="extra" />
   </>
 }
 
 export default App;
 ```
 
-## API
+## IconFont
 
 ### Props
 
-| Props        | Description                                                  | Type             | Default          |
-|--------------|-----------------------------------------------------|------------------|------------------|
-| name         | Icon name or picture link                           | string           | -                |
-| color        | Icon color                                          | string           | -                |
-| size         | Icon size, such as:  `20px` `2em` `2rem`            | string \| number | -                |
-| classPrefix | A class name prefix that is used to use custom icons | string           | `nut-iconfont` |
-| fontClassName           | Custom icon font base class name                        | string           | `nutui-iconfont`              |
-| tag          | tsx tag                                             | string           | `i`              |
-
-### Events
-
-| Event | Description           | callback parameters |
-|-------|----------------|---------------------|
-| onClick | Triggered when the icon is tapped | `event: Event`        |
+| Property        | Description                             | Type             | Default           |
+|-------------|----------------------------------|------------------|------------------|
+| name | icon name or image link | `string` | - |
+| color | icon color | `string` | - |
+| size | icon size, such as `20px` `2em` `2rem` | `string \| number` | - |
+| classPrefix | class name prefix for using custom icons | `string` | `nut-iconfont` |
+| fontClassName | custom icon font base class name | `string` | `nutui-iconfont` |
+| tag | tsx tag | string | `i` |
+| onClick | Triggered when the icon is clicked | `event: Event` | `-` |
 
 
 ## Theming
@@ -177,8 +197,8 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-icon-height | `20px` |
-| --nutui-icon-width | `20px` |
-| --nutui-icon-line-height | `20px` |
+| Name | Description | Default |
+| --- | --- | --- |
+| --nutui-icon-height | height of iconfont container | `16px` |
+| --nutui-icon-width | width of iconfont container | `16px` |
+| --nutui-icon-line-height | iconfont line height | `16px` |

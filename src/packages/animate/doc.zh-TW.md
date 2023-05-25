@@ -128,7 +128,7 @@ export default AnimateDemo
 
 ### Props
 
-| 參數         | 說明                             | 類型   | 預設值           |
+| 屬性 | 說明                             | 類型   | 預設值           |
 |--------------|----------------------------------|--------|------------------|
 | type         | 動畫類型，見下方type值說明               | string | `shake`                |
 | action         | 觸發管道，'initial'--初始化執行；' click'--點擊執行              | string | `initial`             |

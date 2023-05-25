@@ -1,24 +1,17 @@
 # Swiper 轮播
 
-### 介绍
+## 介绍
 
 常用于一组图片或卡片轮播，当内容空间不足时，可以用走马灯的形式进行收纳，进行轮播展现。
 
-### 安装
+## 安装
 
 ```javascript
 // react
 import { Swiper, SwiperItem } from '@nutui/nutui-react';
 ```
-
+## 代码演示
 ### 基础用法
-
-`autoPlay` 自动轮播的时长
-`initPage` 初始索引值
-`paginationVisible` 是否显示分页指示器
-`paginationColor` 指示器颜色自定义
-`paginationBgColor` 指示器背景颜色自定义
-`onChange` 当卡片发生变化
 
 :::demo
 ``` tsx
@@ -26,35 +19,33 @@ import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
 const App = () => {
-  const [initPage1, setInitPage1] = useState(0)
+  const [defaultValue1, setdefaultValue1] = useState(0)
   const [height, setHeight] = useState<any>(150)
-  const onChange = (e) => {
-    // do something
-  }
   return (
     <div className="demo-box" style={{ height: 150 }}>
-    <Swiper
-      height={height}
-      paginationColor="#426543"
-      paginationBgColor='#426ddd'
-      autoPlay="3000"
-      initPage={initPage1}
-      paginationVisible
-      onChange={onChange}
-    >
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-      </SwiperItem>
-    </Swiper>
+      <Swiper
+        height={height}
+        style={{
+            '--nutui-indicator-color': '#426543',
+            '--nutui-indicator-dot-color': '#426ddd',
+          }}
+        autoPlay="3000"
+        defaultValue={defaultValue1}
+        indicator
+      >
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+        </SwiperItem>
+      </Swiper>
     </div>
   )
 }
@@ -66,31 +57,33 @@ export default App;
 :::demo
 ``` tsx
 import React, { useState, useEffect } from 'react'
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
+import { Swiper, SwiperItem } from '@nutui/nutui-react';
 
 const App = () => {
-  const [initPage1, setInitPage1] = useState(0)
+  const [defaultValue1, setdefaultValue1] = useState(0)
   const [height, setHeight] = useState<any>(150)
   const [list, setList] = useState<string[]>([])
   useEffect(() => {
     setTimeout(() => {
-      const arr: string[] = [
+      setList([
         'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
         'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
         'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
         'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
-      ]
-      setList(arr)
+      ])
     }, 3000)
   }, [])
   return (
     <div className="demo-box" style={{ height: 150 }}>
       <Swiper
         height={height}
-        paginationColor="#426543"
+        style={{
+            '--nutui-indicator-color': '#426543',
+            '--nutui-indicator-dot-color': '#426ddd',
+          }}
         autoPlay="3000"
-        initPage={initPage1}
-        paginationVisible
+        defaultValue={defaultValue1}
+        indicator
       >
         {list.map((item) => {
           return (
@@ -117,9 +110,9 @@ import React, { useState, useEffect } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
 const App = () => {
-  const [initPage1, setInitPage1] = useState(0)
-  const [height, setHeight] = useState<any>(150)
-  const [list, setList] = useState<string[]>([
+  const [defaultValue1, setdefaultValue1] = useState(0)
+  const [height, setHeight] = useState(150)
+  const [list, setList] = useState([
     'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
     'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
     'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
@@ -127,27 +120,31 @@ const App = () => {
   ])
   useEffect(() => {
     setTimeout(() => {
-      const arr = list.slice()
-      arr.splice(1, 1)
-      setList(arr)
+      list.splice(1, 1)
+      setList(list.splice(1, 1))
     }, 3000)
   }, [])
   return (
-    <Swiper
-      height={height}
-      paginationColor="#426543"
-      autoPlay="3000"
-      initPage={initPage1}
-      paginationVisible
-    >
-      {list.map((item) => {
-        return (
-          <SwiperItem key={item}>
-            <img src={item} alt="" />
-          </SwiperItem>
-        )
-      })}
-    </Swiper>
+    <div className="demo-box" style={{ height: 150 }}>
+      <Swiper
+        height={height}
+        style={{
+            '--nutui-indicator-color': '#426543',
+            '--nutui-indicator-dot-color': '#426ddd',
+          }}
+        autoPlay="3000"
+        defaultValue={defaultValue1}
+        indicator
+      >
+        {list.map((item) => {
+          return (
+            <SwiperItem key={item}>
+              <img src={item} alt="" />
+            </SwiperItem>
+          )
+        })}
+      </Swiper>
+    </div>
   )
 }
 export default App;
@@ -163,27 +160,28 @@ import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
 const App = () => {
-  const [initPage2, setInitPage2] = useState(0)
+  const [defaultValue2, setdefaultValue2] = useState(0)
   return (
-    <Swiper
-      width={300}
-      initPage={initPage2}
-      loop={false}
-      height={150}
-    >
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-      </SwiperItem>
-    </Swiper>
+    <div className="demo-box" style={{ height: 150 }}>
+      <Swiper
+        width={300}
+        height={150}
+        defaultValue={defaultValue2}
+      >
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+        </SwiperItem>
+      </Swiper>
+    </div>
   )
 }
 export default App;
@@ -192,7 +190,7 @@ export default App;
 
 ### 自定义分页指示器
 
-`pageContent` 表示自定义指示器
+`indicator` 表示自定义指示器
 
 :::demo
 ``` tsx
@@ -200,32 +198,34 @@ import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
 const App = () => {
-  const [initPage3, setInitPage3] = useState(0)
+  const [defaultValue3, setdefaultValue3] = useState(0)
   const [current, setCurrent] = useState(1)
   const onChange3 = (e) => {
     setCurrent(e + 1)
   }
   return (
-    <Swiper
-      initPage={initPage3}
-      loop
-      height={150}
-      onChange={onChange3}
-      pageContent={<div className="page"> {current}/4 </div>}
-    >
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-      </SwiperItem>
-    </Swiper>
+    <div className="demo-box" style={{ height: 150 }}>
+      <Swiper
+        loop
+        height={150}
+        defaultValue={defaultValue3}
+        onChange={onChange3}
+        indicator={<div className="page"> {current}/4 </div>}
+      >
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+        </SwiperItem>
+      </Swiper>
+    </div>
   )
 }
 export default App;
@@ -234,7 +234,7 @@ export default App;
 
 ### 手动切换
 
-可通过 `API`(`prev`,`next`)进行手动切换
+可通过 `ref`调用 `prev`,`next` 进行切换
 
 :::demo
 ``` tsx
@@ -243,7 +243,7 @@ import { Swiper, SwiperItem, Icon } from '@nutui/nutui-react';
 
 const App = () => {
   const swiperRef = React.useRef<any>(null)
-  const [initPage6, setInitPage6] = useState(0)
+  const [defaultValue6, setdefaultValue6] = useState(0)
   const [current2, setCurrent2] = useState(1)
   
   const onChange3 = (e) => {
@@ -297,9 +297,9 @@ const App = () => {
         height={150}
         ref={swiperRef}
         loop
-        initPage={initPage6}
+        defaultValue={defaultValue6}
         onChange={(e) => setCurrent2(e + 1)}
-        pageContent={<div style={ pageStyle } > {current2}/4 </div>}
+        indicator={<div style={ pageStyle } > {current2}/4 </div>}
       >
         {list.map((item) => {
           return (
@@ -334,33 +334,35 @@ import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
 const App = () => {
-  const [initPage4, setInitPage4] = useState(0)
+  const [defaultValue4, setdefaultValue4] = useState(0)
   const [current, setCurrent] = useState(1)
   const onChange3 = (e) => {
     setCurrent(e + 1)
   }
   return (
-    <Swiper
-      loop
-      initPage={initPage4}
-      direction="vertical"
-      autoPlay="3000"
-      height="150"
-      paginationVisible
-    >
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-      </SwiperItem>
-      <SwiperItem >
-        <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-      </SwiperItem>
-    </Swiper>
+    <div className="demo-box vertical-center" style={{ height: '150px' }}>
+      <Swiper
+        loop
+        defaultValue={defaultValue4}
+        direction="vertical"
+        autoPlay="3000"
+        height="150"
+        indicator
+      >
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
+        </SwiperItem>
+        <SwiperItem >
+          <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
+        </SwiperItem>
+      </Swiper>
+    </div>
   )
 }
 export default App;
@@ -370,7 +372,7 @@ export default App;
 
 ### 水平居中展示
 
-`isCenter` 代表可居中，同时必须传 `width`
+`center` 代表可居中，同时必须传 `width`
 
 :::demo
 ``` tsx
@@ -378,7 +380,7 @@ import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
 const App = () => {
-  const [initPage8, setInitPage8] = useState(0)
+  const [defaultValue8, setdefaultValue8] = useState(0)
   const list = [
     'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
     'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
@@ -388,13 +390,12 @@ const App = () => {
   return (
    <div className="demo-box " style={{ height: '150px' }}>
       <Swiper
-        loop={false}
-        initPage={initPage8}
+        defaultValue={defaultValue8}
         autoPlay="0"
         height="150"
-        paginationVisible
+        indicator
         width="280"
-        isCenter
+        center
       >
         {list.map((item) => {
           return (
@@ -412,7 +413,7 @@ export default App;
 :::
 ### 垂直居中展示
 
-`isCenter` 代表可居中，同时必须传 `height`
+`center` 代表可居中，同时必须传 `height`
 
 :::demo
 ``` tsx
@@ -420,7 +421,7 @@ import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
 const App = () => {
-  const [initPage9, setInitPage9] = useState(0)
+  const [defaultValue9, setdefaultValue9] = useState(0)
   const list = [
     'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
     'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
@@ -428,15 +429,14 @@ const App = () => {
     'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
   ]
   return (
-   <div className="demo-box " style={{ height: '150px' }}>
+   <div className="demo-box vertical-center" style={{ height: '150px' }}>
       <Swiper
-        loop={false}
-        initPage={initPage9}
+        defaultValue={defaultValue9}
         direction="vertical"
         autoPlay="0"
         height="220"
-        paginationVisible
-        isCenter
+        indicator
+        center
         style={{ height: '280px' }}
       >
         {list.map((item) => {
@@ -454,56 +454,41 @@ export default App;
 ```
 :::
 
-## API
+## Swiper
 
 ### Props
 
-| 参数              | 说明                                   | 类型                      | 默认值            |
-| ----------------- | -------------------------------------- | ------------------------- | ----------------- |
-| width             | 轮播卡片的宽度                         | number \| string          | `window.innerWidth` |
-| height            | 轮播卡片的高度                         | string \| number          | `0`                 |
-| direction         | 轮播方向,可选值`horizontal`,`vertical` | string                    | `horizontal`      |
-| paginationVisible | 分页指示器是否展示                     | boolean                   | `false`             |
-| paginationColor   | 分页指示器选中的颜色                   | string                    | `#fff`            |
-| paginationBgColor`v1.4.1` | 分页指示器的背景色 | string | `#ddd`            |
-| loop              | 是否循环轮播                           | boolean                   | `true`              |
-| duration          | 动画时长（单位是ms）                   | number \| string          | `500`               |
-| autoPlay          | 自动轮播时长，0表示不会自动轮播        | number \| string          | `0`                 |
-| initPage          | 初始化索引值                           | number \| string          | `0`                 |
-| touchable         | 是否可触摸滑动                         | boolean                   | `true`              |
-| pageContent       | 自定义指示器                           | string \| ReactNode | -                 |
-| isPreventDefault  | 滑动过程中是否禁用默认事件             | boolean                   | `true`              |
-| isStopPropagation | 滑动过程中是否禁止冒泡                 | boolean                   | `true`              |
-| isCenter | 是否居中展示，必须传对应的`width` 和 `height` | boolean | `false`              |
+| 属性    | 说明 | 类型    | 默认值    |
+|-----------------|---------------------------------|-----------------------------| ----------------- |
+| width           | 轮播卡片的宽度                         | `number \| string`          | `window.innerWidth` |
+| height          | 轮播卡片的高度                         | `number \| string`          | `0`                 |
+| direction       | 轮播方向,可选值`horizontal`,`vertical` | `string`                    | `horizontal`      |
+| indicator       | 分页指示器是否展示，可传入自定义的 HTML 结构       | `ReactNode`                 | `false`             |
+| loop            | 是否循环轮播                          | `boolean`                   | `true`              |
+| duration        | 动画时长（单位是ms）                     | `number \| string`          | `500`               |
+| autoPlay        | 自动轮播时长，0表示不会自动轮播                | `number \| string`          | `0`                 |
+| defaultValue    | 初始化索引值                          | `number \| string`          | `0`                 |
+| touchable       | 是否可触摸滑动                         | `boolean`                   | `true`              |
+| preventDefault  | 滑动过程中是否禁用默认事件                   | `boolean`                   | `true`              |
+| stopPropagation | 滑动过程中是否禁止冒泡                     | `boolean`                   | `true`              |
+| center          | 是否居中展示，必须传对应的`width` 和 `height` | `boolean`                   | `false`              |
+| onChange | 卡片切换后的回调 | `(current: number) => void` | `-` |
 
+### Ref
 
+| 属性    | 说明 | 类型                      |
+|--------| -------------- |-------------------------|
+| prev   | 切换到上一页   | `()=>void`              |
+| next   | 切换到下一页   | `()=>void`              |
+| to     | 切换到指定轮播 | `(index: number)=>void` |
+| resize | 外层元素大小或组件显示状态变化时，可以调用此方法来触发重绘 | `()=>void`   |
 
-### Events
+## 主题定制
 
-| 事件名   | 说明             | 回调参数        |
-| -------- | ---------------- | --------------- |
-| onChange | 卡片切换后的回调 | 当前索引值index |
+### 样式变量
 
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-### API
-
-| 事件名 | 说明           | 参数         |
-| ------ | -------------- | ------------ |
-| prev   | 切换到上一页   | -            |
-| next   | 切换到下一页   | -            |
-| to     | 切换到指定轮播 | `index: number` |
-
-## 主題定制
-
-### 樣式變量
-
-組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
-
-| 名稱 | 默認值 |
-| --- | --- |
-| --nutui-swiper-pagination-bottom | `12px`|
-| --nutui-swiper-pagination-item-background-color | `#ddd` |
-| --nutui-swiper-pagination-item-width | `8px` |
-| --nutui-swiper-pagination-item-height | `3px` |
-| --nutui-swiper-pagination-item-margin-right | `7px` |
-| --nutui-swiper-pagination-item-border-radius | `2px` |
+| 名称 | 说明         | 默认值     |
+| --- |------------|---------|
+| --nutui-swiper-pagination-bottom | 分页器距离底部的距离 |  `12px` |

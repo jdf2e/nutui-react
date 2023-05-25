@@ -8,7 +8,6 @@ import React, {
 } from 'react'
 import { Image as ImageIcon, ImageError } from '@nutui/icons-react'
 import classNames from 'classnames'
-import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { pxCheck } from '@/utils/px-check'
 
@@ -80,7 +79,6 @@ export const Image: FunctionComponent<
   } = { ...defaultProps, ...props }
   const [innerLoading, setInnerLoading] = useState(true)
   const [isError, setIsError] = useState(false)
-  const [_src, setSrc] = useState('')
   const imgRef = useRef<HTMLImageElement>(null)
 
   useEffect(() => {
@@ -91,14 +89,13 @@ export const Image: FunctionComponent<
     ) {
       setInnerLoading(false)
     } else if (src) {
-      setSrc(src)
-      setIsError(false)
       setInnerLoading(true)
     }
   }, [src])
 
   // 图片加载
   const handleLoad = () => {
+    setIsError(false)
     setInnerLoading(false)
     onLoad && onLoad()
   }
@@ -126,7 +123,6 @@ export const Image: FunctionComponent<
   // 图片懒加载
   const observer: any = useRef(null)
   const initObserver = () => {
-    const images = document.querySelectorAll('.nut-img.lazyload')
     const options = {
       threshold: [0], // 交会处
       rootMargin: '0px', // 对视口进行收缩和扩张
@@ -144,14 +140,12 @@ export const Image: FunctionComponent<
               img.removeAttribute('data-src')
             }
             // 资源加载后停止监听
-            observer.current.unobserve(item.target)
+            resetObserver()
           }, 300)
         }
       })
     }, options)
-    images.forEach((item) => {
-      observer.current.observe(item)
-    })
+    observer.current.observe(imgRef.current)
   }
 
   // 使用disconnect将取消的Observer实例中的所有监听
@@ -214,7 +208,7 @@ export const Image: FunctionComponent<
           ref={imgRef}
           className="nut-img lazyload"
           style={imgStyle}
-          data-src={_src}
+          data-src={src}
           alt={alt}
           loading="lazy"
           onLoad={handleLoad}
@@ -225,7 +219,7 @@ export const Image: FunctionComponent<
           ref={imgRef}
           className="nut-img"
           style={imgStyle}
-          src={_src}
+          src={src}
           alt={alt}
           onLoad={handleLoad}
           onError={handleError}
