@@ -250,9 +250,9 @@ const CheckboxDemo = () => {
             defaultChecked={false}
             onChange={(state) => {
               if (state) {
-                Toast.text(translated.selected.replace('x', state.toString()))
+                Toast.show(translated.selected.replace('x', state.toString()))
               } else {
-                Toast.text(translated.uncheckedx.replace('x', state.toString()))
+                Toast.show(translated.uncheckedx.replace('x', state.toString()))
               }
             }}
           >
@@ -265,7 +265,7 @@ const CheckboxDemo = () => {
             defaultValue={checkboxgroup1}
             direction="horizontal"
             onChange={(value) => {
-              Toast.text(value)
+              //   Toast.show(value)
               setCheckboxgroup1(value)
             }}
           >
@@ -301,7 +301,7 @@ const CheckboxDemo = () => {
             ref={checkboxgroup2Ref}
             defaultValue={checkboxgroup2}
             onChange={(value) => {
-              Toast.text(
+              Toast.show(
                 `${
                   value.length === 4
                     ? translated.selectAll
@@ -350,7 +350,7 @@ const CheckboxDemo = () => {
             defaultValue={checkboxgroup3}
             max={2}
             onChange={(value) => {
-              Toast.text(value)
+              //   Toast.show(value)
             }}
           >
             <Checkbox value="1">{translated.options1}</Checkbox>

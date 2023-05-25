@@ -664,8 +664,8 @@ $numberkeyboard-key-confirm-background-color: var(
 
 // countdown（✅）
 $countdown-display: var(--nutui-countdown-display, flex) !default;
-$countdown-color: var(--nutui-countdown-color, inherit) !default;
-$countdown-font-size: var(--nutui-countdown-font-size, initial) !default;
+$countdown-color: var(--nutui-countdown-color, $gray1) !default;
+$countdown-font-size: var(--nutui-countdown-font-size, 14px) !default;
 
 //large price（✅）
 $price-symbol-padding-right: var(
@@ -742,6 +742,8 @@ $toast-inner-border-radius: var(
   12px
 ) !default;
 $toast-cover-bg-color: var(--nutui-toast-cover-bg-color, $gray7) !default;
+$toast-inner-top: var(--nutui-toast-inner-top, 50%) !default;
+$toast-inner-text-align: var(--nutui-toast-inner-text-align, 'center') !default;
 
 //backtop（✅）
 $backtop-border-color: var(--nutui-backtop-border-color, #e0e0e0) !default;

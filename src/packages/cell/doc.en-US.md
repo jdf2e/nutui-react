@@ -24,7 +24,7 @@ const App = () => {
   const testClick = (
     event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
   ) => {
-    Toast.text('Click Test')
+    Toast.show('Click Test')
   }
   return (
     <>
