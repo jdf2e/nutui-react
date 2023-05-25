@@ -64,14 +64,14 @@ const App =() => {
     }, 30)
   }
   return (
-   <div style={{ height: '100%' }}>
-          <VirtualList
-            itemHeight={50}
-            list={list}
-            ItemRender={ItemRenderMemo}
-            onScroll={onScroll}
-          />
-  </div>
+    <div style={{ height: '100%' }}>
+      <VirtualList
+        itemHeight={50}
+        list={list}
+        ItemRender={ItemRenderMemo}
+        onScroll={onScroll}
+      />
+    </div>
   )
 }
 export default App;
@@ -138,16 +138,16 @@ const App =() => {
     }, 30)
   }
   return (
-   <div style={{ height: '100%' }}>
-          <VirtualList
-            itemHeight={80}
-            list={list}
-            ItemRender={ItemVariableDemo}
-            onScroll={onScroll}
-            itemEqual={false}
-            containerHeight={500}
-          />
-  </div>
+    <div style={{ height: '100%' }}>
+      <VirtualList
+        itemHeight={80}
+        list={list}
+        ItemRender={ItemVariableDemo}
+        onScroll={onScroll}
+        itemEqual={false}
+        containerHeight={500}
+      />
+    </div>
   )
 }
 export default App;

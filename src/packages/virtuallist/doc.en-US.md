@@ -41,13 +41,13 @@ const App =() => {
   }
   const ItemRenderMemo = React.memo(ItemRender)
   return (
-   <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
-         <VirtualList
-            itemHeight={66}
-            list={list}
-            ItemRender={ItemRenderMemo}
-          />
-  </div>
+    <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
+      <VirtualList
+        itemHeight={66}
+        list={list}
+        ItemRender={ItemRenderMemo}
+      />
+    </div>
   )
 }
 export default App;
@@ -91,15 +91,15 @@ const App =() => {
   /** ItemSize Indicates the maximum size of the first screen element */
   const ItemVariableDemo = React.memo(ItemVariable)
   return (
-   <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
-           <VirtualList
-            list={list}
-            ItemRender={ItemVariableDemo}
-            itemHeight={128}
-            itemEqual={false}
-            onScroll={onScroll}
-          />
-  </div>
+    <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
+      <VirtualList
+        list={list}
+        ItemRender={ItemVariableDemo}
+        itemHeight={128}
+        itemEqual={false}
+        onScroll={onScroll}
+      />
+    </div>
   )
 }
 export default App;
@@ -136,14 +136,14 @@ const App =() => {
   }
   const ItemRenderMemo = React.memo(ItemRender)
   return (
-   <div className='nut-virtualList-demo-box  hideScrollbar'>
-           <VirtualList
-            list={list}
-            ItemRender={ItemRenderMemo}
-            itemHeight={124}
-            horizontal
-          />
-  </div>
+    <div className='nut-virtualList-demo-box  hideScrollbar'>
+      <VirtualList
+        list={list}
+        ItemRender={ItemRenderMemo}
+        itemHeight={124}
+        direction="horizontal"
+      />
+    </div>
   )
 }
 export default App;
@@ -172,7 +172,7 @@ const App =() => {
       return [...list, ...datas]
     })
   }, [])
- const onScroll = () => {
+  const onScroll = () => {
     if (pageNo > 100) return
     setPageNo(pageNo + 1)
   }
@@ -187,16 +187,16 @@ const App =() => {
   /** ItemSize Indicates the maximum size of the first screen element */
   const ItemVariableDemo = React.memo(ItemVariable)
   return (
-   <div className='nut-virtualList-demo-box  hideScrollbar'>
-          <VirtualList
-            list={list}
-            itemHeight={300}
-            ItemRender={ItemVariableDemo}
-            horizontal
-            itemEqual={false}
-            onScroll={onScroll}
-          />
-  </div>
+    <div className='nut-virtualList-demo-box  hideScrollbar'>
+      <VirtualList
+        list={list}
+        itemHeight={300}
+        ItemRender={ItemVariableDemo}
+        direction="horizontal"
+        itemEqual={false}
+        onScroll={onScroll}
+      />
+    </div>
   )
 }
 export default App;
