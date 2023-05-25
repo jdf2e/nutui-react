@@ -97,7 +97,6 @@ const SearchBarDemo = () => {
         >
           <SearchBar onSearch={(value) => Toast.text(value)} />
         </ConfigProvider>
-
         <h2>{translated.title4}</h2>
         <SearchBar
           left={translated.text}
