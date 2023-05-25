@@ -671,8 +671,8 @@ $numberkeyboard-key-confirm-background-color: var(
 
 // countdown（✅）
 $countdown-display: var(--nutui-countdown-display, flex) !default;
-$countdown-color: var(--nutui-countdown-color, inherit) !default;
-$countdown-font-size: var(--nutui-countdown-font-size, initial) !default;
+$countdown-color: var(--nutui-countdown-color, $gray1) !default;
+$countdown-font-size: var(--nutui-countdown-font-size, 14px) !default;
 
 //large price（✅）
 $price-symbol-padding-right: var(

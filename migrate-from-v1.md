@@ -334,11 +334,16 @@
   - `circleColor` 重名为 `color`
   - `pathColor` 重名为 `background`
 #### Collapse
+
 - 新增 defaultActiveName 非受控
 - activeName 改为受控方式
 - subTitle 重命名为 extra
 - onChange 参数变更为 activeName, name, status
+
 #### CountDown
+
+- 新增 `remainingTime`, 支持剩余毫秒时间倒计时。
+
 #### Ellipsis
 - 新增className和style属性的支持
 - 优化H5的代码，去掉useEffect渲染改用useLayoutEffect
