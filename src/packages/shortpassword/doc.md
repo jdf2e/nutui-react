@@ -324,11 +324,11 @@ export default App;
 | autoFocus | 自动聚焦 | `boolean` | `false` |
 | onChange | 输入密码时触发事件 | `(value) => void` | - |
 | onConfirm | 点击确认时触发事件 | `(value) => void` | - |
-| onCancel | 点击取消时触发事件 | - | - |
-| onClose | 点击关闭图标和遮罩时触发事件 | - | - |
-| onTips | 点击忘记密码时触发事件 | - | - |
+| onCancel | 点击取消时触发事件 | `() => void` | - |
+| onClose | 点击关闭图标和遮罩时触发事件 | `() => void` | - |
+| onTips | 点击忘记密码时触发事件 | `() => void` | - |
 | onComplete | 输入完成的回调 | `(value) => void` | - |
-| onFocus | 输入框聚焦 | - | - |
+| onFocus | 输入框聚焦 | `() => void` | - |
 
 ## 主题定制
 

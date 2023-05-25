@@ -324,11 +324,11 @@ export default App;
 | autoFocus | Be focused when ShortPassword is displayed | `boolean` | `false` |
 | onChange | Trigger event when password is entered | `(value) => void` | - |
 | onConfirm | Trigger event when true is clicked | `(value) => void` | - |
-| onCancel | Trigger an event when the popup layer is clicked or canceled | - | - |
-| onClose | Trigger an event when the close icon is clicked | - | - |
-| onTips | Trigger an event when the forget password is clicked | - | - |
+| onCancel | Trigger an event when the popup layer is clicked or canceled | `() => void` | - |
+| onClose | Trigger an event when the close icon is clicked | `() => void` | - |
+| onTips | Trigger an event when the forget password is clicked | `() => void` | - |
 | onComplete | Input complete callback | `(value) => void` | - |
-| onFocus | input focus | - | - |
+| onFocus | input focus | `() => void` | - |
 
 ## Theming
 
