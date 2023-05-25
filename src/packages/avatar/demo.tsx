@@ -58,7 +58,7 @@ const AvatarDemo = () => {
   })
 
   const activeAvatar = () => {
-    Toast.text(translated.b040e71e)
+    Toast.show(translated.b040e71e)
   }
   return (
     <>

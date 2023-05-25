@@ -196,9 +196,9 @@ const CheckBoxDemo = () => {
       defaultChecked={false}
       onChange={(state) => {
         if (state) {
-          Toast.text('checked')
+          Toast.show('checked')
         } else {
-          Toast.text('unchecked')
+          Toast.show('unchecked')
         }
       }}
     >
@@ -226,7 +226,7 @@ const CheckBoxDemo = () => {
       defaultValue={checkboxgroup1}
       direction="horizontal"
       onChange={(value) => {
-        Toast.text(value)
+        Toast.show(value)
       }}
     >
       <Checkbox value="1">
@@ -300,7 +300,7 @@ const CheckBoxDemo = () => {
       ref={checkboxgroup2Ref}
       defaultValue={checkboxgroup2}
       onChange={(value) => {
-        Toast.text(`${value.length === 4 ? '全选' : '取消全选'}`)
+        Toast.show(`${value.length === 4 ? '全选' : '取消全选'}`)
       }}
     >
       <Checkbox value="1">
@@ -365,7 +365,7 @@ const CheckBoxDemo = () => {
       defaultValue={checkboxgroup2}
       max={2}
       onChange={(value) => {
-        Toast.text(value)
+        Toast.show(value)
       }}
     >
       <Checkbox value="1">

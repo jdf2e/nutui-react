@@ -91,7 +91,7 @@ const CellDemo = () => {
   const testClick = (
     event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
   ) => {
-    Toast.text(translated.clickEventToast)
+    Toast.show(translated.clickEventToast)
   }
 
   const onJumpclick = (

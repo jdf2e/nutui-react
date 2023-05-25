@@ -46,7 +46,7 @@ const App = () => {
   const [checkedAsync, setCheckedAsync] = useState(true)
   
   const onChangeAsync = (value: boolean, event: Event) => {
-    Toast.text(`Asynchronous trigger after 2 seconds ${value}`)
+    Toast.show(`Asynchronous trigger after 2 seconds ${value}`)
     setTimeout(() => {
       setCheckedAsync(value)
     }, 2000)
@@ -97,7 +97,7 @@ import { Switch, Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const onChange = (value: boolean, event: Event) => {
-    Toast.text(`Triggering the onChange event, the switch status：${value}`)
+    Toast.show(`Triggering the onChange event, the switch status：${value}`)
   }
   return ( 
     <>   

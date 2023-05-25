@@ -31,7 +31,7 @@ const copyTag = (text: string) => {
   input.select()
   if (document.execCommand('copy')) {
     document.execCommand('copy')
-    Toast.text(`Copy: ${text}`)
+    Toast.show(`Copy: ${text}`)
   }
   document.body.removeChild(input)
 }

@@ -146,7 +146,7 @@ const App = () => {
   const [visible,setVisible] = useState(false)
   const [value,setValue] = useState('')
    const onTips = () => {
-    Toast.text('Execute forgotten password logic')
+    Toast.show('Execute forgotten password logic')
   }
    const close = ()=>{
     setVisible(false)

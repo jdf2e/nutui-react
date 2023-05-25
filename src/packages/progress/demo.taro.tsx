@@ -141,7 +141,7 @@ const ProgressDemo = () => {
             onClick={() => {
               let num = value
               if (value <= 0) {
-                // Toast.text('进度已为0')
+                // Toast.show('进度已为0')
                 toastShow('进度已为0')
                 return false
               }
@@ -158,7 +158,7 @@ const ProgressDemo = () => {
             onClick={() => {
               let num = value
               if (value >= 100) {
-                // Toast.text('进度已为100%')
+                // Toast.show('进度已为100%')
                 toastShow('进度已为100%')
                 return false
               }

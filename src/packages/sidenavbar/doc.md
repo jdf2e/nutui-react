@@ -84,10 +84,10 @@ const App = () => {
    setVisible(visible)
   }
   const clickItem = ({ title, key }) => {
-    Toast.text(`title=${title},key=${key}`)
+    Toast.show(`title=${title},key=${key}`)
   }
   const clickTitle = ({ title, key, isShow }) => {
-    Toast.text(`title=${title},key=${key},isShow=${isShow}`)
+    Toast.show(`title=${title},key=${key},isShow=${isShow}`)
   }
   return ( 
     <>  

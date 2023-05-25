@@ -10,11 +10,15 @@
 .nut-toast {
   position: fixed;
   left: 0;
-  bottom: 150px;
+  top: 0;
   width: 100%;
+  height: 100%;
   text-align: center;
   pointer-events: none;
   z-index: 9999;
+  &__overlay-default {
+    --nutui-overlay-bg-color: rgba(0, 0, 0, 0);
+  }
   &-small {
     .nut-toast__inner {
       font-size: $font-size-small;
@@ -29,7 +33,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    pointer-events: auto;
+    pointer-events: none;
     height: 100%;
     background: $toast-cover-bg-color;
   }
@@ -38,12 +42,25 @@
     font-size: $toast-text-font-size;
     min-width: 40%;
     max-width: 65%;
-    text-align: center;
+    text-align: $toast-inner-text-align;
     padding: $toast-inner-padding;
     word-break: break-all;
     background: $toast-inner-bg-color;
     border-radius: $toast-inner-border-radius;
     color: $toast-font-color;
+    position: absolute;
+    left: 50%;
+    top: $toast-inner-top;
+    transform: translate(-50%, -50%);
+  }
+  &-center {
+    top: var(--nutui-toast-inner-top, 50%);
+  }
+  &-bottom {
+    top: var(--nutui-toast-inner-top, 80%);
+  }
+  &-top {
+    top: var(--nutui-toast-inner-top, 20%);
   }
   &-text {
     font-size: $toast-text-font-size;
@@ -65,10 +82,6 @@
       justify-content: center;
       margin-bottom: 8px;
     }
-  }
-  &-center {
-    top: 50%;
-    transform: translateY(-50%);
   }
   &-loading {
     .nut-toast__inner {
