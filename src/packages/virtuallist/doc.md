@@ -21,7 +21,7 @@ import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } f
 import { VirtualList } from '@nutui/nutui-react';
 
 const App =() => {
-  const [sourceData, setsourceData] = useState([])
+  const [list, setsourceData] = useState([])
 
   const getData = useCallback(() => {
     const datas = []
@@ -29,8 +29,8 @@ const App =() => {
     for (let i = 10; i < pageSize; i++) {
       datas.push(`${i} Item`)
     }
-    setsourceData((sourceData) => {
-      return [...sourceData, ...datas]
+    setsourceData((list) => {
+      return [...list, ...datas]
     })
   }, [])
   useEffect(() => {
@@ -44,7 +44,7 @@ const App =() => {
    <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
          <VirtualList
             itemSize={66}
-            sourceData={sourceData}
+            list={list}
             ItemRender={ItemRenderMemo}
           />
   </div>
@@ -64,7 +64,7 @@ import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } f
 import { VirtualList } from '@nutui/nutui-react';
 
 const App =() => {
-  const [sourceData, setsourceData] = useState([])
+  const [list, setsourceData] = useState([])
   const [pageNo, setPageNo] = useState(1)
   const getData = useCallback(() => {
     const datas = []
@@ -72,8 +72,8 @@ const App =() => {
     for (let i = 10; i < pageSize; i++) {
       datas.push(`${i} Item`)
     }
-    setsourceData((sourceData) => {
-      return [...sourceData, ...datas]
+    setsourceData((list) => {
+      return [...list, ...datas]
     })
   }, [])
  const onScroll = () => {
@@ -93,7 +93,7 @@ const App =() => {
   return (
    <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
            <VirtualList
-            sourceData={sourceData}
+            list={list}
             ItemRender={ItemVariableDemo}
             itemSize={128}
             itemEqualSize={false}
@@ -116,7 +116,7 @@ import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } f
 import { VirtualList } from '@nutui/nutui-react';
 
 const App =() => {
-  const [sourceData, setsourceData] = useState([])
+  const [list, setsourceData] = useState([])
   const [pageNo, setPageNo] = useState(1)
   const getData = useCallback(() => {
     const datas = []
@@ -124,8 +124,8 @@ const App =() => {
     for (let i = 10; i < pageSize; i++) {
       datas.push(`${i} Item`)
     }
-    setsourceData((sourceData) => {
-      return [...sourceData, ...datas]
+    setsourceData((list) => {
+      return [...list, ...datas]
     })
   }, [])
   useEffect(() => {
@@ -138,7 +138,7 @@ const App =() => {
   return (
    <div className='nut-virtualList-demo-box  hideScrollbar'>
            <VirtualList
-            sourceData={sourceData}
+            list={list}
             ItemRender={ItemRenderMemo}
             itemSize={124}
             horizontal
@@ -160,7 +160,7 @@ import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } f
 import { VirtualList } from '@nutui/nutui-react';
 
 const App =() => {
-  const [sourceData, setsourceData] = useState([])
+  const [list, setsourceData] = useState([])
   const [pageNo, setPageNo] = useState(1)
   const getData = useCallback(() => {
     const datas = []
@@ -168,8 +168,8 @@ const App =() => {
     for (let i = 10; i < pageSize; i++) {
       datas.push(`${i} Item`)
     }
-    setsourceData((sourceData) => {
-      return [...sourceData, ...datas]
+    setsourceData((list) => {
+      return [...list, ...datas]
     })
   }, [])
  const onScroll = () => {
@@ -189,7 +189,7 @@ const App =() => {
   return (
    <div className='nut-virtualList-demo-box  hideScrollbar'>
           <VirtualList
-            sourceData={sourceData}
+            list={list}
             itemSize={300}
             ItemRender={ItemVariableDemo}
             horizontal
@@ -210,12 +210,12 @@ export default App;
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| sourceData | 获取数据 | `Array` | - |
+| list | 获取数据 | `Array` | - |
 | containerSize | 容器高度 | `number` | `获取元素的 offsetWidth 或 offsetHeight，需要 css 给出` |
 | ItemRender | virtual 列表父节点渲染的函数 | `React.FC` | - |
 | itemSize | item高度，如果不定高，则为首屏单个最大size | `string` | - |
 | itemEqualSize | item大小是否一致 | `boolean` | `true` |
 | overscan | 除了视窗里面默认的元素, 还需要额外渲染的item个数 | `number` | `2` |
-| key | 唯一值 ,Item(sourceData)具体的某个唯一值的字段 | `string` | `index` |
+| key | 唯一值 ,Item(list)具体的某个唯一值的字段 | `string` | `index` |
 | horizontal | 决定列表是横向的还是纵向的 | `boolean` | `false` |
 | onScroll | 滑动到底(右)的事件，可以实现无限滚动 | `(event) => void` | - |

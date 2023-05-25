@@ -20,7 +20,7 @@ export interface PositionType {
 export interface BasicVirtualListProps {
   className?: string
   style?: React.CSSProperties
-  sourceData: Array<Data> // 获取数据
+  list: Array<Data> // 获取数据
   containerSize?: number // 容器大小
   ItemRender?: React.FC<any> // virtual 列表父节点渲染的函数，默认为 (items, ref) => <ul ref={ref}>{items}</ul>
   itemSize?: number // 预估高度

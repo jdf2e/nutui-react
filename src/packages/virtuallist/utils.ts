@@ -67,7 +67,7 @@ const binarySearch = (
   return tempIndex
 }
 const getEndIndex = ({
-  sourceData,
+  list,
   startIndex,
   visibleCount,
   itemEqualSize = true,
@@ -76,7 +76,7 @@ const getEndIndex = ({
   overscan,
   sizeKey = 'width',
 }: {
-  sourceData: Array<Data>
+  list: Array<Data>
   startIndex: number
   visibleCount: number
   itemEqualSize?: boolean
@@ -85,7 +85,7 @@ const getEndIndex = ({
   overscan: number
   sizeKey?: 'width' | 'height'
 }): number => {
-  const dataLength = sourceData.length
+  const dataLength = list.length
   let tempIndex = null
   if (itemEqualSize) {
     const endIndex = startIndex + visibleCount

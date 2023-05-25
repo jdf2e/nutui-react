@@ -21,7 +21,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { VirtualList } from '@nutui/nutui-react-taro';
 
 const App =() => {
-  const [sourceData, setsourceData] = useState([])
+  const [list, setsourceData] = useState([])
   const [pageNo, setPageNo] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -41,8 +41,8 @@ const App =() => {
     for (let i = 10; i < pageSize; i++) {
         datas.push(`${i} Item`)
     }
-    setsourceData((sourceData) => {
-        return [...sourceData, ...datas]
+    setsourceData((list) => {
+        return [...list, ...datas]
     })
   }, [])
 
@@ -67,7 +67,7 @@ const App =() => {
    <div style={{ height: '100%' }}>
           <VirtualList
             itemSize={50}
-            sourceData={sourceData}
+            list={list}
             ItemRender={ItemRenderMemo}
             onScroll={onScroll}
           />
@@ -88,7 +88,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { VirtualList } from '@nutui/nutui-react-taro';
 
 const App =() => {
-  const [sourceData, setsourceData] = useState([])
+  const [list, setsourceData] = useState([])
   const [pageNo, setPageNo] = useState(1)
   const [isLoading, setIsLoading] = useState(false)
 
@@ -108,8 +108,8 @@ const App =() => {
     for (let i = 10; i < pageSize; i++) {
         datas.push(`${i} Item`)
     }
-    setsourceData((sourceData) => {
-        return [...sourceData, ...datas]
+    setsourceData((list) => {
+        return [...list, ...datas]
     })
   }, [])
 
@@ -141,7 +141,7 @@ const App =() => {
    <div style={{ height: '100%' }}>
           <VirtualList
             itemSize={80}
-            sourceData={sourceData}
+            list={list}
             ItemRender={ItemVariableDemo}
             onScroll={onScroll}
             itemEqualSize={false}
@@ -161,11 +161,11 @@ export default App;
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| sourceData | 获取数据 | `Array` | - |
+| list | 获取数据 | `Array` | - |
 | containerSize | 容器高度 | `number` | `获取元素的 offsetHeight，需要 css 给出` |
 | ItemRender | virtual 列表父节点渲染的函数 | `React.FC` | - |
 | itemEqualSize | item大小是否一致 | `boolean` | `true` |
 | itemSize | item高度，如果不定高，会走默认高度 | `string` | `66` |
 | overscan | 除了视窗里面默认的元素, 还需要额外渲染的item个数 | `number` | `2` |
-| key | 唯一值 ,Item(sourceData)具体的某个唯一值的字段 | `string` | `index` |
+| key | 唯一值 ,Item(list)具体的某个唯一值的字段 | `string` | `index` |
 | onScroll | 滑动到底(右)的事件，可以实现无限滚动 | `(event) => void` | - |

@@ -14,7 +14,7 @@ import { binarySearch, initPositinoCache, updateItemSize } from './utils'
 export type VirtualListProps = {
   className?: string | any
   style?: React.CSSProperties
-  sourceData: any // 获取数据
+  list: any // 获取数据
   containerSize?: number // 容器大小
   ItemRender?: any // virtual 列表父节点渲染的函数，默认为 (items, ref) => <div ref={ref}>{items}</div>
   itemEqualSize?: boolean // item 固定大小，默认是true
@@ -25,7 +25,7 @@ export type VirtualListProps = {
   locale?: any
 }
 const defaultProps = {
-  sourceData: [],
+  list: [],
   itemSize: 66,
   itemEqualSize: true,
   overscan: 2,
@@ -38,7 +38,7 @@ export const VirtualList: FunctionComponent<
   VirtualListProps & React.HTMLAttributes<HTMLDivElement>
 > = (props: VirtualListProps) => {
   const {
-    sourceData = [],
+    list = [],
     ItemRender,
     itemSize = 66,
     itemEqualSize = true,
@@ -55,7 +55,6 @@ export const VirtualList: FunctionComponent<
 
   const [startOffset, setStartOffset] = useState(0)
   const [start, setStart] = useState(0)
-  const [list, setList] = useState(sourceData.slice())
 
   const { locale } = useConfig()
   // 虚拟列表容器ref
@@ -84,12 +83,6 @@ export const VirtualList: FunctionComponent<
     endIndex: 10, // 可视区域结束索引
   })
 
-  useEffect(() => {
-    if (sourceData.length) {
-      setList(sourceData.slice())
-    }
-  }, [sourceData])
-
   //   初始计算可视区域展示数量
   useEffect(() => {
     setPositions((options) => {
@@ -104,15 +97,15 @@ export const VirtualList: FunctionComponent<
   }, [containerSize])
 
   useEffect(() => {
-    const pos = initPositinoCache(itemSize, sourceData.length)
+    const pos = initPositinoCache(itemSize, list.length)
 
     setPositions(pos)
-  }, [itemSize, sourceData])
+  }, [itemSize, list])
 
   // 可视区域总高度
   const getContainerHeight = () => {
     // 初始首页列表高度
-    const initH = itemSize * sourceData.length
+    const initH = itemSize * list.length
     // 未设置containerSize高度，判断首页高度小于设备高度时，滚动容器高度为首页数据高度，减5为分页触发的偏移量
     return initH < clientHeight
       ? initH + overscan * itemSize - 5

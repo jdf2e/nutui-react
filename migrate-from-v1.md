@@ -433,6 +433,7 @@
 #### TrendArrow
 #### Video
 #### VirtualList
+- sourceData 重命名为 list
 #### WaterMark
 
 ### 特色组件

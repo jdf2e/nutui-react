@@ -21,7 +21,7 @@ import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } f
 import { VirtualList } from '@nutui/nutui-react';
 
 const App =() => {
-  const [sourceData, setsourceData] = useState([])
+  const [list, setsourceData] = useState([])
   const [pageNo, setPageNo] = useState(1)
   const getData = useCallback(() => {
     const datas = []
@@ -29,8 +29,8 @@ const App =() => {
     for (let i = 10; i < pageSize; i++) {
       datas.push(`${i} Item`)
     }
-    setsourceData((sourceData) => {
-      return [...sourceData, ...datas]
+    setsourceData((list) => {
+      return [...list, ...datas]
     })
   }, [])
   useEffect(() => {
@@ -44,7 +44,7 @@ const App =() => {
    <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
          <VirtualList
             itemSize={66}
-            sourceData={sourceData}
+            list={list}
             ItemRender={ItemRenderMemo}
           />
   </div>
@@ -64,7 +64,7 @@ import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } f
 import { VirtualList } from '@nutui/nutui-react';
 
 const App =() => {
-  const [sourceData, setsourceData] = useState([])
+  const [list, setsourceData] = useState([])
   const [pageNo, setPageNo] = useState(1)
   const getData = useCallback(() => {
     const datas = []
@@ -72,8 +72,8 @@ const App =() => {
     for (let i = 10; i < pageSize; i++) {
       datas.push(`${i} Item`)
     }
-    setsourceData((sourceData) => {
-      return [...sourceData, ...datas]
+    setsourceData((list) => {
+      return [...list, ...datas]
     })
   }, [])
  const onScroll = () => {
@@ -93,7 +93,7 @@ const App =() => {
   return (
    <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
            <VirtualList
-            sourceData={sourceData}
+            list={list}
             ItemRender={ItemVariableDemo}
             itemSize={128}
             itemEqualSize={false}
@@ -116,7 +116,7 @@ import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } f
 import { VirtualList } from '@nutui/nutui-react';
 
 const App =() => {
-  const [sourceData, setsourceData] = useState([])
+  const [list, setsourceData] = useState([])
   const [pageNo, setPageNo] = useState(1)
   const getData = useCallback(() => {
     const datas = []
@@ -124,8 +124,8 @@ const App =() => {
     for (let i = 10; i < pageSize; i++) {
       datas.push(`${i} Item`)
     }
-    setsourceData((sourceData) => {
-      return [...sourceData, ...datas]
+    setsourceData((list) => {
+      return [...list, ...datas]
     })
   }, [])
   useEffect(() => {
@@ -138,7 +138,7 @@ const App =() => {
   return (
    <div className='nut-virtualList-demo-box  hideScrollbar'>
            <VirtualList
-            sourceData={sourceData}
+            list={list}
             ItemRender={ItemRenderMemo}
             itemSize={124}
             horizontal
@@ -160,7 +160,7 @@ import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } f
 import { VirtualList } from '@nutui/nutui-react';
 
 const App =() => {
-  const [sourceData, setsourceData] = useState([])
+  const [list, setsourceData] = useState([])
 
   const getData = useCallback(() => {
     const datas = []
@@ -168,8 +168,8 @@ const App =() => {
     for (let i = 10; i < pageSize; i++) {
       datas.push(`${i} Item`)
     }
-    setsourceData((sourceData) => {
-      return [...sourceData, ...datas]
+    setsourceData((list) => {
+      return [...list, ...datas]
     })
   }, [])
  const onScroll = () => {
@@ -189,7 +189,7 @@ const App =() => {
   return (
    <div className='nut-virtualList-demo-box  hideScrollbar'>
           <VirtualList
-            sourceData={sourceData}
+            list={list}
             itemSize={300}
             ItemRender={ItemVariableDemo}
             horizontal
@@ -210,12 +210,12 @@ export default App;
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| sourceData | source data | `Array` | - |
+| list | source data | `Array` | - |
 | containerSize | container height | `number` | `Get the element offsetWidth or offsetHeight, which is given by CSS` |
 | ItemRender | virtual function rendered by the parent of the list | `React.FC` | - |
 | itemSize | Item height, if not height, the first screen single maximum size | `string` | - |
 | itemEqualSize | the sizes of items are consistent | `boolean` | `true` |
 | overscan | In addition to the default elements in the viewport, there is an additional number of items to render | `number` | `2` |
-| key | Unique value,Item(sourceData) Specifies a field with a unique value | `string` | `index` |
+| key | Unique value,Item(list) Specifies a field with a unique value | `string` | `index` |
 | horizontal | horizontal or vertical | `boolean` | `false` |
 | onScroll | scroll event | `(event) => void` | - |

@@ -22,7 +22,7 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
   props: VirtualListProps
 ) => {
   const {
-    sourceData = [],
+    list = [],
     ItemRender,
     itemEqualSize = true,
     itemSize = 200,
@@ -71,11 +71,11 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
 
   // 列表位置信息
   useEffect(() => {
-    const pos = initPositinoCache(itemSize, sourceData.length)
+    const pos = initPositinoCache(itemSize, list.length)
     setPositions(pos)
     const totalSize = getListTotalSize(pos, horizontal)
     setListTotalSize(totalSize)
-  }, [sourceData, itemSize, horizontal])
+  }, [list, itemSize, horizontal])
   const getElement = useCallback(() => {
     return scrollRef.current?.parentElement || document.body
   }, [])
@@ -117,7 +117,7 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
         updateTotalSize()
       }
       const endIndex = getEndIndex({
-        sourceData,
+        list,
         startIndex,
         visibleCount,
         itemEqualSize,
@@ -129,7 +129,7 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
       const startOffset = positions[startIndex][offsetKey] as number
       setOptions({ startOffset, startIndex, overStart, endIndex })
       // 无限下滑
-      if (endIndex > sourceData.length - 1) {
+      if (endIndex > list.length - 1) {
         if (onScroll) {
           onScroll()
         } else if (handleScroll) {
@@ -140,7 +140,7 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
   }, [
     positions,
     getElement,
-    sourceData,
+    list,
     visibleCount,
     itemEqualSize,
     updateTotalSize,
@@ -192,7 +192,7 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
               : `translate3d(0,${options.startOffset}px,0)`,
           }}
         >
-          {sourceData
+          {list
             .slice(options.overStart, options.endIndex)
             .map((data, index) => {
               const { startIndex, overStart } = options

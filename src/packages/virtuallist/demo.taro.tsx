@@ -30,7 +30,7 @@ const ListDemo = () => {
       text4: 'Horizontal unequal width',
     },
   })
-  const [sourceData, setsourceData] = useState<any>([])
+  const [list, setsourceData] = useState<any>([])
   const [pageNo, setPageNo] = useState(1)
   const [radioVal, setRadioVal] = useState('1')
   const [isLoading, setIsLoading] = useState(false)
@@ -71,8 +71,8 @@ const ListDemo = () => {
         return datas
       })
     } else {
-      setsourceData((sourceData: any) => {
-        return [...sourceData, ...datas]
+      setsourceData((list: any) => {
+        return [...list, ...datas]
       })
     }
   }, [pageNo])
@@ -114,7 +114,7 @@ const ListDemo = () => {
         return (
           <VirtualList
             itemSize={50}
-            sourceData={sourceData}
+            list={list}
             ItemRender={ItemRenderMemo}
             onScroll={onScroll}
           />
@@ -123,7 +123,7 @@ const ListDemo = () => {
         return (
           <VirtualList
             itemSize={80}
-            sourceData={sourceData}
+            list={list}
             ItemRender={ItemVariableDemo}
             onScroll={onScroll}
             itemEqualSize={false}
@@ -134,7 +134,7 @@ const ListDemo = () => {
         return (
           <VirtualList
             itemSize={50}
-            sourceData={sourceData}
+            list={list}
             ItemRender={ItemRenderMemo}
             onScroll={onScroll}
           />

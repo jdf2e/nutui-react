@@ -7,7 +7,7 @@ import '@testing-library/jest-dom'
 import { VirtualList } from '../virtuallist'
 
 const props = {
-  sourceData: new Array(100).fill(0),
+  list: new Array(100).fill(0),
 }
 describe('props', () => {
   const { getByTestId } = render(
