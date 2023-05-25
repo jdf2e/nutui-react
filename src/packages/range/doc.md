@@ -26,7 +26,7 @@ const App = () => {
     padding: '40px 18px',
   };
   return <Cell style={cellStyle}>
-    <Range defaultValue={40} onEnd={(val) => Toast.text(`${val}`)} />
+    <Range defaultValue={40} onEnd={(val) => Toast.show(`${val}`)} />
   </Cell>
 };
 export default App;
@@ -74,7 +74,7 @@ const App = () => {
       minDescription="0%"
       maxDescription="100%"
       currentDescription={(value) => `${value}%`}
-      onEnd={(val) => Toast.text(`${val}`)}
+      onEnd={(val) => Toast.show(`${val}`)}
     />
   </Cell>
 };
@@ -99,7 +99,7 @@ const App = () => {
     <Range
       defaultValue={[20, 80]}
       range
-      onEnd={(val) => Toast.text(`${val}`)}
+      onEnd={(val) => Toast.show(`${val}`)}
     />
   </Cell>
 };
@@ -125,7 +125,7 @@ const App = () => {
       defaultValue={0}
       max={10}
       min={-10}
-      onEnd={(val) => Toast.text(`${val}`)}
+      onEnd={(val) => Toast.show(`${val}`)}
     />
   </Cell>
 };
@@ -150,7 +150,7 @@ const App = () => {
     <Range
       defaultValue={30}
       step={5}
-      onEnd={(val) => Toast.text(`${val}`)}
+      onEnd={(val) => Toast.show(`${val}`)}
     />
   </Cell>
 };
@@ -176,7 +176,7 @@ const App = () => {
       defaultValue={30}
       maxDescription={null}
       minDescription={null}
-      onEnd={(val) => Toast.text(`${val}`)}
+      onEnd={(val) => Toast.show(`${val}`)}
     />
   </Cell>
 };
@@ -201,7 +201,7 @@ const App = () => {
     <Range
       defaultValue={20}
       currentDescription={null}
-      onEnd={(val) => Toast.text(`${val}`)}
+      onEnd={(val) => Toast.show(`${val}`)}
     />
   </Cell>
 };
@@ -328,7 +328,7 @@ const App = () => {
       <Range
         defaultValue={20}
         vertical
-        onEnd={(val) => Toast.text(`${val}`)}
+        onEnd={(val) => Toast.show(`${val}`)}
       />
     </div>
     <div style={{ width: '150px', height: '100%' }}>
@@ -336,7 +336,7 @@ const App = () => {
         defaultValue={[20, 80]}
         vertical
         range
-        onEnd={(val) => Toast.text(`${val}`)}
+        onEnd={(val) => Toast.show(`${val}`)}
       />
     </div>
   </Cell>
@@ -369,7 +369,7 @@ const App = () => {
         maxDescription={null}
         minDescription={null}
         marks={marks}
-        onEnd={(val) => Toast.text(`${val}`)}
+        onEnd={(val) => Toast.show(`${val}`)}
       />
     </Cell>
     <Cell style={cellStyle}>
@@ -377,7 +377,7 @@ const App = () => {
         defaultValue={[20, 80]}
         marks={marks}
         range
-        onEnd={(val) => Toast.text(`${val}`)}
+        onEnd={(val) => Toast.show(`${val}`)}
       />
     </Cell>
     <Cell style={verticalStyle}>
@@ -387,14 +387,14 @@ const App = () => {
         maxDescription={null}
         minDescription={null}
         marks={marks}
-        onEnd={(val) => Toast.text(`${val}`)}
+        onEnd={(val) => Toast.show(`${val}`)}
       />
       <Range
         defaultValue={[20, 80]}
         vertical
         marks={marks}
         range
-        onEnd={(val) => Toast.text(`${val}`)}
+        onEnd={(val) => Toast.show(`${val}`)}
       />
     </Cell>
   </>

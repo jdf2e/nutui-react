@@ -9,19 +9,19 @@ import Cell from '@/packages/cell'
 const onClickToast = jest.fn((type, msg, options?) => {
   switch (type) {
     case 'text':
-      Toast.text(msg, options)
+      Toast.show({ content: msg, ...options })
       break
     case 'success':
-      Toast.success(msg, options)
+      Toast.show({ content: msg, icon: 'success', ...options })
       break
     case 'fail':
-      Toast.fail(msg, options)
+      Toast.show({ content: msg, icon: 'fail', ...options })
       break
     case 'warn':
-      Toast.warn(msg, options)
+      Toast.show({ content: msg, icon: 'warn', ...options })
       break
     case 'loading':
-      Toast.loading(msg, options)
+      Toast.show({ content: msg, icon: 'loading', ...options })
       break
     default:
       break

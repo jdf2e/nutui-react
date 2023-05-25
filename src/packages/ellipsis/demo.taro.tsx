@@ -13,6 +13,7 @@ interface T {
   expandCollapse: string
   expand: string
   collapse: string
+  width: string
 }
 const EllipsisDemo = () => {
   const [translated] = useTranslate<T>({
@@ -25,6 +26,7 @@ const EllipsisDemo = () => {
       expandCollapse: '展开收起',
       expand: '展开',
       collapse: '收起',
+      width: '宽度',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -35,6 +37,7 @@ const EllipsisDemo = () => {
       expandCollapse: 'Expand & Collapse',
       expand: 'expand',
       collapse: 'collapse',
+      width: 'width',
     },
   })
   const content =
@@ -87,6 +90,10 @@ const EllipsisDemo = () => {
             expandText={translated.expand}
             collapseText={translated.collapse}
           />
+        </Cell>
+        <h2>{translated.width}</h2>
+        <Cell>
+          <Ellipsis content={content} direction="start" width={100} />
         </Cell>
       </div>
     </>

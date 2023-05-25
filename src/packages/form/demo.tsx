@@ -172,12 +172,12 @@ const FormDemo = () => {
   }
 
   const submitFailed = (error: any) => {
-    Toast.fail('callback: submitFailed error')
+    Toast.show({ content: 'callback: submitFailed error', icon: 'fail' })
     console.log('failed error', error)
   }
 
   const submitSucceed = (obj: any) => {
-    Toast.success('succeed')
+    Toast.show({ content: 'succeed', icon: 'success' })
     console.log('succeed', obj)
   }
 

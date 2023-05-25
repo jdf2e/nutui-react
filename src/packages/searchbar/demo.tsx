@@ -95,13 +95,13 @@ const SearchBarDemo = () => {
             nutuiSearchbarInputTextAlign: 'right',
           }}
         >
-          <SearchBar onSearch={(value) => Toast.text(value)} />
+          <SearchBar onSearch={(value) => Toast.show(value)} />
         </ConfigProvider>
         <h2>{translated.title4}</h2>
         <SearchBar
           left={translated.text}
           right={translated.test}
-          onSearch={(value) => Toast.text(value)}
+          onSearch={(value) => Toast.show(value)}
         />
         <h2>{translated.title5}</h2>
         <SearchBar
