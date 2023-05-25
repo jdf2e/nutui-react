@@ -14,7 +14,7 @@ describe('props', () => {
     <>
       <VirtualList {...props} itemHeight={40} data-testid="verticalList" />
       <VirtualList
-        horizontal
+        direction="horizontal"
         {...props}
         itemHeight={100}
         data-testid="horizontalList"
@@ -47,7 +47,7 @@ test('renders only visible items', async () => {
       containerHeight={boxHeight}
       itemHeight={itemHeight}
       data-testid="scrollList"
-      handleScroll={handleScroll}
+      onScroll={handleScroll}
     />
   )
 

@@ -26,20 +26,19 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
     ItemRender,
     itemEqual = true,
     itemHeight = 200,
-    horizontal = false,
+    direction = 'vertical',
     overscan = 2,
     key,
-    handleScroll,
     onScroll,
     className,
     containerHeight,
     ...rest
   } = props
+  const horizontal = direction === 'horizontal'
   const sizeKey = horizontal ? 'width' : 'height'
   const scrollKey = horizontal ? 'scrollLeft' : 'scrollTop'
   const offsetKey = horizontal ? 'left' : 'top'
 
-  const { locale } = useConfig()
   // 虚拟列表容器ref
   const scrollRef = useRef<HTMLDivElement>(null)
   // 虚拟列表显示区域ref
@@ -132,8 +131,6 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
       if (endIndex > list.length - 1) {
         if (onScroll) {
           onScroll()
-        } else if (handleScroll) {
-          handleScroll()
         }
       }
     })
@@ -149,7 +146,6 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
     scrollKey,
     horizontal,
     overscan,
-    handleScroll,
     offSetSize,
   ])
 

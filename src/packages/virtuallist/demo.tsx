@@ -106,7 +106,7 @@ const ListDemo = () => {
             itemHeight={124}
             containerHeight={341}
             onScroll={onScroll}
-            horizontal
+            direction="horizontal"
           />
         )
       case '4':
@@ -115,7 +115,7 @@ const ListDemo = () => {
             list={list}
             itemHeight={300}
             ItemRender={ItemVariableDemo}
-            horizontal
+            direction="horizontal"
             itemEqual={false}
             onScroll={onScroll}
           />

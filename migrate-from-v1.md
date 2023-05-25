@@ -437,6 +437,7 @@
 - conatinerSize 重命名为 containerHeight
 - itemSize 重命名为 itemHeight
 - itemEqualSize 重命名为 itemEqual
+- horizontal 修改为 direction，默认值 vertical，可选值 horizontal
 #### WaterMark
 
 ### 特色组件

@@ -49,14 +49,10 @@ export const VirtualList: FunctionComponent<
     containerHeight = clientHeight,
     ...rest
   } = props
-  //   const sizeKey = horizontal ? 'width' : 'height'
-  //   const scrollKey = horizontal ? 'scrollLeft' : 'scrollTop'
-  //   const offsetKey = horizontal ? 'left' : 'top'
 
   const [startOffset, setStartOffset] = useState(0)
   const [start, setStart] = useState(0)
 
-  const { locale } = useConfig()
   // 虚拟列表容器ref
   const scrollRef = useRef<HTMLDivElement>(null)
   // 虚拟列表显示区域ref
