@@ -1,20 +1,22 @@
-#  VirtualList 虚拟列表
+# VirtualList 虚拟列表
 
-### 介绍
+## 介绍
 
-在正常的列表展示以及上拉加载中，我们通常使用 NutUI-React 提供的 滚动加载 组件，那如果我们加载的数据量非常大时，则可能会产生严重的性能问题，导致视图无法响应操作一段时间，这时候我们就用到了虚拟列表组件 List，它可以保证只渲染当前可视区域，其他部分在用户滚动到可视区域内之后再渲染。保证了页面流程度，提升性能。
+在正常的列表展示以及上拉加载中，我们通常使用 NutUI-React 提供的 滚动加载 组件，那如果我们加载的数据量非常大时，则可能会产生严重的性能问题，导致视图无法响应操作一段时间，这时候我们就用到了虚拟列表组件 VirtualList，它可以保证只渲染当前可视区域，其他部分在用户滚动到可视区域内之后再渲染。保证了页面流程度，提升性能。
 
-### 安装
+## 安装
+
 ```javascript
 import { VirtualList } from '@nutui/nutui-react';
 ```
-## 代码演示
 
+## 代码演示
 
 ### 1、基础用法-垂直等高
 
 :::demo
-``` tsx
+
+```tsx
 import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
 import { VirtualList } from '@nutui/nutui-react';
 
@@ -50,11 +52,14 @@ const App =() => {
 }
 export default App;
 ```
+
 :::
+
 ### 2、垂直不等高&无限下滑
 
 :::demo
-``` tsx
+
+```tsx
 import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
 import { VirtualList } from '@nutui/nutui-react';
 
@@ -99,12 +104,14 @@ const App =() => {
 }
 export default App;
 ```
+
 :::
 
 ### 3、水平等宽
 
 :::demo
-``` tsx
+
+```tsx
 import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
 import { VirtualList } from '@nutui/nutui-react';
 
@@ -141,11 +148,14 @@ const App =() => {
 }
 export default App;
 ```
+
 :::
+
 ### 4、水平不等宽&无限滑动
 
 :::demo
-``` tsx
+
+```tsx
 import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
 import { VirtualList } from '@nutui/nutui-react';
 
@@ -191,26 +201,21 @@ const App =() => {
 }
 export default App;
 ```
+
 :::
-## API
+
+## VirtualList
 
 ### Props
 
-| 属性 | 说明                               | 类型       | 默认值                                   |
-|---------------|----------------------------------|----------|---------------------------------------|
-| sourceData    | 获取数据                             | Array    | -                                     |
-| containerSize | 容器高度                             | number   | 获取元素的 offsetWidth 或 offsetHeight，需要 css 给出 |
-| ItemRender    | virtual 列表父节点渲染的函数               | React.FC | -                                     |
-| itemSize      | item高度，如果不定高，则为首屏单个最大size        | string   | -                                     |
-| itemEqualSize | item大小是否一致                       | boolean  | `true`                                  |
-| overscan      | 除了视窗里面默认的元素, 还需要额外渲染的item个数      | number   | `2`                                     |
-| key           | 唯一值 ,Item(sourceData)具体的某个唯一值的字段 | string   | `index`                                 |
-| horizontal    | 决定列表是横向的还是纵向的                    | boolean  | `false`                                 |
-## Events
-| 方法名              | 说明                  | 参数            | 返回值     |
-|------------------|---------------------| --------------- | ---------- |
-| handleScroll`废弃` | 滑动到底(右)的事件，可以实现无限滚动 |        -        |      -    |
-| onScroll  | 滑动到底(右)的事件，可以实现无限滚动 |        -        |      -    |
-
-
-
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| sourceData | 获取数据 | `Array` | - |
+| containerSize | 容器高度 | `number` | `获取元素的 offsetWidth 或 offsetHeight，需要 css 给出` |
+| ItemRender | virtual 列表父节点渲染的函数 | `React.FC` | - |
+| itemSize | item高度，如果不定高，则为首屏单个最大size | `string` | - |
+| itemEqualSize | item大小是否一致 | `boolean` | `true` |
+| overscan | 除了视窗里面默认的元素, 还需要额外渲染的item个数 | `number` | `2` |
+| key | 唯一值 ,Item(sourceData)具体的某个唯一值的字段 | `string` | `index` |
+| horizontal | 决定列表是横向的还是纵向的 | `boolean` | `false` |
+| onScroll | 滑动到底(右)的事件，可以实现无限滚动 | `(event) => void` | - |
