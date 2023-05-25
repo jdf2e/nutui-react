@@ -12,7 +12,6 @@ import { binarySearch, initPositinoCache, updateItemSize } from './utils'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 const clientHeight = getSystemInfoSync().windowHeight - 5 || 667
-// const clientWidth = getSystemInfoSync().windowWidth || 375
 
 export interface VirtualListProps extends BasicComponent {
   list: Array<Data>
