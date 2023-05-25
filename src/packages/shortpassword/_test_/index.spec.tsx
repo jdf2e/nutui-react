@@ -5,37 +5,34 @@ import '@testing-library/jest-dom'
 import { ShortPassword } from '../shortpassword'
 
 test('should render shortpassword when visible is true', async () => {
-  const { container } = render(<ShortPassword visible modelValue={123} />)
-  const input = container.querySelector('.nut-shortpassword__input-real')
-  expect(input).toBeTruthy()
-  const psdLength = container.querySelectorAll(
-    '.nut-shortpassword__input-fake__li'
+  const { container } = render(<ShortPassword visible value="123" />)
+  const li = container.querySelectorAll('.nut-shortpassword__input-fake__li')
+  expect(li.length).toBe(6)
+  const icon = container.querySelectorAll(
+    '.nut-shortpassword__input-fake__li__icon'
   )
-  expect(psdLength.length).toBe(6)
-  expect((input as HTMLInputElement).value).toBe('123')
+  expect(icon.length).toBe(3)
 })
-test('should render buttonShortpassword and error msg when noButton is false ', () => {
+test('should render buttonShortpassword and error msg when hideFooter is false ', () => {
   let value = 0
-  let inputValue: number | string = ''
+  let inputValue = ''
   const onCancel = () => {
     value = 1
   }
-  const onOk = (value: number | string) => {
+  const onConfirm = (value: string) => {
     inputValue = value
   }
   const { container } = render(
     <ShortPassword
       visible
-      modelValue={123}
+      value="123"
       length={4}
-      noButton={false}
-      errorMsg="错误信息"
+      hideFooter={false}
+      error="错误信息"
       onCancel={onCancel}
-      onOk={onOk}
+      onConfirm={onConfirm}
     />
   )
-  const input = container.querySelector('.nut-shortpassword__input-real')
-  expect(input).toBeTruthy()
   const psdLength = container.querySelectorAll(
     '.nut-shortpassword__input-fake__li'
   )
@@ -50,20 +47,24 @@ test('should render buttonShortpassword and error msg when noButton is false ', 
   fireEvent.click(cancle as HTMLElement)
   expect(value).toBe(1)
   fireEvent.click(sure as HTMLElement)
-  expect(inputValue).toBe(123)
+  expect(inputValue).toBe('123')
 })
 
 test('should limit input value when input', async () => {
-  let value = 0
-  const onChange = (v: string | number) => {
-    value = Number(v)
+  let inputValue = ''
+  const onChange = (value: string) => {
+    inputValue = value
   }
   const { container } = render(
-    <ShortPassword visible modelValue={123} length={4} onChange={onChange} />
+    <ShortPassword
+      visible
+      value="123456789"
+      hideFooter={false}
+      onChange={onChange}
+    />
   )
-  container.querySelector('input')?.focus()
-  fireEvent.change(container.querySelector('input')!, {
-    target: { value: '111111' },
-  })
-  expect(value).toBe(1111)
+  const sure = container.querySelector('.nut-shortpassword__footer__sure')
+  expect(sure).toBeTruthy()
+  fireEvent.click(sure as HTMLElement)
+  expect(inputValue).toBe('123456')
 })

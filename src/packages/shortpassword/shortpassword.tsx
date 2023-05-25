@@ -1,225 +1,165 @@
-import React, {
-  CSSProperties,
-  FunctionComponent,
-  useEffect,
-  useRef,
-  useState,
-} from 'react'
+import React, { FunctionComponent, ReactNode, useEffect, useMemo } from 'react'
 import { Tips } from '@nutui/icons-react'
-import bem from '@/utils/bem'
+import classNames from 'classnames'
 import Popup from '@/packages/popup'
 import { useConfig } from '@/packages/configprovider'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
+import { PopupProps } from '../popup/popup'
+import { usePropsValue } from '@/utils/use-props-value'
 
-export interface ShortPasswordProps extends BasicComponent {
-  title: string
-  description: string
-  tips: string
-  tipsIcon: React.ReactNode
-  iconSize: string | number
+export interface ShortPasswordProps extends PopupProps {
+  value: string
   visible: boolean
-  modelValue: string | number
-  errorMsg: string
-  noButton: boolean
-  closeOnClickOverlay: boolean
-  length: string | number
-  className: string
-  style?: CSSProperties
-  autoFocus?: boolean
-  onChange: (value: string | number) => void
-  onOk: (value: string | number) => void
+  plain: boolean
+  title: ReactNode
+  description: ReactNode
+  tips: ReactNode
+  hideFooter: boolean
+  length: number
+  error: ReactNode
+  autoFocus: boolean
+  onFocus: () => void
+  onChange: (value: string) => void
+  onConfirm: (value: string) => void
   onCancel: () => void
   onClose: () => void
   onTips: () => void
-  onComplete: (value: string | number) => void
+  onComplete: (value: string) => void
 }
 
 const defaultProps = {
   ...ComponentDefaults,
-  title: '',
-  description: '',
-  tips: '',
-  tipsIcon: null,
-  iconSize: 11,
+  value: '',
   visible: false,
-  modelValue: '',
-  errorMsg: '',
-  noButton: true,
-  closeOnClickOverlay: true,
+  plain: false,
+  hideFooter: true,
   length: 6, // 1~6
-  className: '',
   autoFocus: false,
-  onChange: (value: number | string) => {},
-  onOk: (value: number | string) => {},
-  onCancel: () => {},
-  onClose: () => {},
-  onTips: () => {},
-  onComplete: (value: number | string) => {},
 } as ShortPasswordProps
-export const ShortPassword: FunctionComponent<
-  Partial<ShortPasswordProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
-> = (props) => {
+export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
+  props
+) => {
   const { locale } = useConfig()
   const {
     title,
     description,
     tips,
-    tipsIcon,
-    iconSize,
     visible,
-    modelValue,
-    errorMsg,
-    noButton,
-    closeOnClickOverlay,
+    value,
+    error,
+    hideFooter,
     length,
+    plain,
     style,
     className,
+    closeable,
+    autoFocus,
+    onFocus,
     onChange,
-    onOk,
+    onConfirm,
     onTips,
     onCancel,
     onClose,
     onComplete,
-    autoFocus,
-    ...reset
-  } = props
-  const b = bem('shortpassword')
-  const textInput = useRef<HTMLInputElement>(null)
-  const range = (val: number) => {
-    return Math.min(Math.max(4, val), 6)
+    onClickOverlay,
+    onClickCloseIcon,
+    ...rest
+  } = {
+    ...defaultProps,
+    ...props,
   }
-  const [innerVisible, setInnerVisible] = useState<boolean | undefined>(visible)
-  const [comLen, setComLen] = useState<number>(range(Number(length)))
-  const [inputValue, setInputValue] = useState<number | string>('')
+  const classPrefix = 'nut-shortpassword'
+  const comLen = useMemo(() => {
+    return Math.min(Math.max(4, length || 4), 6)
+  }, [length])
+  const format = (val: string) => {
+    return val.slice(0, comLen)
+  }
+  const [inputValue, setInputValue] = usePropsValue<string>({ value, onChange })
   useEffect(() => {
-    setInnerVisible(visible)
+    if (visible && autoFocus) {
+      onFocus && onFocus()
+    }
   }, [visible])
   useEffect(() => {
-    if (typeof modelValue !== 'undefined') {
-      setInputValue(modelValue)
+    const val = format(value)
+    if (val.length >= comLen) {
+      onComplete && onComplete(val)
     }
-  }, [modelValue])
-  const changeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let inputValue = e.target.value
-    if (String(inputValue).length > comLen) {
-      inputValue = inputValue.slice(0, comLen)
-    }
-    setInputValue(inputValue)
-    if (String(inputValue).length === comLen) {
-      onComplete && onComplete(inputValue)
-    }
-    onChange && onChange(inputValue)
-  }
-  const systemStyle = () => {
-    const u = navigator.userAgent
-    const isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1 // g
-    const isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/) // ios终端
-    let style = {}
-    if (isIOS) {
-      style = {
-        paddingRight: '1200px',
-      }
-    }
-    if (isAndroid) {
-      style = {
-        opacity: 0,
-        zIndex: 10,
-      }
-    }
-    return style
-  }
-  const focus = () => {
-    if (textInput.current) {
-      textInput.current.focus()
-    }
-  }
+    setInputValue(format(value))
+  }, [value])
   const sure = () => {
-    onOk && onOk(inputValue)
-  }
-
-  const renderIcon = (size: string | number = '11px') => {
-    return React.isValidElement(tipsIcon) ? (
-      React.cloneElement<any>(tipsIcon, {
-        ...tipsIcon.props,
-        width: size,
-        height: size,
-      })
-    ) : (
-      <Tips width={size} height={size} />
-    )
+    onConfirm && onConfirm(inputValue)
   }
 
   return (
-    <div>
-      <Popup
-        style={{
-          padding: '32px 24px 28px 24px',
-          borderRadius: '12px',
-          textAlign: 'center',
-        }}
-        visible={innerVisible}
-        closeable
-        close-on-click-overlay={closeOnClickOverlay}
-        onClickOverlay={onClose}
-        onClickCloseIcon={onClose}
-      >
-        <div className={`${b()} ${className}`} style={{ ...style }} {...reset}>
-          <div className={b('title')}>
-            {title || locale.shortpassword.title}
-          </div>
-          <div className={b('subtitle')}>
-            {description || locale.shortpassword.description}
-          </div>
-
-          <div className={b('input')}>
-            <input
-              ref={textInput}
-              className={b('input-real')}
-              type="number"
-              style={systemStyle()}
-              maxLength={6}
-              value={inputValue}
-              autoFocus={autoFocus}
-              onChange={(e) => changeValue(e)}
-            />
-            <div className={b('input-site')} />
-            <div className={b('input-fake')} onClick={() => focus()}>
-              {[...new Array(comLen).keys()].map((item, index) => {
-                return (
-                  <div className={b('input-fake__li')} key={index}>
-                    {String(inputValue).length > index ? (
-                      <div className={b('input-fake__li__icon')} />
-                    ) : null}
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-          <div className={b('message')}>
-            <div className={b('message__error')}>{errorMsg}</div>
-            {tips || locale.shortpassword.tips ? (
-              <div className={b('message__forget')}>
-                {renderIcon(iconSize)}
-                <div className={b('message__forget-tips')} onClick={onTips}>
-                  {tips || locale.shortpassword.tips}
-                </div>
-              </div>
-            ) : null}
-          </div>
-          {!noButton ? (
-            <div className={b('footer')}>
-              <div className={b('footer__cancel')} onClick={onCancel}>
-                {locale.cancel}
-              </div>
-              <div className={b('footer__sure')} onClick={() => sure()}>
-                {locale.confirm}
-              </div>
-            </div>
-          ) : null}
+    <Popup
+      style={{
+        padding: '32px 24px 28px 24px',
+        borderRadius: '12px',
+        textAlign: 'center',
+      }}
+      visible={visible}
+      closeable
+      onClickOverlay={onClose}
+      onClickCloseIcon={onClose}
+      {...rest}
+    >
+      <div className={classNames(className, classPrefix)} style={style}>
+        <div className={`${classPrefix}__title`}>
+          {title || locale.shortpassword.title}
         </div>
-      </Popup>
-    </div>
+        <div className={`${classPrefix}__description`}>
+          {description || locale.shortpassword.description}
+        </div>
+        <div className={`${classPrefix}__input`} onClick={onFocus}>
+          <div className={`${classPrefix}__input-site`} />
+          <div className={`${classPrefix}__input-fake`}>
+            {[...new Array(comLen).keys()].map((item, index) => {
+              return (
+                <div className={`${classPrefix}__input-fake__li`} key={index}>
+                  {inputValue.length > index && (
+                    <>
+                      {plain ? (
+                        inputValue[index]
+                      ) : (
+                        <div
+                          className={`${classPrefix}__input-fake__li__icon`}
+                        />
+                      )}
+                    </>
+                  )}
+                </div>
+              )
+            })}
+          </div>
+        </div>
+        <div className={`${classPrefix}__message`}>
+          <div className={`${classPrefix}__message__error`}>{error}</div>
+          <div className={`${classPrefix}__message__forget`} onClick={onTips}>
+            {tips || (
+              <>
+                <Tips width={11} height={11} style={{ marginRight: '3px' }} />
+                {locale.shortpassword.tips}
+              </>
+            )}
+          </div>
+        </div>
+        {!hideFooter && (
+          <div className={`${classPrefix}__footer`}>
+            <div
+              className={`${classPrefix}__footer__cancel`}
+              onClick={onCancel}
+            >
+              {locale.cancel}
+            </div>
+            <div className={`${classPrefix}__footer__sure`} onClick={sure}>
+              {locale.confirm}
+            </div>
+          </div>
+        )}
+      </div>
+    </Popup>
   )
 }
 
