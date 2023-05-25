@@ -364,7 +364,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
                 onPickStart={pickerStart}
                 onChange={pickerChange}
                 onPickEnd={pickerEnd}
-                className="picker-view-panel"
+                className="nut-picker-view-panel"
               >
                 {columnsList?.map((column, index) => {
                   return (
