@@ -23,7 +23,7 @@ export interface BasicVirtualListProps {
   list: Array<Data> // 获取数据
   containerHeight?: number // 容器大小
   ItemRender?: React.FC<any> // virtual 列表父节点渲染的函数，默认为 (items, ref) => <ul ref={ref}>{items}</ul>
-  itemSize?: number // 预估高度
+  itemHeight?: number // 预估高度
   itemEqualSize?: boolean // item 固定大小，默认是true
   horizontal?: boolean // true为水平的，false为垂直的， 默认为false
   overscan?: number // 除了视窗里面默认的元素, 还需要额外渲染的, 避免滚动过快, 渲染不及时,默认是2

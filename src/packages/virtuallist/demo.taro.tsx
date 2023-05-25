@@ -113,7 +113,7 @@ const ListDemo = () => {
       case '1':
         return (
           <VirtualList
-            itemSize={50}
+            itemHeight={50}
             list={list}
             ItemRender={ItemRenderMemo}
             onScroll={onScroll}
@@ -122,7 +122,7 @@ const ListDemo = () => {
       case '2':
         return (
           <VirtualList
-            itemSize={80}
+            itemHeight={80}
             list={list}
             ItemRender={ItemVariableDemo}
             onScroll={onScroll}
@@ -133,7 +133,7 @@ const ListDemo = () => {
       default:
         return (
           <VirtualList
-            itemSize={50}
+            itemHeight={50}
             list={list}
             ItemRender={ItemRenderMemo}
             onScroll={onScroll}

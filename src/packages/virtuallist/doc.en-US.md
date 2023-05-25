@@ -43,7 +43,7 @@ const App =() => {
   return (
    <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
          <VirtualList
-            itemSize={66}
+            itemHeight={66}
             list={list}
             ItemRender={ItemRenderMemo}
           />
@@ -95,7 +95,7 @@ const App =() => {
            <VirtualList
             list={list}
             ItemRender={ItemVariableDemo}
-            itemSize={128}
+            itemHeight={128}
             itemEqualSize={false}
             onScroll={onScroll}
           />
@@ -140,7 +140,7 @@ const App =() => {
            <VirtualList
             list={list}
             ItemRender={ItemRenderMemo}
-            itemSize={124}
+            itemHeight={124}
             horizontal
           />
   </div>
@@ -190,7 +190,7 @@ const App =() => {
    <div className='nut-virtualList-demo-box  hideScrollbar'>
           <VirtualList
             list={list}
-            itemSize={300}
+            itemHeight={300}
             ItemRender={ItemVariableDemo}
             horizontal
             itemEqualSize={false}
@@ -213,7 +213,7 @@ export default App;
 | list | source data | `Array` | - |
 | containerHeight | container height | `number` | `Get the element offsetWidth or offsetHeight, which is given by CSS` |
 | ItemRender | virtual function rendered by the parent of the list | `React.FC` | - |
-| itemSize | Item height, if not height, the first screen single maximum size | `string` | - |
+| itemHeight | Item height, if not height, the first screen single maximum size | `string` | - |
 | itemEqualSize | the sizes of items are consistent | `boolean` | `true` |
 | overscan | In addition to the default elements in the viewport, there is an additional number of items to render | `number` | `2` |
 | key | Unique value,Item(list) Specifies a field with a unique value | `string` | `index` |

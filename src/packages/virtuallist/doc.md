@@ -43,7 +43,7 @@ const App =() => {
   return (
    <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
          <VirtualList
-            itemSize={66}
+            itemHeight={66}
             list={list}
             ItemRender={ItemRenderMemo}
           />
@@ -95,7 +95,7 @@ const App =() => {
            <VirtualList
             list={list}
             ItemRender={ItemVariableDemo}
-            itemSize={128}
+            itemHeight={128}
             itemEqualSize={false}
             onScroll={onScroll}
           />
@@ -140,7 +140,7 @@ const App =() => {
            <VirtualList
             list={list}
             ItemRender={ItemRenderMemo}
-            itemSize={124}
+            itemHeight={124}
             horizontal
           />
   </div>
@@ -190,7 +190,7 @@ const App =() => {
    <div className='nut-virtualList-demo-box  hideScrollbar'>
           <VirtualList
             list={list}
-            itemSize={300}
+            itemHeight={300}
             ItemRender={ItemVariableDemo}
             horizontal
             itemEqualSize={false}
@@ -213,7 +213,7 @@ export default App;
 | list | 获取数据 | `Array` | - |
 | containerHeight | 容器高度 | `number` | `获取元素的 offsetWidth 或 offsetHeight，需要 css 给出` |
 | ItemRender | virtual 列表父节点渲染的函数 | `React.FC` | - |
-| itemSize | item高度，如果不定高，则为首屏单个最大size | `string` | - |
+| itemHeight | item高度，如果不定高，则为首屏单个最大size | `string` | - |
 | itemEqualSize | item大小是否一致 | `boolean` | `true` |
 | overscan | 除了视窗里面默认的元素, 还需要额外渲染的item个数 | `number` | `2` |
 | key | 唯一值 ,Item(list)具体的某个唯一值的字段 | `string` | `index` |

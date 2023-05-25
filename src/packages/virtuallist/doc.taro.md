@@ -66,7 +66,7 @@ const App =() => {
   return (
    <div style={{ height: '100%' }}>
           <VirtualList
-            itemSize={50}
+            itemHeight={50}
             list={list}
             ItemRender={ItemRenderMemo}
             onScroll={onScroll}
@@ -140,7 +140,7 @@ const App =() => {
   return (
    <div style={{ height: '100%' }}>
           <VirtualList
-            itemSize={80}
+            itemHeight={80}
             list={list}
             ItemRender={ItemVariableDemo}
             onScroll={onScroll}
@@ -165,7 +165,7 @@ export default App;
 | containerHeight | 容器高度 | `number` | `获取元素的 offsetHeight，需要 css 给出` |
 | ItemRender | virtual 列表父节点渲染的函数 | `React.FC` | - |
 | itemEqualSize | item大小是否一致 | `boolean` | `true` |
-| itemSize | item高度，如果不定高，会走默认高度 | `string` | `66` |
+| itemHeight | item高度，如果不定高，会走默认高度 | `string` | `66` |
 | overscan | 除了视窗里面默认的元素, 还需要额外渲染的item个数 | `number` | `2` |
 | key | 唯一值 ,Item(list)具体的某个唯一值的字段 | `string` | `index` |
 | onScroll | 滑动到底(右)的事件，可以实现无限滚动 | `(event) => void` | - |

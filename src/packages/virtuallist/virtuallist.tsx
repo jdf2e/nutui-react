@@ -25,7 +25,7 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
     list = [],
     ItemRender,
     itemEqualSize = true,
-    itemSize = 200,
+    itemHeight = 200,
     horizontal = false,
     overscan = 2,
     key,
@@ -71,11 +71,11 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
 
   // 列表位置信息
   useEffect(() => {
-    const pos = initPositinoCache(itemSize, list.length)
+    const pos = initPositinoCache(itemHeight, list.length)
     setPositions(pos)
     const totalSize = getListTotalSize(pos, horizontal)
     setListTotalSize(totalSize)
-  }, [list, itemSize, horizontal])
+  }, [list, itemHeight, horizontal])
   const getElement = useCallback(() => {
     return scrollRef.current?.parentElement || document.body
   }, [])
@@ -89,13 +89,13 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
   useEffect(() => {
     // 初始-计算visibleCount
     if (offSetSize === 0) return
-    const count = Math.ceil(offSetSize / itemSize) + overscan
+    const count = Math.ceil(offSetSize / itemHeight) + overscan
 
     setVisibleCount(count)
     setOptions((options) => {
       return { ...options, endIndex: count }
     })
-  }, [getElement, horizontal, itemSize, overscan, offSetSize])
+  }, [getElement, horizontal, itemHeight, overscan, offSetSize])
 
   const updateTotalSize = useCallback(() => {
     if (!itemsRef.current) return

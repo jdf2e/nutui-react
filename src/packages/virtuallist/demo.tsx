@@ -80,7 +80,7 @@ const ListDemo = () => {
       case '1':
         return (
           <VirtualList
-            itemSize={66}
+            itemHeight={66}
             className="heigh1"
             list={list}
             ItemRender={ItemRenderMemo}
@@ -92,7 +92,7 @@ const ListDemo = () => {
           <VirtualList
             list={list}
             ItemRender={ItemVariableDemo}
-            itemSize={128}
+            itemHeight={128}
             containerHeight={500}
             itemEqualSize={false}
             onScroll={onScroll}
@@ -103,7 +103,7 @@ const ListDemo = () => {
           <VirtualList
             list={list}
             ItemRender={ItemRenderMemo}
-            itemSize={124}
+            itemHeight={124}
             containerHeight={341}
             onScroll={onScroll}
             horizontal
@@ -113,7 +113,7 @@ const ListDemo = () => {
         return (
           <VirtualList
             list={list}
-            itemSize={300}
+            itemHeight={300}
             ItemRender={ItemVariableDemo}
             horizontal
             itemEqualSize={false}
@@ -123,7 +123,7 @@ const ListDemo = () => {
       default:
         return (
           <VirtualList
-            itemSize={66}
+            itemHeight={66}
             className="heigh1"
             list={list}
             ItemRender={ItemRenderMemo}
