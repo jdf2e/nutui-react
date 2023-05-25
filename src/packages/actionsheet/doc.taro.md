@@ -1,73 +1,75 @@
 # ActionSheet 动作面板
 
+## 介绍
 
-### 介绍
 从底部弹出的动作菜单面板。
 
-### 安装
+## 安装
 
 ```ts
 import { ActionSheet } from '@nutui/nutui-react-taro';
 ```
+
 ## 代码示例
 
 ### 基本用法
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { ActionSheet,Cell } from '@nutui/nutui-react-taro';
 
 interface Item {
   name: string
-  subname?: string
+  description?: string
   disable?: boolean
 }
 const App = () => {
   const [val1, setVal1] = useState('')
   const [isVisible1, setIsVisible1] = useState(false)
-  const menuItemsOne: ItemType<string>[] = [
+  const optionsOne: ItemType<string>[] = [
     {
-      name: '选项一',
+      name: '权限设置',
     },
     {
-      name: '选项二',
+      name: '重命名',
     },
     {
-      name: '选项三',
+      name: '删除',
     },
   ]
-  const chooseItem = (itemParams: any) => {
-    console.log(itemParams.name, 'itemParams')
-    setVal1(itemParams.name)
+  const chooseItem = (item: any) => {
+    setVal1(item.name)
     setIsVisible1(false)
   }
 
   return ( 
     <>   
-    <Cell  onClick={() => setIsVisible1(!isVisible1)}>
-      <span>
-        <label>基础用法</label>
-      </span>
-      <div className="selected-option">{val1}</div>
-    </Cell>
-            
-    <ActionSheet
-      visible={isVisible1}
-      menuItems={menuItemsOne}
-      onChoose={chooseItem}
-      onCancel={() => setIsVisible1(false)}
-     />
+      <Cell  onClick={() => setIsVisible1(!isVisible1)}>
+        <span>基础用法</span>
+        <div style={{ marginLeft: '10px' }}>{val1}</div>
+      </Cell>
+              
+      <ActionSheet
+        visible={isVisible1}
+        options={optionsOne}
+        onSelect={(item) => {chooseItem(item)}}
+        onCancel={() => setIsVisible1(false)}
+      />
     </>
   );
 };  
 export default App;
 
 ```
+
 :::
+
 ### 展示取消按钮
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { ActionSheet,Cell } from '@nutui/nutui-react-taro';
@@ -75,35 +77,33 @@ import { ActionSheet,Cell } from '@nutui/nutui-react-taro';
 const App = () => {
   const [isVisible2, setIsVisible2] = useState(false)
   const [val2, setVal2] = useState('')
-  const menuItemsOne: ItemType<string>[] = [
+  const optionsOne: ItemType<string>[] = [
     {
-      name: '选项一',
+      name: '权限设置',
     },
     {
-      name: '选项二',
+      name: '重命名',
     },
     {
-      name: '选项三',
+      name: '删除',
     },
   ]
-  const chooseItemTwo = (itemParams: Item) => {
-    setVal2(itemParams.name)
+  const chooseItemTwo = (item: Item) => {
+    setVal2(item.name)
     setIsVisible2(false)
   }
   return ( 
     <>   
     <Cell  onClick={() => setIsVisible2(!isVisible2)}>
-      <span>
-        <label>展示取消按钮</label>
-      </span>
-      <div className="selected-option">{val2}</div>
+      <span>展示取消按钮</span>
+      <div style={{ marginLeft: '10px' }}>{val2}</div>
     </Cell>
             
     <ActionSheet
       visible={isVisible2}
       cancelText="取消"
-      menuItems={menuItemsOne}
-      onChoose={chooseItemTwo}
+      options={optionsOne}
+      onSelect={(item)=>{chooseItemTwo(item)}}
       onCancel={() => setIsVisible2(false)}
      />
     </>
@@ -112,10 +112,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
+
 ### 展示描述信息
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { ActionSheet,Cell } from '@nutui/nutui-react-taro';
@@ -123,37 +126,35 @@ import { ActionSheet,Cell } from '@nutui/nutui-react-taro';
 const App = () => {
   const [isVisible3, setIsVisible3] = useState(false)
   const [val3, setVal3] = useState('')
-  const menuItemsTwo: ItemType<string>[] = [
+  const optionsTwo: ItemType<string>[] = [
     {
-      name: '选项一',
+      name: '权限设置',
     },
     {
-      name: '选项二',
+      name: '重命名',
     },
     {
-      name: '选项三',
-      subname: '描述信息',
+      name: '删除',
+      description: '删除后无法恢复',
     },
   ]
-  const chooseItemThree = (itemParams: Item) => {
-    setVal3(itemParams.name)
+  const chooseItemThree = (item: Item) => {
+    setVal3(item.name)
     setIsVisible3(false)
   }
   return ( 
     <>   
     <Cell  onClick={() => setIsVisible3(!isVisible3)}>
-      <span>
-        <label>展示描述信息</label>
-      </span>
-      <div className="selected-option">{val3}</div>
+      <span>展示描述信息</span>
+      <div style={{ marginLeft: '10px' }}>{val3}</div>
     </Cell>
     <ActionSheet
       visible={isVisible3}
-      title='ActionSheet'
-      description="这是一段描述信息"
+      title='标题'
+      description="请选择操作动作"
       cancelText="取消"
-      menuItems={menuItemsTwo}
-      onChoose={chooseItemThree}
+      options={optionsTwo}
+      onSelect={(item)=>{chooseItemThree(item)}}
       onCancel={() => setIsVisible3(false)}
      />
     </>
@@ -162,19 +163,23 @@ const App = () => {
 export default App;
 
 ```
+
 :::
+
 ### 选项状态
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { ActionSheet,Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [isVisible4, setIsVisible4] = useState(false)
-  const menuItemsThree: ItemType<string | boolean>[] = [
+  const optionsThree: ItemType<string | boolean>[] = [
     {
       name: '着色选项',
+      danger: true
     },
     {
       name: '禁用选项',
@@ -184,17 +189,14 @@ const App = () => {
   return ( 
     <>   
     <Cell  onClick={() => setIsVisible4(!isVisible4)}>
-      <span>
-        <label>选项状态</label>
-      </span>
+      <span>选项状态</span>
     </Cell>
     <ActionSheet
       visible={isVisible4}
       cancelText="取消"
-      menuItems={menuItemsThree}
-      chooseTagValue="着色选项"
+      options={optionsThree}
       onCancel={() => setIsVisible4(false)}
-      onChoose={() => {
+      onSelect={() => {
         setIsVisible4(false)
       }}
      />
@@ -204,29 +206,117 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
-## Prop
+### 自定义内容
 
-| 属性 | 说明                                   | 类型    | 默认值    |
-|------------------|----------------------------------------|---------|-----------|
-| visible       | 遮罩层可见 | boolean | `false`     |
-| cancelText `v2.0.0`      | 取消文案 | string  | `取消`    |
-| menuItems       | 列表项 | Array   | `[]`       |
-| optionTag       | 设置列表项展示使用参数 | string  | `name`    |
-| optionSubTag   | 设置列表项描述展示使用参数 | string  | `subname` |
-| title            | 设置列表面板标题 | string  | -        |
-| description      | 设置列表面板副标题/描述 | string  | -        |
-| chooseTagValue | 设置选中项的值，和'option-tag'的值对应 | string  | -        |
-| color            | 高亮颜色 | string  | `#ee0a24` |
+:::demo
 
+```tsx
+import  React, { useState } from "react";
+import { ActionSheet,Cell } from '@nutui/nutui-react-taro';
 
-## Event
+const App = () => {
+  const [isVisible5, setIsVisible5] = useState(false)
+  return ( 
+    <>   
+      <Cell  onClick={() => setIsVisible5(!isVisible5)}>
+        <span>自定义内容</span>
+      </Cell>
+      <ActionSheet
+        visible={isVisible5}
+        cancelText={translated['2cd0f3be']}
+        onSelect={() => {
+          setIsVisible5(false)
+        }}
+        onCancel={() => setIsVisible5(false)}
+      >
+        <div style={{ textAlign: 'left', padding: '10px 20px' }}>
+          新建表格
+        </div>
+        <div style={{ textAlign: 'left', padding: '10px 20px' }}>
+          新建文档
+        </div>
+      </ActionSheet>
+    </>
+  );
+};  
+export default App;
 
-| 属性 | 说明               | 回调参数                          |
-|--------|--------------------|-----------------------------------|
-| onChoose | 选择之后触发       | 选中列表项item, 选中的索引值index |
-| onCancel | 点击取消文案时触发 | 无                                |
+```
+
+:::
+
+### 自定义key
+
+:::demo
+
+```tsx
+import  React, { useState } from "react";
+import { ActionSheet,Cell } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  const [isVisible6, setIsVisible6] = useState(false)
+  const optionsFour: ItemType<string | boolean>[] = [
+    {
+      title: '着色选项',
+      danger: true
+    },
+    {
+      title: '禁用选项',
+      disable: true,
+    },
+  ]
+  const optionKey = {
+    name: 'title',
+  }
+  return ( 
+    <>   
+      <Cell  onClick={() => setIsVisible6(!isVisible6)}>
+        <span>自定义key</span>
+      </Cell>
+      <ActionSheet
+        visible={isVisible6}
+        optionKey={optionKey}
+        options={optionsFour}
+        onSelect={() => {
+          setIsVisible6(false)
+        }}
+        onCancel={() => setIsVisible6(false)}
+      />
+    </>
+  );
+};  
+export default App;
+
+```
+
+:::
+
+## ActionSheet
+
+### Props
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| visible | 遮罩层可见 | `boolean` | `false` |
+| title | 设置列表面板标题 | `string` | `-` |
+| description | 设置列表面板副标题/描述 | `string` | `-` |
+| options | 列表项 | `Array` | `[]` |
+| optionKey | 列表项的自定义设置 | `{ [key: string]: string }` | `-` |
+| cancelText | 取消文案 | `string` | `取消` |
+| onSelect | 选择之后触发 | `(item: any, index: number) => void` | `-` |
+| onCancel | 点击取消文案时触发 | `() => void` | `-` |
+
+### options
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| name | 列表项的标题key值 | `string` | `-` |
+| description | 列表项的描述key值 | `string` | `-` |
+| danger | 高亮颜色 | `string` | `$primary-color` |
+| disable | 禁用状态 | `string` | `$disable-color` |
 
 ## 主题定制
 
@@ -234,12 +324,11 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-actionsheet-light-color | `#f6f6f6` |
-| --nutui-actionsheet-item-border-bottom | `none` |
-| --nutui-actionsheet-item-font-size | `$font-size-2` |
-| --nutui-actionsheet-item-subdesc-font-size | `$font-size-1` |
-| --nutui-actionsheet-item-cancel-border-top | `1px solid $actionsheet-light-color` |
-| --nutui-actionsheet-item-line-height | `24px` |
-| --nutui-actionsheet-item-font-color | `$title-color` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| \--nutui-actionsheet-border-color | 标题和取消位置的border色值 | `#f6f6f6` |
+| \--nutui-actionsheet-item-text-align | 列表项的文字对齐方式 | `center` |
+| \--nutui-actionsheet-item-border-bottom | 列表项的底部border | `none` |
+| \--nutui-actionsheet-item-line-height | 列表项行高 | `24px` |
+| \--nutui-actionsheet-item-color | 列表项字色 | `$title-color` |
+| \--nutui-actionsheet-item-danger | 列表项danger字色 | `$primary-color` |

@@ -244,6 +244,18 @@
 
 ### 操作反馈
 #### ActionSheet
+- `title`，类型变更为 `ReactNode`
+- `description`，类型变更为 `ReactNode`
+- `cancelTxt`，重命名为 `cancelText`，类型变更为 `ReactNode`
+- `menuItems` 重命名为 `options`
+- `chooseTagValue` 重命名为 `value`
+- `onChoose` 重命名为 `onSelect`
+- 增加 `options` 的定义
+  - `color` 重命名为 `danger`
+  - `name`，列表项的标题key
+  - `description`，列表项的描述key
+  - `danger`，列表项中提醒用户重点关注的操作
+  - `disable`，列表项中禁用项
 #### BackTop
 - elId 重命名为 target
 - 移除 right、bottom，通过 style 传入，增加支持 left、top
