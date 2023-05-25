@@ -60,7 +60,7 @@ const TimeSelectDemo = () => {
   // 点击弹层 X 或者弹层外区域触发事件
   const handleSelect = (selectTimeData: TimeType[]) => {
     SetVisible1(false)
-    Toast.text(`${translated.text1}: ${JSON.stringify(selectTimeData)}`)
+    Toast.show(`${translated.text1}: ${JSON.stringify(selectTimeData)}`)
   }
   // 选择日期触发回调事件
   const handlePannelChange = (

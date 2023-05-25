@@ -64,9 +64,9 @@ const EllipsisDemo = () => {
           <Ellipsis
             content={content}
             onClick={() => {
-              Toast.text('Clicked!')
+              Toast.show('Clicked!')
             }}
-            onChange={(type) => Toast.text(type)}
+            onChange={(type) => Toast.show(type)}
             direction="start"
             expandText={translated.expand}
             collapseText={translated.collapse}

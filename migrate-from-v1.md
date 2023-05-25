@@ -216,6 +216,14 @@
 - 增加受控 value 与非受控 defaultValue，移除 modelValue
 #### SearchBar
 #### ShortPassword
+- desc 重命名为 description
+- noButton 重命名为 hideFooter
+- onOk 重命名为 onConfirm
+- errorMsg 重命名为 error
+- 移除 closeOnClickOverlay，默认支持透传 Popup 属性
+- title、description、tips、error 类型修改为 ReactNode
+- modelValue 重命名为 value，受控模式
+- 新增 onFoucs 事件
 #### TextArea
 - maxlength 重命名为 maxLength
 - readonly 重命名为 readOnly
@@ -281,6 +289,15 @@
 - 删除 `activeColor` 和 `inactiveColor`, 通过css变量实现
 #### Toast
 
+- 删除H5版本 `id` 
+- 删除 `center`和 `bottom`，通过 `position` 实现
+- 删除 `bgColor`，通过 css 变量实现
+- 删除 `customClass`，通过 `className` 实现
+- 删除 `cover` 和 `coverColor` ，通过css变量实现
+- 删除 `loadingRotate`，旋转状态通过 `iconFont`实现
+- 删除 `textAlignCenter`，通过css变量实现
+- 修改 `closeOnClickOverlay` 为 `closeOnOverlayClick` ，语义不变，是否在点击遮罩层后关闭提示
+
 ### 展示组件
 #### Animate
 - `className` 属性通过继承实现
@@ -317,11 +334,16 @@
   - `circleColor` 重名为 `color`
   - `pathColor` 重名为 `background`
 #### Collapse
+
 - 新增 defaultActiveName 非受控
 - activeName 改为受控方式
 - subTitle 重命名为 extra
 - onChange 参数变更为 activeName, name, status
+
 #### CountDown
+
+- 新增 `remainingTime`, 支持剩余毫秒时间倒计时。
+
 #### Ellipsis
 - 新增className和style属性的支持
 - 优化H5的代码，去掉useEffect渲染改用useLayoutEffect

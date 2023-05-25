@@ -1,5 +1,4 @@
 import React, {
-  CSSProperties,
   useState,
   useRef,
   useEffect,
@@ -7,19 +6,19 @@ import React, {
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
-import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface CountDownProps {
-  className?: string
-  style?: CSSProperties
+export interface CountDownProps extends BasicComponent {
   paused: boolean
   startTime: number
   endTime: number
+  remainingTime: number
   millisecond: boolean
   format: string
   autoStart: boolean
   time: number
+  destroy: boolean
   onEnd: () => void
   onPaused: (restTime: number) => void
   onRestart: (restTime: number) => void
@@ -28,13 +27,16 @@ export interface CountDownProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   paused: false,
   startTime: Date.now(),
   endTime: Date.now(),
+  remainingTime: 0,
   millisecond: false,
   format: 'HH:mm:ss',
   autoStart: true,
   time: 0,
+  destroy: false,
 } as CountDownProps
 
 const InternalCountDown: ForwardRefRenderFunction<
@@ -46,10 +48,12 @@ const InternalCountDown: ForwardRefRenderFunction<
     paused,
     startTime,
     endTime,
+    remainingTime,
     millisecond,
     format,
     autoStart,
     time,
+    destroy,
     className,
     style,
     onEnd,
@@ -59,7 +63,7 @@ const InternalCountDown: ForwardRefRenderFunction<
     children,
     ...rest
   } = { ...defaultProps, ...props }
-  const b = bem('countdown')
+  const classPrefix = 'nut-countdown'
   const [restTimeStamp, setRestTime] = useState(0)
   const stateRef = useRef({
     pauseTime: 0,
@@ -83,8 +87,12 @@ const InternalCountDown: ForwardRefRenderFunction<
 
   // 倒计时 interval
   const initTime = () => {
-    stateRef.current.handleEndTime = endTime
-    stateRef.current.diffTime = Date.now() - getTimeStamp(startTime) // 时间差
+    if (remainingTime) {
+      stateRef.current.handleEndTime = Date.now() + Number(remainingTime)
+    } else {
+      stateRef.current.handleEndTime = endTime
+      stateRef.current.diffTime = Date.now() - getTimeStamp(startTime) // 时间差
+    }
     if (!stateRef.current.counting) stateRef.current.counting = true
     tick()
   }
@@ -258,7 +266,7 @@ const InternalCountDown: ForwardRefRenderFunction<
     if (stateRef.current.isIninted) {
       initTime()
     }
-  }, [endTime, startTime])
+  }, [endTime, startTime, remainingTime])
 
   // 初始化
   useEffect(() => {
@@ -275,7 +283,7 @@ const InternalCountDown: ForwardRefRenderFunction<
   }, [])
 
   const componentWillUnmount = () => {
-    clearInterval(stateRef.current.timer)
+    destroy && cancelAnimationFrame(stateRef.current.timer)
   }
 
   const renderTime = (() => {
@@ -283,10 +291,14 @@ const InternalCountDown: ForwardRefRenderFunction<
   })()
 
   return (
-    <div className={`${b()} ${className || ''}`} style={{ ...style }} {...rest}>
+    <div
+      className={`${classPrefix} ${className}`}
+      style={{ ...style }}
+      {...rest}
+    >
       {children || (
         <div
-          className={b('block')}
+          className={`${classPrefix}__block`}
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html: `${renderTime}`,

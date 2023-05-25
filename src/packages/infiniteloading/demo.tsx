@@ -96,7 +96,7 @@ const InfiniteloadingDemo = () => {
 
   const refresh = (done: () => void) => {
     setTimeout(() => {
-      Toast.text(translated['83913e71'])
+      Toast.show(translated['83913e71'])
       done()
     }, 1000)
   }

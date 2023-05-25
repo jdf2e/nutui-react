@@ -44,10 +44,10 @@ const NumberKeyboardDemo = () => {
   const [visible5, setVisible5] = useState(false)
   const [visible6, setVisible6] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`输入：${number}`)
+    Toast.show(`输入：${number}`)
   }
   const onDelete = () => {
-    Toast.text('删除')
+    Toast.show('删除')
   }
   return (
     <div className="demo">
@@ -137,7 +137,7 @@ const NumberKeyboardDemo = () => {
         duration={1}
         overlayClassName="number-keyboard-overlay"
         onOpen={() => {
-          Toast.text('onOpen')
+          Toast.show('onOpen')
         }}
       />
     </div>

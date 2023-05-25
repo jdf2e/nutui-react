@@ -78,7 +78,7 @@ const RangeDemo = () => {
       <div className="demo">
         <h2>{translated.title}</h2>
         <Cell style={cellStyle}>
-          <Range defaultValue={40} onEnd={(val) => Toast.text(`${val}`)} />
+          <Range defaultValue={40} onEnd={(val) => Toast.show(`${val}`)} />
         </Cell>
         <h2>{translated.controlled}</h2>
         <Cell style={cellStyle}>
@@ -91,7 +91,7 @@ const RangeDemo = () => {
             minDescription="0%"
             maxDescription="100%"
             currentDescription={(value) => `${value}%`}
-            onEnd={(val) => Toast.text(`${val}`)}
+            onEnd={(val) => Toast.show(`${val}`)}
           />
         </Cell>
         <h2>{translated.title1}</h2>
@@ -99,7 +99,7 @@ const RangeDemo = () => {
           <Range
             defaultValue={[20, 80]}
             range
-            onEnd={(val) => Toast.text(`${val}`)}
+            onEnd={(val) => Toast.show(`${val}`)}
           />
         </Cell>
         <h2>{translated.title2}</h2>
@@ -108,7 +108,7 @@ const RangeDemo = () => {
             defaultValue={0}
             max={10}
             min={-10}
-            onEnd={(val) => Toast.text(`${val}`)}
+            onEnd={(val) => Toast.show(`${val}`)}
           />
         </Cell>
         <h2>{translated.title3}</h2>
@@ -116,7 +116,7 @@ const RangeDemo = () => {
           <Range
             defaultValue={30}
             step={5}
-            onEnd={(val) => Toast.text(`${val}`)}
+            onEnd={(val) => Toast.show(`${val}`)}
           />
         </Cell>
         <h2>{translated.title4}</h2>
@@ -125,7 +125,7 @@ const RangeDemo = () => {
             defaultValue={30}
             maxDescription={null}
             minDescription={null}
-            onEnd={(val) => Toast.text(`${val}`)}
+            onEnd={(val) => Toast.show(`${val}`)}
           />
         </Cell>
         <h2>{translated.title5}</h2>
@@ -133,7 +133,7 @@ const RangeDemo = () => {
           <Range
             defaultValue={20}
             currentDescription={null}
-            onEnd={(val) => Toast.text(`${val}`)}
+            onEnd={(val) => Toast.show(`${val}`)}
           />
         </Cell>
         <h2>{translated.title6}</h2>
@@ -174,7 +174,7 @@ const RangeDemo = () => {
             value={value2}
             button={<div className="range-custom-button">{value2}</div>}
             onChange={(val: any) => setValue2(val)}
-            onEnd={(val) => Toast.text(`${val}`)}
+            onEnd={(val) => Toast.show(`${val}`)}
           />
         </Cell>
         <h2>{translated.title9}</h2>
@@ -183,7 +183,7 @@ const RangeDemo = () => {
             <Range
               defaultValue={20}
               vertical
-              onEnd={(val) => Toast.text(`${val}`)}
+              onEnd={(val) => Toast.show(`${val}`)}
             />
           </div>
           <div style={{ width: '150px', height: '100%' }}>
@@ -191,7 +191,7 @@ const RangeDemo = () => {
               defaultValue={[20, 80]}
               vertical
               range
-              onEnd={(val) => Toast.text(`${val}`)}
+              onEnd={(val) => Toast.show(`${val}`)}
             />
           </div>
         </Cell>
@@ -202,7 +202,7 @@ const RangeDemo = () => {
             maxDescription={null}
             minDescription={null}
             marks={marks}
-            onEnd={(val) => Toast.text(`${val}`)}
+            onEnd={(val) => Toast.show(`${val}`)}
           />
         </Cell>
         <Cell style={cellStyle}>
@@ -210,7 +210,7 @@ const RangeDemo = () => {
             defaultValue={[20, 80]}
             marks={marks}
             range
-            onEnd={(val) => Toast.text(`${val}`)}
+            onEnd={(val) => Toast.show(`${val}`)}
           />
         </Cell>
 
@@ -221,14 +221,14 @@ const RangeDemo = () => {
             maxDescription={null}
             minDescription={null}
             marks={marks}
-            onEnd={(val) => Toast.text(`${val}`)}
+            onEnd={(val) => Toast.show(`${val}`)}
           />
           <Range
             defaultValue={[20, 80]}
             vertical
             marks={marks}
             range
-            onEnd={(val) => Toast.text(`${val}`)}
+            onEnd={(val) => Toast.show(`${val}`)}
           />
         </Cell>
       </div>
