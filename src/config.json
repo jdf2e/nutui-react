@@ -587,7 +587,7 @@
           "author": "Ymm0008"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "ShortPassword",
           "type": "component",
           "cName": "短密码",
@@ -900,7 +900,7 @@
           "author": "zhenyulei"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "CountDown",
           "type": "component",
           "cName": "倒计时",

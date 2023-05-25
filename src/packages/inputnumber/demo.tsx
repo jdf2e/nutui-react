@@ -91,13 +91,13 @@ const InputNumberDemo = () => {
   const [inputValue, setInputValue] = useState(-1)
   const overlimit = (e: MouseEvent) => {
     console.log(e)
-    Toast.warn(translated['6333c786'])
+    Toast.show({ content: translated['6333c786'], icon: 'warn' })
   }
   const onChange = (value: string | number) => {
-    Toast.loading(translated['0137871a'])
+    Toast.show({ icon: 'loading', content: translated['0137871a'] })
     setTimeout(() => {
       setInputValue(Number(value))
-      Toast.hide()
+      Toast.clear()
     }, 2000)
   }
   return (

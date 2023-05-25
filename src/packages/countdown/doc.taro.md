@@ -1,10 +1,10 @@
-#  CountDown 倒计时
+# CountDown 倒计时
 
-### 介绍
+## 介绍
 
 用于实时展示倒计时数值，支持毫秒精度。
 
-### 安装
+## 安装
 
 ```ts
 import { CountDown } from '@nutui/nutui-react-taro'
@@ -37,6 +37,30 @@ export default App;
 ```
 
 :::
+
+### 剩余时间用法
+
+:::demo
+
+```tsx
+import  React, {useRef }from "react";
+import { Cell, CountDown } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  const stateRef = useRef({
+    remainingTime:  60 * 1000,
+  })
+  return (
+     <Cell>
+         <CountDown remainingTime={stateRef.current.remainingTime} />
+    </Cell>
+  );
+};
+export default App;
+```
+
+:::
+
 ### 自定义格式
 
 :::demo
@@ -83,8 +107,6 @@ export default App;
 ```
 
 :::
-
-
 
 ### 以服务端的时间为准
 
@@ -261,6 +283,7 @@ export default App;
 :::
 
 ### 手动控制
+
 通过 ref 获取到组件实例后，可以调用 start、pause、reset 方法。在使用手动控制时，通过 time 属性实现倒计时总时长，单位为毫秒。startTime、endTime 属性失效。
 
 :::demo
@@ -319,55 +342,48 @@ export default App;
 
 :::
 
-
-## API
+## CountDown
 
 ### Props
 
-| 属性 | 说明 | 类型 | 默认值
-| ----- | ----- | ----- | -----
-| startTime | 开始时间 | number | `Date.now()`
-| endTime | 结束时间 |  number | `Date.now()`
-| paused | 是否暂停 | boolean | `false`
-| format `v1.3.3` |  时间格式 | string | HH\:mm\:ss
-| millisecond `v1.3.3` |  是否开启毫秒级渲染 | boolean | `false`
-| autoStart `v1.3.3` |  是否自动开始倒计时 | boolean | `true`
-| time `v1.3.3` | 倒计时显示时间，单位是毫秒。autoStart 为 false 时生效 | number | `0`
-| showDays `v1.3.3 废弃` | 是否显示天 | boolean | `false`
-| showPlainText `v1.3.3 废弃` | 显示为纯文本 | boolean | `false`
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| startTime | 开始时间 | `number` | `Date.now()` |
+| endTime | 结束时间 | `number` | `Date.now()` |
+| remainingTime | 剩余时间，单位是毫秒 | `number` | `0` |
+| paused | 是否暂停 | `boolean` | `false` |
+| format | 时间格式 | `string` | `HH:mm:ss` |
+| millisecond | 是否开启毫秒级渲染 | `boolean` | `false` |
+| autoStart | 是否自动开始倒计时 | `boolean` | `true` |
+| time | 倒计时显示时间，单位是毫秒。autoStart 为 false 时生效 | `number` | `0` |
+| showDays | 是否显示天 | `boolean` | `false` |
+| showPlainText | 显示为纯文本 | `boolean` | `false` |
+| destroy | 销毁实例 | `boolean` | `false` |
+| onEnd | 倒计时结束时回调函数 | `无` | `-` |
+| onPaused | 暂停倒计时回调函数 | `onPaused: (restTime: number) => void` | `-` |
+| onRestart | 重新开始倒计时回调函数 | `onRestart: (restTime: number) => void` | `-` |
+| onUpdate | 自定义展示内容时，实时更新倒计时数据回调函数 | `onUpdate: (restTime: any) => void` | `-` |
 
 ### format 格式
 
-| 格式 | 说明 | 
-| ----- | ----- | 
-| DD | 天数 | 
-| HH | 小时 | 
-| mm | 分钟 | 
-| ss | 秒数 | 
-| S | 毫秒（1位） | 
-| SS | 毫秒（2位） | 
-| SSS | 毫秒（3位） | 
+| 格式 | 说明 |
+| --- | --- |
+| DD | 天数 |
+| HH | 小时 |
+| mm | 分钟 |
+| ss | 秒数 |
+| S | 毫秒（1位） |
+| SS | 毫秒（2位） |
+| SSS | 毫秒（3位） |
 
-### Event
+### Ref
 
-| 属性 | 说明 | 回调参数
-| ----- | ----- | ----- 
-| onEnd | 倒计时结束时回调函数 | 无
-| onPaused | 暂停倒计时回调函数 | 剩余时间戳
-| onRestart | 重新开始倒计时回调函数 | 剩余时间戳
-| onUpdate | 自定义展示内容时，实时更新倒计时数据回调函数 | 倒计时实时数据
-
-
-### 方法
-
-通过 ref 可以获取到 CountDown 实例并调用实例方法。
-
-| 方法名 | 说明 |
-| ----- | ----- | 
-| start | 开始倒计时 | 
-| pause | 暂停倒计时 | 
-| reset | 重设倒计时，若 auto-start 为 true，重设后会自动开始倒计时 | 
-
+| 属性 | 说明 | 类型 |
+| --- | --- | --- |
+| start | 开始倒计时 | `() => void` |
+| pause | 暂停倒计时 | `() => void` |
+| reset | 重设倒计时，若 auto-start 为 true，重设后会自动开始倒计时 | `() => void` |
 
 
 ## 主题定制
@@ -376,8 +392,8 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-countdown-display | `flex` |
-| --nutui-countdown-color | `inherit` |
-| --nutui-countdown-font-size | `initial` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| \--nutui-countdown-display | 倒计时的布局方式 | `flex` |
+| \--nutui-countdown-color | 倒计时的文字颜色 | `$gray1` |
+| \--nutui-countdown-font-size | 倒计时的字体大小 | `14px` |

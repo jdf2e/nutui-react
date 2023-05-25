@@ -98,7 +98,7 @@ const IconDemo = () => {
     cover: false,
     visible: false,
     duration: 2,
-    closeOnClickOverlay: false,
+    closeOnOverlayClick: false,
     title: '',
     bottom: '',
     icon: '',
@@ -114,10 +114,9 @@ const IconDemo = () => {
           msg={state.msg}
           visible={state.visible}
           type={state.type}
-          cover={state.cover}
           duration={state.duration}
           icon={state.icon}
-          closeOnClickOverlay={state.closeOnClickOverlay}
+          closeOnOverlayClick={state.closeOnOverlayClick}
           onClose={() => {
             setState({
               ...state,
