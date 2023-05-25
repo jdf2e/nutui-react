@@ -44,7 +44,7 @@ test('renders only visible items', async () => {
   const { container } = render(
     <VirtualList
       {...props}
-      containerSize={boxHeight}
+      containerHeight={boxHeight}
       itemSize={itemSize}
       data-testid="scrollList"
       handleScroll={handleScroll}

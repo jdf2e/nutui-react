@@ -32,7 +32,7 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
     handleScroll,
     onScroll,
     className,
-    containerSize,
+    containerHeight,
     ...rest
   } = props
   const sizeKey = horizontal ? 'width' : 'height'
@@ -61,7 +61,7 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
   const [listTotalSize, setListTotalSize] = useState<number>(99999999)
   // 可视区域条数
   const [visibleCount, setVisibleCount] = useState<number>(0)
-  const [offSetSize, setOffSetSize] = useState<number>(containerSize || 0)
+  const [offSetSize, setOffSetSize] = useState<number>(containerHeight || 0)
   const [options, setOptions] = useState<VirtualListState>({
     startOffset: 0, // 可视区域距离顶部的偏移量
     startIndex: 0, // 可视区域开始索引
@@ -80,12 +80,12 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
     return scrollRef.current?.parentElement || document.body
   }, [])
   useEffect(() => {
-    if (containerSize) return
+    if (containerHeight) return
     const size = horizontal
       ? getElement().offsetWidth
       : getElement().offsetHeight
     setOffSetSize(size)
-  }, [getElement, horizontal, containerSize])
+  }, [getElement, horizontal, containerHeight])
   useEffect(() => {
     // 初始-计算visibleCount
     if (offSetSize === 0) return
@@ -168,7 +168,7 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
       }
       {...rest}
       style={{
-        [sizeKey]: containerSize ? `${offSetSize}px` : '',
+        [sizeKey]: containerHeight ? `${offSetSize}px` : '',
       }}
     >
       <div

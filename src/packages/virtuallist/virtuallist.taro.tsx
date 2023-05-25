@@ -15,7 +15,7 @@ export type VirtualListProps = {
   className?: string | any
   style?: React.CSSProperties
   list: any // 获取数据
-  containerSize?: number // 容器大小
+  containerHeight?: number // 容器大小
   ItemRender?: any // virtual 列表父节点渲染的函数，默认为 (items, ref) => <div ref={ref}>{items}</div>
   itemEqualSize?: boolean // item 固定大小，默认是true
   itemSize?: number // 预估元素高度
@@ -46,7 +46,7 @@ export const VirtualList: FunctionComponent<
     key,
     onScroll,
     className,
-    containerSize = clientHeight,
+    containerHeight = clientHeight,
     ...rest
   } = props
   //   const sizeKey = horizontal ? 'width' : 'height'
@@ -75,7 +75,7 @@ export const VirtualList: FunctionComponent<
     },
   ])
 
-  const [offSetSize, setOffSetSize] = useState<number>(containerSize || 0)
+  const [offSetSize, setOffSetSize] = useState<number>(containerHeight || 0)
   const [options, setOptions] = useState<VirtualListState>({
     startOffset: 0, // 可视区域距离顶部的偏移量
     startIndex: 0, // 可视区域开始索引
@@ -91,10 +91,10 @@ export const VirtualList: FunctionComponent<
   }, [itemSize, overscan, offSetSize])
 
   useEffect(() => {
-    if (containerSize) return
+    if (containerHeight) return
 
     setOffSetSize(getContainerHeight())
-  }, [containerSize])
+  }, [containerHeight])
 
   useEffect(() => {
     const pos = initPositinoCache(itemSize, list.length)
@@ -106,10 +106,10 @@ export const VirtualList: FunctionComponent<
   const getContainerHeight = () => {
     // 初始首页列表高度
     const initH = itemSize * list.length
-    // 未设置containerSize高度，判断首页高度小于设备高度时，滚动容器高度为首页数据高度，减5为分页触发的偏移量
+    // 未设置containerHeight高度，判断首页高度小于设备高度时，滚动容器高度为首页数据高度，减5为分页触发的偏移量
     return initH < clientHeight
       ? initH + overscan * itemSize - 5
-      : Math.min(containerSize, clientHeight) // Math.min(containerSize, clientHeight)
+      : Math.min(containerHeight, clientHeight) // Math.min(containerHeight, clientHeight)
   }
   // 可视区域条数
   const visibleCount = () => {
@@ -164,11 +164,10 @@ export const VirtualList: FunctionComponent<
       }
       {...rest}
       style={{
-        height: containerSize ? `${offSetSize}px` : '',
+        height: containerHeight ? `${offSetSize}px` : '',
       }}
     >
       <ScrollView
-        scrollTop={0}
         scrollY
         type="list"
         ref={scrollRef}

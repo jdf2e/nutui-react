@@ -21,7 +21,7 @@ export interface BasicVirtualListProps {
   className?: string
   style?: React.CSSProperties
   list: Array<Data> // 获取数据
-  containerSize?: number // 容器大小
+  containerHeight?: number // 容器大小
   ItemRender?: React.FC<any> // virtual 列表父节点渲染的函数，默认为 (items, ref) => <ul ref={ref}>{items}</ul>
   itemSize?: number // 预估高度
   itemEqualSize?: boolean // item 固定大小，默认是true

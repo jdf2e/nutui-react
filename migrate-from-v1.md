@@ -434,6 +434,7 @@
 #### Video
 #### VirtualList
 - sourceData 重命名为 list
+- conatinerSize 重命名为 containerHeight
 #### WaterMark
 
 ### 特色组件

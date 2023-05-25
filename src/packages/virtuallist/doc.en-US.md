@@ -211,7 +211,7 @@ export default App;
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | list | source data | `Array` | - |
-| containerSize | container height | `number` | `Get the element offsetWidth or offsetHeight, which is given by CSS` |
+| containerHeight | container height | `number` | `Get the element offsetWidth or offsetHeight, which is given by CSS` |
 | ItemRender | virtual function rendered by the parent of the list | `React.FC` | - |
 | itemSize | Item height, if not height, the first screen single maximum size | `string` | - |
 | itemEqualSize | the sizes of items are consistent | `boolean` | `true` |
