@@ -199,7 +199,7 @@ const RadioDemo = () => {
           <Cell>
             <Radio.Group
               defaultValue={checkedValue}
-              onChange={(value) => Toast.text(value)}
+              onChange={(value) => Toast.show(value + '')}
             >
               <Radio value={1}>{translated['0f261484']}</Radio>
               <Radio value={2}>{translated['0f261484']}</Radio>

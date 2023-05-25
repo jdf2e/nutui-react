@@ -22,7 +22,7 @@ import { Cell, Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const testClick = (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
-    Toast.text('点击事件')
+    Toast.show('点击事件')
 }
   return (
     <>

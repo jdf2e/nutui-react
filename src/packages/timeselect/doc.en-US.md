@@ -49,7 +49,7 @@ const TimeSelectDemo = () => {
   }
   const handleSelect = (selectTimeData) => {
     SetVisible1(false)
-    Toast.text(`selected: ${JSON.stringify(selectTimeData)}`)
+    Toast.show(`selected: ${JSON.stringify(selectTimeData)}`)
   }
   const handlePannelChange = (pannelKey, selectTimeData) => {
     console.log('pannelKey, selectTimeData: ', pannelKey, selectTimeData)

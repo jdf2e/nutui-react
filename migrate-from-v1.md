@@ -289,6 +289,15 @@
 - 删除 `activeColor` 和 `inactiveColor`, 通过css变量实现
 #### Toast
 
+- 删除H5版本 `id` 
+- 删除 `center`和 `bottom`，通过 `position` 实现
+- 删除 `bgColor`，通过 css 变量实现
+- 删除 `customClass`，通过 `className` 实现
+- 删除 `cover` 和 `coverColor` ，通过css变量实现
+- 删除 `loadingRotate`，旋转状态通过 `iconFont`实现
+- 删除 `textAlignCenter`，通过css变量实现
+- 修改 `closeOnClickOverlay` 为 `closeOnOverlayClick` ，语义不变，是否在点击遮罩层后关闭提示
+
 ### 展示组件
 #### Animate
 - `className` 属性通过继承实现

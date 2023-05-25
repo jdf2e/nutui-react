@@ -184,7 +184,7 @@ const App = () => {
     <>
        <Input
          placeholder={translated.title10}
-         onClick={() => Toast.text('onClick')}
+         onClick={() => Toast.show('onClick')}
        />
     </>
   )

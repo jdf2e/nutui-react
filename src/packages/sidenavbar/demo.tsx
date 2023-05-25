@@ -109,11 +109,11 @@ const SideNavBarDemo = () => {
   }
   const clickItem = (data: any) => {
     const { title, key } = data
-    showThird && Toast.text(`title=${title},key=${key}`)
+    showThird && Toast.show(`title=${title},key=${key}`)
   }
   const clickTitle = (data: any) => {
     const { title, key, isShow } = data
-    showThird && Toast.text(`title=${title},key=${key},isShow=${isShow}`)
+    showThird && Toast.show(`title=${title},key=${key},isShow=${isShow}`)
   }
 
   return (

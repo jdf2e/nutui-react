@@ -184,7 +184,7 @@ const App = () => {
     <>
        <Input
          placeholder="trigger onClick"
-         onClick={() => Toast.text('onClick')}
+         onClick={() => Toast.show('onClick')}
        />
     </>
   )

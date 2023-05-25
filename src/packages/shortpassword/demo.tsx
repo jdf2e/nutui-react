@@ -42,7 +42,7 @@ const ShortPasswordDemo = () => {
   const [value, setValue] = useState<string>('')
   const [value0, setValue0] = useState<string>('')
   const onTips = () => {
-    Toast.text(translated.forgetPassword)
+    Toast.show(translated.forgetPassword)
   }
   // NumberKeyboard
   const [visible, setVisible] = useState(false)
