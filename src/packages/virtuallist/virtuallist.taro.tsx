@@ -33,9 +33,9 @@ const defaultProps = {
   overscan: 2,
 } as VirtualListProps
 
-export const VirtualList: FunctionComponent<
-  VirtualListProps & React.HTMLAttributes<HTMLDivElement>
-> = (props: VirtualListProps) => {
+export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
+  props
+) => {
   const {
     list,
     ItemRender,
