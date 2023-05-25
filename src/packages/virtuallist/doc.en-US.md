@@ -96,7 +96,7 @@ const App =() => {
             list={list}
             ItemRender={ItemVariableDemo}
             itemHeight={128}
-            itemEqualSize={false}
+            itemEqual={false}
             onScroll={onScroll}
           />
   </div>
@@ -193,7 +193,7 @@ const App =() => {
             itemHeight={300}
             ItemRender={ItemVariableDemo}
             horizontal
-            itemEqualSize={false}
+            itemEqual={false}
             onScroll={onScroll}
           />
   </div>
@@ -212,9 +212,9 @@ export default App;
 | --- | --- | --- | --- |
 | list | source data | `Array` | - |
 | containerHeight | container height | `number` | `Get the element offsetWidth or offsetHeight, which is given by CSS` |
-| ItemRender | virtual function rendered by the parent of the list | `React.FC` | - |
-| itemHeight | Item height, if not height, the first screen single maximum size | `string` | - |
-| itemEqualSize | the sizes of items are consistent | `boolean` | `true` |
+| itemRender | virtual function rendered by the parent of the list | `React.FC` | - |
+| itemHeight | Item height, if not height, the first screen single maximum height | `string` | - |
+| itemEqual | the sizes of items are consistent | `boolean` | `true` |
 | overscan | In addition to the default elements in the viewport, there is an additional number of items to render | `number` | `2` |
 | key | Unique value,Item(list) Specifies a field with a unique value | `string` | `index` |
 | horizontal | horizontal or vertical | `boolean` | `false` |

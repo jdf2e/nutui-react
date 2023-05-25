@@ -94,7 +94,7 @@ const ListDemo = () => {
             ItemRender={ItemVariableDemo}
             itemHeight={128}
             containerHeight={500}
-            itemEqualSize={false}
+            itemEqual={false}
             onScroll={onScroll}
           />
         )
@@ -116,7 +116,7 @@ const ListDemo = () => {
             itemHeight={300}
             ItemRender={ItemVariableDemo}
             horizontal
-            itemEqualSize={false}
+            itemEqual={false}
             onScroll={onScroll}
           />
         )

@@ -436,6 +436,7 @@
 - sourceData 重命名为 list
 - conatinerSize 重命名为 containerHeight
 - itemSize 重命名为 itemHeight
+- itemEqualSize 重命名为 itemEqual
 #### WaterMark
 
 ### 特色组件

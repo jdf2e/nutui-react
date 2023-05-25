@@ -24,7 +24,7 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
   const {
     list = [],
     ItemRender,
-    itemEqualSize = true,
+    itemEqual = true,
     itemHeight = 200,
     horizontal = false,
     overscan = 2,
@@ -113,14 +113,14 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
       const startIndex = binarySearch(positions, scrollSize, horizontal)
       const overStart = startIndex - overscan > -1 ? startIndex - overscan : 0
       // const offSetSize = horizontal ? getElement().offsetWidth : getElement().offsetHeight
-      if (!itemEqualSize) {
+      if (!itemEqual) {
         updateTotalSize()
       }
       const endIndex = getEndIndex({
         list,
         startIndex,
         visibleCount,
-        itemEqualSize,
+        itemEqual,
         positions,
         offSetSize,
         sizeKey,
@@ -142,7 +142,7 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
     getElement,
     list,
     visibleCount,
-    itemEqualSize,
+    itemEqual,
     updateTotalSize,
     offsetKey,
     sizeKey,

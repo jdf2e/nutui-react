@@ -17,7 +17,7 @@ export type VirtualListProps = {
   list: any // 获取数据
   containerHeight?: number // 容器大小
   ItemRender?: any // virtual 列表父节点渲染的函数，默认为 (items, ref) => <div ref={ref}>{items}</div>
-  itemEqualSize?: boolean // item 固定大小，默认是true
+  itemEqual?: boolean // item 固定大小，默认是true
   itemHeight?: number // 预估元素高度
   overscan?: number // 除了视窗里面默认的元素, 还需要额外渲染的, 避免滚动过快, 渲染不及时,默认是2
   onScroll?: (...args: any[]) => any // 滑动到底部执行的函数
@@ -27,7 +27,7 @@ export type VirtualListProps = {
 const defaultProps = {
   list: [],
   itemHeight: 66,
-  itemEqualSize: true,
+  itemEqual: true,
   overscan: 2,
 } as VirtualListProps
 
@@ -41,7 +41,7 @@ export const VirtualList: FunctionComponent<
     list = [],
     ItemRender,
     itemHeight = 66,
-    itemEqualSize = true,
+    itemEqual = true,
     overscan = 2,
     key,
     onScroll,
@@ -144,7 +144,7 @@ export const VirtualList: FunctionComponent<
 
     const overStart = startIndex - overscan > -1 ? startIndex - overscan : 0
     const endIndex = end()
-    if (!itemEqualSize) {
+    if (!itemEqual) {
       updateTotalSize()
     }
     setStart(Math.floor(scrollTop / itemHeight))
@@ -197,7 +197,7 @@ export const VirtualList: FunctionComponent<
                 className="nut-virtuallist-item"
                 key={`${data}`}
                 style={{
-                  height: `${itemEqualSize ? `${itemHeight}px` : 'auto'}`,
+                  height: `${itemEqual ? `${itemHeight}px` : 'auto'}`,
                 }}
               >
                 {ItemRender ? (

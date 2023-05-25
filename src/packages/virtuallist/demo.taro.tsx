@@ -126,7 +126,7 @@ const ListDemo = () => {
             list={list}
             ItemRender={ItemVariableDemo}
             onScroll={onScroll}
-            itemEqualSize={false}
+            itemEqual={false}
             containerHeight={500}
           />
         )

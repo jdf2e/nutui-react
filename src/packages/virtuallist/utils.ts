@@ -70,7 +70,7 @@ const getEndIndex = ({
   list,
   startIndex,
   visibleCount,
-  itemEqualSize = true,
+  itemEqual = true,
   positions,
   offSetSize,
   overscan,
@@ -79,7 +79,7 @@ const getEndIndex = ({
   list: Array<Data>
   startIndex: number
   visibleCount: number
-  itemEqualSize?: boolean
+  itemEqual?: boolean
   positions: PositionType[]
   offSetSize: number
   overscan: number
@@ -87,7 +87,7 @@ const getEndIndex = ({
 }): number => {
   const dataLength = list.length
   let tempIndex = null
-  if (itemEqualSize) {
+  if (itemEqual) {
     const endIndex = startIndex + visibleCount
     tempIndex = dataLength > 0 ? Math.min(dataLength, endIndex) : endIndex
   } else {
