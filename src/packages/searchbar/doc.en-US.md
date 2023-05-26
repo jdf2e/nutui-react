@@ -126,7 +126,6 @@ export default App;
 ```
 :::
 
-
 ### Customize settings
 
 `SearchBar`'s `leftIn` Property can set the customize the content

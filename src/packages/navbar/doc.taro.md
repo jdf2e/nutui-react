@@ -11,7 +11,7 @@
 import { NavBar } from '@nutui/nutui-react-taro';
 ```
 
-## 代码示例
+## 代码演示
 
 ### 基本用法
 
