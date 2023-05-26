@@ -92,6 +92,7 @@ const subPackages = [
       'pages/swiper/index',
       'pages/table/index',
       'pages/tag/index',
+      'pages/video/index',
       'pages/virtuallist/index',
     ],
   },
