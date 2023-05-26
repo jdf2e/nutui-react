@@ -1,3 +1,17 @@
+# v2.0.0-alpha.12
+`2023-05-26`
+
+* 🛠 refactor: actionSheet (#1053) @xiaoyatong
+* 🛠 refactor: countdown (#1040) @拧巴的猫
+* 🛠 refactor: searchBar (#1047) @xiaoyatong
+* 🛠 refactor: shortPassword (#1046) @Eiinu
+* 🛠 refactor: toast (#1026) @justExplore
+* 🛠 refactor: virtualList (#1056) @Eiinu
+* :sparkles: feat: ellipsis add width attribute (#1038) @Zhu Da Shuai
+* :sparkles: feat: 导出主题中的 CSS 变量类型 (#1050) @oasis-cloud
+* 📖 docs: import touch-emulator (#1045) @oasis-cloud
+
+
 # v2.0.0-alpha.11
 `2023-05-24`
 
