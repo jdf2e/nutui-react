@@ -141,6 +141,16 @@
 - paneKey 重命名为 value
 ### 数据录入
 #### Calendar
+- `startText` 类型改为 `ReactNode`
+- `endText` 类型改为 `ReactNode`
+- `showTitle` 更名为 `title`， 类型改为 `ReactNode`
+- `endText` 类型改为 `ReactNode`
+- `endText` 类型改为 `ReactNode`
+- `endText` 类型改为 `ReactNode`
+- `endText` 类型改为 `ReactNode`
+- `endText` 类型改为 `ReactNode`
+- `endText` 类型改为 `ReactNode`
+
 #### Cascader
 - 新增 `defaultValue`，其中 `defaultValue` 用于非受控，原 `value` 用于受控。两者的类型都改为 `(number | string | undefined)[]`
 - `checkedIcon` 重命名为 `activeIcon`
