@@ -265,19 +265,19 @@ const App = () => {
 
 ### Props
 
-| 属性 | 说明                                       | 类型    | 默认值    |
-|---------|--------------------------------------------|---------|-----------|
-| imgUrl   | 左侧图片Url                                 | string  | -         |
-| title     | 标题                   | string  | -    |
-| price | 商品价格                         | string  | -      |
-| vipPrice     | 会员价格                               | string | -    |
-| shopDesc  | 店铺介绍                                  | string | -    |
-| delivery     | 配送方式 | string  | -      |
-| shopName   | 店铺名称| string  | -      |
-| prolistTpl   | 自定义商品介绍| ReactNode  | -      |
-| originTpl   | 价格后方自定义内容| ReactNode  | -      |
-| shopTagTpl   | 店铺介绍自定义| ReactNode  | -      |
-| footerTpl   | 右下角内容自定义| ReactNode  | -      |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| imgUrl | 左侧图片Url | `string` | `-` |
+| title | 标题 | `string` | `-` |
+| price | 商品价格 | `string` | `-` |
+| vipPrice | 会员价格 | `string` | `-` |
+| shopDesc | 店铺介绍 | `string` | `-` |
+| delivery | 配送方式 | `string` | `-` |
+| shopName | 店铺名称 | `string` | `-` |
+| prolistTpl | 自定义商品介绍 | `ReactNode` | `-` |
+| originTpl | 价格后方自定义内容 | `ReactNode` | `-` |
+| shopTagTpl | 店铺介绍自定义 | `ReactNode` | `-` |
+| footerTpl | 右下角内容自定义 | `ReactNode` | `-` |
 
 ## 主题定制
 
@@ -285,8 +285,8 @@ const App = () => {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 |  说明 |默认值 |
+| 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| --nutui-card-font-size-0 |卡片标签的字体大小 | `$font-size-0` |
-| --nutui-card-left-border-radius | 卡片图片的圆角大小 | `0` |
-| --nutui-card-left-background-color |  卡片图片的背景颜色 |`inherit` |
+| \--nutui-card-font-size-0 | 卡片标签的字体大小 | `$font-size-0` |
+| \--nutui-card-left-border-radius | 卡片图片的圆角大小 | `0` |
+| \--nutui-card-left-background-color | 卡片图片的背景颜色 | `inherit` |

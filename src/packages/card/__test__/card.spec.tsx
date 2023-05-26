@@ -28,7 +28,7 @@ test('props test', () => {
       shopName={state.shopName}
     />
   )
-  const priceDoms = container.querySelectorAll('.nut-price__integer-large')
+  const priceDoms = container.querySelectorAll('.nut-price__integer-normal')
   const tagDoms = container.querySelectorAll('.nut-tag')
   expect(
     container.querySelector('.nut-card__left img')?.getAttribute('src')

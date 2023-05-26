@@ -25,49 +25,49 @@ exports[`footerTpl slot test 1`] = `
         class="nut-card__right__price"
       >
         <div
-          class="nut-price "
+          class="nut-price  "
         >
           <div
-            class="nut-price__symbol nut-price__symbol-large"
+            class="nut-price__symbol nut-price__symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-large"
+            class="nut-price__integer nut-price__integer-normal"
           >
             388
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             00
           </div>
         </div>
         <div
-          class="nut-price nut-card__right__price__origin"
+          class="nut-price nut-card__right__price__origin "
         >
           <div
-            class="nut-price__symbol nut-price__symbol-large"
+            class="nut-price__symbol nut-price__symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-large"
+            class="nut-price__integer nut-price__integer-normal"
           >
             378
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             00
           </div>
@@ -140,25 +140,25 @@ exports[`originTpl slot test 1`] = `
         class="nut-card__right__price"
       >
         <div
-          class="nut-price "
+          class="nut-price  "
         >
           <div
-            class="nut-price__symbol nut-price__symbol-large"
+            class="nut-price__symbol nut-price__symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-large"
+            class="nut-price__integer nut-price__integer-normal"
           >
             388
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             00
           </div>
@@ -249,49 +249,49 @@ exports[`prolistTpl slot test 1`] = `
         class="nut-card__right__price"
       >
         <div
-          class="nut-price "
+          class="nut-price  "
         >
           <div
-            class="nut-price__symbol nut-price__symbol-large"
+            class="nut-price__symbol nut-price__symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-large"
+            class="nut-price__integer nut-price__integer-normal"
           >
             388
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             00
           </div>
         </div>
         <div
-          class="nut-price nut-card__right__price__origin"
+          class="nut-price nut-card__right__price__origin "
         >
           <div
-            class="nut-price__symbol nut-price__symbol-large"
+            class="nut-price__symbol nut-price__symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-large"
+            class="nut-price__integer nut-price__integer-normal"
           >
             378
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             00
           </div>
@@ -359,49 +359,49 @@ exports[`props test 1`] = `
         class="nut-card__right__price"
       >
         <div
-          class="nut-price "
+          class="nut-price  "
         >
           <div
-            class="nut-price__symbol nut-price__symbol-large"
+            class="nut-price__symbol nut-price__symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-large"
+            class="nut-price__integer nut-price__integer-normal"
           >
             388
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             00
           </div>
         </div>
         <div
-          class="nut-price nut-card__right__price__origin"
+          class="nut-price nut-card__right__price__origin "
         >
           <div
-            class="nut-price__symbol nut-price__symbol-large"
+            class="nut-price__symbol nut-price__symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-large"
+            class="nut-price__integer nut-price__integer-normal"
           >
             378
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             00
           </div>
@@ -469,49 +469,49 @@ exports[`shopTagTpl slot test 1`] = `
         class="nut-card__right__price"
       >
         <div
-          class="nut-price "
+          class="nut-price  "
         >
           <div
-            class="nut-price__symbol nut-price__symbol-large"
+            class="nut-price__symbol nut-price__symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-large"
+            class="nut-price__integer nut-price__integer-normal"
           >
             388
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             00
           </div>
         </div>
         <div
-          class="nut-price nut-card__right__price__origin"
+          class="nut-price nut-card__right__price__origin "
         >
           <div
-            class="nut-price__symbol nut-price__symbol-large"
+            class="nut-price__symbol nut-price__symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-large"
+            class="nut-price__integer nut-price__integer-normal"
           >
             378
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             00
           </div>
