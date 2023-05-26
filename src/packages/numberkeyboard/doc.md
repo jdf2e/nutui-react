@@ -24,10 +24,10 @@ import { Cell, NumberKeyboard, Toast } from '@nutui/nutui-react';
 const App = () => {
   const [visible, setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`输入：${number}`)
+    Toast.show(`输入：${number}`)
   }
   const onDelete = () => {
-    Toast.text('删除')
+    Toast.show('删除')
   }
   return (
     <>
@@ -61,10 +61,10 @@ import { Cell, NumberKeyboard, Toast } from '@nutui/nutui-react';
 const App = () => {
   const [visible, setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`输入：${number}`)
+    Toast.show(`输入：${number}`)
   }
   const onDelete = () => {
-    Toast.text('删除')
+    Toast.show('删除')
   }
   return (
     <>
@@ -100,10 +100,10 @@ import { Cell, NumberKeyboard, Toast } from '@nutui/nutui-react';
 const App = () => {
   const [visible, setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`输入：${number}`)
+    Toast.show(`输入：${number}`)
   }
   const onDelete = () => {
-    Toast.text('删除')
+    Toast.show('删除')
   }
   return (
     <>
@@ -138,10 +138,10 @@ import { Cell, NumberKeyboard, Toast } from '@nutui/nutui-react';
 const App = () => {
   const [visible, setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`输入：${number}`)
+    Toast.show(`输入：${number}`)
   }
   const onDelete = () => {
-    Toast.text('删除')
+    Toast.show('删除')
   }
   return (
     <>
@@ -177,10 +177,10 @@ import { Cell, NumberKeyboard, Toast } from '@nutui/nutui-react';
 const App = () => {
   const [visible, setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`输入：${number}`)
+    Toast.show(`输入：${number}`)
   }
   const onDelete = () => {
-    Toast.text('删除')
+    Toast.show('删除')
   }
   return (
     <>
@@ -215,10 +215,10 @@ import { Cell, NumberKeyboard, Toast } from '@nutui/nutui-react';
 const App = () => {
   const [visible, setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`enter:${number}`)
+    Toast.show(`enter:${number}`)
   }
   const onDelete = () => {
-    Toast.text('delete')
+    Toast.show('delete')
   }
   return (
     <>
@@ -234,7 +234,7 @@ const App = () => {
         duration={1}
         overlayClassName="number-keyboard-overlay"
         onOpen={() => {
-          Toast.text('onOpen')
+          Toast.show('onOpen')
         }}
       />
     </>

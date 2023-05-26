@@ -47,7 +47,7 @@ export default App
 
 ### Props
 
-| 字段 | 说明 | 类型 | 默认值 |
+| 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | canReleaseText | 释放的提示文案 | `ReactNode` | `释放立即刷新` |
 | completeText | 完成时的提示文案 | `ReactNode` | `刷新成功` |

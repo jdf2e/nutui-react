@@ -9,13 +9,13 @@ import classNames from 'classnames'
 import { DataContext } from '@/packages/row/UserContext'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-type EventType = 'row' | 'col'
+export type ColEventType = 'row' | 'col'
 
 export interface ColProps extends BasicComponent {
   span: string | number
   offset: string | number
   gutter: string | number
-  onClick: (e: any, type: EventType) => void
+  onClick: (e: any, type: ColEventType) => void
 }
 
 const defaultProps = {

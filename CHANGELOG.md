@@ -1,3 +1,31 @@
+# v2.0.0-alpha.12
+`2023-05-26`
+
+* 🛠 refactor: actionSheet (#1053) @xiaoyatong
+* 🛠 refactor: countdown (#1040) @拧巴的猫
+* 🛠 refactor: searchBar (#1047) @xiaoyatong
+* 🛠 refactor: shortPassword (#1046) @Eiinu
+* 🛠 refactor: toast (#1026) @justExplore
+* 🛠 refactor: virtualList (#1056) @Eiinu
+* :sparkles: feat: ellipsis add width attribute (#1038) @Zhu Da Shuai
+* :sparkles: feat: 导出主题中的 CSS 变量类型 (#1050) @oasis-cloud
+* 📖 docs: import touch-emulator (#1045) @oasis-cloud
+
+
+# v2.0.0-alpha.11
+`2023-05-24`
+
+* 🛠 refactor: collapse (#1027) @Eiinu
+* 🛠 refactor: Skeleton (#1036) @Eiinu
+* :sparkles: feat: 添加土耳其语 (#1028) @manin
+* :bug: fix(fixednav): 修改 onSelect 参数顺序 (#1035) @Eiinu
+* :bug: fix: 修复taro下拉刷新组件偶发未触发canRelease状态时松手，组件不会自动回弹的问题 (#1029) @Z-Bokle
+* 🔨 chore: 增加同步升级文档到 docs 仓库的脚本 (#1044) @oasis-cloud
+* 🔨 chore: 完善组件导出的类型 (#1039) @oasis-cloud
+* 🔨 chore: 构建每个组件的 css 文件 (#1037) @oasis-cloud
+* 📖 docs: 文档 props 标题统一修复 (#1041) @oasis-cloud
+
+
 # v2.0.0-alpha.10
 `2023-05-19`
 
@@ -12,7 +40,7 @@
 # v2.0.0-alpha.9
 `2023-05-17`
 
-* :sparkles: feat: add createProperties.js (#1001) @Eiinu
+* :sparkles: feat: add create-properties.js (#1001) @Eiinu
 * :sparkles: feat: cascader支持受控 (#1000) @xiaoyatong
 * :sparkles: feat: elevator 支持右侧索引是否展示 (#1006) @拧巴的猫
 * :bug: fix(image): lazy 优化观察对象数量 (#1015) @Eiinu

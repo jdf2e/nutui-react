@@ -208,7 +208,7 @@ import { My } from '@nutui/icons-react';
 
 const App = () => {
   const activeAvatar = () => {
-    Toast.text('触发点击头像')
+    Toast.show('触发点击头像')
   }
   return (
     <>

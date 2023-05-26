@@ -183,7 +183,7 @@ const RadioGroupLast = () => {
   return <>
     <Radio.Group
       defaultValue={checkedValue}
-      onChange={(value) => Toast.text(value)}
+      onChange={(value) => Toast.show(value)}
     >
       <Radio value={1}>触发事件</Radio>
       <Radio value={2}>触发事件</Radio>

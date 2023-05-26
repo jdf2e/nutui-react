@@ -7,57 +7,53 @@ import React, {
 } from 'react'
 import { ScrollView } from '@tarojs/components'
 import { getSystemInfoSync } from '@tarojs/taro'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import { PositionType, VirtualListState } from './type'
+import { Data, PositionType, VirtualListState } from './type'
 import { binarySearch, initPositinoCache, updateItemSize } from './utils'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export type VirtualListProps = {
-  className?: string | any
-  style?: React.CSSProperties
-  sourceData: any // 获取数据
-  containerSize?: number // 容器大小
-  ItemRender?: any // virtual 列表父节点渲染的函数，默认为 (items, ref) => <div ref={ref}>{items}</div>
-  itemEqualSize?: boolean // item 固定大小，默认是true
-  itemSize?: number // 预估元素高度
-  overscan?: number // 除了视窗里面默认的元素, 还需要额外渲染的, 避免滚动过快, 渲染不及时,默认是2
-  onScroll?: (...args: any[]) => any // 滑动到底部执行的函数
-  key?: any // 遍历时生成item 的唯一key,默认是index,建议传入resources的数据具体的某个唯一值的字段
-  locale?: any
+const clientHeight = getSystemInfoSync().windowHeight - 5 || 667
+
+export interface VirtualListProps extends BasicComponent {
+  list: Array<Data>
+  containerHeight: number
+  ItemRender: React.FC<any>
+  itemHeight: number
+  itemEqual: boolean
+  overscan: number
+  onScroll: () => void
+  key: string
 }
 const defaultProps = {
-  sourceData: [],
-  itemSize: 66,
-  itemEqualSize: true,
+  ...ComponentDefaults,
+  list: [] as Array<Data>,
+  containerHeight: clientHeight,
+  itemHeight: 66,
+  itemEqual: true,
   overscan: 2,
 } as VirtualListProps
 
-const clientHeight = getSystemInfoSync().windowHeight - 5 || 667
-const clientWidth = getSystemInfoSync().windowWidth || 375
-
-export const VirtualList: FunctionComponent<
-  VirtualListProps & React.HTMLAttributes<HTMLDivElement>
-> = (props: VirtualListProps) => {
+export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
+  props
+) => {
   const {
-    sourceData = [],
+    list,
     ItemRender,
-    itemSize = 66,
-    itemEqualSize = true,
-    overscan = 2,
+    itemHeight,
+    itemEqual,
+    overscan,
     key,
     onScroll,
     className,
-    containerSize = clientHeight,
+    containerHeight,
     ...rest
-  } = props
-  //   const sizeKey = horizontal ? 'width' : 'height'
-  //   const scrollKey = horizontal ? 'scrollLeft' : 'scrollTop'
-  //   const offsetKey = horizontal ? 'left' : 'top'
+  } = {
+    ...defaultProps,
+    ...props,
+  }
 
   const [startOffset, setStartOffset] = useState(0)
   const [start, setStart] = useState(0)
-  const [list, setList] = useState(sourceData.slice())
 
-  const { locale } = useConfig()
   // 虚拟列表容器ref
   const scrollRef = useRef<HTMLDivElement>(null)
   // 虚拟列表显示区域ref
@@ -76,7 +72,7 @@ export const VirtualList: FunctionComponent<
     },
   ])
 
-  const [offSetSize, setOffSetSize] = useState<number>(containerSize || 0)
+  const [offSetSize, setOffSetSize] = useState<number>(containerHeight || 0)
   const [options, setOptions] = useState<VirtualListState>({
     startOffset: 0, // 可视区域距离顶部的偏移量
     startIndex: 0, // 可视区域开始索引
@@ -84,43 +80,37 @@ export const VirtualList: FunctionComponent<
     endIndex: 10, // 可视区域结束索引
   })
 
-  useEffect(() => {
-    if (sourceData.length) {
-      setList(sourceData.slice())
-    }
-  }, [sourceData])
-
   //   初始计算可视区域展示数量
   useEffect(() => {
     setPositions((options) => {
       return { ...options, endIndex: visibleCount() }
     })
-  }, [itemSize, overscan, offSetSize])
+  }, [itemHeight, overscan, offSetSize])
 
   useEffect(() => {
-    if (containerSize) return
+    if (containerHeight) return
 
     setOffSetSize(getContainerHeight())
-  }, [containerSize])
+  }, [containerHeight])
 
   useEffect(() => {
-    const pos = initPositinoCache(itemSize, sourceData.length)
+    const pos = initPositinoCache(itemHeight, list.length)
 
     setPositions(pos)
-  }, [itemSize, sourceData])
+  }, [itemHeight, list])
 
   // 可视区域总高度
   const getContainerHeight = () => {
     // 初始首页列表高度
-    const initH = itemSize * sourceData.length
-    // 未设置containerSize高度，判断首页高度小于设备高度时，滚动容器高度为首页数据高度，减5为分页触发的偏移量
+    const initH = itemHeight * list.length
+    // 未设置containerHeight高度，判断首页高度小于设备高度时，滚动容器高度为首页数据高度，减5为分页触发的偏移量
     return initH < clientHeight
-      ? initH + overscan * itemSize - 5
-      : Math.min(containerSize, clientHeight) // Math.min(containerSize, clientHeight)
+      ? initH + overscan * itemHeight - 5
+      : Math.min(containerHeight, clientHeight) // Math.min(containerHeight, clientHeight)
   }
   // 可视区域条数
   const visibleCount = () => {
-    return Math.ceil(getContainerHeight() / itemSize) + overscan
+    return Math.ceil(getContainerHeight() / itemHeight) + overscan
   }
 
   const end = () => {
@@ -128,7 +118,7 @@ export const VirtualList: FunctionComponent<
   }
 
   const listHeight = () => {
-    return list.length * itemSize
+    return list.length * itemHeight
   }
 
   const visibleData = () => {
@@ -151,17 +141,17 @@ export const VirtualList: FunctionComponent<
 
     const overStart = startIndex - overscan > -1 ? startIndex - overscan : 0
     const endIndex = end()
-    if (!itemEqualSize) {
+    if (!itemEqual) {
       updateTotalSize()
     }
-    setStart(Math.floor(scrollTop / itemSize))
+    setStart(Math.floor(scrollTop / itemHeight))
 
     setOptions({ startOffset, startIndex, overStart, endIndex })
 
     if (end() > list.length - 1) {
       onScroll && onScroll()
     }
-    setStartOffset(scrollTop - (scrollTop % itemSize))
+    setStartOffset(scrollTop - (scrollTop % itemHeight))
   }
 
   return (
@@ -171,11 +161,10 @@ export const VirtualList: FunctionComponent<
       }
       {...rest}
       style={{
-        height: containerSize ? `${offSetSize}px` : '',
+        height: containerHeight ? `${offSetSize}px` : '',
       }}
     >
       <ScrollView
-        scrollTop={0}
         scrollY
         type="list"
         ref={scrollRef}
@@ -205,7 +194,7 @@ export const VirtualList: FunctionComponent<
                 className="nut-virtuallist-item"
                 key={`${data}`}
                 style={{
-                  height: `${itemEqualSize ? `${itemSize}px` : 'auto'}`,
+                  height: `${itemEqual ? `${itemHeight}px` : 'auto'}`,
                 }}
               >
                 {ItemRender ? (

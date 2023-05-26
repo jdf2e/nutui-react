@@ -1,10 +1,10 @@
 # ConfigProvider 全域配置
 
-### 介紹
+## 介紹
 
 用於全域配置 NutUI-React 元件，提供主題定製，國際化支援。
 
-### 安裝
+## 安裝
 
 ```ts
 // react
@@ -35,8 +35,8 @@ NutUI-React
 ```
 
 > @nutui/nutui-react 中帶了兩個主題檔
-> 默認主題：@nutui/nutui-react/dist/styes/theme-default.scss;
-> 暗黑主題：@nutui/nutui-react/dist/styes/theme-dark.scss;
+> 默認主題：@nutui/nutui-react/dist/styles/theme-default.scss;
+> 暗黑主題：@nutui/nutui-react/dist/styles/theme-dark.scss;
 > 如果想使用暗黑主題，可以在專案中導入暗黑主題檔。
 
 #### 通過 ConfigProvider 覆蓋
@@ -154,11 +154,11 @@ export default App;
 
 如果你找不到你需要的語言包，歡迎你在 [英文語言包]（） 的基礎上創建一個新的語言包，並給我們發一個 Pull Request。
 
-## API
+## ConfigProvider
 
 ### Props
 
-| 參數 | 說明 | 類型 | 預設值 |
+| 屬性 | 說明 | 類型 | 預設值 |
 |--------|--------|---------|------|
 | locale | 設置多語言包 | BaseLang | zhCN |
 | theme      | 設置主題 |    Record<string, string>     | -    |

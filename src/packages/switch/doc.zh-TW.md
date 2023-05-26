@@ -46,7 +46,7 @@ const App = () => {
   const [checkedAsync, setCheckedAsync] = useState(true)
   
   const onChangeAsync = (value: boolean, event: Event) => {
-    Toast.text(`2秒後異步觸發 ${value}`)
+    Toast.show(`2秒後異步觸發 ${value}`)
     setTimeout(() => {
       setCheckedAsync(value)
     }, 2000)
@@ -97,7 +97,7 @@ import { Switch, Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const onChange = (value: boolean, event: Event) => {
-    Toast.text(`觸發了onChange事件，開關狀態：${value}`)
+    Toast.show(`觸發了onChange事件，開關狀態：${value}`)
   }
   return ( 
     <>   
@@ -156,7 +156,7 @@ export default App;
 
 ### Props
 
-| 參數 | 說明 | 類型 | 默認值 |
+| 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | defaultChecked | 開關狀態，非受控 | `boolean` | `false` |
 | checked | 開關狀態，受控 | `boolean` | `false` |

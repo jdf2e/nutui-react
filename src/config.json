@@ -27,6 +27,12 @@
         "show": true
       },
       {
+        "name": "migrate-from-v1",
+        "cName": "从 v1 升级到 v2",
+        "eName": "Migrate-from-v1",
+        "show": true
+      },
+      {
         "name": "international-react",
         "cName": "国际化",
         "eName": "Internationalization",
@@ -570,7 +576,7 @@
           "author": "dsj"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "SearchBar",
           "type": "component",
           "cName": "搜索栏",
@@ -581,7 +587,7 @@
           "author": "Ymm0008"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "ShortPassword",
           "type": "component",
           "cName": "短密码",
@@ -643,7 +649,7 @@
       "enName": "feedback",
       "packages": [
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "ActionSheet",
           "type": "component",
           "cName": "动作面板",
@@ -755,6 +761,7 @@
           "author": "oasis"
         },
         {
+          "version": "2.0.0",
           "name": "Skeleton",
           "type": "component",
           "cName": "骨架屏",
@@ -871,7 +878,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Collapse",
           "type": "component",
           "cName": "折叠面板",
@@ -882,7 +889,7 @@
           "author": "zhenyulei"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "CollapseItem",
           "type": "component",
           "cName": "折叠面板子组件",
@@ -893,7 +900,7 @@
           "author": "zhenyulei"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "CountDown",
           "type": "component",
           "cName": "倒计时",
@@ -937,7 +944,7 @@
           "author": "liukun"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "VirtualList",
           "type": "component",
           "cName": "虚拟列表",

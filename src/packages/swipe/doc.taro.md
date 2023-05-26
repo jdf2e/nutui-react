@@ -1,10 +1,10 @@
 #  Swipe组件
 
-### 介绍
+## 介绍
 
 常用于单元格左右滑删除等手势操作
 
-### 安装
+## 安装
 
 ```javascript
 import { Swipe } from '@nutui/nutui-react-taro';
@@ -134,7 +134,7 @@ import { Swipe, Cell, Button, Toast } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const handleChange = () => {
-    Toast.text('点击');
+    Toast.show('点击');
   }
   return <>
     <Swipe
@@ -154,8 +154,8 @@ const App = () => {
         </>
       }
       onActionClick={handleChange}
-      onOpen={() => Toast.text('打开')}
-      onClose={() => Toast.text('关闭')}
+      onOpen={() => Toast.show('打开')}
+      onClose={() => Toast.show('关闭')}
     >
       <Cell title="事件" />
     </Swipe>
@@ -254,11 +254,11 @@ export default App;
 ```
 :::
 
-## API
+## Swipe
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
+| 属性 | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | name | 标识符，可以在事件参数中获取到 | `number \| string` | - |
 | leftAction | 左侧滑动区域的内容 | `ReactNode` | - |

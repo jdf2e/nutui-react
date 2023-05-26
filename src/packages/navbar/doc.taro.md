@@ -11,7 +11,7 @@
 import { NavBar } from '@nutui/nutui-react-taro';
 ```
 
-## 代码示例
+## 代码演示
 
 ### 基本用法
 
@@ -153,7 +153,7 @@ export default App;
 
 ### Props  
 
-| 字段 | 说明 | 类型    | 默认值  |
+| 属性 | 说明 | 类型    | 默认值  |
 |------------|--------------------|---------|---------|
 | right | 右侧内容 | ReactNode  | -       |
 | left        | 左侧内容，渲染在返回区域的右侧 | ReactNode  | -       |   

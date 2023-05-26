@@ -1,65 +1,50 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import Avatar from '@/packages/avatar'
-import bem from '@/utils/bem'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 type avatarShape = 'round' | 'square'
-export interface SkeletonProps {
-  width: string
-  height: string
+export interface SkeletonProps extends BasicComponent {
   animated: boolean
-  row: number
+  rows: number
   title: boolean
   avatar: boolean
-  className?: string
-  style?: React.CSSProperties
   avatarSize: string
-  round: boolean
-  loading: boolean
+  visible: boolean
   avatarShape: avatarShape
-  children?: React.ReactNode
 }
 const defaultProps = {
-  width: '100px',
-  height: '100px',
-  row: 1,
+  ...ComponentDefaults,
+  rows: 1,
   animated: false,
   title: false,
   avatar: false,
-  round: false,
   avatarSize: '50px',
-  loading: false,
+  visible: false,
   avatarShape: 'round',
 } as SkeletonProps
 export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
   const {
     className,
-    width,
-    height,
     animated,
-    row,
+    rows,
     title,
     avatar,
     avatarSize,
-    round,
-    loading,
+    visible,
     children,
     avatarShape,
-    ...restProps
+    ...rest
   } = {
     ...defaultProps,
     ...props,
   }
 
-  const b = bem('skeleton')
-  const classes = classNames(className, b())
-  const blockClass = classNames({
-    blockClass: true,
-    'blockClass--round': round,
-  })
+  const classPrefix = 'nut-skeleton'
+  const classes = classNames(className, classPrefix)
   const avatarClass = classNames({
-    avatarClass: true,
-    [`avatarClass--${avatarShape}`]: avatarShape,
+    avatar: true,
+    [`avatar--${avatarShape}`]: avatarShape,
   })
 
   const repeatLines = (num: number) => {
@@ -81,37 +66,30 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
 
   return (
     <>
-      {loading ? (
+      {visible ? (
         <div>{children}</div>
       ) : (
-        <div className={classes} {...restProps}>
-          {animated && <div className="skeleton-animation" />}
-          <div className="nut-skeleton-content">
+        <div className={classes} {...rest}>
+          {animated && <div className={`${classPrefix}__animation`} />}
+          <div className={`${classPrefix}__content`}>
             {avatar && (
               <Avatar
                 className={avatarClass}
-                background="rgb(239, 239, 239)"
                 shape={avatarShape}
                 style={getStyle()}
+                icon="null"
               />
             )}
-
-            {row === 1 && (
-              <div className={blockClass} style={{ width, height }} />
+            {rows === 1 ? (
+              <div className={`${classPrefix}__block`} />
+            ) : (
+              <div className={`${classPrefix}__content-line`}>
+                {title && <div className={`${classPrefix}__title`} />}
+                {repeatLines(rows).map((item, index) => {
+                  return <div className={`${classPrefix}__block`} key={index} />
+                })}
+              </div>
             )}
-
-            <div className="skeleton-content-line">
-              {title && <div className="skeleton-title" />}
-              {repeatLines(row).map((item, index) => {
-                return (
-                  <div
-                    className={blockClass}
-                    key={index}
-                    style={{ width, height }}
-                  />
-                )
-              })}
-            </div>
           </div>
         </div>
       )}

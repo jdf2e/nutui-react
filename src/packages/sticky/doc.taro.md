@@ -90,7 +90,7 @@ export default App
 
 ### Props
 
-| 参数      | 说明                    | 类型                           | 默认值 |
+| 属性 | 说明                    | 类型                           | 默认值 |
 |--------------|--------------------------------|--------|------------------|
 | position  | 吸附位置（top、bottom） | string                         | `top`    |
 | threshold          | 距离，当 position 为 top 时，设置的是 top | number | `0`               |
