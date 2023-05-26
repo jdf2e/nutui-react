@@ -1,10 +1,10 @@
 #  Card 
 
-### Intro
+## Intro
 
 Used to display product pictures, prices and other information.
 
-### Install
+## Install
 
 ```js
 // react
@@ -235,8 +235,7 @@ export default App;
 
 :::
 
-
-## API
+## Card
 
 ### Props
 
@@ -265,11 +264,8 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
+| Name | Description               |  Default  |
 | --- | --- |
-| --nutui-card-font-size-0 | `$font-size-0` |
-| --nutui-card-font-size-1 | `$font-size-1` |
-| --nutui-card-font-size-2 | `$font-size-2` |
-| --nutui-card-font-size-3 | `$font-size-3` |
-| --nutui-card-left-border-radius | `0` |
-| --nutui-card-left-background-color | `inherit` |
+| --nutui-card-font-size-0 | The font size of the card label | `$font-size-0` |
+| --nutui-card-left-border-radius | The size of the rounded corners of the card picture | `0` |
+| --nutui-card-left-background-color |卡片图片的背景颜色 |  `inherit` |

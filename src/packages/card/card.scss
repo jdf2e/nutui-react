@@ -2,14 +2,6 @@
 @import '../tag/tag.scss';
 @import '../../styles/mixins/text-ellipsis.scss';
 
-.nut-theme-dark {
-  .nut-card {
-    .nut-card__right {
-      color: $dark1;
-    }
-  }
-}
-
 .nut-card {
   width: 100%;
   display: flex;
@@ -17,6 +9,8 @@
     width: 120px;
     height: 120px;
     flex-shrink: 0;
+    background-color: $card-left-background-color;
+    border-radius: $card-left-border-radius;
     > img {
       display: block;
       width: 100%;

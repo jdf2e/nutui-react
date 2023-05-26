@@ -2,10 +2,9 @@ import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import Price from '@/packages/price/index.taro'
 import Tag from '@/packages/tag/index.taro'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-import bem from '@/utils/bem'
-
-export interface CardProps {
+export interface CardProps extends BasicComponent {
   imgUrl: string
   title: string
   price: string
@@ -13,14 +12,25 @@ export interface CardProps {
   shopDesc: string
   delivery: string
   shopName: string
-  className: string
-  style: React.CSSProperties
   prolistTpl: React.ReactNode
   shopTagTpl: React.ReactNode
   originTpl: React.ReactNode
   footerTpl: React.ReactNode
 }
-const defaultProps = {} as CardProps
+const defaultProps = {
+  ...ComponentDefaults,
+  imgUrl: '',
+  title: '',
+  price: '',
+  vipPrice: '',
+  shopDesc: '',
+  delivery: '',
+  shopName: '',
+  prolistTpl: '',
+  shopTagTpl: '',
+  originTpl: '',
+  footerTpl: '',
+} as CardProps
 export const Card: FunctionComponent<
   Partial<CardProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
@@ -43,22 +53,26 @@ export const Card: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const b = bem('card')
+  const classPrefix = 'nut-card'
   return (
-    <div className={classNames(b(), className)} style={style} {...rest}>
-      <div className={b('left')}>
+    <div className={classNames(classPrefix, className)} style={style} {...rest}>
+      <div className={`${classPrefix}__left`}>
         <img src={imgUrl} alt="" />
       </div>
-      <div className={b('right')}>
-        <div className={b('right__title')}>{title}</div>
+      <div className={`${classPrefix}__right`}>
+        <div className={`${classPrefix}__right__title`}>{title}</div>
         {prolistTpl}
-        <div className={b('right__price')}>
-          <Price price={price} />
+        <div className={`${classPrefix}__right__price`}>
+          <Price size="normal" price={price} />
           {originTpl || (
-            <Price className={b('right__price__origin')} price={vipPrice} />
+            <Price
+              size="normal"
+              className={`${classPrefix}__right__price__origin`}
+              price={vipPrice}
+            />
           )}
         </div>
-        <div className={b('right__other')}>
+        <div className={`${classPrefix}__right__other`}>
           {shopTagTpl || (
             <>
               <Tag type="danger">{shopDesc}</Tag>
@@ -66,8 +80,8 @@ export const Card: FunctionComponent<
             </>
           )}
         </div>
-        <div className={b('right__shop')}>
-          <div className={b('right__shop__name')}>{shopName}</div>
+        <div className={`${classPrefix}__right__shop`}>
+          <div className={`${classPrefix}__right__shop__name`}>{shopName}</div>
           {footerTpl}
         </div>
       </div>

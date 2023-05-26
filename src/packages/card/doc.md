@@ -1,10 +1,10 @@
 # Card 商品卡片
 
-### 介绍
+## 介绍
 
 商品卡片，用于展示商品的图片、价格等信息
 
-### 安装
+## 安装
 
 ```js
 // react
@@ -262,7 +262,7 @@ const App = () => {
 
 :::
 
-## API
+## Card
 
 ### Props
 
@@ -280,21 +280,14 @@ const App = () => {
 | shopTagTpl   | 店铺介绍自定义| ReactNode  | -      |
 | footerTpl   | 右下角内容自定义| ReactNode  | -      |
 
-
-
-
-
 ## 主题定制
 
 ### 样式变量
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-card-font-size-0 | `$font-size-0` |
-| --nutui-card-font-size-1 | `$font-size-1` |
-| --nutui-card-font-size-2 | `$font-size-2` |
-| --nutui-card-font-size-3 | `$font-size-3` |
-| --nutui-card-left-border-radius | `0` |
-| --nutui-card-left-background-color | `inherit` |
+| 名称 |  说明 |默认值 |
+| --- | --- | --- |
+| --nutui-card-font-size-0 |卡片标签的字体大小 | `$font-size-0` |
+| --nutui-card-left-border-radius | 卡片图片的圆角大小 | `0` |
+| --nutui-card-left-background-color |  卡片图片的背景颜色 |`inherit` |
