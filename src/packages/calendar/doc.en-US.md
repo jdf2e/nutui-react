@@ -171,7 +171,7 @@ const App = () => {
             <Calendar
                 visible={isVisible3}
                 defaultValue={date3}
-                isAutoBackFill
+                autoBackfill
                 startDate=""
                 endDate=""
                 onClose={closeSwitch3}
@@ -414,9 +414,9 @@ const App = () => {
         <>
             <div className="test-calendar-wrapper" style={ { display: 'flex', width: '100%', height: '613px', overflow: 'hidden' } }>
                 <Calendar
-                    poppable={ false }
+                    popup={ false }
                     defaultValue={ date2 }
-                    isAutoBackFill
+                    autoBackfill
                     onChoose={ setChooseValue2 }
                 />
             </div>
@@ -442,9 +442,9 @@ Through ref, you can get the Calendar instance and call the instance method.
 | Params| Description    | Type            | Default          |
 |-------------------|---------------------------------------------------|-----------------|-----------------|
 | visible   | Is it visible                                          | boolean         | `false`           |
-| type              | Type, select 'one' for date and 'range' for interval              | string          | `one`           |
-| poppable          | Whether to display the pop-up window status                                  | boolean         | `true`            |
-| isAutoBackFill | Automatic backfill                                          | boolean         | `false`           |
+| type              | Type, select 'single' for date and 'range' for interval              | string          | `single`           |
+| popup          | Whether to display the pop-up window status                                  | boolean         | `true`            |
+| autoBackfill | Automatic backfill                                          | boolean         | `false`           |
 | title             | show title                                          | string          | `Date Pick`      |
 | defaultValue     | Default value, select string format for date, select Array format for interval | string \| Array | -            |
 | startDate        | The start date, or null if the start date is not limited              | string          | Today            |
@@ -455,7 +455,7 @@ Through ref, you can get the Calendar instance and call the instance method.
 | confirmText          | Bottom confirm button copy               | string          | `确认` |
 | showTitle          | Whether to show the calendar title               | boolean          | `true` |
 | showSubTitle          | Whether to display the date title              | boolean          | `true` |
-| toDateAnimation          | Whether to start scroll animation              | boolean          | `true` |
+| scrollAnimation          | Whether to start scroll animation              | boolean          | `true` |
 | onBtn | Below the custom calendar header, you can add custom actions              |  (() => string \| JSX.Element) \| undefined      | - |
 | onDay  | date information              |  ((date: Day) => string \| JSX.Element) \| undefined                          | - |
 | onTopInfo  | Date Top Information             |  ((date: Day) => string \| JSX.Element) \| undefined                          | - |

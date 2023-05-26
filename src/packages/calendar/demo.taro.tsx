@@ -307,8 +307,8 @@ const CalendarDemo = () => {
           visible={isVisible1}
           defaultValue={date1}
           type="range"
-          startDate="2019-12-22"
-          endDate="2021-01-08"
+          startDate="2023-12-22"
+          endDate="2024-01-08"
           onClose={closeSwitch1}
           onChoose={setChooseValue1}
           onSelected={select}
@@ -342,7 +342,7 @@ const CalendarDemo = () => {
           defaultValue={date3}
           startDate=""
           endDate=""
-          isAutoBackFill
+          autoBackfill
           onClose={closeSwitch3}
           onChoose={setChooseValue3}
         />
@@ -359,7 +359,7 @@ const CalendarDemo = () => {
           visible={isVisible5}
           defaultValue={date5}
           type="range"
-          isAutoBackFill
+          autoBackfill
           startDate="2019-12-22"
           endDate="2021-01-08"
           onClose={closeSwitch5}
@@ -423,9 +423,9 @@ const CalendarDemo = () => {
           }}
         >
           <Calendar
-            poppable={false}
+            popup={false}
             defaultValue={date2}
-            isAutoBackFill
+            autoBackfill
             onChoose={setChooseValue2}
             onYearMonthChange={yearMonthChange}
           />

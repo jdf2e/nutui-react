@@ -281,7 +281,7 @@ const CalendarDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.ce5c5446}</h2>
-        <Cell
+        {/* <Cell
           title={translated.c38a08ef}
           description={date ? `${date} ${dateWeek}` : translated.b840c88f}
           onClick={openSwitch}
@@ -295,7 +295,7 @@ const CalendarDemo = () => {
           onClose={closeSwitch}
           onChoose={setChooseValue}
           onSelected={select}
-        />
+        /> */}
 
         <Cell
           title={translated.a74a1fd4}
@@ -310,13 +310,13 @@ const CalendarDemo = () => {
           visible={isVisible1}
           defaultValue={date1}
           type="range"
-          startDate="2019-12-22"
-          endDate="2021-01-08"
+          startDate="2023-05-28"
+          endDate="2023-09-01"
           onClose={closeSwitch1}
           onChoose={setChooseValue1}
           onSelected={select}
         />
-
+        {/* 
         <Cell
           title={translated['7db1a8b2']}
           description={
@@ -347,7 +347,7 @@ const CalendarDemo = () => {
           defaultValue={date3}
           startDate=""
           endDate=""
-          isAutoBackFill
+          autoBackfill
           onClose={closeSwitch3}
           onChoose={setChooseValue3}
         />
@@ -364,7 +364,7 @@ const CalendarDemo = () => {
           visible={isVisible5}
           defaultValue={date5}
           type="range"
-          isAutoBackFill
+          autoBackfill
           startDate="2019-12-22"
           endDate="2021-01-08"
           onClose={closeSwitch5}
@@ -429,13 +429,13 @@ const CalendarDemo = () => {
           }}
         >
           <Calendar
-            poppable={false}
+            popup={false}
             defaultValue={date2}
-            isAutoBackFill
+            autoBackfill
             onChoose={setChooseValue2}
             onYearMonthChange={yearMonthChange}
           />
-        </div>
+        </div> */}
       </div>
     </>
   )

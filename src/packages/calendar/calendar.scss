@@ -12,7 +12,7 @@
   height: 100%;
   flex-direction: column;
 
-  &.nut-calendar-tile {
+  &.nut-calendar-title {
     .nut-calendar-header {
       .calendar-title {
         font-size: $calendar-base-font;
@@ -124,7 +124,7 @@
         margin: 8px 0;
       }
 
-      .calendar-month-con {
+      .calendar-month-content {
         overflow: hidden;
 
         .calendar-month-item {
@@ -135,15 +135,16 @@
         }
 
         .calendar-month-day {
-          float: left;
-          width: $calendar-day-width;
-          height: $calendar-day-height;
-          font-weight: $calendar-day-font-weight;
           display: flex;
           align-items: center;
           justify-content: center;
           flex-direction: column;
           position: relative;
+          float: left;
+          width: $calendar-day-width;
+          height: $calendar-day-height;
+          font-weight: $calendar-day-font-weight;
+          margin-bottom: 4px;
 
           .calendar-curr-tips {
             position: absolute;

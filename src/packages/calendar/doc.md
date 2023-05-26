@@ -171,7 +171,7 @@ const App = () => {
             <Calendar
                 visible={isVisible3}
                 defaultValue={date3}
-                isAutoBackFill
+                autoBackfill
                 startDate=""
                 endDate=""
                 onClose={closeSwitch3}
@@ -413,9 +413,9 @@ const App = () => {
         <>
             <div className="test-calendar-wrapper" style={ { display: 'flex', width: '100%', height: '613px', overflow: 'hidden' } }>
                 <Calendar
-                    poppable={ false }
+                    popup={ false }
                     defaultValue={ date2 }
-                    isAutoBackFill
+                    autoBackfill
                     onChoose={ setChooseValue2 }
                 />
             </div>
@@ -440,9 +440,9 @@ export default App;
 | 字段| 说明    | 类型            | 默认值          |
 |-------------------|---------------------------------------------------|-----------------|-----------------|
 | visible   | 是否可见                                          | boolean         | `false`           |
-| type              | 类型，日期选择'one'，区间选择'range'              | string          | `one`           |
-| poppable          | 是否弹窗状态展示                                  | boolean         | `true`            |
-| isAutoBackFill | 自动回填                                          | boolean         | `false`           |
+| type              | 类型，日期选择'single'，区间选择'range'              | string          | `single`           |
+| popup          | 是否弹窗状态展示                                  | boolean         | `true`            |
+| autoBackfill | 自动回填                                          | boolean         | `false`           |
 | title             | 显示标题                                          | string          | `日期选择`      |
 | defaultValue     | 默认值，日期选择 string 格式，区间选择 Array 格式 | string \| Array | -            |
 | startDate        | 开始日期， 如果不限制开始日期传 null              | string          | 今天            |
@@ -453,7 +453,7 @@ export default App;
 | confirmText          | 底部确认按钮文案               | string          | `确认` |
 | showTitle          | 是否在展示日历标题               | boolean          | `true` |
 | showSubTitle          | 是否展示日期标题              | boolean          | `true` |
-| toDateAnimation          | 是否启动滚动动画              | boolean          | `true` |
+| scrollAnimation          | 是否启动滚动动画              | boolean          | `true` |
 | onBtn | 自定义日历标题下部，可用以添加自定义操作              |  (() => string \| JSX.Element) \| undefined      | - |
 | onDay  | 日期信息              |  ((date: Day) => string \| JSX.Element) \| undefined                          | - |
 | onTopInfo  | 日期顶部信息             |  ((date: Day) => string \| JSX.Element) \| undefined                          | - |

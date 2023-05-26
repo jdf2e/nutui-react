@@ -42,14 +42,13 @@ interface CalendarState {
   propStartDate: string
   propEndDate: string
   currentIndex: number
-  unLoadPrev: boolean
   monthsNum: number
 }
 
 export interface CalendarItemProps {
   type?: string
-  isAutoBackFill?: boolean
-  poppable?: boolean
+  autoBackfill?: boolean
+  popup?: boolean
   visible?: boolean
   title?: string
   defaultValue: InputDate
@@ -61,7 +60,7 @@ export interface CalendarItemProps {
   confirmText?: string
   showTitle?: boolean
   showSubTitle?: boolean
-  toDateAnimation?: boolean
+  scrollAnimation?: boolean
   onBtn?: (() => string | JSX.Element) | undefined
   onDay?: ((date: Day) => string | JSX.Element) | undefined
   onTopInfo?: ((date: Day) => string | JSX.Element) | undefined
@@ -72,9 +71,9 @@ export interface CalendarItemProps {
   onYearMonthChange?: (data: any) => void
 }
 const defaultProps = {
-  type: 'one',
-  isAutoBackFill: false,
-  poppable: true,
+  type: 'single',
+  autoBackfill: false,
+  popup: true,
   visible: false,
   title: '日历选择',
   defaultValue: '',
@@ -86,7 +85,7 @@ const defaultProps = {
   confirmText: '确认',
   showTitle: true,
   showSubTitle: true,
-  toDateAnimation: true,
+  scrollAnimation: true,
   onBtn: undefined,
   onDay: undefined,
   onTopInfo: undefined,
@@ -104,8 +103,8 @@ export const CalendarItem = React.forwardRef<
   const { locale } = useConfig()
   const {
     type,
-    isAutoBackFill,
-    poppable,
+    autoBackfill,
+    popup,
     title,
     defaultValue,
     showToday,
@@ -114,7 +113,7 @@ export const CalendarItem = React.forwardRef<
     confirmText,
     showTitle,
     showSubTitle,
-    toDateAnimation,
+    scrollAnimation,
     onBtn,
     onDay,
     onTopInfo,
@@ -137,7 +136,6 @@ export const CalendarItem = React.forwardRef<
     currDate: '',
     propStartDate: '',
     propEndDate: '',
-    unLoadPrev: false,
     touchParams: {
       startY: 0,
       endY: 0,
@@ -170,15 +168,15 @@ export const CalendarItem = React.forwardRef<
 
   const classes = classNames(
     {
-      [`${b('')}-tile`]: !poppable,
-      [`${b('')}-nofooter`]: !!isAutoBackFill,
+      [`${b('')}-title`]: !popup,
+      [`${b('')}-nofooter`]: !!autoBackfill,
     },
     b('')
   )
 
   const headerClasses = classNames({
     [`${b('')}-header`]: true,
-    [`${b('')}-header-tile`]: !poppable,
+    [`${b('')}-header-title`]: !popup,
   })
 
   const monthitemclasses = classNames({
@@ -267,7 +265,7 @@ export const CalendarItem = React.forwardRef<
     ) {
       const chooseData = state.chooseData.slice(0)
       onChoose && onChoose(chooseData)
-      if (poppable) {
+      if (popup) {
         onUpdate && onUpdate()
       }
     }
@@ -327,7 +325,7 @@ export const CalendarItem = React.forwardRef<
       if (!isFirst) {
         // 点击日期 触发
         onSelected && onSelected(state.chooseData)
-        if (isAutoBackFill || !poppable) {
+        if (autoBackfill || !popup) {
           confirm()
         }
       }
@@ -583,7 +581,7 @@ export const CalendarItem = React.forwardRef<
       (Array.isArray(defaultValue) && defaultValue.length > 0)
     ) {
       state.currDate =
-        props.type !== 'one'
+        props.type !== 'single'
           ? ([...(props.defaultValue as string[])] as string[])
           : (props.defaultValue as string[])
     }
@@ -790,7 +788,7 @@ export const CalendarItem = React.forwardRef<
         if (months.current) {
           const distance =
             state.monthsData[index].cssScrollHeight - months.current.scrollTop
-          if (toDateAnimation) {
+          if (scrollAnimation) {
             let flag = 0
             const interval = setInterval(() => {
               flag++
@@ -822,7 +820,7 @@ export const CalendarItem = React.forwardRef<
   }, [])
 
   useEffect(() => {
-    poppable && resetRender()
+    popup && resetRender()
   }, [defaultValue])
 
   React.useImperativeHandle(ref, () => ({
@@ -931,7 +929,7 @@ export const CalendarItem = React.forwardRef<
           </div>
         </ScrollView>
         {/* footer */}
-        {poppable && !isAutoBackFill ? (
+        {popup && !autoBackfill ? (
           <div className="nut-calendar-footer">
             <div className="calendar-confirm-btn" onClick={confirm}>
               {confirmText || locale.confirm}

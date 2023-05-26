@@ -171,7 +171,7 @@ const App = () => {
             <Calendar
                 visible={isVisible3}
                 defaultValue={date3}
-                isAutoBackFill
+                autoBackfill
                 startDate=""
                 endDate=""
                 onClose={closeSwitch3}
@@ -414,9 +414,9 @@ const App = () => {
         <>
             <div className="test-calendar-wrapper" style={ { display: 'flex', width: '100%', height: '613px', overflow: 'hidden' } }>
                 <Calendar
-                    poppable={ false }
+                    popup={ false }
                     defaultValue={ date2 }
-                    isAutoBackFill
+                    autoBackfill
                     onChoose={ setChooseValue2 }
                 />
             </div>
@@ -442,9 +442,9 @@ export default App;
 | 属性 | 說明                                              | 類型            | 默認值          |
 |-------------------|---------------------------------------------------|-----------------|-----------------|
 | visible   | 是否可見                                          | boolean         | `false`           |
-| type              | 類型，日期選擇'one'，區間選擇'range'              | string          | `one`           |
-| poppable          | 是否彈窗狀態展示                                  | boolean         | `true`            |
-| isAutoBackFill | 自動回填                                          | boolean         | `false`           |
+| type              | 類型，日期選擇'single'，區間選擇'range'              | string          | `single`           |
+| popup          | 是否彈窗狀態展示                                  | boolean         | `true`            |
+| autoBackfill | 自動回填                                          | boolean         | `false`           |
 | title             | 顯示標題                                          | string          | `日期選擇`      |
 | defaultValue     | 默認值，日期選擇 string 格式，區間選擇 Array 格式 | string \| Array | -            |
 | startDate        | 開始日期， 如果不限制開始日期傳 null              | string          | 今天            |
@@ -455,7 +455,7 @@ export default App;
 | confirmText          | 底部確認按鈕文案               | string          | `确认` |
 | showTitle          | 是否在展示日曆標題               | boolean          | `true` |
 | showSubTitle          | 是否展示日期標題              | boolean          | `true` |
-| toDateAnimation          | 是否啟動滾動動畫              | boolean          | `true` |
+| scrollAnimation          | 是否啟動滾動動畫              | boolean          | `true` |
 | onBtn | 自定義日曆標題下部，可用以添加自定義操作              |  (() => string \| JSX.Element) \| undefined      | - |
 | onDay  | 日期信息              |  ((date: Day) => string \| JSX.Element) \| undefined                          | - |
 | onTopInfo  | 日期頂部信息             |  ((date: Day) => string \| JSX.Element) \| undefined                          | - |

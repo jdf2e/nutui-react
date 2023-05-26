@@ -15,8 +15,8 @@ interface Day {
 
 export interface CalendarProps {
   type?: string
-  isAutoBackFill?: boolean
-  poppable?: boolean
+  autoBackfill?: boolean
+  popup?: boolean
   visible?: boolean
   title?: string
   defaultValue?: string | string[]
@@ -28,7 +28,7 @@ export interface CalendarProps {
   confirmText?: string
   showTitle?: boolean
   showSubTitle?: boolean
-  toDateAnimation?: boolean
+  scrollAnimation?: boolean
   onBtn?: (() => string | JSX.Element) | undefined
   onDay?: ((date: Day) => string | JSX.Element) | undefined
   onTopInfo?: ((date: Day) => string | JSX.Element) | undefined
@@ -40,9 +40,9 @@ export interface CalendarProps {
 }
 
 const defaultProps = {
-  type: 'one',
-  isAutoBackFill: false,
-  poppable: true,
+  type: 'single',
+  autoBackfill: false,
+  popup: true,
   visible: false,
   title: '',
   defaultValue: '',
@@ -54,7 +54,7 @@ const defaultProps = {
   confirmText: '',
   showTitle: true,
   showSubTitle: true,
-  toDateAnimation: true,
+  scrollAnimation: true,
   onBtn: undefined,
   onDay: undefined,
   onTopInfo: undefined,
@@ -71,10 +71,10 @@ export const Calendar = React.forwardRef<
 >((props, ref) => {
   const { locale } = useConfig()
   const {
-    poppable,
+    popup,
     visible,
     type,
-    isAutoBackFill,
+    autoBackfill,
     title,
     defaultValue,
     startDate,
@@ -85,7 +85,7 @@ export const Calendar = React.forwardRef<
     confirmText,
     showTitle,
     showSubTitle,
-    toDateAnimation,
+    scrollAnimation,
     onBtn,
     onDay,
     onTopInfo,
@@ -131,8 +131,8 @@ export const Calendar = React.forwardRef<
       <CalendarItem
         ref={calendarRef}
         type={type}
-        isAutoBackFill={isAutoBackFill}
-        poppable={poppable}
+        autoBackfill={autoBackfill}
+        popup={popup}
         title={title || locale.calendaritem.title}
         defaultValue={defaultValue}
         startDate={startDate}
@@ -143,7 +143,7 @@ export const Calendar = React.forwardRef<
         confirmText={confirmText || locale.calendaritem.confirm}
         showTitle={showTitle}
         showSubTitle={showSubTitle}
-        toDateAnimation={toDateAnimation}
+        scrollAnimation={scrollAnimation}
         onBtn={onBtn}
         onDay={onDay}
         onTopInfo={onTopInfo}
@@ -157,7 +157,7 @@ export const Calendar = React.forwardRef<
 
   return (
     <>
-      {poppable ? (
+      {popup ? (
         <Popup
           visible={visible}
           position="bottom"

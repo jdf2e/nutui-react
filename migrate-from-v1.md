@@ -141,12 +141,15 @@
 - paneKey 重命名为 value
 ### 数据录入
 #### Calendar
+
+- `poppable` 更名为 `popup`
+- `isAutoBackFill` 更名为 `autoBackfill`
+- `toDateAnimation` 更名为 `scrollAnimation`
+
+- 删除 `showToday`，在实现中默认为 `true`
 - `startText` 类型改为 `ReactNode`
 - `endText` 类型改为 `ReactNode`
 - `showTitle` 更名为 `title`， 类型改为 `ReactNode`
-- `endText` 类型改为 `ReactNode`
-- `endText` 类型改为 `ReactNode`
-- `endText` 类型改为 `ReactNode`
 - `endText` 类型改为 `ReactNode`
 - `endText` 类型改为 `ReactNode`
 - `endText` 类型改为 `ReactNode`
