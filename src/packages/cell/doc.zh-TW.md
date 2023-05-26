@@ -1,10 +1,10 @@
 # Cell 單元格
 
-### 介紹
+## 介紹
 
 列表項，可組成列表。
 
-### 安裝
+## 安裝
 
 ```ts
 import { Cell, CellGroup } from '@nutui/nutui-react'
@@ -22,7 +22,7 @@ import { Cell, Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const testClick = (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
-    Toast.text('點擊事件')
+    Toast.show('點擊事件')
 }
   return (
     <>
@@ -186,21 +186,22 @@ export default App;
 
 :::
 
-## API
+## CellGroup
 
 
-### CellGroup Prop
+### Props
 
-| 字段  | 說明     | 類型   | 默認值 |
+| 属性 | 說明     | 類型   | 默認值 |
 |-------|----------|--------|--------|
 | title | 分組標題 | ReactNode | -      |
 | description  | 分組描述 | ReactNode | -      |
 | divider | 單元格之間是否有分割線 | boolean | `true`    |
 
 
-### Cell Prop
+## Cell 
+### Prop
 
-| 字段                 | 說明| 類型             | 默認值 |
+| 属性 | 說明| 類型             | 默認值 |
 |--------------------|----------------------------|------------------|--------|
 | title              | 標題|  ReactNode           | -      |
 | description           | 描述 |  ReactNode           | -      |

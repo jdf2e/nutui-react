@@ -5,8 +5,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { useConfig } from '@/packages/configprovider'
-import { BasicVirtualListProps, VirtualListState, PositionType } from './type'
+import type { Data, VirtualListState, PositionType } from './type'
 import {
   initPositinoCache,
   getListTotalSize,
@@ -14,32 +13,52 @@ import {
   getEndIndex,
   updateItemSize,
 } from './utils'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export type VirtualListProps = BasicVirtualListProps
-const defaultProps = {} as VirtualListProps
+export interface VirtualListProps extends BasicComponent {
+  list: Array<Data>
+  containerHeight: number
+  ItemRender: React.FC<any>
+  itemHeight: number
+  itemEqual: boolean
+  direction: 'vertical' | 'horizontal'
+  overscan: number
+  onScroll: () => void
+  key: string
+}
+const defaultProps = {
+  ...ComponentDefaults,
+  list: [] as Array<Data>,
+  itemHeight: 66,
+  itemEqual: true,
+  direction: 'vertical',
+  overscan: 2,
+} as VirtualListProps
 
-export const VirtualList: FunctionComponent<VirtualListProps> = (
-  props: VirtualListProps
+export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
+  props
 ) => {
   const {
-    sourceData = [],
+    list,
     ItemRender,
-    itemEqualSize = true,
-    itemSize = 200,
-    horizontal = false,
-    overscan = 2,
+    itemEqual,
+    itemHeight,
+    direction,
+    overscan,
     key,
-    handleScroll,
     onScroll,
     className,
-    containerSize,
+    containerHeight,
     ...rest
-  } = props
+  } = {
+    ...defaultProps,
+    ...props,
+  }
+  const horizontal = direction === 'horizontal'
   const sizeKey = horizontal ? 'width' : 'height'
   const scrollKey = horizontal ? 'scrollLeft' : 'scrollTop'
   const offsetKey = horizontal ? 'left' : 'top'
 
-  const { locale } = useConfig()
   // 虚拟列表容器ref
   const scrollRef = useRef<HTMLDivElement>(null)
   // 虚拟列表显示区域ref
@@ -61,7 +80,7 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
   const [listTotalSize, setListTotalSize] = useState<number>(99999999)
   // 可视区域条数
   const [visibleCount, setVisibleCount] = useState<number>(0)
-  const [offSetSize, setOffSetSize] = useState<number>(containerSize || 0)
+  const [offSetSize, setOffSetSize] = useState<number>(containerHeight || 0)
   const [options, setOptions] = useState<VirtualListState>({
     startOffset: 0, // 可视区域距离顶部的偏移量
     startIndex: 0, // 可视区域开始索引
@@ -71,31 +90,31 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
 
   // 列表位置信息
   useEffect(() => {
-    const pos = initPositinoCache(itemSize, sourceData.length)
+    const pos = initPositinoCache(itemHeight, list.length)
     setPositions(pos)
     const totalSize = getListTotalSize(pos, horizontal)
     setListTotalSize(totalSize)
-  }, [sourceData, itemSize, horizontal])
+  }, [list, itemHeight, horizontal])
   const getElement = useCallback(() => {
     return scrollRef.current?.parentElement || document.body
   }, [])
   useEffect(() => {
-    if (containerSize) return
+    if (containerHeight) return
     const size = horizontal
       ? getElement().offsetWidth
       : getElement().offsetHeight
     setOffSetSize(size)
-  }, [getElement, horizontal, containerSize])
+  }, [getElement, horizontal, containerHeight])
   useEffect(() => {
     // 初始-计算visibleCount
     if (offSetSize === 0) return
-    const count = Math.ceil(offSetSize / itemSize) + overscan
+    const count = Math.ceil(offSetSize / itemHeight) + overscan
 
     setVisibleCount(count)
     setOptions((options) => {
       return { ...options, endIndex: count }
     })
-  }, [getElement, horizontal, itemSize, overscan, offSetSize])
+  }, [getElement, horizontal, itemHeight, overscan, offSetSize])
 
   const updateTotalSize = useCallback(() => {
     if (!itemsRef.current) return
@@ -113,14 +132,14 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
       const startIndex = binarySearch(positions, scrollSize, horizontal)
       const overStart = startIndex - overscan > -1 ? startIndex - overscan : 0
       // const offSetSize = horizontal ? getElement().offsetWidth : getElement().offsetHeight
-      if (!itemEqualSize) {
+      if (!itemEqual) {
         updateTotalSize()
       }
       const endIndex = getEndIndex({
-        sourceData,
+        list,
         startIndex,
         visibleCount,
-        itemEqualSize,
+        itemEqual,
         positions,
         offSetSize,
         sizeKey,
@@ -129,27 +148,24 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
       const startOffset = positions[startIndex][offsetKey] as number
       setOptions({ startOffset, startIndex, overStart, endIndex })
       // 无限下滑
-      if (endIndex > sourceData.length - 1) {
+      if (endIndex > list.length - 1) {
         if (onScroll) {
           onScroll()
-        } else if (handleScroll) {
-          handleScroll()
         }
       }
     })
   }, [
     positions,
     getElement,
-    sourceData,
+    list,
     visibleCount,
-    itemEqualSize,
+    itemEqual,
     updateTotalSize,
     offsetKey,
     sizeKey,
     scrollKey,
     horizontal,
     overscan,
-    handleScroll,
     offSetSize,
   ])
 
@@ -168,7 +184,7 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
       }
       {...rest}
       style={{
-        [sizeKey]: containerSize ? `${offSetSize}px` : '',
+        [sizeKey]: containerHeight ? `${offSetSize}px` : '',
       }}
     >
       <div
@@ -192,7 +208,7 @@ export const VirtualList: FunctionComponent<VirtualListProps> = (
               : `translate3d(0,${options.startOffset}px,0)`,
           }}
         >
-          {sourceData
+          {list
             .slice(options.overStart, options.endIndex)
             .map((data, index) => {
               const { startIndex, overStart } = options

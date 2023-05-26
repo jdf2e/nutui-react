@@ -63,7 +63,7 @@ const GridDemo = () => {
   })
 
   const onClick = (item: any, index: number) => {
-    Toast.text(`点击了${item.text}，第${index}个`)
+    Toast.show(`点击了${item.text}，第${index}个`)
   }
 
   return (

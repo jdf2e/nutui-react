@@ -1,6 +1,5 @@
 import React, {
   forwardRef,
-  FunctionComponent,
   HTMLInputTypeAttribute,
   useCallback,
   useImperativeHandle,

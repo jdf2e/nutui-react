@@ -215,7 +215,30 @@
 - 移除 activeColor、voidColor、iconSize，通过 checkedIcon、uncheckedIcon 实现
 - 增加受控 value 与非受控 defaultValue，移除 modelValue
 #### SearchBar
+- 删除 `clearSize`，样式默认
+- 删除 `background`，使用 CSS 变量 `--nutui-searchbar-background` 实现 
+- 删除 `inputBackground`，使用 CSS 变量 `--nutui-searchbar-input-background` 实现 
+- 删除 `align`，使用 CSS 变量 `--nutui-searchbar-input-text-align`
+- 新增 `left` 和 `right`，为 `ReactNode` 节点，可自定义内容
+- 删除 `leftoutIcon` 和 `labal`，使用 `left` 实现
+- 删除 `rightoutIcon` 和 `actionText`，使用 `right` 实现
+- 删除 `leftinIcon`，使用 `leftIn` 实现
+- 删除 `rightinIcon`，使用 `rightIn` 实现
+- 删除 `onCancel`，使用 `right` 来实现事件处理
+- 删除 `onClickLeftinIcon`，用户可使用 `left` 来实现事件处理
+- 删除 `onClickLeftoutIcon`，用户可使用 `left` 来实现事件处理
+- 删除 `onClickRightinIcon`，用户可使用 `right` 来实现事件处理
+- 删除 `onClickRightoutIcon`，用户可使用 `right` 来实现事件处理
+
 #### ShortPassword
+- desc 重命名为 description
+- noButton 重命名为 hideFooter
+- onOk 重命名为 onConfirm
+- errorMsg 重命名为 error
+- 移除 closeOnClickOverlay，默认支持透传 Popup 属性
+- title、description、tips、error 类型修改为 ReactNode
+- modelValue 重命名为 value，受控模式
+- 新增 onFoucs 事件
 #### TextArea
 - maxlength 重命名为 maxLength
 - readonly 重命名为 readOnly
@@ -244,6 +267,18 @@
 
 ### 操作反馈
 #### ActionSheet
+- `title`，类型变更为 `ReactNode`
+- `description`，类型变更为 `ReactNode`
+- `cancelTxt`，重命名为 `cancelText`，类型变更为 `ReactNode`
+- `menuItems` 重命名为 `options`
+- `chooseTagValue` 重命名为 `value`
+- `onChoose` 重命名为 `onSelect`
+- 增加 `options` 的定义
+  - `color` 重命名为 `danger`
+  - `name`，列表项的标题key
+  - `description`，列表项的描述key
+  - `danger`，列表项中提醒用户重点关注的操作
+  - `disable`，列表项中禁用项
 #### BackTop
 - elId 重命名为 target
 - 移除 right、bottom，通过 style 传入，增加支持 left、top
@@ -281,6 +316,15 @@
 - 删除 `activeColor` 和 `inactiveColor`, 通过css变量实现
 #### Toast
 
+- 删除H5版本 `id` 
+- 删除 `center`和 `bottom`，通过 `position` 实现
+- 删除 `bgColor`，通过 css 变量实现
+- 删除 `customClass`，通过 `className` 实现
+- 删除 `cover` 和 `coverColor` ，通过css变量实现
+- 删除 `loadingRotate`，旋转状态通过 `iconFont`实现
+- 删除 `textAlignCenter`，通过css变量实现
+- 修改 `closeOnClickOverlay` 为 `closeOnOverlayClick` ，语义不变，是否在点击遮罩层后关闭提示
+
 ### 展示组件
 #### Animate
 - `className` 属性通过继承实现
@@ -317,7 +361,16 @@
   - `circleColor` 重名为 `color`
   - `pathColor` 重名为 `background`
 #### Collapse
+
+- 新增 defaultActiveName 非受控
+- activeName 改为受控方式
+- subTitle 重命名为 extra
+- onChange 参数变更为 activeName, name, status
+
 #### CountDown
+
+- 新增 `remainingTime`, 支持剩余毫秒时间倒计时。
+
 #### Ellipsis
 - 新增className和style属性的支持
 - 优化H5的代码，去掉useEffect渲染改用useLayoutEffect
@@ -370,6 +423,11 @@
 - 新增 lazy 属性，支持每次进入可视区时展示进度条动画
 - 新增 delay 属性，表示延迟数据加载时长
 #### Skeleton
+- loading 重命名为 visible
+- row 重命名为 rows
+- 移除 width，通过 css 变量 skeleton-line-width 实现
+- 移除 height，通过 css 变量 skeleton-line-height 实现
+- 移除 round，通过 css 变量 skeleton-line-border-radius 实现
 #### Steps
 - current 重命名为 value
 - onClickStep 重命名为 onStepClick
@@ -404,6 +462,11 @@
 - 调整中英文文档规范
 - 调整组件书写规范
 #### VirtualList
+- sourceData 重命名为 list
+- conatinerSize 重命名为 containerHeight
+- itemSize 重命名为 itemHeight
+- itemEqualSize 重命名为 itemEqual
+- horizontal 修改为 direction，默认值 vertical，可选值 horizontal
 #### WaterMark
 
 ### 特色组件

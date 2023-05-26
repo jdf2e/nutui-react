@@ -13,8 +13,8 @@ import {
   CascaderPane,
   CascaderOption,
   CascaderValue,
-  optionKey,
-  format,
+  CascaderOptionKey,
+  CascaderFormat,
 } from './types'
 import Tree from './tree'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -29,7 +29,7 @@ export interface CascaderProps extends BasicComponent {
   value?: CascaderValue
   defaultValue?: CascaderValue
   title: string
-  optionKey: optionKey
+  optionKey: CascaderOptionKey
   format: Record<string, string | number | null>
   closeable: boolean
   closeIconPosition: string
@@ -141,7 +141,7 @@ const InternalCascader: ForwardRefRenderFunction<
     if (format && Object.keys(format).length > 0) {
       state.optionsData = convertListToOptions(
         options as CascaderOption[],
-        format as format
+        format as CascaderFormat
       )
     } else {
       state.optionsData = options

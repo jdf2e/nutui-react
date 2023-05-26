@@ -1,10 +1,4 @@
-import React, {
-  FunctionComponent,
-  useEffect,
-  useState,
-  useRef,
-  ReactNode,
-} from 'react'
+import React, { FunctionComponent, useEffect, useState, useRef } from 'react'
 import { Top } from '@nutui/icons-react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'

@@ -200,7 +200,7 @@ export default App;
 
 ### Props
 
-| Attribute         | Description                             | Type   | Default           |
+| Property | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
 | rate         | Value, the arrow is up when it is greater than 0, and the arrow is down when it is less than 0    | number | -                |
 | digits         | decimal precision               | number | `2`               |

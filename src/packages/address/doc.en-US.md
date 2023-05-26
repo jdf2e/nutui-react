@@ -586,7 +586,7 @@ export default App;
 
 # API
 
-| Attribute            | Description               | Type       | Default  |
+| Property | Description               | Type       | Default  |
 |----- | ----- |------------| -----  |
 | modelValue | Whether to open address | string     | - |
 | modelSelect`v1.2.3` | Default address value | string[] \ | number[] | `[]` |
@@ -608,7 +608,7 @@ export default App;
 
 
 ## Event
-| Attribute            | Description               | Arguments   |
+| Property | Description               | Arguments   |
 |----- | ----- | -----  |
 | onChange | Emitted when to selected custom address |  reference onChange |
 | onSelected |  Emitted when to selected exist address  | reference selected
@@ -618,21 +618,21 @@ export default App;
 
 
 ## change 回调参数
-| Attribute            | Description               | Options   |
+| Property | Description               | Options   |
 |----- | ----- | ----- |
 | custom | The administrative region currently clicked  |  `province` \| `city` \| `country` \| `town` |
 | next | The next level of the administrative region currently clicked | `province` \| `city` \| `country` \| `town` |
 | value | The value of the currently clicked administrative region | `{}` |
 
 ## selected 
-| Attribute            | Description               | Options   |
+| Property | Description               | Options   |
 |----- | ----- | ----- |
 | First Option（prevExistAdd） |  Select the previously selected address |  `{}` |
 | Second Option（nowExistAdd） |  Currently selected address |  `{}` |
 | Third Option（arr） |  After selecting the existing address list |  `{}` |
 
 ## close 
-| Attribute            | Description               | Options   |
+| Property | Description               | Options   |
 |----- | ----- | ----- 
 | type | Selected Type  |  `exist` \| `custom` \| `custom2` |
 | data | Selected Data | `{}` |

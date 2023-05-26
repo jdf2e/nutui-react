@@ -143,7 +143,7 @@ const App = () => {
 
   const refresh = (done: () => void) => {
     setTimeout(() => {
-      Toast.text('刷新成功')
+      Toast.show('刷新成功')
       done()
     }, 1000)
   }
@@ -264,7 +264,7 @@ export default App;
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
+| 属性 | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | hasMore         | 是否还有更多数据               | boolean | `true`                |
 | threshold         | 距离底部多远加载 | number| `200`               |

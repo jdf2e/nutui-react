@@ -45,10 +45,10 @@ const SwitchDemo = () => {
     value: boolean,
     event: React.MouseEvent<Element, MouseEvent>
   ) => {
-    Toast.text(`${translated.eventTip}${value}`)
+    Toast.show(`${translated.eventTip}${value}`)
   }
   const onChangeAsync = (value: boolean, event: any) => {
-    Toast.text(`${translated.async} ${value}`)
+    Toast.show(`${translated.async} ${value}`)
     setTimeout(() => {
       setCheckedAsync(value)
     }, 2000)

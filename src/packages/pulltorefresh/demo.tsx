@@ -24,7 +24,7 @@ const PullToRefreshDemo = () => {
         <PullToRefresh
           onRefresh={() =>
             new Promise((resolve) => {
-              Toast.text('😊')
+              Toast.show('😊')
               resolve('done')
             })
           }

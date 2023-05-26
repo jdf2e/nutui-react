@@ -217,7 +217,7 @@ export default App;
 
 ### Props
 
-| 参数 | 说明 | 类型 | 默认值 |
+| 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | price | 价格数量 | `number` | `0` |
 | symbol | 符号类型 | `string` | `&yen;` |
