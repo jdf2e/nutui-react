@@ -1,7 +1,5 @@
 @import '../popup/popup.scss';
 
-$nutSidenavbarItemHeight: 40px;
-
 .nut-sidenavbar {
   color: #1d1d21;
   font-size: 14px;
@@ -32,16 +30,18 @@ $nutSidenavbarItemHeight: 40px;
   }
 
   &__head {
-    height: $nutSidenavbarItemHeight;
+    height: $sidenav-bar-item-height;
     background: #eeeff2;
     padding: 10px;
   }
 
   &__title {
-    height: $nutSidenavbarItemHeight;
+    height: $sidenav-bar-item-height;
     padding: 10px 8px 10px 20px;
     background: $gray4;
     color: $gray1;
+    box-sizing: border-box;
+    transition: transform 0.5s;
   }
 
   &__content {
@@ -65,7 +65,7 @@ $nutSidenavbarItemHeight: 40px;
     }
   }
 
-  .border-bt {
+  .nut-subsidenavbar-border-bt {
     position: relative;
 
     &:after {

@@ -7,10 +7,10 @@ exports[`should match snapshot 1`] = `
     level="1"
   >
     <div
-      class="nut-subsidenavbar__title border-bt"
+      class="nut-subsidenavbar__title nut-subsidenavbar-border-bt"
       style="padding-left: 40px;"
     >
-      一级标题 
+      一级标题
       <i
         class="arrow-icon arrow-up"
       />
@@ -19,7 +19,7 @@ exports[`should match snapshot 1`] = `
       class="nut-subsidenavbar__content"
     >
       <div
-        class="nut-subsidenavbar__item border-bt"
+        class="nut-subsidenavbar__item nut-subsidenavbar-border-bt"
         style="padding-left: 60px;"
       >
         一级内容1

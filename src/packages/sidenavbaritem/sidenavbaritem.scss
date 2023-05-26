@@ -1,23 +1,17 @@
-.nut-theme-dark {
-  .nut-subsidenavbar {
-    &__item {
-      background-color: $dark6;
-      color: $dark2;
-    }
-  }
-}
-$nutSidenavbarItemHeight: 40px;
-
 .nut-subsidenavbar {
   &__item {
-    height: $nutSidenavbarItemHeight;
+    height: $sidenav-bar-item-height;
     color: $gray2;
     padding: 10px 8px 10px 55px;
+    box-sizing: border-box;
   }
+
   &__title {
     background-color: $gray5;
     color: $gray1;
+    box-sizing: border-box;
   }
+
   &__list {
     background-color: $gray6;
     color: $gray2;

@@ -54,12 +54,12 @@ const App = () => {
             changeNarBar(false)
           }}
         >
-          <SubSideNavBar title="Level 1 title" key="1-0" >
-            <SideNavBarItem title="Level 1 content-1" key="1-01" />
-            <SideNavBarItem title="Level 1 content-2" key="1-02" />
-            <SubSideNavBar title="Level 2 title" key="2-0">
-              <SideNavBarItem title="Level 2 content-1" key="2-01" />
-              <SideNavBarItem title="Level 2 content-2" key="2-02" />
+          <SubSideNavBar title="Level 1 title" value="1-0" >
+            <SideNavBarItem title="Level 1 content-1" value="1-01" />
+            <SideNavBarItem title="Level 1 content-2" value="1-02" />
+            <SubSideNavBar title="Level 2 title" value="2-0">
+              <SideNavBarItem title="Level 2 content-1" value="2-01" />
+              <SideNavBarItem title="Level 2 content-2" value="2-02" />
             </SubSideNavBar>
           </SubSideNavBar>
         </SideNavBar>
@@ -83,11 +83,11 @@ const App = () => {
   const changeNarBar = (visible) => {
    setVisible(visible)
   }
-  const clickItem = ({ title, key }) => {
-    Toast.show(`title=${title},key=${key}`)
+  const clickItem = ({ title, value }) => {
+    Toast.show(`title=${title},value=${value}`)
   }
-  const clickTitle = ({ title, key, isShow }) => {
-    Toast.show(`title=${title},key=${key},isShow=${isShow}`)
+  const clickTitle = ({ title, value, isShow }) => {
+    Toast.show(`title=${title},value=${value},isShow=${isShow}`)
   }
   return ( 
     <>  
@@ -106,15 +106,15 @@ const App = () => {
             changeNarBar(false)
           }}
         >
-          <SubSideNavBar title="Level 1 title" key="1-0" onClick={clickTitle}>
-            <SideNavBarItem title="Level 1 content-1" key="1-01" onClick={clickItem} />
-            <SideNavBarItem title="Level 1 content-2" key="1-02" />
-            <SubSideNavBar title="Level 2 title" key="2-0">
-              <SideNavBarItem title="Level 2 content-1" key="2-01" />
-              <SideNavBarItem title="Level 2 content-2" key="2-02" />
-                <SubSideNavBar title="Level 3 title" key="3-0">
-                  <SideNavBarItem title="Level 3 content-1" key="3-01" />
-                  <SideNavBarItem title="Level 3 content-2" key="3-02" />
+          <SubSideNavBar title="Level 1 title" value="1-0" onClick={clickTitle}>
+            <SideNavBarItem title="Level 1 content-1" value="1-01" onClick={clickItem} />
+            <SideNavBarItem title="Level 1 content-2" value="1-02" />
+            <SubSideNavBar title="Level 2 title" value="2-0">
+              <SideNavBarItem title="Level 2 content-1" value="2-01" />
+              <SideNavBarItem title="Level 2 content-2" value="2-02" />
+                <SubSideNavBar title="Level 3 title" value="3-0">
+                  <SideNavBarItem title="Level 3 content-1" value="3-01" />
+                  <SideNavBarItem title="Level 3 content-2" value="3-02" />
                 </SubSideNavBar>
             </SubSideNavBar>
           </SubSideNavBar>
@@ -145,14 +145,14 @@ export default App;
 
 | Property | Description                      | Type   | Default         |
 |--------------|----------------------------------|--------|------------------|
-| key `v2.0.0`        | Navigation unique identifier     | string \| number |          |
+| value `v2.0.0`        | Navigation unique identifier     | string \| number |          |
 | title        | Navigation title                 | string  | -              |
 | open         | Whether navigation is expanded by default | boolean  | `true`  |
 ### 3、SideNavBarItem
 
 | Property | Description                      | Type   | Default          |
 |--------------|----------------------------------|--------|------------------|
-| key `v2.0.0`        | Navigation unique identifier     | string \| number |          |
+| value `v2.0.0`        | Navigation unique identifier     | string \| number |          |
 | title        | Navigation title                 | string  | -               |
 
 ## Events
@@ -166,13 +166,13 @@ export default App;
 
 | Event | Description                                | Arguments    |
 |-------|--------------------------------------------|--------------|
-| onClick     | Navigation Click | `data: {title: string, key: string \| number, isShow: boolean}`           |
+| onClick     | Navigation Click | `data: {title: string, value: string \| number, isShow: boolean}`           |
 
 ### 3、SideNavBarItem Events
 
 | Event  | Description                                | Arguments    |
 |--------|--------------------------------------------|--------------|
-| onClick | Navigation Click       | `data: {title: string, key: string \| number}`           |
+| onClick | Navigation Click       | `data: {title: string, value: string \| number}`           |
 
 
 ## Theming

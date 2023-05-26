@@ -1,27 +1,33 @@
-import React, { FunctionComponent, useState } from 'react'
+import React, { FunctionComponent, useState, ReactNode } from 'react'
+import classNames from 'classnames'
 import Popup from '@/packages/popup/index.taro'
-import { OffsetContext } from './offsetContext'
+import { OffsetContext } from './context'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 type NavBarProps = {
   showhead?: boolean
 }
+
 export interface SideNavBarProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    NavBarProps {
-  title: string
+  extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>,
+    NavBarProps,
+    BasicComponent {
+  title: ReactNode
   visible: boolean
   width?: string
-  offset?: number
+  indent?: number
   position?: 'left' | 'right'
   onClose: () => void
-  children?: React.ReactNode
 }
+
 const defaultProps = {
+  ...ComponentDefaults,
   showhead: false,
   position: 'left',
   width: '80%',
 } as SideNavBarProps
 export const SideNavBar: FunctionComponent<SideNavBarProps> = (props) => {
+  const classPrefix = 'nut-sidenavbar'
   const {
     title,
     visible,
@@ -36,7 +42,7 @@ export const SideNavBar: FunctionComponent<SideNavBarProps> = (props) => {
     ...defaultProps,
     ...props,
   }
-  const offset = props.offset ? Number(props.offset) : 20
+  const indent = props.indent ? Number(props.indent) : 20
   const [sidenavbarShow, setSidenavbarShow] = useState(true)
   const handleClick = () => {
     setSidenavbarShow(!sidenavbarShow)
@@ -48,20 +54,17 @@ export const SideNavBar: FunctionComponent<SideNavBarProps> = (props) => {
       position={position}
       onClose={onClose}
     >
-      <div
-        className={className ? `${className} nut-sidenavbar` : 'nut-sidenavbar'}
-        {...rest}
-      >
-        <div className="nut-sidenavbar__content">
+      <div className={classNames(className, classPrefix)} {...rest}>
+        <div className={`${classPrefix}__content`}>
           <div
-            className={`nut-sidenavbar__list ${
+            className={`${classPrefix}__list ${
               sidenavbarShow ? 'nutShow' : 'nutHide'
             }`}
             onClick={handleClick}
           >
             <div
-              className="nut-sidenavbar__title border-bt "
-              style={{ paddingLeft: `${offset}px` }}
+              className={`${classPrefix}__title ${classPrefix}-border-bt`}
+              style={{ paddingLeft: `${indent}px` }}
             >
               {title}
               <i
@@ -70,8 +73,8 @@ export const SideNavBar: FunctionComponent<SideNavBarProps> = (props) => {
                 }`}
               />
             </div>
-            <OffsetContext.Provider value={offset}>
-              <div className="nut-sidenavbar__content">{children}</div>
+            <OffsetContext.Provider value={indent}>
+              <div className={`${classPrefix}__content`}>{children}</div>
             </OffsetContext.Provider>
           </div>
         </div>

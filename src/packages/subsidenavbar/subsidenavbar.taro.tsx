@@ -7,21 +7,20 @@ import React, {
   useContext,
   useState,
 } from 'react'
-// import { SubSideNavBarProps } from '../sidenavbar/type'
-import { OffsetContext } from '../sidenavbar/offsetContext'
+import { OffsetContext } from '../sidenavbar/context'
 
 export type SubSideNavBarProps = {
   title: string
-  key: string | number
+  value: string | number
   open?: boolean
   children?: React.ReactNode
   onClick?: ({
     title,
-    key,
+    value,
     isShow,
   }: {
     title: string
-    key: string | number
+    value: string | number
     isShow: boolean
   }) => void
 }
@@ -29,7 +28,8 @@ const defaultProps = {
   open: true,
 } as SubSideNavBarProps
 export const SubSideNavBar: FunctionComponent<SubSideNavBarProps> = (props) => {
-  const { title, key, children, onClick, open, ...rest } = {
+  const classPrefix = 'nut-subsidenavbar'
+  const { title, value, children, onClick, open, ...rest } = {
     ...defaultProps,
     ...props,
   }
@@ -40,7 +40,7 @@ export const SubSideNavBar: FunctionComponent<SubSideNavBarProps> = (props) => {
   const setListLevel = useCallback(
     (nodeList: HTMLCollection, level = 1) => {
       const titleClass = nodeList[0].className
-      if (titleClass.includes('nut-subsidenavbar__title')) {
+      if (titleClass.includes(`${classPrefix}__title`)) {
         const left = offset * (level + 1)
         // eslint-disable-next-line no-param-reassign
         ;(nodeList[0] as HTMLElement).style.paddingLeft = `${left}px`
@@ -53,12 +53,13 @@ export const SubSideNavBar: FunctionComponent<SubSideNavBarProps> = (props) => {
         )
       childNodes.forEach((item) => {
         const itemClass = item.className
-        if (itemClass.includes('nut-subsidenavbar__item')) {
+
+        if (itemClass.includes(`${classPrefix}__item`)) {
           const left = offset * (level + 2)
           // eslint-disable-next-line no-param-reassign
           ;(item as HTMLElement).style.paddingLeft = `${left}px`
         }
-        if (itemClass.includes('nut-subsidenavbar__list')) {
+        if (itemClass.includes(`${classPrefix}__list`)) {
           let level = item.getAttribute('level')
             ? Number(item.getAttribute('level'))
             : 1
@@ -74,7 +75,7 @@ export const SubSideNavBar: FunctionComponent<SubSideNavBarProps> = (props) => {
     e.stopPropagation()
     setSubShow(!subShow)
     const isShow = !subShow
-    onClick && onClick({ title, key, isShow })
+    onClick && onClick({ title, value, isShow })
   }
   useEffect(() => {
     const childNodes = listRef.current?.children as HTMLCollection
@@ -82,16 +83,16 @@ export const SubSideNavBar: FunctionComponent<SubSideNavBarProps> = (props) => {
     childNodes && setListLevel(childNodes)
   }, [setListLevel])
   const divClass = subShow
-    ? 'nut-subsidenavbar__list  nutShow'
-    : 'nut-subsidenavbar__list  nutHide'
+    ? `${classPrefix}__list nutShow`
+    : `${classPrefix}__list nutHide`
   const iconClass = subShow ? 'arrow-icon arrow-down' : 'arrow-icon arrow-up'
 
   return (
     <div className={divClass} ref={listRef} onClick={clickFn} {...rest}>
-      <div className="nut-subsidenavbar__title border-bt">
+      <div className={`${classPrefix}__title ${classPrefix}-border-bt`}>
         {title} <i className={iconClass} />
       </div>
-      <div className="nut-subsidenavbar__content">{children}</div>
+      <div className={`${classPrefix}__content`}>{children}</div>
     </div>
   )
 }

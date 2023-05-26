@@ -1,23 +1,11 @@
-.nut-theme-dark {
-  .nut-subsidenavbar {
-    background-color: $dark5;
-    &__title {
-      background-color: $dark6;
-      color: $dark1;
-      &__text {
-        color: $dark1;
-      }
-    }
-  }
-}
-$nutSidenavbarItemHeight: 40px;
-
 .nut-subsidenavbar {
   &__title {
-    height: $nutSidenavbarItemHeight;
+    height: $sidenav-bar-item-height;
     padding: 10px 8px 10px 35px;
     background: #f7f8fa;
+    box-sizing: border-box;
   }
+
   &__list {
     &.nutShow {
       .nut-subsidenavbar__content {
@@ -25,6 +13,7 @@ $nutSidenavbarItemHeight: 40px;
         overflow: inherit;
       }
     }
+
     &.nutHide {
       .nut-subsidenavbar__content {
         height: 0;
