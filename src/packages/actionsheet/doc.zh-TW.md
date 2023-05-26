@@ -11,7 +11,7 @@
 import { ActionSheet } from '@nutui/nutui-react';
 ```
 
-## 代碼示例
+## 代碼演示
 
 ### 基本用法
 

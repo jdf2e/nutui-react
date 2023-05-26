@@ -556,36 +556,29 @@ $inputnumber-border-box: var(
 $inputnumber-display: var(--nutui-inputnumber-display, flex) !default;
 
 // actionsheet（✅）
-$zindex-actionsheet: var(--nutui-zindex-actionsheet, 10001) !default;
-$body-background: var(--nutui-body-background, #f6f6f6) !default;
-$light-color: var(--nutui-light-color, #f6f6f6) !default;
-$actionsheet-light-color: var(
-  --nutui-actionsheet-light-color,
+$actionsheet-border-color: var(
+  --nutui-actionsheet-border-color,
   #f6f6f6
+) !default;
+$actionsheet-item-text-align: var(
+  --nutui-actionsheet-item-text-align,
+  center
 ) !default;
 $actionsheet-item-border-bottom: var(
   --nutui-actionsheet-item-border-bottom,
   none
 ) !default;
-$actionsheet-item-font-size: var(
-  --nutui-actionsheet-item-font-size,
-  $font-size-2
-) !default;
-$actionsheet-item-subdesc-font-size: var(
-  --nutui-actionsheet-item-subdesc-font-size,
-  $font-size-1
-) !default;
-$actionsheet-item-cancel-border-top: var(
-  --nutui-actionsheet-item-cancel-border-top,
-  1px solid $actionsheet-light-color
-) !default;
 $actionsheet-item-line-height: var(
   --nutui-actionsheet-item-line-height,
   24px
 ) !default;
-$actionsheet-item-font-color: var(
-  --nutui-actionsheet-item-font-color,
+$actionsheet-item-color: var(
+  --nutui-actionsheet-item-color,
   $title-color
+) !default;
+$actionsheet-item-danger: var(
+  --nutui-actionsheet-item-danger,
+  $primary-color
 ) !default;
 
 //shortpassword（✅）

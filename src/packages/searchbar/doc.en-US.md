@@ -1,6 +1,6 @@
 #  SearchBar
 
-### introduce
+### Intro
 
 The input box component used to search the scene.
 
