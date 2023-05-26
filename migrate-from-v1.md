@@ -349,6 +349,8 @@
 
 #### Popover
 
+- 代码整体重构，需要验证每一个属性（除了list属性和location属性没有更改）
+
 #### Price
 
 - `decimalDigits` 重命名为 `digits`

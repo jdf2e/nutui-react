@@ -1,34 +1,44 @@
-.customButtonBox {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+.demo {
+  .nut-popover-content {
+    width: 120px;
+    --nutui-popover-menu-item-hover-text-color: 'rgb(255, 255, 255)';
+    --nutui-popover-menu-item-hover-background-color: '#f00';
+  }
+}
+
+.customClass {
+  .nut-popover-content {
+    width: auto;
+  }
+  .self-content {
+    width: 195px;
+    display: flex;
+    flex-wrap: wrap;
+    &-item {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    &-desc {
+      margin-top: 5px;
+      width: 60px;
+      font-size: 10px;
+      text-align: center;
+    }
+  }
 }
 
 .brickBox {
+  margin: 80px 0;
   display: flex;
   justify-content: center;
-  margin: 80px 0;
-}
-
-.brick {
-  width: 60px;
-  height: 60px;
-  background: #1989fa;
-  border-radius: 10px;
-}
-
-.popover-content {
-  width: 100px;
-}
-
-.customContent .popover-content {
-  width: 200px;
-}
-
-.demo-cell-popove {
-  flex-wrap: wrap;
-}
-
-.nut-popover {
-  height: 38px;
+  .brick {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #fa2c19 0%, #fa6419 100%);
+    border-radius: 10px;
+  }
 }

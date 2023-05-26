@@ -94,6 +94,28 @@
 }
 
 .nut-popup-slide {
+  &-default-enter {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  &-default-enter-active {
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  &-default-exit {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  &-default-exit-active,
+  &-default-exit-done {
+    transform: scale(0.8);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    opacity: 0;
+  }
+
   &-center-enter,
   &-center-exit {
     opacity: 0;
