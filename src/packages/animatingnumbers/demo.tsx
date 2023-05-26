@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { AnimatingNumbers } from './animatingnumbers'
 import { useTranslate } from '../../sites/assets/locale'
+import './demo.scss'
 
 interface T {
   basic: string
