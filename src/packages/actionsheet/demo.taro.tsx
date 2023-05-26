@@ -9,6 +9,7 @@ interface Item {
   name: string
   description?: string
   disable?: boolean
+  danger?: boolean
 }
 
 interface T {
@@ -144,7 +145,7 @@ const ActionSheetDemo = () => {
   const optionKey = {
     name: 'title',
   }
-  const chooseItem = (item: any) => {
+  const chooseItem = (item: ItemType<string>) => {
     setVal1(item.name)
     setIsVisible1(false)
   }
@@ -210,7 +211,9 @@ const ActionSheetDemo = () => {
           title={translated['0f87771f']}
           visible={isVisible1}
           options={optionsOne}
-          onSelect={chooseItem}
+          onSelect={(item: any) => {
+            chooseItem(item)
+          }}
           onCancel={() => setIsVisible1(false)}
         />
         {/* demo(带取消按钮） */}
@@ -230,7 +233,9 @@ const ActionSheetDemo = () => {
           description={translated.e1699442}
           cancelText={translated['2cd0f3be']}
           options={optionsTwo}
-          onSelect={chooseItemThree}
+          onSelect={(item: any) => {
+            chooseItemThree(item)
+          }}
           onCancel={() => setIsVisible3(false)}
         />
         {/* demo 选项状态 */}

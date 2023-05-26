@@ -12,7 +12,7 @@ export interface ActionSheetProps extends BasicComponent {
   optionKey: ItemType<string>
   cancelText: ReactNode
   onCancel: () => void
-  onSelect: (item: any, index: number) => void
+  onSelect: (item: ItemType<string | boolean>, index: number) => void
 }
 const defaultProps = {
   ...ComponentDefaults,
