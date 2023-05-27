@@ -161,48 +161,48 @@ const CalendarDemo = () => {
     setIsVisible7(false)
   }
 
-  const setChooseValue = (param: string) => {
+  const setChooseValue = (param: string[]) => {
     setDate(param[3])
     setDateWeek(param[4])
   }
 
-  const setChooseValue1 = (param: string) => {
+  const setChooseValue1 = (param: string[]) => {
     setDate1([...[param[0][3], param[1][3]]])
   }
 
-  const setChooseValue2 = (param: string) => {
+  const setChooseValue2 = (param: string[]) => {
     setDate2(param[3])
     console.log(param[3])
   }
 
-  const setChooseValue3 = (param: string) => {
+  const setChooseValue3 = (param: string[]) => {
     setDate3(param[3])
   }
 
-  const setChooseValue4 = (chooseData: any) => {
-    const dateArr = chooseData.map((item: any) => {
+  const setChooseValue4 = (chooseData: string[]) => {
+    const dateArr = chooseData.map((item: string) => {
       return item[3]
     })
     setDate4([...dateArr])
   }
 
-  const setChooseValue5 = (param: string) => {
+  const setChooseValue5 = (param: string[]) => {
     setDate5([...[param[0][3], param[1][3]]])
   }
 
-  const setChooseValue6 = (param: string) => {
+  const setChooseValue6 = (param: string[]) => {
     setDate6([...[param[0][3], param[1][3]]])
   }
 
-  const setChooseValue7 = (param: string) => {
+  const setChooseValue7 = (param: string[]) => {
     setDate7([...[param[0][3], param[1][3]]])
   }
 
-  const select = (param: string) => {
+  const select = (param: string[]) => {
     console.log(param)
   }
 
-  const yearMonthChange = (param: string) => {
+  const yearMonthChange = (param: string[]) => {
     console.log(param)
   }
 
@@ -234,7 +234,7 @@ const CalendarDemo = () => {
   }
 
   const onDay = (date: Day) => {
-    return <span>{date.day <= 9 ? `0${date.day}` : date.day}</span>
+    return <span>{Number(date.day) <= 9 ? `0${date.day}` : date.day}</span>
   }
 
   const onTopInfo = (date: Day) => {

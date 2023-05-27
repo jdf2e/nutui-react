@@ -66,10 +66,10 @@ export interface CalendarItemProps {
   onDay?: ((date: Day) => string | JSX.Element) | undefined
   onTopInfo?: ((date: Day) => string | JSX.Element) | undefined
   onBottomInfo?: ((date: Day) => string | JSX.Element) | undefined
-  onChoose?: (data: any) => void
+  onChoose?: (data: string[]) => void
   onUpdate?: () => void
-  onSelected?: (data: string) => void
-  onYearMonthChange?: (data: any) => void
+  onSelected?: (data: string[]) => void
+  onYearMonthChange?: (data: string[]) => void
 }
 const defaultProps = {
   type: 'one',
@@ -91,10 +91,10 @@ const defaultProps = {
   onDay: undefined,
   onTopInfo: undefined,
   onBottomInfo: undefined,
-  onChoose: (data: any) => {},
+  onChoose: (data: string[]) => {},
   onUpdate: () => {},
-  onSelected: (data: string) => {},
-  onYearMonthChange: (data: any) => {},
+  onSelected: (data: string[]) => {},
+  onYearMonthChange: (data: string[]) => {},
 } as CalendarItemProps
 
 export const CalendarItem = React.forwardRef<

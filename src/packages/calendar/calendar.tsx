@@ -34,9 +34,9 @@ export interface CalendarProps {
   onTopInfo?: ((date: Day) => string | JSX.Element) | undefined
   onBottomInfo?: ((date: Day) => string | JSX.Element) | undefined
   onClose?: () => void
-  onChoose?: (param: string) => void
-  onSelected?: (data: string) => void
-  onYearMonthChange?: (param: string) => void
+  onChoose?: (param: string[]) => void
+  onSelected?: (data: string[]) => void
+  onYearMonthChange?: (param: string[]) => void
 }
 
 const defaultProps = {
@@ -60,9 +60,9 @@ const defaultProps = {
   onTopInfo: undefined,
   onBottomInfo: undefined,
   onClose: () => {},
-  onChoose: (param: string) => {},
-  onSelected: (data: string) => {},
-  onYearMonthChange: (param: string) => {},
+  onChoose: (param: string[]) => {},
+  onSelected: (data: string[]) => {},
+  onYearMonthChange: (param: string[]) => {},
 } as CalendarProps
 
 export const Calendar = React.forwardRef<
@@ -102,7 +102,7 @@ export const Calendar = React.forwardRef<
     onClose && onClose()
   }
 
-  const choose = (param: string) => {
+  const choose = (param: string[]) => {
     close()
     onChoose && onChoose(param)
   }
@@ -110,7 +110,7 @@ export const Calendar = React.forwardRef<
     close()
   }
 
-  const select = (param: string) => {
+  const select = (param: string[]) => {
     onSelected && onSelected(param)
   }
 
@@ -118,7 +118,7 @@ export const Calendar = React.forwardRef<
     calendarRef.current?.scrollToDate(date)
   }
 
-  const yearMonthChange = (param: string) => {
+  const yearMonthChange = (param: string[]) => {
     onYearMonthChange && onYearMonthChange(param)
   }
 
