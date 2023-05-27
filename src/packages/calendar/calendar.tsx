@@ -4,6 +4,10 @@ import CalendarItem from '@/packages/calendaritem'
 import Utils from '@/utils/date'
 import { useConfig } from '@/packages/configprovider'
 
+export type CalendarDataType = string | number | string[]
+
+export * from '@/packages/calendaritem'
+
 type CalendarRef = {
   scrollToDate: (date: string) => void
 }
@@ -34,9 +38,9 @@ export interface CalendarProps {
   onTopInfo?: ((date: Day) => string | JSX.Element) | undefined
   onBottomInfo?: ((date: Day) => string | JSX.Element) | undefined
   onClose?: () => void
-  onChoose?: (param: string[]) => void
-  onSelected?: (data: string[]) => void
-  onYearMonthChange?: (param: string[]) => void
+  onChoose?: (param: CalendarDataType[]) => void
+  onSelected?: (data: CalendarDataType[]) => void
+  onYearMonthChange?: (param: CalendarDataType[]) => void
 }
 
 const defaultProps = {
@@ -102,7 +106,7 @@ export const Calendar = React.forwardRef<
     onClose && onClose()
   }
 
-  const choose = (param: string[]) => {
+  const choose = (param: CalendarDataType[]) => {
     close()
     onChoose && onChoose(param)
   }
@@ -110,7 +114,7 @@ export const Calendar = React.forwardRef<
     close()
   }
 
-  const select = (param: string[]) => {
+  const select = (param: CalendarDataType[]) => {
     onSelected && onSelected(param)
   }
 
@@ -118,7 +122,7 @@ export const Calendar = React.forwardRef<
     calendarRef.current?.scrollToDate(date)
   }
 
-  const yearMonthChange = (param: string[]) => {
+  const yearMonthChange = (param: CalendarDataType[]) => {
     onYearMonthChange && onYearMonthChange(param)
   }
 

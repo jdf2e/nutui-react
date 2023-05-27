@@ -4,6 +4,8 @@ import CalendarItem from '@/packages/calendaritem/index.taro'
 import Utils from '@/utils/date'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
+export type CalendarDataType = string | number | string[]
+
 type CalendarRef = {
   scrollToDate: (date: string) => void
 }
@@ -33,9 +35,9 @@ export interface CalendarProps {
   onTopInfo?: ((date: Day) => string | JSX.Element) | undefined
   onBottomInfo?: ((date: Day) => string | JSX.Element) | undefined
   onClose?: () => void
-  onChoose?: (param: string[]) => void
-  onSelected?: (data: string[]) => void
-  onYearMonthChange?: (param: string[]) => void
+  onChoose?: (param: CalendarDataType[]) => void
+  onSelected?: (data: CalendarDataType[]) => void
+  onYearMonthChange?: (param: CalendarDataType[]) => void
 }
 
 const defaultProps = {
@@ -59,9 +61,9 @@ const defaultProps = {
   onTopInfo: undefined,
   onBottomInfo: undefined,
   onClose: () => {},
-  onChoose: (param: string[]) => {},
-  onSelected: (data: string[]) => {},
-  onYearMonthChange: (param: string[]) => {},
+  onChoose: (param: CalendarDataType[]) => {},
+  onSelected: (data: CalendarDataType[]) => {},
+  onYearMonthChange: (param: CalendarDataType[]) => {},
 } as CalendarProps
 
 export const Calendar = React.forwardRef<
@@ -103,7 +105,7 @@ export const Calendar = React.forwardRef<
   }
 
   const update = () => {}
-  const choose = (param: string[]) => {
+  const choose = (param: CalendarDataType[]) => {
     close()
     onChoose && onChoose(param)
   }
@@ -111,7 +113,7 @@ export const Calendar = React.forwardRef<
     close()
   }
 
-  const select = (param: string[]) => {
+  const select = (param: CalendarDataType[]) => {
     onSelected && onSelected(param)
   }
 
@@ -119,7 +121,7 @@ export const Calendar = React.forwardRef<
     calendarRef.current?.scrollToDate(date)
   }
 
-  const yearMonthChange = (param: string[]) => {
+  const yearMonthChange = (param: CalendarDataType[]) => {
     onYearMonthChange && onYearMonthChange(param)
   }
 

@@ -1,5 +1,6 @@
 import React, { useState, useRef } from 'react'
 import { Calendar } from './calendar'
+import type { CalendarDataType } from './calendar'
 import { Cell } from '@/packages/cell/cell'
 import Utils from '@/utils/date'
 import { useTranslate } from '../../sites/assets/locale'
@@ -164,48 +165,52 @@ const CalendarDemo = () => {
     setIsVisible7(false)
   }
 
-  const setChooseValue = (param: string[]) => {
+  const setChooseValue = (param: any) => {
     setDate(param[3])
     setDateWeek(param[4])
+    console.log(1, param)
   }
 
-  const setChooseValue1 = (param: string[]) => {
+  const setChooseValue1 = (param: any) => {
     setDate1([...[param[0][3], param[1][3]]])
+    console.log(2, param)
   }
 
-  const setChooseValue2 = (param: string[]) => {
+  const setChooseValue2 = (param: any) => {
     setDate2(param[3])
-    console.log(param[3])
+    console.log(3, param[3])
   }
 
-  const setChooseValue3 = (param: string[]) => {
+  const setChooseValue3 = (param: any) => {
     setDate3(param[3])
+    console.log(4, param[3])
   }
 
-  const setChooseValue4 = (chooseData: string[]) => {
+  const setChooseValue4 = (chooseData: any) => {
     const dateArr = chooseData.map((item: any) => {
       return item[3]
     })
     setDate4([...dateArr])
+    console.log(5, chooseData)
   }
 
-  const setChooseValue5 = (param: string[]) => {
+  const setChooseValue5 = (param: any) => {
     setDate5([...[param[0][3], param[1][3]]])
   }
 
-  const setChooseValue6 = (param: string[]) => {
+  const setChooseValue6 = (param: any) => {
     setDate6([...[param[0][3], param[1][3]]])
   }
 
-  const setChooseValue7 = (param: string[]) => {
+  const setChooseValue7 = (param: any) => {
     setDate7([...[param[0][3], param[1][3]]])
   }
 
-  const select = (param: string[]) => {
+  const select = (param: CalendarDataType[]) => {
     console.log(param)
   }
 
-  const yearMonthChange = (param: string[]) => {
+  const yearMonthChange = (param: CalendarDataType[]) => {
     console.log(param)
   }
 

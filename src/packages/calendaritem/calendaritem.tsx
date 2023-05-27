@@ -5,6 +5,21 @@ import Utils from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider'
 
+export type CalendarDataType = string | number | string[]
+
+const numToStr = (arr: CalendarDataType[]) => {
+  const result: CalendarDataType | CalendarDataType[] = []
+  arr.forEach((item: CalendarDataType | CalendarDataType[]) => {
+    if (Array.isArray(item)) {
+      const items = numToStr(item)
+      result.push(items as any)
+    } else {
+      result.push(String(item))
+    }
+  })
+  return result
+}
+
 type CalendarRef = {
   scrollToDate: (date: string) => void
 }
@@ -64,10 +79,10 @@ export interface CalendarItemProps {
   onDay?: ((date: Day) => string | JSX.Element) | undefined
   onTopInfo?: ((date: Day) => string | JSX.Element) | undefined
   onBottomInfo?: ((date: Day) => string | JSX.Element) | undefined
-  onChoose?: (data: string[]) => void
+  onChoose?: (data: CalendarDataType[]) => void
   onUpdate?: () => void
-  onSelected?: (data: string[]) => void
-  onYearMonthChange?: (data: string[]) => void
+  onSelected?: (data: CalendarDataType[]) => void
+  onYearMonthChange?: (data: CalendarDataType[]) => void
 }
 const defaultProps = {
   type: 'one',
@@ -89,10 +104,10 @@ const defaultProps = {
   onDay: undefined,
   onTopInfo: undefined,
   onBottomInfo: undefined,
-  onChoose: (data: string[]) => {},
+  onChoose: (data: CalendarDataType[]) => {},
   onUpdate: () => {},
-  onSelected: (data: string[]) => {},
-  onYearMonthChange: (data: string[]) => {},
+  onSelected: (data: CalendarDataType[]) => {},
+  onYearMonthChange: (data: CalendarDataType[]) => {},
 } as CalendarItemProps
 
 export const CalendarItem = React.forwardRef<
@@ -262,10 +277,9 @@ export const CalendarItem = React.forwardRef<
       (type === 'range' && state.chooseData.length === 2) ||
       type !== 'range'
     ) {
-      const chooseData = state.chooseData
-        .slice(0)
-        .map((item: number | string) => String(item))
-      onChoose && onChoose(chooseData)
+      const chooseData = state.chooseData.slice(0)
+      const newChooseData = numToStr(chooseData)
+      onChoose && onChoose(newChooseData)
       if (poppable) {
         onUpdate && onUpdate()
       }
@@ -325,16 +339,12 @@ export const CalendarItem = React.forwardRef<
 
       if (!isFirst) {
         // 点击日期 触发
-        // 统一字符串类型
-        const chooseData = state.chooseData.map((item: number | string) =>
-          String(item)
-        )
+        const chooseData = numToStr(state.chooseData)
         onSelected && onSelected(chooseData)
         if (isAutoBackFill || !poppable) {
           confirm()
         }
       }
-
       setMonthsData(state.monthsData.slice())
     }
   }

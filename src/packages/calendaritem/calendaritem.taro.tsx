@@ -7,6 +7,8 @@ import Utils from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
+export type CalendarDataType = string | number | string[]
+
 type CalendarRef = {
   scrollToDate: (date: string) => void
 }
@@ -66,10 +68,10 @@ export interface CalendarItemProps {
   onDay?: ((date: Day) => string | JSX.Element) | undefined
   onTopInfo?: ((date: Day) => string | JSX.Element) | undefined
   onBottomInfo?: ((date: Day) => string | JSX.Element) | undefined
-  onChoose?: (data: string[]) => void
+  onChoose?: (data: CalendarDataType[]) => void
   onUpdate?: () => void
-  onSelected?: (data: string[]) => void
-  onYearMonthChange?: (data: string[]) => void
+  onSelected?: (data: CalendarDataType[]) => void
+  onYearMonthChange?: (data: CalendarDataType[]) => void
 }
 const defaultProps = {
   type: 'one',
@@ -91,10 +93,10 @@ const defaultProps = {
   onDay: undefined,
   onTopInfo: undefined,
   onBottomInfo: undefined,
-  onChoose: (data: string[]) => {},
+  onChoose: (data: CalendarDataType[]) => {},
   onUpdate: () => {},
-  onSelected: (data: string[]) => {},
-  onYearMonthChange: (data: string[]) => {},
+  onSelected: (data: CalendarDataType[]) => {},
+  onYearMonthChange: (data: CalendarDataType[]) => {},
 } as CalendarItemProps
 
 export const CalendarItem = React.forwardRef<
