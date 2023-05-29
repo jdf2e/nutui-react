@@ -3,12 +3,6 @@ import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Popup } from '../popup'
 
-function sleep(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay)
-  })
-}
-
 test('should change z-index when using z-index prop', () => {
   const { container } = render(
     <>
