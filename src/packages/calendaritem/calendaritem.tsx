@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, ReactNode } from 'react'
 import classNames from 'classnames'
 import Utils from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
@@ -41,20 +41,20 @@ export interface CalendarItemProps {
   startDate?: InputDate
   endDate?: InputDate
   showToday?: boolean
-  startText?: string
-  endText?: string
-  confirmText?: string
+  startText?: ReactNode
+  endText?: ReactNode
+  confirmText?: ReactNode
   showTitle?: boolean
   showSubTitle?: boolean
   scrollAnimation?: boolean
-  onBtn?: (() => string | JSX.Element) | undefined
-  onDay?: ((date: Day) => string | JSX.Element) | undefined
-  onTopInfo?: ((date: Day) => string | JSX.Element) | undefined
-  onBottomInfo?: ((date: Day) => string | JSX.Element) | undefined
-  onChoose?: (data: any) => void
+  renderHeaderButtons?: (() => string | JSX.Element) | undefined
+  renderDay?: ((date: Day) => string | JSX.Element) | undefined
+  renderDayTop?: ((date: Day) => string | JSX.Element) | undefined
+  renderDayBottom?: ((date: Day) => string | JSX.Element) | undefined
+  onConfirm?: (data: any) => void
   onUpdate?: () => void
-  onSelected?: (data: string) => void
-  onYearMonthChange?: (data: any) => void
+  onClickDay?: (data: string) => void
+  onPageChange?: (data: any) => void
 }
 const defaultProps = {
   type: 'single',
@@ -71,14 +71,14 @@ const defaultProps = {
   showTitle: true,
   showSubTitle: true,
   scrollAnimation: true,
-  onBtn: undefined,
-  onDay: undefined,
-  onTopInfo: undefined,
-  onBottomInfo: undefined,
-  onChoose: (data: any) => {},
+  renderHeaderButtons: undefined,
+  renderDay: undefined,
+  renderDayTop: undefined,
+  renderDayBottom: undefined,
+  onConfirm: (data: any) => {},
   onUpdate: () => {},
-  onSelected: (data: string) => {},
-  onYearMonthChange: (data: any) => {},
+  onClickDay: (data: string) => {},
+  onPageChange: (data: any) => {},
 } as CalendarItemProps
 
 export const CalendarItem = React.forwardRef<
@@ -99,14 +99,14 @@ export const CalendarItem = React.forwardRef<
     showTitle,
     showSubTitle,
     scrollAnimation,
-    onBtn,
-    onDay,
-    onTopInfo,
-    onBottomInfo,
-    onChoose,
+    renderHeaderButtons,
+    renderDay,
+    renderDayTop,
+    renderDayBottom,
+    onConfirm,
     onUpdate,
-    onSelected,
-    onYearMonthChange,
+    onClickDay,
+    onPageChange,
   } = { ...defaultProps, ...props }
 
   const weeks = locale.calendaritem.weekdays
@@ -227,7 +227,7 @@ export const CalendarItem = React.forwardRef<
       type !== 'range'
     ) {
       const chooseData = state.chooseData.slice(0)
-      onChoose && onChoose(chooseData)
+      onConfirm && onConfirm(chooseData)
       if (popup) {
         onUpdate && onUpdate()
       }
@@ -294,7 +294,7 @@ export const CalendarItem = React.forwardRef<
 
     if (!isFirst) {
       // 点击日期 触发
-      onSelected && onSelected(state.chooseData)
+      onClickDay && onClickDay(state.chooseData)
       if (autoBackfill || !popup) {
         confirm()
       }
@@ -466,7 +466,7 @@ export const CalendarItem = React.forwardRef<
     const currentMonthsData = monthsData[state.currentIndex]
     const [year, month] = currentMonthsData.curData
     if (currentMonthsData.title === yearMonthTitle) return
-    onYearMonthChange && onYearMonthChange([year, month, `${year}-${month}`])
+    onPageChange && onPageChange([year, month, `${year}-${month}`])
     setYearMonthTitle(currentMonthsData.title)
   }
 
@@ -821,6 +821,45 @@ export const CalendarItem = React.forwardRef<
     )
   }
 
+  const renderMonthDay = (day: any, month: any) => {
+    return (
+      <>
+        <div className="calendar-day">
+          {renderDay ? renderDay(day) : day.day}
+        </div>
+        {renderDayTop && (
+          <div className="calendar-curr-tips calendar-curr-tips-top">
+            {renderDayTop(day)}
+          </div>
+        )}
+        {renderDayBottom && (
+          <div className="calendar-curr-tips calendar-curr-tips-bottom">
+            {renderDayBottom(day)}
+          </div>
+        )}
+        {!renderDayBottom && showToday && isCurrDay(month, day.day) && (
+          <div className="calendar-curr-tip-curr">
+            {locale.calendaritem.today}
+          </div>
+        )}
+        {isStartTip(day, month) && (
+          <div
+            className={`calendar-day-tip ${
+              rangeTip() ? 'calendar-curr-tips-top' : ''
+            }`}
+          >
+            {startText || locale.calendaritem.start}
+          </div>
+        )}
+        {isEndTip(day, month) && (
+          <div className="calendar-day-tip">
+            {endText || locale.calendaritem.end}
+          </div>
+        )}
+      </>
+    )
+  }
+
   return (
     <>
       <div className={classes}>
@@ -830,7 +869,9 @@ export const CalendarItem = React.forwardRef<
               {title || locale.calendaritem.title}
             </div>
           )}
-          {onBtn && <div className="calendar-top-slot">{onBtn()}</div>}
+          {renderHeaderButtons && (
+            <div className="calendar-top-slot">{renderHeaderButtons()}</div>
+          )}
           {showSubTitle && (
             <div className="calendar-curr-month">{yearMonthTitle}</div>
           )}
@@ -866,40 +907,7 @@ export const CalendarItem = React.forwardRef<
                               }}
                               key={i}
                             >
-                              <div className="calendar-day">
-                                {onDay ? onDay(day) : day.day}
-                              </div>
-                              {onTopInfo && (
-                                <div className="calendar-curr-tips calendar-curr-tips-top">
-                                  {onTopInfo(day)}
-                                </div>
-                              )}
-                              {onBottomInfo && (
-                                <div className="calendar-curr-tips calendar-curr-tips-bottom">
-                                  {onBottomInfo(day)}
-                                </div>
-                              )}
-                              {!onBottomInfo &&
-                                showToday &&
-                                isCurrDay(month, day.day) && (
-                                  <div className="calendar-curr-tip-curr">
-                                    {locale.calendaritem.today}
-                                  </div>
-                                )}
-                              {isStartTip(day, month) && (
-                                <div
-                                  className={`calendar-day-tip ${
-                                    rangeTip() ? 'calendar-curr-tips-top' : ''
-                                  }`}
-                                >
-                                  {startText || locale.calendaritem.start}
-                                </div>
-                              )}
-                              {isEndTip(day, month) && (
-                                <div className="calendar-day-tip">
-                                  {endText || locale.calendaritem.end}
-                                </div>
-                              )}
+                              {renderMonthDay(day, month)}
                             </div>
                           ))}
                         </div>

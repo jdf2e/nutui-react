@@ -46,7 +46,7 @@ const App = () => {
                 startDate="2022-01-11"
                 endDate="2029-11-30"
                 onClose={ closeSwitch }
-                onChoose={ setChooseValue }
+                onConfirm={ setChooseValue }
              />
         </>
     );
@@ -89,7 +89,7 @@ const App = () => {
                 startDate="2019-12-22"
                 endDate="2021-01-08"
                 onClose={ closeSwitch1 }
-                onChoose={ setChooseValue1 }
+                onConfirm={ setChooseValue1 }
              />
         </>
     );
@@ -132,7 +132,7 @@ const App = () => {
                 startDate="2022-01-01"
                 endDate="2022-09-10"
                 onClose={closeSwitch3}
-                onChoose={setChooseValue3}
+                onConfirm={setChooseValue3}
             />
         </>
     );
@@ -175,7 +175,7 @@ const App = () => {
                 startDate=""
                 endDate=""
                 onClose={closeSwitch3}
-                onChoose={setChooseValue3}
+                onConfirm={setChooseValue3}
             />
         </>
     );
@@ -213,13 +213,13 @@ const App = () => {
         setDate3([...[param[0][3], param[1][3]]])
     }
 
-    const onDay = (date: Day) => {
+    const renderDay = (date: Day) => {
         return (
             <span>{ date.day <= 9 ? `0${  date.day}` : date.day }</span>
         )
     }
 
-    const onBottomInfo = (date: Day) => {
+    const renderDayBottom = (date: Day) => {
         return (
             <span className="info" style={{ fontSize: '12px', lineHeight: '14px' }}>{
                 date ? (date.day <= 10 ? '' : date.day <= 20 ? 'mid' : '') : ''
@@ -240,10 +240,10 @@ const App = () => {
                 confirmText="submit"
                 startText="enter"
                 endText="leave"
-                onDay={ onDay }
-                onBottomInfo={ onBottomInfo }
+                renderDay={ renderDay }
+                renderDayBottom={ renderDayBottom }
                 onClose={closeSwitch3}
-                onChoose={setChooseValue3}
+                onConfirm={setChooseValue3}
             />
         </>
     );
@@ -358,7 +358,7 @@ const App = () => {
         }
     }
 
-    const onBtn = () => {
+    const renderHeaderButtons = () => {
         return (
             <div className="wrapper" style={ { display: 'flex', padding: '0 40px' } }>
                 <div className="d_div" style={ { margin: '0px 5px' } }>
@@ -384,9 +384,9 @@ const App = () => {
                 type="range"
                 startDate="2021-12-22"
                 endDate="2022-12-31"
-                onBtn={ onBtn }
+                renderHeaderButtons={ renderHeaderButtons }
                 onClose={closeSwitch3}
-                onChoose={setChooseValue3}
+                onConfirm={setChooseValue3}
             />
         </>
     );
@@ -417,7 +417,7 @@ const App = () => {
                     popup={ false }
                     defaultValue={ date2 }
                     autoBackfill
-                    onChoose={ setChooseValue2 }
+                    onConfirm={ setChooseValue2 }
                 />
             </div>
         </>
@@ -456,19 +456,19 @@ Through ref, you can get the Calendar instance and call the instance method.
 | showTitle          | Whether to show the calendar title               | boolean          | `true` |
 | showSubTitle          | Whether to display the date title              | boolean          | `true` |
 | scrollAnimation          | Whether to start scroll animation              | boolean          | `true` |
-| onBtn | Below the custom calendar header, you can add custom actions              |  (() => string \| JSX.Element) \| undefined      | - |
-| onDay  | date information              |  ((date: Day) => string \| JSX.Element) \| undefined                          | - |
-| onTopInfo  | Date Top Information             |  ((date: Day) => string \| JSX.Element) \| undefined                          | - |
-| onBottomInfo  | date bottom information             |  ((date: Day) => string \| JSX.Element) \| undefined                         | - |
+| renderHeaderButtons | Below the custom calendar header, you can add custom actions              |  (() => string \| JSX.Element) \| undefined      | - |
+| renderDay  | date information              |  ((date: Day) => string \| JSX.Element) \| undefined                          | - |
+| renderDayTop  | Date Top Information             |  ((date: Day) => string \| JSX.Element) \| undefined                          | - |
+| renderDayBottom  | date bottom information             |  ((date: Day) => string \| JSX.Element) \| undefined                         | - |
 
 ### Events
 
 | Events | Description           | callback parameter       |
 |--------|------------------------------|------------------------------|
-| onChoose | Triggered after selection or by clicking the confirm button | Array of dates (including year, month, day and week) |
+| onConfirm | Triggered after selection or by clicking the confirm button | Array of dates (including year, month, day and week) |
 | onClose  | Triggered when closed                   | -                            |
-| onSelected  | Triggered after click/select              |  `Day: Day`                          |
-| onYearMonthChange`v1.4.11`  | Triggered when reached top for sub title of year and month             |  Array of dates (including year, month)                         
+| onClickDay  | Triggered after click/select              |  `Day: Day`                          |
+| onPageChange`v1.4.11`  | Triggered when reached top for sub title of year and month             |  Array of dates (including year, month)                         
 
 ### Day
 | Params| Description            |

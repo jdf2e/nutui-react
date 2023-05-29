@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { ReactNode, useRef } from 'react'
 import Popup from '@/packages/popup'
 import CalendarItem from '@/packages/calendaritem'
 import Utils from '@/utils/date'
@@ -23,20 +23,20 @@ export interface CalendarProps {
   startDate?: string
   endDate?: string
   showToday?: boolean
-  startText?: string
-  endText?: string
-  confirmText?: string
+  startText?: ReactNode
+  endText?: ReactNode
+  confirmText?: ReactNode
   showTitle?: boolean
   showSubTitle?: boolean
   scrollAnimation?: boolean
-  onBtn?: (() => string | JSX.Element) | undefined
-  onDay?: ((date: Day) => string | JSX.Element) | undefined
-  onTopInfo?: ((date: Day) => string | JSX.Element) | undefined
-  onBottomInfo?: ((date: Day) => string | JSX.Element) | undefined
+  renderHeaderButtons?: (() => string | JSX.Element) | undefined
+  renderDay?: ((date: Day) => string | JSX.Element) | undefined
+  renderDayTop?: ((date: Day) => string | JSX.Element) | undefined
+  renderDayBottom?: ((date: Day) => string | JSX.Element) | undefined
   onClose?: () => void
-  onChoose?: (param: string) => void
-  onSelected?: (data: string) => void
-  onYearMonthChange?: (param: string) => void
+  onConfirm?: (param: string) => void
+  onClickDay?: (data: string) => void
+  onPageChange?: (param: string) => void
 }
 
 const defaultProps = {
@@ -55,14 +55,14 @@ const defaultProps = {
   showTitle: true,
   showSubTitle: true,
   scrollAnimation: true,
-  onBtn: undefined,
-  onDay: undefined,
-  onTopInfo: undefined,
-  onBottomInfo: undefined,
+  renderHeaderButtons: undefined,
+  renderDay: undefined,
+  renderDayTop: undefined,
+  renderDayBottom: undefined,
   onClose: () => {},
-  onChoose: (param: string) => {},
-  onSelected: (data: string) => {},
-  onYearMonthChange: (param: string) => {},
+  onConfirm: (param: string) => {},
+  onClickDay: (data: string) => {},
+  onPageChange: (param: string) => {},
 } as CalendarProps
 
 export const Calendar = React.forwardRef<
@@ -86,14 +86,14 @@ export const Calendar = React.forwardRef<
     showTitle,
     showSubTitle,
     scrollAnimation,
-    onBtn,
-    onDay,
-    onTopInfo,
-    onBottomInfo,
+    renderHeaderButtons,
+    renderDay,
+    renderDayTop,
+    renderDayBottom,
     onClose,
-    onChoose,
-    onSelected,
-    onYearMonthChange,
+    onConfirm,
+    onClickDay,
+    onPageChange,
   } = { ...defaultProps, ...props }
 
   const calendarRef = useRef<any>(null)
@@ -104,14 +104,14 @@ export const Calendar = React.forwardRef<
 
   const choose = (param: string) => {
     close()
-    onChoose && onChoose(param)
+    onConfirm && onConfirm(param)
   }
   const closePopup = () => {
     close()
   }
 
   const select = (param: string) => {
-    onSelected && onSelected(param)
+    onClickDay && onClickDay(param)
   }
 
   const scrollToDate = (date: string) => {
@@ -119,7 +119,7 @@ export const Calendar = React.forwardRef<
   }
 
   const yearMonthChange = (param: string) => {
-    onYearMonthChange && onYearMonthChange(param)
+    onPageChange && onPageChange(param)
   }
 
   React.useImperativeHandle(ref, () => ({
@@ -144,13 +144,13 @@ export const Calendar = React.forwardRef<
         showTitle={showTitle}
         showSubTitle={showSubTitle}
         scrollAnimation={scrollAnimation}
-        onBtn={onBtn}
-        onDay={onDay}
-        onTopInfo={onTopInfo}
-        onBottomInfo={onBottomInfo}
-        onChoose={choose}
-        onSelected={select}
-        onYearMonthChange={yearMonthChange}
+        renderHeaderButtons={renderHeaderButtons}
+        renderDay={renderDay}
+        renderDayTop={renderDayTop}
+        renderDayBottom={renderDayBottom}
+        onConfirm={choose}
+        onClickDay={select}
+        onPageChange={yearMonthChange}
       />
     )
   }

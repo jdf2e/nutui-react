@@ -45,7 +45,7 @@ const App = () => {
                 startDate="2022-01-11"
                 endDate="2029-11-30"
                 onClose={ closeSwitch }
-                onChoose={ setChooseValue }
+                onConfirm={ setChooseValue }
              />
         </>
     );
@@ -88,7 +88,7 @@ const App = () => {
                 startDate="2019-12-22"
                 endDate="2021-01-08"
                 onClose={ closeSwitch1 }
-                onChoose={ setChooseValue1 }
+                onConfirm={ setChooseValue1 }
              />
         </>
     );
@@ -131,7 +131,7 @@ const App = () => {
                 startDate="2022-01-01"
                 endDate="2022-09-10"
                 onClose={closeSwitch3}
-                onChoose={setChooseValue3}
+                onConfirm={setChooseValue3}
             />
         </>
     );
@@ -174,7 +174,7 @@ const App = () => {
                 startDate=""
                 endDate=""
                 onClose={closeSwitch3}
-                onChoose={setChooseValue3}
+                onConfirm={setChooseValue3}
             />
         </>
     );
@@ -212,13 +212,13 @@ const App = () => {
         setDate3([...[param[0][3], param[1][3]]])
     }
 
-    const onDay = (date: Day) => {
+    const renderDay = (date: Day) => {
         return (
             <span>{ date.day <= 9 ? `0${  date.day}` : date.day }</span>
         )
     }
 
-    const onBottomInfo = (date: Day) => {
+    const renderDayBottom = (date: Day) => {
         return (
             <span className="info" style={{ fontSize: '12px', lineHeight: '14px' }}>{
                 date ? (date.day <= 10 ? '' : date.day <= 20 ? 'mid' : '') : ''
@@ -239,10 +239,10 @@ const App = () => {
                 confirmText="submit"
                 startText="enter"
                 endText="leave"
-                onDay={ onDay }
-                onBottomInfo={ onBottomInfo }
+                renderDay={ renderDay }
+                renderDayBottom={ renderDayBottom }
                 onClose={closeSwitch3}
-                onChoose={setChooseValue3}
+                onConfirm={setChooseValue3}
             />
         </>
     );
@@ -357,7 +357,7 @@ const App = () => {
         }
     }
 
-    const onBtn = () => {
+    const renderHeaderButtons = () => {
         return (
             <div className="wrapper" style={ { display: 'flex', padding: '0 40px' } }>
                 <div className="d_div" style={ { margin: '0px 5px' } }>
@@ -383,9 +383,9 @@ const App = () => {
                 type="range"
                 startDate="2021-12-22"
                 endDate="2022-12-31"
-                onBtn={ onBtn }
+                renderHeaderButtons={ renderHeaderButtons }
                 onClose={closeSwitch3}
-                onChoose={setChooseValue3}
+                onConfirm={setChooseValue3}
             />
         </>
     );
@@ -416,7 +416,7 @@ const App = () => {
                     popup={ false }
                     defaultValue={ date2 }
                     autoBackfill
-                    onChoose={ setChooseValue2 }
+                    onConfirm={ setChooseValue2 }
                 />
             </div>
         </>
@@ -455,19 +455,19 @@ export default App;
 | showTitle          | 是否在展示日历标题               | boolean          | `true` |
 | showSubTitle          | 是否展示日期标题              | boolean          | `true` |
 | scrollAnimation          | 是否启动滚动动画              | boolean          | `true` |
-| onBtn | 自定义日历标题下部，可用以添加自定义操作              |  (() => string \| JSX.Element) \| undefined      | - |
-| onDay  | 日期信息              |  ((date: Day) => string \| JSX.Element) \| undefined                          | - |
-| onTopInfo  | 日期顶部信息             |  ((date: Day) => string \| JSX.Element) \| undefined                          | - |
-| onBottomInfo  | 日期底部信息             |  ((date: Day) => string \| JSX.Element) \| undefined                         | - |
+| renderHeaderButtons | 自定义日历标题下部，可用以添加自定义操作              |  (() => string \| JSX.Element) \| undefined      | - |
+| renderDay  | 日期信息              |  ((date: Day) => string \| JSX.Element) \| undefined                          | - |
+| renderDayTop  | 日期顶部信息             |  ((date: Day) => string \| JSX.Element) \| undefined                          | - |
+| renderDayBottom  | 日期底部信息             |  ((date: Day) => string \| JSX.Element) \| undefined                         | - |
 
 ### Events
 
 | 事件名 | 说明                         | 回调参数                     |
 |--------|------------------------------|------------------------------|
-| onChoose | 选择之后或是点击确认按钮触发 | 日期数组（包含年月日和星期） |
+| onConfirm | 选择之后或是点击确认按钮触发 | 日期数组（包含年月日和星期） |
 | onClose  | 关闭时触发                   | -                            |
-| onSelected  | 点击/选择后触发              |  `Day: Day`                          |
-| onYearMonthChange`v1.4.11`  | 年月子标题到达顶部时触发              |  日期数组（包含年月）                          |
+| onClickDay  | 点击/选择后触发              |  `Day: Day`                          |
+| onPageChange`v1.4.11`  | 年月子标题到达顶部时触发              |  日期数组（包含年月）                          |
 
 ### Day
 | 属性 | 类型            |

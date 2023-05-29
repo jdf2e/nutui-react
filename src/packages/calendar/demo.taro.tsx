@@ -233,11 +233,11 @@ const CalendarDemo = () => {
     }
   }
 
-  const onDay = (date: Day) => {
+  const renderDay = (date: Day) => {
     return <span>{date.day <= 9 ? `0${date.day}` : date.day}</span>
   }
 
-  const onTopInfo = (date: Day) => {
+  const renderDayTop = (date: Day) => {
     let currDate = ''
     if (date && date.day === 10) {
       currDate = '☺'
@@ -245,7 +245,7 @@ const CalendarDemo = () => {
     return <span className="info">{currDate}</span>
   }
 
-  const onBottomInfo = (date: Day) => {
+  const renderDayBottom = (date: Day) => {
     let currDate = ''
     if (date && date.day === 10) {
       currDate = '纪念日'
@@ -253,7 +253,7 @@ const CalendarDemo = () => {
     return <span className="info">{currDate}</span>
   }
 
-  const onBtn = () => {
+  const renderHeaderButtons = () => {
     return (
       <div className="wrapper">
         <div className="d_div">
@@ -291,8 +291,8 @@ const CalendarDemo = () => {
           // startDate="2022-01-11"
           endDate="2029-11-30"
           onClose={closeSwitch}
-          onChoose={setChooseValue}
-          onSelected={select}
+          onConfirm={setChooseValue}
+          onClickDay={select}
         />
         <Cell
           title={translated.a74a1fd4}
@@ -310,8 +310,8 @@ const CalendarDemo = () => {
           startDate="2023-12-22"
           endDate="2024-01-08"
           onClose={closeSwitch1}
-          onChoose={setChooseValue1}
-          onSelected={select}
+          onConfirm={setChooseValue1}
+          onClickDay={select}
         />
         <Cell
           title={translated['7db1a8b2']}
@@ -329,7 +329,7 @@ const CalendarDemo = () => {
           startDate="2022-01-01"
           endDate="2022-09-10"
           onClose={closeSwitch4}
-          onChoose={setChooseValue4}
+          onConfirm={setChooseValue4}
         />
         <h2>{translated.cfbdc781}</h2>
         <Cell
@@ -344,7 +344,7 @@ const CalendarDemo = () => {
           endDate=""
           autoBackfill
           onClose={closeSwitch3}
-          onChoose={setChooseValue3}
+          onConfirm={setChooseValue3}
         />
         <Cell
           title={translated.a74a1fd4}
@@ -363,8 +363,8 @@ const CalendarDemo = () => {
           startDate="2019-12-22"
           endDate="2021-01-08"
           onClose={closeSwitch5}
-          onChoose={setChooseValue5}
-          onSelected={select}
+          onConfirm={setChooseValue5}
+          onClickDay={select}
         />
         <h2>{translated.d04fcbda}</h2>
         <Cell
@@ -385,11 +385,11 @@ const CalendarDemo = () => {
           confirmText="submit"
           startText="enter"
           endText="leave"
-          onDay={onDay}
-          onTopInfo={onTopInfo}
-          onBottomInfo={onBottomInfo}
+          renderDay={renderDay}
+          renderDayTop={renderDayTop}
+          renderDayBottom={renderDayBottom}
           onClose={closeSwitch6}
-          onChoose={setChooseValue6}
+          onConfirm={setChooseValue6}
         />
 
         <Cell
@@ -408,9 +408,9 @@ const CalendarDemo = () => {
           type="range"
           startDate="2022-12-22"
           endDate="2023-12-31"
-          onBtn={onBtn}
+          renderHeaderButtons={renderHeaderButtons}
           onClose={closeSwitch7}
-          onChoose={setChooseValue7}
+          onConfirm={setChooseValue7}
         />
         <h2>{translated.e51e4582}</h2>
         <div
@@ -426,8 +426,8 @@ const CalendarDemo = () => {
             popup={false}
             defaultValue={date2}
             autoBackfill
-            onChoose={setChooseValue2}
-            onYearMonthChange={yearMonthChange}
+            onConfirm={setChooseValue2}
+            onPageChange={yearMonthChange}
           />
         </div>
       </div>

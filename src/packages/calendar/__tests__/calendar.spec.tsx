@@ -89,15 +89,15 @@ test('show-today prop', async () => {
 })
 
 test('should render slot correctly', async () => {
-  const onBtn = () => {
+  const renderHeaderButtons = () => {
     return <div className="d_div"> 最近七天</div>
   }
 
-  const onDay = (date: Day) => {
+  const renderDay = (date: Day) => {
     return <span>custom{date.day}</span>
   }
 
-  const onBottomInfo = (date: Day) => {
+  const renderDayBottom = (date: Day) => {
     return <span>{date.day <= 10 ? '上旬' : '下旬'}</span>
   }
 
@@ -107,9 +107,9 @@ test('should render slot correctly', async () => {
       defaultValue="2022-03-18"
       startDate="2022-01-01"
       endDate="2022-12-31"
-      onBtn={onBtn}
-      onDay={onDay}
-      onBottomInfo={onBottomInfo}
+      renderHeaderButtons={renderHeaderButtons}
+      renderDay={renderDay}
+      renderDayBottom={renderDayBottom}
     />
   )
 
@@ -120,32 +120,32 @@ test('should render slot correctly', async () => {
 })
 
 test('select event when click item', () => {
-  const onSelected = jest.fn()
+  const onClickDay = jest.fn()
   const { container } = render(
     <Calendar
       visible
       defaultValue="2022-03-18"
       startDate="2022-01-01"
       endDate="2022-12-31"
-      onSelected={onSelected}
+      onClickDay={onClickDay}
     />
   )
 
   const calendarMonthDay = container.querySelectorAll('.calendar-month-day')[15]
 
   fireEvent.click(calendarMonthDay)
-  expect(onSelected).toBeCalled()
+  expect(onClickDay).toBeCalled()
 })
 
 test('choose event when click item', async () => {
-  const onChoose = jest.fn()
+  const onConfirm = jest.fn()
   const { container } = render(
     <Calendar
       visible
       defaultValue="2022-03-18"
       startDate="2022-01-01"
       endDate="2022-12-31"
-      onChoose={onChoose}
+      onConfirm={onConfirm}
     />
   )
 
@@ -154,5 +154,5 @@ test('choose event when click item', async () => {
   )[0]
 
   fireEvent.click(calendarConfirmBtn)
-  expect(onChoose).toBeCalled()
+  expect(onConfirm).toBeCalled()
 })

@@ -61,14 +61,14 @@ export interface CalendarItemProps {
   showTitle?: boolean
   showSubTitle?: boolean
   scrollAnimation?: boolean
-  onBtn?: (() => string | JSX.Element) | undefined
-  onDay?: ((date: Day) => string | JSX.Element) | undefined
-  onTopInfo?: ((date: Day) => string | JSX.Element) | undefined
-  onBottomInfo?: ((date: Day) => string | JSX.Element) | undefined
-  onChoose?: (data: any) => void
+  renderHeaderButtons?: (() => string | JSX.Element) | undefined
+  renderDay?: ((date: Day) => string | JSX.Element) | undefined
+  renderDayTop?: ((date: Day) => string | JSX.Element) | undefined
+  renderDayBottom?: ((date: Day) => string | JSX.Element) | undefined
+  onConfirm?: (data: any) => void
   onUpdate?: () => void
-  onSelected?: (data: string) => void
-  onYearMonthChange?: (data: any) => void
+  onClickDay?: (data: string) => void
+  onPageChange?: (data: any) => void
 }
 const defaultProps = {
   type: 'single',
@@ -86,14 +86,14 @@ const defaultProps = {
   showTitle: true,
   showSubTitle: true,
   scrollAnimation: true,
-  onBtn: undefined,
-  onDay: undefined,
-  onTopInfo: undefined,
-  onBottomInfo: undefined,
-  onChoose: (data: any) => {},
+  renderHeaderButtons: undefined,
+  renderDay: undefined,
+  renderDayTop: undefined,
+  renderDayBottom: undefined,
+  onConfirm: (data: any) => {},
   onUpdate: () => {},
-  onSelected: (data: string) => {},
-  onYearMonthChange: (data: any) => {},
+  onClickDay: (data: string) => {},
+  onPageChange: (data: any) => {},
 } as CalendarItemProps
 
 export const CalendarItem = React.forwardRef<
@@ -114,14 +114,14 @@ export const CalendarItem = React.forwardRef<
     showTitle,
     showSubTitle,
     scrollAnimation,
-    onBtn,
-    onDay,
-    onTopInfo,
-    onBottomInfo,
-    onChoose,
+    renderHeaderButtons,
+    renderDay,
+    renderDayTop,
+    renderDayBottom,
+    onConfirm,
     onUpdate,
-    onSelected,
-    onYearMonthChange,
+    onClickDay,
+    onPageChange,
   } = { ...defaultProps, ...props }
 
   const weeks = locale.calendaritem.weekdays
@@ -264,7 +264,7 @@ export const CalendarItem = React.forwardRef<
       type !== 'range'
     ) {
       const chooseData = state.chooseData.slice(0)
-      onChoose && onChoose(chooseData)
+      onConfirm && onConfirm(chooseData)
       if (popup) {
         onUpdate && onUpdate()
       }
@@ -324,7 +324,7 @@ export const CalendarItem = React.forwardRef<
 
       if (!isFirst) {
         // 点击日期 触发
-        onSelected && onSelected(state.chooseData)
+        onClickDay && onClickDay(state.chooseData)
         if (autoBackfill || !popup) {
           confirm()
         }
@@ -488,7 +488,7 @@ export const CalendarItem = React.forwardRef<
     const currentMonthsData = state.monthsData[state.currentIndex]
     const [year, month] = currentMonthsData.curData
     if (currentMonthsData.title === yearMonthTitle) return
-    onYearMonthChange && onYearMonthChange([year, month, `${year}-${month}`])
+    onPageChange && onPageChange([year, month, `${year}-${month}`])
     setYearMonthTitle(currentMonthsData.title)
   }
 
@@ -837,7 +837,9 @@ export const CalendarItem = React.forwardRef<
               {title || locale.calendaritem.title}
             </div>
           )}
-          {onBtn && <div className="calendar-top-slot">{onBtn()}</div>}
+          {renderHeaderButtons && (
+            <div className="calendar-top-slot">{renderHeaderButtons()}</div>
+          )}
           {showSubTitle && (
             <div className="calendar-curr-month">{yearMonthTitle}</div>
           )}
@@ -885,19 +887,19 @@ export const CalendarItem = React.forwardRef<
                               key={i}
                             >
                               <div className="calendar-day">
-                                {onDay ? onDay(day) : day.day}
+                                {renderDay ? renderDay(day) : day.day}
                               </div>
-                              {onTopInfo && (
+                              {renderDayTop && (
                                 <div className="calendar-curr-tips calendar-curr-tips-top">
-                                  {onTopInfo(day)}
+                                  {renderDayTop(day)}
                                 </div>
                               )}
-                              {onBottomInfo && (
+                              {renderDayBottom && (
                                 <div className="calendar-curr-tips calendar-curr-tips-bottom">
-                                  {onBottomInfo(day)}
+                                  {renderDayBottom(day)}
                                 </div>
                               )}
-                              {!onBottomInfo &&
+                              {!renderDayBottom &&
                                 showToday &&
                                 isCurrDay(month, day.day) && (
                                   <div className="calendar-curr-tip-curr">
