@@ -159,6 +159,10 @@ export const CalendarItem = React.forwardRef<
     return date.split('-')
   }
 
+  // 初始化日历面板
+
+  // 日历数据
+
   const isStart = (currDate: string) => {
     return Utils.isEqual(currentDate[0], currDate)
   }
@@ -218,89 +222,6 @@ export const CalendarItem = React.forwardRef<
   const isCurrDay = (month: MonthInfo, day: string | number) => {
     const date = `${month.curData[0]}-${month.curData[1]}-${day}`
     return Utils.isEqual(date, Utils.date2Str(new Date()))
-  }
-
-  const confirm = () => {
-    const { type } = props
-    if (
-      (type === 'range' && state.chooseData.length === 2) ||
-      type !== 'range'
-    ) {
-      const chooseData = state.chooseData.slice(0)
-      onConfirm && onConfirm(chooseData)
-      if (popup) {
-        onUpdate && onUpdate()
-      }
-    }
-  }
-
-  const chooseDay = (day: Day, month: MonthInfo, isFirst?: boolean) => {
-    if (getClass(day, month) === `${dayPrefix}-disabled`) {
-      return
-    }
-    const { type } = props
-    const days = [...month.curData]
-    days[2] =
-      typeof day.day === 'number' ? Utils.getNumTwoBit(day.day) : day.day
-    days[3] = `${days[0]}-${days[1]}-${days[2]}`
-    days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2])
-    if (type === 'multiple') {
-      if (currentDate.length > 0) {
-        let hasIndex: any = ''
-        ;(currentDate as string[]).forEach((item: any, index: number) => {
-          if (item === days[3]) {
-            hasIndex = index
-          }
-        })
-        if (isFirst) {
-          state.chooseData.push([...days])
-        } else if (hasIndex !== '') {
-          ;(currentDate as string[]).splice(hasIndex, 1)
-          state.chooseData.splice(hasIndex, 1)
-        } else {
-          ;(currentDate as string[]).push(days[3])
-          state.chooseData.push([...days])
-        }
-      } else {
-        setCurrentDate([days[3]])
-        state.chooseData = [[...days]]
-      }
-    } else if (type === 'range') {
-      const curDataLength = Object.values(currentDate).length
-      if (curDataLength === 2 || curDataLength === 0) {
-        setCurrentDate([days[3]])
-      } else if (
-        Utils.compareDate(currentDate[0], days[3]) &&
-        Array.isArray(currentDate)
-      ) {
-        currentDate.push(days[3])
-        setCurrentDate(currentDate)
-      } else {
-        Array.isArray(currentDate) && currentDate.unshift(days[3])
-        setCurrentDate(currentDate)
-      }
-
-      if (state.chooseData.length === 2 || !state.chooseData.length) {
-        state.chooseData = [[...days]]
-      } else if (Utils.compareDate(state.chooseData[0][3], days[3])) {
-        state.chooseData = [...state.chooseData, [...days]]
-      } else {
-        state.chooseData = [[...days], ...state.chooseData]
-      }
-    } else {
-      setCurrentDate([days[3]])
-      state.chooseData = [...days]
-    }
-
-    if (!isFirst) {
-      // 点击日期 触发
-      onClickDay && onClickDay(state.chooseData)
-      if (autoBackfill || !popup) {
-        confirm()
-      }
-    }
-
-    setMonthsData(monthsData.slice())
   }
 
   const isRangeActive = (day: Day, month: MonthInfo) => {
@@ -398,7 +319,7 @@ export const CalendarItem = React.forwardRef<
   }
 
   // 获取月数据
-  const getMonth = (curData: string[], type: string) => {
+  const getMonthData = (curData: string[], type: string) => {
     const preMonthDays = Utils.getMonthPreDay(+curData[0], +curData[1])
 
     let preMonth = +curData[1] - 1
@@ -462,6 +383,28 @@ export const CalendarItem = React.forwardRef<
     setMonthsData(monthsData)
   }
 
+  const setDefaultRange = (monthNum: number, current: number) => {
+    let start = 0
+    let end = 0
+    if (monthNum >= 3) {
+      if (current > 0 && current < monthNum) {
+        start = current - 1
+        end = current + 3
+      } else if (current === 0) {
+        start = current
+        end = current + 4
+      } else if (current === monthNum) {
+        start = current - 2
+        end = current + 2
+      }
+    } else {
+      start = 0
+      end = monthNum + 2
+    }
+    setMonthDefaultRange([start, end])
+    setTranslateY(monthsData[start].cssScrollHeight)
+  }
+
   const setReachedYearMonthInfo = () => {
     const currentMonthsData = monthsData[state.currentIndex]
     const [year, month] = currentMonthsData.curData
@@ -470,26 +413,222 @@ export const CalendarItem = React.forwardRef<
     setYearMonthTitle(currentMonthsData.title)
   }
 
-  const setDefaultRange = (monthsNum: number, current: number) => {
-    let start = 0
-    let end = 0
-    if (monthsNum >= 3) {
-      if (current > 0 && current < monthsNum) {
-        start = current - 1
-        end = current + 3
-      } else if (current === 0) {
-        start = current
-        end = current + 4
-      } else if (current === monthsNum) {
-        start = current - 2
-        end = current + 2
-      }
-    } else {
-      start = 0
-      end = monthsNum + 2
+  const initCurrentDate = () => {
+    // 根据是否存在默认时间，初始化当前日期
+    let curr: InputDate = ''
+    if (
+      defaultValue ||
+      (Array.isArray(defaultValue) && defaultValue.length > 0)
+    ) {
+      curr =
+        props.type !== 'single'
+          ? ([...(props.defaultValue as string[])] as string[])
+          : (props.defaultValue as string[])
     }
-    setMonthDefaultRange([start, end])
-    setTranslateY(monthsData[start].cssScrollHeight)
+
+    // 日期转化为数组，限制初始日期。判断时间范围
+    if (type === 'range' && Array.isArray(curr)) {
+      if (curr.length > 0) {
+        if (
+          props.startDate &&
+          Utils.compareDate(curr[0], state.propStartDate)
+        ) {
+          curr.splice(0, 1, state.propStartDate)
+        }
+        if (props.endDate && Utils.compareDate(state.propEndDate, curr[1])) {
+          curr.splice(1, 1, state.propEndDate)
+        }
+        setCurrentDate(curr)
+        state.defaultData = [...splitDate(curr[0]), ...splitDate(curr[1])]
+      }
+    } else if (props.type === 'multiple' && Array.isArray(curr)) {
+      if (curr.length > 0) {
+        const defaultArr = [] as string[]
+        const obj: Record<string, unknown> = {}
+        curr.forEach((item: string) => {
+          if (
+            props.startDate &&
+            !Utils.compareDate(item, state.propStartDate) &&
+            props.endDate &&
+            !Utils.compareDate(state.propEndDate, item)
+          ) {
+            if (!Object.hasOwnProperty.call(obj, item)) {
+              defaultArr.push(item)
+              obj[item] = item
+            }
+          }
+        })
+        setCurrentDate([...defaultArr])
+        state.defaultData = [...splitDate(defaultArr[0])]
+      }
+    } else if (curr) {
+      if (
+        props.startDate &&
+        Utils.compareDate(curr as string, state.propStartDate)
+      ) {
+        setCurrentDate(props.startDate)
+      } else if (
+        props.endDate &&
+        !Utils.compareDate(curr as string, state.propEndDate)
+      ) {
+        setCurrentDate(props.endDate)
+      }
+      state.defaultData = [...splitDate(curr as string)]
+    }
+  }
+
+  const setSelectedDate = (monthNum: number) => {
+    // 设置默认可见区域
+    let currentIndex = 0
+    let lastCurrentIndex = 0
+    if (state.defaultData.length > 0) {
+      monthsData.forEach((item, index) => {
+        if (
+          item.title ===
+          locale.calendaritem.monthTitle(
+            state.defaultData[0],
+            state.defaultData[1]
+          )
+        ) {
+          currentIndex = index
+        }
+        if (props.type === 'range') {
+          if (
+            item.title ===
+            locale.calendaritem.monthTitle(
+              state.defaultData[3],
+              state.defaultData[4]
+            )
+          ) {
+            lastCurrentIndex = index
+          }
+        }
+      })
+    } else {
+      // 当 defaultValue 为空时，如果月份列表包含当月，则默认定位到当月
+      const currentYear = new Date().getFullYear()
+      const currentMonth = new Date().getMonth() + 1
+      const currentYearMonthIndex = monthsData.findIndex((item) => {
+        return (
+          +item.curData[0] === currentYear && +item.curData[1] === currentMonth
+        )
+      })
+      if (currentYearMonthIndex > -1) {
+        currentIndex = currentYearMonthIndex
+      }
+    }
+
+    setDefaultRange(monthNum, currentIndex)
+    state.currentIndex = currentIndex
+    setReachedYearMonthInfo()
+
+    if (state.defaultData.length > 0) {
+      // 设置当前选中日期
+      if (type === 'range') {
+        chooseDay(
+          { day: state.defaultData[2], type: 'active' },
+          monthsData[currentIndex],
+          true
+        )
+        chooseDay(
+          { day: state.defaultData[5], type: 'active' },
+          monthsData[lastCurrentIndex],
+          true
+        )
+      } else if (type === 'multiple') {
+        ;[...currentDate].forEach((item: string) => {
+          const dateArr = splitDate(item)
+          let current = currentIndex
+          monthsData.forEach((item, index) => {
+            if (
+              item.title ===
+              locale.calendaritem.monthTitle(dateArr[0], dateArr[1])
+            ) {
+              current = index
+            }
+          })
+          chooseDay(
+            { day: dateArr[2], type: 'active' },
+            monthsData[current],
+            true
+          )
+        })
+      } else {
+        chooseDay(
+          { day: state.defaultData[2], type: 'active' },
+          monthsData[currentIndex],
+          true
+        )
+      }
+    }
+  }
+
+  const initAvgHeight = (monthNum: number) => {
+    const lastItem = monthsData[monthsData.length - 1]
+    const containerHeight = lastItem.cssHeight + lastItem.cssScrollHeight
+
+    requestAniFrame(() => {
+      // 初始化 日历位置
+      if (monthsRef && monthsPanel && viewAreaRef) {
+        viewHeight = (monthsRef.current as HTMLDivElement).clientHeight
+        ;(
+          monthsPanel.current as HTMLDivElement
+        ).style.height = `${containerHeight}px`
+        ;(monthsRef.current as HTMLDivElement).scrollTop =
+          monthsData[state.currentIndex].cssScrollHeight
+      }
+    })
+
+    setAvgHeight(Math.floor(containerHeight / (monthNum + 1)))
+  }
+
+  const initData = () => {
+    // 初始化开始结束数据
+    state.propStartDate = props.startDate as string
+    state.propEndDate = props.endDate as string
+    state.startData = splitDate(state.propStartDate)
+    state.endData = splitDate(state.propEndDate)
+
+    // 重置当前日期
+    initCurrentDate()
+
+    // 判断时间范围内存在多少个月
+    const startDate = {
+      year: Number(state.startData[0]),
+      month: Number(state.startData[1]),
+    }
+    const endDate = {
+      year: Number(state.endData[0]),
+      month: Number(state.endData[1]),
+    }
+    let monthNum = endDate.month - startDate.month
+    if (endDate.year - startDate.year > 0) {
+      monthNum += 12 * (endDate.year - startDate.year)
+    }
+    if (monthNum <= 0) {
+      monthNum = 1
+    }
+    setMonthsNumber(monthNum)
+
+    // 设置月份数据
+    getMonthData(state.startData, 'next')
+
+    let i = 1
+    do {
+      getMonthData(getCurrData('next') as string[], 'next')
+    } while (i++ < monthNum)
+
+    // 设置可见区并选中当前值
+    setSelectedDate(monthNum)
+    // 设置avgheight
+    initAvgHeight(monthNum)
+  }
+
+  const resetRender = () => {
+    state.chooseData.splice(0)
+    monthsData.splice(0)
+    setMonthsData(monthsData)
+    initData()
   }
 
   const monthsViewScroll = (e: any) => {
@@ -541,219 +680,6 @@ export const CalendarItem = React.forwardRef<
     }
 
     setReachedYearMonthInfo()
-  }
-
-  const initData = () => {
-    // 初始化开始结束数据
-    const propStartDate = props.startDate
-    const propEndDate = props.endDate
-    state.propStartDate = propStartDate as string
-    state.propEndDate = propEndDate as string
-    state.startData = splitDate(propStartDate as string)
-    state.endData = splitDate(propEndDate as string)
-
-    // 根据是否存在默认时间，初始化当前日期
-    if (
-      defaultValue ||
-      (Array.isArray(defaultValue) && defaultValue.length > 0)
-    ) {
-      const curr =
-        props.type !== 'single'
-          ? ([...(props.defaultValue as string[])] as string[])
-          : (props.defaultValue as string[])
-
-      setCurrentDate(curr)
-    }
-
-    // 判断时间范围内存在多少个月
-    const startDate = {
-      year: Number(state.startData[0]),
-      month: Number(state.startData[1]),
-    }
-    const endDate = {
-      year: Number(state.endData[0]),
-      month: Number(state.endData[1]),
-    }
-    let monthsNum = endDate.month - startDate.month
-    if (endDate.year - startDate.year > 0) {
-      monthsNum += 12 * (endDate.year - startDate.year)
-    }
-    if (monthsNum <= 0) {
-      monthsNum = 1
-    }
-    // 设置月份数据
-    getMonth(state.startData, 'next')
-
-    let i = 1
-    do {
-      getMonth(getCurrData('next') as string[], 'next')
-    } while (i++ < monthsNum)
-    setMonthsNumber(monthsNum)
-
-    // 日期转化为数组，限制初始日期。判断时间范围
-    if (type === 'range' && Array.isArray(currentDate)) {
-      if (currentDate.length > 0) {
-        if (
-          propStartDate &&
-          Utils.compareDate(currentDate[0], propStartDate as string)
-        ) {
-          currentDate.splice(0, 1, propStartDate as string)
-          setCurrentDate(currentDate)
-        }
-        if (
-          propEndDate &&
-          Utils.compareDate(propEndDate as string, currentDate[1])
-        ) {
-          currentDate.splice(1, 1, propEndDate as string)
-          setCurrentDate(currentDate)
-        }
-        state.defaultData = [
-          ...splitDate(currentDate[0]),
-          ...splitDate(currentDate[1]),
-        ]
-      }
-    } else if (props.type === 'multiple' && Array.isArray(currentDate)) {
-      if (currentDate.length > 0) {
-        const defaultArr = [] as string[]
-        const obj: Record<string, unknown> = {}
-        currentDate.forEach((item: string) => {
-          if (
-            propStartDate &&
-            !Utils.compareDate(item, propStartDate as string) &&
-            propEndDate &&
-            !Utils.compareDate(propEndDate as string, item)
-          ) {
-            if (!Object.hasOwnProperty.call(obj, item)) {
-              defaultArr.push(item)
-              obj[item] = item
-            }
-          }
-        })
-        setCurrentDate([...defaultArr])
-        state.defaultData = [...splitDate(defaultArr[0])]
-      }
-    } else if (currentDate) {
-      if (
-        propStartDate &&
-        Utils.compareDate(currentDate as string, propStartDate as string)
-      ) {
-        setCurrentDate(propStartDate)
-      } else if (
-        propEndDate &&
-        !Utils.compareDate(currentDate as string, propEndDate as string)
-      ) {
-        setCurrentDate(propEndDate)
-      }
-      state.defaultData = [...splitDate(currentDate as string)]
-    }
-
-    // 设置默认可见区域
-    let current = 0
-    let lastCurrent = 0
-    if (state.defaultData.length > 0) {
-      monthsData.forEach((item, index) => {
-        if (
-          item.title ===
-          locale.calendaritem.monthTitle(
-            state.defaultData[0],
-            state.defaultData[1]
-          )
-        ) {
-          current = index
-        }
-        if (props.type === 'range') {
-          if (
-            item.title ===
-            locale.calendaritem.monthTitle(
-              state.defaultData[3],
-              state.defaultData[4]
-            )
-          ) {
-            lastCurrent = index
-          }
-        }
-      })
-    } else {
-      // 当 defaultValue 为空时，如果月份列表包含当月，则默认定位到当月
-      const currentYear = new Date().getFullYear()
-      const currentMonth = new Date().getMonth() + 1
-      const currentYearMonthIndex = monthsData.findIndex((item) => {
-        return (
-          +item.curData[0] === currentYear && +item.curData[1] === currentMonth
-        )
-      })
-      if (currentYearMonthIndex > -1) {
-        current = currentYearMonthIndex
-      }
-    }
-
-    setDefaultRange(monthsNum, current)
-    state.currentIndex = current
-    setReachedYearMonthInfo()
-
-    if (state.defaultData.length > 0) {
-      // 设置当前选中日期
-      if (type === 'range') {
-        chooseDay(
-          { day: state.defaultData[2], type: 'active' },
-          monthsData[state.currentIndex],
-          true
-        )
-        chooseDay(
-          { day: state.defaultData[5], type: 'active' },
-          monthsData[lastCurrent],
-          true
-        )
-      } else if (type === 'multiple') {
-        ;[...currentDate].forEach((item: string) => {
-          const dateArr = splitDate(item)
-          let current = state.currentIndex
-          monthsData.forEach((item, index) => {
-            if (
-              item.title ===
-              locale.calendaritem.monthTitle(dateArr[0], dateArr[1])
-            ) {
-              current = index
-            }
-          })
-          chooseDay(
-            { day: dateArr[2], type: 'active' },
-            monthsData[current],
-            true
-          )
-        })
-      } else {
-        chooseDay(
-          { day: state.defaultData[2], type: 'active' },
-          monthsData[state.currentIndex],
-          true
-        )
-      }
-    }
-
-    const lastItem = monthsData[monthsData.length - 1]
-    const containerHeight = lastItem.cssHeight + lastItem.cssScrollHeight
-
-    requestAniFrame(() => {
-      // 初始化 日历位置
-      if (monthsRef && monthsPanel && viewAreaRef) {
-        viewHeight = (monthsRef.current as HTMLDivElement).clientHeight
-        ;(
-          monthsPanel.current as HTMLDivElement
-        ).style.height = `${containerHeight}px`
-        ;(monthsRef.current as HTMLDivElement).scrollTop =
-          monthsData[state.currentIndex].cssScrollHeight
-      }
-    })
-
-    setAvgHeight(Math.floor(containerHeight / (monthsNum + 1)))
-  }
-
-  const resetRender = () => {
-    state.chooseData.splice(0)
-    monthsData.splice(0)
-    setMonthsData(monthsData)
-    initData()
   }
 
   // 暴露出的API
@@ -809,6 +735,7 @@ export const CalendarItem = React.forwardRef<
     scrollToDate,
   }))
 
+  // 渲染日历
   const renderWeeks = () => {
     return (
       <div className="calendar-weeks" ref={weeksPanel}>
@@ -858,6 +785,89 @@ export const CalendarItem = React.forwardRef<
         )}
       </>
     )
+  }
+
+  const confirm = () => {
+    const { type } = props
+    if (
+      (type === 'range' && state.chooseData.length === 2) ||
+      type !== 'range'
+    ) {
+      const chooseData = state.chooseData.slice(0)
+      onConfirm && onConfirm(chooseData)
+      if (popup) {
+        onUpdate && onUpdate()
+      }
+    }
+  }
+
+  const chooseDay = (day: Day, month: MonthInfo, isFirst?: boolean) => {
+    if (getClass(day, month) === `${dayPrefix}-disabled`) {
+      return
+    }
+    const { type } = props
+    const days = [...month.curData]
+    days[2] =
+      typeof day.day === 'number' ? Utils.getNumTwoBit(day.day) : day.day
+    days[3] = `${days[0]}-${days[1]}-${days[2]}`
+    days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2])
+    if (type === 'multiple') {
+      if (currentDate.length > 0) {
+        let hasIndex: any = ''
+        ;(currentDate as string[]).forEach((item: any, index: number) => {
+          if (item === days[3]) {
+            hasIndex = index
+          }
+        })
+        if (isFirst) {
+          state.chooseData.push([...days])
+        } else if (hasIndex !== '') {
+          ;(currentDate as string[]).splice(hasIndex, 1)
+          state.chooseData.splice(hasIndex, 1)
+        } else {
+          ;(currentDate as string[]).push(days[3])
+          state.chooseData.push([...days])
+        }
+      } else {
+        setCurrentDate([days[3]])
+        state.chooseData = [[...days]]
+      }
+    } else if (type === 'range') {
+      const curDataLength = Object.values(currentDate).length
+      if (curDataLength === 2 || curDataLength === 0) {
+        setCurrentDate([days[3]])
+      } else if (
+        Utils.compareDate(currentDate[0], days[3]) &&
+        Array.isArray(currentDate)
+      ) {
+        currentDate.push(days[3])
+        setCurrentDate(currentDate)
+      } else {
+        Array.isArray(currentDate) && currentDate.unshift(days[3])
+        setCurrentDate(currentDate)
+      }
+
+      if (state.chooseData.length === 2 || !state.chooseData.length) {
+        state.chooseData = [[...days]]
+      } else if (Utils.compareDate(state.chooseData[0][3], days[3])) {
+        state.chooseData = [...state.chooseData, [...days]]
+      } else {
+        state.chooseData = [[...days], ...state.chooseData]
+      }
+    } else {
+      setCurrentDate([days[3]])
+      state.chooseData = [...days]
+    }
+
+    if (!isFirst) {
+      // 点击日期 触发
+      onClickDay && onClickDay(state.chooseData)
+      if (autoBackfill || !popup) {
+        confirm()
+      }
+    }
+
+    setMonthsData(monthsData.slice())
   }
 
   return (

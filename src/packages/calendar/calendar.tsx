@@ -29,10 +29,10 @@ export interface CalendarProps {
   showTitle?: boolean
   showSubTitle?: boolean
   scrollAnimation?: boolean
-  renderHeaderButtons?: (() => string | JSX.Element) | undefined
-  renderDay?: ((date: Day) => string | JSX.Element) | undefined
-  renderDayTop?: ((date: Day) => string | JSX.Element) | undefined
-  renderDayBottom?: ((date: Day) => string | JSX.Element) | undefined
+  renderHeaderButtons?: () => string | JSX.Element
+  renderDay?: (date: Day) => string | JSX.Element
+  renderDayTop?: (date: Day) => string | JSX.Element
+  renderDayBottom?: (date: Day) => string | JSX.Element
   onClose?: () => void
   onConfirm?: (param: string) => void
   onClickDay?: (data: string) => void

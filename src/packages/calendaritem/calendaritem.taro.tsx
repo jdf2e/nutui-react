@@ -1,8 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, ReactNode } from 'react'
 import classNames from 'classnames'
 import { ScrollView } from '@tarojs/components'
 import { nextTick } from '@tarojs/taro'
-import bem from '@/utils/bem'
 import Utils from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
@@ -27,16 +26,11 @@ interface MonthInfo {
 
 interface CalendarState {
   currDate: InputDate
-  touchParams: any
-  transformY: number
-  scrollDistance: number
   defaultData: InputDate
   chooseData: any
-  dayPrefix: string
   startData: InputDate
   endData: InputDate
   isRange: boolean
-  timer: number
   monthsData: any[]
   avgHeight: number
   propStartDate: string
@@ -49,15 +43,14 @@ export interface CalendarItemProps {
   type?: string
   autoBackfill?: boolean
   popup?: boolean
-  visible?: boolean
   title?: string
   defaultValue: InputDate
   startDate?: InputDate
   endDate?: InputDate
   showToday?: boolean
-  startText?: string
-  endText?: string
-  confirmText?: string
+  startText?: ReactNode
+  endText?: ReactNode
+  confirmText?: ReactNode
   showTitle?: boolean
   showSubTitle?: boolean
   scrollAnimation?: boolean
@@ -74,7 +67,6 @@ const defaultProps = {
   type: 'single',
   autoBackfill: false,
   popup: true,
-  visible: false,
   title: '日历选择',
   defaultValue: '',
   startDate: Utils.getDay(0),
@@ -136,24 +128,12 @@ export const CalendarItem = React.forwardRef<
     currDate: '',
     propStartDate: '',
     propEndDate: '',
-    touchParams: {
-      startY: 0,
-      endY: 0,
-      startTime: 0,
-      endTime: 0,
-      lastY: 0,
-      lastTime: 0,
-    },
-    transformY: 0,
-    scrollDistance: 0,
     defaultData: [],
     chooseData: [],
     monthsData: [],
-    dayPrefix: 'calendar-month-day',
     startData: '',
     endData: '',
     isRange: props.type === 'range',
-    timer: 0,
     currentIndex: 0,
     avgHeight: 0,
     monthsNum: 0,
@@ -164,19 +144,19 @@ export const CalendarItem = React.forwardRef<
   const monthsPanel = useRef<HTMLDivElement>(null)
   const viewArea = useRef<HTMLDivElement>(null)
   let viewHeight = 0
-  const b = bem('calendar')
 
+  const classPrefix = 'nut-calendar'
+  const dayPrefix = 'calendar-month-day'
   const classes = classNames(
     {
-      [`${b('')}-title`]: !popup,
-      [`${b('')}-nofooter`]: !!autoBackfill,
+      [`${classPrefix}-title`]: !popup,
+      [`${classPrefix}-nofooter`]: !!autoBackfill,
     },
-    b('')
+    classPrefix
   )
-
   const headerClasses = classNames({
-    [`${b('')}-header`]: true,
-    [`${b('')}-header-title`]: !popup,
+    [`${classPrefix}-header`]: true,
+    [`${classPrefix}-header-title`]: !popup,
   })
 
   const monthitemclasses = classNames({
@@ -213,20 +193,20 @@ export const CalendarItem = React.forwardRef<
 
   const getClass = (day: Day, month: MonthInfo) => {
     const currDate = getCurrDate(day, month)
-    if (day.type === 'curr') {
+    if (day.type === 'active') {
       if (
         Utils.isEqual(state.currDate as string, currDate) ||
         (type === 'range' && (isStart(currDate) || isEnd(currDate))) ||
         (type === 'multiple' && isMultiple(currDate))
       ) {
-        return `${state.dayPrefix}-active`
+        return `${dayPrefix}-active`
       }
       if (
         (state.propStartDate &&
           Utils.compareDate(currDate, state.propStartDate)) ||
         (state.propEndDate && Utils.compareDate(state.propEndDate, currDate))
       ) {
-        return `${state.dayPrefix}-disabled`
+        return `${dayPrefix}-disabled`
       }
       if (
         type === 'range' &&
@@ -235,19 +215,19 @@ export const CalendarItem = React.forwardRef<
         Utils.compareDate(state.currDate[0], currDate) &&
         Utils.compareDate(currDate, state.currDate[1])
       ) {
-        return `${state.dayPrefix}-choose`
+        return `${dayPrefix}-choose`
       }
 
       return null
     }
 
-    return `${state.dayPrefix}-disabled`
+    return `${dayPrefix}-disabled`
   }
 
   const isActive = (day: Day, month: MonthInfo) => {
     return (
       state.isRange &&
-      day.type === 'curr' &&
+      day.type === 'active' &&
       getClass(day, month) === 'calendar-month-day-active'
     )
   }
@@ -272,7 +252,7 @@ export const CalendarItem = React.forwardRef<
   }
 
   const chooseDay = (day: Day, month: MonthInfo, isFirst?: boolean) => {
-    if (getClass(day, month) !== `${state.dayPrefix}-disabled`) {
+    if (getClass(day, month) !== `${dayPrefix}-disabled`) {
       const { type } = props
       const days = [...month.curData]
       days[2] =
@@ -448,7 +428,7 @@ export const CalendarItem = React.forwardRef<
           { month: preMonth, year: preYear },
           preCurrMonthDays
         ) as Day[]),
-        ...(getDaysStatus(currMonthDays, 'curr', title) as Day[]),
+        ...(getDaysStatus(currMonthDays, 'active', title) as Day[]),
       ],
     }
     monthInfo.cssHeight = 39 + (monthInfo.monthData.length > 35 ? 384 : 320)
@@ -714,12 +694,12 @@ export const CalendarItem = React.forwardRef<
       // 设置当前选中日期
       if (type === 'range') {
         chooseDay(
-          { day: state.defaultData[2], type: 'curr' },
+          { day: state.defaultData[2], type: 'active' },
           state.monthsData[state.currentIndex],
           true
         )
         chooseDay(
-          { day: state.defaultData[5], type: 'curr' },
+          { day: state.defaultData[5], type: 'active' },
           state.monthsData[lastCurrent],
           true
         )
@@ -736,14 +716,14 @@ export const CalendarItem = React.forwardRef<
             }
           })
           chooseDay(
-            { day: dateArr[2], type: 'curr' },
+            { day: dateArr[2], type: 'active' },
             state.monthsData[current],
             true
           )
         })
       } else {
         chooseDay(
-          { day: state.defaultData[2], type: 'curr' },
+          { day: state.defaultData[2], type: 'active' },
           state.monthsData[state.currentIndex],
           true
         )

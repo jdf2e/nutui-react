@@ -154,6 +154,7 @@
 - `onBottomInfo` 更名为 `renderDayBottom`
 - `onSelected` 更名为 `onClickDay`
 - `onChoose` 更名为 `onConfirm`
+- `onYearMonthChange` 更名为 `onPageChange`
 
 #### Cascader
 - 新增 `defaultValue`，其中 `defaultValue` 用于非受控，原 `value` 用于受控。两者的类型都改为 `(number | string | undefined)[]`

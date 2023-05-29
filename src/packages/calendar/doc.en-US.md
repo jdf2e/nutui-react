@@ -1,17 +1,17 @@
 # Calendar
 
-### introduce
+## Intro
 
 Calendar, tileable/pop-up display
 
-### Install
+## Install
 
 ```javascript
 // react
 import { Calendar } from '@nutui/nutui-react';
 ```
 
-## code demo
+## Demo
 
 ### Basic usage
 

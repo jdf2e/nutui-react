@@ -281,7 +281,7 @@ const CalendarDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.ce5c5446}</h2>
-        {/* <Cell
+        <Cell
           title={translated.c38a08ef}
           description={date ? `${date} ${dateWeek}` : translated.b840c88f}
           onClick={openSwitch}
@@ -295,7 +295,7 @@ const CalendarDemo = () => {
           onClose={closeSwitch}
           onConfirm={setChooseValue}
           onClickDay={select}
-        /> */}
+        />
 
         <Cell
           title={translated.a74a1fd4}
@@ -310,13 +310,13 @@ const CalendarDemo = () => {
           visible={isVisible1}
           defaultValue={date1}
           type="range"
-          startDate="2023-05-28"
-          endDate="2023-09-01"
+          startDate="2022-12-22"
+          endDate="2024-01-08"
           onClose={closeSwitch1}
           onConfirm={setChooseValue1}
           onClickDay={select}
         />
-        {/* 
+
         <Cell
           title={translated['7db1a8b2']}
           description={
@@ -435,7 +435,7 @@ const CalendarDemo = () => {
             onConfirm={setChooseValue2}
             onPageChange={yearMonthChange}
           />
-        </div> */}
+        </div>
       </div>
     </>
   )
