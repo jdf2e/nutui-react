@@ -140,13 +140,14 @@ export const CalendarItem = React.forwardRef<
   })
 
   const weeksPanel = useRef<HTMLDivElement>(null)
-  const months = useRef<HTMLDivElement>(null)
+  const monthsRef = useRef<HTMLDivElement>(null)
   const monthsPanel = useRef<HTMLDivElement>(null)
-  const viewArea = useRef<HTMLDivElement>(null)
+  const viewAreaRef = useRef<HTMLDivElement>(null)
   let viewHeight = 0
 
   const classPrefix = 'nut-calendar'
   const dayPrefix = 'calendar-month-day'
+
   const classes = classNames(
     {
       [`${classPrefix}-title`]: !popup,
@@ -154,16 +155,15 @@ export const CalendarItem = React.forwardRef<
     },
     classPrefix
   )
+
   const headerClasses = classNames({
     [`${classPrefix}-header`]: true,
     [`${classPrefix}-header-title`]: !popup,
   })
-
   const monthitemclasses = classNames({
     'calendar-month-item': true,
     [`${type === 'range' ? 'month-item-range' : ''}`]: true,
   })
-
   const splitDate = (date: string) => {
     return date.split('-')
   }
@@ -193,7 +193,7 @@ export const CalendarItem = React.forwardRef<
 
   const getClass = (day: Day, month: MonthInfo) => {
     const currDate = getCurrDate(day, month)
-    if (day.type === 'active') {
+    if (day.type === 'curr') {
       if (
         Utils.isEqual(state.currDate as string, currDate) ||
         (type === 'range' && (isStart(currDate) || isEnd(currDate))) ||
@@ -227,7 +227,7 @@ export const CalendarItem = React.forwardRef<
   const isActive = (day: Day, month: MonthInfo) => {
     return (
       state.isRange &&
-      day.type === 'active' &&
+      day.type === 'curr' &&
       getClass(day, month) === 'calendar-month-day-active'
     )
   }
@@ -428,7 +428,7 @@ export const CalendarItem = React.forwardRef<
           { month: preMonth, year: preYear },
           preCurrMonthDays
         ) as Day[]),
-        ...(getDaysStatus(currMonthDays, 'active', title) as Day[]),
+        ...(getDaysStatus(currMonthDays, 'curr', title) as Day[]),
       ],
     }
     monthInfo.cssHeight = 39 + (monthInfo.monthData.length > 35 ? 384 : 320)
@@ -694,12 +694,12 @@ export const CalendarItem = React.forwardRef<
       // 设置当前选中日期
       if (type === 'range') {
         chooseDay(
-          { day: state.defaultData[2], type: 'active' },
+          { day: state.defaultData[2], type: 'curr' },
           state.monthsData[state.currentIndex],
           true
         )
         chooseDay(
-          { day: state.defaultData[5], type: 'active' },
+          { day: state.defaultData[5], type: 'curr' },
           state.monthsData[lastCurrent],
           true
         )
@@ -716,14 +716,14 @@ export const CalendarItem = React.forwardRef<
             }
           })
           chooseDay(
-            { day: dateArr[2], type: 'active' },
+            { day: dateArr[2], type: 'curr' },
             state.monthsData[current],
             true
           )
         })
       } else {
         chooseDay(
-          { day: state.defaultData[2], type: 'active' },
+          { day: state.defaultData[2], type: 'curr' },
           state.monthsData[state.currentIndex],
           true
         )
@@ -735,8 +735,8 @@ export const CalendarItem = React.forwardRef<
 
     requestAniFrame(() => {
       // 初始化 日历位置
-      if (months && monthsPanel && viewArea) {
-        viewHeight = (months.current as HTMLDivElement).clientHeight
+      if (monthsRef && monthsPanel && viewAreaRef) {
+        viewHeight = (monthsRef.current as HTMLDivElement).clientHeight
         ;(
           monthsPanel.current as HTMLDivElement
         ).style.height = `${containerHeight}px`
@@ -765,30 +765,32 @@ export const CalendarItem = React.forwardRef<
       if (
         item.title === locale.calendaritem.monthTitle(dateArr[0], dateArr[1])
       ) {
-        if (months.current) {
+        if (monthsRef.current) {
           const distance =
-            state.monthsData[index].cssScrollHeight - months.current.scrollTop
+            state.monthsData[index].cssScrollHeight -
+            monthsRef.current.scrollTop
           if (scrollAnimation) {
             let flag = 0
             const interval = setInterval(() => {
               flag++
-              if (months.current) {
+              if (monthsRef.current) {
                 const offset = distance / 10
-                months.current.scrollTop += offset
+                monthsRef.current.scrollTop += offset
               }
 
               if (flag >= 10) {
                 clearInterval(interval)
-                if (months.current) {
-                  months.current.scrollTop =
+                if (monthsRef.current) {
+                  monthsRef.current.scrollTop =
                     state.monthsData[index].cssScrollHeight
-                  setScrollTop(months.current.scrollTop)
+                  setScrollTop(monthsRef.current.scrollTop)
                 }
               }
             }, 40)
           } else {
-            months.current.scrollTop = state.monthsData[index].cssScrollHeight
-            setScrollTop(months.current.scrollTop)
+            monthsRef.current.scrollTop =
+              state.monthsData[index].cssScrollHeight
+            setScrollTop(monthsRef.current.scrollTop)
           }
         }
       }
@@ -839,12 +841,12 @@ export const CalendarItem = React.forwardRef<
           scrollWithAnimation={scrollWithAnimation}
           className="nut-calendar-content"
           onScroll={monthsViewScroll}
-          ref={months}
+          ref={monthsRef}
         >
           <div className="calendar-months-panel" ref={monthsPanel}>
             <div
               className="viewArea"
-              ref={viewArea}
+              ref={viewAreaRef}
               style={{ transform: `translateY(${translateY}px)` }}
             >
               {state.monthsData
@@ -853,7 +855,7 @@ export const CalendarItem = React.forwardRef<
                   return (
                     <div className="calendar-month" key={key}>
                       <div className="calendar-month-title">{month.title}</div>
-                      <div className="calendar-month-con">
+                      <div className="calendar-month-content">
                         <div className={monthitemclasses}>
                           {month.monthData.map((day: Day, i: number) => (
                             <div

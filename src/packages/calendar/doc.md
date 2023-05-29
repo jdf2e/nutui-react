@@ -21,35 +21,35 @@ import  React, { useState } from "react";
 import { Cell, Calendar } from '@nutui/nutui-react';
 
 const App = () => {
-    const [date, setDate] = useState('');
-    const [isVisible, setIsVisible] = useState(false);
-    const [dateWeek, setDateWeek] = useState('');
+  const [date, setDate] = useState('');
+  const [isVisible, setIsVisible] = useState(false);
+  const [dateWeek, setDateWeek] = useState('');
 
-    const openSwitch = () => {
-        setIsVisible(true);
-    }
+  const openSwitch = () => {
+    setIsVisible(true);
+  }
 
-    const closeSwitch = () => {
-        setIsVisible(false);
-    }
+  const closeSwitch = () => {
+    setIsVisible(false);
+  }
 
-    const setChooseValue = (param: string) => {
-        setDate(param[3]);
-        setDateWeek(param[4]);
-    }
-    return (
-        <>
-            <Cell title="选择单个日期" description={ date ? `${date} ${dateWeek}` : '请选择' } onClick={ openSwitch } />
-            <Calendar 
-                visible={ isVisible }
-                defaultValue={ date }
-                startDate="2022-01-11"
-                endDate="2029-11-30"
-                onClose={ closeSwitch }
-                onConfirm={ setChooseValue }
-             />
-        </>
-    );
+  const setChooseValue = (param: string) => {
+    setDate(param[3]);
+    setDateWeek(param[4]);
+  }
+  return (
+    <>
+      <Cell title="选择单个日期" description={ date ? `${date} ${dateWeek}` : '请选择' } onClick={ openSwitch } />
+      <Calendar 
+        visible={ isVisible }
+        defaultValue={ date }
+        startDate="2022-01-11"
+        endDate="2029-11-30"
+        onClose={ closeSwitch }
+        onConfirm={ setChooseValue }
+      />
+    </>
+  );
 };
 export default App;
 
@@ -64,35 +64,35 @@ import  React, { useState } from "react";
 import { Cell, Calendar } from '@nutui/nutui-react';
 
 const App = () => {
-    const [date1, setDate1] = useState(['2019-12-23', '2019-12-26'])
-    const [isVisible1, setIsVisible1] = useState(false)
+  const [date1, setDate1] = useState(['2019-12-23', '2019-12-26'])
+  const [isVisible1, setIsVisible1] = useState(false)
 
-    const openSwitch1 = () => {
-        setIsVisible1(true)
-    }
+  const openSwitch1 = () => {
+    setIsVisible1(true)
+  }
 
-    const closeSwitch1 = () => {
-        setIsVisible1(false)
-    }
+  const closeSwitch1 = () => {
+    setIsVisible1(false)
+  }
 
-    const setChooseValue1 = (param: string) => {
-        setDate1([...[param[0][3], param[1][3]]])
-    }
+  const setChooseValue1 = (param: string) => {
+    setDate1([...[param[0][3], param[1][3]]])
+  }
 
-    return (
-        <>
-            <Cell title="选择日期区间" description={ date1 ? `${date1[0]}至${date1[1]}` : '请选择' } onClick={ openSwitch1 } />
-            <Calendar 
-                visible={ isVisible1 }
-                defaultValue={ date1 }
-                type="range"
-                startDate="2019-12-22"
-                endDate="2021-01-08"
-                onClose={ closeSwitch1 }
-                onConfirm={ setChooseValue1 }
-             />
-        </>
-    );
+  return (
+    <>
+      <Cell title="选择日期区间" description={ date1 ? `${date1[0]}至${date1[1]}` : '请选择' } onClick={ openSwitch1 } />
+      <Calendar 
+        visible={ isVisible1 }
+        defaultValue={ date1 }
+        type="range"
+        startDate="2019-12-22"
+        endDate="2021-01-08"
+        onClose={ closeSwitch1 }
+        onConfirm={ setChooseValue1 }
+      />
+    </>
+  );
 };
 export default App;
 
@@ -107,35 +107,35 @@ import  React, { useState } from "react";
 import { Cell, Calendar } from '@nutui/nutui-react';
 
 const App = () => {
-    const [date3, setDate3] = useState('')
-    const [isVisible3, setIsVisible3] = useState(false)
+  const [date3, setDate3] = useState('')
+  const [isVisible3, setIsVisible3] = useState(false)
 
-    const openSwitch3 = () => {
-        setIsVisible3(true)
-    }
+  const openSwitch3 = () => {
+    setIsVisible3(true)
+  }
 
-    const closeSwitch3 = () => {
-        setIsVisible3(false)
-    }
+  const closeSwitch3 = () => {
+    setIsVisible3(false)
+  }
 
-    const setChooseValue3 = (param: string) => {
-        setDate3(param[3])
-    }
+  const setChooseValue3 = (param: string) => {
+    setDate3(param[3])
+  }
 
-    return (
-        <>
-            <Cell title="选择多个日期" description={ date3 && date3.length ? `已选择${date3.length}` : '请选择' } onClick={ openSwitch3 } />
-            <Calendar
-                visible={isVisible3}
-                defaultValue={date3}
-                type="multiple"
-                startDate="2022-01-01"
-                endDate="2022-09-10"
-                onClose={closeSwitch3}
-                onConfirm={setChooseValue3}
-            />
-        </>
-    );
+  return (
+    <>
+      <Cell title="选择多个日期" description={ date3 && date3.length ? `已选择${date3.length}` : '请选择' } onClick={ openSwitch3 } />
+      <Calendar
+        visible={isVisible3}
+        defaultValue={date3}
+        type="multiple"
+        startDate="2022-01-01"
+        endDate="2022-09-10"
+        onClose={closeSwitch3}
+        onConfirm={setChooseValue3}
+      />
+    </>
+  );
 };
 export default App;
 
@@ -150,35 +150,35 @@ import  React, { useState } from "react";
 import { Cell, Calendar } from '@nutui/nutui-react';
 
 const App = () => {
-    const [date3, setDate3] = useState('')
-    const [isVisible3, setIsVisible3] = useState(false)
+  const [date3, setDate3] = useState('')
+  const [isVisible3, setIsVisible3] = useState(false)
 
-    const openSwitch3 = () => {
-        setIsVisible3(true)
-    }
+  const openSwitch3 = () => {
+    setIsVisible3(true)
+  }
 
-    const closeSwitch3 = () => {
-        setIsVisible3(false)
-    }
+  const closeSwitch3 = () => {
+    setIsVisible3(false)
+  }
 
-    const setChooseValue3 = (param: string) => {
-        setDate3(param[3])
-    }
+  const setChooseValue3 = (param: string) => {
+    setDate3(param[3])
+  }
 
-    return (
-        <>
-            <Cell title="选择日期" description={ date3 ? `${date3}` : '请选择' } onClick={ openSwitch3 } />
-            <Calendar
-                visible={isVisible3}
-                defaultValue={date3}
-                autoBackfill
-                startDate=""
-                endDate=""
-                onClose={closeSwitch3}
-                onConfirm={setChooseValue3}
-            />
-        </>
-    );
+  return (
+    <>
+      <Cell title="选择日期" description={ date3 ? `${date3}` : '请选择' } onClick={ openSwitch3 } />
+      <Calendar
+        visible={isVisible3}
+        defaultValue={date3}
+        autoBackfill
+        startDate=""
+        endDate=""
+        onClose={closeSwitch3}
+        onConfirm={setChooseValue3}
+      />
+    </>
+  );
 };
 export default App;
 
@@ -198,54 +198,54 @@ interface Day {
 }
 
 const App = () => {
-    const [date3, setDate3] = useState('')
-    const [isVisible3, setIsVisible3] = useState(false)
+  const [date3, setDate3] = useState('')
+  const [isVisible3, setIsVisible3] = useState(false)
 
-    const openSwitch3 = () => {
-        setIsVisible3(true)
-    }
+  const openSwitch3 = () => {
+    setIsVisible3(true)
+  }
 
-    const closeSwitch3 = () => {
-        setIsVisible3(false)
-    }
+  const closeSwitch3 = () => {
+    setIsVisible3(false)
+  }
 
-    const setChooseValue3 = (param: string) => {
-        setDate3([...[param[0][3], param[1][3]]])
-    }
+  const setChooseValue3 = (param: string) => {
+    setDate3([...[param[0][3], param[1][3]]])
+  }
 
-    const renderDay = (date: Day) => {
-        return (
-            <span>{ date.day <= 9 ? `0${  date.day}` : date.day }</span>
-        )
-    }
-
-    const renderDayBottom = (date: Day) => {
-        return (
-            <span className="info" style={{ fontSize: '12px', lineHeight: '14px' }}>{
-                date ? (date.day <= 10 ? '' : date.day <= 20 ? 'mid' : '') : ''
-            }</span>
-        )
-    }
-
+  const renderDay = (date: Day) => {
     return (
-        <>
-            <Cell title="选择日期" description={ date3 ? `${date3[0]}至${date3[1]}` : '请选择' } onClick={ openSwitch3 } />
-            <Calendar
-                visible={isVisible3}
-                defaultValue={date3}
-                type="range"
-                startDate="2019-12-22"
-                endDate="2021-01-08"
-                confirmText="submit"
-                startText="enter"
-                endText="leave"
-                renderDay={ renderDay }
-                renderDayBottom={ renderDayBottom }
-                onClose={closeSwitch3}
-                onConfirm={setChooseValue3}
-            />
-        </>
-    );
+      <span>{ date.day <= 9 ? `0${  date.day}` : date.day }</span>
+    )
+  }
+
+  const renderDayBottom = (date: Day) => {
+    return (
+      <span className="info" style={{ fontSize: '12px', lineHeight: '14px' }}>{
+          date ? (date.day <= 10 ? '' : date.day <= 20 ? 'mid' : '') : ''
+      }</span>
+    )
+  }
+
+  return (
+    <>
+      <Cell title="选择日期" description={ date3 ? `${date3[0]}至${date3[1]}` : '请选择' } onClick={ openSwitch3 } />
+      <Calendar
+        visible={isVisible3}
+        defaultValue={date3}
+        type="range"
+        startDate="2019-12-22"
+        endDate="2021-01-08"
+        confirmText="submit"
+        startText="enter"
+        endText="leave"
+        renderDay={ renderDay }
+        renderDayBottom={ renderDayBottom }
+        onClose={closeSwitch3}
+        onConfirm={setChooseValue3}
+      />
+    </>
+  );
 };
 export default App;
 
@@ -260,135 +260,134 @@ import  React, { useState, useRef } from "react";
 import { Cell, Calendar } from '@nutui/nutui-react';
 
 const Utils = {
-    date2Str(date: Date, split?: string): string {
-        split = split || '-'
-        const y = date.getFullYear()
-        const m = this.getNumTwoBit(date.getMonth() + 1)
-        const d = this.getNumTwoBit(date.getDate())
-        return [y, m, d].join(split)
-    },
-    getDay(i: number): string {
-        i = i || 0
-        let date = new Date()
-        const diff = i * (1000 * 60 * 60 * 24)
-        date = new Date(date.getTime() + diff)
-        return this.date2Str(date)
-    },
-    getNumTwoBit(n: number): string {
-        n = Number(n)
-        return (n > 9 ? '' : '0') + n
-    },
-    date2Str(date: Date, split?: string): string {
-        split = split || '-'
-        const y = date.getFullYear()
-        const m = this.getNumTwoBit(date.getMonth() + 1)
-        const d = this.getNumTwoBit(date.getDate())
-        return [y, m, d].join(split)
-    },
-    getMonthDays(year: string, month: string): number {
-        if (/^0/.test(month)) {
-        month = month.split('')[1]
-        }
-        return (
-        [
-            0,
-            31,
-            this.isLeapYear(Number(year)) ? 29 : 28,
-            31,
-            30,
-            31,
-            30,
-            31,
-            31,
-            30,
-            31,
-            30,
-            31,
-        ] as number[]
-        )[month as any]
-    },
-    isLeapYear(y: number): boolean {
-        return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0
-    },
+  date2Str(date: Date, split?: string): string {
+    split = split || '-'
+    const y = date.getFullYear()
+    const m = this.getNumTwoBit(date.getMonth() + 1)
+    const d = this.getNumTwoBit(date.getDate())
+    return [y, m, d].join(split)
+  },
+  getDay(i: number): string {
+    i = i || 0
+    let date = new Date()
+    const diff = i * (1000 * 60 * 60 * 24)
+    date = new Date(date.getTime() + diff)
+    return this.date2Str(date)
+  },
+  getNumTwoBit(n: number): string {
+    n = Number(n)
+    return (n > 9 ? '' : '0') + n
+  },
+  date2Str(date: Date, split?: string): string {
+    split = split || '-'
+    const y = date.getFullYear()
+    const m = this.getNumTwoBit(date.getMonth() + 1)
+    const d = this.getNumTwoBit(date.getDate())
+    return [y, m, d].join(split)
+  },
+  getMonthDays(year: string, month: string): number {
+    if (/^0/.test(month)) {
+      month = month.split('')[1]
+    }
+    return (
+      [
+          0,
+          31,
+          this.isLeapYear(Number(year)) ? 29 : 28,
+          31,
+          30,
+          31,
+          30,
+          31,
+          31,
+          30,
+          31,
+          30,
+          31,
+      ] as number[]
+    )[month as any]
+  },
+  isLeapYear(y: number): boolean {
+    return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0
+  },
 };
 
 const App = () => {
-    const [date3, setDate3] = useState('')
-    const [isVisible3, setIsVisible3] = useState(false)
+  const [date3, setDate3] = useState('')
+  const [isVisible3, setIsVisible3] = useState(false)
+  const calendarRef = useRef<any>(null);
 
-    const calendarRef = useRef<any>(null);
+  const openSwitch3 = () => {
+    setIsVisible3(true)
+  }
 
-    const openSwitch3 = () => {
-        setIsVisible3(true)
+  const closeSwitch3 = () => {
+    setIsVisible3(false)
+  }
+
+  const setChooseValue3 = (param: string) => {
+    setDate3([...[param[0][3], param[1][3]]])
+  }
+
+  const goDate = () => {
+    if (calendarRef.current) {
+      calendarRef.current.scrollToDate('2023-04-01');
     }
+  };
 
-    const closeSwitch3 = () => {
-        setIsVisible3(false)
+  const clickBtn = () => {
+    const date = [Utils.date2Str(new Date()), Utils.getDay(6)];
+    setDate3(date);
+    if (calendarRef.current) {
+      calendarRef.current.scrollToDate(date[0])
     }
+  }
 
-    const setChooseValue3 = (param: string) => {
-        setDate3([...[param[0][3], param[1][3]]])
+  const clickBtn1 = () => {
+    const date = new Date();
+    const year = date.getFullYear();
+    let month: any = date.getMonth() + 1;
+    month = month < 10 ? `0${  month}` : `${month  }`;
+    const yearMonth = `${year}-${month}`;
+    const currMonthDays = Utils.getMonthDays(`${year  }`, `${month  }`);
+    setDate3([`${yearMonth}-01`, `${yearMonth}-${currMonthDays}`]);
+    if (calendarRef.current) {
+      calendarRef.current.scrollToDate(`${yearMonth}-01`)
     }
+  }
 
-    const goDate = () => {
-        if (calendarRef.current) {
-            calendarRef.current.scrollToDate('2023-04-01');
-        }
-    };
-
-    const clickBtn = () => {
-        const date = [Utils.date2Str(new Date()), Utils.getDay(6)];
-        setDate3(date);
-        if (calendarRef.current) {
-          calendarRef.current.scrollToDate(date[0])
-        }
-    }
-
-    const clickBtn1 = () => {
-        const date = new Date();
-        const year = date.getFullYear();
-        let month: any = date.getMonth() + 1;
-        month = month < 10 ? `0${  month}` : `${month  }`;
-        const yearMonth = `${year}-${month}`;
-        const currMonthDays = Utils.getMonthDays(`${year  }`, `${month  }`);
-        setDate3([`${yearMonth}-01`, `${yearMonth}-${currMonthDays}`]);
-        if (calendarRef.current) {
-          calendarRef.current.scrollToDate(`${yearMonth}-01`)
-        }
-    }
-
-    const renderHeaderButtons = () => {
-        return (
-            <div className="wrapper" style={ { display: 'flex', padding: '0 40px' } }>
-                <div className="d_div" style={ { margin: '0px 5px' } }>
-                    <span className="d_btn" onClick={ goDate } style={ { background: '#fa3f19', color: '#fff', fontSize: '12px', padding: '2px 8px', borderRadius: '4px', display: 'inline-block', height: '20px' } }>去某个月</span>
-                </div>
-                <div className="d_div" style={ { margin: '0px 5px' } }>
-                    <span className="d_btn" style={ { background: '#fa3f19', color: '#fff', fontSize: '12px', padding: '2px 8px', borderRadius: '4px', display: 'inline-block', height: '20px' } } onClick={ clickBtn }>最近七天</span>
-                </div>
-                <div className="d_div" style={ { margin: '0px 5px' } }>
-                    <span className="d_btn" style={ { background: '#fa3f19', color: '#fff', fontSize: '12px', padding: '2px 8px', borderRadius: '4px', display: 'inline-block', height: '20px' } } onClick={ clickBtn1 }>当月</span>
-                </div>
-            </div>
-        )
-    }
-
+  const renderHeaderButtons = () => {
     return (
-        <>
-            <Cell title="选择日期" description={ date3 ? `${date3[0]}至${date3[1]}` : '请选择' } onClick={ openSwitch3 } />
-            <Calendar
-                ref={ calendarRef }
-                visible={isVisible3}
-                defaultValue={date3}
-                type="range"
-                startDate="2021-12-22"
-                endDate="2022-12-31"
-                renderHeaderButtons={ renderHeaderButtons }
-                onClose={closeSwitch3}
-                onConfirm={setChooseValue3}
-            />
-        </>
-    );
+      <div className="wrapper" style={ { display: 'flex', padding: '0 40px' } }>
+        <div className="d_div" style={ { margin: '0px 5px' } }>
+          <span className="d_btn" onClick={ goDate } style={ { background: '#fa3f19', color: '#fff', fontSize: '12px', padding: '2px 8px', borderRadius: '4px', display: 'inline-block', height: '20px' } }>去某个月</span>
+        </div>
+        <div className="d_div" style={ { margin: '0px 5px' } }>
+          <span className="d_btn" style={ { background: '#fa3f19', color: '#fff', fontSize: '12px', padding: '2px 8px', borderRadius: '4px', display: 'inline-block', height: '20px' } } onClick={ clickBtn }>最近七天</span>
+        </div>
+        <div className="d_div" style={ { margin: '0px 5px' } }>
+          <span className="d_btn" style={ { background: '#fa3f19', color: '#fff', fontSize: '12px', padding: '2px 8px', borderRadius: '4px', display: 'inline-block', height: '20px' } } onClick={ clickBtn1 }>当月</span>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <>
+      <Cell title="选择日期" description={ date3 ? `${date3[0]}至${date3[1]}` : '请选择' } onClick={ openSwitch3 } />
+      <Calendar
+        ref={ calendarRef }
+        visible={isVisible3}
+        defaultValue={date3}
+        type="range"
+        startDate="2021-12-22"
+        endDate="2022-12-31"
+        renderHeaderButtons={ renderHeaderButtons }
+        onClose={closeSwitch3}
+        onConfirm={setChooseValue3}
+      />
+    </>
+  );
 };
 export default App;
 
@@ -403,41 +402,33 @@ import  React, { useState } from "react";
 import { Calendar } from '@nutui/nutui-react';
 
 const App = () => {
-    const [date2, setDate2] = useState('2020-07-08')
+  const [date2, setDate2] = useState('2020-07-08')
+  const setChooseValue2 = (param: string) => {
+    setDate2(param[3])
+  }
 
-    const setChooseValue2 = (param: string) => {
-        setDate2(param[3])
-    }
-
-    return (
-        <>
-            <div className="test-calendar-wrapper" style={ { display: 'flex', width: '100%', height: '613px', overflow: 'hidden' } }>
-                <Calendar
-                    popup={ false }
-                    defaultValue={ date2 }
-                    autoBackfill
-                    onConfirm={ setChooseValue2 }
-                />
-            </div>
-        </>
-    );
+  return (
+    <>
+      <div className="test-calendar-wrapper" style={ { display: 'flex', width: '100%', height: '613px', overflow: 'hidden' } }>
+        <Calendar
+          popup={ false }
+          defaultValue={ date2 }
+          autoBackfill
+          onConfirm={ setChooseValue2 }
+        />
+      </div>
+    </>
+  );
 };
 export default App;
 
 ```
 :::
 
-## API
-
-通过 ref 可以获取到 Calendar 实例并调用实例方法。
-
-| 方法名 | 说明 | 参数 |
-| ----- | ----- | -- |
-| scrollToDate | 滚动到指定日期所在月,如：'2023-06-30' | `string` |
-
+## Calendar
 ### Props
 
-| 字段| 说明    | 类型            | 默认值          |
+| 属性 | 说明    | 类型            | 默认值          |
 |-------|--------|-----------------|-----------------|
 | visible   | 是否可见 | `boolean`         | `false`           |
 | type | 类型，日期选择'single'，区间选择'range' | `string` | `single` |
@@ -468,6 +459,14 @@ export default App;
 |-------------------|-----------------|
 | day   | `string \| number`           |
 | type   | `string`          |
+
+### Ref
+
+通过 ref 可以获取到 Calendar 实例并调用实例方法。
+
+| 方法名 | 说明 | 参数 |
+| ----- | ----- | -- |
+| scrollToDate | 滚动到指定日期所在月,如：'2023-06-30' | `string` |
 
 ## 主题定制
 

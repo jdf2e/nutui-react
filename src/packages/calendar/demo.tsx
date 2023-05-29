@@ -91,7 +91,7 @@ const CalendarDemo = () => {
   const currDay = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
   const [date, setDate] = useState(currDay)
   const [date1, setDate1] = useState(['2023-01-23', '2023-11-26'])
-  const [date2, setDate2] = useState('2022-12-08')
+  const [date2, setDate2] = useState('2023-05-08')
   const [date3, setDate3] = useState('')
   const [date4, setDate4] = useState<string[]>([])
   const [date5, setDate5] = useState<string[]>(['2022-11-23', '2024-01-26'])
@@ -330,8 +330,8 @@ const CalendarDemo = () => {
           visible={isVisible4}
           defaultValue={date4}
           type="multiple"
-          startDate="2022-01-01"
-          endDate="2022-09-10"
+          startDate="2023-01-01"
+          endDate="2024-09-10"
           onClose={closeSwitch4}
           onConfirm={setChooseValue4}
         />
@@ -365,8 +365,8 @@ const CalendarDemo = () => {
           defaultValue={date5}
           type="range"
           autoBackfill
-          startDate="2019-12-22"
-          endDate="2021-01-08"
+          startDate="2022-12-22"
+          endDate="2024-01-08"
           onClose={closeSwitch5}
           onConfirm={setChooseValue5}
           onClickDay={select}
@@ -385,8 +385,8 @@ const CalendarDemo = () => {
           visible={isVisible6}
           defaultValue={date6}
           type="range"
-          startDate="2019-12-22"
-          endDate="2021-01-08"
+          startDate="2022-12-22"
+          endDate="2024-01-08"
           confirmText="submit"
           startText="enter"
           endText="leave"
@@ -412,7 +412,7 @@ const CalendarDemo = () => {
           defaultValue={date7}
           type="range"
           startDate="2022-12-22"
-          endDate="2023-12-31"
+          endDate="2024-12-31"
           renderHeaderButtons={renderHeaderButtons}
           onClose={closeSwitch7}
           onConfirm={setChooseValue7}
