@@ -25,8 +25,6 @@ interface MonthInfo {
 interface CalendarState {
   currDate: InputDate
   chooseData: any
-  propStartDate: string
-  propEndDate: string
 }
 
 export interface CalendarItemProps {
@@ -57,14 +55,14 @@ const defaultProps = {
   type: 'single',
   autoBackfill: false,
   popup: true,
-  title: '日历选择',
+  title: '',
   defaultValue: '',
   startDate: Utils.getDay(0),
   endDate: Utils.getDay(365),
   showToday: true,
-  startText: '开始',
-  endText: '结束',
-  confirmText: '确认',
+  startText: '',
+  endText: '',
+  confirmText: '',
   showTitle: true,
   showSubTitle: true,
   scrollAnimation: true,
@@ -113,10 +111,18 @@ export const CalendarItem = React.forwardRef<
   const [translateY, setTranslateY] = useState(0)
   const [monthDefaultRange, setMonthDefaultRange] = useState<number[]>([])
 
+  // 初始化开始结束数据
+  const propStartDate = (props.startDate || Utils.getDay(0)) as string
+  const propEndDate = (props.endDate || Utils.getDay(365)) as string
+
+  const splitDate = (date: string) => {
+    return date.split('-')
+  }
+  const startDates = splitDate(propStartDate)
+  const endDates = splitDate(propEndDate)
+
   const [state] = useState<CalendarState>({
     currDate: '',
-    propStartDate: '',
-    propEndDate: '',
     chooseData: [],
   })
 
@@ -149,10 +155,6 @@ export const CalendarItem = React.forwardRef<
     [`${type === 'range' ? 'month-item-range' : ''}`]: true,
   })
 
-  const splitDate = (date: string) => {
-    return date.split('-')
-  }
-
   const isMultiple = (currDate: string) => {
     if (state.currDate.length > 0) {
       return (state.currDate as string[]).some((item: string) => {
@@ -180,9 +182,8 @@ export const CalendarItem = React.forwardRef<
         return `${dayPrefix}-active`
       }
       if (
-        (state.propStartDate &&
-          Utils.compareDate(currDate, state.propStartDate)) ||
-        (state.propEndDate && Utils.compareDate(state.propEndDate, currDate))
+        (propStartDate && Utils.compareDate(currDate, propStartDate)) ||
+        (propEndDate && Utils.compareDate(propEndDate, currDate))
       ) {
         return `${dayPrefix}-disabled`
       }
@@ -309,8 +310,6 @@ export const CalendarItem = React.forwardRef<
 
   // 获取月数据
   const getMonthData = (curData: string[], type: string) => {
-    const startDates = splitDate(state.propStartDate)
-    const endDates = splitDate(state.propEndDate)
     const preMonthDays = Utils.getMonthPreDay(+curData[0], +curData[1])
 
     let preMonth = +curData[1] - 1
@@ -453,15 +452,6 @@ export const CalendarItem = React.forwardRef<
   }
 
   const initData = () => {
-    // 初始化开始结束数据
-    const propStartDate = props.startDate || Utils.getDay(0)
-    const propEndDate = props.endDate || Utils.getDay(365)
-    state.propStartDate = propStartDate as string
-    state.propEndDate = propEndDate as string
-
-    const startDates = splitDate(state.propStartDate)
-    const endDates = splitDate(state.propEndDate)
-
     // 判断时间范围内存在多少个月
     const startDate = {
       year: Number(startDates[0]),
@@ -504,15 +494,12 @@ export const CalendarItem = React.forwardRef<
       if (state.currDate.length > 0) {
         if (
           propStartDate &&
-          Utils.compareDate(state.currDate[0], state.propStartDate)
+          Utils.compareDate(state.currDate[0], propStartDate)
         ) {
-          state.currDate.splice(0, 1, state.propStartDate)
+          state.currDate.splice(0, 1, propStartDate)
         }
-        if (
-          propEndDate &&
-          Utils.compareDate(state.propEndDate, state.currDate[1])
-        ) {
-          state.currDate.splice(1, 1, state.propEndDate)
+        if (propEndDate && Utils.compareDate(propEndDate, state.currDate[1])) {
+          state.currDate.splice(1, 1, propEndDate)
         }
         defaultData = [
           ...splitDate(state.currDate[0]),
@@ -526,9 +513,9 @@ export const CalendarItem = React.forwardRef<
         state.currDate.forEach((item: string) => {
           if (
             propStartDate &&
-            !Utils.compareDate(item, state.propStartDate) &&
+            !Utils.compareDate(item, propStartDate) &&
             propEndDate &&
-            !Utils.compareDate(state.propEndDate, item)
+            !Utils.compareDate(propEndDate, item)
           ) {
             if (!Object.hasOwnProperty.call(obj, item)) {
               defaultArr.push(item)
@@ -542,12 +529,12 @@ export const CalendarItem = React.forwardRef<
     } else if (state.currDate) {
       if (
         propStartDate &&
-        Utils.compareDate(state.currDate as string, state.propStartDate)
+        Utils.compareDate(state.currDate as string, propStartDate)
       ) {
         state.currDate = propStartDate
       } else if (
         propEndDate &&
-        !Utils.compareDate(state.currDate as string, state.propEndDate)
+        !Utils.compareDate(state.currDate as string, propEndDate)
       ) {
         state.currDate = propEndDate
       }
@@ -657,10 +644,10 @@ export const CalendarItem = React.forwardRef<
 
   // 暴露出的API
   const scrollToDate = (date: string) => {
-    if (Utils.compareDate(date, state.propStartDate)) {
-      date = state.propStartDate
-    } else if (!Utils.compareDate(date, state.propEndDate)) {
-      date = state.propEndDate
+    if (Utils.compareDate(date, propStartDate)) {
+      date = propStartDate
+    } else if (!Utils.compareDate(date, propEndDate)) {
+      date = propEndDate
     }
     const dateArr = splitDate(date)
     monthsData.forEach((item, index) => {
