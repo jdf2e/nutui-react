@@ -309,6 +309,6 @@ export default App;
 | options.controls    | 是否展示操作栏                             | `boolean` | `true`     |
 | options.muted       | 是否静音                                   | `boolean` | `false`    |
 | options.playsinline | 是否设置为行内播放元素（解决安卓兼容问题） | `boolean` | `false`    |
-| onPlay       | 播放         | `(event: HTMLVideoElement) => void` |  `-`       |    
-| onPause     | 暂停         | `(event: HTMLVideoElement) => void` |  `-`      |
-| onPlayEnd  | 播放完成回调 | `(event: HTMLVideoElement) => void` |   `-`       |
+| onPlay       | 播放         | `(element: HTMLVideoElement) => void` |  `-`       |    
+| onPause     | 暂停         | `(element: HTMLVideoElement) => void` |  `-`      |
+| onPlayEnd  | 播放完成回调 | `(element: HTMLVideoElement) => void` |   `-`       |

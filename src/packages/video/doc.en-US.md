@@ -308,6 +308,6 @@ export default App;
 | options.controls    | Show operation control          | `boolean` | `true`     |
 | options.muted       | Mute                                   | `boolean` | `false`    |
 | options.playsinline | Whether to set as inline playback element (solve Android compatibility problem) | `boolean` | `false`    |
-| onPlay       |  play event    | `(event: HTMLVideoElement) => void` |  `-`       |    
-| onPause     | pause event         | `(event: HTMLVideoElement) => void` |  `-`      |
-| onPlayEnd  | Playback completion callback | `(event: HTMLVideoElement) => void` |   `-`       |
+| onPlay       |  play event    | `(element: HTMLVideoElement) => void` |  `-`       |    
+| onPause     | pause event         | `(element: HTMLVideoElement) => void` |  `-`      |
+| onPlayEnd  | Playback completion callback | `(element: HTMLVideoElement) => void` |   `-`       |

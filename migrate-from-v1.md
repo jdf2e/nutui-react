@@ -468,6 +468,7 @@
 #### Video
 - 调整中英文文档规范
 - 调整组件书写规范
+- 新增video的taro适配
 #### VirtualList
 - sourceData 重命名为 list
 - conatinerSize 重命名为 containerHeight

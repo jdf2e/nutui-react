@@ -15,9 +15,9 @@ export interface VideoProps extends BasicComponent {
     playsinline?: boolean
     loop?: boolean
   }
-  onPlay: (e: HTMLVideoElement) => void
-  onPause: (e: HTMLVideoElement) => void
-  onPlayEnd: (e: HTMLVideoElement) => void
+  onPlay: (element: HTMLVideoElement) => void
+  onPause: (element: HTMLVideoElement) => void
+  onPlayEnd: (element: HTMLVideoElement) => void
 }
 const defaultProps = {
   ...ComponentDefaults,
