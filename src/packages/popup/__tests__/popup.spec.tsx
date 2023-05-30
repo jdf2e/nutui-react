@@ -3,12 +3,6 @@ import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Popup } from '../popup'
 
-function sleep(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay)
-  })
-}
-
 test('should change z-index when using z-index prop', () => {
   const { container } = render(
     <>
@@ -163,7 +157,7 @@ test('event click test', async () => {
   )
   const overlay = container.querySelector('.nut-overlay') as Element
   await fireEvent.click(overlay)
-  expect(overlay).toHaveClass('hidden-render')
+  expect(overlay).toHaveClass('nut-overlay-hidden-render')
 })
 
 test('event click-close-icon test', () => {
@@ -179,7 +173,7 @@ test('event click-close-icon test', () => {
   const overlay = container.querySelector('.nut-overlay') as Element
   fireEvent.click(closeIcon)
   expect(onClickCloseIcon).toBeCalled()
-  expect(overlay).toHaveClass('hidden-render')
+  expect(overlay).toHaveClass('nut-overlay-hidden-render')
 })
 
 test('event click-close-icon and keep overlay test ', () => {
