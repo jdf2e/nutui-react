@@ -82,7 +82,7 @@ const App = () => {
         <img src={src.current} alt="" />
         <WaterMark
           fullPage={false}
-          fontColor="#fa2c19"
+          color="#fa2c19"
           content="nut-ui"
          />
       </Cell>
@@ -108,7 +108,7 @@ export default App;
 | imageHeight | Height of image | `number` | `64` |
 | zIndex | Z-index of the appended watermark element | `number` | `2000` |
 | content | Watermark text content | `string` | - |
-| fontColor | Watermark text color | `string` | `rgba(0, 0, 0, .15)` |
+| color | Watermark text color | `string` | `rgba(0, 0, 0, .15)` |
 | fontSize | Watermark text font size | `string \| number` | `16` |
 | gapX | Horizontal spacing between watermarks | `number` | `24` |
 | gapY | Vertical spacing between watermarks | `number` | `48` |

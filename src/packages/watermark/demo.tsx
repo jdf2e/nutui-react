@@ -77,7 +77,7 @@ const WaterMarkDemo = () => {
         <h2>{translated.fa139733}</h2>
         <Cell className="wrap wrap2">
           <img src={src.current} alt="" />
-          <WaterMark fullPage={false} fontColor="#fa2c19" content="nut-ui" />
+          <WaterMark fullPage={false} color="#fa2c19" content="nut-ui" />
         </Cell>
       </div>
     </>

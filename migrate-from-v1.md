@@ -473,7 +473,7 @@
 - itemEqualSize 重命名为 itemEqual
 - horizontal 修改为 direction，默认值 vertical，可选值 horizontal
 #### WaterMark
-
+- fontColor 重命名为 color
 ### 特色组件
 #### Address
 #### Barrage

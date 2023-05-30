@@ -82,7 +82,7 @@ const App = () => {
         <img src={src.current} alt="" />
         <WaterMark
           fullPage={false}
-          fontColor="#fa2c19"
+          color="#fa2c19"
           content="nut-ui"
          />
       </Cell>
@@ -108,7 +108,7 @@ export default App;
 | imageHeight | 图片高度 | `number` | `64` |
 | zIndex | 追加的水印元素的 z-index | `number` | `2000` |
 | content | 水印文字内容 | `string` | - |
-| fontColor | 水印文字颜色 | `string` | `rgba(0, 0, 0, .15)` |
+| color | 水印文字颜色 | `string` | `rgba(0, 0, 0, .15)` |
 | fontSize | 文字大小 | `string \| number` | `16` |
 | gapX | 水印之间的水平间距 | `number` | `24` |
 | gapY | 水印之间的垂直间距 | `number` | `48` |
