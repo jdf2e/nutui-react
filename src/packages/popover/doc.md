@@ -373,6 +373,8 @@ const App = () => {
       <Popover
         visible={customPositon}
         targetId="pickerTarget"
+        background="#1a1a1a"
+        color="rgb(255, 255, 255)"
         list={positionList}
         location={curPostion}
       ></Popover>

@@ -272,7 +272,7 @@ const PopoverDemo = () => {
             ''
           )}
         </Popover>
-        {/* <h2 className="demoClass">位置自定义</h2>
+        <h2 className="demoClass">位置自定义</h2>
 
         <Cell
           title="点击查看更多方向"
@@ -308,9 +308,11 @@ const PopoverDemo = () => {
         <Popover
           visible={customPositon}
           targetId="pickerTarget"
+          background="#1a1a1a"
+          color="rgb(255, 255, 255)"
           list={positionList}
           location={curPostion}
-        ></Popover> */}
+        ></Popover>
 
         <h2>自定义目标元素</h2>
         <Popover
