@@ -55,7 +55,10 @@ export const SideNavBar: FunctionComponent<SideNavBarProps> = (props) => {
     >
       <div className={classNames(className, classPrefix)} {...rest}>
         <div className={`${classPrefix}__content`}>
-          <div className={`${classPrefix}__list nutShow`} onClick={handleClick}>
+          <div
+            className={`${classPrefix}__list sidenavbar-show`}
+            onClick={handleClick}
+          >
             <div
               className={`${classPrefix}__title ${classPrefix}-border-bt`}
               style={{ paddingLeft: `${indent}px` }}

@@ -27,7 +27,7 @@ test('navigation should be hide', async () => {
   )
 
   expect(container.querySelector('.nut-subsidenavbar__list')).toHaveClass(
-    'nutHide'
+    'sidenavbar-hide'
   )
 })
 test('should emit titleClick event', async () => {

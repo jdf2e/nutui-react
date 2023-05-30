@@ -2060,63 +2060,51 @@ $sidenavbar-content-bg-color: var(
   --nutui-sidenavbar-content-bg-color,
   $white
 ) !default;
-$sidenav-bar-item-height: 40px;
-
+$sidenav-bar-item-height: var(--nutui-sidenavbar-item-height, 40px) !default;
+$sidenavbar-head-bg-color: var(
+  --nutui-sidenavbar-head-bg-color,
+  #eeeff2
+) !default;
+$sidenavbar-head-padding: var(--nutui-sidenavbar-head-padding, 10px) !default;
+$sidenavbar-title-padding: var(
+  --nutui-sidenavbar-title-padding,
+  10px 8px 10px 20px
+) !default;
+$sidenavbar-title-background: var(
+  --nutui-sidenavbar-title-background,
+  $gray4
+) !default;
+$sidenavbar-title-color: var(--nutui-sidenavbar-title-color, $gray1) !default;
 // subsidenavbar（✅）
-$sidenavbar-sub-title-border-color: var(
-  --nutui-sidenavbar-sub-title-border-color,
-  #f6f6f6
+$sidenavbar-sub-title-padding: var(
+  --nutui-sidenavbar-sub-title-padding,
+  10px 8px 10px 35px
 ) !default;
-$sidenavbar-sub-title-bg-color: var(
-  --nutui-sidenavbar-sub-title-bg-color,
-  #f6f6f6
+$sidenavbar-sub-title-background: var(
+  --nutui-sidenavbar-sub-title-background,
+  $gray5
 ) !default;
-$sidenavbar-sub-title-font-size: var(
-  --nutui-sidenavbar-sub-title-font-size,
-  $font-size-large
-) !default;
-$sidenavbar-sub-title-radius: var(
-  --nutui-sidenavbar-sub-title-radius,
-  0
-) !default;
-$sidenavbar-sub-title-border: var(
-  --nutui-sidenavbar-sub-title-border,
-  0
-) !default;
-$sidenavbar-sub-title-width: var(
-  --nutui-sidenavbar-sub-title-width,
-  100%
-) !default;
-$sidenavbar-sub-title-height: var(
-  --nutui-sidenavbar-sub-title-height,
-  40px
-) !default;
-$sidenavbar-sub-title-text-line-height: var(
-  --nutui-sidenavbar-sub-title-text-line-height,
-  40px
-) !default;
-$sidenavbar-sub-title-text-color: var(
-  --nutui-sidenavbar-sub-title-text-color,
-  $title-color
+$sidenavbar-sub-title-color: var(
+  --nutui-sidenavbar-sub-title-color,
+  $gray1
 ) !default;
 
 // sidenavbaritem（✅）
-$sidenavbar-item-title-color: var(
-  --nutui-sidenavbar-item-title-color,
-  #333
+$sidenavbar-sub-item-color: var(
+  --nutui-sidenavbar-sub-item-color,
+  $gray2
 ) !default;
-$sidenavbar-item-title-bg-color: var(
-  --nutui-sidenavbar-item-title-bg-color,
-  $white
+$sidenavbar-sub-item-padding: var(
+  --nutui-sidenavbar-sub-item-padding,
+  10px 8px 10px 55px
 ) !default;
-$sidenavbar-item-height: var(--nutui-sidenavbar-item-height, 40px) !default;
-$sidenavbar-item-line-height: var(
-  --nutui-sidenavbar-item-line-height,
-  40px
+$sidenavbar-sub-list-background: var(
+  --nutui-sidenavbar-sub-list-background,
+  $gray6
 ) !default;
-$sidenavbar-item-font-size: var(
-  --nutui-sidenavbar-item-font-size,
-  16px
+$sidenavbar-sub-list-color: var(
+  --nutui-sidenavbar-sub-list-background,
+  $gray2
 ) !default;
 
 // elevator（✅）

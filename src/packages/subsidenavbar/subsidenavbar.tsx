@@ -72,7 +72,7 @@ export const SubSideNavBar: FunctionComponent<SubSideNavBarProps> = (props) => {
   const clickFn: MouseEventHandler<HTMLDivElement> = (e) => {
     handleClick(e)
     const currentClass = e.currentTarget.className
-    const isShow = currentClass.includes('nutShow')
+    const isShow = currentClass.includes('sidenavbar-show')
     onClick && onClick({ title, value, isShow })
   }
   useEffect(() => {
@@ -81,8 +81,8 @@ export const SubSideNavBar: FunctionComponent<SubSideNavBarProps> = (props) => {
     childNodes && setListLevel(childNodes)
   }, [setListLevel])
   const divClass = open
-    ? `${classPrefix}__list nutShow`
-    : `${classPrefix}__list nutHide`
+    ? `${classPrefix}__list sidenavbar-show`
+    : `${classPrefix}__list sidenavbar-hide`
   const iconClass = open ? 'arrow-icon arrow-down' : 'arrow-icon arrow-up'
 
   return (

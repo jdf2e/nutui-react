@@ -58,7 +58,7 @@ export const SideNavBar: FunctionComponent<SideNavBarProps> = (props) => {
         <div className={`${classPrefix}__content`}>
           <div
             className={`${classPrefix}__list ${
-              sidenavbarShow ? 'nutShow' : 'nutHide'
+              sidenavbarShow ? 'sidenavbar-show' : 'sidenavbar-hide'
             }`}
             onClick={handleClick}
           >

@@ -1,20 +1,22 @@
 .nut-subsidenavbar {
   &__title {
     height: $sidenav-bar-item-height;
-    padding: 10px 8px 10px 35px;
-    background: #f7f8fa;
+    padding: $sidenavbar-sub-title-padding;
+    box-sizing: border-box;
+    background-color: $sidenavbar-sub-title-background;
+    color: $sidenavbar-sub-title-color;
     box-sizing: border-box;
   }
 
   &__list {
-    &.nutShow {
+    &.sidenavbar-show {
       .nut-subsidenavbar__content {
         height: auto;
         overflow: inherit;
       }
     }
 
-    &.nutHide {
+    &.sidenavbar-hide {
       .nut-subsidenavbar__content {
         height: 0;
         overflow: hidden;

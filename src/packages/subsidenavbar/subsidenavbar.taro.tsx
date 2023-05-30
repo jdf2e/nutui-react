@@ -83,8 +83,8 @@ export const SubSideNavBar: FunctionComponent<SubSideNavBarProps> = (props) => {
     childNodes && setListLevel(childNodes)
   }, [setListLevel])
   const divClass = subShow
-    ? `${classPrefix}__list nutShow`
-    : `${classPrefix}__list nutHide`
+    ? `${classPrefix}__list sidenavbar-show`
+    : `${classPrefix}__list sidenavbar-hide`
   const iconClass = subShow ? 'arrow-icon arrow-down' : 'arrow-icon arrow-up'
 
   return (

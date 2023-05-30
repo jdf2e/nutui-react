@@ -6,7 +6,7 @@
   height: 100%;
   overflow: auto;
   display: block;
-  background-color: $gray6;
+  background-color: $sidenavbar-content-bg-color;
 
   .arrow-icon {
     position: absolute;
@@ -29,17 +29,11 @@
     border-right: 4px solid transparent;
   }
 
-  &__head {
-    height: $sidenav-bar-item-height;
-    background: #eeeff2;
-    padding: 10px;
-  }
-
   &__title {
     height: $sidenav-bar-item-height;
-    padding: 10px 8px 10px 20px;
-    background: $gray4;
-    color: $gray1;
+    padding: $sidenavbar-title-padding;
+    background: $sidenavbar-title-background;
+    color: $sidenavbar-title-color;
     box-sizing: border-box;
     transition: transform 0.5s;
   }
@@ -50,14 +44,14 @@
   }
 
   &__list {
-    &.nutShow {
+    &.sidenavbar-show {
       .nut-sidenavbar__content {
         height: auto;
         overflow: inherit;
       }
     }
 
-    &.nutHide {
+    &.sidenavbar-hide {
       .nut-sidenavbar__content {
         height: 0;
         overflow: hidden;
