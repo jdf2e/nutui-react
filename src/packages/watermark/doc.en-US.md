@@ -113,7 +113,7 @@ export default App;
 | gapX | Horizontal spacing between watermarks | `number` | `24` |
 | gapY | Vertical spacing between watermarks | `number` | `48` |
 | fullPage | Overwrite entire page | `boolean` | `true` |
-| fontFamily | Watermark text font family | `boolean` | `true` |
+| fontFamily | Watermark text font family | `string` | - |
 
 ## Theming
 

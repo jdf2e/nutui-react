@@ -113,7 +113,7 @@ export default App;
 | gapX | 水印之间的水平间距 | `number` | `24` |
 | gapY | 水印之间的垂直间距 | `number` | `48` |
 | fullPage | 是否覆盖整个页面 | `boolean` | `true` |
-| fontFamily | 水印文字字体 | `boolean` | `true` |
+| fontFamily | 水印文字字体 | `string` | - |
 
 ## 主题定制
 

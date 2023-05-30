@@ -3,7 +3,6 @@ import { useTranslate } from '../../sites/assets/locale'
 import { WaterMark } from './watermark'
 import Cell from '@/packages/cell'
 import Button from '@/packages/button'
-import './demo.scss'
 
 interface T {
   '84aa6bce': string
@@ -35,7 +34,7 @@ const WaterMarkDemo = () => {
 
   const [flag, setFlag] = useState(false)
   const src = useRef(
-    '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
+    '//storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
   )
   const imgSrc = useRef(
     '//img11.360buyimg.com/imagetools/jfs/t1/57345/6/20069/8019/62b995cdEd96fef03/51d3302dfeccd1d2.png'
@@ -51,23 +50,19 @@ const WaterMarkDemo = () => {
 
   return (
     <>
-      <div className="demo demo-watermark">
+      <div className="demo">
         <h2>{translated['84aa6bce']}</h2>
-        <Cell className="wrap">
-          <Button onClick={showTextMark}>{translated.ddd76b7f}</Button>
+        <Cell>
+          <Button onClick={showTextMark} style={{ marginRight: '10px' }}>
+            {translated.ddd76b7f}
+          </Button>
           <Button onClick={showImageMark}>{translated['6de1e02a']}</Button>
-          {!flag && (
-            <WaterMark
-              className="mark1"
-              zIndex={1}
-              content="nut-ui-water-mark"
-            />
-          )}
+          {!flag && <WaterMark zIndex={200} content="NutUI-WaterMark" />}
           {flag && (
             <WaterMark
-              className="mark1"
-              zIndex={1}
-              content="nut-ui-water-mark"
+              zIndex={200}
+              content="NutUI-WaterMark"
+              rotate={22}
               imageWidth={60}
               imageHeight={23}
               image={imgSrc.current}
@@ -76,8 +71,8 @@ const WaterMarkDemo = () => {
         </Cell>
         <h2>{translated.fa139733}</h2>
         <Cell className="wrap wrap2">
-          <img src={src.current} alt="" />
-          <WaterMark fullPage={false} color="#fa2c19" content="nut-ui" />
+          <img src={src.current} alt="" width="100%" height="100%" />
+          <WaterMark fullPage={false} color="red" content="nutui" />
         </Cell>
       </div>
     </>
