@@ -1,10 +1,10 @@
 # Watermark
 
-### Intro
+## Intro
 
 Add specific words or patterns on the page to prevent information theft.
 
-### Intro
+## Intro
 
 ```ts
 // react
@@ -60,6 +60,7 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Basic Usage
@@ -90,28 +91,29 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
-## API
+## WaterMark
 
 ### Props
-| Property | Description                             | Type   | Default           |
-|--------------|----------------------------------|--------|------------------|
-| width       | Width of watermark     | number           | `120`                |
-| height      | Height of watermark               | number           | `64`                 |
-| rotate      | Rotation angle when drawing watermark   | number           | `-22`                |
-| image       | Image source, it is recommended to export 2x or 3x images, and the image rendering watermark is preferred | string           | -                    |
-| imageWidth  | Width of image                                             | number           | `120`                |
-| imageHeight | Height of image                                             | number           | `64`                 |
-| zIndex      | Z-index of the appended watermark element                             | number           | `2000`               |
-| content     | Watermark text content                                         | string           | -                    |
-| fontColor   | Watermark text color                                         | string           | `rgba(0, 0, 0, .15)` |
-| fontSize    | Watermark text font size                                             | string \| number | `16`                 |
-| gapX        | Horizontal spacing between watermarks                                   | number           | `24`                 |
-| gapY        | Vertical spacing between watermarks                                   | number           | `48`                 |
-| fullPage    | Overwrite entire page                                     | boolean          | `true`               |
-| fontFamily  | Watermark text font family                  | boolean          | `true`               |
 
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| width | Width of watermark | `number` | `120` |
+| height | Height of watermark | `number` | `64` |
+| rotate | Rotation angle when drawing watermark | `number` | `-22` |
+| image | Image source, it is recommended to export 2x or 3x images, and the image rendering watermark is preferred | `string` | - |
+| imageWidth | Width of image | `number` | `120` |
+| imageHeight | Height of image | `number` | `64` |
+| zIndex | Z-index of the appended watermark element | `number` | `2000` |
+| content | Watermark text content | `string` | - |
+| fontColor | Watermark text color | `string` | `rgba(0, 0, 0, .15)` |
+| fontSize | Watermark text font size | `string \| number` | `16` |
+| gapX | Horizontal spacing between watermarks | `number` | `24` |
+| gapY | Vertical spacing between watermarks | `number` | `48` |
+| fullPage | Overwrite entire page | `boolean` | `true` |
+| fontFamily | Watermark text font family | `boolean` | `true` |
 
 ## Theming
 
@@ -121,4 +123,4 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-watermark-z-index | `$mask-content-z-index` |
+| \--nutui-watermark-z-index | `$mask-content-z-index` |
