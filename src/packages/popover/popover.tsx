@@ -113,7 +113,6 @@ export const Popover: FunctionComponent<
 
   const popoverRef = useRef<any>(null)
   const popoverContentRef = useRef<any>(null)
-  const rootRect = useRef<any>(null)
 
   const [showPopup, setShowPopup] = useState(false)
   const [elWidth, setElWidth] = useState(0)
