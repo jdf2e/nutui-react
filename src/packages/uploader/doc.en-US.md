@@ -391,7 +391,7 @@ export default App;
 :::
 
 ## Uploader
-### Prop
+### Props
 
 | Property | Description | Type | Default|
 |-------------------|---------------------|-----------------|--------|

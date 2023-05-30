@@ -143,7 +143,7 @@ export default App;
 :::
 
 
-## API
+## Audio
 
 ### Props
 
