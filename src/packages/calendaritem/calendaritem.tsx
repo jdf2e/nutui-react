@@ -24,10 +24,7 @@ interface MonthInfo {
 
 interface CalendarState {
   currDate: InputDate
-  defaultData: InputDate
   chooseData: any
-  startData: InputDate
-  endData: InputDate
   propStartDate: string
   propEndDate: string
 }
@@ -120,10 +117,7 @@ export const CalendarItem = React.forwardRef<
     currDate: '',
     propStartDate: '',
     propEndDate: '',
-    defaultData: [],
     chooseData: [],
-    startData: '',
-    endData: '',
   })
 
   const weeksPanel = useRef<HTMLDivElement>(null)
@@ -315,6 +309,8 @@ export const CalendarItem = React.forwardRef<
 
   // 获取月数据
   const getMonthData = (curData: string[], type: string) => {
+    const startDates = splitDate(state.propStartDate)
+    const endDates = splitDate(state.propEndDate)
     const preMonthDays = Utils.getMonthPreDay(+curData[0], +curData[1])
 
     let preMonth = +curData[1] - 1
@@ -354,11 +350,11 @@ export const CalendarItem = React.forwardRef<
     monthInfo.cssScrollHeight = cssScrollHeight
     if (type === 'next') {
       if (
-        !state.endData ||
+        !endDates ||
         !Utils.compareDate(
-          `${state.endData[0]}-${state.endData[1]}-${Utils.getMonthDays(
-            state.endData[0],
-            state.endData[1]
+          `${endDates[0]}-${endDates[1]}-${Utils.getMonthDays(
+            endDates[0],
+            endDates[1]
           )}`,
           `${curData[0]}-${curData[1]}-${curData[2]}`
         )
@@ -366,10 +362,10 @@ export const CalendarItem = React.forwardRef<
         monthsData.push(monthInfo)
       }
     } else if (
-      !state.startData ||
+      !startDates ||
       !Utils.compareDate(
         `${curData[0]}-${curData[1]}-${curData[2]}`,
-        `${state.startData[0]}-${state.startData[1]}-01`
+        `${startDates[0]}-${startDates[1]}-01`
       )
     ) {
       monthsData.unshift(monthInfo)
@@ -462,17 +458,18 @@ export const CalendarItem = React.forwardRef<
     const propEndDate = props.endDate || Utils.getDay(365)
     state.propStartDate = propStartDate as string
     state.propEndDate = propEndDate as string
-    state.startData = splitDate(propStartDate as string)
-    state.endData = splitDate(propEndDate as string)
+
+    const startDates = splitDate(state.propStartDate)
+    const endDates = splitDate(state.propEndDate)
 
     // 判断时间范围内存在多少个月
     const startDate = {
-      year: Number(state.startData[0]),
-      month: Number(state.startData[1]),
+      year: Number(startDates[0]),
+      month: Number(startDates[1]),
     }
     const endDate = {
-      year: Number(state.endData[0]),
-      month: Number(state.endData[1]),
+      year: Number(endDates[0]),
+      month: Number(endDates[1]),
     }
     let monthNum = endDate.month - startDate.month
     if (endDate.year - startDate.year > 0) {
@@ -482,7 +479,7 @@ export const CalendarItem = React.forwardRef<
       monthNum = 1
     }
     // 设置月份数据
-    getMonthData(state.startData, 'next')
+    getMonthData(startDates, 'next')
 
     let i = 1
     do {
@@ -501,22 +498,23 @@ export const CalendarItem = React.forwardRef<
           : (props.defaultValue as string[])
     }
 
+    let defaultData: InputDate = []
     // 日期转化为数组，限制初始日期。判断时间范围
     if (type === 'range' && Array.isArray(state.currDate)) {
       if (state.currDate.length > 0) {
         if (
           propStartDate &&
-          Utils.compareDate(state.currDate[0], propStartDate as string)
+          Utils.compareDate(state.currDate[0], state.propStartDate)
         ) {
-          state.currDate.splice(0, 1, propStartDate as string)
+          state.currDate.splice(0, 1, state.propStartDate)
         }
         if (
           propEndDate &&
-          Utils.compareDate(propEndDate as string, state.currDate[1])
+          Utils.compareDate(state.propEndDate, state.currDate[1])
         ) {
-          state.currDate.splice(1, 1, propEndDate as string)
+          state.currDate.splice(1, 1, state.propEndDate)
         }
-        state.defaultData = [
+        defaultData = [
           ...splitDate(state.currDate[0]),
           ...splitDate(state.currDate[1]),
         ]
@@ -528,9 +526,9 @@ export const CalendarItem = React.forwardRef<
         state.currDate.forEach((item: string) => {
           if (
             propStartDate &&
-            !Utils.compareDate(item, propStartDate as string) &&
+            !Utils.compareDate(item, state.propStartDate) &&
             propEndDate &&
-            !Utils.compareDate(propEndDate as string, item)
+            !Utils.compareDate(state.propEndDate, item)
           ) {
             if (!Object.hasOwnProperty.call(obj, item)) {
               defaultArr.push(item)
@@ -539,44 +537,38 @@ export const CalendarItem = React.forwardRef<
           }
         })
         state.currDate = [...defaultArr]
-        state.defaultData = [...splitDate(defaultArr[0])]
+        defaultData = [...splitDate(defaultArr[0])]
       }
     } else if (state.currDate) {
       if (
         propStartDate &&
-        Utils.compareDate(state.currDate as string, propStartDate as string)
+        Utils.compareDate(state.currDate as string, state.propStartDate)
       ) {
         state.currDate = propStartDate
       } else if (
         propEndDate &&
-        !Utils.compareDate(state.currDate as string, propEndDate as string)
+        !Utils.compareDate(state.currDate as string, state.propEndDate)
       ) {
         state.currDate = propEndDate
       }
-      state.defaultData = [...splitDate(state.currDate as string)]
+      defaultData = [...splitDate(state.currDate as string)]
     }
 
     // 设置默认可见区域
     let current = 0
     let lastCurrent = 0
-    if (state.defaultData.length > 0) {
+    if (defaultData.length > 0) {
       monthsData.forEach((item, index) => {
         if (
           item.title ===
-          locale.calendaritem.monthTitle(
-            state.defaultData[0],
-            state.defaultData[1]
-          )
+          locale.calendaritem.monthTitle(defaultData[0], defaultData[1])
         ) {
           current = index
         }
         if (props.type === 'range') {
           if (
             item.title ===
-            locale.calendaritem.monthTitle(
-              state.defaultData[3],
-              state.defaultData[4]
-            )
+            locale.calendaritem.monthTitle(defaultData[3], defaultData[4])
           ) {
             lastCurrent = index
           }
@@ -599,16 +591,16 @@ export const CalendarItem = React.forwardRef<
     setDefaultRange(monthNum, current)
     setReachedYearMonthInfo(current)
 
-    if (state.defaultData.length > 0) {
+    if (defaultData.length > 0) {
       // 设置当前选中日期
       if (type === 'range') {
         chooseDay(
-          { day: state.defaultData[2], type: 'active' },
+          { day: defaultData[2], type: 'active' },
           monthsData[current],
           true
         )
         chooseDay(
-          { day: state.defaultData[5], type: 'active' },
+          { day: defaultData[5], type: 'active' },
           monthsData[lastCurrent],
           true
         )
@@ -632,7 +624,7 @@ export const CalendarItem = React.forwardRef<
         })
       } else {
         chooseDay(
-          { day: state.defaultData[2], type: 'active' },
+          { day: defaultData[2], type: 'active' },
           monthsData[current],
           true
         )
