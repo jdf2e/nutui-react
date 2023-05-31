@@ -747,7 +747,7 @@ export type NutCSSVariables =
   | 'nutuiWatermarkZIndex'
   | 'nutuiInvoicePadding'
   | 'nutuiTrendarrowFontSize'
-  | 'nutuiTrendarrowBeforeIconMargin'
+  | 'nutuiTrendarrowIconMargin'
   | 'nutuiCountupHeight'
   | 'nutuiCountupBaseSize'
   | 'nutuiCountupBorderRaduis'
