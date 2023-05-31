@@ -51,12 +51,11 @@ export const TrendArrow: FunctionComponent<
     ...rest
   } = { ...defaultProps, ...props }
   const classPrefix = 'nut-trendarrow'
-  const handleClick = () => {}
   const rateTrend = useRef(value > 0)
 
   const myFixed = (num: any, digit = 2) => {
     if (Object.is(parseFloat(num), NaN)) {
-      return console.log(`传入的值：${num}不是一个数字`)
+      return console.warn(`传入的值：${num}不是一个数字`)
     }
     num = parseFloat(num)
     // eslint-disable-next-line no-restricted-properties
@@ -106,11 +105,7 @@ export const TrendArrow: FunctionComponent<
     )
   }
   return (
-    <div
-      className={`${classPrefix} ${className}`}
-      {...rest}
-      onClick={handleClick}
-    >
+    <div className={`${classPrefix} ${className}`} style={style} {...rest}>
       {!arrowLeft && renderContent(!arrowLeft)}
       {Number(value) !== 0 && (
         <>
