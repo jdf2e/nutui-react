@@ -151,7 +151,7 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 描述 | 默认值 |
+| 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-skeleton-background | 背景 | `rgb(239, 239, 239)` |
 | \--nutui-skeleton-line-width | 线条宽度 | `100%` |

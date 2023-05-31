@@ -322,7 +322,7 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 描述 | 默认值 |
+| 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | --nutui-fixednav-bg-color | 背景颜色 | `#fff` |
 | --nutui-fixednav-font-color | 字体颜色 | `#000` |

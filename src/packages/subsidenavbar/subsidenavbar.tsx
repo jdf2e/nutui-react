@@ -34,7 +34,6 @@ export const SubSideNavBar: FunctionComponent<SubSideNavBarProps> = (props) => {
   }
   // const offset = props.offset ? Number(props.offset) : 20
   const offset = useContext(OffsetContext)
-  console.log('offset>>>>>>>', offset)
   const listRef = useRef<HTMLDivElement>(null)
   const setListLevel = useCallback(
     (nodeList: HTMLCollection, level = 1) => {

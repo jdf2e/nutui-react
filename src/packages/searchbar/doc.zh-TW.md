@@ -217,7 +217,7 @@ export default App;
 
 組件提供了下列 CSS 變數，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 描述 | 預設值 |
+| 名稱 | 说明 | 預設值 |
 | --- | --- | --- |
 | --nutui-searchbar-width | 搜索框的寬度 | `100%` |
 | --nutui-searchbar-background | 搜索框背景色 | `$gray6` |
