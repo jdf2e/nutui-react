@@ -326,7 +326,7 @@ export const Popover: FunctionComponent<
           {Array.isArray(children) ? children[0] : children}
         </div>
       )}
-      <div className={classes} style={getRootPosition()}>
+      <div className={classes} style={getRootPosition()} {...reset}>
         <Popup
           className={`nut-popover-content nut-popover-content--${location}`}
           style={customStyle()}
