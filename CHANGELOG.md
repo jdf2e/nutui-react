@@ -1,3 +1,9 @@
+# v1.5.7
+`2023-05-31`
+
+* :bug: fix(virtuallist): 修复列表无法滚动的问题 (#1051) @Eiinu
+* :bug: fix: picker 高度设置的 class 未加 nut 前缀 (#1054) @oasis-cloud
+
 # v1.5.6
 `2023-05-24`
 
