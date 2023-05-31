@@ -234,7 +234,10 @@ export const Popover: FunctionComponent<
 
   const getRootPosition = () => {
     let styles: CSSProperties = {}
-    if (!rootPosition) return {}
+    if (!rootPosition) {
+      styles.visibility = 'hidden'
+      return styles
+    }
 
     const contentWidth = elWidth
     const contentHeight = elHeight
