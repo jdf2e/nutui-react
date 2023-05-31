@@ -464,7 +464,18 @@
 - `onSorter` 重命名为 `onSort`
 - 合并 `summary` 与 `noData` 的样式处理
 #### Tag
+
 #### TrendArrow
+
+- `rate` 重命名为 `value`
+- `showSign` 重命名为 `symbol`
+- `showZero` 重命名为 `zero`
+- `syncTextColor` 重命名为 `syncColor`
+- `textColor` 重命名为 `color`
+- 删除 `iconSize`, 图标自定义传入
+- 删除 `upIconName`, 替换为 `riseIcon`, 类型为 `React.Node` 类型
+- 删除 `downIconName`, 替换为 `downIcon`, 类型为 `React.Node` 类型
+
 #### Video
 #### VirtualList
 - sourceData 重命名为 list
