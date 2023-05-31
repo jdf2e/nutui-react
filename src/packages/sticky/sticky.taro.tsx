@@ -135,7 +135,7 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
         setFixed(windowHeight - threshold < curRootRect.bottom)
       }
     } else {
-      console.log('getRectByTaro获取失败', { stickyRect, curRootRect })
+      console.warn('getRectByTaro获取失败', { stickyRect, curRootRect })
     }
   }
   const getElement = useCallback(() => {

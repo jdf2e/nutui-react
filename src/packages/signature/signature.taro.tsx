@@ -126,7 +126,7 @@ export const Signature: FunctionComponent<
             onConfirm && onConfirm(res.tempFilePath)
           },
           fail: (res) => {
-            console.log('保存失败')
+            console.warn('保存失败')
           },
         })
       })

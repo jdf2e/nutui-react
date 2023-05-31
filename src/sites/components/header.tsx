@@ -22,7 +22,7 @@ const Header = () => {
       (item: any) => hashCompName === item.name.toLowerCase()
     )
 
-    return targetComp[0].name
+    return targetComp[0]?.name
   }
 
   return (

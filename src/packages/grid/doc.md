@@ -240,7 +240,7 @@ export default App
 
 ### Props
 
-| 属性 | 描述 | 类型 | 默认值 |
+| 属性 | 说明 | 类型 | 默认值 |
 |-|-|-|-|
 | columns | 列数 | number \| string | `4` |
 | gap | 格子之间的间距，默认单位为`px` | number \| string | `0` |
@@ -254,7 +254,7 @@ export default App
 
 ### Props
 
-| 属性 | 描述 | 类型 | 默认值 |
+| 属性 | 说明 | 类型 | 默认值 |
 |-|-|-|-|
 | text | 文字 | string \| ReactNode   | - |
 | onClick | 点击格子时触发 | (event: Event) => void | - |
@@ -265,7 +265,7 @@ export default App
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 描述 | 默认值 |
+| 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | --nutui-grid-border-color | 边框颜色 | `#f5f6f7` |
 | --nutui-grid-item-content-padding | 内边距 | `16px 8px` |

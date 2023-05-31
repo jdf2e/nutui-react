@@ -322,7 +322,7 @@ const App = () => {
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 描述 | 默认值 |
+| 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-collapse-item-padding | 内边距 | `13px 36px 13px 26px` |
 | \--nutui-collapse-item-font-size | 字体大小 | `$font-size-2` |
