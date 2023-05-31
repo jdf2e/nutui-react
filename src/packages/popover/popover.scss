@@ -87,7 +87,6 @@
 
   .nut-popover-content {
     position: absolute;
-    // z-index: 9999;
     background-color: $popover-content-background-color;
     border-radius: $popover-border-radius;
     font-size: $popover-font-size;
@@ -95,14 +94,11 @@
     font-weight: normal;
     color: $popover-primary-text-color;
     box-shadow: 0 2px 12px #3232331f;
-    // opacity: 1;
-    // transition: opacity 0.15s, transform 0.15s;
     max-height: initial;
     overflow-y: initial;
 
     &-group {
       display: block;
-      // position: relative;
       height: 100%;
       width: 100%;
     }
@@ -110,7 +106,6 @@
     .nut-popover-menu-item {
       display: flex;
       align-items: center;
-      // padding-bottom: 8px;
       padding: $popover-menu-item-padding;
       border-bottom: 1px solid $popover-border-bottom-color;
 

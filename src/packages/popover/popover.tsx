@@ -8,6 +8,7 @@ import React, {
 import classNames from 'classnames'
 import Popup from '@/packages/popup'
 import { getRect } from '@/utils/use-client-rect'
+import { upperCaseFirst } from '@/utils/index'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type PopoverLocation =
@@ -232,15 +233,6 @@ export const Popover: FunctionComponent<
       styles[`border${upperCaseFirst(direction)}Color` as any] = background
     }
     return styles
-  }
-
-  const upperCaseFirst = (str: string) => {
-    var str = str.toLowerCase()
-    str = str.replace(
-      /\b\w+\b/g,
-      (word) => word.substring(0, 1).toUpperCase() + word.substring(1)
-    )
-    return str
   }
 
   const getRootPosition = () => {

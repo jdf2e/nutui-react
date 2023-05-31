@@ -11,7 +11,7 @@
 import { Popover } from '@nutui/nutui-react'
 ```
 
-## 代码实例
+## 代码演示
 
 ### 基本用法
 

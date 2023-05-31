@@ -49,6 +49,7 @@ const PopoverDemo = () => {
       disableAction: '禁用选项',
       content: '自定义内容',
       contentColor: '自定义颜色',
+      showMoreDirection: '点击查看更多方向',
     },
     'en-US': {
       title: 'Basic Usage',
@@ -61,6 +62,7 @@ const PopoverDemo = () => {
       disableAction: 'Disabled',
       content: 'Custom Content',
       contentColor: 'Custom Color',
+      showMoreDirection: 'click show more direction',
     },
     'zh-TW': {
       title: '基礎用法',
@@ -73,6 +75,7 @@ const PopoverDemo = () => {
       disableAction: '禁用選項',
       content: '自定義內容',
       contentColor: '自定義顏色',
+      showMoreDirection: '點擊查看更多方向',
     },
   })
   const selfContentStyle = {
@@ -316,7 +319,7 @@ const PopoverDemo = () => {
 
         <h2>{translated.title3}</h2>
         <Cell
-          title="点击查看更多方向"
+          title={translated.showMoreDirection}
           description={baseDesc}
           onClick={handlePicker}
         ></Cell>
