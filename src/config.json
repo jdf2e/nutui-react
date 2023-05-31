@@ -1055,7 +1055,7 @@
           "author": "lzz"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Video",
           "type": "component",
           "cName": "视频播放器",
@@ -1063,7 +1063,7 @@
           "desc": "原生video实现的视频播放器",
           "sort": 20,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "swag~jun"
         }
       ]
