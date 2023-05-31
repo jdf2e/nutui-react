@@ -10,7 +10,7 @@ exports[`should match snapshot 1`] = `
       class="nut-subsidenavbar__title nut-subsidenavbar-border-bt"
       style="padding-left: 40px;"
     >
-      一级标题
+      一级标题 
       <i
         class="arrow-icon arrow-up"
       />
