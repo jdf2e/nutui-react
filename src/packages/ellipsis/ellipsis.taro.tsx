@@ -56,7 +56,7 @@ export const Ellipsis: FunctionComponent<
     onChange,
     ...rest
   } = { ...defaultProps, ...props }
-  let maxHeight = 0 // 当行的最大高度
+  const maxHeight = useRef(0) // 当行的最大高度
   const [exceeded, setExceeded] = useState(false)
   const [expanded, setExpanded] = useState(false)
   const ellipsis = useRef<EllipsisValue>({
@@ -67,8 +67,8 @@ export const Ellipsis: FunctionComponent<
   const rootContain = useRef<HTMLDivElement>(null)
   const symbolContain = useRef<HTMLDivElement>(null)
   const [contentCopy, setContentCopy] = useState(content)
-  let lineH = 0 // 当行的最大高度
-  let originHeight = 0 // 原始高度
+  const lineH = useRef(0) // 当行的最大高度
+  const originHeight = useRef(0) // 原始高度
   const refRandomId = Math.random().toString(36).slice(-8)
   const widthRef: any = useRef('auto')
 
@@ -97,7 +97,10 @@ export const Ellipsis: FunctionComponent<
 
   useReady(() => init())
 
-  useEffect(() => init(), [content])
+  useEffect(
+    () => init(),
+    [content, lineH.current, maxHeight.current, originHeight.current]
+  )
 
   // 获取省略号宽度
   const getSymbolInfo = async () => {
@@ -134,16 +137,16 @@ export const Ellipsis: FunctionComponent<
           },
           (res) => {
             if (!res) return
-            lineH = pxToNumber(
+            lineH.current = pxToNumber(
               res.lineHeight === 'normal' ? lineHeight : res.lineHeight
             )
-            maxHeight = Math.floor(
-              lineH * (Number(rows) + 0.5) +
+            maxHeight.current = Math.floor(
+              lineH.current * (Number(rows) + 0.5) +
                 pxToNumber(res.paddingTop) +
                 pxToNumber(res.paddingBottom)
             )
 
-            originHeight = pxToNumber(res.height)
+            originHeight.current = pxToNumber(res.height)
 
             widthRef.current = res.width
 
@@ -167,10 +170,12 @@ export const Ellipsis: FunctionComponent<
   const calcEllipse = async () => {
     const refe = await getRectByTaro(rootContain.current)
 
-    if (refe.height <= maxHeight) {
+    if (refe.height <= maxHeight.current) {
       setExceeded(false)
     } else {
-      const rowNum = Math.floor(content.length / (originHeight / lineH - 1)) // 每行的字数
+      const rowNum = Math.floor(
+        content.length / (originHeight.current / lineH.current - 1)
+      ) // 每行的字数
 
       if (direction === 'middle') {
         const end = content.length
@@ -204,7 +209,7 @@ export const Ellipsis: FunctionComponent<
   // 验证省略号
   const verifyEllipsis = async () => {
     const refe = await getRectByTaro(rootContain.current)
-    if (refe && refe.height && refe.height > maxHeight) {
+    if (refe && refe.height && refe.height > maxHeight.current) {
       if (direction === 'end') {
         ellipsis.current.leading = ellipsis.current?.leading?.slice(
           0,
