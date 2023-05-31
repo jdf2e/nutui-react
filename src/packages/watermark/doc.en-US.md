@@ -4,14 +4,14 @@
 
 Add specific words or patterns on the page to prevent information theft.
 
-## Intro
+## Install
 
 ```ts
 // react
 import { WaterMark } from '@nutui/nutui-react';
 ```
 
-### Install
+### Basic Usage
 
 :::demo
 
@@ -22,40 +22,24 @@ import { WaterMark, Cell, Button } from '@nutui/nutui-react';
 const App = () => {
   const [flag, setFlag] = useState(false)
   const imgSrc = useRef(
-    '//img11.360buyimg.com/imagetools/jfs/t1/57345/6/20069/8019/62b995cdEd96fef03/51d3302dfeccd1d2.png'
+    '//m.360buyimg.com/imagetools/jfs/t1/57345/6/20069/8019/62b995cdEd96fef03/51d3302dfeccd1d2.png'
   )
-
-  const showTextMark = () => {
-    setFlag(false)
-  }
-
-  const showImageMark = () => {
-    setFlag(true)
-  }
   return (
-    <>
-      <Cell className="wrap">
-        <Button onClick={showTextMark}>Text WaterMark</Button>
-        <Button onClick={showImageMark}>Image WaterMark</Button>
-        {!flag && (
+    <Cell>
+      <Button onClick={() => setFlag(false)}>Text WaterMark</Button>
+      <Button onClick={() => setFlag(true)}>Image WaterMark</Button>
+      {!flag && <WaterMark zIndex={200} content="NutUI-WaterMark" />}
+      {flag && (
         <WaterMark
-            className="mark1"
-            zIndex={1}
-            content="nut-ui-water-mark"
-         />
-        )}
-        {flag && (
-        <WaterMark
-            className="mark1"
-            zIndex={1}
-            content="nut-ui-water-mark"
-            imageWidth={60}
-            imageHeight={23}
-            image={imgSrc.current}
-         />
-        )}
-      </Cell>
-    </>
+          zIndex={200}
+          content="NutUI-WaterMark"
+          rotate={22}
+          imageWidth={60}
+          imageHeight={23}
+          image={imgSrc.current}
+        />
+      )}
+    </Cell>
   )
 }
 export default App;
@@ -63,30 +47,23 @@ export default App;
 
 :::
 
-### Basic Usage
+### Part Usage
 
 :::demo
 
 ```tsx
 import React, { useRef } from "react";
-import { WaterMark, Cell } from '@nutui/nutui-react';
+import { WaterMark, Cell, Image } from '@nutui/nutui-react';
 
 const App = () => {
   const src = useRef(
-    '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
+    '//m.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
   )
-
   return (
-    <>
-      <Cell className="wrap wrap2">
-        <img src={src.current} alt="" />
-        <WaterMark
-          fullPage={false}
-          color="#fa2c19"
-          content="nut-ui"
-         />
-      </Cell>
-    </>
+    <Cell>
+      <Image src={src.current} alt="" width="100%" height="100%" />
+      <WaterMark fullPage={false} color="red" content="nutui" />
+    </Cell>
   )
 }
 export default App;

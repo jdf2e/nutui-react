@@ -71,7 +71,7 @@ const WaterMarkDemo = () => {
           )}
         </Cell>
         <h2>{translated.fa139733}</h2>
-        <Cell className="wrap wrap2">
+        <Cell>
           <img src={src.current} alt="" width="100%" height="100%" />
           <WaterMark fullPage={false} color="red" content="nutui" />
         </Cell>
