@@ -7,7 +7,7 @@
 ## 安装
 
 ``` ts
-import { Video } from '@nutui/nutui-react';
+import { Video } from '@nutui/nutui-react-taro';
 ```
 
 ## 代码演示
@@ -17,7 +17,7 @@ import { Video } from '@nutui/nutui-react';
 :::demo
 ```tsx
 import React, { useState } from "react";
-import { Cell, Video } from '@nutui/nutui-react';
+import { Cell, Video } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [source, setSource] = useState({
@@ -56,7 +56,7 @@ autoplay 属性设置视频自动播放
 :::demo
 ```tsx
 import React, { useState } from "react";
-import { Cell, Video } from '@nutui/nutui-react';
+import { Cell, Video } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [source, setSource] = useState({
@@ -97,7 +97,7 @@ muted属性设置视频初始化静音
 :::demo
 ```tsx
 import React, { useState } from "react";
-import { Cell, Video } from '@nutui/nutui-react';
+import { Cell, Video } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [source, setSource] = useState({
@@ -137,7 +137,7 @@ poster 属性设置视频海报
 :::demo
 ```tsx
 import React, { useState } from "react";
-import { Cell, Video } from '@nutui/nutui-react';
+import { Cell, Video } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [source, setSource] = useState({
