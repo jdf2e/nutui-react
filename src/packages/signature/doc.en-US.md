@@ -100,7 +100,7 @@ export default App;
 | lineWidth     | Width of line                    | number | `3`                                                   |
 | strokeStyle   | Drawing stroke color                   | string | `#000`                                              |
 | type           | Picture format                       | string | `png`                                               |
-| unSupportTpl |  Display copy without canvas | string | `sorry, the current browser doesn't support canvas, so we can't use this control! ` |
+| unsupported |  Display copy without canvas | RreactNode | `sorry, the current browser doesn't support canvas, so we can't use this control! ` |
 
 ## Event
 

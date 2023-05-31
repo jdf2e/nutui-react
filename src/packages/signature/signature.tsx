@@ -1,25 +1,21 @@
 import React, { FunctionComponent, useRef, useState, useEffect } from 'react'
-import Button from '@/packages/button'
-import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface SignatureProps {
+export interface SignatureProps extends BasicComponent {
   type: string
   lineWidth: number
   strokeStyle: string
-  unSupportTpl: string
-  className: string
-  confirm?: (canvas: HTMLCanvasElement, dataurl: string) => void
-  clear?: () => void
+  unsupported: string
   onConfirm?: (canvas: HTMLCanvasElement, dataurl: string) => void
   onClear?: () => void
 }
 const defaultProps = {
+  ...ComponentDefaults,
   type: 'png',
   lineWidth: 2,
   strokeStyle: '#000',
-  unSupportTpl: '对不起，当前浏览器不支持Canvas，无法使用本控件！',
-  className: '',
+  unsupported: '对不起，当前浏览器不支持Canvas，无法使用本控件！',
 } as SignatureProps
 export const Signature: FunctionComponent<
   Partial<SignatureProps> & React.HTMLAttributes<HTMLDivElement>
@@ -29,10 +25,9 @@ export const Signature: FunctionComponent<
     type,
     lineWidth,
     strokeStyle,
-    unSupportTpl,
+    unsupported,
     className,
-    confirm,
-    clear,
+    style,
     onConfirm,
     onClear,
     ...rest
@@ -40,7 +35,7 @@ export const Signature: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const b = bem('signature')
+  const classPrefix = `nut-signature`
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const wrapRef = useRef<HTMLDivElement>(null)
   const [canvasHeight, setCanvasHeight] = useState(0)
@@ -116,7 +111,6 @@ export const Signature: FunctionComponent<
       ctx.current.clearRect(0, 0, canvasWidth, canvasHeight)
       ctx.current.closePath()
     }
-    clear && clear()
     onClear && onClear()
   }
 
@@ -137,35 +131,19 @@ export const Signature: FunctionComponent<
         dataurl = canvas.toDataURL('image/png')
     }
     handleClearBtn()
-    confirm && confirm(canvas, dataurl as string)
     onConfirm && onConfirm(canvas, dataurl as string)
   }
   return (
-    <div className={`${b()} ${className}`} {...rest}>
-      <div className={`${b('inner')}`} ref={wrapRef}>
+    <div className={`${classPrefix} ${className}`} style={style} {...rest}>
+      <div className={`${classPrefix}__inner`} ref={wrapRef}>
         {isCanvasSupported() ? (
           <canvas ref={canvasRef} height={canvasHeight} width={canvasWidth} />
         ) : (
-          <p className={`${b('unsopport')}`}>
-            {locale.signature.unSupportTpl || unSupportTpl}
+          <p className={`${classPrefix}__unsopport}`}>
+            {locale.signature.unsupported || unsupported}
           </p>
         )}
       </div>
-
-      <Button
-        className={`${b('btn')}`}
-        type="default"
-        onClick={() => handleClearBtn()}
-      >
-        {locale.signature.reSign}
-      </Button>
-      <Button
-        className={`${b('btn')}`}
-        type="primary"
-        onClick={() => handleConfirmBtn()}
-      >
-        {locale.confirm}
-      </Button>
     </div>
   )
 }

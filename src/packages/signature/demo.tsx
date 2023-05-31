@@ -2,11 +2,14 @@ import React from 'react'
 import './demo.scss'
 import { Signature } from './signature'
 import { useTranslate } from '../../sites/assets/locale'
+import Button from '../button'
 
 interface T {
   basic: string
   title: string
   tips: string
+  reSign: string
+  confirm: string
 }
 
 const SignatureDemo = () => {
@@ -15,16 +18,22 @@ const SignatureDemo = () => {
       basic: '基本用法',
       title: '修改颜色和签字粗细',
       tips: 'Tips: 点击确认按钮,下方显示签名图片',
+      reSign: '重签',
+      confirm: '确认',
     },
     'zh-TW': {
       basic: '基本用法',
       title: '修改顏色和簽字粗細',
       tips: 'Tips: 點擊確認按鈕,下方顯示簽名圖片',
+      reSign: '重簽',
+      confirm: '確認',
     },
     'en-US': {
       basic: 'Basic Usage',
       title: 'Modify color and signature thickness',
       tips: 'Tips: click the confirm button, and the signature image is displayed below',
+      reSign: 'resign',
+      confirm: 'confirm',
     },
   })
   const confirm = (canvas: HTMLCanvasElement, data: string) => {
@@ -60,6 +69,14 @@ const SignatureDemo = () => {
       <div className="demo">
         <h2>{translated.basic}</h2>
         <Signature onConfirm={confirm} onClear={clear} />
+        <div>
+          <Button type="default" onClick={() => {}}>
+            {translated.reSign}
+          </Button>
+          <Button type="primary" onClick={() => {}}>
+            {translated.confirm}
+          </Button>
+        </div>
         <p className="demo-tips demo1" style={demoStyles}>
           {translated.tips}
         </p>

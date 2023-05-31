@@ -22,7 +22,7 @@ export interface SignatureProps {
   type: keyof FileType
   lineWidth: number
   strokeStyle: string
-  unSupportTpl: string
+  unsupported: string
   className: string
   confirm?: (dataurl: string) => void
   clear?: () => void
@@ -46,7 +46,7 @@ export const Signature: FunctionComponent<
     type,
     lineWidth,
     strokeStyle,
-    unSupportTpl,
+    unsupported,
     className,
     confirm,
     clear,

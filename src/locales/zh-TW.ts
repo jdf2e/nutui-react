@@ -64,7 +64,7 @@ const zhTW: BaseLang = {
   },
   signature: {
     reSign: '重簽',
-    unSupportTpl: '對不起,當前瀏覽器不支持Canvas,無法使用本控制項！',
+    unsupported: '對不起,當前瀏覽器不支持Canvas,無法使用本控制項！',
   },
   ecard: {
     chooseText: '請選擇電子卡面值',

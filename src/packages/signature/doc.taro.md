@@ -99,7 +99,7 @@ export default App;
 | lineWidth     | 线条的宽度                     | number | `3`                                                   |
 | strokeStyle   | 绘图笔触颜色                   | string | `#000`                                              |
 | type           | 图片格式                       | string | `png`                                               |
-| unSupportTpl | 不支持 Canvas 情况下的展示文案 | string | `对不起，当前浏览器不支持 Canvas，无法使用本控件！` |
+| unsupported | 不支持 Canvas 情况下的展示文案 | RreactNode | `对不起，当前浏览器不支持 Canvas，无法使用本控件！` |
 
 ## Event
 

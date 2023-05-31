@@ -19,7 +19,7 @@ const trTR: BaseLang = {
   infiniteloading: {
     pullRefreshText: 'yenile',
     loadText: 'yükleniyor...',
-    loadMoreText: "Oops, işte şimdi ayfanın sonuna geldiniz",
+    loadMoreText: 'Oops, işte şimdi ayfanın sonuna geldiniz',
   },
   pagination: {
     prev: 'Önceki',
@@ -27,7 +27,15 @@ const trTR: BaseLang = {
   },
   range: { rangeText: 'Aralıkta görünmüyor' },
   calendaritem: {
-    weekdays: ['Pazar', 'Pazartesi', 'Salı', 'Çarşamba', 'Perşembe', 'Cuma', 'Cumartesi'],
+    weekdays: [
+      'Pazar',
+      'Pazartesi',
+      'Salı',
+      'Çarşamba',
+      'Perşembe',
+      'Cuma',
+      'Cumartesi',
+    ],
     end: 'Son',
     start: 'Başlangıç',
     confirm: 'Onayla',
@@ -39,7 +47,8 @@ const trTR: BaseLang = {
   },
   shortpassword: {
     title: 'Lütfen şifrenizi girin',
-    description: 'Bir sanal varlık kullanıyorsunuz, lütfen kimlik doğrulaması yapın',
+    description:
+      'Bir sanal varlık kullanıyorsunuz, lütfen kimlik doğrulaması yapın',
     tips: 'Şifrenizi mi unuttunuz',
   },
   uploader: {
@@ -64,7 +73,7 @@ const trTR: BaseLang = {
   },
   signature: {
     reSign: 'Yeniden imzala',
-    unSupportTpl: `Üzgünüz, mevcut tarayıcı Canvas'ı desteklemiyor ve bu kontrol kullanılamıyor!`,
+    unsupported: `Üzgünüz, mevcut tarayıcı Canvas'ı desteklemiyor ve bu kontrol kullanılamıyor!`,
   },
   ecard: {
     chooseText: 'Lütfen eCard değerini seçin',
@@ -87,9 +96,9 @@ const trTR: BaseLang = {
   },
   comment: {
     complaintsText: 'Şikayet etmek istiyorum',
-    additionalReview: (day: number) => `atın aldıktan ${day} gün sonra gözden geçirin`,
-    additionalImages: (length: number) =>
-      ` ${length} İnceleme görüntülerinin`,
+    additionalReview: (day: number) =>
+      `atın aldıktan ${day} gün sonra gözden geçirin`,
+    additionalImages: (length: number) => ` ${length} İnceleme görüntülerinin`,
   },
   searchbar: {
     basePlaceholder: ' iyi şeyler satın alın',
