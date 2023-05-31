@@ -165,7 +165,7 @@ export default App;
 
 ## Prop
 
-| 字段 | 说明 | 类型 | 默认值
+| 属性 | 说明 | 类型 | 默认值
 |----- | ----- | ----- | -----
 | percent | 百分比 | `number \| string` | `必传项，无默认值`
 | strokeWidth | 圆弧的宽度 | `number \| string` | `5`

@@ -7,9 +7,9 @@ import React, {
   MouseEventHandler,
 } from 'react'
 import classNames from 'classnames'
-import { Image } from '@tarojs/components'
-import { AvatarContext } from '@/packages/avatargroup/AvatarContext'
-import bem from '@/utils/bem'
+import Image from '@/packages/image/index.taro'
+import { AvatarContext } from '@/packages/avatargroup/context'
+import { My } from '@nutui/icons-react-taro'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -17,15 +17,13 @@ export interface AvatarProps extends BasicComponent {
   size: string
   icon: React.ReactNode
   shape: AvatarShape
-  bgColor: string
+  background: string
   color: string
-  prefixCls: string
-  url: string
-  className: string
-  style: React.CSSProperties
-  activeAvatar: (e: MouseEvent) => void
-  onActiveAvatar: (e: MouseEvent) => void
-  onError: (e: any) => void
+  fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
+  src: string
+  alt: string
+  onClick: (e: MouseEvent) => void
+  onError: () => void
 }
 
 export type AvatarShape = 'round' | 'square'
@@ -33,28 +31,32 @@ export type AvatarShape = 'round' | 'square'
 const defaultProps = {
   ...ComponentDefaults,
   size: '',
+  shape: 'round',
   icon: '',
-  bgColor: '#eee',
+  fit: 'cover',
+  background: '#eee',
   color: '#666',
-  prefixCls: 'nut-avatar',
-  url: '',
+  src: '',
+  alt: '',
 } as AvatarProps
+
+const classPrefix = `nut-avatar`
 export const Avatar: FunctionComponent<
-  Partial<AvatarProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<AvatarProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
   const {
     children,
-    prefixCls,
     size,
     shape,
-    bgColor,
+    background,
     color,
-    url,
+    src,
     icon,
+    fit,
+    alt,
     className,
     style,
-    activeAvatar,
-    onActiveAvatar,
+    onClick,
     onError,
     ...rest
   } = {
@@ -67,36 +69,34 @@ export const Avatar: FunctionComponent<
   const [avatarIndex, setAvatarIndex] = useState(1) // avatar的索引
   const avatarRef = useRef<any>(null)
   const parent: any = useContext(AvatarContext)
-
-  const b = bem('avatar')
-  const classes = classNames({
-    [`nut-avatar-${size || parent?.propAvatarGroup?.size || 'normal'}`]: true,
-    [`nut-avatar-${shape || parent?.propAvatarGroup?.shape || 'round'}`]: true,
-  })
-  const cls = classNames(b(''), classes, className)
   const sizeValue = ['large', 'normal', 'small']
+
+  const classes = classNames({
+    [`nut-avatar-${parent?.propAvatarGroup?.size || size || 'normal'}`]: true,
+    [`nut-avatar-${parent?.propAvatarGroup?.shape || shape}`]: true,
+  })
+  const cls = classNames(classPrefix, classes, className)
+
   const styles: React.CSSProperties = {
     width: sizeValue.indexOf(size) > -1 ? '' : `${size}px`,
     height: sizeValue.indexOf(size) > -1 ? '' : `${size}px`,
-    backgroundColor: `${bgColor}`,
+    backgroundColor: `${background}`,
     color: `${color}`,
     marginLeft:
-      avatarIndex !== 1 && parent?.propAvatarGroup?.span
-        ? `${parent?.propAvatarGroup?.span}px`
+      avatarIndex !== 1 && parent?.propAvatarGroup?.gap
+        ? `${parent?.propAvatarGroup?.gap}px`
         : '',
     zIndex:
-      parent?.propAvatarGroup?.zIndex === 'right'
+      parent?.propAvatarGroup?.level === 'right'
         ? `${Math.abs(maxSum - avatarIndex)}`
         : '',
     ...style,
   }
 
   const maxStyles: React.CSSProperties = {
-    backgroundColor: `${parent?.propAvatarGroup?.maxBgColor}`,
+    backgroundColor: `${parent?.propAvatarGroup?.maxBackground}`,
     color: `${parent?.propAvatarGroup?.maxColor}`,
   }
-
-  const iconStyles = icon || ''
 
   useEffect(() => {
     const avatarChildren = parent?.avatarGroupRef?.current.children
@@ -117,7 +117,7 @@ export const Avatar: FunctionComponent<
       }
     }
     const index = avatarRef?.current?.dataset?.index
-    const maxCount = parent?.propAvatarGroup?.maxCount
+    const maxCount = parent?.propAvatarGroup?.max
     setMaxSum(children.length)
     setAvatarIndex(index)
     if (
@@ -129,22 +129,21 @@ export const Avatar: FunctionComponent<
     }
   }
 
-  const errorEvent = (e: any) => {
+  const errorEvent = () => {
     if (props.onError) {
-      props.onError(e)
+      props.onError()
     }
   }
 
   const clickAvatar: MouseEventHandler<HTMLDivElement> = (e: any) => {
-    activeAvatar && activeAvatar(e)
-    onActiveAvatar && onActiveAvatar(e)
+    onClick && onClick(e)
   }
 
   return (
     <>
       {(showMax ||
-        !parent?.propAvatarGroup?.maxCount ||
-        avatarIndex <= parent?.propAvatarGroup?.maxCount) && (
+        !parent?.propAvatarGroup?.max ||
+        avatarIndex <= parent?.propAvatarGroup?.max) && (
         <div
           className={cls}
           {...rest}
@@ -152,11 +151,17 @@ export const Avatar: FunctionComponent<
           onClick={clickAvatar}
           ref={avatarRef}
         >
-          {(!parent?.propAvatarGroup?.maxCount ||
-            avatarIndex <= parent?.propAvatarGroup?.maxCount) && (
+          {(!parent?.propAvatarGroup?.max ||
+            avatarIndex <= parent?.propAvatarGroup?.max) && (
             <>
-              {url && (
-                <Image className="avatar-img" src={url} onError={errorEvent} />
+              {src && (
+                <Image
+                  className="avatar-img"
+                  src={src}
+                  style={{ objectFit: fit }}
+                  alt={alt}
+                  onError={errorEvent}
+                />
               )}
               {React.isValidElement(icon)
                 ? React.cloneElement<any>(icon, {
@@ -165,6 +170,7 @@ export const Avatar: FunctionComponent<
                   })
                 : null}
               {children && <span className="text">{children}</span>}
+              {!src && !icon && !children && <My className="icon" />}
             </>
           )}
           {/* 折叠头像 */}
@@ -172,7 +178,7 @@ export const Avatar: FunctionComponent<
             <div className="text">
               {parent?.propAvatarGroup?.maxContent
                 ? parent?.propAvatarGroup?.maxContent
-                : `+ ${avatarIndex - parent?.propAvatarGroup?.maxCount}`}
+                : `+ ${avatarIndex - parent?.propAvatarGroup?.max}`}
             </div>
           )}
         </div>

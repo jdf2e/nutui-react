@@ -1,0 +1,12 @@
+// demo样式
+.custom-coutup {
+  .nut-countup__listitem--number {
+    margin: 0 $countup-lr-margin;
+    border-radius: $countup-border-raduis;
+    color: $countup-color;
+    background-color: $countup-bgcolor;
+  }
+  .nut-countup__number {
+    width: $countup-width;
+  }
+}

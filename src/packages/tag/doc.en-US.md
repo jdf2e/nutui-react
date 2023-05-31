@@ -1,6 +1,6 @@
 # Tag
 
-### introduce
+### Intro
 
 Label for labeling and classification.
 

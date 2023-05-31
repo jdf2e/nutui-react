@@ -1,30 +1,24 @@
 import * as React from 'react'
-import * as ReactDOM from 'react-dom'
-
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
-import bem from '@/utils/bem'
-import { render } from '@/utils/render'
+import { render as reactRender, unmount } from '@/utils/render'
+import { BasicComponent } from '@/utils/typings'
 
-export interface NotificationProps {
+export interface NotificationProps extends BasicComponent {
   id: string
-  style: React.CSSProperties
-  msg: string
-  color: string
+  message: string | React.ReactNode
   duration: number
   type: string
-  className: string
-  background: string
-  children: React.ReactNode
   position: string
-  isWrapTeleport: boolean
-  onClosed: () => void
+  onClose: () => void
   onClick: () => void
 }
 
 interface State {
   show: boolean
 }
+
+const classPrefix = 'nut-notify'
 
 export default class Notification extends React.PureComponent<
   NotificationProps,
@@ -54,7 +48,7 @@ export default class Notification extends React.PureComponent<
       const element = document.getElementById(this.props.id)
       element && element.parentNode && element.parentNode.removeChild(element)
     }
-    this.props.onClosed()
+    this.props.onClose()
   }
 
   startCloseTimer() {
@@ -86,46 +80,30 @@ export default class Notification extends React.PureComponent<
   }
 
   render() {
-    const {
-      children,
-      style,
-      msg,
-      color,
-      background,
-      type,
-      className,
-      position,
-      isWrapTeleport,
-    } = this.props
+    const { style, message, type, className, position } = this.props
     const { show } = this.state
-    const notifyBem = bem('notify')
-
     const classes = classNames({
-      'nut-notify--popup-top': position === 'top',
-      'nut-notify--popup-bottom': position === 'bottom',
-      'nut-notify': true,
-      [`nut-notify--${type}`]: true,
+      [`${classPrefix}--popup-top`]: position === 'top',
+      [`${classPrefix}--popup-bottom`]: position === 'bottom',
+      [`${classPrefix}`]: true,
+      [`${classPrefix}--${type}`]: true,
     })
     return (
       <>
         <CSSTransition
-          in={this.state.show}
+          in={show}
           timeout={300}
           classNames="fade"
           unmountOnExit
           appear
           position={position}
-          isWrapTeleport={isWrapTeleport}
         >
           <div
             className={`${classes} ${className}`}
-            style={{
-              color: `${color || ''}`,
-              background: `${background || ''}`,
-            }}
+            style={style}
             onClick={this.clickCover}
           >
-            {children || msg}
+            {message}
           </div>
         </CSSTransition>
       </>
@@ -153,7 +131,7 @@ Notification.newInstance = (properties, callback) => {
       component: instance,
       destroy() {
         setTimeout(() => {
-          ReactDOM.unmountComponentAtNode(element)
+          unmount(element)
           element &&
             element.parentNode &&
             element.parentNode.removeChild(element)
@@ -162,5 +140,5 @@ Notification.newInstance = (properties, callback) => {
     })
   }
 
-  render(<Notification {...properties} ref={ref} />, element)
+  reactRender(<Notification {...properties} ref={ref} />, element)
 }

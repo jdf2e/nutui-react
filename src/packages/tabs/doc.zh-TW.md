@@ -136,13 +136,12 @@ import React, { useState,useEffect } from "react";
 import { Tabs } from '@nutui/nutui-react';
 
 const App = () => {
-  const [tab3value, setTab3value] = useState('0');
-  const [list3, setList3] = useState(Array.from(new Array(2).keys()));
+  const [tab3value, setTab3value] = useState(0);
+  const [list3, setList3] = useState();
   useEffect(() => {
     setTimeout(() => {
-      list3.push(999);
-      setTab3value('2');
-      setList3(list3)
+      setTab3value(2);
+      setList3(Array.from(new Array(3).keys()))
     }, 3000)
   }, [])
   return (
@@ -382,7 +381,7 @@ const App = () => {
   ]
   return (
     <>
-      <Tabs value={tab7value} titleNode={() => {
+      <Tabs value={tab7value} title={() => {
         return list6.map(item => (
           <div
             onClick={() => setTab7value(item.paneKey)}
@@ -415,7 +414,7 @@ export default App;
 
 ### Tabs Props
 
-| 参数          | 说明                                          | 类型          | 默认值     |
+| 属性 | 说明                                          | 类型          | 默认值     |
 |---------------|-----------------------------------------------|---------------|------------|
 | value         | 绑定当前选中标签的标识符                      | number \| string | `0`          |
 | color         | 标签选中色                                    | string        | `#1a1a1a`    |
@@ -440,7 +439,7 @@ export default App;
 
 ### Tabs.Tabpane Props
 
-| 参数     | 说明                    | 类型    | 默认值           |
+| 属性 | 说明                    | 类型    | 默认值           |
 |----------|-------------------------|---------|------------------|
 | title    | 标题                    | string  |   -               |
 | paneKey  | 标签 Key , 匹配的标识符 | string  | 默认索引0,1,2... |

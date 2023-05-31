@@ -50,7 +50,7 @@
   text-align: center;
   word-wrap: break-word;
   height: $notify-height;
-
+  line-height: $notify-line-height;
   &--popup-top {
     position: fixed;
     top: 0;

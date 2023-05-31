@@ -1,16 +1,16 @@
 # Swipe 
 
-### introduce
+## Intro
 It is often used for gesture operations such as sliding left and right to delete cells
 
-### Install
+## Install
 
 ```javascript
 // react
 import { Swipe } from '@nutui/nutui-react';
 ```
 
-## Code demonstration
+## Demo
 
 ### Basic usage
 
@@ -140,7 +140,7 @@ import { Swipe, Cell, Button, Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const handleChange = () => {
-    Toast.text ('click ');
+    Toast.show ('click ');
   }
   return <>
     <Swipe
@@ -160,8 +160,8 @@ const App = () => {
         </>
       }
       onActionClick={handleChange}
-      onOpen={() => toast.text('open')}
-      onClose={() => toast.text('close')}
+      onOpen={() => Toast.show('open')}
+      onClose={() => Toast.show('close')}
     >
       <cell title= "event" />
     </Swipe>
@@ -257,7 +257,7 @@ export default App;
 ```
 :::
 
-## API
+## Swipe
 
 ### Props
 

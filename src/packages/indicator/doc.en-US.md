@@ -23,7 +23,7 @@ const App = () => {
   return (
     <div className="demo">
       <Cell>
-        <Indicator total={3} current={3} />
+        <Indicator total={3} current={2} />
       </Cell>
     </div>
   );
@@ -106,7 +106,7 @@ export default App;
 
 | Property | Description | Type | Default |
 |--------------|---------------|--------|---------|
-| current  | current step | number | `1` |
+| current  | current step | number | `0` |
 | total | step total size | number | `3` |
 | direction | display directory,default is horizontal | `'horizontal' \| 'vertical'` |   `horizontal` |
 

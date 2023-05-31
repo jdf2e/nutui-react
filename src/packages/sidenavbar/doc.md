@@ -84,10 +84,10 @@ const App = () => {
    setVisible(visible)
   }
   const clickItem = ({ title, key }) => {
-    Toast.text(`title=${title},key=${key}`)
+    Toast.show(`title=${title},key=${key}`)
   }
   const clickTitle = ({ title, key, isShow }) => {
-    Toast.text(`title=${title},key=${key},isShow=${isShow}`)
+    Toast.show(`title=${title},key=${key},isShow=${isShow}`)
   }
   return ( 
     <>  
@@ -133,7 +133,7 @@ export default App;
 
 ### 1、SideNavBar
 
-| 参数         | 说明                             | 类型   | 默认值           |
+| 属性 | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | visible      | 组件是否显示                       | boolean | `false`           |
 | title        | 整体标题                           | string  | -               |
@@ -143,14 +143,14 @@ export default App;
 
 ### 2、SubSideNavBar
 
-| 参数         | 说明                             | 类型   | 默认值           |
+| 属性 | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | key `v2.0.0`        | 导航唯一标识                       | string \| number |          |
 | title        | 整体标题                           | string  | -              |
 | open         | 导航是否默认展开                     | boolean  | `true`         |
 ### 3、SideNavBarItem
 
-| 参数         | 说明                             | 类型   | 默认值           |
+| 属性 | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | key `v2.0.0`        | 导航唯一标识                       | string \| number |          |
 | title        | 整体标题                           | string  | -               |

@@ -63,7 +63,7 @@ const GridDemo = () => {
   })
 
   const onClick = (item: any, index: number) => {
-    Toast.text(`点击了${item.text}，第${index}个`)
+    Toast.show(`点击了${item.text}，第${index}个`)
   }
 
   return (
@@ -230,7 +230,7 @@ const GridDemo = () => {
             <Avatar
               className="demo-avatar"
               icon={<My color="#fff" />}
-              bgColor="#FA2C19"
+              background="#FA2C19"
             />
           </Grid.Item>
           <Grid.Item>

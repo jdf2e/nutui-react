@@ -43,8 +43,9 @@ const App = () => {
     <Cell>
       <Progress
         percent={30}
-        color="rgba(250,44,25,0.47)"
-        strokeWidth="20"
+        background="rgba(250,44,25,0.2)"
+        color="rgba(250,44,25,0.9)"
+        strokeWidth="15"
       />
     </Cell>
   );
@@ -81,7 +82,7 @@ import { Progress, Image, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell>
-      <Progress percent={60}>
+      <Progress percent={60} showText>
         <Image
           width="30px"
           height="30px"
@@ -106,13 +107,13 @@ const App = () => {
   return (
     <>
       <Cell>
-        <Progress percent={30} strokeWidth="5" />
+        <Progress percent={30} strokeWidth="5" showText />
       </Cell>
       <Cell>
-        <Progress percent={50} strokeWidth="10" />
+        <Progress percent={50} strokeWidth="10" showText />
       </Cell>
       <Cell>
-        <Progress percent={70} strokeWidth="15" />
+        <Progress percent={70} strokeWidth="15" showText />
       </Cell>
     </>
   );
@@ -176,7 +177,7 @@ const App = () => {
       <Cell>
         <Button
           type="default"
-          style={{ margin: 8 }} 
+          style={{ margin: 8 }}
           onClick={() => {
             let num = value;
             if (value <= 0) {
@@ -189,7 +190,8 @@ const App = () => {
           减少
         </Button>
         <Button 
-          type="primary" 
+          type="primary"
+          style={{ margin: 8 }}
           onClick={() => {
             let num = value;
             if (value >= 100) {
@@ -209,11 +211,31 @@ export default App;
 ```
 :::
 
+### 延迟加载数据
+
+:::demo
+
+```jsx
+import  React from "react";
+import { Progress, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <Cell align="center">
+      <Progress percent={30} lazy delay={500} />
+    </Cell>
+  );
+};
+export default App;
+```
+
+:::
+
 ## Progress
 
 ### Props
 
-| 字段 | 说明 | 类型 | 默认值 |
+| 属性 | 说明 | 类型 | 默认值 |
 |----- | ----- | ----- | ----- |
 | percent | 百分比 | `number` | `0` |
 | color | 进度条线条颜色 | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)` |
@@ -221,6 +243,8 @@ export default App;
 | strokeWidth | 进度条宽度 | `string` | - |
 | showText | 是否显示文字内容 | `boolean` | `false` |
 | animated | 是否展示动画效果 | `boolean` | `false` |
+| lazy | 每次进入可视区展示进度条动画 | `boolean` | `false` |
+| delay | 延迟数据加载时长，单位 ms | `number` | `0` |
 
 ## 主题定制
 

@@ -172,7 +172,7 @@ const TableDemo = () => {
         return (
           <Button
             onClick={() => {
-              // Toast.text('hello')
+              // Toast.show('hello')
               toastShow('hello')
             }}
             size="small"
@@ -235,7 +235,7 @@ const TableDemo = () => {
   }, 5000)
 
   const handleSorter = (item: TableColumnProps, data: Array<any>) => {
-    // Toast.text(`${JSON.stringify(item)}`)
+    // Toast.show(`${JSON.stringify(item)}`)
     toastShow(`${JSON.stringify(item)}`)
     setData5([...data])
   }
@@ -305,14 +305,14 @@ const TableDemo = () => {
         <Table
           columns={columns5}
           data={data5}
-          onSorter={handleSorter}
+          onSort={handleSorter}
           style={{ background: '#fff' }}
         />
         <h2>{translated.sorterIcon}</h2>
         <Table
           columns={columns5}
           data={data5}
-          onSorter={handleSorter}
+          onSort={handleSorter}
           style={{ background: '#fff' }}
           sorterIcon={<TriangleDown size="12px" />}
         />

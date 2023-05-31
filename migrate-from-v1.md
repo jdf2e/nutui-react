@@ -31,6 +31,7 @@
 - `desc` 重命名为 `description`
 - `title`、`description` 改为 `React.Node` 类型
 - 删除 `titleSlot` 和 `descSlot`
+- 增加 `divider`, 单元格之间是否有分割线
 #### ConfigProvider
 #### Icon
 #### Image
@@ -69,6 +70,7 @@
 - `acceptKey` 重命名为 `floorKey`
 - `indexList` 重命名为 `list`
 - `isSticky` 重命名为 `sticky`
+- 新增`showKeys`, 是否展示右侧导航
 #### FixedNav
 - 删除 fixednavClass，通过 className 实现
 - unActiveText 重命名为 inactiveText
@@ -140,8 +142,29 @@
 ### 数据录入
 #### Calendar
 #### Cascader
+- 新增 `defaultValue`，其中 `defaultValue` 用于非受控，原 `value` 用于受控。两者的类型都改为 `(number | string | undefined)[]`
+- `checkedIcon` 重命名为 `activeIcon`
+- `poppable` 重命名为 `popup`
+- `lazyLoad` 重命名为 `onLoad`，当启动懒加载 `lazy` 时，动态加载数据
+- `convertConfig` 重命名为 `format`，配置转换规则
+- 合并 `textKey` `valueKey` `childrenKey` 三个属性为对象属性 `optionKey`
+- 删除 `tabsColor`， 该属性为设置 `Tabs` 当前选中的 `tab` 的下划线色值，但该值最好与文字部分搭配使用，统一处理 CSS 变量。
+
 #### Checkbox
+- 新增 defaultChecked，用于非受控，checked 用于受控
+- 新增 value，用于 group 模式 
+- textPosition 重命名为 labelPosition
+- iconName 重命名为 icon，类型为 ReactNode
+- iconAcitveName 重命名为 activeIcon
+- iconIndeterminateName 重命名为 iconIndeterminateIcon
+- 移除 iconSize
+#### Checkbox.Group
+- 新增 defaultValue，用于非受控，value 用于受控
+- textPosition 重命名为 labelPosition
+- toggleAll 重命名为 toggle
+- toggleReverse 重命名为 reverse
 #### DatePicker
+- 因为依赖组件`Picker`的变更，方法 `onConfirmDatePicker`、`onChange`的参数进行了调整，从`(selectedValue, selectedOptions)` 改为 `(selectedOptions, selectedValue)`。
 #### Form
 #### Input
 #### InputNumber
@@ -152,9 +175,39 @@
 - 删除 `inputWidth` 和 `buttonSize`, 通过css变量实现
 - 新增taro的`formatter`属性开发
 #### NumberKeyboard
+- randomKeys 重命名为 random
+- customKey 重命名为 custom
+- title 类型变更为 ReactNode
+- 新增 onConfirm 事件
+- 移除 popClass 定义，默认支持透传 Popup 属性
 #### Picker
+- `isVisible` 重命名为 `visible`
+- `listData` 重命名为 `options`
+- `defaultValueData` 重命名为 `defaultValue`
+- 增加受控 `value`
+- `swipeDuration` 重命名为 `duration`
+- `onCloseUpdate` 重命名为 `afterClose`
+- 方法 `onConfirm`、`onClose`、`afterClose`、`onChange`的参数进行了调整，从`(selectedValue, selectedOptions)` 改为 `(selectedOptions, selectedValue)`。
 #### Radio
+- 移除 iconSize，可通过 Icon 的 css 变量设置
+- iconName 重命名为 icon，类型修改为 ReactNode
+- 增加 labelPosition，用于设置 label 的位置
+- 增加 checked 和 defaultChecked ，用于受控和非受控
+- onChange 类型修改为 `(checked: boolean) => void`
+### Radio.Group
+- textPosition 重命名为 labelPosition 
+- 增加 defaultValue ，用于非受控
+- onChange 类型修改为 `(value: string| number) => void`
 #### Range
+- maxDesc 重命名为 maxDescription，类型改为 ReactNode
+- minDesc 重命名为 minDescription，类型改为 ReactNode
+- curValueDesc 重命名为 currentDescription，类型改为 (value) => ReactNode
+- 移除 hiddenRange，通过 max/minDescription 传 null 实现
+- 移除 hiddenTag，通过 currentDescription 传 null 实现
+- 移除 activeColor、inactiveColor、buttonColor，通过 css 变量实现
+- onDragStart 重命名为 onStart
+- onDragEnd 重命名为 onEnd
+- modelValue 重命为 value，增加 defaultValue 非受控方式
 #### Rate
 - minimizeValue 重命名为 min
 - readonly 重命名为 readOnly
@@ -162,8 +215,37 @@
 - 移除 activeColor、voidColor、iconSize，通过 checkedIcon、uncheckedIcon 实现
 - 增加受控 value 与非受控 defaultValue，移除 modelValue
 #### SearchBar
+- 删除 `clearSize`，样式默认
+- 删除 `background`，使用 CSS 变量 `--nutui-searchbar-background` 实现 
+- 删除 `inputBackground`，使用 CSS 变量 `--nutui-searchbar-input-background` 实现 
+- 删除 `align`，使用 CSS 变量 `--nutui-searchbar-input-text-align`
+- 新增 `left` 和 `right`，为 `ReactNode` 节点，可自定义内容
+- 删除 `leftoutIcon` 和 `labal`，使用 `left` 实现
+- 删除 `rightoutIcon` 和 `actionText`，使用 `right` 实现
+- 删除 `leftinIcon`，使用 `leftIn` 实现
+- 删除 `rightinIcon`，使用 `rightIn` 实现
+- 删除 `onCancel`，使用 `right` 来实现事件处理
+- 删除 `onClickLeftinIcon`，用户可使用 `left` 来实现事件处理
+- 删除 `onClickLeftoutIcon`，用户可使用 `left` 来实现事件处理
+- 删除 `onClickRightinIcon`，用户可使用 `right` 来实现事件处理
+- 删除 `onClickRightoutIcon`，用户可使用 `right` 来实现事件处理
+
 #### ShortPassword
+- desc 重命名为 description
+- noButton 重命名为 hideFooter
+- onOk 重命名为 onConfirm
+- errorMsg 重命名为 error
+- 移除 closeOnClickOverlay，默认支持透传 Popup 属性
+- title、description、tips、error 类型修改为 ReactNode
+- modelValue 重命名为 value，受控模式
+- 新增 onFoucs 事件
 #### TextArea
+- maxlength 重命名为 maxLength
+- readonly 重命名为 readOnly
+- limitShow 重命名为 showCount
+- autosize 重命名为 autoSize
+- 移除 textAlign，可通过 style 传入
+- defaultValue 改为非受控，增加受控值 value
 #### Uploader
 
 - `maximize` 重命名为 `maxFileSize`
@@ -185,6 +267,18 @@
 
 ### 操作反馈
 #### ActionSheet
+- `title`，类型变更为 `ReactNode`
+- `description`，类型变更为 `ReactNode`
+- `cancelTxt`，重命名为 `cancelText`，类型变更为 `ReactNode`
+- `menuItems` 重命名为 `options`
+- `chooseTagValue` 重命名为 `value`
+- `onChoose` 重命名为 `onSelect`
+- 增加 `options` 的定义
+  - `color` 重命名为 `danger`
+  - `name`，列表项的标题key
+  - `description`，列表项的描述key
+  - `danger`，列表项中提醒用户重点关注的操作
+  - `disable`，列表项中禁用项
 #### BackTop
 - elId 重命名为 target
 - 移除 right、bottom，通过 style 传入，增加支持 left、top
@@ -209,6 +303,8 @@
 #### Drag
 #### Infiniteloading
 #### Notify
+- 删除 `color` 和 `background`, 通过css变量实现
+- 修改 onClosed 为 onClose，规范命名，关闭时触发。
 #### PullToRefresh
 #### Swipe
 
@@ -220,16 +316,40 @@
 - 删除 `activeColor` 和 `inactiveColor`, 通过css变量实现
 #### Toast
 
+- 删除H5版本 `id` 
+- 删除 `center`和 `bottom`，通过 `position` 实现
+- 删除 `bgColor`，通过 css 变量实现
+- 删除 `customClass`，通过 `className` 实现
+- 删除 `cover` 和 `coverColor` ，通过css变量实现
+- 删除 `loadingRotate`，旋转状态通过 `iconFont`实现
+- 删除 `textAlignCenter`，通过css变量实现
+- 修改 `closeOnClickOverlay` 为 `closeOnOverlayClick` ，语义不变，是否在点击遮罩层后关闭提示
+
 ### 展示组件
 #### Animate
 - `className` 属性通过继承实现
 - `style` 属性通过继承实现
+
 #### AnimatingNumbers
+
+- `maxLen` 重命名为 `length`
+- `endNumber` 重命名为 `value`, 类型改为 `string|number`
+- `delaySpeed` 重命名为 `delay`
+- `easeSpeed` 重命名为 `duration`
+
 #### Audio
 - url 重命名为 src
+- autoplay 重命名为 autoPlay
 - onFastBack 重命名为 onBack
 - onPlayEnd 重命名为 onEnd
 #### Avatar
+- Avatar `url` 重命名为 `src`
+- Avatar `onActiveAvatar` 重命名为 `onClick`
+- AvatarGroup `maxCount` 重命名为 `max`
+- AvatarGroup `span` 重命名为 `gap`
+- AvatarGroup `zIndex` 重命名为 `level`
+- 新增fit属性，图片填充模式
+- 图片加兜底
 #### Badge
 - 删除zIndex，目前没有用到，也不生效，直接去掉。
 - 删除icon，自定义icon可放在 value 中实现，扩充了value的类型。
@@ -237,24 +357,64 @@
 - 主题定制的css变量中，去掉和dot有关的其他值，只保留 width。其他值由width计算而来。
 
 #### CircleProgress
--h5
-- `progress` 重命名为 `percent`
-- `strokeWidth` 改用 css变量控制
-- `circleColor` 重名为 `color`
-- `pathColor` 改用 css变量控制
+- h5
+  - `progress` 重命名为 `percent`
+  - `strokeWidth` 改用 css变量控制
+  - `circleColor` 重名为 `color`
+  - `pathColor` 改用 css变量控制
 
--taro
-- `progress` 重命名为 `percent`
-- `circleColor` 重名为 `color`
-- `pathColor` 重名为 `background`
+- taro
+  - `progress` 重命名为 `percent`
+  - `circleColor` 重名为 `color`
+  - `pathColor` 重名为 `background`
 #### Collapse
+
+- 新增 defaultActiveName 非受控
+- activeName 改为受控方式
+- subTitle 重命名为 extra
+- onChange 参数变更为 activeName, name, status
+
 #### CountDown
+
+- 新增 `remainingTime`, 支持剩余毫秒时间倒计时。
+
 #### Ellipsis
+- 新增className和style属性的支持
+- 优化H5的代码，去掉useEffect渲染改用useLayoutEffect
 #### Empty
+- 新增status属性,默认图片错误类型
+- 优化代码逻辑，包括status和image的逻辑，渲染问题修复以及文档优化
+- 1）渲染问题修复：之前的description的ReactNode节点存在引入错误，导致传入元素标签失效，2.0版本进行了一个修复。
+- 2）代码逻辑优化：因新增status属性，对一些无用的代码进行了一个精简优化
 #### ImagePreview
+- `show` 重命名为 `visible`
+- `autoplay` 重命名为 `autoPlay`
+- `initNo` 重命名为 `defaultValue`，同时增加 `value`，为受控
+- `paginationVisible` 重命名为 `indicator`
+- `paginationColor` 重命名为 `indicatorColor`
+- `contentClose` 重命名为 `closeOnContentClick`
+- 在 `Taro` 下支持视频
+
 #### NoticeBar
+- `direction` 的可选值从`across` 改为 `horizontal`
+- `text` 改为 `content`
+- `closeMode` 改为 `closeable`
+- `leftIcon` 类型扩充，支持 `ReactNode`
+- `rightIcon` 类型扩充，支持 `ReactNode`
+- `color` 删除，使用 CSS 变量，之前已支持
+- `background` 删除，使用 CSS 变量，之前已支持
+- `wrapable` 更名为 `wrap`
+- `standTime` 更名为 `duration`
+- `complexAm ` 废弃
+
 #### Popover
+
 #### Price
+
+- `decimalDigits` 重命名为 `digits`
+- 删除`needSymbol`, 利用 `symbol` 判断是否需要加上 symbol 符号
+- 增加`line`, 用于划线价展示
+  
 #### Progress
 - percentage 重命名为 percent，受控
 - 移除 isShowPercentage，可以自定义传入文案
@@ -267,10 +427,42 @@
 - 移除 textColor，通过 css 实现
 - 移除 textInside，仅保留内显功能
 - 移除 textType、icon，通过 children 传入自定义 ReactNode，不再区分类型
+- 新增 lazy 属性，支持每次进入可视区时展示进度条动画
+- 新增 delay 属性，表示延迟数据加载时长
 #### Skeleton
+- loading 重命名为 visible
+- row 重命名为 rows
+- 移除 width，通过 css 变量 skeleton-line-width 实现
+- 移除 height，通过 css 变量 skeleton-line-height 实现
+- 移除 round，通过 css 变量 skeleton-line-border-radius 实现
 #### Steps
+- current 重命名为 value
+- onClickStep 重命名为 onStepClick
+- progressDot 重命名为 dot
+#### Step
+- 移除 iconColor，可通过 icon 属性传入自定义 icon 或借助 CSS Variables 修改 icon 颜色
+- 移除 size，可通过 icon 属性传入自定义 icon 或借助 CSS Variables 修改 icon 大小
+- 移除 renderContent ，可通过 description 实现
+- title 类型修改为 ReactNode
+- content 重命名为 description，类型改为 ReactNode
+- icon 类型修改为 ReactNode
+- activeIndex 重命名为 value
 #### Swiper
+- h5
+  - 移除 paginationColor，通过 indicator 的 CSS 变量控制
+  - 移除 paginationBgColor，通过 indicator 的 CSS 变量控制
+  - 移除 pageContent，通过 indicator 实现
+  - autoplay 重命名为 autoplay
+  - initPage 重命名为 defaultValue
+  - paginationVisible 重命名为 indicator，类型改为 ReactNode
+  - isPreventDefault 重命名为 preventDefault
+  - isStopPropagation 重命名为 stopPropagation
+  - isCenter 重命名为 center
+- taro
+  - 通过封装 Taro 的 Swiper 和 SwiperItem 实现，支持的属性可参考 Taro Swiper 文档。 
 #### Table
+- `onSorter` 重命名为 `onSort`
+- 合并 `summary` 与 `noData` 的样式处理
 #### Tag
 
 #### TrendArrow
@@ -286,6 +478,11 @@
 
 #### Video
 #### VirtualList
+- sourceData 重命名为 list
+- conatinerSize 重命名为 containerHeight
+- itemSize 重命名为 itemHeight
+- itemEqualSize 重命名为 itemEqual
+- horizontal 修改为 direction，默认值 vertical，可选值 horizontal
 #### WaterMark
 
 ### 特色组件

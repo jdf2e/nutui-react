@@ -207,6 +207,7 @@ export default App;
 | riseIcon | 自定义向上箭头icon | `React.ReactNode` | `<TriangleUp/>` |
 | downIcon | 自定义向下箭头icon | `React.ReactNode` | `<TriangleDown/>` |
 
+
 ## 主题定制
 
 ### 样式变量

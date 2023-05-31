@@ -5,22 +5,22 @@ import { render, waitFor, fireEvent } from '@testing-library/react'
 import Cell from '@/packages/cell'
 import Notify from '@/packages/notify'
 
-const onClickNotify = jest.fn((type, msg, options?) => {
+const onClickNotify = jest.fn((type, message, options?) => {
   switch (type) {
     case 'text':
-      Notify.text(msg, options)
+      Notify.text(message, options)
       break
     case 'primary':
-      Notify.primary(msg, options)
+      Notify.primary(message, options)
       break
     case 'success':
-      Notify.success(msg, options)
+      Notify.success(message, options)
       break
     case 'danger':
-      Notify.danger(msg, options)
+      Notify.danger(message, options)
       break
     case 'warn':
-      Notify.warn(msg, options)
+      Notify.warn(message, options)
       break
     default:
       break
@@ -47,8 +47,10 @@ test('test toast props', async () => {
         onClickNotify('text', '主要通知', {
           id: 'custom2',
           duration: 5000,
-          color: '#ad0000',
-          background: '#ffe1e1',
+          style: {
+            '--nutui-notify-text-color': '#ad0000',
+            '--nutui-notify-base-background-color': '#ffe1e1',
+          },
           className: 'aa',
           position: 'bottom',
         })
@@ -70,7 +72,7 @@ test('test toast props', async () => {
     )
     expect(document.querySelector('.nut-notify')).toHaveAttribute(
       'style',
-      'color: rgb(173, 0, 0); background: rgb(255, 225, 225);'
+      '--nutui-notify-text-color: #ad0000; --nutui-notify-base-background-color: #ffe1e1;'
     )
     expect(document.getElementById('custom2')).toBeTruthy()
     setTimeout(() => {

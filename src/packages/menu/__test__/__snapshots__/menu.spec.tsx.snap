@@ -39,7 +39,7 @@ exports[`should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="first-render hidden-render nut-menu__overlay nut-overlay"
+        class="nut-overlay-first-render nut-overlay-hidden-render nut-menu__overlay nut-overlay"
         style="z-index: 1000; animation-duration: 0.3s; top: 0px;"
       />
       <div

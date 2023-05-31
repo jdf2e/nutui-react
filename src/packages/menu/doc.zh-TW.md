@@ -272,7 +272,7 @@ export default App
 
 ### Menu Props
 
-| 參數                  | 說明                           | 類型                    | 默認值  |
+| 屬性 | 說明                           | 類型                    | 默認值  |
 |---------------------|--------------------------------|-------------------------|---------|
 | activeColor         | 選項的選中態圖標顏色           | string                  | `#F2270C` |
 | closeOnClickOverlay | 是否在點擊遮罩層後關閉菜單     | boolean                 | `true`    |
@@ -282,7 +282,7 @@ export default App
 
 ### MenuItem Props
 
-| 參數                          | 說明                                    | 類型    | 默認值           |
+| 屬性 | 說明                                    | 類型    | 默認值           |
 |-------------------------------|-----------------------------------------|---------|------------------|
 | title                         | 菜單項標題                              | string  | 當前選中項文字   |
 | options                       | 選項數組                                | Array   | -                |
@@ -290,8 +290,6 @@ export default App
 | columns                          | 可以設置一行展示多少列 options          | number  | `1`                |
 | optionsIcon`v2.0.0`          | 自定義選項圖標                          | React.ReactNode  | `Check`          |
 | direction            | 菜單展開方向，可選值為up                | string  | `down`           |
-| activeClassName    | 選項選中時自定義標題樣式類              | string  | -                |
-| inactiveClassName  | 選項非選中時自定義標題樣式類            | string  | -                |
 
 
 ### MenuItem Events

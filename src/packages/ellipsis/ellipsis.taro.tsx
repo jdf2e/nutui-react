@@ -1,28 +1,31 @@
 import React, { FunctionComponent, useState, useRef, useEffect } from 'react'
 import { useReady, nextTick, createSelectorQuery } from '@tarojs/taro'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import classNames from 'classnames'
 import { getRectByTaro } from '@/utils/use-client-rect'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export type Direction = 'start' | 'end' | 'middle'
+export type EllipsisDirection = 'start' | 'end' | 'middle'
 
-type EllipsisedValue = {
+type EllipsisValue = {
   leading?: string | undefined
   tailing?: string | undefined
 }
 
-export interface EllipsisProps {
+export interface EllipsisProps extends BasicComponent {
   content: string
-  direction: string
+  direction: EllipsisDirection
   rows: number | string
   expandText: string
   collapseText: string
   symbol: string
   lineHeight: number | string
+  width: number | string
   onClick: () => void
   onChange: (type: string) => void
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   content: '',
   direction: 'end',
   rows: 1,
@@ -30,28 +33,33 @@ const defaultProps = {
   collapseText: '',
   symbol: '...',
   lineHeight: '20',
+  width: 'auto',
 } as EllipsisProps
+
+const classPrefix = `nut-ellipsis`
 export const Ellipsis: FunctionComponent<
   Partial<EllipsisProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'onChange'>
 > = (props) => {
-  const { locale } = useConfig()
   const {
     children,
     content,
     direction,
     rows,
+    className,
     expandText,
     collapseText,
     symbol,
     lineHeight,
+    width,
     onClick,
     onChange,
+    ...rest
   } = { ...defaultProps, ...props }
-  let maxHeight: any = 0 // 当行的最大高度
+  let maxHeight = 0 // 当行的最大高度
   const [exceeded, setExceeded] = useState(false)
   const [expanded, setExpanded] = useState(false)
-  const ellipsis = useRef<EllipsisedValue>({
+  const ellipsis = useRef<EllipsisValue>({
     leading: '',
     tailing: '',
   })
@@ -63,12 +71,19 @@ export const Ellipsis: FunctionComponent<
   let originHeight = 0 // 原始高度
   const refRandomId = Math.random().toString(36).slice(-8)
   const widthRef: any = useRef('auto')
+
   let widthBase = [14, 10, 7, 8.4, 10] // 中、英(大)、英(小)、数字、其他字符的基础宽度
   let symbolTextWidth: any = widthBase[0] * 0.7921
   const chineseReg = /^[\u4e00-\u9fa5]+$/ // 汉字
   const digitReg = /^[0-9]+$/ // 数字
   const letterUpperReg = /^[A-Z]+$/ // 字母
   const letterLowerReg = /^[a-z]+$/ // 字母
+
+  const classes = classNames(
+    classPrefix,
+    className,
+    width ? `${classPrefix}-width` : ''
+  )
 
   const init = () => {
     setExceeded(false)
@@ -291,18 +306,35 @@ export const Ellipsis: FunctionComponent<
   return (
     <>
       <div
-        className="nut-ellipsis"
+        className={classes}
         onClick={handleClick}
         ref={root}
         id={`root${refRandomId}`}
+        {...rest}
       >
         <div>
           {!exceeded ? (
-            <div className="nut-ellipsis-wordbreak">{content}</div>
+            <div
+              className="nut-ellipsis-wordbreak"
+              style={{
+                width: `${
+                  !Number.isNaN(Number(width)) ? `${width}px` : 'auto'
+                }`,
+              }}
+            >
+              {content}
+            </div>
           ) : null}
           {exceeded && !expanded ? (
             <>
-              <div className="nut-ellipsis-wordbreak">
+              <div
+                className="nut-ellipsis-wordbreak"
+                style={{
+                  width: `${
+                    !Number.isNaN(Number(width)) ? `${width}px` : 'auto'
+                  }`,
+                }}
+              >
                 {ellipsis.current?.leading}
                 {ellipsis.current?.leading && symbol}
                 {expandText ? (
@@ -323,7 +355,15 @@ export const Ellipsis: FunctionComponent<
           ) : null}
           {exceeded && expanded ? (
             <>
-              {content}
+              <div
+                style={{
+                  width: `${
+                    !Number.isNaN(Number(width)) ? `${width}px` : 'auto'
+                  }`,
+                }}
+              >
+                {content}
+              </div>
               {expandText ? (
                 <span
                   className="nut-ellipsis-text"

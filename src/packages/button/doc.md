@@ -251,7 +251,7 @@ export default App;
 
 ### Props
 
-| 参数       | 说明                            | 类型          | 默认值      |
+| 属性 | 说明                            | 类型          | 默认值      |
 |----------|-------------------------------|-------------|----------|
 | type     | 按钮的样式                         | `'default' \| 'primary' \| 'info' \| 'warning' \| 'danger' \| 'success'` | `'default'` |
 | size     | 按钮的尺寸                         | `'normal' \| 'large' \| 'small'` | `'normal'`  |

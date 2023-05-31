@@ -17,6 +17,7 @@ interface T {
   dynamicChange: string
   reduce: string
   add: string
+  lazy: string
 }
 
 const ProgressDemo = () => {
@@ -31,6 +32,7 @@ const ProgressDemo = () => {
       dynamicChange: '动态改变',
       reduce: '减少',
       add: '增加',
+      lazy: '延迟加载数据',
     },
     'zh-TW': {
       basic: '基礎用法',
@@ -42,6 +44,7 @@ const ProgressDemo = () => {
       dynamicChange: '動態改變',
       reduce: '減少',
       add: '增加',
+      lazy: '延迟加载数据',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -53,6 +56,7 @@ const ProgressDemo = () => {
       dynamicChange: 'Dynamic Change',
       reduce: 'reduce',
       add: 'add',
+      lazy: 'Delay time',
     },
   })
 
@@ -131,7 +135,7 @@ const ProgressDemo = () => {
             onClick={() => {
               let num = value
               if (value <= 0) {
-                Toast.text('进度已为0')
+                Toast.show('进度已为0')
                 return false
               }
               num -= 10
@@ -147,7 +151,7 @@ const ProgressDemo = () => {
             onClick={(e) => {
               let num = value
               if (value >= 100) {
-                Toast.text('进度已为100%')
+                Toast.show('进度已为100%')
                 return false
               }
               num += 10
@@ -156,6 +160,10 @@ const ProgressDemo = () => {
           >
             {translated.add}
           </Button>
+        </Cell>
+        <h2>{translated.lazy}</h2>
+        <Cell align="center">
+          <Progress percent={30} lazy delay={500} />
         </Cell>
       </div>
     </>
