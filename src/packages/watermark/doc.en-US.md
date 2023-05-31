@@ -11,6 +11,8 @@ Add specific words or patterns on the page to prevent information theft.
 import { WaterMark } from '@nutui/nutui-react';
 ```
 
+## Demo
+
 ### Basic Usage
 
 :::demo
