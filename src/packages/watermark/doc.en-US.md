@@ -121,6 +121,6 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| \--nutui-watermark-z-index | `$mask-content-z-index` |
+| Name | Description | Default |
+| --- | --- | --- |
+| \--nutui-watermark-z-index | zIndex | `$mask-content-z-index` |
