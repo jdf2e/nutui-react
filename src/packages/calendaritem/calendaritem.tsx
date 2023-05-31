@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import Utils from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider'
+import { usePropsValue } from '@/utils/use-props-value'
 
 type CalendarRef = {
   scrollToDate: (date: string) => void
@@ -24,7 +25,7 @@ interface MonthInfo {
 
 interface CalendarState {
   currDate: InputDate
-  chooseData: any
+  currDateArray: any
 }
 
 export interface CalendarItemProps {
@@ -32,7 +33,8 @@ export interface CalendarItemProps {
   autoBackfill?: boolean
   popup?: boolean
   title?: string
-  defaultValue: InputDate
+  value?: InputDate
+  defaultValue?: InputDate
   startDate?: InputDate
   endDate?: InputDate
   showToday?: boolean
@@ -56,7 +58,6 @@ const defaultProps = {
   autoBackfill: false,
   popup: true,
   title: '',
-  defaultValue: '',
   startDate: Utils.getDay(0),
   endDate: Utils.getDay(365),
   showToday: true,
@@ -123,7 +124,16 @@ export const CalendarItem = React.forwardRef<
 
   const [state] = useState<CalendarState>({
     currDate: '',
-    chooseData: [],
+    currDateArray: [],
+  })
+
+  const [value, setValue] = usePropsValue<InputDate>({
+    value: props.value,
+    defaultValue: props.defaultValue,
+    finalValue: '',
+    onChange: (val) => {
+      console.log('e', val)
+    },
   })
 
   const weeksPanel = useRef<HTMLDivElement>(null)
@@ -135,7 +145,7 @@ export const CalendarItem = React.forwardRef<
   let viewHeight = 0
 
   const classPrefix = 'nut-calendar'
-  const dayPrefix = 'calendar-month-day'
+  const dayPrefix = 'nut-calendar-day'
 
   const classes = classNames(
     {
@@ -148,11 +158,6 @@ export const CalendarItem = React.forwardRef<
   const headerClasses = classNames({
     [`${classPrefix}-header`]: true,
     [`${classPrefix}-header-title`]: !popup,
-  })
-
-  const monthitemclasses = classNames({
-    'calendar-month-item': true,
-    [`${type === 'range' ? 'month-item-range' : ''}`]: true,
   })
 
   const isMultiple = (currDate: string) => {
@@ -176,10 +181,14 @@ export const CalendarItem = React.forwardRef<
     if (day.type === 'active') {
       if (
         Utils.isEqual(currentDate as string, currDate) ||
-        (type === 'range' && (isStart(currDate) || isEnd(currDate))) ||
         (type === 'multiple' && isMultiple(currDate))
       ) {
         return `${dayPrefix}-active`
+      }
+      if (type === 'range' && (isStart(currDate) || isEnd(currDate))) {
+        return `${dayPrefix}-active ${
+          isStart(currDate) ? 'active-start' : ''
+        } ${isEnd(currDate) ? 'active-end' : ''}`
       }
       if (
         (propStartDate && Utils.compareDate(currDate, propStartDate)) ||
@@ -637,7 +646,7 @@ export const CalendarItem = React.forwardRef<
   }
 
   const resetRender = () => {
-    state.chooseData.splice(0)
+    state.currDateArray.splice(0)
     monthsData.splice(0)
     initData()
   }
@@ -697,12 +706,11 @@ export const CalendarItem = React.forwardRef<
   }))
 
   const confirm = () => {
-    const { type } = props
     if (
-      (type === 'range' && state.chooseData.length === 2) ||
+      (type === 'range' && state.currDateArray.length === 2) ||
       type !== 'range'
     ) {
-      const chooseData = state.chooseData.slice(0)
+      const chooseData = state.currDateArray.slice(0)
       onConfirm && onConfirm(chooseData)
       if (popup) {
         onUpdate && onUpdate()
@@ -715,12 +723,12 @@ export const CalendarItem = React.forwardRef<
       return
     }
 
-    const { type } = props
     const days = [...month.curData]
     days[2] =
       typeof day.day === 'number' ? Utils.getNumTwoBit(day.day) : day.day
     days[3] = `${days[0]}-${days[1]}-${days[2]}`
     days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2])
+
     if (type === 'multiple') {
       if (state.currDate.length > 0) {
         let hasIndex: any = ''
@@ -730,43 +738,38 @@ export const CalendarItem = React.forwardRef<
           }
         })
         if (isFirst) {
-          state.chooseData.push([...days])
+          state.currDateArray.push([...days])
         } else if (hasIndex !== '') {
           ;(state.currDate as string[]).splice(hasIndex, 1)
-          state.chooseData.splice(hasIndex, 1)
+          state.currDateArray.splice(hasIndex, 1)
         } else {
           ;(state.currDate as string[]).push(days[3])
-          state.chooseData.push([...days])
+          state.currDateArray.push([...days])
         }
       } else {
         state.currDate = [days[3]]
-        state.chooseData = [[...days]]
+        state.currDateArray = [[...days]]
       }
     } else if (type === 'range') {
       const curDataLength = Object.values(state.currDate).length
       if (curDataLength === 2 || curDataLength === 0) {
         state.currDate = [days[3]]
+        state.currDateArray = [[...days]]
       } else if (Utils.compareDate(state.currDate[0], days[3])) {
         Array.isArray(state.currDate) && state.currDate.push(days[3])
+        state.currDateArray = [...state.currDateArray, [...days]]
       } else {
         Array.isArray(state.currDate) && state.currDate.unshift(days[3])
-      }
-
-      if (state.chooseData.length === 2 || !state.chooseData.length) {
-        state.chooseData = [[...days]]
-      } else if (Utils.compareDate(state.chooseData[0][3], days[3])) {
-        state.chooseData = [...state.chooseData, [...days]]
-      } else {
-        state.chooseData = [[...days], ...state.chooseData]
+        state.currDateArray = [[...days], ...state.currDateArray]
       }
     } else {
       state.currDate = days[3]
-      state.chooseData = [...days]
+      state.currDateArray = [...days]
     }
 
     if (!isFirst) {
       // 点击日期 触发
-      onClickDay && onClickDay(state.chooseData)
+      onClickDay && onClickDay(state.currDateArray)
       if (autoBackfill || !popup) {
         confirm()
       }
@@ -781,19 +784,21 @@ export const CalendarItem = React.forwardRef<
         {/* header */}
         <div className={headerClasses}>
           {showTitle && (
-            <div className="calendar-title">
+            <div className={`${classPrefix}-title`}>
               {title || locale.calendaritem.title}
             </div>
           )}
           {renderHeaderButtons && (
-            <div className="calendar-top-slot">{renderHeaderButtons()}</div>
+            <div className={`${classPrefix}-header-buttons`}>
+              {renderHeaderButtons()}
+            </div>
           )}
           {showSubTitle && (
-            <div className="calendar-curr-month">{yearMonthTitle}</div>
+            <div className={`${classPrefix}-sub-title`}>{yearMonthTitle}</div>
           )}
-          <div className="calendar-weeks" ref={weeksPanel}>
+          <div className={`${classPrefix}-weeks`} ref={weeksPanel}>
             {weeks.map((item: string) => (
-              <div className="calendar-week-item" key={item}>
+              <div className={`${classPrefix}-week-item`} key={item}>
                 {item}
               </div>
             ))}
@@ -801,11 +806,11 @@ export const CalendarItem = React.forwardRef<
         </div>
         {/* content */}
         <div
-          className="nut-calendar-content"
+          className={`${classPrefix}-content`}
           onScroll={monthsViewScroll}
           ref={monthsRef}
         >
-          <div className="calendar-months-panel" ref={monthsPanel}>
+          <div className={`${classPrefix}-pannel`} ref={monthsPanel}>
             <div
               className="viewArea"
               ref={viewAreaRef}
@@ -815,60 +820,66 @@ export const CalendarItem = React.forwardRef<
                 .slice(monthDefaultRange[0], monthDefaultRange[1])
                 .map((month: any, key: number) => {
                   return (
-                    <div className="calendar-month" key={key}>
-                      <div className="calendar-month-title">{month.title}</div>
-                      <div className="calendar-month-content">
-                        <div className={monthitemclasses}>
-                          {month.monthData.map((day: Day, i: number) => (
-                            <div
-                              className={[
-                                'calendar-month-day',
-                                getClasses(day, month),
-                              ].join(' ')}
-                              onClick={() => {
-                                chooseDay(day, month)
-                              }}
-                              key={i}
-                            >
-                              <div className="calendar-day">
-                                {renderDay ? renderDay(day) : day.day}
+                    <div className={`${classPrefix}-month`} key={key}>
+                      <div className={`${classPrefix}-month-title`}>
+                        {month.title}
+                      </div>
+                      <div className={`${classPrefix}-days`}>
+                        {month.monthData.map((day: Day, i: number) => (
+                          <div
+                            className={[
+                              `${classPrefix}-day`,
+                              getClasses(day, month),
+                            ].join(' ')}
+                            onClick={() => {
+                              chooseDay(day, month)
+                            }}
+                            key={i}
+                          >
+                            <div className={`${classPrefix}-day-day`}>
+                              {renderDay ? renderDay(day) : day.day}
+                            </div>
+                            {!isStartTip(day, month) && renderDayTop && (
+                              <div className={`${classPrefix}-day-info-top`}>
+                                {renderDayTop(day)}
                               </div>
-                              {renderDayTop && (
-                                <div className="calendar-curr-tips calendar-curr-tips-top">
-                                  {renderDayTop(day)}
-                                </div>
-                              )}
-                              {renderDayBottom && (
-                                <div className="calendar-curr-tips calendar-curr-tips-bottom">
+                            )}
+                            {!isStartTip(day, month) &&
+                              !isEndTip(day, month) &&
+                              renderDayBottom && (
+                                <div
+                                  className={`${classPrefix}-day-info-bottom`}
+                                >
                                   {renderDayBottom(day)}
                                 </div>
                               )}
-                              {!renderDayBottom &&
-                                showToday &&
-                                isCurrDay(month, day.day) && (
-                                  <div className="calendar-curr-tip-curr">
-                                    {locale.calendaritem.today}
-                                  </div>
-                                )}
-                              {isStartTip(day, month) && (
-                                <div
-                                  className={`calendar-day-tip ${
-                                    isStartAndEnd()
-                                      ? 'calendar-curr-tips-top'
-                                      : ''
-                                  }`}
-                                >
-                                  {startText || locale.calendaritem.start}
+                            {!isStartTip(day, month) &&
+                              !isEndTip(day, month) &&
+                              !renderDayBottom &&
+                              showToday &&
+                              isCurrDay(month, day.day) && (
+                                <div className={`${classPrefix}-day-info-curr`}>
+                                  {locale.calendaritem.today}
                                 </div>
                               )}
-                              {isEndTip(day, month) && (
-                                <div className="calendar-day-tip">
-                                  {endText || locale.calendaritem.end}
-                                </div>
-                              )}
-                            </div>
-                          ))}
-                        </div>
+                            {isStartTip(day, month) && (
+                              <div
+                                className={`${classPrefix}-day-info ${
+                                  isStartAndEnd()
+                                    ? `${classPrefix}-day-info-top`
+                                    : ''
+                                }`}
+                              >
+                                {startText || locale.calendaritem.start}
+                              </div>
+                            )}
+                            {isEndTip(day, month) && (
+                              <div className={`${classPrefix}-day-info`}>
+                                {endText || locale.calendaritem.end}
+                              </div>
+                            )}
+                          </div>
+                        ))}
                       </div>
                     </div>
                   )

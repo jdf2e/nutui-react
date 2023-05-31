@@ -56,7 +56,7 @@ export default App;
 ```
 :::
 
-### interval selection
+### Interval selection
 
 :::demo
 ```tsx
@@ -309,7 +309,7 @@ const Utils = {
         )[month as any]
     },
     isLeapYear(y: number): boolean {
-        return (y % 4 == 0 && y % 100 != 0) || y % 400 == 0
+        return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0
     },
 };
 
@@ -428,7 +428,44 @@ export default App;
 ```
 :::
 
-## API
+## Calendar
+
+### Props
+
+| Property | Description    | Type | Default |
+|--------|----------------|-----------------|-----------------|
+| visible   | Is it visible | `boolean`         | `false`           |
+| type |  type, 'single' and 'range' | `string` | `single` |
+| popup |  Whether to display the pop-up status | `boolean`         | `true` |
+| autoBackfill | Automatic backfill | `boolean`         | `false`           |
+| title | show title | `string`          | `日期选择`      |
+| defaultValue | defaultValue, string for date, and Array for range | `string \| Array` | `-` |
+| startDate | the start date| `string`          | 今天            |
+| endDate | the end date | `string`          | 距离今天 365 天 |
+| showToday | whether to show today mark | `boolean`          | `true` |
+| startText | start text for range | `ReactNode`          | `开始` |
+| endText         | end text for range  | `ReactNode`          | `结束` |
+| confirmText          | confirm text at footer | `ReactNode`          | `确认` |
+| showTitle          | whether to show title for calendar | `boolean`          | `true` |
+| showSubTitle | whether to show sub title for calendar | `boolean`          | `true` |
+| scrollAnimation | whether to start scroll animation | `boolean` | `true` |
+| renderHeaderButtons | custom buttons, under the title but above the subtitle |  `() => string | JSX.Element` | `-` |
+| renderDay  | day info | `(date: Day) => string | JSX.Element` | `-` |
+| renderDayTop  | something above day  | `(date: Day) => string | JSX.Element` | `-` |
+| renderDayBottom  | something under day | `(date: Day) => string | JSX.Element` | `-` |
+| onClickDay  | trigger when click the day element |  `(data: string) => {}` |
+| onPageChange   | page change ,one month makes as a page | `(param: string) => {}` |
+| onConfirm | trigger when click the confirm button, or after the click when it is not popup | `(param: string) => {}` |
+| onClose  | trigger close | `() => {}` |
+
+
+### Day
+| Property | Description            |
+|-------------------|-----------------|
+| day   | `string \| number`           |
+| type   | `string`          |
+
+### Ref
 
 Through ref, you can get the Calendar instance and call the instance method.
 
@@ -436,69 +473,25 @@ Through ref, you can get the Calendar instance and call the instance method.
 | ----- | ----- | -- |
 | scrollToDate | Scroll to the month of the specified date:'2023-06-30' | `string` |
 
-
-### Props
-
-| Params| Description    | Type            | Default          |
-|-------------------|---------------------------------------------------|-----------------|-----------------|
-| visible   | Is it visible                                          | boolean         | `false`           |
-| type              | Type, select 'single' for date and 'range' for interval              | string          | `single`           |
-| popup          | Whether to display the pop-up window status                                  | boolean         | `true`            |
-| autoBackfill | Automatic backfill                                          | boolean         | `false`           |
-| title             | show title                                          | string          | `Date Pick`      |
-| defaultValue     | Default value, select string format for date, select Array format for interval | string \| Array | -            |
-| startDate        | The start date, or null if the start date is not limited              | string          | Today            |
-| endDate          | The end date, or null if the end date is not limited               | string          | 365 days from today |
-| showToday          | Whether to show today's mark               | boolean          | `true` |
-| startText         | Scope selection, start message copying               | string          | `开始` |
-| endText         | Scope selection, closing message copy               | string          | `结束` |
-| confirmText          | Bottom confirm button copy               | string          | `确认` |
-| showTitle          | Whether to show the calendar title               | boolean          | `true` |
-| showSubTitle          | Whether to display the date title              | boolean          | `true` |
-| scrollAnimation          | Whether to start scroll animation              | boolean          | `true` |
-| renderHeaderButtons | Below the custom calendar header, you can add custom actions              |  (() => string \| JSX.Element) \| undefined      | - |
-| renderDay  | date information              |  ((date: Day) => string \| JSX.Element) \| undefined                          | - |
-| renderDayTop  | Date Top Information             |  ((date: Day) => string \| JSX.Element) \| undefined                          | - |
-| renderDayBottom  | date bottom information             |  ((date: Day) => string \| JSX.Element) \| undefined                         | - |
-
-### Events
-
-| Events | Description           | callback parameter       |
-|--------|------------------------------|------------------------------|
-| onConfirm | Triggered after selection or by clicking the confirm button | Array of dates (including year, month, day and week) |
-| onClose  | Triggered when closed                   | -                            |
-| onClickDay  | Triggered after click/select              |  `Day: Day`                          |
-| onPageChange`v1.4.11`  | Triggered when reached top for sub title of year and month             |  Array of dates (including year, month)                         
-
-### Day
-| Params| Description            |
-|-------------------|-----------------|
-| day   | string \| number           |
-| type   | string          |
-
-
 ## Theming
 
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-calendar-primary-color | `$primary-color` |
-| --nutui-calendar-choose-color | `rgba(#fa2c19, 0.09)` |
-| --nutui-calendar-choose-font-color | `$primary-color` |
-| --nutui-calendar-base-color | `#333333` |
-| --nutui-calendar-disable-color | `#d1d0d0` |
-| --nutui-calendar-base-font | `$font-size-3` |
-| --nutui-calendar-title-font | `$font-size-4` |
-| --nutui-calendar-title-font-weight | `500` |
-| --nutui-calendar-sub-title-font | `$font-size-2` |
-| --nutui-calendar-text-font | `$font-size-1` |
-| --nutui-calendar-day-font | `16px` |
-| --nutui-calendar-day-active-border-radius | `0px` |
-| --nutui-calendar-day-height | `64px` |
-| --nutui-calendar-day-font-weight | `500` |
-| --nutui-calendar-day67-font-color | `$primary-color` |
-| --nutui-calendar-top-slot-height | `24px` |
-| --nutui-calendar-month-title-font-size | `inherit` |
+| Name | Description | Default |
+| --- | --- | --- |
+| --nutui-calendar-active-background-color | calendar active background color | `$primary-color` |
+| --nutui-calendar-choose-background-color | calendar choose background color  | `rgba(#fa2c19, 0.09)` |
+| --nutui-calendar-choose-color| calendar choose color | `$primary-color` |
+| --nutui-calendar-disable-color | calendar disable color | `#d1d0d0` |
+| --nutui-calendar-base-font-size | calendar base font size | `$font-size-3` |
+| --nutui-calendar-title-font-size | calendar title font size | `$font-size-4` |
+| --nutui-calendar-title-font-weight | calendar title font weight  | `500` |
+| --nutui-calendar-sub-title-font-size | calendar sub title font size | `$font-size-2` |
+| --nutui-calendar-day67-color | calendar day67 color | `$primary-color` |
+| --nutui-calendar-header-height | calendar header height | `24px` |
+| --nutui-calendar-day-width | calendar day width | `14.28%` |
+| --nutui-calendar-day-height | calendar day height | `60px` |
+| --nutui-calendar-day-font-weight | calendar day font weight | `500` |
+| --nutui-calendar-day-active-border-radius| calendar day active border radius | `4px` |

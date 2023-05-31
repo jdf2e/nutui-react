@@ -438,8 +438,8 @@ export default App;
 | defaultValue | 默认值，日期选择 string 格式，区间选择 Array 格式 | `string \| Array` | `-` |
 | startDate | 开始日期， 如果不限制开始日期传 null | `string`          | 今天            |
 | endDate | 结束日期，如果不限制结束日期传 null | `string`          | 距离今天 365 天 |
-| showToday | 是否展示今天标记               | `boolean`          | `true` |
-| startText | 范围选择，开始信息文案               | `ReactNode`          | `开始` |
+| showToday | 是否展示今天标记 | `boolean`          | `true` |
+| startText | 范围选择，开始信息文案 | `ReactNode`          | `开始` |
 | endText         | 范围选择，结束信息文案 | `ReactNode`          | `结束` |
 | confirmText          | 底部确认按钮文案 | `ReactNode`          | `确认` |
 | showTitle          | 是否在展示日历标题 | `boolean`          | `true` |
@@ -476,20 +476,17 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| --nutui-calendar-primary-color | | `$primary-color` |
-| --nutui-calendar-choose-color |  | `rgba(#fa2c19, 0.09)` |
-| --nutui-calendar-choose-font-color| | `$primary-color` |
-| --nutui-calendar-base-color |  | `#333333` |
-| --nutui-calendar-disable-color |  | `#d1d0d0` |
-| --nutui-calendar-base-font | | `$font-size-3` |
-| --nutui-calendar-title-font |  | `$font-size-4` |
-| --nutui-calendar-title-font-weight | | `500` |
-| --nutui-calendar-sub-title-font |  | `$font-size-2` |
-| --nutui-calendar-text-font | | `$font-size-1` |
-| --nutui-calendar-day-font | | `16px` |
-| --nutui-calendar-day-active-border-radius|  | `0px` |
-| --nutui-calendar-day-height | | `64px` |
-| --nutui-calendar-day-font-weight |  | `500` |
-| --nutui-calendar-day67-font-color |  | `$primary-color` |
-| --nutui-calendar-top-slot-height | | `24px` |
-| --nutui-calendar-month-title-font-size | | `inherit` |
+| --nutui-calendar-active-background-color | 日历选中状态时的元素背景色 | `$primary-color` |
+| --nutui-calendar-choose-background-color | 日历选中时区间内元素的背景色，区别区间两头元素的背景色 | `rgba(#fa2c19, 0.09)` |
+| --nutui-calendar-choose-color| 日历选中元素的字色 | `$primary-color` |
+| --nutui-calendar-disable-color | 日历不可选元素的字色 | `#d1d0d0` |
+| --nutui-calendar-base-font-size | 日历字号 | `$font-size-3` |
+| --nutui-calendar-title-font-size | 日历标题字号 | `$font-size-4` |
+| --nutui-calendar-title-font-weight | 日历标题字重 | `500` |
+| --nutui-calendar-sub-title-font-size | 日历副标题字号 | `$font-size-2` |
+| --nutui-calendar-day67-color | 日历周末字色 | `$primary-color` |
+| --nutui-calendar-header-height | 日历自定义部分高度 | `24px` |
+| --nutui-calendar-day-width | 日历元素宽度 | `14.28%` |
+| --nutui-calendar-day-height | 日历元素高度 | `60px` |
+| --nutui-calendar-day-font-weight | 日历元素字重 | `500` |
+| --nutui-calendar-day-active-border-radius| 日历选中元素的圆角 | `4px` |
