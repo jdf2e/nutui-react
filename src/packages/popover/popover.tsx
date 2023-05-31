@@ -10,6 +10,7 @@ import Popup from '@/packages/popup'
 import { getRect } from '@/utils/use-client-rect'
 import { upperCaseFirst } from '@/utils/index'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import useClickAway from '@/utils/use-click-away'
 
 export type PopoverLocation =
   | 'bottom'
@@ -131,18 +132,27 @@ export const Popover: FunctionComponent<
     setShowPopup(visible)
 
     if (visible) {
-      window.addEventListener('touchstart', clickAway, true)
       setTimeout(() => {
         getContentWidth()
       }, 0)
-    } else {
-      window.removeEventListener('touchstart', clickAway, true)
-    }
-
-    return () => {
-      window.removeEventListener('touchstart', clickAway, true)
     }
   }, [visible])
+
+  const targetSet = [
+    targetId ? document.querySelector(`#${targetId}`) : popoverRef.current,
+    popoverContentRef.current,
+  ]
+
+  useClickAway(
+    () => {
+      props.onClick && props.onClick()
+      onClose && onClose()
+    },
+    targetSet,
+    'touchstart',
+    visible,
+    closeOnClickOutside
+  )
 
   const getContentWidth = () => {
     let rect = getRect(popoverRef.current)
@@ -173,28 +183,6 @@ export const Popover: FunctionComponent<
         setElWidth(popoverContentRef.current.clientWidth)
         setElHeight(popoverContentRef.current.clientHeight)
       }
-    }
-  }
-
-  const clickAway = (event: Event) => {
-    const element = popoverRef.current
-    const elContent = popoverContentRef.current
-
-    let el = element && !element.contains(event.target)
-
-    if (targetId) {
-      const dom: any = document.querySelector(`#${props.targetId}`)
-      el = dom && !dom.contains(event.target)
-    }
-
-    if (
-      el &&
-      elContent &&
-      !elContent.contains(event.target) &&
-      closeOnClickOutside
-    ) {
-      props.onClick && props.onClick()
-      onClose && onClose()
     }
   }
 
