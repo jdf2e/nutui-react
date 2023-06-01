@@ -1,7 +1,7 @@
 import React from 'react'
+import Taro from '@tarojs/taro'
 import { TimePannel } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
 const TimePannelDemo = () => {
   return (

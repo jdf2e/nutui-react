@@ -5,7 +5,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 export interface TimePannelProps extends BasicComponent {
   date: string
   curKey: string | number
-  change: (curKey: string | number) => void
+  onChange: (curKey: string | number) => void
 }
 const defaultProps = {
   ...ComponentDefaults,
@@ -13,9 +13,10 @@ const defaultProps = {
   curKey: 0,
 } as TimePannelProps
 export const TimePannel: FunctionComponent<
-  Partial<TimePannelProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<TimePannelProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 > = (props) => {
-  const { className, date, curKey, change } = {
+  const { className, date, curKey, onChange } = {
     ...defaultProps,
     ...props,
   }
@@ -23,7 +24,7 @@ export const TimePannel: FunctionComponent<
   return (
     <div
       className={classNames(classPrefix, className)}
-      onClick={() => change(curKey)}
+      onClick={() => onChange(curKey)}
     >
       {date}
     </div>

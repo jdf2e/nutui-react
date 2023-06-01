@@ -10,19 +10,20 @@ export interface TimeDetailProps extends BasicComponent {
   currentKey: string | number
   currentTime: TimeType[]
   times: TimeType[]
-  select: (time: string) => void
+  onSelect: (time: string) => void
 }
 const defaultProps = {
   ...ComponentDefaults,
   currentKey: 0,
   currentTime: [] as TimeType[],
   times: [],
-  select: () => null,
+  onSelect: () => null,
 } as TimeDetailProps
 export const TimeDetail: FunctionComponent<
-  Partial<TimeDetailProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<TimeDetailProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'>
 > = (props) => {
-  const { times, className, currentKey, currentTime, select } = {
+  const { times, className, currentKey, currentTime, onSelect } = {
     ...defaultProps,
     ...props,
   }
@@ -38,7 +39,7 @@ export const TimeDetail: FunctionComponent<
   }, [times, currentKey])
   // 选中时间的回调
   const handleTime = (time: string) => {
-    select(time)
+    onSelect(time)
   }
   // 选中的配送时间增加 active 类名
   const getDetailClass = (item: string): string => {

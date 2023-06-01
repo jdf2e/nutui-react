@@ -94,7 +94,7 @@ const TimeSelectDemo = () => {
           dates={dates}
           times={times}
           onSelect={handleSelect}
-          onPannelChange={handlePannelChange}
+          onDateChange={handlePannelChange}
           onTimeChange={handleTimeChange}
         />
       </div>

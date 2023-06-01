@@ -73,7 +73,7 @@ const TimeSelectDemo = () => {
           dates={dates}
           times={times}
           onSelect={handleSelect}
-          onPannelChange={handlePannelChange}
+          onDateChange={handlePannelChange}
           onTimeChange={handleTimeChange}
         />
       </div>
@@ -99,7 +99,7 @@ export default TimeSelectDemo
 | dates | Select data for date panel | `Array` | `[]` |
 | times | Select data for time panel | `Array` | `[]` |
 | onSelect | Callback after closing the mask | `(list: []) => void` | - |
-| onPannelChange | Click the date callback in the left column, and internally update the data through setCurrentKey, setCurrentTime | `(pannelKey: string \| number, list: []) => void` | - |
+| onDateChange | Click the date callback in the left column, and internally update the data through setCurrentKey, setCurrentTime | `(pannelKey: string \| number, list: []) => void` | - |
 | onTimeChange | Click the time callback, and internally update the data through setCurrentKey, setCurrentTime | `(time: string, list: []) => void` | - |
 
 ### dates

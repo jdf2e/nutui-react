@@ -25,7 +25,7 @@ export interface TimeSelectProps extends BasicComponent {
   ) => void
   timeChange?: (time: string, selectTimeData: TimeType[]) => void
   onSelect?: (selectTimeData: TimeType[]) => void
-  onPannelChange?: (
+  onDateChange?: (
     pannelKey: string | number,
     selectTimeData: TimeType[]
   ) => void
@@ -58,7 +58,7 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
     pannelChange,
     timeChange,
     onSelect,
-    onPannelChange,
+    onDateChange,
     onTimeChange,
     ...rest
   } = {
@@ -139,8 +139,8 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
         ])
       }
     }
-    if (onPannelChange) {
-      onPannelChange(pannelKey, resultTimeData)
+    if (onDateChange) {
+      onDateChange(pannelKey, resultTimeData)
     } else if (pannelChange) {
       pannelChange(pannelKey, resultTimeData)
     }
@@ -167,16 +167,16 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
       {...rest}
     >
       <div className={classNames(classPrefix, className)}>
-        <div className="nut-timeselect__title">{title}</div>
-        <div className="nut-timeselect__content">
-          <div className="nut-timeselect__content-left">
+        <div className={`${classPrefix}__title`}>{title}</div>
+        <div className={`${classPrefix}__content`}>
+          <div className={`${classPrefix}__content-left`}>
             {dates.map((dataItem: DateType, index: number) => (
               <TimePannel
                 date={dataItem.date}
                 className={getTimePannelClass(dataItem)}
                 key={String(dataItem['paneKey'] || index)}
                 curKey={String(dataItem['paneKey'] || index)}
-                change={handleChange}
+                onChange={handleChange}
               />
             ))}
           </div>
@@ -184,7 +184,7 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
             times={times}
             currentKey={String(activeKey)}
             currentTime={activeTime}
-            select={handleSelectTime}
+            onSelect={handleSelectTime}
           />
         </div>
       </div>

@@ -72,7 +72,7 @@ const TimeSelectDemo = () => {
           dates={dates}
           times={times}
           onSelect={handleSelect}
-          onPannelChange={handlePannelChange}
+          onDateChange={handlePannelChange}
           onTimeChange={handleTimeChange}
         />
       </div>
@@ -98,7 +98,7 @@ export default TimeSelectDemo
 | dates | 选择日期面板的数据 | `Array` | `[]` |
 | times | 选择时间面板的数据 | `Array` | `[]` |
 | onSelect | 关闭遮罩之后的回调 | `(list: []) => void` |
-| onPannelChange | 点击左栏日期回调，内部通过 setCurrentKey、setCurrentTime 更新数据 | `(pannelKey: string \| number, list: []) => void` | - |
+| onDateChange | 点击左栏日期回调，内部通过 setCurrentKey、setCurrentTime 更新数据 | `(pannelKey: string \| number, list: []) => void` | - |
 | onTimeChange | 点击时间回调，内部通过 setCurrentKey、setCurrentTime 更新数据 | `(time: string, list: []) => void` | - |
 
 ### dates
