@@ -1,4 +1,4 @@
-# TimeSelect 配送时间
+# TimeSelect
 
 ## Intro
 
@@ -19,69 +19,267 @@ import { TimeSelect } from '@nutui/nutui-react';
 
 ```tsx
 import React, { useState } from 'react'
-import { TimeSelect, Cell, Toast } from '@nutui/nutui-react'
+import { TimeSelect, Cell } from '@nutui/nutui-react'
 
-const TimeSelectDemo = () => {
-  const [visible1, SetVisible1] = useState(false)
-  const currentKey = 0
-
-  const dates = [
+const Demo = () => {
+  const [visible, SetVisible] = useState(false)
+  const options = [
     {
-      'paneKey': '0',
-      date: 'May 20 (Today)',
+      value: '20230520',
+      text: 'May 20 (Today)',
+      children: [
+        { value: '09', text: '09:00-10:00' },
+        { value: '10', text: '10:00-11:00' },
+        { value: '11', text: '11:00-12:00' },
+      ],
     },
     {
-      'paneKey': '1',
-      date: 'May 21 (Wednesday)',
+      value: '20230521',
+      text: 'May 21 (Wednesday)',
+      children: [
+        { value: '09', text: '09:00-10:00' },
+        { value: '10', text: '10:00-11:00' },
+      ],
     },
   ]
-  const times = [
-    {
-      key: '0',
-      list: ['9:00-10:00', '10:00-11:00', '11:00-12:00'],
-    },
-    {
-      key: '1',
-      list: ['9:00-10:00', '10:00-11:00'],
-    },
-  ]
-
   const handleClick = () => {
-    SetVisible1(true)
+    setVisible(true)
   }
-  const handleSelect = (selectTimeData) => {
-    SetVisible1(false)
-    Toast.show(`selected: ${JSON.stringify(selectTimeData)}`)
+  const handleSelect = (value) => {
+    setVisible(false)
+    console.log(`${JSON.stringify(value)}`)
   }
-  const handlePannelChange = (pannelKey, selectTimeData) => {
-    console.log('pannelKey, selectTimeData: ', pannelKey, selectTimeData)
+  const handleDateChange = (date, value) => {
+    console.log(date, value)
   }
-  const handleTimeChange = (time, selectTimeData) => {
-    console.log('time, selectTimeData: ', time, selectTimeData)
+  const handleTimeChange = (time, value) => {
+    console.log(time, value)
   }
   return (
     <>
-      <div className="demo">
-        <h2>Demo</h2>
-        <Cell title="delivery time" onClick={handleClick} />
-        <TimeSelect
-          visible={visible1}
-          height="50%"
-          title="Pickup time"
-          multiple
-          currentKey={currentKey}
-          dates={dates}
-          times={times}
-          onSelect={handleSelect}
-          onDateChange={handlePannelChange}
-          onTimeChange={handleTimeChange}
-        />
-      </div>
+      <Cell title="Pickup Time" onClick={handleClick} />
+      <TimeSelect
+        visible={visible}
+        options={options}
+        style={{
+          height: '30%',
+        }}
+        onSelect={handleSelect}
+        onDateChange={handleDateChange}
+        onTimeChange={handleTimeChange}
+      />
     </>
   )
 }
 
-export default TimeSelectDemo
+export default Demo
+```
+
+:::
+
+### Custom optionKey
+
+:::demo
+
+```tsx
+import React, { useState } from 'react'
+import { TimeSelect, Cell } from '@nutui/nutui-react'
+
+const Demo = () => {
+  const [visible, SetVisible] = useState(false)
+  const optionKey = {
+    valueKey: 'value1',
+    textKey: 'text1',
+    childrenKey: 'children1',
+  }
+  const options = [
+    {
+      value1: '20230520',
+      text1: 'May 20 (Today)',
+      children1: [
+        { value1: '09', text1: '09:00-10:00' },
+        { value1: '10', text1: '10:00-11:00' },
+        { value1: '11', text1: '11:00-12:00' },
+      ],
+    },
+    {
+      value1: '20230521',
+      text1: 'May 21 (Wednesday)',
+      children1: [
+        { value1: '09', text1: '09:00-10:00' },
+        { value1: '10', text1: '10:00-11:00' },
+      ],
+    },
+  ]
+  const defaultValue = [
+    {
+      value1: '20230521',
+      children1: [{ value1: '10' }],
+    },
+  ]
+  const handleClick = () => {
+    setVisible(true)
+  }
+  const handleSelect = (value) => {
+    setVisible(false)
+    console.log(`${JSON.stringify(value)}`)
+  }
+  const handleDateChange = (date, value) => {
+    console.log(date, value)
+  }
+  const handleTimeChange = (time, value) => {
+    console.log(time, value)
+  }
+  return (
+    <>
+      <Cell title="Pickup Time" onClick={handleClick} />
+      <TimeSelect
+        options={options}
+        optionKey={optionKey}
+        defaultValue={defaultValue}
+        visible={visible}
+        style={{
+          height: '30%',
+        }}
+        onSelect={handleSelect}
+        onDateChange={handleDateChange}
+        onTimeChange={handleTimeChange}
+      />
+    </>
+  )
+}
+
+export default Demo
+```
+
+:::
+
+### Multiple Mode
+
+:::demo
+
+```tsx
+import React, { useState } from 'react'
+import { TimeSelect, Cell } from '@nutui/nutui-react'
+
+const Demo = () => {
+  const [visible, SetVisible] = useState(false)
+  const options = [
+    {
+      value: '20230520',
+      text: 'May 20 (Today)',
+      children: [
+        { value: '09', text: '09:00-10:00' },
+        { value: '10', text: '10:00-11:00' },
+        { value: '11', text: '11:00-12:00' },
+      ],
+    },
+    {
+      value: '20230521',
+      text: 'May 21 (Wednesday)',
+      children: [
+        { value: '09', text: '09:00-10:00' },
+        { value: '10', text: '10:00-11:00' },
+      ],
+    },
+  ]
+  const handleClick = () => {
+    setVisible(true)
+  }
+  const handleSelect = (value) => {
+    setVisible(false)
+    console.log(`${JSON.stringify(value)}`)
+  }
+  const handleDateChange = (date, value) => {
+    console.log(date, value)
+  }
+  const handleTimeChange = (time, value) => {
+    console.log(time, value)
+  }
+  return (
+    <>
+      <Cell title="Pickup Time" onClick={handleClick} />
+      <TimeSelect
+        visible={visible}
+        options={options}
+        style={{
+          height: '30%',
+        }}
+        multiple
+        onSelect={handleSelect}
+        onDateChange={handleDateChange}
+        onTimeChange={handleTimeChange}
+      />
+    </>
+  )
+}
+
+export default Demo
+```
+
+:::
+
+### Custom Usage
+
+:::demo
+
+```tsx
+import React, { useState } from 'react'
+import { TimeSelect, Cell } from '@nutui/nutui-react'
+
+const Demo = () => {
+  const [visible, SetVisible] = useState(false)
+  const options = [
+    {
+      value: 'zhejiang',
+      text: '浙江',
+      children: [
+        { value: 'hangzhou', text: '杭州' },
+        { value: 'ningbo', text: '宁波' },
+      ],
+    },
+    {
+      value: 'jiangsu',
+      text: '江苏',
+      children: [
+        { value: 'nanjing', text: '南京' },
+        { value: 'suzhou', text: '苏州' },
+        { value: 'yangzhou', text: '扬州' },
+      ],
+    },
+  ]
+  const handleClick = () => {
+    setVisible(true)
+  }
+  const handleSelect = (value) => {
+    setVisible(false)
+    console.log(`{JSON.stringify(value)}`)
+  }
+  const handleDateChange = (date, value) => {
+    console.log(date, value)
+  }
+  const handleTimeChange = (time, value) => {
+    console.log(time, value)
+  }
+  return (
+    <>
+      <Cell title="Select your city" onClick={handleClick} />
+      <TimeSelect
+        visible={visible}
+        options={options}
+        style={{
+          height: '30%',
+        }}
+        title="Select your city"
+        onSelect={handleSelect}
+        onDateChange={handleDateChange}
+        onTimeChange={handleTimeChange}
+      />
+    </>
+  )
+}
+
+export default Demo
 ```
 
 :::
@@ -92,29 +290,34 @@ export default TimeSelectDemo
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| visible | display the popup | `boolean` | `false` |
-| title | popup title | `ReactNode` | `Pickup time` |
-| multiple | Select multiple datetimes | `string` | `false` |
-| currentKey | Uniquely identifies | `string \| number` | `0` |
-| dates | Select data for date panel | `Array` | `[]` |
-| times | Select data for time panel | `Array` | `[]` |
-| onSelect | Callback after closing the mask | `(list: []) => void` | - |
-| onDateChange | Click the date callback in the left column, and internally update the data through setCurrentKey, setCurrentTime | `(pannelKey: string \| number, list: []) => void` | - |
-| onTimeChange | Click the time callback, and internally update the data through setCurrentKey, setCurrentTime | `(time: string, list: []) => void` | - |
+| visible | whether to display popup | `boolean` | `false` |
+| title | title | `ReactNode` | `取件时间` |
+| multiple | multiple | `boolean` | `false` |
+| defaultValue | default value, uncontrolled | `DateType[]` | - |
+| options | data | `DateType[]` | - |
+| optionKey | key of options, `valueKey`, `textKey`, `childrenKey` | `{valueKey: 'value', textKey: 'text', childrenKey: 'children'}` |
+| onSelect | trigger when close popup | `(value: DateType[]) => void` |
+| onDateChange | trigger when click date | `(date: DateType, value: DateType[]) => void` | - |
+| onTimeChange | trigger when click time | `(time: TimeType, value: DateType[]) => void` | - |
 
-### dates
+### DateType
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| date | display name | `string` | - |
-| paneKey | Unique identifier, together with currentKey to identify the currently selected day | `number \| string` | `0` |
-
-### times
+Default keys as follows. They will be replaced by optionKey.
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| key | Unique identifier, together with paneKey and currentKey to identify the currently selected day | `Array` | `[]` |
-| list | Optional time list | `Array` | `[]` |
+| value | unique identifier, required | `string` | - |
+| text | display text, required | `string` | - |
+| children | chidren list, required | `TimeType[]` | - |
+
+### TimeType
+
+Default keys as follows. They will be replaced by optionKey.
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| value | unique identifier, required | `string` | - |
+| text | display text, required | `string` | - |
 
 ## Theming
 
