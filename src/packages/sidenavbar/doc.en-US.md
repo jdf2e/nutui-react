@@ -1,19 +1,22 @@
+# SideNavBar组件
 
-#  SideNavBar组件
-
-### Intro
+## Intro
 
 For content selection and switching
 
-### Install
+## Install
+
 ```tsx
 // react
 import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
 ```
 
+## Demo
+
 ### Basic Usage
 
 :::demo
+
 ```tsx
 import  React,{useState} from "react";
 import {Cell, SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
@@ -54,12 +57,12 @@ const App = () => {
             changeNarBar(false)
           }}
         >
-          <SubSideNavBar title="Level 1 title" key="1-0" >
-            <SideNavBarItem title="Level 1 content-1" key="1-01" />
-            <SideNavBarItem title="Level 1 content-2" key="1-02" />
-            <SubSideNavBar title="Level 2 title" key="2-0">
-              <SideNavBarItem title="Level 2 content-1" key="2-01" />
-              <SideNavBarItem title="Level 2 content-2" key="2-02" />
+          <SubSideNavBar title="Level 1 title" value="1-0" >
+            <SideNavBarItem title="Level 1 content-1" value="1-01" />
+            <SideNavBarItem title="Level 1 content-2" value="1-02" />
+            <SubSideNavBar title="Level 2 title" value="2-0">
+              <SideNavBarItem title="Level 2 content-1" value="2-01" />
+              <SideNavBarItem title="Level 2 content-2" value="2-02" />
             </SubSideNavBar>
           </SubSideNavBar>
         </SideNavBar>
@@ -69,11 +72,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ### Nesting (up to three layers recommended)
 
 :::demo
+
 ```tsx
 import  React,{useState} from "react";
 import {Cell,SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
@@ -83,11 +88,11 @@ const App = () => {
   const changeNarBar = (visible) => {
    setVisible(visible)
   }
-  const clickItem = ({ title, key }) => {
-    Toast.show(`title=${title},key=${key}`)
+  const clickItem = ({ title, value }) => {
+    Toast.show(`title=${title},value=${value}`)
   }
-  const clickTitle = ({ title, key, isShow }) => {
-    Toast.show(`title=${title},key=${key},isShow=${isShow}`)
+  const clickTitle = ({ title, value, isShow }) => {
+    Toast.show(`title=${title},value=${value},isShow=${isShow}`)
   }
   return ( 
     <>  
@@ -106,15 +111,15 @@ const App = () => {
             changeNarBar(false)
           }}
         >
-          <SubSideNavBar title="Level 1 title" key="1-0" onClick={clickTitle}>
-            <SideNavBarItem title="Level 1 content-1" key="1-01" onClick={clickItem} />
-            <SideNavBarItem title="Level 1 content-2" key="1-02" />
-            <SubSideNavBar title="Level 2 title" key="2-0">
-              <SideNavBarItem title="Level 2 content-1" key="2-01" />
-              <SideNavBarItem title="Level 2 content-2" key="2-02" />
-                <SubSideNavBar title="Level 3 title" key="3-0">
-                  <SideNavBarItem title="Level 3 content-1" key="3-01" />
-                  <SideNavBarItem title="Level 3 content-2" key="3-02" />
+          <SubSideNavBar title="Level 1 title" value="1-0" onClick={clickTitle}>
+            <SideNavBarItem title="Level 1 content-1" value="1-01" onClick={clickItem} />
+            <SideNavBarItem title="Level 1 content-2" value="1-02" />
+            <SubSideNavBar title="Level 2 title" value="2-0">
+              <SideNavBarItem title="Level 2 content-1" value="2-01" />
+              <SideNavBarItem title="Level 2 content-2" value="2-02" />
+                <SubSideNavBar title="Level 3 title" value="3-0">
+                  <SideNavBarItem title="Level 3 content-1" value="3-01" />
+                  <SideNavBarItem title="Level 3 content-2" value="3-02" />
                 </SubSideNavBar>
             </SubSideNavBar>
           </SubSideNavBar>
@@ -125,75 +130,57 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
+## SideNavBar
 
+### Props
 
-## API
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| visible | whether the component is visible | `boolean` | `false` |
+| title | overall title | `string` | `-` |
+| width | mask width in percentage | `string` | `80%` |
+| position | popup position | `'left' \| 'right'` | `left` |
+| indent | indent width | `number` | `20` |
+| onClose | Triggered when the mask is closed | `-` | `-` |
 
-### 1、SideNavBar
+## SubSideNavBar
 
-| Property | Description                      | Type   | Default          |
-|--------------|----------------------------------|--------|------------------|
-| visible      | Whether the current component is displayed | boolean | `false`   |
-| title        | Navigation title                           | string  | -               |
-| width        | Eject width  -percentage          | string   | `80%`          |
-| position     | Eject position                    | 'left' \| 'right' | `left`  |
-| offset       | Navigation indent width           | number  | `20`              |
+### Props
 
-### 2、SubSideNavBar
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| value | unique identifier for navigation | `string \| number` | `-` |
+| title | overall title | `string` | `-` |
+| open | whether the navigation is expanded by default | `boolean` | `true` |
+| onClick | Navigation click | `data: {title: string, value: string \| number, isShow: boolean}` | `-` |
 
-| Property | Description                      | Type   | Default         |
-|--------------|----------------------------------|--------|------------------|
-| key `v2.0.0`        | Navigation unique identifier     | string \| number |          |
-| title        | Navigation title                 | string  | -              |
-| open         | Whether navigation is expanded by default | boolean  | `true`  |
-### 3、SideNavBarItem
+## SideNavBarItem
 
-| Property | Description                      | Type   | Default          |
-|--------------|----------------------------------|--------|------------------|
-| key `v2.0.0`        | Navigation unique identifier     | string \| number |          |
-| title        | Navigation title                 | string  | -               |
+### Props
 
-## Events
-### 1、SideNavBar Events
-
-| Event | Description            | Arguments     |
-|-------|------------------------|--------------|
-| onClose     | Click mask trigger     | -           |
-
-### 2、SubSideNavBar Events
-
-| Event | Description                                | Arguments    |
-|-------|--------------------------------------------|--------------|
-| onClick     | Navigation Click | `data: {title: string, key: string \| number, isShow: boolean}`           |
-
-### 3、SideNavBarItem Events
-
-| Event  | Description                                | Arguments    |
-|--------|--------------------------------------------|--------------|
-| onClick | Navigation Click       | `data: {title: string, key: string \| number}`           |
-
-
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| value | unique identifier for navigation | `string \| number` | `-` |
+| title | overall title | `string` | `-` |
+| onClick | Navigation click | `data: {title: string, value: string \| number}` | `-` |
 ## Theming
 
 ### CSS Variables
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-sidenavbar-content-bg-color | `$white` |
-| --nutui-sidenavbar-sub-title-border-color | `#f6f6f6` |
-| --nutui-sidenavbar-sub-title-bg-color | `#f6f6f6` |
-| --nutui-sidenavbar-sub-title-font-size | `$font-size-large` |
-| --nutui-sidenavbar-sub-title-radius | `0` |
-| --nutui-sidenavbar-sub-title-border | `0` |
-| --nutui-sidenavbar-sub-title-height | `40px` |
-| --nutui-sidenavbar-sub-title-text-line-height | `40px` |
-| --nutui-sidenavbar-sub-title-text-color | `$title-color` |
-| --nutui-sidenavbar-item-title-color | `#333` |
-| --nutui-sidenavbar-item-title-bg-color | `$white` |
-| --nutui-sidenavbar-item-height | `40px` |
-| --nutui-sidenavbar-item-line-height | `40px` |
-| --nutui-sidenavbar-item-font-size | `16px` |
+| Name | Description | Default |
+| --- | --- | --- |
+| \--nutui-sidenavbar-content-bg-color | sidebar navigation background color | `$white` |
+| \--nutui-sidenavbar-item-height | The height of each item in the sidebar | `40px` |
+| \--nutui-sidenavbar-title-padding | padding for title | `10px 8px 10px 20px` |
+| \--nutui-sidenavbar-title-background | The background color of the title | `$gray4` |
+| \--nutui-sidenavbar-title-color | The font color of the title | `$gray1` |
+| \--nutui-sidenavbar-sub-title-padding | Padding of subtitle | `10px 8px 10px 35px` |
+| \--nutui-sidenavbar-sub-title-background | Subtitle background color | `$gray5` |
+| \--nutui-sidenavbar-sub-title-color | Subtitle font color | `$gray1` |
+| \--nutui-sidenavbar-sub-list-background | option list background color | `$gray5` |
+| \--nutui-sidenavbar-sub-list-color | option list font color | `$gray1` |

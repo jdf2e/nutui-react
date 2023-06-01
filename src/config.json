@@ -281,7 +281,7 @@
           "author": "dsj"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "SideNavBar",
           "type": "component",
           "cName": "侧边栏导航",
@@ -292,7 +292,7 @@
           "author": "hx"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "SideNavBarItem",
           "type": "component",
           "cName": "侧边栏导航子组件",
@@ -303,7 +303,7 @@
           "author": "hx"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "SubSideNavBar",
           "type": "component",
           "cName": "侧边栏导航子组件",

@@ -1,25 +1,13 @@
-.nut-theme-dark {
-  .nut-subsidenavbar {
-    &__item {
-      background-color: $dark6;
-      color: $dark2;
-    }
-  }
-}
-$nutSidenavbarItemHeight: 40px;
-
 .nut-subsidenavbar {
   &__item {
-    height: $nutSidenavbarItemHeight;
-    color: $gray2;
-    padding: 10px 8px 10px 55px;
+    height: $sidenav-bar-item-height;
+    color: $sidenavbar-sub-item-color;
+    padding: $sidenavbar-sub-item-padding;
+    box-sizing: border-box;
   }
-  &__title {
-    background-color: $gray5;
-    color: $gray1;
-  }
+
   &__list {
-    background-color: $gray6;
-    color: $gray2;
+    background-color: $sidenavbar-sub-list-background;
+    color: $sidenavbar-sub-list-color;
   }
 }
