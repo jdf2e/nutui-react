@@ -88,12 +88,16 @@ const InfiniteloadingDemo = () => {
             style={{ height: '500px' }}
           >
             <Infiniteloading
-              pullIcon={<Jd />}
-              loadIcon={<Jd />}
-              loadingText="loading"
+              pullingText={
+                <>
+                  <Jd />
+                  <span style={{ fontSize: '10px' }}>松开刷新</span>
+                </>
+              }
+              loadingText="加载中···"
               loadMoreText="没有啦～"
-              isOpenRefresh
-              containerId="scrollDemo"
+              pullRefresh
+              target="scrollDemo"
               hasMore={hasMore}
               onLoadMore={loadMore}
               onRefresh={refresh}

@@ -13,59 +13,53 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 export interface InfiniteloadingProps extends BasicComponent {
   hasMore: boolean
   threshold: number
-  containerId: string
-  useWindow: boolean
-  useCapture: boolean
-  isOpenRefresh: boolean
-  pullIcon: ReactNode
-  pullText: string
-  loadIcon: ReactNode
-  loadingText: string
-  loadMoreText: string
+  target: string
+  capture: boolean
+  pullRefresh: boolean
+  pullingText: ReactNode
+  loadingText: ReactNode
+  loadMoreText: ReactNode
   onRefresh: (param: () => void) => void
   onLoadMore: (param: () => void) => void
-  onScrollChange: (param: number) => void
+  onScroll: (param: number) => void
 }
 
-declare let window: Window & { webkitRequestAnimationFrame: any }
+declare let window: Window & { webkitRequestAnimationFrame: any } & {
+  mozRequestAnimationFrame: any
+}
 
 const defaultProps = {
   ...ComponentDefaults,
   hasMore: true,
   threshold: 200,
-  containerId: '',
-  useWindow: true,
-  useCapture: false,
-  isOpenRefresh: false,
-  pullIcon: null,
-  pullText: '松开刷新',
-  loadIcon: null,
+  target: '',
+  capture: false,
+  pullRefresh: false,
+  pullingText: '松开刷新',
   loadingText: '加载中···',
   loadMoreText: '哎呀，这里是底部了啦',
 } as InfiniteloadingProps
 
 const classPrefix = `nut-infiniteloading`
 export const Infiniteloading: FunctionComponent<
-  Partial<InfiniteloadingProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<InfiniteloadingProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onScroll'>
 > = (props) => {
   const { locale } = useConfig()
   const {
     children,
     hasMore,
     threshold,
-    containerId,
-    useWindow,
-    useCapture,
-    isOpenRefresh,
-    pullIcon,
-    pullText,
-    loadIcon,
+    target,
+    capture,
+    pullRefresh,
+    pullingText,
     loadingText,
     loadMoreText,
     className,
     onRefresh,
     onLoadMore,
-    onScrollChange,
+    onScroll,
     ...restProps
   } = {
     ...defaultProps,
@@ -84,14 +78,15 @@ export const Infiniteloading: FunctionComponent<
   const classes = classNames(className, classPrefix)
 
   useEffect(() => {
-    const parentElement = getParentElement(
-      scroller.current as HTMLDivElement
-    ) as Node & ParentNode
-    scrollEl.current = useWindow ? window : parentElement
-    scrollEl.current.addEventListener('scroll', handleScroll, useCapture)
+    if (target && document.getElementById(target)) {
+      scrollEl.current = document.getElementById(target) as HTMLElement | Window
+    } else {
+      scrollEl.current = window
+    }
+    scrollEl.current.addEventListener('scroll', handleScroll, capture)
 
     return () => {
-      scrollEl.current.removeEventListener('scroll', handleScroll, useCapture)
+      scrollEl.current.removeEventListener('scroll', handleScroll, capture)
     }
   }, [hasMore, isInfiniting])
 
@@ -113,12 +108,6 @@ export const Infiniteloading: FunctionComponent<
         ? `height 0s cubic-bezier(0.25,0.1,0.25,1)`
         : `height 0.2s cubic-bezier(0.25,0.1,0.25,1)`,
     }
-  }
-
-  const getParentElement = (el: HTMLElement) => {
-    return containerId
-      ? document.querySelector(`#${containerId}`)
-      : el && el.parentNode
   }
 
   const handleScroll = () => {
@@ -145,7 +134,7 @@ export const Infiniteloading: FunctionComponent<
   }
 
   const touchStart = (event: React.TouchEvent<HTMLDivElement>) => {
-    if (beforeScrollTop.current === 0 && !isTouching.current && isOpenRefresh) {
+    if (beforeScrollTop.current === 0 && !isTouching.current && pullRefresh) {
       y.current = event.touches[0].pageY
       isTouching.current = true
       const childHeight = (
@@ -193,6 +182,7 @@ export const Infiniteloading: FunctionComponent<
     return (
       window.requestAnimationFrame ||
       window.webkitRequestAnimationFrame ||
+      window.mozRequestAnimationFrame ||
       function fn(callback) {
         window.setTimeout(callback, 1000 / 60)
       }
@@ -217,7 +207,7 @@ export const Infiniteloading: FunctionComponent<
     let resScrollTop = 0
     let direction = 'down'
     const windowScrollTop = getWindowScrollTop()
-    if (useWindow) {
+    if (!target || !document.getElementById(target)) {
       if (scroller.current) {
         offsetDistance =
           calculateTopPosition(scroller.current) +
@@ -238,7 +228,7 @@ export const Infiniteloading: FunctionComponent<
       direction = 'down'
     }
     beforeScrollTop.current = resScrollTop
-    onScrollChange && onScrollChange(resScrollTop)
+    onScroll && onScroll(resScrollTop)
     return offsetDistance <= threshold && direction === 'down'
   }
 
@@ -252,20 +242,14 @@ export const Infiniteloading: FunctionComponent<
     >
       <div className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
         <div className="top-box">
-          {pullIcon && <>{pullIcon}</>}
-          <span className="top-text">
-            {pullText || locale.infiniteloading.pullRefreshText}
-          </span>
+          {pullingText || locale.infiniteloading.pullRefreshText}
         </div>
       </div>
       <div className="nut-infinite-container">{children}</div>
       <div className="nut-infinite-bottom">
         {isInfiniting ? (
           <div className="bottom-box">
-            {loadIcon && <>{loadIcon}</>}
-            <div className="bottom-text">
-              {loadingText || locale.infiniteloading.loadText}
-            </div>
+            {loadingText || locale.infiniteloading.loadText}
           </div>
         ) : (
           !hasMore && (

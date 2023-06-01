@@ -14,54 +14,47 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface InfiniteloadingProps extends BasicComponent {
   hasMore: boolean
-  upperThreshold: number
-  containerId: string
-  isOpenRefresh: boolean
-  pullIcon: ReactNode
-  pullText: string
-  loadIcon: ReactNode
-  loadingText: string
+  threshold: number
+  target: string
+  pullRefresh: boolean
+  pullingText: ReactNode
+  loadingText: ReactNode
   loadMoreText: string
   onRefresh: (param: () => void) => void
   onLoadMore: (param: () => void) => void
-  onScrollChange: (param: number) => void
+  onScroll: (param: number) => void
 }
 
 const defaultProps = {
   ...ComponentDefaults,
   hasMore: true,
-  upperThreshold: 40,
-  containerId: '',
-  isOpenRefresh: false,
-  pullIcon:
-    'https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png',
-  pullText: '松开刷新',
-  loadIcon:
-    'https://img10.360buyimg.com/imagetools/jfs/t1/169863/6/4565/6306/60125948E7e92774e/40b3a0cf42852bcb.png',
+  threshold: 40,
+  target: '',
+  pullRefresh: false,
+  pullingText: '松开刷新',
   loadingText: '加载中···',
   loadMoreText: '哎呀，这里是底部了啦',
 } as InfiniteloadingProps
 
 const classPrefix = `nut-infiniteloading`
 export const Infiniteloading: FunctionComponent<
-  Partial<InfiniteloadingProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<InfiniteloadingProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onScroll'>
 > = (props) => {
   const { locale } = useConfig()
   const {
     children,
     hasMore,
-    upperThreshold,
-    containerId,
-    isOpenRefresh,
-    pullIcon,
-    pullText,
-    loadIcon,
+    threshold,
+    target,
+    pullRefresh,
+    pullingText,
     loadingText,
     loadMoreText,
     className,
     onRefresh,
     onLoadMore,
-    onScrollChange,
+    onScroll,
   } = {
     ...defaultProps,
     ...props,
@@ -80,7 +73,7 @@ export const Infiniteloading: FunctionComponent<
   const classes = classNames(className, classPrefix)
 
   useEffect(() => {
-    refreshMaxH.current = upperThreshold
+    refreshMaxH.current = threshold
     setTimeout(() => {
       getScrollHeight()
     }, 200)
@@ -104,9 +97,7 @@ export const Infiniteloading: FunctionComponent<
   }
 
   const getParentElement = (el: string) => {
-    return createSelectorQuery().select(
-      containerId ? `#${containerId} #${el}` : `#${el}`
-    )
+    return createSelectorQuery().select(target ? `#${target} #${el}` : `#${el}`)
   }
 
   const infiniteDone = () => {
@@ -136,7 +127,7 @@ export const Infiniteloading: FunctionComponent<
       direction.current = 'up'
     }
     scrollTop.current = e.detail.scrollTop
-    onScrollChange && onScrollChange(e.detail.scrollTop)
+    onScroll && onScroll(e.detail.scrollTop)
   }
 
   const lower = () => {
@@ -148,7 +139,7 @@ export const Infiniteloading: FunctionComponent<
   }
 
   const touchStart = (event: any) => {
-    if (scrollTop.current == 0 && !isTouching.current && isOpenRefresh) {
+    if (scrollTop.current == 0 && !isTouching.current && pullRefresh) {
       y.current = event.touches[0].pageY
       isTouching.current = true
     }
@@ -194,20 +185,14 @@ export const Infiniteloading: FunctionComponent<
     >
       <div className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
         <div className="top-box">
-          {pullIcon && <>{pullIcon}</>}
-          <span className="top-text">
-            {pullText || locale.infiniteloading.pullRefreshText}
-          </span>
+          {pullingText || locale.infiniteloading.pullRefreshText}
         </div>
       </div>
       <div className="nut-infinite-container">{children}</div>
       <div className="nut-infinite-bottom">
         {isInfiniting ? (
           <div className="bottom-box">
-            {loadIcon && <>{loadIcon}</>}
-            <div className="bottom-text">
-              {loadingText || locale.infiniteloading.loadText}
-            </div>
+            {loadingText || locale.infiniteloading.loadText}
           </div>
         ) : (
           !hasMore && (
