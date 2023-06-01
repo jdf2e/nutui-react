@@ -11,10 +11,9 @@ export interface DateType {
   date: string
 }
 export interface TimeSelectProps extends BasicComponent {
-  visible?: boolean
-  height?: string
+  visible: boolean
   multiple?: boolean
-  title?: string
+  title?: ReactNode
   currentKey: string | number
   currentTime: TimeType[]
   dates: DateType[]
@@ -35,7 +34,6 @@ export interface TimeSelectProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   visible: false,
-  height: '20%',
   multiple: false,
   currentKey: 0,
   currentTime: [],
@@ -49,7 +47,7 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
   const {
     visible,
     className,
-    height,
+    style,
     title,
     currentKey,
     currentTime,
@@ -62,6 +60,7 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
     onSelect,
     onPannelChange,
     onTimeChange,
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -77,11 +76,6 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
           },
         ]
   )
-  const [popVisible, setPopVisible] = useState(visible)
-  const popStyle = {
-    width: '100%',
-    height,
-  }
   const classPrefix = 'nut-timeselect'
 
   // popup 的关闭回调, 执行 select 函数更改外部 visible
@@ -158,46 +152,43 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
     }
     return ''
   }
-  // 根据外部传入 visible 进行组件的显隐展示
-  useEffect(() => {
-    setPopVisible(visible)
-  }, [visible])
   return (
-    <>
-      <Popup
-        closeable
-        round
-        visible={popVisible}
-        position="bottom"
-        style={popStyle}
-        onClose={() => {
-          closeFun()
-        }}
-      >
-        <div className={classNames(classPrefix, className)}>
-          <div className="nut-timeselect__title">{title}</div>
-          <div className="nut-timeselect__content">
-            <div className="nut-timeselect__content-left">
-              {dates.map((dataItem: DateType, index: number) => (
-                <TimePannel
-                  date={dataItem.date}
-                  className={getTimePannelClass(dataItem)}
-                  key={String(dataItem['paneKey'] || index)}
-                  curKey={String(dataItem['paneKey'] || index)}
-                  change={handleChange}
-                />
-              ))}
-            </div>
-            <TimeDetail
-              times={times}
-              currentKey={String(activeKey)}
-              currentTime={activeTime}
-              select={handleSelectTime}
-            />
+    <Popup
+      closeable
+      round
+      visible={visible}
+      position="bottom"
+      style={{
+        width: '100%',
+        height: '20%',
+        ...style,
+      }}
+      onClose={closeFun}
+      {...rest}
+    >
+      <div className={classNames(classPrefix, className)}>
+        <div className="nut-timeselect__title">{title}</div>
+        <div className="nut-timeselect__content">
+          <div className="nut-timeselect__content-left">
+            {dates.map((dataItem: DateType, index: number) => (
+              <TimePannel
+                date={dataItem.date}
+                className={getTimePannelClass(dataItem)}
+                key={String(dataItem['paneKey'] || index)}
+                curKey={String(dataItem['paneKey'] || index)}
+                change={handleChange}
+              />
+            ))}
           </div>
+          <TimeDetail
+            times={times}
+            currentKey={String(activeKey)}
+            currentTime={activeTime}
+            select={handleSelectTime}
+          />
         </div>
-      </Popup>
-    </>
+      </div>
+    </Popup>
   )
 }
 

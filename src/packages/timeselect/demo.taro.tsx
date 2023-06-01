@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { TimeSelect, Cell } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
 export interface TimeType {
   key?: string | number
@@ -33,6 +33,7 @@ const TimeSelectDemo = () => {
       text5: 'May 21 (Wednesday)',
     },
   })
+
   const [visible1, SetVisible1] = useState(false)
   const currentKey = 0
 
@@ -84,7 +85,9 @@ const TimeSelectDemo = () => {
         <Cell title={translated.text2} onClick={handleClick} />
         <TimeSelect
           visible={visible1}
-          height="50%"
+          style={{
+            height: '50%',
+          }}
           title={translated.text3}
           multiple
           currentKey={currentKey}

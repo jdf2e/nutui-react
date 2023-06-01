@@ -79,7 +79,9 @@ const TimeSelectDemo = () => {
         <Cell title={translated.text2} onClick={handleClick} />
         <TimeSelect
           visible={visible1}
-          height="50%"
+          style={{
+            height: '50%',
+          }}
           title={translated.text3}
           multiple
           currentKey={currentKey}

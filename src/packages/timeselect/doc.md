@@ -93,8 +93,7 @@ export default TimeSelectDemo
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | visible | 是否显示弹层 | `boolean` | `false` |
-| height | 弹层的高度 | `string` | `20%` |
-| title | 弹层标题 | `string` | `取件时间` |
+| title | 弹层标题 | `ReactNode` | `取件时间` |
 | multiple | 是否选择多个日期时间 | `string` | `false` |
 | currentKey | 唯一标识 | `string \| number` | `0` |
 | dates | 选择日期面板的数据 | `Array` | `[]` |

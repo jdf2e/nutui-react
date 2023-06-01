@@ -93,8 +93,7 @@ export default TimeSelectDemo
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | visible | display the popup | `boolean` | `false` |
-| height | height of the popup | `string` | `20%` |
-| title | popup title | `string` | `Pickup time` |
+| title | popup title | `ReactNode` | `Pickup time` |
 | multiple | Select multiple datetimes | `string` | `false` |
 | currentKey | Uniquely identifies | `string \| number` | `0` |
 | dates | Select data for date panel | `Array` | `[]` |
@@ -103,14 +102,14 @@ export default TimeSelectDemo
 | onPannelChange | Click the date callback in the left column, and internally update the data through setCurrentKey, setCurrentTime | `(pannelKey: string \| number, list: []) => void` | - |
 | onTimeChange | Click the time callback, and internally update the data through setCurrentKey, setCurrentTime | `(time: string, list: []) => void` | - |
 
-### Dates
+### dates
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | date | display name | `string` | - |
 | paneKey | Unique identifier, together with currentKey to identify the currently selected day | `number \| string` | `0` |
 
-### Times
+### times
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
