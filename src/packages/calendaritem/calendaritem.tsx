@@ -162,10 +162,11 @@ export const CalendarItem = React.forwardRef<
     [`${classPrefix}-header-title`]: !popup,
   })
 
-  const isMultiple = (currDate: string) => {
-    if (state.currDate.length > 0) {
-      return (state.currDate as string[]).some((item: string) => {
-        return Utils.isEqual(item, currDate)
+  const isMultiple = (d: string) => {
+    const currentDate = state.currDate
+    if (currentDate.length > 0) {
+      return (currentDate as string[]).some((item: string) => {
+        return Utils.isEqual(item, d)
       })
     }
     return false
@@ -178,23 +179,23 @@ export const CalendarItem = React.forwardRef<
   }
 
   const getClasses = (day: Day, month: MonthInfo) => {
-    const currDate = getCurrDate(day, month)
+    const dateStr = getCurrDate(day, month)
     const currentDate = state.currDate
     if (day.type === 'active') {
       if (
-        Utils.isEqual(currentDate as string, currDate) ||
-        (type === 'multiple' && isMultiple(currDate))
+        Utils.isEqual(currentDate as string, dateStr) ||
+        (type === 'multiple' && isMultiple(dateStr))
       ) {
         return `${dayPrefix}-active`
       }
-      if (type === 'range' && (isStart(currDate) || isEnd(currDate))) {
-        return `${dayPrefix}-active ${
-          isStart(currDate) ? 'active-start' : ''
-        } ${isEnd(currDate) ? 'active-end' : ''}`
+      if (type === 'range' && (isStart(dateStr) || isEnd(dateStr))) {
+        return `${dayPrefix}-active ${isStart(dateStr) ? 'active-start' : ''} ${
+          isEnd(dateStr) ? 'active-end' : ''
+        }`
       }
       if (
-        (propStartDate && Utils.compareDate(currDate, propStartDate)) ||
-        (propEndDate && Utils.compareDate(propEndDate, currDate))
+        (propStartDate && Utils.compareDate(dateStr, propStartDate)) ||
+        (propEndDate && Utils.compareDate(propEndDate, dateStr))
       ) {
         return `${dayPrefix}-disabled`
       }
@@ -202,8 +203,8 @@ export const CalendarItem = React.forwardRef<
         type === 'range' &&
         Array.isArray(currentDate) &&
         Object.values(currentDate).length === 2 &&
-        Utils.compareDate(currentDate[0], currDate) &&
-        Utils.compareDate(currDate, currentDate[1])
+        Utils.compareDate(currentDate[0], dateStr) &&
+        Utils.compareDate(dateStr, currentDate[1])
       ) {
         return `${dayPrefix}-choose`
       }
@@ -219,12 +220,12 @@ export const CalendarItem = React.forwardRef<
     return Utils.isEqual(date, Utils.date2Str(new Date(), '/'))
   }
 
-  const isStart = (currDate: string) => {
-    return Utils.isEqual(state.currDate[0], currDate)
+  const isStart = (d: string) => {
+    return Utils.isEqual(state.currDate[0], d)
   }
 
-  const isEnd = (currDate: string) => {
-    return Utils.isEqual(state.currDate[1], currDate)
+  const isEnd = (d: string) => {
+    return Utils.isEqual(state.currDate[1], d)
   }
 
   // 是否有开始提示
@@ -248,9 +249,9 @@ export const CalendarItem = React.forwardRef<
 
   // 开始结束时间是否相等
   const isStartAndEnd = () => {
+    const currentDate = state.currDate
     return (
-      state.currDate.length >= 2 &&
-      Utils.isEqual(state.currDate[0], state.currDate[1])
+      currentDate.length >= 2 && Utils.isEqual(currentDate[0], currentDate[1])
     )
   }
 
@@ -418,6 +419,7 @@ export const CalendarItem = React.forwardRef<
     }
     setMonthDefaultRange([start, end])
     setTranslateY(monthsData[start].scrollTop)
+    setReachedYearMonthInfo(current)
   }
 
   const monthsViewScroll = (e: any) => {
@@ -450,7 +452,6 @@ export const CalendarItem = React.forwardRef<
     }
 
     setDefaultRange(monthsNum, current)
-    setReachedYearMonthInfo(current)
   }
 
   const initData = () => {
@@ -572,7 +573,6 @@ export const CalendarItem = React.forwardRef<
     }
 
     setDefaultRange(monthNum, current)
-    setReachedYearMonthInfo(current)
 
     if (defaultData.length > 0) {
       // 设置当前选中日期
