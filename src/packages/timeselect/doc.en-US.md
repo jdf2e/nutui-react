@@ -1,15 +1,17 @@
 # TimeSelect 配送时间
 
-### Intro
+## Intro
 
 For delivery time selection
 
-### Install
+## Install
 
-``` javascript
+```javascript
 // react
 import { TimeSelect } from '@nutui/nutui-react';
 ```
+
+## Demo
 
 ### Basic Usage
 
@@ -84,42 +86,36 @@ export default TimeSelectDemo
 
 :::
 
-## API
+## TimeSelect
 
-### TimeSelect Prop
+### Props
 
-| Props                   | Description                 | required | Type    | Default |
-|------------------------|-----------------------------|----------|------------|---------|
-| visible                 | display the popup           | true     | boolean  | `false`|
-| height                 | height of the popup         | false        | string  | `20%`|
-| title                 | popup title                 | false                | string  | `Pickup time`|
-| multiple              | Select multiple datetimes   | false                | string  | `false`|
-| currentKey           | Uniquely identifies         | false                | string \| number  | `0` |
-| dates            | Select data for date panel  | true     | Array        | `[]`       |
-| times            | Select data for time panel  | true     | Array        | `[]`       |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| visible | display the popup | `boolean` | `false` |
+| height | height of the popup | `string` | `20%` |
+| title | popup title | `string` | `Pickup time` |
+| multiple | Select multiple datetimes | `string` | `false` |
+| currentKey | Uniquely identifies | `string \| number` | `0` |
+| dates | Select data for date panel | `Array` | `[]` |
+| times | Select data for time panel | `Array` | `[]` |
+| onSelect | Callback after closing the mask | `(list: []) => void` | - |
+| onPannelChange | Click the date callback in the left column, and internally update the data through setCurrentKey, setCurrentTime | `(pannelKey: string \| number, list: []) => void` | - |
+| onTimeChange | Click the time callback, and internally update the data through setCurrentKey, setCurrentTime | `(time: string, list: []) => void` | - |
 
-### dates
+### Dates
 
-| Props | Description | Type    | Default |
-|------------------------|-------------------------|---------|------|
-| date | display name | string  | - |
-| paneKey           | Unique identifier, together with currentKey to identify the currently selected day            | number \| string  | `0`|
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| date | display name | `string` | - |
+| paneKey | Unique identifier, together with currentKey to identify the currently selected day | `number \| string` | `0` |
 
-### times
+### Times
 
-| Props                   | Description                                                                                       | Type    | Default |
-|------------------------|---------------------------------------------------------------------------------------------------|---------|------|
-| key                 | Unique identifier, together with paneKey and currentKey to identify the currently selected day | Array  | `[]`|
-| list                 | Optional time list                                                                                | Array  | `[]`|
-
-### TimeSelect Event
-
-| Event                  | Description                                                                                                       | required | callback args                         |
-|------------------------|-------------------------------------------------------------------------------------------------------------------|----------|---------------------------------------|
-| onSelect       | Callback after closing the mask                                                                                   | true     | `list: []`                            |
-| onPannelChange | Click the date callback in the left column, and internally update the data through setCurrentKey, setCurrentTime  | false    | `pannelKey: string \| number, list: []` |
-| onTimeChange         | Click the time callback, and internally update the data through setCurrentKey, setCurrentTime                                                                     | false                | `time: string, list: []`              |
-
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| key | Unique identifier, together with paneKey and currentKey to identify the currently selected day | `Array` | `[]` |
+| list | Optional time list | `Array` | `[]` |
 
 ## Theming
 
@@ -129,28 +125,28 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Default Value |
 | --- | --- |
-| --nutui-timeselect-title-font-size | `$font-size-2` |
-| --nutui-timeselect-title-color | `$title-color` |
-| --nutui-timeselect-title-height | `50px` |
-| --nutui-timeselect-title-line-height | `50px` |
-| --nutui-timeselect-pannel-bg-color | `#f6f7f9` |
-| --nutui-timeselect-timepannel-text-color | `$title-color2` |
-| --nutui-timeselect-timepannel-font-size | `$font-size-2` |
-| --nutui-timeselect-timepannel-cur-bg-color | `$white` |
-| --nutui-timeselect-timepannel-cur-text-color | `#333333` |
-| --nutui-timeselect-timepannel-width | `140px` |
-| --nutui-timeselect-timepannel-height | `40px` |
-| --nutui-timeselect-timepannel-padding | `15px` |
-| --nutui-timeselect-timedetail-padding | `0 5px 50px 13px` |
-| --nutui-timeselect-timedetail-item-width | `100px` |
-| --nutui-timeselect-timedetail-item-height | `50px` |
-| --nutui-timeselect-timedetail-item-line-height | `50px` |
-| --nutui-timeselect-timedetail-item-bg-color | `#f6f7f9` |
-| --nutui-timeselect-timedetail-item-border-radius | `5px` |
-| --nutui-timeselect-timedetail-item-text-color | `#333333` |
-| --nutui-timeselect-timedetail-item-text-font-size | `$font-size-2` |
-| --nutui-timeselect-timedetail-item-cur-bg-color | `rgba($primary-color, 0.15)` |
-| --nutui-timeselect-timedetail-item-cur-border | `$primary-color` |
-| --nutui-timeselect-timedetail-item-cur-text-color | `$primary-color` |
-| --nutui-timeselect-timedetail-time-text-color | `#999` |
-| --nutui-timeselect-timedetail-time-font-size | `$font-size-1` |
+| \--nutui-timeselect-title-font-size | `$font-size-2` |
+| \--nutui-timeselect-title-color | `$title-color` |
+| \--nutui-timeselect-title-height | `50px` |
+| \--nutui-timeselect-title-line-height | `50px` |
+| \--nutui-timeselect-pannel-bg-color | `#f6f7f9` |
+| \--nutui-timeselect-timepannel-text-color | `$title-color2` |
+| \--nutui-timeselect-timepannel-font-size | `$font-size-2` |
+| \--nutui-timeselect-timepannel-cur-bg-color | `$white` |
+| \--nutui-timeselect-timepannel-cur-text-color | `#333333` |
+| \--nutui-timeselect-timepannel-width | `140px` |
+| \--nutui-timeselect-timepannel-height | `40px` |
+| \--nutui-timeselect-timepannel-padding | `15px` |
+| \--nutui-timeselect-timedetail-padding | `0 5px 50px 13px` |
+| \--nutui-timeselect-timedetail-item-width | `100px` |
+| \--nutui-timeselect-timedetail-item-height | `50px` |
+| \--nutui-timeselect-timedetail-item-line-height | `50px` |
+| \--nutui-timeselect-timedetail-item-bg-color | `#f6f7f9` |
+| \--nutui-timeselect-timedetail-item-border-radius | `5px` |
+| \--nutui-timeselect-timedetail-item-text-color | `#333333` |
+| \--nutui-timeselect-timedetail-item-text-font-size | `$font-size-2` |
+| \--nutui-timeselect-timedetail-item-cur-bg-color | `rgba($primary-color, 0.15)` |
+| \--nutui-timeselect-timedetail-item-cur-border | `$primary-color` |
+| \--nutui-timeselect-timedetail-item-cur-text-color | `$primary-color` |
+| \--nutui-timeselect-timedetail-time-text-color | `#999` |
+| \--nutui-timeselect-timedetail-time-font-size | `$font-size-1` |
