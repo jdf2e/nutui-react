@@ -35,6 +35,7 @@ export interface PickerProps extends BasicComponent {
     selectedValue: (string | number)[],
     pickerRef: RefObject<HTMLDivElement>
   ) => void
+  onA?: any
   onChange?: (
     selectedOptions: PickerOption[],
     selectedValue: (string | number)[],
@@ -68,6 +69,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       onClose,
       afterClose,
       onChange,
+      onA,
       ...rest
     } = { ...defaultProps, ...props }
     const classPrefix = 'nut-picker'
@@ -82,6 +84,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
         props.onConfirm?.(setSelectedOptions(), val)
       },
     })
+    const [innerValue, setInnerValue] = useState(selectedValue)
     const [columnIndex, setColumnIndex] = useState<number>(0) // 选中列
     const pickerRef = useRef<any>(null)
     const [refs, setRefs] = useRefs()
@@ -137,7 +140,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
           return options
         case 'cascade':
           // 级联数据处理
-          return formatCascade(options as PickerOption[], selectedValue)
+          return formatCascade(options as PickerOption[], innerValue)
         default:
           return [options]
       }
@@ -153,8 +156,8 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
           return item
         })
 
-      if (!defaultValue.length && selectedValue.length === 0) {
-        setSelectedValue([...data])
+      if (!defaultValue.length && innerValue.length === 0) {
+        setInnerValue([...data])
       }
     }
 
@@ -170,7 +173,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       let currOptions = []
       columnsList.forEach((columnOptions: PickerOption[], index: number) => {
         currOptions = columnOptions.filter(
-          (item) => item.value === selectedValue[index]
+          (item) => item.value === innerValue[index]
         )
         if (currOptions[0]) {
           options.push(currOptions[0])
@@ -186,37 +189,32 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       if (!visible) {
         return
       }
-      onChange && onChange(setSelectedOptions(), selectedValue, columnIndex)
-      if (isConfirmEvent.current) {
-        isConfirmEvent.current = false
-        onConfirm && onConfirm(setSelectedOptions(), selectedValue)
-      }
-    }, [selectedValue, columnsList, visible])
+      onChange && onChange(setSelectedOptions(), innerValue, columnIndex)
+    }, [innerValue, columnsList, visible])
 
     // 更新已选择数据
     const chooseItem = (columnOptions: PickerOption, columnIndex: number) => {
       if (columnOptions && Object.keys(columnOptions).length) {
         // 切换数据后，数据有变动才触发。
-        if (selectedValue[columnIndex] !== columnOptions.value) {
+        if (innerValue[columnIndex] !== columnOptions.value) {
           if (columnsType() === 'cascade') {
-            selectedValue[columnIndex] = columnOptions.value || ''
-            setSelectedValue([...selectedValue])
+            innerValue[columnIndex] = columnOptions.value || ''
+            setInnerValue([...innerValue])
 
             while (columnOptions?.children?.[0]) {
-              selectedValue[columnIndex + 1] = columnOptions.children[0].value
-              setSelectedValue([...selectedValue])
+              innerValue[columnIndex + 1] = columnOptions.children[0].value
+              setInnerValue([...innerValue])
               columnIndex++
               columnOptions = columnOptions.children[0]
             }
             // 当前改变列的下一列 children 值为空
             if (columnOptions?.children?.length) {
-              selectedValue[columnIndex + 1] = ''
-              setSelectedValue([...selectedValue])
+              innerValue[columnIndex + 1] = ''
+              setInnerValue([...innerValue])
             }
             setColumnsList(normalListData() as PickerOption[][])
           } else {
-            // @ts-ignore
-            setSelectedValue((data: (number | string)[]) => {
+            setInnerValue((data: (number | string)[]) => {
               const cdata: (number | string)[] = [...data]
               cdata[columnIndex] = Object.prototype.hasOwnProperty.call(
                 columnOptions,
@@ -241,7 +239,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       if (movings) {
         isConfirmEvent.current = true
       } else {
-        onConfirm && onConfirm(setSelectedOptions(), selectedValue)
+        setSelectedValue(innerValue)
         closePicker()
       }
       setTimeout(() => {
@@ -250,8 +248,8 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     }
 
     const closePicker = () => {
-      onClose && onClose(setSelectedOptions(), selectedValue)
-      afterClose && afterClose(setSelectedOptions(), selectedValue, pickerRef)
+      onClose && onClose(setSelectedOptions(), innerValue)
+      afterClose && afterClose(setSelectedOptions(), innerValue, pickerRef)
     }
 
     const renderTitleBar = () => {

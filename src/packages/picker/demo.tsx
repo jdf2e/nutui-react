@@ -24,6 +24,7 @@ const PickerDemo = () => {
   const [isVisible4, setIsVisible4] = useState(false)
   const [isVisible5, setIsVisible5] = useState(false)
   const [isVisible6, setIsVisible6] = useState(false)
+  const [isVisible7, setIsVisible7] = useState(false)
 
   const [cityCustmer, setCityCustmer] = useState('')
   const [baseDesc, setBaseDesc] = useState('')
@@ -293,15 +294,16 @@ const PickerDemo = () => {
         <Cell
           title={translated.chooseCity}
           description={baseDesc}
-          onClick={() => setIsVisible1(!isVisible1)}
+          onClick={() => setIsVisible7(!isVisible7)}
         />
         <Picker
           title={translated.chooseCity}
-          visible={isVisible1}
+          visible={isVisible7}
           options={listData1}
+          onChange={() => console.log('xxx onChange')}
           onConfirm={(list, values) => confirmPicker('base', list, values)}
           onClose={() => {
-            setIsVisible1(false)
+            setIsVisible7(false)
           }}
         />
 
