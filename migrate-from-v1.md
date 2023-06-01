@@ -409,6 +409,11 @@
 
 #### Popover
 
+- 代码整体重构，需要验证每一个属性（除了list属性和location属性没有更改）
+- `theme` 属性删除， `onChoose`属性删除
+- 新增showArrow、duration、overlay、overlayClassName、overlayStyle、closeOnOverlayClick、closeOnClickAction、closeOnClickOutside、background、color、targetId属性。
+- 新增onSelect、onOpen、onClose回调事件
+
 #### Price
 
 - `decimalDigits` 重命名为 `digits`

@@ -1414,19 +1414,15 @@ $badge-dot-width: var(--nutui-badge-dot-width, 7px) !default;
 
 //popover（✅）
 $popover-border-radius: var(--nutui-popover-border-radius, 8px) !default;
-$popover-font-size: var(--nutui-popover-font-size, $font-size-1) !default;
+$popover-font-size: var(--nutui-popover-font-size, $font-size-2) !default;
 $popover-menu-item-height: var(--nutui-popover-menu-item-height, 30px) !default;
-$popover-menu-item-name-margin: var(
-  --nutui-popover-menu-item-name-margin,
-  0px 10px
-) !default;
 $popover-menu-item-hover-background-color: var(
   --nutui-popover-menu-item-hover-background-color,
-  $primary-color
+  #fff
 ) !default;
 $popover-menu-item-hover-text-color: var(
   --nutui-popover-menu-item-hover-text-color,
-  $primary-text-color
+  #1a1a1a
 ) !default;
 $popover-menu-item-border-width: var(
   --nutui-popover-menu-item-border-width,
@@ -1446,11 +1442,15 @@ $popover-menu-item-border-bottom: var(
 ) !default;
 $popover-white-background-color: var(
   --nutui-popover-white-background-color,
-  rgba(255, 255, 255, 1)
+  $gray6
 ) !default;
 $popover-dark-background-color: var(
   --nutui-popover-dark-background-color,
   rgba(75, 76, 77, 1)
+) !default;
+$popover-content-background-color: var(
+  --nutui-popover-content-background-color,
+  $gray6
 ) !default;
 $popover-border-bottom-color: var(
   --nutui-popover-border-bottom-color,
@@ -1458,7 +1458,7 @@ $popover-border-bottom-color: var(
 ) !default;
 $popover-primary-text-color: var(
   --nutui-popover-primary-text-color,
-  rgba(51, 51, 51, 1)
+  $gray1
 ) !default;
 $popover-disable-color: var(
   --nutui-popover-disable-color,
@@ -1466,7 +1466,7 @@ $popover-disable-color: var(
 ) !default;
 $popover-menu-item-padding: var(
   --nutui-popover-menu-item-padding,
-  8px 0
+  8px
 ) !default;
 $popover-menu-item-margin: var(
   --nutui-popover-menu-item-margin,

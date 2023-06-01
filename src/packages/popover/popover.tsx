@@ -5,12 +5,12 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import Trigger from './Trigger'
-import Overlay from '@/packages/overlay'
+import classNames from 'classnames'
+import Popup from '@/packages/popup'
 import { getRect } from '@/utils/use-client-rect'
+import { upperCaseFirst } from '@/utils/index'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export type PopoverTheme = 'light' | 'dark'
+import useClickAway from '@/utils/use-click-away'
 
 export type PopoverLocation =
   | 'bottom'
@@ -27,169 +27,322 @@ export type PopoverLocation =
   | 'right-end'
 
 export interface List {
+  key?: string
   name: string
   icon?: React.ReactNode
   disabled?: boolean
+  className?: string
 }
 
 export interface PopoverProps extends BasicComponent {
   list: List[]
-  theme: PopoverTheme
   location: PopoverLocation | string
   visible: boolean
-  offset: string | number
-  className: string
-  style?: CSSProperties
+  offset: string[] | number[]
+  targetId: string
+  background: string
+  color: string
+  showArrow: boolean
+  duration: string | number
+  overlay: boolean
+  overlayClassName: string
+  overlayStyle: React.CSSProperties
+  closeOnClickOutside: boolean
+  closeOnClickAction: boolean
+  closeOnOverlayClick: boolean
   children?: React.ReactNode
-  onClick: (e: React.MouseEvent) => void
-  onChoose: (item: List, index: number) => void
+  onClick: () => void
+  onOpen: () => void
+  onClose: () => void
+  onSelect: (item: List, index: number) => void
 }
 
 const defaultProps = {
   ...ComponentDefaults,
   list: [],
-  theme: 'light',
   location: 'bottom',
   visible: false,
-  offset: 20,
+  offset: [0, 12],
+  targetId: '',
   className: '',
-  onClick: (e: React.MouseEvent) => {},
-  onChoose: (item, index) => {},
+  background: '',
+  color: '',
+  showArrow: true,
+  duration: 0.3,
+  overlay: false,
+  overlayClassName: '',
+  overlayStyle: {},
+  closeOnClickOutside: true,
+  closeOnClickAction: true,
+  closeOnOverlayClick: true,
+  onClick: () => {},
+  onOpen: () => {},
+  onClose: () => {},
+  onSelect: (item, index) => {},
 } as PopoverProps
+
+const classPrefix = `nut-popover`
 export const Popover: FunctionComponent<
-  Partial<PopoverProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<PopoverProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'>
 > = (props) => {
   const {
     children,
     list,
-    theme,
     location,
     visible,
     offset,
+    targetId,
+    overlay,
+    overlayStyle,
+    overlayClassName,
+    closeOnClickOutside,
+    closeOnClickAction,
+    closeOnOverlayClick,
     className,
+    showArrow,
     style,
+    background,
+    color,
     onClick,
-    onChoose,
+    onOpen,
+    onClose,
+    onSelect,
     ...reset
   } = {
     ...defaultProps,
     ...props,
   }
 
-  const goodItem = useRef(null)
-  setTimeout(() => {
-    if (goodItem.current && getRect(goodItem.current)) {
-      setElWidth((getRect(goodItem.current) as any).width)
-      setElHeight((getRect(goodItem.current) as any).height)
-    }
-  })
+  const popoverRef = useRef<any>(null)
+  const popoverContentRef = useRef<any>(null)
 
-  const [classes, setClasses] = useState('')
+  const [showPopup, setShowPopup] = useState(false)
   const [elWidth, setElWidth] = useState(0)
   const [elHeight, setElHeight] = useState(0)
-  const [popoverContent, setPopoverContent] = useState('')
-  const [popoverArrow, setPopoverArrow] = useState('')
+  const [rootPosition, setRootPosition] =
+    useState<{
+      width: number
+      height: number
+      left: number
+      top: number
+      right: number
+    }>()
+
   useEffect(() => {
-    setClasses(classesSelf())
-    setPopoverContent(popoverContentSelf())
-    setPopoverArrow(popoverArrowSelf())
-  }, [list, theme])
-  const getStyle = () => {
-    const offNumer = Number(offset) ? Number(offset) : 0
-    const style: CSSProperties = {}
-    if (location.includes('top')) {
-      style.bottom = `${elHeight + offNumer}px`
-    } else if (location.includes('right')) {
-      style.left = `${elWidth + offNumer}px`
-    } else if (location.includes('left')) {
-      style.right = `${elWidth + offNumer}px`
+    setShowPopup(visible)
+
+    if (visible) {
+      setTimeout(() => {
+        getContentWidth()
+      }, 0)
+    }
+  }, [visible])
+
+  const targetSet = [
+    targetId ? document.querySelector(`#${targetId}`) : popoverRef.current,
+    popoverContentRef.current,
+  ]
+
+  useClickAway(
+    () => {
+      props.onClick && props.onClick()
+      onClose && onClose()
+    },
+    targetSet,
+    'touchstart',
+    visible,
+    closeOnClickOutside
+  )
+
+  const getContentWidth = () => {
+    let rect = getRect(popoverRef.current)
+    if (targetId) {
+      setTimeout(() => {
+        rect = getRect(document.querySelector(`#${targetId}`) as Element)
+        setRootPosition({
+          width: rect.width,
+          height: rect.height,
+          left: rect.left,
+          top: rect.top,
+          right: rect.right,
+        })
+        if (popoverContentRef.current) {
+          setElWidth(popoverContentRef.current.clientWidth)
+          setElHeight(popoverContentRef.current.clientHeight)
+        }
+      }, 0)
     } else {
-      style.top = `${elHeight + offNumer}px`
-    }
-    return style
-  }
-
-  const classesSelf = () => {
-    const prefixCls = 'nut-popover'
-    return `${prefixCls} ${theme ? `${prefixCls}--${theme}` : ''}`
-  }
-  const popoverContentSelf = () => {
-    const prefixCls = 'popover-content'
-    return `${prefixCls}-show ${prefixCls} ${
-      location ? `${prefixCls}--${location}` : ''
-    }`
-  }
-
-  const filter = () => {
-    const ms = ['top', 'bottom', 'left', 'right']
-    return ms.filter((m) => location.includes(m))[0]
-  }
-  const popoverArrowSelf = () => {
-    const prefixCls = 'popover-arrow'
-    return `${prefixCls} ${prefixCls}-${filter()} ${
-      location ? `${prefixCls}--${location}` : ''
-    }`
-  }
-
-  const handleClick = (e: React.MouseEvent) => {
-    if (props.onClick) {
-      props.onClick(e)
+      setRootPosition({
+        width: rect.width,
+        height: rect.height,
+        left: rect.left,
+        top: rect.top,
+        right: rect.right,
+      })
+      if (popoverContentRef.current) {
+        setElWidth(popoverContentRef.current.clientWidth)
+        setElHeight(popoverContentRef.current.clientHeight)
+      }
     }
   }
 
-  const handleChoose = (item: List, index: number) => {
+  const classes = classNames(
+    {
+      [`${classPrefix}`]: true,
+    },
+    className
+  )
+
+  const customStyle = () => {
+    const styles: CSSProperties = {}
+    if (background) {
+      styles.background = background
+    }
+
+    if (color) {
+      styles.color = color
+    }
+
+    return styles
+  }
+
+  const popoverArrow = () => {
+    const prefixCls = 'nut-popover-arrow'
+    const loca = location
+    const direction = loca.split('-')[0]
+    return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}--${loca}`
+  }
+
+  const popoverArrowStyle = () => {
+    const styles: CSSProperties = {}
+    const { background } = props
+    const direction = location.split('-')[0]
+    if (background) {
+      styles[`border${upperCaseFirst(direction)}Color` as any] = background
+    }
+    return styles
+  }
+
+  const getRootPosition = () => {
+    let styles: CSSProperties = {}
+    if (!rootPosition) return {}
+
+    const contentWidth = elWidth
+    const contentHeight = elHeight
+
+    const { width, height, left, top, right } = rootPosition
+
+    const direction = location.split('-')[0]
+    const skew = location.split('-')[1]
+    let cross = 0
+    let parallel = 0
+    if (Array.isArray(offset) && offset.length == 2) {
+      cross += +offset[1]
+      parallel += +offset[0]
+    }
+
+    if (width) {
+      if (['bottom', 'top'].includes(direction)) {
+        const h =
+          direction == 'bottom' ? height + cross : -(contentHeight + cross)
+
+        styles.top = `${top + h}px`
+
+        if (!skew) {
+          styles.left = `${-(contentWidth - width) / 2 + left + parallel}px`
+        }
+        if (skew == 'start') {
+          styles.left = `${left + parallel}px`
+        }
+        if (skew == 'end') {
+          styles.left = `${right + parallel}px`
+        }
+      }
+      if (['left', 'right'].includes(direction)) {
+        const contentW =
+          direction == 'left' ? -(contentWidth + cross) : width + cross
+        styles.left = `${left + contentW}px`
+        if (!skew) {
+          styles.top = `${
+            top - contentHeight / 2 + height / 2 - 4 + parallel
+          }px`
+        }
+        if (skew == 'start') {
+          styles.top = `${top + parallel}px`
+        }
+        if (skew == 'end') {
+          styles.top = `${top + height + parallel}px`
+        }
+      }
+    }
+    return styles
+  }
+
+  const handleSelect = (item: List, index: number) => {
     if (!item.disabled) {
-      onChoose(item, index)
+      onSelect(item, index)
+    }
+    if (closeOnClickAction) {
+      props.onClick && props.onClick()
+      onClose && onClose()
     }
   }
   return (
     <>
-      <div
-        className={`${classes} ${className}`}
-        style={{ ...style }}
-        {...reset}
-      >
-        <Trigger forwardedRef={goodItem}>
-          <div onClick={(e) => handleClick(e)}>
-            {Array.isArray(children) ? children[0] : children}
-
-            {visible ? (
-              <div className={`${popoverContent}`} style={getStyle()}>
-                <div className={`${popoverArrow}`} />
-                {Array.isArray(children) ? children[1] : ''}
-                <div>
-                  {list.map((item: List, i: number) => {
-                    return (
-                      <div
-                        key={item.name}
-                        className={`popover-menu-item ${
-                          item.disabled ? 'disabled' : ''
-                        }`}
-                        onClick={() => {
-                          handleChoose(item, i)
-                        }}
-                      >
-                        {item.icon ? item.icon : null}
-                        <div className="popover-menu-item-name">
-                          {item.name}
-                        </div>
-                      </div>
-                    )
-                  })}
+      {!targetId && (
+        <div
+          className="nut-popover-wrapper"
+          ref={popoverRef}
+          onClick={() => {
+            props.onClick && props.onClick()
+            if (!visible) {
+              onOpen && onOpen()
+            } else {
+              onClose && onClose()
+            }
+          }}
+          style={style}
+        >
+          {Array.isArray(children) ? children[0] : children}
+        </div>
+      )}
+      <div className={classes} style={getRootPosition()} {...reset}>
+        <Popup
+          className={`nut-popover-content nut-popover-content--${location}`}
+          style={customStyle()}
+          position="default"
+          overlay={overlay}
+          overlayStyle={overlayStyle}
+          overlayClassName={overlayClassName}
+          closeOnOverlayClick={closeOnOverlayClick}
+          visible={showPopup}
+        >
+          <div className="nut-popover-content-group" ref={popoverContentRef}>
+            {showArrow && (
+              <div className={popoverArrow()} style={popoverArrowStyle()}></div>
+            )}
+            {Array.isArray(children) ? children[1] : ''}
+            {list.map((item, index) => {
+              return (
+                <div
+                  className={classNames(
+                    {
+                      'nut-popover-menu-item': true,
+                      'nut-popover-menu-disabled': item.disabled,
+                    },
+                    item.className
+                  )}
+                  key={item.key}
+                  onClick={() => handleSelect(item, index)}
+                >
+                  {item.icon ? item.icon : null}
+                  <div className="nut-popover-menu-item-name">{item.name}</div>
                 </div>
-              </div>
-            ) : null}
+              )
+            })}
           </div>
-        </Trigger>
+        </Popup>
       </div>
-
-      {visible ? (
-        <Overlay
-          visible={visible}
-          onClick={(e) => handleClick(e)}
-          style={{ background: 'transparent' }}
-        />
-      ) : null}
     </>
   )
 }
