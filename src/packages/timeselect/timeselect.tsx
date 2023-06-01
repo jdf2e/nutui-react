@@ -67,9 +67,17 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
     ...defaultProps,
     ...props,
   }
-  const [activeDate, setActiveDate] = useState<string>(() =>
-    defaultValue?.length ? defaultValue[0][optionKey.valueKey] : ''
-  )
+  const [activeDate, setActiveDate] = useState<string>(() => {
+    // 设置 defaultValue 时，默认展示选中的第一个 date
+    if (defaultValue?.length) {
+      return defaultValue[0][optionKey.valueKey]
+    }
+    // 否则展示 options 中第一个 date
+    if (options?.length) {
+      return options[0][optionKey.valueKey]
+    }
+    return ''
+  })
   const [activeTime, setActiveTime] = useState<DateType[]>(
     () => defaultValue || []
   )
@@ -90,15 +98,33 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
         }
       )
       if (timeIndex > -1) {
-        date[optionKey.childrenKey].splice(timeIndex, 1)
-      } else {
+        if (multiple) {
+          date[optionKey.childrenKey].splice(timeIndex, 1)
+        } else {
+          newActiveTime = []
+        }
+      } else if (multiple) {
         date[optionKey.childrenKey].push({ ...selectTime })
+      } else {
+        newActiveTime = [
+          {
+            [optionKey.valueKey]: activeDate,
+            [optionKey.childrenKey]: [{ ...selectTime }],
+          },
+        ]
       }
-    } else {
+    } else if (multiple) {
       newActiveTime.push({
         [optionKey.valueKey]: activeDate,
         [optionKey.childrenKey]: [{ ...selectTime }],
       })
+    } else {
+      newActiveTime = [
+        {
+          [optionKey.valueKey]: activeDate,
+          [optionKey.childrenKey]: [{ ...selectTime }],
+        },
+      ]
     }
     newActiveTime = newActiveTime.filter((item: DateType) => {
       return item[optionKey.childrenKey]?.length > 0
