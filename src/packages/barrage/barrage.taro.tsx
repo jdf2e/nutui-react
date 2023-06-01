@@ -57,7 +57,7 @@ const InternalBarrage: ForwardRefRenderFunction<
   const timer = useRef(0)
 
   const classes = classNames(className, classPrefix, {
-    [`nut-barrage__body${timeId.current}`]: true,
+    [`${classPrefix}__body${timeId.current}`]: true,
   })
 
   useImperativeHandle(ref, () => ({
@@ -87,13 +87,13 @@ const InternalBarrage: ForwardRefRenderFunction<
     setTimeout(() => {
       let width = 100
       query
-        .select('.nut-barrage__body' + timeId.current)
+        .select(`.${classPrefix}__body` + timeId.current)
         .boundingClientRect((rec: any) => {
           width = rec.width || 300
         })
 
       query
-        .select('.nut-barrage__item' + index)
+        .select(`.${classPrefix}__item` + index)
         .boundingClientRect((recs: any) => {
           let height = recs.height
           let nodeTop = (index % rows) * (height + gapY) + 20 + 'px'
@@ -107,7 +107,6 @@ const InternalBarrage: ForwardRefRenderFunction<
     let timeIndex = index - rows > 0 ? index - rows : 0
     let list = styleList
     let time = list[timeIndex] ? Number(list[timeIndex]['--time']) : 0
-    // // distance.value = '-' + (speeds / 1000) * 200 + '%';
     let obj = {
       top: nodeTop,
       '--time': `${interval * index + time}`,
@@ -126,7 +125,7 @@ const InternalBarrage: ForwardRefRenderFunction<
         {baItemList.map((item: any, index: number) => {
           return (
             <div
-              className={`barrage-item nut-barrage__item${index} move`}
+              className={`barrage-item ${classPrefix}__item${index} move`}
               style={styleList[index]}
             >
               {item.length > 8 ? item.substr(0, 8) + '...' : item}

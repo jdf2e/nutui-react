@@ -66,7 +66,7 @@ export default App
 
 :::
 
-## API
+## Barrage
 
 ### Props
 
