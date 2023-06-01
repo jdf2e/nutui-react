@@ -5,13 +5,8 @@ import { handleClick } from './utils'
 import { OffsetContext } from './context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-type NavBarProps = {
-  showhead?: boolean
-}
-
 export interface SideNavBarProps
   extends Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>,
-    NavBarProps,
     BasicComponent {
   title: ReactNode
   visible: boolean
@@ -23,7 +18,6 @@ export interface SideNavBarProps
 
 const defaultProps = {
   ...ComponentDefaults,
-  showhead: false,
   position: 'left',
   width: '80%',
 } as SideNavBarProps
@@ -37,7 +31,6 @@ export const SideNavBar: FunctionComponent<SideNavBarProps> = (props) => {
     position,
     children,
     className,
-    showhead,
     onClose,
     ...rest
   } = {

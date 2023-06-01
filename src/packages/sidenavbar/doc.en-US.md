@@ -143,7 +143,7 @@ export default App;
 | title | overall title | `string` | `-` |
 | width | mask width in percentage | `string` | `80%` |
 | position | popup position | `'left' \| 'right'` | `left` |
-| offset | indent width | `number` | `20` |
+| indent | indent width | `number` | `20` |
 | onClose | Triggered when the mask is closed | `-` | `-` |
 
 ## SubSideNavBar

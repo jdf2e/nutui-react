@@ -1,19 +1,18 @@
-# SideNavBar组件
+# SideNavBar組件
 
-## 介绍
+## 介紹
 
-用于内容选择和切换
+用於內容選擇和切換
 
-## 安装
-
+## 安裝
 ```tsx
 // react
 import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
 ```
 
-## 代码演示
+## 代碼演示
 
-### 基础用法
+### 基礎用法
 
 :::demo
 
@@ -36,31 +35,31 @@ const App = () => {
   return ( 
     <>   
     <Cell
-          title="左侧弹出"
+          title="左側彈出"
           onClick={() => {
             changeNarBar(true, 'left')
           }}
         />
         <Cell
-          title="右侧弹出"
+          title="右側彈出"
           onClick={() => {
             changeNarBar(true, 'right')
           }}
         />
         <SideNavBar
-          title="首页"
+          title="首頁"
           visible={navBarState.visible}
           position={navBarState.position}
           handleClose={() => {
             changeNarBar(false)
           }}
         >
-          <SubSideNavBar title="一级标题" value="1-0" >
-            <SideNavBarItem title="一级内容1" value="1-01" />
-            <SideNavBarItem title="一级内容2" value="1-02" />
-            <SubSideNavBar title="二级标题" value="2-0">
-              <SideNavBarItem title="二级内容1" value="2-01" />
-              <SideNavBarItem title="二级内容2" value="2-02" />
+          <SubSideNavBar title="一級標題" value="1-0" >
+            <SideNavBarItem title="一級內容1" value="1-01" />
+            <SideNavBarItem title="一級內容2" value="1-02" />
+            <SubSideNavBar title="二級標題" value="2-0">
+              <SideNavBarItem title="二級内容1" value="2-01" />
+              <SideNavBarItem title="二級内容2" value="2-02" />
             </SubSideNavBar>
           </SubSideNavBar>
         </SideNavBar>
@@ -73,7 +72,7 @@ export default App;
 
 :::
 
-### 嵌套及回调
+### 嵌套及回調
 
 :::demo
 
@@ -95,28 +94,28 @@ const App = () => {
   return ( 
     <>  
       <Cell
-          title="显示"
+          title="顯示"
           onClick={() => {
             changeNarBar(true)
           }}
         /> 
     <SideNavBar
-          title="首页"
+          title="首頁"
           visible={visible}
           position='left'
           handleClose={() => {
             changeNarBar(false)
           }}
         >
-          <SubSideNavBar title="一级标题" value="1-0" onClick={clickTitle}>
-            <SideNavBarItem title="一级内容1" value="1-01" onClick={clickItem} />
-            <SideNavBarItem title="一级内容2" value="1-02" />
-            <SubSideNavBar title="二级标题" value="2-0">
-              <SideNavBarItem title="二级内容1" value="2-01" />
-              <SideNavBarItem title="二级内容2" value="2-02" />
-                <SubSideNavBar title="三级标题" value="3-0">
-                  <SideNavBarItem title="三级内容1" value="3-01" />
-                  <SideNavBarItem title="三级内容2" value="3-02" />
+          <SubSideNavBar title="一級標題" value="1-0" onClick={clickTitle}>
+            <SideNavBarItem title="一級內容1" value="1-01" onClick={clickItem} />
+            <SideNavBarItem title="一級內容2" value="1-02" />
+            <SubSideNavBar title="二級標題" value="2-0">
+              <SideNavBarItem title="二級内容1" value="2-01" />
+              <SideNavBarItem title="二級内容2" value="2-02" />
+                <SubSideNavBar title="三級標題" value="3-0">
+                  <SideNavBarItem title="三級内容1" value="3-01" />
+                  <SideNavBarItem title="三級内容2" value="3-02" />
                 </SubSideNavBar>
             </SubSideNavBar>
           </SubSideNavBar>
@@ -134,51 +133,51 @@ export default App;
 
 ### Props
 
-| 属性 | 说明 | 类型 | 默认值 |
+| 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| visible | 组件是否显示 | `boolean` | `false` |
-| title | 整体标题 | `string` | `-` |
-| width | 遮罩宽度百分比 | `string` | `80%` |
-| position | 弹出位置 | `'left' \| 'right'` | `left` |
-| offset | 缩进宽度 | `number` | `20` |
-| onClose | 关闭遮罩时触发 | `-` | `-` |
+| visible | 組件是否顯示 | `boolean` | `false` |
+| title | 整體標題 | `string` | `-` |
+| width | 遮罩寬度百分比 | `string` | `80%` |
+| position | 彈出位置 | `'left' \| 'right'` | `left` |
+| offset | 縮進寬度 | `number` | `20` |
+| onClose | 關閉遮罩時觸發 | `-` | `-` |
 
 ## SubSideNavBar
 
 ### Props
 
-| 属性 | 说明 | 类型 | 默认值 |
+| 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| value | 导航唯一标识 | `string \| number` | `-` |
-| title | 整体标题 | `string` | `-` |
-| open | 导航是否默认展开 | `boolean` | `true` |
-| onClick | 导航点击 | `data: {title: string, value: string \| number, isShow: boolean}` | `-` |
+| value | 導航唯一標識 | `string \| number` | `-` |
+| title | 整體標題 | `string` | `-` |
+| open | 導航是否默認展開 | `boolean` | `true` |
+| onClick | 導航點擊 | `data: {title: string, value: string \| number, isShow: boolean}` | `-` |
 
 ## SideNavBarItem
 
 ### Props
 
-| 属性 | 说明 | 类型 | 默认值 |
+| 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| value | 导航唯一标识 | `string \| number` | `-` |
-| title | 整体标题 | `string` | `-` |
-| onClick | 导航点击 | `data: {title: string, value: string \| number}` | `-` |
+| value | 導航唯一標識 | `string \| number` | `-` |
+| title | 整體標題 | `string` | `-` |
+| onClick | 導航點擊 | `data: {title: string, value: string \| number}` | `-` |
 
-## 主题定制
+## 主題定制
 
-### 样式变量
+### 樣式變量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名称 | 说明 | 默认值 |
+| 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-sidenavbar-content-bg-color | 侧边栏导航背景色 | `$white` |
-| \--nutui-sidenavbar-item-height | 侧边栏每项的高度 | `40px` |
-| \--nutui-sidenavbar-title-padding | 标题的内边距 | `10px 8px 10px 20px` |
-| \--nutui-sidenavbar-title-background | 标题的背景色 | `$gray4` |
-| \--nutui-sidenavbar-title-color | 标题的字体颜色 | `$gray1` |
-| \--nutui-sidenavbar-sub-title-padding | 子标题的内边距 | `10px 8px 10px 35px` |
-| \--nutui-sidenavbar-sub-title-background | 子标题背景色 | `$gray5` |
-| \--nutui-sidenavbar-sub-title-color | 子标题字体颜色 | `$gray1` |
-| \--nutui-sidenavbar-sub-list-background | 选项列表背景色 | `$gray5` |
-| \--nutui-sidenavbar-sub-list-color | 选项列表字体颜色 | `$gray1` |
+| \--nutui-sidenavbar-content-bg-color | 側邊欄導航背景色 | `$white` |
+| \--nutui-sidenavbar-item-height | 側邊欄每項的高度 | `40px` |
+| \--nutui-sidenavbar-title-padding | 標題的內邊距 | `10px 8px 10px 20px` |
+| \--nutui-sidenavbar-title-background | 標題的背景色 | `$gray4` |
+| \--nutui-sidenavbar-title-color | 標題的字體顏色 | `$gray1` |
+| \--nutui-sidenavbar-sub-title-padding | 子標題的內邊距 | `10px 8px 10px 35px` |
+| \--nutui-sidenavbar-sub-title-background | 子標題背景色 | `$gray5` |
+| \--nutui-sidenavbar-sub-title-color | 子標題字體顏色 | `$gray1` |
+| \--nutui-sidenavbar-sub-list-background | 選項列表背景色 | `$gray5` |
+| \--nutui-sidenavbar-sub-list-color | 選項列表字體顏色 | `$gray1` |

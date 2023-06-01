@@ -140,7 +140,7 @@ export default App;
 | title | 整体标题 | `string` | `-` |
 | width | 遮罩宽度百分比 | `string` | `80%` |
 | position | 弹出位置 | `'left' \| 'right'` | `left` |
-| offset | 缩进宽度 | `number` | `20` |
+| indent | 缩进宽度 | `number` | `20` |
 | onClose | 关闭遮罩时触发 | `-` | `-` |
 
 ## SubSideNavBar
