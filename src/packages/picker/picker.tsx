@@ -42,6 +42,7 @@ export interface PickerProps extends BasicComponent {
     columnIndex: number
   ) => void
 }
+
 const defaultProps = {
   ...ComponentDefaults,
   visible: false,
@@ -74,6 +75,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     } = { ...defaultProps, ...props }
     const classPrefix = 'nut-picker'
     const classes = classNames(classPrefix, className)
+    console.log('before useProps', props.value, defaultValue)
     const [selectedValue, setSelectedValue] = usePropsValue<
       Array<string | number>
     >({
@@ -81,10 +83,11 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       defaultValue: [...defaultValue],
       finalValue: [...defaultValue],
       onChange: (val: (string | number)[]) => {
+        console.log('xxxx')
         props.onConfirm?.(setSelectedOptions(), val)
       },
     })
-    const [innerValue, setInnerValue] = useState(selectedValue)
+    const [innerValue, setInnerValue] = useState([...defaultValue])
     const [columnIndex, setColumnIndex] = useState<number>(0) // 选中列
     const pickerRef = useRef<any>(null)
     const [refs, setRefs] = useRefs()
@@ -155,18 +158,24 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
           item[0] && data.push(item[0].value)
           return item
         })
-
-      if (!defaultValue.length && innerValue.length === 0) {
-        setInnerValue([...data])
-      }
     }
 
     useEffect(() => {
-      if (!visible) {
-        return
+      console.log('selectedValue', selectedValue)
+      console.log('innerValue', innerValue)
+      setInnerValue(innerValue !== selectedValue ? selectedValue : innerValue)
+    }, [visible])
+
+    useEffect(() => {
+      if (visible) {
+        init()
       }
-      init()
-    }, [options, visible])
+    }, [options])
+
+    // 选中值进行修改
+    useEffect(() => {
+      onChange && onChange(setSelectedOptions(), innerValue, columnIndex)
+    }, [innerValue, columnsList])
 
     const setSelectedOptions = () => {
       const options: PickerOption[] = []
@@ -184,34 +193,29 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       return options
     }
 
-    // 选中值进行修改
-    useEffect(() => {
-      if (!visible) {
-        return
-      }
-      onChange && onChange(setSelectedOptions(), innerValue, columnIndex)
-    }, [innerValue, columnsList, visible])
-
     // 更新已选择数据
     const chooseItem = (columnOptions: PickerOption, columnIndex: number) => {
+      console.log('onchoose')
       if (columnOptions && Object.keys(columnOptions).length) {
         // 切换数据后，数据有变动才触发。
         if (innerValue[columnIndex] !== columnOptions.value) {
           if (columnsType() === 'cascade') {
+            console.log('cascade')
             innerValue[columnIndex] = columnOptions.value || ''
-            setInnerValue([...innerValue])
-
+            // setInnerValue([...innerValue])
             while (columnOptions?.children?.[0]) {
               innerValue[columnIndex + 1] = columnOptions.children[0].value
-              setInnerValue([...innerValue])
+              // setInnerValue([...innerValue])
               columnIndex++
               columnOptions = columnOptions.children[0]
             }
             // 当前改变列的下一列 children 值为空
             if (columnOptions?.children?.length) {
               innerValue[columnIndex + 1] = ''
-              setInnerValue([...innerValue])
+              // setInnerValue([...innerValue])
             }
+            console.log('casca', innerValue, selectedValue)
+            setInnerValue([...innerValue])
             setColumnsList(normalListData() as PickerOption[][])
           } else {
             setInnerValue((data: (number | string)[]) => {
@@ -239,6 +243,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       if (movings) {
         isConfirmEvent.current = true
       } else {
+        console.log('setSelectedValue', innerValue)
         setSelectedValue(innerValue)
         closePicker()
       }
