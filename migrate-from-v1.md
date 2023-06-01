@@ -417,5 +417,11 @@
 #### Address
 #### Barrage
 #### Card
+
 #### Signature
+
+- `type` 类型改为 `png｜jpg`
+- `unSupportTpl` 重命名为 `unsupported`, 类型改为 `ReactNode`
+- 新增 `confirm`和`clear` ref 的方法，去掉组件里面的 `button`, demo 中自定义按钮点击事件
+
 #### TimeSelect

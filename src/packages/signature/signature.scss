@@ -1,16 +1,4 @@
 @import '../button/button';
-.nut-theme-dark {
-  .nut-signature {
-    &__inner {
-      Canvas {
-        background-color: $dark3;
-      }
-    }
-  }
-  .demo-tips {
-    color: $dark1;
-  }
-}
 .nut-signature {
   .spcanvas_WEAPP {
     width: 100%;
@@ -23,9 +11,7 @@
     Canvas {
       background-color: #fff;
     }
-
     height: $signature-height;
-    margin-bottom: $signature-margin-bottom;
     border: $signature-border-width solid $signature-border-color;
     display: flex;
     justify-content: center;
@@ -33,8 +19,5 @@
   }
   &__unsopport {
     font-size: $font-size-base;
-  }
-  &__btn {
-    margin-right: $signature-btn-margin-right !important;
   }
 }

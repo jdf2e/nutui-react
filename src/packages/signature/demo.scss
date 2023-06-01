@@ -1,3 +1,13 @@
-.demo-tips {
-  color: #1a1a1a;
+.demo {
+  width: 100%;
+  .web {
+    position: fixed;
+  }
+  .demo-tips {
+    color: #1a1a1a;
+  }
+  .demo-btn {
+    display: inline-flex;
+    align-items: center;
+  }
 }

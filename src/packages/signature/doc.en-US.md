@@ -1,10 +1,10 @@
-# Signature 
+# Signature
 
-### Intro
+## Intro
 
 Signature component based on canvas.
 
-### Install
+## Install
 
 ```javascript
 // react
@@ -94,18 +94,19 @@ export default App;
 
 ### Props
 
-| Property | Description                           | Type   | Default                                              |
-| -------------- | ------------------------------ | ------ | --------------------------------------------------- |
-| customClass   |  Custom class                 | string | -                                                   |
-| lineWidth     | Width of line                    | number | `3`                                                   |
-| strokeStyle   | Drawing stroke color                   | string | `#000`                                              |
-| type           | Picture format                       | string | `png`                                               |
-| unsupported |  Display copy without canvas | RreactNode | `sorry, the current browser doesn't support canvas, so we can't use this control! ` |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| customClass | Custom class | `string` | `-` |
+| lineWidth | Width of line | `number` | `3` |
+| strokeStyle | Drawing stroke color | `string` | `#000` |
+| type | Picture format | `string` | `png` |
+| unsupported | Display copy without canvas | `RreactNode` | `sorry, the current browser doesn't support canvas, so we can't use this control!` |
 
-## Event
+| onConfirm | Click the confirm button to trigger the event callback function | `onConfirm: (canvas: HTMLCanvasElement, dataurl: string) => void` |-| | onClear | `onClear: () => void` |-|
 
-| 属性 | 说明                         | 回调参数                         |
-| ------- | ---------------------------- | -------------------------------- |
-| onConfirm | Click the confirm button to trigger the event callback function | Canvas and data URI displayed by signature imageURI |
-| onClear   | Click the re sign button to trigger the event callback function | -                               |
+### Ref
 
+| Property | Description | Type |
+| --- | --- | --- |
+| confirm | 确认签字 | `() => void` |
+| clear | 清除签字 | `() => void` |

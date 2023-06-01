@@ -1,9 +1,15 @@
-import React, { FunctionComponent, useRef, useState, useEffect } from 'react'
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  ForwardRefRenderFunction,
+  useImperativeHandle,
+} from 'react'
 import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface SignatureProps extends BasicComponent {
-  type: string
+  type: 'png' | 'jpg'
   lineWidth: number
   strokeStyle: string
   unsupported: string
@@ -17,9 +23,10 @@ const defaultProps = {
   strokeStyle: '#000',
   unsupported: '对不起，当前浏览器不支持Canvas，无法使用本控件！',
 } as SignatureProps
-export const Signature: FunctionComponent<
-  Partial<SignatureProps> & React.HTMLAttributes<HTMLDivElement>
-> = (props) => {
+const InternalSignature: ForwardRefRenderFunction<
+  unknown,
+  Partial<SignatureProps>
+> = (props, ref) => {
   const { locale } = useConfig()
   const {
     type,
@@ -114,10 +121,6 @@ export const Signature: FunctionComponent<
     onClear && onClear()
   }
 
-  const handleConfirmBtn = () => {
-    onSave(canvasRef.current as HTMLCanvasElement)
-  }
-
   const onSave = (canvas: HTMLCanvasElement) => {
     let dataurl
     switch (type) {
@@ -133,6 +136,15 @@ export const Signature: FunctionComponent<
     handleClearBtn()
     onConfirm && onConfirm(canvas, dataurl as string)
   }
+
+  useImperativeHandle(ref, () => ({
+    confirm: () => {
+      onSave(canvasRef.current as HTMLCanvasElement)
+    },
+    clear: () => {
+      handleClearBtn()
+    },
+  }))
   return (
     <div className={`${classPrefix} ${className}`} style={style} {...rest}>
       <div className={`${classPrefix}__inner`} ref={wrapRef}>
@@ -148,5 +160,7 @@ export const Signature: FunctionComponent<
   )
 }
 
+export const Signature =
+  React.forwardRef<unknown, Partial<SignatureProps>>(InternalSignature)
 Signature.defaultProps = defaultProps
 Signature.displayName = 'NutSignature'

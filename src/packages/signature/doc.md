@@ -94,12 +94,19 @@ export default App;
 
 ### Props
 
-| 属性 | 说明                           | 类型   | 默认值                                              |
-| -------------- | ------------------------------ | ------ | --------------------------------------------------- |
-| customClass   | 自定义 class                   | string | -                                                   |
-| lineWidth     | 线条的宽度                     | number | `3`                                                   |
-| strokeStyle   | 绘图笔触颜色                   | string | `#000`                                              |
-| type           | 图片格式                       | string | `png`                                               |
-| unsupported | 不支持 Canvas 情况下的展示文案 | RreactNode | `对不起，当前浏览器不支持 Canvas，无法使用本控件！` |
-| onConfirm | 点击确认按钮触发事件回调函数 | `onConfirm: (canvas: HTMLCanvasElement, dataurl: string) => void` |-|
-| onClear   | 点击重签按钮触发事件回调函数 | `onClear: () => void`                          |-|
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| customClass | 自定义 class | `string` | `-` |
+| lineWidth | 线条的宽度 | `number` | `3` |
+| strokeStyle | 绘图笔触颜色 | `string` | `#000` |
+| type | 图片格式 | `string` | `png` |
+| unsupported | 不支持 Canvas 情况下的展示文案 | `RreactNode` | `对不起，当前浏览器不支持 Canvas，无法使用本控件！` |
+| onConfirm | 点击确认按钮触发事件回调函数 | `onConfirm: (canvas: HTMLCanvasElement, dataurl: string) => void` | `-` |
+| onClear | 点击重签按钮触发事件回调函数 | `onClear: () => void` | `-` |
+
+### Ref
+
+| 属性 | 说明 | 类型 |
+| --- | --- | --- |
+| confirm | 确认签字 | `() => void` |
+| clear | 清除签字 | `() => void` |
