@@ -6,7 +6,6 @@ import React, {
   ReactNode,
 } from 'react'
 import classNames from 'classnames'
-import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -23,8 +22,6 @@ export interface InfiniteloadingProps extends BasicComponent {
   loadIcon: ReactNode
   loadingText: string
   loadMoreText: string
-  className: string
-  style: React.CSSProperties
   onRefresh: (param: () => void) => void
   onLoadMore: (param: () => void) => void
   onScrollChange: (param: number) => void
@@ -47,6 +44,7 @@ const defaultProps = {
   loadMoreText: '哎呀，这里是底部了啦',
 } as InfiniteloadingProps
 
+const classPrefix = `nut-infiniteloading`
 export const Infiniteloading: FunctionComponent<
   Partial<InfiniteloadingProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
@@ -83,8 +81,7 @@ export const Infiniteloading: FunctionComponent<
   const y = useRef(0)
   const distance = useRef(0)
 
-  const b = bem('infiniteloading')
-  const classes = classNames(className, b())
+  const classes = classNames(className, classPrefix)
 
   useEffect(() => {
     const parentElement = getParentElement(

@@ -8,8 +8,8 @@ import React, {
 import classNames from 'classnames'
 import { ScrollView } from '@tarojs/components'
 import { createSelectorQuery } from '@tarojs/taro'
-import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
+
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface InfiniteloadingProps extends BasicComponent {
@@ -22,8 +22,6 @@ export interface InfiniteloadingProps extends BasicComponent {
   loadIcon: ReactNode
   loadingText: string
   loadMoreText: string
-  className: string
-  style: React.CSSProperties
   onRefresh: (param: () => void) => void
   onLoadMore: (param: () => void) => void
   onScrollChange: (param: number) => void
@@ -44,17 +42,7 @@ const defaultProps = {
   loadMoreText: '哎呀，这里是底部了啦',
 } as InfiniteloadingProps
 
-interface BaseTouchEvent<TouchDetail> {
-  /** 触摸事件，当前停留在屏幕中的触摸点信息的数组 */
-  touches: Array<TouchDetail>
-
-  /** 触摸事件，当前变化的触摸点信息的数组 */
-  changedTouches: Array<TouchDetail>
-
-  preventDefault: any
-}
-type ITouchEvent = BaseTouchEvent<any>
-
+const classPrefix = `nut-infiniteloading`
 export const Infiniteloading: FunctionComponent<
   Partial<InfiniteloadingProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
@@ -89,8 +77,7 @@ export const Infiniteloading: FunctionComponent<
   const refreshMaxH = useRef(0)
   const distance = useRef(0)
 
-  const b = bem('infiniteloading')
-  const classes = classNames(className, b())
+  const classes = classNames(className, classPrefix)
 
   useEffect(() => {
     refreshMaxH.current = upperThreshold
