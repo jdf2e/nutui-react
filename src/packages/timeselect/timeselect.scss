@@ -1,38 +1,5 @@
 @import '../popup/popup.scss';
-@import '../timepannel/timepannel.scss';
 @import '../timedetail/timedetail.scss';
-
-.nut-theme-dark {
-  .nut-timeselect {
-    background-color: $dark6;
-
-    &__title {
-      background-color: $dark6;
-      color: $dark1;
-    }
-
-    &__content {
-      &-left {
-        background-color: $dark5;
-        color: $dark1;
-
-        .nut-timepannel-active {
-          background-color: $dark6;
-          color: $dark1;
-        }
-      }
-    }
-  }
-
-  .nut-timedetail__item {
-    background-color: $dark4;
-    color: $dark1;
-
-    &-active {
-      background-color: $dark-brand-color;
-    }
-  }
-}
 
 .nut-timeselect {
   background-color: $background-color3;
@@ -69,6 +36,20 @@
   }
 
   .nut-timepannel-active {
+    background-color: $background-color3;
+    color: $title-color;
+    font-weight: 700;
+  }
+}
+
+.nut-timepannel {
+  height: $timeselect-timepannel-height;
+  line-height: 40px;
+  text-align: center;
+  color: $timeselect-timepannel-text-color;
+  font-size: $timeselect-timepannel-font-size;
+
+  &.active {
     background-color: $background-color3;
     color: $title-color;
     font-weight: 700;

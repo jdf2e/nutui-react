@@ -1107,17 +1107,6 @@
         },
         {
           "version": "2.0.0",
-          "name": "TimePannel",
-          "type": "component",
-          "cName": "配送时间",
-          "desc": "配送时间日期选择",
-          "sort": 7,
-          "show": false,
-          "exportEmpty": true,
-          "author": "zhaoqian16"
-        },
-        {
-          "version": "2.0.0",
           "name": "TimeSelect",
           "type": "component",
           "cName": "配送时间",

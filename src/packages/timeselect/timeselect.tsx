@@ -1,45 +1,51 @@
 import React, { FunctionComponent, ReactNode, useState } from 'react'
 import classNames from 'classnames'
 import Popup from '@/packages/popup'
-import TimePannel from '@/packages/timepannel'
 import TimeDetail from '@/packages/timedetail'
-import { TimeType } from '@/packages/timedetail/timedetail'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface DateType {
-  paneKey?: string | number
-  date: string
+export interface TimeType {
+  value?: string
+  text?: string
+  [prop: string]: any
 }
+
+export interface DateType {
+  value?: string
+  text?: string
+  children?: TimeType[]
+  [prop: string]: any
+}
+
+export interface OptionKeyType {
+  valueKey: string
+  textKey: string
+  childrenKey: string
+}
+
 export interface TimeSelectProps extends BasicComponent {
   visible: boolean
   multiple?: boolean
   title?: ReactNode
-  currentKey: string | number
-  currentTime: TimeType[]
-  dates: DateType[]
-  times: TimeType[]
-  select?: (selectTimeData: TimeType[]) => void
-  pannelChange?: (
-    pannelKey: string | number,
-    selectTimeData: TimeType[]
-  ) => void
-  timeChange?: (time: string, selectTimeData: TimeType[]) => void
-  onSelect?: (selectTimeData: TimeType[]) => void
-  onDateChange?: (
-    pannelKey: string | number,
-    selectTimeData: TimeType[]
-  ) => void
-  onTimeChange?: (time: string, selectTimeData: TimeType[]) => void
+  defaultValue: DateType[]
+  options: DateType[]
+  optionKey: OptionKeyType
+  onSelect?: (value: DateType[]) => void
+  onDateChange?: (date: DateType, value: DateType[]) => void
+  onTimeChange?: (time: TimeType, value: DateType[]) => void
 }
 const defaultProps = {
   ...ComponentDefaults,
   visible: false,
   multiple: false,
-  currentKey: 0,
-  currentTime: [],
+  defaultValue: [],
   title: '取件时间',
-  dates: [],
-  times: [],
+  options: [],
+  optionKey: {
+    valueKey: 'value',
+    textKey: 'text',
+    childrenKey: 'children',
+  },
 } as TimeSelectProps
 export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
   props
@@ -49,14 +55,10 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
     className,
     style,
     title,
-    currentKey,
-    currentTime,
-    dates,
-    times,
+    defaultValue,
+    options,
+    optionKey,
     multiple,
-    select,
-    pannelChange,
-    timeChange,
     onSelect,
     onDateChange,
     onTimeChange,
@@ -65,92 +67,48 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
     ...defaultProps,
     ...props,
   }
-  const [activeKey, setActiveKey] = useState<string | number>(currentKey)
-  const [activeTime, setActiveTime] = useState<TimeType[]>(
-    currentTime.length
-      ? currentTime
-      : [
-          {
-            key: currentKey,
-            list: [],
-          },
-        ]
+  const [activeDate, setActiveDate] = useState<string>(() =>
+    defaultValue?.length ? defaultValue[0][optionKey.valueKey] : ''
+  )
+  const [activeTime, setActiveTime] = useState<DateType[]>(
+    () => defaultValue || []
   )
   const classPrefix = 'nut-timeselect'
-
-  // popup 的关闭回调, 执行 select 函数更改外部 visible
   const closeFun = () => {
-    if (onSelect) {
-      onSelect(activeTime)
-    } else if (select) {
-      select(activeTime)
-    }
+    onSelect && onSelect(activeTime)
   }
   // 选择配送时间回调
-  const handleSelectTime = (time: string) => {
-    let curTimeData = {} as TimeType
-    let curIndex: string | number = -1
-    for (let i = 0; i < activeTime.length; i++) {
-      if (String(activeTime[i].key) === String(activeKey)) {
-        curTimeData = activeTime[i]
-        curIndex = i
-        break
-      }
-    }
-    const curTimeIndex = curTimeData.list.findIndex(
-      (item: string) => String(item) === String(time)
-    )
-    if (curTimeIndex === -1) {
-      curTimeData.list.push(time)
-    } else {
-      curTimeData.list.splice(curTimeIndex, 1)
-    }
-    const resultTimeData = [...activeTime]
-    resultTimeData.splice(curIndex, 1, curTimeData)
-    setActiveTime(resultTimeData)
-    if (onTimeChange) {
-      onTimeChange(time, resultTimeData)
-    } else if (timeChange) {
-      timeChange(time, resultTimeData)
-    }
-  }
-  // 选择日期的回调
-  const handleChange = (pannelKey: string | number) => {
-    const resultTimeData: TimeType[] = [...activeTime]
-    if (String(pannelKey) !== String(activeKey)) {
-      setActiveKey?.(pannelKey)
-      if (multiple) {
-        const curTimeDataIndex = activeTime.findIndex(
-          (item: TimeType) => String(item.key) === String(pannelKey)
-        )
-        if (curTimeDataIndex === -1) {
-          resultTimeData.push({
-            key: pannelKey,
-            list: [],
-          } as TimeType)
-          setActiveTime(resultTimeData)
+  const handleSelectTime = (selectTime: TimeType) => {
+    let newActiveTime = [...activeTime]
+    const date = newActiveTime.find((item: DateType) => {
+      return item[optionKey.valueKey] === activeDate
+    })
+    if (date) {
+      const timeIndex = date[optionKey.childrenKey].findIndex(
+        (time: TimeType) => {
+          return time[optionKey.valueKey] === selectTime[optionKey.valueKey]
         }
+      )
+      if (timeIndex > -1) {
+        date[optionKey.childrenKey].splice(timeIndex, 1)
       } else {
-        setActiveTime([
-          {
-            key: pannelKey,
-            list: [],
-          } as TimeType,
-        ])
+        date[optionKey.childrenKey].push({ ...selectTime })
       }
+    } else {
+      newActiveTime.push({
+        [optionKey.valueKey]: activeDate,
+        [optionKey.childrenKey]: [{ ...selectTime }],
+      })
     }
-    if (onDateChange) {
-      onDateChange(pannelKey, resultTimeData)
-    } else if (pannelChange) {
-      pannelChange(pannelKey, resultTimeData)
-    }
+    newActiveTime = newActiveTime.filter((item: DateType) => {
+      return item[optionKey.childrenKey]?.length > 0
+    })
+    setActiveTime(newActiveTime)
+    onTimeChange && onTimeChange(selectTime, newActiveTime)
   }
-  // 选中的日期增加 active 类名
-  const getTimePannelClass = (dataItem: DateType) => {
-    if (String(dataItem['paneKey']) === String(activeKey)) {
-      return 'nut-timepannel-active'
-    }
-    return ''
+  const handleChange = (date: DateType) => {
+    setActiveDate(date[optionKey.valueKey])
+    onDateChange && onDateChange(date, activeTime)
   }
   return (
     <Popup
@@ -170,20 +128,23 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
         <div className={`${classPrefix}__title`}>{title}</div>
         <div className={`${classPrefix}__content`}>
           <div className={`${classPrefix}__content-left`}>
-            {dates.map((dataItem: DateType, index: number) => (
-              <TimePannel
-                date={dataItem.date}
-                className={getTimePannelClass(dataItem)}
-                key={String(dataItem['paneKey'] || index)}
-                curKey={String(dataItem['paneKey'] || index)}
-                onChange={handleChange}
-              />
+            {options.map((item: DateType) => (
+              <div
+                key={item[optionKey.valueKey]}
+                className={classNames('nut-timepannel', {
+                  active: item[optionKey.valueKey] === activeDate,
+                })}
+                onClick={() => handleChange(item)}
+              >
+                {item[optionKey.textKey]}
+              </div>
             ))}
           </div>
           <TimeDetail
-            times={times}
-            currentKey={String(activeKey)}
-            currentTime={activeTime}
+            options={options}
+            optionKey={optionKey}
+            activeDate={activeDate}
+            activeTime={activeTime}
             onSelect={handleSelectTime}
           />
         </div>

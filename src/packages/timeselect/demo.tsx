@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import { TimeSelect } from './timeselect'
-import { TimeType } from '../timedetail/timedetail'
-import { Cell } from '../cell/cell'
-import Toast from '../toast'
-import { useTranslate } from '../../sites/assets/locale'
+import TimeSelect, { DateType, TimeType } from '@/packages/timeselect'
+import Cell from '@/packages/cell'
+import Toast from '@/packages/toast'
+import { useTranslate } from '@/sites/assets/locale'
 
 const TimeSelectDemo = () => {
   const [translated] = useTranslate<any>({
@@ -31,26 +30,36 @@ const TimeSelectDemo = () => {
   })
 
   const [visible1, SetVisible1] = useState(false)
-  const currentKey = 0
 
-  const dates = [
+  const optionKey = {
+    valueKey: 'value1',
+    textKey: 'text1',
+    childrenKey: 'children1',
+  }
+  const options = [
     {
-      paneKey: '0',
-      date: translated.text4,
+      value1: '20230520',
+      text1: translated.text4,
+      children1: [
+        { value1: '09', text1: '09:00-10:00' },
+        { value1: '10', text1: '10:00-11:00' },
+        { value1: '11', text1: '11:00-12:00' },
+      ],
     },
     {
-      paneKey: '1',
-      date: translated.text5,
+      value1: '20230521',
+      text1: translated.text5,
+      children1: [
+        { value1: '09', text1: '09:00-10:00' },
+        { value1: '10', text1: '10:00-11:00' },
+      ],
     },
   ]
-  const times = [
+
+  const defaultValue = [
     {
-      key: '0',
-      list: ['9:00-10:00', '10:00-11:00', '11:00-12:00'],
-    },
-    {
-      key: '1',
-      list: ['9:00-10:00', '10:00-11:00'],
+      value1: '20230521',
+      children1: [{ value1: '10' }],
     },
   ]
 
@@ -58,37 +67,34 @@ const TimeSelectDemo = () => {
     SetVisible1(true)
   }
   // 点击弹层 X 或者弹层外区域触发事件
-  const handleSelect = (selectTimeData: TimeType[]) => {
+  const handleSelect = (value: DateType[]) => {
     SetVisible1(false)
-    Toast.show(`${translated.text1}: ${JSON.stringify(selectTimeData)}`)
+    Toast.show(`${translated.text1}: ${JSON.stringify(value)}`)
   }
   // 选择日期触发回调事件
-  const handlePannelChange = (
-    pannelKey: string | number,
-    selectTimeData: TimeType[]
-  ) => {
-    console.log('pannelKey, selectTimeData: ', pannelKey, selectTimeData)
+  const handleDateChange = (date: DateType, value: DateType[]) => {
+    console.log('date, value: ', date, value)
   }
   // 选择配送时间触发回调事件
-  const handleTimeChange = (time: string, selectTimeData: TimeType[]) => {
-    console.log('time, selectTimeData: ', time, selectTimeData)
+  const handleTimeChange = (time: TimeType, value: DateType[]) => {
+    console.log('time, value: ', time, value)
   }
   return (
     <>
       <div className="demo">
         <Cell title={translated.text2} onClick={handleClick} />
         <TimeSelect
+          options={options}
+          optionKey={optionKey}
+          defaultValue={defaultValue}
           visible={visible1}
           style={{
             height: '50%',
           }}
           title={translated.text3}
           multiple
-          currentKey={currentKey}
-          dates={dates}
-          times={times}
           onSelect={handleSelect}
-          onDateChange={handlePannelChange}
+          onDateChange={handleDateChange}
           onTimeChange={handleTimeChange}
         />
       </div>
