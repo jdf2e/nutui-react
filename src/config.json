@@ -1073,7 +1073,7 @@
       "enName": "business",
       "packages": [
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Barrage",
           "type": "component",
           "cName": "弹幕",

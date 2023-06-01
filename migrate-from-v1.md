@@ -497,6 +497,11 @@
 ### 特色组件
 #### Address
 #### Barrage
+- `barrageList` 重命名为 `list`
+- `frequency` 重命名为 `interval`
+- `speeds` 重命名为 `duration`
+- `top` 重命名为 `gapY`
+- add文档类型进行规范说明
 #### Card
 #### Signature
 #### TimeSelect
