@@ -1,20 +1,19 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import bem from '@/utils/bem'
-import { useConfig } from '@/packages/configprovider'
+import classNames from 'classnames'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface TimeType {
   key?: string | number
   list: string[]
 }
-export interface TimeDetailProps {
-  className?: string
+export interface TimeDetailProps extends BasicComponent {
   currentKey: string | number
   currentTime: TimeType[]
   times: TimeType[]
   select: (time: string) => void
 }
 const defaultProps = {
-  className: '',
+  ...ComponentDefaults,
   currentKey: 0,
   currentTime: [] as TimeType[],
   times: [],
@@ -23,12 +22,11 @@ const defaultProps = {
 export const TimeDetail: FunctionComponent<
   Partial<TimeDetailProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { locale } = useConfig()
-  const { children, times, className, currentKey, currentTime, select } = {
+  const { times, className, currentKey, currentTime, select } = {
     ...defaultProps,
     ...props,
   }
-  const b = bem('timedetail')
+  const classPrefix = 'nut-timedetail'
   const [renderData, setRenderData] = useState<string[]>([])
   useEffect(() => {
     const currentData = times.find(
@@ -44,17 +42,17 @@ export const TimeDetail: FunctionComponent<
   }
   // 选中的配送时间增加 active 类名
   const getDetailClass = (item: string): string => {
-    let initClass = 'nut-timedetail__item'
+    let initClass = `${classPrefix}__item`
     const curTimeData = currentTime.find(
       (item: TimeType) => String(item.key) === String(currentKey)
     )
     if (curTimeData && curTimeData.list && curTimeData.list.includes(item)) {
-      initClass += ' nut-timedetail__item-active'
+      initClass += `${classPrefix}__item-active`
     }
     return initClass
   }
   return (
-    <div className={`${b()} ${className || ''}`}>
+    <div className={classNames(classPrefix, className)}>
       {renderData.map((item: string, index: number) => (
         <span
           className={getDetailClass(item)}

@@ -1,18 +1,16 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
+import classNames from 'classnames'
 import Popup from '@/packages/popup'
 import TimePannel from '@/packages/timepannel'
 import TimeDetail from '@/packages/timedetail'
-import bem from '@/utils/bem'
-import { useConfig } from '@/packages/configprovider'
 import { TimeType } from '@/packages/timedetail/timedetail'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface DateType {
   paneKey?: string | number
   date: string
 }
-export interface TimeSelectProps {
-  className?: string
-  style: React.CSSProperties
+export interface TimeSelectProps extends BasicComponent {
   visible?: boolean
   height?: string
   multiple?: boolean
@@ -35,8 +33,7 @@ export interface TimeSelectProps {
   onTimeChange?: (time: string, selectTimeData: TimeType[]) => void
 }
 const defaultProps = {
-  className: '',
-  style: {},
+  ...ComponentDefaults,
   visible: false,
   height: '20%',
   multiple: false,
@@ -49,7 +46,6 @@ const defaultProps = {
 export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
   props
 ) => {
-  const { locale } = useConfig()
   const {
     visible,
     className,
@@ -86,7 +82,7 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
     width: '100%',
     height,
   }
-  const b = bem('timeselect')
+  const classPrefix = 'nut-timeselect'
 
   // popup 的关闭回调, 执行 select 函数更改外部 visible
   const closeFun = () => {
@@ -178,7 +174,7 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
           closeFun()
         }}
       >
-        <div className={`${b()} ${className || ''}`}>
+        <div className={classNames(classPrefix, className)}>
           <div className="nut-timeselect__title">{title}</div>
           <div className="nut-timeselect__content">
             <div className="nut-timeselect__content-left">

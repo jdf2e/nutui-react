@@ -1,30 +1,30 @@
 import React, { FunctionComponent } from 'react'
-import bem from '@/utils/bem'
-import { useConfig } from '@/packages/configprovider'
+import classNames from 'classnames'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface TimePannelProps {
+export interface TimePannelProps extends BasicComponent {
   date: string
   curKey: string | number
-  className?: string
   change: (curKey: string | number) => void
 }
 const defaultProps = {
-  className: '',
+  ...ComponentDefaults,
   date: '',
   curKey: 0,
 } as TimePannelProps
 export const TimePannel: FunctionComponent<
   Partial<TimePannelProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { locale } = useConfig()
-  const { children, className, date, curKey, change } = {
+  const { className, date, curKey, change } = {
     ...defaultProps,
     ...props,
   }
-  const b = bem('timepannel')
-
+  const classPrefix = 'nut-timepannel'
   return (
-    <div className={`${b()} ${className || ''}`} onClick={() => change(curKey)}>
+    <div
+      className={classNames(classPrefix, className)}
+      onClick={() => change(curKey)}
+    >
       {date}
     </div>
   )
