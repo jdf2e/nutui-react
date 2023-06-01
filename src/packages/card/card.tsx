@@ -5,31 +5,31 @@ import Tag from '@/packages/tag'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface CardProps extends BasicComponent {
-  imgUrl: string
+  src: string
   title: string
   price: string
   vipPrice: string
-  shopDesc: string
+  shopDescription: string
   delivery: string
   shopName: string
-  prolistTpl: React.ReactNode
-  shopTagTpl: React.ReactNode
-  originTpl: React.ReactNode
-  footerTpl: React.ReactNode
+  description: React.ReactNode
+  tag: React.ReactNode
+  priceTag: React.ReactNode
+  extra: React.ReactNode
 }
 const defaultProps = {
   ...ComponentDefaults,
-  imgUrl: '',
+  src: '',
   title: '',
   price: '',
   vipPrice: '',
-  shopDesc: '',
+  shopDescription: '',
   delivery: '',
   shopName: '',
-  prolistTpl: '',
-  shopTagTpl: '',
-  originTpl: '',
-  footerTpl: '',
+  description: '',
+  tag: '',
+  priceTag: '',
+  extra: '',
 } as CardProps
 export const Card: FunctionComponent<
   Partial<CardProps> & React.HTMLAttributes<HTMLDivElement>
@@ -37,17 +37,17 @@ export const Card: FunctionComponent<
   const {
     className,
     style,
-    imgUrl,
+    src,
     title,
     price,
     vipPrice,
-    shopDesc,
+    shopDescription,
     delivery,
     shopName,
-    shopTagTpl,
-    originTpl,
-    prolistTpl,
-    footerTpl,
+    tag,
+    priceTag,
+    description,
+    extra,
     ...rest
   } = {
     ...defaultProps,
@@ -57,32 +57,32 @@ export const Card: FunctionComponent<
   return (
     <div className={classNames(classPrefix, className)} style={style} {...rest}>
       <div className={`${classPrefix}__left`}>
-        <img src={imgUrl} alt="" />
+        <img src={src} alt="" />
       </div>
       <div className={`${classPrefix}__right`}>
-        <div className={`${classPrefix}__right__title`}>{title}</div>
-        {prolistTpl}
-        <div className={`${classPrefix}__right__price`}>
+        <div className={`${classPrefix}__right-title`}>{title}</div>
+        {description}
+        <div className={`${classPrefix}right-price`}>
           <Price size="normal" price={price} />
-          {originTpl || (
+          {priceTag || (
             <Price
               size="normal"
-              className={`${classPrefix}__right__price__origin`}
+              className={`${classPrefix}right-price-origin`}
               price={vipPrice}
             />
           )}
         </div>
-        <div className={`${classPrefix}__right__other`}>
-          {shopTagTpl || (
+        <div className={`${classPrefix}right-other`}>
+          {tag || (
             <>
-              <Tag type="danger">{shopDesc}</Tag>
+              <Tag type="danger">{shopDescription}</Tag>
               <Tag plain>{delivery}</Tag>
             </>
           )}
         </div>
-        <div className={`${classPrefix}__right__shop`}>
-          <div className={`${classPrefix}__right__shop__name`}>{shopName}</div>
-          {footerTpl}
+        <div className={`${classPrefix}right-shop`}>
+          <div className={`${classPrefix}right-shop-name`}>{shopName}</div>
+          {extra}
         </div>
       </div>
     </div>

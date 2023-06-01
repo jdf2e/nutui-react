@@ -8,7 +8,7 @@ Used to display product pictures, prices and other information.
 
 ```js
 // react
-import { Card, Price, Tag } from '@nutui/nutui-react';
+import { Card, Price, Tag } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -18,33 +18,32 @@ import { Card, Price, Tag } from '@nutui/nutui-react';
 :::demo
 
 ```ts
-import  React from "react";
-import { Card,Price, Tag } from '@nutui/nutui-react';
+import React from 'react'
+import { Card, Price, Tag } from '@nutui/nutui-react'
 
 const App = () => {
-    const state = {
-    imgUrl:
-      '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
+  const state = {
+    src: '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: 'title',
     price: '388',
     vipPrice: '378',
-    shopDesc: 'description',
+    shopDescription: 'description',
     delivery: 'delivery',
     shopName: 'shopName>',
   }
   return (
     <Card
-        imgUrl={state.imgUrl}
-        title={state.title}
-        price={state.price}
-        vipPrice={state.vipPrice}
-        shopDesc={state.shopDesc}
-        delivery={state.delivery}
-        shopName={state.shopName}
+      src={state.src}
+      title={state.title}
+      price={state.price}
+      vipPrice={state.vipPrice}
+      shopDescription={state.shopDescription}
+      delivery={state.delivery}
+      shopName={state.shopName}
     ></Card>
-  );
-};
-export default App;
+  )
+}
+export default App
 ```
 
 :::
@@ -54,17 +53,16 @@ export default App;
 :::demo
 
 ```ts
-import  React from "react";
-import { Card,Price, Tag } from '@nutui/nutui-react';
+import React from 'react'
+import { Card, Price, Tag } from '@nutui/nutui-react'
 
 const App = () => {
-    const state = {
-    imgUrl:
-      '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
+  const state = {
+    src: '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: 'title',
     price: '388',
     vipPrice: '378',
-    shopDesc: 'description',
+    shopDescription: 'description',
     delivery: 'delivery',
     shopName: 'shopName>',
   }
@@ -80,32 +78,35 @@ const App = () => {
   }
   return (
     <Card
-        imgUrl={state.imgUrl}
-        title={state.title}
-        price={state.price}
-        vipPrice={state.vipPrice}
-        shopDesc={state.shopDesc}
-        delivery={state.delivery}
-        shopName={state.shopName}
-        prolistTpl={
+      src={state.src}
+      title={state.title}
+      price={state.price}
+      vipPrice={state.vipPrice}
+      shopDescription={state.shopDescription}
+      delivery={state.delivery}
+      shopName={state.shopName}
+      description={
         <div
-            className="search_prolist_attr"
-            style={{ display: 'inline-flex', margin: '3px 0 1px', height: '15px' }}
+          className="search_prolist_attr"
+          style={{
+            display: 'inline-flex',
+            margin: '3px 0 1px',
+            height: '15px',
+          }}
         >
-            {['tag', 'tag', 'tag'].map((item) => {
+          {['tag', 'tag', 'tag'].map((item) => {
             return (
-                <span style={wordStyles} className="word" key={item}>
+              <span style={wordStyles} className="word" key={item}>
                 {item}
-                </span>
+              </span>
             )
-            })}
+          })}
         </div>
-        }
+      }
     ></Card>
-  );
-};
-export default App;
-
+  )
+}
+export default App
 ```
 
 :::
@@ -115,17 +116,16 @@ export default App;
 :::demo
 
 ```ts
-import  React from "react";
-import { Card,Price, Tag } from '@nutui/nutui-react';
+import React from 'react'
+import { Card, Price, Tag } from '@nutui/nutui-react'
 
 const App = () => {
-    const state = {
-    imgUrl:
-      '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
+  const state = {
+    src: '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: 'title',
     price: '388',
     vipPrice: '378',
-    shopDesc: 'description',
+    shopDescription: 'description',
     delivery: 'delivery',
     shopName: 'shopName>',
   }
@@ -138,24 +138,24 @@ const App = () => {
   }
   return (
     <Card
-        imgUrl={state.imgUrl}
-        title={state.title}
-        price={state.price}
-        vipPrice={state.vipPrice}
-        shopDesc={state.shopDesc}
-        delivery={state.delivery}
-        shopName={state.shopName}
-        originTpl={
+      src={state.src}
+      title={state.title}
+      price={state.price}
+      vipPrice={state.vipPrice}
+      shopDescription={state.shopDescription}
+      delivery={state.delivery}
+      shopName={state.shopName}
+      priceTag={
         <img
-            style={tagStyles}
-            src="https://img11.360buyimg.com/jdphoto/s58x28_jfs/t9451/359/415622649/15318/b0943e5d/59a78495N3bd2a9f8.png"
-            alt=""
+          style={tagStyles}
+          src="https://img11.360buyimg.com/jdphoto/s58x28_jfs/t9451/359/415622649/15318/b0943e5d/59a78495N3bd2a9f8.png"
+          alt=""
         />
-        }
+      }
     ></Card>
-  );
-};
-export default App;
+  )
+}
+export default App
 ```
 
 :::
@@ -165,34 +165,33 @@ export default App;
 :::demo
 
 ```ts
-import  React from "react";
-import { Card,Price, Tag } from '@nutui/nutui-react';
+import React from 'react'
+import { Card, Price, Tag } from '@nutui/nutui-react'
 
 const App = () => {
-    const state = {
-    imgUrl:
-      '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
+  const state = {
+    src: '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: 'title',
     price: '388',
     vipPrice: '378',
-    shopDesc: 'description',
+    shopDescription: 'description',
     delivery: 'delivery',
     shopName: 'shopName>',
   }
   return (
     <Card
-        imgUrl={state.imgUrl}
-        title={state.title}
-        price={state.price}
-        vipPrice={state.vipPrice}
-        shopDesc={state.shopDesc}
-        delivery={state.delivery}
-        shopName={state.shopName}
-        shopTagTpl={<div>Custom Content</div>}
+      src={state.src}
+      title={state.title}
+      price={state.price}
+      vipPrice={state.vipPrice}
+      shopDescription={state.shopDescription}
+      delivery={state.delivery}
+      shopName={state.shopName}
+      tag={<div>Custom Content</div>}
     ></Card>
-  );
-};
-export default App;
+  )
+}
+export default App
 ```
 
 :::
@@ -202,35 +201,34 @@ export default App;
 :::demo
 
 ```ts
-import  React from "react";
-import { Card,Price, Tag } from '@nutui/nutui-react';
+import React from 'react'
+import { Card, Price, Tag } from '@nutui/nutui-react'
 
 const App = () => {
-    const state = {
-    imgUrl:
-      '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
+  const state = {
+    src: '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: 'title',
     price: '388',
     vipPrice: '378',
-    shopDesc: 'description',
+    shopDescription: 'description',
     delivery: 'delivery',
     shopName: 'shopName>',
   }
-  
+
   return (
     <Card
-        imgUrl={state.imgUrl}
-        title={state.title}
-        price={state.price}
-        vipPrice={state.vipPrice}
-        shopDesc={state.shopDesc}
-        delivery={state.delivery}
-        shopName={state.shopName}
-        footerTpl={<div style={{ fontSize: '12px' }}>custom</div>}
+      src={state.src}
+      title={state.title}
+      price={state.price}
+      vipPrice={state.vipPrice}
+      shopDescription={state.shopDescription}
+      delivery={state.delivery}
+      shopName={state.shopName}
+      extra={<div style={{ fontSize: '12px' }}>custom</div>}
     ></Card>
-  );
-};
-export default App;
+  )
+}
+export default App
 ```
 
 :::
@@ -241,17 +239,17 @@ export default App;
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| imgUrl | Left thumb image | `string` | `-` |
+| src | Left thumb image | `string` | `-` |
 | title | Title | `string` | `-` |
 | price | Price | `string` | `-` |
 | vipPrice | vip-price | `string` | `-` |
-| shopDesc | shop-description | `string` | `-` |
+| shopDescription | shop-description | `string` | `-` |
 | delivery | delivery | `string` | `-` |
 | shopName | shop-name | `string` | `-` |
-| prolistTpl | Custom product introduction | `ReactNode` | `-` |
-| originTpl | Custom content behind the price | `ReactNode` | `-` |
-| shopTagTpl | Custom shop introduction | `ReactNode` | `-` |
-| footerTpl | Customize bottom right content | `ReactNode` | `-` |
+| description | Custom product introduction | `ReactNode` | `-` |
+| priceTag | Custom content behind the price | `ReactNode` | `-` |
+| tag | Custom shop introduction | `ReactNode` | `-` |
+| extra | Customize bottom right content | `ReactNode` | `-` |
 
 ## Theming
 
@@ -259,4 +257,8 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Description | Default | | --- | --- | | --nutui-card-font-size-0 | The font size of the card label | `$font-size-0` | | --nutui-card-left-border-radius | The size of the rounded corners of the card picture | `0` | | --nutui-card-left-background-color |卡片图片的背景颜色 | `inherit` |
+| Name | Description | Default |
+| --- | --- | --- |
+| \--nutui-card-font-size-0 | The font size of the card label | `$font-size-0` |
+| \--nutui-card-left-border-radius | The size of the rounded corners of the card picture | `0` |
+| \--nutui-card-left-background-color | The background color of the card picture | `inherit` |
