@@ -301,7 +301,7 @@ const PickerDemo = () => {
           visible={isVisible7}
           options={listData1}
           onChange={(option, value) => console.log('onChange', option, value)}
-          onConfirm={(list, values) => confirmPicker('onConfirm', list, values)}
+          onConfirm={(list, values) => confirmPicker('base', list, values)}
           onClose={() => {
             console.log('onClose')
             setIsVisible7(false)
