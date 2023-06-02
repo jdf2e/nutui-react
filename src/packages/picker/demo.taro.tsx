@@ -53,7 +53,7 @@ const PickerDemo = () => {
       },
       {
         value: 6,
-        text: '石家庄',
+        text: '石家庄市',
       },
       {
         value: 7,
