@@ -696,7 +696,6 @@ export const CalendarItem = React.forwardRef<
   }, [])
 
   useEffect(() => {
-    // why
     popup && resetRender()
   }, [defaultValue])
 
