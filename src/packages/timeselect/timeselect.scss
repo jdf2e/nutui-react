@@ -12,7 +12,7 @@
     line-height: $timeselect-title-line-height;
     margin-bottom: 10px;
     font-size: $timeselect-title-font-size;
-    background-color: $background-color3;
+    background: $timeselect-title-background;
     color: $title-color;
     text-align: center;
   }
@@ -23,35 +23,24 @@
   }
 
   &__content-left {
-    width: 140px;
-    min-width: 140px;
+    width: $timeselect-date-width;
+    min-width: $timeselect-date-width;
     height: 100%;
     overflow: auto;
-    background-color: $background-color2;
-    color: $title-color;
-
-    .nut-timepannel-active {
-      background-color: $primary-color;
-    }
-  }
-
-  .nut-timepannel-active {
-    background-color: $background-color3;
-    color: $title-color;
-    font-weight: 700;
+    background: $background-color2;
   }
 }
 
 .nut-timepannel {
-  height: $timeselect-timepannel-height;
-  line-height: 40px;
+  height: $timeselect-date-height;
+  line-height: $timeselect-date-line-height;
   text-align: center;
-  color: $timeselect-timepannel-text-color;
-  font-size: $timeselect-timepannel-font-size;
+  color: $timeselect-date-color;
+  font-size: $timeselect-date-font-size;
 
   &.active {
-    background-color: $background-color3;
-    color: $title-color;
+    background: $background-color3;
+    color: $timeselect-date-active-color;
     font-weight: 700;
   }
 }

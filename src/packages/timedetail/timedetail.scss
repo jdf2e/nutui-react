@@ -5,23 +5,22 @@
   padding: 0 0 50px 13px;
 
   &__item {
-    width: 100px;
-    height: 50px;
-    line-height: 50px;
+    width: $timeselect-time-width;
+    height: $timeselect-time-height;
+    line-height: $timeselect-time-line-height;
     text-align: center;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    background-color: $background-color;
-    color: $title-color;
+    margin: $timeselect-time-margin;
+    background: $timeselect-time-background;
+    color: $timeselect-time-color;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: $timeselect-time-font-size;
     border: 1px solid transparent;
     font-weight: 700;
 
     &.active {
-      background-color: rgba(250, 44, 25, 0.08);
-      border: 1px solid $primary-color;
-      color: $primary-color;
+      background-color: $timeselect-time-active-background;
+      border: 1px solid $timeselect-time-active-color;
+      color: $timeselect-time-active-color;
     }
   }
 }

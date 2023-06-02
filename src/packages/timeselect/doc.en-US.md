@@ -325,30 +325,25 @@ Default keys as follows. They will be replaced by optionKey.
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| \--nutui-timeselect-title-font-size | `$font-size-2` |
-| \--nutui-timeselect-title-color | `$title-color` |
-| \--nutui-timeselect-title-height | `50px` |
-| \--nutui-timeselect-title-line-height | `50px` |
-| \--nutui-timeselect-pannel-bg-color | `#f6f7f9` |
-| \--nutui-timeselect-timepannel-text-color | `$title-color2` |
-| \--nutui-timeselect-timepannel-font-size | `$font-size-2` |
-| \--nutui-timeselect-timepannel-cur-bg-color | `$white` |
-| \--nutui-timeselect-timepannel-cur-text-color | `#333333` |
-| \--nutui-timeselect-timepannel-width | `140px` |
-| \--nutui-timeselect-timepannel-height | `40px` |
-| \--nutui-timeselect-timepannel-padding | `15px` |
-| \--nutui-timeselect-timedetail-padding | `0 5px 50px 13px` |
-| \--nutui-timeselect-timedetail-item-width | `100px` |
-| \--nutui-timeselect-timedetail-item-height | `50px` |
-| \--nutui-timeselect-timedetail-item-line-height | `50px` |
-| \--nutui-timeselect-timedetail-item-bg-color | `#f6f7f9` |
-| \--nutui-timeselect-timedetail-item-border-radius | `5px` |
-| \--nutui-timeselect-timedetail-item-text-color | `#333333` |
-| \--nutui-timeselect-timedetail-item-text-font-size | `$font-size-2` |
-| \--nutui-timeselect-timedetail-item-cur-bg-color | `rgba($primary-color, 0.15)` |
-| \--nutui-timeselect-timedetail-item-cur-border | `$primary-color` |
-| \--nutui-timeselect-timedetail-item-cur-text-color | `$primary-color` |
-| \--nutui-timeselect-timedetail-time-text-color | `#999` |
-| \--nutui-timeselect-timedetail-time-font-size | `$font-size-1` |
+| Name | Description | Default |
+| --- | --- | --- |
+| --nutui-timeselect-title-height | title height | `50px` |
+| --nutui-timeselect-title-line-height | title lineHeight | `50px` |
+| --nutui-timeselect-title-color | title color | `$title-color` |
+| --nutui-timeselect-title-font-size | title fontSize | `$font-size-2` |
+| --nutui-timeselect-title-background | title background | `$background-color3` |
+| --nutui-timeselect-date-width | date width | `140px` |
+| --nutui-timeselect-date-height | date height | `40px` |
+| --nutui-timeselect-date-line-height | date lineHeight | `40px` |
+| --nutui-timeselect-date-color | date color | `$title-color2` |
+| --nutui-timeselect-date-active-color | date active color | `$title-color` |
+| --nutui-timeselect-date-font-size | date fontSize | `$font-size-2` |
+| --nutui-timeselect-time-width | time width | `100px` |
+| --nutui-timeselect-time-height | time height | `50px` |
+| --nutui-timeselect-time-line-height | time lineHeight | `50px` |
+| --nutui-timeselect-time-font-size | time fontSize | `14px` |
+| --nutui-timeselect-time-margin | time margin | `0 10px 10px 0` |
+| --nutui-timeselect-time-color | time color | `$title-color` |
+| --nutui-timeselect-time-active-color | time active color | `$primary-color` |
+| --nutui-timeselect-time-background | time background | `$background-color` |
+| --nutui-timeselect-time-active-background | time active background | `$background-color2` |
