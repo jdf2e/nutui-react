@@ -20,7 +20,7 @@ test('show-title prop', async () => {
   )
 
   const canlendarTitle1 = container.querySelectorAll(
-    '.nut-calendar-header .calendar-title'
+    '.nut-calendar-header .nut-calendar-title'
   )
 
   expect(canlendarTitle1.length).toBe(1)
@@ -36,7 +36,7 @@ test('show-title prop', async () => {
   )
 
   const canlendarTitle2 = container.querySelectorAll(
-    '.nut-calendar-header .calendar-title'
+    '.nut-calendar-header .nut-calendar-title'
   )
 
   expect(canlendarTitle2.length).toBe(0)
@@ -53,7 +53,7 @@ test('show-sub-title prop', async () => {
     />
   )
 
-  const curMonth1 = container.querySelectorAll('.calendar-curr-month')
+  const curMonth1 = container.querySelectorAll('.nut-calendar-sub-title')
 
   expect(curMonth1.length).toBe(1)
 
@@ -67,7 +67,7 @@ test('show-sub-title prop', async () => {
     />
   )
 
-  const curMonth2 = container.querySelectorAll('.calendar-curr-month')
+  const curMonth2 = container.querySelectorAll('.nut-calendar-sub-title')
 
   expect(curMonth2.length).toBe(0)
 })
@@ -83,7 +83,7 @@ test('show-today prop', async () => {
     />
   )
 
-  const tipCurr = container.querySelectorAll('.calendar-curr-tip-curr')
+  const tipCurr = container.querySelectorAll('.nut-calendar-day-info-curr')
 
   expect(tipCurr.length).toBe(0)
 })
@@ -113,7 +113,9 @@ test('should render slot correctly', async () => {
     />
   )
 
-  const topSlot = container.querySelector('.calendar-top-slot') as HTMLElement
+  const topSlot = container.querySelector(
+    '.nut-calendar-header-buttons'
+  ) as HTMLElement
   const viewArea = container.querySelector('.viewArea') as HTMLElement
   expect(topSlot.innerHTML).toContain('<div class="d_div"> 最近七天</div>')
   expect(viewArea.innerHTML).toMatchSnapshot()
@@ -131,7 +133,7 @@ test('select event when click item', () => {
     />
   )
 
-  const calendarMonthDay = container.querySelectorAll('.calendar-month-day')[15]
+  const calendarMonthDay = container.querySelectorAll('.nut-calendar-day')[15]
 
   fireEvent.click(calendarMonthDay)
   expect(onClickDay).toBeCalled()
