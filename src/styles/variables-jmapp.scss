@@ -1373,18 +1373,19 @@ $timeselect-timedetail-time-font-size: var(
 //tag（✅）
 $tag-padding: var(--nutui-tag-padding, 0 4px) !default;
 $tag-font-size: var(--nutui-tag-font-size, 12px) !default;
-$tag-default-border-radius: var(
-  --nutui-tag-default-border-radius,
-  4px
-) !default;
+$tag-border-radius: var(--nutui-tag-border-radius, 4px) !default;
+$tag-height: var(--nutui-tag-height, auto) !default;
+$tag-color: var(--nutui-tag-color, #ffffff) !default;
+$tag-border-width: var(--nutui-tag-border-width, 1px) !default;
 $tag-round-border-radius: var(--nutui-tag-round-border-radius, 8px) !default;
-$tag-default-background-color: var(
-  --nutui-tag-default-background-color,
-  #000000
+$tag-mark-border-radius: var(
+  --nutui-tag-mark-border-radius,
+  0 12px 12px 0
 ) !default;
+$tag-background-color: var(--nutui-tag-background-color, #000000) !default;
 $tag-primary-background-color: var(
   --nutui-tag-primary-background-color,
-  $primary-color
+  #3460fa
 ) !default;
 $tag-success-background-color: var(
   --nutui-tag-success-background-color,
@@ -1396,17 +1397,10 @@ $tag-danger-background-color: linear-gradient(
   rgba(232, 34, 14, 1) 69.83950099728881%,
   rgba(242, 77, 12, 1) 100%
 ) !default;
-$tag-danger-background-color-plain: var(
-  --nutui-tag-danger-background-color-plain,
-  #df3526
-) !default;
 $tag-warning-background-color: var(
   --nutui-tag-warning-background-color,
   #f3812e
 ) !default;
-$tag-default-color: var(--nutui-tag-default-color, #ffffff) !default;
-$tag-border-width: var(--nutui-tag-border-width, 1px) !default;
-$tag-height: var(--nutui-tag-height, auto) !default;
 
 //badge（✅）
 $badge-background-color: var(

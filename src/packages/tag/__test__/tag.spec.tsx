@@ -9,7 +9,7 @@ test('color test', () => {
   const state = {
     color: 'rgb(250, 104, 93)',
   }
-  const { container } = render(<Tag color={state.color}>TEST</Tag>)
+  const { container } = render(<Tag background={state.color}>TEST</Tag>)
   expect(container.querySelector('.nut-tag--default')).toHaveAttribute(
     'style',
     'background: rgb(250, 104, 93);'
@@ -41,7 +41,7 @@ test('color & plain test', () => {
     color: 'rgb(250, 104, 93)',
   }
   const { container } = render(
-    <Tag color={state.color} plain>
+    <Tag background={state.color} plain>
       TEST
     </Tag>
   )

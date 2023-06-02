@@ -1,10 +1,10 @@
 # Tag
 
-### Intro
+## Intro
 
 Label for labeling and classification.
 
-### Install
+## Install
 
 ``` javascript
 // react
@@ -12,7 +12,7 @@ import { Tag } from '@nutui/nutui-react';
 
 ```
 
-## Code instance
+## Demo
 
 ### Basic usage
 
@@ -128,9 +128,9 @@ import { Tag } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Tag color="#FA685D">Label</Tag>
-      <Tag color="#E9E9E9" textColor="#999999">Label</Tag>
-      <Tag color="#FA2400" plain>Label</Tag>
+      <Tag background="#FA685D">Label</Tag>
+      <Tag background="#E9E9E9" color="#999999">Label</Tag>
+      <Tag background="#FA2400" plain>Label</Tag>
     </>
   )
 }
@@ -186,28 +186,22 @@ export default App;
 
 :::
 
-## API
+## Tag
 
 ### Props
 
-| Field                   | illustrate                                                       | type   | Defaults   |
-|-------------------------|------------------------------------------------------------------|--------|----------|
-| type                    | Label type, the optional value is primary success danger warning | `string` | `default` |
-| color                   | Label color                                                      | `string` | -        |
-| textColor                | Text color, priority is higher than the color attribute          | `string` | `white`  |
-| plain                   | Whether it is hollow                                             | `boolean` | `false`  |
-| round                   | Whether it is a rounded style                                    | `boolean` | `false`  |
-| mark                    | Whether it is a tag style                                        | `boolean` | `false`  |
-| closeable               | Whether it can be closed label                                   | `boolean\ | ReactNode` | `false`   |
-| closeIcon`v2.0.0`       | close icon                                                       | `ReactNode` | `null`    |
-| iconSize`v2.0.0abandon` | the size of closed label                                         | `string\|number` | ` 12px`|
-
-### Event
-
-| Event name | illustrate  | Callback parameter |
-|----------|----------|----------|
-| onClick    | Click event | event    |
-| onClose    | Close event | event    |
+| Property | Description | Type | Default |
+|-------------------------|---------------------|--------|----------|
+| type | Label type, the optional value is primary success danger warning | `string` | `default` |
+| background | Label background | `string` | -        |
+| color | Text color, priority is higher than the color attribute          | `string` | `white`  |
+| plain | Whether it is hollow | `boolean` | `false`  |
+| round | Whether it is a rounded style | `boolean` | `false`  |
+| mark | Whether it is a tag style | `boolean` | `false`  |
+| closeable | Whether it can be closed label | `boolean\ | ReactNode` | `false`   | 
+| closeIcon     | close icon | `ReactNode` | `null`    |
+| onClick    | Click event |  `(e: MouseEvent) => void`   |
+| onClose    | Close event |  `(e?: any) => void`   |
 
 
 ## Theming
@@ -216,17 +210,17 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
+| Name | Description | Default |
 | --- | --- |
-| --nutui-tag-padding | ` 0 4px`|
-| --nutui-tag-font-size | ` 12px` |
-| --nutui-tag-default-border-radius | `  4px` |
-| --nutui-tag-round-border-radius | ` 8px` |
-| --nutui-tag-default-background-color | `  #000000` |
-| --nutui-tag-primary-background-color | `  #3460fa` |
-| --nutui-tag-success-background-color | `  #4fc08d` |
-| --nutui-tag-danger-background-color-plain | `  #df3526` |
-| --nutui-tag-warning-background-color | `  #f3812e` |
-| --nutui-tag-default-color | ` #ffffff` |
-| --nutui-tag-border-width | ` 1px` |
-| --nutui-tag-height | ` auto` |
+| --nutui-tag-padding | padding | ` 0 4px`|
+| --nutui-tag-font-size | font size | ` 12px` |
+| --nutui-tag-border-radius | border radius | `4px` |
+| --nutui-tag-height | height |` auto` |
+| --nutui-tag-color | color | ` #ffffff` |
+| --nutui-tag-border-width | border width | ` 1px` |
+| --nutui-tag-background-color | background color | `  #000000` |
+| --nutui-tag-primary-background-color |primary background color   | `  #3460fa` |
+| --nutui-tag-success-background-color | success background color | `  #4fc08d` |
+| --nutui-tag-warning-background-color | warn background color | `  #f3812e` |
+| --nutui-tag-round-border-radius | round模式下的圆角 | ` 8px` |
+| --nutui-tag-mark-border-radius | mark模式下的圆角 | ` 0 12px 12px 0` |
