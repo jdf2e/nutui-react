@@ -32,7 +32,8 @@ const enUS: BaseLang = {
     start: 'Start',
     confirm: 'Confirm',
     title: 'Calendar',
-    monthTitle: (year: number, month: number) => `${year}/${month}`,
+    monthTitle: (year: number, month: number) =>
+      `${year}/${Number(month) < 10 ? `0${Number(month)}` : month}`,
     today: 'Today',
     loadPreviousMonth: 'Load Previous Month',
     noEarlierMonth: 'No Earlier Month',

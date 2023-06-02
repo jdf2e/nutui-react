@@ -90,12 +90,13 @@ const CalendarDemo = () => {
   const currDay = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
   const [date, setDate] = useState(currDay)
   const [date1, setDate1] = useState(['2023-01-23', '2023-11-26'])
-  const [date2, setDate2] = useState('2022-12-08')
+  const [date2, setDate2] = useState('2023-05-08')
   const [date3, setDate3] = useState('')
   const [date4, setDate4] = useState<string[]>([])
-  const [date5, setDate5] = useState<string[]>(['2022-11-23', '2024-01-26'])
-  const [date6, setDate6] = useState<string[]>(['2022-11-23', '2024-01-26'])
-  const [date7, setDate7] = useState<string[]>(['2022-12-23', '2023-08-26'])
+  const [date5, setDate5] = useState<string[]>(['2023-03-23', '2023-11-26'])
+  const [date6, setDate6] = useState<string[]>(['2023-06-12', '2023-06-16'])
+  const [date7, setDate7] = useState<string[]>(['2023-07-10', '2023-07-19'])
+  const [date8, setDate8] = useState<string[]>(['2023-06-03', '2023-06-16'])
   const [dateWeek, setDateWeek] = useState('')
   const [isVisible, setIsVisible] = useState(false)
   const [isVisible1, setIsVisible1] = useState(false)
@@ -198,6 +199,9 @@ const CalendarDemo = () => {
     setDate7([...[param[0][3], param[1][3]]])
   }
 
+  const setChooseValue8 = (param: string) => {
+    setDate8([...[param[0][3], param[1][3]]])
+  }
   const select = (param: string) => {
     console.log(param)
   }
@@ -234,7 +238,7 @@ const CalendarDemo = () => {
   }
 
   const renderDay = (date: Day) => {
-    return <span>{date.day <= 9 ? `0${date.day}` : date.day}</span>
+    return <>{date.day <= 9 ? `0${date.day}` : date.day}</>
   }
 
   const renderDayTop = (date: Day) => {
@@ -288,8 +292,8 @@ const CalendarDemo = () => {
           visible={isVisible}
           showTitle={false}
           defaultValue={date}
-          // startDate="2022-01-11"
-          endDate="2029-11-30"
+          // startDate="2023-06-11"
+          endDate="2023-11-30"
           onClose={closeSwitch}
           onConfirm={setChooseValue}
           onClickDay={select}
@@ -307,7 +311,7 @@ const CalendarDemo = () => {
           visible={isVisible1}
           defaultValue={date1}
           type="range"
-          startDate="2023-12-22"
+          startDate="2022-12-22"
           endDate="2024-01-08"
           onClose={closeSwitch1}
           onConfirm={setChooseValue1}
@@ -326,8 +330,8 @@ const CalendarDemo = () => {
           visible={isVisible4}
           defaultValue={date4}
           type="multiple"
-          startDate="2022-01-01"
-          endDate="2022-09-10"
+          startDate="2023-01-01"
+          endDate="2024-09-10"
           onClose={closeSwitch4}
           onConfirm={setChooseValue4}
         />
@@ -360,8 +364,8 @@ const CalendarDemo = () => {
           defaultValue={date5}
           type="range"
           autoBackfill
-          startDate="2019-12-22"
-          endDate="2021-01-08"
+          startDate="2022-12-22"
+          endDate="2024-01-08"
           onClose={closeSwitch5}
           onConfirm={setChooseValue5}
           onClickDay={select}
@@ -380,8 +384,8 @@ const CalendarDemo = () => {
           visible={isVisible6}
           defaultValue={date6}
           type="range"
-          startDate="2019-12-22"
-          endDate="2021-01-08"
+          startDate="2023-2-22"
+          endDate="2024-01-08"
           confirmText="submit"
           startText="enter"
           endText="leave"
@@ -407,7 +411,7 @@ const CalendarDemo = () => {
           defaultValue={date7}
           type="range"
           startDate="2022-12-22"
-          endDate="2023-12-31"
+          endDate="2024-12-31"
           renderHeaderButtons={renderHeaderButtons}
           onClose={closeSwitch7}
           onConfirm={setChooseValue7}
@@ -424,9 +428,14 @@ const CalendarDemo = () => {
         >
           <Calendar
             popup={false}
-            defaultValue={date2}
+            defaultValue={date8}
+            type="range"
+            startDate="2023-5-23"
+            endDate="2023-08-01"
+            startText={<div>test</div>}
+            endText="leave"
             autoBackfill
-            onConfirm={setChooseValue2}
+            onConfirm={setChooseValue8}
             onPageChange={yearMonthChange}
           />
         </div>

@@ -89,15 +89,15 @@ const CalendarDemo = () => {
   })
   const d = new Date()
   const currDay = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
-  // console.log('currDay', currDay)
   const [date, setDate] = useState(currDay)
   const [date1, setDate1] = useState(['2023-01-23', '2023-11-26'])
   const [date2, setDate2] = useState('2023-05-08')
   const [date3, setDate3] = useState('')
-  const [date4, setDate4] = useState<string[]>(['2023-06-8'])
-  const [date5, setDate5] = useState<string[]>(['2022-11-23', '2024-01-26'])
-  const [date6, setDate6] = useState<string[]>(['2022-11-23', '2024-01-26'])
-  const [date7, setDate7] = useState<string[]>(['2022-12-23', '2023-08-26'])
+  const [date4, setDate4] = useState<string[]>([])
+  const [date5, setDate5] = useState<string[]>(['2023-03-23', '2023-11-26'])
+  const [date6, setDate6] = useState<string[]>(['2023-06-12', '2023-06-16'])
+  const [date7, setDate7] = useState<string[]>(['2023-07-10', '2023-07-19'])
+  const [date8, setDate8] = useState<string[]>(['2023-06-03', '2023-06-16'])
   const [dateWeek, setDateWeek] = useState('')
   const [isVisible, setIsVisible] = useState(false)
   const [isVisible1, setIsVisible1] = useState(false)
@@ -205,6 +205,10 @@ const CalendarDemo = () => {
 
   const setChooseValue7 = (param: string) => {
     setDate7([...[param[0][3], param[1][3]]])
+  }
+
+  const setChooseValue8 = (param: string) => {
+    setDate8([...[param[0][3], param[1][3]]])
   }
 
   const select = (param: string) => {
@@ -437,14 +441,14 @@ const CalendarDemo = () => {
         >
           <Calendar
             popup={false}
-            defaultValue={date6}
+            defaultValue={date8}
             type="range"
             startDate="2023-5-23"
-            endDate="2024-06-01"
+            endDate="2023-08-01"
             startText={<div>test</div>}
             endText="leave"
             autoBackfill
-            onConfirm={setChooseValue2}
+            onConfirm={setChooseValue8}
             onPageChange={yearMonthChange}
           />
         </div>

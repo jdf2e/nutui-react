@@ -32,7 +32,8 @@ const idID: BaseLang = {
     start: 'Mulai',
     confirm: 'Mengonfirmasi',
     title: 'Kalender',
-    monthTitle: (year: number, month: number) => `${year}/${month}`,
+    monthTitle: (year: number, month: number) =>
+      `${year}/${Number(month) < 10 ? `0${Number(month)}` : month}`,
     today: 'Hari ini',
     loadPreviousMonth: 'Muat Bulan Sebelumnya',
     noEarlierMonth: 'Tidak Ada Bulan Sebelumnya',

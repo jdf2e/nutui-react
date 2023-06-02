@@ -696,6 +696,7 @@ export const CalendarItem = React.forwardRef<
   }, [])
 
   useEffect(() => {
+    setCurrentDate(resetDefaultValue() || [])
     popup && resetRender()
   }, [defaultValue])
 
