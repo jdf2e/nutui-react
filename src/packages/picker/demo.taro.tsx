@@ -18,6 +18,7 @@ const PickerDemo = () => {
   const [isVisible4, setIsVisible4] = useState(false)
   const [isVisible5, setIsVisible5] = useState(false)
   const [isVisible6, setIsVisible6] = useState(false)
+  const [isVisible7, setIsVisible7] = useState(false)
 
   const [cityCustmer, setCityCustmer] = useState('')
   const [baseDesc, setBaseDesc] = useState('')
@@ -52,11 +53,11 @@ const PickerDemo = () => {
       },
       {
         value: 6,
-        text: '浙江市',
+        text: '石家庄市',
       },
       {
         value: 7,
-        text: '江苏市',
+        text: '扬州市',
       },
       {
         value: 8,
@@ -72,7 +73,7 @@ const PickerDemo = () => {
       },
       {
         value: 11,
-        text: '请按市',
+        text: '徐州市',
       },
       {
         value: 12,
@@ -238,7 +239,7 @@ const PickerDemo = () => {
 
   // 切换选择项
   const changePicker = (options: any[], values: any, columnIndex: number) => {
-    console.log('picker选择change', columnIndex, values, options)
+    console.log('picker onChange', columnIndex, values, options)
   }
   const [val, setVal] = useState<Array<number | string>>([])
   // 确定选择
@@ -306,11 +307,11 @@ const PickerDemo = () => {
         <Cell
           title="请选择城市"
           description={baseDesc}
-          onClick={() => setIsVisible1(!isVisible1)}
+          onClick={() => setIsVisible7(!isVisible7)}
         />
         <Picker
           title="请选择城市"
-          visible={isVisible1}
+          visible={isVisible7}
           value={val}
           options={listData1}
           onConfirm={(list, values) => {
@@ -318,7 +319,7 @@ const PickerDemo = () => {
             setVal(values)
           }}
           onClose={() => {
-            setIsVisible1(false)
+            setIsVisible7(false)
           }}
         />
 
