@@ -24,7 +24,6 @@ interface MonthInfo {
 }
 
 interface CalendarState {
-  currDate: InputDate
   currDateArray: any
 }
 
@@ -125,16 +124,27 @@ export const CalendarItem = React.forwardRef<
   const endDates = splitDate(propEndDate)
 
   const [state] = useState<CalendarState>({
-    currDate: '',
     currDateArray: [],
   })
 
-  const [value, setValue] = usePropsValue<InputDate>({
+  const resetDefaultValue = () => {
+    if (
+      defaultValue ||
+      (Array.isArray(defaultValue) && defaultValue.length > 0)
+    ) {
+      return type !== 'single'
+        ? ([...(defaultValue as string[])] as string[])
+        : (defaultValue as string[])
+    }
+    return undefined
+  }
+
+  const [currentDate, setCurrentDate] = usePropsValue<InputDate>({
     value: props.value,
-    defaultValue: props.defaultValue,
-    finalValue: '',
+    defaultValue: resetDefaultValue(),
+    finalValue: [],
     onChange: (val) => {
-      console.log('e', val)
+      // console.log('onChange', val)
     },
   })
 
@@ -163,7 +173,6 @@ export const CalendarItem = React.forwardRef<
   })
 
   const isMultiple = (d: string) => {
-    const currentDate = state.currDate
     if (currentDate.length > 0) {
       return (currentDate as string[]).some((item: string) => {
         return Utils.isEqual(item, d)
@@ -180,33 +189,37 @@ export const CalendarItem = React.forwardRef<
 
   const getClasses = (day: Day, month: MonthInfo) => {
     const dateStr = getCurrDate(day, month)
-    const currentDate = state.currDate
     if (day.type === 'active') {
-      if (
-        Utils.isEqual(currentDate as string, dateStr) ||
-        (type === 'multiple' && isMultiple(dateStr))
-      ) {
-        return `${dayPrefix}-active`
-      }
-      if (type === 'range' && (isStart(dateStr) || isEnd(dateStr))) {
-        return `${dayPrefix}-active ${isStart(dateStr) ? 'active-start' : ''} ${
-          isEnd(dateStr) ? 'active-end' : ''
-        }`
-      }
       if (
         (propStartDate && Utils.compareDate(dateStr, propStartDate)) ||
         (propEndDate && Utils.compareDate(propEndDate, dateStr))
       ) {
         return `${dayPrefix}-disabled`
       }
+
+      if (type === 'range') {
+        if (isStart(dateStr) || isEnd(dateStr)) {
+          return `${dayPrefix}-active ${
+            isStart(dateStr) ? 'active-start' : ''
+          } ${isEnd(dateStr) ? 'active-end' : ''}`
+        }
+        if (
+          Array.isArray(currentDate) &&
+          Object.values(currentDate).length === 2 &&
+          Utils.compareDate(currentDate[0], dateStr) &&
+          Utils.compareDate(dateStr, currentDate[1])
+        ) {
+          return `${dayPrefix}-choose`
+        }
+        return null
+      }
+
       if (
-        type === 'range' &&
-        Array.isArray(currentDate) &&
-        Object.values(currentDate).length === 2 &&
-        Utils.compareDate(currentDate[0], dateStr) &&
-        Utils.compareDate(dateStr, currentDate[1])
+        (type === 'multiple' && isMultiple(dateStr)) ||
+        (!Array.isArray(currentDate) &&
+          Utils.isEqual(currentDate as string, dateStr))
       ) {
-        return `${dayPrefix}-choose`
+        return `${dayPrefix}-active`
       }
 
       return null
@@ -221,11 +234,11 @@ export const CalendarItem = React.forwardRef<
   }
 
   const isStart = (d: string) => {
-    return Utils.isEqual(state.currDate[0], d)
+    return Utils.isEqual(currentDate[0], d)
   }
 
   const isEnd = (d: string) => {
-    return Utils.isEqual(state.currDate[1], d)
+    return Utils.isEqual(currentDate[1], d)
   }
 
   // 是否有开始提示
@@ -240,7 +253,7 @@ export const CalendarItem = React.forwardRef<
   // 是否有结束提示
   const isEndTip = (day: Day, month: MonthInfo) => {
     return (
-      state.currDate.length >= 2 &&
+      currentDate.length >= 2 &&
       type === 'range' &&
       day.type === 'active' &&
       isEnd(getCurrDate(day, month))
@@ -249,7 +262,6 @@ export const CalendarItem = React.forwardRef<
 
   // 开始结束时间是否相等
   const isStartAndEnd = () => {
-    const currentDate = state.currDate
     return (
       currentDate.length >= 2 && Utils.isEqual(currentDate[0], currentDate[1])
     )
@@ -454,8 +466,7 @@ export const CalendarItem = React.forwardRef<
     setDefaultRange(monthsNum, current)
   }
 
-  const initData = () => {
-    // 判断时间范围内存在多少个月
+  const getMonthNum = () => {
     const startDate = {
       year: Number(startDates[0]),
       month: Number(startDates[1]),
@@ -471,49 +482,59 @@ export const CalendarItem = React.forwardRef<
     if (monthNum <= 0) {
       monthNum = 1
     }
-    // 设置月份数据
+    setMonthsNum(monthNum)
+    return monthNum
+  }
+
+  const getMonthsData = (monthNum: number) => {
     getMonthData(startDates, 'next')
 
     let i = 1
     do {
       getMonthData(getCurrMonthData('next') as string[], 'next')
     } while (i++ < monthNum)
-    setMonthsNum(monthNum)
+  }
 
-    // 根据是否存在默认时间，初始化当前日期
-    if (
-      defaultValue ||
-      (Array.isArray(defaultValue) && defaultValue.length > 0)
-    ) {
-      state.currDate =
-        props.type !== 'single'
-          ? ([...(props.defaultValue as string[])] as string[])
-          : (props.defaultValue as string[])
-    }
+  const requestAniFrameFunc = (current: number, monthNum: number) => {
+    const lastItem = monthsData[monthsData.length - 1]
+    const containerHeight = lastItem.cssHeight + lastItem.scrollTop
 
+    requestAniFrame(() => {
+      // 初始化 日历位置
+      if (monthsRef && monthsPanel && viewAreaRef) {
+        viewHeight = (monthsRef.current as HTMLDivElement).clientHeight
+        ;(
+          monthsPanel.current as HTMLDivElement
+        ).style.height = `${containerHeight}px`
+        ;(monthsRef.current as HTMLDivElement).scrollTop =
+          monthsData[current].scrollTop
+      }
+    })
+
+    setAvgHeight(Math.floor(containerHeight / (monthNum + 1)))
+  }
+
+  const renderCurrentDate = () => {
     let defaultData: InputDate = []
     // 日期转化为数组，限制初始日期。判断时间范围
-    if (type === 'range' && Array.isArray(state.currDate)) {
-      if (state.currDate.length > 0) {
-        if (
-          propStartDate &&
-          Utils.compareDate(state.currDate[0], propStartDate)
-        ) {
-          state.currDate.splice(0, 1, propStartDate)
+    if (type === 'range' && Array.isArray(currentDate)) {
+      if (currentDate.length > 0) {
+        if (propStartDate && Utils.compareDate(currentDate[0], propStartDate)) {
+          currentDate.splice(0, 1, propStartDate)
         }
-        if (propEndDate && Utils.compareDate(propEndDate, state.currDate[1])) {
-          state.currDate.splice(1, 1, propEndDate)
+        if (propEndDate && Utils.compareDate(propEndDate, currentDate[1])) {
+          currentDate.splice(1, 1, propEndDate)
         }
         defaultData = [
-          ...splitDate(state.currDate[0]),
-          ...splitDate(state.currDate[1]),
+          ...splitDate(currentDate[0]),
+          ...splitDate(currentDate[1]),
         ]
       }
-    } else if (props.type === 'multiple' && Array.isArray(state.currDate)) {
-      if (state.currDate.length > 0) {
+    } else if (props.type === 'multiple' && Array.isArray(currentDate)) {
+      if (currentDate.length > 0) {
         const defaultArr = [] as string[]
         const obj: Record<string, unknown> = {}
-        state.currDate.forEach((item: string) => {
+        currentDate.forEach((item: string) => {
           if (
             propStartDate &&
             !Utils.compareDate(item, propStartDate) &&
@@ -526,22 +547,27 @@ export const CalendarItem = React.forwardRef<
             }
           }
         })
-        state.currDate = [...defaultArr]
+        currentDate.splice(0) && currentDate.push(...defaultArr)
         defaultData = [...splitDate(defaultArr[0])]
       }
-    } else if (state.currDate) {
-      if (
-        propStartDate &&
-        Utils.compareDate(state.currDate as string, propStartDate)
-      ) {
-        state.currDate = propStartDate
-      } else if (
-        propEndDate &&
-        !Utils.compareDate(state.currDate as string, propEndDate)
-      ) {
-        state.currDate = propEndDate
+    } else if (currentDate) {
+      if (currentDate.length > 0) {
+        if (
+          propStartDate &&
+          Utils.compareDate(currentDate as string, propStartDate)
+        ) {
+          defaultData = [...splitDate(propStartDate as string)]
+        } else if (
+          propEndDate &&
+          !Utils.compareDate(currentDate as string, propEndDate)
+        ) {
+          defaultData = [...splitDate(propEndDate as string)]
+        } else {
+          defaultData = [...splitDate(currentDate as string)]
+        }
+      } else {
+        defaultData = []
       }
-      defaultData = [...splitDate(state.currDate as string)]
     }
 
     // 设置默认可见区域
@@ -572,8 +598,6 @@ export const CalendarItem = React.forwardRef<
       }
     }
 
-    setDefaultRange(monthNum, current)
-
     if (defaultData.length > 0) {
       // 设置当前选中日期
       if (type === 'range') {
@@ -588,7 +612,7 @@ export const CalendarItem = React.forwardRef<
           true
         )
       } else if (type === 'multiple') {
-        ;[...state.currDate].forEach((item: string) => {
+        ;[...currentDate].forEach((item: string) => {
           const dateArr = splitDate(item)
           let currentIndex = current
           monthsData.forEach((item, index) => {
@@ -610,23 +634,17 @@ export const CalendarItem = React.forwardRef<
         )
       }
     }
+    return current
+  }
 
-    const lastItem = monthsData[monthsData.length - 1]
-    const containerHeight = lastItem.cssHeight + lastItem.scrollTop
-
-    requestAniFrame(() => {
-      // 初始化 日历位置
-      if (monthsRef && monthsPanel && viewAreaRef) {
-        viewHeight = (monthsRef.current as HTMLDivElement).clientHeight
-        ;(
-          monthsPanel.current as HTMLDivElement
-        ).style.height = `${containerHeight}px`
-        ;(monthsRef.current as HTMLDivElement).scrollTop =
-          monthsData[current].scrollTop
-      }
-    })
-
-    setAvgHeight(Math.floor(containerHeight / (monthNum + 1)))
+  const initData = () => {
+    // 判断时间范围内存在多少个月
+    const monthNum = getMonthNum()
+    // 设置月份数据
+    getMonthsData(monthNum)
+    const current = renderCurrentDate()
+    setDefaultRange(monthNum, current)
+    requestAniFrameFunc(current, monthNum)
   }
 
   const resetRender = () => {
@@ -686,6 +704,24 @@ export const CalendarItem = React.forwardRef<
     scrollToDate,
   }))
 
+  const resetSelectedValue = () => {
+    const itemData = (dateArr: string) => {
+      days = dateArr.split('/')
+      days[3] = `${days[0]}/${days[1]}/${days[2]}`
+      days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2])
+      return days
+    }
+    let days = []
+    if (Array.isArray(currentDate) && currentDate) {
+      days = currentDate.map((item) => {
+        return itemData(item)
+      })
+    } else {
+      days = itemData(currentDate as string)
+    }
+    return days
+  }
+
   const confirm = () => {
     if (
       (type === 'range' && state.currDateArray.length === 2) ||
@@ -711,9 +747,9 @@ export const CalendarItem = React.forwardRef<
     days[4] = Utils.getWhatDay(+days[0], +days[1], +days[2])
 
     if (type === 'multiple') {
-      if (state.currDate.length > 0) {
+      if (currentDate.length > 0) {
         let hasIndex: any = ''
-        ;(state.currDate as string[]).forEach((item: any, index: number) => {
+        ;(currentDate as string[]).forEach((item: any, index: number) => {
           if (item === days[3]) {
             hasIndex = index
           }
@@ -721,30 +757,32 @@ export const CalendarItem = React.forwardRef<
         if (isFirst) {
           state.currDateArray.push([...days])
         } else if (hasIndex !== '') {
-          ;(state.currDate as string[]).splice(hasIndex, 1)
+          ;(currentDate as string[]).splice(hasIndex, 1)
           state.currDateArray.splice(hasIndex, 1)
         } else {
-          ;(state.currDate as string[]).push(days[3])
+          ;(currentDate as string[]).push(days[3])
           state.currDateArray.push([...days])
         }
       } else {
-        state.currDate = [days[3]]
+        ;(currentDate as string[]).push(days[3])
         state.currDateArray = [[...days]]
       }
     } else if (type === 'range') {
-      const curDataLength = Object.values(state.currDate).length
+      const curDataLength = Object.values(currentDate).length
       if (curDataLength === 2 || curDataLength === 0) {
-        state.currDate = [days[3]]
+        Array.isArray(currentDate) &&
+          currentDate.splice(0) &&
+          currentDate.push(days[3])
         state.currDateArray = [[...days]]
-      } else if (Utils.compareDate(state.currDate[0], days[3])) {
-        Array.isArray(state.currDate) && state.currDate.push(days[3])
+      } else if (Utils.compareDate(currentDate[0], days[3])) {
+        Array.isArray(currentDate) && currentDate.push(days[3])
         state.currDateArray = [...state.currDateArray, [...days]]
       } else {
-        Array.isArray(state.currDate) && state.currDate.unshift(days[3])
+        Array.isArray(currentDate) && currentDate.unshift(days[3])
         state.currDateArray = [[...days], ...state.currDateArray]
       }
     } else {
-      state.currDate = days[3]
+      setCurrentDate(days[3])
       state.currDateArray = [...days]
     }
 

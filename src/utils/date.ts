@@ -117,9 +117,9 @@ const Utils = {
    * 时间是否相等
    * @return {Boolean}
    */
-  isEqual(date1: string, date2: string): boolean {
-    const startTime = new Date(date1).getTime()
-    const endTime = new Date(date2).getTime()
+  isEqual(date1 = '', date2: string): boolean {
+    const startTime = new Date(date1.replace('-', '/')).getTime()
+    const endTime = new Date(date2.replace('-', '/')).getTime()
     if (startTime === endTime) {
       return true
     }

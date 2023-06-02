@@ -89,11 +89,12 @@ const CalendarDemo = () => {
   })
   const d = new Date()
   const currDay = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
+  // console.log('currDay', currDay)
   const [date, setDate] = useState(currDay)
   const [date1, setDate1] = useState(['2023-01-23', '2023-11-26'])
   const [date2, setDate2] = useState('2023-05-08')
   const [date3, setDate3] = useState('')
-  const [date4, setDate4] = useState<string[]>([])
+  const [date4, setDate4] = useState<string[]>(['2023-06-8'])
   const [date5, setDate5] = useState<string[]>(['2022-11-23', '2024-01-26'])
   const [date6, setDate6] = useState<string[]>(['2022-11-23', '2024-01-26'])
   const [date7, setDate7] = useState<string[]>(['2022-12-23', '2023-08-26'])
@@ -165,31 +166,36 @@ const CalendarDemo = () => {
   }
 
   const setChooseValue = (param: string) => {
+    console.log('setChooseValue', param)
     setDate(param[3])
     setDateWeek(param[4])
   }
 
   const setChooseValue1 = (param: string) => {
+    console.log('setChooseValue1', [...[param[0][3], param[1][3]]])
     setDate1([...[param[0][3], param[1][3]]])
   }
 
   const setChooseValue2 = (param: string) => {
     setDate2(param[3])
-    console.log(param[3])
+    console.log('setChooseValue2', param[3])
   }
 
   const setChooseValue3 = (param: string) => {
     setDate3(param[3])
+    console.log('setChooseValue3', param[3])
   }
 
   const setChooseValue4 = (chooseData: any) => {
     const dateArr = chooseData.map((item: any) => {
       return item[3]
     })
+    console.log('setChooseValue4', [...dateArr], chooseData)
     setDate4([...dateArr])
   }
 
   const setChooseValue5 = (param: string) => {
+    console.log('set value 5', [...[param[0][3], param[1][3]]])
     setDate5([...[param[0][3], param[1][3]]])
   }
 
@@ -237,7 +243,7 @@ const CalendarDemo = () => {
   }
 
   const renderDay = (date: Day) => {
-    return <span>{date.day <= 9 ? `0${date.day}` : date.day}</span>
+    return <>{date.day <= 9 ? `0${date.day}` : date.day}</>
   }
   const renderDayTop = (date: Day) => {
     let currDate = ''
@@ -290,8 +296,8 @@ const CalendarDemo = () => {
           visible={isVisible}
           showTitle={false}
           defaultValue={date}
-          // startDate="2022-01-11"
-          endDate="2029-11-30"
+          // startDate="2023-06-11"
+          endDate="2023-11-30"
           onClose={closeSwitch}
           onConfirm={setChooseValue}
           onClickDay={select}
@@ -385,7 +391,7 @@ const CalendarDemo = () => {
           visible={isVisible6}
           defaultValue={date6}
           type="range"
-          startDate="2022-12-22"
+          startDate="2023-2-22"
           endDate="2024-01-08"
           confirmText="submit"
           startText="enter"
@@ -393,6 +399,7 @@ const CalendarDemo = () => {
           renderDay={renderDay}
           renderDayTop={renderDayTop}
           renderDayBottom={renderDayBottom}
+          showToday
           onClose={closeSwitch6}
           onConfirm={setChooseValue6}
         />
@@ -430,7 +437,12 @@ const CalendarDemo = () => {
         >
           <Calendar
             popup={false}
-            defaultValue={date2}
+            defaultValue={date6}
+            type="range"
+            startDate="2023-5-23"
+            endDate="2024-06-01"
+            startText={<div>test</div>}
+            endText="leave"
             autoBackfill
             onConfirm={setChooseValue2}
             onPageChange={yearMonthChange}
