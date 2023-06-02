@@ -47,7 +47,7 @@ test('color & plain test', () => {
   )
   expect(container.querySelector('.nut-tag--plain')).toHaveAttribute(
     'style',
-    'color: rgb(250, 104, 93); background: rgb(255, 255, 255); border-color: rgb(250, 104, 93);'
+    'color: rgb(250, 104, 93); border-color: rgb(250, 104, 93);'
   )
 })
 
@@ -93,7 +93,7 @@ test('emit click event', () => {
   const testClick = jest.fn()
   function tree() {
     return render(
-      <Tag data-testid="tag-click" onClick={() => testClick()} prefixCls="test">
+      <Tag data-testid="tag-click" onClick={() => testClick()} className="test">
         TEST
       </Tag>
     )
