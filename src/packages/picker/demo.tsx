@@ -7,6 +7,7 @@ import Cell from '@/packages/cell'
 interface T {
   [props: string]: string
 }
+
 interface PickerOption {
   text: string | number
   value: string | number
@@ -24,6 +25,7 @@ const PickerDemo = () => {
   const [isVisible4, setIsVisible4] = useState(false)
   const [isVisible5, setIsVisible5] = useState(false)
   const [isVisible6, setIsVisible6] = useState(false)
+  const [isVisible7, setIsVisible7] = useState(false)
 
   const [cityCustmer, setCityCustmer] = useState('')
   const [baseDesc, setBaseDesc] = useState('')
@@ -59,11 +61,11 @@ const PickerDemo = () => {
       },
       {
         value: 6,
-        text: translated.zheJiang,
+        text: translated.wuhan,
       },
       {
         value: 7,
-        text: translated.jiangSu,
+        text: translated.yangzhou,
       },
       {
         value: 8,
@@ -79,7 +81,7 @@ const PickerDemo = () => {
       },
       {
         value: 11,
-        text: translated.anshi,
+        text: translated.shijiazhuang,
       },
       {
         value: 12,
@@ -207,7 +209,6 @@ const PickerDemo = () => {
     options: PickerOption[],
     values: (string | number)[]
   ) => {
-    console.log(values, options)
     const str = options.map((item) => item.text).join('-')
     setCityCustmer(str)
   }
@@ -293,15 +294,17 @@ const PickerDemo = () => {
         <Cell
           title={translated.chooseCity}
           description={baseDesc}
-          onClick={() => setIsVisible1(!isVisible1)}
+          onClick={() => setIsVisible7(!isVisible7)}
         />
         <Picker
           title={translated.chooseCity}
-          visible={isVisible1}
+          visible={isVisible7}
           options={listData1}
+          onChange={(option, value) => console.log('onChange', option, value)}
           onConfirm={(list, values) => confirmPicker('base', list, values)}
           onClose={() => {
-            setIsVisible1(false)
+            console.log('onClose')
+            setIsVisible7(false)
           }}
         />
 
