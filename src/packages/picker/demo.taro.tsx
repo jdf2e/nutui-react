@@ -239,7 +239,7 @@ const PickerDemo = () => {
 
   // 切换选择项
   const changePicker = (options: any[], values: any, columnIndex: number) => {
-    console.log('picker选择change', columnIndex, values, options)
+    console.log('picker onChange', columnIndex, values, options)
   }
   const [val, setVal] = useState<Array<number | string>>([])
   // 确定选择

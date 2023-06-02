@@ -7,6 +7,7 @@ import Cell from '@/packages/cell'
 interface T {
   [props: string]: string
 }
+
 interface PickerOption {
   text: string | number
   value: string | number
@@ -299,9 +300,10 @@ const PickerDemo = () => {
           title={translated.chooseCity}
           visible={isVisible7}
           options={listData1}
-          onChange={() => console.log('xxx onChange')}
-          onConfirm={(list, values) => confirmPicker('base', list, values)}
+          onChange={(option, value) => console.log('onChange', option, value)}
+          onConfirm={(list, values) => confirmPicker('onConfirm', list, values)}
           onClose={() => {
+            console.log('onClose')
             setIsVisible7(false)
           }}
         />

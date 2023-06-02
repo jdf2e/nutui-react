@@ -152,6 +152,16 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
         innerValue
       ) as PickerOption[][]
       setColumnsList(normalData)
+      // 初始化默认选中数据
+      const data: (string | number)[] = []
+      normalData.length > 0 &&
+        normalData.map((item) => {
+          item[0] && data.push(item[0].value)
+          return item
+        })
+      if (!defaultValue.length && selectedValue.length === 0) {
+        setInnerValue([...data])
+      }
     }
 
     useEffect(() => {
