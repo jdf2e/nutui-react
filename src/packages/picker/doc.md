@@ -220,7 +220,7 @@ const App = () => {
   const [custmerCityData, setCustmerCityData] = useState([
     {
       value: 1,
-      text: '北京',
+      text: '北京市',
       children: [
         { value: 1, text: '朝阳区',},
         { value: 2, text: '海淀区',},
@@ -232,7 +232,7 @@ const App = () => {
     },
     {
       value: 2,
-      text: '上海',
+      text: '上海市',
       children: [
         { value: 1, text: '黄浦区',},
         { value: 2, text: '长宁区',},
@@ -289,7 +289,7 @@ const App = () => {
   const [asyncData, setCustmerCityData] = useState([
     {
       value: 1,
-      text: '北京',
+      text: '北京市',
       children: [
         { value: 1, text: '朝阳区',},
         { value: 2, text: '海淀区',},
@@ -301,7 +301,7 @@ const App = () => {
     },
     {
       value: 2,
-      text: '上海',
+      text: '上海市',
       children: [],
     },
   ])
