@@ -65,7 +65,7 @@ const PickerDemo = () => {
       },
       {
         value: 7,
-        text: translated.jiangSu,
+        text: translated.yangzhou,
       },
       {
         value: 8,

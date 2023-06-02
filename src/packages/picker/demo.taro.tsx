@@ -53,11 +53,11 @@ const PickerDemo = () => {
       },
       {
         value: 6,
-        text: '浙江市',
+        text: '石家庄',
       },
       {
         value: 7,
-        text: '江苏市',
+        text: '扬州市',
       },
       {
         value: 8,
@@ -73,7 +73,7 @@ const PickerDemo = () => {
       },
       {
         value: 11,
-        text: '请按市',
+        text: '徐州市',
       },
       {
         value: 12,

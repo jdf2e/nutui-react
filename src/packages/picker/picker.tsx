@@ -194,23 +194,28 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
 
     // 更新已选择数据
     const chooseItem = (columnOptions: PickerOption, columnIndex: number) => {
-      const _value = [...innerValue]
+      const values: any = []
+      const start = columnIndex
       if (columnOptions && Object.keys(columnOptions).length) {
         // 切换数据后，数据有变动才触发。
-        if (_value[columnIndex] !== columnOptions.value) {
+        if (values[columnIndex] !== columnOptions.value) {
           if (columnsType() === 'cascade') {
-            _value[columnIndex] = columnOptions.value || ''
+            values[columnIndex] = columnOptions.value || ''
             while (columnOptions?.children?.[0]) {
-              _value[columnIndex + 1] = columnOptions.children[0].value
+              values[columnIndex + 1] = columnOptions.children[0].value
               columnIndex++
               columnOptions = columnOptions.children[0]
             }
             // 当前改变列的下一列 children 值为空
             if (columnOptions?.children?.length) {
-              _value[columnIndex + 1] = ''
+              values[columnIndex + 1] = ''
             }
-            setInnerValue(_value)
-            setColumnsList(normalListData(_value) as PickerOption[][])
+            const combineResult = [
+              ...innerValue.slice(0, start),
+              ...values.splice(start),
+            ]
+            setInnerValue(combineResult)
+            setColumnsList(normalListData(combineResult) as PickerOption[][])
           } else {
             setInnerValue((data: (number | string)[]) => {
               const cdata: (number | string)[] = [...data]
