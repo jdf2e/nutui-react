@@ -1,19 +1,22 @@
+# SideNavBar组件
 
-#  SideNavBar组件
-
-### 介绍
+## 介绍
 
 用于内容选择和切换
 
-### 安装
+## 安装
+
 ```tsx
 // react
 import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react-taro';
 ```
+
 ## 代码演示
+
 ### 基础用法
 
 :::demo
+
 ```tsx
 import  React,{useState} from "react";
 import {Cell, SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react-taro';
@@ -34,14 +37,12 @@ const App = () => {
     <>   
     <Cell
           title="左侧弹出"
-          
           onClick={() => {
             changeNarBar(true, 'left')
           }}
         />
         <Cell
           title="右侧弹出"
-          
           onClick={() => {
             changeNarBar(true, 'right')
           }}
@@ -69,11 +70,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ### 嵌套及回调
 
 :::demo
+
 ```tsx
 import  React,{useState} from "react";
 import {Cell,SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react-taro';
@@ -93,7 +96,6 @@ const App = () => {
     <>  
       <Cell
           title="显示"
-          
           onClick={() => {
             changeNarBar(true)
           }}
@@ -125,55 +127,42 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
+## SideNavBar
 
+### Props
 
-## API
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| visible | 组件是否显示 | `boolean` | `false` |
+| title | 整体标题 | `string` | `-` |
+| width | 遮罩宽度百分比 | `string` | `80%` |
+| position | 弹出位置 | `'left' \| 'right'` | `left` |
+| indent | 缩进宽度 | `number` | `20` |
+| onClose | 关闭遮罩时触发 | `-` | `-` |
 
-### 1、SideNavBar
+## SubSideNavBar
 
-| 属性 | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| visible      | 组件是否显示                       | boolean | `false`           |
-| title        | 整体标题                           | string  | -               |
-| width        | 遮罩宽度百分比                      | string   | `80%`          |
-| position     | 弹出位置                           | 'left' \| 'right' | `left`  |
-| offset       | 缩进宽度                           | number  | `20`              |
+### Props
 
-### 2、SubSideNavBar
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| key | 导航唯一标识 | `string \| number` | `-` |
+| title | 整体标题 | `string` | `-` |
+| open | 导航是否默认展开 | `boolean` | `true` |
+| onClick | 导航点击 | `data: {title: string, key: string \| number, isShow: boolean}` | `-` |
 
-| 属性 | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| key  `v2.0.0`       | 导航唯一标识                       | string \| number |          |
-| title        | 整体标题                           | string  | -              |
-| open         | 导航是否默认展开                     | boolean  | `true`         |
-### 3、SideNavBarItem
+## SideNavBarItem
 
-| 属性 | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| key  `v2.0.0`       | 导航唯一标识                       | string \| number |          |
-| title        | 整体标题                           | string  | -               |
+### Props
 
-## Events
-### 1、SideNavBar Events
-
-| 事件名                       | 说明                                          | 回调参数     |
-|---------------------------|---------------------------------------------|--------------|
-| onClose | 关闭遮罩时触发, handleClose 事件从 1.3.8 之后改为 onClose | -           |
-
-### 2、SubSideNavBar Events
-
-| 事件名           | 说明                                                             | 回调参数     |
-|---------------|----------------------------------------------------------------|--------------|
-| onClick | 导航点击, titleClick 事件从 1.3.8 之后改为 onClick | `data: {title: string, key: string \| number, isShow: boolean}`           |
-
-### 3、SideNavBarItem Events
-
-| 事件名    | 说明                                                  | 回调参数     |
-|--------|-----------------------------------------------------|--------------|
-| onClick | 导航点击, click 事件从 1.3.8 之后改为 onClick | `data: {title: string, key: string \| number}`           |
-
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| key | 导航唯一标识 | `string \| number` | `-` |
+| title | 整体标题 | `string` | `-` |
+| onClick | 导航点击 | `data: {title: string, key: string \| number}` | `-` |
 
 ## 主题定制
 
@@ -181,19 +170,15 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-sidenavbar-content-bg-color | `$white` |
-| --nutui-sidenavbar-sub-title-border-color | `#f6f6f6` |
-| --nutui-sidenavbar-sub-title-bg-color | `#f6f6f6` |
-| --nutui-sidenavbar-sub-title-font-size | `$font-size-large` |
-| --nutui-sidenavbar-sub-title-radius | `0` |
-| --nutui-sidenavbar-sub-title-border | `0` |
-| --nutui-sidenavbar-sub-title-height | `40px` |
-| --nutui-sidenavbar-sub-title-text-line-height | `40px` |
-| --nutui-sidenavbar-sub-title-text-color | `$title-color` |
-| --nutui-sidenavbar-item-title-color | `#333` |
-| --nutui-sidenavbar-item-title-bg-color | `$white` |
-| --nutui-sidenavbar-item-height | `40px` |
-| --nutui-sidenavbar-item-line-height | `40px` |
-| --nutui-sidenavbar-item-font-size | `16px` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| \--nutui-sidenavbar-content-bg-color | 侧边栏导航背景色 | `$white` |
+| \--nutui-sidenavbar-item-height | 侧边栏每项的高度 | `40px` |
+| \--nutui-sidenavbar-title-padding | 标题的内边距 | `10px 8px 10px 20px` |
+| \--nutui-sidenavbar-title-background | 标题的背景色 | `$gray4` |
+| \--nutui-sidenavbar-title-color | 标题的字体颜色 | `$gray1` |
+| \--nutui-sidenavbar-sub-title-padding | 子标题的内边距 | `10px 8px 10px 35px` |
+| \--nutui-sidenavbar-sub-title-background | 子标题背景色 | `$gray5` |
+| \--nutui-sidenavbar-sub-title-color | 子标题字体颜色 | `$gray1` |
+| \--nutui-sidenavbar-sub-list-background | 选项列表背景色 | `$gray5` |
+| \--nutui-sidenavbar-sub-list-color | 选项列表字体颜色 | `$gray1` |

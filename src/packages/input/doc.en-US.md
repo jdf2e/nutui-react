@@ -252,7 +252,7 @@ export default App;
 
 ## Input
 
-### Prop
+### Props
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |

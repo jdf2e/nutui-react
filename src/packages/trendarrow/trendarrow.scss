@@ -1,11 +1,12 @@
 .nut-trendarrow {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font-size: $trendarrow-font-size;
   &__icon-before {
-    margin-right: $trendarrow-before-icon-margin;
+    margin-right: $trendarrow-icon-margin;
   }
   &__icon-after {
-    margin-left: $trendarrow-before-icon-margin;
+    margin-left: $trendarrow-icon-margin;
   }
   &__rate {
     vertical-align: middle;

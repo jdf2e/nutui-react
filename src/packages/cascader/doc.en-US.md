@@ -1,6 +1,6 @@
 # Cascader
 
-## Introduce
+## Intro
 
 The cascader component is used for the selection of multi-level data. The typical scene is the selection of provinces and cities.
 

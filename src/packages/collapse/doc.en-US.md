@@ -321,7 +321,7 @@ const App = () => {
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| 名称 | 描述 | 默认值 |
+| Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-collapse-item-padding | padding | `13px 36px 13px 26px` |
 | \--nutui-collapse-item-font-size | fontSize | `$font-size-2` |

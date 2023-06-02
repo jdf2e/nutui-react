@@ -1,75 +1,30 @@
 @import '../popup/popup.scss';
 
-.nut-theme-dark {
-  .nut-actionsheet {
-    background-color: $dark5;
-    color: $dark1;
-
-    &__menu {
-      .nut-actionsheet__item {
-        background-color: $dark5;
-        color: $dark1 !important;
-
-        .subdesc {
-          color: $dark2;
-        }
-      }
-
-      .nut-actionsheet__item:hover {
-        background-color: $dark5;
-      }
-    }
-
-    .nut-actionsheet__cancel {
-      background-color: $dark5;
-      color: $dark2;
-      border-top: none;
-    }
-
-    .nut-actionsheet__title {
-      background-color: $dark5;
-      color: $dark1;
-      border-top: none;
-    }
-
-    .description {
-      background-color: $dark5;
-      color: $dark2;
-    }
-  }
-}
-
 .nut-actionsheet {
   display: block;
   padding-bottom: constant(safe-area-inset-bottom);
   padding-bottom: env(safe-area-inset-bottom);
+  text-align: center;
 
   .nut-actionsheet__title {
     display: block;
     padding: 10px;
     margin: 0;
-    text-align: center;
     background-color: $white;
-    border-bottom: 1px solid $light-color;
-    font-size: $font-size-base;
+    border-bottom: 1px solid $actionsheet-border-color;
+    font-size: $font-size-large;
     color: $title-color;
   }
 
-  .nut-actionsheet-modal {
-    .nut-actionsheet__title,
-    .nut-actionsheet-sub-title {
-      padding: 5px 0;
-    }
-
-    .nut-actionsheet-sub-title {
-      display: block;
-      font-size: $font-size-small;
-      color: $title-color;
-      margin-inline-start: 0px;
-    }
+  .nut-actionsheet__description {
+    padding: 10px;
+    display: block;
+    font-size: $font-size-base;
+    color: $title-color2;
+    margin-inline-start: 0px;
   }
 
-  .nut-actionsheet__menu {
+  .nut-actionsheet__list {
     display: block;
     list-style: none;
     padding: 0;
@@ -79,34 +34,32 @@
   .nut-actionsheet__cancel,
   .nut-actionsheet__item {
     display: block;
-    //   height: 24px;
     padding: 10px;
-    line-height: 24px;
+    text-align: $actionsheet-item-text-align;
+    line-height: $actionsheet-item-line-height;
     font-size: $font-size-base;
-    color: $title-color;
-    text-align: center;
+    color: $actionsheet-item-color;
     background-color: $background-color3;
     cursor: pointer;
-  }
 
-  .description {
-    font-size: $font-size-2;
-    color: $title-color2;
-  }
+    &-description {
+      display: block;
+      font-size: $font-size-small;
+      color: $title-color2;
+    }
 
-  .subdesc {
-    display: block;
-    font-size: $font-size-small;
-    color: $title-color2;
-  }
+    &.danger {
+      color: $actionsheet-item-danger;
+    }
 
-  .nut-actionsheet__item-disabled {
-    color: #e1e1e1 !important;
-    cursor: not-allowed;
+    &.disabled {
+      color: #e1e1e1 !important;
+      cursor: not-allowed;
+    }
   }
 
   .nut-actionsheet__cancel {
     margin-top: 5px;
-    border-top: 1px solid $light-color;
+    border-top: 1px solid $actionsheet-border-color;
   }
 }

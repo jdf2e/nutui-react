@@ -252,7 +252,7 @@ export default App;
 
 ## Input
 
-### Prop
+### Props
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
@@ -277,7 +277,7 @@ export default App;
 | onClear | 点击清空按钮时触发 | `(value: string) => void` | `-` |
 | onClick | 点击 input 容器触发 | `(value: MouseEvent<HTMLDivElement>) => void` | `-` |
 
-此外还支持 taro 中的 [input 属性](https://docs.taro.zone/docs/components/forms/input/)
+此外还支持 Taro 中的 [Input 属性](https://docs.taro.zone/docs/components/forms/input/)
 
 ## 主题定制
 

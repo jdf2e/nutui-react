@@ -124,8 +124,8 @@ export const Audio: FunctionComponent<
   })
 
   audioCtx.onError((res) => {
-    console.log('code', res.errCode)
-    console.log('message', res.errMsg)
+    console.warn('code', res.errCode)
+    console.warn('message', res.errMsg)
   })
 
   function formatSeconds(value: string) {

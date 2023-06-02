@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, FunctionComponent } from 'react'
+import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
-import bem from '@/utils/bem'
+import { Video as VideoTaro, BaseEventOrig } from '@tarojs/components'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface VideoProps {
+export interface VideoProps extends BasicComponent {
   source: {
     type: string
     src: string
@@ -15,16 +16,12 @@ export interface VideoProps {
     playsinline?: boolean
     loop?: boolean
   }
-  className: string
-  style: React.CSSProperties
-  play: (e: HTMLVideoElement) => void
-  pause: (e: HTMLVideoElement) => void
-  playend: (e: HTMLVideoElement) => void
-  onPlay: (e: HTMLVideoElement) => void
-  onPause: (e: HTMLVideoElement) => void
-  onPlayEnd: (e: HTMLVideoElement) => void
+  onPlay: (event: BaseEventOrig<any>) => void
+  onPause: (event: BaseEventOrig<any>) => void
+  onPlayEnd: (event: BaseEventOrig<any>) => void
 }
 const defaultProps = {
+  ...ComponentDefaults,
   source: {
     type: {},
     src: '',
@@ -38,6 +35,8 @@ const defaultProps = {
     loop: false,
   },
 } as VideoProps
+
+const classPrefix = `nut-video`
 export const Video: FunctionComponent<
   Partial<VideoProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onPause' | 'onPlay'>
@@ -47,9 +46,6 @@ export const Video: FunctionComponent<
     source,
     options,
     className,
-    play,
-    pause,
-    playend,
     onPlay,
     onPause,
     onPlayEnd,
@@ -58,59 +54,22 @@ export const Video: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const rootRef = useRef<HTMLVideoElement>(null)
-  const b = bem('video')
-  const classes = classNames(className, b(''))
-
-  useEffect(() => {
-    init()
-  }, [])
-
-  const init = () => {
-    if (rootRef.current) {
-      const videoRef = rootRef.current
-      if (options.autoplay) {
-        setTimeout(() => {
-          videoRef.play()
-        }, 200)
-      }
-      if (options.playsinline) {
-        videoRef.setAttribute('playsinline', String(options.playsinline))
-        videoRef.setAttribute('webkit-playsinline', String(options.playsinline))
-        videoRef.setAttribute('x5-video-player-type', 'h5-page')
-        videoRef.setAttribute('x5-video-player-fullscreen', 'false')
-      }
-      videoRef.addEventListener('play', () => {
-        onPlay && onPlay(videoRef)
-        play && play(videoRef)
-      })
-      videoRef.addEventListener('pause', () => {
-        onPause && onPause(videoRef)
-        pause && pause(videoRef)
-      })
-      videoRef.addEventListener('ended', () => {
-        videoRef.currentTime = 0
-        onPlayEnd && onPlayEnd(videoRef)
-        playend && playend(videoRef)
-      })
-    }
-  }
+  const classes = classNames(className, classPrefix)
 
   return (
     <div className={classes} {...restProps}>
-      <video
+      <VideoTaro
         className="nut-video-player"
         muted={options.muted}
-        autoPlay={options.autoplay}
+        autoplay={options.autoplay}
         loop={options.loop}
         poster={options.poster}
         controls={options.controls}
-        ref={rootRef}
         src={source.src}
-      >
-        <source src={source.src} type={source.type} />
-        <track kind="captions" />
-      </video>
+        onPlay={onPlay}
+        onPause={onPause}
+        onEnded={onPlayEnd}
+      />
     </div>
   )
 }

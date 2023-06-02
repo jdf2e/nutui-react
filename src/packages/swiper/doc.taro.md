@@ -348,7 +348,7 @@ export default App;
 ```
 :::
 
-## API
+## Swiper
 
 ### Props
 

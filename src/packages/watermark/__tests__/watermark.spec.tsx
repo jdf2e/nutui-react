@@ -7,7 +7,7 @@ import { WaterMark } from '../watermark'
 
 test('video base info', () => {
   const App = () => {
-    return <WaterMark fontColor="#fa2c19" content="nut-ui" />
+    return <WaterMark color="#fa2c19" content="nut-ui" />
   }
   const { container } = render(<App />)
   expect(container.querySelectorAll('.nut-watermark').length).toBe(1)

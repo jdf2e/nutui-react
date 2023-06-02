@@ -112,6 +112,7 @@
 - pageNodeRender 重命名为 itemRender
 - 移除 pageCount，通过 total 与 pageSize 实现
 #### SideNavBar
+- offset 重命名为 indent
 #### Tabbar
 - unactiveColor 重命名为 inactiveColor
 - tabTitle 重命名为 title，改为 ReactNode
@@ -267,6 +268,18 @@
 
 ### 操作反馈
 #### ActionSheet
+- `title`，类型变更为 `ReactNode`
+- `description`，类型变更为 `ReactNode`
+- `cancelTxt`，重命名为 `cancelText`，类型变更为 `ReactNode`
+- `menuItems` 重命名为 `options`
+- `chooseTagValue` 重命名为 `value`
+- `onChoose` 重命名为 `onSelect`
+- 增加 `options` 的定义
+  - `color` 重命名为 `danger`
+  - `name`，列表项的标题key
+  - `description`，列表项的描述key
+  - `danger`，列表项中提醒用户重点关注的操作
+  - `disable`，列表项中禁用项
 #### BackTop
 - elId 重命名为 target
 - 移除 right、bottom，通过 style 传入，增加支持 left、top
@@ -317,7 +330,14 @@
 #### Animate
 - `className` 属性通过继承实现
 - `style` 属性通过继承实现
+
 #### AnimatingNumbers
+
+- `maxLen` 重命名为 `length`
+- `endNumber` 重命名为 `value`, 类型改为 `string|number`
+- `delaySpeed` 重命名为 `delay`
+- `easeSpeed` 重命名为 `duration`
+
 #### Audio
 - url 重命名为 src
 - autoplay 重命名为 autoPlay
@@ -390,6 +410,11 @@
 
 #### Popover
 
+- 代码整体重构，需要验证每一个属性（除了list属性和location属性没有更改）
+- `theme` 属性删除， `onChoose`属性删除
+- 新增showArrow、duration、overlay、overlayClassName、overlayStyle、closeOnOverlayClick、closeOnClickAction、closeOnClickOutside、background、color、targetId属性。
+- 新增onSelect、onOpen、onClose回调事件
+
 #### Price
 
 - `decimalDigits` 重命名为 `digits`
@@ -445,14 +470,38 @@
 - `onSorter` 重命名为 `onSort`
 - 合并 `summary` 与 `noData` 的样式处理
 #### Tag
-#### TrendArrow
-#### Video
-#### VirtualList
-#### WaterMark
 
+#### TrendArrow
+
+- `rate` 重命名为 `value`
+- `showSign` 重命名为 `symbol`
+- `showZero` 重命名为 `zero`
+- `syncTextColor` 重命名为 `syncColor`
+- `textColor` 重命名为 `color`
+- 删除 `iconSize`, 图标自定义传入
+- 删除 `upIconName`, 替换为 `riseIcon`, 类型为 `React.Node` 类型
+- 删除 `downIconName`, 替换为 `downIcon`, 类型为 `React.Node` 类型
+
+#### Video
+- 调整中英文文档规范
+- 调整组件书写规范
+- 新增video的taro适配
+#### VirtualList
+- sourceData 重命名为 list
+- conatinerSize 重命名为 containerHeight
+- itemSize 重命名为 itemHeight
+- itemEqualSize 重命名为 itemEqual
+- horizontal 修改为 direction，默认值 vertical，可选值 horizontal
+#### WaterMark
+- fontColor 重命名为 color
 ### 特色组件
 #### Address
 #### Barrage
+- `barrageList` 重命名为 `list`
+- `frequency` 重命名为 `interval`
+- `speeds` 重命名为 `duration`
+- `top` 重命名为 `gapY`
+- add文档类型进行规范说明
 #### Card
 #### Signature
 #### TimeSelect

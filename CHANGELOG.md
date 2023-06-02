@@ -1,3 +1,31 @@
+# v2.0.0-alpha.13
+`2023-05-31`
+
+* 🛠 refactor: animatingNumbers (#1048) @拧巴的猫
+* 🛠 refactor: trendArrow (#1066) @拧巴的猫
+* 🛠 refactor: video (#1034) @junjun666
+* 🛠 refactor: watermark (#1071) @Eiinu
+* :sparkles: feat: 构建类型文件中的注释，方便在编辑器中查看属性的说明 (#1068) @oasis-cloud
+* :bug: fix: popup 在 taro 中的动效优化 (#1065) @oasis-cloud
+* :bug: fix: 修改 uploader 和 video 的 taro 文档 (#1070) @junjun666
+* 📖 docs: correct spelling errors (#1058) @konka
+
+
+
+# v2.0.0-alpha.12
+`2023-05-26`
+
+* 🛠 refactor: actionSheet (#1053) @xiaoyatong
+* 🛠 refactor: countdown (#1040) @拧巴的猫
+* 🛠 refactor: searchBar (#1047) @xiaoyatong
+* 🛠 refactor: shortPassword (#1046) @Eiinu
+* 🛠 refactor: toast (#1026) @justExplore
+* 🛠 refactor: virtualList (#1056) @Eiinu
+* :sparkles: feat: ellipsis add width attribute (#1038) @Zhu Da Shuai
+* :sparkles: feat: 导出主题中的 CSS 变量类型 (#1050) @oasis-cloud
+* 📖 docs: import touch-emulator (#1045) @oasis-cloud
+
+
 # v2.0.0-alpha.11
 `2023-05-24`
 

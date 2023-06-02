@@ -5,38 +5,40 @@ import React, {
   useImperativeHandle,
 } from 'react'
 import classNames from 'classnames'
-import bem from '@/utils/bem'
 
-export interface BarrageProps {
-  className: string
-  style: React.CSSProperties
-  barrageList: Array<string>
-  frequency: number
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+
+export interface BarrageProps extends BasicComponent {
+  list: Array<string>
+  interval: number
   loop: boolean
-  speeds: number
+  duration: number
   rows: number
-  top: number
+  gapY: number
 }
 const defaultProps = {
-  barrageList: [],
-  frequency: 500,
+  ...ComponentDefaults,
+  list: [],
+  interval: 500,
   loop: true,
-  speeds: 3000,
+  duration: 3000,
   rows: 3,
-  top: 10,
+  gapY: 10,
 }
+
+const classPrefix = `nut-barrage`
 const InternalBarrage: ForwardRefRenderFunction<
   unknown,
   Partial<BarrageProps>
 > = (props, ref) => {
   const {
     className,
-    frequency,
+    interval,
     loop,
-    barrageList,
-    speeds,
+    list,
+    duration,
     rows,
-    top,
+    gapY,
     ...restProps
   } = {
     ...defaultProps,
@@ -48,16 +50,15 @@ const InternalBarrage: ForwardRefRenderFunction<
   const timer = useRef(0)
   const index = useRef(0)
 
-  const b = bem('barrage')
-  const classes = classNames(className, b(''))
+  const classes = classNames(classPrefix, className)
 
   useImperativeHandle(ref, () => ({
     add: (word: string) => {
-      const _index = index.current % barrageList.length
-      if (!loop && index.current === barrageList.length) {
-        barrageList.splice(barrageList.length, 0, word)
+      const _index = index.current % list.length
+      if (!loop && index.current === list.length) {
+        list.splice(list.length, 0, word)
       } else {
-        barrageList.splice(_index, 0, word)
+        list.splice(_index, 0, word)
       }
     },
   }))
@@ -77,31 +78,31 @@ const InternalBarrage: ForwardRefRenderFunction<
     return () => {
       clearInterval(timer.current)
     }
-  }, [barrageList])
+  }, [list])
 
   const run = () => {
     clearInterval(timer.current)
     timer.current = window.setTimeout(() => {
       play()
-    }, frequency)
+    }, interval)
   }
 
   const play = () => {
-    if (!loop && index.current >= barrageList.length) {
+    if (!loop && index.current >= list.length) {
       return
     }
-    const _index = loop ? index.current % barrageList.length : index.current
+    const _index = loop ? index.current % list.length : index.current
     const el = document.createElement(`div`)
 
-    el.innerHTML = barrageList[_index] as string
+    el.innerHTML = list[_index] as string
     el.classList.add('barrage-item')
     ;(barrageContainer.current as HTMLDivElement).appendChild(el)
 
     const width = el.offsetWidth
     const height = el.offsetHeight
     el.classList.add('move')
-    el.style.animationDuration = `${speeds}ms`
-    el.style.top = `${(_index % rows) * (height + top) + 20}px`
+    el.style.animationDuration = `${duration}ms`
+    el.style.top = `${(_index % rows) * (height + gapY) + 20}px`
     el.style.width = `${width}px`
 
     el.addEventListener('animationend', () => {
