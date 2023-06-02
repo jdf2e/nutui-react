@@ -159,7 +159,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
           item[0] && data.push(item[0].value)
           return item
         })
-      if (!defaultValue.length && selectedValue.length === 0) {
+      if (!innerValue.length && innerValue.length === 0) {
         setInnerValue([...data])
       }
     }

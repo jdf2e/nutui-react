@@ -61,7 +61,7 @@ const PickerDemo = () => {
       },
       {
         value: 6,
-        text: translated.zheJiang,
+        text: translated.wuhan,
       },
       {
         value: 7,
@@ -81,7 +81,7 @@ const PickerDemo = () => {
       },
       {
         value: 11,
-        text: translated.anshi,
+        text: translated.shijiazhuang,
       },
       {
         value: 12,
