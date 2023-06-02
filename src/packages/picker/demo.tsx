@@ -383,19 +383,19 @@ const PickerDemo = () => {
           options={custmerCityData}
           onClose={() => setIsVisible3(false)}
           onConfirm={(list, values) => setChooseValueCustmer(list, values)}
-          // onChange={(
-          //   options: PickerOption[],
-          //   value: (string | number)[],
-          //   columnIndex: number
-          // ) =>
-          //   console.log(
-          //     asyncData,
-          //     translated.cascade,
-          //     columnIndex,
-          //     value,
-          //     options
-          //   )
-          // }
+          onChange={(
+            options: PickerOption[],
+            value: (string | number)[],
+            columnIndex: number
+          ) =>
+            console.log(
+              asyncData,
+              translated.cascade,
+              columnIndex,
+              value,
+              options
+            )
+          }
         />
 
         <h2>{translated.async}</h2>
