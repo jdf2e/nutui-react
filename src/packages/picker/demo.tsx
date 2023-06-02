@@ -208,7 +208,6 @@ const PickerDemo = () => {
     options: PickerOption[],
     values: (string | number)[]
   ) => {
-    console.log(values, options)
     const str = options.map((item) => item.text).join('-')
     setCityCustmer(str)
   }
@@ -307,68 +306,68 @@ const PickerDemo = () => {
           }}
         />
 
-        {/*<h2>{translated.defaultSelected}</h2>*/}
-        {/*<Cell*/}
-        {/*  title={translated.chooseCity}*/}
-        {/*  description={baseDefault}*/}
-        {/*  onClick={() => setIsVisible4(!isVisible4)}*/}
-        {/*/>*/}
-        {/*<Picker*/}
-        {/*  visible={isVisible4}*/}
-        {/*  options={listData1}*/}
-        {/*  defaultValue={defaultValue}*/}
-        {/*  onConfirm={(list, values) => confirmPicker('default', list, values)}*/}
-        {/*  onClose={() => setIsVisible4(false)}*/}
-        {/*/>*/}
+        <h2>{translated.defaultSelected}</h2>
+        <Cell
+          title={translated.chooseCity}
+          description={baseDefault}
+          onClick={() => setIsVisible4(!isVisible4)}
+        />
+        <Picker
+          visible={isVisible4}
+          options={listData1}
+          defaultValue={defaultValue}
+          onConfirm={(list, values) => confirmPicker('default', list, values)}
+          onClose={() => setIsVisible4(false)}
+        />
 
-        {/*<h2>{translated.controlled}</h2>*/}
-        {/*<Cell*/}
-        {/*  title={translated.chooseCity}*/}
-        {/*  description={baseDesc}*/}
-        {/*  onClick={() => setIsVisible1(!isVisible1)}*/}
-        {/*/>*/}
-        {/*<Picker*/}
-        {/*  title={translated.chooseCity}*/}
-        {/*  visible={isVisible1}*/}
-        {/*  value={val}*/}
-        {/*  options={listData1}*/}
-        {/*  onConfirm={(list, values) => {*/}
-        {/*    confirmPicker('base', list, values)*/}
-        {/*    setVal(values)*/}
-        {/*  }}*/}
-        {/*  onClose={() => {*/}
-        {/*    setIsVisible1(false)*/}
-        {/*  }}*/}
-        {/*/>*/}
+        <h2>{translated.controlled}</h2>
+        <Cell
+          title={translated.chooseCity}
+          description={baseDesc}
+          onClick={() => setIsVisible1(!isVisible1)}
+        />
+        <Picker
+          title={translated.chooseCity}
+          visible={isVisible1}
+          value={val}
+          options={listData1}
+          onConfirm={(list, values) => {
+            confirmPicker('base', list, values)
+            setVal(values)
+          }}
+          onClose={() => {
+            setIsVisible1(false)
+          }}
+        />
 
-        {/*<h2>{translated.multipleColumns}</h2>*/}
-        {/*<Cell*/}
-        {/*  title={translated.multipleColumns}*/}
-        {/*  description={mutilDesc}*/}
-        {/*  onClick={() => setIsVisible2(!isVisible2)}*/}
-        {/*/>*/}
-        {/*<Picker*/}
-        {/*  visible={isVisible2}*/}
-        {/*  options={listData2}*/}
-        {/*  onClose={() => setIsVisible2(false)}*/}
-        {/*  defaultValue={['Wednesday']}*/}
-        {/*  onConfirm={(list, values) => confirmPicker('mutil', list, values)}*/}
-        {/*/>*/}
-        {/*<h2>{translated.tileDesc}</h2>*/}
-        {/*<Cell*/}
-        {/*  title={translated.chooseCity}*/}
-        {/*  description={tileDesc}*/}
-        {/*  onClick={() => setIsVisible6(!isVisible6)}*/}
-        {/*/>*/}
-        {/*<Picker*/}
-        {/*  visible={isVisible6}*/}
-        {/*  options={listData1}*/}
-        {/*  onConfirm={(list, values) => confirmPicker('tile', list, values)}*/}
-        {/*  defaultValue={defaultValue}*/}
-        {/*  threeDimensional={false}*/}
-        {/*  duration={1000}*/}
-        {/*  onClose={() => setIsVisible6(false)}*/}
-        {/*/>*/}
+        <h2>{translated.multipleColumns}</h2>
+        <Cell
+          title={translated.multipleColumns}
+          description={mutilDesc}
+          onClick={() => setIsVisible2(!isVisible2)}
+        />
+        <Picker
+          visible={isVisible2}
+          options={listData2}
+          onClose={() => setIsVisible2(false)}
+          defaultValue={['Wednesday']}
+          onConfirm={(list, values) => confirmPicker('mutil', list, values)}
+        />
+        <h2>{translated.tileDesc}</h2>
+        <Cell
+          title={translated.chooseCity}
+          description={tileDesc}
+          onClick={() => setIsVisible6(!isVisible6)}
+        />
+        <Picker
+          visible={isVisible6}
+          options={listData1}
+          onConfirm={(list, values) => confirmPicker('tile', list, values)}
+          defaultValue={defaultValue}
+          threeDimensional={false}
+          duration={1000}
+          onClose={() => setIsVisible6(false)}
+        />
 
         <h2>{translated.cascade}</h2>
         <Cell
@@ -382,45 +381,45 @@ const PickerDemo = () => {
           options={custmerCityData}
           onClose={() => setIsVisible3(false)}
           onConfirm={(list, values) => setChooseValueCustmer(list, values)}
+          // onChange={(
+          //   options: PickerOption[],
+          //   value: (string | number)[],
+          //   columnIndex: number
+          // ) =>
+          //   console.log(
+          //     asyncData,
+          //     translated.cascade,
+          //     columnIndex,
+          //     value,
+          //     options
+          //   )
+          // }
+        />
+
+        <h2>{translated.async}</h2>
+        <Cell
+          title={translated.chooseCity}
+          description={asyncDesc}
+          onClick={() => setIsVisible5(!isVisible5)}
+        />
+
+        <Picker
+          visible={isVisible5}
+          options={asyncData}
+          onClose={() => setIsVisible5(false)}
+          onConfirm={(list, values) => setAsyncConfirm(list, values)}
           onChange={(
-            options: PickerOption[],
-            value: (string | number)[],
+            selectedOptions: PickerOption[],
+            selectedValue: (string | number)[],
             columnIndex: number
           ) =>
-            console.log(
-              asyncData,
-              translated.cascade,
-              columnIndex,
-              value,
-              options
+            updateChooseValueCustmer(
+              selectedOptions,
+              selectedValue,
+              columnIndex
             )
           }
         />
-
-        {/*<h2>{translated.async}</h2>*/}
-        {/*<Cell*/}
-        {/*  title={translated.chooseCity}*/}
-        {/*  description={asyncDesc}*/}
-        {/*  onClick={() => setIsVisible5(!isVisible5)}*/}
-        {/*/>*/}
-
-        {/*<Picker*/}
-        {/*  visible={isVisible5}*/}
-        {/*  options={asyncData}*/}
-        {/*  onClose={() => setIsVisible5(false)}*/}
-        {/*  onConfirm={(list, values) => setAsyncConfirm(list, values)}*/}
-        {/*  onChange={(*/}
-        {/*    selectedOptions: PickerOption[],*/}
-        {/*    selectedValue: (string | number)[],*/}
-        {/*    columnIndex: number*/}
-        {/*  ) =>*/}
-        {/*    updateChooseValueCustmer(*/}
-        {/*      selectedOptions,*/}
-        {/*      selectedValue,*/}
-        {/*      columnIndex*/}
-        {/*    )*/}
-        {/*  }*/}
-        {/*/>*/}
       </div>
     </>
   )
