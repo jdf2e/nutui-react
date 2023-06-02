@@ -1367,7 +1367,7 @@ $tag-mark-border-radius: var(
 $tag-background-color: var(--nutui-tag-background-color, #000000) !default;
 $tag-primary-background-color: var(
   --nutui-tag-primary-background-color,
-  #3460fa
+  $primary-color
 ) !default;
 $tag-success-background-color: var(
   --nutui-tag-success-background-color,
