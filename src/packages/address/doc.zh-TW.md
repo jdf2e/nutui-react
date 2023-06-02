@@ -11,7 +11,7 @@
 import { Address } from '@nutui/nutui-react';
 ```
 
-## 代碼示例
+## 代碼演示
 ### 選擇自定義地址
 
 :::demo

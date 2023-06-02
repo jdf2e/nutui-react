@@ -46,7 +46,7 @@ const BackTopDemo = () => {
     <>
       <div
         className="demo"
-        style={{ height: '1300px', overflowY: 'auto' }}
+        style={{ height: '100vh', overflowY: 'auto' }}
         id="target"
       >
         <h2>{translated.title}</h2>
@@ -130,6 +130,7 @@ const BackTopDemo = () => {
             right: '20px',
           }}
           onClick={handleClick}
+          target="target"
         >
           <div
             className="backtop-demo"

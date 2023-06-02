@@ -67,27 +67,27 @@ const binarySearch = (
   return tempIndex
 }
 const getEndIndex = ({
-  sourceData,
+  list,
   startIndex,
   visibleCount,
-  itemEqualSize = true,
+  itemEqual = true,
   positions,
   offSetSize,
   overscan,
   sizeKey = 'width',
 }: {
-  sourceData: Array<Data>
+  list: Array<Data>
   startIndex: number
   visibleCount: number
-  itemEqualSize?: boolean
+  itemEqual?: boolean
   positions: PositionType[]
   offSetSize: number
   overscan: number
   sizeKey?: 'width' | 'height'
 }): number => {
-  const dataLength = sourceData.length
+  const dataLength = list.length
   let tempIndex = null
-  if (itemEqualSize) {
+  if (itemEqual) {
     const endIndex = startIndex + visibleCount
     tempIndex = dataLength > 0 ? Math.min(dataLength, endIndex) : endIndex
   } else {

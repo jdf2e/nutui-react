@@ -3,11 +3,11 @@
 exports[`should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="nut-subsidenavbar__list  nutHide"
+    class="nut-subsidenavbar__list sidenavbar-hide"
     level="1"
   >
     <div
-      class="nut-subsidenavbar__title border-bt"
+      class="nut-subsidenavbar__title nut-subsidenavbar-border-bt"
       style="padding-left: 40px;"
     >
       一级标题 
@@ -19,7 +19,7 @@ exports[`should match snapshot 1`] = `
       class="nut-subsidenavbar__content"
     >
       <div
-        class="nut-subsidenavbar__item border-bt"
+        class="nut-subsidenavbar__item nut-subsidenavbar-border-bt"
         style="padding-left: 60px;"
       >
         一级内容1

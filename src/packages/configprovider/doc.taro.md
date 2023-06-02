@@ -34,8 +34,8 @@ NutUI-React
 ```
 
 > @nutui/nutui-react 中带了两个主题文件
-> 默认主题：@nutui/nutui-react/dist/styes/theme-default.scss;
-> 暗黑主题：@nutui/nutui-react/dist/styes/theme-dark.scss;
+> 默认主题：@nutui/nutui-react/dist/styles/theme-default.scss;
+> 暗黑主题：@nutui/nutui-react/dist/styles/theme-dark.scss;
 > 如果想使用暗黑主题，可以在项目中导入暗黑主题文件。
 
 #### 通过 ConfigProvider 覆盖

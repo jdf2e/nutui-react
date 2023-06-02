@@ -1,6 +1,6 @@
 # Navbar
 
-## introduce 
+## Intro 
 
 
 Provides navigation capabilities.

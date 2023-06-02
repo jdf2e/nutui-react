@@ -46,14 +46,14 @@ test('position  should be right', () => {
   )
   expect(container.querySelector('.nut-popup')).toHaveClass('nut-popup-right')
 })
-test('offset  should be 30', () => {
+test('indent  should be 30', () => {
   const { container } = render(
     <>
       <Sidenavbar
         title="首页"
         visible
         position="left"
-        offset={30}
+        indent={30}
         onClose={() => {
           changeNarBar(false)
         }}

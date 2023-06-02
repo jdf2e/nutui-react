@@ -8,10 +8,11 @@ import React, {
 import kebabCase from 'lodash.kebabcase'
 import { BaseLang } from '@/locales/base'
 import zhCN from '@/locales/zh-CN'
+import type { NutCSSVariables } from './types'
 
 export interface ConfigProviderProps {
   locale: BaseLang
-  theme?: Record<string, string>
+  theme?: Record<string | NutCSSVariables, string>
 
   [key: string]: any
 }

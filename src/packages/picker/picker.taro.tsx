@@ -57,6 +57,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
   (props, ref) => {
     const { locale } = useConfig()
     const {
+      children,
       visible,
       title,
       options = [],
@@ -334,6 +335,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       >
         <View className={classes} style={style} {...rest} catchMove>
           {renderTitleBar()}
+          {children}
           <div className={`${classPrefix}__panel`} ref={pickerRef}>
             {Taro.getEnv() === 'WEB' ? (
               columnsList?.map((item, index) => {

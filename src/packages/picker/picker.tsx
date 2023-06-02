@@ -55,6 +55,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
   (props, ref) => {
     const { locale } = useConfig()
     const {
+      children,
       visible,
       title,
       options = [],
@@ -280,6 +281,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       >
         <div className={classes} style={style} {...rest}>
           {renderTitleBar()}
+          {children}
           <div className={`${classPrefix}__panel`} ref={pickerRef}>
             {columnsList?.map((item, index) => {
               return (
