@@ -1,24 +1,9 @@
 import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
 import Picker from '@/packages/picker'
+import { PickerOption } from '@/packages/picker/index'
 import { useConfig } from '@/packages/configprovider'
 import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export interface PickerOption {
-  text: string | number
-  value: string | number
-  disabled?: boolean
-  children?: PickerOption[]
-  className?: string | number
-}
-
-interface pickerRefState {
-  updateChooseValue: (
-    index: number,
-    value: string,
-    cacheValueData: PickerOption[]
-  ) => void
-}
 
 export interface DatePickerProps extends BasicComponent {
   value?: Date | null
@@ -91,18 +76,6 @@ export const DatePicker: FunctionComponent<
     ...props,
   }
   const { locale } = useConfig()
-  const [defaultValueOfPicker, setDefaultValueOfPicker] = useState<
-    (string | number)[]
-  >([])
-  const [options, setOptions] = useState<PickerOption[][]>([])
-  const pickerRef = useRef<pickerRefState>(null)
-  const isDate = (val: Date): val is Date => {
-    return (
-      Object.prototype.toString.call(val) === '[object Date]' &&
-      !Number.isNaN(val.getTime())
-    )
-  }
-
   const datepickerLang = locale.datepicker
   const zhCNType: { [key: string]: string } = {
     day: datepickerLang.day,
@@ -112,6 +85,18 @@ export const DatePicker: FunctionComponent<
     minute: datepickerLang.min,
     seconds: datepickerLang.seconds,
   }
+  const [defaultValueOfPicker, setDefaultValueOfPicker] = useState<
+    (string | number)[]
+  >([])
+  const [options, setOptions] = useState<PickerOption[][]>([])
+  const pickerRef = useRef<any>(null)
+  const isDate = (val: Date): val is Date => {
+    return (
+      Object.prototype.toString.call(val) === '[object Date]' &&
+      !Number.isNaN(val.getTime())
+    )
+  }
+
   const formatValue = (value: Date | null) => {
     let cvalue = value
     if (!cvalue || (cvalue && !isDate(cvalue))) {
@@ -119,17 +104,14 @@ export const DatePicker: FunctionComponent<
     }
     let timestmp = Math.max(cvalue.getTime(), startDate.getTime())
     timestmp = Math.min(timestmp, endDate.getTime())
-
     return new Date(timestmp)
   }
-
   const [currentDate, setCurrentDate] = usePropsValue<Date | null>({
     value: props.value && formatValue(props.value),
     defaultValue: props.defaultValue && formatValue(props.defaultValue),
     finalValue: null,
     onChange: (val: Date | null) => {
-      // console.log('2', val)
-      // props.onConfirm?.(setSelectedOptions(), val)
+      console.log('onChange', val)
     },
   })
 
@@ -163,7 +145,6 @@ export const DatePicker: FunctionComponent<
         }
       }
     }
-
     return {
       [`${type}Year`]: year,
       [`${type}Month`]: month,
@@ -174,9 +155,8 @@ export const DatePicker: FunctionComponent<
     }
   }
 
-  const ranges = (date?: Date) => {
-    const curDate = date || currentDate
-
+  const ranges = () => {
+    const curDate = currentDate
     if (!curDate) return []
     const { maxYear, maxDate, maxMonth, maxHour, maxMinute, maxSeconds } =
       getBoundary('max', curDate)
@@ -226,7 +206,6 @@ export const DatePicker: FunctionComponent<
         result = result.slice(3, 5)
         break
       case 'month-day':
-        // console.log('result', result)
         result = result.slice(1, 3)
         break
       case 'datehour':
@@ -239,7 +218,7 @@ export const DatePicker: FunctionComponent<
   }
 
   const updateChooseValueCustmer = (
-    cacheValueData: PickerOption[],
+    selectedOptions: PickerOption[],
     selectedValue: (number | string)[],
     index: number
   ) => {
@@ -296,7 +275,7 @@ export const DatePicker: FunctionComponent<
         setCurrentDate(formatValue(date as Date))
     }
 
-    props.onChange && props.onChange(cacheValueData, selectedValue, index)
+    props.onChange && props.onChange(selectedOptions, selectedValue, index)
   }
 
   const padZero = (num: number | string, targetLength = 2) => {
@@ -376,8 +355,8 @@ export const DatePicker: FunctionComponent<
     return d
   }
 
-  const columns = (date?: Date) => {
-    const val = ranges(date).map((res, columnIndex) => {
+  const columns = () => {
+    const val = ranges().map((res, columnIndex) => {
       return generateValue(
         res.range[0],
         res.range[1],
@@ -389,19 +368,21 @@ export const DatePicker: FunctionComponent<
     return val || []
   }
 
-  useEffect(() => {
-    setCurrentDate(formatValue(defaultValue || null))
-  }, [])
+  // useEffect(() => {
+  //   setCurrentDate(formatValue(defaultValue || null))
+  // }, [defaultValue])
 
-  useEffect(() => {
-    setCurrentDate(formatValue(defaultValue || null))
-  }, [defaultValue])
+  // useEffect(() => {
+  //   if (currentDate) {
+  //     setOptions(columns())
+  //   }
+  // }, [currentDate])
 
   useEffect(() => {
     if (currentDate) {
       setOptions(columns())
     }
-  }, [currentDate])
+  }, [])
 
   return (
     <div
@@ -416,14 +397,14 @@ export const DatePicker: FunctionComponent<
           options={options}
           onClose={onClose}
           defaultValue={defaultValueOfPicker}
-          onConfirm={(options: PickerOption[], values: (string | number)[]) =>
-            onConfirm && onConfirm(options, values)
+          onConfirm={(options: PickerOption[], value: (string | number)[]) =>
+            onConfirm && onConfirm(options, value)
           }
           onChange={(
-            list: PickerOption[],
+            options: PickerOption[],
             value: (number | string)[],
             index: number
-          ) => updateChooseValueCustmer(list, value, index)}
+          ) => updateChooseValueCustmer(options, value, index)}
           threeDimensional={threeDimensional}
           ref={pickerRef}
         />

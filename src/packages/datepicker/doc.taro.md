@@ -359,24 +359,18 @@ export default App;
     
 | 属性 | 说明                                              | 类型    | 默认值   |
 |---------------------------|---------------------------------------------------|---------|----------|
-| modelValue                | 初始值                                            | Date    | `null`   |
-| visible                   | 是否可见                                          | boolean | `false`  |
-| type                      | 类时间类型，可选值 date time year-month month-day datehour datetime hour-minutes | string  | `date` |
-| minuteStep                | 分钟步进值                                        | number | `1`      |
-| showChinese             | 每列是否展示中文                                  | boolean | `false`  |
-| title                     | 设置标题                                          | string  | `null`   |
-| startDate                   | 开始日期                                          | Date    | `十年前` |
-| endDate                   | 结束日期                                          | Date    | `十年后` |
-| formatter | 选项格式化函数 | (type: string, option: PickerOption) => PickerOption    | - |
-| filter            | 选项过滤函数                                          | (type: string, option: PickerOption) => PickerOption[]    | - |
-| threeDimensional | 是否开启3D效果               | boolean  | `true`   |
-
-
-### Events
-    
-| 事件名                         | 说明               | 回调参数     |
-|-----------------------------|--------------------|--------------|
-| confirm         | 点击确定按钮时触发 | `event: Event` |
-| onConfirm | 点击确定按钮时触发 | `values, options` |
-| onClose           | 关闭时触发         | -- |
-| onChange                  | 选项改变时触发         |  `columnIndex, values, options`  |
+| defaultValue | 初始值 | `Date`    | `null`   |
+| value | 受控 | `Date`    | `null`   |
+| visible | 是否可见 | `boolean` | `false`  |
+| type | 类时间类型，可选值 date time year-month month-day datehour datetime hour-minutes | `string`  | `date` |
+| minuteStep | 分钟步进值 | `number` | `1`      |
+| showChinese | 每列是否展示中文 | `boolean` | `false`  | 
+| title | 设置标题 | `string`  | `null`   |
+| startDate | 开始日期 | `Date`    | `十年前` |
+| endDate | 结束日期 | `Date`    | `十年后` |
+| formatter | 选项格式化函数 | `(type: string, option: PickerOption) => PickerOption `   |  `-` |
+| filter | 选项过滤函数 | `(type: string, option: PickerOption) => PickerOption[]`    | `-` |
+| threeDimensional | 是否开启3D效果 | `boolean`  | `true`   |
+| onConfirm | 点击确定按钮时触发  | `(options, value) => void` | `-` |
+| onClose | 关闭时触发        | `(options, value) => void` | `-` |
+| onChange | 选项改变时触发 |  `(options, value, index) => void`  | `-` |

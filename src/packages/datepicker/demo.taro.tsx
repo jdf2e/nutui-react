@@ -85,13 +85,19 @@ const DatePickerDemo = () => {
 
   const startDate = new Date(2020, 0, 1)
   const endDate = new Date(2025, 10, 1)
-  const [desc1, setDesc1] = useState('2012年 01月 01日')
-  const [desc2, setDesc2] = useState('05-10')
-  const [desc3, setDesc3] = useState('2022-05-10 10:10')
+  const defaultValue = new Date()
+  const defaultDescription = `${defaultValue.getFullYear()}-${
+    defaultValue.getMonth() + 1
+  }-${defaultValue.getDate()}`
+  const [desc1, setDesc1] = useState(defaultDescription)
+  const [desc2, setDesc2] = useState(
+    `${defaultValue.getMonth() + 1}-${defaultValue.getDate()}`
+  )
+  const [desc3, setDesc3] = useState(`${defaultDescription} 11:08`)
   const [desc4, setDesc4] = useState('10:10:00')
-  const [desc5, setDesc5] = useState('2020年 05月 10日 10:10')
+  const [desc5, setDesc5] = useState(`${defaultDescription} 10:10`)
   const [desc6, setDesc6] = useState('10:10:00')
-  const [desc7, setDesc7] = useState('2022年05月10日 00时')
+  const [desc7, setDesc7] = useState(`${defaultDescription} 00`)
   const [desc8, setDesc8] = useState('10:10')
 
   const [show1, setShow1] = useState(false)
@@ -253,6 +259,8 @@ const DatePickerDemo = () => {
         <DatePicker
           title={translated.basic}
           visible={show1}
+          defaultValue={new Date(`${defaultDescription}`)}
+          // value={defaultValue}
           showChinese
           onClose={() => setShow1(false)}
           threeDimensional={false}
@@ -262,7 +270,8 @@ const DatePickerDemo = () => {
         <DatePicker
           title={translated.basic}
           startDate={new Date(2022, 0, 1)}
-          endDate={new Date(2022, 7, 1)}
+          endDate={new Date(2025, 7, 1)}
+          defaultValue={defaultValue}
           type="month-day"
           visible={show2}
           onClose={() => setShow2(false)}
@@ -274,6 +283,7 @@ const DatePickerDemo = () => {
           startDate={startDate}
           endDate={endDate}
           visible={show3}
+          defaultValue={new Date(desc3)}
           type="datetime"
           onClose={() => setShow3(false)}
           onConfirm={(options, values) => confirm3(options, values)}
@@ -284,6 +294,7 @@ const DatePickerDemo = () => {
           type="time"
           startDate={startDate}
           endDate={endDate}
+          defaultValue={new Date(`${defaultDescription} ${desc4}`)}
           visible={show4}
           onClose={() => setShow4(false)}
           onConfirm={(options, values) => confirm4(options, values)}
@@ -294,6 +305,7 @@ const DatePickerDemo = () => {
           type="hour-minutes"
           startDate={startDate}
           endDate={endDate}
+          defaultValue={new Date(`${defaultDescription} ${desc8}`)}
           visible={show8}
           onClose={() => setShow8(false)}
           onConfirm={(options, values) => confirm8(options, values)}
@@ -302,8 +314,9 @@ const DatePickerDemo = () => {
         <DatePicker
           title={translated.chooseTime}
           type="datetime"
-          startDate={new Date(2022, 0, 1)}
-          endDate={new Date(2022, 10, 1)}
+          startDate={new Date(2023, 0, 1)}
+          endDate={new Date(2024, 10, 1)}
+          defaultValue={new Date(desc5)}
           visible={show5}
           formatter={formatter}
           onClose={() => setShow5(false)}
@@ -316,7 +329,8 @@ const DatePickerDemo = () => {
           startDate={startDate}
           endDate={endDate}
           visible={show6}
-          minuteStep={5}
+          defaultValue={new Date(`${defaultDescription} ${desc6}`)}
+          minuteStep={15}
           onClose={() => setShow6(false)}
           onConfirm={(options, values) => confirm6(options, values)}
         />
@@ -327,6 +341,7 @@ const DatePickerDemo = () => {
           startDate={startDate}
           endDate={endDate}
           visible={show7}
+          defaultValue={new Date(`${defaultDescription}`)}
           formatter={formatter1}
           minuteStep={5}
           filter={filter}
