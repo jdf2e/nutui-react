@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`footerTpl slot test 1`] = `
+exports[`extra slot test 1`] = `
 <div>
   <div
     class="nut-card"
@@ -17,64 +17,64 @@ exports[`footerTpl slot test 1`] = `
       class="nut-card__right"
     >
       <div
-        class="nut-card__right__title"
+        class="nut-card__right-title"
       >
         活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水
       </div>
       <div
-        class="nut-card__right__price"
+        class="nut-cardright-price"
       >
         <div
-          class="nut-price "
+          class="nut-price  "
         >
           <div
-            class="nut-price__symbol nut-price__symbol-large"
+            class="nut-price__symbol nut-price__symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-large"
+            class="nut-price__integer nut-price__integer-normal"
           >
             388
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             00
           </div>
         </div>
         <div
-          class="nut-price nut-card__right__price__origin"
+          class="nut-price nut-cardright-price-origin "
         >
           <div
-            class="nut-price__symbol nut-price__symbol-large"
+            class="nut-price__symbol nut-price__symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-large"
+            class="nut-price__integer nut-price__integer-normal"
           >
             378
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             00
           </div>
         </div>
       </div>
       <div
-        class="nut-card__right__other"
+        class="nut-cardright-other"
       >
         <div
           class="nut-tag nut-tag--danger"
@@ -97,10 +97,10 @@ exports[`footerTpl slot test 1`] = `
         </div>
       </div>
       <div
-        class="nut-card__right__shop"
+        class="nut-cardright-shop"
       >
         <div
-          class="nut-card__right__shop__name"
+          class="nut-cardright-shop-name"
         >
           阳澄湖大闸蟹自营店&gt;
         </div>
@@ -115,7 +115,7 @@ exports[`footerTpl slot test 1`] = `
 </div>
 `;
 
-exports[`originTpl slot test 1`] = `
+exports[`priceTag slot test 1`] = `
 <div>
   <div
     class="nut-card"
@@ -132,33 +132,33 @@ exports[`originTpl slot test 1`] = `
       class="nut-card__right"
     >
       <div
-        class="nut-card__right__title"
+        class="nut-card__right-title"
       >
         活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水
       </div>
       <div
-        class="nut-card__right__price"
+        class="nut-cardright-price"
       >
         <div
-          class="nut-price "
+          class="nut-price  "
         >
           <div
-            class="nut-price__symbol nut-price__symbol-large"
+            class="nut-price__symbol nut-price__symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-large"
+            class="nut-price__integer nut-price__integer-normal"
           >
             388
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             00
           </div>
@@ -169,7 +169,7 @@ exports[`originTpl slot test 1`] = `
         />
       </div>
       <div
-        class="nut-card__right__other"
+        class="nut-cardright-other"
       >
         <div
           class="nut-tag nut-tag--danger"
@@ -192,10 +192,10 @@ exports[`originTpl slot test 1`] = `
         </div>
       </div>
       <div
-        class="nut-card__right__shop"
+        class="nut-cardright-shop"
       >
         <div
-          class="nut-card__right__shop__name"
+          class="nut-cardright-shop-name"
         >
           阳澄湖大闸蟹自营店&gt;
         </div>
@@ -205,7 +205,7 @@ exports[`originTpl slot test 1`] = `
 </div>
 `;
 
-exports[`prolistTpl slot test 1`] = `
+exports[`description slot test 1`] = `
 <div>
   <div
     class="nut-card"
@@ -222,7 +222,7 @@ exports[`prolistTpl slot test 1`] = `
       class="nut-card__right"
     >
       <div
-        class="nut-card__right__title"
+        class="nut-card__right-title"
       >
         活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水
       </div>
@@ -246,59 +246,59 @@ exports[`prolistTpl slot test 1`] = `
         </span>
       </div>
       <div
-        class="nut-card__right__price"
+        class="nut-cardright-price"
       >
         <div
-          class="nut-price "
+          class="nut-price  "
         >
           <div
-            class="nut-price__symbol nut-price__symbol-large"
+            class="nut-price__symbol nut-price__symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-large"
+            class="nut-price__integer nut-price__integer-normal"
           >
             388
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             00
           </div>
         </div>
         <div
-          class="nut-price nut-card__right__price__origin"
+          class="nut-price nut-cardright-price-origin "
         >
           <div
-            class="nut-price__symbol nut-price__symbol-large"
+            class="nut-price__symbol nut-price__symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-large"
+            class="nut-price__integer nut-price__integer-normal"
           >
             378
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             00
           </div>
         </div>
       </div>
       <div
-        class="nut-card__right__other"
+        class="nut-cardright-other"
       >
         <div
           class="nut-tag nut-tag--danger"
@@ -321,10 +321,10 @@ exports[`prolistTpl slot test 1`] = `
         </div>
       </div>
       <div
-        class="nut-card__right__shop"
+        class="nut-cardright-shop"
       >
         <div
-          class="nut-card__right__shop__name"
+          class="nut-cardright-shop-name"
         >
           阳澄湖大闸蟹自营店&gt;
         </div>
@@ -351,64 +351,64 @@ exports[`props test 1`] = `
       class="nut-card__right"
     >
       <div
-        class="nut-card__right__title"
+        class="nut-card__right-title"
       >
         活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水
       </div>
       <div
-        class="nut-card__right__price"
+        class="nut-cardright-price"
       >
         <div
-          class="nut-price "
+          class="nut-price  "
         >
           <div
-            class="nut-price__symbol nut-price__symbol-large"
+            class="nut-price__symbol nut-price__symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-large"
+            class="nut-price__integer nut-price__integer-normal"
           >
             388
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             00
           </div>
         </div>
         <div
-          class="nut-price nut-card__right__price__origin"
+          class="nut-price nut-cardright-price-origin "
         >
           <div
-            class="nut-price__symbol nut-price__symbol-large"
+            class="nut-price__symbol nut-price__symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-large"
+            class="nut-price__integer nut-price__integer-normal"
           >
             378
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             00
           </div>
         </div>
       </div>
       <div
-        class="nut-card__right__other"
+        class="nut-cardright-other"
       >
         <div
           class="nut-tag nut-tag--danger"
@@ -431,10 +431,10 @@ exports[`props test 1`] = `
         </div>
       </div>
       <div
-        class="nut-card__right__shop"
+        class="nut-cardright-shop"
       >
         <div
-          class="nut-card__right__shop__name"
+          class="nut-cardright-shop-name"
         >
           阳澄湖大闸蟹自营店&gt;
         </div>
@@ -444,7 +444,7 @@ exports[`props test 1`] = `
 </div>
 `;
 
-exports[`shopTagTpl slot test 1`] = `
+exports[`tag slot test 1`] = `
 <div>
   <div
     class="nut-card"
@@ -461,74 +461,74 @@ exports[`shopTagTpl slot test 1`] = `
       class="nut-card__right"
     >
       <div
-        class="nut-card__right__title"
+        class="nut-card__right-title"
       >
         活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水
       </div>
       <div
-        class="nut-card__right__price"
+        class="nut-cardright-price"
       >
         <div
-          class="nut-price "
+          class="nut-price  "
         >
           <div
-            class="nut-price__symbol nut-price__symbol-large"
+            class="nut-price__symbol nut-price__symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-large"
+            class="nut-price__integer nut-price__integer-normal"
           >
             388
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             00
           </div>
         </div>
         <div
-          class="nut-price nut-card__right__price__origin"
+          class="nut-price nut-cardright-price-origin "
         >
           <div
-            class="nut-price__symbol nut-price__symbol-large"
+            class="nut-price__symbol nut-price__symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-large"
+            class="nut-price__integer nut-price__integer-normal"
           >
             378
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-large"
+            class="nut-price__decimal nut-price__decimal-normal"
           >
             00
           </div>
         </div>
       </div>
       <div
-        class="nut-card__right__other"
+        class="nut-cardright-other"
       >
         <div>
           这里是自定义区域
         </div>
       </div>
       <div
-        class="nut-card__right__shop"
+        class="nut-cardright-shop"
       >
         <div
-          class="nut-card__right__shop__name"
+          class="nut-cardright-shop-name"
         >
           阳澄湖大闸蟹自营店&gt;
         </div>
