@@ -3,40 +3,38 @@ import React, {
   FunctionComponent,
   useEffect,
   useState,
+  ReactNode,
 } from 'react'
 import { Close } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
+export type TagType = 'default' | 'primary' | 'success' | 'warning' | 'danger'
+
 export interface TagProps extends BasicComponent {
   type: TagType
+  background: string
   color: string
-  textColor: string
   plain: boolean
   round: boolean
   mark: boolean
   closeable: boolean
-  closeIcon: React.ReactNode
-  prefixCls: string
+  closeIcon: ReactNode
   onClick: (e: MouseEvent) => void
   onClose: (e?: any) => void
-  children?: React.ReactNode
 }
-
-export type TagType = 'default' | 'primary' | 'success' | 'warning' | 'danger'
 
 const defaultProps = {
   ...ComponentDefaults,
   type: 'default',
+  background: '',
   color: '',
-  textColor: '',
   plain: false,
   round: false,
   mark: false,
   closeable: false,
   closeIcon: null,
-  prefixCls: 'nut-tag',
   onClose: (e: any) => {},
   onClick: (e: MouseEvent) => {},
 } as TagProps
@@ -44,90 +42,77 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
   const {
     className,
     style,
-    color,
+    background,
     plain,
     type,
     round,
-    prefixCls,
     children,
     mark,
     closeable,
     closeIcon,
-    textColor,
+    color,
     onClick,
     onClose,
   } = {
     ...defaultProps,
     ...props,
   }
-  const [btnName, setBtnName] = useState('')
-  const [isTagShow, setIsTagShow] = useState(true)
-  useEffect(() => {
-    setBtnName(classes())
-  }, [
-    type,
-    color,
-    textColor,
-    plain,
-    round,
-    mark,
-    closeable,
-    prefixCls,
-    onClick,
-    onClose,
-    className,
-  ])
+  const [tagClass, setTagClass] = useState('')
+  const [visible, setVisible] = useState(true)
+  const classPrefix = 'nut-tag'
   const classes = () => {
-    const prefixCls = 'nut-tag'
     return classNames({
-      [prefixCls]: true,
-      [`${prefixCls}--${type}`]: type,
-      [`${prefixCls}--plain`]: plain,
-      [`${prefixCls}--round`]: round,
-      [`${prefixCls}--mark`]: mark,
-      [`${prefixCls}--close`]: closeable,
+      [classPrefix]: true,
+      [`${classPrefix}--${type}`]: type,
+      [`${classPrefix}--plain`]: plain,
+      [`${classPrefix}--round`]: round,
+      [`${classPrefix}--mark`]: mark,
+      [`${classPrefix}--close`]: closeable,
       [`${className}`]: className,
     })
   }
+  useEffect(() => {
+    setTagClass(classes())
+  }, [type, background, color, plain, round, mark, closeable, className])
+
   const handleClick = (e: any) => {
-    if (props.onClick) {
-      props.onClick(e)
-    }
+    onClick && onClick(e)
   }
-  // 综合考虑 textColor、color、plain 组合使用时的效果
+  // 综合考虑 color、background、plain 组合使用时的效果
   const getStyle = (): CSSProperties => {
     const style: CSSProperties = {}
     // 标签内字体颜色
-    if (textColor) {
-      style.color = textColor
-    } else if (color && plain) {
+    if (color) {
       style.color = color
+    } else if (background && plain) {
+      style.color = background
     }
     // 标签背景与边框颜色
     if (plain) {
-      style.background = '#fff'
-      style.borderColor = color
-    } else if (color) {
-      style.background = color
+      style.borderColor = background
+    } else if (background) {
+      style.background = background
     }
     return style
   }
   return (
     <>
       {closeable ? (
-        isTagShow && (
+        visible && (
           <div
-            className={btnName}
+            className={tagClass}
             style={{ ...style, ...getStyle() }}
             onClick={(e) => handleClick(e)}
           >
-            {children && <span className="nut-tag-text">{children}</span>}
+            {children && (
+              <span className={`${classPrefix}-text`}>{children}</span>
+            )}
             {React.isValidElement(closeIcon) ? (
               <i
-                className="nut-tag-custom-icon"
+                className={`${classPrefix}-custom-icon`}
                 onClick={(e) => {
-                  setIsTagShow(false)
-                  props.onClose && props.onClose(e)
+                  setVisible(false)
+                  onClose && onClose(e)
                 }}
               >
                 {closeIcon}
@@ -136,8 +121,8 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
               <Close
                 size={12}
                 onClick={(e) => {
-                  setIsTagShow(false)
-                  props.onClose && props.onClose(e)
+                  setVisible(false)
+                  onClose && onClose(e)
                 }}
               />
             )}
@@ -145,11 +130,13 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
         )
       ) : (
         <div
-          className={btnName}
+          className={tagClass}
           style={{ ...style, ...getStyle() }}
           onClick={(e) => handleClick(e)}
         >
-          {children && <span className="nut-tag-text">{children}</span>}
+          {children && (
+            <span className={`${classPrefix}-text`}>{children}</span>
+          )}
         </div>
       )}
     </>

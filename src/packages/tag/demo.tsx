@@ -106,12 +106,12 @@ const TagDemo = () => {
         <CellGroup>
           <Cell
             title={translated.backgroundColor}
-            extra={<Tag color="#FA685D">{translated.tag}</Tag>}
+            extra={<Tag background="#FA685D">{translated.tag}</Tag>}
           />
           <Cell
             title={translated.textColor}
             extra={
-              <Tag color="#E9E9E9" textColor="#999999">
+              <Tag background="#E9E9E9" color="#999999">
                 {translated.tag}
               </Tag>
             }
@@ -119,7 +119,7 @@ const TagDemo = () => {
           <Cell
             title={translated.plainColor}
             extra={
-              <Tag color="#FA2400" plain>
+              <Tag background="#FA2400" plain>
                 {translated.tag}
               </Tag>
             }

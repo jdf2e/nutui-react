@@ -2,14 +2,6 @@
 @import '../tag/tag.scss';
 @import '../../styles/mixins/text-ellipsis.scss';
 
-.nut-theme-dark {
-  .nut-card {
-    .nut-card__right {
-      color: $dark1;
-    }
-  }
-}
-
 .nut-card {
   width: 100%;
   display: flex;
@@ -17,6 +9,8 @@
     width: 120px;
     height: 120px;
     flex-shrink: 0;
+    background-color: $card-left-background-color;
+    border-radius: $card-left-border-radius;
     > img {
       display: block;
       width: 100%;
@@ -26,12 +20,12 @@
   .nut-card__right {
     flex: 1;
     padding: 0 10px 8px;
-    .nut-card__right__title {
+    .nut-card__right-title {
       @include moreline-ellipsis();
       line-height: 1.5;
       font-size: 14px;
     }
-    .nut-card__right__price {
+    .nut-cardright-price {
       display: flex;
       align-items: center;
       height: 18px;
@@ -47,7 +41,7 @@
           font-size: 12px;
         }
       }
-      .nut-card__right__price__origin {
+      .nut-cardright-price-origin {
         &.nut-price {
           margin-left: 2px;
           color: #d2a448;
@@ -60,7 +54,7 @@
         }
       }
     }
-    .nut-card__right__other {
+    .nut-cardright-other {
       display: flex;
       align-items: center;
       padding: 5px 0 2px;
@@ -70,11 +64,11 @@
         font-size: $font-size-0;
       }
     }
-    .nut-card__right__shop {
+    .nut-cardright-shop {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      .nut-card__right__shop__name {
+      .nut-cardright-shop-name {
         line-height: 1.5;
         color: #999;
         font-size: 12px;
