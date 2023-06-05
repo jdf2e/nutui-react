@@ -507,3 +507,9 @@
 #### Card
 #### Signature
 #### TimeSelect
+- 移除 height，通过 style 设置高度
+- title 类型修改为 ReactNode
+- onPannelChange 重命名为 onDateChange
+- 移除 dates、times，合并为 options，重新设计了数据结构
+- 增加 optionKey 用于自定义数据中的关键字
+- 移除 currentKey，新增 defaultValue 用于设置默认选项，支持时间选择

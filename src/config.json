@@ -794,7 +794,7 @@
           "author": "szg2008"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Toast",
           "type": "component",
           "tarodoc": true,
@@ -1095,7 +1095,7 @@
           "author": "songsong"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "TimeDetail",
           "type": "component",
           "cName": "配送时间",
@@ -1106,18 +1106,7 @@
           "author": "zhaoqian16"
         },
         {
-          "version": "1.0.0",
-          "name": "TimePannel",
-          "type": "component",
-          "cName": "配送时间",
-          "desc": "配送时间日期选择",
-          "sort": 7,
-          "show": false,
-          "exportEmpty": true,
-          "author": "zhaoqian16"
-        },
-        {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "TimeSelect",
           "type": "component",
           "cName": "配送时间",
