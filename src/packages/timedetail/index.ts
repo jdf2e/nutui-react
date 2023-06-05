@@ -1,4 +1,3 @@
-import { TimeDetail, TimeType } from './timedetail'
+import { TimeDetail } from './timedetail'
 
 export default TimeDetail
-export type { TimeType }

@@ -1,22 +1,3 @@
-.nut-theme-dark {
-  .nut-timedetail {
-    background-color: $dark6;
-
-    &__detail {
-      &__list {
-        &__item {
-          background-color: $dark4;
-          color: $dark1;
-
-          &--curr {
-            color: $timeselect-timedetail-item-cur-text-color;
-          }
-        }
-      }
-    }
-  }
-}
-
 .nut-timedetail {
   display: flex;
   align-content: flex-start;
@@ -24,28 +5,22 @@
   padding: 0 0 50px 13px;
 
   &__item {
-    width: 100px;
-    height: 50px;
-    line-height: 50px;
+    width: $timeselect-time-width;
+    height: $timeselect-time-height;
+    line-height: $timeselect-time-line-height;
     text-align: center;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    background-color: $background-color;
-    color: $title-color;
-
-    &-active {
-      background-color: $dark-brand-color;
-    }
-
+    margin: $timeselect-time-margin;
+    background: $timeselect-time-background;
+    color: $timeselect-time-color;
     border-radius: 5px;
-    font-size: 14px;
+    font-size: $timeselect-time-font-size;
     border: 1px solid transparent;
     font-weight: 700;
-  }
 
-  &__item-active {
-    background-color: var(--nutui-brand-color-opacity);
-    border: 1px solid $primary-color;
-    color: $primary-color;
+    &.active {
+      background-color: $timeselect-time-active-background;
+      border: 1px solid $timeselect-time-active-color;
+      color: $timeselect-time-active-color;
+    }
   }
 }
