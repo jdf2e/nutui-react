@@ -17,6 +17,13 @@ const TimeSelectDemo = () => {
       multiple: '支持多选',
       custom: '自定义使用场景',
       city: '请选择所在城市',
+      zhejiang: '浙江',
+      hangzhou: '杭州',
+      ningbo: '宁波',
+      jiangsu: '江苏',
+      nanjing: '南京',
+      suzhou: '苏州',
+      yangzhou: '扬州',
     },
     'zh-TW': {
       text1: '您选择了',
@@ -29,6 +36,13 @@ const TimeSelectDemo = () => {
       multiple: '支持多选',
       custom: '自定义使用场景',
       city: '请选择所在城市',
+      zhejiang: '浙江',
+      hangzhou: '杭州',
+      ningbo: '宁波',
+      jiangsu: '江苏',
+      nanjing: '南京',
+      suzhou: '苏州',
+      yangzhou: '扬州',
     },
     'en-US': {
       text1: 'selected',
@@ -41,6 +55,13 @@ const TimeSelectDemo = () => {
       multiple: 'Multiple Mode',
       custom: 'Custom Usage',
       city: 'Select your city',
+      zhejiang: 'ZheJiang',
+      hangzhou: 'HangZhou',
+      ningbo: 'NingBo',
+      jiangsu: 'JiangSu',
+      nanjing: 'NanJing',
+      suzhou: 'SuZhou',
+      yangzhou: 'YangZhou',
     },
   })
 
@@ -101,19 +122,19 @@ const TimeSelectDemo = () => {
   const options4 = [
     {
       value: 'zhejiang',
-      text: '浙江',
+      text: translated.zhejiang,
       children: [
-        { value: 'hangzhou', text: '杭州' },
-        { value: 'ningbo', text: '宁波' },
+        { value: 'hangzhou', text: translated.hangzhou },
+        { value: 'ningbo', text: translated.ningbo },
       ],
     },
     {
       value: 'jiangsu',
-      text: '江苏',
+      text: translated.jiangsu,
       children: [
-        { value: 'nanjing', text: '南京' },
-        { value: 'suzhou', text: '苏州' },
-        { value: 'yangzhou', text: '扬州' },
+        { value: 'nanjing', text: translated.nanjing },
+        { value: 'suzhou', text: translated.suzhou },
+        { value: 'yangzhou', text: translated.yangzhou },
       ],
     },
   ]

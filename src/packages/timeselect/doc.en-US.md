@@ -232,19 +232,19 @@ const Demo = () => {
   const options = [
     {
       value: 'zhejiang',
-      text: '浙江',
+      text: 'ZheJiang',
       children: [
-        { value: 'hangzhou', text: '杭州' },
-        { value: 'ningbo', text: '宁波' },
+        { value: 'hangzhou', text: 'HangZhou' },
+        { value: 'ningbo', text: 'NingBo' },
       ],
     },
     {
       value: 'jiangsu',
-      text: '江苏',
+      text: 'JiangSu',
       children: [
-        { value: 'nanjing', text: '南京' },
-        { value: 'suzhou', text: '苏州' },
-        { value: 'yangzhou', text: '扬州' },
+        { value: 'nanjing', text: 'NanJing' },
+        { value: 'suzhou', text: 'SuZhou' },
+        { value: 'yangzhou', text: 'YangZhou' },
       ],
     },
   ]
