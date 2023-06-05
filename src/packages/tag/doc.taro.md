@@ -192,15 +192,15 @@ export default App;
 | 属性 | 说明 | 类型       | 默认值    |
 |------------|--------------------|----------|-----------|
 | type       | 标签类型，可选值为primary success danger warning | `string` | `default` |
-| background      | 标签颜色                                         | `string` | -         |
+| background      | 标签颜色                                         | `string` |  `-` |
 | color | 文本颜色，优先级高于color属性                    | `string` | `white`   |
 | plain      | 是否为空心样式                                   | `boolean` | `false`   |
 | round      | 是否为圆角样式                                   | `boolean` | `false`   |
 | mark       | 是否为标记样式                                   | `boolean` | `false`   |
 | closeable  | 是否为可关闭标签                                 | `boolean\ReactNode` | `false`   |
-| closeIcon  | 关闭按钮                                    | `ReactNode` | `null`    |
-| onClick    | 点击事件 | `(e: MouseEvent) => void`    |
-| onClose    | 关闭事件 | `(e?: any) => void`   |
+| closeIcon  | 关闭按钮                                    | `ReactNode` | `null`    | `-` |
+| onClick    | 点击事件 | `(e: MouseEvent) => void`    | `-` |
+| onClose    | 关闭事件 | `(e?: any) => void`   | `-` |
 
 ## 主题定制
 

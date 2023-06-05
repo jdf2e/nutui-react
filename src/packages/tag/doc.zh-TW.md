@@ -193,15 +193,15 @@ export default App;
 | 屬性 | 說明| 類型               | 預設值       |
 |-------|-------------|------------|-----------|
 | type               | 標簽類型，可選值為primary success danger warning | `string`         | `default` |
-| background | 標簽顏色                                    | `string`         | -         |
+| background | 標簽顏色                                    | `string`         |  `-` |
 | color           | 文本顏色，優先級高於color屬性                       | `string`         | `white`   |
 | plain              | 是否為空心樣式                                 | `boolean`        | `false`   |
 | round              | 是否為圓角樣式                                 | `boolean`        | `false`   |
 | mark               | 是否為標記樣式                                 | `boolean`        | `false`   |
 | closeable          | 是否為可關閉標簽                                | `boolean` | `false`   |
-| closeIcon  | 關閉按鈕                                    | `ReactNode` | `null`    |
-| onClick    | 點選事件 | `(e: MouseEvent) => void`    |
-| onClose    | 關閉事件 | `(e?: any) => void`   |
+| closeIcon  | 關閉按鈕                                    | `ReactNode` | `null`    | `-` |
+| onClick    | 點選事件 | `(e: MouseEvent) => void`    | `-` |
+| onClose    | 關閉事件 | `(e?: any) => void`   | `-` |
 
 ## 主題定制
 
