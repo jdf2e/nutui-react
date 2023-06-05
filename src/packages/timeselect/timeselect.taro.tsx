@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import Popup from '@/packages/popup/index.taro'
 import TimeDetail from '@/packages/timedetail/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 export interface TimeType {
   value?: string
@@ -39,7 +40,6 @@ const defaultProps = {
   visible: false,
   multiple: false,
   defaultValue: [],
-  title: '取件时间',
   options: [],
   optionKey: {
     valueKey: 'value',
@@ -50,6 +50,7 @@ const defaultProps = {
 export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
   props
 ) => {
+  const { locale } = useConfig()
   const {
     visible,
     className,
@@ -151,7 +152,9 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
       {...rest}
     >
       <div className={classNames(classPrefix, className)}>
-        <div className={`${classPrefix}__title`}>{title}</div>
+        <div className={`${classPrefix}__title`}>
+          {title || locale.timeselect.pickupTime}
+        </div>
         <div className={`${classPrefix}__content`}>
           <div className={`${classPrefix}__content-left`}>
             {options.map((item: DateType) => (

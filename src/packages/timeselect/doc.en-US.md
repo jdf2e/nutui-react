@@ -291,7 +291,7 @@ export default Demo
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | visible | whether to display popup | `boolean` | `false` |
-| title | title | `ReactNode` | `取件时间` |
+| title | title | `ReactNode` | `Pickup Time` |
 | multiple | multiple | `boolean` | `false` |
 | defaultValue | default value, uncontrolled | `DateType[]` | - |
 | options | data | `DateType[]` | - |
