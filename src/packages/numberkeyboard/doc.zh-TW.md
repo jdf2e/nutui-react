@@ -24,10 +24,10 @@ import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react';
 const App = () => {
   const [visible,setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`輸入：${number}`)
+    Toast.show(`輸入：${number}`)
   }
   const onDelete = () => {
-    Toast.text('刪除')
+    Toast.show('刪除')
   }
   return (
      <>
@@ -64,10 +64,10 @@ import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react';
 const App = () => {
   const [visible,setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`輸入：${number}`)
+    Toast.show(`輸入：${number}`)
   }
   const onDelete = () => {
-    Toast.text('刪除')
+    Toast.show('刪除')
   }
   return (
      <>
@@ -106,10 +106,10 @@ import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react';
 const App = () => {
   const [visible,setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`輸入：${number}`)
+    Toast.show(`輸入：${number}`)
   }
   const onDelete = () => {
-    Toast.text('刪除')
+    Toast.show('刪除')
   }
   return (
      <>
@@ -147,10 +147,10 @@ import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react';
 const App = () => {
   const [visible,setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`輸入：${number}`)
+    Toast.show(`輸入：${number}`)
   }
   const onDelete = () => {
-    Toast.text('刪除')
+    Toast.show('刪除')
   }
   return (
      <>
@@ -189,10 +189,10 @@ import { Cell,NumberKeyboard,Toast } from '@nutui/nutui-react';
 const App = () => {
   const [visible,setVisible] = useState(false)
   const onChange = (number: string) => {
-    Toast.text(`輸入：${number}`)
+    Toast.show(`輸入：${number}`)
   }
   const onDelete = () => {
-    Toast.text('刪除')
+    Toast.show('刪除')
   }
   return (
      <>
@@ -223,7 +223,7 @@ export default App;
 
 ### Props
 
-| 字段 | 說明 | 類型 | 預設值 |
+| 属性 | 說明 | 類型 | 預設值 |
 | --- | --- | --- | --- |
 | visible | 是否顯示鍵盤 | `boolean` | `false` |
 | title | 鍵盤標題 | `string` | \- |
@@ -235,7 +235,7 @@ export default App;
 
 ### Event
 
-| 字段 | 說明 | 回調參數 |
+| 属性 | 說明 | 回調參數 |
 | --- | --- | --- |
 | onChange | 點擊按鍵時觸發 | `value: string` |
 | onDelete | 點擊刪除鍵時觸發 | \- |

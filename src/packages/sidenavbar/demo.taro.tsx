@@ -144,23 +144,23 @@ const SideNavBarDemo = () => {
             changeNarBar(false)
           }}
         >
-          <SubSideNavBar title={`${level1}${title}`} key="1-0">
-            <SideNavBarItem title={`${level1}${content}1`} key="1-01" />
-            <SideNavBarItem title={`${level1}${content}2`} key="1-02" />
-            <SubSideNavBar title={`${level2}${title}`} key="2-0">
-              <SideNavBarItem title={`${level2}${content}1`} key="2-01" />
-              <SideNavBarItem title={`${level2}${content}2`} key="2-02" />
+          <SubSideNavBar title={`${level1}${title}`} value="1-0">
+            <SideNavBarItem title={`${level1}${content}1`} value="1-01" />
+            <SideNavBarItem title={`${level1}${content}2`} value="1-02" />
+            <SubSideNavBar title={`${level2}${title}`} value="2-0">
+              <SideNavBarItem title={`${level2}${content}1`} value="2-01" />
+              <SideNavBarItem title={`${level2}${content}2`} value="2-02" />
               {showThird ? (
-                <SubSideNavBar title={`${level3}${title}`} key="3-0">
-                  <SideNavBarItem title={`${level3}${content}1`} key="3-01" />
-                  <SideNavBarItem title={`${level3}${content}2`} key="3-02" />
+                <SubSideNavBar title={`${level3}${title}`} value="3-0">
+                  <SideNavBarItem title={`${level3}${content}1`} value="3-01" />
+                  <SideNavBarItem title={`${level3}${content}2`} value="3-02" />
                 </SubSideNavBar>
               ) : null}
             </SubSideNavBar>
           </SubSideNavBar>
-          <SubSideNavBar open={false} title={`${level1}${title}-2`} key="1-1">
-            <SideNavBarItem title={`${level1}${content}2-1`} key="1-11" />
-            <SideNavBarItem title={`${level1}${content}2-2`} key="1-12" />
+          <SubSideNavBar open={false} title={`${level1}${title}-2`} value="1-1">
+            <SideNavBarItem title={`${level1}${content}2-1`} value="1-11" />
+            <SideNavBarItem title={`${level1}${content}2-2`} value="1-12" />
           </SubSideNavBar>
         </SideNavBar>
       </div>

@@ -186,8 +186,7 @@ export default App
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | --nutui-textarea-font | 字体大小 | `$font-size-2` |
-| --nutui-textarea-height | 高度 | `100px` |
-| --nutui-textarea-padding | 内边距 | `16px 10px 16px 16px `|
+| --nutui-textarea-padding | 内边距 | `10px 25px`|
 | --nutui-textarea-limit-color | 字数统计颜色 | `$text-color` |
 | --nutui-textarea-text-color | 文本颜色 | `$title-color` |
 | --nutui-textarea-text-curror-color  | 光标颜色 | `$title-color`|

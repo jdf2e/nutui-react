@@ -184,7 +184,7 @@ const App = () => {
     <>
        <Input
          placeholder={translated.title10}
-         onClick={() => Toast.text('onClick')}
+         onClick={() => Toast.show('onClick')}
        />
     </>
   )
@@ -252,9 +252,9 @@ export default App;
 
 ## Input
 
-### Prop
+### Props
 
-| 参数 | 说明 | 类型 | 默认值 |
+| 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | defaultValue | 初始默认值 | `string` | `-` |
 | value | 初始默认值 | `string` | `-` |

@@ -64,7 +64,7 @@ const TimeSelectDemo = () => {
   const handleSelect = (selectTimeData: TimeType[]) => {
     SetVisible1(false)
     console.log(`您选择了: ${JSON.stringify(selectTimeData)}`)
-    // Toast.text(`您选择了: ${JSON.stringify(selectTimeData)}`)
+    // Toast.show(`您选择了: ${JSON.stringify(selectTimeData)}`)
   }
   // 选择日期触发回调事件
   const handlePannelChange = (

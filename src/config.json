@@ -27,6 +27,12 @@
         "show": true
       },
       {
+        "name": "migrate-from-v1",
+        "cName": "从 v1 升级到 v2",
+        "eName": "Migrate-from-v1",
+        "show": true
+      },
+      {
         "name": "international-react",
         "cName": "国际化",
         "eName": "Internationalization",
@@ -275,7 +281,7 @@
           "author": "dsj"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "SideNavBar",
           "type": "component",
           "cName": "侧边栏导航",
@@ -286,7 +292,7 @@
           "author": "hx"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "SideNavBarItem",
           "type": "component",
           "cName": "侧边栏导航子组件",
@@ -297,7 +303,7 @@
           "author": "hx"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "SubSideNavBar",
           "type": "component",
           "cName": "侧边栏导航子组件",
@@ -570,7 +576,7 @@
           "author": "dsj"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "SearchBar",
           "type": "component",
           "cName": "搜索栏",
@@ -581,7 +587,7 @@
           "author": "Ymm0008"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "ShortPassword",
           "type": "component",
           "cName": "短密码",
@@ -643,7 +649,7 @@
       "enName": "feedback",
       "packages": [
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "ActionSheet",
           "type": "component",
           "cName": "动作面板",
@@ -733,7 +739,7 @@
           "author": "vickyYE"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Popover",
           "type": "component",
           "cName": "气泡弹出框",
@@ -755,6 +761,7 @@
           "author": "oasis"
         },
         {
+          "version": "2.0.0",
           "name": "Skeleton",
           "type": "component",
           "cName": "骨架屏",
@@ -816,7 +823,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "AnimatingNumbers",
           "type": "component",
           "cName": "数字动画",
@@ -871,7 +878,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Collapse",
           "type": "component",
           "cName": "折叠面板",
@@ -882,7 +889,7 @@
           "author": "zhenyulei"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "CollapseItem",
           "type": "component",
           "cName": "折叠面板子组件",
@@ -893,7 +900,7 @@
           "author": "zhenyulei"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "CountDown",
           "type": "component",
           "cName": "倒计时",
@@ -937,7 +944,7 @@
           "author": "liukun"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "VirtualList",
           "type": "component",
           "cName": "虚拟列表",
@@ -1048,7 +1055,7 @@
           "author": "lzz"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Video",
           "type": "component",
           "cName": "视频播放器",
@@ -1056,7 +1063,7 @@
           "desc": "原生video实现的视频播放器",
           "sort": 20,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "swag~jun"
         }
       ]
@@ -1066,7 +1073,7 @@
       "enName": "business",
       "packages": [
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Barrage",
           "type": "component",
           "cName": "弹幕",
@@ -1121,7 +1128,7 @@
           "author": "zhaoqian16"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "TrendArrow",
           "type": "component",
           "cName": "趋势箭头",
@@ -1132,7 +1139,7 @@
           "author": "songsong"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "WaterMark",
           "type": "component",
           "cName": "水印",

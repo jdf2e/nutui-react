@@ -35,7 +35,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo"  id="target">
+    <div className="demo" id="target" style={{height: '100vh'}}>
         <div className="text-data" style={cellStyle}>我是测试数据1</div>
         <div className="text-data" style={cellStyle}>我是测试数据2</div>
         <div className="text-data" style={cellStyle}>我是测试数据3</div>
@@ -60,7 +60,7 @@ const App = () => {
         <div className="text-data" style={cellStyle}>我是测试数据22</div>
         <div className="text-data" style={cellStyle}>我是测试数据23</div>
         <div className="text-data" style={cellStyle}>我是测试数据24</div>
-        <BackTop  />
+        <BackTop target="target" />
     </div>
     </>
   );
@@ -80,7 +80,7 @@ import  React from "react";
 import { BackTop } from '@nutui/nutui-react';
 
 const App = () => {
-    const cellStyle = {
+  const cellStyle = {
     height: '46px',
     lineHeight: '46px',
     margin: '15px auto 20px',
@@ -93,7 +93,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo"  id="target">
+    <div className="demo" id="target" style={{height: '100vh'}}>
         <div className="text-data" style={cellStyle}>我是测试数据1</div>
         <div className="text-data" style={cellStyle}>我是测试数据2</div>
         <div className="text-data" style={cellStyle}>我是测试数据3</div>
@@ -118,7 +118,7 @@ const App = () => {
         <div className="text-data" style={cellStyle}>我是测试数据22</div>
         <div className="text-data" style={cellStyle}>我是测试数据23</div>
         <div className="text-data" style={cellStyle}>我是测试数据24</div>
-        <BackTop  threshold={200} bottom={50} />
+        <BackTop target="target" threshold={200} bottom={50} />
     </div>
     </>
   );
@@ -318,7 +318,7 @@ export default App;
 
 ### Props
 
-| 字段        | 说明                            | 类型    | 默认值 |
+| 属性 | 说明                            | 类型    | 默认值 |
 | ----------- | ------------------------------- | ------- | ------ |
 | target        | 获取监听的目标元素         | string  | -      |
 | threshold    | 页面垂直滚动多高后出现          | number | `200`  |

@@ -94,7 +94,7 @@ export default App;
 
 ### Props
 
-| Attribute           | Description                           | Type   | Default                                              |
+| Property | Description                           | Type   | Default                                              |
 | -------------- | ------------------------------ | ------ | --------------------------------------------------- |
 | customClass   |  Custom class                 | string | -                                                   |
 | lineWidth     | Width of line                    | number | `3`                                                   |
@@ -104,7 +104,7 @@ export default App;
 
 ## Event
 
-| 字段    | 说明                         | 回调参数                         |
+| 属性 | 说明                         | 回调参数                         |
 | ------- | ---------------------------- | -------------------------------- |
 | onConfirm | Click the confirm button to trigger the event callback function | Canvas and data URI displayed by signature imageURI |
 | onClear   | Click the re sign button to trigger the event callback function | -                               |

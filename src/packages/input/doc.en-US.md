@@ -184,7 +184,7 @@ const App = () => {
     <>
        <Input
          placeholder="trigger onClick"
-         onClick={() => Toast.text('onClick')}
+         onClick={() => Toast.show('onClick')}
        />
     </>
   )
@@ -252,7 +252,7 @@ export default App;
 
 ## Input
 
-### Prop
+### Props
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |

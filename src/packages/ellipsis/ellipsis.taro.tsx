@@ -1,24 +1,25 @@
 import React, { FunctionComponent, useState, useRef, useEffect } from 'react'
 import { useReady, nextTick, createSelectorQuery } from '@tarojs/taro'
+import classNames from 'classnames'
 import { getRectByTaro } from '@/utils/use-client-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import classNames from 'classnames'
 
-export type Direction = 'start' | 'end' | 'middle'
+export type EllipsisDirection = 'start' | 'end' | 'middle'
 
-type EllipsisedValue = {
+type EllipsisValue = {
   leading?: string | undefined
   tailing?: string | undefined
 }
 
 export interface EllipsisProps extends BasicComponent {
   content: string
-  direction: Direction
+  direction: EllipsisDirection
   rows: number | string
   expandText: string
   collapseText: string
   symbol: string
   lineHeight: number | string
+  width: number | string
   onClick: () => void
   onChange: (type: string) => void
 }
@@ -32,6 +33,7 @@ const defaultProps = {
   collapseText: '',
   symbol: '...',
   lineHeight: '20',
+  width: 'auto',
 } as EllipsisProps
 
 const classPrefix = `nut-ellipsis`
@@ -49,14 +51,15 @@ export const Ellipsis: FunctionComponent<
     collapseText,
     symbol,
     lineHeight,
+    width,
     onClick,
     onChange,
     ...rest
   } = { ...defaultProps, ...props }
-  let maxHeight = 0 // 当行的最大高度
+  const maxHeight = useRef(0) // 当行的最大高度
   const [exceeded, setExceeded] = useState(false)
   const [expanded, setExpanded] = useState(false)
-  const ellipsis = useRef<EllipsisedValue>({
+  const ellipsis = useRef<EllipsisValue>({
     leading: '',
     tailing: '',
   })
@@ -64,10 +67,11 @@ export const Ellipsis: FunctionComponent<
   const rootContain = useRef<HTMLDivElement>(null)
   const symbolContain = useRef<HTMLDivElement>(null)
   const [contentCopy, setContentCopy] = useState(content)
-  let lineH = 0 // 当行的最大高度
-  let originHeight = 0 // 原始高度
+  const lineH = useRef(0) // 当行的最大高度
+  const originHeight = useRef(0) // 原始高度
   const refRandomId = Math.random().toString(36).slice(-8)
   const widthRef: any = useRef('auto')
+
   let widthBase = [14, 10, 7, 8.4, 10] // 中、英(大)、英(小)、数字、其他字符的基础宽度
   let symbolTextWidth: any = widthBase[0] * 0.7921
   const chineseReg = /^[\u4e00-\u9fa5]+$/ // 汉字
@@ -75,7 +79,11 @@ export const Ellipsis: FunctionComponent<
   const letterUpperReg = /^[A-Z]+$/ // 字母
   const letterLowerReg = /^[a-z]+$/ // 字母
 
-  const classes = classNames(classPrefix, className)
+  const classes = classNames(
+    classPrefix,
+    className,
+    width ? `${classPrefix}-width` : ''
+  )
 
   const init = () => {
     setExceeded(false)
@@ -89,7 +97,10 @@ export const Ellipsis: FunctionComponent<
 
   useReady(() => init())
 
-  useEffect(() => init(), [content])
+  useEffect(
+    () => init(),
+    [content, lineH.current, maxHeight.current, originHeight.current]
+  )
 
   // 获取省略号宽度
   const getSymbolInfo = async () => {
@@ -126,16 +137,16 @@ export const Ellipsis: FunctionComponent<
           },
           (res) => {
             if (!res) return
-            lineH = pxToNumber(
+            lineH.current = pxToNumber(
               res.lineHeight === 'normal' ? lineHeight : res.lineHeight
             )
-            maxHeight = Math.floor(
-              lineH * (Number(rows) + 0.5) +
+            maxHeight.current = Math.floor(
+              lineH.current * (Number(rows) + 0.5) +
                 pxToNumber(res.paddingTop) +
                 pxToNumber(res.paddingBottom)
             )
 
-            originHeight = pxToNumber(res.height)
+            originHeight.current = pxToNumber(res.height)
 
             widthRef.current = res.width
 
@@ -159,10 +170,12 @@ export const Ellipsis: FunctionComponent<
   const calcEllipse = async () => {
     const refe = await getRectByTaro(rootContain.current)
 
-    if (refe.height <= maxHeight) {
+    if (refe.height <= maxHeight.current) {
       setExceeded(false)
     } else {
-      const rowNum = Math.floor(content.length / (originHeight / lineH - 1)) // 每行的字数
+      const rowNum = Math.floor(
+        content.length / (originHeight.current / lineH.current - 1)
+      ) // 每行的字数
 
       if (direction === 'middle') {
         const end = content.length
@@ -196,7 +209,7 @@ export const Ellipsis: FunctionComponent<
   // 验证省略号
   const verifyEllipsis = async () => {
     const refe = await getRectByTaro(rootContain.current)
-    if (refe && refe.height && refe.height > maxHeight) {
+    if (refe && refe.height && refe.height > maxHeight.current) {
       if (direction === 'end') {
         ellipsis.current.leading = ellipsis.current?.leading?.slice(
           0,
@@ -306,11 +319,27 @@ export const Ellipsis: FunctionComponent<
       >
         <div>
           {!exceeded ? (
-            <div className="nut-ellipsis-wordbreak">{content}</div>
+            <div
+              className="nut-ellipsis-wordbreak"
+              style={{
+                width: `${
+                  !Number.isNaN(Number(width)) ? `${width}px` : 'auto'
+                }`,
+              }}
+            >
+              {content}
+            </div>
           ) : null}
           {exceeded && !expanded ? (
             <>
-              <div className="nut-ellipsis-wordbreak">
+              <div
+                className="nut-ellipsis-wordbreak"
+                style={{
+                  width: `${
+                    !Number.isNaN(Number(width)) ? `${width}px` : 'auto'
+                  }`,
+                }}
+              >
                 {ellipsis.current?.leading}
                 {ellipsis.current?.leading && symbol}
                 {expandText ? (
@@ -331,7 +360,15 @@ export const Ellipsis: FunctionComponent<
           ) : null}
           {exceeded && expanded ? (
             <>
-              {content}
+              <div
+                style={{
+                  width: `${
+                    !Number.isNaN(Number(width)) ? `${width}px` : 'auto'
+                  }`,
+                }}
+              >
+                {content}
+              </div>
               {expandText ? (
                 <span
                   className="nut-ellipsis-text"

@@ -1,10 +1,10 @@
 # Cell 单元格
 
-### 介绍
+## 介绍
 
 列表项，可组成列表。
 
-### 安装
+## 安装
 
 ```ts
 import { Cell, CellGroup } from '@nutui/nutui-react-taro'
@@ -213,21 +213,20 @@ export default App;
 
 :::
 
-## API
+## CellGroup
+###  Props
 
-
-### CellGroup Prop
-
-| 字段  | 说明     | 类型   | 默认值 |
+| 属性 | 说明     | 类型   | 默认值 |
 |-------|----------|--------|--------|
 | title | 分组标题 | ReactNode | -      |
 | description  | 分组描述 | ReactNode | -      |
 | divider | 单元格之间是否有分割线 | boolean | `true`    |
 
 
-### Cell Prop
+## Cell
+### Props
 
-| 字段                 | 说明| 类型             | 默认值 |
+| 属性 | 说明| 类型             | 默认值 |
 |--------------------|----------------------------|------------------|--------|
 | title              | 标题|  ReactNode           | -      |
 | description           | 描述 |  ReactNode           | -      |

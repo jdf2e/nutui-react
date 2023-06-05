@@ -57,7 +57,7 @@ const BarrageDemo = () => {
     },
   })
 
-  const list = [
+  const barrageList = [
     translated.ed8c172b,
     translated.ae9cd4a0,
     translated.ab05020c,
@@ -87,7 +87,7 @@ const BarrageDemo = () => {
           <Barrage
             className="barrage-demo"
             ref={barrageRef}
-            barrageList={list}
+            list={barrageList}
           />
         </Cell>
         <div className="test" style={{ textAlign: 'center' }}>

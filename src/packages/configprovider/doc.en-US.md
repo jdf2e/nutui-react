@@ -1,10 +1,10 @@
 # ConfigProvider
 
-### Intro
+## Intro
 
 Used to configure NutUI-React components globally, provide theme customization, internationalization support.
 
-### Install
+## Install
 
 ```ts
 // react
@@ -35,8 +35,8 @@ You can override these CSS variables directly in your code, and the styling of t
 ```
 
 > @nutui/nutui-react comes with two theme files
-> default：@nutui/nutui-react/dist/styes/theme-default.scss;
-> dark：@nutui/nutui-react/dist/styes/theme-dark.scss;
+> default：@nutui/nutui-react/dist/styles/theme-default.scss;
+> dark：@nutui/nutui-react/dist/styles/theme-dark.scss;
 > If you want to use the dark theme, you can import the dark theme file in your project.
 
 #### Overrides via ConfigProvider
@@ -154,11 +154,11 @@ export default App;
 
 If you can't find the language pack you need, you are welcome to create a new language pack based on [English Language Pack]() and send us a pull request.
 
-## API
+## ConfigProvider
 
 ### Props
 
-| Attribute | Description      | Type | Default  |
+| Property | Description      | Type | Default  |
 |--------|------------------|---------|------|
 | locale | set the language | BaseLang | zhCN |
 | theme      | set the theme    |    Record<string, string>     | -    |

@@ -3,6 +3,7 @@ import Taro from '@tarojs/taro'
 import { Checklist } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Cell, Checkbox } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
 
 interface T {
   uncontrolled: string
@@ -113,14 +114,14 @@ const CheckboxDemo = () => {
     },
   })
 
-  const [checked, setChecked] = useState(false)
+  const [checked] = useState(false)
   const [checkbox1, setCheckbox1] = useState(false)
   const [indeterminate, setIndeterminate] = useState(false)
   const [checkboxgroup1, setCheckboxgroup1] = useState(['1'])
   const [checkboxgroup2] = useState(['1'])
   const [checkboxgroup3] = useState(['1'])
   const [checkboxgroup4] = useState([])
-  const [checkboxgroup5, setCheckboxgroup5] = useState<string[]>([])
+  const [checkboxgroup5] = useState<string[]>([])
   const checkboxgroup2Ref = useRef(null)
   const checkboxgroup3Ref = useRef(null)
   const [optionsDemo1] = useState([
@@ -144,7 +145,8 @@ const CheckboxDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.uncontrolled}</h2>
         <Cell className="nut-cell">
           <Checkbox

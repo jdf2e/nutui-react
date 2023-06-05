@@ -219,9 +219,9 @@ export default App;
 ```
 :::
 
-### Prop
+### Props
 
-| 字段     | 說明                                                           | 類型   | 默認值 |
+| 属性 | 說明                                                           | 類型   | 默認值 |
 | -------- | ---------------------------------------------------------------- | ------ | ------ |
 | size     | 設置頭像的大小，可選值為：large、normal、small，支持直接輸入數字   | string | `normal` |
 | shape    | 設置頭像的形狀，可選值為：square、round            | string | `round`  |
@@ -233,7 +233,7 @@ export default App;
 | iconSize`v2.0.0废弃`     | [圖標尺寸](#/icon) | string \| number | `16`|
 
 ### avatarGroup
-| 字段     | 說明                                                             | 類型   | 默認值 |
+| 属性 | 說明                                                             | 類型   | 默認值 |
 | -------- | ---------------------------------------------------------------- | ------ | ------ |
 | maxCount     | 顯示的最大頭像個數   | number \| string | - |
 | maxContent  | 頭像數量超出時，會出現一個頭像折疊元素。該元素內容可為...、more、+N。默認為 +N | 
@@ -245,7 +245,7 @@ export default App;
 | zIndex       | 頭像之間的層級關係，可選值為：left、right  | string | `left`     |
 ### Events
 
-| 字段             | 說明         | 類型     | 回調參數 |
+| 属性 | 說明         | 類型     | 回調參數 |
 | ---------------- | ------------ | -------- | -------- |
 | onActiveAvatar  | 點擊頭像觸發事件    | Function | `event`    |
 | onError       | 圖片加載失敗的事件   | Function | `event`    |

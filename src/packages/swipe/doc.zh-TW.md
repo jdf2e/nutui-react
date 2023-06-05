@@ -1,10 +1,10 @@
 # Swipe組件
 
-### 介紹
+## 介紹
 
 常用於儲存格左右滑删除等手勢操作
 
-### 安裝
+## 安裝
 
 ```javascript
 // react
@@ -134,7 +134,7 @@ import { Swipe, Cell, Button, Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const handleChange = () => {
-    Toast.text('點擊');
+    Toast.show('點擊');
   }
   return <>
     <Swipe
@@ -154,8 +154,8 @@ const App = () => {
         </>
       }
       onActionClick={handleChange}
-      onOpen={() => Toast.text('打開')}
-      onClose={() => Toast.text('關閉')}
+      onOpen={() => Toast.show('打開')}
+      onClose={() => Toast.show('關閉')}
     >
       <Cell title="事件" />
     </Swipe>
@@ -246,7 +246,7 @@ export default App;
 ```
 :::
 
-## API
+## Swipe
 
 ### Props
 

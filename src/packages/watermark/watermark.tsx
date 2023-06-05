@@ -1,13 +1,12 @@
 import React, { useState, useEffect, FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
-import bem from '@/utils/bem'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface WaterMarkProps {
+export interface WaterMarkProps extends BasicComponent {
   content: string
   fullPage: boolean
   zIndex: number
-  className: string
   gapX: number
   gapY: number
   width: number
@@ -16,14 +15,14 @@ export interface WaterMarkProps {
   imageWidth: number
   imageHeight: number
   rotate: number
-  fontColor: string
+  color: string
   fontStyle: string
   fontFamily: string
   fontWeight: string
   fontSize: string | number
-  style: React.CSSProperties
 }
 const defaultProps = {
+  ...ComponentDefaults,
   content: '',
   fullPage: true,
   zIndex: 2000,
@@ -35,9 +34,8 @@ const defaultProps = {
   imageWidth: 120,
   imageHeight: 64,
   rotate: -22,
-  fontColor: 'rgba(0,0,0,.15)',
+  color: 'rgba(0,0,0,.15)',
   fontStyle: 'normal',
-  fontFamily: 'PingFang SC',
   fontWeight: 'normal',
   fontSize: 14,
 } as WaterMarkProps
@@ -58,13 +56,12 @@ export const WaterMark: FunctionComponent<
     imageWidth,
     imageHeight,
     rotate,
-    fontColor,
+    color,
     fontStyle,
     fontFamily,
     fontWeight,
     fontSize,
     style,
-    children,
   } = {
     ...defaultProps,
     ...props,
@@ -72,10 +69,9 @@ export const WaterMark: FunctionComponent<
 
   const [base64Url, setBase64Url] = useState('')
 
-  const b = bem('watermark')
-  const classes = classNames({
-    [`${b('')}`]: true,
-    [`${b('')}-full-page`]: fullPage,
+  const classPrefix = 'nut-watermark'
+  const classes = classNames(classPrefix, {
+    [`${classPrefix}-full-page`]: fullPage,
   })
   const cls = classNames(classes, className)
 
@@ -123,7 +119,7 @@ export const WaterMark: FunctionComponent<
 
         const markSize = Number(fontSize) * ratio
         ctx.font = `${fontStyle} normal ${fontWeight} ${markSize}px/${markHeight}px ${fontFamily}`
-        ctx.fillStyle = fontColor
+        ctx.fillStyle = color
 
         ctx.fillText(content, 0, 0) // 在画布上绘制"被填充的"文本。
         ctx.restore() // 返回之前保存过的路径状态和属性。

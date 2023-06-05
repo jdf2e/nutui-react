@@ -56,18 +56,16 @@ const darkTheme = {
 }
 
 const WithNavRouter = (C: LoadableComponent<any>) => {
-  const WithNav: FunctionComponent = (props: PropsWithChildren<any>) => {
+  const WithNav: FunctionComponent = () => {
     const context = useConfig()
     const handleSwitchLocale = () => {
-      let href = ''
       let locale = getLocale()
       let location = window.parent.location
       if (locale == 'zh-CN') {
-        href = location.href.replace('zh-CN', 'en-US')
+        location.replace(location.href.replace('zh-CN', 'en-US'))
       } else {
-        href = location.href.replace('en-US', 'zh-CN')
+        location.replace(location.href.replace('en-US', 'zh-CN'))
       }
-      location.replace(href)
     }
     const getComponentName = () => {
       const s = window.location.hash.split('/')

@@ -1,4 +1,4 @@
-import { CascaderOption, CascaderConfig, format } from './types'
+import { CascaderOption, CascaderConfig, CascaderFormat } from './types'
 
 export const formatTree = (
   tree: CascaderOption[],
@@ -56,7 +56,7 @@ const defaultConvertConfig = {
 }
 export const convertListToOptions = (
   list: CascaderOption[],
-  options: format
+  options: CascaderFormat
 ): CascaderOption[] => {
   const mergedOptions = {
     ...defaultConvertConfig,

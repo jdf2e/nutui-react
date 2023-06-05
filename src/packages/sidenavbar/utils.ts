@@ -6,14 +6,14 @@ const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
   const isTitle =
     (e.target as HTMLDivElement).className.includes('__title') || isIcon
   const currentClass = e.currentTarget.className
-  const isShow = currentClass.includes('nutShow')
+  const isShow = currentClass.includes('sidenavbar-show')
   const arrowIcon = e.currentTarget.querySelector('.arrow-icon') as Element
   const iconClass = arrowIcon.className
 
   if (isTitle) {
     e.currentTarget.className = isShow
-      ? currentClass.replace('nutShow', 'nutHide')
-      : currentClass.replace('nutHide', 'nutShow')
+      ? currentClass.replace('sidenavbar-show', 'sidenavbar-hide')
+      : currentClass.replace('sidenavbar-hide', 'sidenavbar-show')
     arrowIcon.className = isShow
       ? iconClass.replace('arrow-down', 'arrow-up')
       : iconClass.replace('arrow-up', 'arrow-down')

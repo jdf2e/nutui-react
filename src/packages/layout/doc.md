@@ -187,7 +187,7 @@ export default App;
 
 ### props
 
-| 字段         | 说明                             | 类型   | 默认值           |
+| 属性 | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | type         | 布局方式，可选值为flex              | string | -                |
 | gutter        | 列元素之间的间距（单位为px）         | string \| number | `0`      |
@@ -200,7 +200,7 @@ export default App;
 
 ### Props
 
-| 字段 | 说明           | 类型     | 默认值           |
+| 属性 | 说明           | 类型     | 默认值           |
 |--------|----------------|--------------| ------------------|
 | span  | 列元素宽度（共分为24份，例如设置一行3个，那么span值为8） | string \| number| `24`|
 | offset  | 列元素偏移距离 | string \| number| `0` |
@@ -212,6 +212,6 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 描述 | 默认值 |
+| 名称 | 说明 | 默认值 |
 | --- |--|------|
 |--nutui-col-default-margin-bottom| col 组件的下边距 | 15px |
