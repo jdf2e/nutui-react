@@ -8,7 +8,7 @@
 
 ```ts
 // react
-import { InfiniteLoading } from '@nutui/nutui-react'
+import { InfiniteLoading } from '@nutui/nutui-react-taro'
 ```
 
 ## 代码演示

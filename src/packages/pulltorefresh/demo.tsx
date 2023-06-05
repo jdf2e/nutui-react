@@ -3,7 +3,6 @@ import { PullToRefresh } from './pulltorefresh'
 import Cell from '@/packages/cell'
 import Toast from '@/packages/toast'
 import { useTranslate } from '@/sites/assets/locale'
-import { Jd } from '@nutui/icons-react'
 
 const PullToRefreshDemo = () => {
   const [translated] = useTranslate({
