@@ -1,3 +1,19 @@
+# v2.0.0-alpha.14
+`2023-06-02`
+
+* 🛠 refactor: barrage (#1072) @junjun666
+* 🛠 refactor: popover (#1060) @junjun666
+* 🛠 refactor: sidenavbar (#1057) @oasis-cloud
+* :bug: fix(backtop): 修改 demo (#1083) @Eiinu
+* :bug: fix: ellipsis 在 taro 构建的 H5 中偶现无法暂时省略号的情况 (#1076) @oasis-cloud
+* :bug: fix: input 组件忽略 maxlength 和 password 属性 (#1079) @oasis-cloud
+* :bug: fix: menu 的 closeOnClickOverlay 改为 closeOnOverlayClick (#1084) @oasis-cloud
+* :bug: fix: picker 组件渲染的时候触发 onConfirm (#1082) @oasis-cloud
+* 📖 docs(textarea): 更新文档说明 (#1086) @Eiinu
+* 📖 docs: checkbox demo 增加头部 (#1075) @oasis-cloud
+* 📖 docs: 文档中 css 变量表格的文案优化 (#1077) @oasis-cloud
+
+
 # v2.0.0-alpha.13
 `2023-05-31`
 

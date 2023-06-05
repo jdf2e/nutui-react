@@ -28,7 +28,8 @@ const BackTopDemo = () => {
     },
   })
   const demoStyle = {
-    height: '1600px',
+    height: 'auto',
+    minHeight: 'auto',
   }
   const cellStyle = {
     height: '46px',
