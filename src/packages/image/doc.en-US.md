@@ -208,7 +208,7 @@ export default App;
 ### Props
 
 | Property | Description | Type | Default |
-|---------------------|--------------------------- -------|-------|------------------|
+|---------------------|----------------------------------|-------|------------------|
 | src | image link | `string` | - |
 | fit | image fill mode, equivalent to the native object-fit property | `ImageFit` | `fill` |
 | position | Image position, equivalent to the original object-position attribute | `ImagePosition` | `center` |
@@ -222,7 +222,6 @@ export default App;
 | onClick | Triggered when an image is clicked | `(e: MouseEvent) => void` | - |
 | onLoad | Triggered after the image is loaded | `() => void` | - |
 | onError | Triggered when the image fails to load | `() => void` | - |
-
 
 | Property         | Description                  |
 |--------------|----------------------------------|
