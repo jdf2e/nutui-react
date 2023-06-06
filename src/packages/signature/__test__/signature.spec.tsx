@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { fireEvent, render } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import 'jest-canvas-mock'
 
@@ -21,11 +21,6 @@ test('props test', () => {
     'test-signature'
   )
   expect(container?.innerHTML).toMatchSnapshot()
-  const btns = container.querySelectorAll('.nut-signature__btn')
-  expect(btns.length).toBe(2)
-  fireEvent.click(btns[1])
-  expect(testClick).toBeCalled()
-  expect(testClick).toBeCalledTimes(1)
 
   const canvas = document.createElement('canvas')
   const ctx = canvas.getContext('2d')

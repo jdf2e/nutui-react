@@ -1,10 +1,10 @@
 # Signature 簽名
 
-### 介紹
+## 介紹
 
 基於 Canvas 的簽名組件
 
-### 安裝
+## 安裝
 
 ```javascript
 // react
@@ -90,22 +90,23 @@ export default App;
 
 :::
 
-## API
+## Signature
 
 ### Props
 
-| 屬性 | 說明                           | 類型   | 默認值                                              |
-| -------------- | ------------------------------ | ------ | --------------------------------------------------- |
-| customClass   | 自定義 class                   | string | -                                                   |
-| lineWidth     | 線條的寬度                     | number | `3`                                                   |
-| strokeStyle   | 繪圖筆觸顏色                   | string | `#000`                                              |
-| type           | 圖片格式                       | string | `png`                                               |
-| unSupportTpl | 不支持 Canvas 情況下的展示文案 | string | `對不起，當前瀏覽器不支持 Canvas，無法使用本控件！` |
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| customClass | 自定義 class | `string` | `-` |
+| lineWidth | 線條的寬度 | `number` | `3` |
+| strokeStyle | 繪圖筆觸顏色 | `string` | `#000` |
+| type | 圖片格式 | `string` | `png` |
+| unsupported | 不支持 Canvas 情況下的展示文案 | `ReactNode` | `對不起，當前瀏覽器不支持 Canvas，無法使用本控件！` |
+| onConfirm | 點擊確認按鈕觸發事件回調函數 | `onConfirm: (canvas: HTMLCanvasElement, dataurl: string) => void` | `-` |
+| onClear | 點擊重簽按鈕觸發事件回調函數 | `onClear: () => void` | `-` |
 
-## Event
+### Ref
 
-| 属性 | 說明                         | 回調參數                         |
-| ------- | ---------------------------- | -------------------------------- |
-| onConfirm | 點擊確認按鈕觸發事件回調函數 | canvas 和簽名圖片展示的 data URI |
-| onClear   | 點擊重簽按鈕觸發事件回調函數 | -                               |
-
+| 屬性 | 說明 | 類型 |
+| --- | --- | --- |
+| confirm | 確認簽字 | `() => void` |
+| clear | 清除簽字 | `() => void` |
