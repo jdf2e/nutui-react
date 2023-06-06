@@ -1,3 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`props test 1`] = `"<div class=\\"nut-signature test-signature\\"><div class=\\"nut-signature__inner\\"><canvas height=\\"0\\" width=\\"0\\"></canvas></div></div>"`;
+exports[`props test 1`] = `"<div class=\\"nut-signature test-signature\\"><div class=\\"nut-signature__inner\\"><p class=\\"nut-signature__unsupport\\">对不起，当前浏览器不支持Canvas，无法使用本控件！</p></div></div>"`;
