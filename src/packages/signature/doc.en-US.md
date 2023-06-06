@@ -90,7 +90,7 @@ export default App;
 
 :::
 
-## API
+## Signature
 
 ### Props
 
@@ -100,13 +100,13 @@ export default App;
 | lineWidth | Width of line | `number` | `3` |
 | strokeStyle | Drawing stroke color | `string` | `#000` |
 | type | Picture format | `string` | `png` |
-| unsupported | Display copy without canvas | `RreactNode` | `sorry, the current browser doesn't support canvas, so we can't use this control!` |
-
-| onConfirm | Click the confirm button to trigger the event callback function | `onConfirm: (canvas: HTMLCanvasElement, dataurl: string) => void` |-| | onClear | `onClear: () => void` |-|
+| unsupported | Display copy without canvas | `ReactNode` | `sorry, the current browser doesn't support canvas, so we can't use this control!` |
+| onConfirm | Click the confirm button to trigger the event callback function | `onConfirm: (canvas: HTMLCanvasElement, dataurl: string) => void` | `-` |
+| onClear | Clicking the reschedule button triggers the event callback function | `onClear: () => void` | `-` |
 
 ### Ref
 
 | Property | Description | Type |
 | --- | --- | --- |
-| confirm | 确认签字 | `() => void` |
-| clear | 清除签字 | `() => void` |
+| confirm | Confirmation of signature | `() => void` |
+| clear | Clear signature | `() => void` |

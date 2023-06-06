@@ -73,7 +73,7 @@ const SignatureDemo = () => {
   const demoStyles: React.CSSProperties = { margin: '1em 0' }
   return (
     <>
-      <div className="demo">
+      <div className="demo demo-signature">
         <h2>{translated.basic}</h2>
         <Signature onConfirm={confirm} onClear={clear} ref={signatureRef} />
         <div className="demo-btn">

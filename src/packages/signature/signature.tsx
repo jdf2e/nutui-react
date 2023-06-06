@@ -4,15 +4,20 @@ import React, {
   useEffect,
   ForwardRefRenderFunction,
   useImperativeHandle,
+  ReactNode,
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
+export interface FileType {
+  jpg: string
+  png: string
+}
 export interface SignatureProps extends BasicComponent {
-  type: 'png' | 'jpg'
+  type: keyof FileType
   lineWidth: number
   strokeStyle: string
-  unsupported: string
+  unsupported: ReactNode
   onConfirm?: (canvas: HTMLCanvasElement, dataurl: string) => void
   onClear?: () => void
 }
@@ -21,7 +26,7 @@ const defaultProps = {
   type: 'png',
   lineWidth: 2,
   strokeStyle: '#000',
-  unsupported: '对不起，当前浏览器不支持Canvas，无法使用本控件！',
+  unsupported: '',
 } as SignatureProps
 const InternalSignature: ForwardRefRenderFunction<
   unknown,
@@ -148,12 +153,16 @@ const InternalSignature: ForwardRefRenderFunction<
   return (
     <div className={`${classPrefix} ${className}`} style={style} {...rest}>
       <div className={`${classPrefix}__inner`} ref={wrapRef}>
-        {isCanvasSupported() ? (
+        {!isCanvasSupported() ? (
           <canvas ref={canvasRef} height={canvasHeight} width={canvasWidth} />
         ) : (
-          <p className={`${classPrefix}__unsopport}`}>
-            {locale.signature.unsupported || unsupported}
-          </p>
+          <>
+            {unsupported || (
+              <p className={`${classPrefix}__unsupport`}>
+                {locale.signature.unsupported}
+              </p>
+            )}
+          </>
         )}
       </div>
     </div>

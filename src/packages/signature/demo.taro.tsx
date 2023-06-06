@@ -46,19 +46,6 @@ const SignatureDemo = () => {
 
   const confirm = (dataurl: string) => {
     console.log('图片地址', dataurl)
-    // Taro.saveImageToPhotosAlbum({
-    //   filePath: `${dataurl}`,
-    //   success(res) {
-    //     Taro.showToast({
-    //       title: '保存成功',
-    //     })
-    //   },
-    //   fail(err) {
-    //     Taro.showToast({
-    //       title: '保存失败',
-    //     })
-    //   },
-    // })
   }
   const clear = () => {
     console.log('清除事件')
@@ -67,7 +54,11 @@ const SignatureDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <div
+        className={`demo demo-signature ${
+          Taro.getEnv() === 'WEB' ? 'web' : ''
+        }`}
+      >
         <h2>{translated.basic}</h2>
         <Signature onConfirm={confirm} onClear={clear} ref={signatureRef} />
         <div className="demo-btn">

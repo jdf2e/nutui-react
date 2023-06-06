@@ -1,4 +1,3 @@
-@import '../button/button';
 .nut-signature {
   .spcanvas_WEAPP {
     width: 100%;
@@ -17,7 +16,7 @@
     justify-content: center;
     align-items: center;
   }
-  &__unsopport {
+  &__unsupport {
     font-size: $font-size-base;
   }
 }

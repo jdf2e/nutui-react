@@ -15,11 +15,9 @@ import {
 } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-interface FileType {
-  /** jpg 图片 */
-  jpg: any
-  /** png 图片 */
-  png: any
+export interface FileType {
+  jpg: string
+  png: string
 }
 export interface SignatureProps extends BasicComponent {
   canvasId: string
