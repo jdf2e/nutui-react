@@ -13,7 +13,7 @@ test('should match snapshot', () => {
 test('should be shown when passing size and current', () => {
   const { container } = render(
     <Cell>
-      <Indicator total={3} current={3} />
+      <Indicator total={3} current={2} />
     </Cell>
   )
   expect(container.querySelectorAll('.nut-indicator__dot')).toHaveLength(3)
