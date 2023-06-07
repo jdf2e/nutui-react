@@ -341,5 +341,6 @@ export default App;
 | value | 页码，受控 | `number` | `1` |
 | indicator | 分页指示器是否展示    |  `boolean` | `false` |
 | indicatorColor   | 分页指示器选中的颜色    | `string`  | `#fff`  |
+| showMenuByLongpress   | 开启长按图片显示识别小程序码菜单    | `boolean`  | `false`  |
 | closeOnContentClick   | 点击图片可以退出预览    |  `boolean`  | `false`  |
 | onClose | 点击遮罩关闭图片预览时触发| `() => void` | `-` | 

@@ -42,6 +42,7 @@ export interface ImagePreviewProps extends BasicComponent {
   closeOnContentClick: boolean
   indicator: boolean
   indicatorColor: string
+  showMenuByLongpress: boolean
   onChange: (value: number) => void
   onClose: () => void
 }
@@ -56,6 +57,7 @@ const defaultProps = {
   closeOnContentClick: false,
   indicator: false,
   indicatorColor: '#fff',
+  showMenuByLongpress: false,
   onChange: (value: number) => {},
   onClose: () => {},
 } as ImagePreviewProps
@@ -71,6 +73,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     indicator,
     autoPlay,
     closeOnContentClick,
+    showMenuByLongpress,
     onClose,
   } = props
   const classPrefix = 'nut-imagepreview'
@@ -288,6 +291,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
                         <TaroImage
                           src={item.src}
                           mode="aspectFit"
+                          showMenuByLongpress
                           style={{ width: '100%', height: '100%' }}
                         />
                       )}

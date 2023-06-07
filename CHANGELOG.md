@@ -1,3 +1,17 @@
+# v2.0.0-alpha.15
+`2023-06-07`
+
+* :sparkles: feat(ci): add codecov (#1092) @Eiinu
+* :sparkles: feat(ci): add lint action (#1098) @Eiinu
+* :sparkles: feat: imagepreview 组件在小程序中支持长按图片保存 (#1090) @oasis-cloud
+* :bug: fix: 单元测试问题修复 (#1095) @Eiinu
+* 🛠 refactor: card (#1069) @拧巴的猫
+* 🛠 refactor: infiniteloading (#1085) @junjun666
+* 🛠 refactor: signature (#1080) @拧巴的猫
+* 🛠 refactor: tag (#1089) @xiaoyatong
+* 🛠 refactor: TimeSelect (#1088) @Eiinu
+
+
 # v2.0.0-alpha.14
 `2023-06-02`
 

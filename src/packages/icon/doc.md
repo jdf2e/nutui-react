@@ -26,7 +26,7 @@ import { Add } from '@nutui/icons-react';
 Loading,Location,Location2,Check,Close,Left,Service,Top,Right,CheckNormal,Checked,CheckDisabled,DownArrow,JoySmile,Image,ImageError,CircleClose,MaskClose,Minus,Plus,ArrowUp2,ArrowDown2,Notice,CheckChecked,StarN,Tips,Loading1,TriangleUp,TriangleDown,Photograph,Failure,Del,Link,Download
 ```
 
-## SVG Icon
+## Icon
 ### Props
 
 | 属性   | 说明                             | 类型             | 默认值 |
