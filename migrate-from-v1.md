@@ -302,7 +302,14 @@
 - 增加 onClickOverlay，支持点击overlay时，触发事件。
 
 #### Drag
-#### Infiniteloading
+#### InfiniteLoading
+- `useCapture` 重命名为 `capture`
+- `onScrollChange` 重命名为 `onScroll`
+- `isOpenRefresh` 重命名为 `pullRefresh`
+- `pullText` 重命名为 `pullingText`
+- `loadText` 重命名为 `loadingText`
+- `containerId` 重命名为 `target`, 并去掉useWindow，改用target
+- pullingText和loadingText类型改成ReactNode
 #### Notify
 - 删除 `color` 和 `background`, 通过css变量实现
 - 修改 onClosed 为 onClose，规范命名，关闭时触发。
@@ -505,7 +512,13 @@
 - `top` 重命名为 `gapY`
 - add文档类型进行规范说明
 #### Card
+
 #### Signature
+
+- `type` 类型改为 `png｜jpg`
+- `unSupportTpl` 重命名为 `unsupported`, 类型改为 `ReactNode`
+- 新增 `confirm`和`clear` ref 的方法，去掉组件里面的 `button`, demo 中自定义按钮点击事件
+
 #### TimeSelect
 - 移除 height，通过 style 设置高度
 - title 类型修改为 ReactNode

@@ -41,7 +41,7 @@ test('props test', () => {
     `<div class="nut-tag nut-tag--danger"><span class="nut-tag-text">${state.shopDescription}</span></div>`
   )
   expect(tagDoms[1]).toContainHTML(
-    `<div class="nut-tag nut-tag--default nut-tag--plain" style="background: rgb(255, 255, 255);"><span class="nut-tag-text">${state.delivery}</span></div>`
+    `<div class="nut-tag nut-tag--default nut-tag--plain"><span class="nut-tag-text">${state.delivery}</span></div>`
   )
   expect(container.querySelector('.nut-cardright-shop-name')).toContainHTML(
     state.shopName

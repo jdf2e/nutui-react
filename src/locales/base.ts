@@ -65,7 +65,7 @@ export interface BaseLang {
   }
   signature: {
     reSign: string
-    unSupportTpl: string
+    unsupported: string
   }
   ecard: {
     chooseText: string
