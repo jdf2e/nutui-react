@@ -302,7 +302,7 @@
 - 增加 onClickOverlay，支持点击overlay时，触发事件。
 
 #### Drag
-#### Infiniteloading
+#### InfiniteLoading
 - `useCapture` 重命名为 `capture`
 - `onScrollChange` 重命名为 `onScroll`
 - `isOpenRefresh` 重命名为 `pullRefresh`

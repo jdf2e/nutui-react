@@ -1,4 +1,4 @@
-import { Infiniteloading } from './infiniteloading'
+import { InfiniteLoading } from './infiniteloading'
 
-export type { InfiniteloadingProps } from './infiniteloading'
-export default Infiniteloading
+export type { InfiniteLoadingProps } from './infiniteloading'
+export default InfiniteLoading

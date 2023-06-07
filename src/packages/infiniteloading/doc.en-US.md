@@ -1,4 +1,4 @@
-# Infiniteloading
+# InfiniteLoading
 
 ## Intro
 
@@ -19,7 +19,7 @@ import { InfiniteLoading } from '@nutui/nutui-react'
 
 ```tsx
 import React, { useState, useEffect } from 'react'
-import { Cell, Infiniteloading } from '@nutui/nutui-react'
+import { Cell, InfiniteLoading } from '@nutui/nutui-react'
 
 const InfiniteUlStyle = {
   height: '300px',
@@ -70,7 +70,7 @@ const App = () => {
       <h2>Basic Usage</h2>
       <Cell>
         <ul id="scroll" style={InfiniteUlStyle}>
-          <Infiniteloading
+          <InfiniteLoading
             target="scroll"
             hasMore={hasMore}
             onLoadMore={loadMore}
@@ -82,7 +82,7 @@ const App = () => {
                 </li>
               )
             })}
-          </Infiniteloading>
+          </InfiniteLoading>
         </ul>
       </Cell>
     </>
@@ -99,7 +99,7 @@ export default App
 
 ```tsx
 import React, { useState, useEffect } from 'react'
-import { Cell, Infiniteloading } from '@nutui/nutui-react'
+import { Cell, InfiniteLoading } from '@nutui/nutui-react'
 import { Jd } from '@nutui/icons-react'
 
 const InfiniteUlStyle = {
@@ -158,7 +158,7 @@ const App = () => {
       <h2>Pull to refresh</h2>
       <Cell>
         <ul id="refreshScroll" style={InfiniteUlStyle}>
-          <Infiniteloading
+          <InfiniteLoading
             pullingText={
               <>
                 <Jd />
@@ -179,7 +179,7 @@ const App = () => {
                 </li>
               )
             })}
-          </Infiniteloading>
+          </InfiniteLoading>
         </ul>
       </Cell>
     </>
@@ -196,7 +196,7 @@ export default App
 
 ```tsx
 import React, { useState, useEffect } from 'react'
-import { Cell, Infiniteloading } from '@nutui/nutui-react'
+import { Cell, InfiniteLoading } from '@nutui/nutui-react'
 
 const InfiniteUlStyle = {
   height: '300px',
@@ -247,7 +247,7 @@ const App = () => {
       <h2>Custom loading copywriting</h2>
       <Cell>
         <ul id="customScroll" style={InfiniteUlStyle}>
-          <Infiniteloading
+          <InfiniteLoading
             target="customScroll"
             loadingText="loading"
             loadMoreText="none～"
@@ -261,7 +261,7 @@ const App = () => {
                 </li>
               )
             })}
-          </Infiniteloading>
+          </InfiniteLoading>
         </ul>
       </Cell>
     </>
@@ -272,7 +272,7 @@ export default App
 
 :::
 
-## Infiniteloading
+## InfiniteLoading
 
 ### Props
 

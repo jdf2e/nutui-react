@@ -10,7 +10,7 @@ import { useConfig } from '@/packages/configprovider'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface InfiniteloadingProps extends BasicComponent {
+export interface InfiniteLoadingProps extends BasicComponent {
   hasMore: boolean
   threshold: number
   target: string
@@ -35,14 +35,11 @@ const defaultProps = {
   target: '',
   capture: false,
   pullRefresh: false,
-  pullingText: '松开刷新',
-  loadingText: '加载中···',
-  loadMoreText: '哎呀，这里是底部了啦',
-} as InfiniteloadingProps
+} as InfiniteLoadingProps
 
 const classPrefix = `nut-infiniteloading`
-export const Infiniteloading: FunctionComponent<
-  Partial<InfiniteloadingProps> &
+export const InfiniteLoading: FunctionComponent<
+  Partial<InfiniteLoadingProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onScroll'>
 > = (props) => {
   const { locale } = useConfig()
@@ -190,8 +187,8 @@ export const Infiniteloading: FunctionComponent<
   }
 
   const getWindowScrollTop = () => {
-    return window.pageYOffset !== undefined
-      ? window.pageYOffset
+    return window.scrollY !== undefined
+      ? window.scrollY
       : (document.documentElement || document.body.parentNode || document.body)
           .scrollTop
   }
@@ -263,5 +260,5 @@ export const Infiniteloading: FunctionComponent<
   )
 }
 
-Infiniteloading.defaultProps = defaultProps
-Infiniteloading.displayName = 'NutInfiniteloading'
+InfiniteLoading.defaultProps = defaultProps
+InfiniteLoading.displayName = 'NutInfiniteLoading'

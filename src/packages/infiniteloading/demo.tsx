@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Jd } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
-import { Infiniteloading } from './infiniteloading'
+import { InfiniteLoading } from './infiniteloading'
 import Cell from '@/packages/cell'
 import Toast from '@/packages/toast'
 import './demo.scss'
@@ -118,7 +118,7 @@ const InfiniteloadingDemo = () => {
         <h2>{translated['84aa6bce']}</h2>
         <Cell>
           <ul className="infiniteUl" id="scroll">
-            <Infiniteloading
+            <InfiniteLoading
               target="scroll"
               hasMore={hasMore}
               onLoadMore={loadMore}
@@ -130,14 +130,14 @@ const InfiniteloadingDemo = () => {
                   </li>
                 )
               })}
-            </Infiniteloading>
+            </InfiniteLoading>
           </ul>
         </Cell>
 
         <h2>{translated.eb4236fe}</h2>
         <Cell>
           <ul className="infiniteUl" id="refreshScroll">
-            <Infiniteloading
+            <InfiniteLoading
               pullingText={
                 <>
                   <Jd />
@@ -158,14 +158,14 @@ const InfiniteloadingDemo = () => {
                   </li>
                 )
               })}
-            </Infiniteloading>
+            </InfiniteLoading>
           </ul>
         </Cell>
 
         <h2>{translated['9ed40460']}</h2>
         <Cell>
           <ul className="infiniteUl" id="customScroll">
-            <Infiniteloading
+            <InfiniteLoading
               target="customScroll"
               loadingText="loading"
               loadMoreText={translated['1254a90a']}
@@ -179,7 +179,7 @@ const InfiniteloadingDemo = () => {
                   </li>
                 )
               })}
-            </Infiniteloading>
+            </InfiniteLoading>
           </ul>
         </Cell>
       </div>

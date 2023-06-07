@@ -1,4 +1,4 @@
-# Infiniteloading 滚动加载
+# InfiniteLoading 滚动加载
 
 ## 介绍
 
@@ -19,7 +19,7 @@ import { InfiniteLoading } from '@nutui/nutui-react-taro'
 
 ```tsx
 import React, { useState, useEffect } from 'react'
-import { Cell, Infiniteloading } from '@nutui/nutui-react-taro'
+import { Cell, InfiniteLoading } from '@nutui/nutui-react-taro'
 
 
 const App = () => {
@@ -68,7 +68,7 @@ const App = () => {
       <h2>基础用法</h2>
       <Cell>
         <ul className="infiniteUl" id="scrollDemo" style={{ height: '500px' }}>
-          <Infiniteloading
+          <InfiniteLoading
             pullingText={
               <>
                 <Jd />
@@ -90,7 +90,7 @@ const App = () => {
                 </li>
               )
             })}
-          </Infiniteloading>
+          </InfiniteLoading>
         </ul>
       </Cell>
     </>
@@ -101,7 +101,7 @@ export default App
 
 :::
 
-## Infiniteloading
+## InfiniteLoading
 
 ### Props
 

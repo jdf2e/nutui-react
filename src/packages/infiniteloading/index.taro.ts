@@ -1,4 +1,4 @@
-import { Infiniteloading } from './infiniteloading.taro'
+import { InfiniteLoading } from './infiniteloading.taro'
 
-export type { InfiniteloadingProps } from './infiniteloading.taro'
-export default Infiniteloading
+export type { InfiniteLoadingProps } from './infiniteloading.taro'
+export default InfiniteLoading

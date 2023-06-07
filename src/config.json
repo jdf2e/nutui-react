@@ -705,7 +705,7 @@
         },
         {
           "version": "2.0.0",
-          "name": "Infiniteloading",
+          "name": "InfiniteLoading",
           "type": "component",
           "tarodoc": true,
           "cName": "滚动加载",
