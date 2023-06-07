@@ -372,7 +372,7 @@ export const DatePicker: FunctionComponent<
     if (currentDate) {
       setOptions(columns())
     }
-  }, [currentDate])
+  }, [])
 
   return (
     <div

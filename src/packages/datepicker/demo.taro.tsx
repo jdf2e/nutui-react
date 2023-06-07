@@ -20,7 +20,8 @@ const DatePickerDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
       basic: '选择日期',
-      showChinese: '显示中文',
+      showChinese: '显示中文-非受控',
+      showChineseControl: '显示中文-受控',
       mmdd: '选择月日',
       showAll: '选择年月日时分',
       time: '选择时分秒',
@@ -41,7 +42,8 @@ const DatePickerDemo = () => {
     },
     'zh-TW': {
       basic: '選擇日期',
-      showChinese: '顯示中文',
+      showChinese: '顯示中文-非受控',
+      showChineseControl: '顯示中文-受控',
       mmdd: '選擇月日',
       showAll: '選擇年月日時分',
       time: '選擇時分秒',
@@ -62,7 +64,8 @@ const DatePickerDemo = () => {
     },
     'en-US': {
       basic: 'Choose Date',
-      showChinese: 'Show Chinese',
+      showChinese: 'Show Chinese unControlled',
+      showChineseControl: 'Show Chinese controlled',
       mmdd: 'Choose Month-Day',
       showAll: 'Choose DateTime',
       time: 'Choose Time',
@@ -90,6 +93,7 @@ const DatePickerDemo = () => {
     defaultValue.getMonth() + 1
   }-${defaultValue.getDate()}`
   const [desc1, setDesc1] = useState(defaultDescription)
+  const [desc10, setDesc10] = useState('')
   const [desc2, setDesc2] = useState(
     `${defaultValue.getMonth() + 1}-${defaultValue.getDate()}`
   )
@@ -101,6 +105,7 @@ const DatePickerDemo = () => {
   const [desc8, setDesc8] = useState('10:10')
 
   const [show1, setShow1] = useState(false)
+  const [show10, setShow10] = useState(false)
   const [show2, setShow2] = useState(false)
   const [show3, setShow3] = useState(false)
   const [show4, setShow4] = useState(false)
@@ -109,8 +114,17 @@ const DatePickerDemo = () => {
   const [show7, setShow7] = useState(false)
   const [show8, setShow8] = useState(false)
 
+  const [value, setValue] = useState('2023/01/01')
+
   const confirm1 = (options: PickerOption[], values: (string | number)[]) => {
+    console.log('options confirm1', options)
     setDesc1(options.map((option) => option.text).join(' '))
+  }
+
+  const confirm10 = (options: PickerOption[], values: (string | number)[]) => {
+    console.log('options confirm1', options)
+    setValue(options.map((option) => option.text).join(' '))
+    setDesc10(options.map((option) => option.text).join(' '))
   }
 
   const confirm2 = (options: PickerOption[], values: (string | number)[]) => {
@@ -213,6 +227,11 @@ const DatePickerDemo = () => {
           description={desc1}
           onClick={() => setShow1(true)}
         />
+        <Cell
+          title={translated.showChineseControl}
+          description={desc10}
+          onClick={() => setShow10(true)}
+        />
         <h2>{translated.mmdd}</h2>
         <Cell
           title={translated.setStartEnd}
@@ -260,11 +279,20 @@ const DatePickerDemo = () => {
           title={translated.basic}
           visible={show1}
           defaultValue={new Date(`${defaultDescription}`)}
-          // value={defaultValue}
           showChinese
           onClose={() => setShow1(false)}
           threeDimensional={false}
           onConfirm={(options, values) => confirm1(options, values)}
+        />
+        {/* 选择日期 */}
+        <DatePicker
+          title={translated.basic}
+          visible={show10}
+          value={new Date(value)}
+          showChinese
+          onClose={() => setShow10(false)}
+          threeDimensional={false}
+          onConfirm={(options, values) => confirm10(options, values)}
         />
         {/* 选择月日 */}
         <DatePicker
