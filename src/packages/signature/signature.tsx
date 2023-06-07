@@ -153,7 +153,7 @@ const InternalSignature: ForwardRefRenderFunction<
   return (
     <div className={`${classPrefix} ${className}`} style={style} {...rest}>
       <div className={`${classPrefix}__inner`} ref={wrapRef}>
-        {!isCanvasSupported() ? (
+        {isCanvasSupported() ? (
           <canvas ref={canvasRef} height={canvasHeight} width={canvasWidth} />
         ) : (
           <>
