@@ -302,7 +302,14 @@
 - 增加 onClickOverlay，支持点击overlay时，触发事件。
 
 #### Drag
-#### Infiniteloading
+#### InfiniteLoading
+- `useCapture` 重命名为 `capture`
+- `onScrollChange` 重命名为 `onScroll`
+- `isOpenRefresh` 重命名为 `pullRefresh`
+- `pullText` 重命名为 `pullingText`
+- `loadText` 重命名为 `loadingText`
+- `containerId` 重命名为 `target`, 并去掉useWindow，改用target
+- pullingText和loadingText类型改成ReactNode
 #### Notify
 - 删除 `color` 和 `background`, 通过css变量实现
 - 修改 onClosed 为 onClose，规范命名，关闭时触发。

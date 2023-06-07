@@ -704,8 +704,8 @@
           "author": "liukun"
         },
         {
-          "version": "1.0.0",
-          "name": "Infiniteloading",
+          "version": "2.0.0",
+          "name": "InfiniteLoading",
           "type": "component",
           "tarodoc": true,
           "cName": "滚动加载",
