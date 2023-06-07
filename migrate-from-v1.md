@@ -477,6 +477,8 @@
 - `onSorter` 重命名为 `onSort`
 - 合并 `summary` 与 `noData` 的样式处理
 #### Tag
+- `color` 更名为 `background`
+- `textColor` 更名为 `color`
 
 #### TrendArrow
 
@@ -510,5 +512,17 @@
 - `top` 重命名为 `gapY`
 - add文档类型进行规范说明
 #### Card
+
 #### Signature
+
+- `type` 类型改为 `png｜jpg`
+- `unSupportTpl` 重命名为 `unsupported`, 类型改为 `ReactNode`
+- 新增 `confirm`和`clear` ref 的方法，去掉组件里面的 `button`, demo 中自定义按钮点击事件
+
 #### TimeSelect
+- 移除 height，通过 style 设置高度
+- title 类型修改为 ReactNode
+- onPannelChange 重命名为 onDateChange
+- 移除 dates、times，合并为 options，重新设计了数据结构
+- 增加 optionKey 用于自定义数据中的关键字
+- 移除 currentKey，新增 defaultValue 用于设置默认选项，支持时间选择
