@@ -108,10 +108,10 @@ export const DatePicker: FunctionComponent<
   }
   const [currentDate, setCurrentDate] = usePropsValue<Date | null>({
     value: props.value && formatValue(props.value),
-    defaultValue: props.defaultValue && formatValue(props.defaultValue),
+    defaultValue: formatValue(props.defaultValue || null),
     finalValue: null,
     onChange: (val: Date | null) => {
-      console.log('onChange', val)
+      // console.log('onChange', val)
     },
   })
 
@@ -368,21 +368,11 @@ export const DatePicker: FunctionComponent<
     return val || []
   }
 
-  // useEffect(() => {
-  //   setCurrentDate(formatValue(defaultValue || null))
-  // }, [defaultValue])
-
-  // useEffect(() => {
-  //   if (currentDate) {
-  //     setOptions(columns())
-  //   }
-  // }, [currentDate])
-
   useEffect(() => {
     if (currentDate) {
       setOptions(columns())
     }
-  }, [])
+  }, [currentDate])
 
   return (
     <div
