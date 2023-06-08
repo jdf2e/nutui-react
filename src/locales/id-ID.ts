@@ -65,7 +65,7 @@ const idID: BaseLang = {
   },
   signature: {
     reSign: 'Masuk Kembali',
-    unSupportTpl: `Maaf, browser Anda saat ini tidak mendukung Canvas, sehingga kita tidak dapat menggunakan kontrol ini!`,
+    unsupported: `Maaf, browser Anda saat ini tidak mendukung Canvas, sehingga kita tidak dapat menggunakan kontrol ini!`,
   },
   ecard: {
     chooseText: 'Pilih',

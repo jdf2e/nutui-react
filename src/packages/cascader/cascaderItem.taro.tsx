@@ -5,7 +5,6 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { Loading, Checklist } from '@nutui/icons-react-taro'
-import bem from '@/utils/bem'
 
 interface OptiosInfo {
   text: string
@@ -26,7 +25,7 @@ export interface CascaderItemProps {
     children?: OptiosInfo[]
   }
   checked: boolean
-  checkedIcon: string
+  activeIcon: string
   activeColor: string
   chooseItem: (data: any) => void
 }
@@ -42,7 +41,7 @@ const defaultProps = {
   },
   activeColor: '',
   checked: false,
-  checkedIcon: 'checklist',
+  activeIcon: 'checklist',
   chooseItem: () => {},
 } as CascaderItemProps
 
@@ -50,31 +49,33 @@ const InternalCascaderItem: ForwardRefRenderFunction<
   unknown,
   PropsWithChildren<Partial<CascaderItemProps>>
 > = (props, ref) => {
-  const { data, checked, checkedIcon, chooseItem, activeColor } = {
+  const { data, checked, activeIcon, chooseItem, activeColor } = {
     ...defaultProps,
     ...props,
   }
 
-  const b = bem('cascader-item')
-
+  const classPrefix = 'nut-cascader-item'
   const classes = classNames(
     {
       active: checked,
       disabled: data.disabled,
     },
-    b('')
+    classPrefix
   )
-
   const classesTitle = classNames({
-    [`${b('')}__title`]: true,
+    [`${classPrefix}__title`]: true,
   })
 
   const renderIcon = () => {
     if (checked) {
-      if (isValidElement(checkedIcon)) {
-        return checkedIcon
+      if (isValidElement(activeIcon)) {
+        return activeIcon
       }
-      return <Checklist className={`${checked ? b('icon-check') : ''}`} />
+      return (
+        <Checklist
+          className={`${checked ? `${classPrefix}__icon-check` : ''}`}
+        />
+      )
     }
     return null
   }

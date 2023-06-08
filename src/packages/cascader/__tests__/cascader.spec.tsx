@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Cascader } from '../cascader'
 
@@ -292,20 +292,22 @@ describe('Cascader', () => {
       <Cascader
         value={['福建', '福州', '鼓楼区']}
         options={mockKeyConfigOptions}
-        valueKey="name"
-        textKey="name"
-        childrenKey="items"
+        optionKey={{
+          valueKey: 'name',
+          textKey: 'name',
+          childrenKey: 'items',
+        }}
       />
     )
     expect(container).toMatchSnapshot()
   })
 
-  it('options with convertConfig', async () => {
+  it('options with format', async () => {
     const { container } = render(
       <Cascader
         value={['广东省', '广州市']}
         options={mockConvertOptions}
-        convertConfig={{
+        format={{
           topId: 0,
           idKey: 'nodeId',
           pidKey: 'nodePid',
@@ -327,7 +329,7 @@ describe('Cascader', () => {
     const { container } = render(
       <Cascader
         visible
-        value={['福建', '福州', '鼓楼区']}
+        defaultValue={['福建', '福州', '鼓楼区']}
         options={mockOptions}
       />
     )
@@ -336,11 +338,9 @@ describe('Cascader', () => {
     // 点击叶子节点时关闭popup
     const el = container.querySelectorAll('.nut-cascader-pane')[2].childNodes[0]
     fireEvent.click(el)
-    // expect(
-    //   container.querySelectorAll('.nut-cascader-pane')[2].childNodes[0]
-    // ).toEqual(
-    //   '<div class="active nut-cascader-item"><div class="nut-cascader-item__title">鼓楼区</div><i class="nut-cascader-item__icon-check nut-icon nutui-iconfont nut-icon-checklist"/></div>'
-    // )
+    expect(
+      container.querySelectorAll('.nut-cascader-pane')[2].childNodes[0]
+    ).toMatchSnapshot()
   })
 
   it('value', async () => {
@@ -358,21 +358,23 @@ describe('Cascader', () => {
     const { container } = render(
       <Cascader
         visible
-        value={['福建', '福州', '鼓楼区']}
+        defaultValue={['福建', '福州', '鼓楼区']}
         options={mockOptions}
         onChange={change}
         onPathChange={pathChange}
       />
     )
     // 模拟点击
-    const pane = container.querySelectorAll('.nut-cascader-pane')[2]
-    fireEvent.click(pane)
-    const item = pane.childNodes[0]
-    // console.log('item', item)
-    fireEvent.click(item)
-    // let pathChange: any = container.emitted().pathChange[0];
-    expect(pathChange).toBeCalled()
-    // ...
+    await waitFor(() => {
+      const pane = container.querySelectorAll('.nut-cascader-pane')[2]
+      fireEvent.click(pane)
+      const item = pane.childNodes[0]
+      // console.log('item', item)
+      fireEvent.click(item)
+      // let pathChange: any = container.emitted().pathChange[0];
+      expect(pathChange).toBeCalled()
+      // ...
+    })
   })
 
   // it('value with lazy', async () => {
@@ -381,7 +383,7 @@ describe('Cascader', () => {
   //       visible
   //       value={['A0', 'A12', 'A21']}
   //       lazy
-  //       lazyLoad={(node: any, resolve: (children: any) => void) => {
+  //       onLoad={(node: any, resolve: (children: any) => void) => {
   //         setTimeout(() => {
   //           if (node.root) {
   //             resolve([
@@ -411,7 +413,7 @@ describe('Cascader', () => {
     const { container } = render(
       <Cascader
         lazy
-        lazyLoad={(node: any, resolve: (children: any) => void) => {
+        onLoad={(node: any, resolve: (children: any) => void) => {
           setTimeout(() => {
             setTimeout(() => {
               // root表示第一层数据

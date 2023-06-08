@@ -1,43 +1,40 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent } from 'react'
+import classNames from 'classnames'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { usePropsValue } from '@/utils/use-props-value'
+import TabbarItem from '../tabbaritem/index.taro'
 
-import bem from '@/utils/bem'
-
-export interface TabbarProps {
-  visible: number | string
-  activeVisible?: number | string
-  bottom: boolean
-  size: string | number
-  unactiveColor: string
+export interface TabbarProps extends BasicComponent {
+  defaultValue: number
+  value?: number
+  fixed: boolean
+  inactiveColor: string
   activeColor: string
-  safeAreaInsetBottom: boolean
-  className: string
-  style: React.CSSProperties
-  onSwitch: (child: React.ReactElement<any>, active: number) => void
-  children?: React.ReactNode
+  safeArea: boolean
+  onSwitch: (value: number) => void
 }
 
 const defaultProps = {
-  visible: 0,
-  bottom: false,
-  size: 20,
-  unactiveColor: '',
+  ...ComponentDefaults,
+  defaultValue: 0,
+  fixed: false,
+  inactiveColor: '',
   activeColor: '',
-  safeAreaInsetBottom: false,
-  className: '',
-  style: {},
-  onSwitch: (child, activeVisible) => {},
+  safeArea: false,
+  onSwitch: (value) => {},
 } as TabbarProps
 
-export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
+export const Tabbar: FunctionComponent<Partial<TabbarProps>> & {
+  Item: typeof TabbarItem
+} = (props) => {
   const {
     children,
-    visible,
-    activeVisible,
-    bottom,
-    size,
+    defaultValue,
+    value,
+    fixed,
     activeColor,
-    unactiveColor,
-    safeAreaInsetBottom,
+    inactiveColor,
+    safeArea,
     className,
     style,
     onSwitch,
@@ -45,54 +42,43 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> = (props) => {
     ...defaultProps,
     ...props,
   }
+  const classPrefix = 'nut-tabbar'
 
-  const b = bem('tabbar')
-
-  const [selectIndex, setSelectIndex] = useState(activeVisible || visible)
-
-  const handleClick = (idx: number) => {
-    if (!('activeVisible' in props)) {
-      setSelectIndex(idx)
-    }
-  }
-
-  useEffect(() => {
-    if (activeVisible !== undefined) {
-      setSelectIndex(activeVisible)
-    }
-  }, [activeVisible])
+  const [selectIndex, setSelectIndex] = usePropsValue<number>({
+    value,
+    defaultValue,
+    finalValue: 0,
+    onChange: onSwitch,
+  })
 
   return (
     <div
-      className={[
-        `${b()}`,
-        bottom ? `${b('bottom')}` : '',
-        safeAreaInsetBottom ? `${b('bottom')} ${b('safebottom')}` : '',
-        className,
-      ].join(' ')}
+      className={classNames(classPrefix, className, {
+        [`${classPrefix}__fixed`]: fixed,
+      })}
       style={style}
     >
-      {React.Children.map(children, (child, idx) => {
-        if (!React.isValidElement(child)) {
-          return null
-        }
-        const childProps = {
-          ...child.props,
-          active: idx === selectIndex,
-          index: idx,
-          unactiveColor,
-          activeColor,
-          size,
-          handleClick: () => {
-            handleClick(idx)
-            onSwitch(child, idx)
-          },
-        }
-        return React.cloneElement(child, childProps)
-      })}
+      <div className={`${classPrefix}__wrap`}>
+        {React.Children.map(children, (child, idx) => {
+          if (!React.isValidElement(child)) {
+            return null
+          }
+          const childProps = {
+            ...child.props,
+            active: idx === selectIndex,
+            index: idx,
+            inactiveColor,
+            activeColor,
+            handleClick: setSelectIndex,
+          }
+          return React.cloneElement(child, childProps)
+        })}
+      </div>
+      {(fixed || safeArea) && <div className={`${classPrefix}__safe-area`} />}
     </div>
   )
 }
 
 Tabbar.defaultProps = defaultProps
 Tabbar.displayName = 'NutTabbar'
+Tabbar.Item = TabbarItem

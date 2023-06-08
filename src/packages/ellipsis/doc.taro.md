@@ -1,10 +1,10 @@
 #  Ellipsis组件
 
-### 介绍
+## 介绍
 
 展示空间不足时，隐去部分内容并用“...”替代。
 
-### 安装
+## 安装
 
 ```js
 import { Ellipsis } from '@nutui/nutui-react-taro';
@@ -124,26 +124,44 @@ export default App;
 ```
 :::
 
-## API
+### 自定义宽度
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Ellipsis, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  const content =
+    'NutUI3.0上线后我们研发团队也在不断的优化、测试、使用、迭代 Vue3 的相关组件，但是在跨端小程序的开发过程中，发现没有合适的组件库可以支持多端开发。为了填补这一空白，同时为了优化开发者体验，让 NutUI 能够为更多的开发者带来便利，我们决定在 NutUI 中增加小程序多端适配的能力。'
+  return (
+    <Cell>
+    <Ellipsis content={content} direction="end" width={100}/>
+    </Cell>
+  );
+};
+export default App;
+```
+:::
+
+## Ellipsis
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
+| 属性 | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
-| content         | 文本内容               | string | -                |
-| direction         | 省略位置               | 'start' \| 'end' \| 'middle' | `end`               |
-| rows         | 展示几行               | number | `1`              |
-| expandText         | 展开操作的文案               | string | -              |
-| collapseText         | 收起操作的文案               | string | -               |
-| symbol         | 省略的符号     | string | `...`       |
-| lineHeight          | 容器的行高     | string、number | `20`       |
+| content         | 文本内容               | `string` | `-`                |
+| direction         | 省略位置               | `'start' \| 'end' \| 'middle'` | `end`               |
+| rows         | 展示几行               | `number` | `1`              |
+| expandText         | 展开操作的文案               | `string` | `-`              |
+| collapseText         | 收起操作的文案               | `string` | `-`               |
+| symbol         | 省略的符号     | `string` | `...`       |
+| lineHeight          | 容器的行高     | `string \| number` | `20`       |
+| lineHeight          | 容器的行高     | `string \| number` | `auto`       |
+| onClick  | 文本点击是触发 | `() => void` | `-` |
+| onChange  | 点击展开收起时触发 | `(type: string) => void` | `-` |
 
-### Events
-
-| 事件名 | 说明           | 回调参数     |
-|--------|----------------|--------------|
-| onClick  | 文本点击是触发 | -- |
-| onChange  | 点击展开收起时触发 | -- |
 
 
 ## 主题定制
@@ -152,6 +170,6 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-ellipsis-expand-collapse-color | `#3460fa` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| --nutui-ellipsis-expand-collapse-color | 展示和收起的按钮颜色 | `#3460fa` |

@@ -24,6 +24,7 @@ export interface ButtonProps extends BasicComponent {
   loading: boolean
   disabled: boolean
   icon: React.ReactNode
+  id: string
   onClick: (e: MouseEvent) => void
 }
 

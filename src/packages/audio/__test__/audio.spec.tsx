@@ -17,7 +17,7 @@ test('className && style && type = progress  && onPause  && onFastBack && onForw
           className="audio-jest"
           style={{ fontSize: '20px' }}
           type="progress"
-          autoplay
+          autoPlay
           src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
           onEnd={playeEnd}
           onPause={pause}

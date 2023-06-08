@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Jd } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
-import { Infiniteloading } from './infiniteloading'
+import { InfiniteLoading } from './infiniteloading'
 import Cell from '@/packages/cell'
 import Toast from '@/packages/toast'
 import './demo.scss'
@@ -38,7 +38,7 @@ const InfiniteloadingDemo = () => {
     },
   })
 
-  const [defultList, setDefultList] = useState<string[]>([])
+  const [defaultList, setDefaultList] = useState<string[]>([])
   const [customList, setCustomList] = useState<string[]>([])
   const [refreshList, setRefreshList] = useState<string[]>([])
   const [hasMore, setHasMore] = useState(true)
@@ -51,14 +51,14 @@ const InfiniteloadingDemo = () => {
 
   const loadMore = (done: () => void) => {
     setTimeout(() => {
-      const curLen = defultList.length
+      const curLen = defaultList.length
       for (let i = curLen; i < curLen + 10; i++) {
-        defultList.push(`${i}`)
+        defaultList.push(`${i}`)
       }
-      if (defultList.length >= 30) {
+      if (defaultList.length >= 30) {
         setHasMore(false)
       } else {
-        setDefultList([...defultList])
+        setDefaultList([...defaultList])
       }
       done()
     }, 500)
@@ -96,18 +96,18 @@ const InfiniteloadingDemo = () => {
 
   const refresh = (done: () => void) => {
     setTimeout(() => {
-      Toast.text(translated['83913e71'])
+      Toast.show(translated['83913e71'])
       done()
     }, 1000)
   }
 
   const init = () => {
     for (let i = 0; i < 10; i++) {
-      defultList.push(`${i}`)
+      defaultList.push(`${i}`)
       customList.push(`${i}`)
       refreshList.push(`${i}`)
     }
-    setDefultList([...defultList])
+    setDefaultList([...defaultList])
     setCustomList([...customList])
     setRefreshList([...refreshList])
   }
@@ -118,32 +118,35 @@ const InfiniteloadingDemo = () => {
         <h2>{translated['84aa6bce']}</h2>
         <Cell>
           <ul className="infiniteUl" id="scroll">
-            <Infiniteloading
-              containerId="scroll"
-              useWindow={false}
+            <InfiniteLoading
+              target="scroll"
               hasMore={hasMore}
               onLoadMore={loadMore}
             >
-              {defultList.map((item, index) => {
+              {defaultList.map((item, index) => {
                 return (
                   <li className="infiniteLi" key={index}>
                     {item}
                   </li>
                 )
               })}
-            </Infiniteloading>
+            </InfiniteLoading>
           </ul>
         </Cell>
 
         <h2>{translated.eb4236fe}</h2>
         <Cell>
           <ul className="infiniteUl" id="refreshScroll">
-            <Infiniteloading
-              pullIcon={<Jd />}
-              loadIcon={<Jd />}
-              containerId="refreshScroll"
-              useWindow={false}
-              isOpenRefresh
+            <InfiniteLoading
+              pullingText={
+                <>
+                  <Jd />
+                  <span style={{ fontSize: '10px' }}>松开刷新</span>
+                </>
+              }
+              loadingText={<Jd />}
+              target="refreshScroll"
+              pullRefresh
               hasMore={refreshHasMore}
               onLoadMore={refreshLoadMore}
               onRefresh={refresh}
@@ -155,16 +158,15 @@ const InfiniteloadingDemo = () => {
                   </li>
                 )
               })}
-            </Infiniteloading>
+            </InfiniteLoading>
           </ul>
         </Cell>
 
         <h2>{translated['9ed40460']}</h2>
         <Cell>
           <ul className="infiniteUl" id="customScroll">
-            <Infiniteloading
-              containerId="customScroll"
-              useWindow={false}
+            <InfiniteLoading
+              target="customScroll"
               loadingText="loading"
               loadMoreText={translated['1254a90a']}
               hasMore={customHasMore}
@@ -177,7 +179,7 @@ const InfiniteloadingDemo = () => {
                   </li>
                 )
               })}
-            </Infiniteloading>
+            </InfiniteLoading>
           </ul>
         </Cell>
       </div>

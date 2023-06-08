@@ -12,7 +12,7 @@ function sleep(delay = 0): Promise<void> {
 interface PickerOption {
   text: string | number
   value: string | number
-  disabled?: string
+  disabled?: boolean
   children?: PickerOption[]
   className?: string | number
 }
@@ -87,7 +87,7 @@ const multistageColumns = [
 ]
 
 test('renderLabel works', async () => {
-  const { container } = render(<Picker visible listData={simpleColumns} />)
+  const { container } = render(<Picker visible options={simpleColumns} />)
   expect(container.textContent?.replace(/-/g, '')).toContain(
     '取消确认南京市无锡市海北藏族自治区北京市连云港市'
   )
@@ -98,8 +98,8 @@ test('simple list-data confirm  event', async () => {
   const { container } = render(
     <Picker
       visible
-      listData={simpleColumns}
-      onConfirm={(value) => confirm(value)}
+      options={simpleColumns}
+      onConfirm={(options, value) => confirm(value)}
     />
   )
   const confirmBtn = container.querySelectorAll('.nut-picker__confirm-btn')[0]
@@ -110,7 +110,7 @@ test('simple list-data confirm  event', async () => {
 test('simple list-data close event', async () => {
   const cancel = jest.fn()
   const { container } = render(
-    <Picker visible listData={simpleColumns} onClose={cancel} />
+    <Picker visible options={simpleColumns} onClose={cancel} />
   )
   const cancelBtn = container.querySelectorAll('.nut-picker__cancel-btn')[0]
   fireEvent.click(cancelBtn)
@@ -122,9 +122,9 @@ test('simple list-data default checked item', async () => {
   const { container } = render(
     <Picker
       visible
-      listData={simpleColumns}
-      defaultValueData={['WuXi']}
-      onConfirm={(value) => confirm(value)}
+      options={simpleColumns}
+      defaultValue={['WuXi']}
+      onConfirm={(options, value) => confirm(value)}
     />
   )
   const confirmBtn = container.querySelectorAll('.nut-picker__confirm-btn')[0]
@@ -137,8 +137,8 @@ test('multiple list-data render', async () => {
   const { container } = render(
     <Picker
       visible
-      listData={multipleColumns}
-      onConfirm={(value) => confirm(value)}
+      options={multipleColumns}
+      onConfirm={(options, value) => confirm(value)}
     />
   )
   const confirmBtn = container.querySelectorAll('.nut-picker__confirm-btn')[0]
@@ -153,8 +153,8 @@ test('multistageColumns list-data render', async () => {
   const { container } = render(
     <Picker
       visible
-      listData={multistageColumns}
-      onConfirm={(value) => confirm(value)}
+      options={multistageColumns}
+      onConfirm={(options, value) => confirm(value)}
     />
   )
   const confirmBtn = container.querySelectorAll('.nut-picker__confirm-btn')[0]
@@ -176,8 +176,8 @@ test('async list-data render', async () => {
     return (
       <Picker
         visible
-        listData={asyncColumns}
-        onConfirm={(value) => confirm(value)}
+        options={asyncColumns}
+        onConfirm={(options, value) => confirm(value)}
       />
     )
   }

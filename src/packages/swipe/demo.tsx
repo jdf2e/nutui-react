@@ -144,21 +144,21 @@ const SwipeDemo = () => {
 
   const refDom = useRef<SwipeInstance>(null)
   const handleChange = () => {
-    Toast.text(translated.click)
+    Toast.show(translated.click)
   }
   const beforeClose = (postion: string) => {
     Dialog.alert({
       title: translated.tips,
       content:
         postion === 'left' ? translated.chooseTips : translated.deleteTips,
-      onOk: () => {
+      onConfirm: () => {
         refDom.current && refDom.current.close()
       },
     })
   }
 
   const handleClose = () => {
-    Toast.text('close')
+    Toast.show('close')
   }
 
   const closeRef = useRef(null)
@@ -246,7 +246,7 @@ const SwipeDemo = () => {
           }
           onActionClick={handleChange}
           onOpen={({ name, position }) => {
-            Toast.text(translated.open)
+            Toast.show(translated.open)
           }}
           onClose={handleClose}
         >

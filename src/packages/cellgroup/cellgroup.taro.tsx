@@ -7,11 +7,13 @@ export interface CellGroupProps extends BasicComponent {
   title: ReactNode
   description: ReactNode
   children?: ReactNode
+  divider: boolean
 }
 const defaultProps = {
   ...ComponentDefaults,
   title: '',
   description: '',
+  divider: true,
 } as CellGroupProps
 
 const classPrefix = 'nut-cell-group'
@@ -19,7 +21,7 @@ const classPrefix = 'nut-cell-group'
 export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
   props
 ) => {
-  const { children, className, style, title, description, ...rest } = {
+  const { children, className, style, title, description, divider, ...rest } = {
     ...defaultProps,
     ...props,
   }
@@ -29,7 +31,13 @@ export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
       {description ? (
         <div className={`${classPrefix}__description`}>{description}</div>
       ) : null}
-      <div className={`${classPrefix}__wrap`}>{children}</div>
+      <div
+        className={`${classPrefix}__wrap ${
+          divider ? `${classPrefix}__wrap--divider` : ''
+        }`}
+      >
+        {children}
+      </div>
     </div>
   )
 }

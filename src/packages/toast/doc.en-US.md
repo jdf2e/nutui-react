@@ -25,7 +25,7 @@ import { Toast, Cell } from '@nutui/nutui-react';
 
 const App = () => {
     const textToast = (msg: string) => {
-        Toast.text(msg)
+      Toast.show(msg);
     }
     return (
         <>
@@ -53,7 +53,10 @@ import { Toast, Cell } from '@nutui/nutui-react';
 
 const App = () => {
     const titleToast = (msg: string) => {
-        Toast.text(msg,{title: 'title'})
+      Toast.show({
+      	content: msg,
+        title: '标题提示'
+      })
     }
     return (
         <>
@@ -81,7 +84,10 @@ import { Toast, Cell } from '@nutui/nutui-react';
 
 const App = () => {
     const successToast = (msg: string) => {
-        Toast.success(msg)
+      Toast.show({
+        content: msg,
+        icon: 'success'
+      });
     }
     return (
         <>
@@ -110,7 +116,10 @@ import { Toast, Cell } from '@nutui/nutui-react';
 
 const App = () => {
     const errorToast = (msg: string) => {
-        Toast.fail(msg)
+      Toast.show({
+        content: msg,
+        icon: 'fail'
+      });
     }
     return (
         <>
@@ -139,7 +148,10 @@ import { Toast, Cell } from '@nutui/nutui-react';
 
 const App = () => {
     const warningToast = (msg: string) => {
-        Toast.warn(msg)
+      Toast.show({
+        content: msg,
+        icon: 'warn'
+      });
     }
     return (
         <>
@@ -168,7 +180,10 @@ import { Toast, Cell } from '@nutui/nutui-react';
 
 const App = () => {
     const loadingToast = (msg: string) => {
-        Toast.loading(msg)
+      Toast.show({
+        content: msg,
+        icon: 'loading'
+      });
     }
     return (
         <>
@@ -197,7 +212,17 @@ import { Toast, Cell, Button } from '@nutui/nutui-react';
 
 const App = () => {
     const duringToast = (msg: string) => {
-        Toast.text(msg, { duration: 10 })
+      Toast.show({
+        content: msg,
+        duration: 10
+      });
+    }
+    
+    const permanentToast = (msg: string) => {
+      Toast.show({
+        content: msg,
+        duration: 0
+      });
     }
     return (
         <>
@@ -213,7 +238,7 @@ const App = () => {
             
             onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-            ) => {Toast.text('Toast Not Disappear', { duration: 0 })}}
+            ) => permanentToast('Toast Not Disappear')
             />
             <Button
                 style={{ margin: 8 }}
@@ -240,10 +265,13 @@ import { Toast, Cell } from '@nutui/nutui-react';
 
 const App = () => {
     const toastBottom = (msg: string) => {
-        Toast.text(msg, {
-            center: false,
-            bottom: '10%',
-        })
+      Toast.show({
+        content: msg,
+        icon: 'loading',
+        style: {
+          '--nutui-toast-inner-top': '90%'
+        }
+      });
     }
     return (
         <Cell
@@ -261,7 +289,7 @@ export default App
 
 
 
-#### Loading with transparent cover
+#### Loading with non-transparent cover
 
 :::demo
 
@@ -271,19 +299,21 @@ import { Toast, Cell } from '@nutui/nutui-react';
 
 const App = () => {
     const iconToast = (msg: string) => {
-        Toast.loading(msg, {
-        cover: true, 
-        coverColor: 'rgba(0, 0, 0, 0)', 
-        closeOnClickOverlay: true, 
-        onClose: () => {
-            console.log('closeToast')
+      Toast.show({
+        content: msg,
+        style: {
+          '--nutui-overlay-bg-color': 'rgba(0, 0, 0, 0)'
         },
-        })
+        closeOnOverlayClick: true,
+        onClose: () => {
+          console.log('closeToast')
+        },
+      });
     }
     return (
         <>
             <Cell
-            title="Loading with transparent cover"
+            title="Loading with non-transparent cover"
             
             onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
@@ -298,39 +328,35 @@ export default App
 
 
 
-## API
+## Toast
 
-| Methods           | Description              | Attribute          | Return value     |
-| ---------------- | ------------------------------------------- | --------------- | ---------- |
-| Toast.text      | Show text toast   |  message｜ options | toast instance(message support incoming HTML) |
-| Toast.success  | Show success toast     | message｜ options| toast instance |
-| Toast.fail       | Show fail toast   | message｜ options| toast instance|
-| Toast.warn       | Show warn toast    | message｜ options | toast instance |
-| Toast.hide      | Close toast     | clearAll: boolean   | void       |
-| Toast.loading       | Show loading toast      | message｜ options | toast instance |
+`Toast` only supports Imperative calls.
 
 ### Props
 
-| Attribute                | Description              |  Type         | Default                        |
+| Property | Description              |  Type         | Default                        |
 | ------------------- | -------------- | ------------- | ----------------------------- |
-| id                  | Identifier, share one instance at the same time, default to multiple instances| string \| number | -            |
-| duration            | Toast duration(s), won't disappear if value is 0      | number       | `2`                          |
-| title            | title     | string        |           -             |
-| center  | Whether to display in the middle of the page (display at the bottom when false) | boolean | `true`                          |
-| bottom | The distance from the bottom of the page (px or %), which takes effect when option.center is false | string | `30px`       |
-| textAlignCenter     | Whether the multi-line copy is centered           | boolean       | `true`                          |
-| bgColor             | background color (transparency) | string        | `rgba(0, 0, 0, 0.8)`      |
-| customClass         |   Custom Class          | string        |          -                   |
-| icon                | Custom Icon        | string        |         -                   |
-| iconSize   | Custom iconSize      | string        | `20`                           |
-| size        | Text Size **small**/**base**/**large**          | string        | `base`      |
-| cover      | Whether to show the mask layer     | boolean       | `false` |
-| coverColor          |  Cover Color   | string        | `rgba(0,0,0,0)`             |
-| loadingRotate  | Whether the loading icon is rotated, only valid for the loading type  | boolean | `true`                          |
-| onClose             |Callback function after close             | Function      | `null`         |
-| closeOnClickOverlay | Whether to close when overlay is clicked         | boolean       | `false`         |
+| content | Toast content | `React.ReactNode` | - |
+| duration            | Toast duration(s), won't disappear if value is 0      | `number`     | `2`                          |
+| position | Vertical position of toast | `'top' \|'center' \|'bottom'` | `'center'` |
+| title            | title     | `string`      |           -             |
+| icon | Toast icon | `'success' \|'fail' \|'loading' \|'warn' \|React.ReactNode` | - |
+| size        | Text Size **small**/**base**/**large**          | `string`      | `base`      |
+| className | Toast mask class name | `string` | - |
+| style |  Toast mask style  | `React.CSSProperties` | -            |
+| contentClassName | Toast content class name | `string` | -                         |
+| contentStyle | Toast content style | `React.CSSProperties` | - |
+| onClose             |Callback function after close             | `() => void` | `null`         |
+| closeOnOverlayClick | Whether to close when overlay is clicked         | `boolean`     | `false`         |
 
+You can also pass in a string directly, and `Toast.show` will automatically use it as `content`.
 
+### Ref
+
+| Property | Description                       | Parameters                                                   |
+| -------- | --------------------------------- | ------------------------------------------------------------ |
+| clear    | Turn off `Toast` in all displays. | -                                                            |
+| config   | Methods for global configuration  | `{ duration: number, position: 'top' \| 'center' \| 'bottom', closeOnOverlayClick: boolean }` |
 
 ## Theming
 
@@ -338,12 +364,13 @@ export default App
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-toast-title-font-size | `16px` |
-| --nutui-toast-text-font-size | `14px` |
-| --nutui-toast-font-color | `#fff` |
-| --nutui-toast-inner-padding | `24px 30px` |
-| --nutui-toast-inner-bg-color | `$gray7` |
-| --nutui-toast-inner-border-radius | `12px` |
-| --nutui-toast-cover-bg-color | `$gray7` |
+| 名称                              | 说明                                     | 默认值             |
+| --------------------------------- | ---------------------------------------- | ------------------ |
+| --nutui-toast-title-font-size     | the title font-size of toast             | `16px`             |
+| --nutui-toast-text-font-size      | the content font-size of toast           | `14px`             |
+| --nutui-toast-font-color          | the text color of toast                  | `#fff`             |
+| --nutui-toast-inner-padding       | the padding value of toast content       | `24px 30px`        |
+| --nutui-toast-inner-bg-color      | the background color of toast content    | `$gray7`           |
+| --nutui-toast-inner-border-radius | the border-radius value of toast content | `12px`             |
+| --nutui-toast-inner-text-align    | the text alignment of toast              | `center`           |
+| --nutui-overlay-bg-color          | the background color of toast mask       | `rgba(0, 0, 0, 0)` |

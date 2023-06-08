@@ -124,8 +124,8 @@ export const Audio: FunctionComponent<
   })
 
   audioCtx.onError((res) => {
-    console.log('code', res.errCode)
-    console.log('message', res.errMsg)
+    console.warn('code', res.errCode)
+    console.warn('message', res.errMsg)
   })
 
   function formatSeconds(value: string) {
@@ -192,9 +192,11 @@ export const Audio: FunctionComponent<
           <div className="time">{currentDuration}</div>
           <div className={b('progress-bar-wrapper')}>
             <Range
-              modelValue={percent}
-              hiddenTag
-              hiddenRange
+              value={percent}
+              onChange={(val: any) => setPercent(val)}
+              currentDescription={null}
+              maxDescription={null}
+              minDescription={null}
               inactive-color="#cccccc"
               active-color="#fa2c19"
             />

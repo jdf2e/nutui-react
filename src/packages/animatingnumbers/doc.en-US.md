@@ -1,10 +1,10 @@
-# AnimatingNumbers 
+# AnimatingNumbers
 
-### Intro
+## Intro
 
 Digital animation collection
 
-### Install
+## Install
 
 ```javascript
 // react
@@ -22,7 +22,7 @@ import React from 'react'
 import { AnimatingNumbers } from '@nutui/nutui-react'
 
 const App = () => {
-  return <AnimatingNumbers.CountUp endNumber="678.94" />
+  return <AnimatingNumbers.CountUp value="678.94" />
 }
 export default App
 ```
@@ -38,7 +38,7 @@ import React, { useEffect, useState } from 'react'
 import { AnimatingNumbers } from '@nutui/nutui-react'
 
 const App = () => {
-  const [endNumber, setEndNumer] = useState('1570.99')
+  const [value, setEndNumer] = useState('1570.99')
   useEffect(() => {
     setInterval(() => {
       setEndNumer(
@@ -50,9 +50,9 @@ const App = () => {
   }, [])
   return (
     <AnimatingNumbers.CountUp
-      endNumber={endNumber}
-      easeSpeed={1.2}
-      maxLen={6}
+      value={value}
+      duration={1.2}
+      length={6}
       className="custom-coutup"
     />
   )
@@ -62,14 +62,14 @@ export default App
 
 :::
 
-## API
+## AnimatingNumbers.CountUp
 
-### AnimatingNumbers.CountUp Props
+### Props
 
-| Props    | Description                             | Type   | Default           |
-| ---------- | ---------------------------------- | ------- | ------ |
-| maxLen     | Set the maximum display length. If the length is insufficient, make up 0 bit by bit | number  | `0`      |
-| endNumer   | The end value,                       | string  | -     |
-| delaySpeed | Wait time for animation execution, in ms          | number  | `300`    |
-| easeSpeed  | Animation execution time, in s               | number  | `1`      |
-| thousands  | 是否有千位分隔符  Whether there are thousands separators                  | boolean | `false`  |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| length | Set the maximum display length, the number of bits is not enough, the number of bits before the zero | `number` | `0` |
+| value | The end value, | `string` | `number` |
+| delay | Wait time for animation execution, in ms | `number` | `300` |
+| duration | Animation execution time, in s | `number` | `1` |
+| thousands | 是否有千位分隔符 Whether there are thousands separators | `boolean` | `false` |

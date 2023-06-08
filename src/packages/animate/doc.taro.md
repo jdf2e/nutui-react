@@ -124,11 +124,11 @@ export default AnimateDemo
 :::
 
 
-## API
+## Animate
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
+| 属性 | 说明                             | 类型   | 默认值           |
 |--------------|----------------------------------|--------|------------------|
 | type         | 动画类型，见下方type值说明               | `AnimateType` | `'shake'`                |
 | action         | 触发方式，'initial'--初始化执行;  'click'--点击执行              | `'initial'  \|  'click'` | `'initial'`             |

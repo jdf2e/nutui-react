@@ -1,35 +1,13 @@
-@import '../toast/toast.scss';
-
-.nut-theme-dark {
-  .nut-range-container {
-    background: $dark5;
-    .min,
-    .max {
-      color: $dark1;
-    }
-    .nut-range {
-      &-mark-text {
-        color: $dark2;
-      }
-      &-button {
-        .number {
-          color: $dark1;
-        }
-      }
-    }
-  }
-}
-
 .nut-range-container {
   display: flex;
   position: relative;
   width: 100%;
-  height: 4px;
+  height: $range-height;
   align-items: center;
   .min,
   .max {
     font-size: $font-size-1;
-    color: $range-tip-font-color;
+    color: $range-font-color;
     user-select: none;
   }
   &-vertical {
@@ -37,7 +15,7 @@
     flex-direction: column;
     padding: 0px 15px;
     .nut-range {
-      width: 4px;
+      width: $range-height;
       height: 100%;
       &-button {
         &-wrapper,
@@ -61,7 +39,7 @@
         transform: translate3d(100%, 0, 0);
       }
       &-vertical {
-        margin: 10px 0px;
+        margin: $range-margin 0px;
       }
       &-mark {
         position: absolute;
@@ -85,11 +63,6 @@
         word-break: keep-all;
         user-select: none;
         transform: translateY(-50%);
-        &-active {
-          .nut-range-tick {
-            background: $range-bar-bg-color;
-          }
-        }
       }
       &-tick {
         position: absolute;
@@ -99,7 +72,11 @@
         height: 11px;
         margin-left: -0px;
         border-radius: 50%;
-        background-color: $range-bg-color-tick;
+        background: $range-inactive-color;
+
+        &.active {
+          background: $range-active-color;
+        }
       }
     }
   }
@@ -108,8 +85,9 @@
   display: block;
   position: relative;
   width: 100%;
-  height: 4px;
-  background-color: $range-bg-color;
+  height: $range-height;
+  margin: 0 $range-margin;
+  background-color: $range-inactive-color;
   border-radius: 2px;
   cursor: pointer;
   &::before {
@@ -126,19 +104,19 @@
     position: relative;
     width: 100%;
     height: 100%;
-    background: $range-bar-bg-color;
+    background: $range-active-color;
     border-radius: inherit;
     transition: all 0.2s;
   }
 
   &-button {
     display: block;
-    width: $range-bar-btn-width;
-    height: $range-bar-btn-height;
-    background-color: $range-bar-btn-bg-color;
+    width: $range-button-width;
+    height: $range-button-height;
+    background: $range-button-background;
     border-radius: 50%;
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.15);
-    border: $range-bar-btn-border;
+    border: $range-button-border;
     outline: none;
 
     &-wrapper,
@@ -170,7 +148,7 @@
       justify-content: center;
       user-select: none;
       font-size: $font-size-1;
-      color: $range-tip-font-color;
+      color: $range-font-color;
       transform: translate3d(0, -100%, 0);
     }
   }
@@ -183,9 +161,6 @@
     .nut-range-button-wrapper-right {
       cursor: not-allowed;
     }
-  }
-  &-show-number {
-    margin: 0 15px;
   }
 
   &-mark {
@@ -206,20 +181,19 @@
     word-break: keep-all;
     user-select: none;
     transform: translateX(-50%);
-    &-active {
-      .nut-range-tick {
-        background: $range-bar-bg-color;
-      }
-    }
   }
+
   &-tick {
     position: absolute;
     top: -20px;
     width: 11px;
     height: 11px;
-    // margin-left: -11px;
     left: 0px;
     border-radius: 50%;
-    background-color: $range-bg-color-tick;
+    background: $range-inactive-color;
+
+    &.active {
+      background: $range-active-color;
+    }
   }
 }

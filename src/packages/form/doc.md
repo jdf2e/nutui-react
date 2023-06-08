@@ -276,7 +276,7 @@ export default App;
 
 ### Form Props
 
-| 参数        | 说明                                 | 类型   | 默认值 |
+| 属性 | 说明                                 | 类型   | 默认值 |
 |-------------|--------------------------------------|--------|--------|
 | form`v1.4.8` | 经 Form.useForm() 创建的 form 控制实例，不提供时会自动创建 | FormInstance |        |
 | labelPosition | 表单项 label 的位置，默认 Right，可设置为 Top、Left、Right | string |        |
@@ -291,7 +291,7 @@ export default App;
 
 ### Form.Item Props
 
-| 参数                | 说明                         | 类型             | 默认值  |
+| 属性 | 说明                         | 类型             | 默认值  |
 |---------------------|--------------------------------|------------------|---------|
 | required            | 必填表单项 label 的红色星标 | boolean          | `false` |
 | name                | 在使用表单校验功能的情况下，该属性是必填的 | string           | -       |

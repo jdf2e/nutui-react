@@ -1,10 +1,10 @@
 # Range 区间选择器
 
-### 介绍
+## 介绍
 
 滑动输入条，用于在给定的范围内选择一个值。
 
-### 安装
+## 安装
 
 ```javascript
 import { Range } from '@nutui/nutui-react-taro';
@@ -17,24 +17,42 @@ import { Range } from '@nutui/nutui-react-taro';
 :::demo
 
 ```tsx
-import  React from "react";
+import React from "react";
 import { Range, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
-    const cellStyle = {
-        padding: '40px 18px',
-    }
-    return (
-    <>
-        <Cell style={cellStyle}>
-            <Range modelValue={40} />
-        </Cell>
-    </>
-    )
+  const cellStyle = {
+    padding: '40px 18px',
+  };
+  return <Cell style={cellStyle}>
+    <Range defaultValue={40} onEnd={(val) => console.log(`${val}`)} />
+  </Cell>
 };
-
 export default App;
 ```
+
+:::
+
+### 受控方式
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Range, Cell } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  const cellStyle = {
+    padding: '40px 18px',
+  };
+  const [value, setValue] = useState(40)
+  return <Cell style={{cellStyle}}>
+    <Range value={value} onChange={(val) => setValue(val)} />
+  </Cell>
+};
+export default App;
+```
+
 :::
 
 ### 自定义描述
@@ -42,36 +60,26 @@ export default App;
 :::demo
 
 ```tsx
-import  React, {useState} from "react";
-import { Range,Cell,Toast } from '@nutui/nutui-react-taro';
+import React from "react";
+import { Range, Cell, Toast } from '@nutui/nutui-react-taro';
 
 const App = () => {
-    const [value, SetValue] = useState(40)
-    const change = (value: number, name?: string) => {
-        Toast.text(`当前值：${value}`)
-        SetValue(value)
-    }
-    const cellStyle = {
-        padding: '40px 18px',
-    }
-    return (
-    <>
-        <Cell style={cellStyle}>
-           <Range
-            modelValue={value}
-            minDesc="0%"
-            maxDesc="100%"
-            curValueDesc={`${value}%`}
-            onChange={(value) => {
-              change(value)
-            }}
-          />
-        </Cell>
-    </>
-    )
+  const cellStyle = {
+    padding: '40px 18px',
+  };
+  return <Cell style={cellStyle}>
+    <Range
+      defaultValue={40}
+      minDescription="0%"
+      maxDescription="100%"
+      currentDescription={(value) => `${value}%`}
+      onEnd={(val) => console.log(`${val}`)}
+    />
+  </Cell>
 };
 export default App;
 ```
+
 :::
 
 ### 双滑块
@@ -79,34 +87,24 @@ export default App;
 :::demo
 
 ```tsx
-import  React, {useState} from "react";
-import { Range,Cell,Toast } from '@nutui/nutui-react-taro';
+import React from "react";
+import { Range, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
-    const [value0, SetValue0] = useState([30, 60])
-    const change = (value: number, name?: string) => {
-        Toast.text(`当前值：${value}`)
-        SetValue0(value)
-    }
-    const cellStyle = {
-        padding: '40px 18px',
-    }
-    return (
-    <>
-        <Cell style={cellStyle}>
-        <Range
-            range
-            modelValue={value0}
-            onChange={(value) => {
-                change(value)
-            }}
-        />
-        </Cell>
-    </>
-    )
+  const cellStyle = {
+    padding: '40px 18px',
+  }
+  return <Cell style={cellStyle}>
+    <Range
+      defaultValue={[20, 80]}
+      range
+      onEnd={(val) => console.log(`${val}`)}
+    />
+  </Cell>
 };
 export default App;
 ```
+
 :::
 
 ### 指定范围
@@ -114,33 +112,25 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { Range,Cell,Toast } from '@nutui/nutui-react-taro';
+import React from "react";
+import { Range, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
-    const change = (value: number, name?: string) => {
-        Toast.text(`当前值：${value}`)
-    }
-    const cellStyle = {
-        padding: '40px 18px',
-    }
-    return (
-    <>
-        <Cell style={cellStyle}>
-        <Range
-            modelValue={0}
-            max={10}
-            min={-10}
-            onChange={(value) => {
-                change(value)
-            }}
-            />
-        </Cell>
-    </>
-    )
+  const cellStyle = {
+    padding: '40px 18px',
+  }
+  return <Cell style={cellStyle}>
+    <Range
+      defaultValue={0}
+      max={10}
+      min={-10}
+      onEnd={(val) => console.log(`${val}`)}
+    />
+  </Cell>
 };
 export default App;
 ```
+
 :::
 
 ### 设置步长
@@ -148,68 +138,50 @@ export default App;
 :::demo
 
 ```tsx
-import  React, {useState} from "react";
-import { Range,Cell,Toast } from '@nutui/nutui-react-taro';
+import React from "react";
+import { Range, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
-    const [value1, SetValue1] = useState(40)
-    const change = (value: number, name?: string) => {
-        Toast.text(`当前值：${value}`)
-        SetValue1(value)
-    }
-    const cellStyle = {
-        padding: '40px 18px',
-    }
-    return (
-    <>
-        <Cell style={cellStyle}>
-        <Range
-            modelValue={value1}
-            step={5}
-            onChange={(value: any) => {
-                change(value, 'value1')
-            }}
-            />
-        </Cell>
-    </>
-    )
+  const cellStyle = {
+    padding: '40px 18px',
+  }
+  return <Cell style={cellStyle}>
+    <Range
+      defaultValue={30}
+      step={5}
+      onEnd={(val) => console.log(`${val}`)}
+    />
+  </Cell>
 };
 export default App;
 ```
-:::
 
+:::
 
 ### 隐藏范围
 
 :::demo
 
 ```tsx
-import  React  from "react";
-import { Range,Cell,Toast } from '@nutui/nutui-react-taro';
+import React from "react";
+import { Range, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
-    const change = (value: number, name?: string) => {
-        Toast.text(`当前值：${value}`)
-    }
-    const cellStyle = {
-        padding: '40px 18px',
-    }
-    return (
-    <>
-        <Cell style={cellStyle}>
-        <Range
-            modelValue={30}
-            hiddenRange
-            onChange={(value: any) => {
-                change(value)
-            }}
-            />
-        </Cell>
-    </>
-    )
+  const cellStyle = {
+    padding: '40px 18px',
+  }
+  return <Cell style={cellStyle}>
+    <Range
+      defaultValue={30}
+      maxDescription={null}
+      minDescription={null}
+      onEnd={(val) => console.log(`${val}`)}
+    />
+  </Cell>
 };
 export default App;
 ```
+
 :::
 
 
@@ -218,32 +190,24 @@ export default App;
 :::demo
 
 ```tsx
-import  React  from "react";
-import { Range,Cell,Toast } from '@nutui/nutui-react-taro';
+import React from "react";
+import { Range, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
-    const change = (value: number, name?: string) => {
-        Toast.text(`当前值：${value}`)
-    }
-    const cellStyle = {
-        padding: '40px 18px',
-    }
-    return (
-    <>
-        <Cell style={cellStyle}>
-        <Range
-            modelValue={20}
-            hiddenTag
-            onChange={(value: any) => {
-                change(value)
-            }}
-            />
-        </Cell>
-    </>
-    )
+  const cellStyle = {
+    padding: '40px 18px',
+  }
+  return <Cell style={cellStyle}>
+    <Range
+      defaultValue={20}
+      currentDescription={null}
+      onEnd={(val) => console.log(`${val}`)}
+    />
+  </Cell>
 };
 export default App;
 ```
+
 :::
 
 
@@ -252,32 +216,20 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { Range,Cell,Toast } from '@nutui/nutui-react-taro';
+import React from "react";
+import { Range, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
-    const change = (value: number, name?: string) => {
-        Toast.text(`当前值：${value}`)
-    }
-    const cellStyle = {
-        padding: '40px 18px',
-    }
-    return (
-    <>
-        <Cell style={cellStyle}>
-        <Range
-            modelValue={50}
-            disabled
-            onChange={(value: any) => {
-                change(value)
-            }}
-            />
-        </Cell>
-    </>
-    )
+  const cellStyle = {
+    padding: '40px 18px',
+  }
+  return <Cell style={cellStyle}>
+    <Range defaultValue={50} disabled />
+  </Cell>
 };
 export default App;
 ```
+
 :::
 
 ### 自定义样式
@@ -285,34 +237,44 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { Range,Cell,Toast } from '@nutui/nutui-react-taro';
+import React from "react";
+import { Range, ConfigProvider, Cell} from '@nutui/nutui-react-taro';
 
 const App = () => {
-    const change = (value: number, name?: string) => {
-        Toast.text(`当前值：${value}`)
-    }
-    const cellStyle = {
-        padding: '40px 18px',
-    }
-    return (
-    <>
-        <Cell style={cellStyle}>
-        <Range
-            modelValue={40}
-            inactiveColor="rgba(163,184,255,1)"
-            buttonColor="rgba(52,96,250,1)"
-            activeColor="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
-            onChange={(value: number) => {
-                change(value)
-            }}
-            />
-        </Cell>
-    </>
-    )
+  const cellStyle = {
+    padding: '40px 18px',
+  }
+  return <Cell
+    style={{
+      ...cellStyle,
+      display: 'block',
+    }}
+  >
+    <ConfigProvider
+      theme={{
+        nutuiRangeButtonBorder: '1px solid rgba(52,96,250,1)',
+        nutuiRangeActiveColor:
+          'linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)',
+        nutuiRangeInactiveColor: 'rgba(163,184,255,1)',
+        nutuiRangeMargin: '20px',
+        nutuiRangeHeight: '6px',
+      }}
+    >
+      <Range
+        className="test-range"
+        defaultValue={40}
+        style={{ color: 'red' }}
+        marks={{
+          10: 10,
+          20: 20,
+        }}
+      />
+    </ConfigProvider>
+  </Cell>
 };
 export default App;
 ```
+
 :::
 
 
@@ -321,35 +283,35 @@ export default App;
 :::demo
 
 ```tsx
-import  React, {useState} from "react";
-import { Range,Cell,Toast } from '@nutui/nutui-react-taro';
-import "./demo.scss"
+import React, { useState } from "react";
+import { Range, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
-    const [value2, SetValue2] = useState(60)
-    const change = (value: number, name?: string) => {
-        Toast.text(`当前值：${value}`)
-        SetValue2(value)
-    }
-    const cellStyle = {
-        padding: '40px 18px',
-    }
-    return (
-    <>
-        <Cell style={cellStyle}>
-        <Range
-            modelValue={value2}
-            button={<div className="range-custom-button">{value2}</div>}
-            onChange={(value: number) => {
-                change(value, 'value2')
-            }}
-            />
-        </Cell>
-    </>
-    )
+  const cellStyle = {
+    padding: '40px 18px',
+  }
+  const buttonStyle = {
+    width: '26px',
+    color: 'white',
+    fontSize: '10px',
+    lineHeight: '18px',
+    textAlign: 'center',
+    backgroundColor: 'red',
+    borderRadius: '10px',
+  }
+  const [value, setValue] = useState(60)
+  return <Cell style={cellStyle}>
+    <Range
+      value={value}
+      button={<div style={buttonStyle}>{value}</div>}
+      onChange={(val) => setValue(val)}
+      onEnd={(val) => console.log(`${val}`)}
+    />
+  </Cell>
 };
 export default App;
 ```
+
 :::
 
 ### 垂直方向
@@ -357,58 +319,35 @@ export default App;
 :::demo
 
 ```tsx
-import  React, {useState} from "react";
-import { Range,Cell,Toast } from '@nutui/nutui-react-taro';
+import React from "react";
+import { Range, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
-    const [value3, SetValue3] = useState(20)
-    const [value4, SetValue4] = useState([20, 80])
-    const change = (value: number, name?: string) => {
-        Toast.text(`当前值：${value}`)
-        switch (name) {
-        case 'value3':
-            SetValue3(value)
-            break
-        case 'value4':
-            SetValue4(value)
-            break
-        default:
-            break
-        }
-    }
-    const cellStyle = {
-        padding: '40px 18px',
-    }
-    const verticalStyle = {
-        height: '180px',
-        padding: '10px',
-    }
-    return (
-    <Cell style={verticalStyle}>
-        <div style={{ width: '150px' }}>
-        <Range
-            modelValue={value3}
-            vertical
-            onChange={(value: number) => {
-               change(value, 'value3')
-            }}
-        />
-        </div>
-        <div style={{ width: '150px' }}>
-        <Range
-            modelValue={value4}
-            vertical
-            range
-            onChange={(value: number) => {
-               change(value, 'value4')
-            }}
-        />
-        </div>
-    </Cell>
-    )
+  const verticalStyle = {
+    height: '180px',
+    padding: '10px',
+  }
+  return <Cell style={verticalStyle}>
+    <div style={{ width: '150px', height: '100%' }}>
+      <Range
+        defaultValue={20}
+        vertical
+        onEnd={(val) => console.log(`${val}`)}
+      />
+    </div>
+    <div style={{ width: '150px', height: '100%' }}>
+      <Range
+        defaultValue={[20, 80]}
+        vertical
+        range
+        onEnd={(val) => console.log(`${val}`)}
+      />
+    </div>
+  </Cell>
 };
 export default App;
 ```
+
 :::
 
 ### 刻度标记
@@ -416,134 +355,81 @@ export default App;
 :::demo
 
 ```tsx
-import  React, {useState} from "react";
-import { Range,Cell,Toast } from '@nutui/nutui-react-taro';
+import React from "react";
+import { Range, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
-    const [value5, SetValue5] = useState(60)
-    const [value6, SetValue6] = useState([20, 80])
-    const [value7, SetValue7] = useState(60)
-    const [value8, SetValue8] = useState([20, 80])
-    const [marks, SetMarks] = useState({
-        0: 0,
-        20: 20,
-        40: 40,
-        60: 60,
-        80: 80,
-        100: 100,
-    })
-    const change = (value: number, name?: string) => {
-        Toast.text(`当前值：${value}`)
-        switch (name) {
-            case 'value5':
-                SetValue5(value)
-                break
-            case 'value6':
-                SetValue6(value)
-                break
-            case 'value7':
-                SetValue7(value)
-                break
-            case 'value8':
-                SetValue8(value)
-                break
-            default:
-                break
-        }
-    }
-    const cellStyle = {
-        padding: '40px 18px',
-    }
-    const verticalStyle = {
-        height: '180px',
-        padding: '10px',
-    }
-    return (
-    <>
-        <Cell style={cellStyle}>
-          <Range
-            modelValue={value5}
-            hiddenRange
-            marks={marks}
-            onChange={(value: number) => {
-              change(value, 'value5')
-            }}
-          />
-        </Cell>
-        <Cell style={cellStyle}>
-          <Range
-            modelValue={value6}
-            marks={marks}
-            range
-            onChange={(value: number) => {
-              change(value, 'value6')
-            }}
-          />
-        </Cell>
-        <Cell style={verticalStyle}>
-          <Range
-            modelValue={value7}
-            vertical
-            hiddenRange
-            marks={marks}
-            onChange={(value: number) => {
-              change(value, 'value7')
-            }}
-          />
-          <Range
-            modelValue={value8}
-            vertical
-            marks={marks}
-            range
-            onChange={(value: number) => {
-              change(value, 'value8')
-            }}
-          />
-        </Cell>
-    </>
-    )
+  const cellStyle = {
+    padding: '40px 18px',
+  }
+  const verticalStyle = {
+    height: '180px',
+    padding: '10px',
+  }
+  return <>
+    <Cell style={cellStyle}>
+      <Range
+        defaultValue={60}
+        maxDescription={null}
+        minDescription={null}
+        marks={marks}
+        onEnd={(val) => console.log(`${val}`)}
+      />
+    </Cell>
+    <Cell style={cellStyle}>
+      <Range
+        defaultValue={[20, 80]}
+        marks={marks}
+        range
+        onEnd={(val) => console.log(`${val}`)}
+      />
+    </Cell>
+    <Cell style={verticalStyle}>
+      <Range
+        defaultValue={60}
+        vertical
+        maxDescription={null}
+        minDescription={null}
+        marks={marks}
+        onEnd={(val) => console.log(`${val}`)}
+      />
+      <Range
+        defaultValue={[20, 80]}
+        vertical
+        marks={marks}
+        range
+        onEnd={(val) => console.log(`${val}`)}
+      />
+    </Cell>
+  </>
 };
 export default App;
 ```
+
 :::
 
-## API
+## Range
 
 ### Props
 
-| 参数          | 说明                 | 类型             | 默认值                   |
+| 属性          | 说明                 | 类型             | 默认值                   |
 | ------------- | ------------------- | ---------------- | ------------------------ |
-| modelValue    | 当前进度百分比     | number \| number[] | `0`                      |
-| range         | 是否开启双滑块模式 | boolean          | `false`                  |
-| max           | 最大值             | number \| string   | `100`                    |
-| min           | 最小值             | number \| string   | `0`                      |
-| maxDesc`v1.3.12`     | 最大值描述          | number \| string   | -                    |
-| minDesc`v1.3.12`     | 最小值描述          | number \| string   | -                      |
-| curValueDesc`v1.3.12` | 当前值描述          | number \| string   | -                    |
-| step          | 步长               | number \| string   | `1`                      |
-| disabled      | 是否禁用滑块       | boolean          | `false`                  |
-| vertical | 是否竖向展示 | boolean | `false` |
-| hiddenRange   | 是否隐藏范围值     | boolean          | `false`                  |
-| hiddenTag     | 是否隐藏标签       | boolean          | `false`                  |
-| activeColor   | 进度条激活态颜色   | string           | `rgba(250, 44, 25, 1)`   |
-| inactiveColor | 进度条非激活态颜色 | string           | `rgba(255, 163, 154, 1)` |
-| buttonColor   | 按钮颜色           | string           | `rgba(250, 44, 25, 1)`   |
-| marks | 刻度标示| Object{key: number}    | `{}` |
-
-### Events
-
-| 事件名    | 说明                     | 回调参数        |
-| --------- | ------------------------ | --------------- |
-| onChange    | 进度变化且结束拖动后触发 | value: 当前进度 |
-| onDragStart  | 开始拖动时触发           | -               |
-| onDragEnd   | 结束拖动时触发           | -               |
-
-### Slots
-
-| 名称   | 说明           |
-| ------ | -------------- |
-| button | 自定义滑动按钮 |
-
+| defaultValue | 默认进度百分比，非受控 | `number \| number[]` | `0` |
+| value | 当前进度百分比，受控 | `number \| number[]` | `0` |
+| range | 是否开启双滑块模式 | `boolean` | `false` |
+| max | 最大值 | `number`   | `100` |
+| min | 最小值 | `number`   | `0` |
+| maxDescription | 最大值描述，传 `null` 表示隐藏 | `ReactNode` | - |
+| minDescription | 最小值描述，传 `null` 表示隐藏 | `ReactNode` | - |
+| currentDescription | 当前值描述，传 `null` 表示隐藏 | `((value) => ReactNode) | null` | - |
+| step | 步长 | `number` | `1` |
+| disabled | 是否禁用滑块  `boolean` | `false` |
+| vertical | 是否竖向展示 | `boolean` | `false` |
+| marks | 刻度标示| `Object{key: number}` | `{}` |
+| button | 自定义滑动按钮 | `ReactNode` | - |
+| onChange | 进度实时变化，通常在受控方式中与 value 一起使用 | `(value) => void` | - |
+| onStart | 开始拖动时触发 | - | - |
+| onEnd | 结束拖动时触发 | `(value) => void` | - |
 
 ## 主题定制
 
@@ -551,12 +437,14 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-range-tip-font-color | `$gray1` |
-| --nutui-range-bg-color | `rgba(#fa2c19, 0.5)` |
-| --nutui-range-bg-color-tick | `#fa958c` |
-| --nutui-range-bar-btn-bg-color | `$white` |
-| --nutui-range-bar-btn-width | `24px` |
-| --nutui-range-bar-btn-height | `24px` |
-| --nutui-range-bar-btn-border | `1px solid $primary-color` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| --nutui-range-font-color | 字体颜色 | `$gray1` |
+| --nutui-range-margin | 进度条外边距 | `15px` |
+| --nutui-range-height | 进度条的宽度 | `4px` |
+| --nutui-range-active-color | 激活颜色 | `$primary-color` |
+| --nutui-range-inactive-color | 未激活颜色 | `#fa958c` |
+| --nutui-range-button-background | 按钮背景 | `$white` |
+| --nutui-range-button-width | 按钮宽度 | `24px` |
+| --nutui-range-button-height | 按钮高度 | `24px` |
+| --nutui-range-button-border | 按钮边框 | `1px solid $primary-color` |

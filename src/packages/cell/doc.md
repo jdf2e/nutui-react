@@ -1,10 +1,10 @@
 # Cell 单元格
 
-### 介绍
+## 介绍
 
 列表项，可组成列表。
 
-### 安装
+## 安装
 
 ```ts
 import { Cell, CellGroup } from '@nutui/nutui-react'
@@ -22,7 +22,7 @@ import { Cell, Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const testClick = (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
-    Toast.text('点击事件')
+    Toast.show('点击事件')
 }
   return (
     <>
@@ -114,6 +114,26 @@ export default App;
 
 :::
 
+### 垂直居中
+
+通过 `align` 属性可以让 Cell 的左右内容都垂直居中。
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+     <Cell align="center" title="我是标题" description="我是描述" extra="描述文字" />
+  );
+};
+export default App;
+```
+
+:::
+
 ### 链接 | 分组用法
 
 :::demo
@@ -166,19 +186,26 @@ export default App;
 
 :::
 
-### 垂直居中
+### 分组用法
 
-通过 `align` 属性可以让 Cell 的左右内容都垂直居中。
+通过 `divider` 属性可以让单元格之间不显示下边线。
 
 :::demo
 
 ```tsx
 import  React from "react";
-import { Cell } from '@nutui/nutui-react';
+import { CellGroup, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-     <Cell align="center" title="我是标题" description="我是描述" extra="描述文字" />
+     <CellGroup
+        divider={false}
+        title="分组用法"
+        description="单元格之间不显示下边线"
+    >
+        <Cell title="我是标题" extra="描述文字" />
+        <Cell title="我是标题" extra="描述文字" />
+    </CellGroup>
   );
 };
 export default App;
@@ -186,20 +213,19 @@ export default App;
 
 :::
 
-## API
+## CellGroup
+###  Props
 
-
-### CellGroup Prop
-
-| 字段  | 说明     | 类型   | 默认值 |
+| 属性 | 说明     | 类型   | 默认值 |
 |-------|----------|--------|--------|
 | title | 分组标题 | ReactNode | -      |
 | description  | 分组描述 | ReactNode | -      |
+| divider | 单元格之间是否有分割线 | boolean | `true`    |
 
+## Cell 
+### Props
 
-### Cell Prop
-
-| 字段                 | 说明| 类型             | 默认值 |
+| 属性 | 说明| 类型             | 默认值 |
 |--------------------|----------------------------|------------------|--------|
 | title              | 标题|  ReactNode           | -      |
 | description           | 描述 |  ReactNode           | -      |

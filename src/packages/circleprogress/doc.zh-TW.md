@@ -133,9 +133,9 @@ export default App;
 :::
 
 
-## Prop
+### Props
 
-| 字段 | 說明 | 類型 | 默認值
+| 属性 | 說明 | 類型 | 默認值
 |----- | ----- | ----- | -----
 | progress | 百分比 | number \| string | 必傳項，無默認值
 | strokeWidth | 圓弧的寬度 | number \| string | `5`

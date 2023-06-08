@@ -1,6 +1,6 @@
 # Calendar
 
-### introduce
+### Intro
 
 Calendar, tileable/pop-up display
 

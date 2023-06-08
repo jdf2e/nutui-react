@@ -1,7 +1,7 @@
 import React from 'react'
 import * as ReactDOM from 'react-dom/client'
 import App from './App'
-import '../assets/util/touch-emulator' // 适配 h5 示例桌面端预览
+import '@/sites/assets/util/touch-emulator' // 适配 h5 示例桌面端预览
 import '@/sites/assets/styles/reset.scss'
 import { isMobile } from '@/sites/assets/util'
 

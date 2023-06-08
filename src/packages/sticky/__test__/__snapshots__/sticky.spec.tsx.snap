@@ -3,8 +3,8 @@
 exports[`should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="nut-cell "
-    to=""
+    class="nut-cell"
+    style="border-radius: 6px; align-items: flex-start;"
   >
     <div
       class="nut-sticky"

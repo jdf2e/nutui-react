@@ -1,5 +1,4 @@
 import React, {
-  useState,
   useEffect,
   useRef,
   FunctionComponent,
@@ -23,8 +22,6 @@ export interface InputNumberProps extends BasicComponent {
   step: string | number
   digits: string | number
   async: boolean
-  className: string
-  style: React.CSSProperties
   formatter?: (displayValue: string | number) => string
   onPlus: (e: MouseEvent) => void
   onMinus: (e: MouseEvent) => void
@@ -83,9 +80,9 @@ export const InputNumber: FunctionComponent<
   }
   const inputRef = useRef('')
 
-  let [_checked, setChecked] = usePropsValue<string | number>({
-    value: value,
-    defaultValue: defaultValue,
+  const [_checked, setChecked] = usePropsValue<string | number>({
+    value,
+    defaultValue,
   })
 
   useEffect(() => {

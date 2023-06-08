@@ -1,10 +1,10 @@
-# Tag 標籤
+# Tag 標簽
 
-### 介紹
+## 介紹
 
-用于标记和分类的標籤。
+用於標記和分類的標簽。
 
-### 安裝
+## 安裝
 
 ``` javascript
 // react
@@ -12,7 +12,7 @@ import { Tag } from '@nutui/nutui-react';
 
 ```
 
-## 代碼實例
+## 代碼演示
 
 ### 基礎用法
 
@@ -25,10 +25,10 @@ import { Tag } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Tag type="primary">標籤</Tag>
-      <Tag type="success">標籤</Tag>
-      <Tag type="danger">標籤</Tag>
-      <Tag type="warning">標籤</Tag>
+      <Tag type="primary">標簽</Tag>
+      <Tag type="success">標簽</Tag>
+      <Tag type="danger">標簽</Tag>
+      <Tag type="warning">標簽</Tag>
     </>
   )
 }
@@ -48,7 +48,7 @@ import { Tag } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Tag plain>標籤</Tag>
+      <Tag plain>標簽</Tag>
     </>
   )
 }
@@ -57,7 +57,7 @@ export default App;
 
 :::
 
-### 圆角样式
+### 圓角樣式
 
 :::demo
 
@@ -68,7 +68,7 @@ import { Tag } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Tag round type="primary">標籤</Tag>
+      <Tag round type="primary">標簽</Tag>
     </>
   )
 }
@@ -88,7 +88,7 @@ import { Tag } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Tag mark type="primary">標籤</Tag>
+      <Tag mark type="primary">標簽</Tag>
     </>
   )
 }
@@ -97,7 +97,7 @@ export default App;
 
 :::
 
-### 可关闭標籤
+### 可關閉標簽
 
 :::demo
 
@@ -108,7 +108,7 @@ import { Tag } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Tag  closeable onClose={()=>alert('Tag closed')}  type="primary">標籤</Tag>
+      <Tag  closeable onClose={()=>alert('Tag closed')}  type="primary">標簽</Tag>
     </>
   )
 }
@@ -128,18 +128,19 @@ import { Tag } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Tag color="#FA685D">標籤</Tag>
-      <Tag color="#E9E9E9" textColor="#999999">標籤</Tag>
-      <Tag color="#FA2400" plain>標籤</Tag>
+      <Tag background="#FA685D">標簽</Tag>
+      <Tag background="#E9E9E9" color="#999999">標簽</Tag>
+      <Tag background="#FA2400" plain>標簽</Tag>
     </>
   )
 }
 export default App;
 ```
 
+:::
 
 
-### 點擊事件
+### 點選事件
 
 :::demo
 
@@ -150,7 +151,7 @@ import { Tag } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Tag type='primary' onClick={()=>alert('Tag clicked')}>標籤</Tag>
+      <Tag type='primary' onClick={()=>alert('Tag clicked')}>標簽</Tag>
     </>
   )
 }
@@ -173,10 +174,10 @@ const App = () => {
     <>
     {
       isShow? (
-        <Tag type='primary' onClick={()=>alert('Tag clicked')}>標籤</Tag>
+        <Tag type='primary' onClick={()=>alert('Tag clicked')}>標簽</Tag>
       ):null
     }  
-    <Button type='default' size="small" onClick={()=>{setIsShow(false)}} >點擊刪除Tag</Button>
+    <Button type='default' size="small" onClick={()=>{setIsShow(false)}} >點選刪除Tag</Button>
     </>
   )
   
@@ -185,46 +186,41 @@ export default App;
 ```
 
 :::
-## API
+## Tag
 
 ### Props
 
-| 字段       | 說明                                             | 類型         | 默認值       |
-|------------|--------------------------------------------------|------------|-----------|
-| type       | 標籤类型，可选值为primary success danger warning | `string`   | `default` |
-| color      | 標籤颜色                                         | `string`   | -         |
-| textColor | 文本顏色，優先級高於color屬性                    | `string`   | `white`   |
-| plain      | 是否為空心樣式                                   | `boolean`  | `false`   |
-| round      | 是否為圓角樣式                                   | `boolean`  | `false`   |
-| mark       | 是否為標記樣式                                   | `boolean`  | `false`   |
-| closeable  | 是否为可关闭標籤                                 | `boolean\| ReactNode`     | `false`   |
-| closeIcon`v2.0.0`  | 关闭按钮                                    | `ReactNode` | `null`    |
-| iconSize`v2.0.0废弃` | 关闭标签的尺寸                                 | `string \| number`   | `12`       |
-
-### Event
-
-| 事件名稱| 說明     | 回調參數 |
-|----------|----------|----------|
-| onClick    | 點擊事件 | event    |
-| onClose    | 關閉事件 | event    |
+| 屬性 | 說明| 類型               | 預設值       |
+|-------|-------------|------------|-----------|
+| type               | 標簽類型，可選值為primary success danger warning | `string`         | `default` |
+| background | 標簽顏色                                    | `string`         |  `-` |
+| color           | 文本顏色，優先級高於color屬性                       | `string`         | `white`   |
+| plain              | 是否為空心樣式                                 | `boolean`        | `false`   |
+| round              | 是否為圓角樣式                                 | `boolean`        | `false`   |
+| mark               | 是否為標記樣式                                 | `boolean`        | `false`   |
+| closeable          | 是否為可關閉標簽                                | `boolean` | `false`   |
+| closeIcon  | 關閉按鈕                                    | `ReactNode` | `null`    | `-` |
+| onClick    | 點選事件 | `(e: MouseEvent) => void`    | `-` |
+| onClose    | 關閉事件 | `(e?: any) => void`   | `-` |
 
 ## 主題定制
 
-### 樣式變量
+### 樣式變數
 
-組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+組件提供了下列 CSS 變數，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 默認值 |
-| --- | --- |
-| --nutui-tag-padding | ` 0 4px`|
-| --nutui-tag-font-size | ` 12px` |
-| --nutui-tag-default-border-radius | `  4px` |
-| --nutui-tag-round-border-radius | ` 8px` |
-| --nutui-tag-default-background-color | `  #000000` |
-| --nutui-tag-primary-background-color | `  #3460fa` |
-| --nutui-tag-success-background-color | `  #4fc08d` |
-| --nutui-tag-danger-background-color-plain | `  #df3526` |
-| --nutui-tag-warning-background-color | `  #f3812e` |
-| --nutui-tag-default-color | ` #ffffff` |
-| --nutui-tag-border-width | ` 1px` |
-| --nutui-tag-height | ` auto` |
+| 名稱 | 說明 | 預設值 |
+| --- | --- | --- |
+| --nutui-tag-padding | padding 值 | ` 0 4px`|
+| --nutui-tag-font-size | 字號 | ` 12px` |
+| --nutui-tag-border-radius | 圓角 | `4px` |
+| --nutui-tag-height | 高度 |` auto` |
+| --nutui-tag-color | 字色 | ` #ffffff` |
+| --nutui-tag-border-width | 邊寬 | ` 1px` |
+| --nutui-tag-background-color | 背景色 | `  #000000` |
+| --nutui-tag-primary-background-color | 主色背景色 | `  #3460fa` |
+| --nutui-tag-success-background-color | 成功背景色 | `  #4fc08d` |
+| --nutui-tag-warning-background-color | 警告背景色 | `  #f3812e` |
+| --nutui-tag-round-border-radius | round模式下的圓角 | ` 8px` |
+| --nutui-tag-mark-border-radius | mark模式下的圓角 | ` 0 12px 12px 0` |
+

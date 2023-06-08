@@ -7,16 +7,16 @@ import '@testing-library/jest-dom'
 import { VirtualList } from '../virtuallist'
 
 const props = {
-  sourceData: new Array(100).fill(0),
+  list: new Array(100).fill(0),
 }
 describe('props', () => {
   const { getByTestId } = render(
     <>
-      <VirtualList {...props} itemSize={40} data-testid="verticalList" />
+      <VirtualList {...props} itemHeight={40} data-testid="verticalList" />
       <VirtualList
-        horizontal
+        direction="horizontal"
         {...props}
-        itemSize={100}
+        itemHeight={100}
         data-testid="horizontalList"
       />
     </>
@@ -29,7 +29,7 @@ describe('props', () => {
     expect(horizontalListBox).toHaveClass('nut-horizontal-box')
     expect(verticalListBox).toHaveClass('nut-vertical-box')
   })
-  test('itemSize props', () => {
+  test('itemHeight props', () => {
     expect(horizontalListBox.style.width).toBe('10000px')
     expect(verticalListBox.style.height).toBe('4000px')
   })
@@ -38,16 +38,16 @@ describe('props', () => {
 test('renders only visible items', async () => {
   const handleScroll = jest.fn(() => {})
   const boxHeight = 500
-  const itemSize = 66
+  const itemHeight = 66
   const overscan = 2
-  const visibleCount = Math.ceil(boxHeight / itemSize) + overscan
+  const visibleCount = Math.ceil(boxHeight / itemHeight) + overscan
   const { container } = render(
     <VirtualList
       {...props}
-      containerSize={boxHeight}
-      itemSize={itemSize}
+      containerHeight={boxHeight}
+      itemHeight={itemHeight}
       data-testid="scrollList"
-      handleScroll={handleScroll}
+      onScroll={handleScroll}
     />
   )
 

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -9,6 +9,7 @@ export interface ProgressProps extends BasicComponent {
   strokeWidth: string
   showText: boolean
   animated: boolean
+  delay: number
 }
 
 const defaultProps = {
@@ -16,6 +17,7 @@ const defaultProps = {
   percent: 0,
   showText: false,
   animated: false,
+  delay: 0,
 } as ProgressProps
 
 export const Progress: FunctionComponent<
@@ -31,6 +33,7 @@ export const Progress: FunctionComponent<
     showText,
     animated,
     children,
+    delay,
     ...rest
   } = {
     ...defaultProps,
@@ -49,10 +52,29 @@ export const Progress: FunctionComponent<
     background,
   }
 
+  const [displayPercent, setDispalyPercent] = useState(0)
+
   const stylesInner: React.CSSProperties = {
-    width: `${percent}%`,
+    width: `${displayPercent}%`,
     background: color,
   }
+
+  useEffect(() => {
+    setDispalyPercent(percent)
+  }, [percent])
+
+  useEffect(() => {
+    let timer: any = null
+    if (delay) {
+      setDispalyPercent(0)
+      timer = setTimeout(() => {
+        setDispalyPercent(percent)
+      }, delay)
+    }
+    return () => {
+      timer && clearTimeout(timer)
+    }
+  }, [])
 
   return (
     <div className={classNames(classPrefix, className)} style={style} {...rest}>
@@ -61,7 +83,7 @@ export const Progress: FunctionComponent<
           {showText && (
             <div
               className={`${classPrefix}-text`}
-              style={{ left: `${percent}%` }}
+              style={{ left: `${displayPercent}%` }}
             >
               {children || (
                 <div

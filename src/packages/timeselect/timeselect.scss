@@ -1,38 +1,5 @@
 @import '../popup/popup.scss';
-@import '../timepannel/timepannel.scss';
 @import '../timedetail/timedetail.scss';
-
-.nut-theme-dark {
-  .nut-timeselect {
-    background-color: $dark6;
-
-    &__title {
-      background-color: $dark6;
-      color: $dark1;
-    }
-
-    &__content {
-      &-left {
-        background-color: $dark5;
-        color: $dark1;
-
-        .nut-timepannel-active {
-          background-color: $dark6;
-          color: $dark1;
-        }
-      }
-    }
-  }
-
-  .nut-timedetail__item {
-    background-color: $dark4;
-    color: $dark1;
-
-    &-active {
-      background-color: $dark-brand-color;
-    }
-  }
-}
 
 .nut-timeselect {
   background-color: $background-color3;
@@ -45,7 +12,7 @@
     line-height: $timeselect-title-line-height;
     margin-bottom: 10px;
     font-size: $timeselect-title-font-size;
-    background-color: $background-color3;
+    background: $timeselect-title-background;
     color: $title-color;
     text-align: center;
   }
@@ -56,21 +23,24 @@
   }
 
   &__content-left {
-    width: 140px;
-    min-width: 140px;
+    width: $timeselect-date-width;
+    min-width: $timeselect-date-width;
     height: 100%;
     overflow: auto;
-    background-color: $background-color2;
-    color: $title-color;
-
-    .nut-timepannel-active {
-      background-color: $primary-color;
-    }
+    background: $background-color2;
   }
+}
 
-  .nut-timepannel-active {
-    background-color: $background-color3;
-    color: $title-color;
+.nut-timepannel {
+  height: $timeselect-date-height;
+  line-height: $timeselect-date-line-height;
+  text-align: center;
+  color: $timeselect-date-color;
+  font-size: $timeselect-date-font-size;
+
+  &.active {
+    background: $background-color3;
+    color: $timeselect-date-active-color;
     font-weight: 700;
   }
 }

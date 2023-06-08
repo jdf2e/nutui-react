@@ -1,16 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-
 exports[`textarea props test 1`] = `
 <div>
   <div
-    class="nut-textarea  "
+    class="nut-textarea"
   >
     <textarea
       class="nut-textarea__textarea"
       maxlength="20"
       placeholder="请输入内容"
-      style="text-align: left;"
+      rows="2"
     >
       基本用法
     </textarea>

@@ -1,27 +1,25 @@
 import * as React from 'react'
 import classNames from 'classnames'
-import bem from '@/utils/bem'
 import { render, unmount } from '@/utils/render'
+import Overlay from '@/packages/overlay/index'
+import { Check, Loading, Failure, Issue } from '@nutui/icons-react'
+import { BasicComponent } from '@/utils/typings'
 
-export interface NotificationProps {
+export interface NotificationProps extends BasicComponent {
   id?: string
-  style?: React.CSSProperties
-  icon: React.ReactNode
-  msg: string | React.ReactNode
-  bottom: string
+  icon: 'success' | 'fail' | 'loading' | 'warn' | React.ReactNode
+  content: string | React.ReactNode
   duration: number
-  center: boolean
-  type: string
+  position?: 'top' | 'center' | 'bottom'
   title: string
-  customClass: string
   size: string | number
-  textAlignCenter: boolean
-  bgColor: string
-  cover: boolean
-  coverColor: string
-  closeOnClickOverlay: boolean
+  closeOnOverlayClick: boolean
+  contentClassName?: string
+  contentStyle?: React.CSSProperties
   onClose: () => void
 }
+
+const classPrefix = 'nut-toast'
 
 export default class Notification extends React.PureComponent<NotificationProps> {
   static newInstance: (properties: NotificationProps, callback: any) => void
@@ -59,10 +57,33 @@ export default class Notification extends React.PureComponent<NotificationProps>
   }
 
   clickCover() {
-    const { closeOnClickOverlay } = this.props
-    if (closeOnClickOverlay) {
+    const { closeOnOverlayClick } = this.props
+    if (closeOnOverlayClick) {
       this.close()
     }
+  }
+
+  renderIcon() {
+    const { icon } = this.props
+    if (typeof icon === 'string') {
+      let iconNode = null
+      switch (icon) {
+        case 'success':
+          iconNode = <Check />
+          break
+        case 'loading':
+          iconNode = <Loading className="nut-icon-loading" />
+          break
+        case 'fail':
+          iconNode = <Failure />
+          break
+        case 'warn':
+          iconNode = <Issue />
+          break
+      }
+      return <p className={`${classPrefix}__icon-wrapper`}>{iconNode}</p>
+    }
+    return icon
   }
 
   componentDidMount() {
@@ -76,56 +97,47 @@ export default class Notification extends React.PureComponent<NotificationProps>
   render() {
     const {
       id,
-      style,
       icon,
       title,
-      msg,
-      bottom,
-      center,
-      bgColor,
-      coverColor,
-      textAlignCenter,
+      content,
+      position,
       size,
-      customClass,
-      cover,
-      type,
+      closeOnOverlayClick,
+      style,
+      className,
+      contentClassName,
+      contentStyle,
     } = this.props
-    const toastBem = bem('toast')
 
     const classes = classNames({
-      'nut-toast-center': center,
       'nut-toast-has-icon': icon,
-      'nut-toast-cover': cover,
-      'nut-toast-loading': type === 'loading',
-      [`${customClass}`]: true,
       [`nut-toast-${size}`]: true,
     })
     return (
       <>
-        <div
-          className={`${toastBem()} ${classes}`}
-          id={`toast-${id}`}
-          style={{
-            bottom: center ? 'auto' : `${bottom}`,
-            backgroundColor: cover ? coverColor : '',
-            ...style,
-          }}
+        <Overlay
+          visible={true}
+          style={style}
+          className={`${classPrefix}__overlay-default ${className}`}
           onClick={() => {
+            console.log('onclick')
             this.clickCover()
           }}
+          closeOnOverlayClick={closeOnOverlayClick}
         >
-          <div
-            className={toastBem('inner')}
-            style={{
-              textAlign: textAlignCenter ? 'center' : 'left',
-              backgroundColor: bgColor,
-            }}
-          >
-            {icon ? <p className={toastBem('icon-wrapper')}>{icon}</p> : null}
-            {title ? <div className="nut-toast-title">{title}</div> : null}
-            <span className={toastBem('text')}>{msg}</span>
+          <div className={`${classPrefix} ${classes}`} id={`toast-${id}`}>
+            <div
+              className={`${classPrefix}__inner ${classPrefix}-${position} ${contentClassName}`}
+              style={contentStyle}
+            >
+              {this.renderIcon()}
+              {title ? (
+                <div className={`${classPrefix}-title`}>{title}</div>
+              ) : null}
+              <span className={`${classPrefix}-text`}>{content}</span>
+            </div>
           </div>
-        </div>
+        </Overlay>
       </>
     )
   }

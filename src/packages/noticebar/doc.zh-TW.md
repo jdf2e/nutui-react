@@ -1,10 +1,10 @@
 #  NoticeBar 公告欄
 
-### 介紹
+## 介紹
 
 用於循環播放展示一組消息通知。
 
-### 安裝
+## 安裝
 
 ```javascript
 // react
@@ -25,7 +25,7 @@ const App = () => {
     const text = 'NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。'
     return (
       <>
-        <NoticeBar text={text} />
+        <NoticeBar content={text} />
       </>
     )
 }
@@ -46,12 +46,12 @@ const App = () => {
     return (
       <>
         <NoticeBar
-            text="NutUI 是京東風格的移動端組件庫"
+            content="NutUI 是京東風格的移動端組件庫"
             scrollable
         />
 
         <NoticeBar 
-            text="NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。" scrollable={false} 
+            content="NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。" scrollable={false} 
         />
       </>
     )
@@ -76,11 +76,11 @@ const App = () => {
     }
     return (
       <>
-       <NoticeBar closeMode onClick={hello}>
+       <NoticeBar closeable onClick={hello}>
           NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。
         </NoticeBar>
         <br />
-        <NoticeBar closeMode rightIcon={<CircleClose />} onClick={hello}>
+        <NoticeBar closeable rightIcon={<CircleClose />} onClick={hello}>
           NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。
         </NoticeBar>
         <br />
@@ -98,7 +98,7 @@ export default App
 
 ### 多行展示
 
-文字較長時，可以通過設置 wrapable 屬性來開啟多行展示。默認為不滾動，可以通過設置 scrollable 控制為滾動。
+文字較長時，可以通過設置 wrap 屬性來開啟多行展示。默認為不滾動，可以通過設置 scrollable 控制為滾動。
 
 :::demo
 
@@ -110,7 +110,7 @@ const App = () => {
     const text = 'NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。'
     
     return (
-      <NoticeBar text={text} wrapable />
+      <NoticeBar content={text} wrap />
     )
 }
 export default App
@@ -141,11 +141,11 @@ const App = () => {
             direction="vertical"
             list={horseLamp1}
             speed={10}
-            standTime={1000}
+            duration={1000}
             onClick={(e) => {
               go(e.target.innerHtml)
             }}
-            closeMode
+            closeable
           />
         </div>
     )
@@ -172,7 +172,7 @@ const App = () => {
             direction="vertical"
             list={horseLamp2}
             speed={10}
-            standTime={2000}
+            duration={2000}
             leftIcon={<Image src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png" />}
             onClick={(e) => {
               console.log('listClick', e.target)
@@ -203,8 +203,8 @@ const App = () => {
 
     return (
       <>
-        <NoticeBar direction="vertical" height={50} speed={10} standTime={1000} 
-        closeMode
+        <NoticeBar direction="vertical" height={50} speed={10} duration={1000} 
+        closeable
         onClose={() => {console.log('close')}}>
         {horseLamp3.map((item, index) => {
             return (
@@ -253,7 +253,7 @@ const App = () => {
             direction="vertical"
             list={horseLamp1}
             speed={10}
-            standTime={1000}
+            duration={1000}
             onClickItem={(e, v) => {
               console.log('onclick-custom', v)
             }}
@@ -267,42 +267,36 @@ export default App
 :::
 
 
-## API
+## NoticeBar
 
-### Prop
+### Props
 
-| 字段       | 说明                                                       | 类型          | 默认值 |
-| ---------- | ---------------------------------------------------------- | ------------- | ------ |
-| direction       | 滚动的方向，可选 across、vertical                         | string        | `across`     |
-| text       | 提示的信息                                                 | string        | -     |
-| closeMode  | 是否启用关闭模式                                           | boolean       | `false`  |
-| leftIcon   | 左边的 icon，closeMode 模式下默认为空 | ReactNode        | -     |
-| rightIcon   | closeMode 模式下，默认为 ‘close’ | ReactNode        | -     |
-| color      | 导航栏的文字颜色                                           | string        | -     |
-| background | 导航栏的背景颜色                                           | string        | -     |
-| delay      | 延时多少秒                                                 | string \| number | `1`      |
-| scrollable | 是否可以滚动                                               | boolean       | `true`   |
-| speed      | 滚动速率 (px/s)                                            | number        | `50`     |
-| wrapable   | 是否开启文本换行                                           | boolean       | `false`    |
+| 属性       | 说明| 类型          | 默认值 |
+| ---------- | ------------------------ | ------------- | ------ |
+| direction| 滚动的方向，可选 horizontal、vertical | `string` | `horizontal`     |
+| content       | 提示的信息| `string`        | -     |
+| closeable  | 是否启用关闭模式| `boolean`       | `false`  |
+| leftIcon   | 左边的 icon，closeable 模式下默认为空 | ReactNode        | -     |
+| rightIcon   | closeable 模式下，默认为 ‘close’ | ReactNode        | -     |
+| color      | 导航栏的文字颜色| `string`        | -     |
+| background | 导航栏的背景颜色| `string`        | -     |
+| delay      | 延时多少秒| `string \| number` | `1`      |
+| scrollable | 是否可以滚动| `boolean`       | `true`   |
+| speed      | 滚动速率 (px/s)| `number`        | `50`     |
+| wrap   | 是否开启文本换行| `boolean`       | `false`    |
+| onClick  | 外层点击事件回调 | `(event: any) => void` |
+| onClose  | 关闭通知栏时触发 | `(event: any) => void` |
+| onClickItem  | 垂直滚动多条数据时，点击当前展示的信息时触发 | `(event: any, value: any) => void` |
 
-### Prop（direction=vertical）
+### Props（direction=vertical）
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| list         | 纵向滚动数据列表               | Array | `[]`               |
-| speed        | 滚动的速度                         | number | `50`               |
-| standTime         | 停留时间(毫秒) | number | `1000`                |
-| complexAm `即将废弃`| 稍复杂的动画，耗能会高     | boolean | `false` |
-| height          | 每一个滚动列的高度(px)，注意：在使用 slot 插槽定义滚动单元时，按照实际高度修改此值                 | number | `40`              |
-| closeMode  | 是否启用右侧关闭图标，可以通过slot[name=rightIcon]自定义图标                                   | boolean       | `false`  |
-
-### Event
-
-| 字段  | 说明             | 回调参数     |
-| ----- | ---------------- | ------------ |
-| onClick  | 外层点击事件回调 | `event: Event` |
-| onClose  | 关闭通知栏时触发 | `event: Event` |
-| onClickItem  | 垂直滚动多条数据时，点击当前展示的信息时触发 | `event: Event, listItem` |
+| 属性         | 说明 | 类型   | 默认值           |
+|--------------|------------|--------|------------------|
+| list         | 纵向滚动数据列表 | `Array` | `[]` |
+| speed        | 滚动的速度 | `number` | `50` |
+| duration         | 停留时间(毫秒) | `number` | `1000`                |
+| height          | 每一个滚动列的高度(px)，注意：在使用 slot 插槽定义滚动单元时，按照实际高度修改此值 | `number` | `40` |
+| closeable  | 是否启用右侧关闭图标，可以通过slot[name=rightIcon]自定义图标 | `boolean`       | `false`  |
 
 
 ## 主題定制
@@ -311,16 +305,16 @@ export default App
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 默認值 |
-| --- | --- |
-| --nutui-noticebar-background | `rgba(251, 248, 220, 1)` |
-| --nutui-noticebar-color | `#d9500b` |
-| --nutui-noticebar-font-size | `14px` |
-| --nutui-noticebar-height | `40px` |
-| --nutui-noticebar-line-height | `24px` |
-| --nutui-noticebar-left-icon-width | `16px` |
-| --nutui-noticebar-right-icon-width | `16px` |
-| --nutui-noticebar-box-padding | `0 16px` |
-| --nutui-noticebar-wrapable-padding | `16px` |
-| --nutui-noticebar-lefticon-margin | `0px 10px` |
-| --nutui-noticebar-righticon-margin | `0px 10px` |
+| 名稱 | 说明 | 默認值 |
+| --- | --- | --- |
+| --nutui-noticebar-background | 背景色 | `rgba(251, 248, 220, 1)` |
+| --nutui-noticebar-color | 文字色 | `#d9500b` |
+| --nutui-noticebar-font-size | 字號 |`14px` |
+| --nutui-noticebar-height | 高度 | `40px` |
+| --nutui-noticebar-line-height | 行高 | `24px` |
+| --nutui-noticebar-left-icon-width | 左側icon的寬度和高度的設定 | `16px` |
+| --nutui-noticebar-right-icon-width | 右側icon的寬度和高度的設定 | `16px` |
+| --nutui-noticebar-box-padding | padding值 | `0 16px` |
+| --nutui-noticebar-wrap-padding | 多行展示的padding值  | `16px` |
+| --nutui-noticebar-lefticon-margin | 左側icon的margin值 | `0px 10px` |
+| --nutui-noticebar-righticon-margin | 右側icon的margin值 | `0px 10px` |

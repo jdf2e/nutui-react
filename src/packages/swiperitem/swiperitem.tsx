@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import classNames from 'classnames'
-import { DataContext } from '@/packages/swiper/UserContext'
+import { DataContext } from '@/packages/swiper/context'
 import bem from '@/utils/bem'
 
 export interface SwiperItemProps {

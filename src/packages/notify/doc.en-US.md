@@ -1,12 +1,12 @@
-#  Notify
+# Notify
 
-### Intro
+## Intro
 
 Show message tips at the top of the page
 
-### Install
+## Install
+
 ```javascript
-// react
 import { Notify } from '@nutui/nutui-react';
 ```
 
@@ -21,9 +21,9 @@ import  React, {useState} from "react";
 import { Notify, Cell } from '@nutui/nutui-react';
 
 const App = () => {
-    const baseNotify = (msg: string) => {
-        Notify.text(msg, {
-        onClosed: () => {
+    const baseNotify = (message: string) => {
+        Notify.text(message, {
+        onClose: () => {
             console.log('close')
         },
         onClick: () => {
@@ -44,10 +44,10 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
-## Notify Type
-
+### Notify Type
 
 :::demo
 
@@ -56,17 +56,17 @@ import  React, {useState} from "react";
 import { Notify, Cell } from '@nutui/nutui-react';
 
 const App = () => {
-    const primaryNotify = (msg: string) => {
-        Notify.primary(msg)
+    const primaryNotify = (message: string) => {
+        Notify.primary(message)
     }
-    const successNotify = (msg: string) => {
-        Notify.success(msg)
+    const successNotify = (message: string) => {
+        Notify.success(message)
     }
-    const errorNotify = (msg: string) => {
-        Notify.danger(msg)
+    const errorNotify = (message: string) => {
+        Notify.danger(message)
     }
-    const warningNotify = (msg: string) => {
-        Notify.warn(msg)
+    const warningNotify = (message: string) => {
+        Notify.warn(message)
     }
     return (
         <>
@@ -99,10 +99,9 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
-
-## Custom
 ### Custom Style
 
 :::demo
@@ -112,8 +111,13 @@ import  React, {useState} from "react";
 import { Notify, Cell } from '@nutui/nutui-react';
 
 const App = () => {
-    const cusBgNotify = (msg: string) => {
-        Notify.text(msg, { color: '#ad0000', background: '#ffe1e1' })
+    const cusBgNotify = (message: string) => {
+        Notify.text(message, { 
+            style: {
+                '--nutui-notify-text-color': '#ad0000',
+                '--nutui-notify-base-background-color': '#ffe1e1',
+            },
+             })
     }
     return (
         <>
@@ -128,9 +132,8 @@ const App = () => {
 }
 export default App
 ```
+
 :::
-
-
 
 ### Custom Duration
 
@@ -141,11 +144,11 @@ import  React, {useState} from "react";
 import { Notify, Cell } from '@nutui/nutui-react';
 
 const App = () => {
-    const timeNotify = (msg: string) => {
-        Notify.text(msg, { duration: 1000 })
+    const timeNotify = (message: string) => {
+        Notify.text(message, { duration: 1000 })
     }
-    const positionNotify = (msg: string) => {
-        Notify.text(msg, { position: 'bottom' })
+    const positionNotify = (message: string) => {
+        Notify.text(message, { position: 'bottom' })
     }
     return (
         <>
@@ -166,32 +169,20 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
+## Notify
 
-
-
-## API
-    
 ### Props
-    
-| Attribute      | Description                                    | Type          | Default   |
-|------------|-------------------------------------------------------|---------------|----------|
-| type       | Display Type（primary,success ,danger,warning）      | string        | `danger` |
-| message    | Display copy, support line feed through \n              | boolean       | `false`    |
-| duration   | Display duration (ms),value is 0 ,notify not disappear | string        | `3000`     |
-| color      | Font Color                                               | string        | -        |
-| background | Background color                                         | string        | -        |
-| className | Custom class name                                        | string \| number | `1`        |
-| position  | Custom Position (top, bottom)                               | string | `top`        |
 
-### Events
-
-| Event | Description         | Arguments |
-|--------|--------------|----------|
-| onClick  | Emitted when notify is clicked | -       |
-| onClosed | Emitted when notify is closed | -       |
-
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| type | Display Type（primary,success ,danger,warning） | `string` | `danger` |
+| duration | Display duration (ms),value is 0 ,notify not disappear | `string` | `3000` |
+| position | Custom Position (top, bottom) | `string` | `top` |
+| onClick | Emitted when notify is clicked | `onClick: () => void` | `-` |
+| onClose | Emitted when notify is closed | `onClose: () => void` | `-` |
 
 ## Theming
 
@@ -199,11 +190,15 @@ export default App
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-notify-text-color | `$white` |
-| --nutui-notify-padding | `12px 0` |
-| --nutui-notify-font-size | `14px` |
-| --nutui-notify-height | `44px` |
-| --nutui-notify-line-height | `auto` |
-| --nutui-notify-danger-background-color | `rgba(250, 50, 25, 1)` |
+| Name | Description | Default |
+| --- | --- | --- |
+| \--nutui-notify-height | Height of notify | `44px` |
+| \--nutui-notify-padding | Inside margin of notify | `12px 0` |
+| \--nutui-notify-font-size | The font size of notify | `14px` |
+| \--nutui-notify-line-height | The row height of notify | `auto` |
+| \--nutui-notify-text-color | The text color of notify | `$white` |
+| \--nutui-notify-base-background-color | The background color of notify | `linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%)` |
+| \--nutui-notify-primary-background-color | The main notify background color | `linear-gradient(315deg,rgba(73, 143, 242, 1) 0%,rgba(73, 101, 242,1) 100%)` |
+| \--nutui-notify-success-background-color | Background color of successful notify | `linear-gradient(135deg,rgba(38, 191, 38, 1) 0%,rgba(39, 197, 48, 1) 45%,rgba(40, 207, 63, 1) 83%,rgba(41, 212, 70, 1) 100%)` |
+| \--nutui-notify-danger-background-color | Danger notify background color | `rgba(250, 50, 25, 1)` |
+| \--nutui-notify-warning-background-color | Warning notify background color | `linear-gradient(135deg,rgba(255, 93, 13, 1) 0%,rgba(255, 154, 13, 1) 100%)` |

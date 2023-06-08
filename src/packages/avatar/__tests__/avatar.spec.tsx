@@ -29,7 +29,7 @@ test('shape props', () => {
 
 test('bgColor props', () => {
   const { getByTestId } = render(
-    <Avatar data-testid="avatar-bgColor" bgColor="#000000" />
+    <Avatar data-testid="avatar-bgColor" background="#000000" />
   )
   expect(getByTestId('avatar-bgColor').style.backgroundColor).toBe(
     'rgb(0, 0, 0)'
@@ -45,12 +45,12 @@ test('color props', () => {
 
 test('icon props', () => {
   const { container } = render(<Avatar icon={<My />} />)
-  expect(container.querySelector('.nut-icon')).toHaveClass('nut-icon-my')
+  expect(container.querySelector('.nut-icon')).toHaveClass('nut-icon-My')
 })
 
 test('url props', () => {
   const { container } = render(
-    <Avatar url="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />
+    <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />
   )
   expect(container.querySelector('img')).toHaveAttribute(
     'src',
@@ -61,7 +61,7 @@ test('url props', () => {
 test('alt props', () => {
   const { container } = render(
     <Avatar
-      url="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+      src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
       alt="我是alt"
     />
   )
@@ -71,7 +71,7 @@ test('alt props', () => {
 test('should emit active-avatarror event', () => {
   const activeAvatar = jest.fn()
   const { getByTestId } = render(
-    <Avatar data-testid="avatar-click" onActiveAvatar={activeAvatar} />
+    <Avatar data-testid="avatar-click" onClick={activeAvatar} />
   )
   fireEvent.click(getByTestId('avatar-click'))
   expect(activeAvatar).toBeCalled()

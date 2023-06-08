@@ -20,8 +20,9 @@ const customTheme = {
   nutuiCascaderItemMargin: '0 10px',
   nutuiCascaderItemPadding: '10px',
   nutuiCascaderItemBorderBottom: '1px solid #F0F0F0',
+  nutuiTabsTitlesItemActiveColor: '#3768FA',
+  nutuiTabsHorizontalTabLineColor: '#3768FA',
 }
-
 const CascaderDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
@@ -85,7 +86,7 @@ const CascaderDemo = () => {
   const [value4, setValue4] = useState([])
   const [value5, setValue5] = useState(['广东省', '广州市'])
   const [value6, setValue6] = useState([])
-  const [optionsDemo1, setOptionsDemo1] = useState([
+  const [optionsDemo1] = useState([
     {
       value: '浙江',
       text: '浙江',
@@ -148,7 +149,7 @@ const CascaderDemo = () => {
       ],
     },
   ])
-  const [optionsDemo2, setOptionsDemo2] = useState([
+  const [optionsDemo2] = useState([
     {
       value1: '浙江',
       text1: '浙江',
@@ -211,7 +212,7 @@ const CascaderDemo = () => {
       ],
     },
   ])
-  const [optionsDemo4, setOptionsDemo4] = useState([
+  const [optionsDemo4] = useState([
     { value: 'A0', text: 'A0' },
     {
       value: 'B0',
@@ -223,17 +224,17 @@ const CascaderDemo = () => {
     },
     { value: 'C0', text: 'C0' },
   ])
-  const [optionsDemo5, setOptionsDemo5] = useState([
-    { value: '北京', text: '北京', id: 1, pid: null },
-    { value: '朝阳区', text: '朝阳区', id: 11, pid: 1 },
-    { value: '亦庄', text: '亦庄', id: 111, pid: 11 },
-    { value: '广东省', text: '广东省', id: 2, pid: null },
-    { value: '广州市', text: '广州市', id: 21, pid: 2 },
+  const [optionsDemo5] = useState([
+    { value: '北京', text: '北京', id: 1, pidd: null },
+    { value: '朝阳区', text: '朝阳区', id: 11, pidd: 1 },
+    { value: '亦庄', text: '亦庄', id: 111, pidd: 11 },
+    { value: '广东省', text: '广东省', id: 2, pidd: null },
+    { value: '广州市', text: '广州市', id: 21, pidd: 2 },
   ])
-  const [convertConfigDemo5, setConvertConfigDemo5] = useState({
+  const [convertConfigDemo5] = useState({
     topId: null,
     idKey: 'id',
-    pidKey: 'pid',
+    pidKey: 'pidd',
     sortKey: '',
   })
 
@@ -358,12 +359,14 @@ const CascaderDemo = () => {
         />
         <Cascader
           visible={isVisibleDemo2}
-          value={value2}
+          defaultValue={value2}
           title={translated.addressTip}
           options={optionsDemo2}
-          textKey="text1"
-          valueKey="value1"
-          childrenKey="items"
+          optionKey={{
+            textKey: 'text1',
+            valueKey: 'value1',
+            childrenKey: 'items',
+          }}
           closeable
           onClose={() => {
             setIsVisibleDemo2(false)
@@ -381,7 +384,7 @@ const CascaderDemo = () => {
         />
         <Cascader
           visible={isVisibleDemo3}
-          value={value3}
+          defaultValue={value3}
           title={translated.addressTip}
           closeable
           onClose={() => {
@@ -390,7 +393,7 @@ const CascaderDemo = () => {
           onChange={change3}
           onPathChange={onPathChange}
           lazy
-          lazyLoad={lazyLoadDemo3}
+          onLoad={lazyLoadDemo3}
         />
         <h2>{translated.title3}</h2>
         <Cell
@@ -402,7 +405,7 @@ const CascaderDemo = () => {
         />
         <Cascader
           visible={isVisibleDemo4}
-          value={value4}
+          defaultValue={value4}
           title={translated.addressTip}
           options={optionsDemo4}
           closeable
@@ -412,7 +415,7 @@ const CascaderDemo = () => {
           onChange={change4}
           onPathChange={onPathChange}
           lazy
-          lazyLoad={lazyLoadDemo4}
+          onLoad={lazyLoadDemo4}
         />
         <h2>{translated.title4}</h2>
         <Cell
@@ -424,10 +427,10 @@ const CascaderDemo = () => {
         />
         <Cascader
           visible={isVisibleDemo5}
-          value={value5}
+          defaultValue={value5}
           title={translated.addressTip}
           options={optionsDemo5}
-          convertConfig={convertConfigDemo5}
+          format={convertConfigDemo5}
           closeable
           onClose={() => {
             setIsVisibleDemo5(false)
@@ -447,12 +450,11 @@ const CascaderDemo = () => {
           <Cascader
             visible={isVisibleDemo6}
             activeColor="#3768FA"
-            tabsColor="#3768FA"
-            value={value6}
+            defaultValue={value6}
             title={translated.addressTip}
             options={optionsDemo1}
             closeable
-            checkedIcon="star"
+            activeIcon="star"
             onClose={() => {
               setIsVisibleDemo6(false)
             }}

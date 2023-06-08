@@ -43,18 +43,16 @@ const SwiperDemo = () => {
     },
   })
   const swiperRef = React.useRef<any>(null)
-  const [height, setHeight] = useState<any>(150)
-  const [paginationColor, setPaginationColor] = useState<string>('#426543')
-  const [paginationBgColor, setPaginationBgColor] = useState<string>('#426ddd')
-  const [initPage1, setInitPage1] = useState<any>(0)
-  const [initPage2, setInitPage2] = useState<any>(0)
-  const [initPage3, setInitPage3] = useState<any>(0)
-  const [initPage4, setInitPage4] = useState<any>(0)
-  const [initPage5, setInitPage5] = useState<any>(0)
-  const [initPage6, setInitPage6] = useState<any>(0)
-  const [initPage7, setInitPage7] = useState<any>(0)
-  const [initPage8, setInitPage8] = useState<any>(0)
-  const [initPage9, setInitPage9] = useState<any>(0)
+  const [height] = useState<any>(150)
+  const [initPage1] = useState<any>(0)
+  const [initPage2] = useState<any>(0)
+  const [initPage3] = useState<any>(0)
+  const [initPage4] = useState<any>(0)
+  const [initPage5] = useState<any>(0)
+  const [initPage6] = useState<any>(0)
+  const [initPage7] = useState<any>(0)
+  const [initPage8] = useState<any>(0)
+  const [initPage9] = useState<any>(0)
   const [current, setCurrent] = useState(1)
   const [current2, setCurrent2] = useState(1)
   const [list1, setList1] = useState<string[]>([])
@@ -93,13 +91,15 @@ const SwiperDemo = () => {
       <h2>{translated.basic}</h2>
       <div className="demo-box" style={{ height: 150 }}>
         <Swiper
+          style={{
+            '--nutui-indicator-color': '#426543',
+            '--nutui-indicator-dot-color': '#426ddd',
+          }}
           height={height}
-          paginationColor={paginationColor}
-          paginationBgColor={paginationBgColor}
           autoPlay="2000"
-          initPage={initPage1}
+          defaultValue={initPage1}
           onChange={onChange}
-          paginationVisible
+          indicator
         >
           {list.map((item) => {
             return (
@@ -114,11 +114,14 @@ const SwiperDemo = () => {
       <div className="demo-box" style={{ height: 150 }}>
         <Swiper
           height={height}
-          paginationColor={paginationColor}
+          style={{
+            '--nutui-indicator-color': '#426543',
+            '--nutui-indicator-dot-color': '#426ddd',
+          }}
           autoPlay="2000"
-          initPage={initPage2}
+          defaultValue={initPage2}
           onChange={onChange}
-          paginationVisible
+          indicator
         >
           {list1.map((item) => {
             return (
@@ -133,11 +136,14 @@ const SwiperDemo = () => {
       <div className="demo-box" style={{ height: 150 }}>
         <Swiper
           height={height}
-          paginationColor={paginationColor}
+          style={{
+            '--nutui-indicator-color': '#426543',
+            '--nutui-indicator-dot-color': '#426ddd',
+          }}
           autoPlay="2000"
-          initPage={initPage3}
+          defaultValue={initPage3}
           onChange={onChange}
-          paginationVisible
+          indicator
         >
           {list2.map((item) => {
             return (
@@ -151,7 +157,7 @@ const SwiperDemo = () => {
 
       <h2>{translated.size}</h2>
       <div className="demo-box" style={{ height: 150 }}>
-        <Swiper initPage={initPage4} width="300" height={height} loop={false}>
+        <Swiper defaultValue={initPage4} width="300" height={height}>
           {list.map((item) => {
             return (
               <SwiperItem key={item}>
@@ -164,11 +170,11 @@ const SwiperDemo = () => {
       <h2>{translated.indicator}</h2>
       <div className="demo-box" style={{ height: 150 }}>
         <Swiper
-          height={height}
           loop
-          initPage={initPage5}
+          height={height}
+          defaultValue={initPage5}
           onChange={(e) => setCurrent(e + 1)}
-          pageContent={<div className="page"> {current}/4 </div>}
+          indicator={<div className="page"> {current}/4 </div>}
         >
           {list.map((item) => {
             return (
@@ -185,9 +191,9 @@ const SwiperDemo = () => {
           ref={swiperRef}
           height={height}
           loop
-          initPage={initPage6}
+          defaultValue={initPage6}
           onChange={(e) => setCurrent2(e + 1)}
-          pageContent={<div className="page"> {current2}/4 </div>}
+          indicator={<div className="page"> {current2}/4 </div>}
         >
           {list.map((item) => {
             return (
@@ -210,11 +216,11 @@ const SwiperDemo = () => {
       <div className="demo-box vertical-center" style={{ height: 150 }}>
         <Swiper
           loop
-          initPage={initPage7}
+          defaultValue={initPage7}
           direction="vertical"
           autoPlay="3000"
           height={height}
-          paginationVisible
+          indicator
         >
           {list.map((item) => {
             return (
@@ -228,13 +234,12 @@ const SwiperDemo = () => {
       <h2>{translated.horizontalCenter}</h2>
       <div className="demo-box " style={{ height: 150 }}>
         <Swiper
-          loop={false}
-          initPage={initPage8}
+          defaultValue={initPage8}
           autoPlay="0"
           height={height}
-          paginationVisible
+          indicator
           width="280"
-          isCenter
+          center
         >
           {list.map((item) => {
             return (
@@ -248,13 +253,12 @@ const SwiperDemo = () => {
       <h2>{translated.verticalCenter}</h2>
       <div className="demo-box vertical-center">
         <Swiper
-          loop={false}
-          initPage={initPage9}
+          defaultValue={initPage9}
           direction="vertical"
           autoPlay="0"
           height="220"
-          paginationVisible
-          isCenter
+          indicator
+          center
           style={{ height: '280px' }}
         >
           {list.map((item) => {
