@@ -37,7 +37,7 @@ export type NamePath = string | number
 export interface Callbacks<Values = any> {
   onValuesChange?: (values: Values) => void
   onFinish?: (values: Values) => void
-  onFinishFailed?: (Values: Values) => void
+  onFinishFailed?: (values: Values, errorFields: any) => void
 }
 
 export interface Store {

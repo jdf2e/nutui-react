@@ -1,7 +1,7 @@
 import React from 'react'
 import { BaseFormField } from './types'
 import { Context } from '../form/context'
-import Cell from '@/packages/cell'
+import Cell from '@/packages/cell/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { pxCheck } from '@/utils/px-check'
 
@@ -89,7 +89,7 @@ export class FormItem extends React.Component<
           originOnChange(...args)
         }
         // 例如 picker 的反转
-        let next = args
+        let [next] = args
         if (this.props.getValueFromEvent) {
           next = this.props.getValueFromEvent(...args)
         }
@@ -100,7 +100,7 @@ export class FormItem extends React.Component<
     return controlled
   }
 
-  public refresh = () => {
+  refresh = () => {
     this.setState(({ resetCount }) => ({
       resetCount: resetCount + 1,
     }))
@@ -134,6 +134,12 @@ export class FormItem extends React.Component<
       this.context.errList?.filter((item: any) => {
         return item.field === name
       })
+
+    console.log(
+      'this.context.errList',
+      this.context.errList,
+      this.context.errors
+    )
 
     const { starPosition } = this.context
     const renderStar = required && <i className="required" />

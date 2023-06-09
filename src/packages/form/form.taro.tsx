@@ -1,11 +1,11 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
-import CellGroup from '../cellgroup'
-import { Context } from './context'
-import { useForm } from './useForm'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { FormItem } from '../formitem/formitem'
-import Cell from '@/packages/cell'
+import Cell from '@/packages/cell/index.taro'
+import CellGroup from '../cellgroup/index.taro'
+import { Context } from './context'
+import { useForm } from './useform.taro'
+import { FormItem } from '../formitem/formitem.taro'
 
 export interface FormProps extends BasicComponent {
   disabled: boolean

@@ -25,7 +25,6 @@ const config = {
   plugins: ['@tarojs/plugin-html'],
   compiler: 'webpack5',
   alias: {
-    // react: path.resolve(__dirname, '../../../../node_modules/react'),
     '@/packages': path.resolve(__dirname, '../../../../src/packages'),
     '@/locales': path.resolve(__dirname, '../../../../src/locales'),
     '@/utils': path.resolve(__dirname, '../../../../src/utils'),

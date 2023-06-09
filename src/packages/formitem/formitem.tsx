@@ -21,6 +21,10 @@ export interface FormItemProps extends BasicComponent, BaseFormField {
   trigger: string
   valuePropName: string
   getValueFromEvent: (...args: any) => any
+  onClick: (
+    event: React.MouseEvent,
+    componentRef: React.MutableRefObject<any>
+  ) => void
   errorMessageAlign: TextAlign
 }
 
@@ -49,8 +53,11 @@ export class FormItem extends React.Component<
 
   private cancelRegister: any
 
+  private componentRef: React.RefObject<any>
+
   constructor(props: FieldProps) {
     super(props)
+    this.componentRef = React.createRef()
     this.state = {
       resetCount: 1,
     }
@@ -75,13 +82,12 @@ export class FormItem extends React.Component<
     if (this.props.initialValue === undefined) {
       console.warn('通过 initialValue 设置初始值')
     }
-    const value = getFieldValue(name)
-    console.log('value', value, this.props.initialValue)
     const controlled = {
       ...children.props,
       [this.props.valuePropName || 'value']:
         getFieldValue(name) || this.props.initialValue,
       [this.props.trigger || 'onChange']: (...args: any) => {
+        // args [a, b]
         const originOnChange = (children as any).props[
           this.props.trigger || 'onChange'
         ]
@@ -89,7 +95,7 @@ export class FormItem extends React.Component<
           originOnChange(...args)
         }
         // 例如 picker 的反转
-        let next = args
+        let [next] = args
         if (this.props.getValueFromEvent) {
           next = this.props.getValueFromEvent(...args)
         }
@@ -97,6 +103,19 @@ export class FormItem extends React.Component<
         setFieldsValue({ [name]: next })
       },
     }
+    console.log(children)
+    // controlled.ref = (componentInstance: any) => {
+    //   const originRef = (children as any).ref
+    //   if (originRef) {
+    //     if (typeof originRef === 'function') {
+    //       originRef(componentInstance)
+    //     }
+    //     if ('current' in originRef) {
+    //       originRef.current = componentInstance
+    //     }
+    //   }
+    //   this.componentRef = componentInstance
+    // }
     return controlled
   }
 
@@ -134,6 +153,12 @@ export class FormItem extends React.Component<
       this.context.errList?.filter((item: any) => {
         return item.field === name
       })
+
+    console.log(
+      'this.context.errList',
+      this.context.errList,
+      this.context.errors
+    )
 
     const { starPosition } = this.context
     const renderStar = required && <i className="required" />

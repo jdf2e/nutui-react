@@ -64,11 +64,12 @@ class FormStore {
    * @param newStore { [name]: newValue }
    */
   setFieldsValue = (newStore: any) => {
+    console.log('newStore', newStore)
     this.store = {
       ...this.store,
       ...newStore,
     }
-    console.log(this.store)
+    console.log('setFieldsValue', this.store)
     this.fieldEntities.forEach((enetity: FieldEntity) => {
       const { name } = enetity.props
       Object.keys(newStore).forEach((key) => {
@@ -79,19 +80,13 @@ class FormStore {
     })
   }
 
-  /**
-   * 表单校验
-   * rules: { required: true, message: '' }
-   * descriptor: {
-   *    username: {
-   *      type: 'string',
-   *      required: true,
-   *      validator: (rule, value) => {
-   *        return /^[a-zA-Z0-9]+$/.test(value)
-   *      },
-   *    },
-   *  }
-   */
+  setCallback = (callback: Callbacks) => {
+    this.callbacks = {
+      ...this.callbacks,
+      ...callback,
+    }
+  }
+
   validate = () => {
     const err: any = []
     this.errors.length = 0
@@ -123,26 +118,20 @@ class FormStore {
     return err
   }
 
-  setCallback = (callback: Callbacks) => {
-    this.callbacks = {
-      ...this.callbacks,
-      ...callback,
-    }
-  }
-
   submit = () => {
     const errors = this.validate()
+    console.log('submit', errors)
     if (errors.length === 0) {
       this.callbacks.onFinish?.(this.store)
     } else if (errors.length > 0) {
-      this.callbacks.onFinishFailed?.(errors)
+      this.callbacks.onFinishFailed?.(this.store, errors)
     }
   }
 
   resetFields = () => {
     console.log('resetFields', this.store, this.initialValues)
     this.errors.length = 0
-    this.store = {}
+    this.store = this.initialValues
     this.fieldEntities.forEach((entity: FieldEntity) => {
       console.log(entity)
       entity.onStoreChange('reset')

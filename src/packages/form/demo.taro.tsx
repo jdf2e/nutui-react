@@ -1,7 +1,7 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Input, Form } from '@/packages/nutui.react.taro'
+import { Input, Form, TextArea } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 
 interface T {
@@ -141,9 +141,37 @@ const FormDemo = () => {
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
-        <Form>
-          <Form.Item>
-            <Input />
+        <Form
+          onFinish={(values) => {
+            console.log('onFinish values', values)
+          }}
+          onFinishFailed={(values, errorFields) => {
+            console.log('onFinishFailed', values, errorFields)
+          }}
+          footer={
+            <>
+              <button type="submit">Submit</button>
+              <button type="reset">Reset</button>
+            </>
+          }
+        >
+          <Form.Item
+            required
+            rules={[{ required: true, message: 'xxx' }]}
+            label={translated.name}
+            name="username"
+          >
+            <Input
+              className="nut-input-text"
+              placeholder={translated.nameTip}
+              type="text"
+              onChange={(val) => {
+                console.log('change value:', val)
+              }}
+            />
+          </Form.Item>
+          <Form.Item label={translated.remarks} name="remark">
+            <TextArea placeholder={translated.remarksTip} />
           </Form.Item>
         </Form>
       </div>

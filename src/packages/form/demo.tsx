@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Form } from './form'
 import { Input } from '../input/input'
 import Cell from '@/packages/cell'
@@ -11,6 +11,10 @@ import Rate from '../rate'
 import Range from '../range'
 import Toast from '@/packages/toast'
 import { FormItemRuleWithoutValidator } from './types'
+import Button from '@/packages/button'
+import InputNumber from '@/packages/inputnumber'
+import Picker from '@/packages/picker'
+import Uploader from '@/packages/uploader'
 
 interface T {
   basic: string
@@ -44,7 +48,7 @@ interface T {
   reset: string
   switch: string
   checkbox: string
-  radiogroup: string
+  gender: string
   // option: (v: string) => `选项${v}`
   rate: string
   inputnumber: string
@@ -89,7 +93,7 @@ const FormDemo = () => {
       reset: '重置提示状态',
       switch: '开关',
       checkbox: '复选框',
-      radiogroup: '单选按钮',
+      gender: '性别',
       // option: (v: string) => `选项${v}`,
       rate: '评分',
       inputnumber: '步进器',
@@ -132,7 +136,7 @@ const FormDemo = () => {
       reset: 'Reset alert state',
       switch: 'Switch',
       checkbox: 'Checkbox',
-      radiogroup: 'Group',
+      gender: 'Gender',
       // option: (v: string) => `Option${v}`,
       rate: 'Rate',
       inputnumber: 'Inputnumber',
@@ -145,13 +149,11 @@ const FormDemo = () => {
   })
 
   const submitFailed = (error: any) => {
-    Toast.show({ content: 'callback: submitFailed error', icon: 'fail' })
-    console.log('failed error', error)
+    Toast.show({ content: JSON.stringify(error), icon: 'fail' })
   }
 
-  const submitSucceed = (obj: any) => {
-    Toast.show({ content: 'succeed', icon: 'success' })
-    console.log('succeed', obj)
+  const submitSucceed = (values: any) => {
+    Toast.show({ content: JSON.stringify(values), icon: 'success' })
   }
 
   const [form] = Form.useForm()
@@ -159,13 +161,10 @@ const FormDemo = () => {
   const onMenuChange = (value: string | number | boolean) => {
     switch (value) {
       case 'male':
-        form.setFieldsValue({ note: 'Hi, man!' })
+        form.setFieldsValue({ note: '👨' })
         break
       case 'female':
-        form.setFieldsValue({ note: 'Hi, lady!' })
-        break
-      case 'other':
-        form.setFieldsValue({ note: 'Hi there!' })
+        form.setFieldsValue({ note: '👩' })
         break
       default:
     }
@@ -186,68 +185,65 @@ const FormDemo = () => {
     return /^(\d{1,2}|1\d{2}|200)$/.test(value)
   }
 
+  const [isPickerVisible, setIsPickerVisible] = useState(false)
+
   return (
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
         <Form
+          labelPosition="right"
           footer={
             <>
-              <button type="submit">Submit</button>
-              <button type="reset">Reset</button>
+              <Button nativeType="submit" block type="primary">
+                提交
+              </Button>
             </>
           }
         >
-          <Form.Item required label={translated.name} name="username">
-            <Input
-              className="nut-input-text"
-              placeholder={translated.nameTip}
-              type="text"
-              onChange={(val) => {
-                console.log('change value:', val)
-              }}
-            />
-          </Form.Item>
-          <Form.Item label={translated.remarks} name="remark">
-            <TextArea placeholder={translated.remarksTip} />
-          </Form.Item>
-        </Form>
-        <h2>{translated.title10}</h2>
-        <Form labelPosition="top">
-          <Form.Item label={translated.name} name="username">
-            <Input
-              className="nut-input-text"
-              placeholder={translated.nameTip}
-              type="text"
-            />
-          </Form.Item>
-          <Form.Item label={translated.remarks} name="remark">
-            <TextArea placeholder={translated.remarksTip} />
-          </Form.Item>
-        </Form>
-        {/* <h2>{translated.title1}</h2>
-        <Form
-          onFinish={(obj) => submitSucceed(obj)}
-          onFinishFailed={(error) => submitFailed(error)}
-        >
           <Form.Item
-            label={translated.name}
+            required
+            rules={[{ required: true, message: '姓名不能为空' }]}
+            label="姓名"
             name="username"
-            rules={[{ required: true, message: translated.nameTip }]}
           >
-            <Input placeholder={translated.nameTip} type="text" />
+            <Input
+              className="nut-input-text"
+              placeholder="请输入姓名"
+              type="text"
+            />
           </Form.Item>
-          <Form.Item label={translated.tel} name="tel">
-            <Input placeholder={translated.telTip} type="tel" />
+          <Form.Item label="地址" name="address">
+            <TextArea placeholder="请输入地址" maxLength={100} />
           </Form.Item>
-          <Cell>
-            <input type="submit" value={translated.submit} />
-          </Cell>
-        </Form> */}
+          <Form.Item
+            label="数量"
+            name="num"
+            getValueFromEvent={(...args) => args[0]}
+          >
+            <InputNumber />
+          </Form.Item>
+        </Form>
         <h2>{translated.title2}</h2>
         <Form
-          onFinish={(obj) => submitSucceed(obj)}
-          onFinishFailed={(error) => submitFailed(error)}
+          onFinish={(values) => submitSucceed(values)}
+          onFinishFailed={(values, errors) => submitFailed(errors)}
+          footer={
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                width: '100%',
+              }}
+            >
+              <Button nativeType="submit" type="primary">
+                提交
+              </Button>
+              <Button nativeType="reset" style={{ marginLeft: '20px' }}>
+                重置
+              </Button>
+            </div>
+          }
         >
           <Form.Item
             label={translated.name}
@@ -281,26 +277,35 @@ const FormDemo = () => {
           >
             <Input placeholder={translated.addressTip} type="text" />
           </Form.Item>
-          <Cell>
-            <input type="submit" value={translated.submit} />
-            <input
-              type="reset"
-              style={{ marginLeft: '15px' }}
-              value={translated.reset}
-            />
-          </Cell>
         </Form>
 
         <h2>{translated.title3}</h2>
         <Form
-          onFinish={(obj) => submitSucceed(obj)}
-          onFinishFailed={(error) => submitFailed(error)}
+          initialValues={{ username: 'LiSi', age: 20 }}
+          onFinish={(values) => submitSucceed(values)}
+          onFinishFailed={(values, errors) => submitFailed(errors)}
+          footer={
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                width: '100%',
+              }}
+            >
+              <Button nativeType="submit" type="primary">
+                提交
+              </Button>
+              <Button nativeType="reset" style={{ marginLeft: '20px' }}>
+                重置
+              </Button>
+            </div>
+          }
         >
           <Form.Item
             label={translated.name}
             name="username"
             rules={[{ required: true, message: translated.nameTip }]}
-            initialValue="张三"
+            initialValue="ZhangSan"
           >
             <Input placeholder={translated.nameTip1} type="text" />
           </Form.Item>
@@ -311,16 +316,13 @@ const FormDemo = () => {
               defaultValue="18"
             />
           </Form.Item>
-          <Cell>
-            <input type="submit" value={translated.submit} />
-          </Cell>
         </Form>
 
         <h2>{translated.title4}</h2>
         <Form
           form={form}
-          onFinish={(obj) => submitSucceed(obj)}
-          onFinishFailed={(error) => submitFailed(error)}
+          onFinish={(values) => submitSucceed(values)}
+          onFinishFailed={(values, errors) => submitFailed(errors)}
         >
           <Form.Item
             label={translated.name}
@@ -332,62 +334,81 @@ const FormDemo = () => {
           <Form.Item label="标注" name="note">
             <Input placeholder="请输入标注" type="string" />
           </Form.Item>
-          <Form.Item label={translated.radiogroup} name="radiogroup">
+          <Form.Item label={translated.gender} name="gender">
             <Radio.Group onChange={onMenuChange}>
-              <Radio value="male">male</Radio>
-              <Radio value="female">female</Radio>
-              <Radio value="other">other</Radio>
+              <Radio value="male">男性</Radio>
+              <Radio value="female">女性</Radio>
             </Radio.Group>
           </Form.Item>
-          <Cell>
-            <input type="submit" value={translated.submit} />
-          </Cell>
         </Form>
 
         <h2>{translated.title5}</h2>
         <Form
-          onFinish={(obj) => submitSucceed(obj)}
-          onFinishFailed={(error) => submitFailed(error)}
+          onFinish={(values) => submitSucceed(values)}
+          onFinishFailed={(values, errors) => submitFailed(errors)}
         >
-          <Form.Item label={translated.switch} name="switch">
+          <Form.Item label="Input" name="form_input">
+            <Input placeholder="Input something" />
+          </Form.Item>
+          <Form.Item label="Switch" name="switch">
             <Switch />
           </Form.Item>
-          <Form.Item label={translated.checkbox} name="checkbox">
-            <Checkbox
-              labelPosition="right"
-              label={translated.checkbox}
-              checked={false}
-            />
+          <Form.Item label="Checkbox" name="checkbox">
+            <Checkbox labelPosition="right" label="Option 1" />
           </Form.Item>
-          <Form.Item label={translated.radiogroup} name="radiogroup">
+          <Form.Item label="Check Group" name="checkbox_group">
+            <Checkbox.Group>
+              <Checkbox labelPosition="right" label="Option 1" value={1} />
+              <Checkbox labelPosition="right" label="Option 2" value={2} />
+            </Checkbox.Group>
+          </Form.Item>
+          <Form.Item label="Radio" name="radio">
+            <Radio value="1">Radio 1</Radio>
+          </Form.Item>
+          <Form.Item label="Radio Group" name="radio_group">
             <Radio.Group>
-              <Radio value="1">选项1</Radio>
-              <Radio value="2">选项2</Radio>
-              <Radio value="3">选项3</Radio>
+              <Radio value="1">Radio 1</Radio>
+              <Radio value="2">Radio 2</Radio>
             </Radio.Group>
           </Form.Item>
-          <Form.Item label={translated.rate} name="rate">
+          <Form.Item label="Rate" name="rate">
             <Rate defaultValue={0} />
           </Form.Item>
-          {/* <Form.Item label={translated.inputnumber} name="inputnumber">
-              <InputNumber modelValue={3} min="10" max="20" />
-            </Form.Item> */}
-          <Form.Item label={translated.range} name="range">
-            <Range defaultValue={0} max={10} min={-10} />
+          <Form.Item label="Range" name="range">
+            <Range max={10} min={-10} />
           </Form.Item>
-          {/* <Form.Item label={translated.uploader} name="uploader">
-              <Uploader
-                url={uploadUrl}
-                defaultFileList={defaultFileList}
-                onRemove={onDelete}
-                maximum="3"
-                multiple
-                uploadIcon="dongdong"
-              />
-            </Form.Item> */}
-          <Cell>
-            <input type="submit" value={translated.submit} />
-          </Cell>
+          <Form.Item
+            label="Picker"
+            name="picker"
+            trigger="onConfirm"
+            getValueFromEvent={(...args) => args[1]}
+            onClick={(ref) => {
+              ref.open()
+            }}
+          >
+            <Picker
+              visible={isPickerVisible}
+              options={[
+                [
+                  { value: 4, text: '北京市' },
+                  { value: 1, text: '南京市' },
+                  { value: 2, text: '无锡市' },
+                  { value: 8, text: '大庆市' },
+                  { value: 9, text: '绥化市' },
+                  { value: 10, text: '潍坊市' },
+                  { value: 12, text: '乌鲁木齐市' },
+                ],
+              ]}
+            >
+              {/*{(value) => {*/}
+              {/*  console.log('value picker', value)*/}
+              {/*  return value.length ? value : 'Please Select'*/}
+              {/*}}*/}
+            </Picker>
+          </Form.Item>
+          <Form.Item label="Uploader" name="short_password">
+            <Uploader url="https://my-json-server.typicode.com/linrufeng/demo/posts" />
+          </Form.Item>
         </Form>
       </div>
     </>
