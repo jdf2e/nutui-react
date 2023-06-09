@@ -425,9 +425,8 @@ export const NoticeBar: FunctionComponent<
     'nut-noticebar-page': true,
     withicon: closeable,
     close: closeable,
-    wrap,
+    wrapable: wrap,
   })
-
   useEffect(() => {
     return () => {
       stopAutoPlay()
