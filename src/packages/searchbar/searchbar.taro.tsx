@@ -119,8 +119,8 @@ export const SearchBar: FunctionComponent<
     return (
       <input
         className={`${classPrefix}__input ${
-          shape === 'round' ? `${classPrefix}__round` : ''
-        } ${clearable ? `${classPrefix}__input-clear` : ''}`}
+          clearable ? `${classPrefix}__input-clear` : ''
+        }`}
         ref={searchRef}
         style={{ ...props.style }}
         value={value || ''}
@@ -204,7 +204,11 @@ export const SearchBar: FunctionComponent<
       style={{ ...props.style }}
     >
       {renderLeft()}
-      <div className={`${classPrefix}__content`}>
+      <div
+        className={`${classPrefix}__content ${
+          shape === 'round' ? `${classPrefix}__round` : ''
+        }`}
+      >
         {renderLeftIn()}
         <div className="nut-searchbar__input-box">{renderField()}</div>
         {renderRightIn()}
