@@ -165,6 +165,12 @@
 - toggleAll 重命名为 toggle
 - toggleReverse 重命名为 reverse
 #### DatePicker
+- `modelValue` 更名为 `value`，并增加 `defaultValue`
+- `isShowChinese` 更名为 `showChinese`
+- `minDate` 更名为 `startDate`
+- `maxDate` 更名为 `endDate`
+- `onConfirmDatePicker` 更名为 `onConfirm`
+- `onCloseDatePicker` 更名为 `onClose`
 - 因为依赖组件`Picker`的变更，方法 `onConfirmDatePicker`、`onChange`的参数进行了调整，从`(selectedValue, selectedOptions)` 改为 `(selectedOptions, selectedValue)`。
 #### Form
 #### Input
