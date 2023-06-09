@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
+import React, { FunctionComponent, useState, useEffect } from 'react'
 import { View } from '@tarojs/components'
 import Picker from '@/packages/picker/index.taro'
 import { PickerOption } from '@/packages/picker/index'
@@ -90,7 +90,6 @@ export const DatePicker: FunctionComponent<
     (string | number)[]
   >([])
   const [options, setOptions] = useState<PickerOption[][]>([])
-  const pickerRef = useRef<any>(null)
   const isDate = (val: Date): val is Date => {
     return (
       Object.prototype.toString.call(val) === '[object Date]' &&
@@ -376,12 +375,12 @@ export const DatePicker: FunctionComponent<
 
   return (
     <View
-      className={`nut-datepicker ${className || ''}`}
+      className={`nut-datepicker ${className}`}
       style={style}
       catchMove
       {...(rest as any)}
     >
-      {options.length > 0 && (
+      {options.length && (
         <Picker
           title={title}
           visible={visible}
@@ -397,7 +396,6 @@ export const DatePicker: FunctionComponent<
             index: number
           ) => updateChooseValueCustmer(options, value, index)}
           threeDimensional={threeDimensional}
-          ref={pickerRef}
         />
       )}
     </View>

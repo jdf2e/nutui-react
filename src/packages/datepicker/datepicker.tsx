@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
+import React, { FunctionComponent, useState, useEffect } from 'react'
 import Picker from '@/packages/picker'
 import { PickerOption } from '@/packages/picker/index'
 import { useConfig } from '@/packages/configprovider'
@@ -89,7 +89,6 @@ export const DatePicker: FunctionComponent<
     (string | number)[]
   >([])
   const [options, setOptions] = useState<PickerOption[][]>([])
-  const pickerRef = useRef<any>(null)
   const isDate = (val: Date): val is Date => {
     return (
       Object.prototype.toString.call(val) === '[object Date]' &&
@@ -375,12 +374,8 @@ export const DatePicker: FunctionComponent<
   }, [])
 
   return (
-    <div
-      className={`nut-datepicker ${className || ''}`}
-      style={style}
-      {...rest}
-    >
-      {options.length > 0 && (
+    <div className={`nut-datepicker ${className}`} style={style} {...rest}>
+      {options.length && (
         <Picker
           title={title}
           visible={visible}
@@ -396,7 +391,6 @@ export const DatePicker: FunctionComponent<
             index: number
           ) => updateChooseValueCustmer(options, value, index)}
           threeDimensional={threeDimensional}
-          ref={pickerRef}
         />
       )}
     </div>
