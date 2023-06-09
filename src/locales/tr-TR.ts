@@ -73,7 +73,7 @@ const trTR: BaseLang = {
   },
   signature: {
     reSign: 'Yeniden imzala',
-    unSupportTpl: `Üzgünüz, mevcut tarayıcı Canvas'ı desteklemiyor ve bu kontrol kullanılamıyor!`,
+    unsupported: `Üzgünüz, mevcut tarayıcı Canvas'ı desteklemiyor ve bu kontrol kullanılamıyor!`,
   },
   ecard: {
     chooseText: 'Lütfen eCard değerini seçin',

@@ -66,7 +66,7 @@ const zhCN: BaseLang = {
   },
   signature: {
     reSign: '重签',
-    unSupportTpl: '对不起，当前浏览器不支持Canvas，无法使用本控件！',
+    unsupported: '对不起，当前浏览器不支持Canvas，无法使用本控件！',
   },
   ecard: {
     chooseText: '请选择电子卡面值',

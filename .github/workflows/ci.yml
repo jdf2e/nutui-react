@@ -1,0 +1,82 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - next
+
+  pull_request:
+    branches:
+      - next
+
+  workflow_dispatch:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install pnpm
+      run: corepack enable
+
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+        cache: 'pnpm'
+
+    - name: Install dependencies
+      run: pnpm install
+
+    - name: Run linter
+      run: npm run lint
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install pnpm
+      run: corepack enable
+
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+        cache: 'pnpm'
+
+    - name: Install dependencies
+      run: pnpm install
+    
+    - name: Run test
+      run: npm run test
+    
+    - name: Upload coverage reports to Codecov
+      if: ${{ always() }}
+      uses: codecov/codecov-action@v3
+      env:
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install pnpm
+      run: corepack enable
+
+    - uses: actions/setup-node@v2
+      with:
+        node-version: '16'
+        cache: 'pnpm'
+
+    - name: Install dependencies
+      run: pnpm install
+
+    - name: Build NutUI-React
+      run: npm run build
+
+    - name: Build NutUI-React-Taro
+      run: npm run build:taro
+
+    - name: Build NutUI-React Demo
+      run: npm run build:site

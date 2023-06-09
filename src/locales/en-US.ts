@@ -64,7 +64,7 @@ const enUS: BaseLang = {
   },
   signature: {
     reSign: 'Re Sign',
-    unSupportTpl: `Sorry, the current browser doesn't support canvas, so we can't use this control!`,
+    unsupported: `Sorry, the current browser doesn't support canvas, so we can't use this control!`,
   },
   ecard: {
     chooseText: 'Select',
