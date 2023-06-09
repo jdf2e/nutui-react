@@ -20,7 +20,7 @@ interface T {
 const CardDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       customProduct: '自定义商品标签',
       customPro1: '活鲜',
       customPro2: '礼盒',
@@ -36,7 +36,7 @@ const CardDemo = () => {
       shopName: '阳澄湖大闸蟹自营店>',
     },
     'zh-TW': {
-      basic: '基本用法',
+      basic: '基础用法',
       customProduct: '自定義商品標簽',
       customPro1: '活鮮',
       customPro2: '禮盒',

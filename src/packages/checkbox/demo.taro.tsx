@@ -37,7 +37,7 @@ const CheckboxDemo = () => {
     'zh-CN': {
       uncontrolled: '非受控',
       controlled: '受控',
-      basic: '基本用法',
+      basic: '基础用法',
       checkbox: '复选框',
       disbaled: '禁用状态',
       DisabledState: '未选时禁用状态',
@@ -63,7 +63,7 @@ const CheckboxDemo = () => {
     'zh-TW': {
       uncontrolled: '非受控',
       controlled: '受控',
-      basic: '基本用法',
+      basic: '基础用法',
       checkbox: '複選框',
       disbaled: '禁用狀態',
       DisabledState: '未選時禁用狀態',

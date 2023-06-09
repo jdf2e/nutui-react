@@ -57,7 +57,7 @@ export default CheckBoxDemo;
 
 :::
 
-### 基本用法
+### 基础用法
 
 :::demo
 

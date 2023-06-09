@@ -12,7 +12,7 @@ import { VirtualList } from '@nutui/nutui-react-taro';
 
 ## 代码演示
 
-### 1、基础用法-垂直等高
+### 基础用法-垂直等高
 
 :::demo
 
@@ -79,7 +79,7 @@ export default App;
 
 :::
 
-### 2、垂直不等高&无限下滑
+### 垂直不等高&无限下滑
 
 :::demo
 
