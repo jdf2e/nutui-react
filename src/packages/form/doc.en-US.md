@@ -268,7 +268,7 @@ export default App;
 |-------------|--------------------------|--------|--------|
 | form`v1.4.8` | The form control instance created by Form.useForm() will be created automatically if not provided | FormInstance |        |
 | labelPosition | label's position，the default value is Right，can be Top、Left、Right | string |        |
-| starPositon | the position of the red asterisk next to the label of the required filed ，the default is Left，can be Left、Right | string |        |
+| starPosition | the position of the red asterisk next to the label of the required filed ，the default is Left，can be Left、Right | string |        |
 
 ### Form Events
 

@@ -280,7 +280,7 @@ export default App;
 |-------------|--------------------------------------|--------|--------|
 | form`v1.4.8` | 经 Form.useForm() 创建的 form 控制实例，不提供时会自动创建 | FormInstance |        |
 | labelPosition | 表单项 label 的位置，默认 Right，可设置为 Top、Left、Right | string |        |
-| starPositon | 必填表单项 label 的红色星标位置，默认 Left，可设置为 Left、Right | string |        |
+| starPosition | 必填表单项 label 的红色星标位置，默认 Left，可设置为 Left、Right | string |        |
 
 ### Form Events
 

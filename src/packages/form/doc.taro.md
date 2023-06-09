@@ -168,7 +168,7 @@ export default App;
 | 属性 | 说明                                 | 类型   | 默认值 |
 |-------------|--------------------------------------|--------|--------|
 | labelPosition | 表单项 label 的位置，默认 Right，可设置为 Top、Left、Right | string |        |
-| starPositon | 必填表单项 label 的红色星标位置，默认 Left，可设置为 Left、Right | string |        |
+| starPosition | 必填表单项 label 的红色星标位置，默认 Left，可设置为 Left、Right | string |        |
 
 ### Form Events
 

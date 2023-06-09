@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { Form } from './form'
 import { Input } from '../input/input'
 import Cell from '@/packages/cell'
@@ -11,7 +11,6 @@ import Rate from '../rate'
 import Range from '../range'
 import Toast from '@/packages/toast'
 import { FormItemRuleWithoutValidator } from './types'
-import { FileItem, FileType } from '../uploader/uploader'
 
 interface T {
   basic: string
@@ -145,32 +144,6 @@ const FormDemo = () => {
     },
   })
 
-  // 动态表单
-  const dynamicFormRef = useRef<any>(null)
-
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const defaultFileList: FileType<string>[] = [
-    {
-      name: '文件1.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'success',
-      message: '上传成功',
-      type: 'image',
-      uid: '123',
-    },
-    {
-      name: '文件2.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'uploading',
-      message: '上传中...',
-      type: 'image',
-      uid: '125',
-    },
-  ]
-  const onDelete = (file: FileItem, fileList: FileItem[]) => {
-    // console.log(translated.ca3903f3, file, fileList)
-  }
-
   const submitFailed = (error: any) => {
     Toast.show({ content: 'callback: submitFailed error', icon: 'fail' })
     console.log('failed error', error)
@@ -217,8 +190,15 @@ const FormDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
-        <Form>
-          <Form.Item label={translated.name} name="username">
+        <Form
+          footer={
+            <>
+              <button type="submit">Submit</button>
+              <button type="reset">Reset</button>
+            </>
+          }
+        >
+          <Form.Item required label={translated.name} name="username">
             <Input
               className="nut-input-text"
               placeholder={translated.nameTip}
@@ -233,7 +213,7 @@ const FormDemo = () => {
           </Form.Item>
         </Form>
         <h2>{translated.title10}</h2>
-        <Form labelPosition="Top">
+        <Form labelPosition="top">
           <Form.Item label={translated.name} name="username">
             <Input
               className="nut-input-text"

@@ -1,18 +1,8 @@
 import React from 'react'
-import { useTranslate } from '@/sites/assets/locale/taro'
-import {
-  Cell,
-  Form,
-  Input,
-  TextArea,
-  Switch,
-  Checkbox,
-  Radio,
-  Range,
-  Rate,
-} from '@/packages/nutui.react.taro'
-import Header from '@/sites/components/header'
 import Taro from '@tarojs/taro'
+import { useTranslate } from '@/sites/assets/locale/taro'
+import { Input, Form } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
 
 interface T {
   basic: string
@@ -20,6 +10,8 @@ interface T {
   title10: string
   title2: string
   title3: string
+  title4: string
+  title5: string
   name: string
   nameTip: string
   nameTip1: string
@@ -62,13 +54,15 @@ const FormDemo = () => {
       title1: '动态表单',
       title10: '顶部对齐',
       title2: '表单校验',
-      title3: '表单类型',
+      title3: '带有初始值表单校验',
+      title4: 'Form.useForm 对表单数据域进行交互。',
+      title5: '表单类型',
       name: '姓名',
       nameTip: '请输入姓名',
       nameTip1: '请输入姓名',
       age: '年龄',
       ageTip: '请输入年龄',
-      ageTip1: '请输入年龄',
+      ageTip1: '请输入年龄，必须数字且0-200区间',
       ageTip2: '必须输入数字',
       ageTip3: '必须输入0-200区间',
       tel: '联系电话',
@@ -102,7 +96,9 @@ const FormDemo = () => {
       title1: 'Dynamic Form',
       title10: 'Top Align',
       title2: 'Validate Form',
-      title3: 'Form Type',
+      title3: 'InitialValue Validate Type',
+      title4: 'Interact with form data fields via Form.useForm',
+      title5: 'Form Type',
       name: 'Name',
       nameTip: 'Please enter your name',
       nameTip1: 'Please enter name',
@@ -125,7 +121,7 @@ const FormDemo = () => {
       add: 'Add',
       remove: 'Remove',
       submit: 'Submit',
-      reset: 'Reset prompt status',
+      reset: 'Reset alert state',
       switch: 'Switch',
       checkbox: 'Checkbox',
       radiogroup: 'Group',
@@ -140,135 +136,15 @@ const FormDemo = () => {
     },
   })
 
-  // 动态表单
-  const submitFailed = (error: any) => {
-    // Toast.fail('callback: submitFailed error')
-    console.log('failed error', error)
-  }
-
-  const submitSucceed = (obj: any) => {
-    // Toast.success('succeed')
-    console.log('succeed', obj)
-  }
-
   return (
     <>
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <Form>
-          <Form.Item label={translated.name} name="username">
-            <Input
-              className="nut-input-text"
-              placeholder={translated.nameTip}
-              type="text"
-            />
+          <Form.Item>
+            <Input />
           </Form.Item>
-          <Form.Item label={translated.remarks} name="remark">
-            <TextArea placeholder={translated.remarksTip} />
-          </Form.Item>
-        </Form>
-        <h2>{translated.title10}</h2>
-        <Form labelPosition="Top">
-          <Form.Item label={translated.name} name="username">
-            <Input
-              className="nut-input-text"
-              placeholder={translated.nameTip}
-              type="text"
-            />
-          </Form.Item>
-          <Form.Item label={translated.remarks} name="remark">
-            <TextArea placeholder={translated.remarksTip} />
-          </Form.Item>
-        </Form>
-        {/* <h2>{translated.title1}</h2>
-        <Form
-          onFinish={(obj) => submitSucceed(obj)}
-          onFinishFailed={(error) => submitFailed(error)}
-        >
-          <Form.Item
-            label={translated.name}
-            name="username"
-            rules={[{ required: true, message: translated.nameTip }]}
-          >
-            <Input placeholder={translated.nameTip} type="text" />
-          </Form.Item>
-          <Form.Item label={translated.tel} name="tel">
-            <Input placeholder={translated.telTip} type="tel" />
-          </Form.Item>
-          <Cell>
-            <input type="submit" value={translated.submit} />
-          </Cell>
-        </Form> */}
-        <h2>{translated.title2}</h2>
-        <Form
-          onFinish={(obj) => submitSucceed(obj)}
-          onFinishFailed={(error) => submitFailed(error)}
-        >
-          <Form.Item
-            label={translated.name}
-            name="username"
-            rules={[{ required: true, message: translated.nameTip }]}
-          >
-            <Input placeholder={translated.nameTip1} type="text" />
-          </Form.Item>
-          <Form.Item label={translated.age} name="age">
-            <Input placeholder={translated.ageTip1} type="number" />
-          </Form.Item>
-          <Form.Item label={translated.tel} name="tel">
-            <Input placeholder={translated.telTip2} type="number" />
-          </Form.Item>
-          <Form.Item label={translated.address} name="address">
-            <Input placeholder={translated.addressTip} type="text" />
-          </Form.Item>
-          <Cell>
-            <input type="submit" value={translated.submit} />
-          </Cell>
-        </Form>
-        <h2>{translated.title3}</h2>
-        <Form
-          onFinish={(obj) => submitSucceed(obj)}
-          onFinishFailed={(error) => submitFailed(error)}
-        >
-          <Form.Item label={translated.switch} name="switch">
-            <Switch />
-          </Form.Item>
-          <Form.Item label={translated.checkbox} name="checkbox">
-            <Checkbox
-              labelPosition="right"
-              label={translated.checkbox}
-              checked={false}
-            />
-          </Form.Item>
-          <Form.Item label={translated.radiogroup} name="radiogroup">
-            <Radio.Group>
-              <Radio value="1">选项1</Radio>
-              <Radio value="2">选项2</Radio>
-              <Radio value="3">选项3</Radio>
-            </Radio.Group>
-          </Form.Item>
-          <Form.Item label={translated.rate} name="rate">
-            <Rate defaultValue={0} />
-          </Form.Item>
-          {/* <Form.Item label={translated.inputnumber} name="inputnumber">
-              <InputNumber modelValue={3} min="10" max="20" />
-            </Form.Item> */}
-          <Form.Item label={translated.range} name="range">
-            <Range defaultValue={0} max={10} min={-10} />
-          </Form.Item>
-          {/* <Form.Item label={translated.uploader} name="uploader">
-              <Uploader
-                url={uploadUrl}
-                defaultFileList={defaultFileList}
-                onRemove={onDelete}
-                maximum="3"
-                multiple
-                uploadIcon="dongdong"
-              />
-            </Form.Item> */}
-          <Cell>
-            <input type="submit" value={translated.submit} />
-          </Cell>
         </Form>
       </div>
     </>

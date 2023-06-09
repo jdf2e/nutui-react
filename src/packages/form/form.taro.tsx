@@ -1,72 +1,102 @@
-import React, { FunctionComponent } from 'react'
-
+import React, { FunctionComponent, ReactNode } from 'react'
+import classNames from 'classnames'
+import CellGroup from '../cellgroup'
+import { Context } from './context'
+import { useForm } from './useForm'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import CellGroup from '@/packages/cellgroup/index.taro'
-import FormItem from '@/packages/formitem/index.taro'
-import { FormItemContext } from '../formitem/formitemcontext'
-import { useForm } from './useForm.taro'
-import { BaseForm } from './types'
+import { FormItem } from '../formitem/formitem'
+import Cell from '@/packages/cell'
 
-export interface FormProps extends BasicComponent, BaseForm {}
+export interface FormProps extends BasicComponent {
+  disabled: boolean
+  footer: ReactNode
+  initialValues: any
+  name: string
+  form: any
+  labelPosition: 'top' | 'left' | 'right'
+  starPosition: 'left' | 'right'
+  // validateMessages: ValidateMessages
+  onFinish: (values: any) => void
+  onFinishFailed: (values: any, errorFields: any) => void
+}
 
 const defaultProps = {
   ...ComponentDefaults,
-  className: '',
-  style: undefined,
-  form: {},
-  labelPosition: 'Right',
-  formGroupTitle: '',
-  onFinish: (obj) => {},
-  onFinishFailed: (value) => {},
-  starPositon: 'Left',
+  labelPosition: 'right',
+  starPosition: 'left',
+  onFinish: (values) => {},
+  onFinishFailed: (values, errorFields) => {},
 } as FormProps
 
 const PositionInfo: any = {
-  Top: 'form-layout-top',
-  Left: 'form-layout-left',
-  Right: 'form-layout-right',
+  top: 'form-layout-top',
+  left: 'form-layout-left',
+  right: 'form-layout-right',
 }
 
 export const Form: FunctionComponent<
   Partial<FormProps> & React.HTMLAttributes<HTMLFormElement>
-> & { Item: typeof FormItem } = (props) => {
+> & { Item: typeof FormItem } & { useForm: typeof useForm } = (props) => {
+  const classPrefix = 'nut-form'
   const {
+    className,
+    style,
+    footer,
     children,
+    initialValues,
     onFinish,
     onFinishFailed,
     labelPosition,
-    starPositon,
-    ...rest
+    starPosition,
+    form,
   } = {
     ...defaultProps,
     ...props,
   }
 
-  console.log('46 dddd')
-
-  const [formInstance] = useForm()
-  formInstance.starPositon = starPositon
-  const { setCallback, submit } = formInstance
-
+  let formInstance
+  if (form !== undefined) {
+    formInstance = form
+  } else {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    ;[formInstance] = useForm()
+  }
+  formInstance.starPosition = starPosition
+  const { setCallback, submit, resetFields, setInitialValues } = formInstance
+  // 设置校验后的回调，给组件的使用者暴露的接口
   setCallback({
     onFinish,
     onFinishFailed,
   })
+  // 初始化 initialValues 和 store
+  const mountRef = React.useRef<boolean>(false)
+  setInitialValues(initialValues, !mountRef.current)
+  if (!mountRef.current) {
+    mountRef.current = true
+  }
 
   return (
     <form
-      className={`nut-form ${PositionInfo[labelPosition]} ${props.className}`}
-      style={props.style}
+      className={classNames(
+        classPrefix,
+        className,
+        PositionInfo[labelPosition]
+      )}
+      style={style}
       onSubmit={(e) => {
         e.preventDefault()
+        e.stopPropagation()
         submit()
       }}
-      // {...rest}
+      onReset={(e) => {
+        e.preventDefault()
+        e.stopPropagation()
+        resetFields()
+      }}
     >
       <CellGroup>
-        <FormItemContext.Provider value={formInstance}>
-          {children}
-        </FormItemContext.Provider>
+        <Context.Provider value={formInstance}>{children}</Context.Provider>
+        {footer ? <Cell>{footer}</Cell> : null}
       </CellGroup>
     </form>
   )
@@ -75,3 +105,4 @@ export const Form: FunctionComponent<
 Form.defaultProps = defaultProps
 Form.displayName = 'NutForm'
 Form.Item = FormItem
+Form.useForm = useForm
