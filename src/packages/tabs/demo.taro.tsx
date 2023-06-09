@@ -30,7 +30,7 @@ interface T {
 const TabsDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title1: '基础用法-微笑曲线',
       title2: '通过 value 匹配',
       title3: '数据异步渲染 3s',

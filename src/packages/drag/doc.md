@@ -15,7 +15,7 @@ import { Drag } from '@nutui/nutui-react'
 
 
 
-### 基本用法
+### 基础用法
 
 :::demo
 

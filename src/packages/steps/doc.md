@@ -12,7 +12,7 @@ import { Steps } from '@nutui/nutui-react';
 
 ```
 ## 代码演示
-### 基本用法
+### 基础用法
 
 :::demo
 ```tsx
@@ -55,7 +55,7 @@ export default App;
 ```
 :::
 
-### 基本用法：点状
+### 基础用法：点状
 
 :::demo
 ```tsx

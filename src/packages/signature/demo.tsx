@@ -18,14 +18,14 @@ interface signatureRefState {
 const SignatureDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title: '修改颜色和签字粗细',
       tips: 'Tips: 点击确认按钮,下方显示签名图片',
       clear: '重签',
       confirm: '确认',
     },
     'zh-TW': {
-      basic: '基本用法',
+      basic: '基础用法',
       title: '修改顏色和簽字粗細',
       tips: 'Tips: 點擊確認按鈕,下方顯示簽名圖片',
       clear: '重簽',

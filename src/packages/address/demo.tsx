@@ -45,7 +45,7 @@ interface T {
 const AddressDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title: '选择地址',
       customAddress: '选择自定义地址',
       selectCity: '选中省市区',
@@ -57,7 +57,7 @@ const AddressDemo = () => {
       other: '选择其他地址',
     },
     'zh-TW': {
-      basic: '基本用法',
+      basic: '基础用法',
       title: '選擇地址',
       customAddress: '選擇自定義地址',
       selectCity: '選中省市區',
