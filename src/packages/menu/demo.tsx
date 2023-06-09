@@ -111,11 +111,12 @@ const MenuDemo = () => {
           <MenuItem
             options={options}
             value={0}
+            closeOnClickAway
             onChange={(val) => {
               console.log(val)
             }}
           />
-          <MenuItem options={options1} value="a" />
+          <MenuItem options={options1} value="a" closeOnClickAway />
         </Menu>
         <h2>{translated.customMenuContent}</h2>
         <Menu>
