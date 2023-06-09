@@ -10,7 +10,7 @@
 import { Avatar } from '@nutui/nutui-react';
 ```
 
-### 基本用法
+### 基础用法
 
 支持三種尺寸：small、normal、large
 

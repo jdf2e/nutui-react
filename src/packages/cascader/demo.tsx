@@ -26,7 +26,7 @@ const customTheme = {
 const CascaderDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title1: '自定义属性名称',
       title2: '动态加载',
       title3: '部分数据动态加载',
@@ -36,7 +36,7 @@ const CascaderDemo = () => {
       addressTip1: '请选择地址',
     },
     'zh-TW': {
-      basic: '基本用法',
+      basic: '基础用法',
       title1: '自定義屬性名稱',
       title2: '動態加載',
       title3: '部分數據動態加載',

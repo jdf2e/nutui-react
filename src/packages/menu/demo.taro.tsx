@@ -13,7 +13,7 @@ const MenuDemo = () => {
   }`
   const [translated] = useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       customMenuContent: '自定义菜单内容',
       customContent: '自定义内容',
       screen: '筛选',

@@ -13,7 +13,7 @@ import { AnimatingNumbers } from '@nutui/nutui-react'
 
 ## 代码演示
 
-### AnimatingNumbers.CountUp-基础用法
+### 基础用法
 
 :::demo
 
@@ -29,7 +29,7 @@ export default App
 
 :::
 
-### AnimatingNumbers.CountUp-自定义样式，动态修改数据（需要指定最大位数）
+### 自定义样式，动态修改数据（需要指定最大位数）
 
 :::demo
 
@@ -62,7 +62,7 @@ export default App
 
 :::
 
-## AnimatingNumbers.CountUp
+## AnimatingNumbers
 
 ### Props
 

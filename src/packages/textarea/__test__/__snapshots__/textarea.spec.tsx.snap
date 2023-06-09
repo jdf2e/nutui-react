@@ -11,7 +11,7 @@ exports[`textarea props test 1`] = `
       placeholder="请输入内容"
       rows="2"
     >
-      基本用法
+      基础用法
     </textarea>
     <div
       class="nut-textarea__limit"
