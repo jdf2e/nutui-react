@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { CircleClose, Search } from '@nutui/icons-react'
+import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -118,8 +119,8 @@ export const SearchBar: FunctionComponent<
     return (
       <input
         className={`${classPrefix}__input ${
-          shape === 'round' ? `${classPrefix}__round` : ''
-        } ${clearable ? `${classPrefix}__input-clear` : ''}`}
+          clearable ? `${classPrefix}__input-clear` : ''
+        }`}
         ref={searchRef}
         style={{ ...props.style }}
         value={value || ''}
@@ -205,7 +206,11 @@ export const SearchBar: FunctionComponent<
       style={{ ...props.style }}
     >
       {renderLeft()}
-      <div className={`${classPrefix}__content`}>
+      <div
+        className={classNames(`${classPrefix}__content`, {
+          [`${classPrefix}__round`]: shape === 'round',
+        })}
+      >
         {renderLeftIn()}
         {renderField()}
         {renderRightIn()}
