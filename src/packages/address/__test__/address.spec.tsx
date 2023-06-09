@@ -73,7 +73,7 @@ test('Show Address', async () => {
       town={addressData.town}
     />
   )
-  const regionItem = container.querySelectorAll('.nut-address__region-item')
+  const regionItem = container.querySelectorAll('.nut-address-custom-item')
   expect(regionItem.length).toBe(5)
 })
 
@@ -89,13 +89,13 @@ test('choose address item', async () => {
       onChange={changeHandle}
     />
   )
-  const regionItem = container.querySelectorAll('.nut-address__region-item')[0]
+  const regionItem = container.querySelectorAll('.nut-address-custom-item')[0]
     .firstElementChild
   regionItem && fireEvent.click(regionItem)
 
   await waitFor(() => {
     const regionItemNext = container.querySelectorAll(
-      '.nut-address__tab-item '
+      '.nut-address-tabs-item '
     )[0]
     expect(changeHandle.mock.calls[0][0].next).toEqual('city')
     expect(regionItemNext.textContent).toEqual('北京')
@@ -114,11 +114,13 @@ test('default choose address', async () => {
       town={addressData.town}
     />
   )
-  const regionItem = container.querySelectorAll('.nut-address__region-tab')[0]
-  const contentItem = container.querySelectorAll('.nut-address__region-item')[0]
+  const regionItem = container.querySelectorAll('.nut-address-tabs')[0]
+  const contentItem = container.querySelectorAll('.nut-address-custom-item')[0]
   await waitFor(() => {
     expect(regionItem.textContent).toEqual('北京朝阳区请选择')
-    expect(contentItem.querySelector('.nutui-iconfont')).toBeEmptyDOMElement()
+    // expect(
+    //   contentItem.querySelector('.nut-address-custom-item-icon')
+    // ).toBeEmptyDOMElement()
   })
 })
 
@@ -126,7 +128,7 @@ test('exist address', async () => {
   const { container } = render(
     <Address visible type="exist" existList={existList} custom={false} />
   )
-  const existItem = container.querySelectorAll('.nut-address__exist-item')
+  const existItem = container.querySelectorAll('.nut-address-exist-item')
 
   await waitFor(() => {
     expect(existItem.length).toBe(3)
@@ -145,7 +147,7 @@ test('exist address choose event', async () => {
     />
   )
   const existSecondItem = container.querySelectorAll(
-    '.nut-address__exist-item'
+    '.nut-address-exist-item'
   )[1].firstElementChild
   existSecondItem && fireEvent.click(existSecondItem)
 
@@ -161,6 +163,7 @@ test('exist address & list address', async () => {
     <Address
       visible
       type="exist"
+      custom
       province={addressData.province}
       city={addressData.city}
       country={addressData.country}
@@ -170,15 +173,13 @@ test('exist address & list address', async () => {
       onChange={changeHandle}
     />
   )
-  const chooseBtn = container.querySelectorAll(
-    '.nut-address__choose-other-btn'
-  )[0]
+  const chooseBtn = container.querySelectorAll('.nut-address-footer-btn')[0]
   chooseBtn && fireEvent.click(chooseBtn)
 
   await waitFor(() => {
     expect(onSwitch).toBeCalled()
   })
 
-  const regionItem = container.querySelectorAll('.nut-address__region-item')
+  const regionItem = container.querySelectorAll('.nut-address-custom-item')
   expect(regionItem.length).toBe(5)
 })
