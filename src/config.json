@@ -365,7 +365,7 @@
       "enName": "dentry",
       "packages": [
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Address",
           "type": "component",
           "cName": "地址",

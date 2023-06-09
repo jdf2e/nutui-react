@@ -50,7 +50,7 @@ const AddressDemo = () => {
       customAddress: '选择自定义地址',
       selectCity: '选中省市区',
       customAddress2: '选择自定义地址2',
-      existAddress: '选择已有地址',
+      existList: '选择已有地址',
       icon: '自定义图标',
       change: '自定义地址与已有地址切换',
       delivery: '配送',
@@ -62,7 +62,7 @@ const AddressDemo = () => {
       customAddress: '選擇自定義地址',
       selectCity: '選中省市區',
       customAddress2: '選擇自定義地址2',
-      existAddress: '選擇已有地址',
+      existList: '選擇已有地址',
       icon: '自定義圖標',
       change: '自定義地址與已有地址切換',
       delivery: '配送',
@@ -74,7 +74,7 @@ const AddressDemo = () => {
       customAddress: 'Choose Custom Address',
       selectCity: 'Choose City',
       customAddress2: 'Choose Custom Address2',
-      existAddress: 'Choose Exist Address',
+      existList: 'Choose Exist Address',
       icon: 'Custom Icon',
       change: 'Custom Or Exist',
       delivery: 'Delivery',
@@ -145,13 +145,13 @@ const AddressDemo = () => {
   })
 
   const [icon, setIcon] = useState({
-    selectedIcon: <HeartFill color="red" />,
+    selectIcon: <HeartFill color="red" />,
     defaultIcon: <Heart1 />,
-    closeBtnIcon: <Close />,
-    backBtnIcon: <Left />,
+    closeIcon: <Close />,
+    backIcon: <Left />,
   })
 
-  const [existAddress, setExistAddress] = useState([
+  const [existList, setExistAddress] = useState([
     {
       id: 1,
       addressDetail: '',
@@ -242,10 +242,14 @@ const AddressDemo = () => {
     console.log('选择')
   }
 
+  const [customeTitle, setCustomTitle] = useState('选择已有地址')
+
   const onSwitch = (val: { type: string }) => {
     if (val.type === 'custom') {
+      setCustomTitle('选择已有地址')
       console.log('点击了“选择其他地址”按钮')
     } else {
+      setCustomTitle('重新选择地址')
       console.log('点击了自定义地址左上角的返回按钮')
     }
   }
@@ -387,7 +391,7 @@ const AddressDemo = () => {
           description={text.five}
           onClick={() => showAddress('normal2')}
         />
-        <h2>{translated.existAddress}</h2>
+        <h2>{translated.existList}</h2>
         <Cell
           title={translated.title}
           description={text.two}
@@ -407,32 +411,31 @@ const AddressDemo = () => {
         />
 
         <Address
-          modelValue={showPopup.normal}
+          visible={showPopup.normal}
           province={province}
           city={city}
           country={country}
           town={town}
-          customAddressTitle={translated.title}
+          title={translated.title}
           onChange={(cal) => onChange(cal, 'normal')}
           onClose={close1}
         />
 
         <Address
-          modelValue={showPopup.select}
-          modelSelect={[1, 7, 3]}
+          visible={showPopup.select}
+          defaultValue={[1, 7, 3]}
           province={addressData.province}
           city={addressData.city}
           country={addressData.country}
           town={addressData.town}
-          customAddressTitle={translated.title}
           onChange={(cal) => onChange(cal, 'select')}
           onClose={close6}
         />
 
         <Address
-          modelValue={showPopup.normal2}
+          visible={showPopup.normal2}
           type="custom2"
-          modelSelect={[1, 7, 3]}
+          defaultValue={[1, 7, 3]}
           province={addressData.province}
           city={addressData.city}
           country={addressData.country}
@@ -440,46 +443,44 @@ const AddressDemo = () => {
           height="270px"
           onChange={(cal) => onChange(cal, 'normal2')}
           onClose={close5}
-          customAddressTitle={translated.title}
         />
 
         <Address
-          modelValue={showPopup.exist}
+          visible={showPopup.exist}
           type="exist"
-          existAddress={existAddress}
+          existList={existList}
           onChange={(cal) => onChange(cal, 'exist')}
           onClose={close2}
-          isShowCustomAddress={false}
-          onSelected={selected}
-          existAddressTitle={translated.delivery}
+          onSelect={selected}
+          title={translated.delivery}
         />
 
         <Address
-          modelValue={showPopup.customImg}
+          visible={showPopup.customImg}
           type="exist"
-          existAddress={existAddress}
+          existList={existList}
           onChange={(cal) => onChange(cal, 'customImg')}
           onClose={close3}
-          isShowCustomAddress={false}
-          onSelected={selected}
+          onSelect={selected}
           defaultIcon={icon.defaultIcon}
-          selectedIcon={icon.selectedIcon}
-          closeBtnIcon={icon.closeBtnIcon}
+          selectIcon={icon.selectIcon}
+          closeIcon={icon.closeIcon}
         />
 
         <Address
-          modelValue={showPopup.other}
+          visible={showPopup.other}
           type="exist"
-          existAddress={existAddress}
+          existList={existList}
           province={province}
           city={city}
           country={country}
           town={town}
-          backBtnIcon={icon.backBtnIcon}
+          title={customeTitle}
+          backIcon={icon.backIcon}
           onChange={(cal) => onChange(cal, 'other')}
           onClose={close4}
-          onSelected={selected}
-          customAndExistTitle={translated.other}
+          onSelect={selected}
+          custom={translated.other}
           onSwitch={onSwitch}
           onCancel={onCancel}
         />

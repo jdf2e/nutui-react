@@ -1,15 +1,16 @@
 # Address
 
-### Intro
+## Intro
 
 Load on demand Load the  Icon、Popup、Elevator dependent component
 
-### Install
+## Install
 ``` javascript
 // react
 import { Address } from '@nutui/nutui-react';
 ```
 
+## Demo
 ### Choose Custom Address
 
 :::demo
@@ -78,12 +79,11 @@ const App = () => {
     <>
       <Cell title="Choose Address" description={text}  onClick={()=>setNormal(true)} />
       <Address
-          modelValue={normal}
+          visible={normal}
           province={province}
           city={city}
           country={country}
           town={town}
-          customAddressTitle="Choose Address"
           onChange={onChange}
           onClose={close}
        />
@@ -154,13 +154,12 @@ const App = () => {
     <>
       <Cell title="Choose Address" description={text}  onClick={()=>setNormal(true)} />
       <Address
-          modelValue={normal}
-          modelSelect={[1, 7, 3]}
+          visible={normal}
+          defaultValue={[1, 7, 3]}
           province={province}
           city={city}
           country={country}
           town={town}
-          customAddressTitle="Choose Address"
           onChange={onChange}
           onClose={close}
        />
@@ -235,7 +234,7 @@ const App = () => {
     <>
       <Cell title="Choose Address" description={text}  onClick={()=>setNormal2(true)} />
       <Address
-          modelValue={normal2}
+          visible={normal2}
           type="custom2"
           province={province}
           city={city}
@@ -244,7 +243,6 @@ const App = () => {
           height="270px"
           onChange={onChange}
           onClose={close}
-          customAddressTitle="Choose Address"
        />
     </>
   );
@@ -264,7 +262,7 @@ import { Address, Cell ,Popup} from '@nutui/nutui-react';
 const App = () => {
   const [text, setText] = useState('Choose Address')
   const [exist,setExist] = useState(false)
-  const [existAddress, setExistAddress] = useState([
+  const [existList, setExistAddress] = useState([
       {
         id: 1,
         addressDetail: '',
@@ -321,13 +319,13 @@ const App = () => {
     <>
       <Cell title="Choose Address" description={text}  onClick={()=>setExist(true)} />
       <Address
-          modelValue={exist}
+          visible={exist}
           type="exist"
-          existAddress={existAddress}
+          existList={existList}
           onChange={onChange}
           onClose={close}
-          isShowCustomAddress={false}
-          onSelected={selected}
+          custom={false}
+          onSelect={selected}
           existAddressTitle="Delivery To"
        />
     </>
@@ -349,13 +347,13 @@ const App = () => {
   const [text, setText] = useState('Choose Address')
   const [customImg,setCustomImg] = useState(false)
   const [icon, setIcon] = useState({
-    selectedIcon: <HeartFill color="red" />,
+    selectIcon: <HeartFill color="red" />,
     defaultIcon: <Heart1 />,
-    closeBtnIcon: <Close />,
-    backBtnIcon: <Left />,
+    closeIcon: <Close />,
+    backIcon: <Left />,
   })
 
-  const [existAddress, setExistAddress] = useState([
+  const [existList, setExistAddress] = useState([
       {
         id: 1,
         addressDetail: '',
@@ -414,16 +412,16 @@ const App = () => {
     <>
       <Cell title="Choose Address" description={text}  onClick={()=>setCustomImg(true)} />
       <Address
-          modelValue={customImg}
+          visible={customImg}
           type="exist"
-          existAddress={existAddress}
+          existList={existList}
           onChange={onChange}
           onClose={close}
-          isShowCustomAddress={false}
-          onSelected={selected}
+          custom={false}
+          onSelect={selected}
           defaultIcon={icon.defaultIcon}
-          selectedIcon={icon.selectedIcon}
-          closeBtnIcon={icon.closeBtnIcon}
+          selectIcon={icon.selectIcon}
+          closeIcon={icon.closeIcon}
        />
     </>
   );
@@ -445,10 +443,10 @@ const App = () => {
   const [text, setText] = useState('Choose Address')
   const [other,setOther] = useState(false)
   const [icon, setIcon] = useState({
-    selectedIcon: <HeartFill color="red" />,
+    selectIcon: <HeartFill color="red" />,
     defaultIcon: <Heart1 />,
-    closeBtnIcon: <Close />,
-    backBtnIcon: <Left />,
+    closeIcon: <Close />,
+    backIcon: <Left />,
   })
   const [province, setProvince] = useState([
       { id: 1, name: '北京', title: 'B' },
@@ -468,7 +466,7 @@ const App = () => {
     country,
     town,
   })
-  const [existAddress, setExistAddress] = useState([
+  const [existList, setExistAddress] = useState([
       {
         id: 1,
         addressDetail: '',
@@ -560,17 +558,17 @@ const App = () => {
     <>
       <Cell title="Choose Address" description={text}  onClick={()=>setOther(true)} />
       <Address
-          modelValue={other}
+          visible={other}
           type="exist"
-          existAddress={existAddress}
+          existList={existList}
           province={province}
           city={city}
           country={country}
           town={town}
-          backBtnIcon={icon.backBtnIcon}
+          backIcon={icon.backIcon}
           onChange={onChange}
           onClose={close}
-          onSelected={selected}
+          onSelect={selected}
           customAndExistTitle="Choose Other Address"
           onSwitch={onSwitch}
           onCancel={onCancel}
@@ -584,37 +582,31 @@ export default App;
 :::
 
 
-# API
+## Address
+
+### Props
 
 | Property | Description               | Type       | Default  |
 |----- | ----- |------------| -----  |
-| modelValue | Whether to open address | string     | - |
-| modelSelect`v1.2.3` | Default address value | string[] \ | number[] | `[]` |
-| type | Choose type: exist/custom/custom2  | string     | `custom` |
-| province | Province data | Array      | `[]` |
-| city | City data | Array      | `[]` |
-| country | Country data | Array      | `[]` |
-| town | Town data | Array      | `[]` |
-| height | Popup height | string \   | number | `200px` |
-| existAddress | Exist address list data | Array      | `[]` |
-| defaultIcon | Exist address default icon | ReactNode       | - |
-| selectedIcon | Exist address selected icon | ReactNode     | - |
-| closeBtnIcon | Custom close button icon | ReactNode     | - |
-| backBtnIcon | Custom back button icon | ReactNode     | - |
-| isShowCustomAddress | Whether to change custom address | boolean    | `true` |
-| customAddressTitle  | Custom address title | string     | `Select Region` |
-| existAddressTitle|  Exist address title | string     | `Delivery To` |
-| customAndExistTitle| Custom address and existing address switch button copywriting | string     | `Choose Another Address` |
-
-
-## Event
-| Property | Description               | Arguments   |
-|----- | ----- | -----  |
-| onChange | Emitted when to selected custom address |  reference onChange |
-| onSelected |  Emitted when to selected exist address  | reference selected
-| onClose | Emitted when to close  | reference close |
-| onCancel `v2.0.0` |Emitted when to close mask | `closeWay:'mask' \| 'cross'` |
-| onSwitch `v2.0.0` | Click to select another address or custom address to select the upper left corner of the return button triggered | `type:'exist' \| 'custom' \| 'custom2'` |
+| visible | Whether to open address | `string`     | - |
+| defaultValue`v1.2.3` | Default address value | `string[] \ | number[]` | `[]` |
+| type | Choose type: exist/custom/custom2  | `string`     | `custom` |
+| province | Province data | `Array`      | `[]` |
+| city | City data | `Array`      | `[]` |
+| country | Country data | `Array`      | `[]` |
+| town | Town data | `Array`      | `[]` |
+| height | Popup height | `string \| number` | `200px` |
+| existList | Exist address list data | `Array`      | `[]` |
+| defaultIcon | Exist address default icon | `ReactNode`       | - |
+| selectIcon | Exist address selected icon | `ReactNode`     | - |
+| closeIcon | Custom close button icon | `ReactNode`     | - |
+| backIcon | Custom back button icon | `ReactNode`     | - |
+| custom | Whether to change custom address | `boolean`    | `true` |
+| onChange | Emitted when to selected custom address | `(cal: ChangeCallBack) => void` | `-` |
+| onSelect |  Emitted when to selected exist address  |` (prevExistAdd: AddressList, item: AddressList, copyExistAdd: AddressList[] ) => void` |`-` |
+| onClose | Emitted when to close  | `(cal: CloseCallBack) => void` |`-` |
+| onCancel  |Emitted when to close mask | `(cal: ChangeCallBack) => void` |`-` |
+| onSwitch  | Click to select another address or custom address to select the upper left corner of the return button triggered | `(cal: { type: string }) => void` | `-` |
 
 
 ## change 回调参数
@@ -636,7 +628,6 @@ export default App;
 |----- | ----- | ----- 
 | type | Selected Type  |  `exist` \| `custom` \| `custom2` |
 | data | Selected Data | `{}` |
-    
 
 ## Theming
 
@@ -644,27 +635,6 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-address-icon-color | `$primary-color` |
-| --nutui-address-header-title-font-size | `18px` |
-| --nutui-address-header-title-color | `#262626` |
-| --nutui-address-region-tab-font-size | `13px` |
-| --nutui-address-region-tab-color | `#1d1e1e` |
-| --nutui-address-region-tab-active-item-font-weight | `bold` |
-| --nutui-address-region-tab-line-border-radius | `0` |
-| --nutui-address-region-tab-line-opacity | `1` |
-| --nutui-address-region-item-color | `#333` |
-| --nutui-address-region-item-font-size | `$font-size-1` |
-| --nutui-address-item-margin-right | `9px` |
-| --nutui-addresslist-bg | `#fff` |
-| --nutui-addresslist-border | `#f0f0f0` |
-| --nutui-addresslist-font-color | `#333333` |
-| --nutui-addresslist-font-size | `16px` |
-| --nutui-addresslist-mask-bg | `rgba(0, 0, 0, 0.4)` |
-| --nutui-addresslist-addr-font-color | `#666666` |
-| --nutui-addresslist-addr-font-size | `12px` |
-| --nutui-addresslist-set-bg | `#f5a623` |
-| --nutui-addresslist-del-bg | `#e1251b` |
-| --nutui-addresslist-contnts-contact-default | `$primary-color` |
-| --nutui-addresslist-contnts-contact-color | `$white` |
+| Name | Description | Default Value |
+| --- | --- |--- |
+| --nutui-address-tab-line-background | tab line background| `linear-gradient(90deg,$primary-color 0%,$primary-color-end 100%) !default` |

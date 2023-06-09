@@ -498,6 +498,18 @@
 - fontColor 重命名为 color
 ### 特色组件
 #### Address
+- `modelValue` 重命名为 `visible`
+- `modelSelect` 重命名为 `defaultValue`
+- `onSelected` 重命名为 `onSelect`
+- `existAddress` 重命名为 `existList`
+- `selectedIcon` 重命名为 `selectIcon`
+- `closeBtnIcon` 重命名为 `closeIcon`
+- `backBtnIcon` 重命名为 `backIcon`
+- `isShowCustomAddress` 重命名为 `custom`，用于已有地址列表与自定义列表的切换，修改默认为值 `false`
+- `customAndExistTitle` 废弃，与 `custom` 合并，当 `custom` 为 true 时，为默认文案，设置为某字符串时，展示字符串。
+- `customAddressTitle`、`existAddressTitle` 改为 `title`，不再区分状态，可通过onSwitch修改title
+- 精简布局和样式
+
 #### Barrage
 - `barrageList` 重命名为 `list`
 - `frequency` 重命名为 `interval`

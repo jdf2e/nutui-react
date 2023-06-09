@@ -898,51 +898,10 @@ $swiper-indicator-item-background-color: var(
 ) !default;
 
 //address
-$address-region-tab-line: linear-gradient(
+$address-tab-line-background: linear-gradient(
   90deg,
   $primary-color 0%,
   $primary-color-end 100%
-) !default;
-$address-icon-color: var(--nutui-address-icon-color, $primary-color) !default;
-$address-header-title-font-size: var(
-  --nutui-address-header-title-font-size,
-  18px
-) !default;
-$address-header-title-color: var(
-  --nutui-address-header-title-color,
-  #262626
-) !default;
-$address-region-tab-font-size: var(
-  --nutui-address-region-tab-font-size,
-  13px
-) !default;
-$address-region-tab-color: var(
-  --nutui-address-region-tab-color,
-  #1d1e1e
-) !default;
-$address-region-tab-active-item-font-weight: var(
-  --nutui-address-region-tab-active-item-font-weight,
-  bold
-) !default;
-$address-region-tab-line-border-radius: var(
-  --nutui-address-region-tab-line-border-radius,
-  0
-) !default;
-$address-region-tab-line-opacity: var(
-  --nutui-address-region-tab-line-opacity,
-  1
-) !default;
-$address-region-item-color: var(
-  --nutui-address-region-item-color,
-  #333
-) !default;
-$address-region-item-font-size: var(
-  --nutui-address-region-item-font-size,
-  $font-size-1
-) !default;
-$address-item-margin-right: var(
-  --nutui-address-item-margin-right,
-  9px
 ) !default;
 
 //steps（✅）

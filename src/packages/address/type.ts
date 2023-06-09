@@ -8,7 +8,7 @@ export interface ChangeCallBack {
   value: string | RegionData
   custom: string
 }
-export interface CloseCallBackData extends SelectedRegionObj {
+export interface CloseCallBackData extends Regions {
   addressIdStr: string
   addressStr: string
 }
@@ -29,14 +29,14 @@ export interface AddressList {
   name?: string
   phone?: string
 }
-export interface NextListObj {
+export interface NextList {
   next: string
   value: string | RegionData
   custom: string
-  selectedRegion?: SelectedRegionObj
+  selectedRegion?: Regions
 }
 // 已选地址
-export interface SelectedRegionObj {
+export interface Regions {
   province: RegionData
   city: RegionData
   country: RegionData

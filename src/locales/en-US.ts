@@ -58,7 +58,7 @@ const enUS: BaseLang = {
     second: ' Second ',
   },
   address: {
-    selectRegion: 'Select Region',
+    selectRegion: 'Choose Address',
     deliveryTo: 'Delivery To',
     chooseAnotherAddress: 'Choose Another Address',
   },

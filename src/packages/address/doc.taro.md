@@ -1,10 +1,10 @@
 # Address 地址
 
-### 介绍
+## 介绍
 
 地址选择
 
-### 安装
+## 安装
 
 ``` javascript
 import { Address } from '@nutui/nutui-react-taro';
@@ -81,12 +81,11 @@ const App = () => {
     <>
       <Cell title="选择地址" description={text}  onClick={()=>setNormal(true)} />
       <Address
-        modelValue={normal}
+        visible={normal}
         province={province}
         city={city}
         country={country}
         town={town}
-        customAddressTitle="请选择所在地区"
         onChange={onChange}
         onClose={close}
       />
@@ -100,7 +99,7 @@ export default App;
 
 ### 选中省市区
 
-如果想选中某个省市区，需要在 modelSelect 中按照 province、city、country、town 的顺序配置想要展示的地区 id
+如果想选中某个省市区，需要在 defaultValue 中按照 province、city、country、town 的顺序配置想要展示的地区 id
 值，并且保证有能查询到对应的省市区数据即可。
 
 :::demo
@@ -160,13 +159,12 @@ const App = () => {
     <>
       <Cell title="选择地址" description={text}  onClick={()=>setNormal(true)} />
       <Address
-        modelValue={normal}
-        modelSelect={[1, 7, 3]}
+        visible={normal}
+        defaultValue={[1, 7, 3]}
         province={province}
         city={city}
         country={country}
         town={town}
-        customAddressTitle="请选择所在地区"
         onChange={onChange}
         onClose={close}
       />
@@ -244,7 +242,7 @@ const App = () => {
     <>
       <Cell title="选择地址" description={text}  onClick={()=>setNormal2(true)} />
       <Address
-        modelValue={normal2}
+        visible={normal2}
         type="custom2"
         province={province}
         city={city}
@@ -253,7 +251,6 @@ const App = () => {
         height="270px"
         onChange={onChange}
         onClose={close}
-        customAddressTitle="请选择所在地区"
       />
     </>
   );
@@ -275,7 +272,7 @@ import { Address, Cell, Popup } from '@nutui/nutui-react-taro';
 const App = () => {
   const [text, setText] = useState('请选择地址')
   const [exist, setExist] = useState(false)
-  const [existAddress, setExistAddress] = useState([
+  const [existList, setExistAddress] = useState([
     {
       id: 1,
       addressDetail: '',
@@ -338,13 +335,13 @@ const App = () => {
     <>
       <Cell title="选择地址" description={text}  onClick={()=>setExist(true)} />
       <Address
-        modelValue={exist}
+        visible={exist}
         type="exist"
-        existAddress={existAddress}
+        existList={existList}
         onChange={onChange}
         onClose={close}
-        isShowCustomAddress={false}
-        onSelected={selected}
+        custom={false}
+        onSelect={selected}
         existAddressTitle="配送至"
       />
     </>
@@ -369,13 +366,13 @@ const App = () => {
   const [text, setText] = useState('请选择地址')
   const [customImg, setCustomImg] = useState(false)
   const [icon, setIcon] = useState({
-    selectedIcon: <HeartFill color="red" />,
+    selectIcon: <HeartFill color="red" />,
     defaultIcon: <Heart1 />,
-    closeBtnIcon: <Close />,
-    backBtnIcon: <Left />,
+    closeIcon: <Close />,
+    backIcon: <Left />,
   })
 
-  const [existAddress, setExistAddress] = useState([
+  const [existList, setExistAddress] = useState([
     {
       id: 1,
       addressDetail: '',
@@ -440,16 +437,16 @@ const App = () => {
     <>
       <Cell title="选择地址" description={text}  onClick={()=>setCustomImg(true)} />
       <Address
-        modelValue={customImg}
+        visible={customImg}
         type="exist"
-        existAddress={existAddress}
+        existList={existList}
         onChange={onChange}
         onClose={close}
-        isShowCustomAddress={false}
-        onSelected={selected}
+        custom={false}
+        onSelect={selected}
         defaultIcon={icon.defaultIcon}
-        selectedIcon={icon.selectedIcon}
-        closeBtnIcon={icon.closeBtnIcon}
+        selectIcon={icon.selectIcon}
+        closeIcon={icon.closeIcon}
       />
     </>
   );
@@ -473,10 +470,10 @@ const App = () => {
   const [text, setText] = useState('请选择地址')
   const [other, setOther] = useState(false)
   const [icon, setIcon] = useState({
-    selectedIcon: <HeartFill color="red" />,
+    selectIcon: <HeartFill color="red" />,
     defaultIcon: <Heart1 />,
-    closeBtnIcon: <Close />,
-    backBtnIcon: <Left />,
+    closeIcon: <Close />,
+    backIcon: <Left />,
   })
   const [province, setProvince] = useState([
     { id: 1, name: '北京', title: 'B' },
@@ -496,7 +493,7 @@ const App = () => {
     country,
     town,
   })
-  const [existAddress, setExistAddress] = useState([
+  const [existList, setExistAddress] = useState([
     {
       id: 1,
       addressDetail: '',
@@ -594,17 +591,17 @@ const App = () => {
     <>
       <Cell title="选择地址" description={text}  onClick={()=>setOther(true)} />
       <Address
-          modelValue={other}
+          visible={other}
           type="exist"
-          existAddress={existAddress}
+          existList={existList}
           province={province}
           city={city}
           country={country}
           town={town}
-          backBtnIcon={icon.backBtnIcon}
+          backIcon={icon.backIcon}
           onChange={onChange}
           onClose={close}
-          onSelected={selected}
+          onSelect={selected}
           customAndExistTitle="选择其他地址"
           onSwitch={onSwitch}
           onCancel={onCancel}
@@ -618,46 +615,31 @@ export default App;
 
 :::
 
-# API
+## Address
+### Props
 
 | 属性 | 说明 | 类型 | 默认值 |
 |----- | ----- | ----- | -----  |
-| modelValue | 是否打开地址选择 | string | - |
-| modelSelect | 设置默认选中地址 | string[] \| number[] | `[]` |
+| visible | 是否打开地址选择 | `string` | - |
+| defaultValue | 设置默认选中地址 | `string[] \| number[]` | `[]` |
 | type | 地址选择类型 exist/custom/custom2  | string | `custom` |
-| province | 省，每个省的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | `[]` |
-| city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | `[]` |
-| country | 县，每个县的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | `[]` |
-| town | 乡/镇，每个乡/镇的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | Array | `[]` |
+| province | 省，每个省的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | `Array` | `[]` |
+| city | 市，每个市的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | `Array` | `[]` |
+| country | 县，每个县的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | `Array` | `[]` |
+| town | 乡/镇，每个乡/镇的对象中，必须有 name 字段，如果类型选择 custom2，必须指定 title 字段为首字母 | `Array` | `[]` |
 | height | 弹层中内容容器的高度，仅在type="custom2"时有效 | string \| number | `200px` |
-| existAddress | 已存在地址列表，每个地址对象中，必传值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解释见下） | Array | `[]` |
+| existList | 已存在地址列表，每个地址对象中，必传值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解释见下） | `Array` | `[]` |
 | defaultIcon | 已有地址列表默认图标，type='exist' 时生效 | ReactNode | - |
-| selectedIcon | 已有地址列表选中图标，type='exist' 时生效 | ReactNode | - |
-| closeBtnIcon | 自定义关闭弹框按钮图标 | ReactNode | - |
-| backBtnIcon | 自定义地址与已有地址切换时，自定义返回的按钮图标 | ReactNode | - |
-| isShowCustomAddress | 是否可以切换自定义地址选择，type='exist' 时生效 | boolean | `true` |
-| customAddressTitle  | 自定义地址选择文案，type='custom' 时生效 | string | `请选择所在地区` |
-| existAddressTitle| 已有地址文案 ，type='exist' 时生效| string | `配送至` |
-| customAndExistTitle| 自定义地址与已有地址切换按钮文案 ，type='exist' 时生效| string | `选择其他地址` |
-
-* provinceName 省的名字
-* cityName 市的名字
-* countyName 县的名字
-* townName 乡/镇的名字
-* addressDetail 具体地址
-* selectedAddress 字段用于判断当前地址列表的选中项。
-
-注：Nutui-React-Taro 下，自 `v1.3.10` 起 type 属性暂不支持 custom2 类型
-
-## Event
-
-| 属性 | 说明 | 回调参数 |
-|----- | ----- | -----  |
-| onChange | 自定义选择地址时，选择地区时触发 |  参考 onChange |
-| onSelected | 选择已有地址列表时触发 | 参考 selected |
-| onClose | 地址选择弹框关闭时触发 | 参考 close |
-| onCancel `v2.0.0` |点击遮罩层或点击右上角叉号关闭时触发 | `closeWay: 'mask' \| 'cross'` |
-| onSwitch `v2.0.0` | 点击'选择其他地址'或自定义地址选择左上角返回按钮触发 | `type: 'exist' \| 'custom' \| 'custom2'` |
+| selectIcon | 已有地址列表选中图标，type='exist' 时生效 | ReactNode | - |
+| closeIcon | 自定义关闭弹框按钮图标 | ReactNode | - |
+| backIcon | 自定义地址与已有地址切换时，自定义返回的按钮图标 | ReactNode | - |
+| custom | 是否可以切换自定义地址选择，type='exist' 时生效 | `boolean|string` | `true` |
+| title  | 标题 | string | `请选择地址` |
+| onChange | 自定义选择地址时，选择地区时触发  | `(cal: ChangeCallBack) => void` | `-` |
+| onSelect | 选择已有地址列表时触发 | ` (prevExistAdd: AddressList, item: AddressList, copyExistAdd: AddressList[] ) => void` |`-` |
+| onClose | 地址选择弹框关闭时触发 |  `(cal: CloseCallBack) => void` |`-` |
+| onCancel  |点击遮罩层或点击右上角叉号关闭时触发 | `(cal: ChangeCallBack) => void` |`-` |
+| onSwitch  | 点击'选择其他地址'或自定义地址选择左上角返回按钮触发 | `(cal: { type: string }) => void` | `-` |
 
 ## change 回调参数
 
@@ -689,27 +671,6 @@ export default App;
 组件提供了下列 CSS
 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-address-icon-color | `$primary-color` |
-| --nutui-address-header-title-font-size | `18px` |
-| --nutui-address-header-title-color | `#262626` |
-| --nutui-address-region-tab-font-size | `13px` |
-| --nutui-address-region-tab-color | `#1d1e1e` |
-| --nutui-address-region-tab-active-item-font-weight | `bold` |
-| --nutui-address-region-tab-line-border-radius | `0` |
-| --nutui-address-region-tab-line-opacity | `1` |
-| --nutui-address-region-item-color | `#333` |
-| --nutui-address-region-item-font-size | `$font-size-1` |
-| --nutui-address-item-margin-right | `9px` |
-| --nutui-addresslist-bg | `#fff` |
-| --nutui-addresslist-border | `#f0f0f0` |
-| --nutui-addresslist-font-color | `#333333` |
-| --nutui-addresslist-font-size | `16px` |
-| --nutui-addresslist-mask-bg | `rgba(0, 0, 0, 0.4)` |
-| --nutui-addresslist-addr-font-color | `#666666` |
-| --nutui-addresslist-addr-font-size | `12px` |
-| --nutui-addresslist-set-bg | `#f5a623` |
-| --nutui-addresslist-del-bg | `#e1251b` |
-| --nutui-addresslist-contnts-contact-default | `$primary-color` |
-| --nutui-addresslist-contnts-contact-color | `$white` |
+| 名称 | 说明 | 默认值 |
+| --- | --- |--- |
+| --nutui-address-tab-line-background | tab 下划线的背景色| `linear-gradient(90deg,$primary-color 0%,$primary-color-end 100%) !default` |

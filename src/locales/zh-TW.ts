@@ -58,7 +58,7 @@ const zhTW: BaseLang = {
     second: '秒',
   },
   address: {
-    selectRegion: '請選擇所在地區',
+    selectRegion: '請選擇地址',
     deliveryTo: '配送至',
     chooseAnotherAddress: '選擇其他地址',
   },

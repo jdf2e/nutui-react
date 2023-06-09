@@ -1,9 +1,8 @@
 import React, { FunctionComponent, useEffect, useState, useRef } from 'react'
 import { Check } from '@nutui/icons-react'
-import bem from '@/utils/bem'
 import Elevator from '@/packages/elevator'
 import { useConfig } from '@/packages/configprovider'
-import { SelectedRegionObj, RegionData, NextListObj } from './type'
+import { Regions, RegionData, NextList } from './type'
 
 interface CustomRegionData {
   title: string
@@ -18,20 +17,20 @@ interface MapRef {
 }
 
 export interface AddressProps {
-  modelValue: (string | number)[]
+  defaultValue: (string | number)[]
   type: string
   province: RegionData[]
   city: RegionData[]
   country: RegionData[]
   town: RegionData[]
   height: string | number
-  onNextArea?: (cal: NextListObj) => void
+  onNextArea?: (cal: NextList) => void
   onTabClick?: (type: string) => void
   onClose?: () => void
 }
 
 const defaultProps = {
-  modelValue: [],
+  defaultValue: [],
   type: 'custom',
   province: [],
   city: [],
@@ -41,13 +40,17 @@ const defaultProps = {
 } as AddressProps
 
 export const CustomRender: FunctionComponent<
-  Partial<AddressProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<AddressProps> &
+    Omit<
+      React.HTMLAttributes<HTMLDivElement>,
+      'onChange' | 'title' | 'defaultValue'
+    >
 > = (props) => {
   const { locale } = useConfig()
   const {
     children,
     type,
-    modelValue,
+    defaultValue,
     height,
     province,
     city,
@@ -62,7 +65,7 @@ export const CustomRender: FunctionComponent<
     ...props,
   }
 
-  const b = bem('address')
+  const classPrefix = 'nut-address'
   const [privateType] = useState<string>(type)
   const [tabIndex, setTabIndex] = useState(0)
   const [tabName] = useState<string[]>(['province', 'city', 'country', 'town'])
@@ -72,17 +75,13 @@ export const CustomRender: FunctionComponent<
   const countryRef = useRef(null)
   const townRef = useRef(null)
 
-  const regionLine = useRef(null)
-
   const isCustom2 = () => {
     return type === 'custom2'
   }
 
   const transformData = (data: RegionData[]) => {
     if (!Array.isArray(data)) throw new TypeError('params muse be array.')
-
     if (!data.length) return []
-
     data.forEach((item: RegionData) => {
       if (!item.title) {
         console.error(
@@ -92,7 +91,6 @@ export const CustomRender: FunctionComponent<
     })
 
     const newData: CustomRegionData[] = []
-
     data = data.sort((a: RegionData, b: RegionData) => {
       return a.title.localeCompare(b.title)
     })
@@ -130,7 +128,7 @@ export const CustomRender: FunctionComponent<
   })
 
   // 已选择的 省、市、县、镇
-  const [selectedRegion, setSelectedRegion] = useState<SelectedRegionObj>({
+  const [selectedRegion, setSelectedRegion] = useState<Regions>({
     province: { name: '' },
     city: { name: '' },
     country: { name: '' },
@@ -138,7 +136,6 @@ export const CustomRender: FunctionComponent<
   })
 
   type SelectedRegionType = keyof typeof selectedRegion
-
   const [lineDistance, setLineDistance] = useState(20)
 
   // 获取已选地区列表名称
@@ -161,9 +158,7 @@ export const CustomRender: FunctionComponent<
   const lineAnimation = (index: string | number) => {
     setTimeout(() => {
       const name: MapRefType = tabName[index as number] as MapRefType
-
       const refD: MapRef = mapRef
-
       if (name && refD[name] && refD[name].current) {
         const distance = (refD[name as MapRefType] as any).current.offsetLeft
         setLineDistance(distance || 20)
@@ -172,33 +167,28 @@ export const CustomRender: FunctionComponent<
   }
   // 切换下一级列表
   const nextAreaList = (item: RegionData | string) => {
-    // onchange 接收的参数
-    const calBack: NextListObj = {
+    const nextList: NextList = {
       next: '',
       value: '',
       custom: tabName[tabIndex],
     }
 
     const bbselectedRegion = selectedRegion ? { ...selectedRegion } : null
-
     if (bbselectedRegion) {
       setSelectedRegion({
         ...bbselectedRegion,
         [tabName[tabIndex]]: item,
       })
-
-      calBack.selectedRegion = {
+      nextList.selectedRegion = {
         ...bbselectedRegion,
         [tabName[tabIndex]]: item,
       }
-
       for (let i = tabIndex; i < tabIndex - 1; i++) {
         setSelectedRegion({
           ...bbselectedRegion,
           [tabName[i + 1]]: null,
         })
-
-        calBack.selectedRegion = {
+        nextList.selectedRegion = {
           ...bbselectedRegion,
           [tabName[i + 1]]: {},
         }
@@ -208,15 +198,15 @@ export const CustomRender: FunctionComponent<
     if (tabIndex < 4) {
       // 切换下一个
       if (tabIndex === 3) {
-        calBack.next = ''
+        nextList.next = ''
       } else {
         setTabIndex(() => tabIndex + 1)
         lineAnimation(tabIndex + 1)
-        calBack.next = tabName[tabIndex + 1]
+        nextList.next = tabName[tabIndex + 1]
       }
-      calBack.value = item as string
+      nextList.value = item as string
 
-      onNextArea && onNextArea(calBack)
+      onNextArea && onNextArea(nextList)
     } else {
       onClose && onClose()
     }
@@ -232,35 +222,34 @@ export const CustomRender: FunctionComponent<
 
   // 默认选中项
   const initCustomSelected = () => {
-    if (modelValue.length > 0) {
+    if (defaultValue.length > 0) {
       let tagIndex = 0
-      const selectedRegionC: any =
-        selectedRegion && Object.assign(selectedRegion)
+      const regions: any = selectedRegion && Object.assign(selectedRegion)
 
-      for (let index = 0; index < modelValue.length; index++) {
+      for (let index = 0; index < defaultValue.length; index++) {
         if ((regionList as any)[tabName[index]].length === 0) {
           tagIndex = index - 1
           setTabIndex(index - 1)
           break
         } else {
-          const val = modelValue[index]
+          const id = defaultValue[index]
           const arr: [] = (regionList as any)[tabName[index]]
           if (privateType === 'custom') {
-            selectedRegionC[[tabName[index]] as any] = arr.filter(
-              (item: RegionData) => item.id === val
+            regions[[tabName[index]] as any] = arr.filter(
+              (item: RegionData) => item.id === id
             )[0]
           } else if (privateType === 'custom2') {
             const sumArr: any = []
             arr.forEach((item) => {
               sumArr.push(...(item as any).list)
             })
-            selectedRegionC[[tabName[index]] as any] = sumArr.filter(
-              (item: RegionData) => item.id === val
+            regions[[tabName[index]] as any] = sumArr.filter(
+              (item: RegionData) => item.id === id
             )[0]
           }
 
           tagIndex = index
-          setSelectedRegion(selectedRegionC)
+          setSelectedRegion(regions)
         }
       }
 
@@ -283,7 +272,6 @@ export const CustomRender: FunctionComponent<
 
   useEffect(() => {
     const { city } = { ...defaultProps, ...props }
-
     setRegionList({
       ...regionList,
       city: isCustom2() ? transformData(city) : city,
@@ -292,7 +280,6 @@ export const CustomRender: FunctionComponent<
 
   useEffect(() => {
     const { country } = { ...defaultProps, ...props }
-
     setRegionList({
       ...regionList,
       country: isCustom2() ? transformData(country) : country,
@@ -309,17 +296,17 @@ export const CustomRender: FunctionComponent<
 
   useEffect(() => {
     initCustomSelected()
-  }, [modelValue])
+  }, [defaultValue])
 
   return (
-    <div className={b('custom')}>
-      <div className={b('region-tab')}>
+    <>
+      <div className={`${classPrefix}-tabs`}>
         {selectedRegion &&
           Object.keys(selectedRegion).map(
             (key: string | SelectedRegionType, index) => {
               return (
                 <div
-                  className={`${b('tab-item')} ${
+                  className={`${`${classPrefix}-tabs-item`} ${
                     index === tabIndex ? 'active' : ''
                   }`}
                   key={index}
@@ -333,58 +320,55 @@ export const CustomRender: FunctionComponent<
                   }
                 >
                   {index <= tabIndex && (
-                    <div>
+                    <>
                       {getTabName(
                         selectedRegion[key as SelectedRegionType],
                         index
                       )}
-                    </div>
+                    </>
                   )}
                 </div>
               )
             }
           )}
         <div
-          className={b('tab-line')}
-          ref={regionLine}
+          className={`${classPrefix}-tabs-line`}
           style={{ left: `${lineDistance}px` }}
         />
       </div>
 
       {privateType === 'custom' && (
-        <div className={b('region-con')}>
-          <ul className={b('region-group')}>
-            {(regionList[tabName[tabIndex] as SelectedRegionType] as any).map(
-              (item: RegionData | CustomRegionData, index: number) => {
-                return (
-                  <li key={index} className={b('region-item')}>
-                    <div
-                      onClick={() => {
-                        nextAreaList(item as RegionData)
-                      }}
-                    >
-                      {selectedRegion &&
-                        selectedRegion[tabName[tabIndex] as SelectedRegionType]
-                          .id === (item as RegionData).id && (
-                          <Check
-                            className={b('region-item--icon')}
-                            color="var(--nutui-brand-color)"
-                            width={13}
-                            height={13}
-                          />
-                        )}
-                      {(item as RegionData).name}
-                    </div>
-                  </li>
-                )
-              }
-            )}
-          </ul>
-        </div>
+        <ul className={`${classPrefix}-custom`}>
+          {(regionList[tabName[tabIndex] as SelectedRegionType] as any).map(
+            (item: RegionData | CustomRegionData, index: number) => {
+              return (
+                <li key={index} className={`${classPrefix}-custom-item`}>
+                  <div
+                    onClick={() => {
+                      nextAreaList(item as RegionData)
+                    }}
+                  >
+                    {selectedRegion &&
+                      selectedRegion[tabName[tabIndex] as SelectedRegionType]
+                        .id === (item as RegionData).id && (
+                        <Check
+                          className={`${classPrefix}-custom-item-icon`}
+                          color="var(--nutui-brand-color)"
+                          width={13}
+                          height={13}
+                        />
+                      )}
+                    {(item as RegionData).name}
+                  </div>
+                </li>
+              )
+            }
+          )}
+        </ul>
       )}
 
       {privateType === 'custom2' && (
-        <div className={b('elevator-group')}>
+        <div className={`${classPrefix}-elevator`}>
           <Elevator
             height={height}
             list={regionList[tabName[tabIndex] as SelectedRegionType]}
@@ -392,6 +376,6 @@ export const CustomRender: FunctionComponent<
           />
         </div>
       )}
-    </div>
+    </>
   )
 }

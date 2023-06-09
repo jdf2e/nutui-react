@@ -1,19 +1,13 @@
-import React, {
-  FunctionComponent,
-  useEffect,
-  useState,
-  CSSProperties,
-} from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import { Left, Location2, Check, CircleClose } from '@nutui/icons-react'
 import Popup from '@/packages/popup'
-import bem from '@/utils/bem'
 import { ExistRender } from './existRender'
 import { CustomRender } from './customRender'
 import { useConfig } from '@/packages/configprovider'
 import {
   RegionData,
-  NextListObj,
-  SelectedRegionObj,
+  NextList,
+  Regions,
   ChangeCallBack,
   CloseCallBack,
   AddressList,
@@ -22,27 +16,22 @@ import {
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface AddressProps extends BasicComponent {
-  className?: string
-  style?: CSSProperties
-  modelValue: boolean
-  modelSelect: (string | number)[]
+  visible: boolean
+  defaultValue: (string | number)[]
   type: string
-  customAddressTitle: string
+  title: string
   province: RegionData[]
   city: RegionData[]
   country: RegionData[]
   town: RegionData[]
-  isShowCustomAddress: boolean
-  existAddress: AddressList[]
-  existAddressTitle: string
-  customAndExistTitle: string
+  custom: boolean | string
+  existList: AddressList[]
   height: string | number
   defaultIcon: React.ReactNode
-  selectedIcon: React.ReactNode
-  closeBtnIcon: React.ReactNode
-  backBtnIcon: React.ReactNode
-
-  onSelected?: (
+  selectIcon: React.ReactNode
+  closeIcon: React.ReactNode
+  backIcon: React.ReactNode
+  onSelect?: (
     prevExistAdd: AddressList,
     item: AddressList,
     copyExistAdd: AddressList[]
@@ -56,50 +45,50 @@ export interface AddressProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
-  modelValue: false,
-  modelSelect: [],
+  visible: false,
+  defaultValue: [],
   type: 'custom',
-  customAddressTitle: '',
+  title: '',
   province: [],
   city: [],
   country: [],
   town: [],
-  isShowCustomAddress: true,
-  existAddress: [],
-  existAddressTitle: '',
-  customAndExistTitle: '',
+  custom: false,
+  existList: [],
   height: '200px',
   defaultIcon: null,
-  selectedIcon: null,
-  closeBtnIcon: null,
-  backBtnIcon: null,
+  selectIcon: null,
+  closeIcon: null,
+  backIcon: null,
 } as AddressProps
 
 export const Address: FunctionComponent<
-  Partial<AddressProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
+  Partial<AddressProps> &
+    Omit<
+      React.HTMLAttributes<HTMLDivElement>,
+      'onChange' | 'title' | 'onSelect' | 'defaultValue'
+    >
 > = (props) => {
   const { locale } = useConfig()
   const {
-    modelValue,
-    modelSelect,
+    visible,
+    defaultValue,
     children,
     type,
     height,
-    customAddressTitle,
-    existAddress,
-    existAddressTitle,
+    title,
+    existList,
     province,
     city,
     country,
     town,
-    isShowCustomAddress,
-    customAndExistTitle,
-    selectedIcon,
+    custom,
+    selectIcon,
     defaultIcon,
-    closeBtnIcon,
-    backBtnIcon,
+    closeIcon,
+    backIcon,
     onChange,
-    onSelected,
+    onSelect,
     onClose,
     onCancel,
     onSwitch,
@@ -111,31 +100,29 @@ export const Address: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const b = bem('address')
+  const classPrefix = 'nut-address'
 
   const [privateType, setPrivateType] = useState<string>(type)
   const [tabName] = useState<string[]>(['province', 'city', 'country', 'town'])
-  const [showPopup, setShowPopup] = useState(modelValue)
-  const [selectedRegion, setSelectedRegion] = useState<SelectedRegionObj>({
+  const [showPopup, setShowPopup] = useState(visible)
+  const [selectedRegion, setSelectedRegion] = useState<Regions>({
     province: { name: '' },
     city: { name: '' },
     country: { name: '' },
     town: { name: '' },
-  }) // 已选择的 省、市、县、镇
+  })
 
   const [selectedExistAddress, setSelectedExistAddress] = useState({}) // 当前选择的地址
 
-  // 手动关闭 点击叉号(cross)，或者蒙层(mask)
   const handClose = () => {
     setShowPopup(false)
   }
-  // 点击遮罩层关闭
+
   const clickOverlay = () => {
     onCancel && onCancel({ closeWay: 'mask' })
   }
-  // 切换下一级列表
-  const nextAreaList = (item: NextListObj) => {
-    // onchange 接收的参数
+
+  const nextAreaList = (item: NextList) => {
     const callbackParams = {
       next: item.next,
       value: item.value,
@@ -148,17 +135,16 @@ export const Address: FunctionComponent<
 
     onChange && onChange(callbackParams)
   }
-  // 选择现有地址
+
   const selectedExist = (
     prevExistAdd: AddressList,
     item: AddressList,
     copyExistAdd: AddressList[]
   ) => {
     setSelectedExistAddress(item)
-    onSelected && onSelected(prevExistAdd, item, copyExistAdd)
+    onSelect && onSelect(prevExistAdd, item, copyExistAdd)
     handClose()
   }
-  // 初始化
   const initAddress = () => {
     for (let i = 0; i < tabName.length; i++) {
       setSelectedRegion({
@@ -167,8 +153,7 @@ export const Address: FunctionComponent<
       })
     }
   }
-  // 关闭
-  const closeFun = () => {
+  const close = () => {
     const resCopy = {
       addressIdStr: '',
       addressStr: '',
@@ -218,25 +203,23 @@ export const Address: FunctionComponent<
 
   const headerRender = () => {
     return (
-      <div className={b('header')}>
+      <div className={`${classPrefix}-header`}>
         <div className="arrow-back" onClick={onSwitchModule}>
           {privateType === 'custom' &&
-            (React.isValidElement(backBtnIcon) ? (
-              backBtnIcon
+            (React.isValidElement(backIcon) ? (
+              backIcon
             ) : (
               <Left color="#cccccc" />
             ))}
         </div>
 
-        <div className={b('header__title')}>
-          {privateType === 'custom'
-            ? customAddressTitle || locale.address.selectRegion
-            : existAddressTitle || locale.address.deliveryTo}
+        <div className={`${classPrefix}-header-title`}>
+          {title || locale.address.selectRegion}
         </div>
 
         <div onClick={() => handClose()}>
-          {React.isValidElement(closeBtnIcon) ? (
-            closeBtnIcon
+          {React.isValidElement(closeIcon) ? (
+            closeIcon
           ) : (
             <CircleClose width={18} height={18} color="#ccc" />
           )}
@@ -246,12 +229,12 @@ export const Address: FunctionComponent<
   }
 
   useEffect(() => {
-    setShowPopup(modelValue)
-  }, [modelValue])
+    setShowPopup(visible)
+  }, [visible])
 
   useEffect(() => {
     if (!showPopup) {
-      closeFun()
+      close()
     }
   }, [showPopup])
 
@@ -263,18 +246,18 @@ export const Address: FunctionComponent<
           position="bottom"
           onClickOverlay={clickOverlay}
           onClose={() => {
-            closeFun()
+            close()
           }}
         >
           <div
-            className={`${b()} ${className || ''}`}
+            className={`${classPrefix} ${className || ''}`}
             style={{ ...style }}
             {...rest}
           >
             {headerRender()}
             {(privateType === 'custom' || privateType === 'custom2') && (
               <CustomRender
-                modelValue={modelSelect}
+                defaultValue={defaultValue}
                 type={privateType}
                 province={province}
                 city={city}
@@ -293,10 +276,10 @@ export const Address: FunctionComponent<
             {privateType === 'exist' && (
               <ExistRender
                 type={privateType}
-                existAddress={existAddress}
-                selectedIcon={
-                  React.isValidElement(selectedIcon) ? (
-                    selectedIcon
+                existList={existList}
+                selectIcon={
+                  React.isValidElement(selectIcon) ? (
+                    selectIcon
                   ) : (
                     <Check color="#FA2C19" />
                   )
@@ -308,11 +291,10 @@ export const Address: FunctionComponent<
                     <Location2 />
                   )
                 }
-                isShowCustomAddress={isShowCustomAddress}
-                customAndExistTitle={
-                  customAndExistTitle || locale.address.chooseAnotherAddress
+                custom={
+                  custom || (custom && locale.address.chooseAnotherAddress)
                 }
-                onSelected={selectedExist}
+                onSelect={selectedExist}
                 onSwitchModule={onSwitchModule}
               />
             )}

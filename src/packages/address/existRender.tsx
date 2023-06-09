@@ -1,17 +1,13 @@
 import React, { FunctionComponent, ReactNode, useEffect } from 'react'
-import bem from '@/utils/bem'
 import { AddressList } from './type'
-
-import { useConfig } from '@/packages/configprovider'
 
 export interface ExistRenderProps {
   type: string
-  existAddress: AddressList[] | []
+  existList: AddressList[] | []
   defaultIcon: ReactNode
-  selectedIcon: ReactNode
-  isShowCustomAddress: boolean
-  customAndExistTitle: string
-  onSelected?: (
+  selectIcon: ReactNode
+  custom: boolean | string
+  onSelect?: (
     prevExistAdd: AddressList,
     item: AddressList,
     copyExistAdd: AddressList[]
@@ -22,34 +18,34 @@ export interface ExistRenderProps {
 
 const defaultProps = {
   type: 'custom',
-  existAddress: [],
+  existList: [],
   defaultIcon: null,
-  selectedIcon: null,
-  isShowCustomAddress: true,
-  customAndExistTitle: '',
+  selectIcon: null,
+  custom: false,
 } as ExistRenderProps
 
 export const ExistRender: FunctionComponent<
-  Partial<ExistRenderProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<ExistRenderProps> &
+    Omit<
+      React.HTMLAttributes<HTMLDivElement>,
+      'onChange' | 'title' | 'onSelect'
+    >
 > = (props) => {
-  const { locale } = useConfig()
   const {
     children,
     type,
-    existAddress,
-    selectedIcon,
+    existList,
+    selectIcon,
     defaultIcon,
-    isShowCustomAddress,
-    customAndExistTitle,
-    onSelected,
+    custom,
+    onSelect,
     onClose,
     onSwitchModule,
     ...rest
   } = { ...defaultProps, ...props }
-  const b = bem('address')
-  // 选择现有地址
+  const classPrefix = 'nut-address'
   const selectedExist = (item: AddressList) => {
-    const copyExistAdd = existAddress as AddressList[]
+    const copyExistAdd = existList as AddressList[]
     let prevExistAdd: AddressList = {
       provinceName: '',
       cityName: '',
@@ -67,59 +63,53 @@ export const ExistRender: FunctionComponent<
     })
 
     item.selectedAddress = true
-
-    onSelected && onSelected(prevExistAdd, item, copyExistAdd)
+    onSelect && onSelect(prevExistAdd, item, copyExistAdd)
   }
 
-  // 选择其他地址
   const onSwitch = () => {
     onSwitchModule &&
       onSwitchModule({ type: type === 'exist' ? 'custom' : 'exist' })
   }
 
-  useEffect(() => {}, [existAddress])
+  useEffect(() => {}, [existList])
 
   return (
-    <div className={b('exist')}>
-      <div className={b('exist-group')}>
-        <ul className={b('exist-ul')}>
-          {existAddress.map((item: AddressList, index: number) => {
-            return (
-              <li className={b('exist-item')} key={index}>
-                <div onClick={() => selectedExist(item)}>
-                  {item.selectedAddress ? selectedIcon : defaultIcon}
-                  <div className={b('exist-item-info')}>
-                    {item.name && item.phone && (
-                      <div className="exist-item-info-top">
-                        <div className="exist-item-info-name">{item.name}</div>
-                        <div className="exist-item-info-phone">
-                          {item.phone}
-                        </div>
-                      </div>
-                    )}
-                    <div className="exist-item-info-bottom">
-                      <div>
-                        {item.provinceName +
-                          item.cityName +
-                          item.countyName +
-                          item.townName +
-                          item.addressDetail}
-                      </div>
-                    </div>
-                  </div>
+    <>
+      <ul className={`${classPrefix}-exist`}>
+        {existList.map((item: AddressList, index: number) => {
+          return (
+            <li
+              className={`${classPrefix}-exist-item ${
+                item.selectedAddress ? 'active' : ''
+              }`}
+              key={index}
+              onClick={() => selectedExist(item)}
+            >
+              {item.selectedAddress ? selectIcon : defaultIcon}
+              <div className={`${classPrefix}-exist-item-info`}>
+                {item.name && item.phone && (
+                  <>
+                    <div>{item.name}</div>
+                    <div>{item.phone}</div>
+                  </>
+                )}
+                <div>
+                  {item.provinceName +
+                    item.cityName +
+                    item.countyName +
+                    item.townName +
+                    item.addressDetail}
                 </div>
-              </li>
-            )
-          })}
-        </ul>
-      </div>
-      {isShowCustomAddress && (
-        <div className={b('choose-other')} onClick={onSwitch}>
-          <div className={b('choose-other-btn')}>
-            {customAndExistTitle || locale.address.chooseAnotherAddress}
-          </div>
+              </div>
+            </li>
+          )
+        })}
+      </ul>
+      {custom && (
+        <div className={`${classPrefix}-footer`} onClick={onSwitch}>
+          <div className={`${classPrefix}-footer-btn`}>{custom}</div>
         </div>
       )}
-    </div>
+    </>
   )
 }

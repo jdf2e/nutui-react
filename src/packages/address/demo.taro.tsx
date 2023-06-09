@@ -3,6 +3,7 @@ import { Heart1, HeartFill, Left, Close } from '@nutui/icons-react-taro'
 import Taro from '@tarojs/taro'
 import { Address, Cell } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
+import { useTranslate } from '@/sites/assets/locale/taro'
 
 interface CalBack {
   next: string
@@ -38,7 +39,48 @@ interface AddressResult extends AddressList {
   town: RegionData[]
 }
 
+interface T {
+  [props: string]: string
+}
 const AddressDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      basic: '基本用法',
+      title: '选择地址',
+      customAddress: '选择自定义地址',
+      selectCity: '选中省市区',
+      customAddress2: '选择自定义地址2',
+      existList: '选择已有地址',
+      icon: '自定义图标',
+      change: '自定义地址与已有地址切换',
+      delivery: '配送',
+      other: '选择其他地址',
+    },
+    'zh-TW': {
+      basic: '基本用法',
+      title: '選擇地址',
+      customAddress: '選擇自定義地址',
+      selectCity: '選中省市區',
+      customAddress2: '選擇自定義地址2',
+      existList: '選擇已有地址',
+      icon: '自定義圖標',
+      change: '自定義地址與已有地址切換',
+      delivery: '配送',
+      other: '選擇其他地址',
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      title: 'Choose Address',
+      customAddress: 'Choose Custom Address',
+      selectCity: 'Choose City',
+      customAddress2: 'Choose Custom Address2',
+      existList: 'Choose Exist Address',
+      icon: 'Custom Icon',
+      change: 'Custom Or Exist',
+      delivery: 'Delivery',
+      other: 'Choose Other Address',
+    },
+  })
   const [province, setProvince] = useState([
     { id: 1, name: '北京', title: 'B' },
     { id: 2, name: '广西', title: 'G' },
@@ -50,13 +92,10 @@ const AddressDemo = () => {
   const addressData: any = {
     province: [
       { id: 1, name: '北京', title: 'B' },
-      { id: 2, name: '北大荒', title: 'B' },
-      { id: 3, name: '北海', title: 'B' },
-      { id: 4, name: '北定', title: 'B' },
-      { id: 5, name: '广西', title: 'G' },
-      { id: 6, name: '江西', title: 'J' },
-      { id: 7, name: '四川', title: 'S' },
-      { id: 8, name: '浙江', title: 'Z' },
+      { id: 2, name: '广西', title: 'G' },
+      { id: 3, name: '江西', title: 'J' },
+      { id: 4, name: '四川', title: 'S' },
+      { id: 5, name: '浙江', title: 'Z' },
     ],
     city: [
       { id: 7, name: '朝阳区', title: 'C' },
@@ -81,12 +120,12 @@ const AddressDemo = () => {
   const [town, setTown] = useState<any>([])
 
   const [text, setText] = useState<any>({
-    one: '请选择地址',
-    two: '请选择地址',
-    three: '请选择地址',
-    four: '请选择地址',
-    five: '请选择地址',
-    six: '请选择地址',
+    one: translated.title,
+    two: translated.title,
+    three: translated.title,
+    four: translated.title,
+    five: translated.title,
+    six: translated.title,
   })
 
   const [address, setAddress] = useState({
@@ -106,13 +145,13 @@ const AddressDemo = () => {
   })
 
   const [icon, setIcon] = useState({
-    selectedIcon: <HeartFill />,
+    selectIcon: <HeartFill />,
     defaultIcon: <Heart1 />,
-    closeBtnIcon: <Close />,
-    backBtnIcon: <Left />,
+    closeIcon: <Close />,
+    backIcon: <Left />,
   })
 
-  const [existAddress, setExistAddress] = useState([
+  const [existList, setExistAddress] = useState([
     {
       id: 1,
       addressDetail: '',
@@ -202,11 +241,14 @@ const AddressDemo = () => {
   ) => {
     console.log('选择')
   }
+  const [customeTitle, setCustomTitle] = useState('选择已有地址')
 
   const onSwitch = (val: { type: string }) => {
     if (val.type === 'custom') {
+      setCustomTitle('选择已有地址')
       console.log('点击了“选择其他地址”按钮')
     } else {
+      setCustomTitle('重新选择地址')
       console.log('点击了自定义地址左上角的返回按钮')
     }
   }
@@ -331,70 +373,69 @@ const AddressDemo = () => {
     <>
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>选择自定义地址</h2>
+        <h2>{translated.title}</h2>
         <Cell
-          title="选择地址"
+          title={translated.customAddress}
           description={text.one}
           onClick={() => showAddress('normal')}
         />
-        <h2>选中省市区1</h2>
+        <h2>{translated.selectCity}</h2>
         <Cell
-          title="选择地址"
+          title={translated.title}
           description={text.six}
           onClick={() => showAddress('select')}
         />
-        <h2>选择自定义地址2</h2>
+        <h2>{translated.customAddress2}</h2>
         <Cell
-          title="选择地址"
+          title={translated.title}
           description={text.five}
           onClick={() => showAddress('normal2')}
         />
-        <h2>选择已有地址</h2>
+        <h2>{translated.existList}</h2>
         <Cell
-          title="选择地址"
+          title={translated.title}
           description={text.two}
           onClick={() => showAddress('exist')}
         />
-        <h2>自定义图标</h2>
+        <h2>{translated.icon}</h2>
         <Cell
-          title="选择地址"
+          title={translated.title}
           description={text.three}
           onClick={() => showAddress('customImg')}
         />
-        <h2>自定义地址与已有地址切换</h2>
+        <h2>{translated.change}</h2>
         <Cell
-          title="选择地址"
+          title={translated.title}
           description={text.four}
           onClick={() => showAddress('other')}
         />
 
         <Address
-          modelValue={showPopup.normal}
+          visible={showPopup.normal}
           province={province}
           city={city}
           country={country}
           town={town}
-          customAddressTitle="请选择所在地区"
+          title={translated.title}
           onChange={(cal) => onChange(cal, 'normal')}
           onClose={close1}
         />
 
         <Address
-          modelValue={showPopup.select}
-          modelSelect={[1, 7, 3]}
+          visible={showPopup.select}
+          defaultValue={[1, 7, 3]}
           province={addressData.province}
           city={addressData.city}
           country={addressData.country}
           town={addressData.town}
-          customAddressTitle="请选择所在地区"
           onChange={(cal) => onChange(cal, 'select')}
           onClose={close6}
         />
 
         <Address
-          modelValue={showPopup.normal2}
+          visible={showPopup.normal2}
           type="custom2"
-          modelSelect={[1, 7, 3]}
+          defaultValue={[1, 7, 3]}
           province={addressData.province}
           city={addressData.city}
           country={addressData.country}
@@ -402,46 +443,44 @@ const AddressDemo = () => {
           height="270px"
           onChange={(cal) => onChange(cal, 'normal2')}
           onClose={close5}
-          customAddressTitle="请选择所在地区"
         />
 
         <Address
-          modelValue={showPopup.exist}
+          visible={showPopup.exist}
           type="exist"
-          existAddress={existAddress}
+          existList={existList}
           onChange={(cal) => onChange(cal, 'exist')}
           onClose={close2}
-          isShowCustomAddress={false}
-          onSelected={selected}
-          existAddressTitle="配送至"
+          onSelect={selected}
+          title={translated.delivery}
         />
 
         <Address
-          modelValue={showPopup.customImg}
+          visible={showPopup.customImg}
           type="exist"
-          existAddress={existAddress}
+          existList={existList}
           onChange={(cal) => onChange(cal, 'customImg')}
           onClose={close3}
-          isShowCustomAddress={false}
-          onSelected={selected}
+          onSelect={selected}
           defaultIcon={icon.defaultIcon}
-          selectedIcon={icon.selectedIcon}
-          closeBtnIcon={icon.closeBtnIcon}
+          selectIcon={icon.selectIcon}
+          closeIcon={icon.closeIcon}
         />
 
         <Address
-          modelValue={showPopup.other}
+          visible={showPopup.other}
           type="exist"
-          existAddress={existAddress}
+          existList={existList}
           province={province}
           city={city}
           country={country}
           town={town}
-          backBtnIcon={icon.backBtnIcon}
+          title={customeTitle}
+          backIcon={icon.backIcon}
           onChange={(cal) => onChange(cal, 'other')}
           onClose={close4}
-          onSelected={selected}
-          customAndExistTitle="选择其他地址"
+          onSelect={selected}
+          custom={translated.other}
           onSwitch={onSwitch}
           onCancel={onCancel}
         />
