@@ -36,18 +36,6 @@ interface StickyRect {
   height: number
 }
 
-interface RootStyle {
-  width?: number | string
-  height?: number | string
-}
-
-interface StickyStyle extends RootStyle {
-  top?: number | string
-  bottom?: number | string
-  transform?: string
-  zIndex?: number
-}
-
 const defaultProps = {
   ...ComponentDefaults,
   position: 'top',
@@ -68,7 +56,6 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
     onChange,
     ...rest
   } = { ...defaultProps, ...props }
-
   const stickyRef = useRef<HTMLDivElement>(null)
   const rootRef = useRef<HTMLDivElement>(null)
   const [rootRect, setRootRect] = useState<Partial<StickyRect>>({})

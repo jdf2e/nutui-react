@@ -6,7 +6,7 @@
 
 ### 安裝
 
-``` javascript
+```javascript
 // react
 import { Icon } from '@nutui/nutui-react';
 ```
@@ -18,6 +18,7 @@ import { Icon } from '@nutui/nutui-react';
 'Icon' 的 'name' 屬性支援傳入圖示名稱或圖片連結。
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Icon } from '@nutui/nutui-react';
@@ -34,14 +35,15 @@ const App = () => {
 
 export default App;
 ```
-:::
 
+:::
 
 ### 圖示顏色
 
 'Icon' 的 'color' 屬性用來設置圖示的顏色。
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Icon } from '@nutui/nutui-react';
@@ -56,6 +58,7 @@ const App = () => {
 
 export default App;
 ```
+
 :::
 
 ### 圖示大小
@@ -63,6 +66,7 @@ export default App;
 'Icon' 的 'size' 屬性用來設置圖示的尺寸大小，預設單位為 'px'。
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Icon } from '@nutui/nutui-react';
@@ -77,17 +81,18 @@ const App = () => {
 
 export default App;
 ```
+
 :::
 
 ### 自定义图标
 
 如果需要在现有 Icon 的基础上使用更多图标，可以引入第三方 iconfont 对应的字体文件和 CSS 文件，之后就可以在 Icon 组件中直接使用。
 
-> 方案一 引入 [iconfont](https://www.iconfont.cn/)   推荐此方案
+> 方案一 引入 [iconfont](https://www.iconfont.cn/) 推荐此方案
 
-第一步：首先在 [iconfont](https://www.iconfont.cn/) 生成你自定义的Icon文件下载存放至本地项目  [详细使用说明](https://www.iconfont.cn/help/detail?spm=a313x.7781069.1998910419.d8d11a391&helptype=code)
+第一步：首先在 [iconfont](https://www.iconfont.cn/) 生成你自定义的Icon文件下载存放至本地项目 [详细使用说明](https://www.iconfont.cn/help/detail?spm=a313x.7781069.1998910419.d8d11a391&helptype=code)
 
-``` bash
+```bash
 /assets/font/demo.css
 /assets/font/demo_index.html
 /assets/font/iconfont.css
@@ -100,8 +105,7 @@ export default App;
 
 第二步：项目入口文件 main.js 引用 `iconfont.css`
 
-
-``` javascript
+```javascript
 import './assets/font/iconfont.css';
 ```
 
@@ -154,21 +158,20 @@ export default App;
 
 ### Props
 
-| 屬性         | 說明                             | 類型             | 預設值           |
-|--------------|----------------------------------|------------------|------------------|
-| name         | 圖示名稱或圖片連結               | string           | -                |
-| color        | 圖示顏色                         | string           | -                |
-| size         | 圖示大小，如 `20px` `2em` `2rem` | string \| number | -                |
-| classPrefix | 類名前綴，用於使用自定義圖示     | string           | `nut-iconfont` |
-| fontClassName           | 自定義 icon 字體基礎類名                        | string           | `nutui-iconfont`              |
-| tag          | tsx 標籤                        | string           | `i`              |
+| 屬性 | 說明 | 類型 | 預設值 |
+| --- | --- | --- | --- |
+| name | 圖示名稱或圖片連結 | `string` | \- |
+| color | 圖示顏色 | `string` | \- |
+| size | 圖示大小，如 `20px` `2em` `2rem` | `string` \| `number` | \- |
+| classPrefix | 類名前綴，用於使用自定義圖示 | `string` | `nut-iconfont` |
+| fontClassName | 自定義 icon 字體基礎類名 | `string` | `nutui-iconfont` |
+| tag | tsx 標籤 | `string` | `i` |
 
 ### Events
 
-| 事件名稱 | 說明           | 回調參數     |
-|--------|----------------|--------------|
-| onClick  | 點擊圖示時觸發 | `event: Event` |
-
+| 事件名稱 | 說明 | 回調參數 |
+| --- | --- | --- |
+| onClick | 點擊圖示時觸發 | `event: Event` |
 
 ## 主題定制
 
@@ -176,8 +179,8 @@ export default App;
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 默認值 |
-| --- | --- |
-| --nutui-icon-height | `20px` |
-| --nutui-icon-width | `20px` |
-| --nutui-icon-line-height | `20px` |
+| 名稱 | 說明 | 默認值 |
+| --- | --- | --- |
+| \--nutui-icon-height | iconfont 容器的高度 | `16px` |
+| \--nutui-icon-width | iconfont 容器的寬度 | `16px` |
+| \--nutui-icon-line-height | iconfont 的行高 | `16px` |

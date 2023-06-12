@@ -1,4 +1,4 @@
-# Divider 
+# Divider
 
 ## Intro
 
@@ -12,6 +12,7 @@ import { Divider } from '@nutui/nutui-react';
 ```
 
 ## Demo
+
 ### Basic Usage
 
 Default render one horizontal divider line.
@@ -31,8 +32,8 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ### With Text
 
@@ -53,8 +54,8 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ### Content Position
 
@@ -76,11 +77,10 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
-
 ### Dashed
-
 
 :::demo
 
@@ -97,8 +97,8 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ### Custom Style
 
@@ -119,6 +119,7 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### Vertical Divider
@@ -144,18 +145,17 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ## Divider
 
 ### Props
 
-| Property            | Description                       | Type    | Default |
-| --------------- | ----------------------------- | ------- | ------ |
-| contentPosition | Content position, can be set to left or right or center  | `'left'  \|  'center'  \|  'right'`  | `center` |
-| direction           | The direction of divider, can be set to horizontal or vertical            | `'horizontal'  \|  'vertical'`     | `horizontal`      |
-
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| contentPosition | Content position  |  `left` \| `center` \| `right` | `center` |
+| direction | The direction of divider  | `horizontal` \| `vertical` | `horizontal` |
 
 ## Theming
 
@@ -163,16 +163,15 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-
 | Name | Description | Default |
 | --- | --- | --- |
-| --nutui-divider-margin | The margin value of the overall content of the dividing line | `16px 0` |
-| --nutui-divider-text-font-size | The font-size of the overall content of the dividing line | `$font-size-2` |
-| --nutui-divider-text-color | The color of the overall content of the dividing line | `$gray1` |
-| --nutui-divider-line-height | The row height of the dividing line | `2px` |
-| --nutui-divider-before-margin-right | The margin-right value of the left dividing line | `16px` |
-| --nutui-divider-after-margin-left | The margin-left value of the dividing line on the right | `16px` |
-| --nutui-divider-vertical-height | The height of the vertical split line | `12px` |
-| --nutui-divider-vertical-top | The top value of the vertical split line | `2px` |
-| --nutui-divider-vertical-border-left | The border-left value of the vertical split line | `rgba(0, 0, 0, 0.06)` |
-| --nutui-divider-vertical-margin | The margin value of the vertical split line |  `0 8px` |
+| \--nutui-divider-margin | The margin value of the overall content of the dividing line | `16px 0` |
+| \--nutui-divider-text-font-size | The font-size of the overall content of the dividing line | `$font-size-2` |
+| \--nutui-divider-text-color | The color of the overall content of the dividing line | `$gray1` |
+| \--nutui-divider-line-height | The row height of the dividing line | `2px` |
+| \--nutui-divider-before-margin-right | The margin-right value of the left dividing line | `16px` |
+| \--nutui-divider-after-margin-left | The margin-left value of the dividing line on the right | `16px` |
+| \--nutui-divider-vertical-height | The height of the vertical split line | `12px` |
+| \--nutui-divider-vertical-top | The top value of the vertical split line | `2px` |
+| \--nutui-divider-vertical-border-left | The border-left value of the vertical split line | `rgba(0, 0, 0, 0.06)` |
+| \--nutui-divider-vertical-margin | The margin value of the vertical split line | `0 8px` |

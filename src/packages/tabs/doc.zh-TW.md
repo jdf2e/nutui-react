@@ -567,7 +567,7 @@ export default App;
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | title | 標題 | `string` | `-` |
-| value | 標簽 Key , 匹配的標識符, 默認為索引值 | `string\| number` | `-` |
+| value | 標簽 Key , 匹配的標識符, 默認為索引值 | `string` \| `number` | `-` |
 | disabled | 是否禁用標簽 | `boolean` | `false` |
 
 ## 主題定制

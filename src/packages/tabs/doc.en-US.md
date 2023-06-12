@@ -567,9 +567,9 @@ export default App;
 
 | Property | Description | type | Default |
 | --- | --- | --- | --- |
-| title | title | string | `-` |
-| value | tag Key , matching identifier, default is index value | `string\| number` | `-` |
-| disabled | Whether to disable the label | boolean | `false` |
+| title | title | `string` | `-` |
+| value | tag Key , matching identifier, default is index value | `string` \| `number` | `-` |
+| disabled | Whether to disable the label | `boolean` | `false` |
 
 ## Theming
 
