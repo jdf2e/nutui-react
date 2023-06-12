@@ -67,20 +67,16 @@ const gen = (tokens) => {
 }
 
 const genaratorWebTypes = () => {
-  let typesData = []
-
-  if (!componentDirs.length) return
-
-  for (let componentDir of componentDirs) {
-    let stat = fs.lstatSync(`${basePath}/${componentDir}`)
-    if (stat.isDirectory()) {
-      let absolutePath = path.join(`${basePath}/${componentDir}`, `doc.md`)
-      if (argv === 'taro') {
-        absolutePath = path.join(`${basePath}/${componentDir}`, `doc.taro.md`)
-      }
+  const typesData = []
+  for (const nav of cfg.nav) {
+    for (const component of nav.packages) {
+      const absolutePath = path.join(
+        `${basePath}/${component.name.toLowerCase()}`,
+        argv === 'taro' ? `doc.taro.md` : `doc.md`
+      )
       if (!fs.existsSync(absolutePath)) continue
       const data = fs.readFileSync(absolutePath, 'utf8')
-      let sources = MarkdownIt.parse(data, {})
+      const sources = MarkdownIt.parse(data, {})
       const res = gen(sources)
       res.forEach((r) => {
         if (r.h2.includes('主题')) return
@@ -97,9 +93,7 @@ const genaratorWebTypes = () => {
           const infoItem =
             inlineItem.length > 1 ? `${inlineItem[1].content}` : ''
           const typeItem =
-            inlineItem.length > 2
-              ? `${inlineItem[2].content.toLowerCase()}`
-              : ''
+            inlineItem.length > 2 ? `${inlineItem[2].content}` : ''
           let defaultItem =
             inlineItem.length > 3 ? `${inlineItem[3].content}` : ''
           const formatDefault = (str) => {
@@ -114,8 +108,10 @@ const genaratorWebTypes = () => {
           }
           defaultItem = formatDefault(defaultItem)
           typesData.push({
+            组件分类: nav.name,
             组件名: r.h2,
             表格名: r.h3,
+            版本号: component.version,
             第一列: propItem,
             第二列: infoItem,
             第三列: typeItem,
@@ -125,7 +121,6 @@ const genaratorWebTypes = () => {
       })
     }
   }
-
   return typesData
 }
 
