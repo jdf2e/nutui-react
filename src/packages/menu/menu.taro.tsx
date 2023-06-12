@@ -89,6 +89,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
           updateTitle,
           hideMenuItem,
           menuRef,
+          isExistExpandMenuItem: showMenuItem.includes(true),
         },
       })
     })
