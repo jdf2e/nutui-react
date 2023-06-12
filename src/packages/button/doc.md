@@ -264,10 +264,6 @@ export default App;
 | loading | 按钮loading状态 | `boolean` | `false` |
 | onClick | 点击按钮时触发 | `onClick: (e: MouseEvent) => void` | `false` |
 
-### 支持小程序API能力
-
-目前1.3.11版本以前不支持原生小程序API, 如果你是需要使用原生小程序button组件能力的用户，请尽快升级至1.3.11版本，关于原生小程序button组件的详细API请前往[查阅更多文档](https://taro-docs.jd.com/docs/components/forms/button)
-
 ## 主题定制
 
 ### 样式变量
