@@ -75,7 +75,7 @@ import { Form, Button, Input, TextArea } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const submitFailed = (error: any) => {
-    Taro.showToast({ title: JSON.stringify(error), icon: 'fail' })
+    Taro.showToast({ title: JSON.stringify(error), icon: 'error' })
   }
 
   const submitSucceed = (values: any) => {
@@ -155,7 +155,7 @@ import { Form, Input, Cell, Button } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const submitFailed = (error: any) => {
-    Taro.showToast({ title: JSON.stringify(error), icon: 'fail' })
+    Taro.showToast({ title: JSON.stringify(error), icon: 'error' })
   }
 
   const submitSucceed = (values: any) => {
@@ -230,7 +230,7 @@ import { Form, Input, Radio, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const submitFailed = (error: any) => {
-    Taro.showToast({ title: JSON.stringify(error), icon: 'fail' })
+    Taro.showToast({ title: JSON.stringify(error), icon: 'error' })
   }
 
   const submitSucceed = (values: any) => {
@@ -303,7 +303,7 @@ import {
 
 const App = () => {
   const submitFailed = (error: any) => {
-    Taro.showToast({ title: JSON.stringify(error), icon: 'fail' })
+    Taro.showToast({ title: JSON.stringify(error), icon: 'error' })
   }
 
   const submitSucceed = (values: any) => {

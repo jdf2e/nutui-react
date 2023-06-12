@@ -151,11 +151,11 @@ const FormDemo = () => {
   })
 
   const submitFailed = (error: any) => {
-    // Toast.show({ content: JSON.stringify(error), icon: 'fail' })
+    Taro.showToast({ title: 'error', icon: 'none' })
   }
 
   const submitSucceed = (values: any) => {
-    // Toast.show({ content: JSON.stringify(values), icon: 'success' })
+    Taro.showToast({ title: 'success', icon: 'none' })
   }
 
   const [form] = Form.useForm()
