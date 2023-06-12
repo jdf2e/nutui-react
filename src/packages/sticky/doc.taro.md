@@ -20,10 +20,10 @@ import { Sticky } from '@nutui/nutui-react-taro'
 
 ```tsx
 
-const App = () => {
-  import React, { useEffect, useRef, useState } from 'react'
-  import { Button, Cell, Sticky } from '@nutui/nutui-react-taro'
+import React, { useEffect, useRef, useState } from 'react'
+import { Button, Cell, Sticky } from '@nutui/nutui-react-taro'
 
+const App = () => {
   const handleChange = (val: boolean) => {
     console.log('吸顶状态发生了改变,当前fixed为', val)
   }
@@ -60,11 +60,10 @@ export default App
 :::demo
 
 ```tsx
+import React, { useEffect, useRef, useState } from 'react'
+import { Button, Cell, Sticky } from '@nutui/nutui-react-taro'
 
 const App = () => {
-  import React, { useEffect, useRef, useState } from 'react'
-  import { Button, Cell, Sticky } from '@nutui/nutui-react-taro'
-
   return (
     <>
       <h2>指定容器内吸顶</h2>
@@ -84,16 +83,17 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ## Sticky
 
 ### Props
 
-| 属性 | 说明                    | 类型                           | 默认值 |
-|--------------|--------------------------------|--------|------------------|
-| position  | 吸附位置（top、bottom） | string                         | `top`    |
-| threshold          | 距离，当 position 为 top 时，设置的是 top | number | `0`               |
-| zIndex   | 吸附时的层级            | number                         | `2000`   |
-| container | 容器的 ref              | `React.RefObject<HTMLElement>` | - |
-| onChange | 吸附状态改变时触发 | `val: boolean` | - |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| position | 吸附位置 | `top` \| `bottom` | `top` |
+| threshold | 距离，当 position 为 top 时，设置的是 top | `number` | `0` |
+| zIndex | 吸附时的层级 | `number` | `2000` |
+| container | 容器的 ref | `React.RefObject<HTMLElement>` | `-` |
+| onChange | 吸附状态改变时触发 |  `(val: boolean) => void` | `-` |

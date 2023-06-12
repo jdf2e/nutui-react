@@ -17,7 +17,6 @@ export interface StickyProps extends BasicComponent {
   position: 'top' | 'bottom'
   threshold: number
   zIndex: number
-  children: React.ReactNode
   onChange: (val: boolean) => void
 }
 

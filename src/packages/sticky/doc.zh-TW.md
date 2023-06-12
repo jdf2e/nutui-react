@@ -1,58 +1,60 @@
-# Sticky组件
+# Sticky組件
 
-## Intro
+## 介紹
 
-The effect is the same as position: sticky in CSS, which can be used for compatibility with low-end browsers
+效果同 css 中的 position: sticky,對低端瀏覽器可使用其做兼容
 
-## Install
+## 安裝
 
 ```tsx
 import { Sticky } from '@nutui/nutui-react';
 ```
 
-## Demo
+## 代碼演示
 
-### Basic Usage
+### 基礎用法
 
 :::demo
 
 ```tsx
+
 import React, { useEffect, useRef, useState } from 'react'
 import {Button,Cell, Sticky } from '@nutui/nutui-react'
 
 const App = () => {
   const handleChange = (val: boolean) => {
-    console.log('The ceiling state has changed, and the current fixed is', val)
+    console.log('吸頂狀態發生了改變,當前fixed為', val)
   }
-  return(
+return(
     <>
-        <h2>Ceiling</h2>
+        <h2>基礎用法</h2>
         <Cell style={{ height: '300px' }}>
           <Sticky threshold={57} onChange={handleChange}>
-            <Button type="primary">Ceiling button</Button>
+            <Button type="primary">吸頂</Button>
           </Sticky>
         </Cell>
-        <h2>Ceiling distance</h2>
+        <h2>吸頂距離</h2>
         <Cell  style={{ height: '300px' }}>
           <Sticky threshold={120}>
-            <Button type="primary">Ceiling distance 120px</Button>
+            <Button type="primary">距離頂部120px</Button>
           </Sticky>
         </Cell>
-        <h2>Suction distance</h2>
+        <h2>吸底距離</h2>
         <Cell style={{ height: '64px' }}>
           <Sticky threshold={0} position="bottom">
-            <Button type="primary">Suction distance 0px</Button>
+            <Button type="primary">距離底部0px</Button>
           </Sticky>
         </Cell>
     </>
-  )
+)
+   
 }
 export default App;
 ```
 
 :::
 
-### 指定容器内
+### 指定容器內
 
 :::demo
 
@@ -63,9 +65,10 @@ import {Button,Cell, Sticky } from '@nutui/nutui-react'
 const App = () => {
   const containerTopRef = useRef(null)
   const containerRef = useRef(null)
-  return(
+
+   return(
     <>
-        <h2>Specify container</h2>
+        <h2>指定容器內吸頂</h2>
         <Cell>
           <div
             className="sticky-container"
@@ -74,12 +77,12 @@ const App = () => {
           >
             <Sticky container={containerTopRef} threshold={57}>
               <Button type="info">
-                Ceiling of designated container
+                指定容器內吸頂
               </Button>
             </Sticky>
           </div>
         </Cell>
-        <h2>Suction distance of designated container</h2>
+        <h2>指定容器吸底</h2>
         <Cell>
           <div
             className="sticky-container"
@@ -88,13 +91,14 @@ const App = () => {
           >
             <Sticky position="bottom" container={containerRef} threshold={0}>
               <Button  type="info">
-                Suction distance of designated container
+                指定容器吸底
               </Button>
             </Sticky>
           </div>
         </Cell>
+      
     </>
-  )
+   )
 }
 export default App;
 ```
@@ -105,10 +109,10 @@ export default App;
 
 ### Props
 
-| Property | Description | Type | Default |
+| 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| position | adsorption position| `top` \| `bottom` | `top` |
-| threshold | distance, when position is top, set top | `number` | `0` |
-| zIndex | The level when snapping | `number` | `2000` |
-| container | the container's ref | `React.RefObject<HTMLElement>` | `-` |
-| onChange | Triggered when the snap state changes |  `(val: boolean) => void` | `-` |
+| position | 吸附位置 | `top` \| `bottom` | `top` |
+| threshold | 距離，當 position 為 top 時，設置的是 top | `number` | `0` |
+| zIndex | 吸附時的層級 | `number` | `2000` |
+| container | 容器的 ref | `React.RefObject<HTMLElement>` | `-` |
+| onChange | 吸附狀態改變時觸發 | `(val: boolean) => void` | `-` |
