@@ -207,7 +207,7 @@ export default App;
 | extra | 右側描述 | `ReactNode` | `-` |
 | radius | 圓角半徑 | `string` | `6px` |
 | align | 縱軸方向上的對齊方式，可選值為：`flex-start`、`center`、`flex-end` | `string` | `flex-start` |
-| onClick | 點擊事件 | `onClick: (event: React.MouseEvent&lt;HTMLDivElement, globalThis.MouseEvent>) =&gt; void` | `false` |
+| onClick | 點擊事件 | `onClick: (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => void` | `false` |
 
 ## 主題定製
 

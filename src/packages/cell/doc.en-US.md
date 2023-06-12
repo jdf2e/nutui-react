@@ -233,7 +233,7 @@ export default App;
 | extra | Extra | `ReactNode` | `-` |
 | radius | Corner radius | `string` | `6px` |
 | align | Alignment in the vertical direction, with an optional value of`flex-start`、`center`、`flex-end` | `string` | `flex-start` |
-| onClick | Emitted when cell is clicked | `onClick: (event: React.MouseEvent&lt;HTMLDivElement, globalThis.MouseEvent>) =&gt; void` | `false` |
+| onClick | Emitted when cell is clicked | `onClick: (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => void` | `false` |
 
 ## Theming
 
