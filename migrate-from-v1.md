@@ -16,10 +16,7 @@
 #### Button
 - 删除 plain，通过 fill="outline" 实现
 - 增加 ref，对外暴露组件内 button 元素
-- `xxx` 重命名为 `yyy`
-- 删除 `x`, 通过 `z` 实现
-- 优化 `x` 类型为 ReactNode
-- 增加 `x`, 用于某个功能
+
 #### Cell
 - `subTitle` 重命名为 `description`
 - 删除 `desc` 重命名为 `extra`, 改为 `React.Node` 类型
