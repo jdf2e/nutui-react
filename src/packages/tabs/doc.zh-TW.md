@@ -1,25 +1,18 @@
-# Tabs 选项卡切换
+# Tabs 選項卡切換
 
-### 介绍
+## 介紹
 
-常用于平级区域大块内容的的收纳和展现，支持内嵌标签形式和渲染循环数据形式
+常用於平級區域大塊內容的的收納和展現，支持內嵌標簽形式和渲染循環數據形式
 
-### 安装
+## 安裝
 
 ```ts
-// react
 import { Tabs } from '@nutui/nutui-react';
 ```
 
-```ts
-// 1.4.9 废弃
-import { Tabs, TabPane } from '@nutui/nutui-react';
-```
+## 代碼演示
 
-
-## 代码演示
-
-### 基础用法
+### 基礎用法
 
 :::demo
 
@@ -31,8 +24,8 @@ const App = () => {
   const [tab1value, setTab1value] = useState('0');
   return (
     <>
-      <Tabs value={tab1value} onChange={({ paneKey }) => {
-        setTab1value(paneKey)
+      <Tabs value={tab1value} onChange={(value) => {
+        setTab1value(value)
       }}>
         <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
@@ -46,7 +39,7 @@ export default App;
 
 :::
 
-### 基础用法-微笑曲线
+### 基礎用法-微笑曲線
 
 :::demo
 
@@ -58,8 +51,8 @@ const App = () => {
   const [tab1value, setTab1value] = useState('0');
   return (
     <>
-      <Tabs value={tab1value} onChange={({ paneKey }) => {
-        setTab1value(paneKey)
+      <Tabs value={tab1value} onChange={(value) => {
+        setTab1value(value)
       }} type="smile">
         <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
@@ -73,7 +66,7 @@ export default App;
 
 :::
 
-### 基础用法-Title 左对齐
+### 基礎用法-Title 左對齊
 
 :::demo
 
@@ -85,9 +78,11 @@ const App = () => {
   const [tab1value, setTab1value] = useState('0');
   return (
     <>
-      <Tabs value={tab1value} onChange={({ paneKey }) => {
-        setTab1value(paneKey)
-      }} leftAlign>
+      <Tabs value={tab1value}
+            onChange={(value) => {
+              setTab1value(value)
+            }}
+            align="left">
         <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
@@ -100,7 +95,7 @@ export default App;
 
 :::
 
-### 通过 paneKey 匹配
+### 通過 value 匹配
 
 :::demo
 
@@ -112,12 +107,12 @@ const App = () => {
   const [tab2value, setTab2value] = useState('0');
   return (
     <>
-      <Tabs value={tab2value} onChange={({ paneKey }) => {
-        setTab2value(paneKey)
+      <Tabs value={tab2value} onChange={(value) => {
+        setTab2value(value)
       }}>
-        <Tabs.TabPane title="Tab 1" paneKey="0"> Tab 1 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 2" paneKey="1" disabled> Tab 2 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 3" paneKey="2"> Tab 3 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 1" value="0"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2" value="1" disabled> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3" value="2"> Tab 3 </Tabs.TabPane>
       </Tabs>
     </>
   );
@@ -127,12 +122,152 @@ export default App;
 
 :::
 
-### 数据异步渲染 3s
+### 滑動切換
 
 :::demo
 
 ```tsx
-import React, { useState,useEffect } from "react";
+import React, { useState } from "react";
+import { Tabs, Swiper, SwiperItem } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab2value, setTab2value] = useState('0');
+  const swiperRef = useRef(null)
+  const [tabIndex, setTabIndex] = useState(0)
+  return (
+    <>
+      <Tabs
+        value={tabIndex}
+        onChange={(page) => {
+          swiperRef.current?.to(page)
+          setTabIndex(page)
+        }}
+      >
+        <Tabs.TabPane title="Tab 1" />
+        <Tabs.TabPane title="Tab 2" />
+        <Tabs.TabPane title="Tab 3" />
+      </Tabs>
+      <Swiper
+        initPage={0}
+        loop={false}
+        ref={swiperRef}
+        onChange={(page) => {
+          setTabIndex(page)
+        }}
+      >
+        <SwiperItem>
+          <div style={{ backgroundColor: '#fff', padding: '10px' }}>
+            Tab 1
+          </div>
+        </SwiperItem>
+        <SwiperItem>
+          <div style={{ backgroundColor: '#fff', padding: '10px' }}>
+            Tab 2
+          </div>
+        </SwiperItem>
+        <SwiperItem>
+          <div style={{ backgroundColor: '#fff', padding: '10px' }}>
+            Tab 3
+          </div>
+        </SwiperItem>
+      </Swiper>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### CSS 黏性佈局
+
+通過設置tab的style 例如：`tabStyle={{ position: 'sticky', top: '0px', zIndex: 11 }}` ，來實現Css的黏性佈局，註意：在微信小程序裏組件外層元素不能存在 overflow 為 `hidden`、`auto`、`scroll`的設置。
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab2value, setTab2value] = useState('0');
+  return (
+    <>
+      <Tabs value={tab2value}
+            tabStyle={{ position: 'sticky', top: '0px', zIndex: 11 }}
+            onChange={(value) => {
+              setTab2value(value)
+            }}>
+        <Tabs.TabPane title="Tab 1">
+          <p>Tab 1</p>
+          <p>Tab 1</p>
+          <p>Tab 1</p>
+          <p>Tab 1</p>
+          <p>Tab 1</p>
+          <p>Tab 1</p>
+          <p>Tab 1</p>
+          <p>Tab 1</p>
+        </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2">
+          <p>Tab 2</p>
+          <p>Tab 2</p>
+          <p>Tab 2</p>
+          <p>Tab 2</p>
+          <p>Tab 2</p>
+          <p>Tab 2</p>
+          <p>Tab 2</p>
+          <p>Tab 2</p>
+        </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### Tabpane 自動高度
+
+自動高度。設置為 true 時，nut-tabs 和 nut-tabs\_\_content 會隨著當前 nut-tabpane 的高度而發生變化。
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab2value, setTab2value] = useState('0');
+  return (
+    <>
+      <Tabs value={tab2value} autoHeight onChange={(value) => {
+        setTab2value(value)
+      }}>
+        <Tabs.TabPane title="Tab 1">
+          <p>Tab 1</p>
+          <p>Tab 1</p>
+          <p>Tab 1</p>
+          <p>Tab 1</p>
+        </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### 數據異步渲染 3s
+
+:::demo
+
+```tsx
+import React, { useState, useEffect } from "react";
 import { Tabs } from '@nutui/nutui-react';
 
 const App = () => {
@@ -146,11 +281,11 @@ const App = () => {
   }, [])
   return (
     <>
-      <Tabs value={tab3value} onChange={({ paneKey }) => {
-        setTab3value(paneKey)
+      <Tabs value={tab3value} onChange={(value) => {
+        setTab3value(value)
       }}>
         {list3.map(item => <Tabs.TabPane key={item}
-          title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
+                                         title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
       </Tabs>
     </>
   );
@@ -160,7 +295,7 @@ export default App;
 
 :::
 
-### 数量多,滚动操作
+### 數量多,滾動操作
 
 :::demo
 
@@ -173,11 +308,11 @@ const App = () => {
   const list4 = Array.from(new Array(10).keys());
   return (
     <>
-      <Tabs value={tab4value} onChange={({ paneKey }) => {
-        setTab4value(paneKey)
-      }} titleScroll titleGutter="10">
+      <Tabs value={tab4value} onChange={(value) => {
+        setTab4value(value)
+      }}>
         {list4.map(item => <Tabs.TabPane key={item}
-          title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
+                                         title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
       </Tabs>
     </>
   );
@@ -187,7 +322,7 @@ export default App;
 
 :::
 
-### 左右布局
+### 左右佈局
 
 :::demo
 
@@ -200,11 +335,12 @@ const App = () => {
   const list5 = Array.from(new Array(2).keys());
   return (
     <>
-      <Tabs style={{ height: '300px' }} value={tab5value} onChange={({ paneKey }) => {
-        setTab5value(paneKey)
-      }} titleScroll direction="vertical">
+      <Tabs style={{ height: '300px' }} value={tab5value}
+            onChange={(value) => {
+              setTab5value(value)
+            }} direction="vertical">
         {list5.map(item => <Tabs.TabPane key={item}
-          title={`Tab ${  item}`}> Tab {item} </Tabs.TabPane>)}
+                                         title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
       </Tabs>
     </>
   );
@@ -214,7 +350,7 @@ export default App;
 
 :::
 
-### 左右布局-微笑曲线
+### 左右佈局-微笑曲線
 
 :::demo
 
@@ -227,11 +363,12 @@ const App = () => {
   const list5 = Array.from(new Array(2).keys());
   return (
     <>
-      <Tabs style={{ height: '300px' }} value={tab6value} onChange={({ paneKey }) => {
-        setTab6value(paneKey)
-      }} type="smile" titleScroll direction="vertical">
+      <Tabs style={{ height: '300px' }} value={tab6value}
+            onChange={(value) => {
+              setTab6value(value)
+            }} type="smile" direction="vertical">
         {list5.map(item => <Tabs.TabPane key={item}
-          title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
+                                         title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
       </Tabs>
     </>
   );
@@ -241,7 +378,7 @@ export default App;
 
 :::
 
-### 嵌套布局
+### 嵌套佈局
 
 :::demo
 
@@ -256,8 +393,8 @@ const App = () => {
     <>
       <Tabs
         value={tab8value}
-        onChange={({ paneKey }) => {
-          setTab8value(paneKey)
+        onChange={(value) => {
+          setTab8value(value)
         }}
         type="smile"
         direction="vertical"
@@ -265,8 +402,8 @@ const App = () => {
         <Tabs.TabPane title="Tab 1">
           <Tabs
             value={tab9value}
-            onChange={({ paneKey }) => {
-              setTab9value(paneKey)
+            onChange={(value) => {
+              setTab9value(value)
             }}
             type="smile"
             direction="horizontal"
@@ -282,7 +419,7 @@ const App = () => {
 
       <Tabs
         value={tab8value}
-        onChange={({ paneKey }) => {
+        onChange={(value) => {
           setTab8value(paneKey)
         }}
         autoHeight
@@ -291,7 +428,7 @@ const App = () => {
         <Tabs.TabPane title="Tab 1">
           <Tabs
             value={tab9value}
-            onChange={({ paneKey }) => {
+            onChange={(value) => {
               setTab9value(paneKey)
             }}
             direction="vertical"
@@ -312,7 +449,7 @@ export default App;
 
 :::
 
-### 标签栏字体尺寸 large normal small
+### 標簽欄字體尺寸 large normal small
 
 :::demo
 
@@ -324,23 +461,16 @@ const App = () => {
   const [tab1value, setTab1value] = useState('0');
   return (
     <>
-      <Tabs value={tab1value} onChange={({ paneKey }) => {
+      <Tabs value={tab1value} onChange={(value) => {
         setTab1value(paneKey)
-      }} size="large">
+      }} style={{ '--nutui-tabs-titles-item-font-size': '20px' }}>
         <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
-      <Tabs value={tab1value} onChange={({ paneKey }) => {
+      <Tabs value={tab1value} onChange={(value) => {
         setTab1value(paneKey)
-      }} size="normal">
-        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
-      </Tabs>
-      <Tabs value={tab1value} onChange={({ paneKey }) => {
-        setTab1value(paneKey)
-      }} size="small">
+      }} style={{ '--nutui-tabs-titles-item-font-size': '12px' }}>
         <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
@@ -353,29 +483,30 @@ export default App;
 
 :::
 
-### 自定义标签栏
+### 自定義標簽欄
 
 :::demo
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs } from '@nutui/nutui-react';  import { Dongdong, Jd } from '@nutui/icons-react'
+import { Tabs } from '@nutui/nutui-react';
+import { Dongdong, Jd } from '@nutui/icons-react';
 
 const App = () => {
   const [tab7value, setTab7value] = useState('c1');
   const list6 = [
     {
-      title: '自定义 1',
+      title: '自定義 1',
       paneKey: 'c1',
       icon: <Dongdong />,
     },
     {
-      title: '自定义 2',
+      title: '自定義 2',
       paneKey: 'c2',
       icon: <Jd />,
     },
     {
-      title: '自定义 3',
+      title: '自定義 3',
       paneKey: 'c3'
     }
   ]
@@ -385,7 +516,7 @@ const App = () => {
         return list6.map(item => (
           <div
             onClick={() => setTab7value(item.paneKey)}
-            className={`nut-tabs__titles-item ${tab7value == item.paneKey ? 'active' : ''}`}
+            className={`nut-tabs__titles-item ${tab7value === item.paneKey ? 'nut-tabs__titles-item--active' : ''}`}
             key={item.paneKey}
           >
             {item.icon || null}
@@ -397,7 +528,7 @@ const App = () => {
 
       }>
         {list6.map(item => (
-          <Tabs.TabPane key={item.paneKey} paneKey={item.paneKey}>
+          <Tabs.TabPane key={item.paneKey} value={item.paneKey}>
             {item.title}
           </Tabs.TabPane>
         ))}
@@ -410,48 +541,34 @@ export default App;
 
 :::
 
-## API
+## Tabs
 
-### Tabs Props
+### Props
 
-| 属性 | 说明                                          | 类型          | 默认值     |
-|---------------|-----------------------------------------------|---------------|------------|
-| value         | 绑定当前选中标签的标识符                      | number \| string | `0`          |
-| color         | 标签选中色                                    | string        | `#1a1a1a`    |
-| background    | 标签栏背景颜色                                | string        | `#f5f5f5`    |
-| direction     | 使用横纵方向 可选值 `horizontal`、`vertical`      | string        | `horizontal` |
-| type          | 选中底部展示样式 可选值 `line`、`smile`           | string        | `line`       |
-| titleScroll  | 标签栏是否可以滚动                            | boolean       | `false`      |
-| ellipsis      | 是否省略过长的标题文字                        | boolean       | `true`       |
-| animatedTime | 切换动画时长,单位 ms 0 代表无动画              | number \| string | `300`        |
-| titleGutter  | 标签间隙                                      | number \| string | `0`          |
-| titleNode    | 自定义导航区域                                 | ReactNode | -          |
-| size         | 标签栏字体尺寸大小 可选值 `large`、`normal`、`small` | string        | `normal`     |
-| leftAlign`v1.4.8` | 标题左对齐 | boolean | `false` |
-| autoHeight | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs__content 会随着当前 nut-tabpane 的高度而发生变化。 | boolean             | `false`     |
-| tabStyle | 标签栏样式 | CSSProperties | `{}`     |
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| value | 當前激活 tab 面闆的值 | `number` \| `string` | `0` |
+| defaultValue | 初始化激活 tab 的值 | `number` \| `string` | `0` |
+| activeColor | 標簽選中色 | `string` | `#1a1a1a` |
+| direction | 使用橫縱方嚮 | `horizontal` \| `vertical`  | `horizontal` |
+| activeType | 選中底部展示樣式 可選值 `line`、`smile` | `string` | `line` |
+| duration | 切換動畫時長,單位 ms 0 代錶無動畫 | `number` \| `string` | `300` |
+| title | 自定義導航區域 | `() => JSX.Element[]` | `-` |
+| align | 標題左對齊 | `left` \| `right` | `-` |
+| autoHeight | 自動高度。設置為 true 時，nut-tabs 和 nut-tabs\_\_content 會隨著當前 nut-tabpane 的高度而發生變化。 | `boolean` | `false` |
+| tabStyle | 標簽欄樣式 | `CSSProperties` | `{}` |
+| onClick | 點擊標簽時觸發 | `(index: string \| number) => void` | `-` |
+| onChange | 當前激活的標簽改變時觸發 | `(index: string \| number) => void` | `-` |
 
-## Tabs Children
+## Tabs.Tabpane
 
-| 名称    | 说明           |
-|---------|----------------|
-| default | 自定义内容     |
+### Props
 
-### Tabs.Tabpane Props
-
-| 属性 | 说明                    | 类型    | 默认值           |
-|----------|-------------------------|---------|------------------|
-| title    | 标题                    | string  |   -               |
-| paneKey  | 标签 Key , 匹配的标识符 | string  | 默认索引0,1,2... |
-| disabled | 是否禁用标签            | boolean | `false`            |
-
-### Tabs Events
-
-| 事件名 | 说明                     | 回调参数                 |
-|--------|--------------------------|--------------------------|
-| click  | 点击标签时触发           | `{title, paneKey, disabled}` |
-| change | 当前激活的标签改变时触发 | `{title, paneKey, disabled}` |
-
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| title | 標題 | `string` | `-` |
+| value | 標簽 Key , 匹配的標識符, 默認為索引值 | `string\| number` | `-` |
+| disabled | 是否禁用標簽 | `boolean` | `false` |
 
 ## 主題定制
 
@@ -459,30 +576,27 @@ export default App;
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 默認值 |
-| --- | --- |
-| --nutui-tabs-tab-smile-color | `$primary-color` |
-| --nutui-tabs-titles-background-color | `$background-color` |
-| --nutui-tabs-titles-border-radius | `0` |
-| --nutui-tabs-titles-item-large-font-size | `$font-size-3` |
-| --nutui-tabs-titles-item-font-size | `$font-size-2` |
-| --nutui-tabs-titles-item-small-font-size | `$font-size-1` |
-| --nutui-tabs-titles-item-color | `$title-color` |
-| --nutui-tabs-titles-item-active-color | `$title-color` |
-| --nutui-tabs-titles-item-active-font-weight`v1.4.9` | `600` |
-| --nutui-tabs-horizontal-tab-line-color`v1.4.9` | `linear-gradient(90deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)`|
-| --nutui-tabs-horizontal-line-bottom`v1.4.8` | `15%` |
-| --nutui-tabs-horizontal-line-border-radius`v1.4.8` |` 0px`|
-| --nutui-tabs-horizontal-tab-line-opacity`v1.4.9` | `1`|
-| --nutui-tabs-horizontal-titles-height | `46px` |
-| --nutui-tabs-horizontal-titles-item-min-width | `50px` |
-| --nutui-tabs-horizontal-titles-item-active-background-color`v1.4.9` | `$background-color3` |
-| --nutui-tabs-horizontal-titles-item-active-line-width | `40px` |
-| --nutui-tabs-horizontal-titles-item-active-line-height`v1.4.9` | `3px` |
-| --nutui-tabs-vertical-tab-line-color`v1.4.9` | `linear-gradient(180deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)`|
-| --nutui-tabs-vertical-titles-item-height | `40px` |
-| --nutui-tabs-vertical-titles-item-active-line-width`v1.4.9` | `3px` |
-| --nutui-tabs-vertical-titles-item-active-line-height | `14px` |
-| --nutui-tabs-vertical-titles-width | `100px` |
-| --nutui-tabs-titles-item-line-border-radius`v1.4.9 废弃` | `0` |
-| --nutui-tabs-titles-item-line-opacity`v1.4.9 废弃` | `1` |
+| 名稱 | 說明 | 默認值 |
+| --- | --- | --- |
+| \--nutui-tabs-tab-smile-color | 微笑曲線的顏色 | `$primary-color` |
+| \--nutui-tabs-titles-background-color | Tab 標題的背景色 | `$background-color` |
+| \--nutui-tabs-titles-border-radius | Tab 標題的邊框圓角 | `0` |
+| \--nutui-tabs-titles-item-font-size | Tab 標題的字號 | `$font-size-2` |
+| \--nutui-tabs-titles-item-color | Tab 標題的文本顏色 | `$title-color` |
+| \--nutui-tabs-title-gap | Tab 標題的左右 margin | `0px` |
+| \--nutui-tabs-titles-item-active-color | Tab 選中標題的文本顏色 | `$title-color` |
+| \--nutui-tabs-titles-item-active-font-weight | Tab 選中標題的字重 | `600` |
+| \--nutui-tabs-horizontal-tab-line-color | 水平方嚮線條顏色 | `linear-gradient(90deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)` |
+| \--nutui-tabs-horizontal-line-bottom | 水平方嚮線條距離 | `15%` |
+| \--nutui-tabs-horizontal-line-border-radius | 水平方嚮線的圓角 | `0px` |
+| \--nutui-tabs-horizontal-tab-line-opacity | 水平方嚮線的透明度 | `1` |
+| \--nutui-tabs-horizontal-titles-height | 水平方嚮標題的高度 | `46px` |
+| \--nutui-tabs-horizontal-titles-item-min-width | 水平方嚮標題的最小寬度 | `50px` |
+| \--nutui-tabs-horizontal-titles-item-active-background-color | 水平方嚮激活選項卡標題的背景色 | `$background-color3` |
+| \--nutui-tabs-horizontal-titles-item-active-line-width | 水平方嚮激活選項卡線條的寬度 | `40px` |
+| \--nutui-tabs-horizontal-titles-item-active-line-height | 水平方嚮激活選項卡線條的高度 | `3px` |
+| \--nutui-tabs-vertical-tab-line-color | 垂直方嚮線條顏色 | `linear-gradient(180deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)` |
+| \--nutui-tabs-vertical-titles-item-height | 垂直方嚮標題的高度 | `40px` |
+| \--nutui-tabs-vertical-titles-item-active-line-width | 垂直方嚮標題線條的寬度 | `3px` |
+| \--nutui-tabs-vertical-titles-item-active-line-height | 垂直方嚮標題線條的高度 | `14px` |
+| \--nutui-tabs-vertical-titles-width | 垂直方嚮標題的寬度 | `100px` |

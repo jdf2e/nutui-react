@@ -21,7 +21,6 @@ export interface ElevatorProps extends BasicComponent {
   spaceHeight: number
   titleHeight: number
   showKeys: boolean
-  children: React.ReactNode
   onClickItem: (key: string, item: ElevatorData) => void
   onClickIndex: (key: string) => void
 }

@@ -166,6 +166,7 @@ export default App;
 | value | unique identifier for navigation | `string \| number` | `-` |
 | title | overall title | `string` | `-` |
 | onClick | Navigation click | `data: {title: string, value: string \| number}` | `-` |
+
 ## Theming
 
 ### CSS Variables

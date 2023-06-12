@@ -6,7 +6,7 @@
 
 ## 安装
 
-``` javascript
+```javascript
 // react
 import { FixedNav } from '@nutui/nutui-react';
 ```
@@ -16,7 +16,8 @@ import { FixedNav } from '@nutui/nutui-react';
 ### 基础用法
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
 
@@ -70,7 +71,7 @@ export default App;
 
 ### 左侧效果
 
-``` tsx
+```tsx
 import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
 
@@ -123,11 +124,9 @@ const App = () => {
 export default App;
 ```
 
-
-
 ### 取消背景遮罩
 
-``` tsx
+```tsx
 import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
 
@@ -178,10 +177,9 @@ const App = () => {
 export default App;
 ```
 
-
 ### 自定义使用
 
-``` tsx
+```tsx
 import React, { useState } from "react";
 import { Icon, FixedNav } from '@nutui/nutui-react';
 
@@ -245,10 +243,9 @@ const App = () => {
 export default App;
 ```
 
-
 ### 支持拖拽
 
-``` tsx
+```tsx
 import React, { useState } from "react";
 import { Drag, FixedNav } from '@nutui/nutui-react';
 
@@ -299,24 +296,22 @@ const App = () => {
 export default App;
 ```
 
-
 ## FixedNav
 
 ### Props
 
-| 属性 | 说明                       | 类型    | 默认值                       |
-|:---------------|:---------------------------|:--------|:-----------------------------|
-| visible        | 是否打开                   | boolean | `false`                        |
-| list       | 悬浮列表内容数据           | Array   | `[]`                           |
-| activeText    | 收起列表按钮文案           | string  | `收起导航`                     |
-| inactiveText | 展开列表按钮文案           | string  | `快速导航`                     |
-| type           | 导航方向,可选值 left right | string  | `right`                        |
-| overlay        | 展开时是否显示遮罩         | boolean | `true`                         |
-| position       | fixed 垂直位置             | object  | `{top: 'auto', bottom: 'auto'}` |
-| content       | 自定义按钮            | ReactNode  | - |
-| children       | 自定义展开列表内容             | ReactNode  | - |
-| onChange | 展开收起按钮回调 | `value: boolean` |
-| onSelect | 选择之后触发 | `item, event: MouseEvent` |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| visible | 是否打开 | `boolean` | `false` |
+| list | 悬浮列表内容数据 | `Array` | `[]` |
+| activeText | 收起列表按钮文案 | `string` | `收起导航` |
+| inactiveText | 展开列表按钮文案 | `string` | `快速导航` |
+| type | 导航方向 | `left` \| `right` | `right` |
+| overlay | 展开时是否显示遮罩 | `boolean` | `true` |
+| position | fixed 垂直位置 | `object` | `{top: 'auto', bottom: 'auto'}` |
+| content | 自定义按钮 | `ReactNode` | `-` |
+| onChange | 展开收起按钮回调 | `value: boolean` | `-` |
+| onSelect | 选择之后触发 | `item, event: MouseEvent` | `-` |
 
 ## 主题定制
 
@@ -326,7 +321,7 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| --nutui-fixednav-bg-color | 背景颜色 | `#fff` |
-| --nutui-fixednav-font-color | 字体颜色 | `#000` |
-| --nutui-fixednav-index | zIndex | `201` |
-| --nutui-fixednav-item-active-color | 激活颜色 | `$primary-color` |
+| \--nutui-fixednav-bg-color | 背景颜色 | `#fff` |
+| \--nutui-fixednav-font-color | 字体颜色 | `#000` |
+| \--nutui-fixednav-index | zIndex | `201` |
+| \--nutui-fixednav-item-active-color | 激活颜色 | `$primary-color` |
