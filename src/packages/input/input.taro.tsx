@@ -271,7 +271,9 @@ export const Input = forwardRef(
     }
 
     const handleBlur = (event: Event) => {
-      SetActive(false)
+      setTimeout(() => {
+        SetActive(false)
+      }, 200)
       let val: any = (event.target as any).value
       if (maxlength && val.length > Number(maxlength)) {
         val = val.slice(0, Number(maxlength))
