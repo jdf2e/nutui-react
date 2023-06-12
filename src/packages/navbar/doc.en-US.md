@@ -1,7 +1,6 @@
 # Navbar
 
-## Intro 
-
+## Intro
 
 Provides navigation capabilities.
 
@@ -17,6 +16,7 @@ import { NavBar } from '@nutui/nutui-react';
 ### Basic usage
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { NavBar, Toast } from '@nutui/nutui-react';
@@ -48,9 +48,11 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { NavBar, Toast } from '@nutui/nutui-react';
@@ -76,9 +78,11 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { NavBar, Toast } from '@nutui/nutui-react';
@@ -110,9 +114,11 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { NavBar, Tabs, TabPane, Toast } from '@nutui/nutui-react';
@@ -144,23 +150,23 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ## Navbar
 
-### Props  
+### Props
 
-| Prop            | Description                                                                                           | Type    | Default  |
-|-----------------|------------------------------------------------------------------------------------------------|---------|---------|
-| right            | Right side content | ReactNode  | -       |  
-| left        |The left content, rendered to the right of the return area | ReactNode  | -       |   
-| back        | Returns the text of the area | ReactNode  | -       |   
-| fixed         | Is it fixed                                                         | boolean  | `false`       |   
-| safeArea         | Whether it is suitable for the safe area                                                         | boolean  | `false`       |   
-| placeholder         | When fixed to the top, whether to generate a placeholder element of equal height at the label position           | boolean  | `false`    |
-| zIndex         | Navigation Bar Hierarchy           | number \| string  | `10`    |
-| onClickBack             | Click the callback after the return area | `onClickBack:(event: Event)=>void` | `false`|
-
+| Prop | Description | Type | Default |
+| --- | --- | --- | --- |
+| right | Right side content | `ReactNode` | `-` |
+| left | The left content, rendered to the right of the return area | `ReactNode` | `-` |
+| back | Returns the text of the area | `ReactNode` | `-` |
+| fixed | Is it fixed | `boolean` | `false` |
+| safeArea | Whether it is suitable for the safe area | `boolean` | `false` |
+| placeholder | When fixed to the top, whether to generate a placeholder element of equal height at the label position | `boolean` | `false` |
+| zIndex | Navigation Bar Hierarchy | `number` \| `string` | `10` |
+| onClickBack | Click the callback after the return area | `onClickBack:(event: Event)=>void` | `false` |
 
 ## Theming
 
@@ -169,17 +175,15 @@ export default App;
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Description | Default |
-| --- | --- |
-| --nutui-navbar-width | The width of the navbar | `100%`|
-| --nutui-navbar-height | The height of the navbar | `44px` |
-| --nutui-navbar-margin-bottom | Bottom margin of the navbar |`20px` |
-| --nutui-navbar-padding | The padding  of the navbar |`13px 16px` |
-| --nutui-navbar-background | The navbar's background color |`$white` |
-| --nutui-navbar-box-shadow | Shadow of navbar |`0px 1px 7px 0px rgba(237, 238, 241, 1)` |
-| --nutui-navbar-color | navbar font color |`$gray2` |
-| --nutui-navbar-font-size | navbar font size |`$font-size-2` |
-| --nutui-navbar-title-font-size | The font size of the navbar's title |`$font-size-2` |
-| --nutui-navbar-title-font-weight | The font weight of the navbar's title |`0` |
-| --nutui-navbar-title-font-color | The font color of the navbar's title |`$gray1` |
-
-
+| --- | --- | --- |
+| \--nutui-navbar-width | The width of the navbar | `100%` |
+| \--nutui-navbar-height | The height of the navbar | `44px` |
+| \--nutui-navbar-margin-bottom | Bottom margin of the navbar | `20px` |
+| \--nutui-navbar-padding | The padding of the navbar | `13px 16px` |
+| \--nutui-navbar-background | The navbar's background color | `$white` |
+| \--nutui-navbar-box-shadow | Shadow of navbar | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
+| \--nutui-navbar-color | navbar font color | `$gray2` |
+| \--nutui-navbar-font-size | navbar font size | `$font-size-2` |
+| \--nutui-navbar-title-font-size | The font size of the navbar's title | `$font-size-2` |
+| \--nutui-navbar-title-font-weight | The font weight of the navbar's title | `0` |
+| \--nutui-navbar-title-font-color | The font color of the navbar's title | `$gray1` |

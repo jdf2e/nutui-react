@@ -1,196 +1,272 @@
-#  Tabbar 標籤欄
+# Tabbar 標簽欄
 
 ## 介紹
 
-導航最常用場景
+底部導航常用場景
 
 ## 安裝
 
 ```ts
 // react
-import { Tabbar, TabbarItem } from '@nutui/nutui-react';
+import { Tabbar } from '@nutui/nutui-react';
 ```
 
 ## 代碼演示
 
-### 基礎語言
+### 基礎用法
 
 :::demo
+
 ```tsx
-import  React from "react";
-import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
-  <Tabbar
-    onSwitch={(child, idx) => {
-      console.log(idx)
-    }}
-  >
-    <TabbarItem title="首頁" icon="首頁" />
-    <TabbarItem title="分類" icon={<Category width={18} height={18} />} />
-    <TabbarItem title="發現" icon={<Find width={20} height={20} />} />
-    <TabbarItem title="購物車" icon={<Cart width={20} height={20} />} />
-    <TabbarItem title="我的" icon="我的" />
-  </Tabbar>
-);
-
-export default App;
-```
-:::
-### 自定義選中
-
-:::demo
-```tsx
-import React, { useState } from "react";
-import { Tabbar, TabbarItem } from '@nutui/nutui-react';
-
-const App = () => {
-  const [activeIndex, setActiveIndex] = useState(2)
-
-  return <Tabbar
-    visible={0}
-    activeVisible={activeIndex}
-    onSwitch={(child, id) => {
-      setActiveIndex(id)
-    }}
-  >
-    <TabbarItem title="首頁" icon="首頁" />
-    <TabbarItem title="分類" icon={<Category width={20} height={20} />} />
-    <TabbarItem title="發現" icon={<Find width={20} height={20} />} />
-    <TabbarItem title="購物車" icon={<Cart width={20} height={20} />} />
-    <TabbarItem title="我的" icon="我的" />
-  </Tabbar>
-}
-
-export default App;
-```
-:::
-### 徽標提示
-
-:::demo
-```tsx
-import  React from "react";
-import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
-
-const App = () => (
-  <Tabbar>
-    <TabbarItem title="首頁" icon={<Home width={20} height={20} />} num="11" />
-    <TabbarItem title="分類" icon={<Category width={20} height={20} />} />
-    <TabbarItem title="發現" icon={<Find width={20} height={20} />} />
-    <TabbarItem title="購物車" icon={<Cart width={20} height={20} />} num="110" />
-    <TabbarItem title="我的" icon={<My width={20} height={20} />} />
-  </Tabbar>
-);
-
-export default App;
-```
-:::
-
-### 紅點
-
-:::demo
-```tsx
-import  React from "react";
-import { Tabbar, TabbarItem } from '@nutui/nutui-react';
-
-const App = () => (
-  <Tabbar>
-    <TabbarItem title="首頁" icon={<Home width={20} height={20} />} dot />
-    <TabbarItem title="分類" icon={<Category width={20} height={20} />} />
-    <TabbarItem title="發現" icon={<Find width={20} height={20} />} />
-    <TabbarItem title="購物車" icon={<Cart width={20} height={20} />} dot />
-    <TabbarItem title="我的" icon={<My width={20} height={20} />} />
+  <Tabbar onSwitch={(value) => {console.log(value)}}>
+    <Tabbar.Item title="首頁" icon={<Home width={18} height={18} />} value={9} />
+    <Tabbar.Item title="分類" icon={<Category width={18} height={18} dot />} />
+    <Tabbar.Item title="發現" icon={<Find width={18} height={18} />} />
+    <Tabbar.Item title="購物車" icon={<Cart width={18} height={18} />} />
+    <Tabbar.Item title="我的" icon={<My width={18} height={18} />} />
   </Tabbar>
 )
 
 export default App;
 ```
+
 :::
+
+### 自定義選中
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabbar } from '@nutui/nutui-react';
+import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
+
+const App = () => {
+  const [activeIndex, setActiveIndex] = useState(2)
+  
+  return <Tabbar
+    defaultValue={0}
+    value={activeIndex}
+    onSwitch={(value) => {
+      setActiveIndex(value)
+    }}
+  >
+    <Tabbar.Item title="首頁" icon={<Home width={20} height={20} />} />
+    <Tabbar.Item title="分類" icon={<Category width={20} height={20} />} />
+    <Tabbar.Item title="發現" icon={<Find width={20} height={20} />} />
+    <Tabbar.Item title="購物車" icon={<Cart width={20} height={20} />} />
+    <Tabbar.Item title="我的" icon={<My width={20} height={20} />} />
+  </Tabbar>
+}
+
+export default App;
+```
+
+:::
+
+### 只配圖標
+
+:::demo
+
+```tsx
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
+import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
+
+const App = () => (
+  <Tabbar
+    onSwitch={(value) => {
+      console.log(value)
+    }}
+  >
+    <Tabbar.Item title="首頁" icon={<Home width={12} height={12} />} />
+    <Tabbar.Item title="分類" icon={<Category width={12} height={12} />} />
+    <Tabbar.Item icon={<Find width={24} height={24} />} />
+    <Tabbar.Item title="購物車" icon={<Cart width={12} height={12} />} />
+    <Tabbar.Item title="我的" icon={<My width={12} height={12} />} />
+  </Tabbar>
+)
+```
+
+:::
+
+### 無圖標
+
+:::demo
+
+```tsx
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
+
+const App = () => (
+  <Tabbar
+    onSwitch={(value) => {
+      console.log(value)
+    }}
+  >
+    <Tabbar.Item title="首頁" value={9} />
+    <Tabbar.Item title="分類" dot />
+    <Tabbar.Item title="發現" />
+    <Tabbar.Item title="購物車" />
+    <Tabbar.Item title="我的" />
+  </Tabbar>
+)
+```
+
+:::
+
+### 徽標提示
+
+:::demo
+
+```tsx
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
+import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
+
+const App = () => (
+  <Tabbar>
+    <Tabbar.Item title="首頁" icon={<Home width={12} height={12} />} value={11} />
+    <Tabbar.Item title="分類" icon={<Category width={12} height={12} />} />
+    <Tabbar.Item title="發現" icon={<Find width={12} height={12} />} />
+    <Tabbar.Item title="購物車" icon={<Cart width={12} height={12} />} value={110} />
+    <Tabbar.Item title="我的" icon={<My width={12} height={12} />} />
+  </Tabbar>
+)
+
+export default App;
+```
+
+:::
+
+### 紅點
+
+:::demo
+
+```tsx
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
+import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
+
+const App = () => (
+  <Tabbar>
+    <Tabbar.Item title="首頁" icon={<Home width={20} height={20} />} dot />
+    <Tabbar.Item title="分類" icon={<Category width={20} height={20} />} />
+    <Tabbar.Item title="發現" icon={<Find width={20} height={20} />} />
+    <Tabbar.Item title="購物車" icon={<Cart width={20} height={20} />} dot />
+    <Tabbar.Item title="我的" icon={<My width={20} height={20} />} />
+  </Tabbar>
+)
+
+export default App;
+```
+
+:::
+
 ### 自定義顏色
 
 :::demo
+
 ```tsx
-import  React from "react";
-import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
+import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
+
 
 const App = () => (
   <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
-    <TabbarItem title="首頁" icon={<Home width={20} height={20} />} />
-    <TabbarItem title="分類" icon={<Category width={20} height={20} />} />
-    <TabbarItem title="發現" icon={<Find width={20} height={20} />} />
-    <TabbarItem title="購物車" icon={<Cart width={20} height={20} />} />
-    <TabbarItem title="我的" icon={<My width={20} height={20} />} />
+    <Tabbar.Item title="首頁" icon={<Home width={20} height={20} />} />
+    <Tabbar.Item title="分類" icon={<Category width={20} height={20} />} />
+    <Tabbar.Item title="發現" icon={<Find width={20} height={20} />} />
+    <Tabbar.Item title="購物車" icon={<Cart width={20} height={20} />} />
+    <Tabbar.Item title="我的" icon={<My width={20} height={20} />} />
   </Tabbar>
-);
+)
 
 export default App;
 ```
+
 :::
+
 ### 可自定義icon個數的tabbar
 
 :::demo
+
 ```tsx
-import  React from "react";
-import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
+import { Category, Find, Home } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
-    <TabbarItem title="首頁" icon={<Home width={20} height={20} />} />
-    <TabbarItem title="分類" icon={<Category width={20} height={20} />} />
-    <TabbarItem title="發現" icon={<Find width={20} height={20} />} />
+    <Tabbar.Item title="首頁" icon={<Home width={20} height={20} />} />
+    <Tabbar.Item title="分類" icon={<Category width={20} height={20} />} />
+    <Tabbar.Item title="發現" icon={<Find width={20} height={20} />} />
   </Tabbar>
-);  
+)
 
 export default App;
 ```
+
 :::
-### 固定底部，可自由跳轉
+
+### 固定底部
 
 :::demo
+
 ```tsx
-import  React from "react";
-import {  Tabbar, TabbarItem } from '@nutui/nutui-react';
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
+import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
 
 const App = () => (
-  <Tabbar bottom>
-    <TabbarItem title="首頁" href="" icon={<Home width={20} height={20} />} />
-    <TabbarItem title="分類" icon={<Category width={20} height={20} />} />
-    <TabbarItem title="發現" icon={<Find width={20} height={20} />} />
-    <TabbarItem title="購物車" href="https://m.jd.com" icon={<Cart width={20} height={20} />} />
-    <TabbarItem title="我的" to="/" icon={<My width={20} height={20} />} />
+  <Tabbar fixed>
+    <Tabbar.Item title="首頁" icon={<Home width={20} height={20} />} />
+    <Tabbar.Item title="分類" icon={<Category width={20} height={20} />} />
+    <Tabbar.Item title="發現" icon={<Find width={20} height={20} />} />
+    <Tabbar.Item title="購物車" icon={<Cart width={20} height={20} />} />
+    <Tabbar.Item title="我的" icon={<My width={20} height={20} />} />
   </Tabbar>
-);
+)
 
 export default App;
 ```
-:::        
+
+:::
 
 ## Tabbar
 
 ### Props
 
-| 属性 | 說明                     | 類型   | 默認值  |
-|-----------------|------------------------|--------|---------|
-| visible | 默认選中的標籤的索引值            | number | `0`       |
-| activeVisible | 選中的標籤的索引值              | number | -       |
-| bottom          | 是否固定在頁面底部              | boolean | `false`   |
-| inactiveColor  | icon未激活的顏色             | string | `#7d7e80` |
-| activeColor    | icon激活的顏色              | string | `#1989fa` |
-| safeAreaInsetBottom    | 是否開啟iphone系列全面屏底部安全區適配 | boolean | `false` |
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| defaultValue | 默認選中的標簽的索引值 | `number` | `0` |
+| value | 選中的標簽的索引值 | `number` | `-` |
+| fixed | 是否固定在頁面底部，為 true 時默認開啟 safeArea | `boolean` | `false` |
+| activeColor | icon激活的顏色 | `string` | `#1989fa` |
+| inactiveColor | icon未激活的顏色 | `string` | `#7d7e80` |
+| safeArea | 是否開啟iphone繫列全面屏底部安全區適配 | `boolean` | `false` |
+| onSwitch | 切換頁簽時觸發事件 | `(value) => void` | `-` |
 
-## TabbarItem
+## Tabbar.Item
 
 ### Props
 
-| 属性 | 說明 | 類型   | 默認值 |
-|-----------|-------------------|--------|--------|
-| title | 標籤頁的標題 | ReactNode | -     |
-| icon | 自定義圖標 | ReactNode | -     |
-| href | 標籤頁的跳轉鏈接   | string | -     |
-| num | 頁簽右上角的數字角標，超出99之後為99+     | number | -     |
-| dot | 是否顯示圖標右上角小紅點   | boolean | `false`     |
-| tabSwitch | 切換頁籤時觸發事件 | 點擊的數據和索引值 |
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| title | 標簽頁的標題 | `ReactNode` | `-` |
+| icon | 自定義圖標 | `ReactNode` | `-` |
+| value | 徽標中顯示的內容，支持數字、字符和自定義內容 | `ReactNode` | `-` |
+| max | value 為數值時，最大值 | `number` | `99` |
+| dot | 徽標是否為小點 | `boolean` | `false` |
+| top | 徽標的上下偏移量，支持單位設置，可設置為：5 等 | `number` | `0` |
+| right | 徽標的左右偏移量，支持單位設置，可設置為：5 等 | `number` | `0` |
+| color | 徽標的背景顏色，默認值為當前主題色 | `string` | `-` |
 
 ## 主題定制
 
@@ -198,18 +274,15 @@ export default App;
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 默認值 |
-| --- | --- |
-| --nutui-tabbar-height | `50px`|
-| --nutui-tabbar-active-color | `$primary-color` |
-| --nutui-tabbar-unactive-color | `$primary-color` |
-| --nutui-tabbar-border-top | `1px solid #eee` |
-| --nutui-tabbar-border-bottom | `1px solid #eee` |
-| --nutui-tabbar-box-shadow | `none` |
-| --nutui-tabbar-item-text-font-size | `$font-size-0` |
-| --nutui-tabbar-item-text-line-height | `initial` |
-| --nutui-tabbar-height | `50px` |
-| --nutui-tabbar-word-margin-top | `auto` |
-| --nutui-tabbar-dot-right | `12px`|
-| --nutui-tabbar-dot-top | `0` |
-| --nutui-tabbar-word-margin-top | `3px` |
+| 名稱 | 說明 | 默認值 |
+| --- | --- | --- |
+| \--nutui-tabbar-height | 高度 | `50px` |
+| \--nutui-tabbar-active-color | 選中顏色 | `$primary-color` |
+| \--nutui-tabbar-inactive-color | 未選中顏色 | `$gray1` |
+| \--nutui-tabbar-border-top | 上邊框 | `1px solid #eee` |
+| \--nutui-tabbar-border-bottom | 下邊框 | `1px solid #eee` |
+| \--nutui-tabbar-box-shadow | 陰影 | `none` |
+| \--nutui-tabbar-text-font-size | 標題字體大小 | `$font-size-0` |
+| \--nutui-tabbar-text-large-font-size | 無圖標時標題字體大小 | `$font-size-large` |
+| \--nutui-tabbar-text-line-height | 字體行高 | `initial` |
+| \--nutui-tabbar-text-margin-top | 標題上外邊距 | `3px` |
