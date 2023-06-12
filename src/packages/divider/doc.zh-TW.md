@@ -30,8 +30,8 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ### 展示文本
 
@@ -52,8 +52,8 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ### 内容位置
 
@@ -75,8 +75,8 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ### 虚线
 
@@ -95,8 +95,8 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ### 自定义样式
 
@@ -117,6 +117,7 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 垂直分割线
@@ -142,19 +143,17 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ## API
 
 ### Props
 
-| 属性 | 说明                          | 类型    | 默认值 |
-| --------------- | ----------------------------- | ------- | ------ |
-| contentPosition | 内容位置，可选值为 left right | string  | `center` |
-| style          | 修改自定义样式                | CSSProperties     | -      |
-| direction           | 水平还是垂直类型,可选值为 horizontal vertical               | string     | `horizontal`      |
-
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| contentPosition | 內容位置 | `left` \| `center` \| `right` | `center` |
+| direction | 水平還是垂直類型 | `horizontal` \| `vertical` | `horizontal` |
 
 ## 主題定制
 
@@ -162,15 +161,15 @@ export default App;
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 默認值 |
-| --- | --- |
-| --nutui-divider-margin | `16px 0` |
-| --nutui-divider-text-font-size | `$font-size-2` |
-| --nutui-divider-text-color | `$gray1` |
-| --nutui-divider-line-height | `2px` |
-| --nutui-divider-before-margin-right | `16px` |
-| --nutui-divider-after-margin-left | `16px` |
-| --nutui-divider-vertical-height | `12px` |
-| --nutui-divider-vertical-top | `2px` |
-| --nutui-divider-vertical-border-left | `rgba(0, 0, 0, 0.06)` |
-| --nutui-divider-vertical-margin | `0 8px` |
+| 名稱 | 說明 | 默認值 |
+| --- | --- | --- |
+| \--nutui-divider-margin | 分割線整體內容的margin值 | `16px 0` |
+| \--nutui-divider-text-font-size | 分割線整體內容的font-size大小 | `$font-size-2` |
+| \--nutui-divider-text-color | 分割線整體內容的顏色 | `$gray1` |
+| \--nutui-divider-line-height | 分割線的行高 | `2px` |
+| \--nutui-divider-before-margin-right | 左邊分割線的margin-right值 | `16px` |
+| \--nutui-divider-after-margin-left | 右邊分割線的margin-left值 | `16px` |
+| \--nutui-divider-vertical-height | 垂直分割線的高度 | `12px` |
+| \--nutui-divider-vertical-top | 垂直分割線的top值 | `2px` |
+| \--nutui-divider-vertical-border-left | 垂直分割線的border-left值 | `rgba(0, 0, 0, 0.06)` |
+| \--nutui-divider-vertical-margin | 垂直分割線的margin值 | `0 8px` |
