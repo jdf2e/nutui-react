@@ -35,7 +35,6 @@ const App = () => {
       >
         <Form.Item
           required
-          rules={[{ required: true, message: '姓名不能为空' }]}
           label="姓名"
           name="username"
         >
@@ -411,16 +410,16 @@ export default App;
 
 ### Props
 
-| 属性 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| form | 经 Form.useForm() 创建的 form 控制实例，不提供时会自动创建 | `FormInstance` | `-` |
+| 属性 | 说明 | 类型 | 默认值    |
+| --- | --- | --- |--------|
+| form | 经 Form.useForm() 创建的 form 控制实例，不提供时会自动创建 | `FormInstance` | `-`    |
 | footer | 表单底部区域，一般放置确认和重置按钮 | `ReactNode` | `null` |
-| initialValues | 表单初始值 | `any` | `-` |
-| name | 表单名称 | `any` | `\` |
-| labelPosition | 表单项 label 的位置 | `'top'\| 'left'|'right'` | `right` |
+| initialValues | 表单初始值 | `any` | `-`    |
+| name | 表单名称 | `any` | `\`    |
+| labelPosition | 表单项 label 的位置 | `'top'\| 'left'\|'right'` | `right` |
 | starPosition | 必填表单项 label 的红色星标位置 | `'left'\| 'right'` | `left` |
-| onFinish | 校验成功后触发 | `(values: any) => void` | `-` |
-| onFinishFailed | 任一表单项被校验失败后触发 | `(values: any, errorFields: any) => void` | `-` |
+| onFinish | 校验成功后触发 | `(values: any) => void` | `-`    |
+| onFinishFailed | 任一表单项被校验失败后触发 | `(values: any, errorFields: any) => void` | `-`    |
 
 ## Form.Item
 
@@ -440,7 +439,8 @@ export default App;
 
 ### Form.Item Rule
 
-规则校验处理基于[async-validator](https://github.com/yiminghe/async-validator) 更多规则配置可查看 async-validator 文档。 使用 Form.Item 的`rules`属性可以定义校验规则，可选属性如下:
+规则校验处理基于[async-validator](https://github.com/yiminghe/async-validator) 更多规则配置可查看
+async-validator 文档。 使用 Form.Item 的`rules`属性可以定义校验规则，可选属性如下:
 
 | 属性             | 说明 | 类型 |
 |----------------| --- | --- |
@@ -458,7 +458,6 @@ export default App;
 
 Form.useForm()创建 Form 实例，用于管理所有数据状态。
 
-
 | 属性             | 说明 | 类型 |
 |----------------| --- | --- |
 | getFieldValue  | 获取对应字段名的值 | (name: NamePath) => any |
@@ -470,7 +469,8 @@ Form.useForm()创建 Form 实例，用于管理所有数据状态。
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+组件提供了下列 CSS
+变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |

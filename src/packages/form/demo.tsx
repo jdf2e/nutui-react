@@ -209,12 +209,7 @@ const FormDemo = () => {
             </>
           }
         >
-          <Form.Item
-            required
-            rules={[{ required: true, message: '姓名不能为空' }]}
-            label="姓名"
-            name="username"
-          >
+          <Form.Item required label="姓名" name="username">
             <Input
               className="nut-input-text"
               placeholder="请输入姓名"
