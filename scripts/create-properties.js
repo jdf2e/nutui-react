@@ -1,9 +1,10 @@
+// 扫描文档，生成所有组件的 Properties、Ref 表格，以 JSON 格式输出，可由在线工具转为 EXCEL
+// 支持 argv [2] 中传 taro 扫描小程序端文档
+
 const path = require('path')
 const fs = require('fs')
 const MarkdownIt = require('markdown-it')()
-
 const basePath = path.resolve(__dirname, './../src/packages')
-const componentDirs = fs.readdirSync(basePath, 'utf8')
 const cfg = require('./../src/config.json')
 const TBODY_OPEN = 'tbody_open'
 const TBODY_CLOSE = 'tbody_close'
@@ -110,8 +111,8 @@ const genaratorWebTypes = () => {
           typesData.push({
             组件分类: nav.name,
             组件名: r.h2,
-            表格名: r.h3,
             版本号: component.version,
+            表格名: r.h3,
             第一列: propItem,
             第二列: infoItem,
             第三列: typeItem,
