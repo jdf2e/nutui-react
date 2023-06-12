@@ -62,9 +62,9 @@ export default App
 
 :::
 
-## AnimatingNumbers
+## AnimatingNumbers.CountUp
 
-### AnimatingNumbers.CountUp Props
+### Props
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |

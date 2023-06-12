@@ -22,7 +22,7 @@ interface T {
 const RadioDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      '74fc5d8a': '基本用法',
+      '74fc5d8a': '基础用法',
       bb7486f4: '选项',
       c1bae1ec: '水平使用',
       '8a2e2847': '自定义尺寸',
@@ -34,7 +34,7 @@ const RadioDemo = () => {
       options: '配置 options 渲染单选按钮',
     },
     'zh-TW': {
-      '74fc5d8a': '基本用法',
+      '74fc5d8a': '基础用法',
       bb7486f4: '選項',
       c1bae1ec: '水準使用',
       '8a2e2847': '自定義尺寸',

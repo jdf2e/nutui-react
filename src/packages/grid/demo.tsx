@@ -22,7 +22,7 @@ interface T {
 const GridDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       text: '文字',
       columns: '自定义列数',
       square: '正方形格子',
@@ -35,7 +35,7 @@ const GridDemo = () => {
       event: '点击子项事件',
     },
     'zh-TW': {
-      basic: '基本用法',
+      basic: '基础用法',
       text: '文字',
       columns: '自定義列數',
       square: '正方形格子',

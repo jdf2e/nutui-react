@@ -1,10 +1,10 @@
 #  DatePicker 日期选择器
 
-### 介绍
+## 介绍
     
 时间选择器，支持日期、年月、时分等维度，通常与弹出层组件配合使用。
     
-### 安装
+## 安装
     
 ```ts
 // react
@@ -31,9 +31,9 @@ const App = () => {
       <DatePicker
         title="日期选择"
         visible={show1}
-        isShowChinese
-        onCloseDatePicker={() => setShow1(false)}
-        onConfirmDatePicker={(values,options) => confirm1(values,options)}
+        showChinese
+        onClose={() => setShow1(false)}
+        onConfirm={(values,options) => confirm1(values,options)}
       />
     </>
   );
@@ -62,12 +62,12 @@ const App = () => {
       <Cell title="日期选择" description={desc2} onClick={() => setShow2(true)} />
       <DatePicker
           title="日期选择"
-          minDate={new Date(2022, 0, 1)}
-          maxDate={new Date(2022, 7, 1)}
+          startDate={new Date(2022, 0, 1)}
+          endDate={new Date(2022, 7, 1)}
           type="month-day"
           visible={show2}
-          onCloseDatePicker={() => setShow2(false)}
-          onConfirmDatePicker={(values,options) => confirm2(values,options)}
+          onClose={() => setShow2(false)}
+          onConfirm={(values,options) => confirm2(values,options)}
         />
     </>
   );
@@ -86,8 +86,8 @@ import  React, { useState  } from "react";
 import { DatePicker,Cell } from '@nutui/nutui-react';
 
 const App = () => {
-  const minDate = new Date(2020, 0, 1)
-  const maxDate = new Date(2025, 10, 1)
+  const startDate = new Date(2020, 0, 1)
+  const endDate = new Date(2025, 10, 1)
   const [show3, setShow3] = useState(false)
   const [desc3, setDesc3] = useState('2022-05-10 10:10')
   const confirm3 = (values:(string|number)[],options:PickerOption[])=>{
@@ -100,12 +100,12 @@ const App = () => {
       <Cell title="日期时间选择" description={desc3} onClick={() => setShow3(true)} />
       <DatePicker
           title="日期时间选择"
-          minDate={minDate}
-          maxDate={maxDate}
+          startDate={startDate}
+          endDate={endDate}
           visible={show3}
           type="datetime"
-          onCloseDatePicker={() => setShow3(false)}
-          onConfirmDatePicker={(values,options) => confirm3(values,options)}
+          onClose={() => setShow3(false)}
+          onConfirm={(values,options) => confirm3(values,options)}
         />
     </>
   );
@@ -121,8 +121,8 @@ import  React, { useState  } from "react";
 import { DatePicker,Cell  } from '@nutui/nutui-react';
 
 const App = () => {
-  const minDate = new Date(2020, 0, 1)
-  const maxDate = new Date(2025, 10, 1)
+  const startDate = new Date(2020, 0, 1)
+  const endDate = new Date(2025, 10, 1)
   const [show4, setShow4] = useState(false)
   const [desc4, setDesc4] = useState('10:10:00')
   const confirm4 = (values:(string|number)[],options:PickerOption[])=>{
@@ -135,11 +135,11 @@ const App = () => {
       <DatePicker
           title="时间选择"
           type="time"
-          minDate={minDate}
-          maxDate={maxDate}
+          startDate={startDate}
+          endDate={endDate}
           visible={show4}
-          onCloseDatePicker={() => setShow4(false)}
-          onConfirmDatePicker={(values,options) => confirm4(values,options)}
+          onClose={() => setShow4(false)}
+          onConfirm={(values,options) => confirm4(values,options)}
         />
     </>
   );
@@ -156,8 +156,8 @@ import  React, { useState  } from "react";
 import { DatePicker,Cell  } from '@nutui/nutui-react';
 
 const App = () => {
-  const minDate = new Date(2020, 0, 1)
-  const maxDate = new Date(2025, 10, 1)
+  const startDate = new Date(2020, 0, 1)
+  const endDate = new Date(2025, 10, 1)
   const [show8, setShow8] = useState(false)
   const [desc8, setDesc8] = useState('10:10')
   const confirm4 = (values:(string|number)[],options:PickerOption[])=>{
@@ -170,11 +170,11 @@ const App = () => {
       <DatePicker
           title="时间选择"
           type="hour-minutes"
-          minDate={minDate}
-          maxDate={maxDate}
+          startDate={startDate}
+          endDate={endDate}
           visible={show8}
-          onCloseDatePicker={() => setShow8(false)}
-          onConfirmDatePicker={(values,options) => confirm8(values,options)}
+          onClose={() => setShow8(false)}
+          onConfirm={(values,options) => confirm8(values,options)}
         />
     </>
   );
@@ -186,7 +186,7 @@ export default App;
 
 ### 格式化选项
 
-通过传入 formatter 函数，可以对选项文字进行格式化处理。 isShowChinese 属性同样是也为选项后面添加文案，但 formatter 函数的优先级高于 isShowChinese 属性。
+通过传入 formatter 函数，可以对选项文字进行格式化处理。 showChinese 属性同样是也为选项后面添加文案，但 formatter 函数的优先级高于 showChinese 属性。
 
 :::demo
 ```tsx
@@ -194,8 +194,8 @@ import  React, { useState  } from "react";
 import { DatePicker,Cell } from '@nutui/nutui-react';
 
 const App = () => {
-  const minDate = new Date(2020, 0, 1)
-  const maxDate = new Date(2025, 10, 1)
+  const startDate = new Date(2020, 0, 1)
+  const endDate = new Date(2025, 10, 1)
   const [show5, setShow5] = useState(false)
   const [desc5, setDesc5] = useState('2020年 05月 10日 10:10')
 
@@ -236,12 +236,12 @@ const App = () => {
       <DatePicker
           title="时间选择"
           type="datetime"
-          minDate={new Date(2022, 0, 1)}
-          maxDate={new Date(2022, 10, 1)}
+          startDate={new Date(2022, 0, 1)}
+          endDate={new Date(2022, 10, 1)}
           visible={show5}
           formatter={formatter}
-          onCloseDatePicker={() => setShow5(false)}
-          onConfirmDatePicker={(values,options) => confirm5(values,options)}
+          onClose={() => setShow5(false)}
+          onConfirm={(values,options) => confirm5(values,options)}
         />
     </>
   );
@@ -258,8 +258,8 @@ import  React, { useState  } from "react";
 import { DatePicker,Cell } from '@nutui/nutui-react';
 
 const App = () => {
-  const minDate = new Date(2020, 0, 1)
-  const maxDate = new Date(2025, 10, 1)
+  const startDate = new Date(2020, 0, 1)
+  const endDate = new Date(2025, 10, 1)
   const [show6, setShow6] = useState(false)
   const [desc6, setDesc6] = useState('10:10:00')
 
@@ -272,12 +272,12 @@ const App = () => {
       <DatePicker
           title="时间选择"
           type="time"
-          minDate={minDate}
-          maxDate={maxDate}
+          startDate={startDate}
+          endDate={endDate}
           visible={show6}
           minuteStep={5}
-          onCloseDatePicker={() => setShow6(false)}
-          onConfirmDatePicker={(values,options) => confirm6(values,options)}
+          onClose={() => setShow6(false)}
+          onConfirm={(values,options) => confirm6(values,options)}
         />
     </>
   );
@@ -297,8 +297,8 @@ import  React, { useState  } from "react";
 import { DatePicker,Cell } from '@nutui/nutui-react';
 
 const App = () => {
-  const minDate = new Date(2020, 0, 1)
-  const maxDate = new Date(2025, 10, 1)
+  const startDate = new Date(2020, 0, 1)
+  const endDate = new Date(2025, 10, 1)
   const [show7, setShow7] = useState(false)
   const [desc7, setDesc7] = useState('2022年05月10日 00时')
 
@@ -336,14 +336,14 @@ const App = () => {
       <DatePicker
           title="时间选择"
           type="datehour"
-          minDate={minDate}
-          maxDate={maxDate}
+          startDate={startDate}
+          endDate={endDate}
           visible={show7}
           formatter={formatter1}
           minuteStep={5}
           filter={filter}
-          onCloseDatePicker={() => setShow7(false)}
-          onConfirmDatePicker={(values,options) => confirm7(values,options)}
+          onClose={() => setShow7(false)}
+          onConfirm={(values,options) => confirm7(values,options)}
         />
     </>
   );
@@ -354,30 +354,24 @@ export default App;
 :::
 
 
-## API
+## DatePicker
     
 ### Props
     
-| 属性 | 说明                                              | 类型    | 默认值   |
-|---------------------------|------------------|---------|----------|
-| modelValue | 初始值 | Date    | `null`   |
-| visible | 是否可见 | boolean | `false`  |
-| type | 类时间类型，可选值 date time year-month month-day datehour datetime hour-minutes | string  | `date` |
-| minuteStep | 分钟步进值 | number | `1`      |
-| isShowChinese | 每列是否展示中文 | boolean | `false`  | 
-| title | 设置标题 | string  | `null`   |
-| minDate | 开始日期 | Date    | `十年前` |
-| maxDate | 结束日期 | Date    | `十年后` |
-| formatter | 选项格式化函数 | (type: string, option: PickerOption) => PickerOption    | - |
-| filter | 选项过滤函数 | (type: string, option: PickerOption) => PickerOption[]    | - |
-| threeDimensional | 是否开启3D效果 | boolean  | `true`   |
-
-
-### Events
-    
-| 事件名                         | 说明               | 回调参数     |
-|-----------------------------|--------------------|--------------|
-| confirm         | 点击确定按钮时触发 | `event: Event` |
-| onConfirmDatePicker | 点击确定按钮时触发 | `values, options` |
-| onCloseDatePicker           | 关闭时触发         | - |
-| onChange                  | 选项改变时触发         |  `columnIndex, values, options`  |
+| 属性 | 说明 | 类型    | 默认值   |
+|----------|------------------|---------|----------|
+| defaultValue | 初始值 | `Date`    | `null`   |
+| value | 受控 | `Date`    | `null`   |
+| visible | 是否可见 | `boolean` | `false`  |
+| type | 类时间类型，可选值 date time year-month month-day datehour datetime hour-minutes | `string`  | `date` |
+| minuteStep | 分钟步进值 | `number` | `1`      |
+| showChinese | 每列是否展示中文 | `boolean` | `false`  | 
+| title | 设置标题 | `string`  | `null`   |
+| startDate | 开始日期 | `Date`    | `十年前` |
+| endDate | 结束日期 | `Date`    | `十年后` |
+| formatter | 选项格式化函数 | `(type: string, option: PickerOption) => PickerOption `   |  `-` |
+| filter | 选项过滤函数 | `(type: string, option: PickerOption) => PickerOption[]`    | `-` |
+| threeDimensional | 是否开启3D效果 | `boolean`  | `true`   |
+| onConfirm | 点击确定按钮时触发  | `(options, value) => void` | `-` |
+| onClose | 关闭时触发        | `(options, value) => void` | `-` |
+| onChange | 选项改变时触发 |  `(options, value, index) => void`  | `-` |

@@ -79,7 +79,7 @@ const config = {
       pxtransform: {
         enable: true,
         // 包含 `nut-` 的类名选择器中的 px 单位不会被解析
-        config: { selectorBlackList: ['nut-', 'demo', 'index'] },
+        config: { selectorBlackList: ['nut-', 'demo', 'index', 'page'] },
       },
       url: {
         enable: true,
@@ -103,7 +103,9 @@ const config = {
       pxtransform: {
         enable: true,
         // 包含 `nut-` 的类名选择器中的 px 单位不会被解析
-        config: { selectorBlackList: ['nut-', 'demo', 'index', 'flex-'] },
+        config: {
+          selectorBlackList: ['nut-', 'demo', 'index', 'flex-', 'page'],
+        },
       },
       url: {
         enable: true,

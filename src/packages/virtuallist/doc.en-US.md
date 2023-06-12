@@ -12,7 +12,7 @@ import { Virtuallist } from '@nutui/nutui-react';
 
 ## Demo
 
-### 1、Basic usage - vertical height
+### Basic usage - vertical height
 
 :::demo
 
@@ -55,7 +55,7 @@ export default App;
 
 :::
 
-### 2、Vertical unequal height & infinite slide
+### Vertical unequal height & infinite slide
 
 :::demo
 
@@ -107,7 +107,7 @@ export default App;
 
 :::
 
-### 3、horizontal width
+### horizontal width
 
 :::demo
 
@@ -151,7 +151,7 @@ export default App;
 
 :::
 
-### 4、Horizontal unequal width & infinite sliding
+### Horizontal unequal width & infinite sliding
 
 :::demo
 

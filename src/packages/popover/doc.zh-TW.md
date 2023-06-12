@@ -13,7 +13,7 @@ import { Popover } from '@nutui/nutui-react';
 
 ### 代碼實例
 
-### 基本用法
+### 基础用法
 Popover 支持明朗和暗黑兩種風格，默認為明朗風格，將 theme 屬性設置為 dark 可切換為暗黑風格。
 
 :::demo

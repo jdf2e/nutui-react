@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Taro from '@tarojs/taro'
 import { Jd } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Infiniteloading, Cell } from '@/packages/nutui.react.taro'
+import { InfiniteLoading, Cell } from '@/packages/nutui.react.taro'
 import '@/packages/infiniteloading/demo.scss'
 import Header from '@/sites/components/header'
 
@@ -12,7 +12,7 @@ interface T {
   eb4236fe: string
   '1254a90a': string
 }
-const InfiniteloadingDemo = () => {
+const InfiniteLoadingDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
       '83913e71': '刷新成功',
@@ -87,13 +87,17 @@ const InfiniteloadingDemo = () => {
             id="scrollDemo"
             style={{ height: '500px' }}
           >
-            <Infiniteloading
-              pullIcon={<Jd />}
-              loadIcon={<Jd />}
-              loadingText="loading"
+            <InfiniteLoading
+              pullingText={
+                <>
+                  <Jd />
+                  <span style={{ fontSize: '10px' }}>松开刷新</span>
+                </>
+              }
+              loadingText="加载中···"
               loadMoreText="没有啦～"
-              isOpenRefresh
-              containerId="scrollDemo"
+              pullRefresh
+              target="scrollDemo"
               hasMore={hasMore}
               onLoadMore={loadMore}
               onRefresh={refresh}
@@ -105,7 +109,7 @@ const InfiniteloadingDemo = () => {
                   </li>
                 )
               })}
-            </Infiniteloading>
+            </InfiniteLoading>
           </ul>
         </Cell>
       </div>
@@ -113,4 +117,4 @@ const InfiniteloadingDemo = () => {
   )
 }
 
-export default InfiniteloadingDemo
+export default InfiniteLoadingDemo

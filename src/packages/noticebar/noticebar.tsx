@@ -253,10 +253,8 @@ export const NoticeBar: FunctionComponent<
     height / speed / 4 < 1
       ? Number((height / speed / 4).toFixed(1))
       : ~~(height / speed / 4)
-
   const noDuring =
     height / speed < 1 ? (height / speed).toFixed(1) : ~~(height / speed)
-
   const horseLampStyle = {
     transition: animate
       ? `all ${duringTime === 0 ? noDuring : duringTime}s`
@@ -359,7 +357,6 @@ export const NoticeBar: FunctionComponent<
 
   const getStyle = (moveOffset = offset) => {
     const target = innerRef.current
-
     let _offset = 0
     // 容器高度-元素高度
     const val = rect.height - height
@@ -418,7 +415,6 @@ export const NoticeBar: FunctionComponent<
     }
   }
 
-  // const b = bem('noticebar')
   const noticebarClass = classNames({
     'nut-noticebar-page': true,
     withicon: closeable,
@@ -466,24 +462,22 @@ export const NoticeBar: FunctionComponent<
         >
           {leftIcon ? <div className="left-icon">{leftIcon}</div> : null}
           {children ? (
-            <>
-              <div className="nut-noticebar__inner" ref={innerRef}>
-                {scrollList.current.map((item: string, index: number) => {
-                  return (
-                    <div
-                      className="scroll-inner "
-                      style={itemStyle(index)}
-                      key={index}
-                      onClick={(e) => {
-                        handleItemClick(e, item)
-                      }}
-                    >
-                      {item}
-                    </div>
-                  )
-                })}
-              </div>
-            </>
+            <div className="nut-noticebar__inner" ref={innerRef}>
+              {scrollList.current.map((item: string, index: number) => {
+                return (
+                  <div
+                    className="scroll-inner "
+                    style={itemStyle(index)}
+                    key={index}
+                    onClick={(e) => {
+                      handleItemClick(e, item)
+                    }}
+                  >
+                    {item}
+                  </div>
+                )
+              })}
+            </div>
           ) : (
             <div className="horseLamp_list" style={horseLampStyle}>
               {scrollList.current.map((item: string, index: number) => {

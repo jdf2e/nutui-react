@@ -311,7 +311,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
         <Popup
           visible={innerVisible}
           position="bottom"
-          onClose={() => {
+          afterClose={() => {
             closePicker()
           }}
         >

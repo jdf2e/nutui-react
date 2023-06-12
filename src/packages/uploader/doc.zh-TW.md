@@ -9,7 +9,7 @@
 ``` ts
 import { Uploader } from '@nutui/nutui-react';
 ```
-### 基本用法
+### 基础用法
 
 :::demo
 ``` tsx
@@ -23,7 +23,7 @@ const App = () => {
   }
   return (
     <>
-      <h2>基本用法</h2>
+      <h2>基础用法</h2>
       <Uploader url={uploadUrl} start={onStart} />
     </>
   )

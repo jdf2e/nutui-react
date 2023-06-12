@@ -13,7 +13,7 @@ import { Popover } from '@nutui/nutui-react'
 
 ## 代码演示
 
-### 基本用法
+### 基础用法
 
 :::demo
 
@@ -343,7 +343,7 @@ const App = () => {
         title="点击查看更多方向"
         description={baseDesc}
         onClick={handlePicker}
-      ></Cell>
+       />
       <Picker
         visible={showPicker}
         options={columns}
@@ -367,7 +367,7 @@ const App = () => {
         }}
       >
         <div className="brickBox">
-          <div className="brick" id="pickerTarget"></div>
+          <div className="brick" id="pickerTarget" />
         </div>
       </Picker>
       <Popover
@@ -377,7 +377,7 @@ const App = () => {
         color="rgb(255, 255, 255)"
         list={positionList}
         location={curPostion}
-      ></Popover>
+       />
     </>
   )
 }
@@ -429,7 +429,7 @@ const App = () => {
         onClick={() => {
           setCustomTarget(false)
         }}
-      ></Popover>
+       />
       <Button
         type="primary"
         shape="square"

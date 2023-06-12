@@ -19,7 +19,7 @@ interface T {
 const TrendArrowDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title1: '改变文字颜色',
       title2: '指定小数位',
       title3: '箭头在前面',
@@ -29,7 +29,7 @@ const TrendArrowDemo = () => {
       title7: '自定义图标',
     },
     'zh-TW': {
-      basic: '基本用法',
+      basic: '基础用法',
       title1: '改变文字颜色',
       title2: '指定小数位',
       title3: '箭头在前面',
