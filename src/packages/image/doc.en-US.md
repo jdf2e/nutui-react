@@ -239,6 +239,8 @@ export default App;
 | onLoad | Triggered after the image is loaded | `() => void` | `-` |
 | onError | Triggered when the image fails to load | `() => void` | `-` |
 
+### ImageFit
+
 | Property | Description |
 | --- | --- |
 | contain | Keep aspect ratio, fully display the long side of the image |
