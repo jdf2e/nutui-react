@@ -148,6 +148,7 @@ export const Popup: FunctionComponent<
   }
 
   const onHandleClickOverlay = (e: MouseEvent) => {
+    e.stopPropagation()
     if (closeOnOverlayClick) {
       const closed = onClickOverlay && onClickOverlay(e)
       closed && close()

@@ -8,14 +8,12 @@ import { FormItem } from '../formitem/formitem'
 import Cell from '@/packages/cell'
 
 export interface FormProps extends BasicComponent {
-  disabled: boolean
   footer: ReactNode
   initialValues: any
   name: string
   form: any
   labelPosition: 'top' | 'left' | 'right'
   starPosition: 'left' | 'right'
-  // validateMessages: ValidateMessages
   onFinish: (values: any) => void
   onFinishFailed: (values: any, errorFields: any) => void
 }

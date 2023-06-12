@@ -4,6 +4,7 @@ import { Context } from '../form/context'
 import Cell from '@/packages/cell/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { pxCheck } from '@/utils/px-check'
+import { isForwardRefComponent } from '@/utils/is-forward-ref-component'
 
 type TextAlign =
   | 'start'
@@ -21,6 +22,10 @@ export interface FormItemProps extends BasicComponent, BaseFormField {
   trigger: string
   valuePropName: string
   getValueFromEvent: (...args: any) => any
+  onClick: (
+    event: React.MouseEvent,
+    componentRef: React.MutableRefObject<any>
+  ) => void
   errorMessageAlign: TextAlign
 }
 
@@ -30,7 +35,6 @@ const defaultProps = {
   name: '',
   label: '',
   rules: [{ required: false, message: '' }],
-  disabled: false,
   labelWidth: 90,
   errorMessageAlign: 'left',
 } as FormItemProps
@@ -49,8 +53,11 @@ export class FormItem extends React.Component<
 
   private cancelRegister: any
 
+  private componentRef: React.RefObject<any>
+
   constructor(props: FieldProps) {
     super(props)
+    this.componentRef = React.createRef()
     this.state = {
       resetCount: 1,
     }
@@ -82,32 +89,45 @@ export class FormItem extends React.Component<
       [this.props.valuePropName || 'value']:
         getFieldValue(name) || this.props.initialValue,
       [this.props.trigger || 'onChange']: (...args: any) => {
+        // args [a, b]
         const originOnChange = (children as any).props[
           this.props.trigger || 'onChange'
         ]
         if (originOnChange) {
           originOnChange(...args)
         }
-        // 例如 picker 的反转
         let [next] = args
         if (this.props.getValueFromEvent) {
           next = this.props.getValueFromEvent(...args)
         }
-        console.log('onchange inner', args)
         setFieldsValue({ [name]: next })
       },
     }
+    if (isForwardRefComponent(children)) {
+      controlled.ref = (componentInstance: any) => {
+        const originRef = (children as any).ref
+        if (originRef) {
+          if (typeof originRef === 'function') {
+            originRef(componentInstance)
+          }
+          if ('current' in originRef) {
+            originRef.current = componentInstance
+          }
+        }
+        this.componentRef = componentInstance
+      }
+    }
+
     return controlled
   }
 
-  refresh = () => {
+  public refresh = () => {
     this.setState(({ resetCount }) => ({
       resetCount: resetCount + 1,
     }))
   }
 
   onStoreChange = (type?: string) => {
-    console.log('onStoreChange', type)
     if (type === 'reset') {
       this.refresh()
     } else {
@@ -135,12 +155,6 @@ export class FormItem extends React.Component<
         return item.field === name
       })
 
-    console.log(
-      'this.context.errList',
-      this.context.errList,
-      this.context.errors
-    )
-
     const { starPosition } = this.context
     const renderStar = required && <i className="required" />
     const renderLabel = (
@@ -151,7 +165,13 @@ export class FormItem extends React.Component<
       </>
     )
     return (
-      <Cell className={`nut-form-item ${className}`} style={style}>
+      <Cell
+        className={`nut-form-item ${className}`}
+        style={style}
+        onClick={(e) =>
+          this.props.onClick && this.props.onClick(e, this.componentRef)
+        }
+      >
         {label ? (
           <div
             className="nut-cell__title nut-form-item__label"

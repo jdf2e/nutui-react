@@ -1,7 +1,21 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Input, Form, TextArea } from '@/packages/nutui.react.taro'
+import {
+  Input,
+  Form,
+  TextArea,
+  Button,
+  Picker,
+  Radio,
+  Checkbox,
+  InputNumber,
+  Switch,
+  Uploader,
+  Rate,
+  Range,
+} from '@/packages/nutui.react.taro'
+import { FormItemRuleWithoutValidator } from './types'
 import Header from '@/sites/components/header'
 
 interface T {
@@ -36,7 +50,7 @@ interface T {
   reset: string
   switch: string
   checkbox: string
-  radiogroup: string
+  gender: string
   // option: (v: string) => `选项${v}`
   rate: string
   inputnumber: string
@@ -81,7 +95,7 @@ const FormDemo = () => {
       reset: '重置提示状态',
       switch: '开关',
       checkbox: '复选框',
-      radiogroup: '单选按钮',
+      gender: '性别',
       // option: (v: string) => `选项${v}`,
       rate: '评分',
       inputnumber: '步进器',
@@ -124,7 +138,7 @@ const FormDemo = () => {
       reset: 'Reset alert state',
       switch: 'Switch',
       checkbox: 'Checkbox',
-      radiogroup: 'Group',
+      gender: 'Gender',
       // option: (v: string) => `Option${v}`,
       rate: 'Rate',
       inputnumber: 'Inputnumber',
@@ -136,42 +150,296 @@ const FormDemo = () => {
     },
   })
 
+  const submitFailed = (error: any) => {
+    // Toast.show({ content: JSON.stringify(error), icon: 'fail' })
+  }
+
+  const submitSucceed = (values: any) => {
+    // Toast.show({ content: JSON.stringify(values), icon: 'success' })
+  }
+
+  const [form] = Form.useForm()
+
+  const onMenuChange = (value: string | number | boolean) => {
+    switch (value) {
+      case 'male':
+        form.setFieldsValue({ note: '👨' })
+        break
+      case 'female':
+        form.setFieldsValue({ note: '👩' })
+        break
+      default:
+    }
+  }
+
+  // 函数校验
+  const customValidator = (
+    rule: FormItemRuleWithoutValidator,
+    value: string
+  ) => {
+    return /^\d+$/.test(value)
+  }
+
+  const valueRangeValidator = (
+    rule: FormItemRuleWithoutValidator,
+    value: string
+  ) => {
+    return /^(\d{1,2}|1\d{2}|200)$/.test(value)
+  }
+
+  const pickerOptions = [
+    { value: 4, text: '北京市' },
+    { value: 1, text: '南京市' },
+    { value: 2, text: '无锡市' },
+    { value: 8, text: '大庆市' },
+    { value: 9, text: '绥化市' },
+    { value: 10, text: '潍坊市' },
+    { value: 12, text: '乌鲁木齐市' },
+  ]
+
   return (
     <>
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <Form
-          onFinish={(values) => {
-            console.log('onFinish values', values)
-          }}
-          onFinishFailed={(values, errorFields) => {
-            console.log('onFinishFailed', values, errorFields)
-          }}
+          labelPosition="right"
           footer={
             <>
-              <button type="submit">Submit</button>
-              <button type="reset">Reset</button>
+              <Button formType="submit" block type="primary">
+                提交
+              </Button>
             </>
           }
         >
           <Form.Item
             required
-            rules={[{ required: true, message: 'xxx' }]}
-            label={translated.name}
+            rules={[{ required: true, message: '姓名不能为空' }]}
+            label="姓名"
             name="username"
           >
             <Input
               className="nut-input-text"
-              placeholder={translated.nameTip}
+              placeholder="请输入姓名"
               type="text"
-              onChange={(val) => {
-                console.log('change value:', val)
-              }}
             />
           </Form.Item>
-          <Form.Item label={translated.remarks} name="remark">
-            <TextArea placeholder={translated.remarksTip} />
+          <Form.Item label="地址" name="address">
+            <TextArea
+              placeholder="请输入地址"
+              maxLength={100}
+              style={{ height: '22px' }}
+            />
+          </Form.Item>
+          <Form.Item
+            label="数量"
+            name="num"
+            getValueFromEvent={(...args) => args[0]}
+          >
+            <InputNumber />
+          </Form.Item>
+        </Form>
+        <h2>{translated.title2}</h2>
+        <Form
+          onFinish={(values) => submitSucceed(values)}
+          onFinishFailed={(values, errors) => submitFailed(errors)}
+          footer={
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                width: '100%',
+              }}
+            >
+              <Button formType="submit" type="primary">
+                提交
+              </Button>
+              <Button formType="reset" style={{ marginLeft: '20px' }}>
+                重置
+              </Button>
+            </div>
+          }
+        >
+          <Form.Item
+            label={translated.name}
+            name="username"
+            rules={[{ required: true, message: translated.nameTip }]}
+          >
+            <Input placeholder={translated.nameTip1} type="text" />
+          </Form.Item>
+          <Form.Item
+            label={translated.age}
+            name="age"
+            rules={[
+              { required: true, message: translated.ageTip },
+              { validator: customValidator, message: translated.ageTip2 },
+              { validator: valueRangeValidator, message: translated.ageTip3 },
+            ]}
+          >
+            <Input placeholder={translated.ageTip1} type="text" />
+          </Form.Item>
+          <Form.Item
+            label={translated.tel}
+            name="tel"
+            rules={[{ required: true, message: translated.telTip }]}
+          >
+            <Input placeholder={translated.telTip2} type="number" />
+          </Form.Item>
+          <Form.Item
+            label={translated.address}
+            name="address"
+            rules={[{ required: true, message: translated.addressTip }]}
+          >
+            <Input placeholder={translated.addressTip} type="text" />
+          </Form.Item>
+        </Form>
+
+        <h2>{translated.title3}</h2>
+        <Form
+          initialValues={{ username: 'LiSi', age: 20 }}
+          onFinish={(values) => submitSucceed(values)}
+          onFinishFailed={(values, errors) => submitFailed(errors)}
+          footer={
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                width: '100%',
+              }}
+            >
+              <Button formType="submit" type="primary">
+                提交
+              </Button>
+              <Button formType="reset" style={{ marginLeft: '20px' }}>
+                重置
+              </Button>
+            </div>
+          }
+        >
+          <Form.Item
+            label={translated.name}
+            name="username"
+            rules={[{ required: true, message: translated.nameTip }]}
+            initialValue="ZhangSan"
+          >
+            <Input placeholder={translated.nameTip1} type="text" />
+          </Form.Item>
+          <Form.Item label={translated.age} name="age">
+            <Input
+              placeholder={translated.ageTip1}
+              type="number"
+              defaultValue="18"
+            />
+          </Form.Item>
+        </Form>
+
+        <h2>{translated.title4}</h2>
+        <Form
+          form={form}
+          onFinish={(values) => submitSucceed(values)}
+          onFinishFailed={(values, errors) => submitFailed(errors)}
+        >
+          <Form.Item
+            label={translated.name}
+            name="username"
+            rules={[{ required: true, message: translated.nameTip }]}
+          >
+            <Input placeholder={translated.nameTip1} type="text" />
+          </Form.Item>
+          <Form.Item label="标注" name="note">
+            <Input placeholder="请输入标注" type="string" />
+          </Form.Item>
+          <Form.Item label={translated.gender} name="gender">
+            <Radio.Group onChange={onMenuChange}>
+              <Radio value="male">男性</Radio>
+              <Radio value="female">女性</Radio>
+            </Radio.Group>
+          </Form.Item>
+        </Form>
+
+        <h2>{translated.title5}</h2>
+        <Form
+          footer={
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                width: '100%',
+              }}
+            >
+              <Button formType="submit" type="primary">
+                提交
+              </Button>
+              <Button formType="reset" style={{ marginLeft: '20px' }}>
+                重置
+              </Button>
+            </div>
+          }
+          onFinish={(values) => submitSucceed(values)}
+          onFinishFailed={(values, errors) => submitFailed(errors)}
+        >
+          <Form.Item label="Input" name="form_input">
+            <Input placeholder="Input something" />
+          </Form.Item>
+          <Form.Item label="Switch" name="switch">
+            <Switch />
+          </Form.Item>
+          <Form.Item label="Checkbox" name="checkbox">
+            <Checkbox labelPosition="right" label="Option 1" />
+          </Form.Item>
+          <Form.Item label="Check Group" name="checkbox_group">
+            <Checkbox.Group>
+              <Checkbox labelPosition="right" label="Option 1" value={1} />
+              <Checkbox labelPosition="right" label="Option 2" value={2} />
+            </Checkbox.Group>
+          </Form.Item>
+          <Form.Item label="Radio" name="radio">
+            <Radio value="1">Radio 1</Radio>
+          </Form.Item>
+          <Form.Item label="Radio Group" name="radio_group">
+            <Radio.Group>
+              <Radio value="1">Radio 1</Radio>
+              <Radio value="2">Radio 2</Radio>
+            </Radio.Group>
+          </Form.Item>
+          <Form.Item label="Rate" name="rate">
+            <Rate defaultValue={0} />
+          </Form.Item>
+          <Form.Item label="Range" name="range">
+            <Range max={10} min={-10} />
+          </Form.Item>
+          <Form.Item
+            label="Picker"
+            name="picker"
+            trigger="onConfirm"
+            getValueFromEvent={(...args) => args[1]}
+            onClick={(event, ref: any) => {
+              ref.open()
+            }}
+          >
+            <Picker options={[pickerOptions]}>
+              {(value: any) => {
+                return value.length
+                  ? pickerOptions.filter((po) => po.value === value[0])[0]?.text
+                  : 'Please Select'
+              }}
+            </Picker>
+          </Form.Item>
+          <Form.Item
+            label="Uploader"
+            name="files"
+            initialValue={[
+              {
+                name: '文件文件文件1.png',
+                url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+                status: 'success',
+                message: '上传成功',
+                type: 'image',
+                uid: '122',
+              },
+            ]}
+          >
+            <Uploader url="https://my-json-server.typicode.com/linrufeng/demo/posts" />
           </Form.Item>
         </Form>
       </div>

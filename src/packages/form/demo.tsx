@@ -185,7 +185,15 @@ const FormDemo = () => {
     return /^(\d{1,2}|1\d{2}|200)$/.test(value)
   }
 
-  const [isPickerVisible, setIsPickerVisible] = useState(false)
+  const pickerOptions = [
+    { value: 4, text: '北京市' },
+    { value: 1, text: '南京市' },
+    { value: 2, text: '无锡市' },
+    { value: 8, text: '大庆市' },
+    { value: 9, text: '绥化市' },
+    { value: 10, text: '潍坊市' },
+    { value: 12, text: '乌鲁木齐市' },
+  ]
 
   return (
     <>
@@ -309,12 +317,8 @@ const FormDemo = () => {
           >
             <Input placeholder={translated.nameTip1} type="text" />
           </Form.Item>
-          <Form.Item label={translated.age} name="age">
-            <Input
-              placeholder={translated.ageTip1}
-              type="number"
-              defaultValue="18"
-            />
+          <Form.Item label={translated.age} name="age" initialValue={18}>
+            <Input placeholder={translated.ageTip1} type="number" />
           </Form.Item>
         </Form>
 
@@ -344,11 +348,27 @@ const FormDemo = () => {
 
         <h2>{translated.title5}</h2>
         <Form
+          footer={
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                width: '100%',
+              }}
+            >
+              <Button nativeType="submit" type="primary">
+                提交
+              </Button>
+              <Button nativeType="reset" style={{ marginLeft: '20px' }}>
+                重置
+              </Button>
+            </div>
+          }
           onFinish={(values) => submitSucceed(values)}
           onFinishFailed={(values, errors) => submitFailed(errors)}
         >
           <Form.Item label="Input" name="form_input">
-            <Input placeholder="Input something" />
+            <Input placeholder="placeholder" />
           </Form.Item>
           <Form.Item label="Switch" name="switch">
             <Switch />
@@ -382,31 +402,32 @@ const FormDemo = () => {
             name="picker"
             trigger="onConfirm"
             getValueFromEvent={(...args) => args[1]}
-            onClick={(ref) => {
+            onClick={(event, ref: any) => {
               ref.open()
             }}
           >
-            <Picker
-              visible={isPickerVisible}
-              options={[
-                [
-                  { value: 4, text: '北京市' },
-                  { value: 1, text: '南京市' },
-                  { value: 2, text: '无锡市' },
-                  { value: 8, text: '大庆市' },
-                  { value: 9, text: '绥化市' },
-                  { value: 10, text: '潍坊市' },
-                  { value: 12, text: '乌鲁木齐市' },
-                ],
-              ]}
-            >
-              {/*{(value) => {*/}
-              {/*  console.log('value picker', value)*/}
-              {/*  return value.length ? value : 'Please Select'*/}
-              {/*}}*/}
+            <Picker options={[pickerOptions]}>
+              {(value: any) => {
+                return value.length
+                  ? pickerOptions.filter((po) => po.value === value[0])[0]?.text
+                  : 'select'
+              }}
             </Picker>
           </Form.Item>
-          <Form.Item label="Uploader" name="short_password">
+          <Form.Item
+            label="Uploader"
+            name="files"
+            initialValue={[
+              {
+                name: '文件文件文件1.png',
+                url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+                status: 'success',
+                message: '上传成功',
+                type: 'image',
+                uid: '122',
+              },
+            ]}
+          >
             <Uploader url="https://my-json-server.typicode.com/linrufeng/demo/posts" />
           </Form.Item>
         </Form>

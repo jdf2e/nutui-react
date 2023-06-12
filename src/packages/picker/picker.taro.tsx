@@ -4,6 +4,7 @@ import React, {
   useRef,
   RefObject,
   ForwardRefRenderFunction,
+  useImperativeHandle,
 } from 'react'
 import classNames from 'classnames'
 import Taro from '@tarojs/taro'
@@ -16,8 +17,13 @@ import { PickerOption } from './types'
 import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface PickerProps extends BasicComponent {
-  visible: boolean
+export type PickerActions = {
+  open: () => void
+  close: () => void
+}
+
+export interface PickerProps extends Omit<BasicComponent, 'children'> {
+  visible?: boolean | undefined
   title?: string
   options: (PickerOption | PickerOption[])[]
   value?: (number | string)[]
@@ -42,6 +48,7 @@ export interface PickerProps extends BasicComponent {
     selectedValue: (string | number)[],
     columnIndex: number
   ) => void
+  children?: any
 }
 
 const defaultProps = {
@@ -85,6 +92,11 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
         props.onConfirm?.(setSelectedOptions(), val)
       },
     })
+    const [innerVisible, setInnerVisible] = usePropsValue<boolean>({
+      value: props.visible,
+      defaultValue: false,
+      finalValue: false,
+    })
     const [innerValue, setInnerValue] = useState(selectedValue)
     const [currentValue, setCurrentValue] = useState<number[]>([])
     const [columnIndex, setColumnIndex] = useState<number>(0) // 选中列
@@ -92,6 +104,17 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     const [refs, setRefs] = useRefs()
     const [columnsList, setColumnsList] = useState<PickerOption[][]>([]) // 格式化后每一列的数据
     const isConfirmEvent = useRef(false)
+
+    const actions: PickerActions = {
+      open: () => {
+        setInnerVisible(true)
+      },
+      close: () => {
+        setInnerVisible(false)
+      },
+    }
+
+    useImperativeHandle(ref, () => actions)
 
     // 级联数据格式化
     const formatCascade = (
@@ -166,20 +189,22 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
 
     useEffect(() => {
       setInnerValue(innerValue !== selectedValue ? selectedValue : innerValue)
-    }, [visible])
+    }, [innerVisible])
+
     useEffect(() => {
-      if (visible) {
+      if (innerVisible) {
         init()
       }
-    }, [options, visible])
+    }, [options, innerVisible])
+
     // 选中值进行修改
     useEffect(() => {
-      if (!visible) {
+      if (!innerVisible) {
         return
       }
       Taro.getEnv() !== 'WEB' && setCurrentValue(defaultValuesConvert())
       onChange && onChange(setSelectedOptions(), innerValue, columnIndex)
-    }, [innerValue, columnsList, visible])
+    }, [innerValue, columnsList, innerVisible])
 
     const setSelectedOptions = () => {
       const options: PickerOption[] = []
@@ -268,6 +293,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       if (moving) {
         isConfirmEvent.current = true
       } else {
+        console.log('picker confirmed', innerValue)
         setSelectedValue(innerValue)
         closePicker()
       }
@@ -277,6 +303,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     }
 
     const closePicker = () => {
+      setInnerVisible(false)
       onClose && onClose(setSelectedOptions(), innerValue)
       afterClose && afterClose(setSelectedOptions(), innerValue, pickerRef)
     }
@@ -286,12 +313,21 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
         <div className={`${classPrefix}__control`}>
           <span
             className={`${classPrefix}__cancel-btn`}
-            onClick={() => closePicker()}
+            onClick={(e) => {
+              e.stopPropagation()
+              closePicker()
+            }}
           >
             {locale.cancel}
           </span>
           <div className={`${classPrefix}__title`}>{title || ''}</div>
-          <span className={`${classPrefix}__confirm-btn`} onClick={confirm}>
+          <span
+            className={`${classPrefix}__confirm-btn`}
+            onClick={(e) => {
+              e.stopPropagation()
+              confirm()
+            }}
+          >
             {locale.confirm}
           </span>
         </div>
@@ -328,66 +364,69 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     }
 
     return (
-      <Popup
-        visible={visible}
-        position="bottom"
-        onClose={() => {
-          closePicker()
-        }}
-      >
-        <View className={classes} style={style} {...rest} catchMove>
-          {renderTitleBar()}
-          {children}
-          <div className={`${classPrefix}__panel`} ref={pickerRef}>
-            {Taro.getEnv() === 'WEB' ? (
-              columnsList?.map((item, index) => {
-                return (
-                  <PickerPanel
-                    ref={setRefs(index)}
-                    defaultValue={innerValue?.[index]}
-                    options={item}
-                    threeDimensional={threeDimensional}
-                    chooseItem={(value: PickerOption, index: number) =>
-                      chooseItem(value, index)
-                    }
-                    duration={duration}
-                    key={index}
-                    keyIndex={index}
-                    itemShow={visible}
-                  />
-                )
-              })
-            ) : (
-              <PickerView
-                ref={pickerRef}
-                value={currentValue}
-                immediateChange
-                onPickStart={pickerStart}
-                onChange={pickerChange}
-                onPickEnd={pickerEnd}
-                className="nut-picker-view-panel"
-              >
-                {columnsList?.map((columnOptions, index) => {
+      <>
+        {typeof children === 'function' && children(selectedValue)}
+        <Popup
+          visible={innerVisible}
+          position="bottom"
+          onClose={() => {
+            closePicker()
+          }}
+        >
+          <View className={classes} style={style} {...rest} catchMove>
+            {renderTitleBar()}
+            {typeof children !== 'function' && children}
+            <div className={`${classPrefix}__panel`} ref={pickerRef}>
+              {Taro.getEnv() === 'WEB' ? (
+                columnsList?.map((item, index) => {
                   return (
-                    <PickerViewColumn key={`col${index}`}>
-                      {columnOptions.map((item, index) => {
-                        return (
-                          <View
-                            key={item.value || index}
-                            className="nut-picker-roller-item-title"
-                          >
-                            <>{item.text || item}</>
-                          </View>
-                        )
-                      })}
-                    </PickerViewColumn>
+                    <PickerPanel
+                      ref={setRefs(index)}
+                      defaultValue={innerValue?.[index]}
+                      options={item}
+                      threeDimensional={threeDimensional}
+                      chooseItem={(value: PickerOption, index: number) =>
+                        chooseItem(value, index)
+                      }
+                      duration={duration}
+                      key={index}
+                      keyIndex={index}
+                      itemShow={visible}
+                    />
                   )
-                })}
-              </PickerView>
-            )}
-          </div>
-        </View>
-      </Popup>
+                })
+              ) : (
+                <PickerView
+                  ref={pickerRef}
+                  value={currentValue}
+                  immediateChange
+                  onPickStart={pickerStart}
+                  onChange={pickerChange}
+                  onPickEnd={pickerEnd}
+                  className="nut-picker-view-panel"
+                >
+                  {columnsList?.map((columnOptions, index) => {
+                    return (
+                      <PickerViewColumn key={`col${index}`}>
+                        {columnOptions.map((item, index) => {
+                          return (
+                            <View
+                              key={item.value || index}
+                              className="nut-picker-roller-item-title"
+                            >
+                              <>{item.text || item}</>
+                            </View>
+                          )
+                        })}
+                      </PickerViewColumn>
+                    )
+                  })}
+                </PickerView>
+              )}
+            </div>
+          </View>
+        </Popup>
+      </>
     )
   }
 

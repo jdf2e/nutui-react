@@ -1,24 +1,24 @@
-# Form 表单
+# Form 表單
 
-## 介绍
+## 介紹
 
-用于数据录入、校验，支持输入框、单选框、复选框等类型。
+用於數據錄入、校驗，支持輸入框、單選框、複選框等類型。
 
-## 安装
+## 安裝
 
 ```javascript
-import { Form } from '@nutui/nutui-react-taro'
+import { Form } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 代碼演示
 
-### 基础用法
+### 基礎用法
 
 :::demo
 
 ```tsx
 import React from "react";
-import { Form, Button, InputNumber, Input, TextArea } from '@nutui/nutui-react-taro';
+import { Form, Button, InputNumber, Input, TextArea } from '@nutui/nutui-react';
 
 const App = () => {
   return (
@@ -35,21 +35,21 @@ const App = () => {
       >
         <Form.Item
           required
-          rules={[{ required: true, message: '姓名不能为空' }]}
+          rules={[{ required: true, message: '姓名不能為空' }]}
           label="姓名"
           name="username"
         >
           <Input
             className="nut-input-text"
-            placeholder="请输入姓名"
+            placeholder="請輸入姓名"
             type="text"
           />
         </Form.Item>
         <Form.Item label="地址" name="address">
-          <TextArea placeholder="请输入地址" maxLength={100} />
+          <TextArea placeholder="請輸入地址" maxLength={100} />
         </Form.Item>
         <Form.Item
-          label="数量"
+          label="數量"
           name="num"
           getValueFromEvent={(...args) => args[0]}
         >
@@ -65,22 +65,22 @@ export default App;
 
 :::
 
-### 表单校验
+### 表單校驗
 
 :::demo
 
 ```tsx
 import React from "react";
-import { Form, Button, Input, TextArea } from '@nutui/nutui-react-taro';
+import { Form, Button, Input, TextArea } from '@nutui/nutui-react';
 
 
 const App = () => {
   const submitFailed = (error: any) => {
-    Taro.showToast({ title: JSON.stringify(error), icon: 'fail' })
+    Toast.show({ content: JSON.stringify(error), icon: 'fail' })
   }
 
   const submitSucceed = (values: any) => {
-    Taro.showToast({ title: JSON.stringify(values), icon: 'success' })
+    Toast.show({ content: JSON.stringify(values), icon: 'success' })
   }
   return (
     <>
@@ -107,9 +107,9 @@ const App = () => {
         <Form.Item
           label="姓名"
           name="username"
-          rules={[{ required: true, message: "请输入姓名" }]}
+          rules={[{ required: true, message: "請輸入姓名" }]}
         >
-          <Input placeholder="请输入姓名" type="text" />
+          <Input placeholder="請輸入姓名" type="text" />
         </Form.Item>
         <Form.Item
           label="年龄"
@@ -132,9 +132,9 @@ const App = () => {
         <Form.Item
           label="地址"
           name="address"
-          rules={[{ required: true, message: "请输入地址" }]}
+          rules={[{ required: true, message: "請輸入地址" }]}
         >
-          <Input placeholder="请输入地址" type="text" />
+          <Input placeholder="請輸入地址" type="text" />
         </Form.Item>
       </Form>
     </>
@@ -146,21 +146,21 @@ export default App;
 
 :::
 
-### 带有初始值表单校验
+### 帶有初始值表單校驗
 
 :::demo
 
 ```tsx
 import React from "react";
-import { Form, Input, Cell, Button } from '@nutui/nutui-react-taro';
+import { Form, Input, Cell, Button } from '@nutui/nutui-react';
 
 const App = () => {
   const submitFailed = (error: any) => {
-    Taro.showToast({ title: JSON.stringify(error), icon: 'fail' })
+    Toast.show({ content: JSON.stringify(error), icon: 'fail' })
   }
 
   const submitSucceed = (values: any) => {
-    Taro.showToast({ title: JSON.stringify(values), icon: 'success' })
+    Toast.show({ content: JSON.stringify(values), icon: 'success' })
   }
   // 函数校验
   const customValidator = (rule: FormItemRuleWithoutValidator, value: string) => {
@@ -196,10 +196,10 @@ const App = () => {
         <Form.Item
           label="姓名"
           name="username"
-          rules={[{ required: true, message: "请输入姓名" }]}
+          rules={[{ required: true, message: "請輸入姓名" }]}
           initialValue="ZhangSan"
         >
-          <Input placeholder="请输入姓名" type="text" />
+          <Input placeholder="請輸入姓名" type="text" />
         </Form.Item>
         <Form.Item label="年龄" name="age" initialValue={18} rules={[
           { required: true, message: "请输入年龄" },
@@ -221,21 +221,21 @@ export default App;
 
 :::
 
-### Form.useForm 对表单数据域进行交互
+### Form.useForm 對錶單數據域進行交互
 
 :::demo
 
 ```tsx
 import React from "react";
-import { Form, Input, Radio, Cell } from '@nutui/nutui-react-taro';
+import { Form, Input, Radio, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const submitFailed = (error: any) => {
-    Taro.showToast({ title: JSON.stringify(error), icon: 'fail' })
+    Toast.show({ content: JSON.stringify(error), icon: 'fail' })
   }
 
   const submitSucceed = (values: any) => {
-    Taro.showToast({ title: JSON.stringify(values), icon: 'success' })
+    Toast.show({ content: JSON.stringify(values), icon: 'success' })
   }
   const onMenuChange = (value: string | number | boolean) => {
     switch (value) {
@@ -258,9 +258,9 @@ const App = () => {
         <Form.Item
           label="姓名"
           name="username"
-          rules={[{ required: true, message: "请输入姓名" }]}
+          rules={[{ required: true, message: "請輸入姓名" }]}
         >
-          <Input placeholder="请输入姓名" type="text" />
+          <Input placeholder="請輸入姓名" type="text" />
         </Form.Item>
         <Form.Item label="标注" name="note">
           <Input placeholder="请输入标注" type="string" />
@@ -281,7 +281,7 @@ export default App;
 
 :::
 
-### 表单类型
+### 表單類型
 
 :::demo
 
@@ -300,15 +300,15 @@ import {
   Rate,
   Range,
   Toast
-} from '@nutui/nutui-react-taro';
+} from '@nutui/nutui-react';
 
 const App = () => {
   const submitFailed = (error: any) => {
-    Taro.showToast({ title: JSON.stringify(error), icon: 'fail' })
+    Toast.show({ content: JSON.stringify(error), icon: 'fail' })
   }
 
   const submitSucceed = (values: any) => {
-    Taro.showToast({ title: JSON.stringify(values), icon: 'success' })
+    Toast.show({ content: JSON.stringify(values), icon: 'success' })
   }
   return (
     <>
@@ -411,41 +411,41 @@ export default App;
 
 ### Props
 
-| 属性 | 说明 | 类型 | 默认值 |
+| 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| form | 经 Form.useForm() 创建的 form 控制实例，不提供时会自动创建 | `FormInstance` | `-` |
-| footer | 表单底部区域，一般放置确认和重置按钮 | `ReactNode` | `null` |
-| initialValues | 表单初始值 | `any` | `-` |
-| name | 表单名称 | `any` | `\` |
-| labelPosition | 表单项 label 的位置 | `'top'\| 'left'|'right'` | `right` |
-| starPosition | 必填表单项 label 的红色星标位置 | `'left'\| 'right'` | `left` |
-| onFinish | 校验成功后触发 | `(values: any) => void` | `-` |
-| onFinishFailed | 任一表单项被校验失败后触发 | `(values: any, errorFields: any) => void` | `-` |
+| form | 經 Form.useForm() 創建的 form 控制實例，不提供時會自動創建 | `FormInstance` | `-` |
+| footer | 表單底部區域，一般放置確認和重置按鈕 | `ReactNode` | `null` |
+| initialValues | 表單初始值 | `any` | `-` |
+| name | 表單名稱 | `any` | `\` |
+| labelPosition | 表單項 label 的位置 | `'top'\| 'left'|'right'` | `right` |
+| starPosition | 必填表單項 label 的紅色星標位置 | `'left'\| 'right'` | `left` |
+| onFinish | 校驗成功後觸發 | `(values: any) => void` | `-` |
+| onFinishFailed | 任一表單項被校驗失敗後觸發 | `(values: any, errorFields: any) => void` | `-` |
 
 ## Form.Item
 
 ### Props
 
-| 属性 | 说明 | 类型 | 默认值 |
+| 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| required | 必填表单项 label 的红色星标,仅用于控制样式 | `boolean` | `false` |
-| name | 在使用表单校验功能的情况下，该属性是必填的 | `string` | `-` |
-| labelWidth | 表单项 label 宽度，默认单位为`px` | `number \` | `string` |
-| errorMessageAlign | 错误提示文案对齐方式 | \`\`'center'| 'right'\` | \`'left'\`\` |
-| initialValue | 设置子元素默认值 | `any` | `-` |
-| trigger | 设置收集字段值变更的时机 | `string` | `-` |
-| valuePropName | 子节点的值的属性，如 Checkbox 的是 'checked' | `string` | `-` |
-| getValueFromEvent | 设置如何将 event 的值转换成字段值 | `(...args: any) => any` | `-` |
-| onClick | 点击事件并收集子组件 Ref | `(event: React.MouseEvent, componentRef: React.MutableRefObject&lt;any>) =&gt; void` | `-` |
+| required | 必填表單項 label 的紅色星標,僅用於控製樣式 | `boolean` | `false` |
+| name | 在使用表單校驗功能的情況下，該屬性是必填的 | `string` | `-` |
+| labelWidth | 表單項 label 寬度，默認單位為`px` | `number \` | `string` |
+| errorMessageAlign | 錯誤提示文案對齊方式 | \`\`'center'| 'right'\` | \`'left'\`\` |
+| initialValue | 設置子元素默認值 | `any` | `-` |
+| trigger | 設置收集字段值變更的時機 | `string` | `-` |
+| valuePropName | 子節點的值的屬性，如 Checkbox 的是 'checked' | `string` | `-` |
+| getValueFromEvent | 設置如何將 event 的值轉換成字段值 | `(...args: any) => any` | `-` |
+| onClick | 點擊事件並收集子組件 Ref | `(event: React.MouseEvent, componentRef: React.MutableRefObject&lt;any>) =&gt; void` | `-` |
 
 ### Form.Item Rule
 
-规则校验处理基于[async-validator](https://github.com/yiminghe/async-validator) 更多规则配置可查看 async-validator 文档。 使用 Form.Item 的`rules`属性可以定义校验规则，可选属性如下:
+規則校驗處理基於[async-validator](https://github.com/yiminghe/async-validator) 更多規則配置可查看 async-validator 文檔。 使用 Form.Item 的`rules`屬性可以定義校驗規則，可選屬性如下:
 
-| 属性 | 说明 | 类型 |
+| 屬性 | 說明 | 類型 |
 | --- | --- | --- |
-| required | 是否为必选字段 | `boolean` |
-| message | 错误提示文案 | `string` |
+| required | 是否為必選字段 | `boolean` |
+| message | 錯誤提示文案 | `string` |
 | len | string 类型时为字符串长度；number 类型时为确定数字； array 类型时为数组长度 | `number` |
 | max | 必须设置 type：string 类型为字符串最大长度；number 类型时为最大值；array 类型时为数组最大长度 | `number` |
 | min | 必须设置 type：string 类型为字符串最小长度；number 类型时为最小值；array 类型时为数组最小长度 | `number` |
@@ -456,33 +456,33 @@ export default App;
 
 ### FormInstance
 
-Form.useForm()创建 Form 实例，用于管理所有数据状态。
+Form.useForm()創建 Form 實例，用於管理所有數據狀態。
 
-| 属性 | 说明 | 参数 | 返回值 |
+| 屬性 | 說明 | 參數 | 返回值 |
 | --- | --- | --- | --- |
-| getFieldValue | 获取对应字段名的值 | \- | (name: NamePath) => any |
-| setFieldsValue | 设置表单的值 | \- | (values) => void |
-| resetFields | 重置表单提示状态 | \- | () => void |
-| submit | 提交表单进行校验的方法 | \- | Promise |
+| getFieldValue | 獲取對應字段名的值 | \- | (name: NamePath) => any |
+| setFieldsValue | 設置表單的值 | \- | (values) => void |
+| resetFields | 重置表單提示狀態 | \- | () => void |
+| submit | 提交表單進行校驗的方法 | \- | Promise |
 
-## 主题定制
+## 主題定制
 
-### 样式变量
+### 樣式變量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名称 | 说明 | 默认值 |
+| 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-form-item-error-line-color | 错误信息边框颜色 | `$required-color` |
-| \--nutui-form-item-required-color | 必选标识的字体颜色 | `$required-color` |
-| \--nutui-form-item-error-message-color | 错误信息的文本颜色 | `$required-color` |
-| \--nutui-form-item-label-font-size | label 字号 | `14px` |
-| \--nutui-form-item-label-width | label 宽度 | `90px` |
-| \--nutui-form-item-label-margin-right | label 右外边距 | `10px` |
-| \--nutui-form-item-label-text-align | label 文本对齐方式 | `left` |
-| \--nutui-form-item-required-margin-right | label 必选的右外边距 | `4px` |
-| \--nutui-form-item-body-font-size | 表单容器的字号 | `14px` |
-| \--nutui-form-item-body-slots-text-align | 表单项文本对齐方式 | `left` |
-| \--nutui-form-item-body-input-text-align | 表单项输入框的文本对齐方式 | `left` |
-| \--nutui-form-item-tip-font-size | 错误信息的字号 | `10px` |
-| \--nutui-form-item-tip-text-align | 错误信息的文本对齐方式 | `left` |
+| \--nutui-form-item-error-line-color | 錯誤信息邊框顏色 | `$required-color` |
+| \--nutui-form-item-required-color | 必選標識的字體顏色 | `$required-color` |
+| \--nutui-form-item-error-message-color | 錯誤信息的文本顏色 | `$required-color` |
+| \--nutui-form-item-label-font-size | label 字號 | `14px` |
+| \--nutui-form-item-label-width | label 寬度 | `90px` |
+| \--nutui-form-item-label-margin-right | label 右外邊距 | `10px` |
+| \--nutui-form-item-label-text-align | label 文本對齊方式 | `left` |
+| \--nutui-form-item-required-margin-right | label 必選的右外邊距 | `4px` |
+| \--nutui-form-item-body-font-size | 表單容器的字號 | `14px` |
+| \--nutui-form-item-body-slots-text-align | 表單項文本對齊方式 | `left` |
+| \--nutui-form-item-body-input-text-align | 表單項輸入框的文本對齊方式 | `left` |
+| \--nutui-form-item-tip-font-size | 錯誤信息的字號 | `10px` |
+| \--nutui-form-item-tip-text-align | 錯誤信息的文本對齊方式 | `left` |
