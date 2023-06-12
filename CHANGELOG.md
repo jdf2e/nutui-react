@@ -1,3 +1,17 @@
+# v2.0.0-alpha.16
+`2023-06-09`
+
+* :bug: fix(toast): 修复连续调用 show 方法时无法销毁的问题 (#1102) @Eiinu
+* :bug: fix: dialog 需要增加 overlay 的样式，否则按需加载样式出现异常 (#1103) @oasis-cloud
+* :bug: fix: menu 组件被使用 transform 的组件嵌套后，遮罩层发生偏移 (#1093) @oasis-cloud
+* :bug: fix: noticebar 修复小程序多行展示问题 (#1107) @xiaoyatong
+* :bug: fix: pikcer 在关闭动画未结束时修改 visible，导致状态更新异常 (#1097) @oasis-cloud
+* 🛠 refactor: datepicker (#1091) @xiaoyatong
+* 🔨 chore: 修复 Taro Demo 的字号 (#1105) @oasis-cloud
+* 🔨 chore(script): 生成 Props 功能增强 (#1096) @Eiinu
+* 📖 docs: 文档修订 (#1106) @xiaoyatong
+
+
 # v2.0.0-alpha.15
 `2023-06-07`
 
