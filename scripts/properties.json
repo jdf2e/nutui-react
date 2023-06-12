@@ -1,0 +1,7010 @@
+[
+  {
+    "组件名": "ActionSheet",
+    "表格名": "Props",
+    "第一列": "visible",
+    "第二列": "遮罩层可见",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "ActionSheet",
+    "表格名": "Props",
+    "第一列": "title",
+    "第二列": "设置列表面板标题",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "ActionSheet",
+    "表格名": "Props",
+    "第一列": "description",
+    "第二列": "设置列表面板副标题/描述",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "ActionSheet",
+    "表格名": "Props",
+    "第一列": "options",
+    "第二列": "列表项",
+    "第三列": "`array`",
+    "第四列": "[]"
+  },
+  {
+    "组件名": "ActionSheet",
+    "表格名": "Props",
+    "第一列": "optionKey",
+    "第二列": "列表项的自定义设置",
+    "第三列": "`{ [key: string]: string }`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "ActionSheet",
+    "表格名": "Props",
+    "第一列": "cancelText",
+    "第二列": "取消文案",
+    "第三列": "`string`",
+    "第四列": "取消"
+  },
+  {
+    "组件名": "ActionSheet",
+    "表格名": "Props",
+    "第一列": "onSelect",
+    "第二列": "选择之后触发",
+    "第三列": "`(item: any, index: number) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "ActionSheet",
+    "表格名": "Props",
+    "第一列": "onCancel",
+    "第二列": "点击取消文案时触发",
+    "第三列": "`() => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "ActionSheet",
+    "表格名": "options",
+    "第一列": "name",
+    "第二列": "列表项的标题key值",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "ActionSheet",
+    "表格名": "options",
+    "第一列": "description",
+    "第二列": "列表项的描述key值",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "ActionSheet",
+    "表格名": "options",
+    "第一列": "danger",
+    "第二列": "高亮颜色",
+    "第三列": "`string`",
+    "第四列": "$primary-color"
+  },
+  {
+    "组件名": "ActionSheet",
+    "表格名": "options",
+    "第一列": "disable",
+    "第二列": "禁用状态",
+    "第三列": "`string`",
+    "第四列": "$disable-color"
+  },
+  {
+    "组件名": "Animate",
+    "表格名": "Props",
+    "第一列": "type",
+    "第二列": "动画类型，见下方type值说明",
+    "第三列": "`animatetype`",
+    "第四列": "'shake'"
+  },
+  {
+    "组件名": "Animate",
+    "表格名": "Props",
+    "第一列": "action",
+    "第二列": "触发方式，'initial'--初始化执行;  'click'--点击执行",
+    "第三列": "`'initial'  |  'click'`",
+    "第四列": "'initial'"
+  },
+  {
+    "组件名": "Animate",
+    "表格名": "Props",
+    "第一列": "loop",
+    "第二列": "是否循环执行。true-循环执行;false-执行一次",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Animate",
+    "表格名": "Props",
+    "第一列": "onClick",
+    "第二列": "点击元素时触发",
+    "第三列": "`event: event`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Animate",
+    "表格名": "AnimateType值说明",
+    "第一列": "1",
+    "第二列": "shake",
+    "第三列": "抖动，建议loop为true",
+    "第四列": ""
+  },
+  {
+    "组件名": "Animate",
+    "表格名": "AnimateType值说明",
+    "第一列": "2",
+    "第二列": "ripple",
+    "第三列": "不循环则是放大后缩小，循环则是心跳",
+    "第四列": ""
+  },
+  {
+    "组件名": "Animate",
+    "表格名": "AnimateType值说明",
+    "第一列": "3",
+    "第二列": "breath",
+    "第三列": "呼吸灯，建议loop为true",
+    "第四列": ""
+  },
+  {
+    "组件名": "Animate",
+    "表格名": "AnimateType值说明",
+    "第一列": "4",
+    "第二列": "float",
+    "第三列": "漂浮，建议loop为true",
+    "第四列": ""
+  },
+  {
+    "组件名": "Animate",
+    "表格名": "AnimateType值说明",
+    "第一列": "5",
+    "第二列": "slide-right",
+    "第三列": "由右向左划入",
+    "第四列": ""
+  },
+  {
+    "组件名": "Animate",
+    "表格名": "AnimateType值说明",
+    "第一列": "6",
+    "第二列": "slide-left",
+    "第三列": "由左向右划入",
+    "第四列": ""
+  },
+  {
+    "组件名": "Animate",
+    "表格名": "AnimateType值说明",
+    "第一列": "7",
+    "第二列": "slide-top",
+    "第三列": "由上至下划入",
+    "第四列": ""
+  },
+  {
+    "组件名": "Animate",
+    "表格名": "AnimateType值说明",
+    "第一列": "8",
+    "第二列": "slide-bottom",
+    "第三列": "由下至上划入",
+    "第四列": ""
+  },
+  {
+    "组件名": "Animate",
+    "表格名": "AnimateType值说明",
+    "第一列": "9",
+    "第二列": "jump",
+    "第三列": "跳跃，建议loop为true",
+    "第四列": ""
+  },
+  {
+    "组件名": "Animate",
+    "表格名": "AnimateType值说明",
+    "第一列": "10",
+    "第二列": "twinkle",
+    "第三列": "水波，建议loop为true",
+    "第四列": ""
+  },
+  {
+    "组件名": "Animate",
+    "表格名": "AnimateType值说明",
+    "第一列": "11",
+    "第二列": "flicker",
+    "第三列": "擦亮按钮，建议loop为true",
+    "第四列": ""
+  },
+  {
+    "组件名": "AnimatingNumbers",
+    "表格名": "Props",
+    "第一列": "length",
+    "第二列": "设置最大展示长度，数值位数不够，数值前面按位补 0",
+    "第三列": "`number`",
+    "第四列": "0"
+  },
+  {
+    "组件名": "AnimatingNumbers",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "结束值,必填项",
+    "第三列": "`string`",
+    "第四列": "number"
+  },
+  {
+    "组件名": "AnimatingNumbers",
+    "表格名": "Props",
+    "第一列": "delay",
+    "第二列": "等待动画执行时间，单位 ms",
+    "第三列": "`number`",
+    "第四列": "300"
+  },
+  {
+    "组件名": "AnimatingNumbers",
+    "表格名": "Props",
+    "第一列": "duration",
+    "第二列": "动画执行时间，单位 s",
+    "第三列": "`number`",
+    "第四列": "1"
+  },
+  {
+    "组件名": "AnimatingNumbers",
+    "表格名": "Props",
+    "第一列": "thousands",
+    "第二列": "是否有千位分隔符",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Audio",
+    "表格名": "Props",
+    "第一列": "src",
+    "第二列": "语音资源链接",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Audio",
+    "表格名": "Props",
+    "第一列": "muted",
+    "第二列": "是否静音",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Audio",
+    "表格名": "Props",
+    "第一列": "autoPlay",
+    "第二列": "是否自动播放",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Audio",
+    "表格名": "Props",
+    "第一列": "loop",
+    "第二列": "是否循环播放",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Audio",
+    "表格名": "Props",
+    "第一列": "preload",
+    "第二列": "是否预加载语音 枚举值：'none'、'metadata'、'auto'、''",
+    "第三列": "`string`",
+    "第四列": "auto"
+  },
+  {
+    "组件名": "Audio",
+    "表格名": "Props",
+    "第一列": "type",
+    "第二列": "展示形式，可选值：controls 控制面板   progress 进度条  icon 图标 none 自定义",
+    "第三列": "`string`",
+    "第四列": "progress"
+  },
+  {
+    "组件名": "Audio",
+    "表格名": "Props",
+    "第一列": "onBack",
+    "第二列": "语音快退回调，type = progress 时生效",
+    "第三列": "`(event：htmlaudioelement) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Audio",
+    "表格名": "Props",
+    "第一列": "onForward",
+    "第二列": "语音快进回调，type = progress 时生效",
+    "第三列": "`(event：htmlaudioelement) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Audio",
+    "表格名": "Props",
+    "第一列": "onPause",
+    "第二列": "暂停回调",
+    "第三列": "`(event：htmlaudioelement) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Audio",
+    "表格名": "Props",
+    "第一列": "onEnd",
+    "第二列": "语音播放完成，loop = false 时生效",
+    "第三列": "`(event：htmlaudioelement) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Audio",
+    "表格名": "Props",
+    "第一列": "onMute",
+    "第二列": "静音回调",
+    "第三列": "`(event：htmlaudioelement) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Audio",
+    "表格名": "Props",
+    "第一列": "onCanPlay",
+    "第二列": "可以播放媒体时触发",
+    "第三列": "`(event：htmlaudioelement) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Avatar",
+    "表格名": "Props",
+    "第一列": "size",
+    "第二列": "设置头像的大小",
+    "第三列": "`string`",
+    "第四列": "''"
+  },
+  {
+    "组件名": "Avatar",
+    "表格名": "Props",
+    "第一列": "shape",
+    "第二列": "设置头像的形状",
+    "第三列": "`'round' | 'square'`",
+    "第四列": "'round'"
+  },
+  {
+    "组件名": "Avatar",
+    "表格名": "Props",
+    "第一列": "background",
+    "第二列": "设置 Icon、字符类型头像的背景色",
+    "第三列": "`string`",
+    "第四列": "#eee"
+  },
+  {
+    "组件名": "Avatar",
+    "表格名": "Props",
+    "第一列": "color",
+    "第二列": "设置 Icon、字符类型头像的颜色",
+    "第三列": "`string`",
+    "第四列": "#666"
+  },
+  {
+    "组件名": "Avatar",
+    "表格名": "Props",
+    "第一列": "fit",
+    "第二列": "图片填充模式",
+    "第三列": "`'contain' | 'cover' | 'fill' | 'none' | 'scale-down'`",
+    "第四列": "'cover'"
+  },
+  {
+    "组件名": "Avatar",
+    "表格名": "Props",
+    "第一列": "src",
+    "第二列": "设置图片类型头像的地址",
+    "第三列": "`string`",
+    "第四列": "''"
+  },
+  {
+    "组件名": "Avatar",
+    "表格名": "Props",
+    "第一列": "alt",
+    "第二列": "设置图片类型头像无法显示时的替代文本",
+    "第三列": "`string`",
+    "第四列": "''"
+  },
+  {
+    "组件名": "Avatar",
+    "表格名": "Props",
+    "第一列": "icon",
+    "第二列": "设置 Icon 类型头像图标",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Avatar",
+    "表格名": "Props",
+    "第一列": "onClick",
+    "第二列": "点击头像触发事件",
+    "第三列": "`(e: mouseevent) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Avatar",
+    "表格名": "Props",
+    "第一列": "onError",
+    "第二列": "图片加载失败的事件",
+    "第三列": "`() => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "AvatarGroup",
+    "表格名": "Props",
+    "第一列": "max",
+    "第二列": "显示的最大头像个数",
+    "第三列": "`string | number`",
+    "第四列": "''"
+  },
+  {
+    "组件名": "AvatarGroup",
+    "表格名": "Props",
+    "第一列": "maxContent",
+    "第二列": "头像数量超出时，会出现一个头像折叠元素。该元素内容可为...、more、+N。",
+    "第三列": "`string`",
+    "第四列": "''"
+  },
+  {
+    "组件名": "AvatarGroup",
+    "表格名": "Props",
+    "第一列": "size",
+    "第二列": "设置头像的大小，可选值为：large、normal、small，支持直接输入数字",
+    "第三列": "`'large' | 'normal' | 'small'`",
+    "第四列": "''"
+  },
+  {
+    "组件名": "AvatarGroup",
+    "表格名": "Props",
+    "第一列": "shape",
+    "第二列": "设置头像的形状",
+    "第三列": "`'string' | 'round'`",
+    "第四列": "''"
+  },
+  {
+    "组件名": "AvatarGroup",
+    "表格名": "Props",
+    "第一列": "maxBackground",
+    "第二列": "设置 Icon、字符类型头像的背景色",
+    "第三列": "`string`",
+    "第四列": "#eee"
+  },
+  {
+    "组件名": "AvatarGroup",
+    "表格名": "Props",
+    "第一列": "maxColor",
+    "第二列": "设置 Icon、字符类型头像的颜色",
+    "第三列": "`string`",
+    "第四列": "#666"
+  },
+  {
+    "组件名": "AvatarGroup",
+    "表格名": "Props",
+    "第一列": "gap",
+    "第二列": "设置头像之间的间距",
+    "第三列": "`string`",
+    "第四列": "-8"
+  },
+  {
+    "组件名": "AvatarGroup",
+    "表格名": "Props",
+    "第一列": "level",
+    "第二列": "头像之间的层级关系，可选值为：left、right",
+    "第三列": "`'left' | 'right'`",
+    "第四列": "'left'"
+  },
+  {
+    "组件名": "BackTop",
+    "表格名": "Props",
+    "第一列": "target",
+    "第二列": "获取监听的目标元素",
+    "第三列": "string",
+    "第四列": "-"
+  },
+  {
+    "组件名": "BackTop",
+    "表格名": "Props",
+    "第一列": "threshold",
+    "第二列": "页面垂直滚动多高后出现",
+    "第三列": "number",
+    "第四列": "200"
+  },
+  {
+    "组件名": "BackTop",
+    "表格名": "Props",
+    "第一列": "zIndex",
+    "第二列": "设置组件页面层级",
+    "第三列": "number",
+    "第四列": "10"
+  },
+  {
+    "组件名": "BackTop",
+    "表格名": "Props",
+    "第一列": "duration",
+    "第二列": "设置动画持续时间，为 0 时表示无动画",
+    "第三列": "number",
+    "第四列": "1000"
+  },
+  {
+    "组件名": "BackTop",
+    "表格名": "Props",
+    "第一列": "onClick",
+    "第二列": "按钮点击时触发事件",
+    "第三列": "(event: mouseevent) => void",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Badge",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "显示的内容，支持数字、字符和自定义内容",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Badge",
+    "表格名": "Props",
+    "第一列": "max",
+    "第二列": "value 为数值时，最大值",
+    "第三列": "`number`",
+    "第四列": "99"
+  },
+  {
+    "组件名": "Badge",
+    "表格名": "Props",
+    "第一列": "dot",
+    "第二列": "是否为小点",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Badge",
+    "表格名": "Props",
+    "第一列": "top",
+    "第二列": "上下偏移量，支持单位设置，可设置为：5 等",
+    "第三列": "`number`",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Badge",
+    "表格名": "Props",
+    "第一列": "right",
+    "第二列": "左右偏移量，支持单位设置，可设置为：5 等",
+    "第三列": "`number`",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Badge",
+    "表格名": "Props",
+    "第一列": "color",
+    "第二列": "徽标背景颜色,默认值为当前主题色",
+    "第三列": "`string`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Barrage",
+    "表格名": "Props",
+    "第一列": "list",
+    "第二列": "弹幕列表数据",
+    "第三列": "`array<string>`",
+    "第四列": "[]"
+  },
+  {
+    "组件名": "Barrage",
+    "表格名": "Props",
+    "第一列": "interval",
+    "第二列": "可视区域内每个弹幕出现的时间间隔",
+    "第三列": "`number`",
+    "第四列": "500"
+  },
+  {
+    "组件名": "Barrage",
+    "表格名": "Props",
+    "第一列": "duration",
+    "第二列": "每个弹幕的滚动时间",
+    "第三列": "`number`",
+    "第四列": "3000"
+  },
+  {
+    "组件名": "Barrage",
+    "表格名": "Props",
+    "第一列": "rows",
+    "第二列": "弹幕行数，分几行展示",
+    "第三列": "`number`",
+    "第四列": "1"
+  },
+  {
+    "组件名": "Barrage",
+    "表格名": "Props",
+    "第一列": "gapY",
+    "第二列": "弹幕垂直距离",
+    "第三列": "`number`",
+    "第四列": "10"
+  },
+  {
+    "组件名": "Barrage",
+    "表格名": "Props",
+    "第一列": "loop",
+    "第二列": "是否循环播放",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Barrage",
+    "表格名": "Ref",
+    "第一列": "add",
+    "第二列": "添加数据",
+    "第三列": "`(word: string) => void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Button",
+    "表格名": "Props",
+    "第一列": "type",
+    "第二列": "按钮的样式",
+    "第三列": "`'default' | 'primary' | 'info' | 'warning' | 'danger' | 'success'`",
+    "第四列": "'default'"
+  },
+  {
+    "组件名": "Button",
+    "表格名": "Props",
+    "第一列": "size",
+    "第二列": "按钮的尺寸",
+    "第三列": "`'normal' | 'large' | 'small'`",
+    "第四列": "'normal'"
+  },
+  {
+    "组件名": "Button",
+    "表格名": "Props",
+    "第一列": "shape",
+    "第二列": "按钮的形状",
+    "第三列": "`'square' | 'round'`",
+    "第四列": "'round'"
+  },
+  {
+    "组件名": "Button",
+    "表格名": "Props",
+    "第一列": "color",
+    "第二列": "按钮颜色，支持传入 linear-gradient 渐变色",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Button",
+    "表格名": "Props",
+    "第一列": "fill",
+    "第二列": "填充模式",
+    "第三列": "`'solid' | 'ouline' | 'none'`",
+    "第四列": "'solid'"
+  },
+  {
+    "组件名": "Button",
+    "表格名": "Props",
+    "第一列": "disabled",
+    "第二列": "是否禁用按钮",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Button",
+    "表格名": "Props",
+    "第一列": "block",
+    "第二列": "是否为块级元素",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Button",
+    "表格名": "Props",
+    "第一列": "icon",
+    "第二列": "按钮图标",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Button",
+    "表格名": "Props",
+    "第一列": "loading",
+    "第二列": "按钮loading状态",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Button",
+    "表格名": "Props",
+    "第一列": "onClick",
+    "第二列": "点击按钮时触发",
+    "第三列": "`onclick: (e: mouseevent) => void`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Card",
+    "表格名": "Props",
+    "第一列": "src",
+    "第二列": "左侧图片 Url",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Card",
+    "表格名": "Props",
+    "第一列": "title",
+    "第二列": "标题",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Card",
+    "表格名": "Props",
+    "第一列": "price",
+    "第二列": "商品价格",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Card",
+    "表格名": "Props",
+    "第一列": "vipPrice",
+    "第二列": "会员价格",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Card",
+    "表格名": "Props",
+    "第一列": "shopDescription",
+    "第二列": "店铺介绍",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Card",
+    "表格名": "Props",
+    "第一列": "delivery",
+    "第二列": "配送方式",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Card",
+    "表格名": "Props",
+    "第一列": "shopName",
+    "第二列": "店铺名称",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Card",
+    "表格名": "Props",
+    "第一列": "description",
+    "第二列": "自定义商品介绍",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Card",
+    "表格名": "Props",
+    "第一列": "priceTag",
+    "第二列": "价格后方自定义内容",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Card",
+    "表格名": "Props",
+    "第一列": "tag",
+    "第二列": "店铺介绍自定义",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Card",
+    "表格名": "Props",
+    "第一列": "extra",
+    "第二列": "右下角内容自定义",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Cascader",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "选中值，受控",
+    "第三列": "`(number",
+    "第四列": "string)[]"
+  },
+  {
+    "组件名": "Cascader",
+    "表格名": "Props",
+    "第一列": "defaultValue",
+    "第二列": "默认选中值",
+    "第三列": "`(number",
+    "第四列": "string)[]"
+  },
+  {
+    "组件名": "Cascader",
+    "表格名": "Props",
+    "第一列": "options",
+    "第二列": "级联数据",
+    "第三列": "`array`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Cascader",
+    "表格名": "Props",
+    "第一列": "popup",
+    "第二列": "是否弹窗状态展示",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Cascader",
+    "表格名": "Props",
+    "第一列": "visible",
+    "第二列": "级联显示隐藏状态",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Cascader",
+    "表格名": "Props",
+    "第一列": "activeColor",
+    "第二列": "选中激活颜色",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Cascader",
+    "表格名": "Props",
+    "第一列": "activeIcon",
+    "第二列": "标记选中的Icon",
+    "第三列": "`string`",
+    "第四列": "ReactNode"
+  },
+  {
+    "组件名": "Cascader",
+    "表格名": "Props",
+    "第一列": "lazy",
+    "第二列": "是否开启动态加载",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Cascader",
+    "表格名": "Props",
+    "第一列": "onLoad",
+    "第二列": "动态加载回调，开启动态加载时生效",
+    "第三列": "function",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Cascader",
+    "表格名": "Props",
+    "第一列": "optionKey",
+    "第二列": "自定义`options`结构中，包含 textKey、valueKey、childrenKey",
+    "第三列": "`object`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Cascader",
+    "表格名": "Props",
+    "第一列": "format",
+    "第二列": "当options为可转换为树形结构的扁平结构时，配置转换规则",
+    "第三列": "`object`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Cascader",
+    "表格名": "Props",
+    "第一列": "title",
+    "第二列": "标题",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Cascader",
+    "表格名": "Props",
+    "第一列": "closeIconPosition",
+    "第二列": "取消按钮位置，继承 Popup 组件",
+    "第三列": "`string`",
+    "第四列": "top-right"
+  },
+  {
+    "组件名": "Cascader",
+    "表格名": "Props",
+    "第一列": "closeIcon",
+    "第二列": "自定义关闭按钮，继承 Popup 组件",
+    "第三列": "reactnode",
+    "第四列": "close"
+  },
+  {
+    "组件名": "Cascader",
+    "表格名": "Props",
+    "第一列": "closeable",
+    "第二列": "是否显示关闭按钮，继承 Popup 组件",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Cascader",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "选中值改变时触发",
+    "第三列": "`value, pathnodes`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Cascader",
+    "表格名": "Props",
+    "第一列": "onPathChange",
+    "第二列": "选中项改变时触发",
+    "第三列": "`pathnodes`",
+    "第四列": ""
+  },
+  {
+    "组件名": "CellGroup",
+    "表格名": "Props",
+    "第一列": "title",
+    "第二列": "分组标题",
+    "第三列": "reactnode",
+    "第四列": "-"
+  },
+  {
+    "组件名": "CellGroup",
+    "表格名": "Props",
+    "第一列": "description",
+    "第二列": "分组描述",
+    "第三列": "reactnode",
+    "第四列": "-"
+  },
+  {
+    "组件名": "CellGroup",
+    "表格名": "Props",
+    "第一列": "divider",
+    "第二列": "单元格之间是否有分割线",
+    "第三列": "boolean",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Cell",
+    "表格名": "Props",
+    "第一列": "title",
+    "第二列": "标题",
+    "第三列": "reactnode",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Cell",
+    "表格名": "Props",
+    "第一列": "description",
+    "第二列": "描述",
+    "第三列": "reactnode",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Cell",
+    "表格名": "Props",
+    "第一列": "extra",
+    "第二列": "右侧描述",
+    "第三列": "reactnode",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Cell",
+    "表格名": "Props",
+    "第一列": "radius",
+    "第二列": "圆角半径",
+    "第三列": "string",
+    "第四列": "6px"
+  },
+  {
+    "组件名": "Cell",
+    "表格名": "Props",
+    "第一列": "align",
+    "第二列": "纵轴方向上的对齐方式，可选值为：`flex-start`、`center`、`flex-end`",
+    "第三列": "string",
+    "第四列": "flex-start"
+  },
+  {
+    "组件名": "Cell",
+    "表格名": "Props",
+    "第一列": "onClick",
+    "第二列": "点击事件",
+    "第三列": "`onclick: (event: react.mouseevent<htmldivelement, globalthis.mouseevent>) => void`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Checkbox",
+    "表格名": "props",
+    "第一列": "checked",
+    "第二列": "是否选中",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Checkbox",
+    "表格名": "props",
+    "第一列": "defaultChecked",
+    "第二列": "初始是否选中",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Checkbox",
+    "表格名": "props",
+    "第一列": "disabled",
+    "第二列": "是否禁用选择",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Checkbox",
+    "表格名": "props",
+    "第一列": "labelPosition",
+    "第二列": "文本所在的位置，可选值：`left`,`right`",
+    "第三列": "`string`",
+    "第四列": "right"
+  },
+  {
+    "组件名": "Checkbox",
+    "表格名": "props",
+    "第一列": "icon",
+    "第二列": "[图标](#/icon)，选中前(建议和`ActiveIcon`一起修改)",
+    "第三列": "`reactnode`",
+    "第四列": "'CheckNormal'"
+  },
+  {
+    "组件名": "Checkbox",
+    "表格名": "props",
+    "第一列": "activeIcon",
+    "第二列": "[图标](#/icon)，选中后(建议和`iconName`一起修改)",
+    "第三列": "`reactnode`",
+    "第四列": "'Checked'"
+  },
+  {
+    "组件名": "Checkbox",
+    "表格名": "props",
+    "第一列": "indeterminateIcon",
+    "第二列": "[图标](#/icon)，半选状态",
+    "第三列": "`reactnode`",
+    "第四列": "'CheckDisabled'"
+  },
+  {
+    "组件名": "Checkbox",
+    "表格名": "props",
+    "第一列": "label",
+    "第二列": "复选框的文本内容",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Checkbox",
+    "表格名": "props",
+    "第一列": "value",
+    "第二列": "标识值，用于 Group 模式",
+    "第三列": "`string| number`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Checkbox",
+    "表格名": "props",
+    "第一列": "onChange",
+    "第二列": "值变化时触发",
+    "第三列": "`(value: boolean) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Checkbox.Group",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "当前选中项的标识符",
+    "第三列": "`string|number`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Checkbox.Group",
+    "表格名": "Props",
+    "第一列": "defaultValue",
+    "第二列": "初始选中项的标识符",
+    "第三列": "`string|number`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Checkbox.Group",
+    "表格名": "Props",
+    "第一列": "disabled",
+    "第二列": "是否禁用选择,将用于其下的全部复选框",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Checkbox.Group",
+    "表格名": "Props",
+    "第一列": "max",
+    "第二列": "限制最大可选数",
+    "第三列": "`undefined",
+    "第四列": "number"
+  },
+  {
+    "组件名": "Checkbox.Group",
+    "表格名": "Props",
+    "第一列": "labelPosition",
+    "第二列": "文本所在的位置，可选值：`left`,`right`",
+    "第三列": "`string`",
+    "第四列": "right"
+  },
+  {
+    "组件名": "Checkbox.Group",
+    "表格名": "Props",
+    "第一列": "direction",
+    "第二列": "使用横纵方向 可选值 horizontal、vertical",
+    "第三列": "`string`",
+    "第四列": "vertical"
+  },
+  {
+    "组件名": "Checkbox.Group",
+    "表格名": "Props",
+    "第一列": "options",
+    "第二列": "配置 options 渲染复选按钮",
+    "第三列": "`array<{ label: string value: string disabled?: boolean }`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Checkbox.Group",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "值变化时触发",
+    "第三列": "`(value: string[]) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Checkbox.Group",
+    "表格名": "Ref",
+    "第一列": "toggle",
+    "第二列": "全选/取消",
+    "第三列": "传 `true`,表示全选，传 `false`,表示取消全选",
+    "第四列": ""
+  },
+  {
+    "组件名": "Checkbox.Group",
+    "表格名": "Ref",
+    "第一列": "reverse",
+    "第二列": "反选",
+    "第三列": "-",
+    "第四列": ""
+  },
+  {
+    "组件名": "CircleProgress",
+    "表格名": "Props",
+    "第一列": "percent",
+    "第二列": "百分比",
+    "第三列": "`number | string`",
+    "第四列": "必传项，无默认值"
+  },
+  {
+    "组件名": "CircleProgress",
+    "表格名": "Props",
+    "第一列": "strokeWidth",
+    "第二列": "圆弧的宽度",
+    "第三列": "`number | string`",
+    "第四列": "5"
+  },
+  {
+    "组件名": "CircleProgress",
+    "表格名": "Props",
+    "第一列": "radius",
+    "第二列": "半径",
+    "第三列": "`number | string`",
+    "第四列": "50"
+  },
+  {
+    "组件名": "CircleProgress",
+    "表格名": "Props",
+    "第一列": "color",
+    "第二列": "圆环进度条颜色，传入对象格式可以定义渐变色",
+    "第三列": "`object | string`",
+    "第四列": "''"
+  },
+  {
+    "组件名": "CircleProgress",
+    "表格名": "Props",
+    "第一列": "background",
+    "第二列": "圆环轨道颜色",
+    "第三列": "`string`",
+    "第四列": "#d9d9d9"
+  },
+  {
+    "组件名": "CircleProgress",
+    "表格名": "Props",
+    "第一列": "strokeLinecap",
+    "第二列": "圆环进度条端点形状",
+    "第三列": "`'butt' | 'round' | 'square' | 'inherit'`",
+    "第四列": "'round'"
+  },
+  {
+    "组件名": "CircleProgress",
+    "表格名": "Props",
+    "第一列": "clockwise",
+    "第二列": "是否顺时针展示",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Collapse",
+    "表格名": "Props",
+    "第一列": "defaultActiveName",
+    "第二列": "默认展开面板的 name，非受控",
+    "第三列": "`array<string> | string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Collapse",
+    "表格名": "Props",
+    "第一列": "activeName",
+    "第二列": "当前展开面板的 name，受控",
+    "第三列": "`array<string> | string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Collapse",
+    "表格名": "Props",
+    "第一列": "accordion",
+    "第二列": "是否开启手风琴模式",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Collapse",
+    "表格名": "Props",
+    "第一列": "rotate",
+    "第二列": "点击折叠和展开的旋转角度,在自定义图标模式下生效",
+    "第三列": "`string | number`",
+    "第四列": "180"
+  },
+  {
+    "组件名": "Collapse",
+    "表格名": "Props",
+    "第一列": "expandIcon",
+    "第二列": "自定义展开图标",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Collapse.Item",
+    "表格名": "Props",
+    "第一列": "name",
+    "第二列": "唯一标识符，必填",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Collapse.Item",
+    "表格名": "Props",
+    "第一列": "title",
+    "第二列": "标题栏左侧内容",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Collapse.Item",
+    "表格名": "Props",
+    "第一列": "disabled",
+    "第二列": "标题栏是否禁用",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Collapse.Item",
+    "表格名": "Props",
+    "第一列": "extra",
+    "第二列": "标题栏副标题",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Collapse.Item",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "切换面板时触发",
+    "第三列": "`(activename, name, status) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "ConfigProvider",
+    "表格名": "Props",
+    "第一列": "locale",
+    "第二列": "设置多语言包",
+    "第三列": "baselang",
+    "第四列": "zhCN"
+  },
+  {
+    "组件名": "ConfigProvider",
+    "表格名": "Props",
+    "第一列": "theme",
+    "第二列": "设置主题",
+    "第三列": "record<string, string>",
+    "第四列": "-"
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "Props",
+    "第一列": "startTime",
+    "第二列": "开始时间",
+    "第三列": "`number`",
+    "第四列": "Date.now()"
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "Props",
+    "第一列": "endTime",
+    "第二列": "结束时间",
+    "第三列": "`number`",
+    "第四列": "Date.now()"
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "Props",
+    "第一列": "remainingTime",
+    "第二列": "剩余时间，单位是毫秒",
+    "第三列": "`number`",
+    "第四列": "0"
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "Props",
+    "第一列": "paused",
+    "第二列": "是否暂停",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "Props",
+    "第一列": "format",
+    "第二列": "时间格式",
+    "第三列": "`string`",
+    "第四列": "HH:mm:ss"
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "Props",
+    "第一列": "millisecond",
+    "第二列": "是否开启毫秒级渲染",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "Props",
+    "第一列": "autoStart",
+    "第二列": "是否自动开始倒计时",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "Props",
+    "第一列": "time",
+    "第二列": "倒计时显示时间，单位是毫秒。autoStart 为 false 时生效",
+    "第三列": "`number`",
+    "第四列": "0"
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "Props",
+    "第一列": "showDays",
+    "第二列": "是否显示天",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "Props",
+    "第一列": "showPlainText",
+    "第二列": "显示为纯文本",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "Props",
+    "第一列": "destroy",
+    "第二列": "销毁实例",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "Props",
+    "第一列": "onEnd",
+    "第二列": "倒计时结束时回调函数",
+    "第三列": "`无`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "Props",
+    "第一列": "onPaused",
+    "第二列": "暂停倒计时回调函数",
+    "第三列": "`onpaused: (resttime: number) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "Props",
+    "第一列": "onRestart",
+    "第二列": "重新开始倒计时回调函数",
+    "第三列": "`onrestart: (resttime: number) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "Props",
+    "第一列": "onUpdate",
+    "第二列": "自定义展示内容时，实时更新倒计时数据回调函数",
+    "第三列": "`onupdate: (resttime: any) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "format 格式",
+    "第一列": "DD",
+    "第二列": "天数",
+    "第三列": "",
+    "第四列": ""
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "format 格式",
+    "第一列": "HH",
+    "第二列": "小时",
+    "第三列": "",
+    "第四列": ""
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "format 格式",
+    "第一列": "mm",
+    "第二列": "分钟",
+    "第三列": "",
+    "第四列": ""
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "format 格式",
+    "第一列": "ss",
+    "第二列": "秒数",
+    "第三列": "",
+    "第四列": ""
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "format 格式",
+    "第一列": "S",
+    "第二列": "毫秒（1位）",
+    "第三列": "",
+    "第四列": ""
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "format 格式",
+    "第一列": "SS",
+    "第二列": "毫秒（2位）",
+    "第三列": "",
+    "第四列": ""
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "format 格式",
+    "第一列": "SSS",
+    "第二列": "毫秒（3位）",
+    "第三列": "",
+    "第四列": ""
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "Ref",
+    "第一列": "start",
+    "第二列": "开始倒计时",
+    "第三列": "`() => void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "Ref",
+    "第一列": "pause",
+    "第二列": "暂停倒计时",
+    "第三列": "`() => void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "CountDown",
+    "表格名": "Ref",
+    "第一列": "reset",
+    "第二列": "重设倒计时，若 auto-start 为 true，重设后会自动开始倒计时",
+    "第三列": "`() => void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "DatePicker",
+    "表格名": "Props",
+    "第一列": "defaultValue",
+    "第二列": "初始值",
+    "第三列": "`date`",
+    "第四列": "null"
+  },
+  {
+    "组件名": "DatePicker",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "受控",
+    "第三列": "`date`",
+    "第四列": "null"
+  },
+  {
+    "组件名": "DatePicker",
+    "表格名": "Props",
+    "第一列": "visible",
+    "第二列": "是否可见",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "DatePicker",
+    "表格名": "Props",
+    "第一列": "type",
+    "第二列": "类时间类型，可选值 date time year-month month-day datehour datetime hour-minutes",
+    "第三列": "`string`",
+    "第四列": "date"
+  },
+  {
+    "组件名": "DatePicker",
+    "表格名": "Props",
+    "第一列": "minuteStep",
+    "第二列": "分钟步进值",
+    "第三列": "`number`",
+    "第四列": "1"
+  },
+  {
+    "组件名": "DatePicker",
+    "表格名": "Props",
+    "第一列": "showChinese",
+    "第二列": "每列是否展示中文",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "DatePicker",
+    "表格名": "Props",
+    "第一列": "title",
+    "第二列": "设置标题",
+    "第三列": "`string`",
+    "第四列": "null"
+  },
+  {
+    "组件名": "DatePicker",
+    "表格名": "Props",
+    "第一列": "startDate",
+    "第二列": "开始日期",
+    "第三列": "`date`",
+    "第四列": "十年前"
+  },
+  {
+    "组件名": "DatePicker",
+    "表格名": "Props",
+    "第一列": "endDate",
+    "第二列": "结束日期",
+    "第三列": "`date`",
+    "第四列": "十年后"
+  },
+  {
+    "组件名": "DatePicker",
+    "表格名": "Props",
+    "第一列": "formatter",
+    "第二列": "选项格式化函数",
+    "第三列": "`(type: string, option: pickeroption) => pickeroption `",
+    "第四列": "-"
+  },
+  {
+    "组件名": "DatePicker",
+    "表格名": "Props",
+    "第一列": "filter",
+    "第二列": "选项过滤函数",
+    "第三列": "`(type: string, option: pickeroption) => pickeroption[]`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "DatePicker",
+    "表格名": "Props",
+    "第一列": "threeDimensional",
+    "第二列": "是否开启3D效果",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "DatePicker",
+    "表格名": "Props",
+    "第一列": "onConfirm",
+    "第二列": "点击确定按钮时触发",
+    "第三列": "`(options, value) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "DatePicker",
+    "表格名": "Props",
+    "第一列": "onClose",
+    "第二列": "关闭时触发",
+    "第三列": "`(options, value) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "DatePicker",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "选项改变时触发",
+    "第三列": "`(options, value, index) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Dialog",
+    "表格名": "Props",
+    "第一列": "visible",
+    "第二列": "对话框是否可见",
+    "第三列": "`boolean`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Dialog",
+    "表格名": "Props",
+    "第一列": "title",
+    "第二列": "标题",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Dialog",
+    "表格名": "Props",
+    "第一列": "content",
+    "第二列": "对话框的内容，适用于函数式调用",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Dialog",
+    "表格名": "Props",
+    "第一列": "footer",
+    "第二列": "自定义页脚，传入 null 则不显示",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Dialog",
+    "表格名": "Props",
+    "第一列": "confirmText",
+    "第二列": "确认按钮文案",
+    "第三列": "`reactnode`",
+    "第四列": "确定"
+  },
+  {
+    "组件名": "Dialog",
+    "表格名": "Props",
+    "第一列": "cancelText",
+    "第二列": "取消按钮文案",
+    "第三列": "`reactnode`",
+    "第四列": "取消"
+  },
+  {
+    "组件名": "Dialog",
+    "表格名": "Props",
+    "第一列": "overlay",
+    "第二列": "是否展示遮罩",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Dialog",
+    "表格名": "Props",
+    "第一列": "hideConfirmButton",
+    "第二列": "是否隐藏确定按钮",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Dialog",
+    "表格名": "Props",
+    "第一列": "hideCancelButton",
+    "第二列": "是否隐藏取消按钮",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Dialog",
+    "表格名": "Props",
+    "第一列": "disableConfirmButton",
+    "第二列": "禁用确定按钮",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Dialog",
+    "表格名": "Props",
+    "第一列": "closeOnOverlayClick",
+    "第二列": "点击蒙层是否关闭对话框",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Dialog",
+    "表格名": "Props",
+    "第一列": "footerDirection",
+    "第二列": "使用横纵方向 可选值 horizontal、vertical",
+    "第三列": "`string`",
+    "第四列": "horizontal"
+  },
+  {
+    "组件名": "Dialog",
+    "表格名": "Props",
+    "第一列": "lockScroll",
+    "第二列": "背景是否锁定",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Dialog",
+    "表格名": "Props",
+    "第一列": "beforeCancel",
+    "第二列": "取消前回调，点击取消时触发",
+    "第三列": "`() => boolean`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Dialog",
+    "表格名": "Props",
+    "第一列": "beforeClose",
+    "第二列": "关闭前回调",
+    "第三列": "`() => boolean`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Dialog",
+    "表格名": "Props",
+    "第一列": "onConfirm",
+    "第二列": "确定按钮回调",
+    "第三列": "`(e?: mouseevent) => promise | void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Dialog",
+    "表格名": "Props",
+    "第一列": "onCancel",
+    "第二列": "取消按钮回调",
+    "第三列": "`() => void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Dialog",
+    "表格名": "Props",
+    "第一列": "onClose",
+    "第二列": "关闭回调，任何情况关闭弹窗都会触发",
+    "第三列": "`() => void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Dialog",
+    "表格名": "Props",
+    "第一列": "onClick",
+    "第二列": "点击自身回调",
+    "第三列": "`() => void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Dialog",
+    "表格名": "Props",
+    "第一列": "onOverlayClick",
+    "第二列": "点击蒙层触发",
+    "第三列": "`() => void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Divider",
+    "表格名": "Props",
+    "第一列": "contentPosition",
+    "第二列": "内容位置，可选值为 left right center",
+    "第三列": "`'left'  |  'center'  |  'right'`",
+    "第四列": "center"
+  },
+  {
+    "组件名": "Divider",
+    "表格名": "Props",
+    "第一列": "direction",
+    "第二列": "水平还是垂直类型,可选值为 horizontal vertical",
+    "第三列": "`'horizontal'  |  'vertical'`",
+    "第四列": "horizontal"
+  },
+  {
+    "组件名": "Drag",
+    "表格名": "Props",
+    "第一列": "attract",
+    "第二列": "是否开启自动吸边",
+    "第三列": "boolean",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Drag",
+    "表格名": "Props",
+    "第一列": "direction",
+    "第二列": "拖拽元素的拖拽方向限制，x、y、all三选一",
+    "第三列": "string",
+    "第四列": "all"
+  },
+  {
+    "组件名": "Drag",
+    "表格名": "Props",
+    "第一列": "boundary",
+    "第二列": "拖拽元素的拖拽边界",
+    "第三列": "object",
+    "第四列": "{top: 0, left: 0, right: 0, bottom: 0}"
+  },
+  {
+    "组件名": "Elevator",
+    "表格名": "Props",
+    "第一列": "height",
+    "第二列": "电梯区域的高度",
+    "第三列": "number | string",
+    "第四列": "200px"
+  },
+  {
+    "组件名": "Elevator",
+    "表格名": "Props",
+    "第一列": "floorKey",
+    "第二列": "索引 key 值",
+    "第三列": "string",
+    "第四列": "title"
+  },
+  {
+    "组件名": "Elevator",
+    "表格名": "Props",
+    "第一列": "list",
+    "第二列": "索引列表",
+    "第三列": "array（item 需包含 id、name 属性, name 支持传入 html 结构）",
+    "第四列": "[{id: 0, name: ''}]"
+  },
+  {
+    "组件名": "Elevator",
+    "表格名": "Props",
+    "第一列": "sticky",
+    "第二列": "索引是否吸顶",
+    "第三列": "boolean",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Elevator",
+    "表格名": "Props",
+    "第一列": "showKeys",
+    "第二列": "展示右侧导航",
+    "第三列": "boolean",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Elevator",
+    "表格名": "Props",
+    "第一列": "spaceHeight",
+    "第二列": "右侧锚点的上下间距",
+    "第三列": "number",
+    "第四列": "23"
+  },
+  {
+    "组件名": "Elevator",
+    "表格名": "Props",
+    "第一列": "titleHeight",
+    "第二列": "左侧索引的高度",
+    "第三列": "number",
+    "第四列": "35"
+  },
+  {
+    "组件名": "Elevator",
+    "表格名": "Props",
+    "第一列": "onClickItem",
+    "第二列": "点击内容",
+    "第三列": "`onclickitem:(key: string, item: { id: number, name: string })=>void`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Elevator",
+    "表格名": "Props",
+    "第一列": "onClickIndex",
+    "第二列": "点击索引",
+    "第三列": "`onclickindex:(key: string)=>void`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Ellipsis",
+    "表格名": "Props",
+    "第一列": "content",
+    "第二列": "文本内容",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Ellipsis",
+    "表格名": "Props",
+    "第一列": "direction",
+    "第二列": "省略位置",
+    "第三列": "`'start' | 'end' | 'middle'`",
+    "第四列": "end"
+  },
+  {
+    "组件名": "Ellipsis",
+    "表格名": "Props",
+    "第一列": "rows",
+    "第二列": "展示几行",
+    "第三列": "`number`",
+    "第四列": "1"
+  },
+  {
+    "组件名": "Ellipsis",
+    "表格名": "Props",
+    "第一列": "expandText",
+    "第二列": "展开操作的文案",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Ellipsis",
+    "表格名": "Props",
+    "第一列": "collapseText",
+    "第二列": "收起操作的文案",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Ellipsis",
+    "表格名": "Props",
+    "第一列": "symbol",
+    "第二列": "省略的符号",
+    "第三列": "`string`",
+    "第四列": "..."
+  },
+  {
+    "组件名": "Ellipsis",
+    "表格名": "Props",
+    "第一列": "lineHeight",
+    "第二列": "容器的行高",
+    "第三列": "`string | number`",
+    "第四列": "20"
+  },
+  {
+    "组件名": "Ellipsis",
+    "表格名": "Props",
+    "第一列": "onClick",
+    "第二列": "文本点击是触发",
+    "第三列": "`() => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Ellipsis",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "点击展开收起时触发",
+    "第三列": "`(type: string) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Empty",
+    "表格名": "Props",
+    "第一列": "image",
+    "第二列": "图片,支持传入图片 URL",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Empty",
+    "表格名": "Props",
+    "第一列": "imageSize",
+    "第二列": "图片大小，number 类型单位为 px",
+    "第三列": "`number | string`",
+    "第四列": "''"
+  },
+  {
+    "组件名": "Empty",
+    "表格名": "Props",
+    "第一列": "description",
+    "第二列": "图片下方的描述文字",
+    "第三列": "`reactnode`",
+    "第四列": "''"
+  },
+  {
+    "组件名": "Empty",
+    "表格名": "Props",
+    "第一列": "status",
+    "第二列": "默认图片错误类型",
+    "第三列": "`'empty' | 'error' | 'network'`",
+    "第四列": "'empty'"
+  },
+  {
+    "组件名": "FixedNav",
+    "表格名": "Props",
+    "第一列": "visible",
+    "第二列": "是否打开",
+    "第三列": "boolean",
+    "第四列": "false"
+  },
+  {
+    "组件名": "FixedNav",
+    "表格名": "Props",
+    "第一列": "list",
+    "第二列": "悬浮列表内容数据",
+    "第三列": "array",
+    "第四列": "[]"
+  },
+  {
+    "组件名": "FixedNav",
+    "表格名": "Props",
+    "第一列": "activeText",
+    "第二列": "收起列表按钮文案",
+    "第三列": "string",
+    "第四列": "收起导航"
+  },
+  {
+    "组件名": "FixedNav",
+    "表格名": "Props",
+    "第一列": "inactiveText",
+    "第二列": "展开列表按钮文案",
+    "第三列": "string",
+    "第四列": "快速导航"
+  },
+  {
+    "组件名": "FixedNav",
+    "表格名": "Props",
+    "第一列": "type",
+    "第二列": "导航方向,可选值 left right",
+    "第三列": "string",
+    "第四列": "right"
+  },
+  {
+    "组件名": "FixedNav",
+    "表格名": "Props",
+    "第一列": "overlay",
+    "第二列": "展开时是否显示遮罩",
+    "第三列": "boolean",
+    "第四列": "true"
+  },
+  {
+    "组件名": "FixedNav",
+    "表格名": "Props",
+    "第一列": "position",
+    "第二列": "fixed 垂直位置",
+    "第三列": "object",
+    "第四列": "{top: 'auto', bottom: 'auto'}"
+  },
+  {
+    "组件名": "FixedNav",
+    "表格名": "Props",
+    "第一列": "content",
+    "第二列": "自定义按钮",
+    "第三列": "reactnode",
+    "第四列": "-"
+  },
+  {
+    "组件名": "FixedNav",
+    "表格名": "Props",
+    "第一列": "children",
+    "第二列": "自定义展开列表内容",
+    "第三列": "reactnode",
+    "第四列": "-"
+  },
+  {
+    "组件名": "FixedNav",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "展开收起按钮回调",
+    "第三列": "`value: boolean`",
+    "第四列": ""
+  },
+  {
+    "组件名": "FixedNav",
+    "表格名": "Props",
+    "第一列": "onSelect",
+    "第二列": "选择之后触发",
+    "第三列": "`item, event: mouseevent`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Grid",
+    "表格名": "Props",
+    "第一列": "columns",
+    "第二列": "列数",
+    "第三列": "number | string",
+    "第四列": "4"
+  },
+  {
+    "组件名": "Grid",
+    "表格名": "Props",
+    "第一列": "gap",
+    "第二列": "格子之间的间距，默认单位为`px`",
+    "第三列": "number | string",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Grid",
+    "表格名": "Props",
+    "第一列": "center",
+    "第二列": "是否将格子内容居中显示",
+    "第三列": "boolean",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Grid",
+    "表格名": "Props",
+    "第一列": "square",
+    "第二列": "是否将格子固定为正方形",
+    "第三列": "boolean",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Grid",
+    "表格名": "Props",
+    "第一列": "reverse",
+    "第二列": "内容翻转",
+    "第三列": "boolean",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Grid",
+    "表格名": "Props",
+    "第一列": "direction",
+    "第二列": "格子内容排列的方向，可选值为 `horizontal`",
+    "第三列": "string",
+    "第四列": "vertical"
+  },
+  {
+    "组件名": "Grid",
+    "表格名": "Props",
+    "第一列": "onClick",
+    "第二列": "宫格子项点击事件",
+    "第三列": "(index) => void",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Grid.Item",
+    "表格名": "Props",
+    "第一列": "text",
+    "第二列": "文字",
+    "第三列": "string | reactnode",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Grid.Item",
+    "表格名": "Props",
+    "第一列": "onClick",
+    "第二列": "点击格子时触发",
+    "第三列": "(event: event) => void",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Icon",
+    "表格名": "Props",
+    "第一列": "name",
+    "第二列": "图标名称或图片链接",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Icon",
+    "表格名": "Props",
+    "第一列": "color",
+    "第二列": "图标颜色",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Icon",
+    "表格名": "Props",
+    "第一列": "width",
+    "第二列": "图标大小，如 `20px` `2em` `2rem`",
+    "第三列": "`string | object`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Icon",
+    "表格名": "Props",
+    "第一列": "height",
+    "第二列": "图标大小，如 `20px` `2em` `2rem`",
+    "第三列": "`string | object`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Icon",
+    "表格名": "Props",
+    "第一列": "onClick",
+    "第二列": "点击图标时触发",
+    "第三列": "event: event",
+    "第四列": ""
+  },
+  {
+    "组件名": "IconFont",
+    "表格名": "Props",
+    "第一列": "name",
+    "第二列": "图标名称或图片链接",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "IconFont",
+    "表格名": "Props",
+    "第一列": "color",
+    "第二列": "图标颜色",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "IconFont",
+    "表格名": "Props",
+    "第一列": "size",
+    "第二列": "图标大小，如 `20px` `2em` `2rem`",
+    "第三列": "`string | number`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "IconFont",
+    "表格名": "Props",
+    "第一列": "classPrefix",
+    "第二列": "类名前缀，用于使用自定义图标",
+    "第三列": "`string`",
+    "第四列": "nut-iconfont"
+  },
+  {
+    "组件名": "IconFont",
+    "表格名": "Props",
+    "第一列": "fontClassName",
+    "第二列": "自定义 icon 字体基础类名",
+    "第三列": "`string`",
+    "第四列": "nutui-iconfont"
+  },
+  {
+    "组件名": "IconFont",
+    "表格名": "Props",
+    "第一列": "tag",
+    "第二列": "tsx 标签",
+    "第三列": "string",
+    "第四列": "i"
+  },
+  {
+    "组件名": "IconFont",
+    "表格名": "Props",
+    "第一列": "onClick",
+    "第二列": "点击图标时触发",
+    "第三列": "`event: event`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Image",
+    "表格名": "Props",
+    "第一列": "src",
+    "第二列": "图片链接",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Image",
+    "表格名": "Props",
+    "第一列": "fit",
+    "第二列": "图片填充模式，等同于原生的 object-fit 属性",
+    "第三列": "`imagefit `",
+    "第四列": "fill"
+  },
+  {
+    "组件名": "Image",
+    "表格名": "Props",
+    "第一列": "position",
+    "第二列": "图片位置，等同于原生的 object-position 属性",
+    "第三列": "`imageposition`",
+    "第四列": "center"
+  },
+  {
+    "组件名": "Image",
+    "表格名": "Props",
+    "第一列": "alt",
+    "第二列": "替代文本",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Image",
+    "表格名": "Props",
+    "第一列": "width",
+    "第二列": "宽度，默认单位`px`",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Image",
+    "表格名": "Props",
+    "第一列": "height",
+    "第二列": "高度，默认单位`px`",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Image",
+    "表格名": "Props",
+    "第一列": "radius",
+    "第二列": "圆角大小",
+    "第三列": "`string | number`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Image",
+    "表格名": "Props",
+    "第一列": "error",
+    "第二列": "是否展示图片加载失败",
+    "第三列": "`boolean | reactnode`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Image",
+    "表格名": "Props",
+    "第一列": "loading",
+    "第二列": "是否展示加载中图片",
+    "第三列": "`boolean | reactnode`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Image",
+    "表格名": "Props",
+    "第一列": "lazy",
+    "第二列": "是否为懒加载图片",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Image",
+    "表格名": "Props",
+    "第一列": "onClick",
+    "第二列": "点击图片时触发",
+    "第三列": "`(e: mouseevent) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Image",
+    "表格名": "Props",
+    "第一列": "onLoad",
+    "第二列": "图片加载完后触发",
+    "第三列": "`() => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Image",
+    "表格名": "Props",
+    "第一列": "onError",
+    "第二列": "图片加载失败后触发",
+    "第三列": "`() => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Image",
+    "表格名": "ImageFit 图片填充模式",
+    "第一列": "contain",
+    "第二列": "保持宽高缩放图片，使图片的长边能完全显示出来",
+    "第三列": "",
+    "第四列": ""
+  },
+  {
+    "组件名": "Image",
+    "表格名": "ImageFit 图片填充模式",
+    "第一列": "cover",
+    "第二列": "保持宽高缩放图片，使图片的短边能完全显示出来，裁剪长边",
+    "第三列": "",
+    "第四列": ""
+  },
+  {
+    "组件名": "Image",
+    "表格名": "ImageFit 图片填充模式",
+    "第一列": "fill",
+    "第二列": "拉伸图片，使图片填满元素",
+    "第三列": "",
+    "第四列": ""
+  },
+  {
+    "组件名": "Image",
+    "表格名": "ImageFit 图片填充模式",
+    "第一列": "none",
+    "第二列": "保持图片原有尺寸",
+    "第三列": "",
+    "第四列": ""
+  },
+  {
+    "组件名": "Image",
+    "表格名": "ImageFit 图片填充模式",
+    "第一列": "scale-down",
+    "第二列": "取 none 或 contain 中较小的一个",
+    "第三列": "",
+    "第四列": ""
+  },
+  {
+    "组件名": "Image",
+    "表格名": "ImagePosition 图片位置",
+    "第一列": "center",
+    "第二列": "居中对齐",
+    "第三列": "",
+    "第四列": ""
+  },
+  {
+    "组件名": "Image",
+    "表格名": "ImagePosition 图片位置",
+    "第一列": "top",
+    "第二列": "顶部对齐",
+    "第三列": "",
+    "第四列": ""
+  },
+  {
+    "组件名": "Image",
+    "表格名": "ImagePosition 图片位置",
+    "第一列": "right",
+    "第二列": "右侧对齐",
+    "第三列": "",
+    "第四列": ""
+  },
+  {
+    "组件名": "Image",
+    "表格名": "ImagePosition 图片位置",
+    "第一列": "bottom",
+    "第二列": "底部对齐",
+    "第三列": "",
+    "第四列": ""
+  },
+  {
+    "组件名": "Image",
+    "表格名": "ImagePosition 图片位置",
+    "第一列": "left",
+    "第二列": "左侧对齐",
+    "第三列": "",
+    "第四列": ""
+  },
+  {
+    "组件名": "ImagePreview",
+    "表格名": "Props",
+    "第一列": "visible",
+    "第二列": "是否展示预览图片",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "ImagePreview",
+    "表格名": "Props",
+    "第一列": "videos",
+    "第二列": "预览的视频数组（视频自动放到图片之前）",
+    "第三列": "`array<object>`",
+    "第四列": "[]"
+  },
+  {
+    "组件名": "ImagePreview",
+    "表格名": "Props",
+    "第一列": "images",
+    "第二列": "预览图片数组",
+    "第三列": "`{ src: string }[]`",
+    "第四列": "[]"
+  },
+  {
+    "组件名": "ImagePreview",
+    "表格名": "Props",
+    "第一列": "autoPlay",
+    "第二列": "自动轮播时长，0表示不会自动轮播",
+    "第三列": "`number | string`",
+    "第四列": "3000"
+  },
+  {
+    "组件名": "ImagePreview",
+    "表格名": "Props",
+    "第一列": "defaultValue",
+    "第二列": "初始页码",
+    "第三列": "`number`",
+    "第四列": "1"
+  },
+  {
+    "组件名": "ImagePreview",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "页码，受控",
+    "第三列": "`number`",
+    "第四列": "1"
+  },
+  {
+    "组件名": "ImagePreview",
+    "表格名": "Props",
+    "第一列": "indicator",
+    "第二列": "分页指示器是否展示",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "ImagePreview",
+    "表格名": "Props",
+    "第一列": "indicatorColor",
+    "第二列": "分页指示器选中的颜色",
+    "第三列": "`string`",
+    "第四列": "#fff"
+  },
+  {
+    "组件名": "ImagePreview",
+    "表格名": "Props",
+    "第一列": "closeOnContentClick",
+    "第二列": "点击图片可以退出预览",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "ImagePreview",
+    "表格名": "Props",
+    "第一列": "onClose",
+    "第二列": "点击遮罩关闭图片预览时触发",
+    "第三列": "`() => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Indicator",
+    "表格名": "Props",
+    "第一列": "current",
+    "第二列": "当前步骤",
+    "第三列": "number",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Indicator",
+    "表格名": "Props",
+    "第一列": "total",
+    "第二列": "步骤长度",
+    "第三列": "number",
+    "第四列": "3"
+  },
+  {
+    "组件名": "Indicator",
+    "表格名": "Props",
+    "第一列": "direction",
+    "第二列": "展示方向，默认为水平方向",
+    "第三列": "`'horizontal' | 'vertical'`",
+    "第四列": "horizontal"
+  },
+  {
+    "组件名": "InfiniteLoading",
+    "表格名": "Props",
+    "第一列": "hasMore",
+    "第二列": "是否还有更多数据",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "InfiniteLoading",
+    "表格名": "Props",
+    "第一列": "threshold",
+    "第二列": "距离底部多远加载",
+    "第三列": "`number`",
+    "第四列": "200"
+  },
+  {
+    "组件名": "InfiniteLoading",
+    "表格名": "Props",
+    "第一列": "capture",
+    "第二列": "是否使用捕获模式 true 捕获 false 冒泡",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "InfiniteLoading",
+    "表格名": "Props",
+    "第一列": "target",
+    "第二列": "获取监听的目标元素",
+    "第三列": "`string`",
+    "第四列": "''"
+  },
+  {
+    "组件名": "InfiniteLoading",
+    "表格名": "Props",
+    "第一列": "loadMoreText",
+    "第二列": "“没有更多数”据展示文案",
+    "第三列": "`string`",
+    "第四列": "哎呀，这里是底部了啦"
+  },
+  {
+    "组件名": "InfiniteLoading",
+    "表格名": "Props",
+    "第一列": "pullRefresh",
+    "第二列": "是否开启下拉刷新",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "InfiniteLoading",
+    "表格名": "Props",
+    "第一列": "pullingText",
+    "第二列": "下拉刷新提示文案",
+    "第三列": "`reactnode`",
+    "第四列": "松手刷新"
+  },
+  {
+    "组件名": "InfiniteLoading",
+    "表格名": "Props",
+    "第一列": "loadingText",
+    "第二列": "上拉加载提示文案",
+    "第三列": "`reactnode`",
+    "第四列": "加载中..."
+  },
+  {
+    "组件名": "InfiniteLoading",
+    "表格名": "Props",
+    "第一列": "onRefresh",
+    "第二列": "下拉刷新事件回调",
+    "第三列": "`(param: () => void) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "InfiniteLoading",
+    "表格名": "Props",
+    "第一列": "onLoadMore",
+    "第二列": "继续加载的回调函数",
+    "第三列": "`(param: () => void) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "InfiniteLoading",
+    "表格名": "Props",
+    "第一列": "onScroll",
+    "第二列": "实时监听滚动高度",
+    "第三列": "`(param: number) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Input",
+    "表格名": "Props",
+    "第一列": "defaultValue",
+    "第二列": "初始默认值",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Input",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "初始默认值",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Input",
+    "表格名": "Props",
+    "第一列": "type",
+    "第二列": "输入框类型，支持原生 `input` 标签的所有 `type` 属性，另外还支持 `number` `digit`",
+    "第三列": "`string`",
+    "第四列": "text"
+  },
+  {
+    "组件名": "Input",
+    "表格名": "Props",
+    "第一列": "name",
+    "第二列": "组件名字，用于表单提交获取数据",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Input",
+    "表格名": "Props",
+    "第一列": "placeholder",
+    "第二列": "输入框为空时占位符",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Input",
+    "表格名": "Props",
+    "第一列": "align",
+    "第二列": "输入框内容对齐方式，可选值 `left`、`center`、`right`",
+    "第三列": "`string`",
+    "第四列": "left"
+  },
+  {
+    "组件名": "Input",
+    "表格名": "Props",
+    "第一列": "disabled",
+    "第二列": "是否禁用",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Input",
+    "表格名": "Props",
+    "第一列": "readOnly",
+    "第二列": "是否只读",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Input",
+    "表格名": "Props",
+    "第一列": "autoFocus",
+    "第二列": "是否自动获得焦点，iOS 系统不支持该属性",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Input",
+    "表格名": "Props",
+    "第一列": "maxLength",
+    "第二列": "限制最长输入字符",
+    "第三列": "`string | number`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Input",
+    "表格名": "Props",
+    "第一列": "clearable",
+    "第二列": "展示清除 Icon",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Input",
+    "表格名": "Props",
+    "第一列": "clearIcon",
+    "第二列": "清除图标 Icon <a href=\"#/icon\">可参考 Icon </a>",
+    "第三列": "`reactnode`",
+    "第四列": "MaskClose"
+  },
+  {
+    "组件名": "Input",
+    "表格名": "Props",
+    "第一列": "confirmType",
+    "第二列": "键盘右下角按钮的文字，仅在type='text'时生效,可选值 send：发送、search：搜索、next：下一个、go：前往、done：完成",
+    "第三列": "`string`",
+    "第四列": "done"
+  },
+  {
+    "组件名": "Input",
+    "表格名": "Props",
+    "第一列": "formatter",
+    "第二列": "输入内容格式化函数",
+    "第三列": "`(val: string) => string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Input",
+    "表格名": "Props",
+    "第一列": "formatTrigger",
+    "第二列": "格式化函数触发的时机，可选值为 `onChange`、`onBlur`",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Input",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "输入框内容变化时触发",
+    "第三列": "`(value: string) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Input",
+    "表格名": "Props",
+    "第一列": "onBlur",
+    "第二列": "失去焦点后触发",
+    "第三列": "`(value: string) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Input",
+    "表格名": "Props",
+    "第一列": "onFocus",
+    "第二列": "获得焦点后触发",
+    "第三列": "`(value: string) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Input",
+    "表格名": "Props",
+    "第一列": "onClear",
+    "第二列": "点击清空按钮时触发",
+    "第三列": "`(value: string) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Input",
+    "表格名": "Props",
+    "第一列": "onClick",
+    "第二列": "点击 input 容器触发",
+    "第三列": "`(value: mouseevent<htmldivelement>) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "InputNumber",
+    "表格名": "Props",
+    "第一列": "allowEmpty",
+    "第二列": "是否允许内容为空",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "InputNumber",
+    "表格名": "Props",
+    "第一列": "defaultValue",
+    "第二列": "默认值",
+    "第三列": "`string | number`",
+    "第四列": "0"
+  },
+  {
+    "组件名": "InputNumber",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "当前值，受控值",
+    "第三列": "`string | number`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "InputNumber",
+    "表格名": "Props",
+    "第一列": "min",
+    "第二列": "最小值限制",
+    "第三列": "`string | number`",
+    "第四列": "1"
+  },
+  {
+    "组件名": "InputNumber",
+    "表格名": "Props",
+    "第一列": "max",
+    "第二列": "最大值限制",
+    "第三列": "`string | number`",
+    "第四列": "9999"
+  },
+  {
+    "组件名": "InputNumber",
+    "表格名": "Props",
+    "第一列": "step",
+    "第二列": "步长",
+    "第三列": "`string | number`",
+    "第四列": "1"
+  },
+  {
+    "组件名": "InputNumber",
+    "表格名": "Props",
+    "第一列": "digits",
+    "第二列": "设置保留的小数位",
+    "第三列": "`string | number`",
+    "第四列": "0"
+  },
+  {
+    "组件名": "InputNumber",
+    "表格名": "Props",
+    "第一列": "disabled",
+    "第二列": "禁用所有功能",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "InputNumber",
+    "表格名": "Props",
+    "第一列": "readonly",
+    "第二列": "只读状态禁用输入框操作行为",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "InputNumber",
+    "表格名": "Props",
+    "第一列": "async",
+    "第二列": "支持异步修改",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "InputNumber",
+    "表格名": "Props",
+    "第一列": "formatter",
+    "第二列": "指定输入框展示值的格式",
+    "第三列": "`function(value: number | string): string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "InputNumber",
+    "表格名": "Props",
+    "第一列": "onPlus",
+    "第二列": "点击增加按钮时触发",
+    "第三列": "`(e: mouseevent) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "InputNumber",
+    "表格名": "Props",
+    "第一列": "onMinus",
+    "第二列": "点击减少按钮时触发",
+    "第三列": "`(e: mouseevent) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "InputNumber",
+    "表格名": "Props",
+    "第一列": "onOverlimit",
+    "第二列": "点击不可用的按钮时触发",
+    "第三列": "`(e: mouseevent) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "InputNumber",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "值改变时触发",
+    "第三列": "`(param: string | number, e: mouseevent | changeevent<htmlinputelement>) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "InputNumber",
+    "表格名": "Props",
+    "第一列": "onFocus",
+    "第二列": "输入框获得焦点时触发",
+    "第三列": "`(e: focusevent<htmlinputelement>) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "InputNumber",
+    "表格名": "Props",
+    "第一列": "onBlur",
+    "第二列": "输入框失去焦点时触发",
+    "第三列": "`(e: changeevent<htmlinputelement>) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Row",
+    "表格名": "props",
+    "第一列": "type",
+    "第二列": "布局方式，可选值为flex",
+    "第三列": "string",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Row",
+    "表格名": "props",
+    "第一列": "gutter",
+    "第二列": "列元素之间的间距（单位为px）",
+    "第三列": "string | number",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Row",
+    "表格名": "props",
+    "第一列": "justify",
+    "第二列": "Flex 主轴对齐方式，可选值为 start end center space-around space-between",
+    "第三列": "string",
+    "第四列": "start"
+  },
+  {
+    "组件名": "Row",
+    "表格名": "props",
+    "第一列": "align",
+    "第二列": "Flex 交叉轴对齐方式，可选值为 flex-start center flex-end",
+    "第三列": "string",
+    "第四列": "flex-start"
+  },
+  {
+    "组件名": "Row",
+    "表格名": "props",
+    "第一列": "wrap",
+    "第二列": "Flex是否换行，可选值为 nowrap wrap reverse",
+    "第三列": "string",
+    "第四列": "nowrap"
+  },
+  {
+    "组件名": "Row",
+    "表格名": "props",
+    "第一列": "onClick",
+    "第二列": "Fired when clicked",
+    "第三列": "`event: mouseevent, type: 'row' | 'col'`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Col",
+    "表格名": "Props",
+    "第一列": "span",
+    "第二列": "列元素宽度（共分为24份，例如设置一行3个，那么span值为8）",
+    "第三列": "string | number",
+    "第四列": "24"
+  },
+  {
+    "组件名": "Col",
+    "表格名": "Props",
+    "第一列": "offset",
+    "第二列": "列元素偏移距离",
+    "第三列": "string | number",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Col",
+    "表格名": "Props",
+    "第一列": "onClick",
+    "第二列": "点击时触发",
+    "第三列": "`event: mouseevent, type: 'row' | 'col'`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Menu",
+    "表格名": "Props",
+    "第一列": "activeColor",
+    "第二列": "选项的选中态图标颜色",
+    "第三列": "string",
+    "第四列": "#F2270C"
+  },
+  {
+    "组件名": "Menu",
+    "表格名": "Props",
+    "第一列": "closeOnOverlayClick",
+    "第二列": "是否在点击遮罩层后关闭菜单",
+    "第三列": "boolean",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Menu",
+    "表格名": "Props",
+    "第一列": "lockScroll",
+    "第二列": "背景是否锁定",
+    "第三列": "boolean",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Menu",
+    "表格名": "Props",
+    "第一列": "scrollFixed",
+    "第二列": "滚动后是否固定，可设置固定位置",
+    "第三列": "boolean | string | number",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Menu",
+    "表格名": "Props",
+    "第一列": "icon",
+    "第二列": "自定义标题图标",
+    "第三列": "react.reactnode",
+    "第四列": "-"
+  },
+  {
+    "组件名": "MenuItem",
+    "表格名": "Props",
+    "第一列": "title",
+    "第二列": "菜单项标题",
+    "第三列": "string",
+    "第四列": "当前选中项文字"
+  },
+  {
+    "组件名": "MenuItem",
+    "表格名": "Props",
+    "第一列": "options",
+    "第二列": "选项数组",
+    "第三列": "array",
+    "第四列": "-"
+  },
+  {
+    "组件名": "MenuItem",
+    "表格名": "Props",
+    "第一列": "disabled",
+    "第二列": "是否禁用菜单",
+    "第三列": "boolean",
+    "第四列": "false"
+  },
+  {
+    "组件名": "MenuItem",
+    "表格名": "Props",
+    "第一列": "columns",
+    "第二列": "可以设置一行展示多少列 options",
+    "第三列": "number",
+    "第四列": "1"
+  },
+  {
+    "组件名": "MenuItem",
+    "表格名": "Props",
+    "第一列": "icon",
+    "第二列": "自定义选项图标",
+    "第三列": "react.reactnode",
+    "第四列": "Check"
+  },
+  {
+    "组件名": "MenuItem",
+    "表格名": "Props",
+    "第一列": "direction",
+    "第二列": "菜单展开方向，可选值为up",
+    "第三列": "string",
+    "第四列": "down"
+  },
+  {
+    "组件名": "MenuItem",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "选择 option 之后触发",
+    "第三列": "选择的 value",
+    "第四列": "-"
+  },
+  {
+    "组件名": "MenuItem",
+    "表格名": "Ref",
+    "第一列": "toggle",
+    "第二列": "切换菜单展示状态，传 true 为显示，false 为隐藏，不传参为取反",
+    "第三列": "`show?: boolean`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Navbar",
+    "表格名": "Props",
+    "第一列": "right",
+    "第二列": "右侧内容",
+    "第三列": "reactnode",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Navbar",
+    "表格名": "Props",
+    "第一列": "left",
+    "第二列": "左侧内容，渲染在返回区域的右侧",
+    "第三列": "reactnode",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Navbar",
+    "表格名": "Props",
+    "第一列": "back",
+    "第二列": "返回区域的文字",
+    "第三列": "reactnode",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Navbar",
+    "表格名": "Props",
+    "第一列": "fixed",
+    "第二列": "是否固定",
+    "第三列": "boolean",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Navbar",
+    "表格名": "Props",
+    "第一列": "safeArea",
+    "第二列": "是否适配安全区",
+    "第三列": "boolean",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Navbar",
+    "表格名": "Props",
+    "第一列": "placeholder",
+    "第二列": "固定在顶部时，是否在标签位置生成一个等高的占位元素",
+    "第三列": "boolean",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Navbar",
+    "表格名": "Props",
+    "第一列": "zIndex",
+    "第二列": "导航栏层级",
+    "第三列": "number | string",
+    "第四列": "10"
+  },
+  {
+    "组件名": "Navbar",
+    "表格名": "Props",
+    "第一列": "onClickBack",
+    "第二列": "点击返回区域后的回调",
+    "第三列": "`onclickback:(event: event)=>void`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "NoticeBar",
+    "表格名": "Props",
+    "第一列": "direction",
+    "第二列": "滚动的方向，可选 horizontal、vertical",
+    "第三列": "`string`",
+    "第四列": "horizontal"
+  },
+  {
+    "组件名": "NoticeBar",
+    "表格名": "Props",
+    "第一列": "content",
+    "第二列": "提示的信息",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "NoticeBar",
+    "表格名": "Props",
+    "第一列": "closeable",
+    "第二列": "是否启用关闭模式",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "NoticeBar",
+    "表格名": "Props",
+    "第一列": "leftIcon",
+    "第二列": "左边的 icon，closeable 模式下默认为空",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "NoticeBar",
+    "表格名": "Props",
+    "第一列": "rightIcon",
+    "第二列": "右边的 icon，在 closeable 模式下默认为 `<Close />`",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "NoticeBar",
+    "表格名": "Props",
+    "第一列": "delay",
+    "第二列": "延时多少秒",
+    "第三列": "`string | number`",
+    "第四列": "1"
+  },
+  {
+    "组件名": "NoticeBar",
+    "表格名": "Props",
+    "第一列": "scrollable",
+    "第二列": "是否可以滚动",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "NoticeBar",
+    "表格名": "Props",
+    "第一列": "speed",
+    "第二列": "滚动速率 (px/s)",
+    "第三列": "`number`",
+    "第四列": "50"
+  },
+  {
+    "组件名": "NoticeBar",
+    "表格名": "Props",
+    "第一列": "wrap",
+    "第二列": "是否开启文本换行",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "NoticeBar",
+    "表格名": "Props",
+    "第一列": "onClick",
+    "第二列": "外层点击事件回调",
+    "第三列": "`(event: any) => void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "NoticeBar",
+    "表格名": "Props",
+    "第一列": "onClose",
+    "第二列": "关闭通知栏时触发",
+    "第三列": "`(event: any) => void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "NoticeBar",
+    "表格名": "Props",
+    "第一列": "onClickItem",
+    "第二列": "垂直滚动多条数据时，点击当前展示的信息时触发",
+    "第三列": "`(event: any, value: any) => void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "NoticeBar",
+    "表格名": "Props（direction=vertical）",
+    "第一列": "list",
+    "第二列": "纵向滚动数据列表",
+    "第三列": "`array`",
+    "第四列": "[]"
+  },
+  {
+    "组件名": "NoticeBar",
+    "表格名": "Props（direction=vertical）",
+    "第一列": "speed",
+    "第二列": "滚动的速度",
+    "第三列": "`number`",
+    "第四列": "50"
+  },
+  {
+    "组件名": "NoticeBar",
+    "表格名": "Props（direction=vertical）",
+    "第一列": "duration",
+    "第二列": "停留时间(毫秒)",
+    "第三列": "`number`",
+    "第四列": "1000"
+  },
+  {
+    "组件名": "NoticeBar",
+    "表格名": "Props（direction=vertical）",
+    "第一列": "height",
+    "第二列": "每一个滚动列的高度(px)，注意：在使用 slot 插槽定义滚动单元时，按照实际高度修改此值",
+    "第三列": "`number`",
+    "第四列": "40"
+  },
+  {
+    "组件名": "NoticeBar",
+    "表格名": "Props（direction=vertical）",
+    "第一列": "closeable",
+    "第二列": "是否启用右侧关闭图标，可以通过slot[name=rightIcon]自定义图标",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Notify",
+    "表格名": "Props",
+    "第一列": "type",
+    "第二列": "提示的信息类型（primary，success ，danger，warning）",
+    "第三列": "`string`",
+    "第四列": "danger"
+  },
+  {
+    "组件名": "Notify",
+    "表格名": "Props",
+    "第一列": "duration",
+    "第二列": "展示时长(ms)，值为 0 时，notify 不会消失",
+    "第三列": "`string`",
+    "第四列": "3000"
+  },
+  {
+    "组件名": "Notify",
+    "表格名": "Props",
+    "第一列": "position",
+    "第二列": "自定义位置 (top, bottom)",
+    "第三列": "`string`",
+    "第四列": "top"
+  },
+  {
+    "组件名": "Notify",
+    "表格名": "Props",
+    "第一列": "onClick",
+    "第二列": "点击事件回调",
+    "第三列": "`onclick: () => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Notify",
+    "表格名": "Props",
+    "第一列": "onClose",
+    "第二列": "关闭事件回调",
+    "第三列": "`onclose: () => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "NumberKeyboard",
+    "表格名": "Props",
+    "第一列": "visible",
+    "第二列": "是否显示键盘",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "NumberKeyboard",
+    "表格名": "Props",
+    "第一列": "title",
+    "第二列": "键盘标题",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "NumberKeyboard",
+    "表格名": "Props",
+    "第一列": "type",
+    "第二列": "键盘模式, default：默认样式 rightColumn：带右侧栏",
+    "第三列": "`string`",
+    "第四列": "default"
+  },
+  {
+    "组件名": "NumberKeyboard",
+    "表格名": "Props",
+    "第一列": "random",
+    "第二列": "随机数",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "NumberKeyboard",
+    "表格名": "Props",
+    "第一列": "custom",
+    "第二列": "自定义键盘额外的键, 数组形式最多支持添加 2 个, 超出默认取前 2 项",
+    "第三列": "`string[]`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "NumberKeyboard",
+    "表格名": "Props",
+    "第一列": "confirmText",
+    "第二列": "自定义完成按钮文字，如\"支付\"，\"下一步\"，\"提交\"等",
+    "第三列": "`string`",
+    "第四列": "完成"
+  },
+  {
+    "组件名": "NumberKeyboard",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "点击按键时触发",
+    "第三列": "`(value: string) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "NumberKeyboard",
+    "表格名": "Props",
+    "第一列": "onDelete",
+    "第二列": "点击删除键时触发",
+    "第三列": "-",
+    "第四列": "-"
+  },
+  {
+    "组件名": "NumberKeyboard",
+    "表格名": "Props",
+    "第一列": "onClose",
+    "第二列": "点击关闭按钮或非键盘区域时触发",
+    "第三列": "-",
+    "第四列": "-"
+  },
+  {
+    "组件名": "NumberKeyboard",
+    "表格名": "Props",
+    "第一列": "onConfirm",
+    "第二列": "点击确定按钮时触发",
+    "第三列": "-",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Overlay",
+    "表格名": "Props",
+    "第一列": "visible",
+    "第二列": "当前组件是否显示",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Overlay",
+    "表格名": "Props",
+    "第一列": "zIndex",
+    "第二列": "遮罩层级",
+    "第三列": "`number`",
+    "第四列": "2000"
+  },
+  {
+    "组件名": "Overlay",
+    "表格名": "Props",
+    "第一列": "duration",
+    "第二列": "动画时长，单位秒",
+    "第三列": "`number`",
+    "第四列": "0.3"
+  },
+  {
+    "组件名": "Overlay",
+    "表格名": "Props",
+    "第一列": "lockScroll",
+    "第二列": "背景是否锁定",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Overlay",
+    "表格名": "Props",
+    "第一列": "closeOnOverlayClick",
+    "第二列": "是否点击遮罩关闭",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Overlay",
+    "表格名": "Props",
+    "第一列": "onClick",
+    "第二列": "点击时触发",
+    "第三列": "`event: event`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Overlay",
+    "表格名": "Props",
+    "第一列": "afterClose",
+    "第二列": "完全关闭后触发",
+    "第三列": "`() => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Overlay",
+    "表格名": "Props",
+    "第一列": "afterShow",
+    "第二列": "完全展示后触发",
+    "第三列": "`() => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Pagination",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "当前页码，受控值，与 onChange 搭配使用",
+    "第三列": "number",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Pagination",
+    "表格名": "Props",
+    "第一列": "defaultValue",
+    "第二列": "默认页码，非受控",
+    "第三列": "number",
+    "第四列": "1"
+  },
+  {
+    "组件名": "Pagination",
+    "表格名": "Props",
+    "第一列": "mode",
+    "第二列": "显示模式,可选值为：multi，simple",
+    "第三列": "string",
+    "第四列": "multi"
+  },
+  {
+    "组件名": "Pagination",
+    "表格名": "Props",
+    "第一列": "prev",
+    "第二列": "自定义上一页按钮内容",
+    "第三列": "reactnode",
+    "第四列": "上一页"
+  },
+  {
+    "组件名": "Pagination",
+    "表格名": "Props",
+    "第一列": "next",
+    "第二列": "自定义下一页按钮内容",
+    "第三列": "reactnode",
+    "第四列": "下一页"
+  },
+  {
+    "组件名": "Pagination",
+    "表格名": "Props",
+    "第一列": "total",
+    "第二列": "总记录数",
+    "第三列": "number",
+    "第四列": "50"
+  },
+  {
+    "组件名": "Pagination",
+    "表格名": "Props",
+    "第一列": "pageSize",
+    "第二列": "每页记录数",
+    "第三列": "number",
+    "第四列": "10"
+  },
+  {
+    "组件名": "Pagination",
+    "表格名": "Props",
+    "第一列": "itemSize",
+    "第二列": "显示的页码个数",
+    "第三列": "number",
+    "第四列": "5"
+  },
+  {
+    "组件名": "Pagination",
+    "表格名": "Props",
+    "第一列": "ellipse",
+    "第二列": "是否显示省略号",
+    "第三列": "boolean",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Pagination",
+    "表格名": "Props",
+    "第一列": "itemRender",
+    "第二列": "用于自定义页码的结构",
+    "第三列": "(page: {number, text}) => reactnode",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Pagination",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "页码改变时触发",
+    "第三列": "(value) => void",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Picker",
+    "表格名": "Props",
+    "第一列": "visible",
+    "第二列": "是否可见",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Picker",
+    "表格名": "Props",
+    "第一列": "title",
+    "第二列": "设置标题",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Picker",
+    "表格名": "Props",
+    "第一列": "options",
+    "第二列": "列表数据",
+    "第三列": "`array`",
+    "第四列": "[]"
+  },
+  {
+    "组件名": "Picker",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "选中值，受控",
+    "第三列": "`array`",
+    "第四列": "[]"
+  },
+  {
+    "组件名": "Picker",
+    "表格名": "Props",
+    "第一列": "defaultValue",
+    "第二列": "默认选中",
+    "第三列": "`array`",
+    "第四列": "[]"
+  },
+  {
+    "组件名": "Picker",
+    "表格名": "Props",
+    "第一列": "threeDimensional",
+    "第二列": "是否开启3D效果",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Picker",
+    "表格名": "Props",
+    "第一列": "duration",
+    "第二列": "快速滑动时惯性滚动的时长，单位 ms",
+    "第三列": "`string | number`",
+    "第四列": "1000"
+  },
+  {
+    "组件名": "Picker",
+    "表格名": "Props",
+    "第一列": "onConfirm",
+    "第二列": "点击确认按钮时候回调",
+    "第三列": "`(options, value) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Picker",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "每一列值变更时调用",
+    "第三列": "`(options, value) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Picker",
+    "表格名": "Props",
+    "第一列": "onClose",
+    "第二列": "关闭时触发",
+    "第三列": "`(options, value) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Picker",
+    "表格名": "Props",
+    "第一列": "afterClose",
+    "第二列": "联动时，关闭时回调",
+    "第三列": "`(options, value) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Picker",
+    "表格名": "options 数据结构",
+    "第一列": "text",
+    "第二列": "选项的文字内容",
+    "第三列": "`string | number`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Picker",
+    "表格名": "options 数据结构",
+    "第一列": "value",
+    "第二列": "选项对应的值，且唯一",
+    "第三列": "`string | number`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Picker",
+    "表格名": "options 数据结构",
+    "第一列": "children",
+    "第二列": "用于级联选项",
+    "第三列": "`array`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "Props",
+    "第一列": "list",
+    "第二列": "选项列表",
+    "第三列": "`list[]`",
+    "第四列": "[]"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "Props",
+    "第一列": "visible",
+    "第二列": "是否展示气泡弹出层",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "Props",
+    "第一列": "location",
+    "第二列": "弹出位置，里面具体的参数值可以参考上面的位置自定义例子",
+    "第三列": "`string`",
+    "第四列": "bottom"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "Props",
+    "第一列": "offset",
+    "第二列": "出现位置的偏移量",
+    "第三列": "`string[] | number[]`",
+    "第四列": "[0, 12]"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "Props",
+    "第一列": "showArrow",
+    "第二列": "是否显示小箭头",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "Props",
+    "第一列": "duration",
+    "第二列": "动画时长，单位秒",
+    "第三列": "`string | number`",
+    "第四列": "0.3"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "Props",
+    "第一列": "overlay",
+    "第二列": "是否显示遮罩层",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "Props",
+    "第一列": "overlayClassName",
+    "第二列": "自定义遮罩层类名",
+    "第三列": "`string`",
+    "第四列": "''"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "Props",
+    "第一列": "overlayStyle",
+    "第二列": "自定义遮罩层样式",
+    "第三列": "`react.cssproperties`",
+    "第四列": "{}"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "Props",
+    "第一列": "closeOnOverlayClick",
+    "第二列": "是否在点击遮罩层后关闭菜单",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "Props",
+    "第一列": "closeOnClickAction",
+    "第二列": "是否在点击选项后关闭",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "Props",
+    "第一列": "closeOnClickOutside",
+    "第二列": "是否在点击外部元素后关闭菜单",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "Props",
+    "第一列": "background",
+    "第二列": "自定义背景色",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "Props",
+    "第一列": "color",
+    "第二列": "自定义选项文字颜色",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "Props",
+    "第一列": "targetId",
+    "第二列": "自定义目标元素 id",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "Props",
+    "第一列": "onClick",
+    "第二列": "点击切换 popover 展示状态",
+    "第三列": "`() => void`",
+    "第四列": "() => {}"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "Props",
+    "第一列": "onSelect",
+    "第二列": "点击选项时触发",
+    "第三列": "`(item: list, index: number) => void`",
+    "第四列": "(item, index) => {}"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "Props",
+    "第一列": "onOpen",
+    "第二列": "点击菜单时触发",
+    "第三列": "`() => void`",
+    "第四列": "() => {}"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "Props",
+    "第一列": "onClose",
+    "第二列": "关闭菜单时触发",
+    "第三列": "`() => void`",
+    "第四列": "() => {}"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "List 数据结构",
+    "第一列": "key",
+    "第二列": "选项 key 值",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "List 数据结构",
+    "第一列": "name",
+    "第二列": "选项文字",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "List 数据结构",
+    "第一列": "icon",
+    "第二列": "参考 Icon 组件",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "List 数据结构",
+    "第一列": "disabled",
+    "第二列": "是否为禁用状态",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Popover",
+    "表格名": "List 数据结构",
+    "第一列": "className",
+    "第二列": "为对应选项添加额外的类名",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "visible",
+    "第二列": "当前组件是否显示",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "zIndex",
+    "第二列": "遮罩层级",
+    "第三列": "`string | number`",
+    "第四列": "2000"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "duration",
+    "第二列": "遮罩动画时长，单位秒",
+    "第三列": "`number`",
+    "第四列": "0.3"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "overlayClassName",
+    "第二列": "自定义遮罩类名",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "overlayStyle",
+    "第二列": "自定义遮罩样式",
+    "第三列": "`cssproperties`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "lockScroll",
+    "第二列": "背景是否锁定",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "overlay",
+    "第二列": "是否显示遮罩",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "closeOnOverlayClick",
+    "第二列": "是否点击遮罩关闭",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "position",
+    "第二列": "弹出位置（top,bottom,left,right,center）",
+    "第三列": "`string`",
+    "第四列": "center"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "transition",
+    "第二列": "动画名",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "style",
+    "第二列": "自定义弹框样式",
+    "第三列": "`cssproperties`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "className",
+    "第二列": "自定义弹框类名",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "closeable",
+    "第二列": "是否显示关闭按钮",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "closeIconPosition",
+    "第二列": "关闭按钮位置（top-left,top-right,bottom-left,bottom-right）",
+    "第三列": "`string`",
+    "第四列": "top-right"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "closeIcon",
+    "第二列": "自定义 Icon",
+    "第三列": "`reactnode`",
+    "第四列": "close"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "destroyOnClose",
+    "第二列": "组件不可见时，卸载内容",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "round",
+    "第二列": "是否显示圆角",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "portal",
+    "第二列": "指定节点挂载",
+    "第三列": "`htmlelement | (() => htmlelement) | null`",
+    "第四列": "null"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "onClick",
+    "第二列": "点击弹框时触发",
+    "第三列": "`event: mouseevent`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "onClickCloseIcon",
+    "第二列": "点击关闭图标时触发",
+    "第三列": "`event: mouseevent`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "onOpen",
+    "第二列": "打开弹框时触发",
+    "第三列": "-",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "onClose",
+    "第二列": "关闭弹框时触发",
+    "第三列": "-",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "afterShow",
+    "第二列": "继承于`Overlay`, 遮罩打开动画结束时触发",
+    "第三列": "`event: htmlelement`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "afterClose",
+    "第二列": "继承于`Overlay`, 遮罩关闭动画结束时触发",
+    "第三列": "`event: htmlelement`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Popup",
+    "表格名": "Props",
+    "第一列": "onClickOverlay",
+    "第二列": "点击遮罩触发",
+    "第三列": "`event: mouseevent`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Price",
+    "表格名": "Props",
+    "第一列": "price",
+    "第二列": "价格数量",
+    "第三列": "`number`",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Price",
+    "表格名": "Props",
+    "第一列": "symbol",
+    "第二列": "符号类型",
+    "第三列": "`string`",
+    "第四列": "&yen;"
+  },
+  {
+    "组件名": "Price",
+    "表格名": "Props",
+    "第一列": "digits",
+    "第二列": "小数位位数",
+    "第三列": "`number`",
+    "第四列": "2"
+  },
+  {
+    "组件名": "Price",
+    "表格名": "Props",
+    "第一列": "thousands",
+    "第二列": "是否按照千分号形式显示",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Price",
+    "表格名": "Props",
+    "第一列": "position",
+    "第二列": "符号显示在价格前或者后，`before`、`after`",
+    "第三列": "`string`",
+    "第四列": "before"
+  },
+  {
+    "组件名": "Price",
+    "表格名": "Props",
+    "第一列": "size",
+    "第二列": "价格尺寸，`large`、`normal`、`small`",
+    "第三列": "`string`",
+    "第四列": "large"
+  },
+  {
+    "组件名": "Price",
+    "表格名": "Props",
+    "第一列": "line",
+    "第二列": "是否划线价",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Progress",
+    "表格名": "Props",
+    "第一列": "percent",
+    "第二列": "百分比",
+    "第三列": "`number`",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Progress",
+    "表格名": "Props",
+    "第一列": "color",
+    "第二列": "进度条线条颜色",
+    "第三列": "`string`",
+    "第四列": "linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)"
+  },
+  {
+    "组件名": "Progress",
+    "表格名": "Props",
+    "第一列": "background",
+    "第二列": "进度条背景颜色",
+    "第三列": "`string`",
+    "第四列": "#f3f3f3"
+  },
+  {
+    "组件名": "Progress",
+    "表格名": "Props",
+    "第一列": "strokeWidth",
+    "第二列": "进度条宽度",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Progress",
+    "表格名": "Props",
+    "第一列": "showText",
+    "第二列": "是否显示文字内容",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Progress",
+    "表格名": "Props",
+    "第一列": "animated",
+    "第二列": "是否展示动画效果",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Progress",
+    "表格名": "Props",
+    "第一列": "lazy",
+    "第二列": "每次进入可视区展示进度条动画",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Progress",
+    "表格名": "Props",
+    "第一列": "delay",
+    "第二列": "延迟数据加载时长，单位 ms",
+    "第三列": "`number`",
+    "第四列": "0"
+  },
+  {
+    "组件名": "PullToRefresh",
+    "表格名": "Props",
+    "第一列": "canReleaseText",
+    "第二列": "释放的提示文案",
+    "第三列": "`reactnode`",
+    "第四列": "释放立即刷新"
+  },
+  {
+    "组件名": "PullToRefresh",
+    "表格名": "Props",
+    "第一列": "completeText",
+    "第二列": "完成时的提示文案",
+    "第三列": "`reactnode`",
+    "第四列": "刷新成功"
+  },
+  {
+    "组件名": "PullToRefresh",
+    "表格名": "Props",
+    "第一列": "completeDelay",
+    "第二列": "完成后延迟消失的时间，单位为 ms",
+    "第三列": "`number`",
+    "第四列": "500"
+  },
+  {
+    "组件名": "PullToRefresh",
+    "表格名": "Props",
+    "第一列": "disabled",
+    "第二列": "是否禁用下拉刷新",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "PullToRefresh",
+    "表格名": "Props",
+    "第一列": "headHeight",
+    "第二列": "头部提示内容区的高度，单位为 px",
+    "第三列": "`number`",
+    "第四列": "40"
+  },
+  {
+    "组件名": "PullToRefresh",
+    "表格名": "Props",
+    "第一列": "pullingText",
+    "第二列": "下拉的提示文案",
+    "第三列": "`reactnode`",
+    "第四列": "下拉刷新"
+  },
+  {
+    "组件名": "PullToRefresh",
+    "表格名": "Props",
+    "第一列": "refreshingText",
+    "第二列": "刷新时的提示文案",
+    "第三列": "`reactnode`",
+    "第四列": "加载中……"
+  },
+  {
+    "组件名": "PullToRefresh",
+    "表格名": "Props",
+    "第一列": "renderText",
+    "第二列": "根据下拉状态，自定义下拉提示文案",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "PullToRefresh",
+    "表格名": "Props",
+    "第一列": "threshold",
+    "第二列": "触发刷新需要下拉多少距离，单位为 px",
+    "第三列": "`number`",
+    "第四列": "60"
+  },
+  {
+    "组件名": "PullToRefresh",
+    "表格名": "Props",
+    "第一列": "onRefresh",
+    "第二列": "触发刷新时的处理函数",
+    "第三列": "`() => promise<any>`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Radio",
+    "表格名": "Props",
+    "第一列": "checked",
+    "第二列": "指定当前是否选中",
+    "第三列": "`boolean`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Radio",
+    "表格名": "Props",
+    "第一列": "defaultChecked",
+    "第二列": "初始是否选中",
+    "第三列": "`boolean`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Radio",
+    "表格名": "Props",
+    "第一列": "disabled",
+    "第二列": "是否禁用选择",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Radio",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "携带的标识值，用于 Group 模式",
+    "第三列": "`string | number`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Radio",
+    "表格名": "Props",
+    "第一列": "labelPosition",
+    "第二列": "文本所在的位置",
+    "第三列": "`left | right`",
+    "第四列": "right"
+  },
+  {
+    "组件名": "Radio",
+    "表格名": "Props",
+    "第一列": "icon",
+    "第二列": "[图标名称](#/icon)，选中前(建议和`activeIcon`一起修改)",
+    "第三列": "`reactnode`",
+    "第四列": "'CheckNormal'"
+  },
+  {
+    "组件名": "Radio",
+    "表格名": "Props",
+    "第一列": "activeIcon",
+    "第二列": "[图标名称](#/icon)，选中后(建议和`icon`一起修改)",
+    "第三列": "`reactnode`",
+    "第四列": "'CheckChecked'"
+  },
+  {
+    "组件名": "Radio",
+    "表格名": "Props",
+    "第一列": "shape",
+    "第二列": "形状",
+    "第三列": "`'button' | 'round'`",
+    "第四列": "round"
+  },
+  {
+    "组件名": "Radio",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "选中态变化时触发",
+    "第三列": "`(checked: boolean) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Radio.Group",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "当前选中项的标识符",
+    "第三列": "`string | number`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Radio.Group",
+    "表格名": "Props",
+    "第一列": "labelPosition",
+    "第二列": "文本所在的位置",
+    "第三列": "`left | right`",
+    "第四列": "right"
+  },
+  {
+    "组件名": "Radio.Group",
+    "表格名": "Props",
+    "第一列": "disabled",
+    "第二列": "是否禁用",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Radio.Group",
+    "表格名": "Props",
+    "第一列": "direction",
+    "第二列": "使用横纵方向",
+    "第三列": "`horizontal | vertical`",
+    "第四列": "vertical"
+  },
+  {
+    "组件名": "Radio.Group",
+    "表格名": "Props",
+    "第一列": "options",
+    "第二列": "配置 options 渲染单选按钮",
+    "第三列": "`array<{ label: string value: string disabled?: boolean }`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Radio.Group",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "值变化时触发",
+    "第三列": "`(value: string | number) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Range",
+    "表格名": "Props",
+    "第一列": "defaultValue",
+    "第二列": "默认进度百分比，非受控",
+    "第三列": "`number | number[]`",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Range",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "当前进度百分比，受控",
+    "第三列": "`number | number[]`",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Range",
+    "表格名": "Props",
+    "第一列": "range",
+    "第二列": "是否开启双滑块模式",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Range",
+    "表格名": "Props",
+    "第一列": "max",
+    "第二列": "最大值",
+    "第三列": "`number`",
+    "第四列": "100"
+  },
+  {
+    "组件名": "Range",
+    "表格名": "Props",
+    "第一列": "min",
+    "第二列": "最小值",
+    "第三列": "`number`",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Range",
+    "表格名": "Props",
+    "第一列": "maxDescription",
+    "第二列": "最大值描述，传 `null` 表示隐藏",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Range",
+    "表格名": "Props",
+    "第一列": "minDescription",
+    "第二列": "最小值描述，传 `null` 表示隐藏",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Range",
+    "表格名": "Props",
+    "第一列": "currentDescription",
+    "第二列": "当前值描述，传 `null` 表示隐藏",
+    "第三列": "`((value) => reactnode) | null`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Range",
+    "表格名": "Props",
+    "第一列": "step",
+    "第二列": "步长",
+    "第三列": "`number`",
+    "第四列": "1"
+  },
+  {
+    "组件名": "Range",
+    "表格名": "Props",
+    "第一列": "disabled",
+    "第二列": "是否禁用滑块",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Range",
+    "表格名": "Props",
+    "第一列": "vertical",
+    "第二列": "是否竖向展示",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Range",
+    "表格名": "Props",
+    "第一列": "marks",
+    "第二列": "刻度标示",
+    "第三列": "`object{key: number}`",
+    "第四列": "{}"
+  },
+  {
+    "组件名": "Range",
+    "表格名": "Props",
+    "第一列": "button",
+    "第二列": "自定义滑动按钮",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Range",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "进度实时变化，通常在受控方式中与 value 一起使用",
+    "第三列": "`(value) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Range",
+    "表格名": "Props",
+    "第一列": "onStart",
+    "第二列": "开始拖动时触发",
+    "第三列": "-",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Range",
+    "表格名": "Props",
+    "第一列": "onEnd",
+    "第二列": "结束拖动时触发",
+    "第三列": "`(value) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Rate",
+    "表格名": "Props",
+    "第一列": "defaultValue",
+    "第二列": "非受控的 star 默认值",
+    "第三列": "number",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Rate",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "受控的 star 数值",
+    "第三列": "number",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Rate",
+    "表格名": "Props",
+    "第一列": "count",
+    "第二列": "star 总数",
+    "第三列": "number",
+    "第四列": "5"
+  },
+  {
+    "组件名": "Rate",
+    "表格名": "Props",
+    "第一列": "min",
+    "第二列": "最少选中star数量",
+    "第三列": "number",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Rate",
+    "表格名": "Props",
+    "第一列": "uncheckedIcon",
+    "第二列": "使用图标(未选中)",
+    "第三列": "reactnode",
+    "第四列": "star-n"
+  },
+  {
+    "组件名": "Rate",
+    "表格名": "Props",
+    "第一列": "checkedIcon",
+    "第二列": "使用图标(选中)",
+    "第三列": "reactnode",
+    "第四列": "star-n"
+  },
+  {
+    "组件名": "Rate",
+    "表格名": "Props",
+    "第一列": "allowHalf",
+    "第二列": "是否半星",
+    "第三列": "boolean",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Rate",
+    "表格名": "Props",
+    "第一列": "readOnly",
+    "第二列": "是否只读",
+    "第三列": "boolean",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Rate",
+    "表格名": "Props",
+    "第一列": "disabled",
+    "第二列": "是否禁用",
+    "第三列": "boolean",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Rate",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "当前 star 数修改时触发",
+    "第三列": "(value: number) => void",
+    "第四列": "-"
+  },
+  {
+    "组件名": "SearchBar",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "当前输入的值",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "SearchBar",
+    "表格名": "Props",
+    "第一列": "placeholder",
+    "第二列": "输入框默认暗纹",
+    "第三列": "`string`",
+    "第四列": "请输入"
+  },
+  {
+    "组件名": "SearchBar",
+    "表格名": "Props",
+    "第一列": "shape",
+    "第二列": "搜索框形状，可选值为 `round`",
+    "第三列": "`string`",
+    "第四列": "square"
+  },
+  {
+    "组件名": "SearchBar",
+    "表格名": "Props",
+    "第一列": "disabled",
+    "第二列": "是否禁用输入框",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "SearchBar",
+    "表格名": "Props",
+    "第一列": "readOnly",
+    "第二列": "输入框只读",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "SearchBar",
+    "表格名": "Props",
+    "第一列": "maxLength",
+    "第二列": "最大输入长度",
+    "第三列": "`number`",
+    "第四列": "9999"
+  },
+  {
+    "组件名": "SearchBar",
+    "表格名": "Props",
+    "第一列": "clearable",
+    "第二列": "是否展示清除按钮",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "SearchBar",
+    "表格名": "Props",
+    "第一列": "autoFocus",
+    "第二列": "是否自动聚焦",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "SearchBar",
+    "表格名": "Props",
+    "第一列": "left",
+    "第二列": "搜索框左侧区域",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "SearchBar",
+    "表格名": "Props",
+    "第一列": "right",
+    "第二列": "搜搜框右侧区域",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "SearchBar",
+    "表格名": "Props",
+    "第一列": "leftIn",
+    "第二列": "输入框内左侧区域",
+    "第三列": "`reactnode`",
+    "第四列": "<Search size=\"12\" />"
+  },
+  {
+    "组件名": "SearchBar",
+    "表格名": "Props",
+    "第一列": "rightIn",
+    "第二列": "输入框内右侧区域",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "SearchBar",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "输入内容时触发",
+    "第三列": "`(value: string, event: event) => void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "SearchBar",
+    "表格名": "Props",
+    "第一列": "onFocus",
+    "第二列": "聚焦时触发",
+    "第三列": "`(value: string, event: event) => void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "SearchBar",
+    "表格名": "Props",
+    "第一列": "onBlur",
+    "第二列": "失焦时触发",
+    "第三列": "`(value: string, event: event) => void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "SearchBar",
+    "表格名": "Props",
+    "第一列": "onClear",
+    "第二列": "点击清空时触发",
+    "第三列": "`(event: event) => void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "SearchBar",
+    "表格名": "Props",
+    "第一列": "onSearch",
+    "第二列": "确定搜索时触发",
+    "第三列": "`(val: string) => void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "SearchBar",
+    "表格名": "Props",
+    "第一列": "onClickInput",
+    "第二列": "点击输入区域时触发",
+    "第三列": "`(event: event) => void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "ShortPassword",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "密码字符串",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "ShortPassword",
+    "表格名": "Props",
+    "第一列": "visible",
+    "第二列": "是否展示短密码框",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "ShortPassword",
+    "表格名": "Props",
+    "第一列": "plain",
+    "第二列": "是否展示明文",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "ShortPassword",
+    "表格名": "Props",
+    "第一列": "title",
+    "第二列": "标题",
+    "第三列": "`reactnode`",
+    "第四列": "请输入密码"
+  },
+  {
+    "组件名": "ShortPassword",
+    "表格名": "Props",
+    "第一列": "description",
+    "第二列": "密码框描述",
+    "第三列": "`reactnode`",
+    "第四列": "您使用了虚拟资产，请进行验证"
+  },
+  {
+    "组件名": "ShortPassword",
+    "表格名": "Props",
+    "第一列": "tips",
+    "第二列": "提示语",
+    "第三列": "`reactnode`",
+    "第四列": "忘记密码"
+  },
+  {
+    "组件名": "ShortPassword",
+    "表格名": "Props",
+    "第一列": "hideFooter",
+    "第二列": "是否隐藏底部按钮",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "ShortPassword",
+    "表格名": "Props",
+    "第一列": "length",
+    "第二列": "密码长度，取值为4~6",
+    "第三列": "`number`",
+    "第四列": "6"
+  },
+  {
+    "组件名": "ShortPassword",
+    "表格名": "Props",
+    "第一列": "error",
+    "第二列": "错误信息提示",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "ShortPassword",
+    "表格名": "Props",
+    "第一列": "autoFocus",
+    "第二列": "自动聚焦",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "ShortPassword",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "输入密码时触发事件",
+    "第三列": "`(value) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "ShortPassword",
+    "表格名": "Props",
+    "第一列": "onConfirm",
+    "第二列": "点击确认时触发事件",
+    "第三列": "`(value) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "ShortPassword",
+    "表格名": "Props",
+    "第一列": "onCancel",
+    "第二列": "点击取消时触发事件",
+    "第三列": "`() => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "ShortPassword",
+    "表格名": "Props",
+    "第一列": "onClose",
+    "第二列": "点击关闭图标和遮罩时触发事件",
+    "第三列": "`() => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "ShortPassword",
+    "表格名": "Props",
+    "第一列": "onTips",
+    "第二列": "点击忘记密码时触发事件",
+    "第三列": "`() => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "ShortPassword",
+    "表格名": "Props",
+    "第一列": "onComplete",
+    "第二列": "输入完成的回调",
+    "第三列": "`(value) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "ShortPassword",
+    "表格名": "Props",
+    "第一列": "onFocus",
+    "第二列": "输入框聚焦",
+    "第三列": "`() => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "SideNavBar",
+    "表格名": "Props",
+    "第一列": "visible",
+    "第二列": "组件是否显示",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "SideNavBar",
+    "表格名": "Props",
+    "第一列": "title",
+    "第二列": "整体标题",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "SideNavBar",
+    "表格名": "Props",
+    "第一列": "width",
+    "第二列": "遮罩宽度百分比",
+    "第三列": "`string`",
+    "第四列": "80%"
+  },
+  {
+    "组件名": "SideNavBar",
+    "表格名": "Props",
+    "第一列": "position",
+    "第二列": "弹出位置",
+    "第三列": "`'left' | 'right'`",
+    "第四列": "left"
+  },
+  {
+    "组件名": "SideNavBar",
+    "表格名": "Props",
+    "第一列": "indent",
+    "第二列": "缩进宽度",
+    "第三列": "`number`",
+    "第四列": "20"
+  },
+  {
+    "组件名": "SideNavBar",
+    "表格名": "Props",
+    "第一列": "onClose",
+    "第二列": "关闭遮罩时触发",
+    "第三列": "`-`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "SubSideNavBar",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "导航唯一标识",
+    "第三列": "`string | number`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "SubSideNavBar",
+    "表格名": "Props",
+    "第一列": "title",
+    "第二列": "整体标题",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "SubSideNavBar",
+    "表格名": "Props",
+    "第一列": "open",
+    "第二列": "导航是否默认展开",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "SubSideNavBar",
+    "表格名": "Props",
+    "第一列": "onClick",
+    "第二列": "导航点击",
+    "第三列": "`data: {title: string, value: string | number, isshow: boolean}`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "SideNavBarItem",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "导航唯一标识",
+    "第三列": "`string | number`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "SideNavBarItem",
+    "表格名": "Props",
+    "第一列": "title",
+    "第二列": "整体标题",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "SideNavBarItem",
+    "表格名": "Props",
+    "第一列": "onClick",
+    "第二列": "导航点击",
+    "第三列": "`data: {title: string, value: string | number}`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Signature",
+    "表格名": "Props",
+    "第一列": "customClass",
+    "第二列": "自定义 class",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Signature",
+    "表格名": "Props",
+    "第一列": "lineWidth",
+    "第二列": "线条的宽度",
+    "第三列": "`number`",
+    "第四列": "3"
+  },
+  {
+    "组件名": "Signature",
+    "表格名": "Props",
+    "第一列": "strokeStyle",
+    "第二列": "绘图笔触颜色",
+    "第三列": "`string`",
+    "第四列": "#000"
+  },
+  {
+    "组件名": "Signature",
+    "表格名": "Props",
+    "第一列": "type",
+    "第二列": "图片格式",
+    "第三列": "`string`",
+    "第四列": "png"
+  },
+  {
+    "组件名": "Signature",
+    "表格名": "Props",
+    "第一列": "unsupported",
+    "第二列": "不支持 Canvas 情况下的展示文案",
+    "第三列": "`reactnode`",
+    "第四列": "对不起，当前浏览器不支持 Canvas，无法使用本控件！"
+  },
+  {
+    "组件名": "Signature",
+    "表格名": "Props",
+    "第一列": "onConfirm",
+    "第二列": "点击确认按钮触发事件回调函数",
+    "第三列": "`onconfirm: (canvas: htmlcanvaselement, dataurl: string) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Signature",
+    "表格名": "Props",
+    "第一列": "onClear",
+    "第二列": "点击重签按钮触发事件回调函数",
+    "第三列": "`onclear: () => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Signature",
+    "表格名": "Ref",
+    "第一列": "confirm",
+    "第二列": "确认签字",
+    "第三列": "`() => void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Signature",
+    "表格名": "Ref",
+    "第一列": "clear",
+    "第二列": "清除签字",
+    "第三列": "`() => void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Skeleton",
+    "表格名": "Props",
+    "第一列": "visible",
+    "第二列": "是否显示骨架屏(true不显示骨架屏，false显示骨架屏)",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Skeleton",
+    "表格名": "Props",
+    "第一列": "animated",
+    "第二列": "是否开启骨架屏动画",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Skeleton",
+    "表格名": "Props",
+    "第一列": "avatar",
+    "第二列": "是否显示头像",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Skeleton",
+    "表格名": "Props",
+    "第一列": "avatarShape",
+    "第二列": "头像形状：正方形/圆形",
+    "第三列": "`string`",
+    "第四列": "round"
+  },
+  {
+    "组件名": "Skeleton",
+    "表格名": "Props",
+    "第一列": "avatarSize",
+    "第二列": "头像大小",
+    "第三列": "`string`",
+    "第四列": "50px"
+  },
+  {
+    "组件名": "Skeleton",
+    "表格名": "Props",
+    "第一列": "rows",
+    "第二列": "设置段落行数",
+    "第三列": "`string`",
+    "第四列": "1"
+  },
+  {
+    "组件名": "Skeleton",
+    "表格名": "Props",
+    "第一列": "title",
+    "第二列": "是否显示段落标题",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Steps",
+    "表格名": "Props",
+    "第一列": "direction",
+    "第二列": "显示方向，`horizontal`,`vertical`",
+    "第三列": "`string`",
+    "第四列": "horizontal"
+  },
+  {
+    "组件名": "Steps",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "当前所在的步骤",
+    "第三列": "`number`",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Steps",
+    "表格名": "Props",
+    "第一列": "dot",
+    "第二列": "点状步骤条",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Step",
+    "表格名": "Props",
+    "第一列": "title",
+    "第二列": "流程步骤的标题",
+    "第三列": "`string`",
+    "第四列": "''"
+  },
+  {
+    "组件名": "Step",
+    "表格名": "Props",
+    "第一列": "description",
+    "第二列": "流程步骤的描述性文字",
+    "第三列": "`string`",
+    "第四列": "''"
+  },
+  {
+    "组件名": "Step",
+    "表格名": "Props",
+    "第一列": "icon",
+    "第二列": "图标(来自Icon组件的name属性)",
+    "第三列": "`reactnode`",
+    "第四列": "''"
+  },
+  {
+    "组件名": "Step",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "流程步骤的索引",
+    "第三列": "`number`",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Step",
+    "表格名": "Props",
+    "第一列": "description",
+    "第二列": "流程步骤的描述性文字的html结构",
+    "第三列": "`react.reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Step",
+    "表格名": "Props",
+    "第一列": "onStepClick",
+    "第二列": "点击步骤的标题或图标时触发",
+    "第三列": "`(index: number) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Sticky",
+    "表格名": "Props",
+    "第一列": "position",
+    "第二列": "吸附位置（top、bottom）",
+    "第三列": "string",
+    "第四列": "top"
+  },
+  {
+    "组件名": "Sticky",
+    "表格名": "Props",
+    "第一列": "threshold",
+    "第二列": "距离，当 position 为 top 时，设置的是 top",
+    "第三列": "number",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Sticky",
+    "表格名": "Props",
+    "第一列": "zIndex",
+    "第二列": "吸附时的层级",
+    "第三列": "number",
+    "第四列": "2000"
+  },
+  {
+    "组件名": "Sticky",
+    "表格名": "Props",
+    "第一列": "container",
+    "第二列": "容器的 ref",
+    "第三列": "`react.refobject<htmlelement>`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Sticky",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "吸附状态改变时触发",
+    "第三列": "`val: boolean`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Swipe",
+    "表格名": "Props",
+    "第一列": "name",
+    "第二列": "标识符，可以在事件参数中获取到",
+    "第三列": "`number | string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Swipe",
+    "表格名": "Props",
+    "第一列": "leftAction",
+    "第二列": "左侧滑动区域的内容",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Swipe",
+    "表格名": "Props",
+    "第一列": "rightAction",
+    "第二列": "右侧滑动区域的内容",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Swipe",
+    "表格名": "Props",
+    "第一列": "beforeClose",
+    "第二列": "关闭前的回调函数，返回滑动区域所在方向 `position`",
+    "第三列": "`(position: 'left | 'right') => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Swipe",
+    "表格名": "Props",
+    "第一列": "disabled",
+    "第二列": "是否禁用滑动",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Swipe",
+    "表格名": "Props",
+    "第一列": "onOpen",
+    "第二列": "打开单元格侧边栏",
+    "第三列": "`(name, position): { name: string | number, position: 'left' | 'right' } => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Swipe",
+    "表格名": "Props",
+    "第一列": "onClose",
+    "第二列": "收起单元格侧边栏",
+    "第三列": "`(name, position): { name: string | number, position: 'left' | 'right' } => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Swipe",
+    "表格名": "Props",
+    "第一列": "onActionClick",
+    "第二列": "点击左侧或者右侧时触发",
+    "第三列": "`(event: event, position: 'left' | 'right') => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Swipe",
+    "表格名": "Props",
+    "第一列": "onTouchStart",
+    "第二列": "onTouchStart",
+    "第三列": "`(event: event) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Swipe",
+    "表格名": "Props",
+    "第一列": "onTouchMove",
+    "第二列": "onTouchMove",
+    "第三列": "`(event: event) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Swipe",
+    "表格名": "Props",
+    "第一列": "onTouchEnd",
+    "第二列": "onTouchEnd",
+    "第三列": "`(event: event) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Swipe",
+    "表格名": "Ref",
+    "第一列": "open",
+    "第二列": "打开单元格侧边栏，`side`参数默认为`right`",
+    "第三列": "`(side?: 'left' | 'right') => void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Swipe",
+    "表格名": "Ref",
+    "第一列": "close",
+    "第二列": "收起单元格侧边栏",
+    "第三列": "`() => void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Swiper",
+    "表格名": "Props",
+    "第一列": "width",
+    "第二列": "轮播卡片的宽度",
+    "第三列": "`number | string`",
+    "第四列": "window.innerWidth"
+  },
+  {
+    "组件名": "Swiper",
+    "表格名": "Props",
+    "第一列": "height",
+    "第二列": "轮播卡片的高度",
+    "第三列": "`number | string`",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Swiper",
+    "表格名": "Props",
+    "第一列": "direction",
+    "第二列": "轮播方向,可选值`horizontal`,`vertical`",
+    "第三列": "`string`",
+    "第四列": "horizontal"
+  },
+  {
+    "组件名": "Swiper",
+    "表格名": "Props",
+    "第一列": "indicator",
+    "第二列": "分页指示器是否展示，可传入自定义的 HTML 结构",
+    "第三列": "`reactnode`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Swiper",
+    "表格名": "Props",
+    "第一列": "loop",
+    "第二列": "是否循环轮播",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Swiper",
+    "表格名": "Props",
+    "第一列": "duration",
+    "第二列": "动画时长（单位是ms）",
+    "第三列": "`number | string`",
+    "第四列": "500"
+  },
+  {
+    "组件名": "Swiper",
+    "表格名": "Props",
+    "第一列": "autoPlay",
+    "第二列": "自动轮播时长，0表示不会自动轮播",
+    "第三列": "`number | string`",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Swiper",
+    "表格名": "Props",
+    "第一列": "defaultValue",
+    "第二列": "初始化索引值",
+    "第三列": "`number | string`",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Swiper",
+    "表格名": "Props",
+    "第一列": "touchable",
+    "第二列": "是否可触摸滑动",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Swiper",
+    "表格名": "Props",
+    "第一列": "preventDefault",
+    "第二列": "滑动过程中是否禁用默认事件",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Swiper",
+    "表格名": "Props",
+    "第一列": "stopPropagation",
+    "第二列": "滑动过程中是否禁止冒泡",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Swiper",
+    "表格名": "Props",
+    "第一列": "center",
+    "第二列": "是否居中展示，必须传对应的`width` 和 `height`",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Swiper",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "卡片切换后的回调",
+    "第三列": "`(current: number) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Swiper",
+    "表格名": "Ref",
+    "第一列": "prev",
+    "第二列": "切换到上一页",
+    "第三列": "`()=>void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Swiper",
+    "表格名": "Ref",
+    "第一列": "next",
+    "第二列": "切换到下一页",
+    "第三列": "`()=>void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Swiper",
+    "表格名": "Ref",
+    "第一列": "to",
+    "第二列": "切换到指定轮播",
+    "第三列": "`(index: number)=>void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Swiper",
+    "表格名": "Ref",
+    "第一列": "resize",
+    "第二列": "外层元素大小或组件显示状态变化时，可以调用此方法来触发重绘",
+    "第三列": "`()=>void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Switch",
+    "表格名": "Props",
+    "第一列": "defaultChecked",
+    "第二列": "开关状态，非受控",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Switch",
+    "表格名": "Props",
+    "第一列": "checked",
+    "第二列": "开关状态，受控",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Switch",
+    "表格名": "Props",
+    "第一列": "disabled",
+    "第二列": "禁用状态",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Switch",
+    "表格名": "Props",
+    "第一列": "activeText",
+    "第二列": "打开时文字描述",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Switch",
+    "表格名": "Props",
+    "第一列": "inactiveText",
+    "第二列": "关闭时文字描述",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Switch",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "切换开关时触发",
+    "第三列": "`onchange:(value: boolean, event: event)`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Tabbar",
+    "表格名": "Props",
+    "第一列": "defaultValue",
+    "第二列": "默认选中的标签的索引值",
+    "第三列": "`number`",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Tabbar",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "选中的标签的索引值",
+    "第三列": "`number`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Tabbar",
+    "表格名": "Props",
+    "第一列": "fixed",
+    "第二列": "是否固定在页面底部，为 true 时默认开启 safeArea",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Tabbar",
+    "表格名": "Props",
+    "第一列": "activeColor",
+    "第二列": "icon激活的颜色",
+    "第三列": "`string`",
+    "第四列": "#1989fa"
+  },
+  {
+    "组件名": "Tabbar",
+    "表格名": "Props",
+    "第一列": "inactiveColor",
+    "第二列": "icon未激活的颜色",
+    "第三列": "`string`",
+    "第四列": "#7d7e80"
+  },
+  {
+    "组件名": "Tabbar",
+    "表格名": "Props",
+    "第一列": "safeArea",
+    "第二列": "是否开启iphone系列全面屏底部安全区适配",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Tabbar",
+    "表格名": "Props",
+    "第一列": "onSwitch",
+    "第二列": "切换页签时触发事件",
+    "第三列": "`(value) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Tabbar.Item",
+    "表格名": "Props",
+    "第一列": "title",
+    "第二列": "标签页的标题",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Tabbar.Item",
+    "表格名": "Props",
+    "第一列": "icon",
+    "第二列": "自定义图标",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Tabbar.Item",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "徽标中显示的内容，支持数字、字符和自定义内容",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Tabbar.Item",
+    "表格名": "Props",
+    "第一列": "max",
+    "第二列": "value 为数值时，最大值",
+    "第三列": "`number`",
+    "第四列": "99"
+  },
+  {
+    "组件名": "Tabbar.Item",
+    "表格名": "Props",
+    "第一列": "dot",
+    "第二列": "徽标是否为小点",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Tabbar.Item",
+    "表格名": "Props",
+    "第一列": "top",
+    "第二列": "徽标的上下偏移量，支持单位设置，可设置为：5 等",
+    "第三列": "`number`",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Tabbar.Item",
+    "表格名": "Props",
+    "第一列": "right",
+    "第二列": "徽标的左右偏移量，支持单位设置，可设置为：5 等",
+    "第三列": "`number`",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Tabbar.Item",
+    "表格名": "Props",
+    "第一列": "color",
+    "第二列": "徽标的背景颜色，默认值为当前主题色",
+    "第三列": "`string`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Table",
+    "表格名": "Props",
+    "第一列": "bordered",
+    "第二列": "是否显示边框",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Table",
+    "表格名": "Props",
+    "第一列": "columns",
+    "第二列": "表头数据",
+    "第三列": "tablecolumnprops[]",
+    "第四列": "[]"
+  },
+  {
+    "组件名": "Table",
+    "表格名": "Props",
+    "第一列": "data",
+    "第二列": "表格数据",
+    "第三列": "object[]",
+    "第四列": "[]"
+  },
+  {
+    "组件名": "Table",
+    "表格名": "Props",
+    "第一列": "summary",
+    "第二列": "是否显示简介",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Table",
+    "表格名": "Props",
+    "第一列": "striped",
+    "第二列": "条纹是否明暗交替",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Table",
+    "表格名": "Props",
+    "第一列": "showHeader",
+    "第二列": "是否显示表头",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Table",
+    "表格名": "Props",
+    "第一列": "noData",
+    "第二列": "自定义无数据",
+    "第三列": "`reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Table",
+    "表格名": "Props",
+    "第一列": "onSort",
+    "第二列": "点击排序按钮触发",
+    "第三列": "`item: tablecolumnprops, data: array<any>`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Table",
+    "表格名": "TableColumnProps",
+    "第一列": "key",
+    "第二列": "列的唯一标识",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Table",
+    "表格名": "TableColumnProps",
+    "第一列": "title",
+    "第二列": "表头标题",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Table",
+    "表格名": "TableColumnProps",
+    "第一列": "align",
+    "第二列": "列的对齐方式，可选值left,center,right",
+    "第三列": "`string`",
+    "第四列": "left"
+  },
+  {
+    "组件名": "Table",
+    "表格名": "TableColumnProps",
+    "第一列": "sorter",
+    "第二列": "排序，可选值有 true,function, default, 其中 default表示点击之后可能会依赖接口, function可以返回具体的排序函数, default表示采用默认的排序算法",
+    "第三列": "`boolean | function | string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Table",
+    "表格名": "TableColumnProps",
+    "第一列": "render",
+    "第二列": "自定义渲染列数据，优先级高",
+    "第三列": "`function(record)`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Table",
+    "表格名": "TableColumnProps",
+    "第一列": "sorterIcon",
+    "第二列": "排序 icon",
+    "第三列": "`reactnode`",
+    "第四列": "<DownArrow />"
+  },
+  {
+    "组件名": "Tabs",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "当前激活 tab 面板的值",
+    "第三列": "`number | string`",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Tabs",
+    "表格名": "Props",
+    "第一列": "defaultValue",
+    "第二列": "初始化激活 tab 的值",
+    "第三列": "`number | string`",
+    "第四列": "0"
+  },
+  {
+    "组件名": "Tabs",
+    "表格名": "Props",
+    "第一列": "activeColor",
+    "第二列": "标签选中色",
+    "第三列": "`string`",
+    "第四列": "#1a1a1a"
+  },
+  {
+    "组件名": "Tabs",
+    "表格名": "Props",
+    "第一列": "direction",
+    "第二列": "使用横纵方向 可选值 `horizontal`、`vertical`",
+    "第三列": "`string`",
+    "第四列": "horizontal"
+  },
+  {
+    "组件名": "Tabs",
+    "表格名": "Props",
+    "第一列": "activeType",
+    "第二列": "选中底部展示样式 可选值 `line`、`smile`",
+    "第三列": "`string`",
+    "第四列": "line"
+  },
+  {
+    "组件名": "Tabs",
+    "表格名": "Props",
+    "第一列": "duration",
+    "第二列": "切换动画时长,单位 ms 0 代表无动画",
+    "第三列": "`number | string`",
+    "第四列": "300"
+  },
+  {
+    "组件名": "Tabs",
+    "表格名": "Props",
+    "第一列": "title",
+    "第二列": "自定义导航区域",
+    "第三列": "`() => jsx.element[]`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Tabs",
+    "表格名": "Props",
+    "第一列": "align",
+    "第二列": "标题左对齐",
+    "第三列": "`left | right`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Tabs",
+    "表格名": "Props",
+    "第一列": "autoHeight",
+    "第二列": "自动高度。设置为 true 时，nut-tabs 和 nut-tabs\\_\\_content 会随着当前 nut-tabpane 的高度而发生变化。",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Tabs",
+    "表格名": "Props",
+    "第一列": "tabStyle",
+    "第二列": "标签栏样式",
+    "第三列": "`cssproperties`",
+    "第四列": "{}"
+  },
+  {
+    "组件名": "Tabs",
+    "表格名": "Props",
+    "第一列": "onClick",
+    "第二列": "点击标签时触发",
+    "第三列": "`(index: string | number) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Tabs",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "当前激活的标签改变时触发",
+    "第三列": "`(index: string | number) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Tabs.Tabpane",
+    "表格名": "Props",
+    "第一列": "title",
+    "第二列": "标题",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Tabs.Tabpane",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "标签 Key , 匹配的标识符, 默认为索引值",
+    "第三列": "`string| number`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Tabs.Tabpane",
+    "表格名": "Props",
+    "第一列": "disabled",
+    "第二列": "是否禁用标签",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Tag",
+    "表格名": "Props",
+    "第一列": "type",
+    "第二列": "标签类型，可选值为primary success danger warning",
+    "第三列": "`string`",
+    "第四列": "default"
+  },
+  {
+    "组件名": "Tag",
+    "表格名": "Props",
+    "第一列": "background",
+    "第二列": "标签颜色",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Tag",
+    "表格名": "Props",
+    "第一列": "color",
+    "第二列": "文本颜色，优先级高于color属性",
+    "第三列": "`string`",
+    "第四列": "white"
+  },
+  {
+    "组件名": "Tag",
+    "表格名": "Props",
+    "第一列": "plain",
+    "第二列": "是否为空心样式",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Tag",
+    "表格名": "Props",
+    "第一列": "round",
+    "第二列": "是否为圆角样式",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Tag",
+    "表格名": "Props",
+    "第一列": "mark",
+    "第二列": "是否为标记样式",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Tag",
+    "表格名": "Props",
+    "第一列": "closeable",
+    "第二列": "是否为可关闭标签",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Tag",
+    "表格名": "Props",
+    "第一列": "closeIcon",
+    "第二列": "关闭按钮",
+    "第三列": "`reactnode`",
+    "第四列": "null"
+  },
+  {
+    "组件名": "Tag",
+    "表格名": "Props",
+    "第一列": "onClick",
+    "第二列": "点击事件",
+    "第三列": "`(e: mouseevent) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Tag",
+    "表格名": "Props",
+    "第一列": "onClose",
+    "第二列": "关闭事件",
+    "第三列": "`(e?: any) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "TextArea",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "输入框内容，受控",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "TextArea",
+    "表格名": "Props",
+    "第一列": "defaultValue",
+    "第二列": "初始默认值，非受控",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "TextArea",
+    "表格名": "Props",
+    "第一列": "placeholder",
+    "第二列": "设置占位提示文字",
+    "第三列": "`string`",
+    "第四列": "请输入内容"
+  },
+  {
+    "组件名": "TextArea",
+    "表格名": "Props",
+    "第一列": "maxLength",
+    "第二列": "限制最长输入字符，-1 表示无限制",
+    "第三列": "`number`",
+    "第四列": "140"
+  },
+  {
+    "组件名": "TextArea",
+    "表格名": "Props",
+    "第一列": "rows",
+    "第二列": "textarea 的行数",
+    "第三列": "`number`",
+    "第四列": "2"
+  },
+  {
+    "组件名": "TextArea",
+    "表格名": "Props",
+    "第一列": "showCount",
+    "第二列": "textarea 是否展示输入字符。须配合`maxLength`使用",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "TextArea",
+    "表格名": "Props",
+    "第一列": "autoSize",
+    "第二列": "高度是否可拉伸",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "TextArea",
+    "表格名": "Props",
+    "第一列": "readOnly",
+    "第二列": "只读属性",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "TextArea",
+    "表格名": "Props",
+    "第一列": "disabled",
+    "第二列": "禁用属性",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "TextArea",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "输入内容时触发",
+    "第三列": "`(value) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "TextArea",
+    "表格名": "Props",
+    "第一列": "onFocus",
+    "第二列": "聚焦时触发",
+    "第三列": "`(event) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "TextArea",
+    "表格名": "Props",
+    "第一列": "onBlur",
+    "第二列": "失焦时触发",
+    "第三列": "`(event) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "TimeSelect",
+    "表格名": "Props",
+    "第一列": "visible",
+    "第二列": "是否显示弹层",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "TimeSelect",
+    "表格名": "Props",
+    "第一列": "title",
+    "第二列": "弹层标题",
+    "第三列": "`reactnode`",
+    "第四列": "取件时间"
+  },
+  {
+    "组件名": "TimeSelect",
+    "表格名": "Props",
+    "第一列": "multiple",
+    "第二列": "是否支持多选",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "TimeSelect",
+    "表格名": "Props",
+    "第一列": "defaultValue",
+    "第二列": "默认选中的值，非受控",
+    "第三列": "`datetype[]`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "TimeSelect",
+    "表格名": "Props",
+    "第一列": "options",
+    "第二列": "数据",
+    "第三列": "`datetype[]`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "TimeSelect",
+    "表格名": "Props",
+    "第一列": "optionKey",
+    "第二列": "配置数据中的关键字, `valueKey`, `textKey`, `childrenKey`",
+    "第三列": "`{valuekey: 'value', textkey: 'text', childrenkey: 'children'}`",
+    "第四列": ""
+  },
+  {
+    "组件名": "TimeSelect",
+    "表格名": "Props",
+    "第一列": "onSelect",
+    "第二列": "关闭遮罩之后的回调",
+    "第三列": "`(value: datetype[]) => void`",
+    "第四列": ""
+  },
+  {
+    "组件名": "TimeSelect",
+    "表格名": "Props",
+    "第一列": "onDateChange",
+    "第二列": "点击左栏时的回调",
+    "第三列": "`(date: datetype, value: datetype[]) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "TimeSelect",
+    "表格名": "Props",
+    "第一列": "onTimeChange",
+    "第二列": "点击右侧选项时的回调",
+    "第三列": "`(time: timetype, value: datetype[]) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "TimeSelect",
+    "表格名": "DateType",
+    "第一列": "value",
+    "第二列": "唯一标识符， 必填",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "TimeSelect",
+    "表格名": "DateType",
+    "第一列": "text",
+    "第二列": "左侧显示的文本， 必填",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "TimeSelect",
+    "表格名": "DateType",
+    "第一列": "children",
+    "第二列": "对应右侧的选项列表， 必填",
+    "第三列": "`timetype[]`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "TimeSelect",
+    "表格名": "TimeType",
+    "第一列": "value",
+    "第二列": "唯一标识符， 必填",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "TimeSelect",
+    "表格名": "TimeType",
+    "第一列": "text",
+    "第二列": "右侧显示的选项内容， 必填",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Toast",
+    "表格名": "Props",
+    "第一列": "content",
+    "第二列": "Toast文本内容",
+    "第三列": "`react.reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Toast",
+    "表格名": "Props",
+    "第一列": "duration",
+    "第二列": "展示时长（秒）<br>值为 0 时，toast 不会自动消失",
+    "第三列": "`number`",
+    "第四列": "2"
+  },
+  {
+    "组件名": "Toast",
+    "表格名": "Props",
+    "第一列": "position",
+    "第二列": "toast展示位置",
+    "第三列": "`'top' | 'center' | 'bottom'`",
+    "第四列": "'center'"
+  },
+  {
+    "组件名": "Toast",
+    "表格名": "Props",
+    "第一列": "title",
+    "第二列": "标题",
+    "第三列": "`'string'`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Toast",
+    "表格名": "Props",
+    "第一列": "icon",
+    "第二列": "自定义图标",
+    "第三列": "`'success' | 'fail' | 'loading' | 'warn' | react.reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Toast",
+    "表格名": "Props",
+    "第一列": "size",
+    "第二列": "文案尺寸，**small**/**base**/**large**三选一",
+    "第三列": "`string`",
+    "第四列": "base"
+  },
+  {
+    "组件名": "Toast",
+    "表格名": "Props",
+    "第一列": "className",
+    "第二列": "自定义遮罩层类名",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Toast",
+    "表格名": "Props",
+    "第一列": "style",
+    "第二列": "自定义遮罩层样式",
+    "第三列": "`react.cssproperties`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Toast",
+    "表格名": "Props",
+    "第一列": "contentClassName",
+    "第二列": "自定义内容区类名",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Toast",
+    "表格名": "Props",
+    "第一列": "contentStyle",
+    "第二列": "自定义内容区样式",
+    "第三列": "`react.cssproperties`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Toast",
+    "表格名": "Props",
+    "第一列": "onClose",
+    "第二列": "关闭时触发的事件",
+    "第三列": "`() => void`",
+    "第四列": "() => void"
+  },
+  {
+    "组件名": "Toast",
+    "表格名": "Props",
+    "第一列": "closeOnOverlayClick",
+    "第二列": "是否在点击遮罩层后关闭提示",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Toast",
+    "表格名": "Ref",
+    "第一列": "clear",
+    "第二列": "关闭所有显示中的`Toast`",
+    "第三列": "-",
+    "第四列": ""
+  },
+  {
+    "组件名": "Toast",
+    "表格名": "Ref",
+    "第一列": "config",
+    "第二列": "`Toast`全局配置",
+    "第三列": "`{ duration: number, position: 'top' | 'center' | 'bottom', closeonoverlayclick: boolean }`",
+    "第四列": ""
+  },
+  {
+    "组件名": "TrendArrow",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "数值，大于0时箭头向上，小于0时箭头向下",
+    "第三列": "`number`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "TrendArrow",
+    "表格名": "Props",
+    "第一列": "digits",
+    "第二列": "小数位精度",
+    "第三列": "`number`",
+    "第四列": "2"
+  },
+  {
+    "组件名": "TrendArrow",
+    "表格名": "Props",
+    "第一列": "symbol",
+    "第二列": "是否显示加减号",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "TrendArrow",
+    "表格名": "Props",
+    "第一列": "zero",
+    "第二列": "是否显示 0",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "TrendArrow",
+    "表格名": "Props",
+    "第一列": "arrowLeft",
+    "第二列": "是否在数字左侧显示箭头",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "TrendArrow",
+    "表格名": "Props",
+    "第一列": "syncColor",
+    "第二列": "文字颜色是否与箭头同步",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "TrendArrow",
+    "表格名": "Props",
+    "第一列": "color",
+    "第二列": "文字颜色",
+    "第三列": "`string`",
+    "第四列": "#333333"
+  },
+  {
+    "组件名": "TrendArrow",
+    "表格名": "Props",
+    "第一列": "riseColor",
+    "第二列": "向上箭头颜色",
+    "第三列": "`string`",
+    "第四列": "#fa2c19"
+  },
+  {
+    "组件名": "TrendArrow",
+    "表格名": "Props",
+    "第一列": "dropColor",
+    "第二列": "向下箭头颜色",
+    "第三列": "`string`",
+    "第四列": "#64b578"
+  },
+  {
+    "组件名": "TrendArrow",
+    "表格名": "Props",
+    "第一列": "riseIcon",
+    "第二列": "自定义向上箭头icon",
+    "第三列": "`react.reactnode`",
+    "第四列": "<TriangleUp/>"
+  },
+  {
+    "组件名": "TrendArrow",
+    "表格名": "Props",
+    "第一列": "downIcon",
+    "第二列": "自定义向下箭头icon",
+    "第三列": "`react.reactnode`",
+    "第四列": "<TriangleDown/>"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "autoUpload",
+    "第二列": "是否在选取文件后立即进行上传，false 时需要手动执行 ref submit 方法进行上传",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "name",
+    "第二列": "`input` 标签 `name` 的名称，发到后台的文件参数名",
+    "第三列": "`string`",
+    "第四列": "'file'"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "url",
+    "第二列": "上传服务器的接口地址",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "defaultValue",
+    "第二列": "默认已经上传的文件列表",
+    "第三列": "`filetype<react.reactnode>[]`",
+    "第四列": "[]"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "value",
+    "第二列": "已经上传的文件列表",
+    "第三列": "`filetype<string>[]`",
+    "第四列": "[]"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "preview",
+    "第二列": "是否上传成功后展示预览图",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "previewUrl",
+    "第二列": "当上传非图片('image')格式的默认图片地址",
+    "第三列": "`string`",
+    "第四列": "''"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "deletable",
+    "第二列": "是否展示删除按钮",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "method",
+    "第二列": "上传请求的 http method",
+    "第三列": "`string`",
+    "第四列": "'post'"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "previewType",
+    "第二列": "上传列表的内建样式，支持两种基本样式 picture、list",
+    "第三列": "`string`",
+    "第四列": "'picture'"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "capture",
+    "第二列": "图片[选取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，直接调起摄像头",
+    "第三列": "`string`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "maxFileSize",
+    "第二列": "可以设定最大上传文件的大小（字节）",
+    "第三列": "`number丨string`",
+    "第四列": "Number.MAX_VALUE"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "maxCount",
+    "第二列": "文件上传数量限制",
+    "第三列": "`number 丨 string`",
+    "第四列": "1"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "imageFit",
+    "第二列": "图片填充模式",
+    "第三列": "`'contain' | 'cover' | 'fill' | 'none' | 'scale-down'`",
+    "第四列": "'cover'"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "clearInput",
+    "第二列": "是否需要清空`input`内容，设为`true`支持重复选择上传同一个文件",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "accept",
+    "第二列": "允许上传的文件类型，[详细说明](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B)",
+    "第三列": "`string`",
+    "第四列": "*"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "headers",
+    "第二列": "设置上传的请求头部",
+    "第三列": "`object`",
+    "第四列": "{}"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "data",
+    "第二列": "附加上传的信息 formData",
+    "第三列": "`object`",
+    "第四列": "{}"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "uploadIcon",
+    "第二列": "上传区域[图标名称](#/zh-CN/icon)",
+    "第三列": "`react.reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "uploadLabel",
+    "第二列": "上传区域图片下方文字",
+    "第三列": "`react.reactnode`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "xhrState",
+    "第二列": "接口响应的成功状态（status）值",
+    "第三列": "`number`",
+    "第四列": "200"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "withCredentials",
+    "第二列": "支持发送 cookie 凭证信息",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "multiple",
+    "第二列": "是否支持文件多选",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "disabled",
+    "第二列": "是否禁用文件上传",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "timeout",
+    "第二列": "超时时间，单位为毫秒",
+    "第三列": "`number 丨 string`",
+    "第四列": "1000 * 30"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "beforeUpload",
+    "第二列": "上传前的函数需要返回一个`Promise`对象",
+    "第三列": "`(file: file[]) => promise<file[] | boolean>`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "beforeXhrUpload",
+    "第二列": "执行 XHR 上传时，自定义方式",
+    "第三列": "`(xhr: xmlhttprequest, options: any) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "beforeDelete",
+    "第二列": "除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除",
+    "第三列": "`(file: fileitem, files: fileitem[]) => boolean`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "onStart",
+    "第二列": "文件上传开始",
+    "第三列": "`options`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "onProgress",
+    "第二列": "文件上传的进度",
+    "第三列": "`event, options, percentage`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "onOversize",
+    "第二列": "文件大小超过限制时触发",
+    "第三列": "`files`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "onSuccess",
+    "第二列": "上传成功",
+    "第三列": "`responsetext, options`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "onFailure",
+    "第二列": "上传失败",
+    "第三列": "`responsetext, options`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "onChange",
+    "第二列": "上传文件改变时的状态",
+    "第三列": "`filelist, event`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "onDelete",
+    "第二列": "文件删除之前的状态",
+    "第三列": "`files, filelist`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Props",
+    "第一列": "onFileItemClick",
+    "第二列": "文件上传成功后点击触发",
+    "第三列": "`fileitem`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "FileItem",
+    "第一列": "status",
+    "第二列": "文件状态值，可选'ready,uploading,success,error,removed'",
+    "第三列": "`ready`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "FileItem",
+    "第一列": "uid",
+    "第二列": "文件的唯一标识",
+    "第三列": "`new date().gettime().tostring()`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "FileItem",
+    "第一列": "name",
+    "第二列": "文件名称",
+    "第三列": "`-`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "FileItem",
+    "第一列": "url",
+    "第二列": "文件路径",
+    "第三列": "`-`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "FileItem",
+    "第一列": "type",
+    "第二列": "文件类型",
+    "第三列": "`image/jpeg`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "FileItem",
+    "第一列": "formData",
+    "第二列": "上传所需的data",
+    "第三列": "`new formdata()`",
+    "第四列": ""
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Methods",
+    "第一列": "submit",
+    "第二列": "手动上传模式，执行上传操作",
+    "第三列": "`-`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Uploader",
+    "表格名": "Methods",
+    "第一列": "clear",
+    "第二列": "清空已选择的文件队列（该方法一般配合在手动模式上传时使用）",
+    "第三列": "`index`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Video",
+    "表格名": "Props",
+    "第一列": "source",
+    "第二列": "视频地址和类型设置",
+    "第三列": "`object`",
+    "第四列": "{type: {}, src: ''}"
+  },
+  {
+    "组件名": "Video",
+    "表格名": "Props",
+    "第一列": "options",
+    "第二列": "控制视频播放属性",
+    "第三列": "`object`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Video",
+    "表格名": "Props",
+    "第一列": "options.autoplay",
+    "第二列": "是否自动播放",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Video",
+    "表格名": "Props",
+    "第一列": "options.poster",
+    "第二列": "海报设置",
+    "第三列": "`string`",
+    "第四列": "''"
+  },
+  {
+    "组件名": "Video",
+    "表格名": "Props",
+    "第一列": "options.loop",
+    "第二列": "是否循环播放",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Video",
+    "表格名": "Props",
+    "第一列": "options.controls",
+    "第二列": "是否展示操作栏",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "Video",
+    "表格名": "Props",
+    "第一列": "options.muted",
+    "第二列": "是否静音",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Video",
+    "表格名": "Props",
+    "第一列": "options.playsinline",
+    "第二列": "是否设置为行内播放元素（解决安卓兼容问题）",
+    "第三列": "`boolean`",
+    "第四列": "false"
+  },
+  {
+    "组件名": "Video",
+    "表格名": "Props",
+    "第一列": "onPlay",
+    "第二列": "播放",
+    "第三列": "`(element: htmlvideoelement) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Video",
+    "表格名": "Props",
+    "第一列": "onPause",
+    "第二列": "暂停",
+    "第三列": "`(element: htmlvideoelement) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "Video",
+    "表格名": "Props",
+    "第一列": "onPlayEnd",
+    "第二列": "播放完成回调",
+    "第三列": "`(element: htmlvideoelement) => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "VirtualList",
+    "表格名": "Props",
+    "第一列": "list",
+    "第二列": "获取数据",
+    "第三列": "`array`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "VirtualList",
+    "表格名": "Props",
+    "第一列": "containerHeight",
+    "第二列": "容器高度",
+    "第三列": "`number`",
+    "第四列": "获取元素的 offsetWidth 或 offsetHeight，需要 css 给出"
+  },
+  {
+    "组件名": "VirtualList",
+    "表格名": "Props",
+    "第一列": "ItemRender",
+    "第二列": "virtual 列表父节点渲染的函数",
+    "第三列": "`react.fc`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "VirtualList",
+    "表格名": "Props",
+    "第一列": "itemHeight",
+    "第二列": "item 高度，如果不定高，则为首屏单个最大 height",
+    "第三列": "`number`",
+    "第四列": "66"
+  },
+  {
+    "组件名": "VirtualList",
+    "表格名": "Props",
+    "第一列": "itemEqual",
+    "第二列": "item 高度是否一致",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "VirtualList",
+    "表格名": "Props",
+    "第一列": "overscan",
+    "第二列": "除了视窗里面默认的元素, 还需要额外渲染的 item 个数",
+    "第三列": "`number`",
+    "第四列": "2"
+  },
+  {
+    "组件名": "VirtualList",
+    "表格名": "Props",
+    "第一列": "key",
+    "第二列": "用于指定 list 数据每一项的唯一 key 的字段名，默认取下标",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "VirtualList",
+    "表格名": "Props",
+    "第一列": "direction",
+    "第二列": "`vertical`、`horizontal`",
+    "第三列": "`string`",
+    "第四列": "vertical"
+  },
+  {
+    "组件名": "VirtualList",
+    "表格名": "Props",
+    "第一列": "onScroll",
+    "第二列": "滑动到底(右)的事件，可以实现无限滚动",
+    "第三列": "`() => void`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "WaterMark",
+    "表格名": "Props",
+    "第一列": "width",
+    "第二列": "水印的宽度",
+    "第三列": "`number`",
+    "第四列": "120"
+  },
+  {
+    "组件名": "WaterMark",
+    "表格名": "Props",
+    "第一列": "height",
+    "第二列": "水印的高度",
+    "第三列": "`number`",
+    "第四列": "64"
+  },
+  {
+    "组件名": "WaterMark",
+    "表格名": "Props",
+    "第一列": "rotate",
+    "第二列": "水印绘制时，旋转的角度",
+    "第三列": "`number`",
+    "第四列": "-22"
+  },
+  {
+    "组件名": "WaterMark",
+    "表格名": "Props",
+    "第一列": "image",
+    "第二列": "图片源，建议导出 2 倍或 3 倍图，优先使用图片渲染水印",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "WaterMark",
+    "表格名": "Props",
+    "第一列": "imageWidth",
+    "第二列": "图片宽度",
+    "第三列": "`number`",
+    "第四列": "120"
+  },
+  {
+    "组件名": "WaterMark",
+    "表格名": "Props",
+    "第一列": "imageHeight",
+    "第二列": "图片高度",
+    "第三列": "`number`",
+    "第四列": "64"
+  },
+  {
+    "组件名": "WaterMark",
+    "表格名": "Props",
+    "第一列": "zIndex",
+    "第二列": "追加的水印元素的 z-index",
+    "第三列": "`number`",
+    "第四列": "2000"
+  },
+  {
+    "组件名": "WaterMark",
+    "表格名": "Props",
+    "第一列": "content",
+    "第二列": "水印文字内容",
+    "第三列": "`string`",
+    "第四列": "-"
+  },
+  {
+    "组件名": "WaterMark",
+    "表格名": "Props",
+    "第一列": "color",
+    "第二列": "水印文字颜色",
+    "第三列": "`string`",
+    "第四列": "rgba(0, 0, 0, .15)"
+  },
+  {
+    "组件名": "WaterMark",
+    "表格名": "Props",
+    "第一列": "fontSize",
+    "第二列": "文字大小",
+    "第三列": "`string | number`",
+    "第四列": "16"
+  },
+  {
+    "组件名": "WaterMark",
+    "表格名": "Props",
+    "第一列": "gapX",
+    "第二列": "水印之间的水平间距",
+    "第三列": "`number`",
+    "第四列": "24"
+  },
+  {
+    "组件名": "WaterMark",
+    "表格名": "Props",
+    "第一列": "gapY",
+    "第二列": "水印之间的垂直间距",
+    "第三列": "`number`",
+    "第四列": "48"
+  },
+  {
+    "组件名": "WaterMark",
+    "表格名": "Props",
+    "第一列": "fullPage",
+    "第二列": "是否覆盖整个页面",
+    "第三列": "`boolean`",
+    "第四列": "true"
+  },
+  {
+    "组件名": "WaterMark",
+    "表格名": "Props",
+    "第一列": "fontFamily",
+    "第二列": "水印文字字体",
+    "第三列": "`string`",
+    "第四列": "-"
+  }
+]

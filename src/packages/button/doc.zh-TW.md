@@ -6,7 +6,7 @@
 
 ## 安裝
 
-``` javascript
+```javascript
 // react
 import { Button } from '@nutui/nutui-react';
 ```
@@ -18,6 +18,7 @@ import { Button } from '@nutui/nutui-react';
 按鈕支援 'default'、'primary'、'info'、'warning'、'danger'、'success' 六種類型，預設為 'default'。
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Button } from '@nutui/nutui-react';
@@ -250,27 +251,22 @@ export default App;
 
 ### Props
 
-| 屬性 | 說明                            | 類型          | 默認值      |
-|----------|-------------------------------|-------------|----------|
-| type     | 按鈕的樣式                         | `'default' \| 'primary' \| 'info' \| 'warning' \| 'danger' \| 'success'` | `'default'` |
-| size     | 按鈕的尺寸                         | `'normal' \| 'large' \| 'small'` | `'normal'`  |
-| shape    | 按鈕的形狀                         | `'square' \| 'round'`   | `'round'` |
-| color    | 按鈕顏色，支持傳入 linear-gradient 漸變色 | `string`    | -        |
-| fill     | 填充模式                          | `'solid' \| 'ouline' \| 'none'`  | `'solid'` |
-| disabled | 是否禁用按鈕                        | `boolean`   | `false`  |
-| block    | 是否為塊級元素                       | `boolean`   | `false`  |
-| icon     | 按鈕圖標                          | `ReactNode` | -        |
-| loading  | 按鈕loading狀態                   | `boolean`   | `false`  |
-### Events
-
-| 事件名稱 | 說明 | 回調參數     |
-|--------|----------------|--------------|
-| onClick  | 点击按钮时触发 | `event: MouseEvent` |
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| type | 按鈕的樣式 | `default` \| `primary` \| `info` \| `warning` \| `danger` \| `success` | `default` |
+| size | 按鈕的尺寸 | `normal` \| `large` \| `small` | `normal` |
+| shape | 按鈕的形狀 | `square` \| `round` | `round` |
+| color | 按鈕顏色，支持傳入 linear-gradient 漸變色 | `string` | `-` |
+| fill | 填充模式 | `solid` \| `ouline` \| `none` | `solid` |
+| disabled | 是否禁用按鈕 | `boolean` | `false` |
+| block | 是否為塊級元素 | `boolean` | `false` |
+| icon | 按鈕圖標 | `ReactNode` | `-` |
+| loading | 按鈕loading狀態 | `boolean` | `false` |
+| onClick | 點擊按鈕時觸發 | `onClick: (e: MouseEvent) => void` | `false` |
 
 ### 支持小程序API能力
 
-目前1.3.11版本以前不支持原生小程序API,
-如果你是需要使用原生小程序button组件能力的用户，请尽快升级至1.3.11版本，关于原生小程序button组件的详细API请前往[查阅更多文档](https://taro-docs.jd.com/docs/components/forms/button)
+目前1.3.11版本以前不支持原生小程序API, 如果你是需要使用原生小程序button组件能力的用户，请尽快升级至1.3.11版本，关于原生小程序button组件的详细API请前往[查阅更多文档](https://taro-docs.jd.com/docs/components/forms/button)
 
 ## 主題定制
 
@@ -278,46 +274,43 @@ export default App;
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 默認值 |
-| --- | --- |
-| --nutui-button-border-radius | `25px` |
-| --nutui-button-border-width | `1px` |
-| --nutui-button-default-bg-color | `$white` |
-| --nutui-button-default-border-color | `rgba(204, 204, 204, 1)` |
-| --nutui-button-default-color | `$gray1` |
-| --nutui-button-plain-color`v1.4.8` | `$gray2` |
-| --nutui-button-default-padding | `0 18px` |
-| --nutui-button-mini-padding | `0 12px` |
-| --nutui-button-small-padding | `0 12px` |
-| --nutui-button-small-height | `28px` |
-| --nutui-button-mini-height | `24px` |
-| --nutui-button-default-height | `38px` |
-| --nutui-button-large-height | `48px` |
-| --nutui-button-large-line-height | `46px` |
-| --nutui-button-small-line-height | `26px` |
-| --nutui-button-block-height | `48px` |
-| --nutui-button-default-line-height | `36px` |
-| --nutui-button-block-line-height | `46px` |
-| --nutui-button-default-font-size | `$font-size-2` |
-| --nutui-button-large-font-size | `$button-default-font-size` |
-| --nutui-button-small-font-size | `$font-size-1` |
-| --nutui-button-mini-font-size | `$font-size-1` |
-| --nutui-button-mini-line-height | `1.2` |
-| --nutui-button-text-icon-margin-left | `5px` |
-| --nutui-button-text-icon-large-margin-left | `10px` |
-| --nutui-button-text-icon-small-margin-left | `2px` |
-| --nutui-button-text-icon-mini-margin-left | `1px` |
-| --nutui-button-disabled-opacity | `0.68` |
-| --nutui-button-primary-color | `$white` |
-| --nutui-button-primary-border-color | `$primary-color` |
-| --nutui-button-info-color | `$white` |
-| --nutui-button-info-border-color | `#496af2` |
-| --nutui-button-success-color | `$white` |
-| --nutui-button-success-border-color | `rgba(38, 191, 38, 1)` |
-| --nutui-button-danger-color | `$white` |
-| --nutui-button-danger-border-color | `rgba(250, 44, 25, 1)` |
-| --nutui-button-danger-background-color | `rgba(250, 44, 25, 1)` |
-| --nutui-button-warning-color | `$white` |
-| --nutui-button-warning-border-color | `rgba(255, 158, 13, 1)` |
-| --nutui-button-plain-background-color | `$white` |
-| --nutui-button-small-round-border-radius | `$button-border-radius` |
+| 名稱 | 說明 | 默認值 |
+| --- | --- | --- |
+| \--nutui-button-border-radius | 按鈕的圓角設置 | `25px` |
+| \--nutui-button-border-width | 按鈕的邊框寬度 | `1px` |
+| \--nutui-button-default-bg-color | type 為 default 的按鈕的背景色 | `$white` |
+| \--nutui-button-default-border-color | type 為 default 的按鈕的邊框色 | `rgba(204, 204, 204, 1)` |
+| \--nutui-button-default-color | type 為 default 的按鈕的文本色 | `$gray1` |
+| \--nutui-button-default-padding | type 為 default 的按鈕的內邊距 | `0 18px` |
+| \--nutui-button-mini-padding | size 為 mini 的按鈕的內邊距 | `0 12px` |
+| \--nutui-button-mini-height | size 為 mini 的按鈕的高度 | `24px` |
+| \--nutui-button-small-padding | size 為 small 的按鈕的內邊距 | `0 12px` |
+| \--nutui-button-small-height | size 為 small 的按鈕的高度 | `28px` |
+| \--nutui-button-default-height | type 為 default 的按鈕的高度 | `38px` |
+| \--nutui-button-large-height | size 為 large 的按鈕的高度 | `48px` |
+| \--nutui-button-large-line-height | size 為 large 的按鈕的行高 | `46px` |
+| \--nutui-button-small-line-height | size 為 small 的按鈕的行高 | `26px` |
+| \--nutui-button-block-height | block 的按鈕的高度 | `48px` |
+| \--nutui-button-block-line-height | block 的按鈕的行高 | `46px` |
+| \--nutui-button-default-line-height | type 為 default 的按鈕的行高 | `36px` |
+| \--nutui-button-default-font-size | type 為 default 的按鈕的字號 | `$font-size-2` |
+| \--nutui-button-large-font-size | size 為 large 的按鈕的字號 | `$button-default-font-size` |
+| \--nutui-button-small-font-size | size 為 small 的按鈕的字號 | `$font-size-1` |
+| \--nutui-button-mini-font-size | size 為 mini 的按鈕的字號 | `$font-size-1` |
+| \--nutui-button-mini-line-height | size 為 mini 的按鈕的行高 | `1.2` |
+| \--nutui-button-text-icon-margin-left | 帶 icon按鈕的文本的左邊距 | `5px` |
+| \--nutui-button-text-icon-large-margin-left | size 為 large 按鈕的文本的左邊距 | `10px` |
+| \--nutui-button-text-icon-small-margin-left | size 為 small 按鈕的文本的左邊距 | `2px` |
+| \--nutui-button-text-icon-mini-margin-left | size 為 mini 按鈕的文本的左邊距 | `1px` |
+| \--nutui-button-disabled-opacity | disabled 狀態下按鈕的透明度 | `0.68` |
+| \--nutui-button-primary-color | type 為 primary 按鈕的文本顏色 | `$white` |
+| \--nutui-button-primary-border-color | type 為 primary 按鈕的邊框顏色 | `$primary-color` |
+| \--nutui-button-info-color | type 為 info 按鈕的文本顏色 | `$white` |
+| \--nutui-button-info-border-color | type 為 info 按鈕的邊框顏色 | `#496af2` |
+| \--nutui-button-success-color | type 為 success 按鈕的文本顏色 | `$white` |
+| \--nutui-button-success-border-color | type 為 success 按鈕的邊框顏色 | `rgba(38, 191, 38, 1)` |
+| \--nutui-button-danger-color | type 為 danger 按鈕的文本顏色 | `$white` |
+| \--nutui-button-danger-border-color | type 為 danger 按鈕的邊框顏色 | `rgba(250, 44, 25, 1)` |
+| \--nutui-button-danger-background-color | type 為 danger 按鈕的背景顏色 | `rgba(250, 44, 25, 1)` |
+| \--nutui-button-warning-color | type 為 warning 按鈕的文本顏色 | `$white` |
+| \--nutui-button-warning-border-color | type 為 warning 按鈕的邊框顏色 | `rgba(255, 158, 13, 1)` |

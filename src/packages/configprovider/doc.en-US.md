@@ -15,9 +15,7 @@ import { ConfigProvider } from '@nutui/nutui-react';
 
 ### Customize theme
 
-NutUI-React
-Styles can be organized through [CSS variables](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties)
- and by overriding these CSS variables, you can achieve effects such as customizing themes, dynamically switching themes, and so on.
+NutUI-React Styles can be organized through [CSS variables](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties) and by overriding these CSS variables, you can achieve effects such as customizing themes, dynamically switching themes, and so on.
 
 #### Overrides via CSS
 
@@ -34,15 +32,11 @@ You can override these CSS variables directly in your code, and the styling of t
 }
 ```
 
-> @nutui/nutui-react comes with two theme files
-> default：@nutui/nutui-react/dist/styles/theme-default.scss;
-> dark：@nutui/nutui-react/dist/styles/theme-dark.scss;
-> If you want to use the dark theme, you can import the dark theme file in your project.
+> @nutui/nutui-react comes with two theme files default：@nutui/nutui-react/dist/styles/theme-default.scss; dark：@nutui/nutui-react/dist/styles/theme-dark.scss; If you want to use the dark theme, you can import the dark theme file in your project.
 
 #### Overrides via ConfigProvider
 
-The ConfigProvider component provides the ability to override CSS variables, and you need to wrap a ConfigProvider component at the root node and pass the theme
-Properties to configure some theme variables.
+The ConfigProvider component provides the ability to override CSS variables, and you need to wrap a ConfigProvider component at the root node and pass the theme Properties to configure some theme variables.
 
 :::demo
 
@@ -124,11 +118,11 @@ page {
 
 NutUI-React provides a ConfigProvider component for global configuration of internationalized copywriting. The following languages are currently supported:
 
-- Chinese Simplified | zh-CN
-- Chinese Traditional (Taiwan) | zh-TW
-- Uyghur | zh-UG
-- English (American) | en-US
-- Indonesian | id-ID
+*   Chinese Simplified | zh-CN
+*   Chinese Traditional (Taiwan) | zh-TW
+*   Uyghur | zh-UG
+*   English (American) | en-US
+*   Indonesian | id-ID
 
 :::demo
 
@@ -152,13 +146,13 @@ export default App;
 
 ### Add language packs
 
-If you can't find the language pack you need, you are welcome to create a new language pack based on [English Language Pack]() and send us a pull request.
+If you can't find the language pack you need, you are welcome to create a new language pack based on English Language Pack and send us a pull request.
 
 ## ConfigProvider
 
 ### Props
 
-| Property | Description      | Type | Default  |
-|--------|------------------|---------|------|
-| locale | set the language | BaseLang | zhCN |
-| theme      | set the theme    |    Record<string, string>     | -    |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| locale | set the language | `BaseLang` | `zhCN` |
+| theme | set the theme | `Record<string, string>` | `-` |
