@@ -150,8 +150,8 @@ export class FormItem extends React.Component<
     }
 
     const item =
-      this.context.errList?.length > 0 &&
-      this.context.errList?.filter((item: any) => {
+      this.context.errors?.length > 0 &&
+      this.context.errors?.filter((item: any) => {
         return item.field === name
       })
 

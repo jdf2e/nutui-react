@@ -143,7 +143,7 @@ class FormStore {
       resetFields: this.resetFields,
       submit: this.submit,
       store: this.store,
-      errList: this.errors,
+      errors: this.errors,
       fieldEntities: this.fieldEntities,
     }
   }
