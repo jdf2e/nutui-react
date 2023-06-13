@@ -1,3 +1,12 @@
+# v1.5.9
+`2023-06-13`
+
+
+* :sparkles: feat: countdown 支持剩余时间 (#1120) @xiaoyatong
+* :bug: fix: input 在 taro h5 下clearable 失效问题修复 (#1112) @xiaoyatong
+* :bug: fix: menu 组件被使用 transform 的组件嵌套后，遮罩层发生偏移 (#1094) @oasis-cloud
+
+
 # v1.5.8
 `2023-06-07`
 
