@@ -252,17 +252,17 @@ export default App;
 
 |參數|說明|類型|預設值|
 |--------------|----------------------------------|--------|------------------|
-| name |識別字，可以在事件參數中獲取到| `number \| string` | - |
-| leftAction |左側滑動區域的內容| `ReactNode` | - |
-| rightAction |右側滑動區域的內容| `ReactNode` | - |
-| beforeClose |關閉前的回呼函數，返回滑動區域所在的方向 `position` | `(position: 'left \| 'right') => void` | - |
+| name |識別字，可以在事件參數中獲取到| `number \| string` | `-` |
+| leftAction |左側滑動區域的內容| `ReactNode` | `-` |
+| rightAction |右側滑動區域的內容| `ReactNode` | `-` |
+| beforeClose |關閉前的回呼函數，返回滑動區域所在的方向 `position` | `(position: 'left \| 'right') => void` | `-` |
 | disabled |是否禁用滑動| `boolean` | `false` |
-| onOpen |打開儲存格側邊欄| `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | - |
-| onClose |收起儲存格側邊欄| `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | - |
-| onActionClick |點擊左側或者右側時觸發| `(event: Event, position: 'left' \|'right') => void` | - |
-| onTouchStart |onTouchStart| `(event: Event) => void` | - |
-| onTouchMove |onTouchMove| `(event: Event) => void` | - |
-| onTouchEnd |onTouchEnd| `(event: Event) => void` | - |
+| onOpen |打開儲存格側邊欄| `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | `-` |
+| onClose |收起儲存格側邊欄| `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | `-` |
+| onActionClick |點擊左側或者右側時觸發| `(event: Event, position: 'left' \|'right') => void` | `-` |
+| onTouchStart |onTouchStart| `(event: Event) => void` | `-` |
+| onTouchMove |onTouchMove| `(event: Event) => void` | `-` |
+| onTouchEnd |onTouchEnd| `(event: Event) => void` | `-` |
 
 ### Ref
 

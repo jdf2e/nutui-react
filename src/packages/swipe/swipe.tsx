@@ -8,9 +8,9 @@ import React, {
   useEffect,
 } from 'react'
 import classNames from 'classnames'
-import bem from '@/utils/bem'
 import { useTouch } from '@/utils/use-touch'
 import { getRect } from '@/utils/use-client-rect'
+import { BasicComponent } from '@/utils/typings'
 
 export type SwipeSide = 'left' | 'right'
 
@@ -29,11 +29,7 @@ export interface SwipeInstance {
   open: (side: SwipeSide) => void
   close: () => void
 }
-export interface SwipeProps {
-  /** 自定义类名 */
-  className: string
-  /** 自定义样式 */
-  style: React.CSSProperties
+export interface SwipeProps extends BasicComponent {
   /** 标识符，可以在事件参数中获取到 */
   name?: string | number
   /** 左侧滑动区域的内容 */
@@ -65,7 +61,6 @@ export interface SwipeProps {
   onTouchStart?: (event: Event) => void
   onTouchEnd?: (event: Event) => void
   onTouchMove?: (event: Event) => void
-  children?: React.ReactNode
 }
 const defaultProps = {
   name: '',
@@ -78,7 +73,7 @@ export const Swipe = forwardRef<
       'onTouchStart' | 'onTouchMove' | 'onTouchEnd'
     >
 >((props, instanceRef) => {
-  const swipeBem = bem('swipe')
+  const classPrefix = 'nut-swipe'
   const touch: any = useTouch()
 
   const { children, className, style } = { ...defaultProps, ...props }
@@ -217,7 +212,7 @@ export const Swipe = forwardRef<
       return (
         <div
           ref={measuredRef}
-          className={`${swipeBem(side)}`}
+          className={`${classPrefix}__${side}`}
           onClick={(e: any) => handleOperate(e, side)}
         >
           {props[`${side}Action`]}
@@ -264,13 +259,13 @@ export const Swipe = forwardRef<
   return (
     <div
       ref={root}
-      className={classNames(swipeBem(), className)}
+      className={classNames(classPrefix, className)}
       onTouchStart={(e: any) => onTouchStart(e)}
       onTouchMove={(e: any) => onTouchMove(e)}
       onTouchEnd={(e: any) => onTouchEnd(e)}
       style={style}
     >
-      <div className={`${swipeBem('wrapper')}`} style={wrapperStyle}>
+      <div className={`${classPrefix}__wrapper`} style={wrapperStyle}>
         {renderActionContent('left', leftRef)}
         {children}
         {renderActionContent('right', rightRef)}
