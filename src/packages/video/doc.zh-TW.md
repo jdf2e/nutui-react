@@ -6,7 +6,7 @@
 
 ## 安裝
 
-```ts
+```tsx
 import { Video } from '@nutui/nutui-react';
 ```
 

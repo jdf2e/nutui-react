@@ -6,7 +6,7 @@
 
 ## 安裝
 
-```ts
+```tsx
 import { Avatar } from '@nutui/nutui-react';
 
 ```

@@ -6,7 +6,7 @@ Video player implemented by native video
 
 ## Install
 
-```ts
+```tsx
 import { Video } from '@nutui/nutui-react';
 ```
 
