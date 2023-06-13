@@ -173,6 +173,15 @@
 - `onCloseDatePicker` 更名为 `onClose`
 - 因为依赖组件`Picker`的变更，方法 `onConfirmDatePicker`、`onChange`的参数进行了调整，从`(selectedValue, selectedOptions)` 改为 `(selectedOptions, selectedValue)`。
 #### Form
+- 增加 footer，类型为 ReactNode，用于表单底部区域，通常用于设置提交、重置按钮
+- 增加 initialValues，用于设置表单初始值，同时用于表单的重置
+- 增加 name 属性
+#### Form.Item
+- 增加 required，用于必选样式控制
+- 增加 trigger，用于设置数据更新的时机
+- 增加 valuePropName ，用于收集子组件受控的属性映射
+- 增加 getValueFromEvent，用于在收集数据中进行数据转换
+- 增加 onclick 用于收集子组件的 ref
 #### Input
 #### InputNumber
 - 增加 `allowEmpty`, 是否允许内容为空

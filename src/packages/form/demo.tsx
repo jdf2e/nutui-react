@@ -49,7 +49,6 @@ interface T {
   switch: string
   checkbox: string
   gender: string
-  // option: (v: string) => `选项${v}`
   rate: string
   inputnumber: string
   range: string
@@ -57,6 +56,11 @@ interface T {
   success: string
   uploading: string
   asyncValidator: string
+  number: string
+  tag: string
+  tagTip: string
+  male: string
+  female: string
 }
 
 const FormDemo = () => {
@@ -94,7 +98,6 @@ const FormDemo = () => {
       switch: '开关',
       checkbox: '复选框',
       gender: '性别',
-      // option: (v: string) => `选项${v}`,
       rate: '评分',
       inputnumber: '步进器',
       range: '滑块',
@@ -102,6 +105,11 @@ const FormDemo = () => {
       success: '上传成功',
       uploading: '上传中...',
       asyncValidator: '模拟异步验证中',
+      number: '数量',
+      tag: '标注',
+      tagTip: '请输入标注',
+      male: '男性',
+      female: '女性',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -137,7 +145,6 @@ const FormDemo = () => {
       switch: 'Switch',
       checkbox: 'Checkbox',
       gender: 'Gender',
-      // option: (v: string) => `Option${v}`,
       rate: 'Rate',
       inputnumber: 'Inputnumber',
       range: 'Range',
@@ -145,6 +152,11 @@ const FormDemo = () => {
       success: 'Upload successful',
       uploading: 'Uploading',
       asyncValidator: 'Simulating asynchronous verification',
+      number: 'Number',
+      tag: 'Tag',
+      tagTip: 'Please enter tag',
+      male: 'Male',
+      female: 'Female',
     },
   })
 
@@ -186,13 +198,13 @@ const FormDemo = () => {
   }
 
   const pickerOptions = [
-    { value: 4, text: '北京市' },
-    { value: 1, text: '南京市' },
-    { value: 2, text: '无锡市' },
-    { value: 8, text: '大庆市' },
-    { value: 9, text: '绥化市' },
-    { value: 10, text: '潍坊市' },
-    { value: 12, text: '乌鲁木齐市' },
+    { value: 4, text: 'BeiJing' },
+    { value: 1, text: 'NanJing' },
+    { value: 2, text: 'WuXi' },
+    { value: 8, text: 'DaQing' },
+    { value: 9, text: 'SuiHua' },
+    { value: 10, text: 'WeiFang' },
+    { value: 12, text: 'ShiJiaZhuang' },
   ]
 
   return (
@@ -201,26 +213,27 @@ const FormDemo = () => {
         <h2>{translated.basic}</h2>
         <Form
           labelPosition="right"
+          onFinish={(values) => submitSucceed(values)}
           footer={
             <>
               <Button nativeType="submit" block type="primary">
-                提交
+                {translated.submit}
               </Button>
             </>
           }
         >
-          <Form.Item required label="姓名" name="username">
+          <Form.Item required label={translated.name} name="username">
             <Input
               className="nut-input-text"
-              placeholder="请输入姓名"
+              placeholder={translated.nameTip}
               type="text"
             />
           </Form.Item>
-          <Form.Item label="地址" name="address">
-            <TextArea placeholder="请输入地址" maxLength={100} />
+          <Form.Item label={translated.address} name="address">
+            <TextArea placeholder={translated.addressTip} maxLength={100} />
           </Form.Item>
           <Form.Item
-            label="数量"
+            label={translated.number}
             name="num"
             getValueFromEvent={(...args) => args[0]}
           >
@@ -240,10 +253,10 @@ const FormDemo = () => {
               }}
             >
               <Button nativeType="submit" type="primary">
-                提交
+                {translated.submit}
               </Button>
               <Button nativeType="reset" style={{ marginLeft: '20px' }}>
-                重置
+                {translated.reset}
               </Button>
             </div>
           }
@@ -296,10 +309,10 @@ const FormDemo = () => {
               }}
             >
               <Button nativeType="submit" type="primary">
-                提交
+                {translated.submit}
               </Button>
               <Button nativeType="reset" style={{ marginLeft: '20px' }}>
-                重置
+                {translated.reset}
               </Button>
             </div>
           }
@@ -330,13 +343,13 @@ const FormDemo = () => {
           >
             <Input placeholder={translated.nameTip1} type="text" />
           </Form.Item>
-          <Form.Item label="标注" name="note">
-            <Input placeholder="请输入标注" type="string" />
+          <Form.Item label={translated.tag} name="note">
+            <Input placeholder={translated.tagTip} type="string" />
           </Form.Item>
           <Form.Item label={translated.gender} name="gender">
             <Radio.Group onChange={onMenuChange}>
-              <Radio value="male">男性</Radio>
-              <Radio value="female">女性</Radio>
+              <Radio value="male">{translated.male}</Radio>
+              <Radio value="female">{translated.female}</Radio>
             </Radio.Group>
           </Form.Item>
         </Form>
@@ -352,10 +365,10 @@ const FormDemo = () => {
               }}
             >
               <Button nativeType="submit" type="primary">
-                提交
+                {translated.submit}
               </Button>
               <Button nativeType="reset" style={{ marginLeft: '20px' }}>
-                重置
+                {translated.reset}
               </Button>
             </div>
           }
@@ -363,7 +376,7 @@ const FormDemo = () => {
           onFinishFailed={(values, errors) => submitFailed(errors)}
         >
           <Form.Item label="Input" name="form_input">
-            <Input placeholder="placeholder" />
+            <Input placeholder="Please enter something" />
           </Form.Item>
           <Form.Item label="Switch" name="switch">
             <Switch />
@@ -405,7 +418,7 @@ const FormDemo = () => {
               {(value: any) => {
                 return value.length
                   ? pickerOptions.filter((po) => po.value === value[0])[0]?.text
-                  : 'select'
+                  : 'Please select'
               }}
             </Picker>
           </Form.Item>
@@ -414,10 +427,10 @@ const FormDemo = () => {
             name="files"
             initialValue={[
               {
-                name: '文件文件文件1.png',
+                name: 'file1.png',
                 url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
                 status: 'success',
-                message: '上传成功',
+                message: 'success',
                 type: 'image',
                 uid: '122',
               },

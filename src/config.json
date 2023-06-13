@@ -453,14 +453,14 @@
           "author": "hanyuxinting"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "FormItem",
           "type": "component",
           "cName": "表单项",
           "desc": "用于数据录入、校验，支持输入框、单选框、复选框等类型。",
           "sort": 19,
           "show": false,
-          "taro": false,
+          "taro": true,
           "exportEmpty": true,
           "author": "hanyuxinting"
         },

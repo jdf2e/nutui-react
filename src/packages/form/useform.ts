@@ -64,12 +64,10 @@ class FormStore {
    * @param newStore { [name]: newValue }
    */
   setFieldsValue = (newStore: any) => {
-    console.log('newStore', newStore)
     this.store = {
       ...this.store,
       ...newStore,
     }
-    console.log('setFieldsValue', this.store)
     this.fieldEntities.forEach((enetity: FieldEntity) => {
       const { name } = enetity.props
       Object.keys(newStore).forEach((key) => {
@@ -120,7 +118,6 @@ class FormStore {
 
   submit = () => {
     const errors = this.validate()
-    console.log('submit', errors)
     if (errors.length === 0) {
       this.callbacks.onFinish?.(this.store)
     } else if (errors.length > 0) {
@@ -129,11 +126,9 @@ class FormStore {
   }
 
   resetFields = () => {
-    console.log('resetFields', this.store, this.initialValues)
     this.errors.length = 0
     this.store = this.initialValues
     this.fieldEntities.forEach((entity: FieldEntity) => {
-      console.log(entity)
       entity.onStoreChange('reset')
     })
   }
