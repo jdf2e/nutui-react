@@ -18,7 +18,13 @@ import { Form } from '@nutui/nutui-react-taro'
 
 ```tsx
 import React from "react";
-import { Form, Button, InputNumber, Input, TextArea } from '@nutui/nutui-react-taro';
+import {
+  Form,
+  Button,
+  InputNumber,
+  Input,
+  TextArea
+} from '@nutui/nutui-react-taro';
 
 const App = () => {
   return (
@@ -300,6 +306,7 @@ import {
   Range,
   Toast
 } from '@nutui/nutui-react-taro';
+import { Right } from '@nutui/icons-react-taro';
 
 const App = () => {
   const submitFailed = (error: any) => {
@@ -372,9 +379,23 @@ const App = () => {
         >
           <Picker options={[pickerOptions]}>
             {(value: any) => {
-              return value.length
-                ? pickerOptions.filter((po) => po.value === value[0])[0]?.text
-                : 'select'
+              return (
+                <Cell
+                  style={{
+                    padding: 0,
+                    '--nutui-cell-divider-border-bottom': '0',
+                  }}
+                  className="nutui-cell--clickable"
+                  title={
+                    value.length
+                      ? pickerOptions.filter((po) => po.value === value[0])[0]
+                        ?.text
+                      : 'Please select'
+                  }
+                  extra={<Right />}
+                  align="center"
+                />
+              )
             }}
           </Picker>
         </Form.Item>
@@ -383,10 +404,10 @@ const App = () => {
           name="files"
           initialValue={[
             {
-              name: '文件文件文件1.png',
+              name: 'file1.png',
               url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
               status: 'success',
-              message: '上传成功',
+              message: 'success',
               type: 'image',
               uid: '122',
             },
@@ -429,7 +450,7 @@ export default App;
 | --- | --- | --- |---------|
 | required | 必填表单项 label 的红色星标,仅用于控制样式 | `boolean` | `false` |
 | name | 在使用表单校验功能的情况下，该属性是必填的 | `string` | `-`     |
-| labelWidth | 表单项 label 宽度，默认单位为`px` | `number` | `90px`  |
+| labelWidth | 表单项 label 宽度，默认单位为`px` | `number` | `90`  |
 | errorMessageAlign | 错误提示文案对齐方式 | `'center'\| 'right'\|'left'` | `left` |
 | initialValue | 设置子元素默认值 | `any` | `-`     |
 | trigger | 设置收集字段值变更的时机 | `string` | `-`     |

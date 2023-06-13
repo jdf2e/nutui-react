@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
+import { Right } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import {
   Input,
@@ -18,6 +19,7 @@ import {
 } from '@/packages/nutui.react.taro'
 import { FormItemRuleWithoutValidator } from './types'
 import Header from '@/sites/components/header'
+import Cell from '@/packages/cell'
 
 interface T {
   basic: string
@@ -459,9 +461,23 @@ const FormDemo = () => {
           >
             <Picker options={[pickerOptions]}>
               {(value: any) => {
-                return value.length
-                  ? pickerOptions.filter((po) => po.value === value[0])[0]?.text
-                  : 'Please select'
+                return (
+                  <Cell
+                    style={{
+                      padding: 0,
+                      '--nutui-cell-divider-border-bottom': '0',
+                    }}
+                    className="nutui-cell--clickable"
+                    title={
+                      value.length
+                        ? pickerOptions.filter((po) => po.value === value[0])[0]
+                            ?.text
+                        : 'Please select'
+                    }
+                    extra={<Right />}
+                    align="center"
+                  />
+                )
               }}
             </Picker>
           </Form.Item>

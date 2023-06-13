@@ -301,6 +301,7 @@ import {
   Range,
   Toast
 } from '@nutui/nutui-react';
+import { Right } from '@nutui/icons-react';
 
 const App = () => {
   const submitFailed = (error: any) => {
@@ -373,9 +374,23 @@ const App = () => {
         >
           <Picker options={[pickerOptions]}>
             {(value: any) => {
-              return value.length
-                ? pickerOptions.filter((po) => po.value === value[0])[0]?.text
-                : 'select'
+              return (
+                <Cell
+                  style={{
+                    padding: 0,
+                    '--nutui-cell-divider-border-bottom': '0',
+                  }}
+                  className="nutui-cell--clickable"
+                  title={
+                    value.length
+                      ? pickerOptions.filter((po) => po.value === value[0])[0]
+                        ?.text
+                      : 'Please select'
+                  }
+                  extra={<Right />}
+                  align="center"
+                />
+              )
             }}
           </Picker>
         </Form.Item>
@@ -384,10 +399,10 @@ const App = () => {
           name="files"
           initialValue={[
             {
-              name: '文件文件文件1.png',
+              name: 'file1.png',
               url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
               status: 'success',
-              message: '上传成功',
+              message: 'success',
               type: 'image',
               uid: '122',
             },
@@ -440,7 +455,8 @@ export default App;
 
 ### Form.Item Rule
 
-規則校驗處理基於[async-validator](https://github.com/yiminghe/async-validator) 更多規則配置可查看 async-validator 文檔。 使用 Form.Item 的`rules`屬性可以定義校驗規則，可選屬性如下:
+規則校驗處理基於[async-validator](https://github.com/yiminghe/async-validator) 更多規則配置可查看
+async-validator 文檔。 使用 Form.Item 的`rules`屬性可以定義校驗規則，可選屬性如下:
 
 | 屬性 | 說明 | 類型 |
 | --- | --- | --- |
@@ -469,7 +485,8 @@ Form.useForm()創建 Form 實例，用於管理所有數據狀態。
 
 ### 樣式變量
 
-組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+組件提供了下列 CSS
+變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |

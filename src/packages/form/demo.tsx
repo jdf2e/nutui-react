@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Right } from '@nutui/icons-react'
 import { Form } from './form'
 import { Input } from '../input/input'
 import Cell from '@/packages/cell'
@@ -416,9 +417,23 @@ const FormDemo = () => {
           >
             <Picker options={[pickerOptions]}>
               {(value: any) => {
-                return value.length
-                  ? pickerOptions.filter((po) => po.value === value[0])[0]?.text
-                  : 'Please select'
+                return (
+                  <Cell
+                    style={{
+                      padding: 0,
+                      '--nutui-cell-divider-border-bottom': '0',
+                    }}
+                    className="nutui-cell--clickable"
+                    title={
+                      value.length
+                        ? pickerOptions.filter((po) => po.value === value[0])[0]
+                            ?.text
+                        : 'Please select'
+                    }
+                    extra={<Right />}
+                    align="center"
+                  />
+                )
               }}
             </Picker>
           </Form.Item>

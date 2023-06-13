@@ -2,7 +2,8 @@
 
 ## Intro
 
-It is used for data entry and verification, and supports input boxes, radio boxes, check boxes and other types.
+It is used for data entry and verification, and supports input boxes, radio
+boxes, check boxes and other types.
 
 ## Install
 
@@ -64,7 +65,7 @@ export default App;
 
 :::
 
-### form validation
+### Form validation
 
 :::demo
 
@@ -116,10 +117,14 @@ const App = () => {
           rules={[
             { required: true, message: "Please enter age" },
             { validator: customValidator, message: "number must be entered" },
-            { validator: valueRangeValidator, message: "0-200 range must be entered" },
+            {
+              validator: valueRangeValidator,
+              message: "0-200 range must be entered"
+            },
           ]}
         >
-          <Input placeholder="Please enter age，0-200 range must be entered" type="text" />
+          <Input placeholder="Please enter age，0-200 range must be entered"
+                 type="text" />
         </Form.Item>
         <Form.Item
           label="telephone"
@@ -203,7 +208,10 @@ const App = () => {
         <Form.Item label="age" name="age" initialValue={18} rules={[
           { required: true, message: "Please enter age" },
           { validator: customValidator, message: "number must be entered" },
-          { validator: valueRangeValidator, message: "0-200 range must be entered" },
+          {
+            validator: valueRangeValidator,
+            message: "0-200 range must be entered"
+          },
         ]}>
           <Input
             placeholder="Please enter age，0-200 range must be entered"
@@ -300,6 +308,7 @@ import {
   Range,
   Toast
 } from '@nutui/nutui-react';
+import { Right } from '@nutui/icons-react';
 
 const App = () => {
   const submitFailed = (error: any) => {
@@ -372,9 +381,23 @@ const App = () => {
         >
           <Picker options={[pickerOptions]}>
             {(value: any) => {
-              return value.length
-                ? pickerOptions.filter((po) => po.value === value[0])[0]?.text
-                : 'select'
+              return (
+                <Cell
+                  style={{
+                    padding: 0,
+                    '--nutui-cell-divider-border-bottom': '0',
+                  }}
+                  className="nutui-cell--clickable"
+                  title={
+                    value.length
+                      ? pickerOptions.filter((po) => po.value === value[0])[0]
+                        ?.text
+                      : 'Please select'
+                  }
+                  extra={<Right />}
+                  align="center"
+                />
+              )
             }}
           </Picker>
         </Form.Item>
@@ -411,15 +434,15 @@ export default App;
 ### Props
 
 | Property | Description | Type | Default |
-|----------------|--------------|-----------|---|
-| form | Form control instance created by Form.useForm(), if not provided, it will be created automatically | FormInstance | `-` |
+|----------------|--------------|-----------|-------|
+| form | Form control instance created by Form.useForm(), if not provided, it will be created automatically | FormInstance | `-`   |
 | footer | The bottom area of the form, where confirmation and reset buttons are usually placed | ReactNode | `null` |
-| initialValues | form initial values | any | `-` |
-| name | form name | any | `\` |
-| labelPosition | The position of the form item label | `'top'\| 'left'\|'right'` | `right` |
+| initialValues | form initial values | any | `-`   |
+| name | form name | any | `-`   |
+| labelPosition | The position of the form item label | `'top'\|'left'\|'right'` | `right` |
 | starPosition | The red star position of the required form item label | `'left'\| 'right'` | `left` |
-| onFinish | Triggered after verification is successful | `(values: any) => void` | `-` |
-| onFinishFailed | Triggered when any form item fails validation | `(values: any, errorFields: any) => void` | `-` |
+| onFinish | Triggered after verification is successful | `(values: any) => void` | `-`   |
+| onFinishFailed | Triggered when any form item fails validation | `(values: any, errorFields: any) => void` | `-`   |
 
 ## Form.Item
 
@@ -427,24 +450,28 @@ export default App;
 
 | Property | Description | Type | Default |
 |--------------------|--------------|---------------|----------|
-| required | The red star of the required form item label, only used to control the style | boolean | `false` |
-| name | In the case of using the form validation function, this attribute is required | string | - |
-| labelWidth | The width of the form item label, the default unit is `px` | number \\ | string | `90px` |
-| errorMessageAlign | Error text alignment | `'center'\| 'right'\ |'left'` | `left` |
-| initialValue | set the default value of child elements | `any` | - |
-| trigger | Set the timing to collect field value changes | `string` | - |
-| valuePropName | The property of the value of the child node, such as 'checked' for Checkbox | `string` | - |
-| getValueFromEvent | Set how to convert event value to field value | `(...args: any) => any` | - |
+| required | The red star of the required form item label, only used to control the style | `boolean` | `false` |
+| name | In the case of using the form validation function, this attribute is required | `string` | `-` |
+| labelWidth | The width of the form item label, the default unit is `px` | `number` | `90` |
+| errorMessageAlign | Error text alignment | `'center'\| 'right'\|'left'` | `left` |
+| initialValue | set the default value of child elements | `any` | `-` |
+| trigger | Set the timing to collect field value changes | `string` | `-` |
+| valuePropName | The property of the value of the child node, such as 'checked' for Checkbox | `string` | `-` |
+| getValueFromEvent | Set how to convert event value to field value | `(...args: any) => any` | `-` |
 | onClick | Click event and collect child component Ref | `(event: React.MouseEvent, componentRef: React.MutableRefObject<any>) => void` | `-` |
 
 ### Form.Item Rule
 
-The rule validation process is based on [async-validator](https://github.com/yiminghe/async-validator). For more rule configurations, please refer to the async-validator documentation. Use the `rules` attribute of Form.Item to define validation rules, the optional attributes are as follows:
+The rule validation process is based
+on [async-validator](https://github.com/yiminghe/async-validator). For more rule
+configurations, please refer to the async-validator documentation. Use
+the `rules` attribute of Form.Item to define validation rules, the optional
+attributes are as follows:
 
-| key name | description | type |
+| Property | Description | Type |
 | --- | --- | --- |
-| required | whether it is a required field | boolean |
-| message | error message text | string |
+| required | whether it is a required field | `boolean` |
+| message | error message text | `string` |
 | len | String length for string type; definite number for number type; array length for array type | `number` |
 | max | type must be set: the string type is the maximum length of the string; the number type is the maximum value; the array type is the maximum length of the array | `number` |
 | min | type must be set: the string type is the minimum length of the string; the number type is the minimum value; the array type is the minimum length of the array | `number` |
@@ -457,18 +484,20 @@ The rule validation process is based on [async-validator](https://github.com/yim
 
 Form.useForm() creates a Form instance, which is used to manage all data states.
 
-| Properties | Description | Parameters | Return Value |
-|--------------|-----------------------------|-----|---------|
-| getFieldValue | Get the value of the corresponding field name | - | (name: NamePath) => any |
-| setFieldsValue | set field values | - | (values) => void |
-| resetFields | Reset form prompt state | - | () => void |
-| submit | method to submit a form for validation | - | Promise |
+| Property | Description | Type |
+|--------------|-----------------------------|-------|
+| getFieldValue | Get the value of the corresponding field name | `(name: NamePath) => any` |
+| setFieldsValue | set field values | `(values) => void` |
+| resetFields | Reset form prompt state | `() => void` |
+| submit | method to submit a form for validation | `Promise` |
 
 ## Theming
 
 ### CSS Variables
 
-The component provides the following CSS Variables, which can be used for custom styles, please refer to [ConfigProvider Component](#/zh-CN/component/configprovider) for usage.
+The component provides the following CSS Variables, which can be used for custom
+styles, please refer
+to [ConfigProvider Component](#/zh-CN/component/configprovider) for usage.
 
 | Name | Description | Default |
 | --- | --- | --- |
