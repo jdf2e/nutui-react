@@ -5,7 +5,7 @@
 用于数据录入、校验，支持输入框、单选框、复选框等类型。
 
 ### 安装
-```javascript
+```tsx
 import { Form } from '@nutui/nutui-react-taro'
 ```
 

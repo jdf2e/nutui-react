@@ -5,8 +5,7 @@
 用於展示基礎錶格
 
 ## 安裝
-```ts
-// react
+```tsx
 import { Table } from '@nutui/nutui-react';
 ```
 

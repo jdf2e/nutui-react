@@ -6,8 +6,7 @@ Provides navigation capabilities.
 
 ## Install
 
-```ts
-// react
+```tsx
 import { NavBar } from '@nutui/nutui-react';
 ```
 

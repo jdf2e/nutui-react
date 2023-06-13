@@ -8,8 +8,7 @@
 
 ## 安装
 
-```ts
-// react
+```tsx
 import { Dialog } from '@nutui/nutui-react'
 ```
 

@@ -5,8 +5,7 @@
 用于展示基础表格
 
 ## 安装
-```ts
-// react
+```tsx
 import { Table } from '@nutui/nutui-react';
 ```
 

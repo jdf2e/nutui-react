@@ -6,8 +6,7 @@ Filling gray bitmap in the area to be loaded on the page is essentially the tran
 
 ## Install
 
-```ts
-// react
+```tsx
 import { Skeleton } from '@nutui/nutui-react';
 ```
 

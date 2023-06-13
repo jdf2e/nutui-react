@@ -8,7 +8,7 @@
 
 ## 安装
 
-```ts
+```tsx
 import { Dialog } from '@nutui/nutui-react-taro'
 ```
 

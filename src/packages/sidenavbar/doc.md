@@ -7,7 +7,6 @@
 ## 安装
 
 ```tsx
-// react
 import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
 ```
 
@@ -149,7 +148,7 @@ export default App;
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| value | 导航唯一标识 | `string \| number` | `-` |
+| value | 导航唯一标识 | `string`  \|  `number` | `-` |
 | title | 整体标题 | `string` | `-` |
 | open | 导航是否默认展开 | `boolean` | `true` |
 | onClick | 导航点击 | `data: {title: string, value: string \| number, isShow: boolean}` | `-` |
@@ -160,7 +159,7 @@ export default App;
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| value | 导航唯一标识 | `string \| number` | `-` |
+| value | 导航唯一标识 | `string`  \|  `number` | `-` |
 | title | 整体标题 | `string` | `-` |
 | onClick | 导航点击 | `data: {title: string, value: string \| number}` | `-` |
 

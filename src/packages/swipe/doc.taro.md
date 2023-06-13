@@ -6,7 +6,7 @@
 
 ## 安装
 
-```javascript
+```tsx
 import { Swipe } from '@nutui/nutui-react-taro';
 ```
 

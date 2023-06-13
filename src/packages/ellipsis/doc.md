@@ -6,8 +6,7 @@
 
 ## 安装
 
-```js
-// react
+```tsx
 import { Ellipsis } from '@nutui/nutui-react';
 ```
 
@@ -136,7 +135,7 @@ export default App;
 | expandText         | 展开操作的文案               | `string` | `-`              |
 | collapseText         | 收起操作的文案               | `string` | `-`               |
 | symbol         | 省略的符号     | `string` | `...`       |
-| lineHeight          | 容器的行高     | `string \| number` | `20`       |
+| lineHeight          | 容器的行高     | `string`  \|  `number` | `20`       |
 | onClick  | 文本点击是触发 | `() => void` | `-` |
 | onChange  | 点击展开收起时触发 | `(type: string) => void` | `-` |
 

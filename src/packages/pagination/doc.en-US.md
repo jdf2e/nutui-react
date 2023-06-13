@@ -5,8 +5,7 @@
 When the amount of data is too much, use pagination to separate the data.
     
 ## Install
-``` javascript
-// react
+```tsx
 import { Pagination } from '@nutui/nutui-react';
 ```    
 
@@ -18,7 +17,7 @@ When the current page number is bound by `value`, the component is in a controll
 When it does not need to be controlled, the current page number can be specified through `defaultValue`
 
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Pagination } from '@nutui/nutui-react';
 
@@ -43,7 +42,7 @@ export default App;
 ### Simple mode
 Pagination can be switched to simple mode with simple mode attribute, and pagination cann't display specific page buttons.
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Pagination } from '@nutui/nutui-react';
 
@@ -70,7 +69,7 @@ export default App;
 ### Show ellipses 
 The ellipses button will display after with force-ellipses attribute, click it can jump quickly.
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Pagination } from '@nutui/nutui-react';
 
@@ -96,7 +95,7 @@ export default App;
 ### Custom Button
 Pass in a custom method through itemRender, parameters: { number: "page number", text: "page text", active: "active page" }
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Pagination} from '@nutui/nutui-react'; 
 import { Left, Right } from '@nutui/icons-react';
@@ -128,7 +127,7 @@ export default App;
 
 ### Uncontrolled Mode
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Pagination } from '@nutui/nutui-react'; 
 

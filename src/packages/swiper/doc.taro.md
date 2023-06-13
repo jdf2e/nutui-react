@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```tsx
 import { Swiper, SwiperItem } from '@nutui/nutui-react-taro';
 ```
 
@@ -15,7 +15,7 @@ import { Swiper, SwiperItem } from '@nutui/nutui-react-taro';
 ### 基础用法
 
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react-taro';
 
@@ -46,7 +46,7 @@ export default App;
 ### 异步加载
 
 :::demo
-``` tsx
+```tsx
 import React, { useState, useEffect } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react-taro';
 
@@ -89,7 +89,7 @@ export default App;
 
 `width` 自定义轮播大小
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react-taro';
 
@@ -120,7 +120,7 @@ export default App;
 `pageContent` 表示自定义指示器
 
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react-taro';
 
@@ -159,7 +159,7 @@ export default App;
 可通过 `API`(`prev`,`next`)进行手动切换
 
 :::demo
-``` tsx
+```tsx
 import React, { useState, useRef } from 'react'
 import { Swiper, SwiperItem, Icon } from '@nutui/nutui-react-taro';
 
@@ -248,7 +248,7 @@ export default App;
 `direction` 自定义轮播方向
 
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react-taro';
 
@@ -285,7 +285,7 @@ export default App;
 `isCenter` 代表可居中，同时必须传 `width`
 
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react-taro';
 
@@ -315,7 +315,7 @@ export default App;
 ### 垂直居中展示
 
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react-taro';
 

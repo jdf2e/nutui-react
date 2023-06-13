@@ -6,8 +6,7 @@
 
 ## 安装
 
-```ts
-// react
+```tsx
 import { CountDown } from '@nutui/nutui-react'
 ```
 

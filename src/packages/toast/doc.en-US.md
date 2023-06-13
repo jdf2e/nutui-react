@@ -6,8 +6,7 @@ For light tips.
 
 ### Install
 
-```javascript
-// react
+```tsx
 import { Toast } from '@nutui/nutui-react';
 ```
 

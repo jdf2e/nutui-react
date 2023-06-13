@@ -6,7 +6,7 @@
 
 ## 安装
 
-```ts
+```tsx
 import { CircleProgress } from '@nutui/nutui-react-taro';
 ```
 

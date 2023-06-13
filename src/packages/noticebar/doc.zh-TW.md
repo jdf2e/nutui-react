@@ -6,8 +6,7 @@
 
 ## 安裝
 
-```javascript
-// react
+```tsx
 import { NoticeBar } from '@nutui/nutui-react';
 ```
 
@@ -280,7 +279,7 @@ export default App
 | rightIcon   | closeable 模式下，默认为 ‘close’ | ReactNode        | -     |
 | color      | 导航栏的文字颜色| `string`        | -     |
 | background | 导航栏的背景颜色| `string`        | -     |
-| delay      | 延时多少秒| `string \| number` | `1`      |
+| delay      | 延时多少秒| `string`  \|  `number` | `1`      |
 | scrollable | 是否可以滚动| `boolean`       | `true`   |
 | speed      | 滚动速率 (px/s)| `number`        | `50`     |
 | wrap   | 是否开启文本换行| `boolean`       | `false`    |

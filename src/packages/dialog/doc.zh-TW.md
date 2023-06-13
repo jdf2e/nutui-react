@@ -7,8 +7,7 @@
 
 ## 安裝
 
-```ts
-// react
+```tsx
 import { Dialog } from '@nutui/nutui-react'
 ```
 

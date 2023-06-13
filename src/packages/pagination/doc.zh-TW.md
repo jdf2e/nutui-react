@@ -5,8 +5,7 @@
 當數據量較多時，採用分頁的形式分隔長列表。
     
 ### 安裝
-``` javascript
-// react
+```tsx
 import { Pagination } from '@nutui/nutui-react';
 ```    
 
@@ -14,7 +13,7 @@ import { Pagination } from '@nutui/nutui-react';
 通過 value 來綁定當前頁碼時，組件為受控狀態，分頁顯示取決於傳入的 value，一般搭配 onChange 使用。
 不需要受控時，可通過 defaultValue 指定當前頁碼
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Pagination } from '@nutui/nutui-react';
 
@@ -39,7 +38,7 @@ export default App;
 ### 簡單模式
 將 mode 設置為 "simple" 來切換到簡單模式，此時分頁器不會展示具體的頁碼按鈕。
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Pagination } from '@nutui/nutui-react';
 
@@ -66,7 +65,7 @@ export default App;
 ### 顯示省略號
 設置 force-ellipses 後會展示省略號按鈕，點擊後可以快速跳轉。
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Pagination } from '@nutui/nutui-react';
 
@@ -92,7 +91,7 @@ export default App;
 ### 自定義按鈕
 通過itemRender傳入自定義方法，入參數為page:{ number:頁數, text:"文本", active:"選中狀態" }
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Pagination} from '@nutui/nutui-react'; 
 import { Left, Right } from '@nutui/icons-react-taro';
@@ -124,7 +123,7 @@ export default App;
 
 ### 非受控方式
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Pagination } from '@nutui/nutui-react'; 
 

@@ -6,8 +6,7 @@ Used to display the countdown value in real time, and precision supports millise
 
 ## Install
 
-```ts
-// react
+```tsx
 import { CountDown } from '@nutui/nutui-react'
 ```
 

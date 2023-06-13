@@ -6,7 +6,7 @@
 
 ## 安装
 
-```javascript
+```tsx
 import { VirtualList } from '@nutui/nutui-react';
 ```
 

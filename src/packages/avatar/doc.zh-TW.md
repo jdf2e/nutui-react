@@ -6,7 +6,6 @@
 
 ### 安裝
 ``` ts
-// react
 import { Avatar } from '@nutui/nutui-react';
 ```
 
@@ -15,7 +14,7 @@ import { Avatar } from '@nutui/nutui-react';
 支持三種尺寸：small、normal、large
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
 
@@ -46,7 +45,7 @@ export default App;
 支持兩種形狀：square、round
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -68,7 +67,7 @@ export default App;
 支持三種類型：圖片、Icon 以及字符
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -91,7 +90,7 @@ export default App;
 Icon 和字符型可以自定義圖標顏色及背景色
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -116,7 +115,7 @@ export default App;
 ### 帶徽標的頭像
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar, Badge } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -140,7 +139,7 @@ export default App;
 ### 頭像組合展現
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar, AvatarGroup } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -174,7 +173,7 @@ export default App;
 ### 組合頭像可控制層級方向
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar, AvatarGroup } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -200,7 +199,7 @@ export default App;
 ### 點擊頭像觸發事件
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';

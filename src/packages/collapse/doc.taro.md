@@ -6,7 +6,7 @@
 
 ## 安装
 
-```ts
+```tsx
 import { Collapse } from 'nutui-react-taro'
 ```
 
@@ -299,7 +299,7 @@ const App = () => {
 | defaultActiveName | 默认展开面板的 name，非受控 | `Array<string> \| string` | - |
 | activeName | 当前展开面板的 name，受控 | `Array<string> \| string` | - |
 | accordion | 是否开启手风琴模式 | `boolean` | `false` |
-| rotate | 点击折叠和展开的旋转角度,在自定义图标模式下生效 | `string \| number` | `180` |
+| rotate | 点击折叠和展开的旋转角度,在自定义图标模式下生效 | `string`  \|  `number` | `180` |
 | expandIcon | 自定义展开图标 | `ReactNode` | - |
 
 ## Collapse.Item

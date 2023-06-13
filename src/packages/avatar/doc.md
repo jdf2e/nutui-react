@@ -7,7 +7,6 @@
 ## 安装
 
 ``` ts
-// react
 import { Avatar } from '@nutui/nutui-react';
 
 ```
@@ -20,7 +19,7 @@ import { Avatar } from '@nutui/nutui-react';
 
 :::demo
 
-``` tsx
+```tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
 
@@ -53,7 +52,7 @@ export default App;
 
 :::demo
 
-``` tsx
+```tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -77,7 +76,7 @@ export default App;
 
 :::demo
 
-``` tsx
+```tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -102,7 +101,7 @@ Icon 和字符型可以自定义图标颜色及背景色
 
 :::demo
 
-``` tsx
+```tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -131,7 +130,7 @@ export default App;
 
 :::demo
 
-``` tsx
+```tsx
 import React from "react";
 import { Avatar, Badge } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -157,7 +156,7 @@ export default App;
 
 :::demo
 
-``` tsx
+```tsx
 import React from "react";
 import { Avatar, AvatarGroup } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -193,7 +192,7 @@ export default App;
 
 :::demo
 
-``` tsx
+```tsx
 import React from "react";
 import { Avatar, AvatarGroup } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -221,7 +220,7 @@ export default App;
 
 :::demo
 
-``` tsx
+```tsx
 import React from "react";
 import { Avatar, Toast } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -262,7 +261,7 @@ export default App;
 
 | 属性 | 说明 | 类型       | 默认值      |
 | -------- | --------------------- |----------|----------|
-| max     | 显示的最大头像个数   | `string \| number`    | `''` |
+| max     | 显示的最大头像个数   | `string`  \|  `number`    | `''` |
 | maxContent  | 头像数量超出时，会出现一个头像折叠元素。该元素内容可为...、more、+N。 | `string` | `''`     | 
 | size         | 设置头像的大小，可选值为：large、normal、small，支持直接输入数字   | `'large' \| 'normal' \| 'small'` | `''`     |
 | shape        | 设置头像的形状           | `'string' \| 'round'`  |  `''`  |

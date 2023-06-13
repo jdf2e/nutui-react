@@ -6,7 +6,6 @@ Avatars can be used to represent people or objects. It supports images, Icons, o
 
 ## Install
 ``` ts
-// react
 import { Avatar } from '@nutui/nutui-react';
 ```
 
@@ -16,7 +15,7 @@ import { Avatar } from '@nutui/nutui-react';
 Support three sizes：small、normal、large
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
 
@@ -47,7 +46,7 @@ export default App;
 Support two shapes：square、round
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -69,7 +68,7 @@ export default App;
 Support three types：picture、icon、letter
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -92,7 +91,7 @@ export default App;
 Icon and letter types can have custom colors and background colors
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -117,7 +116,7 @@ export default App;
 ### Avatar with badge
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar, Badge } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -141,7 +140,7 @@ export default App;
 ### Avatar group display
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar, AvatarGroup } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -175,7 +174,7 @@ export default App;
 ### Avatar group to control hierarchy direction
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar, AvatarGroup } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -201,7 +200,7 @@ export default App;
 ### Click on the avatar to trigger the event
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar, Toast } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -241,7 +240,7 @@ export default App;
 ### Props
 | Property     | Description                                                 | Type   | Default |
 | -------- | ---------------------------------------------------------------- | ------ | ------ |
-| max     | Max avatars to show   | `string \| number`    | `''` |
+| max     | Max avatars to show   | `string`  \|  `number`    | `''` |
 | maxContent  | When the number of avatars exceeds, a avatar folding element will appear，The content of this element can be `...`、`more`、`+N`。。 | `string` | `''`     | 
 | size         | The size of the avatar，eg：`large`、`normal`、`small`，supports direct input of numbers   | `'large' \| 'normal' \| 'small'` | `''`     |
 | shape        | The shape of avatar，eg：`square`、`round`            | `'string' \| 'round'`  |  `''`  |

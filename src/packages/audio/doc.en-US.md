@@ -6,7 +6,7 @@ Used for audio playback
 
 ## Install
 
-```javascript
+```tsx
 import { Audio } from '@nutui/nutui-react'
 ```
 

@@ -6,8 +6,7 @@
 
 ### 安裝
 
-```ts
-// react
+```tsx
 import { Collapse, CollapseItem } from 'nutui-react'
 ```
 

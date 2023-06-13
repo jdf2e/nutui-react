@@ -6,8 +6,7 @@ Add specific words or patterns on the page to prevent information theft.
 
 ## Install
 
-```ts
-// react
+```tsx
 import { WaterMark } from '@nutui/nutui-react';
 ```
 
@@ -88,7 +87,7 @@ export default App;
 | zIndex | Z-index of the appended watermark element | `number` | `2000` |
 | content | Watermark text content | `string` | - |
 | color | Watermark text color | `string` | `rgba(0, 0, 0, .15)` |
-| fontSize | Watermark text font size | `string \| number` | `16` |
+| fontSize | Watermark text font size | `string`  \|  `number` | `16` |
 | gapX | Horizontal spacing between watermarks | `number` | `24` |
 | gapY | Vertical spacing between watermarks | `number` | `48` |
 | fullPage | Overwrite entire page | `boolean` | `true` |

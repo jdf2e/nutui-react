@@ -6,8 +6,7 @@ For delivery time selection
 
 ## Install
 
-```javascript
-// react
+```tsx
 import { TimeSelect } from '@nutui/nutui-react';
 ```
 

@@ -6,8 +6,7 @@
 
 ### 安裝
 
-```javascript
-// react
+```tsx
 import { Audio } from '@nutui/nutui-react'
 ```
 

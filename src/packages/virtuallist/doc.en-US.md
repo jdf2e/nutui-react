@@ -6,7 +6,7 @@ In normal list show and pull-up loading, we usually use the InfiniteLoading comp
 
 ## Install
 
-```javascript
+```tsx
 import { Virtuallist } from '@nutui/nutui-react';
 ```
 

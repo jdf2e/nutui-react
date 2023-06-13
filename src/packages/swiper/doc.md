@@ -6,15 +6,14 @@
 
 ## 安装
 
-```javascript
-// react
+```tsx
 import { Swiper, SwiperItem } from '@nutui/nutui-react';
 ```
 ## 代码演示
 ### 基础用法
 
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
@@ -55,7 +54,7 @@ export default App;
 ### 异步加载
 
 :::demo
-``` tsx
+```tsx
 import React, { useState, useEffect } from 'react'
 import { Swiper, SwiperItem } from '@nutui/nutui-react';
 
@@ -105,7 +104,7 @@ export default App;
 支持动态增加/删除图片
 
 :::demo
-``` tsx
+```tsx
 import React, { useState, useEffect } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
@@ -155,7 +154,7 @@ export default App;
 
 `width` 自定义轮播大小
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
@@ -193,7 +192,7 @@ export default App;
 `indicator` 表示自定义指示器
 
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
@@ -237,7 +236,7 @@ export default App;
 可通过 `ref`调用 `prev`,`next` 进行切换
 
 :::demo
-``` tsx
+```tsx
 import React, { useState, useRef } from 'react'
 import { Swiper, SwiperItem, Icon } from '@nutui/nutui-react';
 
@@ -329,7 +328,7 @@ export default App;
 `direction` 自定义轮播方向
 
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
@@ -375,7 +374,7 @@ export default App;
 `center` 代表可居中，同时必须传 `width`
 
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
@@ -416,7 +415,7 @@ export default App;
 `center` 代表可居中，同时必须传 `height`
 
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 

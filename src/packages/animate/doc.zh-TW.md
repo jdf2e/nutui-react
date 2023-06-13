@@ -6,8 +6,7 @@
 
 ### 安裝
 
-```ts
-// react
+```tsx
 import { Animate } from '@nutui/nutui-react';
 ```
 
@@ -72,43 +71,43 @@ const AnimateDemo = () => {
       <div className="demo">
         <h2>迴圈動畫</h2>
         <div className="ani-demo-div">
-          <Animate type="shake" loop={true}>
+          <Animate type="shake" loop>
             <Button type="primary">shake-抖動</Button>
           </Animate>
         </div>
 
         <div className="ani-demo-div">
-          <Animate type="ripple" loop={true}>
+          <Animate type="ripple" loop>
             <Button type="primary">ripple-心跳</Button>
           </Animate>
         </div>
 
         <div className="ani-demo-div">
-          <Animate type="breath" loop={true}>
+          <Animate type="breath" loop>
             <Button type="primary">breath-呼吸燈</Button>
           </Animate>
         </div>
 
         <div className="ani-demo-div">
-          <Animate type="twinkle" loop={true}>
+          <Animate type="twinkle" loop>
             <Button type="primary">twinkle-水波</Button>
           </Animate>
         </div>
 
         <div className="ani-demo-div">
-          <Animate type="flicker" loop={true}>
+          <Animate type="flicker" loop>
             <Button type="primary">flicker-擦亮</Button>
           </Animate>
         </div>
 
         <div className="ani-demo-div">
-          <Animate type="jump" loop={true}>
+          <Animate type="jump" loop>
             <Button type="primary">jump-跳躍</Button>
           </Animate>
         </div>
 
         <div className="ani-demo-div">
-          <Animate type="float" loop={true}>
+          <Animate type="float" loop>
             <Button type="primary">float-漂浮</Button>
           </Animate>
         </div>

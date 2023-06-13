@@ -6,8 +6,7 @@
 
 ### 安裝
 
-```javascript
-// react
+```tsx
 import { Icon } from '@nutui/nutui-react';
 ```
 
@@ -105,7 +104,7 @@ export default App;
 
 第二步：项目入口文件 main.js 引用 `iconfont.css`
 
-```javascript
+```tsx
 import './assets/font/iconfont.css';
 ```
 

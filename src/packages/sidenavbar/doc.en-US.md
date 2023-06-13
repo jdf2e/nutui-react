@@ -7,7 +7,6 @@ For content selection and switching
 ## Install
 
 ```tsx
-// react
 import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
 ```
 
@@ -152,7 +151,7 @@ export default App;
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| value | unique identifier for navigation | `string \| number` | `-` |
+| value | unique identifier for navigation | `string`  \|  `number` | `-` |
 | title | overall title | `string` | `-` |
 | open | whether the navigation is expanded by default | `boolean` | `true` |
 | onClick | Navigation click | `data: {title: string, value: string \| number, isShow: boolean}` | `-` |
@@ -163,7 +162,7 @@ export default App;
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| value | unique identifier for navigation | `string \| number` | `-` |
+| value | unique identifier for navigation | `string`  \|  `number` | `-` |
 | title | overall title | `string` | `-` |
 | onClick | Navigation click | `data: {title: string, value: string \| number}` | `-` |
 

@@ -6,8 +6,7 @@ isplay space is insufficient, hidden part of the content and "..." Alternative.
 
 ## Install
 
-```js
-// react
+```tsx
 import { Ellipsis } from '@nutui/nutui-react';
 ```
 
@@ -136,7 +135,7 @@ export default App;
 | expandText         | Expand text               | `string` | `-`              |
 | collapseText         | Collapse text               | `string` | `-`               |
 | symbol         | Symbol     | `string` | `...`       |
-| lineHeight         | the row height of the container     | `string \| number` | `20`       |
+| lineHeight         | the row height of the container     | `string`  \|  `number` | `20`       |
 | onClick  | Emitted when the content is clicked | `() => void` | `-` |
 | onChange  | Emitted when expand or collapse is clicked | `(type: string) => void` | `-` |
 

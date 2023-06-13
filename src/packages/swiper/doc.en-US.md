@@ -6,15 +6,14 @@ Often used in a group of pictures or card rotation.
 
 ## Install
 
-```javascript
-// react
+```tsx
 import { Swiper, SwiperItem } from '@nutui/nutui-react';
 ```
 ## Demo
 ### Basic Usage
 
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
@@ -55,7 +54,7 @@ export default App;
 ### Asynchronous loading
 
 :::demo
-``` tsx
+```tsx
 import React, { useState, useEffect } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
@@ -105,7 +104,7 @@ export default App;
 Support dynamic addition / deletion of pictures
 
 :::demo
-``` tsx
+```tsx
 import React, { useState, useEffect } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
@@ -155,7 +154,7 @@ export default App;
 `width` Custom rotation size
 
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
@@ -193,7 +192,7 @@ export default App;
 `indicator` Custom indicator
 
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
@@ -237,7 +236,7 @@ export default App;
 You can manually switch through `ref` (`prev`, `next`)
 
 :::demo
-``` tsx
+```tsx
 import React, { useState, useRef } from 'react'
 import { Swiper, SwiperItem, Icon } from '@nutui/nutui-react';
 
@@ -329,7 +328,7 @@ export default App;
 `direction` Custom rotation direction
 
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
@@ -375,7 +374,7 @@ export default App;
 `isCenter` means it can be centered, and `width` must be passed at the same time
 
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
@@ -416,7 +415,7 @@ export default App;
 `isCenter` means that it can be centered, and `height` must be passed
 
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 

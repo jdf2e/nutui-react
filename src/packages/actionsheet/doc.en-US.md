@@ -6,8 +6,7 @@ Action menu panel that pops up from the bottom.
 
 ## Install
 
-```ts
-// react
+```tsx
 import { ActionSheet } from '@nutui/nutui-react';
 ```
 

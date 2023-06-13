@@ -6,7 +6,7 @@ It is used for data entry and verification. It supports input box, radio box, ch
 
 ### Install
 
-```javascript
+```tsx
 import { Form } from '@nutui/nutui-react'
 ```
 

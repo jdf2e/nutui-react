@@ -6,7 +6,7 @@
 
 ### 安装
 
-``` javascript
+```tsx
 import { Address } from '@nutui/nutui-react-taro';
 ```
 
@@ -183,7 +183,6 @@ export default App;
 :::demo
 
 ```tsx
-
 import React, { useState } from "react";
 import { Address, Cell, Popup } from '@nutui/nutui-react-taro';
 

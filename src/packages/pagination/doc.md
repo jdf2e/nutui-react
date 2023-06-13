@@ -5,8 +5,7 @@
 当数据量较多时，采用分页的形式分隔长列表。
     
 ## 安装
-``` javascript
-// react
+```tsx
 import { Pagination } from '@nutui/nutui-react';
 ```    
 
@@ -16,7 +15,7 @@ import { Pagination } from '@nutui/nutui-react';
 通过 value 来绑定当前页码时，组件为受控状态，分页显示取决于传入的 value ，一般搭配 onChange 使用。
 不需要受控时，可通过 defaultValue 指定当前页码
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Pagination } from '@nutui/nutui-react';
 
@@ -41,7 +40,7 @@ export default App;
 ### 简单模式
 将 mode 设置为 "simple" 来切换到简单模式，此时分页器不会展示具体的页码按钮。
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Pagination } from '@nutui/nutui-react';
 
@@ -68,7 +67,7 @@ export default App;
 ### 显示省略号
 设置 force-ellipses 后会展示省略号按钮，点击后可以快速跳转。
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Pagination } from '@nutui/nutui-react';
 
@@ -94,7 +93,7 @@ export default App;
 ### 自定义按钮
 通过itemRender传入自定义方法，入参数为page:{ number:页数, text:"文本", active:"选中状态" } 
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Pagination} from '@nutui/nutui-react'; 
 import { Left, Right } from '@nutui/icons-react';
@@ -126,7 +125,7 @@ export default App;
 
 ### 非受控方式
 :::demo
-``` tsx
+```tsx
 import React, { useState } from 'react'
 import { Pagination } from '@nutui/nutui-react'; 
 

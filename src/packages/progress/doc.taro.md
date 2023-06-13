@@ -6,7 +6,7 @@
 
 ## 安装
 
-```js
+```tsx
 import { Progress } from '@nutui/nutui-react-taro';
 ```
 

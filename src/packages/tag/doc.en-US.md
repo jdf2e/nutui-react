@@ -6,8 +6,7 @@ Label for labeling and classification.
 
 ## Install
 
-``` javascript
-// react
+```tsx
 import { Tag } from '@nutui/nutui-react';
 
 ```

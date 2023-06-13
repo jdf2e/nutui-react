@@ -6,7 +6,7 @@
 
 ## 安裝
 
-```ts
+```tsx
 import { Cell, CellGroup } from '@nutui/nutui-react'
 ```
 

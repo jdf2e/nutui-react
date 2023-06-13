@@ -6,8 +6,7 @@ The user can enter content in the text box.
 
 ## Install
 
-```javascript
-// react
+```tsx
 import { Input } from '@nutui/nutui-react';
 
 ```

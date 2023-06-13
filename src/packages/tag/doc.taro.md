@@ -6,8 +6,7 @@
 
 ## 安装
 
-``` javascript
-
+```tsx
 import { Tag } from '@nutui/nutui-react-taro';
 ```
 

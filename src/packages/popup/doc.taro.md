@@ -6,7 +6,7 @@
 
 ## 安装
 
-``` javascript
+```tsx
 import { Popup } from '@nutui/nutui-react-taro';
 ```
 
@@ -186,7 +186,7 @@ export default App;
 | 属性 | 说明 | 类型            | 默认值        |
 |-------------------------|----------------|---------------|---------------|
 | visible                 | 当前组件是否显示 | `boolean`       | `false`       |
-| zIndex                  | 遮罩层级 | `string \| number` | `2000`        |
+| zIndex                  | 遮罩层级 | `string`  \|  `number` | `2000`        |
 | duration                | 遮罩动画时长，单位秒 | `number`        | `0.3`         |
 | overlayClassName            | 自定义遮罩类名 | `string`        | -             |
 | overlayStyle            | 自定义遮罩样式 | `CSSProperties` | -             |

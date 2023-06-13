@@ -6,8 +6,7 @@ for quick layout
 
 ## Install
 
-```javascript
-// react
+```tsx
 import { Row, Col } from '@nutui/nutui-react'
 ```
 

@@ -6,8 +6,7 @@ Implement draggable arbitrary elements.
 
 ## Install
 
-```javascript
-// react
+```tsx
 import { Drag } from '@nutui/nutui-react'
 ```
 

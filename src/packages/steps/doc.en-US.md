@@ -6,8 +6,7 @@ Split and display the steps of a process, guide users to complete tasks accordin
 
 ## Install
 
-```ts
-// react
+```tsx
 import { Steps } from '@nutui/nutui-react';
 
 ```

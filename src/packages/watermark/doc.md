@@ -6,8 +6,7 @@
 
 ## 安装
 
-```ts
-// react
+```tsx
 import { WaterMark } from '@nutui/nutui-react';
 ```
 
@@ -88,7 +87,7 @@ export default App;
 | zIndex | 追加的水印元素的 z-index | `number` | `2000` |
 | content | 水印文字内容 | `string` | - |
 | color | 水印文字颜色 | `string` | `rgba(0, 0, 0, .15)` |
-| fontSize | 文字大小 | `string \| number` | `16` |
+| fontSize | 文字大小 | `string`  \|  `number` | `16` |
 | gapX | 水印之间的水平间距 | `number` | `24` |
 | gapY | 水印之间的垂直间距 | `number` | `48` |
 | fullPage | 是否覆盖整个页面 | `boolean` | `true` |

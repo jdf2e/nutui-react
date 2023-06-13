@@ -6,8 +6,7 @@ Click or hover the mouse on the element to pop up the floating layer of the bubb
 
 ## Install
 
-```javascript
-// react
+```tsx
 import { Popover } from '@nutui/nutui-react'
 ```
 
@@ -292,7 +291,7 @@ bottom-end    # Bottom right
 
 ```tsx
 import React, { useState, useRef } from 'react'
-import { Popover, Button } from '@nutui/nutui-react'
+import { Popover, Button, Cell, Picker } from '@nutui/nutui-react'
 
 const App = () => {
   const [baseDesc, setBaseDesc] = useState('')
@@ -338,7 +337,7 @@ const App = () => {
         title="Click for more directions"
         description={baseDesc}
         onClick={handlePicker}
-      ></Cell>
+       />
       <Picker
         visible={showPicker}
         options={columns}
@@ -362,7 +361,7 @@ const App = () => {
         }}
       >
         <div className="brickBox">
-          <div className="brick" id="pickerTarget"></div>
+          <div className="brick" id="pickerTarget" />
         </div>
       </Picker>
       <Popover
@@ -372,7 +371,7 @@ const App = () => {
         color="rgb(255, 255, 255)"
         list={positionList}
         location={curPostion}
-      ></Popover>
+       />
     </>
   )
 }
@@ -424,7 +423,7 @@ const App = () => {
         onClick={() => {
           setCustomTarget(false)
         }}
-      ></Popover>
+       />
       <Button
         type="primary"
         shape="square"
@@ -502,7 +501,7 @@ export default App
 | location            | The pop-up position, the specific parameter values ​​inside can refer to the above position customization example | `string`                              | `bottom`              |
 | offset              | the offset of the occurrence position                                                                             | `string[] \| number[]`                | `[0, 12]`             |
 | showArrow           | whether to show small arrows                                                                                      | `boolean`                             | `true`                |
-| duration            | Transition duration，Unit second                                                                                  | `string \| number`                    | `0.3`                 |
+| duration            | Transition duration，Unit second                                                                                  | `string`  \|  `number`                    | `0.3`                 |
 | overlay             | Whether to show overlay                                                                                           | `boolean`                             | `false`               |
 | overlayClassName    | Custom overlay class                                                                                              | `string`                              | `''`                  |
 | overlayStyle        | Custom overlay style                                                                                              | `React.CSSProperties`                 | `{}`                  |

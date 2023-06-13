@@ -7,7 +7,7 @@
 ## 安装
 
 
-```ts
+```tsx
 import { ImagePreview } from '@nutui/nutui-react-taro'
 ```
 

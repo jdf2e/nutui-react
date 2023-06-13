@@ -6,8 +6,7 @@
 
 ## 安装
 
-```javascript
-// react
+```tsx
 import { Popover } from '@nutui/nutui-react'
 ```
 
@@ -297,7 +296,7 @@ bottom-end    # 底部右侧位置
 
 ```tsx
 import React, { useState, useRef } from 'react'
-import { Popover, Button } from '@nutui/nutui-react'
+import { Popover, Button, Cell, Picker } from '@nutui/nutui-react'
 
 const App = () => {
   const [baseDesc, setBaseDesc] = useState('')
@@ -507,7 +506,7 @@ export default App
 | location            | 弹出位置，里面具体的参数值可以参考上面的位置自定义例子 | `string`                              | `bottom`              |
 | offset              | 出现位置的偏移量                                       | `string[] \| number[]`                | `[0, 12]`             |
 | showArrow           | 是否显示小箭头                                         | `boolean`                             | `true`                |
-| duration            | 动画时长，单位秒                                       | `string \| number`                    | `0.3`                 |
+| duration            | 动画时长，单位秒                                       | `string`  \|  `number`                    | `0.3`                 |
 | overlay             | 是否显示遮罩层                                         | `boolean`                             | `false`               |
 | overlayClassName    | 自定义遮罩层类名                                       | `string`                              | `''`                  |
 | overlayStyle        | 自定义遮罩层样式                                       | `React.CSSProperties`                 | `{}`                  |

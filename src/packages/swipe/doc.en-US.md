@@ -5,8 +5,7 @@ It is often used for gesture operations such as sliding left and right to delete
 
 ## Install
 
-```javascript
-// react
+```tsx
 import { Swipe } from '@nutui/nutui-react';
 ```
 
@@ -17,7 +16,6 @@ import { Swipe } from '@nutui/nutui-react';
 :::demo
 
 ```tsx
-
 import React from "react";
 import { Swipe, Cell, Button } from '@nutui/nutui-react';
 
@@ -106,7 +104,6 @@ export default App;
 :::demo
 
 ```tsx
-
 import React from "react";
 import { Swipe, Cell, Button } from '@nutui/nutui-react';
 
@@ -176,7 +173,6 @@ export default App;
 :::demo
 
 ```tsx
-
 import React, { useRef } from "react";
 
 import { Swipe, Cell, Button, Dialog } from '@nutui/nutui-react';

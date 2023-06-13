@@ -6,7 +6,7 @@
 
 ## 安装
 
-```ts
+```tsx
 import { NavBar } from '@nutui/nutui-react-taro';
 ```
 

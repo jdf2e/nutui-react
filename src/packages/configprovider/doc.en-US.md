@@ -6,8 +6,7 @@ Used to configure NutUI-React components globally, provide theme customization, 
 
 ## Install
 
-```ts
-// react
+```tsx
 import { ConfigProvider } from '@nutui/nutui-react';
 ```
 

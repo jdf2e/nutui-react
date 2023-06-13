@@ -6,8 +6,7 @@
 
 ## 安装
 
-```javascript
-// React
+```tsx
 import { TrendArrow } from '@nutui/nutui-react';
 ```
 

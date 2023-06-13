@@ -6,8 +6,7 @@
 
 ## 安裝
 
-```javascript
-// react
+```tsx
 import { Price } from '@nutui/nutui-react'
 ```
 

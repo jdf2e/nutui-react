@@ -6,8 +6,7 @@ Scrolling to the bottom of the list automatically loads more data.
 
 ## Install
 
-```ts
-// react
+```tsx
 import { InfiniteLoading } from '@nutui/nutui-react'
 ```
 

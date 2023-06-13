@@ -6,8 +6,7 @@
 
 ### 安装
 
-```js
-// react
+```tsx
 import { Ellipsis } from '@nutui/nutui-react';
 ```
 

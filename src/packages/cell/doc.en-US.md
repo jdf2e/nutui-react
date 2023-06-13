@@ -6,7 +6,7 @@ The cell is a single display item in the list.
 
 ## Install
 
-```ts
+```tsx
 import { Cell, CellGroup } from '@nutui/nutui-react'
 ```
 

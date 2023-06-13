@@ -9,7 +9,7 @@
 
 ## 安装
 
-```javascript
+```tsx
 import { Toast } from '@nutui/nutui-react-taro';
 ```
 ## 基础用法

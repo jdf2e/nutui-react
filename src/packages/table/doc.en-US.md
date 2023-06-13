@@ -5,8 +5,7 @@
 Used to display the basic table
 
 ## Install
-```ts
-// react
+```tsx
 import { Table } from '@nutui/nutui-react';
 ```
 

@@ -6,8 +6,7 @@ Placeholder prompt when empty
 
 ## Install
 
-```javascript
-// react
+```tsx
 import { Empty } from '@nutui/nutui-react'
 ```
 

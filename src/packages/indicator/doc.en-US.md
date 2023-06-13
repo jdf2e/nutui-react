@@ -6,8 +6,7 @@ Displays the progress of a task or process, often used for provisioning processe
 
 ## Install
 
-```javascript
-// react
+```tsx
 import { Indicator } from '@nutui/nutui-react'
 ```
 

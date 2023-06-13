@@ -6,8 +6,7 @@
 
 ## 安装
 
-```js
-// react
+```tsx
 import { Progress } from '@nutui/nutui-react';
 ```
 

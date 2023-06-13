@@ -6,8 +6,7 @@ Used to display a group of message notifications in a continuons loop.
 
 ## Install
 
-```javascript
-// react
+```tsx
 import { NoticeBar } from '@nutui/nutui-react';
 ```
 
@@ -265,7 +264,7 @@ export default App
 | closeable  | Whether to enable the off mode | `boolean`       | `false`   |
 | leftIcon   | Left Icon | `ReactNode`        | -       |
 | rightIcon  | Right Icon | `ReactNode`        | -       |
-| delay      | Delay time | `string \| number` | `1`       |
+| delay      | Delay time | `string`  \|  `number` | `1`       |
 | scrollable | Whether to scroll content | `boolean`       | `true`    |
 | speed      | Scrolling speed (px/s) | `number`         | `50`      |
 | wrap | Whether to enable text wrap | `boolean`       | `false`    |

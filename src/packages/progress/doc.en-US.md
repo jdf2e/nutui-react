@@ -6,8 +6,7 @@ Used to show the current progress of the operation.
 
 ## Install
 
-```js
-// react
+```tsx
 import { Progress } from '@nutui/nutui-react';
 ```
 

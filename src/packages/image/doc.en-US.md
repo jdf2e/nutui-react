@@ -6,8 +6,7 @@ Enhanced img tag with multiple image fill modes, support for loading hint, loadi
 
 ## Install
 
-```javascript
-// react
+```tsx
 import { Image } from '@nutui/nutui-react';
 ```
 
@@ -231,7 +230,7 @@ export default App;
 | alt | alternative text | `string` | `-` |
 | width | width, default unit `px` | `string` | `-` |
 | height | height, default unit `px` | `string` | `-` |
-| radius | rounded corner size | `string \| number` | `-` |
+| radius | rounded corner size | `string`  \|  `number` | `-` |
 | error | Whether to display image loading failure | `boolean \| ReactNode` | `true` |
 | loading | Whether to show loading images | `boolean \| ReactNode` | `true` |
 | lazy | Whether to lazy load images | `boolean` | `false` |

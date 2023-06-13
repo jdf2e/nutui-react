@@ -6,7 +6,7 @@
 
 ### 安装
 
-```javascript
+```tsx
 import { NoticeBar } from '@nutui/nutui-react-taro';
 ```
 
@@ -265,7 +265,7 @@ export default App
 | closeable  | 是否启用关闭模式 | `boolean`       | `false`  |
 | leftIcon   | 左边的 icon，closeable 模式下默认为空 | `ReactNode` | `-`     |
 | rightIcon   | closeable 模式下，默认为 `<Close />` | `ReactNode` | `-`     |
-| delay      | 延时多少秒 | `string \| number` | `1`      |
+| delay      | 延时多少秒 | `string`  \|  `number` | `1`      |
 | scrollable | 是否可以滚动 | `boolean`       | `true`   |
 | speed      | 滚动速率 (px/s) | `number`        | `50`     |
 | wrap   | 是否开启文本换行 | `boolean`       | `false`    |

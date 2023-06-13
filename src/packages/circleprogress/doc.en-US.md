@@ -6,8 +6,7 @@ Circular progress bar component
 
 ## Install
 
-```ts
-// react
+```tsx
 import { CircleProgress } from '@nutui/nutui-react';
 ```
 

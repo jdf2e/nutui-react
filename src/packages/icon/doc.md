@@ -43,7 +43,7 @@ Loading,Location,Location2,Check,Close,Left,Service,Top,Right,CheckNormal,Checke
 
 ## 方式二： IconFont 全量使用
 
-```js
+```tsx
 import { IconFont } from '@nutui/icons-react'
 ```
 
@@ -137,7 +137,7 @@ export default App;
 
 第二步：项目入口文件 main.js 引用 `iconfont.css`
 
-```javascript
+```tsx
 import './assets/font/iconfont.css';
 ```
 

@@ -16,7 +16,7 @@ import { Avatar } from '@nutui/nutui-react-taro';
 支持三种尺寸：small、normal、large
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react-taro';
 
@@ -47,7 +47,7 @@ export default App;
 支持两种形状：square、round
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react-taro';
 import { My } from '@nutui/icons-react-taro';
@@ -69,7 +69,7 @@ export default App;
 支持三种类型：图片、Icon 以及字符
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react-taro';
 import { My } from '@nutui/icons-react-taro';
@@ -92,7 +92,7 @@ export default App;
 Icon 和字符型可以自定义图标颜色及背景色
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react-taro';
 import { My } from '@nutui/icons-react-taro';
@@ -117,7 +117,7 @@ export default App;
 ### 带徽标的头像
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar, Badge } from '@nutui/nutui-react-taro';
 import { My } from '@nutui/icons-react-taro';
@@ -141,7 +141,7 @@ export default App;
 ### 头像组合展现
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar, AvatarGroup } from '@nutui/nutui-react-taro';
 import { My } from '@nutui/icons-react-taro';
@@ -175,7 +175,7 @@ export default App;
 ### 组合头像可控制层级方向
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar, AvatarGroup } from '@nutui/nutui-react-taro';
 import { My } from '@nutui/icons-react-taro';
@@ -201,7 +201,7 @@ export default App;
 ### 点击头像触发事件
 
 :::demo
-``` tsx
+```tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react-taro';
 import { My } from '@nutui/icons-react-taro';
@@ -241,7 +241,7 @@ export default App;
 ### Props
 | 属性 | 说明                                                             | 类型   | 默认值 |
 | -------- | ---------------------------------------------------------------- |----------|----------|
-| max     | 显示的最大头像个数   | `string \| number`    | `''` |
+| max     | 显示的最大头像个数   | `string`  \|  `number`    | `''` |
 | maxContent  | 头像数量超出时，会出现一个头像折叠元素。该元素内容可为...、more、+N。 | `string` | `''`     | 
 | size         | 设置头像的大小，可选值为：large、normal、small，支持直接输入数字   | `'large' \| 'normal' \| 'small'` | `''`     |
 | shape        | 设置头像的形状           | `'string' \| 'round'`  |  `''`  |

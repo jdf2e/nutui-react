@@ -6,8 +6,7 @@ It is used for the rotation display of words and phrases, which is suitable for 
 
 ## Install
 
-```ts
-// react
+```tsx
 import { Barrage } from '@nutui/nutui-react'
 ```
 

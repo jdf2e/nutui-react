@@ -6,7 +6,7 @@
 
 ## 安装
 
-```ts
+```tsx
 import { Steps } from '@nutui/nutui-react-taro';
 ```
 ## 代码演示

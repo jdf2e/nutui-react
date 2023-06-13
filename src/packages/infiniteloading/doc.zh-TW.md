@@ -6,7 +6,7 @@
 
 ### 安裝
 
-```ts
+```tsx
 import { InfiniteLoading } from '@nutui/nutui-react';
 ```
 

@@ -6,7 +6,6 @@
 
 ### 安裝
 ``` ts
-// react
 import { Skeleton } from '@nutui/nutui-react';
 ```
 

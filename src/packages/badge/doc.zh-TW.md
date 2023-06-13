@@ -6,8 +6,7 @@
 
 ## 安裝
 
-``` javascript
-// react
+```tsx
 import { Badge } from '@nutui/nutui-react';
 ```
 

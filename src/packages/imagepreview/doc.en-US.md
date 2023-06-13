@@ -7,8 +7,7 @@ Support full screen preview videos and images, support functional call.
 ## Install
 
 
-```ts
-// react
+```tsx
 import { ImagePreview } from '@nutui/nutui-react'
 ```
 
