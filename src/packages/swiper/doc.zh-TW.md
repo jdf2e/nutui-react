@@ -459,14 +459,14 @@ export default App;
 
 | 属性    | 说明 | 类型    | 默认值    |
 |-----------------|---------------------------------|-----------------------------| ----------------- |
-| width           | 轮播卡片的宽度                         | `number \| string`          | `window.innerWidth` |
-| height          | 轮播卡片的高度                         | `number \| string`          | `0`                 |
+| width           | 轮播卡片的宽度                         | `number` \| `string`          | `window.innerWidth` |
+| height          | 轮播卡片的高度                         | `number` \| `string`          | `0`                 |
 | direction       | 轮播方向,可选值`horizontal`,`vertical` | `string`                    | `horizontal`      |
 | indicator       | 分页指示器是否展示，可传入自定义的 HTML 结构       | `ReactNode`                 | `false`             |
 | loop            | 是否循环轮播                          | `boolean`                   | `true`              |
-| duration        | 动画时长（单位是ms）                     | `number \| string`          | `500`               |
-| autoPlay        | 自动轮播时长，0表示不会自动轮播                | `number \| string`          | `0`                 |
-| defaultValue    | 初始化索引值                          | `number \| string`          | `0`                 |
+| duration        | 动画时长（单位是ms）                     | `number` \| `string`          | `500`               |
+| autoPlay        | 自动轮播时长，0表示不会自动轮播                | `number` \| `string`          | `0`                 |
+| defaultValue    | 初始化索引值                          | `number` \| `string`          | `0`                 |
 | touchable       | 是否可触摸滑动                         | `boolean`                   | `true`              |
 | preventDefault  | 滑动过程中是否禁用默认事件                   | `boolean`                   | `true`              |
 | stopPropagation | 滑动过程中是否禁止冒泡                     | `boolean`                   | `true`              |

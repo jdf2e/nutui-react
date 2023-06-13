@@ -305,7 +305,7 @@ export default App;
 | description | Set panel subtitle/description | `string` | `-` |
 | cancelText | Cancel Text | `string` | `Cancel` |
 | options | Menu Item | `Array` | `[]` |
-| optionKey | Menu Item Custom key | `{ [key: string]: string }` | \`\`\`\` |
+| optionKey | Menu Item Custom key | `{ [key: string]: string }` | `-` |
 | onSelect | Triggered after selection | `(item: any, index: number) => void` | `-` |
 | onCancel | Triggered when onCancel copy is clicked | `() => void` | `-` |
 

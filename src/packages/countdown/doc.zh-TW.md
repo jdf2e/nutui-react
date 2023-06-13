@@ -356,8 +356,6 @@ export default App;
 | millisecond | 是否開啟毫秒級渲染 | `boolean` | `false` |
 | autoStart | 是否自動開始倒計時 | `boolean` | `true` |
 | time | 倒計時顯示時間，單位是毫秒。autoStart 為 false 時生效 | `number` | `0` |
-| showDays | 是否顯示天 | `boolean` | `false` |
-| showPlainText | 顯示為純文本 | `boolean` | `false` |
 | destroy | 銷毀實例 | `boolean` | `false` |
 | onEnd | 倒計時結束時回調函數 | `無` | `-` |
 | onPaused | 暫停倒計時回調函數 | `onPaused: (restTime: number) => void` | `-` |

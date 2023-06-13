@@ -1,4 +1,4 @@
-#  Empty组件
+# Empty组件
 
 ## 介绍
 
@@ -10,11 +10,12 @@
 import { Empty } from '@nutui/nutui-react-taro'
 ```
 
-
 ## 代码演示
 
 ### 基础用法
+
 :::demo
+
 ```tsx
 import  React from "react";
 import { Empty } from '@nutui/nutui-react-taro';
@@ -26,10 +27,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 自定义内容大小
+
 :::demo
+
 ```tsx
 import  React from "react";
 import { Empty } from '@nutui/nutui-react-taro';
@@ -41,10 +45,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 图片类型，内置 3 个
+
 :::demo
+
 ```tsx
 import  React from "react";
 import { Empty } from '@nutui/nutui-react-taro';
@@ -60,10 +67,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 自定义图片
+
 :::demo
+
 ```tsx
 import  React from "react";
 import { Empty } from '@nutui/nutui-react-taro';
@@ -78,11 +88,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
-
 ### 底部内容
+
 :::demo
+
 ```tsx
 import  React from "react";
 import { Empty, Button } from '@nutui/nutui-react-taro';
@@ -98,20 +110,19 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
+
 ## Empty
 
 ### Props
 
-| 属性 | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| image         | 图片,支持传入图片 URL              | `ReactNode`       | `-` |
-| imageSize        | 图片大小，number 类型单位为 px                         | `number \| string` | `''`       |
-| description         | 图片下方的描述文字 | `ReactNode` | `''`                |
-| status         | 默认图片错误类型 | `'empty' \| 'error' \| 'network'` |  `'empty'`             |
-
-
-
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| image | 图片,支持传入图片 URL | `ReactNode` | `-` |
+| imageSize | 图片大小，number 类型单位为 px | `number` \| `string` | `-` |
+| description | 图片下方的描述文字 | `ReactNode` | `-` |
+| status | 默认图片错误类型 | `empty` \| `error` \| `network` | `empty` |
 
 ## 主题定制
 
@@ -121,10 +132,10 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| --nutui-empty-padding | Empty组件图片的padding值 | `32px 0` |
-| --nutui-empty-image-size | Empty组件图片的尺寸大小 | `170px` |
-| --nutui-empty-description-margin-top | Empty组件图片描述margin-top的值 | `4px` |
-| --nutui-empty-description-color | Empty组件图片描述颜色值 | `#666666` |
-| --nutui-empty-description-font-size | Empty组件图片描述font-size值大小 | `14px` |
-| --nutui-empty-description-line-height | Empty组件图片描述行高 | `20px` |
-| --nutui-empty-description-padding | Empty组件图片描述padding值 | `0 40px` |
+| \--nutui-empty-padding | Empty组件图片的padding值 | `32px 0` |
+| \--nutui-empty-image-size | Empty组件图片的尺寸大小 | `170px` |
+| \--nutui-empty-description-margin-top | Empty组件图片描述margin-top的值 | `4px` |
+| \--nutui-empty-description-color | Empty组件图片描述颜色值 | `#666666` |
+| \--nutui-empty-description-font-size | Empty组件图片描述font-size值大小 | `14px` |
+| \--nutui-empty-description-line-height | Empty组件图片描述行高 | `20px` |
+| \--nutui-empty-description-padding | Empty组件图片描述padding值 | `0 40px` |

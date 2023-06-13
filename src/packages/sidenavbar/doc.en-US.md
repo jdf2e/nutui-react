@@ -141,7 +141,7 @@ export default App;
 | visible | whether the component is visible | `boolean` | `false` |
 | title | overall title | `string` | `-` |
 | width | mask width in percentage | `string` | `80%` |
-| position | popup position | `'left' \| 'right'` | `left` |
+| position | popup position | `left` \| `right` | `left` |
 | indent | indent width | `number` | `20` |
 | onClose | Triggered when the mask is closed | `-` | `-` |
 

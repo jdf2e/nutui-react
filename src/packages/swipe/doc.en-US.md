@@ -259,7 +259,7 @@ export default App;
 
 | Props                        | Description | Type          | Default&nbsp;&nbsp;&nbsp;&nbsp; |
 |------------------------------|-----------------|---------------|---------------|
-|name | identifier, which can be obtained in the event parameters | `number \| string` | - |
+|name | identifier, which can be obtained in the event parameters | `number` \| `string` | - |
 |leftAction | contents of the left sliding area | `ReactNode` | - |
 |rightAction | content of right sliding area | `ReactNode` | - |
 |beforeClose | the callback function before closing returns `position` which is the direction of the sliding area  | `(position: 'left \|'right') => void` | - |

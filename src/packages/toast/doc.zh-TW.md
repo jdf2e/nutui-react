@@ -38,6 +38,7 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ### 标题提示
@@ -69,7 +70,9 @@ const App = () => {
 }
 export default App
 ```
+
 :::
+
 ### 成功提示
 
 :::demo
@@ -99,8 +102,8 @@ const App = () => {
 }
 export default App
 ```
-:::
 
+:::
 
 ### 失败提示
 
@@ -131,8 +134,8 @@ const App = () => {
 }
 export default App
 ```
-:::
 
+:::
 
 ### 警告提示
 
@@ -163,8 +166,8 @@ const App = () => {
 }
 export default App
 ```
-:::
 
+:::
 
 ### 加载提示
 
@@ -195,6 +198,7 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ### 展示时长设置
@@ -249,6 +253,7 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ### Toast自定义底部高度
@@ -281,6 +286,7 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ### 加载Loading带非透明罩
@@ -318,6 +324,7 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ## Toast
@@ -326,29 +333,29 @@ export default App
 
 ### Props
 
-| 字段                | 说明                                            | 类型                                                         | 默认值       |
-| ------------------- | ----------------------------------------------- | ------------------------------------------------------------ | ------------ |
-| content             | Toast文本內容                                   | `React.ReactNode`                                            | -            |
-| duration            | 展示时长（秒）<br>值为 0 时，toast 不会自动消失 | `number`                                                     | `2`          |
-| position            | toast展示位置                                   | `'top' \| 'center' \| 'bottom'`                              | `'center'`   |
-| title               | 标题                                            | `'string'`                                                   | -            |
-| icon                | 自定义图标                                      | `'success' \| 'fail' \| 'loading' \| 'warn' \| React.ReactNode` | -            |
-| size                | 文案尺寸，**small**/**base**/**large**三选一    | `string`                                                     | `base`       |
-| className           | 自定义遮罩层类名                                | `string`                                                     | -            |
-| style               | 自定义遮罩层样式                                | `React.CSSProperties`                                        | -            |
-| contentClassName    | 自定义内容区类名                                | `string`                                                     | -            |
-| contentStyle        | 自定义内容区样式                                | `React.CSSProperties`                                        | -            |
-| onClose             | 关闭时触发的事件                                | `() => void`                                                 | `() => void` |
-| closeOnOverlayClick | 是否在点击遮罩层后关闭提示                      | `boolean`                                                    | `false`      |
+| 字段 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| content | Toast文本內容 | `React.ReactNode` | `-` |
+| duration | 展示时长（秒）<br>值为 0 时，toast 不会自动消失 | `number` | `2` |
+| position | toast展示位置 | `'top' \| 'center' | 'bottom'` | `'center'` |
+| title | 标题 | `string` | `-` |
+| icon | 自定义图标 | `success` \| `fail` \| `loading` \| `warn` \| `React.ReactNode` | `-` |
+| size | 文案尺寸，<strong>small</strong>/<strong>base</strong>/<strong>large</strong>三选一 | `string` | `base` |
+| className | 自定义遮罩层类名 | `string` | `-` |
+| style | 自定义遮罩层样式 | `React.CSSProperties` | `-` |
+| contentClassName | 自定义内容区类名 | `string` | `-` |
+| contentStyle | 自定义内容区样式 | `React.CSSProperties` | `-` |
+| onClose | 关闭时触发的事件 | `() => void` | `() => void` |
+| closeOnOverlayClick | 是否在点击遮罩层后关闭提示 | `boolean` | `false` |
 
 如果传入的参数是字符串类型，`Toast.show`会自动把它作为`content`
 
 ### Ref
 
-| 方法名 | 说明                    | 参数                                                         |
-| ------ | ----------------------- | ------------------------------------------------------------ |
-| clear  | 关闭所有显示中的`Toast` | -                                                            |
-| config | `Toast`全局配置         | `{ duration: number, position: 'top' \| 'center' \| 'bottom', closeOnOverlayClick: boolean }` |
+| 方法名 | 说明 | 参数 |
+| --- | --- | --- |
+| clear | 关闭所有显示中的`Toast` | \- |
+| config | `Toast`全局配置 | `{ duration: number, position: 'top' \| 'center' | 'bottom', closeOnOverlayClick: boolean }` |
 
 ## 主題定制
 
@@ -356,13 +363,13 @@ export default App
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名称                              | 说明                      | 默认值             |
-| --------------------------------- | ------------------------- | ------------------ |
-| --nutui-toast-title-font-size     | `toast`标题文字大小       | `16px`             |
-| --nutui-toast-text-font-size      | `toast`内容文字大小       | `14px`             |
-| --nutui-toast-font-color          | `toast`文字颜色           | `#fff`             |
-| --nutui-toast-inner-padding       | `toast`内容区padding值    | `24px 30px`        |
-| --nutui-toast-inner-bg-color      | `toast`内容区背景色       | `$gray7`           |
-| --nutui-toast-inner-border-radius | `toast`内容区圆角值       | `12px`             |
-| --nutui-toast-inner-text-align    | `toast`内容区文本对齐方式 | `center`           |
-| --nutui-overlay-bg-color          | `toast`遮罩背景色         | `rgba(0, 0, 0, 0)` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| \--nutui-toast-title-font-size | `toast`标题文字大小 | `16px` |
+| \--nutui-toast-text-font-size | `toast`内容文字大小 | `14px` |
+| \--nutui-toast-font-color | `toast`文字颜色 | `#fff` |
+| \--nutui-toast-inner-padding | `toast`内容区padding值 | `24px 30px` |
+| \--nutui-toast-inner-bg-color | `toast`内容区背景色 | `$gray7` |
+| \--nutui-toast-inner-border-radius | `toast`内容区圆角值 | `12px` |
+| \--nutui-toast-inner-text-align | `toast`内容区文本对齐方式 | `center` |
+| \--nutui-overlay-bg-color | `toast`遮罩背景色 | `rgba(0, 0, 0, 0)` |

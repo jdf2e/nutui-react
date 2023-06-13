@@ -15,6 +15,7 @@ import { Badge } from '@nutui/nutui-react';
 ### 基础用法
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Badge, Avatar, Cell } from '@nutui/nutui-react';
@@ -40,11 +41,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 最大值
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Badge, Avatar, Cell } from '@nutui/nutui-react';
@@ -71,7 +74,9 @@ export default App;
 :::
 
 ### 自定義顏色
+
 :::demo
+
 ```tsx
 import React from "react";
 import { Badge, Avatar, Cell } from '@nutui/nutui-react';
@@ -113,7 +118,9 @@ export default App;
 :::
 
 ### 自定義徽標內容
+
 :::demo
+
 ```tsx
 import React from "react";
 import { Badge, Avatar, Cell } from '@nutui/nutui-react';
@@ -145,6 +152,7 @@ export default App;
 ### 自定義徽標样式
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Badge, Avatar, ConfigProvider, Cell } from '@nutui/nutui-react';
@@ -183,6 +191,7 @@ export default App;
 :::
 
 ### 自定義位置
+
 :::demo
 
 ```tsx
@@ -207,10 +216,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 獨立展示
+
 :::demo
+
 ```tsx
 import React from "react";
 import { Badge, Cell } from '@nutui/nutui-react';
@@ -226,19 +238,21 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ## API
 
 ### Props
 
-| 属性    | 說明 | 類型    | 默認值    |
-|---------|--------------------------------------------|---------|-----------|
-| value   | 显示的内容，支持数字、字符和自定义内容  | `ReactNode`  | -         |
-| max     | value 為數值時，最大值 | `number`  | `99`   |
-| dot     | 是否為小點 | `boolean` | `false`   |
-| top     | 上下偏移量，支持單位設置，可設置為：5 等 | `number`  | `0`       |
-| right   | 左右偏移量，支持單位設置，可設置為：5 等 | `number`  | `0`       |
-| color   | 徽標背景顏色 | `string`  | `#fa2c19` |
+| 属性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| value | 显示的内容，支持数字、字符和自定义内容 | `ReactNode` | `-` |
+| max | value 為數值時，最大值 | `number` | `99` |
+| dot | 是否為小點 | `boolean` | `false` |
+| top | 上下偏移量，支持單位設置，可設置為：5 等 | `number` | `0` |
+| right | 左右偏移量，支持單位設置，可設置為：5 等 | `number` | `0` |
+| color | 徽標背景顏色 | `string` | `#fa2c19` |
 
 ## 主題定制
 
@@ -246,15 +260,15 @@ export default App;
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 说明| 默認值 |
-| --- | -- | --- |
-| --nutui-badge-background-color | badge 背景色 | `linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%))`|
-| --nutui-badge-color | badge 内容色值 | `#fff` |
-| --nutui-badge-font-size |badge 内容字号 | `$font-size-1` |
-| --nutui-badge-border |badge 边框 | `0px solid $primary-text-color`|
-| --nutui-badge-border-radius |badge 边框圆角 | `14px` |
-| --nutui-badge-padding |badge 的padding值 | `0 5px` |
-| --nutui-badge-icon-padding |badge 为自定义icon时 的 padding值 | `2px` |
-| --nutui-badge-content-transform |badge 内容位置| `translateY(-50%) translateX(100%)`|
-| --nutui-badge-z-index |badge 自定义icon时的z-index| `1` |
-| --nutui-badge-dot-width | badge 为圆点时的宽度、高度、圆角|`7px` |
+| 名稱 | 说明 | 默認值 |
+| --- | --- | --- |
+| \--nutui-badge-background-color | badge 背景色 | `linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%))` |
+| \--nutui-badge-color | badge 内容色值 | `#fff` |
+| \--nutui-badge-font-size | badge 内容字号 | `$font-size-1` |
+| \--nutui-badge-border | badge 边框 | `0px solid $primary-text-color` |
+| \--nutui-badge-border-radius | badge 边框圆角 | `14px` |
+| \--nutui-badge-padding | badge 的padding值 | `0 5px` |
+| \--nutui-badge-icon-padding | badge 为自定义icon时 的 padding值 | `2px` |
+| \--nutui-badge-content-transform | badge 内容位置 | `translateY(-50%) translateX(100%)` |
+| \--nutui-badge-z-index | badge 自定义icon时的z-index | `1` |
+| \--nutui-badge-dot-width | badge 为圆点时的宽度、高度、圆角 | `7px` |

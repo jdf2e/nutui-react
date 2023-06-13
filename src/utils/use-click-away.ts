@@ -19,7 +19,7 @@ const getTargetElement = (target: TargetType) => {
 export default function useClickAway(
   onClickAway: () => void,
   target: TargetType | TargetType[],
-  eventName: string = 'click',
+  eventName = 'click',
   isListener?: boolean,
   outerVar?: boolean
 ) {

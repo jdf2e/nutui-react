@@ -1,4 +1,4 @@
-#  NoticeBar 
+# NoticeBar
 
 ## Intro
 
@@ -30,9 +30,11 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ### Scrollable
+
 Scrolling is automatically enabled when the content length of the notification bar overflows, which can be controlled through the scrollable property.
 
 :::demo
@@ -57,8 +59,8 @@ const App = () => {
 }
 export default App
 ```
-:::
 
+:::
 
 ### Mode
 
@@ -91,8 +93,8 @@ const App = () => {
 }
 export default App
 ```
-:::
 
+:::
 
 ### wrap
 
@@ -113,6 +115,7 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ### Vertical Scroll
@@ -145,9 +148,8 @@ const App = () => {
 }
 export default App
 ```
+
 :::
-
-
 
 ### Vertical Scroll Custom Left Icon
 
@@ -180,8 +182,8 @@ const App = () => {
 }
 export default App
 ```
-:::
 
+:::
 
 ### Vertical Scroll Custom Style
 
@@ -219,6 +221,7 @@ const App = () => {
 };
 export default App
 ```
+
 :::
 
 ### Vertical Scroll Custom Right Icon
@@ -250,37 +253,37 @@ const App = () => {
 };
 export default App
 ```
-:::
 
+:::
 
 ## NoticeBar
 
 ### Props
 
-| Property     | Description | Type          | Default |
-| ---------- | --------------------------- | ------------- | ------ |
-| direction  | Rolling direction | `string`        | `horizontal`  |
-| content       | Notice text content | `string`        |  -      |
-| closeable  | Whether to enable the off mode | `boolean`       | `false`   |
-| leftIcon   | Left Icon | `ReactNode`        | -       |
-| rightIcon  | Right Icon | `ReactNode`        | -       |
-| delay      | Delay time | `string`  \|  `number` | `1`       |
-| scrollable | Whether to scroll content | `boolean`       | `true`    |
-| speed      | Scrolling speed (px/s) | `number`         | `50`      |
-| wrap | Whether to enable text wrap | `boolean`       | `false`    |
-| onClick      | Emitted when NoticeBar is clicked       | `(event: any) => void` |
-| onClose      | Emitted when NoticeBar is closed        | `(event: any) => void` |
-| onClickItem  | Emitted when the currently displayed information is clicked when scrolling multiple pieces of data vertically | `(event: any, value: any) => void` |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| direction | Rolling direction | `string` | `horizontal` |
+| content | Notice text content | `string` | `-` |
+| closeable | Whether to enable the off mode | `boolean` | `false` |
+| leftIcon | Left Icon | `ReactNode` | `-` |
+| rightIcon | Right Icon | `ReactNode` | `-` |
+| delay | Delay time | `string` \| `number` | `1` |
+| scrollable | Whether to scroll content | `boolean` | `true` |
+| speed | Scrolling speed (px/s) | `number` | `50` |
+| wrap | Whether to enable text wrap | `boolean` | `false` |
+| onClick | Emitted when NoticeBar is clicked | `(event: any) => void` | `-` |
+| onClose | Emitted when NoticeBar is closed | `(event: any) => void` | `-` |
+| onClickItem | Emitted when the currently displayed information is clicked when scrolling multiple pieces of data vertically | `(event: any, value: any) => void` | `-` |
 
 ### Props（direction=vertical）
 
-| Property    | Description | Type     | Default          |
-|--------------|-----------------------|----------|------------------|
-| list         | List | `Array`    | `[]`               |
-| speed        | Scrolling speed | `number`   | `50`               |
-| duration    | Show time(millisecond) | `number`   | `1000` |
-| height       | height | `number`   | `40` |
-| closeable    | Whether to enable the off mode | `boolean`  | `false`            |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| list | List | `Array` | `[]` |
+| speed | Scrolling speed | `number` | `50` |
+| duration | Show time(millisecond) | `number` | `1000` |
+| height | height | `number` | `40` |
+| closeable | Whether to enable the off mode | `boolean` | `false` |
 
 ## Theming
 
@@ -290,14 +293,14 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default Value |
 | --- | --- | --- |
-| --nutui-noticebar-background |noticebar background | `rgba(251, 248, 220, 1)` |
-| --nutui-noticebar-color | noticebar  color |`#d9500b` |
-| --nutui-noticebar-font-size |noticebar font size | `14px` |
-| --nutui-noticebar-height | noticebar height | `40px` |
-| --nutui-noticebar-line-height | noticebar line height | `24px` |
-| --nutui-noticebar-left-icon-width | noticebar left icon width | `16px` |
-| --nutui-noticebar-right-icon-width | noticebar right icon width | `16px` |
-| --nutui-noticebar-box-padding |noticebar box padding  | `0 16px` |
-| --nutui-noticebar-wrap-padding | noticebar wrap padding | `16px` |
-| --nutui-noticebar-lefticon-margin | noticebar lefticon margin | `0px 10px` |
-| --nutui-noticebar-righticon-margin | noticebar righticon margin | `0px 10px` |
+| \--nutui-noticebar-background | noticebar background | `rgba(251, 248, 220, 1)` |
+| \--nutui-noticebar-color | noticebar color | `#d9500b` |
+| \--nutui-noticebar-font-size | noticebar font size | `14px` |
+| \--nutui-noticebar-height | noticebar height | `40px` |
+| \--nutui-noticebar-line-height | noticebar line height | `24px` |
+| \--nutui-noticebar-left-icon-width | noticebar left icon width | `16px` |
+| \--nutui-noticebar-right-icon-width | noticebar right icon width | `16px` |
+| \--nutui-noticebar-box-padding | noticebar box padding | `0 16px` |
+| \--nutui-noticebar-wrap-padding | noticebar wrap padding | `16px` |
+| \--nutui-noticebar-lefticon-margin | noticebar lefticon margin | `0px 10px` |
+| \--nutui-noticebar-righticon-margin | noticebar righticon margin | `0px 10px` |

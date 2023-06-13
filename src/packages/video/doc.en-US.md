@@ -303,7 +303,7 @@ export default App;
 | source             | Video url and type settings       | `object`   | `{type: {}, src: ''}` |
 | options             | Control video playback properties      | `object`  | `-` |
 | options.autoplay    | Auto play           | `boolean` | `false`    |
-| options.poster      | Poster settings               | `string`  | `''`        |
+| options.poster      | Poster settings               | `string`  | `-`        |
 | options.loop        | Poster loop                               | `boolean` | `false`    |
 | options.controls    | Show operation control          | `boolean` | `true`     |
 | options.muted       | Mute                                   | `boolean` | `false`    |

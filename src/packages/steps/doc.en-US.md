@@ -476,7 +476,7 @@ export default App;
 
 | Property                   | Description                                                        | Type           | Default      |
 | ---------------------- | ----------------------------------------------------------- | -------------- | ----------- |
-| direction	             | 	Show direction，`horizontal`,`vertical`  | `string`        | 'horizontal'  | 
+| direction	             | 	Show direction，`horizontal`,`vertical`  | `string`        | `horizontal`  | 
 | current	               | 	Current step           | `number`        | 0      |
 | dot            |  Dot step bar     | `boolean` | false         |
 

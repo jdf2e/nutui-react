@@ -337,7 +337,7 @@ export default App;
 | visible | Whether to show preview |  `boolean` | `false` |
 | videos | Videos Array(Videos are before images) | `Array<Object>` | `[]`
 | images | Images array | `{ src: string }[]` | `[]` |
-| autoPlay | Autoplay time, zero means not autoplay | `number \| string`  | `3000`  |
+| autoPlay | Autoplay time, zero means not autoplay | `number` \| `string`  | `3000`  |
 | defaultValue | Init no |  `number` | `1` |
 | value | value,controlled |  `number` | `1` |
 | indicator | Whether to show pagination    |  `boolean` | `false` |

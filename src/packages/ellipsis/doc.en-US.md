@@ -130,7 +130,7 @@ export default App;
 | Property         | Description                             | Type   | Default           |
 |--------------|----------------------------------|--------|------------------|
 | content         | Content               | `string` | `-`                |
-| direction         | Direction                | `'start' \| 'end' \| 'middle'` | `'end'`               |
+| direction         | Direction                | `'start' \| 'end' \| 'middle'` | `end `               |
 | rows         | Rows               | `number` | `1`              |
 | expandText         | Expand text               | `string` | `-`              |
 | collapseText         | Collapse text               | `string` | `-`               |

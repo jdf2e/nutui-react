@@ -311,7 +311,7 @@ export default App;
 | source             | 视频地址和类型设置                         | `object`   | `{type: {}, src: ''}` |
 | options             | 控制视频播放属性                           | `object`  | `-` |
 | options.autoplay    | 是否自动播放                               | `boolean` | `false`    |
-| options.poster      | 海报设置                                   | `string`  | `''`        |
+| options.poster      | 海报设置                                   | `string`  | `-`        |
 | options.loop        | 是否循环播放                               | `boolean` | `false`    |
 | options.controls    | 是否展示操作栏                             | `boolean` | `true`     |
 | options.muted       | 是否静音                                   | `boolean` | `false`    |

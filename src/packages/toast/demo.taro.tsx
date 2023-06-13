@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { Cell, Toast } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
 const ToastDemo = () => {
   const [state, SetState] = useState({

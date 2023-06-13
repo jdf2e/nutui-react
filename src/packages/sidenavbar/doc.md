@@ -138,7 +138,7 @@ export default App;
 | visible | 组件是否显示 | `boolean` | `false` |
 | title | 整体标题 | `string` | `-` |
 | width | 遮罩宽度百分比 | `string` | `80%` |
-| position | 弹出位置 | `'left' \| 'right'` | `left` |
+| position | 弹出位置 | `left` \| `right` | `left` |
 | indent | 缩进宽度 | `number` | `20` |
 | onClose | 关闭遮罩时触发 | `-` | `-` |
 
