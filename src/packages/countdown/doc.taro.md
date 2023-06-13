@@ -45,15 +45,12 @@ export default App;
 :::demo
 
 ```tsx
-import  React, {useRef }from "react";
+import  React from "react";
 import { CountDown } from '@nutui/nutui-react-taro';
 
 const App = () => {
-  const stateRef = useRef({
-    remainingTime: 60 * 1000,
-  })
   return (
-     <CountDown remainingTime={stateRef.current.remainingTime} />
+     <CountDown remainingTime={60 * 1000} />
   );
 };
 export default App;
