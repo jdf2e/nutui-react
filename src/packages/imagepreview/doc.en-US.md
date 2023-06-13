@@ -1,4 +1,4 @@
-#  ImagePreview
+# ImagePreview
 
 ## Intro
 
@@ -6,17 +6,16 @@ Support full screen preview videos and images, support functional call.
 
 ## Install
 
-
 ```tsx
 import { ImagePreview } from '@nutui/nutui-react'
 ```
-
 
 ## Code demonstration
 
 ### Basic Usage
 
 :::demo
+
 ```tsx
 import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react';
@@ -55,6 +54,7 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### Click on the thumbnail to switch
@@ -113,10 +113,10 @@ export default App;
 
 :::
 
-
 ### With Init No
 
 :::demo
+
 ```tsx
 import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react';
@@ -155,8 +155,8 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ### with control
 
@@ -216,10 +216,10 @@ export default App;
 
 :::
 
-
 ### With Pagination
 
 :::demo
+
 ```tsx
 import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react';
@@ -258,11 +258,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### With Videos
 
 :::demo
+
 ```tsx
 import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react';
@@ -324,23 +326,22 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
-
-
 
 ## ImagePreview
 
 ### Props
 
-| Property | Description                             | Type   | Default           |
-|--------------|----------------------------------|--------|------------------|
-| visible | Whether to show preview |  `boolean` | `false` |
-| videos | Videos Array(Videos are before images) | `Array<Object>` | `[]`
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| visible | Whether to show preview | `boolean` | `false` |
+| videos | Videos Array(Videos are before images) | `Array<Object>` | `[]` |
 | images | Images array | `{ src: string }[]` | `[]` |
-| autoPlay | Autoplay time, zero means not autoplay | `number` \| `string`  | `3000`  |
-| defaultValue | Init no |  `number` | `1` |
-| value | value,controlled |  `number` | `1` |
-| indicator | Whether to show pagination    |  `boolean` | `false` |
-| indicatorColor   | Pagination color    |  `string`  | `#fff`  |
-| closeOnContentClick   | Click image to exit preview    |  `boolean`  | `false`  |
-| onClose | Emitted when closing ImagePreview|`() => void` | `-` | 
+| autoPlay | Autoplay time, zero means not autoplay | `number` \| `string` | `3000` |
+| defaultValue | Init no | `number` | `1` |
+| value | value,controlled | `number` | `1` |
+| indicator | Whether to show pagination | `boolean` | `false` |
+| indicatorColor | Pagination color | `string` | `#fff` |
+| closeOnContentClick | Click image to exit preview | `boolean` | `false` |
+| onClose | Emitted when closing ImagePreview | `() => void` | `-` |

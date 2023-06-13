@@ -1,71 +1,43 @@
 # Indicator 指示器
 
-### 介紹
+## 介紹
 
-顯示一個任務或流程的進度，常用於開通流程
+顯示一個任務或流程的進度，常用於開通流程。
 
-### 安装
+## 安裝
 
 ```tsx
 import { Indicator } from '@nutui/nutui-react'
 ```
+
+## 代碼演示
+
 ### 基礎用法
+
 :::demo
+
 ```tsx
 import  React from "react";
-import { Indicator, Cell, Button, Row, Col } from '@nutui/nutui-react';
+import { Indicator, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
     <div className="demo">
       <Cell>
-        <Indicator size={3} current={2} />
-      </Cell>
-      <Cell>
-        <Row>
-          <Col span="12">
-            <Button size="small" type="primary">
-              主要按鈕
-            </Button>
-          </Col>
-          <Col span="12">
-            <Indicator block align="right" size={6} current={5} />
-          </Col>
-        </Row>
+        <Indicator total={3} current={2} />
       </Cell>
     </div>
   );
 };
 export default App;
 ```
-:::
-### block用法
-在`block`為true時，將表現為塊級元素，可通過`align`，設置對齊方式
-:::demo
-```tsx
-import  React from "react";
-import { Indicator, Cell } from '@nutui/nutui-react';
 
-const App = () => {
-  return (
-   <div className="demo">
-      <Cell>
-        <Indicator block align="center" size={6} current={5} />
-      </Cell>
-      <Cell>
-        <Indicator block align="left" size={6} current={1} />
-      </Cell>
-      <Cell>
-        <Indicator block align="right" size={6} current={5} />
-      </Cell>
-    </div>
-  );
-};
-export default App;
-```
 :::
-### 不補0
+
+### 自定義節點
+
 :::demo
+
 ```tsx
 import  React from "react";
 import { Indicator, Cell } from '@nutui/nutui-react';
@@ -73,15 +45,50 @@ import { Indicator, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell>
-      <Indicator fillZero={false} size={6} current={5} />
+      <Indicator total={6} current={5}>
+        <div className="number">{5}</div>
+      </Indicator>
     </Cell>
   );
 };
 export default App;
 ```
+
 :::
-### 豎向展示
+
+### 自定義顏色大小
+
 :::demo
+
+```tsx
+import  React from "react";
+import { Indicator, Cell, ConfigProvider } from '@nutui/nutui-react';
+
+const customTheme = {
+  nutuiIndicatorColor: '#3768fa',
+  nutuiIndicatorDotColor: '#ddd',
+  nutuiIndicatorDotSize: '8px',
+  nutuiIndicatorDotActiveSize: '24px',
+}
+
+const App = () => {
+  return (
+    <Cell>
+      <ConfigProvider theme={customTheme}>
+        <Indicator total={6} current={5} />
+      </ConfigProvider>
+    </Cell>
+  );
+};
+export default App;
+```
+
+:::
+
+### 豎嚮展示
+
+:::demo
+
 ```tsx
 import  React from "react";
 import { Indicator, Cell } from '@nutui/nutui-react';
@@ -89,36 +96,31 @@ import { Indicator, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell>
-      <div 
-        style={{ height: '100px', width: '50%' }} 
-      >
-        <Indicator fillZero={false} size={6} current={5} vertical />
+      <div className="vertical_cell">
+        <Indicator total={6} current={5} direction="vertical">
+          <div className="number">{5}</div>
+        </Indicator>
       </div>
-      <div 
-        style={{ height: '100px', width: '50%' }} 
-      >
-        <Indicator size={6} current={2} vertical />
+      <div className="vertical_cell">
+        <Indicator total={6} current={2} direction="vertical" />
       </div>
     </Cell>
   );
 };
 export default App;
 ```
+
 :::
 
-## API
+## Indicator
 
 ### Props
 
-| 屬性 | 說明 | 類型 | 預設值           |
-|--------------|----------------------------------|--------|------------------|
-| current  | 當前步驟               | number | `0`              |
-| size       | 步驟長度                         | number | `3`               |
-| block | 是否啟用塊級佈局     | boolean | `false` |
-| align | 對齊方式，僅在block為true時生效, 可選值 'left', 'right', 'center'| string | `left` |
-| fillZero     | 單數前面是否補0       | boolean | `true`        |
-| vertical | 是否豎向展示     | boolean | `false` |
-
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| current | 當前步驟 | `number` | `0` |
+| total | 步驟長度 | `number` | `3` |
+| direction | 展示方嚮，默認為水平方嚮 | `horizontal` \| `vertical` | `horizontal` |
 
 ## 主題定制
 
@@ -126,14 +128,12 @@ export default App;
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 默認值 |
-| --- | --- |
-| --nutui-indicator-color | `$primary-color` |
-| --nutui-indicator-dot-color | `$disable-color` |
-| --nutui-indicator-white | `$white` |
-| --nutui-indicator-size | `18px` |
-| --nutui-indicator-number-font-size | `10px` |
-| --nutui-indicator-dot-margin | `4px` |
-| --nutui-indicator-dot-vertical-margin | `4px` |
-| --nutui-indicator-dot-first-margin | `0px` |
-| --nutui-indicator-dot-last-margin | `0px` |
+| 名稱 | 說明 | 默認值 |
+| --- | --- | --- |
+| \--nutui-indicator-color | 指示器焦點時色值 | `$primary-color` |
+| \--nutui-indicator-dot-color | 指示器默認色值 | `$disable-color` |
+| \--nutui-indicator-dot-size | 指示器尺寸 | `5px` |
+| \--nutui-indicator-dot-active-size | 指示器焦點時尺寸 | `15px` |
+| \--nutui-indicator-border-size | 指示器焦點時的border值 | `3px` |
+| \--nutui-indicator-dot-margin | 指示器橫嚮時的margin值 | `4px` |
+| \--nutui-indicator-dot-vertical-margin | 指示器縱嚮時的margin值 | `4px` |

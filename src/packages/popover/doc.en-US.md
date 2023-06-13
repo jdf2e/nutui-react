@@ -499,9 +499,9 @@ export default App
 | list | list of options | `List[]` | `[]` |
 | visible | whether to show | `boolean` | `false` |
 | location | The pop-up position, the specific parameter values ​​inside can refer to the above position customization example | `string` | `bottom` |
-| offset | the offset of the occurrence position | `string[] \| number[]` | `[0, 12]` |
+| offset | the offset of the occurrence position | `string[]` \| `number[] ` | `[0, 12]` |
 | showArrow | whether to show small arrows | `boolean` | `true` |
-| duration | Transition duration，Unit second | `string` \| `number` | `0.3` |
+| duration | Transition duration，Unit second | `string` \| `number`  | `0.3` |
 | overlay | Whether to show overlay | `boolean` | `false` |
 | overlayClassName | Custom overlay class | `string` | `-` |
 | overlayStyle | Custom overlay style | `React.CSSProperties` | `{}` |
@@ -511,10 +511,10 @@ export default App
 | background | Custom background | `string` | `-` |
 | color | Custom color | `string` | `-` |
 | targetId | Custom target id | `string` | `-` |
-| onClick | Click to toggle the popover display state | `() => void` | `() => {}` |
-| onSelect | Fired when an option is clicked | `(item: List, index: number) => void` | `(item, index) => {}` |
-| onOpen | Triggered when the menu is clicked | `() => void` | `() => {}` |
-| onClose | Fired when the menu is closed | `() => void` | `() => {}` |
+| onClick | Click to toggle the popover display state | `() => void` | `() =&gt; {}` |
+| onSelect | Fired when an option is clicked | `(item: List, index: number) => void` | `(item, index) =&gt; {}` |
+| onOpen | Triggered when the menu is clicked | `() => void` | `() =&gt; {}` |
+| onClose | Fired when the menu is closed | `() => void` | `() =&gt; {}` |
 
 ### List data structure
 

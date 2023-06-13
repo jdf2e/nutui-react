@@ -14,7 +14,9 @@ import { Toast } from '@nutui/nutui-react-taro';
 
 ## 基础用法
 
-### :::demo
+### 文字提示
+
+:::demo
 
 ```tsx
 import React, { useState } from 'react'

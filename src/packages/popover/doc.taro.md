@@ -504,9 +504,9 @@ export default App
 | list | 选项列表 | `List[]` | `[]` |
 | visible | 是否展示气泡弹出层 | `boolean` | `false` |
 | location | 弹出位置，里面具体的参数值可以参考上面的位置自定义例子 | `string` | `bottom` |
-| offset | 出现位置的偏移量 | `string[] \| number[]` | `[0, 12]` |
+| offset | 出现位置的偏移量 | `string[]` \| `number[] ` | `[0, 12]` |
 | showArrow | 是否显示小箭头 | `boolean` | `true` |
-| duration | 动画时长，单位秒 | `string` \| `number` | `0.3` |
+| duration | 动画时长，单位秒 | `string` \| `number`  | `0.3` |
 | overlay | 是否显示遮罩层 | `boolean` | `false` |
 | overlayClassName | 自定义遮罩层类名 | `string` | `-` |
 | overlayStyle | 自定义遮罩层样式 | `React.CSSProperties` | `{}` |
@@ -516,10 +516,10 @@ export default App
 | background | 自定义背景色 | `string` | `-` |
 | color | 自定义选项文字颜色 | `string` | `-` |
 | targetId | 自定义目标元素 id | `string` | `-` |
-| onClick | 点击切换 popover 展示状态 | `() => void` | `() => {}` |
-| onSelect | 点击选项时触发 | `(item: List, index: number) => void` | `(item, index) => {}` |
-| onOpen | 点击菜单时触发 | `() => void` | `() => {}` |
-| onClose | 关闭菜单时触发 | `() => void` | `() => {}` |
+| onClick | 点击切换 popover 展示状态 | `() => void` | `() =&gt; {}` |
+| onSelect | 点击选项时触发 | `(item: List, index: number) => void` | `(item, index) =&gt; {}` |
+| onOpen | 点击菜单时触发 | `() => void` | `() =&gt; {}` |
+| onClose | 关闭菜单时触发 | `() => void` | `() =&gt; {}` |
 
 ### List 数据结构
 

@@ -69,18 +69,17 @@ export default App
 
 ### Props
 
-| Property    | Description                                                                 | Type    | Default |
-| ----------- | --------------------------------------------------------------------------- | ------- | ------- |
-| list | Barrage list data                                                           | `Array<string>`   | `[]`    |
-| interval   | The time interval between the occurrence of each barrage in the visual area | `number`  | `500`   |
-| duration      | Rolling time of each barrage                                                | `number`  | `3000`  |
-| rows        | The number of bullet screen lines is displayed in several lines             | `number`  | `1`     |
-| gapY         | Vertical distance of barrage                                                | `number`  | `10`    |
-| loop        | Loop play                                                                   | `boolean` | `true`  |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| list | Barrage list data | `Array<string>` | `[]` |
+| interval | The time interval between the occurrence of each barrage in the visual area | `number` | `500` |
+| duration | Rolling time of each barrage | `number` | `3000` |
+| rows | The number of bullet screen lines is displayed in several lines | `number` | `1` |
+| gapY | Vertical distance of barrage | `number` | `10` |
+| loop | Loop play | `boolean` | `true` |
 
 ### Ref
 
 | Event | Description | Arguments |
-| ----- | ----------- | --------- |
-| add   | Add data    | `(word: string) => void`         |
-
+| --- | --- | --- |
+| add | Add data | `(word: string) => void` |

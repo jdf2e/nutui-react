@@ -246,11 +246,11 @@ export default App;
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| size | 設置頭像的大小 |`large` \| `normal` \| `small` \| `numbers`  | `-` |
+| size | 設置頭像的大小 | `large` \| `normal` \| `small` \| `numbers` | `-` |
 | shape | 設置頭像的形狀 | `round` \| `square` | `round` |
 | background | 設置 Icon、字符類型頭像的背景色 | `string` | `#eee` |
 | color | 設置 Icon、字符類型頭像的顏色 | `string` | `#666` |
-| fit | 圖片填充模式 | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` \| `cover` |
+| fit | 圖片填充模式 | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` \| `cover` | `-` |
 | src | 設置圖片類型頭像的地址 | `string` | `-` |
 | alt | 設置圖片類型頭像無法顯示時的替代文本 | `string` | `-` |
 | icon | 設置 Icon 類型頭像圖標 | `ReactNode` | `-` |
@@ -263,14 +263,14 @@ export default App;
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| max | 顯示的最大頭像個數 | `string` \| `number` | `-` |
+| max | 顯示的最大頭像個數 | `string` \| `number`  | `-` |
 | maxContent | 頭像數量超出時，會出現一個頭像摺疊元素。該元素內容可為...、more、+N。 | `string` | `-` |
-| size | 設置頭像的大小，可選值為：large、normal、small，支持直接輸入數字 | `large` \| `normal` \| `small` | `-` |
-| shape | 設置頭像的形狀 | `string` \| `round` | `-` |
+| size | 設置頭像的大小，可選值為：large、normal、small，支持直接輸入數字 | `large` \| `normal`  \| `small`  | `-` |
+| shape | 設置頭像的形狀 | `string` \| `round`  | `-` |
 | maxBackground | 設置 Icon、字符類型頭像的背景色 | `string` | `#eee` |
 | maxColor | 設置 Icon、字符類型頭像的顏色 | `string` | `#666` |
 | gap | 設置頭像之間的間距 | `string` | `-8` |
-| level | 頭像之間的層級關繫，可選值為：left、right | `left` \| `right` | `left` |
+| level | 頭像之間的層級關繫，可選值為：left、right | `left` \| `right`  | `left` |
 
 ## 主題定制
 

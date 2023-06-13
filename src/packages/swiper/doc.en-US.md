@@ -9,10 +9,13 @@ Often used in a group of pictures or card rotation.
 ```tsx
 import { Swiper, SwiperItem } from '@nutui/nutui-react';
 ```
+
 ## Demo
+
 ### Basic Usage
 
 :::demo
+
 ```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
@@ -50,10 +53,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ### Asynchronous loading
 
 :::demo
+
 ```tsx
 import React, { useState, useEffect } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
@@ -97,6 +103,7 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Dynamic loading
@@ -104,6 +111,7 @@ export default App;
 Support dynamic addition / deletion of pictures
 
 :::demo
+
 ```tsx
 import React, { useState, useEffect } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
@@ -148,12 +156,15 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Custom size
+
 `width` Custom rotation size
 
 :::demo
+
 ```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
@@ -185,6 +196,7 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Custom paging indicator
@@ -192,6 +204,7 @@ export default App;
 `indicator` Custom indicator
 
 :::demo
+
 ```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
@@ -229,6 +242,7 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Manual switching
@@ -236,6 +250,7 @@ export default App;
 You can manually switch through `ref` (`prev`, `next`)
 
 :::demo
+
 ```tsx
 import React, { useState, useRef } from 'react'
 import { Swiper, SwiperItem, Icon } from '@nutui/nutui-react';
@@ -321,6 +336,7 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Vertical direction
@@ -328,6 +344,7 @@ export default App;
 `direction` Custom rotation direction
 
 :::demo
+
 ```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
@@ -366,14 +383,15 @@ const App = () => {
 }
 export default App;
 ```
-:::
 
+:::
 
 ### Horizontal center display
 
 `isCenter` means it can be centered, and `width` must be passed at the same time
 
 :::demo
+
 ```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
@@ -409,12 +427,15 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ### Vertically centered display
 
 `isCenter` means that it can be centered, and `height` must be passed
 
 :::demo
+
 ```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
@@ -451,38 +472,37 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ## API
 
 ### Props
 
-| Property        | Description          | Type           | Default      |
-|-----------------| -------------------------------------- | ------------------------- | ----------------- |
-| width           | Width of rotation car                         | number \| string          | `window.innerWidth` |
-| height          | Height of rotation card                         | string \| number          | `0`                 |
-| direction       | Rotation direction, optional value：`horizontal`,`vertical` | string                    | `horizontal`      |
-| indicator       | Whether the pagination indicator is displayed                     | boolean                   | `false`             |
-| loop            | Whether to rotate                             | boolean                   | `true`              |
-| duration        | Animation duration（Unit ms                 | number \| string          | `500`               |
-| autoPlay        | Automatic rotation duration, 0 means no automatic        | number \| string          | `0`                 |
-| initPage        | Initialize index value                          | number \| string          | `0`                 |
-| touchable       | Is it possible to touch swipe                         | boolean                   | `true`              |
-| preventDefault  | Whether to disable default events during swipe             | boolean                   | `true`              |
-| stopPropagation | Whether to prohibit bubbling during sliding                 | boolean                   | `true`              |
-| center          | Whether to display in the center, the corresponding `width` and `height` must be passed                 | boolean                   | `false`              |
-| onChange        | Callback after card switching | `(current: number) => void` | `-` |
-
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| width | Width of rotation car | `number` \| `string` | `window.innerWidth` |
+| height | Height of rotation card | `string` \| `number`  | `0` |
+| direction | Rotation direction | `horizontal` \| `vertical` | `horizontal` |
+| indicator | Whether the pagination indicator is displayed | `boolean` | `false` |
+| loop | Whether to rotate | `boolean` | `true` |
+| duration | Animation duration（Unit ms | `number` \| `string` | `500` |
+| autoPlay | Automatic rotation duration, 0 means no automatic | `number` \| `string` | `0` |
+| initPage | Initialize index value | `number` \| `string` | `0` |
+| touchable | Is it possible to touch swipe | `boolean` | `true` |
+| preventDefault | Whether to disable default events during swipe | `boolean` | `true` |
+| stopPropagation | Whether to prohibit bubbling during sliding | `boolean` | `true` |
+| center | Whether to display in the center, the corresponding `width` and `height` must be passed | `boolean` | `false` |
+| onChange | Callback after card switching | `(current: number) => void` | `-` |
 
 ### Ref
 
-| Property | Description                   | Type                       |
-|----------| -------------- |---------------------------|
-| prev   | Switch to previous page   | `()=>void`                |
-| next   | Switch to next page   | `()=>void`                |
-| to     | Switch to the specified rotation | `(index: number)=>void`   |
-| resize | This method can be called to trigger redraw when the size of the outer element or the display state of the component changes | `()=>void`                |
-
+| Property | Description | Type |
+| --- | --- | --- |
+| prev | Switch to previous page | `()=>void` |
+| next | Switch to next page | `()=>void` |
+| to | Switch to the specified rotation | `(index: number)=>void` |
+| resize | This method can be called to trigger redraw when the size of the outer element or the display state of the component changes | `()=>void` |
 
 ## Theming
 
@@ -491,5 +511,5 @@ export default App;
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Description | Default |
-| --- |-------------|---------|
-| --nutui-swiper-pagination-bottom |  The distance from the bottom of the pager | `12px`  |
+| --- | --- | --- |
+| \--nutui-swiper-pagination-bottom | The distance from the bottom of the pager | `12px` |

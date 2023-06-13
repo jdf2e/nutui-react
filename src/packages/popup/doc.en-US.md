@@ -17,6 +17,7 @@ import { Popup } from '@nutui/nutui-react';
 `visible` Control show/hide
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Popup, Cell } from '@nutui/nutui-react';
@@ -33,11 +34,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ### popup location
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Popup, Cell } from '@nutui/nutui-react';
@@ -64,11 +67,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ### Icon
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Popup, Cell } from '@nutui/nutui-react';
@@ -94,11 +99,13 @@ export default App;
 
 
 ```
+
 :::
 
 ### Rounded popup
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Popup, Cell } from '@nutui/nutui-react';
@@ -115,11 +122,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### Mount the specified node
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Popup, Cell } from '@nutui/nutui-react';
@@ -138,11 +147,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### multi-layer stacking
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Popup, Cell } from '@nutui/nutui-react';
@@ -177,40 +188,40 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ## API
 
 ### Props
 
-| Props                        | Description | Type          | Default        |
-|------------------------------|-----------------|---------------|---------------|
-| visible | Whether the current component is displayed | `boolean`       | `false` |
-| zIndex | mask level | `string`  \|  `number` | `2000` |
-| duration | Mask animation duration, in seconds | `number`        | `0.3` |
-| overlayClassName | custom mask class | `string`        | - |
-| overlayStyle | custom mask style | `CSSProperties` | - |
-| lockScroll | Whether the background is locked | `boolean`       | `true`       |
-| overlay | Whether to show the mask | `boolean`       | `true` |
-| closeOnOverlayClick | Whether to click the mask to close | `boolean`       | `true` |
-| position | popup location（top,bottom,left,right,center） | `string `       | `center` | 
-| transition | animation name | `string`        | - |
-| style | Custom popup style | `CSSProperties` | - |
-| className | Custom popup class name | `string`        | -             |
-| closeable | whether to show the close button | `boolean`       | `false`        |
-| closeIconPosition | close button position（top-left,top-right,bottom-left,bottom-right） | `string` | `top-right` |
-| closeIcon | Custom Icon | `ReactNode`        | `close`     |
-| destroyOnClose | Whether to close after the component is destroyed | `boolean`       | `false`        |
-| round | Whether to show rounded corners | `boolean`       | `false`       |
-| portal | Mount the specified node | `HTMLElement \| (() => HTMLElement) \| null` | `null`       |
-| onClick            | Triggered when the popup is clicked         | `event: MouseEvent` | - |
-| onClickCloseIcon | Fired when the close icon is clicked     | `event: MouseEvent` | - |
-| onOpen | Triggered when the popup is opened         | -              | - |
-| onClose | Fired when the popup is closed         | -              | - |
-| afterShow | afterShow from `Overlay`, Fired when the mask opening animation ends | `event: HTMLElement` | - |
-| afterClose | afterClose from `Overlay`, Fired when the mask closing animation ends | `event: HTMLElement` | - |
-| onClickOverlay    | Click on the mask to trigger           | `event: MouseEvent` | - |
-
+| Props | Description | Type | Default |
+| --- | --- | --- | --- |
+| visible | Whether the current component is displayed | `boolean` | `false` |
+| zIndex | mask level | `string` \| `number`  | `2000` |
+| duration | Mask animation duration, in seconds | `number` | `0.3` |
+| overlayClassName | custom mask class | `string` | `-` |
+| overlayStyle | custom mask style | `CSSProperties` | `-` |
+| lockScroll | Whether the background is locked | `boolean` | `true` |
+| overlay | Whether to show the mask | `boolean` | `true` |
+| closeOnOverlayClick | Whether to click the mask to close | `boolean` | `true` |
+| position | popup location | `top` \| `bottom` \| `left` \| `right` \| `center` | `center` |
+| transition | animation name | `string` | `-` |
+| style | Custom popup style | `CSSProperties` | `-` |
+| className | Custom popup class name | `string` | `-` |
+| closeable | whether to show the close button | `boolean` | `false` |
+| closeIconPosition | close button position | `top-left` \| `top-right` \| `bottom-left` \| `bottom-right` | `top-right` |
+| closeIcon | Custom Icon | `ReactNode` | `close` |
+| destroyOnClose | Whether to close after the component is destroyed | `boolean` | `false` |
+| round | Whether to show rounded corners | `boolean` | `false` |
+| portal | Mount the specified node | `HTMLElement` \| `(() => HTMLElement)` | null` | `null` |
+| onClick | Triggered when the popup is clicked | `event: MouseEvent` | `-` |
+| onClickCloseIcon | Fired when the close icon is clicked | `event: MouseEvent` | `-` |
+| onOpen | Triggered when the popup is opened | `-` | `-` |
+| onClose | Fired when the popup is closed | `-` | `-` |
+| afterShow | afterShow from `Overlay`, Fired when the mask opening animation ends | `event: HTMLElement` | `-` |
+| afterClose | afterClose from `Overlay`, Fired when the mask closing animation ends | `event: HTMLElement` | `-` |
+| onClickOverlay | Click on the mask to trigger | `event: MouseEvent` | `-` |
 
 ## Theming
 
@@ -218,9 +229,9 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Description  | Default |
-| --- | --- |--- |
-| --nutui-popup-border-radius | popup's border radius | `20px` |
-| --nutui-popup-close-icon-margin | the margin of the close icon | `16px` |
-| --nutui-popup-close-icon-color | close icon's color | `#969799`|
-| --nutui-popup-close-icon-size | close icon's size | `30px` |
+| Name | Description | Default |
+| --- | --- | --- |
+| \--nutui-popup-border-radius | popup's border radius | `20px` |
+| \--nutui-popup-close-icon-margin | the margin of the close icon | `16px` |
+| \--nutui-popup-close-icon-color | close icon's color | `#969799` |
+| \--nutui-popup-close-icon-size | close icon's size | `30px` |

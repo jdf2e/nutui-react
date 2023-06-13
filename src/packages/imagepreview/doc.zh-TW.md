@@ -1,18 +1,18 @@
-# ImagePreview组件
+# ImagePreview組件
 
-## 介绍
+## 介紹
 
-支持全屏预览视频和图片，可函数式调用
+支持全屏預覽視頻和圖片，可函數式調用
 
-## 安装
+## 安裝
 
 ```tsx
 import { ImagePreview } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 代碼演示
 
-### 基础用法
+### 基礎用法
 
 :::demo
 
@@ -48,7 +48,7 @@ const App = () => {
   return (
     <>
         <ImagePreview images={images} visible={showPreview1} onClose={hideFn1} />
-        <Cell title="展示图片预览"  onClick={showFn1} />
+        <Cell title="展示圖片預覽"  onClick={showFn1} />
     </>
   );
 };
@@ -57,7 +57,7 @@ export default App;
 
 :::
 
-### 点击缩略图切换
+### 點擊縮略圖切換
 
 :::demo
 
@@ -113,7 +113,7 @@ export default App;
 
 :::
 
-### 设置初始页码
+### 設置初始頁碼
 
 :::demo
 
@@ -149,7 +149,7 @@ const App = () => {
   return (
     <>
         <ImagePreview images={images} defaultValue={3} visible={showPreview2} onClose={hideFn2} />
-        <Cell title="设置初始页码"  onClick={showFn2} />
+        <Cell title="設置初始頁碼"  onClick={showFn2} />
     </>
   );
 };
@@ -216,7 +216,7 @@ export default App;
 
 :::
 
-### 设置轮播指示器及颜色
+### 設置輪播指示器及顏色
 
 :::demo
 
@@ -252,7 +252,7 @@ const App = () => {
   return (
     <>
         <ImagePreview images={images} visible={showPreview3} indicator indicatorColor="red" onClose={hideFn3} />
-        <Cell title="设置轮播指示器及颜色"  onClick={showFn3} />
+        <Cell title="設置輪播指示器及顏色"  onClick={showFn3} />
     </>
   );
 };
@@ -261,7 +261,7 @@ export default App;
 
 :::
 
-### 视频、图片预览
+### 視頻、圖片預覽
 
 :::demo
 
@@ -320,7 +320,7 @@ const App = () => {
   return (
     <>
         <ImagePreview images={images} videos={videos} visible={showPreview4} onClose={hideFn4} />
-        <Cell title="视频、图片预览"  onClick={showFn4} />
+        <Cell title="視頻、圖片預覽"  onClick={showFn4} />
     </>
   );
 };
@@ -333,15 +333,15 @@ export default App;
 
 ### Props
 
-| 属性 | 说明 | 类型 | 默认值 |
+| 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| visible | 是否展示预览图片 | `boolean` | `false` |
-| videos | 预览的视频数组（视频自动放到图片之前） | `Array<Object>` | `[]` |
-| images | 预览图片数组 | `{ src: string }[]` | `[]` |
-| autoPlay | 自动轮播时长，0表示不会自动轮播 | `number` \| `string` | `3000` |
-| defaultValue | 初始页码 | `number` | `1` |
-| value | 页码，受控 | `number` | `1` |
-| indicator | 分页指示器是否展示 | `boolean` | `false` |
-| indicatorColor | 分页指示器选中的颜色 | `string` | `#fff` |
-| closeOnContentClick | 点击图片可以退出预览 | `boolean` | `false` |
-| onClose | 点击遮罩关闭图片预览时触发 | `() => void` | `-` |
+| visible | 是否展示預覽圖片 | `boolean` | `false` |
+| videos | 預覽的視頻數組（視頻自動放到圖片之前） | `Array<Object>` | `[]` |
+| images | 預覽圖片數組 | `{ src: string }[]` | `[]` |
+| autoPlay | 自動輪播時長，0錶示不會自動輪播 | `number` \| `string` | `3000` |
+| defaultValue | 初始頁碼 | `number` | `1` |
+| value | 頁碼，受控 | `number` | `1` |
+| indicator | 分頁指示器是否展示 | `boolean` | `false` |
+| indicatorColor | 分頁指示器選中的顏色 | `string` | `#fff` |
+| closeOnContentClick | 點擊圖片可以退出預覽 | `boolean` | `false` |
+| onClose | 點擊遮罩關閉圖片預覽時觸發 | `() => void` | `-` |

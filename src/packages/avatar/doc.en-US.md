@@ -243,11 +243,11 @@ export default App;
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| size | The size of the avatar |`large` \| `normal` \| `small` \| `numbers` | `-` |
+| size | The size of the avatar | `large` \| `normal` \| `small` \| `numbers` | `-` |
 | shape | The shape of avatar | `round` \| `square` | `round` |
 | background | The colors of Icon and letter types | `string` | `#eee` |
 | color | The background colors of Icon and letter types | `string` | `#666` |
-| fit | The fill mode of the image | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` \| `cover` |
+| fit | The fill mode of the image | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` \| `cover` | `-` |
 | src | The address of the image for an image avatar or image element | `string` | `-` |
 | alt | This attribute defines the alternative text describing the image | `string` | `-` |
 | icon | Custom icon type for an icon avatar | `ReactNode` | `-` |
@@ -260,14 +260,14 @@ export default App;
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| max | Max avatars to show | `string` \| `number` | `-` |
+| max | Max avatars to show | `string` \| `number`  | `-` |
 | maxContent | When the number of avatars exceeds, a avatar folding element will appear，The content of this element can be ...、more、+N。 | `string` | `-` |
-| size | The size of the avatar，supports direct input of numbers | `large` \| `normal` \| `small` | `-` |
-| shape | The shape of avatar | `string` \| `round` | `-` |
+| size | The size of the avatar，supports direct input of numbers | `large` \| `normal`  \| `small`  | `-` |
+| shape | The shape of avatar | `string` \| `round`  | `-` |
 | maxBackground | The colors of Icon and letter types | `string` | `#eee` |
 | maxColor | The background colors of Icon and letter types | `string` | `#666` |
 | gap | Distance between avatars | `string` | `-8` |
-| level | Hierarchy direction between avatar group | `left` \| `right` | `left` |
+| level | Hierarchy direction between avatar group | `left` \| `right`  | `left` |
 
 ## Theming
 

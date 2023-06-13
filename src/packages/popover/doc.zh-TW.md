@@ -504,9 +504,9 @@ export default App
 | list | 選項列錶 | `List[]` | `[]` |
 | visible | 是否展示氣泡彈出層 | `boolean` | `false` |
 | location | 彈出位置，裏面具體的參數值可以參考上面的位置自定義例子 | `string` | `bottom` |
-| offset | 出現位置的偏移量 | `string[] \| number[]` | `[0, 12]` |
+| offset | 出現位置的偏移量 | `string[]` \| `number[] ` | `[0, 12]` |
 | showArrow | 是否顯示小箭頭 | `boolean` | `true` |
-| duration | 動畫時長，單位秒 | `string` \| `number` | `0.3` |
+| duration | 動畫時長，單位秒 | `string` \| `number`  | `0.3` |
 | overlay | 是否顯示遮罩層 | `boolean` | `false` |
 | overlayClassName | 自定義遮罩層類名 | `string` | `-` |
 | overlayStyle | 自定義遮罩層樣式 | `React.CSSProperties` | `{}` |
@@ -516,10 +516,10 @@ export default App
 | background | 自定義背景色 | `string` | `-` |
 | color | 自定義選項文字顏色 | `string` | `-` |
 | targetId | 自定義目標元素 id | `string` | `-` |
-| onClick | 點擊切換 popover 展示狀態 | `() => void` | `() => {}` |
-| onSelect | 點擊選項時觸發 | `(item: List, index: number) => void` | `(item, index) => {}` |
-| onOpen | 點擊菜單時觸發 | `() => void` | `() => {}` |
-| onClose | 關閉菜單時觸發 | `() => void` | `() => {}` |
+| onClick | 點擊切換 popover 展示狀態 | `() => void` | `() =&gt; {}` |
+| onSelect | 點擊選項時觸發 | `(item: List, index: number) => void` | `(item, index) =&gt; {}` |
+| onOpen | 點擊菜單時觸發 | `() => void` | `() =&gt; {}` |
+| onClose | 關閉菜單時觸發 | `() => void` | `() =&gt; {}` |
 
 ### List 數據結構
 

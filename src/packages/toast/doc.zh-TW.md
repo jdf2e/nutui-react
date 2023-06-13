@@ -1,16 +1,16 @@
 # Toast 吐司
 
-### 介绍
+### 介紹
 
-用于轻提示。
+用於輕提示。
 
-### 安装
+### 安裝
 
 ```tsx
 import { Toast } from '@nutui/nutui-react';
 ```
 
-## 代码演示
+## 代碼演示
 
 ### 文字提示
 
@@ -31,7 +31,7 @@ const App = () => {
           
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => textToast('网络失败，请稍后再试~')}
+          ) => textToast('網絡失敗，請稍後再試~')}
         />
         </>
     )
@@ -41,7 +41,7 @@ export default App
 
 :::
 
-### 标题提示
+### 標題提示
 
 :::demo
 
@@ -53,17 +53,17 @@ const App = () => {
     const titleToast = (msg: string) => {
       Toast.show({
       	content: msg,
-        title: '标题提示'
+        title: '標題提示'
       })
     }
     return (
         <>
         <Cell
-          title="Toast 标题提示"
+          title="Toast 標題提示"
           
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => titleToast('Toast 标题提示')}
+          ) => titleToast('Toast 標題提示')}
         />
         </>
     )
@@ -105,7 +105,7 @@ export default App
 
 :::
 
-### 失败提示
+### 失敗提示
 
 :::demo
 
@@ -123,11 +123,11 @@ const App = () => {
     return (
         <>
         <Cell
-          title="Error 失败提示"
+          title="Error 失敗提示"
           
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => errorToast('失败提示')}
+          ) => errorToast('失敗提示')}
         />
         </>
     )
@@ -169,7 +169,7 @@ export default App
 
 :::
 
-### 加载提示
+### 加載提示
 
 :::demo
 
@@ -187,11 +187,11 @@ const App = () => {
     return (
         <>
             <Cell
-              title=" Loading 加载提示"
+              title=" Loading 加載提示"
 
               onClick={(
                   event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-              ) => loadingToast('加载中')}
+              ) => loadingToast('加載中')}
             />
         </>
     )
@@ -201,7 +201,7 @@ export default App
 
 :::
 
-### 展示时长设置
+### 展示時長設置
 
 :::demo
 
@@ -227,11 +227,11 @@ const App = () => {
     return (
         <>
             <Cell
-              title="设置展示时长为10秒提示"
+              title="設置展示時長為10秒提示"
 
               onClick={(
                   event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-              ) => duringToast('设置展示时长为10秒')}
+              ) => duringToast('設置展示時長為10秒')}
             />
             <Cell
               title="Toast 不消失"
@@ -247,7 +247,7 @@ const App = () => {
               onClick={() => {
                   Toast.clear()
               }}
-            >隐藏Toast</Button>
+            >隱藏Toast</Button>
         </>
     )
 }
@@ -256,7 +256,7 @@ export default App
 
 :::
 
-### Toast自定义底部高度
+### Toast自定義底部高度
 
 :::demo
 
@@ -276,11 +276,11 @@ const App = () => {
     }
     return (
         <Cell
-        title='Toast 自定义底部高度'
+        title='Toast 自定義底部高度'
         
         onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => toastBottom('自定义距离')}
+        ) => toastBottom('自定義距離')}
         />
     )
 }
@@ -289,7 +289,7 @@ export default App
 
 :::
 
-### 加载Loading带非透明罩
+### 加載Loading帶透明罩
 
 :::demo
 
@@ -302,7 +302,7 @@ const App = () => {
       Toast.show({
         content: msg,
         style: {
-          background: 'rgba(0, 0, 0, 0)'
+          '--nutui-overlay-bg-color': 'rgba(0, 0, 0, 0)'
         },
         closeOnOverlayClick: true,
         onClose: () => {
@@ -313,11 +313,11 @@ const App = () => {
     return (
         <>
             <Cell
-            title="Loading状态非透明遮罩"
+            title="Loading狀態非透明遮罩"
             
             onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-            ) => iconToast('加载状态非透明遮罩')}
+            ) => iconToast('加載狀態非透明遮罩')}
             />
         </>
     )
@@ -333,29 +333,27 @@ export default App
 
 ### Props
 
-| 字段 | 说明 | 类型 | 默认值 |
+| 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | content | Toast文本內容 | `React.ReactNode` | `-` |
-| duration | 展示时长（秒）<br>值为 0 时，toast 不会自动消失 | `number` | `2` |
-| position | toast展示位置 | `'top' \| 'center' | 'bottom'` | `'center'` |
-| title | 标题 | `string` | `-` |
-| icon | 自定义图标 | `success` \| `fail` \| `loading` \| `warn` \| `React.ReactNode` | `-` |
-| size | 文案尺寸，<strong>small</strong>/<strong>base</strong>/<strong>large</strong>三选一 | `string` | `base` |
-| className | 自定义遮罩层类名 | `string` | `-` |
-| style | 自定义遮罩层样式 | `React.CSSProperties` | `-` |
-| contentClassName | 自定义内容区类名 | `string` | `-` |
-| contentStyle | 自定义内容区样式 | `React.CSSProperties` | `-` |
-| onClose | 关闭时触发的事件 | `() => void` | `() => void` |
-| closeOnOverlayClick | 是否在点击遮罩层后关闭提示 | `boolean` | `false` |
+| duration | 展示時長（秒）<br>值為 0 時，toast 不會自動消失 | `number` | `2` |
+| position | toast展示位置 | `top` \| `center` \| `bottom` | `center` |
+| title | 標題 | `string` | `-` |
+| icon | 自定義圖標 | `success` \| `fail` \| `loading` \| `warn` \| `React.ReactNode` | `-` |
+| size | 文案尺寸，三選一 | `small` \| `base` \| `large`  | `base` |
+| contentClassName | 自定義內容區類名 | `string` | `-` |
+| contentStyle | 自定義內容區樣式 | `React.CSSProperties` | `-` |
+| closeOnOverlayClick | 是否在點擊遮罩層後關閉提示 | `boolean` | `false` |
+| onClose | 關閉時觸發的事件 | `() => void` | `() => void` |
 
-如果传入的参数是字符串类型，`Toast.show`会自动把它作为`content`
+如果傳入的參數是字符串類型，`Toast.show`會自動把它作為`content`
 
 ### Ref
 
-| 方法名 | 说明 | 参数 |
+| 方法名 | 說明 | 參數 |
 | --- | --- | --- |
-| clear | 关闭所有显示中的`Toast` | \- |
-| config | `Toast`全局配置 | `{ duration: number, position: 'top' \| 'center' | 'bottom', closeOnOverlayClick: boolean }` |
+| clear | 關閉所有顯示中的`Toast` | `-` |
+| config | `Toast`全局配置 | `{ duration: number, position: 'top' \| 'center' \| 'bottom', closeOnOverlayClick: boolean }` |
 
 ## 主題定制
 
@@ -363,13 +361,13 @@ export default App
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名称 | 说明 | 默认值 |
+| 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-toast-title-font-size | `toast`标题文字大小 | `16px` |
-| \--nutui-toast-text-font-size | `toast`内容文字大小 | `14px` |
-| \--nutui-toast-font-color | `toast`文字颜色 | `#fff` |
-| \--nutui-toast-inner-padding | `toast`内容区padding值 | `24px 30px` |
-| \--nutui-toast-inner-bg-color | `toast`内容区背景色 | `$gray7` |
-| \--nutui-toast-inner-border-radius | `toast`内容区圆角值 | `12px` |
-| \--nutui-toast-inner-text-align | `toast`内容区文本对齐方式 | `center` |
+| \--nutui-toast-title-font-size | `toast`標題文字大小 | `16px` |
+| \--nutui-toast-text-font-size | `toast`內容文字大小 | `14px` |
+| \--nutui-toast-font-color | `toast`文字顏色 | `#fff` |
+| \--nutui-toast-inner-padding | `toast`內容區padding值 | `24px 30px` |
+| \--nutui-toast-inner-bg-color | `toast`內容區背景色 | `$gray7` |
+| \--nutui-toast-inner-border-radius | `toast`內容區圓角值 | `12px` |
+| \--nutui-toast-inner-text-align | `toast`內容區文本對齊方式 | `center` |
 | \--nutui-overlay-bg-color | `toast`遮罩背景色 | `rgba(0, 0, 0, 0)` |

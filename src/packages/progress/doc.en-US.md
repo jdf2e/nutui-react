@@ -15,6 +15,7 @@ import { Progress } from '@nutui/nutui-react';
 ### Basic Usage
 
 :::demo
+
 ```jsx
 import  React from "react";
 import { Progress, Cell } from '@nutui/nutui-react';
@@ -28,11 +29,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### Custom Style
 
 :::demo
+
 ```jsx
 import  React from "react";
 import { Progress, Cell } from '@nutui/nutui-react';
@@ -51,11 +54,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### Show Percentage
 
 :::demo
+
 ```jsx
 import  React from "react";
 import { Progress, Cell } from '@nutui/nutui-react';
@@ -69,11 +74,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 自定义显示内容
 
 :::demo
+
 ```jsx
 import  React from "react";
 import { Progress, Image, Cell } from '@nutui/nutui-react';
@@ -93,11 +100,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ## Custom Size
 
 :::demo
+
 ```jsx
 import  React from "react";
 import { Progress, Cell } from '@nutui/nutui-react';
@@ -119,11 +128,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### Status Display
 
 :::demo
+
 ```jsx
 import  React from "react";
 import { Progress, Cell } from '@nutui/nutui-react';
@@ -156,11 +167,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### Dynamic Change
 
 :::demo
+
 ```jsx
 import  React, {useState} from "react";
 import { Progress, Cell, Button } from '@nutui/nutui-react';
@@ -208,6 +221,7 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### Delay Time
@@ -235,11 +249,11 @@ export default App;
 ### Props
 
 | Property | Description | Type | Default |
-|----- | ----- | ----- | ----- |
+| --- | --- | --- | --- |
 | percent | percent | `number` | `0` |
 | color | Stroke color | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)` |
 | background | Progress bar background color | `string` | `#f3f3f3` |
-| strokeWidth | Stroke width | `string` | - |
+| strokeWidth | Stroke width | `string` | `-` |
 | showText | Whether to show text | `boolean` | `false` |
 | animated | Whether to show animation | `boolean` | `false` |
 | lazy | Show animation when intersect | `boolean` | `false` |
@@ -253,14 +267,14 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| --nutui-progress-height | strokeWidth | `10px` |
-| --nutui-progress-border-radius | borderRadius | `12px` |
-| --nutui-progress-color | progress color | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)` |
-| --nutui-progress-background | progress background | `#f3f3f3` |
-| --nutui-progress-text-color | text color | `$primary-text-color` |
-| --nutui-progress-text-padding | text padding | `0 5px` |
-| --nutui-progress-text-font-size | text fontSize | `9px` |
-| --nutui-progress-text-position-top | text top | `-4px`|
-| --nutui-progress-text-position-bottom | text bottom | `-4px`|
-| --nutui-progress-text-border-radius | text borderRadius | `5px` |
-| --nutui-progress-text-background | text background | `$progress-color` |
+| \--nutui-progress-height | strokeWidth | `10px` |
+| \--nutui-progress-border-radius | borderRadius | `12px` |
+| \--nutui-progress-color | progress color | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)` |
+| \--nutui-progress-background | progress background | `#f3f3f3` |
+| \--nutui-progress-text-color | text color | `$primary-text-color` |
+| \--nutui-progress-text-padding | text padding | `0 5px` |
+| \--nutui-progress-text-font-size | text fontSize | `9px` |
+| \--nutui-progress-text-position-top | text top | `-4px` |
+| \--nutui-progress-text-position-bottom | text bottom | `-4px` |
+| \--nutui-progress-text-border-radius | text borderRadius | `5px` |
+| \--nutui-progress-text-background | text background | `$progress-color` |

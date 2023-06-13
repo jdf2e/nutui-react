@@ -13,7 +13,9 @@ import { Indicator } from '@nutui/nutui-react'
 ## 代码演示
 
 ### 基础用法
+
 :::demo
+
 ```tsx
 import  React from "react";
 import { Indicator, Cell } from '@nutui/nutui-react';
@@ -29,10 +31,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 自定义节点
+
 :::demo
+
 ```tsx
 import  React from "react";
 import { Indicator, Cell } from '@nutui/nutui-react';
@@ -48,10 +53,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 自定义颜色大小
+
 :::demo
+
 ```tsx
 import  React from "react";
 import { Indicator, Cell, ConfigProvider } from '@nutui/nutui-react';
@@ -74,10 +82,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 竖向展示
+
 :::demo
+
 ```tsx
 import  React from "react";
 import { Indicator, Cell } from '@nutui/nutui-react';
@@ -98,19 +109,18 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ## Indicator
 
 ### Props
 
-| 属性 | 说明 | 类型   | 默认值           |
-|--------------|---------------|--------|----|
-| current  | 当前步骤 | number | `0` |
-| total | 步骤长度 | number | `3` |
-| direction | 展示方向，默认为水平方向 | `'horizontal' \| 'vertical'` |   `horizontal` |
-
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| current | 当前步骤 | `number` | `0` |
+| total | 步骤长度 | `number` | `3` |
+| direction | 展示方向，默认为水平方向 | `horizontal` \| `vertical` | `horizontal` |
 
 ## 主题定制
 
@@ -119,11 +129,11 @@ export default App;
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 说明 | 默认值 |
-| --- | --- | -- |
-| --nutui-indicator-color | 指示器焦点时色值 | `$primary-color` |
-| --nutui-indicator-dot-color | 指示器默认色值 | `$disable-color` |
-| --nutui-indicator-dot-size | 指示器尺寸  | `5px` |
-| --nutui-indicator-dot-active-size | 指示器焦点时尺寸 | `15px` |
-| --nutui-indicator-border-size | 指示器焦点时的border值 | `3px` |
-| --nutui-indicator-dot-margin | 指示器横向时的margin值 | `4px` |
-| --nutui-indicator-dot-vertical-margin | 指示器纵向时的margin值 | `4px` |
+| --- | --- | --- |
+| \--nutui-indicator-color | 指示器焦点时色值 | `$primary-color` |
+| \--nutui-indicator-dot-color | 指示器默认色值 | `$disable-color` |
+| \--nutui-indicator-dot-size | 指示器尺寸 | `5px` |
+| \--nutui-indicator-dot-active-size | 指示器焦点时尺寸 | `15px` |
+| \--nutui-indicator-border-size | 指示器焦点时的border值 | `3px` |
+| \--nutui-indicator-dot-margin | 指示器横向时的margin值 | `4px` |
+| \--nutui-indicator-dot-vertical-margin | 指示器纵向时的margin值 | `4px` |

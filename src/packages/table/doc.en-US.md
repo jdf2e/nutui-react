@@ -1,19 +1,21 @@
-#  Table
+# Table
 
 ## Intro
 
 Used to display the basic table
 
 ## Install
+
 ```tsx
 import { Table } from '@nutui/nutui-react';
 ```
 
-
 ## Demo
+
 ### Basic Usage
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table } from '@nutui/nutui-react';
@@ -71,10 +73,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### Whether to display border and align text
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table } from '@nutui/nutui-react';
@@ -130,11 +135,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
-
 ### Show summary bar
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table, Button } from '@nutui/nutui-react';
@@ -188,10 +195,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### Stripes, alternating light and shade
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table } from '@nutui/nutui-react';
@@ -253,10 +263,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### Hide table header
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table } from '@nutui/nutui-react';
@@ -318,10 +331,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### No data is displayed by default, and customization is supported
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table } from '@nutui/nutui-react';
@@ -372,10 +388,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### Custom cell
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table, Button } from '@nutui/nutui-react';
@@ -449,10 +468,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### Support asynchronous rendering
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table, Button } from '@nutui/nutui-react';
@@ -506,9 +528,11 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
-### Supports sorting 
+### Supports sorting
+
 ```tsx
 import  React, { useState } from "react";
 import { Table, Button } from '@nutui/nutui-react';
@@ -573,12 +597,13 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ### Supports sorting and changing ICONS
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table, Button } from '@nutui/nutui-react';
@@ -645,33 +670,34 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ## Table
 
 ### Props
 
-| Property | Description | Type   | Default           |
-|--------------|-------------------|--------|------------------|
-| bordered         | Show border | 	`boolean` | `true` |
-| columns         | Header data | 	TableColumnProps[] | `[]` |
-| data | Table data | 	Object[] | `[]` |
-| summary | Show profile | 	ReactNode | `-` |
-| striped         | Whether the stripes alternate light and dark | 	`boolean` | `false`                |
-| showHeader   | Show Header | 	`boolean` | `true` |
-| noData | Custom noData | 	ReactNode | `-` |
-| sorterIcon    | Sort icon | 	ReactNode | `<DownArrow />` |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| bordered | Show border | `boolean` | `true` |
+| columns | Header data | `TableColumnProps[]` | `[]` |
+| data | Table data | `Object[]` | `[]` |
+| summary | Show profile | `ReactNode` | `-` |
+| striped | Whether the stripes alternate light and dark | `boolean` | `false` |
+| showHeader | Show Header | `boolean` | `true` |
+| noData | Custom noData | `ReactNode` | `-` |
+| sorterIcon | Sort icon | `ReactNode` | `<DownArrow />` |
 
 ### TableColumnProps
-| Property         | Description | Type   | Default           |
-|--------------|--------------|--------|------------------|
-| key | Unique identification of the column | 	`string` | `-` |
-| title | Header title | 	`string` | `-` |
-| align |Alignment of columns, optional values`left`,`center`,`right`  | 	`string` | `left` |
-| sorter | sort，optional values `true`,`function`, `default`, Where `default` means that you may depend on the interface after clicking, `function` you can return a specific sorting function, `default` indicates that the default sorting algorithm is adopted | 	`boolean \| Function \| string` | `-` |
-| render | Custom render column data, high priority | 	Function(record) | `-` |
-| onSort  | Click the sort button to trigger | `item: TableColumnProps, data: Array<any>` |
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| key | Unique identification of the column | `string` | `-` |
+| title | Header title | `string` | `-` |
+| align | Alignment of columns | `left` \| `center` \| `right` | `left` |
+| sorter | sort，optional values `true`,`function`, `default`, Where `default` means that you may depend on the interface after clicking, `function` you can return a specific sorting function, `default` indicates that the default sorting algorithm is adopted | `boolean` \| `Function` \| `string` | `-` |
+| render | Custom render column data, high priority | `Function(record)` | `-` |
+| onSort | Click the sort button to trigger | `item: TableColumnProps, data: Array<any>` | `-` |
 
 ## Theming
 
@@ -681,7 +707,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default Value |
 | --- | --- | --- |
-| --nutui-table-border-color | table border color | `#ececec` |
-| --nutui-table-cols-padding | table columns padding value | `10px` |
-| --nutui-table-tr-even-background-color | table even rows background color | `$gray4` |
-| --nutui-table-tr-odd-background-color | table odd rows background color  | `$gray6` |
+| \--nutui-table-border-color | table border color | `#ececec` |
+| \--nutui-table-cols-padding | table columns padding value | `10px` |
+| \--nutui-table-tr-even-background-color | table even rows background color | `$gray4` |
+| \--nutui-table-tr-odd-background-color | table odd rows background color | `$gray6` |

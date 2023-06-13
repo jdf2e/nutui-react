@@ -190,18 +190,17 @@ export default App;
 ### Props
 
 | Property | Description | Type | Default |
-|-------------------------|---------------------|--------|----------|
-| type | Label type, the optional value is primary success danger warning | `string` | `default` |
-| background | Label background | `string` |  `-` |
-| color | Text color, priority is higher than the color attribute          | `string` | `white`  |
-| plain | Whether it is hollow | `boolean` | `false`  |
-| round | Whether it is a rounded style | `boolean` | `false`  |
-| mark | Whether it is a tag style | `boolean` | `false`  |
-| closeable | Whether it can be closed label | `boolean\ | ReactNode` | `false`   | 
-| closeIcon     | close icon | `ReactNode` | `null`    | `-` |
-| onClick    | Click event |  `(e: MouseEvent) => void`   | `-` |
-| onClose    | Close event |  `(e?: any) => void`   | `-` |
-
+| --- | --- | --- | --- |
+| type | Label type | `primary` \| `success` \| `danger` \| `warning` | `default` |
+| background | Label background | `string` | `-` |
+| color | Text color, priority is higher than the color attribute | `string` | `white` |
+| plain | Whether it is hollow | `boolean` | `false` |
+| round | Whether it is a rounded style | `boolean` | `false` |
+| mark | Whether it is a tag style | `boolean` | `false` |
+| closeable | Whether it can be closed label | `boolean` | `false` |
+| closeIcon | close icon | `ReactNode` | `null` |
+| onClick | Click event | `(e: MouseEvent) => void` | `-` |
+| onClose | Close event | `(e?: any) => void` | `-` |
 
 ## Theming
 
@@ -209,17 +208,15 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Description | Default |
-| --- | --- |
-| --nutui-tag-padding | padding | ` 0 4px`|
-| --nutui-tag-font-size | font size | ` 12px` |
-| --nutui-tag-border-radius | border radius | `4px` |
-| --nutui-tag-height | height |` auto` |
-| --nutui-tag-color | color | ` #ffffff` |
-| --nutui-tag-border-width | border width | ` 1px` |
-| --nutui-tag-background-color | background color | `  #000000` |
-| --nutui-tag-primary-background-color |primary background color   | `  #3460fa` |
-| --nutui-tag-success-background-color | success background color | `  #4fc08d` |
-| --nutui-tag-warning-background-color | warn background color | `  #f3812e` |
-| --nutui-tag-round-border-radius | round border radius | ` 8px` |
-| --nutui-tag-mark-border-radius | mark border radius | ` 0 12px 12px 0` |
+| Name | Description | Default | 
+| --- | --- | --- | 
+| --nutui-tag-padding | padding | `0 4px`| 
+| --nutui-tag-font-size | font size | `12px` | 
+| --nutui-tag-border-radius | border radius | `4px` | 
+| --nutui-tag-height | height | `auto` | | --nutui-tag-color | color | `#ffffff` | 
+| --nutui-tag-border-width | border width | `1px` | | --nutui-tag-background-color | background color | `#000000` | 
+| --nutui-tag-primary-background-color |primary background color | `#3460fa` | 
+| --nutui-tag-success-background-color | success background color | `#4fc08d` | 
+| --nutui-tag-warning-background-color | warn background color | `#f3812e` | 
+| --nutui-tag-round-border-radius | round border radius | `8px` | 
+| --nutui-tag-mark-border-radius | mark border radius | `0 12px 12px 0` |

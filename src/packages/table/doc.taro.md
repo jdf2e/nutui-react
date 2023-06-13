@@ -1,20 +1,21 @@
-#  Table组件
+# Table组件
 
 ## 介绍
 
 用于展示基础表格
 
 ## 安装
+
 ```tsx
 import { Table } from '@nutui/nutui-react-taro';
 ```
-
 
 ## 代码演示
 
 ### 基础用法
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table } from '@nutui/nutui-react-taro';
@@ -72,10 +73,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 是否显示边框，文字对齐
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table } from '@nutui/nutui-react-taro';
@@ -131,11 +135,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
-
 ### 显示总结栏
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table } from '@nutui/nutui-react-taro';
@@ -197,10 +203,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 条纹、明暗交替
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table } from '@nutui/nutui-react-taro';
@@ -262,10 +271,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 隐藏表头
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table } from '@nutui/nutui-react-taro';
@@ -327,10 +339,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 无数据默认展示，支持自定义
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table } from '@nutui/nutui-react-taro';
@@ -381,10 +396,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 自定义单元格
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table, Button } from '@nutui/nutui-react-taro';
@@ -458,10 +476,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 支持异步渲染(5s之后看效果)
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table, Button } from '@nutui/nutui-react';
@@ -515,10 +536,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 支持排序
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table, Button } from '@nutui/nutui-react-taro';
@@ -583,10 +607,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 支持排序替换ICON
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table, Button } from '@nutui/nutui-react-taro';
@@ -653,36 +680,34 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
-
-
 
 ## Table
 
 ### Props
 
-| 属性         | 说明 | 类型   | 默认值           |
-|--------------|-------------|--------|------------------|
-| bordered         | 是否显示边框 | 	`boolean` | `true` |
-| columns         | 表头数据 | 	TableColumnProps[] | `[]` |
-| data         | 表格数据 | 	Object[] | `[]` |
-| summary         | 是否显示简介 | 	`ReactNode` | `-` |
-| striped         | 条纹是否明暗交替 | 	`boolean` | `false` |
-| showHeader        | 是否显示表头 | 	`boolean` | `true` |
-| noData         | 自定义无数据 | 	`ReactNode` | `-` |
-| onSort  | 点击排序按钮触发 | `item: TableColumnProps, data: Array<any>` |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| bordered | 是否显示边框 | `boolean` | `true` |
+| columns | 表头数据 | `TableColumnProps[]` | `[]` |
+| data | 表格数据 | `Object[]` | `[]` |
+| summary | 是否显示简介 | `ReactNode` | `-` |
+| striped | 条纹是否明暗交替 | `boolean` | `false` |
+| showHeader | 是否显示表头 | `boolean` | `true` |
+| noData | 自定义无数据 | `ReactNode` | `-` |
+| onSort | 点击排序按钮触发 | `item: TableColumnProps, data: Array<any>` | `-` |
 
 ### TableColumnProps
 
-| 属性         | 说明 | 类型   | 默认值           |
-|--------------|---------------|--------|------------------|
-| key | 列的唯一标识 | 	`string` | `-` |
-| title | 表头标题 | 	`string` | `-` |
-| align | 列的对齐方式，可选值left,center,right | 	`string` | `left` |
-| sorter | 排序，可选值有 true,function, default, 其中 default表示点击之后可能会依赖接口, function可以返回具体的排序函数, default表示采用默认的排序算法 | 	`boolean \| Function \| string` | `- ` |
-| render | 自定义渲染列数据，优先级高 | 	`Function(record)` | `-` |
-| sorterIcon | 排序 icon | 	`ReactNode` | `<DownArrow />` |
-
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| key | 列的唯一标识 | `string` | `-` |
+| title | 表头标题 | `string` | `-` |
+| align | 列的对齐方式 | `left` \| `center` \| `right`  | `left` |
+| sorter | 排序，可选值有 true,function, default, 其中 default表示点击之后可能会依赖接口, function可以返回具体的排序函数, default表示采用默认的排序算法 | `boolean` \| `Function` \| `string` | `-` |
+| render | 自定义渲染列数据，优先级高 | `Function(record)` | `-` |
+| sorterIcon | 排序 icon | `ReactNode` | `<DownArrow />` |
 
 ## 主题定制
 
@@ -692,7 +717,7 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| --nutui-table-border-color | 表格的边框色值 | `#ececec` |
-| --nutui-table-cols-padding | 表格列的padding值 |`10px` |
-| --nutui-table-tr-even-background-color | 表格偶数行的背景色 |`$gray4` |
-| --nutui-table-tr-odd-background-color |表格奇数行的背景色 | `$gray6` |
+| \--nutui-table-border-color | 表格的边框色值 | `#ececec` |
+| \--nutui-table-cols-padding | 表格列的padding值 | `10px` |
+| \--nutui-table-tr-even-background-color | 表格偶数行的背景色 | `$gray4` |
+| \--nutui-table-tr-odd-background-color | 表格奇数行的背景色 | `$gray6` |
