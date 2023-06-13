@@ -416,7 +416,7 @@ export default App;
 | form | 經 Form.useForm() 創建的 form 控制實例，不提供時會自動創建 | `FormInstance` | `-` |
 | footer | 表單底部區域，一般放置確認和重置按鈕 | `ReactNode` | `null` |
 | initialValues | 表單初始值 | `any` | `-` |
-| name | 表單名稱 | `any` | `\` |
+| name | 表單名稱 | `any` | `-` |
 | labelPosition | 表單項 label 的位置 | `'top'\| 'left'|'right'` | `right` |
 | starPosition | 必填表單項 label 的紅色星標位置 | `'left'\| 'right'` | `left` |
 | onFinish | 校驗成功後觸發 | `(values: any) => void` | `-` |
@@ -460,10 +460,10 @@ Form.useForm()創建 Form 實例，用於管理所有數據狀態。
 
 | 屬性 | 說明 | 參數 | 返回值 |
 | --- | --- | --- | --- |
-| getFieldValue | 獲取對應字段名的值 | \- | (name: NamePath) => any |
-| setFieldsValue | 設置表單的值 | \- | (values) => void |
-| resetFields | 重置表單提示狀態 | \- | () => void |
-| submit | 提交表單進行校驗的方法 | \- | Promise |
+| getFieldValue | 獲取對應字段名的值 | \- | `(name: NamePath) => any` |
+| setFieldsValue | 設置表單的值 | \- | `(values) => void` |
+| resetFields | 重置表單提示狀態 | \- | `() => void` |
+| submit | 提交表單進行校驗的方法 | \- | `Promise` |
 
 ## 主題定制
 

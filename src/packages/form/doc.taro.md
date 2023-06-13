@@ -410,45 +410,45 @@ export default App;
 
 ### Props
 
-| 属性 | 说明 | 类型 | 默认值    |
-| --- | --- | --- |--------|
-| form | 经 Form.useForm() 创建的 form 控制实例，不提供时会自动创建 | `FormInstance` | `-`    |
-| footer | 表单底部区域，一般放置确认和重置按钮 | `ReactNode` | `null` |
-| initialValues | 表单初始值 | `any` | `-`    |
-| name | 表单名称 | `any` | `\`    |
-| labelPosition | 表单项 label 的位置 | `'top'\| 'left'\|'right'` | `right` |
+| 属性 | 说明 | 类型 | 默认值      |
+| --- | --- | --- |----------|
+| form | 经 Form.useForm() 创建的 form 控制实例，不提供时会自动创建 | `FormInstance` | `-`      |
+| footer | 表单底部区域，一般放置确认和重置按钮 | `ReactNode` | `null`   |
+| initialValues | 表单初始值 | `any` | `-`      |
+| name | 表单名称 | `any` | `-`      |
+| labelPosition | 表单项 label 的位置 | `'top'\| 'left'\  |'right'` | `right` |
 | starPosition | 必填表单项 label 的红色星标位置 | `'left'\| 'right'` | `left` |
-| onFinish | 校验成功后触发 | `(values: any) => void` | `-`    |
-| onFinishFailed | 任一表单项被校验失败后触发 | `(values: any, errorFields: any) => void` | `-`    |
+| onFinish | 校验成功后触发 | `(values: any) => void` | `-`      |
+| onFinishFailed | 任一表单项被校验失败后触发 | `(values: any, errorFields: any) => void` | `-`      |
 
 ## Form.Item
 
 ### Props
 
-| 属性 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
+| 属性 | 说明 | 类型 | 默认值     |
+| --- | --- | --- |---------|
 | required | 必填表单项 label 的红色星标,仅用于控制样式 | `boolean` | `false` |
-| name | 在使用表单校验功能的情况下，该属性是必填的 | `string` | `-` |
-| labelWidth | 表单项 label 宽度，默认单位为`px` | `number \` | `string` |
-| errorMessageAlign | 错误提示文案对齐方式 | \`\`'center'| 'right'\` | \`'left'\`\` |
-| initialValue | 设置子元素默认值 | `any` | `-` |
-| trigger | 设置收集字段值变更的时机 | `string` | `-` |
-| valuePropName | 子节点的值的属性，如 Checkbox 的是 'checked' | `string` | `-` |
-| getValueFromEvent | 设置如何将 event 的值转换成字段值 | `(...args: any) => any` | `-` |
-| onClick | 点击事件并收集子组件 Ref | `(event: React.MouseEvent, componentRef: React.MutableRefObject&lt;any>) =&gt; void` | `-` |
+| name | 在使用表单校验功能的情况下，该属性是必填的 | `string` | `-`     |
+| labelWidth | 表单项 label 宽度，默认单位为`px` | `number` | `90px`  |
+| errorMessageAlign | 错误提示文案对齐方式 | `'center'\| 'right'\|'left'` | `left` |
+| initialValue | 设置子元素默认值 | `any` | `-`     |
+| trigger | 设置收集字段值变更的时机 | `string` | `-`     |
+| valuePropName | 子节点的值的属性，如 Checkbox 的是 'checked' | `string` | `-`     |
+| getValueFromEvent | 设置如何将 event 的值转换成字段值 | `(...args: any) => any` | `-`     |
+| onClick | 点击事件并收集子组件 Ref | `(event: React.MouseEvent, componentRef: React.MutableRefObject<any>) => void` | `-`     |
 
 ### Form.Item Rule
 
-规则校验处理基于[async-validator](https://github.com/yiminghe/async-validator) 更多规则配置可查看 async-validator 文档。 使用 Form.Item 的`rules`属性可以定义校验规则，可选属性如下:
+规则校验处理基于[async-validator](https://github.com/yiminghe/async-validator) 更多规则配置可查看
+async-validator 文档。 使用 Form.Item 的`rules`属性可以定义校验规则，可选属性如下:
 
-| 属性 | 说明 | 类型 |
-| --- | --- | --- |
+| 属性             | 说明 | 类型 |
+|----------------| --- | --- |
 | required | 是否为必选字段 | `boolean` |
 | message | 错误提示文案 | `string` |
 | len | string 类型时为字符串长度；number 类型时为确定数字； array 类型时为数组长度 | `number` |
 | max | 必须设置 type：string 类型为字符串最大长度；number 类型时为最大值；array 类型时为数组最大长度 | `number` |
 | min | 必须设置 type：string 类型为字符串最小长度；number 类型时为最小值；array 类型时为数组最小长度 | `number` |
-| pattern | 正则表达式匹配 | `number` |
 | pattern | 正则表达式匹配 | `RegExp` |
 | transform | 将字段值转换成目标值后进行校验 | `(value) => any` |
 | validator | 自定义校验，接收 Promise 作为返回值 | `(rule, value) => Promise` |
@@ -457,18 +457,19 @@ export default App;
 
 Form.useForm()创建 Form 实例，用于管理所有数据状态。
 
-| 属性 | 说明 | 参数 | 返回值 |
-| --- | --- | --- | --- |
-| getFieldValue | 获取对应字段名的值 | \- | (name: NamePath) => any |
-| setFieldsValue | 设置表单的值 | \- | (values) => void |
-| resetFields | 重置表单提示状态 | \- | () => void |
-| submit | 提交表单进行校验的方法 | \- | Promise |
+| 属性             | 说明 | 类型                      |
+|----------------| --- |-------------------------|
+| getFieldValue  | 获取对应字段名的值 | `(name: NamePath) => any` |
+| setFieldsValue | 设置表单的值 | `(values) => void`        |
+| resetFields    | 重置表单提示状态 | `() => void`              |
+| submit         | 提交表单进行校验的方法 | `Promise`                 |
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+组件提供了下列 CSS
+变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
