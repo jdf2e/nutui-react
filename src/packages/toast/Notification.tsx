@@ -95,7 +95,6 @@ export default class Notification extends React.PureComponent<
           iconNode = <Issue />
           break
         default:
-          iconNode = <Check />
           break
       }
       return <p className={`${classPrefix}__icon-wrapper`}>{iconNode}</p>
