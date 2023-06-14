@@ -1,8 +1,9 @@
 import React from 'react'
 import { BaseFormField } from './types'
-import { FormItemContext } from './formitemcontext'
+import { Context } from '../form/context'
 import Cell from '@/packages/cell/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { isForwardRefComponent } from '@/utils/is-forward-ref-component'
 
 type TextAlign =
   | 'start'
@@ -12,36 +13,52 @@ type TextAlign =
   | 'center'
   | 'justify'
   | 'match-parent'
+
 export interface FormItemProps extends BasicComponent, BaseFormField {
-  labelWidth: string | number
+  required: boolean
+  initialValue: any
+  trigger: string
+  valuePropName: string
+  getValueFromEvent: (...args: any) => any
+  onClick: (
+    event: React.MouseEvent,
+    componentRef: React.MutableRefObject<any>
+  ) => void
   errorMessageAlign: TextAlign
-  showErrorLine: boolean
-  showErrorMessage: boolean
 }
 
 const defaultProps = {
   ...ComponentDefaults,
+  required: false,
   name: '',
   label: '',
-  className: '',
   rules: [{ required: false, message: '' }],
-  disabled: false,
-  labelWidth: 90,
   errorMessageAlign: 'left',
-  showErrorLine: true,
-  showErrorMessage: true,
 } as FormItemProps
 
 export type FieldProps = typeof defaultProps & Partial<BaseFormField>
 
-export class FormItem extends React.Component<FieldProps> {
+export class FormItem extends React.Component<
+  FieldProps,
+  { resetCount: number }
+> {
   static defaultProps = defaultProps
 
-  static contextType: any = FormItemContext
+  static contextType: any = Context
 
-  declare context: React.ContextType<typeof FormItemContext>
+  declare context: React.ContextType<typeof Context>
 
   private cancelRegister: any
+
+  private componentRef: React.RefObject<any>
+
+  constructor(props: FieldProps) {
+    super(props)
+    this.componentRef = React.createRef()
+    this.state = {
+      resetCount: 1,
+    }
+  }
 
   componentDidMount() {
     // 注册组件实例到FormStore
@@ -56,79 +73,94 @@ export class FormItem extends React.Component<FieldProps> {
 
   // children添加value属性和onChange事件
   getControlled = (children: React.ReactElement) => {
-    const { getFieldValue, setFieldsValue } = this.context
+    const { setFieldsValue, getFieldValue } = this.context
     const { name } = this.props
-    const type = (children as any).type.NAME
 
-    return {
-      value: getFieldValue(name),
-      onChange: (
-        event: React.ChangeEvent<HTMLInputElement> | number | string | string[]
-      ) => {
-        let newValue = event
-        switch (type) {
-          case 'checkbox':
-            newValue = (event as React.ChangeEvent<HTMLInputElement>).target
-              .value
-            break
-          default:
+    if (children?.props?.defaultValue) {
+      console.warn('通过 initialValue 设置初始值')
+    }
+    const controlled = {
+      ...children.props,
+      [this.props.valuePropName || 'value']:
+        getFieldValue(name) || this.props.initialValue,
+      [this.props.trigger || 'onChange']: (...args: any) => {
+        // args [a, b]
+        const originOnChange = (children as any).props[
+          this.props.trigger || 'onChange'
+        ]
+        if (originOnChange) {
+          originOnChange(...args)
         }
-        setFieldsValue({ [name]: newValue })
+        let [next] = args
+        if (this.props.getValueFromEvent) {
+          next = this.props.getValueFromEvent(...args)
+        }
+        setFieldsValue({ [name]: next })
       },
+    }
+    if (isForwardRefComponent(children)) {
+      controlled.ref = (componentInstance: any) => {
+        const originRef = (children as any).ref
+        if (originRef) {
+          if (typeof originRef === 'function') {
+            originRef(componentInstance)
+          }
+          if ('current' in originRef) {
+            originRef.current = componentInstance
+          }
+        }
+        this.componentRef = componentInstance
+      }
+    }
+
+    return controlled
+  }
+
+  public refresh = () => {
+    this.setState(({ resetCount }) => ({
+      resetCount: resetCount + 1,
+    }))
+  }
+
+  onStoreChange = (type?: string) => {
+    if (type === 'reset') {
+      this.refresh()
+    } else {
+      this.forceUpdate()
     }
   }
 
-  onStoreChange = () => {
-    this.forceUpdate()
-  }
-
   renderLayout = (childNode: React.ReactNode) => {
-    const {
-      label,
-      name,
-      rules = [{ required: false, message: '' }],
-      className,
-      labelWidth,
-      errorMessageAlign,
-      showErrorLine,
-      showErrorMessage,
-    } = {
+    const { label, name, required, className, style, errorMessageAlign } = {
       ...defaultProps,
       ...this.props,
     }
 
     const item =
-      this.context.errList?.length > 0 &&
-      this.context.errList?.filter((item: any) => {
+      this.context.errors?.length > 0 &&
+      this.context.errors?.filter((item: any) => {
         return item.field === name
       })
 
-    const { starPositon } = this.context
-    const renderStar = rules.length > 0 && rules[0].required && (
-      <i className="required" />
+    const { starPosition } = this.context
+    const renderStar = required && <i className="required" />
+    const renderLabel = (
+      <>
+        {starPosition === 'left' ? renderStar : null}
+        {label}
+        {starPosition === 'right' ? renderStar : null}
+      </>
     )
-    const renderLabel =
-      starPositon === 'Right' ? (
-        <>
-          {label}
-          {renderStar}
-        </>
-      ) : (
-        <>
-          {renderStar}
-          {label}
-        </>
-      )
-
     return (
-      <Cell className={`nut-form-item ${className}`}>
+      <Cell
+        className={`nut-form-item ${className}`}
+        style={style}
+        onClick={(e) =>
+          this.props.onClick && this.props.onClick(e, this.componentRef)
+        }
+      >
         {label ? (
-          <div
-            className="nut-cell__title nut-form-item__label"
-            style={{
-              width: this.pxCheck(labelWidth),
-            }}
-          >
+          <div className="nut-cell__title nut-form-item__label">
             {renderLabel}
           </div>
         ) : null}
@@ -147,17 +179,17 @@ export class FormItem extends React.Component<FieldProps> {
     )
   }
 
-  pxCheck = (value: string | number): string => {
-    return Number.isNaN(Number(value)) ? String(value) : `${value}px`
-  }
-
   render() {
     const { children } = this.props
-    const c = Array.isArray(children) ? children[0] : children
+    const child = Array.isArray(children) ? children[0] : children
     const returnChildNode = React.cloneElement(
-      c as React.ReactElement,
-      this.getControlled(c as React.ReactElement)
+      child,
+      this.getControlled(child as React.ReactElement)
     )
-    return this.renderLayout(returnChildNode)
+    return (
+      <React.Fragment key={this.state.resetCount}>
+        {this.renderLayout(returnChildNode)}
+      </React.Fragment>
+    )
   }
 }

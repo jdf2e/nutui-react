@@ -118,8 +118,8 @@ export const SearchBar: FunctionComponent<
     return (
       <input
         className={`${classPrefix}__input ${
-          shape === 'round' ? `${classPrefix}__round` : ''
-        } ${clearable ? `${classPrefix}__input-clear` : ''}`}
+          clearable ? `${classPrefix}__input-clear` : ''
+        }`}
         ref={searchRef}
         style={{ ...props.style }}
         value={value || ''}
@@ -147,7 +147,6 @@ export const SearchBar: FunctionComponent<
       </div>
     )
   }
-
   const renderLeft = () => {
     if (!left) return null
     return <div className={`${classPrefix}__left`}>{left}</div>
@@ -205,7 +204,11 @@ export const SearchBar: FunctionComponent<
       style={{ ...props.style }}
     >
       {renderLeft()}
-      <div className={`${classPrefix}__content`}>
+      <div
+        className={`${classPrefix}__content ${
+          shape === 'round' ? `${classPrefix}__round` : ''
+        }`}
+      >
         {renderLeftIn()}
         {renderField()}
         {renderRightIn()}

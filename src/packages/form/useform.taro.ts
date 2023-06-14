@@ -1,22 +1,28 @@
 import { useRef } from 'react'
-// import Schema from 'async-validator'
+import Schema from 'async-validator'
 import { Store, Callbacks, FormInstance, FieldEntity } from './types'
+
 /**
  * 用于存储表单的数据
  */
 class FormStore {
-  private store: Store = {} // 存放表单中所有的数据 eg. {password: "ddd",username: "123"}
+  // 初始化数据
+  private initialValues: Store = {}
 
-  private fieldEntities: FieldEntity[] = [] // 所有的组件实例
+  // 存放表单中所有的数据 eg. {password: "ddd",username: "123"}
+  private store: Store = {}
 
-  // 成功和失败的回调
-  private callbacks: Callbacks<any> = {}
+  // 所有的组件实例
+  private fieldEntities: FieldEntity[] = []
 
-  private errList: any[] = []
+  // 校验成功或失败的回调，onFinish、onFinishFailed
+  private callbacks: Callbacks = {}
+
+  private errors: any[] = []
 
   constructor() {
     this.callbacks = {
-      onFinish: (value: any) => {},
+      onFinish: () => {},
       onFinishFailed: () => {},
     }
   }
@@ -33,8 +39,24 @@ class FormStore {
     }
   }
 
+  /**
+   * 获取 formItem 的值
+   * @param name
+   */
   getFieldValue = (name: string) => {
-    return this.store[name]
+    return this.store?.[name]
+  }
+
+  /**
+   * 设置 form 的初始值，之后在 reset 的时候使用
+   * @param values
+   * @param init
+   */
+  setInitialValues = (values: Store, init: boolean) => {
+    if (init) {
+      this.initialValues = values
+      this.store = values
+    }
   }
 
   /**
@@ -50,53 +72,10 @@ class FormStore {
       const { name } = enetity.props
       Object.keys(newStore).forEach((key) => {
         if (key === name) {
-          enetity.onStoreChange()
+          enetity.onStoreChange('update')
         }
       })
     })
-  }
-
-  /**
-   * 表单校验
-   * rules: { required: true, message: '' }
-   * descriptor: {
-   *    username: {
-   *      type: 'string',
-   *      required: true,
-   *      validator: (rule, value) => {
-   *        return /^[a-zA-Z0-9]+$/.test(value)
-   *      },
-   *    },
-   *  }
-   */
-  validate = () => {
-    const err: any = []
-    this.errList.length = 0
-    this.fieldEntities.forEach((entity: FieldEntity) => {
-      const { name, rules = [] } = entity.props
-      const descriptor: any = {}
-      if (rules.length) {
-        // 多条校验规则
-        if (rules.length > 1) {
-          descriptor[name] = []
-          rules.map((v: any) => {
-            descriptor[name].push(v)
-          })
-        } else {
-          descriptor[name] = rules[0]
-        }
-      }
-      // const validator = new Schema(descriptor)
-      // validator.validate({ [name]: this.store[name] }, (errors) => {
-      //   if (errors) {
-      //     err.push(...errors)
-      //     this.errList.push(...errors)
-      //     // 表单项更新
-      //   }
-      //   entity.onStoreChange()
-      // })
-    })
-    return err
   }
 
   setCallback = (callback: Callbacks) => {
@@ -106,26 +85,65 @@ class FormStore {
     }
   }
 
+  validate = () => {
+    const err: any = []
+    this.errors.length = 0
+    this.fieldEntities.forEach((entity: FieldEntity) => {
+      const { name, rules = [] } = entity.props
+      const descriptor: any = {}
+      if (rules.length) {
+        // 多条校验规则
+        if (rules.length > 1) {
+          descriptor[name] = []
+          rules.forEach((v: any) => {
+            descriptor[name].push(v)
+          })
+        } else {
+          descriptor[name] = rules[0]
+        }
+      }
+      const validator = new Schema(descriptor)
+      validator.messages()
+      validator.validate({ [name]: this.store?.[name] }, (errors) => {
+        if (errors) {
+          err.push(...errors)
+          this.errors.push(...errors)
+          // 表单项更新
+        }
+        entity.onStoreChange('validate')
+      })
+    })
+    return err
+  }
+
   submit = () => {
-    const err = this.validate()
-    if (err.length === 0) {
+    const errors = this.validate()
+    if (errors.length === 0) {
       this.callbacks.onFinish?.(this.store)
-    } else if (err.length > 0) {
-      this.callbacks.onFinishFailed?.(err)
+    } else if (errors.length > 0) {
+      this.callbacks.onFinishFailed?.(this.store, errors)
     }
   }
 
-  resetFields = () => {}
+  resetFields = () => {
+    this.errors.length = 0
+    this.store = this.initialValues
+    this.fieldEntities.forEach((entity: FieldEntity) => {
+      entity.onStoreChange('reset')
+    })
+  }
 
   getForm = () => {
     return {
+      setInitialValues: this.setInitialValues,
       setCallback: this.setCallback,
       registerField: this.registerField,
       getFieldValue: this.getFieldValue,
       setFieldsValue: this.setFieldsValue,
+      resetFields: this.resetFields,
       submit: this.submit,
       store: this.store,
-      errList: this.errList,
+      errors: this.errors,
       fieldEntities: this.fieldEntities,
     }
   }

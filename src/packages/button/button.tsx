@@ -25,6 +25,7 @@ export interface ButtonProps extends BasicComponent {
   disabled: boolean
   icon: React.ReactNode
   id: string
+  nativeType: 'submit' | 'reset' | 'button'
   onClick: (e: MouseEvent) => void
 }
 
@@ -41,6 +42,7 @@ const defaultProps = {
   disabled: false,
   block: false,
   icon: null,
+  nativeType: 'button',
   onClick: (e: MouseEvent) => {},
 } as ButtonProps
 export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
@@ -59,6 +61,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       onClick,
       className,
       style,
+      nativeType,
       ...rest
     } = {
       ...defaultProps,
@@ -92,6 +95,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       <button
         {...rest}
         ref={ref}
+        type={nativeType}
         className={classNames(
           prefixCls,
           className,

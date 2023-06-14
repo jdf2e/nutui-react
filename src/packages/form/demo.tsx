@@ -1,4 +1,5 @@
-import React, { useRef } from 'react'
+import React, { useState } from 'react'
+import { Right } from '@nutui/icons-react'
 import { Form } from './form'
 import { Input } from '../input/input'
 import Cell from '@/packages/cell'
@@ -11,7 +12,10 @@ import Rate from '../rate'
 import Range from '../range'
 import Toast from '@/packages/toast'
 import { FormItemRuleWithoutValidator } from './types'
-import { FileItem, FileType } from '../uploader/uploader'
+import Button from '@/packages/button'
+import InputNumber from '@/packages/inputnumber'
+import Picker from '@/packages/picker'
+import Uploader from '@/packages/uploader'
 
 interface T {
   basic: string
@@ -45,8 +49,7 @@ interface T {
   reset: string
   switch: string
   checkbox: string
-  radiogroup: string
-  // option: (v: string) => `选项${v}`
+  gender: string
   rate: string
   inputnumber: string
   range: string
@@ -54,6 +57,19 @@ interface T {
   success: string
   uploading: string
   asyncValidator: string
+  number: string
+  tag: string
+  tagTip: string
+  male: string
+  female: string
+  input: string
+  checkboxGroup: string
+  option: string
+  radio: string
+  radioGroup: string
+  radioOption: string
+  picker: string
+  select: string
 }
 
 const FormDemo = () => {
@@ -90,8 +106,7 @@ const FormDemo = () => {
       reset: '重置提示状态',
       switch: '开关',
       checkbox: '复选框',
-      radiogroup: '单选按钮',
-      // option: (v: string) => `选项${v}`,
+      gender: '性别',
       rate: '评分',
       inputnumber: '步进器',
       range: '滑块',
@@ -99,6 +114,19 @@ const FormDemo = () => {
       success: '上传成功',
       uploading: '上传中...',
       asyncValidator: '模拟异步验证中',
+      number: '数量',
+      tag: '标注',
+      tagTip: '请输入标注',
+      male: '男性',
+      female: '女性',
+      input: '输入框',
+      checkboxGroup: '复选按钮分组',
+      option: '选项',
+      radio: '单选按钮',
+      radioGroup: '单选按钮分组',
+      radioOption: '选项',
+      picker: '选择器',
+      select: '请选择',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -133,8 +161,7 @@ const FormDemo = () => {
       reset: 'Reset alert state',
       switch: 'Switch',
       checkbox: 'Checkbox',
-      radiogroup: 'Group',
-      // option: (v: string) => `Option${v}`,
+      gender: 'Gender',
       rate: 'Rate',
       inputnumber: 'Inputnumber',
       range: 'Range',
@@ -142,43 +169,28 @@ const FormDemo = () => {
       success: 'Upload successful',
       uploading: 'Uploading',
       asyncValidator: 'Simulating asynchronous verification',
+      number: 'Number',
+      tag: 'Tag',
+      tagTip: 'Please enter tag',
+      male: 'Male',
+      female: 'Female',
+      input: 'Input',
+      checkboxGroup: 'Checkbox.Group',
+      option: 'Option',
+      radio: 'Radio',
+      radioGroup: 'Radio.Group',
+      radioOption: 'radio',
+      picker: 'Picker',
+      select: 'Please select',
     },
   })
 
-  // 动态表单
-  const dynamicFormRef = useRef<any>(null)
-
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const defaultFileList: FileType<string>[] = [
-    {
-      name: '文件1.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'success',
-      message: '上传成功',
-      type: 'image',
-      uid: '123',
-    },
-    {
-      name: '文件2.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'uploading',
-      message: '上传中...',
-      type: 'image',
-      uid: '125',
-    },
-  ]
-  const onDelete = (file: FileItem, fileList: FileItem[]) => {
-    // console.log(translated.ca3903f3, file, fileList)
-  }
-
   const submitFailed = (error: any) => {
-    Toast.show({ content: 'callback: submitFailed error', icon: 'fail' })
-    console.log('failed error', error)
+    Toast.show({ content: JSON.stringify(error), icon: 'fail' })
   }
 
-  const submitSucceed = (obj: any) => {
-    Toast.show({ content: 'succeed', icon: 'success' })
-    console.log('succeed', obj)
+  const submitSucceed = (values: any) => {
+    Toast.show({ content: JSON.stringify(values), icon: 'success' })
   }
 
   const [form] = Form.useForm()
@@ -186,13 +198,10 @@ const FormDemo = () => {
   const onMenuChange = (value: string | number | boolean) => {
     switch (value) {
       case 'male':
-        form.setFieldsValue({ note: 'Hi, man!' })
+        form.setFieldsValue({ note: '👨' })
         break
       case 'female':
-        form.setFieldsValue({ note: 'Hi, lady!' })
-        break
-      case 'other':
-        form.setFieldsValue({ note: 'Hi there!' })
+        form.setFieldsValue({ note: '👩' })
         break
       default:
     }
@@ -213,61 +222,69 @@ const FormDemo = () => {
     return /^(\d{1,2}|1\d{2}|200)$/.test(value)
   }
 
+  const pickerOptions = [
+    { value: 4, text: 'BeiJing' },
+    { value: 1, text: 'NanJing' },
+    { value: 2, text: 'WuXi' },
+    { value: 8, text: 'DaQing' },
+    { value: 9, text: 'SuiHua' },
+    { value: 10, text: 'WeiFang' },
+    { value: 12, text: 'ShiJiaZhuang' },
+  ]
+
   return (
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
-        <Form>
-          <Form.Item label={translated.name} name="username">
-            <Input
-              className="nut-input-text"
-              placeholder={translated.nameTip}
-              type="text"
-              onChange={(val) => {
-                console.log('change value:', val)
-              }}
-            />
-          </Form.Item>
-          <Form.Item label={translated.remarks} name="remark">
-            <TextArea placeholder={translated.remarksTip} />
-          </Form.Item>
-        </Form>
-        <h2>{translated.title10}</h2>
-        <Form labelPosition="Top">
-          <Form.Item label={translated.name} name="username">
-            <Input
-              className="nut-input-text"
-              placeholder={translated.nameTip}
-              type="text"
-            />
-          </Form.Item>
-          <Form.Item label={translated.remarks} name="remark">
-            <TextArea placeholder={translated.remarksTip} />
-          </Form.Item>
-        </Form>
-        {/* <h2>{translated.title1}</h2>
         <Form
-          onFinish={(obj) => submitSucceed(obj)}
-          onFinishFailed={(error) => submitFailed(error)}
+          labelPosition="right"
+          onFinish={(values) => submitSucceed(values)}
+          footer={
+            <>
+              <Button nativeType="submit" block type="primary">
+                {translated.submit}
+              </Button>
+            </>
+          }
         >
+          <Form.Item required label={translated.name} name="username">
+            <Input
+              className="nut-input-text"
+              placeholder={translated.nameTip}
+              type="text"
+            />
+          </Form.Item>
+          <Form.Item label={translated.address} name="address">
+            <TextArea placeholder={translated.addressTip} maxLength={100} />
+          </Form.Item>
           <Form.Item
-            label={translated.name}
-            name="username"
-            rules={[{ required: true, message: translated.nameTip }]}
+            label={translated.number}
+            name="num"
+            getValueFromEvent={(...args) => args[0]}
           >
-            <Input placeholder={translated.nameTip} type="text" />
+            <InputNumber />
           </Form.Item>
-          <Form.Item label={translated.tel} name="tel">
-            <Input placeholder={translated.telTip} type="tel" />
-          </Form.Item>
-          <Cell>
-            <input type="submit" value={translated.submit} />
-          </Cell>
-        </Form> */}
+        </Form>
         <h2>{translated.title2}</h2>
         <Form
-          onFinish={(obj) => submitSucceed(obj)}
-          onFinishFailed={(error) => submitFailed(error)}
+          onFinish={(values) => submitSucceed(values)}
+          onFinishFailed={(values, errors) => submitFailed(errors)}
+          footer={
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                width: '100%',
+              }}
+            >
+              <Button nativeType="submit" type="primary">
+                {translated.submit}
+              </Button>
+              <Button nativeType="reset" style={{ marginLeft: '20px' }}>
+                {translated.reset}
+              </Button>
+            </div>
+          }
         >
           <Form.Item
             label={translated.name}
@@ -301,46 +318,48 @@ const FormDemo = () => {
           >
             <Input placeholder={translated.addressTip} type="text" />
           </Form.Item>
-          <Cell>
-            <input type="submit" value={translated.submit} />
-            <input
-              type="reset"
-              style={{ marginLeft: '15px' }}
-              value={translated.reset}
-            />
-          </Cell>
         </Form>
 
         <h2>{translated.title3}</h2>
         <Form
-          onFinish={(obj) => submitSucceed(obj)}
-          onFinishFailed={(error) => submitFailed(error)}
+          initialValues={{ username: 'LiSi', age: 20 }}
+          onFinish={(values) => submitSucceed(values)}
+          onFinishFailed={(values, errors) => submitFailed(errors)}
+          footer={
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                width: '100%',
+              }}
+            >
+              <Button nativeType="submit" type="primary">
+                {translated.submit}
+              </Button>
+              <Button nativeType="reset" style={{ marginLeft: '20px' }}>
+                {translated.reset}
+              </Button>
+            </div>
+          }
         >
           <Form.Item
             label={translated.name}
             name="username"
             rules={[{ required: true, message: translated.nameTip }]}
-            initialValue="张三"
+            initialValue="ZhangSan"
           >
             <Input placeholder={translated.nameTip1} type="text" />
           </Form.Item>
-          <Form.Item label={translated.age} name="age">
-            <Input
-              placeholder={translated.ageTip1}
-              type="number"
-              defaultValue="18"
-            />
+          <Form.Item label={translated.age} name="age" initialValue={18}>
+            <Input placeholder={translated.ageTip1} type="number" />
           </Form.Item>
-          <Cell>
-            <input type="submit" value={translated.submit} />
-          </Cell>
         </Form>
 
         <h2>{translated.title4}</h2>
         <Form
           form={form}
-          onFinish={(obj) => submitSucceed(obj)}
-          onFinishFailed={(error) => submitFailed(error)}
+          onFinish={(values) => submitSucceed(values)}
+          onFinishFailed={(values, errors) => submitFailed(errors)}
         >
           <Form.Item
             label={translated.name}
@@ -349,65 +368,124 @@ const FormDemo = () => {
           >
             <Input placeholder={translated.nameTip1} type="text" />
           </Form.Item>
-          <Form.Item label="标注" name="note">
-            <Input placeholder="请输入标注" type="string" />
+          <Form.Item label={translated.tag} name="note">
+            <Input placeholder={translated.tagTip} type="string" />
           </Form.Item>
-          <Form.Item label={translated.radiogroup} name="radiogroup">
+          <Form.Item label={translated.gender} name="gender">
             <Radio.Group onChange={onMenuChange}>
-              <Radio value="male">male</Radio>
-              <Radio value="female">female</Radio>
-              <Radio value="other">other</Radio>
+              <Radio value="male">{translated.male}</Radio>
+              <Radio value="female">{translated.female}</Radio>
             </Radio.Group>
           </Form.Item>
-          <Cell>
-            <input type="submit" value={translated.submit} />
-          </Cell>
         </Form>
 
         <h2>{translated.title5}</h2>
         <Form
-          onFinish={(obj) => submitSucceed(obj)}
-          onFinishFailed={(error) => submitFailed(error)}
+          style={{ '--nutui-form-item-label-width': '120px' }}
+          footer={
+            <div
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                width: '100%',
+              }}
+            >
+              <Button nativeType="submit" type="primary">
+                {translated.submit}
+              </Button>
+              <Button nativeType="reset" style={{ marginLeft: '20px' }}>
+                {translated.reset}
+              </Button>
+            </div>
+          }
+          onFinish={(values) => submitSucceed(values)}
+          onFinishFailed={(values, errors) => submitFailed(errors)}
         >
+          <Form.Item label={translated.input} name="form_input">
+            <Input placeholder={translated.nameTip1} />
+          </Form.Item>
           <Form.Item label={translated.switch} name="switch">
             <Switch />
           </Form.Item>
           <Form.Item label={translated.checkbox} name="checkbox">
-            <Checkbox
-              labelPosition="right"
-              label={translated.checkbox}
-              checked={false}
-            />
+            <Checkbox labelPosition="right" label={`${translated.option} 1`} />
           </Form.Item>
-          <Form.Item label={translated.radiogroup} name="radiogroup">
+          <Form.Item label={translated.checkboxGroup} name="checkbox_group">
+            <Checkbox.Group>
+              <Checkbox
+                labelPosition="right"
+                label={`${translated.option} 1`}
+                value={1}
+              />
+              <Checkbox
+                labelPosition="right"
+                label={`${translated.option} 2`}
+                value={2}
+              />
+            </Checkbox.Group>
+          </Form.Item>
+          <Form.Item label={translated.radio} name="radio">
+            <Radio value="1">{translated.radioOption} 1</Radio>
+          </Form.Item>
+          <Form.Item label={translated.radioGroup} name="radio_group">
             <Radio.Group>
-              <Radio value="1">选项1</Radio>
-              <Radio value="2">选项2</Radio>
-              <Radio value="3">选项3</Radio>
+              <Radio value="1">{translated.radioOption} 1</Radio>
+              <Radio value="2">{translated.radioOption} 2</Radio>
             </Radio.Group>
           </Form.Item>
           <Form.Item label={translated.rate} name="rate">
-            <Rate defaultValue={0} />
+            <Rate />
           </Form.Item>
-          {/* <Form.Item label={translated.inputnumber} name="inputnumber">
-              <InputNumber modelValue={3} min="10" max="20" />
-            </Form.Item> */}
           <Form.Item label={translated.range} name="range">
-            <Range defaultValue={0} max={10} min={-10} />
+            <Range max={10} min={-10} />
           </Form.Item>
-          {/* <Form.Item label={translated.uploader} name="uploader">
-              <Uploader
-                url={uploadUrl}
-                defaultFileList={defaultFileList}
-                onRemove={onDelete}
-                maximum="3"
-                multiple
-                uploadIcon="dongdong"
-              />
-            </Form.Item> */}
-          <Cell>
-            <input type="submit" value={translated.submit} />
-          </Cell>
+          <Form.Item
+            label={translated.picker}
+            name="picker"
+            trigger="onConfirm"
+            getValueFromEvent={(...args) => args[1]}
+            onClick={(event, ref: any) => {
+              ref.open()
+            }}
+          >
+            <Picker options={[pickerOptions]}>
+              {(value: any) => {
+                return (
+                  <Cell
+                    style={{
+                      padding: 0,
+                      '--nutui-cell-divider-border-bottom': '0',
+                    }}
+                    className="nutui-cell--clickable"
+                    title={
+                      value.length
+                        ? pickerOptions.filter((po) => po.value === value[0])[0]
+                            ?.text
+                        : translated.select
+                    }
+                    extra={<Right />}
+                    align="center"
+                  />
+                )
+              }}
+            </Picker>
+          </Form.Item>
+          <Form.Item
+            label={translated.uploader}
+            name="files"
+            initialValue={[
+              {
+                name: 'file1.png',
+                url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+                status: 'success',
+                message: 'success',
+                type: 'image',
+                uid: '122',
+              },
+            ]}
+          >
+            <Uploader url="https://my-json-server.typicode.com/linrufeng/demo/posts" />
+          </Form.Item>
         </Form>
       </div>
     </>
