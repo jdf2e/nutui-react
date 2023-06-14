@@ -12,6 +12,8 @@ export interface MenuProps extends BasicComponent {
   lockScroll: boolean
   icon: React.ReactNode
   children: React.ReactNode
+  onOpen: () => void
+  onClose: () => void
 }
 
 const defaultProps = {
@@ -21,6 +23,8 @@ const defaultProps = {
   scrollFixed: false,
   lockScroll: true,
   icon: null,
+  onOpen: () => undefined,
+  onClose: () => undefined,
 } as MenuProps
 export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
   const {
@@ -31,6 +35,8 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
     closeOnOverlayClick,
     children,
     activeColor,
+    onOpen,
+    onClose,
     ...rest
   } = {
     ...defaultProps,
@@ -38,6 +44,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
   }
   const menuRef = useRef(null)
   const [isScrollFixed, setIsScrollFixed] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
 
   const getScrollTop = (el: Element | Window) => {
     return Math.max(0, 'scrollTop' in el ? el.scrollTop : el.pageYOffset)
@@ -67,6 +74,12 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
     )
     setShowMenuItem([...temp])
   }
+  const toggleMenuItemCallback = () => {
+    const status = showMenuItem.includes(true)
+    if (status !== isOpen) {
+      status ? (setIsOpen(true), onOpen()) : (setIsOpen(false), onClose())
+    }
+  }
   const hideMenuItem = (index: number) => {
     showMenuItem[index] = false
     setShowMenuItem([...showMenuItem])
@@ -89,7 +102,6 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
           updateTitle,
           hideMenuItem,
           menuRef,
-          isExistExpandMenuItem: showMenuItem.includes(true),
         },
       })
     })
@@ -118,7 +130,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
             style={{ color: showMenuItem[index] ? activeColor : '' }}
             key={index}
             onClick={() => {
-              !disabled && toggleMenuItem(index)
+              !disabled && (toggleMenuItem(index), toggleMenuItemCallback())
             }}
           >
             <div
