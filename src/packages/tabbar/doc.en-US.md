@@ -6,8 +6,7 @@ Bottom Navigation Common Scenarios
 
 ## Install
 
-```ts
-// react
+```tsx
 import { Tabbar } from '@nutui/nutui-react';
 ```
 

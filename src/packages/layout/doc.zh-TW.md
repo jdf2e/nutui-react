@@ -6,8 +6,7 @@
 
 ## 安裝
 
-```javascript
-// react
+```tsx
 import { Row, Col } from '@nutui/nutui-react'
 ```
 

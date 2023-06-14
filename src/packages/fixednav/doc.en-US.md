@@ -4,10 +4,9 @@
 
 Hovering and collecting experience interaction for quick navigation
 
-### Install
+## Install
 
-```javascript
-// react
+```tsx
 import { FixedNav } from '@nutui/nutui-react';
 ```
 

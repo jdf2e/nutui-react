@@ -1,4 +1,4 @@
-#  Dialog 对话框
+# Dialog 对话框
 
 ## 介绍
 
@@ -8,11 +8,9 @@
 
 ## 安装
 
-```ts
-// react
+```tsx
 import { Dialog } from '@nutui/nutui-react'
 ```
-
 
 ## 代码演示
 
@@ -174,29 +172,28 @@ export default App;
 
 ### Props
 
-| 属性 | 说明 | 类型   | 默认值           |
-|--------------|--------------------|--------|-----|
-| visible | 对话框是否可见 | `boolean` | - |
-| title | 标题 | `ReactNode` | - |
-| content | 对话框的内容，适用于函数式调用 | `ReactNode` | - |
-| footer | 自定义页脚，传入 null 则不显示     | `ReactNode` | - |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| visible | 对话框是否可见 | `boolean` | `-` |
+| title | 标题 | `ReactNode` | `-` |
+| content | 对话框的内容，适用于函数式调用 | `ReactNode` | `-` |
+| footer | 自定义页脚，传入 null 则不显示 | `ReactNode` | `-` |
 | confirmText | 确认按钮文案 | `ReactNode` | `确定` |
 | cancelText | 取消按钮文案 | `ReactNode` | `取消` |
 | overlay | 是否展示遮罩 | `boolean` | `true` |
 | hideConfirmButton | 是否隐藏确定按钮 | `boolean` | `false` |
 | hideCancelButton | 是否隐藏取消按钮 | `boolean` | `false` |
 | disableConfirmButton | 禁用确定按钮 | `boolean` | `false` |
-| closeOnOverlayClick | 点击蒙层是否关闭对话框 | `boolean` | `true`              |
+| closeOnOverlayClick | 点击蒙层是否关闭对话框 | `boolean` | `true` |
 | footerDirection | 使用横纵方向 可选值 horizontal、vertical | `string` | `horizontal` |
-| lockScroll | 背景是否锁定 | `boolean` | `true`              |
-| beforeCancel | 取消前回调，点击取消时触发 | `() => boolean` |
-| beforeClose | 关闭前回调 | `() => boolean` |
-| onConfirm          | 确定按钮回调 | `(e?: MouseEvent) => Promise \| void` |
-| onCancel      | 取消按钮回调 | `() => void` |
-| onClose      | 关闭回调，任何情况关闭弹窗都会触发 | `() => void` |
-| onClick | 点击自身回调 | `() => void` |
-| onOverlayClick | 点击蒙层触发 | `() => void` |
-
+| lockScroll | 背景是否锁定 | `boolean` | `true` |
+| beforeCancel | 取消前回调，点击取消时触发 | `() => boolean` | `-` |
+| beforeClose | 关闭前回调 | `() => boolean` | `-` |
+| onConfirm | 确定按钮回调 | `(e?: MouseEvent) => Promise \| void` | `-` |
+| onCancel | 取消按钮回调 | `() => void` | `-` |
+| onClose | 关闭回调，任何情况关闭弹窗都会触发 | `() => void` | `-` |
+| onClick | 点击自身回调 | `() => void` | `-` |
+| onOverlayClick | 点击蒙层触发 | `() => void` | `-` |
 
 ## 主题定制
 
@@ -206,21 +203,21 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| --nutui-dialog-width | 对话框宽度 | `296px` |
-| --nutui-dialog-header-font-weight | 对话框标题字重 |`normal` |
-| --nutui-dialog-header-color | 对话框标题字色 |`rgba(38, 38, 38, 1)` |
-| --nutui-dialog-footer-justify-content | 对话框底部按钮排布 |`space-around` |
-| --nutui-dialog-min-height | 对话框最小高度 |`156px` |
-| --nutui-dialog-padding | 对话框padding |`28px 24px 16px 24px` |
-| --nutui-dialog-header-height | 对话框标题高度 |`20px` |
-| --nutui-dialog-content-margin | 对话框内容 margin |`20px 0` |
-| --nutui-dialog-content-max-height | 对话框内容最大高度 |`268px` |
-| --nutui-dialog-content-line-height | 对话框内容行高 |`16px` |
-| --nutui-dialog-overlay-z-index | 对话框蒙层的z-index值 |`$mask-z-index` |
-| --nutui-dialog-overlay-background-color | 对话框蒙层背景色 |`$mask-color` |
-| --nutui-dialog-outer-z-index | 对话框的z-index |`$mask-content-z-index` |
-| --nutui-dialog-outer-bordder-radius | 对话框圆角 |`20px` |
-| --nutui-dialog-vertical-footer-ok-margin-top | 对话框底部按钮纵向排布时的margin值 |`10px` |
-| --nutui-dialog-footer-button-min-width | 对话框底部按钮最小宽度 |`100px` |
-| --nutui-dialog-footer-cancel-margin-right | 对话框取消按钮的margin-right |`20px` |
-| --nutui-dialog-footer-ok-max-width | 对话框确认按钮的最大宽度 |`128px` |
+| \--nutui-dialog-width | 对话框宽度 | `296px` |
+| \--nutui-dialog-header-font-weight | 对话框标题字重 | `normal` |
+| \--nutui-dialog-header-color | 对话框标题字色 | `rgba(38, 38, 38, 1)` |
+| \--nutui-dialog-footer-justify-content | 对话框底部按钮排布 | `space-around` |
+| \--nutui-dialog-min-height | 对话框最小高度 | `156px` |
+| \--nutui-dialog-padding | 对话框padding | `28px 24px 16px 24px` |
+| \--nutui-dialog-header-height | 对话框标题高度 | `20px` |
+| \--nutui-dialog-content-margin | 对话框内容 margin | `20px 0` |
+| \--nutui-dialog-content-max-height | 对话框内容最大高度 | `268px` |
+| \--nutui-dialog-content-line-height | 对话框内容行高 | `16px` |
+| \--nutui-dialog-overlay-z-index | 对话框蒙层的z-index值 | `$mask-z-index` |
+| \--nutui-dialog-overlay-background-color | 对话框蒙层背景色 | `$mask-color` |
+| \--nutui-dialog-outer-z-index | 对话框的z-index | `$mask-content-z-index` |
+| \--nutui-dialog-outer-bordder-radius | 对话框圆角 | `20px` |
+| \--nutui-dialog-vertical-footer-ok-margin-top | 对话框底部按钮纵向排布时的margin值 | `10px` |
+| \--nutui-dialog-footer-button-min-width | 对话框底部按钮最小宽度 | `100px` |
+| \--nutui-dialog-footer-cancel-margin-right | 对话框取消按钮的margin-right | `20px` |
+| \--nutui-dialog-footer-ok-max-width | 对话框确认按钮的最大宽度 | `128px` |

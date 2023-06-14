@@ -6,8 +6,7 @@ Used to open or close the options.
 
 ## Install
 
-```ts
-// react
+```tsx
 import { Switch } from '@nutui/nutui-react';
 ```
 

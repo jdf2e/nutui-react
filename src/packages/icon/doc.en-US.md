@@ -43,7 +43,7 @@ Loading,Location,Location2,Check,Close,Left,Service,Top,Right,CheckNormal,Checke
 
 ## Method 2: Use IconFont in full
 
-```js
+```tsx
 import { IconFont } from '@nutui/icons-react'
 ```
 
@@ -137,7 +137,7 @@ Step 1: First generate your custom Icon file in [iconfont](https://www.iconfont.
 
 Step 2: Project entry file main.js references `iconfont.css`
 
-```javascript
+```tsx
 import './assets/font/iconfont.css';
 ```
 

@@ -6,7 +6,7 @@ The cell is a single display item in the list.
 
 ## Install
 
-```ts
+```tsx
 import { Cell, CellGroup } from '@nutui/nutui-react'
 ```
 
@@ -214,9 +214,9 @@ export default App;
 
 :::
 
-## API
+## CellGroup
 
-### CellGroup Prop
+### Props
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
@@ -224,7 +224,9 @@ export default App;
 | description | ReactNode | `string` | `-` |
 | divider | Whether there are dividers between cells | `boolean` | `true` |
 
-### Cell Prop
+## Cell
+
+### Props
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |

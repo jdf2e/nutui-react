@@ -6,8 +6,7 @@
 
 ## 安装
 
-```javascript
-// react
+```tsx
 import { Signature } from '@nutui/nutui-react'
 ```
 

@@ -2,12 +2,11 @@
 
 ## 介紹
 
-用來對商品價格數值的小數點前後部分應用不同樣式，還支持人民幣符號、千位分隔符、設置小數點位數等功能。
+用來對商品價格數值的小數點前後部分應用不同樣式，還支持人民幣符號、仟位分隔符、設置小數點位數等功能。
 
 ## 安裝
 
-```javascript
-// react
+```tsx
 import { Price } from '@nutui/nutui-react'
 ```
 
@@ -66,7 +65,7 @@ export default App;
 
 :::
 
-### 有人民幣符號，無千位分隔
+### 有人民幣符號，無仟位分隔
 
 :::demo
 
@@ -86,7 +85,7 @@ export default App;
 
 :::
 
-### 帶人民幣符號，有千位分隔，保留小數點後三位
+### 帶人民幣符號，有仟位分隔，保留小數點後三位
 
 :::demo
 
@@ -223,12 +222,12 @@ export default App;
 | price | 價格數量 | `number` | `0` |
 | symbol | 符號類型 | `string` | `&yen;` |
 | digits | 小數位位數 | `number` | `2` |
-| thousands | 是否按照千分號形式顯示 | `boolean` | `false` |
+| thousands | 是否按照仟分號形式顯示 | `boolean` | `false` |
 | position | 符號顯示在價格前或者後，`before`、`after` | `string` | `before` |
 | size | 價格尺寸，`large`、`normal`、`small` | `string` | `large` |
 | line | 是否劃線價 | `boolean` | `false` |
 
-## 主題定製
+## 主題定制
 
 ### 樣式變量
 
@@ -246,5 +245,5 @@ export default App;
 | \--nutui-price-integer-small-size | small 尺寸整數部分字體大小 | `12px` |
 | \--nutui-price-decimal-small-size | small 尺寸小數部分字體大小 | `10px` |
 | \--nutui-price-line-font-size | 劃線價字體大小 | `10px` |
-| \--nutui-price-line-color | 劃線價顏色 | `#757575` |
+| \--nutui-price-line-color | 劃線價顏色 |  `#757575` |
 | \--nutui-price-symbol-padding-right | 符號的右內邊距 |  `1px` |

@@ -19,7 +19,6 @@ import { Sticky } from '@nutui/nutui-react-taro'
 :::demo
 
 ```tsx
-
 import React, { useEffect, useRef, useState } from 'react'
 import { Button, Cell, Sticky } from '@nutui/nutui-react-taro'
 

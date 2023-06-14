@@ -6,8 +6,7 @@ Used to display product pictures, prices and other information.
 
 ## Install
 
-```js
-// react
+```tsx
 import { Card, Price, Tag } from '@nutui/nutui-react'
 ```
 
@@ -17,7 +16,7 @@ import { Card, Price, Tag } from '@nutui/nutui-react'
 
 :::demo
 
-```ts
+```tsx
 import React from 'react'
 import { Card, Price, Tag } from '@nutui/nutui-react'
 
@@ -52,7 +51,7 @@ export default App
 
 :::demo
 
-```ts
+```tsx
 import React from 'react'
 import { Card, Price, Tag } from '@nutui/nutui-react'
 
@@ -115,7 +114,7 @@ export default App
 
 :::demo
 
-```ts
+```tsx
 import React from 'react'
 import { Card, Price, Tag } from '@nutui/nutui-react'
 
@@ -164,7 +163,7 @@ export default App
 
 :::demo
 
-```ts
+```tsx
 import React from 'react'
 import { Card, Price, Tag } from '@nutui/nutui-react'
 
@@ -200,7 +199,7 @@ export default App
 
 :::demo
 
-```ts
+```tsx
 import React from 'react'
 import { Card, Price, Tag } from '@nutui/nutui-react'
 

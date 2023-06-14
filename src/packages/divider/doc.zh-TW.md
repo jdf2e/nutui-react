@@ -1,19 +1,20 @@
-# Divider 分割线
+# Divider 分割線
 
-### 介绍
+## 介紹
 
-用于将内容分隔为多个区域。
+用於將內容分隔為多個區域。
 
-### 安装
+## 安裝
 
-```ts
-// react
+```tsx
 import { Divider } from '@nutui/nutui-react';
 ```
 
-### 基础用法
+## 代碼演示
 
-默认渲染一条水平分割线。
+### 基礎用法
+
+默認渲染一條水平分割線。
 
 :::demo
 
@@ -35,7 +36,7 @@ export default App;
 
 ### 展示文本
 
-通过插槽在可以分割线中间插入内容。
+通過插槽在可以分割線中間插入內容。
 
 :::demo
 
@@ -55,9 +56,9 @@ export default App;
 
 :::
 
-### 内容位置
+### 內容位置
 
-通过 contentPosition 指定内容所在位置。
+通過 contentPosition 指定內容所在位置。
 
 :::demo
 
@@ -78,7 +79,7 @@ export default App;
 
 :::
 
-### 虚线
+### 虛線
 
 :::demo
 
@@ -98,29 +99,9 @@ export default App;
 
 :::
 
-### 自定义样式
+### 自定義樣式
 
-可以直接通过 style 属性设置分割线的样式。
-
-:::demo
-
-```tsx
-import  React from "react";
-import { Divider } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Divider styles={{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px', borderStyle: 'dashed' }}>文本</Divider>
-    </>
-  );
-};
-export default App;
-```
-
-:::
-
-### 垂直分割线
+可以直接通過 style 屬性設置分割線的樣式。
 
 :::demo
 
@@ -131,13 +112,7 @@ import { Divider } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-    <div>
-        文本
-        <Divider direction="vertical" />
-        <a href="#" style={{ color: '#1989fa' }}>链接</a>
-        <Divider direction="vertical" />
-        <a href="#" style={{ color: '#1989fa' }}>链接</a>
-    </div>
+      <Divider style={{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px', borderStyle: 'dashed' }}>文本</Divider>
     </>
   );
 };
@@ -146,7 +121,33 @@ export default App;
 
 :::
 
-## API
+### 垂直分割線
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Divider } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <div>
+          文本
+          <Divider direction="vertical" />
+          <a href="#" style={{ color: '#1989fa' }}>鏈接</a>
+          <Divider direction="vertical" />
+          <a href="#" style={{ color: '#1989fa' }}>鏈接</a>
+      </div>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+## Divider
 
 ### Props
 

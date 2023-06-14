@@ -6,7 +6,7 @@
 
 ## 安装
 
-```ts
+```tsx
 import { CountDown } from '@nutui/nutui-react-taro'
 ```
 
@@ -346,7 +346,6 @@ export default App;
 
 ### Props
 
-
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | startTime | 开始时间 | `number` | `Date.now()` |
@@ -357,8 +356,6 @@ export default App;
 | millisecond | 是否开启毫秒级渲染 | `boolean` | `false` |
 | autoStart | 是否自动开始倒计时 | `boolean` | `true` |
 | time | 倒计时显示时间，单位是毫秒。autoStart 为 false 时生效 | `number` | `0` |
-| showDays | 是否显示天 | `boolean` | `false` |
-| showPlainText | 显示为纯文本 | `boolean` | `false` |
 | destroy | 销毁实例 | `boolean` | `false` |
 | onEnd | 倒计时结束时回调函数 | `无` | `-` |
 | onPaused | 暂停倒计时回调函数 | `onPaused: (restTime: number) => void` | `-` |
@@ -384,7 +381,6 @@ export default App;
 | start | 开始倒计时 | `() => void` |
 | pause | 暂停倒计时 | `() => void` |
 | reset | 重设倒计时，若 auto-start 为 true，重设后会自动开始倒计时 | `() => void` |
-
 
 ## 主题定制
 

@@ -6,8 +6,7 @@
 
 
 ### 安裝
-``` javascript
-// react
+```tsx
 import { Address } from '@nutui/nutui-react';
 ```
 
@@ -176,7 +175,6 @@ export default App;
 
 :::demo
 ```tsx
-
 import  React,{useState} from "react";
 import { Address, Cell ,Popup} from '@nutui/nutui-react';
 

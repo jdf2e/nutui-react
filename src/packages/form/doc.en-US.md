@@ -2,12 +2,11 @@
 
 ## Intro
 
-It is used for data entry and verification, and supports input boxes, radio
-boxes, check boxes and other types.
+It is used for data entry and verification, and supports input boxes, radio boxes, check boxes and other types.
 
 ## Install
 
-```javascript
+```tsx
 import { Form } from '@nutui/nutui-react'
 ```
 
@@ -435,25 +434,25 @@ export default App;
 ### Props
 
 | Property | Description | Type | Default |
-|----------------|--------------|-----------|-------|
-| form | Form control instance created by Form.useForm(), if not provided, it will be created automatically | FormInstance | `-`   |
-| footer | The bottom area of the form, where confirmation and reset buttons are usually placed | ReactNode | `null` |
-| initialValues | form initial values | any | `-`   |
-| name | form name | any | `-`   |
-| labelPosition | The position of the form item label | `'top'\|'left'\|'right'` | `right` |
-| starPosition | The red star position of the required form item label | `'left'\| 'right'` | `left` |
-| onFinish | Triggered after verification is successful | `(values: any) => void` | `-`   |
-| onFinishFailed | Triggered when any form item fails validation | `(values: any, errorFields: any) => void` | `-`   |
+| --- | --- | --- | --- |
+| form | Form control instance created by Form.useForm(), if not provided, it will be created automatically | `FormInstance` | `-` |
+| footer | The bottom area of the form, where confirmation and reset buttons are usually placed | `ReactNode` | `null` |
+| initialValues | form initial values | `any` | `-` |
+| name | form name | `any` | `-` |
+| labelPosition | The position of the form item label | `top` \| `left` \| `right` | `right` |
+| starPosition | The red star position of the required form item label |  `left` \| `right` | `left` |
+| onFinish | Triggered after verification is successful | `(values: any) => void` | `-` |
+| onFinishFailed | Triggered when any form item fails validation | `(values: any, errorFields: any) => void` | `-` |
 
 ## Form.Item
 
 ### Props
 
 | Property | Description | Type | Default |
-|--------------------|--------------|---------------|----------|
+| --- | --- | --- | --- |
 | required | The red star of the required form item label, only used to control the style | `boolean` | `false` |
 | name | In the case of using the form validation function, this attribute is required | `string` | `-` |
-| errorMessageAlign | Error text alignment | `'center'\| 'right'\|'left'` | `left` |
+| errorMessageAlign | Error text alignment | `center` \| `right` \| `left` | `left` |
 | initialValue | set the default value of child elements | `any` | `-` |
 | trigger | Set the timing to collect field value changes | `string` | `-` |
 | valuePropName | The property of the value of the child node, such as 'checked' for Checkbox | `string` | `-` |
@@ -462,11 +461,7 @@ export default App;
 
 ### Form.Item Rule
 
-The rule validation process is based
-on [async-validator](https://github.com/yiminghe/async-validator). For more rule
-configurations, please refer to the async-validator documentation. Use
-the `rules` attribute of Form.Item to define validation rules, the optional
-attributes are as follows:
+The rule validation process is based on [async-validator](https://github.com/yiminghe/async-validator). For more rule configurations, please refer to the async-validator documentation. Use the `rules` attribute of Form.Item to define validation rules, the optional attributes are as follows:
 
 | Property | Description | Type |
 | --- | --- | --- |
@@ -485,7 +480,7 @@ attributes are as follows:
 Form.useForm() creates a Form instance, which is used to manage all data states.
 
 | Property | Description | Type |
-|--------------|-----------------------------|-------|
+| --- | --- | --- |
 | getFieldValue | Get the value of the corresponding field name | `(name: NamePath) => any` |
 | setFieldsValue | set field values | `(values) => void` |
 | resetFields | Reset form prompt state | `() => void` |
@@ -495,9 +490,7 @@ Form.useForm() creates a Form instance, which is used to manage all data states.
 
 ### CSS Variables
 
-The component provides the following CSS Variables, which can be used for custom
-styles, please refer
-to [ConfigProvider Component](#/zh-CN/component/configprovider) for usage.
+The component provides the following CSS Variables, which can be used for custom styles, please refer to [ConfigProvider Component](#/zh-CN/component/configprovider) for usage.
 
 | Name | Description | Default |
 | --- | --- | --- |

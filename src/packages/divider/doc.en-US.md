@@ -6,8 +6,7 @@ Separate content into multiple areas.
 
 ## Install
 
-```ts
-// react
+```tsx
 import { Divider } from '@nutui/nutui-react';
 ```
 

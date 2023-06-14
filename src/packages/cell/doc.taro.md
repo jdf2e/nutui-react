@@ -6,7 +6,7 @@
 
 ## 安装
 
-```ts
+```tsx
 import { Cell, CellGroup } from '@nutui/nutui-react-taro'
 ```
 
