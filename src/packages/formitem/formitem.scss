@@ -1,17 +1,3 @@
-@import '../cell/cell.scss';
-
-.nut-theme-dark {
-  .nut-form-item {
-    &__body {
-      &__slots {
-        .nut-input-text {
-          color: $dark1;
-        }
-      }
-    }
-  }
-}
-
 .nut-form-item {
   display: flex;
 

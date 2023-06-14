@@ -61,7 +61,7 @@ export default App
 
 :::
 
-## AnimatingNumbers.CountUp
+## AnimatingNumbers
 
 ### Props
 

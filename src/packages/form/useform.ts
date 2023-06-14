@@ -35,7 +35,9 @@ class FormStore {
     this.fieldEntities.push(field)
     return () => {
       this.fieldEntities = this.fieldEntities.filter((item) => item != field)
-      delete this.store[field.props.name]
+      if (this.store) {
+        delete this.store[field.props.name]
+      }
     }
   }
 

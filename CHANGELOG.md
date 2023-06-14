@@ -1,3 +1,15 @@
+# v2.0.0-alpha.17
+`2023-06-14`
+
+* :bug: fix: searchbar shape=round 效果差的问题 (#1109) @xiaoyatong
+* :bug: fix: swipe 类型和文档优化 (#1122) @oasis-cloud
+* 🛠 refactor: form (#1118) @oasis-cloud
+* 📖 docs: 修改布局文档相关 @hanyuxinting
+* 📖 docs: 文档走查及问题修复 (#1123) @xiaoyatong
+* 📖 docs: 文档走查及问题修复-基础&布局组件(#1117) @Eiinu
+* 📖 docs: 文档走查及问题修复-导航组件 (#1119) @xiaoyatong
+
+
 # v2.0.0-alpha.16
 `2023-06-09`
 

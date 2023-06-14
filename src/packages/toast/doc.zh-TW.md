@@ -329,7 +329,6 @@ export default App
 
 ## Toast
 
-`Toast`只支持指令式調用
 
 ### Props
 
@@ -345,6 +344,8 @@ export default App
 | contentStyle | 自定義內容區樣式 | `React.CSSProperties` | `-` |
 | closeOnOverlayClick | 是否在點擊遮罩層後關閉提示 | `boolean` | `false` |
 | onClose | 關閉時觸發的事件 | `() => void` | `() => void` |
+
+`Toast`只支持指令式調用
 
 如果傳入的參數是字符串類型，`Toast.show`會自動把它作為`content`
 

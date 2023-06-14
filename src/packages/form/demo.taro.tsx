@@ -333,6 +333,7 @@ const FormDemo = () => {
           <Form.Item
             label={translated.name}
             name="username"
+            required
             rules={[{ required: true, message: translated.nameTip }]}
           >
             <Input placeholder={translated.nameTip1} type="text" />
@@ -340,6 +341,7 @@ const FormDemo = () => {
           <Form.Item
             label={translated.age}
             name="age"
+            required
             rules={[
               { required: true, message: translated.ageTip },
               { validator: customValidator, message: translated.ageTip2 },
@@ -351,6 +353,7 @@ const FormDemo = () => {
           <Form.Item
             label={translated.tel}
             name="tel"
+            required
             rules={[{ required: true, message: translated.telTip }]}
           >
             <Input placeholder={translated.telTip2} type="number" />
@@ -358,6 +361,7 @@ const FormDemo = () => {
           <Form.Item
             label={translated.address}
             name="address"
+            required
             rules={[{ required: true, message: translated.addressTip }]}
           >
             <Input placeholder={translated.addressTip} type="text" />
@@ -389,6 +393,7 @@ const FormDemo = () => {
           <Form.Item
             label={translated.name}
             name="username"
+            required
             rules={[{ required: true, message: translated.nameTip }]}
             initialValue="ZhangSan"
           >
@@ -408,6 +413,7 @@ const FormDemo = () => {
           <Form.Item
             label={translated.name}
             name="username"
+            required
             rules={[{ required: true, message: translated.nameTip }]}
           >
             <Input placeholder={translated.nameTip1} type="text" />

@@ -330,7 +330,6 @@ export default App
 
 ## Toast
 
-`Toast` only supports Imperative calls.
 
 ### Props
 
@@ -346,6 +345,8 @@ export default App
 | contentStyle | Toast content style | `React.CSSProperties` | `-` |
 | closeOnOverlayClick | Whether to close when overlay is clicked | `boolean` | `false` |
 | onClose | Callback function after close | `() => void` | `null` |
+
+`Toast` only supports Imperative calls.
 
 You can also pass in a string directly, and `Toast.show` will automatically use it as `content`.
 
