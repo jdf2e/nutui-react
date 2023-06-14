@@ -1,10 +1,10 @@
 # Toast 吐司
 
-### 介绍
+## 介绍
 
 用于轻提示。
 
-### 安装
+## 安装
 
 ```tsx
 import { Toast } from '@nutui/nutui-react';

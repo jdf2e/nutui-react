@@ -1,10 +1,10 @@
 # Swiper 轮播
 
-### 介绍
+## 介绍
 
 常用于一组图片或卡片轮播，当内容空间不足时，可以用走马灯的形式进行收纳，进行轮播展现。
 
-### 安装
+## 安装
 
 ```tsx
 import { Swiper, SwiperItem } from '@nutui/nutui-react-taro';

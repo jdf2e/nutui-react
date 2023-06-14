@@ -4,7 +4,7 @@
 
 Use for quick rating actions, or to showcase reviews.
 
-### Install
+## Install
 
 ```tsx
 import { Rate } from '@nutui/nutui-react';

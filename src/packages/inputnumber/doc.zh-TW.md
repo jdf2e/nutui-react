@@ -1,14 +1,16 @@
 # InputNumber 數字輸入框
 
-### 介紹
+## 介紹
 
 通過點擊按鈕控制數字增減。
 
-### 安裝
+## 安裝
 
 ```tsx
 import { InputNumber } from '@nutui/nutui-react';
 ```
+
+## 代碼演示
 
 ### 基礎用法
 
@@ -56,18 +58,18 @@ export default App;
 
 ### 限制輸入範圍
 
-`min` 和 `max` 屬性分別表示最小值和最大值
+`min` 和 `max` 屬性分別錶示最小值和最大值
 
 :::demo
 
 ```tsx
 import React, { useState } from "react";
-import { InputNumber,Toast } from '@nutui/nutui-react';
+import { InputNumber, Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const overlimit = (e: MouseEvent) => {
     console.log(e)
-    Toast.warn('超出限制事件触发')
+    Toast.warn('超出限制事件觸發')
   }
   return (
     <>
@@ -255,7 +257,7 @@ export default App;
 
 :::
 
-## API
+## InputNumber
 
 ### Props
 
@@ -271,13 +273,13 @@ export default App;
 | disabled | 禁用所有功能 | `boolean` | `false` |
 | readOnly | 只讀狀態禁用輸入框操作行為 | `boolean` | `false` |
 | async | 支持異步修改 | `boolean` | `false` |
-| formatter | 指定输入框展示值的格式 | `function(value: number \| string): string` | `-` |
+| formatter | 指定輸入框展示值的格式 | `function(value: number \| string): string` | `-` |
 | onPlus | 點擊增加按鈕時觸發 | `(e: MouseEvent) => void` | `-` |
 | onMinus | 點擊減少按鈕時觸發 | `(e: MouseEvent) => void` | `-` |
 | onOverlimit | 點擊不可用的按鈕時觸發 | `(e: MouseEvent) => void` | `-` |
 | onChange | 值改變時觸發 | `(param: string \| number, e: MouseEvent \| ChangeEvent<HTMLInputElement>) => void` | `-` |
-| onBlur | 輸入框失去焦點時觸發 | `(e: ChangeEvent<HTMLInputElement>) => void` | `-` |
 | onFocus | 輸入框獲得焦點時觸發 | `(e: FocusEvent<HTMLInputElement>) => void` | `-` |
+| onBlur | 輸入框失去焦點時觸發 | `(e: ChangeEvent<HTMLInputElement>) => void` | `-` |
 
 ## 主題定制
 

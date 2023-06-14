@@ -240,7 +240,7 @@ export default App;
 
 :::
 
-## API
+## Overlay
 
 ### Props
 

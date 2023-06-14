@@ -1,10 +1,10 @@
 # Address
 
-### Intro
+## Intro
 
 Load on demand Load the  Icon、Popup、Elevator dependent component
 
-### Install
+## Install
 ```tsx
 import { Address } from '@nutui/nutui-react';
 ```

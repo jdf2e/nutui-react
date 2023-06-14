@@ -2,7 +2,7 @@
 
 ## 介紹
 
-出现在图标或文字右上角的红色圆点、数字或者文字，表示有新内容或者待处理的信息。
+出現在圖標或文字右上角的紅色圓點、數字或者文字，錶示有新內容或者待處理的信息。
 
 ## 安裝
 
@@ -12,7 +12,7 @@ import { Badge } from '@nutui/nutui-react';
 
 ## 代碼演示
 
-### 基础用法
+### 基礎用法
 
 :::demo
 
@@ -149,7 +149,7 @@ export default App;
 
 :::
 
-### 自定義徽標样式
+### 自定義徽標樣式
 
 :::demo
 
@@ -197,7 +197,7 @@ export default App;
 ```tsx
 import React from "react";
 import { Badge, Avatar, Cell } from '@nutui/nutui-react';
-import { My, Checklist, Link as LinkIcon, Download } from '@nutui/icons-react';
+import { My } from '@nutui/icons-react';
 
 const App = () => {
   return (
@@ -225,7 +225,7 @@ export default App;
 
 ```tsx
 import React from "react";
-import { Badge, Cell } from '@nutui/nutui-react';
+import { Badge,Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
@@ -241,18 +241,18 @@ export default App;
 
 :::
 
-## API
+## Badge
 
 ### Props
 
-| 属性 | 說明 | 類型 | 默認值 |
+| 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| value | 显示的内容，支持数字、字符和自定义内容 | `ReactNode` | `-` |
+| value | 顯示的內容，支持數字、字符和自定義內容 | `ReactNode` | `-` |
 | max | value 為數值時，最大值 | `number` | `99` |
 | dot | 是否為小點 | `boolean` | `false` |
 | top | 上下偏移量，支持單位設置，可設置為：5 等 | `number` | `0` |
 | right | 左右偏移量，支持單位設置，可設置為：5 等 | `number` | `0` |
-| color | 徽標背景顏色 | `string` | `#fa2c19` |
+| color | 徽標背景顏色,默認值為當前主題色 | `string` | `-` |
 
 ## 主題定制
 
@@ -260,15 +260,15 @@ export default App;
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 说明 | 默認值 |
+| 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-badge-background-color | badge 背景色 | `linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%))` |
-| \--nutui-badge-color | badge 内容色值 | `#fff` |
-| \--nutui-badge-font-size | badge 内容字号 | `$font-size-1` |
-| \--nutui-badge-border | badge 边框 | `0px solid $primary-text-color` |
-| \--nutui-badge-border-radius | badge 边框圆角 | `14px` |
+| \--nutui-badge-color | badge 內容色值 | `#fff` |
+| \--nutui-badge-font-size | badge 內容字號 | `$font-size-1` |
+| \--nutui-badge-border | badge 邊框 | `0px solid $primary-text-color` |
+| \--nutui-badge-border-radius | badge 邊框圓角 | `14px` |
 | \--nutui-badge-padding | badge 的padding值 | `0 5px` |
-| \--nutui-badge-icon-padding | badge 为自定义icon时 的 padding值 | `2px` |
-| \--nutui-badge-content-transform | badge 内容位置 | `translateY(-50%) translateX(100%)` |
-| \--nutui-badge-z-index | badge 自定义icon时的z-index | `1` |
-| \--nutui-badge-dot-width | badge 为圆点时的宽度、高度、圆角 | `7px` |
+| \--nutui-badge-icon-padding | badge 為自定義icon時 的 padding值 | `2px` |
+| \--nutui-badge-content-transform | badge 內容位置 | `translateY(-50%) translateX(100%)` |
+| \--nutui-badge-z-index | badge 自定義icon時的z-index | `1` |
+| \--nutui-badge-dot-width | badge 為圓點時的寬度、高度、圓角 | `7px` |

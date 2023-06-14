@@ -1,10 +1,10 @@
 # Grid 宮格
 
-### 介紹
+## 介紹
 
-用于分隔成等寬區塊進行頁面導航。
+用於分隔成等寬區塊進行頁面導航。
 
-### 安裝
+## 安裝
 
 ```tsx
 import { Grid } from '@nutui/nutui-react'
@@ -141,7 +141,7 @@ export default App
 
 :::
 
-### 內容橫向
+### 內容橫嚮
 
 :::demo
 
@@ -165,7 +165,7 @@ export default App
 
 :::
 
-### 内容翻转 + 横向
+### 內容翻轉 + 橫嚮
 
 :::demo
 
@@ -231,19 +231,19 @@ const App = () => {
   return (
     <Grid>
       <Grid.Item text={<span>More</span>}><Dongdong /></Grid.Item>
-      <Grid.Item>
-        <Avatar
-          className="demo-avatar"
-          icon={<My color="#fff" />}
-          background="#FA2C19"
-        />
-      </Grid.Item>
-      <Grid.Item>
-      <Avatar
-        size="large"
-        icon={<Image src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />}
-      />
-      </Grid.Item>
+        <Grid.Item>
+          <Avatar
+            className="demo-avatar"
+            icon={<My color="#fff"/>}
+            background="#FA2C19"
+          />
+        </Grid.Item>
+        <Grid.Item>
+          <Avatar
+            size="large"
+            icon={<Image src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />}
+          />
+        </Grid.Item>
     </Grid>
   )
 }
@@ -252,9 +252,9 @@ export default App
 
 :::
 
-## API
+## Grid
 
-### Grid Props
+### Props
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |

@@ -1,10 +1,10 @@
 # NoticeBar 公告栏
 
-### 介绍
+## 介绍
 
 用于循环播放展示一组消息通知。
 
-### 安装
+## 安装
 
 ```tsx
 import { NoticeBar } from '@nutui/nutui-react-taro';

@@ -1,10 +1,10 @@
 # DatePicker 日期選擇器
 
-### 介紹
+## 介紹
 
 時間選擇器，支持日期、年月、時分等維度，通常與彈出層組件配合使用。
 
-### 安裝
+## 安裝
 
 ```tsx
 import { DatePicker } from '@nutui/nutui';
@@ -353,7 +353,7 @@ const App = () => {
   };
   return ( 
     <>   
-      <Cell title="時間選擇" description={desc6} onClick={() => setShow6(true)} />
+      <Cell title="時間選擇" description={desc7} onClick={() => setShow6(true)} />
       <DatePicker
           title="時間選擇"
           type="datehour"
@@ -375,7 +375,7 @@ export default App;
 
 :::
 
-## API
+## DatePicker
 
 ### Props
 
@@ -387,12 +387,12 @@ export default App;
 | type | 類時間類型，可選值 date time year-month month-day datehour datetime hour-minutes | `string` | `date` |
 | minuteStep | 分鐘步進值 | `number` | `1` |
 | showChinese | 每列是否展示中文 | `boolean` | `false` |
-| title | 設定標題 | `string` | `null` |
+| title | 設置標題 | `string` | `null` |
 | startDate | 開始日期 | `Date` | `十年前` |
 | endDate | 結束日期 | `Date` | `十年後` |
 | formatter | 選項格式化函數 | `(type: string, option: PickerOption) => PickerOption` | `-` |
 | filter | 選項過濾函數 | `(type: string, option: PickerOption) => PickerOption[]` | `-` |
 | threeDimensional | 是否開啟3D效果 | `boolean` | `true` |
-| onConfirm | 點選確定按鈕時觸發 | `(options, value) => void` | `-` |
+| onConfirm | 點擊確定按鈕時觸發 | `(options, value) => void` | `-` |
 | onClose | 關閉時觸發 | `(options, value) => void` | `-` |
 | onChange | 選項改變時觸發 | `(options, value, index) => void` | `-` |

@@ -152,7 +152,7 @@ export default App;
 | muted | Whether it is mute | `boolean` | `false` |
 | autoPlay | Whether to play automatically | `boolean` | `false` |
 | loop | Whether to circulate | `boolean` | `false` |
-| preload | Whether the pronunciation is pre -loaded | `none` \| `metadata` \| `auto` \| `-` | `auto` |
+| preload | Whether the pronunciation is pre -loaded | `none` \| `metadata` \| `auto` | `auto` |
 | type | Display form, optional value：controls、panel、progress、icon、none | `string` | `progress` |
 | onBack | Voice will be retreated, type = progress takes effect | `(event：HTMLAudioElement) => void` | `-` |
 | onForward | Voice fast -moving back, type = progress | `(event：HTMLAudioElement) => void` | `-` |

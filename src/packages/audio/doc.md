@@ -152,7 +152,7 @@ export default App;
 | muted | 是否静音 | `boolean` | `false` |
 | autoPlay | 是否自动播放 | `boolean` | `false` |
 | loop | 是否循环播放 | `boolean` | `false` |
-| preload | 是否预加载语音 | `none` \| `metadata` \| `auto` \| `-` | `auto` |
+| preload | 是否预加载语音 | `none` \| `metadata` \| `auto`| `auto` |
 | type | 展示形式，可选值：controls 控制面板 progress 进度条 icon 图标 none 自定义 | `string` | `progress` |
 | onBack | 语音快退回调，type = progress 时生效 | `(event：HTMLAudioElement) => void` | `-` |
 | onForward | 语音快进回调，type = progress 时生效 | `(event：HTMLAudioElement) => void` | `-` |
