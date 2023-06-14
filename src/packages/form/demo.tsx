@@ -62,6 +62,14 @@ interface T {
   tagTip: string
   male: string
   female: string
+  input: string
+  checkboxGroup: string
+  option: string
+  radio: string
+  radioGroup: string
+  radioOption: string
+  picker: string
+  select: string
 }
 
 const FormDemo = () => {
@@ -111,6 +119,14 @@ const FormDemo = () => {
       tagTip: '请输入标注',
       male: '男性',
       female: '女性',
+      input: '输入框',
+      checkboxGroup: '复选按钮分组',
+      option: '选项',
+      radio: '单选按钮',
+      radioGroup: '单选按钮分组',
+      radioOption: '选项',
+      picker: '选择器',
+      select: '请选择',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -158,6 +174,14 @@ const FormDemo = () => {
       tagTip: 'Please enter tag',
       male: 'Male',
       female: 'Female',
+      input: 'Input',
+      checkboxGroup: 'Checkbox.Group',
+      option: 'Option',
+      radio: 'Radio',
+      radioGroup: 'Radio.Group',
+      radioOption: 'radio',
+      picker: 'Picker',
+      select: 'Please select',
     },
   })
 
@@ -357,6 +381,7 @@ const FormDemo = () => {
 
         <h2>{translated.title5}</h2>
         <Form
+          style={{ '--nutui-form-item-label-width': '120px' }}
           footer={
             <div
               style={{
@@ -376,38 +401,46 @@ const FormDemo = () => {
           onFinish={(values) => submitSucceed(values)}
           onFinishFailed={(values, errors) => submitFailed(errors)}
         >
-          <Form.Item label="Input" name="form_input">
-            <Input placeholder="Please enter something" />
+          <Form.Item label={translated.input} name="form_input">
+            <Input placeholder={translated.nameTip1} />
           </Form.Item>
-          <Form.Item label="Switch" name="switch">
+          <Form.Item label={translated.switch} name="switch">
             <Switch />
           </Form.Item>
-          <Form.Item label="Checkbox" name="checkbox">
-            <Checkbox labelPosition="right" label="Option 1" />
+          <Form.Item label={translated.checkbox} name="checkbox">
+            <Checkbox labelPosition="right" label={`${translated.option} 1`} />
           </Form.Item>
-          <Form.Item label="Check Group" name="checkbox_group">
+          <Form.Item label={translated.checkboxGroup} name="checkbox_group">
             <Checkbox.Group>
-              <Checkbox labelPosition="right" label="Option 1" value={1} />
-              <Checkbox labelPosition="right" label="Option 2" value={2} />
+              <Checkbox
+                labelPosition="right"
+                label={`${translated.option} 1`}
+                value={1}
+              />
+              <Checkbox
+                labelPosition="right"
+                label={`${translated.option} 2`}
+                value={2}
+              />
             </Checkbox.Group>
           </Form.Item>
-          <Form.Item label="Radio" name="radio">
-            <Radio value="1">Radio 1</Radio>
+          <Form.Item label={translated.radio} name="radio">
+            <Radio value="1">{translated.radioOption} 1</Radio>
           </Form.Item>
-          <Form.Item label="Radio Group" name="radio_group">
+          <Form.Item label={translated.radioGroup} name="radio_group">
             <Radio.Group>
-              <Radio value="1">Radio 1</Radio>
-              <Radio value="2">Radio 2</Radio>
+              <Radio value="1">{translated.radioOption} 1</Radio>
+              <Radio value="2">{translated.radioOption} 2</Radio>
             </Radio.Group>
           </Form.Item>
-          <Form.Item label="Rate" name="rate">
-            <Rate defaultValue={0} />
+          <Form.Item label={translated.rate} name="rate">
+            <Rate />
           </Form.Item>
-          <Form.Item label="Range" name="range">
+          <Form.Item label={translated.range} name="range">
             <Range max={10} min={-10} />
           </Form.Item>
           <Form.Item
-            label="Picker"
+            label={translated.picker}
             name="picker"
             trigger="onConfirm"
             getValueFromEvent={(...args) => args[1]}
@@ -428,7 +461,7 @@ const FormDemo = () => {
                       value.length
                         ? pickerOptions.filter((po) => po.value === value[0])[0]
                             ?.text
-                        : 'Please select'
+                        : translated.select
                     }
                     extra={<Right />}
                     align="center"
@@ -438,7 +471,7 @@ const FormDemo = () => {
             </Picker>
           </Form.Item>
           <Form.Item
-            label="Uploader"
+            label={translated.uploader}
             name="files"
             initialValue={[
               {

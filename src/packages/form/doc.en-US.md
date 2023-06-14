@@ -321,6 +321,7 @@ const App = () => {
   return (
     <>
       <Form
+        style={{ '--nutui-form-item-label-width': '120px' }}
         footer={
           <div
             style={{
@@ -452,7 +453,6 @@ export default App;
 |--------------------|--------------|---------------|----------|
 | required | The red star of the required form item label, only used to control the style | `boolean` | `false` |
 | name | In the case of using the form validation function, this attribute is required | `string` | `-` |
-| labelWidth | The width of the form item label, the default unit is `px` | `number` | `90` |
 | errorMessageAlign | Error text alignment | `'center'\| 'right'\|'left'` | `left` |
 | initialValue | set the default value of child elements | `any` | `-` |
 | trigger | Set the timing to collect field value changes | `string` | `-` |

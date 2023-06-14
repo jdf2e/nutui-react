@@ -3,7 +3,6 @@ import { BaseFormField } from './types'
 import { Context } from '../form/context'
 import Cell from '@/packages/cell/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { pxCheck } from '@/utils/px-check'
 import { isForwardRefComponent } from '@/utils/is-forward-ref-component'
 
 type TextAlign =
@@ -17,7 +16,6 @@ type TextAlign =
 
 export interface FormItemProps extends BasicComponent, BaseFormField {
   required: boolean
-  labelWidth: number
   initialValue: any
   trigger: string
   valuePropName: string
@@ -35,7 +33,6 @@ const defaultProps = {
   name: '',
   label: '',
   rules: [{ required: false, message: '' }],
-  labelWidth: 90,
   errorMessageAlign: 'left',
 } as FormItemProps
 
@@ -79,11 +76,9 @@ export class FormItem extends React.Component<
     const { setFieldsValue, getFieldValue } = this.context
     const { name } = this.props
 
-    if (this.props.initialValue === undefined) {
+    if (children?.props?.defaultValue) {
       console.warn('通过 initialValue 设置初始值')
     }
-    const value = getFieldValue(name)
-    console.log('value', value, this.props.initialValue)
     const controlled = {
       ...children.props,
       [this.props.valuePropName || 'value']:
@@ -136,15 +131,7 @@ export class FormItem extends React.Component<
   }
 
   renderLayout = (childNode: React.ReactNode) => {
-    const {
-      label,
-      name,
-      required,
-      className,
-      style,
-      labelWidth,
-      errorMessageAlign,
-    } = {
+    const { label, name, required, className, style, errorMessageAlign } = {
       ...defaultProps,
       ...this.props,
     }
@@ -173,12 +160,7 @@ export class FormItem extends React.Component<
         }
       >
         {label ? (
-          <div
-            className="nut-cell__title nut-form-item__label"
-            style={{
-              width: pxCheck(labelWidth),
-            }}
-          >
+          <div className="nut-cell__title nut-form-item__label">
             {renderLabel}
           </div>
         ) : null}

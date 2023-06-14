@@ -177,6 +177,7 @@
 - 增加 initialValues，用于设置表单初始值，同时用于表单的重置
 - 增加 name 属性
 #### Form.Item
+- 移除 labelWidth, 通过 --nutui-form-item-label-width 控制宽度
 - 增加 required，用于必选样式控制
 - 增加 trigger，用于设置数据更新的时机
 - 增加 valuePropName ，用于收集子组件受控的属性映射

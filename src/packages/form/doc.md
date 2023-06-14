@@ -313,6 +313,7 @@ const App = () => {
   return (
     <>
       <Form
+        style={{ '--nutui-form-item-label-width': '120px' }}
         footer={
           <div
             style={{
@@ -444,7 +445,6 @@ export default App;
 | --- | --- | --- |---------|
 | required | 必填表单项 label 的红色星标,仅用于控制样式 | `boolean` | `false` |
 | name | 在使用表单校验功能的情况下，该属性是必填的 | `string` | `-`     |
-| labelWidth | 表单项 label 宽度，默认单位为`px` | `number` | `90`  |
 | errorMessageAlign | 错误提示文案对齐方式 | `'center'\| 'right'\|'left'` | `left` |
 | initialValue | 设置子元素默认值 | `any` | `-`     |
 | trigger | 设置收集字段值变更的时机 | `string` | `-`     |
