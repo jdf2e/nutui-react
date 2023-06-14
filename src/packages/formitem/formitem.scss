@@ -87,6 +87,7 @@
         padding: 0 !important;
 
         .nut-textarea__textarea {
+          font: inherit;
           text-align: $form-item-body-input-text-align;
         }
       }

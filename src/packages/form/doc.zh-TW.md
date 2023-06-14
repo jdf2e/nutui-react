@@ -1,19 +1,18 @@
-# Form
+# Form 表單
 
-## Intro
+## 介紹
 
-It is used for data entry and verification, and supports input boxes, radio
-boxes, check boxes and other types.
+用於數據錄入、校驗，支持輸入框、單選框、複選框等類型。
 
-## Install
+## 安裝
 
 ```javascript
 import { Form } from '@nutui/nutui-react'
 ```
 
-## Demo
+## 代碼演示
 
-### Basic Usage
+### 基礎用法
 
 :::demo
 
@@ -29,27 +28,28 @@ const App = () => {
         footer={
           <>
             <Button nativeType="submit" block type="primary">
-              Submit
+              提交
             </Button>
           </>
         }
       >
         <Form.Item
           required
-          label="name"
+          rules={[{ required: true, message: '姓名不能為空' }]}
+          label="姓名"
           name="username"
         >
           <Input
             className="nut-input-text"
-            placeholder="Please type in your name"
+            placeholder="請輸入姓名"
             type="text"
           />
         </Form.Item>
-        <Form.Item label="address" name="address">
-          <TextArea placeholder="please enter address" maxLength={100} />
+        <Form.Item label="地址" name="address">
+          <TextArea placeholder="請輸入地址" maxLength={100} />
         </Form.Item>
         <Form.Item
-          label="count"
+          label="數量"
           name="num"
           getValueFromEvent={(...args) => args[0]}
         >
@@ -65,7 +65,7 @@ export default App;
 
 :::
 
-### Form validation
+### 表單校驗
 
 :::demo
 
@@ -96,49 +96,45 @@ const App = () => {
             }}
           >
             <Button nativeType="submit" type="primary">
-              submit
+              提交
             </Button>
             <Button nativeType="reset" style={{ marginLeft: '20px' }}>
-              reset
+              重置
             </Button>
           </div>
         }
       >
         <Form.Item
-          label="name"
+          label="姓名"
           name="username"
-          rules={[{ required: true, message: "Please type in your name" }]}
+          rules={[{ required: true, message: "請輸入姓名" }]}
         >
-          <Input placeholder="Please type in your name" type="text" />
+          <Input placeholder="請輸入姓名" type="text" />
         </Form.Item>
         <Form.Item
-          label="age"
+          label="年龄"
           name="age"
           rules={[
-            { required: true, message: "Please enter age" },
-            { validator: customValidator, message: "number must be entered" },
-            {
-              validator: valueRangeValidator,
-              message: "0-200 range must be entered"
-            },
+            { required: true, message: "请输入年龄" },
+            { validator: customValidator, message: "必须输入数字" },
+            { validator: valueRangeValidator, message: "必须输入0-200区间" },
           ]}
         >
-          <Input placeholder="Please enter age，0-200 range must be entered"
-                 type="text" />
+          <Input placeholder="请输入年龄，必须数字且0-200区间" type="text" />
         </Form.Item>
         <Form.Item
-          label="telephone"
+          label="电话"
           name="tel"
-          rules={[{ required: true, message: "Please type your phone number" }]}
+          rules={[{ required: true, message: "请输入联系电话" }]}
         >
-          <Input placeholder="The phone format is incorrect" type="number" />
+          <Input placeholder="电话格式不正确" type="number" />
         </Form.Item>
         <Form.Item
-          label="address"
+          label="地址"
           name="address"
-          rules={[{ required: true, message: "please enter address" }]}
+          rules={[{ required: true, message: "請輸入地址" }]}
         >
-          <Input placeholder="please enter address" type="text" />
+          <Input placeholder="請輸入地址" type="text" />
         </Form.Item>
       </Form>
     </>
@@ -150,7 +146,7 @@ export default App;
 
 :::
 
-### with initial value form validation
+### 帶有初始值表單校驗
 
 :::demo
 
@@ -189,32 +185,29 @@ const App = () => {
             }}
           >
             <Button nativeType="submit" type="primary">
-              submit
+              提交
             </Button>
             <Button nativeType="reset" style={{ marginLeft: '20px' }}>
-              reset
+              重置
             </Button>
           </div>
         }
       >
         <Form.Item
-          label="name"
+          label="姓名"
           name="username"
-          rules={[{ required: true, message: "Please type in your name" }]}
+          rules={[{ required: true, message: "請輸入姓名" }]}
           initialValue="ZhangSan"
         >
-          <Input placeholder="Please type in your name" type="text" />
+          <Input placeholder="請輸入姓名" type="text" />
         </Form.Item>
-        <Form.Item label="age" name="age" initialValue={18} rules={[
-          { required: true, message: "Please enter age" },
-          { validator: customValidator, message: "number must be entered" },
-          {
-            validator: valueRangeValidator,
-            message: "0-200 range must be entered"
-          },
+        <Form.Item label="年龄" name="age" initialValue={18} rules={[
+          { required: true, message: "请输入年龄" },
+          { validator: customValidator, message: "必须输入数字" },
+          { validator: valueRangeValidator, message: "必须输入0-200区间" },
         ]}>
           <Input
-            placeholder="Please enter age，0-200 range must be entered"
+            placeholder="请输入年龄，必须数字且0-200区间"
             type="number"
           />
         </Form.Item>
@@ -228,7 +221,7 @@ export default App;
 
 :::
 
-### Form.useForm interacts with form data fields
+### Form.useForm 對錶單數據域進行交互
 
 :::demo
 
@@ -263,19 +256,19 @@ const App = () => {
         onFinishFailed={(values, errors) => submitFailed(errors)}
       >
         <Form.Item
-          label="name"
+          label="姓名"
           name="username"
-          rules={[{ required: true, message: "Please type in your name" }]}
+          rules={[{ required: true, message: "請輸入姓名" }]}
         >
-          <Input placeholder="Please type in your name" type="text" />
+          <Input placeholder="請輸入姓名" type="text" />
         </Form.Item>
-        <Form.Item label="tag" name="note">
-          <Input placeholder="Please enter a label" type="string" />
+        <Form.Item label="标注" name="note">
+          <Input placeholder="请输入标注" type="string" />
         </Form.Item>
-        <Form.Item label="gender" name="gender">
+        <Form.Item label="性别" name="gender">
           <Radio.Group onChange={onMenuChange}>
-            <Radio value="male">male</Radio>
-            <Radio value="female">female</Radio>
+            <Radio value="male">男性</Radio>
+            <Radio value="female">女性</Radio>
           </Radio.Group>
         </Form.Item>
       </Form>
@@ -288,7 +281,7 @@ export default App;
 
 :::
 
-### form type
+### 表單類型
 
 :::demo
 
@@ -331,10 +324,10 @@ const App = () => {
             }}
           >
             <Button nativeType="submit" type="primary">
-              submit
+              提交
             </Button>
             <Button nativeType="reset" style={{ marginLeft: '20px' }}>
-              reset
+              重置
             </Button>
           </div>
         }
@@ -410,7 +403,7 @@ const App = () => {
               name: 'file1.png',
               url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
               status: 'success',
-              message: 'uploaded successfully',
+              message: 'success',
               type: 'image',
               uid: '122',
             },
@@ -434,83 +427,79 @@ export default App;
 
 ### Props
 
-| Property | Description | Type | Default |
-|----------------|--------------|-----------|-------|
-| form | Form control instance created by Form.useForm(), if not provided, it will be created automatically | FormInstance | `-`   |
-| footer | The bottom area of the form, where confirmation and reset buttons are usually placed | ReactNode | `null` |
-| initialValues | form initial values | any | `-`   |
-| name | form name | any | `-`   |
-| labelPosition | The position of the form item label | `'top'\|'left'\|'right'` | `right` |
-| starPosition | The red star position of the required form item label | `'left'\| 'right'` | `left` |
-| onFinish | Triggered after verification is successful | `(values: any) => void` | `-`   |
-| onFinishFailed | Triggered when any form item fails validation | `(values: any, errorFields: any) => void` | `-`   |
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| form | 經 Form.useForm() 創建的 form 控制實例，不提供時會自動創建 | `FormInstance` | `-` |
+| footer | 表單底部區域，一般放置確認和重置按鈕 | `ReactNode` | `null` |
+| initialValues | 表單初始值 | `any` | `-` |
+| name | 表單名稱 | `any` | `-` |
+| labelPosition | 表單項 label 的位置 | `'top'\| 'left'|'right'` | `right` |
+| starPosition | 必填表單項 label 的紅色星標位置 | `'left'\| 'right'` | `left` |
+| onFinish | 校驗成功後觸發 | `(values: any) => void` | `-` |
+| onFinishFailed | 任一表單項被校驗失敗後觸發 | `(values: any, errorFields: any) => void` | `-` |
 
 ## Form.Item
 
 ### Props
 
-| Property | Description | Type | Default |
-|--------------------|--------------|---------------|----------|
-| required | The red star of the required form item label, only used to control the style | `boolean` | `false` |
-| name | In the case of using the form validation function, this attribute is required | `string` | `-` |
-| errorMessageAlign | Error text alignment | `'center'\| 'right'\|'left'` | `left` |
-| initialValue | set the default value of child elements | `any` | `-` |
-| trigger | Set the timing to collect field value changes | `string` | `-` |
-| valuePropName | The property of the value of the child node, such as 'checked' for Checkbox | `string` | `-` |
-| getValueFromEvent | Set how to convert event value to field value | `(...args: any) => any` | `-` |
-| onClick | Click event and collect child component Ref | `(event: React.MouseEvent, componentRef: React.MutableRefObject<any>) => void` | `-` |
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| required | 必填表單項 label 的紅色星標,僅用於控製樣式 | `boolean` | `false` |
+| name | 在使用表單校驗功能的情況下，該屬性是必填的 | `string` | `-` |
+| errorMessageAlign | 錯誤提示文案對齊方式 | \`\`'center'| 'right'\` | \`'left'\`\` |
+| initialValue | 設置子元素默認值 | `any` | `-` |
+| trigger | 設置收集字段值變更的時機 | `string` | `-` |
+| valuePropName | 子節點的值的屬性，如 Checkbox 的是 'checked' | `string` | `-` |
+| getValueFromEvent | 設置如何將 event 的值轉換成字段值 | `(...args: any) => any` | `-` |
+| onClick | 點擊事件並收集子組件 Ref | `(event: React.MouseEvent, componentRef: React.MutableRefObject&lt;any>) =&gt; void` | `-` |
 
 ### Form.Item Rule
 
-The rule validation process is based
-on [async-validator](https://github.com/yiminghe/async-validator). For more rule
-configurations, please refer to the async-validator documentation. Use
-the `rules` attribute of Form.Item to define validation rules, the optional
-attributes are as follows:
+規則校驗處理基於[async-validator](https://github.com/yiminghe/async-validator) 更多規則配置可查看
+async-validator 文檔。 使用 Form.Item 的`rules`屬性可以定義校驗規則，可選屬性如下:
 
-| Property | Description | Type |
+| 屬性 | 說明 | 類型 |
 | --- | --- | --- |
-| required | whether it is a required field | `boolean` |
-| message | error message text | `string` |
-| len | String length for string type; definite number for number type; array length for array type | `number` |
-| max | type must be set: the string type is the maximum length of the string; the number type is the maximum value; the array type is the maximum length of the array | `number` |
-| min | type must be set: the string type is the minimum length of the string; the number type is the minimum value; the array type is the minimum length of the array | `number` |
-| pattern | regular expression match | `number` |
-| pattern | regular expression match | `RegExp` |
-| transform | Convert the field value to the target value and perform validation | `(value) => any` |
-| validator | custom validation, accept Promise as return value | `(rule, value) => Promise` |
+| required | 是否為必選字段 | `boolean` |
+| message | 錯誤提示文案 | `string` |
+| len | string 类型时为字符串长度；number 类型时为确定数字； array 类型时为数组长度 | `number` |
+| max | 必须设置 type：string 类型为字符串最大长度；number 类型时为最大值；array 类型时为数组最大长度 | `number` |
+| min | 必须设置 type：string 类型为字符串最小长度；number 类型时为最小值；array 类型时为数组最小长度 | `number` |
+| pattern | 正则表达式匹配 | `number` |
+| pattern | 正则表达式匹配 | `RegExp` |
+| transform | 将字段值转换成目标值后进行校验 | `(value) => any` |
+| validator | 自定义校验，接收 Promise 作为返回值 | `(rule, value) => Promise` |
 
 ### FormInstance
 
-Form.useForm() creates a Form instance, which is used to manage all data states.
+Form.useForm()創建 Form 實例，用於管理所有數據狀態。
 
-| Property | Description | Type |
-|--------------|-----------------------------|-------|
-| getFieldValue | Get the value of the corresponding field name | `(name: NamePath) => any` |
-| setFieldsValue | set field values | `(values) => void` |
-| resetFields | Reset form prompt state | `() => void` |
-| submit | method to submit a form for validation | `Promise` |
+| 屬性 | 說明 | 參數 | 返回值 |
+| --- | --- | --- | --- |
+| getFieldValue | 獲取對應字段名的值 | \- | `(name: NamePath) => any` |
+| setFieldsValue | 設置表單的值 | \- | `(values) => void` |
+| resetFields | 重置表單提示狀態 | \- | `() => void` |
+| submit | 提交表單進行校驗的方法 | \- | `Promise` |
 
-## Theming
+## 主題定制
 
-### CSS Variables
+### 樣式變量
 
-The component provides the following CSS Variables, which can be used for custom
-styles, please refer
-to [ConfigProvider Component](#/zh-CN/component/configprovider) for usage.
+組件提供了下列 CSS
+變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| Name | Description | Default |
+| 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-form-item-error-line-color | Error message border color | `$required-color` |
-| \--nutui-form-item-required-color | font color of required logo | `$required-color` |
-| \--nutui-form-item-error-message-color | text color of error message | `$required-color` |
-| \--nutui-form-item-label-font-size | label font size | `14px` |
-| \--nutui-form-item-label-width | label width | `90px` |
-| \--nutui-form-item-label-margin-right | label right margin | `10px` |
-| \--nutui-form-item-label-text-align | label text alignment | `left` |
-| \--nutui-form-item-required-margin-right | Required right margin for label | `4px` |
-| \--nutui-form-item-body-font-size | Font size of form container | `14px` |
-| \--nutui-form-item-body-slots-text-align | Form item text alignment | `left` |
-| \--nutui-form-item-body-input-text-align | Text alignment of form item input box | `left` |
-| \--nutui-form-item-tip-font-size | Font size for error messages | `10px` |
-| \--nutui-form-item-tip-text-align | Text alignment for error messages | `left` |
+| \--nutui-form-item-error-line-color | 錯誤信息邊框顏色 | `$required-color` |
+| \--nutui-form-item-required-color | 必選標識的字體顏色 | `$required-color` |
+| \--nutui-form-item-error-message-color | 錯誤信息的文本顏色 | `$required-color` |
+| \--nutui-form-item-label-font-size | label 字號 | `14px` |
+| \--nutui-form-item-label-width | label 寬度 | `90px` |
+| \--nutui-form-item-label-margin-right | label 右外邊距 | `10px` |
+| \--nutui-form-item-label-text-align | label 文本對齊方式 | `left` |
+| \--nutui-form-item-required-margin-right | label 必選的右外邊距 | `4px` |
+| \--nutui-form-item-body-font-size | 表單容器的字號 | `14px` |
+| \--nutui-form-item-body-slots-text-align | 表單項文本對齊方式 | `left` |
+| \--nutui-form-item-body-input-text-align | 表單項輸入框的文本對齊方式 | `left` |
+| \--nutui-form-item-tip-font-size | 錯誤信息的字號 | `10px` |
+| \--nutui-form-item-tip-text-align | 錯誤信息的文本對齊方式 | `left` |
