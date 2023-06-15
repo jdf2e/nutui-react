@@ -6,8 +6,8 @@
 
 ## 安裝
 
-``` javascript
-// react
+### 安裝
+```tsx
 import { Address } from '@nutui/nutui-react';
 ```
 

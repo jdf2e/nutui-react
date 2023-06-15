@@ -6,14 +6,13 @@
 
 ## 安装
 
-```ts
-// react
+```tsx
 import { ActionSheet } from '@nutui/nutui-react';
 ```
 
 ## 代码演示
 
-### 基本用法
+### 基础用法
 
 :::demo
 

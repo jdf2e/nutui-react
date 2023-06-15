@@ -6,14 +6,13 @@ Provides a quick return to the top function for long pages.
 
 ## Install
 
-```javascript
-// react
+```tsx
 import { BackTop } from '@nutui/nutui-react';
 ```
 
 ## Code
 
-### Basic Usage 
+### Basic Usage
 
 :::demo
 
@@ -67,6 +66,7 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### Threshold
@@ -123,7 +123,9 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
+
 ### Custom Style
 
 :::demo
@@ -195,6 +197,7 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### Scroll Inside Parent Element
@@ -251,7 +254,9 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
+
 ### Click
 
 :::demo
@@ -309,19 +314,20 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ## BackTop
 
 ### Props
 
-| Property | Description                            | Type    | Default |
-| ----------- | ------------------------------- | ------- | ------ |
-| target        | The listening element          | string  | -      |
-| threshold    | How high to scroll the page vertically          | number | `200`  |
-| zIndex      | Set the component z-index                | number | `10`   |
-| duration    | Set animation duration                | number | `1000` |
-| onClick | Emitted when component is clicked | (event: MouseEvent) => void | - |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| target | The listening element | `string` | `-` |
+| threshold | How high to scroll the page vertically | `number` | `200` |
+| zIndex | Set the component z-index | `number` | `10` |
+| duration | Set animation duration | `number` | `1000` |
+| onClick | Emitted when component is clicked | `(event: MouseEvent) => void` | `-` |
 
 ## Theming
 
@@ -331,4 +337,4 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| --nutui-backtop-border-color | border color | `#e0e0e0` |
+| \--nutui-backtop-border-color | border color | `#e0e0e0` |

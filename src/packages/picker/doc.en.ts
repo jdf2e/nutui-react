@@ -1,6 +1,6 @@
 export const Internation = {
   'zh-CN': {
-    basic: '基本用法',
+    basic: '基础用法',
     chooseCity: '请选择城市',
     defaultSelected: '默认选中项',
     controlled: '受控',
@@ -47,7 +47,7 @@ export const Internation = {
     puDong: '浦东新区',
   },
   'zh-TW': {
-    basic: '基本用法',
+    basic: '基础用法',
     chooseCity: '請選擇城市',
     defaultSelected: '默認選中項',
     controlled: '受控',

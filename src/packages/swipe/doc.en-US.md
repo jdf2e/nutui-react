@@ -1,12 +1,12 @@
-# Swipe 
+# Swipe
 
 ## Intro
+
 It is often used for gesture operations such as sliding left and right to delete cells
 
 ## Install
 
-```javascript
-// react
+```tsx
 import { Swipe } from '@nutui/nutui-react';
 ```
 
@@ -17,7 +17,6 @@ import { Swipe } from '@nutui/nutui-react';
 :::demo
 
 ```tsx
-
 import React from "react";
 import { Swipe, Cell, Button } from '@nutui/nutui-react';
 
@@ -36,12 +35,13 @@ const App = () => {
 }
 export default App;
 ```
-:::
 
+:::
 
 ### Control via instance method
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Swipe, Cell, Button } from '@nutui/nutui-react';
@@ -70,11 +70,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Click to close
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Swipe, Cell, Button } from '@nutui/nutui-react';
@@ -99,6 +101,7 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Disable sliding
@@ -106,7 +109,6 @@ export default App;
 :::demo
 
 ```tsx
-
 import React from "react";
 import { Swipe, Cell, Button } from '@nutui/nutui-react';
 
@@ -127,8 +129,8 @@ const App = () => {
 
 export default App;
 ```
-:::
 
+:::
 
 ### Event monitoring
 
@@ -169,6 +171,7 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Asynchronous control
@@ -176,7 +179,6 @@ export default App;
 :::demo
 
 ```tsx
-
 import React, { useRef } from "react";
 
 import { Swipe, Cell, Button, Dialog } from '@nutui/nutui-react';
@@ -216,8 +218,8 @@ const App = () => {
 }
 export default App;
 ```
-:::
 
+:::
 
 ### Custom content
 
@@ -255,29 +257,30 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ## Swipe
 
 ### Props
 
-| Props                        | Description | Type          | Default&nbsp;&nbsp;&nbsp;&nbsp; |
-|------------------------------|-----------------|---------------|---------------|
-|name | identifier, which can be obtained in the event parameters | `number \| string` | - |
-|leftAction | contents of the left sliding area | `ReactNode` | - |
-|rightAction | content of right sliding area | `ReactNode` | - |
-|beforeClose | the callback function before closing returns `position` which is the direction of the sliding area  | `(position: 'left \|'right') => void` | - |
-|disabled | disable sliding | `boolean` | `false` |
-|onOpen | open the cell sidebar | `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | - |
-|onClose | collapse the cell sidebar | `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | - |
-|onActionClick | triggered when clicking on the left or right | `(event: Event, position: 'left' \|'right') => void` | - |
-|onTouchStart | onTouchStart | `(event: Event) => void` | - |
-|onTouchMove | onTouchMove | `(event: Event) => void` | - |
-|onTouchEnd | onTouchEnd | `(event: Event) => void` | - |
+| Props | Description | Type | Default |
+| --- | --- | --- | --- |
+| name | identifier, which can be obtained in the event parameters | `number` \| `string` | `-`|
+| leftAction | contents of the left sliding area | `ReactNode` | `-`|
+| rightAction | content of right sliding area | `ReactNode` | `-`|
+| beforeClose | the callback function before closing returns `position` which is the direction of the sliding area | `(position: 'left \|'right') => void` | `-`|
+| disabled | disable sliding | `boolean` | `false` |
+| onOpen | open the cell sidebar | `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | `-`|
+| onClose | collapse the cell sidebar | `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | `-`|
+| onActionClick | triggered when clicking on the left or right | `(event: Event, position: 'left' \|'right') => void` | `-`|
+| onTouchStart | onTouchStart | `(event: Event) => void` | `-`|
+| onTouchMove | onTouchMove | `(event: Event) => void` | `-`|
+| onTouchEnd | onTouchEnd | `(event: Event) => void` | `-`|
 
 ### Ref
 
-| 属性  | 说明                                                         | 回调参数                             |
-| ----- | ------------------------------------------------------------ | ------------------------------------ |
-| open  | open the cell sidebar, the default value of `side` is `right` | `(side?: 'left' \| 'right') => void` |
-| close | collapse the cell sidebar                                    | `() => void`                         |
+| 属性 | 说明 | 回调参数 |
+| --- | --- | --- |
+| open | open the cell sidebar, the default value of `side` is `right` | `(side?: 'left' \| 'right') => void` |
+| close | collapse the cell sidebar | `() => void` |

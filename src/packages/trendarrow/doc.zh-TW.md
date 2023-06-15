@@ -6,8 +6,7 @@
 
 ## 安裝
 
-```javascript
-// React
+```tsx
 import { TrendArrow } from '@nutui/nutui-react';
 ```
 
@@ -195,19 +194,20 @@ export default App;
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| value | 數值，大於0時箭頭向上，小於0時箭頭向下 | `number` | `-` |
+| value | 數值，大於0時箭頭嚮上，小於0時箭頭嚮下 | `number` | `-` |
 | digits | 小數位精度 | `number` | `2` |
 | symbol | 是否顯示加減號 | `boolean` | `false` |
 | zero | 是否顯示 0 | `boolean` | `false` |
 | arrowLeft | 是否在數字左側顯示箭頭 | `boolean` | `false` |
 | syncColor | 文字顏色是否與箭頭同步 | `boolean` | `true` |
 | color | 文字顏色 | `string` | `#333333` |
-| riseColor | 向上箭頭顏色 | `string` | `#fa2c19` |
-| dropColor | 向下箭頭顏色 | `string` | `#64b578` |
-| riseIcon | 自定義向上箭頭icon | `React.ReactNode` | `<TriangleUp/>` |
-| downIcon | 自定義向下箭頭icon | `React.ReactNode` | `<TriangleDown/>` |
+| riseColor | 嚮上箭頭顏色 | `string` | `#fa2c19` |
+| dropColor | 嚮下箭頭顏色 | `string` | `#64b578` |
+| riseIcon | 自定義嚮上箭頭icon | `React.ReactNode` | `<TriangleUp/>` |
+| downIcon | 自定義嚮下箭頭icon | `React.ReactNode` | `<TriangleDown/>` |
 
-## 主題定製
+
+## 主題定制
 
 ### 樣式變量
 

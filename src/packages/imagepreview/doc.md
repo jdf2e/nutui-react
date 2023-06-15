@@ -6,8 +6,7 @@
 
 ## 安装
 
-```ts
-// react
+```tsx
 import { ImagePreview } from '@nutui/nutui-react'
 ```
 
@@ -158,7 +157,6 @@ export default App;
 ```
 
 :::
-
 
 ### 受控模式
 
@@ -335,15 +333,15 @@ export default App;
 
 ### Props
 
-| 属性         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | visible | 是否展示预览图片 | `boolean` | `false` |
 | videos | 预览的视频数组（视频自动放到图片之前） | `Array<Object>` | `[]` |
 | images | 预览图片数组 | `{ src: string }[]` | `[]` |
-| autoPlay | 自动轮播时长，0表示不会自动轮播 | `number \| string`  | `3000`  |
+| autoPlay | 自动轮播时长，0表示不会自动轮播 | `number` \| `string` | `3000` |
 | defaultValue | 初始页码 | `number` | `1` |
 | value | 页码，受控 | `number` | `1` |
-| indicator | 分页指示器是否展示    |  `boolean` | `false` |
-| indicatorColor   | 分页指示器选中的颜色    | `string`  | `#fff`  |
-| closeOnContentClick   | 点击图片可以退出预览    |  `boolean`  | `false`  |
-| onClose | 点击遮罩关闭图片预览时触发| `() => void` | `-` | 
+| indicator | 分页指示器是否展示 | `boolean` | `false` |
+| indicatorColor | 分页指示器选中的颜色 | `string` | `#fff` |
+| closeOnContentClick | 点击图片可以退出预览 | `boolean` | `false` |
+| onClose | 点击遮罩关闭图片预览时触发 | `() => void` | `-` |

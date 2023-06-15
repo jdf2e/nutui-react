@@ -6,18 +6,17 @@
 
 ## 安装
 
-```js
-// react
+```tsx
 import { Card, Price, Tag } from '@nutui/nutui-react'
 ```
 
 ## 代码演示
 
-### 基本用法
+### 基础用法
 
 :::demo
 
-```ts
+```tsx
 import React from 'react'
 import { Card, Price, Tag } from '@nutui/nutui-react'
 
@@ -55,7 +54,7 @@ export default App
 
 :::demo
 
-```ts
+```tsx
 import React from "react";
 import { Card, Price, Tag } from '@nutui/nutui-react';
 
@@ -112,7 +111,7 @@ export default App;
 
 :::demo
 
-```ts
+```tsx
 import React from 'react'
 import { Card, Price, Tag } from '@nutui/nutui-react'
 
@@ -162,7 +161,7 @@ export default App
 
 :::demo
 
-```ts
+```tsx
 import React from "react";
 import { Card, Price, Tag } from '@nutui/nutui-react';
 
@@ -198,7 +197,7 @@ export default App;
 
 :::demo
 
-```ts
+```tsx
 import React from "react";
 import { Card, Price, Tag } from '@nutui/nutui-react';
 

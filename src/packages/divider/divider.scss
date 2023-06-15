@@ -17,9 +17,9 @@
     flex: 1;
   }
 
-  &.nut-divider__center,
-  &.nut-divider__left,
-  &.nut-divider__right {
+  &__center,
+  &__left,
+  &__right {
     &::before {
       margin-right: $divider-before-margin-right;
     }
@@ -29,25 +29,26 @@
     }
   }
 
-  &.nut-divider__left {
+  &__left {
     &::before {
       max-width: 10%;
     }
   }
 
-  &.nut-divider__right {
+  &__right {
     &::after {
       max-width: 10%;
     }
   }
 
-  &.nut-divider__hairline {
+  &__hairline {
     &::before,
     &::after {
       transform: scaleY(0.5);
     }
   }
-  &.nut-divider__vertical {
+
+  &__vertical {
     position: relative;
     top: $divider-vertical-top;
     display: inline-block;

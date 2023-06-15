@@ -21,7 +21,7 @@ interface T {
 const SwiperDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       asyc: '异步加载(3s)',
       dynamicDel: '动态加载',
       size: '自定义大小',

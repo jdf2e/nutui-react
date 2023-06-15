@@ -6,8 +6,7 @@
 
 ## 安装
 
-```javascript
-// react
+```tsx
 import { BackTop } from '@nutui/nutui-react';
 ```
 
@@ -67,9 +66,8 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
-
-
 
 ### 设置出现位置
 
@@ -125,7 +123,9 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
+
 ### 自定义样式
 
 :::demo
@@ -197,6 +197,7 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 父级元素内滚动
@@ -253,6 +254,7 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### click 事件
@@ -312,19 +314,20 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ## BackTop
 
 ### Props
 
-| 属性 | 说明                            | 类型    | 默认值 |
-| ----------- | ------------------------------- | ------- | ------ |
-| target        | 获取监听的目标元素         | string  | -      |
-| threshold    | 页面垂直滚动多高后出现          | number | `200`  |
-| zIndex      | 设置组件页面层级                | number | `10`   |
-| duration    | 设置动画持续时间，为 0 时表示无动画                | number | `1000` |
-| onClick          | 按钮点击时触发事件 | (event: MouseEvent) => void | - |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| target | 获取监听的目标元素 | `string` | `-` |
+| threshold | 页面垂直滚动多高后出现 | `number` | `200` |
+| zIndex | 设置组件页面层级 | `number` | `10` |
+| duration | 设置动画持续时间，为 0 时表示无动画 | `number` | `1000` |
+| onClick | 按钮点击时触发事件 | `(event: MouseEvent) => void` | `-` |
 
 ## 主题定制
 
@@ -334,4 +337,4 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| --nutui-backtop-border-color | 边框颜色 | `#e0e0e0` |
+| \--nutui-backtop-border-color | 边框颜色 | `#e0e0e0` |

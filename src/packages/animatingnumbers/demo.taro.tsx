@@ -12,11 +12,11 @@ interface T {
 const AnimatingNumbersDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       custom: '自定义样式，动态修改数据（需要指定最大位数）',
     },
     'zh-TW': {
-      basic: '基本用法',
+      basic: '基础用法',
       custom: '自定義樣式，動態修改數據（需要指定最大位數）',
     },
     'en-US': {

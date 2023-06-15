@@ -6,15 +6,17 @@
 
 ## 安裝
 
-``` javascript
-// react
+```tsx
 import { FixedNav } from '@nutui/nutui-react';
 ```
+
+## 代碼演示
 
 ### 基礎用法
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
 
@@ -68,7 +70,7 @@ export default App;
 
 ### 左側效果
 
-``` tsx
+```tsx
 import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
 
@@ -121,11 +123,9 @@ const App = () => {
 export default App;
 ```
 
-
-
 ### 取消背景遮罩
 
-``` tsx
+```tsx
 import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
 
@@ -176,10 +176,9 @@ const App = () => {
 export default App;
 ```
 
-
 ### 自定義使用
 
-``` tsx
+```tsx
 import React, { useState } from "react";
 import { Icon, FixedNav } from '@nutui/nutui-react';
 
@@ -243,10 +242,9 @@ const App = () => {
 export default App;
 ```
 
-
 ### 支持拖拽
 
-``` tsx
+```tsx
 import React, { useState } from "react";
 import { Drag, FixedNav } from '@nutui/nutui-react';
 
@@ -297,29 +295,22 @@ const App = () => {
 export default App;
 ```
 
-
-
+## FixedNav
 
 ### Props
-| 属性 | 說明                       | 類型    | 默認值                       |
-|:---------------|:---------------------------|:--------|:-----------------------------|
-| visible        | 是否打開                   | boolean | `false`                        |
-| list       | 懸浮列表內容數據           | Array   | `[]`                           |
-| activeText    | 收起列表按鈕文案           | string  | `收起導航`                     |
-| inactiveText | 展開列表按鈕文案           | string  | `快速導航`                     |
-| type           | 導航方向,可選值 left right | string  | `right`                        |
-| overlay        | 展開時是否顯示遮罩         | boolean | `true`                         |
-| position       | fixed 垂直位置             | object  | `{top: 'auto', bottom: 'auto'}` |
-| content       | 自定義按鈕            | ReactNode  | - |
-| children       | 自定義展開列表內容             | ReactNode  | - |
 
-
-### Event
-
-| 属性 | 說明         | 回調參數        |
-|:----------|:--------------|:------------|
-| onChange | 展開收起按鈕回調 | `value: boolean` |
-| onSelect | 選擇之後觸發 | `item, event: MouseEvent` |
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| visible | 是否打開 | `boolean` | `false` |
+| list | 懸浮列錶內容數據 | `Array` | `[]` |
+| activeText | 收起列錶按鈕文案 | `string` | `收起導航` |
+| inactiveText | 展開列錶按鈕文案 | `string` | `快速導航` |
+| type | 導航方嚮 | `left` \| `right` | `right` |
+| overlay | 展開時是否顯示遮罩 | `boolean` | `true` |
+| position | fixed 垂直位置 | `object` | `{top: 'auto', bottom: 'auto'}` |
+| content | 自定義按鈕 | `ReactNode` | `-` |
+| onChange | 展開收起按鈕回調 | `value: boolean` | `-` |
+| onSelect | 選擇之後觸發 | `item, event: MouseEvent` | `-` |
 
 ## 主題定制
 
@@ -327,9 +318,9 @@ export default App;
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 默認值 |
-| --- | --- |
-| --nutui-fixednav-bg-color | `#fff` |
-| --nutui-fixednav-font-color | `#000` |
-| --nutui-fixednav-index | `201` |
-| --nutui-fixednav-item-active-color | `$primary-color` |
+| 名稱 | 說明 | 默認值 |
+| --- | --- | --- |
+| \--nutui-fixednav-bg-color | 背景顏色 | `#fff` |
+| \--nutui-fixednav-font-color | 字體顏色 | `#000` |
+| \--nutui-fixednav-index | zIndex | `201` |
+| \--nutui-fixednav-item-active-color | 激活顏色 | `$primary-color` |

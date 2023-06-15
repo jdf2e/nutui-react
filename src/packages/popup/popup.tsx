@@ -148,6 +148,7 @@ export const Popup: FunctionComponent<
   }
 
   const onHandleClickOverlay = (e: MouseEvent) => {
+    e.stopPropagation()
     if (closeOnOverlayClick) {
       const closed = onClickOverlay && onClickOverlay(e)
       closed && close()
@@ -210,7 +211,7 @@ export const Popup: FunctionComponent<
       <CSSTransition
         classNames={transitionName}
         unmountOnExit
-        timeout={500}
+        timeout={300}
         in={innerVisible}
         onEntered={onHandleOpened}
         onExited={onHandleClosed}

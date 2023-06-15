@@ -15,7 +15,7 @@ interface T {
 const DragDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       dragBasic: '触摸移动',
       direction: '限制拖拽方向',
       directionX: '只能X轴拖动',
@@ -25,7 +25,7 @@ const DragDemo = () => {
       limitBoundaries: '限制拖拽边界',
     },
     'zh-TW': {
-      basic: '基本用法',
+      basic: '基础用法',
       dragBasic: '觸摸移動',
       direction: '限製拖拽方向',
       directionX: '只能X軸拖動',

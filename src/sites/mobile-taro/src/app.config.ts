@@ -38,6 +38,7 @@ const subPackages = [
       'pages/cascader/index',
       'pages/checkbox/index',
       'pages/datepicker/index',
+      'pages/form/index',
       'pages/input/index',
       'pages/inputnumber/index',
       'pages/menu/index',

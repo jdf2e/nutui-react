@@ -6,8 +6,7 @@ Used to separate into equal-width blocks for page navigation.
 
 ## Install
 
-```javascript
-// react
+```tsx
 import { Grid } from '@nutui/nutui-react'
 ```
 
@@ -16,6 +15,7 @@ import { Grid } from '@nutui/nutui-react'
 ### Basic Usage
 
 :::demo
+
 ```tsx
 import React from 'react'
 import { Grid } from '@nutui/nutui-react'
@@ -37,11 +37,13 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ### Column Num
 
 :::demo
+
 ```tsx
 import React from 'react'
 import { Grid } from '@nutui/nutui-react'
@@ -61,11 +63,13 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ### Square
 
 :::demo
+
 ```tsx
 import React from 'react'
 import { Grid } from '@nutui/nutui-react'
@@ -82,11 +86,13 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ### Gap
 
 :::demo
+
 ```tsx
 import React from 'react'
 import { Grid } from '@nutui/nutui-react'
@@ -108,11 +114,13 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ### Reverse
 
 :::demo
+
 ```tsx
 import React from 'react'
 import { Grid } from '@nutui/nutui-react'
@@ -130,11 +138,13 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ### Horizontal
 
 :::demo
+
 ```tsx
 import React from 'react'
 import { Grid } from '@nutui/nutui-react'
@@ -152,11 +162,13 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ### Reverse & Horizontal
 
 :::demo
+
 ```tsx
 import React from 'react'
 import { Grid } from '@nutui/nutui-react'
@@ -174,11 +186,13 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ### Icon Style
 
 :::demo
+
 ```tsx
 import React from 'react'
 import { Grid } from '@nutui/nutui-react'
@@ -201,11 +215,13 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ### Custom Content
 
 :::demo
+
 ```tsx
 import React from 'react'
 import { Grid, Avatar, Image } from '@nutui/nutui-react'
@@ -235,6 +251,7 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ## Grid
@@ -242,23 +259,23 @@ export default App
 ### Props
 
 | Property | Description | Type | Default |
-|-|-|-|-|
-| columns | Column Num | number \| string | `4` |
-| gap | Gap. The default unit is `px` | number \| string | `0` |
-| center | Whether to center content | boolean | `true` |
-| square |  Whether to be square shape | boolean | `false` |
-| reverse |  Whether to reverse the position of icon and text | boolean | `false` |
-| direction | Content arrangement direction, can be set to `horizontal`| string | `vertical` |
-| onClick | Grid.Item Click Event | (item: GridItem, index) => void | - |
+| --- | --- | --- | --- |
+| columns | Column Num | `number` \| `string` | `4` |
+| gap | Gap. The default unit is `px` | `number` \| `string` | `0` |
+| center | Whether to center content | `boolean` | `true` |
+| square | Whether to be square shape | `boolean` | `false` |
+| reverse | Whether to reverse the position of icon and text | `boolean` | `false` |
+| direction | Content arrangement direction | `horizontal` \| `vertical` | `vertical` |
+| onClick | Grid.Item Click Event | `(item: GridItem, index) => void` | `-` |
 
 ## Grid.Item
 
 ### Props
 
 | Property | Description | Type | Default |
-|-|-|-|-|
-| text | text | string\| ReactNode | - |
-| onClick | Grid.Item Click Event | (event: Event) => void | - |
+| --- | --- | --- | --- |
+| text | text | `string\| ReactNode` | `-` |
+| onClick | Grid.Item Click Event | `(event: Event) => void` | `-` |
 
 ## Theme
 
@@ -268,9 +285,9 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| --nutui-grid-border-color | border color | `#f5f6f7` |
-| --nutui-grid-item-content-padding | padding | `16px 8px` |
-| --nutui-grid-item-content-bg-color | background | `$white` |
-| --nutui-grid-item-text-margin | margin | `8px` |
-| --nutui-grid-item-text-color | text color | `$gray1` |
-| --nutui-grid-item-text-font-size | text font size | `$font-size-1` |
+| \--nutui-grid-border-color | border color | `#f5f6f7` |
+| \--nutui-grid-item-content-padding | padding | `16px 8px` |
+| \--nutui-grid-item-content-bg-color | background | `$white` |
+| \--nutui-grid-item-text-margin | margin | `8px` |
+| \--nutui-grid-item-text-color | text color | `$gray1` |
+| \--nutui-grid-item-text-font-size | text font size | `$font-size-1` |

@@ -6,16 +6,13 @@
 
 ## 安裝
 
-```javascript
-// react
+```tsx
 import { Drag } from '@nutui/nutui-react'
 ```
 
 ## 代碼演示
 
-
-
-### 基本用法
+### 基础用法
 
 :::demo
 
@@ -108,6 +105,7 @@ export default App;
 :::
 
 ### 限製拖拽邊界
+
 :::demo
 
 ```tsx
@@ -163,7 +161,7 @@ export default App;
 ### Props
 
 | 屬性 | 說明 | 類型 | 默認值 |
-| --------------- | ----------------------------- | ------- | ------ |
-| attract | 是否開啟自動吸邊 | boolean | `false` |
-| direction | 拖拽元素的拖拽方向限製，x、y、all三選一 | string |`all` |
-| boundary | 拖拽元素的拖拽邊界 | Object | `{top: 0, left: 0, right: 0, bottom: 0}` |
+| --- | --- | --- | --- |
+| attract | 是否開啟自動吸邊 | `boolean` | `false` |
+| direction | 拖拽元素的拖拽方向限製 | `x` \| `y` \| `all` | `all` |
+| boundary | 拖拽元素的拖拽邊界 | `Object` | `{top: 0, left: 0, right: 0, bottom: 0}` |

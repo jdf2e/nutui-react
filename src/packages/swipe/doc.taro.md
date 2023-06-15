@@ -1,4 +1,4 @@
-#  Swipe组件
+# Swipe组件
 
 ## 介绍
 
@@ -6,16 +6,16 @@
 
 ## 安装
 
-```javascript
+```tsx
 import { Swipe } from '@nutui/nutui-react-taro';
 ```
-
 
 ## 代码演示
 
 ### 基础用法
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Swipe, Cell, Button } from '@nutui/nutui-react-taro';
@@ -35,12 +35,13 @@ const App = () => {
 }
 export default App;
 ```
-:::
 
+:::
 
 ### 通过实例方法控制
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Swipe, Cell, Button } from '@nutui/nutui-react-taro';
@@ -69,11 +70,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 点击关闭
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Swipe, Cell, Button } from '@nutui/nutui-react-taro';
@@ -98,11 +101,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 禁用滑动
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Swipe, Cell, Button } from '@nutui/nutui-react-taro';
@@ -123,11 +128,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 事件监听
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Swipe, Cell, Button, Toast } from '@nutui/nutui-react-taro';
@@ -163,11 +170,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 异步控制
 
 :::demo
+
 ```tsx
 import React, { useRef } from "react";
 import { Swipe, Cell, Button, Dialog } from '@nutui/nutui-react-taro';
@@ -215,11 +224,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 自定义内容
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Swipe, Cell, Button, InputNumber } from '@nutui/nutui-react-taro';
@@ -252,29 +263,30 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ## Swipe
 
 ### Props
 
-| 属性 | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| name | 标识符，可以在事件参数中获取到 | `number \| string` | - |
-| leftAction | 左侧滑动区域的内容 | `ReactNode` | - |
-| rightAction | 右侧滑动区域的内容 | `ReactNode` | - |
-| beforeClose | 关闭前的回调函数，返回滑动区域所在方向 `position` | `(position: 'left \| 'right') => void` | - |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| name | 标识符，可以在事件参数中获取到 | `number` \| `string` | `-` |
+| leftAction | 左侧滑动区域的内容 | `ReactNode` | `-` |
+| rightAction | 右侧滑动区域的内容 | `ReactNode` | `-` |
+| beforeClose | 关闭前的回调函数，返回滑动区域所在方向 `position` | `(position: 'left \| 'right') => void` | `-` |
 | disabled | 是否禁用滑动 | `boolean` | `false` |
-| onOpen | 打开单元格侧边栏 | `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | - |
-| onClose | 收起单元格侧边栏 | `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | - |
-| onActionClick | 点击左侧或者右侧时触发 | `(event: Event, position: 'left' \|'right') => void` | - |
-| onTouchStart | onTouchStart | `(event: Event) => void` | - |
-| onTouchMove | onTouchMove | `(event: Event) => void` | - |
-| onTouchEnd | onTouchEnd | `(event: Event) => void` | - |
+| onOpen | 打开单元格侧边栏 | `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | `-` |
+| onClose | 收起单元格侧边栏 | `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | `-` |
+| onActionClick | 点击左侧或者右侧时触发 | `(event: Event, position: 'left' \|'right') => void` | `-` |
+| onTouchStart | onTouchStart | `(event: Event) => void` | `-` |
+| onTouchMove | onTouchMove | `(event: Event) => void` | `-` |
+| onTouchEnd | onTouchEnd | `(event: Event) => void` | `-` |
 
 ### Ref
 
-| 属性  | 说明                                      | 回调参数                             |
-| ----- | ----------------------------------------- | ------------------------------------ |
-| open  | 打开单元格侧边栏，`side`参数默认为`right` | `(side?: 'left' \| 'right') => void` |
-| close | 收起单元格侧边栏                          | `() => void`                         |
+| 属性 | 说明 | 回调参数 |
+| --- | --- | --- |
+| open | 打开单元格侧边栏，`side`参数默认为`right` | `(side?: 'left' \| 'right') => void` |
+| close | 收起单元格侧边栏 | `() => void` |

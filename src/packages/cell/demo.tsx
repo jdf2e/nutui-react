@@ -30,7 +30,7 @@ interface T {
 const CellDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       extra: '描述文字',
       description: '使用 nut-cell-group 支持 title description',
       title: '我是标题',
@@ -49,7 +49,7 @@ const CellDemo = () => {
       clickEventToast: '点击事件',
     },
     'zh-TW': {
-      basic: '基本用法',
+      basic: '基础用法',
       extra: '描述文字',
       description: '使用 nut-cell-group 支持 title description',
       title: '我是標題',

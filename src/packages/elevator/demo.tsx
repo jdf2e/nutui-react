@@ -55,7 +55,7 @@ const ElevatorDemo = () => {
   const floorKey = 'num'
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       customIndex: '自定义索引key',
       sticky: '索引吸顶',
       customContent: '自定义内容',
@@ -102,7 +102,7 @@ const ElevatorDemo = () => {
       three: '三',
     },
     'zh-TW': {
-      basic: '基本用法',
+      basic: '基础用法',
       customIndex: '自定義索引key',
       sticky: '索引吸頂',
       customContent: '自定義內容',

@@ -39,60 +39,65 @@ exports[`should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="nut-overlay-first-render nut-overlay-hidden-render nut-menu__overlay nut-overlay"
-        style="z-index: 1000; animation-duration: 0.3s; top: 0px;"
-      />
-      <div
-        class="nut-menu-item__wrap"
-        style="display: none;"
+        class="nut-menu-item-container"
+        style="position: absolute; left: 0px; right: 0px;"
       >
         <div
-          class="nut-menu-item__content"
+          class="nut-overlay-first-render nut-overlay-hidden-render nut-menu__overlay nut-overlay"
+          style="z-index: 1000; animation-duration: 0.3s; position: absolute; height: 768px;"
+        />
+        <div
+          class="nut-menu-item__wrap"
+          style="display: none;"
         >
           <div
-            class="nut-menu-item__option active"
-            style="flex-basis: 100%;"
+            class="nut-menu-item__content"
           >
-            <i>
-              <svg
-                aria-labelledby="Check"
-                class="nut-icon nut-icon-Check"
-                color=""
-                role="presentation"
-                viewBox="0 0 1024 1024"
-                xmlns="http://www.w3.org/2000/svg"
+            <div
+              class="nut-menu-item__option active"
+              style="flex-basis: 100%;"
+            >
+              <i>
+                <svg
+                  aria-labelledby="Check"
+                  class="nut-icon nut-icon-Check"
+                  color=""
+                  role="presentation"
+                  viewBox="0 0 1024 1024"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M998.4 245.029c-219.429 153.6-398.629 332.8-552.229 552.228-40.228 58.514-128 54.857-164.571-3.657-69.486-106.057-149.943-186.514-256-256-51.2-32.914-18.286-113.371 40.229-98.743C182.857 460.8 274.286 508.343 358.4 585.143c157.257-190.172 358.4-340.114 588.8-435.2 62.171-25.6 106.057 58.514 51.2 95.086"
+                    fill="currentColor"
+                    fill-opacity="0.9"
+                  />
+                </svg>
+              </i>
+              <div
+                class=""
               >
-                <path
-                  d="M998.4 245.029c-219.429 153.6-398.629 332.8-552.229 552.228-40.228 58.514-128 54.857-164.571-3.657-69.486-106.057-149.943-186.514-256-256-51.2-32.914-18.286-113.371 40.229-98.743C182.857 460.8 274.286 508.343 358.4 585.143c157.257-190.172 358.4-340.114 588.8-435.2 62.171-25.6 106.057 58.514 51.2 95.086"
-                  fill="currentColor"
-                  fill-opacity="0.9"
-                />
-              </svg>
-            </i>
-            <div
-              class=""
-            >
-              全部商品
+                全部商品
+              </div>
             </div>
-          </div>
-          <div
-            class="nut-menu-item__option "
-            style="flex-basis: 100%;"
-          >
             <div
-              class=""
+              class="nut-menu-item__option "
+              style="flex-basis: 100%;"
             >
-              新款商品
+              <div
+                class=""
+              >
+                新款商品
+              </div>
             </div>
-          </div>
-          <div
-            class="nut-menu-item__option "
-            style="flex-basis: 100%;"
-          >
             <div
-              class=""
+              class="nut-menu-item__option "
+              style="flex-basis: 100%;"
             >
-              活动商品
+              <div
+                class=""
+              >
+                活动商品
+              </div>
             </div>
           </div>
         </div>

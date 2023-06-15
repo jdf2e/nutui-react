@@ -6,16 +6,16 @@
 
 ## 安装
 
-
-``` ts
-// react
+```tsx
 import { OverLay } from '@nutui/nutui-react';
 ```
 
 ## 代码演示
+
 ### 基础用法
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Button, Overlay } from '@nutui/nutui-react';
@@ -46,11 +46,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 遮罩样式
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Button, Overlay } from '@nutui/nutui-react';
@@ -81,11 +83,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 设置动画时间
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Button, Overlay } from '@nutui/nutui-react';
@@ -119,11 +123,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 不锁定背景滚动
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Button, Overlay } from '@nutui/nutui-react';
@@ -147,11 +153,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 嵌套内容
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Button, Overlay } from '@nutui/nutui-react';
@@ -195,11 +203,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 点击遮罩不关闭
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Button, Overlay } from '@nutui/nutui-react';
@@ -227,23 +237,23 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ## Overlay
 
 ### Props
 
-| 属性 | 说明             | 类型           | 默认值 |
-| ---------------------- | ---------------- | -------------- | ------ |
-| visible                   | 当前组件是否显示 | `boolean`        | `false`  |
-| zIndex                | 遮罩层级         | `number` | `2000`   |
-| duration               | 动画时长，单位秒 | `number` | `0.3`    |
-| lockScroll          | 背景是否锁定   | `boolean`  | `true`     |
-| closeOnOverlayClick | 是否点击遮罩关闭 | `boolean`        | `true`   |
-| onClick  | 点击时触发 | `event: Event` |
-| afterClose | 完全关闭后触发 | `() => void`        | `-`   |
-| afterShow | 完全展示后触发 | `() => void`        | `-`   |
-
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| visible | 当前组件是否显示 | `boolean` | `false` |
+| zIndex | 遮罩层级 | `number` | `2000` |
+| duration | 动画时长，单位秒 | `number` | `0.3` |
+| lockScroll | 背景是否锁定 | `boolean` | `true` |
+| closeOnOverlayClick | 是否点击遮罩关闭 | `boolean` | `true` |
+| onClick | 点击时触发 | `event: Event` | `-` |
+| afterClose | 完全关闭后触发 | `() => void` | `-` |
+| afterShow | 完全展示后触发 | `() => void` | `-` |
 
 ## 主题定制
 
@@ -253,6 +263,6 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| --nutui-overlay-bg-color | 遮罩层背景颜色 | `$gray7` |
-| --nutui-overlay-content-bg-color | 遮罩层嵌套内容背景颜色 |`$gray6` |
-| --nutui-overlay-content-color | 遮罩层嵌套内容字体颜色 | `$gray1` |
+| \--nutui-overlay-bg-color | 遮罩层背景颜色 | `$gray7` |
+| \--nutui-overlay-content-bg-color | 遮罩层嵌套内容背景颜色 | `$gray6` |
+| \--nutui-overlay-content-color | 遮罩层嵌套内容字体颜色 | `$gray1` |

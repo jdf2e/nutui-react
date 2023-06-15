@@ -6,13 +6,13 @@ In normal list show and pull-up loading, we usually use the InfiniteLoading comp
 
 ## Install
 
-```javascript
+```tsx
 import { Virtuallist } from '@nutui/nutui-react';
 ```
 
 ## Demo
 
-### 1、Basic usage - vertical height
+### Basic usage - vertical height
 
 :::demo
 
@@ -55,7 +55,7 @@ export default App;
 
 :::
 
-### 2、Vertical unequal height & infinite slide
+### Vertical unequal height & infinite slide
 
 :::demo
 
@@ -107,7 +107,7 @@ export default App;
 
 :::
 
-### 3、horizontal width
+### horizontal width
 
 :::demo
 
@@ -151,7 +151,7 @@ export default App;
 
 :::
 
-### 4、Horizontal unequal width & infinite sliding
+### Horizontal unequal width & infinite sliding
 
 :::demo
 
@@ -210,12 +210,12 @@ export default App;
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| list | source data | `Array` | - |
+| list | source data | `Array` | `-` |
 | containerHeight | container height | `number` | `Get the element offsetWidth or offsetHeight, which is given by CSS` |
-| ItemRender | virtual function rendered by the parent of the list | `React.FC` | - |
+| ItemRender | virtual function rendered by the parent of the list | `React.FC` | `-` |
 | itemHeight | Item height, if not height, the first screen single maximum height | `number` | `66` |
 | itemEqual | the sizes of items are consistent | `boolean` | `true` |
 | overscan | In addition to the default elements in the viewport, there is an additional number of items to render | `number` | `2` |
-| key | the key name of item in list, index as default | `string` | - |
+| key | the key name of item in list, index as default | `string` | `-` |
 | direction | horizontal or vertical | `string` | `vertical` |
-| onScroll | scroll to end | `() => void` | - |
+| onScroll | scroll to end | `() => void` | `-` |

@@ -6,8 +6,7 @@
 
 ## 安装
 
-```ts
-// react
+```tsx
 import { Checkbox } from '@nutui/nutui-react';
 
 ```
@@ -57,7 +56,7 @@ export default CheckBoxDemo;
 
 :::
 
-### 基本用法
+### 基础用法
 
 :::demo
 
@@ -491,51 +490,54 @@ export default CheckboxGroupOptions;
 :::
 
 ## Checkbox
+
 ### props
-| 属性 | 说明                                    | 类型      | 默认值               | 
-|-------------------|---------------------------------------|---------|-------------------|
-| checked           | 是否选中                                  | `boolean` | `false`           |
-| defaultChecked    | 初始是否选中                                | `boolean` | `false`           |
-| disabled          | 是否禁用选择                                | `boolean` | `false`           |
-| labelPosition     | 文本所在的位置，可选值：`left`,`right`            | `string` | `right`           |
-| icon              | [图标](#/icon)，选中前(建议和`ActiveIcon`一起修改) | `ReactNode` | `'CheckNormal'`   |
-| activeIcon       | [图标](#/icon)，选中后(建议和`iconName`一起修改)   | `ReactNode` | `'Checked'`       |
-| indeterminateIcon | [图标](#/icon)，半选状态                     | `ReactNode` | `'CheckDisabled'` |
-| label             | 复选框的文本内容                              | `string` | -                 |
-| value               | 标识值，用于 Group 模式                       | `string\| number`               | -                 |
-| onChange | 值变化时触发 | `(value: boolean) => void`        | - |
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| checked | 是否选中 | `boolean` | `false` |
+| defaultChecked | 初始是否选中 | `boolean` | `false` |
+| disabled | 是否禁用选择 | `boolean` | `false` |
+| labelPosition | 文本所在的位置| `left` \| `right` | `string` | `right` |
+| icon | 选中前| `ReactNode` | `'CheckNormal'` |
+| activeIcon | ，选中后 | `ReactNode` | `'Checked'` |
+| indeterminateIcon | 半选状态| `ReactNode` | `'CheckDisabled'` |
+| label | 复选框的文本内容 | `string` | `-` |
+| value | 标识值，用于 Group 模式 | `string` \|  `number` | `-` |
+| onChange | 值变化时触发 | `(value: boolean) => void` | `-` |
 
 ## Checkbox.Group
+
 ### Props
-| 属性 | 说明 | 类型 | 默认值|
-|--------------| ----- |-------------| -- |
-| value | 当前选中项的标识符 | `string\|number`      | -|
-| defaultValue | 初始选中项的标识符 | `string\|number`      | -|
-| disabled | 是否禁用选择,将用于其下的全部复选框 | `boolean`     | `false`|
-| max | 限制最大可选数 | `undefined|number` | `undefined`|
-| labelPosition | 文本所在的位置，可选值：`left`,`right`| `string`| `right` |
-| direction | 使用横纵方向 可选值 horizontal、vertical| `string`| `vertical` |
-| options | 配置 options 渲染复选按钮 | `Array<{ label: string value: string disabled?: boolean }` | - |
-| onChange | 值变化时触发 | `(value: string[]) => void` | - |
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| value | 当前选中项的标识符 | `string` \| `number` | `-` |
+| defaultValue | 初始选中项的标识符 | `string` \| `number` | `-` |
+| disabled | 是否禁用选择,将用于其下的全部复选框 | `boolean` | `false` |
+| max | 限制最大可选数 | `number` |  `-` |
+| labelPosition | 文本所在的位置| `left` \| `right` | `string` | `right` |
+| direction | 使用横纵方向 可选值 horizontal、vertical | `string` | `vertical` |
+| options | 配置 options 渲染复选按钮 | `Array<{ label: string value: string disabled?: boolean }>`  | `-` |
+| onChange | 值变化时触发 | `(value: string[]) => void` | `-` |
 
 ### Checkbox.Group Ref
 
-| 方法名               | 说明 | 参数 |
-|-------------------| ----- | ----- |
+| 方法名 | 说明 | 参数 |
+| --- | --- | --- |
 | toggle | 全选/取消 | 传 `true`,表示全选，传 `false`,表示取消全选 |
-| reverse   | 反选 | - |
+| reverse | 反选 | `-` |
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS
-变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 说明 |  默认值           |
-| --- |-----------------| --- |
-| --nutui-checkbox-label-color | label 的文本颜色 | `$gray1`       |
-| --nutui-checkbox-label-disable-color | label 的禁用颜色 | `#999`        |
-| --nutui-checkbox-icon-disable-color | 默认 icon 的禁用颜色 |`#d6d6d6`     |
-| --nutui-checkbox-label-margin-left | label 的左边距 |`15px`        |
-| --nutui-checkbox-label-font-size | label 的字号 | `14px`         |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| \--nutui-checkbox-label-color | label 的文本颜色 | `$gray1` |
+| \--nutui-checkbox-label-disable-color | label 的禁用颜色 | `#999` |
+| \--nutui-checkbox-icon-disable-color | 默认 icon 的禁用颜色 | `#d6d6d6` |
+| \--nutui-checkbox-label-margin-left | label 的左边距 | `15px` |
+| \--nutui-checkbox-label-font-size | label 的字号 | `14px` |

@@ -1,20 +1,21 @@
 # Overlay 遮罩層
 
-### 介紹
+## 介紹
 
 創建一個遮罩層，通常用於阻止用戶進行其他操作
 
-### 安裝
+## 安裝
 
-
-``` ts
-// react
+```tsx
 import { OverLay } from '@nutui/nutui-react';
 ```
+
+## 代碼演示
 
 ### 基礎用法
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Button, Overlay } from '@nutui/nutui-react';
@@ -36,7 +37,6 @@ const App = () => {
         visible={visible}
         onClick={onClose}
         zIndex={2020}
-        lockScroll
         afterShow={() => {
           console.log('afterShow')
         }}
@@ -46,11 +46,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
-### 遮罩样式
+### 遮罩樣式
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Button, Overlay } from '@nutui/nutui-react';
@@ -66,7 +68,7 @@ const App = () => {
   return (
     <>
       <Button type="primary" onClick={handleToggleShow}>
-        遮罩样式
+        遮罩樣式
       </Button>
       <Overlay
         visible={visible}
@@ -81,11 +83,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 設置動畫時間
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Button, Overlay } from '@nutui/nutui-react';
@@ -119,11 +123,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 不鎖定背景滾動
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Button, Overlay } from '@nutui/nutui-react';
@@ -147,11 +153,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 嵌套內容
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Button, Overlay } from '@nutui/nutui-react';
@@ -173,21 +181,21 @@ const ContentStyle = {
   color: 'red'
 }
 const App = () => {
-  const [visible2, setVisible2] = useState(false)
+  const [visible, setVisible] = useState(false)
   const handleToggleShow2 = () => {
-    setVisible2(true)
+    setVisible(true)
   }
-  const onClose2 = () => {
-    setVisible2(false)
+  const onClose = () => {
+    setVisible(false)
   }
   return (
     <>
       <Button type="success" onClick={handleToggleShow2}>
         嵌套內容
       </Button>
-      <Overlay visible={visible2} onClick={onClose2}>
+      <Overlay visible={visible} onClick={onClose}>
         <div className="wrapper" style={WrapperStyle}>
-          <div className="content" style={ContentStyle}>這裡是正文</div>
+          <div className="content" style={ContentStyle}>這裏是正文</div>
         </div>
       </Overlay>
     </>
@@ -195,11 +203,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 點擊遮罩不關閉
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Button, Overlay } from '@nutui/nutui-react';
@@ -219,7 +229,7 @@ const App = () => {
       </Button>
       <Overlay visible={visible} closeOnOverlayClick={false}>
         <div className="wrapper">
-          <div className="content" onClick={onClose}>這裡是正文</div>
+          <div className="content" onClick={onClose}>這裏是正文</div>
         </div>
       </Overlay>
     </>
@@ -227,24 +237,23 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
-## API
+## Overlay
 
 ### Props
 
-| 屬性 | 說明             | 類型           | 預設值 |
-| ---------------------- | ---------------- | -------------- | ------ |
-| visible                   | 當前元件是否顯示 | boolean        | `false`  |
-| zIndex                | 遮罩層級         | number | `2000`   |
-| duration               | 動畫時長，單位秒 | number | `0.3`    |
-| lockScroll          | 背景是否鎖定   | boolean  | `true`     |
-| closeOnOverlayClick | 是否點擊遮罩關閉 | boolean        | `true`   |
-| onClick  | 點擊時觸發 | `event: Event` |
-| afterClose | 完全關閉後觸發 | () => void        | `-`   |
-| afterShow | 完全展示後觸發 | () => void        | `-`   |
-
-
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| visible | 當前組件是否顯示 | `boolean` | `false` |
+| zIndex | 遮罩層級 | `number` | `2000` |
+| duration | 動畫時長，單位秒 | `number` | `0.3` |
+| lockScroll | 背景是否鎖定 | `boolean` | `true` |
+| closeOnOverlayClick | 是否點擊遮罩關閉 | `boolean` | `true` |
+| onClick | 點擊時觸發 | `event: Event` | `-` |
+| afterClose | 完全關閉後觸發 | `() => void` | `-` |
+| afterShow | 完全展示後觸發 | `() => void` | `-` |
 
 ## 主題定制
 
@@ -254,7 +263,6 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| --nutui-overlay-bg-color | 遮罩層背景顏色 | `$gray7` |
-| --nutui-overlay-content-bg-color | 遮罩層嵌套內容背景顏色 |`$gray6` |
-| --nutui-overlay-content-color | 遮罩層嵌套內容字體顏色 | `$gray1` |
-
+| \--nutui-overlay-bg-color | 遮罩層背景顏色 | `$gray7` |
+| \--nutui-overlay-content-bg-color | 遮罩層嵌套內容背景顏色 | `$gray6` |
+| \--nutui-overlay-content-color | 遮罩層嵌套內容字體顏色 | `$gray1` |

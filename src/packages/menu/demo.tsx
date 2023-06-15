@@ -13,7 +13,7 @@ const MenuDemo = () => {
   }`
   const [translated] = useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       customMenuContent: '自定义菜单内容',
       customContent: '自定义内容',
       screen: '筛选',
@@ -111,11 +111,12 @@ const MenuDemo = () => {
           <MenuItem
             options={options}
             value={0}
+            closeOnClickAway
             onChange={(val) => {
               console.log(val)
             }}
           />
-          <MenuItem options={options1} value="a" />
+          <MenuItem options={options1} value="a" closeOnClickAway />
         </Menu>
         <h2>{translated.customMenuContent}</h2>
         <Menu>

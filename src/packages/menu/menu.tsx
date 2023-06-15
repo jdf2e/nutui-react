@@ -69,6 +69,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
   }
   const hideMenuItem = (index: number) => {
     showMenuItem[index] = false
+    console.log([...showMenuItem])
     setShowMenuItem([...showMenuItem])
   }
   const updateTitle = (text: string, index: number) => {
@@ -79,6 +80,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
   const cloneChildren = () => {
     return React.Children.map(children, (child, index) => {
       return React.cloneElement(child as any, {
+        ...(child as any).props,
         show: showMenuItem[index],
         index,
         activeColor,
@@ -115,7 +117,8 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
             })}
             style={{ color: showMenuItem[index] ? activeColor : '' }}
             key={index}
-            onClick={() => {
+            onClick={(e) => {
+              e.stopPropagation()
               !disabled && toggleMenuItem(index)
             }}
           >

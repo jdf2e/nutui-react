@@ -6,17 +6,17 @@
 
 ## 安装
 
-```js
+```tsx
 import { Card, Price, Tag } from '@nutui/nutui-react-taro'
 ```
 
 ## 代码演示
 
-### 基本用法
+### 基础用法
 
 :::demo
 
-```ts
+```tsx
 import React from 'react'
 import { Card, Price, Tag } from '@nutui/nutui-react-taro'
 
@@ -54,7 +54,7 @@ export default App
 
 :::demo
 
-```ts
+```tsx
 import React from "react";
 import { Card, Price, Tag } from '@nutui/nutui-react-taro';
 
@@ -111,7 +111,7 @@ export default App;
 
 :::demo
 
-```ts
+```tsx
 import React from 'react'
 import { Card, Price, Tag } from '@nutui/nutui-react-taro'
 
@@ -161,7 +161,7 @@ export default App
 
 :::demo
 
-```ts
+```tsx
 import React from "react";
 import { Card, Price, Tag } from '@nutui/nutui-react-taro';
 
@@ -197,7 +197,7 @@ export default App;
 
 :::demo
 
-```ts
+```tsx
 import React from "react";
 import { Card, Price, Tag } from '@nutui/nutui-react-taro';
 

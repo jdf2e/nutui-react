@@ -6,8 +6,7 @@ A percentage number with an arrow indicating the trend of the indicator
 
 ## Install
 
-```javascript
-// React
+```tsx
 import { TrendArrow } from '@nutui/nutui-react';
 ```
 

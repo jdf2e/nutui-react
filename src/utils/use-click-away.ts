@@ -19,7 +19,7 @@ const getTargetElement = (target: TargetType) => {
 export default function useClickAway(
   onClickAway: () => void,
   target: TargetType | TargetType[],
-  eventName: string = 'click',
+  eventName = 'click',
   isListener?: boolean,
   outerVar?: boolean
 ) {
@@ -42,9 +42,9 @@ export default function useClickAway(
 
   useEffect(() => {
     if (isListener) {
-      window.addEventListener(eventName, handler, true)
+      window.addEventListener(eventName, handler, false)
     } else {
-      window.removeEventListener(eventName, handler, true)
+      window.removeEventListener(eventName, handler, false)
     }
 
     return () => {

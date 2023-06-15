@@ -19,7 +19,7 @@ const StickyDemo = () => {
   const containerTopRef = useRef(null)
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title1: '吸顶距离',
       title2: '指定容器内吸顶',
       title3: '吸底距离',
@@ -30,7 +30,7 @@ const StickyDemo = () => {
       changeTips: '吸顶状态发生了改变,当前fixed为',
     },
     'zh-TW': {
-      basic: '基本用法',
+      basic: '基础用法',
       title1: '吸頂距離',
       title2: '指定容器內吸頂',
       title3: '吸底距離',

@@ -6,15 +6,16 @@ Circular progress bar component
 
 ## Install
 
-```ts
-// react
+```tsx
 import { CircleProgress } from '@nutui/nutui-react';
 ```
 
 ## Demo
+
 ### Basic Usage
 
 :::demo
+
 ```tsx
 import React from "react";
 import { CircleProgress } from '@nutui/nutui-react';
@@ -29,11 +30,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Ring progress bar custom style
 
 :::demo
+
 ```tsx
 import React from "react";
 import { CircleProgress } from '@nutui/nutui-react';
@@ -48,10 +51,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Customize the color of the circular progress bar (support deformation color)
+
 :::demo
+
 ```tsx
 import React from "react";
 import { CircleProgress } from '@nutui/nutui-react';
@@ -74,10 +80,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Ring progress bar custom size
+
 :::demo
+
 ```tsx
 import React from "react";
 import { CircleProgress } from '@nutui/nutui-react';
@@ -94,9 +103,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ### Ring progress bar custom content
+
 :::demo
+
 ```tsx
 import React from "react";
 import { CircleProgress } from '@nutui/nutui-react';
@@ -115,10 +128,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Dynamically change the progress of the circular progress bar
+
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Button, CircleProgress } from '@nutui/nutui-react';
@@ -165,20 +181,22 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ## CircleProgress
+
 ## Props
 
-| Property | Description | Type | Default
-|----- | ----- | ----- | -----
-| percent | Progress Rate | `number \| string` | `Required, no default value`
-| strokeWidth | Stroke width | `number \| string` | `5`
-| radius | radius | `number \| string` | `50`
-| color | Progress color, passing object to render gradient | `object \| string` | `#fa2c19`
-| background | Circle track color | `string` | `#d9d9d9`
-| strokeLinecap | Stroke linecap | `'butt' \| 'round' \| 'square' \| 'inherit'` | `round`
-| clockwise | Whether to be clockwise | `boolean` | `true`
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| percent | Progress Rate | `number` \| `string` | `Required, no default value` |
+| strokeWidth | Stroke width | `number` \| `string` | `5` |
+| radius | radius | `number` \| `string` | `50` |
+| color | Progress color, passing object to render gradient | `object \| string` | `#fa2c19` |
+| background | Circle track color | `string` | `#d9d9d9` |
+| strokeLinecap | Stroke linecap | `butt` \| `round` \| `square` \| `inherit` | `round` |
+| clockwise | Whether to be clockwise | `boolean` | `true` |
 
 ## Theming
 
@@ -188,7 +206,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| --nutui-circleprogress-primary-color | The color of the filled part of the circular progress bar | `$primary-color` |
-| --nutui-circleprogress-path-color |  The color of the circular progress bar track | `#e5e9f2` |
-| --nutui-circleprogress-text-color | The color of the track content area of ​​the circular progress bar | `$title-color` |
-| --nutui-circleprogress-text-size | The size of the track content area of ​​the circular progress bar | `$font-size-3` |
+| \--nutui-circleprogress-primary-color | The color of the filled part of the circular progress bar | `$primary-color` |
+| \--nutui-circleprogress-path-color | The color of the circular progress bar track | `#e5e9f2` |
+| \--nutui-circleprogress-text-color | The color of the track content area of ​​the circular progress bar | `$title-color` |
+| \--nutui-circleprogress-text-size | The size of the track content area of ​​the circular progress bar | `$font-size-3` |

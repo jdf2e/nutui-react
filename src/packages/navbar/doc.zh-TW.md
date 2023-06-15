@@ -1,21 +1,21 @@
 # Navbar 頭部導航
 
-## 介紹 
-
+## 介紹
 
 提供導航功能。
 
 ## 安裝
 
-```ts
+```tsx
 import { NavBar } from '@nutui/nutui-react';
 ```
 
 ## 代碼演示
 
-### 基本用法
+### 基础用法
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { NavBar, Toast } from '@nutui/nutui-react';
@@ -47,9 +47,11 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { NavBar, Toast } from '@nutui/nutui-react';
@@ -75,9 +77,11 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { NavBar, Toast } from '@nutui/nutui-react';
@@ -109,9 +113,11 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { NavBar, Tabs, TabPane, Toast } from '@nutui/nutui-react';
@@ -143,23 +149,23 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ## Navbar
 
-### Props  
+### Props
 
-| 属性 | 說明 | 類型    | 默認值  |
-|------------|--------------------|---------|---------|
-| right | 右側內容 | ReactNode  | -       |
-| left        | 左側內容，渲染在返回區域的右側 | ReactNode  | -       |   
-| back        | 返回區域的文字 | ReactNode  | -       |   
-| fixed            | 是否固定 | boolean  | `false`       |   
-| safeArea | 是否適配安全區 | boolean  | `false`       |   
-| placeholder      | 固定在頂部時，是否在標簽位置生成一個等高的佔位元素 | boolean  | `false`    |
-| zIndex           | 導航欄層級           | number \| string  | `10`    |
-| onClickBack             | 點擊返回區域後的回調 | `onClickBack:(event: Event)=>void` | `false`|
-
+| 属性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| right | 右側內容 | `ReactNode` | `-` |
+| left | 左側內容，渲染在返回區域的右側 | `ReactNode` | `-` |
+| back | 返回區域的文字 | `ReactNode` | `-` |
+| fixed | 是否固定 | `boolean` | `false` |
+| safeArea | 是否適配安全區 | `boolean` | `false` |
+| placeholder | 固定在頂部時，是否在標簽位置生成一個等高的佔位元素 | `boolean` | `false` |
+| zIndex | 導航欄層級 | `number` \| `string` | `10` |
+| onClickBack | 點擊返回區域後的回調 | `onClickBack:(event: Event)=>void` | `false` |
 
 ## 主題定制
 
@@ -168,17 +174,15 @@ export default App;
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
 | 名稱 | 說明 | 默認值 |
-| --- | --- |
-| --nutui-navbar-width | 頭部導航的寬度 | `100%`|
-| --nutui-navbar-height | 頭部導航的高度 | `44px` |
-| --nutui-navbar-margin-bottom | 頭部導航的下邊距 |`20px` |
-| --nutui-navbar-padding | 頭部導航的內邊距 |`13px 16px` |
-| --nutui-navbar-background | 頭部導航的背景顏色 |`$white` |
-| --nutui-navbar-box-shadow | 頭部導航的陰影 |`0px 1px 7px 0px rgba(237, 238, 241, 1)` |
-| --nutui-navbar-color | 頭部導航的字體顏色 |`$gray2` |
-| --nutui-navbar-font-size | 頭部導航的字體大小 |`$font-size-2` |
-| --nutui-navbar-title-font-size | 頭部導航標題的字體大小 |`$font-size-2` |
-| --nutui-navbar-title-font-weight | 頭部導航標題的字體粗細 |`0` |
-| --nutui-navbar-title-font-color | 頭部導航標題的字體顏色 |`$gray1` |
-
-
+| --- | --- | --- |
+| \--nutui-navbar-width | 頭部導航的寬度 | `100%` |
+| \--nutui-navbar-height | 頭部導航的高度 | `44px` |
+| \--nutui-navbar-margin-bottom | 頭部導航的下邊距 | `20px` |
+| \--nutui-navbar-padding | 頭部導航的內邊距 | `13px 16px` |
+| \--nutui-navbar-background | 頭部導航的背景顏色 | `$white` |
+| \--nutui-navbar-box-shadow | 頭部導航的陰影 | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
+| \--nutui-navbar-color | 頭部導航的字體顏色 | `$gray2` |
+| \--nutui-navbar-font-size | 頭部導航的字體大小 | `$font-size-2` |
+| \--nutui-navbar-title-font-size | 頭部導航標題的字體大小 | `$font-size-2` |
+| \--nutui-navbar-title-font-weight | 頭部導航標題的字體粗細 | `0` |
+| \--nutui-navbar-title-font-color | 頭部導航標題的字體顏色 | `$gray1` |

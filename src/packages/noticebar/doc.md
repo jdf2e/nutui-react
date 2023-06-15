@@ -1,4 +1,4 @@
-#  NoticeBar 公告栏
+# NoticeBar 公告栏
 
 ## 介绍
 
@@ -6,14 +6,13 @@
 
 ## 安装
 
-```javascript
-// react
+```tsx
 import { NoticeBar } from '@nutui/nutui-react';
 ```
 
 ## 代码演示
 
-### 基本用法
+### 基础用法
 
 :::demo
 
@@ -31,9 +30,11 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ### 滚动播放
+
 通知栏的内容长度溢出时会自动开启滚动播放，可通过 scrollable 属性可以控制该行为
 
 :::demo
@@ -58,8 +59,8 @@ const App = () => {
 }
 export default App
 ```
-:::
 
+:::
 
 ### 通告栏模式--关闭模式
 
@@ -92,6 +93,7 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ### 多行展示
@@ -113,6 +115,7 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ### 纵向滚动
@@ -150,6 +153,7 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ### 自定义左侧图标
@@ -183,8 +187,8 @@ const App = () => {
 }
 export default App
 ```
-:::
 
+:::
 
 ### 自定义滚动内容
 
@@ -222,6 +226,7 @@ const App = () => {
 };
 export default App
 ```
+
 :::
 
 ### 纵向自定义右侧图标
@@ -258,37 +263,37 @@ const App = () => {
 };
 export default App
 ```
-:::
 
+:::
 
 ## NoticeBar
 
 ### Props
 
-| 属性       | 说明 | 类型          | 默认值 |
-| ---------- | --------------------------- | ------------- | ------ |
-| direction| 滚动的方向，可选 horizontal、vertical| `string` | `horizontal`|
-| content | 提示的信息| `string`        | `-`     |
-| closeable | 是否启用关闭模式| `boolean`       | `false`  |
-| leftIcon | 左边的 icon，closeable 模式下默认为空 | `ReactNode` | `-`     |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| direction | 滚动的方向，可选 horizontal、vertical | `string` | `horizontal` |
+| content | 提示的信息 | `string` | `-` |
+| closeable | 是否启用关闭模式 | `boolean` | `false` |
+| leftIcon | 左边的 icon，closeable 模式下默认为空 | `ReactNode` | `-` |
 | rightIcon | 右边的 icon，在 closeable 模式下默认为 `<Close />` | `ReactNode` | `-` |
-| delay      | 延时多少秒| `string \| number` | `1`      |
-| scrollable | 是否可以滚动| `boolean`       | `true`   |
-| speed      | 滚动速率 (px/s)| `number`        | `50`     |
-| wrap   | 是否开启文本换行 | `boolean`       | `false`    |
-| onClick  | 外层点击事件回调 | `(event: any) => void` |
-| onClose  | 关闭通知栏时触发 | `(event: any) => void` |
-| onClickItem  | 垂直滚动多条数据时，点击当前展示的信息时触发 | `(event: any, value: any) => void` |
+| delay | 延时多少秒 | `string` \| `number` | `1` |
+| scrollable | 是否可以滚动 | `boolean` | `true` |
+| speed | 滚动速率 (px/s) | `number` | `50` |
+| wrap | 是否开启文本换行 | `boolean` | `false` |
+| onClick | 外层点击事件回调 | `(event: any) => void` | `-` |
+| onClose | 关闭通知栏时触发 | `(event: any) => void` | `-` |
+| onClickItem | 垂直滚动多条数据时，点击当前展示的信息时触发 | `(event: any, value: any) => void` | `-` |
 
 ### Props（direction=vertical）
 
-| 属性         | 说明 | 类型   | 默认值           |
-|--------------|------------|--------|------------------|
-| list         | 纵向滚动数据列表 | `Array` | `[]` |
-| speed        | 滚动的速度 | `number` | `50` |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| list | 纵向滚动数据列表 | `Array` | `[]` |
+| speed | 滚动的速度 | `number` | `50` |
 | duration | 停留时间(毫秒) | `number` | `1000` |
-| height | 每一个滚动列的高度(px)，注意：在使用 slot 插槽定义滚动单元时，按照实际高度修改此值 | `number` | `40` |
-| closeable  | 是否启用右侧关闭图标，可以通过slot[name=rightIcon]自定义图标 | `boolean`       | `false`  |
+| height | 每一个滚动列的高度(px) | `number` | `40` |
+| closeable | 是否启用右侧关闭图标，可以通过 rightIcon 自定义图标 | `boolean` | `false` |
 
 ## 主题定制
 
@@ -298,15 +303,14 @@ export default App
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| --nutui-noticebar-background | 背景色 | `rgba(251, 248, 220, 1)` |
-| --nutui-noticebar-color | 文字色 | `#d9500b` |
-| --nutui-noticebar-font-size | 字号 |`14px` |
-| --nutui-noticebar-height | 高度 | `40px` |
-| --nutui-noticebar-line-height | 行高 | `24px` |
-| --nutui-noticebar-left-icon-width | 左侧icon的宽度和高度的设定 | `16px` |
-| --nutui-noticebar-right-icon-width | 右侧icon的宽度和高度的设定 | `16px` |
-| --nutui-noticebar-box-padding | padding值 | `0 16px` |
-| --nutui-noticebar-wrap-padding | 多行展示的padding值  | `16px` |
-| --nutui-noticebar-lefticon-margin | 左侧icon的margin值 | `0px 10px` |
-| --nutui-noticebar-righticon-margin | 右侧icon的margin值 | `0px 10px` |
-
+| \--nutui-noticebar-background | 背景色 | `rgba(251, 248, 220, 1)` |
+| \--nutui-noticebar-color | 文字色 | `#d9500b` |
+| \--nutui-noticebar-font-size | 字号 | `14px` |
+| \--nutui-noticebar-height | 高度 | `40px` |
+| \--nutui-noticebar-line-height | 行高 | `24px` |
+| \--nutui-noticebar-left-icon-width | 左侧icon的宽度和高度的设定 | `16px` |
+| \--nutui-noticebar-right-icon-width | 右侧icon的宽度和高度的设定 | `16px` |
+| \--nutui-noticebar-box-padding | padding值 | `0 16px` |
+| \--nutui-noticebar-wrap-padding | 多行展示的padding值 | `16px` |
+| \--nutui-noticebar-lefticon-margin | 左侧icon的margin值 | `0px 10px` |
+| \--nutui-noticebar-righticon-margin | 右侧icon的margin值 | `0px 10px` |

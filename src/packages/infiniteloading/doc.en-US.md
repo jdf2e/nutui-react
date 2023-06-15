@@ -6,8 +6,7 @@ Scrolling to the bottom of the list automatically loads more data.
 
 ## Install
 
-```ts
-// react
+```tsx
 import { InfiniteLoading } from '@nutui/nutui-react'
 ```
 
@@ -276,19 +275,19 @@ export default App
 
 ### Props
 
-| Property     | Description                                                                                                      | Type                          | Default                |
-| ------------ | ---------------------------------------------------------------------------------------------------------------- | ----------------------------- | ---------------------- |
-| hasMore      | Has more data                                                                                                    | `boolean`                     | `true`                 |
-| threshold    | The loadMore event will be Emitted when the distance between the scrollbar and the bottom is less than threshold | `number`                      | `200`                  |
-| capture      | Whether to use capture mode                                                                                      | `boolean`                     | `false`                |
-| target       | Get the target element to monitor                                                                                | `string`                      | `''`                   |
-| loadMoreText | “No more” text                                                                                                   | `string`                      | `Oops, here's the bottom` |
-| pullRefresh  | Enable pull refresh                                                                                              | `boolean`                     | `false`                |
-| pullingText  | Pull refresh text                                                                                                | `ReactNode`                   | `Let go and refresh`             |
-| loadingText  | Pull on loading text                                                                                             | `ReactNode`                   | `loading...`            |
-| onRefresh    | Pull down refresh event callback                                                                                 | `(param: () => void) => void` | `-`                    |
-| onLoadMore   | Callback function to continue loading                                                                            | `(param: () => void) => void` | `-`                    |
-| onScroll     | Monitor scroll height in real time                                                                               | `(param: number) => void`     | `-`                    |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| hasMore | Has more data | `boolean` | `true` |
+| threshold | The loadMore event will be Emitted when the distance between the scrollbar and the bottom is less than threshold | `number` | `200` |
+| capture | Whether to use capture mode | `boolean` | `false` |
+| target | Get the target element to monitor | `string` | `-` |
+| loadMoreText | “No more” text | `string` | `Oops, here's the bottom` |
+| pullRefresh | Enable pull refresh | `boolean` | `false` |
+| pullingText | Pull refresh text | `ReactNode` | `Let go and refresh` |
+| loadingText | Pull on loading text | `ReactNode` | `loading...` |
+| onRefresh | Pull down refresh event callback | `(param: () => void) => void` | `-` |
+| onLoadMore | Callback function to continue loading | `(param: () => void) => void` | `-` |
+| onScroll | Monitor scroll height in real time | `(param: number) => void` | `-` |
 
 ## Theming
 
@@ -296,6 +295,6 @@ export default App
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name                                 | Description                | Default   |
-| ------------------------------------ | -------------------------- | --------- |
-| --nutui-infiniteloading-bottom-color | Swipe to bottom text color | `#c8c8c8` |
+| Name | Description | Default |
+| --- | --- | --- |
+| \--nutui-infiniteloading-bottom-color | Swipe to bottom text color | `#c8c8c8` |

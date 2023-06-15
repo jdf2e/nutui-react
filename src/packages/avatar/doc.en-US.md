@@ -5,18 +5,20 @@
 Avatars can be used to represent people or objects. It supports images, Icons, or letters.
 
 ## Install
-``` ts
-// react
+
+```tsx
 import { Avatar } from '@nutui/nutui-react';
 ```
 
 ## Demo
+
 ### Basic usage
 
 Support three sizes：small、normal、large
 
 :::demo
-``` tsx
+
+```tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
 
@@ -40,6 +42,7 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Shape
@@ -47,7 +50,8 @@ export default App;
 Support two shapes：square、round
 
 :::demo
-``` tsx
+
+```tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -62,6 +66,7 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Type
@@ -69,7 +74,8 @@ export default App;
 Support three types：picture、icon、letter
 
 :::demo
-``` tsx
+
+```tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -85,6 +91,7 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Custom colors and background colors
@@ -92,7 +99,8 @@ export default App;
 Icon and letter types can have custom colors and background colors
 
 :::demo
-``` tsx
+
+```tsx
 import React from "react";
 import { Avatar } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -112,12 +120,14 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Avatar with badge
 
 :::demo
-``` tsx
+
+```tsx
 import React from "react";
 import { Avatar, Badge } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -136,12 +146,14 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Avatar group display
 
 :::demo
-``` tsx
+
+```tsx
 import React from "react";
 import { Avatar, AvatarGroup } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -170,12 +182,14 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Avatar group to control hierarchy direction
 
 :::demo
-``` tsx
+
+```tsx
 import React from "react";
 import { Avatar, AvatarGroup } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -196,12 +210,14 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Click on the avatar to trigger the event
 
 :::demo
-``` tsx
+
+```tsx
 import React from "react";
 import { Avatar, Toast } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
@@ -218,38 +234,40 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ## Avatar
+
 ### Props
 
-| Property               | Description                                                 | Type      | Default |
-|-------------------------| ---------------------------------------------------------------- |-----------| ------ |
-| size                    | The size of the avatar,eg：`large`、`normal`、`small`,and numbers   | `string`    | `''` |
-| shape                   | The shape of avatar，eg：`square`、`round`           | `'round' \| 'square'`    | `'round'`  |
-| background                 | The colors of Icon and letter types                   | `string`    | `#eee`   |
-| color                   | The background colors of Icon and letter types                     | `string`    | `#666`   |
-| fit | The fill mode of the image | `'contain' \| 'cover' \| 'fill' \| 'none' \| 'scale-down'`    | `'cover'`   |
-| src                     | The address of the image for an image avatar or image element       | `string`    | `''`       |
-| alt                     | This attribute defines the alternative text describing the image    | `string`    | `''` |
-| icon                    | Custom icon type for an icon avatar  | `ReactNode` | `-` |
-| onClick  | Emitted when cell is clicked    | `(e: MouseEvent) => void` | `-` |
-| onError       | Handler when img load error   | `() => void`        | `-`        |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| size | The size of the avatar | `large` \| `normal` \| `small` \| `numbers` | `-` |
+| shape | The shape of avatar | `round` \| `square` | `round` |
+| background | The colors of Icon and letter types | `string` | `#eee` |
+| color | The background colors of Icon and letter types | `string` | `#666` |
+| fit | The fill mode of the image | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` \| `cover` | `-` |
+| src | The address of the image for an image avatar or image element | `string` | `-` |
+| alt | This attribute defines the alternative text describing the image | `string` | `-` |
+| icon | Custom icon type for an icon avatar | `ReactNode` | `-` |
+| onClick | Emitted when cell is clicked | `(e: MouseEvent) => void` | `-` |
+| onError | Handler when img load error | `() => void` | `-` |
 
 ## AvatarGroup
 
 ### Props
-| Property     | Description                                                 | Type   | Default |
-| -------- | ---------------------------------------------------------------- | ------ | ------ |
-| max     | Max avatars to show   | `string \| number`    | `''` |
-| maxContent  | When the number of avatars exceeds, a avatar folding element will appear，The content of this element can be `...`、`more`、`+N`。。 | `string` | `''`     | 
-| size         | The size of the avatar，eg：`large`、`normal`、`small`，supports direct input of numbers   | `'large' \| 'normal' \| 'small'` | `''`     |
-| shape        | The shape of avatar，eg：`square`、`round`            | `'string' \| 'round'`  |  `''`  |
-| maxBackground  | The colors of Icon and letter types | `string` | `#eee`   |
-| maxColor    | The background colors of Icon and letter types                   | `string` | `#666`   |
-| gap         | Distance between avatars               | `string` | `-8`     |
-| level       | Hierarchy direction between avatar group，eg：`left`、`right`  | `'left' \| 'right'` | `'left'`     |
 
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| max | Max avatars to show | `string` \| `number`  | `-` |
+| maxContent | When the number of avatars exceeds, a avatar folding element will appear，The content of this element can be ...、more、+N。 | `string` | `-` |
+| size | The size of the avatar，supports direct input of numbers | `large` \| `normal`  \| `small`  | `-` |
+| shape | The shape of avatar | `string` \| `round`  | `-` |
+| maxBackground | The colors of Icon and letter types | `string` | `#eee` |
+| maxColor | The background colors of Icon and letter types | `string` | `#666` |
+| gap | Distance between avatars | `string` | `-8` |
+| level | Hierarchy direction between avatar group | `left` \| `right`  | `left` |
 
 ## Theming
 
@@ -258,11 +276,11 @@ export default App;
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Description | Default Value |
-| --- | --- | --- | 
-| --nutui-avatar-square | The rounded corners of square avatars  | ` 5px` |
-| --nutui-avatar-large-width | The width of the large avatar | ` 60px` |
-| --nutui-avatar-large-height | The height of the large avatar | ` 60px` |
-| --nutui-avatar-small-width | Small avatar width | ` 32px` |
-| --nutui-avatar-small-height | The height of small avatars | ` 32px` |
-| --nutui-avatar-normal-width | The width of a normal size avatar | ` 40px` |
-| --nutui-avatar-normal-height | Height of normal size avatar | ` 40px` |
+| --- | --- | --- |
+| \--nutui-avatar-square | The rounded corners of square avatars | `5px` |
+| \--nutui-avatar-large-width | The width of the large avatar | `60px` |
+| \--nutui-avatar-large-height | The height of the large avatar | `60px` |
+| \--nutui-avatar-small-width | Small avatar width | `32px` |
+| \--nutui-avatar-small-height | The height of small avatars | `32px` |
+| \--nutui-avatar-normal-width | The width of a normal size avatar | `40px` |
+| \--nutui-avatar-normal-height | Height of normal size avatar | `40px` |

@@ -6,8 +6,7 @@ Short password input box, which can be used to enter passwords, SMS verification
 
 ## Install
 
-```ts
-// react
+```tsx
 import { ShortPassword } from '@nutui/nutui-react';
 ```
 
@@ -312,7 +311,7 @@ export default App;
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| value | password value | `string` | - |
+| value | password value | `string` | `-` |
 | visible | Whether to show shortpassword | `boolean` | `false` |
 | plain | Whether to show plaintext | `boolean` | `false` |
 | title | title | `ReactNode` | `Please input a password` |
@@ -320,15 +319,15 @@ export default App;
 | tips | tips | `ReactNode` | `Forget password` |
 | hideFooter | whether to hide the bottom button | `boolean` | `true` |
 | length | ShortPassword lenght The value is 4~6 | `number` | `6` |
-| error | Error message | `ReactNode` | - |
+| error | Error message | `ReactNode` | `-` |
 | autoFocus | Be focused when ShortPassword is displayed | `boolean` | `false` |
-| onChange | Trigger event when password is entered | `(value) => void` | - |
-| onConfirm | Trigger event when true is clicked | `(value) => void` | - |
-| onCancel | Trigger an event when the popup layer is clicked or canceled | `() => void` | - |
-| onClose | Trigger an event when the close icon is clicked | `() => void` | - |
-| onTips | Trigger an event when the forget password is clicked | `() => void` | - |
-| onComplete | Input complete callback | `(value) => void` | - |
-| onFocus | input focus | `() => void` | - |
+| onChange | Trigger event when password is entered | `(value) => void` | `-` |
+| onConfirm | Trigger event when true is clicked | `(value) => void` | `-` |
+| onCancel | Trigger an event when the popup layer is clicked or canceled | `() => void` | `-` |
+| onClose | Trigger an event when the close icon is clicked | `() => void` | `-` |
+| onTips | Trigger an event when the forget password is clicked | `() => void` | `-` |
+| onComplete | Input complete callback | `(value) => void` | `-` |
+| onFocus | input focus | `() => void` | `-` |
 
 ## Theming
 

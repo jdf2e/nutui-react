@@ -1,4 +1,4 @@
-#  Dialog 
+# Dialog
 
 ## Intro
 
@@ -8,11 +8,9 @@ The pop -up box components support the function call and component call.
 
 ## Install
 
-```ts
-// react
+```tsx
 import { Dialog } from '@nutui/nutui-react'
 ```
-
 
 ## Demo
 
@@ -148,28 +146,28 @@ export default App;
 
 ### Props
 
-| Property | Description | Type    | Default    |
-|---------|----------------------|---------|-----------|
-| visible | Whether the dialog box is visible| `boolean`| - |
-| title | title| `ReactNode` | -|
-| content| The content of the dialog box is suitable for function calls | `ReactNode` | -|
-| footer | Customize the notes, but it will not be displayed in NULL     | `ReactNode` | - |
-| confirmText | Confirm the button copywriting| `ReactNode` | `Sure` |
-| cancelText | Cancellation of buttons | ReactNode | `Cancel` |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| visible | Whether the dialog box is visible | `boolean` | `-` |
+| title | title | `ReactNode` | `-` |
+| content | The content of the dialog box is suitable for function calls | `ReactNode` | `-` |
+| footer | Customize the notes, but it will not be displayed in NULL | `ReactNode` | `-` |
+| confirmText | Confirm the button copywriting | `ReactNode` | `Sure` |
+| cancelText | Cancellation of buttons | `ReactNode` | `Cancel` |
 | overlay | Whether to show a overlay | `boolean` | `true` |
-| hideConfirmButton| Whether to hide the OK button | `boolean` | `false` |
-| hideCancelButton| Whether to hide the cancel button | `boolean` | `false`|
-| disableConfirmButton| Disable the OK button | `boolean` | `false`|
-| closeOnOverlayClick| Click on whether to close the dialog box| `boolean` | `true`|
-| footerDirection|Use horizontal and vertical direction value selection horizontal、vertical  | string | `horizontal`             |
-| lockScroll| Whether the background is locked| `boolean` | `true`|
-| beforeCancel | When click cancel, call it first | `() => boolean` |
-| beforeClose | Call it first when close | `() => boolean` |
-| onConfirm  | Determine the button back | `(e?: MouseEvent) => Promise \| void` |
-| onCancel  | Cancel button callback | `() => void` |
-| onClose  | Turn off the callback, and the pop -up window will be triggered in any case | `() => void` |
-| onClick  | Click yourself to call back | `() => void` |
-| onOverlayClick | Click Overlay | `() => void` |
+| hideConfirmButton | Whether to hide the OK button | `boolean` | `false` |
+| hideCancelButton | Whether to hide the cancel button | `boolean` | `false` |
+| disableConfirmButton | Disable the OK button | `boolean` | `false` |
+| closeOnOverlayClick | Click on whether to close the dialog box | `boolean` | `true` |
+| footerDirection | Use horizontal and vertical direction value selection horizontal、vertical | `string` | `horizontal` |
+| lockScroll | Whether the background is locked | `boolean` | `true` |
+| beforeCancel | When click cancel, call it first | `() => boolean` | `-` |
+| beforeClose | Call it first when close | `() => boolean` | `-` |
+| onConfirm | Determine the button back | `(e?: MouseEvent) => Promise \| void` | `-` |
+| onCancel | Cancel button callback | `() => void` | `-` |
+| onClose | Turn off the callback, and the pop -up window will be triggered in any case | `() => void` | `-` |
+| onClick | Click yourself to call back | `() => void` | `-` |
+| onOverlayClick | Click Overlay | `() => void` | `-` |
 
 ## Theming
 
@@ -178,22 +176,22 @@ export default App;
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Description | Default |
-| --- | --- |
-| --nutui-dialog-width | dialog width |`296px` |
-| --nutui-dialog-header-font-weight | dialog header font weight |`normal` |
-| --nutui-dialog-header-color |dialog header color | `rgba(38, 38, 38, 1)` |
-| --nutui-dialog-footer-justify-content | dialog footer justify content  |`space-around` |
-| --nutui-dialog-min-height | dialog min height |`156px` |
-| --nutui-dialog-padding | dialog padding |`28px 24px 16px 24px` |
-| --nutui-dialog-header-height | dialog header height |`20px` |
-| --nutui-dialog-content-margin | dialog content margin  |`20px 0` |
-| --nutui-dialog-content-max-height | dialog content max height  |`268px` |
-| --nutui-dialog-content-line-height | dialog content line height |`16px` |
-| --nutui-dialog-overlay-z-index | dialog overlay z-index |`$mask-z-index` |
-| --nutui-dialog-overlay-background-color | dialog overlay background color |`$mask-color` |
-| --nutui-dialog-outer-z-index | dialog outer z index |`$mask-content-z-index` |
-| --nutui-dialog-outer-bordder-radius | dialog outer bordder radius |`20px` |
-| --nutui-dialog-vertical-footer-ok-margin-top | dialog vertical footer confirm button margin top |`10px` |
-| --nutui-dialog-footer-button-min-width | dialog footer button min width |`100px` |
-| --nutui-dialog-footer-cancel-margin-right | dialog footer cancel button's margin right |`20px` |
-| --nutui-dialog-footer-ok-max-width | dialog footer confirm button's max width |`128px` |
+| --- | --- | --- |
+| \--nutui-dialog-width | dialog width | `296px` |
+| \--nutui-dialog-header-font-weight | dialog header font weight | `normal` |
+| \--nutui-dialog-header-color | dialog header color | `rgba(38, 38, 38, 1)` |
+| \--nutui-dialog-footer-justify-content | dialog footer justify content | `space-around` |
+| \--nutui-dialog-min-height | dialog min height | `156px` |
+| \--nutui-dialog-padding | dialog padding | `28px 24px 16px 24px` |
+| \--nutui-dialog-header-height | dialog header height | `20px` |
+| \--nutui-dialog-content-margin | dialog content margin | `20px 0` |
+| \--nutui-dialog-content-max-height | dialog content max height | `268px` |
+| \--nutui-dialog-content-line-height | dialog content line height | `16px` |
+| \--nutui-dialog-overlay-z-index | dialog overlay z-index | `$mask-z-index` |
+| \--nutui-dialog-overlay-background-color | dialog overlay background color | `$mask-color` |
+| \--nutui-dialog-outer-z-index | dialog outer z index | `$mask-content-z-index` |
+| \--nutui-dialog-outer-bordder-radius | dialog outer bordder radius | `20px` |
+| \--nutui-dialog-vertical-footer-ok-margin-top | dialog vertical footer confirm button margin top | `10px` |
+| \--nutui-dialog-footer-button-min-width | dialog footer button min width | `100px` |
+| \--nutui-dialog-footer-cancel-margin-right | dialog footer cancel button's margin right | `20px` |
+| \--nutui-dialog-footer-ok-max-width | dialog footer confirm button's max width | `128px` |

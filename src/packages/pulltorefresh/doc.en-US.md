@@ -6,7 +6,7 @@ An interaction to load new content with a finger pull-to-refresh in a list.
 
 ## Install
 
-```js
+```tsx
 import { PullToRefresh } from '@nutui/nutui-react';
 ```
 
