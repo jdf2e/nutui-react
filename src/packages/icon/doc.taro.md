@@ -26,7 +26,7 @@ import { Add } from '@nutui/icons-react-taro';
 
 ## 方式二： IconFont 全量使用
 
-```js
+```tsx
 import { IconFont } from '@nutui/icons-react-taro'
 ```
 
@@ -120,7 +120,7 @@ export default App;
 
 第二步：项目入口文件 main.js 引用 `iconfont.css`
 
-```javascript
+```tsx
 import './assets/font/iconfont.css';
 ```
 

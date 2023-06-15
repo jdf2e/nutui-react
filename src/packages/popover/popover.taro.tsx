@@ -123,7 +123,7 @@ export const Popover: FunctionComponent<
   const getContentWidth = async () => {
     let rect
     if (targetId) {
-      if (Taro.getEnv() == Taro.ENV_TYPE.WEB) {
+      if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
         rect = getRect(document.querySelector(`#${targetId}`) as Element)
       } else {
         rect = await getRectTaro(targetId)
@@ -149,14 +149,14 @@ export const Popover: FunctionComponent<
       const query = Taro.createSelectorQuery()
       query.select(`#${targetId}`) &&
         query.select(`#${targetId}`).boundingClientRect()
-      query.exec(function (res: any) {
+      query.exec((res: any) => {
         resolve(res[0])
       })
     })
   }
 
   const getPopoverContentW = async () => {
-    let rectContent = await getRectByTaro(popoverContentRef.current)
+    const rectContent = await getRectByTaro(popoverContentRef.current)
     setElWidth(rectContent.width)
     setElHeight(rectContent.height)
   }
@@ -183,7 +183,7 @@ export const Popover: FunctionComponent<
   }
 
   const getRootPosition = () => {
-    let styles: CSSProperties = {}
+    const styles: CSSProperties = {}
     if (!rootPosition) {
       styles.visibility = 'hidden'
       return styles
@@ -191,15 +191,13 @@ export const Popover: FunctionComponent<
 
     const contentWidth = elWidth
     const contentHeight = elHeight
-
     const { width, height, left, top, right } = rootPosition
-
     const direction = location.split('-')[0]
     const skew = location.split('-')[1]
 
     let cross = 0
     let parallel = 0
-    if (Array.isArray(offset) && offset.length == 2) {
+    if (Array.isArray(offset) && offset.length === 2) {
       cross += +offset[1]
       parallel += +offset[0]
     }
@@ -207,33 +205,33 @@ export const Popover: FunctionComponent<
     if (width) {
       if (['bottom', 'top'].includes(direction)) {
         const h =
-          direction == 'bottom' ? height + cross : -(contentHeight + cross)
+          direction === 'bottom' ? height + cross : -(contentHeight + cross)
 
         styles.top = `${top + h}px`
 
         if (!skew) {
           styles.left = `${-(contentWidth - width) / 2 + left + parallel}px`
         }
-        if (skew == 'start') {
+        if (skew === 'start') {
           styles.left = `${left + parallel}px`
         }
-        if (skew == 'end') {
+        if (skew === 'end') {
           styles.left = `${right + parallel}px`
         }
       }
       if (['left', 'right'].includes(direction)) {
         const contentW =
-          direction == 'left' ? -(contentWidth + cross) : width + cross
+          direction === 'left' ? -(contentWidth + cross) : width + cross
         styles.left = `${left + contentW}px`
         if (!skew) {
           styles.top = `${
             top - contentHeight / 2 + height / 2 - 4 + parallel
           }px`
         }
-        if (skew == 'start') {
+        if (skew === 'start') {
           styles.top = `${top + parallel}px`
         }
-        if (skew == 'end') {
+        if (skew === 'end') {
           styles.top = `${top + height + parallel}px`
         }
       }
@@ -311,7 +309,7 @@ export const Popover: FunctionComponent<
             className="nut-popover-content-bg"
             onClick={clickAway}
             onTouchMove={clickAway}
-          ></div>
+          />
         )}
       </div>
     </>

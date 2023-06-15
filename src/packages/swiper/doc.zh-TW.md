@@ -1,20 +1,22 @@
-# Swiper 轮播
+# Swiper 輪播
 
-## 介绍
+## 介紹
 
-常用于一组图片或卡片轮播，当内容空间不足时，可以用走马灯的形式进行收纳，进行轮播展现。
+常用於一組圖片或卡片輪播，當內容空間不足時，可以用走馬燈的形式進行收納，進行輪播展現。
 
-## 安装
+## 安裝
 
-```javascript
-// react
+```tsx
 import { Swiper, SwiperItem } from '@nutui/nutui-react';
 ```
-## 代码演示
-### 基础用法
+
+## 代碼演示
+
+### 基礎用法
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
@@ -51,11 +53,14 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
-### 异步加载
+
+### 異步加載
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState, useEffect } from 'react'
 import { Swiper, SwiperItem } from '@nutui/nutui-react';
 
@@ -98,14 +103,16 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
-### 动态加载
+### 動態加載
 
-支持动态增加/删除图片
+支持動態增加/刪除圖片
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState, useEffect } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
@@ -149,13 +156,16 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
-### 自定义大小
+### 自定義大小
 
-`width` 自定义轮播大小
+`width` 自定義輪播大小 
+
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
@@ -186,14 +196,16 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
-### 自定义分页指示器
+### 自定義分頁指示器
 
-`indicator` 表示自定义指示器
+`indicator` 錶示自定義指示器
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
@@ -230,14 +242,16 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
-### 手动切换
+### 手動切換
 
-可通过 `ref`调用 `prev`,`next` 进行切换
+可通過 `ref`調用 `prev`,`next` 進行切換
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState, useRef } from 'react'
 import { Swiper, SwiperItem, Icon } from '@nutui/nutui-react';
 
@@ -322,14 +336,16 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
-### 垂直方向
+### 垂直方嚮
 
-`direction` 自定义轮播方向
+`direction` 自定義輪播方嚮
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
@@ -367,15 +383,16 @@ const App = () => {
 }
 export default App;
 ```
-:::
 
+:::
 
 ### 水平居中展示
 
-`center` 代表可居中，同时必须传 `width`
+`center` 代錶可居中，同時必須傳 `width`
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
@@ -410,13 +427,16 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ### 垂直居中展示
 
-`center` 代表可居中，同时必须传 `height`
+`center` 代錶可居中，同時必須傳 `height`
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
@@ -452,43 +472,44 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ## Swiper
 
 ### Props
 
-| 属性    | 说明 | 类型    | 默认值    |
-|-----------------|---------------------------------|-----------------------------| ----------------- |
-| width           | 轮播卡片的宽度                         | `number \| string`          | `window.innerWidth` |
-| height          | 轮播卡片的高度                         | `number \| string`          | `0`                 |
-| direction       | 轮播方向,可选值`horizontal`,`vertical` | `string`                    | `horizontal`      |
-| indicator       | 分页指示器是否展示，可传入自定义的 HTML 结构       | `ReactNode`                 | `false`             |
-| loop            | 是否循环轮播                          | `boolean`                   | `true`              |
-| duration        | 动画时长（单位是ms）                     | `number \| string`          | `500`               |
-| autoPlay        | 自动轮播时长，0表示不会自动轮播                | `number \| string`          | `0`                 |
-| defaultValue    | 初始化索引值                          | `number \| string`          | `0`                 |
-| touchable       | 是否可触摸滑动                         | `boolean`                   | `true`              |
-| preventDefault  | 滑动过程中是否禁用默认事件                   | `boolean`                   | `true`              |
-| stopPropagation | 滑动过程中是否禁止冒泡                     | `boolean`                   | `true`              |
-| center          | 是否居中展示，必须传对应的`width` 和 `height` | `boolean`                   | `false`              |
-| onChange | 卡片切换后的回调 | `(current: number) => void` | `-` |
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| width | 輪播卡片的寬度 | `number` \| `string` | `window.innerWidth` |
+| height | 輪播卡片的高度 | `number` \| `string` | `0` |
+| direction | 輪播方嚮 | `horizontal` \| `vertical` | `horizontal` |
+| indicator | 分頁指示器是否展示，可傳入自定義的 HTML 結構 | `ReactNode` | `false` |
+| loop | 是否循環輪播 | `boolean` | `true` |
+| duration | 動畫時長（單位是ms） | `number` \| `string` | `500` |
+| autoPlay | 自動輪播時長，0錶示不會自動輪播 | `number` \| `string` | `0` |
+| defaultValue | 初始化索引值 | `number` \| `string` | `0` |
+| touchable | 是否可觸摸滑動 | `boolean` | `true` |
+| preventDefault | 滑動過程中是否禁用默認事件 | `boolean` | `true` |
+| stopPropagation | 滑動過程中是否禁止冒泡 | `boolean` | `true` |
+| center | 是否居中展示，必須傳對應的`width` 和 `height` | `boolean` | `false` |
+| onChange | 卡片切換後的回調 | `(current: number) => void` | `-` |
 
 ### Ref
 
-| 属性    | 说明 | 类型                      |
-|--------| -------------- |-------------------------|
-| prev   | 切换到上一页   | `()=>void`              |
-| next   | 切换到下一页   | `()=>void`              |
-| to     | 切换到指定轮播 | `(index: number)=>void` |
-| resize | 外层元素大小或组件显示状态变化时，可以调用此方法来触发重绘 | `()=>void`   |
+| 屬性 | 說明 | 類型 |
+| --- | --- | --- |
+| prev | 切換到上一頁 | `()=>void` |
+| next | 切換到下一頁 | `()=>void` |
+| to | 切換到指定輪播 | `(index: number)=>void` |
+| resize | 外層元素大小或組件顯示狀態變化時，可以調用此方法來觸發重繪 | `()=>void` |
 
-## 主题定制
+## 主題定制
 
-### 样式变量
+### 樣式變量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名称 | 说明         | 默认值     |
-| --- |------------|---------|
-| --nutui-swiper-pagination-bottom | 分页器距离底部的距离 |  `12px` |
+| 名稱 | 說明 | 默認值 |
+| --- | --- | --- |
+| \--nutui-swiper-pagination-bottom | 分頁器距離底部的距離 | `12px` |

@@ -6,8 +6,7 @@ Signature component based on canvas.
 
 ## Install
 
-```javascript
-// react
+```tsx
 import { Signature } from '@nutui/nutui-react'
 ```
 

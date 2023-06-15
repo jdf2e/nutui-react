@@ -6,7 +6,7 @@
 
 ## 安装
 
-```ts
+```tsx
 import { Tabs } from '@nutui/nutui-react';
 ```
 

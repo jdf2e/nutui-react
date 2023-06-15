@@ -1,13 +1,12 @@
-# Toast 
+# Toast
 
-### Intro
+## Intro
 
 For light tips.
 
-### Install
+## Install
 
-```javascript
-// react
+```tsx
 import { Toast } from '@nutui/nutui-react';
 ```
 
@@ -41,6 +40,7 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 #### Title
@@ -72,6 +72,7 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 #### Success
@@ -103,8 +104,8 @@ const App = () => {
 }
 export default App
 ```
-:::
 
+:::
 
 #### Fail
 
@@ -135,8 +136,8 @@ const App = () => {
 }
 export default App
 ```
-:::
 
+:::
 
 #### Warn
 
@@ -167,8 +168,8 @@ const App = () => {
 }
 export default App
 ```
-:::
 
+:::
 
 #### Loading
 
@@ -199,8 +200,8 @@ const App = () => {
 }
 export default App
 ```
-:::
 
+:::
 
 #### Set Display Duration
 
@@ -253,6 +254,7 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 #### Custom Bottom Height
@@ -285,9 +287,8 @@ const App = () => {
 }
 export default App
 ```
+
 :::
-
-
 
 #### Loading with non-transparent cover
 
@@ -324,39 +325,37 @@ const App = () => {
 }
 export default App
 ```
+
 :::
-
-
 
 ## Toast
 
-`Toast` only supports Imperative calls.
 
 ### Props
 
-| Property | Description              |  Type         | Default                        |
-| ------------------- | -------------- | ------------- | ----------------------------- |
-| content | Toast content | `React.ReactNode` | - |
-| duration            | Toast duration(s), won't disappear if value is 0      | `number`     | `2`                          |
-| position | Vertical position of toast | `'top' \|'center' \|'bottom'` | `'center'` |
-| title            | title     | `string`      |           -             |
-| icon | Toast icon | `'success' \|'fail' \|'loading' \|'warn' \|React.ReactNode` | - |
-| size        | Text Size **small**/**base**/**large**          | `string`      | `base`      |
-| className | Toast mask class name | `string` | - |
-| style |  Toast mask style  | `React.CSSProperties` | -            |
-| contentClassName | Toast content class name | `string` | -                         |
-| contentStyle | Toast content style | `React.CSSProperties` | - |
-| onClose             |Callback function after close             | `() => void` | `null`         |
-| closeOnOverlayClick | Whether to close when overlay is clicked         | `boolean`     | `false`         |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| content | Toast content | `React.ReactNode` | `-` |
+| duration | Toast duration(s), won't disappear if value is 0 | `number` | `2` |
+| position | Vertical position of toast | `top` \| `center` \| `bottom` | `center` |
+| title | title | `string` | `-` |
+| icon | Toast icon | `success` \| `fail` \| `loading` \| `warn` \| `React.ReactNode` | `-` |
+| size | Text Size  | `small` \| `base` \| `large`  | `base` |
+| contentClassName | Toast content class name | `string` | `-` |
+| contentStyle | Toast content style | `React.CSSProperties` | `-` |
+| closeOnOverlayClick | Whether to close when overlay is clicked | `boolean` | `false` |
+| onClose | Callback function after close | `() => void` | `null` |
+
+`Toast` only supports Imperative calls.
 
 You can also pass in a string directly, and `Toast.show` will automatically use it as `content`.
 
 ### Ref
 
-| Property | Description                       | Parameters                                                   |
-| -------- | --------------------------------- | ------------------------------------------------------------ |
-| clear    | Turn off `Toast` in all displays. | -                                                            |
-| config   | Methods for global configuration  | `{ duration: number, position: 'top' \| 'center' \| 'bottom', closeOnOverlayClick: boolean }` |
+| Property | Description | Parameters |
+| --- | --- | --- |
+| clear | Turn off `Toast` in all displays. | `-`|
+| config | Methods for global configuration | `{ duration: number, position: 'top' \| 'center' \| 'bottom', closeOnOverlayClick: boolean }` |
 
 ## Theming
 
@@ -364,13 +363,13 @@ You can also pass in a string directly, and `Toast.show` will automatically use 
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| 名称                              | 说明                                     | 默认值             |
-| --------------------------------- | ---------------------------------------- | ------------------ |
-| --nutui-toast-title-font-size     | the title font-size of toast             | `16px`             |
-| --nutui-toast-text-font-size      | the content font-size of toast           | `14px`             |
-| --nutui-toast-font-color          | the text color of toast                  | `#fff`             |
-| --nutui-toast-inner-padding       | the padding value of toast content       | `24px 30px`        |
-| --nutui-toast-inner-bg-color      | the background color of toast content    | `$gray7`           |
-| --nutui-toast-inner-border-radius | the border-radius value of toast content | `12px`             |
-| --nutui-toast-inner-text-align    | the text alignment of toast              | `center`           |
-| --nutui-overlay-bg-color          | the background color of toast mask       | `rgba(0, 0, 0, 0)` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| \--nutui-toast-title-font-size | the title font-size of toast | `16px` |
+| \--nutui-toast-text-font-size | the content font-size of toast | `14px` |
+| \--nutui-toast-font-color | the text color of toast | `#fff` |
+| \--nutui-toast-inner-padding | the padding value of toast content | `24px 30px` |
+| \--nutui-toast-inner-bg-color | the background color of toast content | `$gray7` |
+| \--nutui-toast-inner-border-radius | the border-radius value of toast content | `12px` |
+| \--nutui-toast-inner-text-align | the text alignment of toast | `center` |
+| \--nutui-overlay-bg-color | the background color of toast mask | `rgba(0, 0, 0, 0)` |

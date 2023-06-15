@@ -6,8 +6,7 @@
 
 ## 安装
 
-```javascript
-// react
+```tsx
 import { Input } from '@nutui/nutui-react-taro';
 
 ```
@@ -265,7 +264,7 @@ export default App;
 | disabled | 是否禁用 | `boolean` | `false` |
 | readOnly | 是否只读 | `boolean` | `false` |
 | autoFocus | 是否自动获得焦点，iOS 系统不支持该属性 | `boolean` | `false` |
-| maxLength | 限制最长输入字符 | `string \| number` | `-` |
+| maxLength | 限制最长输入字符 | `string`  \|  `number` | `-` |
 | clearable | 展示清除 Icon | `boolean` | `false` |
 | clearIcon | 清除图标 Icon <a href="#/icon">可参考 Icon </a> | `ReactNode` | `MaskClose` |
 | confirmType | 键盘右下角按钮的文字，仅在type='text'时生效,可选值 send：发送、search：搜索、next：下一个、go：前往、done：完成 | `string` | `done` |

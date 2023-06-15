@@ -1,15 +1,16 @@
 # Overlay 遮罩層
 
-### 介紹
+## 介紹
 
 創建一個遮罩層，通常用於阻止用戶進行其他操作
 
-### 安裝
+## 安裝
 
-```ts
-// react
+```tsx
 import { OverLay } from '@nutui/nutui-react';
 ```
+
+## 代碼演示
 
 ### 基礎用法
 
@@ -36,7 +37,6 @@ const App = () => {
         visible={visible}
         onClick={onClose}
         zIndex={2020}
-        lockScroll
         afterShow={() => {
           console.log('afterShow')
         }}
@@ -49,7 +49,7 @@ export default App;
 
 :::
 
-### 遮罩样式
+### 遮罩樣式
 
 :::demo
 
@@ -68,7 +68,7 @@ const App = () => {
   return (
     <>
       <Button type="primary" onClick={handleToggleShow}>
-        遮罩样式
+        遮罩樣式
       </Button>
       <Overlay
         visible={visible}
@@ -181,21 +181,21 @@ const ContentStyle = {
   color: 'red'
 }
 const App = () => {
-  const [visible2, setVisible2] = useState(false)
+  const [visible, setVisible] = useState(false)
   const handleToggleShow2 = () => {
-    setVisible2(true)
+    setVisible(true)
   }
-  const onClose2 = () => {
-    setVisible2(false)
+  const onClose = () => {
+    setVisible(false)
   }
   return (
     <>
       <Button type="success" onClick={handleToggleShow2}>
         嵌套內容
       </Button>
-      <Overlay visible={visible2} onClick={onClose2}>
+      <Overlay visible={visible} onClick={onClose}>
         <div className="wrapper" style={WrapperStyle}>
-          <div className="content" style={ContentStyle}>這裡是正文</div>
+          <div className="content" style={ContentStyle}>這裏是正文</div>
         </div>
       </Overlay>
     </>
@@ -229,7 +229,7 @@ const App = () => {
       </Button>
       <Overlay visible={visible} closeOnOverlayClick={false}>
         <div className="wrapper">
-          <div className="content" onClick={onClose}>這裡是正文</div>
+          <div className="content" onClick={onClose}>這裏是正文</div>
         </div>
       </Overlay>
     </>
@@ -240,13 +240,13 @@ export default App;
 
 :::
 
-## API
+## Overlay
 
 ### Props
 
-| 屬性 | 說明 | 類型 | 預設值 |
+| 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| visible | 當前元件是否顯示 | `boolean` | `false` |
+| visible | 當前組件是否顯示 | `boolean` | `false` |
 | zIndex | 遮罩層級 | `number` | `2000` |
 | duration | 動畫時長，單位秒 | `number` | `0.3` |
 | lockScroll | 背景是否鎖定 | `boolean` | `true` |

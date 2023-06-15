@@ -17,7 +17,6 @@ import { Sticky } from '@nutui/nutui-react';
 :::demo
 
 ```tsx
-
 import React, { useEffect, useRef, useState } from 'react'
 import {Button,Cell, Sticky } from '@nutui/nutui-react'
 

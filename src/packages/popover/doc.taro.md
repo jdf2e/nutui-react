@@ -6,8 +6,7 @@
 
 ## 安装
 
-```javascript
-// react
+```tsx
 import { Popover } from '@nutui/nutui-react'
 ```
 
@@ -297,7 +296,7 @@ bottom-end    # 底部右侧位置
 
 ```tsx
 import React, { useState, useRef } from 'react'
-import { Popover, Button } from '@nutui/nutui-react'
+import { Popover, Button, Cell, Picker } from '@nutui/nutui-react'
 
 const App = () => {
   const [baseDesc, setBaseDesc] = useState('')
@@ -519,13 +518,13 @@ export default App
 
 List 属性是一个由对象构成的数组，数组中的每个对象配置一列，对象可以包含以下值：
 
-| 键名      | 说明                     | 类型        | 默认值  |
-| --------- | ------------------------ | ----------- | ------- |
-| key       | 选项 key 值              | `string`    | `-`     |
-| name      | 选项文字                 | `string`    | `-`     |
-| icon      | 参考 Icon 组件           | `ReactNode` | `-`     |
-| disabled  | 是否为禁用状态           | `boolean`   | `false` |
-| className | 为对应选项添加额外的类名 | `string`    | `-`     |
+| 键名 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| key | 选项 key 值 | `string` | `-` |
+| name | 选项文字 | `string` | `-` |
+| icon | 参考 Icon 组件 | `ReactNode` | `-` |
+| disabled | 是否为禁用状态 | `boolean` | `false` |
+| className | 为对应选项添加额外的类名 | `string` | `-` |
 
 ## 主题定制
 

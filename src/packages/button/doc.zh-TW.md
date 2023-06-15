@@ -2,12 +2,11 @@
 
 ## 介紹
 
-按鈕用於觸發一個操作，如提交表單。
+按鈕用於觸發一個操作，如提交錶單。
 
 ## 安裝
 
-```javascript
-// react
+```tsx
 import { Button } from '@nutui/nutui-react';
 ```
 
@@ -15,7 +14,7 @@ import { Button } from '@nutui/nutui-react';
 
 ### 按鈕類型
 
-按鈕支援 'default'、'primary'、'info'、'warning'、'danger'、'success' 六種類型，預設為 'default'。
+按鈕支持 `default`、`primary`、`info`、`warning`、`danger`、`success` 六種類型，默認為 `default`。
 
 :::demo
 
@@ -27,7 +26,7 @@ const App = () => {
   return (
     <>
       <Button type="primary">主要按鈕</Button>
-      <Button type="info">資訊按鈕</Button>
+      <Button type="info">信息按鈕</Button>
       <Button type="default">默認按鈕</Button>
       <Button type="danger">危險按鈕</Button>
       <Button type="warning">警告按鈕</Button>
@@ -64,7 +63,7 @@ export default App;
 
 ### 禁用狀態
 
-通過 'disabled' 屬性來禁用按鈕，禁用狀態下按鈕不可點擊。
+通過 `disabled` 屬性來禁用按鈕，禁用狀態下按鈕不可點擊。
 
 :::demo
 
@@ -76,8 +75,8 @@ const App = () => {
   return (
     <>
       <Button disabled type="primary">禁用狀態</Button>
-      <Button plain disabled type="info">禁用狀態</Button>
-      <Button plain disabled type="primary">禁用狀態</Button>
+      <Button fill="outline" disabled type="info">禁用狀態</Button>
+      <Button fill="outline" disabled type="primary">禁用狀態</Button>
     </>
   );
 };
@@ -88,7 +87,7 @@ export default App;
 
 ### 按鈕形狀
 
-通過 『shape』 屬性設置按鈕形狀，支援圓形、方形按鈕，預設為圓形。
+通過 `shape` 屬性設置按鈕形狀，支持圓形、方形按鈕，默認為圓形。
 
 :::demo
 
@@ -109,7 +108,7 @@ export default App;
 
 :::
 
-### 載入狀態
+### 加載狀態
 
 :::demo
 
@@ -122,7 +121,7 @@ const App = () => {
   return (
     <>
       <Button loading type="info" />
-      <Button loading type="warning">載入中...</Button>
+      <Button loading type="warning">加載中...</Button>
       <Button
         loading={loading}
         type="success"
@@ -144,7 +143,7 @@ export default App;
 
 :::
 
-### 圖示按鈕
+### 圖標按鈕
 
 :::demo
 
@@ -176,7 +175,7 @@ export default App;
 
 ### 按鈕尺寸
 
-支援 'large'、'normal'、'small' 三種尺寸，預設為 'normal'。
+支持 `large`、`normal`、`small` 三種尺寸，默認為 `normal`。
 
 :::demo
 
@@ -200,7 +199,7 @@ export default App;
 
 ### 塊級元素
 
-按鈕在預設情況下為行內塊級元素，通過 'block' 屬性可以將按鈕的元素類型設置為塊級元素，常用來實現通欄按鈕。
+按鈕在默認情況下為行內塊級元素，通過 `block` 屬性可以將按鈕的元素類型設置為塊級元素，常用來實現通欄按鈕。
 
 :::demo
 
@@ -234,7 +233,7 @@ const App = () => {
   return (
     <>
       <Button color="#7232dd">單色按鈕</Button>
-      <Button color="#7232dd" plain>單色按鈕</Button>
+      <Button color="#7232dd" fill="outline">單色按鈕</Button>
       <Button color="rgba(10,101,208,0.75)">單色按鈕</Button>
       <Button color="linear-gradient(to right, #ff6034, #ee0a24)">
         漸變色按鈕
@@ -247,7 +246,7 @@ export default App;
 
 :::
 
-## API
+## Button
 
 ### Props
 

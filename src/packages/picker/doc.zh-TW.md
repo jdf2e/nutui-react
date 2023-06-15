@@ -1,11 +1,12 @@
-#  Picker
+# Picker
 
 ## 介紹
 
 提供多個選項集合供用戶選擇其中一項。
+
 ## 安裝
-```ts
-// react
+
+```tsx
 import { Picker } from '@nutui/nutui-react';
 ```
 
@@ -14,6 +15,7 @@ import { Picker } from '@nutui/nutui-react';
 ### 基礎用法
 
 :::demo
+
 ```tsx
 import  React, { useState  } from "react";
 import { Picker,Cell } from '@nutui/nutui-react';
@@ -59,11 +61,13 @@ const App = () => {
 };  
 export default App;
 ```
+
 :::
 
 ### 默认选中项
 
 :::demo
+
 ```tsx
 import  React, { useState  } from "react";
 import { Picker,Cell } from '@nutui/nutui-react';
@@ -107,11 +111,13 @@ const App = () => {
 };  
 export default App;
 ```
+
 :::
 
 ### 多列用法
 
 :::demo
+
 ```tsx
 import  React, { useState  } from "react";
 import { Picker,Cell } from '@nutui/nutui-react';
@@ -157,6 +163,7 @@ const App = () => {
 };  
 export default App;
 ```
+
 :::
 
 ### 平鋪展示
@@ -164,6 +171,7 @@ export default App;
 通過設定 `threeDimensional` 取消 3D 展示效果，併且通過設定 `duration` 可以控制快速滾動的時長。
 
 :::demo
+
 ```tsx
 import  React, { useState  } from "react";
 import { Picker,Cell } from '@nutui/nutui-react';
@@ -207,10 +215,13 @@ const App = () => {
 };  
 export default App;
 ```
+
 :::
+
 ### 多級聯動
 
 :::demo
+
 ```tsx
 import  React, { useState  } from "react";
 import { Picker,Cell } from '@nutui/nutui-react';
@@ -275,11 +286,13 @@ const App = () => {
 };  
 export default App;
 ```
+
 :::
 
 ### 動態獲取
 
 :::demo
+
 ```tsx
 import  React, { useState  } from "react";
 import { Picker,Cell } from '@nutui/nutui-react';
@@ -359,33 +372,34 @@ const App = () => {
 };  
 export default App;
 ```
-:::
 
+:::
 
 ## Picker
 
 ### Props
 
 | 屬性 | 說明 | 類型 | 預設值 |
-|-------------| ----- | ----- | ----- |
+| --- | --- | --- | --- |
 | visible | 是否可見 | `boolean` | `false` |
 | title | 設定標題 | `string` | `-` |
 | options | 列錶數據 | `Array` | `[]` |
 | value | 选中值，受控 | `Array` | `[]` |
 | defaultValue | 預設選中 | `Array` | `[]` |
-| threeDimensional | 是否開啟3D效果 | `boolean`  | `true`   |
-| duration | 快速滑動時慣性滾動的時長，單位 ms | `string \| number` | `1000`   |
-| onConfirm | 點選確認按鈕時候回調 | `(options, value) => void`  | `-` |
-| onChange | 每一列值變更時調用   | `(options, value) => void`  | `-` |
-| onClose | 關閉時觸發| `(options, value) => void` | `-` |
-| afterClose | 聯動時，關閉時回調   | `(options, value) => void`  | `-` |
+| threeDimensional | 是否開啟3D效果 | `boolean` | `true` |
+| duration | 快速滑動時慣性滾動的時長，單位 ms | `string`  \|  `number` | `1000` |
+| onConfirm | 點選確認按鈕時候回調 | `(options, value) => void` | `-` |
+| onChange | 每一列值變更時調用 | `(options, value) => void` | `-` |
+| onClose | 關閉時觸發 | `(options, value) => void` | `-` |
+| afterClose | 聯動時，關閉時回調 | `(options, value) => void` | `-` |
 
 ### options 數據結構
-| 屬性 | 說明| 類型   | 預設值|
-|------|----------|--------|-------------|
-| text     | 選項的文字內容 | `string \| number` | |
-| value         | 選項對應的值，且唯一 | `string \| number` | |
-| children       | 用於級聯選項 | `Array` | `-` |
+
+| 屬性 | 說明 | 類型 | 預設值 |
+| --- | --- | --- | --- |
+| text | 選項的文字內容 | `string`  \|  `number` | `-` |
+| value | 選項對應的值，且唯一 | `string`  \|  `number` | `-` |
+| children | 用於級聯選項 | `Array` | `-` |
 
 ## 主題定制
 
@@ -395,18 +409,18 @@ export default App;
 
 | 名稱 | 說明 | 預設值 |
 | --- | --- | --- |
-| --nutui-picker-bar-cancel-color | 取消文案的色值 | `#808080` |
-| --nutui-picker-bar-ok-color | 確認文案的色值 | `$primary-color` |
-| --nutui-picker-bar-cancel-font-size | 取消字號 | `14px` |
-| --nutui-picker-bar-ok-font-size | 確認字號 |`14px` |
-| --nutui-picker-bar-button-padding | 取消和確認的padding值 | `0 15px` |
-| --nutui-picker-bar-title-font-size | 標題字號 | `16px` |
-| --nutui-picker-bar-title-color | 標題色值 | `$title-color` |
-| --nutui-picker-bar-title-font-weight | 標題字重 | `normal` |
-| --nutui-picker-list-height | 面闆高度 |`252px` |
-| --nutui-picker-item-height | 面闆每一條數據高度 | `36px` |
-| --nutui-picker-item-text-color | 面闆每一條數據的字色 | `$title-color` |
-| --nutui-picker-item-active-text-color | 面闆當前選中數據的字色 | `inherit` |
-| --nutui-picker-item-text-font-size | 面闆每條數據字號 | `14px` |
-| --nutui-picker-item-active-line-border | 面闆當前選中的border值 | `1px solid #d8d8d8` |
-| --nutui-picker-mask-bg-img | 面闆數據區域的遮罩層背景 |`linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))` |
+| \--nutui-picker-bar-cancel-color | 取消文案的色值 | `#808080` |
+| \--nutui-picker-bar-ok-color | 確認文案的色值 | `$primary-color` |
+| \--nutui-picker-bar-cancel-font-size | 取消字號 | `14px` |
+| \--nutui-picker-bar-ok-font-size | 確認字號 | `14px` |
+| \--nutui-picker-bar-button-padding | 取消和確認的padding值 | `0 15px` |
+| \--nutui-picker-bar-title-font-size | 標題字號 | `16px` |
+| \--nutui-picker-bar-title-color | 標題色值 | `$title-color` |
+| \--nutui-picker-bar-title-font-weight | 標題字重 | `normal` |
+| \--nutui-picker-list-height | 面闆高度 | `252px` |
+| \--nutui-picker-item-height | 面闆每一條數據高度 | `36px` |
+| \--nutui-picker-item-text-color | 面闆每一條數據的字色 | `$title-color` |
+| \--nutui-picker-item-active-text-color | 面闆當前選中數據的字色 | `inherit` |
+| \--nutui-picker-item-text-font-size | 面闆每條數據字號 | `14px` |
+| \--nutui-picker-item-active-line-border | 面闆當前選中的border值 | `1px solid #d8d8d8` |
+| \--nutui-picker-mask-bg-img | 面闆數據區域的遮罩層背景 | `linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))` |

@@ -1,13 +1,12 @@
 # Image組件
 
-### 介紹
+## 介紹
 
-增強版的 img 標籤，提供多種圖片填充模式，支持圖片加載中提示、加載失敗提示。
+增強版的 img 標簽，提供多種圖片填充模式，支持圖片加載中提示、加載失敗提示。
 
-### 安裝
+## 安裝
 
-```javascript
-// react
+```tsx
 import { Image } from '@nutui/nutui-react';
 ```
 
@@ -15,7 +14,7 @@ import { Image } from '@nutui/nutui-react';
 
 ### 基礎用法
 
-基礎用法與原生 img 標籤一致，可以設置 src、width、height、alt 等原生屬性。
+基礎用法與原生 img 標簽一致，可以設置 src、width、height、alt 等原生屬性。
 
 :::demo
 
@@ -27,7 +26,7 @@ const App = () => {
   const src =
     '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
   return <>
-    <Image src={src} width="100" height="100" />
+    <Image src={src} width="100%" />
   </>
 }
 export default App;
@@ -37,7 +36,7 @@ export default App;
 
 ### 填充模式
 
-通過 fit 屬性可以設置圖片填充模式，等同於原生的 object-fit 屬性，可選值見下方表格。
+通過 fit 屬性可以設置圖片填充模式，等同於原生的 object-fit 屬性，可選值見下方錶格。
 
 :::demo
 
@@ -92,7 +91,7 @@ export default App;
 
 ### 圓形圖片
 
-通過 radius 屬性可以設置圖片變圓，注意當圖片寬高不相等且 fit 為 contain 或 scale-down 時，將無法填充一個完整的圓形。
+通過 radius 屬性可以設置圖片變圓，註意當圖片寬高不相等且 fit 為 contain 或 scale-down 時，將無法填充一個完整的圓形。
 
 :::demo
 
@@ -218,11 +217,11 @@ export default App;
 
 :::
 
-## API
+## Image
 
 ### Props
 
-| 屬性 | 说明 | 類型 | 默認值 |
+| 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | src | 圖片鏈接 | `string` | `-` |
 | fit | 圖片填充模式，等同於原生的 object-fit 屬性 | `ImageFit` | `fill` |
@@ -230,7 +229,7 @@ export default App;
 | alt | 替代文本 | `string` | `-` |
 | width | 寬度，默認單位`px` | `string` | `-` |
 | height | 高度，默認單位`px` | `string` | `-` |
-| radius | 圓角大小 | `string \| number` | `-` |
+| radius | 圓角大小 | `string`  \|  `number` | `-` |
 | error | 是否展示圖片加載失敗 | `boolean \| ReactNode` | `true` |
 | loading | 是否展示加載中圖片 | `boolean \| ReactNode` | `true` |
 | lazy | 是否為懶加載圖片 | `boolean` | `false` |
@@ -240,7 +239,7 @@ export default App;
 
 ### ImageFit 圖片填充模式
 
-| 屬性 | 说明 |
+| 屬性 | 說明 |
 | --- | --- |
 | contain | 保持寬高縮放圖片，使圖片的長邊能完全顯示出來 |
 | cover | 保持寬高縮放圖片，使圖片的短邊能完全顯示出來，裁剪長邊 |

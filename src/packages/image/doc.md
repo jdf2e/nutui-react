@@ -6,8 +6,7 @@
 
 ## 安装
 
-```javascript
-// react
+```tsx
 import { Image } from '@nutui/nutui-react';
 ```
 
@@ -230,7 +229,7 @@ export default App;
 | alt | 替代文本 | `string` | `-` |
 | width | 宽度，默认单位`px` | `string` | `-` |
 | height | 高度，默认单位`px` | `string` | `-` |
-| radius | 圆角大小 | `string \| number` | `-` |
+| radius | 圆角大小 | `string`  \|  `number` | `-` |
 | error | 是否展示图片加载失败 | `boolean \| ReactNode` | `true` |
 | loading | 是否展示加载中图片 | `boolean \| ReactNode` | `true` |
 | lazy | 是否为懒加载图片 | `boolean` | `false` |

@@ -1,12 +1,12 @@
 # Swiper 轮播
 
-### 介绍
+## 介绍
 
 常用于一组图片或卡片轮播，当内容空间不足时，可以用走马灯的形式进行收纳，进行轮播展现。
 
-### 安装
+## 安装
 
-```javascript
+```tsx
 import { Swiper, SwiperItem } from '@nutui/nutui-react-taro';
 ```
 
@@ -15,7 +15,8 @@ import { Swiper, SwiperItem } from '@nutui/nutui-react-taro';
 ### 基础用法
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react-taro';
 
@@ -42,11 +43,14 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ### 异步加载
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState, useEffect } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react-taro';
 
@@ -83,13 +87,16 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 自定义大小
 
-`width` 自定义轮播大小
+`width` 自定义轮播大小 
+
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react-taro';
 
@@ -113,6 +120,7 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 自定义分页指示器
@@ -120,7 +128,8 @@ export default App;
 `pageContent` 表示自定义指示器
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react-taro';
 
@@ -152,6 +161,7 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 手动切换
@@ -159,7 +169,8 @@ export default App;
 可通过 `API`(`prev`,`next`)进行手动切换
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState, useRef } from 'react'
 import { Swiper, SwiperItem, Icon } from '@nutui/nutui-react-taro';
 
@@ -241,6 +252,7 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 垂直方向
@@ -248,7 +260,8 @@ export default App;
 `direction` 自定义轮播方向
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react-taro';
 
@@ -277,15 +290,16 @@ const App = () => {
 }
 export default App;
 ```
-:::
 
+:::
 
 ### 水平居中展示
 
 `isCenter` 代表可居中，同时必须传 `width`
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react-taro';
 
@@ -311,11 +325,14 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ### 垂直居中展示
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
 import { Swiper,SwiperItem } from '@nutui/nutui-react-taro';
 
@@ -346,32 +363,33 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ## Swiper
 
 ### Props
 
-| 属性    | 说明 | 类型    | 默认值    |
-|-------------------| -------------------------------------- |---------|--------------|
-| width             | 轮播卡片的宽度                         | number       | `-` |
-| height            | 轮播卡片的高度                         | number       | `-`  |
-| direction         | 轮播方向,可选值`horizontal`,`vertical` | string  | `horizontal` |
-| indicator | 分页指示器是否展示                     | boolean | `false`  |
-| loop              | 是否循环轮播                           | boolean | `true`       |
-| autoPlay          | 自动轮播时长，0表示不会自动轮播        | boolean | `false`      |
-| defaultValue      | 初始化索引值                           | number | `0`  |
-| onChange | 卡片切换后的回调 | 当前索引值index | `-` |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| width | 轮播卡片的宽度 | `number` | `-` |
+| height | 轮播卡片的高度 | `number` | `-` |
+| direction | 轮播方向 | `horizontal` \| `vertical` | `horizontal` |
+| indicator | 分页指示器是否展示 | `boolean` | `false` |
+| loop | 是否循环轮播 | `boolean` | `true` |
+| autoPlay | 自动轮播时长，0表示不会自动轮播 | `boolean` | `false` |
+| defaultValue | 初始化索引值 | `number` | `0` |
+| onChange | 卡片切换后的回调 | `当前索引值index` | `-` |
 
 > Swiper 是对 Taro Swiper 进行的封装，可以支持 Taro Swiper 属性的透传。具体支持属性可参考[https://taro-docs.jd.com/docs/components/viewContainer/swiper](https://taro-docs.jd.com/docs/components/viewContainer/swiper)
 
 ### Ref
 
-| 属性    | 说明 | 类型                      |
-|--------| -------------- |-------------------------|
-| prev   | 切换到上一页   | `()=>void`              |
-| next   | 切换到下一页   | `()=>void`              |
-| to     | 切换到指定轮播 | `(index: number)=>void` |
+| 属性 | 说明 | 类型 |
+| --- | --- | --- |
+| prev | 切换到上一页 | `()=>void` |
+| next | 切换到下一页 | `()=>void` |
+| to | 切换到指定轮播 | `(index: number)=>void` |
 
 ## 主题定制
 
@@ -379,6 +397,6 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 说明         | 默认值     |
-| --- |------------|---------|
-| --nutui-swiper-pagination-bottom | 分页器距离底部的距离 |  `12px` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| \--nutui-swiper-pagination-bottom | 分页器距离底部的距离 | `12px` |

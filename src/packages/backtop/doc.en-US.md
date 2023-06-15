@@ -6,8 +6,7 @@ Provides a quick return to the top function for long pages.
 
 ## Install
 
-```javascript
-// react
+```tsx
 import { BackTop } from '@nutui/nutui-react';
 ```
 

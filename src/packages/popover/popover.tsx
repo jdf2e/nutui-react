@@ -96,7 +96,6 @@ export const Popover: FunctionComponent<
 
   const popoverRef = useRef<any>(null)
   const popoverContentRef = useRef<any>(null)
-
   const [showPopup, setShowPopup] = useState(false)
   const [elWidth, setElWidth] = useState(0)
   const [elHeight, setElHeight] = useState(0)
@@ -183,19 +182,17 @@ export const Popover: FunctionComponent<
   }
 
   const getRootPosition = () => {
-    let styles: CSSProperties = {}
+    const styles: CSSProperties = {}
     if (!rootPosition) return {}
 
     const contentWidth = elWidth
     const contentHeight = elHeight
-
     const { width, height, left, top, right } = rootPosition
-
     const direction = location.split('-')[0]
     const skew = location.split('-')[1]
     let cross = 0
     let parallel = 0
-    if (Array.isArray(offset) && offset.length == 2) {
+    if (Array.isArray(offset) && offset.length === 2) {
       cross += +offset[1]
       parallel += +offset[0]
     }
@@ -203,33 +200,33 @@ export const Popover: FunctionComponent<
     if (width) {
       if (['bottom', 'top'].includes(direction)) {
         const h =
-          direction == 'bottom' ? height + cross : -(contentHeight + cross)
+          direction === 'bottom' ? height + cross : -(contentHeight + cross)
 
         styles.top = `${top + h}px`
 
         if (!skew) {
           styles.left = `${-(contentWidth - width) / 2 + left + parallel}px`
         }
-        if (skew == 'start') {
+        if (skew === 'start') {
           styles.left = `${left + parallel}px`
         }
-        if (skew == 'end') {
+        if (skew === 'end') {
           styles.left = `${right + parallel}px`
         }
       }
       if (['left', 'right'].includes(direction)) {
         const contentW =
-          direction == 'left' ? -(contentWidth + cross) : width + cross
+          direction === 'left' ? -(contentWidth + cross) : width + cross
         styles.left = `${left + contentW}px`
         if (!skew) {
           styles.top = `${
             top - contentHeight / 2 + height / 2 - 4 + parallel
           }px`
         }
-        if (skew == 'start') {
+        if (skew === 'start') {
           styles.top = `${top + parallel}px`
         }
-        if (skew == 'end') {
+        if (skew === 'end') {
           styles.top = `${top + height + parallel}px`
         }
       }

@@ -6,8 +6,7 @@
 
 ## 安裝
 
-```ts
-// react
+```tsx
 import { ConfigProvider } from '@nutui/nutui-react';
 ```
 

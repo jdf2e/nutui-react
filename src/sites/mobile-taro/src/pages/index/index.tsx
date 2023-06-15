@@ -2,8 +2,13 @@ import React from 'react'
 import Taro from '@tarojs/taro'
 import pkg from '@/config.json'
 import './index.scss'
-
+import Schema from 'async-validator'
+//
 const navs = pkg.nav
+// console.log(navs)
+try {
+  console.log('xxx', Schema)
+} catch (e) {}
 const Index = () => {
   const gotoNext = (name: string, enName: string) => {
     // 跳转到目的页面，打开新页面

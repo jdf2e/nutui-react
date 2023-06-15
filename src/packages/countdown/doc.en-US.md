@@ -6,8 +6,7 @@ Used to display the countdown value in real time, and precision supports millise
 
 ## Install
 
-```ts
-// react
+```tsx
 import { CountDown } from '@nutui/nutui-react'
 ```
 
@@ -357,8 +356,6 @@ export default App;
 | millisecond | Whether to enable millisecond render | `boolean` | `false` |
 | autoStart | Whether to auto start count down | `boolean` | `true` |
 | time | Total time, unit milliseconds | `number` | `0` |
-| showDays | Show Text Day | `boolean` | `false` |
-| showPlainText | Show Text | `boolean` | `false` |
 | destroy | destroy instance | `boolean` | `false` |
 | onPaused | Emitted when count down paused | `onPaused: (restTime: number) => void` | `-` |
 | onRestart | Emitted when count down restart | `onRestart: (restTime: number) => void` | `-` |

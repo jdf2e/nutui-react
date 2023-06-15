@@ -6,7 +6,7 @@
   padding-bottom: env(safe-area-inset-bottom);
   text-align: center;
 
-  .nut-actionsheet__title {
+  &__title {
     display: block;
     padding: 10px;
     margin: 0;
@@ -16,7 +16,7 @@
     color: $title-color;
   }
 
-  .nut-actionsheet__description {
+  &__description {
     padding: 10px;
     display: block;
     font-size: $font-size-base;
@@ -24,15 +24,15 @@
     margin-inline-start: 0px;
   }
 
-  .nut-actionsheet__list {
+  &__list {
     display: block;
     list-style: none;
     padding: 0;
     margin: 0;
   }
 
-  .nut-actionsheet__cancel,
-  .nut-actionsheet__item {
+  &__cancel,
+  &__item {
     display: block;
     padding: 10px;
     text-align: $actionsheet-item-text-align;
@@ -58,7 +58,7 @@
     }
   }
 
-  .nut-actionsheet__cancel {
+  &__cancel {
     margin-top: 5px;
     border-top: 1px solid $actionsheet-border-color;
   }

@@ -1,13 +1,12 @@
 # Address 地址
 
-### 介绍
+## 介绍
 
 地址选择
 
-### 安装
+## 安装
 
-``` javascript
-// react
+```tsx
 import { Address } from '@nutui/nutui-react';
 ```
 
@@ -184,7 +183,6 @@ export default App;
 :::demo
 
 ```tsx
-
 import React, { useState } from "react";
 import { Address, Cell, Popup } from '@nutui/nutui-react';
 

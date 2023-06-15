@@ -6,8 +6,7 @@ Enter or edit text in the text box, and limit the number of entries is supported
 
 ## Install
 
-```javascript
-// react
+```tsx
 import { TextArea } from '@nutui/nutui-react';
 ```
 
@@ -35,6 +34,7 @@ const App = () => {
 };
 export default App
 ```
+
 :::
 
 ### Controlled
@@ -56,6 +56,7 @@ const App = () => {
 };
 export default App
 ```
+
 :::
 
 ### Display word count
@@ -73,6 +74,7 @@ const App = () => {
 };
 export default App
 ```
+
 :::
 
 ### Custom rows, auto height
@@ -90,6 +92,7 @@ const App = () => {
 };
 export default App
 ```
+
 :::
 
 ### Custom limit color
@@ -134,6 +137,7 @@ const App = () => {
 };
 export default App
 ```
+
 :::
 
 ### TextAlign
@@ -156,26 +160,27 @@ const App = () => {
 };
 export default App
 ```
+
 :::
 
 ## TextArea
 
 ### Props
 
-| Property     | Description            | Type   | Default       |
-| ------------ | ----------------------------------- | -------------- | -------------- |
-| value        | input value, controlled | `string` | - |
-| defaultValue | input default value, uncontrolled              | `string`         | -              |
-| placeholder  | set placeholder prompt text             | `string`         | `please enter content ` |
-| maxLength    | limit the maximum input characters, no limit with `-1`             | `number` | `140`              |
-| rows         | height of textarea, with priority higher than autoSize attribute | `number` | `2`            |
-| showCount    | whether textarea displays the input characters. Use | `boolean`        | `false`        |
-| autoSize     | whether to adapt the content height.          | `boolean`        | `false`    |`left`         |
-| readOnly     | read only attribute          | `boolean`        | `false`        |
-| disabled     | disable attribute           | `boolean`        | `false`        |
-| onChange | Triggered when the value of the input box changes | `(value) => void`      | - |
-| onFocus  | Triggered when focusing     | `(event) => void`      | - |
-| onBlur   | Triggered when out of focus     | `(event) => void`      | - |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| value | input value, controlled | `string` | `-` |
+| defaultValue | input default value, uncontrolled | `string` | `-` |
+| placeholder | set placeholder prompt text | `string` | `please enter content` |
+| maxLength | limit the maximum input characters, no limit with `-1` | `number` | `140` |
+| rows | height of textarea, with priority higher than autoSize attribute | `number` | `2` |
+| showCount | whether textarea displays the input characters. Use | `boolean` | `false` |
+| autoSize | whether to adapt the content height. | `boolean` | `false` |
+| readOnly | read only attribute | `boolean` | `false` |
+| disabled | disable attribute | `boolean` | `false` |
+| onChange | Triggered when the value of the input box changes | `(value) => void` | `-` |
+| onFocus | Triggered when focusing | `(event) => void` | `-` |
+| onBlur | Triggered when out of focus | `(event) => void` | `-` |
 
 ## Theming
 
@@ -183,11 +188,11 @@ export default App
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Description | Default |
-| --- | --- |
-| --nutui-textarea-font | fontSize | `$font-size-2` |
-| --nutui-textarea-padding | padding | `10px 25px`|
-| --nutui-textarea-limit-color | limit color | `$text-color` |
-| --nutui-textarea-text-color | text color | `$title-color` |
-| --nutui-textarea-text-curror-color  | caret color | `$title-color`|
+| Name | Description | Default | 
+| --- | --- | --- | 
+| --nutui-textarea-font | fontSize | `$font-size-2` | 
+| --nutui-textarea-padding | padding | `10px 25px`| 
+| --nutui-textarea-limit-color | limit color | `$text-color` | 
+| --nutui-textarea-text-color | text color | `$title-color` | 
+| --nutui-textarea-text-curror-color | caret color | `$title-color`| 
 | --nutui-textarea-disabled-color | disabled color | `$disable-color` |

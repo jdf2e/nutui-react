@@ -6,7 +6,7 @@
 
 ## 安裝
 
-```ts
+```tsx
 import { NavBar } from '@nutui/nutui-react';
 ```
 

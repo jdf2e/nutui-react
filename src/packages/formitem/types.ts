@@ -1,29 +1,3 @@
-export interface BaseForm {
-  /**
-   * 经 Form.useForm() 创建的 form 控制实例，不提供时会自动创建
-   */
-  form: any
-  /**
-   * label的位置
-   * 可选值 top/left/right
-   */
-  labelPosition: string | number
-  /**
-   * 表单分组名称
-   */
-  formGroupTitle: string
-  // 必选项星标位置
-  starPositon: string
-  /**
-   * 表单校验成功回调
-   */
-  onFinish: (obj: object) => void
-  /**
-   * 表单校验失败回调
-   */
-  onFinishFailed: (value: []) => void
-}
-
 export interface FormItemRuleWithoutValidator {
   [key: string]: any
   regex?: RegExp
@@ -56,7 +30,7 @@ export interface BaseFormField {
   disabled: boolean
 }
 
-export type StoreValue = string | number
+export type StoreValue = any
 export type NamePath = string | number
 
 export interface Callbacks<Values = any> {
@@ -65,16 +39,10 @@ export interface Callbacks<Values = any> {
   onFinishFailed?: (Values: Values) => void
 }
 
-export interface Store {
-  [name: string]: StoreValue
-}
-
 export interface FormInstance<Values = any> {
   registerField: (entity: FieldEntity) => () => void
   getFieldValue: (name: NamePath) => StoreValue
-  // getFieldsValue(): Values
   setFieldsValue: (value: any) => void
-  // validateFields: (nameList?: NamePath[]) => Promise<Store>
   resetFields: (fields?: NamePath[]) => void
   submit: () => void
   setCallback: (callbacks: Callbacks) => void
@@ -89,8 +57,4 @@ export interface FieldEntity {
     dependencies?: NamePath[]
     initialValue?: any
   }
-}
-
-export interface IDescriptor {
-  [name: string]: string
 }

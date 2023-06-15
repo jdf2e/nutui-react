@@ -6,8 +6,7 @@ Create a mask layer that is typically used to prevent users from doing other thi
 
 ## Install
 
-```ts
-// react
+```tsx
 import { OverLay } from '@nutui/nutui-react';
 ```
 
@@ -241,7 +240,7 @@ export default App;
 
 :::
 
-## API
+## Overlay
 
 ### Props
 

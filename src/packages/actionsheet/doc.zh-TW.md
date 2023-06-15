@@ -6,8 +6,7 @@
 
 ## 安裝
 
-```ts
-// react
+```tsx
 import { ActionSheet } from '@nutui/nutui-react';
 ```
 

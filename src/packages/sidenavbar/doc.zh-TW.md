@@ -7,7 +7,6 @@
 ## 安裝
 
 ```tsx
-// react
 import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
 ```
 
@@ -139,7 +138,7 @@ export default App;
 | visible | 組件是否顯示 | `boolean` | `false` |
 | title | 整體標題 | `string` | `-` |
 | width | 遮罩寬度百分比 | `string` | `80%` |
-| position | 彈出位置 | `'left' \| 'right'` | `left` |
+| position | 彈出位置 | `left` \| `right` | `left` |
 | offset | 縮進寬度 | `number` | `20` |
 | onClose | 關閉遮罩時觸發 | `-` | `-` |
 
@@ -149,7 +148,7 @@ export default App;
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| value | 導航唯一標識 | `string \| number` | `-` |
+| value | 導航唯一標識 | `string`  \|  `number` | `-` |
 | title | 整體標題 | `string` | `-` |
 | open | 導航是否默認展開 | `boolean` | `true` |
 | onClick | 導航點擊 | `data: {title: string, value: string \| number, isShow: boolean}` | `-` |
@@ -160,7 +159,7 @@ export default App;
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| value | 導航唯一標識 | `string \| number` | `-` |
+| value | 導航唯一標識 | `string`  \|  `number` | `-` |
 | title | 整體標題 | `string` | `-` |
 | onClick | 導航點擊 | `data: {title: string, value: string \| number}` | `-` |
 

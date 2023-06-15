@@ -1,99 +1,59 @@
 # Form
 
-### Intro
+## Intro
 
-It is used for data entry and verification. It supports input box, radio box, check box and other types.
+It is used for data entry and verification, and supports input boxes, radio boxes, check boxes and other types.
 
-### Install
+## Install
 
-```javascript
+```tsx
 import { Form } from '@nutui/nutui-react'
 ```
 
+## Demo
+
 ### Basic Usage
-:::demo
-```tsx
-import  React from "react";
-import { Form, Input, TextArea } from '@nutui/nutui-react';
-const App = () => {
-  return (
-    <>
-      <Form>
-        <Form.Item label='Name' name="username">
-          <Input
-            className="nut-input-text"
-            placeholder='Please enter your name'
-            type="text"
-          />
-        </Form.Item>
-        <Form.Item label='Remark' name="remark">
-          <TextArea placeholder='Please enter remarks' />
-        </Form.Item>
-      </Form>
-    </>
-  )
-}
-export default App;
-```
-:::
-
-### Top Align
 
 :::demo
-```tsx
-import  React from "react";
-import { Form, Input, TextArea } from '@nutui/nutui-react';
-const App = () => (
-  <Form labelPosition="Top">
-    <Form.Item label='Name' name="username">
-      <Input
-        className="nut-input-text"
-        placeholder='Please enter your name'
-        type="text"
-      />
-    </Form.Item>
-    <Form.Item label='Remark' name="remark">
-      <TextArea placeholder='Please enter remarks' />
-    </Form.Item>
-  </Form>
-)
 
-export default App;
-```
-:::
-
-### Validate Form
-:::demo
 ```tsx
-import  React from "react";
-import { Form, Input, Cell } from '@nutui/nutui-react';
+import React from "react";
+import { Form, Button, InputNumber, Input, TextArea } from '@nutui/nutui-react';
 
 const App = () => {
   return (
     <>
       <Form
-        onFinish={(obj) => submitSucceed(obj)}
-        onFinishFailed={(error) => submitFailed(error)}
+        labelPosition="right"
+        footer={
+          <>
+            <Button nativeType="submit" block type="primary">
+              Submit
+            </Button>
+          </>
+        }
       >
-        <Form.Item label='Name' name="username">
+        <Form.Item
+          required
+          label="name"
+          name="username"
+        >
           <Input
             className="nut-input-text"
-            placeholder='Please enter your name'
+            placeholder="Please type in your name"
             type="text"
           />
         </Form.Item>
-        <Form.Item label='Age' name="age">
-          <Input placeholder='Please enter age' type="number" />
+        <Form.Item label="address" name="address">
+          <TextArea placeholder="please enter address" maxLength={100} />
         </Form.Item>
-        <Form.Item label='Tel' name="tel">
-          <Input placeholder='Please enter tel number' type="number" />
+        <Form.Item
+          label="count"
+          name="num"
+          getValueFromEvent={(...args) => args[0]}
+        >
+          <InputNumber />
         </Form.Item>
-        <Form.Item label='Address' name="address">
-          <Input placeholder='Please enter address' type="text" />
-        </Form.Item>
-        <Cell>
-          <input type="submit" value='Submit' />
-        </Cell>
       </Form>
     </>
   )
@@ -101,16 +61,110 @@ const App = () => {
 
 export default App;
 ```
+
 :::
 
-### InitialValue Validate Type
+### Form validation
+
 :::demo
 
 ```tsx
-import  React from "react";
-import { Form, Input, Cell } from '@nutui/nutui-react';
+import React from "react";
+import { Form, Button, Input, TextArea } from '@nutui/nutui-react';
+
 
 const App = () => {
+  const submitFailed = (error: any) => {
+    Toast.show({ content: JSON.stringify(error), icon: 'fail' })
+  }
+
+  const submitSucceed = (values: any) => {
+    Toast.show({ content: JSON.stringify(values), icon: 'success' })
+  }
+  return (
+    <>
+      <Form
+        onFinish={(values) => submitSucceed(values)}
+        onFinishFailed={(values, errors) => submitFailed(errors)}
+        footer={
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              width: '100%',
+            }}
+          >
+            <Button nativeType="submit" type="primary">
+              submit
+            </Button>
+            <Button nativeType="reset" style={{ marginLeft: '20px' }}>
+              reset
+            </Button>
+          </div>
+        }
+      >
+        <Form.Item
+          label="name"
+          name="username"
+          rules={[{ required: true, message: "Please type in your name" }]}
+        >
+          <Input placeholder="Please type in your name" type="text" />
+        </Form.Item>
+        <Form.Item
+          label="age"
+          name="age"
+          rules={[
+            { required: true, message: "Please enter age" },
+            { validator: customValidator, message: "number must be entered" },
+            {
+              validator: valueRangeValidator,
+              message: "0-200 range must be entered"
+            },
+          ]}
+        >
+          <Input placeholder="Please enter age，0-200 range must be entered"
+                 type="text" />
+        </Form.Item>
+        <Form.Item
+          label="telephone"
+          name="tel"
+          rules={[{ required: true, message: "Please type your phone number" }]}
+        >
+          <Input placeholder="The phone format is incorrect" type="number" />
+        </Form.Item>
+        <Form.Item
+          label="address"
+          name="address"
+          rules={[{ required: true, message: "please enter address" }]}
+        >
+          <Input placeholder="please enter address" type="text" />
+        </Form.Item>
+      </Form>
+    </>
+  )
+}
+
+export default App;
+```
+
+:::
+
+### with initial value form validation
+
+:::demo
+
+```tsx
+import React from "react";
+import { Form, Input, Cell, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const submitFailed = (error: any) => {
+    Toast.show({ content: JSON.stringify(error), icon: 'fail' })
+  }
+
+  const submitSucceed = (values: any) => {
+    Toast.show({ content: JSON.stringify(values), icon: 'success' })
+  }
   // 函数校验
   const customValidator = (rule: FormItemRuleWithoutValidator, value: string) => {
     return /^\d+$/.test(value)
@@ -122,35 +176,47 @@ const App = () => {
   return (
     <>
       <Form
-        onFinish={(obj) => submitSucceed(obj)}
-        onFinishFailed={(error) => submitFailed(error)}
+        initialValues={{ username: 'LiSi', age: 20 }}
+        onFinish={(values) => submitSucceed(values)}
+        onFinishFailed={(values, errors) => submitFailed(errors)}
+        footer={
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              width: '100%',
+            }}
+          >
+            <Button nativeType="submit" type="primary">
+              submit
+            </Button>
+            <Button nativeType="reset" style={{ marginLeft: '20px' }}>
+              reset
+            </Button>
+          </div>
+        }
       >
-        <Form.Item label='Name' name="username" rules={[{ required: true, message: 'Please enter your name' }]}>
-          <Input
-            className="nut-input-text"
-            placeholder='Please enter your name'
-            type="text"
-          />
+        <Form.Item
+          label="name"
+          name="username"
+          rules={[{ required: true, message: "Please type in your name" }]}
+          initialValue="ZhangSan"
+        >
+          <Input placeholder="Please type in your name" type="text" />
         </Form.Item>
-        <Form.Item label='Age' name="age" rules={[
-          { required: true, message: 'Please enter age' },
-          { validator: customValidator, message: 'must enter number' },
-          { validator: valueRangeValidator, message: '0-200 range must be entered' },
+        <Form.Item label="age" name="age" initialValue={18} rules={[
+          { required: true, message: "Please enter age" },
+          { validator: customValidator, message: "number must be entered" },
+          {
+            validator: valueRangeValidator,
+            message: "0-200 range must be entered"
+          },
         ]}>
-          <Input placeholder='Please enter the age, it must be a number and the range is 0-200' type="number" />
-        </Form.Item>
-        <Form.Item label='Tel' name="tel" rules={[{ required: true, message: 'please enter tel' }]}>
-          <Input placeholder='please enter tel' type="number" />
-        </Form.Item>
-        <Form.Item label='Address' name="address" rules={[{ required: true, message: 'Please enter address' }]}>
-          <Input placeholder='Please enter address' type="text" />
-        </Form.Item>
-        <Cell>
-          <input type="submit" value='Submit' />
-          <input type="reset" style={{ marginLeft: '15px' }}
-            value="Reset notification status"
+          <Input
+            placeholder="Please enter age，0-200 range must be entered"
+            type="number"
           />
-        </Cell>
+        </Form.Item>
       </Form>
     </>
   )
@@ -158,27 +224,32 @@ const App = () => {
 
 export default App;
 ```
+
 :::
 
-### Interact with form data fields via Form.useForm
+### Form.useForm interacts with form data fields
+
 :::demo
 
 ```tsx
-import  React from "react";
-import { Form, Input, Cell } from '@nutui/nutui-react';
+import React from "react";
+import { Form, Input, Radio, Cell } from '@nutui/nutui-react';
 
 const App = () => {
-  const [form] = Form.useForm()
+  const submitFailed = (error: any) => {
+    Toast.show({ content: JSON.stringify(error), icon: 'fail' })
+  }
+
+  const submitSucceed = (values: any) => {
+    Toast.show({ content: JSON.stringify(values), icon: 'success' })
+  }
   const onMenuChange = (value: string | number | boolean) => {
     switch (value) {
       case 'male':
-        form.setFieldsValue({ note: 'Hi, man!' })
+        form.setFieldsValue({ note: '👨' })
         break
       case 'female':
-        form.setFieldsValue({ note: 'Hi, lady!' })
-        break
-      case 'other':
-        form.setFieldsValue({ note: 'Hi there!' })
+        form.setFieldsValue({ note: '👩' })
         break
       default:
     }
@@ -187,22 +258,25 @@ const App = () => {
     <>
       <Form
         form={form}
-        onFinish={(obj) => submitSucceed(obj)}
-        onFinishFailed={(error) => submitFailed(error)}
+        onFinish={(values) => submitSucceed(values)}
+        onFinishFailed={(values, errors) => submitFailed(errors)}
       >
-        <Form.Item label="Note" name="note">
-          <Input placeholder="please input note" type="string" />
+        <Form.Item
+          label="name"
+          name="username"
+          rules={[{ required: true, message: "Please type in your name" }]}
+        >
+          <Input placeholder="Please type in your name" type="text" />
         </Form.Item>
-        <Form.Item label='RadioGroup' name="radiogroup">
-          <Radio.RadioGroup onChange={onMenuChange}>
+        <Form.Item label="tag" name="note">
+          <Input placeholder="Please enter a label" type="string" />
+        </Form.Item>
+        <Form.Item label="gender" name="gender">
+          <Radio.Group onChange={onMenuChange}>
             <Radio value="male">male</Radio>
             <Radio value="female">female</Radio>
-            <Radio value="other">other</Radio>
-          </Radio.RadioGroup>
+          </Radio.Group>
         </Form.Item>
-        <Cell>
-          <input type="submit" value='Submit' />
-        </Cell>
       </Form>
     </>
   )
@@ -210,122 +284,226 @@ const App = () => {
 
 export default App;
 ```
+
 :::
-### Form Type
+
+### form type
 
 :::demo
-```tsx
-import  React from "react";
-import { Form, Input, Cell, Switch, Checkbox, Radio, Rate, Range } from '@nutui/nutui-react';
 
+```tsx
+import React from "react";
+import {
+  Form,
+  Input,
+  Cell,
+  Switch,
+  Checkbox,
+  Radio,
+  Picker,
+  Uploader,
+  Button,
+  Rate,
+  Range,
+  Toast
+} from '@nutui/nutui-react';
+import { Right } from '@nutui/icons-react';
 
 const App = () => {
+  const submitFailed = (error: any) => {
+    Toast.show({ content: JSON.stringify(error), icon: 'fail' })
+  }
+
+  const submitSucceed = (values: any) => {
+    Toast.show({ content: JSON.stringify(values), icon: 'success' })
+  }
   return (
     <>
       <Form
-        onFinish={(obj) => submitSucceed(obj)}
-        onFinishFailed={(error) => submitFailed(error)}
+        style={{ '--nutui-form-item-label-width': '120px' }}
+        footer={
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              width: '100%',
+            }}
+          >
+            <Button nativeType="submit" type="primary">
+              submit
+            </Button>
+            <Button nativeType="reset" style={{ marginLeft: '20px' }}>
+              reset
+            </Button>
+          </div>
+        }
+        onFinish={(values) => submitSucceed(values)}
+        onFinishFailed={(values, errors) => submitFailed(errors)}
       >
-        <Form.Item label='Switch' name="switch">
+        <Form.Item label="Input" name="form_input">
+          <Input placeholder="placeholder" />
+        </Form.Item>
+        <Form.Item label="Switch" name="switch">
           <Switch />
         </Form.Item>
-        <Form.Item label='Checkbox' name="checkbox">
-          <Checkbox
-            textPosition="right"
-            label='Checkbox'
-            checked={false}
-          />
+        <Form.Item label="Checkbox" name="checkbox">
+          <Checkbox labelPosition="right" label="Option 1" />
         </Form.Item>
-        <Form.Item label='Radio' name="radiogroup">
-          <Radio.RadioGroup>
-            <Radio value="1">Value1</Radio>
-            <Radio value="2">Value2</Radio>
-            <Radio value="3">Value3</Radio>
-          </Radio.RadioGroup>
+        <Form.Item label="Check Group" name="checkbox_group">
+          <Checkbox.Group>
+            <Checkbox labelPosition="right" label="Option 1" value={1} />
+            <Checkbox labelPosition="right" label="Option 2" value={2} />
+          </Checkbox.Group>
         </Form.Item>
-        <Form.Item label='Rate' name="rate">
+        <Form.Item label="Radio" name="radio">
+          <Radio value="1">Radio 1</Radio>
+        </Form.Item>
+        <Form.Item label="Radio Group" name="radio_group">
+          <Radio.Group>
+            <Radio value="1">Radio 1</Radio>
+            <Radio value="2">Radio 2</Radio>
+          </Radio.Group>
+        </Form.Item>
+        <Form.Item label="Rate" name="rate">
           <Rate defaultValue={0} />
         </Form.Item>
-        <Form.Item label='Range' name="range">
-          <Range modelValue={0} max={10} min={-10} />
+        <Form.Item label="Range" name="range">
+          <Range max={10} min={-10} />
         </Form.Item>
-        <Cell>
-          <input type="submit" value='Submit' />
-        </Cell>
+        <Form.Item
+          label="Picker"
+          name="picker"
+          trigger="onConfirm"
+          getValueFromEvent={(...args) => args[1]}
+          onClick={(event, ref: any) => {
+            ref.open()
+          }}
+        >
+          <Picker options={[pickerOptions]}>
+            {(value: any) => {
+              return (
+                <Cell
+                  style={{
+                    padding: 0,
+                    '--nutui-cell-divider-border-bottom': '0',
+                  }}
+                  className="nutui-cell--clickable"
+                  title={
+                    value.length
+                      ? pickerOptions.filter((po) => po.value === value[0])[0]
+                        ?.text
+                      : 'Please select'
+                  }
+                  extra={<Right />}
+                  align="center"
+                />
+              )
+            }}
+          </Picker>
+        </Form.Item>
+        <Form.Item
+          label="Uploader"
+          name="files"
+          initialValue={[
+            {
+              name: 'file1.png',
+              url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+              status: 'success',
+              message: 'uploaded successfully',
+              type: 'image',
+              uid: '122',
+            },
+          ]}
+        >
+          <Uploader
+            url="https://my-json-server.typicode.com/linrufeng/demo/posts" />
+        </Form.Item>
       </Form>
     </>
   )
 }
 
+
 export default App;
 ```
+
 :::
-## API
 
-### Form Props
+## Form
 
-| Property | Description | TYPE   | DEFAULT |
-|-------------|--------------------------|--------|--------|
-| form`v1.4.8` | The form control instance created by Form.useForm() will be created automatically if not provided | FormInstance |        |
-| labelPosition | label's position，the default value is Right，can be Top、Left、Right | string |        |
-| starPositon | the position of the red asterisk next to the label of the required filed ，the default is Left，can be Left、Right | string |        |
+### Props
 
-### Form Events
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| form | Form control instance created by Form.useForm(), if not provided, it will be created automatically | `FormInstance` | `-` |
+| footer | The bottom area of the form, where confirmation and reset buttons are usually placed | `ReactNode` | `null` |
+| initialValues | form initial values | `any` | `-` |
+| name | form name | `any` | `-` |
+| labelPosition | The position of the form item label | `top` \| `left` \| `right` | `right` |
+| starPosition | The red star position of the required form item label |  `left` \| `right` | `left` |
+| onFinish | Triggered after verification is successful | `(values: any) => void` | `-` |
+| onFinishFailed | Triggered when any form item fails validation | `(values: any, errorFields: any) => void` | `-` |
 
-| Event   | Description | Arguments |
-|----------|-------------------|---------------|
-| onFinish | validated succeed  | form data |
-| onFinishFailed | validated failed | error message |
+## Form.Item
 
-### Form.Item Props
+### Props
 
-| Property | Description | TYPE | DEFAULT  |
-|-----------|-------------|------------------|---------|
-| required | Is it a required field | boolean | `false` |
-| name | the field of the form field is required when the form verification function is used | string | - |
-| labelWidth | The width of the form item label. The default unit is `px` | number \| string | `90px`  |
-| errorMessageAlign | Error prompt text alignment. The optional values are `center` and `right`  | string           | `left`  |
-| initialValue`v1.4.7` | Set child element default value                  | string           | -  |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| required | The red star of the required form item label, only used to control the style | `boolean` | `false` |
+| name | In the case of using the form validation function, this attribute is required | `string` | `-` |
+| errorMessageAlign | Error text alignment | `center` \| `right` \| `left` | `left` |
+| initialValue | set the default value of child elements | `any` | `-` |
+| trigger | Set the timing to collect field value changes | `string` | `-` |
+| valuePropName | The property of the value of the child node, such as 'checked' for Checkbox | `string` | `-` |
+| getValueFromEvent | Set how to convert event value to field value | `(...args: any) => any` | `-` |
+| onClick | Click event and collect child component Ref | `(event: React.MouseEvent, componentRef: React.MutableRefObject<any>) => void` | `-` |
 
-### Form.Item Rule Data Structure
+### Form.Item Rule
 
-Use the `rules` attribute of Form.Item to define verification rules. The optional attributes are as follows:
+The rule validation process is based on [async-validator](https://github.com/yiminghe/async-validator). For more rule configurations, please refer to the async-validator documentation. Use the `rules` attribute of Form.Item to define validation rules, the optional attributes are as follows:
 
-| Property | Description                   | TYPE |
-|-----------|------------------------|----------|
-| required  | Is it a required field       | boolean |
-| message   | Error prompt copy           | string |
+| Property | Description | Type |
+| --- | --- | --- |
+| required | whether it is a required field | `boolean` |
+| message | error message text | `string` |
+| len | String length for string type; definite number for number type; array length for array type | `number` |
+| max | type must be set: the string type is the maximum length of the string; the number type is the maximum value; the array type is the maximum length of the array | `number` |
+| min | type must be set: the string type is the minimum length of the string; the number type is the minimum value; the array type is the minimum length of the array | `number` |
+| pattern | regular expression match | `number` |
+| pattern | regular expression match | `RegExp` |
+| transform | Convert the field value to the target value and perform validation | `(value) => any` |
+| validator | custom validation, accept Promise as return value | `(rule, value) => Promise` |
 
-### Form Instance Methods
+### FormInstance
 
 Form.useForm() creates a Form instance, which is used to manage all data states.
 
-| Name           | Description | Attribute | Callback  |
-|-------------------|-----------------------------|-----|---------|
-| getFieldValue | Get the value of the corresponding field name | - | (name: NamePath) => any |
-| setFieldsValue | Set the value of the form | - | (values) => void |
-| resetFields`1.4.8` | Reset form prompt state | - | () => void |
-| submit | the function of submit the form | - | Promise |
-
+| Property | Description | Type |
+| --- | --- | --- |
+| getFieldValue | Get the value of the corresponding field name | `(name: NamePath) => any` |
+| setFieldsValue | set field values | `(values) => void` |
+| resetFields | Reset form prompt state | `() => void` |
+| submit | method to submit a form for validation | `Promise` |
 
 ## Theming
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+The component provides the following CSS Variables, which can be used for custom styles, please refer to [ConfigProvider Component](#/zh-CN/component/configprovider) for usage.
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-form-item-error-line-color | `$required-color` |
-| --nutui-form-item-required-color | `$required-color` |
-| --nutui-form-item-error-message-color | `$required-color` |
-| --nutui-form-item-label-font-size | `14px` |
-| --nutui-form-item-label-width | `90px` |
-| --nutui-form-item-label-margin-right | `10px` |
-| --nutui-form-item-label-text-align | `left` |
-| --nutui-form-item-required-margin-right | `4px` |
-| --nutui-form-item-body-font-size | `14px` |
-| --nutui-form-item-body-slots-text-align | `left` |
-| --nutui-form-item-body-input-text-align | `left` |
-| --nutui-form-item-tip-font-size | `10px` |
-| --nutui-form-item-tip-text-align | `left` |
+| Name | Description | Default |
+| --- | --- | --- |
+| \--nutui-form-item-error-line-color | Error message border color | `$required-color` |
+| \--nutui-form-item-required-color | font color of required logo | `$required-color` |
+| \--nutui-form-item-error-message-color | text color of error message | `$required-color` |
+| \--nutui-form-item-label-font-size | label font size | `14px` |
+| \--nutui-form-item-label-width | label width | `90px` |
+| \--nutui-form-item-label-margin-right | label right margin | `10px` |
+| \--nutui-form-item-label-text-align | label text alignment | `left` |
+| \--nutui-form-item-required-margin-right | Required right margin for label | `4px` |
+| \--nutui-form-item-body-font-size | Font size of form container | `14px` |
+| \--nutui-form-item-body-slots-text-align | Form item text alignment | `left` |
+| \--nutui-form-item-body-input-text-align | Text alignment of form item input box | `left` |
+| \--nutui-form-item-tip-font-size | Font size for error messages | `10px` |
+| \--nutui-form-item-tip-text-align | Text alignment for error messages | `left` |
