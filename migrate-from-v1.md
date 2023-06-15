@@ -95,9 +95,8 @@ plugins: [
 - `overlayClass` 重命名为 `className`
 - `overlayStyle` 重命名为 `style`
 - `closeOnClickOverlay` 重命名为 `closeOnOverlayClick`
-- 纠正 `lockScroll` 文档说明，默认值应为 `true`
-- 增加 `afterClose` 和 `afterShow`，用于完全关闭后触发的回调和完全展示后触发的回调
-- 完善 `Overlay` 的 demo 示例
+- 更改 `lockScroll` 默认值为 `true`
+- 新增 `afterClose` 和 `afterShow`，用于完全关闭后触发的回调和完全展示后触发的回调
 #### Popup
 - `popClass` 重命名为 `className`，统一将组件的样式类名使用 `className`，不再指定特殊名字，减轻用户使用的记忆成本
 - `overlayClass` 重命名为 `OverlayClassName`，继承自`Overlay`
@@ -235,12 +234,13 @@ plugins: [
 - 增加 `onclick` 用于收集子组件的 `ref`
 #### Input
 #### InputNumber
-- 增加 `allowEmpty`, 是否允许内容为空
-- 优化新增 `value`和 `defaultValue` , 增加默认值和受控
+- 增加 `allowEmpty`, 用于允许内容是否为空
+- 新增 `defaultValue`，用于非受控，`value` 用于受控
 - `decimalPlaces` 重命名为 `digits`
 - `isAsync` 重命名为 `async`
-- 删除 `inputWidth` 和 `buttonSize`, 通过css变量实现
-- 新增 taro 的 `formatter` 属性开发
+- 移除 `inputWidth`, 通过`--nutui-inputnumber-input-width`控制输入框的宽度
+- 移除 `buttonSize`, 通过`–nutui-inputnumber-button-width` 和 `–nutui-inputnumber-button-height`控制按钮的宽度和高度
+- taro 新增 `formatter` 属性, 用于指定输入框展示值的格式
 #### NumberKeyboard
 - `randomKeys` 重命名为 `random`
 - `customKey` 重命名为 `custom`
@@ -322,14 +322,14 @@ plugins: [
 - `isPreview` 重命名为 ` preview`
 - `defaultImg` 重命名为 ` previewUrl`
 - `defaultFileList` 重命名为 ` defaultValue`
-- `uploadIconTip` 重命名为 `uploadLabel`
+- `uploadIconTip` 重命名为 `uploadLabel`，类型变更为 `ReactNode`
 - `onBeforeUpload` 重命名为 `beforeUpload`
 - `onBeforeXhrUpload` 重命名为 `beforeXhrUpload`
 - `onBeforeDelete` 重命名为 `beforeDelete`
 - `onRemove` 重命名为 `onDelete`
-- 增加 `imageFit`, 用于图片填充模式
-- 增加 `value`, 用于受控传值
-- 删除 `uploadIconSize`, 通过自定义icon来实现
+- 增加 `imageFit`，用于图片填充模式
+- 增加 `value`，用于受控传值
+- 移除 `uploadIconSize`，可通过 icon 属性传入自定义 icon 或借助 CSS Variables 修改 icon 大小
 
 
 ### 操作反馈
@@ -372,10 +372,9 @@ plugins: [
 - `useCapture` 重命名为 `capture`
 - `onScrollChange` 重命名为 `onScroll`
 - `isOpenRefresh` 重命名为 `pullRefresh`
-- `pullText` 重命名为 `pullingText`
-- `loadText` 重命名为 `loadingText`
-- `containerId` 重命名为 `target`, 并去掉useWindow，改用target
-- pullingText和loadingText类型改成ReactNode
+- `pullText` 重命名为 `pullingText`，类型变更为 `ReactNode`
+- `loadText` 重命名为 `loadingText`，类型变更为 `ReactNode`
+- `containerId` 重命名为 `target`
 #### Notify
 - 删除 `color` 和 `background`, 通过css变量实现
 - 修改 `onClosed` 为 `onClose`，规范命名，关闭时触发。
@@ -401,8 +400,8 @@ plugins: [
 
 ### 展示组件
 #### Animate
-- `className` 属性通过继承实现
-- `style` 属性通过继承实现
+- `type` 属性类型更改为 `AnimateType` ，具体值详见文档
+- `action` 属性类型更改为 `initial \| click`
 
 #### AnimatingNumbers
 
@@ -416,14 +415,18 @@ plugins: [
 - `autoplay` 重命名为 `autoPlay`
 - `onFastBack` 重命名为 `onBack`
 - `onPlayEnd` 重命名为 `onEnd`
+
 #### Avatar
-- Avatar `url` 重命名为 `src`
-- Avatar `onActiveAvatar` 重命名为 `onClick`
+- `url` 重命名为 `src`
+- `onActiveAvatar` 重命名为 `onClick`
+- 新增 `fit` 属性，用于图片填充模式
+- 移除 `iconSize`，可通过 icon 属性传入自定义 icon 或借助 CSS Variables 修改 icon 大小
+
+#### AvatarGroup
 - AvatarGroup `maxCount` 重命名为 `max`
 - AvatarGroup `span` 重命名为 `gap`
 - AvatarGroup `zIndex` 重命名为 `level`
-- 新增 `fit` 属性，图片填充模式
-- 图片加兜底
+
 #### Badge
 - 删除 `zIndex`，目前没有用到，也不生效，直接去掉。
 - 删除 `icon`，自定义 `icon` 可放在 `value` 中实现，扩充了 `value` 的类型。
@@ -431,16 +434,10 @@ plugins: [
 - 主题定制的 `css` 变量中，去掉和 `dot` 有关的其他值，只保留 `width`。其他值由 `width` 计算而来。
 
 #### CircleProgress
-- h5
-  - `progress` 重命名为 `percent`
-  - `strokeWidth` 改用 css变量控制
-  - `circleColor` 重名为 `color`
-  - `pathColor` 改用 css变量控制
+- `progress` 重命名为 `percent`
+- `circleColor` 重命名为 `color`
+- `pathColor` 重命名为 `background`
 
-- taro
-  - `progress` 重命名为 `percent`
-  - `circleColor` 重名为 `color`
-  - `pathColor` 重名为 `background`
 #### Collapse
 
 - 新增 defaultActiveName 非受控
@@ -455,11 +452,11 @@ plugins: [
 #### Ellipsis
 - 新增 `className` 和 `style` 属性的支持
 - 优化 H5 的代码，去掉 `useEffect` 渲染改用 `useLayoutEffect`
+
 #### Empty
-- 新增 `status` 属性,默认图片错误类型
-- 优化代码逻辑，包括 `status` 和 `image` 的逻辑，渲染问题修复以及文档优化
-- 1）渲染问题修复：之前的 `description` 的 `ReactNode` 节点存在引入错误，导致传入元素标签失效，2.0版本进行了一个修复。
-- 2）代码逻辑优化：因新增 `status` 属性，对一些无用的代码进行了一个精简优化
+- 新增 `status` 属性，用于默认图片错误类型
+- `image` 属性类型更改为 `ReactNode`
+
 #### ImagePreview
 - `show` 重命名为 `visible`
 - `autoplay` 重命名为 `autoPlay`
@@ -482,11 +479,16 @@ plugins: [
 - `complexAm` 废弃
 
 #### Popover
+- 废除 `theme` 属性
+- 新增 `showArrow` 属性，用于是否显示小箭头
+- 新增 `closeOnClickAction` 属性，用于是否在点击选项后关闭
+- 新增 `closeOnClickOutside` 属性，用于是否在点击外部元素后关闭菜单
+- 新增 `targetId` 属性，用于自定义目标元素 id
+- 新增 `onOpen` 属性，用于点击菜单时触发
+- 新增 `onClose` 属性，用于关闭菜单时触发
+- `onChoose` 重命名为 `onSelect`
+- 继承Popup组件的 `overlayStyle` 、`overlayClassName` 、`overlay` 、`closeOnOverlayClick` 属性。    
 
-- 代码整体重构，需要验证每一个属性（除了list属性和location属性没有更改）
-- `theme` 属性删除， `onChoose`属性删除
-- 新增showArrow、duration、overlay、overlayClassName、overlayStyle、closeOnOverlayClick、closeOnClickAction、closeOnClickOutside、background、color、targetId属性。
-- 新增onSelect、onOpen、onClose回调事件
 
 #### Price
 
@@ -558,9 +560,8 @@ plugins: [
 - 删除 `downIconName`, 替换为 `downIcon`, 类型为 `React.Node` 类型
 
 #### Video
-- 调整中英文文档规范
-- 调整组件书写规范
-- 新增video的taro适配
+- 在 `Taro` 下新增video的适配
+
 #### VirtualList
 - `sourceData` 重命名为 `list`
 - `conatinerSize` 重命名为 `containerHeight`
@@ -576,7 +577,6 @@ plugins: [
 - `frequency` 重命名为 `interval`
 - `speeds` 重命名为 `duration`
 - `top` 重命名为 `gapY`
-- add 文档类型进行规范说明
 #### Card
 
 #### Signature
