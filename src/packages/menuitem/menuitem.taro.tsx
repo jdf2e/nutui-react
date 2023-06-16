@@ -166,7 +166,8 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
         visible={_showPopup}
         closeOnOverlayClick={parent.closeOnOverlayClick}
         onClick={() => {
-          parent.closeOnOverlayClick && parent.toggleMenuItem(index)
+          parent.closeOnOverlayClick &&
+            (parent.toggleMenuItem(index), parent.toggleMenuItemCallback())
         }}
       />
       <div
