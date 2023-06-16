@@ -43,6 +43,7 @@ export const CollapseItem: FunctionComponent<
     extra,
     style,
     className,
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -147,7 +148,7 @@ export const CollapseItem: FunctionComponent<
   }, [expanded])
 
   return (
-    <div className={classNames(classPrefix, className)} style={style}>
+    <div className={classNames(classPrefix, className)} style={style} {...rest}>
       <div
         className={classNames(`${classPrefix}__header`, { disabled })}
         onClick={handleClick}
