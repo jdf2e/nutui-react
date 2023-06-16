@@ -41,7 +41,8 @@ export const CollapseItem: FunctionComponent<
     expandIcon,
     rotate,
     extra,
-    ...rest
+    style,
+    className,
   } = {
     ...defaultProps,
     ...props,
@@ -146,7 +147,7 @@ export const CollapseItem: FunctionComponent<
   }, [expanded])
 
   return (
-    <div className={classPrefix} {...rest}>
+    <div className={classNames(classPrefix, className)} style={style}>
       <div
         className={classNames(`${classPrefix}__header`, { disabled })}
         onClick={handleClick}
