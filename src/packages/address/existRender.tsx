@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode, useEffect } from 'react'
+import React, { FunctionComponent, ReactNode } from 'react'
 import { AddressList } from './type'
 
 export interface ExistRenderProps {
@@ -41,20 +41,7 @@ export const ExistRender: FunctionComponent<
   } = { ...defaultProps, ...props }
   const classPrefix = 'nut-address'
   const selectedExist = (item: AddressList) => {
-    const copyExistAdd = existList as AddressList[]
-    let prevExistAdd: AddressList = {
-      provinceName: '',
-      cityName: '',
-      countyName: '',
-      townName: '',
-      addressDetail: '',
-      selectedAddress: false,
-    }
-
-    copyExistAdd.forEach((list: AddressList, index) => {
-      if (list && list.selectedAddress) {
-        prevExistAdd = list
-      }
+    existList.forEach((list: AddressList, index) => {
       ;(list as AddressList).selectedAddress = false
     })
 
@@ -66,8 +53,6 @@ export const ExistRender: FunctionComponent<
     onSwitchModule &&
       onSwitchModule({ type: type === 'exist' ? 'custom' : 'exist' })
   }
-
-  useEffect(() => {}, [existList])
 
   return (
     <>
