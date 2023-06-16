@@ -479,7 +479,7 @@ plugins: [
 - `complexAm` 废弃
 
 #### Popover
-- 废除 `theme` 属性
+- 废除 `theme` 属性，可以通过css变量 `--nutui-brand-color` 控制暗黑模式
 - 新增 `showArrow` 属性，用于是否显示小箭头
 - 新增 `closeOnClickAction` 属性，用于是否在点击选项后关闭
 - 新增 `closeOnClickOutside` 属性，用于是否在点击外部元素后关闭菜单
