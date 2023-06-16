@@ -2,8 +2,8 @@ import React, { CSSProperties, useCallback } from 'react'
 import classNames from 'classnames'
 import { ButtonProps as MiniProgramButtonProps } from '@tarojs/components'
 import { Loading } from '@nutui/icons-react-taro'
+import { getEnv } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import Taro from '@tarojs/taro'
 
 type OmitMiniProgramButtonProps = Omit<
   MiniProgramButtonProps,
@@ -94,7 +94,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         onClick(e)
       }
     }
-    if (Taro.getEnv() === 'WEB') {
+    if (getEnv() === 'WEB') {
       ;(rest as any).type = rest.formType
     }
     return (
