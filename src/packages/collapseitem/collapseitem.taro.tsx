@@ -15,7 +15,6 @@ import CollapseContext from '../collapse/context'
 export interface CollapseItemProps extends BasicComponent {
   title: ReactNode
   name: string
-  isOpen: boolean
   expandIcon: ReactNode
   disabled: boolean
   rotate: number
@@ -26,10 +25,8 @@ const defaultProps = {
   ...ComponentDefaults,
   title: null,
   name: '',
-  isOpen: false,
   expandIcon: null,
   disabled: false,
-  rotate: 180,
   extra: null,
 } as CollapseItemProps
 export const CollapseItem: FunctionComponent<
@@ -39,7 +36,6 @@ export const CollapseItem: FunctionComponent<
   const {
     children,
     title,
-    isOpen,
     name,
     disabled,
     expandIcon,
@@ -70,7 +66,9 @@ export const CollapseItem: FunctionComponent<
   }, [name, context.isOpen])
 
   const handleClick = () => {
-    context.updateValue(name)
+    if (!disabled) {
+      context.updateValue(name)
+    }
   }
 
   const [timer, setTimer] = useState<any>(null)
@@ -122,7 +120,7 @@ export const CollapseItem: FunctionComponent<
     inAnimation.current = true
     setWrapperHeight(start)
     const newIconStyle = expanded
-      ? { transform: `translateY(-50%) rotate(${rotate}deg)` }
+      ? { transform: `translateY(-50%) rotate(${rotate || context.rotate}deg)` }
       : { transform: 'translateY(-50%)' }
     setIconStyle(newIconStyle)
     setTimeout(() => {
@@ -137,7 +135,15 @@ export const CollapseItem: FunctionComponent<
     }, 100)
   }
 
-  useEffect(toggle, [expanded])
+  const init = useRef(true)
+
+  useEffect(() => {
+    if (init.current) {
+      init.current = false
+    } else {
+      toggle()
+    }
+  }, [expanded])
 
   return (
     <div className={classPrefix} {...rest}>

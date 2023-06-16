@@ -457,10 +457,16 @@ plugins: [
   - `pathColor` 重名为 `background`
 #### Collapse
 
-- 新增 defaultActiveName 非受控
-- activeName 改为受控方式
-- subTitle 重命名为 extra
-- onChange 参数变更为 activeName, name, status
+- 新增 `defaultActiveName` 非受控
+- `activeName` 改为受控方式
+- `icon` 重命名为 `expandIcon`，类型修改为 `ReactNode`
+- `onChange` 参数变更为 `activeName, name, status`
+
+#### CollapseItem
+- 使用方式调整为 `Collapse.Item`
+- subTitle 重命名为 extra，类型修改为 `ReactNode`
+- 新增 `expnandIcon`，优先级高于父组件对应值
+- 新增 `rotate`，优先级高于父组件对应值
 
 #### CountDown
 
