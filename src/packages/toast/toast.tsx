@@ -18,6 +18,7 @@ export interface ToastProps extends BasicComponent {
   position?: ToastPositionType
   title?: string
   closeOnOverlayClick?: boolean
+  lockScroll?: boolean
   size?: string | number
   icon?: ToastIconType
   content?: React.ReactNode
@@ -36,6 +37,7 @@ const options: ToastProps = {
   icon: null,
   onClose: () => {},
   closeOnOverlayClick: false, // 是否点击遮罩可关闭
+  lockScroll: false,
   contentClassName: '',
 }
 

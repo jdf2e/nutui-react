@@ -344,6 +344,7 @@ export default App
 | contentClassName | Toast content class name | `string` | `-` |
 | contentStyle | Toast content style | `React.CSSProperties` | `-` |
 | closeOnOverlayClick | Whether to close when overlay is clicked | `boolean` | `false` |
+| lockScroll | Whether the background is locked | `boolean` | `false` |
 | onClose | Callback function after close | `() => void` | `null` |
 
 `Toast` only supports Imperative calls.

@@ -412,6 +412,7 @@ plugins: [
 - 删除 `loadingRotate`，旋转状态通过 `iconFont`实现
 - 删除 `textAlignCenter`，通过css变量实现
 - 修改 `closeOnClickOverlay` 为 `closeOnOverlayClick` ，语义不变，是否在点击遮罩层后关闭提示
+- 新增 `lockScroll` ，用于背景是否锁定，默认值为 `false`
 
 ### 展示组件
 #### Animate

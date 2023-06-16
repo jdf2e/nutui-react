@@ -14,6 +14,7 @@ export interface NotificationProps extends BasicComponent {
   title: string
   size: string | number
   closeOnOverlayClick: boolean
+  lockScroll: boolean
   contentClassName?: string
   contentStyle?: React.CSSProperties
   onClose: () => void
@@ -119,6 +120,7 @@ export default class Notification extends React.PureComponent<
       position,
       size,
       closeOnOverlayClick,
+      lockScroll,
       style,
       className,
       contentClassName,
@@ -141,6 +143,7 @@ export default class Notification extends React.PureComponent<
             this.clickCover()
           }}
           closeOnOverlayClick={closeOnOverlayClick}
+          lockScroll={lockScroll}
         >
           <div className={`${classPrefix} ${classes}`} id={`toast-${id}`}>
             <div
