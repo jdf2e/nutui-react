@@ -3,7 +3,7 @@ export interface RegionData {
   [key: string]: any
 }
 
-export interface ChangeCallBack {
+export interface ChangeData {
   next: string
   value: string | RegionData
   custom: string
@@ -13,7 +13,7 @@ export interface CloseCallBackData extends Regions {
   addressStr: string
 }
 
-export interface CloseCallBack {
+export interface ResultData {
   data: CloseCallBackData | AddressList
   type: string
 }

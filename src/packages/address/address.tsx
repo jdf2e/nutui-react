@@ -8,8 +8,8 @@ import {
   RegionData,
   NextList,
   Regions,
-  ChangeCallBack,
-  CloseCallBack,
+  ChangeData,
+  ResultData,
   AddressList,
 } from './type'
 
@@ -31,16 +31,13 @@ export interface AddressProps extends BasicComponent {
   selectIcon: React.ReactNode
   closeIcon: React.ReactNode
   backIcon: React.ReactNode
-  onSelect?: (
-    prevExistAdd: AddressList,
-    item: AddressList,
-    copyExistAdd: AddressList[]
-  ) => void
-  onClose?: (cal: CloseCallBack) => void
-  onCancel?: (cal: { closeWay: string }) => void
-  onSwitch?: (cal: { type: string }) => void
-  onChange?: (cal: ChangeCallBack) => void
-  onTabChecked?: (cal: string) => void
+  onClose?: (data: ResultData) => void
+  onSwitch?: (data: { type: string }) => void
+  // 仅用于选择级联地址。
+  onChange?: (data: ChangeData) => void
+  onTabChecked?: (data: string) => void
+  // 仅用于选择已有地址
+  onSelect?: (data: AddressList) => void
 }
 
 const defaultProps = {
@@ -90,7 +87,6 @@ export const Address: FunctionComponent<
     onChange,
     onSelect,
     onClose,
-    onCancel,
     onSwitch,
     onTabChecked,
     style,
@@ -101,9 +97,8 @@ export const Address: FunctionComponent<
     ...props,
   }
   const classPrefix = 'nut-address'
+  const [currentType, setCurrentType] = useState<string>(type)
 
-  const [privateType, setPrivateType] = useState<string>(type)
-  const [tabName] = useState<string[]>(['province', 'city', 'country', 'town'])
   const [showPopup, setShowPopup] = useState(visible)
   const [selectedRegion, setSelectedRegion] = useState<Regions>({
     province: { name: '' },
@@ -116,10 +111,6 @@ export const Address: FunctionComponent<
 
   const handClose = () => {
     setShowPopup(false)
-  }
-
-  const clickOverlay = () => {
-    onCancel && onCancel({ closeWay: 'mask' })
   }
 
   const nextAreaList = (item: NextList) => {
@@ -136,16 +127,8 @@ export const Address: FunctionComponent<
     onChange && onChange(callbackParams)
   }
 
-  const selectedExist = (
-    prevExistAdd: AddressList,
-    item: AddressList,
-    copyExistAdd: AddressList[]
-  ) => {
-    setSelectedExistAddress(item)
-    onSelect && onSelect(prevExistAdd, item, copyExistAdd)
-    handClose()
-  }
   const initAddress = () => {
+    const tabName = ['province', 'city', 'country', 'town']
     for (let i = 0; i < tabName.length; i++) {
       setSelectedRegion({
         ...selectedRegion,
@@ -159,15 +142,15 @@ export const Address: FunctionComponent<
       addressStr: '',
       ...selectedRegion,
     }
-    const res: CloseCallBack = {
+    const res: ResultData = {
       data: {
         addressIdStr: '',
         addressStr: '',
         ...selectedRegion,
       },
-      type: privateType,
+      type: currentType,
     }
-    if (privateType === 'custom' || privateType === 'custom2') {
+    if (currentType === 'custom' || currentType === 'custom2') {
       const { province, city, country, town } = resCopy
       resCopy.addressIdStr = [
         (province as RegionData).id || 0,
@@ -190,22 +173,31 @@ export const Address: FunctionComponent<
 
     onClose && onClose(res)
   }
-  // 选择其他地址
+
+  // exist：已有地址列表
+  const selectedExistItem = (data: AddressList) => {
+    setSelectedExistAddress(data)
+    onSelect && onSelect(data)
+    handClose()
+  }
+
+  // 切换地址选择模式
   const onSwitchModule = () => {
-    if (privateType === 'exist') {
-      setPrivateType('custom')
+    if (currentType === 'exist') {
+      setCurrentType('custom')
     } else {
-      setPrivateType('exist')
+      setCurrentType('exist')
     }
     initAddress()
-    onSwitch && onSwitch({ type: privateType })
+    onSwitch && onSwitch({ type: currentType })
   }
 
   const headerRender = () => {
     return (
       <div className={`${classPrefix}-header`}>
         <div className="arrow-back" onClick={onSwitchModule}>
-          {privateType === 'custom' &&
+          {currentType === 'custom' &&
+            custom &&
             (React.isValidElement(backIcon) ? (
               backIcon
             ) : (
@@ -232,76 +224,68 @@ export const Address: FunctionComponent<
     setShowPopup(visible)
   }, [visible])
 
-  useEffect(() => {
-    if (!showPopup) {
-      close()
-    }
-  }, [showPopup])
+  // useEffect(() => {
+  //   if (!showPopup) {
+  //     close()
+  //   }
+  // }, [showPopup])
 
   return (
-    <>
-      {showPopup && (
-        <Popup
-          visible={showPopup}
-          position="bottom"
-          onClickOverlay={clickOverlay}
-          onClose={() => {
-            close()
-          }}
-        >
-          <div
-            className={`${classPrefix} ${className || ''}`}
-            style={{ ...style }}
-            {...rest}
-          >
-            {headerRender()}
-            {(privateType === 'custom' || privateType === 'custom2') && (
-              <CustomRender
-                defaultValue={defaultValue}
-                type={privateType}
-                province={province}
-                city={city}
-                country={country}
-                town={town}
-                height={height}
-                onNextArea={(cal) => {
-                  nextAreaList && nextAreaList(cal)
-                }}
-                onTabClick={(type) => {
-                  onTabChecked && onTabChecked(type)
-                }}
-                onClose={handClose}
-              />
-            )}
-            {privateType === 'exist' && (
-              <ExistRender
-                type={privateType}
-                existList={existList}
-                selectIcon={
-                  React.isValidElement(selectIcon) ? (
-                    selectIcon
-                  ) : (
-                    <Check color="#FA2C19" />
-                  )
-                }
-                defaultIcon={
-                  React.isValidElement(defaultIcon) ? (
-                    defaultIcon
-                  ) : (
-                    <Location2 />
-                  )
-                }
-                custom={
-                  custom || (custom && locale.address.chooseAnotherAddress)
-                }
-                onSelect={selectedExist}
-                onSwitchModule={onSwitchModule}
-              />
-            )}
-          </div>
-        </Popup>
-      )}
-    </>
+    <Popup
+      visible={showPopup}
+      position="bottom"
+      // onClose={() => {
+      //   // 只需要处理关闭弹框，不需要处理任何逻辑。
+      //   // 当再次打开时，以初始化数据为准。
+      //   console.log('d-')
+      //   // close()
+      // }}
+    >
+      <div
+        className={`${classPrefix} ${className || ''}`}
+        style={{ ...style }}
+        {...rest}
+      >
+        {headerRender()}
+        {(currentType === 'custom' || currentType === 'custom2') && (
+          <CustomRender
+            defaultValue={defaultValue}
+            type={currentType}
+            province={province}
+            city={city}
+            country={country}
+            town={town}
+            height={height}
+            onNextArea={(cal) => {
+              nextAreaList && nextAreaList(cal)
+            }}
+            onTabClick={(type) => {
+              onTabChecked && onTabChecked(type)
+            }}
+            onClose={handClose}
+          />
+        )}
+        {currentType === 'exist' && (
+          <ExistRender
+            type={currentType}
+            existList={existList}
+            selectIcon={
+              React.isValidElement(selectIcon) ? (
+                selectIcon
+              ) : (
+                <Check color="#FA2C19" />
+              )
+            }
+            defaultIcon={
+              React.isValidElement(defaultIcon) ? defaultIcon : <Location2 />
+            }
+            custom={custom || (custom && locale.address.chooseAnotherAddress)}
+            onSelect={selectedExistItem}
+            onSwitchModule={onSwitchModule}
+          />
+        )}
+      </div>
+    </Popup>
   )
 }
 

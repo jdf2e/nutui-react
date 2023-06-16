@@ -150,8 +150,7 @@ const AddressDemo = () => {
     closeIcon: <Close />,
     backIcon: <Left />,
   })
-
-  const [existList, setExistAddress] = useState([
+  const [existList2, setExistList2] = useState([
     {
       id: 1,
       addressDetail: '',
@@ -160,7 +159,7 @@ const AddressDemo = () => {
       provinceName: '北京市',
       selectedAddress: true,
       townName: '',
-      name: '探探鱼',
+      name: '探探鱼1',
       phone: '182****1718',
     },
     {
@@ -171,7 +170,7 @@ const AddressDemo = () => {
       provinceName: '钓鱼岛',
       selectedAddress: false,
       townName: '',
-      name: '探探鱼',
+      name: '探探鱼2',
       phone: '182****1718',
     },
     {
@@ -182,7 +181,79 @@ const AddressDemo = () => {
       provinceName: '北京市',
       selectedAddress: false,
       townName: '',
-      name: '探探鱼',
+      name: '探探鱼3',
+      phone: '182****1718',
+    },
+  ])
+
+  const [existList3, setExistList3] = useState([
+    {
+      id: 10,
+      addressDetail: '',
+      cityName: '次渠镇',
+      countyName: '通州区',
+      provinceName: '北京市',
+      selectedAddress: true,
+      townName: '',
+      name: '探探鱼10',
+      phone: '182****1718',
+    },
+    {
+      id: 20,
+      addressDetail: '',
+      cityName: '钓鱼岛全区',
+      countyName: '',
+      provinceName: '钓鱼岛',
+      selectedAddress: false,
+      townName: '',
+      name: '探探鱼20',
+      phone: '182****1718',
+    },
+    {
+      id: 30,
+      addressDetail: '京东大厦',
+      cityName: '大兴区',
+      countyName: '科创十一街18号院',
+      provinceName: '北京市',
+      selectedAddress: false,
+      townName: '',
+      name: '探探鱼30',
+      phone: '182****1718',
+    },
+  ])
+
+  const [existList4, setExistList4] = useState([
+    {
+      id: 100,
+      addressDetail: '',
+      cityName: '次渠镇',
+      countyName: '通州区',
+      provinceName: '北京市',
+      selectedAddress: true,
+      townName: '',
+      name: '探探鱼100',
+      phone: '182****1718',
+    },
+    {
+      id: 200,
+      addressDetail: '',
+      cityName: '钓鱼岛全区',
+      countyName: '',
+      provinceName: '钓鱼岛',
+      selectedAddress: false,
+      townName: '',
+      name: '探探鱼200',
+      phone: '182****1718',
+    },
+    {
+      id: 300,
+      addressDetail: '京东大厦',
+      cityName: '大兴区',
+      countyName: '科创十一街18号院',
+      provinceName: '北京市',
+      selectedAddress: false,
+      townName: '',
+      name: '探探鱼300',
       phone: '182****1718',
     },
   ])
@@ -195,8 +266,7 @@ const AddressDemo = () => {
   }
 
   const onChange = (cal: any, tag: string) => {
-    console.log('change', cal, tag)
-
+    console.log('onchange', cal, tag)
     if (tag === 'normal2' || tag === 'select') {
       if (cal.next === 'town') {
         setShowPopup({
@@ -229,19 +299,47 @@ const AddressDemo = () => {
               ...showPopup,
               [tag]: false,
             })
+            console.log('default address', showPopup, !(showPopup as any)[tag])
         }
       }, 200)
     }
   }
 
-  const selected = (
-    prevExistAdd: AddressList,
-    nowExistAdd: AddressList,
-    arr: AddressList[]
-  ) => {
-    console.log('选择')
+  const selectedTwo = (data: AddressList) => {
+    console.log('选择2', data)
+    const { provinceName, cityName, countyName, townName, addressDetail } =
+      data as AddressResult
+    if (provinceName) {
+      setText({
+        ...text,
+        two: provinceName + cityName + countyName + townName + addressDetail,
+      })
+    }
   }
 
+  const selectedThree = (data: AddressList) => {
+    console.log('选择3', data)
+    const { provinceName, cityName, countyName, townName, addressDetail } =
+      data as AddressResult
+    if (provinceName) {
+      setText({
+        ...text,
+        three: provinceName + cityName + countyName + townName + addressDetail,
+      })
+    }
+  }
+
+  const selectedFour = (data: AddressList) => {
+    console.log('选择4', data)
+    const { provinceName, cityName, countyName, townName, addressDetail } =
+      data as AddressResult
+    if (provinceName) {
+      setText({
+        ...text,
+        four: provinceName + cityName + countyName + townName + addressDetail,
+      })
+    }
+  }
   const [customeTitle, setCustomTitle] = useState('选择已有地址')
 
   const onSwitch = (val: { type: string }) => {
@@ -252,10 +350,6 @@ const AddressDemo = () => {
       setCustomTitle('重新选择地址')
       console.log('点击了自定义地址左上角的返回按钮')
     }
-  }
-
-  const onCancel = (val: { closeWay: string }) => {
-    console.log('关闭弹层', val)
   }
 
   const close1 = (val: CalResult) => {
@@ -269,76 +363,6 @@ const AddressDemo = () => {
     setShowPopup({
       ...showPopup,
       normal: false,
-    })
-  }
-
-  const close2 = (val: CalResult) => {
-    if (val.type === 'exist') {
-      const { provinceName, cityName, countyName, townName, addressDetail } =
-        val.data as AddressResult
-      if (provinceName) {
-        setText({
-          ...text,
-          two: provinceName + cityName + countyName + townName + addressDetail,
-        })
-      }
-    } else if ((val.data as AddressResult).addressStr) {
-      setText({
-        ...text,
-        two: (val.data as AddressResult).addressStr,
-      })
-    }
-
-    setShowPopup({
-      ...showPopup,
-      exist: false,
-    })
-  }
-
-  const close3 = (val: CalResult) => {
-    if (val.type === 'exist') {
-      const { provinceName, cityName, countyName, townName, addressDetail } =
-        val.data as AddressResult
-      if (provinceName) {
-        setText({
-          ...text,
-          three:
-            provinceName + cityName + countyName + townName + addressDetail,
-        })
-      }
-    } else if ((val.data as AddressResult).addressStr) {
-      setText({
-        ...text,
-        three: (val.data as AddressResult).addressStr,
-      })
-    }
-
-    setShowPopup({
-      ...showPopup,
-      customImg: false,
-    })
-  }
-
-  const close4 = (val: CalResult) => {
-    if (val.type === 'exist') {
-      const { provinceName, cityName, countyName, townName, addressDetail } =
-        val.data as AddressResult
-      if (provinceName) {
-        setText({
-          ...text,
-          four: provinceName + cityName + countyName + townName + addressDetail,
-        })
-      }
-    } else if ((val.data as AddressResult).addressStr) {
-      setText({
-        ...text,
-        four: (val.data as AddressResult).addressStr,
-      })
-    }
-
-    setShowPopup({
-      ...showPopup,
-      other: false,
     })
   }
 
@@ -448,20 +472,16 @@ const AddressDemo = () => {
         <Address
           visible={showPopup.exist}
           type="exist"
-          existList={existList}
-          onChange={(cal) => onChange(cal, 'exist')}
-          onClose={close2}
-          onSelect={selected}
+          existList={existList2}
+          onSelect={selectedTwo}
           title={translated.delivery}
         />
 
         <Address
           visible={showPopup.customImg}
           type="exist"
-          existList={existList}
-          onChange={(cal) => onChange(cal, 'customImg')}
-          onClose={close3}
-          onSelect={selected}
+          existList={existList3}
+          onSelect={selectedThree}
           defaultIcon={icon.defaultIcon}
           selectIcon={icon.selectIcon}
           closeIcon={icon.closeIcon}
@@ -470,19 +490,17 @@ const AddressDemo = () => {
         <Address
           visible={showPopup.other}
           type="exist"
-          existList={existList}
+          existList={existList4}
           province={province}
           city={city}
           country={country}
           town={town}
           title={customeTitle}
           backIcon={icon.backIcon}
-          onChange={(cal) => onChange(cal, 'other')}
-          onClose={close4}
-          onSelect={selected}
           custom={translated.other}
+          onSelect={selectedFour}
           onSwitch={onSwitch}
-          onCancel={onCancel}
+          onChange={(cal) => onChange(cal, 'other')}
         />
       </div>
     </>

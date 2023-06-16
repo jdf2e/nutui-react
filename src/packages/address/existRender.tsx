@@ -7,11 +7,7 @@ export interface ExistRenderProps {
   defaultIcon: ReactNode
   selectIcon: ReactNode
   custom: boolean | string
-  onSelect?: (
-    prevExistAdd: AddressList,
-    item: AddressList,
-    copyExistAdd: AddressList[]
-  ) => void
+  onSelect?: (item: AddressList) => void
   onClose?: (cal: { closeWay: string }) => void
   onSwitchModule?: (cal: { type: string }) => void
 }
@@ -63,7 +59,7 @@ export const ExistRender: FunctionComponent<
     })
 
     item.selectedAddress = true
-    onSelect && onSelect(prevExistAdd, item, copyExistAdd)
+    onSelect && onSelect(item)
   }
 
   const onSwitch = () => {
