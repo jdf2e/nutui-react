@@ -113,6 +113,10 @@ plugins: [
 - 删除 `dashed`, 通过 `style` 属性实现
 - 删除 `hairline`, 默认为 `true`
 #### Grid
+- 移除 `fontSize`，可自行控制传入的组件字体大小
+- 移除 `border`，作为默认样式
+- `columnNum` 重命名为 `columns`
+- `GridItem` 使用方式修改为 `Grid.Item`
 #### Layout
 #### Sticky
 - 删除 `top` 和 `bottom`，改为 `threshold`
@@ -123,12 +127,12 @@ plugins: [
 - `isSticky` 重命名为 `sticky`
 - 新增`showKeys`，是否展示右侧导航
 #### FixedNav
-- 删除 `fixednavClass`，通过 `className` 实现
 - `unActiveText` 重命名为 `inactiveText`
 - `navList` 重命名为 `list`
 - `slotBtn` 重命名为 `content`
-- 删除 `slotList`，通过 `children` 实现
 - `onSelected` 重命名为 `onSelect`
+- 删除 `fixednavClass`，通过 `className` 实现
+- 删除 `slotList`，通过 `children` 实现
 #### Indicator
 - 删除 `block`，暴露自定义节点
 - 删除 `align`，暴露自定义节点
@@ -156,21 +160,21 @@ plugins: [
 - 移除 `onClickTitle` `onClickRight` `onClickIcon`，通过在`left`、`title`、`right`自定义事件实现，参考文档demo示例
 - 
 #### Pagination
+- 新增 `defaultValue` 非受控值
 - `modelValue` 重命名为 `value`，受控值
-- 增加 `defaultValue` 非受控值
-- `prevText` 重命名为 `prev`，改为 `ReactNode`
-- `nextText` 重命名为 `next`，改为 `ReactNode`
+- `prevText` 重命名为 `prev`，类型修改为 `ReactNode`
+- `nextText` 重命名为 `next`，类型修改为 `ReactNode`
 - `forceEllipses` 重命令为 `ellipse`
 - `showPageSize` 重命名为 `itemSize`
 - `itemsPerpage` 重命名为 `pageSize`
 - `totalitems` 重命名为 `total`
 - `pageNodeRender` 重命名为 `itemRender`
-- 移除 `pageCount`，通过 `total` 与 `pageSize` 实现
+- 移除 `pageCount`，通过 `total` 与 `pageSize` 组合实现
 #### SideNavBar
 - `offset` 重命名为 `indent`
 #### Tabbar
 - `unactiveColor` 重命名为 `inactiveColor`
-- `tabTitle` 重命名为 `title`，改为 `ReactNode`
+- `tabTitle` 重命名为 `title`，类型修改为 `ReactNode`
 - `bottom` 重命名为 `fixed`
 - `safeAreaInsetBottom` 重命名为 `safeArea`
 - `visible` 重命名为 `defaultValue`，非受控
@@ -457,10 +461,10 @@ plugins: [
   - `pathColor` 重名为 `background`
 #### Collapse
 
-- 新增 defaultActiveName 非受控
-- activeName 改为受控方式
-- subTitle 重命名为 extra
-- onChange 参数变更为 activeName, name, status
+- 新增 `defaultActiveName` 非受控
+- `activeName` 改为受控方式
+- `subTitle` 重命名为 `extra`
+- `onChange` 参数变更为 `activeName, name, status`
 
 #### CountDown
 
@@ -514,7 +518,7 @@ plugins: [
 - 移除 `textWidth`，可以自定义传入内容的宽度
 - `strokeColor` 重命名为 `color`
 - `fillColor` 重命名为 `background`
-- 移除 `size`，通过 `strokeWidth`、css 变量实现尺寸自定义
+- 移除 `size`，通过 `strokeWidth`、`progress-height` css 变量实现尺寸自定义
 - `status` 重命名为 `animated`，表示是否展示动画效果
 - 移除 `textBackground`，通过 css 实现
 - 移除 `textColor`，通过 css 实现
