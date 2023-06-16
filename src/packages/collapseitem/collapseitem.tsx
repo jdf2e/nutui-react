@@ -104,6 +104,9 @@ export const CollapseItem: FunctionComponent<
   useEffect(() => {
     if (init.current) {
       init.current = false
+      if (!expanded) {
+        wrapperRef.current.style.height = '0px'
+      }
     } else {
       toggle()
     }
