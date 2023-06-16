@@ -214,7 +214,6 @@ export default App;
 | dot | 徽标是否为小点 | `boolean` | `false` |
 | top | 徽标的上下偏移量，支持单位设置，可设置为：5 等 | `number` | `0` |
 | right | 徽标的左右偏移量，支持单位设置，可设置为：5 等 | `number` | `0` |
-| color | 徽标的背景颜色 | `string` | `-` |
 
 ## 主题定制
 
