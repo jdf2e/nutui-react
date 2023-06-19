@@ -6,12 +6,12 @@ import React, {
   useState,
 } from 'react'
 import classNames from 'classnames'
-import Taro from '@tarojs/taro'
 import Popup from '@/packages/popup/index.taro'
+import Taro from '@tarojs/taro'
+import { PopupProps } from '@/packages/popup/popup.taro'
 import { getRect, getRectByTaro } from '@/utils/use-client-rect'
-import { upperCaseFirst } from '@/utils/index'
 
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 
 export type PopoverLocation =
   | 'bottom'
@@ -35,22 +35,15 @@ export interface List {
   className?: string
 }
 
-export interface PopoverProps extends BasicComponent {
+export interface PopoverProps extends PopupProps {
   list: List[]
   location: PopoverLocation | string
   visible: boolean
   offset: string[] | number[]
   targetId: string
-  background: string
-  color: string
   showArrow: boolean
-  duration: string | number
-  overlay: boolean
-  overlayClassName: string
-  overlayStyle: React.CSSProperties
   closeOnClickOutside: boolean
   closeOnClickAction: boolean
-  closeOnOverlayClick: boolean
   children?: React.ReactNode
   onClick: () => void
   onOpen: () => void
@@ -66,21 +59,14 @@ const defaultProps = {
   offset: [0, 12],
   targetId: '',
   className: '',
-  background: '',
-  color: '',
   showArrow: true,
-  duration: 0.3,
   overlay: false,
-  overlayClassName: '',
-  overlayStyle: {},
   closeOnClickOutside: true,
   closeOnClickAction: true,
-  closeOnOverlayClick: true,
   onClick: () => {},
   onOpen: () => {},
   onClose: () => {},
-  onSelect: (item, index) => {},
-} as PopoverProps
+}
 
 const classPrefix = `nut-popover`
 export const Popover: FunctionComponent<
@@ -94,21 +80,16 @@ export const Popover: FunctionComponent<
     offset,
     targetId,
     overlay,
-    overlayStyle,
-    overlayClassName,
     closeOnClickOutside,
     closeOnClickAction,
-    closeOnOverlayClick,
     className,
     showArrow,
     style,
-    background,
-    color,
     onClick,
     onOpen,
     onClose,
     onSelect,
-    ...reset
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -194,34 +175,11 @@ export const Popover: FunctionComponent<
     className
   )
 
-  const customStyle = () => {
-    const styles: CSSProperties = {}
-    if (background) {
-      styles.background = background
-    }
-
-    if (color) {
-      styles.color = color
-    }
-
-    return styles
-  }
-
   const popoverArrow = () => {
     const prefixCls = 'nut-popover-arrow'
     const loca = location
     const direction = loca.split('-')[0]
     return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}--${loca}`
-  }
-
-  const popoverArrowStyle = () => {
-    const styles: CSSProperties = {}
-    const { background } = props
-    const direction = location.split('-')[0]
-    if (background) {
-      styles[`border${upperCaseFirst(direction)}Color` as any] = background
-    }
-    return styles
   }
 
   const getRootPosition = () => {
@@ -289,7 +247,7 @@ export const Popover: FunctionComponent<
 
   const handleSelect = (item: List, index: number) => {
     if (!item.disabled) {
-      onSelect(item, index)
+      onSelect && onSelect(item, index)
     }
     if (closeOnClickAction) {
       props.onClick && props.onClick()
@@ -315,21 +273,16 @@ export const Popover: FunctionComponent<
           {Array.isArray(children) ? children[0] : children}
         </div>
       )}
-      <div className={classes} style={getRootPosition()} {...reset}>
+      <div className={classes} style={getRootPosition()}>
         <Popup
           className={`nut-popover-content nut-popover-content--${location}`}
-          style={customStyle()}
           position="default"
           overlay={overlay}
-          overlayStyle={overlayStyle}
-          overlayClassName={overlayClassName}
-          closeOnOverlayClick={closeOnOverlayClick}
           visible={showPopup}
+          {...rest}
         >
           <div className="nut-popover-content-group" ref={popoverContentRef}>
-            {showArrow && (
-              <div className={popoverArrow()} style={popoverArrowStyle()} />
-            )}
+            {showArrow && <div className={popoverArrow()}></div>}
             {Array.isArray(children) ? children[1] : ''}
             {list.map((item, index) => {
               return (

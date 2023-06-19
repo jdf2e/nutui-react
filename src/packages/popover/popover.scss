@@ -120,6 +120,14 @@
         background-color: $popover-menu-item-hover-background-color;
       }
 
+      &:hover:nth-of-type(2) {
+        border-radius: 8px 8px 0px 0px;
+      }
+
+      &:hover:last-of-type {
+        border-radius: 0px 0px 8px 8px;
+      }
+
       .nut-popover-menu-item-name {
         width: 100%;
         word-break: keep-all;
