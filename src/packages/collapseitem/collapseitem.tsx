@@ -1,7 +1,6 @@
 import React, {
   FunctionComponent,
   useEffect,
-  useState,
   ReactNode,
   useContext,
   useRef,
@@ -53,9 +52,6 @@ export const CollapseItem: FunctionComponent<
   // 获取 Dom 元素
   const wrapperRef: any = useRef(null)
   const contentRef: any = useRef(null)
-  const [iconStyle, setIconStyle] = useState({
-    transform: 'translateY(-50%)',
-  })
 
   const expanded = useMemo(() => {
     if (context) {
@@ -63,6 +59,12 @@ export const CollapseItem: FunctionComponent<
     }
     return false
   }, [name, context.isOpen])
+
+  const iconStyle = useMemo(() => {
+    return expanded
+      ? { transform: `translateY(-50%) rotate(${rotate || context.rotate}deg)` }
+      : { transform: 'translateY(-50%)' }
+  }, [expanded, rotate])
 
   const handleClick = () => {
     if (!disabled) {
@@ -88,10 +90,6 @@ export const CollapseItem: FunctionComponent<
     if (wrapperRef.current) {
       wrapperRef.current.style.height = start
     }
-    const newIconStyle = expanded
-      ? { transform: `translateY(-50%) rotate(${rotate || context.rotate}deg)` }
-      : { transform: 'translateY(-50%)' }
-    setIconStyle(newIconStyle)
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         const end = expanded ? getOffsetHeight() : '0px'

@@ -54,9 +54,6 @@ export const CollapseItem: FunctionComponent<
   // 获取 Dom 元素
   const wrapperRef: any = useRef(null)
   const contentRef: any = useRef(null)
-  const [iconStyle, setIconStyle] = useState({
-    transform: 'translateY(-50%)',
-  })
   const [refRandomId] = useState(() => Math.random().toString(36).slice(-8))
   const target = `#nut-collapse__content-${refRandomId}`
 
@@ -66,6 +63,12 @@ export const CollapseItem: FunctionComponent<
     }
     return false
   }, [name, context.isOpen])
+
+  const iconStyle = useMemo(() => {
+    return expanded
+      ? { transform: `translateY(-50%) rotate(${rotate || context.rotate}deg)` }
+      : { transform: 'translateY(-50%)' }
+  }, [expanded, rotate])
 
   const handleClick = () => {
     if (!disabled) {
@@ -121,10 +124,6 @@ export const CollapseItem: FunctionComponent<
     const end = expanded ? currentHeight : '0px'
     inAnimation.current = true
     setWrapperHeight(start)
-    const newIconStyle = expanded
-      ? { transform: `translateY(-50%) rotate(${rotate || context.rotate}deg)` }
-      : { transform: 'translateY(-50%)' }
-    setIconStyle(newIconStyle)
     setTimeout(() => {
       setWrapperHeight(end)
       inAnimation.current = false
