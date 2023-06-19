@@ -1,4 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react'
+import { Check, Location2 } from '@nutui/icons-react'
+import { useConfig } from '@/packages/configprovider'
 import { AddressList } from './type'
 
 export interface ExistRenderProps {
@@ -8,8 +10,7 @@ export interface ExistRenderProps {
   selectIcon: ReactNode
   custom: boolean | string
   onSelect?: (item: AddressList) => void
-  onClose?: (cal: { closeWay: string }) => void
-  onSwitchModule?: (cal: { type: string }) => void
+  onSwitch?: (cal: { type: string }) => void
 }
 
 const defaultProps = {
@@ -27,6 +28,7 @@ export const ExistRender: FunctionComponent<
       'onChange' | 'title' | 'onSelect'
     >
 > = (props) => {
+  const { locale } = useConfig()
   const {
     children,
     type,
@@ -35,8 +37,7 @@ export const ExistRender: FunctionComponent<
     defaultIcon,
     custom,
     onSelect,
-    onClose,
-    onSwitchModule,
+    onSwitch,
     ...rest
   } = { ...defaultProps, ...props }
   const classPrefix = 'nut-address'
@@ -49,9 +50,8 @@ export const ExistRender: FunctionComponent<
     onSelect && onSelect(item)
   }
 
-  const onSwitch = () => {
-    onSwitchModule &&
-      onSwitchModule({ type: type === 'exist' ? 'custom' : 'exist' })
+  const onClick = () => {
+    onSwitch && onSwitch({ type: type === 'exist' ? 'custom' : 'exist' })
   }
 
   return (
@@ -66,7 +66,23 @@ export const ExistRender: FunctionComponent<
               key={index}
               onClick={() => selectedExist(item)}
             >
-              {item.selectedAddress ? selectIcon : defaultIcon}
+              {item.selectedAddress ? (
+                <>
+                  {React.isValidElement(selectIcon) ? (
+                    selectIcon
+                  ) : (
+                    <Check color="#FA2C19" />
+                  )}
+                </>
+              ) : (
+                <>
+                  {React.isValidElement(defaultIcon) ? (
+                    defaultIcon
+                  ) : (
+                    <Location2 />
+                  )}
+                </>
+              )}
               <div className={`${classPrefix}-exist-item-info`}>
                 {item.name && item.phone && (
                   <>
@@ -86,8 +102,8 @@ export const ExistRender: FunctionComponent<
           )
         })}
       </ul>
-      {custom && (
-        <div className={`${classPrefix}-footer`} onClick={onSwitch}>
+      {(custom || (custom && locale.address.chooseAnotherAddress)) && (
+        <div className={`${classPrefix}-footer`} onClick={onClick}>
           <div className={`${classPrefix}-footer-btn`}>{custom}</div>
         </div>
       )}

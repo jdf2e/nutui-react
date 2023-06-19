@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
-import { Left, Location2, Check, CircleClose } from '@nutui/icons-react'
+import { Left, CircleClose } from '@nutui/icons-react'
 import Popup from '@/packages/popup'
 import { ExistRender } from './existRender'
 import { CustomRender } from './customRender'
@@ -37,7 +37,7 @@ export interface AddressProps extends BasicComponent {
   onChange?: (data: ChangeData) => void
   onTabChecked?: (data: string) => void
   // 仅用于选择已有地址
-  onSelect?: (data: AddressList) => void
+  onExistSelect?: (data: AddressList) => void
 }
 
 const defaultProps = {
@@ -63,7 +63,7 @@ export const Address: FunctionComponent<
   Partial<AddressProps> &
     Omit<
       React.HTMLAttributes<HTMLDivElement>,
-      'onChange' | 'title' | 'onSelect' | 'defaultValue'
+      'onChange' | 'title' | 'defaultValue'
     >
 > = (props) => {
   const { locale } = useConfig()
@@ -85,7 +85,7 @@ export const Address: FunctionComponent<
     closeIcon,
     backIcon,
     onChange,
-    onSelect,
+    onExistSelect,
     onClose,
     onSwitch,
     onTabChecked,
@@ -98,7 +98,6 @@ export const Address: FunctionComponent<
   }
   const classPrefix = 'nut-address'
   const [currentType, setCurrentType] = useState<string>(type)
-
   const [showPopup, setShowPopup] = useState(visible)
   const [selectedRegion, setSelectedRegion] = useState<Regions>({
     province: { name: '' },
@@ -107,12 +106,9 @@ export const Address: FunctionComponent<
     town: { name: '' },
   })
 
-  const [selectedExistAddress, setSelectedExistAddress] = useState({}) // 当前选择的地址
-
   const handClose = () => {
     setShowPopup(false)
   }
-
   const nextAreaList = (item: NextList) => {
     const callbackParams = {
       next: item.next,
@@ -165,8 +161,6 @@ export const Address: FunctionComponent<
         (town as RegionData).name,
       ].join('')
       res.data = resCopy
-    } else {
-      res.data = selectedExistAddress as AddressList
     }
 
     initAddress()
@@ -174,10 +168,8 @@ export const Address: FunctionComponent<
     onClose && onClose(res)
   }
 
-  // exist：已有地址列表
   const selectedExistItem = (data: AddressList) => {
-    setSelectedExistAddress(data)
-    onSelect && onSelect(data)
+    onExistSelect && onExistSelect(data)
     handClose()
   }
 
@@ -224,23 +216,8 @@ export const Address: FunctionComponent<
     setShowPopup(visible)
   }, [visible])
 
-  // useEffect(() => {
-  //   if (!showPopup) {
-  //     close()
-  //   }
-  // }, [showPopup])
-
   return (
-    <Popup
-      visible={showPopup}
-      position="bottom"
-      // onClose={() => {
-      //   // 只需要处理关闭弹框，不需要处理任何逻辑。
-      //   // 当再次打开时，以初始化数据为准。
-      //   console.log('d-')
-      //   // close()
-      // }}
-    >
+    <Popup visible={showPopup} position="bottom">
       <div
         className={`${classPrefix} ${className || ''}`}
         style={{ ...style }}
@@ -266,22 +243,15 @@ export const Address: FunctionComponent<
           />
         )}
         {currentType === 'exist' && (
+          // 不需要 close，选中切换即关闭弹框。可手动关闭弹框，只关闭弹框不处理逻辑。
           <ExistRender
             type={currentType}
             existList={existList}
-            selectIcon={
-              React.isValidElement(selectIcon) ? (
-                selectIcon
-              ) : (
-                <Check color="#FA2C19" />
-              )
-            }
-            defaultIcon={
-              React.isValidElement(defaultIcon) ? defaultIcon : <Location2 />
-            }
-            custom={custom || (custom && locale.address.chooseAnotherAddress)}
+            selectIcon={selectIcon}
+            defaultIcon={defaultIcon}
+            custom={custom}
             onSelect={selectedExistItem}
-            onSwitchModule={onSwitchModule}
+            onSwitch={onSwitchModule}
           />
         )}
       </div>
