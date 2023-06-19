@@ -356,7 +356,7 @@ You can also pass in a string directly, and `Toast.show` will automatically use 
 | Property | Description | Parameters |
 | --- | --- | --- |
 | clear | Turn off `Toast` in all displays. | `-`|
-| config | Methods for global configuration | `{ duration: number, position: 'top' \| 'center' \| 'bottom', closeOnOverlayClick: boolean }` |
+| config | Methods for global configuration | `{ duration: number, position: 'top' \| 'center' \| 'bottom', closeOnOverlayClick: boolean, lockScroll: boolean }` |
 
 ## Theming
 

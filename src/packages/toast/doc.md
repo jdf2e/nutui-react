@@ -355,7 +355,7 @@ export default App
 | 方法名 | 说明 | 参数 |
 | --- | --- | --- |
 | clear | 关闭所有显示中的`Toast` | `-` |
-| config | `Toast`全局配置 | `{ duration: number, position: 'top' \| 'center' \| 'bottom', closeOnOverlayClick: boolean }` |
+| config | `Toast`全局配置 | `{ duration: number, position: 'top' \| 'center' \| 'bottom', closeOnOverlayClick: boolean, lockScroll: boolean }` |
 
 ## 主题定制
 

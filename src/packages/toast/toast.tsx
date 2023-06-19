@@ -86,7 +86,10 @@ function show(option: ToastProps | string) {
 }
 
 function config(
-  config: Pick<ToastProps, 'duration' | 'position' | 'closeOnOverlayClick'>
+  config: Pick<
+    ToastProps,
+    'duration' | 'position' | 'closeOnOverlayClick' | 'lockScroll'
+  >
 ) {
   if (config.duration !== undefined) {
     options.duration = config.duration
@@ -96,6 +99,9 @@ function config(
   }
   if (config.closeOnOverlayClick !== undefined) {
     options.closeOnOverlayClick = config.closeOnOverlayClick
+  }
+  if (config.lockScroll !== undefined) {
+    options.lockScroll = config.lockScroll
   }
 }
 
