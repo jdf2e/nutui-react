@@ -34,13 +34,13 @@ const App = () => {
 
   const [city, setCity] = useState([])
 
-  const [country, setCountry] = useState([])
+  const [county, setCountry] = useState([])
   const [town, setTown] = useState([])
 
   const [address, setAddress] = useState({
     province,
     city,
-    country,
+    county,
     town,
   })
 
@@ -58,7 +58,7 @@ const App = () => {
             { id: 10, name: '北苑', title: 'B' },
           ])
           break;
-        case 'country':
+        case 'county':
           setCountry([
             { id: 3, name: '八裏莊街道', title: 'B' },
             { id: 9, name: '北苑', title: 'B' },
@@ -85,7 +85,7 @@ const App = () => {
         visible={normal}
         province={province}
         city={city}
-        country={country}
+        county={county}
         town={town}
         onChange={onChange}
         onClose={close}
@@ -100,7 +100,7 @@ export default App;
 
 ### 選中省市區
 
-如果想選中某個省市區，需要在 defaultValue 中按照 province、city、country、town 的順序配置想要展示的地區 id
+如果想選中某個省市區，需要在 defaultValue 中按照 province、city、county、town 的順序配置想要展示的地區 id
 值，併且保證有能查詢到對應的省市區數據即可。
 
 :::demo
@@ -129,7 +129,7 @@ const App = () => {
     { id: 10, name: '北苑', title: 'B' },
   ])
 
-  const [country, setCountry] = useState([
+  const [county, setCountry] = useState([
     { id: 3, name: '八裏莊街道', title: 'B' },
     { id: 9, name: '北苑', title: 'B' },
     { id: 4, name: '常營鄉', title: 'C' },
@@ -139,7 +139,7 @@ const App = () => {
   const [address, setAddress] = useState({
     province,
     city,
-    country,
+    county,
     town,
   })
 
@@ -164,7 +164,7 @@ const App = () => {
         defaultValue={[1, 7, 3]}
         province={province}
         city={city}
-        country={country}
+        county={county}
         town={town}
         onChange={onChange}
         onClose={close}
@@ -199,12 +199,12 @@ const App = () => {
 
   const [city, setCity] = useState([])
 
-  const [country, setCountry] = useState([])
+  const [county, setCountry] = useState([])
   const [town, setTown] = useState([])
   const [address, setAddress] = useState({
     province,
     city,
-    country,
+    county,
     town,
   })
 
@@ -221,7 +221,7 @@ const App = () => {
             { id: 9, name: '北苑', title: 'B' },
           ])
           break;
-        case 'country':
+        case 'county':
           setCountry([
             { id: 3, name: '八裏莊街道', title: 'B' },
             { id: 9, name: '北苑', title: 'B' },
@@ -247,7 +247,7 @@ const App = () => {
         type="custom2"
         province={province}
         city={city}
-        country={country}
+        county={county}
         town={town}
         height="270px"
         onChange={onChange}
@@ -486,12 +486,12 @@ const App = () => {
 
   const [city, setCity] = useState([])
 
-  const [country, setCountry] = useState([])
+  const [county, setCountry] = useState([])
   const [town, setTown] = useState([])
   const [address, setAddress] = useState({
     province,
     city,
-    country,
+    county,
     town,
   })
   const [existList, setExistAddress] = useState([
@@ -548,7 +548,7 @@ const App = () => {
             { id: 9, name: '北苑', title: 'B' },
           ])
           break;
-        case 'country':
+        case 'county':
           setCountry([
             { id: 3, name: '八裏莊街道', title: 'B' },
             { id: 9, name: '北苑', title: 'B' },
@@ -597,7 +597,7 @@ const App = () => {
           existList={existList}
           province={province}
           city={city}
-          country={country}
+          county={county}
           town={town}
           backIcon={icon.backIcon}
           onChange={onChange}
@@ -626,7 +626,7 @@ export default App;
 | type | 地址選擇類型 exist/custom/custom2  | string | `custom` |
 | province | 省，每個省的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | `Array` | `[]` |
 | city | 市，每個市的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | `Array` | `[]` |
-| country | 縣，每個縣的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | `Array` | `[]` |
+| county | 縣，每個縣的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | `Array` | `[]` |
 | town | 鄉/鎮，每個鄉/鎮的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | `Array` | `[]` |
 | height | 彈層中內容容器的高度，僅在type="custom2"時有效 | string \| number | `200px` |
 | existList | 已存在地址列錶，每個地址對象中，必傳值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解釋見下） | `Array` | `[]` |
@@ -646,8 +646,8 @@ export default App;
 
 | 屬性 | 說明 | 可能值  |
 |----- | ----- | ----- |
-| custom | 當前點擊的行政區域  |  `province`(省) \| `city`(市) \| `country`(縣) \| `town`(鄉) |
-| next | 當前點擊的行政區域的下一級 | `province`(省) \| `city`(市) \| `country`(縣) \| `town`(鄉) |
+| custom | 當前點擊的行政區域  |  `province`(省) \| `city`(市) \| `county`(縣) \| `town`(鄉) |
+| next | 當前點擊的行政區域的下一級 | `province`(省) \| `city`(市) \| `county`(縣) \| `town`(鄉) |
 | value | 當前點擊的行政區域的值（返回傳入的值） | `{}` |
 
 ## selected 回調參數

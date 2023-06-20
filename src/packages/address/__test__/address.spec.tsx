@@ -19,7 +19,7 @@ const addressData = {
     { id: 3, name: '八里庄街道', title: 'B' },
     { id: 10, name: '北苑', title: 'B' },
   ],
-  country: [
+  county: [
     { id: 3, name: '八里庄街道', title: 'B' },
     { id: 9, name: '北苑', title: 'B' },
     { id: 4, name: '常营乡', title: 'C' },
@@ -67,10 +67,10 @@ test('Show Address', async () => {
   const { container } = render(
     <Address
       visible
-      province={addressData.province}
-      city={addressData.city}
-      country={addressData.country}
-      town={addressData.town}
+      // province={addressData.province}
+      // city={addressData.city}
+      // county={addressData.county}
+      // town={addressData.town}
     />
   )
   const regionItem = container.querySelectorAll('.nut-address-custom-item')
@@ -82,10 +82,10 @@ test('choose address item', async () => {
   const { container } = render(
     <Address
       visible
-      province={addressData.province}
-      city={addressData.city}
-      country={addressData.country}
-      town={addressData.town}
+      // province={addressData.province}
+      // city={addressData.city}
+      // county={addressData.county}
+      // town={addressData.town}
       onChange={changeHandle}
     />
   )
@@ -108,10 +108,10 @@ test('default choose address', async () => {
     <Address
       visible
       defaultValue={[1, 7, 3]}
-      province={addressData.province}
-      city={addressData.city}
-      country={addressData.country}
-      town={addressData.town}
+      // province={addressData.province}
+      // city={addressData.city}
+      // county={addressData.county}
+      // town={addressData.town}
     />
   )
   const regionItem = container.querySelectorAll('.nut-address-tabs')[0]
@@ -164,10 +164,10 @@ test('exist address & list address', async () => {
       visible
       type="exist"
       custom
-      province={addressData.province}
-      city={addressData.city}
-      country={addressData.country}
-      town={addressData.town}
+      // province={addressData.province}
+      // city={addressData.city}
+      // county={addressData.county}
+      // town={addressData.town}
       existList={existList}
       onSwitch={onSwitch}
       onChange={changeHandle}

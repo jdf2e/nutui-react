@@ -4,19 +4,9 @@ import { useTranslate } from '../../sites/assets/locale'
 import { Address } from './address'
 import Cell from '@/packages/cell'
 
-interface CalBack {
-  next: string
-  value: string | RegionData
-  custom: string
-  selectedRegion: any
-}
 interface RegionData {
   name?: string
   [key: string]: any
-}
-interface CalResult {
-  type: string
-  data: any
 }
 interface AddressList {
   id?: string | number
@@ -34,7 +24,7 @@ interface AddressResult extends AddressList {
   addressStr: string
   province: RegionData[]
   city: RegionData[]
-  country: RegionData[]
+  county: RegionData[]
   town: RegionData[]
 }
 
@@ -81,43 +71,152 @@ const AddressDemo = () => {
       other: 'Choose Other Address',
     },
   })
-  const [province, setProvince] = useState([
-    { id: 1, name: '北京', title: 'B' },
-    { id: 2, name: '广西', title: 'G' },
-    { id: 3, name: '江西', title: 'J' },
-    { id: 4, name: '四川', title: 'S' },
-    { id: 5, name: '浙江', title: 'Z' },
+
+  const [value2, setValue2] = useState(['福建', '福州', '台江区'])
+  const [value5, setValue5] = useState(['广东省', '广州市'])
+
+  const [optionsDemo1] = useState([
+    {
+      value: '浙江',
+      text: '浙江',
+      children: [
+        {
+          value: '杭州',
+          text: '杭州',
+          disabled: true,
+          children: [
+            { value: '西湖区', text: '西湖区', disabled: true },
+            { value: '余杭区', text: '余杭区' },
+          ],
+        },
+        {
+          value: '温州',
+          text: '温州',
+          children: [
+            { value: '鹿城区', text: '鹿城区' },
+            { value: '瓯海区', text: '瓯海区' },
+          ],
+        },
+      ],
+    },
+    {
+      value: '湖南',
+      text: '湖南',
+      disabled: true,
+      children: [
+        {
+          value: '长沙',
+          text: '长沙',
+          disabled: true,
+          children: [
+            { value: '西湖区', text: '西湖区' },
+            { value: '余杭区', text: '余杭区' },
+          ],
+        },
+        {
+          value: '温州',
+          text: '温州',
+          children: [
+            { value: '鹿城区', text: '鹿城区' },
+            { value: '瓯海区', text: '瓯海区' },
+          ],
+        },
+      ],
+    },
+    {
+      value: '福建',
+      text: '福建',
+      children: [
+        {
+          value: '福州',
+          text: '福州',
+          children: [
+            { value: '鼓楼区', text: '鼓楼区' },
+            { value: '台江区', text: '台江区' },
+          ],
+        },
+      ],
+    },
   ])
 
-  const addressData: any = {
-    province: [
-      { id: 1, name: '北京', title: 'B' },
-      { id: 2, name: '广西', title: 'G' },
-      { id: 3, name: '江西', title: 'J' },
-      { id: 4, name: '四川', title: 'S' },
-      { id: 5, name: '浙江', title: 'Z' },
-    ],
-    city: [
-      { id: 7, name: '朝阳区', title: 'C' },
-      { id: 8, name: '崇文区', title: 'C' },
-      { id: 9, name: '昌平区', title: 'C' },
-      { id: 6, name: '石景山区', title: 'S' },
-      { id: 3, name: '八里庄街道', title: 'B' },
-      { id: 10, name: '北苑', title: 'B' },
-    ],
-    country: [
-      { id: 3, name: '八里庄街道', title: 'B' },
-      { id: 9, name: '北苑', title: 'B' },
-      { id: 4, name: '常营乡', title: 'C' },
-    ],
-    town: [],
-  }
+  const [optionsDemo2] = useState([
+    {
+      value1: '浙江',
+      text1: '浙江',
+      items: [
+        {
+          value1: '杭州',
+          text1: '杭州',
+          disabled: true,
+          items: [
+            { value1: '西湖区', text1: '西湖区', disabled: true },
+            { value1: '余杭区', text1: '余杭区' },
+          ],
+        },
+        {
+          value1: '温州',
+          text1: '温州',
+          items: [
+            { value1: '鹿城区', text1: '鹿城区' },
+            { value1: '瓯海区', text1: '瓯海区' },
+          ],
+        },
+      ],
+    },
+    {
+      value1: '湖南',
+      text1: '湖南',
+      disabled: true,
+      items: [
+        {
+          value1: '长沙',
+          text1: '长沙',
+          disabled: true,
+          items: [
+            { value1: '西湖区', text1: '西湖区' },
+            { value1: '余杭区', text1: '余杭区' },
+          ],
+        },
+        {
+          value1: '温州',
+          text1: '温州',
+          items: [
+            { value1: '鹿城区', text1: '鹿城区' },
+            { value1: '瓯海区', text1: '瓯海区' },
+          ],
+        },
+      ],
+    },
+    {
+      value1: '福建',
+      text1: '福建',
+      items: [
+        {
+          value1: '福州',
+          text1: '福州',
+          items: [
+            { value1: '鼓楼区', text1: '鼓楼区' },
+            { value1: '台江区', text1: '台江区' },
+          ],
+        },
+      ],
+    },
+  ])
 
-  const [city, setCity] = useState<any>([])
+  const [optionsDemo5] = useState([
+    { value: '北京', text: '北京', id: 1, pidd: null },
+    { value: '朝阳区', text: '朝阳区', id: 11, pidd: 1 },
+    { value: '亦庄', text: '亦庄', id: 111, pidd: 11 },
+    { value: '广东省', text: '广东省', id: 2, pidd: null },
+    { value: '广州市', text: '广州市', id: 21, pidd: 2 },
+  ])
 
-  const [country, setCountry] = useState<any>([])
-
-  const [town, setTown] = useState<any>([])
+  const [convertConfigDemo5] = useState({
+    topId: null,
+    idKey: 'id',
+    pidKey: 'pidd',
+    sortKey: '',
+  })
 
   const [text, setText] = useState<any>({
     one: translated.title,
@@ -126,13 +225,6 @@ const AddressDemo = () => {
     four: translated.title,
     five: translated.title,
     six: translated.title,
-  })
-
-  const [address, setAddress] = useState({
-    province,
-    city,
-    country,
-    town,
   })
 
   const [showPopup, setShowPopup] = useState({
@@ -150,6 +242,7 @@ const AddressDemo = () => {
     closeIcon: <Close />,
     backIcon: <Left />,
   })
+
   const [existList2, setExistList2] = useState([
     {
       id: 1,
@@ -265,46 +358,6 @@ const AddressDemo = () => {
     })
   }
 
-  const onChange = (cal: any, tag: string) => {
-    console.log('onchange', cal, tag)
-    if (tag === 'normal2' || tag === 'select') {
-      if (cal.next === 'town') {
-        setShowPopup({
-          ...showPopup,
-          [tag]: false,
-        })
-      }
-    } else {
-      setTimeout(() => {
-        switch (cal.next) {
-          case 'city':
-            setCity([
-              { id: 7, name: '朝阳区', title: 'C' },
-              { id: 8, name: '崇文区', title: 'C' },
-              { id: 9, name: '昌平区', title: 'C' },
-              { id: 6, name: '石景山区', title: 'S' },
-              { id: 3, name: '八里庄街道', title: 'B' },
-              { id: 10, name: '北苑', title: 'B' },
-            ])
-            break
-          case 'country':
-            setCountry([
-              { id: 3, name: '八里庄街道', title: 'B' },
-              { id: 9, name: '北苑', title: 'B' },
-              { id: 4, name: '常营乡', title: 'C' },
-            ])
-            break
-          default:
-            setShowPopup({
-              ...showPopup,
-              [tag]: false,
-            })
-            console.log('default address', showPopup, !(showPopup as any)[tag])
-        }
-      }, 200)
-    }
-  }
-
   const selectedTwo = (data: AddressList) => {
     console.log('选择2', data)
     const { provinceName, cityName, countyName, townName, addressDetail } =
@@ -348,49 +401,15 @@ const AddressDemo = () => {
       console.log('点击了“选择其他地址”按钮')
     } else {
       setCustomTitle('重新选择地址')
-      console.log('点击了自定义地址左上角的返回按钮')
+      console.log('点击了自定义地址左上角的返回按钮', showPopup.other)
     }
   }
 
-  const close1 = (val: CalResult) => {
-    if ((val.data as AddressResult).addressStr) {
-      setText({
-        ...text,
-        one: (val.data as AddressResult).addressStr,
-      })
-    }
-
-    setShowPopup({
-      ...showPopup,
-      normal: false,
-    })
-  }
-
-  const close5 = (val: CalResult) => {
-    if ((val.data as AddressResult).addressStr) {
-      setText({
-        ...text,
-        five: (val.data as AddressResult).addressStr,
-      })
-    }
-
-    setShowPopup({
-      ...showPopup,
-      normal2: false,
-    })
-  }
-
-  const close6 = (val: CalResult) => {
-    if ((val.data as AddressResult).addressStr) {
-      setText({
-        ...text,
-        six: (val.data as AddressResult).addressStr,
-      })
-    }
-
-    setShowPopup({
-      ...showPopup,
-      select: false,
+  const change1 = (value: any, path: any, type: string) => {
+    console.log('change1', value, path)
+    setText({
+      ...text,
+      [type]: value,
     })
   }
 
@@ -436,44 +455,43 @@ const AddressDemo = () => {
 
         <Address
           visible={showPopup.normal}
-          province={province}
-          city={city}
-          country={country}
-          town={town}
+          options={optionsDemo1}
           title={translated.title}
-          onChange={(cal) => onChange(cal, 'normal')}
-          onClose={close1}
+          onChange={(value, params) => {
+            change1(value, params, 'one')
+          }}
         />
 
         <Address
           visible={showPopup.select}
-          defaultValue={[1, 7, 3]}
-          province={addressData.province}
-          city={addressData.city}
-          country={addressData.country}
-          town={addressData.town}
-          onChange={(cal) => onChange(cal, 'select')}
-          onClose={close6}
+          defaultValue={value2}
+          options={optionsDemo2}
+          optionKey={{
+            textKey: 'text1',
+            valueKey: 'value1',
+            childrenKey: 'items',
+          }}
+          onChange={(value, params) => {
+            change1(value, params, 'six')
+          }}
         />
 
         <Address
           visible={showPopup.normal2}
           type="custom2"
           defaultValue={[1, 7, 3]}
-          province={addressData.province}
-          city={addressData.city}
-          country={addressData.country}
-          town={addressData.town}
           height="270px"
-          onChange={(cal) => onChange(cal, 'normal2')}
-          onClose={close5}
+          onChange={(value, params) => {
+            change1(value, params, 'five')
+          }}
+          // onClose={close5}
         />
 
         <Address
           visible={showPopup.exist}
           type="exist"
           existList={existList2}
-          onSelect={selectedTwo}
+          onExistSelect={selectedTwo}
           title={translated.delivery}
         />
 
@@ -481,26 +499,26 @@ const AddressDemo = () => {
           visible={showPopup.customImg}
           type="exist"
           existList={existList3}
-          onSelect={selectedThree}
+          onExistSelect={selectedThree}
           defaultIcon={icon.defaultIcon}
           selectIcon={icon.selectIcon}
-          closeIcon={icon.closeIcon}
+          // closeIcon={icon.closeIcon}
         />
 
         <Address
           visible={showPopup.other}
           type="exist"
           existList={existList4}
-          province={province}
-          city={city}
-          country={country}
-          town={town}
           title={customeTitle}
+          options={optionsDemo5}
+          format={convertConfigDemo5}
           backIcon={icon.backIcon}
           custom={translated.other}
-          onSelect={selectedFour}
+          onExistSelect={selectedFour}
           onSwitch={onSwitch}
-          onChange={(cal) => onChange(cal, 'other')}
+          onChange={(value, params) => {
+            change1(value, params, 'four')
+          }}
         />
       </div>
     </>

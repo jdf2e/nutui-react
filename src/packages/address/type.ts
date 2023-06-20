@@ -29,7 +29,7 @@ export interface AddressList {
   name?: string
   phone?: string
 }
-export interface NextList {
+export interface CurrentData {
   next: string
   value: string | RegionData
   custom: string
@@ -39,6 +39,6 @@ export interface NextList {
 export interface Regions {
   province: RegionData
   city: RegionData
-  country: RegionData
+  county: RegionData
   town: RegionData
 }

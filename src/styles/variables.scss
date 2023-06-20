@@ -803,6 +803,9 @@ $popup-close-icon-margin: var(--nutui-popup-close-icon-margin, 16px) !default;
 $popup-border-radius: var(--nutui-popup-border-radius, 20px) !default;
 $popup-close-icon-color: var(--nutui-popup-close-icon-color, #969799) !default;
 $popup-close-icon-size: var(--nutui-popup-close-icon-size, 30px) !default;
+$popup-title-padding: var(--nutui-popup-title-padding, 15px) !default;
+$popup-title-font-size: var(--nutui-popup-title-font-size, 18px) !default;
+$popup-title-line-height: var(--nutui-popup-title-line-height, 20px) !default;
 
 // Notify（✅）
 $notify-text-color: var(--nutui-notify-text-color, $white) !default;
@@ -1741,15 +1744,6 @@ $empty-description-padding: var(
 // cascader（✅）
 $cascader-font-size: var(--nutui-cascader-font-size, $font-size-2) !default;
 $cascader-line-height: var(--nutui-cascader-line-height, 22px) !default;
-$cascader-title-padding: var(
-  --nutui-cascader-title-padding,
-  24px 20px 17px
-) !default;
-$cascader-title-font-size: var(--nutui-cascader-title-font-size, 18px) !default;
-$cascader-title-line-height: var(
-  --nutui-cascader-title-line-height,
-  20px
-) !default;
 $cascader-pane-height: var(--nutui-cascader-pane-height, 342px) !default;
 $cascader-pane-paddingTop: var(--nutui-cascader-pane-paddingTop, 10px) !default;
 $cascader-icon-checklist-marginLeft: var(

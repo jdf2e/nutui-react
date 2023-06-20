@@ -30,13 +30,13 @@ const App = () => {
 
   const [city, setCity] = useState([])
 
-  const [country, setCountry] = useState([])
+  const [county, setCountry] = useState([])
   const [town, setTown] = useState([])
 
   const [address, setAddress] = useState({
     province,
     city,
-    country,
+    county,
     town,
   })
 
@@ -54,7 +54,7 @@ const App = () => {
             { id: 10, name: '北苑', title: 'B' },
           ])
           break;
-        case 'country':
+        case 'county':
           setCountry([
             { id: 3, name: '八里庄街道', title: 'B' },
             { id: 9, name: '北苑', title: 'B' },
@@ -81,7 +81,7 @@ const App = () => {
           visible={normal}
           province={province}
           city={city}
-          country={country}
+          county={county}
           town={town}
           onChange={onChange}
           onClose={close}
@@ -95,7 +95,7 @@ export default App;
 
 ### Choose City
 
-If you want to select a province, you need to set the region ID in the order of province City country town in the model-value, and ensure that the data of the corresponding province can be queried
+If you want to select a province, you need to set the region ID in the order of province City county town in the model-value, and ensure that the data of the corresponding province can be queried
 
 :::demo
 ```tsx
@@ -122,7 +122,7 @@ const App = () => {
     { id: 10, name: '北苑', title: 'B' },
   ])
 
-  const [country, setCountry] = useState([
+  const [county, setCountry] = useState([
     { id: 3, name: '八里庄街道', title: 'B' },
     { id: 9, name: '北苑', title: 'B' },
     { id: 4, name: '常营乡', title: 'C' },
@@ -132,7 +132,7 @@ const App = () => {
   const [address, setAddress] = useState({
     province,
     city,
-    country,
+    county,
     town,
   })
 
@@ -157,7 +157,7 @@ const App = () => {
           defaultValue={[1, 7, 3]}
           province={province}
           city={city}
-          country={country}
+          county={county}
           town={town}
           onChange={onChange}
           onClose={close}
@@ -188,12 +188,12 @@ const App = () => {
 
   const [city, setCity] = useState([])
 
-  const [country, setCountry] = useState([])
+  const [county, setCountry] = useState([])
   const [town, setTown] = useState([])
   const [address, setAddress] = useState({
     province,
     city,
-    country,
+    county,
     town,
   })
 
@@ -210,7 +210,7 @@ const App = () => {
             { id: 9, name: '北苑', title: 'B' },
           ])
           break;
-        case 'country':
+        case 'county':
           setCountry([
             { id: 3, name: '八里庄街道', title: 'B' },
             { id: 9, name: '北苑', title: 'B' },
@@ -236,7 +236,7 @@ const App = () => {
           type="custom2"
           province={province}
           city={city}
-          country={country}
+          county={county}
           town={town}
           height="270px"
           onChange={onChange}
@@ -456,12 +456,12 @@ const App = () => {
 
   const [city, setCity] = useState([])
 
-  const [country, setCountry] = useState([])
+  const [county, setCountry] = useState([])
   const [town, setTown] = useState([])
   const [address, setAddress] = useState({
     province,
     city,
-    country,
+    county,
     town,
   })
   const [existList, setExistAddress] = useState([
@@ -518,7 +518,7 @@ const App = () => {
             { id: 9, name: '北苑', title: 'B' },
           ])
           break;
-        case 'country':
+        case 'county':
           setCountry([
             { id: 3, name: '八里庄街道', title: 'B' },
             { id: 9, name: '北苑', title: 'B' },
@@ -561,7 +561,7 @@ const App = () => {
           existList={existList}
           province={province}
           city={city}
-          country={country}
+          county={county}
           town={town}
           backIcon={icon.backIcon}
           onChange={onChange}
@@ -591,7 +591,7 @@ export default App;
 | type | Choose type: exist/custom/custom2  | `string`     | `custom` |
 | province | Province data | `Array`      | `[]` |
 | city | City data | `Array`      | `[]` |
-| country | Country data | `Array`      | `[]` |
+| county | Country data | `Array`      | `[]` |
 | town | Town data | `Array`      | `[]` |
 | height | Popup height | `string \| number` | `200px` |
 | existList | Exist address list data | `Array`      | `[]` |
@@ -610,8 +610,8 @@ export default App;
 ## change 回调参数
 | Property | Description               | Options   |
 |----- | ----- | ----- |
-| custom | The administrative region currently clicked  |  `province` \| `city` \| `country` \| `town` |
-| next | The next level of the administrative region currently clicked | `province` \| `city` \| `country` \| `town` |
+| custom | The administrative region currently clicked  |  `province` \| `city` \| `county` \| `town` |
+| next | The next level of the administrative region currently clicked | `province` \| `city` \| `county` \| `town` |
 | value | The value of the currently clicked administrative region | `{}` |
 
 ## selected 

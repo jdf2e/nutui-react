@@ -337,7 +337,6 @@ const InternalCascader: ForwardRefRenderFunction<
   const renderItem = () => {
     return (
       <div className={`${classPrefix} ${className}`} style={style}>
-        {popup && <div className="nut-cascader__title">{title}</div>}
         <Tabs
           value={tabvalue}
           title={() => {
@@ -400,13 +399,13 @@ const InternalCascader: ForwardRefRenderFunction<
     <>
       {popup ? (
         <Popup
-          // className="nut-cascadar-popup"
           visible={visible}
           position="bottom"
           round
           closeIcon={closeIcon}
           closeable={closeable}
           closeIconPosition={closeIconPosition}
+          title={popup && title}
           // todo 只关闭，不处理逻辑。和popup的逻辑不一致。关闭时需要增加是否要处理回调
           onClickOverlay={closePopup}
           onClickCloseIcon={closePopup}

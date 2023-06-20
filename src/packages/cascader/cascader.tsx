@@ -3,9 +3,11 @@ import React, {
   PropsWithChildren,
   useState,
   useEffect,
+  ReactNode,
 } from 'react'
 import classNames from 'classnames'
 import Popup from '@/packages/popup'
+import { PopupProps } from '@/packages/popup/popup'
 import { Tabs } from '@/packages/tabs/tabs'
 import { CascaderItem } from './cascaderItem'
 import { convertListToOptions } from './helper'
@@ -17,10 +19,10 @@ import {
   CascaderFormat,
 } from './types'
 import Tree from './tree'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 
-export interface CascaderProps extends BasicComponent {
+export interface CascaderProps extends PopupProps {
   popup: boolean
   visible: boolean // popup 显示状态
   activeColor: string
@@ -28,7 +30,6 @@ export interface CascaderProps extends BasicComponent {
   options: CascaderOption[]
   value?: CascaderValue
   defaultValue?: CascaderValue
-  title: string
   optionKey: CascaderOptionKey
   format: Record<string, string | number | null>
   closeable: boolean
@@ -36,7 +37,6 @@ export interface CascaderProps extends BasicComponent {
   closeIcon: string
   lazy: boolean
   onLoad: (node: any, resolve: any) => void
-  onClose?: () => void
   onChange: (value: CascaderValue, params?: any) => void
   onPathChange: (value: CascaderValue, params: any) => void
 }
@@ -48,7 +48,6 @@ const defaultProps = {
   popup: true,
   visible: false,
   options: [],
-  title: '',
   optionKey: { textKey: 'text', valueKey: 'value', childrenKey: 'children' },
   format: {},
   closeable: false,
@@ -59,7 +58,7 @@ const defaultProps = {
   onClose: () => {},
   onChange: () => {},
   onPathChange: () => {},
-} as CascaderProps
+} as unknown as CascaderProps
 const InternalCascader: ForwardRefRenderFunction<
   unknown,
   PropsWithChildren<Partial<CascaderProps>>
@@ -72,7 +71,6 @@ const InternalCascader: ForwardRefRenderFunction<
     options,
     value,
     defaultValue,
-    title,
     optionKey,
     format,
     closeable,
@@ -337,7 +335,6 @@ const InternalCascader: ForwardRefRenderFunction<
   const renderItem = () => {
     return (
       <div className={`${classPrefix} ${className}`} style={style}>
-        {popup && <div className="nut-cascader__title">{title}</div>}
         <Tabs
           value={tabvalue}
           title={() => {
@@ -400,13 +397,14 @@ const InternalCascader: ForwardRefRenderFunction<
     <>
       {popup ? (
         <Popup
-          // className="nut-cascadar-popup"
           visible={visible}
           position="bottom"
           round
           closeIcon={closeIcon}
           closeable={closeable}
           closeIconPosition={closeIconPosition}
+          title={popup && (props.title as ReactNode)}
+          left={props.left}
           // todo 只关闭，不处理逻辑。和popup的逻辑不一致。关闭时需要增加是否要处理回调
           onClickOverlay={closePopup}
           onClickCloseIcon={closePopup}
