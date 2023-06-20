@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { Left } from '@nutui/icons-react-taro'
 import Popup from '@/packages/popup/index.taro'
-import { ExistRender } from './existRender'
+import { ExistRender } from './existRender.taro'
 import { CustomRender } from './customRender.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { AddressList } from './type'
