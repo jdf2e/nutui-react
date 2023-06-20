@@ -1,15 +1,15 @@
 import React, {
   ForwardRefRenderFunction,
   PropsWithChildren,
+  isValidElement,
   useState,
   useEffect,
   ReactNode,
 } from 'react'
 import classNames from 'classnames'
-import Popup from '@/packages/popup'
-import { PopupProps } from '@/packages/popup/popup'
+import { Loading, Checklist } from '@nutui/icons-react'
+import { Popup, PopupProps } from '@/packages/popup/popup'
 import { Tabs } from '@/packages/tabs/tabs'
-import { CascaderItem } from './cascaderItem'
 import { convertListToOptions } from './helper'
 import {
   CascaderPane,
@@ -66,6 +66,8 @@ const InternalCascader: ForwardRefRenderFunction<
   const {
     className,
     style,
+    activeColor,
+    activeIcon,
     popup,
     visible,
     options,
@@ -144,7 +146,6 @@ const InternalCascader: ForwardRefRenderFunction<
     } else {
       state.optionsData = options
     }
-
     state.tree = new Tree(state.optionsData as CascaderOption[], {
       value: state.configs.optionKey.valueKey,
       text: state.configs.optionKey.textKey,
@@ -332,7 +333,58 @@ const InternalCascader: ForwardRefRenderFunction<
     setOptionsData(state.panes)
   }
 
-  const renderItem = () => {
+  const renderItem = (pane: any, node: any, index: number) => {
+    const classPrefix2 = 'nut-cascader-item'
+    const checked = pane.selectedNode?.value === node.value
+
+    const classes = classNames(
+      {
+        active: checked,
+        disabled: node.disabled,
+      },
+      classPrefix2
+    )
+
+    const classesTitle = classNames({
+      [`${classPrefix2}__title`]: true,
+    })
+
+    const renderIcon = () => {
+      if (checked) {
+        if (isValidElement(activeIcon)) {
+          return activeIcon
+        }
+        return (
+          <Checklist
+            className={`${checked ? `${classPrefix}__icon-check` : ''}`}
+          />
+        )
+      }
+      return null
+    }
+
+    return (
+      <div
+        style={{ color: checked ? activeColor : '' }}
+        className={classes}
+        onClick={() => {
+          chooseItem(node, false)
+        }}
+      >
+        <div className={classesTitle}>{node.text}</div>
+        {node.loading ? (
+          <Loading
+            color="#969799"
+            className="nut-cascader-item__icon-loading"
+          />
+        ) : (
+          renderIcon()
+        )}
+      </div>
+    )
+  }
+
+  const renderTabs = () => {
     return (
       <div className={`${classPrefix} ${className}`} style={style}>
         <Tabs
@@ -370,16 +422,9 @@ const InternalCascader: ForwardRefRenderFunction<
             optionsData.map((pane) => (
               <Tabs.TabPane key={pane.paneKey} value={pane.paneKey}>
                 <div className={classesPane}>
-                  {pane.nodes &&
-                    pane.nodes.map((node: any, index: number) => (
-                      <CascaderItem
-                        key={index}
-                        {...props}
-                        data={node}
-                        checked={pane.selectedNode?.value === node.value}
-                        chooseItem={(node: any) => chooseItem(node, false)}
-                      />
-                    ))}
+                  {pane.nodes?.map((node: any, index: number) =>
+                    renderItem(pane, node, index)
+                  )}
                 </div>
               </Tabs.TabPane>
             ))
@@ -409,10 +454,10 @@ const InternalCascader: ForwardRefRenderFunction<
           onClickOverlay={closePopup}
           onClickCloseIcon={closePopup}
         >
-          {renderItem()}
+          {renderTabs()}
         </Popup>
       ) : (
-        renderItem()
+        renderTabs()
       )}
     </>
   )
