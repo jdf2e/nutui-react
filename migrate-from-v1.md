@@ -13,9 +13,9 @@ NutUI React 1.x 到 NutUI React 2.x 存在一些不兼容更新，需要仔细�
 ## 兼容更新
 1. 组件样式处理
    - 新增了按需引入 css 文件的支持。可通过 babel-import-plugin 插件实现：
-```js
+```json
 // Webpack .babelrc 或 babel.config.js中配置
-[
+plugins: [
   [
     "import",
     {
