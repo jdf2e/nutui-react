@@ -18,6 +18,7 @@ export interface ToastProps extends BasicComponent {
   position?: ToastPositionType
   title?: string
   closeOnOverlayClick?: boolean
+  lockScroll?: boolean
   size?: string | number
   icon?: ToastIconType
   content?: React.ReactNode
@@ -36,6 +37,7 @@ const options: ToastProps = {
   icon: null,
   onClose: () => {},
   closeOnOverlayClick: false, // 是否点击遮罩可关闭
+  lockScroll: false,
   contentClassName: '',
 }
 
@@ -84,7 +86,10 @@ function show(option: ToastProps | string) {
 }
 
 function config(
-  config: Pick<ToastProps, 'duration' | 'position' | 'closeOnOverlayClick'>
+  config: Pick<
+    ToastProps,
+    'duration' | 'position' | 'closeOnOverlayClick' | 'lockScroll'
+  >
 ) {
   if (config.duration !== undefined) {
     options.duration = config.duration
@@ -94,6 +99,9 @@ function config(
   }
   if (config.closeOnOverlayClick !== undefined) {
     options.closeOnOverlayClick = config.closeOnOverlayClick
+  }
+  if (config.lockScroll !== undefined) {
+    options.lockScroll = config.lockScroll
   }
 }
 

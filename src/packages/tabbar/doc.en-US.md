@@ -276,7 +276,6 @@ export default App;
 | dot | Whther Bagde is dotted | `boolean` | `false` |
 | top | Up and down offset of Badge, support unit setting, can be set to: 5, etc. | `number` | `0` |
 | right | Left and right offset of Badge, support unit setting, can be set to: 5, etc. | `number` | `0` |
-| color | Background color of Badge,the default value is the theme primary color | `string` | `-` |
 
 ## Theming
 

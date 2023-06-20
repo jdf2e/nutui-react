@@ -312,6 +312,8 @@ const App = () => {
 | title | 标题栏左侧内容 | `ReactNode` | `-` |
 | disabled | 标题栏是否禁用 | `boolean` | `false` |
 | extra | 标题栏副标题 | `ReactNode` | `-` |
+| rotate | 点击折叠和展开的旋转角度,在自定义图标模式下生效 | `string` \| `number`  | `180` |
+| expandIcon | 自定义展开图标 | `ReactNode` | `-` |
 | onChange | 切换面板时触发 | `(activeName, name, status) => void` | `-` |
 
 ## 主题定制
