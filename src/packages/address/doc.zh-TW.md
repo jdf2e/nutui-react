@@ -2,11 +2,10 @@
 
 ## 介紹
 
-地址選擇
+地址選擇，在2.0中，地址改用級聯組件實現。截止當前版本，只支持級聯，不支持級聯+電梯模式，開發中。
 
 ## 安裝
 
-### 安裝
 ```tsx
 import { Address } from '@nutui/nutui-react';
 ```
@@ -23,73 +22,82 @@ import { Address, Cell, Popup } from '@nutui/nutui-react';
 
 const App = () => {
   const [text, setText] = useState('請選擇地址')
-  const [normal, setNormal] = useState(false)
-  const [province, setProvince] = useState([
-    { id: 1, name: '北京', title: 'B' },
-    { id: 2, name: '廣西', title: 'G' },
-    { id: 3, name: '江西', title: 'J' },
-    { id: 4, name: '四川', title: 'S' },
-    { id: 5, name: '浙江', title: 'Z' },
+  const [optionsDemo1] = useState([
+    {
+      value: '浙江',
+      text: '浙江',
+      children: [
+        {
+          value: '杭州',
+          text: '杭州',
+          disabled: true,
+          children: [
+            { value: '西湖區', text: '西湖區', disabled: true },
+            { value: '余杭區', text: '余杭區' },
+          ],
+        },
+        {
+          value: '溫州',
+          text: '溫州',
+          children: [
+            { value: '鹿城區', text: '鹿城區' },
+            { value: '甌海區', text: '甌海區' },
+          ],
+        },
+      ],
+    },
+    {
+      value: '湖南',
+      text: '湖南',
+      disabled: true,
+      children: [
+        {
+          value: '長沙',
+          text: '長沙',
+          disabled: true,
+          children: [
+            { value: '西湖區', text: '西湖區' },
+            { value: '余杭區', text: '余杭區' },
+          ],
+        },
+        {
+          value: '溫州',
+          text: '溫州',
+          children: [
+            { value: '鹿城區', text: '鹿城區' },
+            { value: '甌海區', text: '甌海區' },
+          ],
+        },
+      ],
+    },
+    {
+      value: '福建',
+      text: '福建',
+      children: [
+        {
+          value: '福州',
+          text: '福州',
+          children: [
+            { value: '鼓樓區', text: '鼓樓區' },
+            { value: '臺江區', text: '臺江區' },
+          ],
+        },
+      ],
+    },
   ])
+  const [visible, setVisible] = useState(false)
 
-  const [city, setCity] = useState([])
-
-  const [county, setCountry] = useState([])
-  const [town, setTown] = useState([])
-
-  const [address, setAddress] = useState({
-    province,
-    city,
-    county,
-    town,
-  })
-
-  const onChange = (cal) => {
-    const name = address[cal.next]
-    setTimeout(() => {
-      switch (cal.next) {
-        case 'city':
-          setCity([
-            { id: 7, name: '朝陽區', title: 'C' },
-            { id: 8, name: '崇文區', title: 'C' },
-            { id: 9, name: '昌平區', title: 'C' },
-            { id: 6, name: '石景山區', title: 'S' },
-            { id: 3, name: '八裏莊街道', title: 'B' },
-            { id: 10, name: '北苑', title: 'B' },
-          ])
-          break;
-        case 'county':
-          setCountry([
-            { id: 3, name: '八裏莊街道', title: 'B' },
-            { id: 9, name: '北苑', title: 'B' },
-            { id: 4, name: '常營鄉', title: 'C' },
-          ])
-          break;
-        default:
-          setNormal(false)
-      }
-    }, 200)
-  }
-  const close = (val) => {
-    console.log(val)
-    setNormal(false)
-
-    if ((val.data as AddressResult).addressStr) {
-      setText((val.data as AddressResult).addressStr,)
-    }
-  }
   return (
     <>
-      <Cell title="選擇地址" description={text}  onClick={()=>setNormal(true)} />
-      <Address
-        visible={normal}
-        province={province}
-        city={city}
-        county={county}
-        town={town}
-        onChange={onChange}
-        onClose={close}
-      />
+      <Cell title="選擇地址" description={text}  onClick={()=>setVisible(true)} />
+        <Address
+          visible={visible}
+          options={optionsDemo1}
+          title="選擇地址"
+          onChange={(value, params) => {
+            setText(value)
+          }}
+        />
     </>
   );
 };
@@ -100,8 +108,7 @@ export default App;
 
 ### 選中省市區
 
-如果想選中某個省市區，需要在 defaultValue 中按照 province、city、county、town 的順序配置想要展示的地區 id
-值，併且保證有能查詢到對應的省市區數據即可。
+如果想選中某個省市區，同級聯組件。
 
 :::demo
 
@@ -111,153 +118,92 @@ import { Address, Cell, Popup } from '@nutui/nutui-react';
 
 const App = () => {
   const [text, setText] = useState('請選擇地址')
-  const [normal, setNormal] = useState(false)
-  const [province, setProvince] = useState([
-    { id: 1, name: '北京', title: 'B' },
-    { id: 2, name: '廣西', title: 'G' },
-    { id: 3, name: '江西', title: 'J' },
-    { id: 4, name: '四川', title: 'S' },
-    { id: 5, name: '浙江', title: 'Z' },
+  const [visible, setVisible] = useState(false)
+  const [value2] = useState(['福建', '福州', '臺江區'])
+    const [optionsDemo2] = useState([
+    {
+      value1: '浙江',
+      text1: '浙江',
+      items: [
+        {
+          value1: '杭州',
+          text1: '杭州',
+          disabled: true,
+          items: [
+            { value1: '西湖區', text1: '西湖區', disabled: true },
+            { value1: '余杭區', text1: '余杭區' },
+          ],
+        },
+        {
+          value1: '溫州',
+          text1: '溫州',
+          items: [
+            { value1: '鹿城區', text1: '鹿城區' },
+            { value1: '甌海區', text1: '甌海區' },
+          ],
+        },
+      ],
+    },
+    {
+      value1: '湖南',
+      text1: '湖南',
+      disabled: true,
+      items: [
+        {
+          value1: '長沙',
+          text1: '長沙',
+          disabled: true,
+          items: [
+            { value1: '西湖區', text1: '西湖區' },
+            { value1: '余杭區', text1: '余杭區' },
+          ],
+        },
+        {
+          value1: '溫州',
+          text1: '溫州',
+          items: [
+            { value1: '鹿城區', text1: '鹿城區' },
+            { value1: '甌海區', text1: '甌海區' },
+          ],
+        },
+      ],
+    },
+    {
+      value1: '福建',
+      text1: '福建',
+      items: [
+        {
+          value1: '福州',
+          text1: '福州',
+          items: [
+            { value1: '鼓樓區', text1: '鼓樓區' },
+            { value1: '臺江區', text1: '臺江區' },
+          ],
+        },
+      ],
+    },
   ])
 
-  const [city, setCity] = useState([
-    { id: 7, name: '朝陽區', title: 'C' },
-    { id: 8, name: '崇文區', title: 'C' },
-    { id: 9, name: '昌平區', title: 'C' },
-    { id: 6, name: '石景山區', title: 'S' },
-    { id: 3, name: '八裏莊街道', title: 'B' },
-    { id: 10, name: '北苑', title: 'B' },
-  ])
-
-  const [county, setCountry] = useState([
-    { id: 3, name: '八裏莊街道', title: 'B' },
-    { id: 9, name: '北苑', title: 'B' },
-    { id: 4, name: '常營鄉', title: 'C' },
-  ])
-  const [town, setTown] = useState([])
-
-  const [address, setAddress] = useState({
-    province,
-    city,
-    county,
-    town,
-  })
-
-  const onChange = (cal) => {
-    const name = address[cal.next]
-
-    if (cal.next === 'town') setNormal(false)
-  }
-  const close = (val) => {
-    console.log(val)
-    setNormal(false)
-
-    if ((val.data as AddressResult).addressStr) {
-      setText((val.data as AddressResult).addressStr,)
-    }
-  }
   return (
     <>
-      <Cell title="選擇地址" description={text}  onClick={()=>setNormal(true)} />
+      <Cell title="選擇地址" description={text}  onClick={()=>setVisible(true)} />
       <Address
-        visible={normal}
-        defaultValue={[1, 7, 3]}
-        province={province}
-        city={city}
-        county={county}
-        town={town}
-        onChange={onChange}
-        onClose={close}
+        visible={visible}
+        defaultValue={value2}
+        options={optionsDemo2}
+        optionKey={{
+          textKey: 'text1',
+          valueKey: 'value1',
+          childrenKey: 'items',
+        }}
+        onChange={(value, params) => {
+          setText(value)
+        }}
       />
     </>
   );
 };
 export default App;
-```
-
-:::
-
-### 選擇自定義地址2
-
-:::demo
-
-```tsx
-
-import React, { useState } from "react";
-import { Address, Cell, Popup } from '@nutui/nutui-react';
-
-const App = () => {
-  const [text, setText] = useState('請選擇地址')
-  const [normal2, setNormal2] = useState(false)
-  const [province, setProvince] = useState([
-    { id: 1, name: '北京', title: 'B' },
-    { id: 2, name: '廣西', title: 'G' },
-    { id: 3, name: '江西', title: 'J' },
-    { id: 4, name: '四川', title: 'S' },
-    { id: 5, name: '浙江', title: 'Z' },
-  ])
-
-  const [city, setCity] = useState([])
-
-  const [county, setCountry] = useState([])
-  const [town, setTown] = useState([])
-  const [address, setAddress] = useState({
-    province,
-    city,
-    county,
-    town,
-  })
-
-  const onChange = (cal) => {
-    setTimeout(() => {
-      switch (cal.next) {
-        case 'city':
-          setCity([
-            { id: 7, name: '朝陽區', title: 'C' },
-            { id: 8, name: '崇文區', title: 'C' },
-            { id: 9, name: '昌平區', title: 'C' },
-            { id: 6, name: '石景山區', title: 'S' },
-            { id: 3, name: '八裏莊街道', title: 'B' },
-            { id: 9, name: '北苑', title: 'B' },
-          ])
-          break;
-        case 'county':
-          setCountry([
-            { id: 3, name: '八裏莊街道', title: 'B' },
-            { id: 9, name: '北苑', title: 'B' },
-            { id: 4, name: '常營鄉', title: 'C' },
-          ])
-          break;
-        default:
-          setNormal2(false)
-      }
-    }, 200)
-  }
-  const close = (val) => {
-    setNormal2(false)
-    if ((val.data as AddressResult).addressStr) {
-      setText((val.data as AddressResult).addressStr,)
-    }
-  }
-  return (
-    <>
-      <Cell title="選擇地址" description={text}  onClick={()=>setNormal2(true)} />
-      <Address
-        visible={normal2}
-        type="custom2"
-        province={province}
-        city={city}
-        county={county}
-        town={town}
-        height="270px"
-        onChange={onChange}
-        onClose={close}
-      />
-    </>
-  );
-};
-export default App;
-
 ```
 
 :::
@@ -272,7 +218,7 @@ import { Address, Cell, Popup } from '@nutui/nutui-react';
 
 const App = () => {
   const [text, setText] = useState('請選擇地址')
-  const [exist, setExist] = useState(false)
+  const [visible, setVisible] = useState(false)
   const [existList, setExistAddress] = useState([
     {
       id: 1,
@@ -282,7 +228,7 @@ const App = () => {
       provinceName: '北京市',
       selectedAddress: true,
       townName: '',
-      name: '探探魚',
+      name: '探探魚1',
       phone: '182****1718',
     },
     {
@@ -293,7 +239,7 @@ const App = () => {
       provinceName: '釣魚島',
       selectedAddress: false,
       townName: '',
-      name: '探探魚',
+      name: '探探魚2',
       phone: '182****1718',
     },
     {
@@ -304,47 +250,29 @@ const App = () => {
       provinceName: '北京市',
       selectedAddress: false,
       townName: '',
-      name: '探探魚',
+      name: '探探魚3',
       phone: '182****1718',
     },
   ])
 
-  const selected = (prevExistAdd: AddressList, nowExistAdd: RegionData, arr: AddressList[]) => {
-    console.log(prevExistAdd, nowExistAdd)
-  }
-
-  const onChange = (cal) => {
-    const name = address[cal.next]
-    if (name.length < 1) {
-      setExist(false)
-    }
-  }
-  const close = (val) => {
-    const {
-      provinceName,
-      cityName,
-      countyName,
-      townName,
-      addressDetail
-    } = val.data as AddressResult
+  const selectedTwo = (data: AddressList) => {
+    const { provinceName, cityName, countyName, townName, addressDetail } =
+      data as AddressResult
     if (provinceName) {
       setText(provinceName + cityName + countyName + townName + addressDetail)
     }
-    setExist(false)
   }
+
   return (
     <>
-      <Cell title="選擇地址" description={text}  onClick={()=>setExist(true)} />
-      <Address
-        visible={exist}
-        type="exist"
-        existList={existList}
-        onChange={onChange}
-        onClose={close}
-        custom={false}
-        onSelect={selected}
-        existAddressTitle="配送至"
-      />
+      <Cell title="選擇地址" description={text}  onClick={()=>setVisible(true)} />
+        <Address
+          visible={visible}
+          type="exist"
+          existList={existList}
+          onExistSelect={selectedTwo}
+          title="配送"
+        />
     </>
   );
 };
@@ -365,7 +293,6 @@ import { Heart1, HeartFill, Left, Close } from '@nutui/icons-react';
 
 const App = () => {
   const [text, setText] = useState('請選擇地址')
-  const [customImg, setCustomImg] = useState(false)
   const [icon, setIcon] = useState({
     selectIcon: <HeartFill color="red" />,
     defaultIcon: <Heart1 />,
@@ -373,6 +300,7 @@ const App = () => {
     backIcon: <Left />,
   })
 
+  const [visible, setVisible] = useState(false)
   const [existList, setExistAddress] = useState([
     {
       id: 1,
@@ -382,7 +310,7 @@ const App = () => {
       provinceName: '北京市',
       selectedAddress: true,
       townName: '',
-      name: '探探魚',
+      name: '探探魚1',
       phone: '182****1718',
     },
     {
@@ -393,7 +321,7 @@ const App = () => {
       provinceName: '釣魚島',
       selectedAddress: false,
       townName: '',
-      name: '探探魚',
+      name: '探探魚2',
       phone: '182****1718',
     },
     {
@@ -404,51 +332,30 @@ const App = () => {
       provinceName: '北京市',
       selectedAddress: false,
       townName: '',
-      name: '探探魚',
+      name: '探探魚3',
       phone: '182****1718',
     },
   ])
 
-  const selected = (prevExistAdd: AddressList, nowExistAdd: RegionData, arr: AddressList[]) => {
-    console.log(prevExistAdd, nowExistAdd)
-
-  }
-
-  const onChange = (cal) => {
-    const name = address[cal.next]
-    if (name.length < 1) {
-      setCustomImg(false)
-    }
-  }
-  const close = (val) => {
-    console.log(val)
-    setCustomImg(false)
-    const {
-      provinceName,
-      cityName,
-      countyName,
-      townName,
-      addressDetail
-    } = val.data as AddressResult
+  const selectedThree = (data: AddressList) => {
+    const { provinceName, cityName, countyName, townName, addressDetail } =
+      data as AddressResult
     if (provinceName) {
       setText(provinceName + cityName + countyName + townName + addressDetail)
     }
   }
+
   return (
     <>
       <Cell title="選擇地址" description={text}  onClick={()=>setCustomImg(true)} />
-      <Address
-        visible={customImg}
-        type="exist"
-        existList={existList}
-        onChange={onChange}
-        onClose={close}
-        custom={false}
-        onSelect={selected}
-        defaultIcon={icon.defaultIcon}
-        selectIcon={icon.selectIcon}
-        closeIcon={icon.closeIcon}
-      />
+        <Address
+          visible={visible}
+          type="exist"
+          existList={existList}
+          onExistSelect={selectedThree}
+          defaultIcon={icon.defaultIcon}
+          selectIcon={icon.selectIcon}
+        />
     </>
   );
 };
@@ -469,31 +376,13 @@ import { Heart1, HeartFill, Left, Close } from '@nutui/icons-react';
 
 const App = () => {
   const [text, setText] = useState('請選擇地址')
-  const [other, setOther] = useState(false)
   const [icon, setIcon] = useState({
     selectIcon: <HeartFill color="red" />,
     defaultIcon: <Heart1 />,
     closeIcon: <Close />,
     backIcon: <Left />,
   })
-  const [province, setProvince] = useState([
-    { id: 1, name: '北京', title: 'B' },
-    { id: 2, name: '廣西', title: 'G' },
-    { id: 3, name: '江西', title: 'J' },
-    { id: 4, name: '四川', title: 'S' },
-    { id: 5, name: '浙江', title: 'Z' },
-  ])
-
-  const [city, setCity] = useState([])
-
-  const [county, setCountry] = useState([])
-  const [town, setTown] = useState([])
-  const [address, setAddress] = useState({
-    province,
-    city,
-    county,
-    town,
-  })
+  const [visible, setVisible] = useState(false)
   const [existList, setExistAddress] = useState([
     {
       id: 1,
@@ -503,7 +392,7 @@ const App = () => {
       provinceName: '北京市',
       selectedAddress: true,
       townName: '',
-      name: '探探魚',
+      name: '探探魚1',
       phone: '182****1718',
     },
     {
@@ -514,7 +403,7 @@ const App = () => {
       provinceName: '釣魚島',
       selectedAddress: false,
       townName: '',
-      name: '探探魚',
+      name: '探探魚2',
       phone: '182****1718',
     },
     {
@@ -525,58 +414,34 @@ const App = () => {
       provinceName: '北京市',
       selectedAddress: false,
       townName: '',
-      name: '探探魚',
+      name: '探探魚3',
       phone: '182****1718',
     },
   ])
 
-  const selected = (prevExistAdd: AddressList, nowExistAdd: RegionData, arr: AddressList[]) => {
-    console.log(prevExistAdd, nowExistAdd)
-  }
+  const [optionsDemo5] = useState([
+    { value: '北京', text: '北京', id: 1, pidd: null },
+    { value: '朝陽區', text: '朝陽區', id: 11, pidd: 1 },
+    { value: '亦莊', text: '亦莊', id: 111, pidd: 11 },
+    { value: '廣東省', text: '廣東省', id: 2, pidd: null },
+    { value: '廣州市', text: '廣州市', id: 21, pidd: 2 },
+  ])
 
-  const onChange = (cal) => {
+  const [convertConfigDemo5] = useState({
+    topId: null,
+    idKey: 'id',
+    pidKey: 'pidd',
+    sortKey: '',
+  })
 
-    setTimeout(() => {
-      switch (cal.next) {
-        case 'city':
-          setCity([
-            { id: 7, name: '朝陽區', title: 'C' },
-            { id: 8, name: '崇文區', title: 'C' },
-            { id: 9, name: '昌平區', title: 'C' },
-            { id: 6, name: '石景山區', title: 'S' },
-            { id: 3, name: '八裏莊街道', title: 'B' },
-            { id: 9, name: '北苑', title: 'B' },
-          ])
-          break;
-        case 'county':
-          setCountry([
-            { id: 3, name: '八裏莊街道', title: 'B' },
-            { id: 9, name: '北苑', title: 'B' },
-            { id: 4, name: '常營鄉', title: 'C' },
-          ])
-          break;
-        default:
-          setOther(false)
-      }
-    }, 200)
-  }
-  const close = (val) => {
-    setOther(false)
-    if (val.type === 'exist') {
-      const {
-        provinceName,
-        cityName,
-        countyName,
-        townName,
-        addressDetail
-      } = val.data as AddressResult
-      if (provinceName) {
-        setText(provinceName + cityName + countyName + townName + addressDetail)
-      }
-    } else if ((val.data as AddressResult).addressStr) {
-      setText((val.data as AddressResult).addressStr)
+  const selectedFour = (data: AddressList) => {
+    const { provinceName, cityName, countyName, townName, addressDetail } =
+      data as AddressResult
+    if (provinceName) {
+      setText(provinceName + cityName + countyName + townName + addressDetail)
     }
   }
+
   const onSwitch = (val) => {
       if (val.type === 'custom') {
         console.log('點擊了“選擇其他地址”按鈕')
@@ -585,28 +450,24 @@ const App = () => {
       }
   }
 
-  const onCancel = (val) => {
-      console.log('關閉彈層', val)
-  }
   return (
     <>
       <Cell title="選擇地址" description={text}  onClick={()=>setOther(true)} />
       <Address
-          visible={other}
-          type="exist"
-          existList={existList}
-          province={province}
-          city={city}
-          county={county}
-          town={town}
-          backIcon={icon.backIcon}
-          onChange={onChange}
-          onClose={close}
-          onSelect={selected}
-          customAndExistTitle="選擇其他地址"
-          onSwitch={onSwitch}
-          onCancel={onCancel}
-       />
+        visible={showPopup.other}
+        type="exist"
+        existList={existList4}
+        title={customeTitle}
+        options={optionsDemo5}
+        format={convertConfigDemo5}
+        backIcon={icon.backIcon}
+        custom="選擇其他地址"
+        onExistSelect={selectedFour}
+        onSwitch={onSwitch}
+        onChange={(value, params) => {
+          setText(value)
+        }}
+      />
     </>
   );
 };
@@ -617,61 +478,20 @@ export default App;
 :::
 
 ## Address
+
 ### Props
 
 | 屬性 | 說明 | 類型 | 默認值 |
-|----- | ----- | ----- | -----  |
-| visible | 是否打開地址選擇 | `string` | - |
-| defaultValue | 設置默認選中地址 | `string[] \| number[]` | `[]` |
-| type | 地址選擇類型 exist/custom/custom2  | string | `custom` |
-| province | 省，每個省的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | `Array` | `[]` |
-| city | 市，每個市的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | `Array` | `[]` |
-| county | 縣，每個縣的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | `Array` | `[]` |
-| town | 鄉/鎮，每個鄉/鎮的對象中，必須有 name 字段，如果類型選擇 custom2，必須指定 title 字段為首字母 | `Array` | `[]` |
-| height | 彈層中內容容器的高度，僅在type="custom2"時有效 | string \| number | `200px` |
+| --- | --- | --- | --- |
+| visible | 是否打開地址選擇 | `boolean` | `-` |
+| type | 地址選擇類型 exist/custom | `string` | `custom` |
 | existList | 已存在地址列錶，每個地址對象中，必傳值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解釋見下） | `Array` | `[]` |
-| defaultIcon | 已有地址列錶默認圖標，type='exist' 時生效 | ReactNode | - |
-| selectIcon | 已有地址列錶選中圖標，type='exist' 時生效 | ReactNode | - |
-| closeIcon | 自定義關閉彈框按鈕圖標 | ReactNode | - |
-| backIcon | 自定義地址與已有地址切換時，自定義返回的按鈕圖標 | ReactNode | - |
-| custom | 是否可以切換自定義地址選擇，type='exist' 時生效 | `boolean|string` | `true` |
-| title  | 標題 | string | `請選擇地址` |
-| onChange | 自定義選擇地址時，選擇地區時觸發  | `(cal: ChangeCallBack) => void` | `-` |
-| onSelect | 選擇已有地址列錶時觸發 | ` (prevExistAdd: AddressList, item: AddressList, copyExistAdd: AddressList[] ) => void` |`-` |
-| onClose | 地址選擇彈框關閉時觸發 |  `(cal: CloseCallBack) => void` |`-` |
-| onCancel  |點擊遮罩層或點擊右上角叉號關閉時觸發 | `(cal: ChangeCallBack) => void` |`-` |
-| onSwitch  | 點擊'選擇其他地址'或自定義地址選擇左上角返回按鈕觸發 | `(cal: { type: string }) => void` | `-` |
+| defaultIcon | 已有地址列錶默認圖標，type='exist' 時生效 | `ReactNode` | `-` |
+| selectIcon | 已有地址列錶選中圖標，type='exist' 時生效 | `ReactNode` | `-` |
+| closeIcon | 自定義關閉彈框按鈕圖標 | `ReactNode` | `-` |
+| backIcon | 自定義地址與已有地址切換時，自定義返回的按鈕圖標 | `ReactNode` | `-` |
+| custom | 是否可以切換自定義地址選擇，type='exist' 時生效 | `boolean` \| `string` | `true` |
+| onExistSelect | 選擇已有地址列錶時觸發 | `(data: AddressList) => void` | `-` |
+| onSwitch | 點擊'選擇其他地址'或自定義地址選擇左上角返回按鈕觸發 | `(data: { type: string }) => void` | `-` |
 
-## change 回調參數
-
-| 屬性 | 說明 | 可能值  |
-|----- | ----- | ----- |
-| custom | 當前點擊的行政區域  |  `province`(省) \| `city`(市) \| `county`(縣) \| `town`(鄉) |
-| next | 當前點擊的行政區域的下一級 | `province`(省) \| `city`(市) \| `county`(縣) \| `town`(鄉) |
-| value | 當前點擊的行政區域的值（返回傳入的值） | `{}` |
-
-## selected 回調參數
-
-| 屬性 | 說明 | 可能值  |
-|----- | ----- | ----- |
-| 第一個參數（prevExistAdd） |  選擇前選中的地址 |  `{}` |
-| 第二個參數（nowExistAdd） |  當前選中的地址 |  `{}` |
-| 第三個參數（arr） |  選擇完之後的已有地址列錶（selectedAddress 值發生改變） |  `{}` |
-
-## close 回調參數
-
-| 屬性 | 說明 | 可能值 |
-|----- | ----- | ----- |
-| type | 地址選擇類型 exist/custom/custom2  |  `exist` \| `custom` \| `custom2` |
-| data | 選擇地址的值,custom 時，addressStr 為選擇的地址組合 | `{}`  |
-
-## 主題定制
-
-### 樣式變量
-
-組件提供了下列 CSS
-變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
-
-| 名稱 | 說明 | 默認值 |
-| --- | --- |--- |
-| --nutui-address-tab-line-background | tab 下劃線的背景色| `linear-gradient(90deg,$primary-color 0%,$primary-color-end 100%) !default` |
+更多參數可參考 `Cascader` 組件。

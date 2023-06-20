@@ -428,12 +428,12 @@ const AddressDemo = () => {
           description={text.six}
           onClick={() => showAddress('select')}
         />
-        <h2>{translated.customAddress2}</h2>
+        {/* <h2>{translated.customAddress2}</h2>
         <Cell
           title={translated.title}
           description={text.five}
           onClick={() => showAddress('normal2')}
-        />
+        /> */}
         <h2>{translated.existList}</h2>
         <Cell
           title={translated.title}
@@ -476,7 +476,7 @@ const AddressDemo = () => {
           }}
         />
 
-        <Address
+        {/* <Address
           visible={showPopup.normal2}
           type="custom2"
           defaultValue={[1, 7, 3]}
@@ -485,7 +485,7 @@ const AddressDemo = () => {
             change1(value, params, 'five')
           }}
           // onClose={close5}
-        />
+        /> */}
 
         <Address
           visible={showPopup.exist}

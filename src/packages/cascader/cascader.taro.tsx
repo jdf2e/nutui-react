@@ -368,6 +368,7 @@ const InternalCascader: ForwardRefRenderFunction<
       <div
         style={{ color: checked ? activeColor : '' }}
         className={classes}
+        key={index}
         onClick={() => {
           chooseItem(node, false)
         }}

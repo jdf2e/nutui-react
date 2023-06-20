@@ -428,12 +428,12 @@ const AddressDemo = () => {
           description={text.six}
           onClick={() => showAddress('select')}
         />
-        <h2>{translated.customAddress2}</h2>
+        {/* <h2>{translated.customAddress2}</h2>
         <Cell
           title={translated.title}
           description={text.five}
           onClick={() => showAddress('normal2')}
-        />
+        /> */}
         <h2>{translated.existList}</h2>
         <Cell
           title={translated.title}
