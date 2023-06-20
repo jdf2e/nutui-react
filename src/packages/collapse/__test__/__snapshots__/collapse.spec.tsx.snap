@@ -24,7 +24,7 @@ exports[`should match snapshot 1`] = `
         >
           <div
             class="nut-collapse-item__icon"
-            style="transform: translateY(-50%);"
+            style="transform: translateY(-50%) rotate(180deg);"
           >
             <svg
               aria-labelledby="DownArrow"
@@ -71,7 +71,7 @@ exports[`should match snapshot 1`] = `
         >
           <div
             class="nut-collapse-item__icon"
-            style="transform: translateY(-50%);"
+            style="transform: translateY(-50%) rotate(180deg);"
           >
             <svg
               aria-labelledby="DownArrow"

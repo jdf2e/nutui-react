@@ -199,24 +199,6 @@ exports[`Cascader options with valueKey/textKey/childrenKey 1`] = `
 </div>
 `;
 
-exports[`Cascader select with lazy 1`] = `
-<div>
-  <div
-    class="nut-overlay-first-render nut-overlay-hidden-render nut-overlay"
-    style="z-index: 1000; animation-duration: 0.3s;"
-  />
-</div>
-`;
-
-exports[`Cascader select with lazy 2`] = `
-<div>
-  <div
-    class="nut-overlay-first-render nut-overlay-hidden-render nut-overlay"
-    style="z-index: 1000; animation-duration: 0.3s;"
-  />
-</div>
-`;
-
 exports[`Cascader value 1`] = `
 <div>
   <div
