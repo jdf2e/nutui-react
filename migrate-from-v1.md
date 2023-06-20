@@ -201,6 +201,21 @@ plugins: [
 - `paneKey` 重命名为 `value`
 ### 数据录入
 #### Calendar
+
+- `poppable` 更名为 `popup`
+- `isAutoBackFill` 更名为 `autoBackfill`
+- `toDateAnimation` 更名为 `scrollAnimation`
+- `startText` 类型改为 `ReactNode`
+- `endText` 类型改为 `ReactNode`
+- `confirmText` 类型改为 `ReactNode`
+- `onBtn` 更名为 `renderHeaderButtons`
+- `onDay` 更名为 `renderDay`
+- `onTopInfo` 更名为 `renderDayTop`
+- `onBottomInfo` 更名为 `renderDayBottom`
+- `onSelected` 更名为 `onClickDay`
+- `onChoose` 更名为 `onConfirm`
+- `onYearMonthChange` 更名为 `onPageChange`
+
 #### Cascader
 - 新增 `defaultValue`，其中 `defaultValue` 用于非受控，原 `value` 用于受控。两者的类型都改为 `(number | string | undefined)[]`
 - `checkedIcon` 重命名为 `activeIcon`

@@ -91,12 +91,13 @@ const CalendarDemo = () => {
   const currDay = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
   const [date, setDate] = useState(currDay)
   const [date1, setDate1] = useState(['2023-01-23', '2023-11-26'])
-  const [date2, setDate2] = useState('2022-12-08')
+  const [date2, setDate2] = useState('2023-05-08')
   const [date3, setDate3] = useState('')
   const [date4, setDate4] = useState<string[]>([])
-  const [date5, setDate5] = useState<string[]>(['2022-11-23', '2024-01-26'])
-  const [date6, setDate6] = useState<string[]>(['2022-11-23', '2024-01-26'])
-  const [date7, setDate7] = useState<string[]>(['2022-12-23', '2023-08-26'])
+  const [date5, setDate5] = useState<string[]>(['2023-03-23', '2023-11-26'])
+  const [date6, setDate6] = useState<string[]>(['2023-06-12', '2023-06-16'])
+  const [date7, setDate7] = useState<string[]>(['2023-07-10', '2023-07-19'])
+  const [date8, setDate8] = useState<string[]>(['2023-06-03', '2023-06-16'])
   const [dateWeek, setDateWeek] = useState('')
   const [isVisible, setIsVisible] = useState(false)
   const [isVisible1, setIsVisible1] = useState(false)
@@ -165,31 +166,36 @@ const CalendarDemo = () => {
   }
 
   const setChooseValue = (param: string) => {
+    console.log('setChooseValue', param)
     setDate(param[3])
     setDateWeek(param[4])
   }
 
   const setChooseValue1 = (param: string) => {
+    console.log('setChooseValue1', [...[param[0][3], param[1][3]]])
     setDate1([...[param[0][3], param[1][3]]])
   }
 
   const setChooseValue2 = (param: string) => {
     setDate2(param[3])
-    console.log(param[3])
+    console.log('setChooseValue2', param[3])
   }
 
   const setChooseValue3 = (param: string) => {
     setDate3(param[3])
+    console.log('setChooseValue3', param[3])
   }
 
   const setChooseValue4 = (chooseData: any) => {
     const dateArr = chooseData.map((item: any) => {
       return item[3]
     })
+    console.log('setChooseValue4', [...dateArr], chooseData)
     setDate4([...dateArr])
   }
 
   const setChooseValue5 = (param: string) => {
+    console.log('set value 5', [...[param[0][3], param[1][3]]])
     setDate5([...[param[0][3], param[1][3]]])
   }
 
@@ -199,6 +205,10 @@ const CalendarDemo = () => {
 
   const setChooseValue7 = (param: string) => {
     setDate7([...[param[0][3], param[1][3]]])
+  }
+
+  const setChooseValue8 = (param: string) => {
+    setDate8([...[param[0][3], param[1][3]]])
   }
 
   const select = (param: string) => {
@@ -236,10 +246,10 @@ const CalendarDemo = () => {
     }
   }
 
-  const onDay = (date: Day) => {
-    return <span>{date.day <= 9 ? `0${date.day}` : date.day}</span>
+  const renderDay = (date: Day) => {
+    return <>{date.day <= 9 ? `0${date.day}` : date.day}</>
   }
-  const onTopInfo = (date: Day) => {
+  const renderDayTop = (date: Day) => {
     let currDate = ''
     if (date && date.day === 10) {
       currDate = '☺'
@@ -247,7 +257,7 @@ const CalendarDemo = () => {
     return <span className="info">{currDate}</span>
   }
 
-  const onBottomInfo = (date: Day) => {
+  const renderDayBottom = (date: Day) => {
     let currDate = ''
     if (date && date.day === 10) {
       currDate = '纪念日'
@@ -255,7 +265,7 @@ const CalendarDemo = () => {
     return <span className="info">{currDate}</span>
   }
 
-  const onBtn = () => {
+  const renderHeaderButtons = () => {
     return (
       <div className="wrapper">
         <div className="d_div">
@@ -290,11 +300,11 @@ const CalendarDemo = () => {
           visible={isVisible}
           showTitle={false}
           defaultValue={date}
-          // startDate="2022-01-11"
-          endDate="2029-11-30"
+          // startDate="2023-06-11"
+          endDate="2023-11-30"
           onClose={closeSwitch}
-          onChoose={setChooseValue}
-          onSelected={select}
+          onConfirm={setChooseValue}
+          onClickDay={select}
         />
 
         <Cell
@@ -310,11 +320,11 @@ const CalendarDemo = () => {
           visible={isVisible1}
           defaultValue={date1}
           type="range"
-          startDate="2019-12-22"
-          endDate="2021-01-08"
+          startDate="2022-12-22"
+          endDate="2024-01-08"
           onClose={closeSwitch1}
-          onChoose={setChooseValue1}
-          onSelected={select}
+          onConfirm={setChooseValue1}
+          onClickDay={select}
         />
 
         <Cell
@@ -330,10 +340,10 @@ const CalendarDemo = () => {
           visible={isVisible4}
           defaultValue={date4}
           type="multiple"
-          startDate="2022-01-01"
-          endDate="2022-09-10"
+          startDate="2023-01-01"
+          endDate="2024-09-10"
           onClose={closeSwitch4}
-          onChoose={setChooseValue4}
+          onConfirm={setChooseValue4}
         />
 
         <h2>{translated.cfbdc781}</h2>
@@ -347,9 +357,9 @@ const CalendarDemo = () => {
           defaultValue={date3}
           startDate=""
           endDate=""
-          isAutoBackFill
+          autoBackfill
           onClose={closeSwitch3}
-          onChoose={setChooseValue3}
+          onConfirm={setChooseValue3}
         />
         <Cell
           title={translated.a74a1fd4}
@@ -364,12 +374,12 @@ const CalendarDemo = () => {
           visible={isVisible5}
           defaultValue={date5}
           type="range"
-          isAutoBackFill
-          startDate="2019-12-22"
-          endDate="2021-01-08"
+          autoBackfill
+          startDate="2022-12-22"
+          endDate="2024-01-08"
           onClose={closeSwitch5}
-          onChoose={setChooseValue5}
-          onSelected={select}
+          onConfirm={setChooseValue5}
+          onClickDay={select}
         />
         <h2>{translated.d04fcbda}</h2>
         <Cell
@@ -385,16 +395,17 @@ const CalendarDemo = () => {
           visible={isVisible6}
           defaultValue={date6}
           type="range"
-          startDate="2019-12-22"
-          endDate="2021-01-08"
+          startDate="2023-2-22"
+          endDate="2024-01-08"
           confirmText="submit"
           startText="enter"
           endText="leave"
-          onDay={onDay}
-          onTopInfo={onTopInfo}
-          onBottomInfo={onBottomInfo}
+          renderDay={renderDay}
+          renderDayTop={renderDayTop}
+          renderDayBottom={renderDayBottom}
+          showToday
           onClose={closeSwitch6}
-          onChoose={setChooseValue6}
+          onConfirm={setChooseValue6}
         />
 
         <Cell
@@ -412,10 +423,10 @@ const CalendarDemo = () => {
           defaultValue={date7}
           type="range"
           startDate="2022-12-22"
-          endDate="2023-12-31"
-          onBtn={onBtn}
+          endDate="2024-12-31"
+          renderHeaderButtons={renderHeaderButtons}
           onClose={closeSwitch7}
-          onChoose={setChooseValue7}
+          onConfirm={setChooseValue7}
         />
 
         <h2>{translated.e51e4582}</h2>
@@ -429,11 +440,16 @@ const CalendarDemo = () => {
           }}
         >
           <Calendar
-            poppable={false}
-            defaultValue={date2}
-            isAutoBackFill
-            onChoose={setChooseValue2}
-            onYearMonthChange={yearMonthChange}
+            popup={false}
+            defaultValue={date8}
+            type="range"
+            startDate="2023-5-23"
+            endDate="2023-08-01"
+            startText={<div>test</div>}
+            endText="leave"
+            autoBackfill
+            onConfirm={setChooseValue8}
+            onPageChange={yearMonthChange}
           />
         </div>
       </div>

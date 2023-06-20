@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, ReactNode } from 'react'
 import Popup from '@/packages/popup/index.taro'
 import CalendarItem from '@/packages/calendaritem/index.taro'
 import Utils from '@/utils/date'
@@ -14,34 +14,34 @@ interface Day {
 }
 export interface CalendarProps {
   type?: string
-  isAutoBackFill?: boolean
-  poppable?: boolean
+  autoBackfill?: boolean
+  popup?: boolean
   visible?: boolean
   title?: string
   defaultValue?: string | string[]
   startDate?: string
   endDate?: string
   showToday?: boolean
-  startText?: string
-  endText?: string
-  confirmText?: string
+  startText?: ReactNode
+  endText?: ReactNode
+  confirmText?: ReactNode
   showTitle?: boolean
   showSubTitle?: boolean
-  toDateAnimation?: boolean
-  onBtn?: (() => string | JSX.Element) | undefined
-  onDay?: ((date: Day) => string | JSX.Element) | undefined
-  onTopInfo?: ((date: Day) => string | JSX.Element) | undefined
-  onBottomInfo?: ((date: Day) => string | JSX.Element) | undefined
+  scrollAnimation?: boolean
+  renderHeaderButtons?: () => string | JSX.Element
+  renderDay?: (date: Day) => string | JSX.Element
+  renderDayTop?: (date: Day) => string | JSX.Element
+  renderDayBottom?: (date: Day) => string | JSX.Element
   onClose?: () => void
-  onChoose?: (param: string) => void
-  onSelected?: (data: string) => void
-  onYearMonthChange?: (param: string) => void
+  onConfirm?: (param: string) => void
+  onClickDay?: (data: string) => void
+  onPageChange?: (param: string) => void
 }
 
 const defaultProps = {
-  type: 'one',
-  isAutoBackFill: false,
-  poppable: true,
+  type: 'single',
+  autoBackfill: false,
+  popup: true,
   visible: false,
   title: '',
   defaultValue: '',
@@ -53,15 +53,15 @@ const defaultProps = {
   confirmText: '',
   showTitle: true,
   showSubTitle: true,
-  toDateAnimation: true,
-  onBtn: undefined,
-  onDay: undefined,
-  onTopInfo: undefined,
-  onBottomInfo: undefined,
+  scrollAnimation: true,
+  renderHeaderButtons: undefined,
+  renderDay: undefined,
+  renderDayTop: undefined,
+  renderDayBottom: undefined,
   onClose: () => {},
-  onChoose: (param: string) => {},
-  onSelected: (data: string) => {},
-  onYearMonthChange: (param: string) => {},
+  onConfirm: (param: string) => {},
+  onClickDay: (data: string) => {},
+  onPageChange: (param: string) => {},
 } as CalendarProps
 
 export const Calendar = React.forwardRef<
@@ -71,10 +71,10 @@ export const Calendar = React.forwardRef<
   const { locale } = useConfig()
   const {
     children,
-    poppable,
+    popup,
     visible,
     type,
-    isAutoBackFill,
+    autoBackfill,
     title,
     defaultValue,
     startDate,
@@ -85,15 +85,15 @@ export const Calendar = React.forwardRef<
     confirmText,
     showTitle,
     showSubTitle,
-    toDateAnimation,
-    onBtn,
-    onDay,
-    onTopInfo,
-    onBottomInfo,
+    scrollAnimation,
+    renderHeaderButtons,
+    renderDay,
+    renderDayTop,
+    renderDayBottom,
     onClose,
-    onChoose,
-    onSelected,
-    onYearMonthChange,
+    onConfirm,
+    onClickDay,
+    onPageChange,
   } = { ...defaultProps, ...props }
 
   const calendarRef = useRef<any>(null)
@@ -105,14 +105,14 @@ export const Calendar = React.forwardRef<
   const update = () => {}
   const choose = (param: string) => {
     close()
-    onChoose && onChoose(param)
+    onConfirm && onConfirm(param)
   }
   const closePopup = () => {
     close()
   }
 
   const select = (param: string) => {
-    onSelected && onSelected(param)
+    onClickDay && onClickDay(param)
   }
 
   const scrollToDate = (date: string) => {
@@ -120,7 +120,7 @@ export const Calendar = React.forwardRef<
   }
 
   const yearMonthChange = (param: string) => {
-    onYearMonthChange && onYearMonthChange(param)
+    onPageChange && onPageChange(param)
   }
 
   React.useImperativeHandle(ref, () => ({
@@ -132,8 +132,8 @@ export const Calendar = React.forwardRef<
       <CalendarItem
         ref={calendarRef}
         type={type}
-        isAutoBackFill={isAutoBackFill}
-        poppable={poppable}
+        autoBackfill={autoBackfill}
+        popup={popup}
         title={title || locale.calendaritem.title}
         defaultValue={defaultValue}
         startDate={startDate}
@@ -144,21 +144,21 @@ export const Calendar = React.forwardRef<
         confirmText={confirmText || locale.calendaritem.confirm}
         showTitle={showTitle}
         showSubTitle={showSubTitle}
-        toDateAnimation={toDateAnimation}
-        onBtn={onBtn}
-        onDay={onDay}
-        onTopInfo={onTopInfo}
-        onBottomInfo={onBottomInfo}
-        onChoose={choose}
-        onSelected={select}
-        onYearMonthChange={yearMonthChange}
+        scrollAnimation={scrollAnimation}
+        renderHeaderButtons={renderHeaderButtons}
+        renderDay={renderDay}
+        renderDayTop={renderDayTop}
+        renderDayBottom={renderDayBottom}
+        onConfirm={choose}
+        onClickDay={select}
+        onPageChange={yearMonthChange}
       />
     )
   }
 
   return (
     <>
-      {poppable ? (
+      {popup ? (
         <Popup
           visible={visible}
           position="bottom"

@@ -11,10 +11,9 @@ function requestAniFrame() {
         _window.setTimeout(callback, 1000 / 60)
       }
     )
-  } else {
-    return function (callback: any) {
-      setTimeout(callback, 1000 / 60)
-    }
+  }
+  return function (callback: any) {
+    setTimeout(callback, 1000 / 60)
   }
 }
 
