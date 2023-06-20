@@ -61,7 +61,7 @@ const zhCN: BaseLang = {
     second: '秒',
   },
   address: {
-    selectRegion: '请选择所在地区',
+    selectRegion: '请选择地址',
     deliveryTo: '配送至',
     chooseAnotherAddress: '选择其他地址',
   },

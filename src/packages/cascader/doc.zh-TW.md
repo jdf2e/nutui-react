@@ -603,9 +603,6 @@ export default App;
 | --- | --- | --- |
 | \--nutui-cascader-font-size | 級聯總字號 | `$font-size-2` |
 | \--nutui-cascader-line-height | 行高 | `22px` |
-| \--nutui-cascader-title-padding | 標題padding值 | `24px 20px 17px` |
-| \--nutui-cascader-title-font-size | 標題字號 | `18px` |
-| \--nutui-cascader-title-line-height | 標題行高 | `20px` |
 | \--nutui-cascader-pane-height | 級聯面闆高度 | `342px` |
 | \--nutui-cascader-tabs-item-padding | 級聯tabs的標題部分的padding 值 | `0 10px` |
 | \--nutui-cascader-item-height | 級聯數據每一條的高度 | `40px` |

@@ -15,7 +15,7 @@ NutUI React 1.x 到 NutUI React 2.x 存在一些不兼容更新，需要仔细�
    - 新增了按需引入 css 文件的支持。可通过 babel-import-plugin 插件实现：
 ```js
 // Webpack .babelrc 或 babel.config.js中配置
-plugins: [
+[
   [
     "import",
     {
@@ -611,6 +611,19 @@ plugins: [
 - `fontColor` 重命名为 `color`
 ### 特色组件
 #### Address
+- 该组件的 `custom` 改用 `Cascader` 组件重写；`custom2`也将使用 `Cascader` 完成，在 `Cascader` 中支持 `Elevator`，开发中。所以会废弃 `province`、`city`、`country`、`town` 这些属性，同时支持 `Cascader` 的属性。
+- `modelValue` 重命名为 `visible`
+- `modelSelect` 重命名为 `defaultValue`
+- `onSelected` 重命名为 `onSelect`
+- `existAddress` 重命名为 `existList`
+- `selectedIcon` 重命名为 `selectIcon`
+- `closeBtnIcon` 重命名为 `closeIcon`
+- `backBtnIcon` 重命名为 `backIcon`
+- `isShowCustomAddress` 重命名为 `custom`，用于已有地址列表与自定义列表的切换，修改默认为值 `false`
+- `customAndExistTitle` 废弃，与 `custom` 合并，当 `custom` 为 true 时，为默认文案，设置为某字符串时，展示字符串。
+- `customAddressTitle`、`existAddressTitle` 改为 `title`，不再区分状态，可通过onSwitch修改title
+- 精简布局和样式
+
 #### Barrage
 - `barrageList` 重命名为 `list`
 - `frequency` 重命名为 `interval`

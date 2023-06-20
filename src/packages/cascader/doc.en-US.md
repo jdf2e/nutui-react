@@ -603,9 +603,6 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-cascader-font-size | cascader font size | `$font-size-2` |
 | \--nutui-cascader-line-height | cascader line height | `22px` |
-| \--nutui-cascader-title-padding | title padding | `24px 20px 17px` |
-| \--nutui-cascader-title-font-size | title font size | `18px` |
-| \--nutui-cascader-title-line-height | title line height | `20px` |
 | \--nutui-cascader-pane-height | cascader pane height | `342px` |
 | \--nutui-cascader-tabs-item-padding | cascader tabs item padding | `0 10px` |
 | \--nutui-cascader-item-height | cascader item height | `40px` |

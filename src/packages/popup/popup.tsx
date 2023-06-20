@@ -6,6 +6,7 @@ import React, {
   MouseEvent,
   ReactElement,
   ReactPortal,
+  ReactNode,
 } from 'react'
 import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
@@ -25,7 +26,9 @@ export interface PopupProps extends OverlayProps {
   overlayClassName: string
   closeable: boolean
   closeIconPosition: string
-  closeIcon: React.ReactNode
+  closeIcon: ReactNode
+  left: ReactNode
+  title: ReactNode
   destroyOnClose: boolean
   portal: Teleport
   overlay: boolean
@@ -60,7 +63,7 @@ const defaultProps = {
 let _zIndex = 1000
 
 export const Popup: FunctionComponent<
-  Partial<PopupProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<PopupProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > = (props) => {
   const {
     children,
@@ -75,6 +78,8 @@ export const Popup: FunctionComponent<
     closeable,
     closeIconPosition,
     closeIcon,
+    left,
+    title,
     style,
     transition,
     round,
@@ -206,6 +211,18 @@ export const Popup: FunctionComponent<
     }
     return null
   }
+  const renderTitle = () => {
+    return (
+      <>
+        {position === 'bottom' && (
+          <>
+            {left && <div className={`${classPrefix}-left-icon`}>{left}</div>}
+            <div className={`${classPrefix}-title`}>{title}</div>
+          </>
+        )}
+      </>
+    )
+  }
   const renderPop = () => {
     return (
       <CSSTransition
@@ -217,8 +234,9 @@ export const Popup: FunctionComponent<
         onExited={onHandleClosed}
       >
         <div style={popStyles} className={popClassName} onClick={onHandleClick}>
-          {showChildren ? children : ''}
+          {renderTitle()}
           {renderIcon()}
+          {showChildren ? children : ''}
         </div>
       </CSSTransition>
     )
