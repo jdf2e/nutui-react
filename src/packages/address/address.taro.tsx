@@ -18,7 +18,6 @@ export interface AddressProps extends CascaderProps {
   value?: CascaderValue
   defaultValue?: CascaderValue
   type: string
-  title: string
   options: CascaderOption[]
   optionKey: CascaderOptionKey
   format: Record<string, string | number | null>
@@ -38,7 +37,6 @@ const defaultProps = {
   visible: false,
   defaultValue: [],
   type: 'custom',
-  title: '',
   options: [],
   optionKey: { textKey: 'text', valueKey: 'value', childrenKey: 'children' },
   format: {},
@@ -55,11 +53,13 @@ export const Address: FunctionComponent<
   Partial<AddressProps> &
     Omit<
       React.HTMLAttributes<HTMLDivElement>,
-      'onChange' | 'defaultValue' | 'onLoad'
+      'onChange' | 'defaultValue' | 'onLoad' | 'title' | 'onClick'
     >
 > = (props) => {
   const { locale } = useConfig()
   const {
+    style,
+    className,
     visible,
     defaultValue,
     children,
@@ -79,13 +79,13 @@ export const Address: FunctionComponent<
     onExistSelect,
     onClose,
     onSwitch,
-    style,
-    className,
+
     ...rest
   } = {
     ...defaultProps,
     ...props,
   }
+
   const classPrefix = 'nut-address'
   const [currentType, setCurrentType] = useState<string>(type)
   const [showPopup, setShowPopup] = useState(visible)
@@ -97,23 +97,19 @@ export const Address: FunctionComponent<
     setShowPopup(visible)
   }, [visible])
 
-  const headerRender = () => {
+  const renderLeftOnCustomSwitch = () => {
     return (
-      <div className={`${classPrefix}-header`}>
-        <div className="arrow-back" onClick={onSwitchModule}>
-          {currentType === 'custom' &&
-            custom &&
-            (React.isValidElement(backIcon) ? (
+      <>
+        {custom && (
+          <div className={`${classPrefix}-left-icon`} onClick={onSwitchModule}>
+            {React.isValidElement(backIcon) ? (
               backIcon
             ) : (
               <Left color="#cccccc" />
-            ))}
-        </div>
-
-        <div className={`${classPrefix}-header-title`}>
-          {title || locale.address.selectRegion}
-        </div>
-      </div>
+            )}
+          </div>
+        )}
+      </>
     )
   }
 
@@ -138,6 +134,7 @@ export const Address: FunctionComponent<
           visible={showPopup}
           closeable
           title={title || locale.address.selectRegion}
+          left={renderLeftOnCustomSwitch()}
           defaultValue={defaultValue}
           options={options}
           format={format}
@@ -150,12 +147,18 @@ export const Address: FunctionComponent<
           }}
         />
       ) : (
-        <Popup visible={showPopup} position="bottom" closeIcon={closeIcon}>
+        <Popup
+          visible={showPopup}
+          position="bottom"
+          round
+          closeable
+          closeIcon={closeIcon}
+          title={title || locale.address.selectRegion}
+        >
           <div
             className={`${classPrefix} ${className || ''}`}
             style={{ ...style }}
           >
-            {headerRender()}
             {
               // 不需要 close，选中切换即关闭弹框。可手动关闭弹框，只关闭弹框不处理逻辑。
               <ExistRender

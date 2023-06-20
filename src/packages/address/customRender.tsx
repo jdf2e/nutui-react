@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import Cascader from '@/packages/cascader'
-// import Elevator from '@/packages/elevator'
-import {
+import Cascader, {
   CascaderProps,
   CascaderOption,
   CascaderValue,
@@ -57,7 +55,6 @@ export const CustomRender: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  // const classPrefix = 'nut-address'
 
   return (
     <>
@@ -81,18 +78,6 @@ export const CustomRender: FunctionComponent<
           {...rest}
         />
       )}
-
-      {/* {type === 'custom2' && (
-        <div className={`${classPrefix}-elevator`}>
-          <Elevator
-            height={height}
-            // list={regionList2[tabName[tabIndex] as SelectedRegionType]}
-            // onClickItem={(key: string, item: RegionData | string) => {
-            //   getNextList(item)
-            // }}
-          />
-        </div>
-      )} */}
     </>
   )
 }

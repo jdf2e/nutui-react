@@ -41,6 +41,8 @@ export const CustomRender: FunctionComponent<
     type,
     height,
     options,
+    title,
+    left,
     value,
     defaultValue,
     optionKey,
@@ -54,8 +56,6 @@ export const CustomRender: FunctionComponent<
     ...props,
   }
 
-  const classPrefix = 'nut-address'
-
   return (
     <>
       {type === 'custom' && (
@@ -63,6 +63,8 @@ export const CustomRender: FunctionComponent<
           visible={visible}
           value={value}
           defaultValue={defaultValue}
+          title={title}
+          left={left}
           options={options}
           format={format}
           optionKey={optionKey}
@@ -76,18 +78,6 @@ export const CustomRender: FunctionComponent<
           {...rest}
         />
       )}
-
-      {/* {type === 'custom2' && (
-        <div className={`${classPrefix}-elevator`}>
-          <Elevator
-            height={height}
-            list={regionList[tabName[tabIndex] as SelectedRegionType]}
-            onClickItem={(key: string, item: RegionData | string) => {
-              getNextList(item)
-            }}
-          />
-        </div>
-      )} */}
     </>
   )
 }
