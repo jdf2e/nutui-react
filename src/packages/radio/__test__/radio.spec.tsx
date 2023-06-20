@@ -40,9 +40,7 @@ describe('radio', () => {
   })
 
   test('radioGroup onChange toBeCalled', () => {
-    const changeFn = jest.fn((e) => {
-      console.log(e)
-    })
+    const changeFn = jest.fn()
     const RadioGroupLast = () => {
       const [radioVal] = useState('1')
       return (
