@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import { Left } from '@nutui/icons-react'
-import Popup from '@/packages/popup/index'
+import Popup from '@/packages/popup'
 import { CustomRender } from './customRender'
 import { ExistRender } from './existRender'
 import { useConfig } from '@/packages/configprovider'
