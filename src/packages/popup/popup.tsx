@@ -217,7 +217,7 @@ export const Popup: FunctionComponent<
         {position === 'bottom' && (
           <>
             {left && <div className={`${classPrefix}-left-icon`}>{left}</div>}
-            <div className={`${classPrefix}-title`}>{title}</div>
+            {title && <div className={`${classPrefix}-title`}>{title}</div>}
           </>
         )}
       </>

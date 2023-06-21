@@ -799,12 +799,13 @@ $overlay-content-bg-color: var(
 $overlay-content-color: var(--nutui-overlay-content-color, $gray1) !default;
 //popup（✅）
 $popup-close-icon-margin: var(--nutui-popup-close-icon-margin, 16px) !default;
-$popup-border-radius: var(--nutui-popup-border-radius, 20px) !default;
+$popup-border-radius: var(--nutui-popup-border-radius, 24px) !default;
 $popup-close-icon-color: var(--nutui-popup-close-icon-color, #969799) !default;
 $popup-close-icon-size: var(--nutui-popup-close-icon-size, 30px) !default;
 $popup-title-padding: var(--nutui-popup-title-padding, 15px) !default;
 $popup-title-font-size: var(--nutui-popup-title-font-size, 18px) !default;
-$popup-title-line-height: var(--nutui-popup-title-line-height, 20px) !default;
+$popup-title-line-height: var(--nutui-popup-title-line-height, 18px) !default;
+$popup-title-border-bottom: var(--nutui-popup-title-border-bottom, 0) !default;
 
 // Notify（✅）
 $notify-text-color: var(--nutui-notify-text-color, $white) !default;
