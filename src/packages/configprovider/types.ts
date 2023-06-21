@@ -263,6 +263,7 @@ export type NutCSSVariables =
   | 'nutuiPopupTitlePadding'
   | 'nutuiPopupTitleFontSize'
   | 'nutuiPopupTitleLineHeight'
+  | 'nutuiPopupTitleBorderBottom'
   | 'nutuiNotifyTextColor'
   | 'nutuiNotifyPadding'
   | 'nutuiNotifyFontSize'
