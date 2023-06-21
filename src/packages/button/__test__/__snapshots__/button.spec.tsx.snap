@@ -5,6 +5,7 @@ exports[`should match snapshot 1`] = `
   <button
     class="nut-button aa nut-button--primary nut-button--normal nut-button--round"
     style="margin: 8px;"
+    type="button"
   >
     <div
       class="nut-button__warp"
