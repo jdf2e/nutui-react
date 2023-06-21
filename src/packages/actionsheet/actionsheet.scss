@@ -6,14 +6,8 @@
   padding-bottom: env(safe-area-inset-bottom);
   text-align: center;
 
-  &__title {
-    display: block;
-    padding: 10px;
-    margin: 0;
-    background-color: $white;
+  .nut-popup-title {
     border-bottom: 1px solid $actionsheet-border-color;
-    font-size: $font-size-large;
-    color: $title-color;
   }
 
   &__description {

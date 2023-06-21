@@ -1,12 +1,11 @@
 import React, { FunctionComponent, ReactNode } from 'react'
-import Popup from '@/packages/popup'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import Popup, { PopupProps } from '@/packages/popup/index'
+import { ComponentDefaults } from '@/utils/typings'
 
 export type ItemType<T> = { [key: string]: T }
 
-export interface ActionSheetProps extends BasicComponent {
+export interface ActionSheetProps extends PopupProps {
   visible: boolean
-  title: ReactNode
   description: ReactNode
   options: ItemType<string | boolean>[]
   optionKey: ItemType<string>
@@ -17,14 +16,13 @@ export interface ActionSheetProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   visible: false,
-  title: '',
   description: '',
   options: [],
   optionKey: { name: 'name', description: 'description' },
   cancelText: '',
   onCancel: () => {},
   onSelect: () => {},
-} as ActionSheetProps
+} as unknown as ActionSheetProps
 export const ActionSheet: FunctionComponent<
   Partial<ActionSheetProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'title' | 'onSelect'>
@@ -61,12 +59,13 @@ export const ActionSheet: FunctionComponent<
       round
       visible={visible}
       position="bottom"
+      title={title}
+      className={classPrefix}
       onClose={() => {
         onCancel && onCancel()
       }}
     >
-      <div className={`${classPrefix} ${className}`} style={style} {...rest}>
-        {title && <div className={`${classPrefix}__title`}>{title}</div>}
+      <div className={`${className}`} style={style} {...rest}>
         {description && (
           <div className={`${classPrefix}__description`}>{description}</div>
         )}

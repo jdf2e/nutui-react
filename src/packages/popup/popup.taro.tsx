@@ -219,7 +219,7 @@ export const Popup: FunctionComponent<
         {position === 'bottom' && (
           <>
             {left && <View className={`${classPrefix}-left-icon`}>{left}</View>}
-            <View className={`${classPrefix}-title`}>{title}</View>
+            {title && <View className={`${classPrefix}-title`}>{title}</View>}
           </>
         )}
       </>
