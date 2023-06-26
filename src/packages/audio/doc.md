@@ -1,20 +1,18 @@
 # Audio 音频播放器
 
-### 介绍
+## 介绍
 
 用于音频播放
 
-### 安装
+## 安装
 
-```javascript
-// react
+```tsx
 import { Audio } from '@nutui/nutui-react'
-
 ```
 
 ## 代码演示
 
-### 基本用法
+### 基础用法
 
 :::demo
 
@@ -26,13 +24,47 @@ const App = () => {
   return (
     <>
       <Audio
-        autoplay={false}
-        url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+        autoPlay={false}
+        src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="icon"
         loop={false}
         preload="auto"
         muted={false}
-        onPlayEnd={() => alert('ended!')}
+        onEnd={() => alert('ended!')}
+      />
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### 进度条播放
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Audio } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Audio
+        autoPlay={false}
+        src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+        type="progress"
+        preload="auto"
+        muted={false}
+        onMute={(e) => {
+          console.log('progress audio muted', e)
+        }}
+        onForward={() => console.log('forward')}
+        onPause={(e) => {
+          console.log('progress audio paused', e)
+        }}
+        onEnd={() => alert('progress audio ended!')}
       />
     </>
   );
@@ -58,8 +90,8 @@ const App = () => {
      <Audio
       className="custom-voice-audio"
       id="custom-voice-audio"
-      autoplay={false}
-      url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+      autoPlay={false}
+      src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
       type="none"
       preload="auto"
       onCanPlay={(e: any) => {
@@ -80,40 +112,6 @@ export default App;
 
 :::
 
-### 进度条播放
-
-:::demo
-
-```tsx
-import  React from "react";
-import { Audio } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Audio
-        autoplay={false}
-        url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
-        type="progress"
-        preload="auto"
-        muted={false}
-        onMute={(e) => {
-          console.log('progress audio muted', e)
-        }}
-        onForward={() => console.log('forward')}
-        onPause={(e) => {
-          console.log('progress audio paused', e)
-        }}
-        onPlayEnd={() => alert('progress audio ended!')}
-      />
-    </>
-  );
-};
-export default App;
-```
-
-:::
-
 ### 控件播放
 
 :::demo
@@ -126,15 +124,15 @@ const App = () => {
   return (
     <>
       <Audio
-        autoplay={false}
-        url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+        autoPlay={false}
+        src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="controls"
         preload="auto"
         muted={false}
         onPause={(e) => {
           console.log('paused', e)
         }}
-        onPlayEnd={() => alert('ended!')}
+        onEnd={() => alert('ended!')}
       />
     </>
   );
@@ -144,30 +142,21 @@ export default App;
 
 :::
 
-
-## API
+## Audio
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| className       | 类名               | string | ''              |
-| style       | css样式               | CSSProperties | {}           |
-| url         | 语音资源链接               | string | ''              |
-| muted        | 是否静音                         | boolean | false             |
-| autoplay         | 是否自动播放 | boolean | false               |
-| loop | 是否循环播放     | boolean | false |
-| preload          | 是否预加载语音 枚举值：'none'、'metadata'、'auto'、''   | string | 'auto'              |
-| type         | 展示形式，可选值：controls 控制面板   progress 进度条  icon 图标 none 自定义 | string | 'progress'              |
-
-
-### Events
-
-| 事件名 | 说明           | 回调参数     |
-|--------|----------------|--------------|
-| onFastBack  | 语音快退回调,type=progress时生效 | event：HTMLAudioElement |
-| onForward  | 语音快进回调,type=progress时生效 | event：HTMLAudioElement |
-| onPause  | 暂停回调 | event：HTMLAudioElement |
-| onPlayEnd  | 语音播放完成，loop=false时生效 | event：HTMLAudioElement|
-| onMute  | 静音回调 | event：HTMLAudioElement|
-| onCanPlay  | 可以播放媒体时触发 | event：HTMLAudioElement |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| src | 语音资源链接 | `string` | `-` |
+| muted | 是否静音 | `boolean` | `false` |
+| autoPlay | 是否自动播放 | `boolean` | `false` |
+| loop | 是否循环播放 | `boolean` | `false` |
+| preload | 是否预加载语音 | `none` \| `metadata` \| `auto`| `auto` |
+| type | 展示形式，可选值：controls 控制面板 progress 进度条 icon 图标 none 自定义 | `string` | `progress` |
+| onBack | 语音快退回调，type = progress 时生效 | `(event：HTMLAudioElement) => void` | `-` |
+| onForward | 语音快进回调，type = progress 时生效 | `(event：HTMLAudioElement) => void` | `-` |
+| onPause | 暂停回调 | `(event：HTMLAudioElement) => void` | `-` |
+| onEnd | 语音播放完成，loop = false 时生效 | `(event：HTMLAudioElement) => void` | `-` |
+| onMute | 静音回调 | `(event：HTMLAudioElement) => void` | `-` |
+| onCanPlay | 可以播放媒体时触发 | `(event：HTMLAudioElement) => void` | `-` |

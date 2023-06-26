@@ -1,19 +1,18 @@
-#  NoticeBar 公告欄
+# NoticeBar 公告欄
 
-### 介紹
+## 介紹
 
 用於循環播放展示一組消息通知。
 
-### 安裝
+## 安裝
 
-```javascript
-// react
+```tsx
 import { NoticeBar } from '@nutui/nutui-react';
 ```
 
 ## 代碼演示
 
-### 基本用法
+### 基礎用法
 
 :::demo
 
@@ -25,15 +24,17 @@ const App = () => {
     const text = 'NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。'
     return (
       <>
-        <NoticeBar text={text} />
+        <NoticeBar content={text} />
       </>
     )
 }
 export default App
 ```
+
 :::
 
 ### 滾動播放
+
 通知欄的內容長度溢出時會自動開啟滾動播放，可通過 scrollable 屬性可以控制該行為
 
 :::demo
@@ -46,20 +47,20 @@ const App = () => {
     return (
       <>
         <NoticeBar
-            text="NutUI 是京東風格的移動端組件庫"
+            content="NutUI 是京東風格的移動端組件庫"
             scrollable
         />
 
         <NoticeBar 
-            text="NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。" scrollable={false} 
+            content="NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。" scrollable={false} 
         />
       </>
     )
 }
 export default App
 ```
-:::
 
+:::
 
 ### 通告欄模式--關閉模式
 
@@ -76,29 +77,28 @@ const App = () => {
     }
     return (
       <>
-       <NoticeBar closeMode onClick={hello}>
+       <NoticeBar closeable onClick={hello}>
           NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。
         </NoticeBar>
         <br />
-        <NoticeBar closeMode rightIcon={<CircleClose />} onClick={hello}>
+        <NoticeBar closeable rightIcon={<CircleClose />} onClick={hello}>
           NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。
         </NoticeBar>
         <br />
         <NoticeBar leftIcon={<Image src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png" />}>
-          <a href="https://www.jd.com">京东商城</a>
+          <a href="https://www.jd.com">京東商城</a>
         </NoticeBar>
       </>
     )
 }
 export default App
 ```
+
 :::
-
-
 
 ### 多行展示
 
-文字較長時，可以通過設置 wrapable 屬性來開啟多行展示。默認為不滾動，可以通過設置 scrollable 控制為滾動。
+文字較長時，可以通過設置 wrap 屬性來開啟多行展示。默認為不滾動，可以通過設置 scrollable 控制為滾動。
 
 :::demo
 
@@ -110,14 +110,15 @@ const App = () => {
     const text = 'NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。'
     
     return (
-      <NoticeBar text={text} wrapable />
+      <NoticeBar content={text} wrap />
     )
 }
 export default App
 ```
+
 :::
 
-### 縱向滾動
+### 縱嚮滾動
 
 :::demo
 
@@ -130,7 +131,7 @@ const App = () => {
         'NoticeBar 公告欄',
         'Cascader 級聯選擇',
         'DatePicker 日期選擇器',
-        'CheckBox 複選按鈕',
+        'CheckBox 復選按鈕',
       ]
     const go = (item: any) => {
         console.log(item)
@@ -141,20 +142,19 @@ const App = () => {
             direction="vertical"
             list={horseLamp1}
             speed={10}
-            standTime={1000}
+            duration={1000}
             onClick={(e) => {
               go(e.target.innerHtml)
             }}
-            closeMode
+            closeable
           />
         </div>
     )
 }
 export default App
 ```
+
 :::
-
-
 
 ### 自定義左側圖標
 
@@ -165,14 +165,14 @@ import  React, {useState} from "react";
 import { NoticeBar, Image } from '@nutui/nutui-react';
 
 const App = () => {
-     const horseLamp2 = ['NoticeBar 公告欄', 'Cascader 級聯選擇', 'DatePicker 日期選擇器', 'CheckBox 複選按鈕'];
+     const horseLamp2 = ['NoticeBar 公告欄', 'Cascader 級聯選擇', 'DatePicker 日期選擇器', 'CheckBox 復選按鈕'];
     return (
       <>
         <NoticeBar
             direction="vertical"
             list={horseLamp2}
             speed={10}
-            standTime={2000}
+            duration={2000}
             leftIcon={<Image src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png" />}
             onClick={(e) => {
               console.log('listClick', e.target)
@@ -187,8 +187,8 @@ const App = () => {
 }
 export default App
 ```
-:::
 
+:::
 
 ### 自定義滾動內容
 
@@ -199,12 +199,12 @@ import  React, {useState} from "react";
 import { NoticeBar } from '@nutui/nutui-react';
 
 const App = () => {
-    const  horseLamp3 = ['NoticeBar 公告欄', 'Cascader 級聯選擇', 'DatePicker 日期選擇器', 'CheckBox 複選按鈕']
+    const  horseLamp3 = ['NoticeBar 公告欄', 'Cascader 級聯選擇', 'DatePicker 日期選擇器', 'CheckBox 復選按鈕']
 
     return (
       <>
-        <NoticeBar direction="vertical" height={50} speed={10} standTime={1000} 
-        closeMode
+        <NoticeBar direction="vertical" height={50} speed={10} duration={1000} 
+        closeable
         onClose={() => {console.log('close')}}>
         {horseLamp3.map((item, index) => {
             return (
@@ -226,11 +226,10 @@ const App = () => {
 };
 export default App
 ```
+
 :::
 
-
-
-### 纵向自定义右侧图标
+### 縱嚮自定義右側圖標
 
 :::demo
 
@@ -244,7 +243,7 @@ const App = () => {
         'NoticeBar 公告欄',
         'Cascader 級聯選擇',
         'DatePicker 日期選擇器',
-        'CheckBox 複選按鈕',
+        'CheckBox 復選按鈕',
       ]
     return (
       <>
@@ -253,7 +252,7 @@ const App = () => {
             direction="vertical"
             list={horseLamp1}
             speed={10}
-            standTime={1000}
+            duration={1000}
             onClickItem={(e, v) => {
               console.log('onclick-custom', v)
             }}
@@ -264,46 +263,37 @@ const App = () => {
 };
 export default App
 ```
+
 :::
 
+## NoticeBar
 
-## API
+### Props
 
-### Prop
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| direction | 滾動的方嚮，可選 horizontal、vertical | `string` | `horizontal` |
+| content | 提示的信息 | `string` | `-` |
+| closeable | 是否啟用關閉模式 | `boolean` | `false` |
+| leftIcon | 左邊的 icon，closeable 模式下默認為空 | `ReactNode` | `-` |
+| rightIcon | 右邊的 icon，在 closeable 模式下默認為 `<Close />` | `ReactNode` | `-` |
+| delay | 延時多少秒 | `string` \| `number` | `1` |
+| scrollable | 是否可以滾動 | `boolean` | `true` |
+| speed | 滾動速率 (px/s) | `number` | `50` |
+| wrap | 是否開啟文本換行 | `boolean` | `false` |
+| onClick | 外層點擊事件回調 | `(event: any) => void` | `-` |
+| onClose | 關閉通知欄時觸發 | `(event: any) => void` | `-` |
+| onClickItem | 垂直滾動多條數據時，點擊當前展示的信息時觸發 | `(event: any, value: any) => void` | `-` |
 
-| 字段       | 说明                                                       | 类型          | 默认值 |
-| ---------- | ---------------------------------------------------------- | ------------- | ------ |
-| direction       | 滚动的方向，可选 across、vertical                         | string        | `across`     |
-| text       | 提示的信息                                                 | string        | -     |
-| closeMode  | 是否启用关闭模式                                           | boolean       | `false`  |
-| leftIcon   | 左边的 icon，closeMode 模式下默认为空 | ReactNode        | -     |
-| rightIcon   | closeMode 模式下，默认为 ‘close’ | ReactNode        | -     |
-| color      | 导航栏的文字颜色                                           | string        | -     |
-| background | 导航栏的背景颜色                                           | string        | -     |
-| delay      | 延时多少秒                                                 | string \| number | `1`      |
-| scrollable | 是否可以滚动                                               | boolean       | `true`   |
-| speed      | 滚动速率 (px/s)                                            | number        | `50`     |
-| wrapable   | 是否开启文本换行                                           | boolean       | `false`    |
+### Props（direction=vertical）
 
-### Prop（direction=vertical）
-
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| list         | 纵向滚动数据列表               | Array | `[]`               |
-| speed        | 滚动的速度                         | number | `50`               |
-| standTime         | 停留时间(毫秒) | number | `1000`                |
-| complexAm `即将废弃`| 稍复杂的动画，耗能会高     | boolean | `false` |
-| height          | 每一个滚动列的高度(px)，注意：在使用 slot 插槽定义滚动单元时，按照实际高度修改此值                 | number | `40`              |
-| closeMode  | 是否启用右侧关闭图标，可以通过slot[name=rightIcon]自定义图标                                   | boolean       | `false`  |
-
-### Event
-
-| 字段  | 说明             | 回调参数     |
-| ----- | ---------------- | ------------ |
-| onClick  | 外层点击事件回调 | `event: Event` |
-| onClose  | 关闭通知栏时触发 | `event: Event` |
-| onClickItem  | 垂直滚动多条数据时，点击当前展示的信息时触发 | `event: Event, listItem` |
-
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| list | 縱嚮滾動數據列錶 | `Array` | `[]` |
+| speed | 滾動的速度 | `number` | `50` |
+| duration | 停留時間(毫秒) | `number` | `1000` |
+| height | 每一個滾動列的高度(px) | `number` | `40` |
+| closeable | 是否啟用右側關閉圖標，可以通過 rightIcon 自定義圖標 | `boolean` | `false` |
 
 ## 主題定制
 
@@ -311,16 +301,16 @@ export default App
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 默認值 |
-| --- | --- |
-| --nutui-noticebar-background | `rgba(251, 248, 220, 1)` |
-| --nutui-noticebar-color | `#d9500b` |
-| --nutui-noticebar-font-size | `14px` |
-| --nutui-noticebar-height | `40px` |
-| --nutui-noticebar-line-height | `24px` |
-| --nutui-noticebar-left-icon-width | `16px` |
-| --nutui-noticebar-right-icon-width | `16px` |
-| --nutui-noticebar-box-padding | `0 16px` |
-| --nutui-noticebar-wrapable-padding | `16px` |
-| --nutui-noticebar-lefticon-margin | `0px 10px` |
-| --nutui-noticebar-righticon-margin | `0px 10px` |
+| 名稱 | 說明 | 默認值 |
+| --- | --- | --- |
+| \--nutui-noticebar-background | 背景色 | `rgba(251, 248, 220, 1)` |
+| \--nutui-noticebar-color | 文字色 | `#d9500b` |
+| \--nutui-noticebar-font-size | 字號 | `14px` |
+| \--nutui-noticebar-height | 高度 | `40px` |
+| \--nutui-noticebar-line-height | 行高 | `24px` |
+| \--nutui-noticebar-left-icon-width | 左側icon的寬度和高度的設定 | `16px` |
+| \--nutui-noticebar-right-icon-width | 右側icon的寬度和高度的設定 | `16px` |
+| \--nutui-noticebar-box-padding | padding值 | `0 16px` |
+| \--nutui-noticebar-wrap-padding | 多行展示的padding值 | `16px` |
+| \--nutui-noticebar-lefticon-margin | 左側icon的margin值 | `0px 10px` |
+| \--nutui-noticebar-righticon-margin | 右側icon的margin值 | `0px 10px` |

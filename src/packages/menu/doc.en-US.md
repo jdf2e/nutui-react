@@ -1,15 +1,16 @@
 # Menu
 
-### Intro
+## Intro
 
 The menu list that pops down downwards.
 
-### Install
+## Install
 
-``` javascript
-// react
+```tsx
 import { Menu, MenuItem } from '@nutui/nutui-react';
 ```
+
+## Demo
 
 ### Basic Usage
 
@@ -33,7 +34,6 @@ const App = () => {
   return (
     <>
       <div className="demo full">
-        <h2>Basic Usage</h2>
         <Menu>
           <MenuItem options={options} value={0} />
           <MenuItem options={options1} value="a" />
@@ -71,7 +71,7 @@ const App = () => {
       <div className="demo full">
         <Menu>
           <MenuItem options={options} value={0} />
-          <MenuItem title="筛选" ref={itemRef}>
+          <MenuItem title="Filter" ref={itemRef}>
             <div>Custom content</div>
             <Button onClick={() => itemRef.current.toggle(false)}>Confirm</Button>
           </MenuItem>
@@ -191,8 +191,8 @@ const App = () => {
   return (
     <>
       <div className="demo full">
-        <Menu titleIcon={<TriangleDown />>
-          <MenuItem options={options} value={0} optionsIcon={<Success />} />
+        <Menu icon={<TriangleDown />}>
+          <MenuItem options={options} value={0} icon={<Success />} />
           <MenuItem options={options1} value="a" />
         </Menu>
       </div>
@@ -277,43 +277,37 @@ export default App
 
 :::
 
-## API
+## Menu
 
-### Menu Props
+### Props
 
-| 参数                  | 说明                           | 类型                    | 默认值  |
-|---------------------|--------------------------------|-------------------------|---------|
-| activeColor         | Active color of title and option           | string                  | `#F2270C` |
-| closeOnClickOverlay | Whether to close when overlay is clicked     | boolean                 | `true`    |
-| lockScroll          | Whether the background is locked                   | boolean                 | `true`    |
-| scrollFixed         | Whether to fixed when window is scrolled, fixed position can be set                   | boolean \| string \| number                 | `true`    |
-| titleIcon`v2.0.0`          | Custome title icon                 | React.ReactNode                  | -       |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| activeColor | Active color of title and option | `string` | `#F2270C` |
+| closeOnOverlayClick | Whether to close when overlay is clicked | `boolean` | `true` |
+| lockScroll | Whether the background is locked | `boolean` | `true` |
+| scrollFixed | Whether to fixed when window is scrolled, fixed position can be set | `boolean` \| `string` \| `number` | `true` |
+| icon | Custome title icon | `React.ReactNode` | `-` |
 
-### MenuItem Props
+## MenuItem
 
-| 参数                          | 说明                                    | 类型    | 默认值           |
-|-------------------------------|-----------------------------------------|---------|------------------|
-| title                         | Item title                              | string  | Current selected value   |
-| options                       | Options                                | Array   | -                |
-| disabled                      | Whether to disable dropdown item                            | boolean | `false`            |
-| columns                          | Display how many options in one line          | number  | `1`                |
-| optionsIcon`v2.0.0`          | Custome option icon                          | React.ReactNode  | `Check`          |
-| direction            | Expand direction, can be set to up                | string  | `down`           |
-| activeClassName    | Active custome title class              | string  | -                |
-| inactiveClassName  | Inactive custome title class            | string  | -                |
+### Props
 
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| title | Item title | `string` | `Current selected value` |
+| options | Options | `Array` | `-` |
+| disabled | Whether to disable dropdown item | `boolean` | `false` |
+| columns | Display how many options in one line | `number` | `1` |
+| icon | Custome option icon | `React.ReactNode` | `Check` |
+| direction | Expand direction, can be set to up | `string` | `down` |
+| onChange | Emitted select option changed | `(event: any) => void` | `-` |
 
-### MenuItem Events
+### Ref
 
-| Event      | Description                 | Arguments     |
-|----------|----------------------|--------------|
-| onChange | Emitted select option changed | Selected value |
-
-### MenuItem API
-
-| Event | Description                 | Arguments     |
-|-----|----------------------|--------------|
-| toggle   | Toggle menu display status, true to show，false to hide, no param is negated | `show?: boolean` |
+| Event | Description | Arguments |
+| --- | --- | --- |
+| toggle | Toggle menu display status, true to show，false to hide, no param is negated | `show?: boolean` |
 
 ## Theming
 
@@ -321,24 +315,23 @@ export default App
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-menu-bar-line-height | `48px` |
-| --nutui-menu-item-font-size | `$font-size-2` |
-| --nutui-menu-item-text-color | `$title-color` |
-| --nutui-menu-item-active-text-color | `$primary-color` |
-| --nutui-menu-bar-border-bottom-color | `#eaf0fb` |
-| --nutui-menu-bar-opened-z-index | `2001` |
-| --nutui-menu-item-disabled-color | `#969799` |
-| --nutui-menu-title-text-padding-left | `8px` |
-| --nutui-menu-title-text-padding-right | `8px` |
-| --nutui-menu-item-content-padding | `12px 24px` |
-| --nutui-menu-item-content-max-height | `214px` |
-| --nutui-menu-item-option-padding-top | `12px` |
-| --nutui-menu-item-option-padding-bottom | `12px` |
-| --nutui-menu-item-option-i-margin-right | `6px` |
-| --nutui-menu-bar-box-shadow | `0 2px 12px rgba(89, 89, 89, 0.12)` |
-| --nutui-menu-scroll-fixed-top | `0` |
-| --nutui-menu-scroll-fixed-z-index | `$mask-z-index` |
-| --nutui-menu-active-item-font-weight | `500` |
-| --nutui-menu-item-content-bg-color | `$gray6` |
+| Name | Description | Default |
+| --- | --- | --- |
+| \--nutui-menu-bar-line-height | The height of the menu title bar | `48px` |
+| \--nutui-menu-item-font-size | The font size of the title | `$font-size-2` |
+| \--nutui-menu-item-text-color | Title color | `$title-color` |
+| \--nutui-menu-item-active-text-color | Open state color | `$primary-color` |
+| \--nutui-menu-bar-opened-z-index | z-index of opened state | `2001` |
+| \--nutui-menu-item-disabled-color | Disabled state color | `#969799` |
+| \--nutui-menu-title-text-padding-left | Left padding of title | `8px` |
+| \--nutui-menu-title-text-padding-right | right padding of title | `8px` |
+| \--nutui-menu-item-content-padding | Padding of menu item container | `12px 24px` |
+| \--nutui-menu-item-content-max-height | Maximum height of menu item container | `214px` |
+| \--nutui-menu-item-option-padding-top | Top padding for menu options | `12px` |
+| \--nutui-menu-item-option-padding-bottom | Bottom padding of menu options | `12px` |
+| \--nutui-menu-item-option-i-margin-right | Distance between menu item text and icon | `6px` |
+| \--nutui-menu-bar-box-shadow | Shadow of menu title bar | `0 2px 12px rgba(89, 89, 89, 0.12)` |
+| \--nutui-menu-scroll-fixed-top | Top distance in fixed state | `0` |
+| \--nutui-menu-scroll-fixed-z-index | z-index of fixed state | `$mask-z-index` |
+| \--nutui-menu-active-item-font-weight | The font weight of the selected state | `500` |
+| \--nutui-menu-item-content-bg-color | Background color of menu item container | `$gray6` |

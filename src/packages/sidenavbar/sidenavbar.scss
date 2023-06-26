@@ -1,33 +1,12 @@
 @import '../popup/popup.scss';
 
-.nut-theme-dark {
-  .nut-sidenavbar {
-    background-color: $dark4;
-
-    &__title {
-      background: $dark4;
-      color: $white;
-    }
-
-    &__content {
-      .nut-subsidenavbar__list {
-        .nut-subsidenavbar__title {
-          background: $dark4;
-        }
-      }
-    }
-  }
-}
-
-$nutSidenavbarItemHeight: 40px;
-
 .nut-sidenavbar {
   color: #1d1d21;
   font-size: 14px;
   height: 100%;
   overflow: auto;
   display: block;
-  background-color: $gray6;
+  background-color: $sidenavbar-content-bg-color;
 
   .arrow-icon {
     position: absolute;
@@ -50,17 +29,13 @@ $nutSidenavbarItemHeight: 40px;
     border-right: 4px solid transparent;
   }
 
-  &__head {
-    height: $nutSidenavbarItemHeight;
-    background: #eeeff2;
-    padding: 10px;
-  }
-
   &__title {
-    height: $nutSidenavbarItemHeight;
-    padding: 10px 8px 10px 20px;
-    background: $gray4;
-    color: $gray1;
+    height: $sidenav-bar-item-height;
+    padding: $sidenavbar-title-padding;
+    background: $sidenavbar-title-background;
+    color: $sidenavbar-title-color;
+    box-sizing: border-box;
+    transition: transform 0.5s;
   }
 
   &__content {
@@ -69,14 +44,14 @@ $nutSidenavbarItemHeight: 40px;
   }
 
   &__list {
-    &.nutShow {
+    &.sidenavbar-show {
       .nut-sidenavbar__content {
         height: auto;
         overflow: inherit;
       }
     }
 
-    &.nutHide {
+    &.sidenavbar-hide {
       .nut-sidenavbar__content {
         height: 0;
         overflow: hidden;
@@ -84,7 +59,7 @@ $nutSidenavbarItemHeight: 40px;
     }
   }
 
-  .border-bt {
+  .nut-subsidenavbar-border-bt {
     position: relative;
 
     &:after {

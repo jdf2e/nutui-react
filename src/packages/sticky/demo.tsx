@@ -19,10 +19,9 @@ interface T {
 }
 const StickyDemo = () => {
   const containerTopRef = useRef(null)
-  const containerRef = useRef(null)
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title1: '吸顶距离',
       title2: '指定容器内吸顶',
       title3: '指定容器吸底',
@@ -35,7 +34,7 @@ const StickyDemo = () => {
       changeTips: '吸顶状态发生了改变,当前fixed为',
     },
     'zh-TW': {
-      basic: '基本用法',
+      basic: '基础用法',
       title1: '吸頂距離',
       title2: '指定容器內吸頂',
       title3: '指定容器吸底',
@@ -49,12 +48,12 @@ const StickyDemo = () => {
     },
     'en-US': {
       basic: 'Basic usage ',
-      title1: 'Distance suction a top ',
+      title1: 'Distance suction a distance ',
       title2: 'The specified container roof ',
       title3: 'Specify the container bottom ',
       title4: 'Suction bottom distance ',
-      button1: 'Suck the top ',
-      button2: 'From the top 120 px ',
+      button1: 'Suck the distance ',
+      button2: 'From the distance 120 px ',
       button3: 'The specified container roof ',
       button4: 'Specify the container bottom ',
       button5: 'At the bottom of the distance to 0 px ',
@@ -70,7 +69,6 @@ const StickyDemo = () => {
     button1,
     button2,
     button3,
-    button4,
     button5,
     changeTips,
   } = translated
@@ -82,14 +80,14 @@ const StickyDemo = () => {
       <div className="demo">
         <h2>{basic}</h2>
         <Cell>
-          <Sticky top={57} onChange={(val: boolean) => handleChange(val)}>
+          <Sticky threshold={57} onChange={(val: boolean) => handleChange(val)}>
             <Button type="primary">{button1}</Button>
           </Sticky>
         </Cell>
 
         <h2>{title1}</h2>
         <Cell>
-          <Sticky top={120}>
+          <Sticky threshold={120}>
             <Button type="primary">{button2}</Button>
           </Sticky>
         </Cell>
@@ -100,7 +98,7 @@ const StickyDemo = () => {
             ref={containerTopRef}
             style={{ height: '600px' }}
           >
-            <Sticky container={containerTopRef} top={57}>
+            <Sticky container={containerTopRef} threshold={57}>
               <Button style={{ marginLeft: '100px' }} type="info">
                 {button3}
               </Button>
@@ -109,7 +107,7 @@ const StickyDemo = () => {
         </Cell>
         <h2>{title4}</h2>
         <Cell style={{ height: '64px' }}>
-          <Sticky top={0} position="bottom">
+          <Sticky threshold={0} position="bottom">
             <Button type="primary">{button5}</Button>
           </Sticky>
         </Cell>

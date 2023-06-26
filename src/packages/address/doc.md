@@ -1,17 +1,16 @@
 # Address 地址
 
-### 介绍
+## 介绍
 
 地址选择
 
-### 安装
+## 安装
 
-``` javascript
-// react
+```tsx
 import { Address } from '@nutui/nutui-react';
 ```
 
-## 代码示例
+## 代码演示
 
 ### 选择自定义地址
 
@@ -184,7 +183,6 @@ export default App;
 :::demo
 
 ```tsx
-
 import React, { useState } from "react";
 import { Address, Cell, Popup } from '@nutui/nutui-react';
 
@@ -621,7 +619,7 @@ export default App;
 
 # API
 
-| 字段 | 说明 | 类型 | 默认值 |
+| 属性 | 说明 | 类型 | 默认值 |
 |----- | ----- | ----- | -----  |
 | modelValue | 是否打开地址选择 | string | - |
 | modelSelect | 设置默认选中地址 | string[] \| number[] | `[]` |
@@ -652,7 +650,7 @@ export default App;
 
 ## Event
 
-| 字段 | 说明 | 回调参数 |
+| 属性 | 说明 | 回调参数 |
 |----- | ----- | -----  |
 | onChange | 自定义选择地址时，选择地区时触发 |  参考 onChange |
 | onSelected | 选择已有地址列表时触发 | 参考 selected |
@@ -662,7 +660,7 @@ export default App;
 
 ## change 回调参数
 
-| 参数 | 说明 | 可能值  |
+| 属性 | 说明 | 可能值  |
 |----- | ----- | ----- |
 | custom | 当前点击的行政区域  |  `province`(省) \| `city`(市) \| `country`(县) \| `town`(乡) |
 | next | 当前点击的行政区域的下一级 | `province`(省) \| `city`(市) \| `country`(县) \| `town`(乡) |
@@ -670,7 +668,7 @@ export default App;
 
 ## selected 回调参数
 
-| 参数 | 说明 | 可能值  |
+| 属性 | 说明 | 可能值  |
 |----- | ----- | ----- |
 | 第一个参数（prevExistAdd） |  选择前选中的地址 |  `{}` |
 | 第二个参数（nowExistAdd） |  当前选中的地址 |  `{}` |
@@ -678,7 +676,7 @@ export default App;
 
 ## close 回调参数
 
-| 参数 | 说明 | 可能值 |
+| 属性 | 说明 | 可能值 |
 |----- | ----- | ----- |
 | type | 地址选择类型 exist/custom/custom2  |  `exist` \| `custom` \| `custom2` |
 | data | 选择地址的值,custom 时，addressStr 为选择的地址组合 | `{}`  |

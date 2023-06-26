@@ -1,31 +1,4 @@
-@import '../icon/icon.scss';
 @import '../radiogroup/radiogroup.scss';
-
-.nut-theme-dark {
-  .nut-radio {
-    &__label {
-      color: $dark1;
-
-      &--disabled {
-        color: $dark2;
-      }
-    }
-
-    &__button {
-      background: $dark4;
-      color: $dark1;
-
-      &--active {
-        color: $primary-color;
-      }
-
-      &--disabled {
-        color: $dark2;
-        border: 1px solid $dark2;
-      }
-    }
-  }
-}
 
 .nut-radio {
   display: flex;
@@ -63,8 +36,13 @@
 
     &--disabled {
       color: $radio-label-disable-color;
-      border: none;
+      border: 1px solid $radio-button-background;
     }
+  }
+  .nut-radio__button--active.nut-radio__button--disabled {
+    background: $radio-button-disabled-active-background;
+    color: $radio-button-disabled-active-color;
+    border: 1px solid $radio-button-disabled-active-border-color;
   }
 
   &__label {
@@ -84,11 +62,13 @@
     font-size: $radio-icon-font-size;
   }
 
-  &__icon--unchecked {
-    color: $radio-icon-disable-color;
-  }
+  &__icon {
+    &--unchecked {
+      color: $radio-icon-disable-color;
+    }
 
-  &__icon--disable {
-    color: $radio-icon-disable-color2;
+    &--disable {
+      color: $radio-icon-disable-color2;
+    }
   }
 }

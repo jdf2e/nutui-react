@@ -1,18 +1,21 @@
-#  Video 
+# Video
 
-### Intro
+## Intro
 
 Video player implemented by native video
 
-### Install
+## Install
 
-``` ts
+```tsx
 import { Video } from '@nutui/nutui-react';
 ```
+
+## Demo
 
 ### Basic Usage
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Cell, Video } from '@nutui/nutui-react';
@@ -45,12 +48,15 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Auto play
+
 autoplay Property to set video autoplay
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Cell, Video } from '@nutui/nutui-react';
@@ -85,12 +91,15 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Initialize mute
+
 The muted property sets the initial mute of the video
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Cell, Video } from '@nutui/nutui-react';
@@ -124,12 +133,15 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Video cover poster settings
+
 The poster property sets the video poster
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Cell, Video } from '@nutui/nutui-react';
@@ -168,9 +180,11 @@ export default App;
 :::
 
 ### play inline
+
 The playsinline property sets the mobile terminal video to play in line and prevents the newly opened page from playing (compatible with IOS and some Android machines)
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Cell, Video } from '@nutui/nutui-react';
@@ -204,12 +218,15 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Set video as background
+
 When setting the video as the background image, it is necessary to set muted, disabled, operation prohibited, loop, loop and autoplay to true, and the mobile terminal needs to set playinline for in-line display
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Cell, Video } from '@nutui/nutui-react';
@@ -247,12 +264,15 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Video switching
+
 Reset the video when the video address changes
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Cell, Video, Button } from '@nutui/nutui-react';
@@ -290,31 +310,23 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
-
-## API
+## Video
 
 ### Props
 
-| Attribute                | Description                                       | Type    | Default   |
-| ------------------- | ------------------------------------------ | ------- | -------- |
-| source             | Video url and type settings                         | Object   | -        |
-| options             | Control video playback properties                          | Object  | - |
-| options.autoplay    | Auto play                               | boolean | `false`    |
-| options.poster      | Poster settings                                | string  | -        |
-| options.loop        | Poster loop                             | boolean | `false`    |
-| options.controls    | Show operation control                             | boolean | `true`     |
-| options.muted       | Mute                                   | boolean | `false`    |
-| options.playsinline | Whether to set as inline playback element (solve Android compatibility problem) | boolean | `false`    |
-
-### Events
-
-| Event | Description	         | Arguments |
-| -------- | ------------ | -------- |
-| play      | play event         | -       |
-| pause     | pause event         | -       |
-| playend   | Playback completion callback | -       |
-| onPlay `v2.0.0`      | play event         | -       |
-| onPause  `v2.0.0`   | pause event         | -       |
-| onPlayEnd `v2.0.0`   | Playback completion callback | -       |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| source | Video url and type settings | `object` | `{type: {}, src: ''}` |
+| options | Control video playback properties | `object` | `-` |
+| options.autoplay | Auto play | `boolean` | `false` |
+| options.poster | Poster settings | `string` | `-` |
+| options.loop | Poster loop | `boolean` | `false` |
+| options.controls | Show operation control | `boolean` | `true` |
+| options.muted | Mute | `boolean` | `false` |
+| options.playsinline | Whether to set as inline playback element (solve Android compatibility problem) | `boolean` | `false` |
+| onPlay | play event | `(element: HTMLVideoElement) => void` | `-` |
+| onPause | pause event | `(element: HTMLVideoElement) => void` | `-` |
+| onPlayEnd | Playback completion callback | `(element: HTMLVideoElement) => void` | `-` |

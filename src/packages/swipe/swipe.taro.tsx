@@ -3,18 +3,16 @@ import React, {
   forwardRef,
   useState,
   TouchEvent,
-  useMemo,
   useImperativeHandle,
   useEffect,
 } from 'react'
 import classNames from 'classnames'
 import { nextTick, useReady } from '@tarojs/taro'
-import bem from '@/utils/bem'
 import { useTouch } from '@/utils/use-touch'
 import { getRectByTaro } from '@/utils/use-client-rect'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type SwipeSide = 'left' | 'right'
-export type SwipePosition = SwipeSide | 'cell' | 'outside'
 
 function preventDefault(
   event: TouchEvent | Event,
@@ -31,17 +29,9 @@ export interface SwipeInstance {
   open: (side: SwipeSide) => void
   close: () => void
 }
-export interface SwipeProps {
-  /** 自定义类名 */
-  className: string
-  /** 自定义样式 */
-  style: React.CSSProperties
+export interface SwipeProps extends BasicComponent {
   /** 标识符，可以在事件参数中获取到 */
   name?: string | number
-  /** 指定左侧滑动区域宽度，单位为px */
-  leftWidth?: string | number
-  /** 指定右侧滑动区域宽度，单位为 px */
-  rightWidth?: string | number
   /** 左侧滑动区域的内容 */
   leftAction?: React.ReactNode
   /** 右侧滑动区域的内容 */
@@ -64,19 +54,17 @@ export interface SwipeProps {
     position,
   }: {
     name: string | number
-    position: SwipePosition
+    position: SwipeSide
   }) => void
   /** 点击时触发 */
-  onActionClick?: (event: Event, position: SwipePosition) => void
+  onActionClick?: (event: Event, position: SwipeSide) => void
   onTouchStart?: (event: Event) => void
   onTouchEnd?: (event: Event) => void
   onTouchMove?: (event: Event) => void
-  children?: React.ReactNode
 }
 const defaultProps = {
+  ...ComponentDefaults,
   name: '',
-  leftWidth: 0,
-  rightWidth: 0,
 } as SwipeProps
 export const Swipe = forwardRef<
   SwipeInstance,
@@ -86,7 +74,7 @@ export const Swipe = forwardRef<
       'onTouchStart' | 'onTouchMove' | 'onTouchEnd'
     >
 >((props, instanceRef) => {
-  const swipeBem = bem('swipe')
+  const classPrefix = 'nut-swipe'
   const touch: any = useTouch()
 
   // 获取元素的时候要在页面 onReady 后，需要参考小程序的事件周期
@@ -123,15 +111,9 @@ export const Swipe = forwardRef<
     transform: `translate3d(${state.offset}px, 0, 0)`,
     transitionDuration: state.dragging ? '0s' : '.6s',
   }
-  const leftWidth = useMemo(
-    () => (props.leftWidth ? props.leftWidth : actionWidth.left),
-    [props.leftWidth, actionWidth.left]
-  )
+  const leftWidth = actionWidth.left
 
-  const rightWidth = useMemo(
-    () => (props.rightWidth ? props.rightWidth : actionWidth.right),
-    [props.rightWidth, actionWidth.right]
-  )
+  const rightWidth = actionWidth.right
 
   const onTouchStart = async (event: Event) => {
     if (leftWrapper.current) {
@@ -205,7 +187,7 @@ export const Swipe = forwardRef<
     setState((v) => ({ ...v, offset: Number(offset) || 0 }))
   }
 
-  const close = (position?: SwipePosition) => {
+  const close = (position?: SwipeSide) => {
     if (opened.current) {
       opened.current = false
       props.onClose?.({
@@ -232,7 +214,7 @@ export const Swipe = forwardRef<
         <div
           id="left"
           ref={side === 'left' ? leftWrapper : rightWrapper}
-          className={`${swipeBem(side)}`}
+          className={`${classPrefix}__${side}`}
           onClick={(e: any) => handleOperate(e, side)}
         >
           {props[`${side}Action`]}
@@ -241,7 +223,7 @@ export const Swipe = forwardRef<
     }
     return null
   }
-  const handleOperate = (event: Event, position: SwipePosition) => {
+  const handleOperate = (event: Event, position: SwipeSide) => {
     event.stopPropagation()
     if (props.beforeClose) {
       props.beforeClose(position)
@@ -279,13 +261,13 @@ export const Swipe = forwardRef<
   return (
     <div
       ref={root}
-      className={classNames(swipeBem(), className)}
+      className={classNames(classPrefix, className)}
       onTouchStart={(e: any) => onTouchStart(e)}
       onTouchMove={(e: any) => onTouchMove(e)}
       onTouchEnd={(e: any) => onTouchEnd(e)}
       style={style}
     >
-      <div className={`${swipeBem('wrapper')}`} style={wrapperStyle}>
+      <div className={`${classPrefix}__wrapper`} style={wrapperStyle}>
         {renderActionContent('left')}
         {children}
         {renderActionContent('right')}

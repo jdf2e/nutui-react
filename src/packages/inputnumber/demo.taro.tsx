@@ -121,7 +121,7 @@ const InputNumberDemo = () => {
 
         <h2>{translated['55cc5fb7']}</h2>
         <Cell>
-          <InputNumber defaultValue={0} step="5" />
+          <InputNumber defaultValue={0} min={0} step="5" />
         </Cell>
 
         <h2>{translated['9636103a']}</h2>
@@ -141,7 +141,7 @@ const InputNumberDemo = () => {
 
         <h2>{translated.e7b2ce1f}</h2>
         <Cell>
-          <InputNumber defaultValue={1} readonly />
+          <InputNumber defaultValue={1} readOnly />
         </Cell>
 
         <h2>{translated.e7b2ce1g}</h2>
@@ -160,7 +160,7 @@ const InputNumberDemo = () => {
 
         <h2>{translated['3a42134b']}</h2>
         <Cell>
-          <InputNumber defaultValue={5.5} step="0.1" digits="1" readonly />
+          <InputNumber defaultValue={5.5} step="0.1" digits="1" readOnly />
         </Cell>
 
         <h2>{translated['65bafb1d']}</h2>

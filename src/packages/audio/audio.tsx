@@ -2,31 +2,28 @@ import React, {
   useState,
   useEffect,
   useRef,
-  CSSProperties,
   FunctionComponent,
   ReactEventHandler,
 } from 'react'
 import { Service } from '@nutui/icons-react'
+import classNames from 'classnames'
 import Range from '@/packages/range'
-import bem from '@/utils/bem'
 import Button from '@/packages/button'
 import { useConfig } from '@/packages/configprovider'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface AudioProps extends BasicComponent {
-  className: string
-  style: CSSProperties
-  url: string
+  src: string
   muted: boolean
-  autoplay: boolean
+  autoPlay: boolean
   loop: boolean
   preload: string
   type: string
-  onFastBack: (e: HTMLAudioElement) => void
+  onBack: (e: HTMLAudioElement) => void
   onForward: (e: HTMLAudioElement) => void
   onPause: ((e: HTMLAudioElement) => void) & ReactEventHandler<HTMLAudioElement>
-  onPlayEnd: (e: HTMLAudioElement) => void
+  onEnd: (e: HTMLAudioElement) => void
   onMute: (e: HTMLAudioElement) => void
   onCanPlay: ((e: HTMLAudioElement) => void) &
     ReactEventHandler<HTMLAudioElement>
@@ -34,18 +31,16 @@ export interface AudioProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
-  className: '',
-  url: '',
-  style: {},
+  src: '',
   muted: false,
-  autoplay: false,
+  autoPlay: false,
   loop: false,
   preload: 'auto',
   type: 'progress',
-  onFastBack: (e: HTMLAudioElement) => {}, // type 为 progress时生效
+  onBack: (e: HTMLAudioElement) => {}, // type 为 progress时生效
   onForward: (e: HTMLAudioElement) => {}, // type 为 progress时生效
   onPause: (e) => {},
-  onPlayEnd: (e: HTMLAudioElement) => {},
+  onEnd: (e: HTMLAudioElement) => {},
   onMute: (e: HTMLAudioElement) => {},
   onCanPlay: (e: HTMLAudioElement) => {},
 } as AudioProps
@@ -55,17 +50,17 @@ export const Audio: FunctionComponent<
   const { locale } = useConfig()
   const {
     className,
-    url,
+    src,
     style,
     muted,
-    autoplay,
+    autoPlay,
     loop,
     preload,
     type,
-    onFastBack,
+    onBack,
     onForward,
     onPause,
-    onPlayEnd,
+    onEnd,
     onMute,
     onCanPlay,
     children,
@@ -88,16 +83,16 @@ export const Audio: FunctionComponent<
     duration: '00:00:00',
     second: 0,
     hanMuted: props.muted,
-    playing: props.autoplay,
+    playing: props.autoPlay,
     handPlaying: false,
   })
-  const b = bem('audio')
+  const classPrefix = 'nut-audio'
   const warn = console.warn
   const handleEnded = (e: any) => {
     if (props.loop) {
       warn(locale.audio.tips || 'onPlayEnd事件在loop=false时才会触发')
     } else {
-      props.onPlayEnd && props.onPlayEnd(e)
+      props.onEnd && props.onEnd(e)
     }
   }
 
@@ -124,18 +119,17 @@ export const Audio: FunctionComponent<
   }
   const renderIcon = () => {
     return (
-      <>
-        <div className={b('icon')}>
-          <div
-            className={`${b('icon-box')} ${
-              playing ? b('icon-play') : b('icon-stop')
-            }`}
-            onClick={handleStatusChange}
-          >
-            <Service className={playing ? 'nut-icon-loading' : ''} />
-          </div>
+      <div className={`${classPrefix}__icon`}>
+        <div
+          className={classNames(
+            `${classPrefix}__icon-box`,
+            playing ? `${classPrefix}__icon-play` : `${classPrefix}__icon-stop`
+          )}
+          onClick={handleStatusChange}
+        >
+          <Service className={playing ? 'nut-icon-loading' : ''} />
         </div>
-      </>
+      </div>
     )
   }
 
@@ -143,7 +137,7 @@ export const Audio: FunctionComponent<
     if (statusRef.current.currentTime > 0 && AudioRef.current) {
       statusRef.current.currentTime--
       AudioRef.current.currentTime = statusRef.current.currentTime
-      props.onFastBack && props.onFastBack(AudioRef.current)
+      props.onBack && props.onBack(AudioRef.current)
     }
   }
   const handleForward = () => {
@@ -181,13 +175,15 @@ export const Audio: FunctionComponent<
   const renderProgerss = () => {
     return (
       <>
-        <div className={b('progress')}>
+        <div className={`${classPrefix}__progress`}>
           <div className="time">{currentDuration}</div>
-          <div className={b('progress-bar-wrapper')}>
+          <div className={`${classPrefix}__progress-bar-wrapper`}>
             <Range
-              modelValue={percent}
-              hiddenTag
-              hiddenRange
+              value={percent}
+              onChange={(val: any) => setPercent(val)}
+              currentDescription={null}
+              maxDescription={null}
+              minDescription={null}
               inactive-color="#cccccc"
               active-color="#fa2c19"
             />
@@ -240,7 +236,10 @@ export const Audio: FunctionComponent<
 
   const renderNone = () => {
     return (
-      <div className={b('none-container')} onClick={handleStatusChange}>
+      <div
+        className={`${classPrefix}__none-container`}
+        onClick={handleStatusChange}
+      >
         {children}
       </div>
     )
@@ -260,7 +259,7 @@ export const Audio: FunctionComponent<
 
   const handleCanplay = (e: any) => {
     setIsCanPlay(true)
-    if (props.autoplay && !playing) {
+    if (props.autoPlay && !playing) {
       AudioRef && AudioRef.current && AudioRef.current.play()
     }
     if (AudioRef.current) {
@@ -277,13 +276,13 @@ export const Audio: FunctionComponent<
     statusRef.current.currentTime = time
   }
   return (
-    <div className={`${b()} ${className}`} style={style} {...rest}>
+    <div className={classNames(classPrefix, className)} style={style} {...rest}>
       {renderAudio()}
       <audio
         className="audioMain"
         controls={type === 'controls'}
         ref={AudioRef}
-        src={url}
+        src={src}
         muted={muted}
         preload={preload}
         loop={loop}

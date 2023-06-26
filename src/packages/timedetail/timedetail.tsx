@@ -1,67 +1,71 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
-import bem from '@/utils/bem'
-import { useConfig } from '@/packages/configprovider'
+import React, { FunctionComponent, useCallback, useMemo } from 'react'
+import classNames from 'classnames'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { TimeType, DateType, OptionKeyType } from '@/packages/timeselect'
 
-export interface TimeType {
-  key?: string | number
-  list: string[]
-}
-export interface TimeDetailProps {
-  className?: string
-  currentKey: string | number
-  currentTime: TimeType[]
-  times: TimeType[]
-  select: (time: string) => void
+export interface TimeDetailProps extends BasicComponent {
+  activeDate: string
+  activeTime: DateType[]
+  options: DateType[]
+  optionKey: OptionKeyType
+  onSelect: (time: TimeType) => void
 }
 const defaultProps = {
-  className: '',
-  currentKey: 0,
-  currentTime: [] as TimeType[],
-  times: [],
-  select: () => null,
+  ...ComponentDefaults,
+  activeDate: '',
+  activeTime: [] as DateType[],
+  options: [],
+  optionKey: {
+    valueKey: 'value',
+    textKey: 'text',
+    childrenKey: 'children',
+  },
+  onSelect: () => {},
 } as TimeDetailProps
 export const TimeDetail: FunctionComponent<
-  Partial<TimeDetailProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<TimeDetailProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'>
 > = (props) => {
-  const { locale } = useConfig()
-  const { children, times, className, currentKey, currentTime, select } = {
+  const { options, optionKey, className, activeDate, activeTime, onSelect } = {
     ...defaultProps,
     ...props,
   }
-  const b = bem('timedetail')
-  const [renderData, setRenderData] = useState<string[]>([])
-  useEffect(() => {
-    const currentData = times.find(
-      (timesItem: TimeType) => String(timesItem.key) === String(currentKey)
+  const classPrefix = 'nut-timedetail'
+  const timeList = useMemo(() => {
+    return (
+      options?.find(
+        (item: DateType) => item[optionKey.valueKey] === activeDate
+      ) || {
+        [optionKey.childrenKey]: [],
+      }
     )
-    const renderData = currentData ? currentData.list : []
-    // 根据选中的日期回显当前日期可配送的时间
-    setRenderData(renderData)
-  }, [times, currentKey])
-  // 选中时间的回调
-  const handleTime = (time: string) => {
-    select(time)
-  }
-  // 选中的配送时间增加 active 类名
-  const getDetailClass = (item: string): string => {
-    let initClass = 'nut-timedetail__item'
-    const curTimeData = currentTime.find(
-      (item: TimeType) => String(item.key) === String(currentKey)
-    )
-    if (curTimeData && curTimeData.list && curTimeData.list.includes(item)) {
-      initClass += ' nut-timedetail__item-active'
-    }
-    return initClass
-  }
+  }, [options, optionKey, activeDate])
+  const isActive = useCallback(
+    (timeKey: string) => {
+      const date = activeTime.find((item: DateType) => {
+        return item[optionKey.valueKey] === activeDate
+      })
+      if (date?.[optionKey.childrenKey]) {
+        const time = date?.[optionKey.childrenKey].find((time: TimeType) => {
+          return time[optionKey.valueKey] === timeKey
+        })
+        return time
+      }
+      return false
+    },
+    [activeTime, optionKey, activeDate]
+  )
   return (
-    <div className={`${b()} ${className || ''}`}>
-      {renderData.map((item: string, index: number) => (
+    <div className={classNames(classPrefix, className)}>
+      {timeList[optionKey.childrenKey].map((item: TimeType) => (
         <span
-          className={getDetailClass(item)}
-          key={item}
-          onClick={() => handleTime(item)}
+          className={classNames(`${classPrefix}__item`, {
+            active: isActive(item[optionKey.valueKey]),
+          })}
+          key={item[optionKey.valueKey]}
+          onClick={() => onSelect(item)}
         >
-          {item}
+          {item[optionKey.textKey]}
         </span>
       ))}
     </div>

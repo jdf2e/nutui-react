@@ -1,0 +1,31 @@
+name: sync to migrate
+
+on:
+  push:
+    branches:
+      - next # default branch
+    paths:
+      - '.github/workflows/**'
+      - 'src/**'
+      - migrate-from-v1.md
+      - 'package.json'
+
+jobs:
+  copy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm i fs-extra --force
+      - run: node scripts/copy-migrate-from-v1.js
+      - name : Sync
+        uses : JamesIves/github-pages-deploy-action@4.1.7
+        with :
+          branch : new-site # action 应该部署到的分支 。
+          folder : site_docs_migrate #操作应该部署的文件夹 。
+          clean: false
+          repository-name: jdf2e/nutui-docs
+          token: ${{ secrets.GIT_ACTION }}
+          target-folder: src/docs
+
+
+

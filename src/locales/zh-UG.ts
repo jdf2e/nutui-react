@@ -64,7 +64,7 @@ const zhUG: BaseLang = {
   },
   signature: {
     reSign: 'قايتا',
-    unSupportTpl: 'كەچۈرۈڭ، بۇ توركۆرگۈچ Canvas قوللىمايدىكەن',
+    unsupported: 'كەچۈرۈڭ، بۇ توركۆرگۈچ Canvas قوللىمايدىكەن',
   },
   ecard: {
     chooseText: 'قىممەتنى تاللاڭ',

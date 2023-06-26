@@ -3,10 +3,10 @@ const path = require('path')
 const fs = require('fs-extra')
 const glob = require('glob')
 
-let fileStr = `@import '../theme-default.scss';\n@import '../variables.scss';\n@import '../../styles/font/iconfont.css';\n`
+let fileStr = `@import '../theme-default.scss';\n@import '../variables.scss';\n`
 const projectID = process.env.VITE_APP_PROJECT_ID
 if (projectID) {
-  fileStr = `@import '../theme-default.scss';\n@import '../variables-${projectID}.scss';\n@import '../../styles/font-${projectID}/iconfont.css';\n`
+  fileStr = `@import '../theme-default.scss';\n@import '../variables-${projectID}.scss';\n`
 }
 let tasks = []
 const componentsScss = glob.sync('./src/packages/**/*.scss')
@@ -24,6 +24,7 @@ componentsScss.map((cs) => {
 
 config.nav.map((item) => {
   item.packages.forEach((element) => {
+    if (element.exclude) return
     let folderName = element.name.toLowerCase()
     fileStr += `@import '../../packages/${folderName}/${folderName}.scss';\n`
   })

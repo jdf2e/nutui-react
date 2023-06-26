@@ -3,10 +3,7 @@ import Radio from '@/packages/radio'
 import Cell from '@/packages/cell'
 import CellGroup from '@/packages/cellgroup'
 import { useTranslate } from '../../sites/assets/locale'
-
 import VirtualList from './index'
-
-const { RadioGroup } = Radio
 
 const ListDemo = () => {
   const [translated] = useTranslate<any>({
@@ -29,7 +26,7 @@ const ListDemo = () => {
       text4: 'Horizontal unequal width',
     },
   })
-  const [sourceData, setsourceData] = useState<any>([])
+  const [list, setsourceData] = useState<any>([])
   const [pageNo, setPageNo] = useState(1)
   const [radioVal, setRadioVal] = useState('1')
   const [isLoading, setIsLoading] = useState(false)
@@ -49,8 +46,8 @@ const ListDemo = () => {
         return datas
       })
     } else {
-      setsourceData((sourceData: any) => {
-        return [...sourceData, ...datas]
+      setsourceData((list: any) => {
+        return [...list, ...datas]
       })
     }
   }, [pageNo])
@@ -83,9 +80,9 @@ const ListDemo = () => {
       case '1':
         return (
           <VirtualList
-            itemSize={66}
+            itemHeight={66}
             className="heigh1"
-            sourceData={sourceData}
+            list={list}
             ItemRender={ItemRenderMemo}
             onScroll={onScroll}
           />
@@ -93,42 +90,42 @@ const ListDemo = () => {
       case '2':
         return (
           <VirtualList
-            sourceData={sourceData}
+            list={list}
             ItemRender={ItemVariableDemo}
-            itemSize={128}
-            containerSize={500}
-            itemEqualSize={false}
+            itemHeight={128}
+            containerHeight={500}
+            itemEqual={false}
             onScroll={onScroll}
           />
         )
       case '3':
         return (
           <VirtualList
-            sourceData={sourceData}
+            list={list}
             ItemRender={ItemRenderMemo}
-            itemSize={124}
-            containerSize={341}
+            itemHeight={124}
+            containerHeight={341}
             onScroll={onScroll}
-            horizontal
+            direction="horizontal"
           />
         )
       case '4':
         return (
           <VirtualList
-            sourceData={sourceData}
-            itemSize={300}
+            list={list}
+            itemHeight={300}
             ItemRender={ItemVariableDemo}
-            horizontal
-            itemEqualSize={false}
+            direction="horizontal"
+            itemEqual={false}
             onScroll={onScroll}
           />
         )
       default:
         return (
           <VirtualList
-            itemSize={66}
+            itemHeight={66}
             className="heigh1"
-            sourceData={sourceData}
+            list={list}
             ItemRender={ItemRenderMemo}
             onScroll={onScroll}
           />
@@ -140,7 +137,7 @@ const ListDemo = () => {
       <div className="demo">
         <CellGroup>
           <Cell>
-            <RadioGroup
+            <Radio.Group
               value={radioVal}
               onChange={handleChange}
               direction="horizontal"
@@ -149,7 +146,7 @@ const ListDemo = () => {
               <Radio value="2">{translated.text2}</Radio>
               <Radio value="3">{translated.text3}</Radio>
               <Radio value="4">{translated.text4}</Radio>
-            </RadioGroup>
+            </Radio.Group>
           </Cell>
         </CellGroup>
         <div key={radioVal} className="nut-virtualList-demo-box hideScrollbar">

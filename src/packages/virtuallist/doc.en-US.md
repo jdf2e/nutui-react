@@ -1,25 +1,27 @@
-#  VirtualList
+# VirtualList
 
-### Intro
+## Intro
 
 In normal list show and pull-up loading, we usually use the InfiniteLoading component provided by NutUI. If we load a large amount of data, serious performance problems may occur, resulting in the view unable to respond to the operation for a period of time. At this time, we use the virtual list component list, which can ensure that only the current visual area is rendered, Other parts are rendered after the user scrolls to the visible area. Ensure page flow and improve performance.
 
-### Install
-```javascript
+## Install
+
+```tsx
 import { Virtuallist } from '@nutui/nutui-react';
 ```
+
 ## Demo
 
-
-### 1、Basic usage - vertical height
+### Basic usage - vertical height
 
 :::demo
-``` tsx
+
+```tsx
 import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
 import { VirtualList } from '@nutui/nutui-react';
 
 const App =() => {
-  const [sourceData, setsourceData] = useState([])
+  const [list, setsourceData] = useState([])
   const [pageNo, setPageNo] = useState(1)
   const getData = useCallback(() => {
     const datas = []
@@ -27,8 +29,8 @@ const App =() => {
     for (let i = 10; i < pageSize; i++) {
       datas.push(`${i} Item`)
     }
-    setsourceData((sourceData) => {
-      return [...sourceData, ...datas]
+    setsourceData((list) => {
+      return [...list, ...datas]
     })
   }, [])
   useEffect(() => {
@@ -39,27 +41,30 @@ const App =() => {
   }
   const ItemRenderMemo = React.memo(ItemRender)
   return (
-   <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
-         <VirtualList
-            itemSize={66}
-            sourceData={sourceData}
-            ItemRender={ItemRenderMemo}
-          />
-  </div>
+    <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
+      <VirtualList
+        itemHeight={66}
+        list={list}
+        ItemRender={ItemRenderMemo}
+      />
+    </div>
   )
 }
 export default App;
 ```
+
 :::
-### 2、Vertical unequal height & infinite slide
+
+### Vertical unequal height & infinite slide
 
 :::demo
-``` tsx
+
+```tsx
 import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
 import { VirtualList } from '@nutui/nutui-react';
 
 const App =() => {
-  const [sourceData, setsourceData] = useState([])
+  const [list, setsourceData] = useState([])
   const [pageNo, setPageNo] = useState(1)
   const getData = useCallback(() => {
     const datas = []
@@ -67,8 +72,8 @@ const App =() => {
     for (let i = 10; i < pageSize; i++) {
       datas.push(`${i} Item`)
     }
-    setsourceData((sourceData) => {
-      return [...sourceData, ...datas]
+    setsourceData((list) => {
+      return [...list, ...datas]
     })
   }, [])
  const onScroll = () => {
@@ -86,30 +91,32 @@ const App =() => {
   /** ItemSize Indicates the maximum size of the first screen element */
   const ItemVariableDemo = React.memo(ItemVariable)
   return (
-   <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
-           <VirtualList
-            sourceData={sourceData}
-            ItemRender={ItemVariableDemo}
-            itemSize={128}
-            itemEqualSize={false}
-            onScroll={onScroll}
-          />
-  </div>
+    <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
+      <VirtualList
+        list={list}
+        ItemRender={ItemVariableDemo}
+        itemHeight={128}
+        itemEqual={false}
+        onScroll={onScroll}
+      />
+    </div>
   )
 }
 export default App;
 ```
+
 :::
 
-### 3、horizontal width
+### horizontal width
 
 :::demo
-``` tsx
+
+```tsx
 import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
 import { VirtualList } from '@nutui/nutui-react';
 
 const App =() => {
-  const [sourceData, setsourceData] = useState([])
+  const [list, setsourceData] = useState([])
   const [pageNo, setPageNo] = useState(1)
   const getData = useCallback(() => {
     const datas = []
@@ -117,8 +124,8 @@ const App =() => {
     for (let i = 10; i < pageSize; i++) {
       datas.push(`${i} Item`)
     }
-    setsourceData((sourceData) => {
-      return [...sourceData, ...datas]
+    setsourceData((list) => {
+      return [...list, ...datas]
     })
   }, [])
   useEffect(() => {
@@ -129,28 +136,31 @@ const App =() => {
   }
   const ItemRenderMemo = React.memo(ItemRender)
   return (
-   <div className='nut-virtualList-demo-box  hideScrollbar'>
-           <VirtualList
-            sourceData={sourceData}
-            ItemRender={ItemRenderMemo}
-            itemSize={124}
-            horizontal
-          />
-  </div>
+    <div className='nut-virtualList-demo-box  hideScrollbar'>
+      <VirtualList
+        list={list}
+        ItemRender={ItemRenderMemo}
+        itemHeight={124}
+        direction="horizontal"
+      />
+    </div>
   )
 }
 export default App;
 ```
+
 :::
-### 4、Horizontal unequal width & infinite sliding
+
+### Horizontal unequal width & infinite sliding
 
 :::demo
-``` tsx
+
+```tsx
 import React, {  FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
 import { VirtualList } from '@nutui/nutui-react';
 
 const App =() => {
-  const [sourceData, setsourceData] = useState([])
+  const [list, setsourceData] = useState([])
 
   const getData = useCallback(() => {
     const datas = []
@@ -158,11 +168,11 @@ const App =() => {
     for (let i = 10; i < pageSize; i++) {
       datas.push(`${i} Item`)
     }
-    setsourceData((sourceData) => {
-      return [...sourceData, ...datas]
+    setsourceData((list) => {
+      return [...list, ...datas]
     })
   }, [])
- const onScroll = () => {
+  const onScroll = () => {
     if (pageNo > 100) return
     setPageNo(pageNo + 1)
   }
@@ -177,39 +187,35 @@ const App =() => {
   /** ItemSize Indicates the maximum size of the first screen element */
   const ItemVariableDemo = React.memo(ItemVariable)
   return (
-   <div className='nut-virtualList-demo-box  hideScrollbar'>
-          <VirtualList
-            sourceData={sourceData}
-            itemSize={300}
-            ItemRender={ItemVariableDemo}
-            horizontal
-            itemEqualSize={false}
-            onScroll={onScroll}
-          />
-  </div>
+    <div className='nut-virtualList-demo-box  hideScrollbar'>
+      <VirtualList
+        list={list}
+        itemHeight={300}
+        ItemRender={ItemVariableDemo}
+        direction="horizontal"
+        itemEqual={false}
+        onScroll={onScroll}
+      />
+    </div>
   )
 }
 export default App;
 ```
+
 :::
-## API
+
+## VirtualList
 
 ### Props
 
-| 参数           | 说明                               | 类型       | 默认值                                   |
-|---------------|----------------------------------|----------|---------------------------------------|
-| sourceData    | source data | Array    | - |
-| containerSize | container height | number   | Get the element offsetWidth or offsetHeight, which is given by CSS |
-| ItemRender    | virtual function rendered by the parent of the list | React.FC | - |
-| itemSize      | Item height, if not height, the first screen single maximum size       | string   | - |
-| itemEqualSize | the sizes of items are consistent                       | boolean  | `true` |
-| overscan      | In addition to the default elements in the viewport, there is an additional number of items to render      | number   | `2`                                     |
-| key           | Unique value,Item(sourceData) Specifies a field with a unique value | string   | `index`                                 |
-| horizontal    |  horizontal or vertical                    | boolean  | `false`                                 |
-## Events
-| 方法名            | 说明       | 参数            | 返回值     |
-|----------------|----------| --------------- | ---------- |
-| onScroll | scroll event |        -        |      -    |
-
-
-
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| list | source data | `Array` | `-` |
+| containerHeight | container height | `number` | `Get the element offsetWidth or offsetHeight, which is given by CSS` |
+| ItemRender | virtual function rendered by the parent of the list | `React.FC` | `-` |
+| itemHeight | Item height, if not height, the first screen single maximum height | `number` | `66` |
+| itemEqual | the sizes of items are consistent | `boolean` | `true` |
+| overscan | In addition to the default elements in the viewport, there is an additional number of items to render | `number` | `2` |
+| key | the key name of item in list, index as default | `string` | `-` |
+| direction | horizontal or vertical | `string` | `vertical` |
+| onScroll | scroll to end | `() => void` | `-` |

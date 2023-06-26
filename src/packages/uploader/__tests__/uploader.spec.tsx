@@ -22,8 +22,8 @@ test('should render base uploader props', () => {
       capture
       name="files"
       accept=".jpg"
-      maximize={1024 * 50}
-      maximum={2}
+      maxFileSize={1024 * 50}
+      maxCount={2}
       onChange={change}
     />
   )
@@ -70,21 +70,20 @@ test('should render base uploader other props', () => {
     ]
     return (
       <Uploader
-        isDeletable
-        defaultFileList={defaultFileList}
+        deletable
+        defaultValue={defaultFileList}
         headers={{}}
         multiple
-        isPreview
+        preview
         uploadIcon="dongdong"
-        uploadIconSize="20px"
-        onRemove={onDelete}
+        onDelete={onDelete}
         onFileItemClick={fileItemClick}
       />
     )
   }
 
   const { container } = render(<App />)
-  expect(container.querySelector('.nutui-iconfont')).toBeTruthy()
+  expect(container.querySelector('.nut-icon')).toBeTruthy()
   expect(container.querySelector('.close')).toBeTruthy()
   expect(container.querySelectorAll('.nut-uploader__preview').length).toBe(3)
   fireEvent.click(container.querySelectorAll('.close')[0])
@@ -131,9 +130,9 @@ test('should render base uploader list', () => {
     ]
     return (
       <Uploader
-        defaultFileList={defaultFileList}
+        defaultValue={defaultFileList}
         uploadIcon="dongdong"
-        listType="list"
+        previewType="list"
       />
     )
   }
@@ -164,17 +163,17 @@ test('before-delete prop return false', () => {
     ]
     return (
       <Uploader
-        isDeletable
-        defaultFileList={defaultFileList}
-        onRemove={onDelete}
-        onBeforeDelete={() => {
+        deletable
+        defaultValue={defaultFileList}
+        onDelete={onDelete}
+        beforeDelete={() => {
           return false
         }}
       />
     )
   }
   const { container } = render(<App />)
-  fireEvent.click(container.querySelectorAll('.nut-icon-failure')[0])
+  fireEvent.click(container.querySelectorAll('.nut-icon-Failure')[0])
   expect(onDelete).not.toBeCalled()
 })
 
@@ -193,16 +192,16 @@ test('before-delete prop return true', () => {
     ]
     return (
       <Uploader
-        isDeletable
-        defaultFileList={defaultFileList}
-        onRemove={onDelete}
-        onBeforeDelete={() => {
+        deletable
+        defaultValue={defaultFileList}
+        onDelete={onDelete}
+        beforeDelete={() => {
           return true
         }}
       />
     )
   }
   const { container } = render(<App />)
-  fireEvent.click(container.querySelectorAll('.nut-icon-failure')[0])
+  fireEvent.click(container.querySelectorAll('.nut-icon-Failure')[0])
   expect(onDelete).toBeCalled()
 })

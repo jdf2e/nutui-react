@@ -1,33 +1,33 @@
 import React, { useCallback, useImperativeHandle } from 'react'
-import bem from '@/utils/bem'
+import classNames from 'classnames'
 import { RadioGroupOptionType } from '@/packages/radiogroup/type'
 import { Checkbox } from '../checkbox/checkbox'
 import Context from './context'
 import { usePropsValue } from '@/utils/use-props-value'
 
-export type CheckboxTextPosition = 'left' | 'right'
+export type CheckboxLabelPosition = 'left' | 'right'
 export type CheckboxDirection = 'horizontal' | 'vertical'
 
 export interface CheckboxGroupProps {
-  disabled: boolean
+  disabled?: boolean
   value?: string[]
   defaultValue?: string[]
   max: number | undefined
-  textPosition: CheckboxTextPosition
+  labelPosition: CheckboxLabelPosition
   direction: CheckboxDirection
-  onChange: (value: string[]) => void
   options: RadioGroupOptionType[]
+  onChange: (value: string[]) => void
 }
 
 const defaultProps = {
-  disabled: false,
   max: undefined,
-  textPosition: 'right',
+  labelPosition: 'right',
   direction: 'vertical',
   onChange: (value: string[]) => {},
   options: [],
 } as CheckboxGroupProps
 
+const classPrefix = 'nut-checkboxgroup'
 export const CheckboxGroup = React.forwardRef(
   (
     props: Partial<CheckboxGroupProps> &
@@ -35,7 +35,6 @@ export const CheckboxGroup = React.forwardRef(
     ref
   ) => {
     const { children } = { ...defaultProps, ...props }
-    const b = bem('checkboxgroup')
     const {
       className,
       disabled,
@@ -43,30 +42,30 @@ export const CheckboxGroup = React.forwardRef(
       value,
       defaultValue,
       max,
-      textPosition,
+      labelPosition,
       direction,
       options,
       ...rest
     } = props
 
     useImperativeHandle<any, any>(ref, () => ({
-      toggleAll(state: boolean) {
+      toggle(state: boolean) {
         if (state === false) {
           setValue([])
         } else {
           const childrenLabel: string[] = []
           React.Children.map(children, (child) => {
             const childProps = (child as any).props
-            childrenLabel.push(childProps.label || (child as any).children)
+            childrenLabel.push(childProps.value)
           })
           setValue(childrenLabel)
         }
       },
-      toggleReverse() {
+      reverse() {
         const childrenLabel: string[] = []
         React.Children.map(children, (child) => {
           const childProps = (child as any).props
-          childrenLabel.push(childProps.label || (child as any).children)
+          childrenLabel.push(childProps.value)
         })
         const reverse: string[] = childrenLabel.filter(
           (c) => _value?.findIndex((v) => v === c) === -1
@@ -87,8 +86,9 @@ export const CheckboxGroup = React.forwardRef(
         return (
           <Checkbox
             key={value?.toString()}
-            children={label}
-            label={value}
+            label={label}
+            disabled={disabled}
+            value={value}
             {...rest}
           />
         )
@@ -98,26 +98,24 @@ export const CheckboxGroup = React.forwardRef(
     return (
       <Context.Provider
         value={{
-          textPosition: textPosition || 'left',
+          labelPosition: labelPosition || 'right',
           disabled,
           max,
-          checkedValue: _value,
+          value: _value,
           check: (value: string) => {
             const combined: string[] = [..._value, value]
             setValue(combined)
-            onChange && onChange(combined)
           },
           uncheck: (value: string) => {
             const reduced = _value.filter((item) => item !== value)
             setValue(reduced)
-            onChange && onChange(reduced)
           },
         }}
       >
         <div
-          className={`${b()} nut-checkboxgroup--${props.direction} ${
-            className || ''
-          }`}
+          className={classNames(classPrefix, className, {
+            [`nut-checkboxgroup--${props.direction}`]: props.direction,
+          })}
           {...rest}
         >
           {options?.length ? renderOptions() : children}

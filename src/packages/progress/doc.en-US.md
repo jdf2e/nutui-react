@@ -1,13 +1,12 @@
 # Progress
 
-### Introduce
+## Intro
 
 Used to show the current progress of the operation.
 
-### Install
+## Install
 
-```js
-// react
+```tsx
 import { Progress } from '@nutui/nutui-react';
 ```
 
@@ -16,6 +15,7 @@ import { Progress } from '@nutui/nutui-react';
 ### Basic Usage
 
 :::demo
+
 ```jsx
 import  React from "react";
 import { Progress, Cell } from '@nutui/nutui-react';
@@ -23,19 +23,19 @@ import { Progress, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell>
-      <Progress
-        percentage="30"
-      />
+      <Progress percent={30} />
     </Cell>
   );
 };
 export default App;
 ```
+
 :::
 
 ### Custom Style
 
 :::demo
+
 ```jsx
 import  React from "react";
 import { Progress, Cell } from '@nutui/nutui-react';
@@ -44,42 +44,23 @@ const App = () => {
   return (
     <Cell>
       <Progress
-        percentage="30"
-        strokeColor="rgba(250,44,25,0.47)"
-        strokeWidth="20"
-        textColor="red"
+        percent={30}
+        background="rgba(250,44,25,0.2)"
+        color="rgba(250,44,25,0.9)"
+        strokeWidth="15"
       />
     </Cell>
   );
 };
 export default App;
 ```
-:::
 
-### Don't Show Percentage
-
-:::demo
-```jsx
-import  React from "react";
-import { Progress, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Cell>
-      <Progress
-        percentage="50"
-        showText={false}
-      />
-    </Cell>
-  );
-};
-export default App;
-```
 :::
 
 ### Show Percentage
 
 :::demo
+
 ```jsx
 import  React from "react";
 import { Progress, Cell } from '@nutui/nutui-react';
@@ -87,52 +68,27 @@ import { Progress, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell>
-      <Progress
-        percentage="30"
-      />
+      <Progress percent={50} showText />
     </Cell>
   );
 };
 export default App;
 ```
+
 :::
 
-### Text Inside
+### 自定义显示内容
 
 :::demo
-```jsx
-import  React from "react";
-import { Progress, Cell } from '@nutui/nutui-react';
 
-const App = () => {
-  return (
-    <Cell>
-      <Progress
-        percentage="60"
-        textInside
-      />
-    </Cell>
-  );
-};
-export default App;
-```
-:::
-
-### Custom Content
-
-:::demo
 ```jsx
 import  React from "react";
 import { Progress, Image, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <>
     <Cell>
-      <Progress
-        percentage={60}
-        textInside
-      >
+      <Progress percent={60} showText>
         <Image
           width="30px"
           height="30px"
@@ -140,16 +96,17 @@ const App = () => {
         />
       </Progress>
     </Cell>
-    </>
   );
 };
 export default App;
 ```
+
 :::
 
 ## Custom Size
 
 :::demo
+
 ```jsx
 import  React from "react";
 import { Progress, Cell } from '@nutui/nutui-react';
@@ -157,77 +114,66 @@ import { Progress, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-    <Cell>
-      <Progress
-        percentage="30"
-        size="small"
-        textInside
-      />
-    </Cell>
-    <Cell>
-      <Progress
-        percentage="50"
-        size="base"
-        textInside
-      />
-    </Cell>
-    <Cell>
-      <Progress
-        percentage="70"
-        size="large"
-        textInside
-      />
-    </Cell>
+      <Cell>
+        <Progress percent={30} strokeWidth="5" showText />
+      </Cell>
+      <Cell>
+        <Progress percent={50} strokeWidth="10" showText />
+      </Cell>
+      <Cell>
+        <Progress percent={70} strokeWidth="15" showText />
+      </Cell>
     </>
   );
 };
 export default App;
 ```
+
 :::
 
 ### Status Display
 
 :::demo
+
 ```jsx
 import  React from "react";
 import { Progress, Cell } from '@nutui/nutui-react';
-import { Issue } from '@nutui/icons-react';
+import { Checked, Issue } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <>
-    <Cell>
-      <Progress
-        percentage="30"
-        strokeColor="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
-        status
-      />
-    </Cell>
-    <Cell>
-      <Progress
-        percentage="100" 
-        textType="icon"
-      />
-    </Cell>
-    <Cell>
-      <Progress
-        percentage="100"
-        strokeColor="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
-        strokeWidth="15"
-        textType="icon"
-        icon={<Issue color="red" />}
-      />
-    </Cell>
+      <Cell>
+        <Progress
+          percent={30}
+          color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
+          animated
+        />
+      </Cell>
+      <Cell align="center">
+        <Progress percent={100} />
+        <Checked color="green" style={{ margin: '0 5px' }} />
+      </Cell>
+      <Cell align="center">
+        <Progress
+          percent={100}
+          color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
+          strokeWidth="15"
+        />
+        <Issue color="red" style={{ margin: '0 5px' }} />
+      </Cell>
     </>
   );
 };
 export default App;
 ```
+
 :::
 
 ### Dynamic Change
 
 :::demo
+
 ```jsx
 import  React, {useState} from "react";
 import { Progress, Cell, Button } from '@nutui/nutui-react';
@@ -236,72 +182,82 @@ const App = () => {
   const [value, setValue] = useState(0);
   return (
     <>
-    <Cell>
-      <Progress
-        percentage={value}
-      />
-    </Cell>
-    <Cell>
-      <Button
-        type="default"
-        style={{ margin: 8 }} 
-        onClick={() => {
-          let num = value;
-          if (value <= 0) {
-            return false;
-          }
-          num -= 10;
-          setValue(num);
-        }}
-      >
-        减少
-      </Button>
-      <Button 
-        type="primary" 
-        onClick={() => {
-          let num = value;
-          if (value >= 100) {
-            return false;
-          }
-          num += 10;
-          setValue(num);
-        }}
-      >
-        增加
-      </Button>
-    </Cell>
+      <Cell align="center">
+        <Progress percent={value} />
+        <span style={{ margin: '0 5px' }}>{value}%</span>
+      </Cell>
+      <Cell>
+        <Button
+          type="default"
+          style={{ margin: 8 }}
+          onClick={() => {
+            let num = value;
+            if (value <= 0) {
+              return false;
+            }
+            num -= 10;
+            setValue(num);
+          }}
+        >
+          减少
+        </Button>
+        <Button 
+          type="primary" 
+          style={{ margin: 8 }}
+          onClick={() => {
+            let num = value;
+            if (value >= 100) {
+              return false;
+            }
+            num += 10;
+            setValue(num);
+          }}
+        >
+          增加
+        </Button>
+      </Cell>
     </>
   );
 };
 export default App;
 ```
+
 :::
 
-## API
+### Delay Time
+
+:::demo
+
+```jsx
+import  React from "react";
+import { Progress, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <Cell align="center">
+      <Progress percent={30} lazy delay={500} />
+    </Cell>
+  );
+};
+export default App;
+```
+
+:::
+
+## Progress
 
 ### Props
 
-| Props | Description | Type | Default
-|----- | ----- | ----- | -----
-| percentage | percentage | number | `0`
-| isShowPercentage | Whether to display the percent sign | boolean | `true`
-| fillColor | Progress bar background color | string | `#f3f3f3`
-| strokeColor | Stroke color | string | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)`
-| strokeWidth | Stroke width | string | -
-| size | Progress bar and text size, eg `small` `base` `large` | string | `base`
-| showText | Whether to show text | boolean | `true`
-| textInside | Progress bar text display position(`false`外显，`true`内显) | boolean | `false`
-| textColor | Progress bar text color setting | string | 外显`#333` 内显`#fff`
-| textWidth | Progress bar text width setting | string | `35px`
-| textBackground | Progress bar text background color setting | string | 同进度条颜色
-| textType | Progress bar text type setting，`text`(展示文字)/`icon`(展示icon标签) | string | `text`
-| status | The current state of the progress bar, `true`展示动画效果 | boolean | `false`
-| icon`v2.0.0` | Custom Icon | ReactNode | `<Checked width={16} height={16} color="#439422"/>`
-| iconName`v2.0.0 Abandon` | Icon Name | string | `checked`
-| iconColor`v2.0.0 Abandon` | Icon Color | string | `#439422`
-| iconSize`v2.0.0 Abandon` | Icon Size | string | `16px`
-| rounded `v1.4.7 Abandon`| Whether the corners are rounded | boolean \| string | `true`
-
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| percent | percent | `number` | `0` |
+| color | Stroke color | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)` |
+| background | Progress bar background color | `string` | `#f3f3f3` |
+| strokeWidth | Stroke width | `string` | `-` |
+| showText | Whether to show text | `boolean` | `false` |
+| animated | Whether to show animation | `boolean` | `false` |
+| lazy | Show animation when intersect | `boolean` | `false` |
+| delay | Delay time to set percent, ms | `number` | `0` |
 
 ## Theming
 
@@ -309,38 +265,16 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-progress-border-radius | `12px` |
-| --nutui-progress-text-padding | `0 5px` |
-| --nutui-progress-text-font-size | `13px` |
-| --nutui-progress-text-color | `$title-color` |
-| --nutui-progress-text-inner-color | `$gray6` |
-| --nutui-progress-insidetext-position-top | `-4px`|
-| --nutui-progress-insidetext-position-bottom | `-4px`|
-| --nutui-progress-insidetext-border-radius | `5px` |
-| --nutui-progress-insidetext-background | `$progress-inner-background-color` |
-| --nutui-progress-outer-background-color | `#f3f3f3` |
-| --nutui-progress-outer-border-radius | `12px` |
-| --nutui-progress-insidetext-border-radius | `5px` |
-| --nutui-progress-insidetext-padding | `3px 5px 3px 6px` |
-| --nutui-progress-small-font-size | `7px` |
-| --nutui-progress-small-padding | `0 4px` |
-| --nutui-progress-small-height | `5px` |
-| --nutui-progress-small-text-font-size | `7px` |
-| --nutui-progress-small-text-line-height | `10px` |
-| --nutui-progress-small-text-padding | `2px 4px` |
-| --nutui-progress-base-font-size | `9px` |
-| --nutui-progress-base-padding | `0 5px` |
-| --nutui-progress-base-height | `10px` |
-| --nutui-progress-base-text-font-size | `9px` |
-| --nutui-progress-base-text-line-height | `13px` |
-| --nutui-progress-base-text-padding | `$progress-insidetext-padding` |
-| --nutui-progress-base-text-top | `$progress-insidetext-top` |
-| --nutui-progress-large-font-size | `13px` |
-| --nutui-progress-large-padding | `0 5px` |
-| --nutui-progress-large-height | `15px` |
-| --nutui-progress-large-text-font-size | `13px` |
-| --nutui-progress-large-text-line-height | `18px` |
-| --nutui-progress-large-text-padding | `$progress-insidetext-padding` |
-| --nutui-progress-large-text-top | `$progress-insidetext-top` |
+| Name | Description | Default |
+| --- | --- | --- |
+| \--nutui-progress-height | strokeWidth | `10px` |
+| \--nutui-progress-border-radius | borderRadius | `12px` |
+| \--nutui-progress-color | progress color | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)` |
+| \--nutui-progress-background | progress background | `#f3f3f3` |
+| \--nutui-progress-text-color | text color | `$primary-text-color` |
+| \--nutui-progress-text-padding | text padding | `0 5px` |
+| \--nutui-progress-text-font-size | text fontSize | `9px` |
+| \--nutui-progress-text-position-top | text top | `-4px` |
+| \--nutui-progress-text-position-bottom | text bottom | `-4px` |
+| \--nutui-progress-text-border-radius | text borderRadius | `5px` |
+| \--nutui-progress-text-background | text background | `$progress-color` |

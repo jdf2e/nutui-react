@@ -15,11 +15,11 @@ test('base swipe', () => {
         </Button>
       }
     >
-      <Cell title="基础用法" radius={0} />
+      <Cell title={'基础用法'} radius={0} />
     </Swipe>
   )
   expect(
-    container.querySelector('.nut-swipe .nut-cell__maintitle')
+    container.querySelector('.nut-swipe .nut-cell__title')
   ).toHaveTextContent('基础用法')
 })
 

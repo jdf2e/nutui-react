@@ -17,6 +17,7 @@ interface T {
   customIndex: string
   sticky: string
   customContent: string
+  showKeys: string
   anhui: string
   beijing: string
   guangxi: string
@@ -59,13 +60,14 @@ interface T {
   three: string
 }
 const ElevatorDemo = () => {
-  const acceptKey = 'num'
+  const floorKey = 'num'
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       customIndex: '自定义索引key',
       sticky: '索引吸顶',
       customContent: '自定义内容',
+      showKeys: '不展示右侧导航',
       anhui: '安徽',
       beijing: '北京',
       guangxi: '广西',
@@ -108,10 +110,11 @@ const ElevatorDemo = () => {
       three: '三',
     },
     'zh-TW': {
-      basic: '基本用法',
+      basic: '基础用法',
       customIndex: '自定義索引key',
       sticky: '索引吸頂',
       customContent: '自定義內容',
+      showKeys: '不展示右側導航',
       anhui: '安徽',
       beijing: '北京',
       guangxi: '廣西',
@@ -158,6 +161,7 @@ const ElevatorDemo = () => {
       customIndex: 'Custom index key',
       sticky: 'Index ceiling',
       customContent: 'Custom content',
+      showKeys: 'Right navigation is not displayed',
       anhui: 'AnHui',
       beijing: 'BeiJing',
       guangxi: 'GuangXi',
@@ -479,19 +483,31 @@ const ElevatorDemo = () => {
         <h2>{translated.basic}</h2>
         <div className="demo-component">
           <Elevator
-            indexList={dataList}
+            list={dataList}
             height="260"
             onClickItem={(key: string, item: any) => onClickItem(key, item)}
             onClickIndex={(key: string) => onClickIndex(key)}
           />
         </div>
+
         <h2>{translated.customIndex}</h2>
         <div className="demo-component">
           <Elevator
             className="test-elevator1"
-            indexList={dataList2}
+            list={dataList2}
             height="220"
-            acceptKey={acceptKey}
+            floorKey={floorKey}
+            onClickItem={(key: string, item: any) => onClickItem(key, item)}
+            onClickIndex={(key: string) => onClickIndex(key)}
+          />
+        </div>
+        <h2>{translated.showKeys}</h2>
+        <div className="demo-component">
+          <Elevator
+            className="test-elevator4"
+            showKeys={false}
+            list={dataList}
+            height="260"
             onClickItem={(key: string, item: any) => onClickItem(key, item)}
             onClickIndex={(key: string) => onClickIndex(key)}
           />
@@ -500,8 +516,8 @@ const ElevatorDemo = () => {
         <div className="demo-component">
           <Elevator
             className="test-elevator2"
-            indexList={dataList3}
-            isSticky
+            list={dataList3}
+            sticky
             height="220"
             onClickItem={(key: string, item: any) => onClickItem(key, item)}
             onClickIndex={(key: string) => onClickIndex(key)}
@@ -511,7 +527,7 @@ const ElevatorDemo = () => {
         <div className="demo-component">
           <Elevator
             className="test-elevator3"
-            indexList={dataList}
+            list={dataList}
             height="260"
             onClickItem={(key: string, item: unknown) => onClickItem(key, item)}
             onClickIndex={(key: string) => onClickIndex(key)}
@@ -520,7 +536,7 @@ const ElevatorDemo = () => {
               {(value) => {
                 return (
                   <>
-                    <Jd width={12} height={12} />
+                    <Jd size={10} />
                     <span style={{ marginLeft: '15px' }}>{value?.name}</span>
                   </>
                 )

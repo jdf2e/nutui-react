@@ -401,8 +401,8 @@ $uploader-preview-close-top: var(
 ) !default;
 
 // picker（✅）（todo:react版本picker组件dom元素类名变化较大，picker.scss暂不改动）
-$picker-cancel-color: var(--nutui-picker-cancel-color, #808080) !default;
-$picker-ok-color: var(--nutui-picker-ok-color, $primary-color) !default;
+$picker-bar-cancel-color: var(--nutui-picker-cancel-color, #808080) !default;
+$picker-bar-ok-color: var(--nutui-picker-ok-color, $primary-color) !default;
 $picker-bar-cancel-font-size: var(
   --nutui-picker-bar-cancel-font-size,
   14px
@@ -442,10 +442,6 @@ $picker-item-active-line-border: var(
   --nutui-picker-item-active-line-border,
   1px solid #d8d8d8
 ) !default;
-$picker-columns-item-color: var(
-  --nutui-picker-columns-item-color,
-  $title-color
-) !default;
 $picker-mask-bg-img: var(
   --picker-mask-bg-img,
   linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),
@@ -454,24 +450,23 @@ $picker-mask-bg-img: var(
 
 //input（✅）
 $input-border-bottom: var(--nutui-input-border-bottom, #eaf0fb) !default;
-$input-disabled-color: var(--nutui-input-disabled-color, #c8c9cc) !default;
-$input-required-color: var(
-  --nutui-input-required-color,
-  $required-color
+$input-border-bottom-width: var(
+  --nutui-input-border-bottom-width,
+  0px
 ) !default;
+$input-disabled-color: var(--nutui-input-disabled-color, #c8c9cc) !default;
 $input-font-size: var(--nutui-input-font-size, $font-size-2) !default;
 $input-padding: var(--nutui-input-padding, 10px 25px) !default;
 
 // textarea（✅）
 
 $textarea-font: var(--nutui-textarea-font, $font-size-2) !default;
-$textarea-height: var(--nutui-textarea-height, 100px) !default;
 $textarea-padding: var(--nutui-textarea-padding, 10px 25px) !default;
 $textarea-limit-color: var(--nutui-textarea-limit-color, $text-color) !default;
 $textarea-text-color: var(--nutui-textarea-text-color, $title-color) !default;
 $textarea-text-curror-color: var(
   --nutui-textarea-text-curror-color,
-  '$title-color'
+  $title-color
 ) !default;
 $textarea-text-line-height: var(
   --nutui-textarea-text-line-height,
@@ -543,36 +538,29 @@ $inputnumber-border-box: var(
 $inputnumber-display: var(--nutui-inputnumber-display, flex) !default;
 
 // actionsheet（✅）
-$zindex-actionsheet: var(--nutui-zindex-actionsheet, 10001) !default;
-$body-background: var(--nutui-body-background, #f6f6f6) !default;
-$light-color: var(--nutui-light-color, #f6f6f6) !default;
-$actionsheet-light-color: var(
-  --nutui-actionsheet-light-color,
+$actionsheet-border-color: var(
+  --nutui-actionsheet-border-color,
   #f6f6f6
+) !default;
+$actionsheet-item-text-align: var(
+  --nutui-actionsheet-item-text-align,
+  center
 ) !default;
 $actionsheet-item-border-bottom: var(
   --nutui-actionsheet-item-border-bottom,
   none
 ) !default;
-$actionsheet-item-font-size: var(
-  --nutui-actionsheet-item-font-size,
-  $font-size-2
-) !default;
-$actionsheet-item-subdesc-font-size: var(
-  --nutui-actionsheet-item-subdesc-font-size,
-  $font-size-1
-) !default;
-$actionsheet-item-cancel-border-top: var(
-  --nutui-actionsheet-item-cancel-border-top,
-  1px solid $actionsheet-light-color
-) !default;
 $actionsheet-item-line-height: var(
   --nutui-actionsheet-item-line-height,
   24px
 ) !default;
-$actionsheet-item-font-color: var(
-  --nutui-actionsheet-item-font-color,
+$actionsheet-item-color: var(
+  --nutui-actionsheet-item-color,
   $title-color
+) !default;
+$actionsheet-item-danger: var(
+  --nutui-actionsheet-item-danger,
+  $primary-color
 ) !default;
 
 //shortpassword（✅）
@@ -660,34 +648,36 @@ $numberkeyboard-key-font-color: var(
   --nutui-numberkeyboard-key-font-color,
   #333
 ) !default;
-$numberkeyboard-key-finish-font-size: var(
-  --nutui-numberkeyboard-key-finish-font-size,
+$numberkeyboard-key-confirm-font-size: var(
+  --nutui-numberkeyboard-key-confirm-font-size,
   16px
 ) !default;
-$numberkeyboard-key-finish-font-color: var(
-  --nutui-numberkeyboard-key-finish-font-color,
+$numberkeyboard-key-confirm-font-color: var(
+  --nutui-numberkeyboard-key-confirm-font-color,
   #fff
 ) !default;
-$numberkeyboard-key-finish-background-color: var(
-  --nutui-numberkeyboard-key-finish-background-color,
-  $brand-color
-) !default;
-$numberkeyboard-key-activeFinsh-background-color: var(
-  --nutui-numberkeyboard-key-activeFinsh-background-color,
+$numberkeyboard-key-confirm-background-color: var(
+  --nutui-numberkeyboard-key-confirm-background-color,
   $brand-color
 ) !default;
 
 // countdown（✅）
 $countdown-display: var(--nutui-countdown-display, flex) !default;
-$countdown-color: var(--nutui-countdown-color, inherit) !default;
-$countdown-font-size: var(--nutui-countdown-font-size, initial) !default;
+$countdown-color: var(--nutui-countdown-color, $gray1) !default;
+$countdown-font-size: var(--nutui-countdown-font-size, 14px) !default;
 
 //large price（✅）
+$price-symbol-padding-right: var(
+  --nutui-price-symbol-padding-right,
+  1px
+) !default;
 $price-symbol-big-size: var(--nutui-price-symbol-big-size, 18px) !default;
 $price-integer-big-size: var(--nutui-price-integer-big-size, 24px) !default;
 $price-decimal-big-size: var(--nutui-price-decimal-big-size, 18px) !default;
 
 //normal price（✅）
+$price-line-color: var(--nutui-price-line-color, $gray2) !default;
+$price-line-font-size: var(--nutui-price-line-font-size, 12px) !default;
 $price-symbol-medium-size: var(--nutui-price-symbol-medium-size, 14px) !default;
 $price-integer-medium-size: var(
   --nutui-price-integer-medium-size,
@@ -713,9 +703,16 @@ $avatar-normal-width: var(--nutui-avatar-normal-width, 40px) !default;
 $avatar-normal-height: var(--nutui-avatar-normal-height, 40px) !default;
 
 //switch（✅）
-$switch-close-bg-color: var(--nutui-switch-close-bg-color, #ebebeb) !default;
-$switch-close--line-bg-color: var(
-  --nutui-switch-close--line-bg-color,
+$switch-inactive-background-color: var(
+  --nutui-switch-close-background-color,
+  #ebebeb
+) !default;
+$switch-active-background-color: var(
+  --nutui-switch-open-background-color,
+  $primary-color
+) !default;
+$switch-close-line-background-color: var(
+  --nutui-switch-close-line-bg-color,
   #f0f0f0
 ) !default;
 $switch-width: var(--nutui-switch-width, 36px) !default;
@@ -744,6 +741,8 @@ $toast-inner-border-radius: var(
   12px
 ) !default;
 $toast-cover-bg-color: var(--nutui-toast-cover-bg-color, $gray7) !default;
+$toast-inner-top: var(--nutui-toast-inner-top, 50%) !default;
+$toast-inner-text-align: var(--nutui-toast-inner-text-align, 'center') !default;
 
 //backtop（✅）
 $backtop-border-color: var(--nutui-backtop-border-color, #e0e0e0) !default;
@@ -811,33 +810,31 @@ $notify-padding: var(--nutui-notify-padding, 12px 0) !default;
 $notify-font-size: var(--nutui-notify-font-size, 14px) !default;
 $notify-height: var(--nutui-notify-height, 44px) !default;
 $notify-line-height: var(--nutui-notify-line-height, auto) !default;
-$notify-base-background-color: linear-gradient(
-  135deg,
-  rgba(250, 44, 25, 1) 0%,
-  rgba(250, 63, 25, 1) 45%,
-  rgba(250, 89, 25, 1) 83%,
-  rgba(250, 100, 25, 1) 100%
+$notify-base-background-color: var(
+  --nutui-notify-base-background-color,
+  linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%)
 ) !default;
-$notify-primary-background-color: linear-gradient(
-  315deg,
-  rgba(73, 143, 242, 1) 0%,
-  rgba(73, 101, 242, 1) 100%
+$notify-primary-background-color: var(
+  --nutui-notify-primary-background-color,
+  linear-gradient(315deg, rgba(73, 143, 242, 1) 0%, rgba(73, 101, 242, 1) 100%)
 ) !default;
-$notify-success-background-color: linear-gradient(
-  135deg,
-  rgba(38, 191, 38, 1) 0%,
-  rgba(39, 197, 48, 1) 45%,
-  rgba(40, 207, 63, 1) 83%,
-  rgba(41, 212, 70, 1) 100%
+$notify-success-background-color: var(
+  --nutui-notify-success-background-color,
+  linear-gradient(
+    135deg,
+    rgba(38, 191, 38, 1) 0%,
+    rgba(39, 197, 48, 1) 45%,
+    rgba(40, 207, 63, 1) 83%,
+    rgba(41, 212, 70, 1) 100%
+  )
 ) !default;
 $notify-danger-background-color: var(
   --nutui-notify-danger-background-color,
   rgba(250, 50, 25, 1)
 ) !default;
-$notify-warning-background-color: linear-gradient(
-  135deg,
-  rgba(255, 93, 13, 1) 0%,
-  rgba(255, 154, 13, 1) 100%
+$notify-warning-background-color: var(
+  --nutui-notify-warning-background-color,
+  linear-gradient(135deg, rgba(255, 93, 13, 1) 0%, rgba(255, 154, 13, 1) 100%)
 ) !default;
 
 // rate（✅）
@@ -851,28 +848,24 @@ $rate-icon-void-color: var(
 // tabbar（✅）
 $tabbar-height: var(--nutui-tabbar-height, 50px) !default;
 $tabbar-active-color: var(--nutui-tabbar-active-color, $primary-color) !default;
-$tabbar-unactive-color: var(
-  --nutui-tabbar-unactive-color,
-  $primary-color
-) !default;
+$tabbar-inactive-color: var(--nutui-tabbar-inactive-color, $gray1) !default;
 $tabbar-border-top: var(--nutui-tabbar-border-top, 1px solid #eee) !default;
 $tabbar-border-bottom: var(
   --nutui-tabbar-border-bottom,
   1px solid #eee
 ) !default;
 $tabbar-box-shadow: var(--nutui-tabbar-box-shadow, none) !default;
-$tabbar-item-text-font-size: var(
-  --nutui-tabbar-item-text-font-size,
+$tabbar-text-font-size: var(
+  --nutui-tabbar-text-font-size,
   $font-size-0
 ) !default;
-$tabbar-item-text-line-height: var(
-  --nutui-tabbar-item-text-line-height,
-  20px
+$tabbar-text-large-font-size: var(
+  --nutui-tabbar-text-large-font-size,
+  $font-size-large
 ) !default;
+$tabbar-text-line-height: var(--nutui-tabbar-text-line-height, 20px) !default;
 $tabbar-height: var(--nutui-tabbar-height, 50px) !default;
-$tabbar-word-margin-top: var(--nutui-tabbar-word-margin-top, 3px) !default;
-$tabbar-dot-right: var(--nutui-tabbar-dot-right, 12px) !default;
-$tabbar-dot-top: var(--nutui-tabbar-dot-top, 0) !default;
+$tabbar-text-margin-top: var(--nutui-tabbar-text-margin-top, 3px) !default;
 
 //infiniteloading（✅）
 $infiniteloading-bottom-color: var(
@@ -881,46 +874,27 @@ $infiniteloading-bottom-color: var(
 ) !default;
 
 //range（✅）
-$range-tip-font-color: var(--nutui-range-tip-font-color, $gray1) !default;
-$range-bg-color: var(--nutui-range-bg-color, rgba(#fa2c19, 0.5)) !default;
-$range-bg-color-tick: var(--nutui-range-bg-color-tick, #fa958c) !default;
-$range-bar-bg-color: linear-gradient(
-  135deg,
-  $primary-color 0%,
-  $primary-color-end 100%
-) !default;
-$range-bar-btn-bg-color: var(
-  --nutui-range-bar-btn-bg-color,
+$range-font-color: var(--nutui-range-font-color, $gray1) !default;
+$range-height: var(--nutui-range-height, 4px) !default;
+$range-margin: var(--nutui-range-margin, 15px) !default;
+$range-inactive-color: var(--nutui-range-inactive-color, #fa958c) !default;
+$range-active-color: var(--nutui-range-active-color, $primary-color) !default;
+$range-button-background: var(
+  --nutui-range-button-background,
   $primary-text-color
 ) !default;
-$range-bar-btn-width: var(--nutui-range-bar-btn-width, 24px) !default;
-$range-bar-btn-height: var(--nutui-range-bar-btn-height, 24px) !default;
-$range-bar-btn-border: var(
-  --nutui-range-bar-btn-border,
+$range-button-width: var(--nutui-range-button-width, 24px) !default;
+$range-button-height: var(--nutui-range-button-height, 24px) !default;
+$range-button-border: var(
+  --nutui-range-button-border,
   1px solid $primary-color
 ) !default;
 
 //swiper（✅）
-$swiper-pagination-bottom: var(--nutui-swiper-pagination-bottom, 12px);
-$swiper-pagination-item-background-color: var(
-  --nutui-swiper-pagination-item-background-color,
+$swiper-indicator-bottom: var(--nutui-swiper-indicator-bottom, 12px);
+$swiper-indicator-item-background-color: var(
+  --nutui-swiper-indicator-item-background-color,
   #ddd
-) !default;
-$swiper-pagination-item-width: var(
-  --nutui-swiper-pagination-item-width,
-  8px
-) !default;
-$swiper-pagination-item-height: var(
-  --nutui-swiper-pagination-item-height,
-  3px
-) !default;
-$swiper-pagination-item-margin-right: var(
-  --nutui-swiper-pagination-item-margin-right,
-  7px
-) !default;
-$swiper-pagination-item-border-radius: var(
-  --nutui-swiper-pagination-item-border-radius,
-  2px
 ) !default;
 
 //address
@@ -1004,12 +978,12 @@ $steps-base-title-margin-bottom: var(
   --nutui-steps-base-title-margin-bottom,
   10px
 ) !default;
-$steps-base-content-font-size: var(
-  --nutui-steps-base-content-font-size,
+$steps-base-description-font-size: var(
+  --nutui-steps-base-description-font-size,
   12px
 ) !default;
 $steps-base-content-color: var(
-  --nutui-steps-base-content-color,
+  --nutui-steps-base-description-color,
   $title-color2
 ) !default;
 
@@ -1018,17 +992,12 @@ $steps-wait-icon-bg-color: var(
   #959fb1
 ) !default;
 $steps-wait-icon-color: var(--nutui-steps-wait-icon-color, $white) !default;
-$steps-wait-head-color: var(--nutui-steps-wait-head-color, #909ca4) !default;
-$steps-wait-head-border-color: var(
-  --nutui-steps-wait-head-border-color,
-  #909ca4
-) !default;
 $steps-wait-title-color: var(
   --nutui-steps-wait-title-color,
   $title-color2
 ) !default;
 $steps-wait-content-color: var(
-  --nutui-steps-wait-content-color,
+  --nutui-steps-wait-description-color,
   $title-color2
 ) !default;
 
@@ -1039,14 +1008,6 @@ $steps-process-icon-bg-color: var(
 $steps-process-icon-color: var(
   --nutui-steps-process-icon-color,
   $white
-) !default;
-$steps-process-head-color: var(
-  --nutui-steps-process-head-color,
-  $primary-color
-) !default;
-$steps-process-head-border-color: var(
-  --nutui-steps-process-head-border-color,
-  $primary-color
 ) !default;
 $steps-process-title-color: var(
   --nutui-steps-process-title-color,
@@ -1061,7 +1022,7 @@ $steps-process-title-font-weight: var(
   400
 ) !default;
 $steps-process-content-color: var(
-  --nutui-steps-process-content-color,
+  --nutui-steps-process-description-color,
   $title-color2
 ) !default;
 
@@ -1073,20 +1034,12 @@ $steps-finish-icon-color: var(
   --nutui-steps-finish-icon-color,
   $primary-color
 ) !default;
-$steps-finish-head-color: var(
-  --nutui-steps-finish-head-color,
-  $primary-color
-) !default;
-$steps-finish-head-border-color: var(
-  --nutui-steps-finish-head-border-color,
-  $primary-color
-) !default;
 $steps-finish-title-color: var(
   --nutui-steps-finish-title-color,
   $primary-color
 ) !default;
 $steps-finish-content-color: var(
-  --nutui-steps-finish-content-color,
+  --nutui-steps-finish-description-color,
   $title-color2
 ) !default;
 $steps-finish-line-background: var(
@@ -1100,6 +1053,7 @@ $steps-dot-icon-border: var(
   --nutui-steps-dot-icon-border,
   2px solid $primary-text-color
 ) !default;
+$steps-dot-head-margin: var(--nutui-steps-dot-head-margin, 7px 0 0 0) !default;
 
 // dialog（✅）
 $dialog-width: var(--nutui-dialog-width, 296px) !default;
@@ -1127,9 +1081,16 @@ $dialog-content-line-height: var(
   --nutui-dialog-content-line-height,
   16px
 ) !default;
-$dialog-mask-z-index: var(--nutui-dialog-mask-z-index, $mask-z-index) !default;
-$dialog-mask-background-color: var(
-  --nutui-dialog-mask-background-color,
+$dialog-content-text-align: var(
+  --nutui-dialog-content-text-align,
+  center
+) !default;
+$dialog-overlay-z-index: var(
+  --nutui-dialog-overlay-z-index,
+  $mask-z-index
+) !default;
+$dialog-overlay-background-color: var(
+  --nutui-dialog-overlay-background-color,
   $mask-color
 ) !default;
 $dialog-outer-z-index: var(
@@ -1217,6 +1178,26 @@ $radio-icon-disable-color2: var(
   --nutui-radio-icon-disable-color2,
   $gray3
 ) !default;
+$radiogroup-radio-margin: var(
+  --nutui-radiogroup-radio-margin,
+  0 20px 5px 0
+) !default;
+$radiogroup-radio-label-margin: var(
+  --nutui-radiogroup-radio-label-margin,
+  0 5px 0 5px
+) !default;
+$radio-button-disabled-active-background: var(
+  --nutui-radio-button-disabled-active-background,
+  rgba(0, 0, 0, 0.15)
+) !default;
+$radio-button-disabled-active-color: var(
+  --nutui-radio-button-disabled-active-color,
+  rgba(0, 0, 0, 0.25)
+) !default;
+$radio-button-disabled-active-border-color: var(
+  --nutui-radio-button-disabled-active-border-color,
+  rgba(211, 211, 211, 0.15)
+) !default;
 
 // signature（✅）
 $signature-border-color: #dadada;
@@ -1257,10 +1238,7 @@ $noticebar-right-icon-width: var(
   16px
 ) !default;
 $noticebar-box-padding: var(--nutui-noticebar-box-padding, 0 16px) !default;
-$noticebar-wrapable-padding: var(
-  --nutui-noticebar-wrapable-padding,
-  16px
-) !default;
+$noticebar-wrap-padding: var(--nutui-noticebar-wrapable-padding, 16px) !default;
 $noticebar-lefticon-margin: var(
   --nutui-noticebar-lefticon-margin,
   0px 10px
@@ -1271,124 +1249,87 @@ $noticebar-righticon-margin: var(
 ) !default;
 
 // TimeSelect（✅）
-$timeselect-title-font-size: var(
-  --nutui-timeselect-title-font-size,
-  $font-size-2
-) !default;
-$timeselect-title-color: var(
-  --nutui-timeselect-title-color,
-  $title-color
-) !default;
-$timeselect-title-width: var(--nutui-timeselect-title-width, 100%) !default;
 $timeselect-title-height: var(--nutui-timeselect-title-height, 50px) !default;
 $timeselect-title-line-height: var(
   --nutui-timeselect-title-line-height,
   50px
 ) !default;
-$timeselect-pannel-bg-color: var(
-  --nutui-timeselect-pannel-bg-color,
-  #f6f7f9
+$timeselect-title-color: var(
+  --nutui-timeselect-title-color,
+  $title-color
 ) !default;
-
-// TimePannel（✅）
-$timeselect-timepannel-text-color: var(
-  --nutui-timeselect-timepannel-text-color,
-  $title-color2
-) !default;
-$timeselect-timepannel-font-size: var(
-  --nutui-timeselect-timepannel-font-size,
+$timeselect-title-font-size: var(
+  --nutui-timeselect-title-font-size,
   $font-size-2
 ) !default;
-$timeselect-timepannel-cur-bg-color: var(
-  --nutui-timeselect-timepannel-cur-bg-color,
-  $white
+$timeselect-title-background: var(
+  --nutui-timeselect-title-background,
+  $background-color3
 ) !default;
-$timeselect-timepannel-cur-text-color: var(
-  --nutui-timeselect-timepannel-cur-text-color,
-  #333333
-) !default;
-$timeselect-timepannel-width: var(
-  --nutui-timeselect-timepannel-width,
-  140px
-) !default;
-$timeselect-timepannel-height: var(
-  --nutui-timeselect-timepannel-height,
+
+$timeselect-date-width: var(--nutui-timeselect-date-width, 140px) !default;
+$timeselect-date-height: var(--nutui-timeselect-date-height, 40px) !default;
+$timeselect-date-line-height: var(
+  --nutui-timeselect-date-line-height,
   40px
 ) !default;
-$timeselect-timepannel-padding: var(
-  --nutui-timeselect-timepannel-padding,
-  15px
+$timeselect-date-color: var(
+  --nutui-timeselect-date-color,
+  $title-color2
 ) !default;
-
-// TimeDetail（✅）
-$timeselect-timedetail-padding: var(
-  --nutui-timeselect-timedetail-padding,
-  0 5px 50px 13px
+$timeselect-date-active-color: var(
+  --nutui-timeselect-date-active-color,
+  $title-color
 ) !default;
-$timeselect-timedetail-item-width: var(
-  --nutui-timeselect-timedetail-item-width,
-  100px
-) !default;
-$timeselect-timedetail-item-height: var(
-  --nutui-timeselect-timedetail-item-height,
-  50px
-) !default;
-$timeselect-timedetail-item-line-height: var(
-  --nutui-timeselect-timedetail-item-line-height,
-  50px
-) !default;
-$timeselect-timedetail-item-bg-color: var(
-  --nutui-timeselect-timedetail-item-bg-color,
-  #f6f7f9
-) !default;
-$timeselect-timedetail-item-border-radius: var(
-  --nutui-timeselect-timedetail-item-border-radius,
-  5px
-) !default;
-$timeselect-timedetail-item-text-color: var(
-  --nutui-timeselect-timedetail-item-text-color,
-  #333333
-) !default;
-$timeselect-timedetail-item-text-font-size: var(
-  --nutui-timeselect-timedetail-item-text-font-size,
+$timeselect-date-font-size: var(
+  --nutui-timeselect-date-font-size,
   $font-size-2
 ) !default;
-$timeselect-timedetail-item-cur-bg-color: var(
-  --nutui-timeselect-timedetail-item-cur-bg-color,
-  rgba($primary-color, 0.15)
+
+$timeselect-time-width: var(--nutui-timeselect-time-width, 100px) !default;
+$timeselect-time-height: var(--nutui-timeselect-time-height, 50px) !default;
+$timeselect-time-line-height: var(
+  --nutui-timeselect-time-line-height,
+  50px
 ) !default;
-$timeselect-timedetail-item-cur-border: var(
-  --nutui-timeselect-timedetail-item-cur-border,
+$timeselect-time-font-size: var(--nutui-timeselect-font-size, 14px) !default;
+$timeselect-time-margin: var(
+  --nutui-timeselect-time-margin,
+  0 10px 10px 0
+) !default;
+$timeselect-time-color: var(
+  --nutui-timeselect-time-color,
+  $title-color
+) !default;
+$timeselect-time-active-color: var(
+  --nutui-timeselect-time-active-color,
   $primary-color
 ) !default;
-$timeselect-timedetail-item-cur-text-color: var(
-  --nutui-timeselect-timedetail-item-cur-text-color,
-  $primary-color
+$timeselect-time-background: var(
+  --nutui-timeselect-time-background,
+  $background-color
 ) !default;
-$timeselect-timedetail-time-text-color: var(
-  --nutui-timeselect-timedetail-time-text-color,
-  #999
-) !default;
-$timeselect-timedetail-time-font-size: var(
-  --nutui-timeselect-timedetail-time-font-size,
-  $font-size-1
+$timeselect-time-active-background: var(
+  --nutui-timeselect-time-active-background,
+  $background-color2
 ) !default;
 
 //tag（✅）
 $tag-padding: var(--nutui-tag-padding, 0 4px) !default;
 $tag-font-size: var(--nutui-tag-font-size, 12px) !default;
-$tag-default-border-radius: var(
-  --nutui-tag-default-border-radius,
-  4px
-) !default;
+$tag-border-radius: var(--nutui-tag-border-radius, 4px) !default;
+$tag-height: var(--nutui-tag-height, auto) !default;
+$tag-color: var(--nutui-tag-color, #ffffff) !default;
+$tag-border-width: var(--nutui-tag-border-width, 1px) !default;
 $tag-round-border-radius: var(--nutui-tag-round-border-radius, 8px) !default;
-$tag-default-background-color: var(
-  --nutui-tag-default-background-color,
-  #000000
+$tag-mark-border-radius: var(
+  --nutui-tag-mark-border-radius,
+  0 12px 12px 0
 ) !default;
+$tag-background-color: var(--nutui-tag-background-color, #000000) !default;
 $tag-primary-background-color: var(
   --nutui-tag-primary-background-color,
-  #3460fa
+  $primary-color
 ) !default;
 $tag-success-background-color: var(
   --nutui-tag-success-background-color,
@@ -1400,17 +1341,10 @@ $tag-danger-background-color: linear-gradient(
   rgba(232, 34, 14, 1) 69.83950099728881%,
   rgba(242, 77, 12, 1) 100%
 ) !default;
-$tag-danger-background-color-plain: var(
-  --nutui-tag-danger-background-color-plain,
-  #df3526
-) !default;
 $tag-warning-background-color: var(
   --nutui-tag-warning-background-color,
   #f3812e
 ) !default;
-$tag-default-color: var(--nutui-tag-default-color, #ffffff) !default;
-$tag-border-width: var(--nutui-tag-border-width, 1px) !default;
-$tag-height: var(--nutui-tag-height, auto) !default;
 
 //badge（✅）
 $badge-background-color: var(
@@ -1419,42 +1353,31 @@ $badge-background-color: var(
 ) !default;
 $badge-color: var(--nutui-badge-color, #fff) !default;
 $badge-font-size: var(--nutui-badge-font-size, $font-size-1) !default;
-$badge-default-background-color: var(
-  --nutui-badge-default-background-color,
-  rgba(255, 255, 255, 1)
-) !default;
 $badge-border: var(
   --nutui-badge-border,
   0px solid $primary-text-color
 ) !default;
 $badge-border-radius: var(--nutui-badge-border-radius, 14px) !default;
 $badge-padding: var(--nutui-badge-padding, 0 5px) !default;
-$badge-icon-padding: var(--nutui-badge-icon-padding, 2px) !default;
+$badge-icon-padding: var(--nutui-badge-icon-padding, 3px) !default;
 $badge-content-transform: var(
   --nutui-badge-content-transform,
   translateY(-50%) translateX(100%)
 ) !default;
 $badge-z-index: var(--nutui-badge-z-index, 1) !default;
 $badge-dot-width: var(--nutui-badge-dot-width, 7px) !default;
-$badge-dot-height: var(--nutui-badge-dot-height, 7px) !default;
-$badge-dot-border-radius: var(--nutui-badge-dot-border-radius, 7px) !default;
-$badge-dot-padding: var(--nutui-badge-dot-padding, 0px) !default;
 
 //popover（✅）
 $popover-border-radius: var(--nutui-popover-border-radius, 8px) !default;
-$popover-font-size: var(--nutui-popover-font-size, $font-size-1) !default;
+$popover-font-size: var(--nutui-popover-font-size, $font-size-2) !default;
 $popover-menu-item-height: var(--nutui-popover-menu-item-height, 30px) !default;
-$popover-menu-item-name-margin: var(
-  --nutui-popover-menu-item-name-margin,
-  0px 10px
-) !default;
 $popover-menu-item-hover-background-color: var(
   --nutui-popover-menu-item-hover-background-color,
-  $primary-color
+  #fff
 ) !default;
 $popover-menu-item-hover-text-color: var(
   --nutui-popover-menu-item-hover-text-color,
-  $primary-text-color
+  #1a1a1a
 ) !default;
 $popover-menu-item-border-width: var(
   --nutui-popover-menu-item-border-width,
@@ -1474,11 +1397,15 @@ $popover-menu-item-border-bottom: var(
 ) !default;
 $popover-white-background-color: var(
   --nutui-popover-white-background-color,
-  rgba(255, 255, 255, 1)
+  $gray6
 ) !default;
 $popover-dark-background-color: var(
   --nutui-popover-dark-background-color,
   rgba(75, 76, 77, 1)
+) !default;
+$popover-content-background-color: var(
+  --nutui-popover-content-background-color,
+  $gray6
 ) !default;
 $popover-border-bottom-color: var(
   --nutui-popover-border-bottom-color,
@@ -1486,7 +1413,7 @@ $popover-border-bottom-color: var(
 ) !default;
 $popover-primary-text-color: var(
   --nutui-popover-primary-text-color,
-  rgba(51, 51, 51, 1)
+  $gray1
 ) !default;
 $popover-disable-color: var(
   --nutui-popover-disable-color,
@@ -1494,7 +1421,7 @@ $popover-disable-color: var(
 ) !default;
 $popover-menu-item-padding: var(
   --nutui-popover-menu-item-padding,
-  8px 0
+  8px
 ) !default;
 $popover-menu-item-margin: var(
   --nutui-popover-menu-item-margin,
@@ -1505,107 +1432,35 @@ $popover-menu-name-line-height: var(
   normal
 ) !default;
 
-//progressr（✅）
+//progress（✅）
+$progress-height: var(--nutui-progress-height, 10px) !default;
+$progress-color: var(
+  --nutui-progress-color,
+  linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)
+) !default;
+$progress-background: var(--nutui-progress-background, #f3f3f3) !default;
 $progress-border-radius: var(--nutui-progress-border-radius, 12px) !default;
-$progress-text-padding: var(--nutui-progress-text-padding, 0 5px) !default;
-$progress-text-font-size: var(--nutui-progress-text-font-size, 13px) !default;
-$progress-text-color: var(--nutui-progress-text-color, $title-color) !default;
-$progress-text-inner-color: var(
-  --nutui-progress-text-inner-color,
+$progress-text-color: var(
+  --nutui-progress-text-color,
   $primary-text-color
 ) !default;
-$progress-insidetext-position-top: var(
-  --nutui-progress-insidetext-position-top,
+$progress-text-background: var(
+  --nutui-progress-text-background,
+  $progress-color
+) !default;
+$progress-text-padding: var(--nutui-progress-text-padding, 0 5px) !default;
+$progress-text-font-size: var(--nutui-progress-text-font-size, 9px) !default;
+$progress-text-position-top: var(
+  --nutui-progress-text-position-top,
   -4px
 ) !default;
-$progress-insidetext-position-bottom: var(
-  --nutui-progress-insidetext-position-bottom,
+$progress-text-position-bottom: var(
+  --nutui-progress-text-position-bottom,
   -4px
 ) !default;
-$progress-insidetext-border-radius: var(
-  --nutui-progress-insidetext-border-radius,
+$progress-text-border-radius: var(
+  --nutui-progress-text-border-radius,
   5px
-) !default;
-$progress-inner-background-color: linear-gradient(
-  135deg,
-  $primary-color 0%,
-  $primary-color-end 100%
-) !default;
-$progress-insidetext-background: var(
-  --nutui-progress-insidetext-background,
-  $progress-inner-background-color
-) !default;
-$progress-outer-background-color: var(
-  --nutui-progress-outer-background-color,
-  #f3f3f3
-) !default;
-$progress-outer-border-radius: var(
-  --nutui-progress-outer-border-radius,
-  12px
-) !default;
-$progress-insidetext-border-radius: var(
-  --nutui-progress-insidetext-border-radius,
-  5px
-) !default;
-$progress-insidetext-padding: var(
-  --nutui-progress-insidetext-padding,
-  3px 5px 3px 6px
-) !default;
-$progress-insidetext-top: var(--nutui-progress-insidetext-top, -42%) !default;
-$progress-small-text-top: var(--nutui-progress-small-text-top, -100%) !default;
-$progress-small-font-size: var(--nutui-progress-small-font-size, 7px) !default;
-$progress-small-padding: var(--nutui-progress-small-padding, 0 4px) !default;
-$progress-small-height: var(--nutui-progress-small-height, 5px) !default;
-$progress-small-text-font-size: var(
-  --nutui-progress-small-text-font-size,
-  7px
-) !default;
-$progress-small-text-line-height: var(
-  --nutui-progress-small-text-line-height,
-  10px
-) !default;
-$progress-small-text-padding: var(
-  --nutui-progress-small-text-padding,
-  2px 4px
-) !default;
-$progress-small-text-top: var(--nutui-progress-small-text-top, -100%) !default;
-$progress-base-font-size: var(--nutui-progress-base-font-size, 9px) !default;
-$progress-base-padding: var(--nutui-progress-base-padding, 0 5px) !default;
-$progress-base-height: var(--nutui-progress-base-height, 10px) !default;
-$progress-base-text-font-size: var(
-  --nutui-progress-base-text-font-size,
-  9px
-) !default;
-$progress-base-text-line-height: var(
-  --nutui-progress-base-text-line-height,
-  13px
-) !default;
-$progress-base-text-padding: var(
-  --nutui-progress-base-text-padding,
-  $progress-insidetext-padding
-) !default;
-$progress-base-text-top: var(
-  --nutui-progress-base-text-top,
-  $progress-insidetext-top
-) !default;
-$progress-large-font-size: var(--nutui-progress-large-font-size, 13px) !default;
-$progress-large-padding: var(--nutui-progress-large-padding, 0 5px) !default;
-$progress-large-height: var(--nutui-progress-large-height, 15px) !default;
-$progress-large-text-font-size: var(
-  --nutui-progress-large-text-font-size,
-  13px
-) !default;
-$progress-large-text-line-height: var(
-  --nutui-progress-large-text-line-height,
-  18px
-) !default;
-$progress-large-text-padding: var(
-  --nutui-progress-large-text-padding,
-  $progress-insidetext-padding
-) !default;
-$progress-large-text-top: var(
-  --nutui-progress-large-text-top,
-  $progress-insidetext-top
 ) !default;
 
 //pagination（✅）
@@ -1655,18 +1510,12 @@ $tabs-titles-background-color: var(
   $background-color
 ) !default;
 $tabs-titles-border-radius: var(--nutui-tabs-titles-border-radius, 0) !default;
-$tabs-titles-item-large-font-size: var(
-  --nutui-tabs-titles-item-large-font-size,
-  $font-size-3
-) !default;
+$nut-tabs-title-gap: var(--nutui-tabs-title-gap, 0) !default;
 $tabs-titles-item-font-size: var(
   --nutui-tabs-titles-item-font-size,
   $font-size-2
 ) !default;
-$tabs-titles-item-small-font-size: var(
-  --nutui-tabs-titles-item-small-font-size,
-  $font-size-1
-) !default;
+
 $tabs-titles-item-color: var(
   --nutui-tabs-titles-item-color,
   $title-color
@@ -1824,18 +1673,6 @@ $collapse-item-disabled-color: var(
   --nutui-collapse-item-disabled-color,
   #c8c9cc
 ) !default;
-$collapse-item-icon-color: var(
-  --nutui-collapse-item-icon-color,
-  #666666
-) !default;
-$collapse-item-icon-margin-right: var(
-  --nutui-collapse-item-icon-margin-right,
-  5px
-) !default;
-$collapse-item-icon-margin-left: var(
-  --nutui-collapse-item-icon-margin-left,
-  5px
-) !default;
 $collapse-item-font-size: var(
   --nutui-collapse-item-font-size,
   $font-size-2
@@ -1844,17 +1681,13 @@ $collapse-item-line-height: var(
   --nutui-collapse-item-line-height,
   24px
 ) !default;
-$collapse-item-sub-title-color: var(
-  --nutui-collapse-item-sub-title-color,
+$collapse-item-extra-color: var(
+  --nutui-collapse-item-extra-color,
   #666666
 ) !default;
 $collapse-wrapper-content-padding: var(
   --nutui-collapse-wrapper-content-padding,
   12px 26px
-) !default;
-$collapse-wrapper-empty-content-padding: var(
-  --nutui-collapse-wrapper-empty-content-padding,
-  0 26px
 ) !default;
 $collapse-wrapper-content-color: var(
   --nutui-collapse-wrapper-content-color,
@@ -1875,35 +1708,25 @@ $collapse-wrapper-content-background-color: var(
 
 // searchbar（✅）
 
-$searchbar-background: var(--nutui-searchbar-background, $gray6) !default;
+$searchbar-background: var(--nutui-searchbar-background, #fff) !default;
 $searchbar-content-border-radius: var(
   --nutui-searchbar-content-border-radius,
   2px
 ) !default;
-$searchbar-right-out-color: var(
-  --nutui-searchbar-right-out-color,
-  $black
-) !default;
-$searchbar-padding: var(--nutui-searchbar-padding, 9px 16px) !default;
+$searchbar-padding: var(--nutui-searchbar-padding, 9px 10px) !default;
 $searchbar-width: var(--nutui-searchbar-width, 100%) !default;
-$searchbar-label-fontsize: var(--nutui-searchbar-label-fontsize, 12px) !default;
-$searchbar-label-padding: var(
-  --nutui-searchbar-label-padding,
+$searchbar-left-fontsize: var(--nutui-searchbar-left-fontsize, 12px) !default;
+$searchbar-left-padding: var(
+  --nutui-searchbar-left-padding,
   0 12px 0 0
 ) !default;
-$searchbar-label-color: var(--nutui-searchbar-label-color, $gray1) !default;
-$searchbar-action-text-fontsize: var(
-  --nutui-searchbar-action-text-fontsize,
-  14px
-) !default;
-$searchbar-action-text-padding: var(
-  --nutui-searchbar-action-text-padding,
+$searchbar-left-color: var(--nutui-searchbar-left-color, $gray1) !default;
+$searchbar-right-fontsize: var(--nutui-searchbar-right-fontsize, 14px) !default;
+$searchbar-right-padding: var(
+  --nutui-searchbar-right-padding,
   0 0 0 8px
 ) !default;
-$searchbar-action-text-color: var(
-  --nutui-searchbar-action-text-color,
-  $gray1
-) !default;
+$searchbar-right-color: var(--nutui-searchbar-right-color, $gray1) !default;
 $searchbar-input-height: var(--nutui-searchbar-input-height, 32px) !default;
 $searchbar-input-padding: var(--nutui-searchbar-input-padding, 0 5px) !default;
 $searchbar-input-background: var(
@@ -1919,21 +1742,13 @@ $searchbar-input-curror-color: var(
   $gray1
 ) !default;
 $searchbar-input-width: var(--nutui-searchbar-input-width, 100%) !default;
+$searchbar-input-text-align: var(
+  --nutui-searchbar-input-text-align,
+  left
+) !default;
 $searchbar-input-border-radius: var(
   --nutui-searchbar-input-border-radius,
   16px
-) !default;
-$searchbar-input-box-shadow: var(
-  --nutui-searchbar-input-box-shadow,
-  0 0 8px 0 rgba(0, 0, 0, 0.04)
-) !default;
-$searchbar-input-bar-color: var(
-  --nutui-searchbar-input-bar-color,
-  inherit
-) !default;
-$searchbar-input-bar-placeholder-color: var(
-  --nutui-searchbar-input-bar-placeholder-color,
-  inherit
 ) !default;
 $searchbar-clear-icon-padding: var(
   --nutui-searchbar-clear-icon-padding,
@@ -2056,9 +1871,15 @@ $form-item-tip-font-size: var(--nutui-form-item-tip-font-size, 10px) !default;
 $form-item-tip-text-align: var(--nutui-form-item-tip-text-align, left) !default;
 
 // skeleton（✅）
-$skeleton-content-line-title-background-color: var(
-  --nutui-skeleton-content-line-title-background-color,
-  #efefef
+$skeleton-background: var(
+  --nutui-skeleton-background,
+  rgb(239, 239, 239)
+) !default;
+$skeleton-line-width: var(--nutui-skeleton-line-width, 100%) !default;
+$skeleton-line-height: var(--nutui-skeleton-line-height, 15px) !default;
+$skeleton-line-border-radius: var(
+  --nutui-skeleton-line-border-radius,
+  0
 ) !default;
 
 // sku（✅ todo：react版本该组件暂无，将变量先迁过来）
@@ -2138,9 +1959,6 @@ $sku-product-img-border-radius: var(
 
 // card（✅）
 $card-font-size-0: var(--nutui-card-font-size-0, $font-size-0) !default;
-$card-font-size-1: var(--nutui-card-font-size-1, $font-size-1) !default;
-$card-font-size-2: var(--nutui-card-font-size-2, $font-size-2) !default;
-$card-font-size-3: var(--nutui-card-font-size-3, $font-size-3) !default;
 $card-left-border-radius: var(--nutui-card-left-border-radius, 0) !default;
 $card-left-background-color: var(
   --nutui-card-left-background-color,
@@ -2194,62 +2012,51 @@ $sidenavbar-content-bg-color: var(
   --nutui-sidenavbar-content-bg-color,
   $white
 ) !default;
-
+$sidenav-bar-item-height: var(--nutui-sidenavbar-item-height, 40px) !default;
+$sidenavbar-head-bg-color: var(
+  --nutui-sidenavbar-head-bg-color,
+  #eeeff2
+) !default;
+$sidenavbar-head-padding: var(--nutui-sidenavbar-head-padding, 10px) !default;
+$sidenavbar-title-padding: var(
+  --nutui-sidenavbar-title-padding,
+  10px 8px 10px 20px
+) !default;
+$sidenavbar-title-background: var(
+  --nutui-sidenavbar-title-background,
+  $gray4
+) !default;
+$sidenavbar-title-color: var(--nutui-sidenavbar-title-color, $gray1) !default;
 // subsidenavbar（✅）
-$sidenavbar-sub-title-border-color: var(
-  --nutui-sidenavbar-sub-title-border-color,
-  #f6f6f6
+$sidenavbar-sub-title-padding: var(
+  --nutui-sidenavbar-sub-title-padding,
+  10px 8px 10px 35px
 ) !default;
-$sidenavbar-sub-title-bg-color: var(
-  --nutui-sidenavbar-sub-title-bg-color,
-  #f6f6f6
+$sidenavbar-sub-title-background: var(
+  --nutui-sidenavbar-sub-title-background,
+  $gray5
 ) !default;
-$sidenavbar-sub-title-font-size: var(
-  --nutui-sidenavbar-sub-title-font-size,
-  $font-size-large
-) !default;
-$sidenavbar-sub-title-radius: var(
-  --nutui-sidenavbar-sub-title-radius,
-  0
-) !default;
-$sidenavbar-sub-title-border: var(
-  --nutui-sidenavbar-sub-title-border,
-  0
-) !default;
-$sidenavbar-sub-title-width: var(
-  --nutui-sidenavbar-sub-title-width,
-  100%
-) !default;
-$sidenavbar-sub-title-height: var(
-  --nutui-sidenavbar-sub-title-height,
-  40px
-) !default;
-$sidenavbar-sub-title-text-line-height: var(
-  --nutui-sidenavbar-sub-title-text-line-height,
-  40px
-) !default;
-$sidenavbar-sub-title-text-color: var(
-  --nutui-sidenavbar-sub-title-text-color,
-  $title-color
+$sidenavbar-sub-title-color: var(
+  --nutui-sidenavbar-sub-title-color,
+  $gray1
 ) !default;
 
 // sidenavbaritem（✅）
-$sidenavbar-item-title-color: var(
-  --nutui-sidenavbar-item-title-color,
-  #333
+$sidenavbar-sub-item-color: var(
+  --nutui-sidenavbar-sub-item-color,
+  $gray2
 ) !default;
-$sidenavbar-item-title-bg-color: var(
-  --nutui-sidenavbar-item-title-bg-color,
-  $white
+$sidenavbar-sub-item-padding: var(
+  --nutui-sidenavbar-sub-item-padding,
+  10px 8px 10px 55px
 ) !default;
-$sidenavbar-item-height: var(--nutui-sidenavbar-item-height, 40px) !default;
-$sidenavbar-item-line-height: var(
-  --nutui-sidenavbar-item-line-height,
-  40px
+$sidenavbar-sub-list-background: var(
+  --nutui-sidenavbar-sub-list-background,
+  $gray6
 ) !default;
-$sidenavbar-item-font-size: var(
-  --nutui-sidenavbar-item-font-size,
-  16px
+$sidenavbar-sub-list-color: var(
+  --nutui-sidenavbar-sub-list-background,
+  $gray2
 ) !default;
 
 // elevator（✅）
@@ -2305,16 +2112,12 @@ $elevator-list-item-code-line-height: var(
   --nutui-elevator-list-item-code-line-height,
   35px
 ) !default;
-$elevator-list-item-code-after-width: var(
-  --nutui-elevator-list-item-code-after-width,
-  100%
-) !default;
-$elevator-list-item-code-after-height: var(
-  --nutui-elevator-list-item-code-after-height,
+$elevator-list-item-code-border-bottom: var(
+  --nutui-elevator-list-item-code-border-bottom,
   1px
 ) !default;
-$elevator-list-item-code-after-bg-color: var(
-  --nutui-elevator-list-item-code-after-bg-color,
+$elevator-list-item-code-border-bottom-color: var(
+  --nutui-elevator-list-item-code-border-bottom-color,
   #f5f5f5
 ) !default;
 $elevator-list-item-code-current-box-shadow: 0 3px 3px 1px
@@ -2535,10 +2338,7 @@ $invoice-padding: var(--nutui-invoice-padding, 10px 10px 20px) !default;
 
 // TrendArrow（✅ todo：react版本该组件暂无，将变量先迁过来）
 $trendarrow-font-size: var(--nutui-trendarrow-font-size, 14px) !default;
-$trendarrow-before-icon-margin: var(
-  --nutui-trendarrow-before-icon-margin,
-  4px
-) !default;
+$trendarrow-icon-margin: var(--nutui-trendarrow-icon-margin, 4px) !default;
 
 // animatingnumbers（✅）
 $countup-height: var(--nutui-countup-height, 32px) !default;
@@ -2572,7 +2372,4 @@ $col-default-margin-bottom: var(
 
 // TrendArrow
 $trendarrow-font-size: var(--nutui-trendarrow-font-size, 14px) !default;
-$trendarrow-before-icon-margin: var(
-  --nutui-trendarrow-before-icon-margin,
-  4px
-) !default;
+$trendarrow-icon-margin: var(--nutui-trendarrow-icon-margin, 4px) !default;

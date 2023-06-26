@@ -38,7 +38,7 @@ const CheckboxDemo = () => {
     'zh-CN': {
       uncontrolled: '非受控',
       controlled: '受控',
-      basic: '基本用法',
+      basic: '基础用法',
       checkbox: '复选框',
       disbaled: '禁用状态',
       DisabledState: '未选时禁用状态',
@@ -47,10 +47,10 @@ const CheckboxDemo = () => {
       customSize: '自定义尺寸',
       customIcon: '自定义图标',
       triggerEvent: '点击触发事件',
-      uncheckedx: '您取消了x的勾选',
+      uncheckedx: '取消选中',
       checked: '选中',
       cancel: '取消',
-      selected: '您选中了x',
+      selected: '选中',
       options1: '选项',
       Disabled: '禁用',
       selectAndCancel: '全选和取消',
@@ -64,7 +64,7 @@ const CheckboxDemo = () => {
     'zh-TW': {
       uncontrolled: '非受控',
       controlled: '受控',
-      basic: '基本用法',
+      basic: '基础用法',
       checkbox: '複選框',
       disbaled: '禁用狀態',
       DisabledState: '未選時禁用狀態',
@@ -73,7 +73,7 @@ const CheckboxDemo = () => {
       customSize: '自定義尺寸',
       customIcon: '自定義圖示',
       triggerEvent: '點擊觸發事件',
-      uncheckedx: '您取消了x的勾選',
+      uncheckedx: '取消选中',
       checked: '選中',
       cancel: '取消',
       selected: '您選取了x',
@@ -142,6 +142,7 @@ const CheckboxDemo = () => {
   ])
 
   const [controlled, setControlled] = useState(false)
+  const [controlledGroup, setControlledGroup] = useState(['2'])
 
   return (
     <>
@@ -164,42 +165,49 @@ const CheckboxDemo = () => {
           />
         </Cell>
         <Cell className="nut-cell">
-          <Checkbox.Group textPosition="left" defaultValue={['选项 2']}>
+          <Checkbox.Group
+            labelPosition="left"
+            value={controlledGroup}
+            onChange={(value) => setControlledGroup(value)}
+          >
             <span>
-              <Checkbox label={optionsDemo1[0].label} />
+              <Checkbox value="1" label={optionsDemo1[0].label} />
             </span>
-            <Checkbox label={optionsDemo1[1].label} />
-            <Checkbox label={optionsDemo1[2].label} />
+            <Checkbox value="2" label={optionsDemo1[1].label} />
+            <Checkbox value="3" label={optionsDemo1[2].label} />
           </Checkbox.Group>
         </Cell>
         <h2>{translated.basic}</h2>
         <Cell className="nut-cell">
           <Checkbox
             className="test"
-            textPosition="left"
+            labelPosition="left"
             label={translated.checkbox}
-            checked={checked}
+            defaultChecked={checked}
           />
         </Cell>
         <Cell className="nut-cell">
-          <Checkbox.Group textPosition="left" defaultValue={['选项 1']}>
+          <Checkbox.Group labelPosition="left" defaultValue={['1']}>
             <span>
-              <Checkbox label={optionsDemo1[0].label} checked={false} />
+              <Checkbox value="1" label={optionsDemo1[0].label} />
             </span>
-            <Checkbox label={optionsDemo1[1].label} checked={false} />
-            <Checkbox label={optionsDemo1[2].label} checked={false} />
+            <Checkbox value="2" label={optionsDemo1[1].label} />
+            <Checkbox value="3" label={optionsDemo1[2].label} />
           </Checkbox.Group>
         </Cell>
         <h2>{translated.selective}</h2>
         <Cell>
-          <Checkbox.Group defaultValue={checkboxgroup1}>
-            <Checkbox label={`${translated.checkbox}1`} checked indeterminate />
-          </Checkbox.Group>
+          <Checkbox
+            value="1"
+            checked
+            label={`${translated.checkbox}1`}
+            indeterminate
+          />
         </Cell>
         <h2>{translated.disbaled}</h2>
         <Cell className="nut-cell">
           <Checkbox
-            textPosition="right"
+            labelPosition="right"
             label={translated.DisabledState}
             checked={false}
             disabled
@@ -207,7 +215,7 @@ const CheckboxDemo = () => {
         </Cell>
         <Cell className="nut-cell">
           <Checkbox
-            textPosition="right"
+            labelPosition="right"
             label={translated.disabledState}
             checked
             disabled
@@ -215,33 +223,36 @@ const CheckboxDemo = () => {
         </Cell>
         <h2>{translated.customSize}</h2>
         <Cell className="nut-cell">
-          <Checkbox label={translated.customSize} iconSize={25} />
+          <Checkbox
+            style={{ '--nut-icon-width': '24px', '--nut-icon-height': '24px' }}
+            label={translated.customSize}
+          />
         </Cell>
         <Cell className="nut-cell">
-          <Checkbox label={translated.customSize} iconSize={10} />
+          <Checkbox
+            style={{ '--nut-icon-width': '12px', '--nut-icon-height': '12px' }}
+            label={translated.customSize}
+          />
         </Cell>
         <h2>{translated.customIcon}</h2>
         <Cell className="nut-cell">
-          <Checkbox.Group>
-            <Checkbox
-              checked={false}
-              label={1}
-              icon={<Checklist />}
-              checkedIcon={<Checklist />}
-            >
-              {translated.customIcon}
-            </Checkbox>
-          </Checkbox.Group>
+          <Checkbox
+            defaultChecked={false}
+            icon={<Checklist />}
+            activeIcon={<Checklist className="nut-checkbox__icon" />}
+          >
+            {translated.customIcon}
+          </Checkbox>
         </Cell>
         <h2>{translated.triggerEvent}</h2>
         <Cell className="nut-cell">
           <Checkbox
-            checked={false}
+            defaultChecked={false}
             onChange={(state) => {
               if (state) {
-                Toast.text(translated.selected.replace('x', state.toString()))
+                Toast.show(translated.selected.replace('x', state.toString()))
               } else {
-                Toast.text(translated.uncheckedx.replace('x', state.toString()))
+                Toast.show(translated.uncheckedx.replace('x', state.toString()))
               }
             }}
           >
@@ -254,23 +265,14 @@ const CheckboxDemo = () => {
             defaultValue={checkboxgroup1}
             direction="horizontal"
             onChange={(value) => {
-              Toast.text(value)
+              //   Toast.show(value)
               setCheckboxgroup1(value)
             }}
           >
-            <Checkbox checked={false} label="1">
-              {translated.options1}
-            </Checkbox>
-            <Checkbox checked={false} label="2">
-              {translated.options1}
-            </Checkbox>
-            <Checkbox checked={false} label="3">
-              {translated.options1}
-              {translated.options1}
-            </Checkbox>
-            <Checkbox checked={false} label="4">
-              {translated.options1}
-            </Checkbox>
+            <Checkbox value="1">{translated.options1}</Checkbox>
+            <Checkbox value="2">{translated.options1}</Checkbox>
+            <Checkbox value="3">{translated.options1}</Checkbox>
+            <Checkbox value="4">{translated.options1}</Checkbox>
           </Checkbox.Group>
         </Cell>
         <Cell>
@@ -285,21 +287,21 @@ const CheckboxDemo = () => {
             disabled
             direction="horizontal"
           >
-            <Checkbox label="1">{translated.options1}</Checkbox>
-            <Checkbox label="2">{translated.options1}</Checkbox>
-            <Checkbox label="3">{translated.options1}</Checkbox>
-            <Checkbox label="4">{translated.options1}</Checkbox>
+            <Checkbox value="1">{translated.options1}</Checkbox>
+            <Checkbox value="2">{translated.options1}</Checkbox>
+            <Checkbox value="3">{translated.options1}</Checkbox>
+            <Checkbox value="4">{translated.options1}</Checkbox>
           </Checkbox.Group>
         </Cell>
         <h2>{translated.selectAndCancel}</h2>
         <Cell>
           <Checkbox.Group
-            textPosition="left"
+            labelPosition="left"
             direction="horizontal"
             ref={checkboxgroup2Ref}
             defaultValue={checkboxgroup2}
             onChange={(value) => {
-              Toast.text(
+              Toast.show(
                 `${
                   value.length === 4
                     ? translated.selectAll
@@ -308,25 +310,17 @@ const CheckboxDemo = () => {
               )
             }}
           >
-            <Checkbox checked={false} label="1">
-              {translated.options1}
-            </Checkbox>
-            <Checkbox checked={false} label="2">
-              {translated.options1}
-            </Checkbox>
-            <Checkbox checked={false} label="3">
-              {translated.options1}
-            </Checkbox>
-            <Checkbox checked={false} label="4">
-              {translated.options1}
-            </Checkbox>
+            <Checkbox value="1">{translated.options1}</Checkbox>
+            <Checkbox value="2">{translated.options1}</Checkbox>
+            <Checkbox value="3">{translated.options1}</Checkbox>
+            <Checkbox value="4">{translated.options1}</Checkbox>
           </Checkbox.Group>
         </Cell>
         <Cell>
           <Button
             type="primary"
             onClick={() => {
-              ;(checkboxgroup2Ref.current as any).toggleAll(true)
+              ;(checkboxgroup2Ref.current as any).toggle(true)
             }}
             style={{ margin: '0 20px 0 0' }}
           >
@@ -335,7 +329,7 @@ const CheckboxDemo = () => {
           <Button
             type="info"
             onClick={() => {
-              ;(checkboxgroup2Ref.current as any).toggleAll(false)
+              ;(checkboxgroup2Ref.current as any).toggle(false)
             }}
             style={{ margin: '0 20px 0 0' }}
           >
@@ -344,7 +338,7 @@ const CheckboxDemo = () => {
           <Button
             type="warning"
             onClick={() => {
-              ;(checkboxgroup2Ref.current as any).toggleReverse()
+              ;(checkboxgroup2Ref.current as any).reverse()
             }}
           >
             {translated.reverse}
@@ -356,21 +350,13 @@ const CheckboxDemo = () => {
             defaultValue={checkboxgroup3}
             max={2}
             onChange={(value) => {
-              Toast.text(value)
+              //   Toast.show(value)
             }}
           >
-            <Checkbox checked={false} label="1">
-              {translated.options1}
-            </Checkbox>
-            <Checkbox checked={false} label="2">
-              {translated.options1}
-            </Checkbox>
-            <Checkbox checked={false} label="3">
-              {translated.options1}
-            </Checkbox>
-            <Checkbox checked={false} label="4">
-              {translated.options1}
-            </Checkbox>
+            <Checkbox value="1">{translated.options1}</Checkbox>
+            <Checkbox value="2">{translated.options1}</Checkbox>
+            <Checkbox value="3">{translated.options1}</Checkbox>
+            <Checkbox value="4">{translated.options1}</Checkbox>
           </Checkbox.Group>
         </Cell>
         <h2>{translated.threeState}</h2>
@@ -384,7 +370,7 @@ const CheckboxDemo = () => {
                   setIndeterminate(false)
                 }
                 setCheckbox1(state)
-                ;(checkboxgroup3Ref.current as any).toggleAll(state)
+                ;(checkboxgroup3Ref.current as any).toggle(state)
               }}
             >
               {translated.selectAll}
@@ -407,18 +393,10 @@ const CheckboxDemo = () => {
               }
             }}
           >
-            <Checkbox checked={false} label="1">
-              {translated.options1}
-            </Checkbox>
-            <Checkbox checked={false} label="2">
-              {translated.options1}
-            </Checkbox>
-            <Checkbox checked={false} label="3">
-              {translated.options1}
-            </Checkbox>
-            <Checkbox checked={false} label="4">
-              {translated.options1}
-            </Checkbox>
+            <Checkbox value="1">{translated.options1}</Checkbox>
+            <Checkbox value="2">{translated.options1}</Checkbox>
+            <Checkbox value="3">{translated.options1}</Checkbox>
+            <Checkbox value="4">{translated.options1}</Checkbox>
           </Checkbox.Group>
         </Cell>
         <h2>{translated.options}</h2>
@@ -426,10 +404,6 @@ const CheckboxDemo = () => {
           <Checkbox.Group
             options={optionsDemo1}
             defaultValue={checkboxgroup5}
-            onChange={(val) => {
-              console.log(val)
-              setCheckboxgroup5(val)
-            }}
           />
         </Cell>
       </div>

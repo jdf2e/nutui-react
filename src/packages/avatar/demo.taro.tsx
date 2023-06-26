@@ -56,7 +56,7 @@ const AvatarDemo = () => {
   })
 
   const activeAvatar = () => {
-    console.log(translated.b040e71e)
+    Taro.showToast({ title: translated.b040e71e })
   }
   return (
     <>
@@ -67,18 +67,18 @@ const AvatarDemo = () => {
         } full avatar-demo`}
       >
         <h2>{translated['67f78db5']}</h2>
-        <Cell>
+        <Cell align="flex-end">
           <Avatar
             size="large"
-            url="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+            src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
           />
           <Avatar
             size="normal"
-            url="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+            src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
           />
           <Avatar
             size="small"
-            url="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+            src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
           />
         </Cell>
         <h2>{translated['3928b17e']}</h2>
@@ -88,7 +88,7 @@ const AvatarDemo = () => {
         </Cell>
         <h2>{translated['049b6a97']}</h2>
         <Cell>
-          <Avatar url="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />
+          <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />
           <Avatar icon={<My />} />
           <Avatar>N</Avatar>
         </Cell>
@@ -97,12 +97,12 @@ const AvatarDemo = () => {
           <Avatar
             className="demo-avatar"
             color="#fff"
-            bgColor="#FA2C19"
+            background="#FA2C19"
             icon={<My />}
           />
           <Avatar
             color="var(--nutui-brand-color)"
-            bgColor="var(--nutui-brand-color-opacity)"
+            background="var(--nutui-brand-color-opacity)"
           >
             U
           </Avatar>
@@ -118,8 +118,8 @@ const AvatarDemo = () => {
         </Cell>
         <h2>{translated.e981579e}</h2>
         <Cell>
-          <AvatarGroup span="-4">
-            <Avatar url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
+          <AvatarGroup gap="-4">
+            <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
             <Avatar icon={<My />} />
             <Avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">
               U
@@ -128,10 +128,10 @@ const AvatarDemo = () => {
         </Cell>
 
         <Cell>
-          <AvatarGroup maxCount="3" maxColor="#fff" maxBgColor="#498ff2">
-            <Avatar url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
+          <AvatarGroup max="3" maxColor="#fff" maxBackground="#498ff2">
+            <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
             <Avatar icon={<My />} />
-            <Avatar color="rgb(245, 106, 0)" bgColor="rgb(253, 227, 207)">
+            <Avatar color="rgb(245, 106, 0)" background="rgb(253, 227, 207)">
               U
             </Avatar>
             <Avatar icon={<My />} />
@@ -139,10 +139,10 @@ const AvatarDemo = () => {
         </Cell>
         <h2>{translated.f645fc65}</h2>
         <Cell>
-          <AvatarGroup maxCount="3" zIndex="right" maxContent="...">
-            <Avatar url="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
+          <AvatarGroup max="3" level="right" maxContent="...">
+            <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
             <Avatar icon={<My />} />
-            <Avatar color="rgb(245, 106, 0)" bgColor="rgb(253, 227, 207)">
+            <Avatar color="rgb(245, 106, 0)" background="rgb(253, 227, 207)">
               U
             </Avatar>
             <Avatar icon={<My />} />
@@ -150,7 +150,7 @@ const AvatarDemo = () => {
         </Cell>
         <h2>{translated['43f00872']}</h2>
         <Cell>
-          <Avatar icon={<My />} onActiveAvatar={activeAvatar} />
+          <Avatar icon={<My />} onClick={activeAvatar} />
         </Cell>
       </div>
     </>

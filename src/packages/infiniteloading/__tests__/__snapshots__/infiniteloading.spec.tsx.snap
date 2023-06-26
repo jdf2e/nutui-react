@@ -12,11 +12,7 @@ exports[`infiniteloading base 1`] = `
       <div
         class="top-box"
       >
-        <span
-          class="top-text"
-        >
-          松开刷新
-        </span>
+        松开刷新
       </div>
     </div>
     <div
@@ -41,11 +37,7 @@ exports[`pull base 1`] = `
       <div
         class="top-box"
       >
-        <span
-          class="top-text"
-        >
-          松开刷新
-        </span>
+        松开刷新
       </div>
     </div>
     <div
@@ -70,11 +62,7 @@ exports[`pull base 2`] = `
       <div
         class="top-box"
       >
-        <span
-          class="top-text"
-        >
-          松开刷新
-        </span>
+        松开刷新
       </div>
     </div>
     <div

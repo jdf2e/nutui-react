@@ -1,9 +1,11 @@
 const path = require('path')
 
 let fileStr = `styles/variables.scss`
+let themeStr = `styles/theme-default.scss`
 const projectID = process.env.VITE_APP_PROJECT_ID
 if (projectID) {
   fileStr = `styles/variables-${projectID}.scss`
+  themeStr = `styles/theme-${projectID}.scss`
 }
 
 const config = {
@@ -23,14 +25,16 @@ const config = {
   plugins: ['@tarojs/plugin-html'],
   compiler: 'webpack5',
   alias: {
-    // react: path.resolve(__dirname, '../../../../node_modules/react'),
     '@/packages': path.resolve(__dirname, '../../../../src/packages'),
     '@/locales': path.resolve(__dirname, '../../../../src/locales'),
     '@/utils': path.resolve(__dirname, '../../../../src/utils'),
     '@': path.resolve(__dirname, '../../../../src'),
   },
   sass: {
-    resource: path.resolve(__dirname, '../../../', fileStr),
+    resource: [
+      path.resolve(__dirname, '../../../', fileStr),
+      path.resolve(__dirname, '../../../', themeStr),
+    ],
   },
   defineConstants: {},
   copy: {
@@ -75,7 +79,7 @@ const config = {
       pxtransform: {
         enable: true,
         // 包含 `nut-` 的类名选择器中的 px 单位不会被解析
-        config: { selectorBlackList: ['nut-', 'demo', 'index'] },
+        config: { selectorBlackList: ['nut-', 'demo', 'index', 'page'] },
       },
       url: {
         enable: true,
@@ -99,7 +103,9 @@ const config = {
       pxtransform: {
         enable: true,
         // 包含 `nut-` 的类名选择器中的 px 单位不会被解析
-        config: { selectorBlackList: ['nut-', 'demo', 'index', 'flex-'] },
+        config: {
+          selectorBlackList: ['nut-', 'demo', 'index', 'flex-', 'page'],
+        },
       },
       url: {
         enable: true,

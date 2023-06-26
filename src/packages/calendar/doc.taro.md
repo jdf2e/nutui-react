@@ -1,12 +1,12 @@
 # Calendar 日历
 
-### 介绍
+## 介绍
 
 日历，可平铺/弹窗展示
 
-### 安装
+## 安装
 
-```javascript
+```tsx
 import { Calendar } from '@nutui/nutui-react-taro';
 ```
 
@@ -438,7 +438,7 @@ export default App;
 
 ### Props
 
-| 字段              | 说明                                              | 类型            | 默认值          |
+| 属性 | 说明                                              | 类型            | 默认值          |
 |-------------------|---------------------------------------------------|-----------------|-----------------|
 | visible   | 是否可见                                          | boolean         | `false`           |
 | type              | 类型，日期选择'one'，区间选择'range'              | string          | `one`           |
@@ -470,7 +470,7 @@ export default App;
 | onYearMonthChange`v1.4.11`  | 年月子标题到达顶部时触发              |  日期数组（包含年月）                          |
 
 ### Day
-| 字段              | 类型            |
+| 属性 | 类型            |
 |-------------------|-----------------|
 | day   | string \| number           |
 | type   | string          |

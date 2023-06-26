@@ -1,13 +1,12 @@
 # Calendar
 
-### introduce
+## Intro
 
 Calendar, tileable/pop-up display
 
-### Install
+## Install
 
-```javascript
-// react
+```tsx
 import { Calendar } from '@nutui/nutui-react';
 ```
 

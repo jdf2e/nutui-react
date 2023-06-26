@@ -5,7 +5,7 @@ import '@testing-library/jest-dom'
 import { Barrage } from '../barrage'
 import Button from '../../button'
 
-const list = [
+const barrageList = [
   '画美不看',
   '不明觉厉',
   '喜大普奔',
@@ -16,7 +16,7 @@ const list = [
 
 test('should danmu list props', async () => {
   const App = () => {
-    return <Barrage speeds={300} barrageList={list} />
+    return <Barrage duration={300} list={barrageList} />
   }
   const { container } = render(<App />)
 
@@ -24,7 +24,7 @@ test('should danmu list props', async () => {
     () => {
       container.querySelectorAll('.barrage-item').forEach((item) => {
         expect(Number(item.getAttribute('data-index'))).toBeLessThan(
-          list.length
+          barrageList.length
         )
       })
     },
@@ -52,7 +52,7 @@ test('should danmu rows top', async () => {
     }
     return (
       <>
-        <Barrage rows={3} barrageList={list} top={30} ref={barrageRef} />
+        <Barrage rows={3} list={barrageList} gapY={30} ref={barrageRef} />
         <Button type="danger" onClick={addBarrage}>
           随机添加
         </Button>
@@ -73,9 +73,9 @@ test('should danmu rows top', async () => {
   await waitFor(
     () => {
       container.querySelectorAll('.barrage-item').forEach((item) => {
-        if (Number(item.getAttribute('data-index')) + 1 >= list.length) {
+        if (Number(item.getAttribute('data-index')) + 1 >= barrageList.length) {
           const idx = Number(item.getAttribute('data-index'))
-          expect(idx).toBe(list.length - 1)
+          expect(idx).toBe(barrageList.length - 1)
         }
       })
     },

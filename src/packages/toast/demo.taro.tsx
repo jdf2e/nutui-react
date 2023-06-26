@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { Cell, Toast } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
 const ToastDemo = () => {
   const [state, SetState] = useState({
     msg: 'toast',
     type: 'text',
-    cover: false,
     duration: 2,
-    closeOnClickOverlay: false,
+    closeOnOverlayClick: false,
     title: '',
     bottom: '',
     icon: '',
@@ -21,13 +20,15 @@ const ToastDemo = () => {
     type: string,
     msg: string,
     duration?: number,
-    icon?: string
+    icon?: string | React.ReactNode,
+    closeOnOverlayClick?: boolean
   ) => {
     const changeState = Object.assign(state, {
       msg,
       type,
       duration,
       icon,
+      closeOnOverlayClick,
     })
     SetState(changeState)
   }
@@ -40,10 +41,9 @@ const ToastDemo = () => {
           msg={state.msg}
           visible={showToast}
           type={state.type}
-          cover={state.cover}
           duration={state.duration}
           icon={state.icon}
-          closeOnClickOverlay={state.closeOnClickOverlay}
+          closeOnOverlayClick={state.closeOnOverlayClick}
           onClose={() => {
             SetShowToast(false)
           }}
@@ -109,7 +109,7 @@ const ToastDemo = () => {
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => {
-            openToast('text', '设置展示时长为10秒', 10)
+            openToast('text', '设置展示时长为10秒', 10, '', true)
             SetShowToast(true)
           }}
         />

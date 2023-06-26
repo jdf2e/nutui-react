@@ -2,9 +2,9 @@ import { createContext } from 'react'
 
 const CheckboxGroupContext =
   createContext<{
-    textPosition: 'left' | 'right'
+    labelPosition: 'left' | 'right'
     disabled: boolean | undefined
-    checkedValue: string[]
+    value: string[]
     max: number | undefined
     check: (value: string) => void
     uncheck: (value: string) => void

@@ -6,8 +6,7 @@
 
 ### 安裝
 
-```javascript
-// react
+```tsx
 import { Calendar } from '@nutui/nutui-react';
 ```
 
@@ -439,7 +438,7 @@ export default App;
 
 ### Props
 
-| 字段              | 說明                                              | 類型            | 默認值          |
+| 属性 | 說明                                              | 類型            | 默認值          |
 |-------------------|---------------------------------------------------|-----------------|-----------------|
 | visible   | 是否可見                                          | boolean         | `false`           |
 | type              | 類型，日期選擇'one'，區間選擇'range'              | string          | `one`           |
@@ -470,7 +469,7 @@ export default App;
 | onSelected  | 點擊/選擇後觸發              |  `Day: Day`                          |
 
 ### Day
-| 字段              | 類型            |
+| 属性 | 類型            |
 |-------------------|-----------------|
 | day   | string \| number           |
 | type   | string          |

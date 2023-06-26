@@ -9,7 +9,7 @@ import Header from '@/sites/components/header'
 const ImageDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       fill: '填充模式',
       position: '图片位置',
       circle: '圆形图片',
@@ -30,7 +30,7 @@ const ImageDemo = () => {
     },
   })
   const src =
-    'https://img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
+    'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
 
   return (
     <>
@@ -38,7 +38,7 @@ const ImageDemo = () => {
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <Cell>
-          <Image src={src} width="80" height="80" />
+          <Image src={src} width="100%" />
         </Cell>
 
         <h2>{translated.loading}</h2>

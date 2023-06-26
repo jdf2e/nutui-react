@@ -1,23 +1,22 @@
-# Swipe 
+# Swipe
 
-### introduce
+## Intro
+
 It is often used for gesture operations such as sliding left and right to delete cells
 
-### Install
+## Install
 
-```javascript
-// react
+```tsx
 import { Swipe } from '@nutui/nutui-react';
 ```
 
-## Code demonstration
+## Demo
 
 ### Basic usage
 
 :::demo
 
 ```tsx
-
 import React from "react";
 import { Swipe, Cell, Button } from '@nutui/nutui-react';
 
@@ -36,12 +35,13 @@ const App = () => {
 }
 export default App;
 ```
-:::
 
+:::
 
 ### Control via instance method
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Swipe, Cell, Button } from '@nutui/nutui-react';
@@ -70,11 +70,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Click to close
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Swipe, Cell, Button } from '@nutui/nutui-react';
@@ -99,6 +101,7 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Disable sliding
@@ -106,7 +109,6 @@ export default App;
 :::demo
 
 ```tsx
-
 import React from "react";
 import { Swipe, Cell, Button } from '@nutui/nutui-react';
 
@@ -127,8 +129,8 @@ const App = () => {
 
 export default App;
 ```
-:::
 
+:::
 
 ### Event monitoring
 
@@ -140,7 +142,7 @@ import { Swipe, Cell, Button, Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const handleChange = () => {
-    Toast.text ('click ');
+    Toast.show ('click ');
   }
   return <>
     <Swipe
@@ -160,8 +162,8 @@ const App = () => {
         </>
       }
       onActionClick={handleChange}
-      onOpen={() => toast.text('open')}
-      onClose={() => toast.text('close')}
+      onOpen={() => Toast.show('open')}
+      onClose={() => Toast.show('close')}
     >
       <cell title= "event" />
     </Swipe>
@@ -169,6 +171,7 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Asynchronous control
@@ -176,7 +179,6 @@ export default App;
 :::demo
 
 ```tsx
-
 import React, { useRef } from "react";
 
 import { Swipe, Cell, Button, Dialog } from '@nutui/nutui-react';
@@ -188,7 +190,7 @@ const App = () => {
     Dialog.alert({
       Title: 'prompt',
       content: postion === 'left' ? ' Are you sure to choose? ':' Are you sure to delete? ',
-      onOk: () => {
+      onConfirm: () => {
         refDom. current && refDom.current.close()
       },
     })
@@ -216,8 +218,8 @@ const App = () => {
 }
 export default App;
 ```
-:::
 
+:::
 
 ### Custom content
 
@@ -255,30 +257,30 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
-## API
+## Swipe
 
 ### Props
 
+| Props | Description | Type | Default |
+| --- | --- | --- | --- |
+| name | identifier, which can be obtained in the event parameters | `number` \| `string` | `-`|
+| leftAction | contents of the left sliding area | `ReactNode` | `-`|
+| rightAction | content of right sliding area | `ReactNode` | `-`|
+| beforeClose | the callback function before closing returns `position` which is the direction of the sliding area | `(position: 'left \|'right') => void` | `-`|
+| disabled | disable sliding | `boolean` | `false` |
+| onOpen | open the cell sidebar | `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | `-`|
+| onClose | collapse the cell sidebar | `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | `-`|
+| onActionClick | triggered when clicking on the left or right | `(event: Event, position: 'left' \|'right') => void` | `-`|
+| onTouchStart | onTouchStart | `(event: Event) => void` | `-`|
+| onTouchMove | onTouchMove | `(event: Event) => void` | `-`|
+| onTouchEnd | onTouchEnd | `(event: Event) => void` | `-`|
 
-|Parameter | description | type | default value|
-|--------------|----------------------------------|--------|------------------|
-|name | identifier, which can be obtained in the event parameters | number \| string | - |
-|leftwidth | specifies the width of the left sliding area, in 'PX'| number \| string | `0` |
-|rightwidth | specifies the width of the sliding area on the right, in 'PX'| number \| string | `0` |
-|leftaction | contents of the left sliding area | ReactNode | - |
-|rightaction | content of right sliding area | ReactNode | - |
-|beforeclose | the callback function before closing returns `position` | string | `left`|
-|disabled | disable sliding | boolean | `false` |
+### Ref
 
-### Events
-
-|Event name | description | callback parameters|
-|--------|----------------|--------------|
-|onOpen | open the cell sidebar | `name: string, position: 'left' \| 'right'` |
-|onClose | collapse the cell sidebar | `name: string, position: 'left' \| 'right'` |
-|onActionClick | triggered when clicking on the left or right | `event: Event, position: 'left' \| 'right'` |
-| onTouchStart`v1.4.7` | onTouchStart | `event: Event`      |
-| onTouchMove`v1.4.7`         | onTouchMove  | `event: Event`     |
-| onTouchEnd`v1.4.7`          | onTouchEnd   | `event: Event`     |
+| 属性 | 说明 | 回调参数 |
+| --- | --- | --- |
+| open | open the cell sidebar, the default value of `side` is `right` | `(side?: 'left' \| 'right') => void` |
+| close | collapse the cell sidebar | `() => void` |

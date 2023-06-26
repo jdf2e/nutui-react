@@ -1,13 +1,12 @@
-# Signature 
+# Signature
 
-### Intro
+## Intro
 
 Signature component based on canvas.
 
-### Install
+## Install
 
-```javascript
-// react
+```tsx
 import { Signature } from '@nutui/nutui-react'
 ```
 
@@ -90,22 +89,23 @@ export default App;
 
 :::
 
-## API
+## Signature
 
 ### Props
 
-| Attribute           | Description                           | Type   | Default                                              |
-| -------------- | ------------------------------ | ------ | --------------------------------------------------- |
-| customClass   |  Custom class                 | string | -                                                   |
-| lineWidth     | Width of line                    | number | `3`                                                   |
-| strokeStyle   | Drawing stroke color                   | string | `#000`                                              |
-| type           | Picture format                       | string | `png`                                               |
-| unSupportTpl |  Display copy without canvas | string | `sorry, the current browser doesn't support canvas, so we can't use this control! ` |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| customClass | Custom class | `string` | `-` |
+| lineWidth | Width of line | `number` | `3` |
+| strokeStyle | Drawing stroke color | `string` | `#000` |
+| type | Picture format | `string` | `png` |
+| unsupported | Display copy without canvas | `ReactNode` | `sorry, the current browser doesn't support canvas, so we can't use this control!` |
+| onConfirm | Click the confirm button to trigger the event callback function | `onConfirm: (canvas: HTMLCanvasElement, dataurl: string) => void` | `-` |
+| onClear | Clicking the reschedule button triggers the event callback function | `onClear: () => void` | `-` |
 
-## Event
+### Ref
 
-| 字段    | 说明                         | 回调参数                         |
-| ------- | ---------------------------- | -------------------------------- |
-| onConfirm | Click the confirm button to trigger the event callback function | Canvas and data URI displayed by signature imageURI |
-| onClear   | Click the re sign button to trigger the event callback function | -                               |
-
+| Property | Description | Type |
+| --- | --- | --- |
+| confirm | Confirmation of signature | `() => void` |
+| clear | Clear signature | `() => void` |

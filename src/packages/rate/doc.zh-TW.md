@@ -6,16 +6,16 @@
 
 ## 安裝
 
-```ts
-// react
+```tsx
 import { Rate } from '@nutui/nutui-react';
 ```
 
 ## 代碼演示
 
-### 基礎用法  
+### 基礎用法
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
@@ -28,6 +28,7 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ### 受控方式
@@ -49,9 +50,10 @@ export default App;
 
 :::
 
-### 半星  
+### 半星
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
@@ -64,10 +66,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
-### 自定義 icon   
+
+### 自定義 icon
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
@@ -84,10 +89,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
-### 自定義數量 
+
+### 自定義數量
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
@@ -100,10 +108,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
-### 最少選中數量（支持半星）  
+
+### 最少選中數量（支持半星）
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
@@ -116,10 +127,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
+
 ### 自定義顏色
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
@@ -136,10 +150,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
-### 禁用狀態  
+
+### 禁用狀態
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
@@ -152,10 +169,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
-### 只讀狀態  
+
+### 只讀狀態
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
@@ -168,10 +188,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
+
 ### 綁定事件
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
@@ -192,18 +215,18 @@ export default App;
 
 ### Props
 
-| 字段           | 說明                                      | 類型    | 默認值      |
-|----------------|-------------------------------------------|---------|-------------|
-| defaultValue             | 非受控的 star 默認值 | number | `0`           |
-| value             | 受控的 star 數值 | number | `0`           |
-| count          | star 總數                                 | number | `5`           |
-| min  | 最少選中star數量                          | number | `0`           |
-| uncheckedIcon | 使用圖標(未選中) | ReactNode  | `star-n`      |
-| checkedIcon            | 使用圖標(選中)  | ReactNode  | `star-n` |
-| allowHalf     | 是否半星                                  | boolean | `false`       |
-| readOnly       | 是否只讀                                 | boolean | `false`       |
-| disabled       | 是否禁用                                  | boolean | `false`       |
-| onChange | 当前 star 数修改时触发 | (value: number) => void | - |
+| 属性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| defaultValue | 非受控的 star 默認值 | `number` | `0` |
+| value | 受控的 star 數值 | `number` | `0` |
+| count | star 總數 | `number` | `5` |
+| min | 最少選中star數量 | `number` | `0` |
+| uncheckedIcon | 使用圖標(未選中) | `ReactNode` | `star-n` |
+| checkedIcon | 使用圖標(選中) | `ReactNode` | `star-n` |
+| allowHalf | 是否半星 | `boolean` | `false` |
+| readOnly | 是否只讀 | `boolean` | `false` |
+| disabled | 是否禁用 | `boolean` | `false` |
+| onChange | 当前 star 数修改时触发 | `(value: number) => void` | `-` |
 
 ## 主題定制
 
@@ -213,6 +236,6 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| --nutui-rate-item-margin | 間距 | `14px` |
-| --nutui-rate-icon-color | icon 激活顏色 | `$primary-color` |
-| --nutui-rate-icon-void-color | icon 未激活顏色 | `$disable-color` |
+| \--nutui-rate-item-margin | 間距 | `14px` |
+| \--nutui-rate-icon-color | icon 激活顏色 | `$primary-color` |
+| \--nutui-rate-icon-void-color | icon 未激活顏色 | `$disable-color` |

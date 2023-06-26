@@ -7,15 +7,17 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { DataContext } from '@/packages/row/UserContext'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-type EventType = 'row' | 'col'
-export interface ColProps {
+export type ColEventType = 'row' | 'col'
+export interface ColProps extends BasicComponent {
   span: string | number
   offset: string | number
   gutter: string | number
-  onClick: (e: any, type: EventType) => void
+  onClick: (e: any, type: ColEventType) => void
 }
 const defaultProps = {
+  ...ComponentDefaults,
   span: '24',
   offset: '0',
   gutter: '0',
@@ -24,14 +26,10 @@ const defaultProps = {
 export const Col: FunctionComponent<
   Partial<ColProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
-  const {
-    className,
-    style = {},
-    span,
-    offset,
-    children,
-    onClick,
-  } = { ...defaultProps, ...props }
+  const { className, style, span, offset, children, onClick } = {
+    ...defaultProps,
+    ...props,
+  }
   const [colName, setColName] = useState('')
   const [colStyle, setColStyle] = useState({})
   const { gutter } = useContext(DataContext) as any

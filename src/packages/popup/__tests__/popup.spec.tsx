@@ -3,12 +3,6 @@ import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Popup } from '../popup'
 
-function sleep(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay)
-  })
-}
-
 test('should change z-index when using z-index prop', () => {
   const { container } = render(
     <>
@@ -34,7 +28,7 @@ test('should change animation duration when using duration prop', () => {
 test('prop overlay-class test', async () => {
   const { container } = render(
     <>
-      <Popup visible overlayClass="testclas" />
+      <Popup visible overlayClassName="testclas" />
     </>
   )
   const overlay = container.querySelector('.nut-overlay') as HTMLElement
@@ -135,19 +129,6 @@ test('should render close icon when using closeable prop', () => {
   expect(closeIcon).toBeTruthy()
 })
 
-test('should render correct close icon when using close-icon prop', () => {
-  const { container } = render(
-    <>
-      <Popup visible closeable />
-    </>
-  )
-
-  const closeIcon = container.querySelector(
-    '.nut-popup__close-icon'
-  ) as HTMLElement
-  expect(closeIcon.innerHTML).toMatchSnapshot()
-})
-
 test('should have "van-popup--round" class when setting the round prop', () => {
   const { container } = render(
     <>
@@ -159,7 +140,7 @@ test('should have "van-popup--round" class when setting the round prop', () => {
   expect(round).toBeTruthy()
 })
 
-test('should allow to using teleport prop', () => {
+test('should allow to using portal prop', () => {
   render(
     <>
       <Popup visible />
@@ -176,10 +157,26 @@ test('event click test', async () => {
   )
   const overlay = container.querySelector('.nut-overlay') as Element
   await fireEvent.click(overlay)
-  expect(overlay).toHaveClass('hidden-render')
+  expect(overlay).toHaveClass('nut-overlay-hidden-render')
 })
 
 test('event click-close-icon test', () => {
+  const onClickCloseIcon = jest.fn().mockReturnValueOnce(true)
+  const { container } = render(
+    <>
+      <Popup visible closeable onClickCloseIcon={() => onClickCloseIcon()} />
+    </>
+  )
+  const closeIcon = container.querySelector(
+    '.nut-popup__close-icon'
+  ) as HTMLElement
+  const overlay = container.querySelector('.nut-overlay') as Element
+  fireEvent.click(closeIcon)
+  expect(onClickCloseIcon).toBeCalled()
+  expect(overlay).toHaveClass('nut-overlay-hidden-render')
+})
+
+test('event click-close-icon and keep overlay test ', () => {
   const onClickCloseIcon = jest.fn()
   const { container } = render(
     <>
@@ -192,7 +189,8 @@ test('event click-close-icon test', () => {
   const overlay = container.querySelector('.nut-overlay') as Element
   fireEvent.click(closeIcon)
   expect(onClickCloseIcon).toBeCalled()
-  expect(overlay).toHaveClass('hidden-render')
+  const overlay2 = container.querySelector('.hidden-render') as Element
+  expect(overlay2).toBeNull()
 })
 
 test('should emit open event when prop visible is set to true', () => {

@@ -1,51 +1,23 @@
-import React, { FunctionComponent, CSSProperties, ReactNode } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
-import { Checked } from '@nutui/icons-react-taro'
-import bem from '@/utils/bem'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export type ProgressSize = 'small' | 'base' | 'large'
-export type TextType = 'icon' | 'text'
-
 export interface ProgressProps extends BasicComponent {
-  className: string
-  style: CSSProperties
-  isShowPercentage: boolean
-  percentage: number
-  fillColor: string
-  strokeColor: string
+  percent: number
+  background: string
+  color: string
   strokeWidth: string
-  size: ProgressSize
-  textColor: string
-  textWidth: string
   showText: boolean
-  textInside: boolean
-  textBackground: string
-  textType: TextType
-  status: boolean
-  icon: ReactNode
-  children: ReactNode
+  animated: boolean
+  delay: number
 }
 
 const defaultProps = {
   ...ComponentDefaults,
-  className: '',
-  style: {},
-  isShowPercentage: true,
-  percentage: 0,
-  fillColor: '#f3f3f3',
-  strokeColor: 'linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)',
-  strokeWidth: '',
-  textColor: '',
-  textWidth: '',
-  showText: true,
-  textInside: false,
-  textBackground: 'linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)',
-  textType: 'text',
-  status: false,
-  icon: null,
-  children: undefined,
+  percent: 0,
+  showText: false,
+  animated: false,
+  delay: 0,
 } as ProgressProps
 
 export const Progress: FunctionComponent<
@@ -54,119 +26,79 @@ export const Progress: FunctionComponent<
   const {
     className,
     style,
-    isShowPercentage,
-    percentage,
-    fillColor,
-    strokeColor,
+    percent,
+    background,
+    color,
     strokeWidth,
-    size,
-    textColor,
-    textWidth,
     showText,
-    textInside,
-    textBackground,
-    textType,
-    status,
-    icon,
+    animated,
     children,
+    delay,
     ...rest
   } = {
     ...defaultProps,
     ...props,
   }
 
-  const b = bem('progress')
-
-  const classes = classNames(b(''))
-
-  const classesOuter = classNames({
-    [`${b('')}-outer`]: true,
-    [`${b('')}-${size || 'base'}`]: true,
-  })
+  const classPrefix = 'nut-progress'
 
   const classesInner = classNames({
-    [`${b('')}-inner`]: true,
-    [`${b('')}-active`]: status,
-  })
-
-  const classesText = classNames({
-    [`${b('')}-text`]: true,
-  })
-
-  const classesInsideText = classNames({
-    [`${b('')}-text`]: true,
-    [`${b('')}-insidetext`]: true,
-  })
-
-  const classesTextInner = classNames({
-    [`${b('')}-text__inner`]: true,
+    [`${classPrefix}-inner`]: true,
+    [`${classPrefix}-active`]: animated,
   })
 
   const stylesOuter: React.CSSProperties = {
     height: `${strokeWidth}px`,
-    // eslint-disable-next-line no-nested-ternary
-    background: `${fillColor}`,
+    background,
   }
+
+  const [displayPercent, setDispalyPercent] = useState(0)
 
   const stylesInner: React.CSSProperties = {
-    width: `${percentage}%`,
-    // eslint-disable-next-line no-nested-ternary
-    background: `${strokeColor}`,
+    width: `${displayPercent}%`,
+    background: color,
   }
 
-  const stylesInsideText: React.CSSProperties = {
-    width: `${textWidth}px`,
-    left: `${percentage}%`,
-    background: textBackground || strokeColor,
-  }
+  useEffect(() => {
+    setDispalyPercent(percent)
+  }, [percent])
 
-  const stylesInsideIcon: React.CSSProperties = {
-    width: `${textWidth}px`,
-    left: `${percentage}%`,
-  }
-
-  const stylesText: React.CSSProperties = {
-    width: `${textWidth}px`,
-  }
+  useEffect(() => {
+    let timer: any = null
+    if (delay) {
+      setDispalyPercent(0)
+      timer = setTimeout(() => {
+        setDispalyPercent(percent)
+      }, delay)
+    }
+    return () => {
+      timer && clearTimeout(timer)
+    }
+  }, [])
 
   return (
-    <div className={`${classes} ${className}`} style={style} {...rest}>
-      <div className={classesOuter} style={stylesOuter}>
+    <div className={classNames(classPrefix, className)} style={style} {...rest}>
+      <div className={`${classPrefix}-outer`} style={stylesOuter}>
         <div className={classesInner} style={stylesInner}>
-          {showText && textInside && (
-            <>
-              {children ? (
-                <div className={classesInsideText} style={stylesInsideIcon}>
-                  {children}
-                </div>
-              ) : (
-                <div className={classesInsideText} style={stylesInsideText}>
-                  <span
-                    className={classesTextInner}
-                    style={{ color: textColor }}
-                  >
-                    {percentage}
-                    {isShowPercentage ? '%' : ''}
-                  </span>
+          {showText && (
+            <div
+              className={`${classPrefix}-text`}
+              style={{ left: `${displayPercent}%` }}
+            >
+              {children || (
+                <div
+                  className={`${classPrefix}-text__inner`}
+                  style={{
+                    background: color,
+                  }}
+                >
+                  {percent}%
                 </div>
               )}
-            </>
+            </div>
           )}
         </div>
       </div>
-      {showText && !textInside && (
-        <div className={classesText} style={stylesText}>
-          {textType === 'text' && (
-            <span className={classesTextInner} style={{ color: textColor }}>
-              {percentage}
-              {isShowPercentage ? '%' : ''}
-            </span>
-          )}
-          {textType === 'icon' && (
-            <>{icon || <Checked width={16} height={16} color="#439422" />}</>
-          )}
-        </div>
-      )}
     </div>
   )
 }

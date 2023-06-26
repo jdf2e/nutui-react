@@ -1,20 +1,65 @@
 # Checkbox 复选按钮
 
-### 介绍
+## 介绍
 
 多选按钮用于选择。
 
-### 安装
+## 安装
 
-```ts
-// react
+```tsx
 import { Checkbox } from '@nutui/nutui-react';
 
 ```
 
-## 基本用法
+## 代码演示
+
+### 非受控
 
 :::demo
+
+```tsx
+import React, { useState } from "react";
+import { Checkbox } from '@nutui/nutui-react';
+
+const CheckBoxDemo = () => {
+  return (<Checkbox
+    className="test"
+    label="复选框"
+    defaultChecked={false}
+  />)
+}
+export default CheckBoxDemo;
+```
+
+:::
+
+### 受控
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Checkbox } from '@nutui/nutui-react';
+
+const CheckBoxDemo = () => {
+  const [controlled, setControlled] = useState(false)
+
+  return (<Checkbox
+    className="test"
+    label="复选框"
+    checked={controlled}
+    onChange={(val) => setControlled(val)}
+  />)
+}
+export default CheckBoxDemo;
+```
+
+:::
+
+### 基础用法
+
+:::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Checkbox } from '@nutui/nutui-react';
@@ -22,20 +67,21 @@ import { Checkbox } from '@nutui/nutui-react';
 const CheckBoxDemo = () => {
   const [checked, setChecked] = useState(true)
   return (<>
-      <Checkbox textPosition="left" label="复选框" checked={checked} />
-      <Checkbox textPosition="right" label="复选框" checked={false} />
-      <Checkbox.Group textPosition="left" checkedValue='选项1'>
+      <Checkbox labelPosition="left" label="复选框" defaultChecked={checked} />
+      <Checkbox labelPosition="right" label="复选框" defaultChecked={checked} />
+      <Checkbox.Group labelPosition="left" defaultValue={['1']}>
         <span>
-          <Checkbox label='选项1' checked={false} />
+          <Checkbox value="1" label='选项1' />
         </span>
-        <Checkbox label='选项2' checked={false} />
-        <Checkbox label='选项3' checked={false} />
+        <Checkbox value="2" label='选项2' />
+        <Checkbox value="3" label='选项3' />
       </Checkbox.Group>
     </>
   )
 }
 export default CheckBoxDemo;
 ```
+
 :::
 
 ## 半选状态
@@ -49,7 +95,7 @@ import { Checkbox } from '@nutui/nutui-react';
 const CheckBoxDemo = () => {
   const [checked, setChecked] = useState(true)
   return (<>
-      <Checkbox label='复选框1' checked indeterminate />
+      <Checkbox value="1" label='复选框1' checked indeterminate />
     </>
   )
 }
@@ -69,13 +115,13 @@ import { Checkbox } from '@nutui/nutui-react';
 const CheckBoxDemo = () => {
   return (<>
     <Checkbox
-      textPosition="right"
+      labelPosition="right"
       label="未选时禁用状态"
       checked={false}
       disabled
     />
     <Checkbox
-      textPosition="right"
+      labelPosition="right"
       label="选中时禁用状态"
       checked
       disabled
@@ -97,8 +143,14 @@ import { Checkbox } from '@nutui/nutui-react';
 
 const CheckBoxDemo = () => {
   return (<>
-    <Checkbox label="自定义尺寸25" iconSize={25} />
-    <Checkbox label="自定义尺寸10" iconSize={10} />
+    <Checkbox label="自定义尺寸24" style={{
+      '--nut-icon-width': '24px',
+      '--nut-icon-height': '24px'
+    }} />
+    <Checkbox label="自定义尺寸12" style={{
+      '--nut-icon-width': '12px',
+      '--nut-icon-height': '12px'
+    }} />
   </>)
 }
 export default CheckBoxDemo;
@@ -120,7 +172,8 @@ import { Checklist } from '@nutui/icons-react'
 const CheckBoxDemo = () => {
   return (<>
     <Checkbox icon={<Checklist />}
-              checkedIcon={<Checklist />}>自定义图标</Checkbox>
+              checkedIcon={<Checklist
+                className="nut-checkbox__icon" />}>自定义图标</Checkbox>
   </>)
 }
 export default CheckBoxDemo;
@@ -141,9 +194,13 @@ import { Checkbox, Toast } from '@nutui/nutui-react';
 const CheckBoxDemo = () => {
   return (<>
     <Checkbox
-      checked={false}
-      onChange={(state, label) => {
-        Toast.text(`您${state ? '选中' : '取消'}了${label}`)
+      defaultChecked={false}
+      onChange={(state) => {
+        if (state) {
+          Toast.show('选中')
+        } else {
+          Toast.show('取消选中')
+        }
       }}
     >
       change复选框
@@ -167,21 +224,22 @@ const CheckBoxDemo = () => {
   const [checkboxgroup1, setCheckboxgroup1] = useState(['1'])
   return (
     <Checkbox.Group
-      checkedValue={checkboxgroup1}
+      defaultValue={checkboxgroup1}
+      direction="horizontal"
       onChange={(value) => {
-        setCheckboxgroup1(value)
+        Toast.show(value)
       }}
     >
-      <Checkbox checked={false} label="1">
+      <Checkbox value="1">
         组合复选框
       </Checkbox>
-      <Checkbox checked={false} label="2">
+      <Checkbox value="2">
         组合复选框
       </Checkbox>
-      <Checkbox checked={false} label="3">
+      <Checkbox value="3">
         组合复选框
       </Checkbox>
-      <Checkbox checked={false} label="4">
+      <Checkbox value="4">
         组合复选框
       </Checkbox>
     </Checkbox.Group>
@@ -203,17 +261,18 @@ import { Checkbox } from '@nutui/nutui-react';
 const CheckBoxDemo = () => {
   const [checkboxgroup1, setCheckboxgroup1] = useState(['1'])
   return (
-    <Checkbox.Group checkedValue={checkboxgroup1} disabled>
-      <Checkbox label="1">
+    <Checkbox.Group defaultValue={checkboxgroup1} disabled
+                    direction="horizontal">
+      <Checkbox value="1">
         组合复选框
       </Checkbox>
-      <Checkbox label="2">
+      <Checkbox value="2">
         组合复选框
       </Checkbox>
-      <Checkbox label="3">
+      <Checkbox value="3">
         组合复选框
       </Checkbox>
-      <Checkbox label="4">
+      <Checkbox value="4">
         组合复选框
       </Checkbox>
     </Checkbox.Group>
@@ -237,23 +296,24 @@ const CheckBoxDemo = () => {
   const checkboxgroup2Ref = useRef(null)
   return (<>
     <Checkbox.Group
-      style={{}}
+      labelPosition="left"
+      direction="horizontal"
       ref={checkboxgroup2Ref}
-      checkedValue={checkboxgroup2}
+      defaultValue={checkboxgroup2}
       onChange={(value) => {
-        Toast.text(`${value.length === 4 ? '全选' : '取消全选'}`)
+        Toast.show(`${value.length === 4 ? '全选' : '取消全选'}`)
       }}
     >
-      <Checkbox checked={false} label="1">
+      <Checkbox value="1">
         组合复选框
       </Checkbox>
-      <Checkbox checked={false} label="2">
+      <Checkbox value="2">
         组合复选框
       </Checkbox>
-      <Checkbox checked={false} label="3">
+      <Checkbox value="3">
         组合复选框
       </Checkbox>
-      <Checkbox checked={false} label="4">
+      <Checkbox value="4">
         组合复选框
       </Checkbox>
     </Checkbox.Group>
@@ -261,7 +321,7 @@ const CheckBoxDemo = () => {
       type="primary"
       style={{ margin: '0 20px 0 0' }}
       onClick={() => {
-        (checkboxgroup2Ref.current as any).toggleAll(true)
+        (checkboxgroup2Ref.current as any).toggle(true)
       }}
     >
       全选
@@ -270,7 +330,7 @@ const CheckBoxDemo = () => {
       type="info"
       style={{ margin: '0 20px 0 0' }}
       onClick={() => {
-        (checkboxgroup2Ref.current as any).toggleAll(false)
+        (checkboxgroup2Ref.current as any).toggle(false)
       }}
     >
       取消
@@ -278,7 +338,7 @@ const CheckBoxDemo = () => {
     <Button
       type="warning"
       onClick={() => {
-        ;(checkboxgroup2Ref.current as any).toggleReverse()
+        ;(checkboxgroup2Ref.current as any).reverse()
       }}
     >
       反选
@@ -293,6 +353,7 @@ export default CheckBoxDemo;
 ## checkboxGroup使用，限制最大可选数（2个）
 
 :::demo
+
 ```tsx
 import React, { useState, useRef } from "react";
 import { Checkbox, Button, Toast } from '@nutui/nutui-react';
@@ -302,22 +363,22 @@ const CheckBoxDemo = () => {
   const checkboxgroup2Ref = useRef(null)
   return (<>
     <Checkbox.Group
-      checkedValue={checkboxgroup2}
+      defaultValue={checkboxgroup2}
       max={2}
       onChange={(value) => {
-        Toast.text(value)
+        Toast.show(value)
       }}
     >
-      <Checkbox checked={false} label="1">
+      <Checkbox value="1">
         组合复选框
       </Checkbox>
-      <Checkbox checked={false} label="2">
+      <Checkbox value="2">
         组合复选框
       </Checkbox>
-      <Checkbox checked={false} label="3">
+      <Checkbox value="3">
         组合复选框
       </Checkbox>
-      <Checkbox checked={false} label="4">
+      <Checkbox value="4">
         组合复选框
       </Checkbox>
     </Checkbox.Group>
@@ -325,10 +386,13 @@ const CheckBoxDemo = () => {
 }
 export default CheckBoxDemo;
 ```
+
 :::
 
 ## 全选/半选/取消
+
 :::demo
+
 ```tsx
 import React, { useState, useRef } from "react";
 import { Checkbox, Button, Toast } from '@nutui/nutui-react';
@@ -339,55 +403,57 @@ const CheckBoxDemo = () => {
   const [checkbox1, setCheckbox1] = useState(false)
   const [indeterminate, setIndeterminate] = useState(false)
   return (<>
-    <div style={{ width: '50%' }}>
-      <Checkbox
-        checked={checkbox1}
-        indeterminate={indeterminate}
-        onChange={(state, label) => {
-          if (state) {
+      <div style={{ width: '50%' }}>
+        <Checkbox
+          checked={checkbox1}
+          indeterminate={indeterminate}
+          onChange={(state, label) => {
+            if (state) {
+              setIndeterminate(false)
+            }
+            setCheckbox1(state)
+            ;(checkboxgroup2Ref.current as any).toggle(state)
+          }}
+        >
+          全选
+        </Checkbox>
+      </div>
+
+      <Checkbox.Group
+        ref={checkboxgroup2Ref}
+        direction="horizontal"
+        checkedValue={checkboxgroup2}
+        onChange={(value) => {
+          if (value.length === 4) {
             setIndeterminate(false)
+            setCheckbox1(true)
+          } else if (value.length && value.length < 4) {
+            setIndeterminate(true)
+            setCheckbox1(true)
+          } else {
+            setCheckbox1(false)
           }
-          ;(checkboxgroup2Ref.current as any).toggleAll(state)
         }}
       >
-        全选
-      </Checkbox>
-    </div>
-
-    <Checkbox.Group
-      ref={checkboxgroup2Ref}
-      direction="horizontal"
-      checkedValue={checkboxgroup2}
-      onChange={(value) => {
-        if (value.length === 4) {
-          setIndeterminate(false)
-          setCheckbox1(true)
-        } else if (value.length && value.length < 4) {
-          setIndeterminate(true)
-          setCheckbox1(true)
-        } else {
-          setCheckbox1(false)
-        }
-      }}
-    >
-      <Checkbox checked={false} label="1">
-        选项
-      </Checkbox>
-      <Checkbox checked={false} label="2">
-        选项
-      </Checkbox>
-      <Checkbox checked={false} label="3">
-        选项
-      </Checkbox>
-      <Checkbox checked={false} label="4">
-        选项
-      </Checkbox>
-    </Checkbox.Group>
-  </>
+        <Checkbox value="1">
+          选项
+        </Checkbox>
+        <Checkbox value="2">
+          选项
+        </Checkbox>
+        <Checkbox value="3">
+          选项
+        </Checkbox>
+        <Checkbox value="4">
+          选项
+        </Checkbox>
+      </Checkbox.Group>
+    </>
   )
 }
 export default CheckBoxDemo;
 ```
+
 :::
 
 ## 配置 options 渲染复选按钮
@@ -399,7 +465,7 @@ import React, { useState } from 'react';
 import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
 
 const CheckboxGroupOptions = () => {
-  const [checkboxVal, setCheckboxValVal] = useState(['1'])
+  const [checkboxVal, setCheckboxVal] = useState(['1'])
   const [optionsDemo1, setOptionsDemo1] = useState([
     {
       label: '选项1',
@@ -415,11 +481,8 @@ const CheckboxGroupOptions = () => {
       value: '3',
     },
   ])
-  const handleChange = (v) => {
-    console.log(v)
-    setCheckboxValVal(v)
-  }
-  return <Checkbox.Group options={optionsDemo1} checkedValue={checkboxVal} onChange={handleChange} />
+  return <Checkbox.Group options={optionsDemo1} defaultValue={checkboxVal}
+  />
 }
 export default CheckboxGroupOptions;
 ```
@@ -428,51 +491,42 @@ export default CheckboxGroupOptions;
 
 ## Checkbox
 
-| 字段                             | 说明                                          | 类型            | 默认值               | 
-|--------------------------------|---------------------------------------------|---------------|-------------------|
-| checked                        | 是否处于选中状态                                    | `boolean`       | `false`           |
-| disabled                       | 是否禁用选择                                      | `boolean`       | `false`           |
-| textPosition                   | 文本所在的位置，可选值：`left`,`right`                  | `string`        | `right`           |
-| iconSize                       | [图标尺寸]用于设置默认图标的大小                           | `string`、`number` | `18`              |
-| icon`v2.0.0`                   | [图标](#/icon)，选中前(建议和`iconActiveName`一起修改)   | `ReactNode`   | `'CheckNormal'`   |
-| checkedIcon`v2.0.0`            | [图标](#/icon)，选中后(建议和`iconName`一起修改)         | `ReactNode`   | `'Checked'`       |
-| indeterminateIcon`v2.0.0`      | [图标](#/icon)，半选状态                           | `ReactNode`         | `'CheckDisabled'` |
-| iconName`v2.0.0废弃`             | [图标名称](#/icon)，选中前(建议和`iconActiveName`一起修改) | `ReactNode`   | `'CheckNormal'`   |
-| iconActiveName`v2.0.0废弃`       | [图标名称](#/icon)，选中后(建议和`iconName`一起修改)       | `ReactNode`   | `'Checked'`       |
-| iconIndeterminateName`v2.0.0废弃` | [图标名称](#/icon)，半选状态                         | `ReactNode`         | `'CheckDisabled'` |
-| iconClassPrefix`v2.0.0废弃`      | 自定义 icon 类名前缀，用于使用自定义图标                     | `string`        | `nut-icon`        |
-| iconFontClassName`v2.0.0废弃`    | 自定义 icon 字体基础类名                             | `string`        | `nutui-iconfont`  |
-| label                          | 复选框的文本内容                                    | `string`        | -                 |
+### props
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| checked | 是否选中 | `boolean` | `false` |
+| defaultChecked | 初始是否选中 | `boolean` | `false` |
+| disabled | 是否禁用选择 | `boolean` | `false` |
+| labelPosition | 文本所在的位置 | `left` \| `right` | `right` |
+| icon | 选中前| `ReactNode` | `'CheckNormal'` |
+| activeIcon | ，选中后 | `ReactNode` | `'Checked'` |
+| indeterminateIcon | 半选状态| `ReactNode` | `'CheckDisabled'` |
+| label | 复选框的文本内容 | `string` | `-` |
+| value | 标识值，用于 Group 模式 | `string` \|  `number` | `-` |
+| onChange | 值变化时触发 | `(value: boolean) => void` | `-` |
 
 ## Checkbox.Group
 
-| 字段           | 说明 | 类型          | 默认值|
-|--------------| ----- |-------------| -- |
-| checkedValue | 当前选中项的标识符，和 `label` 相对应  | `string`      | -|
-| disabled     | 是否禁用选择,将用于其下的全部复选框 | `boolean`     | `false`|
-| max | 限制最大可选数 | `undefined|number` | `undefined`|
-| textPosition`v1.4.8` | 文本所在的位置，可选值：`left`,`right`| `string`| `right` |
-| direction`v1.4.8` | 使用横纵方向 可选值 horizontal、vertical| `string`| `vertical` |
-| options `v1.3.10` | 配置 options 渲染复选按钮 | Array| `Array<{ label: string value: string disabled?: boolean }` |
+### Props
 
-## Checkbox Event
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| value | 当前选中项的标识符 | `string` \| `number` | `-` |
+| defaultValue | 初始选中项的标识符 | `string` \| `number` | `-` |
+| disabled | 是否禁用选择,将用于其下的全部复选框 | `boolean` | `false` |
+| max | 限制最大可选数 | `number` |  `-` |
+| labelPosition | 文本所在的位置 | `left` \| `right` | `right` |
+| direction | 使用横纵方向 可选值 horizontal、vertical | `string` | `vertical` |
+| options | 配置 options 渲染复选按钮 | `Array<{ label: string value: string disabled?: boolean }>` | `-` |
+| onChange | 值变化时触发 | `(value: string[]) => void` | `-` |
 
-| 字段 | 说明 | 回调参数|
-|----- | ----- | ----- |
-| onChange | 值变化时触发 | (state, label),`state`代表当前状态，`label`表示当前选中的值|
+### Ref
 
-## Checkbox.Group Event
-
-| 字段 | 说明 | 回调参数|
-|----- | ----- | ----- |
-| onChange | 值变化时触发 | label,`label`返回一个数组，表示当前选中项的集合|
-
-## Checkbox.Group API
-
-| 方法名               | 说明 | 参数 |
-|-------------------| ----- | ----- |
-| toggleAll | 全选/取消 | `f`,传 `true`,表示全选，传 `false`,表示取消全选 |
-| toggleReverse   | 反选 | - |
+| 方法名 | 说明 | 参数 |
+| --- | --- | --- |
+| toggle | 全选/取消 | 传 `true`,表示全选，传 `false`,表示取消全选 |
+| reverse | 反选 |  `-` |
 
 ## 主题定制
 
@@ -480,12 +534,10 @@ export default CheckboxGroupOptions;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-checkbox-label-color | ` $gray1` |
-| --nutui-checkbox-label-disable-color | `  #999` |
-| --nutui-checkbox-icon-disable-color | `  #d6d6d6` |
-| --nutui-checkbox-label-margin-left | `  15px` |
-| --nutui-checkbox-label-font-size | ` 14px` |
-| --nutui-checkbox-icon-font-size | ` 18px` |
-| --nutui-checkbox-icon-disable-color2 | `  $help-color` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| \--nutui-checkbox-label-color | label 的文本颜色 | `$gray1` |
+| \--nutui-checkbox-label-disable-color | label 的禁用颜色 | `#999` |
+| \--nutui-checkbox-icon-disable-color | 默认 icon 的禁用颜色 | `#d6d6d6` |
+| \--nutui-checkbox-label-margin-left | label 的左边距 | `15px` |
+| \--nutui-checkbox-label-font-size | label 的字号 | `14px` |

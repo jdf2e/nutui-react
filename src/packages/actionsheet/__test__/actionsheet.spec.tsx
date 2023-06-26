@@ -3,16 +3,11 @@ import { render, waitFor, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { ActionSheet, ItemType } from '../actionsheet'
 
-// interface Item {
-//   name: string
-//   subname?: string
-//   disable?: boolean
-// }
-
 const menulist: ItemType<string | boolean>[] = [
   {
     name: '选项一',
-    subname: '选项一的描述信息',
+    description: '选项一的描述信息',
+    danger: true,
   },
   {
     name: '选项二',
@@ -24,22 +19,20 @@ const menulist: ItemType<string | boolean>[] = [
   },
 ]
 
-test('props test menuitems ', async () => {
+test('props test options ', async () => {
   const { container } = render(
     <ActionSheet
       visible
       title="弹层标题"
       description="弹层描述信息"
       cancelText="关闭弹层"
-      menuItems={menulist}
-      chooseTagValue="选项一"
-      color="red"
+      options={menulist}
     />
   )
-  const menuItems = container.querySelectorAll(
-    '.nut-actionsheet__menu .nut-actionsheet__item'
+  const options = container.querySelectorAll(
+    '.nut-actionsheet__list .nut-actionsheet__item'
   )
-  expect(menuItems.length).toBe(3)
+  expect(options.length).toBe(3)
 })
 
 test('props test cancelText ', async () => {
@@ -49,32 +42,28 @@ test('props test cancelText ', async () => {
       title="弹层标题"
       description="弹层描述信息"
       cancelText="关闭弹层"
-      menuItems={menulist}
-      chooseTagValue="选项一"
-      color="red"
+      options={menulist}
     />
   )
   const cancelEle = container.querySelectorAll('.nut-actionsheet__cancel')[0]
   expect(cancelEle).toHaveTextContent('关闭弹层')
 })
 
-test('props test has chooseTagValue ', async () => {
+test('props test has value ', async () => {
   const { container } = render(
     <ActionSheet
       visible
       title="弹层标题"
       description="弹层描述信息"
       cancelText="关闭弹层"
-      menuItems={menulist}
-      chooseTagValue="选项一"
-      color="red"
+      options={menulist}
     />
   )
   const chooseTagEle = container.querySelectorAll(
-    '.nut-actionsheet__menu .nut-actionsheet__item '
+    '.nut-actionsheet__list .nut-actionsheet__item'
   )[0]
   expect(chooseTagEle).toHaveTextContent('选项一')
-  expect(chooseTagEle).toHaveStyle('color: red')
+  expect(chooseTagEle).toHaveClass('danger')
 })
 
 test('props test choose item and show value', async () => {
@@ -85,14 +74,12 @@ test('props test choose item and show value', async () => {
       title="弹层标题"
       description="弹层描述信息"
       cancelText="关闭弹层"
-      menuItems={menulist}
-      chooseTagValue="选项一"
-      color="red"
-      onChoose={choose}
+      options={menulist}
+      onSelect={choose}
     />
   )
   const chooseTagEle = container.querySelectorAll(
-    '.nut-actionsheet__menu .nut-actionsheet__item'
+    '.nut-actionsheet__list .nut-actionsheet__item'
   )[0]
   fireEvent.click(chooseTagEle)
   await waitFor(() => expect(choose.mock.calls[0][0].name).toEqual('选项一'))
@@ -106,17 +93,15 @@ test('props test disable item has disable classes', async () => {
       title="弹层标题"
       description="弹层描述信息"
       cancelText="关闭弹层"
-      menuItems={menulist}
-      chooseTagValue="选项一"
-      color="red"
-      onChoose={choose}
+      options={menulist}
+      onSelect={choose}
     />
   )
-  const menuItems = container.querySelectorAll(
-    '.nut-actionsheet__menu .nut-actionsheet__item'
+  const options = container.querySelectorAll(
+    '.nut-actionsheet__list .nut-actionsheet__item'
   )
-  const disableItem = menuItems[1]
-  expect(disableItem).toHaveClass('nut-actionsheet__item-disabled')
+  const disableItem = options[1]
+  expect(disableItem).toHaveClass('nut-actionsheet__item disabled')
 })
 
 test('props test click disable item and not call fn', async () => {
@@ -127,16 +112,14 @@ test('props test click disable item and not call fn', async () => {
       title="弹层标题"
       description="弹层描述信息"
       cancelText="关闭弹层"
-      menuItems={menulist}
-      chooseTagValue="选项一"
-      color="red"
-      onChoose={choose}
+      options={menulist}
+      onSelect={choose}
     />
   )
-  const menuItems = container.querySelectorAll(
-    '.nut-actionsheet__menu .nut-actionsheet__item'
+  const options = container.querySelectorAll(
+    '.nut-actionsheet__list .nut-actionsheet__item'
   )
-  const disableItem = menuItems[1]
+  const disableItem = options[1]
   fireEvent.click(disableItem)
   await waitFor(() => expect(choose).not.toBeCalled())
 })

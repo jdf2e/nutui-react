@@ -1,12 +1,12 @@
 # Price 价格
 
-### 介绍
+## 介绍
 
 用来对商品价格数值的小数点前后部分应用不同样式，还支持人民币符号、千位分隔符、设置小数点位数等功能。
 
-### 安装
+## 安装
 
-```javascript
+```tsx
 import { Price } from '@nutui/nutui-react-taro'
 ```
 
@@ -24,13 +24,13 @@ const App = () => {
   return (
     <>
         <Cell>
-            <Price price={0} size="small" needSymbol thousands />
+            <Price price={0} size="small"  thousands />
         </Cell>
         <Cell>
-            <Price price={0} size="normal" needSymbol thousands />
+            <Price price={0} size="normal"  thousands />
         </Cell>
         <Cell>
-            <Price price={0} size="large" needSymbol thousands />
+            <Price price={0} size="large"  thousands />
         </Cell>
     </>
   );
@@ -53,8 +53,7 @@ const App = () => {
     <Cell>
         <Price
           price={8888}
-          decimalDigits={0}
-          needSymbol
+          digits={0}
           size="normal"
           thousands
         />
@@ -77,7 +76,7 @@ import { Price, Cell } from '@nutui/nutui-react-taro'
 const App = () => {
   return (
     <Cell>
-        <Price price={10010.01} size="normal" needSymbol thousands={false} />
+        <Price price={10010.01} size="normal"  thousands={false} />
     </Cell>
   );
 };
@@ -100,8 +99,7 @@ const App = () => {
          <Price
           price={15213.1221}
           size="normal"
-          decimalDigits={3}
-          needSymbol
+          digits={3}
           thousands
         />
     </Cell>
@@ -128,9 +126,28 @@ const App = () => {
           size="normal"
           position="after"
           symbol="元"
-          needSymbol
           thousands
         />
+    </Cell>
+  );
+};
+export default App;
+```
+
+:::
+
+### 不展示 symbol 符号
+
+:::demo
+
+```tsx
+import  React from "react"
+import { Price, Cell } from '@nutui/nutui-react-taro'
+
+const App = () => {
+  return (
+    <Cell>
+        <Price price={15213.1221} size="normal" symbol="" />
     </Cell>
   );
 };
@@ -162,9 +179,8 @@ const App = () => {
     <Cell>
         <Price
           price={price}
-          decimalDigits={3}
+          digits={3}
           size="normal"
-          needSymbol
           thousands
         />
     </Cell>
@@ -175,20 +191,41 @@ export default App;
 
 :::
 
-## API
+### 划线价
+
+:::demo
+
+```tsx
+import React, { useState, useEffect } from 'react'
+import { Price, Cell } from '@nutui/nutui-react-taro'
+
+const App = () => {
+  return (
+    <Cell>
+        <Price price={1513.12} size="normal" thousands />
+        <span>&nbsp;</span>
+        <Price price={1513.88} thousands line />
+      </Cell>
+  );
+};
+export default App;
+```
+
+:::
+
+## Price
 
 ### Props
 
-| 参数           | 说明                     | 类型    | 默认值 |
-| -------------- | ------------------------ | ------- | ------ |
-| price          | 价格数量                 | number  | `0`      |
-| needSymbol    | 是否需要加上 symbol 符号 | boolean | `true`   |
-| symbol         | 符号类型                 | string  | `&yen;`  |
-| decimalDigits | 小数位位数               | number  | `2`      |
-| thousands      | 是否按照千分号形式显示   | boolean | `false`  |
-| position`v1.3.9`   | 符号显示在价格前或者后，`before`、`after`  | string           | `before` |
-| size `v1.3.9`   | 价格尺寸，`large`、`normal`、`small`     | string           | `large` |
-
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| price | 价格数量 | `number` | `0` |
+| symbol | 符号类型 | `string` | `&yen;` |
+| digits | 小数位位数 | `number` | `2` |
+| thousands | 是否按照千分号形式显示 | `boolean` | `false` |
+| position | 符号显示在价格前或者后，`before`、`after` | `string` | `before` |
+| size | 价格尺寸，`large`、`normal`、`small` | `string` | `large` |
+| line | 是否划线价 | `boolean` | `false` |
 
 ## 主题定制
 
@@ -196,14 +233,17 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-price-symbol-big-size | `18px` |
-| --nutui-price-integer-big-size | `24px` |
-| --nutui-price-decimal-big-size | `18px` |
-| --nutui-price-symbol-medium-size | `14px` |
-| --nutui-price-integer-medium-size | `16px` |
-| --nutui-price-decimal-medium-size | `14px` |
-| --nutui-price-symbol-small-size | `10px` |
-| --nutui-price-integer-small-size | `12px` |
-| --nutui-price-decimal-small-size | `10px` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| \--nutui-price-symbol-big-size | large 尺寸符号字体大小 | `18px` |
+| \--nutui-price-integer-big-size | large 尺寸整数部分字体大小 | `24px` |
+| \--nutui-price-decimal-big-size | large 尺寸小数部分字体大小 | `18px` |
+| \--nutui-price-symbol-medium-size | normal 尺寸符号字体大小 | `14px` |
+| \--nutui-price-integer-medium-size | normal 尺寸整数部分字体大小 | `16px` |
+| \--nutui-price-decimal-medium-size | normal 尺寸小数部分字体大小 | `14px` |
+| \--nutui-price-symbol-small-size | small 尺寸符号字体大小 | `10px` |
+| \--nutui-price-integer-small-size | small 尺寸整数部分字体大小 | `12px` |
+| \--nutui-price-decimal-small-size | small 尺寸小数部分字体大小 | `10px` |
+| \--nutui-price-line-font-size | 划线价字体大小 | `10px` |
+| \--nutui-price-line-color | 划线价颜色 |  `#757575` |
+| \--nutui-price-symbol-padding-right | 符号的右内边距 |  `1px` |

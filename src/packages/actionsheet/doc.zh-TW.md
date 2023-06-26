@@ -1,62 +1,60 @@
-# ActionSheet 動作面板
+# ActionSheet 動作面闆
 
+## 介紹
 
-### 介紹
-从底部弹出的动作菜单面板。
+從底部彈出的動作菜單面闆。
 
-### 安裝
+## 安裝
 
-```ts
-// react
+```tsx
 import { ActionSheet } from '@nutui/nutui-react';
 ```
-## 代碼示例
 
-### 基本用法
+## 代碼演示
+
+### 基础用法
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { ActionSheet,Cell } from '@nutui/nutui-react';
 
 interface Item {
   name: string
-  subname?: string
+  description?: string
   disable?: boolean
 }
 const App = () => {
   const [val1, setVal1] = useState('')
   const [isVisible1, setIsVisible1] = useState(false)
-  const menuItemsOne: ItemType<string>[] = [
+  const optionsOne: ItemType<string>[] = [
     {
-      name: '選項一',
+      name: '權限設定',
     },
     {
-      name: '選項二',
+      name: '重命名',
     },
     {
-      name: '選項三',
+      name: '刪除',
     },
   ]
-  const chooseItem = (itemParams: any) => {
-    console.log(itemParams.name, 'itemParams')
-    setVal1(itemParams.name)
+  const chooseItem = (item: any) => {
+    setVal1(item.name)
     setIsVisible1(false)
   }
 
   return ( 
     <>   
     <Cell  onClick={() => setIsVisible1(!isVisible1)}>
-      <span>
-        <label>基础用法</label>
-      </span>
-      <div className="selected-option">{val1}</div>
+      <span>基礎用法</span>
+      <div style={{ marginLeft: '10px' }}>{val1}</div>
     </Cell>
             
     <ActionSheet
       visible={isVisible1}
-      menuItems={menuItemsOne}
-      onChoose={chooseItem}
+      options={optionsOne}
+      onSelect={(item) => {chooseItem(item)}}
       onCancel={() => setIsVisible1(false)}
      />
     </>
@@ -65,10 +63,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
+
 ### 展示取消按鈕
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { ActionSheet,Cell } from '@nutui/nutui-react';
@@ -76,35 +77,33 @@ import { ActionSheet,Cell } from '@nutui/nutui-react';
 const App = () => {
   const [isVisible2, setIsVisible2] = useState(false)
   const [val2, setVal2] = useState('')
-  const menuItemsOne: ItemType<string>[] = [
+  const optionsOne: ItemType<string>[] = [
     {
-      name: '選項一',
+      name: '權限設定',
     },
     {
-      name: '選項二',
+      name: '重命名',
     },
     {
-      name: '選項三',
+      name: '刪除',
     },
   ]
-  const chooseItemTwo = (itemParams: Item) => {
-    setVal2(itemParams.name)
+  const chooseItemTwo = (item: Item) => {
+    setVal2(item.name)
     setIsVisible2(false)
   }
   return ( 
     <>   
     <Cell  onClick={() => setIsVisible2(!isVisible2)}>
-      <span>
-        <label>展示取消按鈕</label>
-      </span>
-      <div className="selected-option">{val2}</div>
+      <span>展示取消按鈕</span>
+      <div style={{ marginLeft: '10px' }}>{val2}</div>
     </Cell>
             
     <ActionSheet
       visible={isVisible2}
       cancelText="取消"
-      menuItems={menuItemsOne}
-      onChoose={chooseItemTwo}
+      options={optionsOne}
+      onSelect={(item)=>{chooseItemTwo(item)}}
       onCancel={() => setIsVisible2(false)}
      />
     </>
@@ -113,10 +112,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
-### 展示描述資訊
+
+### 展示描述信息
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { ActionSheet,Cell } from '@nutui/nutui-react';
@@ -124,37 +126,35 @@ import { ActionSheet,Cell } from '@nutui/nutui-react';
 const App = () => {
   const [isVisible3, setIsVisible3] = useState(false)
   const [val3, setVal3] = useState('')
-  const menuItemsTwo: ItemType<string>[] = [
+  const optionsTwo: ItemType<string>[] = [
     {
-      name: '選項一',
+      name: '權限設定',
     },
     {
-      name: '選項二',
+      name: '重命名',
     },
     {
-      name: '選項三',
-      subname: '描述資訊',
+      name: '刪除',
+      description: '刪除後無法恢復',
     },
   ]
-  const chooseItemThree = (itemParams: Item) => {
-    setVal3(itemParams.name)
+  const chooseItemThree = (item: Item) => {
+    setVal3(item.name)
     setIsVisible3(false)
   }
   return ( 
     <>   
     <Cell  onClick={() => setIsVisible3(!isVisible3)}>
-      <span>
-        <label>展示描述資訊</label>
-      </span>
-      <div className="selected-option">{val3}</div>
+      <span>展示描述信息</span>
+      <div style={{ marginLeft: '10px' }}>{val3}</div>
     </Cell>
     <ActionSheet
       visible={isVisible3}
-      description="這是一段描述資訊"
+      title='標題'
+      description="請選擇操作動作"
       cancelText="取消"
-      menuItems={menuItemsTwo}
-      onChoose={chooseItemThree}
-      
+      options={optionsTwo}
+      onSelect={(item)=>{chooseItemThree(item)}}
       onCancel={() => setIsVisible3(false)}
      />
     </>
@@ -163,19 +163,23 @@ const App = () => {
 export default App;
 
 ```
+
 :::
-### 選項状态
+
+### 選項狀態
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { ActionSheet,Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const [isVisible4, setIsVisible4] = useState(false)
-  const menuItemsThree: ItemType<string | boolean>[] = [
+  const optionsThree: ItemType<string | boolean>[] = [
     {
       name: '著色選項',
+      danger: true
     },
     {
       name: '禁用選項',
@@ -185,18 +189,14 @@ const App = () => {
   return ( 
     <>   
     <Cell  onClick={() => setIsVisible4(!isVisible4)}>
-      <span>
-        <label>選項状态</label>
-      </span>
+      <span>選項狀態</span>
     </Cell>
     <ActionSheet
       visible={isVisible4}
       cancelText="取消"
-      menuItems={menuItemsThree}
-      chooseTagValue="着色選項"
+      options={optionsThree}
       onCancel={() => setIsVisible4(false)}
-      
-      onChoose={() => {
+      onSelect={() => {
         setIsVisible4(false)
       }}
      />
@@ -206,42 +206,129 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
-## Prop
+### 自定義內容
 
-| 字段             | 說明                                   | 類型    | 默認值    |
-|------------------|----------------------------------------|---------|-----------|
-| visible       | 遮罩層可見                            | boolean | `false`     |
-| cancelText `v2.0.0`      | 取消文案                              | string  | `取消`    |
-| menuItems       | 列表項                                | Array   | `[]`       |
-| optionTag       | 設置列表項展示使用參數                | string  | `name`    |
-| optionSubTag   | 設置列表項描述展示使用參數             | string  | `subname` |
-| title            | 設置面板標題                         | string  | -        |
-| description      | 設置面板副標題/描述                  | string  | -        |
-| chooseTagValue | 設置選中項的值，和'option-tag'的值對應 | string  | -        |
-| color            | 高亮顏色                               | string  | `#ee0a24` |
+:::demo
 
+```tsx
+import  React, { useState } from "react";
+import { ActionSheet,Cell } from '@nutui/nutui-react';
 
-## Event
+const App = () => {
+  const [isVisible5, setIsVisible5] = useState(false)
+  return ( 
+    <>   
+      <Cell  onClick={() => setIsVisible5(!isVisible5)}>
+        <span>自定義內容</span>
+      </Cell>
+      <ActionSheet
+        visible={isVisible5}
+        cancelText={translated['2cd0f3be']}
+        onSelect={() => {
+          setIsVisible5(false)
+        }}
+        onCancel={() => setIsVisible5(false)}
+      >
+        <div style={{ textAlign: 'left', padding: '10px 20px' }}>
+          新建錶格
+        </div>
+        <div style={{ textAlign: 'left', padding: '10px 20px' }}>
+          新建文檔
+        </div>
+      </ActionSheet>
+    </>
+  );
+};  
+export default App;
 
-| 字段   | 說明               | 回調參數                          |
-|--------|--------------------|-----------------------------------|
-| onChoose | 選擇之後觸發 |  選中列表項item, 選中的索引值index |
-| onCancel | 點擊取消文案時觸發 | 無                               |
+```
+
+:::
+
+### 自定義key
+
+:::demo
+
+```tsx
+import  React, { useState } from "react";
+import { ActionSheet,Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  const [isVisible6, setIsVisible6] = useState(false)
+  const optionsFour: ItemType<string | boolean>[] = [
+    {
+      title: '著色選項',
+      danger: true
+    },
+    {
+      title: '禁用選項',
+      disable: true,
+    },
+  ]
+  const optionKey = {
+    name: 'title',
+  }
+  return ( 
+    <>   
+      <Cell  onClick={() => setIsVisible6(!isVisible6)}>
+        <span>自定義key</span>
+      </Cell>
+      <ActionSheet
+        visible={isVisible6}
+        optionKey={optionKey}
+        options={optionsFour}
+        onSelect={() => {
+          setIsVisible6(false)
+        }}
+        onCancel={() => setIsVisible6(false)}
+      />
+    </>
+  );
+};  
+export default App;
+
+```
+
+:::
+
+## ActionSheet
+
+### Props
+
+| 屬性 | 說明 | 類型 | 預設值 |
+| --- | --- | --- | --- |
+| visible | 遮罩層可見 | `boolean` | `false` |
+| title | 設定列錶面闆標題 | `string` | \- |
+| description | 設定列錶面闆副標題/描述 | `string` | \- |
+| options | 列錶項 | `Array` | `[]` |
+| optionKey | 列錶項的自定義設定 | `{ [key: string]: string }` | `-` |
+| cancelText | 取消文案 | `string` | `取消` |
+| onSelect | 選擇之後觸發 | `(item: any, index: number) => void` | `-` |
+| onCancel | 點選取消文案時觸發 | `() => void` | `-` |
+
+### options
+
+| 屬性 | 說明 | 類型 | 預設值 |
+| --- | --- | --- | --- |
+| name | 列錶項的標題key值 | `string` | \- |
+| description | 列錶項的描述key值 | `string` | \- |
+| danger | 高亮顏色 | `string` | `$primary-color` |
+| disable | 禁用狀態 | `string` | `$disable-color` |
 
 ## 主題定制
 
-### 樣式變量
+### 樣式變數
 
-組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+組件提供了下列 CSS 變數，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 默認值 |
-| --- | --- |
-| --nutui-actionsheet-light-color | `#f6f6f6` |
-| --nutui-actionsheet-item-border-bottom | `none` |
-| --nutui-actionsheet-item-font-size | `$font-size-2` |
-| --nutui-actionsheet-item-subdesc-font-size | `$font-size-1` |
-| --nutui-actionsheet-item-cancel-border-top | `1px solid $actionsheet-light-color` |
-| --nutui-actionsheet-item-line-height | `24px` |
-| --nutui-actionsheet-item-font-color | `$title-color` |
+| 名稱 | 說明 | 預設值 |
+| --- | --- | --- |
+| \--nutui-actionsheet-border-color | 標題和取消位置的border色值 | `#f6f6f6` |
+| \--nutui-actionsheet-item-text-align | 列錶項的文字對齊方式 | center |
+| \--nutui-actionsheet-item-border-bottom | 列錶項的底部border | `none` |
+| \--nutui-actionsheet-item-line-height | 列錶項行高 | `24px` |
+| \--nutui-actionsheet-item-color | 列錶項字色 | `$title-color` |
+| \--nutui-actionsheet-item-danger | 列錶項danger字色 | `$primary-color` |

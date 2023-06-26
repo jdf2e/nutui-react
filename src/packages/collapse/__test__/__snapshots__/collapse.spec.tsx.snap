@@ -6,7 +6,7 @@ exports[`should match snapshot 1`] = `
     class="nut-collapse"
   >
     <div
-      class="nut-collapse-item"
+      class=""
     >
       <div
         class="nut-collapse-item__header"
@@ -17,114 +17,18 @@ exports[`should match snapshot 1`] = `
           标题1
         </div>
         <div
-          class="nut-collapse-item__sub-title"
+          class="nut-collapse-item__extra"
         />
         <div
           class="nut-collapse-item__icon-box"
         >
           <div
             class="nut-collapse-item__icon"
-            style="transform: translateY(-50%);"
+            style="transform: translateY(-50%) rotate(180deg);"
           >
             <svg
-              aria-labelledby=""
-              class="nut-icon"
-              role="presentation"
-              viewBox="0 0 1024 1024"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M128 349.867C93.867 332.8 34.133 341.333 8.533 384-8.533 418.133 0 477.867 42.667 503.467 179.2 588.8 315.733 665.6 443.733 750.933c42.667 25.6 93.867 25.6 136.534 0C716.8 665.6 853.333 588.8 981.333 503.467c42.667-25.6 51.2-76.8 25.6-119.467s-76.8-51.2-119.466-25.6C768 435.2 640 512 512 588.8 384 512 256 435.2 128 349.867"
-                fill="currentColor"
-                fill-opacity="0.9"
-              />
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div
-        class="nut-collapse-item__content"
-        style="height: auto;"
-      >
-        <div
-          class="nut-collapse-item__content-text"
-        >
-          京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
-        </div>
-      </div>
-    </div>
-    <div
-      class="nut-collapse-item"
-    >
-      <div
-        class="nut-collapse-item__header"
-      >
-        <div
-          class="nut-collapse-item__title"
-        >
-          标题2
-        </div>
-        <div
-          class="nut-collapse-item__sub-title"
-        />
-        <div
-          class="nut-collapse-item__icon-box"
-        >
-          <div
-            class="nut-collapse-item__icon"
-            style="transform: translateY(-50%);"
-          >
-            <svg
-              aria-labelledby=""
-              class="nut-icon"
-              role="presentation"
-              viewBox="0 0 1024 1024"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M128 349.867C93.867 332.8 34.133 341.333 8.533 384-8.533 418.133 0 477.867 42.667 503.467 179.2 588.8 315.733 665.6 443.733 750.933c42.667 25.6 93.867 25.6 136.534 0C716.8 665.6 853.333 588.8 981.333 503.467c42.667-25.6 51.2-76.8 25.6-119.467s-76.8-51.2-119.466-25.6C768 435.2 640 512 512 588.8 384 512 256 435.2 128 349.867"
-                fill="currentColor"
-                fill-opacity="0.9"
-              />
-            </svg>
-          </div>
-        </div>
-      </div>
-      <div
-        class="nut-collapse-item__content"
-        style="height: auto;"
-      >
-        <div
-          class="nut-collapse-item__content-text"
-        >
-          京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
-        </div>
-      </div>
-    </div>
-    <div
-      class="nut-collapse-item"
-    >
-      <div
-        class="nut-collapse-item__header nut-collapse-item__header--disabled"
-      >
-        <div
-          class="nut-collapse-item__title"
-        >
-          标题3
-        </div>
-        <div
-          class="nut-collapse-item__sub-title"
-        />
-        <div
-          class="nut-collapse-item__icon-box"
-        >
-          <div
-            class="nut-collapse-item__icon"
-            style="transform: translateY(-50%);"
-          >
-            <svg
-              aria-labelledby=""
-              class="nut-icon"
+              aria-labelledby="DownArrow"
+              class="nut-icon nut-icon-DownArrow"
               role="presentation"
               viewBox="0 0 1024 1024"
               xmlns="http://www.w3.org/2000/svg"
@@ -141,6 +45,101 @@ exports[`should match snapshot 1`] = `
       <div
         class="nut-collapse-item__content"
         style="height: 0px;"
+      >
+        <div
+          class="nut-collapse-item__content-text"
+        >
+          京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+        </div>
+      </div>
+    </div>
+    <div
+      class=""
+    >
+      <div
+        class="nut-collapse-item__header"
+      >
+        <div
+          class="nut-collapse-item__title"
+        >
+          标题2
+        </div>
+        <div
+          class="nut-collapse-item__extra"
+        />
+        <div
+          class="nut-collapse-item__icon-box"
+        >
+          <div
+            class="nut-collapse-item__icon"
+            style="transform: translateY(-50%) rotate(180deg);"
+          >
+            <svg
+              aria-labelledby="DownArrow"
+              class="nut-icon nut-icon-DownArrow"
+              role="presentation"
+              viewBox="0 0 1024 1024"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M128 349.867C93.867 332.8 34.133 341.333 8.533 384-8.533 418.133 0 477.867 42.667 503.467 179.2 588.8 315.733 665.6 443.733 750.933c42.667 25.6 93.867 25.6 136.534 0C716.8 665.6 853.333 588.8 981.333 503.467c42.667-25.6 51.2-76.8 25.6-119.467s-76.8-51.2-119.466-25.6C768 435.2 640 512 512 588.8 384 512 256 435.2 128 349.867"
+                fill="currentColor"
+                fill-opacity="0.9"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        class="nut-collapse-item__content"
+        style="height: 0px;"
+      >
+        <div
+          class="nut-collapse-item__content-text"
+        >
+          京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+        </div>
+      </div>
+    </div>
+    <div
+      class=""
+    >
+      <div
+        class="nut-collapse-item__header disabled"
+      >
+        <div
+          class="nut-collapse-item__title"
+        >
+          标题3
+        </div>
+        <div
+          class="nut-collapse-item__extra"
+        />
+        <div
+          class="nut-collapse-item__icon-box"
+        >
+          <div
+            class="nut-collapse-item__icon"
+            style="transform: translateY(-50%);"
+          >
+            <svg
+              aria-labelledby="DownArrow"
+              class="nut-icon nut-icon-DownArrow"
+              role="presentation"
+              viewBox="0 0 1024 1024"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M128 349.867C93.867 332.8 34.133 341.333 8.533 384-8.533 418.133 0 477.867 42.667 503.467 179.2 588.8 315.733 665.6 443.733 750.933c42.667 25.6 93.867 25.6 136.534 0C716.8 665.6 853.333 588.8 981.333 503.467c42.667-25.6 51.2-76.8 25.6-119.467s-76.8-51.2-119.466-25.6C768 435.2 640 512 512 588.8 384 512 256 435.2 128 349.867"
+                fill="currentColor"
+                fill-opacity="0.9"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        class="nut-collapse-item__content"
       >
         <div
           class="nut-collapse-item__content-text"

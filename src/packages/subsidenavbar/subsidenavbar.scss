@@ -1,31 +1,22 @@
-.nut-theme-dark {
-  .nut-subsidenavbar {
-    background-color: $dark5;
-    &__title {
-      background-color: $dark6;
-      color: $dark1;
-      &__text {
-        color: $dark1;
-      }
-    }
-  }
-}
-$nutSidenavbarItemHeight: 40px;
-
 .nut-subsidenavbar {
   &__title {
-    height: $nutSidenavbarItemHeight;
-    padding: 10px 8px 10px 35px;
-    background: #f7f8fa;
+    height: $sidenav-bar-item-height;
+    padding: $sidenavbar-sub-title-padding;
+    box-sizing: border-box;
+    background-color: $sidenavbar-sub-title-background;
+    color: $sidenavbar-sub-title-color;
+    box-sizing: border-box;
   }
+
   &__list {
-    &.nutShow {
+    &.sidenavbar-show {
       .nut-subsidenavbar__content {
         height: auto;
         overflow: inherit;
       }
     }
-    &.nutHide {
+
+    &.sidenavbar-hide {
       .nut-subsidenavbar__content {
         height: 0;
         overflow: hidden;

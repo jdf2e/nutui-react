@@ -1,10 +1,32 @@
 import React, { useState } from 'react'
 import { PlayCircleFill, PoweroffCircleFill } from '@nutui/icons-react'
+import { useTranslate } from '@/sites/assets/locale'
 import { Audio } from './audio'
 import './demo.scss'
 import Cell from '../cell'
 
+interface T {
+  basic: string
+  progress: string
+  none: string
+  control: string
+}
+
 const AudioDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      basic: '基础用法',
+      progress: '进度条模式',
+      none: '自定义模式',
+      control: '控件模式',
+    },
+    'en-US': {
+      basic: 'Basic',
+      progress: 'Progress Mode',
+      none: 'Custom Mode',
+      control: 'Control Mode',
+    },
+  })
   const [duration, setDuration] = useState(0)
   const [voiceIcon, setVoiceIcon] = useState<any>(PlayCircleFill)
   const audioElement = document.querySelectorAll('audio')[2]
@@ -18,24 +40,24 @@ const AudioDemo = () => {
   }
   return (
     <div className="demo">
-      <h2>type=icon</h2>
+      <h2>{translated.basic}</h2>
       <Cell>
         <Audio
-          autoplay={false}
-          url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+          autoPlay={false}
+          src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
           type="icon"
           loop={false}
           preload="auto"
           muted={false}
-          onPlayEnd={() => alert('ended!')}
+          onEnd={() => alert('ended!')}
         />
       </Cell>
-      <h2>type=progress</h2>
+      <h2>{translated.progress}</h2>
       <Cell>
         <Audio
-          autoplay={false}
+          autoPlay={false}
           style={{ fontSize: '20px' }}
-          url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+          src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
           type="progress"
           preload="auto"
           muted={false}
@@ -46,16 +68,16 @@ const AudioDemo = () => {
           onPause={(e) => {
             console.log('progress audio paused', e)
           }}
-          onPlayEnd={() => alert('progress audio ended!')}
+          onEnd={() => alert('progress audio ended!')}
         />
       </Cell>
-      <h2>type=none</h2>
+      <h2>{translated.none}</h2>
       <Cell>
         <Audio
           className="custom-voice-audio"
           id="custom-voice-audio"
-          autoplay={false}
-          url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+          autoPlay={false}
+          src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
           type="none"
           preload="auto"
           onCanPlay={(e: any) => {
@@ -69,18 +91,18 @@ const AudioDemo = () => {
           </div>
         </Audio>
       </Cell>
-      <h2>type=controls</h2>
+      <h2>{translated.control}</h2>
       <Cell>
         <Audio
-          autoplay={false}
-          url="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+          autoPlay={false}
+          src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
           type="controls"
           preload="auto"
           muted={false}
           onPause={(e) => {
             console.log('paused', e)
           }}
-          onPlayEnd={() => alert('ended!')}
+          onEnd={() => alert('ended!')}
         />
       </Cell>
     </div>

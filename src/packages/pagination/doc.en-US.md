@@ -1,60 +1,68 @@
-#  Pagination
+# Pagination
 
-### Intro
-    
+## Intro
+
 When the amount of data is too much, use pagination to separate the data.
-    
-### Install
-``` javascript
-// react
+
+## Install
+
+```tsx
 import { Pagination } from '@nutui/nutui-react';
-```    
+```
+
+## Demo
 
 ### Basic Usage
 
-When the current page number is bound by modelValue, the component is in a controlled state, and the paging display depends on the incoming modelValue, which is generally used with onChange.
-When it does not need to be controlled, the current page number can be specified through defaultCurrentPage
+When the current page number is bound by `value`, the component is in a controlled state, and the paging display depends on the incoming `value`, which is generally used with `onChange`. When it does not need to be controlled, the current page number can be specified through `defaultValue`
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
 import { Pagination } from '@nutui/nutui-react';
 
 const App = () => {
   const [currentPage1, setCurrentPage1] = useState(1)
-  const pageChange1 = (v: any) => {
+  const pageChange1 = (v: number) => {
     const c = v
     setCurrentPage1(c)
   }
   return (
     <Pagination
-      modelValue={currentPage1}
-      totalItems="25"
-      itemsPerPage="5"
+      value={currentPage1}
+      total={25}
+      pageSize={5}
       onChange={pageChange1}
     />
   )
 }
 export default App;
 ```
+
 :::
+
 ### Simple mode
+
 Pagination can be switched to simple mode with simple mode attribute, and pagination cann't display specific page buttons.
+
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
 import { Pagination } from '@nutui/nutui-react';
 
 const App = () => {
   const [currentPage2, setCurrentPage2] = useState(1)
-  const pageChange2 = (v: any) => {
+  const pageChange2 = (v: number) => {
     const c = v
     setCurrentPage2(c)
   }
   return (
     <Pagination
-      modelValue={currentPage2} 
-      pageCount={12} 
+      value={currentPage2} 
+      total={12}
+      pageSize={1}
       mode="simple" 
       onChange={pageChange2} 
     />
@@ -62,91 +70,122 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
-### Show ellipses 
-The ellipses button will display after with force-ellipses attribute, click it can jump quickly.
+### Show ellipses
+
+The ellipses button will display after with force-ellipses attribute, click it can jump quickly 
+
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
 import { Pagination } from '@nutui/nutui-react';
 
 const App = () => {
   const [currentPage3, setCurrentPage3] = useState(1)
-  const pageChange3 = (v: any) => {
+  const pageChange3 = (v: number) => {
     const c = v
     setCurrentPage3(c)
   }
   return (
     <Pagination
-      modelValue={currentPage3}
-      totalItems="125"
-      showPageSize="3"
-      forceEllipses
+      value={currentPage3}
+      total={125}
+      itemSize={2}
+      ellipse
       onChange={pageChange3}
     />
   )
 }
 export default App;
 ```
+
 :::
+
 ### Custom Button
-Pass in a custom method through pageNodeRender, parameters: { number: "page number", text: "page text", active: "active page" }
+
+Pass in a custom method through itemRender, parameters: { number: "page number", text: "page text", active: "active page" } 
+
+
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
 import { Pagination} from '@nutui/nutui-react'; 
 import { Left, Right } from '@nutui/icons-react';
 
 const App = () => {
   const [currentPage4, setCurrentPage4] = useState(1)
-  const pageChange4 = (v: any) => {
+  const pageChange4 = (v: number) => {
     const c = v
     setCurrentPage4(c)
   }
-  const pageNodeRender = (page: any) => {
+  const itemRender = (page: any) => {
     return <div>{page.number === 3 ? 'hot' : page.text}</div>
   }
   return (
     <Pagination
-      modelValue={currentPage4}
-      totalItems="500"
-      showPageSize="5"
+      value={currentPage4}
+      total={500}
+      itemSize={5}
       onChange={pageChange4}
-      pageNodeRender={pageNodeRender} 
-      prevText={<Left />}
-          nextText={<Right />}
+      itemRender={itemRender} 
+      prev={<Left />}
+      next={<Right />}
     />
   )
 }
 export default App;
 ```
-:::
-    
-## API
-    
-### Props
-    
-| Attribute           | Description                             | Type                      | Default            |
-| -------------- | -------------------------------- | ------------------------- | ----------------- |
-| modelValue     | current page number                         | number                    | -                 |
-| defaultValue   | default page number                         | number                    | `1`                 |
-| mode           | Display mode, optional values are: `multi`,`simple` | string                    | `multi`             |
-| prevText       | Customize previous page button content             | string \| ReactNode | `Previous`            |
-| nextText       | Customize next page button content             | string \| ReactNode | `Next`             |
-| pageCount      | total pages                           | string \| number          | Incoming/calculating based on page count |
-| totalItems     | total                         | string \| number          | `0`                 |
-| itemsPerPage   | records per page                       | string \| number          | `10`                |
-| showPageSize   | number of pages displayed                   | string \| number          | `5`                 |
-| forceEllipses  | Whether to show ellipsis                   | boolean                   | `false`             |
-| pageNodeRender | Used to customize page number content             | (page) => ReactNode | -                 |
-    
-### Events
-    
-| Event | Description           | Arguments |
-| -------- | -------------- | -------- |
-| onChange |  when the page number changes | `value`    |
 
+:::
+
+### Uncontrolled Mode
+
+:::demo
+
+```tsx
+import React, { useState } from 'react'
+import { Pagination } from '@nutui/nutui-react'; 
+
+const App = () => {
+  const pageChange5 = (v: number) => {
+    console.log(v)
+  }
+  return (
+    <Pagination
+      defaultValue={15}
+      total={500}
+      pageSize={10}
+      itemSize={3}
+      onChange={pageChange5}
+    />
+  )
+}
+export default App;
+```
+
+:::
+
+## Pagination
+
+### Props
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| value | current page number, controlled value | `number` | `-` |
+| defaultValue | default page number, uncontrolled value | `number` | `1` |
+| mode | Display mode  | `multi` \| `simple` | `multi` |
+| prev | Customize previous page button content | `ReactNode` | `Previous` |
+| next | Customize next page button content | `ReactNode` | `Next` |
+| total | total | `number` | `50` |
+| pageSize | records per page | `number` | `10` |
+| itemSize | number of pages displayed | `number` | `5` |
+| ellipse | Whether to show ellipsis | `boolean` | `false` |
+| itemRender | Used to customize page number content | `(page: {number, text}) => ReactNode` | `-` |
+| onChange | when the page number changes | `(value) => void` | `-` |
 
 ## Theming
 
@@ -154,13 +193,13 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-pagination-color | `$primary-color` |
-| --nutui-pagination-font-size | `$font-size-2` |
-| --nutui-pagination-item-border-color | `#e4e7eb` |
-| --nutui-pagination-disable-color | `$disable-color` |
-| --nutui-pagination-disable-background-color | `#f7f8fa` |
-| --nutui-pagination-item-border-width | `1px` |
-| --nutui-pagination-item-border-radius | `2px` |
-| --nutui-pagination-prev-next-padding | `0 11px` |
+| Name | Description | Default |
+| --- | --- | --- |
+| \--nutui-pagination-color | font color  |  `$primary-color` |
+| \--nutui-pagination-font-size | font size | `$font-size-2` |
+| \--nutui-pagination-item-border-color | border color  | `#e4e7eb` |
+| \--nutui-pagination-disable-color | disable color | `$disable-color` |
+| \--nutui-pagination-disable-background-color | disable background color | `#f7f8fa` |
+| \--nutui-pagination-item-border-width | border width | `1px` |
+| \--nutui-pagination-item-border-radius | border radius  | `2px` |
+| \--nutui-pagination-prev-next-padding | padding  | `0 11px` |

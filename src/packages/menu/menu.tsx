@@ -6,33 +6,29 @@ import { OptionItem } from '@/packages/menuitem/menuitem'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface MenuProps extends BasicComponent {
-  className: string
-  style: React.CSSProperties
   activeColor: string
-  closeOnClickOverlay: boolean
+  closeOnOverlayClick: boolean
   scrollFixed: boolean | string | number
   lockScroll: boolean
-  titleIcon: React.ReactNode
+  icon: React.ReactNode
   children: React.ReactNode
 }
 
 const defaultProps = {
   ...ComponentDefaults,
-  className: '',
-  style: {},
   activeColor: '',
-  closeOnClickOverlay: true,
+  closeOnOverlayClick: true,
   scrollFixed: false,
   lockScroll: true,
-  titleIcon: null,
+  icon: null,
 } as MenuProps
 export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
   const {
     className,
-    titleIcon,
+    icon,
     scrollFixed,
     lockScroll,
-    closeOnClickOverlay,
+    closeOnOverlayClick,
     children,
     activeColor,
     ...rest
@@ -40,7 +36,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
     ...defaultProps,
     ...props,
   }
-  const parentRef = useRef(null)
+  const menuRef = useRef(null)
   const [isScrollFixed, setIsScrollFixed] = useState(false)
 
   const getScrollTop = (el: Element | Window) => {
@@ -62,102 +58,105 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  const [itemShow, setItemShow] = useState<boolean[]>([])
-  const [itemTitle, setItemTitle] = useState<string[]>([])
-  const toggleItemShow = (index: number) => {
-    itemShow[index] = !itemShow[index]
-    const temp = itemShow.map((i: boolean, idx) => (idx === index ? i : false))
-    setItemShow([...temp])
+  const [showMenuItem, setShowMenuItem] = useState<boolean[]>([])
+  const [menuItemTitle, setMenuItemTitle] = useState<string[]>([])
+  const toggleMenuItem = (index: number) => {
+    showMenuItem[index] = !showMenuItem[index]
+    const temp = showMenuItem.map((i: boolean, idx) =>
+      idx === index ? i : false
+    )
+    setShowMenuItem([...temp])
   }
-  const hideItemShow = (index: number) => {
-    itemShow[index] = false
-    setItemShow([...itemShow])
+  const hideMenuItem = (index: number) => {
+    showMenuItem[index] = false
+    console.log([...showMenuItem])
+    setShowMenuItem([...showMenuItem])
   }
   const updateTitle = (text: string, index: number) => {
-    itemTitle[index] = text
-    setItemTitle([...itemTitle])
+    menuItemTitle[index] = text
+    setMenuItemTitle([...menuItemTitle])
   }
-  const parent = () => {
-    return parentRef
-  }
+
   const cloneChildren = () => {
     return React.Children.map(children, (child, index) => {
       return React.cloneElement(child as any, {
-        showPopup: itemShow[index],
-        orderKey: index,
+        ...(child as any).props,
+        show: showMenuItem[index],
+        index,
         activeColor,
         parent: {
-          closeOnClickOverlay,
+          closeOnOverlayClick,
           lockScroll,
-          toggleItemShow,
+          toggleMenuItem,
           updateTitle,
-          hideItemShow,
-          parent,
+          hideMenuItem,
+          menuRef,
         },
       })
     })
   }
+  const menuTitle = () => {
+    return React.Children.map(children, (child, index) => {
+      if (React.isValidElement(child)) {
+        const { title, options, value, disabled, direction } = child.props
+        const selected = options?.filter(
+          (option: OptionItem) => option.value === value
+        )
+        const finallyTitle = () => {
+          if (title) return title
+          if (menuItemTitle && menuItemTitle[index]) return menuItemTitle[index]
+          if (selected && selected.length && selected[0].text)
+            return selected[0].text
+          return ''
+        }
+        return (
+          <div
+            className={classNames('nut-menu__item ', className, {
+              active: showMenuItem[index],
+              disabled,
+            })}
+            style={{ color: showMenuItem[index] ? activeColor : '' }}
+            key={index}
+            onClick={(e) => {
+              e.stopPropagation()
+              !disabled && toggleMenuItem(index)
+            }}
+          >
+            <div
+              className={classNames('nut-menu__title ', {
+                active: showMenuItem[index],
+                disabled,
+              })}
+            >
+              <div className="nut-menu__title-text">{finallyTitle()}</div>
+              {icon ||
+                (direction === 'up' ? (
+                  <ArrowUp2 className="nut-menu__title-icon" />
+                ) : (
+                  <ArrowDown2 className="nut-menu__title-icon" />
+                ))}
+            </div>
+          </div>
+        )
+      }
+      return null
+    })
+  }
   return (
     <div
-      className={`nut-menu ${className} ${isScrollFixed ? 'scroll-fixed' : ''}`}
       {...rest}
-      ref={parentRef}
+      className={classNames(`nut-menu`, className, {
+        'scroll-fixed': isScrollFixed,
+      })}
+      ref={menuRef}
     >
       <div className="nut-menu-relative">
         <div
-          className={`nut-menu__bar ${
-            itemShow.includes(true) ? 'opened' : ''
-          } ${className}`}
-        >
-          {React.Children.toArray(children).map((child, index) => {
-            if (!child) return null
-            const { disabled, title, value, direction, options, className } = (
-              child as any
-            ).props as any
-            const currentTitle = options?.filter(
-              (option: OptionItem) => option.value === value
-            )
-
-            function finallyTitle() {
-              if (title) return title
-              if (itemTitle && itemTitle[index]) return itemTitle[index]
-              if (currentTitle && currentTitle[0] && currentTitle[0].text)
-                return currentTitle[0].text
-              return ''
-            }
-
-            return (
-              <div
-                className={`nut-menu__item ${classNames({
-                  active: itemShow[index],
-                  disabled,
-                })} ${className}`}
-                style={{ color: itemShow[index] ? activeColor : '' }}
-                key={index}
-                onClick={() => {
-                  !disabled && toggleItemShow(index)
-                }}
-              >
-                <div
-                  className={`nut-menu__title ${classNames({
-                    active: itemShow[index],
-                    disabled,
-                  })}`}
-                >
-                  <div className="nut-menu__title-text">{finallyTitle()}</div>
-                  {titleIcon || (
-                    <>
-                      {direction === 'up' ? (
-                        <ArrowUp2 className="nut-menu__title-icon" />
-                      ) : (
-                        <ArrowDown2 className="nut-menu__title-icon" />
-                      )}
-                    </>
-                  )}
-                </div>
-              </div>
-            )
+          className={classNames('nut-menu__bar', {
+            opened: showMenuItem.includes(true),
           })}
+        >
+          {menuTitle()}
         </div>
         {cloneChildren()}
       </div>

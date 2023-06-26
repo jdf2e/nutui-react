@@ -163,7 +163,7 @@ const SwipeDemo = () => {
     //   title: translated.tips,
     //   content:
     //     postion === 'left' ? translated.chooseTips : translated.deleteTips,
-    //   onOk: () => {
+    //   onConfirm: () => {
     //     refDom.current && refDom.current.close()
     //   },
     // })
@@ -261,7 +261,7 @@ const SwipeDemo = () => {
           }
           onActionClick={handleChange}
           onOpen={({ name, position }) => {
-            // Toast.text(translated.open)
+            // Toast.show(translated.open)
             toastShow(translated.open)
           }}
           onClose={handleClose}
@@ -322,7 +322,7 @@ const SwipeDemo = () => {
         <Dialog
           visible={showDialog}
           title={translated.tips}
-          onClosed={() => {
+          onClose={() => {
             refDom.current && refDom.current.close()
             setShowDialog(false)
           }}

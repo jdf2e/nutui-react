@@ -1,17 +1,16 @@
-#  Dialog 对话框
+# Dialog 对话框
 
-### 介绍
+## 介绍
 
 模态对话框，在浮层中显示，引导用户进行相关操作，常用于消息提示、消息确认，或在当前页面内完成特定的交互操作。
 
 弹出框组件支持组件调用。
 
-### 安装
+## 安装
 
-```ts
+```tsx
 import { Dialog } from '@nutui/nutui-react-taro'
 ```
-
 
 ## 代码演示
 
@@ -24,29 +23,95 @@ import React, {useState} from "react";
 import { Cell,Dialog } from '@nutui/nutui-react-taro';
 
 const App = () => {
-  const [visible1, setVisible1] = useState(false);
-  const [visible2, setVisible2] = useState(false);
+  const [visible1, setVisible1] = useState(false)
+  const [visible2, setVisible2] = useState(false)
+  const [visible3, setVisible3] = useState(false)
+  const [visible4, setVisible4] = useState(false)
+  const [visible5, setVisible5] = useState(false)
+  const [visible6, setVisible6] = useState(false)
+  const [visible7, setVisible7] = useState(false);
+
   return (
     <>
     <Cell title="基础弹框" onClick={() => setVisible1(true)} />
     <Dialog 
-        title="组件调用"
-        visible={visible1}
-        onOk={() => setVisible1(false)}
-        onCancel={() => setVisible1(false)}
+      title="组件调用"
+      visible={visible1}
+      onConfirm={() => setVisible1(false)}
+      onCancel={() => setVisible1(false)}
     >
-        如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
     </Dialog>
-    <Cell title="底部按钮 垂直调用" onClick={() => setVisible2(true)} />
+
+    <Cell title="无标题弹框、不锁背景滚动" onClick={() => setVisible2(true)} />
     <Dialog 
-        title="组件调用"
-        visible={visible2}
-        lockScroll
-        footerDirection='vertical'
-        onOk={() => setVisible2(false)}
-        onCancel={() => setVisible2(false)}
+      visible={visible2}
+      lockScroll={false}
+      onConfirm={() => setVisible2(false)}
+      onCancel={() => setVisible2(false)}
     >
-        如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+    </Dialog>
+
+    <Cell title="提示弹框" onClick={() => setVisible3(true)} />
+    <Dialog 
+      title="组件调用"
+      visible={visible3}
+      confirmText='确认'
+      hideCancelButton
+      onConfirm={() => setVisible3(false)}
+    >
+      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+    </Dialog>
+
+    <Cell title="底部按钮 垂直布局调用" onClick={() => setVisible4(true)} />
+    <Dialog 
+      title="组件调用"
+      visible={visible4}
+      footerDirection='vertical'
+      onConfirm={() => setVisible4(false)}
+      onCancel={() => setVisible4(false)}
+    >
+      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+    </Dialog>
+
+    <Cell title="底部 Footer 为 Button 时，点击遮罩不关闭" onClick={() => setVisible5(true)} />
+    <Dialog 
+      title="组件调用"
+      visible={visible5}
+      footerDirection='vertical'
+      closeOnOverlayClick={false}
+      onConfirm={() => setVisible5(false)}
+      onCancel={() => setVissetVisible5ible2(false)}
+    >
+      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+    </Dialog>
+
+    <Cell title="无底部 Footer 区域" onClick={() => setVisible6(true)} />
+    <Dialog 
+      title="组件调用"
+      visible={visible6}
+      footer={null}
+      onClose={() => {
+        setVisible6(false)
+      }}
+    >
+      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+    </Dialog>
+    <Cell title="点击取消时，拦截" onClick={() => setVisible7(true)} />
+    <Dialog 
+      title="点击取消时，拦截"
+      visible={visible7}
+      closeOnOverlayClick={false}
+      beforeCancel={() => {
+        console.log('stop close')
+        return false
+      }}
+      onClose={() => {
+        setVisible7(false)
+      }}
+    >
+      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
     </Dialog>
     </>
   )
@@ -56,38 +121,32 @@ export default App;
 
 :::
 
-## API
+## Dialog
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| visible         | 对话框是否可见               | boolean | -                |
-| title        | 标题                         | ReactNode | -                |
-| content         | 对话框的内容，适用于函数式调用 | ReactNode | -                |
-| footer | 自定义页脚，传入 null 则不显示     | ReactNode | - |
-| confirmText  `v2.0.0`        | 确认按钮文案                        | ReactNode | `确定`              |
-| cancelText          | 取消按钮文案                        | ReactNode | `取消`              |
-| mask          | 是否展示遮罩                        | boolean | `true`              |
-| noOkBtn          | 是否隐藏确定按钮                        | boolean | `false`              |
-| noCancelBtn          | 是否隐藏取消按钮                        | boolean | `false`              |
-| okBtnDisabled          | 禁用确定按钮                        | boolean | `false`              |
-| noFooter          | 是否隐藏底部按钮栏                        | boolean | `false`              |
-| closeOnClickOverlay          | 点击蒙层是否关闭对话框                        | boolean | `true`              |
-| cancelAutoClose          | 取消按钮是否默认关闭弹窗                        | boolean | `true`              |
-| textAlign          | 文字对齐方向，可选值同 css 的 text-align                        | string | `center`              |
-| footerDirection          | 使用横纵方向 可选值 horizontal、vertical                        | string | `horizontal`              |
-| lockScroll          | 背景是否锁定                        | boolean | `false`              |
-
-### Events
-
-| 事件名           | 说明           | 回调参数     |
-|---------------|----------------|--------------|
-| onOk          | 确定按钮回调 | (e?: MouseEvent) => Promise | void |
-| onCancel      | 取消按钮回调 | () => void |
-| onClosed      | 关闭回调，任何情况关闭弹窗都会触发 | () => void |
-| onClickSelf | 点击自身回调 | () => void |
-
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| visible | 对话框是否可见 | `boolean` | `-` |
+| title | 标题 | `ReactNode` | `-` |
+| content | 对话框的内容，适用于函数式调用 | `ReactNode` | `-` |
+| footer | 自定义页脚，传入 null 则不显示 | `ReactNode` | `-` |
+| confirmText | 确认按钮文案 | `ReactNode` | `确定` |
+| cancelText | 取消按钮文案 | `ReactNode` | `取消` |
+| overlay | 是否展示遮罩 | `boolean` | `true` |
+| hideConfirmButton | 是否隐藏确定按钮 | `boolean` | `false` |
+| hideCancelButton | 是否隐藏取消按钮 | `boolean` | `false` |
+| disableConfirmButton | 禁用确定按钮 | `boolean` | `false` |
+| closeOnOverlayClick | 点击蒙层是否关闭对话框 | `boolean` | `true` |
+| footerDirection | 使用横纵方向 可选值 horizontal、vertical | `string` | `horizontal` |
+| lockScroll | 背景是否锁定 | `boolean` | `false` |
+| beforeCancel | 取消前回调，点击取消时触发 | `() => boolean` | `-` |
+| beforeClose | 关闭前回调 | `() => boolean` | `-` |
+| onConfirm | 确定按钮回调 | `(e?: MouseEvent) => Promise \| void` | `-` |
+| onCancel | 取消按钮回调 | `() => void` | `-` |
+| onClose | 关闭回调，任何情况关闭弹窗都会触发 | `() => void` | `-` |
+| onClick | 点击自身回调 | `() => void` | `-` |
+| onOverlayClick | 点击蒙层触发 | `() => void` | `-` |
 
 ## 主题定制
 
@@ -95,23 +154,23 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-dialog-width | `296px` |
-| --nutui-dialog-header-font-weight | `normal` |
-| --nutui-dialog-header-color | `rgba(38, 38, 38, 1)` |
-| --nutui-dialog-footer-justify-content | `space-around` |
-| --nutui-dialog-min-height | `156px` |
-| --nutui-dialog-padding | `28px 24px 16px 24px` |
-| --nutui-dialog-header-height | `20px` |
-| --nutui-dialog-content-margin | `20px 0` |
-| --nutui-dialog-content-max-height | `268px` |
-| --nutui-dialog-content-line-height | `16px` |
-| --nutui-dialog-mask-z-index | `$mask-z-index` |
-| --nutui-dialog-mask-background-color | `$mask-color` |
-| --nutui-dialog-outer-z-index | `$mask-content-z-index` |
-| --nutui-dialog-outer-bordder-radius | `20px` |
-| --nutui-dialog-vertical-footer-ok-margin-top | `10px` |
-| --nutui-dialog-footer-button-min-width | `100px` |
-| --nutui-dialog-footer-cancel-margin-right | `20px` |
-| --nutui-dialog-footer-ok-max-width | `128px` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| \--nutui-dialog-width | 对话框宽度 | `296px` |
+| \--nutui-dialog-header-font-weight | 对话框标题字重 | `normal` |
+| \--nutui-dialog-header-color | 对话框标题字色 | `rgba(38, 38, 38, 1)` |
+| \--nutui-dialog-footer-justify-content | 对话框底部按钮排布 | `space-around` |
+| \--nutui-dialog-min-height | 对话框最小高度 | `156px` |
+| \--nutui-dialog-padding | 对话框padding | `28px 24px 16px 24px` |
+| \--nutui-dialog-header-height | 对话框标题高度 | `20px` |
+| \--nutui-dialog-content-margin | 对话框内容 margin | `20px 0` |
+| \--nutui-dialog-content-max-height | 对话框内容最大高度 | `268px` |
+| \--nutui-dialog-content-line-height | 对话框内容行高 | `16px` |
+| \--nutui-dialog-overlay-z-index | 对话框蒙层的z-index值 | `$mask-z-index` |
+| \--nutui-dialog-overlay-background-color | 对话框蒙层背景色 | `$mask-color` |
+| \--nutui-dialog-outer-z-index | 对话框的z-index | `$mask-content-z-index` |
+| \--nutui-dialog-outer-bordder-radius | 对话框圆角 | `20px` |
+| \--nutui-dialog-vertical-footer-ok-margin-top | 对话框底部按钮纵向排布时的margin值 | `10px` |
+| \--nutui-dialog-footer-button-min-width | 对话框底部按钮最小宽度 | `100px` |
+| \--nutui-dialog-footer-cancel-margin-right | 对话框取消按钮的margin-right | `20px` |
+| \--nutui-dialog-footer-ok-max-width | 对话框确认按钮的最大宽度 | `128px` |

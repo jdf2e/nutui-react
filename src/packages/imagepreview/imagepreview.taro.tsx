@@ -1,14 +1,18 @@
 import React, {
   FunctionComponent,
-  CSSProperties,
   useEffect,
   useState,
   useRef,
   TouchEvent,
 } from 'react'
+import Taro from '@tarojs/taro'
+import { Image as TaroImage, Video as TaroVideo } from '@tarojs/components'
 import Popup from '@/packages/popup/index.taro'
 import Swiper from '@/packages/swiper/index.taro'
 import SwiperItem from '@/packages/swiperitem/index.taro'
+
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { usePropsValue } from '@/utils/use-props-value'
 
 interface Store {
   scale: number
@@ -17,8 +21,7 @@ interface Store {
   originScale: number
 }
 
-export interface ImagePreviewProps {
-  className?: string
+export interface ImagePreviewProps extends BasicComponent {
   images: Array<{
     src: string
   }>
@@ -32,24 +35,30 @@ export interface ImagePreviewProps {
       controls: boolean
     }
   }>
-  show: boolean
-  autoplay: number | string
-  initNo: number
-  contentClose: boolean
-  paginationVisible: boolean
-  style?: CSSProperties
-  paginationColor: string
+  visible: boolean
+  autoPlay: boolean
+  value?: number
+  defaultValue: number
+  closeOnContentClick: boolean
+  indicator: boolean
+  indicatorColor: string
+  showMenuByLongpress: boolean
+  onChange: (value: number) => void
   onClose: () => void
 }
+
 const defaultProps = {
+  ...ComponentDefaults,
   images: [],
   videos: [],
-  show: false,
-  autoplay: 3000,
-  initNo: 1,
-  contentClose: false,
-  paginationVisible: false,
-  paginationColor: '#fff',
+  visible: false,
+  autoPlay: false,
+  defaultValue: 1,
+  closeOnContentClick: false,
+  indicator: false,
+  indicatorColor: '#fff',
+  showMenuByLongpress: false,
+  onChange: (value: number) => {},
   onClose: () => {},
 } as ImagePreviewProps
 export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
@@ -58,20 +67,29 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   const {
     images,
     videos,
-    show,
-    initNo,
-    paginationColor,
-    paginationVisible,
-    autoplay,
-    contentClose,
+    visible,
+    defaultValue,
+    indicatorColor,
+    indicator,
+    autoPlay,
+    closeOnContentClick,
+    showMenuByLongpress,
     onClose,
   } = props
+  const classPrefix = 'nut-imagepreview'
+  const ref = useRef(null)
+  const [innerNo, setInnerNo] = usePropsValue<number>({
+    value: props.value,
+    defaultValue,
+    finalValue: defaultValue,
+    onChange: (val: number) => {
+      props.onChange?.(val)
+    },
+  })
 
-  const nutImagePreview = useRef(null)
-
-  const [showPop, setShowPop] = useState(false)
-  const [active, setActive] = useState(1)
-  const [maxNo, setMaxNo] = useState(1)
+  const [showPop, setShowPop] = useState(visible)
+  const [active, setActive] = useState(0)
+  const [maxNo] = useState(images?.length || 0 + (videos?.length || 0))
   const [store, setStore] = useState({
     scale: 1,
     moveable: false,
@@ -163,7 +181,9 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
       scaleNow()
     }
   }
-
+  useEffect(() => {
+    init()
+  }, [])
   const init = () => {
     document.addEventListener('touchmove', onTouchMove as any)
     document.addEventListener('touchend', onTouchEnd)
@@ -171,43 +191,21 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   }
 
   useEffect(() => {
-    if (show !== undefined) {
-      setShowPop(show)
-      init()
-    }
-  }, [show])
+    setShowPop(visible as boolean)
+  }, [visible])
 
   useEffect(() => {
-    if (initNo !== undefined) {
-      setActive(initNo)
-    }
+    setInnerNo(defaultValue || 1)
+  }, [defaultValue])
 
-    if (show !== undefined) {
-      setShowPop(show)
-    }
-
-    if (images && videos) {
-      setMaxNo(images.length + videos.length)
-    }
-  }, [])
+  useEffect(() => {
+    setActive(innerNo as number)
+  }, [innerNo])
 
   const scaleNow = () => {
-    if (nutImagePreview.current as any) {
-      ;(
-        nutImagePreview.current as any
-      ).style.transform = `scale(${store.scale})`
+    if (ref.current as any) {
+      ;(ref.current as any).style.transform = `scale(${store.scale})`
     }
-  }
-
-  const onCloseInner = () => {
-    setShowPop(false)
-    setActive(1)
-    scaleNow()
-    onClose && onClose()
-    setStore({
-      ...store,
-      scale: 1,
-    })
   }
 
   // 计算两个点的距离
@@ -223,10 +221,19 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   const slideChangeEnd = (page: number) => {
     setActive(page + 1)
   }
-
+  const onCloseInner = () => {
+    setShowPop(false)
+    setActive(1)
+    scaleNow()
+    onClose && onClose()
+    setStore({
+      ...store,
+      scale: 1,
+    })
+  }
   const closeOnImg = () => {
     // 点击内容区域的图片是否可以关闭弹层（视频区域由于nut-video做了限制，无法关闭弹层）
-    if (contentClose) {
+    if (closeOnContentClick) {
       onCloseInner()
     }
   }
@@ -234,44 +241,68 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   return (
     <Popup
       visible={showPop}
-      popClass="custom-pop"
+      className={`${classPrefix}-pop`}
       style={{ width: '100%' }}
       onClick={onCloseInner}
     >
       <div
-        className="nut-imagepreview"
-        ref={nutImagePreview}
+        className={classPrefix}
+        ref={ref}
         onClick={closeOnImg}
         onTouchStart={onTouchStart as any}
       >
         <Swiper
-          autoPlay={autoplay}
-          className="nut-imagepreview-swiper"
+          autoPlay={autoPlay}
+          className={`${classPrefix}-swiper`}
           loop
-          isPreventDefault={false}
-          style={{ display: showPop ? 'block' : 'none' }}
+          height="100%"
+          style={{
+            display: showPop ? 'block' : 'none',
+            '--nutui-indicator-color': indicatorColor,
+          }}
           direction="horizontal"
-          onChange={slideChangeEnd}
-          initPage={initNo && (initNo > maxNo ? maxNo - 1 : initNo - 1)}
-          paginationColor={paginationColor}
-          paginationVisible={paginationVisible}
+          onChange={(e) => slideChangeEnd(e.detail.current)}
+          defaultValue={innerNo && (innerNo > maxNo ? maxNo - 1 : innerNo - 1)}
+          indicator={indicator}
         >
-          {images && images.length > 0
-            ? images.map((item, index) => {
+          {(videos && videos.length > 0
+            ? videos.map((item, index) => {
                 return (
                   <SwiperItem key={index}>
-                    <img
-                      src={item.src}
-                      alt=""
-                      className="nut-imagepreview-img"
+                    <TaroVideo
+                      src={item.source.src}
+                      controls={item.options.controls}
+                      autoplay={false}
+                      loop={false}
+                      muted={item.options.muted}
                     />
                   </SwiperItem>
                 )
               })
-            : []}
+            : []
+          ).concat(
+            images && images.length > 0
+              ? images.map((item, index) => {
+                  return (
+                    <SwiperItem key={index}>
+                      {Taro.getEnv() === 'WEB' ? (
+                        <img src={item.src} alt="" />
+                      ) : (
+                        <TaroImage
+                          src={item.src}
+                          mode="aspectFit"
+                          showMenuByLongpress
+                          style={{ width: '100%', height: '100%' }}
+                        />
+                      )}
+                    </SwiperItem>
+                  )
+                })
+              : []
+          )}
         </Swiper>
       </div>
-      <div className="nut-imagepreview-index">
+      <div className={`${classPrefix}-index`}>
         {active}/{(images ? images.length : 0) + (videos ? videos.length : 0)}
       </div>
     </Popup>

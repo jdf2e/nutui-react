@@ -1,12 +1,12 @@
-#  Video 视频播放器
+# Video 视频播放器
 
-### 介绍
+## 介绍
 
 原生video实现的视频播放器
 
-### 安装
+## 安装
 
-``` ts
+```tsx
 import { Video } from '@nutui/nutui-react';
 ```
 
@@ -15,6 +15,7 @@ import { Video } from '@nutui/nutui-react';
 ### 基础用法
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Cell, Video } from '@nutui/nutui-react';
@@ -47,12 +48,15 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 自动播放
+
 autoplay 属性设置视频自动播放
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Cell, Video } from '@nutui/nutui-react';
@@ -87,12 +91,15 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 初始化静音
+
 muted属性设置视频初始化静音
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Cell, Video } from '@nutui/nutui-react';
@@ -126,12 +133,15 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 视频封面海报设置
+
 poster 属性设置视频海报
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Cell, Video } from '@nutui/nutui-react';
@@ -170,9 +180,11 @@ export default App;
 :::
 
 ### 行内播放
+
 playsinline 属性设置移动端视频行内播放，阻止新打开页面播放（兼容 ios，兼容部分安卓机）
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Cell, Video } from '@nutui/nutui-react';
@@ -206,12 +218,15 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 视频背景图
+
 当设置视频为背景图时需要将 muted 静音、 disabled 禁止操作、loop 循环播放、autoplay 自动播放设置为 true，移动端需要设置 playsinline 行内展示
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Cell, Video } from '@nutui/nutui-react';
@@ -249,12 +264,15 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 视频切换
+
 当视频地址发生变化时，重置视频
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Cell, Video, Button } from '@nutui/nutui-react';
@@ -292,31 +310,23 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
-
-## API
+## Video
 
 ### Props
 
-| 字段                | 说明                                       | 类型    | 默认值   |
-| ------------------- | ------------------------------------------ | ------- | -------- |
-| source             | 视频地址和类型设置                         | Object   | -        |
-| options             | 控制视频播放属性                           | Object  | - |
-| options.autoplay    | 是否自动播放                               | boolean | `false`    |
-| options.poster      | 海报设置                                   | string  | -        |
-| options.loop        | 是否循环播放                               | boolean | `false`    |
-| options.controls    | 是否展示操作栏                             | boolean | `true`     |
-| options.muted       | 是否静音                                   | boolean | `false`    |
-| options.playsinline | 是否设置为行内播放元素（解决安卓兼容问题） | boolean | `false`    |
-
-### Events
-
-| 事件名称 | 说明         | 回调参数 |
-| -------- | ------------ | -------- |
-| play      | 播放         | -       |
-| pause     | 暂停         | -       |
-| playend   | 播放完成回调 | -       |
-| onPlay `v2.0.0`      | 播放         | -       |
-| onPause `v2.0.0`    | 暂停         | -       |
-| onPlayEnd `v2.0.0` | 播放完成回调 | -       |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| source | 视频地址和类型设置 | `object` | `{type: {}, src: ''}` |
+| options | 控制视频播放属性 | `object` | `-` |
+| options.autoplay | 是否自动播放 | `boolean` | `false` |
+| options.poster | 海报设置 | `string` | `-` |
+| options.loop | 是否循环播放 | `boolean` | `false` |
+| options.controls | 是否展示操作栏 | `boolean` | `true` |
+| options.muted | 是否静音 | `boolean` | `false` |
+| options.playsinline | 是否设置为行内播放元素（解决安卓兼容问题） | `boolean` | `false` |
+| onPlay | 播放 | `(element: HTMLVideoElement) => void` | `-` |
+| onPause | 暂停 | `(element: HTMLVideoElement) => void` | `-` |
+| onPlayEnd | 播放完成回调 | `(element: HTMLVideoElement) => void` | `-` |

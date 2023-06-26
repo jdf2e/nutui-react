@@ -1,41 +1,43 @@
-import React, { FunctionComponent, useState, useEffect, useRef } from 'react'
+import React, {
+  FunctionComponent,
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  ReactNode,
+} from 'react'
 import { Image as ImageIcon, ImageError } from '@nutui/icons-react'
-import { useConfig } from '@/packages/configprovider'
+import classNames from 'classnames'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { pxCheck } from '@/utils/px-check'
 
-export interface ImageProps {
-  className: string
-  style: React.CSSProperties
+export interface ImageProps extends BasicComponent {
   src: string
   fit: ImageFit
   position: ImagePosition
   alt: string
   width: string
   height: string
-  round: boolean
   radius: string | number
-  showError: boolean
-  showLoading: boolean
-  slotLoding: React.ReactNode
-  slotError: React.ReactNode
-  isLazy?: boolean
-  loadingImg?: string
-  errorImg?: string
-  onClick?: (e: MouseEvent) => void
-  onLoad?: () => void
-  onError?: () => void
+  error: boolean | ReactNode
+  loading: boolean | ReactNode
+  lazy: boolean
+  onClick: (e: MouseEvent) => void
+  onLoad: () => void
+  onError: () => void
 }
 
-const defaultProps = {
+const defaultProps: Partial<ImageProps> = {
+  ...ComponentDefaults,
   fit: 'fill',
   position: 'center',
   alt: '',
   width: 'center',
   height: '',
-  round: false,
-  showError: true,
-  showLoading: true,
-  isLazy: false,
-} as ImageProps
+  error: true,
+  loading: true,
+  lazy: false,
+}
 
 export type ImageFit =
   | 'contain'
@@ -52,13 +54,13 @@ export type ImagePosition =
   | 'left'
   | string
 
+const classPrefix = 'nut-image'
+
 export const Image: FunctionComponent<
   Partial<ImageProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'onLoad' | 'onError'>
 > = (props) => {
-  const { locale } = useConfig()
   const {
-    children,
     className,
     style,
     src,
@@ -67,47 +69,44 @@ export const Image: FunctionComponent<
     alt,
     width,
     height,
-    round,
     radius,
-    showError,
-    showLoading,
-    slotError,
-    slotLoding,
-    isLazy,
-    loadingImg,
-    errorImg,
+    error,
+    loading,
+    lazy,
     onClick,
     onLoad,
     onError,
   } = { ...defaultProps, ...props }
-  const [loading, setLoading] = useState(true)
+  const [innerLoading, setInnerLoading] = useState(true)
   const [isError, setIsError] = useState(false)
-  const [_src, setSrc] = useState('')
+  const imgRef = useRef<HTMLImageElement>(null)
 
   useEffect(() => {
-    if (src) {
-      setSrc(src)
-      setIsError(false)
-      setLoading(true)
+    if (
+      imgRef.current &&
+      imgRef.current.complete &&
+      imgRef.current.naturalHeight !== 0
+    ) {
+      setInnerLoading(false)
+    } else if (src) {
+      setInnerLoading(true)
     }
   }, [src])
 
   // 图片加载
-  const load = () => {
-    setLoading(false)
+  const handleLoad = () => {
+    setIsError(false)
+    setInnerLoading(false)
     onLoad && onLoad()
   }
   // 图片加载失败
-  const error = () => {
+  const handleError = () => {
     setIsError(true)
-    setLoading(false)
+    setInnerLoading(false)
     onError && onError()
   }
 
-  const pxCheck = (value: string | number): string => {
-    return Number.isNaN(Number(value)) ? String(value) : `${value}px`
-  }
-  const stylebox = {
+  const containerStyle = {
     height: height ? pxCheck(height) : '',
     width: width ? pxCheck(width) : '',
     overflow: radius !== undefined && radius !== null ? 'hidden' : '',
@@ -115,7 +114,7 @@ export const Image: FunctionComponent<
       radius !== undefined && radius !== null ? pxCheck(radius) : '',
   }
 
-  const styles: any = {
+  const imgStyle: any = {
     objectFit: fit,
     objectPosition: position,
     ...style,
@@ -124,7 +123,6 @@ export const Image: FunctionComponent<
   // 图片懒加载
   const observer: any = useRef(null)
   const initObserver = () => {
-    const imgs = document.querySelectorAll('.nut-img.lazyload')
     const options = {
       threshold: [0], // 交会处
       rootMargin: '0px', // 对视口进行收缩和扩张
@@ -142,14 +140,12 @@ export const Image: FunctionComponent<
               img.removeAttribute('data-src')
             }
             // 资源加载后停止监听
-            observer.current.unobserve(item.target)
+            resetObserver()
           }, 300)
         }
       })
     }, options)
-    imgs.forEach((item) => {
-      observer.current.observe(item)
-    })
+    observer.current.observe(imgRef.current)
   }
 
   // 使用disconnect将取消的Observer实例中的所有监听
@@ -158,65 +154,79 @@ export const Image: FunctionComponent<
   }
 
   useEffect(() => {
-    isLazy && initObserver()
+    lazy && initObserver()
 
     return () => {
-      isLazy && resetObserver()
+      lazy && resetObserver()
     }
-  }, [isLazy])
-
-  const loadingBg = {
-    backgroundImage: loadingImg ? `url('${loadingImg}')` : '',
-  }
-  const errorBg = {
-    backgroundImage: errorImg ? `url('${errorImg}')` : '',
-  }
+  }, [lazy])
 
   const imageClick = (event: any) => {
     onClick && onClick(event)
   }
 
+  const renderErrorImg = useCallback(() => {
+    if (!isError) return null
+    if (typeof error === 'boolean' && error === true && !innerLoading) {
+      return (
+        <div className="nut-img-error">
+          <ImageError />
+        </div>
+      )
+    }
+    if (React.isValidElement(error) && !innerLoading) {
+      return <div className="nut-img-error">{error}</div>
+    }
+    return null
+  }, [error, isError])
+
+  const renderLoading = useCallback(() => {
+    if (!loading) return null
+    if (typeof loading === 'boolean' && loading === true && innerLoading) {
+      return (
+        <div className="nut-img-loading">
+          <ImageIcon />
+        </div>
+      )
+    }
+    if (React.isValidElement(loading) && innerLoading) {
+      return <div className="nut-img-loading">{loading}</div>
+    }
+    return null
+  }, [loading, innerLoading])
+
   return (
     <div
-      className={`nut-image ${round ? 'nut-image-round' : ''} ${
-        className || ''
-      }`}
-      style={stylebox}
+      className={classNames(classPrefix, className)}
+      style={containerStyle}
       onClick={(e: any) => {
         imageClick(e)
       }}
     >
-      {isLazy ? (
+      {lazy ? (
         <img
+          ref={imgRef}
           className="nut-img lazyload"
-          style={styles}
-          data-src={_src}
+          style={imgStyle}
+          data-src={src}
           alt={alt}
           loading="lazy"
-          onLoad={load}
-          onError={error}
+          onLoad={handleLoad}
+          onError={handleError}
         />
       ) : (
         <img
+          ref={imgRef}
           className="nut-img"
-          style={styles}
-          src={_src}
+          style={imgStyle}
+          src={src}
           alt={alt}
-          onLoad={load}
-          onError={error}
+          onLoad={handleLoad}
+          onError={handleError}
         />
       )}
-      {loading && showLoading ? (
-        <div className="nut-img-loading" style={loadingBg}>
-          {!loadingImg && (slotLoding || children || <ImageIcon />)}
-        </div>
-      ) : null}
-
-      {isError && showError && !loading ? (
-        <div className="nut-img-error" style={errorBg}>
-          {!errorImg && (slotError || children || <ImageError />)}
-        </div>
-      ) : null}
+      {renderLoading()}
+      {renderErrorImg()}
     </div>
   )
 }

@@ -16,7 +16,7 @@ interface T {
 const NotifyDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       t1: '通知类型',
       t2: '自定义样式',
       t3: '自定义时长为5秒',
@@ -45,25 +45,21 @@ const NotifyDemo = () => {
   const [showNotify, SetShowNotify] = useState(false)
   const [customShow, SetCustomShow] = useState(false)
   const [states, SetStates] = useState({
-    msg: '',
+    message: '',
     type: 'danger',
     duration: 2000,
     position: 'top',
-    color: '',
-    background: '',
   })
   const changeNotify = (
-    msg: string,
+    message: string,
     type?: string,
     duration?: number,
-    color?: string,
     position?: string
   ) => {
     const change = Object.assign(states, {
-      msg,
+      message,
       type,
       duration,
-      color,
       position,
     })
     SetStates(change)
@@ -78,17 +74,18 @@ const NotifyDemo = () => {
       >
         <Notify
           visible={showNotify}
-          msg={states.msg}
           type={states.type}
           duration={states.duration}
           position={states.position}
-          onClosed={() => {
+          onClose={() => {
             SetShowNotify(false)
           }}
           onClick={() => {
             console.log('click')
           }}
-        />
+        >
+          {states.message}
+        </Notify>
         <h2>{translated.basic}</h2>
         <Cell
           title={translated.basic}
@@ -132,13 +129,16 @@ const NotifyDemo = () => {
         <Notify
           className="customer"
           visible={customShow}
-          msg={translated.cusBgNotify}
-          color="#ad0000"
-          background="#ffe1e1"
-          onClosed={() => {
+          style={{
+            '--nutui-notify-text-color': '#ad0000',
+            '--nutui-notify-base-background-color': '#ffe1e1',
+          }}
+          onClose={() => {
             SetCustomShow(false)
           }}
-        />
+        >
+          {translated.cusBgNotify}
+        </Notify>
         <Cell
           title={translated.cusBgNotify}
           onClick={(event: React.MouseEvent) => {
@@ -156,7 +156,7 @@ const NotifyDemo = () => {
         <Cell
           title={translated.cusPostion}
           onClick={(event: React.MouseEvent) => {
-            changeNotify(translated.cusPostion, 'base', 2000, '', 'bottom')
+            changeNotify(translated.cusPostion, 'base', 2000, 'bottom')
             SetShowNotify(true)
           }}
         />

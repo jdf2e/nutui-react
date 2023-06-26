@@ -1,21 +1,3 @@
-@import '../icon/icon.scss';
-.nut-theme-dark {
-  .nut-infiniteloading {
-    .nut-infinite-container {
-      .infiniteLi {
-        color: $dark1;
-      }
-    }
-    .nut-infinite-bottom {
-      .bottom-box {
-        .bottom-text {
-          color: $dark2;
-        }
-      }
-    }
-  }
-}
-
 .nut-infiniteloading {
   display: block;
   width: 100%;
@@ -31,10 +13,7 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      .top-text {
-        font-size: 10px;
-        color: $text-color;
-      }
+      color: $text-color;
     }
   }
   .nut-infinite-container {
@@ -53,10 +32,7 @@
     text-align: center;
 
     .bottom-box {
-      .bottom-text {
-        font-size: 10px;
-        color: $text-color;
-      }
+      color: $text-color;
     }
   }
 }

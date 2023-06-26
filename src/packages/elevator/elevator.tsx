@@ -7,31 +7,31 @@ import React, {
 } from 'react'
 import { useGesture } from '@use-gesture/react'
 import { animated } from '@react-spring/web'
-import bem from '@/utils/bem'
+import classNames from 'classnames'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export const elevatorContext = createContext({} as ElevatorData)
 
-export interface ElevatorProps {
+export interface ElevatorProps extends BasicComponent {
   height: number | string
-  acceptKey: string
-  indexList: any[]
-  isSticky: boolean
+  floorKey: string
+  list: any[]
+  sticky: boolean
   spaceHeight: number
   titleHeight: number
-  className: string
-  style: React.CSSProperties
-  children: React.ReactNode
+  showKeys: boolean
   onClickItem: (key: string, item: ElevatorData) => void
   onClickIndex: (key: string) => void
 }
 const defaultProps = {
+  ...ComponentDefaults,
   height: '200px',
-  acceptKey: 'title',
-  indexList: [] as any[],
-  isSticky: false,
+  floorKey: 'title',
+  list: [] as any[],
+  sticky: false,
   spaceHeight: 23,
   titleHeight: 35,
-  className: '',
+  showKeys: true,
 } as ElevatorProps
 interface ElevatorData {
   name: string
@@ -43,12 +43,14 @@ export const Elevator: FunctionComponent<
 > & { Context: typeof elevatorContext } = (props) => {
   const {
     height,
-    acceptKey,
-    indexList,
-    isSticky,
+    floorKey,
+    list,
+    sticky,
     spaceHeight,
     titleHeight,
+    showKeys,
     className,
+    style,
     onClickItem,
     onClickIndex,
     children,
@@ -57,7 +59,7 @@ export const Elevator: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const b = bem('elevator')
+  const classPrefix = 'nut-elevator'
   const listview = useRef<HTMLDivElement>(null)
   const initData = {
     anchorIndex: 0,
@@ -198,36 +200,37 @@ export const Elevator: FunctionComponent<
   }, [listview])
 
   return (
-    <div className={`${b()} ${className}`} {...rest}>
-      {isSticky && scrollY > 0 ? (
-        <div className={b('list__fixed')}>
-          <span className="fixed-title">
-            {indexList[currentIndex][acceptKey]}
+    <div className={`${classPrefix} ${className}`} style={style} {...rest}>
+      {sticky && scrollY > 0 ? (
+        <div className={`${classPrefix}__list__fixed`}>
+          <span className={`${classPrefix}__list__fixed__title`}>
+            {list[currentIndex][floorKey]}
           </span>
         </div>
       ) : null}
       <div
-        className={b('list')}
+        className={`${classPrefix}__list`}
         style={{ height: Number.isNaN(+height) ? height : `${height}px` }}
       >
-        <div className={b('list__inner')} ref={listview}>
-          {indexList.map((item: any, idx: number) => {
+        <div className={`${classPrefix}__list__inner`} ref={listview}>
+          {list.map((item: any, idx: number) => {
             return (
-              <div className={b('list__item')} key={idx}>
-                <div className={b('list__item__code')}>{item[acceptKey]}</div>
+              <div className={`${classPrefix}__list__item`} key={idx}>
+                <div className={`${classPrefix}__list__item__code`}>
+                  {item[floorKey]}
+                </div>
                 <>
                   {item.list.map((subitem: ElevatorData) => {
                     return (
                       <div
-                        className={b('list__item__name', {
-                          highcolor:
+                        className={classNames({
+                          [`${classPrefix}__list__item__name`]: true,
+                          [`${classPrefix}__list__item__name--highcolor`]:
                             currentData.id === subitem.id &&
-                            currentKey === item[acceptKey],
+                            currentKey === item[floorKey],
                         })}
                         key={subitem.id}
-                        onClick={() =>
-                          handleClickItem(item[acceptKey], subitem)
-                        }
+                        onClick={() => handleClickItem(item[floorKey], subitem)}
                       >
                         {children ? (
                           <>
@@ -247,34 +250,44 @@ export const Elevator: FunctionComponent<
           })}
         </div>
       </div>
-      {indexList.length && scrollStart ? (
-        <div className={b('code--current', { current: true })}>
-          {indexList[codeIndex][acceptKey]}
-        </div>
+      {showKeys ? (
+        <>
+          {list.length && scrollStart ? (
+            <div
+              className={classNames({
+                [`${classPrefix}__code--current`]: true,
+                [`${classPrefix}__code--current--current`]: true,
+              })}
+            >
+              {list[codeIndex][floorKey]}
+            </div>
+          ) : null}
+          <div className={`${classPrefix}__bars`}>
+            <animated.div
+              className={`${classPrefix}__bars__inner`}
+              {...bind()}
+              style={{ touchAction: 'pan-y' }}
+            >
+              {list.map((item: any, index: number) => {
+                return (
+                  <div
+                    className={classNames({
+                      [`${classPrefix}__bars__inner__item`]: true,
+                      [`${classPrefix}__bars__inner__item--active`]:
+                        item[floorKey] === list[currentIndex][floorKey],
+                    })}
+                    data-index={index}
+                    key={index}
+                    onClick={() => handleClickIndex(item[floorKey])}
+                  >
+                    {item[floorKey]}
+                  </div>
+                )
+              })}
+            </animated.div>
+          </div>
+        </>
       ) : null}
-      <div className={b('bars')}>
-        <animated.div
-          className={b('bars__inner')}
-          {...bind()}
-          style={{ touchAction: 'pan-y' }}
-        >
-          {indexList.map((item: any, index: number) => {
-            return (
-              <div
-                className={b('bars__inner__item', {
-                  active:
-                    item[acceptKey] === indexList[currentIndex][acceptKey],
-                })}
-                data-index={index}
-                key={index}
-                onClick={() => handleClickIndex(item[acceptKey])}
-              >
-                {item[acceptKey]}
-              </div>
-            )
-          })}
-        </animated.div>
-      </div>
     </div>
   )
 }

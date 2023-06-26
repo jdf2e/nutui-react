@@ -1,20 +1,18 @@
 # Drag 拖拽
 
-### 介紹
+## 介紹
 
 實現可拖拽的任意元素
 
-### 安裝
+## 安裝
 
-```javascript
-// react
+```tsx
 import { Drag } from '@nutui/nutui-react'
 ```
 
 ## 代碼演示
 
-
-## 基本用法
+### 基础用法
 
 :::demo
 
@@ -43,7 +41,7 @@ export default App;
 
 :::
 
-## 限製拖拽方向
+### 限製拖拽方向
 
 :::demo
 
@@ -77,7 +75,7 @@ export default App;
 
 :::
 
-## 自動吸邊
+### 自動吸邊
 
 :::demo
 
@@ -106,7 +104,8 @@ export default App;
 
 :::
 
-## 限製拖拽邊界
+### 限製拖拽邊界
+
 :::demo
 
 ```tsx
@@ -157,12 +156,12 @@ export default App;
 
 :::
 
-## API
+## Drag
 
 ### Props
 
-| 參數 | 說明 | 類型 | 默認值 |
-| --------------- | ----------------------------- | ------- | ------ |
-| attract | 是否開啟自動吸邊 | boolean | `false` |
-| direction | 拖拽元素的拖拽方向限製，x、y、all三選一 | string |`all` |
-| boundary | 拖拽元素的拖拽邊界 | Object | `{top: 0, left: 0, right: 0, bottom: 0}` |
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| attract | 是否開啟自動吸邊 | `boolean` | `false` |
+| direction | 拖拽元素的拖拽方向限製 | `x` \| `y` \| `all` | `all` |
+| boundary | 拖拽元素的拖拽邊界 | `Object` | `{top: 0, left: 0, right: 0, bottom: 0}` |

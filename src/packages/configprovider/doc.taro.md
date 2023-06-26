@@ -1,12 +1,12 @@
 # ConfigProvider 全局配置
 
-### 介绍
+## 介绍
 
 用于全局配置 NutUI-React 组件，提供主题定制，国际化支持。
 
-### 安装
+## 安装
 
-```ts
+```tsx
 import { ConfigProvider } from '@nutui/nutui-react-taro';
 ```
 
@@ -14,9 +14,7 @@ import { ConfigProvider } from '@nutui/nutui-react-taro';
 
 ### 主题定制
 
-NutUI-React
-可以通过 [CSS 变量](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties)
-来组织样式，通过覆盖这些 CSS 变量，可以实现定制主题、动态切换主题等效果。
+NutUI-React 可以通过 [CSS 变量](https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using_CSS_custom_properties) 来组织样式，通过覆盖这些 CSS 变量，可以实现定制主题、动态切换主题等效果。
 
 #### 通过 CSS 覆盖
 
@@ -33,15 +31,11 @@ NutUI-React
 }
 ```
 
-> @nutui/nutui-react 中带了两个主题文件
-> 默认主题：@nutui/nutui-react/dist/styes/theme-default.scss;
-> 暗黑主题：@nutui/nutui-react/dist/styes/theme-dark.scss;
-> 如果想使用暗黑主题，可以在项目中导入暗黑主题文件。
+> @nutui/nutui-react 中带了两个主题文件 默认主题：@nutui/nutui-react/dist/styles/theme-default.scss; 暗黑主题：@nutui/nutui-react/dist/styles/theme-dark.scss; 如果想使用暗黑主题，可以在项目中导入暗黑主题文件。
 
 #### 通过 ConfigProvider 覆盖
 
-ConfigProvider 组件提供了覆盖 CSS 变量的能力，你需要在根节点包裹一个 ConfigProvider 组件，并通过 theme
-属性来配置一些主题变量。
+ConfigProvider 组件提供了覆盖 CSS 变量的能力，你需要在根节点包裹一个 ConfigProvider 组件，并通过 theme 属性来配置一些主题变量。
 
 :::demo
 
@@ -123,11 +117,11 @@ page {
 
 NutUI-React 提供了 ConfigProvider 组件用于全局配置国际化文案。目前支持以下语言:
 
-- 简体中文 | zh-CN
-- 繁体中文（中国台湾） | zh-TW
-- 维吾尔语 ｜ zh-UG
-- 英语（美式） | en-US
-- 印尼语 ｜ id-ID
+*   简体中文 | zh-CN
+*   繁体中文（中国台湾） | zh-TW
+*   维吾尔语 ｜ zh-UG
+*   英语（美式） | en-US
+*   印尼语 ｜ id-ID
 
 :::demo
 
@@ -151,13 +145,13 @@ export default App;
 
 ### 增加语言包
 
-如果你找不到你需要的语言包，欢迎你在 [英文语言包]() 的基础上创建一个新的语言包，并给我们发一个 Pull Request。
+如果你找不到你需要的语言包，欢迎你在 英文语言包 的基础上创建一个新的语言包，并给我们发一个 Pull Request。
 
-## API
+## ConfigProvider
 
 ### Props
 
-| 参数     | 说明     | 类型      | 默认值  |
-|--------|--------|---------|------|
-| locale | 设置多语言包 | BaseLang | zhCN |
-| theme      | 设置主题   |    Record<string, string>     | -    |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| locale | 设置多语言包 | `BaseLang` | `zhCN` |
+| theme | 设置主题 | `Record<string, string>` | `-` |

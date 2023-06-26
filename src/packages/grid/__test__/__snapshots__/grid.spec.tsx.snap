@@ -106,7 +106,7 @@ exports[`render with custom content 1`] = `
           style="background-color: rgb(238, 238, 238); color: rgb(102, 102, 102);"
         >
           <div
-            class="nut-image   icon"
+            class="nut-image  icon"
           >
             <img
               alt=""

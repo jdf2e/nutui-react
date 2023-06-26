@@ -1,20 +1,21 @@
-# Overlay 
+# Overlay
 
-### Intro
+## Intro
 
 Create a mask layer that is typically used to prevent users from doing other things
 
-### Install
+## Install
 
-
-``` ts
-// react
+```tsx
 import { OverLay } from '@nutui/nutui-react';
 ```
+
+## Demo
 
 ### Basic usage
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Button, Overlay } from '@nutui/nutui-react';
@@ -36,7 +37,6 @@ const App = () => {
         visible={visible}
         onClick={onClose}
         zIndex={2020}
-        lockScroll
         afterShow={() => {
           console.log('afterShow')
         }}
@@ -46,11 +46,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Mask style
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Button, Overlay } from '@nutui/nutui-react';
@@ -81,11 +83,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Set animation time
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Button, Overlay } from '@nutui/nutui-react';
@@ -119,11 +123,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
-### Lock background scrolling
+### Do not lock background scrolling
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Button, Overlay } from '@nutui/nutui-react';
@@ -139,19 +145,21 @@ const App = () => {
   return (
     <>
       <Button type="primary" onClick={handleToggleShow}>
-        Lock background scrolling
+        Do not lock background scrolling
       </Button>
-      <Overlay visible={visible} onClick={onClose} lockScroll />
+      <Overlay visible={visible} onClick={onClose} lockScroll={false} />
     </>
   )
 }
 export default App;
 ```
+
 :::
 
 ### Nested content
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Button, Overlay } from '@nutui/nutui-react';
@@ -195,11 +203,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Click the mask not to close
 
 :::demo
+
 ```tsx
 import React, { useState } from "react";
 import { Button, Overlay } from '@nutui/nutui-react';
@@ -217,7 +227,7 @@ const App = () => {
       <Button type="primary" onClick={handleToggleShow}>
         Click the mask not to close
       </Button>
-      <Overlay visible={visible} lockScroll closeOnOverlayClick={false}>
+      <Overlay visible={visible} closeOnOverlayClick={false}>
         <div className="wrapper">
           <div className="content" onClick={onClose}>here is the text</div>
         </div>
@@ -227,23 +237,23 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
-## API
+## Overlay
 
 ### Props
 
-| Property                   | Description             | Type           | Default |
-| ---------------------- | ---------------- | -------------- | ------ |
-| visible                   | Whether the current component is displayed | boolean        | `false`  |
-| zIndex                | Mask hierarchy         | number | `2000`   |
-| duration               | Animation duration, in seconds | number | `0.3`    |
-| lockScroll          | Whether the background is locked   | boolean  | `false`     |
-| closeOnOverlayClick | Tap Mask off | boolean        | `true`   |
-| onClick  | Triggered when the button is clicked | `event: Event` |
-| afterClose | Triggered after complete shutdown | () => void        | `-`   |
-| afterShow | Trigger after complete display | () => void        | `-`   |
-
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| visible | Whether the current component is displayed | `boolean` | `false` |
+| zIndex | Mask hierarchy | `number` | `2000` |
+| duration | Animation duration, in seconds | `number` | `0.3` |
+| lockScroll | Whether the background is locked | `boolean` | `true` |
+| closeOnOverlayClick | Tap Mask off | `boolean` | `true` |
+| onClick | Triggered when the button is clicked | `event: Event` | `-` |
+| afterClose | Triggered after complete shutdown | `() => void` | `-` |
+| afterShow | Trigger after complete display | `() => void` | `-` |
 
 ## Theming
 
@@ -253,6 +263,6 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default Value |
 | --- | --- | --- |
-| --nutui-overlay-bg-color | Overlay background color | `$gray7` |
-| --nutui-overlay-content-bg-color | Mask layer nested content background color |`$gray6` |
-| --nutui-overlay-content-color | Mask layer nested content font color | `$gray1` |
+| \--nutui-overlay-bg-color | Overlay background color | `$gray7` |
+| \--nutui-overlay-content-bg-color | Mask layer nested content background color | `$gray6` |
+| \--nutui-overlay-content-color | Mask layer nested content font color | `$gray1` |

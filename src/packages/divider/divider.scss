@@ -1,32 +1,25 @@
-.nut-theme-dark {
-  a {
-    color: $primary-link-color !important;
-  }
-  .nut-divider {
-    color: $white;
-  }
-}
-
 .nut-divider {
   display: flex;
   align-items: center;
   font-size: $divider-text-font-size;
   color: $divider-text-color;
   margin: $divider-margin;
+  border: 0 solid currentColor;
   width: 100%;
 
   &::before,
   &::after {
     content: '';
-    border: $divider-line-height solid currentColor;
+    border-style: inherit;
+    border-color: inherit;
     border-width: $divider-line-height 0 0;
     height: $divider-line-height;
     flex: 1;
   }
 
-  &.nut-divider__center,
-  &.nut-divider__left,
-  &.nut-divider__right {
+  &__center,
+  &__left,
+  &__right {
     &::before {
       margin-right: $divider-before-margin-right;
     }
@@ -36,32 +29,26 @@
     }
   }
 
-  &.nut-divider__left {
+  &__left {
     &::before {
       max-width: 10%;
     }
   }
 
-  &.nut-divider__right {
+  &__right {
     &::after {
       max-width: 10%;
     }
   }
 
-  &.nut-divider__dashed {
-    &::before,
-    &::after {
-      border-style: dashed;
-    }
-  }
-
-  &.nut-divider__hairline {
+  &__hairline {
     &::before,
     &::after {
       transform: scaleY(0.5);
     }
   }
-  &.nut-divider__vertical {
+
+  &__vertical {
     position: relative;
     top: $divider-vertical-top;
     display: inline-block;

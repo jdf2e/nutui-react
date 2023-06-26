@@ -1,13 +1,12 @@
 # TrendArrow 指标趋势
 
-### 介绍
+## 介绍
 
 带有箭头指示的百分比数字,用以展示指标趋势
 
-### 安装
+## 安装
 
-```javascript
-// React
+```tsx
 import { TrendArrow } from '@nutui/nutui-react';
 ```
 
@@ -24,8 +23,8 @@ import { TrendArrow, Cell } from '@nutui/nutui-react'
 const App = () => {
   return (
     <Cell>
-        <TrendArrow syncTextColor={false} rate={1} />
-        <TrendArrow syncTextColor={false} rate={-0.2535} />
+        <TrendArrow syncColor={false} value={1} />
+        <TrendArrow syncColor={false} value={-0.2535} />
     </Cell>
   );
 };
@@ -45,8 +44,8 @@ import { TrendArrow, Cell } from '@nutui/nutui-react'
 const App = () => {
   return (
     <Cell>
-        <TrendArrow rate={10.2365} />
-        <TrendArrow rate={-0.2535} />
+        <TrendArrow value={10.2365} />
+        <TrendArrow value={-0.2535} />
     </Cell>
   );
 };
@@ -66,8 +65,8 @@ import { TrendArrow, Cell } from '@nutui/nutui-react'
 const App = () => {
   return (
      <Cell>
-        <TrendArrow digits={1} rate={10.2365} />
-        <TrendArrow digits={3} rate={-0.2535} />
+        <TrendArrow digits={1} value={10.2365} />
+        <TrendArrow digits={3} value={-0.2535} />
     </Cell>
   );
 };
@@ -87,8 +86,8 @@ import { TrendArrow, Cell } from '@nutui/nutui-react'
 const App = () => {
   return (
     <Cell>
-        <TrendArrow arrowLeft rate={0.2535} />
-        <TrendArrow arrowLeft rate={-0.2535} />
+        <TrendArrow arrowLeft value={0.2535} />
+        <TrendArrow arrowLeft value={-0.2535} />
     </Cell>
   );
 };
@@ -108,8 +107,8 @@ import { TrendArrow, Cell } from '@nutui/nutui-react'
 const App = () => {
   return (
     <Cell>
-        <TrendArrow showSign rate={1} />
-        <TrendArrow showSign rate={-0.2535} />
+        <TrendArrow symbol value={1} />
+        <TrendArrow symbol value={-0.2535} />
     </Cell>
   );
 };
@@ -129,8 +128,8 @@ import { TrendArrow, Cell } from '@nutui/nutui-react'
 const App = () => {
   return (
     <Cell>
-        <TrendArrow showSign rate={0} />
-        <TrendArrow showSign showZero rate={0} />
+        <TrendArrow symbol value={0} />
+        <TrendArrow symbol zero value={0} />
     </Cell>
   );
 };
@@ -150,14 +149,14 @@ import { TrendArrow, Cell } from '@nutui/nutui-react'
 const App = () => {
   return (
     <Cell>
-        <TrendArrow rate={10.2365} riseColor="rgb(73,143,242)" />
-        <TrendArrow rate={-0.2535} showSign dropColor="rgb(255, 190, 13)" />
+        <TrendArrow value={10.2365} riseColor="rgb(73,143,242)" />
+        <TrendArrow value={-0.2535} symbol dropColor="rgb(255, 190, 13)" />
         <TrendArrow
-        syncTextColor={false}
-        rate={-0.2535}
-        showSign
-        textColor="rgb(39,197,48)"
-        dropColor="rgb(39,197,48)"
+        syncColor={false}
+        value={-0.2535}
+        symbol
+        color="rgb(39,197,48)"
+        dropColor="rgb(255, 190, 13)"
         />
     </Cell>
   );
@@ -174,19 +173,13 @@ export default App;
 ```tsx
 import  React from "react"
 import { TrendArrow, Cell, Icon } from '@nutui/nutui-react'
-import { Success, Failure, HeartFill } from '@nutui/icons-react'
+import { Success, Failure } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Cell>
-        <TrendArrow
-        rate={10.2365}
-        upIcon={<Success color="blue" width="18" height="18" />}
-        />
-        <TrendArrow rate={-10.2365} downIcon={<Failure color="red" />} />
-        <TrendArrow rate={10.2365}>
-        <HeartFill color="#fa2c19" />
-        </TrendArrow>
+        <TrendArrow value={10.2365} riseIcon={<Success color="blue" />} />
+        <TrendArrow value={-10.2365} downIcon={<Failure color="red" />} />
     </Cell>
   );
 };
@@ -195,29 +188,23 @@ export default App;
 
 :::
 
-
-## API
+## TrendArrow
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
-| rate         | 数值，大于0时箭头向上，小于0时箭头向下    | number | -                |
-| digits         | 小数位精度               | number | `2`               |
-| showSign         | 是否显示加减号               | boolean | `false`               |
-| showZero         | 是否显示 0               | boolean | `false`               |
-| arrowLeft        | 是否在数字左侧显示箭头     | boolean | `false`               |
-| syncTextColor   | 文字颜色是否与箭头同步               | boolean | `true`   |
-| textColor        | 文字颜色               | string | `#333333`               |
-| riseColor         | 向上箭头颜色               | string | `#fa2c19`               |
-| dropColor         | 向下箭头颜色               | string | `#64b578`              |
-| upIcon`v2.0.0`          | 自定义向上箭头icon       | React.ReactNode |  `<TriangleUp/>`              |
-| downIcon`v2.0.0`          | 自定义向下箭头icon    | React.ReactNode | `<TriangleDown/>`               |
-| iconSize`v2.0.0弃用`         | 箭头大小               | string | `12px`               |
-| upIconName`v2.0.0弃用`         | 自定义向上箭头icon               | string | `triangle-up`               |
-| downIconName`v2.0.0弃用`         | 自定义向下箭头icon               | string | `triangle-down`               |
-
-
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| value | 数值，大于0时箭头向上，小于0时箭头向下 | `number` | `-` |
+| digits | 小数位精度 | `number` | `2` |
+| symbol | 是否显示加减号 | `boolean` | `false` |
+| zero | 是否显示 0 | `boolean` | `false` |
+| arrowLeft | 是否在数字左侧显示箭头 | `boolean` | `false` |
+| syncColor | 文字颜色是否与箭头同步 | `boolean` | `true` |
+| color | 文字颜色 | `string` | `#333333` |
+| riseColor | 向上箭头颜色 | `string` | `#fa2c19` |
+| dropColor | 向下箭头颜色 | `string` | `#64b578` |
+| riseIcon | 自定义向上箭头icon | `React.ReactNode` | `<TriangleUp/>` |
+| downIcon | 自定义向下箭头icon | `React.ReactNode` | `<TriangleDown/>` |
 
 
 ## 主题定制
@@ -226,9 +213,7 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-trendarrow-font-size | `14px` |
-| --nutui-trendarrow-before-icon-margin | `4px` |
-| --nutui-trendarrow-font-size | `14px` |
-| --nutui-trendarrow-before-icon-margin | `4px` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| \--nutui-trendarrow-font-size | 指标趋势的文字大小 | `14px` |
+| \--nutui-trendarrow-icon-margin | 指标趋势的文字与图标间距 | `4px` |

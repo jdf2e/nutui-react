@@ -17,7 +17,7 @@ interface T {
 const EllipsisDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       header: '头部省略',
       end: '尾部省略',
       middle: '中间省略',
@@ -64,9 +64,9 @@ const EllipsisDemo = () => {
           <Ellipsis
             content={content}
             onClick={() => {
-              Toast.text('Clicked!')
+              Toast.show('Clicked!')
             }}
-            onChange={(type) => Toast.text(type)}
+            onChange={(type) => Toast.show(type)}
             direction="start"
             expandText={translated.expand}
             collapseText={translated.collapse}

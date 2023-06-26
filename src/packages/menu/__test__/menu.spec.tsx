@@ -36,7 +36,7 @@ test('test props', () => {
         value={0}
         disabled
         columns={2}
-        optionsIcon={<Success />}
+        icon={<Success />}
         activeTitleClass="activeTitleClass"
         inactiveTitleClass="inactiveTitleClass"
         onChange={testClick}

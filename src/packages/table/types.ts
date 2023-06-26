@@ -2,8 +2,6 @@ import React from 'react'
 import { BasicComponent } from '@/utils/typings'
 
 export interface BasicTableProps extends BasicComponent {
-  className: string
-  style: React.CSSProperties
   columns: Array<TableColumnProps>
   data: Array<any>
   bordered: boolean
@@ -11,7 +9,7 @@ export interface BasicTableProps extends BasicComponent {
   striped?: boolean
   noData?: React.ReactNode
   sorterIcon?: React.ReactNode
-  onSorter?: (item: TableColumnProps, data: Array<any>) => void
+  onSort?: (item: TableColumnProps, data: Array<any>) => void
   showHeader?: boolean
 }
 

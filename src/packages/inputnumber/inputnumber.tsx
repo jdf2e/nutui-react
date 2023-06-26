@@ -1,5 +1,4 @@
 import React, {
-  useState,
   useEffect,
   useRef,
   FunctionComponent,
@@ -16,15 +15,13 @@ export interface InputNumberProps extends BasicComponent {
   disabled: boolean
   min: string | number
   max: string | number
-  readonly: boolean
+  readOnly: boolean
   value: string | number
   defaultValue: string | number
   allowEmpty: boolean
   step: string | number
   digits: string | number
   async: boolean
-  className: string
-  style: React.CSSProperties
   formatter?: (displayValue: string | number) => string
   onPlus: (e: MouseEvent) => void
   onMinus: (e: MouseEvent) => void
@@ -42,7 +39,7 @@ const defaultProps = {
   disabled: false,
   min: 1,
   max: 9999,
-  readonly: false,
+  readOnly: false,
   allowEmpty: false,
   defaultValue: 0,
   step: 1,
@@ -60,7 +57,7 @@ export const InputNumber: FunctionComponent<
     disabled,
     min,
     max,
-    readonly,
+    readOnly,
     value,
     defaultValue,
     allowEmpty,
@@ -83,9 +80,9 @@ export const InputNumber: FunctionComponent<
   }
   const inputRef = useRef('')
 
-  let [_checked, setChecked] = usePropsValue<string | number>({
-    value: value,
-    defaultValue: defaultValue,
+  const [_checked, setChecked] = usePropsValue<string | number>({
+    value,
+    defaultValue,
   })
 
   useEffect(() => {
@@ -241,13 +238,13 @@ export const InputNumber: FunctionComponent<
 
   const focusValue = (e: FocusEvent<HTMLInputElement>) => {
     if (disabled) return
-    if (readonly) return
+    if (readOnly) return
     onFocus && onFocus(e)
   }
 
   const burValue = (e: ChangeEvent<HTMLInputElement>) => {
     if (disabled) return
-    if (readonly) return
+    if (readOnly) return
     const input = e.target as HTMLInputElement
     let value = input.valueAsNumber
     if (Number.isNaN(value) && !allowEmpty) {
@@ -276,7 +273,7 @@ export const InputNumber: FunctionComponent<
             min={min}
             max={max}
             disabled={disabled}
-            readOnly={readonly}
+            readOnly={readOnly}
             value={_checked}
             onInput={changeFormatValue}
             onBlur={burFormatValue}
@@ -288,7 +285,7 @@ export const InputNumber: FunctionComponent<
             min={min}
             max={max}
             disabled={disabled}
-            readOnly={readonly}
+            readOnly={readOnly}
             value={_checked}
             onInput={changeValue}
             onBlur={burValue}

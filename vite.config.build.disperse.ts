@@ -13,7 +13,10 @@ const outputEntries: any = {}
 
 config.nav.forEach((item) => {
   item.packages.forEach((element) => {
-    const { name, show, type, exportEmpty } = element
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    const { name, show, exportEmpty, exclude } = element
+    if (exclude) return
     if (show || exportEmpty) {
       outputEntries[`./${name.toLowerCase()}`] = `./${name}`
       entries[name] = path.join(

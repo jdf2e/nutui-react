@@ -3,7 +3,7 @@ import { useTranslate } from '@/sites/assets/locale'
 import { TrendArrow } from './trendarrow'
 import Cell from '../cell'
 import './demo.scss'
-import { Failure, HeartFill, Success } from '@nutui/icons-react'
+import { Failure, Success } from '@nutui/icons-react'
 
 interface T {
   basic: string
@@ -18,7 +18,7 @@ interface T {
 const TrendArrowDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title1: '改变文字颜色',
       title2: '指定小数位',
       title3: '箭头在前面',
@@ -28,7 +28,7 @@ const TrendArrowDemo = () => {
       title7: '自定义图标',
     },
     'zh-TW': {
-      basic: '基本用法',
+      basic: '基础用法',
       title1: '改变文字颜色',
       title2: '指定小数位',
       title3: '箭头在前面',
@@ -43,7 +43,7 @@ const TrendArrowDemo = () => {
       title2: 'Specify decimal places',
       title3: 'Arrow ahead',
       title4: 'Show sign',
-      title5: 'Whether to show 0',
+      title5: 'Show zero or not',
       title6: 'Custom color',
       title7: 'Custom icon',
     },
@@ -53,56 +53,50 @@ const TrendArrowDemo = () => {
       <div className="demo">
         <h2>{translated.basic}</h2>
         <Cell>
-          <TrendArrow syncTextColor={false} rate={1} />
-          <TrendArrow syncTextColor={false} rate={-0.2535} />
+          <TrendArrow syncColor={false} value={1} />
+          <TrendArrow syncColor={false} value={-0.2535} />
         </Cell>
         <div className="title">{translated.title1}</div>
         <Cell>
-          <TrendArrow rate={10.2365} />
-          <TrendArrow rate={-0.2535} />
+          <TrendArrow value={10.2365} />
+          <TrendArrow value={-0.2535} />
         </Cell>
         <div className="title">{translated.title2}</div>
         <Cell>
-          <TrendArrow digits={1} rate={10.2365} />
-          <TrendArrow digits={3} rate={-0.2535} />
+          <TrendArrow digits={1} value={10.2365} />
+          <TrendArrow digits={3} value={-0.2535} />
         </Cell>
         <div className="title">{translated.title3}</div>
         <Cell>
-          <TrendArrow arrowLeft rate={0.2535} />
-          <TrendArrow arrowLeft rate={-0.2535} />
+          <TrendArrow arrowLeft value={0.2535} />
+          <TrendArrow arrowLeft value={-0.2535} />
         </Cell>
         <div className="title">{translated.title4}</div>
         <Cell>
-          <TrendArrow showSign rate={1} />
-          <TrendArrow showSign rate={-0.2535} />
+          <TrendArrow symbol value={1} />
+          <TrendArrow symbol value={-0.2535} />
         </Cell>
         <div className="title">{translated.title5}</div>
         <Cell>
-          <TrendArrow showSign rate={0} />
-          <TrendArrow showSign showZero rate={0} />
+          <TrendArrow symbol value={0} />
+          <TrendArrow symbol zero value={0} />
         </Cell>
         <div className="title">{translated.title6}</div>
         <Cell>
-          <TrendArrow rate={10.2365} riseColor="rgb(73,143,242)" />
-          <TrendArrow rate={-0.2535} showSign dropColor="rgb(255, 190, 13)" />
+          <TrendArrow value={10.2365} riseColor="rgb(73,143,242)" />
+          <TrendArrow value={-0.2535} symbol dropColor="rgb(255, 190, 13)" />
           <TrendArrow
-            syncTextColor={false}
-            rate={-0.2535}
-            showSign
-            textColor="rgb(39,197,48)"
-            dropColor="rgb(39,197,48)"
+            syncColor={false}
+            value={-0.2535}
+            symbol
+            color="rgb(39,197,48)"
+            dropColor="rgb(255, 190, 13)"
           />
         </Cell>
         <div className="title">{translated.title7}</div>
         <Cell>
-          <TrendArrow
-            rate={10.2365}
-            upIcon={<Success color="blue" width="18" height="18" />}
-          />
-          <TrendArrow rate={-10.2365} downIcon={<Failure color="red" />} />
-          <TrendArrow rate={10.2365}>
-            <HeartFill color="#fa2c19" />
-          </TrendArrow>
+          <TrendArrow value={10.2365} riseIcon={<Success color="blue" />} />
+          <TrendArrow value={-10.2365} downIcon={<Failure color="red" />} />
         </Cell>
       </div>
     </>

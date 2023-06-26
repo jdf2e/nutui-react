@@ -4,10 +4,9 @@
 
 Hovering and collecting experience interaction for quick navigation
 
-### Install
+## Install
 
-``` javascript
-// react
+```tsx
 import { FixedNav } from '@nutui/nutui-react';
 ```
 
@@ -16,7 +15,8 @@ import { FixedNav } from '@nutui/nutui-react';
 ### Basic Usage
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
 
@@ -70,7 +70,7 @@ export default App;
 
 ### Left side effect
 
-``` tsx
+```tsx
 import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
 
@@ -124,11 +124,9 @@ export default App;
 
 ```
 
-
-
 ### 取消背景遮罩
 
-``` tsx
+```tsx
 import React, { useState } from "react";
 import { FixedNav } from '@nutui/nutui-react';
 
@@ -181,7 +179,7 @@ export default App;
 
 ### Custom use
 
-```` tsx
+```tsx
 import React, { useState } from "react";
 import { Icon, FixedNav } from '@nutui/nutui-react';
 
@@ -243,12 +241,11 @@ const App = () => {
   )
 };
 export default App;
-````
-
+```
 
 ### Support drag and drop
 
-```` tsx
+```tsx
 import React, { useState } from "react";
 import { Drag, FixedNav } from '@nutui/nutui-react';
 
@@ -297,25 +294,24 @@ const App = () => {
   )
 };
 export default App;
-````
+```
 
 ## FixedNav
 
 ### Props
 
 | Field | Description | Type | Default Value |
-|:---------------|:----------------------------|:--------|:----------------------------|
-| visible | whether to open | boolean | `false` |
-| list | Floating list content data | Array | `[]` |
-| activeText | Collapse list button text | string | `Collapse navigation` |
-| inactiveText | Expand List Button Text | string | `Quick Navigation` |
-| type | navigation direction, optional left right | string | `right` |
-| overlay | Whether to show the mask when expanding | boolean | `true` |
-| position | fixed vertical position | object | `{top: 'auto', bottom: 'auto'}` |
-| content | custom button | ReactNode | - |
-| children | Customize expanded list content | ReactNode | - |
-| onChange | expand/collapse button callback | `value: boolean` |
-| onSelect | Fired after selection | `item, event: MouseEvent}` |
+| --- | --- | --- | --- |
+| visible | whether to open | `boolean` | `false` |
+| list | Floating list content data | `Array` | `[]` |
+| activeText | Collapse list button text | `string` | `Collapse navigation` |
+| inactiveText | Expand List Button Text | `string` | `Quick Navigation` |
+| type | navigation direction | `left` \| `right` | `right` |
+| overlay | Whether to show the mask when expanding | `boolean` | `true` |
+| position | fixed vertical position | `object` | `{top: 'auto', bottom: 'auto'}` |
+| content | custom button | `ReactNode` | `-` |
+| onChange | expand/collapse button callback | `value: boolean` | `-` |
+| onSelect | Fired after selection | `item, event: MouseEvent}` | `-` |
 
 ## Theme
 
@@ -325,7 +321,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| --nutui-fixednav-bg-color | background color | `#fff` |
-| --nutui-fixednav-font-color | font color | `#000` |
-| --nutui-fixednav-index | zIndex | `201` |
-| --nutui-fixednav-item-active-color | active color | `$primary-color` |
+| \--nutui-fixednav-bg-color | background color | `#fff` |
+| \--nutui-fixednav-font-color | font color | `#000` |
+| \--nutui-fixednav-index | zIndex | `201` |
+| \--nutui-fixednav-item-active-color | active color | `$primary-color` |

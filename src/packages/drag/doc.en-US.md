@@ -1,13 +1,12 @@
-# Drag 
+# Drag
 
-### Intro
+## Intro
 
 Implement draggable arbitrary elements.
 
-### Install
+## Install
 
-```javascript
-// react
+```tsx
 import { Drag } from '@nutui/nutui-react'
 ```
 
@@ -42,7 +41,7 @@ export default App;
 
 :::
 
-##  Limit Direction
+### Limit Direction
 
 :::demo
 
@@ -76,7 +75,7 @@ export default App;
 
 :::
 
-## Attract
+### Attract
 
 :::demo
 
@@ -105,7 +104,8 @@ export default App;
 
 :::
 
-## Limit Boundaries
+### Limit Boundaries
+
 :::demo
 
 ```tsx
@@ -156,13 +156,12 @@ export default App;
 
 :::
 
-## API
+## Drag
 
 ### Props
 
-
-| Attribute            | Description               | Type   | Default  |
-| :-------- | :------------------------------------------------ | :------------- | :---------------------------------- |
-| attract   | Whether to enable automatic edge suction  | boolean        | `false`                                |
-| direction | The drag direction limit of the dragged element **x**/**y**/**all**| string   | `all`         |
-| boundary  | The drag boundary of the dragged element   | Object         | `{top: 0, left: 0, right: 0, bottom: 0}` |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| attract | Whether to enable automatic edge suction | `boolean` | `false` |
+| direction | The drag direction limit of the dragged element | `x` \| `y` \| `all` | `all` |
+| boundary | The drag boundary of the dragged element | `Object` | `{top: 0, left: 0, right: 0, bottom: 0}` |
