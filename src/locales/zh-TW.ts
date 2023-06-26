@@ -32,7 +32,8 @@ const zhTW: BaseLang = {
     start: '開始',
     confirm: '確認',
     title: '行事曆選擇',
-    monthTitle: (year: number, month: number) => `${year}年${month}月`,
+    monthTitle: (year: number, month: number) =>
+      `${year}年${Number(month) < 10 ? `0${Number(month)}` : month}月`,
     today: '今天',
     loadPreviousMonth: '加載上一個月',
     noEarlierMonth: '沒有更早月份',
@@ -58,7 +59,7 @@ const zhTW: BaseLang = {
     second: '秒',
   },
   address: {
-    selectRegion: '請選擇所在地區',
+    selectRegion: '請選擇地址',
     deliveryTo: '配送至',
     chooseAnotherAddress: '選擇其他地址',
   },

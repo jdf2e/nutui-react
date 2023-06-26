@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { Failure, Loading, Success, Tips } from '@nutui/icons-react-taro'
-import Overlay from '@/packages/overlay/index'
+import Overlay from '@/packages/overlay/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type ToastPositionType = 'top' | 'bottom' | 'center'
@@ -19,6 +19,7 @@ export interface ToastProps extends BasicComponent {
   type: string
   title: string
   closeOnOverlayClick: boolean
+  lockScroll: boolean
   size: string | number
   visible: boolean
   onClose: () => void
@@ -35,6 +36,7 @@ const defaultProps = {
   type: 'text',
   title: '',
   closeOnOverlayClick: false,
+  lockScroll: false,
   contentClassName: '', // 内容自定义样式名
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   visible: false,
@@ -59,6 +61,7 @@ export const Toast: FunctionComponent<
     type,
     title,
     closeOnOverlayClick,
+    lockScroll,
     contentClassName,
     size,
     visible,
@@ -135,6 +138,7 @@ export const Toast: FunctionComponent<
           style={style}
           className={`${classPrefix}__overlay-default ${className}`}
           closeOnOverlayClick={closeOnOverlayClick}
+          lockScroll={lockScroll}
           onClick={() => {
             clickCover()
           }}

@@ -15,7 +15,6 @@ import CollapseContext from '../collapse/context'
 export interface CollapseItemProps extends BasicComponent {
   title: ReactNode
   name: string
-  isOpen: boolean
   expandIcon: ReactNode
   disabled: boolean
   rotate: number
@@ -26,10 +25,8 @@ const defaultProps = {
   ...ComponentDefaults,
   title: null,
   name: '',
-  isOpen: false,
   expandIcon: null,
   disabled: false,
-  rotate: 180,
   extra: null,
 } as CollapseItemProps
 export const CollapseItem: FunctionComponent<
@@ -39,12 +36,13 @@ export const CollapseItem: FunctionComponent<
   const {
     children,
     title,
-    isOpen,
     name,
     disabled,
     expandIcon,
     rotate,
     extra,
+    style,
+    className,
     ...rest
   } = {
     ...defaultProps,
@@ -56,9 +54,6 @@ export const CollapseItem: FunctionComponent<
   // 获取 Dom 元素
   const wrapperRef: any = useRef(null)
   const contentRef: any = useRef(null)
-  const [iconStyle, setIconStyle] = useState({
-    transform: 'translateY(-50%)',
-  })
   const [refRandomId] = useState(() => Math.random().toString(36).slice(-8))
   const target = `#nut-collapse__content-${refRandomId}`
 
@@ -69,8 +64,16 @@ export const CollapseItem: FunctionComponent<
     return false
   }, [name, context.isOpen])
 
+  const iconStyle = useMemo(() => {
+    return expanded
+      ? { transform: `translateY(-50%) rotate(${rotate || context.rotate}deg)` }
+      : { transform: 'translateY(-50%)' }
+  }, [expanded, rotate])
+
   const handleClick = () => {
-    context.updateValue(name)
+    if (!disabled) {
+      context.updateValue(name)
+    }
   }
 
   const [timer, setTimer] = useState<any>(null)
@@ -121,10 +124,6 @@ export const CollapseItem: FunctionComponent<
     const end = expanded ? currentHeight : '0px'
     inAnimation.current = true
     setWrapperHeight(start)
-    const newIconStyle = expanded
-      ? { transform: `translateY(-50%) rotate(${rotate}deg)` }
-      : { transform: 'translateY(-50%)' }
-    setIconStyle(newIconStyle)
     setTimeout(() => {
       setWrapperHeight(end)
       inAnimation.current = false
@@ -137,10 +136,18 @@ export const CollapseItem: FunctionComponent<
     }, 100)
   }
 
-  useEffect(toggle, [expanded])
+  const init = useRef(true)
+
+  useEffect(() => {
+    if (init.current) {
+      init.current = false
+    } else {
+      toggle()
+    }
+  }, [expanded])
 
   return (
-    <div className={classPrefix} {...rest}>
+    <div className={classNames(classPrefix, className)} style={style} {...rest}>
       <div
         className={classNames(`${classPrefix}__header`, { disabled })}
         onClick={handleClick}

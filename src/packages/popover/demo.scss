@@ -1,8 +1,6 @@
 .demo {
   .nut-popover-content {
     width: 120px;
-    --nutui-popover-menu-item-hover-text-color: 'rgb(255, 255, 255)';
-    --nutui-popover-menu-item-hover-background-color: '#f00';
   }
 }
 
@@ -41,4 +39,12 @@
     background: linear-gradient(135deg, #fa2c19 0%, #fa6419 100%);
     border-radius: 10px;
   }
+}
+
+.custom-color {
+  --nutui-popover-primary-text-color: rgb(255, 255, 255);
+  --nutui-popover-content-background-color: rgb(255, 0, 0);
+  --nutui-popover-white-background-color: rgb(255, 0, 0);
+  --nutui-popover-menu-item-hover-text-color: rgb(255, 255, 255);
+  --nutui-popover-menu-item-hover-background-color: rgb(255, 0, 0);
 }

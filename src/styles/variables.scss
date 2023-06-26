@@ -748,47 +748,46 @@ $toast-inner-text-align: var(--nutui-toast-inner-text-align, 'center') !default;
 $backtop-border-color: var(--nutui-backtop-border-color, #e0e0e0) !default;
 
 // calendar（✅）
-$calendar-primary-color: var(
-  --nutui-calendar-primary-color,
+$calendar-active-background-color: var(
+  --nutui-calendar-active-background-color,
   $primary-color
+) !default;
+$calendar-choose-background-color: var(
+  --nutui-calendar-choose-background-color,
+  rgba(#fa2c19, 0.09)
 ) !default;
 $calendar-choose-color: var(
   --nutui-calendar-choose-color,
-  rgba(#fa2c19, 0.09)
-) !default;
-$calendar-choose-font-color: var(
-  --nutui-calendar-choose-font-color,
   $primary-color
 ) !default;
-$calendar-base-color: var(--nutui-calendar-base-color, #333333) !default;
 $calendar-disable-color: var(--nutui-calendar-disable-color, #d1d0d0) !default;
-$calendar-base-font: var(--nutui-calendar-base-font, $font-size-3) !default;
-$calendar-title-font: var(--nutui-calendar-title-font, $font-size-4) !default;
+$calendar-base-font-size: var(
+  --nutui-calendar-base-font-size,
+  $font-size-3
+) !default;
+$calendar-title-font-size: var(
+  --nutui-calendar-title-font-size,
+  $font-size-4
+) !default;
 $calendar-title-font-weight: var(
   --nutui-calendar-title-font-weight,
   500
 ) !default;
-$calendar-sub-title-font: var(
-  --nutui-calendar-sub-title-font,
+$calendar-sub-title-font-size: var(
+  --nutui-calendar-sub-title-font-size,
   $font-size-2
 ) !default;
-$calendar-text-font: var(--nutui-calendar-text-font, $font-size-1) !default;
-$calendar-day-font: var(--nutui-calendar-day-font, 16px) !default;
-$calendar-day-active-border-radius: var(
-  --nutui-calendar-day-active-border-radius,
-  0px
-) !default;
-$calendar-day-width: var(--nutui-calendar-day-width, 14.28%) !default;
-$calendar-day-height: var(--nutui-calendar-day-height, 64px) !default;
-$calendar-day-font-weight: var(--nutui-calendar-day-font-weight, 500) !default;
-$calendar-day67-font-color: var(
-  --nutui-calendar-day67-font-color,
+$calendar-day67-color: var(
+  --nutui-calendar-day67-color,
   $primary-color
 ) !default;
-$calendar-top-slot-height: var(--nutui-calendar-top-slot-height, 24px) !default;
-$calendar-month-title-font-size: var(
-  --nutui-calendar-month-title-font-size,
-  inherit
+$calendar-header-height: var(--nutui-calendar-header-height, 24px) !default;
+$calendar-day-width: var(--nutui-calendar-day-width, 14.28%) !default;
+$calendar-day-height: var(--nutui-calendar-day-height, 60px) !default;
+$calendar-day-font-weight: var(--nutui-calendar-day-font-weight, 500) !default;
+$calendar-day-active-border-radius: var(
+  --nutui-calendar-day-active-border-radius,
+  4px
 ) !default;
 
 //overlay（✅）
@@ -800,9 +799,13 @@ $overlay-content-bg-color: var(
 $overlay-content-color: var(--nutui-overlay-content-color, $gray1) !default;
 //popup（✅）
 $popup-close-icon-margin: var(--nutui-popup-close-icon-margin, 16px) !default;
-$popup-border-radius: var(--nutui-popup-border-radius, 20px) !default;
+$popup-border-radius: var(--nutui-popup-border-radius, 24px) !default;
 $popup-close-icon-color: var(--nutui-popup-close-icon-color, #969799) !default;
 $popup-close-icon-size: var(--nutui-popup-close-icon-size, 30px) !default;
+$popup-title-padding: var(--nutui-popup-title-padding, 15px) !default;
+$popup-title-font-size: var(--nutui-popup-title-font-size, 18px) !default;
+$popup-title-line-height: var(--nutui-popup-title-line-height, 18px) !default;
+$popup-title-border-bottom: var(--nutui-popup-title-border-bottom, 0) !default;
 
 // Notify（✅）
 $notify-text-color: var(--nutui-notify-text-color, $white) !default;
@@ -898,51 +901,10 @@ $swiper-indicator-item-background-color: var(
 ) !default;
 
 //address
-$address-region-tab-line: linear-gradient(
+$address-tab-line-background: linear-gradient(
   90deg,
   $primary-color 0%,
   $primary-color-end 100%
-) !default;
-$address-icon-color: var(--nutui-address-icon-color, $primary-color) !default;
-$address-header-title-font-size: var(
-  --nutui-address-header-title-font-size,
-  18px
-) !default;
-$address-header-title-color: var(
-  --nutui-address-header-title-color,
-  #262626
-) !default;
-$address-region-tab-font-size: var(
-  --nutui-address-region-tab-font-size,
-  13px
-) !default;
-$address-region-tab-color: var(
-  --nutui-address-region-tab-color,
-  #1d1e1e
-) !default;
-$address-region-tab-active-item-font-weight: var(
-  --nutui-address-region-tab-active-item-font-weight,
-  bold
-) !default;
-$address-region-tab-line-border-radius: var(
-  --nutui-address-region-tab-line-border-radius,
-  0
-) !default;
-$address-region-tab-line-opacity: var(
-  --nutui-address-region-tab-line-opacity,
-  1
-) !default;
-$address-region-item-color: var(
-  --nutui-address-region-item-color,
-  #333
-) !default;
-$address-region-item-font-size: var(
-  --nutui-address-region-item-font-size,
-  $font-size-1
-) !default;
-$address-item-margin-right: var(
-  --nutui-address-item-margin-right,
-  9px
 ) !default;
 
 //steps（✅）
@@ -1782,15 +1744,6 @@ $empty-description-padding: var(
 // cascader（✅）
 $cascader-font-size: var(--nutui-cascader-font-size, $font-size-2) !default;
 $cascader-line-height: var(--nutui-cascader-line-height, 22px) !default;
-$cascader-title-padding: var(
-  --nutui-cascader-title-padding,
-  24px 20px 17px
-) !default;
-$cascader-title-font-size: var(--nutui-cascader-title-font-size, 18px) !default;
-$cascader-title-line-height: var(
-  --nutui-cascader-title-line-height,
-  20px
-) !default;
 $cascader-pane-height: var(--nutui-cascader-pane-height, 342px) !default;
 $cascader-pane-paddingTop: var(--nutui-cascader-pane-paddingTop, 10px) !default;
 $cascader-icon-checklist-marginLeft: var(

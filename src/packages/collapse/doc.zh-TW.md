@@ -313,6 +313,8 @@ const App = () => {
 | title | 標題欄左側內容 | `ReactNode` | `-` |
 | disabled | 標題欄是否禁用 | `boolean` | `false` |
 | extra | 標題欄副標題 | `ReactNode` | `-` |
+| rotate | 點擊摺疊和展開的旋轉角度,在自定義圖標模式下生效 | `string` \| `number`  | `180` |
+| expandIcon | 自定義展開圖標 | `ReactNode` | `-` |
 | onChange | 切換面闆時觸發 | `(activeName, name, status) => void` | `-` |
 
 ## 主題定制

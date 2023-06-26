@@ -163,6 +163,7 @@ export default App
 | icon | 自定义图标，对应icon组件，支持图片链接 | `string` | `-` |
 | size | 文案尺寸，三选一 | `small` \| `base` \| `large` | `base` |
 | closeOnOverlayClick | 是否在点击遮罩层后关闭提示 | `boolean` | `false` |
+| lockScroll | 背景是否锁定 | `boolean` | `false` |
 | type | 弹框类型 可选值（text、success、fail、warn、loading） | `string` | `-` |
 | visible | 弹窗是否显示开关 | `boolean` | `false` |
 | onClose | 关闭时触发的事件 | `Function` | `null` |

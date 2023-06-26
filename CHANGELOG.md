@@ -1,3 +1,32 @@
+# v2.0.0-beta.1
+`2023-06-21`
+
+* :bug: fix(collapse): 测试问题修复 (#1132) @Eiinu
+* :bug: fix: address taro 白屏 (#1140) @xiaoyatong
+* :bug: fix: popup title (#1143) @xiaoyatong
+* :bug: fix: remove bem (#1138) @oasis-cloud
+* :bug: fix: 修复toast组件屏幕锁定不能滚动的问题 (#1134) @junjun666
+* :bug: fix: 单元测试问题修复 (#1137) @Eiinu
+* 🛠 refactor: address (#1104) @xiaoyatong
+* 🛠 refactor: calendar (#1087) @xiaoyatong
+* 🔨 chore(ci): delete sync-gitcode.yml @Eiinu
+* 🔨 chore: popover review (#1127) @junjun666
+* 🔨 chore: 更新 taro 版本到 3.6.8 @oasis-cloud
+* 🔨 chore: 移除 @bem-react/classname (#1142) @oasis-cloud
+
+
+# v2.0.0-alpha.18
+`2023-06-16`
+
+* 🔨 chore(tabbar): 调整 Badge 相关 Props (#1126) @Eiinu
+* 📖 docs: update migrate-from-v1.md (#1131) @Eiinu
+* :sparkles: feat: 修改升级文档 (#1125) @oasis-cloud
+* :bug: fix: button 组件在 taro h5 中的类型优化 (#1133) @oasis-cloud
+* :bug: fix: uploader 英文文档修改 (#1124) @oasis-cloud
+* :bug: fix: 修复inputnumber在taro H5样式失效的问题 (#1130) @junjun666
+* :bug: fix: 完善migrate-from-v1文档 (#1129) @songsong
+
+
 # v2.0.0-alpha.17
 `2023-06-14`
 

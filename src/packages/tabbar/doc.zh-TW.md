@@ -265,7 +265,6 @@ export default App;
 | dot | 徽標是否為小點 | `boolean` | `false` |
 | top | 徽標的上下偏移量，支持單位設置，可設置為：5 等 | `number` | `0` |
 | right | 徽標的左右偏移量，支持單位設置，可設置為：5 等 | `number` | `0` |
-| color | 徽標的背景顏色，默認值為當前主題色 | `string` | `-` |
 
 ## 主題定制
 
