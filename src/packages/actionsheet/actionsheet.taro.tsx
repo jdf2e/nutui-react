@@ -49,7 +49,7 @@ export const ActionSheet: FunctionComponent<
   }
 
   const chooseItem = (item: ItemType<string | boolean>, index: number) => {
-    if (!item.disable) {
+    if (!item.disabled) {
       onSelect && onSelect(item, index)
     }
   }
@@ -75,7 +75,7 @@ export const ActionSheet: FunctionComponent<
               return (
                 <div
                   className={`${classPrefix}__item ${
-                    item.disable ? 'disabled' : ''
+                    item.disabled ? 'disabled' : ''
                   } ${item.danger ? 'danger' : ''}`}
                   key={index}
                   onClick={() => chooseItem(item, index)}

@@ -499,8 +499,8 @@ export default App
 | location            | The pop-up position, the specific parameter values ​​inside can refer to the above position customization example | `string`                              | `bottom`              |
 | offset              | the offset of the occurrence position                                                                             | `string[] \| number[]`                | `[0, 12]`             |
 | showArrow           | whether to show small arrows                                                                                      | `boolean`                             | `true`                |
-| closeOnClickAction  | Whether to close when clicking action                                                                             | `boolean`                             | `true`                |
-| closeOnClickOutside | Whether to close when clicking outside                                                                            | `boolean`                             | `true`                |
+| closeOnActionClick  | Whether to close when clicking action                                                                             | `boolean`                             | `true`                |
+| closeOnOutsideClick | Whether to close when clicking outside                                                                            | `boolean`                             | `true`                |
 | targetId            | Custom target id                                                                                                  | `string`                              | `-`                   |
 | onClick             | Click to toggle the popover display state                                                                         | `() => void`                          | `() => {}`            |
 | onSelect            | Fired when an option is clicked                                                                                   | `(item: List, index: number) => void` | `(item, index) => {}` |

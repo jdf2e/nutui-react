@@ -177,7 +177,7 @@ const App = () => {
             onClick={(e) => {
               console.log('listClick', e.target)
             }}
-            onClickItem={(e, val) => {
+            onItemClick={(e, val) => {
               console.log('dom', e.target)
               console.log('value', val)
             }}
@@ -253,7 +253,7 @@ const App = () => {
             list={horseLamp1}
             speed={10}
             duration={1000}
-            onClickItem={(e, v) => {
+            onItemClick={(e, v) => {
               console.log('onclick-custom', v)
             }}
             rightIcon={<Fabulous width={16} height={16} color="#f0250f" />}
@@ -283,7 +283,7 @@ export default App
 | wrap | 是否开启文本换行 | `boolean` | `false` |
 | onClick | 外层点击事件回调 | `(event: any) => void` | `-` |
 | onClose | 关闭通知栏时触发 | `(event: any) => void` | `-` |
-| onClickItem | 垂直滚动多条数据时，点击当前展示的信息时触发 | `(event: any, value: any) => void` | `-` |
+| onItemClick | 垂直滚动多条数据时，点击当前展示的信息时触发 | `(event: any, value: any) => void` | `-` |
 
 ### Props（direction=vertical）
 

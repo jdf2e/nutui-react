@@ -452,8 +452,8 @@ const InternalCascader: ForwardRefRenderFunction<
           title={popup && (props.title as ReactNode)}
           left={props.left}
           // todo 只关闭，不处理逻辑。和popup的逻辑不一致。关闭时需要增加是否要处理回调
-          onClickOverlay={closePopup}
-          onClickCloseIcon={closePopup}
+          onOverlayClick={closePopup}
+          onCloseIconClick={closePopup}
         >
           {renderTabs()}
         </Popup>
