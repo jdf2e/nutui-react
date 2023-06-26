@@ -55,8 +55,8 @@ const TrendArrowDemo = () => {
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <Cell>
-          <TrendArrow syncColor={false} value={1} />
-          <TrendArrow syncColor={false} value={-0.2535} />
+          <TrendArrow sync={false} value={1} />
+          <TrendArrow sync={false} value={-0.2535} />
         </Cell>
         <div className="title">{translated.title1}</div>
         <Cell>
@@ -70,8 +70,8 @@ const TrendArrowDemo = () => {
         </Cell>
         <div className="title">{translated.title3}</div>
         <Cell>
-          <TrendArrow arrowLeft value={0.2535} />
-          <TrendArrow arrowLeft value={-0.2535} />
+          <TrendArrow left value={0.2535} />
+          <TrendArrow left value={-0.2535} />
         </Cell>
         <div className="title">{translated.title4}</div>
         <Cell>
@@ -88,7 +88,7 @@ const TrendArrowDemo = () => {
           <TrendArrow value={10.2365} riseColor="rgb(73,143,242)" />
           <TrendArrow value={-0.2535} symbol dropColor="rgb(255, 190, 13)" />
           <TrendArrow
-            syncColor={false}
+            sync={false}
             value={-0.2535}
             symbol
             color="rgb(39,197,48)"
@@ -98,7 +98,7 @@ const TrendArrowDemo = () => {
         <div className="title">{translated.title7}</div>
         <Cell>
           <TrendArrow value={10.2365} riseIcon={<Success color="blue" />} />
-          <TrendArrow value={-10.2365} downIcon={<Failure color="red" />} />
+          <TrendArrow value={-10.2365} dropIcon={<Failure color="red" />} />
         </Cell>
       </div>
     </>
