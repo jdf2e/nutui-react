@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode, useMemo, useState } from 'react'
+import React, { FunctionComponent, useMemo, useState } from 'react'
 import classNames from 'classnames'
 import { RectDown } from '@nutui/icons-react'
 import Popup from '@/packages/popup'
@@ -8,7 +8,6 @@ import { ComponentDefaults } from '@/utils/typings'
 
 export interface NumberKeyboardProps extends PopupProps {
   visible: boolean
-  title?: ReactNode
   confirmText?: string
   type: 'default' | 'rightColumn'
   custom: Array<string>

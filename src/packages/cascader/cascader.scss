@@ -6,18 +6,6 @@
   font-size: $cascader-font-size;
   line-height: $cascader-line-height;
 
-  &__title {
-    background-color: $gray6;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: $cascader-title-padding;
-    font-weight: bold;
-    line-height: $cascader-title-line-height;
-    color: $gray1;
-    font-size: $cascader-title-font-size;
-  }
-
   .nut-tabs__titles {
     padding: $cascader-tabs-item-padding;
     background: $gray6;

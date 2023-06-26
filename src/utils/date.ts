@@ -33,7 +33,7 @@ const Utils = {
   getMonthPreDay(year: number, month: number): number {
     const date = new Date(`${year}/${month}/01`)
     let day = date.getDay()
-    if (day == 0) {
+    if (day === 0) {
       day = 7
     }
     return day
@@ -117,10 +117,10 @@ const Utils = {
    * 时间是否相等
    * @return {Boolean}
    */
-  isEqual(date1: string, date2: string): boolean {
-    const startTime = new Date(date1).getTime()
-    const endTime = new Date(date2).getTime()
-    if (startTime == endTime) {
+  isEqual(date1 = '', date2: string): boolean {
+    const startTime = new Date(date1.replace('-', '/')).getTime()
+    const endTime = new Date(date2.replace('-', '/')).getTime()
+    if (startTime === endTime) {
       return true
     }
     return false

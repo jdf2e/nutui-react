@@ -306,10 +306,9 @@ const PopoverDemo = () => {
           </div>
         </Picker>
         <Popover
+          className="custom-color"
           visible={customPositon}
           targetId="pickerTarget"
-          background="#1a1a1a"
-          color="rgb(255, 255, 255)"
           list={positionList}
           location={curPostion}
         ></Popover>
@@ -335,11 +334,10 @@ const PopoverDemo = () => {
 
         <h2>自定义颜色</h2>
         <Popover
+          className="custom-color"
           visible={customColor}
           list={itemList}
           location="right-start"
-          background="#f00"
-          color="rgb(255, 255, 255)"
           onClick={() => {
             customColor ? setCustomColor(false) : setCustomColor(true)
           }}

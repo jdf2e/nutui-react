@@ -13,7 +13,7 @@ NutUI React 1.x 到 NutUI React 2.x 存在一些不兼容更新，需要仔细�
 ## 兼容更新
 1. 组件样式处理
    - 新增了按需引入 css 文件的支持。可通过 babel-import-plugin 插件实现：
-```js
+```json
 // Webpack .babelrc 或 babel.config.js中配置
 plugins: [
   [
@@ -97,9 +97,8 @@ plugins: [
 - `overlayClass` 重命名为 `className`
 - `overlayStyle` 重命名为 `style`
 - `closeOnClickOverlay` 重命名为 `closeOnOverlayClick`
-- 纠正 `lockScroll` 文档说明，默认值应为 `true`
-- 增加 `afterClose` 和 `afterShow`，用于完全关闭后触发的回调和完全展示后触发的回调
-- 完善 `Overlay` 的 demo 示例
+- 更改 `lockScroll` 默认值为 `true`
+- 新增 `afterClose` 和 `afterShow`，用于完全关闭后触发的回调和完全展示后触发的回调
 #### Popup
 - `popClass` 重命名为 `className`，统一将组件的样式类名使用 `className`，不再指定特殊名字，减轻用户使用的记忆成本
 - `overlayClass` 重命名为 `OverlayClassName`，继承自`Overlay`
@@ -113,6 +112,10 @@ plugins: [
 - 删除 `dashed`, 通过 `style` 属性实现
 - 删除 `hairline`, 默认为 `true`
 #### Grid
+- 移除 `fontSize`，可自行控制传入的组件字体大小
+- 移除 `border`，作为默认样式
+- `columnNum` 重命名为 `columns`
+- `GridItem` 使用方式修改为 `Grid.Item`
 #### Layout
 #### Sticky
 - 删除 `top` 和 `bottom`，改为 `threshold`
@@ -123,12 +126,12 @@ plugins: [
 - `isSticky` 重命名为 `sticky`
 - 新增`showKeys`，是否展示右侧导航
 #### FixedNav
-- 删除 `fixednavClass`，通过 `className` 实现
 - `unActiveText` 重命名为 `inactiveText`
 - `navList` 重命名为 `list`
 - `slotBtn` 重命名为 `content`
-- 删除 `slotList`，通过 `children` 实现
 - `onSelected` 重命名为 `onSelect`
+- 删除 `fixednavClass`，通过 `className` 实现
+- 删除 `slotList`，通过 `children` 实现
 #### Indicator
 - 删除 `block`，暴露自定义节点
 - 删除 `align`，暴露自定义节点
@@ -156,30 +159,30 @@ plugins: [
 - 移除 `onClickTitle` `onClickRight` `onClickIcon`，通过在`left`、`title`、`right`自定义事件实现，参考文档demo示例
 - 
 #### Pagination
+- 新增 `defaultValue` 非受控值
 - `modelValue` 重命名为 `value`，受控值
-- 增加 `defaultValue` 非受控值
-- `prevText` 重命名为 `prev`，改为 `ReactNode`
-- `nextText` 重命名为 `next`，改为 `ReactNode`
+- `prevText` 重命名为 `prev`，类型修改为 `ReactNode`
+- `nextText` 重命名为 `next`，类型修改为 `ReactNode`
 - `forceEllipses` 重命令为 `ellipse`
 - `showPageSize` 重命名为 `itemSize`
 - `itemsPerpage` 重命名为 `pageSize`
 - `totalitems` 重命名为 `total`
 - `pageNodeRender` 重命名为 `itemRender`
-- 移除 `pageCount`，通过 `total` 与 `pageSize` 实现
+- 移除 `pageCount`，通过 `total` 与 `pageSize` 组合实现
 #### SideNavBar
 - `offset` 重命名为 `indent`
 #### Tabbar
 - `unactiveColor` 重命名为 `inactiveColor`
-- `tabTitle` 重命名为 `title`，改为 `ReactNode`
-- `icon` 类型改为 `ReactNode`，移除其他 `icon` 关联属性
+- `tabTitle` 重命名为 `title`，类型修改为 `ReactNode`
 - `bottom` 重命名为 `fixed`
 - `safeAreaInsetBottom` 重命名为 `safeArea`
 - `visible` 重命名为 `defaultValue`，非受控
 - `activeVisible` 重命名为 `value`，受控
-- 移除 `num`，支持传入所有 Badge Props
 #### TabbarItem
 - 使用方式修改为 `Tabbar.Item`
+- `icon` 类型改为 `ReactNode`，移除其他 `icon` 关联属性
 - 移除 `href`，通过 `onSwitch` 事件控制链接与路由跳转
+- 移除 `num`，支持传入所有 Badge Props
 #### Tabs
 - 删除 `background`，通过 `className` 或 `style` 控制
 - 删除 `titleScroll`, 默认支持滚动
@@ -198,6 +201,21 @@ plugins: [
 - `paneKey` 重命名为 `value`
 ### 数据录入
 #### Calendar
+
+- `poppable` 更名为 `popup`
+- `isAutoBackFill` 更名为 `autoBackfill`
+- `toDateAnimation` 更名为 `scrollAnimation`
+- `startText` 类型改为 `ReactNode`
+- `endText` 类型改为 `ReactNode`
+- `confirmText` 类型改为 `ReactNode`
+- `onBtn` 更名为 `renderHeaderButtons`
+- `onDay` 更名为 `renderDay`
+- `onTopInfo` 更名为 `renderDayTop`
+- `onBottomInfo` 更名为 `renderDayBottom`
+- `onSelected` 更名为 `onClickDay`
+- `onChoose` 更名为 `onConfirm`
+- `onYearMonthChange` 更名为 `onPageChange`
+
 #### Cascader
 - 新增 `defaultValue`，其中 `defaultValue` 用于非受控，原 `value` 用于受控。两者的类型都改为 `(number | string | undefined)[]`
 - `checkedIcon` 重命名为 `activeIcon`
@@ -241,12 +259,13 @@ plugins: [
 - 增加 `onclick` 用于收集子组件的 `ref`
 #### Input
 #### InputNumber
-- 增加 `allowEmpty`, 是否允许内容为空
-- 优化新增 `value`和 `defaultValue` , 增加默认值和受控
+- 增加 `allowEmpty`, 用于允许内容是否为空
+- 新增 `defaultValue`，用于非受控，`value` 用于受控
 - `decimalPlaces` 重命名为 `digits`
 - `isAsync` 重命名为 `async`
-- 删除 `inputWidth` 和 `buttonSize`, 通过css变量实现
-- 新增 taro 的 `formatter` 属性开发
+- 移除 `inputWidth`, 通过`--nutui-inputnumber-input-width`控制输入框的宽度
+- 移除 `buttonSize`, 通过`–nutui-inputnumber-button-width` 和 `–nutui-inputnumber-button-height`控制按钮的宽度和高度
+- taro 新增 `formatter` 属性, 用于指定输入框展示值的格式
 #### NumberKeyboard
 - `randomKeys` 重命名为 `random`
 - `customKey` 重命名为 `custom`
@@ -328,14 +347,14 @@ plugins: [
 - `isPreview` 重命名为 ` preview`
 - `defaultImg` 重命名为 ` previewUrl`
 - `defaultFileList` 重命名为 ` defaultValue`
-- `uploadIconTip` 重命名为 `uploadLabel`
+- `uploadIconTip` 重命名为 `uploadLabel`，类型变更为 `ReactNode`
 - `onBeforeUpload` 重命名为 `beforeUpload`
 - `onBeforeXhrUpload` 重命名为 `beforeXhrUpload`
 - `onBeforeDelete` 重命名为 `beforeDelete`
 - `onRemove` 重命名为 `onDelete`
-- 增加 `imageFit`, 用于图片填充模式
-- 增加 `value`, 用于受控传值
-- 删除 `uploadIconSize`, 通过自定义icon来实现
+- 增加 `imageFit`，用于图片填充模式
+- 增加 `value`，用于受控传值
+- 移除 `uploadIconSize`，可通过 icon 属性传入自定义 icon 或借助 CSS Variables 修改 icon 大小
 
 
 ### 操作反馈
@@ -378,11 +397,9 @@ plugins: [
 - `useCapture` 重命名为 `capture`
 - `onScrollChange` 重命名为 `onScroll`
 - `isOpenRefresh` 重命名为 `pullRefresh`
-- `pullText` 重命名为 `pullingText`
-- `loadText` 重命名为 `loadingText`
-- `containerId` 重命名为 `target`，并去掉useWindow，改用target
-- pullingText和loadingText类型改成ReactNode
-
+- `pullText` 重命名为 `pullingText`，类型变更为 `ReactNode`
+- `loadText` 重命名为 `loadingText`，类型变更为 `ReactNode`
+- `containerId` 重命名为 `target`
 #### Notify
 
 - 移除 `color` ，通过css变量`--nutui-notify-text-color`实现
@@ -412,11 +429,12 @@ plugins: [
 - 删除 `loadingRotate`，旋转状态通过 `iconFont`实现
 - 删除 `textAlignCenter`，通过css变量实现
 - 修改 `closeOnClickOverlay` 为 `closeOnOverlayClick` ，语义不变，是否在点击遮罩层后关闭提示
+- 新增 `lockScroll` ，用于背景是否锁定，默认值为 `false`
 
 ### 展示组件
 #### Animate
-- `className` 属性通过继承实现
-- `style` 属性通过继承实现
+- `type` 属性类型更改为 `AnimateType` ，具体值详见文档
+- `action` 属性类型更改为 `initial \| click`
 
 #### AnimatingNumbers
 
@@ -430,14 +448,18 @@ plugins: [
 - `autoplay` 重命名为 `autoPlay`
 - `onFastBack` 重命名为 `onBack`
 - `onPlayEnd` 重命名为 `onEnd`
+
 #### Avatar
-- Avatar `url` 重命名为 `src`
-- Avatar `onActiveAvatar` 重命名为 `onClick`
+- `url` 重命名为 `src`
+- `onActiveAvatar` 重命名为 `onClick`
+- 新增 `fit` 属性，用于图片填充模式
+- 移除 `iconSize`，可通过 icon 属性传入自定义 icon 或借助 CSS Variables 修改 icon 大小
+
+#### AvatarGroup
 - AvatarGroup `maxCount` 重命名为 `max`
 - AvatarGroup `span` 重命名为 `gap`
 - AvatarGroup `zIndex` 重命名为 `level`
-- 新增 `fit` 属性，图片填充模式
-- 图片加兜底
+
 #### Badge
 - 删除 `zIndex`，目前没有用到，也不生效，直接去掉。
 - 删除 `icon`，自定义 `icon` 可放在 `value` 中实现，扩充了 `value` 的类型。
@@ -445,22 +467,22 @@ plugins: [
 - 主题定制的 `css` 变量中，去掉和 `dot` 有关的其他值，只保留 `width`。其他值由 `width` 计算而来。
 
 #### CircleProgress
-- h5
-  - `progress` 重命名为 `percent`
-  - `strokeWidth` 改用 css变量控制
-  - `circleColor` 重名为 `color`
-  - `pathColor` 改用 css变量控制
+- `progress` 重命名为 `percent`
+- `circleColor` 重命名为 `color`
+- `pathColor` 重命名为 `background`
 
-- taro
-  - `progress` 重命名为 `percent`
-  - `circleColor` 重名为 `color`
-  - `pathColor` 重名为 `background`
 #### Collapse
 
-- 新增 defaultActiveName 非受控
-- activeName 改为受控方式
-- subTitle 重命名为 extra
-- onChange 参数变更为 activeName, name, status
+- 新增 `defaultActiveName` 非受控
+- `activeName` 改为受控方式
+- `icon` 重命名为 `expandIcon`，类型修改为 `ReactNode`
+- `onChange` 参数变更为 `activeName, name, status`
+
+#### CollapseItem
+- 使用方式调整为 `Collapse.Item`
+- subTitle 重命名为 extra，类型修改为 `ReactNode`
+- 新增 `expnandIcon`，优先级高于父组件对应值
+- 新增 `rotate`，优先级高于父组件对应值
 
 #### CountDown
 
@@ -469,11 +491,11 @@ plugins: [
 #### Ellipsis
 - 新增 `className` 和 `style` 属性的支持
 - 优化 H5 的代码，去掉 `useEffect` 渲染改用 `useLayoutEffect`
+
 #### Empty
-- 新增 `status` 属性,默认图片错误类型
-- 优化代码逻辑，包括 `status` 和 `image` 的逻辑，渲染问题修复以及文档优化
-- 1）渲染问题修复：之前的 `description` 的 `ReactNode` 节点存在引入错误，导致传入元素标签失效，2.0版本进行了一个修复。
-- 2）代码逻辑优化：因新增 `status` 属性，对一些无用的代码进行了一个精简优化
+- 新增 `status` 属性，用于默认图片错误类型
+- `image` 属性类型更改为 `ReactNode`
+
 #### ImagePreview
 - `show` 重命名为 `visible`
 - `autoplay` 重命名为 `autoPlay`
@@ -496,11 +518,16 @@ plugins: [
 - `complexAm` 废弃
 
 #### Popover
+- 废除 `theme` 属性，可以通过css变量 `--nutui-brand-color` 控制暗黑模式
+- 新增 `showArrow` 属性，用于是否显示小箭头
+- 新增 `closeOnClickAction` 属性，用于是否在点击选项后关闭
+- 新增 `closeOnClickOutside` 属性，用于是否在点击外部元素后关闭菜单
+- 新增 `targetId` 属性，用于自定义目标元素 id
+- 新增 `onOpen` 属性，用于点击菜单时触发
+- 新增 `onClose` 属性，用于关闭菜单时触发
+- `onChoose` 重命名为 `onSelect`
+- 继承Popup组件的 `overlayStyle` 、`overlayClassName` 、`overlay` 、`closeOnOverlayClick` 属性。    
 
-- 代码整体重构，需要验证每一个属性（除了list属性和location属性没有更改）
-- `theme` 属性删除， `onChoose`属性删除
-- 新增showArrow、duration、overlay、overlayClassName、overlayStyle、closeOnOverlayClick、closeOnClickAction、closeOnClickOutside、background、color、targetId属性。
-- 新增onSelect、onOpen、onClose回调事件
 
 #### Price
 
@@ -514,7 +541,7 @@ plugins: [
 - 移除 `textWidth`，可以自定义传入内容的宽度
 - `strokeColor` 重命名为 `color`
 - `fillColor` 重命名为 `background`
-- 移除 `size`，通过 `strokeWidth`、css 变量实现尺寸自定义
+- 移除 `size`，通过 `strokeWidth`、`progress-height` css 变量实现尺寸自定义
 - `status` 重命名为 `animated`，表示是否展示动画效果
 - 移除 `textBackground`，通过 css 实现
 - 移除 `textColor`，通过 css 实现
@@ -572,9 +599,8 @@ plugins: [
 - 移除 `iconSize`，通过`riseIcon`、`downIcon`自定义传入icon大小
 
 #### Video
-- 调整中英文文档规范
-- 调整组件书写规范
-- 新增video的taro适配
+- 在 `Taro` 下新增video的适配
+
 #### VirtualList
 - `sourceData` 重命名为 `list`
 - `conatinerSize` 重命名为 `containerHeight`
@@ -585,12 +611,24 @@ plugins: [
 - `fontColor` 重命名为 `color`
 ### 特色组件
 #### Address
+- 该组件的 `custom` 改用 `Cascader` 组件重写；`custom2`也将使用 `Cascader` 完成，在 `Cascader` 中支持 `Elevator`，开发中。所以会废弃 `province`、`city`、`country`、`town` 这些属性，同时支持 `Cascader` 的属性。
+- `modelValue` 重命名为 `visible`
+- `modelSelect` 重命名为 `defaultValue`
+- `onSelected` 重命名为 `onSelect`
+- `existAddress` 重命名为 `existList`
+- `selectedIcon` 重命名为 `selectIcon`
+- `closeBtnIcon` 重命名为 `closeIcon`
+- `backBtnIcon` 重命名为 `backIcon`
+- `isShowCustomAddress` 重命名为 `custom`，用于已有地址列表与自定义列表的切换，修改默认为值 `false`
+- `customAndExistTitle` 废弃，与 `custom` 合并，当 `custom` 为 true 时，为默认文案，设置为某字符串时，展示字符串。
+- `customAddressTitle`、`existAddressTitle` 改为 `title`，不再区分状态，可通过onSwitch修改title
+- 精简布局和样式
+
 #### Barrage
 - `barrageList` 重命名为 `list`
 - `frequency` 重命名为 `interval`
 - `speeds` 重命名为 `duration`
 - `top` 重命名为 `gapY`
-- add 文档类型进行规范说明
 #### Card
 
 #### Signature

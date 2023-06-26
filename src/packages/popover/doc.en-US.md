@@ -367,8 +367,7 @@ const App = () => {
       <Popover
         visible={customPositon}
         targetId="pickerTarget"
-        background="#1a1a1a"
-        color="rgb(255, 255, 255)"
+        className='custom-color'
         list={positionList}
         location={curPostion}
        />
@@ -468,11 +467,10 @@ const App = () => {
   return (
     <>
       <Popover
+        className='custom-color'
         visible={customColor}
         list={itemList}
         location="right-start"
-        background="#f00"
-        color="rgb(255, 255, 255)"
         onClick={() => {
           customColor ? setCustomColor(false) : setCustomColor(true)
         }}
@@ -494,27 +492,22 @@ export default App
 
 ### Props
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| list | list of options | `List[]` | `[]` |
-| visible | whether to show | `boolean` | `false` |
-| location | The pop-up position, the specific parameter values ​​inside can refer to the above position customization example | `string` | `bottom` |
-| offset | the offset of the occurrence position | `string[]` \| `number[] ` | `[0, 12]` |
-| showArrow | whether to show small arrows | `boolean` | `true` |
-| duration | Transition duration，Unit second | `string` \| `number`  | `0.3` |
-| overlay | Whether to show overlay | `boolean` | `false` |
-| overlayClassName | Custom overlay class | `string` | `-` |
-| overlayStyle | Custom overlay style | `React.CSSProperties` | `{}` |
-| closeOnOverlayClick | Whether to close when clicking overlay | `boolean` | `true` |
-| closeOnClickAction | Whether to close when clicking action | `boolean` | `true` |
-| closeOnClickOutside | Whether to close when clicking outside | `boolean` | `true` |
-| background | Custom background | `string` | `-` |
-| color | Custom color | `string` | `-` |
-| targetId | Custom target id | `string` | `-` |
-| onClick | Click to toggle the popover display state | `() => void` | `() =&gt; {}` |
-| onSelect | Fired when an option is clicked | `(item: List, index: number) => void` | `(item, index) =&gt; {}` |
-| onOpen | Triggered when the menu is clicked | `() => void` | `() =&gt; {}` |
-| onClose | Fired when the menu is closed | `() => void` | `() =&gt; {}` |
+| Property            | Description                                                                                                       | Type                                  | Default               |
+| ------------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------- | --------------------- |
+| list                | list of options                                                                                                   | `List[]`                              | `[]`                  |
+| visible             | whether to show                                                                                                   | `boolean`                             | `false`               |
+| location            | The pop-up position, the specific parameter values ​​inside can refer to the above position customization example | `string`                              | `bottom`              |
+| offset              | the offset of the occurrence position                                                                             | `string[] \| number[]`                | `[0, 12]`             |
+| showArrow           | whether to show small arrows                                                                                      | `boolean`                             | `true`                |
+| closeOnClickAction  | Whether to close when clicking action                                                                             | `boolean`                             | `true`                |
+| closeOnClickOutside | Whether to close when clicking outside                                                                            | `boolean`                             | `true`                |
+| targetId            | Custom target id                                                                                                  | `string`                              | `-`                   |
+| onClick             | Click to toggle the popover display state                                                                         | `() => void`                          | `() => {}`            |
+| onSelect            | Fired when an option is clicked                                                                                   | `(item: List, index: number) => void` | `(item, index) => {}` |
+| onOpen              | Triggered when the menu is clicked                                                                                | `() => void`                          | `() => {}`            |
+| onClose             | Fired when the menu is closed                                                                                     | `() => void`                          | `() => {}`            |
+
+In addition, the `overlayStyle` `overlayClassName` `overlay` `closeOnOverlayClick` properties of the [Popup](#/zh-CN/component/popup) component are also supported.
 
 ### List data structure
 

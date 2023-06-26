@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, fireEvent, screen } from '@testing-library/react'
+import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Form from '../index'
 import Input from '@/packages/input'
@@ -28,7 +28,6 @@ test('form set footer', () => {
       </Form.Item>
     </Form>
   )
-  console.log(container)
   expect(container.querySelectorAll('.test-footer')).toHaveLength(1)
 })
 
@@ -40,7 +39,6 @@ test('form set required', () => {
       </Form.Item>
     </Form>
   )
-  console.log(container)
   expect(container.querySelectorAll('.required')).toHaveLength(1)
 })
 

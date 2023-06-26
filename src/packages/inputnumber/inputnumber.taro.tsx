@@ -266,6 +266,7 @@ export const InputNumber: FunctionComponent<
       <>
         {formatter ? (
           <input
+            className="nut-number-input"
             type="text"
             min={min}
             max={max}
@@ -278,6 +279,7 @@ export const InputNumber: FunctionComponent<
           />
         ) : (
           <input
+            className="nut-number-input"
             type="digit"
             min={min}
             max={max}

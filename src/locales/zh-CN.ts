@@ -34,7 +34,8 @@ const zhCN: BaseLang = {
     start: '开始',
     confirm: '确认',
     title: '日历选择',
-    monthTitle: (year: number, month: number) => `${year}年${month}月`,
+    monthTitle: (year: number, month: number) =>
+      `${year}年${Number(month) < 10 ? `0${Number(month)}` : month}月`,
     today: '今天',
     loadPreviousMonth: '加载上一个月',
     noEarlierMonth: '没有更早月份',
@@ -60,7 +61,7 @@ const zhCN: BaseLang = {
     second: '秒',
   },
   address: {
-    selectRegion: '请选择所在地区',
+    selectRegion: '请选择地址',
     deliveryTo: '配送至',
     chooseAnotherAddress: '选择其他地址',
   },

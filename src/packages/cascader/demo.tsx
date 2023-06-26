@@ -239,7 +239,7 @@ const CascaderDemo = () => {
   })
 
   const change1 = (value: any, path: any) => {
-    console.log('onChange', value, path)
+    console.log('change1', value, path)
     setText({
       ...text,
       desc1: value,
@@ -247,7 +247,7 @@ const CascaderDemo = () => {
     setValue1(value)
   }
   const change2 = (value: any, path: any) => {
-    console.log('onChange', value, path)
+    console.log('change2', value, path)
     setText({
       ...text,
       desc2: value,

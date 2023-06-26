@@ -343,6 +343,7 @@ export default App
 | contentClassName | 自定义内容区类名 | `string` | `-` |
 | contentStyle | 自定义内容区样式 | `React.CSSProperties` | `-` |
 | closeOnOverlayClick | 是否在点击遮罩层后关闭提示 | `boolean` | `false` |
+| lockScroll | 背景是否锁定 | `boolean` | `false` |
 | onClose | 关闭时触发的事件 | `() => void` | `() => void` |
 
 `Toast`只支持指令式调用
@@ -354,7 +355,7 @@ export default App
 | 方法名 | 说明 | 参数 |
 | --- | --- | --- |
 | clear | 关闭所有显示中的`Toast` | `-` |
-| config | `Toast`全局配置 | `{ duration: number, position: 'top' \| 'center' \| 'bottom', closeOnOverlayClick: boolean }` |
+| config | `Toast`全局配置 | `{ duration: number, position: 'top' \| 'center' \| 'bottom', closeOnOverlayClick: boolean, lockScroll: boolean }` |
 
 ## 主题定制
 

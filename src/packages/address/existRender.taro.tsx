@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react'
-import { Check, Location2 } from '@nutui/icons-react'
-import { useConfig } from '@/packages/configprovider'
+import { Check, Location2 } from '@nutui/icons-react-taro'
+import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { AddressList } from './type'
 
 export interface ExistRenderProps {

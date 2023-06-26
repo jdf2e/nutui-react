@@ -120,6 +120,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     // @ts-ignore
     targetSet,
     'click',
+    false,
     _showPopup,
     closeOnClickAway
   )
