@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Share, MoreX, Cart2, Left, Close } from '@nutui/icons-react'
 import { NavBar } from './navbar'
+import './demo.scss'
 import { Tabs } from '../tabs/tabs'
 import { TabPane } from '../tabpane/tabpane'
 import { useTranslate } from '../../sites/assets/locale'
@@ -64,7 +65,7 @@ const NavBarDemo = () => {
           }
           left={<Close width={12} />}
           right={
-            <span onClick={(e) => Toast.show('icon')}>
+            <span className="flex-center" onClick={(e) => Toast.show('icon')}>
               <Share />
             </span>
           }
@@ -92,7 +93,10 @@ const NavBarDemo = () => {
           back={<Left name="left" color="#979797" />}
           right={
             <>
-              <span onClick={(e) => Toast.show(translated['8dab2f66'])}>
+              <span
+                style={{ marginRight: '5px' }}
+                onClick={(e) => Toast.show(translated['8dab2f66'])}
+              >
                 {translated['8dab2f66']}
               </span>
               <MoreX onClick={(e) => Toast.show('icon')} />
@@ -103,7 +107,11 @@ const NavBarDemo = () => {
           <span onClick={(e) => Toast.show(translated.b840c88f)}>
             {translated.c3a3a1d2}
           </span>
-          <i style={{ marginLeft: '5px' }} onClick={(e) => Toast.show('icon')}>
+          <i
+            style={{ marginLeft: '5px' }}
+            className="flex-center"
+            onClick={(e) => Toast.show('icon')}
+          >
             <Cart2 />
           </i>
         </NavBar>
@@ -112,7 +120,10 @@ const NavBarDemo = () => {
           back={<Left name="left" color="#979797" />}
           right={
             <>
-              <span onClick={(e) => Toast.show(translated['8dab2f66'])}>
+              <span
+                style={{ marginRight: '5px' }}
+                onClick={(e) => Toast.show(translated['8dab2f66'])}
+              >
                 {translated['8dab2f66']}
               </span>
               <MoreX onClick={(e) => Toast.show('icon')} />
@@ -120,7 +131,7 @@ const NavBarDemo = () => {
           }
           onClickBack={(e) => Toast.show(translated.a74a1fd4)}
         >
-          <div slot="content">
+          <div>
             <Tabs
               value={tab1value}
               onChange={(paneKey) => {
@@ -132,9 +143,6 @@ const NavBarDemo = () => {
               <TabPane title="Tab 3"> Tab 3 </TabPane>
             </Tabs>
           </div>
-          <i slot="right">
-            <MoreX />
-          </i>
         </NavBar>
       </div>
     </>

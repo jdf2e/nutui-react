@@ -96,7 +96,7 @@ const App = () => {
         back={<Left name="left" color="#979797" />}
         right={
         <>
-            <span onClick={(e) => Taro.showtoast({ title: '编辑' })}}>
+            <span style={{ marginRight: '5px' }} onClick={(e) => Taro.showtoast({ title: '编辑' })}}>
             编辑
             </span>
             <MoreX onClick={(e) => Taro.showtoast({ title: 'icon' })}} />
@@ -134,7 +134,7 @@ const App = () => {
          back={<Left name="left" color="#979797" />}
           right={
             <>
-              <span onClick={(e) => Taro.showtoast({ title: '编辑' })}>
+              <span style={{ marginRight: '5px' }} onClick={(e) => Taro.showtoast({ title: '编辑' })}>
                 编辑
               </span>
               <MoreX onClick={(e) => Taro.showtoast({ title: 'icon' })}} />
