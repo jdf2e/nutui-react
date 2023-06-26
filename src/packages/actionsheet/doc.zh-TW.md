@@ -23,7 +23,7 @@ import { ActionSheet,Cell } from '@nutui/nutui-react';
 interface Item {
   name: string
   description?: string
-  disable?: boolean
+  disabled?: boolean
 }
 const App = () => {
   const [val1, setVal1] = useState('')
@@ -183,7 +183,7 @@ const App = () => {
     },
     {
       name: '禁用選項',
-      disable: true,
+      disabled: true,
     },
   ]
   return ( 
@@ -265,7 +265,7 @@ const App = () => {
     },
     {
       title: '禁用選項',
-      disable: true,
+      disabled: true,
     },
   ]
   const optionKey = {
@@ -316,7 +316,7 @@ export default App;
 | name | 列錶項的標題key值 | `string` | \- |
 | description | 列錶項的描述key值 | `string` | \- |
 | danger | 高亮顏色 | `string` | `$primary-color` |
-| disable | 禁用狀態 | `string` | `$disable-color` |
+| disabled | 禁用狀態 | `string` | `$disabled-color` |
 
 ## 主題定制
 
