@@ -345,7 +345,7 @@ export type NutCSSVariables =
   | 'nutuiDialogOverlayZIndex'
   | 'nutuiDialogOverlayBackgroundColor'
   | 'nutuiDialogOuterZIndex'
-  | 'nutuiDialogOuterBordderRadius'
+  | 'nutuiDialogOuterBorderRadius'
   | 'nutuiDialogVerticalFooterOkMarginTop'
   | 'nutuiDialogFooterButtonMinWidth'
   | 'nutuiDialogFooterCancelMarginRight'

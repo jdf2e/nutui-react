@@ -511,8 +511,8 @@ export default App
 | overlayClassName | 自定義遮罩層類名 | `string` | `-` |
 | overlayStyle | 自定義遮罩層樣式 | `React.CSSProperties` | `{}` |
 | closeOnOverlayClick | 是否在點擊遮罩層後關閉菜單 | `boolean` | `true` |
-| closeOnClickAction | 是否在點擊選項後關閉 | `boolean` | `true` |
-| closeOnClickOutside | 是否在點擊外部元素後關閉菜單 | `boolean` | `true` |
+| closeOnActionClick | 是否在點擊選項後關閉 | `boolean` | `true` |
+| closeOnOutsideClick | 是否在點擊外部元素後關閉菜單 | `boolean` | `true` |
 | background | 自定義背景色 | `string` | `-` |
 | color | 自定義選項文字顏色 | `string` | `-` |
 | targetId | 自定義目標元素 id | `string` | `-` |

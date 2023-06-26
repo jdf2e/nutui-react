@@ -36,7 +36,7 @@ export interface UploaderProps extends BasicComponent {
   defaultValue?: FileType<React.ReactNode>[]
   value?: FileType<string>[]
   previewType: 'picture' | 'list'
-  imageFit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
+  fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
   uploadIcon?: React.ReactNode
   uploadLabel?: React.ReactNode
   name: string
@@ -91,7 +91,7 @@ const defaultProps = {
   url: '',
   maxCount: 1,
   previewType: 'picture',
-  imageFit: 'cover',
+  fit: 'cover',
   name: 'file',
   accept: '*',
   disabled: false,
@@ -147,7 +147,7 @@ const InternalUploader: ForwardRefRenderFunction<
     defaultValue,
     value,
     previewType,
-    imageFit,
+    fit,
     disabled,
     multiple,
     url,
@@ -507,7 +507,7 @@ const InternalUploader: ForwardRefRenderFunction<
                       {item.url && (
                         <img
                           className="nut-uploader__preview-img__c"
-                          style={{ objectFit: imageFit }}
+                          style={{ objectFit: fit }}
                           src={item.url}
                           alt=""
                           onClick={() => handleItemClick(item)}

@@ -41,8 +41,8 @@ export interface PopoverProps extends PopupProps {
   offset: string[] | number[]
   targetId: string
   showArrow: boolean
-  closeOnClickOutside: boolean
-  closeOnClickAction: boolean
+  closeOnOutsideClick: boolean
+  closeOnActionClick: boolean
   children?: React.ReactNode
   onClick: () => void
   onOpen: () => void
@@ -57,10 +57,9 @@ const defaultProps = {
   visible: false,
   offset: [0, 12],
   targetId: '',
-  className: '',
   showArrow: true,
-  closeOnClickOutside: true,
-  closeOnClickAction: true,
+  closeOnOutsideClick: true,
+  closeOnActionClick: true,
   overlay: false,
   onClick: () => {},
   onOpen: () => {},
@@ -79,8 +78,8 @@ export const Popover: FunctionComponent<
     offset,
     targetId,
     overlay,
-    closeOnClickOutside,
-    closeOnClickAction,
+    closeOnOutsideClick,
+    closeOnActionClick,
     className,
     showArrow,
     style,
@@ -132,7 +131,7 @@ export const Popover: FunctionComponent<
     'touchstart',
     true,
     visible,
-    closeOnClickOutside
+    closeOnOutsideClick
   )
 
   const getContentWidth = () => {
@@ -238,7 +237,7 @@ export const Popover: FunctionComponent<
     if (!item.disabled) {
       onSelect && onSelect(item, index)
     }
-    if (closeOnClickAction) {
+    if (closeOnActionClick) {
       props.onClick && props.onClick()
       onClose && onClose()
     }
@@ -271,7 +270,7 @@ export const Popover: FunctionComponent<
           {...rest}
         >
           <div className="nut-popover-content-group" ref={popoverContentRef}>
-            {showArrow && <div className={popoverArrow()}></div>}
+            {showArrow && <div className={popoverArrow()} />}
             {Array.isArray(children) ? children[1] : ''}
             {list.map((item, index) => {
               return (

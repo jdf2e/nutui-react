@@ -95,7 +95,6 @@ export default App;
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| customClass | 自定義 class | `string` | `-` |
 | lineWidth | 線條的寬度 | `number` | `3` |
 | strokeStyle | 繪圖筆觸顏色 | `string` | `#000` |
 | type | 圖片格式 | `string` | `png` |

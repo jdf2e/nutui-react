@@ -127,7 +127,7 @@ const NoticeBarDemo = () => {
             onClick={(e) => {
               console.log('listClick', e.target)
             }}
-            onClickItem={(e, val) => {
+            onItemClick={(e, val) => {
               console.log('dom', e.target)
               console.log('value', val)
             }}
@@ -171,7 +171,7 @@ const NoticeBarDemo = () => {
             list={horseLamp1}
             speed={10}
             duration={1000}
-            onClickItem={(e, v) => {
+            onItemClick={(e, v) => {
               console.log('onclick-custom', v)
             }}
             rightIcon={<Fabulous size={16} color="#f0250f" />}

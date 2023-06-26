@@ -35,7 +35,7 @@ export interface CalendarProps {
   renderDayBottom?: (date: Day) => string | JSX.Element
   onClose?: () => void
   onConfirm?: (param: string) => void
-  onClickDay?: (data: string) => void
+  onDayClick?: (data: string) => void
   onPageChange?: (param: string) => void
 }
 
@@ -61,7 +61,7 @@ const defaultProps = {
   renderDayBottom: undefined,
   onClose: () => {},
   onConfirm: (param: string) => {},
-  onClickDay: (data: string) => {},
+  onDayClick: (data: string) => {},
   onPageChange: (param: string) => {},
 } as CalendarProps
 
@@ -92,7 +92,7 @@ export const Calendar = React.forwardRef<
     renderDayBottom,
     onClose,
     onConfirm,
-    onClickDay,
+    onDayClick,
     onPageChange,
   } = { ...defaultProps, ...props }
 
@@ -111,7 +111,7 @@ export const Calendar = React.forwardRef<
   }
 
   const select = (param: string) => {
-    onClickDay && onClickDay(param)
+    onDayClick && onDayClick(param)
   }
 
   const scrollToDate = (date: string) => {
@@ -149,7 +149,7 @@ export const Calendar = React.forwardRef<
         renderDayTop={renderDayTop}
         renderDayBottom={renderDayBottom}
         onConfirm={choose}
-        onClickDay={select}
+        onDayClick={select}
         onPageChange={yearMonthChange}
       />
     )
@@ -165,8 +165,8 @@ export const Calendar = React.forwardRef<
           duration={0.5}
           closeable
           destroyOnClose
-          onClickOverlay={closePopup}
-          onClickCloseIcon={closePopup}
+          onOverlayClick={closePopup}
+          onCloseIconClick={closePopup}
           style={{ height: '85vh' }}
         >
           {renderItem()}

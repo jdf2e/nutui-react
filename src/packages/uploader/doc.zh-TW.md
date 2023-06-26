@@ -520,7 +520,7 @@ export default App;
 | capture | 圖片[選取模式](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture")，直接調起攝像頭 | `string` | `false` |
 | maxFileSize | 可以設定最大上傳文件的大小（字節） | `number` \| `string`   | `Number.MAX_VALUE` |
 | maxCount | 文件上傳數量限制 | `number` \| `string`  | `1` |
-| imageFit | 圖片填充模式 | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` | `cover` |
+| fit | 圖片填充模式 | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` | `cover` |
 | clearInput | 是否需要清空`input`內容，設為`true`支持重復選擇上傳同一個文件 | `boolean` | `true` |
 | accept | 允許上傳的文件類型，[詳細說明]("https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B") | `string` | `*` |
 | headers | 設置上傳的請求頭部 | `object` | `{}` |

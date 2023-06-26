@@ -448,7 +448,7 @@ export default App;
 | renderDay  | 日期信息 | `(date: Day) => string | JSX.Element` | `-` |
 | renderDayTop  | 日期頂部信息 | `(date: Day) => string | JSX.Element` | `-` |
 | renderDayBottom  | 日期底部信息 | `(date: Day) => string | JSX.Element` | `-` |
-| onClickDay  | 點選/選擇後觸發 |  `(data: string) => {}` |
+| onDayClick  | 點選/選擇後觸發 |  `(data: string) => {}` |
 | onPageChange   | 年月子標題到達頂部時觸發 | `(param: string) => {}` |
 | onConfirm | 選擇之後或是點選確認按鈕觸發 | `(param: string) => {}` |
 | onClose  | 關閉時觸發 | `() => {}` |

@@ -296,7 +296,7 @@ const CalendarDemo = () => {
           endDate="2023-11-30"
           onClose={closeSwitch}
           onConfirm={setChooseValue}
-          onClickDay={select}
+          onDayClick={select}
         />
         <Cell
           title={translated.a74a1fd4}
@@ -315,7 +315,7 @@ const CalendarDemo = () => {
           endDate="2024-01-08"
           onClose={closeSwitch1}
           onConfirm={setChooseValue1}
-          onClickDay={select}
+          onDayClick={select}
         />
         <Cell
           title={translated['7db1a8b2']}
@@ -368,7 +368,7 @@ const CalendarDemo = () => {
           endDate="2024-01-08"
           onClose={closeSwitch5}
           onConfirm={setChooseValue5}
-          onClickDay={select}
+          onDayClick={select}
         />
         <h2>{translated.d04fcbda}</h2>
         <Cell

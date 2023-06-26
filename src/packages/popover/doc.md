@@ -504,8 +504,8 @@ export default App
 | location            | 弹出位置，里面具体的参数值可以参考上面的位置自定义例子 | `string`                              | `bottom`              |
 | offset              | 出现位置的偏移量                                       | `string[] \| number[]`                | `[0, 12]`             |
 | showArrow           | 是否显示小箭头                                         | `boolean`                             | `true`                |
-| closeOnClickAction  | 是否在点击选项后关闭                                   | `boolean`                             | `true`                |
-| closeOnClickOutside | 是否在点击外部元素后关闭菜单                           | `boolean`                             | `true`                |
+| closeOnActionClick  | 是否在点击选项后关闭                                   | `boolean`                             | `true`                |
+| closeOnOutsideClick | 是否在点击外部元素后关闭菜单                           | `boolean`                             | `true`                |
 | targetId            | 自定义目标元素 id                                      | `string`                              | `-`                   |
 | onClick             | 点击切换 popover 展示状态                              | `() => void`                          | `() => {}`            |
 | onSelect            | 点击选项时触发                                         | `(item: List, index: number) => void` | `(item, index) => {}` |
