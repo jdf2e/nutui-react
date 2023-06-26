@@ -751,6 +751,17 @@
         },
         {
           "version": "2.0.0",
+          "name": "Popup",
+          "sort": 9,
+          "cName": "弹出层",
+          "type": "component",
+          "show": true,
+          "taro": true,
+          "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
+          "author": "szg2008"
+        },
+        {
+          "version": "2.0.0",
           "name": "PullToRefresh",
           "type": "component",
           "cName": "下拉刷新",
@@ -781,17 +792,6 @@
           "show": true,
           "taro": true,
           "author": "Ymm0008"
-        },
-        {
-          "version": "2.0.0",
-          "name": "Popup",
-          "sort": 9,
-          "cName": "弹出层",
-          "type": "component",
-          "show": true,
-          "taro": true,
-          "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
-          "author": "szg2008"
         },
         {
           "version": "2.0.0",
@@ -945,18 +945,6 @@
         },
         {
           "version": "2.0.0",
-          "name": "VirtualList",
-          "type": "component",
-          "cName": "虚拟列表",
-          "desc": "长列表渲染",
-          "sort": 20,
-          "tarodoc": true,
-          "show": true,
-          "taro": true,
-          "author": "hx"
-        },
-        {
-          "version": "2.0.0",
           "name": "Pagination",
           "type": "component",
           "cName": "分页",
@@ -1065,6 +1053,18 @@
           "show": true,
           "taro": true,
           "author": "swag~jun"
+        },
+        {
+          "version": "2.0.0",
+          "name": "VirtualList",
+          "type": "component",
+          "cName": "虚拟列表",
+          "desc": "长列表渲染",
+          "sort": 20,
+          "tarodoc": true,
+          "show": true,
+          "taro": true,
+          "author": "hx"
         }
       ]
     },

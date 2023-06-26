@@ -6,8 +6,8 @@ import React, {
   useState,
 } from 'react'
 import classNames from 'classnames'
-import Popup from '@/packages/popup/index.taro'
 import Taro from '@tarojs/taro'
+import Popup from '@/packages/popup/index.taro'
 import { PopupProps } from '@/packages/popup/popup.taro'
 import { getRect, getRectByTaro } from '@/utils/use-client-rect'
 
@@ -42,8 +42,8 @@ export interface PopoverProps extends PopupProps {
   offset: string[] | number[]
   targetId: string
   showArrow: boolean
-  closeOnClickOutside: boolean
-  closeOnClickAction: boolean
+  closeOnOutsideClick: boolean
+  closeOnActionClick: boolean
   children?: React.ReactNode
   onClick: () => void
   onOpen: () => void
@@ -61,8 +61,8 @@ const defaultProps = {
   className: '',
   showArrow: true,
   overlay: false,
-  closeOnClickOutside: true,
-  closeOnClickAction: true,
+  closeOnOutsideClick: true,
+  closeOnActionClick: true,
   onClick: () => {},
   onOpen: () => {},
   onClose: () => {},
@@ -80,8 +80,8 @@ export const Popover: FunctionComponent<
     offset,
     targetId,
     overlay,
-    closeOnClickOutside,
-    closeOnClickAction,
+    closeOnOutsideClick,
+    closeOnActionClick,
     className,
     showArrow,
     style,
@@ -162,7 +162,7 @@ export const Popover: FunctionComponent<
   }
 
   const clickAway = () => {
-    if (closeOnClickOutside) {
+    if (closeOnOutsideClick) {
       props.onClick && props.onClick()
       onClose && onClose()
     }
@@ -249,7 +249,7 @@ export const Popover: FunctionComponent<
     if (!item.disabled) {
       onSelect && onSelect(item, index)
     }
-    if (closeOnClickAction) {
+    if (closeOnActionClick) {
       props.onClick && props.onClick()
       onClose && onClose()
     }
@@ -282,7 +282,7 @@ export const Popover: FunctionComponent<
           {...rest}
         >
           <div className="nut-popover-content-group" ref={popoverContentRef}>
-            {showArrow && <div className={popoverArrow()}></div>}
+            {showArrow && <div className={popoverArrow()} />}
             {Array.isArray(children) ? children[1] : ''}
             {list.map((item, index) => {
               return (

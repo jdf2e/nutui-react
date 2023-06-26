@@ -172,7 +172,7 @@ const App = () => {
             onClick={(e) => {
               console.log('listClick', e.target)
             }}
-            onClickItem={(e, val) => {
+            onItemClick={(e, val) => {
               console.log('dom', e.target)
               console.log('value', val)
             }}
@@ -243,7 +243,7 @@ const App = () => {
             list={horseLamp1}
             speed={10}
             duration={1000}
-            onClickItem={(e, v) => {
+            onItemClick={(e, v) => {
               console.log('onclick-custom', v)
             }}
             rightIcon={<Fabulous width={16} height={16} color="#f0250f" />}
@@ -273,7 +273,7 @@ export default App
 | wrap | Whether to enable text wrap | `boolean` | `false` |
 | onClick | Emitted when NoticeBar is clicked | `(event: any) => void` | `-` |
 | onClose | Emitted when NoticeBar is closed | `(event: any) => void` | `-` |
-| onClickItem | Emitted when the currently displayed information is clicked when scrolling multiple pieces of data vertically | `(event: any, value: any) => void` | `-` |
+| onItemClick | Emitted when the currently displayed information is clicked when scrolling multiple pieces of data vertically | `(event: any, value: any) => void` | `-` |
 
 ### Props（direction=vertical）
 

@@ -450,7 +450,7 @@ export default App;
 | renderDay  | 日期信息 | `(date: Day) => string | JSX.Element` | `-` |
 | renderDayTop  | 日期顶部信息 | `(date: Day) => string | JSX.Element` | `-` |
 | renderDayBottom  | 日期底部信息 | `(date: Day) => string | JSX.Element` | `-` |
-| onClickDay  | 点击/选择后触发 |  `(data: string) => {}` |
+| onDayClick  | 点击/选择后触发 |  `(data: string) => {}` |
 | onPageChange   | 年月子标题到达顶部时触发 | `(param: string) => {}` |
 | onConfirm | 选择之后或是点击确认按钮触发 | `(param: string) => {}` |
 | onClose  | 关闭时触发 | `() => {}` |

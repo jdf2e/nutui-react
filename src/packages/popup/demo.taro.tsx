@@ -248,8 +248,8 @@ const PopupDemo = () => {
           onClose={() => {
             setShowOverlayStop(false)
           }}
-          onClickOverlay={() => {
-            console.log('onClickOverlay')
+          onOverlayClick={() => {
+            console.log('onOverlayClick')
             return false
           }}
         >
@@ -271,8 +271,8 @@ const PopupDemo = () => {
           onClose={() => {
             setShowIcon(false)
           }}
-          onClickCloseIcon={() => {
-            console.log('onClickCloseIcon')
+          onCloseIconClick={() => {
+            console.log('onCloseIconClick')
           }}
         />
 

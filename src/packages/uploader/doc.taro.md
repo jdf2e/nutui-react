@@ -400,7 +400,7 @@ export default App;
 | previewType | 上传列表的内建样式，支持两种基本样式 picture、list | `string` | `picture` |
 | maxFileSize | 可以设定最大上传文件的大小（字节） | `number` \| `string` | `Number.MAX_VALUE` |
 | maxCount | 文件上传数量限制 | `number` \| `string` | `1` |
-| imageFit | 图片填充模式 | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` | `cover` |
+| fit | 图片填充模式 | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` | `cover` |
 | sourceType | [选择文件的来源]("https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html") | `Array` | `['album','camera']` |
 | camera`仅支持WEAPP` | 仅在 `source-type` 为 `camera` 时生效，使用前置或后置摄像头 | `String` | `back` |
 | sizeType | [是否压缩所选文件]("https://developers.weixin.qq.com/miniprogram/dev/api/media/video/wx.chooseMedia.html") | `Array` | `['original','compressed']` |

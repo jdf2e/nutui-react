@@ -35,8 +35,8 @@ export interface PopupProps extends OverlayProps {
   round: boolean
   onOpen: () => void
   onClose: () => void
-  onClickOverlay: (e: MouseEvent) => boolean | void
-  onClickCloseIcon: (e: MouseEvent) => boolean | void
+  onOverlayClick: (e: MouseEvent) => boolean | void
+  onCloseIconClick: (e: MouseEvent) => boolean | void
 }
 
 const defaultProps = {
@@ -54,8 +54,8 @@ const defaultProps = {
   round: false,
   onOpen: () => {},
   onClose: () => {},
-  onClickOverlay: (e: MouseEvent) => true,
-  onClickCloseIcon: (e: MouseEvent) => true,
+  onOverlayClick: (e: MouseEvent) => true,
+  onCloseIconClick: (e: MouseEvent) => true,
   ...defaultOverlayProps,
 } as PopupProps
 
@@ -89,8 +89,8 @@ export const Popup: FunctionComponent<
     portal,
     onOpen,
     onClose,
-    onClickOverlay,
-    onClickCloseIcon,
+    onOverlayClick,
+    onCloseIconClick,
     afterShow,
     afterClose,
     onClick,
@@ -155,7 +155,7 @@ export const Popup: FunctionComponent<
   const onHandleClickOverlay = (e: MouseEvent) => {
     e.stopPropagation()
     if (closeOnOverlayClick) {
-      const closed = onClickOverlay && onClickOverlay(e)
+      const closed = onOverlayClick && onOverlayClick(e)
       closed && close()
     }
   }
@@ -167,7 +167,7 @@ export const Popup: FunctionComponent<
   const onHandleClickCloseIcon: MouseEventHandler<HTMLDivElement> = (
     e: MouseEvent
   ) => {
-    const closed = onClickCloseIcon && onClickCloseIcon(e)
+    const closed = onCloseIconClick && onCloseIconClick(e)
     closed && close()
   }
 

@@ -38,8 +38,8 @@ export interface PopupProps extends OverlayProps {
   round: boolean
   onOpen: () => void
   onClose: () => void
-  onClickOverlay: (e: ITouchEvent) => boolean | void
-  onClickCloseIcon: (e: ITouchEvent) => boolean | void
+  onOverlayClick: (e: ITouchEvent) => boolean | void
+  onCloseIconClick: (e: ITouchEvent) => boolean | void
 }
 
 const defaultProps = {
@@ -57,8 +57,8 @@ const defaultProps = {
   round: false,
   onOpen: () => {},
   onClose: () => {},
-  onClickOverlay: (e: ITouchEvent) => true,
-  onClickCloseIcon: (e: ITouchEvent) => true,
+  onOverlayClick: (e: ITouchEvent) => true,
+  onCloseIconClick: (e: ITouchEvent) => true,
   ...defaultOverlayProps,
 } as PopupProps
 
@@ -92,8 +92,8 @@ export const Popup: FunctionComponent<
     portal,
     onOpen,
     onClose,
-    onClickOverlay,
-    onClickCloseIcon,
+    onOverlayClick,
+    onCloseIconClick,
     afterShow,
     afterClose,
     onClick,
@@ -158,7 +158,7 @@ export const Popup: FunctionComponent<
   const onHandleClickOverlay = (e: ITouchEvent) => {
     e.stopPropagation()
     if (closeOnOverlayClick) {
-      const closed = onClickOverlay && onClickOverlay(e)
+      const closed = onOverlayClick && onOverlayClick(e)
       closed && close()
     }
   }
@@ -168,7 +168,7 @@ export const Popup: FunctionComponent<
   }
 
   const onHandleClickCloseIcon = (e: ITouchEvent) => {
-    const closed = onClickCloseIcon && onClickCloseIcon(e)
+    const closed = onCloseIconClick && onCloseIconClick(e)
     closed && close()
   }
 

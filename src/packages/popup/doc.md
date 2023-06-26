@@ -207,8 +207,6 @@ export default App;
 | closeOnOverlayClick | 是否点击遮罩关闭 | `boolean` | `true` |
 | position | 弹出位置 | `top` \| `bottom` \| `left` \| `right` \| `center` | `center` |
 | transition | 动画名 | `string` | `-` |
-| style | 自定义弹框样式 | `CSSProperties` | `-` |
-| className | 自定义弹框类名 | `string` | `-` |
 | closeable | 是否显示关闭按钮 | `boolean` | `false` |
 | closeIconPosition | 关闭按钮位置 | `top-left` \| `top-right` \| `bottom-left` \| `bottom-right` | `top-right` |
 | closeIcon | 自定义 Icon | `ReactNode` | `close` |
@@ -216,12 +214,12 @@ export default App;
 | round | 是否显示圆角 | `boolean` | `false` |
 | portal | 指定节点挂载 | `HTMLElement` \| `(() => HTMLElement)` | null` | `null` |
 | onClick | 点击弹框时触发 | `event: MouseEvent` | `-` |
-| onClickCloseIcon | 点击关闭图标时触发 | `event: MouseEvent` | `-` |
+| onCloseIconClick | 点击关闭图标时触发 | `event: MouseEvent` | `-` |
 | onOpen | 打开弹框时触发 | `-` | `-` |
 | onClose | 关闭弹框时触发 | `-` | `-` |
 | afterShow | 继承于`Overlay`, 遮罩打开动画结束时触发 | `event: HTMLElement` | `-` |
 | afterClose | 继承于`Overlay`, 遮罩关闭动画结束时触发 | `event: HTMLElement` | `-` |
-| onClickOverlay | 点击遮罩触发 | `event: MouseEvent` | `-` |
+| onOverlayClick | 点击遮罩触发 | `event: MouseEvent` | `-` |
 
 ## 主题定制
 

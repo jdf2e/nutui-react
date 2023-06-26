@@ -21,8 +21,8 @@ export interface ElevatorProps extends BasicComponent {
   spaceHeight: number
   titleHeight: number
   showKeys: boolean
-  onClickItem: (key: string, item: ElevatorData) => void
-  onClickIndex: (key: string) => void
+  onItemClick: (key: string, item: ElevatorData) => void
+  onIndexClick: (key: string) => void
 }
 const defaultProps = {
   ...ComponentDefaults,
@@ -53,8 +53,8 @@ export const Elevator: FunctionComponent<
     showKeys,
     className,
     style,
-    onClickItem,
-    onClickIndex,
+    onItemClick,
+    onIndexClick,
     children,
     ...rest
   } = {
@@ -168,13 +168,13 @@ export const Elevator: FunctionComponent<
   }
 
   const handleClickItem = (key: string, item: ElevatorData) => {
-    onClickItem && onClickItem(key, item)
+    onItemClick && onItemClick(key, item)
     setCurrentData(item)
     setCurrentKey(key)
   }
 
   const handleClickIndex = (key: string) => {
-    onClickIndex && onClickIndex(key)
+    onIndexClick && onIndexClick(key)
   }
 
   const setListGroup = () => {

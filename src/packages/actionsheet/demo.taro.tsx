@@ -8,7 +8,7 @@ export type ItemType<T> = { [key: string]: T }
 interface Item {
   name: string
   description?: string
-  disable?: boolean
+  disabled?: boolean
   danger?: boolean
 }
 
@@ -127,7 +127,7 @@ const ActionSheetDemo = () => {
     },
     {
       name: translated['314631ed'],
-      disable: true,
+      disabled: true,
     },
   ]
   const optionsFour: ItemType<string | boolean>[] = [
