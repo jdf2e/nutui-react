@@ -156,7 +156,7 @@ export default App;
 | --nutui-dialog-mask-z-index | ` $mask-z-index` |
 | --nutui-dialog-mask-background-color | `  $mask-color` |
 | --nutui-dialog-outer-z-index | `  $mask-content-z-index` |
-| --nutui-dialog-outer-bordder-radius | `  20px` |
+| --nutui-dialog-outer-border-radius | `  20px` |
 | --nutui-dialog-vertical-footer-ok-margin-top | `  10px` |
 | --nutui-dialog-footer-button-min-width | `  100px` |
 | --nutui-dialog-footer-cancel-margin-right | `  20px` |
