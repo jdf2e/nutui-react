@@ -84,7 +84,7 @@ export interface UploaderProps extends BasicComponent {
   defaultValue?: FileType<React.ReactNode>[]
   value?: FileType<string>[]
   previewType: 'picture' | 'list'
-  imageFit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
+  fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
   uploadIcon?: React.ReactNode
   uploadLabel?: React.ReactNode
   name: string
@@ -141,7 +141,7 @@ const defaultProps = {
   uploadIcon: null,
   uploadLabel: '',
   previewType: 'picture',
-  imageFit: 'cover',
+  fit: 'cover',
   name: 'file',
   accept: '*',
   disabled: false,
@@ -196,7 +196,7 @@ const InternalUploader: ForwardRefRenderFunction<
     defaultValue,
     value,
     previewType,
-    imageFit,
+    fit,
     disabled,
     multiple,
     url,
@@ -282,7 +282,7 @@ const InternalUploader: ForwardRefRenderFunction<
         document.body.appendChild(obj)
       }
     }
-    if (getEnv() === 'WEAPP') {
+    if (getEnv() === 'WEAPP' && chooseMedia) {
       // chooseMedia 目前只支持微信小程序原生，其余端全部使用 chooseImage API
       chooseMedia({
         /** 最多可以选择的文件个数 */
@@ -577,7 +577,7 @@ const InternalUploader: ForwardRefRenderFunction<
                       {item.url && (
                         <Image
                           className="nut-uploader__preview-img__c"
-                          style={{ objectFit: imageFit }}
+                          style={{ objectFit: fit }}
                           mode="aspectFit"
                           src={item.url}
                           onClick={() => handleItemClick(item)}

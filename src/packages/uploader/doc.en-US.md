@@ -433,7 +433,7 @@ export default App;
 | capture | Capture, can be set to [camera](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/input#htmlattrdefcapture)，turn on the camera directly | `string` | `false` |
 | maxFileSize | You can set the maximum upload file size (bytes) | `number` \| `string` | `Number.MAX_VALUE` |
 | maxCount | File upload limit | `number` \| `string` | `1` |
-| imageFit | image fill mode | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` | `cover` |
+| fit | image fill mode | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` | `cover` |
 | clearInput | Whether to clear the `input` content, set to `true` to support repeated selection and upload of the same file | `boolean` | `true` |
 | accept | File types that can be accepted. See [Des](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | `string` | `*` |
 | headers | Set request headers | `object` | `{}` |
