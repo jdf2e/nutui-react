@@ -206,9 +206,13 @@ export default App;
 | riseIcon | 自定义向上箭头icon | `React.ReactNode` | `<TriangleUp/>` |
 | downIcon | 自定义向下箭头icon | `React.ReactNode` | `<TriangleDown/>` |
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 
 >>>>>>> next
+=======
+
+>>>>>>> b66880dab02a9d37fa3191f5f38824a2d0664290
 
 ## 主题定制
 
