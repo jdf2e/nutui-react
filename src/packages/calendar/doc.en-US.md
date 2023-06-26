@@ -452,7 +452,7 @@ export default App;
 | renderDay  | day info | `(date: Day) => string | JSX.Element` | `-` |
 | renderDayTop  | something above day  | `(date: Day) => string | JSX.Element` | `-` |
 | renderDayBottom  | something under day | `(date: Day) => string | JSX.Element` | `-` |
-| onClickDay  | trigger when click the day element |  `(data: string) => {}` |
+| onDayClick  | trigger when click the day element |  `(data: string) => {}` |
 | onPageChange   | page change ,one month makes as a page | `(param: string) => {}` |
 | onConfirm | trigger when click the confirm button, or after the click when it is not popup | `(param: string) => {}` |
 | onClose  | trigger close | `() => {}` |

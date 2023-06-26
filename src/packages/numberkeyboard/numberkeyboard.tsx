@@ -143,8 +143,8 @@ export const NumberKeyboard: FunctionComponent<
     <Popup
       visible={visible}
       position="bottom"
-      onClickOverlay={onClose}
-      onClickCloseIcon={onClose}
+      onOverlayClick={onClose}
+      onCloseIconClick={onClose}
       overlayStyle={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}
       {...rest}
     >

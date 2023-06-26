@@ -35,7 +35,7 @@ export interface SearchBarProps extends BasicComponent {
   /** 点击清除按钮后触发	 */
   onClear?: (event: Event) => void
   /** 点击输入区域时触发	 */
-  onClickInput?: (event: Event) => void
+  onInputClick?: (event: Event) => void
 }
 
 const defaultProps = {
@@ -83,7 +83,7 @@ export const SearchBar: FunctionComponent<
     onBlur,
     onClear,
     onSearch,
-    onClickInput,
+    onInputClick,
   } = {
     ...defaultProps,
     ...props,
@@ -136,7 +136,7 @@ export const SearchBar: FunctionComponent<
     )
   }
   const clickInput = (e: Event) => {
-    onClickInput && onClickInput(e)
+    onInputClick && onInputClick(e)
   }
 
   const renderLeftIn = () => {

@@ -68,7 +68,7 @@ const NavBarDemo = () => {
               <Share />
             </span>
           }
-          onClickBack={(e) => Toast.show(translated.a74a1fd4)}
+          onBackClick={(e) => Toast.show(translated.a74a1fd4)}
         >
           <span onClick={(e) => Toast.show(translated.b840c88f)}>
             {translated.c38a08ef}
@@ -82,7 +82,7 @@ const NavBarDemo = () => {
             </span>
           }
           back={<Left name="left" color="#979797" />}
-          onClickBack={(e) => Toast.show(translated.a74a1fd4)}
+          onBackClick={(e) => Toast.show(translated.a74a1fd4)}
         >
           <span onClick={(e) => Toast.show(translated.b840c88f)}>
             {translated.e51e4582}
@@ -98,7 +98,7 @@ const NavBarDemo = () => {
               <MoreX onClick={(e) => Toast.show('icon')} />
             </>
           }
-          onClickBack={(e) => Toast.show(translated.a74a1fd4)}
+          onBackClick={(e) => Toast.show(translated.a74a1fd4)}
         >
           <span onClick={(e) => Toast.show(translated.b840c88f)}>
             {translated.c3a3a1d2}
@@ -118,7 +118,7 @@ const NavBarDemo = () => {
               <MoreX onClick={(e) => Toast.show('icon')} />
             </>
           }
-          onClickBack={(e) => Toast.show(translated.a74a1fd4)}
+          onBackClick={(e) => Toast.show(translated.a74a1fd4)}
         >
           <div slot="content">
             <Tabs

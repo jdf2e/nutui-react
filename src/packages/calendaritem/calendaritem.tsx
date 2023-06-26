@@ -49,7 +49,7 @@ export interface CalendarItemProps {
   renderDayBottom?: ((date: Day) => string | JSX.Element) | undefined
   onConfirm?: (data: any) => void
   onUpdate?: () => void
-  onClickDay?: (data: string) => void
+  onDayClick?: (data: string) => void
   onPageChange?: (data: any) => void
 }
 const defaultProps = {
@@ -72,7 +72,7 @@ const defaultProps = {
   renderDayBottom: undefined,
   onConfirm: (data: any) => {},
   onUpdate: () => {},
-  onClickDay: (data: string) => {},
+  onDayClick: (data: string) => {},
   onPageChange: (data: any) => {},
 } as CalendarItemProps
 
@@ -100,7 +100,7 @@ export const CalendarItem = React.forwardRef<
     renderDayBottom,
     onConfirm,
     onUpdate,
-    onClickDay,
+    onDayClick,
     onPageChange,
   } = { ...defaultProps, ...props }
 
@@ -787,7 +787,7 @@ export const CalendarItem = React.forwardRef<
     }
 
     if (!isFirst) {
-      onClickDay && onClickDay(state.currDateArray)
+      onDayClick && onDayClick(state.currDateArray)
       if (autoBackfill || !popup) {
         confirm()
       }

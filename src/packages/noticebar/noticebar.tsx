@@ -29,7 +29,7 @@ export interface NoticeBarProps extends BasicComponent {
   click?: (event: any) => void
   onClose?: (event: any) => void
   onClick?: (event: any) => void
-  onClickItem?: (event: any, value: any) => void
+  onItemClick?: (event: any, value: any) => void
 }
 
 const defaultProps = {
@@ -71,7 +71,7 @@ export const NoticeBar: FunctionComponent<
     click,
     onClose,
     onClick,
-    onClickItem,
+    onItemClick,
   } = {
     ...defaultProps,
     ...props,
@@ -352,7 +352,7 @@ export const NoticeBar: FunctionComponent<
     })
   }
   const handleItemClick = (event: MouseEvent, value: any) => {
-    onClickItem && onClickItem(event, value)
+    onItemClick && onItemClick(event, value)
   }
 
   const getStyle = (moveOffset = offset) => {

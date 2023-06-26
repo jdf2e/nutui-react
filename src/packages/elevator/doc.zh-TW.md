@@ -71,19 +71,19 @@ const App = () => {
       ],
     },
   ]
-  const onClickItem = (key: string, item: any) => {
+  const onItemClick = (key: string, item: any) => {
     console.log(key, JSON.stringify(item))
   }
 
-  const onClickIndex = (key: string) => {
+  const onIndexClick = (key: string) => {
     console.log(key)
   }
   return (
     <Elevator
       list={dataList}
       height="260"
-      onClickItem={(key: string, item: any) => onClickItem(key, item)}
-      onClickIndex={(key: string) => onClickIndex(key)}
+      onItemClick={(key: string, item: any) => onItemClick(key, item)}
+      onIndexClick={(key: string) => onIndexClick(key)}
     />
   )
 }
@@ -202,11 +202,11 @@ const App = () => {
       ],
     },
   ]
-  const onClickItem = (key: string, item: any) => {
+  const onItemClick = (key: string, item: any) => {
     console.log(key, JSON.stringify(item))
   }
 
-  const onClickIndex = (key: string) => {
+  const onIndexClick = (key: string) => {
     console.log(key)
   }
   return (
@@ -214,8 +214,8 @@ const App = () => {
       list={dataList}
       height="220"
       floorKey="num"
-      onClickItem={(key: string, item: any) => onClickItem(key, item)}
-      onClickIndex={(key: string) => onClickIndex(key)}
+      onItemClick={(key: string, item: any) => onItemClick(key, item)}
+      onIndexClick={(key: string) => onIndexClick(key)}
     />
   )
 }
@@ -283,11 +283,11 @@ const App = () => {
       ],
     },
   ]
-  const onClickItem = (key: string, item: any) => {
+  const onItemClick = (key: string, item: any) => {
     console.log(key, JSON.stringify(item))
   }
 
-  const onClickIndex = (key: string) => {
+  const onIndexClick = (key: string) => {
     console.log(key)
   }
   return (
@@ -295,8 +295,8 @@ const App = () => {
       pagation={false}
       list={dataList}
       height="260"
-      onClickItem={(key: string, item: any) => onClickItem(key, item)}
-      onClickIndex={(key: string) => onClickIndex(key)}
+      onItemClick={(key: string, item: any) => onItemClick(key, item)}
+      onIndexClick={(key: string) => onIndexClick(key)}
     />
   )
 }
@@ -428,11 +428,11 @@ const App = () => {
       ],
     },
   ]
-  const onClickItem = (key: string, item: any) => {
+  const onItemClick = (key: string, item: any) => {
     console.log(key, JSON.stringify(item))
   }
 
-  const onClickIndex = (key: string) => {
+  const onIndexClick = (key: string) => {
     console.log(key)
   }
   return (
@@ -440,8 +440,8 @@ const App = () => {
       list={dataList}
       height="220"
       sticky
-      onClickItem={(key: string, item: any) => onClickItem(key, item)}
-      onClickIndex={(key: string) => onClickIndex(key)}
+      onItemClick={(key: string, item: any) => onItemClick(key, item)}
+      onIndexClick={(key: string) => onIndexClick(key)}
     />
   )
 }
@@ -510,19 +510,19 @@ const App = () => {
       ],
     },
   ]
-  const onClickItem = (key: string, item: any) => {
+  const onItemClick = (key: string, item: any) => {
     console.log(key, JSON.stringify(item))
   }
 
-  const onClickIndex = (key: string) => {
+  const onIndexClick = (key: string) => {
     console.log(key)
   }
   return (
     <Elevator
       list={dataList}
       height="260"
-      onClickItem={(key: string, item: any) => onClickItem(key, item)}
-      onClickIndex={(key: string) => onClickIndex(key)}
+      onItemClick={(key: string, item: any) => onItemClick(key, item)}
+      onIndexClick={(key: string) => onIndexClick(key)}
     >
       <Elevator.Context.Consumer>
         {(value) => {
@@ -555,8 +555,8 @@ export default App
 | showKeys | 展示右側導航 | `boolean` | `true` |
 | spaceHeight | 右側錨點的上下間距 | `number` | `23` |
 | titleHeight | 左側索引的高度 | `number` | `35` |
-| onClickItem | 點擊內容 | `onClickItem:(key: string, item: { id: number, name: string })=>void` | `false` |
-| onClickIndex | 點擊索引 | `onClickIndex:(key: string)=>void` | `false` |
+| onItemClick | 點擊內容 | `onItemClick:(key: string, item: { id: number, name: string })=>void` | `false` |
+| onIndexClick | 點擊索引 | `onIndexClick:(key: string)=>void` | `false` |
 
 ## 主題定製
 

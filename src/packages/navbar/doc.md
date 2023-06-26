@@ -36,7 +36,7 @@ const App = () => {
             <Share />
         </span>
         }
-        onClickBack={(e) =>  Toast.show("返回")}
+        onBackClick={(e) =>  Toast.show("返回")}
     >
         <span onClick={(e) =>  Toast.show("标题")}>
         订单详情
@@ -66,7 +66,7 @@ const App = () => {
         </span>
         }
         back={<Left name="left" color="#979797" />}
-        onClickBack={(e) =>  Toast.show("返回")}
+        onBackClick={(e) =>  Toast.show("返回")}
     >
         <span onClick={(e) =>  Toast.show("标题")}>
         浏览记录
@@ -99,7 +99,7 @@ const App = () => {
             <MoreX onClick={(e) =>  Toast.show('icon')} />
         </>
         }
-        onClickBack={(e) =>  Toast.show("返回")}
+        onBackClick={(e) =>  Toast.show("返回")}
     >
         <span onClick={(e) =>  Toast.show("标题")}>
         购物车
@@ -136,7 +136,7 @@ const App = () => {
               <MoreX onClick={(e) =>  Toast.show('icon')} />
             </>
           }
-          onClickBack={(e) =>  Toast.show("返回")}
+          onBackClick={(e) =>  Toast.show("返回")}
         >
             <Tabs value={tab1value} onChange={({ paneKey }) => { setTab1value(paneKey) }}>
               <TabPane title="Tab 1"> Tab 1 </TabPane>
@@ -165,7 +165,7 @@ export default App;
 | safeArea | 是否适配安全区 | `boolean` | `false` |
 | placeholder | 固定在顶部时，是否在标签位置生成一个等高的占位元素 | `boolean` | `false` |
 | zIndex | 导航栏层级 | `number` \| `string` | `10` |
-| onClickBack | 点击返回区域后的回调 | `onClickBack:(event: Event)=>void` | `false` |
+| onBackClick | 点击返回区域后的回调 | `onBackClick:(event: Event)=>void` | `false` |
 
 ## 主题定制
 

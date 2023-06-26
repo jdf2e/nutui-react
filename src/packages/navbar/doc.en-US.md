@@ -36,7 +36,7 @@ const App = () => {
             <Share />
         </span>
         }
-        onClickBack={(e) => Toast.show("back")}
+        onBackClick={(e) => Toast.show("back")}
     >
         <span onClick={(e) => Toast.show("title")}>
         order details
@@ -66,7 +66,7 @@ const App = () => {
         </span>
         }
         back={<Left name="left" color="#979797" />}
-        onClickBack={(e) => Toast.show("back")}
+        onBackClick={(e) => Toast.show("back")}
     >
         <span onClick={(e) => Toast.show("title")}>
         Browsing history
@@ -99,7 +99,7 @@ const App = () => {
             <MoreX onClick={(e) => Toast.show('icon')} />
         </>
         }
-        onClickBack={(e) => Toast.show("back")}
+        onBackClick={(e) => Toast.show("back")}
     >
         <span onClick={(e) => Toast.show("title")}>
         cart
@@ -136,7 +136,7 @@ const App = () => {
               <MoreX onClick={(e) => Toast.show('icon')} />
             </>
           }
-          onClickBack={(e) => Toast.show("back")}
+          onBackClick={(e) => Toast.show("back")}
         >
             <Tabs value={tab1value} onChange={({ paneKey }) => { setTab1value(paneKey) }}>
               <TabPane title="Tab 1"> Tab 1 </TabPane>
@@ -165,7 +165,7 @@ export default App;
 | safeArea | Whether it is suitable for the safe area | `boolean` | `false` |
 | placeholder | When fixed to the top, whether to generate a placeholder element of equal height at the label position | `boolean` | `false` |
 | zIndex | Navigation Bar Hierarchy | `number` \| `string` | `10` |
-| onClickBack | Click the callback after the return area | `onClickBack:(event: Event)=>void` | `false` |
+| onBackClick | Click the callback after the return area | `onBackClick:(event: Event)=>void` | `false` |
 
 ## Theming
 
