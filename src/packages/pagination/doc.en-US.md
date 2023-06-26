@@ -1,24 +1,24 @@
-#  Pagination
+# Pagination
 
 ## Intro
-    
+
 When the amount of data is too much, use pagination to separate the data.
-    
+
 ## Install
-``` javascript
-// react
+
+```tsx
 import { Pagination } from '@nutui/nutui-react';
-```    
+```
 
 ## Demo
 
 ### Basic Usage
 
-When the current page number is bound by `value`, the component is in a controlled state, and the paging display depends on the incoming `value`, which is generally used with `onChange`.
-When it does not need to be controlled, the current page number can be specified through `defaultValue`
+When the current page number is bound by `value`, the component is in a controlled state, and the paging display depends on the incoming `value`, which is generally used with `onChange`. When it does not need to be controlled, the current page number can be specified through `defaultValue`
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
 import { Pagination } from '@nutui/nutui-react';
 
@@ -39,11 +39,16 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ### Simple mode
+
 Pagination can be switched to simple mode with simple mode attribute, and pagination cann't display specific page buttons.
+
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
 import { Pagination } from '@nutui/nutui-react';
 
@@ -65,12 +70,16 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
-### Show ellipses 
-The ellipses button will display after with force-ellipses attribute, click it can jump quickly.
+### Show ellipses
+
+The ellipses button will display after with force-ellipses attribute, click it can jump quickly 
+
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
 import { Pagination } from '@nutui/nutui-react';
 
@@ -92,11 +101,17 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ### Custom Button
-Pass in a custom method through itemRender, parameters: { number: "page number", text: "page text", active: "active page" }
+
+Pass in a custom method through itemRender, parameters: { number: "page number", text: "page text", active: "active page" } 
+
+
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
 import { Pagination} from '@nutui/nutui-react'; 
 import { Left, Right } from '@nutui/icons-react';
@@ -124,11 +139,14 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Uncontrolled Mode
+
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
 import { Pagination } from '@nutui/nutui-react'; 
 
@@ -148,25 +166,26 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ## Pagination
-    
+
 ### Props
-    
-| Attribute           | Description                             | Type                      | Default            |
-| -------------- | -------------------------------- | ------------------------- | ----------------- |
-| value     | current page number, controlled value                         | number                    | -                 |
-| defaultValue   | default page number, uncontrolled value                         | number                    | `1`                 |
-| mode           | Display mode, optional values are: `multi`,`simple` | string                    | `multi`             |
-| prev       | Customize previous page button content             | ReactNode | `Previous`            |
-| next       | Customize next page button content             | ReactNode | `Next`             |
-| total     | total                         | number          | `50`                 |
-| pageSize   | records per page                       | number          | `10`                |
-| itemSize   | number of pages displayed                   | number          | `5`                 |
-| ellipse  | Whether to show ellipsis                   | boolean                   | `false`             |
-| itemRender | Used to customize page number content             | (page: {number, text}) => ReactNode | -                 |
-| onChange |  when the page number changes | (value) => void    | - |
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| value | current page number, controlled value | `number` | `-` |
+| defaultValue | default page number, uncontrolled value | `number` | `1` |
+| mode | Display mode  | `multi` \| `simple` | `multi` |
+| prev | Customize previous page button content | `ReactNode` | `Previous` |
+| next | Customize next page button content | `ReactNode` | `Next` |
+| total | total | `number` | `50` |
+| pageSize | records per page | `number` | `10` |
+| itemSize | number of pages displayed | `number` | `5` |
+| ellipse | Whether to show ellipsis | `boolean` | `false` |
+| itemRender | Used to customize page number content | `(page: {number, text}) => ReactNode` | `-` |
+| onChange | when the page number changes | `(value) => void` | `-` |
 
 ## Theming
 
@@ -174,13 +193,13 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-pagination-color | `$primary-color` |
-| --nutui-pagination-font-size | `$font-size-2` |
-| --nutui-pagination-item-border-color | `#e4e7eb` |
-| --nutui-pagination-disable-color | `$disable-color` |
-| --nutui-pagination-disable-background-color | `#f7f8fa` |
-| --nutui-pagination-item-border-width | `1px` |
-| --nutui-pagination-item-border-radius | `2px` |
-| --nutui-pagination-prev-next-padding | `0 11px` |
+| Name | Description | Default |
+| --- | --- | --- |
+| \--nutui-pagination-color | font color  |  `$primary-color` |
+| \--nutui-pagination-font-size | font size | `$font-size-2` |
+| \--nutui-pagination-item-border-color | border color  | `#e4e7eb` |
+| \--nutui-pagination-disable-color | disable color | `$disable-color` |
+| \--nutui-pagination-disable-background-color | disable background color | `#f7f8fa` |
+| \--nutui-pagination-item-border-width | border width | `1px` |
+| \--nutui-pagination-item-border-radius | border radius  | `2px` |
+| \--nutui-pagination-prev-next-padding | padding  | `0 11px` |

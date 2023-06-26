@@ -22,9 +22,15 @@ export interface CascaderConfig {
   children?: string
 }
 
-export type CascaderValue = CascaderOption['value'][]
+export type CascaderValue = Exclude<CascaderOption['value'], undefined>[]
 
-export interface convertConfig {
+export interface CascaderOptionKey {
+  textKey: string
+  valueKey: string
+  childrenKey: string
+}
+
+export interface CascaderFormat {
   topId?: string | number | null
   idKey?: string
   pidKey?: string

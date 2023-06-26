@@ -6,8 +6,7 @@
 
 ## 安装
 
-```ts
-// react
+```tsx
 import { Switch } from '@nutui/nutui-react';
 ```
 
@@ -46,7 +45,7 @@ const App = () => {
   const [checkedAsync, setCheckedAsync] = useState(true)
   
   const onChangeAsync = (value: boolean, event: Event) => {
-    Toast.text(`2秒后异步触发 ${value}`)
+    Toast.show(`2秒后异步触发 ${value}`)
     setTimeout(() => {
       setCheckedAsync(value)
     }, 2000)
@@ -97,7 +96,7 @@ import { Switch, Toast } from '@nutui/nutui-react';
 
 const App = () => {
   const onChange = (value: boolean, event: Event) => {
-    Toast.text(`触发了onChange事件，开关状态：${value}`)
+    Toast.show(`触发了onChange事件，开关状态：${value}`)
   }
   return ( 
     <>   
@@ -156,7 +155,7 @@ export default App;
 
 ### Props
 
-| 参数 | 说明 | 类型 | 默认值 |
+| 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | defaultChecked | 开关状态，非受控 | `boolean` | `false` |
 | checked | 开关状态，受控 | `boolean` | `false` |

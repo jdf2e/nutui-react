@@ -5,14 +5,13 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { ITouchEvent } from '@tarojs/components'
-import Trigger from './Trigger'
-import Overlay from '@/packages/overlay/index.taro'
-import { getRectByTaro } from '@/utils/use-client-rect'
+import classNames from 'classnames'
+import Popup from '@/packages/popup/index.taro'
+import Taro from '@tarojs/taro'
+import { PopupProps } from '@/packages/popup/popup.taro'
+import { getRect, getRectByTaro } from '@/utils/use-client-rect'
 
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export type PopoverTheme = 'light' | 'dark'
+import { ComponentDefaults } from '@/utils/typings'
 
 export type PopoverLocation =
   | 'bottom'
@@ -29,171 +28,290 @@ export type PopoverLocation =
   | 'right-end'
 
 export interface List {
+  key?: string
   name: string
   icon?: React.ReactNode
   disabled?: boolean
+  className?: string
 }
 
-export interface PopoverProps extends BasicComponent {
+export interface PopoverProps extends PopupProps {
   list: List[]
-  theme: PopoverTheme
   location: PopoverLocation | string
   visible: boolean
-  offset: string | number
-  className: string
-  style?: CSSProperties
+  offset: string[] | number[]
+  targetId: string
+  showArrow: boolean
+  closeOnClickOutside: boolean
+  closeOnClickAction: boolean
   children?: React.ReactNode
-  onClick: (e: React.MouseEvent | ITouchEvent) => void
-  onChoose: (item: List, index: number) => void
+  onClick: () => void
+  onOpen: () => void
+  onClose: () => void
+  onSelect: (item: List, index: number) => void
 }
 
 const defaultProps = {
   ...ComponentDefaults,
   list: [],
-  theme: 'light',
   location: 'bottom',
   visible: false,
-  offset: 20,
+  offset: [0, 12],
+  targetId: '',
   className: '',
-  onClick: (e: React.MouseEvent | ITouchEvent) => {},
-  onChoose: (item, index) => {},
-} as PopoverProps
+  showArrow: true,
+  overlay: false,
+  closeOnClickOutside: true,
+  closeOnClickAction: true,
+  onClick: () => {},
+  onOpen: () => {},
+  onClose: () => {},
+}
+
+const classPrefix = `nut-popover`
 export const Popover: FunctionComponent<
-  Partial<PopoverProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<PopoverProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'>
 > = (props) => {
   const {
     children,
     list,
-    theme,
     location,
     visible,
     offset,
+    targetId,
+    overlay,
+    closeOnClickOutside,
+    closeOnClickAction,
     className,
+    showArrow,
     style,
     onClick,
-    onChoose,
-    ...reset
+    onOpen,
+    onClose,
+    onSelect,
+    ...rest
   } = {
     ...defaultProps,
     ...props,
   }
 
-  const goodItem = useRef(null)
-  setTimeout(async () => {
-    if (goodItem.current) {
-      const res = await getRectByTaro(goodItem.current)
-      setElWidth((res as any)?.width)
-      setElHeight((res as any)?.height)
-    }
-  })
+  const popoverRef = useRef<any>(null)
+  const popoverContentRef = useRef<any>(null)
 
-  const [classes, setClasses] = useState('')
+  const [showPopup, setShowPopup] = useState(false)
   const [elWidth, setElWidth] = useState(0)
   const [elHeight, setElHeight] = useState(0)
-  const [popoverContent, setPopoverContent] = useState('')
-  const [popoverArrow, setPopoverArrow] = useState('')
+  const [rootPosition, setRootPosition] =
+    useState<{
+      width: number
+      height: number
+      left: number
+      top: number
+      right: number
+    }>()
+
   useEffect(() => {
-    setClasses(classesSelf())
-    setPopoverContent(popoverContentSelf())
-    setPopoverArrow(popoverArrowSelf())
-  }, [list, theme])
-  const getStyle = () => {
-    const offNumer = Number(offset) ? Number(offset) : 0
-    const style: CSSProperties = {}
-    if (location.includes('top')) {
-      style.bottom = `${elHeight + offNumer}px`
-    } else if (location.includes('right')) {
-      style.left = `${elWidth + offNumer}px`
-    } else if (location.includes('left')) {
-      style.right = `${elWidth + offNumer}px`
+    setShowPopup(visible)
+
+    if (visible) {
+      setTimeout(() => {
+        getContentWidth()
+      }, 0)
+    }
+  }, [visible])
+
+  const getContentWidth = async () => {
+    let rect
+    if (targetId) {
+      if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
+        rect = getRect(document.querySelector(`#${targetId}`) as Element)
+      } else {
+        rect = await getRectTaro(targetId)
+      }
     } else {
-      style.top = `${elHeight + offNumer}px`
+      rect = await getRectByTaro(popoverRef.current)
     }
-    return style
+
+    setRootPosition({
+      width: rect.width,
+      height: rect.height,
+      left: rect.left,
+      top: rect.top,
+      right: rect.right,
+    })
+    setTimeout(() => {
+      getPopoverContentW()
+    }, 300)
   }
 
-  const classesSelf = () => {
-    const prefixCls = 'nut-popover'
-    return `${prefixCls} ${theme ? `${prefixCls}--${theme}` : ''}`
-  }
-  const popoverContentSelf = () => {
-    const prefixCls = 'popover-content'
-    return `${prefixCls}-show ${prefixCls} ${
-      location ? `${prefixCls}--${location}` : ''
-    }`
-  }
-
-  const filter = () => {
-    const ms = ['top', 'bottom', 'left', 'right']
-    return ms.filter((m) => location.includes(m))[0]
-  }
-  const popoverArrowSelf = () => {
-    const prefixCls = 'popover-arrow'
-    return `${prefixCls} ${prefixCls}-${filter()} ${
-      location ? `${prefixCls}--${location}` : ''
-    }`
+  const getRectTaro = async (targetId: any): Promise<any> => {
+    return new Promise((resolve) => {
+      const query = Taro.createSelectorQuery()
+      query.select(`#${targetId}`) &&
+        query.select(`#${targetId}`).boundingClientRect()
+      query.exec((res: any) => {
+        resolve(res[0])
+      })
+    })
   }
 
-  const handleClick = (e: React.MouseEvent | ITouchEvent) => {
-    if (props.onClick) {
-      props.onClick(e)
+  const getPopoverContentW = async () => {
+    const rectContent = await getRectByTaro(popoverContentRef.current)
+    setElWidth(rectContent.width)
+    setElHeight(rectContent.height)
+  }
+
+  const clickAway = () => {
+    if (closeOnClickOutside) {
+      props.onClick && props.onClick()
+      onClose && onClose()
     }
   }
 
-  const handleChoose = (item: List, index: number) => {
+  const classes = classNames(
+    {
+      [`${classPrefix}`]: true,
+    },
+    className
+  )
+
+  const popoverArrow = () => {
+    const prefixCls = 'nut-popover-arrow'
+    const loca = location
+    const direction = loca.split('-')[0]
+    return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}--${loca}`
+  }
+
+  const getRootPosition = () => {
+    const styles: CSSProperties = {}
+    if (!rootPosition) {
+      styles.visibility = 'hidden'
+      return styles
+    }
+
+    const contentWidth = elWidth
+    const contentHeight = elHeight
+    const { width, height, left, top, right } = rootPosition
+    const direction = location.split('-')[0]
+    const skew = location.split('-')[1]
+
+    let cross = 0
+    let parallel = 0
+    if (Array.isArray(offset) && offset.length === 2) {
+      cross += +offset[1]
+      parallel += +offset[0]
+    }
+
+    if (width) {
+      if (['bottom', 'top'].includes(direction)) {
+        const h =
+          direction === 'bottom' ? height + cross : -(contentHeight + cross)
+
+        styles.top = `${top + h}px`
+
+        if (!skew) {
+          styles.left = `${-(contentWidth - width) / 2 + left + parallel}px`
+        }
+        if (skew === 'start') {
+          styles.left = `${left + parallel}px`
+        }
+        if (skew === 'end') {
+          styles.left = `${right + parallel}px`
+        }
+      }
+      if (['left', 'right'].includes(direction)) {
+        const contentW =
+          direction === 'left' ? -(contentWidth + cross) : width + cross
+        styles.left = `${left + contentW}px`
+        if (!skew) {
+          styles.top = `${
+            top - contentHeight / 2 + height / 2 - 4 + parallel
+          }px`
+        }
+        if (skew === 'start') {
+          styles.top = `${top + parallel}px`
+        }
+        if (skew === 'end') {
+          styles.top = `${top + height + parallel}px`
+        }
+      }
+    }
+
+    if (elWidth === 0) {
+      styles.visibility = 'hidden'
+    } else {
+      styles.visibility = 'initial'
+    }
+    return styles
+  }
+
+  const handleSelect = (item: List, index: number) => {
     if (!item.disabled) {
-      onChoose(item, index)
+      onSelect && onSelect(item, index)
+    }
+    if (closeOnClickAction) {
+      props.onClick && props.onClick()
+      onClose && onClose()
     }
   }
   return (
     <>
-      <div
-        className={`${classes} ${className}`}
-        style={{ ...style }}
-        {...reset}
-      >
-        <Trigger forwardedRef={goodItem}>
-          <div onClick={(e) => handleClick(e)}>
-            {Array.isArray(children) ? children[0] : children}
-
-            {visible ? (
-              <div className={`${popoverContent}`} style={getStyle()}>
-                <div className={`${popoverArrow}`} />
-                {Array.isArray(children) ? children[1] : ''}
-
-                <div>
-                  {list.map((item: List, i: number) => {
-                    return (
-                      <div
-                        key={item.name}
-                        className={`popover-menu-item ${
-                          item.disabled ? 'disabled' : ''
-                        }`}
-                        onClick={() => {
-                          handleChoose(item, i)
-                        }}
-                      >
-                        {item.icon ? item.icon : null}
-                        <div className="popover-menu-item-name">
-                          {item.name}
-                        </div>
-                      </div>
-                    )
-                  })}
+      {!targetId && (
+        <div
+          className="nut-popover-wrapper"
+          ref={popoverRef}
+          onClick={() => {
+            props.onClick && props.onClick()
+            if (!visible) {
+              onOpen && onOpen()
+            } else {
+              onClose && onClose()
+            }
+          }}
+          style={style}
+        >
+          {Array.isArray(children) ? children[0] : children}
+        </div>
+      )}
+      <div className={classes} style={getRootPosition()}>
+        <Popup
+          className={`nut-popover-content nut-popover-content--${location}`}
+          position="default"
+          overlay={overlay}
+          visible={showPopup}
+          {...rest}
+        >
+          <div className="nut-popover-content-group" ref={popoverContentRef}>
+            {showArrow && <div className={popoverArrow()}></div>}
+            {Array.isArray(children) ? children[1] : ''}
+            {list.map((item, index) => {
+              return (
+                <div
+                  className={classNames(
+                    {
+                      'nut-popover-menu-item': true,
+                      'nut-popover-menu-disabled': item.disabled,
+                    },
+                    item.className
+                  )}
+                  key={item.key}
+                  onClick={() => handleSelect(item, index)}
+                >
+                  {item.icon ? item.icon : null}
+                  <div className="nut-popover-menu-item-name">{item.name}</div>
                 </div>
-              </div>
-            ) : null}
+              )
+            })}
           </div>
-        </Trigger>
+        </Popup>
+        {showPopup && (
+          <div
+            className="nut-popover-content-bg"
+            onClick={clickAway}
+            onTouchMove={clickAway}
+          />
+        )}
       </div>
-
-      {visible ? (
-        <Overlay
-          visible={visible}
-          onClick={(e) => handleClick(e)}
-          style={{ background: 'transparent' }}
-        />
-      ) : null}
     </>
   )
 }

@@ -16,7 +16,7 @@ test('should render imageSize correctly', () => {
   })
 })
 test('should render image props correctly', () => {
-  const { container } = render(<Empty image="empty" />)
+  const { container } = render(<Empty status="empty" />)
   expect(container.querySelector('.img')).toHaveAttribute(
     'src',
     'https://static-ftcms.jd.com/p/files/61a9e3183985005b3958672b.png'

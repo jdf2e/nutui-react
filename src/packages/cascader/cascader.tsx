@@ -1,75 +1,64 @@
 import React, {
   ForwardRefRenderFunction,
   PropsWithChildren,
+  isValidElement,
   useState,
   useEffect,
-  CSSProperties,
+  ReactNode,
 } from 'react'
 import classNames from 'classnames'
-import Popup from '@/packages/popup'
+import { Loading, Checklist } from '@nutui/icons-react'
+import { Popup, PopupProps } from '@/packages/popup/popup'
 import { Tabs } from '@/packages/tabs/tabs'
-import { TabPane } from '@/packages/tabpane/tabpane'
-import { CascaderItem } from './cascaderItem'
-import bem from '@/utils/bem'
 import { convertListToOptions } from './helper'
 import {
   CascaderPane,
   CascaderOption,
   CascaderValue,
-  convertConfig,
+  CascaderOptionKey,
+  CascaderFormat,
 } from './types'
 import Tree from './tree'
+import { ComponentDefaults } from '@/utils/typings'
+import { usePropsValue } from '@/utils/use-props-value'
 
-export interface CascaderProps {
-  className: string
-  style: CSSProperties
-  activeColor: string
-  checkedIcon: string
-  tabsColor: string
-  poppable: boolean
+export interface CascaderProps extends PopupProps {
+  popup: boolean
   visible: boolean // popup 显示状态
+  activeColor: string
+  activeIcon: string
   options: CascaderOption[]
-  value: string[]
-  title: string
-  textKey: string
-  valueKey: string
-  childrenKey: string
-  convertConfig: Record<string, string | number | null>
+  value?: CascaderValue
+  defaultValue?: CascaderValue
+  optionKey: CascaderOptionKey
+  format: Record<string, string | number | null>
   closeable: boolean
   closeIconPosition: string
   closeIcon: string
   lazy: boolean
-  lazyLoad: (node: any, resolve: any) => void
-  onClose?: () => void
-  onChange: (value: any, params: any) => void
-  onPathChange: (value: any, params: any) => void
+  onLoad: (node: any, resolve: any) => void
+  onChange: (value: CascaderValue, params?: any) => void
+  onPathChange: (value: CascaderValue, params: any) => void
 }
 
 const defaultProps = {
-  className: '',
-  style: {},
+  ...ComponentDefaults,
   activeColor: '',
-  checkedIcon: 'checklist',
-  tabsColor: '',
-  poppable: true,
+  activeIcon: 'checklist',
+  popup: true,
   visible: false,
   options: [],
-  value: [],
-  title: '',
-  textKey: 'text',
-  valueKey: 'value',
-  childrenKey: 'children',
-  convertConfig: {},
+  optionKey: { textKey: 'text', valueKey: 'value', childrenKey: 'children' },
+  format: {},
   closeable: false,
   closeIconPosition: 'top-right',
   closeIcon: 'close',
   lazy: false,
-  lazyLoad: () => {},
+  onLoad: () => {},
   onClose: () => {},
   onChange: () => {},
   onPathChange: () => {},
-  ...Popup.defaultProps,
-} as CascaderProps
+} as unknown as CascaderProps
 const InternalCascader: ForwardRefRenderFunction<
   unknown,
   PropsWithChildren<Partial<CascaderProps>>
@@ -77,21 +66,20 @@ const InternalCascader: ForwardRefRenderFunction<
   const {
     className,
     style,
-    tabsColor,
-    poppable,
+    activeColor,
+    activeIcon,
+    popup,
     visible,
     options,
     value,
-    title,
-    textKey,
-    valueKey,
-    childrenKey,
-    convertConfig,
+    defaultValue,
+    optionKey,
+    format,
     closeable,
     closeIconPosition,
     closeIcon,
     lazy,
-    lazyLoad,
+    onLoad,
     onClose,
     onChange,
     onPathChange,
@@ -99,8 +87,16 @@ const InternalCascader: ForwardRefRenderFunction<
 
   const [tabvalue, setTabvalue] = useState('c1')
   const [optionsData, setOptionsData] = useState<CascaderPane[]>([])
+  const isLazy = () => state.configs.lazy && Boolean(state.configs.onLoad)
 
-  const isLazy = () => state.configs.lazy && Boolean(state.configs.lazyLoad)
+  const [innerValue, setInnerValue] = usePropsValue<CascaderValue>({
+    value,
+    defaultValue,
+    finalValue: defaultValue,
+    onChange: (val: CascaderValue) => {
+      props.onChange?.(val)
+    },
+  })
 
   const [state] = useState({
     optionsData: [] as any,
@@ -111,61 +107,50 @@ const InternalCascader: ForwardRefRenderFunction<
         paneKey: '',
       },
     ],
-    innerValue: value as CascaderValue,
     tree: new Tree([], {}),
     tabsCursor: 0, // 选中的tab项
     initLoading: false,
     currentProcessNode: [] as CascaderOption | null,
     configs: {
       lazy,
-      lazyLoad,
-      valueKey,
-      textKey,
-      childrenKey,
-      convertConfig,
+      onLoad,
+      optionKey,
+      format,
     },
     lazyLoadMap: new Map(),
   })
 
-  const b = bem('cascader')
-
-  const classes = classNames(b(''))
-
+  const classPrefix = classNames(`nut-cascader`)
   const classesPane = classNames({
-    [`${b('')}-pane`]: true,
+    [`${classPrefix}-pane`]: true,
   })
 
   useEffect(() => {
     initData()
-  }, [])
+  }, [options, format])
 
   useEffect(() => {
-    if (value !== state.innerValue) {
-      state.innerValue = value as CascaderValue
+    if (defaultValue && defaultValue !== innerValue) {
+      setInnerValue(defaultValue)
     }
-  }, [value])
-
-  useEffect(() => {
-    initData()
-  }, [options])
+  }, [defaultValue])
 
   const initData = async () => {
     // 初始化开始处理数据
     state.lazyLoadMap.clear()
-    if (convertConfig && Object.keys(convertConfig).length > 0) {
+    if (format && Object.keys(format).length > 0) {
       state.optionsData = convertListToOptions(
         options as CascaderOption[],
-        convertConfig as convertConfig
+        format as CascaderFormat
       )
     } else {
       state.optionsData = options
     }
     state.tree = new Tree(state.optionsData as CascaderOption[], {
-      value: state.configs.valueKey,
-      text: state.configs.textKey,
-      children: state.configs.childrenKey,
+      value: state.configs.optionKey.valueKey,
+      text: state.configs.optionKey.textKey,
+      children: state.configs.optionKey.childrenKey,
     })
-
     if (isLazy() && !state.tree.nodes.length) {
       await invokeLazyLoad({
         root: true,
@@ -174,7 +159,6 @@ const InternalCascader: ForwardRefRenderFunction<
         value: '',
       })
     }
-
     state.panes = [
       {
         nodes: state.tree.nodes,
@@ -183,13 +167,17 @@ const InternalCascader: ForwardRefRenderFunction<
       },
     ]
     syncValue()
-
     setOptionsData(state.panes)
   }
   // 处理有默认值时的数据
   const syncValue = async () => {
-    const currentValue = state.innerValue
-    if (currentValue === undefined || !state.tree.nodes.length) {
+    const currentValue = innerValue
+
+    if (
+      currentValue === undefined ||
+      currentValue !== defaultValue ||
+      !state.tree.nodes.length
+    ) {
       return
     }
 
@@ -214,26 +202,21 @@ const InternalCascader: ForwardRefRenderFunction<
           .slice(1)
           .reduce(async (p: Promise<CascaderOption | void>, value) => {
             const parent = await p
-
             await invokeLazyLoad(parent)
             const node: any = parent?.children?.find(
               (item: any) => item.value === value
             )
-
             if (node) {
               needToSync.push(value)
             }
-
             return Promise.resolve(node)
           }, Promise.resolve(parent))
-
         await invokeLazyLoad(last)
-
         state.initLoading = false
       }
     }
 
-    if (needToSync.length && currentValue === value) {
+    if (needToSync.length && currentValue === defaultValue) {
       const pathNodes = state.tree.getPathNodesByValue(needToSync)
       pathNodes.forEach((node, index) => {
         state.tabsCursor = index
@@ -248,7 +231,7 @@ const InternalCascader: ForwardRefRenderFunction<
       return
     }
 
-    if (!state.configs.lazyLoad) {
+    if (!state.configs.onLoad) {
       node.leaf = true
       return
     }
@@ -268,7 +251,7 @@ const InternalCascader: ForwardRefRenderFunction<
     if (!lazyLoadPromise) {
       lazyLoadPromise = new Promise((resolve) => {
         // 外部必须resolve
-        state.configs.lazyLoad?.(node, resolve)
+        state.configs.onLoad?.(node, resolve)
       })
       state.lazyLoadMap.set(node, lazyLoadPromise)
     }
@@ -309,6 +292,7 @@ const InternalCascader: ForwardRefRenderFunction<
         const optionParams = pathNodes.map((item: any) => item.value)
         onChange(optionParams, pathNodes)
         onPathChange(optionParams, pathNodes)
+        setInnerValue(optionParams)
       }
       setOptionsData(state.panes)
       close()
@@ -326,8 +310,8 @@ const InternalCascader: ForwardRefRenderFunction<
         selectedNode: null,
         paneKey: `c${state.tabsCursor + 1}`,
       })
-      setTabvalue(`c${state.tabsCursor + 1}`)
       setOptionsData(state.panes)
+      setTabvalue(`c${state.tabsCursor + 1}`)
 
       if (!type) {
         const pathNodes = state.panes.map((item) => item.selectedNode)
@@ -337,13 +321,11 @@ const InternalCascader: ForwardRefRenderFunction<
       return
     }
     state.currentProcessNode = node
-
     if (node.loading) {
       return
     }
 
     await invokeLazyLoad(node)
-
     if (state.currentProcessNode === node) {
       state.panes[state.tabsCursor].selectedNode = node
       chooseItem(node, type)
@@ -351,10 +333,61 @@ const InternalCascader: ForwardRefRenderFunction<
     setOptionsData(state.panes)
   }
 
-  const renderItem = () => {
+  const renderItem = (pane: any, node: any, index: number) => {
+    const classPrefix2 = 'nut-cascader-item'
+    const checked = pane.selectedNode?.value === node.value
+
+    const classes = classNames(
+      {
+        active: checked,
+        disabled: node.disabled,
+      },
+      classPrefix2
+    )
+
+    const classesTitle = classNames({
+      [`${classPrefix2}__title`]: true,
+    })
+
+    const renderIcon = () => {
+      if (checked) {
+        if (isValidElement(activeIcon)) {
+          return activeIcon
+        }
+        return (
+          <Checklist
+            className={`${checked ? `${classPrefix}__icon-check` : ''}`}
+          />
+        )
+      }
+      return null
+    }
+
     return (
-      <div className={`${classes} ${className}`} style={style}>
-        {poppable && <div className={b('title')}>{title}</div>}
+      <div
+        style={{ color: checked ? activeColor : '' }}
+        className={classes}
+        key={index}
+        onClick={() => {
+          chooseItem(node, false)
+        }}
+      >
+        <div className={classesTitle}>{node.text}</div>
+        {node.loading ? (
+          <Loading
+            color="#969799"
+            className="nut-cascader-item__icon-loading"
+          />
+        ) : (
+          renderIcon()
+        )}
+      </div>
+    )
+  }
+
+  const renderTabs = () => {
+    return (
+      <div className={`${classPrefix} ${className}`} style={style}>
         <Tabs
           value={tabvalue}
           title={() => {
@@ -365,7 +398,9 @@ const InternalCascader: ForwardRefRenderFunction<
                   state.tabsCursor = index
                 }}
                 className={`nut-tabs__titles-item ${
-                  tabvalue === pane.paneKey ? 'active' : ''
+                  tabvalue === pane.paneKey
+                    ? 'nut-tabs__titles-item--active'
+                    : ''
                 }`}
                 key={pane.paneKey}
               >
@@ -379,35 +414,25 @@ const InternalCascader: ForwardRefRenderFunction<
                     '请选择'}
                   {!(!state.initLoading && state.panes.length) && 'Loading...'}
                 </span>
-                <span
-                  className="nut-tabs__titles-item__line"
-                  style={{ background: tabsColor }}
-                />
+                <span className="nut-tabs__titles-item__line" />
               </div>
             ))
           }}
         >
           {!state.initLoading && state.panes.length ? (
             optionsData.map((pane) => (
-              <TabPane key={pane.paneKey} value={pane.paneKey}>
+              <Tabs.TabPane key={pane.paneKey} value={pane.paneKey}>
                 <div className={classesPane}>
-                  {pane.nodes &&
-                    pane.nodes.map((node: any, index: number) => (
-                      <CascaderItem
-                        key={index}
-                        {...props}
-                        data={node}
-                        checked={pane.selectedNode?.value === node.value}
-                        chooseItem={(node: any) => chooseItem(node, false)}
-                      />
-                    ))}
+                  {pane.nodes?.map((node: any, index: number) =>
+                    renderItem(pane, node, index)
+                  )}
                 </div>
-              </TabPane>
+              </Tabs.TabPane>
             ))
           ) : (
-            <TabPane>
+            <Tabs.TabPane>
               <div className={classesPane} />
-            </TabPane>
+            </Tabs.TabPane>
           )}
         </Tabs>
       </div>
@@ -416,22 +441,24 @@ const InternalCascader: ForwardRefRenderFunction<
 
   return (
     <>
-      {poppable ? (
+      {popup ? (
         <Popup
-          className="cascadar-popup"
           visible={visible}
           position="bottom"
           round
           closeIcon={closeIcon}
           closeable={closeable}
           closeIconPosition={closeIconPosition}
+          title={popup && (props.title as ReactNode)}
+          left={props.left}
+          // todo 只关闭，不处理逻辑。和popup的逻辑不一致。关闭时需要增加是否要处理回调
           onClickOverlay={closePopup}
           onClickCloseIcon={closePopup}
         >
-          {renderItem()}
+          {renderTabs()}
         </Popup>
       ) : (
-        renderItem()
+        renderTabs()
       )}
     </>
   )

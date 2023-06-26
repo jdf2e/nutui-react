@@ -17,18 +17,18 @@ exports[`should match snapshot 1`] = `
           标题1
         </div>
         <div
-          class="nut-collapse-item__sub-title"
+          class="nut-collapse-item__extra"
         />
         <div
           class="nut-collapse-item__icon-box"
         >
           <div
             class="nut-collapse-item__icon"
-            style="transform: translateY(-50%);"
+            style="transform: translateY(-50%) rotate(180deg);"
           >
             <svg
-              aria-labelledby=""
-              class="nut-icon"
+              aria-labelledby="DownArrow"
+              class="nut-icon nut-icon-DownArrow"
               role="presentation"
               viewBox="0 0 1024 1024"
               xmlns="http://www.w3.org/2000/svg"
@@ -44,7 +44,6 @@ exports[`should match snapshot 1`] = `
       </div>
       <div
         class="nut-collapse-item__content"
-        style="height: auto;"
       >
         <div
           class="nut-collapse-item__content-text"
@@ -65,18 +64,18 @@ exports[`should match snapshot 1`] = `
           标题2
         </div>
         <div
-          class="nut-collapse-item__sub-title"
+          class="nut-collapse-item__extra"
         />
         <div
           class="nut-collapse-item__icon-box"
         >
           <div
             class="nut-collapse-item__icon"
-            style="transform: translateY(-50%);"
+            style="transform: translateY(-50%) rotate(180deg);"
           >
             <svg
-              aria-labelledby=""
-              class="nut-icon"
+              aria-labelledby="DownArrow"
+              class="nut-icon nut-icon-DownArrow"
               role="presentation"
               viewBox="0 0 1024 1024"
               xmlns="http://www.w3.org/2000/svg"
@@ -92,7 +91,6 @@ exports[`should match snapshot 1`] = `
       </div>
       <div
         class="nut-collapse-item__content"
-        style="height: auto;"
       >
         <div
           class="nut-collapse-item__content-text"
@@ -105,7 +103,7 @@ exports[`should match snapshot 1`] = `
       class="nut-collapse-item"
     >
       <div
-        class="nut-collapse-item__header nut-collapse-item__header--disabled"
+        class="nut-collapse-item__header disabled"
       >
         <div
           class="nut-collapse-item__title"
@@ -113,7 +111,7 @@ exports[`should match snapshot 1`] = `
           标题3
         </div>
         <div
-          class="nut-collapse-item__sub-title"
+          class="nut-collapse-item__extra"
         />
         <div
           class="nut-collapse-item__icon-box"
@@ -123,8 +121,8 @@ exports[`should match snapshot 1`] = `
             style="transform: translateY(-50%);"
           >
             <svg
-              aria-labelledby=""
-              class="nut-icon"
+              aria-labelledby="DownArrow"
+              class="nut-icon nut-icon-DownArrow"
               role="presentation"
               viewBox="0 0 1024 1024"
               xmlns="http://www.w3.org/2000/svg"

@@ -5,7 +5,7 @@ import React, {
   useState,
   createContext,
 } from 'react'
-import { nextTick, createSelectorQuery } from '@tarojs/taro'
+import Taro, { nextTick, createSelectorQuery } from '@tarojs/taro'
 
 import { ScrollView } from '@tarojs/components'
 import classNames from 'classnames'
@@ -20,8 +20,7 @@ export interface ElevatorProps extends BasicComponent {
   sticky: boolean
   spaceHeight: number
   titleHeight: number
-  style: React.CSSProperties
-  children: React.ReactNode
+  showKeys: boolean
   onClickItem: (key: string, item: ElevatorData) => void
   onClickIndex: (key: string) => void
 }
@@ -33,6 +32,7 @@ const defaultProps = {
   sticky: false,
   spaceHeight: 23,
   titleHeight: 35,
+  showKeys: true,
   className: 'weapp-elevator',
 } as ElevatorProps
 interface ElevatorData {
@@ -50,6 +50,7 @@ export const Elevator: FunctionComponent<
     sticky,
     spaceHeight,
     titleHeight,
+    showKeys,
     className,
     style,
     onClickItem,
@@ -82,13 +83,10 @@ export const Elevator: FunctionComponent<
   const [scrollStart, setScrollStart] = useState<boolean>(false)
   const state = useRef(initData)
   const [scrollTop, setScrollTop] = useState(0)
+  const [scrollY, setScrollY] = useState(0)
   // 重置滚动参数
   const resetScrollState = () => {
     setScrollStart(false)
-  }
-
-  const clientHeight = () => {
-    return listview.current ? listview.current.clientHeight : 0
   }
 
   const getData = (el: HTMLElement): string | void => {
@@ -110,7 +108,6 @@ export const Elevator: FunctionComponent<
       // eslint-disable-next-line no-loop-func
       query.exec((res: any) => {
         if (res[0][0]) height += res[0][0].height
-        // console.log(res, res[0][0].height, height, 'res')
         state.current.listHeight.push(height)
       })
     }
@@ -134,7 +131,11 @@ export const Elevator: FunctionComponent<
     }
 
     setCodeIndex(cacheIndex)
-    setScrollTop(state.current.listHeight[cacheIndex])
+    const scrollTop = state.current.listHeight[cacheIndex]
+    setScrollTop(scrollTop)
+    if (sticky && scrollY !== scrollTop) {
+      setScrollY(Math.floor(scrollTop) > 0 ? 1 : 0)
+    }
   }
 
   const touchMove = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -196,7 +197,10 @@ export const Elevator: FunctionComponent<
     const target = e.target as Element
     const { scrollTop } = target
     state.current.scrollY = Math.floor(scrollTop)
-    setScrollTop(scrollTop)
+    Taro.getEnv() === 'WEB' && setScrollTop(scrollTop)
+    if (sticky && scrollTop !== scrollY) {
+      setScrollY(Math.floor(scrollTop) > 0 ? 1 : 0)
+    }
     for (let i = 0; i < listHeight.length - 1; i++) {
       const height1 = listHeight[i]
       const height2 = listHeight[i + 1]
@@ -205,8 +209,6 @@ export const Elevator: FunctionComponent<
         return
       }
     }
-
-    setCurrentIndex(listHeight.length - 2)
   }
 
   useEffect(() => {
@@ -219,13 +221,6 @@ export const Elevator: FunctionComponent<
 
   return (
     <div className={`${classPrefix} ${className}`} style={style} {...rest}>
-      {sticky && scrollTop > 0 ? (
-        <div className={`${classPrefix}__list__fixed`}>
-          <span className={`${classPrefix}__list__fixed__title`}>
-            {list[currentIndex][floorKey]}
-          </span>
-        </div>
-      ) : null}
       <div
         className={`${classPrefix}__list`}
         style={{ height: Number.isNaN(+height) ? height : `${height}px` }}
@@ -233,6 +228,8 @@ export const Elevator: FunctionComponent<
         <ScrollView
           scrollTop={scrollTop}
           scrollY
+          scrollWithAnimation
+          scrollAnchoring
           className={`${classPrefix}__list__inner`}
           type="list"
           ref={listview}
@@ -278,42 +275,53 @@ export const Elevator: FunctionComponent<
           })}
         </ScrollView>
       </div>
-      {list.length && scrollStart ? (
-        <div
-          className={classNames({
-            [`${classPrefix}__code--current`]: true,
-            [`${classPrefix}__code--current--current`]: true,
-          })}
-        >
-          {list[codeIndex][floorKey]}
+      {showKeys ? (
+        <>
+          {list.length && scrollStart ? (
+            <div
+              className={classNames({
+                [`${classPrefix}__code--current`]: true,
+                [`${classPrefix}__code--current--current`]: true,
+              })}
+            >
+              {list[codeIndex][floorKey]}
+            </div>
+          ) : null}
+          <div className={`${classPrefix}__bars`}>
+            <div
+              className={`${classPrefix}__bars__inner`}
+              onTouchStart={(event) => touchStart(event)}
+              onTouchMove={(event) => touchMove(event)}
+              onTouchEnd={touchEnd}
+              style={{ touchAction: 'pan-y' }}
+            >
+              {list.map((item: any, index: number) => {
+                return (
+                  <div
+                    className={classNames({
+                      [`${classPrefix}__bars__inner__item`]: true,
+                      [`${classPrefix}__bars__inner__item--active`]:
+                        item[floorKey] === list[currentIndex][floorKey],
+                    })}
+                    data-index={index}
+                    key={index}
+                    onClick={() => handleClickIndex(item[floorKey])}
+                  >
+                    {item[floorKey]}
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </>
+      ) : null}
+      {sticky && scrollY > 0 ? (
+        <div className={`${classPrefix}__list__fixed`}>
+          <span className={`${classPrefix}__list__fixed__title`}>
+            {list[currentIndex][floorKey]}
+          </span>
         </div>
       ) : null}
-      <div className={`${classPrefix}__bars`}>
-        <div
-          className={`${classPrefix}__bars__inner`}
-          onTouchStart={(event) => touchStart(event)}
-          onTouchMove={(event) => touchMove(event)}
-          onTouchEnd={touchEnd}
-          style={{ touchAction: 'pan-y' }}
-        >
-          {list.map((item: any, index: number) => {
-            return (
-              <div
-                className={classNames({
-                  [`${classPrefix}__bars__inner__item`]: true,
-                  [`${classPrefix}__bars__inner__item--active`]:
-                    item[floorKey] === list[currentIndex][floorKey],
-                })}
-                data-index={index}
-                key={index}
-                onClick={() => handleClickIndex(item[floorKey])}
-              >
-                {item[floorKey]}
-              </div>
-            )
-          })}
-        </div>
-      </div>
     </div>
   )
 }

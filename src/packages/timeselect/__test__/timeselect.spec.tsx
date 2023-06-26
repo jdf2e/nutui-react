@@ -1,97 +1,65 @@
 import * as React from 'react'
-
 import { render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import ReactTestUtils from 'react-dom/test-utils'
-
 import { TimeSelect } from '../timeselect'
 
-const state = {
-  visible1: true,
-  height: '50%',
-  title: '取件时间 1',
-  currentKey: 0,
-  dates: [
-    {
-      paneKey: '0',
-      date: '5月20日(今天)',
-    },
-    {
-      paneKey: '1',
-      date: '5月21日(星期三)',
-    },
-  ],
-  times: [
-    {
-      key: '0',
-      list: ['9:00-10:00', '10:00-11:00', '11:00-12:00'],
-    },
-    {
-      key: '1',
-      list: ['9:00-10:00', '10:00-11:00'],
-    },
-  ],
-}
+const options = [
+  {
+    value: '20230520',
+    text: '520',
+    children: [
+      { value: '09', text: '09:00-10:00' },
+      { value: '10', text: '10:00-11:00' },
+      { value: '11', text: '11:00-12:00' },
+    ],
+  },
+  {
+    value: '20230521',
+    text: '521',
+    children: [
+      { value: '09', text: '09:00-10:00' },
+      { value: '10', text: '10:00-11:00' },
+    ],
+  },
+]
+
 test('timeselect props test', async () => {
   const App = () => {
-    return (
-      <TimeSelect
-        visible={state.visible1}
-        height={state.height}
-        title={state.title}
-        multiple
-        currentKey={state.currentKey}
-        dates={state.dates}
-        times={state.times}
-      />
-    )
+    return <TimeSelect visible options={options} />
   }
   const { container } = render(<App />)
-
-  await waitFor(
-    () => {
-      const titleDoms = container.querySelectorAll('.nut-timeselect__title')
-      expect(titleDoms[0].innerHTML).toBe(state.title)
-      container.querySelectorAll('.nut-timepannel').forEach((item, index) => {
-        expect(item.innerHTML).toBe(state.dates[index].date)
-      })
-    },
-    { timeout: 2000 }
-  )
-
-  await waitFor(
-    () => {
-      expect(container.querySelector('.nut-timedetail')).toBeInTheDocument()
-      expect(container).toMatchSnapshot()
-    },
-    { timeout: 2000 }
-  )
+  await waitFor(() => {
+    expect(container.outerHTML).toMatchSnapshot()
+  })
 })
 
 test('timeselect event test', async () => {
+  const handleDateChange = jest.fn()
+  const handleTimeChange = jest.fn()
   const App = () => {
     return (
       <TimeSelect
-        visible={state.visible1}
-        height={state.height}
-        title={state.title}
-        multiple
-        currentKey={state.currentKey}
-        dates={state.dates}
-        times={state.times}
+        visible
+        options={options}
+        onDateChange={handleDateChange}
+        onTimeChange={handleTimeChange}
       />
     )
   }
   const { container } = render(<App />)
-  await waitFor(
-    () => {
-      container
-        .querySelectorAll('.nut-timedetail__item')
-        .forEach((item, index) => {
-          ReactTestUtils.Simulate.click(item)
-          expect(item).toHaveClass('nut-timedetail__item-active')
-        })
-    },
-    { timeout: 2000 }
-  )
+  await waitFor(() => {
+    const date = container.querySelector('.nut-timepannel')
+    ReactTestUtils.Simulate.click(date as HTMLElement)
+    expect(handleDateChange).toBeCalledWith(options[0], [])
+
+    const time = container.querySelector('.nut-timedetail__item')
+    ReactTestUtils.Simulate.click(time as HTMLElement)
+    expect(handleTimeChange).toBeCalledWith(options[0].children[0], [
+      {
+        value: '20230520',
+        children: [options[0].children[0]],
+      },
+    ])
+  })
 })

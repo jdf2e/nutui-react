@@ -9,11 +9,9 @@ import { createInnerAudioContext, InnerAudioContext } from '@tarojs/taro'
 import { Service } from '@nutui/icons-react-taro'
 import Range from '@/packages/range/index.taro'
 import Button from '@/packages/button/index.taro'
-import bem from '@/utils/bem'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-const b = bem('audio')
 const warn = console.warn
 
 export interface AudioProps extends BasicComponent {
@@ -30,6 +28,7 @@ export interface AudioProps extends BasicComponent {
   onPlayEnd?: (ctx: InnerAudioContext) => void
   onCanPlay?: (ctx: InnerAudioContext) => void
 }
+
 const defaultProps = {
   ...ComponentDefaults,
   className: '',
@@ -49,6 +48,7 @@ export const Audio: FunctionComponent<
   Partial<AudioProps> &
     (React.HTMLAttributes<HTMLDivElement> | InnerAudioContext)
 > = (props) => {
+  const classPrefix = 'nut-audio'
   const { locale } = useConfig()
   const {
     className,
@@ -124,8 +124,8 @@ export const Audio: FunctionComponent<
   })
 
   audioCtx.onError((res) => {
-    console.log('code', res.errCode)
-    console.log('message', res.errMsg)
+    console.warn('code', res.errCode)
+    console.warn('message', res.errMsg)
   })
 
   function formatSeconds(value: string) {
@@ -171,10 +171,12 @@ export const Audio: FunctionComponent<
   const renderIcon = () => {
     return (
       <>
-        <div className={b('icon')}>
+        <div className={`${classPrefix}__icon`}>
           <div
-            className={`${b('icon-box')} ${
-              playing ? b('icon-play') : b('icon-stop')
+            className={`${classPrefix}__icon-box} ${
+              playing
+                ? `${classPrefix}__icon-play}`
+                : `${classPrefix}__icon-stop}`
             }`}
             onClick={handleStatusChange}
           >
@@ -188,13 +190,15 @@ export const Audio: FunctionComponent<
   const renderProgerss = () => {
     return (
       <>
-        <div className={b('progress')}>
+        <div className={`${classPrefix}__progress`}>
           <div className="time">{currentDuration}</div>
-          <div className={b('progress-bar-wrapper')}>
+          <div className={`${classPrefix}__progress-bar-wrapper`}>
             <Range
-              modelValue={percent}
-              hiddenTag
-              hiddenRange
+              value={percent}
+              onChange={(val: any) => setPercent(val)}
+              currentDescription={null}
+              maxDescription={null}
+              minDescription={null}
               inactive-color="#cccccc"
               active-color="#fa2c19"
             />
@@ -236,7 +240,10 @@ export const Audio: FunctionComponent<
 
   const renderNone = () => {
     return (
-      <div className={b('none-container')} onClick={handleStatusChange}>
+      <div
+        className={`${classPrefix}__none-container`}
+        onClick={handleStatusChange}
+      >
         {children}
       </div>
     )
@@ -256,7 +263,7 @@ export const Audio: FunctionComponent<
   }
 
   return (
-    <div className={`${b()} ${className}`} style={style} {...rest}>
+    <div className={`${classPrefix} ${className}`} style={style} {...rest}>
       {renderAudio()}
     </div>
   )

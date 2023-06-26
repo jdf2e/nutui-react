@@ -1,29 +1,33 @@
 import * as React from 'react'
 import classNames from 'classnames'
-import bem from '@/utils/bem'
+import { Check, Loading, Failure, Issue } from '@nutui/icons-react'
 import { render, unmount } from '@/utils/render'
+import Overlay from '@/packages/overlay/index'
+import { BasicComponent } from '@/utils/typings'
 
-export interface NotificationProps {
+export interface NotificationProps extends BasicComponent {
   id?: string
-  style?: React.CSSProperties
-  icon: React.ReactNode
-  msg: string | React.ReactNode
-  bottom: string
+  icon: 'success' | 'fail' | 'loading' | 'warn' | React.ReactNode
+  content: string | React.ReactNode
   duration: number
-  center: boolean
-  type: string
+  position?: 'top' | 'center' | 'bottom'
   title: string
-  customClass: string
   size: string | number
-  textAlignCenter: boolean
-  bgColor: string
-  cover: boolean
-  coverColor: string
-  closeOnClickOverlay: boolean
+  closeOnOverlayClick: boolean
+  lockScroll: boolean
+  contentClassName?: string
+  contentStyle?: React.CSSProperties
   onClose: () => void
 }
+export interface NotificationState {
+  show: boolean
+}
+const classPrefix = 'nut-toast'
 
-export default class Notification extends React.PureComponent<NotificationProps> {
+export default class Notification extends React.PureComponent<
+  NotificationProps,
+  NotificationState
+> {
   static newInstance: (properties: NotificationProps, callback: any) => void
 
   private closeTimer: number | undefined
@@ -33,12 +37,21 @@ export default class Notification extends React.PureComponent<NotificationProps>
     this.close = this.close.bind(this)
     this.startCloseTimer = this.startCloseTimer.bind(this)
     this.clearCloseTimer = this.clearCloseTimer.bind(this)
-    this.close = this.close.bind(this)
     this.clickCover = this.clickCover.bind(this)
+    this.state = {
+      show: true,
+    }
   }
 
   close() {
+    this.setState({
+      show: false,
+    })
     this.clearCloseTimer()
+    if (this.props.id) {
+      const element = document.getElementById(this.props.id)
+      element && element.parentNode && element.parentNode.removeChild(element)
+    }
     this.props.onClose()
   }
 
@@ -59,10 +72,35 @@ export default class Notification extends React.PureComponent<NotificationProps>
   }
 
   clickCover() {
-    const { closeOnClickOverlay } = this.props
-    if (closeOnClickOverlay) {
+    const { closeOnOverlayClick } = this.props
+    if (closeOnOverlayClick) {
       this.close()
     }
+  }
+
+  renderIcon() {
+    const { icon } = this.props
+    if (typeof icon === 'string') {
+      let iconNode = null
+      switch (icon) {
+        case 'success':
+          iconNode = <Check />
+          break
+        case 'loading':
+          iconNode = <Loading className="nut-icon-loading" />
+          break
+        case 'fail':
+          iconNode = <Failure />
+          break
+        case 'warn':
+          iconNode = <Issue />
+          break
+        default:
+          break
+      }
+      return <p className={`${classPrefix}__icon-wrapper`}>{iconNode}</p>
+    }
+    return icon
   }
 
   componentDidMount() {
@@ -76,56 +114,50 @@ export default class Notification extends React.PureComponent<NotificationProps>
   render() {
     const {
       id,
-      style,
       icon,
       title,
-      msg,
-      bottom,
-      center,
-      bgColor,
-      coverColor,
-      textAlignCenter,
+      content,
+      position,
       size,
-      customClass,
-      cover,
-      type,
+      closeOnOverlayClick,
+      lockScroll,
+      style,
+      className,
+      contentClassName,
+      contentStyle,
     } = this.props
-    const toastBem = bem('toast')
+
+    const { show } = this.state
 
     const classes = classNames({
-      'nut-toast-center': center,
       'nut-toast-has-icon': icon,
-      'nut-toast-cover': cover,
-      'nut-toast-loading': type === 'loading',
-      [`${customClass}`]: true,
       [`nut-toast-${size}`]: true,
     })
     return (
       <>
-        <div
-          className={`${toastBem()} ${classes}`}
-          id={`toast-${id}`}
-          style={{
-            bottom: center ? 'auto' : `${bottom}`,
-            backgroundColor: cover ? coverColor : '',
-            ...style,
-          }}
+        <Overlay
+          visible={show}
+          style={style}
+          className={`${classPrefix}__overlay-default ${className}`}
           onClick={() => {
             this.clickCover()
           }}
+          closeOnOverlayClick={closeOnOverlayClick}
+          lockScroll={lockScroll}
         >
-          <div
-            className={toastBem('inner')}
-            style={{
-              textAlign: textAlignCenter ? 'center' : 'left',
-              backgroundColor: bgColor,
-            }}
-          >
-            {icon ? <p className={toastBem('icon-wrapper')}>{icon}</p> : null}
-            {title ? <div className="nut-toast-title">{title}</div> : null}
-            <span className={toastBem('text')}>{msg}</span>
+          <div className={`${classPrefix} ${classes}`} id={`toast-${id}`}>
+            <div
+              className={`${classPrefix}__inner ${classPrefix}-${position} ${contentClassName}`}
+              style={contentStyle}
+            >
+              {this.renderIcon()}
+              {title ? (
+                <div className={`${classPrefix}-title`}>{title}</div>
+              ) : null}
+              <span className={`${classPrefix}-text`}>{content}</span>
+            </div>
           </div>
-        </div>
+        </Overlay>
       </>
     )
   }
@@ -133,19 +165,17 @@ export default class Notification extends React.PureComponent<NotificationProps>
 
 Notification.newInstance = (properties, callback) => {
   const element = document.createElement('div')
-  if (properties.id) {
-    element.setAttribute('id', `${properties.id}`)
-  }
+  const id = properties.id ? properties.id : `${new Date().getTime()}`
+  element.id = id
+  properties.id = id
   document.body.appendChild(element)
 
   let called = false
-
   function ref(instance: any) {
     if (called) {
       return
     }
     called = true
-
     callback({
       component: instance,
       destroy() {

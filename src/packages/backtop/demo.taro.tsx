@@ -15,7 +15,7 @@ interface T {
 const BackTopDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      title: '基本用法',
+      title: '基础用法',
       clg: '触发返回顶部',
       content: '我是测试数据',
       backText: '顶部',
@@ -28,7 +28,8 @@ const BackTopDemo = () => {
     },
   })
   const demoStyle = {
-    height: '1600px',
+    height: 'auto',
+    minHeight: 'auto',
   }
   const cellStyle = {
     height: '46px',

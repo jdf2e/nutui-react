@@ -13,7 +13,7 @@ const MenuDemo = () => {
   }`
   const [translated] = useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       customMenuContent: '自定义菜单内容',
       customContent: '自定义内容',
       screen: '筛选',
@@ -108,15 +108,16 @@ const MenuDemo = () => {
       <style>{style}</style>
       <div className={`demo demo-full ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
-        <Menu closeOnClickOverlay={false} lockScroll={false}>
+        <Menu closeOnOverlayClick lockScroll={false}>
           <MenuItem
             options={options}
             value={0}
+            closeOnClickAway
             onChange={(val) => {
               console.log(val)
             }}
           />
-          <MenuItem options={options1} value="a" />
+          <MenuItem closeOnClickAway options={options1} value="a" />
         </Menu>
         <h2>{translated.customMenuContent}</h2>
         <Menu>
@@ -144,8 +145,18 @@ const MenuDemo = () => {
         </Menu>
         <h2>{translated.expandDirection}</h2>
         <Menu>
-          <MenuItem options={options} value={0} direction="up" />
-          <MenuItem options={options1} value="a" direction="up" />
+          <MenuItem
+            options={options}
+            value={0}
+            direction="up"
+            closeOnClickAway
+          />
+          <MenuItem
+            options={options1}
+            value="a"
+            direction="up"
+            closeOnClickAway
+          />
         </Menu>
         <h2>{translated.disableMenu}</h2>
         <Menu>

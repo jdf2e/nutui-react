@@ -6,14 +6,13 @@ Provides a quick return to the top function for long pages.
 
 ## Install
 
-```javascript
-// react
+```tsx
 import { BackTop } from '@nutui/nutui-react';
 ```
 
 ## Code
 
-### Basic Usage 
+### Basic Usage
 
 :::demo
 
@@ -60,13 +59,14 @@ const App = () => {
         <div className="text-data" style={cellStyle}>test data22</div>
         <div className="text-data" style={cellStyle}>test data23</div>
         <div className="text-data" style={cellStyle}>test data24</div>
-        <BackTop  />
+        <BackTop target="target" />
     </div>
     </>
   );
 };
 export default App;
 ```
+
 :::
 
 ### Threshold
@@ -78,7 +78,7 @@ import  React from "react";
 import { BackTop } from '@nutui/nutui-react';
 
 const App = () => {
-    const cellStyle = {
+  const cellStyle = {
     height: '46px',
     lineHeight: '46px',
     margin: '15px auto 20px',
@@ -91,7 +91,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo" id="target">
+    <div className="demo" id="target" style={{height: '100vh'}}>
        <div className="text-data" style={cellStyle}>test data1</div>
        <div className="text-data" style={cellStyle}>test data2</div>
        <div className="text-data" style={cellStyle}>test data3</div>
@@ -116,14 +116,16 @@ const App = () => {
        <div className="text-data" style={cellStyle}>test data22</div>
        <div className="text-data" style={cellStyle}>test data23</div>
        <div className="text-data" style={cellStyle}>test data24</div>
-        <BackTop  threshold={200} bottom={50} />
+        <BackTop target="target" threshold={200} bottom={50} />
     </div>
     </>
   );
 };
 export default App;
 ```
+
 :::
+
 ### Custom Style
 
 :::demo
@@ -134,7 +136,7 @@ import { BackTop } from '@nutui/nutui-react';
 import { Top } from '@nutui/icons-react';
 
 const App = () => {
-    const cellStyle = {
+  const cellStyle = {
     height: '46px',
     lineHeight: '46px',
     margin: '15px auto 20px',
@@ -147,7 +149,7 @@ const App = () => {
   }
   return (
     <>
-    <div className="demo" id="target">
+    <div className="demo" id="target" style={{height: '100vh'}}>
        <div className="text-data" style={cellStyle}>test data1</div>
        <div className="text-data" style={cellStyle}>test data2</div>
        <div className="text-data" style={cellStyle}>test data3</div>
@@ -195,6 +197,7 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### Scroll Inside Parent Element
@@ -251,7 +254,9 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
+
 ### Click
 
 :::demo
@@ -309,19 +314,20 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ## BackTop
 
 ### Props
 
-| Attribute        | Description                            | Type    | Default |
-| ----------- | ------------------------------- | ------- | ------ |
-| target        | The listening element          | string  | -      |
-| threshold    | How high to scroll the page vertically          | number | `200`  |
-| zIndex      | Set the component z-index                | number | `10`   |
-| duration    | Set animation duration                | number | `1000` |
-| onClick | Emitted when component is clicked | (event: MouseEvent) => void | - |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| target | The listening element | `string` | `-` |
+| threshold | How high to scroll the page vertically | `number` | `200` |
+| zIndex | Set the component z-index | `number` | `10` |
+| duration | Set animation duration | `number` | `1000` |
+| onClick | Emitted when component is clicked | `(event: MouseEvent) => void` | `-` |
 
 ## Theming
 
@@ -331,4 +337,4 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| --nutui-backtop-border-color | border color | `#e0e0e0` |
+| \--nutui-backtop-border-color | border color | `#e0e0e0` |

@@ -6,8 +6,7 @@
 
 ## Install
 
-``` javascript
-// react
+```tsx
 import { Badge } from '@nutui/nutui-react';
 ```
 
@@ -153,6 +152,7 @@ export default App;
 ### Custom CSS
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Badge, Avatar, ConfigProvider, Cell } from '@nutui/nutui-react';
@@ -190,7 +190,6 @@ export default App;
 
 :::
 
-
 ### Custom Position
 
 :::demo
@@ -217,11 +216,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Display Alone
 
 :::demo
+
 ```tsx
 import React from "react";
 import { Badge,Cell } from '@nutui/nutui-react';
@@ -241,17 +242,17 @@ export default App;
 :::
 
 ## Badge
+
 ### Props
 
-| Attribute    | Description | Type    | Default    |
-|---------|----------------------|---------|-----------|
-| value   | value to show, eg number、charctor and custom content | `ReactNode`  |  | - |
-| max     | when value is number, it's the max size | `number`  | `99`   |
-| dot     | Is dotted    | `boolean` | `false`   |
-| top     | Up and down offset, support unit setting, can be set to: 5, etc. |`number`  | `0`       |
-| right   | Left and right offset, support unit setting, can be set to: 5, etc. | `number`  | `0`       |
-| color   | background color,the default value is the theme primary color | string  | `` |
-
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| value | value to show, eg number、charctor and custom content | `ReactNode` | `-` |
+| max | when value is number, it's the max size | `number` | `99` |
+| dot | Is dotted | `boolean` | `false` |
+| top | Up and down offset, support unit setting, can be set to: 5, etc. | `number` | `0` |
+| right | Left and right offset, support unit setting, can be set to: 5, etc. | `number` | `0` |
+| color | background color,the default value is the theme primary color | `string` | `-` |
 
 ## Theming
 
@@ -260,14 +261,14 @@ export default App;
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Description | Default |
-| --- | --- |--- |
-| --nutui-badge-background-color | badge background color | `linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%))`|
-| --nutui-badge-color | badge content color | `#fff` |
-| --nutui-badge-font-size |badge content font size | `$font-size-1` |
-| --nutui-badge-border |badge border | `0px solid $primary-text-color`|
-| --nutui-badge-border-radius |badge border-radius | `14px` |
-| --nutui-badge-padding |badge padding value | `0 5px` |
-| --nutui-badge-icon-padding |when badge is icon,badge  padding | `2px` |
-| --nutui-badge-content-transform |badge content transform | `translateY(-50%) translateX(100%)`|
-| --nutui-badge-z-index |when badge is icon, badge z-index| `1` |
-| --nutui-badge-dot-width |when badge is dot, the dot width,height and border radius |`7px` |
+| --- | --- | --- |
+| \--nutui-badge-background-color | badge background color | `linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%))` |
+| \--nutui-badge-color | badge content color | `#fff` |
+| \--nutui-badge-font-size | badge content font size | `$font-size-1` |
+| \--nutui-badge-border | badge border | `0px solid $primary-text-color` |
+| \--nutui-badge-border-radius | badge border-radius | `14px` |
+| \--nutui-badge-padding | badge padding value | `0 5px` |
+| \--nutui-badge-icon-padding | when badge is icon,badge padding | `2px` |
+| \--nutui-badge-content-transform | badge content transform | `translateY(-50%) translateX(100%)` |
+| \--nutui-badge-z-index | when badge is icon, badge z-index | `1` |
+| \--nutui-badge-dot-width | when badge is dot, the dot width,height and border radius | `7px` |

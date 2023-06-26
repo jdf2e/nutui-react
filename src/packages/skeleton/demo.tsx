@@ -4,7 +4,9 @@ import { Skeleton } from './skeleton'
 import Switch from '@/packages/switch'
 import Avatar from '@/packages/avatar'
 import Cell from '@/packages/cell'
+import Image from '@/packages/image'
 import './demo.scss'
+import ConfigProvider from '../configprovider'
 
 interface T {
   '3b02fdee': string
@@ -66,72 +68,53 @@ const SkeletonDemo = () => {
       <div className="demo">
         <h2>{translated['84aa6bce']}</h2>
         <Cell className="ske-cell-single">
-          <Skeleton width="250px" height="15px" animated />
-          <Skeleton width="250px" height="15px" />
+          <Skeleton animated />
+          <Skeleton />
         </Cell>
 
         <h2>{translated.ea3bc18a}</h2>
         <Cell className="ske-cell-double">
-          <Skeleton width="250px" height="15px" row={3} title animated />
+          <Skeleton rows={3} title animated />
         </Cell>
 
         <h2>{translated['02a53df5']}</h2>
         <Cell>
-          <Skeleton
-            width="250px"
-            height="15px"
-            row={3}
-            title
-            animated
-            avatar
-            avatarSize="100px"
-          />
+          <Skeleton rows={3} title animated avatar avatarSize="100px" />
         </Cell>
 
         <h2>{translated['0a001122']}</h2>
         <Cell className="ske-cell-single">
-          <Skeleton width="250px" height="15px" animated round />
+          <ConfigProvider
+            theme={{
+              nutuiSkeletonLineBorderRadius: '10px',
+            }}
+          >
+            <Skeleton rows={3} animated />
+          </ConfigProvider>
         </Cell>
 
         <h2>{translated.a4ed11b5}</h2>
         <Cell className="ske-cell-double">
           <div className="pic-compose">
-            <Skeleton
-              width="250px"
-              height="15px"
-              title
-              animated
-              row={3}
-              className="item"
-            />
-            <Skeleton
-              width="250px"
-              height="15px"
-              title
-              animated
-              row={3}
-              className="item"
-            />
+            <Skeleton title animated rows={3} className="item" />
+            <Skeleton title animated rows={3} className="item" />
           </div>
         </Cell>
 
         <h2>{translated['07d62d5c']}</h2>
         <Cell>
-          <div className="content">
+          <div className="content" style={{ width: '100%' }}>
             <Switch onChange={(value, event) => changeStatus(value, event)} />
-            <Skeleton
-              width="250px"
-              height="15px"
-              title
-              animated
-              avatar
-              row={3}
-              loading={checked}
-            >
+            <Skeleton title animated avatar rows={3} visible={checked}>
               <div className="container">
                 <Avatar
                   size="50"
-                  icon="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
+                  icon={
+                    <Image
+                      loading={false}
+                      src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"
+                    />
+                  }
                 />
                 <div className="right-content">
                   <span className="title">NutUI-React</span>

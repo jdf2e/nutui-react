@@ -6,7 +6,7 @@
 
 ## 安装
 
-```ts
+```tsx
 import { Tabs } from '@nutui/nutui-react';
 ```
 
@@ -271,13 +271,12 @@ import React, { useState, useEffect } from "react";
 import { Tabs } from '@nutui/nutui-react';
 
 const App = () => {
-  const [tab3value, setTab3value] = useState('0');
-  const [list3, setList3] = useState(Array.from(new Array(2).keys()));
+  const [tab3value, setTab3value] = useState(0);
+  const [list3, setList3] = useState();
   useEffect(() => {
     setTimeout(() => {
-      list3.push(999);
-      setTab3value('2');
-      setList3(list3)
+      setTab3value(2);
+      setList3(Array.from(new Array(3).keys()))
     }, 3000)
   }, [])
   return (
@@ -286,7 +285,7 @@ const App = () => {
         setTab3value(value)
       }}>
         {list3.map(item => <Tabs.TabPane key={item}
-                                         title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
+            title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
       </Tabs>
     </>
   );
@@ -341,7 +340,7 @@ const App = () => {
               setTab5value(value)
             }} direction="vertical">
         {list5.map(item => <Tabs.TabPane key={item}
-                                         title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
+            title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
       </Tabs>
     </>
   );
@@ -513,7 +512,7 @@ const App = () => {
   ]
   return (
     <>
-      <Tabs value={tab7value} titleNode={() => {
+      <Tabs value={tab7value} title={() => {
         return list6.map(item => (
           <div
             onClick={() => setTab7value(item.paneKey)}
@@ -546,16 +545,16 @@ export default App;
 
 ### Props
 
-| 参数 | 说明 | 类型 | 默认值 |
+| 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| value | 当前激活 tab 面板的值 | `number \| string` | `0` |
-| defaultValue | 初始化激活 tab 的值 | `number \| string` | `0` |
+| value | 当前激活 tab 面板的值 | `number` \| `string` | `0` |
+| defaultValue | 初始化激活 tab 的值 | `number` \| `string` | `0` |
 | activeColor | 标签选中色 | `string` | `#1a1a1a` |
-| direction | 使用横纵方向 可选值 `horizontal`、`vertical` | `string` | `horizontal` |
+| direction | 使用横纵方向 | `horizontal` \| `vertical` | `horizontal` |
 | activeType | 选中底部展示样式 可选值 `line`、`smile` | `string` | `line` |
-| duration | 切换动画时长,单位 ms 0 代表无动画 | `number \| string` | `300` |
+| duration | 切换动画时长,单位 ms 0 代表无动画 | `number` \| `string` | `300` |
 | title | 自定义导航区域 | `() => JSX.Element[]` | `-` |
-| align | 标题左对齐 | `left \| right` | `-` |
+| align | 标题左对齐 | `left` \| `right` | `-` |
 | autoHeight | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs\_\_content 会随着当前 nut-tabpane 的高度而发生变化。 | `boolean` | `false` |
 | tabStyle | 标签栏样式 | `CSSProperties` | `{}` |
 | onClick | 点击标签时触发 | `(index: string \| number) => void` | `-` |
@@ -565,10 +564,10 @@ export default App;
 
 ### Props
 
-| 参数 | 说明 | 类型 | 默认值 |
+| 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | title | 标题 | `string` | `-` |
-| value | 标签 Key , 匹配的标识符, 默认为索引值 | `string\| number` | `-` |
+| value | 标签 Key , 匹配的标识符, 默认为索引值 | `string` \| `number` | `-` |
 | disabled | 是否禁用标签 | `boolean` | `false` |
 
 ## 主题定制

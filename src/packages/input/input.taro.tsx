@@ -1,6 +1,5 @@
 import React, {
   forwardRef,
-  FunctionComponent,
   HTMLInputTypeAttribute,
   useCallback,
   useImperativeHandle,
@@ -67,7 +66,12 @@ const defaultProps = {
 export const Input = forwardRef(
   (
     props: Partial<InputProps> &
-      Partial<Omit<TaroInputProps, 'type' | 'ref' | 'onBlur' | 'onFocus'>>,
+      Partial<
+        Omit<
+          TaroInputProps,
+          'type' | 'ref' | 'onBlur' | 'onFocus' | 'maxlength' | 'password'
+        >
+      >,
     ref
   ) => {
     const { locale } = useConfig()

@@ -261,7 +261,7 @@ const SwipeDemo = () => {
           }
           onActionClick={handleChange}
           onOpen={({ name, position }) => {
-            // Toast.text(translated.open)
+            // Toast.show(translated.open)
             toastShow(translated.open)
           }}
           onClose={handleClose}

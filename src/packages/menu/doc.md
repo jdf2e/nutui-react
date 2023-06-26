@@ -6,8 +6,7 @@
 
 ## 安装
 
-``` javascript
-// react
+```tsx
 import { Menu, MenuItem } from '@nutui/nutui-react';
 ```
 
@@ -271,60 +270,57 @@ export default App
 
 ### Props
 
-| 参数                  | 说明                           | 类型                    | 默认值  |
-|---------------------|--------------------------------|-------------------------|---------|
-| activeColor         | 选项的选中态图标颜色           | string                  | `#F2270C` |
-| closeOnOverlayClick | 是否在点击遮罩层后关闭菜单     | boolean                 | `true`    |
-| lockScroll          | 背景是否锁定                   | boolean                 | `true`    |
-| scrollFixed         | 滚动后是否固定，可设置固定位置                   | boolean \| string \| number                 | `true`    |
-| icon         | 自定义标题图标                 | React.ReactNode                  | -       |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| activeColor | 选项的选中态图标颜色 | `string` | `#F2270C` |
+| closeOnOverlayClick | 是否在点击遮罩层后关闭菜单 | `boolean` | `true` |
+| lockScroll | 背景是否锁定 | `boolean` | `true` |
+| scrollFixed | 滚动后是否固定，可设置固定位置 | `boolean` \| `string` \| `number` | `true` |
+| icon | 自定义标题图标 | `React.ReactNode` | `-` |
 
 ## MenuItem
 
 ### Props
 
-| 参数                | 说明                                    | 类型              | 默认值           |
-|-------------------|-----------------------------------------|-----------------|------------------|
-| title             | 菜单项标题                              | string          | 当前选中项文字   |
-| options           | 选项数组                                | array           | -                |
-| disabled          | 是否禁用菜单                            | boolean         | `false`            |
-| columns           | 可以设置一行展示多少列 options          | number          | `1`                |
-| icon      | 自定义选项图标                          | React.ReactNode | `Check`          |
-| direction         | 菜单展开方向，可选值为up                | string          | `down`           |
-| activeClassName    | 选项选中时自定义标题样式类              | string  | -                |
-| inactiveClassName  | 选项非选中时自定义标题样式类            | string  | -                |
-| onChange | 选择 option 之后触发 | 选择的 value | - |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| title | 菜单项标题 | `string` | `当前选中项文字` |
+| options | 选项数组 | `array` | `-` |
+| disabled | 是否禁用菜单 | `boolean` | `false` |
+| columns | 可以设置一行展示多少列 options | `number` | `1` |
+| icon | 自定义选项图标 | `React.ReactNode` | `Check` |
+| direction | 菜单展开方向，可选值为up | `string` | `down` |
+| onChange | 选择 option 之后触发 | `(event: any) => void` | `-` |
 
 ### Ref
 
-| 事件名 | 说明                 | 回调参数     |
-|-----|----------------------|--------------|
-| toggle   | 切换菜单展示状态，传 true 为显示，false 为隐藏，不传参为取反 | `show?: boolean` |
+| 事件名 | 说明 | 回调参数 |
+| --- | --- | --- |
+| toggle | 切换菜单展示状态，传 true 为显示，false 为隐藏，不传参为取反 | `show?: boolean` |
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS
-变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 说明              | 默认值                                 |
-| --- |-----------------|-------------------------------------|
-| --nutui-menu-bar-line-height | menu标题栏的行高      | `48px`                              |
-| --nutui-menu-item-font-size | 标题的字号           | `$font-size-2`                      |
-| --nutui-menu-item-text-color | 标题的颜色           | `$title-color`                      |
-| --nutui-menu-item-active-text-color | 打开状态的颜色         | `$primary-color`                    |
-| --nutui-menu-bar-opened-z-index | 打开状态的 z-index   | `2001`                              |
-| --nutui-menu-item-disabled-color | 禁用状态的颜色         | `#969799`                           |
-| --nutui-menu-title-text-padding-left | 标题的左内边距         | `8px`                               |
-| --nutui-menu-title-text-padding-right | 标题的右内边距         | `8px`                               |
-| --nutui-menu-item-content-padding | 菜单选项容器的内边距      | `12px 24px`                         |
-| --nutui-menu-item-content-max-height | 菜单选项容器的最大高度     | `214px`                             |
-| --nutui-menu-item-option-padding-top | 菜单选项的顶部内边距      | `12px`                              |
-| --nutui-menu-item-option-padding-bottom | 菜单选项的底部内边距      | `12px`                              |
-| --nutui-menu-item-option-i-margin-right | 菜单选项文本与icon的距离  | `6px`                               |
-| --nutui-menu-bar-box-shadow | 菜单标题栏的阴影        | `0 2px 12px rgba(89, 89, 89, 0.12)` |
-| --nutui-menu-scroll-fixed-top | fix 状态的顶部距离     | `0`                                 |
-| --nutui-menu-scroll-fixed-z-index | fix 状态的z-index  |  `$mask-z-index`                    |
-| --nutui-menu-active-item-font-weight | 选中状态的字重         | `500`                               |
-| --nutui-menu-item-content-bg-color | 菜单选项容器的背景色      | `$gray6`                            |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| \--nutui-menu-bar-line-height | menu标题栏的行高 | `48px` |
+| \--nutui-menu-item-font-size | 标题的字号 | `$font-size-2` |
+| \--nutui-menu-item-text-color | 标题的颜色 | `$title-color` |
+| \--nutui-menu-item-active-text-color | 打开状态的颜色 | `$primary-color` |
+| \--nutui-menu-bar-opened-z-index | 打开状态的 z-index | `2001` |
+| \--nutui-menu-item-disabled-color | 禁用状态的颜色 | `#969799` |
+| \--nutui-menu-title-text-padding-left | 标题的左内边距 | `8px` |
+| \--nutui-menu-title-text-padding-right | 标题的右内边距 | `8px` |
+| \--nutui-menu-item-content-padding | 菜单选项容器的内边距 | `12px 24px` |
+| \--nutui-menu-item-content-max-height | 菜单选项容器的最大高度 | `214px` |
+| \--nutui-menu-item-option-padding-top | 菜单选项的顶部内边距 | `12px` |
+| \--nutui-menu-item-option-padding-bottom | 菜单选项的底部内边距 | `12px` |
+| \--nutui-menu-item-option-i-margin-right | 菜单选项文本与icon的距离 | `6px` |
+| \--nutui-menu-bar-box-shadow | 菜单标题栏的阴影 | `0 2px 12px rgba(89, 89, 89, 0.12)` |
+| \--nutui-menu-scroll-fixed-top | fix 状态的顶部距离 | `0` |
+| \--nutui-menu-scroll-fixed-z-index | fix 状态的z-index | `$mask-z-index` |
+| \--nutui-menu-active-item-font-weight | 选中状态的字重 | `500` |
+| \--nutui-menu-item-content-bg-color | 菜单选项容器的背景色 | `$gray6` |

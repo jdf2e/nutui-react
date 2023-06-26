@@ -192,6 +192,8 @@ const PopupDemo = () => {
           closeable
           closeIcon={<CircleClose width="12px" height="12px" />}
           visible={showIcon}
+          left="返回"
+          title="我是标题"
           style={{ height: '20%' }}
           position="bottom"
           onClose={() => {

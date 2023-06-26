@@ -10,19 +10,19 @@ test('Show Chinese', async () => {
     <DatePicker
       title="日期选择"
       visible
-      isShowChinese
+      showChinese
       threeDimensional={false}
-      onConfirmDatePicker={confirm}
+      onConfirm={(options) => confirm(options)}
     />
   )
 
   const confirmBtn = container.querySelectorAll('.nut-picker__confirm-btn')[0]
   fireEvent.click(confirmBtn)
-  await waitFor(() =>
+  await waitFor(() => {
     expect(
-      confirm.mock.calls[0][1].map((option: any) => option.text).join('')
+      confirm.mock.calls[0][0].map((option: any) => option.text).join('')
     ).toEqual(`${currentYear - 10}年01月01日`)
-  )
+  })
 })
 
 test('Min date & Max date', async () => {
@@ -31,15 +31,15 @@ test('Min date & Max date', async () => {
     <DatePicker
       title="日期选择"
       visible
-      minDate={new Date(2020, 0, 1)}
-      maxDate={new Date(2022, 0, 1)}
+      startDate={new Date(2020, 0, 1)}
+      endDate={new Date(2022, 0, 1)}
       threeDimensional={false}
-      onConfirmDatePicker={confirm}
+      onConfirm={confirm}
     />
   )
 
   const columns = container.querySelectorAll('.nut-picker-list')[0]
-  const lists = columns.querySelectorAll('.nut-picker-roller-item-tile')
+  const lists = columns.querySelectorAll('.nut-picker-roller-item-title')
   const years = ['2020', '2021', '2022']
   expect(lists.length).toBe(3)
   lists.forEach((list, i) => {
@@ -53,10 +53,10 @@ test('should pick defaultValue', async () => {
     <DatePicker
       title="日期选择"
       visible
-      modelValue={new Date(2021, 2, 1)}
-      minDate={new Date(2020, 0, 1)}
-      maxDate={new Date(2022, 0, 1)}
-      onConfirmDatePicker={confirm}
+      defaultValue={new Date(2021, 2, 1)}
+      startDate={new Date(2020, 0, 1)}
+      endDate={new Date(2022, 0, 1)}
+      onConfirm={(options, values) => confirm(options)}
     />
   )
 
@@ -64,7 +64,7 @@ test('should pick defaultValue', async () => {
   fireEvent.click(confirmBtn)
   await waitFor(() =>
     expect(
-      confirm.mock.calls[0][1].map((option: any) => option.text).join('')
+      confirm.mock.calls[0][0].map((option: any) => option.text).join('')
     ).toEqual('20210301')
   )
 })
@@ -77,7 +77,7 @@ test('Increment step setting', async () => {
       visible
       minuteStep={5}
       type="time"
-      onConfirmDatePicker={confirm}
+      onConfirm={confirm}
     />
   )
 

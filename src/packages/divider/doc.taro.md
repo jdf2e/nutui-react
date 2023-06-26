@@ -6,11 +6,12 @@
 
 ## 安装
 
-```ts
+```tsx
 import { Divider } from '@nutui/nutui-react-taro';
 ```
 
 ## 代码演示
+
 ### 基础用法
 
 默认渲染一条水平分割线。
@@ -30,8 +31,8 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ### 展示文本
 
@@ -52,8 +53,8 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ### 内容位置
 
@@ -75,8 +76,8 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ### 虚线
 
@@ -95,8 +96,8 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ### 自定义样式
 
@@ -117,6 +118,7 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 垂直分割线
@@ -142,18 +144,17 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ## Divider
 
 ### Props
 
-| 参数              | 说明                          | 类型    | 默认值 |
-|-----------------| ----------------------------- | ------- | ------ |
-| contentPosition | 内容位置，可选值为 left right center | `'left'  \|  'center'  \|  'right'`  | `center` |
-| direction   | 水平还是垂直类型,可选值为 horizontal vertical               | `'horizontal'  \|  'vertical'`     | `horizontal`      |
-
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| contentPosition | 内容位置  | `left` \| `center` \| `right` | `center` |
+| direction | 水平还是垂直类型  | `horizontal` \| `vertical` | `horizontal` |
 
 ## 主题定制
 
@@ -163,13 +164,13 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| --nutui-divider-margin | 分割线整体内容的margin值 | `16px 0` |
-| --nutui-divider-text-font-size | 分割线整体内容的font-size大小 | `$font-size-2` |
-| --nutui-divider-text-color | 分割线整体内容的颜色 | `$gray1` |
-| --nutui-divider-line-height | 分割线的行高 | `2px` |
-| --nutui-divider-before-margin-right | 左边分割线的margin-right值 | `16px` |
-| --nutui-divider-after-margin-left | 右边分割线的margin-left值 | `16px` |
-| --nutui-divider-vertical-height | 垂直分割线的高度 | `12px` |
-| --nutui-divider-vertical-top | 垂直分割线的top值 | `2px` |
-| --nutui-divider-vertical-border-left | 垂直分割线的border-left值 | `rgba(0, 0, 0, 0.06)` |
-| --nutui-divider-vertical-margin | 垂直分割线的margin值 |  `0 8px` |
+| \--nutui-divider-margin | 分割线整体内容的margin值 | `16px 0` |
+| \--nutui-divider-text-font-size | 分割线整体内容的font-size大小 | `$font-size-2` |
+| \--nutui-divider-text-color | 分割线整体内容的颜色 | `$gray1` |
+| \--nutui-divider-line-height | 分割线的行高 | `2px` |
+| \--nutui-divider-before-margin-right | 左边分割线的margin-right值 | `16px` |
+| \--nutui-divider-after-margin-left | 右边分割线的margin-left值 | `16px` |
+| \--nutui-divider-vertical-height | 垂直分割线的高度 | `12px` |
+| \--nutui-divider-vertical-top | 垂直分割线的top值 | `2px` |
+| \--nutui-divider-vertical-border-left | 垂直分割线的border-left值 | `rgba(0, 0, 0, 0.06)` |
+| \--nutui-divider-vertical-margin | 垂直分割线的margin值 | `0 8px` |

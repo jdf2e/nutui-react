@@ -15,7 +15,7 @@ interface T {
 const AudioDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       progress: '进度条模式',
       none: '自定义模式',
       control: '控件模式',
@@ -43,7 +43,7 @@ const AudioDemo = () => {
       <h2>{translated.basic}</h2>
       <Cell>
         <Audio
-          autoplay={false}
+          autoPlay={false}
           src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
           type="icon"
           loop={false}
@@ -55,7 +55,7 @@ const AudioDemo = () => {
       <h2>{translated.progress}</h2>
       <Cell>
         <Audio
-          autoplay={false}
+          autoPlay={false}
           style={{ fontSize: '20px' }}
           src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
           type="progress"
@@ -76,7 +76,7 @@ const AudioDemo = () => {
         <Audio
           className="custom-voice-audio"
           id="custom-voice-audio"
-          autoplay={false}
+          autoPlay={false}
           src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
           type="none"
           preload="auto"
@@ -94,7 +94,7 @@ const AudioDemo = () => {
       <h2>{translated.control}</h2>
       <Cell>
         <Audio
-          autoplay={false}
+          autoPlay={false}
           src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
           type="controls"
           preload="auto"

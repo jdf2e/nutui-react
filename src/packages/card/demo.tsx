@@ -20,7 +20,7 @@ interface T {
 const CardDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       customProduct: '自定义商品标签',
       customPro1: '活鲜',
       customPro2: '礼盒',
@@ -36,7 +36,7 @@ const CardDemo = () => {
       shopName: '阳澄湖大闸蟹自营店>',
     },
     'zh-TW': {
-      basic: '基本用法',
+      basic: '基础用法',
       customProduct: '自定義商品標簽',
       customPro1: '活鮮',
       customPro2: '禮盒',
@@ -68,12 +68,11 @@ const CardDemo = () => {
     },
   })
   const state = {
-    imgUrl:
-      '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
+    src: '//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg',
     title: translated.title,
     price: '388',
     vipPrice: '378',
-    shopDesc: translated.description,
+    shopDescription: translated.description,
     delivery: translated.delivery,
     shopName: translated.shopName,
   }
@@ -100,24 +99,24 @@ const CardDemo = () => {
       <div className="demo">
         <h2>{translated.basic}</h2>
         <Card
-          imgUrl={state.imgUrl}
+          src={state.src}
           title={state.title}
           price={state.price}
           vipPrice={state.vipPrice}
-          shopDesc={state.shopDesc}
+          shopDescription={state.shopDescription}
           delivery={state.delivery}
           shopName={state.shopName}
         />
         <h2>{translated.customProduct}</h2>
         <Card
-          imgUrl={state.imgUrl}
+          src={state.src}
           title={state.title}
           price={state.price}
           vipPrice={state.vipPrice}
-          shopDesc={state.shopDesc}
+          shopDescription={state.shopDescription}
           delivery={state.delivery}
           shopName={state.shopName}
-          prolistTpl={
+          description={
             <div
               className="search_prolist_attr"
               style={{
@@ -142,14 +141,14 @@ const CardDemo = () => {
         />
         <h2>{translated.customPriceIcon}</h2>
         <Card
-          imgUrl={state.imgUrl}
+          src={state.src}
           title={state.title}
           price={state.price}
           vipPrice={state.vipPrice}
-          shopDesc={state.shopDesc}
+          shopDescription={state.shopDescription}
           delivery={state.delivery}
           shopName={state.shopName}
-          originTpl={
+          priceTag={
             <img
               style={tagStyles}
               src="https://img11.360buyimg.com/jdphoto/s58x28_jfs/t9451/359/415622649/15318/b0943e5d/59a78495N3bd2a9f8.png"
@@ -159,25 +158,25 @@ const CardDemo = () => {
         />
         <h2>{translated.customShop}</h2>
         <Card
-          imgUrl={state.imgUrl}
+          src={state.src}
           title={state.title}
           price={state.price}
           vipPrice={state.vipPrice}
-          shopDesc={state.shopDesc}
+          shopDescription={state.shopDescription}
           delivery={state.delivery}
           shopName={state.shopName}
-          shopTagTpl={<div>{translated.customShop}</div>}
+          tag={<div>{translated.customShop}</div>}
         />
         <h2>{translated.customFooter}</h2>
         <Card
-          imgUrl={state.imgUrl}
+          src={state.src}
           title={state.title}
           price={state.price}
           vipPrice={state.vipPrice}
-          shopDesc={state.shopDesc}
+          shopDescription={state.shopDescription}
           delivery={state.delivery}
           shopName={state.shopName}
-          footerTpl={
+          extra={
             <div style={{ fontSize: '12px' }}>{translated.customContent}</div>
           }
         />

@@ -2,6 +2,7 @@ import * as React from 'react'
 import { render, fireEvent, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { useState } from 'react'
+import { Checklist } from '@nutui/icons-react'
 import Radio from '@/packages/radio'
 import RadioGroup from '@/packages/radiogroup'
 
@@ -23,25 +24,23 @@ describe('radio', () => {
   test('radio checked', () => {
     const { container } = render(<Radio checked>Test Case</Radio>)
     expect(container.querySelector('.nut-icon')).toHaveClass(
-      'nut-icon-check-checked'
+      'nut-icon-CheckChecked'
     )
   })
 
   test('radio custom icon', () => {
     const { container } = render(
-      <Radio icon="checklist" checkedIcon="checklist">
+      <Radio icon={<Checklist />} activeIcon={<Checklist />}>
         自定义图标
       </Radio>
     )
     expect(container.querySelector('.nut-icon')).toHaveClass(
-      'nut-icon-checklist'
+      'nut-icon-Checklist'
     )
   })
 
   test('radioGroup onChange toBeCalled', () => {
-    const changeFn = jest.fn((e) => {
-      console.log(e)
-    })
+    const changeFn = jest.fn()
     const RadioGroupLast = () => {
       const [radioVal] = useState('1')
       return (
@@ -66,7 +65,7 @@ describe('radio', () => {
   test('Render radios by configuring options', () => {
     const RadioGroupOptions = () => {
       const [radioVal] = useState('1')
-      const [optionsDemo1, setOptionsDemo1] = useState([
+      const [optionsDemo1] = useState([
         {
           label: '选项一',
           value: '1',

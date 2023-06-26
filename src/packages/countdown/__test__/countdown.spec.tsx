@@ -1,9 +1,9 @@
 import * as React from 'react'
-import { fireEvent, render, waitFor } from '@testing-library/react'
+import { act, fireEvent, render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { CountDown } from '../countdown'
-import Button from '@/packages/button'
 import { sleep } from '@/utils/sleep'
+import Button from '@/packages/button'
 
 describe('Countdown', () => {
   let container: any
@@ -19,13 +19,13 @@ describe('Countdown', () => {
   })
   test('endTime props', async () => {
     const testClick = jest.fn()
-    render(
-      <CountDown endTime={Date.now() + 1 * 1000} onEnd={() => testClick()} />
-    )
+    render(<CountDown endTime={Date.now() + 1 * 1000} onEnd={testClick} />)
     expect(testClick).not.toBeCalled()
-    await sleep(1000)
-    await waitFor(() => {
-      expect(testClick).toBeCalled()
+    await act(async () => {
+      await sleep(1000)
+      waitFor(() => {
+        expect(testClick).toBeCalled()
+      })
     })
   })
 
@@ -35,9 +35,11 @@ describe('Countdown', () => {
     )
 
     const countdownEle = container.querySelector('.nut-countdown__block')
-    await sleep(1000)
-    await waitFor(() => {
-      expect(countdownEle?.innerHTML).toBe('00天00时00分00秒')
+    await act(async () => {
+      await sleep(1000)
+      waitFor(() => {
+        expect(countdownEle?.innerHTML).toBe('00天00时00分00秒')
+      })
     })
   })
 
@@ -73,14 +75,16 @@ describe('Countdown', () => {
         </Button>
       </>
     )
-
-    await waitFor(() => {
-      const button1 = container.querySelector('.nut-button') as Element
-      const laterShapShot = container.querySelector('.nut-countdown')?.innerHTML
-      expect(button1?.querySelector('.nut-button__warp')?.innerHTML).toBe(
-        '<div class="">start</div>'
-      )
-      expect(prevSnapShot === laterShapShot).toBeTruthy()
+    await act(async () => {
+      waitFor(() => {
+        const button1 = container.querySelector('.nut-button') as Element
+        const laterShapShot =
+          container.querySelector('.nut-countdown')?.innerHTML
+        expect(button1?.querySelector('.nut-button__warp')?.innerHTML).toBe(
+          '<div class="">start</div>'
+        )
+        expect(prevSnapShot === laterShapShot).toBeTruthy()
+      })
     })
   })
 })

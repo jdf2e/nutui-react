@@ -17,6 +17,7 @@ interface T {
   millisecond: string
   serverTime: string
   async: string
+  remainingTime: string
   controlTime: string
   customStyle: string
   handleControl: string
@@ -31,7 +32,8 @@ interface T {
 const CountDownDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
+      remainingTime: '剩余时间用法',
       format: '自定义格式',
       millisecond: '毫秒级渲染',
       serverTime: '以服务端的时间为准',
@@ -48,24 +50,26 @@ const CountDownDemo = () => {
       second: '秒',
     },
     'zh-TW': {
-      basic: '基本用法',
-      format: '自定义格式',
-      millisecond: '毫秒级渲染',
-      serverTime: '以服务端的时间为准',
-      async: '异步更新结束时间',
-      controlTime: '控制开始和暂停的倒计时',
-      customStyle: '自定义展示样式',
-      handleControl: '手动控制',
-      start: '开始',
-      pause: '暂停',
+      basic: '基础用法',
+      remainingTime: '剩余時間用法',
+      format: '自定義格式',
+      millisecond: '毫秒級渲染',
+      serverTime: '以服務端的時間為準',
+      async: '異步更新結束時間',
+      controlTime: '控製開始和暫停的倒計時',
+      customStyle: '自定義展示樣式',
+      handleControl: '手動控製',
+      start: '開始',
+      pause: '暫停',
       reset: '重置',
       day: '天',
-      hour: '时',
+      hour: '時',
       minute: '分',
       second: '秒',
     },
     'en-US': {
       basic: 'Basic Usage',
+      remainingTime: 'Remaining time Usage',
       format: 'Custom Format',
       millisecond: 'Millisecond',
       serverTime: 'Server Time Prevails',
@@ -86,6 +90,7 @@ const CountDownDemo = () => {
     timer: -1,
     serverTime: Date.now() - 20 * 1000,
     endTime: Date.now() + 60 * 1000,
+    remainingTime: 60 * 1000,
   })
 
   const countDownRef = useRef<countdownRefState>(null)
@@ -164,6 +169,10 @@ const CountDownDemo = () => {
             onUpdate={onUpdate}
             onEnd={onEnd}
           />
+        </Cell>
+        <h2>{translated.remainingTime}</h2>
+        <Cell>
+          <CountDown remainingTime={stateRef.current.remainingTime} />
         </Cell>
         <h2>{translated.format}</h2>
         <Cell>

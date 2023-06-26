@@ -32,7 +32,8 @@ const enUS: BaseLang = {
     start: 'Start',
     confirm: 'Confirm',
     title: 'Calendar',
-    monthTitle: (year: number, month: number) => `${year}/${month}`,
+    monthTitle: (year: number, month: number) =>
+      `${year}/${Number(month) < 10 ? `0${Number(month)}` : month}`,
     today: 'Today',
     loadPreviousMonth: 'Load Previous Month',
     noEarlierMonth: 'No Earlier Month',
@@ -58,13 +59,13 @@ const enUS: BaseLang = {
     second: ' Second ',
   },
   address: {
-    selectRegion: 'Select Region',
+    selectRegion: 'Choose Address',
     deliveryTo: 'Delivery To',
     chooseAnotherAddress: 'Choose Another Address',
   },
   signature: {
     reSign: 'Re Sign',
-    unSupportTpl: `Sorry, the current browser doesn't support canvas, so we can't use this control!`,
+    unsupported: `Sorry, the current browser doesn't support canvas, so we can't use this control!`,
   },
   ecard: {
     chooseText: 'Select',

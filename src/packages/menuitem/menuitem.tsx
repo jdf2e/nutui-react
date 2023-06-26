@@ -1,14 +1,16 @@
 import React, {
+  CSSProperties,
   forwardRef,
   useEffect,
   useImperativeHandle,
+  useRef,
   useState,
 } from 'react'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 import { Check } from '@nutui/icons-react'
 import { Overlay } from '../overlay/overlay'
-
+import useClickAway from '@/utils/use-click-away'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface OptionItem {
@@ -36,7 +38,6 @@ const defaultProps = {
   columns: 1,
   direction: 'down',
   icon: null,
-  closeOnClickAway: false,
   activeTitleClass: '',
   inactiveTitleClass: '',
   onChange: (value: OptionItem) => undefined,
@@ -70,9 +71,6 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   useEffect(() => {
     setShowPopup(show)
   }, [show])
-  useEffect(() => {
-    getParentOffset()
-  }, [_showPopup])
 
   useImperativeHandle<any, any>(ref, () => ({
     toggle: parent.toggleMenuItem,
@@ -95,59 +93,44 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     setValue(item.value)
     onChange && onChange(item)
   }
-  const [position, setPosition] = useState<{ top: number; height: number }>({
-    top: 0,
-    height: 0,
-  })
-  const getParentOffset = () => {
-    setTimeout(() => {
-      const p = parent.menuRef.current
-      const rect = p.getBoundingClientRect()
-      setPosition({
-        height: rect.height,
-        top: rect.top,
-      })
-    })
-  }
+
   const isShow = () => {
     if (_showPopup) return {}
     return { display: 'none' }
   }
 
-  const getPosition = () => {
+  const getPosition = (): CSSProperties => {
     return direction === 'down'
-      ? { top: `${position.top + position.height}px` }
-      : { bottom: `${window.innerHeight - position.top}px`, top: 'auto' }
+      ? { position: 'absolute', height: `${window.innerHeight}px` }
+      : {
+          position: 'absolute',
+          bottom: '100%',
+          top: 'auto',
+          height: `${window.innerHeight}px`,
+        }
   }
 
-  const placeholderStyle = () => {
-    if (direction === 'down') {
-      return {
-        height: `${position.top + position.height}px`,
-        top: 0,
-        ...isShow(),
-      }
-    }
-    return {
-      height: `${window.innerHeight - position.top}px`,
-      bottom: `0px`,
-      top: 'auto',
-      ...isShow(),
-    }
-  }
+  const micRef = useRef<HTMLDivElement>(null)
+  const targetSet = [micRef.current]
+  useClickAway(
+    () => {
+      parent.hideMenuItem(index)
+    },
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
+    targetSet,
+    'click',
+    false,
+    _showPopup,
+    closeOnClickAway
+  )
 
   return (
-    <>
-      {closeOnClickAway ? (
-        <div
-          className={`placeholder-element ${classNames({
-            up: direction === 'up',
-          })}`}
-          style={placeholderStyle()}
-          onClick={() => parent.toggleMenuItem(index)}
-        />
-      ) : null}
-
+    <div
+      className="nut-menu-item-container"
+      ref={micRef}
+      style={{ position: 'absolute', left: 0, right: 0 }}
+    >
       <Overlay
         className="nut-menu__overlay"
         style={getPosition()}
@@ -174,7 +157,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
           classNames={direction === 'down' ? 'menu-item' : 'menu-item-up'}
         >
           <div className="nut-menu-item__content">
-            {options?.map((item: any, index: any) => {
+            {options?.map((item: any) => {
               return (
                 <div
                   className={`nut-menu-item__option ${classNames({
@@ -213,7 +196,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
           </div>
         </CSSTransition>
       </div>
-    </>
+    </div>
   )
 })
 

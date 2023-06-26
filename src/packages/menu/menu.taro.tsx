@@ -7,7 +7,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface MenuProps extends BasicComponent {
   activeColor: string
-  closeOnClickOverlay: boolean
+  closeOnOverlayClick: boolean
   scrollFixed: boolean | string | number
   lockScroll: boolean
   icon: React.ReactNode
@@ -17,7 +17,7 @@ export interface MenuProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   activeColor: '',
-  closeOnClickOverlay: true,
+  closeOnOverlayClick: true,
   scrollFixed: false,
   lockScroll: true,
   icon: null,
@@ -28,7 +28,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
     icon,
     scrollFixed,
     lockScroll,
-    closeOnClickOverlay,
+    closeOnOverlayClick,
     children,
     activeColor,
     ...rest
@@ -83,7 +83,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
         index,
         activeColor,
         parent: {
-          closeOnClickOverlay,
+          closeOnOverlayClick,
           lockScroll,
           toggleMenuItem,
           updateTitle,

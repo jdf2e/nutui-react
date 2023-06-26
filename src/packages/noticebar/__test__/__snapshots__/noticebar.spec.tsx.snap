@@ -12,11 +12,10 @@ exports[`noticebar base test 1`] = `
         class="left-icon"
       >
         <svg
-          aria-labelledby=""
-          class="nut-icon"
-          color=""
+          aria-labelledby="Notice"
+          class="nut-icon nut-icon-Notice"
           role="presentation"
-          style="height: 16px; width: 16px;"
+          style="width: 16px; height: 16px;"
           viewBox="0 0 1027 1024"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -54,11 +53,10 @@ exports[`scrollable test 1`] = `
         class="left-icon"
       >
         <svg
-          aria-labelledby=""
-          class="nut-icon"
-          color=""
+          aria-labelledby="Notice"
+          class="nut-icon nut-icon-Notice"
           role="presentation"
-          style="height: 16px; width: 16px;"
+          style="width: 16px; height: 16px;"
           viewBox="0 0 1027 1024"
           xmlns="http://www.w3.org/2000/svg"
         >

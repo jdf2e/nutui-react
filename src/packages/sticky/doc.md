@@ -1,11 +1,11 @@
-
-#  Sticky组件
+# Sticky组件
 
 ## 介绍
 
 效果同 css 中的 position: sticky,对低端浏览器可使用其做兼容
 
 ## 安装
+
 ```tsx
 import { Sticky } from '@nutui/nutui-react';
 ```
@@ -13,9 +13,10 @@ import { Sticky } from '@nutui/nutui-react';
 ## 代码演示
 
 ### 基础用法
-:::demo
-```tsx
 
+:::demo
+
+```tsx
 import React, { useEffect, useRef, useState } from 'react'
 import {Button,Cell, Sticky } from '@nutui/nutui-react'
 
@@ -49,10 +50,13 @@ return(
 }
 export default App;
 ```
+
 :::
 
 ### 指定容器内
+
 :::demo
+
 ```tsx
 import React, { useEffect, useRef, useState } from 'react'
 import {Button,Cell, Sticky } from '@nutui/nutui-react'
@@ -97,16 +101,17 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ## Sticky
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|--------------------------------|--------|------------------|
-| position     | 吸附位置（top、bottom）               | string | `top`             |
-| threshold          | 距离，当 position 为 top 时，设置的是 top | number | `0`               |
-| zIndex      | 吸附时的层级                         | number | `2000`            |
-| container    | 容器的 ref                        | `React.RefObject<HTMLElement>`| - |
-| onChange  | 吸附状态改变时触发  | `val: boolean` | - |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| position | 吸附位置 | `top` \| `bottom` | `top` |
+| threshold | 距离，当 position 为 top 时，设置的是 top | `number` | `0` |
+| zIndex | 吸附时的层级 | `number` | `2000` |
+| container | 容器的 ref | `React.RefObject<HTMLElement>` | `-` |
+| onChange | 吸附状态改变时触发 | `(val: boolean) => void` | `-` |

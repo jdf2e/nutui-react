@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { DownArrow, Checked, HeartFill, Star } from '@nutui/icons-react'
 import { Collapse } from './collapse'
-import CollapseItem from '../collapseitem'
 import { Button } from '../button/button'
 import { useTranslate } from '../../sites/assets/locale'
 
@@ -12,6 +11,7 @@ interface itemObj {
 }
 interface T {
   header1: string
+  controll: string
   header2: string
   header3: string
   header4: string
@@ -23,7 +23,7 @@ interface T {
   content1: string
   content2: string
   content3: string
-  subTitle: string
+  extra: string
   buttonTextOne: string
   buttonTextSec: string
 }
@@ -31,10 +31,11 @@ const CollapseDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
       header1: '基础用法',
+      controll: '受控方式',
       header2: '无icon样式，绑定点击事件',
       header3: '手风琴模式',
       header4: '自定义折叠图标',
-      header5: '自定义 title 与 subTitle',
+      header5: '自定义 title 与 extra',
       header6: '动态改变数据',
       title1: '标题1',
       title2: '标题2',
@@ -42,16 +43,17 @@ const CollapseDemo = () => {
       content1: 'NutUI-React是一套拥有京东风格的轻量级的 React 组件库',
       content2: '在产品的功能、体验、易用性和灵活性等各个方面做了全面的升级！',
       content3: '全面使用 TypeScipt',
-      subTitle: '文本内容',
+      extra: '文本内容',
       buttonTextOne: '改变数据',
       buttonTextSec: '还原数据',
     },
     'zh-TW': {
       header1: '基礎用法',
+      controll: '受控方式',
       header2: '無icon樣式，綁定點擊事件',
       header3: '手風琴模式',
       header4: '自定義折疊圖標',
-      header5: '自定義 title 與 subTitle',
+      header5: '自定義 title 與 extra',
       header6: '動態改變數據',
       title1: '標題1',
       title2: '標題2',
@@ -59,16 +61,17 @@ const CollapseDemo = () => {
       content1: 'Nutui-React 是一套擁有京東風格的輕量級的 React 組件庫',
       content2: '在產品的功能、體驗、易用性和靈活性等各個方面做了全面的升級',
       content3: '全面使用 TypeScipt',
-      subTitle: '文本內容',
+      extra: '文本內容',
       buttonTextOne: '改變數據',
       buttonTextSec: '還原數據',
     },
     'en-US': {
       header1: 'Basic Usage',
+      controll: 'Controlled',
       header2: 'No icon style',
       header3: 'accordion Mode',
       header4: 'Custom collapse Icon',
-      header5: 'Custom title and subTitle',
+      header5: 'Custom title and extra',
       header6: 'Change Data',
       title1: 'title1',
       title2: 'title2',
@@ -78,7 +81,7 @@ const CollapseDemo = () => {
       content2:
         'The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!',
       content3: 'Full use of typescipt',
-      subTitle: 'text content',
+      extra: 'text content',
       buttonTextOne: 'change data',
       buttonTextSec: 'return data',
     },
@@ -113,107 +116,118 @@ const CollapseDemo = () => {
       name: '2',
       data: translated.content2,
     },
-    {
-      title: `${translated.title3}3`,
-      name: '3',
-      data: translated.content2,
-    },
   ]
-  const [currIndex, setCurrIndex] = useState(2)
   const [domData, setDomData] = useState(oldDate)
+
+  const [activeName, setActiveKey] = useState<Array<string> | string>([
+    '1',
+    '2',
+  ])
 
   useEffect(() => {
     setDomData(oldDate)
   }, [translated])
-  const changeEnv = (isOpen: boolean, name: string) => {
-    console.log(isOpen, name)
-  }
   const changeNewData = () => {
     setDomData(newDate)
-    setCurrIndex(3)
   }
   const changeOldData = () => {
     setDomData(oldDate)
-    setCurrIndex(2)
   }
+
   return (
     <>
-      <div className="demo">
+      <div className="demo full">
         <h2>{translated.header1}</h2>
         <Collapse
           className="test"
-          activeName={['1', '2']}
+          defaultActiveName={['1', '2']}
           expandIcon={<DownArrow />}
         >
-          <CollapseItem title={translated.title1} name="1">
+          <Collapse.Item title={translated.title1} name="1">
             {translated.content1}
-          </CollapseItem>
-          <CollapseItem title={translated.title2} name="2">
+          </Collapse.Item>
+          <Collapse.Item title={translated.title2} name="2">
             {translated.content2}
-          </CollapseItem>
-          <CollapseItem title={translated.title3} name="3" disabled>
+          </Collapse.Item>
+          <Collapse.Item title={translated.title3} name="3" disabled>
             {translated.content3}
-          </CollapseItem>
+          </Collapse.Item>
+        </Collapse>
+        <h2>{translated.controll}</h2>
+        <Collapse
+          activeName={activeName}
+          onChange={(activeName, name, isOpen) => setActiveKey(activeName)}
+        >
+          <Collapse.Item title={translated.title1} name="1">
+            {translated.content1}
+          </Collapse.Item>
+          <Collapse.Item title={translated.title2} name="2">
+            {translated.content2}
+          </Collapse.Item>
+          <Collapse.Item title={translated.title3} name="3">
+            {translated.content3}
+          </Collapse.Item>
         </Collapse>
         <h2>{translated.header2}</h2>
-        <Collapse
-          activeName={['1', '2']}
-          onChange={(isOpen, name) => changeEnv(isOpen, name)}
-        >
-          <CollapseItem title={translated.title1} name="1">
+        <Collapse defaultActiveName={['1', '2']}>
+          <Collapse.Item title={translated.title1} name="1">
             {translated.content1}
-          </CollapseItem>
-          <CollapseItem title={translated.title2} name="2">
+          </Collapse.Item>
+          <Collapse.Item title={translated.title2} name="2">
             {translated.content2}
-          </CollapseItem>
-          <CollapseItem title={translated.title3} name="3">
+          </Collapse.Item>
+          <Collapse.Item title={translated.title3} name="3">
             {translated.content3}
-          </CollapseItem>
+          </Collapse.Item>
         </Collapse>
         <h2>{translated.header3}</h2>
-        <Collapse activeName={['1']} accordion expandIcon={<DownArrow />}>
-          <CollapseItem
+        <Collapse
+          defaultActiveName={['1']}
+          accordion
+          expandIcon={<DownArrow />}
+        >
+          <Collapse.Item
             title={translated.title1}
             name="1"
-            subTitle={translated.subTitle}
+            extra={translated.extra}
           >
             {translated.content1}
-          </CollapseItem>
-          <CollapseItem title={translated.title2} name="2">
+          </Collapse.Item>
+          <Collapse.Item title={translated.title2} name="2">
             {translated.content2}
-          </CollapseItem>
-          <CollapseItem title={translated.title3} name="3">
+          </Collapse.Item>
+          <Collapse.Item title={translated.title3} name="3">
             {translated.content3}
-          </CollapseItem>
+          </Collapse.Item>
         </Collapse>
         <h2>{translated.header4}</h2>
         <Collapse
-          activeName={['1']}
+          defaultActiveName={['1']}
           accordion
           expandIcon={<DownArrow />}
           rotate={90}
         >
-          <CollapseItem
+          <Collapse.Item
             title={translated.title1}
             name="1"
             expandIcon={<Checked />}
           >
             {translated.content1}
-          </CollapseItem>
-          <CollapseItem
+          </Collapse.Item>
+          <Collapse.Item
             title={translated.title2}
             name="2"
             expandIcon={<HeartFill />}
           >
             {translated.content2}
-          </CollapseItem>
-          <CollapseItem title={translated.title3} name="3">
+          </Collapse.Item>
+          <Collapse.Item title={translated.title3} name="3">
             {translated.content3}
-          </CollapseItem>
+          </Collapse.Item>
         </Collapse>
         <h2>{translated.header5}</h2>
-        <Collapse activeName={['1']} accordion expandIcon={<Star />}>
-          <CollapseItem
+        <Collapse defaultActiveName={['1']} accordion expandIcon={<Star />}>
+          <Collapse.Item
             title={
               <div
                 style={{
@@ -228,10 +242,10 @@ const CollapseDemo = () => {
             name="1"
           >
             {translated.content1}
-          </CollapseItem>
-          <CollapseItem
+          </Collapse.Item>
+          <Collapse.Item
             title={translated.title2}
-            subTitle={
+            extra={
               <div
                 style={{
                   display: 'flex',
@@ -245,19 +259,19 @@ const CollapseDemo = () => {
             name="2"
           >
             {translated.content2}
-          </CollapseItem>
-          <CollapseItem title={translated.title3} name="3">
+          </Collapse.Item>
+          <Collapse.Item title={translated.title3} name="3">
             {translated.content3}
-          </CollapseItem>
+          </Collapse.Item>
         </Collapse>
 
         <h2>{translated.header6}</h2>
-        <Collapse activeName={currIndex} accordion>
+        <Collapse defaultActiveName="2" accordion>
           {domData.map((item: itemObj, index: number) => {
             return (
-              <CollapseItem title={item.title} name={item.name} key={index}>
+              <Collapse.Item title={item.title} name={item.name} key={index}>
                 {item.data}
-              </CollapseItem>
+              </Collapse.Item>
             )
           })}
         </Collapse>

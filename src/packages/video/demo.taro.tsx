@@ -82,9 +82,9 @@ const VideoDemo = () => {
     playsinline: true,
     loop: true,
   }
-  const play = (elm: HTMLVideoElement) => console.log('play', elm)
-  const pause = (elm: HTMLVideoElement) => console.log('pause', elm)
-  const playend = (elm: HTMLVideoElement) => console.log('playend', elm)
+  const play = (elm: any) => console.log('play', elm)
+  const pause = (elm: any) => console.log('pause', elm)
+  const playend = (elm: any) => console.log('playend', elm)
 
   const changeVideo = () => {
     setSource1({ ...source1, src: 'https://vjs.zencdn.net/v/oceans.mp4' })
@@ -92,19 +92,16 @@ const VideoDemo = () => {
   return (
     <>
       <Header />
-      <div
-        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} demo-video`}
-      >
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated['84aa6bce']}</h2>
-        <Cell className="video-cell">
-          <Video
-            source={source}
-            options={options}
-            onPlay={play}
-            onPause={pause}
-            onPlayEnd={playend}
-          />
-        </Cell>
+        <Video
+          source={source}
+          options={options}
+          onPlay={play}
+          onPause={pause}
+          onPlayEnd={playend}
+          style={{ height: '163px' }}
+        />
         <h2>{translated.a5a25e88}</h2>
         <Cell className="video-cell">
           <Video
@@ -113,6 +110,7 @@ const VideoDemo = () => {
             onPlay={play}
             onPause={pause}
             onPlayEnd={playend}
+            style={{ height: '163px' }}
           />
         </Cell>
         <h2>{translated['19875a3f']}</h2>
@@ -123,6 +121,7 @@ const VideoDemo = () => {
             onPlay={play}
             onPause={pause}
             onPlayEnd={playend}
+            style={{ height: '163px' }}
           />
         </Cell>
         <h2>{translated.fcdac2ed}</h2>
@@ -133,6 +132,7 @@ const VideoDemo = () => {
             onPlay={play}
             onPause={pause}
             onPlayEnd={playend}
+            style={{ height: '163px' }}
           />
         </Cell>
         <h2>{translated['200baa8c']}</h2>
@@ -143,6 +143,7 @@ const VideoDemo = () => {
             onPlay={play}
             onPause={pause}
             onPlayEnd={playend}
+            style={{ height: '163px' }}
           />
         </Cell>
         <h2>{translated['5ec0e561']}</h2>
@@ -153,6 +154,7 @@ const VideoDemo = () => {
             onPlay={play}
             onPause={pause}
             onPlayEnd={playend}
+            style={{ height: '163px' }}
           />
         </Cell>
         <h2>{translated.a6e0b0cf}</h2>
@@ -163,6 +165,7 @@ const VideoDemo = () => {
             onPlay={play}
             onPause={pause}
             onPlayEnd={playend}
+            style={{ height: '163px' }}
           />
         </Cell>
         <Button type="primary" className="video-m-b" onClick={changeVideo}>

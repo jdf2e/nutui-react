@@ -6,8 +6,7 @@
 
 ## 安装
 
-```javascript
-// React
+```tsx
 import { TrendArrow } from '@nutui/nutui-react';
 ```
 
@@ -206,6 +205,10 @@ export default App;
 | dropColor | 向下箭头颜色 | `string` | `#64b578` |
 | riseIcon | 自定义向上箭头icon | `React.ReactNode` | `<TriangleUp/>` |
 | downIcon | 自定义向下箭头icon | `React.ReactNode` | `<TriangleDown/>` |
+<<<<<<< HEAD
+=======
+
+>>>>>>> next
 
 ## 主题定制
 

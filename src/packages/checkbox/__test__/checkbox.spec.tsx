@@ -6,7 +6,7 @@ import { CheckboxGroup } from '../../checkboxgroup/checkboxgroup'
 
 test('should match snapshot', () => {
   const { asFragment } = render(
-    <Checkbox textPosition="left" label="复选框" checked />
+    <Checkbox labelPosition="left" label="复选框" checked />
   )
   expect(asFragment()).toMatchSnapshot()
 })
@@ -18,7 +18,7 @@ test('should props correctly', () => {
       data-testid="checkbox"
       style={{ color: 'red' }}
       className="test"
-      textPosition="left"
+      labelPosition="left"
       label="复选框"
       onChange={handleChange}
       disabled
@@ -47,18 +47,12 @@ test('should fireEvent correctly', () => {
       defaultValue={['1']}
       onChange={handleChange}
     >
-      <Checkbox checked={false} label="1">
+      <Checkbox value="1">组合复选框</Checkbox>
+      <Checkbox value="2">组合复选框</Checkbox>
+      <Checkbox data-testid="checkbox" value="3">
         组合复选框
       </Checkbox>
-      <Checkbox checked={false} label="2">
-        组合复选框
-      </Checkbox>
-      <Checkbox data-testid="checkbox" checked={false} label="3">
-        组合复选框
-      </Checkbox>
-      <Checkbox checked={false} label="4">
-        组合复选框
-      </Checkbox>
+      <Checkbox value="4">组合复选框</Checkbox>
     </CheckboxGroup>
   )
 
@@ -73,7 +67,7 @@ test('should fireEvent correctly', () => {
 test('Render checkboxs by configuring options', () => {
   const CheckboxGroupOptions = () => {
     const [defaultValue] = useState(['1'])
-    const [optionsDemo1, setOptionsDemo1] = useState([
+    const [optionsDemo1] = useState([
       {
         label: '选项一',
         value: '1',
@@ -90,12 +84,9 @@ test('Render checkboxs by configuring options', () => {
     ])
     return (
       <>
-        <CheckboxGroup
-          defaultValue={defaultValue}
-          options={optionsDemo1}
-        ></CheckboxGroup>
+        <CheckboxGroup defaultValue={defaultValue} options={optionsDemo1} />
       </>
     )
   }
-  const { container } = render(<CheckboxGroupOptions />)
+  render(<CheckboxGroupOptions />)
 })

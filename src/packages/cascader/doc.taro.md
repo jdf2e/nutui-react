@@ -1,20 +1,23 @@
 # Cascader 级联选择
 
-### 介绍
+## 介绍
 
 级联选择器，用于多层级数据的选择，典型场景为省市区选择。
 
-### 安装
+## 安装
 
-```ts
+```tsx
 import { Cascader } from '@nutui/nutui-react-taro';
 ```
 
 ## 代码演示
+
 ### 基础用法
 
-传入`options`列表。
+传入`options`列表
+
 :::demo
+
 ```jsx
 import  React,{useState} from "react";
 import { Cascader, Cell } from '@nutui/nutui-react-taro';
@@ -117,6 +120,7 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 自定义属性名称
@@ -124,6 +128,7 @@ export default App;
 可通过`textKey`、`valueKey`、`childrenKey`指定属性名。
 
 :::demo
+
 ```jsx
 import  React,{useState} from "react";
 import { Cascader, Cell } from '@nutui/nutui-react-taro';
@@ -216,9 +221,11 @@ const App = () => {
       value={value2}
       title="地址选择"
       options={optionsDemo2}
-      textKey="text1"
-      valueKey="value1"
-      childrenKey="items"
+      optionKey={{
+        textKey: 'text1',
+        valueKey: 'value1',
+        childrenKey: 'items',
+      }}
       closeable
       onClose={()=>{setIsVisibleDemo2(false)}}
       onChange={change2}
@@ -229,13 +236,15 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 动态加载
 
-使用`lazy`标识是否需要动态获取数据，此时不传`options`代表所有数据都需要通过`lazyLoad`加载，首次加载通过`root`属性区分，当遇到非叶子节点时会调用`lazyLoad`方法，参数为当前节点和`resolve`方法，注意`resolve`方法必须调用，不传子节点时会被当做叶子节点处理。
+使用`lazy`标识是否需要动态获取数据，此时不传`options`代表所有数据都需要通过`onLoad`加载，首次加载通过`root`属性区分，当遇到非叶子节点时会调用`onLoad`方法，参数为当前节点和`resolve`方法，注意`resolve`方法必须调用，不传子节点时会被当做叶子节点处理。
 
 :::demo
+
 ```jsx
 import  React,{useState} from "react";
 import { Cascader, Cell } from '@nutui/nutui-react-taro';
@@ -291,19 +300,20 @@ const App = () => {
       onChange={change3}
       onPathChange={onPathChange}
       lazy
-      lazyLoad={lazyLoadDemo3}
+      onLoad={lazyLoadDemo3}
     />
     </>
   );
 };
 export default App;
 ```
-:::
 
+:::
 
 ### 部分数据动态加载
 
 :::demo
+
 ```jsx
 import  React,{useState} from "react";
 import { Cascader, Cell } from '@nutui/nutui-react-taro';
@@ -363,20 +373,22 @@ const App = () => {
       onChange={change4}
       onPathChange={onPathChange}
       lazy
-      lazyLoad={lazyLoadDemo4}
+      onLoad={lazyLoadDemo4}
     />
     </>
   );
 };
 export default App;
 ```
+
 :::
 
 ### 自动转换
 
-如果你的数据为可转换为树形结构的扁平结构时，可以通过`convertConfig`告诉组件需要进行自动转换，`convertConfig`接受4个参数，`topId`为顶层节点的父级id，`idKey`为节点唯一id，`pidKey`为指向父节点id的属性名，存在`sortKey`将根据指定字段调用Array.prototype.sort()进行同层排序。
+如果你的数据为可转换为树形结构的扁平结构时，可以通过`format`告诉组件需要进行自动转换，`format`接受4个参数，`topId`为顶层节点的父级id，`idKey`为节点唯一id，`pidKey`为指向父节点id的属性名，存在`sortKey`将根据指定字段调用Array.prototype.sort()进行同层排序。
 
 :::demo
+
 ```jsx
 import  React,{useState} from "react";
 import { Cascader, Cell } from '@nutui/nutui-react-taro';
@@ -385,16 +397,16 @@ const App = () => {
   const [isVisibleDemo5, setIsVisibleDemo5] = useState(false)
   const [value5, setValue5] = useState(['广东省', '广州市'])
   const [optionsDemo5, setOptionsDemo5] = useState([
-    { value: '北京', text: '北京', id: 1, pid: null },
-    { value: '朝阳区', text: '朝阳区', id: 11, pid: 1 },
-    { value: '亦庄', text: '亦庄', id: 111, pid: 11 },
-    { value: '广东省', text: '广东省', id: 2, pid: null },
-    { value: '广州市', text: '广州市', id: 21, pid: 2 }
+    { value: '北京', text: '北京', id: 1, pidd: null },
+    { value: '朝阳区', text: '朝阳区', id: 11, pidd: 1 },
+    { value: '亦庄', text: '亦庄', id: 111, pidd: 11 },
+    { value: '广东省', text: '广东省', id: 2, pidd: null },
+    { value: '广州市', text: '广州市', id: 21, pidd: 2 }
   ])
   const [convertConfigDemo5, setConvertConfigDemo5] = useState({
     topId: null,
     idKey: 'id',
-    pidKey: 'pid',
+    pidKey: 'pidd',
     sortKey: ''
   })
   const change5 = (value, path) => {
@@ -419,7 +431,7 @@ const App = () => {
       value={value5}
       title="地址选择"
       options={optionsDemo5}
-      convertConfig={convertConfigDemo5}
+      format={convertConfigDemo5}
       closeable
       onClose={()=>{setIsVisibleDemo5(false)}}
       onChange={change5}
@@ -430,12 +442,15 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 自定义样式
 
-使用configprovider 完成自定义设置。
-:::demo
+使用configprovider 完成自定义设置
+
+ :::demo
+
 ```jsx
 import  React,{useState} from "react";
 import { Cell, Cascader, ConfigProvider } from '@nutui/nutui-react-taro';
@@ -445,6 +460,8 @@ const customTheme = {
   nutuiCascaderItemMargin: '0 10px',
   nutuiCascaderItemPadding: '10px',
   nutuiCascaderItemBorderBottom: '1px solid #F0F0F0',
+  nutuiTabsTitlesItemActiveColor: '#3768FA',
+  nutuiTabsHorizontalTabLineColor: '#3768FA',
 }
 
 const App = () => {
@@ -533,8 +550,8 @@ const App = () => {
     <ConfigProvider theme={customTheme}>
       <Cascader
         visible={isVisibleDemo6}
-        color="#3768FA"
-        tabsColor="#3768FA"
+        activeColor="#3768FA"
+        activeIcon="star"
         value={value6}
         title="地址选择"
         options={optionsDemo6}
@@ -549,39 +566,34 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
-## API
+## Cascader
 
 ### Props
 
-| 参数           | 说明                                            | 类型     | 默认值 |
-| ------------- | ---------------------------------------------- | -------- | ------ |
-| value         | 选中值                                          | Array    | -      |
-| options       | 级联数据                                         | Array    | -      |
-| poppable      | 是否弹窗状态展示                                  | boolean  | `true`   |
-| visible       | 级联显示隐藏状态                                  | boolean  | `false`  |
-| activeColor`1.3.13` | 选中激活颜色                                  | string  | -  |
-| checkedIcon`1.5.0`  | 标记选中的Icon | string | `ReactNode`      |
-| tabsColor`1.3.13` | tabs底部选中激活颜色                                    | string  | -  |
-| lazy          | 是否开启动态加载                                  | boolean  | `false`  |
-| lazyLoad      | 动态加载回调，开启动态加载时生效                   | Function | -      |
-| valueKey      | 自定义`options`结构中`value`的字段               | string   | -      |
-| textKey       | 自定义`options`结构中`text`的字段                | string   | -      |
-| childrenKey   | 自定义`options`结构中`children`的字段            | string   | -      |
-| convertConfig | 当options为可转换为树形结构的扁平结构时，配置转换规则 | Object   | -      |
-| title          | 标题 | string   | -      |
-| closeIconPosition | 取消按钮位置，继承 Popup 组件 | string   | `top-right`      |
-| closeIcon           | 自定义关闭按钮，继承 Popup 组件 | ReactNode   | `close`     |
-| closeable | 是否显示关闭按钮，继承 Popup 组件 | boolean   | `true`     |
-
-### Events
-
-| 事件名     | 说明             | 回调参数           |
-| ---------- | ---------------- | ------------------ |
-| onChange     | 选中值改变时触发 | `value, pathNodes` |
-| onPathChange | 选中项改变时触发 | `pathNodes`        |
-
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| value | 选中值，受控 | `(number \| string)[]` | `-` |
+| defaultValue | 默认选中值 | `(number \| string)[]` | `-` |
+| options | 级联数据 | `Array` | `-` |
+| popup | 是否弹窗状态展示 | `boolean` | `true` |
+| visible | 级联显示隐藏状态 | `boolean` | `false` |
+| activeColor | 选中激活颜色 | `string` | `-` |
+| activeIcon | 标记选中的Icon | `string` | `ReactNode` |
+| lazy | 是否开启动态加载 | `boolean` | `false` |
+| valueKey | 自定义`options`结构中`value`的字段 | `string` | `-` |
+| textKey | 自定义`options`结构中`text`的字段 | `string` | `-` |
+| childrenKey | 自定义`options`结构中`children`的字段 | `string` | `-` |
+| format | 当options为可转换为树形结构的扁平结构时，配置转换规则 | `Object` | `-` |
+| title | 标题 | `string` | `-` |
+| closeIconPosition | 取消按钮位置，继承 Popup 组件 | `string` | `top-right` |
+| closeIcon | 自定义关闭按钮，继承 Popup 组件 | `ReactNode` | `close` |
+| closeable | 是否显示关闭按钮，继承 Popup 组件 | `boolean` | `true` |
+| onLoad | 动态加载回调，开启动态加载时生效 |  `(node: any, resolve: any) => void` | `-` |
+| onChange | 选中值改变时触发 | `(value: CascaderValue, params?: any) => void` | `-` |
+| onPathChange | 选中项改变时触发 | `(value: CascaderValue, params: any) => void` | `-` |
 
 ## 主题定制
 
@@ -589,23 +601,16 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 |
-| --- | --- |
-| --nutui-cascader-font-size | `$font-size-2` |
-| --nutui-cascader-line-height | `22px` |
-| --nutui-cascader-title-padding | `24px 20px 17px` |
-| --nutui-cascader-title-font-size | `18px` |
-| --nutui-cascader-title-line-height | `20px` |
-| --nutui-cascader-pane-height | `342px` |
-| --nutui-cascader-tabs-item-padding | `0 10px` |
-| --nutui-cascader-bar-padding | `24px 20px 17px` |
-| --nutui-cascader-bar-font-size | `$font-size-4` |
-| --nutui-cascader-bar-line-height | `20px` |
-| --nutui-cascader-bar-color | `$title-color` |
-| --nutui-cascader-item-height`v1.4.8` | `40px` |
-| --nutui-cascader-item-padding | `10px 20px` |
-| --nutui-cascader-item-margin`v1.4.8` | `0px`|
-| --nutui-cascader-item-border-bottom`v1.4.8` | `0px solid #ddd` |
-| --nutui-cascader-item-color | `$title-color` |
-| --nutui-cascader-item-font-size | `$font-size-2` |
-| --nutui-cascader-item-active-color | `$primary-color` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| \--nutui-cascader-font-size | 级联总字号 | `$font-size-2` |
+| \--nutui-cascader-line-height | 行高 | `22px` |
+| \--nutui-cascader-pane-height | 级联面板高度 | `342px` |
+| \--nutui-cascader-tabs-item-padding | 级联tabs的标题部分的padding 值 | `0 10px` |
+| \--nutui-cascader-item-height | 级联数据每一条的高度 | `40px` |
+| \--nutui-cascader-item-padding | 级联数据每一条的padding值 | `10px 20px` |
+| \--nutui-cascader-item-margin | 级联数据每一条的margin值 | `0px` |
+| \--nutui-cascader-item-border-bottom | 级联数据每一条的底部边框 | `0px solid #ddd` |
+| \--nutui-cascader-item-color | 级联数据每一条的色值 | `$title-color` |
+| \--nutui-cascader-item-font-size | 级联数据每一条的字号 | `$font-size-2` |
+| \--nutui-cascader-item-active-color | 级联数据每一条的选中色值 | `$primary-color` |

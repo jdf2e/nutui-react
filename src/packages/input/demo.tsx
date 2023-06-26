@@ -177,7 +177,7 @@ const InputDemo = () => {
         <h2>{translated.title10}</h2>
         <Input
           placeholder={translated.title10}
-          onClick={() => Toast.text('onClick')}
+          onClick={() => Toast.show('onClick')}
         />
         <h2>{translated.title11}</h2>
         <div

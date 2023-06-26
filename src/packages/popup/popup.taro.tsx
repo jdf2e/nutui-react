@@ -4,6 +4,7 @@ import React, {
   useEffect,
   ReactElement,
   ReactPortal,
+  ReactNode,
 } from 'react'
 import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
@@ -28,7 +29,9 @@ export interface PopupProps extends OverlayProps {
   overlayClassName: string
   closeable: boolean
   closeIconPosition: string
-  closeIcon: React.ReactNode
+  closeIcon: ReactNode
+  left?: ReactNode
+  title?: ReactNode
   destroyOnClose: boolean
   portal: Teleport
   overlay: boolean
@@ -62,7 +65,8 @@ const defaultProps = {
 let _zIndex = 2000
 
 export const Popup: FunctionComponent<
-  Partial<PopupProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
+  Partial<PopupProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'title'>
 > = (props) => {
   const {
     children,
@@ -77,6 +81,8 @@ export const Popup: FunctionComponent<
     closeable,
     closeIconPosition,
     closeIcon,
+    left,
+    title,
     style,
     transition,
     round,
@@ -150,6 +156,7 @@ export const Popup: FunctionComponent<
   }
 
   const onHandleClickOverlay = (e: ITouchEvent) => {
+    e.stopPropagation()
     if (closeOnOverlayClick) {
       const closed = onClickOverlay && onClickOverlay(e)
       closed && close()
@@ -205,6 +212,19 @@ export const Popup: FunctionComponent<
     }
     return null
   }
+
+  const renderTitle = () => {
+    return (
+      <>
+        {position === 'bottom' && (
+          <>
+            {left && <View className={`${classPrefix}-left-icon`}>{left}</View>}
+            {title && <View className={`${classPrefix}-title`}>{title}</View>}
+          </>
+        )}
+      </>
+    )
+  }
   const renderPop = () => {
     return (
       <CSSTransition
@@ -220,8 +240,9 @@ export const Popup: FunctionComponent<
           className={popClassName}
           onClick={onHandleClick}
         >
-          {showChildren ? children : ''}
+          {renderTitle()}
           {renderIcon()}
+          {showChildren ? children : ''}
         </View>
       </CSSTransition>
     )

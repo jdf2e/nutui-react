@@ -1,13 +1,3 @@
-.nut-theme-dark {
-  .nut-barrage {
-    background-color: $dark6;
-    color: $dark1;
-    .barrage-item {
-      background: linear-gradient(to right, $dark3, $dark10);
-    }
-  }
-}
-
 .nut-barrage {
   position: absolute;
   left: 0;
@@ -20,7 +10,6 @@
   color: $title-color;
   .barrage-item {
     width: 120px;
-    // max-width: 150px;
     display: block;
     position: absolute;
     right: 0;
@@ -44,8 +33,6 @@
       transform: translateX(100%);
     }
     to {
-      // transform: translateX(-250%);
-      // transform: translateX(-180%);
       transform: translateX(var(--move-distance));
     }
   }

@@ -1,5 +1,11 @@
 /* eslint-disable react/no-unknown-property */
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, {
+  ForwardRefRenderFunction,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from 'react'
 import {
   getEnv,
   nextTick,
@@ -7,49 +13,40 @@ import {
   canvasToTempFilePath,
   CanvasContext,
 } from '@tarojs/taro'
-import Button from '@/packages/button/index.taro'
-import bem from '@/utils/bem'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-interface FileType {
-  /** jpg 图片 */
-  jpg: any
-  /** png 图片 */
-  png: any
+export interface FileType {
+  jpg: string
+  png: string
 }
-export interface SignatureProps {
+export interface SignatureProps extends BasicComponent {
   canvasId: string
   type: keyof FileType
   lineWidth: number
   strokeStyle: string
   unSupportTpl: string
-  className: string
-  confirm?: (dataurl: string) => void
-  clear?: () => void
   onConfirm?: (dataurl: string) => void
   onClear?: () => void
 }
 const defaultProps = {
+  ...ComponentDefaults,
   canvasId: 'spcanvas',
   type: 'png',
   lineWidth: 2,
   strokeStyle: '#000',
-  className: '',
 } as SignatureProps
 
-export const Signature: FunctionComponent<
-  Partial<SignatureProps> & React.HTMLAttributes<HTMLDivElement>
-> = (props) => {
-  const { locale } = useConfig()
+const InternalSignature: ForwardRefRenderFunction<
+  unknown,
+  Partial<SignatureProps>
+> = (props, ref) => {
   const {
     canvasId,
     type,
     lineWidth,
     strokeStyle,
-    unSupportTpl,
     className,
-    confirm,
-    clear,
+    style,
     onConfirm,
     onClear,
     ...rest
@@ -57,7 +54,7 @@ export const Signature: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const b = bem('signature')
+  const classPrefix = `nut-signature`
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const wrapRef = useRef<HTMLDivElement>(null)
   const [canvasHeight, setCanvasHeight] = useState(0)
@@ -100,12 +97,7 @@ export const Signature: FunctionComponent<
       ctx.current.clearRect(0, 0, canvasWidth, canvasHeight)
       ctx.current.closePath()
     }
-    clear && clear()
     onClear && onClear()
-  }
-
-  const handleConfirmBtn = () => {
-    onSave()
   }
 
   const onSave = () => {
@@ -122,11 +114,10 @@ export const Signature: FunctionComponent<
           canvasId: `${canvasId}`,
           success: (res) => {
             handleClearBtn()
-            confirm && confirm(res.tempFilePath)
             onConfirm && onConfirm(res.tempFilePath)
           },
           fail: (res) => {
-            console.log('保存失败')
+            console.warn('保存失败')
           },
         })
       })
@@ -148,6 +139,15 @@ export const Signature: FunctionComponent<
       ctx.current.strokeStyle = strokeStyle as string
     }
   }
+
+  useImperativeHandle(ref, () => ({
+    confirm: () => {
+      onSave()
+    },
+    clear: () => {
+      handleClearBtn()
+    },
+  }))
 
   const initCanvas = () => {
     nextTick(() => {
@@ -191,8 +191,8 @@ export const Signature: FunctionComponent<
   }, [])
 
   return (
-    <div className={`${b()} ${className}`} {...rest}>
-      <div className={`${b('inner')} spcanvas_WEAPP`} ref={wrapRef}>
+    <div className={`${classPrefix} ${className}`} {...rest}>
+      <div className={`${classPrefix}__inner spcanvas_WEAPP`} ref={wrapRef}>
         {getEnv() === 'WEAPP' || getEnv() === 'JD' ? (
           <canvas
             id={canvasId}
@@ -219,24 +219,11 @@ export const Signature: FunctionComponent<
           />
         )}
       </div>
-
-      <Button
-        className={`${b('btn')}`}
-        type="default"
-        onClick={() => handleClearBtn()}
-      >
-        {locale.signature.reSign}
-      </Button>
-      <Button
-        className={`${b('btn')}`}
-        type="primary"
-        onClick={() => handleConfirmBtn()}
-      >
-        {locale.confirm}
-      </Button>
     </div>
   )
 }
 
+export const Signature =
+  React.forwardRef<unknown, Partial<SignatureProps>>(InternalSignature)
 Signature.defaultProps = defaultProps
 Signature.displayName = 'NutSignature'

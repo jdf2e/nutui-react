@@ -128,22 +128,19 @@ test('show summary', () => {
   const { container } = render(
     <Table columns={columns} data={data} summary="这是总结栏" />
   )
-
   const tableSummary = container.querySelector('.nut-table__summary')
   expect(tableSummary).toBeInTheDocument()
 })
 
 test('render striped props', () => {
   const { container } = render(<Table columns={columns} data={data} striped />)
-
   const tableMain = container.querySelector('.nut-table__main')
   expect(tableMain).toHaveClass('nut-table__main--striped')
 })
 
 test('render no data', () => {
   const { container } = render(<Table columns={columns} data={[]} />)
-
-  const tableNoData = container.querySelector('.nut-table__nodata')
+  const tableNoData = container.querySelector('.nut-table__summary')
   expect(tableNoData).toBeInTheDocument()
 })
 
@@ -162,7 +159,6 @@ test('render no data of user defined', () => {
 
 test('user defined td content', () => {
   const { container } = render(<Table columns={columns2} data={data2} />)
-
   const bodyTd = container.querySelectorAll('.nut-table__main__body__tr__td')
   const bodyTdButton = bodyTd[3].querySelector('.nut-button')
   expect(bodyTdButton).toBeInTheDocument()

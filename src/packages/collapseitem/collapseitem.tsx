@@ -1,36 +1,31 @@
 import React, {
   FunctionComponent,
   useEffect,
-  useState,
-  useCallback,
   ReactNode,
+  useContext,
+  useRef,
+  useMemo,
 } from 'react'
-
-import bem from '@/utils/bem'
-
-import { BasicComponent } from '@/utils/typings'
+import classNames from 'classnames'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import CollapseContext from '../collapse/context'
 
 export interface CollapseItemProps extends BasicComponent {
   title: ReactNode
   name: string
-  isOpen: boolean
   expandIcon: ReactNode
   disabled: boolean
   rotate: number
-  subTitle: ReactNode
-  childnull: boolean
-  onToggle: (isOpen: boolean, name: string) => void
+  extra: ReactNode
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   title: null,
   name: '',
-  isOpen: false,
   expandIcon: null,
   disabled: false,
-  rotate: 180,
-  subTitle: null,
-  childnull: true,
+  extra: null,
 } as CollapseItemProps
 export const CollapseItem: FunctionComponent<
   Partial<CollapseItemProps> &
@@ -39,85 +34,107 @@ export const CollapseItem: FunctionComponent<
   const {
     children,
     title,
-    isOpen,
-    onToggle,
     name,
     disabled,
     expandIcon,
     rotate,
-    subTitle,
-    childnull,
+    extra,
+    style,
+    className,
     ...rest
   } = {
     ...defaultProps,
     ...props,
   }
-  const [domHeight, setDomHeight] = useState(-1) // 保存content的高度
-  const [currHeight, setCurrHeight] = useState('auto') // 设置content的高度
-  const [update, setUpdate] = useState(false)
-  const [iconStyle, setIconStyle] = useState({
-    transform: 'translateY(-50%)',
-  })
-  const colBem = bem('collapse-item')
 
-  const measuredRef = useCallback(
-    (node: HTMLDivElement) => {
-      if (node !== null) {
-        setDomHeight(node.getBoundingClientRect().height)
-      }
-    },
-    [update]
-  )
+  const classPrefix = 'nut-collapse-item'
+  const context = useContext(CollapseContext)
+  // 获取 Dom 元素
+  const wrapperRef: any = useRef(null)
+  const contentRef: any = useRef(null)
 
-  useEffect(() => {
-    // 一开始content都有高度，在这里根据isOpen，改变其高度
-    setTimeout(() => {
-      if (domHeight !== -1) {
-        isOpen ? setCurrHeight(`${domHeight}px`) : setCurrHeight('0px')
-      }
-      const newIconStyle = isOpen
-        ? { transform: `translateY(-50%) rotate(${rotate}deg)` }
-        : { transform: 'translateY(-50%)' }
-      setIconStyle(newIconStyle)
-    }, 10)
-  }, [isOpen, domHeight, rotate])
-
-  useEffect(() => {
-    if (!isOpen) {
-      setCurrHeight('0px')
-    } else {
-      setCurrHeight('auto')
+  const expanded = useMemo(() => {
+    if (context) {
+      return context.isOpen(name)
     }
+    return false
+  }, [name, context.isOpen])
 
-    setUpdate(!update)
-  }, [children, isOpen])
+  const iconStyle = useMemo(() => {
+    return expanded
+      ? { transform: `translateY(-50%) rotate(${rotate || context.rotate}deg)` }
+      : { transform: 'translateY(-50%)' }
+  }, [expanded, rotate])
+
+  const handleClick = () => {
+    if (!disabled) {
+      context.updateValue(name)
+    }
+  }
+
+  const onTransitionEnd = () => {
+    if (expanded) {
+      if (wrapperRef.current) {
+        wrapperRef.current.style.height = ''
+      }
+    }
+  }
+
+  const getOffsetHeight = () => {
+    const height = contentRef.current?.offsetHeight
+    return height ? `${height}px` : ''
+  }
+
+  const toggle = () => {
+    const start = expanded ? '0px' : getOffsetHeight()
+    if (wrapperRef.current) {
+      wrapperRef.current.style.height = start
+    }
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const end = expanded ? getOffsetHeight() : '0px'
+        if (wrapperRef.current) {
+          wrapperRef.current.style.height = end
+        }
+      })
+    })
+  }
+  const init = useRef(true)
+
+  useEffect(() => {
+    if (init.current) {
+      init.current = false
+      if (!expanded) {
+        wrapperRef.current.style.height = '0px'
+      }
+    } else {
+      toggle()
+    }
+  }, [expanded])
 
   return (
-    <div className={colBem()} {...rest}>
+    <div className={classNames(classPrefix, className)} style={style} {...rest}>
       <div
-        className={colBem('header', { disabled })}
-        onClick={() => {
-          if (disabled) return
-          onToggle && onToggle(isOpen, name)
-        }}
+        className={classNames(`${classPrefix}__header`, { disabled })}
+        onClick={handleClick}
       >
-        <div className={colBem('title')}>{title}</div>
-        <div className={colBem('sub-title')}>{subTitle}</div>
-        <div className={colBem('icon-box')}>
-          <div className={colBem('icon')} style={iconStyle}>
-            {expandIcon}
+        <div className={`${classPrefix}__title`}>{title}</div>
+        <div className={`${classPrefix}__extra`}>{extra}</div>
+        <div className={`${classPrefix}__icon-box`}>
+          <div className={`${classPrefix}__icon`} style={iconStyle}>
+            {expandIcon || context.expandIcon}
           </div>
         </div>
       </div>
-      {childnull && (
-        <div
-          className={colBem('content')}
-          style={{ height: currHeight }}
-          ref={measuredRef}
-        >
-          <div className={colBem('content-text')}>{children}</div>
+      <div
+        className={`${classPrefix}__content`}
+        onTransitionEnd={onTransitionEnd}
+        ref={wrapperRef}
+      >
+        <div ref={contentRef} className={`${classPrefix}__content-text`}>
+          {children}
         </div>
-      )}
+      </div>
     </div>
   )
 }

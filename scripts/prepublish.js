@@ -1,3 +1,6 @@
+/*
+ * 用于发布之前纠正 H5 和 Taro 版本的依赖
+ * */
 const path = require('path')
 const fsExtra = require('fs-extra')
 const packageData = require('../package.json')

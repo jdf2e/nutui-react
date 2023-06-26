@@ -1,4 +1,4 @@
-# Audio 
+# Audio
 
 ## Intro
 
@@ -6,7 +6,7 @@ Used for audio playback
 
 ## Install
 
-```javascript
+```tsx
 import { Audio } from '@nutui/nutui-react'
 ```
 
@@ -24,7 +24,7 @@ const App = () => {
   return (
     <>
       <Audio
-        autoplay={false}
+        autoPlay={false}
         src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="icon"
         loop={false}
@@ -52,7 +52,7 @@ const App = () => {
   return (
     <>
       <Audio
-        autoplay={false}
+        autoPlay={false}
         src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="progress"
         preload="auto"
@@ -90,7 +90,7 @@ const App = () => {
      <Audio
       className="custom-voice-audio"
       id="custom-voice-audio"
-      autoplay={false}
+      autoPlay={false}
       src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
       type="none"
       preload="auto"
@@ -124,7 +124,7 @@ const App = () => {
   return (
     <>
       <Audio
-        autoplay={false}
+        autoPlay={false}
         src="//storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
         type="controls"
         preload="auto"
@@ -142,22 +142,21 @@ export default App;
 
 :::
 
-
 ## Audio
 
 ### Props
 
-| Property         | Description                             | Type   | Default           |
-|--------------|----------------------------------|--------|------------------|
-| src         | Voice resource link               | `string` | -              |
-| muted        | Whether it is mute                         | `boolean` | `false`             |
-| autoplay         | Whether to play automatically | `boolean` | `false`               |
-| loop | Whether to circulate     | `boolean` | `false` |
-| preload          | Whether the pronunciation is pre -loaded: 'None', 'Metadata', 'Auto', ''  | `string` | `auto`              |
-| type         | Display form, optional value：controls、panel、progress、icon、none  | `string` | `progress`              |
-| onBack  | Voice will be retreated, type = progress takes effect | `(event：HTMLAudioElement) => void` | - |
-| onForward  | Voice fast -moving back, type = progress | `(event：HTMLAudioElement) => void` | - |
-| onPause  | Suspension | `(event：HTMLAudioElement) => void` | - |
-| onEnd  | The voice playback is complete, loop=false takes effect | `(event：HTMLAudioElement) => void` | - |
-| onMute  | Mute | `(event：HTMLAudioElement) => void` | - |
-| onCanPlay  | Can be triggered when the media can be played | `(event：HTMLAudioElement) => void` | - |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| src | Voice resource link | `string` | `-` |
+| muted | Whether it is mute | `boolean` | `false` |
+| autoPlay | Whether to play automatically | `boolean` | `false` |
+| loop | Whether to circulate | `boolean` | `false` |
+| preload | Whether the pronunciation is pre -loaded | `none` \| `metadata` \| `auto` | `auto` |
+| type | Display form, optional value：controls、panel、progress、icon、none | `string` | `progress` |
+| onBack | Voice will be retreated, type = progress takes effect | `(event：HTMLAudioElement) => void` | `-` |
+| onForward | Voice fast -moving back, type = progress | `(event：HTMLAudioElement) => void` | `-` |
+| onPause | Suspension | `(event：HTMLAudioElement) => void` | `-` |
+| onEnd | The voice playback is complete, loop=false takes effect | `(event：HTMLAudioElement) => void` | `-` |
+| onMute | Mute | `(event：HTMLAudioElement) => void` | `-` |
+| onCanPlay | Can be triggered when the media can be played | `(event：HTMLAudioElement) => void` | `-` |

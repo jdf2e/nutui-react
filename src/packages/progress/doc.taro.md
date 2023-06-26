@@ -6,7 +6,7 @@
 
 ## 安装
 
-```js
+```tsx
 import { Progress } from '@nutui/nutui-react-taro';
 ```
 
@@ -15,6 +15,7 @@ import { Progress } from '@nutui/nutui-react-taro';
 ### 基础用法
 
 :::demo
+
 ```jsx
 import  React from "react";
 import { Progress, Cell } from '@nutui/nutui-react-taro';
@@ -28,11 +29,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 设置颜色与宽度
 
 :::demo
+
 ```jsx
 import  React from "react";
 import { Progress, Cell } from '@nutui/nutui-react-taro';
@@ -42,19 +45,22 @@ const App = () => {
     <Cell>
       <Progress
         percent={30}
-        color="rgba(250,44,25,0.47)"
-        strokeWidth="20"
+        background="rgba(250,44,25,0.2)"
+        color="rgba(250,44,25,0.9)"
+        strokeWidth="15"
       />
     </Cell>
   );
 };
 export default App;
 ```
+
 :::
 
 ### 显示百分比
 
 :::demo
+
 ```jsx
 import  React from "react";
 import { Progress, Cell } from '@nutui/nutui-react-taro';
@@ -68,11 +74,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 自定义显示内容
 
 :::demo
+
 ```jsx
 import  React from "react";
 import { Progress, Image, Cell } from '@nutui/nutui-react-taro';
@@ -80,7 +88,7 @@ import { Progress, Image, Cell } from '@nutui/nutui-react-taro';
 const App = () => {
   return (
     <Cell>
-      <Progress percent={60}>
+      <Progress percent={60} showText>
         <Image
           width="30px"
           height="30px"
@@ -92,11 +100,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 自定义尺寸
 
 :::demo
+
 ```jsx
 import  React from "react";
 import { Progress, Cell } from '@nutui/nutui-react-taro';
@@ -105,24 +115,26 @@ const App = () => {
   return (
     <>
       <Cell>
-        <Progress percent={30} strokeWidth="5" />
+        <Progress percent={30} strokeWidth="5" showText />
       </Cell>
       <Cell>
-        <Progress percent={50} strokeWidth="10" />
+        <Progress percent={50} strokeWidth="10" showText />
       </Cell>
       <Cell>
-        <Progress percent={70} strokeWidth="15" />
+        <Progress percent={70} strokeWidth="15" showText />
       </Cell>
     </>
   );
 };
 export default App;
 ```
+
 :::
 
 ### 设置状态显示
 
 :::demo
+
 ```jsx
 import  React from "react";
 import { Progress, Cell } from '@nutui/nutui-react-taro';
@@ -155,11 +167,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 动态改变
 
 :::demo
+
 ```jsx
 import  React, {useState} from "react";
 import { Progress, Cell, Button } from '@nutui/nutui-react-taro';
@@ -175,7 +189,7 @@ const App = () => {
       <Cell>
         <Button
           type="default"
-          style={{ margin: 8 }} 
+          style={{ margin: 8 }}
           onClick={() => {
             let num = value;
             if (value <= 0) {
@@ -188,7 +202,8 @@ const App = () => {
           减少
         </Button>
         <Button 
-          type="primary" 
+          type="primary"
+          style={{ margin: 8 }}
           onClick={() => {
             let num = value;
             if (value >= 100) {
@@ -206,20 +221,43 @@ const App = () => {
 };
 export default App;
 ```
+
+:::
+
+### 延迟加载数据
+
+:::demo
+
+```jsx
+import React from "react";
+import { Progress, Cell } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  return (
+    <Cell align="center">
+      <Progress percent={30} lazy delay={500} />
+    </Cell>
+  );
+};
+export default App;
+```
+
 :::
 
 ## Progress
 
 ### Props
 
-| 字段 | 说明 | 类型 | 默认值 |
-|----- | ----- | ----- | ----- |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | percent | 百分比 | `number` | `0` |
 | color | 进度条线条颜色 | `string` | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)` |
 | background | 进度条背景颜色 | `string` | `#f3f3f3` |
-| strokeWidth | 进度条宽度 | `string` | - |
+| strokeWidth | 进度条宽度 | `string` | `-` |
 | showText | 是否显示文字内容 | `boolean` | `false` |
 | animated | 是否展示动画效果 | `boolean` | `false` |
+| lazy | 每次进入可视区展示进度条动画 | `boolean` | `false` |
+| delay | 延迟数据加载时长，单位 ms | `number` | `0` |
 
 ## 主题定制
 
@@ -229,14 +267,14 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| --nutui-progress-height | 进度条宽度 | `10px` |
-| --nutui-progress-border-radius | 进度条边框圆角 | `12px` |
-| --nutui-progress-color | 进度条颜色 | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)` |
-| --nutui-progress-background | 进度条背景色 | `#f3f3f3` |
-| --nutui-progress-text-color | 文本颜色 | `$primary-text-color` |
-| --nutui-progress-text-padding | 文本内边距 | `0 5px` |
-| --nutui-progress-text-font-size | 文本字体大小 | `9px` |
-| --nutui-progress-text-position-top | 文本定位 top | `-4px`|
-| --nutui-progress-text-position-bottom | 文本定位 bottom | `-4px`|
-| --nutui-progress-text-border-radius | 文本边框圆角 | `5px` |
-| --nutui-progress-text-background | 文本背景颜色 | `$progress-color` |
+| \--nutui-progress-height | 进度条宽度 | `10px` |
+| \--nutui-progress-border-radius | 进度条边框圆角 | `12px` |
+| \--nutui-progress-color | 进度条颜色 | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)` |
+| \--nutui-progress-background | 进度条背景色 | `#f3f3f3` |
+| \--nutui-progress-text-color | 文本颜色 | `$primary-text-color` |
+| \--nutui-progress-text-padding | 文本内边距 | `0 5px` |
+| \--nutui-progress-text-font-size | 文本字体大小 | `9px` |
+| \--nutui-progress-text-position-top | 文本定位 top | `-4px` |
+| \--nutui-progress-text-position-bottom | 文本定位 bottom | `-4px` |
+| \--nutui-progress-text-border-radius | 文本边框圆角 | `5px` |
+| \--nutui-progress-text-background | 文本背景颜色 | `$progress-color` |

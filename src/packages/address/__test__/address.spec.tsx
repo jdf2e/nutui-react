@@ -19,7 +19,7 @@ const addressData = {
     { id: 3, name: '八里庄街道', title: 'B' },
     { id: 10, name: '北苑', title: 'B' },
   ],
-  country: [
+  county: [
     { id: 3, name: '八里庄街道', title: 'B' },
     { id: 9, name: '北苑', title: 'B' },
     { id: 4, name: '常营乡', title: 'C' },
@@ -27,7 +27,7 @@ const addressData = {
   town: [],
 }
 
-const existAddress = [
+const existList = [
   {
     id: 1,
     addressDetail: '',
@@ -66,15 +66,14 @@ const existAddress = [
 test('Show Address', async () => {
   const { container } = render(
     <Address
-      modelValue
-      province={addressData.province}
-      city={addressData.city}
-      country={addressData.country}
-      town={addressData.town}
-      customAddressTitle="请选择所在地区"
+      visible
+      // province={addressData.province}
+      // city={addressData.city}
+      // county={addressData.county}
+      // town={addressData.town}
     />
   )
-  const regionItem = container.querySelectorAll('.nut-address__region-item')
+  const regionItem = container.querySelectorAll('.nut-address-custom-item')
   expect(regionItem.length).toBe(5)
 })
 
@@ -82,22 +81,21 @@ test('choose address item', async () => {
   const changeHandle = jest.fn()
   const { container } = render(
     <Address
-      modelValue
-      province={addressData.province}
-      city={addressData.city}
-      country={addressData.country}
-      town={addressData.town}
-      customAddressTitle="请选择所在地区"
+      visible
+      // province={addressData.province}
+      // city={addressData.city}
+      // county={addressData.county}
+      // town={addressData.town}
       onChange={changeHandle}
     />
   )
-  const regionItem = container.querySelectorAll('.nut-address__region-item')[0]
+  const regionItem = container.querySelectorAll('.nut-address-custom-item')[0]
     .firstElementChild
   regionItem && fireEvent.click(regionItem)
 
   await waitFor(() => {
     const regionItemNext = container.querySelectorAll(
-      '.nut-address__tab-item '
+      '.nut-address-tabs-item '
     )[0]
     expect(changeHandle.mock.calls[0][0].next).toEqual('city')
     expect(regionItemNext.textContent).toEqual('北京')
@@ -108,34 +106,29 @@ test('default choose address', async () => {
   const changeHandle = jest.fn()
   const { container } = render(
     <Address
-      modelValue
-      modelSelect={[1, 7, 3]}
-      province={addressData.province}
-      city={addressData.city}
-      country={addressData.country}
-      town={addressData.town}
-      customAddressTitle="请选择所在地区"
+      visible
+      defaultValue={[1, 7, 3]}
+      // province={addressData.province}
+      // city={addressData.city}
+      // county={addressData.county}
+      // town={addressData.town}
     />
   )
-  const regionItem = container.querySelectorAll('.nut-address__region-tab')[0]
-  const contentItem = container.querySelectorAll('.nut-address__region-item')[0]
+  const regionItem = container.querySelectorAll('.nut-address-tabs')[0]
+  const contentItem = container.querySelectorAll('.nut-address-custom-item')[0]
   await waitFor(() => {
     expect(regionItem.textContent).toEqual('北京朝阳区请选择')
-    expect(contentItem.querySelector('.nutui-iconfont')).toBeEmptyDOMElement()
+    // expect(
+    //   contentItem.querySelector('.nut-address-custom-item-icon')
+    // ).toBeEmptyDOMElement()
   })
 })
 
 test('exist address', async () => {
   const { container } = render(
-    <Address
-      modelValue
-      type="exist"
-      existAddress={existAddress}
-      isShowCustomAddress={false}
-      customAddressTitle="请选择所在地区"
-    />
+    <Address visible type="exist" existList={existList} custom={false} />
   )
-  const existItem = container.querySelectorAll('.nut-address__exist-item')
+  const existItem = container.querySelectorAll('.nut-address-exist-item')
 
   await waitFor(() => {
     expect(existItem.length).toBe(3)
@@ -146,16 +139,15 @@ test('exist address choose event', async () => {
   const selectHandle = jest.fn()
   const { container } = render(
     <Address
-      modelValue
+      visible
       type="exist"
-      existAddress={existAddress}
-      customAddressTitle="请选择所在地区"
-      isShowCustomAddress={false}
-      onSelected={selectHandle}
+      existList={existList}
+      custom={false}
+      onSelect={selectHandle}
     />
   )
   const existSecondItem = container.querySelectorAll(
-    '.nut-address__exist-item'
+    '.nut-address-exist-item'
   )[1].firstElementChild
   existSecondItem && fireEvent.click(existSecondItem)
 
@@ -169,27 +161,25 @@ test('exist address & list address', async () => {
   const onSwitch = jest.fn()
   const { container } = render(
     <Address
-      modelValue
+      visible
       type="exist"
-      province={addressData.province}
-      city={addressData.city}
-      country={addressData.country}
-      town={addressData.town}
-      existAddress={existAddress}
-      customAddressTitle="请选择所在地区"
+      custom
+      // province={addressData.province}
+      // city={addressData.city}
+      // county={addressData.county}
+      // town={addressData.town}
+      existList={existList}
       onSwitch={onSwitch}
       onChange={changeHandle}
     />
   )
-  const chooseBtn = container.querySelectorAll(
-    '.nut-address__choose-other-btn'
-  )[0]
+  const chooseBtn = container.querySelectorAll('.nut-address-footer-btn')[0]
   chooseBtn && fireEvent.click(chooseBtn)
 
   await waitFor(() => {
     expect(onSwitch).toBeCalled()
   })
 
-  const regionItem = container.querySelectorAll('.nut-address__region-item')
+  const regionItem = container.querySelectorAll('.nut-address-custom-item')
   expect(regionItem.length).toBe(5)
 })

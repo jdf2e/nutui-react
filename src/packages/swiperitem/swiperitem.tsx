@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import classNames from 'classnames'
-import { DataContext } from '@/packages/swiper/UserContext'
-import bem from '@/utils/bem'
+import { DataContext } from '@/packages/swiper/context'
 
 export interface SwiperItemProps {
   direction?: string
@@ -22,11 +21,11 @@ export const SwiperItem = React.forwardRef<
   HTMLDivElement,
   Partial<SwiperItemProps> & React.HTMLAttributes<HTMLDivElement>
 >((props, ref) => {
+  const classPrefix = 'nut-swiper-item'
   const _props = { ...defaultProps, ...props }
   const { className, style, children, direction, size } = _props
   const parent: any = useContext(DataContext)
-  const b = bem('swiper-item')
-  const classes = classNames(b(''), className)
+  const classes = classNames(classPrefix, className)
 
   const getStyle = () => {
     const style: Style = {}

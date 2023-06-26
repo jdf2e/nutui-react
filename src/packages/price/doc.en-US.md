@@ -1,13 +1,12 @@
-# Price 
+# Price
 
-### Intro
+## Intro
 
 It is used to apply different styles to the parts before and after the decimal point of the commodity price value, and also supports functions such as the RMB symbol, thousands separator, and setting the number of decimal points.
 
-### Install
+## Install
 
-```javascript
-// react
+```tsx
 import { Price } from '@nutui/nutui-react'
 ```
 
@@ -25,13 +24,13 @@ const App = () => {
   return (
 <>
         <Cell>
-            <Price price={0} size="small" needSymbol thousands />
+            <Price price={0} size="small"  thousands />
         </Cell>
         <Cell>
-            <Price price={0} size="normal" needSymbol thousands />
+            <Price price={0} size="normal"  thousands />
         </Cell>
         <Cell>
-            <Price price={0} size="large" needSymbol thousands />
+            <Price price={0} size="large"  thousands />
         </Cell>
     </>
   );
@@ -42,6 +41,7 @@ export default App;
 :::
 
 ### No decimals
+
 :::demo
 
 ```tsx
@@ -53,8 +53,8 @@ const App = () => {
     <Cell>
         <Price
           price={8888}
-          decimalDigits={0}
-          needSymbol
+          digits={0}
+          
           size="normal"
           thousands
         />
@@ -77,7 +77,7 @@ import { Price, Cell } from '@nutui/nutui-react'
 const App = () => {
   return (
     <Cell>
-        <Price price={10010.01} size="normal" needSymbol thousands={false} />
+        <Price price={10010.01} size="normal"  thousands={false} />
     </Cell>
   );
 };
@@ -100,8 +100,8 @@ const App = () => {
         <Price
           price={15213.1221}
           size="normal"
-          decimalDigits={3}
-          needSymbol
+          digits={3}
+          
           thousands
         />
     </Cell>
@@ -128,9 +128,29 @@ const App = () => {
           size="normal"
           position="after"
           symbol="元"
-          needSymbol
+          
           thousands
         />
+    </Cell>
+  );
+};
+export default App;
+```
+
+:::
+
+### Do not display a symbol
+
+:::demo
+
+```tsx
+import  React from "react"
+import { Price, Cell } from '@nutui/nutui-react'
+
+const App = () => {
+  return (
+    <Cell>
+        <Price price={15213.1221} size="normal" symbol="" />
     </Cell>
   );
 };
@@ -162,9 +182,9 @@ const App = () => {
     <Cell>
         <Price
           price={price}
-          decimalDigits={3}
+          digits={3}
           size="normal"
-          needSymbol
+          
           thousands
         />
     </Cell>
@@ -175,20 +195,41 @@ export default App;
 
 :::
 
-## API
+### Line-through price
+
+:::demo
+
+```tsx
+import React, { useState, useEffect } from 'react'
+import { Price, Cell } from '@nutui/nutui-react'
+
+const App = () => {
+  return (
+    <Cell>
+        <Price price={1513.12} size="normal" thousands />
+        <span>&nbsp;</span>
+        <Price price={1513.88} thousands line />
+      </Cell>
+  );
+};
+export default App;
+```
+
+:::
+
+## Price
 
 ### Props
 
-| Attribute      | Description                                                | Type            | Default |
-|----------------|------------------------------------------------------------|------------------|--------|
-| price          | Price                 | number  | `0`      |
-| needSymbol    | Add symbol | boolean | `true`   |
-| symbol         | Symbol type                 | string  | `&yen;`  |
-| decimalDigits | Decimal digits               | number  | `2`      |
-| thousands      | Thousands separation   | boolean | `false`  |
-| position`v1.3.9`   | The symbol appear before or after the price，`before`、`after` | string           | `before` |
-| size`v1.3.9`   | Size，`large`、`normal`、`small`                            | string           | `large` |
-
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| price | Price | `number` | `0` |
+| symbol | Symbol type | `string` | `&yen;` |
+| digits | Decimal digits | `number` | `2` |
+| thousands | Thousands separation | `boolean` | `false` |
+| position | The symbol appear before or after the price，`before`、`after` | `string` | `before` |
+| size | Size，`large`、`normal`、`small` | `string` | `large` |
+| line | Line-through price | `boolean` | `false` |
 
 ## Theming
 
@@ -196,14 +237,17 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-price-symbol-big-size | `18px` |
-| --nutui-price-integer-big-size | `24px` |
-| --nutui-price-decimal-big-size | `18px` |
-| --nutui-price-symbol-medium-size | `14px` |
-| --nutui-price-integer-medium-size | `16px` |
-| --nutui-price-decimal-medium-size | `14px` |
-| --nutui-price-symbol-small-size | `10px` |
-| --nutui-price-integer-small-size | `12px` |
-| --nutui-price-decimal-small-size | `10px` |
+| Name | Description | Default |
+| --- | --- | --- |
+| \--nutui-price-symbol-big-size | large Size Symbol font size | `18px` |
+| \--nutui-price-integer-big-size | large Size Integer partial font size | `24px` |
+| \--nutui-price-decimal-big-size | large Size Size of the decimal part of the font | `18px` |
+| \--nutui-price-symbol-medium-size | normal Size Symbol font size | `14px` |
+| \--nutui-price-integer-medium-size | normal Size Integer partial font size | `16px` |
+| \--nutui-price-decimal-medium-size | normal Size Size of the decimal part of the font | `14px` |
+| \--nutui-price-symbol-small-size | small Size Symbol font size | `10px` |
+| \--nutui-price-integer-small-size | small Size Integer partial font size | `12px` |
+| \--nutui-price-decimal-small-size | small Size Size of the decimal part of the font | `10px` |
+| \--nutui-price-line-font-size | Line-through price Font size | `10px` |
+| \--nutui-price-line-color | Line through price color |  `#757575` |
+| \--nutui-price-symbol-padding-right | Symbol padding right |  `1px` |

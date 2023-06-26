@@ -1,50 +1,44 @@
 import * as React from 'react'
 import Notification, { NotificationProps } from './Notification'
-import { Loading } from '@nutui/icons-react'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 let messageInstance: any = null
-export interface ToastProps {
+
+export type ToastPositionType = 'top' | 'bottom' | 'center'
+export type ToastIconType =
+  | 'success'
+  | 'fail'
+  | 'loading'
+  | 'warn'
+  | React.ReactNode
+
+export interface ToastProps extends BasicComponent {
   id?: string
-  msg: string
-  style?: React.CSSProperties
-  duration: number
-  center: boolean
-  type: string
-  title: string
-  customClass?: string
-  bottom: string
-  size: string | number
-  icon: string | null
-  iconSize: string
-  textAlignCenter: boolean
-  loadingRotate: boolean
-  bgColor: string
-  onClose: () => void
-  cover: boolean
-  coverColor: string
-  closeOnClickOverlay: boolean
+  duration?: number
+  position?: ToastPositionType
+  title?: string
+  closeOnOverlayClick?: boolean
+  lockScroll?: boolean
+  size?: string | number
+  icon?: ToastIconType
+  content?: React.ReactNode
+  onClose?: () => void
+  contentClassName?: string
+  contentStyle?: React.CSSProperties
 }
 
 const options: ToastProps = {
-  msg: '',
+  ...ComponentDefaults,
   id: '',
-  style: {},
-  duration: 1.5, // 时长,duration为0则一直展示
-  center: true, // toast是否居中展示
-  type: 'text',
+  duration: 2, // 时长,duration为0则一直展示
+  position: 'center',
   title: '',
-  customClass: '', // 自定义样式名
-  bottom: '30px', // center为false时生效，距离底部位置
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   icon: null,
-  iconSize: '20',
-  textAlignCenter: true, // 文字是否居中显示,true为居中，false为left
-  loadingRotate: true, // 未实现
-  bgColor: 'rgba(0, 0, 0, .8)',
   onClose: () => {},
-  cover: false, // 是否展示透明遮罩层
-  coverColor: 'rgba(0, 0, 0, 0)', // 遮罩颜色设定
-  closeOnClickOverlay: false, // 是否点击遮罩可关闭
+  closeOnOverlayClick: false, // 是否点击遮罩可关闭
+  lockScroll: false,
+  contentClassName: '',
 }
 
 function getInstance(
@@ -66,6 +60,7 @@ function notice(opts: any) {
     if (messageInstance) {
       messageInstance.destroy()
       messageInstance = null
+      opts.onClose && opts.onClose()
     }
   }
   const opts2 = { ...options, ...opts, onClose: close }
@@ -79,32 +74,41 @@ const errorMsg = (msg: any) => {
   }
 }
 
+function show(option: ToastProps | string) {
+  if (typeof option === 'string') {
+    errorMsg(option)
+    return notice({ content: option })
+  }
+  errorMsg(option.content)
+  return notice({
+    ...option,
+  })
+}
+
+function config(
+  config: Pick<
+    ToastProps,
+    'duration' | 'position' | 'closeOnOverlayClick' | 'lockScroll'
+  >
+) {
+  if (config.duration !== undefined) {
+    options.duration = config.duration
+  }
+  if (config.position !== undefined) {
+    options.position = config.position
+  }
+  if (config.closeOnOverlayClick !== undefined) {
+    options.closeOnOverlayClick = config.closeOnOverlayClick
+  }
+  if (config.lockScroll !== undefined) {
+    options.lockScroll = config.lockScroll
+  }
+}
+
 export default {
-  text(msg: string | React.ReactNode, option = {}) {
-    errorMsg(msg)
-    return notice({ msg, type: 'text', ...option })
-  },
-  success(msg: string | React.ReactNode, option = {}) {
-    errorMsg(msg)
-    return notice({ msg, icon: 'success', type: 'success', ...option })
-  },
-  fail(msg: string | React.ReactNode, option = {}) {
-    errorMsg(msg)
-    return notice({ msg, icon: 'failure', type: 'fail', ...option })
-  },
-  loading(msg: string | React.ReactNode, option = {}) {
-    errorMsg(msg)
-    return notice({ msg, icon: <Loading />, type: 'loading', ...option })
-  },
-  warn(msg: string | React.ReactNode, option = {}) {
-    errorMsg(msg)
-    return notice({ msg, icon: 'tips', type: 'warn', ...option })
-  },
-  customIcon(msg: string | React.ReactNode, option = {}) {
-    errorMsg(msg)
-    return notice({ msg, ...option })
-  },
-  hide() {
+  show,
+  config,
+  clear() {
     if (messageInstance) {
       messageInstance.destroy()
       messageInstance = null

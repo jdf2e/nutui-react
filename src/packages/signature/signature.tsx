@@ -1,38 +1,45 @@
-import React, { FunctionComponent, useRef, useState, useEffect } from 'react'
-import Button from '@/packages/button'
-import bem from '@/utils/bem'
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  ForwardRefRenderFunction,
+  useImperativeHandle,
+  ReactNode,
+} from 'react'
 import { useConfig } from '@/packages/configprovider'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface SignatureProps {
-  type: string
+export interface FileType {
+  jpg: string
+  png: string
+}
+export interface SignatureProps extends BasicComponent {
+  type: keyof FileType
   lineWidth: number
   strokeStyle: string
-  unSupportTpl: string
-  className: string
-  confirm?: (canvas: HTMLCanvasElement, dataurl: string) => void
-  clear?: () => void
+  unsupported: ReactNode
   onConfirm?: (canvas: HTMLCanvasElement, dataurl: string) => void
   onClear?: () => void
 }
 const defaultProps = {
+  ...ComponentDefaults,
   type: 'png',
   lineWidth: 2,
   strokeStyle: '#000',
-  unSupportTpl: '对不起，当前浏览器不支持Canvas，无法使用本控件！',
-  className: '',
+  unsupported: '',
 } as SignatureProps
-export const Signature: FunctionComponent<
-  Partial<SignatureProps> & React.HTMLAttributes<HTMLDivElement>
-> = (props) => {
+const InternalSignature: ForwardRefRenderFunction<
+  unknown,
+  Partial<SignatureProps>
+> = (props, ref) => {
   const { locale } = useConfig()
   const {
     type,
     lineWidth,
     strokeStyle,
-    unSupportTpl,
+    unsupported,
     className,
-    confirm,
-    clear,
+    style,
     onConfirm,
     onClear,
     ...rest
@@ -40,7 +47,7 @@ export const Signature: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const b = bem('signature')
+  const classPrefix = `nut-signature`
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const wrapRef = useRef<HTMLDivElement>(null)
   const [canvasHeight, setCanvasHeight] = useState(0)
@@ -116,12 +123,7 @@ export const Signature: FunctionComponent<
       ctx.current.clearRect(0, 0, canvasWidth, canvasHeight)
       ctx.current.closePath()
     }
-    clear && clear()
     onClear && onClear()
-  }
-
-  const handleConfirmBtn = () => {
-    onSave(canvasRef.current as HTMLCanvasElement)
   }
 
   const onSave = (canvas: HTMLCanvasElement) => {
@@ -137,38 +139,37 @@ export const Signature: FunctionComponent<
         dataurl = canvas.toDataURL('image/png')
     }
     handleClearBtn()
-    confirm && confirm(canvas, dataurl as string)
     onConfirm && onConfirm(canvas, dataurl as string)
   }
+
+  useImperativeHandle(ref, () => ({
+    confirm: () => {
+      onSave(canvasRef.current as HTMLCanvasElement)
+    },
+    clear: () => {
+      handleClearBtn()
+    },
+  }))
   return (
-    <div className={`${b()} ${className}`} {...rest}>
-      <div className={`${b('inner')}`} ref={wrapRef}>
+    <div className={`${classPrefix} ${className}`} style={style} {...rest}>
+      <div className={`${classPrefix}__inner`} ref={wrapRef}>
         {isCanvasSupported() ? (
           <canvas ref={canvasRef} height={canvasHeight} width={canvasWidth} />
         ) : (
-          <p className={`${b('unsopport')}`}>
-            {locale.signature.unSupportTpl || unSupportTpl}
-          </p>
+          <>
+            {unsupported || (
+              <p className={`${classPrefix}__unsupport`}>
+                {locale.signature.unsupported}
+              </p>
+            )}
+          </>
         )}
       </div>
-
-      <Button
-        className={`${b('btn')}`}
-        type="default"
-        onClick={() => handleClearBtn()}
-      >
-        {locale.signature.reSign}
-      </Button>
-      <Button
-        className={`${b('btn')}`}
-        type="primary"
-        onClick={() => handleConfirmBtn()}
-      >
-        {locale.confirm}
-      </Button>
     </div>
   )
 }
 
+export const Signature =
+  React.forwardRef<unknown, Partial<SignatureProps>>(InternalSignature)
 Signature.defaultProps = defaultProps
 Signature.displayName = 'NutSignature'

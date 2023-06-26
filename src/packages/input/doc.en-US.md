@@ -6,8 +6,7 @@ The user can enter content in the text box.
 
 ## Install
 
-```javascript
-// react
+```tsx
 import { Input } from '@nutui/nutui-react';
 
 ```
@@ -184,7 +183,7 @@ const App = () => {
     <>
        <Input
          placeholder="trigger onClick"
-         onClick={() => Toast.text('onClick')}
+         onClick={() => Toast.show('onClick')}
        />
     </>
   )
@@ -252,7 +251,7 @@ export default App;
 
 ## Input
 
-### Prop
+### Props
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |

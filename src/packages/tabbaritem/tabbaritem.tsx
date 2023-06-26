@@ -1,16 +1,20 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
-import { ComponentDefaults } from '@/utils/typings'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Badge from '../badge'
-import { BadgeProps } from '../badge/badge'
 
-export interface TabbarItemProps extends BadgeProps {
+export interface TabbarItemProps extends BasicComponent {
   title: ReactNode
   icon: ReactNode
   active: boolean
   activeColor: string
   inactiveColor: string
   index: number
+  value: ReactNode
+  dot: boolean
+  max: number
+  top: string
+  right: string
   handleClick: (idx: number) => void
 }
 
@@ -20,7 +24,11 @@ const defaultProps = {
   icon: null,
   active: false,
   index: 0,
-  handleClick: (idx) => {},
+  value: '',
+  dot: false,
+  max: 99,
+  top: '0',
+  right: '5',
 } as TabbarItemProps
 
 export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
@@ -35,8 +43,12 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
     activeColor,
     inactiveColor,
     index,
+    value,
+    dot,
+    max,
+    top,
+    right,
     handleClick,
-    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -50,6 +62,15 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
     [`${boxPrefix}-large`]: !icon,
   })
 
+  const badgeProps = {
+    value,
+    dot,
+    max,
+    top,
+    right,
+    color: activeColor,
+  }
+
   return (
     <div
       className={tabbarItemClass}
@@ -61,13 +82,13 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
     >
       {icon ? (
         <>
-          <Badge {...rest}>
+          <Badge {...badgeProps}>
             <div className={boxPrefix}>{icon}</div>
           </Badge>
           <div className={titleClass}>{title}</div>
         </>
       ) : (
-        <Badge {...rest}>
+        <Badge {...badgeProps}>
           <div className={titleClass}>{title}</div>
         </Badge>
       )}

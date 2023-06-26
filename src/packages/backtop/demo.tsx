@@ -13,7 +13,7 @@ interface T {
 const BackTopDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      title: '基本用法',
+      title: '基础用法',
       clg: '触发返回顶部',
       content: '我是测试数据',
       backText: '顶部',
@@ -46,7 +46,7 @@ const BackTopDemo = () => {
     <>
       <div
         className="demo"
-        style={{ height: '1300px', overflowY: 'auto' }}
+        style={{ height: '100vh', overflowY: 'auto' }}
         id="target"
       >
         <h2>{translated.title}</h2>
@@ -130,6 +130,7 @@ const BackTopDemo = () => {
             right: '20px',
           }}
           onClick={handleClick}
+          target="target"
         >
           <div
             className="backtop-demo"

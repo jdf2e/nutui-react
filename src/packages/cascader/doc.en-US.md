@@ -1,21 +1,23 @@
 # Cascader
 
-### Introduce
+## Intro
 
 The cascader component is used for the selection of multi-level data. The typical scene is the selection of provinces and cities.
 
-### Install
+## Install
 
-```ts
-// react
+```tsx
 import { Cascader } from '@nutui/nutui-react';
 ```
 
 ## Demo
+
 ### Basic Usage
 
-Pass in the `options` list.
+Pass in the `options` list
+
 :::demo
+
 ```jsx
 import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
@@ -118,13 +120,15 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### Custom attribute name
 
-use `textKey`、`valueKey`、`childrenKey`Specify the property name.
+use `optionKey` Specify the property name.
 
 :::demo
+
 ```jsx
 import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
@@ -217,9 +221,11 @@ const App = () => {
       value={value2}
       title="地址选择"
       options={optionsDemo2}
-      textKey="text1"
-      valueKey="value1"
-      childrenKey="items"
+      optionKey={{
+        textKey: 'text1',
+        valueKey: 'value1',
+        childrenKey: 'items',
+      }}
       closeable
       onClose={()=>{setIsVisibleDemo2(false)}}
       onChange={change2}
@@ -230,6 +236,7 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### Async loading
@@ -237,6 +244,7 @@ export default App;
 Use `lazy` to identify whether data needs to be obtained dynamically. At this time, not transmitting `options` means that all data needs to be loaded through `lazyload` . The first loading is distinguished by the `root` attribute. When a non leaf node is encountered, the `lazyload` method will be called. The parameters are the current node and the `resolve` method. Note that the `resolve` method must be called. If it is not transmitted to a child node, it will be treated as a leaf node.
 
 :::demo
+
 ```jsx
 import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
@@ -292,19 +300,20 @@ const App = () => {
       onChange={change3}
       onPathChange={onPathChange}
       lazy
-      lazyLoad={lazyLoadDemo3}
+      onLoad={lazyLoadDemo3}
     />
     </>
   );
 };
 export default App;
 ```
-:::
 
+:::
 
 ### Async loading of partial data
 
 :::demo
+
 ```jsx
 import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
@@ -364,20 +373,22 @@ const App = () => {
       onChange={change4}
       onPathChange={onPathChange}
       lazy
-      lazyLoad={lazyLoadDemo4}
+      onLoad={lazyLoadDemo4}
     />
     </>
   );
 };
 export default App;
 ```
+
 :::
 
 ### Automatic data conversion
 
-If your data is a flat structure that can be converted into a tree structure, you can tell the component that automatic conversion is required through `convertConfig`, ` convertConfig` accepts four parameters, `topid` is the parent ID of the top-level node, `idkey` is the unique ID of the node, `pidkey` is the attribute name pointing to the parent node ID, and if there is a `sortkey`, `Array.prototype.sort()` to sort at the same level.
+If your data is a flat structure that can be converted into a tree structure, you can tell the component that automatic conversion is required through `format`, `format` accepts four parameters, `topid` is the parent ID of the top-level node, `idkey` is the unique ID of the node, `pidkey` is the attribute name pointing to the parent node ID, and if there is a `sortkey`, `Array.prototype.sort()` to sort at the same level.
 
 :::demo
+
 ```jsx
 import  React,{useState} from "react";
 import { Cell, Cascader } from '@nutui/nutui-react';
@@ -386,16 +397,16 @@ const App = () => {
   const [isVisibleDemo5, setIsVisibleDemo5] = useState(false)
   const [value5, setValue5] = useState(['广东省', '广州市'])
   const [optionsDemo5, setOptionsDemo5] = useState([
-    { value: '北京', text: '北京', id: 1, pid: null },
-    { value: '朝阳区', text: '朝阳区', id: 11, pid: 1 },
-    { value: '亦庄', text: '亦庄', id: 111, pid: 11 },
-    { value: '广东省', text: '广东省', id: 2, pid: null },
-    { value: '广州市', text: '广州市', id: 21, pid: 2 }
+    { value: '北京', text: '北京', id: 1, pidd: null },
+    { value: '朝阳区', text: '朝阳区', id: 11, pidd: 1 },
+    { value: '亦庄', text: '亦庄', id: 111, pidd: 11 },
+    { value: '广东省', text: '广东省', id: 2, pidd: null },
+    { value: '广州市', text: '广州市', id: 21, pidd: 2 }
   ])
   const [convertConfigDemo5, setConvertConfigDemo5] = useState({
     topId: null,
     idKey: 'id',
-    pidKey: 'pid',
+    pidKey: 'pidd',
     sortKey: ''
   })
   const change5 = (value, path) => {
@@ -420,7 +431,7 @@ const App = () => {
       value={value5}
       title="地址选择"
       options={optionsDemo5}
-      convertConfig={convertConfigDemo5}
+      format={convertConfigDemo5}
       closeable
       onClose={()=>{setIsVisibleDemo5(false)}}
       onChange={change5}
@@ -431,6 +442,7 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### Customize CSS
@@ -438,6 +450,7 @@ export default App;
 Use configprovider to set custom CSS
 
 :::demo
+
 ```jsx
 import  React,{useState} from "react";
 import { Cell, Cascader, ConfigProvider} from '@nutui/nutui-react';
@@ -447,6 +460,8 @@ const customTheme = {
   nutuiCascaderItemMargin: '0 10px',
   nutuiCascaderItemPadding: '10px',
   nutuiCascaderItemBorderBottom: '1px solid #F0F0F0',
+  nutuiTabsTitlesItemActiveColor: '#3768FA',
+  nutuiTabsHorizontalTabLineColor: '#3768FA',
 }
 
 const App = () => {
@@ -535,8 +550,8 @@ const App = () => {
     <ConfigProvider theme={customTheme}>
       <Cascader
         visible={isVisibleDemo6}
-        color="#3768FA"
-        tabsColor="#3768FA"
+        activeColor="#3768FA"
+        activeIcon="star"
         value={value6}
         title="Select Address"
         options={optionsDemo6}
@@ -551,39 +566,32 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
-## API
+## Cascader
 
 ### Props
 
-| Props           | Description                                     | Type     | Default |
-| ------------- | --------------------------------------------- | -------- | ------ |
-| value         | Selected value                                | Array    | -      |
-| options       | Cascade data                                  | Array    | -      |
-| poppable      | Whether to display the pop-up window status   | boolean  | `true`   |
-| visible       | Cascading show hidden states                  | boolean  | `false`  |
-| activeColor`1.3.13` | Check the active color                  | string  | -  |
-| checkedIcon`1.5.0`  | Checked Item Icon | string | `ReactNode` |
-| tabsColor`1.3.13`   | Check the active color at the bottom of tabs  | string  | -  |
-| lazy                | Whether to enable dynamic loading             | boolean  | `false`  |
-| lazyLoad            | Dynamic loading callback, which takes effect when dynamic loading is enabled   | Function | -      |
-| valueKey            | Customize the field of `value` in the `options` structure     | string   | -      |
-| textKey             | Customize the fields of `text` in the `options` structure     | string   | -      |
-| childrenKey         | Customize the fields of `children` in the `options` structure | string   | -      |
-| convertConfig       | When options is a flat structure that can be converted into a tree structure, configure the conversion rules | Object   | -      |
-| title               | Title | string   | -      |
-| closeIconPosition   | Cancel the button position and inherit the popup component | string   | `top-right`      |
-| closeIcon          | Customize the close button and inherit the popup component | ReactNode   | `close`     |
-| closeable           | Whether to display the close button and inherit the popup component | boolean   | `true`     |
-
-### Events
-
-| Event | Description           | Callback parameters |
-| ---------- | ---------------- | ------------------ |
-| onChange     | Triggered when the selected value changes | `value, pathNodes` |
-| onPathChange | Triggered when the selected item changes | `pathNodes`        |
-
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| value | Selected value,Controlled | `(number \| string)[]` | `-` |
+| defaultValue | Default selected value | `(number \| string)[]` |
+| options | Cascade data | `Array` | `-` |
+| popup | Whether to display the pop-up window status | `boolean` | `true` |
+| visible | Cascading show hidden states | `boolean` | `false` |
+| activeColor | Check the active color | `string` | `-` |
+| activeIcon | Checked Item Icon | `string` | `ReactNode` |
+| lazy | Whether to enable dynamic loading | `boolean` | `false` |
+| optionKey | Customize `options` structure | `object` | `-` |
+| format | When options is a flat structure that can be converted into a tree structure, configure the conversion rules | `object` | `-` |
+| title | Title | `string` | `-` |
+| closeIconPosition | Cancel the button position and inherit the popup component | `string` | `top-right` |
+| closeIcon | Customize the close button and inherit the popup component | `ReactNode` | `close` |
+| closeable | Whether to display the close button and inherit the popup component | `boolean` | `true` |
+| onLoad | Dynamic loading callback, which takes effect when dynamic loading is enabled |  `(node: any, resolve: any) => void` | `-` |
+| onChange | Triggered when the selected value changes | `(value: CascaderValue, params?: any) => void` | `-` |
+| onPathChange | Triggered when the selected item changes | `(value: CascaderValue, params: any) => void` | `-` |
 
 ## Theming
 
@@ -591,23 +599,16 @@ export default App;
 
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Default Value |
-| --- | --- |
-| --nutui-cascader-font-size | `$font-size-2` |
-| --nutui-cascader-line-height | `22px` |
-| --nutui-cascader-title-padding | `24px 20px 17px` |
-| --nutui-cascader-title-font-size | `18px` |
-| --nutui-cascader-title-line-height | `20px` |
-| --nutui-cascader-pane-height | `342px` |
-| --nutui-cascader-tabs-item-padding | `0 10px` |
-| --nutui-cascader-bar-padding | `24px 20px 17px` |
-| --nutui-cascader-bar-font-size | `$font-size-4` |
-| --nutui-cascader-bar-line-height | `20px` |
-| --nutui-cascader-bar-color | `$title-color` |
-| --nutui-cascader-item-height`v1.4.8` | `40px` |
-| --nutui-cascader-item-padding | `10px 20px` |
-| --nutui-cascader-item-margin`v1.4.8` | `0px`|
-| --nutui-cascader-item-border-bottom`v1.4.8` | `0px solid #ddd` |
-| --nutui-cascader-item-color | `$title-color` |
-| --nutui-cascader-item-font-size | `$font-size-2` |
-| --nutui-cascader-item-active-color | `$primary-color` |
+| Name | Description | Default Value |
+| --- | --- | --- |
+| \--nutui-cascader-font-size | cascader font size | `$font-size-2` |
+| \--nutui-cascader-line-height | cascader line height | `22px` |
+| \--nutui-cascader-pane-height | cascader pane height | `342px` |
+| \--nutui-cascader-tabs-item-padding | cascader tabs item padding | `0 10px` |
+| \--nutui-cascader-item-height | cascader item height | `40px` |
+| \--nutui-cascader-item-padding | cascader item padding | `10px 20px` |
+| \--nutui-cascader-item-margin | cascader item margin | `0px` |
+| \--nutui-cascader-item-border-bottom | cascader item border bottom | `0px solid #ddd` |
+| \--nutui-cascader-item-color | cascader item color | `$title-color` |
+| \--nutui-cascader-item-font-size | cascader item font size | `$font-size-2` |
+| \--nutui-cascader-item-active-color | cascader item active color | `$primary-color` |

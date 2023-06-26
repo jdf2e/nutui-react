@@ -1,68 +1,48 @@
-import React, { FunctionComponent } from 'react'
-import Popup from '@/packages/popup'
-import bem from '@/utils/bem'
+import React, { FunctionComponent, ReactNode } from 'react'
+import Popup, { PopupProps } from '@/packages/popup/index'
+import { ComponentDefaults } from '@/utils/typings'
 
 export type ItemType<T> = { [key: string]: T }
 
-export interface ActionSheetProps {
-  cancelText: string
-  optionTag: string
-  optionSubTag: string
-  chooseTagValue: string
-  title: string
-  color: string
-  description: string
-  menuItems: ItemType<string | boolean>[]
-  onCancel: () => void
-  onChoose: (item: any, index: number) => void
+export interface ActionSheetProps extends PopupProps {
   visible: boolean
-  className: string
-  style: React.CSSProperties
+  description: ReactNode
+  options: ItemType<string | boolean>[]
+  optionKey: ItemType<string>
+  cancelText: ReactNode
+  onCancel: () => void
+  onSelect: (item: ItemType<string | boolean>, index: number) => void
 }
 const defaultProps = {
-  cancelText: '',
-  optionTag: 'name',
-  optionSubTag: 'subname',
-  chooseTagValue: '',
-  title: '',
-  color: '#ee0a24',
-  description: '',
-  menuItems: [],
-  onCancel: () => {},
-  onChoose: () => {},
+  ...ComponentDefaults,
   visible: false,
-  className: '',
-  style: {},
-} as ActionSheetProps
+  description: '',
+  options: [],
+  optionKey: { name: 'name', description: 'description' },
+  cancelText: '',
+  onCancel: () => {},
+  onSelect: () => {},
+} as unknown as ActionSheetProps
 export const ActionSheet: FunctionComponent<
-  Partial<ActionSheetProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<ActionSheetProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'title' | 'onSelect'>
 > = (props) => {
   const {
     children,
     cancelText,
-    optionTag,
-    optionSubTag,
-    chooseTagValue,
+    optionKey,
     title,
-    color,
     description,
-    menuItems,
+    options,
     onCancel,
-    onChoose,
+    onSelect,
     visible,
     className,
     style,
     ...rest
   } = { ...defaultProps, ...props }
 
-  const b = bem('actionsheet')
-
-  const isHighlight = (item: ItemType<string | boolean>) => {
-    return props.chooseTagValue &&
-      props.chooseTagValue === item[props.optionTag || 'name']
-      ? props.color
-      : '$dark1'
-  }
+  const classPrefix = 'nut-actionsheet'
 
   const cancelActionSheet = () => {
     onCancel && onCancel()
@@ -70,7 +50,7 @@ export const ActionSheet: FunctionComponent<
 
   const chooseItem = (item: ItemType<string | boolean>, index: number) => {
     if (!item.disable) {
-      onChoose && onChoose(item, index)
+      onSelect && onSelect(item, index)
     }
   }
 
@@ -79,29 +59,31 @@ export const ActionSheet: FunctionComponent<
       round
       visible={visible}
       position="bottom"
+      title={title}
+      className={classPrefix}
       onClose={() => {
         onCancel && onCancel()
       }}
     >
-      <div className={`${b()} ${className}`} style={style} {...rest}>
-        {title && <div className={b('title')}>{title}</div>}
+      <div className={`${className}`} style={style} {...rest}>
         {description && (
-          <div className={`${b('item')} description`}>{description}</div>
+          <div className={`${classPrefix}__description`}>{description}</div>
         )}
-        {menuItems.length ? (
-          <div className={b('menu')}>
-            {menuItems.map((item, index) => {
+        {options.length ? (
+          <div className={`${classPrefix}__list`}>
+            {options.map((item, index) => {
               return (
                 <div
-                  className={`${b('item')} ${
-                    item.disable ? b('item-disabled') : ''
-                  }`}
-                  style={{ color: isHighlight(item) }}
+                  className={`${classPrefix}__item ${
+                    item.disable ? 'disabled' : ''
+                  } ${item.danger ? 'danger' : ''}`}
                   key={index}
                   onClick={() => chooseItem(item, index)}
                 >
-                  {item[optionTag]}
-                  <div className="subdesc">{item[optionSubTag]}</div>
+                  {item[optionKey.name]}
+                  <div className={`${classPrefix}__item-description`}>
+                    {item[optionKey.description]}
+                  </div>
                 </div>
               )
             })}
@@ -110,7 +92,10 @@ export const ActionSheet: FunctionComponent<
           children
         )}
         {cancelText && (
-          <div className={b('cancel')} onClick={() => cancelActionSheet()}>
+          <div
+            className={`${classPrefix}__cancel`}
+            onClick={() => cancelActionSheet()}
+          >
             {cancelText}
           </div>
         )}

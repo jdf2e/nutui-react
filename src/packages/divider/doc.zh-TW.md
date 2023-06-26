@@ -1,19 +1,20 @@
-# Divider 分割线
+# Divider 分割線
 
-### 介绍
+## 介紹
 
-用于将内容分隔为多个区域。
+用於將內容分隔為多個區域。
 
-### 安装
+## 安裝
 
-```ts
-// react
+```tsx
 import { Divider } from '@nutui/nutui-react';
 ```
 
-### 基础用法
+## 代碼演示
 
-默认渲染一条水平分割线。
+### 基礎用法
+
+默認渲染一條水平分割線。
 
 :::demo
 
@@ -30,12 +31,12 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ### 展示文本
 
-通过插槽在可以分割线中间插入内容。
+通過插槽在可以分割線中間插入內容。
 
 :::demo
 
@@ -52,12 +53,12 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
+### 內容位置
 
-### 内容位置
-
-通过 contentPosition 指定内容所在位置。
+通過 contentPosition 指定內容所在位置。
 
 :::demo
 
@@ -75,10 +76,10 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
-
-### 虚线
+### 虛線
 
 :::demo
 
@@ -95,12 +96,12 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
+### 自定義樣式
 
-### 自定义样式
-
-可以直接通过 style 属性设置分割线的样式。
+可以直接通過 style 屬性設置分割線的樣式。
 
 :::demo
 
@@ -111,15 +112,16 @@ import { Divider } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Divider styles={{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px', borderStyle: 'dashed' }}>文本</Divider>
+      <Divider style={{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px', borderStyle: 'dashed' }}>文本</Divider>
     </>
   );
 };
 export default App;
 ```
+
 :::
 
-### 垂直分割线
+### 垂直分割線
 
 :::demo
 
@@ -130,31 +132,29 @@ import { Divider } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-    <div>
-        文本
-        <Divider direction="vertical" />
-        <a href="#" style={{ color: '#1989fa' }}>链接</a>
-        <Divider direction="vertical" />
-        <a href="#" style={{ color: '#1989fa' }}>链接</a>
-    </div>
+      <div>
+          文本
+          <Divider direction="vertical" />
+          <a href="#" style={{ color: '#1989fa' }}>鏈接</a>
+          <Divider direction="vertical" />
+          <a href="#" style={{ color: '#1989fa' }}>鏈接</a>
+      </div>
     </>
   );
 };
 export default App;
 ```
+
 :::
 
-
-## API
+## Divider
 
 ### Props
 
-| 参数            | 说明                          | 类型    | 默认值 |
-| --------------- | ----------------------------- | ------- | ------ |
-| contentPosition | 内容位置，可选值为 left right | string  | `center` |
-| style          | 修改自定义样式                | CSSProperties     | -      |
-| direction           | 水平还是垂直类型,可选值为 horizontal vertical               | string     | `horizontal`      |
-
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| contentPosition | 內容位置 | `left` \| `center` \| `right` | `center` |
+| direction | 水平還是垂直類型 | `horizontal` \| `vertical` | `horizontal` |
 
 ## 主題定制
 
@@ -162,15 +162,15 @@ export default App;
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 默認值 |
-| --- | --- |
-| --nutui-divider-margin | `16px 0` |
-| --nutui-divider-text-font-size | `$font-size-2` |
-| --nutui-divider-text-color | `$gray1` |
-| --nutui-divider-line-height | `2px` |
-| --nutui-divider-before-margin-right | `16px` |
-| --nutui-divider-after-margin-left | `16px` |
-| --nutui-divider-vertical-height | `12px` |
-| --nutui-divider-vertical-top | `2px` |
-| --nutui-divider-vertical-border-left | `rgba(0, 0, 0, 0.06)` |
-| --nutui-divider-vertical-margin | `0 8px` |
+| 名稱 | 說明 | 默認值 |
+| --- | --- | --- |
+| \--nutui-divider-margin | 分割線整體內容的margin值 | `16px 0` |
+| \--nutui-divider-text-font-size | 分割線整體內容的font-size大小 | `$font-size-2` |
+| \--nutui-divider-text-color | 分割線整體內容的顏色 | `$gray1` |
+| \--nutui-divider-line-height | 分割線的行高 | `2px` |
+| \--nutui-divider-before-margin-right | 左邊分割線的margin-right值 | `16px` |
+| \--nutui-divider-after-margin-left | 右邊分割線的margin-left值 | `16px` |
+| \--nutui-divider-vertical-height | 垂直分割線的高度 | `12px` |
+| \--nutui-divider-vertical-top | 垂直分割線的top值 | `2px` |
+| \--nutui-divider-vertical-border-left | 垂直分割線的border-left值 | `rgba(0, 0, 0, 0.06)` |
+| \--nutui-divider-vertical-margin | 垂直分割線的margin值 | `0 8px` |

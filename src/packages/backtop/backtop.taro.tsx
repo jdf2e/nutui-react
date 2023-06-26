@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode, useState } from 'react'
+import React, { FunctionComponent, useState } from 'react'
 import { usePageScroll, pageScrollTo } from '@tarojs/taro'
 import { Top } from '@nutui/icons-react-taro'
 import classNames from 'classnames'

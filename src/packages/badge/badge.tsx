@@ -11,7 +11,6 @@ export interface BadgeProps extends BasicComponent {
   right: string
   color: string
 }
-export type BadgeType = 'default' | 'primary' | 'success' | 'warning' | 'danger'
 const defaultProps = {
   ...ComponentDefaults,
   value: '',

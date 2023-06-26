@@ -30,7 +30,7 @@ interface T {
 const TabsDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title1: '基础用法-微笑曲线',
       title2: '通过 value 匹配',
       title3: '数据异步渲染 3s',
@@ -79,7 +79,7 @@ const TabsDemo = () => {
   const [tab8value, setTab8value] = useState<string | number>('0')
   const [tab9value, setTab9value] = useState<string | number>('0')
   const [tab10value, setTab10value] = useState<string | number>('0')
-  const [list8, setList8] = useState(Array.from(new Array(2).keys()))
+  const [list8, setList8] = useState<any>([])
   const list4 = Array.from(new Array(10).keys())
   const list5 = Array.from(new Array(2).keys())
   const list6 = [
@@ -101,9 +101,8 @@ const TabsDemo = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      list8.push(999)
       setTab8value(2)
-      setList8(list8)
+      setList8(Array.from(new Array(3).keys()))
     }, 3000)
   }, [])
 
@@ -183,11 +182,12 @@ const TabsDemo = () => {
           <Tabs.TabPane title="Tab 3" />
         </Tabs>
         <Swiper
-          initPage={0}
+          defaultValue={0}
           loop={false}
           ref={swiperRef}
+          height={50}
           onChange={(page) => {
-            setTabIndex(page)
+            setTabIndex(page.detail.current)
           }}
         >
           <SwiperItem>
@@ -268,7 +268,7 @@ const TabsDemo = () => {
             setTab8value(value)
           }}
         >
-          {list8.map((item) => (
+          {list8.map((item: any) => (
             <Tabs.TabPane key={item} title={`Tab ${item}`}>
               Tab {item}
             </Tabs.TabPane>
