@@ -95,7 +95,6 @@ export default App;
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| customClass | Custom class | `string` | `-` |
 | lineWidth | Width of line | `number` | `3` |
 | strokeStyle | Drawing stroke color | `string` | `#000` |
 | type | Picture format | `string` | `png` |

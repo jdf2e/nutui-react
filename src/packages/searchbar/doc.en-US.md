@@ -223,7 +223,7 @@ export default App;
 | onBlur | triggered when out of focus | `(value: string, event: Event) => void` | `-` |
 | onClear | triggered when clicking clear | `(event: Event) => void` | `-` |
 | onSearch | trigger when confirming search | `(val: string) => void` | `-` |
-| onClickInput | triggered when clicking the input area | `(event: Event) => void` | `-` |
+| onInputClick | triggered when clicking the input area | `(event: Event) => void` | `-` |
 
 ## Theming
 

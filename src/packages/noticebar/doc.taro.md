@@ -271,7 +271,7 @@ export default App
 | wrap | 是否开启文本换行 | `boolean` | `false` |
 | onClick | 外层点击事件回调 | `(event: any) => void` | `-` |
 | onClose | 关闭通知栏时触发 | `(event: any) => void` | `-` |
-| onClickItem | 垂直滚动多条数据时，点击当前展示的信息时触发 | `(event: any, value: any) => void` | `-` |
+| onItemClick | 垂直滚动多条数据时，点击当前展示的信息时触发 | `(event: any, value: any) => void` | `-` |
 
 ### Props（direction=vertical）
 

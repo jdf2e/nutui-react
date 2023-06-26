@@ -223,7 +223,7 @@ export default App;
 | onBlur | 失焦時觸發 | `(value: string, event: Event) => void` | `-` |
 | onClear | 點擊清空時觸發 | `(event: Event) => void` | `-` |
 | onSearch | 確定搜索時觸發 | `(val: string) => void` | `-` |
-| onClickInput | 點擊輸入區域時觸發 | `(event: Event) => void` | `-` |
+| onInputClick | 點擊輸入區域時觸發 | `(event: Event) => void` | `-` |
 
 ## 主題定制
 

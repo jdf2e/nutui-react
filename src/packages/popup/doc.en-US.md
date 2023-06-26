@@ -207,8 +207,6 @@ export default App;
 | closeOnOverlayClick | Whether to click the mask to close | `boolean` | `true` |
 | position | popup location | `top` \| `bottom` \| `left` \| `right` \| `center` | `center` |
 | transition | animation name | `string` | `-` |
-| style | Custom popup style | `CSSProperties` | `-` |
-| className | Custom popup class name | `string` | `-` |
 | closeable | whether to show the close button | `boolean` | `false` |
 | closeIconPosition | close button position | `top-left` \| `top-right` \| `bottom-left` \| `bottom-right` | `top-right` |
 | closeIcon | Custom Icon | `ReactNode` | `close` |
@@ -216,12 +214,12 @@ export default App;
 | round | Whether to show rounded corners | `boolean` | `false` |
 | portal | Mount the specified node | `HTMLElement` \| `(() => HTMLElement)` | null` | `null` |
 | onClick | Triggered when the popup is clicked | `event: MouseEvent` | `-` |
-| onClickCloseIcon | Fired when the close icon is clicked | `event: MouseEvent` | `-` |
+| onCloseIconClick | Fired when the close icon is clicked | `event: MouseEvent` | `-` |
 | onOpen | Triggered when the popup is opened | `-` | `-` |
 | onClose | Fired when the popup is closed | `-` | `-` |
 | afterShow | afterShow from `Overlay`, Fired when the mask opening animation ends | `event: HTMLElement` | `-` |
 | afterClose | afterClose from `Overlay`, Fired when the mask closing animation ends | `event: HTMLElement` | `-` |
-| onClickOverlay | Click on the mask to trigger | `event: MouseEvent` | `-` |
+| onOverlayClick | Click on the mask to trigger | `event: MouseEvent` | `-` |
 
 ## Theming
 

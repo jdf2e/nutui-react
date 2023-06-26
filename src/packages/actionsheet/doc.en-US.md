@@ -23,7 +23,7 @@ import { ActionSheet,Cell } from '@nutui/nutui-react';
 interface Item {
   name: string
   description?: string
-  disable?: boolean
+  disabled?: boolean
 }
 const App = () => {
   const [val1, setVal1] = useState('')
@@ -183,7 +183,7 @@ const App = () => {
     },
     {
       name: 'Disable Option',
-      disable: true,
+      disabled: true,
     },
   ]
   return ( 
@@ -265,7 +265,7 @@ const App = () => {
     },
     {
       title: 'Disable Option',
-      disable: true,
+      disabled: true,
     },
   ]
   const optionKey = {

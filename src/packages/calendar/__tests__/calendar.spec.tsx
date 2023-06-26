@@ -122,21 +122,21 @@ test('should render slot correctly', async () => {
 })
 
 test('select event when click item', () => {
-  const onClickDay = jest.fn()
+  const onDayClick = jest.fn()
   const { container } = render(
     <Calendar
       visible
       defaultValue="2022-03-18"
       startDate="2022-01-01"
       endDate="2022-12-31"
-      onClickDay={onClickDay}
+      onDayClick={onDayClick}
     />
   )
 
   const calendarMonthDay = container.querySelectorAll('.nut-calendar-day')[15]
 
   fireEvent.click(calendarMonthDay)
-  expect(onClickDay).toBeCalled()
+  expect(onDayClick).toBeCalled()
 })
 
 test('choose event when click item', async () => {

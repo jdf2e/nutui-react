@@ -1,6 +1,5 @@
 # 从 v1 升级到 v2
 
-## 介绍
 本文档将帮助您从 NutUI React `1.x` 升级到 NutUI React `2.x` 版本。
 
 ## 升级步骤
@@ -9,10 +8,12 @@
 npm install @nutui/nutui-react
 ```
 2. 处理不兼容更新
-NutUI React 1.x 到 NutUI React 2.x 存在一些不兼容更新，需要仔细阅读不兼容更新内容，并依次处理。
+
+从 NutUI React 1.x 到 NutUI React 2.x 存在一些不兼容更新，需要仔细阅读不兼容更新内容，并依次处理。
 ## 兼容更新
 1. 组件样式处理
-   - 新增了按需引入 css 文件的支持。可通过 babel-import-plugin 插件实现：
+
+新增了按需引入 css 文件的支持。可通过 babel-import-plugin 插件实现：
 ```json
 // Webpack .babelrc 或 babel.config.js中配置
 plugins: [
@@ -28,12 +29,23 @@ plugins: [
   ]
 ]
 ```
-2. 更完善的类型导出以及对类型增加 JSDoc 注释
+2. 更完善的类型导出以及对类型增加 `JSDoc` 注释
+3. 组件分类的调整
+在组件分类上，我们从交互维度上，和交互设计侧共同对 1.x 分类进行了基于信息结构的评审，并进行了子类梳理，完成重新分类，目标是更贴合交互场景的分布，易于查找组件。主要分布在：
+
+- 基础组件，将 `Popup` 组件移除，将 `Popup` 细分到操作反馈-引导提示部分；
+- 布局组件，保持不变；
+- 导航组件：将分页相关组件 `Pagination`、`Indicator` 移动到展示组件（考虑移动端的分页轻操作）；`Menu` 菜单移动到数据录入类-选择器子类（考虑 `Menu` 主要是作为筛选器）；将 `BackTop` 移至导航组件，作为锚点组件的一部分；
+- 展示组件：将 `Badge`、`NoticeBar`、`Popover` 移至操作反馈-引导提示类，`Empty`、`Skeleton` 移至操作反馈-加载状态结果反馈中；`WaterMark`、`TrendArrow` 作为特性增强类组件放在特色组件中，待由该类组件的使用场景和范围确认是否变更分类；同时新增 `Audio`，将其同 `Video`、`ImagePreview`、`Swiper` 一同归为展示-多媒体类；
+- 操作反馈类，新增 `Skeleton`、`Empty`（加载结果反馈类），`Popover`、`Notify`、`NoticeBar`、`Popup` （引导提示类）6个组件；同时去除 `BackTop`（导航组件-锚点类）、`Switch`（数据录入-选择器）、`Audio``（展示-多媒体）；在此基础上，未来会考虑增加 ResultPage`，整合错误状态、空状态等反馈状态，该组件在考虑中；同时考虑增加加载状态 `Loading` 组件。版本待定。
+- 数据录入类，主要分为两大类-输入及选择器。在输入中增加 `Signature`，该组件在 `Form` 表单中的应用范围日渐广泛，从特色组件中移入到数据录入部分；选择器中增加 `Switch`、`Menu`，及 `Address`。其中 `Signature` 和 `Address` 都是考虑其常用性，从特色中迁移到数据录入部分。
+- 特色组件，保留 `Barrage`、`Card`、`TimeSelect`，新增 `WaterMark`、`TrendArrow`。
+
 
 ## 不兼容更新
 
 ## NutUI Icons 调整
-1.x 版本我们在实际开发过程中会发现 Button 只是引用了一个很小的 Loading Icon，但是全量引用了 IconFont 字体 ，会导致开发者的项目文件增大。我们在 NutUI React 2.x 中为解决此问题，重新定义了 Icon 组件，将所有的 Icons 抽离成单独的图标组件库 @nutui/icons-react ，使其可以进行按需加载使用。 因此一些组件之前关于 Icon 的相关 Props 将被移除，需要使用插槽或者传递一个 Component 组件的 Props 进行使用。 受影响的组件如下：
+1.x 版本我们在实际开发过程中会发现 `Button` 只是引用了一个很小的 Loading Icon，但是全量引用了 IconFont 字体 ，会导致开发者的项目文件增大。我们在 NutUI React 2.x 中为解决此问题，重新定义了 Icon 组件，将所有的 Icons 抽离成单独的图标组件库 @nutui/icons-react（Taro 适配下为 @nutui/icons-react-taro） ，使其可以进行按需加载使用。 因此一些组件之前关于 Icon 的相关 Props 将被移除，需要使用插槽或者传递一个 Component 组件的 Props 进行使用。 受影响的组件如下：
 - Avatar
 - Button
 - ImagePreview
@@ -60,17 +72,41 @@ plugins: [
 - TrendArrow
 
 如果你的项目中使用了这些组件，请仔细阅读文档并进行升级。
+
 ## 组件名称调整
+本次暂无组件名称变更。
 
 ## 组件 API 调整
-在 NutUI React 不断迭代的过程中，我们发现一些组件在设计时有不合理的地方，除了受 Icon 变更的组件以外，我们也对一些组件部分 API 进行了调整。
+在 2.0 版本中，我们重点对组件 API 进行了评审和修订，使属性和方法命名更贴合常用的命名习惯及 React 语言规范，目标希望开发者在使用组件时得心应手。我们的思路大体如下：
+
+### 属性定义
+本次升级重点关注属性的命名方面，从 1.x 的 610 个属性精简为 410 个，更精简、更规范；同时增强属性的类型范围，提升自定义能力。
+
+- 对同一属性进行统一描述，比如：
+  - 缩写类会改为全拼，如 `desc`、`descSlot`、`description` 统一为 `description`
+  - 能使用名词或形容词的优先使用该类词性，一个词能说明白的不用两个词。
+    - 如 `wrap`、`wrapable` 统一为 `wrap`
+    - 如将 `isXxx` 统一为 `xxx`，如 `isVisible`、`isDeletable` 等，可直接使用 `visible`、`deletable` 等，形容词化
+    - 如`showXxx` 尽量统一为 `xxx`，名词化。【部分属性待优化。】
+    - 如 `roundRadius` 改为 `radius` ，`columnNum` 改为 `columns`等
+  - `onClickXxx` 统一为 `onXxxClick`
+  - `modelValue` 统一为 `value`，并增加支持 `defaultValue`，支持受控与非受控模式
+  - 对于标识位置、对齐等类的属性，将属性名变更为其上一层的属性定义，如 `center`会改为 `align`、`vertical`，改为 `direction`，像标记距离的，如 `top`、`bottom`、`distance` 等，会改为 `threshold`
+  - 不规范的定义如 `okBtn`、`okText` 这种，会改为 `confirmXxx`
+- 扩充属性的类型。如 `title` 的类型从 `string` 扩充为 `React.ReactNode`，增强自定义内容；其中有涉及合并属性的，统一用最简命名来定义属性；如 `title`、`titleSlot` 合并为 `title`，再扩充属性类型。
+- 对于 `xxClass`、`xxStyle`类的属性，移除，可使用 `className` 、`style` 来实现。
+- 移除与样式有关的属性，除基础组件的样式属性及部分实现起来较为复杂的样式属性外，大多数样式属性被移除，可通过样式变量来实现。
+- 将普遍认同可内置的属性或不怎么使用的属性，直接内置，去掉属性设置。
+
+### 组件实现
+
+
 ### 基础组件
 #### Button
 - 删除 `plain`，通过 `fill="outline"` 实现
 - 增加 `ref`，对外暴露组件内 `button` 元素
 
 #### Cell
-
 - `subTitle` 重命名为 `description`，类型修改为 `React.Node`
 - `desc` 重命名为 `extra`，类型修改为 `React.Node`
 - `roundRadius` 重命名为 `radius`
@@ -105,7 +141,7 @@ plugins: [
 - `closeOnClickOverlay` 重命名为 `closeOnOverlayClick`
 - `onOpened` 和 `onClosed` 改为 `afterShow` 和 `afterClose`，继承自`Overlay`，用于完全关闭后触发的回调和完全展示后触发的回调 
 - `destroyOnClose` 的描述进行了修订，改为：“组件不可见时，卸载内容”，并把其默认值改为了`false`
-- `onClickCloseIcon` 和 `onClickOverlay` 两个方法，增加布尔判断，如返回false 或 未定义返回值时，将不再关闭 Popup；默认值为 `true`；在demo中已增加相应示例
+- `onClickCloseIcon` 和 `onClickOverlay` 两个方法，增加布尔判断，如返回false 或 未定义返回值时，将不再关闭 Popup；默认值为 `true`；在demo中已增加相应示例；同时，两者的名字变更为 `onCloseIconClick`、`onOverlayClick`
 
 ### 布局组件
 #### Divider
@@ -124,6 +160,8 @@ plugins: [
 - `acceptKey` 重命名为 `floorKey`
 - `indexList` 重命名为 `list`
 - `isSticky` 重命名为 `sticky`
+- `onClickIndex` 重命名为 `onIndexClick`
+- `onClickItem` 重命名为 `onItemClick`
 - 新增`showKeys`，是否展示右侧导航
 #### FixedNav
 - `unActiveText` 重命名为 `inactiveText`
@@ -152,6 +190,7 @@ plugins: [
 - `desc` 重命名为 `right`，类型修改为 `React.Node`
 - 新增 `left`，左侧内容，渲染在返回区域的右侧 
 - 新增 `back`，返回区域内容
+- `onClickBack` 重命名为 `onBackClick`
 - 移除 `title`，通过 `children` 实现
 - 移除 `leftText` `leftShow`，通过 `back`、`left`实现
 - `safeAreaInsetTop` 重命名为 `safeArea`
@@ -182,7 +221,8 @@ plugins: [
 - 使用方式修改为 `Tabbar.Item`
 - `icon` 类型改为 `ReactNode`，移除其他 `icon` 关联属性
 - 移除 `href`，通过 `onSwitch` 事件控制链接与路由跳转
-- 移除 `num`，支持传入所有 Badge Props
+- 移除 `num`，支持传入所有 `Badge` Props
+- 移除 `color`，使用父元素的 `activeColor`，保持同样的 `active` 状态
 #### Tabs
 - 删除 `background`，通过 `className` 或 `style` 控制
 - 删除 `titleScroll`, 默认支持滚动
@@ -212,7 +252,7 @@ plugins: [
 - `onDay` 更名为 `renderDay`
 - `onTopInfo` 更名为 `renderDayTop`
 - `onBottomInfo` 更名为 `renderDayBottom`
-- `onSelected` 更名为 `onClickDay`
+- `onSelected` 更名为 `onDayClick`
 - `onChoose` 更名为 `onConfirm`
 - `onYearMonthChange` 更名为 `onPageChange`
 
@@ -307,6 +347,7 @@ plugins: [
 - 移除 `activeColor`、`voidColor`、`iconSize`，通过 `checkedIcon`、`uncheckedIcon` 实现
 - 增加受控 `value` 与非受控 `defaultValue`，移除 `modelValue`
 #### SearchBar
+- `onClickInput` 重命名为 `onInputClick`
 - 删除 `clearSize`，样式默认
 - 删除 `background`，使用 CSS 变量 `--nutui-searchbar-background` 实现 
 - 删除 `inputBackground`，使用 CSS 变量 `--nutui-searchbar-input-background` 实现 
@@ -370,7 +411,7 @@ plugins: [
   - `name`，列表项的标题key
   - `description`，列表项的描述key
   - `danger`，列表项中提醒用户重点关注的操作
-  - `disable`，列表项中禁用项
+  - `disabled`，列表项中禁用项
 #### BackTop
 - `elId` 重命名为 `target`
 - 移除 `right`、`bottom`，通过 style 传入，增加支持 `left`、`top`
@@ -390,7 +431,7 @@ plugins: [
 - 修改 `onClosed` 为 `onClose`，规范命名，关闭时触发。
 - 修改 `onClickSelf` 为 `onClick`，语义不变，仍表示点击弹框自身时触发事件。
 - 增加 `overlayStyle` 和 `overlayClassName`，用来配置 Overlay 组件样式。
-- 增加 onClickOverlay，支持点击overlay时，触发事件。
+- 增加 `onOverlayClick`，支持点击overlay时，触发事件。
 
 #### Drag
 #### InfiniteLoading
@@ -515,19 +556,19 @@ plugins: [
 - `background` 删除，使用 CSS 变量，之前已支持
 - `wrapable` 更名为 `wrap`
 - `standTime` 更名为 `duration`
+- `onClickItem` 更名为 `onItemClick`
 - `complexAm` 废弃
 
 #### Popover
 - 废除 `theme` 属性，可以通过css变量 `--nutui-brand-color` 控制暗黑模式
 - 新增 `showArrow` 属性，用于是否显示小箭头
-- 新增 `closeOnClickAction` 属性，用于是否在点击选项后关闭
-- 新增 `closeOnClickOutside` 属性，用于是否在点击外部元素后关闭菜单
+- 新增 `closeOnActionClick` 属性，用于是否在点击选项后关闭
+- 新增 `closeOnOutsideClick` 属性，用于是否在点击外部元素后关闭菜单
 - 新增 `targetId` 属性，用于自定义目标元素 id
 - 新增 `onOpen` 属性，用于点击菜单时触发
 - 新增 `onClose` 属性，用于关闭菜单时触发
 - `onChoose` 重命名为 `onSelect`
 - 继承Popup组件的 `overlayStyle` 、`overlayClassName` 、`overlay` 、`closeOnOverlayClick` 属性。    
-
 
 #### Price
 

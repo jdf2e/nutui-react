@@ -207,8 +207,6 @@ export default App;
 | closeOnOverlayClick | 是否點擊遮罩關閉 | `boolean` | `true` |
 | position | 彈出位置（top,bottom,left,right,center） | `string` | `center` |
 | transition | 動畫名 | `string` | `-` |
-| style | 自定義彈框樣式 | `CSSProperties` | `-` |
-| className | 自定義彈框類名 | `string` | `-` |
 | closeable | 是否顯示關閉按鈕 | `boolean` | `false` |
 | closeIconPosition | 關閉按鈕位置（top-left,top-right,bottom-left,bottom-right） | `string` | `top-right` |
 | closeIcon | 自定義 Icon | `ReactNode` | `close` |
@@ -216,12 +214,12 @@ export default App;
 | round | 是否顯示圓角 | `boolean` | `false` |
 | portal | 指定節點掛載 | `HTMLElement` \| `(() => HTMLElement)` | null` | `null` |
 | onClick | 點擊彈框時觸發 | `event: MouseEvent` | `-` |
-| onClickCloseIcon | 點擊關閉圖標時觸發 | `event: MouseEvent` | `-` |
+| onCloseIconClick | 點擊關閉圖標時觸發 | `event: MouseEvent` | `-` |
 | onOpen | 打開彈框時觸發 | `-` | `-` |
 | onClose | 關閉彈框時觸發 | `-` | `-` |
 | afterShow | 继承于`Overlay`, 遮罩打開動畫結束時觸發 | `event: HTMLElement` | `-` |
 | afterClose | 继承于`Overlay`, 遮罩關閉動畫結束時觸發 | `event: HTMLElement` | `-` |
-| onClickOverlay | 點擊遮罩觸發 | `event: MouseEvent` | `-` |
+| onOverlayClick | 點擊遮罩觸發 | `event: MouseEvent` | `-` |
 
 ## 主題定制
 

@@ -161,10 +161,10 @@ test('event click test', async () => {
 })
 
 test('event click-close-icon test', () => {
-  const onClickCloseIcon = jest.fn().mockReturnValueOnce(true)
+  const onCloseIconClick = jest.fn().mockReturnValueOnce(true)
   const { container } = render(
     <>
-      <Popup visible closeable onClickCloseIcon={() => onClickCloseIcon()} />
+      <Popup visible closeable onCloseIconClick={() => onCloseIconClick()} />
     </>
   )
   const closeIcon = container.querySelector(
@@ -172,15 +172,15 @@ test('event click-close-icon test', () => {
   ) as HTMLElement
   const overlay = container.querySelector('.nut-overlay') as Element
   fireEvent.click(closeIcon)
-  expect(onClickCloseIcon).toBeCalled()
+  expect(onCloseIconClick).toBeCalled()
   expect(overlay).toHaveClass('nut-overlay-hidden-render')
 })
 
 test('event click-close-icon and keep overlay test ', () => {
-  const onClickCloseIcon = jest.fn()
+  const onCloseIconClick = jest.fn()
   const { container } = render(
     <>
-      <Popup visible closeable onClickCloseIcon={onClickCloseIcon} />
+      <Popup visible closeable onCloseIconClick={onCloseIconClick} />
     </>
   )
   const closeIcon = container.querySelector(
@@ -188,7 +188,7 @@ test('event click-close-icon and keep overlay test ', () => {
   ) as HTMLElement
   const overlay = container.querySelector('.nut-overlay') as Element
   fireEvent.click(closeIcon)
-  expect(onClickCloseIcon).toBeCalled()
+  expect(onCloseIconClick).toBeCalled()
   const overlay2 = container.querySelector('.hidden-render') as Element
   expect(overlay2).toBeNull()
 })
@@ -211,14 +211,14 @@ test('should emit open event when prop visible is set to true', () => {
 })
 
 test('event click-overlay test', async () => {
-  const onClickOverlay = jest.fn()
+  const onOverlayClick = jest.fn()
   const { container } = render(
     <>
-      <Popup visible onClickOverlay={onClickOverlay} />
+      <Popup visible onOverlayClick={onOverlayClick} />
     </>
   )
 
   const overlay = container.querySelector('.nut-overlay') as Element
   fireEvent.click(overlay)
-  expect(onClickOverlay).toBeCalled()
+  expect(onOverlayClick).toBeCalled()
 })
