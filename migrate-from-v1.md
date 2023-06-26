@@ -352,7 +352,7 @@ plugins: [
 - `onBeforeXhrUpload` 重命名为 `beforeXhrUpload`
 - `onBeforeDelete` 重命名为 `beforeDelete`
 - `onRemove` 重命名为 `onDelete`
-- 增加 `imageFit`，用于图片填充模式
+- 增加 `fit`，用于图片填充模式
 - 增加 `value`，用于受控传值
 - 移除 `uploadIconSize`，可通过 icon 属性传入自定义 icon 或借助 CSS Variables 修改 icon 大小
 

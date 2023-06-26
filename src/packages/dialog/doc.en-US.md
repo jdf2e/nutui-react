@@ -190,7 +190,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-dialog-overlay-z-index | dialog overlay z-index | `$mask-z-index` |
 | \--nutui-dialog-overlay-background-color | dialog overlay background color | `$mask-color` |
 | \--nutui-dialog-outer-z-index | dialog outer z index | `$mask-content-z-index` |
-| \--nutui-dialog-outer-bordder-radius | dialog outer bordder radius | `20px` |
+| \--nutui-dialog-outer-border-radius | dialog outer border radius | `20px` |
 | \--nutui-dialog-vertical-footer-ok-margin-top | dialog vertical footer confirm button margin top | `10px` |
 | \--nutui-dialog-footer-button-min-width | dialog footer button min width | `100px` |
 | \--nutui-dialog-footer-cancel-margin-right | dialog footer cancel button's margin right | `20px` |

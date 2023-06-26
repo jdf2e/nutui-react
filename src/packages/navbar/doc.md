@@ -93,7 +93,7 @@ const App = () => {
         back={<Left name="left" color="#979797" />}
         right={
         <>
-            <span onClick={(e) =>  Toast.show('编辑')}>
+            <span style={{ marginRight: '5px' }} onClick={(e) =>  Toast.show('编辑')}>
             编辑
             </span>
             <MoreX onClick={(e) =>  Toast.show('icon')} />
@@ -130,7 +130,7 @@ const App = () => {
          back={<Left name="left" color="#979797" />}
           right={
             <>
-              <span onClick={(e) =>  Toast.show("编辑")}>
+              <span style={{ marginRight: '5px' }}  onClick={(e) =>  Toast.show("编辑")}>
                 编辑
               </span>
               <MoreX onClick={(e) =>  Toast.show('icon')} />

@@ -4,6 +4,7 @@ import { Share, MoreX, Cart2, Left, Close } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { NavBar, Tabs, TabPane } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
+import '@/packages/navbar/demo.scss'
 
 interface T {
   ce5c5446: string
@@ -49,9 +50,7 @@ const NavBarDemo = () => {
       e51e4582: 'Browsing history',
     },
   })
-
   const [tab1value, setTab1value] = useState<string | number>('0')
-
   return (
     <>
       <Header />
@@ -66,7 +65,10 @@ const NavBarDemo = () => {
           }
           left={<Close size={12} />}
           right={
-            <span onClick={(e) => Taro.showToast({ title: 'icon' })}>
+            <span
+              className="flex-center"
+              onClick={(e) => Taro.showToast({ title: 'icon' })}
+            >
               <Share />
             </span>
           }
@@ -97,6 +99,7 @@ const NavBarDemo = () => {
           right={
             <>
               <span
+                style={{ marginRight: '5px' }}
                 onClick={(e) =>
                   Taro.showToast({ title: translated['8dab2f66'] })
                 }
@@ -113,6 +116,7 @@ const NavBarDemo = () => {
           </span>
           <i
             style={{ marginLeft: '5px' }}
+            className="flex-center"
             onClick={(e) => Taro.showToast({ title: 'icon' })}
           >
             <Cart2 />
@@ -124,6 +128,7 @@ const NavBarDemo = () => {
           right={
             <>
               <span
+                style={{ marginRight: '5px' }}
                 onClick={(e) =>
                   Taro.showToast({ title: translated['8dab2f66'] })
                 }
@@ -135,7 +140,7 @@ const NavBarDemo = () => {
           }
           onClickBack={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
         >
-          <div slot="content">
+          <div>
             <Tabs
               value={tab1value}
               onChange={(paneKey) => {
@@ -147,9 +152,6 @@ const NavBarDemo = () => {
               <TabPane title="Tab 3"> Tab 3 </TabPane>
             </Tabs>
           </div>
-          <i slot="right">
-            <MoreX />
-          </i>
         </NavBar>
       </div>
     </>

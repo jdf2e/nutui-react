@@ -22,7 +22,7 @@
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    border-radius: $dialog-outer-bordder-radius;
+    border-radius: $dialog-outer-border-radius;
     z-index: $dialog-outer-z-index;
     animation-duration: 0.3s;
   }
