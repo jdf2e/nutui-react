@@ -36,16 +36,15 @@ const App =() => {
   useEffect(() => {
     getData()
   }, [getData])
-  const ItemRender = ({ data,index }) => {
-    return <p>Custom-{data}-{index}</p>
+  const itemRender = (data, dataIndex) => {
+    return <p>Custom-{data}-{dataIndex}</p>
   }
-  const ItemRenderMemo = React.memo(ItemRender)
   return (
     <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
       <VirtualList
         itemHeight={66}
         list={list}
-        ItemRender={ItemRenderMemo}
+        itemRender={itemRender}
       />
     </div>
   )
@@ -83,18 +82,17 @@ const App =() => {
   useEffect(() => {
     getData()
   }, [getData])
-  const ItemVariable = ({ data, index }) => {
+  const itemVariable = (data, dataIndex) => {
     return (
-      <p className={index % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>Variable size-{data}</p>
+      <p className={dataIndex % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>Variable size-{data}</p>
     )
   }
   /** ItemSize Indicates the maximum size of the first screen element */
-  const ItemVariableDemo = React.memo(ItemVariable)
   return (
     <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
       <VirtualList
         list={list}
-        ItemRender={ItemVariableDemo}
+        itemRender={itemVariable}
         itemHeight={128}
         itemEqual={false}
         onScroll={onScroll}
@@ -131,15 +129,14 @@ const App =() => {
   useEffect(() => {
     getData()
   }, [getData])
-  const ItemRender = ({ data,index }) => {
-    return <p>Custom-{data}-{index}</p>
+  const itemRender = (data, dataIndex) => {
+    return <p>Custom-{data}-{dataIndex}</p>
   }
-  const ItemRenderMemo = React.memo(ItemRender)
   return (
     <div className='nut-virtualList-demo-box  hideScrollbar'>
       <VirtualList
         list={list}
-        ItemRender={ItemRenderMemo}
+        itemRender={itemRender}
         itemHeight={124}
         direction="horizontal"
       />
@@ -179,19 +176,18 @@ const App =() => {
   useEffect(() => {
     getData()
   }, [getData])
-  const ItemVariable = ({ data, index }) => {
+  const itemVariable = (data, dataIndex) => {
     return (
-      <p className={index % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>Variable size-{data}</p>
+      <p className={dataIndex % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>Variable size-{data}</p>
     )
   }
   /** ItemSize Indicates the maximum size of the first screen element */
-  const ItemVariableDemo = React.memo(ItemVariable)
   return (
     <div className='nut-virtualList-demo-box  hideScrollbar'>
       <VirtualList
         list={list}
         itemHeight={300}
-        ItemRender={ItemVariableDemo}
+        itemRender={itemVariable}
         direction="horizontal"
         itemEqual={false}
         onScroll={onScroll}
@@ -212,7 +208,7 @@ export default App;
 | --- | --- | --- | --- |
 | list | source data | `Array` | `-` |
 | containerHeight | container height | `number` | `Get the element offsetWidth or offsetHeight, which is given by CSS` |
-| ItemRender | virtual function rendered by the parent of the list | `React.FC` | `-` |
+| itemRender | virtual function rendered by the parent of the list | `(data: any, dataIndex: number, index: number) => ReactNode` | `-` |
 | itemHeight | Item height, if not height, the first screen single maximum height | `number` | `66` |
 | itemEqual | the sizes of items are consistent | `boolean` | `true` |
 | overscan | In addition to the default elements in the viewport, there is an additional number of items to render | `number` | `2` |

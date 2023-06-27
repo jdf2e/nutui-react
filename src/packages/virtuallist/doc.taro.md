@@ -50,10 +50,9 @@ const App =() => {
     getData()
   }, [getData])
 
-  const ItemRender = ({ data }: any) => {
+  const itemRender = (data: any, dataIndex: number) => {
     return <div style={itemStyle}>{data}</div>
   }
-  const ItemRenderMemo = React.memo(ItemRender)
 
   const onScroll = () => {
     if (pageNo > 50 || isLoading) return
@@ -68,7 +67,7 @@ const App =() => {
       <VirtualList
         itemHeight={50}
         list={list}
-        ItemRender={ItemRenderMemo}
+        itemRender={itemRender}
         onScroll={onScroll}
       />
     </div>
@@ -117,17 +116,16 @@ const App =() => {
     getData()
   }, [getData])
 
-   const ItemVariable = ({ data, index }: any) => {
+   const itemVariable = (data: any, dataIndex: number) => {
     return (
       <div
         style={{
-          height: `${index % 2 === 0 ? '100px' : '50px'}`,
+          height: `${dataIndex % 2 === 0 ? '100px' : '50px'}`,
           ...itemStyel2,
         }}
       >{data}</div>
     )
   }
-  const ItemVariableDemo = React.memo(ItemVariable)
 
   const onScroll = () => {
     if (pageNo > 50 || isLoading) return
@@ -142,7 +140,7 @@ const App =() => {
       <VirtualList
         itemHeight={80}
         list={list}
-        ItemRender={ItemVariableDemo}
+        itemRender={itemVariable}
         onScroll={onScroll}
         itemEqual={false}
         containerHeight={500}
@@ -163,7 +161,7 @@ export default App;
 | --- | --- | --- | --- |
 | list | 获取数据 | `Array` | `-` |
 | containerHeight | 容器高度 | `number` | `获取元素的 offsetWidth 或 offsetHeight，需要 css 给出` |
-| ItemRender | virtual 列表父节点渲染的函数 | `React.FC` | `-` |
+| itemRender | virtual 列表父节点渲染的函数 | `(data: any, dataIndex: number, index: number) => ReactNode` | `-` |
 | itemHeight | item 高度，如果不定高，则为首屏单个最大 height | `number` | `66` |
 | itemEqual | item 高度是否一致 | `boolean` | `true` |
 | overscan | 除了视窗里面默认的元素, 还需要额外渲染的 item 个数 | `number` | `2` |

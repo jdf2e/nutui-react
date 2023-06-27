@@ -634,11 +634,12 @@ plugins: [
 - `rate` 重命名为 `value`
 - `showSign` 重命名为 `symbol`
 - `showZero` 重命名为 `zero`
-- `syncTextColor` 重命名为 `syncColor`
+- `arrowLeft` 重命名为 `left`
+- `syncTextColor` 重命名为 `sync`
 - `textColor` 重命名为 `color`
 - `upIconName` 重命名为 `riseIcon`，类型修改为 `React.Node` 
-- `downIconName` 重重命名为命为 `downIcon`，类型修改为 `React.Node`
-- 移除 `iconSize`，通过`riseIcon`、`downIcon`自定义传入icon大小
+- `downIconName` 重命名为 `dropIcon`，类型修改为 `React.Node`
+- 移除 `iconSize`，通过`riseIcon`、`dropIcon`自定义传入icon大小
 
 #### Video
 - 在 `Taro` 下新增video的适配

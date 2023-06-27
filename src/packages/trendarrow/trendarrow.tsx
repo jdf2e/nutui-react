@@ -7,13 +7,13 @@ export interface TrendArrowProps extends BasicComponent {
   digits: number
   symbol: boolean
   zero: boolean
-  arrowLeft: boolean
-  syncColor: boolean
+  left: boolean
+  sync: boolean
   color: string
   riseColor: string
   dropColor: string
   riseIcon: React.ReactNode
-  downIcon: React.ReactNode
+  dropIcon: React.ReactNode
 }
 const defaultProps = {
   ...ComponentDefaults,
@@ -21,13 +21,13 @@ const defaultProps = {
   digits: 2,
   symbol: false,
   zero: false,
-  arrowLeft: false,
-  syncColor: true,
+  left: false,
+  sync: true,
   color: '#333',
   riseColor: '#fa2c19',
   dropColor: '#64b578',
   riseIcon: null,
-  downIcon: null,
+  dropIcon: null,
 } as TrendArrowProps
 
 export const TrendArrow: FunctionComponent<
@@ -38,13 +38,13 @@ export const TrendArrow: FunctionComponent<
     digits,
     symbol,
     zero,
-    arrowLeft,
-    syncColor,
+    left,
+    sync,
     color,
     riseColor,
     dropColor,
     riseIcon,
-    downIcon,
+    dropIcon,
     className,
     style,
     children,
@@ -65,7 +65,7 @@ export const TrendArrow: FunctionComponent<
 
   const calcStyle = (() => {
     const arrowColor = rateTrend.current ? riseColor : dropColor
-    const textEquArrowColor = syncColor ? arrowColor : color
+    const textEquArrowColor = sync ? arrowColor : color
     const style = {
       color: value === 0 ? color : textEquArrowColor,
     }
@@ -93,8 +93,8 @@ export const TrendArrow: FunctionComponent<
     return iconProps
   })()
 
-  const renderContent = (arrowLeft: boolean) => {
-    const classNameSuffix = !arrowLeft ? 'icon-after' : 'icon-before'
+  const renderContent = (left: boolean) => {
+    const classNameSuffix = !left ? 'icon-after' : 'icon-before'
     return (
       <span
         className={`${classPrefix}__${classNameSuffix} ${classPrefix}__value`}
@@ -106,17 +106,17 @@ export const TrendArrow: FunctionComponent<
   }
   return (
     <div className={`${classPrefix} ${className}`} style={style} {...rest}>
-      {!arrowLeft && renderContent(!arrowLeft)}
+      {!left && renderContent(!left)}
       {Number(value) !== 0 && (
         <>
           {rateTrend.current ? (
             <>{riseIcon || <TriangleUp color={calcIconProps.color} />}</>
           ) : (
-            <>{downIcon || <TriangleDown color={calcIconProps.color} />}</>
+            <>{dropIcon || <TriangleDown color={calcIconProps.color} />}</>
           )}
         </>
       )}
-      {arrowLeft && renderContent(!arrowLeft)}
+      {left && renderContent(!left)}
     </div>
   )
 }
