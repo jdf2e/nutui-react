@@ -81,16 +81,15 @@ const ListDemo = () => {
     getData()
   }, [getData])
 
-  const ItemRender = ({ data }: any) => {
+  const itemRender = (data: any) => {
     return <div style={itemStyle}>{data}</div>
   }
-  const ItemRenderMemo = React.memo(ItemRender)
 
-  const ItemVariable = ({ data, index }: any) => {
+  const itemVariable = (data: any, dataIndex: number, index: number) => {
     return (
       <div
         style={{
-          height: `${index % 2 === 0 ? '100px' : '50px'}`,
+          height: `${dataIndex % 2 === 0 ? '100px' : '50px'}`,
           ...itemStyel2,
         }}
       >
@@ -98,7 +97,6 @@ const ListDemo = () => {
       </div>
     )
   }
-  const ItemVariableDemo = React.memo(ItemVariable)
   const onScroll = () => {
     if (pageNo > 50 || isLoading) return
     setIsLoading(true)
@@ -115,7 +113,7 @@ const ListDemo = () => {
           <VirtualList
             itemHeight={50}
             list={list}
-            ItemRender={ItemRenderMemo}
+            itemRender={itemRender}
             onScroll={onScroll}
           />
         )
@@ -124,7 +122,7 @@ const ListDemo = () => {
           <VirtualList
             itemHeight={80}
             list={list}
-            ItemRender={ItemVariableDemo}
+            itemRender={itemVariable}
             onScroll={onScroll}
             itemEqual={false}
             containerHeight={500}
@@ -135,7 +133,7 @@ const ListDemo = () => {
           <VirtualList
             itemHeight={50}
             list={list}
-            ItemRender={ItemRenderMemo}
+            itemRender={itemRender}
             onScroll={onScroll}
           />
         )
