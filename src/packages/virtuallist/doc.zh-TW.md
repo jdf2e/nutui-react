@@ -36,16 +36,15 @@ const App =() => {
   useEffect(() => {
     getData()
   }, [getData])
-  const ItemRender = ({ data,index }) => {
-    return <p>自定義-{data}-{index}</p>
+  const itemRender = (data, dataIndex) => {
+    return <p>自定義-{data}-{dataIndex}</p>
   }
-  const ItemRenderMemo = React.memo(ItemRender)
   return (
     <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
       <VirtualList
         itemHeight={66}
         list={list}
-        ItemRender={ItemRenderMemo}
+        itemRender={itemRender}
       />
     </div>
   )
@@ -83,18 +82,17 @@ const App =() => {
   useEffect(() => {
     getData()
   }, [getData])
-  const ItemVariable = ({ data, index }) => {
+  const itemVariable = (data, dataIndex) => {
     return (
-      <p className={index % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>可變大小隔行展示-{data}</p>
+      <p className={dataIndex % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>可變大小隔行展示-{data}</p>
     )
   }
   /** itemSize為首屏最大元素大小 */
-  const ItemVariableDemo = React.memo(ItemVariable)
   return (
     <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
       <VirtualList
         list={list}
-        ItemRender={ItemVariableDemo}
+        itemRender={itemVariable}
         itemHeight={128}
         itemEqual={false}
         onScroll={onScroll}
@@ -131,15 +129,14 @@ const App =() => {
   useEffect(() => {
     getData()
   }, [getData])
-  const ItemRender = ({ data,index }) => {
-    return <p>自定義-{data}-{index}</p>
+  const itemRender = (data, dataIndex) => {
+    return <p>自定義-{data}-{dataIndex}</p>
   }
-  const ItemRenderMemo = React.memo(ItemRender)
   return (
     <div className='nut-virtualList-demo-box  hideScrollbar'>
       <VirtualList
         list={list}
-        ItemRender={ItemRenderMemo}
+        itemRender={itemRender}
         itemHeight={124}
         direction="horizontal"
       />
@@ -179,19 +176,18 @@ const App =() => {
   useEffect(() => {
     getData()
   }, [getData])
-  const ItemVariable = ({ data, index }) => {
+  const itemVariable = (data, dataIndex) => {
     return (
-      <p className={index % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>可變大小隔行展示-{data}</p>
+      <p className={dataIndex % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>可變大小隔行展示-{data}</p>
     )
   }
   /** itemSize為首屏最大元素大小 */
-  const ItemVariableDemo = React.memo(ItemVariable)
   return (
     <div className='nut-virtualList-demo-box  hideScrollbar'>
       <VirtualList
         list={list}
         itemHeight={300}
-        ItemRender={ItemVariableDemo}
+        itemRender={itemVariable}
         direction="horizontal"
         itemEqual={false}
         onScroll={onScroll}
@@ -212,7 +208,7 @@ export default App;
 | --- | --- | --- | --- |
 | list | 獲取數據 | `Array` | `-` |
 | containerHeight | 容器高度 | `number` | `獲取元素的 offsetWidth 或 offsetHeight，需要 css 給出` |
-| ItemRender | virtual 列錶父節點渲染的函數 | `React.FC` | `-` |
+| itemRender | virtual 列錶父節點渲染的函數 | `(data: any, dataIndex: number, index: number) => ReactNode` | `-` |
 | itemHeight | item 高度，如果不定高，則為首屏單個最大 height | `number` | `66` |
 | itemEqual | item 高度是否一致 | `boolean` | `true` |
 | overscan | 除了視窗裏面默認的元素, 還需要額外渲染的 item 個數 | `number` | `2` |
