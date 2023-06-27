@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { Calendar } from './calendar'
 import { Cell } from '@/packages/cell/cell'
-import Utils from '@/utils/date'
+import { Utils } from '@/utils/date'
 import { useTranslate } from '../../sites/assets/locale'
 
 import './demo.scss'

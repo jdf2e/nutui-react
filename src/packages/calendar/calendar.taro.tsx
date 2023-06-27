@@ -1,7 +1,7 @@
 import React, { useRef, ReactNode } from 'react'
 import Popup from '@/packages/popup/index.taro'
 import CalendarItem from '@/packages/calendaritem/index.taro'
-import Utils from '@/utils/date'
+import { Utils } from '@/utils/date'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 type CalendarRef = {

@@ -1,4 +1,4 @@
-const Utils = {
+export const Utils = {
   /**
    * 是否为闫年
    * @return {Boolse} true|false
@@ -27,7 +27,7 @@ const Utils = {
   },
 
   /**
-   * 返回星期数
+   * 返回上一个月在当前面板中的天数
    * @return {Number}
    */
   getMonthPreDay(year: number, month: number): number {
@@ -127,4 +127,66 @@ const Utils = {
   },
 }
 
-export default Utils
+// 获取当前月数据
+export const getCurrMonthData = (type: string, year: number, month: number) => {
+  switch (type) {
+    case 'prev':
+      month === 1 && (year -= 1)
+      month = month === 1 ? 12 : --month
+      break
+    case 'next':
+      month === 12 && (year += 1)
+      month = month === 12 ? 1 : ++month
+      break
+    default:
+      break
+  }
+  return [
+    year,
+    Utils.getNumTwoBit(month),
+    Utils.getMonthDays(String(year), String(month)),
+  ]
+}
+
+// 获取日期状态
+export const getDaysStatus = (type: string, year: number, month: number) => {
+  let days = Utils.getMonthDays(`${year}`, `${month}`)
+  // 修复：当某个月的1号是周日时，月份下方会空出来一行
+  if (type === 'prev' && days >= 7) {
+    days -= 7
+  }
+  return Array.from(Array(days), (v, k) => {
+    return {
+      day: k + 1,
+      type,
+      year,
+      month,
+    }
+  })
+}
+
+// 获取上一个月的最后一周天数，填充当月空白
+export const getPreMonthDates = (type: string, year: number, month: number) => {
+  let preMonth = +month - 1
+  let preYear = year
+  if (preMonth <= 0) {
+    preMonth = 12
+    preYear += 1
+  }
+  let days = Utils.getMonthPreDay(+year, +month)
+  // 修复：当某个月的1号是周日时，月份下方会空出来一行
+  if (type === 'prev' && days >= 7) {
+    days -= 7
+  }
+
+  const preDates = Utils.getMonthDays(`${preYear}`, `${preMonth}`)
+  const months = Array.from(Array(preDates), (v, k) => {
+    return {
+      day: k + 1,
+      type,
+      preYear,
+      preMonth,
+    }
+  })
+  return months.slice(preDates - days)
+}

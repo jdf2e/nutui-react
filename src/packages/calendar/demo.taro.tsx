@@ -3,7 +3,7 @@ import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Cell, Calendar } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import Utils from '@/utils/date'
+import { Utils } from '@/utils/date'
 import '@/packages/calendar/demo.scss'
 
 interface Day {
