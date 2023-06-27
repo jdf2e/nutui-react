@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, ReactNode } from 'react'
 import classNames from 'classnames'
 import { ScrollView } from '@tarojs/components'
-import { nextTick } from '@tarojs/taro'
+import Taro, { nextTick } from '@tarojs/taro'
 import { PopupProps } from '@/packages/popup/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import {
@@ -432,6 +432,8 @@ export const CalendarItem = React.forwardRef<
         ;(
           monthsPanel.current as HTMLDivElement
         ).style.height = `${containerHeight}px`
+        ;(monthsRef.current as HTMLDivElement).scrollTop =
+          monthsData[current].scrollTop
         setScrollTop(monthsData[current].scrollTop)
         nextTick(() => setScrollWithAnimation(true))
       }
@@ -507,7 +509,8 @@ export const CalendarItem = React.forwardRef<
     if (monthsData.length <= 1) {
       return
     }
-    const scrollTop = (e.target as HTMLElement).scrollTop
+    const scrollTop = (e.detail as HTMLElement).scrollTop
+    Taro.getEnv() === 'WEB' && setScrollTop(scrollTop)
     let current = Math.floor(scrollTop / avgHeight)
     const nextTop = monthsData[current + 1].scrollTop
     const nextHeight = monthsData[current + 1].cssHeight
