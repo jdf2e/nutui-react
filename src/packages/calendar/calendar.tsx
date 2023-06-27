@@ -25,6 +25,7 @@ export interface CalendarProps {
   showTitle?: boolean
   showSubTitle?: boolean
   scrollAnimation?: boolean
+  firstDayOfWeek: number
   renderHeaderButtons?: () => string | JSX.Element
   renderDay?: (date: Day) => string | JSX.Element
   renderDayTop?: (date: Day) => string | JSX.Element
@@ -51,6 +52,7 @@ const defaultProps = {
   showTitle: true,
   showSubTitle: true,
   scrollAnimation: true,
+  firstDayOfWeek: 0,
   renderHeaderButtons: undefined,
   renderDay: undefined,
   renderDayTop: undefined,
@@ -82,6 +84,7 @@ export const Calendar = React.forwardRef<
     showTitle,
     showSubTitle,
     scrollAnimation,
+    firstDayOfWeek,
     renderHeaderButtons,
     renderDay,
     renderDayTop,
@@ -140,6 +143,7 @@ export const Calendar = React.forwardRef<
         showTitle={showTitle}
         showSubTitle={showSubTitle}
         scrollAnimation={scrollAnimation}
+        firstDayOfWeek={firstDayOfWeek}
         renderHeaderButtons={renderHeaderButtons}
         renderDay={renderDay}
         renderDayTop={renderDayTop}

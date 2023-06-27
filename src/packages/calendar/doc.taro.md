@@ -141,6 +141,51 @@ export default App;
 ```
 :::
 
+### 选择周
+
+:::demo
+```tsx
+import  React, { useState } from "react";
+import { Cell, Calendar } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  const [date3, setDate3] = useState('')
+  const [isVisible3, setIsVisible3] = useState(false)
+
+  const openSwitch3 = () => {
+    setIsVisible3(true)
+  }
+
+  const closeSwitch3 = () => {
+    setIsVisible3(false)
+  }
+
+  const setChooseValue3 = (param: string) => {
+    const { weekDate } = param
+    const dateArr = [weekDate[0].date[3], weekDate[1].date[3]]
+    setDate3([...dateArr])
+  }
+
+  return (
+    <>
+      <Cell title="选择周" description={ date3 && date3.length ? `${date3[0]}${translated['8dab2f66']}${date3[1]}` : '请选择' } onClick={ openSwitch3 } />
+      <Calendar
+        visible={isVisible3}
+        defaultValue={date3}
+        type="week"
+        startDate="2022-01-01"
+        endDate="2022-09-10"
+        onClose={closeSwitch3}
+        onConfirm={setChooseValue3}
+      />
+    </>
+  );
+};
+export default App;
+
+```
+:::
+
 ### 快捷选择
 
 :::demo
@@ -446,6 +491,7 @@ export default App;
 | showTitle          | 是否在展示日历标题 | `boolean`          | `true` |
 | showSubTitle | 是否展示日期标题 | `boolean`          | `true` |
 | scrollAnimation | 是否启动滚动动画 | `boolean` | `true` |
+| firstDayOfWeek | 设置周起始日 | `0-6` | `0` |
 | renderHeaderButtons | 自定义日历标题下部，可用以添加自定义操作 |  `() => string | JSX.Element` | `-` |
 | renderDay  | 日期信息 | `(date: Day) => string | JSX.Element` | `-` |
 | renderDayTop  | 日期顶部信息 | `(date: Day) => string | JSX.Element` | `-` |

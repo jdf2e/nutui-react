@@ -48,6 +48,7 @@ export interface CalendarItemProps extends PopupProps {
   showTitle: boolean
   showSubTitle: boolean
   scrollAnimation: boolean
+  firstDayOfWeek: number
   renderHeaderButtons: () => string | JSX.Element
   renderDay: (date: Day) => string | JSX.Element
   renderDayTop: (date: Day) => string | JSX.Element
@@ -72,6 +73,7 @@ const defaultProps = {
   showTitle: true,
   showSubTitle: true,
   scrollAnimation: true,
+  firstDayOfWeek: 0,
   renderHeaderButtons: undefined,
   renderDay: undefined,
   renderDayTop: undefined,
@@ -103,6 +105,7 @@ export const CalendarItem = React.forwardRef<
     showTitle,
     showSubTitle,
     scrollAnimation,
+    firstDayOfWeek,
     renderHeaderButtons,
     renderDay,
     renderDayTop,
@@ -298,6 +301,22 @@ export const CalendarItem = React.forwardRef<
         currentDate.splice(0) && currentDate.push(...defaultArr)
         defaultData = [...splitDate(defaultArr[0])]
       }
+    } else if (props.type === 'week' && Array.isArray(currentDate)) {
+      if (currentDate.length > 0) {
+        const [y, m, d] = splitDate(currentDate[0])
+        const weekArr = Utils.getWeekDate(y, m, d, firstDayOfWeek)
+        currentDate.splice(0) && currentDate.push(...weekArr)
+        if (propStartDate && Utils.compareDate(currentDate[0], propStartDate)) {
+          currentDate.splice(0, 1, propStartDate)
+        }
+        if (propEndDate && Utils.compareDate(propEndDate, currentDate[1])) {
+          currentDate.splice(1, 1, propEndDate)
+        }
+        defaultData = [
+          ...splitDate(currentDate[0]),
+          ...splitDate(currentDate[1]),
+        ]
+      }
     } else if (currentDate) {
       if (currentDate.length > 0) {
         if (
@@ -329,7 +348,7 @@ export const CalendarItem = React.forwardRef<
         if (item.title === monthTitle(defaultData[0], defaultData[1])) {
           current = index
         }
-        if (type === 'range') {
+        if (type === 'range' || type === 'week') {
           if (item.title === monthTitle(defaultData[3], defaultData[4])) {
             lastCurrent = index
           }
@@ -368,6 +387,12 @@ export const CalendarItem = React.forwardRef<
         chooseDay(
           { day: defaultData[5], type: 'active' },
           monthsData[current.lastCurrent],
+          true
+        )
+      } else if (props.type === 'week') {
+        chooseDay(
+          { day: defaultData[2], type: 'curr' },
+          monthsData[current.current],
           true
         )
       } else if (type === 'multiple') {
@@ -524,7 +549,7 @@ export const CalendarItem = React.forwardRef<
         return `${dayPrefix}-disabled`
       }
 
-      if (type === 'range') {
+      if (type === 'range' || type === 'week') {
         if (
           isStart(dateStr, currentDate as string[]) ||
           isEnd(dateStr, currentDate as string[])
@@ -564,6 +589,7 @@ export const CalendarItem = React.forwardRef<
     }
 
     const days = [...month.curData]
+    const [y, m] = month.curData
     days[2] =
       typeof day.day === 'number' ? Utils.getNumTwoBit(day.day) : day.day
     days[3] = `${days[0]}/${days[1]}/${days[2]}`
@@ -604,12 +630,36 @@ export const CalendarItem = React.forwardRef<
         Array.isArray(currentDate) && currentDate.unshift(days[3])
         state.currDateArray = [[...days], ...state.currDateArray]
       }
+    } else if (type === 'week') {
+      const weekArr = Utils.getWeekDate(y, m, `${day.day}`, firstDayOfWeek)
+      if (propStartDate && Utils.compareDate(weekArr[0], propStartDate)) {
+        weekArr.splice(0, 1, propStartDate)
+      }
+      if (propEndDate && Utils.compareDate(propEndDate, weekArr[1])) {
+        weekArr.splice(1, 1, propEndDate)
+      }
+      Array.isArray(currentDate) &&
+        currentDate.splice(0) &&
+        currentDate.push(...weekArr)
+      state.currDateArray = [
+        Utils.formatResultDate(weekArr[0]),
+        Utils.formatResultDate(weekArr[1]),
+      ]
     } else {
       setCurrentDate(days[3])
       state.currDateArray = [...days]
     }
 
     if (!isFirst) {
+      if (type === 'week') {
+        let selectData: any = state.currDateArray
+        selectData = {
+          weekDate: [
+            handleWeekDate(state.currDateArray[0] as string[]),
+            handleWeekDate(state.currDateArray[1] as string[]),
+          ],
+        }
+      }
       onDayClick && onDayClick(state.currDateArray)
       if (autoBackfill || !popup) {
         confirm()
@@ -617,6 +667,15 @@ export const CalendarItem = React.forwardRef<
     }
 
     setMonthsData(monthsData.slice())
+  }
+  const handleWeekDate = (weekDate: string[]) => {
+    const [y, m, d] = weekDate
+    const obj = {
+      date: weekDate,
+      monthWeekNum: Utils.getMonthWeek(y, m, d, firstDayOfWeek),
+      yearWeekNum: Utils.getYearWeek(y, m, d, firstDayOfWeek),
+    }
+    return obj
   }
 
   const resetSelectedValue = () => {
@@ -642,7 +701,15 @@ export const CalendarItem = React.forwardRef<
       (type === 'range' && state.currDateArray.length === 2) ||
       type !== 'range'
     ) {
-      const chooseData = state.currDateArray.slice(0)
+      let chooseData = state.currDateArray.slice(0)
+      if (type === 'week') {
+        chooseData = {
+          weekDate: [
+            handleWeekDate(state.currDateArray[0] as string[]),
+            handleWeekDate(state.currDateArray[1] as string[]),
+          ],
+        }
+      }
       onConfirm && onConfirm(chooseData)
       if (popup) {
         onUpdate && onUpdate()
@@ -665,7 +732,7 @@ export const CalendarItem = React.forwardRef<
   // 是否有开始提示
   const isStartTip = (day: Day, month: MonthInfo) => {
     return (
-      type === 'range' &&
+      (type === 'range' || type === 'week') &&
       day.type === 'active' &&
       isStart(getCurrDate(day, month), currentDate as string[])
     )
@@ -675,7 +742,7 @@ export const CalendarItem = React.forwardRef<
   const isEndTip = (day: Day, month: MonthInfo) => {
     return (
       currentDate.length >= 2 &&
-      type === 'range' &&
+      (type === 'range' || type === 'week') &&
       day.type === 'active' &&
       isEnd(getCurrDate(day, month), currentDate as string[])
     )

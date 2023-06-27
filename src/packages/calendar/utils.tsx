@@ -34,25 +34,6 @@ export const isEnd = (day: string, days: string[]) => {
   return Utils.isEqual(days[1], day)
 }
 
-// // 是否有开始提示
-// export const isStartTip = (day: Day, month: MonthInfo, days: string[]) => {
-//   return (
-//     type === 'range' &&
-//     day.type === 'active' &&
-//     isStart(getCurrDate(day, month), days)
-//   )
-// }
-
-// // 是否有结束提示
-// export const isEndTip = (day: Day, month: MonthInfo, days: string[]) => {
-//   return (
-//     days.length >= 2 &&
-//     type === 'range' &&
-//     day.type === 'active' &&
-//     isEnd(getCurrDate(day, month), days)
-//   )
-// }
-
 // 开始结束时间是否相等
 export const isStartAndEnd = (days: string[]) => {
   return days.length >= 2 && Utils.isEqual(days[0], days[1])
