@@ -19,8 +19,8 @@ import {
   isStart,
   isEnd,
   isStartAndEnd,
-} from './utils'
-import { Day, MonthInfo, InputDate, SelectedType } from './type'
+} from '../calendar/utils'
+import { Day, MonthInfo, InputDate, SelectedType } from '../calendar/type'
 
 type CalendarRef = {
   scrollToDate: (date: string) => void
@@ -260,7 +260,7 @@ export const CalendarItem = React.forwardRef<
     return monthNum
   }
 
-  const renderCurrentDate = () => {
+  const setDefaultDate = () => {
     let defaultData: InputDate = []
     // 日期转化为数组，限制初始日期。判断时间范围
     if (type === 'range' && Array.isArray(currentDate)) {
@@ -315,7 +315,10 @@ export const CalendarItem = React.forwardRef<
         defaultData = []
       }
     }
+    return defaultData
+  }
 
+  const getCurrentIndex = (defaultData: InputDate) => {
     // 设置默认可见区域
     let current = 0
     let lastCurrent = 0
@@ -332,35 +335,43 @@ export const CalendarItem = React.forwardRef<
       })
     } else {
       // 当 defaultValue 为空时，如果月份列表包含当月，则默认定位到当月
-      const currentYear = new Date().getFullYear()
-      const currentMonth = new Date().getMonth() + 1
-      const currentYearMonthIndex = monthsData.findIndex((item) => {
-        return (
-          +item.curData[0] === currentYear && +item.curData[1] === currentMonth
-        )
+      const date = new Date()
+      const year = date.getFullYear()
+      const month = date.getMonth() + 1
+      const index = monthsData.findIndex((item) => {
+        return +item.curData[0] === year && +item.curData[1] === month
       })
-      if (currentYearMonthIndex > -1) {
-        current = currentYearMonthIndex
+      if (index > -1) {
+        current = index
       }
     }
+    return {
+      current,
+      lastCurrent,
+    }
+  }
+
+  const renderCurrentDate = () => {
+    const defaultData: InputDate = setDefaultDate()
+    const current = getCurrentIndex(defaultData)
 
     if (defaultData.length > 0) {
       // 设置当前选中日期
       if (type === 'range') {
         chooseDay(
           { day: defaultData[2], type: 'active' },
-          monthsData[current],
+          monthsData[current.current],
           true
         )
         chooseDay(
           { day: defaultData[5], type: 'active' },
-          monthsData[lastCurrent],
+          monthsData[current.lastCurrent],
           true
         )
       } else if (type === 'multiple') {
         ;[...currentDate].forEach((item: string) => {
           const dateArr = splitDate(item)
-          let currentIndex = current
+          let currentIndex = current.current
           monthsData.forEach((item, index) => {
             if (item.title === monthTitle(dateArr[0], dateArr[1])) {
               currentIndex = index
@@ -375,12 +386,12 @@ export const CalendarItem = React.forwardRef<
       } else {
         chooseDay(
           { day: defaultData[2], type: 'active' },
-          monthsData[current],
+          monthsData[current.current],
           true
         )
       }
     }
-    return current
+    return current.current
   }
 
   const requestAniFrameFunc = (current: number, monthNum: number) => {
@@ -412,11 +423,20 @@ export const CalendarItem = React.forwardRef<
     requestAniFrameFunc(current, monthNum)
   }
 
+  useEffect(() => {
+    initData()
+  }, [])
+
   const resetRender = () => {
     state.currDateArray.splice(0)
     monthsData.splice(0)
     initData()
   }
+
+  useEffect(() => {
+    setCurrentDate(resetDefaultValue() || [])
+    popup && resetRender()
+  }, [defaultValue])
 
   // 暴露出的API
   const scrollToDate = (date: string) => {
@@ -487,15 +507,6 @@ export const CalendarItem = React.forwardRef<
 
     setDefaultRange(monthsNum, current)
   }
-
-  useEffect(() => {
-    initData()
-  }, [])
-
-  useEffect(() => {
-    setCurrentDate(resetDefaultValue() || [])
-    popup && resetRender()
-  }, [defaultValue])
 
   React.useImperativeHandle(ref, () => ({
     scrollToDate,

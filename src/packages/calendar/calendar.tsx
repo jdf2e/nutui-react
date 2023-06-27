@@ -3,18 +3,14 @@ import Popup from '@/packages/popup'
 import CalendarItem from '@/packages/calendaritem'
 import { Utils } from '@/utils/date'
 import { useConfig } from '@/packages/configprovider'
+import { Day, SelectedType } from './type'
 
 type CalendarRef = {
   scrollToDate: (date: string) => void
 }
 
-interface Day {
-  day: string | number
-  type: string
-}
-
 export interface CalendarProps {
-  type?: string
+  type?: SelectedType
   autoBackfill?: boolean
   popup?: boolean
   visible?: boolean
