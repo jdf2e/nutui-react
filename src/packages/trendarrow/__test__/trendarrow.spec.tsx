@@ -39,8 +39,8 @@ test('should not render 0  when zero is false', async () => {
   )
 })
 
-test('should render left icon when arrowLeft', async () => {
-  const { container } = render(<TrendArrow value={12.325} arrowLeft />)
+test('should render left icon when left', async () => {
+  const { container } = render(<TrendArrow value={12.325} left />)
   expect(
     container.querySelectorAll('.nut-trendarrow__icon-before')?.length
   ).toBe(0)
@@ -49,8 +49,8 @@ test('should render left icon when arrowLeft', async () => {
   ).toBe(1)
 })
 
-test('should render sync text color when syncColor is true', async () => {
-  const { container } = render(<TrendArrow value={12.325} syncColor />)
+test('should render sync text color when sync is true', async () => {
+  const { container } = render(<TrendArrow value={12.325} sync />)
   expect(container.querySelector('.nut-trendarrow__value')).toHaveAttribute(
     'style',
     'color: rgb(250, 44, 25);'
@@ -59,7 +59,7 @@ test('should render sync text color when syncColor is true', async () => {
 
 test('should render sync text color when color is true', async () => {
   const { container } = render(
-    <TrendArrow value={12.325} syncColor={false} color="rgb(39,197,48)" />
+    <TrendArrow value={12.325} sync={false} color="rgb(39,197,48)" />
   )
   expect(container.querySelector('.nut-trendarrow__value')).toHaveAttribute(
     'style',

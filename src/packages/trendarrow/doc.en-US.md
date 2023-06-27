@@ -23,8 +23,8 @@ import { TrendArrow, Cell } from '@nutui/nutui-react'
 const App = () => {
   return (
     <Cell>
-        <TrendArrow syncColor={false} value={1} />
-        <TrendArrow syncColor={false} value={-0.2535} />
+        <TrendArrow sync={false} value={1} />
+        <TrendArrow sync={false} value={-0.2535} />
     </Cell>
   );
 };
@@ -86,8 +86,8 @@ import { TrendArrow, Cell } from '@nutui/nutui-react'
 const App = () => {
   return (
     <Cell>
-        <TrendArrow arrowLeft value={0.2535} />
-        <TrendArrow arrowLeft value={-0.2535} />
+        <TrendArrow left value={0.2535} />
+        <TrendArrow left value={-0.2535} />
     </Cell>
   );
 };
@@ -152,7 +152,7 @@ const App = () => {
         <TrendArrow value={10.2365} riseColor="rgb(73,143,242)" />
         <TrendArrow value={-0.2535} symbol dropColor="rgb(255, 190, 13)" />
         <TrendArrow
-        syncColor={false}
+        sync={false}
         value={-0.2535}
         symbol
         color="rgb(39,197,48)"
@@ -179,7 +179,7 @@ const App = () => {
   return (
     <Cell>
         <TrendArrow value={10.2365} riseIcon={<Success color="blue" />} />
-        <TrendArrow value={-10.2365} downIcon={<Failure color="red" />} />
+        <TrendArrow value={-10.2365} dropIcon={<Failure color="red" />} />
     </Cell>
   );
 };
@@ -198,13 +198,13 @@ export default App;
 | digits | Decimal precision | `number` | `2` |
 | symbol | Whether to display plus and minus signs | `boolean` | `false` |
 | zero | Show zero or not | `boolean` | `false` |
-| arrowLeft | Whether to show an arrow to the left of the number | `boolean` | `false` |
-| syncColor | Whether the text color is in sync with the arrow | `boolean` | `true` |
+| left | Whether to show an arrow to the left of the number | `boolean` | `false` |
+| sync | Whether the text color is in sync with the arrow | `boolean` | `true` |
 | color | Text color | `string` | `#333333` |
 | riseColor | Rise arrow color | `string` | `#fa2c19` |
 | dropColor | Down arrow color | `string` | `#64b578` |
 | riseIcon | Custom Rise arrow icon | `string` | `<TriangleUp/>` |
-| downIcon | Custom down arrow icon | `string` | `<TriangleDown/>` |
+| dropIcon | Custom down arrow icon | `string` | `<TriangleDown/>` |
 
 ## Theming
 
