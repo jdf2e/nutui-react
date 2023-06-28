@@ -209,9 +209,8 @@ const CalendarDemo = () => {
   }
 
   const setChooseValue40 = (chooseData: any) => {
-    const { weekDate } = chooseData
-    const dateArr = [weekDate[0].date[3], weekDate[1].date[3]]
-    console.log('setChooseValue40', [...dateArr], weekDate, weekDate[0].date[3])
+    console.log('setChooseValue40', [...[chooseData[0][3], chooseData[1][3]]])
+    const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
     setDate40([...dateArr])
   }
 
@@ -382,6 +381,7 @@ const CalendarDemo = () => {
           type="week"
           startDate="2023-01-01"
           endDate="2024-09-10"
+          firstDayOfWeek={1}
           onClose={closeSwitch40}
           onConfirm={setChooseValue40}
         />

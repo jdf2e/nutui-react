@@ -185,6 +185,7 @@ export const Utils = {
     const sunday = this.date2Str(new Date(SundayTime))
     return [monday, sunday]
   },
+
   formatResultDate(date: string) {
     const days = [...date.split('-')]
     days[2] = Utils.getNumTwoBit(Number(days[2]))
@@ -233,7 +234,12 @@ export const getDaysStatus = (type: string, year: number, month: number) => {
 }
 
 // 获取上一个月的最后一周天数，填充当月空白
-export const getPreMonthDates = (type: string, year: number, month: number) => {
+export const getPreMonthDates = (
+  type: string,
+  year: number,
+  month: number,
+  firstDayOfWeek: number
+) => {
   let preMonth = +month - 1
   let preYear = year
   if (preMonth <= 0) {
@@ -241,6 +247,7 @@ export const getPreMonthDates = (type: string, year: number, month: number) => {
     preYear += 1
   }
   let days = Utils.getMonthPreDay(+year, +month)
+  days -= firstDayOfWeek
   // 修复：当某个月的1号是周日时，月份下方会空出来一行
   if (type === 'prev' && days >= 7) {
     days -= 7

@@ -197,9 +197,8 @@ const CalendarDemo = () => {
     setDate4([...dateArr])
   }
   const setChooseValue40 = (chooseData: any) => {
-    const { weekDate } = chooseData
-    const dateArr = [weekDate[0].date[3], weekDate[1].date[3]]
-    console.log('setChooseValue40', [...dateArr], weekDate, weekDate[0].date[3])
+    console.log('setChooseValue40', [...[chooseData[0][3], chooseData[1][3]]])
+    const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
     setDate40([...dateArr])
   }
   const setChooseValue5 = (param: string) => {

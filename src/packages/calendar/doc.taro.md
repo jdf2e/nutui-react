@@ -161,8 +161,7 @@ const App = () => {
   }
 
   const setChooseValue3 = (param: string) => {
-    const { weekDate } = param
-    const dateArr = [weekDate[0].date[3], weekDate[1].date[3]]
+    const dateArr = [...[param[0][3], param[1][3]]]
     setDate3([...dateArr])
   }
 

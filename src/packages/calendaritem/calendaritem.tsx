@@ -113,7 +113,12 @@ export const CalendarItem = React.forwardRef<
     onPageChange,
   } = { ...defaultProps, ...props }
 
-  const weeks = locale.calendaritem.weekdays
+  const weekdays = locale.calendaritem.weekdays
+  const weeks = [
+    ...weekdays.slice(firstDayOfWeek, 7),
+    ...weekdays.slice(0, firstDayOfWeek),
+  ]
+
   const monthTitle = locale.calendaritem.monthTitle
   const [yearMonthTitle, setYearMonthTitle] = useState('')
   const [monthsData, setMonthsData] = useState<any[]>([])
@@ -171,7 +176,7 @@ export const CalendarItem = React.forwardRef<
       const y = parseInt(date[0], 10)
       const m = parseInt(date[1], 10)
       const days = [
-        ...(getPreMonthDates('prev', y, m) as Day[]),
+        ...(getPreMonthDates('prev', y, m, firstDayOfWeek) as Day[]),
         ...(getDaysStatus('active', y, m) as Day[]),
       ]
       const cssHeight = 39 + (days.length > 35 ? 384 : 320)
@@ -299,7 +304,7 @@ export const CalendarItem = React.forwardRef<
         currentDate.splice(0) && currentDate.push(...defaultArr)
         defaultData = [...splitDate(defaultArr[0])]
       }
-    } else if (props.type === 'week' && Array.isArray(currentDate)) {
+    } else if (type === 'week' && Array.isArray(currentDate)) {
       if (currentDate.length > 0) {
         const [y, m, d] = splitDate(currentDate[0])
         const weekArr = Utils.getWeekDate(y, m, d, firstDayOfWeek)
@@ -649,16 +654,6 @@ export const CalendarItem = React.forwardRef<
     }
 
     if (!isFirst) {
-      if (type === 'week') {
-        let selectData: any = state.currDateArray
-        selectData = {
-          weekDate: [
-            handleWeekDate(state.currDateArray[0] as string[]),
-            handleWeekDate(state.currDateArray[1] as string[]),
-          ],
-        }
-      }
-
       onDayClick && onDayClick(state.currDateArray)
       if (autoBackfill || !popup) {
         confirm()
@@ -666,16 +661,6 @@ export const CalendarItem = React.forwardRef<
     }
 
     setMonthsData(monthsData.slice())
-  }
-
-  const handleWeekDate = (weekDate: string[]) => {
-    const [y, m, d] = weekDate
-    const obj = {
-      date: weekDate,
-      monthWeekNum: Utils.getMonthWeek(y, m, d, firstDayOfWeek),
-      yearWeekNum: Utils.getYearWeek(y, m, d, firstDayOfWeek),
-    }
-    return obj
   }
 
   const resetSelectedValue = () => {
@@ -701,15 +686,7 @@ export const CalendarItem = React.forwardRef<
       (type === 'range' && state.currDateArray.length === 2) ||
       type !== 'range'
     ) {
-      let chooseData = state.currDateArray.slice(0)
-      if (type === 'week') {
-        chooseData = {
-          weekDate: [
-            handleWeekDate(state.currDateArray[0] as string[]),
-            handleWeekDate(state.currDateArray[1] as string[]),
-          ],
-        }
-      }
+      const chooseData = state.currDateArray.slice(0)
       onConfirm && onConfirm(chooseData)
       if (popup) {
         onUpdate && onUpdate()
