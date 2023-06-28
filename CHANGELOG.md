@@ -1,3 +1,15 @@
+# v2.0.0-beta.2
+`2023-06-28`
+
+* :sparkles: feat: 日历组件新增选择周 type='week' 模式 (#1152) @xiaoyatong
+* :bug: fix: dialog spelling mistake (#1148) @Katz
+* :bug: fix: fit&wxwork (#1146) @junjun666
+* :bug: fix: 优化 TrendArrow 组件 props (#1150) @songsong
+* :bug: fix: 修改navbar组件demo样式 (#1145) @songsong
+* 🛠 refactor: 属性定义走查修复 (#1149) @xiaoyatong
+* 🔨 chore(virtuallist): 调整 itemRender (#1151) @Eiinu
+
+
 # v2.0.0-beta.1
 `2023-06-21`
 
