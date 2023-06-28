@@ -255,6 +255,7 @@ plugins: [
 - `onSelected` 更名为 `onDayClick`
 - `onChoose` 更名为 `onConfirm`
 - `onYearMonthChange` 更名为 `onPageChange`
+- 新增 `firstDayOfWeek`，支持按照周进行选择，指定周起止日，如0-6
 
 #### Cascader
 - 新增 `defaultValue`，其中 `defaultValue` 用于非受控，原 `value` 用于受控。两者的类型都改为 `(number | string | undefined)[]`

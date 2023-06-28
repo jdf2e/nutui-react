@@ -69,7 +69,6 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
   }
   const hideMenuItem = (index: number) => {
     showMenuItem[index] = false
-    console.log([...showMenuItem])
     setShowMenuItem([...showMenuItem])
   }
   const updateTitle = (text: string, index: number) => {

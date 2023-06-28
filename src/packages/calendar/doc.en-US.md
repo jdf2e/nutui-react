@@ -141,6 +141,51 @@ export default App;
 ```
 :::
 
+
+### Select Week
+
+:::demo
+```tsx
+import  React, { useState } from "react";
+import { Cell, Calendar } from '@nutui/nutui-react';
+
+const App = () => {
+  const [date3, setDate3] = useState('')
+  const [isVisible3, setIsVisible3] = useState(false)
+
+  const openSwitch3 = () => {
+    setIsVisible3(true)
+  }
+
+  const closeSwitch3 = () => {
+    setIsVisible3(false)
+  }
+
+  const setChooseValue3 = (param: string) => {
+    const dateArr = [...[param[0][3], param[1][3]]]
+    setDate3([...dateArr])
+  }
+
+  return (
+    <>
+      <Cell title="Select Week" description={ date3 && date3.length ? `${date3[0]}to${date3[1]}` : 'Select week' } onClick={ openSwitch3 } />
+      <Calendar
+        visible={isVisible3}
+        defaultValue={date3}
+        type="week"
+        startDate="2022-01-01"
+        endDate="2022-09-10"
+        onClose={closeSwitch3}
+        onConfirm={setChooseValue3}
+      />
+    </>
+  );
+};
+export default App;
+
+```
+:::
+
 ### quick selection
 
 :::demo
@@ -448,6 +493,7 @@ export default App;
 | showTitle          | whether to show title for calendar | `boolean`          | `true` |
 | showSubTitle | whether to show sub title for calendar | `boolean`          | `true` |
 | scrollAnimation | whether to start scroll animation | `boolean` | `true` |
+| firstDayOfWeek | first day of week | `0-6` | `0` |
 | renderHeaderButtons | custom buttons, under the title but above the subtitle |  `() => string | JSX.Element` | `-` |
 | renderDay  | day info | `(date: Day) => string | JSX.Element` | `-` |
 | renderDayTop  | something above day  | `(date: Day) => string | JSX.Element` | `-` |
