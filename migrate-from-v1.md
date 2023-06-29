@@ -444,9 +444,10 @@ plugins: [
 - `useCapture` 重命名为 `capture`
 - `onScrollChange` 重命名为 `onScroll`
 - `isOpenRefresh` 重命名为 `pullRefresh`
-- `pullText` 重命名为 `pullingText`，类型变更为 `ReactNode`
-- `loadText` 重命名为 `loadingText`，类型变更为 `ReactNode`
+- `pullTxt` 重命名为 `pullingText`，类型变更为 `ReactNode`
+- `loadTxt` 重命名为 `loadingText`，类型变更为 `ReactNode`
 - `containerId` 重命名为 `target`
+- `Infiniteloading` 组件名修改为 `InfiniteLoading`
 #### Notify
 
 - 移除 `color` ，通过css变量`--nutui-notify-text-color`实现
