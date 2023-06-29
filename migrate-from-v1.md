@@ -74,7 +74,12 @@ plugins: [
 如果你的项目中使用了这些组件，请仔细阅读文档并进行升级。
 
 ## 组件名称调整
-本次暂无组件名称变更。
+- GridItem -> Grid.Item
+- TabbarItem -> Tabbar.Item
+- CollapseItem -> Collapse.Item
+- SwiperItem -> Swiper.Item
+- CellGroup -> Cell.Group
+- MenuItem -> Menu.Item
 
 ## 组件 API 调整
 在 2.0 版本中，我们重点对组件 API 进行了评审和修订，使属性和方法命名更贴合常用的命名习惯及 React 语言规范，目标希望开发者在使用组件时得心应手。我们的思路大体如下：
