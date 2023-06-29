@@ -103,7 +103,7 @@ plugins: [
 
 ### 基础组件
 #### Button
-- 删除 `plain`，通过 `fill="outline"` 实现
+- 移除 `plain`，通过 `fill="outline"` 实现
 - 增加 `ref`，对外暴露组件内 `button` 元素
 
 #### Cell
@@ -122,11 +122,11 @@ plugins: [
 #### ConfigProvider
 #### Icon
 #### Image
-- 删除 `round`，通过 `radius` 实现圆或圆角
-- 删除 `loadingImg` 和 `slotLoading`，通过 `loading` 属性实现，当 `loading` 属性设置为 `ReactNode` 或 `true` 时，表示展示 `loading` 状态
-- 删除 `showError` 和 `slotError`，通过 `error` 属性实现，当 `error` 属性设置为 `ReactNode` 或 `true` 时，表示展示 `error` 状态
-- 删除 `loadingImg`，可通过 `loading` 设置 `ReactNode`
-- 删除 `errorImg`，可通过 `error` 设置 `ReactNode`
+- 移除 `round`，通过 `radius` 实现圆或圆角
+- 移除 `loadingImg` 和 `slotLoading`，通过 `loading` 属性实现，当 `loading` 属性设置为 `ReactNode` 或 `true` 时，表示展示 `loading` 状态
+- 移除 `showError` 和 `slotError`，通过 `error` 属性实现，当 `error` 属性设置为 `ReactNode` 或 `true` 时，表示展示 `error` 状态
+- 移除 `loadingImg`，可通过 `loading` 设置 `ReactNode`
+- 移除 `errorImg`，可通过 `error` 设置 `ReactNode`
 - `showError` 重命名为 `error`，类型修改为 `boolean｜ReactNode`
 - `showLoading` 重命名为 `loading`，类型修改为 `boolean｜ReactNode`
 #### Overlay
@@ -139,14 +139,14 @@ plugins: [
 - `popClass` 重命名为 `className`，统一将组件的样式类名使用 `className`，不再指定特殊名字，减轻用户使用的记忆成本
 - `overlayClass` 重命名为 `OverlayClassName`，继承自`Overlay`
 - `closeOnClickOverlay` 重命名为 `closeOnOverlayClick`
-- `onOpened` 和 `onClosed` 改为 `afterShow` 和 `afterClose`，继承自`Overlay`，用于完全关闭后触发的回调和完全展示后触发的回调 
+- `onOpened` 和 `onClosed`  重命名为  `afterShow` 和 `afterClose`，继承自`Overlay`，用于完全关闭后触发的回调和完全展示后触发的回调 
 - `destroyOnClose` 的描述进行了修订，改为：“组件不可见时，卸载内容”，并把其默认值改为了`false`
 - `onClickCloseIcon` 和 `onClickOverlay` 两个方法，增加布尔判断，如返回false 或 未定义返回值时，将不再关闭 Popup；默认值为 `true`；在demo中已增加相应示例；同时，两者的名字变更为 `onCloseIconClick`、`onOverlayClick`
 
 ### 布局组件
 #### Divider
-- 删除 `dashed`, 通过 `style` 属性实现
-- 删除 `hairline`, 默认为 `true`
+- 移除 `dashed`, 通过 `style` 属性实现
+- 移除 `hairline`, 默认为 `true`
 #### Grid
 - 移除 `fontSize`，可自行控制传入的组件字体大小
 - 移除 `border`，作为默认样式
@@ -154,7 +154,7 @@ plugins: [
 - `GridItem` 使用方式修改为 `Grid.Item`
 #### Layout
 #### Sticky
-- 删除 `top` 和 `bottom`，改为 `threshold`
+- 移除 `top` 和 `bottom`， 重命名为  `threshold`
 ### 导航组件
 #### Elevator
 - `acceptKey` 重命名为 `floorKey`
@@ -168,18 +168,18 @@ plugins: [
 - `navList` 重命名为 `list`
 - `slotBtn` 重命名为 `content`
 - `onSelected` 重命名为 `onSelect`
-- 删除 `fixednavClass`，通过 `className` 实现
-- 删除 `slotList`，通过 `children` 实现
+- 移除 `fixednavClass`，通过 `className` 实现
+- 移除 `slotList`，通过 `children` 实现
 #### Indicator
-- 删除 `block`，暴露自定义节点
-- 删除 `align`，暴露自定义节点
-- 删除 `vertical`，改为 `direction`，默认值为 `horizontal`，可选 `vertical` 
-- 删除 `fillZero`，暴露自定义节点
-- 删除 `size`， 改为 `total`
+- 移除 `block`，暴露自定义节点
+- 移除 `align`，暴露自定义节点
+- `vertical` 重命名为`direction`，默认值为 `horizontal`，可选 `vertical` 
+- 移除 `fillZero`，暴露自定义节点
+- `size` 重命名为 `total`
 - 增加非数字展示，并设置为默认状态
 #### Menu
-- 删除 `fontClassName`
-- 删除 `iconClassPrefix`
+- 移除 `fontClassName`
+- 移除 `iconClassPrefix`
 - `closeOnClickOverlay` 重命名为 `closeOnOverlayClick`
 - `titleIcon` 重命名为 `icon`
 - `optionsIcon` 重命名为 `icon`
@@ -224,10 +224,10 @@ plugins: [
 - 移除 `num`，支持传入所有 `Badge` Props
 - 移除 `color`，使用父元素的 `activeColor`，保持同样的 `active` 状态
 #### Tabs
-- 删除 `background`，通过 `className` 或 `style` 控制
-- 删除 `titleScroll`, 默认支持滚动
-- 删除 `ellipsis`，默认 `flex：1`
-- 删除 `size`，通过 css 变量 `--nutui-tabs-titles-item-font-size` 实现
+- 移除 `background`，通过 `className` 或 `style` 控制
+- 移除 `titleScroll`, 默认支持滚动
+- 移除 `ellipsis`，默认 `flex：1`
+- 移除 `size`，通过 css 变量 `--nutui-tabs-titles-item-font-size` 实现
 - `animatedTime` 重命名为 `duration`
 - `titleGutter` 重命名为 css 样式变量实现
 - `titleNode` 重命名为 `title`
@@ -242,19 +242,19 @@ plugins: [
 ### 数据录入
 #### Calendar
 
-- `poppable` 更名为 `popup`
-- `isAutoBackFill` 更名为 `autoBackfill`
-- `toDateAnimation` 更名为 `scrollAnimation`
+- `poppable` 重命名为 `popup`
+- `isAutoBackFill` 重命名为 `autoBackfill`
+- `toDateAnimation` 重命名为 `scrollAnimation`
 - `startText` 类型改为 `ReactNode`
 - `endText` 类型改为 `ReactNode`
 - `confirmText` 类型改为 `ReactNode`
-- `onBtn` 更名为 `renderHeaderButtons`
-- `onDay` 更名为 `renderDay`
-- `onTopInfo` 更名为 `renderDayTop`
-- `onBottomInfo` 更名为 `renderDayBottom`
-- `onSelected` 更名为 `onDayClick`
-- `onChoose` 更名为 `onConfirm`
-- `onYearMonthChange` 更名为 `onPageChange`
+- `onBtn` 重命名为 `renderHeaderButtons`
+- `onDay` 重命名为 `renderDay`
+- `onTopInfo` 重命名为 `renderDayTop`
+- `onBottomInfo` 重命名为 `renderDayBottom`
+- `onSelected` 重命名为 `onDayClick`
+- `onChoose` 重命名为 `onConfirm`
+- `onYearMonthChange` 重命名为 `onPageChange`
 - 新增 `firstDayOfWeek`，支持按照周进行选择，指定周起止日，如0-6
 
 #### Cascader
@@ -264,7 +264,7 @@ plugins: [
 - `lazyLoad` 重命名为 `onLoad`，当启动懒加载 `lazy` 时，动态加载数据
 - `convertConfig` 重命名为 `format`，配置转换规则
 - 合并 `textKey` `valueKey` `childrenKey` 三个属性为对象属性 `optionKey`
-- 删除 `tabsColor`， 该属性为设置 `Tabs` 当前选中的 `tab` 的下划线色值，但该值最好与文字部分搭配使用，统一处理 CSS 变量。
+- 移除 `tabsColor`， 该属性为设置 `Tabs` 当前选中的 `tab` 的下划线色值，但该值最好与文字部分搭配使用，统一处理 CSS 变量。
 
 #### Checkbox
 - 新增 `defaultChecked`，用于非受控，`checked` 用于受控
@@ -280,12 +280,12 @@ plugins: [
 - `toggleAll` 重命名为 `toggle`
 - `toggleReverse` 重命名为 `reverse`
 #### DatePicker
-- `modelValue` 更名为 `value`，并增加 `defaultValue`
-- `isShowChinese` 更名为 `showChinese`
-- `minDate` 更名为 `startDate`
-- `maxDate` 更名为 `endDate`
-- `onConfirmDatePicker` 更名为 `onConfirm`
-- `onCloseDatePicker` 更名为 `onClose`
+- `modelValue` 重命名为 `value`，并增加 `defaultValue`
+- `isShowChinese` 重命名为 `showChinese`
+- `minDate` 重命名为 `startDate`
+- `maxDate` 重命名为 `endDate`
+- `onConfirmDatePicker` 重命名为 `onConfirm`
+- `onCloseDatePicker` 重命名为 `onClose`
 - 因为依赖组件`Picker`的变更，方法 `onConfirmDatePicker`、`onChange`的参数进行了调整，从`(selectedValue, selectedOptions)` 改为 `(selectedOptions, selectedValue)`。
 #### Form
 - 增加 `footer`，类型为 `ReactNode`，用于表单底部区域，通常用于设置提交、重置按钮
@@ -344,25 +344,25 @@ plugins: [
 #### Rate
 - `minimizeValue` 重命名为 `min`
 - `readonly` 重命名为 `readOnly`
-- 删除 `spacing`，通过 css 样式变量实现
+- 移除 `spacing`，通过 css 样式变量实现
 - 移除 `activeColor`、`voidColor`、`iconSize`，通过 `checkedIcon`、`uncheckedIcon` 实现
 - 增加受控 `value` 与非受控 `defaultValue`，移除 `modelValue`
 #### SearchBar
 - `onClickInput` 重命名为 `onInputClick`
-- 删除 `clearSize`，样式默认
-- 删除 `background`，使用 CSS 变量 `--nutui-searchbar-background` 实现 
-- 删除 `inputBackground`，使用 CSS 变量 `--nutui-searchbar-input-background` 实现 
-- 删除 `align`，使用 CSS 变量 `--nutui-searchbar-input-text-align`
+- 移除 `clearSize`，样式默认
+- 移除 `background`，使用 CSS 变量 `--nutui-searchbar-background` 实现 
+- 移除 `inputBackground`，使用 CSS 变量 `--nutui-searchbar-input-background` 实现 
+- 移除 `align`，使用 CSS 变量 `--nutui-searchbar-input-text-align`
 - 新增 `left` 和 `right`，为 `ReactNode` 节点，可自定义内容
-- 删除 `leftoutIcon` 和 `labal`，使用 `left` 实现
-- 删除 `rightoutIcon` 和 `actionText`，使用 `right` 实现
-- 删除 `leftinIcon`，使用 `leftIn` 实现
-- 删除 `rightinIcon`，使用 `rightIn` 实现
-- 删除 `onCancel`，使用 `right` 来实现事件处理
-- 删除 `onClickLeftinIcon`，用户可使用 `left` 来实现事件处理
-- 删除 `onClickLeftoutIcon`，用户可使用 `left` 来实现事件处理
-- 删除 `onClickRightinIcon`，用户可使用 `right` 来实现事件处理
-- 删除 `onClickRightoutIcon`，用户可使用 `right` 来实现事件处理
+- 移除 `leftoutIcon` 和 `label`，使用 `left` 实现
+- 移除 `rightoutIcon` 和 `actionText`，使用 `right` 实现
+- 移除 `leftinIcon`，使用 `leftIn` 实现
+- 移除 `rightinIcon`，使用 `rightIn` 实现
+- 移除 `onCancel`，使用 `right` 来实现事件处理
+- 移除 `onClickLeftinIcon`，用户可使用 `left` 来实现事件处理
+- 移除 `onClickLeftoutIcon`，用户可使用 `left` 来实现事件处理
+- 移除 `onClickRightinIcon`，用户可使用 `right` 来实现事件处理
+- 移除 `onClickRightoutIcon`，用户可使用 `right` 来实现事件处理
 
 #### ShortPassword
 - `desc` 重命名为 `description`
@@ -419,18 +419,18 @@ plugins: [
 - `distance` 重命名为 `threshold`
 - 移除 `isAnimation`，通过 `duration` 设置 0 实现无动画效果
 #### Dialog
-- 修改 `okText` 为 `confirmText`，规范命名。
-- 修改 `mask` 为 `overlay`，组件库中统一使用 Overlay 组件作为遮罩层，并使用 overlay 作为是否展示遮罩层的属性值。
-- 修改 `closeOnClickOverlay` 为 `closeOnOverlayClick`，组件库统一到该属性。
-- 修改 `noOkBtn` 为 `hideConfirmButton`，初始值不变，依然表示是否隐藏确认按钮，主要是为了语义化更强。
-- 修改 `noCancelBtn` 为 `hideCancelButton`，初始值不变，依然表示是否隐藏取消按钮，主要是为了语义化更强。
-- 修改 `okBtnDisabled` 为 `disableConfirmButton`，初始值不变，依然表示是否禁用确认按钮，主要是为了语义化更强。
-- 删除 `noFooter`，使用 footer 统一处理，当 footer 为空时，及可替代该值。目前 noFooter 也需要手动声明是否为 noFooter；修改后需手动指出 footer={null}
-- 删除 `textAlign`，改用样式变量 `--nutui-dialog-content-text-align` 或 SCSS 变量 `$dialog-content-text-align` 控制，默认值为 center。
-- 删除 `cancelAutoClose`，改为 `beforeCancel` 和 `beforeClose` 来实现，在点击关闭或取消时，可先触发这两个方法，以确定是否要关闭弹框，如返回true，则关闭；否则不关闭。
-- 修改 `onOk` 为 `onConfirm`，规范命名。
-- 修改 `onClosed` 为 `onClose`，规范命名，关闭时触发。
-- 修改 `onClickSelf` 为 `onClick`，语义不变，仍表示点击弹框自身时触发事件。
+- `okText` 重命名为 `confirmText`，规范命名。
+- `mask` 重命名为 `overlay`，组件库中统一使用 Overlay 组件作为遮罩层，并使用 overlay 作为是否展示遮罩层的属性值。
+- `closeOnClickOverlay` 重命名为 `closeOnOverlayClick`，组件库统一到该属性。
+- `noOkBtn` 重命名为 `hideConfirmButton`，初始值不变，依然表示是否隐藏确认按钮，主要是为了语义化更强。
+- `noCancelBtn` 重命名为 `hideCancelButton`，初始值不变，依然表示是否隐藏取消按钮，主要是为了语义化更强。
+- `okBtnDisabled` 重命名为 `disableConfirmButton`，初始值不变，依然表示是否禁用确认按钮，主要是为了语义化更强。
+- 移除 `noFooter`，使用 footer 统一处理，当 footer 为空时，及可替代该值。目前 noFooter 也需要手动声明是否为 noFooter；修改后需手动指出 footer={null}
+- 移除 `textAlign`，改用样式变量 `--nutui-dialog-content-text-align` 或 SCSS 变量 `$dialog-content-text-align` 控制，默认值为 center。
+- 移除 `cancelAutoClose`，改为 `beforeCancel` 和 `beforeClose` 来实现，在点击关闭或取消时，可先触发这两个方法，以确定是否要关闭弹框，如返回true，则关闭；否则不关闭。
+- `onOk` 重命名为 `onConfirm`，规范命名。
+- `onClosed` 重命名为 `onClose`，规范命名，关闭时触发。
+- `onClickSelf` 重命名为 `onClick`，语义不变，仍表示点击弹框自身时触发事件。
 - 增加 `overlayStyle` 和 `overlayClassName`，用来配置 Overlay 组件样式。
 - 增加 `onOverlayClick`，支持点击overlay时，触发事件。
 
@@ -463,13 +463,13 @@ plugins: [
   
 #### Toast
 
-- 删除H5版本 `id` 
-- 删除 `center`和 `bottom`，通过 `position` 实现
-- 删除 `bgColor`，通过 css 变量实现
-- 删除 `customClass`，通过 `className` 实现
-- 删除 `cover` 和 `coverColor` ，通过css变量实现
-- 删除 `loadingRotate`，旋转状态通过 `iconFont`实现
-- 删除 `textAlignCenter`，通过css变量实现
+- 移除H5版本 `id` 
+- 移除 `center`和 `bottom`，通过 `position` 实现
+- 移除 `bgColor`，通过 css 变量实现
+- 移除 `customClass`，通过 `className` 实现
+- 移除 `cover` 和 `coverColor` ，通过css变量实现
+- 移除 `loadingRotate`，旋转状态通过 `iconFont`实现
+- 移除 `textAlignCenter`，通过css变量实现
 - 修改 `closeOnClickOverlay` 为 `closeOnOverlayClick` ，语义不变，是否在点击遮罩层后关闭提示
 - 新增 `lockScroll` ，用于背景是否锁定，默认值为 `false`
 
@@ -503,8 +503,8 @@ plugins: [
 - AvatarGroup `zIndex` 重命名为 `level`
 
 #### Badge
-- 删除 `zIndex`，目前没有用到，也不生效，直接去掉。
-- 删除 `icon`，自定义 `icon` 可放在 `value` 中实现，扩充了 `value` 的类型。
+- 移除 `zIndex`，目前没有用到，也不生效，直接去掉。
+- 移除 `icon`，自定义 `icon` 可放在 `value` 中实现，扩充了 `value` 的类型。
 - 修改 `max` 的最大值为99（之前为10000），比较贴合实际场景。
 - 主题定制的 `css` 变量中，去掉和 `dot` 有关的其他值，只保留 `width`。其他值由 `width` 计算而来。
 
@@ -548,20 +548,20 @@ plugins: [
 - 在 `Taro` 下支持视频
 
 #### NoticeBar
-- `direction` 的可选值从`across` 改为 `horizontal`
-- `text` 改为 `content`
-- `closeMode` 改为 `closeable`
+- `direction` 的可选值从 `across` 重命名为 `horizontal`
+- `text` 重命名为 `content`
+- `closeMode` 重命名为 `closeable`
 - `leftIcon` 类型扩充，支持 `ReactNode`
 - `rightIcon` 类型扩充，支持 `ReactNode`
-- `color` 删除，使用 CSS 变量，之前已支持
-- `background` 删除，使用 CSS 变量，之前已支持
-- `wrapable` 更名为 `wrap`
-- `standTime` 更名为 `duration`
-- `onClickItem` 更名为 `onItemClick`
+- `color` 移除，使用 CSS 变量，之前已支持
+- `background` 移除，使用 CSS 变量，之前已支持
+- `wrapable` 重命名为 `wrap`
+- `standTime` 重命名为 `duration`
+- `onClickItem` 重命名为 `onItemClick`
 - `complexAm` 废弃
 
 #### Popover
-- 废除 `theme` 属性，可以通过css变量 `--nutui-brand-color` 控制暗黑模式
+- 移除 `theme` 属性，可以通过css变量 `--nutui-brand-color` 控制暗黑模式
 - 新增 `showArrow` 属性，用于是否显示小箭头
 - 新增 `closeOnActionClick` 属性，用于是否在点击选项后关闭
 - 新增 `closeOnOutsideClick` 属性，用于是否在点击外部元素后关闭菜单
@@ -626,8 +626,8 @@ plugins: [
 - `onSorter` 重命名为 `onSort`
 - 合并 `summary` 与 `noData` 的样式处理
 #### Tag
-- `color` 更名为 `background`
-- `textColor` 更名为 `color`
+- `color` 重命名为 `background`
+- `textColor` 重命名为 `color`
 
 #### TrendArrow
 
@@ -664,7 +664,7 @@ plugins: [
 - `backBtnIcon` 重命名为 `backIcon`
 - `isShowCustomAddress` 重命名为 `custom`，用于已有地址列表与自定义列表的切换，修改默认为值 `false`
 - `customAndExistTitle` 废弃，与 `custom` 合并，当 `custom` 为 true 时，为默认文案，设置为某字符串时，展示字符串。
-- `customAddressTitle`、`existAddressTitle` 改为 `title`，不再区分状态，可通过onSwitch修改title
+- `customAddressTitle`、`existAddressTitle`  重命名为  `title`，不再区分状态，可通过onSwitch修改title
 - 精简布局和样式
 
 #### Barrage
@@ -672,6 +672,7 @@ plugins: [
 - `frequency` 重命名为 `interval`
 - `speeds` 重命名为 `duration`
 - `top` 重命名为 `gapY`
+
 #### Card
 
 #### Signature
