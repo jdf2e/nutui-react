@@ -80,6 +80,7 @@ plugins: [
 - SwiperItem -> Swiper.Item
 - CellGroup -> Cell.Group
 - MenuItem -> Menu.Item
+- Infiniteloading -> InfiniteLoading
 
 ## 组件 API 调整
 在 2.0 版本中，我们重点对组件 API 进行了评审和修订，使属性和方法命名更贴合常用的命名习惯及 React 语言规范，目标希望开发者在使用组件时得心应手。我们的思路大体如下：
@@ -447,7 +448,7 @@ plugins: [
 - `pullTxt` 重命名为 `pullingText`，类型变更为 `ReactNode`
 - `loadTxt` 重命名为 `loadingText`，类型变更为 `ReactNode`
 - `containerId` 重命名为 `target`
-- `Infiniteloading` 组件名修改为 `InfiniteLoading`
+
 #### Notify
 
 - 移除 `color` ，通过css变量`--nutui-notify-text-color`实现
