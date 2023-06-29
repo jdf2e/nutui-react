@@ -7,7 +7,7 @@
 ## 安裝
 
 ```tsx
-import { Cell, CellGroup } from '@nutui/nutui-react'
+import { Cell } from '@nutui/nutui-react'
 ```
 
 ## 代碼演示
@@ -98,18 +98,18 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { CellGroup,Cell,Switch } from '@nutui/nutui-react';
+import React from 'react'
+import { Cell, Switch } from '@nutui/nutui-react'
 
 
 const App = () => {
   return (
-    <CellGroup title="自定義右側箭頭區域">
-      <Cell title="Switch" extra={<Switch defaultChecked />} />
-    </CellGroup>
-  );
-};
-export default App;
+    <Cell.Group title='自定義右側箭頭區域'>
+      <Cell title='Switch' extra={<Switch defaultChecked />} />
+    </Cell.Group>
+  )
+}
+export default App
 ```
 
 :::
@@ -119,14 +119,14 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { CellGroup,Cell } from '@nutui/nutui-react';
+import React from 'react'
+import { Cell } from '@nutui/nutui-react'
 import { Right } from '@nutui/icons-react'
 
 const App = () => {
   const onJumpclick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    url: string
+    url: string,
   ) => {
     const replace = false
     if (url) {
@@ -134,34 +134,34 @@ const App = () => {
     }
   }
   return (
-    <CellGroup
-        title="鏈接 | 分組用法"
-        description="使用 nut-cell-group 支持 title extra"
+    <Cell.Group
+      title='鏈接 | 分組用法'
+      description='使用 nut-cell-group 支持 title extra'
     >
-        <Cell
-        className="nutui-cell--clickable"
-        title="鏈接"
-        align="center"
+      <Cell
+        className='nutui-cell--clickable'
+        title='鏈接'
+        align='center'
         extra={<Right />}
-        />
-        <Cell
-        className="nutui-cell--clickable"
-        title="URL 跳轉"
+      />
+      <Cell
+        className='nutui-cell--clickable'
+        title='URL 跳轉'
         extra={
-            <>
+          <>
             <span style={{ marginRight: '5px' }}>https://jd.com</span>
             <Right />
-            </>
+          </>
         }
-        align="center"
+        align='center'
         onClick={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>,
         ) => onJumpclick(event, 'https://jd.com')}
-        />
-    </CellGroup>
-  );
-};
-export default App;
+      />
+    </Cell.Group>
+  )
+}
+export default App
 ```
 
 :::
@@ -186,7 +186,7 @@ export default App;
 
 :::
 
-## CellGroup
+## Cell.Group
 
 ### Props
 

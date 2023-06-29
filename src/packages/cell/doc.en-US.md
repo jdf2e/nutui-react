@@ -7,7 +7,7 @@ The cell is a single display item in the list.
 ## Install
 
 ```tsx
-import { Cell, CellGroup } from '@nutui/nutui-react'
+import { Cell } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -101,13 +101,13 @@ export default App
 
 ```tsx
 import React from 'react'
-import { CellGroup, Cell, Switch } from '@nutui/nutui-react'
+import { Cell, Switch } from '@nutui/nutui-react'
 
 const App = () => {
   return (
-    <CellGroup title="Customize the right arrow area">
+    <Cell.Group title="Customize the right arrow area">
       <Cell title="Switch" extra={<Switch defaultChecked />} />
-    </CellGroup>
+    </Cell.Group>
   )
 }
 export default App
@@ -135,13 +135,13 @@ export default App
 
 :::
 
-### Link | CellGroup Usage
+### Link | Cell.Group Usage
 
 :::demo
 
 ```tsx
 import React from 'react'
-import { CellGroup, Cell } from '@nutui/nutui-react'
+import { Cell } from '@nutui/nutui-react'
 import { Right } from '@nutui/icons-react'
 
 const App = () => {
@@ -155,8 +155,8 @@ const App = () => {
     }
   }
   return (
-      <CellGroup
-        title="Link | CellGroup Usage"
+      <Cell.Group
+        title="Link | Cell.Group Usage"
         extra="Usage nut-cell-group support title extra"
       >
         <Cell 
@@ -179,7 +179,7 @@ const App = () => {
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
         ) => onJumpclick(event, 'https://jd.com')}
         />
-      </CellGroup>
+      </Cell.Group>
   )
 }
 export default App
@@ -195,18 +195,18 @@ The 'divider' property allows you to keep the lower edge from being displayed be
 
 ```tsx
 import  React from "react"
-import { CellGroup, Cell } from '@nutui/nutui-react'
+import { Cell } from '@nutui/nutui-react'
 
 const App = () => {
   return (
-     <CellGroup
+     <Cell.Group
         divider={false}
         title="Grouping usage"
         description="The bottom edge is not displayed between cells"
     >
         <Cell title="Title" extra="extra" />
         <Cell title="Title" extra="extra" />
-    </CellGroup>
+    </Cell.Group>
   );
 };
 export default App;
@@ -214,7 +214,7 @@ export default App;
 
 :::
 
-## CellGroup
+## Cell.Group
 
 ### Props
 

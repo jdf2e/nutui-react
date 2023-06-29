@@ -3,7 +3,7 @@ import '@/packages/swiper/demo.scss'
 import Taro from '@tarojs/taro'
 import { Left, Right } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { SwiperItem, Swiper } from '@/packages/nutui.react.taro'
+import { Swiper } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 
 interface T {
@@ -69,17 +69,17 @@ const SwiperDemo = () => {
         <h2>{translated.basic}</h2>
         <Swiper defaultValue={1} autoPlay indicator>
           {list.map((item) => (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img width="100%" height="100%" src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           ))}
         </Swiper>
         <h2>{translated.asyc}</h2>
         <Swiper defaultValue={0} indicator>
           {asyncList.map((item) => (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img width="100%" height="100%" src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           ))}
         </Swiper>
 
@@ -91,9 +91,9 @@ const SwiperDemo = () => {
           defaultValue={0}
         >
           {list.map((item) => (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img width="100%" height="100%" src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           ))}
         </Swiper>
 
@@ -121,9 +121,9 @@ const SwiperDemo = () => {
           }
         >
           {list.map((item) => (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img width="100%" height="100%" src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           ))}
         </Swiper>
 
@@ -143,9 +143,9 @@ const SwiperDemo = () => {
           >
             {list.map((item) => {
               return (
-                <SwiperItem key={item}>
+                <Swiper.Item key={item}>
                   <img src={item} alt="" />
-                </SwiperItem>
+                </Swiper.Item>
               )
             })}
           </Swiper>
@@ -167,17 +167,17 @@ const SwiperDemo = () => {
         <h2>{translated.vertical}</h2>
         <Swiper defaultValue={0} direction="vertical">
           {list.map((item) => (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img width="100%" height="100%" src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           ))}
         </Swiper>
         <h2>{translated.horizontalCenter}</h2>
         <Swiper defaultValue={0} loop previousMargin="20px" nextMargin="20px">
           {list.map((item) => (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img width="100%" height="100%" src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           ))}
         </Swiper>
         <h2>{translated.verticalCenter}</h2>
@@ -189,9 +189,9 @@ const SwiperDemo = () => {
           nextMargin="20px"
         >
           {list.map((item) => (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img width="100%" height="100%" src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           ))}
         </Swiper>
       </div>
