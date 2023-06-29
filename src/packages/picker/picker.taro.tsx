@@ -293,7 +293,6 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       if (moving) {
         isConfirmEvent.current = true
       } else {
-        console.log('picker confirmed', innerValue)
         setSelectedValue(innerValue)
         closePicker()
       }

@@ -3,7 +3,7 @@ import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Cell, Calendar } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import Utils from '@/utils/date'
+import { Utils } from '@/utils/date'
 import '@/packages/calendar/demo.scss'
 
 interface Day {
@@ -20,6 +20,7 @@ interface T {
   c3a3a1d2: string
   e51e4582: string
   '7db1a8b2': string
+  '7db1a8b3': string
   a52bef0c: string
   d04fcbda: string
   '0aaad620': string
@@ -41,6 +42,7 @@ const CalendarDemo = () => {
       c3a3a1d2: '选择日期',
       e51e4582: '平铺展示',
       '7db1a8b2': '选择多个日期',
+      '7db1a8b3': '选择周',
       a52bef0c: '已选择',
       d04fcbda: '自定义日历',
       '0aaad620': '自定义按钮',
@@ -59,6 +61,7 @@ const CalendarDemo = () => {
       c3a3a1d2: '選擇日期',
       e51e4582: '平鋪展示',
       '7db1a8b2': '選擇多個日期',
+      '7db1a8b3': '选择周',
       a52bef0c: '已選擇',
       d04fcbda: '自定義日曆',
       '0aaad620': '自定義按鈕',
@@ -77,6 +80,7 @@ const CalendarDemo = () => {
       c3a3a1d2: 'select date',
       e51e4582: 'Tiled display',
       '7db1a8b2': 'select multiple dates',
+      '7db1a8b3': 'select week',
       a52bef0c: 'chosen',
       d04fcbda: 'custom calendar',
       '0aaad620': 'custom button',
@@ -93,6 +97,7 @@ const CalendarDemo = () => {
   const [date2, setDate2] = useState('2023-05-08')
   const [date3, setDate3] = useState('')
   const [date4, setDate4] = useState<string[]>([])
+  const [date40, setDate40] = useState<string[]>([])
   const [date5, setDate5] = useState<string[]>(['2023-03-23', '2023-11-26'])
   const [date6, setDate6] = useState<string[]>(['2023-06-12', '2023-06-16'])
   const [date7, setDate7] = useState<string[]>(['2023-07-10', '2023-07-19'])
@@ -102,6 +107,7 @@ const CalendarDemo = () => {
   const [isVisible1, setIsVisible1] = useState(false)
   const [isVisible3, setIsVisible3] = useState(false)
   const [isVisible4, setIsVisible4] = useState(false)
+  const [isVisible40, setIsVisible40] = useState(false)
   const [isVisible5, setIsVisible5] = useState(false)
   const [isVisible6, setIsVisible6] = useState(false)
   const [isVisible7, setIsVisible7] = useState(false)
@@ -122,7 +128,9 @@ const CalendarDemo = () => {
   const openSwitch4 = () => {
     setIsVisible4(true)
   }
-
+  const openSwitch40 = () => {
+    setIsVisible40(true)
+  }
   const openSwitch5 = () => {
     setIsVisible5(true)
   }
@@ -149,7 +157,9 @@ const CalendarDemo = () => {
   const closeSwitch4 = () => {
     setIsVisible4(false)
   }
-
+  const closeSwitch40 = () => {
+    setIsVisible40(false)
+  }
   const closeSwitch5 = () => {
     setIsVisible5(false)
   }
@@ -186,7 +196,11 @@ const CalendarDemo = () => {
     })
     setDate4([...dateArr])
   }
-
+  const setChooseValue40 = (chooseData: any) => {
+    console.log('setChooseValue40', [...[chooseData[0][3], chooseData[1][3]]])
+    const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
+    setDate40([...dateArr])
+  }
   const setChooseValue5 = (param: string) => {
     setDate5([...[param[0][3], param[1][3]]])
   }
@@ -335,6 +349,24 @@ const CalendarDemo = () => {
           onClose={closeSwitch4}
           onConfirm={setChooseValue4}
         />
+        <Cell
+          title={translated['7db1a8b3']}
+          description={
+            date40 && date40.length
+              ? `${date40[0]}${translated['8dab2f66']}${date40[1]}`
+              : translated.b840c88f
+          }
+          onClick={openSwitch40}
+        />
+        <Calendar
+          visible={isVisible40}
+          defaultValue={date40}
+          type="week"
+          startDate="2023-01-01"
+          endDate="2024-09-10"
+          onClose={closeSwitch40}
+          onConfirm={setChooseValue40}
+        />
         <h2>{translated.cfbdc781}</h2>
         <Cell
           title={translated.c3a3a1d2}
@@ -392,6 +424,7 @@ const CalendarDemo = () => {
           renderDay={renderDay}
           renderDayTop={renderDayTop}
           renderDayBottom={renderDayBottom}
+          showToday
           onClose={closeSwitch6}
           onConfirm={setChooseValue6}
         />
