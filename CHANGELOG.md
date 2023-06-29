@@ -1,3 +1,36 @@
+# v1.5.10
+`2023-06-28`
+
+* :bug: fix: calendar taro h5 无法滚动 (#1157) @xiaoyatong
+
+
+# v1.5.9
+`2023-06-13`
+
+
+* :sparkles: feat: countdown 支持剩余时间 (#1120) @xiaoyatong
+* :bug: fix: input 在 taro h5 下clearable 失效问题修复 (#1112) @xiaoyatong
+* :bug: fix: menu 组件被使用 transform 的组件嵌套后，遮罩层发生偏移 (#1094) @oasis-cloud
+
+
+# v1.5.8
+`2023-06-07`
+
+* :bug: fix(watermark): 修复小程序下画布尺寸问题 (#1073) @Eiinu
+
+
+# v1.5.7
+`2023-05-31`
+
+* :bug: fix(virtuallist): 修复列表无法滚动的问题 (#1051) @Eiinu
+* :bug: fix: picker 高度设置的 class 未加 nut 前缀 (#1054) @oasis-cloud
+
+# v1.5.6
+`2023-05-24`
+
+* :bug: fix: 修复Range 区间选择器，更新modelValue时，界面显示不正确的问题 #908 (#1033) @samber
+
+
 # v1.5.5
 `2023-05-17`
 

@@ -1,4 +1,5 @@
 import React, {
+  CSSProperties,
   forwardRef,
   useEffect,
   useImperativeHandle,
@@ -118,30 +119,41 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     return { display: 'none' }
   }
 
-  const getPosition = () => {
+  const getPosition = (): CSSProperties => {
     return direction === 'down'
-      ? { top: `${position.top + position.height}px` }
-      : { bottom: `${window.innerHeight - position.top}px`, top: 'auto' }
+      ? { position: 'absolute', height: `${window.innerHeight}px` }
+      : {
+          position: 'absolute',
+          bottom: '100%',
+          top: 'auto',
+          height: `${window.innerHeight}px`,
+        }
   }
 
   const placeholderStyle = () => {
     if (direction === 'down') {
       return {
         height: `${position.top + position.height}px`,
+        top: 'auto',
+        bottom: '-100%',
         ...isShow(),
         ...style,
       }
     }
     return {
       height: `${window.innerHeight - position.top}px`,
-      top: 'auto',
+      bottom: `auto`,
+      top: '0',
       ...isShow(),
       ...style,
     }
   }
 
   return (
-    <>
+    <div
+      className="nut-menu-item-container"
+      style={{ position: 'absolute', left: 0, right: 0 }}
+    >
       <div
         className={`placeholder-element ${classNames({
           up: direction === 'up',
@@ -214,7 +226,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
           </div>
         </CSSTransition>
       </div>
-    </>
+    </div>
   )
 })
 

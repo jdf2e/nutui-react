@@ -1,14 +1,22 @@
 import React, { useEffect, useRef, useState } from 'react'
+import Taro from '@tarojs/taro'
 import { Button, Cell, CountDown } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
+interface countdownRefState {
+  start: () => void
+  pause: () => void
+  reset: () => void
+}
 const CountDownDemo = () => {
   const stateRef = useRef({
     timer: -1,
-    serverTime: Date.now() - 30 * 1000,
-    endTime: Date.now() + 50 * 1000,
+    serverTime: Date.now() - 20 * 1000,
+    endTime: Date.now() + 60 * 1000,
+    remainingTime: 60 * 1000,
   })
+
+  const countDownRef = useRef<countdownRefState>(null)
 
   const [paused, setPaused] = useState(false)
   const [asyncEnd, setAsyncEnd] = useState(0)
@@ -26,7 +34,7 @@ const CountDownDemo = () => {
     justifyContent: 'center',
     width: '20px',
     height: '25px',
-    background: '#e8220e',
+    background: 'var(--nutui-brand-color)',
     color: '#fff',
     fontSize: '14px',
     borderRadius: '6px',
@@ -59,8 +67,20 @@ const CountDownDemo = () => {
     console.log('restart: ', v)
   }
   const onUpdate = (v: any) => {
-    console.log('restTime: ', v)
     setResetTime(v)
+  }
+
+  const start = () => {
+    console.log(countDownRef.current)
+    countDownRef.current && countDownRef.current.start()
+  }
+
+  const pause = () => {
+    countDownRef.current && countDownRef.current.pause()
+  }
+
+  const reset = () => {
+    countDownRef.current && countDownRef.current.reset()
   }
   return (
     <>
@@ -70,6 +90,12 @@ const CountDownDemo = () => {
         <Cell>
           <CountDown endTime={stateRef.current.endTime} onEnd={onEnd} />
         </Cell>
+
+        <h2>剩余时间用法</h2>
+        <Cell>
+          <CountDown remainingTime={stateRef.current.remainingTime} />
+        </Cell>
+
         <h2>显示天</h2>
 
         <Cell>

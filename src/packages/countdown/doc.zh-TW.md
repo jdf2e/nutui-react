@@ -38,6 +38,26 @@ export default App;
 ```
 
 :::
+
+
+### 剩余時間用法
+
+:::demo
+
+```tsx
+import  React from "react";
+import { CountDown } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+     <CountDown remainingTime={60 * 1000} />
+  );
+};
+export default App;
+```
+
+:::
+
 ### 自定義格式
 
 :::demo
