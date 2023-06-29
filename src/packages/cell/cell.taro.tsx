@@ -1,6 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { CellGroup } from '@/packages/cellgroup/cellgroup.taro'
 
 export interface CellProps extends BasicComponent {
   title: ReactNode
@@ -25,7 +26,7 @@ const classPrefix = 'nut-cell'
 
 export const Cell: FunctionComponent<
   Partial<CellProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
-> = (props) => {
+> & { Group: typeof CellGroup } = (props) => {
   const {
     children,
     onClick,
@@ -96,3 +97,4 @@ export const Cell: FunctionComponent<
 
 Cell.defaultProps = defaultProps
 Cell.displayName = 'NutCell'
+Cell.Group = CellGroup

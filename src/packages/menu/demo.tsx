@@ -3,7 +3,6 @@ import './demo.scss'
 import { TriangleDown, Success } from '@nutui/icons-react'
 import Button from '../button'
 import { Menu } from './menu'
-import MenuItem from '../menuitem'
 import { useTranslate } from '../../sites/assets/locale'
 
 const MenuDemo = () => {
@@ -108,7 +107,7 @@ const MenuDemo = () => {
       <div className="demo full">
         <h2>{translated.basic}</h2>
         <Menu closeOnOverlayClick lockScroll={false}>
-          <MenuItem
+          <Menu.Item
             options={options}
             value={0}
             closeOnClickAway
@@ -116,12 +115,12 @@ const MenuDemo = () => {
               console.log(val)
             }}
           />
-          <MenuItem options={options1} value="a" closeOnClickAway />
+          <Menu.Item options={options1} value="a" closeOnClickAway />
         </Menu>
         <h2>{translated.customMenuContent}</h2>
         <Menu>
-          <MenuItem options={options} value={0} />
-          <MenuItem title={translated.screen} ref={itemRef}>
+          <Menu.Item options={options} value={0} />
+          <Menu.Item title={translated.screen} ref={itemRef}>
             <div>{translated.customContent}</div>
             <Button
               onClick={() => {
@@ -130,31 +129,31 @@ const MenuDemo = () => {
             >
               {translated.confirm}
             </Button>
-          </MenuItem>
+          </Menu.Item>
         </Menu>
         <h2>{translated.twoColsInOneLine}</h2>
         <Menu>
-          <MenuItem options={options} value={0} columns={2} />
+          <Menu.Item options={options} value={0} columns={2} />
         </Menu>
         <h2>{translated.customActiveColor}</h2>
         <Menu activeColor="green">
-          <MenuItem options={options} value={0} />
-          <MenuItem options={options1} value="a" />
+          <Menu.Item options={options} value={0} />
+          <Menu.Item options={options1} value="a" />
         </Menu>
         <h2>{translated.customIcons}</h2>
         <Menu icon={<TriangleDown />}>
-          <MenuItem options={options} value={0} icon={<Success />} />
-          <MenuItem options={options1} value="a" />
+          <Menu.Item options={options} value={0} icon={<Success />} />
+          <Menu.Item options={options1} value="a" />
         </Menu>
         <h2>{translated.expandDirection}</h2>
         <Menu>
-          <MenuItem options={options} value={0} direction="up" />
-          <MenuItem options={options1} value="a" direction="up" />
+          <Menu.Item options={options} value={0} direction="up" />
+          <Menu.Item options={options1} value="a" direction="up" />
         </Menu>
         <h2>{translated.disableMenu}</h2>
         <Menu>
-          <MenuItem options={options} value={0} disabled />
-          <MenuItem options={options1} value="a" disabled />
+          <Menu.Item options={options} value={0} disabled />
+          <Menu.Item options={options1} value="a" disabled />
         </Menu>
       </div>
     </>

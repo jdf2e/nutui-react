@@ -5,7 +5,6 @@ import { Tabs } from '@/packages/nutui.react.taro'
 import Swiper from '@/packages/swiper/index.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
-import SwiperItem from '@/packages/swiperitem/index.taro'
 
 interface T {
   basic: string
@@ -190,21 +189,21 @@ const TabsDemo = () => {
             setTabIndex(page.detail.current)
           }}
         >
-          <SwiperItem>
+          <Swiper.Item>
             <div style={{ backgroundColor: '#fff', padding: '10px' }}>
               Tab 1
             </div>
-          </SwiperItem>
-          <SwiperItem>
+          </Swiper.Item>
+          <Swiper.Item>
             <div style={{ backgroundColor: '#fff', padding: '10px' }}>
               Tab 2
             </div>
-          </SwiperItem>
-          <SwiperItem>
+          </Swiper.Item>
+          <Swiper.Item>
             <div style={{ backgroundColor: '#fff', padding: '10px' }}>
               Tab 3
             </div>
-          </SwiperItem>
+          </Swiper.Item>
         </Swiper>
         <h2>{translated.title10}</h2>
         <Tabs

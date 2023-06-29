@@ -1,7 +1,6 @@
 import React from 'react'
 import Notify from './notify'
 import Cell from '@/packages/cell'
-import CellGroup from '@/packages/cellgroup'
 import { useTranslate } from '../../sites/assets/locale'
 
 interface T {
@@ -90,7 +89,7 @@ const NotifyDemo = () => {
           }}
         />
         <h2>{translated.t1}</h2>
-        <CellGroup>
+        <Cell.Group>
           <Cell
             title={translated.primaryNotify}
             onClick={(event: React.MouseEvent) => {
@@ -115,7 +114,7 @@ const NotifyDemo = () => {
               warningNotify(translated.warningNotify)
             }}
           />
-        </CellGroup>
+        </Cell.Group>
         <h2>{translated.t2}</h2>
         <Cell
           title={translated.cusBgNotify}

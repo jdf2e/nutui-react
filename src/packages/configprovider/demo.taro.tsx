@@ -3,7 +3,6 @@ import {
   ConfigProvider,
   TextArea,
   Button,
-  CellGroup,
   Cell,
   Rate,
 } from '@/packages/nutui.react.taro'
@@ -55,7 +54,7 @@ const ConfigProviderDemo = () => {
         </ConfigProvider>
         <h2>{translated.defaultTheme}</h2>
         <ConfigProvider>
-          <CellGroup>
+          <Cell.Group>
             <Cell>
               <Rate defaultValue={3} />
             </Cell>
@@ -64,11 +63,11 @@ const ConfigProviderDemo = () => {
                 {translated.submit}
               </Button>
             </Cell>
-          </CellGroup>
+          </Cell.Group>
         </ConfigProvider>
         <h2>{translated.customTheme}</h2>
         <ConfigProvider theme={darkTheme}>
-          <CellGroup>
+          <Cell.Group>
             <Cell>
               <Rate defaultValue={3} />
             </Cell>
@@ -77,7 +76,7 @@ const ConfigProviderDemo = () => {
                 {translated.submit}
               </Button>
             </Cell>
-          </CellGroup>
+          </Cell.Group>
         </ConfigProvider>
       </div>
     </>

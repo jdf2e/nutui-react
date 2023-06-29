@@ -7,7 +7,7 @@
 ## 安装
 
 ```tsx
-import { Cell, CellGroup } from '@nutui/nutui-react-taro'
+import { Cell } from '@nutui/nutui-react-taro'
 ```
 
 ## 代码演示
@@ -98,18 +98,18 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { CellGroup,Cell,Switch  } from '@nutui/nutui-react-taro';
+import React from 'react'
+import { Cell, Switch } from '@nutui/nutui-react-taro'
 
 
 const App = () => {
   return (
-    <CellGroup title="自定义右侧箭头区域">
-      <Cell title="Switch" extra={<Switch defaultChecked />} />
-    </CellGroup>
-  );
-};
-export default App;
+    <Cell.Group title='自定义右侧箭头区域'>
+      <Cell title='Switch' extra={<Switch defaultChecked />} />
+    </Cell.Group>
+  )
+}
+export default App
 ```
 
 :::
@@ -139,14 +139,14 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { CellGroup, Cell } from '@nutui/nutui-react-taro';
+import React from 'react'
+import { Cell } from '@nutui/nutui-react-taro'
 import { Right } from '@nutui/icons-react-taro'
 
 const App = () => {
   const onJumpclick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    link: string
+    link: string,
   ) => {
     const replace = false
     if (link) {
@@ -154,34 +154,34 @@ const App = () => {
     }
   }
   return (
-    <CellGroup
-        title="链接 | 分组用法"
-        description="使用 nut-cell-group 支持 title extra"
+    <Cell.Group
+      title='链接 | 分组用法'
+      description='使用 nut-cell-group 支持 title extra'
     >
-        <Cell
-        className="nutui-cell--clickable"
-        title="链接"
-        align="center"
+      <Cell
+        className='nutui-cell--clickable'
+        title='链接'
+        align='center'
         extra={<Right />}
-        />
-        <Cell
-        className="nutui-cell--clickable"
-        title="URL 跳转"
+      />
+      <Cell
+        className='nutui-cell--clickable'
+        title='URL 跳转'
         extra={
-            <>
+          <>
             <span style={{ marginRight: '5px' }}>/pages/index/index</span>
             <Right />
-            </>
+          </>
         }
-        align="center"
+        align='center'
         onClick={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>,
         ) => onJumpclick(event, '/pages/index/index')}
-        />
-    </CellGroup>
-  );
-};
-export default App;
+      />
+    </Cell.Group>
+  )
+}
+export default App
 ```
 
 :::
@@ -193,27 +193,27 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { CellGroup, Cell } from '@nutui/nutui-react-taro';
+import React from 'react'
+import { Cell } from '@nutui/nutui-react-taro'
 
 const App = () => {
   return (
-     <CellGroup
-        divider={false}
-        title="分组用法"
-        description="单元格之间不显示下边线"
+    <Cell.Group
+      divider={false}
+      title='分组用法'
+      description='单元格之间不显示下边线'
     >
-        <Cell title="我是标题" extra="描述文字" />
-        <Cell title="我是标题" extra="描述文字" />
-    </CellGroup>
-  );
-};
-export default App;
+      <Cell title='我是标题' extra='描述文字' />
+      <Cell title='我是标题' extra='描述文字' />
+    </Cell.Group>
+  )
+}
+export default App
 ```
 
 :::
 
-## CellGroup
+## Cell.Group
 
 ### Props
 

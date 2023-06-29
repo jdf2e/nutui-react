@@ -3,7 +3,6 @@ import { Checklist } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import Radio from '@/packages/radio'
 import Cell from '@/packages/cell'
-import CellGroup from '@/packages/cellgroup'
 import Toast from '@/packages/toast'
 
 interface T {
@@ -82,7 +81,7 @@ const RadioDemo = () => {
     <>
       <div className="demo">
         <h2>{translated['74fc5d8a']}</h2>
-        <CellGroup>
+        <Cell.Group>
           <Cell>
             <Radio defaultChecked>{translated.bb7486f4}1</Radio>
           </Cell>
@@ -91,7 +90,7 @@ const RadioDemo = () => {
               {translated.bb7486f4}1
             </Radio>
           </Cell>
-        </CellGroup>
+        </Cell.Group>
         <h2>{translated.disableOne}</h2>
         <Cell>
           <Radio.Group defaultValue="1">
@@ -195,7 +194,7 @@ const RadioDemo = () => {
           </Radio>
         </Cell>
         <h2>{translated['0f261484']}</h2>
-        <CellGroup>
+        <Cell.Group>
           <Cell>
             <Radio.Group
               defaultValue={checkedValue}
@@ -205,7 +204,7 @@ const RadioDemo = () => {
               <Radio value={2}>{translated['0f261484']}</Radio>
             </Radio.Group>
           </Cell>
-        </CellGroup>
+        </Cell.Group>
         <h2>{translated.options}</h2>
         <Cell>
           <Radio.Group

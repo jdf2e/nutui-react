@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Taro from '@tarojs/taro'
-import { Cell, Price, CellGroup } from '@/packages/nutui.react.taro'
+import { Cell, Price } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 
@@ -63,7 +63,7 @@ const PriceDemo = () => {
     <>
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <CellGroup title={translated.title1}>
+        <Cell.Group title={translated.title1}>
           <Cell>
             <Price price={0} size="small" thousands />
           </Cell>
@@ -73,7 +73,7 @@ const PriceDemo = () => {
           <Cell>
             <Price price={0} size="large" thousands />
           </Cell>
-        </CellGroup>
+        </Cell.Group>
         <h2>{translated.title2}</h2>
         <Cell>
           <Price price={8888} digits={0} size="normal" thousands />

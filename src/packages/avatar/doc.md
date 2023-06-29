@@ -158,28 +158,28 @@ export default App;
 
 ```tsx
 import React from "react";
-import { Avatar, AvatarGroup } from '@nutui/nutui-react';
+import { Avatar } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <>
-      <AvatarGroup gap="-4">
+      <Avatar.Group gap="-4">
         <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
         <Avatar icon={<My />} />
         <Avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">
           U
         </Avatar>
-      </AvatarGroup>
+      </Avatar.Group>
 
-      <AvatarGroup max="3" maxColor="#fff" maxBackground="#498ff2">
+      <Avatar.Group max="3" maxColor="#fff" maxBackground="#498ff2">
         <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
         <Avatar icon={<My />} />
         <Avatar color="rgb(245, 106, 0)" background="rgb(253, 227, 207)">
           U
         </Avatar>
         <Avatar icon={<My />} />
-      </AvatarGroup>
+      </Avatar.Group>
     </>
   )
 }
@@ -194,20 +194,20 @@ export default App;
 
 ```tsx
 import React from "react";
-import { Avatar, AvatarGroup } from '@nutui/nutui-react';
+import { Avatar } from '@nutui/nutui-react';
 import { My } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <>
-      <AvatarGroup max="3" level="right" maxContent="...">
+      <Avatar.Group max="3" level="right" maxContent="...">
         <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
         <Avatar icon={<My />} />
         <Avatar color="rgb(245, 106, 0)" background="rgb(253, 227, 207)">
           U
         </Avatar>
         <Avatar icon={<My />} />
-      </AvatarGroup>
+      </Avatar.Group>
     </>
   )
 }
@@ -257,7 +257,7 @@ export default App;
 | onClick | 点击头像触发事件 | `(e: MouseEvent) => void` | `-` |
 | onError | 图片加载失败的事件 | `() => void` | `-` |
 
-## AvatarGroup
+## Avatar.Group
 
 ### Props
 
