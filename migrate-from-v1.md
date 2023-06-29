@@ -3,17 +3,25 @@
 本文档将帮助您从 NutUI React `1.x` 升级到 NutUI React `2.x` 版本。
 
 ## 升级步骤
-1. 安装 NutUI React 2.x 版本
+1. H5 安装 NutUI React 2.x 版本
 ```shell
 npm install @nutui/nutui-react
 ```
-2. 处理不兼容更新
+
+2. Taro 安装 NutUI React 2.x 版本
+```shell
+npm install @nutui/nutui-react-taro
+```
+
+3. 处理不兼容更新
 
 从 NutUI React 1.x 到 NutUI React 2.x 存在一些不兼容更新，需要仔细阅读不兼容更新内容，并依次处理。
 ## 兼容更新
 1. 组件样式处理
 
 新增了按需引入 css 文件的支持。可通过 babel-import-plugin 插件实现：
+
+H5配置如下：
 ```json
 // Webpack .babelrc 或 babel.config.js中配置
 plugins: [
@@ -29,6 +37,24 @@ plugins: [
   ]
 ]
 ```
+
+Taro配置如下：
+```json
+// Webpack .babelrc 或 babel.config.js中配置
+plugins: [
+  [
+    "import",
+    {
+      libraryName: "@nutui/nutui-react-taro",
+      libraryDirectory: "dist/esm",
+      style: 'css',
+      camel2DashComponentName: false,
+    },
+    "nutui-react",
+  ]
+]
+```
+
 2. 更完善的类型导出以及对类型增加 `JSDoc` 注释
 3. 组件分类的调整
 在组件分类上，我们从交互维度上，和交互设计侧共同对 1.x 分类进行了基于信息结构的评审，并进行了子类梳理，完成重新分类，目标是更贴合交互场景的分布，易于查找组件。主要分布在：
