@@ -1,7 +1,7 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { CircleClose } from '@nutui/icons-react-taro'
-import { CellGroup, Cell, Tag } from '@/packages/nutui.react.taro'
+import { Cell, Tag } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
 
@@ -39,7 +39,7 @@ const TagDemo = () => {
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
-        <CellGroup>
+        <Cell.Group>
           <Cell
             title="primary"
             extra={<Tag type="primary">{translated.tag}</Tag>}
@@ -56,10 +56,10 @@ const TagDemo = () => {
             title="warning"
             extra={<Tag type="warning">{translated.tag}</Tag>}
           />
-        </CellGroup>
+        </Cell.Group>
 
         <h2>{translated.style}</h2>
-        <CellGroup>
+        <Cell.Group>
           <Cell
             title={translated.plain}
             extra={<Tag plain>{translated.tag}</Tag>}
@@ -93,10 +93,10 @@ const TagDemo = () => {
               </Tag>
             }
           />
-        </CellGroup>
+        </Cell.Group>
 
         <h2>{translated.customColor}</h2>
-        <CellGroup>
+        <Cell.Group>
           <Cell
             title={translated.backgroundColor}
             extra={<Tag background="#FA685D">{translated.tag}</Tag>}
@@ -117,7 +117,7 @@ const TagDemo = () => {
               </Tag>
             }
           />
-        </CellGroup>
+        </Cell.Group>
       </div>
     </>
   )

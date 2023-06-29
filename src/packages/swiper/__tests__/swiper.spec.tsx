@@ -2,8 +2,7 @@ import React from 'react'
 import { render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { act } from 'react-dom/test-utils'
-import { Swiper } from '../swiper'
-import { SwiperItem } from '../../swiperitem/swiperitem'
+import Swiper from '../index'
 import { triggerDrag } from '@/utils/test/event'
 
 function sleep(delay = 0): Promise<void> {
@@ -38,9 +37,9 @@ test('should render width and height', () => {
     >
       {list.map((item) => {
         return (
-          <SwiperItem key={item}>
+          <Swiper.Item key={item}>
             <img src={item} alt="" />
-          </SwiperItem>
+          </Swiper.Item>
         )
       })}
     </Swiper>
@@ -80,9 +79,9 @@ test('should render initpage', () => {
     >
       {list.map((item) => {
         return (
-          <SwiperItem key={item}>
+          <Swiper.Item key={item}>
             <img src={item} alt="" />
-          </SwiperItem>
+          </Swiper.Item>
         )
       })}
     </Swiper>
@@ -120,9 +119,9 @@ test('should render direction', () => {
     >
       {list.map((item) => {
         return (
-          <SwiperItem key={item}>
+          <Swiper.Item key={item}>
             <img src={item} alt="" />
-          </SwiperItem>
+          </Swiper.Item>
         )
       })}
     </Swiper>
@@ -161,9 +160,9 @@ test('should render indicator', () => {
     >
       {list.map((item) => {
         return (
-          <SwiperItem key={item}>
+          <Swiper.Item key={item}>
             <img src={item} alt="" />
-          </SwiperItem>
+          </Swiper.Item>
         )
       })}
     </Swiper>
@@ -202,9 +201,9 @@ test('should render loop and auto-play', async () => {
     >
       {list.map((item) => {
         return (
-          <SwiperItem key={item}>
+          <Swiper.Item key={item}>
             <img src={item} alt="" />
-          </SwiperItem>
+          </Swiper.Item>
         )
       })}
     </Swiper>
@@ -242,9 +241,9 @@ test('should not allow to drag when touchable is false', () => {
     >
       {list.map((item) => {
         return (
-          <SwiperItem key={item}>
+          <Swiper.Item key={item}>
             <img src={item} alt="" />
-          </SwiperItem>
+          </Swiper.Item>
         )
       })}
     </Swiper>
@@ -282,9 +281,9 @@ test('should not allow to drag when loop is false', async () => {
       >
         {list.map((item) => {
           return (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           )
         })}
       </Swiper>

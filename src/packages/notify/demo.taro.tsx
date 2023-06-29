@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Notify, Cell, CellGroup } from '@/packages/nutui.react.taro'
+import { Notify, Cell } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 
 interface T {
@@ -95,7 +95,7 @@ const NotifyDemo = () => {
           }}
         />
         <h2>{translated.t1}</h2>
-        <CellGroup>
+        <Cell.Group>
           <Cell
             title={translated.primaryNotify}
             onClick={(event: React.MouseEvent) => {
@@ -124,7 +124,7 @@ const NotifyDemo = () => {
               SetShowNotify(true)
             }}
           />
-        </CellGroup>
+        </Cell.Group>
         <h2>{translated.t2}</h2>
         <Notify
           className="customer"

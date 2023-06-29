@@ -10,8 +10,8 @@ import classNames from 'classnames'
 import { My } from '@nutui/icons-react-taro'
 import Image from '@/packages/image/index.taro'
 import { AvatarContext } from '@/packages/avatargroup/context'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import AvatarGroup from '@/packages/avatargroup/index.taro'
 
 export interface AvatarProps extends BasicComponent {
   size: string
@@ -43,7 +43,7 @@ const defaultProps = {
 const classPrefix = `nut-avatar`
 export const Avatar: FunctionComponent<
   Partial<AvatarProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
-> = (props) => {
+> & { Group: typeof AvatarGroup } = (props) => {
   const {
     children,
     size,
@@ -189,3 +189,4 @@ export const Avatar: FunctionComponent<
 
 Avatar.defaultProps = defaultProps
 Avatar.displayName = 'NutAvatar'
+Avatar.Group = AvatarGroup

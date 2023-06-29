@@ -1,12 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import {
-  Cell,
-  CellGroup,
-  Radio,
-  VirtualList,
-} from '@/packages/nutui.react.taro'
+import { Cell, Radio, VirtualList } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 
 const ListDemo = () => {
@@ -143,7 +138,7 @@ const ListDemo = () => {
     <>
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <CellGroup>
+        <Cell.Group>
           <Cell>
             <Radio.Group
               value={radioVal}
@@ -154,7 +149,7 @@ const ListDemo = () => {
               <Radio value="2">{translated.text2}</Radio>
             </Radio.Group>
           </Cell>
-        </CellGroup>
+        </Cell.Group>
         <div style={{ height: '100%' }}>{showNode()}</div>
       </div>
     </>

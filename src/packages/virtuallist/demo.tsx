@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import Radio from '@/packages/radio'
 import Cell from '@/packages/cell'
-import CellGroup from '@/packages/cellgroup'
 import { useTranslate } from '../../sites/assets/locale'
 import VirtualList from './index'
 
@@ -133,7 +132,7 @@ const ListDemo = () => {
   return (
     <>
       <div className="demo">
-        <CellGroup>
+        <Cell.Group>
           <Cell>
             <Radio.Group
               value={radioVal}
@@ -146,7 +145,7 @@ const ListDemo = () => {
               <Radio value="4">{translated.text4}</Radio>
             </Radio.Group>
           </Cell>
-        </CellGroup>
+        </Cell.Group>
         <div key={radioVal} className="nut-virtualList-demo-box hideScrollbar">
           {showNode()}
         </div>
