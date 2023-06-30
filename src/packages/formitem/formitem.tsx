@@ -79,10 +79,11 @@ export class FormItem extends React.Component<
     if (children?.props?.defaultValue) {
       console.warn('通过 initialValue 设置初始值')
     }
+    const fieldValue = getFieldValue(name)
     const controlled = {
       ...children.props,
       [this.props.valuePropName || 'value']:
-        getFieldValue(name) || this.props.initialValue,
+        fieldValue !== undefined ? fieldValue : this.props.initialValue,
       [this.props.trigger || 'onChange']: (...args: any) => {
         // args [a, b]
         const originOnChange = (children as any).props[
