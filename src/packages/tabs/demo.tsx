@@ -3,7 +3,6 @@ import { Dongdong, Jd } from '@nutui/icons-react'
 import { Tabs } from './tabs'
 import Swiper from '../swiper'
 import { useTranslate } from '../../sites/assets/locale'
-import SwiperItem from '@/packages/swiperitem'
 
 interface T {
   basic: string
@@ -181,21 +180,21 @@ const TabsDemo = () => {
             setTabIndex(page)
           }}
         >
-          <SwiperItem>
+          <Swiper.Item>
             <div style={{ backgroundColor: '#fff', padding: '10px' }}>
               Tab 1
             </div>
-          </SwiperItem>
-          <SwiperItem>
+          </Swiper.Item>
+          <Swiper.Item>
             <div style={{ backgroundColor: '#fff', padding: '10px' }}>
               Tab 2
             </div>
-          </SwiperItem>
-          <SwiperItem>
+          </Swiper.Item>
+          <Swiper.Item>
             <div style={{ backgroundColor: '#fff', padding: '10px' }}>
               Tab 3
             </div>
-          </SwiperItem>
+          </Swiper.Item>
         </Swiper>
         <h2>{translated.title10}</h2>
         <Tabs

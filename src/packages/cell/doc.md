@@ -7,7 +7,7 @@
 ## 安装
 
 ```tsx
-import { Cell, CellGroup } from '@nutui/nutui-react'
+import { Cell } from '@nutui/nutui-react'
 ```
 
 ## 代码演示
@@ -99,14 +99,14 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { CellGroup,Cell,Switch } from '@nutui/nutui-react';
+import { Cell,Switch } from '@nutui/nutui-react';
 
 
 const App = () => {
   return (
-    <CellGroup title="自定义右侧箭头区域">
+    <Cell.Group title="自定义右侧箭头区域">
       <Cell title="Switch" extra={<Switch defaultChecked />} />
-    </CellGroup>
+    </Cell.Group>
   );
 };
 export default App;
@@ -140,7 +140,7 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { CellGroup,Cell } from '@nutui/nutui-react';
+import { Cell } from '@nutui/nutui-react';
 import { Right } from '@nutui/icons-react'
 
 const App = () => {
@@ -154,7 +154,7 @@ const App = () => {
     }
   }
   return (
-    <CellGroup
+    <Cell.Group
         title="链接 | 分组用法"
         description="使用 nut-cell-group 支持 title extra"
     >
@@ -178,7 +178,7 @@ const App = () => {
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
         ) => onJumpclick(event, 'https://jd.com')}
         />
-    </CellGroup>
+    </Cell.Group>
   );
 };
 export default App;
@@ -194,18 +194,18 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { CellGroup, Cell } from '@nutui/nutui-react';
+import { Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-     <CellGroup
+     <Cell.Group
         divider={false}
         title="分组用法"
         description="单元格之间不显示下边线"
     >
         <Cell title="我是标题" extra="描述文字" />
         <Cell title="我是标题" extra="描述文字" />
-    </CellGroup>
+    </Cell.Group>
   );
 };
 export default App;
@@ -213,7 +213,7 @@ export default App;
 
 :::
 
-## CellGroup
+## Cell.Group
 
 ### Props
 

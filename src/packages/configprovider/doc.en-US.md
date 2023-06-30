@@ -43,7 +43,6 @@ The ConfigProvider component provides the ability to override CSS variables, and
 import React from 'react';
 import {
   ConfigProvider,
-  CellGroup,
   Cell,
   Button,
   Rate
@@ -57,7 +56,7 @@ const darkTheme = {
 const App = () => {
   return (
     <ConfigProvider theme={darkTheme}>
-      <CellGroup>
+      <Cell.Group>
         <Cell>
           <Rate defaultValue={3} />
         </Cell>
@@ -66,7 +65,7 @@ const App = () => {
             Submit
           </Button>
         </Cell>
-      </CellGroup>
+      </Cell.Group>
     </ConfigProvider>
   )
 }
