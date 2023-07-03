@@ -1,3 +1,13 @@
+# v2.0.0-beta.3
+`2023-06-30`
+
+* 🔨 chore: 增加组件名称调整的内容 (#1161) @oasis-cloud
+* 📖 docs: 统一升级文档中的修改的描述术语 (#1159) @xiaoyatong
+* :bug: fix: 修改migrate文档 (#1164) @junjun666
+* :bug: fix: 单元测试问题修复 (#1158) @Eiinu
+* 🛠 refactor: 调整 MenuItem CellGroup SwiperItem 使用方式为 Menu.Item Cell.Group… (#1160) @oasis-cloud
+
+
 # v2.0.0-beta.2
 `2023-06-28`
 
