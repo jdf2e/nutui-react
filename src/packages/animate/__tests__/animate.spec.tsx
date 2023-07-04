@@ -33,12 +33,7 @@ test('trigger animate with loop', async () => {
   for (let i = 0; i < testType.length; i++) {
     const typeProp = testType[i] as AnimateType
     const { container } = render(
-      <Animate
-        type={typeProp}
-        action="click"
-        loop={true}
-        onClick={handleClick}
-      />
+      <Animate type={typeProp} action="click" loop onClick={handleClick} />
     )
     const animate = container.querySelectorAll('.nut-ani-container')[0]
     fireEvent.click(animate)

@@ -18,6 +18,7 @@ import { InfiniteLoading } from '@nutui/nutui-react-taro'
 
 ```tsx
 import React, { useState, useEffect } from 'react'
+import { Jd } from '@nutui/icons-react-taro'
 import { Cell, InfiniteLoading } from '@nutui/nutui-react-taro'
 
 

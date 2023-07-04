@@ -232,7 +232,9 @@ const InternalUploader: ForwardRefRenderFunction<
     uploadOption.beforeXhrUpload = beforeXhrUpload
     try {
       uploadOption.sourceFile = fileItem.formData.get(name)
-    } catch (error) {}
+    } catch (error) {
+      console.log(error)
+    }
     uploadOption.onStart = (option: UploadOptions) => {
       clearUploadQueue(index)
       setFileList((fileList: FileItem[]) => {

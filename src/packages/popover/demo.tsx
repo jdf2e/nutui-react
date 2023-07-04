@@ -322,7 +322,7 @@ const PopoverDemo = () => {
           title={translated.showMoreDirection}
           description={baseDesc}
           onClick={handlePicker}
-        ></Cell>
+        />
         <Picker
           visible={showPicker}
           options={columns}
@@ -346,7 +346,7 @@ const PopoverDemo = () => {
           }}
         >
           <div className="brickBox">
-            <div className="brick" id="pickerTarget"></div>
+            <div className="brick" id="pickerTarget" />
           </div>
         </Picker>
         <Popover
@@ -355,7 +355,7 @@ const PopoverDemo = () => {
           className="custom-color"
           list={positionList}
           location={curPostion}
-        ></Popover>
+        />
 
         <h2>{translated.title4}</h2>
         <Popover
@@ -366,7 +366,7 @@ const PopoverDemo = () => {
           onClick={() => {
             setCustomTarget(false)
           }}
-        ></Popover>
+        />
         <Button
           type="primary"
           shape="square"
