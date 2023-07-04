@@ -7,8 +7,8 @@ import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface DatePickerProps extends BasicComponent {
-  value?: Date | null
-  defaultValue?: Date | null
+  value?: Date
+  defaultValue?: Date
   visible: boolean
   title: string
   type:
@@ -103,15 +103,13 @@ export const DatePicker: FunctionComponent<
     }
     let timestmp = Math.max(cvalue.getTime(), startDate.getTime())
     timestmp = Math.min(timestmp, endDate.getTime())
-    return new Date(timestmp)
+    return timestmp
   }
-  const [currentDate, setCurrentDate] = usePropsValue<Date | null>({
+  const [currentDate, setCurrentDate] = usePropsValue<number>({
     value: props.value && formatValue(props.value),
     defaultValue: formatValue(props.defaultValue || null),
-    finalValue: null,
-    onChange: (val: Date | null) => {
-      // console.log('onChange', val)
-    },
+    finalValue: 0,
+    onChange: (val: number) => {},
   })
 
   function getMonthEndDay(year: number, month: number): number {
@@ -155,7 +153,7 @@ export const DatePicker: FunctionComponent<
   }
 
   const ranges = () => {
-    const curDate = currentDate
+    const curDate = new Date(currentDate)
     if (!curDate) return []
     const { maxYear, maxDate, maxMonth, maxHour, maxMinute, maxSeconds } =
       getBoundary('max', curDate)
@@ -267,7 +265,7 @@ export const DatePicker: FunctionComponent<
         date = new Date(year, month, day, Number(formatDate[3]))
       }
 
-      const isEqual = currentDate?.getTime() === date?.getTime()
+      const isEqual = new Date(currentDate)?.getTime() === date?.getTime()
       date &&
         isDate(date) &&
         !isEqual &&
@@ -335,21 +333,22 @@ export const DatePicker: FunctionComponent<
   }
 
   const getDateIndex = (type: string) => {
+    const date = new Date(currentDate)
     if (!currentDate) return 0
 
     let d = 0
     if (type === 'year') {
-      d = (currentDate as Date).getFullYear()
+      d = date.getFullYear()
     } else if (type === 'month') {
-      d = (currentDate as Date).getMonth() + 1
+      d = date.getMonth() + 1
     } else if (type === 'day') {
-      d = (currentDate as Date).getDate()
+      d = date.getDate()
     } else if (type === 'hour') {
-      d = (currentDate as Date).getHours()
+      d = date.getHours()
     } else if (type === 'minute') {
-      d = (currentDate as Date).getMinutes()
+      d = date.getMinutes()
     } else if (type === 'seconds') {
-      d = (currentDate as Date).getSeconds()
+      d = date.getSeconds()
     }
     return d
   }
@@ -371,7 +370,7 @@ export const DatePicker: FunctionComponent<
     if (currentDate) {
       setOptions(columns())
     }
-  }, [])
+  }, [currentDate])
 
   return (
     <View

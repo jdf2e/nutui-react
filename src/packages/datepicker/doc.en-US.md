@@ -32,7 +32,7 @@ const App = () => {
         visible={show1}
         showChinese
         onClose={() => setShow1(false)}
-        onConfirm={(values,options) => confirm1(values,options)}
+        onConfirm={(options, values) => confirm1(values,options)}
       />
     </>
   );
@@ -67,7 +67,7 @@ const App = () => {
           type="month-day"
           visible={show2}
           onClose={() => setShow2(false)}
-          onConfirm={(values,options) => confirm2(values,options)}
+          onConfirm={(options, values) => confirm2(values,options)}
         />
     </>
   );
@@ -106,7 +106,7 @@ const App = () => {
           visible={show3}
           type="datetime"
           onClose={() => setShow3(false)}
-          onConfirm={(values,options) => confirm3(values,options)}
+          onConfirm={(options, values) => confirm3(values,options)}
         />
     </>
   );
@@ -144,7 +144,7 @@ const App = () => {
           endDate={endDate}
           visible={show4}
           onClose={() => setShow4(false)}
-          onConfirm={(values,options) => confirm4(values,options)}
+          onConfirm={(options, values) => confirm4(values,options)}
         />
     </>
   );
@@ -182,7 +182,7 @@ const App = () => {
           endDate={endDate}
           visible={show8}
           onClose={() => setShow8(false)}
-          onConfirm={(values,options) => confirm8(values,options)}
+          onConfirm={(options, values) => confirm8(values,options)}
         />
     </>
   );
@@ -249,7 +249,7 @@ const App = () => {
           visible={show5}
           formatter={formatter}
           onClose={() => setShow5(false)}
-          onConfirm={(values,options) => confirm5(values,options)}
+          onConfirm={(options, values) => confirm5(values,options)}
         />
     </>
   );
@@ -288,7 +288,7 @@ const App = () => {
           visible={show6}
           minuteStep={5}
           onClose={() => setShow6(false)}
-          onConfirm={(values,options) => confirm6(values,options)}
+          onConfirm={(options, values) => confirm6(values,options)}
         />
     </>
   );
@@ -354,7 +354,7 @@ const App = () => {
           minuteStep={5}
           filter={filter}
           onClose={() => setShow7(false)}
-          onConfirm={(values,options) => confirm7(values,options)}
+          onConfirm={(options, values) => confirm7(values,options)}
         />
     </>
   );
