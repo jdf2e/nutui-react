@@ -24,7 +24,7 @@
         "name": "theme-react",
         "cName": "主题定制",
         "eName": "Customize Theme",
-        "show": true
+        "show": false
       },
       {
         "name": "migrate-from-v1",
