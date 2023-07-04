@@ -233,7 +233,7 @@ const InternalUploader: ForwardRefRenderFunction<
     try {
       uploadOption.sourceFile = fileItem.formData.get(name)
     } catch (error) {
-      console.log(error)
+      console.warn(error)
     }
     uploadOption.onStart = (option: UploadOptions) => {
       clearUploadQueue(index)
