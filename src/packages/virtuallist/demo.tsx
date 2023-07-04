@@ -1,7 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import Radio from '@/packages/radio'
 import Cell from '@/packages/cell'
-import CellGroup from '@/packages/cellgroup'
 import { useTranslate } from '../../sites/assets/locale'
 import VirtualList from './index'
 
@@ -51,19 +50,17 @@ const ListDemo = () => {
       })
     }
   }, [pageNo])
-  const ItemRender = ({ data }: any) => {
+  const itemRender = (data: any) => {
     return <p>{data}</p>
   }
-  const ItemRenderMemo = React.memo(ItemRender)
 
-  const ItemVariable = ({ data, index }: any) => {
+  const itemVariable = (data: any, dataIndex: number, index: number) => {
     return (
-      <p className={index % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>
+      <p className={dataIndex % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>
         {data}
       </p>
     )
   }
-  const ItemVariableDemo = React.memo(ItemVariable)
   const onScroll = () => {
     if (pageNo > 50 || isLoading) return
     setIsLoading(true)
@@ -83,7 +80,7 @@ const ListDemo = () => {
             itemHeight={66}
             className="heigh1"
             list={list}
-            ItemRender={ItemRenderMemo}
+            itemRender={itemRender}
             onScroll={onScroll}
           />
         )
@@ -91,7 +88,7 @@ const ListDemo = () => {
         return (
           <VirtualList
             list={list}
-            ItemRender={ItemVariableDemo}
+            itemRender={itemVariable}
             itemHeight={128}
             containerHeight={500}
             itemEqual={false}
@@ -102,7 +99,7 @@ const ListDemo = () => {
         return (
           <VirtualList
             list={list}
-            ItemRender={ItemRenderMemo}
+            itemRender={itemRender}
             itemHeight={124}
             containerHeight={341}
             onScroll={onScroll}
@@ -114,7 +111,7 @@ const ListDemo = () => {
           <VirtualList
             list={list}
             itemHeight={300}
-            ItemRender={ItemVariableDemo}
+            itemRender={itemVariable}
             direction="horizontal"
             itemEqual={false}
             onScroll={onScroll}
@@ -126,7 +123,7 @@ const ListDemo = () => {
             itemHeight={66}
             className="heigh1"
             list={list}
-            ItemRender={ItemRenderMemo}
+            itemRender={itemRender}
             onScroll={onScroll}
           />
         )
@@ -135,7 +132,7 @@ const ListDemo = () => {
   return (
     <>
       <div className="demo">
-        <CellGroup>
+        <Cell.Group>
           <Cell>
             <Radio.Group
               value={radioVal}
@@ -148,7 +145,7 @@ const ListDemo = () => {
               <Radio value="4">{translated.text4}</Radio>
             </Radio.Group>
           </Cell>
-        </CellGroup>
+        </Cell.Group>
         <div key={radioVal} className="nut-virtualList-demo-box hideScrollbar">
           {showNode()}
         </div>

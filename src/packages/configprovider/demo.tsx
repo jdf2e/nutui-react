@@ -2,7 +2,6 @@ import React from 'react'
 import { ConfigProvider } from './configprovider'
 import TextArea from '../textarea'
 import Button from '../button'
-import CellGroup from '../cellgroup'
 import Cell from '../cell'
 import Rate from '../rate'
 import enUS from '../../locales/en-US'
@@ -50,7 +49,7 @@ const ConfigProviderDemo = () => {
         </ConfigProvider>
         <h2>{translated.defaultTheme}</h2>
         <ConfigProvider>
-          <CellGroup>
+          <Cell.Group>
             <Cell>
               <Rate defaultValue={3} />
             </Cell>
@@ -59,11 +58,11 @@ const ConfigProviderDemo = () => {
                 {translated.submit}
               </Button>
             </Cell>
-          </CellGroup>
+          </Cell.Group>
         </ConfigProvider>
         <h2>{translated.customTheme}</h2>
         <ConfigProvider theme={darkTheme}>
-          <CellGroup>
+          <Cell.Group>
             <Cell>
               <Rate defaultValue={3} />
             </Cell>
@@ -72,7 +71,7 @@ const ConfigProviderDemo = () => {
                 {translated.submit}
               </Button>
             </Cell>
-          </CellGroup>
+          </Cell.Group>
         </ConfigProvider>
       </div>
     </>

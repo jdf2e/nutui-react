@@ -43,7 +43,6 @@ ConfigProvider 元件提供了覆蓋 CSS 變數的能力，你需要在根節點
 import React from 'react';
 import {
   ConfigProvider,
-  CellGroup,
   Cell,
   Button,
   Rate
@@ -57,7 +56,7 @@ const darkTheme = {
 const App = () => {
   return (
     <ConfigProvider theme={darkTheme}>
-      <CellGroup>
+      <Cell.Group>
         <Cell>
           <Rate defaultValue={3} />
         </Cell>
@@ -66,7 +65,7 @@ const App = () => {
             提交
           </Button>
         </Cell>
-      </CellGroup>
+      </Cell.Group>
     </ConfigProvider>
   )
 }

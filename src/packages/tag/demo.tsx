@@ -2,7 +2,6 @@ import React from 'react'
 import { CircleClose } from '@nutui/icons-react'
 import { Tag } from './tag'
 import Cell from '@/packages/cell'
-import CellGroup from '@/packages/cellgroup'
 import { useTranslate } from '@/sites/assets/locale'
 
 const TagDemo = () => {
@@ -38,7 +37,7 @@ const TagDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
-        <CellGroup>
+        <Cell.Group>
           <Cell
             title="primary"
             extra={<Tag type="primary">{translated.tag}</Tag>}
@@ -55,10 +54,10 @@ const TagDemo = () => {
             title="warning"
             extra={<Tag type="warning">{translated.tag}</Tag>}
           />
-        </CellGroup>
+        </Cell.Group>
 
         <h2>{translated.style}</h2>
-        <CellGroup>
+        <Cell.Group>
           <Cell
             title={translated.plain}
             extra={<Tag plain>{translated.tag}</Tag>}
@@ -100,10 +99,10 @@ const TagDemo = () => {
               </Tag>
             }
           />
-        </CellGroup>
+        </Cell.Group>
 
         <h2>{translated.customColor}</h2>
-        <CellGroup>
+        <Cell.Group>
           <Cell
             title={translated.backgroundColor}
             extra={<Tag background="#FA685D">{translated.tag}</Tag>}
@@ -124,7 +123,7 @@ const TagDemo = () => {
               </Tag>
             }
           />
-        </CellGroup>
+        </Cell.Group>
       </div>
     </>
   )

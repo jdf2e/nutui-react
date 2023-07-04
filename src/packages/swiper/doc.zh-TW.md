@@ -7,7 +7,7 @@
 ## 安裝
 
 ```tsx
-import { Swiper, SwiperItem } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react';
 ```
 
 ## 代碼演示
@@ -18,7 +18,7 @@ import { Swiper, SwiperItem } from '@nutui/nutui-react';
 
 ```tsx
 import React, { useState } from 'react'
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react';
 
 const App = () => {
   const [defaultValue1, setdefaultValue1] = useState(0)
@@ -35,18 +35,18 @@ const App = () => {
         defaultValue={defaultValue1}
         indicator
       >
-        <SwiperItem >
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-        </SwiperItem>
+        </Swiper.Item>
       </Swiper>
     </div>
   )
@@ -62,7 +62,7 @@ export default App;
 
 ```tsx
 import React, { useState, useEffect } from 'react'
-import { Swiper, SwiperItem } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react';
 
 const App = () => {
   const [defaultValue1, setdefaultValue1] = useState(0)
@@ -92,9 +92,9 @@ const App = () => {
       >
         {list.map((item) => {
           return (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           )
         })}
       </Swiper>
@@ -114,7 +114,7 @@ export default App;
 
 ```tsx
 import React, { useState, useEffect } from 'react'
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react';
 
 const App = () => {
   const [defaultValue1, setdefaultValue1] = useState(0)
@@ -145,9 +145,9 @@ const App = () => {
       >
         {list.map((item) => {
           return (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           )
         })}
       </Swiper>
@@ -167,7 +167,7 @@ export default App;
 
 ```tsx
 import React, { useState } from 'react'
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react';
 
 const App = () => {
   const [defaultValue2, setdefaultValue2] = useState(0)
@@ -178,18 +178,18 @@ const App = () => {
         height={150}
         defaultValue={defaultValue2}
       >
-        <SwiperItem >
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-        </SwiperItem>
+        </Swiper.Item>
       </Swiper>
     </div>
   )
@@ -207,7 +207,7 @@ export default App;
 
 ```tsx
 import React, { useState } from 'react'
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react';
 
 const App = () => {
   const [defaultValue3, setdefaultValue3] = useState(0)
@@ -224,18 +224,18 @@ const App = () => {
         onChange={onChange3}
         indicator={<div className="page"> {current}/4 </div>}
       >
-        <SwiperItem >
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-        </SwiperItem>
+        </Swiper.Item>
       </Swiper>
     </div>
   )
@@ -253,7 +253,7 @@ export default App;
 
 ```tsx
 import React, { useState, useRef } from 'react'
-import { Swiper, SwiperItem, Icon } from '@nutui/nutui-react';
+import { Swiper, Icon } from '@nutui/nutui-react';
 
 const App = () => {
   const swiperRef = React.useRef<any>(null)
@@ -317,9 +317,9 @@ const App = () => {
       >
         {list.map((item) => {
           return (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           )
         })}
       </Swiper>
@@ -347,7 +347,7 @@ export default App;
 
 ```tsx
 import React, { useState } from 'react'
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react';
 
 const App = () => {
   const [defaultValue4, setdefaultValue4] = useState(0)
@@ -365,18 +365,18 @@ const App = () => {
         height="150"
         indicator
       >
-        <SwiperItem >
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-        </SwiperItem>
+        </Swiper.Item>
       </Swiper>
     </div>
   )
@@ -394,7 +394,7 @@ export default App;
 
 ```tsx
 import React, { useState } from 'react'
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react';
 
 const App = () => {
   const [defaultValue8, setdefaultValue8] = useState(0)
@@ -416,9 +416,9 @@ const App = () => {
       >
         {list.map((item) => {
           return (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           )
         })}
       </Swiper>
@@ -438,7 +438,7 @@ export default App;
 
 ```tsx
 import React, { useState } from 'react'
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react';
 
 const App = () => {
   const [defaultValue9, setdefaultValue9] = useState(0)
@@ -461,9 +461,9 @@ const App = () => {
       >
         {list.map((item) => {
           return (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           )
         })}
       </Swiper>

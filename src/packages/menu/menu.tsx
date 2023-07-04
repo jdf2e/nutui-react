@@ -1,8 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 import { ArrowDown2, ArrowUp2 } from '@nutui/icons-react'
-import { OptionItem } from '@/packages/menuitem/menuitem'
-
+import { OptionItem, MenuItem } from '@/packages/menuitem/menuitem'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface MenuProps extends BasicComponent {
@@ -22,7 +21,9 @@ const defaultProps = {
   lockScroll: true,
   icon: null,
 } as MenuProps
-export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
+export const Menu: FunctionComponent<Partial<MenuProps>> & {
+  Item: typeof MenuItem
+} = (props) => {
   const {
     className,
     icon,
@@ -69,7 +70,6 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
   }
   const hideMenuItem = (index: number) => {
     showMenuItem[index] = false
-    console.log([...showMenuItem])
     setShowMenuItem([...showMenuItem])
   }
   const updateTitle = (text: string, index: number) => {
@@ -166,3 +166,4 @@ export const Menu: FunctionComponent<Partial<MenuProps>> = (props) => {
 
 Menu.defaultProps = defaultProps
 Menu.displayName = 'NutMenu'
+Menu.Item = MenuItem

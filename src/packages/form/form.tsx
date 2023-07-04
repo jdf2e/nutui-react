@@ -1,6 +1,5 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
-import CellGroup from '../cellgroup'
 import { Context } from './context'
 import { useForm } from './useform'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -92,10 +91,10 @@ export const Form: FunctionComponent<
         resetFields()
       }}
     >
-      <CellGroup>
+      <Cell.Group>
         <Context.Provider value={formInstance}>{children}</Context.Provider>
         {footer ? <Cell>{footer}</Cell> : null}
-      </CellGroup>
+      </Cell.Group>
     </form>
   )
 }

@@ -2,7 +2,6 @@ import React, { FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Cell from '@/packages/cell/index.taro'
-import CellGroup from '../cellgroup/index.taro'
 import { Context } from './context'
 import { useForm } from './useform.taro'
 import { FormItem } from '../formitem/formitem.taro'
@@ -92,10 +91,10 @@ export const Form: FunctionComponent<
         resetFields()
       }}
     >
-      <CellGroup>
+      <Cell.Group>
         <Context.Provider value={formInstance}>{children}</Context.Provider>
         {footer ? <Cell>{footer}</Cell> : null}
-      </CellGroup>
+      </Cell.Group>
     </form>
   )
 }

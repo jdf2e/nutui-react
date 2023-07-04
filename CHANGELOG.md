@@ -1,3 +1,25 @@
+# v2.0.0-beta.3
+`2023-06-30`
+
+* 🔨 chore: 增加组件名称调整的内容 (#1161) @oasis-cloud
+* 📖 docs: 统一升级文档中的修改的描述术语 (#1159) @xiaoyatong
+* :bug: fix: 修改migrate文档 (#1164) @junjun666
+* :bug: fix: 单元测试问题修复 (#1158) @Eiinu
+* 🛠 refactor: 调整 MenuItem CellGroup SwiperItem 使用方式为 Menu.Item Cell.Group… (#1160) @oasis-cloud
+
+
+# v2.0.0-beta.2
+`2023-06-28`
+
+* :sparkles: feat: 日历组件新增选择周 type='week' 模式 (#1152) @xiaoyatong
+* :bug: fix: dialog spelling mistake (#1148) @Katz
+* :bug: fix: fit&wxwork (#1146) @junjun666
+* :bug: fix: 优化 TrendArrow 组件 props (#1150) @songsong
+* :bug: fix: 修改navbar组件demo样式 (#1145) @songsong
+* 🛠 refactor: 属性定义走查修复 (#1149) @xiaoyatong
+* 🔨 chore(virtuallist): 调整 itemRender (#1151) @Eiinu
+
+
 # v2.0.0-beta.1
 `2023-06-21`
 

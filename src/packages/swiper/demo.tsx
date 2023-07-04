@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Left, Right } from '@nutui/icons-react'
-import SwiperItem from '@/packages/swiperitem'
+// import Swiper.Item from '@/packages/swiperitem'
 import Swiper from '@/packages/swiper'
 import '@/packages/swiper/demo.scss'
 import { useTranslate } from '../../sites/assets/locale'
@@ -103,9 +103,9 @@ const SwiperDemo = () => {
         >
           {list.map((item) => {
             return (
-              <SwiperItem key={item}>
+              <Swiper.Item key={item}>
                 <img src={item} alt="" />
-              </SwiperItem>
+              </Swiper.Item>
             )
           })}
         </Swiper>
@@ -125,9 +125,9 @@ const SwiperDemo = () => {
         >
           {list1.map((item) => {
             return (
-              <SwiperItem key={item}>
+              <Swiper.Item key={item}>
                 <img src={item} alt="" />
-              </SwiperItem>
+              </Swiper.Item>
             )
           })}
         </Swiper>
@@ -147,9 +147,9 @@ const SwiperDemo = () => {
         >
           {list2.map((item) => {
             return (
-              <SwiperItem key={item}>
+              <Swiper.Item key={item}>
                 <img src={item} alt="" />
-              </SwiperItem>
+              </Swiper.Item>
             )
           })}
         </Swiper>
@@ -160,9 +160,9 @@ const SwiperDemo = () => {
         <Swiper defaultValue={initPage4} width="300" height={height}>
           {list.map((item) => {
             return (
-              <SwiperItem key={item}>
+              <Swiper.Item key={item}>
                 <img src={item} alt="" />
-              </SwiperItem>
+              </Swiper.Item>
             )
           })}
         </Swiper>
@@ -178,9 +178,9 @@ const SwiperDemo = () => {
         >
           {list.map((item) => {
             return (
-              <SwiperItem key={item}>
+              <Swiper.Item key={item}>
                 <img src={item} alt="" />
-              </SwiperItem>
+              </Swiper.Item>
             )
           })}
         </Swiper>
@@ -197,9 +197,9 @@ const SwiperDemo = () => {
         >
           {list.map((item) => {
             return (
-              <SwiperItem key={item}>
+              <Swiper.Item key={item}>
                 <img src={item} alt="" />
-              </SwiperItem>
+              </Swiper.Item>
             )
           })}
         </Swiper>
@@ -224,9 +224,9 @@ const SwiperDemo = () => {
         >
           {list.map((item) => {
             return (
-              <SwiperItem key={item}>
+              <Swiper.Item key={item}>
                 <img src={item} alt="" />
-              </SwiperItem>
+              </Swiper.Item>
             )
           })}
         </Swiper>
@@ -243,9 +243,9 @@ const SwiperDemo = () => {
         >
           {list.map((item) => {
             return (
-              <SwiperItem key={item}>
+              <Swiper.Item key={item}>
                 <img src={item} alt="" />
-              </SwiperItem>
+              </Swiper.Item>
             )
           })}
         </Swiper>
@@ -263,9 +263,9 @@ const SwiperDemo = () => {
         >
           {list.map((item) => {
             return (
-              <SwiperItem key={item}>
+              <Swiper.Item key={item}>
                 <img src={item} alt="" />
-              </SwiperItem>
+              </Swiper.Item>
             )
           })}
         </Swiper>

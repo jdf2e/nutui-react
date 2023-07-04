@@ -187,6 +187,10 @@
 
     &-disabled {
       color: $calendar-disable-color !important;
+
+      .nut-calendar-day-info-curr {
+        display: none;
+      }
     }
 
     &-choose {

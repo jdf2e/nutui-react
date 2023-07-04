@@ -7,7 +7,7 @@
 ## 安装
 
 ```tsx
-import { Menu, MenuItem } from '@nutui/nutui-react-taro';
+import { Menu } from '@nutui/nutui-react-taro';
 ```
 
 ## 代码演示
@@ -18,7 +18,7 @@ import { Menu, MenuItem } from '@nutui/nutui-react-taro';
 
 ```tsx
 import React, { useState } from 'react'
-import { Menu, MenuItem } from '@nutui/nutui-react-taro';
+import { Menu } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [options] = useState([
@@ -35,8 +35,8 @@ const App = () => {
     <>
       <div className="demo full">
         <Menu>
-          <MenuItem options={options} value={0} />
-          <MenuItem options={options1} value="a" />
+          <Menu.Item options={options} value={0} />
+          <Menu.Item options={options1} value="a" />
         </Menu>
       </div>
     </>
@@ -56,7 +56,7 @@ export default App
 
 ```tsx
 import React, { useRef, useState } from 'react'
-import { Menu, MenuItem, Button } from '@nutui/nutui-react-taro';
+import { Menu, Button } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [options] = useState([
@@ -74,11 +74,11 @@ const App = () => {
     <>
       <div className="demo full">
         <Menu>
-          <MenuItem options={options} value={0} />
-          <MenuItem title="筛选" ref={itemRef}>
+          <Menu.Item options={options} value={0} />
+          <Menu.Item title="筛选" ref={itemRef}>
             <div>自定义内容</div>
             <Button onClick={() => itemRef.current.toggle(false)}>确认</Button>
-          </MenuItem>
+          </Menu.Item>
         </Menu>
       </div>
     </>
@@ -96,7 +96,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { Menu, MenuItem } from '@nutui/nutui-react-taro';
+import { Menu } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [options] = useState([
@@ -109,7 +109,7 @@ const App = () => {
     <>
       <div className="demo full">
         <Menu>
-          <MenuItem options={options} value={0} columns={2} />
+          <Menu.Item options={options} value={0} columns={2} />
         </Menu>
       </div>
     </>
@@ -127,7 +127,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { Menu, MenuItem } from '@nutui/nutui-react-taro';
+import { Menu } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [options] = useState([
@@ -144,8 +144,8 @@ const App = () => {
     <>
       <div className="demo full">
         <Menu activeColor="green">
-          <MenuItem options={options} value={0} />
-          <MenuItem options={options1} value="a" />
+          <Menu.Item options={options} value={0} />
+          <Menu.Item options={options1} value="a" />
         </Menu>
       </div>
     </>
@@ -163,7 +163,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { Menu, MenuItem } from '@nutui/nutui-react-taro';
+import { Menu } from '@nutui/nutui-react-taro';
 import { TriangleDown, Success } from '@nutui/icons-react'
 
 const App = () => {
@@ -181,8 +181,8 @@ const App = () => {
     <>
       <div className="demo full">
         <Menu icon={<TriangleDown />}>
-          <MenuItem options={options} value={0} icon={<Success />} />
-          <MenuItem options={options1} value="a" />
+          <Menu.Item options={options} value={0} icon={<Success />} />
+          <Menu.Item options={options1} value="a" />
         </Menu>
       </div>
     </>
@@ -200,7 +200,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { Menu, MenuItem } from '@nutui/nutui-react-taro';
+import { Menu } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [options] = useState([
@@ -217,8 +217,8 @@ const App = () => {
     <>
       <div className="demo full">
         <Menu>
-          <MenuItem options={options} value={0} direction="up" />
-          <MenuItem options={options1} value="a" direction="up" />
+          <Menu.Item options={options} value={0} direction="up" />
+          <Menu.Item options={options1} value="a" direction="up" />
         </Menu>
       </div>
     </>
@@ -236,7 +236,7 @@ export default App
 
 ```tsx
 import React, { useState } from 'react'
-import { Menu, MenuItem } from '@nutui/nutui-react-taro';
+import { Menu } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [options] = useState([
@@ -253,8 +253,8 @@ const App = () => {
     <>
       <div className="demo full">
         <Menu>
-          <MenuItem options={options} value={0} disabled />
-          <MenuItem options={options1} value="a" disabled />
+          <Menu.Item options={options} value={0} disabled />
+          <Menu.Item options={options1} value="a" disabled />
         </Menu>
       </div>
     </>
@@ -278,7 +278,7 @@ export default App
 | scrollFixed | 滚动后是否固定，可设置固定位置 | `boolean` \| `string` \| `number` | `true` |
 | icon | 自定义标题图标 | `React.ReactNode` | `-` |
 
-## MenuItem
+## Menu.Item
 
 ### Props
 

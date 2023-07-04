@@ -1,8 +1,7 @@
 import React from 'react'
 import { My, Right } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
-import { Cell } from './cell'
-import { CellGroup } from '../cellgroup/cellgroup'
+import Cell from './index'
 import { Switch } from '../switch/switch'
 import Toast from '../toast'
 import './demo.scss'
@@ -75,7 +74,7 @@ const CellDemo = () => {
       title1: 'Description',
       title2: 'Click Test',
       title3: 'Round Radius 0',
-      title4: 'Link | CellGroup Usage',
+      title4: 'Link | Cell.Group Usage',
       title5: 'Vertical Center',
       title6: 'Customize the title area',
       title7: 'Grouping usage',
@@ -141,17 +140,16 @@ const CellDemo = () => {
           }
           extra={translated.extra}
         />
-        <CellGroup title={translated.customRight}>
+        <Cell.Group title={translated.customRight}>
           <Cell title="Switch" extra={<Switch defaultChecked />} />
-        </CellGroup>
+        </Cell.Group>
         <h2>{translated.title5}</h2>
         <Cell
-          align="center"
           title={translated.title}
           description={translated.title1}
           extra={translated.extra}
         />
-        <CellGroup
+        <Cell.Group
           title={translated.title4}
           description={translated.description}
         >
@@ -171,19 +169,16 @@ const CellDemo = () => {
               </>
             }
             align="center"
-            onClick={(
-              event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-            ) => onJumpclick(event, 'https://jd.com')}
           />
-        </CellGroup>
-        <CellGroup
+        </Cell.Group>
+        <Cell.Group
           divider={false}
           title={translated.title7}
           description={translated.description1}
         >
           <Cell title={translated.title} extra={translated.extra} />
           <Cell title={translated.title} extra={translated.extra} />
-        </CellGroup>
+        </Cell.Group>
       </div>
     </>
   )

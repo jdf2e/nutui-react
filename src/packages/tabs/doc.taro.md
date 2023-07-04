@@ -128,7 +128,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, Swiper, SwiperItem } from '@nutui/nutui-react-taro';
+import { Tabs, Swiper } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [tab2value, setTab2value] = useState('0');
@@ -155,21 +155,21 @@ const App = () => {
           setTabIndex(page)
         }}
       >
-        <SwiperItem>
+        <Swiper.Item>
           <div style={{ backgroundColor: '#fff', padding: '10px' }}>
             Tab 1
           </div>
-        </SwiperItem>
-        <SwiperItem>
+        </Swiper.Item>
+        <Swiper.Item>
           <div style={{ backgroundColor: '#fff', padding: '10px' }}>
             Tab 2
           </div>
-        </SwiperItem>
-        <SwiperItem>
+        </Swiper.Item>
+        <Swiper.Item>
           <div style={{ backgroundColor: '#fff', padding: '10px' }}>
             Tab 3
           </div>
-        </SwiperItem>
+        </Swiper.Item>
       </Swiper>
     </>
   );

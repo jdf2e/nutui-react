@@ -1,5 +1,6 @@
 import React, {
   FunctionComponent,
+  ReactNode,
   useCallback,
   useEffect,
   useRef,
@@ -18,7 +19,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 export interface VirtualListProps extends BasicComponent {
   list: Array<Data>
   containerHeight: number
-  ItemRender: React.FC<any>
+  itemRender: (data: any, dataIndex: number, index: number) => ReactNode
   itemHeight: number
   itemEqual: boolean
   direction: 'vertical' | 'horizontal'
@@ -40,7 +41,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
 ) => {
   const {
     list,
-    ItemRender,
+    itemRender,
     itemEqual,
     itemHeight,
     direction,
@@ -63,7 +64,6 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
   const scrollRef = useRef<HTMLDivElement>(null)
   // 虚拟列表显示区域ref
   const itemsRef = useRef<HTMLUListElement>(null)
-  const firstItemRef = useRef<HTMLLIElement>(null)
   // 列表位置信息
   const [positions, setPositions] = useState<PositionType[]>([
     {
@@ -218,7 +218,6 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
 
               return (
                 <li
-                  ref={dataIndex === 0 ? firstItemRef : null}
                   data-index={`${dataIndex}`}
                   className={
                     dataIndex % 2 === 0
@@ -228,11 +227,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
                   key={`${keyVal}`}
                   style={{ display: styleVal }}
                 >
-                  {ItemRender ? (
-                    <ItemRender data={data} index={`${dataIndex}`} />
-                  ) : (
-                    data
-                  )}
+                  {itemRender ? itemRender(data, dataIndex, index) : data}
                 </li>
               )
             })}

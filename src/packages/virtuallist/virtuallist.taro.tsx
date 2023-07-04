@@ -1,5 +1,6 @@
 import React, {
   FunctionComponent,
+  ReactNode,
   useCallback,
   useEffect,
   useRef,
@@ -16,7 +17,7 @@ const clientHeight = getSystemInfoSync().windowHeight - 5 || 667
 export interface VirtualListProps extends BasicComponent {
   list: Array<Data>
   containerHeight: number
-  ItemRender: React.FC<any>
+  itemRender: (data: any, dataIndex: number, index: number) => ReactNode
   itemHeight: number
   itemEqual: boolean
   overscan: number
@@ -37,7 +38,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
 ) => {
   const {
     list,
-    ItemRender,
+    itemRender,
     itemHeight,
     itemEqual,
     overscan,
@@ -58,7 +59,6 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
   const scrollRef = useRef<HTMLDivElement>(null)
   // 虚拟列表显示区域ref
   const itemsRef = useRef<HTMLDivElement>(null)
-  const firstItemRef = useRef(null)
   // 列表位置信息
   const [positions, setPositions] = useState<PositionType[]>([
     {
@@ -189,7 +189,6 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
             const keyVal = key && data[key] ? data[key] : dataIndex
             return (
               <div
-                ref={dataIndex === 0 ? firstItemRef : null}
                 data-index={`${dataIndex}`}
                 className="nut-virtuallist-item"
                 key={`${data}`}
@@ -197,11 +196,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
                   height: `${itemEqual ? `${itemHeight}px` : 'auto'}`,
                 }}
               >
-                {ItemRender ? (
-                  <ItemRender data={data} index={`${index}`} />
-                ) : (
-                  data
-                )}
+                {itemRender ? itemRender(data, dataIndex, index) : data}
               </div>
             )
           })}
