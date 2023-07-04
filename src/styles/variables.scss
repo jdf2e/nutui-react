@@ -151,7 +151,6 @@ $button-mini-font-size: var(
   $font-size-1
 ) !default;
 $button-mini-line-height: var(--nutui-button-mini-line-height, 1.2) !default;
-
 $button-text-icon-margin-left: var(
   --nutui-button-text-icon-margin-left,
   5px
@@ -168,7 +167,6 @@ $button-text-icon-mini-margin-left: var(
   --nutui-button-text-icon-mini-margin-left,
   1px
 ) !default;
-
 $button-disabled-opacity: var(--nutui-button-disabled-opacity, 0.68) !default;
 $button-primary-color: var(
   --nutui-button-primary-color,
@@ -211,7 +209,6 @@ $button-success-background-color: linear-gradient(
   rgba(40, 207, 63, 1) 83%,
   rgba(41, 212, 70, 1) 100%
 ) !default;
-
 $button-danger-color: var(
   --nutui-button-danger-color,
   $primary-text-color
@@ -241,7 +238,6 @@ $button-warning-background-color: linear-gradient(
 ) !default;
 
 // cell（✅）
-
 $cell-title-color: var(--nutui-cell-title-color, $gray1) !default;
 $cell-title-font-size: var(--nutui-cell-title-font-size, $font-size-2) !default;
 $cell-description-font-size: var(
@@ -1292,6 +1288,11 @@ $tag-background-color: var(--nutui-tag-background-color, #000000) !default;
 $tag-primary-background-color: var(
   --nutui-tag-primary-background-color,
   $primary-color
+) !default;
+$tag-info-background-color: linear-gradient(
+  315deg,
+  rgba(73, 143, 242, 1) 0%,
+  rgba(73, 101, 242, 1) 100%
 ) !default;
 $tag-success-background-color: var(
   --nutui-tag-success-background-color,
