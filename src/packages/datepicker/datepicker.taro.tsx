@@ -143,18 +143,6 @@ export const DatePicker: FunctionComponent<
       minute = 59
     }
     const seconds = minute
-    if (value.getFullYear() === year) {
-      month = boundary.getMonth() + 1
-      if (value.getMonth() + 1 === month) {
-        date = boundary.getDate()
-        if (value.getDate() === date) {
-          hour = boundary.getHours()
-          if (value.getHours() === hour) {
-            minute = boundary.getMinutes()
-          }
-        }
-      }
-    }
 
     return {
       [`${type}Year`]: year,

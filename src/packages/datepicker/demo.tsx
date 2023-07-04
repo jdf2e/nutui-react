@@ -259,8 +259,8 @@ const DatePickerDemo = () => {
         {/* 选择月日 */}
         <DatePicker
           title={translated.basic}
-          minDate={new Date(2022, 0, 1)}
-          maxDate={new Date(2022, 7, 1)}
+          minDate={new Date(2023, 6, 4)}
+          maxDate={new Date(2024, 10, 11)}
           type="month-day"
           visible={show2}
           onCloseDatePicker={() => setShow2(false)}
