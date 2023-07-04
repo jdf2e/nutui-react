@@ -185,7 +185,10 @@ const InputDemo = () => {
         >
           <Ask />
           <Input placeholder={translated.codeplaceholder} />
-          <div className="right">
+          <div
+            className="right"
+            style={{ display: 'flex', alignItems: 'center' }}
+          >
             <Button type="primary" size="small">
               {translated.sendCode}
             </Button>
