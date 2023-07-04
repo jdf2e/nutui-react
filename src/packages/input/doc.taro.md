@@ -215,7 +215,10 @@ const App = () => {
        >
          <Ask />
          <Input placeholder="请输入短信验证码" />
-         <div className="right">
+         <div
+           className="right"
+           style={{ display: 'flex', alignItems: 'center' }}
+         >
            <Button type="primary" size="small">
              获取验证码
            </Button>
