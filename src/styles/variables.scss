@@ -501,7 +501,7 @@ $inputnumber-icon-void-color: var(
 ) !default;
 $inputnumber-icon-disabled-color: var(
   --nutui-inputnumber-icon-disabled-color,
-  #cccccc
+  var(--nutui-gray-3, #cccccc)
 ) !default;
 $inputnumber-icon-size: var(--nutui-inputnumber-icon-size, 20px) !default;
 $inputnumber-input-font-size: var(
