@@ -82,7 +82,7 @@ const ImageDemo = () => {
             {fits.map((i) => {
               return (
                 <Col span="8" key={i}>
-                  <Image src={src} width="100" height="100" fit={i} />
+                  <Image src={src} width="80" height="80" fit={i} />
                   <div className="image-text">{i}</div>
                 </Col>
               )
@@ -98,8 +98,8 @@ const ImageDemo = () => {
                 <Col span="8" key={i}>
                   <Image
                     src={src}
-                    width="100"
-                    height="100"
+                    width="80"
+                    height="80"
                     fit="contain"
                     position={i}
                   />
@@ -113,8 +113,8 @@ const ImageDemo = () => {
                 <Col span="8" key={i}>
                   <Image
                     src={src}
-                    width="100"
-                    height="100"
+                    width="80"
+                    height="80"
                     fit="cover"
                     position={i}
                   />
