@@ -295,7 +295,7 @@ const DatePickerDemo = () => {
         {/* 选择月日 */}
         <DatePicker
           title={translated.basic}
-          startDate={new Date(2022, 0, 1)}
+          startDate={new Date(2023, 6, 4)}
           endDate={new Date(2025, 7, 1)}
           defaultValue={defaultValue}
           type="month-day"
@@ -306,7 +306,7 @@ const DatePickerDemo = () => {
         {/* 选择年月日时分 */}
         <DatePicker
           title={translated.chooseDate}
-          startDate={startDate}
+          startDate={new Date(2023, 6, 4)}
           endDate={endDate}
           visible={show3}
           defaultValue={new Date(desc3)}
@@ -318,7 +318,7 @@ const DatePickerDemo = () => {
         <DatePicker
           title={translated.chooseTime}
           type="time"
-          startDate={startDate}
+          startDate={new Date(2023, 6, 4, 10, 10, 20)}
           endDate={endDate}
           defaultValue={new Date(`${defaultDescription} ${desc4}`)}
           visible={show4}
