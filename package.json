@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-react-taro",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/esm/nutui-react.es.js",
@@ -84,8 +84,8 @@
     "postpublish": "node scripts/postpublish.js"
   },
   "lint-staged": {
-    "*.md": "prettier --write",
-    "*.{ts,tsx,js,vue,scss}": "prettier --write"
+    "*.scss": "prettier --write",
+    "*.{ts,tsx,js,md}": "eslint"
   },
   "dependencies": {
     "@babel/runtime": "^7.21.0",

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, CircleProgress } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 import '@/packages/circleprogress/demo.scss'
 
 interface T {

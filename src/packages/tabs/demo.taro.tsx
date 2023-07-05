@@ -69,15 +69,23 @@ const TabsDemo = () => {
   })
 
   const [tab1value, setTab1value] = useState<string | number>('0')
+  const [tab11value, setTab11value] = useState<string | number>('0')
+  const [tab12value, setTab12value] = useState<string | number>('0')
   const [tab2value, setTab2value] = useState<string | number>('0')
   const [tab3value, setTab3value] = useState<string | number>('0')
   const [tab4value, setTab4value] = useState<string | number>('0')
   const [tab5value, setTab5value] = useState<string | number>('0')
+  const [tab51value, setTab51value] = useState<string | number>('0')
   const [tab6value, setTab6value] = useState<string | number>('0')
+  const [tab61value, setTab61value] = useState<string | number>('0')
   const [tab7value, setTab7value] = useState<string | number>('c1')
   const [tab8value, setTab8value] = useState<string | number>('0')
+  const [tab81value, setTab81value] = useState<string | number>('0')
+  const [tab82value, setTab82value] = useState<string | number>('0')
   const [tab9value, setTab9value] = useState<string | number>('0')
-  const [tab10value, setTab10value] = useState<string | number>('0')
+  const [tab91value, setTab91value] = useState<string | number>('0')
+  const [tab92value, setTab92value] = useState<string | number>('0')
+  const [tab93value, setTab93value] = useState<string | number>('0')
   const [list8, setList8] = useState<any>([])
   const list4 = Array.from(new Array(10).keys())
   const list5 = Array.from(new Array(2).keys())
@@ -207,11 +215,11 @@ const TabsDemo = () => {
         </Swiper>
         <h2>{translated.title10}</h2>
         <Tabs
-          value={tab5value}
+          value={tab51value}
           style={{ position: 'relative', zIndex: 11 }}
           tabStyle={{ position: 'sticky', top: '0px', zIndex: 11 }}
           onChange={(value) => {
-            setTab5value(value)
+            setTab51value(value)
           }}
         >
           <Tabs.TabPane title="Tab 1" value="0">
@@ -241,10 +249,10 @@ const TabsDemo = () => {
         </Tabs>
         <h2>{translated.title9}</h2>
         <Tabs
-          value={tab6value}
+          value={tab61value}
           autoHeight
           onChange={(value) => {
-            setTab6value(value)
+            setTab61value(value)
           }}
         >
           <Tabs.TabPane title="Tab 1" value="0">
@@ -262,9 +270,9 @@ const TabsDemo = () => {
         </Tabs>
         <h2>{translated.title3}</h2>
         <Tabs
-          value={tab8value}
+          value={tab81value}
           onChange={(value) => {
-            setTab8value(value)
+            setTab81value(value)
           }}
         >
           {list8.map((item: any) => (
@@ -275,9 +283,9 @@ const TabsDemo = () => {
         </Tabs>
         <h2>{translated.title4}</h2>
         <Tabs
-          value={tab9value}
+          value={tab91value}
           onChange={(value) => {
-            setTab9value(value)
+            setTab91value(value)
           }}
         >
           {list4.map((item) => (
@@ -288,10 +296,10 @@ const TabsDemo = () => {
         </Tabs>
         <h2>{translated.title4}</h2>
         <Tabs
-          value={tab9value}
+          value={tab92value}
           style={{ height: '300px' }}
           onChange={(value) => {
-            setTab9value(value)
+            setTab92value(value)
           }}
           direction="vertical"
         >
@@ -336,9 +344,9 @@ const TabsDemo = () => {
         <h2>{translated.title12}</h2>
 
         <Tabs
-          value={tab10value}
+          value={tab82value}
           onChange={(value) => {
-            setTab10value(value)
+            setTab82value(value)
           }}
           activeType="smile"
           direction="vertical"
@@ -363,18 +371,18 @@ const TabsDemo = () => {
 
         <h2>{translated.title13}</h2>
         <Tabs
-          value={tab10value}
+          value={tab8value}
           onChange={(value) => {
-            setTab10value(value)
+            setTab8value(value)
           }}
           autoHeight
           activeType="smile"
         >
           <Tabs.TabPane title="Tab 1">
             <Tabs
-              value={tab9value}
+              value={tab93value}
               onChange={(value) => {
-                setTab9value(value)
+                setTab93value(value)
               }}
               direction="vertical"
             >
@@ -389,9 +397,9 @@ const TabsDemo = () => {
 
         <h2>{translated.title7}</h2>
         <Tabs
-          value={tab1value}
+          value={tab11value}
           onChange={(value) => {
-            setTab1value(value)
+            setTab11value(value)
           }}
           style={{ '--nutui-tabs-titles-item-font-size': '20px' }}
         >
@@ -400,9 +408,9 @@ const TabsDemo = () => {
           <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
         </Tabs>
         <Tabs
-          value={tab1value}
+          value={tab12value}
           onChange={(value) => {
-            setTab1value(value)
+            setTab12value(value)
           }}
           style={{ '--nutui-tabs-titles-item-font-size': '12px' }}
         >
