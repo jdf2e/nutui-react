@@ -7,7 +7,7 @@
 ## 安装
 
 ```tsx
-import { TimeSelect } from '@nutui/nutui-react-taro;
+import { TimeSelect } from '@nutui/nutui-react-taro';
 ```
 
 ## 代码演示

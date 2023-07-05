@@ -8,3 +8,9 @@ dist
 .husky
 iconfont.js
 .vscode
+**/nutui.react.build.ts
+**/nutui.react.scss.ts
+**/nutui.react.taro.scss.ts
+**/nutui.react.taro.ts
+**/nutui.react.ts
+**/nutui.taro.react.build.ts

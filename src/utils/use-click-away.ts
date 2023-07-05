@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { isFunction } from './index'
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 type TargetType = Function | HTMLElement | Element
 
 const getTargetElement = (target: TargetType) => {
@@ -19,7 +20,7 @@ const getTargetElement = (target: TargetType) => {
 export default function useClickAway(
   onClickAway: () => void,
   target: TargetType | TargetType[],
-  eventName: string = 'click',
+  eventName = 'click',
   useCapture: boolean,
   isListener?: boolean,
   outerVar?: boolean

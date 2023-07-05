@@ -1,9 +1,9 @@
 import React from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Cell, Indicator, ConfigProvider } from '@/packages/nutui.react.taro'
 import '@/packages/indicator/demo.scss'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
 interface T {
   ce5c5446: string
