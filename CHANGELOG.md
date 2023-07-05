@@ -1,3 +1,10 @@
+# v1.5.11
+`2023-07-05`
+
+* :bug: fix(searchbar): 修复 taro-h5 下 onSearch 不能触发的问题 (#1177) @Eiinu
+* :bug: fix: 修复popover文字过长样式错乱的问题 (#1162) @junjun666
+
+
 # v1.5.10
 `2023-06-28`
 
