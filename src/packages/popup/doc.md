@@ -199,7 +199,7 @@ export default App;
 | --- | --- | --- | --- |
 | visible | 当前组件是否显示 | `boolean` | `false` |
 | zIndex | 遮罩层级 | `string` \| `number`  | `2000` |
-| duration | 遮罩动画时长，单位秒 | `number` | `0.3` |
+| duration | 遮罩动画时长，单位毫秒 | `number` | `300` |
 | overlayClassName | 自定义遮罩类名 | `string` | `-` |
 | overlayStyle | 自定义遮罩样式 | `CSSProperties` | `-` |
 | lockScroll | 背景是否锁定 | `boolean` | `true` |

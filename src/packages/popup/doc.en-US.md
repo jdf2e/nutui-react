@@ -199,7 +199,7 @@ export default App;
 | --- | --- | --- | --- |
 | visible | Whether the current component is displayed | `boolean` | `false` |
 | zIndex | mask level | `string` \| `number`  | `2000` |
-| duration | Mask animation duration, in seconds | `number` | `0.3` |
+| duration | Mask animation duration, in ms | `number` | `300` |
 | overlayClassName | custom mask class | `string` | `-` |
 | overlayStyle | custom mask style | `CSSProperties` | `-` |
 | lockScroll | Whether the background is locked | `boolean` | `true` |

@@ -806,6 +806,7 @@ $popup-title-padding: var(--nutui-popup-title-padding, 15px) !default;
 $popup-title-font-size: var(--nutui-popup-title-font-size, 18px) !default;
 $popup-title-line-height: var(--nutui-popup-title-line-height, 18px) !default;
 $popup-title-border-bottom: var(--nutui-popup-title-border-bottom, 0) !default;
+$popup-animation-duration: var(--nutui-popup-animation-duration, 0.3s) !default;
 
 // Notify（✅）
 $notify-text-color: var(--nutui-notify-text-color, $white) !default;
