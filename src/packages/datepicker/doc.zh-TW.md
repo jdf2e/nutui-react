@@ -34,7 +34,7 @@ const App = () => {
         visible={show1}
         showChinese
         onClose={() => setShow1(false)}
-        onConfirm={(values,options) => confirm1(values,options)}
+        onConfirm={(options, values) => confirm1(values,options)}
       />
     </>
   );
@@ -57,7 +57,7 @@ import { DatePicker,Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const [show2, setShow2] = useState(false)
-  const [desc2, setDesc2] = useState('05-10')
+  const [desc2, setDesc2] = useState('')
   const confirm2 = (values:(string|number)[],options:PickerOption[])=>{
     setDesc2(options.map((option) => option.text).join('-'))
   }
@@ -66,12 +66,12 @@ const App = () => {
       <Cell title="日期選擇" description={desc2} onClick={() => setShow2(true)} />
       <DatePicker
           title="日期選擇"
-          startDate={new Date(2022, 0, 1)}
-          endDate={new Date(2022, 7, 1)}
+          startDate={new Date(2023, 6, 4)}
+          endDate={new Date(2025, 7, 1)}
           type="month-day"
           visible={show2}
           onClose={() => setShow2(false)}
-          onConfirm={(values,options) => confirm2(values,options)}
+          onConfirm={(options, values) => confirm2(values,options)}
         />
     </>
   );
@@ -112,7 +112,7 @@ const App = () => {
           visible={show3}
           type="datetime"
           onClose={() => setShow3(false)}
-          onConfirm={(values,options) => confirm3(values,options)}
+          onConfirm={(options, values) => confirm3(values,options)}
         />
     </>
   );
@@ -150,7 +150,7 @@ const App = () => {
           endDate={endDate}
           visible={show4}
           onClose={() => setShow4(false)}
-          onConfirm={(values,options) => confirm4(values,options)}
+          onConfirm={(options, values) => confirm4(values,options)}
         />
     </>
   );
@@ -188,7 +188,7 @@ const App = () => {
           endDate={endDate}
           visible={show8}
           onClose={() => setShow8(false)}
-          onConfirm={(values,options) => confirm8(values,options)}
+          onConfirm={(options, values) => confirm8(values,options)}
         />
     </>
   );
@@ -257,7 +257,7 @@ const App = () => {
           visible={show5}
           formatter={formatter}
           onClose={() => setShow5(false)}
-          onConfirm={(values,options) => confirm5(values,options)}
+          onConfirm={(options, values) => confirm5(values,options)}
         />
     </>
   );
@@ -296,7 +296,7 @@ const App = () => {
           visible={show6}
           minuteStep={5}
           onClose={() => setShow6(false)}
-          onConfirm={(values,options) => confirm6(values,options)}
+          onConfirm={(options, values) => confirm6(values,options)}
         />
     </>
   );
@@ -364,7 +364,7 @@ const App = () => {
           minuteStep={5}
           filter={filter}
           onClose={() => setShow7(false)}
-          onConfirm={(values,options) => confirm7(values,options)}
+          onConfirm={(options, values) => confirm7(values,options)}
         />
     </>
   );

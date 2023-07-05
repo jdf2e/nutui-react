@@ -297,7 +297,7 @@ const DatePickerDemo = () => {
         {/* 选择月日 */}
         <DatePicker
           title={translated.basic}
-          startDate={new Date(2022, 0, 1)}
+          startDate={new Date(2023, 6, 4)}
           endDate={new Date(2025, 7, 1)}
           defaultValue={defaultValue}
           type="month-day"
