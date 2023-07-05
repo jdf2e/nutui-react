@@ -5,6 +5,7 @@ $brand-color-start: var(--nutui-brand-color-start, #ff404f) !default;
 $brand-color-end: var(--nutui-brand-color-end, #fa2c19) !default;
 $brand-link-color: var(--nutui-brand-link-color, #396acc);
 $brand-text-color: var(--nutui-brand-text-color, #ffffff);
+$brand-info-color: var(--nutui-brand-info-color, #ffffff);
 
 $gray0: var(--nutui-gray-0, #000000) !default;
 // 主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
@@ -330,7 +331,6 @@ $icon-width: var(--nutui-icon-width, 20px) !default;
 $icon-line-height: var(--nutui-icon-line-height, 20px) !default;
 
 // uploader（✅）
-
 $uploader-picture-width: var(--nutui-uploader-picture-width, 100px) !default;
 $uploader-picture-height: var(--nutui-uploader-picture-height, 100px) !default;
 $uploader-picture-border: var(--nutui-uploader-picture-border, 0px) !default;
@@ -1289,10 +1289,9 @@ $tag-primary-background-color: var(
   --nutui-tag-primary-background-color,
   $primary-color
 ) !default;
-$tag-info-background-color: linear-gradient(
-  315deg,
-  rgba(73, 143, 242, 1) 0%,
-  rgba(73, 101, 242, 1) 100%
+$tag-info-background-color: var(
+  --nutui-tag-info-background-color,
+  $brand-info-color
 ) !default;
 $tag-success-background-color: var(
   --nutui-tag-success-background-color,
@@ -2278,7 +2277,7 @@ $comment-shop-color: var(--nutui-comment-shop-color, $primary-color) !default;
 // Ellipsis（✅ todo：react版本该组件暂无，将变量先迁过来）
 $ellipsis-expand-collapse-color: var(
   --nutui-ellipsis-expand-collapse-color,
-  #3460fa
+  $brand-info-color
 ) !default;
 
 // WaterMark（✅ todo：react版本该组件暂无，将变量先迁过来）
