@@ -84,8 +84,7 @@
     "postpublish": "node scripts/postpublish.js"
   },
   "lint-staged": {
-    "*.md": "prettier --write",
-    "*.{ts,tsx,js,vue,scss}": "prettier --write"
+    "*.{ts,tsx,js,scss,md}": "eslint ./src/packages"
   },
   "dependencies": {
     "@babel/runtime": "^7.21.0",

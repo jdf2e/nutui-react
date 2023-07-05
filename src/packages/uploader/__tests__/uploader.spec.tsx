@@ -144,8 +144,8 @@ test('should render base uploader list', () => {
 
 test('should render base uploader props disabled', () => {
   const { container } = render(<Uploader disabled />)
-  const up_load1 = container.querySelector('.nut-uploader__input')
-  expect(up_load1?.getAttribute('disabled')).toBe('')
+  const upLoad1 = container.querySelector('.nut-uploader__input')
+  expect(upLoad1?.getAttribute('disabled')).toBe('')
 })
 
 test('before-delete prop return false', () => {

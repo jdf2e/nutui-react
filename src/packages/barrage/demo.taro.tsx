@@ -1,9 +1,9 @@
 import React, { useRef } from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Cell, Barrage } from '@/packages/nutui.react.taro'
 import '@/packages/barrage/demo.scss'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
 interface barrageRefState {
   add: (word: string) => void

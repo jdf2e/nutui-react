@@ -1,4 +1,5 @@
 import React from 'react'
+import Taro from '@tarojs/taro'
 import {
   ConfigProvider,
   TextArea,
@@ -9,7 +10,6 @@ import {
 import enUS from '@/locales/en-US'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import Taro from '@tarojs/taro'
 
 const darkTheme = {
   nutuiBrandColor: 'green',

@@ -82,7 +82,7 @@ describe('radio', () => {
       ])
       return (
         <>
-          <RadioGroup value={radioVal} options={optionsDemo1}></RadioGroup>
+          <RadioGroup value={radioVal} options={optionsDemo1} />
         </>
       )
     }

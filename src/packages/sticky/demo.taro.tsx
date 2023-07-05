@@ -1,9 +1,9 @@
 import React, { useRef } from 'react'
+import { getEnv } from '@tarojs/taro'
 import { Button, Cell, Sticky } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 
-import { getEnv } from '@tarojs/taro'
 interface T {
   basic: string
   title1: string
