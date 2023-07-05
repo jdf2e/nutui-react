@@ -267,3 +267,4 @@ export default App;
 | \--nutui-overlay-bg-color | 遮罩层背景颜色 | `$gray7` |
 | \--nutui-overlay-content-bg-color | 遮罩层嵌套内容背景颜色 | `$gray6` |
 | \--nutui-overlay-content-color | 遮罩层嵌套内容字体颜色 | `$gray1` |
+| \--nutui-overlay-animation-duration| 遮罩层动画延时的时长 | `0.3s` |

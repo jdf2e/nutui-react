@@ -233,3 +233,4 @@ export default App;
 | \--nutui-popup-close-icon-margin | 弹框关闭按钮的margin值 | `16px` |
 | \--nutui-popup-close-icon-color | 弹框关闭按钮的色值 | `#969799` |
 | \--nutui-popup-close-icon-size | 弹框关闭按钮的大小 | `30px` |
+| \--nutui-popup-animation-duration | 弹框动画的延时 | `0.3s` |
