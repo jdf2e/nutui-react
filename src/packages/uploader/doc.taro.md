@@ -299,7 +299,7 @@ const App = () => {
       formData: options.formData,
       name: options.name,
       success(response: { errMsg: any; statusCode: number; data: string }) {
-        if (options.xhrState == response.statusCode) {
+        if (options.xhrState === response.statusCode) {
           options.onSuccess?.(response, options)
         } else {
           options.onFailure?.(response, options)

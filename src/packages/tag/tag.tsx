@@ -10,7 +10,13 @@ import classNames from 'classnames'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export type TagType = 'default' | 'primary' | 'success' | 'warning' | 'danger'
+export type TagType =
+  | 'default'
+  | 'primary'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'danger'
 
 export interface TagProps extends BasicComponent {
   type: TagType

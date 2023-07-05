@@ -1,3 +1,20 @@
+# v2.0.1
+`2023-07-05`
+
+* :sparkles: feat: tag 新增 info 类型 (#1180) @xiaoyatong
+* :bug: fix(searchbar): 修复 Taro-H5 下 onSearch 无法触发的问题 (#1178) @Eiinu
+* :bug: fix: button 组件在 taro h5 中不设置 opentype (#1167) @oasis-cloud
+* :bug: fix: datepicker 修改列数据后，更新下一级数据 (#1179) @xiaoyatong
+* :bug: fix: demo 中 input 布局换行 (#1170) @oasis-cloud
+* :bug: fix: demo 中 tabs 采用独立状态 (#1169) @oasis-cloud
+* :bug: fix: eslint 错误修复 (#1175) @oasis-cloud
+* :bug: fix: form 在处理组件受控和非受控的时候存在冲突 (#1166) @oasis-cloud
+* :bug: fix: 关闭主题定制入口 (#1171) @oasis-cloud
+* :bug: fix: 调整 demo 中 image 组件的间距 (#1168) @oasis-cloud
+* 📖 docs: swiper 文档中的 autoplay 描述修复 (#1165) @oasis-cloud
+* 📖 docs: update doc link (#1176) @Eiinu
+
+
 # v2.0.0-beta.3
 `2023-06-30`
 

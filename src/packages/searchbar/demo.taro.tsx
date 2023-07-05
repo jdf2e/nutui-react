@@ -105,7 +105,7 @@ const SearchBarDemo = () => {
             nutuiSearchbarInputTextAlign: 'right',
           }}
         >
-          <SearchBar onSearch={(value) => Taro.showToast({ title: value })} />
+          <SearchBar onSearch={() => toastShow()} />
         </ConfigProvider>
         <h2>{translated.title4}</h2>
         <SearchBar

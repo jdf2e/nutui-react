@@ -39,7 +39,7 @@ const App = () => {
       shopDescription={state.shopDescription}
       delivery={state.delivery}
       shopName={state.shopName}
-    ></Card>
+     />
   )
 }
 export default App
@@ -102,7 +102,7 @@ const App = () => {
           })}
         </div>
       }
-    ></Card>
+     />
   )
 }
 export default App
@@ -151,7 +151,7 @@ const App = () => {
           alt=""
         />
       }
-    ></Card>
+     />
   )
 }
 export default App
@@ -187,7 +187,7 @@ const App = () => {
       delivery={state.delivery}
       shopName={state.shopName}
       tag={<div>Custom Content</div>}
-    ></Card>
+     />
   )
 }
 export default App
@@ -224,7 +224,7 @@ const App = () => {
       delivery={state.delivery}
       shopName={state.shopName}
       extra={<div style={{ fontSize: '12px' }}>custom</div>}
-    ></Card>
+     />
   )
 }
 export default App

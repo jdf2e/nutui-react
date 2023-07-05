@@ -188,7 +188,7 @@ export const SearchBar: FunctionComponent<
   }
 
   const onKeypress = (e: any) => {
-    if (e.keyCode === 13) {
+    if (e.key === 'Enter' || e.keyCode === 13) {
       if (typeof e.cancelable !== 'boolean' || e.cancelable) {
         e.preventDefault()
       }

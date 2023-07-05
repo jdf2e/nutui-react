@@ -33,13 +33,13 @@ const App = () => {
         }
         left={<Close size={12} />}
         right={
-        <span onClick={(e) => Taro.showtoast({ title: 'icon' })}}>
+        <span onClick={(e) => Taro.showtoast({ title: 'icon' })}>
             <Share />
         </span>
         }
-        onBackClick={(e) => Taro.showtoast({ title: '返回' })}}
+        onBackClick={(e) => Taro.showtoast({ title: '返回' })}
     >
-        <span onClick={(e) => Taro.showtoast({ title: '标题' })}}>
+        <span onClick={(e) => Taro.showtoast({ title: '标题' })}>
         订单详情
         </span>
     </NavBar>
@@ -63,14 +63,14 @@ const App = () => {
   return ( 
     <NavBar
         right={
-        <span onClick={(e) => Taro.showtoast({ title: '清空' })}}>
+        <span onClick={(e) => Taro.showtoast({ title: '清空' })}>
             清空
         </span>
         }
         back={<Left name="left" color="#979797" />}
-        onBackClick={(e) => Taro.showtoast({ title: '返回' })}}
+        onBackClick={(e) => Taro.showtoast({ title: '返回' })}
     >
-        <span onClick={(e) => Taro.showtoast({ title: '标题' })}}>
+        <span onClick={(e) => Taro.showtoast({ title: '标题' })}>
         浏览记录
         </span>
     </NavBar>
@@ -96,18 +96,18 @@ const App = () => {
         back={<Left name="left" color="#979797" />}
         right={
         <>
-            <span style={{ marginRight: '5px' }} onClick={(e) => Taro.showtoast({ title: '编辑' })}}>
+            <span style={{ marginRight: '5px' }} onClick={(e) => Taro.showtoast({ title: '编辑' })}>
             编辑
             </span>
-            <MoreX onClick={(e) => Taro.showtoast({ title: 'icon' })}} />
+            <MoreX onClick={(e) => Taro.showtoast({ title: 'icon' })} />
         </>
         }
-        onBackClick={(e) => Taro.showtoast({ title: '返回' })}}
+        onBackClick={(e) => Taro.showtoast({ title: '返回' })}
     >
-        <span onClick={(e) => Taro.showtoast({ title: '标题' })}}>
+        <span onClick={(e) => Taro.showtoast({ title: '标题' })}>
         购物车
         </span>
-        <i style={{ marginLeft: '5px' }} onClick={(e) => Taro.showtoast({ title: 'icon' })}}>
+        <i style={{ marginLeft: '5px' }} onClick={(e) => Taro.showtoast({ title: 'icon' })}>
             <Cart2 />
         </i>
     </NavBar>
@@ -137,10 +137,10 @@ const App = () => {
               <span style={{ marginRight: '5px' }} onClick={(e) => Taro.showtoast({ title: '编辑' })}>
                 编辑
               </span>
-              <MoreX onClick={(e) => Taro.showtoast({ title: 'icon' })}} />
+              <MoreX onClick={(e) => Taro.showtoast({ title: 'icon' })} />
             </>
           }
-          onBackClick={(e) => Taro.showtoast({ title: '返回' })}}
+          onBackClick={(e) => Taro.showtoast({ title: '返回' })}
         >
             <Tabs value={tab1value} onChange={({ paneKey }) => { setTab1value(paneKey) }}>
               <TabPane title="Tab 1"> Tab 1 </TabPane>

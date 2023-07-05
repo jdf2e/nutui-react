@@ -1,10 +1,10 @@
 import React from 'react'
+import Taro from '@tarojs/taro'
+import { Failure, Success } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { TrendArrow, Cell } from '@/packages/nutui.react.taro'
 import '@/packages/trendarrow/demo.scss'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
-import { Failure, Success } from '@nutui/icons-react-taro'
 
 interface T {
   basic: string

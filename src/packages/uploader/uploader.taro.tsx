@@ -93,10 +93,10 @@ export interface UploaderProps extends BasicComponent {
   autoUpload: boolean
   multiple: boolean
   timeout: number
-  data: object
+  data: any
   method: string
   xhrState: number | string
-  headers: object
+  headers: any
   preview: boolean
   deletable: boolean
   className: string
@@ -335,7 +335,7 @@ const InternalUploader: ForwardRefRenderFunction<
     uploadOption.onStart = (option: UploadOptions) => {
       clearUploadQueue(index)
       setFileList((fileList: FileType<React.ReactNode>[]) => {
-        fileList.map((item) => {
+        fileList.forEach((item) => {
           if (item.uid === fileItem.uid) {
             item.status = 'ready'
             item.message = locale.uploader.readyUpload
@@ -348,7 +348,7 @@ const InternalUploader: ForwardRefRenderFunction<
 
     uploadOption.onProgress = (e: any, option: UploadOptions) => {
       setFileList((fileList: FileType<React.ReactNode>[]) => {
-        fileList.map((item) => {
+        fileList.forEach((item) => {
           if (item.uid === fileItem.uid) {
             item.status = 'uploading'
             item.message = locale.uploader.uploading
@@ -366,7 +366,7 @@ const InternalUploader: ForwardRefRenderFunction<
     ) => {
       setFileList((fileList: FileType<React.ReactNode>[]) => {
         onUpdate && onUpdate(fileList)
-        fileList.map((item) => {
+        fileList.forEach((item) => {
           if (item.uid === fileItem.uid) {
             item.status = 'success'
             item.message = locale.uploader.success
@@ -387,7 +387,7 @@ const InternalUploader: ForwardRefRenderFunction<
       option: UploadOptions
     ) => {
       setFileList((fileList: FileType<React.ReactNode>[]) => {
-        fileList.map((item) => {
+        fileList.forEach((item) => {
           if (item.uid === fileItem.uid) {
             item.status = 'error'
             item.message = locale.uploader.error
@@ -447,7 +447,7 @@ const InternalUploader: ForwardRefRenderFunction<
       if (getEnv() === 'WEB') {
         const formData = new FormData()
         for (const [key, value] of Object.entries(data)) {
-          formData.append(key, value)
+          formData.append(key, value as any)
         }
         formData.append(name, file.originalFileObj as Blob)
         fileItem.name = file.originalFileObj?.name
@@ -457,7 +457,7 @@ const InternalUploader: ForwardRefRenderFunction<
         fileItem.formData = data as any
       }
       if (preview) {
-        fileItem.url = fileType == 'video' ? file.thumbTempFilePath : filepath
+        fileItem.url = fileType === 'video' ? file.thumbTempFilePath : filepath
       }
 
       fileList.push(fileItem as any)

@@ -278,7 +278,7 @@ const PopoverDemo = () => {
           title="点击查看更多方向"
           description={baseDesc}
           onClick={handlePicker}
-        ></Cell>
+        />
         <Picker
           visible={showPicker}
           options={columns}
@@ -302,7 +302,7 @@ const PopoverDemo = () => {
           }}
         >
           <div className="brickBox">
-            <div className="brick" id="pickerTarget"></div>
+            <div className="brick" id="pickerTarget" />
           </div>
         </Picker>
         <Popover
@@ -311,7 +311,7 @@ const PopoverDemo = () => {
           targetId="pickerTarget"
           list={positionList}
           location={curPostion}
-        ></Popover>
+        />
 
         <h2>自定义目标元素</h2>
         <Popover
@@ -322,7 +322,7 @@ const PopoverDemo = () => {
           onClick={() => {
             setCustomTarget(false)
           }}
-        ></Popover>
+        />
         <Button
           type="primary"
           shape="square"
