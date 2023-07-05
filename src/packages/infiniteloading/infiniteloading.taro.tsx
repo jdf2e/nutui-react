@@ -128,7 +128,7 @@ export const InfiniteLoading: FunctionComponent<
   }
 
   const lower = () => {
-    if (direction.current == 'up' || !hasMore || isInfiniting) {
+    if (direction.current === 'up' || !hasMore || isInfiniting) {
       return false
     }
     setIsInfiniting(true)
@@ -136,7 +136,7 @@ export const InfiniteLoading: FunctionComponent<
   }
 
   const touchStart = (event: any) => {
-    if (scrollTop.current == 0 && !isTouching.current && pullRefresh) {
+    if (scrollTop.current === 0 && !isTouching.current && pullRefresh) {
       y.current = event.touches[0].pageY
       isTouching.current = true
     }

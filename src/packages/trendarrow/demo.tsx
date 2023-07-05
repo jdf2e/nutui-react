@@ -1,9 +1,9 @@
 import React from 'react'
+import { Failure, Success } from '@nutui/icons-react'
 import { useTranslate } from '@/sites/assets/locale'
 import { TrendArrow } from './trendarrow'
 import Cell from '../cell'
 import './demo.scss'
-import { Failure, Success } from '@nutui/icons-react'
 
 interface T {
   basic: string

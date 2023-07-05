@@ -40,9 +40,7 @@ const App = () => {
       shopDescription={state.shopDescription}
       delivery={state.delivery}
       shopName={state.shopName}
-    >
-     
-    </Card>
+     />
   )
 }
 export default App
@@ -97,8 +95,7 @@ const App = () => {
         {['鮮活', '禮盒', '國產'].map((item) => {
         return (
             <span style = { wordStyles } className = "word" key = { item } >{ item }</span>)})}
-        </div>}>
-    </Card>
+        </div>} />
 );
 };
 export default App;
@@ -149,7 +146,7 @@ const App = () => {
           alt=""
         />
       }
-    ></Card>
+     />
   )
 }
 export default App
@@ -222,7 +219,7 @@ const App = () => {
         shopDescription = { state.shopDescription }
         delivery = { state.delivery }
         shopName = { state.shopName }
-        extra = { < div style = {{fontSize: '12px'}}>自定義</div>}></Card>
+        extra = { < div style = {{fontSize: '12px'}}>自定義</div>} />
     );
 };
 export default App;

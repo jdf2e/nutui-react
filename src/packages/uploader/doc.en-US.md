@@ -335,7 +335,7 @@ import { Uploader, Button } from '@nutui/nutui-react';
 const App = () => {
   const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
   const beforeXhrUpload = (xhr: XMLHttpRequest, options: any) => {
-    if (options.method.toLowerCase() == 'put') {
+    if (options.method.toLowerCase() === 'put') {
       xhr.send(options.sourceFile);
     } else {
       xhr.send(options.formData);

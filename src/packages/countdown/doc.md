@@ -219,15 +219,7 @@ export default App;
 import React, {  useRef, useState } from 'react'
 import { Cell, CountDown } from '@nutui/nutui-react';
 
-const [resetTime, setResetTime] = useState({
-    d: '1',
-    h: '00',
-    m: '00',
-    s: '00',
-})
-const stateRef = useRef({
-    endTime: Date.now() + 60 * 1000,
-})
+
 const partItemStyle = {
     flexShrink: 0,
     display: 'flex',
@@ -247,6 +239,15 @@ const App = () => {
   const onUpdate = (v) => {
     setResetTime(v)
   }
+  const [resetTime, setResetTime] = useState({
+    d: '1',
+    h: '00',
+    m: '00',
+    s: '00',
+  })
+  const stateRef = useRef({
+    endTime: Date.now() + 60 * 1000,
+  })
   
   return (
     <Cell>

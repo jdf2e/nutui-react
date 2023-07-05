@@ -87,16 +87,16 @@ const InternalBarrage: ForwardRefRenderFunction<
     setTimeout(() => {
       let width = 100
       query
-        .select(`.${classPrefix}__body` + timeId.current)
+        .select(`.${classPrefix}__body${timeId.current}`)
         .boundingClientRect((rec: any) => {
           width = rec.width || 300
         })
 
       query
-        .select(`.${classPrefix}__item` + index)
+        .select(`.${classPrefix}__item${index}`)
         .boundingClientRect((recs: any) => {
-          let height = recs.height
-          let nodeTop = (index % rows) * (height + gapY) + 20 + 'px'
+          const height = recs.height
+          const nodeTop = `${(index % rows) * (height + gapY) + 20}px`
           styleInfo(index, nodeTop, width)
         })
         .exec()
@@ -104,10 +104,10 @@ const InternalBarrage: ForwardRefRenderFunction<
   }
 
   const styleInfo = (index: number, nodeTop: string, width: number) => {
-    let timeIndex = index - rows > 0 ? index - rows : 0
-    let list = styleList
-    let time = list[timeIndex] ? Number(list[timeIndex]['--time']) : 0
-    let obj = {
+    const timeIndex = index - rows > 0 ? index - rows : 0
+    const list = styleList
+    const time = list[timeIndex] ? Number(list[timeIndex]['--time']) : 0
+    const obj = {
       top: nodeTop,
       '--time': `${interval * index + time}`,
       animationDuration: `${duration}ms`,
@@ -127,8 +127,9 @@ const InternalBarrage: ForwardRefRenderFunction<
             <div
               className={`barrage-item ${classPrefix}__item${index} move`}
               style={styleList[index]}
+              key={index}
             >
-              {item.length > 8 ? item.substr(0, 8) + '...' : item}
+              {item.length > 8 ? `${item.substr(0, 8)}...` : item}
             </div>
           )
         })}

@@ -161,6 +161,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
+import { Loading1 } from '@nutui/icons-react';
 import { Uploader, Button } from '@nutui/nutui-react';
 
 const App = () => {
