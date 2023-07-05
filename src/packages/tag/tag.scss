@@ -32,6 +32,11 @@
     @include plain;
   }
 
+  &--info {
+    background: $tag-info-background-color;
+    @include plain;
+  }
+
   &--success {
     background: $tag-success-background-color;
     @include plain;
