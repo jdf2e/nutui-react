@@ -3,9 +3,9 @@ $brand-color: var(--nutui-brand-color, #fa2c19) !default;
 // 品牌渐变色
 $brand-color-start: var(--nutui-brand-color-start, #ff404f) !default;
 $brand-color-end: var(--nutui-brand-color-end, #fa2c19) !default;
-$brand-link-color: var(--nutui-brand-link-color, #396acc);
-$brand-text-color: var(--nutui-brand-text-color, #ffffff);
-$brand-info-color: var(--nutui-brand-info-color, #ffffff);
+$brand-link-color: var(--nutui-brand-link-color, #396acc) !default;
+$brand-text-color: var(--nutui-brand-text-color, #ffffff) !default;
+$brand-info-color: var(--nutui-brand-info-color, #1988fa) !default;
 
 $gray0: var(--nutui-gray-0, #000000) !default;
 // 主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
