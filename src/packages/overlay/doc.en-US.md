@@ -110,7 +110,8 @@ const App = () => {
       <Overlay
         visible={visible}
         onClick={onClose}
-        duration={2.5}
+        style={{ '--nutui-overlay-animation-duration': '2.5s' }}
+        duration={2500}
         afterShow={() => {
           console.log('afterShow')
         }}
@@ -248,7 +249,7 @@ export default App;
 | --- | --- | --- | --- |
 | visible | Whether the current component is displayed | `boolean` | `false` |
 | zIndex | Mask hierarchy | `number` | `2000` |
-| duration | Animation duration, in seconds | `number` | `0.3` |
+| duration | Animation duration, in ms | `number` | `300` |
 | lockScroll | Whether the background is locked | `boolean` | `true` |
 | closeOnOverlayClick | Tap Mask off | `boolean` | `true` |
 | onClick | Triggered when the button is clicked | `event: Event` | `-` |

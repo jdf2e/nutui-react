@@ -797,6 +797,10 @@ $overlay-content-bg-color: var(
   $gray6
 ) !default;
 $overlay-content-color: var(--nutui-overlay-content-color, $gray1) !default;
+$overlay-animation-duration: var(
+  --nutui-overlay-animation-duration,
+  0.3s
+) !default;
 //popup（✅）
 $popup-close-icon-margin: var(--nutui-popup-close-icon-margin, 16px) !default;
 $popup-border-radius: var(--nutui-popup-border-radius, 24px) !default;
