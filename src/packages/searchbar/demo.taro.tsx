@@ -85,7 +85,7 @@ const SearchBarDemo = () => {
           background="linear-gradient(to right, #9866F0, #EB4D50)"
           inputBackground="#999"
           align="right"
-          onSearch={(value) => Taro.showToast({ title: value })}
+          onSearch={() => toastShow()}
         />
         <h2>{translated.title4}</h2>
         <SearchBar
