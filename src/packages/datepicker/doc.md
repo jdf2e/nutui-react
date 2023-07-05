@@ -57,7 +57,7 @@ import { DatePicker,Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const [show2, setShow2] = useState(false)
-  const [desc2, setDesc2] = useState('05-10')
+  const [desc2, setDesc2] = useState('')
   const confirm2 = (values:(string|number)[],options:PickerOption[])=>{
     setDesc2(options.map((option) => option.text).join('-'))
   }
@@ -66,8 +66,8 @@ const App = () => {
       <Cell title="日期选择" description={desc2} onClick={() => setShow2(true)} />
       <DatePicker
           title="日期选择"
-          startDate={new Date(2022, 0, 1)}
-          endDate={new Date(2022, 7, 1)}
+          startDate={new Date(2023, 6, 4)}
+          endDate={new Date(2025, 7, 1)}
           type="month-day"
           visible={show2}
           onClose={() => setShow2(false)}

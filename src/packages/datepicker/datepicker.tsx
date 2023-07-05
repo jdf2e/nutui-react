@@ -95,7 +95,6 @@ export const DatePicker: FunctionComponent<
       !Number.isNaN(val.getTime())
     )
   }
-
   const formatValue = (value: Date | null) => {
     let cvalue = value
     if (!cvalue || (cvalue && !isDate(cvalue))) {
@@ -111,7 +110,6 @@ export const DatePicker: FunctionComponent<
     finalValue: 0,
     onChange: (val: number) => {},
   })
-
   function getMonthEndDay(year: number, month: number): number {
     return new Date(year, month, 0).getDate()
   }
@@ -151,7 +149,6 @@ export const DatePicker: FunctionComponent<
       [`${type}Seconds`]: seconds,
     }
   }
-
   const ranges = () => {
     const curDate = new Date(currentDate)
     if (!curDate) return []
@@ -219,22 +216,23 @@ export const DatePicker: FunctionComponent<
     selectedValue: (number | string)[],
     index: number
   ) => {
+    const rangeType = type.toLocaleLowerCase()
     if (
       ['date', 'datetime', 'datehour', 'month-day', 'year-month'].includes(
-        type.toLocaleLowerCase()
+        rangeType
       )
     ) {
       const formatDate: (number | string)[] = []
       selectedValue.forEach((item) => {
         formatDate.push(item)
       })
-      if (type.toLocaleLowerCase() === 'month-day' && formatDate.length < 3) {
+      if (rangeType === 'month-day' && formatDate.length < 3) {
         formatDate.unshift(
           new Date(defaultValue || startDate || endDate).getFullYear()
         )
       }
 
-      if (type.toLocaleLowerCase() === 'year-month' && formatDate.length < 3) {
+      if (rangeType === 'year-month' && formatDate.length < 3) {
         formatDate.push(
           new Date(defaultValue || startDate || endDate).getDate()
         )
@@ -248,12 +246,12 @@ export const DatePicker: FunctionComponent<
       )
       let date: Date | null = null
       if (
-        type.toLocaleLowerCase() === 'date' ||
-        type.toLocaleLowerCase() === 'month-day' ||
-        type.toLocaleLowerCase() === 'year-month'
+        rangeType === 'date' ||
+        rangeType === 'month-day' ||
+        rangeType === 'year-month'
       ) {
         date = new Date(year, month, day)
-      } else if (type.toLocaleLowerCase() === 'datetime') {
+      } else if (rangeType === 'datetime') {
         date = new Date(
           year,
           month,
@@ -261,7 +259,7 @@ export const DatePicker: FunctionComponent<
           Number(formatDate[3]),
           Number(formatDate[4])
         )
-      } else if (type.toLocaleLowerCase() === 'datehour') {
+      } else if (rangeType === 'datehour') {
         date = new Date(year, month, day, Number(formatDate[3]))
       }
 
@@ -335,22 +333,25 @@ export const DatePicker: FunctionComponent<
   const getDateIndex = (type: string) => {
     const date = new Date(currentDate)
     if (!currentDate) return 0
-
-    let d = 0
     if (type === 'year') {
-      d = date.getFullYear()
-    } else if (type === 'month') {
-      d = date.getMonth() + 1
-    } else if (type === 'day') {
-      d = date.getDate()
-    } else if (type === 'hour') {
-      d = date.getHours()
-    } else if (type === 'minute') {
-      d = date.getMinutes()
-    } else if (type === 'seconds') {
-      d = date.getSeconds()
+      return date.getFullYear()
     }
-    return d
+    if (type === 'month') {
+      return date.getMonth() + 1
+    }
+    if (type === 'day') {
+      return date.getDate()
+    }
+    if (type === 'hour') {
+      return date.getHours()
+    }
+    if (type === 'minute') {
+      return date.getMinutes()
+    }
+    if (type === 'seconds') {
+      return date.getSeconds()
+    }
+    return 0
   }
 
   const columns = () => {
