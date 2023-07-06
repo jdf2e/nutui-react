@@ -1,4 +1,6 @@
-import React, { FunctionComponent, useEffect, useRef } from 'react'
+import React, { useState, FunctionComponent, useEffect } from 'react'
+import { CSSTransition } from 'react-transition-group'
+import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
 import classNames from 'classnames'
 import { View, ITouchEvent } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -16,7 +18,7 @@ export interface OverlayProps extends BasicComponent {
 export const defaultOverlayProps = {
   ...ComponentDefaults,
   zIndex: 1000,
-  duration: 0.3,
+  duration: 300,
   closeOnOverlayClick: true,
   visible: false,
   lockScroll: true,
@@ -42,42 +44,30 @@ export const Overlay: FunctionComponent<
     ...defaultOverlayProps,
     ...props,
   }
+
+  const [innerVisible, setInnerVisible] = useState(visible)
+
   const classPrefix = `nut-overlay`
-  const renderRef = useRef(true)
-  const intervalCloseRef = useRef(0)
-  const intervalShowRef = useRef(0)
 
   useEffect(() => {
     if (visible) {
-      intervalShowRef.current = window.setTimeout(() => {
-        afterShow && afterShow()
-      }, duration * 1000 * 0.8)
+      setInnerVisible(true)
+    } else {
+      setInnerVisible(false)
     }
     lock()
   }, [visible])
 
   useEffect(() => {
     return () => {
-      clearTimeout(intervalCloseRef.current)
-      clearTimeout(intervalShowRef.current)
       document.body.classList.remove('nut-overflow-hidden')
     }
   }, [])
 
-  const classes = classNames(
-    {
-      'nut-overlay-fade-leave-active': !renderRef.current && !visible,
-      'nut-overlay-fade-enter-active': visible,
-      'nut-overlay-first-render': renderRef.current && !visible,
-      'nut-overlay-hidden-render': !visible,
-    },
-    className,
-    classPrefix
-  )
+  const classes = classNames(className, classPrefix)
 
   const styles = {
     zIndex,
-    animationDuration: `${props.duration}s`,
     ...style,
   }
 
@@ -92,24 +82,41 @@ export const Overlay: FunctionComponent<
   const handleClick = (e: ITouchEvent) => {
     if (closeOnOverlayClick) {
       onClick && onClick(e)
-      renderRef.current = false
-      intervalCloseRef.current = window.setTimeout(() => {
-        afterClose && afterClose()
-      }, duration * 1000 * 0.8)
     }
+  }
+
+  const onHandleOpened: EnterHandler<HTMLElement | undefined> | undefined = (
+    e: HTMLElement
+  ) => {
+    afterShow && afterShow()
+  }
+
+  const onHandleClosed: ExitHandler<HTMLElement | undefined> | undefined = (
+    e: HTMLElement
+  ) => {
+    afterClose && afterClose()
   }
 
   return (
     <>
-      <View
-        className={classes}
-        style={styles}
-        {...(rest as any)}
-        catchMove={lockScroll}
-        onClick={handleClick}
+      <CSSTransition
+        classNames={`${classPrefix}-slide`}
+        unmountOnExit
+        timeout={duration}
+        in={innerVisible}
+        onEntered={onHandleOpened}
+        onExited={onHandleClosed}
       >
-        {children}
-      </View>
+        <View
+          className={classes}
+          style={styles}
+          {...(rest as any)}
+          catchMove={lockScroll}
+          onClick={handleClick}
+        >
+          {children}
+        </View>
+      </CSSTransition>
     </>
   )
 }

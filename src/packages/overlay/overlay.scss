@@ -5,15 +5,6 @@
   width: 100%;
   height: 100%;
   background: $overlay-bg-color;
-}
-
-.nut-overflow-hidden {
-  overflow: hidden !important;
-}
-
-.nut-overlay-fade-enter-active {
-  animation: nut-fade-in;
-
   .wrapper {
     .content {
       background-color: $overlay-content-bg-color;
@@ -22,42 +13,49 @@
   }
 }
 
-.nut-overlay-fade-leave-active {
-  animation: nut-fade-out;
+.nut-overflow-hidden {
+  overflow: hidden !important;
 }
 
-.nut-overlay-first-render {
-  display: none;
-}
+.nut-overlay-slide {
+  @keyframes nut-fade-in {
+    0% {
+      opacity: 0;
+    }
 
-.nut-overlay-hidden-render {
-  display: none;
-}
+    1% {
+      opacity: 0;
+    }
 
-@keyframes nut-fade-in {
-  0% {
-    opacity: 0;
+    100% {
+      opacity: 1;
+    }
   }
 
-  1% {
-    opacity: 0;
+  @keyframes nut-fade-out {
+    0% {
+      opacity: 1;
+    }
+
+    1% {
+      opacity: 1;
+    }
+
+    100% {
+      opacity: 0;
+    }
   }
 
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes nut-fade-out {
-  0% {
-    opacity: 1;
+  &-enter-active,
+  &-appear-active {
+    animation-fill-mode: both;
+    animation-name: nut-fade-in;
+    animation-duration: $overlay-animation-duration;
   }
 
-  1% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
+  &-exit-active {
+    animation-fill-mode: both;
+    animation-name: nut-fade-out;
+    animation-duration: $overlay-animation-duration;
   }
 }
