@@ -122,12 +122,12 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
 
   const getPosition = (): CSSProperties => {
     return direction === 'down'
-      ? { position: 'absolute', height: `${window.innerHeight}px` }
+      ? { position: 'absolute', height: `100vh` }
       : {
           position: 'absolute',
           bottom: '100%',
           top: 'auto',
-          height: `${window.innerHeight}px`,
+          height: `100vh`,
         }
   }
 
