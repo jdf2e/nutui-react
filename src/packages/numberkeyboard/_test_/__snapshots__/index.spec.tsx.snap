@@ -3,12 +3,12 @@
 exports[`should match custom snapshot 1`] = `
 <div>
   <div
-    class="nut-overlay-fade-enter-active nut-overlay"
-    style="z-index: 1000; animation-duration: 0.3s; background-color: rgba(0, 0, 0, 0);"
+    class="nut-overlay"
+    style="z-index: 1000; background-color: rgba(0, 0, 0, 0);"
   />
   <div
     class="nut-popup nut-popup-bottom "
-    style="z-index: 1000; animation-duration: 0.3s;"
+    style="z-index: 1000;"
   >
     <div
       class="nut-numberkeyboard"
@@ -196,12 +196,12 @@ exports[`should match custom snapshot 1`] = `
 exports[`should match snapshot 1`] = `
 <div>
   <div
-    class="nut-overlay-fade-enter-active nut-overlay"
-    style="z-index: 1000; animation-duration: 0.3s; background-color: rgba(0, 0, 0, 0);"
+    class="nut-overlay"
+    style="z-index: 1000; background-color: rgba(0, 0, 0, 0);"
   />
   <div
     class="nut-popup nut-popup-bottom "
-    style="z-index: 1000; animation-duration: 0.3s;"
+    style="z-index: 1000;"
   >
     <div
       class="nut-numberkeyboard"

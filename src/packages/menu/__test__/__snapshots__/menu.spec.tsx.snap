@@ -43,10 +43,6 @@ exports[`should match snapshot 1`] = `
         style="position: absolute; left: 0px; right: 0px;"
       >
         <div
-          class="nut-overlay-first-render nut-overlay-hidden-render nut-menu__overlay nut-overlay"
-          style="z-index: 1000; animation-duration: 0.3s; position: absolute; height: 768px;"
-        />
-        <div
           class="nut-menu-item__wrap"
           style="display: none;"
         >
