@@ -4,6 +4,7 @@ import CalendarItem from '@/packages/calendaritem/index.taro'
 import { Utils } from '@/utils/date'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { Day, SelectedType } from './type'
+import { ComponentDefaults } from '@/utils/typings'
 
 type CalendarRef = {
   scrollToDate: (date: string) => void
@@ -26,6 +27,7 @@ export interface CalendarProps {
   showSubTitle?: boolean
   scrollAnimation?: boolean
   firstDayOfWeek: number
+  disableDate: (date: Day) => boolean
   renderHeaderButtons?: () => string | JSX.Element
   renderDay?: (date: Day) => string | JSX.Element
   renderDayTop?: (date: Day) => string | JSX.Element
@@ -37,6 +39,7 @@ export interface CalendarProps {
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   type: 'single',
   autoBackfill: false,
   popup: true,
@@ -53,6 +56,7 @@ const defaultProps = {
   showSubTitle: true,
   scrollAnimation: true,
   firstDayOfWeek: 0,
+  disableDate: (date: Day) => false,
   renderHeaderButtons: undefined,
   renderDay: undefined,
   renderDayTop: undefined,
@@ -69,6 +73,8 @@ export const Calendar = React.forwardRef<
 >((props, ref) => {
   const { locale } = useConfig()
   const {
+    style,
+    className,
     popup,
     visible,
     type,
@@ -85,6 +91,7 @@ export const Calendar = React.forwardRef<
     showSubTitle,
     scrollAnimation,
     firstDayOfWeek,
+    disableDate,
     renderHeaderButtons,
     renderDay,
     renderDayTop,
@@ -129,6 +136,8 @@ export const Calendar = React.forwardRef<
     return (
       <CalendarItem
         ref={calendarRef}
+        style={style}
+        className={className}
         type={type}
         autoBackfill={autoBackfill}
         popup={popup}
@@ -144,6 +153,7 @@ export const Calendar = React.forwardRef<
         showSubTitle={showSubTitle}
         scrollAnimation={scrollAnimation}
         firstDayOfWeek={firstDayOfWeek}
+        disableDate={disableDate}
         renderHeaderButtons={renderHeaderButtons}
         renderDay={renderDay}
         renderDayTop={renderDayTop}
