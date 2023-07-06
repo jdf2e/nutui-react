@@ -140,13 +140,13 @@
   &-default-enter-active {
     animation-fill-mode: both;
     animation-name: popup-scale-fade-in;
-    animation-duration: 0.3s;
+    animation-duration: $popup-animation-duration;
   }
 
   &-default-exit-active {
     animation-fill-mode: both;
     animation-name: popup-scale-fade-out;
-    animation-duration: 0.3s;
+    animation-duration: $popup-animation-duration;
   }
 
   @keyframes popup-fade-in {
@@ -172,13 +172,13 @@
   &-center-enter-active {
     animation-fill-mode: both;
     animation-name: popup-fade-in;
-    animation-duration: 0.3s;
+    animation-duration: $popup-animation-duration;
   }
 
   &-center-exit-active {
     animation-fill-mode: both;
     animation-name: popup-fade-out;
-    animation-duration: 0.3s;
+    animation-duration: $popup-animation-duration;
   }
 
   /* 从顶部滑出 */
@@ -199,13 +199,13 @@
     transform: translate3d(0, 0%, 0);
     animation-fill-mode: both;
     animation-name: popup-slide-top-enter;
-    animation-duration: 0.3s;
+    animation-duration: $popup-animation-duration;
   }
 
   &-top-exit-active {
     animation-fill-mode: both;
     animation-name: popup-slide-top-exit;
-    animation-duration: 0.3s;
+    animation-duration: $popup-animation-duration;
   }
 
   /* 从右侧滑出 */
@@ -226,13 +226,13 @@
     transform: translate3d(0, 0, 0);
     animation-fill-mode: both;
     animation-name: popup-slide-right-enter;
-    animation-duration: 0.3s;
+    animation-duration: $popup-animation-duration;
   }
 
   &-right-exit {
     animation-fill-mode: both;
     animation-name: popup-slide-right-exit;
-    animation-duration: 0.3s;
+    animation-duration: $popup-animation-duration;
   }
 
   /* 从底部滑出 */
@@ -253,13 +253,13 @@
     transform: translate(0, 0);
     animation-fill-mode: both;
     animation-name: popup-slide-bottom-enter;
-    animation-duration: 0.3s;
+    animation-duration: $popup-animation-duration;
   }
 
   &-bottom-exit {
     animation-fill-mode: both;
     animation-name: slide-bottom-exit;
-    animation-duration: 0.3s;
+    animation-duration: $popup-animation-duration;
   }
 
   /* 从左侧滑出 */
@@ -280,14 +280,14 @@
     transform: translate(0, 0);
     animation-fill-mode: both;
     animation-name: popup-slide-left-enter;
-    animation-duration: 0.3s;
+    animation-duration: $popup-animation-duration;
   }
 
   &-left-exit-active,
   &-left-exit-done {
     animation-fill-mode: both;
     animation-name: popup-slide-left-exit;
-    animation-duration: 0.3s;
+    animation-duration: $popup-animation-duration;
   }
 }
 

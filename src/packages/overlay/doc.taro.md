@@ -111,7 +111,8 @@ const App = () => {
       <Overlay
         visible={visible}
         onClick={onClose}
-        duration={2.5}
+        style={{ '--nutui-overlay-animation-duration': '2.5s' }}
+        duration={2500}
         afterShow={() => {
           console.log('afterShow')
         }}
@@ -249,7 +250,7 @@ export default App;
 | --- | --- | --- | --- |
 | visible | 当前组件是否显示 | `boolean` | `false` |
 | zIndex | 遮罩层级 | `number` | `2000` |
-| duration | 动画时长，单位秒 | `number` | `0.3` |
+| duration | 动画时长，单位毫秒 | `number` | `300` |
 | lockScroll | 背景是否锁定 | `boolean` | `true` |
 | closeOnOverlayClick | 是否点击遮罩关闭 | `boolean` | `true` |
 | onClick | 点击时触发 | `event: Event` | `-` |
@@ -267,3 +268,4 @@ export default App;
 | \--nutui-overlay-bg-color | 遮罩层背景颜色 | `$gray7` |
 | \--nutui-overlay-content-bg-color | 遮罩层嵌套内容背景颜色 | `$gray6` |
 | \--nutui-overlay-content-color | 遮罩层嵌套内容字体颜色 | `$gray1` |
+| \--nutui-overlay-animation-duration| 遮罩层动画延时的时长 | `0.3s` |

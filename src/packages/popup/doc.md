@@ -199,7 +199,7 @@ export default App;
 | --- | --- | --- | --- |
 | visible | 当前组件是否显示 | `boolean` | `false` |
 | zIndex | 遮罩层级 | `string` \| `number`  | `2000` |
-| duration | 遮罩动画时长，单位秒 | `number` | `0.3` |
+| duration | 遮罩动画时长，单位毫秒 | `number` | `300` |
 | overlayClassName | 自定义遮罩类名 | `string` | `-` |
 | overlayStyle | 自定义遮罩样式 | `CSSProperties` | `-` |
 | lockScroll | 背景是否锁定 | `boolean` | `true` |
@@ -233,3 +233,4 @@ export default App;
 | \--nutui-popup-close-icon-margin | 弹框关闭按钮的margin值 | `16px` |
 | \--nutui-popup-close-icon-color | 弹框关闭按钮的色值 | `#969799` |
 | \--nutui-popup-close-icon-size | 弹框关闭按钮的大小 | `30px` |
+| \--nutui-popup-animation-duration | 弹框动画的延时 | `0.3s` |
