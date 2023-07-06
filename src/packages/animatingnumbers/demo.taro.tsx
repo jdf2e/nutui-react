@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Taro from '@tarojs/taro'
-import { AnimatingNumbers } from '@/packages/nutui.react.taro'
+import { AnimatingNumbers, Cell } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import '@/packages/animatingnumbers/demo.scss'
@@ -43,13 +43,17 @@ const AnimatingNumbersDemo = () => {
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>CountUp-{translated.basic}</h2>
-        <AnimatingNumbers.CountUp value="678.94" />
+        <Cell title={<AnimatingNumbers.CountUp value="678.94" />} />
         <h2>CountUp-{translated.custom}</h2>
-        <AnimatingNumbers.CountUp
-          value={value}
-          duration={1.2}
-          length={6}
-          className="custom-coutup"
+        <Cell
+          title={
+            <AnimatingNumbers.CountUp
+              value={value}
+              duration={1.2}
+              length={6}
+              className="custom-coutup"
+            />
+          }
         />
       </div>
     </>

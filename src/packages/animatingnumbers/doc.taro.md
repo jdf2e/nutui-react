@@ -18,10 +18,10 @@ import { AnimatingNumbers } from '@nutui/nutui-react-taro'
 
 ```tsx
 import React from 'react'
-import { AnimatingNumbers } from '@nutui/nutui-react-taro'
+import { AnimatingNumbers, Cell } from '@nutui/nutui-react-taro'
 
 const App = () => {
-  return <AnimatingNumbers.CountUp value="678.94" />
+    return  <Cell title={<AnimatingNumbers.CountUp value="678.94" />} />
 }
 export default App
 ```
@@ -34,7 +34,7 @@ export default App
 
 ```tsx
 import React, { useEffect, useState } from 'react'
-import { AnimatingNumbers } from '@nutui/nutui-react-taro'
+import { AnimatingNumbers, Cell } from '@nutui/nutui-react-taro'
 
 const App = () => {
   const [value, setEndNumer] = useState('1570.99')
@@ -48,11 +48,15 @@ const App = () => {
     }, 30000)
   }, [])
   return (
-    <AnimatingNumbers.CountUp
-      value={value}
-      duration={1.2}
-      length={6}
-      className="custom-coutup"
+    <Cell
+        title={
+        <AnimatingNumbers.CountUp
+            value={value}
+            duration={1.2}
+            length={6}
+            className="custom-coutup"
+        />
+        }
     />
   )
 }

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { AnimatingNumbers } from './animatingnumbers'
+import { Cell } from '../cell/cell'
 import { useTranslate } from '../../sites/assets/locale'
 import './demo.scss'
 
@@ -40,13 +41,18 @@ const AnimatingNumbersDemo = () => {
     <>
       <div className="demo">
         <h2>CountUp-{translated.basic}</h2>
-        <AnimatingNumbers.CountUp value="678.94" />
+        <Cell title={<AnimatingNumbers.CountUp value="678.94" />} />
+
         <h2>CountUp-{translated.custom}</h2>
-        <AnimatingNumbers.CountUp
-          value={value}
-          duration={1.2}
-          length={6}
-          className="custom-coutup"
+        <Cell
+          title={
+            <AnimatingNumbers.CountUp
+              value={value}
+              duration={1.2}
+              length={6}
+              className="custom-coutup"
+            />
+          }
         />
       </div>
     </>
