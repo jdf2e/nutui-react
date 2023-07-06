@@ -123,44 +123,38 @@ const ProgressDemo = () => {
           <Issue color="red" style={{ margin: '0 5px' }} />
         </Cell>
         <h2>{translated.dynamicChange}</h2>
-        <Cell align="center">
-          <Progress percent={value} />
-          <span style={{ margin: '0 5px' }}>{value}%</span>
-        </Cell>
-        <Cell>
-          <Button
-            type="default"
-            style={{ margin: 8 }}
-            // eslint-disable-next-line consistent-return
-            onClick={() => {
-              let num = value
-              if (value <= 0) {
-                Toast.show('进度已为0')
-                return false
-              }
-              num -= 10
-              setValue(num)
-            }}
-          >
-            {translated.reduce}
-          </Button>
-          <Button
-            type="primary"
-            style={{ margin: 8 }}
-            // eslint-disable-next-line consistent-return
-            onClick={(e) => {
-              let num = value
-              if (value >= 100) {
-                Toast.show('进度已为100%')
-                return false
-              }
-              num += 10
-              setValue(num)
-            }}
-          >
-            {translated.add}
-          </Button>
-        </Cell>
+        <Cell.Group>
+          <Cell align="center">
+            <Progress percent={value} />
+            <span style={{ margin: '0 5px' }}>{value}%</span>
+          </Cell>
+          <Cell align="center">
+            <Button
+              type="default"
+              style={{ margin: 8 }}
+              onClick={() => {
+                if (value <= 0) {
+                  Toast.show('进度已为0')
+                }
+                setValue(Math.max(0, value - 10))
+              }}
+            >
+              {translated.reduce}
+            </Button>
+            <Button
+              type="primary"
+              style={{ margin: 8 }}
+              onClick={() => {
+                if (value >= 100) {
+                  Toast.show('进度已为100%')
+                }
+                setValue(Math.min(100, value + 10))
+              }}
+            >
+              {translated.add}
+            </Button>
+          </Cell>
+        </Cell.Group>
         <h2>{translated.lazy}</h2>
         <Cell align="center">
           <Progress percent={30} lazy delay={500} />
