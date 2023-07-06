@@ -197,9 +197,9 @@ export default App;
 | --- | --- | --- |
 | \--nutui-pagination-color | 页码字色 |  `$primary-color` |
 | \--nutui-pagination-font-size | 页码字号 | `$font-size-2` |
-| \--nutui-pagination-item-border-color | 边框颜色 | `#e4e7eb` |
+| \--nutui-pagination-item-border-color | 边框颜色 | `$gray9` |
 | \--nutui-pagination-disable-color | 不可用色 | `$disable-color` |
-| \--nutui-pagination-disable-background-color | 不可用背景色 | `#f7f8fa` |
+| \--nutui-pagination-disable-background-color | 不可用背景色 | `$gray10` |
 | \--nutui-pagination-item-border-width | 边框宽度 | `1px` |
 | \--nutui-pagination-item-border-radius | 边框圆角 | `2px` |
 | \--nutui-pagination-prev-next-padding | padding 值 | `0 11px` |

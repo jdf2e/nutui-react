@@ -1450,7 +1450,7 @@ $pagination-color: var(--nutui-pagination-color, $primary-color) !default;
 $pagination-font-size: var(--nutui-pagination-font-size, $font-size-2) !default;
 $pagination-item-border-color: var(
   --nutui-pagination-item-border-color,
-  #e4e7eb
+  $gray9
 ) !default;
 $pagination-active-background-color: linear-gradient(
   135deg,
@@ -1467,7 +1467,7 @@ $pagination-disable-color: var(
 ) !default;
 $pagination-disable-background-color: var(
   --nutui-pagination-disable-background-color,
-  #f7f8fa
+  $gray10
 ) !default;
 $pagination-item-border-width: var(
   --nutui-pagination-item-border-width,
