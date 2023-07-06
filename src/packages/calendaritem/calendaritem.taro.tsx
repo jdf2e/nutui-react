@@ -554,6 +554,12 @@ export const CalendarItem = React.forwardRef<
   const getClasses = (day: Day, month: MonthInfo) => {
     const dateStr = getCurrDate(day, month)
     if (day.type === 'active') {
+      if (
+        (propStartDate && Utils.compareDate(dateStr, propStartDate)) ||
+        (propEndDate && Utils.compareDate(propEndDate, dateStr))
+      ) {
+        return `${dayPrefix}-disabled`
+      }
       if (type === 'range' || type === 'week') {
         if (
           isStart(dateStr, currentDate as string[]) ||
