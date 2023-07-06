@@ -1,4 +1,4 @@
-import React, { useState, FunctionComponent, useEffect, useRef } from 'react'
+import React, { useState, FunctionComponent, useEffect } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
 import classNames from 'classnames'
