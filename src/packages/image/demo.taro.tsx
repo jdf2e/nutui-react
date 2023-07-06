@@ -31,16 +31,24 @@ const ImageDemo = () => {
   })
   const src =
     'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
-
+  const errorSrc =
+    'https://storage.3601buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
   return (
     <>
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <Cell>
-          <Image src={src} width="100%" />
+          <Image src={src} width="100%" height={200} />
         </Cell>
-
+        <h2>{translated.circle}</h2>
+        <Cell>
+          <Row gutter={10}>
+            <Col span="8">
+              <Image src={src} width="100" height="100" radius="50%" />
+            </Col>
+          </Row>
+        </Cell>
         <h2>{translated.loading}</h2>
         <Cell>
           <Row gutter={10}>
@@ -52,7 +60,7 @@ const ImageDemo = () => {
               <Image
                 width="80"
                 height="80"
-                slotLoding={<Loading className="nut-icon-loading" />}
+                loading={<Loading className="nut-icon-loading" />}
               />
               <div className="image-text">{translated.custom}</div>
             </Col>
@@ -71,7 +79,7 @@ const ImageDemo = () => {
                 src="https://x"
                 width="100"
                 height="100"
-                slotError={<CircleClose />}
+                error={<CircleClose />}
               />
               <div className="image-text">{translated.custom}</div>
             </Col>

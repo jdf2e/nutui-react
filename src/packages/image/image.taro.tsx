@@ -1,104 +1,65 @@
-import React, { FunctionComponent, useState, useEffect } from 'react'
-import { Image as ImageIcon, ImageError } from '@nutui/icons-react-taro'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import React, {
+  FunctionComponent,
+  useState,
+  ReactNode,
+  useCallback,
+  CSSProperties,
+} from 'react'
+import { Image as TImage, ImageProps as TImageProps } from '@tarojs/components'
+import { ImageError, Image as ImageIcon } from '@nutui/icons-react-taro'
+import classNames from 'classnames'
+import { BaseEventOrig } from '@tarojs/components/types/common'
 
-export interface ImageProps {
-  className: string
-  style: React.CSSProperties
-  src: string
-  fit: ImageFit
-  position: ImagePosition
-  alt: string
-  width: string
-  height: string
-  round: boolean
+export interface ImageProps extends Omit<TImageProps, 'style'> {
+  style?: CSSProperties
+  width: string | number
+  height: string | number
   radius: string | number
-  showError: boolean
-  showLoading: boolean
-  slotLoding: React.ReactNode
-  slotError: React.ReactNode
-  onClick?: (e: MouseEvent) => void
-  onLoad?: () => void
-  onError?: () => void
+  error: boolean | ReactNode
+  loading: boolean | ReactNode
 }
 
 const defaultProps = {
-  fit: 'fill',
-  position: 'center',
-  alt: '',
-  width: 'center',
-  height: '',
-  round: false,
-  showError: true,
-  showLoading: true,
+  src: '',
+  error: true,
+  loading: true,
 } as ImageProps
 
-export type ImageFit =
-  | 'contain'
-  | 'cover'
-  | 'fill'
-  | 'none'
-  | 'scale-down'
-  | string
-export type ImagePosition =
-  | 'center'
-  | 'top'
-  | 'right'
-  | 'bottom'
-  | 'left'
-  | string
-
-export const Image: FunctionComponent<
-  Partial<ImageProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'onLoad' | 'onError'>
-> = (props) => {
-  const { locale } = useConfig()
+export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
+  const classPrefix = 'nut-image'
   const {
-    children,
     className,
     style,
     src,
-    fit,
-    position,
-    alt,
     width,
     height,
-    round,
     radius,
-    showError,
-    showLoading,
-    slotError,
-    slotLoding,
-    onClick,
+    error,
+    loading,
     onLoad,
     onError,
+    ...rest
   } = { ...defaultProps, ...props }
-  const [loading, setLoading] = useState(true)
+  const [innerLoading, setInnerLoading] = useState(true)
   const [isError, setIsError] = useState(false)
 
-  useEffect(() => {
-    if (src) {
-      setIsError(false)
-      setLoading(true)
-    }
-  }, [src])
-
   // 图片加载
-  const load = () => {
-    setLoading(false)
-    onLoad && onLoad()
+  const handleLoad = (e: BaseEventOrig<TImageProps.onLoadEventDetail>) => {
+    setIsError(false)
+    setInnerLoading(false)
+    onLoad && onLoad(e)
   }
   // 图片加载失败
-  const error = () => {
+  const handleError = (e: BaseEventOrig<TImageProps.onErrorEventDetail>) => {
     setIsError(true)
-    setLoading(false)
-    onError && onError()
+    setInnerLoading(false)
+    onError && onError(e)
   }
 
   const pxCheck = (value: string | number): string => {
     return Number.isNaN(Number(value)) ? String(value) : `${value}px`
   }
-  const stylebox = {
+  const containerStyle = {
     height: height ? pxCheck(height) : '',
     width: width ? pxCheck(width) : '',
     overflow: radius !== undefined && radius !== null ? 'hidden' : '',
@@ -106,43 +67,51 @@ export const Image: FunctionComponent<
       radius !== undefined && radius !== null ? pxCheck(radius) : '',
   }
 
-  const styles: any = {
-    objectFit: fit,
-    objectPosition: position,
+  const imgStyle: any = {
     ...style,
   }
 
-  const imageClick = (event: any) => {
-    onClick && onClick(event)
-  }
-
-  return (
-    <div
-      className={`nut-image ${round ? 'nut-image-round' : ''}`}
-      style={stylebox}
-      onClick={(e: any) => {
-        imageClick(e)
-      }}
-    >
-      <img
-        className="nut-img"
-        style={styles}
-        src={src}
-        alt={alt}
-        onLoad={load}
-        onError={error}
-      />
-      {showLoading && loading ? (
-        <div className="nut-img-loading">
-          {slotLoding || children || <ImageIcon />}
-        </div>
-      ) : null}
-
-      {showError && isError && !loading ? (
+  const renderErrorImg = useCallback(() => {
+    if (!isError) return null
+    if (typeof error === 'boolean' && error === true && !innerLoading) {
+      return (
         <div className="nut-img-error">
-          {slotError || children || <ImageError />}
+          <ImageError />
         </div>
-      ) : null}
+      )
+    }
+    if (React.isValidElement(error) && !innerLoading) {
+      return <div className="nut-img-error">{error}</div>
+    }
+    return null
+  }, [error, isError])
+
+  const renderLoading = useCallback(() => {
+    if (!loading) return null
+    if (typeof loading === 'boolean' && loading === true && innerLoading) {
+      return (
+        <div className="nut-img-loading">
+          <ImageIcon />
+        </div>
+      )
+    }
+    if (React.isValidElement(loading) && innerLoading) {
+      return <div className="nut-img-loading">{loading}</div>
+    }
+    return null
+  }, [loading, innerLoading])
+  return (
+    <div className={classNames(classPrefix, className)} style={containerStyle}>
+      <TImage
+        {...rest}
+        className="nut-img"
+        style={imgStyle}
+        src={src}
+        onLoad={(e) => handleLoad(e)}
+        onError={(e) => handleError(e)}
+      />
+      {renderLoading()}
+      {renderErrorImg()}
     </div>
   )
 }
