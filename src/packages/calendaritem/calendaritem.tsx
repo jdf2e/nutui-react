@@ -47,6 +47,7 @@ export interface CalendarItemProps extends PopupProps {
   showSubTitle: boolean
   scrollAnimation: boolean
   firstDayOfWeek: number
+  disableDate: (date: Day) => boolean
   renderHeaderButtons: () => string | JSX.Element
   renderDay: (date: Day) => string | JSX.Element
   renderDayTop: (date: Day) => string | JSX.Element
@@ -72,6 +73,7 @@ const defaultProps = {
   showSubTitle: true,
   scrollAnimation: true,
   firstDayOfWeek: 0,
+  disableDate: (date: Day) => false,
   renderHeaderButtons: undefined,
   renderDay: undefined,
   renderDayTop: undefined,
@@ -88,6 +90,8 @@ export const CalendarItem = React.forwardRef<
 >((props, ref) => {
   const { locale } = useConfig()
   const {
+    style,
+    className,
     popup,
     type,
     autoBackfill,
@@ -103,6 +107,7 @@ export const CalendarItem = React.forwardRef<
     showSubTitle,
     scrollAnimation,
     firstDayOfWeek,
+    disableDate,
     renderHeaderButtons,
     renderDay,
     renderDayTop,
@@ -544,6 +549,7 @@ export const CalendarItem = React.forwardRef<
 
   const getClasses = (day: Day, month: MonthInfo) => {
     const dateStr = getCurrDate(day, month)
+
     if (day.type === 'active') {
       if (
         (propStartDate && Utils.compareDate(dateStr, propStartDate)) ||
@@ -567,17 +573,21 @@ export const CalendarItem = React.forwardRef<
           Utils.compareDate(currentDate[0], dateStr) &&
           Utils.compareDate(dateStr, currentDate[1])
         ) {
+          if (disableDate(day)) {
+            return `${dayPrefix}-choose-disabled`
+          }
           return `${dayPrefix}-choose`
         }
-        return null
-      }
-
-      if (
+      } else if (
         (type === 'multiple' && isMultiple(dateStr, currentDate as string[])) ||
         (!Array.isArray(currentDate) &&
           Utils.isEqual(currentDate as string, dateStr))
       ) {
         return `${dayPrefix}-active`
+      }
+
+      if (disableDate(day)) {
+        return `${dayPrefix}-disabled`
       }
 
       return null
@@ -699,6 +709,7 @@ export const CalendarItem = React.forwardRef<
       [`${classPrefix}-title`]: !popup,
       [`${classPrefix}-nofooter`]: !!autoBackfill,
     },
+    className,
     classPrefix
   )
 
@@ -850,7 +861,7 @@ export const CalendarItem = React.forwardRef<
 
   return (
     <>
-      <div className={classes}>
+      <div className={classes} style={style}>
         {renderHeader()}
         {renderContent()}
         {popup && !autoBackfill ? renderFooter() : ''}
