@@ -1653,7 +1653,7 @@ $collapse-item-padding: var(
 $collapse-item-color: var(--nutui-collapse-item-color, $title-color) !default;
 $collapse-item-disabled-color: var(
   --nutui-collapse-item-disabled-color,
-  #c8c9cc
+  $gray3
 ) !default;
 $collapse-item-font-size: var(
   --nutui-collapse-item-font-size,
