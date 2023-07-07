@@ -80,3 +80,6 @@ jobs:
 
     - name: Build NutUI-React Demo
       run: npm run build:site
+
+    - name: Build NutUI-React Taro H5 Demo
+      run: npm run build:taro:site
