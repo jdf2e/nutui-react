@@ -14,7 +14,7 @@
     padding: 10px;
     display: block;
     font-size: $font-size-base;
-    color: $title-color2;
+    color: $text-color;
     margin-inline-start: 0px;
   }
 
@@ -39,7 +39,7 @@
     &-description {
       display: block;
       font-size: $font-size-small;
-      color: $title-color2;
+      color: $text-color;
     }
 
     &.danger {

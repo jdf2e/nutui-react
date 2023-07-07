@@ -36,14 +36,13 @@ $primary-color-end: $brand-color-end !default;
 $primary-link-color: #396acc !default;
 $primary-text-color: $brand-text-color !default;
 // ----------------------------------------------------
-// 标题常规文字
+// 标题重要字
 $title-color: $gray1 !default;
-// 副标题
-$title-color2: $gray2 !default;
-// 次内容
+// 常规
 $text-color: $gray2 !default;
-// 辅助色
-$help-color: $gray5 !default;
+// 辅助色，暂无用到。todo
+$help-color: var(--nutui-gray-0103) !default;
+
 // 特殊禁用色
 $disable-color: $gray3 !default;
 $required-color: $primary-color !default;
@@ -222,7 +221,7 @@ $button-warning-background-color: linear-gradient(
 ) !default;
 
 // cell（✅）
-$cell-title-color: var(--nutui-cell-title-color, $gray1) !default;
+$cell-title-color: var(--nutui-cell-title-color, $title-color) !default;
 $cell-title-font-size: var(--nutui-cell-title-font-size, $font-size-2) !default;
 $cell-description-font-size: var(
   --nutui-cell-description-font-size,
@@ -247,7 +246,6 @@ $cell-box-shadow: var(
 ) !default;
 
 // cell-group（✅）
-
 $cell-group-title-padding: var(
   --nutui-cell-group-title-padding,
   0 10px
@@ -283,13 +281,12 @@ $cell-group-background-color: var(
 ) !default;
 
 // divider（✅）
-
 $divider-margin: var(--nutui-divider-margin, 16px 0) !default;
 $divider-text-font-size: var(
   --nutui-divider-text-font-size,
   $font-size-2
 ) !default;
-$divider-text-color: var(--nutui-divider-text-color, $gray1) !default;
+$divider-text-color: var(--nutui-divider-text-color, $gray2) !default;
 $divider-line-height: var(--nutui-divider-line-height, 2px) !default;
 $divider-before-margin-right: var(
   --nutui-divider-before-margin-right,
@@ -943,7 +940,7 @@ $steps-base-description-font-size: var(
 ) !default;
 $steps-base-content-color: var(
   --nutui-steps-base-description-color,
-  $title-color2
+  $text-color
 ) !default;
 
 $steps-wait-icon-bg-color: var(
@@ -953,11 +950,11 @@ $steps-wait-icon-bg-color: var(
 $steps-wait-icon-color: var(--nutui-steps-wait-icon-color, $white) !default;
 $steps-wait-title-color: var(
   --nutui-steps-wait-title-color,
-  $title-color2
+  $title-color
 ) !default;
 $steps-wait-content-color: var(
   --nutui-steps-wait-description-color,
-  $title-color2
+  $text-color
 ) !default;
 
 $steps-process-icon-bg-color: var(
@@ -982,7 +979,7 @@ $steps-process-title-font-weight: var(
 ) !default;
 $steps-process-content-color: var(
   --nutui-steps-process-description-color,
-  $title-color2
+  $text-color
 ) !default;
 
 $steps-finish-icon-bg-color: var(
@@ -999,7 +996,7 @@ $steps-finish-title-color: var(
 ) !default;
 $steps-finish-content-color: var(
   --nutui-steps-finish-description-color,
-  $title-color2
+  $text-color
 ) !default;
 $steps-finish-line-background: var(
   --nutui-steps-finish-line-background,
@@ -1234,7 +1231,7 @@ $timeselect-date-line-height: var(
 ) !default;
 $timeselect-date-color: var(
   --nutui-timeselect-date-color,
-  $title-color2
+  $text-color
 ) !default;
 $timeselect-date-active-color: var(
   --nutui-timeselect-date-active-color,

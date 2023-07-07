@@ -533,11 +533,11 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-steps-base-title-color | Title color | `$title-color` |
 | \--nutui-steps-base-title-margin-bottom | Title bottom margin | `10px` |
 | \--nutui-steps-base-description-font-size | The font size of the description text | `14px` |
-| \--nutui-steps-base-description-color | The font color of description text | `$title-color2` |
+| \--nutui-steps-base-description-color | The font color of description text | `$text-color` |
 | \--nutui-steps-wait-icon-bg-color | Background color of icon container in waiting state | `#959fb1` |
 | \--nutui-steps-wait-icon-color | font color of icon container in waiting state | `$white` |
-| \--nutui-steps-wait-title-color | wait state title font color | `$title-color2` |
-| \--nutui-steps-wait-description-color | wait state description font color | `$title-color2` |
+| \--nutui-steps-wait-title-color | wait state title font color | `$text-color` |
+| \--nutui-steps-wait-description-color | wait state description font color | `$text-color` |
 | \--nutui-steps-process-icon-bg-color | Process icon container background color | `$primary-color` |
 | \--nutui-steps-process-icon-color | Process icon container font color | `$white` |
 | \--nutui-steps-process-title-color | Process title font color | `$primary-color` |
@@ -547,7 +547,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-steps-finish-icon-bg-color | background color of finish status icon container | `$primary-text-color` |
 | \--nutui-steps-finish-icon-color | font color of finish status icon container | `$primary-color` |
 | \--nutui-steps-finish-title-color | Font color of finish status title | `$primary-color` |
-| \--nutui-steps-finish-description-color | Font color of finish state description | `$title-color2` |
+| \--nutui-steps-finish-description-color | Font color of finish state description | `$text-color` |
 | \--nutui-steps-finish-line-background | The color of the finishing line | `$primary-color` |
 | \--nutui-steps-dot-icon-width | Width of dot progress bar dots | `6px` |
 | \--nutui-steps-dot-icon-height | Height of dot icon progress bar | `6px` |

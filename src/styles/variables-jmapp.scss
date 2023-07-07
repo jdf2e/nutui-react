@@ -5,28 +5,27 @@ $brand-color-start: var(--nutui-brand-color-start, #3768fa) !default;
 $brand-color-end: var(--nutui-brand-color-end, #2c53c8) !default;
 $brand-link-color: var(--nutui-brand-link-color, #396acc);
 $brand-text-color: var(--nutui-brand-text-color, #ffffff);
+$brand-info-color: var(--nutui-brand-info-color, #1988fa) !default;
 
-$gray0: var(--nutui-gray-0, #000000) !default;
 // 主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
-$gray1: var(--nutui-gray-1, #262626) !default;
+$gray1: var(--nutui-gray-0101, #262626) !default;
 // 次要文字色，用于次级标题、属性标示、非主要信息引导等。
-$gray2: var(--nutui-gray-2, #595959) !default;
+$gray2: var(--nutui-gray-0102, #595959) !default;
 // 不可操作内容色，用于预置内容、无效内容、特殊不可点击按钮、组件边框线等。
-$gray3: var(--nutui-gray-3, #bfbfbf) !default;
+$gray3: var(--nutui-gray-0104, #bfbfbf) !default;
 // 页面基底色，用于卡片式页面的兜底，永远置于页面最底层。
-$gray4: var(--nutui-gray-4, #f4f4f4) !default;
+$gray4: var(--nutui-gray-0201, #f4f4f4) !default;
 // 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
-$gray5: var(--nutui-gray-5, #f8f8f8) !default;
+$gray5: var(--nutui-gray-0203, #f8f8f8) !default;
 // 卡片背景色
-$gray6: var(--nutui-gray-6, #ffffff) !default;
+$gray6: var(--nutui-gray-0202, #ffffff) !default;
+
 // 页面全局蒙层，用于弹出层、弹窗、新功能引导出现的整页遮罩
-$gray7: var(--nutui-gray-7, rgba(0, 0, 0, 0.65)) !default;
-// 局部蒙层，用于非整页遮罩
-$gray8: var(--nutui-gray-8, rgba(0, 0, 0, 0.4)) !default;
+$gray7: var(--nutui-gray-0401, rgba(0, 0, 0, 0.65)) !default;
 // 间隔线/容错线，用于结构或信息分割
-$gray9: var(--nutui-gray-9, #f0f0f0) !default;
-// 图片容错蒙层
-$gray10: var(--nutui-gray-10, rgba(0, 0, 0, 0.02)) !default;
+$gray9: var(--nutui-gray-0301, #f0f0f0) !default;
+// 容错蒙层
+$gray10: var(--nutui-gray-0402, rgba(0, 0, 0, 0.02)) !default;
 
 // ----------------------------------------------------
 // 主色调
@@ -36,25 +35,21 @@ $primary-color-end: $brand-color-end !default;
 $primary-link-color: #396acc !default;
 $primary-text-color: $brand-text-color !default;
 // ----------------------------------------------------
-// 标题常规文字
+// 标题重要字
 $title-color: $gray1 !default;
-// 副标题
-$title-color2: $gray2 !default;
-// 次内容
+// 常规
 $text-color: $gray2 !default;
-// 辅助色
-$help-color: $gray5 !default;
+// 辅助色，暂无用到。todo
+$help-color: var(--nutui-gray-0103) !default;
 // 特殊禁用色
 $disable-color: $gray3 !default;
 $required-color: $primary-color !default;
 $white: $gray6 !default;
-$black: $gray0 !default;
+$black: $gray1 !default;
 // ----------------------------------------------------
 // 蒙层颜色
 // 页面全局蒙层
 $mask-color: $gray7 !default;
-// 局部蒙层，用于非整页遮罩
-$mask-color2: $gray8 !default;
 // 图片容错蒙层
 $mask-color3: $gray10 !default;
 
@@ -139,7 +134,6 @@ $button-mini-font-size: var(
   $font-size-1
 ) !default;
 $button-mini-line-height: var(--nutui-button-mini-line-height, 1.2) !default;
-
 $button-text-icon-margin-left: var(
   --nutui-button-text-icon-margin-left,
   5px
@@ -156,7 +150,6 @@ $button-text-icon-mini-margin-left: var(
   --nutui-button-text-icon-mini-margin-left,
   1px
 ) !default;
-
 $button-disabled-opacity: var(--nutui-button-disabled-opacity, 0.68) !default;
 $button-primary-color: var(
   --nutui-button-primary-color,
@@ -195,7 +188,6 @@ $button-success-background-color: linear-gradient(
   rgba(40, 207, 63, 1) 83%,
   rgba(41, 212, 70, 1) 100%
 ) !default;
-
 $button-danger-color: var(
   --nutui-button-danger-color,
   $primary-text-color
@@ -272,7 +264,6 @@ $cell-box-shadow: var(
 ) !default;
 
 // cell-group（✅）
-
 $cell-group-title-padding: var(
   --nutui-cell-group-title-padding,
   0 10px
@@ -308,7 +299,6 @@ $cell-group-background-color: var(
 ) !default;
 
 // divider（✅）
-
 $divider-margin: var(--nutui-divider-margin, 16px 0) !default;
 $divider-text-font-size: var(
   --nutui-divider-text-font-size,
@@ -945,7 +935,7 @@ $steps-base-description-font-size: var(
 ) !default;
 $steps-base-content-color: var(
   --nutui-steps-base-description-color,
-  $title-color2
+  $text-color
 ) !default;
 
 $steps-wait-icon-bg-color: var(
@@ -955,11 +945,11 @@ $steps-wait-icon-bg-color: var(
 $steps-wait-icon-color: var(--nutui-steps-wait-icon-color, $white) !default;
 $steps-wait-title-color: var(
   --nutui-steps-wait-title-color,
-  $title-color2
+  $title-color
 ) !default;
 $steps-wait-content-color: var(
   --nutui-steps-wait-description-color,
-  $title-color2
+  $text-color
 ) !default;
 $steps-process-icon-bg-color: var(
   --nutui-steps-process-icon-bg-color,
@@ -983,7 +973,7 @@ $steps-process-title-font-weight: var(
 ) !default;
 $steps-process-content-color: var(
   --nutui-steps-process-description-color,
-  $title-color2
+  $text-color
 ) !default;
 
 $steps-finish-icon-bg-color: var(
@@ -1000,7 +990,7 @@ $steps-finish-title-color: var(
 ) !default;
 $steps-finish-content-color: var(
   --nutui-steps-finish-description-color,
-  $title-color2
+  $text-color
 ) !default;
 $steps-finish-line-background: var(
   --nutui-steps-finish-line-background,
@@ -1235,7 +1225,7 @@ $timeselect-date-line-height: var(
 ) !default;
 $timeselect-date-color: var(
   --nutui-timeselect-date-color,
-  $title-color2
+  $text-color
 ) !default;
 $timeselect-date-active-color: var(
   --nutui-timeselect-date-active-color,

@@ -334,7 +334,7 @@ export default Demo
 | \--nutui-timeselect-date-width | date 寬度 | `140px` |
 | \--nutui-timeselect-date-height | date 高度 | `40px` |
 | \--nutui-timeselect-date-line-height | date 行高 | `40px` |
-| \--nutui-timeselect-date-color | date 字體顏色 | `$title-color2` |
+| \--nutui-timeselect-date-color | date 字體顏色 | `$text-color` |
 | \--nutui-timeselect-date-active-color | date 激活字體顏色 | `$title-color` |
 | \--nutui-timeselect-date-font-size | date 字體大小 | `$font-size-2` |
 | \--nutui-timeselect-time-width | time 寬度 | `100px` |
