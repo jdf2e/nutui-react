@@ -51,7 +51,8 @@
     "@tarojs/plugin-html": "^3.6.8",
     "babel-plugin-import": "^1.13.6",
     "react-refresh": "^0.14.0",
-    "webpack": "^5.79.0"
+    "webpack": "^5.79.0",
+    "@nutui/touch-emulator": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.21.4",

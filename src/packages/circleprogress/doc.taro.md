@@ -186,7 +186,7 @@ export default App;
 | percent | 百分比 | `number` \| `string` | `必传项，无默认值` |
 | strokeWidth | 圆弧的宽度 | `number` \| `string` | `5` |
 | radius | 半径 | `number` \| `string` | `50` |
-| color | 圆环进度条颜色，传入对象格式可以定义渐变色 | `object \| string` | `#fa2c19` |
+| color | 圆环进度条颜色，传入对象格式可以定义渐变色 | `Record<string, string> \| string` | `#fa2c19` |
 | background | 圆环轨道颜色 | `string` | `#d9d9d9` |
 | strokeLinecap | 圆环进度条端点形状 | `butt` \| `round` \| `square` \| `inherit` | `round` |
 | clockwise | 是否顺时针展示 | `boolean` | `true` |
