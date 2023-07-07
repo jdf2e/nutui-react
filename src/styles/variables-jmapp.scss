@@ -28,21 +28,6 @@ $gray9: var(--nutui-gray-9, #f0f0f0) !default;
 // 图片容错蒙层
 $gray10: var(--nutui-gray-10, rgba(0, 0, 0, 0.02)) !default;
 
-// 暗黑映射,用于 nut-theme-dark 方式
-$dark-brand-color: #3768fa !default;
-$dark-brand-color-start: #3768fa !default;
-$dark-brand-color-end: #2c53c8 !default;
-$dark0: #000000 !default;
-$dark1: #e6e6e6 !default;
-$dark2: #828282 !default;
-$dark3: #404040 !default;
-$dark4: #0a0a0a !default;
-$dark5: #141414 !default;
-$dark6: #1f1f1f !default;
-$dark7: rgba(0, 0, 0, 0.7) !default;
-$dark8: rgba(0, 0, 0, 0.4) !default;
-$dark9: rgba(0, 0, 0, 0.08) !default;
-$dark10: rgba(0, 0, 0, 0.02) !default;
 // ----------------------------------------------------
 // 主色调
 $primary-color: $brand-color !default;
@@ -1457,10 +1442,6 @@ $pagination-active-background-color: linear-gradient(
   $primary-color 0%,
   $primary-color-end 100%
 ) !default;
-$dark-pagination-active-background-color: var(
-  --nutui-dark-pagination-active-background-color,
-  $dark-brand-color
-) !default;
 $pagination-disable-color: var(
   --nutui-pagination-disable-color,
   $disable-color
@@ -2330,7 +2311,7 @@ $countup-height: var(--nutui-countup-height, 32px) !default;
 $countup-base-size: var(--nutui-countup-base-size, 18px) !default;
 $countup-border-raduis: var(--nutui-countup-border-raduis, 4px) !default;
 $countup-lr-margin: var(--nutui-countup-lr-margin, 1px) !default;
-$countup-bgcolor: var(--nutui-countup-bgcolor, $brand-color) !default;
+$countup-bgcolor: var(--nutui-countup-bgcolor, $primary-color) !default;
 $countup-color: var(--nutui-countup-color, #ffffff) !default;
 $countup-width: var(--nutui-countup-width, 24px) !default;
 
