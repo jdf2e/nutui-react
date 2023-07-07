@@ -17,7 +17,7 @@ import { Progress } from '@nutui/nutui-react-taro';
 :::demo
 
 ```jsx
-import  React from "react";
+import React from "react";
 import { Progress, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -37,7 +37,7 @@ export default App;
 :::demo
 
 ```jsx
-import  React from "react";
+import React from "react";
 import { Progress, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -62,7 +62,7 @@ export default App;
 :::demo
 
 ```jsx
-import  React from "react";
+import React from "react";
 import { Progress, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -82,7 +82,7 @@ export default App;
 :::demo
 
 ```jsx
-import  React from "react";
+import React from "react";
 import { Progress, Image, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -108,7 +108,7 @@ export default App;
 :::demo
 
 ```jsx
-import  React from "react";
+import React from "react";
 import { Progress, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
@@ -136,7 +136,7 @@ export default App;
 :::demo
 
 ```jsx
-import  React from "react";
+import React from "react";
 import { Progress, Cell } from '@nutui/nutui-react-taro';
 import { Checked, Issue } from '@nutui/icons-react-taro';
 
@@ -175,48 +175,40 @@ export default App;
 :::demo
 
 ```jsx
-import  React, {useState} from "react";
+import React, {useState} from "react";
 import { Progress, Cell, Button } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [value, setValue] = useState(0);
   return (
-    <>
+    <Cell.Group>
       <Cell align="center">
         <Progress percent={value} />
         <span style={{ margin: '0 5px' }}>{value}%</span>
       </Cell>
-      <Cell>
+      <Cell align="center">
         <Button
           type="default"
           style={{ margin: 8 }}
           onClick={() => {
-            let num = value;
             if (value <= 0) {
-              return false;
+              console.log('进度已为0')
             }
-            num -= 10;
-            setValue(num);
+            setValue(Math.max(0, value - 10))
           }}
-        >
-          减少
-        </Button>
-        <Button 
+        >减少</Button>
+        <Button
           type="primary"
           style={{ margin: 8 }}
           onClick={() => {
-            let num = value;
             if (value >= 100) {
-              return false;
+              console.log('进度已为100%')
             }
-            num += 10;
-            setValue(num);
+            setValue(Math.min(100, value + 10))
           }}
-        >
-          增加
-        </Button>
+        >增加</Button>
       </Cell>
-    </>
+    </Cell.Group>
   );
 };
 export default App;

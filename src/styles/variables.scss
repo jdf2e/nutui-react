@@ -742,6 +742,14 @@ $calendar-choose-color: var(
   --nutui-calendar-choose-color,
   $primary-color
 ) !default;
+$calendar-choose-disable-background-color: var(
+  --nutui-calendar-choose-disable-background-color,
+  rgba(191, 191, 191, 0.09)
+) !default;
+$calendar-choose-disable-color: var(
+  --nutui-calendar-choose-disable-color,
+  $disable-color
+) !default;
 $calendar-disable-color: var(
   --nutui-calendar-disable-color,
   $disable-color
