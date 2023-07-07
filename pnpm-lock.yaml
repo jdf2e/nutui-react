@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 overrides:
   '@types/react': '18'
   '@types/react-dom': '18'
@@ -18,9 +14,6 @@ dependencies:
   '@nutui/icons-react-taro':
     specifier: 0.0.1-beta.8
     version: 0.0.1-beta.8
-  '@nutui/touch-emulator':
-    specifier: ^1.0.0
-    version: 1.0.0
   '@react-spring/web':
     specifier: ~9.6.1
     version: 9.6.1(react-dom@18.2.0)(react@18.2.0)
@@ -2491,10 +2484,6 @@ packages:
       classnames: 2.3.2
     dev: false
 
-  /@nutui/touch-emulator@1.0.0:
-    resolution: {integrity: sha1-vNYOZKIBTWvEDJ4xL64cyOMQ6Pc=, tarball: http://registry.m.jd.com/@nutui/touch-emulator/download/@nutui/touch-emulator-1.0.0.tgz}
-    dev: false
-
   /@pmmmwh/react-refresh-webpack-plugin@0.5.10(react-refresh@0.14.0)(webpack@5.80.0):
     resolution: {integrity: sha512-j0Ya0hCFZPd4x40qLzbhGsh9TMtdb+CJQiso+WxLOPNasohq9cc5SNUcwsZaRH6++Xh91Xkm/xHCkuIiIu0LUA==}
     engines: {node: '>= 10.13'}
@@ -2775,7 +2764,6 @@ packages:
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [linux]
-    libc: [glibc]
     requiresBuild: true
     dev: true
     optional: true
@@ -2785,7 +2773,6 @@ packages:
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [linux]
-    libc: [musl]
     requiresBuild: true
     dev: true
     optional: true
@@ -2795,7 +2782,6 @@ packages:
     engines: {node: '>=10'}
     cpu: [x64]
     os: [linux]
-    libc: [glibc]
     requiresBuild: true
     dev: true
     optional: true
@@ -2805,7 +2791,6 @@ packages:
     engines: {node: '>=10'}
     cpu: [x64]
     os: [linux]
-    libc: [musl]
     requiresBuild: true
     dev: true
     optional: true
