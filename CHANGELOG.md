@@ -1,3 +1,14 @@
+# v2.0.2
+`2023-07-07`
+
+* :sparkles: feat: 日历增加不可选状态、增加style、className 的透传 (#1193) @xiaoyatong
+* :bug: fix: animatingNumber组件暗黑模式适配+demo优化 (#1184) @songsong
+* :bug: fix: circleprogress color 属性的类型优化 (#1191) @junjun666
+* 🔨 chore(backtop): 优化 demo 和文档 (#1186) @Eiinu
+* 🔨 chore(deps): add @nutui/touch-emulator (#1196) @Eiinu
+* 🔨 chore(progress): update demo (#1192) @Eiinu
+* 🔨 chore: overlay 动效优化 (#1183) @junjun666
+
 # v2.0.1
 `2023-07-05`
 
