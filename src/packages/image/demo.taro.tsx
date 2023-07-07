@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { CircleClose, Loading } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Image, Cell, Row, Col } from '@/packages/nutui.react.taro'
@@ -15,6 +16,7 @@ const ImageDemo = () => {
       circle: '圆形图片',
       loading: '加载中提示',
       error: '加载失败',
+      lazyload: '图片懒加载',
       default: '默认',
       custom: '自定义',
     },
@@ -25,6 +27,7 @@ const ImageDemo = () => {
       circle: 'Round',
       loading: 'Loading',
       error: 'Error',
+      lazyload: 'Lazyload',
       default: 'Default',
       custom: 'Custom',
     },
@@ -45,7 +48,35 @@ const ImageDemo = () => {
         <Cell>
           <Row gutter={10}>
             <Col span="8">
-              <Image src={src} width="100" height="100" radius="50%" />
+              <Image
+                src={src}
+                mode="aspectFit"
+                width="80"
+                height="80"
+                radius="50%"
+              />
+            </Col>
+          </Row>
+          <Row gutter={10}>
+            <Col span="8">
+              <Image
+                src={src}
+                mode="scaleToFill"
+                width="80"
+                height="80"
+                radius="50%"
+              />
+            </Col>
+          </Row>
+          <Row gutter={10}>
+            <Col span="8">
+              <Image
+                src={src}
+                mode="scaleToFill"
+                width="80"
+                height="80"
+                radius="10px"
+              />
             </Col>
           </Row>
         </Cell>
@@ -77,14 +108,62 @@ const ImageDemo = () => {
             <Col span="8">
               <Image
                 src="https://x"
-                width="100"
-                height="100"
+                width="80"
+                height="80"
                 error={<CircleClose />}
               />
               <div className="image-text">{translated.custom}</div>
             </Col>
           </Row>
         </Cell>
+        <h2>{translated.fill}</h2>
+        <Cell style={{ flexWrap: 'wrap' }}>
+          {[
+            'scaleToFill',
+            'aspectFit',
+            'aspectFill',
+            'widthFix',
+            'heightFix',
+          ].map((mode) => {
+            return (
+              <Col span="8" key={mode}>
+                <Image src={src} mode={mode as any} width="80" height="80" />
+                <View style={{ textAlign: 'center' }}>{mode}</View>
+              </Col>
+            )
+          })}
+        </Cell>
+        <h2>{translated.position}</h2>
+        <Cell style={{ flexWrap: 'wrap' }}>
+          {[
+            'top',
+            'bottom',
+            'center',
+            'left',
+            'right',
+            'top left',
+            'top right',
+            'bottom left',
+            'bottom right',
+          ].map((mode) => {
+            return (
+              <Col span="8" key={mode}>
+                <Image src={src} mode={mode as any} width="80" height="80" />
+                <View style={{ textAlign: 'center' }}>{mode}</View>
+              </Col>
+            )
+          })}
+        </Cell>
+        <h2>{translated.lazyload}11</h2>
+        <ScrollView style={{ height: '350px' }} scrollY>
+          {[
+            ...new Array(3).fill(src),
+            'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+            'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+          ].map((_) => {
+            return <Image key={_} src={_} lazyLoad width="100%" height="150" />
+          })}
+        </ScrollView>
       </div>
     </>
   )

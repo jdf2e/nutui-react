@@ -1,4 +1,4 @@
-# Image组件
+# Image 图片
 
 ## 介绍
 
@@ -50,9 +50,24 @@ const App = () => {
   return <>
     <Image
       src={src}
+      mode="scaleToFill"
       width="100"
       height="100"
       radius="50%"
+    />
+    <Image
+      src={src}
+      mode="scaleToFill"
+      width="80"
+      height="80"
+      radius="50%"
+    />
+    <Image
+      src={src}
+      mode="scaleToFill"
+      width="80"
+      height="80"
+      radius="10px"
     />
   </>
 }
@@ -79,6 +94,10 @@ const App = () => {
     <Image
       width="100"
       height="100"
+    />
+    <Image
+      width="80"
+      height="80"
       loading={<Loading className="nut-icon-loading" />}
     />
   </>
@@ -101,6 +120,7 @@ import { CircleClose } from '@nutui/icons-react';
 
 const App = () => {
   return <>
+    <Image src="https://x" width="80" height="80" />
     <Image
       src="https://x"
       width="100"
@@ -110,6 +130,104 @@ const App = () => {
   </>
 }
 export default App;
+```
+
+:::
+
+### 填充模式
+
+:::demo
+
+```tsx
+import React from "react";
+import { Cell, Col, Image } from '@nutui/nutui-react';
+import { CircleClose } from '@nutui/icons-react';
+
+const App = () => {
+  return <>
+    <Cell style={{ flexWrap: 'wrap' }}>
+      {[
+        'scaleToFill',
+        'aspectFit',
+        'aspectFill',
+        'widthFix',
+        'heightFix',
+      ].map((mode) => {
+        return (
+          <Col span="8" key={mode}>
+            <Image src={src} mode={mode as any} width="80" height="80" />
+          </Col>
+        )
+      })}
+    </Cell>
+  </>
+}
+export default App;
+```
+
+:::
+
+### 图片位置
+
+:::demo
+
+```tsx
+import React from "react";
+import { Cell, Col, Image } from '@nutui/nutui-react';
+import { CircleClose } from '@nutui/icons-react';
+
+const App = () => {
+  return <>
+    <Cell style={{ flexWrap: 'wrap' }}>
+      {[
+        'top',
+        'bottom',
+        'center',
+        'left',
+        'right',
+        'top left',
+        'top right',
+        'bottom left',
+        'bottom right',
+      ].map((mode) => {
+        return (
+          <Col span="8" key={mode}>
+            <Image src={src} mode={mode as any} width="80" height="80" />
+          </Col>
+        )
+      })}
+    </Cell>
+  </>
+}
+export default App;
+```
+
+:::
+
+
+### 图片位置
+
+:::demo
+
+```tsx
+import React from 'react'
+import { Image } from '@nutui/nutui-react'
+import { ScrollView } from '@tarojs/components'
+
+const App = () => {
+  return <>
+    <ScrollView style={{ height: '350px' }} scrollY>
+      {[
+        ...new Array(3).fill(src),
+        'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+        'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+      ].map((_) => {
+        return <Image key={_} src={_} lazyLoad width='100%' height='150' />
+      })}
+    </ScrollView>
+  </>
+}
+export default App
 ```
 
 :::
