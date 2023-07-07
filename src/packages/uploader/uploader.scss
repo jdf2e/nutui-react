@@ -138,6 +138,9 @@
       right: $uploader-preview-close-right;
       top: $uploader-preview-close-top;
       transform: translate(50%, -50%);
+      z-index: 1;
+      background: $uploader-background;
+      border-radius: 50%;
     }
 
     &-img {
