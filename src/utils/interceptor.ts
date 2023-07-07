@@ -1,4 +1,5 @@
 import { isPromise } from './index'
+
 export type Interceptor = (
   ...args: any[]
 ) => Promise<boolean> | boolean | undefined | void
@@ -16,6 +17,7 @@ export const funcInterceptor = (
   }
 ) => {
   if (interceptor) {
+    // eslint-disable-next-line prefer-spread
     const returnVal = interceptor.apply(null, args)
 
     if (isPromise(returnVal)) {

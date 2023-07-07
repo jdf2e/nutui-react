@@ -19,17 +19,17 @@ export class UploadOptions {
 
   withCredentials = false
 
-  onStart?: Function
+  onStart?: any
 
   taroFilePath?: string
 
-  onProgress?: Function
+  onProgress?: any
 
-  onSuccess?: Function
+  onSuccess?: any
 
-  onFailure?: Function
+  onFailure?: any
 
-  beforeXhrUpload?: Function
+  beforeXhrUpload?: any
 }
 export class Upload {
   options: UploadOptions
@@ -81,46 +81,45 @@ export class UploaderTaro extends Upload {
   constructor(options: UploadOptions) {
     super(options)
   }
-  uploadTaro(uploadFile: Function, env: string) {
+
+  uploadTaro(uploadFile: any, env: string) {
     const options = this.options
     if (env === 'WEB') {
       this.upload()
+    } else if (options.beforeXhrUpload) {
+      options.beforeXhrUpload(uploadFile, options)
     } else {
-      if (options.beforeXhrUpload) {
-        options.beforeXhrUpload(uploadFile, options)
-      } else {
-        const uploadTask = uploadFile({
-          url: options.url,
-          filePath: options.taroFilePath,
-          fileType: options.fileType,
-          header: {
-            'Content-Type': 'multipart/form-data',
-            ...options.headers,
-          }, //
-          formData: options.formData,
-          name: options.name,
-          success(response: { errMsg: any; statusCode: number; data: string }) {
-            if (options.xhrState == response.statusCode) {
-              options.onSuccess?.(response, options)
-            } else {
-              options.onFailure?.(response, options)
-            }
-          },
-          fail(e: any) {
-            options.onFailure?.(e, options)
-          },
-        })
-        options.onStart?.(options)
-        uploadTask.progress(
-          (res: {
-            progress: any
-            totalBytesSent: any
-            totalBytesExpectedToSend: any
-          }) => {
-            options.onProgress?.(res, options)
+      const uploadTask = uploadFile({
+        url: options.url,
+        filePath: options.taroFilePath,
+        fileType: options.fileType,
+        header: {
+          'Content-Type': 'multipart/form-data',
+          ...options.headers,
+        }, //
+        formData: options.formData,
+        name: options.name,
+        success(response: { errMsg: any; statusCode: number; data: string }) {
+          if (options.xhrState === response.statusCode) {
+            options.onSuccess?.(response, options)
+          } else {
+            options.onFailure?.(response, options)
           }
-        )
-      }
+        },
+        fail(e: any) {
+          options.onFailure?.(e, options)
+        },
+      })
+      options.onStart?.(options)
+      uploadTask.progress(
+        (res: {
+          progress: any
+          totalBytesSent: any
+          totalBytesExpectedToSend: any
+        }) => {
+          options.onProgress?.(res, options)
+        }
+      )
     }
   }
 }

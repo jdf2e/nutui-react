@@ -1,11 +1,11 @@
 import React, { useState, useRef } from 'react'
+import { Dongdong, Loading1 } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Uploader, FileItem, FileType } from './uploader'
 import Button from '@/packages/button'
 import Cell from '@/packages/cell'
 import Progress from '@/packages/progress'
 import './demo.scss'
-import { Dongdong, Loading1 } from '@nutui/icons-react'
 
 interface uploadRefState {
   submit: () => void

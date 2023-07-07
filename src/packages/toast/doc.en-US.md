@@ -239,7 +239,7 @@ const App = () => {
             
             onClick={(
                 event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-            ) => permanentToast('Toast Not Disappear')
+            ) => permanentToast('Toast Not Disappear')}
             />
             <Button
                 style={{ margin: 8 }}

@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { Cell, Audio } from '@/packages/nutui.react.taro'
 import '@/packages/audio/demo.scss'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
 const formatseconds = (value: string) => {
   if (!value) {

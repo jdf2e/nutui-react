@@ -1,10 +1,10 @@
 import React, { useState, useRef } from 'react'
 import Taro from '@tarojs/taro'
+import { Dongdong, Loading1 } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Uploader, Progress, Cell } from '@/packages/nutui.react.taro'
 import '@/packages/uploader/demo.scss'
 import Header from '@/sites/components/header'
-import { Dongdong, Loading1 } from '@nutui/icons-react-taro'
 
 export type FileItemStatus =
   | 'ready'
