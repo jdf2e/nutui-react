@@ -57,7 +57,5 @@ test('custom icon test', () => {
   const { container } = render(
     <Loading vertical icon={<Category width="30" height="30" color="red" />} />
   )
-  expect(container.querySelector('svg')).toHaveClass(
-    'nut-icon-Category'
-  )
+  expect(container.querySelector('svg')).toHaveClass('nut-icon-Category')
 })
