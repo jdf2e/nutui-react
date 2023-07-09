@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
-import './loading.scss'
 import {
   Loading as IconLoading,
   Loading1 as IconLoading1,
