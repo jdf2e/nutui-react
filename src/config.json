@@ -710,6 +710,17 @@
           "author": "swag~jun"
         },
         {
+          "version": "1.0.0",
+          "name": "Loading",
+          "type": "component",
+          "cName": "加载中",
+          "desc": "加载图标，用于显示正在加载中的状态",
+          "sort": 15,
+          "show": true,
+          "taro": false,
+          "author": "mike8625"
+        },
+        {
           "version": "2.0.0",
           "name": "NoticeBar",
           "type": "component",
