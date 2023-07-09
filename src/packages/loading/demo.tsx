@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
+import { Category } from '@nutui/icons-react'
 import { Loading } from './loading'
 import Cell from '../cell'
 import Button from '../button'
 import Overlay from '../overlay'
-import { Category } from '@nutui/icons-react'
 
 const LoadingDemo = () => {
   const [visible, setVisible] = useState(false)
@@ -62,7 +62,7 @@ const LoadingDemo = () => {
         </Cell>
         <h2>与遮罩层结合</h2>
         <Cell>
-          <Button type="success" onClick={showOverlay}>
+          <Button type="success" onClick={() => showOverlay()}>
             遮罩层loading(两秒后关闭)
           </Button>
         </Cell>

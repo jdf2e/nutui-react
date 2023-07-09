@@ -186,7 +186,7 @@ const App = () => {
   return (
     <>
       <Cell>
-        <Button type="success" onClick={showOverlay}>遮罩層loading(兩秒後關閉)</Button>
+        <Button type="success" onClick={() => showOverlay()}>遮罩層loading(兩秒後關閉)</Button>
       </Cell>
       <Overlay visible={visible}>
         <div className="wrapper" style={WrapperStyle}>

@@ -64,7 +64,7 @@ export const Loading: FunctionComponent<
   // 样式class前缀
   const classPrefix = 'nut-loading'
 
-  let CurLoadingIcon = loadingMap[rest.type] || IconLoading1
+  const CurLoadingIcon = loadingMap[rest.type] || IconLoading1
 
   return (
     <div
@@ -76,17 +76,13 @@ export const Loading: FunctionComponent<
       style={style}
     >
       <div className={`${classPrefix}-icon`}>
-        {icon ? (
-          icon
-        ) : (
-          <CurLoadingIcon color={color} width={size} height={size} />
-        )}
+        {icon || <CurLoadingIcon color={color} width={size} height={size} />}
       </div>
       {children ? (
         <div
           className={`${classPrefix}-text`}
           style={{
-            fontSize: parseInt(textSize.toString()) + 'px',
+            fontSize: `${parseInt(textSize.toString())}px`,
             color: textColor,
           }}
         >

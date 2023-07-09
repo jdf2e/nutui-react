@@ -178,7 +178,7 @@ const App = () => {
 
   function showOverlay() {
     setVisible(true);
-    setTimeout(()=>{
+    setTimeout(() => {
       setVisible(false);
     }, 2000)
   }  
@@ -186,7 +186,7 @@ const App = () => {
   return (
     <>
       <Cell>
-        <Button type="success" onClick={showOverlay}>with overlay(closed in 2 seconds)</Button>
+        <Button type="success" onClick={() => showOverlay()}>with overlay(closed in 2 seconds)</Button>
       </Cell>
       <Overlay visible={visible}>
         <div className="wrapper" style={WrapperStyle}>

@@ -1,2 +1,3 @@
-import {Loading} from './loading.taro'
+import { Loading } from './loading.taro'
+
 export default Loading
