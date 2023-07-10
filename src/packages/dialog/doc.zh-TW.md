@@ -194,7 +194,6 @@ export default App;
 | \--nutui-dialog-content-max-height | 對話框內容最大高度 | `268px` |
 | \--nutui-dialog-content-line-height | 對話框內容行高 | `16px` |
 | \--nutui-dialog-overlay-z-index | 對話框蒙層的z-index值 | `$mask-z-index` |
-| \--nutui-dialog-overlay-background-color | 對話框蒙層背景色 | `$mask-color` |
 | \--nutui-dialog-outer-z-index | 對話框的z-index | `$mask-content-z-index` |
 | \--nutui-dialog-outer-border-radius | 對話框圓角 | `20px` |
 | \--nutui-dialog-vertical-footer-ok-margin-top | 對話框底部按鈕縱向排布時的margin值 | `10px` |

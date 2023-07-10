@@ -4,19 +4,23 @@
   width: 100%;
   height: $range-height;
   align-items: center;
+
   .min,
   .max {
     font-size: $font-size-1;
-    color: $range-font-color;
+    color: $range-color;
     user-select: none;
   }
+
   &-vertical {
     height: 100%;
     flex-direction: column;
     padding: 0px 15px;
+
     .nut-range {
       width: $range-height;
       height: 100%;
+
       &-button {
         &-wrapper,
         &-wrapper-right {
@@ -35,12 +39,15 @@
           transform: translate3d(-50%, -50%, 0);
         }
       }
+
       .number {
         transform: translate3d(100%, 0, 0);
       }
+
       &-vertical {
         margin: $range-margin 0px;
       }
+
       &-mark {
         position: absolute;
         width: 100%;
@@ -64,6 +71,7 @@
         user-select: none;
         transform: translateY(-50%);
       }
+
       &-tick {
         position: absolute;
         top: 0px;
@@ -81,6 +89,7 @@
     }
   }
 }
+
 .nut-range {
   display: block;
   position: relative;
@@ -90,6 +99,7 @@
   background-color: $range-inactive-color;
   border-radius: 2px;
   cursor: pointer;
+
   &::before {
     position: absolute;
     top: -8px;
@@ -148,10 +158,11 @@
       justify-content: center;
       user-select: none;
       font-size: $font-size-1;
-      color: $range-font-color;
+      color: $range-color;
       transform: translate3d(0, -100%, 0);
     }
   }
+
   &-disabled {
     cursor: not-allowed;
     opacity: 0.54;

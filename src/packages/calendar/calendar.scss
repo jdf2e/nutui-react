@@ -7,7 +7,7 @@
   flex: 1;
   font-size: $calendar-base-font-size;
   background-color: $white;
-  color: $gray1;
+  color: $text-color;
   overflow: hidden;
   height: 100%;
 
@@ -39,6 +39,7 @@
   }
 
   &-title {
+    color: $title-color;
     font-size: $calendar-title-font-size;
     font-weight: $calendar-title-font-weight;
     line-height: 44px;
@@ -66,7 +67,7 @@
   &-week-item {
     &:first-of-type,
     &:last-of-type {
-      color: $calendar-day67-color;
+      color: $primary-color;
     }
   }
 
@@ -128,7 +129,7 @@
 
     &:nth-child(7n + 0),
     &:nth-child(7n + 1) {
-      color: $calendar-day67-color;
+      color: $primary-color;
     }
 
     &-info-curr {
@@ -160,7 +161,7 @@
     }
 
     &-active {
-      background-color: $calendar-active-background-color;
+      background-color: $primary-color;
       color: $primary-text-color !important;
       border-radius: $calendar-day-active-border-radius;
 
@@ -182,7 +183,7 @@
     }
 
     &-disabled {
-      color: $calendar-disable-color !important;
+      color: $disable-color !important;
 
       .nut-calendar-day-info-curr {
         display: none;
@@ -191,7 +192,7 @@
 
     &-choose-disabled {
       background-color: $calendar-choose-disable-background-color;
-      color: $calendar-disable-color !important;
+      color: $disable-color !important;
 
       .nut-calendar-day-info-curr {
         display: none;
@@ -200,7 +201,7 @@
 
     &-choose {
       background-color: $calendar-choose-background-color;
-      color: $calendar-choose-color;
+      color: $primary-color;
     }
   }
 

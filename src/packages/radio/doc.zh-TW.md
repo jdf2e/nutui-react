@@ -266,22 +266,28 @@ export default RadioGroupOptions;
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
+
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-radio-label-font-color | 字體顏色 | `$gray1` |
-| \--nutui-radio-label-font-active-color | 按鈕狀態下選中字體顏色 | `$primary-color` |
-| \--nutui-radio-label-disable-color | label 的禁用字體顏色 | `$gray3` |
-| \--nutui-radio-icon-disable-color | label 的禁用字體顏色 | `$gray2` |
-| \--nutui-radio-label-button-border-color | shape為button的邊框顏色 | `$primary-color` |
-| \--nutui-radio-label-button-background | shape為button的背景色 | `rgba(250, 44, 25, 0.05)` |
-| \--nutui-radio-label-margin-left | label 的左外邊距 | `15px` |
+| \--nutui-radio-icon-font-size | icon字號 | `18px` |
 | \--nutui-radio-label-font-size | 字號 | `14px` |
-| \--nutui-radio-button-border-radius | shape為button的圓角 | `15px` |
+| \--nutui-radio-label-color | 字體顏色 | `$title-color` |
+| \--nutui-radio-label-font-active-color | 按鈕狀態下選中字體顏色 | `$primary-color` |
+| \--nutui-radio-label-margin-left | label 的左外邊距 | `6px` |
+
 | \--nutui-radio-button-font-size | shape為button的字號 | `12px` |
+| \--nutui-radio-button-color | 字體顏色 | `$text-color` |
+| \--nutui-radio-button-background | shape為button的背景色 | `$base-bg-color` |
+| \--nutui-radio-label-button-border-color | shape為button的邊框顏色 | `$primary-color` |
 | \--nutui-radio-button-padding | shape為button的內邊距 | `5px 18px` |
-| \--nutui-radio-icon-disable-color2 | icon 的禁用顏色 | `$gray3` |
+| \--nutui-radio-button-border-radius | shape為button的圓角 | `15px` |
+
+| \--nutui-radio-button-active-border-color | 選中時，shape為button的邊框顏色 | `$primary-color` |
+| \--nutui-radio-button-active-background | 選中時，shape為button的背景色 | `$brand-color-light-bg-color` |
+
+| \--nutui-radio-button-disabled-active-background | button模式下選中且禁用的背景色 | `$disable-color` |
+| \--nutui-radio-button-disabled-active-color | button模式下選中且禁用的字體色 | `$white` |
+| \--nutui-radio-button-disabled-active-border-color | button模式下選中且禁用的邊框色 | `$disable-color` |
+
 | \--nutui-radiogroup-radio-margin | Group模式下每個 radio 的外邊距 | `0 20px 5px 0` |
 | \--nutui-radiogroup-radio-label-margin | Group模式下每個 radio 中的 label 外邊距 | `0 5px 0 5px` |
-| \--nutui-radio-button-disabled-active-background | button模式下選中且禁用的背景色 | `rgba(0, 0, 0, 0.15)` |
-| \--nutui-radio-button-disabled-active-color | button模式下選中且禁用的字體色 | `rgba(0, 0, 0, 0.25)` |
-| \--nutui-radio-button-disabled-active-border-color | button模式下選中且禁用的邊框色 | `rgba(211, 211, 211, 0.15)` |

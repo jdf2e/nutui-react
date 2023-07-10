@@ -23,8 +23,8 @@
       }
 
       &__button--active {
-        border-color: $radio-label-button-border-color;
-        background-color: $radio-label-button-background;
+        border-color: $radio-button-active-border-color;
+        background-color: $radio-button-active-background;
       }
     }
   }
@@ -38,8 +38,8 @@
       }
 
       &__button--active {
-        border-color: $radio-label-button-border-color;
-        background-color: $radio-label-button-background;
+        border-color: $radio-button-active-border-color;
+        background-color: $radio-button-active-background;
       }
     }
   }

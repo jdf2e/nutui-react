@@ -578,13 +578,10 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-tabs-tab-smile-color | 微笑曲線的顏色 | `$primary-color` |
 | \--nutui-tabs-titles-background-color | Tab 標題的背景色 | `$background-color` |
 | \--nutui-tabs-titles-border-radius | Tab 標題的邊框圓角 | `0` |
 | \--nutui-tabs-titles-item-font-size | Tab 標題的字號 | `$font-size-2` |
-| \--nutui-tabs-titles-item-color | Tab 標題的文本顏色 | `$title-color` |
 | \--nutui-tabs-title-gap | Tab 標題的左右 margin | `0px` |
-| \--nutui-tabs-titles-item-active-color | Tab 選中標題的文本顏色 | `$title-color` |
 | \--nutui-tabs-titles-item-active-font-weight | Tab 選中標題的字重 | `600` |
 | \--nutui-tabs-horizontal-tab-line-color | 水平方嚮線條顏色 | `linear-gradient(90deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)` |
 | \--nutui-tabs-horizontal-line-bottom | 水平方嚮線條距離 | `15%` |

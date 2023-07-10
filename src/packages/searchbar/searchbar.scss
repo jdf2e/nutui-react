@@ -4,7 +4,7 @@
   width: $searchbar-width;
   padding: $searchbar-padding;
   background: $searchbar-background;
-  color: $gray1;
+  color: $title-color;
   box-sizing: border-box;
   justify-content: center;
 
@@ -63,10 +63,6 @@
 
   &__clear {
     padding: $searchbar-clear-icon-padding;
-
-    i {
-      color: $gray1 !important;
-    }
   }
 
   .pos-right {

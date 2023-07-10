@@ -3,14 +3,10 @@
   flex-shrink: 0;
   display: block;
   background-color: $gray6;
-  color: $gray1;
+  color: $title-color;
   padding: 24px 20px;
   box-sizing: border-box;
   overflow: auto;
-
-  &.active {
-    // overflow: visible;
-  }
 
   &.inactive {
     overflow: visible;
