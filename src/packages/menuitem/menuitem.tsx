@@ -71,6 +71,10 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   useEffect(() => {
     setShowPopup(show)
   }, [show])
+  useEffect(() => {
+    console.log('xx')
+    getParentOffset()
+  }, [_showPopup])
 
   useImperativeHandle<any, any>(ref, () => ({
     toggle: parent.toggleMenuItem,
@@ -98,15 +102,32 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     if (_showPopup) return {}
     return { display: 'none' }
   }
+  const [position, setPosition] = useState<{ top: number; height: number }>({
+    top: 0,
+    height: 0,
+  })
+  const getParentOffset = () => {
+    setTimeout(() => {
+      const p = parent.menuRef.current
+      const rect = p.getBoundingClientRect()
+      setPosition({
+        height: rect.height,
+        top: rect.top,
+      })
+    })
+  }
 
   const getPosition = (): CSSProperties => {
     return direction === 'down'
-      ? { position: 'absolute', height: `${window.innerHeight}px` }
+      ? {
+          top: `${position.top + position.height}px`,
+          bottom: '0',
+          height: 'initial',
+        }
       : {
-          position: 'absolute',
-          bottom: '100%',
+          bottom: `${window.innerHeight - position.top}px`,
           top: 'auto',
-          height: `${window.innerHeight}px`,
+          height: 'initial',
         }
   }
 
@@ -129,7 +150,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     <div
       className="nut-menu-item-container"
       ref={micRef}
-      style={{ position: 'absolute', left: 0, right: 0 }}
+      // style={{ position: 'absolute', left: 0, right: 0 }}
     >
       <Overlay
         className="nut-menu__overlay"
