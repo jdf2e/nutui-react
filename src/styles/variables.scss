@@ -756,7 +756,15 @@ $calendar-choose-color: var(
   --nutui-calendar-choose-color,
   $primary-color
 ) !default;
-$calendar-disable-color: var(--nutui-calendar-disable-color, #d1d0d0) !default;
+$calendar-choose-disable-background-color: var(
+  --nutui-calendar-choose-disable-background-color,
+  rgba(191, 191, 191, 0.09)
+) !default;
+$calendar-choose-disable-color: var(
+  --nutui-calendar-choose-disable-color,
+  $gray3
+) !default;
+$calendar-disable-color: var(--nutui-calendar-disable-color, $gray3) !default;
 $calendar-base-font-size: var(
   --nutui-calendar-base-font-size,
   $font-size-3
@@ -793,6 +801,10 @@ $overlay-content-bg-color: var(
   $gray6
 ) !default;
 $overlay-content-color: var(--nutui-overlay-content-color, $gray1) !default;
+$overlay-animation-duration: var(
+  --nutui-overlay-animation-duration,
+  0.3s
+) !default;
 //popup（✅）
 $popup-close-icon-margin: var(--nutui-popup-close-icon-margin, 16px) !default;
 $popup-border-radius: var(--nutui-popup-border-radius, 24px) !default;
@@ -802,6 +814,7 @@ $popup-title-padding: var(--nutui-popup-title-padding, 15px) !default;
 $popup-title-font-size: var(--nutui-popup-title-font-size, 18px) !default;
 $popup-title-line-height: var(--nutui-popup-title-line-height, 18px) !default;
 $popup-title-border-bottom: var(--nutui-popup-title-border-bottom, 0) !default;
+$popup-animation-duration: var(--nutui-popup-animation-duration, 0.3s) !default;
 
 // Notify（✅）
 $notify-text-color: var(--nutui-notify-text-color, $white) !default;
@@ -2298,7 +2311,7 @@ $countup-height: var(--nutui-countup-height, 32px) !default;
 $countup-base-size: var(--nutui-countup-base-size, 18px) !default;
 $countup-border-raduis: var(--nutui-countup-border-raduis, 4px) !default;
 $countup-lr-margin: var(--nutui-countup-lr-margin, 1px) !default;
-$countup-bgcolor: var(--nutui-countup-bgcolor, #031f63) !default;
+$countup-bgcolor: var(--nutui-countup-bgcolor, $brand-color) !default;
 $countup-color: var(--nutui-countup-color, #ffffff) !default;
 $countup-width: var(--nutui-countup-width, 24px) !default;
 

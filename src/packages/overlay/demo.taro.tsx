@@ -138,7 +138,8 @@ const OverlayDemo = () => {
           <Overlay
             visible={visible3}
             onClick={onClose3}
-            duration={2.5}
+            style={{ '--nutui-overlay-animation-duration': '2.5s' }}
+            duration={2500}
             afterShow={() => {
               console.log('afterShow')
             }}
