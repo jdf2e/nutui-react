@@ -4,14 +4,13 @@
   position: fixed;
   max-height: 100%;
   overflow-y: auto;
-  background-color: $white;
+  background-color: $overlay-content-bg-color;
   -webkit-overflow-scrolling: touch;
 
   &-title {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $gray6;
     color: $title-color;
     padding: $popup-title-padding;
     font-weight: $font-weight-bold;

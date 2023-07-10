@@ -58,7 +58,7 @@ $base-bg-color: $gray4 !default;
 // 卡片背景色
 $base-card-bg-color: $gray6 !default;
 // 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
-$base-card-bg-color-2: $gray5 !default;
+$base-card-bg-color-popup: $gray5 !default;
 
 // ----------------------------------------------------
 // 蒙层颜色
@@ -786,7 +786,7 @@ $calendar-day-active-border-radius: var(
 $overlay-bg-color: var(--nutui-overlay-bg-color, $mask-page-color) !default;
 $overlay-content-bg-color: var(
   --nutui-overlay-content-bg-color,
-  $gray6
+  $base-card-bg-color
 ) !default;
 $overlay-content-color: var(--nutui-overlay-content-color, $gray1) !default;
 $overlay-animation-duration: var(
@@ -839,8 +839,8 @@ $notify-warning-background-color: var(
 // rate（✅）
 $rate-item-margin: var(--nutui-rate-item-margin, 14px) !default;
 $rate-icon-color: var(--nutui-rate-icon-color, $primary-color) !default;
-$rate-icon-void-color: var(
-  --nutui-rate-icon-void-color,
+$rate-icon-inactive-color: var(
+  --nutui-rate-icon-inactive-color,
   $disable-color
 ) !default;
 
@@ -1639,7 +1639,10 @@ $collapse-wrapper-content-background-color: var(
 
 // searchbar（✅）
 
-$searchbar-background: var(--nutui-searchbar-background, #fff) !default;
+$searchbar-background: var(
+  --nutui-searchbar-background,
+  $base-bg-color
+) !default;
 $searchbar-content-border-radius: var(
   --nutui-searchbar-content-border-radius,
   2px
@@ -1651,26 +1654,29 @@ $searchbar-left-padding: var(
   --nutui-searchbar-left-padding,
   0 12px 0 0
 ) !default;
-$searchbar-left-color: var(--nutui-searchbar-left-color, $gray1) !default;
+$searchbar-left-color: var(--nutui-searchbar-left-color, $title-color) !default;
 $searchbar-right-fontsize: var(--nutui-searchbar-right-fontsize, 14px) !default;
 $searchbar-right-padding: var(
   --nutui-searchbar-right-padding,
   0 0 0 8px
 ) !default;
-$searchbar-right-color: var(--nutui-searchbar-right-color, $gray1) !default;
+$searchbar-right-color: var(
+  --nutui-searchbar-right-color,
+  $title-color
+) !default;
 $searchbar-input-height: var(--nutui-searchbar-input-height, 32px) !default;
 $searchbar-input-padding: var(--nutui-searchbar-input-padding, 0 5px) !default;
 $searchbar-input-background: var(
   --nutui-searchbar-input-background,
-  #f7f7f7
+  $base-card-bg-color
 ) !default;
 $searchbar-input-text-color: var(
   --nutui-searchbar-input-text-color,
-  $gray1
+  $title-color
 ) !default;
 $searchbar-input-curror-color: var(
   --nutui-searchbar-input-curror-color,
-  $gray1
+  $title-color
 ) !default;
 $searchbar-input-width: var(--nutui-searchbar-input-width, 100%) !default;
 $searchbar-input-text-align: var(
