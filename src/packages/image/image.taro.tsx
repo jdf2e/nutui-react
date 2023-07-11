@@ -51,9 +51,11 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
   }
   // 图片加载失败
   const handleError = (e: BaseEventOrig<TImageProps.onErrorEventDetail>) => {
-    setIsError(true)
-    setInnerLoading(false)
-    onError && onError(e)
+    if (src) {
+      setIsError(true)
+      setInnerLoading(false)
+      onError && onError(e)
+    }
   }
 
   const pxCheck = (value: string | number): string => {
