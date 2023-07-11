@@ -159,7 +159,6 @@ export const Avatar: FunctionComponent<
                   className="avatar-img"
                   src={src}
                   style={{ objectFit: fit }}
-                  alt={alt}
                   onError={errorEvent}
                 />
               )}

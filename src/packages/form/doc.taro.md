@@ -33,7 +33,7 @@ const App = () => {
         labelPosition="right"
         footer={
           <>
-            <Button nativeType="submit" block type="primary">
+            <Button formType="submit" block type="primary">
               提交
             </Button>
           </>
@@ -100,10 +100,10 @@ const App = () => {
               width: '100%',
             }}
           >
-            <Button nativeType="submit" type="primary">
+            <Button formType="submit" type="primary">
               提交
             </Button>
-            <Button nativeType="reset" style={{ marginLeft: '20px' }}>
+            <Button formType="reset" style={{ marginLeft: '20px' }}>
               重置
             </Button>
           </div>
@@ -189,10 +189,10 @@ const App = () => {
               width: '100%',
             }}
           >
-            <Button nativeType="submit" type="primary">
+            <Button formType="submit" type="primary">
               提交
             </Button>
-            <Button nativeType="reset" style={{ marginLeft: '20px' }}>
+            <Button formType="reset" style={{ marginLeft: '20px' }}>
               重置
             </Button>
           </div>
@@ -328,10 +328,10 @@ const App = () => {
               width: '100%',
             }}
           >
-            <Button nativeType="submit" type="primary">
+            <Button formType="submit" type="primary">
               提交
             </Button>
-            <Button nativeType="reset" style={{ marginLeft: '20px' }}>
+            <Button formType="reset" style={{ marginLeft: '20px' }}>
               重置
             </Button>
           </div>
