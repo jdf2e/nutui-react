@@ -108,7 +108,7 @@ const App = () => {
       src={src}
       width="100"
       height="100"
-      round
+      radius="50%"
     />
   </>
 }
