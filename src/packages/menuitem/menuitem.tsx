@@ -66,15 +66,14 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     ...props,
   } as any
 
-  const [_showPopup, setShowPopup] = useState(show)
-  const [_value, setValue] = useState(value)
+  const [showPopup, setShowPopup] = useState(show)
+  const [innerValue, setValue] = useState(value)
   useEffect(() => {
     setShowPopup(show)
   }, [show])
   useEffect(() => {
-    console.log('xx')
     getParentOffset()
-  }, [_showPopup])
+  }, [showPopup])
 
   useImperativeHandle<any, any>(ref, () => ({
     toggle: parent.toggleMenuItem,
@@ -99,7 +98,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   }
 
   const isShow = () => {
-    if (_showPopup) return {}
+    if (showPopup) return {}
     return { display: 'none' }
   }
   const [position, setPosition] = useState<{ top: number; height: number }>({
@@ -142,7 +141,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     targetSet,
     'click',
     false,
-    _showPopup,
+    showPopup,
     closeOnClickAway
   )
 
@@ -156,7 +155,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
         className="nut-menu__overlay"
         style={getPosition()}
         lockScroll={parent.lockScroll}
-        visible={_showPopup}
+        visible={showPopup}
         closeOnOverlayClick={parent.closeOnOverlayClick}
         onClick={() => {
           parent.closeOnOverlayClick && parent.toggleMenuItem(index)
@@ -173,7 +172,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
         }}
       >
         <CSSTransition
-          in={_showPopup}
+          in={showPopup}
           timeout={100}
           classNames={direction === 'down' ? 'menu-item' : 'menu-item-up'}
         >
@@ -182,7 +181,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
               return (
                 <div
                   className={`nut-menu-item__option ${classNames({
-                    active: item.value === _value,
+                    active: item.value === innerValue,
                   })}`}
                   key={item.text}
                   style={{
@@ -192,7 +191,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
                     handleClick(item)
                   }}
                 >
-                  {item.value === _value ? (
+                  {item.value === innerValue ? (
                     <i>
                       {icon || (
                         <Check
@@ -205,7 +204,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
                   <div
                     className={getIconCName(item.value, value)}
                     style={{
-                      color: `${item.value === _value ? activeColor : ''}`,
+                      color: `${item.value === innerValue ? activeColor : ''}`,
                     }}
                   >
                     {item.text}
