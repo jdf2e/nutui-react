@@ -47,7 +47,7 @@
     }
 
     &.disabled {
-      color: #e1e1e1 !important;
+      color: $disable-color !important;
       cursor: not-allowed;
     }
   }

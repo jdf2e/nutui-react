@@ -274,8 +274,8 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-button-border-radius | Rounded corners of the button | `25px` |
 | \--nutui-button-border-width | Button border width | `1px` |
 | \--nutui-button-default-bg-color | The background color of the button whose type is default | `$white` |
-| \--nutui-button-default-border-color | The border color of the button whose type is default | `rgba(204, 204, 204, 1)` |
-| \--nutui-button-default-color | The text color of the button whose type is default | `$gray1` |
+| \--nutui-button-default-border-color | The border color of the button whose type is default | `$text-color` |
+| \--nutui-button-default-color | The text color of the button whose type is default |`$title-color` |
 | \--nutui-button-default-padding | padding of buttons with type default | `0 18px` |
 | \--nutui-button-mini-padding | Padding for buttons with size mini | `0 12px` |
 | \--nutui-button-mini-height | The height of the button whose size is mini | `24px` |

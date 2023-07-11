@@ -254,13 +254,13 @@ const UploaderDemo = () => {
           <Uploader
             url={uploadUrl}
             onStart={onStart}
-            style={{ marginRight: '10px' }}
+            style={{ marginRight: '2px' }}
           />
           <Uploader
             url={uploadUrl}
             uploadLabel="商品主图"
             onStart={onStart}
-            style={{ marginRight: '10px' }}
+            style={{ marginRight: '2px' }}
           />
           <Uploader
             url={uploadUrl}
