@@ -1,3 +1,71 @@
+# v1.5.11
+`2023-07-05`
+
+* :bug: fix(searchbar): 修复 taro-h5 下 onSearch 不能触发的问题 (#1177) @Eiinu
+* :bug: fix: 修复popover文字过长样式错乱的问题 (#1162) @junjun666
+
+
+# v1.5.10
+`2023-06-28`
+
+* :bug: fix: calendar taro h5 无法滚动 (#1157) @xiaoyatong
+
+
+# v1.5.9
+`2023-06-13`
+
+
+* :sparkles: feat: countdown 支持剩余时间 (#1120) @xiaoyatong
+* :bug: fix: input 在 taro h5 下clearable 失效问题修复 (#1112) @xiaoyatong
+* :bug: fix: menu 组件被使用 transform 的组件嵌套后，遮罩层发生偏移 (#1094) @oasis-cloud
+
+
+# v1.5.8
+`2023-06-07`
+
+* :bug: fix(watermark): 修复小程序下画布尺寸问题 (#1073) @Eiinu
+
+
+# v1.5.7
+`2023-05-31`
+
+* :bug: fix(virtuallist): 修复列表无法滚动的问题 (#1051) @Eiinu
+* :bug: fix: picker 高度设置的 class 未加 nut 前缀 (#1054) @oasis-cloud
+
+# v1.5.6
+`2023-05-24`
+
+* :bug: fix: 修复Range 区间选择器，更新modelValue时，界面显示不正确的问题 #908 (#1033) @samber
+
+
+# v1.5.5
+`2023-05-17`
+
+* :bug: fix: image src 设置空串时候样式错误，以及修复图片缓存后不出发加载事件 (#994) @oasis-cloud
+* :bug: fix: input 设置 clearable 点击清除按钮，并不能清除输入框中的内容 (#992) @oasis-cloud
+* :bug: fix: input 组件 ref 类型修复 (#1013) @oasis-cloud
+
+
+# v1.5.4
+`2023-05-10`
+
+* :bug: fix: 修复elevator小程序快速滑动后闪动问题 (#980) @拧巴的猫
+
+
+# v1.5.3
+`2023-04-28`
+
+* :sparkles: feat: dialog 增加函数式调用的demo @hanyuxinting
+* :bug: fix: 移除代码中无用的 console.log (#960) @oasis-cloud
+
+
+# v1.5.2
+`2023-04-26`
+
+* :bug: fix: countdown 修改销毁实例方法  (#944) @拧巴的猫
+* :bug: fix: uploader组件onSuccess和onFailure方法添加file参数表示当前上传文件 (#932) @cuicuiworld
+
+
 # v1.5.1
 `2023-04-19`
 

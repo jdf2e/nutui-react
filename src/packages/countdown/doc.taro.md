@@ -37,6 +37,27 @@ export default App;
 ```
 
 :::
+
+
+
+### 剩余时间用法
+
+:::demo
+
+```tsx
+import  React from "react";
+import { CountDown } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  return (
+     <CountDown remainingTime={60 * 1000} />
+  );
+};
+export default App;
+```
+
+:::
+
 ### 自定义格式
 
 :::demo
@@ -356,6 +377,7 @@ export default App;
 | onPaused | 暂停倒计时回调函数 | 剩余时间戳
 | onRestart | 重新开始倒计时回调函数 | 剩余时间戳
 | onUpdate | 自定义展示内容时，实时更新倒计时数据回调函数 | 倒计时实时数据
+| destroy `v1.5.2`| 销毁实例 | boolean | `false`
 
 
 ### 方法

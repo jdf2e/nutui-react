@@ -1,15 +1,17 @@
 import React, {
   forwardRef,
+  useCallback,
   useEffect,
   useImperativeHandle,
+  useMemo,
   useState,
 } from 'react'
+import { getSystemInfoSync, usePageScroll } from '@tarojs/taro'
+import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import Icon from '@/packages/icon/index.taro'
 import { Overlay } from '../overlay/overlay.taro'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface OptionItem {
@@ -49,7 +51,6 @@ const defaultProps = {
   onChange: (value: OptionItem) => undefined,
 } as MenuItemProps
 export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
-  const { locale } = useConfig()
   const mergedProps = { ...defaultProps, ...props }
   const {
     style,
@@ -79,6 +80,20 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   useEffect(() => {
     getParentOffset()
   }, [_showPopup])
+  const windowHeight = useMemo(() => getSystemInfoSync().windowHeight, [])
+
+  const updateItemOffset = useCallback(() => {
+    const p = parent.parent().current
+    p.getBoundingClientRect().then((rect: any) => {
+      if (rect) {
+        setPosition({
+          height: rect.height,
+          top: rect.top,
+        })
+      }
+    })
+  }, [direction, windowHeight])
+  usePageScroll(updateItemOffset)
 
   useImperativeHandle<any, any>(ref, () => ({
     toggle: parent.toggleItemShow,
@@ -123,7 +138,11 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   const getPosition = () => {
     return direction === 'down'
       ? { top: `${position.top + position.height}px` }
-      : { bottom: `${window.innerHeight - position.top}px`, top: 'auto' }
+      : {
+          bottom: `${getSystemInfoSync().windowHeight - position.top}px`,
+          top: '0',
+          height: 'initial',
+        }
   }
 
   const placeholderStyle = () => {
@@ -135,7 +154,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
       }
     }
     return {
-      height: `${window.innerHeight - position.top}px`,
+      height: `${getSystemInfoSync().windowHeight - position.top}px`,
       top: 'auto',
       ...isShow(),
       ...style,
@@ -144,7 +163,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
 
   return (
     <>
-      <div
+      <View
         className={`placeholder-element ${classNames({
           up: direction === 'up',
         })}`}
@@ -161,7 +180,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
           parent.closeOnClickOverlay && parent.toggleItemShow(orderKey)
         }}
       />
-      <div
+      <View
         className={
           direction === 'down'
             ? 'nut-menu-item__wrap'
@@ -177,10 +196,10 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
           timeout={100}
           classNames={direction === 'down' ? 'menu-item' : 'menu-item-up'}
         >
-          <div className="nut-menu-item__content">
+          <View className="nut-menu-item__content">
             {options?.map((item, index) => {
               return (
-                <div
+                <View
                   className={`nut-menu-item__option ${classNames({
                     active: item.value === _value,
                   })}`}
@@ -201,21 +220,21 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
                       color={activeColor}
                     />
                   ) : null}
-                  <div
+                  <View
                     className={getIconCName(item.value, value)}
                     style={{
                       color: `${item.value === _value ? activeColor : ''}`,
                     }}
                   >
                     {item.text}
-                  </div>
-                </div>
+                  </View>
+                </View>
               )
             })}
             {children}
-          </div>
+          </View>
         </CSSTransition>
-      </div>
+      </View>
     </>
   )
 })

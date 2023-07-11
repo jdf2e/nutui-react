@@ -174,7 +174,7 @@ export const SearchBar: FunctionComponent<
         disabled={disabled}
         readOnly={readOnly}
         maxLength={maxLength}
-        onKeyPress={onKeypress}
+        onKeyDown={onKeydown}
         onChange={(e: any) => change(e)}
         onFocus={(e: any) => focus(e)}
         onBlur={(e: any) => blur(e)}
@@ -284,7 +284,7 @@ export const SearchBar: FunctionComponent<
     return null
   }
 
-  const onKeypress = (e: React.KeyboardEvent) => {
+  const onKeydown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
       const event = e.nativeEvent
       if (typeof event.cancelable !== 'boolean' || event.cancelable) {
