@@ -861,7 +861,7 @@ $tabbar-text-margin-top: var(--nutui-tabbar-text-margin-top, 3px) !default;
 //infiniteloading（✅）
 $infiniteloading-bottom-color: var(
   --nutui-infiniteloading-bottom-color,
-  #c8c8c8
+  $help-color
 ) !default;
 
 //range（✅）
@@ -1687,7 +1687,7 @@ $empty-description-margin-top: var(
 ) !default;
 $empty-description-color: var(
   --nutui-empty-description-color,
-  #666666
+  $help-color
 ) !default;
 $empty-description-font-size: var(
   --nutui-empty-description-font-size,
