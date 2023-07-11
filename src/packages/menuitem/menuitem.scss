@@ -67,15 +67,15 @@
 }
 
 .placeholder-element {
-  position: absolute;
-  top: -$menu-bar-line-height;
+  position: fixed;
+  top: $menu-placeholder-top;
   left: 0;
   right: 0;
   z-index: $menu-bar-opened-z-index;
   background-color: transparent;
 
   &.up {
-    bottom: -$menu-bar-line-height;
+    bottom: $menu-placeholder-top;
   }
 }
 
