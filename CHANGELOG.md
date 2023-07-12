@@ -1,3 +1,16 @@
+# v2.0.3
+`2023-07-12`
+
+* :sparkles: feat: image 支持 taro (#1190) @oasis-cloud
+* :sparkles: feat: menu 增加打开和关闭的回调方法 (#1206) @oasis-cloud
+* :sparkles: feat: 类型文件中导出组件的 props, 简化组件 props 引入方式 (#1205) @oasis-cloud
+* :bug: fix: infiniteloading taro doc (#1207) @junjun666
+* :bug: fix: 组件2.0走查问题修复 (#1172) @junjun666
+* 🔨 chore: pnpm workspace (#1199) @junjun666
+* 🔨 chore: 兼容ssr之修复引入组件库启动报错 (#1212) @junjun666
+* 📖 docs(form): nativeType 改为 formType (#1209) @oasis-cloud
+
+
 # v2.0.2
 `2023-07-07`
 
