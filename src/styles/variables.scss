@@ -1561,6 +1561,7 @@ $indicator-dot-vertical-margin: var(
 
 // menu（✅）
 $menu-bar-line-height: var(--nutui-menu-bar-line-height, 48px) !default;
+$menu-placeholder-top: var(--nutui-menu-placeholder-top, -48px) !default;
 $menu-item-font-size: var(--nutui-menu-item-font-size, $font-size-2) !default;
 $menu-item-text-color: var(--nutui-menu-item-text-color, $title-color) !default;
 $menu-item-active-text-color: var(
