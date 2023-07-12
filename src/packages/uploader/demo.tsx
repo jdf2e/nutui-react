@@ -250,22 +250,23 @@ const UploaderDemo = () => {
     <>
       <div className="demo bg-w demo-uploader">
         <h2>{translated['84aa6bce']}</h2>
-        <Cell>
+        <Cell style={{ flexWrap: 'wrap', paddingBottom: '0px' }}>
           <Uploader
             url={uploadUrl}
             onStart={onStart}
-            style={{ marginRight: '2px' }}
+            style={{ marginRight: '2px', marginBottom: '10px' }}
           />
           <Uploader
             url={uploadUrl}
             uploadLabel="商品主图"
             onStart={onStart}
-            style={{ marginRight: '2px' }}
+            style={{ marginRight: '2px', marginBottom: '10px' }}
           />
           <Uploader
             url={uploadUrl}
             uploadIcon={<Dongdong />}
             onStart={onStart}
+            style={{ marginBottom: '10px' }}
           />
         </Cell>
 

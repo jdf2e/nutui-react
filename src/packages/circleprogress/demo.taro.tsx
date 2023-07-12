@@ -70,8 +70,8 @@ const CircleProgressDemo = () => {
   }
 
   const gradientColor = {
-    '0%': '#ff404f',
-    '100%': '#fa2c19',
+    '0%': 'var(--nutui-brand-color-start)',
+    '100%': 'var(--nutui-brand-color-end)',
   }
 
   return (
@@ -83,19 +83,19 @@ const CircleProgressDemo = () => {
         } demo-circleprogress`}
       >
         <h2>{translated['84aa6bce']}</h2>
-        <Cell>
+        <Cell style={{ justifyContent: 'center' }}>
           <CircleProgress percent={20} />
           <CircleProgress percent={60}>60%</CircleProgress>
         </Cell>
 
         <h2>{translated['67eacf7f']}</h2>
-        <Cell>
+        <Cell style={{ justifyContent: 'center' }}>
           <CircleProgress percent={50} strokeWidth={10} />
         </Cell>
 
         <h2>{translated['3fee7d50']}</h2>
-        <Cell>
-          <CircleProgress percent={50} color="var(--nutui-brand-link-color)">
+        <Cell style={{ justifyContent: 'center' }}>
+          <CircleProgress percent={50} color="#fa2c19">
             50%
           </CircleProgress>
           <CircleProgress percent={100} color={gradientColor}>
@@ -104,14 +104,14 @@ const CircleProgressDemo = () => {
         </Cell>
 
         <h2>{translated.f4aa4b4c}</h2>
-        <Cell>
+        <Cell style={{ justifyContent: 'center' }}>
           <CircleProgress percent={50} radius={60}>
             50%
           </CircleProgress>
         </Cell>
 
         <h2>{translated['9daa2dd9']}</h2>
-        <Cell>
+        <Cell style={{ justifyContent: 'center' }}>
           <CircleProgress percent={50} radius={60}>
             <div>3000</div>
             <div style={{ fontSize: '12px', color: 'var(--nutui-gray-2)' }}>
@@ -121,10 +121,10 @@ const CircleProgressDemo = () => {
         </Cell>
 
         <h2>{translated.c3e31425}</h2>
-        <Cell>
+        <Cell style={{ justifyContent: 'center' }}>
           <CircleProgress percent={percent}>{percent}%</CircleProgress>
         </Cell>
-        <Cell className="demo__btn">
+        <Cell className="demo__btn" style={{ justifyContent: 'center' }}>
           <Button type="primary" onClick={setReduceVal}>
             {translated['43c9f2ba']}
           </Button>
