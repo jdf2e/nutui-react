@@ -6,6 +6,7 @@ const subPackages = [
       'pages/cell/index',
       'pages/configprovider/index',
       'pages/icon/index',
+      'pages/image/index',
       'pages/overlay/index',
     ],
   },

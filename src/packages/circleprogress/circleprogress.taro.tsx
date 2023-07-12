@@ -12,7 +12,7 @@ export interface CircleProgressProps extends BasicComponent {
   strokeWidth?: string | number
   radius?: number | string
   strokeLinecap?: 'butt' | 'round' | 'square' | 'inherit'
-  color?: any
+  color?: Record<string, string> | string
   background?: string
   clockwise?: boolean
 }
@@ -84,7 +84,7 @@ export const CircleProgress: FunctionComponent<
     const colorArr = Object.keys(color).sort(
       (a, b) => parseFloat(a) - parseFloat(b)
     )
-    const stopArr: any[] = []
+    const stopArr: Record<string, string>[] = []
     colorArr.forEach((item) => {
       const obj = {
         key: '',
@@ -104,7 +104,7 @@ export const CircleProgress: FunctionComponent<
     Math.min(Math.max(+progress, 0), 100)
 
   const circleStyle = () => {
-    const stopArr: Array<any> = stop()
+    const stopArr: Record<string, string>[] = stop()
     const stopDom: string[] = []
     if (stopArr) {
       stopArr.forEach((item: { key?: string; value?: string }) => {

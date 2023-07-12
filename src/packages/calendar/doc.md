@@ -185,6 +185,56 @@ export default App;
 ```
 :::
 
+
+### 日期不可选
+
+:::demo
+```tsx
+import  React, { useState } from "react";
+import { Cell, Calendar } from '@nutui/nutui-react';
+
+const App = () => {
+  const [date3, setDate3] = useState('')
+  const [isVisible3, setIsVisible3] = useState(false)
+
+  const openSwitch3 = () => {
+    setIsVisible3(true)
+  }
+
+  const closeSwitch3 = () => {
+    setIsVisible3(false)
+  }
+
+  const setChooseValue3 = (param: string) => {
+    const dateArr = [...[param[0][3], param[1][3]]]
+    setDate3([...dateArr])
+  }
+
+  const disableDate = (date: Day) => {
+    return date.day === 25
+  }
+
+  return (
+    <>
+      <Cell title="选择周" description={ date3 && date3.length ? `${date3[0]}${translated['8dab2f66']}${date3[1]}` : '请选择' } onClick={ openSwitch3 } />
+      <Calendar
+        visible={isVisible3}
+        defaultValue={date3}
+        type="week"
+        startDate="2023-01-01"
+        endDate="2024-09-10"
+        disableDate={disableDate}
+        onClose={closeSwitch3}
+        onConfirm={setChooseValue3}
+      />
+    </>
+  );
+};
+export default App;
+
+```
+:::
+
 ### 快捷选择
 
 :::demo
@@ -489,6 +539,7 @@ export default App;
 | showSubTitle | 是否展示日期标题 | `boolean`          | `true` |
 | scrollAnimation | 是否启动滚动动画 | `boolean` | `true` |
 | firstDayOfWeek | 设置周起始日 | `0-6` | `0` |
+| disableDate | 设置不可选日期 | `(date: Day) => boolean` | `-` |
 | renderHeaderButtons | 自定义日历标题下部，可用以添加自定义操作 |  `() => string | JSX.Element` | `-` |
 | renderDay  | 日期信息 | `(date: Day) => string | JSX.Element` | `-` |
 | renderDayTop  | 日期顶部信息 | `(date: Day) => string | JSX.Element` | `-` |
@@ -523,6 +574,8 @@ export default App;
 | --nutui-calendar-active-background-color | 日历选中状态时的元素背景色 | `$primary-color` |
 | --nutui-calendar-choose-background-color | 日历选中时区间内元素的背景色，区别区间两头元素的背景色 | `rgba(#fa2c19, 0.09)` |
 | --nutui-calendar-choose-color| 日历选中元素的字色 | `$primary-color` |
+| --nutui-calendar-choose-disable-background-color | 日历不可选元素的选中时的背景色  | `rgba(191, 191, 191, 0.09)` |
+| --nutui-calendar-choose-disable-color| 日历不可选元素的选中时的字色 | `$gray3` |
 | --nutui-calendar-disable-color | 日历不可选元素的字色 | `#d1d0d0` |
 | --nutui-calendar-base-font-size | 日历字号 | `$font-size-3` |
 | --nutui-calendar-title-font-size | 日历标题字号 | `$font-size-4` |

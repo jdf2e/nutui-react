@@ -97,7 +97,7 @@ export const Popup: FunctionComponent<
     afterShow,
     afterClose,
     onClick,
-  } = props
+  } = { ...defaultProps, ...props }
 
   const [index, setIndex] = useState(zIndex || _zIndex)
   const [innerVisible, setInnerVisible] = useState(visible)
@@ -107,7 +107,6 @@ export const Popup: FunctionComponent<
   const classPrefix = 'nut-popup'
   const baseStyle = {
     zIndex: index,
-    animationDuration: `${duration}s`,
   }
 
   const overlayStyles = {
@@ -149,7 +148,7 @@ export const Popup: FunctionComponent<
       if (destroyOnClose) {
         setTimeout(() => {
           setShowChildren(false)
-        }, Number(duration) * 1000)
+        }, Number(duration))
       }
       onClose && onClose()
     }
@@ -230,7 +229,7 @@ export const Popup: FunctionComponent<
       <CSSTransition
         classNames={transitionName}
         unmountOnExit
-        timeout={500}
+        timeout={duration}
         in={innerVisible}
         onEntered={onHandleOpened}
         onExited={onHandleClosed}

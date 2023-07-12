@@ -17,53 +17,19 @@ import { BackTop } from '@nutui/nutui-react';
 :::demo
 
 ```tsx
-import  React from "react";
-import { BackTop } from '@nutui/nutui-react';
+import React from "react";
+import { BackTop, Cell } from '@nutui/nutui-react';
 
 const App = () => {
-  const cellStyle = {
-    height: '46px',
-    lineHeight: '46px',
-    margin: '15px auto 20px',
-    paddingLeft: '16px',
-    backgroundColor: '#fff',
-    color: '#666',
-    borderRadius: '7px',
-    boxShadow: '0 1px 7px #edeef1',
-    fontSize: '13px',
-  }
   return (
-    <>
-    <div className="demo" id="target" style={{height: '100vh'}}>
-        <div className="text-data" style={cellStyle}>我是测试数据1</div>
-        <div className="text-data" style={cellStyle}>我是测试数据2</div>
-        <div className="text-data" style={cellStyle}>我是测试数据3</div>
-        <div className="text-data" style={cellStyle}>我是测试数据4</div>
-        <div className="text-data" style={cellStyle}>我是测试数据5</div>
-        <div className="text-data" style={cellStyle}>我是测试数据6</div>
-        <div className="text-data" style={cellStyle}>我是测试数据7</div>
-        <div className="text-data" style={cellStyle}>我是测试数据8</div>
-        <div className="text-data" style={cellStyle}>我是测试数据9</div>
-        <div className="text-data" style={cellStyle}>我是测试数据10</div>
-        <div className="text-data" style={cellStyle}>我是测试数据11</div>
-        <div className="text-data" style={cellStyle}>我是测试数据12</div>
-        <div className="text-data" style={cellStyle}>我是测试数据13</div>
-        <div className="text-data" style={cellStyle}>我是测试数据14</div>
-        <div className="text-data" style={cellStyle}>我是测试数据15</div>
-        <div className="text-data" style={cellStyle}>我是测试数据16</div>
-        <div className="text-data" style={cellStyle}>我是测试数据17</div>
-        <div className="text-data" style={cellStyle}>我是测试数据18</div>
-        <div className="text-data" style={cellStyle}>我是测试数据19</div>
-        <div className="text-data" style={cellStyle}>我是测试数据20</div>
-        <div className="text-data" style={cellStyle}>我是测试数据21</div>
-        <div className="text-data" style={cellStyle}>我是测试数据22</div>
-        <div className="text-data" style={cellStyle}>我是测试数据23</div>
-        <div className="text-data" style={cellStyle}>我是测试数据24</div>
-        <BackTop target="target" />
+    <div id="target" style={{height: '100vh'}}>
+      {new Array(24).fill(0).map((_, index) => {
+        return <Cell key={index}>我是测试数据{index}</Cell>
+      })}
+      <BackTop target="target" />
     </div>
-    </>
-  );
-};
+  )
+}
 export default App;
 ```
 
@@ -74,53 +40,19 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { BackTop } from '@nutui/nutui-react';
+import React from "react";
+import { BackTop, Cell } from '@nutui/nutui-react';
 
 const App = () => {
-  const cellStyle = {
-    height: '46px',
-    lineHeight: '46px',
-    margin: '15px auto 20px',
-    paddingLeft: '16px',
-    backgroundColor: '#fff',
-    color: '#666',
-    borderRadius: '7px',
-    boxShadow: '0 1px 7px #edeef1',
-    fontSize: '13px',
-  }
   return (
-    <>
-    <div className="demo" id="target" style={{height: '100vh'}}>
-        <div className="text-data" style={cellStyle}>我是测试数据1</div>
-        <div className="text-data" style={cellStyle}>我是测试数据2</div>
-        <div className="text-data" style={cellStyle}>我是测试数据3</div>
-        <div className="text-data" style={cellStyle}>我是测试数据4</div>
-        <div className="text-data" style={cellStyle}>我是测试数据5</div>
-        <div className="text-data" style={cellStyle}>我是测试数据6</div>
-        <div className="text-data" style={cellStyle}>我是测试数据7</div>
-        <div className="text-data" style={cellStyle}>我是测试数据8</div>
-        <div className="text-data" style={cellStyle}>我是测试数据9</div>
-        <div className="text-data" style={cellStyle}>我是测试数据10</div>
-        <div className="text-data" style={cellStyle}>我是测试数据11</div>
-        <div className="text-data" style={cellStyle}>我是测试数据12</div>
-        <div className="text-data" style={cellStyle}>我是测试数据13</div>
-        <div className="text-data" style={cellStyle}>我是测试数据14</div>
-        <div className="text-data" style={cellStyle}>我是测试数据15</div>
-        <div className="text-data" style={cellStyle}>我是测试数据16</div>
-        <div className="text-data" style={cellStyle}>我是测试数据17</div>
-        <div className="text-data" style={cellStyle}>我是测试数据18</div>
-        <div className="text-data" style={cellStyle}>我是测试数据19</div>
-        <div className="text-data" style={cellStyle}>我是测试数据20</div>
-        <div className="text-data" style={cellStyle}>我是测试数据21</div>
-        <div className="text-data" style={cellStyle}>我是测试数据22</div>
-        <div className="text-data" style={cellStyle}>我是测试数据23</div>
-        <div className="text-data" style={cellStyle}>我是测试数据24</div>
-        <BackTop target="target" threshold={200} bottom={50} />
+    <div id="target" style={{height: '100vh'}}>
+      {new Array(24).fill(0).map((_, index) => {
+        return <Cell key={index}>我是测试数据{index}</Cell>
+      })}
+      <BackTop target="target" threshold={200} bottom={50} />
     </div>
-    </>
-  );
-};
+  )
+}
 export default App;
 ```
 
@@ -131,70 +63,31 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { BackTop } from '@nutui/nutui-react';
+import React from "react";
 import { Top } from '@nutui/icons-react';
+import { BackTop, Cell } from '@nutui/nutui-react';
 
 const App = () => {
-  const cellStyle = {
-    height: '46px',
-    lineHeight: '46px',
-    margin: '15px auto 20px',
-    paddingLeft: '16px',
-    backgroundColor: '#fff',
-    color: '#666',
-    borderRadius: '7px',
-    boxShadow: '0 1px 7px #edeef1',
-    fontSize: '13px',
-  }
   return (
-    <>
-    <div className="demo"  id="target">
-        <div className="text-data" style={cellStyle}>我是测试数据1</div>
-        <div className="text-data" style={cellStyle}>我是测试数据2</div>
-        <div className="text-data" style={cellStyle}>我是测试数据3</div>
-        <div className="text-data" style={cellStyle}>我是测试数据4</div>
-        <div className="text-data" style={cellStyle}>我是测试数据5</div>
-        <div className="text-data" style={cellStyle}>我是测试数据6</div>
-        <div className="text-data" style={cellStyle}>我是测试数据7</div>
-        <div className="text-data" style={cellStyle}>我是测试数据8</div>
-        <div className="text-data" style={cellStyle}>我是测试数据9</div>
-        <div className="text-data" style={cellStyle}>我是测试数据10</div>
-        <div className="text-data" style={cellStyle}>我是测试数据11</div>
-        <div className="text-data" style={cellStyle}>我是测试数据12</div>
-        <div className="text-data" style={cellStyle}>我是测试数据13</div>
-        <div className="text-data" style={cellStyle}>我是测试数据14</div>
-        <div className="text-data" style={cellStyle}>我是测试数据15</div>
-        <div className="text-data" style={cellStyle}>我是测试数据16</div>
-        <div className="text-data" style={cellStyle}>我是测试数据17</div>
-        <div className="text-data" style={cellStyle}>我是测试数据18</div>
-        <div className="text-data" style={cellStyle}>我是测试数据19</div>
-        <div className="text-data" style={cellStyle}>我是测试数据20</div>
-        <div className="text-data" style={cellStyle}>我是测试数据21</div>
-        <div className="text-data" style={cellStyle}>我是测试数据22</div>
-        <div className="text-data" style={cellStyle}>我是测试数据23</div>
-        <div className="text-data" style={cellStyle}>我是测试数据24</div>
-        <BackTop
-          className="custom-class"
-          threshold={100}
-          bottom={110}
+    <div id="target" style={{height: '100vh'}}>
+      {new Array(24).fill(0).map((_, index) => {
+        return <Cell key={index}>我是测试数据{index}</Cell>
+      })}
+      <BackTop threshold={100} bottom={110}>
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
         >
-          <div
-            className="backtop-demo"
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}
-          >
-            <Top width={12} height={12} className="nut-backtop-main" />
-            <div style={{ fontSize: '12px' }}>顶部</div>
-          </div>
-        </BackTop>
+          <Top width={12} height={12} />
+          <div style={{ fontSize: '12px' }}>顶部</div>
+        </div>
+      </BackTop>
     </div>
-    </>
-  );
-};
+  )
+}
 export default App;
 ```
 
@@ -205,51 +98,17 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { BackTop } from '@nutui/nutui-react';
+import React from "react";
+import { BackTop, Cell } from '@nutui/nutui-react';
 
 const App = () => {
-    const cellStyle = {
-    height: '46px',
-    lineHeight: '46px',
-    margin: '15px auto 20px',
-    paddingLeft: '16px',
-    backgroundColor: '#fff',
-    color: '#666',
-    borderRadius: '7px',
-    boxShadow: '0 1px 7px #edeef1',
-    fontSize: '13px',
-  }
   return (
-    <>
-    <div className="demo" style={{ height: '800px', overflowY: 'auto' }} id="target">
-        <div className="text-data" style={cellStyle}>我是测试数据1</div>
-        <div className="text-data" style={cellStyle}>我是测试数据2</div>
-        <div className="text-data" style={cellStyle}>我是测试数据3</div>
-        <div className="text-data" style={cellStyle}>我是测试数据4</div>
-        <div className="text-data" style={cellStyle}>我是测试数据5</div>
-        <div className="text-data" style={cellStyle}>我是测试数据6</div>
-        <div className="text-data" style={cellStyle}>我是测试数据7</div>
-        <div className="text-data" style={cellStyle}>我是测试数据8</div>
-        <div className="text-data" style={cellStyle}>我是测试数据9</div>
-        <div className="text-data" style={cellStyle}>我是测试数据10</div>
-        <div className="text-data" style={cellStyle}>我是测试数据11</div>
-        <div className="text-data" style={cellStyle}>我是测试数据12</div>
-        <div className="text-data" style={cellStyle}>我是测试数据13</div>
-        <div className="text-data" style={cellStyle}>我是测试数据14</div>
-        <div className="text-data" style={cellStyle}>我是测试数据15</div>
-        <div className="text-data" style={cellStyle}>我是测试数据16</div>
-        <div className="text-data" style={cellStyle}>我是测试数据17</div>
-        <div className="text-data" style={cellStyle}>我是测试数据18</div>
-        <div className="text-data" style={cellStyle}>我是测试数据19</div>
-        <div className="text-data" style={cellStyle}>我是测试数据20</div>
-        <div className="text-data" style={cellStyle}>我是测试数据21</div>
-        <div className="text-data" style={cellStyle}>我是测试数据22</div>
-        <div className="text-data" style={cellStyle}>我是测试数据23</div>
-        <div className="text-data" style={cellStyle}>我是测试数据24</div>
-        <BackTop target="target" threshold={100} bottom={50} />
+    <div id="target" style={{ height: '800px', overflowY: 'auto' }}>
+      {new Array(24).fill(0).map((_, index) => {
+        return <Cell key={index}>我是测试数据{index}</Cell>
+      })}
+      <BackTop target="target" threshold={100} bottom={50} />
     </div>
-    </>
   );
 };
 export default App;
@@ -262,54 +121,20 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { BackTop } from '@nutui/nutui-react';
+import React from "react";
+import { BackTop, Cell } from '@nutui/nutui-react';
 
 const App = () => {
-  const cellStyle = {
-    height: '46px',
-    lineHeight: '46px',
-    margin: '15px auto 20px',
-    paddingLeft: '16px',
-    backgroundColor: '#fff',
-    color: '#666',
-    borderRadius: '7px',
-    boxShadow: '0 1px 7px #edeef1',
-    fontSize: '13px',
-  }
   const handleClick = () => {
     console.log('触发返回顶部')
   }
   return (
-    <>
-    <div className="demo" style={{ height: '1000px', overflowY: 'auto' }} id="target">
-        <div className="text-data" style={cellStyle}>我是测试数据1</div>
-        <div className="text-data" style={cellStyle}>我是测试数据2</div>
-        <div className="text-data" style={cellStyle}>我是测试数据3</div>
-        <div className="text-data" style={cellStyle}>我是测试数据4</div>
-        <div className="text-data" style={cellStyle}>我是测试数据5</div>
-        <div className="text-data" style={cellStyle}>我是测试数据6</div>
-        <div className="text-data" style={cellStyle}>我是测试数据7</div>
-        <div className="text-data" style={cellStyle}>我是测试数据8</div>
-        <div className="text-data" style={cellStyle}>我是测试数据9</div>
-        <div className="text-data" style={cellStyle}>我是测试数据10</div>
-        <div className="text-data" style={cellStyle}>我是测试数据11</div>
-        <div className="text-data" style={cellStyle}>我是测试数据12</div>
-        <div className="text-data" style={cellStyle}>我是测试数据13</div>
-        <div className="text-data" style={cellStyle}>我是测试数据14</div>
-        <div className="text-data" style={cellStyle}>我是测试数据15</div>
-        <div className="text-data" style={cellStyle}>我是测试数据16</div>
-        <div className="text-data" style={cellStyle}>我是测试数据17</div>
-        <div className="text-data" style={cellStyle}>我是测试数据18</div>
-        <div className="text-data" style={cellStyle}>我是测试数据19</div>
-        <div className="text-data" style={cellStyle}>我是测试数据20</div>
-        <div className="text-data" style={cellStyle}>我是测试数据21</div>
-        <div className="text-data" style={cellStyle}>我是测试数据22</div>
-        <div className="text-data" style={cellStyle}>我是测试数据23</div>
-        <div className="text-data" style={cellStyle}>我是测试数据24</div>
-        <BackTop threshold={100} bottom={50} onClick={handleClick} />
+    <div id="target" style={{ height: '1000px', overflowY: 'auto' }}>
+      {new Array(24).fill(0).map((_, index) => {
+        return <Cell key={index}>我是测试数据{index}</Cell>
+      })}
+      <BackTop threshold={100} bottom={50} onClick={handleClick} />
     </div>
-    </>
   );
 };
 export default App;

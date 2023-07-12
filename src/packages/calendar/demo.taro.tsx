@@ -21,6 +21,7 @@ interface T {
   e51e4582: string
   '7db1a8b2': string
   '7db1a8b3': string
+  '7db1a8b4': string
   a52bef0c: string
   d04fcbda: string
   '0aaad620': string
@@ -43,6 +44,7 @@ const CalendarDemo = () => {
       e51e4582: '平铺展示',
       '7db1a8b2': '选择多个日期',
       '7db1a8b3': '选择周',
+      '7db1a8b4': '日期不可选',
       a52bef0c: '已选择',
       d04fcbda: '自定义日历',
       '0aaad620': '自定义按钮',
@@ -61,7 +63,8 @@ const CalendarDemo = () => {
       c3a3a1d2: '選擇日期',
       e51e4582: '平鋪展示',
       '7db1a8b2': '選擇多個日期',
-      '7db1a8b3': '选择周',
+      '7db1a8b3': '選擇周',
+      '7db1a8b4': '日期不可選',
       a52bef0c: '已選擇',
       d04fcbda: '自定義日曆',
       '0aaad620': '自定義按鈕',
@@ -81,6 +84,7 @@ const CalendarDemo = () => {
       e51e4582: 'Tiled display',
       '7db1a8b2': 'select multiple dates',
       '7db1a8b3': 'select week',
+      '7db1a8b4': 'disable date',
       a52bef0c: 'chosen',
       d04fcbda: 'custom calendar',
       '0aaad620': 'custom button',
@@ -98,6 +102,7 @@ const CalendarDemo = () => {
   const [date3, setDate3] = useState('')
   const [date4, setDate4] = useState<string[]>([])
   const [date40, setDate40] = useState<string[]>([])
+  const [date41, setDate41] = useState<string[]>([])
   const [date5, setDate5] = useState<string[]>(['2023-03-23', '2023-11-26'])
   const [date6, setDate6] = useState<string[]>(['2023-06-12', '2023-06-16'])
   const [date7, setDate7] = useState<string[]>(['2023-07-10', '2023-07-19'])
@@ -108,6 +113,7 @@ const CalendarDemo = () => {
   const [isVisible3, setIsVisible3] = useState(false)
   const [isVisible4, setIsVisible4] = useState(false)
   const [isVisible40, setIsVisible40] = useState(false)
+  const [isVisible41, setIsVisible41] = useState(false)
   const [isVisible5, setIsVisible5] = useState(false)
   const [isVisible6, setIsVisible6] = useState(false)
   const [isVisible7, setIsVisible7] = useState(false)
@@ -130,6 +136,9 @@ const CalendarDemo = () => {
   }
   const openSwitch40 = () => {
     setIsVisible40(true)
+  }
+  const openSwitch41 = () => {
+    setIsVisible41(true)
   }
   const openSwitch5 = () => {
     setIsVisible5(true)
@@ -159,6 +168,9 @@ const CalendarDemo = () => {
   }
   const closeSwitch40 = () => {
     setIsVisible40(false)
+  }
+  const closeSwitch41 = () => {
+    setIsVisible41(false)
   }
   const closeSwitch5 = () => {
     setIsVisible5(false)
@@ -200,6 +212,15 @@ const CalendarDemo = () => {
     console.log('setChooseValue40', [...[chooseData[0][3], chooseData[1][3]]])
     const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
     setDate40([...dateArr])
+  }
+  const setChooseValue41 = (chooseData: any) => {
+    console.log(
+      'setChooseValue41',
+      [...[chooseData[0][3], chooseData[1][3]]],
+      chooseData
+    )
+    const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
+    setDate41([...dateArr])
   }
   const setChooseValue5 = (param: string) => {
     setDate5([...[param[0][3], param[1][3]]])
@@ -250,11 +271,12 @@ const CalendarDemo = () => {
       calendarRef.current.scrollToDate(`${yearMonth}-01`)
     }
   }
-
+  const disableDate = (date: Day) => {
+    return date.day === 25
+  }
   const renderDay = (date: Day) => {
     return <>{date.day <= 9 ? `0${date.day}` : date.day}</>
   }
-
   const renderDayTop = (date: Day) => {
     let currDate = ''
     if (date && date.day === 10) {
@@ -306,7 +328,6 @@ const CalendarDemo = () => {
           visible={isVisible}
           showTitle={false}
           defaultValue={date}
-          // startDate="2023-06-11"
           endDate="2023-11-30"
           onClose={closeSwitch}
           onConfirm={setChooseValue}
@@ -364,8 +385,30 @@ const CalendarDemo = () => {
           type="week"
           startDate="2023-01-01"
           endDate="2024-09-10"
+          firstDayOfWeek={1}
           onClose={closeSwitch40}
           onConfirm={setChooseValue40}
+        />
+
+        <Cell
+          title={translated['7db1a8b4']}
+          description={
+            date41 && date41.length
+              ? `${date41[0]}${translated['8dab2f66']}${date41[1]}`
+              : translated.b840c88f
+          }
+          onClick={openSwitch41}
+        />
+        <Calendar
+          visible={isVisible41}
+          defaultValue={date41}
+          type="week"
+          startDate="2023-01-01"
+          endDate="2024-09-10"
+          disableDate={disableDate}
+          firstDayOfWeek={1}
+          onClose={closeSwitch41}
+          onConfirm={setChooseValue41}
         />
         <h2>{translated.cfbdc781}</h2>
         <Cell

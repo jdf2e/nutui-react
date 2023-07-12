@@ -186,6 +186,56 @@ export default App;
 ```
 :::
 
+
+### Disable Date
+
+:::demo
+```tsx
+import  React, { useState } from "react";
+import { Cell, Calendar } from '@nutui/nutui-react';
+
+const App = () => {
+  const [date3, setDate3] = useState('')
+  const [isVisible3, setIsVisible3] = useState(false)
+
+  const openSwitch3 = () => {
+    setIsVisible3(true)
+  }
+
+  const closeSwitch3 = () => {
+    setIsVisible3(false)
+  }
+
+  const setChooseValue3 = (param: string) => {
+    const dateArr = [...[param[0][3], param[1][3]]]
+    setDate3([...dateArr])
+  }
+
+  const disableDate = (date: Day) => {
+    return date.day === 25
+  }
+
+  return (
+    <>
+      <Cell title="disable date" description={ date3 && date3.length ? `${date3[0]}${translated['8dab2f66']}${date3[1]}` : 'Select' } onClick={ openSwitch3 } />
+      <Calendar
+        visible={isVisible3}
+        defaultValue={date3}
+        type="week"
+        startDate="2023-01-01"
+        endDate="2024-09-10"
+        disableDate={disableDate}
+        onClose={closeSwitch3}
+        onConfirm={setChooseValue3}
+      />
+    </>
+  );
+};
+export default App;
+
+```
+:::
+
 ### quick selection
 
 :::demo
@@ -494,6 +544,7 @@ export default App;
 | showSubTitle | whether to show sub title for calendar | `boolean`          | `true` |
 | scrollAnimation | whether to start scroll animation | `boolean` | `true` |
 | firstDayOfWeek | first day of week | `0-6` | `0` |
+| disableDate | set disable date | `(date: Day) => boolean` | `-` |
 | renderHeaderButtons | custom buttons, under the title but above the subtitle |  `() => string | JSX.Element` | `-` |
 | renderDay  | day info | `(date: Day) => string | JSX.Element` | `-` |
 | renderDayTop  | something above day  | `(date: Day) => string | JSX.Element` | `-` |
@@ -529,6 +580,8 @@ The component provides the following CSS variables, which can be used to customi
 | --nutui-calendar-active-background-color | calendar active background color | `$primary-color` |
 | --nutui-calendar-choose-background-color | calendar choose background color  | `rgba(#fa2c19, 0.09)` |
 | --nutui-calendar-choose-color| calendar choose color | `$primary-color` |
+| --nutui-calendar-choose-disable-background-color | calendar choose but disable background color  | `rgba(191, 191, 191, 0.09)` |
+| --nutui-calendar-choose-disable-color| calendar choose but disable  color | `$gray3` |
 | --nutui-calendar-disable-color | calendar disable color | `#d1d0d0` |
 | --nutui-calendar-base-font-size | calendar base font size | `$font-size-3` |
 | --nutui-calendar-title-font-size | calendar title font size | `$font-size-4` |
