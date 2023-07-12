@@ -11,6 +11,8 @@ export interface MenuProps extends BasicComponent {
   lockScroll: boolean
   icon: React.ReactNode
   children: React.ReactNode
+  onOpen: () => void
+  onClose: () => void
 }
 
 const defaultProps = {
@@ -20,6 +22,8 @@ const defaultProps = {
   scrollFixed: false,
   lockScroll: true,
   icon: null,
+  onOpen: () => {},
+  onClose: () => {},
 } as MenuProps
 export const Menu: FunctionComponent<Partial<MenuProps>> & {
   Item: typeof MenuItem
@@ -32,6 +36,8 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
     closeOnOverlayClick,
     children,
     activeColor,
+    onClose,
+    onOpen,
     ...rest
   } = {
     ...defaultProps,
@@ -63,6 +69,11 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
   const [menuItemTitle, setMenuItemTitle] = useState<string[]>([])
   const toggleMenuItem = (index: number) => {
     showMenuItem[index] = !showMenuItem[index]
+    if (showMenuItem[index]) {
+      onOpen && onOpen()
+    } else {
+      onClose && onClose()
+    }
     const temp = showMenuItem.map((i: boolean, idx) =>
       idx === index ? i : false
     )
@@ -71,6 +82,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
   const hideMenuItem = (index: number) => {
     showMenuItem[index] = false
     setShowMenuItem([...showMenuItem])
+    onClose && onClose()
   }
   const updateTitle = (text: string, index: number) => {
     menuItemTitle[index] = text
@@ -80,6 +92,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
   const cloneChildren = () => {
     return React.Children.map(children, (child, index) => {
       return React.cloneElement(child as any, {
+        ...(child as any).props,
         show: showMenuItem[index],
         index,
         activeColor,
