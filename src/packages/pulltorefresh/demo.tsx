@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { PullToRefresh } from './pulltorefresh'
-import Cell from '@/packages/cell'
 import Toast from '@/packages/toast'
 import { useTranslate } from '@/sites/assets/locale'
 
@@ -22,6 +21,10 @@ const PullToRefreshDemo = () => {
       <div className="demo">
         <h2>{translated.basic}</h2>
         <PullToRefresh
+          style={{
+            backgroundColor: `var(--nutui-gray-0201)`,
+            color: 'var(--nutui-gray-0101)',
+          }}
           onRefresh={() =>
             new Promise((resolve) => {
               Toast.show('😊')
@@ -30,7 +33,16 @@ const PullToRefreshDemo = () => {
           }
         >
           {list.map((item) => (
-            <Cell key={item}>{item}</Cell>
+            <div
+              style={{
+                textAlign: 'center',
+                height: '50px',
+                lineHeight: '50px',
+              }}
+              key={item}
+            >
+              {item}
+            </div>
           ))}
         </PullToRefresh>
       </div>

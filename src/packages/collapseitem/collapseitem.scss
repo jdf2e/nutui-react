@@ -45,6 +45,7 @@
     display: flex;
     padding-right: 40px;
     position: relative;
+    color: $text-color;
   }
 
   &__icon {
@@ -62,6 +63,10 @@
     color: $collapse-item-disabled-color;
 
     .nut-collapse-item__title {
+      color: $collapse-item-disabled-color;
+    }
+
+    .nut-collapse-item__icon {
       color: $collapse-item-disabled-color;
     }
   }

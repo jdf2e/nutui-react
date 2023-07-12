@@ -8,6 +8,7 @@
   box-sizing: border-box;
   background-color: $background-color;
   color: $title-color;
+
   .barrage-item {
     width: 120px;
     display: block;
@@ -19,8 +20,13 @@
     text-align: center;
     white-space: pre;
     transform: translateX(100%);
-    background: linear-gradient(to right, $gray3, rgba(0, 0, 0, 0));
+    background: linear-gradient(
+      to right,
+      var(--nutui-gray-0301),
+      rgba(0, 0, 0, 0)
+    );
     box-sizing: border-box;
+
     &.move {
       will-change: transform;
       animation-name: moving;
@@ -28,18 +34,22 @@
       animation-play-state: running;
     }
   }
+
   @keyframes moving {
     from {
       transform: translateX(100%);
     }
+
     to {
       transform: translateX(var(--move-distance));
     }
   }
+
   @-webkit-keyframes moving {
     from {
       -webkit-transform: translateX(100%);
     }
+
     to {
       transform: translateX(var(--move-distance));
     }

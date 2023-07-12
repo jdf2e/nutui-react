@@ -5,6 +5,7 @@
   max-height: 100%;
   overflow-y: auto;
   background-color: $overlay-content-bg-color;
+  color: $title-color;
   -webkit-overflow-scrolling: touch;
 
   &-title {

@@ -96,13 +96,13 @@ const AvatarDemo = () => {
         <Cell>
           <Avatar
             className="demo-avatar"
-            color="#fff"
-            background="#FA2C19"
+            color="var(--nutui-gray-0202)"
+            background="var(--nutui-brand-color)"
             icon={<My />}
           />
           <Avatar
             color="var(--nutui-brand-color)"
-            background="var(--nutui-brand-color-opacity)"
+            background="var(--nutui-brand-02)"
           >
             U
           </Avatar>
@@ -121,17 +121,22 @@ const AvatarDemo = () => {
           <Avatar.Group gap="-4">
             <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
             <Avatar icon={<My />} />
-            <Avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">
+            <Avatar
+              color="var(--nutui-brand-color)"
+              background="var(--nutui-brand-02)"
+            >
               U
             </Avatar>
           </Avatar.Group>
         </Cell>
-
         <Cell>
           <Avatar.Group max="3" maxColor="#fff" maxBackground="#498ff2">
             <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
             <Avatar icon={<My />} />
-            <Avatar color="rgb(245, 106, 0)" background="rgb(253, 227, 207)">
+            <Avatar
+              color="var(--nutui-brand-color)"
+              background="var(--nutui-brand-02)"
+            >
               U
             </Avatar>
             <Avatar icon={<My />} />
@@ -142,7 +147,10 @@ const AvatarDemo = () => {
           <Avatar.Group max="3" level="right" maxContent="...">
             <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
             <Avatar icon={<My />} />
-            <Avatar color="rgb(245, 106, 0)" background="rgb(253, 227, 207)">
+            <Avatar
+              color="var(--nutui-brand-color)"
+              background="var(--nutui-brand-02)"
+            >
               U
             </Avatar>
             <Avatar icon={<My />} />

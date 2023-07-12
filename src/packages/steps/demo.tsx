@@ -33,7 +33,7 @@ interface T {
 }
 
 const customTheme = {
-  nutuiStepsBaseLineWidth: '70%',
+  nutuiStepsBaseLineWidth: '60%',
   nutuiStepsProcessIconBgColor: '#3768FA',
   nutuiStepsProcessIconColor: '#fff',
   nutuiStepsProcessTitleColor: '#3768FA',
@@ -45,7 +45,7 @@ const customTheme = {
 }
 
 const customTheme2 = {
-  nutuiStepsBaseLineWidth: '70%',
+  nutuiStepsBaseLineWidth: '80%',
   nutuiStepsBaseLineHeight: '2px',
   nutuiStepsFinishLineBackground: `linear-gradient(135deg,
     rgba(250, 250, 25, 1) 0%,
@@ -56,18 +56,18 @@ const customTheme2 = {
 
 const customTheme3 = {
   nutuiStepsDotHeadMargin: '0 0 12px 0',
-  nutuiBrandColorEnd: '#fff',
+  nutuiBrandColorEnd: 'var(--nutui-gray-0202)',
   nutuiStepsDotIconBorder: '0',
   nutuiStepsBaseIconWidth: '6px',
   nutuiStepsBaseIconHeight: '6px',
-  nutuiStepsBaseLineBackground: `#ddd`,
-  nutuiStepsFinishIconBgColor: 'black',
-  nutuiStepsFinishIconColor: 'black',
-  nutuiStepsProcessIconBgColor: 'white',
-  nutuiStepsWaitIconBgColor: '#ddd',
+  nutuiStepsBaseLineBackground: `var(--nutui-gray-0104)`,
+  nutuiStepsFinishIconBgColor: 'var(--nutui-gray-0101)',
+  nutuiStepsFinishIconColor: 'var(--nutui-gray-0101)',
+  nutuiStepsProcessIconBgColor: 'var(--nutui-gray-0202)',
+  nutuiStepsWaitIconBgColor: 'var(--nutui-gray-0104)',
   nutuiStepsBaseLineWidth: '45px',
   nutuiStepsBaseLineHeight: '1px',
-  nutuiStepsFinishLineBackground: `black`,
+  nutuiStepsFinishLineBackground: `var(--nutui-gray-0101)`,
 }
 
 const StepsDemo = () => {

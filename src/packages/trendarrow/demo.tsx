@@ -56,32 +56,32 @@ const TrendArrowDemo = () => {
           <TrendArrow sync={false} value={1} />
           <TrendArrow sync={false} value={-0.2535} />
         </Cell>
-        <div className="title">{translated.title1}</div>
+        <h2>{translated.title1} </h2>
         <Cell>
           <TrendArrow value={10.2365} />
           <TrendArrow value={-0.2535} />
         </Cell>
-        <div className="title">{translated.title2}</div>
+        <h2>{translated.title2} </h2>
         <Cell>
           <TrendArrow digits={1} value={10.2365} />
           <TrendArrow digits={3} value={-0.2535} />
         </Cell>
-        <div className="title">{translated.title3}</div>
+        <h2>{translated.title3} </h2>
         <Cell>
           <TrendArrow left value={0.2535} />
           <TrendArrow left value={-0.2535} />
         </Cell>
-        <div className="title">{translated.title4}</div>
+        <h2>{translated.title4} </h2>
         <Cell>
           <TrendArrow symbol value={1} />
           <TrendArrow symbol value={-0.2535} />
         </Cell>
-        <div className="title">{translated.title5}</div>
+        <h2>{translated.title5} </h2>
         <Cell>
           <TrendArrow symbol value={0} />
           <TrendArrow symbol zero value={0} />
         </Cell>
-        <div className="title">{translated.title6}</div>
+        <h2>{translated.title6} </h2>
         <Cell>
           <TrendArrow value={10.2365} riseColor="rgb(73,143,242)" />
           <TrendArrow value={-0.2535} symbol dropColor="rgb(255, 190, 13)" />
@@ -93,9 +93,9 @@ const TrendArrowDemo = () => {
             dropColor="rgb(255, 190, 13)"
           />
         </Cell>
-        <div className="title">{translated.title7}</div>
+        <h2>{translated.title7} </h2>
         <Cell>
-          <TrendArrow value={10.2365} riseIcon={<Success color="blue" />} />
+          <TrendArrow value={10.2365} riseIcon={<Success color="orange" />} />
           <TrendArrow value={-10.2365} dropIcon={<Failure color="red" />} />
         </Cell>
       </div>

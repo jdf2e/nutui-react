@@ -5,6 +5,7 @@
   &__icon {
     position: relative;
     display: inline-block;
+
     &-box {
       display: flex;
       align-items: center;
@@ -13,7 +14,7 @@
       height: 30px;
       background: $white;
       border-radius: 50%;
-      box-shadow: 0 0 8px rgba(117, 117, 117, 0.5);
+      box-shadow: 0 0 8px $disable-color;
 
       .nut-icon-am-rotate {
         transform: rotate((360));
@@ -23,6 +24,7 @@
 
     .nut-audio__icon-stop {
       position: relative;
+
       &::after {
         position: absolute;
         left: 50%;
@@ -49,30 +51,36 @@
       flex: 1;
       margin: 0 10px;
     }
+
     .time {
       min-width: 50px;
       font-size: 12px;
       text-align: center;
     }
+
     .nut-range-button {
       width: 8px;
       height: 8px;
     }
   }
+
   .custom-button-group {
     .nut-button--primary {
       margin: 0 5px;
     }
   }
+
   .custom-button-group-disable {
     .nut-button--primary {
       margin: 0 5px;
       pointer-events: none;
     }
   }
+
   .disable {
     color: blue;
   }
+
   .nut-audio__none-container {
     .nut-voice {
       border: 1px solid $title-color;

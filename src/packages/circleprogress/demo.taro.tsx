@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Button, CircleProgress } from '@/packages/nutui.react.taro'
+import { Button, CircleProgress, Cell } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 import '@/packages/circleprogress/demo.scss'
 
@@ -83,55 +83,55 @@ const CircleProgressDemo = () => {
         } demo-circleprogress`}
       >
         <h2>{translated['84aa6bce']}</h2>
-        <div className="demo__piece">
+        <Cell>
           <CircleProgress percent={20} />
           <CircleProgress percent={60}>60%</CircleProgress>
-        </div>
+        </Cell>
 
         <h2>{translated['67eacf7f']}</h2>
-        <div className="demo__piece">
+        <Cell>
           <CircleProgress percent={50} strokeWidth={10} />
-        </div>
+        </Cell>
 
         <h2>{translated['3fee7d50']}</h2>
-        <div className="demo__piece">
-          <CircleProgress percent={50} color="#fa2c19">
+        <Cell>
+          <CircleProgress percent={50} color="var(--nutui-brand-link-color)">
             50%
           </CircleProgress>
           <CircleProgress percent={100} color={gradientColor}>
             100%
           </CircleProgress>
-        </div>
+        </Cell>
 
         <h2>{translated.f4aa4b4c}</h2>
-        <div className="demo__piece">
+        <Cell>
           <CircleProgress percent={50} radius={60}>
             50%
           </CircleProgress>
-        </div>
+        </Cell>
 
         <h2>{translated['9daa2dd9']}</h2>
-        <div className="demo__piece">
+        <Cell>
           <CircleProgress percent={50} radius={60}>
             <div>3000</div>
             <div style={{ fontSize: '12px', color: 'var(--nutui-gray-2)' }}>
               步
             </div>
           </CircleProgress>
-        </div>
+        </Cell>
 
         <h2>{translated.c3e31425}</h2>
-        <div className="demo__piece">
+        <Cell>
           <CircleProgress percent={percent}>{percent}%</CircleProgress>
-        </div>
-        <div className="demo__btn">
+        </Cell>
+        <Cell className="demo__btn">
           <Button type="primary" onClick={setReduceVal}>
             {translated['43c9f2ba']}
           </Button>
           <Button type="primary" onClick={setAddVal}>
             {translated.bce53fe7}
           </Button>
-        </div>
+        </Cell>
       </div>
     </>
   )

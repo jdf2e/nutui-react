@@ -18,19 +18,19 @@
   }
 
   .arrow-down {
-    border-top: 4px solid #909ca4;
+    border-top: 4px solid $help-color;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
   }
 
   .arrow-up {
-    border-bottom: 4px solid #909ca4;
+    border-bottom: 4px solid $help-color;
     border-left: 4px solid transparent;
     border-right: 4px solid transparent;
   }
 
   &__title {
-    height: $sidenav-bar-item-height;
+    height: $sidenavbar-item-height;
     padding: $sidenavbar-title-padding;
     background: $sidenavbar-title-background;
     color: $sidenavbar-title-color;

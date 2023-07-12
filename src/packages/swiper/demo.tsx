@@ -91,10 +91,10 @@ const SwiperDemo = () => {
       <h2>{translated.basic}</h2>
       <div className="demo-box" style={{ height: 150 }}>
         <Swiper
-          style={{
-            '--nutui-indicator-color': '#426543',
-            '--nutui-indicator-dot-color': '#426ddd',
-          }}
+          // style={{
+          //   '--nutui-indicator-color': '#426543',
+          //   '--nutui-indicator-dot-color': '#426ddd',
+          // }}
           height={height}
           autoPlay="2000"
           defaultValue={initPage1}
@@ -114,10 +114,10 @@ const SwiperDemo = () => {
       <div className="demo-box" style={{ height: 150 }}>
         <Swiper
           height={height}
-          style={{
-            '--nutui-indicator-color': '#426543',
-            '--nutui-indicator-dot-color': '#426ddd',
-          }}
+          // style={{
+          //   '--nutui-indicator-color': '#426543',
+          //   '--nutui-indicator-dot-color': '#426ddd',
+          // }}
           autoPlay="2000"
           defaultValue={initPage2}
           onChange={onChange}

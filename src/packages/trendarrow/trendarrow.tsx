@@ -23,7 +23,7 @@ const defaultProps = {
   zero: false,
   left: false,
   sync: true,
-  color: '#333',
+  color: '',
   riseColor: '#fa2c19',
   dropColor: '#64b578',
   riseIcon: null,

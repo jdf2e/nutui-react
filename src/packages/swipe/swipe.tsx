@@ -30,17 +30,12 @@ export interface SwipeInstance {
   close: () => void
 }
 export interface SwipeProps extends BasicComponent {
-  /** 标识符，可以在事件参数中获取到 */
   name?: string | number
-  /** 左侧滑动区域的内容 */
   leftAction?: React.ReactNode
-  /** 右侧滑动区域的内容 */
   rightAction?: React.ReactNode
   /** 关闭前的回调函数，返回 false 可阻止关闭，支持返回 Promise */
   beforeClose?: (position: string) => void
-  /** 是否禁用 */
   disabled?: boolean
-  /** 打开时触发 */
   onOpen?: ({
     name,
     position,
@@ -48,7 +43,6 @@ export interface SwipeProps extends BasicComponent {
     name: string | number
     position: SwipeSide
   }) => void
-  /** 关闭时触发 */
   onClose?: ({
     name,
     position,
@@ -56,7 +50,6 @@ export interface SwipeProps extends BasicComponent {
     name: string | number
     position: SwipeSide
   }) => void
-  /** 点击时触发 */
   onActionClick?: (event: Event, position: SwipeSide) => void
   onTouchStart?: (event: Event) => void
   onTouchEnd?: (event: Event) => void
@@ -75,9 +68,7 @@ export const Swipe = forwardRef<
 >((props, instanceRef) => {
   const classPrefix = 'nut-swipe'
   const touch: any = useTouch()
-
   const { children, className, style } = { ...defaultProps, ...props }
-
   const root: any = useRef<HTMLDivElement>()
   const opened = useRef(false)
   const lockClick = useRef(false)
@@ -96,9 +87,7 @@ export const Swipe = forwardRef<
     transitionDuration: state.dragging ? '0s' : '.6s',
   }
   const leftWidth = actionWidth.left
-
   const rightWidth = actionWidth.right
-
   const onTouchStart = (event: Event) => {
     if (!props.disabled) {
       startOffset.current = state.offset
@@ -250,7 +239,6 @@ export const Swipe = forwardRef<
     }
 
     document.addEventListener('touchstart', handler)
-
     return () => {
       document.removeEventListener('touchstart', handler)
     }
