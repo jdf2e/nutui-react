@@ -79,6 +79,7 @@ export const GridItem: FunctionComponent<
     iconFontClassName,
     className,
     onClick,
+    style,
     ...rest
   } = {
     ...defaultProps,
@@ -92,20 +93,20 @@ export const GridItem: FunctionComponent<
   }
 
   const rootStyle = () => {
-    const style: CSSProperties = {
+    const rootStyle: CSSProperties = {
       flexBasis: `${100 / +columnNum}%`,
     }
 
     if (square) {
-      style.paddingTop = `${100 / +columnNum}%`
+      rootStyle.paddingTop = `${100 / +columnNum}%`
     } else if (gutter) {
-      style.paddingRight = pxCheck(gutter)
+      rootStyle.paddingRight = pxCheck(gutter)
       if (index >= columnNum) {
-        style.marginTop = pxCheck(gutter)
+        rootStyle.marginTop = pxCheck(gutter)
       }
     }
 
-    return style
+    return { ...rootStyle, ...style }
   }
 
   const contentClass = () => {
