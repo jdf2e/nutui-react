@@ -120,7 +120,11 @@ const CircleProgressDemo = () => {
         <Cell style={{ justifyContent: 'center' }}>
           <CircleProgress percent={percent}>{percent}%</CircleProgress>
         </Cell>
-        <Cell className="demo-btn" style={{ justifyContent: 'center' }}>
+        <Cell
+          className="demo-btn"
+          radius="0 0 6px 6px"
+          style={{ justifyContent: 'center' }}
+        >
           <Button type="primary" onClick={setReduceVal}>
             {translated['43c9f2ba']}
           </Button>

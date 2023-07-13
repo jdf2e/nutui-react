@@ -57,6 +57,8 @@ const darkTheme = {
   nutuiGray0301: 'rgba(255, 255, 255, 0.06)',
   nutuiGray0401: 'rgba(0, 0, 0, 0.7)',
   nutuiGray0402: 'rgba(0, 0, 0, 0.02)',
+  nutuiGray0403: 'rgba(31, 31, 31, 0)',
+  nutuiGray0404: 'rgba(31, 31, 31, 0.5)',
   boxShadow: '0px 1px 7px 0px #141414',
   pickerMaskBgImg:
     'linear-gradient(180deg,rgba(31, 31, 31, 1),rgba(31, 31, 31, 0.4)),linear-gradient(0deg, rgba(31, 31, 31, 1), rgba(31, 31, 31, 0.4))',

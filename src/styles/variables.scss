@@ -1752,7 +1752,10 @@ $skeleton-line-border-radius: var(
 
 // card（✅）
 $card-left-border-radius: var(--nutui-card-left-border-radius, 2px) !default;
-$card-background-color: var(--nutui-card-background-color, $white) !default;
+$card-background-color: var(
+  --nutui-card-background-color,
+  $base-bg-color
+) !default;
 
 // grid（✅）
 $grid-border-color: var(--nutui-grid-border-color, $divider-color) !default;

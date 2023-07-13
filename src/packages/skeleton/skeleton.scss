@@ -47,7 +47,12 @@
     width: 100%;
     height: 100%;
     z-index: 1;
-    background: linear-gradient(90deg, $white, $base-bg-color 50%, $white 80%);
+    background: linear-gradient(
+      90deg,
+      var(--nutui-gray-0403),
+      var(--nutui-gray-0404) 50%,
+      var(--nutui-gray-0403) 80%
+    );
     background-repeat: no-repeat;
     animation: nut-skeleton 2s ease-in-out 0s infinite;
   }
