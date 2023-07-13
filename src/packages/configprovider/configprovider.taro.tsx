@@ -2,9 +2,9 @@ import React, {
   FunctionComponent,
   createContext,
   useContext,
-  useMemo,
   CSSProperties,
 } from 'react'
+import classNames from 'classnames'
 import kebabCase from 'lodash.kebabcase'
 import { BaseLang } from '@/locales/base'
 import zhCN from '@/locales/zh-CN'
@@ -13,13 +13,16 @@ import type { NutCSSVariables } from './types'
 export interface ConfigProviderProps {
   locale: BaseLang
   theme?: Record<string | NutCSSVariables, string>
-
+  className?: string
+  style?: CSSProperties
   [key: string]: any
 }
 
 const defaultProps = {
   locale: zhCN,
 } as ConfigProviderProps
+
+const classPrefix = 'nut-configprovider'
 
 export const defaultConfigRef: {
   current: ConfigProviderProps
@@ -55,13 +58,12 @@ function convertThemeVarsToCSSVars(themeVars: Record<string, string | number>) {
 export const ConfigProvider: FunctionComponent<
   Partial<ConfigProviderProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { children, ...config } = { ...defaultProps, ...props }
+  const { children, className, ...config } = { ...defaultProps, ...props }
   const parentConfig = useConfig()
-  const theme = config.theme || {}
-  const style = useMemo<CSSProperties | undefined>(
-    () => convertThemeVarsToCSSVars(theme),
-    [theme]
-  )
+  const style = {
+    ...convertThemeVarsToCSSVars(config.theme || {}),
+    ...config.style,
+  }
 
   return (
     <ConfigContext.Provider
@@ -70,7 +72,9 @@ export const ConfigProvider: FunctionComponent<
         ...config,
       }}
     >
-      <div style={style}>{children}</div>
+      <div className={classNames(classPrefix, className)} style={style}>
+        {children}
+      </div>
     </ConfigContext.Provider>
   )
 }
