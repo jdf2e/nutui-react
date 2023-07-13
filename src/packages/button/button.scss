@@ -75,7 +75,6 @@
   }
 
   &.nut-button--none {
-    color: $button-primary-border-color;
     background: transparent;
     border-color: transparent;
   }
@@ -93,8 +92,6 @@
 
     &.nut-button--none {
       color: $button-primary-border-color;
-      background: transparent;
-      border-color: transparent;
     }
   }
 
@@ -111,8 +108,6 @@
 
     &.nut-button--none {
       color: $button-info-border-color;
-      background: transparent;
-      border-color: transparent;
     }
   }
 
@@ -129,8 +124,6 @@
 
     &.nut-button--none {
       color: $button-success-border-color;
-      background: transparent;
-      border-color: transparent;
     }
   }
 
@@ -147,8 +140,6 @@
 
     &.nut-button--none {
       color: $button-danger-border-color;
-      background: transparent;
-      border-color: transparent;
     }
   }
 
@@ -165,8 +156,6 @@
 
     &.nut-button--none {
       color: $button-warning-border-color;
-      background: transparent;
-      border-color: transparent;
     }
   }
 
