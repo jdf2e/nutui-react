@@ -506,6 +506,7 @@ export type NutCSSVariables =
   | 'nutuiIndicatorDotMargin'
   | 'nutuiIndicatorDotVerticalMargin'
   | 'nutuiMenuBarLineHeight'
+  | 'nutuiMenuPlaceholderTop'
   | 'nutuiMenuItemFontSize'
   | 'nutuiMenuItemTextColor'
   | 'nutuiMenuItemActiveTextColor'
