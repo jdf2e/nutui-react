@@ -370,10 +370,9 @@ const App = () => {
         </div>
       </Picker>
       <Popover
+        className='custom-color'
         visible={customPositon}
         targetId="pickerTarget"
-        background="#1a1a1a"
-        color="rgb(255, 255, 255)"
         list={positionList}
         location={curPostion}
        />
@@ -473,11 +472,10 @@ const App = () => {
   return (
     <>
       <Popover
+        className='custom-color'
         visible={customColor}
         list={itemList}
         location="right-start"
-        background="#f00"
-        color="rgb(255, 255, 255)"
         onClick={() => {
           customColor ? setCustomColor(false) : setCustomColor(true)
         }}
@@ -504,22 +502,19 @@ export default App
 | list | 選項列錶 | `List[]` | `[]` |
 | visible | 是否展示氣泡彈出層 | `boolean` | `false` |
 | location | 彈出位置，裏面具體的參數值可以參考上面的位置自定義例子 | `string` | `bottom` |
-| offset | 出現位置的偏移量 | `string[]` \| `number[] ` | `[0, 12]` |
+| offset | 出現位置的偏移量 | `string[]` \| `number[]` | `[0, 12]` |
 | showArrow | 是否顯示小箭頭 | `boolean` | `true` |
-| duration | 動畫時長，單位秒 | `string` \| `number`  | `0.3` |
-| overlay | 是否顯示遮罩層 | `boolean` | `false` |
-| overlayClassName | 自定義遮罩層類名 | `string` | `-` |
-| overlayStyle | 自定義遮罩層樣式 | `React.CSSProperties` | `{}` |
-| closeOnOverlayClick | 是否在點擊遮罩層後關閉菜單 | `boolean` | `true` |
 | closeOnActionClick | 是否在點擊選項後關閉 | `boolean` | `true` |
 | closeOnOutsideClick | 是否在點擊外部元素後關閉菜單 | `boolean` | `true` |
-| background | 自定義背景色 | `string` | `-` |
-| color | 自定義選項文字顏色 | `string` | `-` |
 | targetId | 自定義目標元素 id | `string` | `-` |
 | onClick | 點擊切換 popover 展示狀態 | `() => void` | `() =&gt; {}` |
 | onSelect | 點擊選項時觸發 | `(item: List, index: number) => void` | `(item, index) =&gt; {}` |
 | onOpen | 點擊菜單時觸發 | `() => void` | `() =&gt; {}` |
 | onClose | 關閉菜單時觸發 | `() => void` | `() =&gt; {}` |
+
+```
+此外，還支持Popup組件的overlayStyle、overlayClassName、overlay、closeOnOverlayClick屬性。    
+```
 
 ### List 數據結構
 
@@ -543,8 +538,8 @@ List 屬性是一個由對象構成的數組，數組中的每個對象配置一
 | --- | --- | --- |
 | \--nutui-popover-border-radius | popover 內容區的 border 的圓角值 | `8px` |
 | \--nutui-popover-font-size | popover 內容區的 font-size 值 | `14px` |
-| \--nutui-popover-menu-item-hover-background-color | 手指點擊菜單選項的背景顏色 | `#fff` |
-| \--nutui-popover-menu-item-hover-text-color | 手指點擊菜單選項的文字顏色 | `#1a1a1a` |
+| \--nutui-popover-menu-item-hover-background-color | 手指點擊菜單選項選中的背景顏色 | `#fff` |
+| \--nutui-popover-menu-item-hover-text-color | 手指點擊菜單選項選中的文字顏色 | `#1a1a1a` |
 | \--nutui-popover-primary-text-color | 選項區的文字顏色 | `#ffffff` |
 | \--nutui-popover-content-background-color | 選項區的背景顏色 | `#ffffff` |
 | \--nutui-popover-white-background-color | top、bottom、left 和 right 的箭頭顏色 | `#ffffff` |
