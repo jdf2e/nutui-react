@@ -2,8 +2,9 @@ import * as React from 'react'
 
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import enUS from '@/locales/en-US'
 
-import { ConfigProvider } from '../configprovider'
+import { ConfigProvider, useConfig } from '../configprovider'
 
 describe('configprovider', () => {
   let container: any
@@ -28,27 +29,32 @@ describe('configprovider', () => {
     expect(container).toMatchSnapshot()
   })
 
-  test('should theme variable injection correctly', () => {
+  test('should theme variable and locale variable injection correctly', () => {
+    const Children: React.FC = () => {
+      const { locale } = useConfig()
+      return <>{locale.save}</>
+    }
     const darkTheme = {
       nutuiBrandColor: 'green',
       nutuiBrandColorStart: 'green',
       nutuiBrandColorEnd: 'green',
     }
-    const { getByText, container } = render(
+    const { container } = render(
       <ConfigProvider
         data-testid="configprovider"
+        locale={enUS}
         className="bb"
         style={{ margin: 8 }}
         theme={darkTheme}
       >
-        测试
+        <Children />
       </ConfigProvider>
     )
-    expect(getByText('测试')).toHaveTextContent('测试')
-    expect(container.querySelector('.nut-configprovider')).toHaveClass(
-      'nut-configprovider bb'
-    )
-    expect(container.querySelector('.nut-configprovider')).toHaveStyle(
+
+    const ele = container.querySelector('.nut-configprovider')
+    expect(ele).toHaveTextContent('Save')
+    expect(ele).toHaveClass('nut-configprovider bb')
+    expect(ele).toHaveStyle(
       '--nutui-brand-color: green; --nutui-brand-color-start: green; --nutui-brand-color-end: green; margin: 8px;'
     )
   })
