@@ -28,7 +28,7 @@ describe('configprovider', () => {
     expect(container).toMatchSnapshot()
   })
 
-  test('should children correctly', () => {
+  test('should theme variable injection correctly', () => {
     const darkTheme = {
       nutuiBrandColor: 'green',
       nutuiBrandColorStart: 'green',
