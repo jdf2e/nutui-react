@@ -1,24 +1,19 @@
-import React, {
-  FunctionComponent,
-  createContext,
-  useContext,
-  CSSProperties,
-} from 'react'
+import React, { FunctionComponent, createContext, useContext } from 'react'
 import classNames from 'classnames'
 import kebabCase from 'lodash.kebabcase'
 import { BaseLang } from '@/locales/base'
 import zhCN from '@/locales/zh-CN'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import type { NutCSSVariables } from './types'
 
-export interface ConfigProviderProps {
+export interface ConfigProviderProps extends BasicComponent {
   locale: BaseLang
   theme?: Record<string | NutCSSVariables, string>
-  className?: string
-  style?: CSSProperties
   [key: string]: any
 }
 
 const defaultProps = {
+  ...ComponentDefaults,
   locale: zhCN,
 } as ConfigProviderProps
 
