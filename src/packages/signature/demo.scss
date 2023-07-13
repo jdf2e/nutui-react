@@ -1,7 +1,9 @@
 .demo-signature {
   width: 100%;
-  .web {
+  &.demo-taro-signature {
     position: fixed;
+    height: 100%;
+    overflow: hidden;
   }
   .demo-tips {
     color: #1a1a1a;
