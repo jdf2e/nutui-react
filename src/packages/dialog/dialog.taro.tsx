@@ -1,4 +1,5 @@
 import React, { forwardRef } from 'react'
+import type { MouseEvent } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import Button from '@/packages/button/index.taro'
@@ -53,7 +54,7 @@ export const BaseDialog = forwardRef(
     const renderFooter = () => {
       if (footer === null) return ''
 
-      const handleCancel = (e: MouseEvent) => {
+      const handleCancel = (e: MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation()
         if (!beforeCancel?.()) return
         if (!beforeClose?.()) return
@@ -61,7 +62,7 @@ export const BaseDialog = forwardRef(
         onCancel?.()
       }
 
-      const handleOk = (e: MouseEvent) => {
+      const handleOk = (e: MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation()
         onClose?.()
         onConfirm?.(e)

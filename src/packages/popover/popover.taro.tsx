@@ -95,8 +95,8 @@ export const Popover: FunctionComponent<
     ...props,
   }
 
-  const popoverRef = useRef<any>(null)
-  const popoverContentRef = useRef<any>(null)
+  const popoverRef = useRef<HTMLDivElement>(null)
+  const popoverContentRef = useRef<HTMLDivElement>(null)
 
   const [showPopup, setShowPopup] = useState(false)
   const [elWidth, setElWidth] = useState(0)

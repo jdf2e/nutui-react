@@ -1,4 +1,5 @@
 import React, { CSSProperties, useCallback } from 'react'
+import type { MouseEvent } from 'react'
 import classNames from 'classnames'
 import { ButtonProps as MiniProgramButtonProps } from '@tarojs/components'
 import { Loading } from '@nutui/icons-react-taro'
@@ -33,7 +34,7 @@ export interface ButtonProps
   loading: boolean
   disabled: boolean
   icon: React.ReactNode
-  onClick: (e: MouseEvent) => void
+  onClick: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
 const prefixCls = 'nut-button'
@@ -49,7 +50,7 @@ const defaultProps = {
   disabled: false,
   block: false,
   icon: null,
-  onClick: (e: MouseEvent) => {},
+  onClick: (e: MouseEvent<HTMLButtonElement>) => {},
 } as ButtonProps
 export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
   (props, ref) => {
@@ -89,7 +90,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       return style
     }, [color])
 
-    const handleClick = (e: any) => {
+    const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
       if (!loading && !disabled && onClick) {
         onClick(e)
       }

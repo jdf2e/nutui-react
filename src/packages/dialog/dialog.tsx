@@ -1,4 +1,5 @@
 import React, { ForwardRefRenderFunction, forwardRef } from 'react'
+import type { MouseEvent } from 'react'
 import classNames from 'classnames'
 import Button from '@/packages/button'
 import confirm from './confirm'
@@ -53,7 +54,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
   const renderFooter = () => {
     if (footer === null) return ''
 
-    const handleCancel = (e: MouseEvent) => {
+    const handleCancel = (e: MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation()
       if (!beforeCancel?.()) return
       if (!beforeClose?.()) return
@@ -61,7 +62,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
       onCancel?.()
     }
 
-    const handleOk = (e: MouseEvent) => {
+    const handleOk = (e: MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation()
       onClose?.()
       onConfirm?.(e)

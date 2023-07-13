@@ -5,6 +5,7 @@ import React, {
   useState,
   ReactNode,
 } from 'react'
+import type { MouseEvent } from 'react'
 import { Close } from '@nutui/icons-react'
 import classNames from 'classnames'
 
@@ -42,7 +43,7 @@ const defaultProps = {
   closeable: false,
   closeIcon: null,
   onClose: (e: any) => {},
-  onClick: (e: MouseEvent) => {},
+  onClick: (e: MouseEvent<HTMLDivElement>) => {},
 } as TagProps
 export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
   const {
@@ -81,7 +82,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     setTagClass(classes())
   }, [type, background, color, plain, round, mark, closeable, className])
 
-  const handleClick = (e: any) => {
+  const handleClick = (e: MouseEvent<HTMLDivElement>) => {
     onClick && onClick(e)
   }
   // 综合考虑 color、background、plain 组合使用时的效果

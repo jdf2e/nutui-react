@@ -5,6 +5,7 @@ import React, {
   FunctionComponent,
   ReactEventHandler,
 } from 'react'
+import type { SyntheticEvent } from 'react'
 import { Service } from '@nutui/icons-react'
 import classNames from 'classnames'
 import Range from '@/packages/range'
@@ -153,7 +154,7 @@ export const Audio: FunctionComponent<
       props.onMute && props.onMute(AudioRef.current)
     }
   }
-  const handlePause = (e: HTMLAudioElement) => {
+  const handlePause = (e: SyntheticEvent<HTMLAudioElement>) => {
     setPlaying(false)
     props.onPause && props.onPause(e)
   }
@@ -286,7 +287,7 @@ export const Audio: FunctionComponent<
         muted={muted}
         preload={preload}
         loop={loop}
-        onPause={(e: any) => handlePause(e)}
+        onPause={(e) => handlePause(e)}
         onEnded={(e: React.SyntheticEvent<HTMLAudioElement, Event>) =>
           handleEnded(e)
         }

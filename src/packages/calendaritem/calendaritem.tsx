@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, ReactNode } from 'react'
+import type { UIEvent } from 'react'
 import classNames from 'classnames'
 import { PopupProps } from '@/packages/popup/index'
 import { ComponentDefaults } from '@/utils/typings'
@@ -511,7 +512,7 @@ export const CalendarItem = React.forwardRef<
     })
   }
 
-  const monthsViewScroll = (e: any) => {
+  const monthsViewScroll = (e: UIEvent<HTMLDivElement>) => {
     if (monthsData.length <= 1) {
       return
     }
