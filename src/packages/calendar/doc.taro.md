@@ -530,7 +530,7 @@ export default App;
 | popup | 是否弹窗状态展示 | `boolean`         | `true`            |
 | autoBackfill | 自动回填 | `boolean`         | `false`           |
 | title | 显示标题 | `string`          | `日期选择`      |
-| defaultValue | 默认值，日期选择 string 格式，区间选择 Array 格式 | `string \| Array` | `-` |
+| defaultValue | 默认值，日期选择 string 格式，区间选择 Array 格式 | `string` \| `Array` | `-` |
 | startDate | 开始日期， 如果不限制开始日期传 null | `string`          | 今天            |
 | endDate | 结束日期，如果不限制结束日期传 null | `string`          | 距离今天 365 天 |
 | showToday | 是否展示今天标记 | `boolean`          | `true` |
@@ -542,10 +542,10 @@ export default App;
 | scrollAnimation | 是否启动滚动动画 | `boolean` | `true` |
 | firstDayOfWeek | 设置周起始日 | `0-6` | `0` |
 | disableDate | 设置不可选日期 | `(date: Day) => boolean` | `-` |
-| renderHeaderButtons | 自定义日历标题下部，可用以添加自定义操作 |  `() => string | JSX.Element` | `-` |
-| renderDay  | 日期信息 | `(date: Day) => string | JSX.Element` | `-` |
-| renderDayTop  | 日期顶部信息 | `(date: Day) => string | JSX.Element` | `-` |
-| renderDayBottom  | 日期底部信息 | `(date: Day) => string | JSX.Element` | `-` |
+| renderHeaderButtons | 自定义日历标题下部，可用以添加自定义操作 |  `() => string \| JSX.Element` | `-` |
+| renderDay  | 日期信息 | `(date: Day) => string \| JSX.Element` | `-` |
+| renderDayTop  | 日期顶部信息 | `(date: Day) => string \| JSX.Element` | `-` |
+| renderDayBottom  | 日期底部信息 | `(date: Day) => string \| JSX.Element` | `-` |
 | onDayClick  | 点击/选择后触发 |  `(data: string) => {}` |
 | onPageChange   | 年月子标题到达顶部时触发 | `(param: string) => {}` |
 | onConfirm | 选择之后或是点击确认按钮触发 | `(param: string) => {}` |
@@ -573,19 +573,19 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| --nutui-calendar-active-background-color | 日历选中状态时的元素背景色 | `$primary-color` |
-| --nutui-calendar-choose-background-color | 日历选中时区间内元素的背景色，区别区间两头元素的背景色 | `rgba(#fa2c19, 0.09)` |
-| --nutui-calendar-choose-color| 日历选中元素的字色 | `$primary-color` |
-| --nutui-calendar-choose-disable-background-color | 日历不可选元素的选中时的背景色  | `rgba(191, 191, 191, 0.09)` |
-| --nutui-calendar-choose-disable-color| 日历不可选元素的选中时的字色 | `$gray3` |
-| --nutui-calendar-disable-color | 日历不可选元素的字色 | `#d1d0d0` |
-| --nutui-calendar-base-font-size | 日历字号 | `$font-size-3` |
-| --nutui-calendar-title-font-size | 日历标题字号 | `$font-size-4` |
-| --nutui-calendar-title-font-weight | 日历标题字重 | `500` |
-| --nutui-calendar-sub-title-font-size | 日历副标题字号 | `$font-size-2` |
-| --nutui-calendar-day67-color | 日历周末字色 | `$primary-color` |
-| --nutui-calendar-header-height | 日历自定义部分高度 | `24px` |
-| --nutui-calendar-day-width | 日历元素宽度 | `14.28%` |
-| --nutui-calendar-day-height | 日历元素高度 | `60px` |
-| --nutui-calendar-day-font-weight | 日历元素字重 | `500` |
-| --nutui-calendar-day-active-border-radius| 日历选中元素的圆角 | `4px` |
+| \--nutui-calendar-active-background-color | 日历选中状态时的元素背景色 | `$primary-color` |
+| \--nutui-calendar-choose-background-color | 日历选中时区间内元素的背景色，区别区间两头元素的背景色 | `rgba(#fa2c19, 0.09)` |
+| \--nutui-calendar-choose-color| 日历选中元素的字色 | `$primary-color` |
+| \--nutui-calendar-choose-disable-background-color | 日历不可选元素的选中时的背景色  | `rgba(191, 191, 191, 0.09)` |
+| \--nutui-calendar-choose-disable-color| 日历不可选元素的选中时的字色 | `$gray3` |
+| \--nutui-calendar-disable-color | 日历不可选元素的字色 | `#d1d0d0` |
+| \--nutui-calendar-base-font-size | 日历字号 | `$font-size-3` |
+| \--nutui-calendar-title-font-size | 日历标题字号 | `$font-size-4` |
+| \--nutui-calendar-title-font-weight | 日历标题字重 | `500` |
+| \--nutui-calendar-sub-title-font-size | 日历副标题字号 | `$font-size-2` |
+| \--nutui-calendar-day67-color | 日历周末字色 | `$primary-color` |
+| \--nutui-calendar-header-height | 日历自定义部分高度 | `24px` |
+| \--nutui-calendar-day-width | 日历元素宽度 | `14.28%` |
+| \--nutui-calendar-day-height | 日历元素高度 | `60px` |
+| \--nutui-calendar-day-font-weight | 日历元素字重 | `500` |
+| \--nutui-calendar-day-active-border-radius| 日历选中元素的圆角 | `4px` |
