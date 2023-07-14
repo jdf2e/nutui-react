@@ -13,3 +13,7 @@
     align-items: center;
   }
 }
+// 小程序需要锁定页面滚定
+page {
+  overflow: hidden;
+}
