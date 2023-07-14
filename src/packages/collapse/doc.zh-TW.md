@@ -329,7 +329,7 @@ const App = () => {
 | \--nutui-collapse-item-font-size | 字體大小 | `$font-size-2` |
 | \--nutui-collapse-item-line-height | 行高 | `24px` |
 | \--nutui-collapse-item-color | 字體顏色 | `#666666` |
-| \--nutui-collapse-item-disabled-color | 禁用顏色 | `#c8c9cc` |
+| \--nutui-collapse-item-disabled-color | 禁用顏色 | `$disable-color` |
 | \--nutui-collapse-item-extra-color | Extra 字體顏色 | `#666666` |
 | \--nutui-collapse-wrapper-content-background-color | 背景顏色 | `$white` |
 | \--nutui-collapse-wrapper-content-color | 內容字體顏色 | `#666666` |
