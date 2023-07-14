@@ -27,7 +27,7 @@ export interface TagProps extends BasicComponent {
   mark: boolean
   closeable: boolean
   closeIcon: ReactNode
-  onClick: (e: MouseEvent) => void
+  onClick: (e: MouseEvent<HTMLDivElement>) => void
   onClose: (e?: any) => void
 }
 
@@ -42,7 +42,7 @@ const defaultProps = {
   closeable: false,
   closeIcon: null,
   onClose: (e: any) => {},
-  onClick: (e: MouseEvent) => {},
+  onClick: (e: MouseEvent<HTMLDivElement>) => {},
 } as TagProps
 export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
   const {

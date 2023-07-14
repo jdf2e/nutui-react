@@ -28,7 +28,7 @@ export interface TagProps extends BasicComponent {
   mark: boolean
   closeable: boolean
   closeIcon: ReactNode
-  onClick: (e: MouseEvent) => void
+  onClick: (e: MouseEvent<HTMLDivElement>) => void
   onClose: (e?: any) => void
 }
 

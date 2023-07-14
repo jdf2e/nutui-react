@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  FunctionComponent,
-  ReactEventHandler,
-} from 'react'
+import React, { useState, useEffect, useRef, FunctionComponent } from 'react'
 import type { SyntheticEvent } from 'react'
 import { Service } from '@nutui/icons-react'
 import classNames from 'classnames'
@@ -23,11 +17,10 @@ export interface AudioProps extends BasicComponent {
   type: string
   onBack: (e: HTMLAudioElement) => void
   onForward: (e: HTMLAudioElement) => void
-  onPause: ((e: HTMLAudioElement) => void) & ReactEventHandler<HTMLAudioElement>
-  onEnd: (e: HTMLAudioElement) => void
+  onPause: (e: SyntheticEvent<HTMLAudioElement>) => void
+  onEnd: (e: SyntheticEvent<HTMLAudioElement>) => void
   onMute: (e: HTMLAudioElement) => void
-  onCanPlay: ((e: HTMLAudioElement) => void) &
-    ReactEventHandler<HTMLAudioElement>
+  onCanPlay: (e: SyntheticEvent<HTMLAudioElement>) => void
 }
 
 const defaultProps = {
@@ -40,10 +33,10 @@ const defaultProps = {
   type: 'progress',
   onBack: (e: HTMLAudioElement) => {}, // type 为 progress时生效
   onForward: (e: HTMLAudioElement) => {}, // type 为 progress时生效
-  onPause: (e) => {},
-  onEnd: (e: HTMLAudioElement) => {},
+  onPause: (e: SyntheticEvent<HTMLAudioElement>) => {},
+  onEnd: (e: SyntheticEvent<HTMLAudioElement>) => {},
   onMute: (e: HTMLAudioElement) => {},
-  onCanPlay: (e: HTMLAudioElement) => {},
+  onCanPlay: (e: SyntheticEvent<HTMLAudioElement>) => {},
 } as AudioProps
 export const Audio: FunctionComponent<
   Partial<AudioProps> & React.HTMLAttributes<HTMLElement>
@@ -89,7 +82,7 @@ export const Audio: FunctionComponent<
   })
   const classPrefix = 'nut-audio'
   const warn = console.warn
-  const handleEnded = (e: any) => {
+  const handleEnded = (e: SyntheticEvent<HTMLAudioElement>) => {
     if (props.loop) {
       warn(locale.audio.tips || 'onPlayEnd事件在loop=false时才会触发')
     } else {
@@ -258,7 +251,7 @@ export const Audio: FunctionComponent<
     }
   }
 
-  const handleCanplay = (e: any) => {
+  const handleCanplay = (e: SyntheticEvent<HTMLAudioElement>) => {
     setIsCanPlay(true)
     if (props.autoPlay && !playing) {
       AudioRef && AudioRef.current && AudioRef.current.play()
@@ -268,8 +261,8 @@ export const Audio: FunctionComponent<
       props.onCanPlay && props.onCanPlay(e)
     }
   }
-  const onTimeupdate = (e: any) => {
-    const time = parseInt(e.target.currentTime)
+  const onTimeupdate = (e: SyntheticEvent<HTMLAudioElement>) => {
+    const time = parseInt(String((e.target as HTMLAudioElement).currentTime))
     const formated = formatSeconds(`${time}`)
     statusRef.current.currentDuration = formated
     setPercent((time / statusRef.current.second) * 100)
@@ -288,9 +281,7 @@ export const Audio: FunctionComponent<
         preload={preload}
         loop={loop}
         onPause={(e) => handlePause(e)}
-        onEnded={(e: React.SyntheticEvent<HTMLAudioElement, Event>) =>
-          handleEnded(e)
-        }
+        onEnded={(e) => handleEnded(e)}
         onCanPlay={(e) => handleCanplay(e)}
         onTimeUpdate={(e) => onTimeupdate(e)}
       >
