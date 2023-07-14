@@ -51,11 +51,13 @@ export const Progress: FunctionComponent<
   })
 
   const stylesOuter: React.CSSProperties = {
-    height: `${strokeWidth}px`,
+    height: strokeWidth ? `${strokeWidth}px` : undefined,
     background,
   }
 
-  const [displayPercent, setDispalyPercent] = useState(0)
+  const [displayPercent, setDispalyPercent] = useState(() =>
+    typeof window !== 'undefined' && delay !== 0 ? 0 : percent
+  )
 
   const stylesInner: React.CSSProperties = {
     width: `${displayPercent}%`,
