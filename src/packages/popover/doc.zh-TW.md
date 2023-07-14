@@ -504,13 +504,18 @@ export default App
 | location | 彈出位置，裏面具體的參數值可以參考上面的位置自定義例子 | `string` | `bottom` |
 | offset | 出現位置的偏移量 | `string[]` \| `number[]` | `[0, 12]` |
 | showArrow | 是否顯示小箭頭 | `boolean` | `true` |
+| duration | 動畫時長，單位秒 | `string \| number` | `0.3` |
+| overlay | 是否顯示遮罩層 | `boolean` | `false` |
+| overlayClassName | 自定義遮罩層類名 | `string` | `-` |
+| overlayStyle | 自定義遮罩層樣式 | `React.CSSProperties` | `{}` |
+| closeOnOverlayClick | 是否在點擊遮罩層後關閉菜單 | `boolean` | `true` |
 | closeOnActionClick | 是否在點擊選項後關閉 | `boolean` | `true` |
 | closeOnOutsideClick | 是否在點擊外部元素後關閉菜單 | `boolean` | `true` |
 | targetId | 自定義目標元素 id | `string` | `-` |
-| onClick | 點擊切換 popover 展示狀態 | `() => void` | `() =&gt; {}` |
-| onSelect | 點擊選項時觸發 | `(item: List, index: number) => void` | `(item, index) =&gt; {}` |
-| onOpen | 點擊菜單時觸發 | `() => void` | `() =&gt; {}` |
-| onClose | 關閉菜單時觸發 | `() => void` | `() =&gt; {}` |
+| onClick | 點擊切換 popover 展示狀態 | `() => void` | `() =&amp;gt; {}` |
+| onSelect | 點擊選項時觸發 | `(item: List, index: number) => void` | `(item, index) =&amp;gt; {}` |
+| onOpen | 點擊菜單時觸發 | `() => void` | `() =&amp;gt; {}` |
+| onClose | 關閉菜單時觸發 | `() => void` | `() =&amp;gt; {}` |
 
 ```
 此外，還支持Popup組件的overlayStyle、overlayClassName、overlay、closeOnOverlayClick屬性。    

@@ -502,10 +502,10 @@ export default App
 | closeOnActionClick | Whether to close when clicking action | `boolean` | `true` |
 | closeOnOutsideClick | Whether to close when clicking outside | `boolean` | `true` |
 | targetId | Custom target id | `string` | `-` |
-| onClick | Click to toggle the popover display state | `() => void` | `() =&gt; {}` |
-| onSelect | Fired when an option is clicked | `(item: List, index: number) => void` | `(item, index) =&gt; {}` |
-| onOpen | Triggered when the menu is clicked | `() => void` | `() =&gt; {}` |
-| onClose | Fired when the menu is closed | `() => void` | `() =&gt; {}` |
+| onClick | Click to toggle the popover display state | `() => void` | `() => {}` |
+| onSelect | Fired when an option is clicked | `(item: List, index: number) => void` | `(item, index) => {}` |
+| onOpen | Triggered when the menu is clicked | `() => void` | `() => {}` |
+| onClose | Fired when the menu is closed | `() => void` | `() => {}` |
 
 In addition, the `overlayStyle` `overlayClassName` `overlay` `closeOnOverlayClick` properties of the [Popup](#/zh-CN/component/popup) component are also supported.
 

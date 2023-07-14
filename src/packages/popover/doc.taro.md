@@ -507,10 +507,10 @@ export default App
 | closeOnActionClick | 是否在点击选项后关闭 | `boolean` | `true` |
 | closeOnOutsideClick | 是否在点击外部元素后关闭菜单 | `boolean` | `true` |
 | targetId | 自定义目标元素 id | `string` | `-` |
-| onClick | 点击切换 popover 展示状态 | `() => void` | `() =&gt; {}` |
-| onSelect | 点击选项时触发 | `(item: List, index: number) => void` | `(item, index) =&gt; {}` |
-| onOpen | 点击菜单时触发 | `() => void` | `() =&gt; {}` |
-| onClose | 关闭菜单时触发 | `() => void` | `() =&gt; {}` |
+| onClick | 点击切换 popover 展示状态 | `() => void` | `() => {}` |
+| onSelect | 点击选项时触发 | `(item: List, index: number) => void` | `(item, index) => {}` |
+| onOpen | 点击菜单时触发 | `() => void` | `() => {}` |
+| onClose | 关闭菜单时触发 | `() => void` | `() => {}` |
 
 ```
 此外，还支持Popup组件的overlayStyle、overlayClassName、overlay、closeOnOverlayClick属性。  
