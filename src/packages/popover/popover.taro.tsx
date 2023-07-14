@@ -122,6 +122,7 @@ export const Popover: FunctionComponent<
 
   const getContentWidth = async () => {
     let rect
+    const scrollDis = document.documentElement.scrollTop || window.scrollY
     if (targetId) {
       if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
         rect = getRect(document.querySelector(`#${targetId}`) as Element)
@@ -136,7 +137,7 @@ export const Popover: FunctionComponent<
       width: rect.width,
       height: rect.height,
       left: rect.left,
-      top: rect.top,
+      top: rect.top + scrollDis,
       right: rect.right,
     })
     setTimeout(() => {
@@ -294,7 +295,7 @@ export const Popover: FunctionComponent<
                     },
                     item.className
                   )}
-                  key={item.key}
+                  key={item.key || index}
                   onClick={() => handleSelect(item, index)}
                 >
                   {item.icon ? item.icon : null}
