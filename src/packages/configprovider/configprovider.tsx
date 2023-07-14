@@ -8,7 +8,7 @@ import { BaseLang } from '@/locales/base'
 import zhCN from '@/locales/zh-CN'
 import type { NutCSSVariables } from './types'
 
-export interface ConfigProviderProps {
+export interface ConfigProviderProps extends BasicComponent {
   locale: BaseLang
   theme?: Record<string | NutCSSVariables, string>
 }

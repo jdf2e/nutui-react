@@ -283,6 +283,7 @@ const TabsDemo = () => {
         </Tabs>
         <h2>{translated.title4}</h2>
         <Tabs
+          name="a1"
           value={tab91value}
           onChange={(value) => {
             setTab91value(value)
@@ -296,6 +297,7 @@ const TabsDemo = () => {
         </Tabs>
         <h2>{translated.title4}</h2>
         <Tabs
+          name="a2"
           value={tab92value}
           style={{ height: '300px' }}
           onChange={(value) => {

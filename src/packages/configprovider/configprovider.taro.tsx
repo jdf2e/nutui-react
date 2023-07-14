@@ -3,12 +3,12 @@ import classNames from 'classnames'
 import kebabCase from 'lodash.kebabcase'
 import isequal from 'lodash.isequal'
 import useMemo from '@/utils/use-memo'
+import { BasicComponent } from '@/utils/typings'
 import { BaseLang } from '@/locales/base'
 import zhCN from '@/locales/zh-CN'
 import type { NutCSSVariables } from './types'
-import { BasicComponent } from '@/utils/typings'
 
-export interface ConfigProviderProps {
+export interface ConfigProviderProps extends BasicComponent {
   locale: BaseLang
   theme?: Record<string | NutCSSVariables, string>
 }
