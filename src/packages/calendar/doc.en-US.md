@@ -533,7 +533,7 @@ export default App;
 | popup |  Whether to display the pop-up status | `boolean`         | `true` |
 | autoBackfill | Automatic backfill | `boolean`         | `false`           |
 | title | show title | `string`          | `日期选择`      |
-| defaultValue | defaultValue, string for date, and Array for range | `string \| Array` | `-` |
+| defaultValue | defaultValue, string for date, and Array for range | `string` \| `Array` | `-` |
 | startDate | the start date| `string`          | 今天            |
 | endDate | the end date | `string`          | 距离今天 365 天 |
 | showToday | whether to show today mark | `boolean`          | `true` |
@@ -545,10 +545,10 @@ export default App;
 | scrollAnimation | whether to start scroll animation | `boolean` | `true` |
 | firstDayOfWeek | first day of week | `0-6` | `0` |
 | disableDate | set disable date | `(date: Day) => boolean` | `-` |
-| renderHeaderButtons | custom buttons, under the title but above the subtitle |  `() => string | JSX.Element` | `-` |
-| renderDay  | day info | `(date: Day) => string | JSX.Element` | `-` |
-| renderDayTop  | something above day  | `(date: Day) => string | JSX.Element` | `-` |
-| renderDayBottom  | something under day | `(date: Day) => string | JSX.Element` | `-` |
+| renderHeaderButtons | custom buttons, under the title but above the subtitle | `() => string \| JSX.Element` | `-` |
+| renderDay  | day info | `(date: Day) => string \| JSX.Element` | `-` |
+| renderDayTop  | something above day  | `(date: Day) => string \| JSX.Element` | `-` |
+| renderDayBottom  | something under day | `(date: Day) => string \| JSX.Element` | `-` |
 | onDayClick  | trigger when click the day element |  `(data: string) => {}` |
 | onPageChange   | page change ,one month makes as a page | `(param: string) => {}` |
 | onConfirm | trigger when click the confirm button, or after the click when it is not popup | `(param: string) => {}` |
@@ -577,19 +577,19 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| --nutui-calendar-active-background-color | calendar active background color | `$primary-color` |
-| --nutui-calendar-choose-background-color | calendar choose background color  | `rgba(#fa2c19, 0.09)` |
-| --nutui-calendar-choose-color| calendar choose color | `$primary-color` |
-| --nutui-calendar-choose-disable-background-color | calendar choose but disable background color  | `rgba(191, 191, 191, 0.09)` |
-| --nutui-calendar-choose-disable-color| calendar choose but disable  color | `$gray3` |
-| --nutui-calendar-disable-color | calendar disable color | `#d1d0d0` |
-| --nutui-calendar-base-font-size | calendar base font size | `$font-size-3` |
-| --nutui-calendar-title-font-size | calendar title font size | `$font-size-4` |
-| --nutui-calendar-title-font-weight | calendar title font weight  | `500` |
-| --nutui-calendar-sub-title-font-size | calendar sub title font size | `$font-size-2` |
-| --nutui-calendar-day67-color | calendar day67 color | `$primary-color` |
-| --nutui-calendar-header-height | calendar header height | `24px` |
-| --nutui-calendar-day-width | calendar day width | `14.28%` |
-| --nutui-calendar-day-height | calendar day height | `60px` |
-| --nutui-calendar-day-font-weight | calendar day font weight | `500` |
-| --nutui-calendar-day-active-border-radius| calendar day active border radius | `4px` |
+| \--nutui-calendar-active-background-color | calendar active background color | `$primary-color` |
+| \--nutui-calendar-choose-background-color | calendar choose background color  | `rgba(#fa2c19, 0.09)` |
+| \--nutui-calendar-choose-color| calendar choose color | `$primary-color` |
+| \--nutui-calendar-choose-disable-background-color | calendar choose but disable background color  | `rgba(191, 191, 191, 0.09)` |
+| \--nutui-calendar-choose-disable-color| calendar choose but disable  color | `$gray3` |
+| \--nutui-calendar-disable-color | calendar disable color | `#d1d0d0` |
+| \--nutui-calendar-base-font-size | calendar base font size | `$font-size-3` |
+| \--nutui-calendar-title-font-size | calendar title font size | `$font-size-4` |
+| \--nutui-calendar-title-font-weight | calendar title font weight  | `500` |
+| \--nutui-calendar-sub-title-font-size | calendar sub title font size | `$font-size-2` |
+| \--nutui-calendar-day67-color | calendar day67 color | `$primary-color` |
+| \--nutui-calendar-header-height | calendar header height | `24px` |
+| \--nutui-calendar-day-width | calendar day width | `14.28%` |
+| \--nutui-calendar-day-height | calendar day height | `60px` |
+| \--nutui-calendar-day-font-weight | calendar day font weight | `500` |
+| \--nutui-calendar-day-active-border-radius| calendar day active border radius | `4px` |
