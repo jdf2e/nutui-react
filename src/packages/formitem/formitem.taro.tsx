@@ -36,10 +36,8 @@ const defaultProps = {
   errorMessageAlign: 'left',
 } as FormItemProps
 
-export type FieldProps = typeof defaultProps & Partial<BaseFormField>
-
 export class FormItem extends React.Component<
-  FieldProps,
+  Partial<FormItemProps>,
   { resetCount: number }
 > {
   static defaultProps = defaultProps
@@ -52,7 +50,7 @@ export class FormItem extends React.Component<
 
   private componentRef: React.RefObject<any>
 
-  constructor(props: FieldProps) {
+  constructor(props: FormItemProps) {
     super(props)
     this.componentRef = React.createRef()
     this.state = {
@@ -74,7 +72,7 @@ export class FormItem extends React.Component<
   // children添加value属性和onChange事件
   getControlled = (children: React.ReactElement) => {
     const { setFieldsValue, getFieldValue } = this.context
-    const { name } = this.props
+    const { name = '' } = this.props
 
     if (children?.props?.defaultValue) {
       console.warn('通过 initialValue 设置初始值')
