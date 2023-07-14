@@ -1,21 +1,17 @@
 import React, { FunctionComponent, createContext, useContext } from 'react'
 import classNames from 'classnames'
 import kebabCase from 'lodash.kebabcase'
+import isequal from 'lodash.isequal'
+import useMemo from '@/utils/use-memo'
 import { BaseLang } from '@/locales/base'
 import zhCN from '@/locales/zh-CN'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import type { NutCSSVariables } from './types'
+import { BasicComponent } from '@/utils/typings'
 
-export interface ConfigProviderProps extends BasicComponent {
+export interface ConfigProviderProps {
   locale: BaseLang
   theme?: Record<string | NutCSSVariables, string>
-  [key: string]: any
 }
-
-const defaultProps = {
-  ...ComponentDefaults,
-  locale: zhCN,
-} as ConfigProviderProps
 
 const classPrefix = 'nut-configprovider'
 
@@ -51,28 +47,43 @@ function convertThemeVarsToCSSVars(themeVars: Record<string, string | number>) {
 }
 
 export const ConfigProvider: FunctionComponent<
-  Partial<ConfigProviderProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<ConfigProviderProps & BasicComponent>
 > = (props) => {
-  const { children, className, ...config } = { ...defaultProps, ...props }
-  const parentConfig = useConfig()
-  const style = {
-    ...convertThemeVarsToCSSVars(config.theme || {}),
-    ...config.style,
-  }
+  const { style, className, children, ...config } = props
+
+  const mergedConfig = useMemo(
+    () => {
+      return {
+        ...getDefaultConfig(),
+        ...config,
+      }
+    },
+    [config],
+    (prev, next) =>
+      prev.some((prevTheme, index) => {
+        const nextTheme = next[index]
+
+        return !isequal(prevTheme, nextTheme)
+      })
+  ) as ConfigProviderProps
+
+  const cssVarStyle = React.useMemo(() => {
+    return convertThemeVarsToCSSVars(mergedConfig.theme || {})
+  }, [mergedConfig.theme])
 
   return (
-    <ConfigContext.Provider
-      value={{
-        ...parentConfig,
-        ...config,
-      }}
-    >
-      <div className={classNames(classPrefix, className)} style={style}>
+    <ConfigContext.Provider value={mergedConfig}>
+      <div
+        className={classNames(classPrefix, className)}
+        style={{
+          ...cssVarStyle,
+          ...style,
+        }}
+      >
         {children}
       </div>
     </ConfigContext.Provider>
   )
 }
 
-ConfigProvider.defaultProps = defaultProps
 ConfigProvider.displayName = 'NutConfigProvider'
