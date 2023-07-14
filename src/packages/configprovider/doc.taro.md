@@ -37,6 +37,8 @@ NutUI-React 可以通过 [CSS 变量](https://developer.mozilla.org/zh-CN/docs/W
 
 ConfigProvider 组件提供了覆盖 CSS 变量的能力，你需要在根节点包裹一个 ConfigProvider 组件，并通过 theme 属性来配置一些主题变量。
 
+> ConfigProvider 组件不是一个虚拟组件，它会生成一个 View 标签。
+
 :::demo
 
 ```tsx
