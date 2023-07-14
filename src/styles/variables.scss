@@ -1130,7 +1130,14 @@ $radiogroup-radio-label-margin: var(
 ) !default;
 
 // signature（✅）
-$signature-height: 10rem;
+$signature-border-color: var(--nutui-signature-border-color, $gray9) !default;
+$signature-border-width: var(--nutui-signature-border-width, 1px) !default;
+$signature-height: var(--nutui-signature-height, 10rem) !default;
+$signature-background-color: var(
+  --nutui-signature-background-color,
+  $gray6
+) !default;
+$signature-font-size: var(--nutui-signature-font-size, $font-size-2) !default;
 
 //fixednav（✅）
 $fixednav-bg-color: var(--nutui-fixednav-bg-color, #fff) !default;

@@ -11,9 +11,9 @@ page {
   --nutui-brand-09: #f26e61; // 梯度9
   --nutui-brand-10: #e5928a; // 梯度10
 
-  --nutui-brand-color: --nutui-brand-06;
+  --nutui-brand-color: var(--nutui-brand-06);
   --nutui-brand-color-start: #f54958;
-  --nutui-brand-color-end: --nutui-brand-06;
+  --nutui-brand-color-end: var(--nutui-brand-06);
   --nutui-brand-link-color: #040608;
   --nutui-brand-text-color: #ffffff;
   --nutui-brand-info-color: #2a91fa;

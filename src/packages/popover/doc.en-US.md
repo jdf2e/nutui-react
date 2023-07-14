@@ -493,19 +493,19 @@ export default App
 ### Props
 
 | Property | Description | Type | Default |
-| ------ | ------------- | ------ | ------- |
+| --- | --- | --- | --- |
 | list | list of options | `List[]` | `[]` |
 | visible | whether to show | `boolean` | `false` |
 | location | The pop-up position, the specific parameter values ​​inside can refer to the above position customization example | `string` | `bottom` |
-| offset | the offset of the occurrence position | `string[] \| number[]`  | `[0, 12]` |
-| showArrow | whether to show small arrows  | `boolean` | `true`  |
-| closeOnActionClick  | Whether to close when clicking action | `boolean`  | `true`  |
-| closeOnOutsideClick | Whether to close when clicking outside | `boolean`  | `true`  |
-| targetId | Custom target id | `string`   | `-`     |
-| onClick | Click to toggle the popover display state | `() => void` | `() => {}`            |
-| onSelect | Fired when an option is clicked   | `(item: List, index: number) => void` | `(item, index) => {}` |
+| offset | the offset of the occurrence position | `string[]` \| `number[]` | `[0, 12]` |
+| showArrow | whether to show small arrows | `boolean` | `true` |
+| closeOnActionClick | Whether to close when clicking action | `boolean` | `true` |
+| closeOnOutsideClick | Whether to close when clicking outside | `boolean` | `true` |
+| targetId | Custom target id | `string` | `-` |
+| onClick | Click to toggle the popover display state | `() => void` | `() => {}` |
+| onSelect | Fired when an option is clicked | `(item: List, index: number) => void` | `(item, index) => {}` |
 | onOpen | Triggered when the menu is clicked | `() => void` | `() => {}` |
-| onClose | Fired when the menu is closed     | `() => void` | `() => {}` |
+| onClose | Fired when the menu is closed | `() => void` | `() => {}` |
 
 In addition, the `overlayStyle` `overlayClassName` `overlay` `closeOnOverlayClick` properties of the [Popup](#/zh-CN/component/popup) component are also supported.
 

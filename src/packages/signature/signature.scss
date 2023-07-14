@@ -9,19 +9,15 @@
   }
 
   &__inner {
-    background-color: #fff;
-
-    Canvas {
-      background-color: #fff;
-    }
-
-    height: $signature-height;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: $signature-height;
+    border: $signature-border-width solid $signature-border-color;
+    background-color: $signature-background-color;
   }
 
   &__unsupport {
-    font-size: $font-size-base;
+    font-size: $signature-font-size;
   }
 }

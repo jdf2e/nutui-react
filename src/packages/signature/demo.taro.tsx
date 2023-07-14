@@ -55,7 +55,7 @@ const SignatureDemo = () => {
     <>
       <Header />
       <div
-        className={`demo demo-signature ${
+        className={`demo demo-signature demo-taro-signature ${
           Taro.getEnv() === 'WEB' ? 'web' : ''
         }`}
       >
