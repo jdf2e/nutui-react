@@ -92,7 +92,9 @@ export const Address: FunctionComponent<
 
   const handClose = () => {
     setShowPopup(false)
+    onClose && onClose()
   }
+
   useEffect(() => {
     setShowPopup(visible)
   }, [visible])
@@ -154,6 +156,7 @@ export const Address: FunctionComponent<
           closeable
           closeIcon={closeIcon}
           title={title || locale.address.selectRegion}
+          onClose={handClose}
         >
           <div
             className={`${classPrefix} ${className || ''}`}

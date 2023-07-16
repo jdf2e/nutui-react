@@ -354,7 +354,14 @@ const AddressDemo = () => {
   const showAddress = (tag: string) => {
     setShowPopup({
       ...showPopup,
-      [tag]: !(showPopup as any)[tag],
+      [tag]: true,
+    })
+  }
+
+  const closeAddress = (tag: string) => {
+    setShowPopup({
+      ...showPopup,
+      [tag]: false,
     })
   }
 
@@ -460,6 +467,7 @@ const AddressDemo = () => {
           onChange={(value, params) => {
             change1(value, params, 'one')
           }}
+          onClose={() => closeAddress('normal')}
         />
 
         <Address
@@ -474,18 +482,8 @@ const AddressDemo = () => {
           onChange={(value, params) => {
             change1(value, params, 'six')
           }}
+          onClose={() => closeAddress('select')}
         />
-
-        {/* <Address
-          visible={showPopup.normal2}
-          type="custom2"
-          defaultValue={[1, 7, 3]}
-          height="270px"
-          onChange={(value, params) => {
-            change1(value, params, 'five')
-          }}
-          // onClose={close5}
-        /> */}
 
         <Address
           visible={showPopup.exist}
@@ -493,6 +491,7 @@ const AddressDemo = () => {
           existList={existList2}
           onExistSelect={selectedTwo}
           title={translated.delivery}
+          onClose={() => closeAddress('exist')}
         />
 
         <Address
@@ -502,7 +501,7 @@ const AddressDemo = () => {
           onExistSelect={selectedThree}
           defaultIcon={icon.defaultIcon}
           selectIcon={icon.selectIcon}
-          // closeIcon={icon.closeIcon}
+          onClose={() => closeAddress('customImg')}
         />
 
         <Address
@@ -519,6 +518,7 @@ const AddressDemo = () => {
           onChange={(value, params) => {
             change1(value, params, 'four')
           }}
+          onClose={() => closeAddress('other')}
         />
       </div>
     </>
