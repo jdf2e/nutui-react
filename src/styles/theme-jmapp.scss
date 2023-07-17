@@ -1,32 +1,56 @@
 :root,
 page {
-  --nutui-brand-color: #3768fa;
-  --nutui-brand-color-start: #3768fa;
-  --nutui-brand-color-end: #2c53c8;
-  --nutui-brand-link-color: #396acc;
-  --nutui-brand-color-opacity: rgba(55, 104, 250, 0.4);
+  --nutui-brand-01: #edf4ff; // 梯度1
+  --nutui-brand-02: #dce9ff; // 梯度2
+  --nutui-brand-03: #ccdefb; // 梯度3
+  --nutui-brand-04: #a6c8ff; // 梯度4
+  --nutui-brand-05: #82b1ff; // 梯度5
+  --nutui-brand-06: #5c99ff; // 梯度6
+  --nutui-brand-07: #317fff; // 梯度7
+  --nutui-brand-08: #266bf6; // 梯度8
+  --nutui-brand-09: #2259b4; // 梯度9
+  --nutui-brand-10: #20488a; // 梯度10
+  --nutui-brand-11: #1b3663; // 梯度11
+  --nutui-brand-12: #162d54; // 梯度12
+
+  --nutui-brand-color: var(--nutui-brand-08);
+  --nutui-brand-color-start: var(--nutui-brand-08);
+  --nutui-brand-color-end: var(--nutui-brand-08);
+  --nutui-brand-link-color: var(--nutui-brand-08);
+  --nutui-brand-color-opacity: rgba(250, 44, 25, 0.5);
   --nutui-brand-text-color: #ffffff;
-  --nutui-gray-0: #000000;
-  // 主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
-  --nutui-gray-1: #1a1a1a;
-  // 次要文字色，用于次级标题、属性标示、非主要信息引导等。
-  --nutui-gray-2: #757575;
-  // 不可操作内容色，用于预置内容、无效内容、特殊不可点击按钮、组件边框线等。
-  --nutui-gray-3: #bfbfbf;
-  // 页面基底色，用于卡片式页面的兜底，永远置于页面最底层。
-  --nutui-gray-4: #f4f4f4;
-  // 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
-  --nutui-gray-5: #f8f8f8;
-  // 卡片背景色
-  --nutui-gray-6: #ffffff;
-  // 页面全局蒙层，用于弹出层、弹窗、新功能引导出现的整页遮罩
-  --nutui-gray-7: rgba(0, 0, 0, 0.7);
-  // 局部蒙层，用于非整页遮罩
-  --nutui-gray-8: rgba(0, 0, 0, 0.4);
+  --nutui-brand-info-color: #1988fa;
+
+  // 文字色
+  // 一级文字色（重要）主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
+  --nutui-gray-01: rgba(0, 0, 0, 0.9);
+  // 蒙层色
+  // 全局蒙层，用于弹出层、弹窗、新功能引导出现的整页遮罩
+  --nutui-gray-02: rgba(0, 0, 0, 0.6);
+  // 二级文字色（常规），用于次级标题、属性标示、非主要信息引导等。
+  --nutui-gray-03: rgba(0, 0, 0, 0.7);
+  // 三级文字色（次要）
+  --nutui-gray-04: rgba(0, 0, 0, 0.5);
+  // 四级文字色，不可操作内容色，用于预置内容、无效内容、特殊不可点击按钮、组件边框线等。
+  --nutui-gray-05: rgba(0, 0, 0, 0.3);
+  // 线条色
   // 间隔线/容错线，用于结构或信息分割
-  --nutui-gray-9: rgba(0, 0, 0, 0.08);
-  // 图片容错蒙层
-  --nutui-gray-10: rgba(0, 0, 0, 0.02);
+  --nutui-gray-06: #e8e8e8;
+  // 背景色
+  // 页面背景色。
+  --nutui-gray-07: #f4f4f4;
+  // 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
+  --nutui-gray-08: #ffffff;
+  // 蒙层色
+  // 容错蒙层
+  --nutui-gray-09: #ffffff;
+  // 卡片背景色
+  --nutui-gray-10: #ffffff;
+
+  // 不透明
+  --nutui-gray-11: rgba(31, 31, 31, 0);
+  // 不透明0.5
+  --nutui-gray-12: rgba(31, 31, 31, 0.5);
 
   // 字体
   --nutui-font-size-0: 10px;

@@ -116,7 +116,7 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-signature-border-height | Signature area height | `10rem` |
-| \--nutui-signature-border-color | Signature border color | `$gray9` |
+| \--nutui-signature-border-color | Signature border color | `$divider-color` |
 | \--nutui-signature-border-width | Signature border width | `1px` |
-| \--nutui-signature-background-color | Signature background color | `$gray6` |
+| \--nutui-signature-background-color | Signature background color | `$white` |
 | \--nutui-signature-font-size | Signature text size | `$font-size-2` |

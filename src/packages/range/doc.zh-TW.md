@@ -436,7 +436,7 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-range-color | 字體顏色 | `$gray1` |
+| \--nutui-range-color | 字體顏色 | `$title-color` |
 | \--nutui-range-margin | 進度條外邊距 | `15px` |
 | \--nutui-range-height | 進度條的寬度 | `4px` |
 | \--nutui-range-active-color | 激活顏色 | `$primary-color` |

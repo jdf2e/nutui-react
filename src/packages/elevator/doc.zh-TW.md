@@ -566,15 +566,15 @@ export default App
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-elevator-list-inner-bg-color | 樓層區域背景顏色 | `$gray6` |
+| \--nutui-elevator-list-inner-bg-color | 樓層區域背景顏色 | `$white` |
 | \--nutui-elevator-list-item-highcolor | 樓層區域列表項字體高亮顏色 | `$primary-color` |
 | \--nutui-elevator-list-item-font-size | 樓層區域列表項字體大小 | `12px` |
-| \--nutui-elevator-list-item-font-color | 樓層區域列表項字體顏色 | `$gray1` |
+| \--nutui-elevator-list-item-font-color | 樓層區域列表項字體顏色 | `$title-color` |
 | \--nutui-elevator-list-item-name-padding | 樓層區域列表項內邊距 | `0 20px` |
 | \--nutui-elevator-list-item-name-height | 樓層區域列表項高度 | `30px` |
 | \--nutui-elevator-list-item-name-line-height | 樓層區域列表項行高 | `30px` |
 | \--nutui-elevator-list-item-code-font-size | 樓層區域列表項標題字體大小 | `14px` |
-| \--nutui-elevator-list-item-code-font-color | 樓層區域列表項標題顏色 | `$gray1` |
+| \--nutui-elevator-list-item-code-font-color | 樓層區域列表項標題顏色 | `$title-color` |
 | \--nutui-elevator-list-item-code-font-weight | 樓層區域列表項標題字體粗細 | `500` |
 | \--nutui-elevator-list-item-code-padding | 樓層區域列表項標題內邊距 | `0 20px` |
 | \--nutui-elevator-list-item-code-height | 樓層區域列表項標題高度 | `35px` |

@@ -244,11 +244,11 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-cell-title-color | 单元格标题字体颜色 | `$gray1` |
+| \--nutui-cell-title-color | 单元格标题字体颜色 | `$title-color` |
 | \--nutui-cell-title-font-size | 单元格标题字体大小 | `$font-size-2` |
-| \--nutui-cell-description-color | 单元格描述字体颜色 | `$gray2` |
+| \--nutui-cell-description-color | 单元格描述字体颜色 | `$text-color` |
 | \--nutui-cell-description-font-size | 单元格描述字体大小 | `$font-size-1` |
-| \--nutui-cell-extra-color | 单元格右侧描述字体颜色 | `$gray2` |
+| \--nutui-cell-extra-color | 单元格右侧描述字体颜色 | `$text-color` |
 | \--nutui-cell-extra-font-size | 单元格右侧描述字体大小 | `$font-size-2` |
 | \--nutui-cell-border-radius | 单元格圆角大小 | `6px` |
 | \--nutui-cell-padding | 单元格内边距 | `13px 16px` |
@@ -256,7 +256,7 @@ export default App;
 | \--nutui-cell-divider-left | 单元格分割线左边距 | `16px` |
 | \--nutui-cell-divider-right | 单元格分割线右边距 | `16px` |
 | \--nutui-cell-divider-border-bottom | 单元格分割线下边框 | `2px solid #f5f6f7` |
-| \--nutui-cell-background-color | 单元格背景颜色 | `$gray6` |
+| \--nutui-cell-background-color | 单元格背景颜色 | `$white` |
 | \--nutui-cell-box-shadow | 单元格阴影 | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
 | \--nutui-cell-group-title-padding | 单元格分组的标题内边距 | `0 10px` |
 | \--nutui-cell-group-title-color | 单元格分组的标题字体颜色 | `#909ca4` |

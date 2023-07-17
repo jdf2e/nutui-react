@@ -181,8 +181,8 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-navbar-padding | The padding of the navbar | `13px 16px` |
 | \--nutui-navbar-background | The navbar's background color | `$white` |
 | \--nutui-navbar-box-shadow | Shadow of navbar | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
-| \--nutui-navbar-color | navbar font color | `$gray2` |
+| \--nutui-navbar-color | navbar font color | `$text-color` |
 | \--nutui-navbar-font-size | navbar font size | `$font-size-2` |
 | \--nutui-navbar-title-font-size | The font size of the navbar's title | `$font-size-2` |
 | \--nutui-navbar-title-font-weight | The font weight of the navbar's title | `0` |
-| \--nutui-navbar-title-font-color | The font color of the navbar's title | `$gray1` |
+| \--nutui-navbar-title-font-color | The font color of the navbar's title | `$title-color` |

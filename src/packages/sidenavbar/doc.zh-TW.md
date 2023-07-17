@@ -174,10 +174,10 @@ export default App;
 | \--nutui-sidenavbar-content-bg-color | 側邊欄導航背景色 | `$white` |
 | \--nutui-sidenavbar-item-height | 側邊欄每項的高度 | `40px` |
 | \--nutui-sidenavbar-title-padding | 標題的內邊距 | `10px 8px 10px 20px` |
-| \--nutui-sidenavbar-title-background | 標題的背景色 | `$gray4` |
-| \--nutui-sidenavbar-title-color | 標題的字體顏色 | `$gray1` |
+| \--nutui-sidenavbar-title-background | 標題的背景色 | `$background-color` |
+| \--nutui-sidenavbar-title-color | 標題的字體顏色 | `$title-color` |
 | \--nutui-sidenavbar-sub-title-padding | 子標題的內邊距 | `10px 8px 10px 35px` |
-| \--nutui-sidenavbar-sub-title-background | 子標題背景色 | `$gray5` |
-| \--nutui-sidenavbar-sub-title-color | 子標題字體顏色 | `$gray1` |
-| \--nutui-sidenavbar-sub-list-background | 選項列表背景色 | `$gray5` |
-| \--nutui-sidenavbar-sub-list-color | 選項列表字體顏色 | `$gray1` |
+| \--nutui-sidenavbar-sub-title-background | 子標題背景色 | `$card-background-color-wrapper` |
+| \--nutui-sidenavbar-sub-title-color | 子標題字體顏色 | `$title-color` |
+| \--nutui-sidenavbar-sub-list-background | 選項列表背景色 | `$card-background-color-wrapper` |
+| \--nutui-sidenavbar-sub-list-color | 選項列表字體顏色 | `$title-color` |

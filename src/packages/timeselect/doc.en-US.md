@@ -330,7 +330,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-timeselect-title-line-height | title lineHeight | `50px` |
 | \--nutui-timeselect-title-color | title color | `$title-color` |
 | \--nutui-timeselect-title-font-size | title fontSize | `$font-size-2` |
-| \--nutui-timeselect-title-background | title background | `$background-color3` |
+| \--nutui-timeselect-title-background | title background | `$card-background-color` |
 | \--nutui-timeselect-date-width | date width | `140px` |
 | \--nutui-timeselect-date-height | date height | `40px` |
 | \--nutui-timeselect-date-line-height | date lineHeight | `40px` |
@@ -345,4 +345,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-timeselect-time-color | time color | `$title-color` |
 | \--nutui-timeselect-time-active-color | time active color | `$primary-color` |
 | \--nutui-timeselect-time-background | time background | `$background-color` |
-| \--nutui-timeselect-time-active-background | time active background | `$background-color2` |
+| \--nutui-timeselect-time-active-background | time active background | `$card-background-color-wrapper` |

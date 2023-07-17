@@ -5,7 +5,7 @@
     display: block;
     float: left;
     color: $title-color;
-    background: $background-color3;
+    background: $card-background-color;
     padding: 10px;
     margin-right: 20px;
   }
@@ -22,7 +22,7 @@
   li {
     display: block;
     color: $title-color;
-    background: $background-color3;
+    background: $card-background-color;
     border-radius: 7px;
     box-shadow: 0 1px 6px 0 rgba(237, 238, 241, 1);
     margin-top: 20px;

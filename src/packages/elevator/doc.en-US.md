@@ -566,15 +566,15 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default | 
 | --- | --- | --- | 
-| \--nutui-elevator-list-inner-bg-color | Floor area background color | `$gray6` | 
+| \--nutui-elevator-list-inner-bg-color | Floor area background color | `$white` | 
 | \--nutui-elevator-list-item-highcolor | Floor area list item font highlighted color | `$primary-color` | 
 | \--nutui-elevator-list-item-font-size | Floor area list item font size | `12px` | 
-| \--nutui-elevator-list-item-font-color | Floor area list item font color | `$gray1` | 
+| \--nutui-elevator-list-item-font-color | Floor area list item font color | `$title-color` | 
 | \--nutui-elevator-list-item-name-padding | Floor area list item inside margin | `0 20px` | 
 | \--nutui-elevator-list-item-name-height | Height of floor area list item | `30px` | 
 | \--nutui-elevator-list-item-name-line-height | Floor area list item row height | `30px` | 
 | \--nutui-elevator-list-item-code-font-size | Floor area list item heading font size | `14px` | 
-| \--nutui-elevator-list-item-code-font-color | Floor area list item heading color | `$gray1` | 
+| \--nutui-elevator-list-item-code-font-color | Floor area list item heading color | `$title-color` | 
 | \--nutui-elevator-list-item-code-font-weight | Floor area list item heading font size | `500` | 
 | \--nutui-elevator-list-item-code-padding | Floor area list item heading inside margin | `0 20px` | 
 | \--nutui-elevator-list-item-code-height | Floor area list item heading height | `35px` | 

@@ -277,7 +277,7 @@ export default RadioGroupOptions;
 
 | \--nutui-radio-button-font-size | shape為button的字號 | `12px` |
 | \--nutui-radio-button-color | 字體顏色 | `$text-color` |
-| \--nutui-radio-button-background | shape為button的背景色 | `$base-bg-color` |
+| \--nutui-radio-button-background | shape為button的背景色 | `$background-color` |
 | \--nutui-radio-label-button-border-color | shape為button的邊框顏色 | `$primary-color` |
 | \--nutui-radio-button-padding | shape為button的內邊距 | `5px 18px` |
 | \--nutui-radio-button-border-radius | shape為button的圓角 | `15px` |

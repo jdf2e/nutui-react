@@ -594,7 +594,7 @@ export default App;
 | \--nutui-calendar-choose-background-color | 日歴選中時區間內元素的背景色，區別區間兩頭元素的背景色 | `rgba(#fa2c19, 0.09)` |
 | \--nutui-calendar-choose-color | 日歴選中元素的字色 | `$primary-color` |
 | \--nutui-calendar-choose-disable-background-color | 日歴不可選元素的選中時的背景色 | `rgba(191, 191, 191, 0.09)` |
-| \--nutui-calendar-choose-disable-color | 日歴不可選元素的選中時的字色 | `$gray3` |
+| \--nutui-calendar-choose-disable-color | 日歴不可選元素的選中時的字色 | `$disable-color` |
 | \--nutui-calendar-disable-color | 日歴不可選元素的字色 | `#d1d0d0` |
 | \--nutui-calendar-base-font-size | 日歴字號 | `$font-size-3` |
 | \--nutui-calendar-title-font-size | 日歴標題字號 | `$font-size-4` |

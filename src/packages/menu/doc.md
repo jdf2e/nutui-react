@@ -323,4 +323,4 @@ export default App
 | \--nutui-menu-scroll-fixed-top | fix 状态的顶部距离 | `0` |
 | \--nutui-menu-scroll-fixed-z-index | fix 状态的z-index | `$mask-z-index` |
 | \--nutui-menu-active-item-font-weight | 选中状态的字重 | `500` |
-| \--nutui-menu-item-content-bg-color | 菜单选项容器的背景色 | `$gray6` |
+| \--nutui-menu-item-content-bg-color | 菜单选项容器的背景色 | `$white` |

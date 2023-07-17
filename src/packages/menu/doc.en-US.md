@@ -334,4 +334,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-menu-scroll-fixed-top | Top distance in fixed state | `0` |
 | \--nutui-menu-scroll-fixed-z-index | z-index of fixed state | `$mask-z-index` |
 | \--nutui-menu-active-item-font-weight | The font weight of the selected state | `500` |
-| \--nutui-menu-item-content-bg-color | Background color of menu item container | `$gray6` |
+| \--nutui-menu-item-content-bg-color | Background color of menu item container | `$white` |

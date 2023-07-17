@@ -589,7 +589,7 @@ export default App;
 | \--nutui-tabs-horizontal-tab-line-opacity | 水平方嚮線的透明度 | `1` |
 | \--nutui-tabs-horizontal-titles-height | 水平方嚮標題的高度 | `46px` |
 | \--nutui-tabs-horizontal-titles-item-min-width | 水平方嚮標題的最小寬度 | `50px` |
-| \--nutui-tabs-horizontal-titles-item-active-background-color | 水平方嚮激活選項卡標題的背景色 | `$background-color3` |
+| \--nutui-tabs-horizontal-titles-item-active-background-color | 水平方嚮激活選項卡標題的背景色 | `$card-background-color` |
 | \--nutui-tabs-horizontal-titles-item-active-line-width | 水平方嚮激活選項卡線條的寬度 | `40px` |
 | \--nutui-tabs-horizontal-titles-item-active-line-height | 水平方嚮激活選項卡線條的高度 | `3px` |
 | \--nutui-tabs-vertical-tab-line-color | 垂直方嚮線條顏色 | `linear-gradient(180deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)` |

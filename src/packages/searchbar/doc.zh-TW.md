@@ -234,20 +234,20 @@ export default App;
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-searchbar-width | 搜索框的寬度 | `100%` |
-| \--nutui-searchbar-background | 搜索框背景色 | `$gray6` |
+| \--nutui-searchbar-background | 搜索框背景色 | `$white` |
 | \--nutui-searchbar-padding | 搜索框的padding值 | `9px 10px` |
 | \--nutui-searchbar-content-border-radius | 搜索框內容區圓角 | `2px` |
 | \--nutui-searchbar-left-fontsize | 搜索框外左側區域字號 | `12px` |
 | \--nutui-searchbar-left-padding | 搜索框外左側區域padding值 | `0 12px 0 0` |
-| \--nutui-searchbar-left-color | 搜索框外左側區域字色 | `$gray1` |
+| \--nutui-searchbar-left-color | 搜索框外左側區域字色 | `$title-color` |
 | \--nutui-searchbar-right-fontsize | 搜索框外右側區域字號 | `14px` |
 | \--nutui-searchbar-right-padding | 搜索框外右側區域padding值 | `0 0 0 8px` |
-| \--nutui-searchbar-right-color | 搜索框外右側區域字色 | `$gray1` |
+| \--nutui-searchbar-right-color | 搜索框外右側區域字色 | `$title-color` |
 | \--nutui-searchbar-input-height | 搜索框輸入區高度 | `32px` |
 | \--nutui-searchbar-input-padding | 搜索框輸入區padding | `0 28px` |
 | \--nutui-searchbar-input-background | 搜索框輸入區背景色 | `#f7f7f7` |
-| \--nutui-searchbar-input-text-color | 搜索框輸入區字色 | `$gray1` |
-| \--nutui-searchbar-input-curror-color | 搜索框輸入區輸入色 | `$gray1` |
+| \--nutui-searchbar-input-text-color | 搜索框輸入區字色 | `$title-color` |
+| \--nutui-searchbar-input-curror-color | 搜索框輸入區輸入色 | `$title-color` |
 | \--nutui-searchbar-input-width | 搜索框輸入區寬度 | `100%` |
 | \--nutui-searchbar-input-text-align | 搜索框輸入區對齊方式 | `100%` |
 | \--nutui-searchbar-input-border-radius | 搜索框輸入區圓角 | `16px` |

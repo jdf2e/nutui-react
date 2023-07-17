@@ -436,7 +436,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-range-color | font color | `$gray1` |
+| \--nutui-range-color | font color | `$title-color` |
 | \--nutui-range-margin | margin | `15px` |
 | \--nutui-range-height | stroke width | `4px` |
 | \--nutui-range-active-color | active color | `$primary-color` |

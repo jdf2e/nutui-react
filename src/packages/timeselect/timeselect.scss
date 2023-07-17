@@ -2,7 +2,7 @@
 @import '../timedetail/timedetail.scss';
 
 .nut-timeselect {
-  background-color: $background-color3;
+  background-color: $card-background-color;
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -27,7 +27,7 @@
     min-width: $timeselect-date-width;
     height: 100%;
     overflow: auto;
-    background: $background-color2;
+    background: $card-background-color-wrapper;
   }
 }
 
@@ -39,7 +39,7 @@
   font-size: $timeselect-date-font-size;
 
   &.active {
-    background: $background-color3;
+    background: $card-background-color;
     color: $timeselect-date-active-color;
     font-weight: 700;
   }
