@@ -497,25 +497,24 @@ export default App
 
 ### Props
 
-| 属性                | 说明                                                   | 类型                                  | 默认值                |
-| ------------------- | ------------------------------------------------------ | ------------------------------------- | --------------------- |
-| list                | 选项列表                                               | `List[]`                              | `[]`                  |
-| visible             | 是否展示气泡弹出层                                     | `boolean`                             | `false`               |
-| location            | 弹出位置，里面具体的参数值可以参考上面的位置自定义例子 | `string`                              | `bottom`              |
-| offset              | 出现位置的偏移量                                       | `string[] \| number[]`                | `[0, 12]`             |
-| showArrow           | 是否显示小箭头                                         | `boolean`                             | `true`                |
-| closeOnActionClick  | 是否在点击选项后关闭                                   | `boolean`                             | `true`                |
-| closeOnOutsideClick | 是否在点击外部元素后关闭菜单                           | `boolean`                             | `true`                |
-| targetId            | 自定义目标元素 id                                      | `string`                              | `-`                   |
-| onClick             | 点击切换 popover 展示状态                              | `() => void`                          | `() => {}`            |
-| onSelect            | 点击选项时触发                                         | `(item: List, index: number) => void` | `(item, index) => {}` |
-| onOpen              | 点击菜单时触发                                         | `() => void`                          | `() => {}`            |
-| onClose             | 关闭菜单时触发                                         | `() => void`                          | `() => {}`    |  
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| list | 选项列表 | `List[]` | `[]` |
+| visible | 是否展示气泡弹出层 | `boolean` | `false` |
+| location | 弹出位置，里面具体的参数值可以参考上面的位置自定义例子 | `string` | `bottom` |
+| offset | 出现位置的偏移量 | `string[]` \| `number[]` | `[0, 12]` |
+| showArrow | 是否显示小箭头 | `boolean` | `true` |
+| closeOnActionClick | 是否在点击选项后关闭 | `boolean` | `true` |
+| closeOnOutsideClick | 是否在点击外部元素后关闭菜单 | `boolean` | `true` |
+| targetId | 自定义目标元素 id | `string` | `-` |
+| onClick | 点击切换 popover 展示状态 | `() => void` | `() => {}` |
+| onSelect | 点击选项时触发 | `(item: List, index: number) => void` | `(item, index) => {}` |
+| onOpen | 点击菜单时触发 | `() => void` | `() => {}` |
+| onClose | 关闭菜单时触发 | `() => void` | `() => {}` |
 
-
-       
-    此外，还支持Popup组件的overlayStyle、overlayClassName、overlay、closeOnOverlayClick属性。    
-
+```
+此外，还支持Popup组件的overlayStyle、overlayClassName、overlay、closeOnOverlayClick属性。    
+```
 
 ### List 数据结构
 
@@ -535,15 +534,13 @@ List 属性是一个由对象构成的数组，数组中的每个对象配置一
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称                                             | 说明                                  | 默认值                    |
-| ------------------------------------------------ | ------------------------------------- | ------------------------- |
-| --nutui-popover-border-radius                    | popover 内容区的 border 的圆角值      | ` 8px`                    |
-| --nutui-popover-font-size                        | popover 内容区的 font-size 值         | `14px`                    |
-| --nutui-popover-menu-item-hover-background-color | 手指点击菜单选项选中的背景颜色            | `#fff`                    |
-| --nutui-popover-menu-item-hover-text-color       | 手指点击菜单选项选中的文字颜色            | `#1a1a1a`                 |
-| --nutui-popover-primary-text-color               | 选项区的文字颜色                      | `#ffffff`                 |
-| --nutui-popover-content-background-color         | 选项区的背景颜色                      | `#ffffff`                 |
-| --nutui-popover-white-background-color           | top、bottom、left 和 right 的箭头颜色 | `#ffffff`                 |
-| --nutui-popover-border-bottom-color              | 选项区的底部 border 颜色              | ` rgba(229, 229, 229, 1)` |
-| --nutui-popover-disable-color                    | 选项禁用的颜色                        | ` rgba(154, 155, 157, 1)` |
-| --nutui-popover-menu-item-padding                | 选项区菜单每一项的 padding 值         | `8px`                     |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| \--nutui-popover-border-radius | popover 内容区的 border 的圆角值 | `8px` |
+| \--nutui-popover-font-size | popover 内容区的 font-size 值 | `14px` |
+| \--nutui-popover-primary-text-color | 选项区的文字颜色 | `$title-color` |
+| \--nutui-popover-content-background-color | 选项区的背景颜色 | `$white` |
+| \--nutui-popover-border-color | top、bottom、left 和 right 的箭头颜色| `$white` |
+| \--nutui-popover-divider-color | 选项区的底部 border 颜色 | `$divider-color` |
+| \--nutui-popover-disable-color | 选项禁用的颜色 | `$disable-color` |
+| \--nutui-popover-menu-item-padding | 选项区菜单每一项的 padding 值 | `8px` |

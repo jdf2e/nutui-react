@@ -321,7 +321,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-fixednav-bg-color | background color | `#fff` |
-| \--nutui-fixednav-font-color | font color | `#000` |
+| \--nutui-fixednav-bg-color | background color | `$white` |
+| \--nutui-fixednav-color | font color | `$title-color` |
 | \--nutui-fixednav-index | zIndex | `201` |
 | \--nutui-fixednav-item-active-color | active color | `$primary-color` |

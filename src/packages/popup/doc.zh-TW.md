@@ -231,5 +231,4 @@ export default App;
 | --- | --- | --- |
 | \--nutui-popup-border-radius | 彈框的圓角值 | `20px` |
 | \--nutui-popup-close-icon-margin | 彈框關閉按钮的margin值 | `16px` |
-| \--nutui-popup-close-icon-color | 彈框關閉按钮的色值 | `#969799` |
 | \--nutui-popup-close-icon-size | 彈框關閉按钮的大小 | `30px` |

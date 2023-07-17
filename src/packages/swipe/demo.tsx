@@ -250,7 +250,7 @@ const SwipeDemo = () => {
           }}
           onClose={handleClose}
         >
-          <Cell title={translated.event} />
+          <Cell title={translated.event} radius={0} />
         </Swipe>
         <h2>{translated.title4}</h2>
         <Swipe
@@ -269,7 +269,7 @@ const SwipeDemo = () => {
             </>
           }
         >
-          <Cell title={translated.event} />
+          <Cell title={translated.event} radius={0} />
         </Swipe>
         <h2>{translated.title5}</h2>
         <Swipe

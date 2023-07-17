@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { Ask, Close, Eye } from '@nutui/icons-react-taro'
+import { Ask, Close, Eye, Marshalling } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Input, Button } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
@@ -117,7 +117,7 @@ const InputDemo = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            background: '#fff',
+            background: 'var(--nutui-gray-0202)',
             padding: '0 10px',
           }}
         >
@@ -126,7 +126,10 @@ const InputDemo = () => {
             maxLength={20}
             onChange={(val) => setCurrentLength(val.length)}
           />
-          <div className="right" style={{ fontSize: '12px' }}>
+          <div
+            className="right"
+            style={{ fontSize: '12px', color: 'var(--nutui-gray-0101)' }}
+          >
             {currentLength} / 20
           </div>
         </div>
@@ -135,7 +138,7 @@ const InputDemo = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            background: '#fff',
+            background: 'var(--nutui-gray-0202)',
             padding: '0 10px',
           }}
         >
@@ -147,15 +150,9 @@ const InputDemo = () => {
             }
           >
             {inputType === 'text' ? (
-              <Eye size={14} />
+              <Eye color="var(--nutui-gray-0101)" />
             ) : (
-              <img
-                width="16px"
-                height="16px"
-                style={{ display: 'block' }}
-                src="https://storage.360buyimg.com/imgtools/ac2c6b6b23-a6a8f1d0-ea4b-11ed-8ae6-f73921e8465b.png"
-                alt=""
-              />
+              <Marshalling color="var(--nutui-gray-0101)" />
             )}
           </div>
         </div>
@@ -179,11 +176,11 @@ const InputDemo = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            background: '#fff',
+            background: 'var(--nutui-gray-0202)',
             padding: '0 10px',
           }}
         >
-          <Ask />
+          <Ask color="var(--nutui-gray-0101)" />
           <Input placeholder={translated.codeplaceholder} />
           <div
             className="right"

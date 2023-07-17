@@ -4,16 +4,15 @@
   position: fixed;
   max-height: 100%;
   overflow-y: auto;
-  background-color: $white;
-  color: $gray1;
+  background-color: $overlay-content-bg-color;
+  color: $title-color;
   -webkit-overflow-scrolling: touch;
 
   &-title {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: $gray6;
-    color: $gray1;
+    color: $title-color;
     padding: $popup-title-padding;
     font-weight: $font-weight-bold;
     line-height: $popup-title-line-height;
@@ -30,7 +29,6 @@
   &__close-icon {
     position: absolute !important;
     z-index: 1;
-    color: $popup-close-icon-color;
     cursor: pointer;
     width: 30px;
     height: 30px;

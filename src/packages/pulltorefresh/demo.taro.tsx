@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { PullToRefresh, Cell, Toast } from '@/packages/nutui.react.taro'
+import { PullToRefresh, Toast } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
 
@@ -29,16 +29,28 @@ const PullToRefreshDemo = () => {
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <PullToRefresh
+          style={{
+            backgroundColor: `var(--nutui-gray-0201)`,
+            color: 'var(--nutui-gray-0101)',
+          }}
           onRefresh={() =>
             new Promise((resolve) => {
-              //   Toast.show('😊')
               toastShow('😊')
               resolve('done')
             })
           }
         >
           {list.map((item) => (
-            <Cell key={item}>{item}</Cell>
+            <div
+              style={{
+                textAlign: 'center',
+                height: '50px',
+                lineHeight: '50px',
+              }}
+              key={item}
+            >
+              {item}
+            </div>
           ))}
         </PullToRefresh>
         <Toast

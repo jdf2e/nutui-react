@@ -1,12 +1,5 @@
 @import '../overlay/overlay.scss';
-.nut-theme-dark {
-  .nut-fixednav {
-    &__list {
-      // background-color: $dark2;
-      // color: $white;
-    }
-  }
-}
+
 .nut-fixednav {
   position: fixed;
   z-index: $fixednav-index;
@@ -18,9 +11,11 @@
     .nut-icon {
       transform: rotate(180deg);
     }
+
     .nut-fixednav__list {
       transform: translateX(0%) !important;
     }
+
     &.left {
       .nut-icon {
         transform: rotate(0deg) !important;
@@ -48,9 +43,10 @@
       width: 24px;
       line-height: 13px;
       font-size: 10px;
-      color: $fixednav-bg-color;
+      color: #fff;
       flex-shrink: 0;
     }
+
     .nut-icon {
       margin-right: 5px;
       transition: all 0.3s;
@@ -73,10 +69,12 @@
     justify-content: space-between;
     border-radius: 25px 0px 0px 25px;
     box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.2);
+
     padding: {
       left: 20px;
       right: 80px;
     }
+
     &-item {
       position: relative;
       flex: 1;
@@ -87,15 +85,18 @@
       align-items: center;
       min-width: 50px;
       flex-shrink: 0;
+      color: $fixednav-color;
+
       img {
         width: 20px;
         height: 20px;
         margin-bottom: 2px;
       }
+
       .nut-fixednav__list-text {
         font-size: 10px;
-        color: $fixednav-font-color;
       }
+
       .b {
         position: absolute;
         right: 0;
@@ -112,6 +113,7 @@
       }
     }
   }
+
   &.left {
     right: auto;
     left: 0;
@@ -121,22 +123,27 @@
       right: auto;
       left: 0;
       border-radius: 0 45px 45px 0;
+
       .nut-icon {
         transform: rotate(180deg);
       }
     }
+
     .nut-fixednav__list {
       transform: translateX(-100%);
       right: auto;
       border-radius: 0px 25px 25px 0px;
+
       padding: {
         left: 80px;
         right: 20px;
       }
+
       margin: 0;
     }
   }
 }
+
 .nut-drag .nut-fixednav {
   position: inherit;
 }

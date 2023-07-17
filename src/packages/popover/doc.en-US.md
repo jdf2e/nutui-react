@@ -492,20 +492,20 @@ export default App
 
 ### Props
 
-| Property            | Description                                                                                                       | Type                                  | Default               |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------- | --------------------- |
-| list                | list of options                                                                                                   | `List[]`                              | `[]`                  |
-| visible             | whether to show                                                                                                   | `boolean`                             | `false`               |
-| location            | The pop-up position, the specific parameter values ​​inside can refer to the above position customization example | `string`                              | `bottom`              |
-| offset              | the offset of the occurrence position                                                                             | `string[] \| number[]`                | `[0, 12]`             |
-| showArrow           | whether to show small arrows                                                                                      | `boolean`                             | `true`                |
-| closeOnActionClick  | Whether to close when clicking action                                                                             | `boolean`                             | `true`                |
-| closeOnOutsideClick | Whether to close when clicking outside                                                                            | `boolean`                             | `true`                |
-| targetId            | Custom target id                                                                                                  | `string`                              | `-`                   |
-| onClick             | Click to toggle the popover display state                                                                         | `() => void`                          | `() => {}`            |
-| onSelect            | Fired when an option is clicked                                                                                   | `(item: List, index: number) => void` | `(item, index) => {}` |
-| onOpen              | Triggered when the menu is clicked                                                                                | `() => void`                          | `() => {}`            |
-| onClose             | Fired when the menu is closed                                                                                     | `() => void`                          | `() => {}`            |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| list | list of options | `List[]` | `[]` |
+| visible | whether to show | `boolean` | `false` |
+| location | The pop-up position, the specific parameter values ​​inside can refer to the above position customization example | `string` | `bottom` |
+| offset | the offset of the occurrence position | `string[]` \| `number[]` | `[0, 12]` |
+| showArrow | whether to show small arrows | `boolean` | `true` |
+| closeOnActionClick | Whether to close when clicking action | `boolean` | `true` |
+| closeOnOutsideClick | Whether to close when clicking outside | `boolean` | `true` |
+| targetId | Custom target id | `string` | `-` |
+| onClick | Click to toggle the popover display state | `() => void` | `() => {}` |
+| onSelect | Fired when an option is clicked | `(item: List, index: number) => void` | `(item, index) => {}` |
+| onOpen | Triggered when the menu is clicked | `() => void` | `() => {}` |
+| onClose | Fired when the menu is closed | `() => void` | `() => {}` |
 
 In addition, the `overlayStyle` `overlayClassName` `overlay` `closeOnOverlayClick` properties of the [Popup](#/zh-CN/component/popup) component are also supported.
 
@@ -531,11 +531,9 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-popover-border-radius | The rounded corner value of the border of the popover content area | `8px` |
 | \--nutui-popover-font-size | The font-size value of the popover content area | `14px` |
-| \--nutui-popover-menu-item-hover-background-color | The background color of the finger click menu option | `#fff` |
-| \--nutui-popover-menu-item-hover-text-color | Text color for finger click menu options | `#1a1a1a` |
-| \--nutui-popover-primary-text-color | Text color of options area | `#ffffff` |
-| \--nutui-popover-content-background-color | The background color of the options area | `#ffffff` |
-| \--nutui-popover-white-background-color | Arrow colors for top, bottom, left and right | `#ffffff` |
-| \--nutui-popover-border-bottom-color | The bottom border color of the options area | `rgba(229, 229, 229, 1)` |
-| \--nutui-popover-disable-color | Option Disabled Colors | `rgba(154, 155, 157, 1)` |
+| \--nutui-popover-primary-text-color | Text color of options area | `$title-color` |
+| \--nutui-popover-content-background-color | The background color of the options area | `$white` |
+| \--nutui-popover-border-color| Arrow colors for top, bottom, left and right | `$white` |
+| \--nutui-popover-divider-color | The bottom border color of the options area | `$divider-color` |
+| \--nutui-popover-disable-color | Option Disabled Colors | `$disable-color` |
 | \--nutui-popover-menu-item-padding | The padding value of each item in the option area menu | `8px` |

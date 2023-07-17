@@ -578,13 +578,10 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-tabs-tab-smile-color | The color of the smile curve | `$primary-color` |
 | \--nutui-tabs-titles-background-color | Tab title background color | `$background-color` |
 | \--nutui-tabs-titles-border-radius | Tab title border rounded | `0` |
 | \--nutui-tabs-titles-item-font-size | Tab title font size | `$font-size-2` |
-| \--nutui-tabs-titles-item-color | Tab title text color | `$title-color` |
 | \--nutui-tabs-title-gap | Tab title margin | `0px` |
-| \--nutui-tabs-titles-item-active-color | Tab selected titles text color | `$title-color` |
 | \--nutui-tabs-titles-item-active-font-weight | Tab selected titles font weight | `600` |
 | \--nutui-tabs-horizontal-tab-line-color | Horizontal line color | `linear-gradient(90deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)` |
 | \--nutui-tabs-horizontal-line-bottom | Horizontal line distance | `15%` |

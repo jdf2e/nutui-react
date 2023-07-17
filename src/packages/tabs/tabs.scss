@@ -49,7 +49,7 @@
   justify-content: center;
   margin: 0 $nut-tabs-title-gap;
   font-size: $tabs-titles-item-font-size;
-  color: $tabs-titles-item-color;
+  color: $title-color;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -87,12 +87,12 @@
     font-size: 12px;
     width: 100%;
     height: 100%;
-    color: $tabs-tab-smile-color;
+    color: $primary-color;
   }
 }
 
 .nut-tabs__titles-item--active {
-  color: $tabs-titles-item-active-color;
+  color: $primary-color;
   font-weight: $tabs-titles-item-active-font-weight;
 
   .nut-tabs__titles-item__smile {
@@ -231,7 +231,7 @@
         flex: 1 0 auto;
 
         &--active {
-          color: $tabs-titles-item-active-color;
+          color: $primary-color;
           font-weight: $tabs-titles-item-active-font-weight;
 
           .nut-tabs__titles-item__line {

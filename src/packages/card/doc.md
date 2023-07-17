@@ -253,6 +253,5 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-card-font-size-0 | 卡片标签的字体大小 | `$font-size-0` |
 | \--nutui-card-left-border-radius | 卡片图片的圆角大小 | `0` |
-| \--nutui-card-left-background-color | 卡片图片的背景颜色 | `inherit` |
+| \--nutui-card-background-color | 卡片图片的背景颜色 | `inherit` |

@@ -320,7 +320,7 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-fixednav-bg-color | 背景顏色 | `#fff` |
-| \--nutui-fixednav-font-color | 字體顏色 | `#000` |
+| \--nutui-fixednav-bg-color | 背景顏色 | `$white` |
+| \--nutui-fixednav-color | 字體顏色 | `$title-color` |
 | \--nutui-fixednav-index | zIndex | `201` |
 | \--nutui-fixednav-item-active-color | 激活顏色 | `$primary-color` |

@@ -17,13 +17,14 @@
 
   .nut-input-native {
     width: 100%;
-    color: $gray1;
+    color: $title-color;
     flex: 1;
     padding: 0;
     border: 0;
     outline: 0 none;
     font: inherit;
     text-decoration: none;
+    background-color: transparent;
   }
 
   &-disabled {

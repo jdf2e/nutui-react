@@ -49,9 +49,9 @@
     z-index: 1;
     background: linear-gradient(
       90deg,
-      hsla(0, 0%, 100%, 0),
-      hsla(0, 0%, 100%, 0.5) 50%,
-      hsla(0, 0%, 100%, 0) 80%
+      var(--nutui-gray-0403),
+      var(--nutui-gray-0404) 50%,
+      var(--nutui-gray-0403) 80%
     );
     background-repeat: no-repeat;
     animation: nut-skeleton 2s ease-in-out 0s infinite;

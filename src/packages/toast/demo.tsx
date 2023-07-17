@@ -105,6 +105,7 @@ const ToastDemo = () => {
   }
   const iconToast = (msg: string) => {
     Toast.show({
+      duration: 2000,
       content: msg,
       style: {
         '--nutui-overlay-bg-color': 'rgba(0,0,0,0.7)',

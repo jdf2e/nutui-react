@@ -24,21 +24,22 @@
     font-size: $radio-button-font-size;
     background: $radio-button-background;
     border-radius: $radio-button-border-radius;
-    color: $radio-label-font-color;
+    color: $radio-label-color;
     box-sizing: border-box;
     border: 1px solid $radio-button-background;
 
     &--active {
-      background: $radio-label-button-background;
+      background: $radio-button-active-background;
       color: $radio-label-font-active-color;
-      border: 1px solid $radio-label-button-border-color;
+      border: 1px solid $radio-button-active-border-color;
     }
 
     &--disabled {
-      color: $radio-label-disable-color;
+      color: $disable-color;
       border: 1px solid $radio-button-background;
     }
   }
+
   .nut-radio__button--active.nut-radio__button--disabled {
     background: $radio-button-disabled-active-background;
     color: $radio-button-disabled-active-color;
@@ -48,10 +49,10 @@
   &__label {
     margin-left: $radio-label-margin-left;
     font-size: $radio-label-font-size;
-    color: $radio-label-font-color;
+    color: $radio-label-color;
 
     &--disabled {
-      color: $radio-label-disable-color;
+      color: $disable-color;
     }
   }
 
@@ -64,11 +65,11 @@
 
   &__icon {
     &--unchecked {
-      color: $radio-icon-disable-color;
+      color: $text-color;
     }
 
     &--disable {
-      color: $radio-icon-disable-color2;
+      color: $disable-color;
     }
   }
 }

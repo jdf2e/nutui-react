@@ -11,7 +11,7 @@ function requestAniFrame() {
       }
     )
   }
-  return function (callback: any) {
+  return (callback: any) => {
     setTimeout(callback, 1000 / 60)
   }
 }

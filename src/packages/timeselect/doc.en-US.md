@@ -334,7 +334,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-timeselect-date-width | date width | `140px` |
 | \--nutui-timeselect-date-height | date height | `40px` |
 | \--nutui-timeselect-date-line-height | date lineHeight | `40px` |
-| \--nutui-timeselect-date-color | date color | `$title-color2` |
+| \--nutui-timeselect-date-color | date color | `$text-color` |
 | \--nutui-timeselect-date-active-color | date active color | `$title-color` |
 | \--nutui-timeselect-date-font-size | date fontSize | `$font-size-2` |
 | \--nutui-timeselect-time-width | time width | `100px` |

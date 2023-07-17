@@ -269,6 +269,7 @@ const ButtonDemo = () => {
             {translated['1076d771']}
           </Button>
           <Button
+            type="primary"
             color="linear-gradient(to right, #ff6034, #ee0a24)"
             style={{ margin: 8 }}
           >

@@ -73,8 +73,7 @@ export const BaseDialog = forwardRef(
             {!hideCancelButton && (
               <Button
                 size="small"
-                fill="outline"
-                type="primary"
+                type="default"
                 className={`${classPrefix}__footer-cancel`}
                 onClick={(e) => handleCancel(e)}
               >

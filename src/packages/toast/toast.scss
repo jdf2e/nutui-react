@@ -2,6 +2,7 @@
   0% {
     -webkit-transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
   }
@@ -16,27 +17,23 @@
   text-align: center;
   pointer-events: none;
   z-index: 9999;
+
   &__overlay-default {
     --nutui-overlay-bg-color: rgba(0, 0, 0, 0);
   }
+
   &-small {
     .nut-toast__inner {
       font-size: $font-size-small;
     }
   }
+
   &-large {
     .nut-toast__inner {
       font-size: $font-size-large;
     }
   }
-  &-cover {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-    height: 100%;
-    background: $toast-cover-bg-color;
-  }
+
   &__inner {
     display: inline-block;
     font-size: $toast-text-font-size;
@@ -53,27 +50,35 @@
     top: $toast-inner-top;
     transform: translate(-50%, -50%);
   }
+
   &-center {
     top: var(--nutui-toast-inner-top, 50%);
   }
+
   &-bottom {
     top: var(--nutui-toast-inner-top, 80%);
   }
+
   &-top {
     top: var(--nutui-toast-inner-top, 20%);
   }
+
   &-text {
     font-size: $toast-text-font-size;
+
     &:empty {
       margin-bottom: -8px;
     }
   }
+
   &-title {
     font-size: $toast-title-font-size;
+
     &:empty {
       margin-bottom: -8px;
     }
   }
+
   &-has-icon {
     .nut-toast__icon-wrapper {
       width: 100%;
@@ -83,6 +88,7 @@
       margin-bottom: 8px;
     }
   }
+
   &-loading {
     .nut-toast__inner {
       display: inline-flex;
@@ -90,6 +96,7 @@
       justify-content: center;
       align-items: center;
     }
+
     .nut-toast__icon-wrapper {
       animation: rotation 2s linear infinite;
     }

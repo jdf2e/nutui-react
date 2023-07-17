@@ -299,8 +299,8 @@ export default App;
 | \--nutui-button-border-radius | 按钮的圆角设置 | `25px` |
 | \--nutui-button-border-width | 按钮的边框宽度 | `1px` |
 | \--nutui-button-default-bg-color | type 为 default 的按钮的背景色 | `$white` |
-| \--nutui-button-default-border-color | type 为 default 的按钮的边框色 | `rgba(204, 204, 204, 1)` |
-| \--nutui-button-default-color | type 为 default 的按钮的文本色 | `$gray1` |
+| \--nutui-button-default-border-color | type 为 default 的按钮的边框色 | `$text-color` |
+| \--nutui-button-default-color | type 为 default 的按钮的文本色 |`$title-color` |
 | \--nutui-button-default-padding | type 为 default 的按钮的内边距 | `0 18px` |
 | \--nutui-button-mini-padding | size 为 mini 的按钮的内边距 | `0 12px` |
 | \--nutui-button-mini-height | size 为 mini 的按钮的高度 | `24px` |

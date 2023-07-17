@@ -125,7 +125,7 @@
     position: absolute;
     top: 0;
     width: 100%;
-    color: $gray1;
+    color: $title-color;
   }
 
   &-roller-item-title {
@@ -134,7 +134,7 @@
     height: 36px;
     line-height: 36px;
     text-align: center;
-    color: $gray1;
+    color: $title-color;
     font-size: $picker-bar-title-font-size;
   }
 

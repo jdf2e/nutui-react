@@ -2,11 +2,13 @@
   .nut-cell {
     align-items: flex-end;
     border-radius: 0;
+
     & > div {
       margin-right: 30px;
     }
   }
 }
+
 .demo-avatar {
-  color: #fff;
+  color: $white;
 }
