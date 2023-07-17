@@ -108,3 +108,16 @@ export default App;
 | --- | --- | --- |
 | confirm | 确认签字 | `() => void` |
 | clear | 清除签字 | `() => void` |
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| \--nutui-signature-border-height | 签名区域高度 | `10rem` |
+| \--nutui-signature-border-color | 签名边框颜色 | `$gray9` |
+| \--nutui-signature-border-width | 签名边框宽度 | `1px` |
+| \--nutui-signature-background-color | 签名背景颜色 | `$gray6` |
+| \--nutui-signature-font-size | 签名文字字号 | `$font-size-2` |
+
