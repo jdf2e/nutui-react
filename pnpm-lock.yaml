@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 overrides:
   '@types/react': '18'
   '@types/react-dom': '18'
@@ -32,6 +36,9 @@ importers:
       classnames:
         specifier: ^2.3.2
         version: 2.3.2
+      lodash.isequal:
+        specifier: ^4.5.0
+        version: 4.5.0
       lodash.kebabcase:
         specifier: ^4.1.1
         version: 4.1.1
@@ -95,10 +102,10 @@ importers:
         version: 3.6.8(@pmmmwh/react-refresh-webpack-plugin@0.5.10)(@types/react@18.0.37)(react-refresh@0.14.0)(react@18.2.0)
       '@tarojs/plugin-platform-h5':
         specifier: ^3.6.8
-        version: 3.6.8(@types/react@18.0.37)
+        version: 3.6.8(@types/react@18.0.37)(react@18.2.0)
       '@tarojs/plugin-platform-weapp':
         specifier: ^3.6.8
-        version: 3.6.8(@types/react@18.0.37)
+        version: 3.6.8(@types/react@18.0.37)(react@18.2.0)
       '@tarojs/react':
         specifier: ^3.6.8
         version: 3.6.8(react@18.2.0)
@@ -107,7 +114,7 @@ importers:
         version: 3.6.8(@types/react@18.0.37)
       '@tarojs/taro-h5':
         specifier: ^3.6.8
-        version: 3.6.8(@types/react@18.0.37)
+        version: 3.6.8(@types/react@18.0.37)(react@18.2.0)
       '@tarojs/taro-loader':
         specifier: ^3.6.8
         version: 3.6.8(@types/react@18.0.37)
@@ -123,6 +130,9 @@ importers:
       '@types/loadable__component':
         specifier: ^5.13.4
         version: 5.13.4
+      '@types/lodash.isequal':
+        specifier: ^4.5.6
+        version: 4.5.6
       '@types/lodash.kebabcase':
         specifier: ^4.1.7
         version: 4.1.7
@@ -363,7 +373,7 @@ importers:
         version: 7.21.4
       '@tarojs/webpack5-runner':
         specifier: ^3.6.8
-        version: 3.6.8(@babel/core@7.21.4)(@swc/core@1.3.23)(@types/react@18.0.37)(postcss@8.4.23)(webpack@5.80.0)
+        version: 3.6.8(@babel/core@7.21.4)(@swc/core@1.3.23)(@types/react@18.0.37)(postcss@8.4.23)(react-dom@18.2.0)(react@18.2.0)(webpack@5.80.0)
       '@types/react':
         specifier: '18'
         version: 18.0.37
@@ -463,7 +473,7 @@ packages:
       '@babel/traverse': 7.21.4
       '@babel/types': 7.21.4
       convert-source-map: 1.9.0
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
       gensync: 1.0.0-beta.2
       json5: 2.2.3
       semver: 6.3.0
@@ -555,7 +565,7 @@ packages:
       '@babel/core': 7.21.4
       '@babel/helper-compilation-targets': 7.21.4(@babel/core@7.21.4)
       '@babel/helper-plugin-utils': 7.20.2
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
       lodash.debounce: 4.0.8
       resolve: 1.22.2
       semver: 6.3.0
@@ -1756,7 +1766,7 @@ packages:
       '@babel/helper-split-export-declaration': 7.18.6
       '@babel/parser': 7.21.4
       '@babel/types': 7.21.4
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
@@ -2184,7 +2194,7 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dependencies:
       ajv: 6.12.6
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
       espree: 9.6.0
       globals: 13.20.0
       ignore: 5.2.4
@@ -2217,7 +2227,7 @@ packages:
     engines: {node: '>=10.10.0'}
     dependencies:
       '@humanwhocodes/object-schema': 1.2.1
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
       minimatch: 3.1.2
     transitivePeerDependencies:
       - supports-color
@@ -3172,30 +3182,6 @@ packages:
       - vue
     dev: false
 
-  /@tarojs/components-advanced@3.6.8(@types/react@18.0.37):
-    resolution: {integrity: sha512-4qeU8Cnv2B8HuFH5wFisJHhJqlzR7KsCMPwNmI1zaJOTjdGzrZLe2ObDQSSlJv+FAjVAiqTeGz3Af1P6AnJOcA==}
-    peerDependencies:
-      react: '>=17'
-      vue: '*'
-    peerDependenciesMeta:
-      react:
-        optional: true
-      vue:
-        optional: true
-    dependencies:
-      '@tarojs/components': 3.6.8(@types/react@18.0.37)
-      '@tarojs/runtime': 3.6.8
-      '@tarojs/shared': 3.6.8
-      '@tarojs/taro': 3.6.8(@types/react@18.0.37)
-      memoize-one: 6.0.0
-      postcss: 8.4.23
-    transitivePeerDependencies:
-      - '@types/react'
-      - '@types/react-native'
-      - '@types/webpack'
-      - '@types/webpack-dev-server'
-    dev: true
-
   /@tarojs/components-advanced@3.6.8(@types/react@18.0.37)(react@18.2.0):
     resolution: {integrity: sha512-4qeU8Cnv2B8HuFH5wFisJHhJqlzR7KsCMPwNmI1zaJOTjdGzrZLe2ObDQSSlJv+FAjVAiqTeGz3Af1P6AnJOcA==}
     peerDependencies:
@@ -3221,7 +3207,7 @@ packages:
       - '@types/webpack-dev-server'
     dev: true
 
-  /@tarojs/components-react@3.6.8(@types/react@18.0.37):
+  /@tarojs/components-react@3.6.8(@types/react@18.0.37)(react@18.2.0):
     resolution: {integrity: sha512-IVbT4kCvgHX4iDu8ErRq1vCSSxD0Fpd1KYfMV7UX98MuFweHdr/Ms/LC0uzKOWtdYNat59WZyOHukhl0xZ5vCQ==}
     dependencies:
       '@babel/runtime': 7.21.0
@@ -3237,38 +3223,8 @@ packages:
       - '@types/react-native'
       - '@types/webpack'
       - '@types/webpack-dev-server'
-      - vue
-    dev: true
-
-  /@tarojs/components@3.6.8(@types/react@18.0.37):
-    resolution: {integrity: sha512-Gd1XypTvsxuXV3nJ0a1ljCayw4rPnsF0253ANPXvUj/QzDlgse3nfq1cL6HZMV/EhxpN7K/qZukTouK0ED92Ow==}
-    peerDependencies:
-      '@types/react': '*'
-      '@types/react-native': '*'
-      vue: '*'
-    peerDependenciesMeta:
-      '@types/react':
-        optional: true
-      '@types/react-native':
-        optional: true
-      vue:
-        optional: true
-    dependencies:
-      '@stencil/core': 2.22.3
-      '@tarojs/components-advanced': 3.6.8(@types/react@18.0.37)
-      '@tarojs/router': 3.6.8(@types/react@18.0.37)
-      '@tarojs/taro': 3.6.8(@types/react@18.0.37)
-      '@types/react': 18.0.37
-      classnames: 2.3.2
-      hls.js: 1.4.0
-      intersection-observer: 0.7.0
-      resolve-pathname: 3.0.0
-      swiper: 6.8.0
-      weui: 1.1.3
-    transitivePeerDependencies:
-      - '@types/webpack'
-      - '@types/webpack-dev-server'
       - react
+      - vue
     dev: true
 
   /@tarojs/components@3.6.8(@types/react@18.0.37)(react@18.2.0):
@@ -3321,7 +3277,7 @@ packages:
       chalk: 3.0.0
       chokidar: 3.5.3
       cross-spawn: 7.0.3
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
       find-yarn-workspace-root: 2.0.0
       fs-extra: 8.1.0
       lodash: 4.17.21
@@ -3351,7 +3307,7 @@ packages:
       chalk: 3.0.0
       chokidar: 3.5.3
       cross-spawn: 7.0.3
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
       esbuild: 0.14.54
       find-yarn-workspace-root: 2.0.0
       fs-extra: 8.1.0
@@ -3383,7 +3339,7 @@ packages:
       chalk: 3.0.0
       chokidar: 3.5.3
       cross-spawn: 7.0.3
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
       esbuild: 0.14.54
       find-yarn-workspace-root: 2.0.0
       fs-extra: 8.1.0
@@ -3547,10 +3503,10 @@ packages:
       - vue
     dev: false
 
-  /@tarojs/plugin-platform-alipay@3.6.8(@types/react@18.0.37):
+  /@tarojs/plugin-platform-alipay@3.6.8(@types/react@18.0.37)(react@18.2.0):
     resolution: {integrity: sha512-w2bnh8LE7/eX/3dNmX5HsoQnXXFJeitgp4giU5RRXnWbVEEpuq1QytQT1Bx4jIHFFQ58Bqjl6UuTsfRNTmMAfw==}
     dependencies:
-      '@tarojs/components': 3.6.8(@types/react@18.0.37)
+      '@tarojs/components': 3.6.8(@types/react@18.0.37)(react@18.2.0)
       '@tarojs/service': 3.6.8(@types/react@18.0.37)
       '@tarojs/shared': 3.6.8
     transitivePeerDependencies:
@@ -3563,15 +3519,15 @@ packages:
       - vue
     dev: true
 
-  /@tarojs/plugin-platform-h5@3.6.8(@types/react@18.0.37):
+  /@tarojs/plugin-platform-h5@3.6.8(@types/react@18.0.37)(react@18.2.0):
     resolution: {integrity: sha512-uDlsEI9OnDrme6kS8zppEDd+mu04Oc5vFwqgW2DoI5HuoHn4wKm/HD0sxc83ga0FNoPd1OO/OT/4qhdBTUhivA==}
     dependencies:
       '@tarojs/components': 3.6.8(@types/react@18.0.37)(react@18.2.0)
-      '@tarojs/components-react': 3.6.8(@types/react@18.0.37)
+      '@tarojs/components-react': 3.6.8(@types/react@18.0.37)(react@18.2.0)
       '@tarojs/router': 3.6.8(@types/react@18.0.37)
       '@tarojs/service': 3.6.8(@types/react@18.0.37)
       '@tarojs/shared': 3.6.8
-      '@tarojs/taro-h5': 3.6.8(@types/react@18.0.37)
+      '@tarojs/taro-h5': 3.6.8(@types/react@18.0.37)(react@18.2.0)
       babel-plugin-transform-taroapi: 3.6.8
       change-case: 4.1.2
       lodash-es: 4.17.21
@@ -3581,6 +3537,7 @@ packages:
       - '@types/react-native'
       - '@types/webpack'
       - '@types/webpack-dev-server'
+      - react
       - supports-color
       - vue
     dev: true
@@ -3601,7 +3558,7 @@ packages:
   /@tarojs/plugin-platform-qq@3.6.8(@types/react@18.0.37):
     resolution: {integrity: sha512-jrqQ+fTWey02kEgHgFPO4zQm3J6IFdJ5KUk0S/xQP1yDRkm3OXr+V6g6+eJuRK/LmtHzCVEDpKwr7+DeFonGmw==}
     dependencies:
-      '@tarojs/plugin-platform-weapp': 3.6.8(@types/react@18.0.37)
+      '@tarojs/plugin-platform-weapp': 3.6.8(@types/react@18.0.37)(react@18.2.0)
       '@tarojs/service': 3.6.8(@types/react@18.0.37)
       '@tarojs/shared': 3.6.8
     transitivePeerDependencies:
@@ -3616,7 +3573,7 @@ packages:
   /@tarojs/plugin-platform-swan@3.6.8(@types/react@18.0.37):
     resolution: {integrity: sha512-87pvEbJfUfX8p5wHh4GzoisgV1BqOAfs15kQ2s+YyMEr8FWaTO+bpOXpjGw2TAhwzbcc1jbDin1Juh8aR+J5cg==}
     dependencies:
-      '@tarojs/components': 3.6.8(@types/react@18.0.37)
+      '@tarojs/components': 3.6.8(@types/react@18.0.37)(react@18.2.0)
       '@tarojs/service': 3.6.8(@types/react@18.0.37)
       '@tarojs/shared': 3.6.8
     transitivePeerDependencies:
@@ -3631,7 +3588,7 @@ packages:
   /@tarojs/plugin-platform-tt@3.6.8(@types/react@18.0.37):
     resolution: {integrity: sha512-hwaa4pVjDxcD678aeC9Anetcbjw3PRLxZZoqVzkJR9s/U/XZssQY629bvEC+dlojzhGCUJ3qBKYkGqxMLXtTQA==}
     dependencies:
-      '@tarojs/components': 3.6.8(@types/react@18.0.37)
+      '@tarojs/components': 3.6.8(@types/react@18.0.37)(react@18.2.0)
       '@tarojs/service': 3.6.8(@types/react@18.0.37)
       '@tarojs/shared': 3.6.8
     transitivePeerDependencies:
@@ -3643,10 +3600,10 @@ packages:
       - vue
     dev: true
 
-  /@tarojs/plugin-platform-weapp@3.6.8(@types/react@18.0.37):
+  /@tarojs/plugin-platform-weapp@3.6.8(@types/react@18.0.37)(react@18.2.0):
     resolution: {integrity: sha512-g3H1XOvXJ9oZE0Qub+y6ImKph7SgJfmJF7YTiAHx8Yklzid/X2AKpDELgeL6kxqqI5A8sevgtS80hIFfhOd1Yw==}
     dependencies:
-      '@tarojs/components': 3.6.8(@types/react@18.0.37)
+      '@tarojs/components': 3.6.8(@types/react@18.0.37)(react@18.2.0)
       '@tarojs/service': 3.6.8(@types/react@18.0.37)
       '@tarojs/shared': 3.6.8
     transitivePeerDependencies:
@@ -3654,6 +3611,7 @@ packages:
       - '@types/react-native'
       - '@types/webpack'
       - '@types/webpack-dev-server'
+      - react
       - supports-color
       - vue
     dev: true
@@ -3757,7 +3715,7 @@ packages:
   /@tarojs/shared@3.6.8:
     resolution: {integrity: sha512-niHYE2+9EtpfiLdJCdXiZ6ZirSNbPu5HaPMSZlRXYf1KzEWiyzGSpn/Cew4M3gbWti101xfVjNKZLTD9NlUmGg==}
 
-  /@tarojs/taro-h5@3.6.8(@types/react@18.0.37):
+  /@tarojs/taro-h5@3.6.8(@types/react@18.0.37)(react@18.2.0):
     resolution: {integrity: sha512-A1JxCbkDrF9xNSwZfoPma++1U6q+Wp0Cf1DjCILZw+OZgQbKJrYpxOSvSDfATMuMrkZ1c3U/PVrhubr7UnuWtA==}
     dependencies:
       '@tarojs/api': 3.6.8
@@ -3778,6 +3736,7 @@ packages:
       - '@types/react-native'
       - '@types/webpack'
       - '@types/webpack-dev-server'
+      - react
       - vue
     dev: true
 
@@ -3859,7 +3818,7 @@ packages:
       - vue
     dev: true
 
-  /@tarojs/webpack5-runner@3.6.8(@babel/core@7.21.4)(@swc/core@1.3.23)(@types/react@18.0.37)(postcss@8.4.23)(webpack@5.80.0):
+  /@tarojs/webpack5-runner@3.6.8(@babel/core@7.21.4)(@swc/core@1.3.23)(@types/react@18.0.37)(postcss@8.4.23)(react-dom@18.2.0)(react@18.2.0)(webpack@5.80.0):
     resolution: {integrity: sha512-aTRhb62LnY9orD5ggZaf+pVj+Y5z95yg9vUlCEqpPjzYZTz4LaxYnqG0f9i+RmrHSORPIkk4nb7lVTF9CcUXLg==}
     peerDependencies:
       postcss: ^8.4.18
@@ -3867,12 +3826,12 @@ packages:
     dependencies:
       '@parcel/css': 1.14.0
       '@tarojs/helper': 3.6.8
-      '@tarojs/plugin-platform-alipay': 3.6.8(@types/react@18.0.37)
+      '@tarojs/plugin-platform-alipay': 3.6.8(@types/react@18.0.37)(react@18.2.0)
       '@tarojs/plugin-platform-jd': 3.6.8(@types/react@18.0.37)
       '@tarojs/plugin-platform-qq': 3.6.8(@types/react@18.0.37)
       '@tarojs/plugin-platform-swan': 3.6.8(@types/react@18.0.37)
       '@tarojs/plugin-platform-tt': 3.6.8(@types/react@18.0.37)
-      '@tarojs/plugin-platform-weapp': 3.6.8(@types/react@18.0.37)
+      '@tarojs/plugin-platform-weapp': 3.6.8(@types/react@18.0.37)(react@18.2.0)
       '@tarojs/runner-utils': 3.6.8
       '@tarojs/runtime': 3.6.8
       '@tarojs/shared': 3.6.8
@@ -3922,7 +3881,7 @@ packages:
       terser-webpack-plugin: 5.3.7(@swc/core@1.3.23)(esbuild@0.14.54)(webpack@5.80.0)
       url-loader: 4.1.0(file-loader@6.0.0)(webpack@5.80.0)
       vm2: 3.9.19
-      vue-loader: 15.10.1(css-loader@6.8.1)(lodash@4.17.21)(webpack@5.80.0)
+      vue-loader: 15.10.1(css-loader@6.8.1)(lodash@4.17.21)(react-dom@18.2.0)(react@18.2.0)(webpack@5.80.0)
       webpack: 5.80.0(@swc/core@1.3.23)
       webpack-chain: 6.5.1
       webpack-dev-server: 4.7.4(webpack@5.80.0)
@@ -4287,6 +4246,12 @@ packages:
       '@types/lodash': 4.14.194
     dev: true
 
+  /@types/lodash.isequal@4.5.6:
+    resolution: {integrity: sha512-Ww4UGSe3DmtvLLJm2F16hDwEQSv7U0Rr8SujLUA2wHI2D2dm8kPu6Et+/y303LfjTIwSBKXB/YTUcAKpem/XEg==}
+    dependencies:
+      '@types/lodash': 4.14.194
+    dev: true
+
   /@types/lodash.kebabcase@4.1.7:
     resolution: {integrity: sha512-qzrcpK5uiADZ9OyZaegalM0b9Y3WetoBQ04RAtP3xZFGC5ul1UxmbjZ3j6suCh0BDkvgQmoMh8t5e9cVrdJYMw==}
     dependencies:
@@ -4541,7 +4506,7 @@ packages:
       '@typescript-eslint/scope-manager': 5.58.0
       '@typescript-eslint/type-utils': 5.58.0(eslint@8.38.0)(typescript@4.9.5)
       '@typescript-eslint/utils': 5.58.0(eslint@8.38.0)(typescript@4.9.5)
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
       eslint: 8.38.0
       grapheme-splitter: 1.0.4
       ignore: 5.2.4
@@ -4604,7 +4569,7 @@ packages:
       '@typescript-eslint/scope-manager': 5.58.0
       '@typescript-eslint/types': 5.58.0
       '@typescript-eslint/typescript-estree': 5.58.0(typescript@4.9.5)
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
       eslint: 8.38.0
       typescript: 4.9.5
     transitivePeerDependencies:
@@ -4639,7 +4604,7 @@ packages:
     dependencies:
       '@typescript-eslint/typescript-estree': 5.58.0(typescript@4.9.5)
       '@typescript-eslint/utils': 5.58.0(eslint@8.38.0)(typescript@4.9.5)
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
       eslint: 8.38.0
       tsutils: 3.21.0(typescript@4.9.5)
       typescript: 4.9.5
@@ -4689,7 +4654,7 @@ packages:
     dependencies:
       '@typescript-eslint/types': 5.58.0
       '@typescript-eslint/visitor-keys': 5.58.0
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
       globby: 11.1.0
       is-glob: 4.0.3
       semver: 7.5.0
@@ -4801,10 +4766,10 @@ packages:
       '@vue/shared': 3.3.4
     dev: false
 
-  /@vue/component-compiler-utils@3.3.0(lodash@4.17.21):
+  /@vue/component-compiler-utils@3.3.0(lodash@4.17.21)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-97sfH2mYNU+2PzGrmK2haqffDpVASuib9/w2/noxiFi31Z54hW+q3izKQXXQZSNhtiUpAI36uSuYepeBe4wpHQ==}
     dependencies:
-      consolidate: 0.15.1(lodash@4.17.21)
+      consolidate: 0.15.1(lodash@4.17.21)(react-dom@18.2.0)(react@18.2.0)
       hash-sum: 1.0.2
       lru-cache: 4.1.5
       merge-source-map: 1.1.0
@@ -5089,7 +5054,7 @@ packages:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
     engines: {node: '>= 6.0.0'}
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6393,7 +6358,7 @@ packages:
     resolution: {integrity: sha512-9vAdYbHj6x2fLKC4+oPH0kFzY/orMZyG2Aj+kNylHxKGJ/Ed4dpNyAQYwJOdqO4zdM7XpVHmyejQDcQHrnuXbw==}
     dev: true
 
-  /consolidate@0.15.1(lodash@4.17.21):
+  /consolidate@0.15.1(lodash@4.17.21)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-DW46nrsMJgy9kqAbPt5rKaCr7uFtpo4mSUvLHIUbJEjm0vo+aY5QLwBUq3FK4tRnJr/X0Psc0C4jf/h+HtXSMw==}
     engines: {node: '>= 0.10.0'}
     deprecated: Please upgrade to consolidate v1.0.0+ as it has been modernized with several long-awaited fixes implemented. Maintenance is supported by Forward Email at https://forwardemail.net ; follow/watch https://github.com/ladjs/consolidate for updates and release changelog
@@ -6561,6 +6526,8 @@ packages:
     dependencies:
       bluebird: 3.7.2
       lodash: 4.17.21
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: true
 
   /constant-case@3.0.4:
@@ -7020,17 +6987,6 @@ packages:
       ms: 2.1.3
     dev: true
 
-  /debug@4.3.4:
-    resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
-    engines: {node: '>=6.0'}
-    peerDependencies:
-      supports-color: '*'
-    peerDependenciesMeta:
-      supports-color:
-        optional: true
-    dependencies:
-      ms: 2.1.2
-
   /debug@4.3.4(supports-color@8.1.1):
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
     engines: {node: '>=6.0'}
@@ -7042,7 +6998,6 @@ packages:
     dependencies:
       ms: 2.1.2
       supports-color: 8.1.1
-    dev: true
 
   /decamelize-keys@1.1.1:
     resolution: {integrity: sha512-WiPxgEirIV0/eIOMcnFBA3/IJZAZqKnwAwWyvvdi4lsr1WCN22nhdf/3db3DoZcUjTV2SqfzIwNyp6y2xs3nmg==}
@@ -7255,7 +7210,7 @@ packages:
       '@vue/compiler-sfc': 3.3.4
       camelcase: 6.3.0
       cosmiconfig: 7.1.0
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
       deps-regex: 0.1.4
       ignore: 5.2.4
       is-core-module: 2.12.0
@@ -7321,7 +7276,7 @@ packages:
     hasBin: true
     dependencies:
       address: 1.2.2
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -8422,7 +8377,7 @@ packages:
       ajv: 6.12.6
       chalk: 4.1.2
       cross-spawn: 7.0.3
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
       doctrine: 3.0.0
       escape-string-regexp: 4.0.0
       eslint-scope: 7.2.0
@@ -8470,7 +8425,7 @@ packages:
       ajv: 6.12.6
       chalk: 4.1.2
       cross-spawn: 7.0.3
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
       doctrine: 3.0.0
       escape-string-regexp: 4.0.0
       eslint-scope: 7.2.0
@@ -9678,7 +9633,7 @@ packages:
     dependencies:
       '@tootallnate/once': 2.0.0
       agent-base: 6.0.2
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -9727,7 +9682,7 @@ packages:
     engines: {node: '>= 6'}
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -11559,7 +11514,6 @@ packages:
 
   /lodash.isequal@4.5.0:
     resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
-    dev: true
 
   /lodash.kebabcase@4.1.1:
     resolution: {integrity: sha512-N8XRTIMMqqDgSy4VLKPnJ/+hpGZN+PHQiJnSenYqPaVV/NCqEogTnAdZLQiGKhxX+JCs8waWq2t1XHWKOmlY8g==}
@@ -13995,7 +13949,7 @@ packages:
   /rc-config-loader@4.1.3:
     resolution: {integrity: sha512-kD7FqML7l800i6pS6pvLyIE2ncbk9Du8Q0gp/4hMPhJU6ZxApkoLcGD8ZeqgiAlfwZ6BlETq6qqe+12DUL207w==}
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
       js-yaml: 4.1.0
       json5: 2.2.3
       require-from-string: 2.0.2
@@ -15087,7 +15041,7 @@ packages:
   /spdy-transport@3.0.0:
     resolution: {integrity: sha512-hsLVFE5SjA6TCisWeJXFKniGGOpBgMLmerfO2aCyCU5s7nJ/rpAepqmFifv/GCbSbueEeAJJnmSQ2rKC/g8Fcw==}
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
       detect-node: 2.1.0
       hpack.js: 2.1.6
       obuf: 1.1.2
@@ -15101,7 +15055,7 @@ packages:
     resolution: {integrity: sha512-r46gZQZQV+Kl9oItvl1JZZqJKGr+oEkB08A6BzkiR7593/7IbtuncXHd2YoYeTsG4157ZssMu9KYvUHLcjcDoA==}
     engines: {node: '>=6.0.0'}
     dependencies:
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
       handle-thing: 2.0.1
       http-deceiver: 1.2.7
       select-hose: 2.0.0
@@ -15411,7 +15365,7 @@ packages:
       colord: 2.9.3
       cosmiconfig: 7.1.0
       css-functions-list: 3.1.0
-      debug: 4.3.4
+      debug: 4.3.4(supports-color@8.1.1)
       fast-glob: 3.2.12
       fastest-levenshtein: 1.0.16
       file-entry-cache: 6.0.1
@@ -16499,7 +16453,7 @@ packages:
     resolution: {integrity: sha512-BXq3jwIagosjgNVae6tkHzzIk6a8MHFtzAdwhnV5VlvPTFxDCvIttgSiHWjdGoTJvXtmRu5HacExfdarRcFhog==}
     dev: true
 
-  /vue-loader@15.10.1(css-loader@6.8.1)(lodash@4.17.21)(webpack@5.80.0):
+  /vue-loader@15.10.1(css-loader@6.8.1)(lodash@4.17.21)(react-dom@18.2.0)(react@18.2.0)(webpack@5.80.0):
     resolution: {integrity: sha512-SaPHK1A01VrNthlix6h1hq4uJu7S/z0kdLUb6klubo738NeQoLbS6V9/d8Pv19tU0XdQKju3D1HSKuI8wJ5wMA==}
     peerDependencies:
       '@vue/compiler-sfc': ^3.0.8
@@ -16515,7 +16469,7 @@ packages:
       vue-template-compiler:
         optional: true
     dependencies:
-      '@vue/component-compiler-utils': 3.3.0(lodash@4.17.21)
+      '@vue/component-compiler-utils': 3.3.0(lodash@4.17.21)(react-dom@18.2.0)(react@18.2.0)
       css-loader: 6.8.1(webpack@5.80.0)
       hash-sum: 1.0.2
       loader-utils: 1.4.2
@@ -17117,7 +17071,3 @@ packages:
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: true
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
