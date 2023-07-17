@@ -94,9 +94,6 @@ const InternalCascader: ForwardRefRenderFunction<
     value,
     defaultValue,
     finalValue: defaultValue,
-    onChange: (val: CascaderValue) => {
-      props.onChange?.(val)
-    },
   })
 
   const [state] = useState({
@@ -129,12 +126,6 @@ const InternalCascader: ForwardRefRenderFunction<
   useEffect(() => {
     initData()
   }, [options, format])
-
-  useEffect(() => {
-    if (defaultValue && defaultValue !== innerValue) {
-      setInnerValue(defaultValue)
-    }
-  }, [defaultValue])
 
   const initData = async () => {
     // 初始化开始处理数据

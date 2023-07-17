@@ -37,6 +37,8 @@ You can override these CSS variables directly in your code, and the styling of t
 
 The ConfigProvider component provides the ability to override CSS variables, and you need to wrap a ConfigProvider component at the root node and pass the theme Properties to configure some theme variables.
 
+> "ConfigProvider" component is not a virtual component, it generates a "div" tag.
+
 :::demo
 
 ```tsx

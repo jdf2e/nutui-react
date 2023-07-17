@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 overrides:
   '@types/react': '18'
   '@types/react-dom': '18'
@@ -32,6 +36,9 @@ importers:
       classnames:
         specifier: ^2.3.2
         version: 2.3.2
+      lodash.isequal:
+        specifier: ^4.5.0
+        version: 4.5.0
       lodash.kebabcase:
         specifier: ^4.1.1
         version: 4.1.1
@@ -95,10 +102,10 @@ importers:
         version: 3.6.8(@pmmmwh/react-refresh-webpack-plugin@0.5.10)(@types/react@18.0.37)(react-refresh@0.14.0)(react@18.2.0)
       '@tarojs/plugin-platform-h5':
         specifier: ^3.6.8
-        version: 3.6.8(@types/react@18.0.37)
+        version: 3.6.8(@types/react@18.0.37)(react@18.2.0)
       '@tarojs/plugin-platform-weapp':
         specifier: ^3.6.8
-        version: 3.6.8(@types/react@18.0.37)
+        version: 3.6.8(@types/react@18.0.37)(react@18.2.0)
       '@tarojs/react':
         specifier: ^3.6.8
         version: 3.6.8(react@18.2.0)
@@ -107,7 +114,7 @@ importers:
         version: 3.6.8(@types/react@18.0.37)
       '@tarojs/taro-h5':
         specifier: ^3.6.8
-        version: 3.6.8(@types/react@18.0.37)
+        version: 3.6.8(@types/react@18.0.37)(react@18.2.0)
       '@tarojs/taro-loader':
         specifier: ^3.6.8
         version: 3.6.8(@types/react@18.0.37)
@@ -123,6 +130,9 @@ importers:
       '@types/loadable__component':
         specifier: ^5.13.4
         version: 5.13.4
+      '@types/lodash.isequal':
+        specifier: ^4.5.6
+        version: 4.5.6
       '@types/lodash.kebabcase':
         specifier: ^4.1.7
         version: 4.1.7
@@ -345,9 +355,6 @@ importers:
       '@tarojs/cli':
         specifier: ^3.6.8
         version: 3.6.8(@types/react@18.0.37)
-      '@tarojs/components':
-        specifier: ^3.6.8
-        version: 3.6.8(@types/react@18.0.37)(react@18.2.0)
       '@tarojs/plugin-html':
         specifier: ^3.6.8
         version: 3.6.8(@types/react@18.0.37)
@@ -2882,6 +2889,7 @@ packages:
     resolution: {integrity: sha512-kmVA0M/HojwsfkeHsifvHVIYe4l5tin7J5+DLgtl8h6WWfiMClND5K3ifCXXI2ETDNKiEk21p6jql3Fx9o2rng==}
     engines: {node: '>=12.10.0', npm: '>=6.0.0'}
     hasBin: true
+    dev: true
 
   /@swc/core-darwin-arm64@1.3.23:
     resolution: {integrity: sha512-IGOEHmE4aBDX7gQWpanI3A0ni47UcvX7rmcy0H8kE6mm/y7mEMWskvNsYhYzJl4GVZgw38v1/lL/A7MRX6g71A==}
@@ -3197,8 +3205,9 @@ packages:
       - '@types/react-native'
       - '@types/webpack'
       - '@types/webpack-dev-server'
+    dev: true
 
-  /@tarojs/components-react@3.6.8(@types/react@18.0.37):
+  /@tarojs/components-react@3.6.8(@types/react@18.0.37)(react@18.2.0):
     resolution: {integrity: sha512-IVbT4kCvgHX4iDu8ErRq1vCSSxD0Fpd1KYfMV7UX98MuFweHdr/Ms/LC0uzKOWtdYNat59WZyOHukhl0xZ5vCQ==}
     dependencies:
       '@babel/runtime': 7.21.0
@@ -3214,6 +3223,7 @@ packages:
       - '@types/react-native'
       - '@types/webpack'
       - '@types/webpack-dev-server'
+      - react
       - vue
     dev: true
 
@@ -3246,6 +3256,7 @@ packages:
       - '@types/webpack'
       - '@types/webpack-dev-server'
       - react
+    dev: true
 
   /@tarojs/helper@3.6.4:
     resolution: {integrity: sha512-mwQYHYzMbjHWbhyrlpqHjw3lezpnQu71/qUOrujv3GNDmyRd1Pa63wJIapZOlVgF70k5HheNjBZoa9VHBi70qQ==}
@@ -3508,15 +3519,15 @@ packages:
       - vue
     dev: true
 
-  /@tarojs/plugin-platform-h5@3.6.8(@types/react@18.0.37):
+  /@tarojs/plugin-platform-h5@3.6.8(@types/react@18.0.37)(react@18.2.0):
     resolution: {integrity: sha512-uDlsEI9OnDrme6kS8zppEDd+mu04Oc5vFwqgW2DoI5HuoHn4wKm/HD0sxc83ga0FNoPd1OO/OT/4qhdBTUhivA==}
     dependencies:
       '@tarojs/components': 3.6.8(@types/react@18.0.37)(react@18.2.0)
-      '@tarojs/components-react': 3.6.8(@types/react@18.0.37)
+      '@tarojs/components-react': 3.6.8(@types/react@18.0.37)(react@18.2.0)
       '@tarojs/router': 3.6.8(@types/react@18.0.37)
       '@tarojs/service': 3.6.8(@types/react@18.0.37)
       '@tarojs/shared': 3.6.8
-      '@tarojs/taro-h5': 3.6.8(@types/react@18.0.37)
+      '@tarojs/taro-h5': 3.6.8(@types/react@18.0.37)(react@18.2.0)
       babel-plugin-transform-taroapi: 3.6.8
       change-case: 4.1.2
       lodash-es: 4.17.21
@@ -3526,6 +3537,7 @@ packages:
       - '@types/react-native'
       - '@types/webpack'
       - '@types/webpack-dev-server'
+      - react
       - supports-color
       - vue
     dev: true
@@ -3546,7 +3558,7 @@ packages:
   /@tarojs/plugin-platform-qq@3.6.8(@types/react@18.0.37):
     resolution: {integrity: sha512-jrqQ+fTWey02kEgHgFPO4zQm3J6IFdJ5KUk0S/xQP1yDRkm3OXr+V6g6+eJuRK/LmtHzCVEDpKwr7+DeFonGmw==}
     dependencies:
-      '@tarojs/plugin-platform-weapp': 3.6.8(@types/react@18.0.37)
+      '@tarojs/plugin-platform-weapp': 3.6.8(@types/react@18.0.37)(react@18.2.0)
       '@tarojs/service': 3.6.8(@types/react@18.0.37)
       '@tarojs/shared': 3.6.8
     transitivePeerDependencies:
@@ -3588,7 +3600,7 @@ packages:
       - vue
     dev: true
 
-  /@tarojs/plugin-platform-weapp@3.6.8(@types/react@18.0.37):
+  /@tarojs/plugin-platform-weapp@3.6.8(@types/react@18.0.37)(react@18.2.0):
     resolution: {integrity: sha512-g3H1XOvXJ9oZE0Qub+y6ImKph7SgJfmJF7YTiAHx8Yklzid/X2AKpDELgeL6kxqqI5A8sevgtS80hIFfhOd1Yw==}
     dependencies:
       '@tarojs/components': 3.6.8(@types/react@18.0.37)(react@18.2.0)
@@ -3599,6 +3611,7 @@ packages:
       - '@types/react-native'
       - '@types/webpack'
       - '@types/webpack-dev-server'
+      - react
       - supports-color
       - vue
     dev: true
@@ -3628,6 +3641,7 @@ packages:
       - '@types/webpack'
       - '@types/webpack-dev-server'
       - vue
+    dev: true
 
   /@tarojs/runner-utils@3.6.8:
     resolution: {integrity: sha512-nulKYtCLCSiBqQ4DfHcbcOg1TS20xjbdk76hINjE2Vj58boLNyUr3YneoZWkM6CQoqxf69rAG28+Rm+PtVvReg==}
@@ -3701,7 +3715,7 @@ packages:
   /@tarojs/shared@3.6.8:
     resolution: {integrity: sha512-niHYE2+9EtpfiLdJCdXiZ6ZirSNbPu5HaPMSZlRXYf1KzEWiyzGSpn/Cew4M3gbWti101xfVjNKZLTD9NlUmGg==}
 
-  /@tarojs/taro-h5@3.6.8(@types/react@18.0.37):
+  /@tarojs/taro-h5@3.6.8(@types/react@18.0.37)(react@18.2.0):
     resolution: {integrity: sha512-A1JxCbkDrF9xNSwZfoPma++1U6q+Wp0Cf1DjCILZw+OZgQbKJrYpxOSvSDfATMuMrkZ1c3U/PVrhubr7UnuWtA==}
     dependencies:
       '@tarojs/api': 3.6.8
@@ -3722,6 +3736,7 @@ packages:
       - '@types/react-native'
       - '@types/webpack'
       - '@types/webpack-dev-server'
+      - react
       - vue
     dev: true
 
@@ -3816,7 +3831,7 @@ packages:
       '@tarojs/plugin-platform-qq': 3.6.8(@types/react@18.0.37)
       '@tarojs/plugin-platform-swan': 3.6.8(@types/react@18.0.37)
       '@tarojs/plugin-platform-tt': 3.6.8(@types/react@18.0.37)
-      '@tarojs/plugin-platform-weapp': 3.6.8(@types/react@18.0.37)
+      '@tarojs/plugin-platform-weapp': 3.6.8(@types/react@18.0.37)(react@18.2.0)
       '@tarojs/runner-utils': 3.6.8
       '@tarojs/runtime': 3.6.8
       '@tarojs/shared': 3.6.8
@@ -4227,6 +4242,12 @@ packages:
 
   /@types/lodash.debounce@4.0.7:
     resolution: {integrity: sha512-X1T4wMZ+gT000M2/91SYj0d/7JfeNZ9PeeOldSNoE/lunLeQXKvkmIumI29IaKMotU/ln/McOIvgzZcQ/3TrSA==}
+    dependencies:
+      '@types/lodash': 4.14.194
+    dev: true
+
+  /@types/lodash.isequal@4.5.6:
+    resolution: {integrity: sha512-Ww4UGSe3DmtvLLJm2F16hDwEQSv7U0Rr8SujLUA2wHI2D2dm8kPu6Et+/y303LfjTIwSBKXB/YTUcAKpem/XEg==}
     dependencies:
       '@types/lodash': 4.14.194
     dev: true
@@ -7279,6 +7300,7 @@ packages:
     resolution: {integrity: sha512-pPETqUhLJYKNZIewnS9hU1/QqcdRbP2Q9sHySimko0C2nm/n9NoakVLtcKwdqgORq1dkPIP/jqv7RnESxhA2bA==}
     dependencies:
       promise-polyfill: 7.1.2
+    dev: true
 
   /dir-glob@3.0.1:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
@@ -7345,6 +7367,7 @@ packages:
     resolution: {integrity: sha512-oNlcUdHsC4zb7Msx7JN3K0Nro1dzJ48knvBOnDPKJ2GV9wl1i5vydJZUSyOfrkKFDZEud/jBsTk92S/VGSAe/g==}
     dependencies:
       ssr-window: 3.0.0
+    dev: true
 
   /domelementtype@2.3.0:
     resolution: {integrity: sha512-OLETBj6w0OsagBwdXnPdN0cnMfF9opN69co+7ZrbfPGrdpPVNBUj02spi6B1N7wChLQiPn4CSH/zJvXw56gmHw==}
@@ -8734,6 +8757,7 @@ packages:
   /filter-obj@1.1.0:
     resolution: {integrity: sha512-8rXg1ZnX7xzy2NGDVkBVaAy+lSlPNwad13BtgSlLuxfIslyt5Vg64U7tFcCt4WS1R0hvtnQybT/IyCkGZ3DpXQ==}
     engines: {node: '>=0.10.0'}
+    dev: true
 
   /finalhandler@1.2.0:
     resolution: {integrity: sha512-5uXcUVftlQMFnWC9qu/svkWv3GTd2PfUhK/3PLkYNAe7FbqJMt3515HaxE6eRL74GdsriiwujiawdaB1BpEISg==}
@@ -9448,9 +9472,11 @@ packages:
     resolution: {integrity: sha512-ZqaKwjjrAYUYfLG+htGaIIZ4nioX2L70ZUMIFysS3xvBsSG4x/n1V6TXV3N8ZYNuFGlDirFg32T7B6WOUPDYcQ==}
     dependencies:
       '@babel/runtime': 7.21.0
+    dev: true
 
   /hls.js@1.4.0:
     resolution: {integrity: sha512-VEjg7Rx5FlE9TB3MIn0HPgq3J+vR7EoQnjaqMCk/ISEaCOSZlAFh4g867f1QkSxZiq9kHeUZo+iH16X7VS3jKA==}
+    dev: true
 
   /hoist-non-react-statics@3.3.2:
     resolution: {integrity: sha512-/gGivxi8JPKWNm/W0jSmzcMPpfpPLc3dY/6GxhX2hQ9iGj3aDfklV4ET7NjKpSinLpJ5vafa9iiGIEZg10SfBw==}
@@ -9840,6 +9866,7 @@ packages:
 
   /intersection-observer@0.7.0:
     resolution: {integrity: sha512-Id0Fij0HsB/vKWGeBe9PxeY45ttRiBmhFyyt/geBdDHBYNctMRTE3dC1U3ujzz3lap+hVXlEcVaB56kZP/eEUg==}
+    dev: true
 
   /into-stream@3.1.0:
     resolution: {integrity: sha512-TcdjPibTksa1NQximqep2r17ISRiNE9fwlfbg3F8ANdvP5/yrFTew86VcO//jk4QTaMlbjypPBq76HN2zaKfZQ==}
@@ -11487,7 +11514,6 @@ packages:
 
   /lodash.isequal@4.5.0:
     resolution: {integrity: sha512-pDo3lu8Jhfjqls6GkMgpahsF9kCyayhgykjyLMNFTKWrpVdAQtYyB4muAMWozBB4ig/dtWAmsMxLEI8wuz+DYQ==}
-    dev: true
 
   /lodash.kebabcase@4.1.1:
     resolution: {integrity: sha512-N8XRTIMMqqDgSy4VLKPnJ/+hpGZN+PHQiJnSenYqPaVV/NCqEogTnAdZLQiGKhxX+JCs8waWq2t1XHWKOmlY8g==}
@@ -11929,6 +11955,7 @@ packages:
 
   /memoize-one@6.0.0:
     resolution: {integrity: sha512-rkpe71W0N0c0Xz6QD0eJETuWAJGnJ9afsl1srmwPrI+yBCkge5EycXXbYRyvL29zZVUWQCY7InPRCv3GDXuZNw==}
+    dev: true
 
   /meow@8.1.2:
     resolution: {integrity: sha512-r85E3NdZ+mpYk1C6RjPFEMSE+s1iZMuHtsHAqY0DT3jZczl0diWUZ8g6oU7h0M9cD2EL+PzaYghhCLzR0ZNn5Q==}
@@ -12447,6 +12474,7 @@ packages:
 
   /mobile-detect@1.4.5:
     resolution: {integrity: sha512-yc0LhH6tItlvfLBugVUEtgawwFU2sIe+cSdmRJJCTMZ5GEJyLxNyC/NIOAOGk67Fa8GNpOttO3Xz/1bHpXFD/g==}
+    dev: true
 
   /mobx-react-lite@3.4.3(mobx@6.9.0)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-NkJREyFTSUXR772Qaai51BnE1voWx56LOL80xG7qkZr6vo8vEaLF3sz1JNUVh+rxmUzxYaqOhfuxTfqUh0FXUg==}
@@ -13121,6 +13149,7 @@ packages:
 
   /path-to-regexp@3.2.0:
     resolution: {integrity: sha512-jczvQbCUS7XmS7o+y1aEO9OBVFeZBQ1MDSEqmO7xSoPgOPoowY/SxLpZ6Vh97/8qHZOteiCKb7gkG9gA2ZUxJA==}
+    dev: true
 
   /path-type@4.0.0:
     resolution: {integrity: sha512-gDKb8aZMDeD/tZWs9P6+q0J9Mwkdl6xMV8TjnGP3qJVJ06bdMgkbBlLU8IdfOsIsFz2BW1rNVT3XuNEl8zPAvw==}
@@ -13706,6 +13735,7 @@ packages:
     resolution: {integrity: sha512-kXtO4s0Lz/DW/IJ9QdWhAf7/NmPWQXkFr/r/WkR3vyI+0v8amTDxiaQSLzs8NBlytfLWX/7uQUMIW677yLKl4w==}
     engines: {node: '>=10.13.0'}
     hasBin: true
+    requiresBuild: true
     dev: true
 
   /pretty-bytes@5.6.0:
@@ -13754,6 +13784,7 @@ packages:
 
   /promise-polyfill@7.1.2:
     resolution: {integrity: sha512-FuEc12/eKqqoRYIGBrUptCBRhobL19PS2U31vMNTfyck1FxPyMfgsXyW4Mav85y/ZN1hop3hOwRlUDok23oYfQ==}
+    dev: true
 
   /prompts@2.4.2:
     resolution: {integrity: sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q==}
@@ -13882,6 +13913,7 @@ packages:
       filter-obj: 1.1.0
       split-on-first: 1.1.0
       strict-uri-encode: 2.0.0
+    dev: true
 
   /querystringify@2.2.0:
     resolution: {integrity: sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==}
@@ -14422,6 +14454,7 @@ packages:
 
   /resolve-pathname@3.0.0:
     resolution: {integrity: sha512-C7rARubxI8bXFNB/hqcp/4iUeIXJhJZvFPFPiSPRnhU5UPxzMFIl+2E6yY6c4k9giDJAhtV+enfA+G89N6Csng==}
+    dev: true
 
   /resolve-url-loader@5.0.0:
     resolution: {integrity: sha512-uZtduh8/8srhBoMx//5bwqjQ+rfYOUq8zC9NrMUGtjBiGTtFJM42s58/36+hTqeqINcnYe08Nj3LkK9lW4N8Xg==}
@@ -15034,6 +15067,7 @@ packages:
   /split-on-first@1.1.0:
     resolution: {integrity: sha512-43ZssAJaMusuKWL8sKUBQXHWOpq8d6CfN/u1p4gUzfJkM05C8rxTmYrkIPTXapZpORA6LkkzcUulJ8FqA7Uudw==}
     engines: {node: '>=6'}
+    dev: true
 
   /split2@3.2.2:
     resolution: {integrity: sha512-9NThjpgZnifTkJpzTZ7Eue85S49QwpNhZTq6GRJwObb6jnLFNGB7Qm73V5HewTROPyxD0C29xqmaI68bQtV+hg==}
@@ -15062,6 +15096,7 @@ packages:
 
   /ssr-window@3.0.0:
     resolution: {integrity: sha512-q+8UfWDg9Itrg0yWK7oe5p/XRCJpJF9OBtXfOPgSJl+u3Xd5KI328RUEvUqSMVM9CiQUEf1QdBzJMkYGErj9QA==}
+    dev: true
 
   /stable@0.1.8:
     resolution: {integrity: sha512-ji9qxRnOVfcuLDySj9qzhGSEFVobyt1kIOSkj1qZzYLzq7Tos/oUUWvotUPQLlrsidqsK6tBH89Bc9kL5zHA6w==}
@@ -15111,6 +15146,7 @@ packages:
   /strict-uri-encode@2.0.0:
     resolution: {integrity: sha512-QwiXZgpRcKkhTj2Scnn++4PKtWsH0kpzZ62L2R6c/LUVYv7hVnZqcg2+sMuT6R7Jusu1vviK/MFsu6kNJfWlEQ==}
     engines: {node: '>=4'}
+    dev: true
 
   /string-argv@0.3.1:
     resolution: {integrity: sha512-a1uQGz7IyVy9YwhqjZIZu1c8JO8dNIe20xBmSS6qu9kv++k3JGzCVmprbNN5Kn+BgzD5E7YYwg1CcjuJMRNsvg==}
@@ -15450,6 +15486,7 @@ packages:
     dependencies:
       dom7: 3.0.0
       ssr-window: 3.0.0
+    dev: true
 
   /symbol-tree@3.2.4:
     resolution: {integrity: sha512-9QNk5KwDF+Bvz+PyObkmSYjI5ksVUYtjW7AU22r2NKcfLJcXp96hkDWU3+XndOsUb+AQ9QhfzfCT2O+CNWT5Tw==}
@@ -16063,6 +16100,7 @@ packages:
     resolution: {integrity: sha512-cBkihRoHvRQAjdUnDE1GGuuw/TPAIi8z2pEsSmUVAWLeZdgjHzzAb1+0VOO6NvBOvySItOTQikzaGlRxRdJBnA==}
     dependencies:
       path-to-regexp: 3.2.0
+    dev: true
 
   /universalify@0.1.2:
     resolution: {integrity: sha512-rBJeI5CXAlmy1pV+617WB9J63U6XcazHHF2f2dbJix4XzpUF0RS3Zbj0FGIOCAva5P/d/GBOYaACQ1w+0azUkg==}
@@ -16732,6 +16770,7 @@ packages:
 
   /weui@1.1.3:
     resolution: {integrity: sha512-vC6eWUvG1MYoE8yLsvBBmLB2+4DZWynQOL47MUscHMwPVltOZPGsiRb2PE7y3z+w3ElF1SsmJsyhr40wiXgP5A==}
+    dev: true
 
   /whatwg-encoding@1.0.5:
     resolution: {integrity: sha512-b5lim54JOPN9HtzvK9HFXvBma/rnfFeqsic0hSpjtDbVxR3dJKLc+KB4V6GgiGOvl7CY/KNh8rxSo9DKQrnUEw==}
@@ -17032,7 +17071,3 @@ packages:
   /zwitch@2.0.4:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
     dev: true
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
