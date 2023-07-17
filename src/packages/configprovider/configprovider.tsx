@@ -1,25 +1,19 @@
-import React, {
-  FunctionComponent,
-  createContext,
-  useContext,
-  useMemo,
-  CSSProperties,
-} from 'react'
+import React, { FunctionComponent, createContext, useContext } from 'react'
+import classNames from 'classnames'
 import kebabCase from 'lodash.kebabcase'
+import isequal from 'lodash.isequal'
+import useMemo from '@/utils/use-memo'
+import { BasicComponent } from '@/utils/typings'
 import { BaseLang } from '@/locales/base'
 import zhCN from '@/locales/zh-CN'
 import type { NutCSSVariables } from './types'
 
-export interface ConfigProviderProps {
+export interface ConfigProviderProps extends BasicComponent {
   locale: BaseLang
   theme?: Record<string | NutCSSVariables, string>
-
-  [key: string]: any
 }
 
-const defaultProps = {
-  locale: zhCN,
-} as ConfigProviderProps
+const classPrefix = 'nut-configprovider'
 
 export const defaultConfigRef: {
   current: ConfigProviderProps
@@ -53,27 +47,43 @@ function convertThemeVarsToCSSVars(themeVars: Record<string, string | number>) {
 }
 
 export const ConfigProvider: FunctionComponent<
-  Partial<ConfigProviderProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<ConfigProviderProps & BasicComponent>
 > = (props) => {
-  const { children, ...config } = { ...defaultProps, ...props }
-  const parentConfig = useConfig()
-  const theme = config.theme || {}
-  const style = useMemo<CSSProperties | undefined>(
-    () => convertThemeVarsToCSSVars(theme),
-    [theme]
-  )
+  const { style, className, children, ...config } = props
+
+  const mergedConfig = useMemo(
+    () => {
+      return {
+        ...getDefaultConfig(),
+        ...config,
+      }
+    },
+    [config],
+    (prev, next) =>
+      prev.some((prevTheme, index) => {
+        const nextTheme = next[index]
+
+        return !isequal(prevTheme, nextTheme)
+      })
+  ) as ConfigProviderProps
+
+  const cssVarStyle = React.useMemo(() => {
+    return convertThemeVarsToCSSVars(mergedConfig.theme || {})
+  }, [mergedConfig.theme])
 
   return (
-    <ConfigContext.Provider
-      value={{
-        ...parentConfig,
-        ...config,
-      }}
-    >
-      <div style={style}>{children}</div>
+    <ConfigContext.Provider value={mergedConfig}>
+      <div
+        className={classNames(classPrefix, className)}
+        style={{
+          ...cssVarStyle,
+          ...style,
+        }}
+      >
+        {children}
+      </div>
     </ConfigContext.Provider>
   )
 }
 
-ConfigProvider.defaultProps = defaultProps
 ConfigProvider.displayName = 'NutConfigProvider'

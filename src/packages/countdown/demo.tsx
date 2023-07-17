@@ -5,6 +5,7 @@ import { useTranslate } from '../../sites/assets/locale'
 import Button from '../button'
 import Grid from '../grid'
 import GridItem from '../griditem'
+import './demo.scss'
 
 interface countdownRefState {
   start: () => void
@@ -161,7 +162,7 @@ const CountDownDemo = () => {
   }
   return (
     <>
-      <div className="demo">
+      <div className="demo demo-countdown">
         <h2>{translated.basic}</h2>
         <Cell>
           <CountDown
