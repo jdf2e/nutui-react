@@ -1,3 +1,17 @@
+# v2.0.4
+`2023-07-14`
+
+* :sparkles: feat: configprovider 组件支持传入 className 和 style 属性 (#1219) @大喵
+* :bug: fix(button): fill=none & type=default 样式修复 (#1215) @Eiinu
+* :bug: fix(form): formItem 的 props 改为 Partial (#1221) @oasis-cloud
+* :bug: fix: cascader onChange 触发2次问题修复 (#1224) @xiaoyatong
+* :bug: fix: countdown手动控制demo展示样式优化 (#1229) @songsong
+* :bug: fix: signature组件提取样式变量+修复taro h5 demo签字时滚动问题 (#1220) @songsong
+* :bug: fix: tabs组件在抖音小程序展示异常 (#1211) @oasis-cloud
+* :bug: fix: 修复signature小程序下demo签字时页面跟随滚动问题 (#1225) @songsong
+* :bug: fix: 文档格式化 @hanyuxinting
+
+
 # v2.0.3
 `2023-07-12`
 

@@ -2,9 +2,10 @@ import * as React from 'react'
 
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import zhTW from '@/locales/zh-TW'
 import enUS from '@/locales/en-US'
 
-import { ConfigProvider, useConfig } from '../configprovider'
+import { ConfigProvider, useConfig, setDefaultConfig } from '../configprovider'
 
 describe('configprovider', () => {
   let container: any
@@ -27,6 +28,29 @@ describe('configprovider', () => {
     )
     expect(container.firstChild?.nodeName).toBe('DIV')
     expect(container).toMatchSnapshot()
+  })
+
+  test('should setDefault correctly', () => {
+    setDefaultConfig({
+      locale: zhTW,
+      theme: {
+        nutuiBrandColor: 'red',
+      },
+    })
+    const Children: React.FC = () => {
+      const { locale } = useConfig()
+      return <>{locale.confirm}</>
+    }
+    const { container } = render(
+      <ConfigProvider>
+        <Children />
+      </ConfigProvider>
+    )
+
+    const ele = container.querySelector('.nut-configprovider')
+    expect(ele).toHaveTextContent('確認')
+    expect(ele).toHaveClass('nut-configprovider')
+    expect(ele).toHaveStyle('--nutui-brand-color: red')
   })
 
   test('should theme variable and locale variable injection correctly', () => {
