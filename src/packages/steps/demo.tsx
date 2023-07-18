@@ -56,18 +56,18 @@ const customTheme2 = {
 
 const customTheme3 = {
   nutuiStepsDotHeadMargin: '0 0 12px 0',
-  nutuiBrandColorEnd: 'var(--nutui-gray-0202)',
+  nutuiBrandColorEnd: 'var(--nutui-gray-10)',
   nutuiStepsDotIconBorder: '0',
   nutuiStepsBaseIconWidth: '6px',
   nutuiStepsBaseIconHeight: '6px',
-  nutuiStepsBaseLineBackground: `var(--nutui-gray-0104)`,
-  nutuiStepsFinishIconBgColor: 'var(--nutui-gray-0101)',
-  nutuiStepsFinishIconColor: 'var(--nutui-gray-0101)',
-  nutuiStepsProcessIconBgColor: 'var(--nutui-gray-0202)',
-  nutuiStepsWaitIconBgColor: 'var(--nutui-gray-0104)',
+  nutuiStepsBaseLineBackground: `var(--nutui-gray-5)`,
+  nutuiStepsFinishIconBgColor: 'var(--nutui-gray-1)',
+  nutuiStepsFinishIconColor: 'var(--nutui-gray-1)',
+  nutuiStepsProcessIconBgColor: 'var(--nutui-gray-10)',
+  nutuiStepsWaitIconBgColor: 'var(--nutui-gray-5)',
   nutuiStepsBaseLineWidth: '45px',
   nutuiStepsBaseLineHeight: '1px',
-  nutuiStepsFinishLineBackground: `var(--nutui-gray-0101)`,
+  nutuiStepsFinishLineBackground: `var(--nutui-gray-1)`,
 }
 
 const StepsDemo = () => {

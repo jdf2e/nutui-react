@@ -4,7 +4,7 @@ $brand-color: var(--nutui-brand-color) !default;
 $brand-color-start: var(--nutui-brand-color-start) !default;
 $brand-color-end: var(--nutui-brand-color-end) !default;
 // 品牌浅背景色，一般用于规格、胶囊卡等
-$brand-color-light-bg-color: var(--nutui-brand-01) !default;
+$brand-color-light-bg-color: var(--nutui-brand-1) !default;
 // 品牌链接色
 $brand-link-color: var(--nutui-brand-link-color, #396acc);
 $brand-text-color: var(--nutui-brand-text-color, #ffffff);
@@ -20,36 +20,36 @@ $primary-text-color: $brand-text-color !default;
 
 // 标题重要字
 // 主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
-$title-color: var(--nutui-gray-01) !default;
+$title-color: var(--nutui-gray-1) !default;
 // 常规: 次要文字色，用于次级标题、属性标示、非主要信息引导等。
-$text-color: var(--nutui-gray-03) !default;
+$text-color: var(--nutui-gray-3) !default;
 // 辅助色，暂无用到。todo
-$help-color: var(--nutui-gray-04) !default;
+$help-color: var(--nutui-gray-4) !default;
 
 $white: var(--nutui-gray-10) !default;
 $black: $title-color !default;
 
 // 特殊禁用色
-$disable-color: var(--nutui-gray-05) !default;
+$disable-color: var(--nutui-gray-5) !default;
 $disable-bg-color: $white !default;
 $required-color: $primary-color !default;
 
 // 页面基底色，用于卡片式页面的兜底，永远置于页面最底层。
-$background-color: var(--nutui-gray-07) !default;
+$background-color: var(--nutui-gray-7) !default;
 // 卡片背景色
 $card-background-color: var(--nutui-gray-10) !default;
 // 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
-$card-background-color-wrapper: var(--nutui-gray-08) !default;
+$card-background-color-wrapper: var(--nutui-gray-8) !default;
 
 // ----------------------------------------------------
 // 蒙层颜色
 // 页面全局蒙层
-$mask-color: var(--nutui-gray-02) !default;
+$mask-color: var(--nutui-gray-2) !default;
 // 容错蒙层
-$part-mask-color: var(--nutui-gray-09) !default;
+$part-mask-color: var(--nutui-gray-9) !default;
 
 // 分割信息的颜色
-$divider-color: var(--nutui-gray-06) !default;
+$divider-color: var(--nutui-gray-6) !default;
 
 // ---- Font Family ----
 $font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun,

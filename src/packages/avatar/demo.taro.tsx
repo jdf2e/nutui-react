@@ -96,13 +96,13 @@ const AvatarDemo = () => {
         <Cell>
           <Avatar
             className="demo-avatar"
-            color="var(--nutui-gray-0202)"
+            color="var(--nutui-gray-10)"
             background="var(--nutui-brand-color)"
             icon={<My />}
           />
           <Avatar
             color="var(--nutui-brand-color)"
-            background="var(--nutui-brand-02)"
+            background="var(--nutui-brand-2)"
           >
             U
           </Avatar>
@@ -123,7 +123,7 @@ const AvatarDemo = () => {
             <Avatar icon={<My />} />
             <Avatar
               color="var(--nutui-brand-color)"
-              background="var(--nutui-brand-02)"
+              background="var(--nutui-brand-2)"
             >
               U
             </Avatar>
@@ -135,7 +135,7 @@ const AvatarDemo = () => {
             <Avatar icon={<My />} />
             <Avatar
               color="var(--nutui-brand-color)"
-              background="var(--nutui-brand-02)"
+              background="var(--nutui-brand-2)"
             >
               U
             </Avatar>
@@ -149,7 +149,7 @@ const AvatarDemo = () => {
             <Avatar icon={<My />} />
             <Avatar
               color="var(--nutui-brand-color)"
-              background="var(--nutui-brand-02)"
+              background="var(--nutui-brand-2)"
             >
               U
             </Avatar>

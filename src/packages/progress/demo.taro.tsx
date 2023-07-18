@@ -80,7 +80,7 @@ const ProgressDemo = () => {
           <Progress
             percent={30}
             color="var(--nutui-brand-color)"
-            background="var(--nutui-brand-01)"
+            background="var(--nutui-brand-1)"
             strokeWidth="15"
           />
         </Cell>
