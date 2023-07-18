@@ -5,8 +5,8 @@
   &.show {
     width: 40px;
     height: 40px;
-    background: $card-background-color;
-    color: $title-color;
+    background: $color-card-background;
+    color: $color-title;
     border: 1px solid $backtop-border-color;
     border-radius: 50%;
     display: flex;

@@ -370,7 +370,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-toast-text-font-size | the content font-size of toast | `14px` |
 | \--nutui-toast-font-color | the text color of toast | `#fff` |
 | \--nutui-toast-inner-padding | the padding value of toast content | `24px 30px` |
-| \--nutui-toast-inner-bg-color | the background color of toast content | `$mask-color` |
+| \--nutui-toast-inner-bg-color | the background color of toast content | `$color-mask` |
 | \--nutui-toast-inner-border-radius | the border-radius value of toast content | `12px` |
 | \--nutui-toast-inner-text-align | the text alignment of toast | `center` |
 | \--nutui-overlay-bg-color | the background color of toast mask | `rgba(0, 0, 0, 0)` |

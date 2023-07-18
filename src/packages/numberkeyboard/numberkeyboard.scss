@@ -5,7 +5,7 @@
   padding: $numberkeyboard-padding;
   background-color: $numberkeyboard-background-color;
   user-select: none;
-  background-color: $background-color;
+  background-color: $color-background;
 
   &__header {
     position: relative;
@@ -19,7 +19,7 @@
     font-size: $numberkeyboard-header-font-size;
 
     &__title {
-      color: $title-color;
+      color: $color-title;
       display: inline-block;
     }
 
@@ -52,7 +52,7 @@
       flex-basis: 33%;
       box-sizing: border-box;
       padding: 0 6px 6px 0;
-      background-color: $card-background-color-wrapper;
+      background-color: $color-card-background-wrapper;
 
       .key {
         display: flex;

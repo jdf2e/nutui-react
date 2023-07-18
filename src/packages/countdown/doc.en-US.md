@@ -390,5 +390,5 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-countdown-display | display mode of countdown | `flex` |
-| \--nutui-countdown-color | Countdown text color | `$title-color` |
+| \--nutui-countdown-color | Countdown text color | `$color-title` |
 | \--nutui-countdown-font-size | The font size of the countdown | `14px` |

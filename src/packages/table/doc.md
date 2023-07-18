@@ -720,5 +720,5 @@ export default App;
 | --- | --- | --- |
 | \--nutui-table-border-color | 表格的边框色值 | `#ececec` |
 | \--nutui-table-cols-padding | 表格列的padding值 | `10px` |
-| \--nutui-table-tr-even-background-color | 表格偶数行的背景色 | `$background-color` |
+| \--nutui-table-tr-even-background-color | 表格偶数行的背景色 | `$color-background` |
 | \--nutui-table-tr-odd-background-color | 表格奇数行的背景色 | `$white` |

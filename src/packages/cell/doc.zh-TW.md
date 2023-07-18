@@ -217,11 +217,11 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-cell-title-color | 單元格標題字體顏色 | `$title-color` |
+| \--nutui-cell-title-color | 單元格標題字體顏色 | `$color-title` |
 | \--nutui-cell-title-font-size | 單元格標題字體大小 | `$font-size-2` |
-| \--nutui-cell-description-color | 單元格描述字體顏色 | `$text-color` |
+| \--nutui-cell-description-color | 單元格描述字體顏色 | `$color-text` |
 | \--nutui-cell-description-font-size | 單元格描述字體大小 | `$font-size-1` |
-| \--nutui-cell-extra-color | 單元格右側描述字體顏色 | `$text-color` |
+| \--nutui-cell-extra-color | 單元格右側描述字體顏色 | `$color-text` |
 | \--nutui-cell-extra-font-size | 單元格右側描述字體大小 | `$font-size-2` |
 | \--nutui-cell-border-radius | 單元格圓角大小 | `6px` |
 | \--nutui-cell-padding | 單元格內邊距 | `13px 16px` |

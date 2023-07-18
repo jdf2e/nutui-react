@@ -270,23 +270,23 @@ export default RadioGroupOptions;
 | --- | --- | --- |
 | \--nutui-radio-icon-font-size | icon字号 | `18px` |
 | \--nutui-radio-label-font-size | 字号 | `14px` |
-| \--nutui-radio-label-color | 字体颜色 | `$title-color` |
-| \--nutui-radio-label-font-active-color | 按钮状态下选中字体颜色 | `$primary-color` |
+| \--nutui-radio-label-color | 字体颜色 | `$color-title` |
+| \--nutui-radio-label-font-active-color | 按钮状态下选中字体颜色 | `$color-primary` |
 | \--nutui-radio-label-margin-left | label 的左外边距 | `6px` |
 
 | \--nutui-radio-button-font-size | shape为button的字号 | `12px` |
-| \--nutui-radio-button-color | 字体颜色 | `$text-color` |
-| \--nutui-radio-button-background | shape为button的背景色 | `$background-color` |
-| \--nutui-radio-label-button-border-color | shape为button的边框颜色 | `$primary-color` |
+| \--nutui-radio-button-color | 字体颜色 | `$color-text` |
+| \--nutui-radio-button-background | shape为button的背景色 | `$color-background` |
+| \--nutui-radio-label-button-border-color | shape为button的边框颜色 | `$color-primary` |
 | \--nutui-radio-button-padding | shape为button的内边距 | `5px 18px` |
 | \--nutui-radio-button-border-radius | shape为button的圆角 | `15px` |
 
-| \--nutui-radio-button-active-border-color | 选中时，shape为button的边框颜色 | `$primary-color` |
-| \--nutui-radio-button-active-background | 选中时，shape为button的背景色 | `$brand-color-light-bg-color` |
+| \--nutui-radio-button-active-border-color | 选中时，shape为button的边框颜色 | `$color-primary` |
+| \--nutui-radio-button-active-background | 选中时，shape为button的背景色 | `$color-brand-light-bg-color` |
 
-| \--nutui-radio-button-disabled-active-background | button模式下选中且禁用的背景色 | `$disable-color` |
+| \--nutui-radio-button-disabled-active-background | button模式下选中且禁用的背景色 | `$color-disabled` |
 | \--nutui-radio-button-disabled-active-color | button模式下选中且禁用的字体色 | `$white` |
-| \--nutui-radio-button-disabled-active-border-color | button模式下选中且禁用的边框色 | `$disable-color` |
+| \--nutui-radio-button-disabled-active-border-color | button模式下选中且禁用的边框色 | `$color-disabled` |
 
 | \--nutui-radiogroup-radio-margin | Group模式下每个 radio 的外边距 | `0 20px 5px 0` |
 | \--nutui-radiogroup-radio-label-margin | Group模式下每个 radio 中的 label 外边距 | `0 5px 0 5px` |

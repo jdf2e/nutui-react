@@ -4,8 +4,8 @@
   li {
     display: block;
     float: left;
-    color: $title-color;
-    background: $card-background-color;
+    color: $color-title;
+    background: $color-card-background;
     padding: 10px;
     margin-right: 20px;
   }
@@ -21,8 +21,8 @@
 .nut-vertical-items {
   li {
     display: block;
-    color: $title-color;
-    background: $card-background-color;
+    color: $color-title;
+    background: $color-card-background;
     border-radius: 7px;
     box-shadow: 0 1px 6px 0 rgba(237, 238, 241, 1);
     margin-top: 20px;

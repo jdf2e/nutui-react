@@ -293,12 +293,12 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-inputnumber-button-height | The height of the left and right buttons of the number input box | `20px` |
 | \--nutui-inputnumber-button-border-radius | The rounded corners of the left and right buttons of the number input box | `30px` |
 | \--nutui-inputnumber-button-background-color | The background color of the left and right buttons of the number input box | `$white` |
-| \--nutui-inputnumber-icon-color | The color of the icon in the number input box | `$title-color` |
-| \--nutui-inputnumber-icon-void-color | Disable the font size color of the input in the number input box | `$disable-color` |
-| \--nutui-inputnumber-icon-disabled-color | The color of the disabled icon in the number input box | `$text-color` |
+| \--nutui-inputnumber-icon-color | The color of the icon in the number input box | `$color-title` |
+| \--nutui-inputnumber-icon-void-color | Disable the font size color of the input in the number input box | `$color-disabled` |
+| \--nutui-inputnumber-icon-disabled-color | The color of the disabled icon in the number input box | `$color-text` |
 | \--nutui-inputnumber-input-font-size | The font size of the input in the number input box | `12px` |
-| \--nutui-inputnumber-input-font-color | The font size color of the input in the number input box | `$title-color` | 
-| \--nutui-inputnumber-input-background-color | The background color of the input in the number input box | `$background-color` |
+| \--nutui-inputnumber-input-font-color | The font size color of the input in the number input box | `$color-title` | 
+| \--nutui-inputnumber-input-background-color | The background color of the input in the number input box | `$color-background` |
 | \--nutui-inputnumber-input-border-radius | The rounded corners of the input in the number input box | `4px` |
 | \--nutui-inputnumber-input-width | The width of the input in the number input box | `40px` |
 | \--nutui-inputnumber-input-height | The height of the input in the number input box | `24px` |

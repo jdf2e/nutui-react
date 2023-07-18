@@ -14,7 +14,7 @@
       height: 30px;
       background: $white;
       border-radius: 50%;
-      box-shadow: 0 0 8px $disable-color;
+      box-shadow: 0 0 8px $color-disabled;
 
       .nut-icon-am-rotate {
         transform: rotate((360));
@@ -33,7 +33,7 @@
         content: '';
         height: 2px;
         width: 30px;
-        background: $disable-color;
+        background: $color-disabled;
         transform: rotate(45deg);
         transform-origin: 8px -18px;
       }
@@ -83,7 +83,7 @@
 
   .nut-audio__none-container {
     .nut-voice {
-      border: 1px solid $title-color;
+      border: 1px solid $color-title;
       align-items: center;
     }
   }

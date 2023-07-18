@@ -130,8 +130,8 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-indicator-color | 指示器焦点时色值 | `$primary-color` |
-| \--nutui-indicator-dot-color | 指示器默认色值 | `$disable-color` |
+| \--nutui-indicator-color | 指示器焦点时色值 | `$color-primary` |
+| \--nutui-indicator-dot-color | 指示器默认色值 | `$color-disabled` |
 | \--nutui-indicator-dot-size | 指示器尺寸 | `5px` |
 | \--nutui-indicator-dot-active-size | 指示器焦点时尺寸 | `15px` |
 | \--nutui-indicator-border-size | 指示器焦点时的border值 | `3px` |

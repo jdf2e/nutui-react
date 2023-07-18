@@ -62,7 +62,7 @@
     text-align: center;
 
     .nut-step-description {
-      color: $title-color;
+      color: $color-title;
     }
   }
 
@@ -175,7 +175,7 @@
         margin-top: -7px;
         width: 14px;
         height: 14px;
-        background-color: $primary-color-end;
+        background-color: $color-primary-end;
         border-radius: 50%;
         opacity: 0.23;
       }

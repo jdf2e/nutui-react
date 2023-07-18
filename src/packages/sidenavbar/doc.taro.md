@@ -174,10 +174,10 @@ export default App;
 | \--nutui-sidenavbar-content-bg-color | 侧边栏导航背景色 | `$white` |
 | \--nutui-sidenavbar-item-height | 侧边栏每项的高度 | `40px` |
 | \--nutui-sidenavbar-title-padding | 标题的内边距 | `10px 8px 10px 20px` |
-| \--nutui-sidenavbar-title-background | 标题的背景色 | `$background-color` |
-| \--nutui-sidenavbar-title-color | 标题的字体颜色 | `$title-color` |
+| \--nutui-sidenavbar-title-background | 标题的背景色 | `$color-background` |
+| \--nutui-sidenavbar-title-color | 标题的字体颜色 | `$color-title` |
 | \--nutui-sidenavbar-sub-title-padding | 子标题的内边距 | `10px 8px 10px 35px` |
-| \--nutui-sidenavbar-sub-title-background | 子标题背景色 | `$card-background-color-wrapper` |
-| \--nutui-sidenavbar-sub-title-color | 子标题字体颜色 | `$title-color` |
-| \--nutui-sidenavbar-sub-list-background | 选项列表背景色 | `$card-background-color-wrapper` |
-| \--nutui-sidenavbar-sub-list-color | 选项列表字体颜色 | `$title-color` |
+| \--nutui-sidenavbar-sub-title-background | 子标题背景色 | `$color-card-background-wrapper` |
+| \--nutui-sidenavbar-sub-title-color | 子标题字体颜色 | `$color-title` |
+| \--nutui-sidenavbar-sub-list-background | 选项列表背景色 | `$color-card-background-wrapper` |
+| \--nutui-sidenavbar-sub-list-color | 选项列表字体颜色 | `$color-title` |

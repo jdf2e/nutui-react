@@ -274,8 +274,8 @@ export default App;
 | \--nutui-button-border-radius | 按鈕的圓角設置 | `25px` |
 | \--nutui-button-border-width | 按鈕的邊框寬度 | `1px` |
 | \--nutui-button-default-bg-color | type 為 default 的按鈕的背景色 | `$white` |
-| \--nutui-button-default-border-color | type 為 default 的按鈕的邊框色 | `$text-color` |
-| \--nutui-button-default-color | type 為 default 的按鈕的文本色 |`$title-color` |
+| \--nutui-button-default-border-color | type 為 default 的按鈕的邊框色 | `$color-text` |
+| \--nutui-button-default-color | type 為 default 的按鈕的文本色 |`$color-title` |
 | \--nutui-button-default-padding | type 為 default 的按鈕的內邊距 | `0 18px` |
 | \--nutui-button-mini-padding | size 為 mini 的按鈕的內邊距 | `0 12px` |
 | \--nutui-button-mini-height | size 為 mini 的按鈕的高度 | `24px` |
@@ -299,7 +299,7 @@ export default App;
 | \--nutui-button-text-icon-mini-margin-left | size 為 mini 按鈕的文本的左邊距 | `1px` |
 | \--nutui-button-disabled-opacity | disabled 狀態下按鈕的透明度 | `0.68` |
 | \--nutui-button-primary-color | type 為 primary 按鈕的文本顏色 | `$white` |
-| \--nutui-button-primary-border-color | type 為 primary 按鈕的邊框顏色 | `$primary-color` |
+| \--nutui-button-primary-border-color | type 為 primary 按鈕的邊框顏色 | `$color-primary` |
 | \--nutui-button-info-color | type 為 info 按鈕的文本顏色 | `$white` |
 | \--nutui-button-info-border-color | type 為 info 按鈕的邊框顏色 | `#496af2` |
 | \--nutui-button-success-color | type 為 success 按鈕的文本顏色 | `$white` |

@@ -579,8 +579,8 @@ export default App;
 | \--nutui-uploader-picture-height | 上傳圖片的高度 | `100px` |
 | \--nutui-uploader-picture-border | 上傳圖片的border值 | `0px` |
 | \--nutui-uploader-picture-border-radius | 上傳圖片的border圓角 | `4px` |
-| \--nutui-uploader-background | 上傳圖片的背景顏色 | `$background-color` |
-| \--nutui-uploader-background-disabled | 上傳圖片禁用狀態的背景顏色 | `$background-color` |
+| \--nutui-uploader-background | 上傳圖片的背景顏色 | `$color-background` |
+| \--nutui-uploader-background-disabled | 上傳圖片禁用狀態的背景顏色 | `$color-background` |
 | \--nutui-uploader-picture-icon-tip-font-size | 上傳區域圖片下方文字大小 | `12px` |
 | \--nutui-uploader-picture-icon-tip-color | 上傳區域圖片下方文字顏色 | `#BFBFBF` |
 | \--nutui-uploader-preview-progress-background | 上傳區域預覽進度的背景顏色 | `rgba(0, 0, 0, 0.65)` |

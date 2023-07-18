@@ -391,5 +391,5 @@ export default App;
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-countdown-display | 倒計時的布局方式 | `flex` |
-| \--nutui-countdown-color | 倒計時的文字顏色 | `$title-color` |
+| \--nutui-countdown-color | 倒計時的文字顏色 | `$color-title` |
 | \--nutui-countdown-font-size | 倒計時的字體大小 | `14px` |

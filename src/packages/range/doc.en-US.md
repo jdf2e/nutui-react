@@ -436,12 +436,12 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-range-color | font color | `$title-color` |
+| \--nutui-range-color | font color | `$color-title` |
 | \--nutui-range-margin | margin | `15px` |
 | \--nutui-range-height | stroke width | `4px` |
-| \--nutui-range-active-color | active color | `$primary-color` |
+| \--nutui-range-active-color | active color | `$color-primary` |
 | \--nutui-range-inactive-color | inactive color | `#fa958c` |
 | \--nutui-range-button-background | button background | `$white` |
 | \--nutui-range-button-width | button width | `24px` |
 | \--nutui-range-button-height | button height | `24px` |
-| \--nutui-range-button-border | button border | `1px solid $primary-color` |
+| \--nutui-range-button-border | button border | `1px solid $color-primary` |

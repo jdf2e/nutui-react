@@ -578,21 +578,21 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-tabs-titles-background-color | Tab 標題的背景色 | `$background-color` |
+| \--nutui-tabs-titles-background-color | Tab 標題的背景色 | `$color-background` |
 | \--nutui-tabs-titles-border-radius | Tab 標題的邊框圓角 | `0` |
 | \--nutui-tabs-titles-item-font-size | Tab 標題的字號 | `$font-size-2` |
 | \--nutui-tabs-title-gap | Tab 標題的左右 margin | `0px` |
 | \--nutui-tabs-titles-item-active-font-weight | Tab 選中標題的字重 | `600` |
-| \--nutui-tabs-horizontal-tab-line-color | 水平方嚮線條顏色 | `linear-gradient(90deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)` |
+| \--nutui-tabs-horizontal-tab-line-color | 水平方嚮線條顏色 | `linear-gradient(90deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |
 | \--nutui-tabs-horizontal-line-bottom | 水平方嚮線條距離 | `15%` |
 | \--nutui-tabs-horizontal-line-border-radius | 水平方嚮線的圓角 | `0px` |
 | \--nutui-tabs-horizontal-tab-line-opacity | 水平方嚮線的透明度 | `1` |
 | \--nutui-tabs-horizontal-titles-height | 水平方嚮標題的高度 | `46px` |
 | \--nutui-tabs-horizontal-titles-item-min-width | 水平方嚮標題的最小寬度 | `50px` |
-| \--nutui-tabs-horizontal-titles-item-active-background-color | 水平方嚮激活選項卡標題的背景色 | `$card-background-color` |
+| \--nutui-tabs-horizontal-titles-item-active-background-color | 水平方嚮激活選項卡標題的背景色 | `$color-card-background` |
 | \--nutui-tabs-horizontal-titles-item-active-line-width | 水平方嚮激活選項卡線條的寬度 | `40px` |
 | \--nutui-tabs-horizontal-titles-item-active-line-height | 水平方嚮激活選項卡線條的高度 | `3px` |
-| \--nutui-tabs-vertical-tab-line-color | 垂直方嚮線條顏色 | `linear-gradient(180deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)` |
+| \--nutui-tabs-vertical-tab-line-color | 垂直方嚮線條顏色 | `linear-gradient(180deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |
 | \--nutui-tabs-vertical-titles-item-height | 垂直方嚮標題的高度 | `40px` |
 | \--nutui-tabs-vertical-titles-item-active-line-width | 垂直方嚮標題線條的寬度 | `3px` |
 | \--nutui-tabs-vertical-titles-item-active-line-height | 垂直方嚮標題線條的高度 | `14px` |

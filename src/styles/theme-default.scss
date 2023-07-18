@@ -13,13 +13,13 @@ page {
   --nutui-brand-12: #780d03; // 梯度12
   --nutui-brand-13: #4d0004; // 梯度13
 
-  --nutui-brand-color: var(--nutui-brand-8);
-  --nutui-brand-color-start: var(--nutui-brand-9);
-  --nutui-brand-color-end: var(--nutui-brand-8);
-  --nutui-brand-color-opacity: var(--nutui-brand-4);
-  --nutui-brand-link-color: #396acc;
-  --nutui-brand-text-color: #ffffff;
-  --nutui-brand-info-color: #1988fa;
+  --nutui-color-brand: var(--nutui-brand-8);
+  --nutui-color-brand-start: var(--nutui-brand-9);
+  --nutui-color-brand-end: var(--nutui-brand-8);
+  --nutui-color-brand-opacity: var(--nutui-brand-4);
+  --nutui-color-brand-link: #396acc;
+  --nutui-color-brand-text: #ffffff;
+  --nutui-color-brand-info: #1988fa;
 
   // 文字色
   // 一级文字色（重要）主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
@@ -58,6 +58,9 @@ page {
   --nutui-font-size-2: 14px;
   --nutui-font-size-3: 16px;
   --nutui-font-size-4: 18px;
+  --nutui-font-size-5: 20px;
+  --nutui-font-size-6: 24px;
+  --nutui-font-size-7: 28px;
   // 字重
   --nutui-font-weight-bold: 400;
   // 行高

@@ -237,5 +237,5 @@ export default App;
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-rate-item-margin | 間距 | `14px` |
-| \--nutui-rate-icon-color | icon 激活顏色 | `$primary-color` |
-| \--nutui-rate-icon-void-color | icon 未激活顏色 | `$disable-color` |
+| \--nutui-rate-icon-color | icon 激活顏色 | `$color-primary` |
+| \--nutui-rate-icon-void-color | icon 未激活顏色 | `$color-disabled` |

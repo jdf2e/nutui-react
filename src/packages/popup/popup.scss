@@ -5,14 +5,14 @@
   max-height: 100%;
   overflow-y: auto;
   background-color: $overlay-content-bg-color;
-  color: $title-color;
+  color: $color-title;
   -webkit-overflow-scrolling: touch;
 
   &-title {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $title-color;
+    color: $color-title;
     padding: $popup-title-padding;
     font-weight: $font-weight-bold;
     line-height: $popup-title-line-height;

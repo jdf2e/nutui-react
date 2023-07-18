@@ -567,14 +567,14 @@ export default App
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-elevator-list-inner-bg-color | 楼层区域背景颜色 | `$white` |
-| \--nutui-elevator-list-item-highcolor | 楼层区域列表项字体高亮颜色 | `$primary-color` |
+| \--nutui-elevator-list-item-highcolor | 楼层区域列表项字体高亮颜色 | `$color-primary` |
 | \--nutui-elevator-list-item-font-size | 楼层区域列表项字体大小 | `12px` |
-| \--nutui-elevator-list-item-font-color | 楼层区域列表项字体颜色 | `$title-color` |
+| \--nutui-elevator-list-item-font-color | 楼层区域列表项字体颜色 | `$color-title` |
 | \--nutui-elevator-list-item-name-padding | 楼层区域列表项内边距 | `0 20px` |
 | \--nutui-elevator-list-item-name-height | 楼层区域列表项高度 | `30px` |
 | \--nutui-elevator-list-item-name-line-height | 楼层区域列表项行高 | `30px` |
 | \--nutui-elevator-list-item-code-font-size | 楼层区域列表项标题字体大小 | `14px` |
-| \--nutui-elevator-list-item-code-font-color | 楼层区域列表项标题颜色 | `$title-color` |
+| \--nutui-elevator-list-item-code-font-color | 楼层区域列表项标题颜色 | `$color-title` |
 | \--nutui-elevator-list-item-code-font-weight | 楼层区域列表项标题字体粗细 | `500` |
 | \--nutui-elevator-list-item-code-padding | 楼层区域列表项标题内边距 | `0 20px` |
 | \--nutui-elevator-list-item-code-height | 楼层区域列表项标题高度 | `35px` |
@@ -594,10 +594,10 @@ export default App
 | \--nutui-elevator-list-item-bars-background-color | 电梯楼层背景颜色 | `#eeeff2` |
 | \--nutui-elevator-list-item-bars-border-radius | 电梯楼层圆角大小 | `6px` |
 | \--nutui-elevator-list-item-bars-text-align | 电梯楼层文字对齐方式 | `center` |
-| \--nutui-elevator-list-item-bars-inner-item-active-color | 电梯楼层高亮文字颜色 | `$primary-color` |
+| \--nutui-elevator-list-item-bars-inner-item-active-color | 电梯楼层高亮文字颜色 | `$color-primary` |
 | \--nutui-elevator-list-item-bars-z-index | 电梯楼层层级 | `1` |
 | \--nutui-elevator-list-item-bars-inner-item-padding | 电梯楼层标识项内边距 | `3px` |
 | \--nutui-elevator-list-item-bars-inner-item-font-size | 电梯楼层标识项字体大小 | `10px` |
-| \--nutui-elevator-list-fixed-color | 吸顶楼层文字颜色 | `$primary-color` |
+| \--nutui-elevator-list-fixed-color | 吸顶楼层文字颜色 | `$color-primary` |
 | \--nutui-elevator-list-fixed-bg-color | 吸顶楼层背景颜色 | `$white` |
 | \--nutui-elevator-list-fixed-box-shadow | 吸顶楼层阴影 | `0 0 10px #eee` |

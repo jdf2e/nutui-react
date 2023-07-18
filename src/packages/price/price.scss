@@ -1,7 +1,8 @@
 .nut-price {
   font-size: $font-size-3;
   display: inline;
-  color: $primary-color;
+  color: $color-primary;
+
   &--line {
     div {
       text-decoration: line-through;
@@ -9,35 +10,45 @@
       color: $price-line-color !important;
     }
   }
+
   &__symbol,
   &__integer,
   &__decimal {
     display: inline-block;
   }
+
   &__symbol {
     font-size: $price-symbol-medium-size;
     padding-right: $price-symbol-padding-right;
+
     &-large {
       font-size: $price-symbol-big-size;
     }
+
     &-small {
       font-size: $price-symbol-small-size;
     }
   }
+
   &__integer {
     font-size: $price-integer-medium-size;
+
     &-large {
       font-size: $price-integer-big-size;
     }
+
     &-small {
       font-size: $price-integer-small-size;
     }
   }
+
   &__decimal {
     font-size: $price-decimal-medium-size;
+
     &-large {
       font-size: $price-decimal-big-size;
     }
+
     &-small {
       font-size: $price-decimal-small-size;
     }

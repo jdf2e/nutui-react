@@ -245,11 +245,11 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-cell-title-color | The cell title the font color | `$title-color` |
+| \--nutui-cell-title-color | The cell title the font color | `$color-title` |
 | \--nutui-cell-title-font-size | The cell title the font size | `$font-size-2` |
-| \--nutui-cell-description-color | The cell describes the font color | `$text-color` |
+| \--nutui-cell-description-color | The cell describes the font color | `$color-text` |
 | \--nutui-cell-description-font-size | The cell describes the font size | `$font-size-1` |
-| \--nutui-cell-extra-color | The right side of the cell describes the font color | `$text-color` |
+| \--nutui-cell-extra-color | The right side of the cell describes the font color | `$color-text` |
 | \--nutui-cell-extra-font-size | The right side of the cell describes the font size | `$font-size-2` |
 | \--nutui-cell-border-radius | The rounded corner size of the cell | `6px` |
 | \--nutui-cell-padding | Inside margins of cells | `13px 16px` |

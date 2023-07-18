@@ -274,8 +274,8 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-button-border-radius | Rounded corners of the button | `25px` |
 | \--nutui-button-border-width | Button border width | `1px` |
 | \--nutui-button-default-bg-color | The background color of the button whose type is default | `$white` |
-| \--nutui-button-default-border-color | The border color of the button whose type is default | `$text-color` |
-| \--nutui-button-default-color | The text color of the button whose type is default |`$title-color` |
+| \--nutui-button-default-border-color | The border color of the button whose type is default | `$color-text` |
+| \--nutui-button-default-color | The text color of the button whose type is default |`$color-title` |
 | \--nutui-button-default-padding | padding of buttons with type default | `0 18px` |
 | \--nutui-button-mini-padding | Padding for buttons with size mini | `0 12px` |
 | \--nutui-button-mini-height | The height of the button whose size is mini | `24px` |
@@ -299,7 +299,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-button-text-icon-mini-margin-left | size is the left margin of the text of the mini button | `1px` |
 | \--nutui-button-disabled-opacity | opacity of button in disabled state | `0.68` |
 | \--nutui-button-primary-color | type is the text color of the primary button | `$white` |
-| \--nutui-button-primary-border-color | Type is the border color of the primary button | `$primary-color` |
+| \--nutui-button-primary-border-color | Type is the border color of the primary button | `$color-primary` |
 | \--nutui-button-info-color | Type is info button text color | `$white` |
 | \--nutui-button-info-border-color | type is the border color of info button | `#496af2` |
 | \--nutui-button-success-color | Type is the text color of the success button | `$white` |

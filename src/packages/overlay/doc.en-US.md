@@ -264,7 +264,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default Value |
 | --- | --- | --- |
-| \--nutui-overlay-bg-color | Overlay background color | `$mask-color` |
+| \--nutui-overlay-bg-color | Overlay background color | `$color-mask` |
 | \--nutui-overlay-content-bg-color | Mask layer nested content background color | `$white` |
-| \--nutui-overlay-content-color | Mask layer nested content font color | `$title-color` |
+| \--nutui-overlay-content-color | Mask layer nested content font color | `$color-title` |
 | \--nutui-overlay-animation-duration| Mask layer nested content animation duration | `0.3s` |

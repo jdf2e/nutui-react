@@ -308,8 +308,8 @@ export default App
 | --- | --- | --- |
 | \--nutui-menu-bar-line-height | menu標題欄的行高 | `48px` |
 | \--nutui-menu-item-font-size | 標題的字號 | `$font-size-2` |
-| \--nutui-menu-item-text-color | 標題的顏色 | `$title-color` |
-| \--nutui-menu-item-active-text-color | 打開狀態的顏色 | `$primary-color` |
+| \--nutui-menu-item-text-color | 標題的顏色 | `$color-title` |
+| \--nutui-menu-item-active-text-color | 打開狀態的顏色 | `$color-primary` |
 | \--nutui-menu-bar-opened-z-index | 打開狀態的 z-index | `2001` |
 | \--nutui-menu-item-disabled-color | 禁用狀態的顏色 | `#969799` |
 | \--nutui-menu-title-text-padding-left | 標題的左內邊距 | `8px` |

@@ -14,7 +14,7 @@
     padding: 10px;
     display: block;
     font-size: $font-size-base;
-    color: $text-color;
+    color: $color-text;
     margin-inline-start: 0px;
   }
 
@@ -33,13 +33,13 @@
     line-height: $actionsheet-item-line-height;
     font-size: $font-size-base;
     color: $actionsheet-item-color;
-    background-color: $card-background-color;
+    background-color: $color-card-background;
     cursor: pointer;
 
     &-description {
       display: block;
       font-size: $font-size-small;
-      color: $text-color;
+      color: $color-text;
     }
 
     &.danger {
@@ -47,7 +47,7 @@
     }
 
     &.disabled {
-      color: $disable-color !important;
+      color: $color-disabled !important;
       cursor: not-allowed;
     }
   }

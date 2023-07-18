@@ -609,6 +609,6 @@ export default App;
 | \--nutui-cascader-item-padding | 級聯數據每一條的padding值 | `10px 20px` |
 | \--nutui-cascader-item-margin | 級聯數據每一條的margin值 | `0px` |
 | \--nutui-cascader-item-border-bottom | 級聯數據每一條的底部邊框 | `0px solid #ddd` |
-| \--nutui-cascader-item-color | 級聯數據每一條的色值 | `$title-color` |
+| \--nutui-cascader-item-color | 級聯數據每一條的色值 | `$color-title` |
 | \--nutui-cascader-item-font-size | 級聯數據每一條的字號 | `$font-size-2` |
-| \--nutui-cascader-item-active-color | 級聯數據每一條的選中色值 | `$primary-color` |
+| \--nutui-cascader-item-active-color | 級聯數據每一條的選中色值 | `$color-primary` |

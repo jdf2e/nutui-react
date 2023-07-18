@@ -720,5 +720,5 @@ export default App;
 | --- | --- | --- |
 | \--nutui-table-border-color | 錶格的邊框色值 | `#ececec` |
 | \--nutui-table-cols-padding | 錶格列的padding值 | `10px` |
-| \--nutui-table-tr-even-background-color | 錶格偶數行的背景色 | `$background-color` |
+| \--nutui-table-tr-even-background-color | 錶格偶數行的背景色 | `$color-background` |
 | \--nutui-table-tr-odd-background-color | 錶格奇數行的背景色 | `$white` |

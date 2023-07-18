@@ -6,10 +6,12 @@
     color: $countup-color;
     background-color: $countup-bgcolor;
   }
+
   .nut-countup__number {
     width: $countup-width;
   }
+
   .nut-countup__separator {
-    color: $brand-color;
+    color: $color-brand;
   }
 }

@@ -177,10 +177,10 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-sidenavbar-content-bg-color | sidebar navigation background color | `$white` |
 | \--nutui-sidenavbar-item-height | The height of each item in the sidebar | `40px` |
 | \--nutui-sidenavbar-title-padding | padding for title | `10px 8px 10px 20px` |
-| \--nutui-sidenavbar-title-background | The background color of the title | `$background-color` |
-| \--nutui-sidenavbar-title-color | The font color of the title | `$title-color` |
+| \--nutui-sidenavbar-title-background | The background color of the title | `$color-background` |
+| \--nutui-sidenavbar-title-color | The font color of the title | `$color-title` |
 | \--nutui-sidenavbar-sub-title-padding | Padding of subtitle | `10px 8px 10px 35px` |
-| \--nutui-sidenavbar-sub-title-background | Subtitle background color | `$card-background-color-wrapper` |
-| \--nutui-sidenavbar-sub-title-color | Subtitle font color | `$title-color` |
-| \--nutui-sidenavbar-sub-list-background | option list background color | `$card-background-color-wrapper` |
-| \--nutui-sidenavbar-sub-list-color | option list font color | `$title-color` |
+| \--nutui-sidenavbar-sub-title-background | Subtitle background color | `$color-card-background-wrapper` |
+| \--nutui-sidenavbar-sub-title-color | Subtitle font color | `$color-title` |
+| \--nutui-sidenavbar-sub-list-background | option list background color | `$color-card-background-wrapper` |
+| \--nutui-sidenavbar-sub-list-color | option list font color | `$color-title` |

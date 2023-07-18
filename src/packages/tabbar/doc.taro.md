@@ -224,8 +224,8 @@ export default App;
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-tabbar-height | 高度 | `50px` |
-| \--nutui-tabbar-active-color | 选中颜色 | `$primary-color` |
-| \--nutui-tabbar-inactive-color | 未选中颜色 | `$title-color` |
+| \--nutui-tabbar-active-color | 选中颜色 | `$color-primary` |
+| \--nutui-tabbar-inactive-color | 未选中颜色 | `$color-title` |
 | \--nutui-tabbar-border-top | 上边框 | `1px solid #eee` |
 | \--nutui-tabbar-border-bottom | 下边框 | `1px solid #eee` |
 | \--nutui-tabbar-box-shadow | 阴影 | `none` |

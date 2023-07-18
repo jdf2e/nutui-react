@@ -239,15 +239,15 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-searchbar-content-border-radius | searchbar content border radius | `2px` |
 | \--nutui-searchbar-left-fontsize | searchbar left fontsize | `12px` |
 | \--nutui-searchbar-left-padding | searchbar left padding | `0 12px 0 0` |
-| \--nutui-searchbar-left-color | searchbar left color | `$title-color` |
+| \--nutui-searchbar-left-color | searchbar left color | `$color-title` |
 | \--nutui-searchbar-right-fontsize | searchbar right fontsize | `14px` |
 | \--nutui-searchbar-right-padding | searchbar right padding | `0 0 0 8px` |
-| \--nutui-searchbar-right-color | searchbar right color | `$title-color` |
+| \--nutui-searchbar-right-color | searchbar right color | `$color-title` |
 | \--nutui-searchbar-input-height | searchbar input height | `32px` |
 | \--nutui-searchbar-input-padding | searchbar input padding | `0 28px` |
 | \--nutui-searchbar-input-background | searchbar input background | `#f7f7f7` |
-| \--nutui-searchbar-input-text-color | searchbar input text color | `$title-color` |
-| \--nutui-searchbar-input-curror-color | searchbar input curror color | `$title-color` |
+| \--nutui-searchbar-input-text-color | searchbar input text color | `$color-title` |
+| \--nutui-searchbar-input-curror-color | searchbar input curror color | `$color-title` |
 | \--nutui-searchbar-input-width | searchbar input width | `100%` |
 | \--nutui-searchbar-input-text-align | searchbar input text align | `100%` |
 | \--nutui-searchbar-input-border-radius | searchbar input border radius | `16px` |

@@ -407,16 +407,16 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-picker-bar-cancel-color | picker bar cancel color | `#808080` |
-| \--nutui-picker-bar-ok-color | picker bar confirm color | `$primary-color` |
+| \--nutui-picker-bar-ok-color | picker bar confirm color | `$color-primary` |
 | \--nutui-picker-bar-cancel-font-size | picker bar cancel font size | `14px` |
 | \--nutui-picker-bar-ok-font-size | picker bar confirm font size | `14px` |
 | \--nutui-picker-bar-button-padding | picker bar button padding | `0 15px` |
 | \--nutui-picker-bar-title-font-size | picker bar title font size | `16px` |
-| \--nutui-picker-bar-title-color | picker bar title color | `$title-color` |
+| \--nutui-picker-bar-title-color | picker bar title color | `$color-title` |
 | \--nutui-picker-bar-title-font-weight | picker bar title font weight | `normal` |
 | \--nutui-picker-list-height | picker pannel list height | `252px` |
 | \--nutui-picker-item-height | picker pannel item height | `36px` |
-| \--nutui-picker-item-text-color | picker pannel item text color | `$title-color` |
+| \--nutui-picker-item-text-color | picker pannel item text color | `$color-title` |
 | \--nutui-picker-item-active-text-color | picker pannel item active text color | `inherit` |
 | \--nutui-picker-item-text-font-size | picker pannel item text font size | `14px` |
 | \--nutui-picker-item-active-line-border | picker pannel item active line border | `1px solid #d8d8d8` |

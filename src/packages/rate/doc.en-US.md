@@ -237,5 +237,5 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default Value |
 | --- | --- | --- |
 | \--nutui-rate-item-margin | rate item margin | `14px` |
-| \--nutui-rate-icon-color | checked icon color | `$primary-color` |
-| \--nutui-rate-icon-void-color | unchecked icon color | `$disable-color` |
+| \--nutui-rate-icon-color | checked icon color | `$color-primary` |
+| \--nutui-rate-icon-void-color | unchecked icon color | `$color-disabled` |
