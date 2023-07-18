@@ -162,7 +162,7 @@ export default App;
 | background          | 搜索框外部背景色 | string | -     |
 | inputBackground          | 搜索框背景色 | string | -     |
 | inputAlign | 对齐方式，可选 `center` `right` | string | `left` |
-| autofocus  | 是否自动聚焦 | boolean | `false` |
+| autoFocus  | 是否自动聚焦 | boolean | `false` |
 | label | 搜索框左侧文本 | string | - |
 | actionText | 取消按钮文本 | ReactNode | - |
 | leftinIcon     | 输入框内，左icon  | ReactNode | `<Icon name="search" size="12" />` |
