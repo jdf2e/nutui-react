@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { Heart1, HeartFill, Left, Close } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Address } from './address'
@@ -33,6 +33,8 @@ interface T {
 }
 
 const AddressDemo = () => {
+  const addressRef = useRef<any>(null)
+
   const [translated] = useTranslate<T>({
     'zh-CN': {
       basic: '基础用法',
@@ -45,6 +47,7 @@ const AddressDemo = () => {
       change: '自定义地址与已有地址切换',
       delivery: '配送',
       other: '选择其他地址',
+      uncontrolled: '非受控方式',
     },
     'zh-TW': {
       basic: '基础用法',
@@ -57,6 +60,7 @@ const AddressDemo = () => {
       change: '自定義地址與已有地址切換',
       delivery: '配送',
       other: '選擇其他地址',
+      uncontrolled: '非受控方式',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -69,6 +73,7 @@ const AddressDemo = () => {
       change: 'Custom Or Exist',
       delivery: 'Delivery',
       other: 'Choose Other Address',
+      uncontrolled: 'Uncontrolled',
     },
   })
 
@@ -225,6 +230,7 @@ const AddressDemo = () => {
     four: translated.title,
     five: translated.title,
     six: translated.title,
+    seven: translated.title,
   })
 
   const [showPopup, setShowPopup] = useState({
@@ -459,6 +465,12 @@ const AddressDemo = () => {
           description={text.four}
           onClick={() => showAddress('other')}
         />
+        <h2>{translated.uncontrolled}</h2>
+        <Cell
+          title={translated.title}
+          description={text.seven}
+          onClick={() => addressRef.current?.open()}
+        />
 
         <Address
           visible={showPopup.normal}
@@ -519,6 +531,17 @@ const AddressDemo = () => {
             change1(value, params, 'four')
           }}
           onClose={() => closeAddress('other')}
+        />
+
+        <Address
+          ref={addressRef}
+          defaultVisible={false}
+          options={optionsDemo1}
+          title={translated.title}
+          onChange={(value, params) => {
+            change1(value, params, 'one')
+          }}
+          onClose={() => addressRef.current?.close()}
         />
       </div>
     </>
