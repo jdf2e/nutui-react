@@ -11,15 +11,20 @@ page {
   --nutui-brand-9: #f26e61; // 梯度9
   --nutui-brand-10: #e5928a; // 梯度10
 
-  --nutui-brand-100: rgba(250, 44, 25, 0.5); // 梯度100
-  --nutui-brand-101: #f54958; // 梯度101
+  --nutui-brand-100: #f54958; // 梯度100
+  --nutui-brand-101: rgba(250, 44, 25, 0.5); // 梯度101
 
   --nutui-color-primary: var(--nutui-brand-6);
-  --nutui-color-primary-start: var(--nutui-brand-101);
+  --nutui-color-primary-start: var(--nutui-brand-100);
   --nutui-color-primary-end: var(--nutui-brand-6);
-  --nutui-color-primary-link: #040608;
+  --nutui-color-primary-press: var(--nutui-brand-7);
+  --nutui-color-primary-disabled: var(--nutui-brand-3);
   --nutui-color-primary-text: #ffffff;
-  --nutui-color-info: #2a91fa;
+  --nutui-color-primary-light: var(--nutui-brand-1);
+  --nutui-color-primary-light-text: var(--nutui-color-primary);
+  --nutui-color-primary-light-press: var(--nutui-brand-2);
+  --nutui-color-primary-light-press-text: var(--nutui-color-primary-press);
+  --nutui-color-primary-link: #040608;
 
   // 背景色
   // 卡片背景色
@@ -71,6 +76,10 @@ page {
   // --nutui-white-11: rgba(255, 255, 255, 0.9);
   // --nutui-white-12: rgba(255, 255, 255, 1);
 
+  --nutui-color-info: #1988fa;
+  --nutui-color-disabled: var(--nutui-gray-3);
+
+  // 字体
   --nutui-font-size-1: 10px;
   --nutui-font-size-2: 12px;
   --nutui-font-size-3: 14px;
