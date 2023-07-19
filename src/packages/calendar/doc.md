@@ -596,10 +596,10 @@ export default App;
 | \--nutui-calendar-choose-disable-background-color | 日历不可选元素的选中时的背景色 | `rgba(191, 191, 191, 0.09)` |
 | \--nutui-calendar-choose-disable-color | 日历不可选元素的选中时的字色 | `$color-disabled` |
 | \--nutui-calendar-disable-color | 日历不可选元素的字色 | `#d1d0d0` |
-| \--nutui-calendar-base-font-size | 日历字号 | `$font-size-3` |
-| \--nutui-calendar-title-font-size | 日历标题字号 | `$font-size-4` |
+| \--nutui-calendar-base-font-size | 日历字号 | `$font-card-title` |
+| \--nutui-calendar-title-font-size | 日历标题字号 | `$font-title` |
 | \--nutui-calendar-title-font-weight | 日历标题字重 | `500` |
-| \--nutui-calendar-sub-title-font-size | 日历副标题字号 | `$font-size-2` |
+| \--nutui-calendar-sub-title-font-size | 日历副标题字号 | `$font-text` |
 | \--nutui-calendar-day67-color | 日历周末字色 | `$color-primary` |
 | \--nutui-calendar-header-height | 日历自定义部分高度 | `24px` |
 | \--nutui-calendar-day-width | 日历元素宽度 | `14.28%` |

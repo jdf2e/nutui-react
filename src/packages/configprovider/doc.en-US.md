@@ -25,9 +25,9 @@ You can override these CSS variables directly in your code, and the styling of t
 ```css
 /* After you add this style, the Primary Button turns green */
 :root {
-  --nutui-brand-color: green;
-  --nutui-brand-color-start: green;
-  --nutui-brand-color-end: green;
+  --nutui-color-primary: green;
+  --nutui-color-primary-start: green;
+  --nutui-color-primary-end: green;
 }
 ```
 
@@ -82,32 +82,31 @@ NutUI-React supports the following CSS variables:
 ```css
 :root,
 page {
-  --nutui-brand-color: #fa2c19;
-  --nutui-brand-color-start: #ff404f;
-  --nutui-brand-color-end: #fa2c19;
+  --nutui-color-primary: #fa2c19;
+  --nutui-color-primary-start: #ff404f;
+  --nutui-color-primary-end: #fa2c19;
   --nutui-brand-link-color: #396acc;
   --nutui-brand-text-color: #ffffff;
-  --nutui-gray-0: #000000;
   // The main content is colored, common words, general title content, detailed text browsing, general button text and chart guidance
-  --nutui-gray-1: #1a1a1a;
+  --nutui-gray-6: #1a1a1a;
   // Secondary text color, used for secondary headings, attribute indications, non-primary information guidance, etc.
-  --nutui-gray-2: #757575;
+  --nutui-black-9: #757575;
   // Non-operable content color for preset content, invalid content, special non-clickable buttons, component border lines, etc.
-  --nutui-gray-3: #bfbfbf;
+  --nutui-gray-5: #bfbfbf;
   // The base color of the page, used for the bottom of the card-style page, is always placed at the bottom of the page.
   --nutui-gray-4: #f4f4f4;
   // The background color is embedded in the card, which is used for information wrapping inside the card, and the perception is weak.
-  --nutui-gray-5: #f8f8f8;
+  --nutui-gray-3: #f8f8f8;
   // Card background color
-  --nutui-gray-6: #ffffff;
+  --nutui-black-2: #ffffff;
   // Page global mask, used for pop-up layers, pop-ups, full-page masks that new features lead to appear
-  --nutui-gray-7: rgba(0, 0, 0, 0.7);
+  --nutui-gray-2: rgba(0, 0, 0, 0.7);
   // Local masks for non-full-page masking
-  --nutui-gray-8: rgba(0, 0, 0, 0.4);
+  --nutui-gray-1: rgba(0, 0, 0, 0.4);
   // Spacer/fault-tolerant lines for structure or information segmentation
-  --nutui-gray-9: rgba(0, 0, 0, 0.08);
+  --nutui-black-1: rgba(0, 0, 0, 0.08);
   // Image fault tolerance mask
-  --nutui-gray-10: rgba(0, 0, 0, 0.02);
+  --nutui-gray-0: rgba(0, 0, 0, 0.02);
 }
 
 ```

@@ -66,7 +66,7 @@ const App = () => {
   return <>
     <ConfigProvider
       theme={{
-        nutuiSearchbarBackground: 'var(--nutui-brand-color)',
+        nutuiSearchbarBackground: 'var(--nutui-color-primary)',
         nutuiSearchbarInputBackground: '#eee',
         nutuiSearchbarInputTextAlign: 'right',
       }}

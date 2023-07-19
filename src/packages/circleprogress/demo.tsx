@@ -70,8 +70,8 @@ const CircleProgressDemo = () => {
   }
 
   const gradientColor = {
-    '0%': 'var(--nutui-brand-color-start)',
-    '100%': 'var(--nutui-brand-color-end)',
+    '0%': 'var(--nutui-color-primary-start)',
+    '100%': 'var(--nutui-color-primary-end)',
   }
 
   return (
@@ -110,7 +110,7 @@ const CircleProgressDemo = () => {
         <Cell style={{ justifyContent: 'center' }}>
           <CircleProgress percent={50} radius={60}>
             <div>3000</div>
-            <div style={{ fontSize: '12px', color: 'var(--nutui-gray-2)' }}>
+            <div style={{ fontSize: '12px', color: 'var(--nutui-black-9)' }}>
               步
             </div>
           </CircleProgress>

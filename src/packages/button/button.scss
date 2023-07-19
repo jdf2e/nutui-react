@@ -2,12 +2,13 @@
   position: relative;
   display: inline-block;
   flex-shrink: 0;
-  height: $button-default-height;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  height: $button-default-height;
   line-height: $button-default-line-height;
   font-size: $button-default-font-size;
+  font-weight: $button-default-font-weight;
   text-align: center;
   cursor: pointer;
   transition: opacity 0.2s;

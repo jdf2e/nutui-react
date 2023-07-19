@@ -30,7 +30,7 @@
   &__header {
     display: block;
     text-align: center;
-    font-size: $font-size-3;
+    font-size: $font-card-title;
     color: $color-title;
     @include oneline-ellipsis();
   }
@@ -42,7 +42,7 @@
     margin: $dialog-content-margin;
     max-height: $dialog-content-max-height;
     line-height: $dialog-content-line-height;
-    font-size: $font-size-1;
+    font-size: $font-help;
     color: $color-text;
     word-wrap: break-word;
     word-break: break-all;

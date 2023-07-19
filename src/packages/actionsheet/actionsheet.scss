@@ -13,7 +13,7 @@
   &__description {
     padding: 10px;
     display: block;
-    font-size: $font-size-base;
+    font-size: $font-text;
     color: $color-text;
     margin-inline-start: 0px;
   }
@@ -31,14 +31,14 @@
     padding: 10px;
     text-align: $actionsheet-item-text-align;
     line-height: $actionsheet-item-line-height;
-    font-size: $font-size-base;
+    font-size: $font-text;
     color: $actionsheet-item-color;
     background-color: $color-card-background;
     cursor: pointer;
 
     &-description {
       display: block;
-      font-size: $font-size-small;
+      font-size: $font-help;
       color: $color-text;
     }
 

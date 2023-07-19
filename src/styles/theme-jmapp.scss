@@ -3,63 +3,62 @@ page {
   --nutui-brand-1: #edf4ff; // 梯度1
   --nutui-brand-2: #dce9ff; // 梯度2
   --nutui-brand-3: #ccdefb; // 梯度3
-  --nutui-brand-4: #a6c8ff; // 梯度4
-  --nutui-brand-5: #82b1ff; // 梯度5
-  --nutui-brand-6: #5c99ff; // 梯度6
+  --nutui-brand-100: #a6c8ff; // 梯度4
+  --nutui-brand-4: #82b1ff; // 梯度5
+  --nutui-brand-5: #5c99ff; // 梯度6
   --nutui-brand-7: #317fff; // 梯度7
-  --nutui-brand-8: #266bf6; // 梯度8
-  --nutui-brand-9: #2259b4; // 梯度9
-  --nutui-brand-10: #20488a; // 梯度10
-  --nutui-brand-11: #1b3663; // 梯度11
-  --nutui-brand-12: #162d54; // 梯度12
+  --nutui-brand-6: #266bf6; // 梯度8
+  --nutui-brand-101: #2259b4; // 梯度9
+  --nutui-brand-7: #20488a; // 梯度10
+  --nutui-brand-8: #1b3663; // 梯度11
+  --nutui-brand-9: #162d54; // 梯度12
 
-  --nutui-brand-color: var(--nutui-brand-8);
-  --nutui-brand-color-start: var(--nutui-brand-8);
-  --nutui-brand-color-end: var(--nutui-brand-8);
-  --nutui-brand-link-color: var(--nutui-brand-8);
-  --nutui-brand-color-opacity: rgba(250, 44, 25, 0.5);
+  --nutui-color-primary: var(--nutui-brand-6);
+  --nutui-color-primary-start: var(--nutui-brand-6);
+  --nutui-color-primary-end: var(--nutui-brand-6);
+  --nutui-brand-link-color: var(--nutui-brand-6);
   --nutui-brand-text-color: #ffffff;
   --nutui-brand-info-color: #1988fa;
 
   // 文字色
   // 一级文字色（重要）主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
-  --nutui-gray-1: rgba(0, 0, 0, 0.9);
+  --nutui-gray-6: rgba(0, 0, 0, 0.9);
   // 蒙层色
   // 全局蒙层，用于弹出层、弹窗、新功能引导出现的整页遮罩
-  --nutui-gray-2: rgba(0, 0, 0, 0.6);
+  --nutui-black-9: rgba(0, 0, 0, 0.6);
   // 二级文字色（常规），用于次级标题、属性标示、非主要信息引导等。
-  --nutui-gray-3: rgba(0, 0, 0, 0.7);
+  --nutui-gray-5: rgba(0, 0, 0, 0.7);
   // 三级文字色（次要）
   --nutui-gray-4: rgba(0, 0, 0, 0.5);
   // 四级文字色，不可操作内容色，用于预置内容、无效内容、特殊不可点击按钮、组件边框线等。
-  --nutui-gray-5: rgba(0, 0, 0, 0.3);
+  --nutui-gray-3: rgba(0, 0, 0, 0.3);
   // 线条色
   // 间隔线/容错线，用于结构或信息分割
-  --nutui-gray-6: #e8e8e8;
+  --nutui-black-2: #e8e8e8;
   // 背景色
   // 页面背景色。
-  --nutui-gray-7: #f4f4f4;
+  --nutui-gray-2: #f4f4f4;
   // 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
-  --nutui-gray-8: #ffffff;
+  --nutui-gray-1: #ffffff;
   // 蒙层色
   // 容错蒙层
-  --nutui-gray-9: #ffffff;
+  --nutui-black-1: #ffffff;
   // 卡片背景色
-  --nutui-gray-10: #ffffff;
+  --nutui-gray-0: #ffffff;
 
   // 不透明
-  --nutui-gray-11: rgba(31, 31, 31, 0);
+  --nutui-white-0: rgba(31, 31, 31, 0);
   // 不透明0.5
-  --nutui-gray-12: rgba(31, 31, 31, 0.5);
+  --nutui-white-7: rgba(31, 31, 31, 0.5);
 
   // 字体
-  --nutui-font-size-0: 10px;
-  --nutui-font-size-1: 12px;
-  --nutui-font-size-2: 14px;
-  --nutui-font-size-3: 16px;
-  --nutui-font-size-4: 18px;
+  --nutui-font-size-1: 10px;
+  --nutui-font-size-2: 12px;
+  --nutui-font-size-3: 14px;
+  --nutui-font-size-4: 16px;
+  --nutui-font-size-5: 18px;
   // 字重
-  --nutui-font-weight-bold: 400;
+  --nutui-font-weight: 400;
   // 行高
   --nutui-line-height-base: 1.5;
 }

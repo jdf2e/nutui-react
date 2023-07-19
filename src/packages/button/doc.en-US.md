@@ -288,10 +288,10 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-button-block-height | The height of the block's button | `48px` |
 | \--nutui-button-block-line-height | The line height of the block's button | `46px` |
 | \--nutui-button-default-line-height | The line height of the button whose type is default | `36px` |
-| \--nutui-button-default-font-size | The font size of the button whose type is default | `$font-size-2` |
+| \--nutui-button-default-font-size | The font size of the button whose type is default | `$font-text` |
 | \--nutui-button-large-font-size | The font size of buttons whose size is large | `$button-default-font-size` |
-| \--nutui-button-small-font-size | The font size of the button whose size is small | `$font-size-1` |
-| \--nutui-button-mini-font-size | The font size of the button whose size is mini | `$font-size-1` |
+| \--nutui-button-small-font-size | The font size of the button whose size is small | `$font-help` |
+| \--nutui-button-mini-font-size | The font size of the button whose size is mini | `$font-help` |
 | \--nutui-button-mini-line-height | The line height of the button whose size is mini | `1.2` |
 | \--nutui-button-text-icon-margin-left | left margin of text with icon button | `5px` |
 | \--nutui-button-text-icon-large-margin-left | size is the left margin of the text of the large button | `10px` |

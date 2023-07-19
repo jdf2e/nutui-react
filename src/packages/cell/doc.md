@@ -245,11 +245,11 @@ export default App;
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-cell-title-color | 单元格标题字体颜色 | `$color-title` |
-| \--nutui-cell-title-font-size | 单元格标题字体大小 | `$font-size-2` |
+| \--nutui-cell-title-font-size | 单元格标题字体大小 | `$font-text` |
 | \--nutui-cell-description-color | 单元格描述字体颜色 | `$color-text` |
-| \--nutui-cell-description-font-size | 单元格描述字体大小 | `$font-size-1` |
+| \--nutui-cell-description-font-size | 单元格描述字体大小 | `$font-help` |
 | \--nutui-cell-extra-color | 单元格右侧描述字体颜色 | `$color-text` |
-| \--nutui-cell-extra-font-size | 单元格右侧描述字体大小 | `$font-size-2` |
+| \--nutui-cell-extra-font-size | 单元格右侧描述字体大小 | `$font-text` |
 | \--nutui-cell-border-radius | 单元格圆角大小 | `6px` |
 | \--nutui-cell-padding | 单元格内边距 | `13px 16px` |
 | \--nutui-cell-line-height | 单元格行高 | `20px` |
@@ -260,10 +260,10 @@ export default App;
 | \--nutui-cell-box-shadow | 单元格阴影 | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
 | \--nutui-cell-group-title-padding | 单元格分组的标题内边距 | `0 10px` |
 | \--nutui-cell-group-title-color | 单元格分组的标题字体颜色 | `#909ca4` |
-| \--nutui-cell-group-title-font-size | 单元格分组的标题字体大小 | `$font-size-2` |
+| \--nutui-cell-group-title-font-size | 单元格分组的标题字体大小 | `$font-text` |
 | \--nutui-cell-group-title-line-height | 单元格分组的标题行高 | `20px` |
 | \--nutui-cell-group-description-padding | 单元格分组的描述内边距 | `0 10px` |
 | \--nutui-cell-group-description-color | 单元格分组的描述颜色 | `#909ca4` |
-| \--nutui-cell-group-description-font-size | 单元格分组的描述字体大小 | `$font-size-1` |
+| \--nutui-cell-group-description-font-size | 单元格分组的描述字体大小 | `$font-help` |
 | \--nutui-cell-group-description-line-height | 单元格分组的描述行高 | `16px` |
 | \--nutui-cell-group-background-color | 单元格分组的背景颜色 | `$white` |

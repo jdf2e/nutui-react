@@ -96,12 +96,12 @@ const AvatarDemo = () => {
         <Cell>
           <Avatar
             className="demo-avatar"
-            color="var(--nutui-gray-10)"
-            background="var(--nutui-brand-color)"
+            color="var(--nutui-gray-0)"
+            background="var(--nutui-color-primary)"
             icon={<My />}
           />
           <Avatar
-            color="var(--nutui-brand-color)"
+            color="var(--nutui-color-primary)"
             background="var(--nutui-brand-2)"
           >
             U
@@ -122,7 +122,7 @@ const AvatarDemo = () => {
             <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
             <Avatar icon={<My />} />
             <Avatar
-              color="var(--nutui-brand-color)"
+              color="var(--nutui-color-primary)"
               background="var(--nutui-brand-2)"
             >
               U
@@ -134,7 +134,7 @@ const AvatarDemo = () => {
             <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
             <Avatar icon={<My />} />
             <Avatar
-              color="var(--nutui-brand-color)"
+              color="var(--nutui-color-primary)"
               background="var(--nutui-brand-2)"
             >
               U
@@ -148,7 +148,7 @@ const AvatarDemo = () => {
             <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
             <Avatar icon={<My />} />
             <Avatar
-              color="var(--nutui-brand-color)"
+              color="var(--nutui-color-primary)"
               background="var(--nutui-brand-2)"
             >
               U

@@ -326,13 +326,13 @@ const App = () => {
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-collapse-item-padding | 內邊距 | `13px 36px 13px 26px` |
-| \--nutui-collapse-item-font-size | 字體大小 | `$font-size-2` |
+| \--nutui-collapse-item-font-size | 字體大小 | `$font-text` |
 | \--nutui-collapse-item-line-height | 行高 | `24px` |
 | \--nutui-collapse-item-color | 字體顏色 | `#666666` |
 | \--nutui-collapse-item-disabled-color | 禁用顏色 | `$color-disabled` |
 | \--nutui-collapse-item-extra-color | Extra 字體顏色 | `#666666` |
 | \--nutui-collapse-wrapper-content-background-color | 背景顏色 | `$white` |
 | \--nutui-collapse-wrapper-content-color | 內容字體顏色 | `#666666` |
-| \--nutui-collapse-wrapper-content-font-size | 內容字體大小 | `$font-size-2` |
+| \--nutui-collapse-wrapper-content-font-size | 內容字體大小 | `$font-text` |
 | \--nutui-collapse-wrapper-content-line-height | 內容行高 | `1.5` |
 | \--nutui-collapse-wrapper-content-padding | 內容內邊距 | `12px 26px` |

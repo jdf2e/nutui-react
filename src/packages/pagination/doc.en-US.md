@@ -196,7 +196,7 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-pagination-color | font color  |  `$color-primary` |
-| \--nutui-pagination-font-size | font size | `$font-size-2` |
+| \--nutui-pagination-font-size | font size | `$font-text` |
 | \--nutui-pagination-item-border-color | border color  | `$color-divider` |
 | \--nutui-pagination-disable-color | disable color | `$color-disabled` |
 | \--nutui-pagination-disable-background-color | disable background color | `$color-disabled` |

@@ -24,13 +24,13 @@
 
   &-small {
     .nut-toast__inner {
-      font-size: $font-size-small;
+      font-size: $font-help;
     }
   }
 
   &-large {
     .nut-toast__inner {
-      font-size: $font-size-large;
+      font-size: $font-card-title;
     }
   }
 
