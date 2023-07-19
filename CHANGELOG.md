@@ -1,3 +1,13 @@
+# v2.0.5
+`2023-07-19`
+
+* :bug: fix(sticky): 组件卸载移除 tap 事件改为移除 scroll 事件 (#1235) @oasis-cloud
+* :bug: fix: height is null (#1239) @Liuqh233
+* :bug: fix: 修复popover滑动定位错位的问题 (#1232) @junjun666
+* :sparkles: perf: configProvider 组件性能优化 (#1230) @大喵
+* 🔨 chore: site 内部移除 taro components @oasis-cloud
+
+
 # v2.0.4
 `2023-07-14`
 
