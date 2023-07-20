@@ -89,6 +89,10 @@ $button-default-border-color: var(
 $button-default-color: var(--nutui-button-default-color, $color-text) !default;
 $button-plain-color: var(--nutui-button-plain-color, $color-text) !default;
 $button-default-padding: var(--nutui-button-default-padding, 0 18px) !default;
+$button-default-font-weight: var(
+  --nutui-button-default-font-weight,
+  $font-weight-bold
+) !default;
 $button-mini-padding: var(--nutui-button-mini-padding, 0 12px) !default;
 $button-small-padding: var(--nutui-button-small-padding, 0 12px) !default;
 $button-small-height: var(--nutui-button-small-height, 32px) !default;
@@ -1087,7 +1091,7 @@ $radio-button-active-border-color: var(
 ) !default;
 $radio-button-active-background: var(
   --nutui-radio-button-active-background,
-  $color-brand-light-bg-color
+  $color-primary-light
 ) !default;
 $radio-button-disabled-active-background: var(
   --nutui-radio-button-disabled-active-background,
@@ -1250,7 +1254,7 @@ $tag-primary-background-color: var(
 ) !default;
 $tag-info-background-color: var(
   --nutui-tag-info-background-color,
-  $brand-info-color
+  $color-info
 ) !default;
 $tag-success-background-color: var(
   --nutui-tag-success-background-color,
