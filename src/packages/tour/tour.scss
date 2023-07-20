@@ -5,7 +5,7 @@
     height: 50px;
     box-shadow: 0px 0px 0px 150vh rgba(0, 0, 0, 0.5);
     border-radius: 10px;
-    z-index: 1000;
+    z-index: 999;
     &-none {
       box-shadow: none;
     }
@@ -19,6 +19,7 @@
     display: block;
     padding: 10px 12px;
     min-width: 200px;
+    box-sizing: content-box;
 
     &-top {
       display: block;
@@ -33,6 +34,7 @@
     &-inner {
       margin: 10px 0px;
       font-size: 14px;
+      white-space: nowrap;
     }
 
     &-bottom {
@@ -73,7 +75,7 @@
     position: fixed;
     width: 100vh;
     height: 100vh;
-    z-index: 2000;
+    z-index: 1000;
     top: 0;
     left: 0;
     background: transparent;

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, FunctionComponent } from 'react'
 import type { MouseEvent } from 'react'
+import { Close } from '@nutui/icons-react'
 import classNames from 'classnames'
 import Popover from '@/packages/popover'
 import { PopoverLocation } from '@/packages/popover/popover'
@@ -10,7 +11,7 @@ import './tour.scss'
 
 interface StepOptions {
   target: Element | string
-  content: string
+  content?: string
   location?: string
   popoverOffset?: number[]
   arrowOffset?: number
@@ -27,6 +28,11 @@ export interface TourProps extends BasicComponent {
   maskHeight: number | string
   offset: number[]
   steps: StepOptions[]
+  showTitleBar: boolean
+  nextStepTxt: string
+  prevStepTxt: string
+  completeTxt: string
+  showPrevStep: boolean
   closeOnOverlayClick: boolean
   onClose: (e: MouseEvent<HTMLDivElement>) => void
 }
@@ -39,6 +45,11 @@ const defaultProps = {
   maskWidth: '',
   maskHeight: '',
   offset: [8, 10],
+  showTitleBar: true,
+  nextStepTxt: '下一步',
+  prevStepTxt: '上一步',
+  completeTxt: '完成',
+  showPrevStep: true,
   closeOnOverlayClick: true,
 } as TourProps
 
@@ -49,7 +60,9 @@ export const Tour: FunctionComponent<
   const {
     children,
     className,
+    showTitleBar,
     closeOnOverlayClick,
+    showPrevStep,
     steps,
     type,
     location,
@@ -58,6 +71,9 @@ export const Tour: FunctionComponent<
     maskWidth,
     maskHeight,
     offset,
+    nextStepTxt,
+    prevStepTxt,
+    completeTxt,
     onClose,
     ...rest
   } = {
@@ -90,6 +106,12 @@ export const Tour: FunctionComponent<
     setShowPopup(isShowModel)
   }, [isShowModel])
 
+  useEffect(() => {
+    console.log('aaaa')
+    setShowPopup(true)
+    getRootPosition()
+  }, [active])
+
   const getRootPosition = () => {
     const el: any = document.querySelector(`#${steps[active].target}`)
     const rect = getRect(el)
@@ -121,6 +143,21 @@ export const Tour: FunctionComponent<
     closeOnOverlayClick && maskClose(e)
   }
 
+  const changeStep = (type: string) => {
+    if (type === 'next') {
+      setActive(active + 1)
+    } else {
+      setActive(active - 1)
+    }
+    setShowPopup(false)
+    // nextTick(() => {
+    //   state.showPopup = true;
+    //   getRootPosition();
+    // });
+
+    // emit('change', state.active);
+  }
+
   return (
     <div className={classes} {...rest}>
       <div
@@ -131,30 +168,87 @@ export const Tour: FunctionComponent<
       {steps.map((item, index) => {
         return (
           <div key={index} style={{ height: 0 }}>
-            {showTour && (
-              <div
-                className={`${
-                  mask ? 'nut-tour-mask' : 'nut-tour-mask nut-tour-mask-none'
-                }`}
-                id="nut-tour-popid"
-                style={maskStyle()}
-              />
+            {index === active && (
+              <>
+                {showTour && (
+                  <div
+                    className={`${
+                      mask
+                        ? 'nut-tour-mask'
+                        : 'nut-tour-mask nut-tour-mask-none'
+                    }`}
+                    id="nut-tour-popid"
+                    style={maskStyle()}
+                  />
+                )}
+                <Popover
+                  visible={showPopup}
+                  location={item.location || location}
+                  targetId="nut-tour-popid"
+                  closeOnOutsideClick={false}
+                  offset={item.popoverOffset || [0, 12]}
+                  arrowOffset={item.arrowOffset || 0}
+                >
+                  {/* placeholder don't delete <></> */}
+                  <></>
+                  <>
+                    {children || (
+                      <>
+                        {type === 'step' && (
+                          <div className="nut-tour-content">
+                            {showTitleBar && (
+                              <div className="nut-tour-content-top">
+                                <div onClick={(e) => maskClose(e)}>
+                                  <Close className="nut-tour-content-top-close" />
+                                </div>
+                              </div>
+                            )}
+                            <div className="nut-tour-content-inner">
+                              {item.content}
+                            </div>
+                            <div className="nut-tour-content-bottom">
+                              <div className="nut-tour-content-bottom-init">
+                                {active + 1}/{steps.length}
+                              </div>
+                              <div className="nut-tour-content-bottom-operate">
+                                {active !== 0 && showPrevStep && (
+                                  <div
+                                    className="nut-tour-content-bottom-operate-btn"
+                                    onClick={() => changeStep('prev')}
+                                  >
+                                    {prevStepTxt}
+                                  </div>
+                                )}
+                                {steps.length - 1 === active && (
+                                  <div className="nut-tour-content-bottom-operate-btn active">
+                                    {completeTxt}
+                                  </div>
+                                )}
+                                {steps.length - 1 !== active && (
+                                  <div
+                                    className="nut-tour-content-bottom-operate-btn active"
+                                    onClick={() => changeStep('next')}
+                                  >
+                                    {nextStepTxt}
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                        {type === 'tile' && (
+                          <div className="nut-tour-content nut-tour-content-tile">
+                            <div className="nut-tour-content-inner">
+                              {item.content}
+                            </div>
+                          </div>
+                        )}
+                      </>
+                    )}
+                  </>
+                </Popover>
+              </>
             )}
-            <Popover
-              visible={showPopup}
-              location={item.location || location}
-              targetId="nut-tour-popid"
-              closeOnOutsideClick={false}
-              offset={item.popoverOffset || [0, 12]}
-            >
-              {/* placeholder don't delete <></> */}
-              <></>
-              {type === 'tile' && (
-                <div className="nut-tour-content nut-tour-content-tile">
-                  <div className="nut-tour-content-inner">{item.content}</div>
-                </div>
-              )}
-            </Popover>
           </div>
         )
       })}
