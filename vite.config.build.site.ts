@@ -8,13 +8,14 @@ const config = require('./package.json')
 const { resolve } = path
 let fileStr = `@import "@/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";`
 const projectID = process.env.VITE_APP_PROJECT_ID
+
 if (projectID) {
   fileStr = `@import '@/styles/variables-${projectID}.scss';\n@import "@/sites/assets/styles/variables.scss";\n`
 }
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: 'https://nutui.jd.com/h5/react/2x',
+  base: 'https://nutui.jd.com/h5/react/jm',
   resolve: {
     alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
   },
@@ -30,6 +31,7 @@ export default defineConfig({
     postcss: {
       plugins: [
         atImport({ path: path.join(__dirname, 'src`') }),
+        // eslint-disable-next-line global-require
         require('autoprefixer')({
           overrideBrowserslist: [
             '> 0.5%',
@@ -45,7 +47,7 @@ export default defineConfig({
   plugins: [reactRefresh()],
   build: {
     target: 'es2015',
-    outDir: './dist/2x/',
+    outDir: './dist/jm/',
     cssCodeSplit: true,
     rollupOptions: {
       input: {
