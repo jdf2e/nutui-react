@@ -714,7 +714,7 @@ $backtop-border-color: var(--nutui-backtop-border-color, #e0e0e0) !default;
 // calendar（✅）
 $calendar-choose-background-color: var(
   --nutui-calendar-choose-background-color,
-  rgba(#fa2c19, 0.09)
+  $color-primary-light
 ) !default;
 $calendar-choose-disable-background-color: var(
   --nutui-calendar-choose-disable-background-color,
@@ -845,7 +845,10 @@ $infiniteloading-bottom-color: var(
 $range-color: var(--nutui-range-color, $color-title) !default;
 $range-height: var(--nutui-range-height, 4px) !default;
 $range-margin: var(--nutui-range-margin, 15px) !default;
-$range-inactive-color: var(--nutui-range-inactive-color, #fa958c) !default;
+$range-inactive-color: var(
+  --nutui-range-inactive-color,
+  $color-primary-light
+) !default;
 $range-active-color: var(--nutui-range-active-color, $color-primary) !default;
 $range-button-background: var(
   --nutui-range-button-background,
@@ -1326,10 +1329,7 @@ $popover-menu-item-padding: var(
 
 //progress（✅）
 $progress-height: var(--nutui-progress-height, 10px) !default;
-$progress-color: var(
-  --nutui-progress-color,
-  linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)
-) !default;
+$progress-color: var(--nutui-progress-color, $color-primary-light) !default;
 $progress-background: var(--nutui-progress-background, #f3f3f3) !default;
 $progress-border-radius: var(--nutui-progress-border-radius, 12px) !default;
 $progress-text-color: var(

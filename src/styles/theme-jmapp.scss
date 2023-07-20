@@ -13,8 +13,8 @@ page {
   --nutui-brand-11: #1b3663; // 梯度11
   --nutui-brand-12: #162d54; // 梯度12
 
-  --nutui-brand-100: #f53d4c; // 梯度100
-  --nutui-brand-101: rgba(250, 44, 25, 0.5); // 梯度101
+  --nutui-brand-100: var(--nutui-brand-7); // 梯度100
+  --nutui-brand-101: var(--nutui-brand-8); // 梯度101
 
   --nutui-color-primary: var(--nutui-brand-8);
   --nutui-color-primary-start: var(--nutui-brand-8);

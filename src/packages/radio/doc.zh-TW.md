@@ -283,7 +283,7 @@ export default RadioGroupOptions;
 | \--nutui-radio-button-border-radius | shape為button的圓角 | `15px` |
 
 | \--nutui-radio-button-active-border-color | 選中時，shape為button的邊框顏色 | `$color-primary` |
-| \--nutui-radio-button-active-background | 選中時，shape為button的背景色 | `$color-brand-light-bg-color` |
+| \--nutui-radio-button-active-background | 選中時，shape為button的背景色 | `$color-primary-light-bg-color` |
 
 | \--nutui-radio-button-disabled-active-background | button模式下選中且禁用的背景色 | `$color-disabled` |
 | \--nutui-radio-button-disabled-active-color | button模式下選中且禁用的字體色 | `$white` |

@@ -280,7 +280,7 @@ The component provides the following CSS Variables, which can be used for custom
 | \--nutui-radio-button-padding | The shape is the padding of the button | `5px 18px` |
 | \--nutui-radio-button-border-radius | The shape is the rounded corner of the button | `15px` |
 | \--nutui-radio-button-active-border-color | shape is the border color of the button | `$color-primary` |
-| \--nutui-radio-button-active-background | shape is the background color of the button | `$color-brand-light-bg-color` |
+| \--nutui-radio-button-active-background | shape is the background color of the button | `$color-primary-light-bg-color` |
 
 | \--nutui-radio-button-disabled-active-background | Selected and disabled background color in button mode | `$color-disabled` |
 | \--nutui-radio-button-disabled-active-color | The font color that is selected and disabled in button mode | `$white` |
