@@ -105,6 +105,10 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     const [columnsList, setColumnsList] = useState<PickerOption[][]>([]) // 格式化后每一列的数据
     const isConfirmEvent = useRef(false)
 
+    useEffect(() => {
+      setInnerValue(selectedValue)
+    }, [selectedValue])
+
     const actions: PickerActions = {
       open: () => {
         setInnerVisible(true)

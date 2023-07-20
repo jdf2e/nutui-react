@@ -316,7 +316,7 @@ export const DatePicker: FunctionComponent<
         cmin++
       }
 
-      if (cmin <= val) {
+      if (cmin <= Number(val)) {
         index++
       }
     }
@@ -381,7 +381,7 @@ export const DatePicker: FunctionComponent<
           visible={visible}
           options={options}
           onClose={onClose}
-          defaultValue={defaultValueOfPicker}
+          value={defaultValueOfPicker}
           onConfirm={(options: PickerOption[], value: (string | number)[]) =>
             onConfirm && onConfirm(options, value)
           }
