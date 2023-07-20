@@ -190,9 +190,9 @@ export default App
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-textarea-font | 字体大小 | `$font-size-2` |
+| \--nutui-textarea-font | 字体大小 | `$font-text` |
 | \--nutui-textarea-padding | 内边距 | `10px 25px` |
-| \--nutui-textarea-limit-color | 字数统计颜色 | `$text-color` |
-| \--nutui-textarea-text-color | 文本颜色 | `$title-color` |
-| \--nutui-textarea-text-curror-color | 光标颜色 | `$title-color` |
-| \--nutui-textarea-disabled-color | 禁用颜色 | `$disable-color` |
+| \--nutui-textarea-limit-color | 字数统计颜色 | `$color-text` |
+| \--nutui-textarea-text-color | 文本颜色 | `$color-title` |
+| \--nutui-textarea-text-curror-color | 光标颜色 | `$color-title` |
+| \--nutui-textarea-disabled-color | 禁用颜色 | `$color-disabled` |

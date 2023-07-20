@@ -307,9 +307,9 @@ export default App
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-menu-bar-line-height | menu标题栏的行高 | `48px` |
-| \--nutui-menu-item-font-size | 标题的字号 | `$font-size-2` |
-| \--nutui-menu-item-text-color | 标题的颜色 | `$title-color` |
-| \--nutui-menu-item-active-text-color | 打开状态的颜色 | `$primary-color` |
+| \--nutui-menu-item-font-size | 标题的字号 | `$font-text` |
+| \--nutui-menu-item-text-color | 标题的颜色 | `$color-title` |
+| \--nutui-menu-item-active-text-color | 打开状态的颜色 | `$color-primary` |
 | \--nutui-menu-bar-opened-z-index | 打开状态的 z-index | `2001` |
 | \--nutui-menu-item-disabled-color | 禁用状态的颜色 | `#969799` |
 | \--nutui-menu-title-text-padding-left | 标题的左内边距 | `8px` |
@@ -323,4 +323,4 @@ export default App
 | \--nutui-menu-scroll-fixed-top | fix 状态的顶部距离 | `0` |
 | \--nutui-menu-scroll-fixed-z-index | fix 状态的z-index | `$mask-z-index` |
 | \--nutui-menu-active-item-font-weight | 选中状态的字重 | `500` |
-| \--nutui-menu-item-content-bg-color | 菜单选项容器的背景色 | `$gray6` |
+| \--nutui-menu-item-content-bg-color | 菜单选项容器的背景色 | `$white` |

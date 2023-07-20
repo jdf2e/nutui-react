@@ -4,12 +4,11 @@
   width: $searchbar-width;
   padding: $searchbar-padding;
   background: $searchbar-background;
-  color: $title-color;
+  color: $color-title;
   box-sizing: border-box;
   justify-content: center;
 
   &__content {
-    position: relative;
     flex: 1;
     display: flex;
     align-items: center;
@@ -46,7 +45,7 @@
     width: 100%;
     padding: $searchbar-input-padding;
     border-radius: 0;
-    font-size: $font-size-small;
+    font-size: $font-help;
     color: $searchbar-input-text-color;
     caret-color: $searchbar-input-curror-color;
     background: transparent;

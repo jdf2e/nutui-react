@@ -117,7 +117,7 @@ const InputDemo = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            background: 'var(--nutui-gray-0202)',
+            background: 'var(--nutui-gray-0)',
             padding: '0 10px',
           }}
         >
@@ -128,7 +128,7 @@ const InputDemo = () => {
           />
           <div
             className="right"
-            style={{ fontSize: '12px', color: 'var(--nutui-gray-0101)' }}
+            style={{ fontSize: '12px', color: 'var(--nutui-gray-6)' }}
           >
             {currentLength} / 20
           </div>
@@ -138,7 +138,7 @@ const InputDemo = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            background: 'var(--nutui-gray-0202)',
+            background: 'var(--nutui-gray-0)',
             padding: '0 10px',
           }}
         >
@@ -150,9 +150,9 @@ const InputDemo = () => {
             }
           >
             {inputType === 'text' ? (
-              <Eye color="var(--nutui-gray-0101)" />
+              <Eye color="var(--nutui-gray-6)" />
             ) : (
-              <Marshalling color="var(--nutui-gray-0101)" />
+              <Marshalling color="var(--nutui-gray-6)" />
             )}
           </div>
         </div>
@@ -176,11 +176,11 @@ const InputDemo = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            background: 'var(--nutui-gray-0202)',
+            background: 'var(--nutui-gray-0)',
             padding: '0 10px',
           }}
         >
-          <Ask color="var(--nutui-gray-0101)" />
+          <Ask color="var(--nutui-gray-6)" />
           <Input placeholder={translated.codeplaceholder} />
           <div
             className="right"

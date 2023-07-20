@@ -315,7 +315,7 @@ export default App;
 | --- | --- | --- | --- |
 | name | 列表项的标题key值 | `string` | `-` |
 | description | 列表项的描述key值 | `string` | `-` |
-| danger | 高亮颜色 | `string` | `$primary-color` |
+| danger | 高亮颜色 | `string` | `$color-primary` |
 | disabled | 禁用状态 | `string` | `$disabled-color` |
 
 ## 主题定制
@@ -330,5 +330,5 @@ export default App;
 | \--nutui-actionsheet-item-text-align | 列表项的文字对齐方式 | `center` |
 | \--nutui-actionsheet-item-border-bottom | 列表项的底部border | `none` |
 | \--nutui-actionsheet-item-line-height | 列表项行高 | `24px` |
-| \--nutui-actionsheet-item-color | 列表项字色 | `$title-color` |
-| \--nutui-actionsheet-item-danger | 列表项danger字色 | `$primary-color` |
+| \--nutui-actionsheet-item-color | 列表项字色 | `$color-title` |
+| \--nutui-actionsheet-item-danger | 列表项danger字色 | `$color-primary` |

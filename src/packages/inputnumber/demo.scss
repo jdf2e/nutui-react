@@ -11,6 +11,7 @@
   --nutui-inputnumber-button-border-radius: 2px;
   --nutui-inputnumber-input-height: 30px;
   --nutui-inputnumber-input-margin: 0 2px;
+
   .nut-input-minus,
   .nut-input-add {
     background-color: var(--nutui-gray-4, #f4f4f4);
@@ -24,11 +25,13 @@
   --nutui-inputnumber-button-height: 30px;
   --nutui-inputnumber-input-height: 30px;
   --nutui-inputnumber-input-margin: 0 2px;
+
   .nut-input-minus,
   .nut-input-add {
     background-color: var(--nutui-gray-4, #f4f4f4);
   }
+
   input {
-    background-color: var(--nutui-gray-6, #fff) !important;
+    background-color: var(--nutui-black-2, #fff) !important;
   }
 }

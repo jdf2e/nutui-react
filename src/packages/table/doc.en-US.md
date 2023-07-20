@@ -709,5 +709,5 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-table-border-color | table border color | `#ececec` |
 | \--nutui-table-cols-padding | table columns padding value | `10px` |
-| \--nutui-table-tr-even-background-color | table even rows background color | `$gray4` |
-| \--nutui-table-tr-odd-background-color | table odd rows background color | `$gray6` |
+| \--nutui-table-tr-even-background-color | table even rows background color | `$color-background` |
+| \--nutui-table-tr-odd-background-color | table odd rows background color | `$white` |

@@ -286,12 +286,12 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-tabbar-height | tabbar height | `50px` |
-| \--nutui-tabbar-active-color | active color | `$primary-color` |
-| \--nutui-tabbar-inactive-color | default color | `$gray1` |
+| \--nutui-tabbar-active-color | active color | `$color-primary` |
+| \--nutui-tabbar-inactive-color | default color | `$color-title` |
 | \--nutui-tabbar-border-top | borderTop | `1px solid #eee` |
 | \--nutui-tabbar-border-bottom | borderBottom | `1px solid #eee` |
 | \--nutui-tabbar-box-shadow | boxShadow | `none` |
 | \--nutui-tabbar-text-font-size | title fontSize | `$font-size-0` |
-| \--nutui-tabbar-text-large-font-size | title fontSize when icon is null | `$font-size-large` |
+| \--nutui-tabbar-text-large-font-size | title fontSize when icon is null | `$font-card-title` |
 | \--nutui-tabbar-text-line-height | title lineHeight | `initial` |
 | \--nutui-tabbar-text-margin-top | title marginTop | `3px` |

@@ -136,6 +136,7 @@ export const Popover: FunctionComponent<
 
   const getContentWidth = () => {
     let rect = getRect(popoverRef.current)
+    const scrollDis = document.documentElement.scrollTop || window.scrollY
     if (targetId) {
       setTimeout(() => {
         rect = getRect(document.querySelector(`#${targetId}`) as Element)
@@ -143,7 +144,7 @@ export const Popover: FunctionComponent<
           width: rect.width,
           height: rect.height,
           left: rect.left,
-          top: rect.top,
+          top: rect.top + scrollDis,
           right: rect.right,
         })
         if (popoverContentRef.current) {
@@ -156,7 +157,7 @@ export const Popover: FunctionComponent<
         width: rect.width,
         height: rect.height,
         left: rect.left,
-        top: rect.top,
+        top: rect.top + scrollDis,
         right: rect.right,
       })
       if (popoverContentRef.current) {
@@ -282,7 +283,7 @@ export const Popover: FunctionComponent<
                     },
                     item.className
                   )}
-                  key={item.key}
+                  key={item.key || index}
                   onClick={() => handleSelect(item, index)}
                 >
                   {item.icon ? item.icon : null}

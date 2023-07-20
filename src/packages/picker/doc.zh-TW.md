@@ -410,16 +410,16 @@ export default App;
 | 名稱 | 說明 | 預設值 |
 | --- | --- | --- |
 | \--nutui-picker-bar-cancel-color | 取消文案的色值 | `#808080` |
-| \--nutui-picker-bar-ok-color | 確認文案的色值 | `$primary-color` |
+| \--nutui-picker-bar-ok-color | 確認文案的色值 | `$color-primary` |
 | \--nutui-picker-bar-cancel-font-size | 取消字號 | `14px` |
 | \--nutui-picker-bar-ok-font-size | 確認字號 | `14px` |
 | \--nutui-picker-bar-button-padding | 取消和確認的padding值 | `0 15px` |
 | \--nutui-picker-bar-title-font-size | 標題字號 | `16px` |
-| \--nutui-picker-bar-title-color | 標題色值 | `$title-color` |
+| \--nutui-picker-bar-title-color | 標題色值 | `$color-title` |
 | \--nutui-picker-bar-title-font-weight | 標題字重 | `normal` |
 | \--nutui-picker-list-height | 面闆高度 | `252px` |
 | \--nutui-picker-item-height | 面闆每一條數據高度 | `36px` |
-| \--nutui-picker-item-text-color | 面闆每一條數據的字色 | `$title-color` |
+| \--nutui-picker-item-text-color | 面闆每一條數據的字色 | `$color-title` |
 | \--nutui-picker-item-active-text-color | 面闆當前選中數據的字色 | `inherit` |
 | \--nutui-picker-item-text-font-size | 面闆每條數據字號 | `14px` |
 | \--nutui-picker-item-active-line-border | 面闆當前選中的border值 | `1px solid #d8d8d8` |

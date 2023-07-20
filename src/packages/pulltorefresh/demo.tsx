@@ -22,8 +22,8 @@ const PullToRefreshDemo = () => {
         <h2>{translated.basic}</h2>
         <PullToRefresh
           style={{
-            backgroundColor: `var(--nutui-gray-0201)`,
-            color: 'var(--nutui-gray-0101)',
+            backgroundColor: `var(--nutui-gray-2)`,
+            color: 'var(--nutui-gray-6)',
           }}
           onRefresh={() =>
             new Promise((resolve) => {

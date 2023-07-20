@@ -531,9 +531,9 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-popover-border-radius | The rounded corner value of the border of the popover content area | `8px` |
 | \--nutui-popover-font-size | The font-size value of the popover content area | `14px` |
-| \--nutui-popover-primary-text-color | Text color of options area | `$title-color` |
+| \--nutui-popover-primary-text-color | Text color of options area | `$color-title` |
 | \--nutui-popover-content-background-color | The background color of the options area | `$white` |
 | \--nutui-popover-border-color| Arrow colors for top, bottom, left and right | `$white` |
-| \--nutui-popover-divider-color | The bottom border color of the options area | `$divider-color` |
-| \--nutui-popover-disable-color | Option Disabled Colors | `$disable-color` |
+| \--nutui-popover-divider-color | The bottom border color of the options area | `$color-divider` |
+| \--nutui-popover-disable-color | Option Disabled Colors | `$color-disabled` |
 | \--nutui-popover-menu-item-padding | The padding value of each item in the option area menu | `8px` |

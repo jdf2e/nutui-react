@@ -315,7 +315,7 @@ export default App;
 | --- | --- | --- | --- |
 | name | 列錶項的標題key值 | `string` | \- |
 | description | 列錶項的描述key值 | `string` | \- |
-| danger | 高亮顏色 | `string` | `$primary-color` |
+| danger | 高亮顏色 | `string` | `$color-primary` |
 | disabled | 禁用狀態 | `string` | `$disabled-color` |
 
 ## 主題定制
@@ -330,5 +330,5 @@ export default App;
 | \--nutui-actionsheet-item-text-align | 列錶項的文字對齊方式 | center |
 | \--nutui-actionsheet-item-border-bottom | 列錶項的底部border | `none` |
 | \--nutui-actionsheet-item-line-height | 列錶項行高 | `24px` |
-| \--nutui-actionsheet-item-color | 列錶項字色 | `$title-color` |
-| \--nutui-actionsheet-item-danger | 列錶項danger字色 | `$primary-color` |
+| \--nutui-actionsheet-item-color | 列錶項字色 | `$color-title` |
+| \--nutui-actionsheet-item-danger | 列錶項danger字色 | `$color-primary` |

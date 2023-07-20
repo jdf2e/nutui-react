@@ -491,8 +491,8 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-uploader-picture-height | The height of the uploaded image | `100px` |
 | \--nutui-uploader-picture-border | The border value of the uploaded image | `0px` | `-` |
 | \--nutui-uploader-picture-border-radius | Border rounded corners of uploaded images | `4px` |
-| \--nutui-uploader-background | The background color of the uploaded image | `$gray4` |
-| \--nutui-uploader-background-disabled | The background color of the disabled state of uploading images | `$gray4` |
+| \--nutui-uploader-background | The background color of the uploaded image | `$color-background` |
+| \--nutui-uploader-background-disabled | The background color of the disabled state of uploading images | `$color-background` |
 | \--nutui-uploader-picture-icon-tip-font-size | The size of the text below the image in the upload area | `12px` |
 | \--nutui-uploader-picture-icon-tip-color | The color of the text below the image in the upload area | `#BFBFBF` |
 | \--nutui-uploader-preview-progress-background | The background color of the upload area preview progress | `rgba(0, 0, 0, 0.65)` |

@@ -195,11 +195,11 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-pagination-color | font color  |  `$primary-color` |
-| \--nutui-pagination-font-size | font size | `$font-size-2` |
-| \--nutui-pagination-item-border-color | border color  | `#e4e7eb` |
-| \--nutui-pagination-disable-color | disable color | `$disable-color` |
-| \--nutui-pagination-disable-background-color | disable background color | `#f7f8fa` |
+| \--nutui-pagination-color | font color  |  `$color-primary` |
+| \--nutui-pagination-font-size | font size | `$font-text` |
+| \--nutui-pagination-item-border-color | border color  | `$color-divider` |
+| \--nutui-pagination-disable-color | disable color | `$color-disabled` |
+| \--nutui-pagination-disable-background-color | disable background color | `$color-disabled` |
 | \--nutui-pagination-item-border-width | border width | `1px` |
 | \--nutui-pagination-item-border-radius | border radius  | `2px` |
 | \--nutui-pagination-prev-next-padding | padding  | `0 11px` |

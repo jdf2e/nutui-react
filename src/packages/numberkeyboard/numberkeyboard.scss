@@ -5,7 +5,7 @@
   padding: $numberkeyboard-padding;
   background-color: $numberkeyboard-background-color;
   user-select: none;
-  background-color: $gray4;
+  background-color: $color-background;
 
   &__header {
     position: relative;
@@ -19,7 +19,7 @@
     font-size: $numberkeyboard-header-font-size;
 
     &__title {
-      color: $title-color;
+      color: $color-title;
       display: inline-block;
     }
 
@@ -52,7 +52,7 @@
       flex-basis: 33%;
       box-sizing: border-box;
       padding: 0 6px 6px 0;
-      background-color: $gray5;
+      background-color: $color-card-background-wrapper;
 
       .key {
         display: flex;
@@ -65,6 +65,7 @@
         color: $numberkeyboard-key-font-color;
         border-radius: $numberkeyboard-key-border-radius;
         cursor: pointer;
+
         &.active {
           background-color: $numberkeyboard-key-active-background-color;
         }
@@ -91,6 +92,7 @@
         font-size: $numberkeyboard-key-confirm-font-size;
         color: $numberkeyboard-key-confirm-font-color;
         background-color: $numberkeyboard-key-confirm-background-color;
+
         &.active {
           background-color: rgba(255, 0, 0, 0.7);
         }

@@ -35,7 +35,7 @@
     }
 
     &--disabled {
-      color: $disable-color;
+      color: $color-disabled;
       border: 1px solid $radio-button-background;
     }
   }
@@ -52,7 +52,7 @@
     color: $radio-label-color;
 
     &--disabled {
-      color: $disable-color;
+      color: $color-disabled;
     }
   }
 
@@ -65,11 +65,11 @@
 
   &__icon {
     &--unchecked {
-      color: $text-color;
+      color: $color-text;
     }
 
     &--disable {
-      color: $disable-color;
+      color: $color-disabled;
     }
   }
 }

@@ -66,7 +66,7 @@ const App = () => {
   return <>
     <ConfigProvider
       theme={{
-        nutuiSearchbarBackground: 'var(--nutui-brand-color)',
+        nutuiSearchbarBackground: 'var(--nutui-color-primary)',
         nutuiSearchbarInputBackground: '#eee',
         nutuiSearchbarInputTextAlign: 'right',
       }}
@@ -234,20 +234,20 @@ export default App;
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-searchbar-width | 搜索框的宽度 | `100%` |
-| \--nutui-searchbar-background | 搜索框背景色 | `$gray6` |
+| \--nutui-searchbar-background | 搜索框背景色 | `$white` |
 | \--nutui-searchbar-padding | 搜索框的padding值 | `9px 10px` |
 | \--nutui-searchbar-content-border-radius | 搜索框内容区圆角 | `2px` |
 | \--nutui-searchbar-left-fontsize | 搜索框外左侧区域字号 | `12px` |
 | \--nutui-searchbar-left-padding | 搜索框外左侧区域padding值 | `0 12px 0 0` |
-| \--nutui-searchbar-left-color | 搜索框外左侧区域字色 | `$gray1` |
+| \--nutui-searchbar-left-color | 搜索框外左侧区域字色 | `$color-title` |
 | \--nutui-searchbar-right-fontsize | 搜索框外右侧区域字号 | `14px` |
 | \--nutui-searchbar-right-padding | 搜索框外右侧区域padding值 | `0 0 0 8px` |
-| \--nutui-searchbar-right-color | 搜索框外右侧区域字色 | `$gray1` |
+| \--nutui-searchbar-right-color | 搜索框外右侧区域字色 | `$color-title` |
 | \--nutui-searchbar-input-height | 搜索框输入区高度 | `32px` |
 | \--nutui-searchbar-input-padding | 搜索框输入区padding | `0 28px` |
 | \--nutui-searchbar-input-background | 搜索框输入区背景色 | `#f7f7f7` |
-| \--nutui-searchbar-input-text-color | 搜索框输入区字色 | `$gray1` |
-| \--nutui-searchbar-input-curror-color | 搜索框输入区输入色 | `$gray1` |
+| \--nutui-searchbar-input-text-color | 搜索框输入区字色 | `$color-title` |
+| \--nutui-searchbar-input-curror-color | 搜索框输入区输入色 | `$color-title` |
 | \--nutui-searchbar-input-width | 搜索框输入区宽度 | `100%` |
 | \--nutui-searchbar-input-text-align | 搜索框输入区对齐方式 | `100%` |
 | \--nutui-searchbar-input-border-radius | 搜索框输入区圆角 | `16px` |

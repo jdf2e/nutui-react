@@ -325,13 +325,13 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-collapse-item-padding | padding | `13px 36px 13px 26px` |
-| \--nutui-collapse-item-font-size | fontSize | `$font-size-2` |
+| \--nutui-collapse-item-font-size | fontSize | `$font-text` |
 | \--nutui-collapse-item-line-height | lineHeight | `24px` |
 | \--nutui-collapse-item-color | font color | `#666666` |
-| \--nutui-collapse-item-disabled-color | disabled color | `#c8c9cc` |
+| \--nutui-collapse-item-disabled-color | disabled color | `$color-disabled` |
 | \--nutui-collapse-item-extra-color | Extra font color | `#666666` |
 | \--nutui-collapse-wrapper-content-background-color | background | `$white` |
 | \--nutui-collapse-wrapper-content-color | content font color | `#666666` |
-| \--nutui-collapse-wrapper-content-font-size | content fontSize | `$font-size-2` |
+| \--nutui-collapse-wrapper-content-font-size | content fontSize | `$font-text` |
 | \--nutui-collapse-wrapper-content-line-height | content lineHeight | `1.5` |
 | \--nutui-collapse-wrapper-content-padding | content padding | `12px 26px` |

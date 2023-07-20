@@ -9,6 +9,7 @@ import {
 } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import '@/packages/countdown/demo.scss'
 
 interface countdownRefState {
   start: () => void
@@ -115,7 +116,7 @@ const CountDownDemo = () => {
     justifyContent: 'center',
     width: '20px',
     height: '25px',
-    background: 'var(--nutui-brand-color)',
+    background: 'var(--nutui-color-primary)',
     color: '#fff',
     fontSize: '14px',
     borderRadius: '6px',
@@ -166,7 +167,11 @@ const CountDownDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <div
+        className={`demo demo-countdown ${
+          Taro.getEnv() === 'WEB' ? 'web' : ''
+        }`}
+      >
         <h2>{translated.basic}</h2>
         <Cell>
           <CountDown

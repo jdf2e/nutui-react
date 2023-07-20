@@ -530,26 +530,26 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-steps-base-line-width | The width of the dividing line | `100%` |
 | \--nutui-steps-base-line-background | The background color of the dividing line | `#909ca4` |
 | \--nutui-steps-base-title-font-size | The font size of the title | `14px` |
-| \--nutui-steps-base-title-color | Title color | `$title-color` |
+| \--nutui-steps-base-title-color | Title color | `$color-title` |
 | \--nutui-steps-base-title-margin-bottom | Title bottom margin | `10px` |
 | \--nutui-steps-base-description-font-size | The font size of the description text | `14px` |
-| \--nutui-steps-base-description-color | The font color of description text | `$text-color` |
+| \--nutui-steps-base-description-color | The font color of description text | `$color-text` |
 | \--nutui-steps-wait-icon-bg-color | Background color of icon container in waiting state | `#959fb1` |
 | \--nutui-steps-wait-icon-color | font color of icon container in waiting state | `$white` |
-| \--nutui-steps-wait-title-color | wait state title font color | `$text-color` |
-| \--nutui-steps-wait-description-color | wait state description font color | `$text-color` |
-| \--nutui-steps-process-icon-bg-color | Process icon container background color | `$primary-color` |
+| \--nutui-steps-wait-title-color | wait state title font color | `$color-text` |
+| \--nutui-steps-wait-description-color | wait state description font color | `$color-text` |
+| \--nutui-steps-process-icon-bg-color | Process icon container background color | `$color-primary` |
 | \--nutui-steps-process-icon-color | Process icon container font color | `$white` |
-| \--nutui-steps-process-title-color | Process title font color | `$primary-color` |
+| \--nutui-steps-process-title-color | Process title font color | `$color-primary` |
 | \--nutui-steps-process-title-font-size | Process title font size | `14px` |
 | \--nutui-steps-process-title-font-weight | Process title font weight | `400` |
-| \--nutui-steps-process-description-color | Process description font color | `$primary-color` |
-| \--nutui-steps-finish-icon-bg-color | background color of finish status icon container | `$primary-text-color` |
-| \--nutui-steps-finish-icon-color | font color of finish status icon container | `$primary-color` |
-| \--nutui-steps-finish-title-color | Font color of finish status title | `$primary-color` |
-| \--nutui-steps-finish-description-color | Font color of finish state description | `$text-color` |
-| \--nutui-steps-finish-line-background | The color of the finishing line | `$primary-color` |
+| \--nutui-steps-process-description-color | Process description font color | `$color-primary` |
+| \--nutui-steps-finish-icon-bg-color | background color of finish status icon container | `$color-primary-text` |
+| \--nutui-steps-finish-icon-color | font color of finish status icon container | `$color-primary` |
+| \--nutui-steps-finish-title-color | Font color of finish status title | `$color-primary` |
+| \--nutui-steps-finish-description-color | Font color of finish state description | `$color-text` |
+| \--nutui-steps-finish-line-background | The color of the finishing line | `$color-primary` |
 | \--nutui-steps-dot-icon-width | Width of dot progress bar dots | `6px` |
 | \--nutui-steps-dot-icon-height | Height of dot icon progress bar | `6px` |
-| \--nutui-steps-dot-icon-border | Dot progress bar dot border | `2px solid $primary-text-color` |
+| \--nutui-steps-dot-icon-border | Dot progress bar dot border | `2px solid $color-primary-text` |
 | \--nutui-steps-dot-head-margin | Dot progress bar dot margin | `7px 0 0 0` |

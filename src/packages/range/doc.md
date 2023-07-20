@@ -436,12 +436,12 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-range-color | 字体颜色 | `$gray1` |
+| \--nutui-range-color | 字体颜色 | `$color-title` |
 | \--nutui-range-margin | 进度条外边距 | `15px` |
 | \--nutui-range-height | 进度条的宽度 | `4px` |
-| \--nutui-range-active-color | 激活颜色 | `$primary-color` |
+| \--nutui-range-active-color | 激活颜色 | `$color-primary` |
 | \--nutui-range-inactive-color | 未激活颜色 | `#fa958c` |
 | \--nutui-range-button-background | 按钮背景 | `$white` |
 | \--nutui-range-button-width | 按钮宽度 | `24px` |
 | \--nutui-range-button-height | 按钮高度 | `24px` |
-| \--nutui-range-button-border | 按钮边框 | `1px solid $primary-color` |
+| \--nutui-range-button-border | 按钮边框 | `1px solid $color-primary` |

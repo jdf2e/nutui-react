@@ -328,21 +328,21 @@ export default Demo
 | --- | --- | --- |
 | \--nutui-timeselect-title-height | title 高度 | `50px` |
 | \--nutui-timeselect-title-line-height | title 行高 | `50px` |
-| \--nutui-timeselect-title-color | title 字体颜色 | `$title-color` |
-| \--nutui-timeselect-title-font-size | title 字体大小 | `$font-size-2` |
-| \--nutui-timeselect-title-background | title 背景 | `$background-color3` |
+| \--nutui-timeselect-title-color | title 字体颜色 | `$color-title` |
+| \--nutui-timeselect-title-font-size | title 字体大小 | `$font-text` |
+| \--nutui-timeselect-title-background | title 背景 | `$color-card-background` |
 | \--nutui-timeselect-date-width | date 宽度 | `140px` |
 | \--nutui-timeselect-date-height | date 高度 | `40px` |
 | \--nutui-timeselect-date-line-height | date 行高 | `40px` |
-| \--nutui-timeselect-date-color | date 字体颜色 | `$text-color` |
-| \--nutui-timeselect-date-active-color | date 激活字体颜色 | `$title-color` |
-| \--nutui-timeselect-date-font-size | date 字体大小 | `$font-size-2` |
+| \--nutui-timeselect-date-color | date 字体颜色 | `$color-text` |
+| \--nutui-timeselect-date-active-color | date 激活字体颜色 | `$color-title` |
+| \--nutui-timeselect-date-font-size | date 字体大小 | `$font-text` |
 | \--nutui-timeselect-time-width | time 宽度 | `100px` |
 | \--nutui-timeselect-time-height | time 高度 | `50px` |
 | \--nutui-timeselect-time-line-height | time 行高 | `50px` |
 | \--nutui-timeselect-time-font-size | time 字体大小 | `14px` |
 | \--nutui-timeselect-time-margin | time 外边距 | `0 10px 10px 0` |
-| \--nutui-timeselect-time-color | time 字体颜色 | `$title-color` |
-| \--nutui-timeselect-time-active-color | time 激活字体颜色 | `$primary-color` |
-| \--nutui-timeselect-time-background | time 背景 | `$background-color` |
-| \--nutui-timeselect-time-active-background | time 激活背景 | `$background-color2` |
+| \--nutui-timeselect-time-color | time 字体颜色 | `$color-title` |
+| \--nutui-timeselect-time-active-color | time 激活字体颜色 | `$color-primary` |
+| \--nutui-timeselect-time-background | time 背景 | `$color-background` |
+| \--nutui-timeselect-time-active-background | time 激活背景 | `$color-card-background-wrapper` |

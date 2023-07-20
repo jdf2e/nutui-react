@@ -18,9 +18,9 @@
       display: flex;
       align-items: center;
       margin-bottom: 20px;
-      font-size: $font-size-1;
+      font-size: $font-help;
       line-height: 14px;
-      color: $title-color;
+      color: $color-title;
 
       &.active {
         font-weight: 500;
@@ -47,7 +47,7 @@
       background: $button-primary-background-color;
       border-radius: 21px;
       font-size: 15px;
-      color: $primary-text-color;
+      color: $color-primary-text;
     }
   }
 }

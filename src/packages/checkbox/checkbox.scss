@@ -24,7 +24,7 @@
   }
 
   &__icon {
-    color: $primary-color;
+    color: $color-primary;
     font-size: $checkbox-icon-font-size;
     transition-duration: 0.3s;
     transition-property: color, border-color, background-color;
@@ -36,12 +36,12 @@
   }
 
   &__icon--indeterminate {
-    color: $primary-color;
+    color: $color-primary;
     font-size: $checkbox-icon-font-size;
   }
 
   &__icon--disable {
-    color: $disable-color;
+    color: $color-disabled;
     font-size: $checkbox-icon-font-size;
   }
 }

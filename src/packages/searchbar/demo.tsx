@@ -90,7 +90,7 @@ const SearchBarDemo = () => {
         <h2>{translated.title3}</h2>
         <ConfigProvider
           theme={{
-            nutuiSearchbarBackground: 'var(--nutui-brand-color)',
+            nutuiSearchbarBackground: 'var(--nutui-color-primary)',
             nutuiSearchbarInputBackground: '#eee',
             nutuiSearchbarInputTextAlign: 'right',
           }}

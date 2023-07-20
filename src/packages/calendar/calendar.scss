@@ -7,7 +7,7 @@
   flex: 1;
   font-size: $calendar-base-font-size;
   background-color: $white;
-  color: $text-color;
+  color: $color-text;
   overflow: hidden;
   height: 100%;
 
@@ -39,7 +39,7 @@
   }
 
   &-title {
-    color: $title-color;
+    color: $color-title;
     font-size: $calendar-title-font-size;
     font-weight: $calendar-title-font-weight;
     line-height: 44px;
@@ -67,7 +67,7 @@
   &-week-item {
     &:first-of-type,
     &:last-of-type {
-      color: $primary-color;
+      color: $color-primary;
     }
   }
 
@@ -94,8 +94,8 @@
       top: -50px;
       left: 0;
       right: 0;
-      font-size: $font-size-1;
-      color: $text-color;
+      font-size: $font-help;
+      color: $color-text;
     }
   }
 
@@ -129,7 +129,7 @@
 
     &:nth-child(7n + 0),
     &:nth-child(7n + 1) {
-      color: $primary-color;
+      color: $color-primary;
     }
 
     &-info-curr {
@@ -161,8 +161,8 @@
     }
 
     &-active {
-      background-color: $primary-color;
-      color: $primary-text-color !important;
+      background-color: $color-primary;
+      color: $color-primary-text !important;
       border-radius: $calendar-day-active-border-radius;
 
       &.active-start {
@@ -178,12 +178,12 @@
       }
 
       .nut-calendar-day-info {
-        color: $primary-text-color;
+        color: $color-primary-text;
       }
     }
 
     &-disabled {
-      color: $disable-color !important;
+      color: $color-disabled !important;
 
       .nut-calendar-day-info-curr {
         display: none;
@@ -192,7 +192,7 @@
 
     &-choose-disabled {
       background-color: $calendar-choose-disable-background-color;
-      color: $disable-color !important;
+      color: $color-disabled !important;
 
       .nut-calendar-day-info-curr {
         display: none;
@@ -201,7 +201,7 @@
 
     &-choose {
       background-color: $calendar-choose-background-color;
-      color: $primary-color;
+      color: $color-primary;
     }
   }
 
@@ -218,7 +218,7 @@
       margin: 10px 18px;
       border-radius: 22px;
       background: $button-primary-background-color;
-      color: $primary-text-color;
+      color: $color-primary-text;
       text-align: center;
       line-height: 44px;
     }

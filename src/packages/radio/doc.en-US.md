@@ -270,21 +270,21 @@ The component provides the following CSS Variables, which can be used for custom
 | --- | --- | --- |
 | \--nutui-radio-icon-font-size | icon font size | `18px` |
 | \--nutui-radio-label-font-size | font size | `14px` |
-| \--nutui-radio-label-color | font color | `$title-color` |
-| \--nutui-radio-label-font-active-color | The selected font color in the button state | `$primary-color` |
+| \--nutui-radio-label-color | font color | `$color-title` |
+| \--nutui-radio-label-font-active-color | The selected font color in the button state | `$color-primary` |
 | \--nutui-radio-label-margin-left | left margin of label | `6px` |
 
 | \--nutui-radio-button-font-size | shape is the font size of the button | `12px` |
-| \--nutui-radio-button-color | button font color | `$text-color` |
-| \--nutui-radio-button-background | shape is the background color of the button | `$base-bg-color` |
+| \--nutui-radio-button-color | button font color | `$color-text` |
+| \--nutui-radio-button-background | shape is the background color of the button | `$color-background` |
 | \--nutui-radio-button-padding | The shape is the padding of the button | `5px 18px` |
 | \--nutui-radio-button-border-radius | The shape is the rounded corner of the button | `15px` |
-| \--nutui-radio-button-active-border-color | shape is the border color of the button | `$primary-color` |
-| \--nutui-radio-button-active-background | shape is the background color of the button | `$brand-color-light-bg-color` |
+| \--nutui-radio-button-active-border-color | shape is the border color of the button | `$color-primary` |
+| \--nutui-radio-button-active-background | shape is the background color of the button | `$color-brand-light-bg-color` |
 
-| \--nutui-radio-button-disabled-active-background | Selected and disabled background color in button mode | `$disable-color` |
+| \--nutui-radio-button-disabled-active-background | Selected and disabled background color in button mode | `$color-disabled` |
 | \--nutui-radio-button-disabled-active-color | The font color that is selected and disabled in button mode | `$white` |
-| \--nutui-radio-button-disabled-active-border-color | Selected and disabled border color in button mode | `$disable-color` |
+| \--nutui-radio-button-disabled-active-border-color | Selected and disabled border color in button mode | `$color-disabled` |
 
 | \--nutui-radiogroup-radio-margin | Margin of each radio in Group mode | `0 20px 5px 0` |
 | \--nutui-radiogroup-radio-label-margin | Label margin in each radio in Group mode | `0 5px 0 5px` |

@@ -7,7 +7,7 @@
     padding: $collapse-item-padding;
     font-size: $collapse-item-font-size;
     line-height: $collapse-item-line-height;
-    background-color: $background-color3;
+    background-color: $color-card-background;
     box-sizing: border-box;
 
     &::after {
@@ -45,7 +45,7 @@
     display: flex;
     padding-right: 40px;
     position: relative;
-    color: $text-color;
+    color: $color-text;
   }
 
   &__icon {

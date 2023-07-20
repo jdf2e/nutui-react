@@ -5,6 +5,7 @@ import { useTranslate } from '../../sites/assets/locale'
 import Button from '../button'
 import Grid from '../grid'
 import GridItem from '../griditem'
+import './demo.scss'
 
 interface countdownRefState {
   start: () => void
@@ -111,7 +112,7 @@ const CountDownDemo = () => {
     justifyContent: 'center',
     width: '20px',
     height: '25px',
-    background: 'var(--nutui-brand-color)',
+    background: 'var(--nutui-color-primary)',
     color: '#fff',
     fontSize: '14px',
     borderRadius: '6px',
@@ -161,7 +162,7 @@ const CountDownDemo = () => {
   }
   return (
     <>
-      <div className="demo">
+      <div className="demo demo-countdown">
         <h2>{translated.basic}</h2>
         <Cell>
           <CountDown

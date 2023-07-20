@@ -263,6 +263,6 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-overlay-bg-color | 遮罩層背景顏色 | `$gray7` |
-| \--nutui-overlay-content-bg-color | 遮罩層嵌套內容背景顏色 | `$gray6` |
-| \--nutui-overlay-content-color | 遮罩層嵌套內容字體顏色 | `$gray1` |
+| \--nutui-overlay-bg-color | 遮罩層背景顏色 | `$color-mask` |
+| \--nutui-overlay-content-bg-color | 遮罩層嵌套內容背景顏色 | `$white` |
+| \--nutui-overlay-content-color | 遮罩層嵌套內容字體顏色 | `$color-title` |

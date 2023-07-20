@@ -6,8 +6,8 @@
   height: 100%;
   overflow: hidden;
   box-sizing: border-box;
-  background-color: $background-color;
-  color: $title-color;
+  background-color: $color-background;
+  color: $color-title;
 
   .barrage-item {
     width: 120px;
@@ -22,7 +22,7 @@
     transform: translateX(100%);
     background: linear-gradient(
       to right,
-      var(--nutui-gray-0301),
+      var(--nutui-black-2),
       rgba(0, 0, 0, 0)
     );
     box-sizing: border-box;

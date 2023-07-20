@@ -11,6 +11,7 @@
 
   &.switch-close {
     background-color: $switch-inactive-background-color;
+
     .close-line {
       background: $switch-close-line-background-color;
       border-radius: 2px;
@@ -22,13 +23,14 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: $primary-text-color;
+    background: $color-primary-text;
     transition: transform 0.3s;
   }
 
   &__label {
-    color: $primary-text-color;
-    font-size: $font-size-1;
+    color: $color-primary-text;
+    font-size: $font-help;
+
     &.open {
       transform: translateX(-16px);
     }

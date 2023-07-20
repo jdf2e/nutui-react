@@ -566,15 +566,19 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default | 
 | --- | --- | --- | 
-| \--nutui-elevator-list-inner-bg-color | Floor area background color | `$gray6` | 
-| \--nutui-elevator-list-item-highcolor | Floor area list item font highlighted color | `$primary-color` | 
+| \--nutui-elevator-list-inner-bg-color | Floor area background color | `$white` | 
+| \--nutui-elevator-list-item-highcolor | Floor area list item font highlighted color | `$color-primary` | 
 | \--nutui-elevator-list-item-font-size | Floor area list item font size | `12px` | 
-| \--nutui-elevator-list-item-font-color | Floor area list item font color | `$gray1` | 
+| \--nutui-elevator-list-item-font-color | Floor area list item font color | `$color-title` | 
 | \--nutui-elevator-list-item-name-padding | Floor area list item inside margin | `0 20px` | 
 | \--nutui-elevator-list-item-name-height | Height of floor area list item | `30px` | 
 | \--nutui-elevator-list-item-name-line-height | Floor area list item row height | `30px` | 
 | \--nutui-elevator-list-item-code-font-size | Floor area list item heading font size | `14px` | 
+<<<<<<< HEAD
+| \--nutui-elevator-list-item-code-font-color | Floor area list item heading color | `$color-title` | 
+=======
 | \--nutui-elevator-list-item-code-font-color | Floor area list item heading color | `$gray1` | 
+>>>>>>> next-theme
 | \--nutui-elevator-list-item-code-font-weight | Floor area list item heading font size | `500` | 
 | \--nutui-elevator-list-item-code-padding | Floor area list item heading inside margin | `0 20px` | 
 | \--nutui-elevator-list-item-code-height | Floor area list item heading height | `35px` | 
@@ -594,10 +598,10 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-elevator-list-item-bars-background-color | Elevator floor background color | `#eeeff2` | 
 | \--nutui-elevator-list-item-bars-border-radius | Elevator floor fillet size | `6px` | 
 | \--nutui-elevator-list-item-bars-text-align | Elevator floor text alignment | `center` | 
-| \--nutui-elevator-list-item-bars-inner-item-active-color | The elevator floor highlights the text color | `$primary-color` | 
+| \--nutui-elevator-list-item-bars-inner-item-active-color | The elevator floor highlights the text color | `$color-primary` | 
 | \--nutui-elevator-list-item-bars-z-index | Elevator level | `1` | 
 | \--nutui-elevator-list-item-bars-inner-item-padding | Inside margin of elevator floor identification item | `3px` | 
 | \--nutui-elevator-list-item-bars-inner-item-font-size | Elevator floor identification item font size | `10px` | 
-| \--nutui-elevator-list-fixed-color | Ceiling floor text color | `$primary-color` | 
+| \--nutui-elevator-list-fixed-color | Ceiling floor text color | `$color-primary` | 
 | \--nutui-elevator-list-fixed-bg-color | Ceiling floor background color | `$white` | 
 | \--nutui-elevator-list-fixed-box-shadow | Ceiling floor shadow | `0 0 10px #eee` |

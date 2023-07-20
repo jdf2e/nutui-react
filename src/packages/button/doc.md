@@ -274,8 +274,8 @@ export default App;
 | \--nutui-button-border-radius | 按钮的圆角设置 | `25px` |
 | \--nutui-button-border-width | 按钮的边框宽度 | `1px` |
 | \--nutui-button-default-bg-color | type 为 default 的按钮的背景色 | `$white` |
-| \--nutui-button-default-border-color | type 为 default 的按钮的边框色 | `$text-color` |
-| \--nutui-button-default-color | type 为 default 的按钮的文本色 | `$title-color` |
+| \--nutui-button-default-border-color | type 为 default 的按钮的边框色 | `$color-text` |
+| \--nutui-button-default-color | type 为 default 的按钮的文本色 | `$color-title` |
 | \--nutui-button-default-padding | type 为 default 的按钮的内边距 | `0 18px` |
 | \--nutui-button-mini-padding | size 为 mini 的按钮的内边距 | `0 12px` |
 | \--nutui-button-mini-height | size 为 mini 的按钮的高度 | `24px` |
@@ -288,10 +288,10 @@ export default App;
 | \--nutui-button-block-height | block 的按钮的高度 | `48px` |
 | \--nutui-button-block-line-height | block 的按钮的行高 | `46px` |
 | \--nutui-button-default-line-height | type 为 default 的按钮的行高 | `36px` |
-| \--nutui-button-default-font-size | type 为 default 的按钮的字号 | `$font-size-2` |
+| \--nutui-button-default-font-size | type 为 default 的按钮的字号 | `$font-text` |
 | \--nutui-button-large-font-size | size 为 large 的按钮的字号 | `$button-default-font-size` |
-| \--nutui-button-small-font-size | size 为 small 的按钮的字号 | `$font-size-1` |
-| \--nutui-button-mini-font-size | size 为 mini 的按钮的字号 | `$font-size-1` |
+| \--nutui-button-small-font-size | size 为 small 的按钮的字号 | `$font-help` |
+| \--nutui-button-mini-font-size | size 为 mini 的按钮的字号 | `$font-help` |
 | \--nutui-button-mini-line-height | size 为 mini 的按钮的行高 | `1.2` |
 | \--nutui-button-text-icon-margin-left | 带 icon按钮的文本的左边距 | `5px` |
 | \--nutui-button-text-icon-large-margin-left | size 为 large 按钮的文本的左边距 | `10px` |
@@ -299,7 +299,7 @@ export default App;
 | \--nutui-button-text-icon-mini-margin-left | size 为 mini 按钮的文本的左边距 | `1px` |
 | \--nutui-button-disabled-opacity | disabled 状态下按钮的透明度 | `0.68` |
 | \--nutui-button-primary-color | type 为 primary 按钮的文本颜色 | `$white` |
-| \--nutui-button-primary-border-color | type 为 primary 按钮的边框颜色 | `$primary-color` |
+| \--nutui-button-primary-border-color | type 为 primary 按钮的边框颜色 | `$color-primary` |
 | \--nutui-button-info-color | type 为 info 按钮的文本颜色 | `$white` |
 | \--nutui-button-info-border-color | type 为 info 按钮的边框颜色 | `#496af2` |
 | \--nutui-button-success-color | type 为 success 按钮的文本颜色 | `$white` |

@@ -1,7 +1,7 @@
 @import '../popup/popup.scss';
 
 .nut-picker {
-  background-color: $background-color3;
+  background-color: $color-card-background;
   width: 100%;
 
   &__control {
@@ -125,7 +125,7 @@
     position: absolute;
     top: 0;
     width: 100%;
-    color: $title-color;
+    color: $color-title;
   }
 
   &-roller-item-title {
@@ -134,7 +134,7 @@
     height: 36px;
     line-height: 36px;
     text-align: center;
-    color: $title-color;
+    color: $color-title;
     font-size: $picker-bar-title-font-size;
   }
 

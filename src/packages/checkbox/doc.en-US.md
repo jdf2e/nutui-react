@@ -534,7 +534,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-checkbox-label-color | text color of label | `$gray1` |
+| \--nutui-checkbox-label-color | text color of label | `$color-title` |
 | \--nutui-checkbox-label-disable-color | disabled color for label | `#999` |
 | \--nutui-checkbox-icon-disable-color | Default icon disable color | `#d6d6d6` |
 | \--nutui-checkbox-label-margin-left | left margin of label | `15px` |

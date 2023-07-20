@@ -45,7 +45,7 @@
       background: $white;
 
       &-item__text {
-        color: $title-color;
+        color: $color-title;
       }
     }
 
@@ -71,6 +71,7 @@
 
   &__left {
     left: 0;
+
     &__back {
       display: flex;
       align-items: center;
