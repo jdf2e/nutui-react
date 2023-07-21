@@ -1,3 +1,10 @@
+# v2.0.6
+`2023-07-21`
+
+* :bug: fix(Address): 修复Address组件通过点击CloseIcon和Overlay关闭后，无法再次打开的问题 (#1233) @Tralafalgar Wang
+* :bug: fix(button): 渐变色导致边框出现重叠 (#1250) @oasis-cloud
+
+
 # v2.0.5
 `2023-07-19`
 
