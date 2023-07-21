@@ -97,7 +97,6 @@ export const Tour: FunctionComponent<
   const classes = classNames(className, classPrefix)
 
   useEffect(() => {
-    console.log('showModel', isShowModel)
     if (isShowModel) {
       getRootPosition()
     }
@@ -107,9 +106,10 @@ export const Tour: FunctionComponent<
   }, [isShowModel])
 
   useEffect(() => {
-    console.log('aaaa')
-    setShowPopup(true)
-    getRootPosition()
+    if (isShowModel) {
+      setShowPopup(true)
+      getRootPosition()
+    }
   }, [active])
 
   const getRootPosition = () => {
@@ -150,12 +150,6 @@ export const Tour: FunctionComponent<
       setActive(active - 1)
     }
     setShowPopup(false)
-    // nextTick(() => {
-    //   state.showPopup = true;
-    //   getRootPosition();
-    // });
-
-    // emit('change', state.active);
   }
 
   return (
@@ -220,7 +214,10 @@ export const Tour: FunctionComponent<
                                   </div>
                                 )}
                                 {steps.length - 1 === active && (
-                                  <div className="nut-tour-content-bottom-operate-btn active">
+                                  <div
+                                    className="nut-tour-content-bottom-operate-btn active"
+                                    onClick={(e) => maskClose(e)}
+                                  >
                                     {completeTxt}
                                   </div>
                                 )}

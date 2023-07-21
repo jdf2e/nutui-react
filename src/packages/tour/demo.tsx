@@ -12,7 +12,7 @@ const TourDemo = () => {
   const [showTour1, setShowTour1] = useState(false)
   const [showTour2, setShowTour2] = useState(false)
   const [showTour3, setShowTour3] = useState(false)
-  const [showTour4, setShowTour4] = useState(false)
+  const [showTour4, setShowTour4] = useState(true)
   const steps = [
     {
       content: '70+ 高质量组件，覆盖移动端主流场景',
