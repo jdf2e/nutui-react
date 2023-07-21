@@ -126,6 +126,11 @@ const zhCN: BaseLang = {
     refreshingText: '加载中...',
     completeText: '刷新成功',
   },
+  tour: {
+    prevStepText: '上一步',
+    completeText: '完成',
+    nextStepText: '下一步',
+  },
   watermark: {
     errorCanvasTips: '当前环境不支持Canvas',
   },

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { useTranslate } from '../../sites/assets/locale'
 import Cell from '@/packages/cell'
 import Switch from '@/packages/switch'
 import Divider from '@/packages/divider'
@@ -7,7 +8,64 @@ import { Tour } from './tour'
 
 import './demo.scss'
 
+interface T {
+  title1: string
+  title2: string
+  title3: string
+  title4: string
+  title5: string
+  clickTry: string
+  stepContent1: string
+  stepContent2: string
+  stepContent3: string
+  stepContent4: string
+  customContent: string
+  btnContent: string
+  tabTitle1: string
+  tabTitle2: string
+  tabTitle3: string
+  tabTitle4: string
+}
 const TourDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      title1: '基础用法',
+      title2: '自定义样式',
+      title3: '设置偏移量',
+      title4: '自定义内容',
+      title5: '步骤引导',
+      clickTry: '点击试试',
+      stepContent1: '70+ 高质量组件，覆盖移动端主流场景',
+      stepContent2: '支持一套代码同时开发多端小程序+H5',
+      stepContent3: '基于京东APP 10.0 视觉规范',
+      stepContent4: '支持定制主题，内置 700+ 个主题变量',
+      customContent: 'nutui 4.x 即将发布，敬请期待',
+      btnContent: '知道了',
+      tabTitle1: '首页',
+      tabTitle2: '分类',
+      tabTitle3: '购物车',
+      tabTitle4: '我的',
+    },
+    'en-US': {
+      title1: 'Basic Usage',
+      title2: 'Custom Style',
+      title3: 'Custom Offset',
+      title4: 'Custom Content',
+      title5: 'Steps',
+      clickTry: 'click to try',
+      stepContent1: '70+ high-quality components',
+      stepContent2: 'Support a set of codes to develop',
+      stepContent3: 'Based on JD APP 10.0',
+      stepContent4: 'Support custom theme, built-in 700+ theme variables',
+      customContent: 'nutui 4.x will be released soon, so stay tuned',
+      btnContent: 'knew',
+      tabTitle1: 'page',
+      tabTitle2: 'sort',
+      tabTitle3: 'cart',
+      tabTitle4: 'mine',
+    },
+  })
+
   const [showTour, setShowTour] = useState(false)
   const [showTour1, setShowTour1] = useState(false)
   const [showTour2, setShowTour2] = useState(false)
@@ -15,21 +73,21 @@ const TourDemo = () => {
   const [showTour4, setShowTour4] = useState(true)
   const steps = [
     {
-      content: '70+ 高质量组件，覆盖移动端主流场景',
+      content: translated.stepContent1,
       target: 'target',
     },
   ]
 
   const steps1 = [
     {
-      content: '70+ 高质量组件，覆盖移动端主流场景',
+      content: translated.stepContent1,
       target: 'target1',
     },
   ]
 
   const steps2 = [
     {
-      content: '支持一套代码同时开发多端小程序+H5',
+      content: translated.stepContent2,
       target: 'target2',
       popoverOffset: [40, 12],
       arrowOffset: -36,
@@ -44,20 +102,20 @@ const TourDemo = () => {
 
   const steps4 = [
     {
-      content: '70+ 高质量组件，覆盖移动端主流场景',
+      content: translated.stepContent1,
       target: 'target4',
     },
     {
-      content: '支持一套代码同时开发多端小程序+H5',
+      content: translated.stepContent2,
       target: 'target5',
     },
     {
-      content: '基于京东APP 10.0 视觉规范',
+      content: translated.stepContent3,
       target: 'target6',
       location: 'top-end',
     },
     {
-      content: '支持定制主题，内置 700+ 个主题变量',
+      content: translated.stepContent4,
       target: 'target7',
       location: 'top-end',
     },
@@ -86,9 +144,9 @@ const TourDemo = () => {
   return (
     <>
       <div className="demo">
-        <h2>基础用法</h2>
+        <h2>{translated.title1}</h2>
         <Cell
-          title="点击试试"
+          title={translated.clickTry}
           extra={
             <Switch
               id="target"
@@ -107,9 +165,9 @@ const TourDemo = () => {
           location="bottom-end"
         />
 
-        <h2>自定义样式</h2>
+        <h2>{translated.title2}</h2>
         <Cell
-          title="点击试试"
+          title={translated.clickTry}
           extra={
             <Switch
               id="target1"
@@ -136,9 +194,9 @@ const TourDemo = () => {
           maskHeight={50}
         />
 
-        <h2>设置偏移量</h2>
+        <h2>{translated.title3}</h2>
         <Cell
-          title="点击试试"
+          title={translated.clickTry}
           onClick={() => {
             setShowTour2(true)
           }}
@@ -175,9 +233,9 @@ const TourDemo = () => {
           offset={[8, 8]}
         />
 
-        <h2>自定义内容</h2>
+        <h2>{translated.title4}</h2>
         <Cell
-          title="点击试试"
+          title={translated.clickTry}
           extra={
             <Switch
               id="target3"
@@ -203,30 +261,30 @@ const TourDemo = () => {
           closeOnOverlayClick={false}
         >
           <div className="tour-demo-custom-content">
-            <div>nutui 4.x 即将发布，敬请期待</div>
+            <div>{translated.customContent}</div>
             <Divider direction="vertical" />
             <div
               onClick={() => {
                 setShowTour3(false)
               }}
             >
-              知道了
+              {translated.btnContent}
             </div>
           </div>
         </Tour>
 
-        <h2>步骤引导</h2>
+        <h2>{translated.title5}</h2>
         <Cell
-          title="点击试试"
+          title={translated.clickTry}
           onClick={() => {
             setShowTour4(true)
           }}
         />
         <Tabbar fixed>
-          <Tabbar.Item id="target4" title="首页" />
-          <Tabbar.Item id="target5" title="分类" />
-          <Tabbar.Item id="target6" title="购物车" />
-          <Tabbar.Item id="target7" title="我的" />
+          <Tabbar.Item id="target4" title={translated.tabTitle1} />
+          <Tabbar.Item id="target5" title={translated.tabTitle2} />
+          <Tabbar.Item id="target6" title={translated.tabTitle3} />
+          <Tabbar.Item id="target7" title={translated.tabTitle4} />
         </Tabbar>
         <Tour
           className="nut-custom-tour"

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, FunctionComponent } from 'react'
+import React, { useState, useEffect, ReactNode, FunctionComponent } from 'react'
 import type { MouseEvent } from 'react'
 import { Close } from '@nutui/icons-react'
 import classNames from 'classnames'
@@ -6,6 +6,7 @@ import Popover from '@/packages/popover'
 import { PopoverLocation } from '@/packages/popover/popover'
 import { getRect } from '@/utils/use-client-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { useConfig } from '@/packages/configprovider'
 
 import './tour.scss'
 
@@ -29,9 +30,9 @@ export interface TourProps extends BasicComponent {
   offset: number[]
   steps: StepOptions[]
   showTitleBar: boolean
-  nextStepTxt: string
-  prevStepTxt: string
-  completeTxt: string
+  nextStepText: ReactNode
+  prevStepText: ReactNode
+  completeText: ReactNode
   showPrevStep: boolean
   closeOnOverlayClick: boolean
   onClose: (e: MouseEvent<HTMLDivElement>) => void
@@ -46,9 +47,9 @@ const defaultProps = {
   maskHeight: '',
   offset: [8, 10],
   showTitleBar: true,
-  nextStepTxt: '下一步',
-  prevStepTxt: '上一步',
-  completeTxt: '完成',
+  nextStepText: '',
+  prevStepText: '',
+  completeText: '',
   showPrevStep: true,
   closeOnOverlayClick: true,
 } as TourProps
@@ -57,6 +58,7 @@ const classPrefix = 'nut-tour'
 export const Tour: FunctionComponent<
   Partial<TourProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
+  const { locale } = useConfig()
   const {
     children,
     className,
@@ -71,9 +73,9 @@ export const Tour: FunctionComponent<
     maskWidth,
     maskHeight,
     offset,
-    nextStepTxt,
-    prevStepTxt,
-    completeTxt,
+    nextStepText,
+    prevStepText,
+    completeText,
     onClose,
     ...rest
   } = {
@@ -210,7 +212,7 @@ export const Tour: FunctionComponent<
                                     className="nut-tour-content-bottom-operate-btn"
                                     onClick={() => changeStep('prev')}
                                   >
-                                    {prevStepTxt}
+                                    {prevStepText || locale.tour.prevStepText}
                                   </div>
                                 )}
                                 {steps.length - 1 === active && (
@@ -218,7 +220,7 @@ export const Tour: FunctionComponent<
                                     className="nut-tour-content-bottom-operate-btn active"
                                     onClick={(e) => maskClose(e)}
                                   >
-                                    {completeTxt}
+                                    {completeText || locale.tour.completeText}
                                   </div>
                                 )}
                                 {steps.length - 1 !== active && (
@@ -226,7 +228,7 @@ export const Tour: FunctionComponent<
                                     className="nut-tour-content-bottom-operate-btn active"
                                     onClick={() => changeStep('next')}
                                   >
-                                    {nextStepTxt}
+                                    {nextStepText || locale.tour.nextStepText}
                                   </div>
                                 )}
                               </div>
