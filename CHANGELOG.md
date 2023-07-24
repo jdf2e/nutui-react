@@ -1,3 +1,20 @@
+# v2.0.6
+`2023-07-21`
+
+* :bug: fix(Address): 修复Address组件通过点击CloseIcon和Overlay关闭后，无法再次打开的问题 (#1233) @Tralafalgar Wang
+* :bug: fix(button): 渐变色导致边框出现重叠 (#1250) @oasis-cloud
+
+
+# v2.0.5
+`2023-07-19`
+
+* :bug: fix(sticky): 组件卸载移除 tap 事件改为移除 scroll 事件 (#1235) @oasis-cloud
+* :bug: fix: height is null (#1239) @Liuqh233
+* :bug: fix: 修复popover滑动定位错位的问题 (#1232) @junjun666
+* :sparkles: perf: configProvider 组件性能优化 (#1230) @大喵
+* 🔨 chore: site 内部移除 taro components @oasis-cloud
+
+
 # v2.0.4
 `2023-07-14`
 

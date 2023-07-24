@@ -89,7 +89,7 @@ const App = () => {
 
   return (
     <>
-      <Cell title="Choose Address" description={text}  onClick={()=>setVisible(true)} />
+      <Cell title="Choose Address" description={text}  onClick={() => setVisible(true)} />
         <Address
           visible={visible}
           options={optionsDemo1}
@@ -97,6 +97,7 @@ const App = () => {
           onChange={(value, params) => {
             setText(value)
           }}
+          onClose={() => setVisible(false)}
         />
     </>
   );
@@ -120,7 +121,7 @@ const App = () => {
   const [text, setText] = useState('Choose Address')
   const [visible, setVisible] = useState(false)
   const [value2] = useState(['FuJian', 'FuZhou', 'TaiJiang'])
-    const [optionsDemo2] = useState([
+  const [optionsDemo2] = useState([
     {
       value1: 'ZheJiang',
       text1: 'ZheJiang',
@@ -186,7 +187,7 @@ const App = () => {
 
   return (
     <>
-      <Cell title="Choose Address" description={text}  onClick={()=>setVisible(true)} />
+      <Cell title="Choose Address" description={text}  onClick={() => setVisible(true)} />
       <Address
         visible={visible}
         defaultValue={value2}
@@ -199,6 +200,7 @@ const App = () => {
         onChange={(value, params) => {
           setText(value)
         }}
+        onClose={() => setVisible(false)}
       />
     </>
   );
@@ -271,13 +273,14 @@ const App = () => {
 
   return (
     <>
-      <Cell title="Choose Address" description={text}  onClick={()=>setVisible(true)} />
+      <Cell title="Choose Address" description={text}  onClick={() => setVisible(true)} />
         <Address
           visible={visible}
           type="exist"
           existList={existList}
           onExistSelect={selectedTwo}
           title="Delivery"
+          onClose={() => setVisible(false)}
         />
     </>
   );
@@ -353,7 +356,7 @@ const App = () => {
 
   return (
     <>
-      <Cell title="Choose Address" description={text}  onClick={()=>setCustomImg(true)} />
+      <Cell title="Choose Address" description={text}  onClick={() => setVisible(true)} />
         <Address
           visible={visible}
           type="exist"
@@ -361,6 +364,7 @@ const App = () => {
           onExistSelect={selectedThree}
           defaultIcon={icon.defaultIcon}
           selectIcon={icon.selectIcon}
+          onClose={() => setVisible(false)}
         />
     </>
   );
@@ -458,7 +462,7 @@ const App = () => {
 
   return (
     <>
-      <Cell title="Choose Address" description={text}  onClick={()=>setOther(true)} />
+      <Cell title="Choose Address" description={text}  onClick={() => setVisible(true)} />
       <Address
         visible={showPopup.other}
         type="exist"
@@ -473,6 +477,7 @@ const App = () => {
         onChange={(value, params) => {
           setText(value)
         }}
+        onClose={() => setVisible(false)}
       />
     </>
   );
@@ -490,6 +495,7 @@ export default App;
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | visible | Whether to open address | `boolean` | `-` |
+| defaultVisible | Initial open/close state of the address selection | `boolean` | - |
 | type | Choose type: exist/custom | `string` | `custom` |
 | existList | Exist address list data | `Array` | `[]` |
 | defaultIcon | Exist address default icon | `ReactNode` | `-` |
@@ -499,5 +505,15 @@ export default App;
 | custom | Whether to change custom address | `boolean` \| `string` | `true` |
 | onExistSelect | Emitted when to selected exist address | `(data: AddressList) => void` | `-` |
 | onSwitch | Click to select another address or custom address to select the upper left corner of the return button triggered | `(data: { type: string }) => void` | `-` |
+| onClose | Fired when the component is closed | `-` | `-` |
+
+### Ref
+
+You can get the Address instance and call instance methods through ref.
+
+| Method | Description | Parameter |
+| ----- | ----- | -- |
+| open | Open address selection | `-` |
+| close | Close address selection | `-` |
 
 More properties in Cascader.
