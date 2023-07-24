@@ -6,6 +6,7 @@ import React, {
   useCallback,
   ReactNode,
 } from 'react'
+import type { TouchEvent } from 'react'
 import classNames from 'classnames'
 import { useTouch } from '@/utils/use-touch'
 import { getRect } from '@/utils/use-client-rect'
@@ -245,7 +246,7 @@ export const Range: FunctionComponent<
     }
   }
 
-  const onTouchStart = (event: any) => {
+  const onTouchStart = (event: TouchEvent<HTMLDivElement>) => {
     if (disabled) {
       return
     }
@@ -260,7 +261,7 @@ export const Range: FunctionComponent<
     setDragStatus('start')
   }
 
-  const onTouchMove = (event: TouchEvent) => {
+  const onTouchMove = (event: TouchEvent<HTMLDivElement>) => {
     event.stopPropagation()
     if (disabled || !root.current) {
       return
@@ -295,7 +296,7 @@ export const Range: FunctionComponent<
     updateValue(newValue)
   }
 
-  const onTouchEnd = (event: TouchEvent) => {
+  const onTouchEnd = () => {
     if (disabled) {
       return
     }
@@ -366,16 +367,16 @@ export const Range: FunctionComponent<
                     index === 0 ? 'nut-range-button-wrapper-left' : ''
                   }
                   ${index === 1 ? 'nut-range-button-wrapper-right' : ''}`}
-                  onTouchStart={(e: any) => {
+                  onTouchStart={(e) => {
                     if (typeof index === 'number') {
                       // 实时更新当前拖动的按钮索引
                       setButtonIndex(index)
                     }
                     onTouchStart(e)
                   }}
-                  onTouchMove={(e: any) => onTouchMove(e)}
-                  onTouchEnd={(e: any) => onTouchEnd(e)}
-                  onTouchCancel={(e: any) => onTouchEnd(e)}
+                  onTouchMove={(e) => onTouchMove(e)}
+                  onTouchEnd={onTouchEnd}
+                  onTouchCancel={onTouchEnd}
                   onClick={(e) => e.stopPropagation()}
                 >
                   {renderButton(index)}
@@ -386,9 +387,9 @@ export const Range: FunctionComponent<
             <div
               className="nut-range-button-wrapper"
               onTouchStart={(e) => onTouchStart(e)}
-              onTouchMove={(e: any) => onTouchMove(e)}
-              onTouchEnd={(e: any) => onTouchEnd(e)}
-              onTouchCancel={(e: any) => onTouchEnd(e)}
+              onTouchMove={(e) => onTouchMove(e)}
+              onTouchEnd={onTouchEnd}
+              onTouchCancel={onTouchEnd}
               onClick={(e) => e.stopPropagation()}
             >
               {renderButton()}
