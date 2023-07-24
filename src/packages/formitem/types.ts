@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 export interface FormItemRuleWithoutValidator {
   [key: string]: any
   regex?: RegExp
@@ -19,7 +21,7 @@ export interface BaseFormField {
   /**
    * label 标签的文本
    */
-  label: string
+  label: ReactNode
   /**
    * 校验规则，设置字段的校验逻辑
    */

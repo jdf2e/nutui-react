@@ -65,6 +65,7 @@
   &--solid {
     color: $button-primary-color;
     background: $button-primary-background-color;
+    background-origin: border-box;
     border: $button-border-width solid transparent;
   }
 
@@ -82,6 +83,7 @@
   &--primary {
     color: $button-primary-color;
     background: $button-primary-background-color;
+    background-origin: border-box;
     border: $button-border-width solid transparent;
 
     &.nut-button--outline {
@@ -98,6 +100,7 @@
   &--info {
     color: $button-info-color;
     background: $button-info-background-color;
+    background-origin: border-box;
     border: $button-border-width solid transparent;
 
     &.nut-button--outline {
@@ -114,6 +117,7 @@
   &--success {
     color: $button-success-color;
     background: $button-success-background-color;
+    background-origin: border-box;
     border: $button-border-width solid transparent;
 
     &.nut-button--outline {
@@ -130,6 +134,7 @@
   &--danger {
     color: $button-danger-color;
     background: $button-danger-background-color;
+    background-origin: border-box;
     border: $button-border-width solid transparent;
 
     &.nut-button--outline {
@@ -146,6 +151,7 @@
   &--warning {
     color: $button-warning-color;
     background: $button-warning-background-color;
+    background-origin: border-box;
     border: $button-border-width solid transparent;
 
     &.nut-button--outline {
