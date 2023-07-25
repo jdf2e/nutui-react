@@ -1,17 +1,17 @@
-# Tour 引导
+# Tour
 
-### 介绍
+### Intro
 
-用于引导用户了解产品功能的气泡组件。
+A bubble component used to guide the user through the product's capabilities.
 
-## 安装
+## Install
 
 ```tsx
 import { Tour } from '@nutui/nutui-react';
 ```
 
-## 代码演示
-### 基础用法
+## Demo
+### Basic Usage
 
 :::demo
 
@@ -28,7 +28,7 @@ const App = () => {
 
   const steps = [
     {
-      content: '70+ 高质量组件，覆盖移动端主流场景',
+      content: '70+ high-quality components',
       target: 'target',
     },
   ]
@@ -36,7 +36,7 @@ const App = () => {
   return (
     <>
       <Cell
-        title="点击试试"
+        title="click to try"
         extra={
           <Switch
             id="target"
@@ -62,7 +62,7 @@ export default App;
 
 :::
 
-### 自定义样式
+### Custom Style
 
 :::demo
 
@@ -79,7 +79,7 @@ const App = () => {
 
   const steps = [
     {
-      content: '70+ 高质量组件，覆盖移动端主流场景',
+      content: '70+ high-quality components',
       target: 'target',
     },
   ]
@@ -87,7 +87,7 @@ const App = () => {
   return (
     <>
       <Cell
-        title="点击试试"
+        title="click to try"
         extra={
           <Switch
             id="target"
@@ -121,7 +121,7 @@ export default App;
 
 :::
 
-### 设置偏移量
+### Custom Offset
 
 :::demo
 
@@ -138,7 +138,7 @@ const App = () => {
 
   const steps = [
     {
-      content: '支持一套代码同时开发多端小程序+H5',
+      content: 'Support a set of codes to develop',
       target: 'target',
       popoverOffset: [40, 12],
       arrowOffset: -36,
@@ -148,7 +148,7 @@ const App = () => {
   return (
     <>
       <Cell
-        title="点击试试"
+        title="click to try"
         extra={
           <div className="tour-demo-img">
             <img
@@ -189,7 +189,7 @@ export default App;
 
 :::
 
-### 自定义内容
+### Custom Content
 
 :::demo
 
@@ -213,7 +213,7 @@ const App = () => {
   return (
     <>
       <Cell
-        title="点击试试"
+        title="click to try"
         extra={
           <Switch
             id="target"
@@ -238,14 +238,14 @@ const App = () => {
         closeOnOverlayClick={false}
       >
         <div className="tour-demo-custom-content">
-          <div>nutui 4.x 即将发布，敬请期待</div>
+          <div>nutui 4.x will be released soon, so stay tuned</div>
           <Divider direction="vertical" />
           <div
             onClick={() => {
               setShowTour(false)
             }}
           >
-            知道了
+            knew
           </div>
         </div>
       </Tour>
@@ -257,7 +257,7 @@ export default App;
 
 :::
 
-### 步骤引导
+### Steps
 
 :::demo
 
@@ -274,20 +274,20 @@ const App = () => {
 
   const steps = [
     {
-      content: '70+ 高质量组件，覆盖移动端主流场景',
+      content: '70+ high-quality components',
       target: 'target4',
     },
     {
-      content: '支持一套代码同时开发多端小程序+H5',
+      content: 'Support a set of codes to develop',
       target: 'target5',
     },
     {
-      content: '基于京东APP 10.0 视觉规范',
+      content: 'Based on JD APP 10.0',
       target: 'target6',
       location: 'top-end',
     },
     {
-      content: '支持定制主题，内置 700+ 个主题变量',
+      content: 'Support custom theme, built-in 700+ theme variables',
       target: 'target7',
       location: 'top-end',
     },
@@ -296,16 +296,16 @@ const App = () => {
   return (
     <>
       <Cell
-        title="点击试试"
+        title="click to try"
         onClick={() => {
           setShowTour(true)
         }}
       />
       <Tabbar fixed>
-        <Tabbar.Item id="target4" title='首页' />
-        <Tabbar.Item id="target5" title='分类' />
-        <Tabbar.Item id="target6" title='购物车' />
-        <Tabbar.Item id="target7" title='我的' />
+        <Tabbar.Item id="target4" title='page' />
+        <Tabbar.Item id="target5" title='sort' />
+        <Tabbar.Item id="target6" title='cart' />
+        <Tabbar.Item id="target7" title='mine' />
       </Tabbar>
       <Tour
         className="nut-custom-tour"
@@ -331,54 +331,54 @@ export default App;
 ### Props
 
 
-| 属性 | 说明 | 类型 | 默认值 |
+| Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| visible | 是否展示引导弹出层 | `boolean` | `false` |
-| type | 引导类型 | `step` \| `tile` | `step` |
-| list | 引导步骤内容 | `ListOptions[]` | `-` |
-| offset | 镂空遮罩相对于目标元素的偏移量 | `number[]` | `[8, 10]` |
-| location | 弹出层位置,同 Popopver 的[location 属性](https://nutui.jd.com/h5/react/2x/#/zh-CN/component/popover) | `string` | `bottom` |
-| next | 下一步按钮文案 | `ReactNode` | `''` |
-| prev | 上一步按钮文案 | `ReactNode` | `''` |
-| complete | 完成按钮文案 | `ReactNode` | `''` |
-| mask | 是否显示镂空遮罩 | `boolean` | `true` |
-| maskWidth | 镂空遮罩层宽度 | `number` \| `string` | `''` |
-| maskHeight | 镂空遮罩层高度 | `number` \| `string` | `''` |
-| closeOnOverlayClick | 是否在点击镂空遮罩层后关闭,同 Popopver 的[closeOnClickOverlay 属性](https://nutui.jd.com/h5/react/2x/#/zh-CN/component/popover) | `boolean` | `true` |
-| showPrev | 是否展示上一步按钮 | `boolean` | `true` |
-| title | 是否展示标题栏 | `ReactNode` | `''` |
-| onClose | 气泡层关闭时触发 | `(e: MouseEvent<HTMLDivElement>) => void` | `-` |
-| onChange | 切换步骤时触发 | `(value: number) => void` | `-` |
+| visible | Whether to display the boot eject layer | `boolean` | `false` |
+| type | Tour type | `step` \| `tile` | `step` |
+| list | Boot Step Content | `ListOptions[]` | `-` |
+| offset | The offset of the hollow mask relative to the target element | `number[]` | `[8, 10]` |
+| location | Location of popover[location ](https://nutui.jd.com/h5/react/2x/#/zh-CN/component/popover) | `string` | `bottom` |
+| next | Next step text | `ReactNode` | `''` |
+| prev | Next step text | `ReactNode` | `''` |
+| complete | Complete text | `ReactNode` | `''` |
+| mask | Whether to display cutout mask | `boolean` | `true` |
+| maskWidth | Width of hollow mask | `number` \| `string` | `''` |
+| maskHeight | Hollow mask height | `number` \| `string` | `''` |
+| closeOnOverlayClick | Whether to close when clicking overlay,[closeOnClickOverlay](https://nutui.jd.com/h5/react/2x/#/zh-CN/component/popover) | `boolean` | `true` |
+| showPrev | Whether to show prev button | `boolean` | `true` |
+| title | Whether to show title bar | `ReactNode` | `''` |
+| onClose | Emit when popover close | `(e: MouseEvent<HTMLDivElement>) => void` | `-` |
+| onChange | Emit when step change | `(value: number) => void` | `-` |
 
 ### ListOptions
 
 
-| 属性 | 说明 | 类型 | 默认值 |
+| Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| target | 目标对象 | `Element` \| `string` | `-` |
-| content | 气泡层内容 | `string` | `-` |
-| location | 弹出层位置 | `string` | `-` |
-| popoverOffset | 气泡层偏移量 | `number[]` | `-` |
-| arrowOffset | 小箭头的偏移量 | `number` | `-` |
+| target | 	target dom | `Element` \| `string` | `-` |
+| content | popover content | `string` | `-` |
+| location | Location of popover | `string` | `-` |
+| popoverOffset | Offset of popopver | `number[]` | `-` |
+| arrowOffset | Offset of arrow | `number` | `-` |
 
-## 主题定制
+## Theming
 
-### 样式变量
+### CSS Variables
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| 名称 | 说明 | 默认值 |
+| Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-tour-mask-border-radius | 遮罩层的border-radius值 | `10px` |
-| \--nutui-tour-content-min-width | 内容区的min-width值 | `200px` |
-| \--nutui-tour-content-padding | 内容区的padding值 | `10px 12px` |
-| \--nutui-tour-content-inner-margin | 内容区内部的margin值 | `10px 0px` |
-| \--nutui-tour-content-inner-font-size | 内容区内部的font-size值 | `14px` |
-| \--nutui-tour-content-bottom-margin-top | 内容区底部的margin-top值 | `10px` |
-| \--nutui-tour-content-bottom-btn-margin-left | 内容区底部按钮的margin-left值 | `4px` |
-| \--nutui-tour-content-bottom-btn-padding | 内容区底部按钮的padding值 | `2px 4px` |
-| \--nutui-tour-content-bottom-btn-font-size | 内容区底部按钮的font-size值 | `12px` |
-| \--nutui-tour-content-bottom-btn-border-radius | 内容区底部按钮的border-radius值 | `4px` |
+| \--nutui-tour-mask-border-radius | The border-radius value of the mask layer | `10px` |
+| \--nutui-tour-content-min-width | The min-width value of the content area | `200px` |
+| \--nutui-tour-content-padding | The padding value of the content area | `10px 12px` |
+| \--nutui-tour-content-inner-margin | The margin value inside the content area | `10px 0px` |
+| \--nutui-tour-content-inner-font-size | The font-size value inside the content area | `14px` |
+| \--nutui-tour-content-bottom-margin-top | margin-top value at the bottom of the content area | `10px` |
+| \--nutui-tour-content-bottom-btn-margin-left | The margin-left value of the button at the bottom of the content area | `4px` |
+| \--nutui-tour-content-bottom-btn-padding | The padding value of the button at the bottom of the content area | `2px 4px` |
+| \--nutui-tour-content-bottom-btn-font-size | The font-size value of the button at the bottom of the content area | `12px` |
+| \--nutui-tour-content-bottom-btn-border-radius | The border-radius value of the button at the bottom of the content area | `4px` |
 
 
 

@@ -10,7 +10,7 @@ import { useConfig } from '@/packages/configprovider'
 
 import './tour.scss'
 
-interface StepOptions {
+interface ListOptions {
   target: Element | string
   content?: string
   location?: string
@@ -21,62 +21,65 @@ interface StepOptions {
 type TourType = 'step' | 'tile'
 
 export interface TourProps extends BasicComponent {
-  isShowModel: boolean
+  visible: boolean
   type: TourType
   location: PopoverLocation | string
   mask: boolean
   maskWidth: number | string
   maskHeight: number | string
   offset: number[]
-  steps: StepOptions[]
-  showTitleBar: boolean
-  nextStepText: ReactNode
-  prevStepText: ReactNode
-  completeText: ReactNode
-  showPrevStep: boolean
+  list: ListOptions[]
+  title: ReactNode
+  next: ReactNode
+  prev: ReactNode
+  complete: ReactNode
+  showPrev: boolean
   closeOnOverlayClick: boolean
   onClose: (e: MouseEvent<HTMLDivElement>) => void
+  onChange: (value: number) => void
 }
 const defaultProps = {
   ...ComponentDefaults,
-  isShowModel: false,
+  visible: false,
   type: 'step',
   location: 'bottom',
   mask: true,
   maskWidth: '',
   maskHeight: '',
   offset: [8, 10],
-  showTitleBar: true,
-  nextStepText: '',
-  prevStepText: '',
-  completeText: '',
-  showPrevStep: true,
+  title: '',
+  next: '',
+  prev: '',
+  complete: '',
+  showPrev: true,
   closeOnOverlayClick: true,
 } as TourProps
 
 const classPrefix = 'nut-tour'
 export const Tour: FunctionComponent<
-  Partial<TourProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<TourProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'title' | 'onChange'>
 > = (props) => {
   const { locale } = useConfig()
   const {
     children,
     className,
-    showTitleBar,
+    title,
     closeOnOverlayClick,
-    showPrevStep,
-    steps,
+    showPrev,
+    list,
     type,
     location,
-    isShowModel,
+    visible,
     mask,
     maskWidth,
     maskHeight,
     offset,
-    nextStepText,
-    prevStepText,
-    completeText,
+    next,
+    prev,
+    complete,
     onClose,
+    onChange,
     ...rest
   } = {
     ...defaultProps,
@@ -99,23 +102,23 @@ export const Tour: FunctionComponent<
   const classes = classNames(className, classPrefix)
 
   useEffect(() => {
-    if (isShowModel) {
+    if (visible) {
       getRootPosition()
     }
     setActive(0)
-    setShowTour(isShowModel)
-    setShowPopup(isShowModel)
-  }, [isShowModel])
+    setShowTour(visible)
+    setShowPopup(visible)
+  }, [visible])
 
   useEffect(() => {
-    if (isShowModel) {
+    if (visible) {
       setShowPopup(true)
       getRootPosition()
     }
   }, [active])
 
   const getRootPosition = () => {
-    const el: any = document.querySelector(`#${steps[active].target}`)
+    const el: any = document.querySelector(`#${list[active].target}`)
     const rect = getRect(el)
     setMaskRect(rect)
   }
@@ -148,8 +151,10 @@ export const Tour: FunctionComponent<
   const changeStep = (type: string) => {
     if (type === 'next') {
       setActive(active + 1)
+      onChange && onChange(active + 1)
     } else {
       setActive(active - 1)
+      onChange && onChange(active - 1)
     }
     setShowPopup(false)
   }
@@ -161,7 +166,7 @@ export const Tour: FunctionComponent<
         style={{ display: showTour ? 'block' : 'none' }}
         onClick={handleClickMask}
       />
-      {steps.map((item, index) => {
+      {list.map((item, index) => {
         return (
           <div key={index} style={{ height: 0 }}>
             {index === active && (
@@ -192,7 +197,7 @@ export const Tour: FunctionComponent<
                       <>
                         {type === 'step' && (
                           <div className="nut-tour-content">
-                            {showTitleBar && (
+                            {title && (
                               <div className="nut-tour-content-top">
                                 <div onClick={(e) => maskClose(e)}>
                                   <Close className="nut-tour-content-top-close" />
@@ -204,31 +209,31 @@ export const Tour: FunctionComponent<
                             </div>
                             <div className="nut-tour-content-bottom">
                               <div className="nut-tour-content-bottom-init">
-                                {active + 1}/{steps.length}
+                                {active + 1}/{list.length}
                               </div>
                               <div className="nut-tour-content-bottom-operate">
-                                {active !== 0 && showPrevStep && (
+                                {active !== 0 && showPrev && (
                                   <div
                                     className="nut-tour-content-bottom-operate-btn"
                                     onClick={() => changeStep('prev')}
                                   >
-                                    {prevStepText || locale.tour.prevStepText}
+                                    {prev || locale.tour.prevStepText}
                                   </div>
                                 )}
-                                {steps.length - 1 === active && (
+                                {list.length - 1 === active && (
                                   <div
                                     className="nut-tour-content-bottom-operate-btn active"
                                     onClick={(e) => maskClose(e)}
                                   >
-                                    {completeText || locale.tour.completeText}
+                                    {complete || locale.tour.completeText}
                                   </div>
                                 )}
-                                {steps.length - 1 !== active && (
+                                {list.length - 1 !== active && (
                                   <div
                                     className="nut-tour-content-bottom-operate-btn active"
                                     onClick={() => changeStep('next')}
                                   >
-                                    {nextStepText || locale.tour.nextStepText}
+                                    {next || locale.tour.nextStepText}
                                   </div>
                                 )}
                               </div>

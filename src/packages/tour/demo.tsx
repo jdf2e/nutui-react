@@ -158,9 +158,9 @@ const TourDemo = () => {
         />
         <Tour
           className="nut-custom-tour nut-customword-tour"
-          isShowModel={showTour}
+          visible={showTour}
           onClose={closeTour}
-          steps={steps}
+          list={steps}
           type="tile"
           location="bottom-end"
         />
@@ -179,9 +179,9 @@ const TourDemo = () => {
         />
         <Tour
           className="nut-custom-tour nut-customword-tour nut-customstyle-tour"
-          isShowModel={showTour1}
+          visible={showTour1}
           onClose={closeTour1}
-          steps={steps1}
+          list={steps1}
           type="tile"
           location="bottom-end"
           style={{
@@ -220,9 +220,9 @@ const TourDemo = () => {
         />
         <Tour
           className="nut-custom-tour nut-customword-tour"
-          isShowModel={showTour2}
+          visible={showTour2}
           onClose={closeTour2}
-          steps={steps2}
+          list={steps2}
           type="tile"
           location="bottom-end"
           style={{
@@ -247,9 +247,9 @@ const TourDemo = () => {
         />
         <Tour
           className="nut-custom-tour nut-customword-tour"
-          isShowModel={showTour3}
+          visible={showTour3}
           onClose={closeTour3}
-          steps={steps3}
+          list={steps3}
           type="tile"
           location="bottom-end"
           offset={[8, 8]}
@@ -288,9 +288,9 @@ const TourDemo = () => {
         </Tabbar>
         <Tour
           className="nut-custom-tour"
-          isShowModel={showTour4}
+          visible={showTour4}
           onClose={closeTour4}
-          steps={steps4}
+          list={steps4}
           location="top-start"
           offset={[0, 0]}
           maskWidth={60}
