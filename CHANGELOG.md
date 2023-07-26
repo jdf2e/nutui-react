@@ -1,3 +1,12 @@
+# v2.0.7
+`2023-07-26`
+
+* :sparkles: feat: formitem label 支持 reactnode (#1254) @oasis-cloud
+* :sparkles: feat: uploader 添加上传的响应数据 (#1251) @逍遥
+* 🔨 chore: 优化 any 类型 (#1222) @junjun666
+* 📖 docs(SearchBar): 补充 onClear 属性说明 (#1256) @Tralafalgar Wang
+
+
 # v2.0.6
 `2023-07-21`
 
