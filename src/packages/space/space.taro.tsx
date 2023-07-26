@@ -16,7 +16,6 @@ export interface SpaceProps extends BasicComponent {
     | 'evenly'
     | 'stretch'
   wrap: boolean
-  onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 const defaultProps = {
   direction: 'horizontal',
