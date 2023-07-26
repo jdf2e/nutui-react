@@ -1,6 +1,5 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { useConfig } from '@/packages/configprovider'
 import { BasicComponent } from '@/utils/typings'
 
 const prefixCls = 'nut-space'
@@ -26,12 +25,12 @@ const defaultProps = {
 export const Space: FunctionComponent<
   Partial<SpaceProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { locale } = useConfig()
-  const { children, onClick, wrap, align, direction, justify } = {
+  const { className, style, children, wrap, align, direction, justify } = {
     ...defaultProps,
     ...props,
   }
   const cls = classNames(
+    className,
     prefixCls,
     wrap && `${prefixCls}-wrap`,
     direction && `${prefixCls}-${direction}`,
@@ -39,7 +38,7 @@ export const Space: FunctionComponent<
     justify && `${prefixCls}-justify-${justify}`
   )
   return (
-    <div className={cls}>
+    <div className={cls} style={style}>
       {React.Children.map(children, (child) => {
         return (
           child !== null &&

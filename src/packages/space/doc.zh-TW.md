@@ -1,18 +1,18 @@
-# Space 间距
+# Space 間距
 
-### 介绍
+### 介紹
 
-元素排列中保持相同的宽度。
+元素排列中保持相同的寬度。
 
-### 安装
+### 安裝
 
 ```tsx
 import { Space } from '@nutui/nutui-react';
 ```
 
-## 代码演示
+## 代碼演示
 
-### 基础用法
+### 基礎用法
 
 :::demo
 
@@ -24,7 +24,7 @@ import { Space, Button } from '@nutui/nutui-react';
  const App = () => {
   return (
     <Space>
-      <Button>按钮1</Button>
+      <Button>按鈕1</Button>
       <Button>按钮2</Button>
       <Button>按钮3</Button>
     </Space>
@@ -34,7 +34,7 @@ export default App;
 
 ```
 
-### 换行
+### 換行
 
 :::demo
 
@@ -45,7 +45,7 @@ import { Space, Button } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Space wrap>
-      <Button>按钮1</Button>
+      <Button>按鈕1</Button>
       <Button>按钮2</Button>
       <Button>按钮3</Button>
       <Button>按钮4</Button>
@@ -69,7 +69,7 @@ import { Space, Button } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Space direction="vertical">
-      <Button>按钮1</Button>
+      <Button>按鈕1</Button>
       <Button>按钮2</Button>
       <Button>按钮3</Button>
     </Space>
@@ -79,7 +79,7 @@ export default App;
 
 ```
 
-### 间距大小
+### 間距大小
 
 :::demo
 
@@ -95,7 +95,7 @@ const App = () => {
       }}
     >
       <Space direction="vertical">
-        <Button>按钮1</Button>
+        <Button>按鈕1</Button>
         <Button>按钮2</Button>
         <Button>按钮3</Button>
       </Space>
@@ -110,19 +110,19 @@ export default App;
 
 ### Props
 
-| 属性 | 说明                       | 类型                                                                  | 默认值                            |
-| --- |--------------------------|---------------------------------------------------------------------|--------------------------------|
-| direction | 间距方向                     | ` vertical \|   horizontal`                                         | horizontal |
-| align | 交叉轴对齐方式                  | `start \| end \|center \| baseline`                                 | `-`                            |
-| justify | 主轴对齐方式                   | `start  \| end \| center \| between \| around \| evenly \| stretch` | `-`                            |
-| wrap | 是否自动换行，仅在 horizontal 时有效 | `boolean / false`                                                   | `-`                            |
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| direction | 間距方嚮 | `'vertical'｜ 'horizontal'` | `'horizontal'` |
+| align | 交叉軸對齊方式 | `'start'｜'end'｜'center'｜'baseline'` | `-` |
+| justify | 主軸對齊方式 | `'start' ｜ 'end' ｜ 'center' ｜ 'between' ｜ 'around' ｜ 'evenly' ｜ 'stretch'` | `-` |
+| wrap | 是否自動換行，僅在 horizontal 時有效 | `boolean / false` | `-` |
 
-## 主题定制
+## 主題定制
 
-### 样式变量
+### 樣式變量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](/components/config-provider)。
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名称 | 默认值 | 描述 |
+| 名稱 | 默認值 | 說明 |
 | --- | --- | --- |
 | \--nutui-space-gap | `8px` | 间距大小 |
