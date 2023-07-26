@@ -1,4 +1,4 @@
-# Card
+# ProductCard
 
 ## Intro
 
@@ -7,7 +7,7 @@ Used to display product pictures, prices and other information.
 ## Install
 
 ```tsx
-import { Card, Price, Tag } from '@nutui/nutui-react'
+import { ProductCard, Price, Tag } from '@nutui/nutui-react'
 ```
 
 ## Demo
@@ -18,7 +18,7 @@ import { Card, Price, Tag } from '@nutui/nutui-react'
 
 ```tsx
 import React from 'react'
-import { Card, Price, Tag } from '@nutui/nutui-react'
+import { ProductCard, Price, Tag } from '@nutui/nutui-react'
 
 const App = () => {
   const state = {
@@ -31,7 +31,7 @@ const App = () => {
     shopName: 'shopName>',
   }
   return (
-    <Card
+    <ProductCard
       src={state.src}
       title={state.title}
       price={state.price}
@@ -53,7 +53,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Card, Price, Tag } from '@nutui/nutui-react'
+import { ProductCard, Price, Tag } from '@nutui/nutui-react'
 
 const App = () => {
   const state = {
@@ -76,7 +76,7 @@ const App = () => {
     marginRight: '5px',
   }
   return (
-    <Card
+    <ProductCard
       src={state.src}
       title={state.title}
       price={state.price}
@@ -116,7 +116,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Card, Price, Tag } from '@nutui/nutui-react'
+import { ProductCard, Price, Tag } from '@nutui/nutui-react'
 
 const App = () => {
   const state = {
@@ -136,7 +136,7 @@ const App = () => {
     height: '14px',
   }
   return (
-    <Card
+    <ProductCard
       src={state.src}
       title={state.title}
       price={state.price}
@@ -165,7 +165,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Card, Price, Tag } from '@nutui/nutui-react'
+import { ProductCard, Price, Tag } from '@nutui/nutui-react'
 
 const App = () => {
   const state = {
@@ -178,7 +178,7 @@ const App = () => {
     shopName: 'shopName>',
   }
   return (
-    <Card
+    <ProductCard
       src={state.src}
       title={state.title}
       price={state.price}
@@ -201,7 +201,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Card, Price, Tag } from '@nutui/nutui-react'
+import { ProductCard, Price, Tag } from '@nutui/nutui-react'
 
 const App = () => {
   const state = {
@@ -215,7 +215,7 @@ const App = () => {
   }
 
   return (
-    <Card
+    <ProductCard
       src={state.src}
       title={state.title}
       price={state.price}
@@ -232,7 +232,7 @@ export default App
 
 :::
 
-## Card
+## ProductCard
 
 ### Props
 
@@ -258,6 +258,6 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-card-font-size-0 | The font size of the card label | `$font-size-0` |
-| \--nutui-card-left-border-radius | The size of the rounded corners of the card picture | `0` |
-| \--nutui-card-left-background-color | The background color of the card picture | `inherit` |
+| \--nutui-productcard-font-size-0 | The font size of the card label | `$font-size-0` |
+| \--nutui-productcard-left-border-radius | The size of the rounded corners of the card picture | `0` |
+| \--nutui-productcard-left-background-color | The background color of the card picture | `inherit` |

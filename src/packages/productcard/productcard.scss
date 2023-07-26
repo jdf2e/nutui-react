@@ -2,30 +2,30 @@
 @import '../tag/tag.scss';
 @import '../../styles/mixins/text-ellipsis.scss';
 
-.nut-card {
+.nut-productcard {
   width: 100%;
   display: flex;
-  .nut-card__left {
+  .nut-productcard__left {
     width: 120px;
     height: 120px;
     flex-shrink: 0;
-    background-color: $card-left-background-color;
-    border-radius: $card-left-border-radius;
+    background-color: $productcard-left-background-color;
+    border-radius: $productcard-left-border-radius;
     > img {
       display: block;
       width: 100%;
       height: 100%;
     }
   }
-  .nut-card__right {
+  .nut-productcard__right {
     flex: 1;
     padding: 0 10px 8px;
-    .nut-card__right-title {
+    .nut-productcard__right-title {
       @include moreline-ellipsis();
       line-height: 1.5;
       font-size: 14px;
     }
-    .nut-cardright-price {
+    .nut-productcardright-price {
       display: flex;
       align-items: center;
       height: 18px;
@@ -41,7 +41,7 @@
           font-size: 12px;
         }
       }
-      .nut-cardright-price-origin {
+      .nut-productcardright-price-origin {
         &.nut-price {
           margin-left: 2px;
           color: #d2a448;
@@ -54,21 +54,21 @@
         }
       }
     }
-    .nut-cardright-other {
+    .nut-productcardright-other {
       display: flex;
       align-items: center;
       padding: 5px 0 2px;
       .nut-tag {
         padding: 0 2px;
         margin-right: 5px;
-        font-size: $font-size-0;
+        font-size: $productcard-font-size-0;
       }
     }
-    .nut-cardright-shop {
+    .nut-productcardright-shop {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      .nut-cardright-shop-name {
+      .nut-productcardright-shop-name {
         line-height: 1.5;
         color: #999;
         font-size: 12px;

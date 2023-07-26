@@ -4,7 +4,7 @@ import Price from '@/packages/price/index.taro'
 import Tag from '@/packages/tag/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export interface CardProps extends BasicComponent {
+export interface ProductCardProps extends BasicComponent {
   src: string
   title: string
   price: string
@@ -30,9 +30,9 @@ const defaultProps = {
   tag: '',
   priceTag: '',
   extra: '',
-} as CardProps
-export const Card: FunctionComponent<
-  Partial<CardProps> & React.HTMLAttributes<HTMLDivElement>
+} as ProductCardProps
+export const ProductCard: FunctionComponent<
+  Partial<ProductCardProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const {
     className,
@@ -53,7 +53,7 @@ export const Card: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const classPrefix = 'nut-card'
+  const classPrefix = 'nut-productcard'
   return (
     <div className={classNames(classPrefix, className)} style={style} {...rest}>
       <div className={`${classPrefix}__left`}>
@@ -89,5 +89,5 @@ export const Card: FunctionComponent<
   )
 }
 
-Card.defaultProps = defaultProps
-Card.displayName = 'NutCard'
+ProductCard.defaultProps = defaultProps
+ProductCard.displayName = 'NutCard'

@@ -3,7 +3,7 @@ import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import { Card } from '../card'
+import { ProductCard } from '../productcard'
 
 test('props test', () => {
   const state = {
@@ -17,7 +17,7 @@ test('props test', () => {
     shopName: '阳澄湖大闸蟹自营店>',
   }
   const { container } = render(
-    <Card
+    <ProductCard
       src={state.src}
       title={state.title}
       price={state.price}
@@ -30,11 +30,11 @@ test('props test', () => {
   const priceDoms = container.querySelectorAll('.nut-price__integer-normal')
   const tagDoms = container.querySelectorAll('.nut-tag')
   expect(
-    container.querySelector('.nut-card__left img')?.getAttribute('src')
+    container.querySelector('.nut-productcard__left img')?.getAttribute('src')
   ).toBe(state.src)
-  expect(container.querySelector('.nut-card__right-title')).toContainHTML(
-    state.title
-  )
+  expect(
+    container.querySelector('.nut-productcard__right-title')
+  ).toContainHTML(state.title)
   expect(priceDoms[0].innerHTML).toBe(state.price)
   expect(priceDoms[1].innerHTML).toBe(state.vipPrice)
   expect(tagDoms[0]).toContainHTML(
@@ -43,9 +43,9 @@ test('props test', () => {
   expect(tagDoms[1]).toContainHTML(
     `<div class="nut-tag nut-tag--default nut-tag--plain"><span class="nut-tag-text">${state.delivery}</span></div>`
   )
-  expect(container.querySelector('.nut-cardright-shop-name')).toContainHTML(
-    state.shopName
-  )
+  expect(
+    container.querySelector('.nut-productcardright-shop-name')
+  ).toContainHTML(state.shopName)
   expect(container).toMatchSnapshot()
 })
 
@@ -62,7 +62,7 @@ test('description slot test', () => {
   }
 
   const { container } = render(
-    <Card
+    <ProductCard
       src={state.src}
       title={state.title}
       price={state.price}
@@ -103,7 +103,7 @@ test('priceTag slot test', () => {
     'https://img11.360buyimg.com/jdphoto/s58x28_jfs/t9451/359/415622649/15318/b0943e5d/59a78495N3bd2a9f8.png'
 
   const { container } = render(
-    <Card
+    <ProductCard
       src={state.src}
       title={state.title}
       price={state.price}
@@ -115,7 +115,9 @@ test('priceTag slot test', () => {
     />
   )
   expect(
-    container.querySelector('.nut-cardright-price img')?.getAttribute('src')
+    container
+      .querySelector('.nut-productcardright-price img')
+      ?.getAttribute('src')
   ).toBe(plusIconUrl)
   expect(container).toMatchSnapshot()
 })
@@ -133,7 +135,7 @@ test('tag slot test', () => {
   }
 
   const { container } = render(
-    <Card
+    <ProductCard
       src={state.src}
       title={state.title}
       price={state.price}
@@ -144,9 +146,9 @@ test('tag slot test', () => {
       tag={<div>这里是自定义区域</div>}
     />
   )
-  expect(container.querySelector('.nut-cardright-other')?.innerHTML).toBe(
-    '<div>这里是自定义区域</div>'
-  )
+  expect(
+    container.querySelector('.nut-productcardright-other')?.innerHTML
+  ).toBe('<div>这里是自定义区域</div>')
   expect(container).toMatchSnapshot()
 })
 
@@ -163,7 +165,7 @@ test('extra slot test', () => {
   }
 
   const { container } = render(
-    <Card
+    <ProductCard
       src={state.src}
       title={state.title}
       price={state.price}
@@ -176,7 +178,7 @@ test('extra slot test', () => {
   )
   expect(
     container
-      .querySelectorAll('.nut-cardright-shop div')[1]
+      .querySelectorAll('.nut-productcardright-shop div')[1]
       ?.getAttribute('style')
   ).toBe('font-size: 12px;')
   expect(container).toMatchSnapshot()

@@ -102,7 +102,7 @@ const subPackages = [
     root: 'business',
     pages: [
       'pages/barrage/index',
-      'pages/card/index',
+      'pages/productcard/index',
       'pages/timeselect/index',
       'pages/trendarrow/index',
       'pages/watermark/index',

@@ -15,7 +15,7 @@ export default {
     'check',
     'close',
     'clock',
-    'credit-card',
+    'credit-productcard',
     'download-cloud',
     'download',
     'equalizer',

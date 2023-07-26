@@ -1927,11 +1927,17 @@ $sku-product-img-border-radius: var(
   0
 ) !default;
 
-// card（✅）
-$card-font-size-0: var(--nutui-card-font-size-0, $font-size-0) !default;
-$card-left-border-radius: var(--nutui-card-left-border-radius, 0) !default;
-$card-left-background-color: var(
-  --nutui-card-left-background-color,
+// productcard（✅）
+$productcard-font-size-0: var(
+  --nutui-productcard-font-size-0,
+  $font-size-0
+) !default;
+$productcard-left-border-radius: var(
+  --nutui-productcard-left-border-radius,
+  0
+) !default;
+$productcard-left-background-color: var(
+  --nutui-productcard-left-background-color,
   inherit
 ) !default;
 

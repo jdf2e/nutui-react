@@ -1,8 +1,6 @@
 import React from 'react'
-import Taro from '@tarojs/taro'
-import { Card } from '@/packages/nutui.react.taro'
-import { useTranslate } from '@/sites/assets/locale/taro'
-import Header from '@/sites/components/header'
+import { ProductCard } from './productcard'
+import { useTranslate } from '../../sites/assets/locale'
 
 interface T {
   basic: string
@@ -12,13 +10,14 @@ interface T {
   customPro3: string
   title: string
   customShop: string
+  customPriceIcon: string
   customFooter: string
   customContent: string
   description: string
   delivery: string
   shopName: string
 }
-const CardDemo = () => {
+const ProductCardDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
       basic: '基础用法',
@@ -29,6 +28,7 @@ const CardDemo = () => {
       title:
         '【活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水',
       customShop: '自定义店铺介绍',
+      customPriceIcon: '价格后自定义标签',
       customFooter: '自定义右下角内容',
       customContent: '自定义',
       description: '自营',
@@ -44,6 +44,7 @@ const CardDemo = () => {
       title:
         '【活蟹】湖塘煙雨 陽澄湖大閘蟹公4.5兩 母3.5兩 4對8只 鮮活生鮮螃蟹現貨水產禮盒海鮮水',
       customShop: '自定義店鋪介紹',
+      customPriceIcon: '價格後自定義標簽',
       customFooter: '自定義右下角內容',
       customContent: '自定義',
       description: '自營',
@@ -58,6 +59,7 @@ const CardDemo = () => {
       customPro3: 'tag',
       title: 'title',
       customShop: 'Custom Content',
+      customPriceIcon: 'Price after custom tag',
       customFooter: 'Customize bottom right content',
       customContent: 'custom',
       description: 'description',
@@ -94,10 +96,9 @@ const CardDemo = () => {
   }
   return (
     <>
-      <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <div className="demo">
         <h2>{translated.basic}</h2>
-        <Card
+        <ProductCard
           src={state.src}
           title={state.title}
           price={state.price}
@@ -107,7 +108,7 @@ const CardDemo = () => {
           shopName={state.shopName}
         />
         <h2>{translated.customProduct}</h2>
-        <Card
+        <ProductCard
           src={state.src}
           title={state.title}
           price={state.price}
@@ -138,8 +139,8 @@ const CardDemo = () => {
             </div>
           }
         />
-        <h2>{translated.customProduct}</h2>
-        <Card
+        <h2>{translated.customPriceIcon}</h2>
+        <ProductCard
           src={state.src}
           title={state.title}
           price={state.price}
@@ -156,7 +157,7 @@ const CardDemo = () => {
           }
         />
         <h2>{translated.customShop}</h2>
-        <Card
+        <ProductCard
           src={state.src}
           title={state.title}
           price={state.price}
@@ -167,7 +168,7 @@ const CardDemo = () => {
           tag={<div>{translated.customShop}</div>}
         />
         <h2>{translated.customFooter}</h2>
-        <Card
+        <ProductCard
           src={state.src}
           title={state.title}
           price={state.price}
@@ -184,4 +185,4 @@ const CardDemo = () => {
   )
 }
 
-export default CardDemo
+export default ProductCardDemo

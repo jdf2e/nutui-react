@@ -1,4 +1,4 @@
-# Card 商品卡片
+# ProductCard 商品卡片
 
 ## 介绍
 
@@ -7,7 +7,7 @@
 ## 安装
 
 ```tsx
-import { Card, Price, Tag } from '@nutui/nutui-react-taro'
+import { ProductCard, Price, Tag } from '@nutui/nutui-react'
 ```
 
 ## 代码演示
@@ -18,7 +18,7 @@ import { Card, Price, Tag } from '@nutui/nutui-react-taro'
 
 ```tsx
 import React from 'react'
-import { Card, Price, Tag } from '@nutui/nutui-react-taro'
+import { ProductCard, Price, Tag } from '@nutui/nutui-react'
 
 const App = () => {
   const state = {
@@ -32,7 +32,7 @@ const App = () => {
     shopName: '阳澄湖大闸蟹自营店>',
   }
   return (
-    <Card
+    <ProductCard
       src={state.src}
       title={state.title}
       price={state.price}
@@ -54,7 +54,7 @@ export default App
 
 ```tsx
 import React from "react";
-import { Card, Price, Tag } from '@nutui/nutui-react-taro';
+import { ProductCard, Price, Tag } from '@nutui/nutui-react';
 
 const App = () => {
   const state = {
@@ -78,7 +78,7 @@ const App = () => {
     marginRight: '5px',
   }
   return (
-    <Card
+    <ProductCard
       src = { state.src }
   title = { state.title }
   price = { state.price }
@@ -110,7 +110,7 @@ export default App;
 
 ```tsx
 import React from 'react'
-import { Card, Price, Tag } from '@nutui/nutui-react-taro'
+import { ProductCard, Price, Tag } from '@nutui/nutui-react'
 
 const App = () => {
   const state = {
@@ -131,7 +131,7 @@ const App = () => {
     height: '14px',
   }
   return (
-    <Card
+    <ProductCard
       src={state.src}
       title={state.title}
       price={state.price}
@@ -160,7 +160,7 @@ export default App
 
 ```tsx
 import React from "react";
-import { Card, Price, Tag } from '@nutui/nutui-react-taro';
+import { ProductCard, Price, Tag } from '@nutui/nutui-react';
 
 const App = () => {
   const state = {
@@ -174,7 +174,7 @@ const App = () => {
     shopName: '阳澄湖大闸蟹自营店>',
   }
   return (
-    <Card
+    <ProductCard
         src = { state.src }
         title = { state.title }
         price = { state.price }
@@ -182,7 +182,7 @@ const App = () => {
         shopDescription = { state.shopDescription }
         delivery = { state.delivery }
         shopName = { state.shopName }
-        tag = { <div> 自定义店铺介绍 </div>}> </Card>
+        tag = { <div> 自定义店铺介绍 </div>}> </ProductCard>
     );
 };
 export default App;
@@ -196,7 +196,7 @@ export default App;
 
 ```tsx
 import React from "react";
-import { Card, Price, Tag } from '@nutui/nutui-react-taro';
+import { ProductCard, Price, Tag } from '@nutui/nutui-react';
 
 const App = () => {
   const state = {
@@ -211,7 +211,7 @@ const App = () => {
   }
 
   return (
-    <Card
+    <ProductCard
        src = { state.src }
         title = { state.title }
         price = { state.price }
@@ -227,7 +227,7 @@ export default App;
 
 :::
 
-## Card
+## ProductCard
 
 ### Props
 
@@ -253,6 +253,6 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-card-font-size-0 | 卡片标签的字体大小 | `$font-size-0` |
-| \--nutui-card-left-border-radius | 卡片图片的圆角大小 | `0` |
-| \--nutui-card-left-background-color | 卡片图片的背景颜色 | `inherit` |
+| \--nutui-productcard-font-size-0 | 卡片标签的字体大小 | `$font-size-0` |
+| \--nutui-productcard-left-border-radius | 卡片图片的圆角大小 | `0` |
+| \--nutui-productcard-left-background-color | 卡片图片的背景颜色 | `inherit` |
