@@ -30,8 +30,8 @@ test('text test', () => {
   expect(el > 0).toBe(true)
 })
 
-test('vertical test', () => {
-  const { container } = render(<Loading vertical>加载中</Loading>)
+test('orientation test', () => {
+  const { container } = render(<Loading direction="vertical">加载中</Loading>)
   expect(container.querySelector('.nut-loading')).toHaveClass(
     'nut-loading-vertical'
   )
@@ -55,7 +55,7 @@ test('text size test', () => {
 
 test('custom icon test', () => {
   const { container } = render(
-    <Loading vertical icon={<Category width="30" height="30" color="red" />} />
+    <Loading icon={<Category width="30" height="30" color="red" />} />
   )
   expect(container.querySelector('svg')).toHaveClass('nut-icon-Category')
 })

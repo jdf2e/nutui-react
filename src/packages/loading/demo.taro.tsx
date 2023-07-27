@@ -43,7 +43,7 @@ const LoadingDemo = () => {
         </Cell>
         <h2>带文字(竖向排列)</h2>
         <Cell>
-          <Loading vertical>加载中</Loading>
+          <Loading direction="vertical">加载中</Loading>
         </Cell>
         <h2>自定义文字颜色和大小</h2>
         <Cell>
@@ -53,7 +53,7 @@ const LoadingDemo = () => {
         <h2>自定义图标</h2>
         <Cell>
           <Loading
-            vertical
+            direction="vertical"
             icon={<Category width="30" height="30" color="red" />}
           />
         </Cell>
@@ -66,7 +66,7 @@ const LoadingDemo = () => {
       </div>
       <Overlay visible={visible}>
         <div className="wrapper" style={WrapperStyle}>
-          <Loading vertical>加载中</Loading>
+          <Loading direction="vertical">加载中</Loading>
         </div>
       </Overlay>
     </>

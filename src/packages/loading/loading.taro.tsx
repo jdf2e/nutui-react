@@ -7,6 +7,7 @@ import {
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type LoadingType = 'spinner' | 'circular'
+export type DirectionType = 'horizontal' | 'vertical'
 
 export interface LoadingProps extends BasicComponent {
   // loading的类型
@@ -19,8 +20,8 @@ export interface LoadingProps extends BasicComponent {
   textSize: number | string
   // 文字的颜色
   textColor: string
-  // 是否竖向排列loading图标和文字
-  vertical: boolean
+  // loading图标和文字的排列方式
+  direction: DirectionType
   // 自定义图标
   icon?: JSX.Element
 }
@@ -39,7 +40,7 @@ const defaultProps = {
   size: 32,
   textColor: '#9EA9AF',
   textSize: 14,
-  vertical: false,
+  direction: 'horizontal',
 } as LoadingProps
 export const Loading: FunctionComponent<
   Partial<LoadingProps> & React.HTMLAttributes<HTMLDivElement>
@@ -52,7 +53,7 @@ export const Loading: FunctionComponent<
     size,
     textColor,
     textSize,
-    vertical,
+    direction,
     icon,
     ...rest
   } = {
@@ -70,7 +71,7 @@ export const Loading: FunctionComponent<
       className={classNames(
         classPrefix,
         className,
-        vertical ? `${classPrefix}-vertical` : ''
+        direction === 'vertical' ? `${classPrefix}-vertical` : ''
       )}
       style={style}
     >

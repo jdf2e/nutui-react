@@ -95,7 +95,7 @@ export default App;
 
 :::
 
-### With text(vertical)
+### With text(direction="vertical")
 
 :::demo
 
@@ -106,7 +106,7 @@ import { Loading, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell>
-      <Loading vertical>loading</Loading>
+      <Loading direction="vertical">loading</Loading>
     </Cell>
   );
 };
@@ -148,7 +148,7 @@ import { Category } from '@nutui/icons-react'
 const App = () => {
   return (
     <Cell>
-      <Loading vertical icon={<Category width='30' height='30' color='red'/>}/>
+      <Loading direction="vertical" icon={<Category width='30' height='30' color='red'/>}/>
     </Cell>
   );
 };
@@ -190,7 +190,7 @@ const App = () => {
       </Cell>
       <Overlay visible={visible}>
         <div className="wrapper" style={WrapperStyle}>
-          <Loading vertical>loading</Loading>
+          <Loading direction="vertical">loading</Loading>
         </div>
       </Overlay>   
     </> 
@@ -212,5 +212,5 @@ export default App;
 | size         | loading icon size                    | String \| Number    | `32`                |
 | textColor    | text color                           | String              | `#9EA9AF`           |
 | textSize     | text size                            | String \| Number    | `14`                |
-| vertical     | whether icon and text are layout vertical     |  Boolean            | `false`
+| vertical     | direction of icon and text           | horizontal \| vertical | `horizontal`     | 
 | icon         | custom loading icon                  | JSX.Element         |  `-`

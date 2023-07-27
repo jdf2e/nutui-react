@@ -106,7 +106,7 @@ import { Loading, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell>
-      <Loading vertical>加載中</Loading>
+      <Loading direction="vertical">加載中</Loading>
     </Cell>
   );
 };
@@ -148,7 +148,7 @@ import { Category } from '@nutui/icons-react'
 const App = () => {
   return (
     <Cell>
-      <Loading vertical icon={<Category width='30' height='30' color='red'/>}/>
+      <Loading direction="vertical" icon={<Category width='30' height='30' color='red'/>}/>
     </Cell>
   );
 };
@@ -190,7 +190,7 @@ const App = () => {
       </Cell>
       <Overlay visible={visible}>
         <div className="wrapper" style={WrapperStyle}>
-          <Loading vertical>加載中</Loading>
+          <Loading direction="vertical">加載中</Loading>
         </div>
       </Overlay>   
     </> 
@@ -212,5 +212,5 @@ export default App;
 | size         | loading圖標的大小                    | String \| Number    | `32`                |
 | textColor    | 文字的顏色                           | String              | `#9EA9AF`           |
 | textSize     | 文字的大小                           | String \| Number    | `14`                |
-| vertical     | loading圖標和文字是否豎向排列        |  Boolean            | `false`
+| direction    | loading圖標和文字的排列方式           | horizontal \| vertical | `horizontal`     |
 | icon         | 自定義loading的圖標                  | JSX.Element         |  `-`
