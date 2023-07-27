@@ -26,6 +26,8 @@ export interface PickerProps extends Omit<BasicComponent, 'children'> {
   visible?: boolean | undefined
   title?: string
   options: (PickerOption | PickerOption[])[]
+  portal?: HTMLElement | (() => HTMLElement) | null
+  position?: string
   value?: (number | string)[]
   defaultValue?: (number | string)[]
   threeDimensional?: boolean
@@ -60,6 +62,7 @@ const defaultProps = {
   defaultValue: [],
   threeDimensional: true,
   duration: 1000,
+  position: 'bottom',
 } as PickerProps
 const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
   (props, ref) => {
@@ -74,6 +77,8 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
       style,
       threeDimensional,
       duration,
+      portal,
+      position,
       onConfirm,
       onClose,
       afterClose,
@@ -367,7 +372,8 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
         {typeof children === 'function' && children(selectedValue)}
         <Popup
           visible={innerVisible}
-          position="bottom"
+          position={position}
+          portal={portal}
           afterClose={() => {
             closePicker()
           }}

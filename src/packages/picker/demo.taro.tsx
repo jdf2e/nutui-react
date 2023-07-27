@@ -281,6 +281,7 @@ const PickerDemo = () => {
         />
         <Picker
           title="请选择城市"
+          portal={document.body}
           visible={isVisible1}
           options={listData1}
           onConfirm={(list, values) => confirmPicker('base', list, values)}
