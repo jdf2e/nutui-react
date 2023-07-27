@@ -21,6 +21,7 @@ import {
   Loading,
 } from '@nutui/icons-react-taro'
 
+import { nanoid } from 'nanoid'
 import { Image } from '@tarojs/components'
 import Button from '@/packages/button/index.taro'
 import Progress from '@/packages/progress/index.taro'
@@ -167,7 +168,7 @@ export class FileItem {
 
   message = '准备中..'
 
-  uid: string = new Date().getTime().toString()
+  uid: string = nanoid()
 
   name?: string
 
