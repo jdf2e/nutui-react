@@ -432,6 +432,7 @@ export default App;
 | footer | 錶單底部區域，一般放置確認和重置按鈕 | `ReactNode` | `null` |
 | initialValues | 錶單初始值 | `any` | `-` |
 | name | 錶單名稱 | `any` | `-` |
+| label | 标签名 | `ReactNode` | `-` |
 | labelPosition | 錶單項 label 的位置 | `top` \| `left` \| `right` | `right` |
 | starPosition | 必填錶單項 label 的紅色星標位置 |  `left` \| `right` | `left` |
 | onFinish | 校驗成功後觸發 | `(values: any) => void` | `-` |

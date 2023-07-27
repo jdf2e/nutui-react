@@ -4,8 +4,8 @@ import React, {
   useRef,
   FunctionComponent,
   useContext,
-  MouseEventHandler,
 } from 'react'
+import type { MouseEvent } from 'react'
 import classNames from 'classnames'
 import { My } from '@nutui/icons-react-taro'
 import Image from '@/packages/image/index.taro'
@@ -22,7 +22,7 @@ export interface AvatarProps extends BasicComponent {
   fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
   src: string
   alt: string
-  onClick: (e: MouseEvent) => void
+  onClick: (e: MouseEvent<HTMLDivElement>) => void
   onError: () => void
 }
 
@@ -135,7 +135,7 @@ export const Avatar: FunctionComponent<
     }
   }
 
-  const clickAvatar: MouseEventHandler<HTMLDivElement> = (e: any) => {
+  const clickAvatar = (e: MouseEvent<HTMLDivElement>) => {
     onClick && onClick(e)
   }
 
@@ -159,7 +159,6 @@ export const Avatar: FunctionComponent<
                   className="avatar-img"
                   src={src}
                   style={{ objectFit: fit }}
-                  alt={alt}
                   onError={errorEvent}
                 />
               )}

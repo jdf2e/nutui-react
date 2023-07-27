@@ -217,11 +217,12 @@ export default App;
 | right | 搜搜框右侧区域 | `ReactNode` | `-` |
 | leftIn | 输入框内左侧区域 | `ReactNode` | `<Search size="12" />` |
 | rightIn | 输入框内右侧区域 | `ReactNode` | `-` |
-| onChange | 输入内容时触发 | `(value: string, event: Event) => void` | `-` |
-| onFocus | 聚焦时触发 | `(value: string, event: Event) => void` | `-` |
-| onBlur | 失焦时触发 | `(value: string, event: Event) => void` | `-` |
+| onChange | 输入内容时触发 | `(value: string, event: ChangeEvent<HTMLInputElement>) => void` | `-` |
+| onFocus | 聚焦时触发 | `(value: string, event: FocusEvent<HTMLInputElement>) => void` | `-` |
+| onBlur | 失焦时触发 | `(value: string, event: FocusEvent<HTMLInputElement>) => void` | `-` |
+| onClear | 点击清空时触发 | `(event: MouseEvent<HTMLDivElement>) => void` | `-` |
 | onSearch | 确定搜索时触发 | `(val: string) => void` | `-` |
-| onInputClick | 点击输入区域时触发 | `(event: Event) => void` | `-` |
+| onInputClick | 点击输入区域时触发 | `(event: MouseEvent<HTMLInputElement>) => void` | `-` |
 
 ## 主题定制
 

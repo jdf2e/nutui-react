@@ -156,7 +156,7 @@ export default App;
 | type | Display form, optional value：controls、panel、progress、icon、none | `string` | `progress` |
 | onBack | Voice will be retreated, type = progress takes effect | `(event：HTMLAudioElement) => void` | `-` |
 | onForward | Voice fast -moving back, type = progress | `(event：HTMLAudioElement) => void` | `-` |
-| onPause | Suspension | `(event：HTMLAudioElement) => void` | `-` |
-| onEnd | The voice playback is complete, loop=false takes effect | `(event：HTMLAudioElement) => void` | `-` |
+| onPause | Suspension | `(event：SyntheticEvent<HTMLAudioElement>) => void` | `-` |
+| onEnd | The voice playback is complete, loop=false takes effect | `(event：SyntheticEvent<HTMLAudioElement>) => void` | `-` |
 | onMute | Mute | `(event：HTMLAudioElement) => void` | `-` |
-| onCanPlay | Can be triggered when the media can be played | `(event：HTMLAudioElement) => void` | `-` |
+| onCanPlay | Can be triggered when the media can be played | `(event：SyntheticEvent<HTMLAudioElement>) => void` | `-` |

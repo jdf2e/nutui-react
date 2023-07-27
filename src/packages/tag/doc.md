@@ -200,7 +200,7 @@ export default App;
 | mark | 是否为标记样式 | `boolean` | `false` |
 | closeable | 是否为可关闭标签 | `boolean` | `false` |
 | closeIcon | 关闭按钮 | `ReactNode` | `null` |
-| onClick | 点击事件 | `(e: MouseEvent) => void` | `-` |
+| onClick | 点击事件 | `(e: MouseEvent<HTMLDivElement>) => void` | `-` |
 | onClose | 关闭事件 | `(e?: any) => void` | `-` |
 
 ## 主题定制

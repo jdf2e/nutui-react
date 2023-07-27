@@ -89,7 +89,7 @@ const App = () => {
 
   return (
     <>
-      <Cell title="选择地址" description={text}  onClick={()=>setVisible(true)} />
+      <Cell title="选择地址" description={text}  onClick={() => setVisible(true)} />
         <Address
           visible={visible}
           options={optionsDemo1}
@@ -97,6 +97,7 @@ const App = () => {
           onChange={(value, params) => {
             setText(value)
           }}
+          onClose={() => setVisible(false)}
         />
     </>
   );
@@ -120,7 +121,7 @@ const App = () => {
   const [text, setText] = useState('请选择地址')
   const [visible, setVisible] = useState(false)
   const [value2] = useState(['福建', '福州', '台江区'])
-    const [optionsDemo2] = useState([
+  const [optionsDemo2] = useState([
     {
       value1: '浙江',
       text1: '浙江',
@@ -186,7 +187,7 @@ const App = () => {
 
   return (
     <>
-      <Cell title="选择地址" description={text}  onClick={()=>setVisible(true)} />
+      <Cell title="选择地址" description={text}  onClick={() => setVisible(true)} />
       <Address
         visible={visible}
         defaultValue={value2}
@@ -199,6 +200,7 @@ const App = () => {
         onChange={(value, params) => {
           setText(value)
         }}
+        onClose={() => setVisible(false)}
       />
     </>
   );
@@ -265,13 +267,14 @@ const App = () => {
 
   return (
     <>
-      <Cell title="选择地址" description={text}  onClick={()=>setVisible(true)} />
+      <Cell title="选择地址" description={text}  onClick={() => setVisible(true)} />
         <Address
           visible={visible}
           type="exist"
           existList={existList}
           onExistSelect={selectedTwo}
           title="配送"
+          onClose={() => setVisible(false)}
         />
     </>
   );
@@ -347,7 +350,7 @@ const App = () => {
 
   return (
     <>
-      <Cell title="选择地址" description={text}  onClick={()=>setCustomImg(true)} />
+      <Cell title="选择地址" description={text}  onClick={() => setVisible(true)} />
         <Address
           visible={visible}
           type="exist"
@@ -355,6 +358,7 @@ const App = () => {
           onExistSelect={selectedThree}
           defaultIcon={icon.defaultIcon}
           selectIcon={icon.selectIcon}
+          onClose={() => setVisible(false)}
         />
     </>
   );
@@ -452,7 +456,7 @@ const App = () => {
 
   return (
     <>
-      <Cell title="选择地址" description={text}  onClick={()=>setOther(true)} />
+      <Cell title="选择地址" description={text}  onClick={() => setVisible(true)} />
       <Address
         visible={showPopup.other}
         type="exist"
@@ -467,12 +471,110 @@ const App = () => {
         onChange={(value, params) => {
           setText(value)
         }}
+        onClose={() => setVisible(false)}
       />
     </>
   );
 };
 export default App;
 
+```
+
+:::
+
+### 非受控模式
+
+:::demo
+
+```tsx
+import React, { useState, useRef } from "react";
+import { Address, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  const addressRef = useRef<any>(null)
+  const [text, setText] = useState('请选择地址')
+
+  const [optionsDemo] = useState([
+    {
+      value1: '浙江',
+      text1: '浙江',
+      items: [
+        {
+          value1: '杭州',
+          text1: '杭州',
+          disabled: true,
+          items: [
+            { value1: '西湖区', text1: '西湖区', disabled: true },
+            { value1: '余杭区', text1: '余杭区' },
+          ],
+        },
+        {
+          value1: '温州',
+          text1: '温州',
+          items: [
+            { value1: '鹿城区', text1: '鹿城区' },
+            { value1: '瓯海区', text1: '瓯海区' },
+          ],
+        },
+      ],
+    },
+    {
+      value1: '湖南',
+      text1: '湖南',
+      disabled: true,
+      items: [
+        {
+          value1: '长沙',
+          text1: '长沙',
+          disabled: true,
+          items: [
+            { value1: '西湖区', text1: '西湖区' },
+            { value1: '余杭区', text1: '余杭区' },
+          ],
+        },
+        {
+          value1: '温州',
+          text1: '温州',
+          items: [
+            { value1: '鹿城区', text1: '鹿城区' },
+            { value1: '瓯海区', text1: '瓯海区' },
+          ],
+        },
+      ],
+    },
+    {
+      value1: '福建',
+      text1: '福建',
+      items: [
+        {
+          value1: '福州',
+          text1: '福州',
+          items: [
+            { value1: '鼓楼区', text1: '鼓楼区' },
+            { value1: '台江区', text1: '台江区' },
+          ],
+        },
+      ],
+    },
+  ])
+
+  return (
+    <>
+      <Cell title="选择地址" description={text}  onClick={() => addressRef.current?.open()} />
+      <Address
+        ref={addressRef}
+          defaultVisible={false}
+          options={optionsDemo}
+          title="选择地址"
+          onChange={(value, params) => {
+            setText(value)
+          }}
+          onClose={() => addressRef.current?.close()}
+      />
+    </>
+  );
+};
+export default App;
 ```
 
 :::
@@ -484,6 +586,7 @@ export default App;
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | visible | 是否打开地址选择 | `boolean` | `-` |
+| defaultVisible | 初始地址选择打开/关闭状态 | `boolean` | `-` |
 | type | 地址选择类型 exist/custom | `string` | `custom` |
 | existList | 已存在地址列表，每个地址对象中，必传值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解释见下） | `Array` | `[]` |
 | defaultIcon | 已有地址列表默认图标，type='exist' 时生效 | `ReactNode` | `-` |
@@ -493,5 +596,15 @@ export default App;
 | custom | 是否可以切换自定义地址选择，type='exist' 时生效 | `boolean` \| `string` | `true` |
 | onExistSelect | 选择已有地址列表时触发 | `(data: AddressList) => void` | `-` |
 | onSwitch | 点击'选择其他地址'或自定义地址选择左上角返回按钮触发 | `(data: { type: string }) => void` | `-` |
+| onClose | 关闭弹框时触发 | `-` | `-` |
+
+### Ref
+
+通过 ref 可以获取到 Address 实例并调用实例方法。
+
+| 方法名 | 说明 | 参数 |
+| ----- | ----- | -- |
+| open | 打开地址选择 | `-` |
+| close | 关闭地址选择 | `-` |
 
 更多参数可参考 `Cascader` 组件。

@@ -1,3 +1,56 @@
+# v2.0.7
+`2023-07-26`
+
+* :sparkles: feat: formitem label 支持 reactnode (#1254) @oasis-cloud
+* :sparkles: feat: uploader 添加上传的响应数据 (#1251) @逍遥
+* 🔨 chore: 优化 any 类型 (#1222) @junjun666
+* 📖 docs(SearchBar): 补充 onClear 属性说明 (#1256) @Tralafalgar Wang
+
+
+# v2.0.6
+`2023-07-21`
+
+* :bug: fix(Address): 修复Address组件通过点击CloseIcon和Overlay关闭后，无法再次打开的问题 (#1233) @Tralafalgar Wang
+* :bug: fix(button): 渐变色导致边框出现重叠 (#1250) @oasis-cloud
+
+
+# v2.0.5
+`2023-07-19`
+
+* :bug: fix(sticky): 组件卸载移除 tap 事件改为移除 scroll 事件 (#1235) @oasis-cloud
+* :bug: fix: height is null (#1239) @Liuqh233
+* :bug: fix: 修复popover滑动定位错位的问题 (#1232) @junjun666
+* :sparkles: perf: configProvider 组件性能优化 (#1230) @大喵
+* 🔨 chore: site 内部移除 taro components @oasis-cloud
+
+
+# v2.0.4
+`2023-07-14`
+
+* :sparkles: feat: configprovider 组件支持传入 className 和 style 属性 (#1219) @大喵
+* :bug: fix(button): fill=none & type=default 样式修复 (#1215) @Eiinu
+* :bug: fix(form): formItem 的 props 改为 Partial (#1221) @oasis-cloud
+* :bug: fix: cascader onChange 触发2次问题修复 (#1224) @xiaoyatong
+* :bug: fix: countdown手动控制demo展示样式优化 (#1229) @songsong
+* :bug: fix: signature组件提取样式变量+修复taro h5 demo签字时滚动问题 (#1220) @songsong
+* :bug: fix: tabs组件在抖音小程序展示异常 (#1211) @oasis-cloud
+* :bug: fix: 修复signature小程序下demo签字时页面跟随滚动问题 (#1225) @songsong
+* :bug: fix: 文档格式化 @hanyuxinting
+
+
+# v2.0.3
+`2023-07-12`
+
+* :sparkles: feat: image 支持 taro (#1190) @oasis-cloud
+* :sparkles: feat: menu 增加打开和关闭的回调方法 (#1206) @oasis-cloud
+* :sparkles: feat: 类型文件中导出组件的 props, 简化组件 props 引入方式 (#1205) @oasis-cloud
+* :bug: fix: infiniteloading taro doc (#1207) @junjun666
+* :bug: fix: 组件2.0走查问题修复 (#1172) @junjun666
+* 🔨 chore: pnpm workspace (#1199) @junjun666
+* 🔨 chore: 兼容ssr之修复引入组件库启动报错 (#1212) @junjun666
+* 📖 docs(form): nativeType 改为 formType (#1209) @oasis-cloud
+
+
 # v2.0.2
 `2023-07-07`
 

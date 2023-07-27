@@ -156,7 +156,7 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
     const el = getElement() as HTMLElement | Window
     el.addEventListener('scroll', handleScroll, false)
     return () => {
-      el.removeEventListener('tap', handleScroll)
+      el.removeEventListener('scroll', handleScroll)
     }
   }, [getElement, handleScroll])
 

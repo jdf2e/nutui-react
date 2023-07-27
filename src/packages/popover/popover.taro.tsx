@@ -6,11 +6,10 @@ import React, {
   useState,
 } from 'react'
 import classNames from 'classnames'
-import Taro from '@tarojs/taro'
+import Taro, { createSelectorQuery } from '@tarojs/taro'
 import Popup from '@/packages/popup/index.taro'
 import { PopupProps } from '@/packages/popup/popup.taro'
 import { getRect, getRectByTaro } from '@/utils/use-client-rect'
-
 import { ComponentDefaults } from '@/utils/typings'
 
 export type PopoverLocation =
@@ -95,8 +94,8 @@ export const Popover: FunctionComponent<
     ...props,
   }
 
-  const popoverRef = useRef<any>(null)
-  const popoverContentRef = useRef<any>(null)
+  const popoverRef = useRef<HTMLDivElement>(null)
+  const popoverContentRef = useRef<HTMLDivElement>(null)
 
   const [showPopup, setShowPopup] = useState(false)
   const [elWidth, setElWidth] = useState(0)
@@ -122,23 +121,31 @@ export const Popover: FunctionComponent<
 
   const getContentWidth = async () => {
     let rect
-    if (targetId) {
-      if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
-        rect = getRect(document.querySelector(`#${targetId}`) as Element)
-      } else {
-        rect = await getRectTaro(targetId)
-      }
-    } else {
-      rect = await getRectByTaro(popoverRef.current)
-    }
 
-    setRootPosition({
-      width: rect.width,
-      height: rect.height,
-      left: rect.left,
-      top: rect.top,
-      right: rect.right,
-    })
+    createSelectorQuery()
+      .selectViewport()
+      .scrollOffset(async (res) => {
+        const distance = res.scrollTop
+
+        if (targetId) {
+          if (Taro.getEnv() === Taro.ENV_TYPE.WEB) {
+            rect = getRect(document.querySelector(`#${targetId}`) as Element)
+          } else {
+            rect = await getRectTaro(targetId)
+          }
+        } else {
+          rect = await getRectByTaro(popoverRef.current)
+        }
+
+        setRootPosition({
+          width: rect.width,
+          height: rect.height,
+          left: rect.left,
+          top: rect.top + distance,
+          right: rect.right,
+        })
+      })
+      .exec()
     setTimeout(() => {
       getPopoverContentW()
     }, 300)
@@ -294,7 +301,7 @@ export const Popover: FunctionComponent<
                     },
                     item.className
                   )}
-                  key={item.key}
+                  key={item.key || index}
                   onClick={() => handleSelect(item, index)}
                 >
                   {item.icon ? item.icon : null}

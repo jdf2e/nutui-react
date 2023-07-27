@@ -65,6 +65,7 @@
   &--solid {
     color: $button-primary-color;
     background: $button-primary-background-color;
+    background-origin: border-box;
     border: $button-border-width solid transparent;
   }
 
@@ -75,7 +76,6 @@
   }
 
   &.nut-button--none {
-    color: $button-primary-border-color;
     background: transparent;
     border-color: transparent;
   }
@@ -83,6 +83,7 @@
   &--primary {
     color: $button-primary-color;
     background: $button-primary-background-color;
+    background-origin: border-box;
     border: $button-border-width solid transparent;
 
     &.nut-button--outline {
@@ -93,14 +94,13 @@
 
     &.nut-button--none {
       color: $button-primary-border-color;
-      background: transparent;
-      border-color: transparent;
     }
   }
 
   &--info {
     color: $button-info-color;
     background: $button-info-background-color;
+    background-origin: border-box;
     border: $button-border-width solid transparent;
 
     &.nut-button--outline {
@@ -111,14 +111,13 @@
 
     &.nut-button--none {
       color: $button-info-border-color;
-      background: transparent;
-      border-color: transparent;
     }
   }
 
   &--success {
     color: $button-success-color;
     background: $button-success-background-color;
+    background-origin: border-box;
     border: $button-border-width solid transparent;
 
     &.nut-button--outline {
@@ -129,14 +128,13 @@
 
     &.nut-button--none {
       color: $button-success-border-color;
-      background: transparent;
-      border-color: transparent;
     }
   }
 
   &--danger {
     color: $button-danger-color;
     background: $button-danger-background-color;
+    background-origin: border-box;
     border: $button-border-width solid transparent;
 
     &.nut-button--outline {
@@ -147,14 +145,13 @@
 
     &.nut-button--none {
       color: $button-danger-border-color;
-      background: transparent;
-      border-color: transparent;
     }
   }
 
   &--warning {
     color: $button-warning-color;
     background: $button-warning-background-color;
+    background-origin: border-box;
     border: $button-border-width solid transparent;
 
     &.nut-button--outline {
@@ -165,8 +162,6 @@
 
     &.nut-button--none {
       color: $button-warning-border-color;
-      background: transparent;
-      border-color: transparent;
     }
   }
 

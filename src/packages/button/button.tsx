@@ -1,4 +1,5 @@
 import React, { CSSProperties, useCallback } from 'react'
+import type { MouseEvent } from 'react'
 import classNames from 'classnames'
 import { Loading } from '@nutui/icons-react'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -26,7 +27,7 @@ export interface ButtonProps extends BasicComponent {
   icon: React.ReactNode
   id: string
   nativeType: 'submit' | 'reset' | 'button'
-  onClick: (e: MouseEvent) => void
+  onClick: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
 const prefixCls = 'nut-button'
@@ -43,7 +44,7 @@ const defaultProps = {
   block: false,
   icon: null,
   nativeType: 'button',
-  onClick: (e: MouseEvent) => {},
+  onClick: (e: MouseEvent<HTMLButtonElement>) => {},
 } as ButtonProps
 export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
   (props, ref) => {
@@ -84,14 +85,13 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       return style
     }, [color])
 
-    const handleClick = (e: any) => {
+    const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
       if (!loading && !disabled && onClick) {
         onClick(e)
       }
     }
 
     return (
-      // eslint-disable-next-line react/button-has-type
       <button
         {...rest}
         ref={ref}

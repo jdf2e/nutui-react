@@ -33,7 +33,7 @@ const App = () => {
         labelPosition="right"
         footer={
           <>
-            <Button nativeType="submit" block type="primary">
+            <Button formType="submit" block type="primary">
               提交
             </Button>
           </>
@@ -100,10 +100,10 @@ const App = () => {
               width: '100%',
             }}
           >
-            <Button nativeType="submit" type="primary">
+            <Button formType="submit" type="primary">
               提交
             </Button>
-            <Button nativeType="reset" style={{ marginLeft: '20px' }}>
+            <Button formType="reset" style={{ marginLeft: '20px' }}>
               重置
             </Button>
           </div>
@@ -189,10 +189,10 @@ const App = () => {
               width: '100%',
             }}
           >
-            <Button nativeType="submit" type="primary">
+            <Button formType="submit" type="primary">
               提交
             </Button>
-            <Button nativeType="reset" style={{ marginLeft: '20px' }}>
+            <Button formType="reset" style={{ marginLeft: '20px' }}>
               重置
             </Button>
           </div>
@@ -328,10 +328,10 @@ const App = () => {
               width: '100%',
             }}
           >
-            <Button nativeType="submit" type="primary">
+            <Button formType="submit" type="primary">
               提交
             </Button>
-            <Button nativeType="reset" style={{ marginLeft: '20px' }}>
+            <Button formType="reset" style={{ marginLeft: '20px' }}>
               重置
             </Button>
           </div>
@@ -451,6 +451,7 @@ export default App;
 | --- | --- | --- | --- |
 | required | 必填表单项 label 的红色星标,仅用于控制样式 | `boolean` | `false` |
 | name | 在使用表单校验功能的情况下，该属性是必填的 | `string` | `-` |
+| label | 标签名 | `ReactNode` | `-` |
 | errorMessageAlign | 错误提示文案对齐方式 | `center` \| `right` \| `left` | `left` |
 | initialValue | 设置子元素默认值 | `any` | `-` |
 | trigger | 设置收集字段值变更的时机 | `string` | `-` |

@@ -37,6 +37,8 @@ NutUI-React 可以通過 \[CSS 變數\]（https://developer.mozilla.org/zh-CN/do
 
 ConfigProvider 元件提供了覆蓋 CSS 變數的能力，你需要在根節點包裹一個 ConfigProvider 元件，並通過 theme 屬性來配置一些主題變數。
 
+> ConfigProvider 組件不是一個虛擬組件，它會生成一個 div 標簽。
+
 :::demo
 
 ```tsx

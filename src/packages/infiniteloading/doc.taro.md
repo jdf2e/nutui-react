@@ -18,10 +18,24 @@ import { InfiniteLoading } from '@nutui/nutui-react-taro'
 
 ```tsx
 import React, { useState, useEffect } from 'react'
+import Taro from '@tarojs/taro'
 import { Jd } from '@nutui/icons-react-taro'
 import { Cell, InfiniteLoading } from '@nutui/nutui-react-taro'
 
+const InfiniteUlStyle = {
+  height: '500px',
+  width: '100%',
+  padding: '0',
+  overflowY: 'auto',
+  overflowX: 'hidden',
+}
 
+const InfiniteLiStyle = {
+  marginTop: '10px',
+  fontSize: '14px',
+  color: 'rgba(100, 100, 100, 1)',
+  textAlign: 'center',
+}
 const App = () => {
   const [defaultList, setDefaultList] = useState<string[]>([])
   const [hasMore, setHasMore] = useState(true)
@@ -67,7 +81,7 @@ const App = () => {
     <>
       <h2>基础用法</h2>
       <Cell>
-        <ul className="infiniteUl" id="scrollDemo" style={{ height: '500px' }}>
+        <ul id="scrollDemo" style={InfiniteUlStyle}>
           <InfiniteLoading
             pullingText={
               <>
@@ -85,7 +99,7 @@ const App = () => {
           >
             {defaultList.map((item, index) => {
               return (
-                <li className="infiniteLi" key={index}>
+                <li key={index} style={InfiniteLiStyle}>
                   {item}
                 </li>
               )

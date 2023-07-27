@@ -36,13 +36,13 @@ export function useTouch() {
     SetDirection('')
   }
 
-  const start = ((event: TouchEvent) => {
+  const start = (event: React.TouchEvent<HTMLElement>) => {
     reset()
     SetStartX(event.touches[0].clientX)
     SetStartY(event.touches[0].clientY)
-  }) as EventListener
+  }
 
-  const move = ((event: TouchEvent) => {
+  const move = (event: React.TouchEvent<HTMLElement>) => {
     const touch = event.touches[0]
     const dX = touch.clientX - startX
     const dY = touch.clientY - startY
@@ -55,7 +55,7 @@ export function useTouch() {
     if (!direction) {
       SetDirection(getDirection(offsetX, offsetY))
     }
-  }) as EventListener
+  }
 
   return {
     move,

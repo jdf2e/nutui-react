@@ -251,7 +251,7 @@ export default App;
 | src | The address of the image for an image avatar or image element | `string` | `-` |
 | alt | This attribute defines the alternative text describing the image | `string` | `-` |
 | icon | Custom icon type for an icon avatar | `ReactNode` | `-` |
-| onClick | Emitted when cell is clicked | `(e: MouseEvent) => void` | `-` |
+| onClick | Emitted when cell is clicked | `(e: MouseEvent<HTMLDivElement>) => void` | `-` |
 | onError | Handler when img load error | `() => void` | `-` |
 
 ## Avatar.Group
