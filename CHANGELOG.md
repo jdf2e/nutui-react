@@ -1,3 +1,12 @@
+# v2.0.8
+`2023-07-28`
+
+* :sparkles: feat: 增加了space组件 (#1259) @ivan-My
+* 🛠 refactor: tabs 去除 console (#1261) @vapao
+* 🔨 chore(script): 简化开发环境启动逻辑 (#1264) @Eiinu
+
+
+
 # v2.0.7
 `2023-07-26`
 

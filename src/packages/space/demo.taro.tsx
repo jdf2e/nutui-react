@@ -1,11 +1,13 @@
 import React from 'react'
+import Taro from '@tarojs/taro'
 import {
   Space,
   Button,
   Cell,
   ConfigProvider,
 } from '@/packages/nutui.react.taro'
-import { useTranslate } from '@/sites/assets/locale'
+import { useTranslate } from '@/sites/assets/locale/taro'
+import Header from '@/sites/components/header'
 
 interface Button {
   button1: string
@@ -64,7 +66,8 @@ const SpaceDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <Header />
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <Cell>
           <Space>
