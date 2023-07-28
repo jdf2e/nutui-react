@@ -4,6 +4,7 @@ import { Loading } from './loading'
 import Cell from '../cell'
 import Button from '../button'
 import Overlay from '../overlay'
+import ConfigProvider from '../configprovider'
 
 const LoadingDemo = () => {
   const [visible, setVisible] = useState(false)
@@ -32,13 +33,21 @@ const LoadingDemo = () => {
         </Cell>
         <h2>自定义颜色</h2>
         <Cell>
-          <Loading type="circular" color="#fa2c19" />
-          <Loading type="spinner" color="#396aca" />
+          <ConfigProvider theme={{ nutuiLoadingIconColor: '#fa2c19' }}>
+            <Loading type="circular" />
+          </ConfigProvider>
+          <ConfigProvider theme={{ nutuiLoadingIconColor: '#396aca' }}>
+            <Loading type="spinner" />
+          </ConfigProvider>
         </Cell>
         <h2>自定义大小</h2>
         <Cell>
-          <Loading type="circular" size="20" />
-          <Loading type="spinner" size={40} />
+          <ConfigProvider theme={{ nutuiLoadingIconSize: '20px' }}>
+            <Loading type="circular" />
+          </ConfigProvider>
+          <ConfigProvider theme={{ nutuiLoadingIconSize: '40px' }}>
+            <Loading type="spinner" />
+          </ConfigProvider>
         </Cell>
         <h2>带文字</h2>
         <Cell>
@@ -50,8 +59,12 @@ const LoadingDemo = () => {
         </Cell>
         <h2>自定义文字颜色和大小</h2>
         <Cell>
-          <Loading textColor="#396aca">加载中</Loading>
-          <Loading textSize="20">加载中</Loading>
+          <ConfigProvider theme={{ nutuiLoadingTextColor: '#396aca' }}>
+            <Loading>加载中</Loading>
+          </ConfigProvider>
+          <ConfigProvider theme={{ nutuiLoadingTextSize: '20px' }}>
+            <Loading>加载中</Loading>
+          </ConfigProvider>
         </Cell>
         <h2>自定义图标</h2>
         <Cell>

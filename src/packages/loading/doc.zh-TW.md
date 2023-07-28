@@ -39,13 +39,17 @@ export default App;
 
 ```jsx
 import  React from "react";
-import { Loading, Cell } from '@nutui/nutui-react';
+import { Loading, Cell, ConfigProvider } from '@nutui/nutui-react';
 
 const App = () => {
   return (
     <Cell>
-      <Loading type='circular' color='#fa2c19'/>
-      <Loading type='spinner' color='#396aca'/>
+      <ConfigProvider theme={{ nutuiLoadingIconColor: '#fa2c19' }}>
+        <Loading type='circular' />
+      </ConfigProvider>
+      <ConfigProvider theme={{ nutuiLoadingIconColor: '#396aca' }}>
+        <Loading type="spinner" />
+      </ConfigProvider>      
     </Cell>
   );
 };
@@ -60,13 +64,17 @@ export default App;
 
 ```jsx
 import  React from "react";
-import { Loading, Cell } from '@nutui/nutui-react';
+import { Loading, Cell, ConfigProvider } from '@nutui/nutui-react';
 
 const App = () => {
   return (
     <Cell>
-      <Loading type='circular' size='20'/>
-      <Loading type='spinner' size={40}/>
+      <ConfigProvider theme={{ nutuiLoadingIconSize: '20px' }}>
+        <Loading type="circular" />
+      </ConfigProvider>
+      <ConfigProvider theme={{ nutuiLoadingIconSize: '40px' }}>
+        <Loading type="spinner" />
+      </ConfigProvider>
     </Cell>
   );
 };
@@ -121,13 +129,17 @@ export default App;
 
 ```jsx
 import  React from "react";
-import { Loading, Cell } from '@nutui/nutui-react';
+import { Loading, Cell, ConfigProvider } from '@nutui/nutui-react';
 
 const App = () => {
   return (
     <Cell>
-      <Loading textColor='#396aca'>加載中</Loading>
-      <Loading textSize='20'>加載中</Loading>
+      <ConfigProvider theme={{ nutuiLoadingTextColor: '#396aca' }}>
+        <Loading>加载中</Loading>
+      </ConfigProvider>
+      <ConfigProvider theme={{ nutuiLoadingTextSize: '20px' }}>
+        <Loading>加载中</Loading>
+      </ConfigProvider>
     </Cell>
   );
 };
@@ -208,9 +220,5 @@ export default App;
 | 參數         | 說明                             | 類型   | 默認值           |
 |--------------|----------------------------------|--------|------------------|
 | type         | loading圖標的樣式                    | circular \| spinner | `circular`          |
-| color        | loading圖標的顏色                    | String              | `#9EA9AF`           |
-| size         | loading圖標的大小                    | String \| Number    | `32`                |
-| textColor    | 文字的顏色                           | String              | `#9EA9AF`           |
-| textSize     | 文字的大小                           | String \| Number    | `14`                |
 | direction    | loading圖標和文字的排列方式           | horizontal \| vertical | `horizontal`     |
 | icon         | 自定義loading的圖標                  | JSX.Element         |  `-`

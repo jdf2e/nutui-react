@@ -39,13 +39,17 @@ export default App;
 
 ```jsx
 import  React from "react";
-import { Loading, Cell } from '@nutui/nutui-react';
+import { Loading, Cell, ConfigProvider } from '@nutui/nutui-react';
 
 const App = () => {
   return (
     <Cell>
-      <Loading type='circular' color='#fa2c19'/>
-      <Loading type='spinner' color='#396aca'/>
+      <ConfigProvider theme={{ nutuiLoadingIconColor: '#fa2c19' }}>
+        <Loading type='circular' />
+      </ConfigProvider>
+      <ConfigProvider theme={{ nutuiLoadingIconColor: '#396aca' }}>
+        <Loading type="spinner" />
+      </ConfigProvider>      
     </Cell>
   );
 };
@@ -60,13 +64,17 @@ export default App;
 
 ```jsx
 import  React from "react";
-import { Loading, Cell } from '@nutui/nutui-react';
+import { Loading, Cell, ConfigProvider } from '@nutui/nutui-react';
 
 const App = () => {
   return (
     <Cell>
-      <Loading type='circular' size='20'/>
-      <Loading type='spinner' size={40}/>
+      <ConfigProvider theme={{ nutuiLoadingIconSize: '20px' }}>
+        <Loading type="circular" />
+      </ConfigProvider>
+      <ConfigProvider theme={{ nutuiLoadingIconSize: '40px' }}>
+        <Loading type="spinner" />
+      </ConfigProvider>
     </Cell>
   );
 };
@@ -121,13 +129,17 @@ export default App;
 
 ```jsx
 import  React from "react";
-import { Loading, Cell } from '@nutui/nutui-react';
+import { Loading, Cell, ConfigProvider } from '@nutui/nutui-react';
 
 const App = () => {
   return (
     <Cell>
-      <Loading textColor='#396aca'>loading</Loading>
-      <Loading textSize='20'>loading</Loading>
+      <ConfigProvider theme={{ nutuiLoadingTextColor: '#396aca' }}>
+        <Loading>加载中</Loading>
+      </ConfigProvider>
+      <ConfigProvider theme={{ nutuiLoadingTextSize: '20px' }}>
+        <Loading>加载中</Loading>
+      </ConfigProvider>
     </Cell>
   );
 };
@@ -208,9 +220,5 @@ export default App;
 | Name         | Description                          | type   | default           |
 |--------------|----------------------------------|--------|------------------|
 | type         | loading icon type                    | circular \| spinner | `circular`          |
-| color        | loading icon color                   | String              | `#9EA9AF`           |
-| size         | loading icon size                    | String \| Number    | `32`                |
-| textColor    | text color                           | String              | `#9EA9AF`           |
-| textSize     | text size                            | String \| Number    | `14`                |
-| vertical     | direction of icon and text           | horizontal \| vertical | `horizontal`     | 
+| direction    | direction of icon and text           | horizontal \| vertical | `horizontal`     | 
 | icon         | custom loading icon                  | JSX.Element         |  `-`

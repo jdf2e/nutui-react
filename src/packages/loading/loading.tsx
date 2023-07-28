@@ -12,14 +12,6 @@ export type DirectionType = 'horizontal' | 'vertical'
 export interface LoadingProps extends BasicComponent {
   // loading的类型
   type: LoadingType
-  // loading的颜色
-  color: string
-  // loading的大小 下面会把size转成width和height
-  size: number | string
-  // 文字的大小
-  textSize: number | string
-  // 文字的颜色
-  textColor: string
   // loading图标和文字的排列方式
   direction: DirectionType
   // 自定义图标
@@ -36,27 +28,12 @@ const defaultProps = {
   ...ComponentDefaults,
   // 对比一下,个人感觉还是Loading1比较好看一些,所以用它作为了默认的loading图标
   type: 'circular',
-  color: '#9EA9AF',
-  size: 32,
-  textColor: '#9EA9AF',
-  textSize: 14,
   direction: 'horizontal',
 } as LoadingProps
 export const Loading: FunctionComponent<
   Partial<LoadingProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const {
-    className,
-    style,
-    children,
-    color,
-    size,
-    textColor,
-    textSize,
-    direction,
-    icon,
-    ...rest
-  } = {
+  const { className, style, children, direction, icon, ...rest } = {
     ...defaultProps,
     ...props,
   }
@@ -75,22 +52,10 @@ export const Loading: FunctionComponent<
       )}
       style={style}
     >
-      <div className={`${classPrefix}-icon`}>
-        {icon || <CurLoadingIcon color={color} width={size} height={size} />}
+      <div className={`${classPrefix}-icon-box`}>
+        {icon || <CurLoadingIcon className={`${classPrefix}-icon`} />}
       </div>
-      {children ? (
-        <div
-          className={`${classPrefix}-text`}
-          style={{
-            fontSize: `${parseInt(textSize.toString())}px`,
-            color: textColor,
-          }}
-        >
-          {children}
-        </div>
-      ) : (
-        ''
-      )}
+      {children ? <div className={`${classPrefix}-text`}>{children}</div> : ''}
     </div>
   )
 }

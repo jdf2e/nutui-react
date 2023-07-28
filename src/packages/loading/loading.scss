@@ -6,14 +6,22 @@
   &.nut-loading-vertical {
     flex-direction: column;
   }
-  .nut-loading-icon {
+  .nut-loading-icon-box {
     display: inline-block;
     font-size: 0;
     line-height: 0;
     animation: nut-loading-rotation 1s infinite linear;
+    .nut-loading-icon {
+      color: $loading-icon-color;
+      width: $loading-icon-size;
+      height: $loading-icon-size;
+      font-size: $loading-icon-size;
+    }
   }
   .nut-loading-text {
     padding: 4px;
+    color: $loading-text-color;
+    font-size: $loading-text-size;
   }
 }
 @keyframes nut-loading-rotation {
