@@ -167,7 +167,7 @@ export class FileItem {
 
   message = '准备中..'
 
-  uid: string = new Date().getTime().toString()
+  uid: string = Date.now().toString()
 
   name?: string
 
@@ -439,7 +439,7 @@ const InternalUploader: ForwardRefRenderFunction<
       fileItem.name = filepath
       fileItem.status = 'ready'
       fileItem.type = fileType
-
+      fileItem.uid = `${fileItem.uid}_${index}`
       if (autoUpload) {
         fileItem.message = locale.uploader.readyUpload
       } else {
