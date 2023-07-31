@@ -583,9 +583,7 @@ export default App;
 | activeColor | 选中激活颜色 | `string` | `-` |
 | activeIcon | 标记选中的Icon | `string` | `ReactNode` |
 | lazy | 是否开启动态加载 | `boolean` | `false` |
-| valueKey | 自定义`options`结构中`value`的字段 | `string` | `-` |
-| textKey | 自定义`options`结构中`text`的字段 | `string` | `-` |
-| childrenKey | 自定义`options`结构中`children`的字段 | `string` | `-` |
+| optionKey | 自定义`options`中的关键字，valueKey、textKey、childrenKey | `object` | `{valueKey: 'value', textKey: 'text', childrenKey: 'children'}` |
 | format | 当options为可转换为树形结构的扁平结构时，配置转换规则 | `Object` | `-` |
 | title | 标题 | `string` | `-` |
 | closeIconPosition | 取消按钮位置，继承 Popup 组件 | `string` | `top-right` |
