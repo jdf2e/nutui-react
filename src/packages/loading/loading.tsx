@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
 import {
   Loading as IconLoading,
@@ -15,7 +15,7 @@ export interface LoadingProps extends BasicComponent {
   // loading图标和文字的排列方式
   direction: DirectionType
   // 自定义图标
-  icon?: JSX.Element
+  icon?: ReactNode
 }
 
 // 方便以后扩展设置为键值对形式
