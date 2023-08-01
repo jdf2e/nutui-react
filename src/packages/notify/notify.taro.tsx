@@ -52,7 +52,6 @@ export const Notify: FunctionComponent<Partial<NotifyProps>> & {
   } = { ...defaultProps, ...props }
 
   useCustomEvent(id as string, (status: boolean) => {
-    setShowNotify(status)
     status ? show() : hide()
   })
 
@@ -60,7 +59,6 @@ export const Notify: FunctionComponent<Partial<NotifyProps>> & {
   const [showNotify, setShowNotify] = useState(false)
   useEffect(() => {
     if (visible) {
-      setShowNotify(true)
       show()
     } else {
       hide()
@@ -72,6 +70,7 @@ export const Notify: FunctionComponent<Partial<NotifyProps>> & {
   }
 
   const show = () => {
+    setShowNotify(true)
     clearTimer()
     if (duration) {
       timer = window.setTimeout(() => {
