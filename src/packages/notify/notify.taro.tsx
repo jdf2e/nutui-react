@@ -1,13 +1,21 @@
-import React, { FunctionComponent, useState, useEffect } from 'react'
+import React, { useState, useEffect, FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import {
+  customEvents,
+  useCustomEvent,
+  useCustomEventsPath,
+} from '@/utils/use-custom-event'
+
+export type NotifyPosition = 'top' | 'bottom'
+export type NotifyType = 'primary' | 'success' | 'danger' | 'waring'
 
 export interface NotifyProps extends BasicComponent {
   id?: string
   duration: number
-  type: string
-  position: string
+  type: NotifyType
+  position: NotifyPosition
   visible: boolean
   onClose: () => void
   onClick: () => void
@@ -22,13 +30,14 @@ const defaultProps = {
   visible: false,
   onClose: () => {},
   onClick: () => {},
-} as unknown as NotifyProps
+} as NotifyProps
 
 const classPrefix = 'nut-notify'
 
-export const Notify: FunctionComponent<
-  Partial<NotifyProps> & React.HTMLAttributes<HTMLDivElement>
-> = (props) => {
+export const Notify: FunctionComponent<Partial<NotifyProps>> & {
+  open: typeof open
+  close: typeof close
+} = (props: Partial<NotifyProps>) => {
   const {
     id,
     children,
@@ -40,14 +49,16 @@ export const Notify: FunctionComponent<
     duration,
     onClose,
     onClick,
-    ...rest
   } = { ...defaultProps, ...props }
 
+  useCustomEvent(id as string, (status: boolean) => {
+    status ? show() : hide()
+  })
+
   let timer: number | null
-  const [showNotify, SetShow] = useState(false)
+  const [showNotify, setShowNotify] = useState(false)
   useEffect(() => {
     if (visible) {
-      SetShow(true)
       show()
     } else {
       hide()
@@ -59,6 +70,7 @@ export const Notify: FunctionComponent<
   }
 
   const show = () => {
+    setShowNotify(true)
     clearTimer()
     if (duration) {
       timer = window.setTimeout(() => {
@@ -73,11 +85,7 @@ export const Notify: FunctionComponent<
     }
   }
   const hide = () => {
-    SetShow(false)
-    if (id) {
-      const element = document.getElementById(id)
-      element && element.parentNode && element.parentNode.removeChild(element)
-    }
+    setShowNotify(false)
     onClose()
   }
 
@@ -110,5 +118,19 @@ export const Notify: FunctionComponent<
   )
 }
 
+export function open(selector: string) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const path = useCustomEventsPath(selector)
+  customEvents.trigger(path, true)
+}
+
+export function close(selector: string) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const path = useCustomEventsPath(selector)
+  customEvents.trigger(path, false)
+}
+
 Notify.defaultProps = defaultProps
 Notify.displayName = 'NutNotify'
+Notify.open = open
+Notify.close = close
