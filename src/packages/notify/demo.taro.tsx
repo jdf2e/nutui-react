@@ -88,7 +88,9 @@ const NotifyDemo = () => {
           }}
         />
         <h2>{translated.func}</h2>
-        <Notify id="test" duration={states.duration} position="bottom" />
+        <Notify id="test" duration={states.duration} position="top">
+          {translated.func}
+        </Notify>
         <Cell
           title={translated.func}
           onClick={() => {
