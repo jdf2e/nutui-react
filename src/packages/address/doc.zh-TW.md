@@ -89,7 +89,7 @@ const App = () => {
 
   return (
     <>
-      <Cell title="選擇地址" description={text}  onClick={()=>setVisible(true)} />
+      <Cell title="選擇地址" description={text}  onClick={() => setVisible(true)} />
         <Address
           visible={visible}
           options={optionsDemo1}
@@ -97,6 +97,7 @@ const App = () => {
           onChange={(value, params) => {
             setText(value)
           }}
+          onClose={() => setVisible(false)}
         />
     </>
   );
@@ -120,7 +121,7 @@ const App = () => {
   const [text, setText] = useState('請選擇地址')
   const [visible, setVisible] = useState(false)
   const [value2] = useState(['福建', '福州', '臺江區'])
-    const [optionsDemo2] = useState([
+  const [optionsDemo2] = useState([
     {
       value1: '浙江',
       text1: '浙江',
@@ -186,7 +187,7 @@ const App = () => {
 
   return (
     <>
-      <Cell title="選擇地址" description={text}  onClick={()=>setVisible(true)} />
+      <Cell title="選擇地址" description={text}  onClick={() => setVisible(true)} />
       <Address
         visible={visible}
         defaultValue={value2}
@@ -199,6 +200,7 @@ const App = () => {
         onChange={(value, params) => {
           setText(value)
         }}
+        onClose={() => setVisible(false)}
       />
     </>
   );
@@ -265,13 +267,14 @@ const App = () => {
 
   return (
     <>
-      <Cell title="選擇地址" description={text}  onClick={()=>setVisible(true)} />
+      <Cell title="選擇地址" description={text}  onClick={() => setVisible(true)} />
         <Address
           visible={visible}
           type="exist"
           existList={existList}
           onExistSelect={selectedTwo}
           title="配送"
+          onClose={() => setVisible(false)}
         />
     </>
   );
@@ -347,7 +350,7 @@ const App = () => {
 
   return (
     <>
-      <Cell title="選擇地址" description={text}  onClick={()=>setCustomImg(true)} />
+      <Cell title="選擇地址" description={text}  onClick={() => setVisible(true)} />
         <Address
           visible={visible}
           type="exist"
@@ -355,6 +358,7 @@ const App = () => {
           onExistSelect={selectedThree}
           defaultIcon={icon.defaultIcon}
           selectIcon={icon.selectIcon}
+          onClose={() => setVisible(false)}
         />
     </>
   );
@@ -452,7 +456,7 @@ const App = () => {
 
   return (
     <>
-      <Cell title="選擇地址" description={text}  onClick={()=>setOther(true)} />
+      <Cell title="選擇地址" description={text}  onClick={() => setVisible(true)} />
       <Address
         visible={showPopup.other}
         type="exist"
@@ -467,6 +471,7 @@ const App = () => {
         onChange={(value, params) => {
           setText(value)
         }}
+        onClose={() => setVisible(false)}
       />
     </>
   );
@@ -484,6 +489,7 @@ export default App;
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | visible | 是否打開地址選擇 | `boolean` | `-` |
+| defaultVisible | 初始地址選擇打開/關閉狀態 | `boolean` | - |
 | type | 地址選擇類型 exist/custom | `string` | `custom` |
 | existList | 已存在地址列錶，每個地址對象中，必傳值provinceName、cityName、countyName、townName、addressDetail、selectedAddress（字段解釋見下） | `Array` | `[]` |
 | defaultIcon | 已有地址列錶默認圖標，type='exist' 時生效 | `ReactNode` | `-` |
@@ -493,5 +499,15 @@ export default App;
 | custom | 是否可以切換自定義地址選擇，type='exist' 時生效 | `boolean` \| `string` | `true` |
 | onExistSelect | 選擇已有地址列錶時觸發 | `(data: AddressList) => void` | `-` |
 | onSwitch | 點擊'選擇其他地址'或自定義地址選擇左上角返回按鈕觸發 | `(data: { type: string }) => void` | `-` |
+| onClose | 關閉彈框時觸發 | `-` | `-` |
+
+### Ref
+
+透過 ref 可以獲取到 Address 實例並調用實例方法。
+
+| 方法名 | 說明 | 參數 |
+| ---- | ---- | ---- |
+| open | 打開地址選擇 | `-` |
+| close | 關閉地址選擇 | `-` |
 
 更多參數可參考 `Cascader` 組件。

@@ -123,15 +123,15 @@ const InternalPickerPanel: ForwardRefRenderFunction<
   }
 
   // 开始滚动
-  const touchStart = (event: React.TouchEvent<HTMLElement>) => {
-    touch.start(event as any)
+  const touchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    touch.start(event)
     setStartY(touch.deltaY)
     setStartTime(Date.now())
     transformY.current = scrollDistance
   }
 
-  const touchMove = (event: React.TouchEvent<HTMLElement>) => {
-    touch.move(event as any)
+  const touchMove = (event: React.TouchEvent<HTMLDivElement>) => {
+    touch.move(event)
     if ((touch as any).isVertical) {
       moving.current = true
       preventDefault(event, true)
@@ -140,7 +140,7 @@ const InternalPickerPanel: ForwardRefRenderFunction<
     setMove(move)
   }
 
-  const touchEnd = (event: React.TouchEvent<HTMLElement>) => {
+  const touchEnd = () => {
     if (!moving.current) return
     const move = touch.deltaY - startY
     const moveTime = Date.now() - startTime

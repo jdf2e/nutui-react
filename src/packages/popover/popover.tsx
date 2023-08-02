@@ -96,8 +96,8 @@ export const Popover: FunctionComponent<
     ...props,
   }
 
-  const popoverRef = useRef<any>(null)
-  const popoverContentRef = useRef<any>(null)
+  const popoverRef = useRef<HTMLDivElement>(null)
+  const popoverContentRef = useRef<HTMLDivElement>(null)
   const [showPopup, setShowPopup] = useState(false)
   const [elWidth, setElWidth] = useState(0)
   const [elHeight, setElHeight] = useState(0)
@@ -130,7 +130,7 @@ export const Popover: FunctionComponent<
       props.onClick && props.onClick()
       onClose && onClose()
     },
-    targetSet,
+    targetSet as Element[],
     'touchstart',
     true,
     visible,
@@ -138,7 +138,7 @@ export const Popover: FunctionComponent<
   )
 
   const getContentWidth = () => {
-    let rect = getRect(popoverRef.current)
+    let rect = getRect(popoverRef.current as Element)
     const scrollDis = document.documentElement.scrollTop || window.scrollY
     if (targetId) {
       setTimeout(() => {

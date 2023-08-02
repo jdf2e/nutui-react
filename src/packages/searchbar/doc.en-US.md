@@ -218,12 +218,12 @@ export default App;
 | rightIn | input box, right in area | `ReactNode` | `-` |
 | left | outside the input box, left | `ReactNode` | `-` |
 | right | outside the input box, right | `ReactNode` | `-` |
-| onChange | triggered when entering content | `(value: string, event: Event) => void` | `-` |
-| onFocus | triggered when focusing | `(value: string, event: Event) => void` | `-` |
-| onBlur | triggered when out of focus | `(value: string, event: Event) => void` | `-` |
-| onClear | triggered when clicking clear | `(event: Event) => void` | `-` |
+| onChange | triggered when entering content | `(value: string, event: ChangeEvent<HTMLInputElement>) => void` | `-` |
+| onFocus | triggered when focusing | `(value: string, event: FocusEvent<HTMLInputElement>) => void` | `-` |
+| onBlur | triggered when out of focus | `(value: string, event: FocusEvent<HTMLInputElement>) => void` | `-` |
+| onClear | triggered when clicking clear | `(event: MouseEvent<HTMLDivElement>) => void` | `-` |
 | onSearch | trigger when confirming search | `(val: string) => void` | `-` |
-| onInputClick | triggered when clicking the input area | `(event: Event) => void` | `-` |
+| onInputClick | triggered when clicking the input area | `(event: MouseEvent<HTMLInputElement>) => void` | `-` |
 
 ## Theming
 

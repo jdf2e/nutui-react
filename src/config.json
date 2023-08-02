@@ -214,6 +214,17 @@
         },
         {
           "version": "2.0.0",
+          "name": "Space",
+          "type": "component",
+          "cName": "间距",
+          "desc": "元素之间的间距，保持相同的宽度",
+          "sort": 8,
+          "show": true,
+          "taro": true,
+          "author": "ivan"
+        },
+        {
+          "version": "2.0.0",
           "name": "Sticky",
           "type": "component",
           "cName": "粘性布局",
