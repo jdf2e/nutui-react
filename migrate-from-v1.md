@@ -22,7 +22,7 @@ npm install @nutui/nutui-react-taro
 ## 兼容更新
 1. 组件样式处理
 
-新增了按需引入 css 文件的支持。可通过 babel-import-plugin 插件实现：
+新增了按需引入 css 文件的支持，同时保留了按需引入 scss 文件的能力。可通过 babel-import-plugin 插件实现按需引入 css：
 
 H5配置如下：
 ```json
