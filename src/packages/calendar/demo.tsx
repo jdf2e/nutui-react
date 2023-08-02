@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { Calendar } from './calendar'
 import { Cell } from '@/packages/cell/cell'
+import DatePicker from '@/packages/datepicker/index'
 import { Utils } from '@/utils/date'
 import { useTranslate } from '../../sites/assets/locale'
 
@@ -10,19 +11,21 @@ interface Day {
   day: string | number
   type: string
 }
-
 interface T {
   ce5c5446: string
   c38a08ef: string
   b840c88f: string
   a74a1fd4: string
   '8dab2f66': string
+  '8dab2f67': string
+  '8dab2f68': string
   cfbdc781: string
   c3a3a1d2: string
   e51e4582: string
   '7db1a8b2': string
   '7db1a8b3': string
   '7db1a8b4': string
+  '7db1a8b5': string
   a52bef0c: string
   d04fcbda: string
   '0aaad620': string
@@ -40,12 +43,15 @@ const CalendarDemo = () => {
       b840c88f: '请选择',
       a74a1fd4: '选择日期区间',
       '8dab2f66': '至',
+      '8dab2f67': '请选择起始时间',
+      '8dab2f68': '请选择截止时间',
       cfbdc781: '快捷选择',
       c3a3a1d2: '选择日期',
       e51e4582: '平铺展示',
       '7db1a8b2': '选择多个日期',
       '7db1a8b3': '选择周',
       '7db1a8b4': '日期不可选',
+      '7db1a8b5': '日期区间',
       a52bef0c: '已选择',
       d04fcbda: '自定义日历',
       '0aaad620': '自定义按钮',
@@ -60,12 +66,15 @@ const CalendarDemo = () => {
       b840c88f: '請選擇',
       a74a1fd4: '選擇日期區間',
       '8dab2f66': '至',
+      '8dab2f67': '请选择起始时间',
+      '8dab2f68': '请选择截止时间',
       cfbdc781: '快捷選擇',
       c3a3a1d2: '選擇日期',
       e51e4582: '平鋪展示',
       '7db1a8b2': '選擇多個日期',
       '7db1a8b3': '選擇周',
       '7db1a8b4': '日期不可選',
+      '7db1a8b5': '日期区间',
       a52bef0c: '已選擇',
       d04fcbda: '自定義日曆',
       '0aaad620': '自定義按鈕',
@@ -80,12 +89,15 @@ const CalendarDemo = () => {
       b840c88f: 'please choose',
       a74a1fd4: 'Select date range',
       '8dab2f66': 'to',
+      '8dab2f67': 'Select start Time',
+      '8dab2f68': 'Select end time',
       cfbdc781: 'quick selection',
       c3a3a1d2: 'select date',
       e51e4582: 'Tiled display',
       '7db1a8b2': 'select multiple dates',
       '7db1a8b3': 'select week',
       '7db1a8b4': 'disable date',
+      '7db1a8b5': 'date range',
       a52bef0c: 'chosen',
       d04fcbda: 'custom calendar',
       '0aaad620': 'custom button',
@@ -104,6 +116,7 @@ const CalendarDemo = () => {
   const [date4, setDate4] = useState<string[]>([])
   const [date40, setDate40] = useState<string[]>([])
   const [date41, setDate41] = useState<string[]>([])
+  const [date42, setDate42] = useState<string[]>([])
   const [date5, setDate5] = useState<string[]>(['2023-03-23', '2023-11-26'])
   const [date6, setDate6] = useState<string[]>(['2023-06-12', '2023-06-16'])
   const [date7, setDate7] = useState<string[]>(['2023-07-10', '2023-07-19'])
@@ -115,6 +128,8 @@ const CalendarDemo = () => {
   const [isVisible4, setIsVisible4] = useState(false)
   const [isVisible40, setIsVisible40] = useState(false)
   const [isVisible41, setIsVisible41] = useState(false)
+  const [isVisible42, setIsVisible42] = useState(false)
+  const [isVisible43, setIsVisible43] = useState(false)
   const [isVisible5, setIsVisible5] = useState(false)
   const [isVisible6, setIsVisible6] = useState(false)
   const [isVisible7, setIsVisible7] = useState(false)
@@ -143,6 +158,10 @@ const CalendarDemo = () => {
 
   const openSwitch41 = () => {
     setIsVisible41(true)
+  }
+
+  const openSwitch42 = () => {
+    setIsVisible42(true)
   }
 
   const openSwitch5 = () => {
@@ -181,6 +200,9 @@ const CalendarDemo = () => {
     setIsVisible41(false)
   }
 
+  const closeSwitch42 = () => {
+    setIsVisible42(false)
+  }
   const closeSwitch5 = () => {
     setIsVisible5(false)
   }
@@ -201,12 +223,6 @@ const CalendarDemo = () => {
   const setChooseValue1 = (param: string) => {
     setDate1([...[param[0][3], param[1][3]]])
   }
-
-  const setChooseValue2 = (param: string) => {
-    setDate2(param[3])
-    console.log('setChooseValue2', param[3])
-  }
-
   const setChooseValue3 = (param: string) => {
     setDate3(param[3])
     console.log('setChooseValue3', param[3])
@@ -234,6 +250,16 @@ const CalendarDemo = () => {
     )
     const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
     setDate41([...dateArr])
+  }
+
+  const setChooseValue42 = (chooseData: any) => {
+    console.log(
+      'setChooseValue42',
+      [...[chooseData[0][3], chooseData[1][3]]],
+      chooseData
+    )
+    const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
+    setDate42([...dateArr])
   }
 
   const setChooseValue5 = (param: string) => {
@@ -289,7 +315,7 @@ const CalendarDemo = () => {
   }
 
   const disableDate = (date: Day) => {
-    return date.day === 25
+    return date.day === 25 || date.day === 20 || date.day === 22
   }
 
   const renderDay = (date: Day) => {
@@ -331,6 +357,29 @@ const CalendarDemo = () => {
         </div>
       </div>
     )
+  }
+
+  const [show1, setShow1] = useState(false)
+  const [dpAbled, setDatePickerAbled] = useState([false, false])
+  // const [show1, setShow1] = useState(false)
+  const [desc1, setDesc1] = useState('10:00:00')
+  const [desc2, setDesc2] = useState('20:00:00')
+  const desc = useRef(0)
+  const confirm1 = (values: (string | number)[], options: any[]) => {
+    console.log('desc', desc)
+    if (desc.current === 1) {
+      setDesc1(options.map((option) => parseInt(option.text)).join(':'))
+    } else {
+      setDesc2(options.map((option) => parseInt(option.text)).join(':'))
+    }
+  }
+  const showDatePicker = (e: any, index: number) => {
+    console.log('dddddd', index, dpAbled)
+    if (dpAbled.keys()) {
+      e.stopPropagation()
+      setShow1(true)
+      desc.current = index
+    }
   }
 
   return (
@@ -432,6 +481,73 @@ const CalendarDemo = () => {
           onClose={closeSwitch41}
           onConfirm={setChooseValue41}
         />
+
+        <Cell
+          title={translated['7db1a8b5']}
+          description={
+            <div className="desc-box">
+              <div className="desc" onClick={openSwitch42}>
+                {date42 && date42.length
+                  ? `${date42[0]} ${desc1}`
+                  : translated['8dab2f67']}
+              </div>
+              <div className="desc1">-</div>
+              <div className="desc" onClick={openSwitch42}>
+                {date42 && date42.length
+                  ? `${date42[1]} ${desc2}`
+                  : translated['8dab2f68']}
+              </div>
+            </div>
+          }
+        />
+        <Calendar
+          visible={isVisible42}
+          defaultValue={date42}
+          type="range"
+          startDate="2023-01-01"
+          endDate="2024-09-10"
+          disableDate={disableDate}
+          firstDayOfWeek={1}
+          onDayClick={(date) => {
+            let d = [false, false]
+            if (date.length > 1) {
+              d = [true, true]
+            } else if (date.length > 0) {
+              d = [true, false]
+            }
+            setDatePickerAbled(d)
+          }}
+          onClose={closeSwitch42}
+          onConfirm={setChooseValue42}
+        >
+          <div className="nut-calendar-btns">
+            <div
+              className={`nut-calendar-date ${dpAbled[0] ? '' : 'disabled'}`}
+              onClick={(e) => {
+                showDatePicker(e, 1)
+              }}
+            >
+              开始时间：{desc1}
+            </div>
+            -
+            <div
+              className={`nut-calendar-date ${dpAbled[1] ? '' : 'disabled'}`}
+              onClick={(e) => {
+                showDatePicker(e, 2)
+              }}
+            >
+              结束时间：{desc2}
+            </div>
+          </div>
+          <DatePicker
+            title="时间选择"
+            type="time"
+            visible={show1}
+            showChinese
+            onClose={() => setShow1(false)}
+            onConfirm={(options, values) => confirm1(values, options)}
+          />
+        </Calendar>
 
         <h2>{translated.cfbdc781}</h2>
         <Cell

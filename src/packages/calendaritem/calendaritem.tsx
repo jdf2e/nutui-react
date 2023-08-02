@@ -93,6 +93,7 @@ export const CalendarItem = React.forwardRef<
   const {
     style,
     className,
+    children,
     popup,
     type,
     autoBackfill,
@@ -853,6 +854,7 @@ export const CalendarItem = React.forwardRef<
   const renderFooter = () => {
     return (
       <div className="nut-calendar-footer">
+        {children}
         <div className="calendar-confirm-btn" onClick={confirm}>
           {confirmText || locale.confirm}
         </div>

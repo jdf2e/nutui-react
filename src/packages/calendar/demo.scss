@@ -17,6 +17,36 @@
   }
 }
 
+.nut-calendar-btns {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0 20px;
+}
+
+.nut-calendar-date {
+  background-color: #f9f9f9;
+  font-size: 12px;
+
+  &.disabled {
+    color: $disable-color;
+  }
+}
+
+.desc-box {
+  display: flex;
+}
+
+.desc {
+  padding: 10px;
+  background-color: #f9f9f9;
+}
+
+.desc1 {
+  padding: 10px;
+}
+
 .info {
   display: block;
   font-size: 12px;

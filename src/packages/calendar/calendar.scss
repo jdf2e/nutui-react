@@ -85,10 +85,6 @@
     display: block;
     box-sizing: border-box;
 
-    // .viewArea {
-    //   display: block;
-    // }
-
     .calendar-loading-tip {
       height: 50px;
       line-height: 50px;
@@ -211,13 +207,14 @@
   // 底部导航
   &-footer {
     display: flex;
-    height: 62px;
+    // height: 62px;
     width: 100%;
+    flex-direction: column;
     background-color: $white;
 
+    // border-top: 1px solid #efefef;
     .calendar-confirm-btn {
       height: 44px;
-      width: 100%;
       margin: 10px 18px;
       border-radius: 22px;
       background: $button-primary-background-color;
