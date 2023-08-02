@@ -1,3 +1,14 @@
+# v2.0.9
+`2023-08-02`
+
+* :sparkles: feat(notify): 支持函数调用的展开和关闭 (#1271) @oasis-cloud
+* :bug: fix: space 版本号修改为 2.0 (#1265) @oasis-cloud
+* 🔨 chore(config): 优化 taro demo 环境配置文件 (#1266) @oasis-cloud
+* 📖 docs: cascader 文档更新 (#1270) @vapao
+* 📖 docs: tag 文档和 demo 同步 (#1275) @oasis-cloud
+* 📖 docs: 升级文档更新 (#1274) @oasis-cloud
+
+
 # v2.0.8
 `2023-07-28`
 
