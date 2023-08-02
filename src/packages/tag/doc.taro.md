@@ -24,8 +24,8 @@ const App = () => {
   return (
     <>
       <Tag type="primary">标签</Tag>
-      <Tag type="success">标签</Tag>
       <Tag type="info">标签</Tag>
+      <Tag type="success">标签</Tag>
       <Tag type="danger">标签</Tag>
       <Tag type="warning">标签</Tag>
     </>
@@ -36,82 +36,31 @@ export default App;
 
 :::
 
-### 空心样式
+
+### 样式风格
 
 :::demo
 
 ```tsx
-import React from "react";
-import { Tag } from '@nutui/nutui-react-taro';
+import React from 'react'
+import { CircleClose } from '@nutui/icons-react-taro'
+import { Tag } from '@nutui/nutui-react'
 
 const App = () => {
   return (
     <>
       <Tag plain>标签</Tag>
+      <Tag round type='primary'>标签</Tag>
+      <Tag mark type='primary'>标签</Tag>
+      <Tag closeable onClose={() => alert('Tag closed')} type='primary'>标签</Tag>
+      <Tag closeable
+           closeIcon={<CircleClose width={12} height={12} />}
+           onClose={() => alert('Tag closed')}
+           type='primary'>标签</Tag>
     </>
   )
 }
-export default App;
-```
-
-:::
-
-### 圆角样式
-
-:::demo
-
-```tsx
-import React from "react";
-import { Tag } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <Tag round type="primary">标签</Tag>
-    </>
-  )
-}
-export default App;
-```
-
-:::
-
-### 标记样式
-
-:::demo
-
-```tsx
-import React from "react";
-import { Tag } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <Tag mark type="primary">标签</Tag>
-    </>
-  )
-}
-export default App;
-```
-
-:::
-
-### 可关闭标签
-
-:::demo
-
-```tsx
-import React from "react";
-import { Tag } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <Tag  closeable onClose={()=>alert('Tag closed')}  type="primary">标签</Tag>
-    </>
-  )
-}
-export default App;
+export default App
 ```
 
 :::
@@ -138,52 +87,6 @@ export default App;
 
 :::
 
-### 点击事件
-
-:::demo
-
-```tsx
-import React from "react";
-import { Tag } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <Tag type='primary' onClick={()=>alert('Tag clicked')}>标签</Tag>
-    </>
-  )
-}
-export default App;
-```
-
-:::
-
-### 展示控制
-
-:::demo
-
-```tsx
-import React, {useState} from "react";
-import { Tag,Button } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const  [isShow,setIsShow] = useState(true) // 是否展示Tag组件
-  return (
-    <>
-    {
-      isShow? (
-        <Tag type='primary' onClick={()=>alert('Tag clicked')}>标签</Tag>
-      ):null
-    }  
-    <Button type='default' size="small" onClick={()=>{setIsShow(false)}} >点击删除Tag</Button>
-    </>
-  )
-  
-}
-export default App;
-```
-
-:::
 
 ## Tag
 
