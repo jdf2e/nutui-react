@@ -111,7 +111,6 @@ const CalendarDemo = () => {
   const currDay = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
   const [date, setDate] = useState(currDay)
   const [date1, setDate1] = useState(['2023-01-23', '2023-11-26'])
-  const [date2, setDate2] = useState('2023-05-08')
   const [date3, setDate3] = useState('')
   const [date4, setDate4] = useState<string[]>([])
   const [date40, setDate40] = useState<string[]>([])
@@ -129,7 +128,6 @@ const CalendarDemo = () => {
   const [isVisible40, setIsVisible40] = useState(false)
   const [isVisible41, setIsVisible41] = useState(false)
   const [isVisible42, setIsVisible42] = useState(false)
-  const [isVisible43, setIsVisible43] = useState(false)
   const [isVisible5, setIsVisible5] = useState(false)
   const [isVisible6, setIsVisible6] = useState(false)
   const [isVisible7, setIsVisible7] = useState(false)
@@ -361,12 +359,10 @@ const CalendarDemo = () => {
 
   const [show1, setShow1] = useState(false)
   const [dpAbled, setDatePickerAbled] = useState([false, false])
-  // const [show1, setShow1] = useState(false)
   const [desc1, setDesc1] = useState('10:00:00')
   const [desc2, setDesc2] = useState('20:00:00')
   const desc = useRef(0)
   const confirm1 = (values: (string | number)[], options: any[]) => {
-    console.log('desc', desc)
     if (desc.current === 1) {
       setDesc1(options.map((option) => parseInt(option.text)).join(':'))
     } else {
@@ -374,7 +370,6 @@ const CalendarDemo = () => {
     }
   }
   const showDatePicker = (e: any, index: number) => {
-    console.log('dddddd', index, dpAbled)
     if (dpAbled.keys()) {
       e.stopPropagation()
       setShow1(true)
