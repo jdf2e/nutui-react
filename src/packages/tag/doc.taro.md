@@ -52,7 +52,9 @@ const App = () => {
       <Tag plain>标签</Tag>
       <Tag round type='primary'>标签</Tag>
       <Tag mark type='primary'>标签</Tag>
-      <Tag closeable onClose={() => alert('Tag closed')} type='primary'>标签</Tag>
+      <Tag closeable
+           onClose={() => alert('Tag closed')}
+           type='primary'>标签</Tag>
       <Tag closeable
            closeIcon={<CircleClose width={12} height={12} />}
            onClose={() => alert('Tag closed')}
