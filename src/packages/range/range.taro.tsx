@@ -261,7 +261,7 @@ export const Range: FunctionComponent<
     setDragStatus('start')
   }
 
-  const onTouchMove = async (event: TouchEvent) => {
+  const onTouchMove = async (event: any) => {
     if (disabled || !root.current) {
       return
     }
@@ -295,7 +295,7 @@ export const Range: FunctionComponent<
     updateValue(newValue)
   }
 
-  const onTouchEnd = (event: TouchEvent) => {
+  const onTouchEnd = () => {
     if (disabled) {
       return
     }
@@ -373,9 +373,9 @@ export const Range: FunctionComponent<
                     }
                     onTouchStart(e)
                   }}
-                  onTouchMove={(e: any) => onTouchMove(e)}
-                  onTouchEnd={(e: any) => onTouchEnd(e)}
-                  onTouchCancel={(e: any) => onTouchEnd(e)}
+                  onTouchMove={(e) => onTouchMove(e)}
+                  onTouchEnd={onTouchEnd}
+                  onTouchCancel={onTouchEnd}
                   onClick={(e) => e.stopPropagation()}
                 >
                   {renderButton(index)}
@@ -387,9 +387,9 @@ export const Range: FunctionComponent<
               catchMove
               className="nut-range-button-wrapper"
               onTouchStart={(e) => onTouchStart(e)}
-              onTouchMove={(e: any) => onTouchMove(e)}
-              onTouchEnd={(e: any) => onTouchEnd(e)}
-              onTouchCancel={(e: any) => onTouchEnd(e)}
+              onTouchMove={(e) => onTouchMove(e)}
+              onTouchEnd={onTouchEnd}
+              onTouchCancel={onTouchEnd}
               onClick={(e) => e.stopPropagation()}
             >
               {renderButton()}

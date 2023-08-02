@@ -16,10 +16,13 @@ npm install @nutui/nutui-react-taro
 3. 处理不兼容更新
 
 从 NutUI React 1.x 到 NutUI React 2.x 存在一些不兼容更新，需要仔细阅读不兼容更新内容，并依次处理。
+
+你可以手动对照下面的列表逐条检查代码进行修改，另外，我们也提供了一个 codemod cli 工具 @nutui/nutui-react-codemod 以帮助你快速升级到 v2 版本。在运行 codemod cli 前，请先提交你的本地代码修改。
+
 ## 兼容更新
 1. 组件样式处理
 
-新增了按需引入 css 文件的支持。可通过 babel-import-plugin 插件实现：
+新增了按需引入 css 文件的支持，同时保留了按需引入 scss 文件的能力。可通过 babel-import-plugin 插件实现按需引入 css：
 
 H5配置如下：
 ```json
@@ -50,7 +53,7 @@ plugins: [
       style: 'css',
       camel2DashComponentName: false,
     },
-    "nutui-react",
+    "nutui-react-taro",
   ]
 ]
 ```

@@ -583,7 +583,7 @@ export default App;
 | activeColor | 選中啟動態顏色 | `string` | `-` |
 | activeIcon | 標記選中的Icon | `string` | `ReactNode` |
 | lazy | 是否開啟動態加載 | `boolean` | `false` |
-| optionKey | 自定义`options`结构中，包含 textKey、valueKey、childrenKey | `object` | `-` |
+| optionKey | 自定義`options`中的關鍵字，valueKey、textKey、childrenKey | `object` | `{valueKey: 'value', textKey: 'text', childrenKey: 'children'}` |
 | format | 當options為可轉換為樹形結構的扁平結構時，配置轉換規則 | `object` | `-` |
 | title | 標題 | `string` | `-` |
 | closeIconPosition | 取消按鈕位置，繼承 Popup 組件 | `string` | `top-right` |

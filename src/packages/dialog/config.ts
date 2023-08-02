@@ -1,4 +1,5 @@
 import { ReactNode, ForwardRefExoticComponent, PropsWithChildren } from 'react'
+import type { MouseEvent } from 'react'
 
 export type DialogConfigType = {
   prefixCls?: string
@@ -22,7 +23,7 @@ export interface BasicDialogProps {
   beforeClose?: () => boolean
   beforeCancel?: () => boolean
   onClose?: () => void
-  onConfirm?: (e?: MouseEvent) => Promise<() => void> | void
+  onConfirm?: (e?: MouseEvent<HTMLButtonElement>) => Promise<() => void> | void
   onCancel?: () => void
   onClick?: () => void
 }
