@@ -88,25 +88,25 @@ page {
   --nutui-brand-link-color: #396acc;
   --nutui-brand-text-color: #ffffff;
   // 主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
-  --nutui-gray-6: #1a1a1a;
+  --nutui-gray-7: #1a1a1a;
   // 次要文字色，用于次级标题、属性标示、非主要信息引导等。
-  --nutui-black-9: #757575;
+  --nutui-black-10: #757575;
   // 不可操作内容色，用于预置内容、无效内容、特殊不可点击按钮、组件边框线等。
-  --nutui-gray-5: #bfbfbf;
+  --nutui-gray-6: #bfbfbf;
   // 页面基底色，用于卡片式页面的兜底，永远置于页面最底层。
-  --nutui-gray-4: #f4f4f4;
+  --nutui-gray-5: #f4f4f4;
   // 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
-  --nutui-gray-3: #f8f8f8;
+  --nutui-gray-4: #f8f8f8;
   // 卡片背景色
-  --nutui-black-2: #ffffff;
+  --nutui-black-3: #ffffff;
   // 页面全局蒙层，用于弹出层、弹窗、新功能引导出现的整页遮罩
-  --nutui-gray-2: rgba(0, 0, 0, 0.7);
+  --nutui-gray-3: rgba(0, 0, 0, 0.7);
   // 局部蒙层，用于非整页遮罩
-  --nutui-gray-1: rgba(0, 0, 0, 0.4);
+  --nutui-gray-2: rgba(0, 0, 0, 0.4);
   // 间隔线/容错线，用于结构或信息分割
-  --nutui-black-1: rgba(0, 0, 0, 0.08);
+  --nutui-black-2: rgba(0, 0, 0, 0.08);
   // 图片容错蒙层
-  --nutui-gray-0: rgba(0, 0, 0, 0.02);
+  --nutui-gray-1: rgba(0, 0, 0, 0.02);
 }
 
 ```

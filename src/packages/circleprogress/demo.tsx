@@ -110,7 +110,7 @@ const CircleProgressDemo = () => {
         <Cell style={{ justifyContent: 'center' }}>
           <CircleProgress percent={50} radius={60}>
             <div>3000</div>
-            <div style={{ fontSize: '12px', color: 'var(--nutui-black-9)' }}>
+            <div style={{ fontSize: '12px', color: 'var(--nutui-black-10)' }}>
               步
             </div>
           </CircleProgress>

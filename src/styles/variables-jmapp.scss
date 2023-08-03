@@ -24,29 +24,29 @@ $color-text: var(--nutui-gray-9) !default;
 $color-help: var(--nutui-gray-7) !default;
 // 特殊禁用色
 $color-disabled: var(--nutui-color-disabled) !default;
-$white: var(--nutui-gray-0) !default;
+$white: var(--nutui-gray-1) !default;
 $black: $color-title !default;
 
 $disable-bg-color: $white !default;
 $required-color: $color-primary !default;
 
 // 页面基底色，用于卡片式页面的兜底，永远置于页面最底层。
-$color-background: var(--nutui-gray-1) !default;
+$color-background: var(--nutui-gray-2) !default;
 // 卡片背景色
-$color-card-background: var(--nutui-gray-0) !default;
+$color-card-background: var(--nutui-gray-1) !default;
 // 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
-$color-card-background-wrapper: var(--nutui-gray-0) !default;
+$color-card-background-wrapper: var(--nutui-gray-1) !default;
 // 背景禁用色
 $color-background-disabled: var(--nutui-color-disabled) !default;
 
 // ----------------------------------------------------
 // 蒙层颜色
 // 页面全局蒙层
-$color-mask: var(--nutui-black-9) !default;
+$color-mask: var(--nutui-black-10) !default;
 // 容错蒙层
-$color-part-mask: var(--nutui-black-1) !default;
+$color-part-mask: var(--nutui-black-2) !default;
 // 分割信息的颜色
-$color-divider: var(--nutui-black-2) !default;
+$color-divider: var(--nutui-black-3) !default;
 
 // ---- Font Family ----
 $font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun,

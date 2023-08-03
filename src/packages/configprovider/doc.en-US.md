@@ -88,25 +88,25 @@ page {
   --nutui-brand-link-color: #396acc;
   --nutui-brand-text-color: #ffffff;
   // The main content is colored, common words, general title content, detailed text browsing, general button text and chart guidance
-  --nutui-gray-6: #1a1a1a;
+  --nutui-gray-7: #1a1a1a;
   // Secondary text color, used for secondary headings, attribute indications, non-primary information guidance, etc.
-  --nutui-black-9: #757575;
+  --nutui-black-10: #757575;
   // Non-operable content color for preset content, invalid content, special non-clickable buttons, component border lines, etc.
-  --nutui-gray-5: #bfbfbf;
+  --nutui-gray-6: #bfbfbf;
   // The base color of the page, used for the bottom of the card-style page, is always placed at the bottom of the page.
-  --nutui-gray-4: #f4f4f4;
+  --nutui-gray-5: #f4f4f4;
   // The background color is embedded in the card, which is used for information wrapping inside the card, and the perception is weak.
-  --nutui-gray-3: #f8f8f8;
+  --nutui-gray-4: #f8f8f8;
   // Card background color
-  --nutui-black-2: #ffffff;
+  --nutui-black-3: #ffffff;
   // Page global mask, used for pop-up layers, pop-ups, full-page masks that new features lead to appear
-  --nutui-gray-2: rgba(0, 0, 0, 0.7);
+  --nutui-gray-3: rgba(0, 0, 0, 0.7);
   // Local masks for non-full-page masking
-  --nutui-gray-1: rgba(0, 0, 0, 0.4);
+  --nutui-gray-2: rgba(0, 0, 0, 0.4);
   // Spacer/fault-tolerant lines for structure or information segmentation
-  --nutui-black-1: rgba(0, 0, 0, 0.08);
+  --nutui-black-2: rgba(0, 0, 0, 0.08);
   // Image fault tolerance mask
-  --nutui-gray-0: rgba(0, 0, 0, 0.02);
+  --nutui-gray-1: rgba(0, 0, 0, 0.02);
 }
 
 ```
