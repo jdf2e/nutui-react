@@ -8,8 +8,6 @@ import { getRect } from '@/utils/use-client-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useConfig } from '@/packages/configprovider'
 
-import './tour.scss'
-
 interface ListOptions {
   target: Element | string
   content?: string
