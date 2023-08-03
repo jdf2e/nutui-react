@@ -57,6 +57,46 @@ export default App
 
 :::
 
+### 函数调用
+```tsx
+import  React, {useState} from "react";
+import { Notify, Cell } from '@nutui/nutui-react-taro';
+
+const App = () => {
+    const [showNotify, SetShowNotify] = useState(false)
+    const [states, SetStates] = useState({
+        message: '',
+        type: 'danger',
+    })
+    const changeNotify = (message: string, type?: string) => {
+        const change = Object.assign(states, {message,type})
+        SetStates(change)
+    }
+    return (
+        <>
+            <Notify
+                id="test"
+                visible={showNotify}
+                type={states.type}
+                onClose={() => {
+                    SetShowNotify(false)
+                }}
+                onClick={() => {
+                    console.log('click')
+                }}
+            >{states.message}</Notify>
+            <Cell
+                title="函数调用"
+                onClick={(event: React.MouseEvent) => {
+                  Notify.open('test')
+                }}
+            />
+        </>
+    )
+}
+export default App
+```
+
 ### 通知类型
 
 :::demo
