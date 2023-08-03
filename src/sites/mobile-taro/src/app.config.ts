@@ -74,7 +74,8 @@ const subPackages = [
       "pages/pulltorefresh/index",
       "pages/skeleton/index",
       "pages/swipe/index",
-      "pages/toast/index"
+      "pages/toast/index",
+      'pages/loading/index'
     ]
   },
   {
