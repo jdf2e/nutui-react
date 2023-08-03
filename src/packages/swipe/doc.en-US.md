@@ -273,10 +273,10 @@ export default App;
 | disabled | disable sliding | `boolean` | `false` |
 | onOpen | open the cell sidebar | `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | `-`|
 | onClose | collapse the cell sidebar | `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | `-`|
-| onActionClick | triggered when clicking on the left or right | `(event: Event, position: 'left' \|'right') => void` | `-`|
-| onTouchStart | onTouchStart | `(event: Event) => void` | `-`|
-| onTouchMove | onTouchMove | `(event: Event) => void` | `-`|
-| onTouchEnd | onTouchEnd | `(event: Event) => void` | `-`|
+| onActionClick | triggered when clicking on the left or right | `(event: MouseEvent<HTMLDivElement>, position: 'left' \|'right') => void` | `-`|
+| onTouchStart | onTouchStart | `(event: TouchEvent<HTMLDivElement>) => void` | `-`|
+| onTouchMove | onTouchMove | `(event: TouchEvent<HTMLDivElement>) => void` | `-`|
+| onTouchEnd | onTouchEnd | `(event: TouchEvent<HTMLDivElement>) => void` | `-`|
 
 ### Ref
 

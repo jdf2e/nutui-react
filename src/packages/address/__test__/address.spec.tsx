@@ -1,5 +1,5 @@
-import React from 'react'
-import { fireEvent, render } from '@testing-library/react'
+import React, { useRef } from 'react'
+import { fireEvent, render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Address } from '../address'
 
@@ -178,4 +178,59 @@ test('Address: exist defaultIcon & selectIcon', async () => {
 
   fireEvent.click(items[1])
   expect(items[1].innerHTML).toContain('<div class="select">456</div>')
+})
+
+function sleep(delay = 0): Promise<void> {
+  return new Promise((resolve) => {
+    setTimeout(resolve, delay)
+  })
+}
+
+describe('Address', () => {
+  interface WrapperProps {
+    visible: boolean
+  }
+
+  const Wrapper: React.FC<WrapperProps> = ({ visible }) => {
+    const ref = useRef<any>()
+    return (
+      <div>
+        <button onClick={() => ref.current?.open()}>Open</button>
+        <button onClick={() => ref.current?.close()}>Close</button>
+        <Address
+          defaultVisible={visible}
+          ref={ref}
+          options={optionsDemo1}
+          title="选择地址"
+        />
+      </div>
+    )
+  }
+
+  it('should handle open and close methods', async () => {
+    const screen = render(<Wrapper visible={false} />)
+
+    fireEvent.click(screen.getByText('Open'))
+    await waitFor(
+      async () => {
+        await sleep(1000)
+        const title = screen.container.querySelector('.nut-popup-title')
+        expect(title?.innerHTML).toBe('选择地址')
+      },
+      {
+        timeout: 2000,
+      }
+    )
+
+    fireEvent.click(screen.getByText('Close'))
+    await waitFor(
+      async () => {
+        await sleep(1000)
+        expect(screen.container.querySelector('.nut-popup-title')).toBe(null)
+      },
+      {
+        timeout: 2000,
+      }
+    )
+  })
 })

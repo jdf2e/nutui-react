@@ -4,8 +4,8 @@ import React, {
   useRef,
   FunctionComponent,
   useContext,
-  MouseEventHandler,
 } from 'react'
+import type { MouseEvent } from 'react'
 import classNames from 'classnames'
 import { My } from '@nutui/icons-react'
 import { AvatarContext } from '@/packages/avatargroup/context'
@@ -22,7 +22,7 @@ export interface AvatarProps extends BasicComponent {
   color: string
   src: string
   alt: string
-  onClick: (e: MouseEvent) => void
+  onClick: (e: MouseEvent<HTMLDivElement>) => void
   onError: () => void
 }
 
@@ -134,7 +134,7 @@ export const Avatar: FunctionComponent<
     }
   }
 
-  const clickAvatar: MouseEventHandler<HTMLDivElement> = (e: any) => {
+  const clickAvatar = (e: MouseEvent<HTMLDivElement>) => {
     onClick && onClick(e)
   }
 

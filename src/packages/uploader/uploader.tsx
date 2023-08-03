@@ -131,6 +131,8 @@ export class FileItem {
   percentage: string | number = 0
 
   formData: FormData = new FormData()
+
+  responseText?: string
 }
 
 const InternalUploader: ForwardRefRenderFunction<
@@ -276,6 +278,7 @@ const InternalUploader: ForwardRefRenderFunction<
           if (item.uid === fileItem.uid) {
             item.status = 'success'
             item.message = locale.uploader.success
+            item.responseText = responseText
           }
           return item
         })
@@ -297,6 +300,7 @@ const InternalUploader: ForwardRefRenderFunction<
           if (item.uid === fileItem.uid) {
             item.status = 'error'
             item.message = locale.uploader.error
+            item.responseText = responseText
           }
           return item
         })

@@ -747,3 +747,4 @@ export type NutCSSVariables =
   | 'nutuiRowContentHeight'
   | 'nutuiRowContentLineHeight'
   | 'nutuiColDefaultMarginBottom'
+  | 'nutuiSpaceGap'

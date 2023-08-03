@@ -185,7 +185,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     animate()
   }
   const scrollIntoView = () => {
-    console.log(name, props)
     if (!name) return
 
     raf(() => {

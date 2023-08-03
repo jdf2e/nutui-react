@@ -370,6 +370,7 @@ const InternalUploader: ForwardRefRenderFunction<
           if (item.uid === fileItem.uid) {
             item.status = 'success'
             item.message = locale.uploader.success
+            item.responseText = responseText
           }
         })
         return [...fileList]
@@ -391,6 +392,7 @@ const InternalUploader: ForwardRefRenderFunction<
           if (item.uid === fileItem.uid) {
             item.status = 'error'
             item.message = locale.uploader.error
+            item.responseText = responseText
           }
         })
         return [...fileList]

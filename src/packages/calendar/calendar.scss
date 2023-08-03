@@ -208,13 +208,12 @@
   // 底部导航
   &-footer {
     display: flex;
-    height: 62px;
     width: 100%;
+    flex-direction: column;
     background-color: $white;
 
     .calendar-confirm-btn {
       height: 44px;
-      width: 100%;
       margin: 10px 18px;
       border-radius: 22px;
       background: $button-primary-background-color;

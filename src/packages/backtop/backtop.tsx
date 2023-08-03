@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect, useState, useRef } from 'react'
+import type { MouseEvent } from 'react'
 import { Top } from '@nutui/icons-react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -10,7 +11,7 @@ export interface BackTopProps extends BasicComponent {
   threshold: number
   zIndex: number
   duration: number
-  onClick?: (event: MouseEvent) => void
+  onClick?: (event: MouseEvent<HTMLDivElement>) => void
 }
 
 const defaultProps = {
@@ -120,7 +121,7 @@ export const BackTop: FunctionComponent<
     scrollEl.current?.removeEventListener('resize', scrollListener, false)
   }
   // 返回顶部点击事件
-  const goTop = (e: any) => {
+  const goTop = (e: MouseEvent<HTMLDivElement>) => {
     onClick && onClick(e)
     const otime = +new Date()
     startTime = otime

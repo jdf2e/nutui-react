@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useState } from 'react'
+import type { MouseEvent } from 'react'
 import { usePageScroll, pageScrollTo } from '@tarojs/taro'
 import { Top } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
@@ -8,7 +9,7 @@ export interface BackTopProps extends BasicComponent {
   threshold: number
   zIndex: number
   duration: number
-  onClick?: (event: MouseEvent) => void
+  onClick?: (event: MouseEvent<HTMLDivElement>) => void
 }
 
 const defaultProps = {
@@ -37,7 +38,7 @@ export const BackTop: FunctionComponent<
   })
 
   // 返回顶部点击事件
-  const goTop = (e: any) => {
+  const goTop = (e: MouseEvent<HTMLDivElement>) => {
     onClick && onClick(e)
     pageScrollTo({
       scrollTop: 0,

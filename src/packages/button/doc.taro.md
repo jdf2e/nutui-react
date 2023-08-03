@@ -282,7 +282,7 @@ export default App;
 | block | 是否为块级元素 | `boolean` | `false` |
 | icon | 按钮图标 | `ReactNode` | `-` |
 | loading | 按钮loading状态 | `boolean` | `false` |
-| onClick | 点击按钮时触发 | `onClick: (e: MouseEvent) => void` | `false` |
+| onClick | 点击按钮时触发 | `(e: MouseEvent<HTMLButtonElement>) => void` | `-` |
 
 ### 支持小程序API能力
 
