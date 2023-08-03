@@ -311,7 +311,7 @@ export const Popover: FunctionComponent<
             })}
           </div>
         </Popup>
-        {showPopup && (
+        {showPopup && closeOnOutsideClick && (
           <div
             className="nut-popover-content-bg"
             onClick={clickAway}
