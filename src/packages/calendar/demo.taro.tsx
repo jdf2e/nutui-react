@@ -110,7 +110,6 @@ const CalendarDemo = () => {
   const currDay = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`
   const [date, setDate] = useState(currDay)
   const [date1, setDate1] = useState(['2023-01-23', '2023-11-26'])
-  const [date2, setDate2] = useState('2023-05-08')
   const [date3, setDate3] = useState('')
   const [date4, setDate4] = useState<string[]>([])
   const [date40, setDate40] = useState<string[]>([])
@@ -128,7 +127,6 @@ const CalendarDemo = () => {
   const [isVisible40, setIsVisible40] = useState(false)
   const [isVisible41, setIsVisible41] = useState(false)
   const [isVisible42, setIsVisible42] = useState(false)
-  const [isVisible43, setIsVisible43] = useState(false)
   const [isVisible5, setIsVisible5] = useState(false)
   const [isVisible6, setIsVisible6] = useState(false)
   const [isVisible7, setIsVisible7] = useState(false)
@@ -158,15 +156,12 @@ const CalendarDemo = () => {
   const openSwitch42 = () => {
     setIsVisible42(true)
   }
-
   const openSwitch5 = () => {
     setIsVisible5(true)
   }
-
   const openSwitch6 = () => {
     setIsVisible6(true)
   }
-
   const openSwitch7 = () => {
     setIsVisible7(true)
   }
@@ -225,16 +220,10 @@ const CalendarDemo = () => {
     setDate4([...dateArr])
   }
   const setChooseValue40 = (chooseData: any) => {
-    console.log('setChooseValue40', [...[chooseData[0][3], chooseData[1][3]]])
     const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
     setDate40([...dateArr])
   }
   const setChooseValue41 = (chooseData: any) => {
-    console.log(
-      'setChooseValue41',
-      [...[chooseData[0][3], chooseData[1][3]]],
-      chooseData
-    )
     const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
     setDate41([...dateArr])
   }
@@ -300,8 +289,12 @@ const CalendarDemo = () => {
   const disableDate = (date: Day) => {
     return date.day === 25 || date.day === 20 || date.day === 22
   }
+  const padZero = (d: number | string) => {
+    return d <= 9 ? `0${d}` : d
+  }
+
   const renderDay = (date: Day) => {
-    return <>{date.day <= 9 ? `0${date.day}` : date.day}</>
+    return <>{padZero(date.day)}</>
   }
   const renderDayTop = (date: Day) => {
     let currDate = ''
@@ -343,21 +336,22 @@ const CalendarDemo = () => {
 
   const [show1, setShow1] = useState(false)
   const [dpAbled, setDatePickerAbled] = useState([false, false])
-  // const [show1, setShow1] = useState(false)
   const [desc1, setDesc1] = useState('10:00:00')
   const [desc2, setDesc2] = useState('20:00:00')
   const desc = useRef(0)
   const confirm1 = (values: (string | number)[], options: any[]) => {
-    console.log('desc', desc)
     if (desc.current === 1) {
-      setDesc1(options.map((option) => parseInt(option.text)).join(':'))
+      setDesc1(
+        options.map((option) => padZero(parseInt(option.text))).join(':')
+      )
     } else {
-      setDesc2(options.map((option) => parseInt(option.text)).join(':'))
+      setDesc2(
+        options.map((option) => padZero(parseInt(option.text))).join(':')
+      )
     }
   }
   const showDatePicker = (e: any, index: number) => {
-    console.log('dddddd', index, dpAbled)
-    if (dpAbled.keys()) {
+    if (dpAbled[index - 1]) {
       e.stopPropagation()
       setShow1(true)
       desc.current = index

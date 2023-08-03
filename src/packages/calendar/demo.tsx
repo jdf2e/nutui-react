@@ -145,35 +145,27 @@ const CalendarDemo = () => {
   const openSwitch3 = () => {
     setIsVisible3(true)
   }
-
   const openSwitch4 = () => {
     setIsVisible4(true)
   }
-
   const openSwitch40 = () => {
     setIsVisible40(true)
   }
-
   const openSwitch41 = () => {
     setIsVisible41(true)
   }
-
   const openSwitch42 = () => {
     setIsVisible42(true)
   }
-
   const openSwitch5 = () => {
     setIsVisible5(true)
   }
-
   const openSwitch6 = () => {
     setIsVisible6(true)
   }
-
   const openSwitch7 = () => {
     setIsVisible7(true)
   }
-
   const closeSwitch = () => {
     setIsVisible(false)
   }
@@ -189,15 +181,12 @@ const CalendarDemo = () => {
   const closeSwitch4 = () => {
     setIsVisible4(false)
   }
-
   const closeSwitch40 = () => {
     setIsVisible40(false)
   }
-
   const closeSwitch41 = () => {
     setIsVisible41(false)
   }
-
   const closeSwitch42 = () => {
     setIsVisible42(false)
   }
@@ -223,29 +212,19 @@ const CalendarDemo = () => {
   }
   const setChooseValue3 = (param: string) => {
     setDate3(param[3])
-    console.log('setChooseValue3', param[3])
   }
 
   const setChooseValue4 = (chooseData: any) => {
     const dateArr = chooseData.map((item: any) => {
       return item[3]
     })
-    console.log('setChooseValue4', [...dateArr], chooseData)
     setDate4([...dateArr])
   }
-
   const setChooseValue40 = (chooseData: any) => {
-    console.log('setChooseValue40', [...[chooseData[0][3], chooseData[1][3]]])
     const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
     setDate40([...dateArr])
   }
-
   const setChooseValue41 = (chooseData: any) => {
-    console.log(
-      'setChooseValue41',
-      [...[chooseData[0][3], chooseData[1][3]]],
-      chooseData
-    )
     const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
     setDate41([...dateArr])
   }
@@ -259,9 +238,7 @@ const CalendarDemo = () => {
     const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
     setDate42([...dateArr])
   }
-
   const setChooseValue5 = (param: string) => {
-    console.log('set value 5', [...[param[0][3], param[1][3]]])
     setDate5([...[param[0][3], param[1][3]]])
   }
 
@@ -276,7 +253,6 @@ const CalendarDemo = () => {
   const setChooseValue8 = (param: string) => {
     setDate8([...[param[0][3], param[1][3]]])
   }
-
   const select = (param: string) => {
     console.log(param)
   }
@@ -311,13 +287,15 @@ const CalendarDemo = () => {
       calendarRef.current.scrollToDate(`${yearMonth}-01`)
     }
   }
-
   const disableDate = (date: Day) => {
     return date.day === 25 || date.day === 20 || date.day === 22
   }
+  const padZero = (d: number | string) => {
+    return d <= 9 ? `0${d}` : d
+  }
 
   const renderDay = (date: Day) => {
-    return <>{date.day <= 9 ? `0${date.day}` : date.day}</>
+    return <>{padZero(date.day)}</>
   }
   const renderDayTop = (date: Day) => {
     let currDate = ''
@@ -364,19 +342,22 @@ const CalendarDemo = () => {
   const desc = useRef(0)
   const confirm1 = (values: (string | number)[], options: any[]) => {
     if (desc.current === 1) {
-      setDesc1(options.map((option) => parseInt(option.text)).join(':'))
+      setDesc1(
+        options.map((option) => padZero(parseInt(option.text))).join(':')
+      )
     } else {
-      setDesc2(options.map((option) => parseInt(option.text)).join(':'))
+      setDesc2(
+        options.map((option) => padZero(parseInt(option.text))).join(':')
+      )
     }
   }
   const showDatePicker = (e: any, index: number) => {
-    if (dpAbled.keys()) {
+    if (dpAbled[index - 1]) {
       e.stopPropagation()
       setShow1(true)
       desc.current = index
     }
   }
-
   return (
     <>
       <div className="demo">
