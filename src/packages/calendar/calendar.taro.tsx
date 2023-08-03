@@ -75,6 +75,7 @@ export const Calendar = React.forwardRef<
   const {
     style,
     className,
+    children,
     popup,
     visible,
     type,
@@ -138,6 +139,7 @@ export const Calendar = React.forwardRef<
         ref={calendarRef}
         style={style}
         className={className}
+        children={children}
         type={type}
         autoBackfill={autoBackfill}
         popup={popup}
