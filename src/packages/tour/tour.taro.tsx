@@ -1,6 +1,6 @@
 import React, { useState, useEffect, ReactNode, FunctionComponent } from 'react'
 import type { MouseEvent } from 'react'
-// import { Close } from '@nutui/icons-react'
+import { Close } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import Popover, { PopoverLocation } from '@/packages/popover/index.taro'
 import { getTaroRectById } from '@/utils/use-taro-rect'
@@ -193,15 +193,67 @@ export const Tour: FunctionComponent<
                   targetId="nut-tour-popid"
                   closeOnOutsideClick={false}
                   offset={item.popoverOffset || [0, 12]}
+                  arrowOffset={item.arrowOffset || 0}
                 >
                   <></>
-                  {type === 'tile' && (
-                    <div className="nut-tour-content nut-tour-content-tile">
-                      <div className="nut-tour-content-inner">
-                        {item.content}
-                      </div>
-                    </div>
-                  )}
+                  <>
+                    {children || (
+                      <>
+                        {type === 'step' && (
+                          <div className="nut-tour-content">
+                            {title && (
+                              <div className="nut-tour-content-top">
+                                <div onClick={(e) => maskClose(e)}>
+                                  <Close className="nut-tour-content-top-close" />
+                                </div>
+                              </div>
+                            )}
+                            <div className="nut-tour-content-inner">
+                              {item.content}
+                            </div>
+                            <div className="nut-tour-content-bottom">
+                              <div className="nut-tour-content-bottom-init">
+                                {active + 1}/{list.length}
+                              </div>
+                              <div className="nut-tour-content-bottom-operate">
+                                {active !== 0 && showPrev && (
+                                  <div
+                                    className="nut-tour-content-bottom-operate-btn"
+                                    onClick={() => changeStep('prev')}
+                                  >
+                                    {prev || locale.tour.prevStepText}
+                                  </div>
+                                )}
+                                {list.length - 1 === active && (
+                                  <div
+                                    className="nut-tour-content-bottom-operate-btn active"
+                                    onClick={(e) => maskClose(e)}
+                                  >
+                                    {complete || locale.tour.completeText}
+                                  </div>
+                                )}
+                                {list.length - 1 !== active && (
+                                  <div
+                                    className="nut-tour-content-bottom-operate-btn active"
+                                    onClick={() => changeStep('next')}
+                                  >
+                                    {next || locale.tour.nextStepText}
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                        {type === 'tile' && (
+                          <div className="nut-tour-content nut-tour-content-tile">
+                            <div className="nut-tour-content-inner">
+                              {item.content}
+                            </div>
+                          </div>
+                        )}
+                      </>
+                    )}
+                  </>
                 </Popover>
               </>
             )}
