@@ -195,4 +195,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-textarea-limit-color | limit color | `$color-text` | 
 | \--nutui-textarea-text-color | text color | `$color-title` | 
 | \--nutui-textarea-text-curror-color | caret color | `$color-title`| 
-| \--nutui-textarea-disabled-color | disabled color | `$color-disabled` |
+| \--nutui-textarea-disabled-color | disabled color | `$color-text-disable` |

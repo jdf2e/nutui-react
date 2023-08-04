@@ -144,7 +144,7 @@ const loadScript = async (url: string) =>
 
 const zhKeyDesc = {
   '$color-primary': '全局主题色',
-  '$color-primary-end': '全局主题色结束颜色（主题色渐变，例如 Button）',
+  '$color-primary-stop-2': '全局主题色结束颜色（主题色渐变，例如 Button）',
 } as any
 
 type Obj = {

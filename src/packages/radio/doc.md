@@ -284,9 +284,9 @@ export default RadioGroupOptions;
 | \--nutui-radio-button-active-border-color | 选中时，shape为button的边框颜色 | `$color-primary` |
 | \--nutui-radio-button-active-background | 选中时，shape为button的背景色 | `$color-primary-light-bg-color` |
 
-| \--nutui-radio-button-disabled-active-background | button模式下选中且禁用的背景色 | `$color-disabled` |
+| \--nutui-radio-button-disabled-active-background | button模式下选中且禁用的背景色 | `$color-text-disable` |
 | \--nutui-radio-button-disabled-active-color | button模式下选中且禁用的字体色 | `$white` |
-| \--nutui-radio-button-disabled-active-border-color | button模式下选中且禁用的边框色 | `$color-disabled` |
+| \--nutui-radio-button-disabled-active-border-color | button模式下选中且禁用的边框色 | `$color-text-disable` |
 
 | \--nutui-radiogroup-radio-margin | Group模式下每个 radio 的外边距 | `0 20px 5px 0` |
 | \--nutui-radiogroup-radio-label-margin | Group模式下每个 radio 中的 label 外边距 | `0 5px 0 5px` |

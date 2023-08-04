@@ -26,8 +26,8 @@ You can override these CSS variables directly in your code, and the styling of t
 /* After you add this style, the Primary Button turns green */
 :root {
   --nutui-color-primary: green;
-  --nutui-color-primary-start: green;
-  --nutui-color-primary-end: green;
+  --nutui-color-primary-stop-1: green;
+  --nutui-color-primary-stop-2: green;
 }
 ```
 
@@ -83,8 +83,8 @@ NutUI-React supports the following CSS variables:
 :root,
 page {
   --nutui-color-primary: #fa2c19;
-  --nutui-color-primary-start: #ff404f;
-  --nutui-color-primary-end: #fa2c19;
+  --nutui-color-primary-stop-1: #ff404f;
+  --nutui-color-primary-stop-2: #fa2c19;
   --nutui-brand-link-color: #396acc;
   --nutui-brand-text-color: #ffffff;
   // The main content is colored, common words, general title content, detailed text browsing, general button text and chart guidance

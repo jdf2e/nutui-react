@@ -262,9 +262,9 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-badge-background-color | badge background color | `linear-gradient(135deg, $color-primary 0%, $color-primary-end 100%))` |
+| \--nutui-badge-background-color | badge background color | `linear-gradient(135deg, $color-primary 0%, $color-primary-stop-2 100%))` |
 | \--nutui-badge-color | badge content color | `#fff` |
-| \--nutui-badge-font-size | badge content font size | `$font-help` |
+| \--nutui-badge-font-size | badge content font size | `$font-text-help` |
 | \--nutui-badge-border | badge border | `0px solid $color-primary-text` |
 | \--nutui-badge-border-radius | badge border-radius | `14px` |
 | \--nutui-badge-padding | badge padding value | `0 5px` |

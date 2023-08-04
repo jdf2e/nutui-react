@@ -195,4 +195,4 @@ export default App
 | \--nutui-textarea-limit-color | 字数统计颜色 | `$color-text` |
 | \--nutui-textarea-text-color | 文本颜色 | `$color-title` |
 | \--nutui-textarea-text-curror-color | 光标颜色 | `$color-title` |
-| \--nutui-textarea-disabled-color | 禁用颜色 | `$color-disabled` |
+| \--nutui-textarea-disabled-color | 禁用颜色 | `$color-text-disable` |

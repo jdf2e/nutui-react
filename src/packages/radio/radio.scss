@@ -35,7 +35,7 @@
     }
 
     &--disabled {
-      color: $color-disabled;
+      color: $color-text-disable;
       border: 1px solid $radio-button-background;
     }
   }
@@ -52,7 +52,7 @@
     color: $radio-label-color;
 
     &--disabled {
-      color: $color-disabled;
+      color: $color-text-disable;
     }
   }
 
@@ -69,7 +69,7 @@
     }
 
     &--disable {
-      color: $color-disabled;
+      color: $color-text-disable;
     }
   }
 }

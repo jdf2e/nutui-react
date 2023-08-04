@@ -220,7 +220,7 @@ export default App;
 | \--nutui-cell-title-color | 單元格標題字體顏色 | `$color-title` |
 | \--nutui-cell-title-font-size | 單元格標題字體大小 | `$font-text` |
 | \--nutui-cell-description-color | 單元格描述字體顏色 | `$color-text` |
-| \--nutui-cell-description-font-size | 單元格描述字體大小 | `$font-help` |
+| \--nutui-cell-description-font-size | 單元格描述字體大小 | `$font-text-help` |
 | \--nutui-cell-extra-color | 單元格右側描述字體顏色 | `$color-text` |
 | \--nutui-cell-extra-font-size | 單元格右側描述字體大小 | `$font-text` |
 | \--nutui-cell-border-radius | 單元格圓角大小 | `6px` |
@@ -237,6 +237,6 @@ export default App;
 | \--nutui-cell-group-title-line-height | 單元格分組的標題行高 | `20px` |
 | \--nutui-cell-group-description-padding | 單元格分組的描述內邊距 | `0 10px` |
 | \--nutui-cell-group-description-color | 單元格分組的描述顏色 | `#909ca4` |
-| \--nutui-cell-group-description-font-size | 單元格分組的描述字體大小 | `$font-help` |
+| \--nutui-cell-group-description-font-size | 單元格分組的描述字體大小 | `$font-text-help` |
 | \--nutui-cell-group-description-line-height | 單元格分組的描述行高 | `16px` |
 | \--nutui-cell-group-background-color | 單元格分組的背景顏色 | `$white` |

@@ -70,8 +70,8 @@ const CircleProgressDemo = () => {
   }
 
   const gradientColor = {
-    '0%': 'var(--nutui-color-primary-start)',
-    '100%': 'var(--nutui-color-primary-end)',
+    '0%': 'var(--nutui-color-primary-stop-1)',
+    '100%': 'var(--nutui-color-primary-stop-2)',
   }
 
   return (

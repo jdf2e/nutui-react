@@ -282,9 +282,9 @@ The component provides the following CSS Variables, which can be used for custom
 | \--nutui-radio-button-active-border-color | shape is the border color of the button | `$color-primary` |
 | \--nutui-radio-button-active-background | shape is the background color of the button | `$color-primary-light-bg-color` |
 
-| \--nutui-radio-button-disabled-active-background | Selected and disabled background color in button mode | `$color-disabled` |
+| \--nutui-radio-button-disabled-active-background | Selected and disabled background color in button mode | `$color-text-disable` |
 | \--nutui-radio-button-disabled-active-color | The font color that is selected and disabled in button mode | `$white` |
-| \--nutui-radio-button-disabled-active-border-color | Selected and disabled border color in button mode | `$color-disabled` |
+| \--nutui-radio-button-disabled-active-border-color | Selected and disabled border color in button mode | `$color-text-disable` |
 
 | \--nutui-radiogroup-radio-margin | Margin of each radio in Group mode | `0 20px 5px 0` |
 | \--nutui-radiogroup-radio-label-margin | Label margin in each radio in Group mode | `0 5px 0 5px` |

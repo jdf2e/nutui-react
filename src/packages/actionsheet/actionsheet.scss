@@ -33,12 +33,12 @@
     line-height: $actionsheet-item-line-height;
     font-size: $font-text;
     color: $actionsheet-item-color;
-    background-color: $color-card-background;
+    background-color: $color-background-overlay;
     cursor: pointer;
 
     &-description {
       display: block;
-      font-size: $font-help;
+      font-size: $font-text-help;
       color: $color-text;
     }
 
@@ -47,7 +47,7 @@
     }
 
     &.disabled {
-      color: $color-disabled !important;
+      color: $color-text-disable !important;
       cursor: not-allowed;
     }
   }
