@@ -8,7 +8,7 @@ import { getRect } from '@/utils/use-client-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useConfig } from '@/packages/configprovider'
 
-interface ListOptions {
+export interface ListOptions {
   target: Element | string
   content?: string
   location?: string
@@ -16,7 +16,7 @@ interface ListOptions {
   arrowOffset?: number
 }
 
-type TourType = 'step' | 'tile'
+export type TourType = 'step' | 'tile'
 
 export interface TourProps extends BasicComponent {
   visible: boolean

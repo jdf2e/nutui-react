@@ -238,7 +238,7 @@ const App = () => {
         closeOnOverlayClick={false}
       >
         <div className="tour-demo-custom-content">
-          <div>nutui 4.x 即将发布，敬请期待</div>
+          <div>nutui-react 2.x 已经发布</div>
           <Divider direction="vertical" />
           <div
             onClick={() => {
