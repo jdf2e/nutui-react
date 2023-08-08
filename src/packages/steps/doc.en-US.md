@@ -474,12 +474,10 @@ const App = () => {
         <Step
           value={3}
           title="Has not started"
-          description={() => (
-            <>
-              <p>The receiving address is：</p>
-              <p>Jingdong building, yard 18, Kechuang 11th Street, Beijing Economic and Technological</p>
-            </>
-          )}
+          description={<>
+            <p>The receiving address is：</p>
+            <p>Jingdong building, yard 18, Kechuang 11th Street, Beijing Economic and Technological</p>
+          </>}
         >
           3
         </Step>
