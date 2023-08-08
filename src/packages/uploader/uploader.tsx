@@ -466,6 +466,7 @@ const InternalUploader: ForwardRefRenderFunction<
       )}
 
       {fileList.length !== 0 &&
+        Array.isArray(fileList) &&
         fileList.map((item: any, index: number) => {
           return (
             <div
