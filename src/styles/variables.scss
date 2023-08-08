@@ -740,6 +740,39 @@ $toast-cover-bg-color: var(--nutui-toast-cover-bg-color, $gray7) !default;
 $toast-inner-top: var(--nutui-toast-inner-top, 50%) !default;
 $toast-inner-text-align: var(--nutui-toast-inner-text-align, 'center') !default;
 
+//tour（✅）
+$tour-mask-border-radius: var(--nutui-tour-mask-border-radius, 10px) !default;
+$tour-content-min-width: var(--nutui-tour-content-min-width, 200px) !default;
+$tour-content-padding: var(--nutui-tour-content-padding, 10px 12px) !default;
+$tour-content-inner-margin: var(
+  --nutui-tour-content-inner-margin,
+  10px 0px
+) !default;
+$tour-content-inner-font-size: var(
+  --nutui-tour-content-inner-font-size,
+  14px
+) !default;
+$tour-content-bottom-margin-top: var(
+  --nutui-tour-content-bottom-margin-top,
+  10px
+) !default;
+$tour-content-bottom-btn-margin-left: var(
+  --nutui-tour-content-bottom-btn-margin-left,
+  4px
+) !default;
+$tour-content-bottom-btn-padding: var(
+  --nutui-tour-content-bottom-btn-padding,
+  2px 4px
+) !default;
+$tour-content-bottom-btn-font-size: var(
+  --nutui-tour-content-bottom-btn-font-size,
+  12px
+) !default;
+$tour-content-bottom-btn-border-radius: var(
+  --nutui-tour-content-bottom-btn-border-radius,
+  4px
+) !default;
+
 //backtop（✅）
 $backtop-border-color: var(--nutui-backtop-border-color, #e0e0e0) !default;
 

@@ -4,6 +4,7 @@ export interface BasicComponent {
   className?: string
   style?: CSSProperties
   children?: ReactNode
+  id?: string
 }
 
 export const ComponentDefaults = {
