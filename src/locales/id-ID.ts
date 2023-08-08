@@ -126,6 +126,11 @@ const idID: BaseLang = {
     refreshingText: 'Memuat...',
     completeText: 'Penyegaran berhasil',
   },
+  tour: {
+    prevStepText: 'Sebelumnya',
+    completeText: 'Menyelesaikan',
+    nextStepText: 'Langkah berikutnya',
+  },
   watermark: {
     errorCanvasTips: 'Canvas is not supported in the current environment',
   },

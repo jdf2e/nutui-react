@@ -124,6 +124,11 @@ const zhUG: BaseLang = {
     refreshingText: 'يېڭىلىنىۋاتىدۇ...',
     completeText: 'تامام',
   },
+  tour: {
+    prevStepText: 'ئالدىنقى',
+    completeText: 'تامام',
+    nextStepText: 'كېيىنكى قەدەم',
+  },
   watermark: {
     errorCanvasTips: 'Canvas نى قوللىمايدۇ',
   },

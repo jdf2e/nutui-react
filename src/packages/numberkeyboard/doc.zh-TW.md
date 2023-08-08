@@ -253,7 +253,7 @@ export default App;
 | --- | --- | --- | --- |
 | visible | 是否顯示鍵盤 | `boolean` | `false` |
 | title | 鍵盤標題 | `ReactNode` | `-` |
-| type | 鍵盤模式, default：默認樣式 rightColumn：帶右側欄 | `string` | `default` |
+| type | 鍵盤模式, default：默認樣式 rightColumn：帶右側欄 | `'default' \| 'rightColumn'` | `default` |
 | random | 隨機數 | `boolean` | `false` |
 | custom | 自定義鍵盤額外的鍵, 數組形式最多支持添加 2 個, 超出默認取前 2 項 | `string[]` | `-` |
 | confirmText | 自定義完成按鈕文字，如"支付"，"下一步"，"提交"等 | `string` | `完成` |

@@ -39,6 +39,7 @@ export interface PopoverProps extends PopupProps {
   location: PopoverLocation | string
   visible: boolean
   offset: string[] | number[]
+  arrowOffset: number
   targetId: string
   showArrow: boolean
   closeOnOutsideClick: boolean
@@ -56,6 +57,7 @@ const defaultProps = {
   location: 'bottom',
   visible: false,
   offset: [0, 12],
+  arrowOffset: 0,
   targetId: '',
   showArrow: true,
   closeOnOutsideClick: true,
@@ -76,6 +78,7 @@ export const Popover: FunctionComponent<
     location,
     visible,
     offset,
+    arrowOffset,
     targetId,
     overlay,
     closeOnOutsideClick,
@@ -234,6 +237,40 @@ export const Popover: FunctionComponent<
     return styles
   }
 
+  const popoverArrowStyle = () => {
+    const styles: CSSProperties = {}
+    const direction = location.split('-')[0]
+    const skew = location.split('-')[1]
+    const base = 16
+
+    if (props.arrowOffset !== 0) {
+      if (['bottom', 'top'].includes(direction)) {
+        if (!skew) {
+          styles.left = `calc(50% + ${arrowOffset}px)`
+        }
+        if (skew === 'start') {
+          styles.left = `${base + arrowOffset}px`
+        }
+        if (skew === 'end') {
+          styles.right = `${base - arrowOffset}px`
+        }
+      }
+
+      if (['left', 'right'].includes(direction)) {
+        if (!skew) {
+          styles.top = `calc(50% - ${arrowOffset}px)`
+        }
+        if (skew === 'start') {
+          styles.top = `${base - arrowOffset}px`
+        }
+        if (skew === 'end') {
+          styles.bottom = `${base + arrowOffset}px`
+        }
+      }
+    }
+    return styles
+  }
+
   const handleSelect = (item: List, index: number) => {
     if (!item.disabled) {
       onSelect && onSelect(item, index)
@@ -271,7 +308,9 @@ export const Popover: FunctionComponent<
           {...rest}
         >
           <div className="nut-popover-content-group" ref={popoverContentRef}>
-            {showArrow && <div className={popoverArrow()} />}
+            {showArrow && (
+              <div className={popoverArrow()} style={popoverArrowStyle()} />
+            )}
             {Array.isArray(children) ? children[1] : ''}
             {list.map((item, index) => {
               return (
