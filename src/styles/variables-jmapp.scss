@@ -811,6 +811,7 @@ $calendar-day-active-border-radius: var(
 
 //overlay（✅）
 $overlay-bg-color: var(--nutui-overlay-bg-color, $gray7) !default;
+$overlay-zIndex: var(--nutui-overlay-zIndex, 1000) !default;
 $overlay-content-bg-color: var(
   --nutui-overlay-content-bg-color,
   $gray6

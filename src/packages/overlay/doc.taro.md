@@ -36,7 +36,7 @@ const App = () => {
       <Overlay
         visible={visible}
         onClick={onClose}
-        zIndex={2020}
+        style={{'--nutui-overlay-zIndex': 2020,}}
         lockScroll
         afterShow={() => {
           console.log('afterShow')
@@ -74,9 +74,9 @@ const App = () => {
       <Overlay
         visible={visible}
         onClick={onClose}
-        zIndex={2000}
         style={{
           backgroundColor: 'rgba(0, 0, 0, .2)',
+          '--nutui-overlay-zIndex': 2000,
         }}
       />
     </>
@@ -249,7 +249,6 @@ export default App;
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | visible | 当前组件是否显示 | `boolean` | `false` |
-| zIndex | 遮罩层级 | `number` | `2000` |
 | duration | 动画时长，单位毫秒 | `number` | `300` |
 | lockScroll | 背景是否锁定 | `boolean` | `true` |
 | closeOnOverlayClick | 是否点击遮罩关闭 | `boolean` | `true` |
@@ -266,6 +265,7 @@ export default App;
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-overlay-bg-color | 遮罩层背景颜色 | `$gray7` |
+| \--nutui-overlay-zIndex | overlay 的 z-index | `1000` |
 | \--nutui-overlay-content-bg-color | 遮罩层嵌套内容背景颜色 | `$gray6` |
 | \--nutui-overlay-content-color | 遮罩层嵌套内容字体颜色 | `$gray1` |
 | \--nutui-overlay-animation-duration| 遮罩层动画延时的时长 | `0.3s` |

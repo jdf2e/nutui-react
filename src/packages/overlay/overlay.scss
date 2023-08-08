@@ -5,6 +5,7 @@
   width: 100%;
   height: 100%;
   background: $overlay-bg-color;
+  z-index: $overlay-zIndex;
   .wrapper {
     .content {
       background-color: $overlay-content-bg-color;
