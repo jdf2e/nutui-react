@@ -2,7 +2,7 @@
   display: flex;
   width: 100%;
   flex-direction: column;
-  font-size: $font-text;
+  font-size: $font-size;
   color: $color-title;
 
   &__main {
@@ -11,7 +11,7 @@
     border-collapse: collapse;
     overflow-x: hidden;
     color: $color-title;
-    background-color: $color-card-background;
+    background-color: $color-background-overlay;
 
     &--striped {
       .nut-table__main__head {
@@ -85,7 +85,7 @@
 
   &__summary {
     color: $color-title;
-    background-color: $color-card-background;
+    background-color: $color-background-overlay;
     display: flex;
     align-items: center;
     justify-content: center;

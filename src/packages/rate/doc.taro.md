@@ -238,4 +238,4 @@ export default App;
 | --- | --- | --- |
 | \--nutui-rate-item-margin | 间距 | `14px` |
 | \--nutui-rate-icon-color | icon 激活颜色 | `$color-primary` |
-| \--nutui-rate-icon-void-color | icon 未激活颜色 | `$color-disabled` |
+| \--nutui-rate-icon-void-color | icon 未激活颜色 | `$color-text-disable` |

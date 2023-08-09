@@ -329,14 +329,14 @@ export default Demo
 | \--nutui-timeselect-title-height | title 高度 | `50px` |
 | \--nutui-timeselect-title-line-height | title 行高 | `50px` |
 | \--nutui-timeselect-title-color | title 字體顏色 | `$color-title` |
-| \--nutui-timeselect-title-font-size | title 字體大小 | `$font-text` |
-| \--nutui-timeselect-title-background | title 背景 | `$color-card-background` |
+| \--nutui-timeselect-title-font-size | title 字體大小 | `$font-size` |
+| \--nutui-timeselect-title-background | title 背景 | `$color-background-overlay` |
 | \--nutui-timeselect-date-width | date 寬度 | `140px` |
 | \--nutui-timeselect-date-height | date 高度 | `40px` |
 | \--nutui-timeselect-date-line-height | date 行高 | `40px` |
 | \--nutui-timeselect-date-color | date 字體顏色 | `$color-text` |
 | \--nutui-timeselect-date-active-color | date 激活字體顏色 | `$color-title` |
-| \--nutui-timeselect-date-font-size | date 字體大小 | `$font-text` |
+| \--nutui-timeselect-date-font-size | date 字體大小 | `$font-size` |
 | \--nutui-timeselect-time-width | time 寬度 | `100px` |
 | \--nutui-timeselect-time-height | time 高度 | `50px` |
 | \--nutui-timeselect-time-line-height | time 行高 | `50px` |
@@ -345,4 +345,4 @@ export default Demo
 | \--nutui-timeselect-time-color | time 字體顏色 | `$color-title` |
 | \--nutui-timeselect-time-active-color | time 激活字體顏色 | `$color-primary` |
 | \--nutui-timeselect-time-background | time 背景 | `$color-background` |
-| \--nutui-timeselect-time-active-background | time 激活背景 | `$color-card-background-wrapper` |
+| \--nutui-timeselect-time-active-background | time 激活背景 | `$color-background-sunken` |

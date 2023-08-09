@@ -292,5 +292,5 @@ export default App;
 | \--nutui-input-border-bottom | 边框颜色 | `#eaf0fb` |
 | \--nutui-input-border-bottom-width | 边框宽度 | `0px` |
 | \--nutui-input-disabled-color | 禁用的文本颜色 | `#c8c9cc` |
-| \--nutui-input-font-size | 文本字号 | `$font-text` |
+| \--nutui-input-font-size | 文本字号 | `$font-size` |
 | \--nutui-input-padding | 输入框容器的内边距 | `10px 25px` |

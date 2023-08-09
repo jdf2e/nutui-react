@@ -7,7 +7,7 @@
 
   .min,
   .max {
-    font-size: $font-help;
+    font-size: $font-size-small;
     color: $range-color;
     user-select: none;
   }
@@ -157,7 +157,7 @@
       align-items: center;
       justify-content: center;
       user-select: none;
-      font-size: $font-help;
+      font-size: $font-size-small;
       color: $range-color;
       transform: translate3d(0, -100%, 0);
     }

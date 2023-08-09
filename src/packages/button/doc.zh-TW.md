@@ -150,20 +150,56 @@ export default App;
 ```tsx
 import React from "react";
 import { Button } from '@nutui/nutui-react';
+import { Star, Plus } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <>
-      <Button shape="square" plain type="primary" icon="star-fill" />
-      <Button shape="square" type="primary" icon="star">收藏</Button>
+      <Button
+        type="primary"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{ margin: 8 }}
+      >
+        操作按鈕
+      </Button>
+      <Button
+        type="primary"
+        fill="outline"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{ margin: 8 }}
+      >
+        操作按鈕
+      </Button>
+      <Button
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{
+          margin: 8,
+          backgroundColor: `var(--nutui-color-primary-light)`,
+          borderColor: `var(--nutui-color-primary)`,
+          color: `var(--nutui-color-primary)`,
+        }}
+      >
+        操作按鈕
+      </Button>
+      <Button
+        shape="square"
+        fill="outline"
+        type="primary"
+        icon={<Plus width="20" />}
+        style={{ margin: 8 }}
+      />
       <Button
         shape="round"
         type="primary"
         size="large"
-        icon="star"
-        iconSize={20}
+        icon={<Star width={20} height={20} />}
+        rightIcon={<Star width={20} height={20} />}
+        style={{ margin: 8 }}
       >
-        收藏
+        操作按鈕
       </Button>
     </>
   );
@@ -261,7 +297,7 @@ export default App;
 | block | 是否為塊級元素 | `boolean` | `false` |
 | icon | 按鈕圖標 | `ReactNode` | `-` |
 | loading | 按鈕loading狀態 | `boolean` | `false` |
-| onClick | 點擊按鈕時觸發 | `onClick: (e: MouseEvent) => void` | `false` |
+| onClick | 點擊按鈕時觸發 | `(e: MouseEvent<HTMLButtonElement>) => void` | `-` |
 
 ## 主題定制
 
@@ -271,33 +307,26 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-button-border-radius | 按鈕的圓角設置 | `25px` |
+| \--nutui-button-border-radius | 按鈕的圓角設置 | `24px` |
 | \--nutui-button-border-width | 按鈕的邊框寬度 | `1px` |
-| \--nutui-button-default-bg-color | type 為 default 的按鈕的背景色 | `$white` |
+| \--nutui-button-normal-padding | size normal時的padding值 | `0px 20px` |
+| \--nutui-button-default-height | type 為 default 的按鈕的高度 | `38px` |
+| \--nutui-button-default-color | type 為 default 的按鈕的文本色 | `$color-title` |
+| \--nutui-button-default-background-color | type 為 default 的按鈕的背景色 | `$white` |
 | \--nutui-button-default-border-color | type 為 default 的按鈕的邊框色 | `$color-text` |
-| \--nutui-button-default-color | type 為 default 的按鈕的文本色 |`$color-title` |
 | \--nutui-button-default-padding | type 為 default 的按鈕的內邊距 | `0 18px` |
-| \--nutui-button-mini-padding | size 為 mini 的按鈕的內邊距 | `0 12px` |
-| \--nutui-button-mini-height | size 為 mini 的按鈕的高度 | `24px` |
+| \--nutui-button-default-font-size | type 為 default 的按鈕的字號 | `$font-size` |
+| \--nutui-button-default-font-weight | type 為 default 的按鈕的字重 | `$font-weight-bold` |
+| \--nutui-button-large-height | size 為 large 的按鈕的高度 | `48px` |
+| \--nutui-button-large-font-size | size 為 large 的按鈕的字號 | `$font-size-xl` |
 | \--nutui-button-small-padding | size 為 small 的按鈕的內邊距 | `0 12px` |
 | \--nutui-button-small-height | size 為 small 的按鈕的高度 | `28px` |
-| \--nutui-button-default-height | type 為 default 的按鈕的高度 | `38px` |
-| \--nutui-button-large-height | size 為 large 的按鈕的高度 | `48px` |
-| \--nutui-button-large-line-height | size 為 large 的按鈕的行高 | `46px` |
-| \--nutui-button-small-line-height | size 為 small 的按鈕的行高 | `26px` |
-| \--nutui-button-block-height | block 的按鈕的高度 | `48px` |
-| \--nutui-button-block-line-height | block 的按鈕的行高 | `46px` |
-| \--nutui-button-default-line-height | type 為 default 的按鈕的行高 | `36px` |
-| \--nutui-button-default-font-size | type 為 default 的按鈕的字號 | `$font-text` |
-| \--nutui-button-large-font-size | size 為 large 的按鈕的字號 | `$button-default-font-size` |
-| \--nutui-button-small-font-size | size 為 small 的按鈕的字號 | `$font-help` |
-| \--nutui-button-mini-font-size | size 為 mini 的按鈕的字號 | `$font-help` |
-| \--nutui-button-mini-line-height | size 為 mini 的按鈕的行高 | `1.2` |
-| \--nutui-button-text-icon-margin-left | 帶 icon按鈕的文本的左邊距 | `5px` |
-| \--nutui-button-text-icon-large-margin-left | size 為 large 按鈕的文本的左邊距 | `10px` |
-| \--nutui-button-text-icon-small-margin-left | size 為 small 按鈕的文本的左邊距 | `2px` |
-| \--nutui-button-text-icon-mini-margin-left | size 為 mini 按鈕的文本的左邊距 | `1px` |
-| \--nutui-button-disabled-opacity | disabled 狀態下按鈕的透明度 | `0.68` |
+| \--nutui-button-small-font-size | size 為 small 的按鈕的字號 | `$font-size-small` |
+| \--nutui-button-small-font-weight | type 為 small 的按鈕的字重 | `$font-weight` |
+| \--nutui-button-mini-padding | size 為 mini 的按鈕的內邊距 | `0 12px` |
+| \--nutui-button-mini-height | size 為 mini 的按鈕的高度 | `24px` |
+| \--nutui-button-mini-font-size | size 為 mini 的按鈕的字號 | `$font-size-small` |
+| \--nutui-button-mini-font-weight | type 為 mini 的按鈕的字重 | `$font-weight` |
 | \--nutui-button-primary-color | type 為 primary 按鈕的文本顏色 | `$white` |
 | \--nutui-button-primary-border-color | type 為 primary 按鈕的邊框顏色 | `$color-primary` |
 | \--nutui-button-info-color | type 為 info 按鈕的文本顏色 | `$white` |
@@ -309,3 +338,5 @@ export default App;
 | \--nutui-button-danger-background-color | type 為 danger 按鈕的背景顏色 | `rgba(250, 44, 25, 1)` |
 | \--nutui-button-warning-color | type 為 warning 按鈕的文本顏色 | `$white` |
 | \--nutui-button-warning-border-color | type 為 warning 按鈕的邊框顏色 | `rgba(255, 158, 13, 1)` |
+| \--nutui-button-text-icon-margin | 帶 icon按鈕的文本的左邊距 | `4px` |
+| \--nutui-button-disabled-opacity | disabled 狀態下按鈕的透明度 | `0.68` |

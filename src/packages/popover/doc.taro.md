@@ -545,6 +545,6 @@ List 属性是一个由对象构成的数组，数组中的每个对象配置一
 | \--nutui-popover-disable-color | 选项禁用的颜色 | `rgba(154, 155, 157, 1)` |
 | \--nutui-popover-menu-item-padding | 选项区菜单每一项的 padding 值 | `8px` |
 | \--nutui-popover-border-color | top、bottom、left 和 right 的箭头颜色 | `$white` |
-| \--nutui-popover-divider-color | 选项区的底部 border 颜色 | `$color-divider` |
-| \--nutui-popover-disable-color | 选项禁用的颜色 | `$color-disabled` |
+| \--nutui-popover-divider-color | 选项区的底部 border 颜色 | `$color-border` |
+| \--nutui-popover-disable-color | 选项禁用的颜色 | `$color-text-disable` |
 | \--nutui-popover-menu-item-padding | 选项区菜单每一项的 padding 值 | `8px` |

@@ -14,7 +14,7 @@
       height: 30px;
       background: $white;
       border-radius: 50%;
-      box-shadow: 0 0 8px $color-disabled;
+      box-shadow: 0 0 8px $color-text-disable;
 
       .nut-icon-am-rotate {
         transform: rotate((360));
@@ -33,7 +33,7 @@
         content: '';
         height: 2px;
         width: 30px;
-        background: $color-disabled;
+        background: $color-text-disable;
         transform: rotate(45deg);
         transform-origin: 8px -18px;
       }

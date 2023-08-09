@@ -165,7 +165,7 @@ export default App;
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-divider-margin | 分割线整体内容的margin值 | `16px 0` |
-| \--nutui-divider-text-font-size | 分割线整体内容的font-size大小 | `$font-text` |
+| \--nutui-divider-text-font-size | 分割线整体内容的font-size大小 | `$font-size` |
 | \--nutui-divider-text-color | 分割线整体内容的颜色 | `$color-title` |
 | \--nutui-divider-line-height | 分割线的行高 | `2px` |
 | \--nutui-divider-before-margin-right | 左边分割线的margin-right值 | `16px` |

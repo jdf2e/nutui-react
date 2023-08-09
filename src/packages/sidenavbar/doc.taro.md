@@ -177,7 +177,7 @@ export default App;
 | \--nutui-sidenavbar-title-background | 标题的背景色 | `$color-background` |
 | \--nutui-sidenavbar-title-color | 标题的字体颜色 | `$color-title` |
 | \--nutui-sidenavbar-sub-title-padding | 子标题的内边距 | `10px 8px 10px 35px` |
-| \--nutui-sidenavbar-sub-title-background | 子标题背景色 | `$color-card-background-wrapper` |
+| \--nutui-sidenavbar-sub-title-background | 子标题背景色 | `$color-background-sunken` |
 | \--nutui-sidenavbar-sub-title-color | 子标题字体颜色 | `$color-title` |
-| \--nutui-sidenavbar-sub-list-background | 选项列表背景色 | `$color-card-background-wrapper` |
+| \--nutui-sidenavbar-sub-list-background | 选项列表背景色 | `$color-background-sunken` |
 | \--nutui-sidenavbar-sub-list-color | 选项列表字体颜色 | `$color-title` |
