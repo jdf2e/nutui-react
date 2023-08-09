@@ -49,6 +49,7 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
     top,
     right,
     handleClick,
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -79,6 +80,7 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
         ...style,
       }}
       onClick={() => handleClick(index)}
+      {...rest}
     >
       {icon ? (
         <>

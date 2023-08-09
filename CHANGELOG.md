@@ -1,3 +1,48 @@
+# v2.0.10
+`2023-08-04`
+
+* :sparkles: feat: loading 组件 (#1204) @mike8625
+* :sparkles: feat: 日历支持footer的children定义，增加日历+datepicker的demo (#1277) @xiaoyatong
+* :bug: fix: elevator 计算索引出现 -1，导致组件运行报错 (#1276) @oasis-cloud
+* :bug: fix: loading 组件导出 props 类型 (#1278) @oasis-cloud
+
+
+# v2.0.9
+`2023-08-02`
+
+* :sparkles: feat(notify): 支持函数调用的展开和关闭 (#1271) @oasis-cloud
+* :bug: fix: space 版本号修改为 2.0 (#1265) @oasis-cloud
+* 🔨 chore(config): 优化 taro demo 环境配置文件 (#1266) @oasis-cloud
+* 📖 docs: cascader 文档更新 (#1270) @vapao
+* 📖 docs: tag 文档和 demo 同步 (#1275) @oasis-cloud
+* 📖 docs: 升级文档更新 (#1274) @oasis-cloud
+
+
+# v2.0.8
+`2023-07-28`
+
+* :sparkles: feat: 增加了space组件 (#1259) @ivan-My
+* 🛠 refactor: tabs 去除 console (#1261) @vapao
+* 🔨 chore(script): 简化开发环境启动逻辑 (#1264) @Eiinu
+
+
+
+# v2.0.7
+`2023-07-26`
+
+* :sparkles: feat: formitem label 支持 reactnode (#1254) @oasis-cloud
+* :sparkles: feat: uploader 添加上传的响应数据 (#1251) @逍遥
+* 🔨 chore: 优化 any 类型 (#1222) @junjun666
+* 📖 docs(SearchBar): 补充 onClear 属性说明 (#1256) @Tralafalgar Wang
+
+
+# v2.0.6
+`2023-07-21`
+
+* :bug: fix(Address): 修复Address组件通过点击CloseIcon和Overlay关闭后，无法再次打开的问题 (#1233) @Tralafalgar Wang
+* :bug: fix(button): 渐变色导致边框出现重叠 (#1250) @oasis-cloud
+
+
 # v2.0.5
 `2023-07-19`
 

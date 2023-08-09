@@ -271,10 +271,10 @@ export default App;
 | disabled | 是否禁用滑动 | `boolean` | `false` |
 | onOpen | 打开单元格侧边栏 | `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | `-` |
 | onClose | 收起单元格侧边栏 | `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | `-` |
-| onActionClick | 点击左侧或者右侧时触发 | `(event: Event, position: 'left' \| 'right') => void` | `-` |
-| onTouchStart | onTouchStart | `(event: Event) => void` | `-` |
-| onTouchMove | onTouchMove | `(event: Event) => void` | `-` |
-| onTouchEnd | onTouchEnd | `(event: Event) => void` | `-` |
+| onActionClick | 点击左侧或者右侧时触发 | `(event: MouseEvent<HTMLDivElement>, position: 'left' \| 'right') => void` | `-` |
+| onTouchStart | onTouchStart | `(event: TouchEvent<HTMLDivElement>) => void` | `-` |
+| onTouchMove | onTouchMove | `(event: TouchEvent<HTMLDivElement>) => void` | `-` |
+| onTouchEnd | onTouchEnd | `(event: TouchEvent<HTMLDivElement>) => void` | `-` |
 
 ### Ref
 

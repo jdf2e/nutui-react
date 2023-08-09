@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect, useRef } from 'react'
+import type { ChangeEvent, FocusEvent } from 'react'
 import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -15,8 +16,8 @@ export interface TextAreaProps extends BasicComponent {
   disabled: boolean
   autoSize: boolean
   onChange: (value: string) => void
-  onBlur: (event: Event) => void
-  onFocus: (event: Event) => void
+  onBlur: (event: FocusEvent<HTMLTextAreaElement>) => void
+  onFocus: (event: FocusEvent<HTMLTextAreaElement>) => void
 }
 const defaultProps = {
   ...ComponentDefaults,
@@ -90,19 +91,19 @@ export const TextArea: FunctionComponent<
     }
   }
 
-  const handleChange = (event: Event) => {
-    const text = event.target as HTMLTextAreaElement
+  const handleChange = (event: ChangeEvent<HTMLTextAreaElement>) => {
+    const text = event.target
     const value = compositionRef.current ? text.value : format(text.value)
     setInputValue(value)
   }
 
-  const handleFocus = (event: Event) => {
+  const handleFocus = (event: FocusEvent<HTMLTextAreaElement>) => {
     if (disabled) return
     if (readOnly) return
     onFocus && onFocus(event)
   }
 
-  const handleBlur = (event: Event) => {
+  const handleBlur = (event: FocusEvent<HTMLTextAreaElement>) => {
     if (disabled) return
     if (readOnly) return
     onBlur && onBlur(event)
@@ -121,9 +122,9 @@ export const TextArea: FunctionComponent<
         disabled={disabled}
         readOnly={readOnly}
         value={inputValue}
-        onChange={(e: any) => handleChange(e)}
-        onBlur={(e: any) => handleBlur(e)}
-        onFocus={(e: any) => handleFocus(e)}
+        onChange={(e) => handleChange(e)}
+        onBlur={(e) => handleBlur(e)}
+        onFocus={(e) => handleFocus(e)}
         onCompositionEnd={() => {
           compositionRef.current = false
         }}

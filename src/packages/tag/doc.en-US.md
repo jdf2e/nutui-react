@@ -25,8 +25,8 @@ const App = () => {
   return (
     <>
       <Tag type="primary">Label</Tag>
-      <Tag type="success">Label</Tag>
       <Tag type="info">Label</Tag>
+      <Tag type="success">Label</Tag>
       <Tag type="danger">Label</Tag>
       <Tag type="warning">Label</Tag>
     </>
@@ -37,18 +37,28 @@ export default App;
 
 :::
 
-### Hollow style
+### style
 
 :::demo
 
 ```tsx
 import React from "react";
+import { CircleClose } from '@nutui/icons-react';
 import { Tag } from '@nutui/nutui-react';
 
 const App = () => {
   return (
     <>
       <Tag plain>Label</Tag>
+      <Tag round type='primary'>Label</Tag>
+      <Tag mark type='primary'>Label</Tag>
+      <Tag closeable
+           onClose={() => alert('Tag closed')}
+           type='primary'>Label</Tag>
+      <Tag closeable
+           closeIcon={<CircleClose width={12} height={12} />}
+           onClose={() => alert('Tag closed')}
+           type='primary'>Label</Tag>
     </>
   )
 }
@@ -57,65 +67,6 @@ export default App;
 
 :::
 
-### Rounded style
-
-:::demo
-
-```tsx
-import React from "react";
-import { Tag } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Tag round type="primary">Label</Tag>
-    </>
-  )
-}
-export default App;
-```
-
-:::
-
-### Label style
-
-:::demo
-
-```tsx
-import React from "react";
-import { Tag } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Tag mark type="primary">Label</Tag>
-    </>
-  )
-}
-export default App;
-```
-
-:::
-
-### Can close label
-
-:::demo
-
-```tsx
-import React from "react";
-import { Tag } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Tag  closeable onClose={()=>alert('Tag closed')}  type="primary">标签</Tag>
-    </>
-  )
-}
-export default App;
-```
-
-:::
 
 ### Custom color
 

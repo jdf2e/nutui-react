@@ -261,7 +261,7 @@ export default App;
 | block | block element | `boolean` | `false` |
 | icon | icon | `ReactNode` | `-` |
 | loading | loading status | `boolean` | `false` |
-| onClick | Triggered when the button is clicked | `onClick: (e: MouseEvent) => void` | `false` |
+| onClick | Triggered when the button is clicked | `(e: MouseEvent<HTMLButtonElement>) => void` | `-` |
 
 ## Theming
 

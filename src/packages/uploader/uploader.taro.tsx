@@ -167,7 +167,7 @@ export class FileItem {
 
   message = '准备中..'
 
-  uid: string = new Date().getTime().toString()
+  uid: string = Date.now().toString()
 
   name?: string
 
@@ -370,6 +370,7 @@ const InternalUploader: ForwardRefRenderFunction<
           if (item.uid === fileItem.uid) {
             item.status = 'success'
             item.message = locale.uploader.success
+            item.responseText = responseText
           }
         })
         return [...fileList]
@@ -391,6 +392,7 @@ const InternalUploader: ForwardRefRenderFunction<
           if (item.uid === fileItem.uid) {
             item.status = 'error'
             item.message = locale.uploader.error
+            item.responseText = responseText
           }
         })
         return [...fileList]
@@ -437,7 +439,7 @@ const InternalUploader: ForwardRefRenderFunction<
       fileItem.name = filepath
       fileItem.status = 'ready'
       fileItem.type = fileType
-
+      fileItem.uid = `${fileItem.uid}_${index}`
       if (autoUpload) {
         fileItem.message = locale.uploader.readyUpload
       } else {
@@ -536,6 +538,7 @@ const InternalUploader: ForwardRefRenderFunction<
       )}
 
       {fileList.length !== 0 &&
+        Array.isArray(fileList) &&
         fileList.map((item: any, index: number) => {
           return (
             <div

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, ReactNode } from 'react'
+import type { UIEvent } from 'react'
 import classNames from 'classnames'
 import { PopupProps } from '@/packages/popup/index'
 import { ComponentDefaults } from '@/utils/typings'
@@ -92,6 +93,7 @@ export const CalendarItem = React.forwardRef<
   const {
     style,
     className,
+    children,
     popup,
     type,
     autoBackfill,
@@ -511,7 +513,7 @@ export const CalendarItem = React.forwardRef<
     })
   }
 
-  const monthsViewScroll = (e: any) => {
+  const monthsViewScroll = (e: UIEvent<HTMLDivElement>) => {
     if (monthsData.length <= 1) {
       return
     }
@@ -852,6 +854,7 @@ export const CalendarItem = React.forwardRef<
   const renderFooter = () => {
     return (
       <div className="nut-calendar-footer">
+        {children}
         <div className="calendar-confirm-btn" onClick={confirm}>
           {confirmText || locale.confirm}
         </div>

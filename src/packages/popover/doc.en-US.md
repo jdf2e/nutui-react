@@ -498,6 +498,7 @@ export default App
 | visible | whether to show | `boolean` | `false` |
 | location | The pop-up position, the specific parameter values ​​inside can refer to the above position customization example | `string` | `bottom` |
 | offset | the offset of the occurrence position | `string[]` \| `number[]` | `[0, 12]` |
+| arrowOffset | the offset of the arrow | `number` | `0` |
 | showArrow | whether to show small arrows | `boolean` | `true` |
 | closeOnActionClick | Whether to close when clicking action | `boolean` | `true` |
 | closeOnOutsideClick | Whether to close when clicking outside | `boolean` | `true` |

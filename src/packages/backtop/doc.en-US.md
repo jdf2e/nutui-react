@@ -152,7 +152,7 @@ export default App;
 | threshold | How high to scroll the page vertically | `number` | `200` |
 | zIndex | Set the component z-index | `number` | `10` |
 | duration | Set animation duration | `number` | `1000` |
-| onClick | Emitted when component is clicked | `(event: MouseEvent) => void` | `-` |
+| onClick | Emitted when component is clicked | `(event: MouseEvent<HTMLDivElement>) => void` | `-` |
 
 ## Theming
 

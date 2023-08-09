@@ -474,12 +474,10 @@ const App = () => {
         <Step
           activeIndex={3}
           title="未开始"
-          renderContent={() => (
-            <>
-              <p>收货地址为：</p>
-              <p>北京市经济技术开发区科创十一街18号院京东大厦</p>
-            </>
-          )}
+          renderContent={<>
+            <p>收货地址为：</p>
+            <p>北京市经济技术开发区科创十一街18号院京东大厦</p>
+          </>}
         >
           3
         </Step>

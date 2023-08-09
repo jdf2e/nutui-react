@@ -179,8 +179,8 @@ export default App
 | readOnly | 只读属性 | `boolean` | `false` |
 | disabled | 禁用属性 | `boolean` | `false` |
 | onChange | 输入内容时触发 | `(value) => void` | `-` |
-| onFocus | 聚焦时触发 | `(event) => void` | `-` |
-| onBlur | 失焦时触发 | `(event) => void` | `-` |
+| onFocus | 聚焦时触发 | `(event: FocusEvent<HTMLTextAreaElement>) => void` | `-` |
+| onBlur | 失焦时触发 | `(event: FocusEvent<HTMLTextAreaElement>) => void` | `-` |
 
 ## 主题定制
 

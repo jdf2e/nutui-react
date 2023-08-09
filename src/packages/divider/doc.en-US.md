@@ -112,7 +112,7 @@ import { Divider } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-        <Divider styles={{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px', borderStyle: 'dashed' }}>Text</Divider>
+        <Divider style={{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px', borderStyle: 'dashed' }}>Text</Divider>
     </>
   );
 };

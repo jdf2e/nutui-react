@@ -155,7 +155,7 @@ export const NumberKeyboard: FunctionComponent<
             {type === 'default' && (
               <span
                 className={`${classPrefix}__header__close`}
-                onClick={onClose}
+                onClick={onConfirm}
               >
                 {locale.done}
               </span>

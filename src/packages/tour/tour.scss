@@ -1,0 +1,78 @@
+.nut-tour {
+  &-mask {
+    position: fixed;
+    box-shadow: 0px 0px 0px 150vh rgba(0, 0, 0, 0.5);
+    border-radius: $tour-mask-border-radius;
+    z-index: 999;
+    &-none {
+      box-shadow: none;
+    }
+
+    &-hidden {
+      opacity: 0;
+    }
+  }
+
+  &-content {
+    display: block;
+    padding: $tour-content-padding;
+    min-width: $tour-content-min-width;
+    box-sizing: content-box;
+
+    &-top {
+      display: block;
+      text-align: right;
+
+      &-close {
+        --nut-icon-width: 10px;
+        --nut-icon-height: 10px;
+      }
+    }
+
+    &-inner {
+      margin: $tour-content-inner-margin;
+      font-size: $tour-content-inner-font-size;
+      white-space: nowrap;
+    }
+
+    &-bottom {
+      margin-top: $tour-content-bottom-margin-top;
+      display: flex;
+      justify-content: space-between;
+      &-operate {
+        display: flex;
+        justify-content: flex-end;
+        &-btn {
+          display: inline-block;
+          border: 1px solid $disable-color;
+          margin-left: $tour-content-bottom-btn-margin-left;
+          padding: $tour-content-bottom-btn-padding;
+          font-size: $tour-content-bottom-btn-font-size;
+          border-radius: $tour-content-bottom-btn-border-radius;
+          color: $text-color;
+          &.active {
+            color: #fff;
+            border: 0;
+            background: $primary-color;
+          }
+        }
+      }
+    }
+
+    &-tile {
+      .nut-tour-content-inner {
+        margin: 0;
+      }
+    }
+  }
+
+  &-masked {
+    position: fixed;
+    width: 100vh;
+    height: 100vh;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background: transparent;
+  }
+}

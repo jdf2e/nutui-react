@@ -179,8 +179,8 @@ export default App
 | readOnly | read only attribute | `boolean` | `false` |
 | disabled | disable attribute | `boolean` | `false` |
 | onChange | Triggered when the value of the input box changes | `(value) => void` | `-` |
-| onFocus | Triggered when focusing | `(event) => void` | `-` |
-| onBlur | Triggered when out of focus | `(event) => void` | `-` |
+| onFocus | Triggered when focusing | `(event: FocusEvent<HTMLTextAreaElement>) => void` | `-` |
+| onBlur | Triggered when out of focus | `(event: FocusEvent<HTMLTextAreaElement>) => void` | `-` |
 
 ## Theming
 
