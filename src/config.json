@@ -1060,6 +1060,17 @@
         },
         {
           "version": "2.0.0",
+          "name": "Tour",
+          "type": "component",
+          "cName": "引导",
+          "desc": "用于引导用户了解产品功能的气泡组件。自 4.0 版本开始提供该组件。",
+          "sort": 24,
+          "show": true,
+          "taro": true,
+          "author": "swag~jun"
+        },
+        {
+          "version": "2.0.0",
           "name": "Video",
           "type": "component",
           "cName": "视频播放器",

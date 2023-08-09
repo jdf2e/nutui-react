@@ -125,6 +125,11 @@ const enUS: BaseLang = {
     refreshingText: 'Loading...',
     completeText: 'Refresh successful',
   },
+  tour: {
+    prevStepText: 'Previous',
+    completeText: 'Finish',
+    nextStepText: 'Next step',
+  },
   watermark: {
     errorCanvasTips: 'Canvas is not supported in the current environment',
   },

@@ -7,7 +7,7 @@
 ## 安装
 
 ```tsx
-import { Image } from '@nutui/nutui-react';
+import { Image } from '@nutui/nutui-react-taro';
 ```
 
 ## 代码演示
@@ -20,7 +20,7 @@ import { Image } from '@nutui/nutui-react';
 
 ```tsx
 import React from "react";
-import { Image } from '@nutui/nutui-react';
+import { Image } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const src =
@@ -42,7 +42,7 @@ export default App;
 
 ```tsx
 import React from "react";
-import { Image } from '@nutui/nutui-react';
+import { Image } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const src =
@@ -84,8 +84,8 @@ export default App;
 
 ```tsx
 import React from "react";
-import { Image } from '@nutui/nutui-react';
-import { Loading } from '@nutui/icons-react';
+import { Image } from '@nutui/nutui-react-taro';
+import { Loading } from '@nutui/icons-react-taro';
 
 const App = () => {
   const src =
@@ -115,8 +115,8 @@ export default App;
 
 ```tsx
 import React from "react";
-import { Image } from '@nutui/nutui-react';
-import { CircleClose } from '@nutui/icons-react';
+import { Image } from '@nutui/nutui-react-taro';
+import { CircleClose } from '@nutui/icons-react-taro';
 
 const App = () => {
   return <>
@@ -140,8 +140,8 @@ export default App;
 
 ```tsx
 import React from "react";
-import { Cell, Col, Image } from '@nutui/nutui-react';
-import { CircleClose } from '@nutui/icons-react';
+import { Cell, Col, Image } from '@nutui/nutui-react-taro';
+import { CircleClose } from '@nutui/icons-react-taro';
 
 const App = () => {
   return <>
@@ -173,8 +173,8 @@ export default App;
 
 ```tsx
 import React from "react";
-import { Cell, Col, Image } from '@nutui/nutui-react';
-import { CircleClose } from '@nutui/icons-react';
+import { Cell, Col, Image } from '@nutui/nutui-react-taro';
+import { CircleClose } from '@nutui/icons-react-taro';
 
 const App = () => {
   return <>
@@ -211,7 +211,7 @@ export default App;
 
 ```tsx
 import React from 'react'
-import { Image } from '@nutui/nutui-react'
+import { Image } from '@nutui/nutui-react-taro'
 import { ScrollView } from '@tarojs/components'
 
 const App = () => {
