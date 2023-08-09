@@ -580,7 +580,7 @@ export default App;
 | --- | --- | --- |
 | \--nutui-tabs-titles-background-color | Tab 標題的背景色 | `$color-background` |
 | \--nutui-tabs-titles-border-radius | Tab 標題的邊框圓角 | `0` |
-| \--nutui-tabs-titles-item-font-size | Tab 標題的字號 | `$font-text` |
+| \--nutui-tabs-titles-item-font-size | Tab 標題的字號 | `$font-size` |
 | \--nutui-tabs-title-gap | Tab 標題的左右 margin | `0px` |
 | \--nutui-tabs-titles-item-active-font-weight | Tab 選中標題的字重 | `600` |
 | \--nutui-tabs-horizontal-tab-line-color | 水平方嚮線條顏色 | `linear-gradient(90deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |

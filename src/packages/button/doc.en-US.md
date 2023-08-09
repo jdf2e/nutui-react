@@ -271,7 +271,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-button-border-radius | Rounded corners of the button | `25px` |
+| \--nutui-button-border-radius | Rounded corners of the button | `24px` |
 | \--nutui-button-border-width | Button border width | `1px` |
 | \--nutui-button-default-bg-color | The background color of the button whose type is default | `$white` |
 | \--nutui-button-default-border-color | The border color of the button whose type is default | `$color-text` |
@@ -283,20 +283,11 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-button-small-height | The height of the button whose size is small | `28px` |
 | \--nutui-button-default-height | The height of the button whose type is default | `38px` |
 | \--nutui-button-large-height | The height of the button whose size is large | `48px` |
-| \--nutui-button-large-line-height | The line height of the button whose size is large | `46px` |
-| \--nutui-button-small-line-height | The line height of the button whose size is small | `26px` |
-| \--nutui-button-block-height | The height of the block's button | `48px` |
-| \--nutui-button-block-line-height | The line height of the block's button | `46px` |
-| \--nutui-button-default-line-height | The line height of the button whose type is default | `36px` |
-| \--nutui-button-default-font-size | The font size of the button whose type is default | `$font-text` |
+| \--nutui-button-default-font-size | The font size of the button whose type is default | `$font-size` |
 | \--nutui-button-large-font-size | The font size of buttons whose size is large | `$button-default-font-size` |
 | \--nutui-button-small-font-size | The font size of the button whose size is small | `$font-size-small` |
 | \--nutui-button-mini-font-size | The font size of the button whose size is mini | `$font-size-small` |
-| \--nutui-button-mini-line-height | The line height of the button whose size is mini | `1.2` |
-| \--nutui-button-text-icon-margin-left | left margin of text with icon button | `5px` |
-| \--nutui-button-text-icon-large-margin-left | size is the left margin of the text of the large button | `10px` |
-| \--nutui-button-text-icon-small-margin-left | size is the left margin of the small button text | `2px` |
-| \--nutui-button-text-icon-mini-margin-left | size is the left margin of the text of the mini button | `1px` |
+| \--nutui-button-text-icon-margin | left margin of text with icon button | `4px` |
 | \--nutui-button-disabled-opacity | opacity of button in disabled state | `0.68` |
 | \--nutui-button-primary-color | type is the text color of the primary button | `$white` |
 | \--nutui-button-primary-border-color | Type is the border color of the primary button | `$color-primary` |

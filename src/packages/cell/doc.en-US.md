@@ -246,11 +246,11 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-cell-title-color | The cell title the font color | `$color-title` |
-| \--nutui-cell-title-font-size | The cell title the font size | `$font-text` |
+| \--nutui-cell-title-font-size | The cell title the font size | `$font-size` |
 | \--nutui-cell-description-color | The cell describes the font color | `$color-text` |
 | \--nutui-cell-description-font-size | The cell describes the font size | `$font-size-small` |
 | \--nutui-cell-extra-color | The right side of the cell describes the font color | `$color-text` |
-| \--nutui-cell-extra-font-size | The right side of the cell describes the font size | `$font-text` |
+| \--nutui-cell-extra-font-size | The right side of the cell describes the font size | `$font-size` |
 | \--nutui-cell-border-radius | The rounded corner size of the cell | `6px` |
 | \--nutui-cell-padding | Inside margins of cells | `13px 16px` |
 | \--nutui-cell-line-height | The row height of the cell | `20px` |
@@ -261,7 +261,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-cell-box-shadow | The shadow of the cell | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
 | \--nutui-cell-group-title-padding | The padding of the title of the cell group | `0 10px` |
 | \--nutui-cell-group-title-color | The title font color of the cell group | `#909ca4` |
-| \--nutui-cell-group-title-font-size | The title font size of the cell group | `$font-text` |
+| \--nutui-cell-group-title-font-size | The title font size of the cell group | `$font-size` |
 | \--nutui-cell-group-title-line-height | The title row height of the cell group | `20px` |
 | \--nutui-cell-group-description-padding | The description padding for cell groups | `0 10px` |
 | \--nutui-cell-group-description-color | The description color of the cell group | `#909ca4` |

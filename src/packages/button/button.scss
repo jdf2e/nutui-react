@@ -6,7 +6,6 @@
   margin: 0;
   padding: 0;
   height: $button-default-height;
-  line-height: $button-default-line-height;
   font-size: $button-default-font-size;
   font-weight: $button-default-font-weight;
   text-align: center;
@@ -17,11 +16,10 @@
   touch-action: manipulation;
 
   color: $button-default-color;
-  background: $button-default-bg-color;
-  border: $button-border-width solid $button-default-border-color;
+  background: $button-default-background-color;
 
-  .nut-button-text {
-    margin-left: $button-text-icon-margin-left;
+  &-text {
+    margin-left: $button-text-icon-margin;
   }
 
   &::before {
@@ -47,7 +45,7 @@
     opacity: 0.1;
   }
 
-  &__warp {
+  &-warp {
     height: 100%;
     width: 100%;
     display: flex;
@@ -67,12 +65,11 @@
     color: $button-primary-color;
     background: $button-primary-background-color;
     background-origin: border-box;
-    border: $button-border-width solid transparent;
   }
 
   &.nut-button--outline {
     color: $button-primary-border-color;
-    border-color: $button-primary-border-color;
+    border: $button-border-width solid $button-primary-border-color;
     background: transparent;
   }
 
@@ -81,17 +78,39 @@
     border-color: transparent;
   }
 
+  &--normal {
+    padding: $button-normal-padding;
+  }
+
+  &--large {
+    width: 100%;
+    height: $button-large-height;
+    font-size: $button-large-font-size;
+  }
+
+  &--small {
+    height: $button-small-height;
+    padding: $button-small-padding;
+    font-size: $button-small-font-size;
+    font-weight: $button-small-font-weight;
+  }
+
+  &--mini {
+    height: $button-mini-height;
+    padding: $button-mini-padding;
+    font-size: $button-mini-font-size;
+    font-weight: $button-mini-font-weight;
+  }
+
+  &--default {
+    padding: $button-default-padding;
+    border: $button-border-width solid $button-default-border-color;
+  }
+
   &--primary {
     color: $button-primary-color;
     background: $button-primary-background-color;
     background-origin: border-box;
-    border: $button-border-width solid transparent;
-
-    &.nut-button--outline {
-      color: $button-primary-border-color;
-      border-color: $button-primary-border-color;
-      background: transparent;
-    }
 
     &.nut-button--none {
       color: $button-primary-border-color;
@@ -102,7 +121,6 @@
     color: $button-info-color;
     background: $button-info-background-color;
     background-origin: border-box;
-    border: $button-border-width solid transparent;
 
     &.nut-button--outline {
       color: $button-info-border-color;
@@ -119,7 +137,6 @@
     color: $button-success-color;
     background: $button-success-background-color;
     background-origin: border-box;
-    border: $button-border-width solid transparent;
 
     &.nut-button--outline {
       color: $button-success-border-color;
@@ -136,7 +153,6 @@
     color: $button-danger-color;
     background: $button-danger-background-color;
     background-origin: border-box;
-    border: $button-border-width solid transparent;
 
     &.nut-button--outline {
       color: $button-danger-border-color;
@@ -153,7 +169,6 @@
     color: $button-warning-color;
     background: $button-warning-background-color;
     background-origin: border-box;
-    border: $button-border-width solid transparent;
 
     &.nut-button--outline {
       color: $button-warning-border-color;
@@ -163,43 +178,6 @@
 
     &.nut-button--none {
       color: $button-warning-border-color;
-    }
-  }
-
-  &--large {
-    width: 100%;
-    height: $button-large-height;
-    line-height: $button-large-line-height;
-
-    .text {
-      margin-left: $button-text-icon-large-margin-left;
-    }
-  }
-
-  &--normal {
-    padding: $button-default-padding;
-    font-size: $button-default-font-size;
-  }
-
-  &--small {
-    height: $button-small-height;
-    line-height: $button-small-line-height;
-    padding: $button-small-padding;
-    font-size: $button-small-font-size;
-
-    .text {
-      margin-left: $button-text-icon-small-margin-left;
-    }
-  }
-
-  &--mini {
-    height: $button-mini-height;
-    line-height: $button-mini-line-height;
-    padding: $button-mini-padding;
-    font-size: $button-mini-font-size;
-
-    .text {
-      margin-left: $button-text-icon-mini-margin-left;
     }
   }
 

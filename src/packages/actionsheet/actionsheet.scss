@@ -13,7 +13,7 @@
   &__description {
     padding: 10px;
     display: block;
-    font-size: $font-text;
+    font-size: $font-size;
     color: $color-text;
     margin-inline-start: 0px;
   }
@@ -31,7 +31,7 @@
     padding: 10px;
     text-align: $actionsheet-item-text-align;
     line-height: $actionsheet-item-line-height;
-    font-size: $font-text;
+    font-size: $font-size;
     color: $actionsheet-item-color;
     background-color: $color-background-overlay;
     cursor: pointer;

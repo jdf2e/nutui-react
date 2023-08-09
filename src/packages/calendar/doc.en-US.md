@@ -728,7 +728,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-calendar-base-font-size | calendar base font size | `$font-size-large` |
 | \--nutui-calendar-title-font-size | calendar title font size | `$font-size-xl` |
 | \--nutui-calendar-title-font-weight | calendar title font weight | `500` |
-| \--nutui-calendar-sub-title-font-size | calendar sub title font size | `$font-text` |
+| \--nutui-calendar-sub-title-font-size | calendar sub title font size | `$font-size` |
 | \--nutui-calendar-day67-color | calendar day67 color | `$color-primary` |
 | \--nutui-calendar-header-height | calendar header height | `24px` |
 | \--nutui-calendar-day-width | calendar day width | `14.28%` |

@@ -41,7 +41,7 @@ $font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun,
 // Font
 $font-size-xs: var(--nutui-font-size-1, 10px) !default;
 $font-size-small: var(--nutui-font-size-2, 12px) !default;
-$font-text: var(--nutui-font-size-3, 14px) !default;
+$font-size: var(--nutui-font-size-3, 14px) !default;
 $font-size-large: var(--nutui-font-size-4, 16px) !default;
 $font-size-xl: var(--nutui-font-size-5, 18px) !default;
 $font-size-xxl: var(--nutui-font-size-6, 20px) !default;
@@ -111,7 +111,7 @@ $button-default-line-height: var(
 $button-block-line-height: var(--nutui-button-block-line-height, 46px) !default;
 $button-default-font-size: var(
   --nutui-button-default-font-size,
-  $font-text
+  $font-size
 ) !default;
 $button-large-font-size: var(
   --nutui-button-large-font-size,
@@ -126,10 +126,7 @@ $button-mini-font-size: var(
   $font-size-small
 ) !default;
 $button-mini-line-height: var(--nutui-button-mini-line-height, 1.2) !default;
-$button-text-icon-margin-left: var(
-  --nutui-button-text-icon-margin-left,
-  5px
-) !default;
+$button-text-icon-margin: var(--nutui-button-text-icon-margin, 5px) !default;
 $button-text-icon-large-margin-left: var(
   --nutui-button-text-icon-large-margin-left,
   10px
@@ -195,17 +192,17 @@ $button-warning-background-color: #f07800;
 // cell（✅）
 
 $cell-title-color: var(--nutui-cell-title-color, #262626) !default;
-$cell-title-font-size: var(--nutui-cell-title-font-size, $font-text) !default;
+$cell-title-font-size: var(--nutui-cell-title-font-size, $font-size) !default;
 $cell-description-font-size: var(
   --nutui-cell-description-font-size,
   $font-size-small
 ) !default;
-$cell-description-font: var(--nutui-cell-extra-font-size, $font-text) !default;
+$cell-description-font: var(--nutui-cell-extra-font-size, $font-size) !default;
 $cell-description-color: var(
   --nutui-cell-extra-color,
   $color-text-disable
 ) !default;
-$cell-extra-font-size: var(--nutui-cell-extra-font-size, $font-text) !default;
+$cell-extra-font-size: var(--nutui-cell-extra-font-size, $font-size) !default;
 $cell-extra-color: var(--nutui-cell-extra-color, $color-text) !default;
 $cell-subtitle-color: var(--nutui-cell-description-color, $color-text) !default;
 $cell-border-radius: var(--nutui-cell-border-radius, 4px) !default;
@@ -227,7 +224,7 @@ $cell-large-title-font: var(
 ) !default;
 $cell-large-title-description-font: var(
   --nutui-cell-large-title-description-font,
-  $font-text
+  $font-size
 ) !default;
 $cell-large-padding: var(--nutui-cell-large-padding, 16px 16px) !default;
 $cell-background-color: var(
@@ -247,7 +244,7 @@ $cell-group-title-padding: var(
 $cell-group-title-color: var(--nutui-cell-group-title-color, #262626) !default;
 $cell-group-title-font-size: var(
   --nutui-cell-group-title-font-size,
-  $font-text
+  $font-size
 ) !default;
 $cell-group-title-line-height: var(
   --nutui-cell-group-title-line-height,
@@ -278,7 +275,7 @@ $cell-group-background-color: var(
 $divider-margin: var(--nutui-divider-margin, 16px 0) !default;
 $divider-text-font-size: var(
   --nutui-divider-text-font-size,
-  $font-text
+  $font-size
 ) !default;
 $divider-text-color: var(--nutui-divider-text-color, #f0f0f0) !default;
 $divider-line-height: var(--nutui-divider-line-height, 2px) !default;
@@ -424,12 +421,12 @@ $input-border-bottom-width: var(
   0px
 ) !default;
 $input-disabled-color: var(--nutui-input-disabled-color, #c8c9cc) !default;
-$input-font-size: var(--nutui-input-font-size, $font-text) !default;
+$input-font-size: var(--nutui-input-font-size, $font-size) !default;
 $input-padding: var(--nutui-input-padding, 10px 25px) !default;
 
 // textarea（✅）
 
-$textarea-font: var(--nutui-textarea-font, $font-text) !default;
+$textarea-font: var(--nutui-textarea-font, $font-size) !default;
 $textarea-padding: var(--nutui-textarea-padding, 10px 25px) !default;
 $textarea-limit-color: var(--nutui-textarea-limit-color, $color-text) !default;
 $textarea-text-color: var(--nutui-textarea-text-color, $color-title) !default;
@@ -739,7 +736,7 @@ $calendar-title-font-weight: var(
 ) !default;
 $calendar-sub-title-font-size: var(
   --nutui-calendar-sub-title-font-size,
-  $font-text
+  $font-size
 ) !default;
 $calendar-header-height: var(--nutui-calendar-header-height, 24px) !default;
 $calendar-day-width: var(--nutui-calendar-day-width, 14.28%) !default;
@@ -1133,7 +1130,7 @@ $signature-background-color: var(
   --nutui-signature-background-color,
   $white
 ) !default;
-$signature-font-size: var(--nutui-signature-font-size, $font-text) !default;
+$signature-font-size: var(--nutui-signature-font-size, $font-size) !default;
 
 //fixednav（✅）
 $fixednav-bg-color: var(--nutui-fixednav-bg-color, #fff) !default;
@@ -1189,7 +1186,7 @@ $timeselect-title-color: var(
 ) !default;
 $timeselect-title-font-size: var(
   --nutui-timeselect-title-font-size,
-  $font-text
+  $font-size
 ) !default;
 $timeselect-title-background: var(
   --nutui-timeselect-title-background,
@@ -1212,7 +1209,7 @@ $timeselect-date-active-color: var(
 ) !default;
 $timeselect-date-font-size: var(
   --nutui-timeselect-date-font-size,
-  $font-text
+  $font-size
 ) !default;
 
 $timeselect-time-width: var(--nutui-timeselect-time-width, 100px) !default;
@@ -1309,7 +1306,7 @@ $badge-dot-padding: var(--nutui-badge-dot-padding, 0px) !default;
 
 //popover（✅）
 $popover-border-radius: var(--nutui-popover-border-radius, 8px) !default;
-$popover-font-size: var(--nutui-popover-font-size, $font-text) !default;
+$popover-font-size: var(--nutui-popover-font-size, $font-size) !default;
 $popover-border-color: var(--nutui-popover-border-color, $white) !default;
 $popover-content-background-color: var(
   --nutui-popover-content-background-color,
@@ -1362,7 +1359,7 @@ $progress-text-border-radius: var(
 
 //pagination（✅）
 $pagination-color: var(--nutui-pagination-color, $color-primary) !default;
-$pagination-font-size: var(--nutui-pagination-font-size, $font-text) !default;
+$pagination-font-size: var(--nutui-pagination-font-size, $font-size) !default;
 $pagination-item-border-color: var(
   --nutui-pagination-item-border-color,
   #e4e7eb
@@ -1406,7 +1403,7 @@ $tabs-titles-border-radius: var(--nutui-tabs-titles-border-radius, 0) !default;
 $nut-tabs-title-gap: var(--nutui-tabs-title-gap, 0) !default;
 $tabs-titles-item-font-size: var(
   --nutui-tabs-titles-item-font-size,
-  $font-text
+  $font-size
 ) !default;
 
 $tabs-titles-item-color: var(
@@ -1499,7 +1496,7 @@ $indicator-dot-vertical-margin: var(
 // menu（✅）
 $menu-bar-line-height: var(--nutui-menu-bar-line-height, 48px) !default;
 $menu-placeholder-top: var(--nutui-menu-placeholder-top, -48px) !default;
-$menu-item-font-size: var(--nutui-menu-item-font-size, $font-text) !default;
+$menu-item-font-size: var(--nutui-menu-item-font-size, $font-size) !default;
 $menu-item-text-color: var(--nutui-menu-item-text-color, $color-title) !default;
 $menu-item-active-text-color: var(
   --nutui-menu-item-active-text-color,
@@ -1572,7 +1569,7 @@ $collapse-item-disabled-color: var(
 ) !default;
 $collapse-item-font-size: var(
   --nutui-collapse-item-font-size,
-  $font-text
+  $font-size
 ) !default;
 $collapse-item-line-height: var(
   --nutui-collapse-item-line-height,
@@ -1592,7 +1589,7 @@ $collapse-wrapper-content-color: var(
 ) !default;
 $collapse-wrapper-content-font-size: var(
   --nutui-collapse-wrapper-content-font-size,
-  $font-text
+  $font-size
 ) !default;
 $collapse-wrapper-content-line-height: var(
   --nutui-collapse-wrapper-content-line-height,
@@ -1678,7 +1675,7 @@ $empty-description-padding: var(
   0 40px
 ) !default;
 // cascader（✅）
-$cascader-font-size: var(--nutui-cascader-font-size, $font-text) !default;
+$cascader-font-size: var(--nutui-cascader-font-size, $font-size) !default;
 $cascader-line-height: var(--nutui-cascader-line-height, 22px) !default;
 $cascader-title-padding: var(
   --nutui-cascader-title-padding,
@@ -1719,7 +1716,7 @@ $cascader-item-border-bottom: var(
 $cascader-item-color: var(--nutui-cascader-item-color, $color-title) !default;
 $cascader-item-font-size: var(
   --nutui-cascader-item-font-size,
-  $font-text
+  $font-size
 ) !default;
 $cascader-item-active-color: var(
   --nutui-cascader-item-active-color,
@@ -1900,10 +1897,10 @@ $navbar-box-shadow: var(
   0px 1px 7px 0px rgba(237, 238, 241, 1)
 ) !default;
 $navbar-color: var(--nutui-navbar-color, $color-title) !default;
-$navbar-font-size: var(--nutui-navbar-font-size, $font-text) !default;
+$navbar-font-size: var(--nutui-navbar-font-size, $font-size) !default;
 $navbar-title-font-size: var(
   --nutui-navbar-title-font-size,
-  $font-text
+  $font-size
 ) !default;
 $navbar-title-font-weight: var(--nutui-navbar-title-font-weight, 0) !default;
 $navbar-title-font-color: var(

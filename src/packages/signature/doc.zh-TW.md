@@ -119,4 +119,4 @@ export default App;
 | \--nutui-signature-border-color | 簽名邊框顏色 | `$color-border` |
 | \--nutui-signature-border-width | 簽名邊框寬度 | `1px` |
 | \--nutui-signature-background-color | 簽名背景顏色 | `$white` |
-| \--nutui-signature-font-size | 簽名文字字號 | `$font-text` |
+| \--nutui-signature-font-size | 簽名文字字號 | `$font-size` |
