@@ -273,22 +273,24 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-button-border-radius | Rounded corners of the button | `24px` |
 | \--nutui-button-border-width | Button border width | `1px` |
-| \--nutui-button-default-bg-color | The background color of the button whose type is default | `$white` |
-| \--nutui-button-default-border-color | The border color of the button whose type is default | `$color-text` |
+| \--nutui-button-normal-padding | The padding of the button whose size is normal | `0px 20px` |
+| \--nutui-button-default-height | The height of the button whose type is default | `38px` |
 | \--nutui-button-default-color | The text color of the button whose type is default |`$color-title` |
+| \--nutui-button-default-background-color | The background color of the button whose type is default | `$white` |
+| \--nutui-button-default-border-color | The border color of the button whose type is default | `$color-text` |
 | \--nutui-button-default-padding | padding of buttons with type default | `0 18px` |
-| \--nutui-button-mini-padding | Padding for buttons with size mini | `0 12px` |
-| \--nutui-button-mini-height | The height of the button whose size is mini | `24px` |
+| \--nutui-button-default-font-size | The font size of the button whose type is default | `$font-size` |
+| \--nutui-button-default-font-weight |The font weight of the button whose type is default | `$font-weight-bold` |
+| \--nutui-button-large-height | The height of the button whose size is large | `48px` |
+| \--nutui-button-large-font-size | The font size of buttons whose size is large | `$button-default-font-size` |
 | \--nutui-button-small-padding | Padding for small buttons | `0 12px` |
 | \--nutui-button-small-height | The height of the button whose size is small | `28px` |
-| \--nutui-button-default-height | The height of the button whose type is default | `38px` |
-| \--nutui-button-large-height | The height of the button whose size is large | `48px` |
-| \--nutui-button-default-font-size | The font size of the button whose type is default | `$font-size` |
-| \--nutui-button-large-font-size | The font size of buttons whose size is large | `$button-default-font-size` |
 | \--nutui-button-small-font-size | The font size of the button whose size is small | `$font-size-small` |
+| \--nutui-button-small-font-weight | The font weight of the button whose size is small | `$font-weight` |
+| \--nutui-button-mini-padding | Padding for buttons with size mini | `0 12px` |
+| \--nutui-button-mini-height | The height of the button whose size is mini | `24px` |
 | \--nutui-button-mini-font-size | The font size of the button whose size is mini | `$font-size-small` |
-| \--nutui-button-text-icon-margin | left margin of text with icon button | `4px` |
-| \--nutui-button-disabled-opacity | opacity of button in disabled state | `0.68` |
+| \--nutui-button-mini-font-weight | The font weight of the button whose size is mini | `$font-weight` |
 | \--nutui-button-primary-color | type is the text color of the primary button | `$white` |
 | \--nutui-button-primary-border-color | Type is the border color of the primary button | `$color-primary` |
 | \--nutui-button-info-color | Type is info button text color | `$white` |
@@ -300,3 +302,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-button-danger-background-color | type is the background color of the danger button | `rgba(250, 44, 25, 1)` |
 | \--nutui-button-warning-color | Type is warning button text color | `$white` |
 | \--nutui-button-warning-border-color | type is warning button border color | `rgba(255, 158, 13, 1)` |
+| \--nutui-button-text-icon-margin | left margin of text with icon button | `4px` |
+| \--nutui-button-disabled-opacity | opacity of button in disabled state | `0.68` |
