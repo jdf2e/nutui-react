@@ -224,7 +224,7 @@ const App = () => {
 
   return (
     <>
-      <Cell title="disable date" description={ date3 && date3.length ? `${date3[0]}${translated['8dab2f66']}${date3[1]}` : 'Select' } onClick={ openSwitch3 } />
+      <Cell title="disable date" description={ date3 && date3.length ? `${date3[0]}-${date3[1]}` : 'Select' } onClick={ openSwitch3 } />
       <Calendar
         visible={isVisible3}
         defaultValue={date3}
@@ -242,6 +242,131 @@ export default App;
 
 ```
 
+:::
+
+
+
+### Calendar & Datepicker
+
+:::demo
+```tsx
+import  React, {useRef, useState } from "react";
+import { Cell, Calendar, DatePicker } from '@nutui/nutui-react';
+
+const App = () => {
+  const openSwitch42 = () => {
+    setIsVisible42(true)
+  }
+  const [date42, setDate42] = useState<string[]>([])
+  const [isVisible42, setIsVisible42] = useState(false)
+  const disableDate = (date: Day) => {
+    return date.day === 25 || date.day === 20 || date.day === 22
+  }
+  const [show1, setShow1] = useState(false)
+  const [dpAbled, setDatePickerAbled] = useState([false, false])
+  const [desc1, setDesc1] = useState('10:00:00')
+  const [desc2, setDesc2] = useState('20:00:00')
+  const desc = useRef(0)
+  const padZero = (d: number | string) => {
+    return d <= 9 ? `0${d}` : d
+  }
+  const setChooseValue42 = (chooseData: any) => {
+    const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
+    setDate42([...dateArr])
+  } 
+  const confirm1 = (values: (string | number)[], options: any[]) => {
+    if (desc.current === 1) {
+      setDesc1(
+        options.map((option) => padZero(parseInt(option.text))).join(':')
+      )
+    } else {
+      setDesc2(
+        options.map((option) => padZero(parseInt(option.text))).join(':')
+      )
+    }
+  }
+  const showDatePicker = (e: any, index: number) => {
+    if (dpAbled[index - 1]) {
+      e.stopPropagation()
+      setShow1(true)
+      desc.current = index
+    }
+  }
+
+  return (
+    <>
+      <Cell
+          title="Date Range"
+          description={
+            <div className="desc-box">
+              <div className="desc" onClick={openSwitch42}>
+                {date42 && date42.length
+                  ? `${date42[0]} ${desc1}`
+                  : 'Select start Time'}
+              </div>
+              <div className="desc1">-</div>
+              <div className="desc" onClick={openSwitch42}>
+                {date42 && date42.length
+                  ? `${date42[1]} ${desc2}`
+                  : 'Select end time'}
+              </div>
+            </div>
+          }
+        />
+        <Calendar
+          visible={isVisible42}
+          defaultValue={date42}
+          type="range"
+          startDate="2023-01-01"
+          endDate="2024-09-10"
+          disableDate={disableDate}
+          firstDayOfWeek={1}
+          onDayClick={(date) => {
+            let d = [false, false]
+            if (date.length > 1) {
+              d = [true, true]
+            } else if (date.length > 0) {
+              d = [true, false]
+            }
+            setDatePickerAbled(d)
+          }}
+          onClose={closeSwitch42}
+          onConfirm={setChooseValue42}
+        >
+          <div className="nut-calendar-btns">
+            <div
+              className={`nut-calendar-date ${dpAbled[0] ? '' : 'disabled'}`}
+              onClick={(e) => {
+                showDatePicker(e, 1)
+              }}
+            >
+              Start Time: {desc1}
+            </div>
+            -
+            <div
+              className={`nut-calendar-date ${dpAbled[1] ? '' : 'disabled'}`}
+              onClick={(e) => {
+                showDatePicker(e, 2)
+              }}
+            >
+              End Time: {desc2}
+            </div>
+          </div>
+          <DatePicker
+            title="Select Time"
+            type="time"
+            visible={show1}
+            showChinese
+            onClose={() => setShow1(false)}
+            onConfirm={(options, values) => confirm1(values, options)}
+          />
+        </Calendar>
+    </>
+  );
+};
+export default App;
+
+```
 :::
 
 ### quick selection
@@ -538,6 +663,7 @@ export default App;
 
 :::
 
+
 ## Calendar
 
 ### Props
@@ -597,12 +723,12 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-calendar-choose-background-color | calendar choose background color | `rgba(#fa2c19, 0.09)` |
 | \--nutui-calendar-choose-color | calendar choose color | `$color-primary` |
 | \--nutui-calendar-choose-disable-background-color | calendar choose but disable background color | `rgba(191, 191, 191, 0.09)` |
-| \--nutui-calendar-choose-disable-color | calendar choose but disable color | `$color-disabled` |
+| \--nutui-calendar-choose-disable-color | calendar choose but disable color | `$color-text-disable` |
 | \--nutui-calendar-disable-color | calendar disable color | `#d1d0d0` |
-| \--nutui-calendar-base-font-size | calendar base font size | `$font-card-title` |
-| \--nutui-calendar-title-font-size | calendar title font size | `$font-title` |
+| \--nutui-calendar-base-font-size | calendar base font size | `$font-size-large` |
+| \--nutui-calendar-title-font-size | calendar title font size | `$font-size-xl` |
 | \--nutui-calendar-title-font-weight | calendar title font weight | `500` |
-| \--nutui-calendar-sub-title-font-size | calendar sub title font size | `$font-text` |
+| \--nutui-calendar-sub-title-font-size | calendar sub title font size | `$font-size` |
 | \--nutui-calendar-day67-color | calendar day67 color | `$color-primary` |
 | \--nutui-calendar-header-height | calendar header height | `24px` |
 | \--nutui-calendar-day-width | calendar day width | `14.28%` |

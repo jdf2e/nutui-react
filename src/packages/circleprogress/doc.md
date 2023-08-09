@@ -120,7 +120,7 @@ const App = () => {
       <CircleProgress percent={50} radius={60}>
         <> 
           <div>3000</div>
-          <div style={{ fontSize: '12px', color: 'var(--nutui-black-9)' }}>步</div>
+          <div style={{ fontSize: '12px', color: 'var(--nutui-black-10)' }}>步</div>
         </>
       </CircleProgress>
     </>
@@ -202,4 +202,4 @@ export default App;
 | \--nutui-circleprogress-primary-color | 环形进度条填充部分的颜色 | `$color-primary` |
 | \--nutui-circleprogress-path-color | 环形进度条轨道的颜色 | `#e5e9f2` |
 | \--nutui-circleprogress-text-color | 环形进度条轨道内容区的颜色 | `$color-title` |
-| \--nutui-circleprogress-text-size | 环形进度条轨道内容区的大小 | `$font-card-title` |
+| \--nutui-circleprogress-text-size | 环形进度条轨道内容区的大小 | `$font-size-large` |

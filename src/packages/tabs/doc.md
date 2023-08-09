@@ -580,7 +580,7 @@ export default App;
 | --- | --- | --- |
 | \--nutui-tabs-titles-background-color | Tab 标题的背景色 | `$color-background` |
 | \--nutui-tabs-titles-border-radius | Tab 标题的边框圆角 | `0` |
-| \--nutui-tabs-titles-item-font-size | Tab 标题的字号 | `$font-text` |
+| \--nutui-tabs-titles-item-font-size | Tab 标题的字号 | `$font-size` |
 | \--nutui-tabs-title-gap | Tab 标题的左右 margin | `0px` |
 | \--nutui-tabs-titles-item-active-font-weight | Tab 选中标题的字重 | `600` |
 | \--nutui-tabs-horizontal-tab-line-color | 水平方向线条颜色 | `linear-gradient(90deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |
@@ -589,7 +589,7 @@ export default App;
 | \--nutui-tabs-horizontal-tab-line-opacity | 水平方向线的透明度 | `1` |
 | \--nutui-tabs-horizontal-titles-height | 水平方向标题的高度 | `46px` |
 | \--nutui-tabs-horizontal-titles-item-min-width | 水平方向标题的最小宽度 | `50px` |
-| \--nutui-tabs-horizontal-titles-item-active-background-color | 水平方向激活选项卡标题的背景色 | `$color-card-background` |
+| \--nutui-tabs-horizontal-titles-item-active-background-color | 水平方向激活选项卡标题的背景色 | `$color-background-overlay` |
 | \--nutui-tabs-horizontal-titles-item-active-line-width | 水平方向激活选项卡线条的宽度 | `40px` |
 | \--nutui-tabs-horizontal-titles-item-active-line-height | 水平方向激活选项卡线条的高度 | `3px` |
 | \--nutui-tabs-vertical-tab-line-color | 垂直方向线条颜色 | `linear-gradient(180deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |

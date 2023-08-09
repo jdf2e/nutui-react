@@ -583,7 +583,7 @@ export default App;
 | activeColor | 選中啟動態顏色 | `string` | `-` |
 | activeIcon | 標記選中的Icon | `string` | `ReactNode` |
 | lazy | 是否開啟動態加載 | `boolean` | `false` |
-| optionKey | 自定义`options`结构中，包含 textKey、valueKey、childrenKey | `object` | `-` |
+| optionKey | 自定義`options`中的關鍵字，valueKey、textKey、childrenKey | `object` | `{valueKey: 'value', textKey: 'text', childrenKey: 'children'}` |
 | format | 當options為可轉換為樹形結構的扁平結構時，配置轉換規則 | `object` | `-` |
 | title | 標題 | `string` | `-` |
 | closeIconPosition | 取消按鈕位置，繼承 Popup 組件 | `string` | `top-right` |
@@ -601,7 +601,7 @@ export default App;
 
 | 名稱 | 说明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-cascader-font-size | 級聯總字號 | `$font-text` |
+| \--nutui-cascader-font-size | 級聯總字號 | `$font-size` |
 | \--nutui-cascader-line-height | 行高 | `22px` |
 | \--nutui-cascader-pane-height | 級聯面闆高度 | `342px` |
 | \--nutui-cascader-tabs-item-padding | 級聯tabs的標題部分的padding 值 | `0 10px` |
@@ -610,5 +610,5 @@ export default App;
 | \--nutui-cascader-item-margin | 級聯數據每一條的margin值 | `0px` |
 | \--nutui-cascader-item-border-bottom | 級聯數據每一條的底部邊框 | `0px solid #ddd` |
 | \--nutui-cascader-item-color | 級聯數據每一條的色值 | `$color-title` |
-| \--nutui-cascader-item-font-size | 級聯數據每一條的字號 | `$font-text` |
+| \--nutui-cascader-item-font-size | 級聯數據每一條的字號 | `$font-size` |
 | \--nutui-cascader-item-active-color | 級聯數據每一條的選中色值 | `$color-primary` |

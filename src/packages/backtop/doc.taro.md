@@ -128,7 +128,7 @@ export default App;
 | threshold | 页面垂直滚动多高后出现 | `number` | `200` |
 | zIndex | 设置组件页面层级 | `number` | `10` |
 | duration | 设置动画持续时间，为 0 时表示无动画 | `number` | `1000` |
-| onClick | 按钮点击时触发事件 | `(event: MouseEvent) => void` | `-` |
+| onClick | 按钮点击时触发事件 | `(event: MouseEvent<HTMLDivElement>) => void` | `-` |
 
 ## 主题定制
 

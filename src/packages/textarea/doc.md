@@ -179,8 +179,8 @@ export default App
 | readOnly | 只读属性 | `boolean` | `false` |
 | disabled | 禁用属性 | `boolean` | `false` |
 | onChange | 输入内容时触发 | `(value) => void` | `-` |
-| onFocus | 聚焦时触发 | `(event) => void` | `-` |
-| onBlur | 失焦时触发 | `(event) => void` | `-` |
+| onFocus | 聚焦时触发 | `(event: FocusEvent<HTMLTextAreaElement>) => void` | `-` |
+| onBlur | 失焦时触发 | `(event: FocusEvent<HTMLTextAreaElement>) => void` | `-` |
 
 ## 主题定制
 
@@ -190,9 +190,9 @@ export default App
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-textarea-font | 字体大小 | `$font-text` |
+| \--nutui-textarea-font | 字体大小 | `$font-size` |
 | \--nutui-textarea-padding | 内边距 | `10px 25px` |
 | \--nutui-textarea-limit-color | 字数统计颜色 | `$color-text` |
 | \--nutui-textarea-text-color | 文本颜色 | `$color-title` |
 | \--nutui-textarea-text-curror-color | 光标颜色 | `$color-title` |
-| \--nutui-textarea-disabled-color | 禁用颜色 | `$color-disabled` |
+| \--nutui-textarea-disabled-color | 禁用颜色 | `$color-text-disable` |

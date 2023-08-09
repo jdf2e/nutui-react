@@ -179,8 +179,8 @@ export default App
 | readOnly | read only attribute | `boolean` | `false` |
 | disabled | disable attribute | `boolean` | `false` |
 | onChange | Triggered when the value of the input box changes | `(value) => void` | `-` |
-| onFocus | Triggered when focusing | `(event) => void` | `-` |
-| onBlur | Triggered when out of focus | `(event) => void` | `-` |
+| onFocus | Triggered when focusing | `(event: FocusEvent<HTMLTextAreaElement>) => void` | `-` |
+| onBlur | Triggered when out of focus | `(event: FocusEvent<HTMLTextAreaElement>) => void` | `-` |
 
 ## Theming
 
@@ -190,9 +190,9 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default | 
 | --- | --- | --- | 
-| \--nutui-textarea-font | fontSize | `$font-text` | 
+| \--nutui-textarea-font | fontSize | `$font-size` | 
 | \--nutui-textarea-padding | padding | `10px 25px`| 
 | \--nutui-textarea-limit-color | limit color | `$color-text` | 
 | \--nutui-textarea-text-color | text color | `$color-title` | 
 | \--nutui-textarea-text-curror-color | caret color | `$color-title`| 
-| \--nutui-textarea-disabled-color | disabled color | `$color-disabled` |
+| \--nutui-textarea-disabled-color | disabled color | `$color-text-disable` |

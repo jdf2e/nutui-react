@@ -127,7 +127,7 @@ export const Elevator: FunctionComponent<
     }
 
     if (index > state.current.listHeight.length - 2) {
-      cacheIndex = state.current.listHeight.length - 2
+      cacheIndex = Math.max(0, state.current.listHeight.length - 2)
     }
 
     setCodeIndex(cacheIndex)

@@ -601,7 +601,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default Value |
 | --- | --- | --- |
-| \--nutui-cascader-font-size | cascader font size | `$font-text` |
+| \--nutui-cascader-font-size | cascader font size | `$font-size` |
 | \--nutui-cascader-line-height | cascader line height | `22px` |
 | \--nutui-cascader-pane-height | cascader pane height | `342px` |
 | \--nutui-cascader-tabs-item-padding | cascader tabs item padding | `0 10px` |
@@ -610,5 +610,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-cascader-item-margin | cascader item margin | `0px` |
 | \--nutui-cascader-item-border-bottom | cascader item border bottom | `0px solid #ddd` |
 | \--nutui-cascader-item-color | cascader item color | `$color-title` |
-| \--nutui-cascader-item-font-size | cascader item font size | `$font-text` |
+| \--nutui-cascader-item-font-size | cascader item font size | `$font-size` |
 | \--nutui-cascader-item-active-color | cascader item active color | `$color-primary` |

@@ -27,6 +27,7 @@ export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
     className,
     style,
     onChange,
+    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -50,7 +51,12 @@ export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
     setValue(!value)
   }
   return (
-    <div className={classes()} onClick={(e) => onClick(e)} style={style}>
+    <div
+      className={classes()}
+      onClick={(e) => onClick(e)}
+      style={style}
+      {...rest}
+    >
       <div className="switch-button">
         {!value && <div className="close-line" />}
         {activeText && (

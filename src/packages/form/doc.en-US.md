@@ -452,6 +452,7 @@ export default App;
 | --- | --- | --- | --- |
 | required | The red star of the required form item label, only used to control the style | `boolean` | `false` |
 | name | In the case of using the form validation function, this attribute is required | `string` | `-` |
+| label | Label name | `ReactNode` | `-` |
 | errorMessageAlign | Error text alignment | `center` \| `right` \| `left` | `left` |
 | initialValue | set the default value of child elements | `any` | `-` |
 | trigger | Set the timing to collect field value changes | `string` | `-` |

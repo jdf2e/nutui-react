@@ -180,7 +180,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-sidenavbar-title-background | The background color of the title | `$color-background` |
 | \--nutui-sidenavbar-title-color | The font color of the title | `$color-title` |
 | \--nutui-sidenavbar-sub-title-padding | Padding of subtitle | `10px 8px 10px 35px` |
-| \--nutui-sidenavbar-sub-title-background | Subtitle background color | `$color-card-background-wrapper` |
+| \--nutui-sidenavbar-sub-title-background | Subtitle background color | `$color-background-sunken` |
 | \--nutui-sidenavbar-sub-title-color | Subtitle font color | `$color-title` |
-| \--nutui-sidenavbar-sub-list-background | option list background color | `$color-card-background-wrapper` |
+| \--nutui-sidenavbar-sub-list-background | option list background color | `$color-background-sunken` |
 | \--nutui-sidenavbar-sub-list-color | option list font color | `$color-title` |

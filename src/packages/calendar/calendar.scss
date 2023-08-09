@@ -94,7 +94,7 @@
       top: -50px;
       left: 0;
       right: 0;
-      font-size: $font-help;
+      font-size: $font-size-small;
       color: $color-text;
     }
   }
@@ -183,7 +183,7 @@
     }
 
     &-disabled {
-      color: $color-disabled !important;
+      color: $color-text-disable !important;
 
       .nut-calendar-day-info-curr {
         display: none;
@@ -192,7 +192,7 @@
 
     &-choose-disabled {
       background-color: $calendar-choose-disable-background-color;
-      color: $color-disabled !important;
+      color: $color-text-disable !important;
 
       .nut-calendar-day-info-curr {
         display: none;
@@ -208,13 +208,12 @@
   // 底部导航
   &-footer {
     display: flex;
-    height: 62px;
     width: 100%;
+    flex-direction: column;
     background-color: $white;
 
     .calendar-confirm-btn {
       height: 44px;
-      width: 100%;
       margin: 10px 18px;
       border-radius: 22px;
       background: $button-primary-background-color;

@@ -79,7 +79,7 @@ describe('configprovider', () => {
     expect(ele).toHaveTextContent('Save')
     expect(ele).toHaveClass('nut-configprovider bb')
     expect(ele).toHaveStyle(
-      '--nutui-color-primary: green; --nutui-color-primary-start: green; --nutui-color-primary-end: green; margin: 8px;'
+      '--nutui-color-primary: green; --nutui-color-primary-stop-1: green; --nutui-color-primary-stop-2: green; margin: 8px;'
     )
   })
 })

@@ -120,7 +120,7 @@ const App = () => {
       <CircleProgress percent={50} radius={60}>
         <> 
           <div>3000</div>
-          <div style={{ fontSize: '12px', color: 'var(--nutui-black-9)' }}>步</div>
+          <div style={{ fontSize: '12px', color: 'var(--nutui-black-10)' }}>步</div>
         </>
       </CircleProgress>
     </>
@@ -209,4 +209,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-circleprogress-primary-color | The color of the filled part of the circular progress bar | `$color-primary` |
 | \--nutui-circleprogress-path-color | The color of the circular progress bar track | `#e5e9f2` |
 | \--nutui-circleprogress-text-color | The color of the track content area of ​​the circular progress bar | `$color-title` |
-| \--nutui-circleprogress-text-size | The size of the track content area of ​​the circular progress bar | `$font-card-title` |
+| \--nutui-circleprogress-text-size | The size of the track content area of ​​the circular progress bar | `$font-size-large` |

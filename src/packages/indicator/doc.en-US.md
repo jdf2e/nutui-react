@@ -131,7 +131,7 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default Value |
 | --- | --- | --- |
 | \--nutui-indicator-color | indicator active color | `$color-primary` |
-| \--nutui-indicator-dot-color | indicator default color | `$color-disabled` |
+| \--nutui-indicator-dot-color | indicator default color | `$color-text-disable` |
 | \--nutui-indicator-dot-size | indicator dot size | `5px` |
 | \--nutui-indicator-dot-active-size | indicator dot active size | `15px` |
 | \--nutui-indicator-border-size | indicator active border size | `3px` |

@@ -498,6 +498,7 @@ export default App
 | visible | whether to show | `boolean` | `false` |
 | location | The pop-up position, the specific parameter values ​​inside can refer to the above position customization example | `string` | `bottom` |
 | offset | the offset of the occurrence position | `string[]` \| `number[]` | `[0, 12]` |
+| arrowOffset | the offset of the arrow | `number` | `0` |
 | showArrow | whether to show small arrows | `boolean` | `true` |
 | closeOnActionClick | Whether to close when clicking action | `boolean` | `true` |
 | closeOnOutsideClick | Whether to close when clicking outside | `boolean` | `true` |
@@ -534,6 +535,6 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-popover-primary-text-color | Text color of options area | `$color-title` |
 | \--nutui-popover-content-background-color | The background color of the options area | `$white` |
 | \--nutui-popover-border-color| Arrow colors for top, bottom, left and right | `$white` |
-| \--nutui-popover-divider-color | The bottom border color of the options area | `$color-divider` |
-| \--nutui-popover-disable-color | Option Disabled Colors | `$color-disabled` |
+| \--nutui-popover-divider-color | The bottom border color of the options area | `$color-border` |
+| \--nutui-popover-disable-color | Option Disabled Colors | `$color-text-disable` |
 | \--nutui-popover-menu-item-padding | The padding value of each item in the option area menu | `8px` |

@@ -747,3 +747,8 @@ export type NutCSSVariables =
   | 'nutuiRowContentHeight'
   | 'nutuiRowContentLineHeight'
   | 'nutuiColDefaultMarginBottom'
+  | 'nutuiSpaceGap'
+  | 'nutuiLoadingIconColor'
+  | 'nutuiLoadingIconSize'
+  | 'nutuiLoadingTextColor'
+  | 'nutuiLoadingTextSize'

@@ -174,7 +174,7 @@ const App = () => {
 
   return (
     <>
-      <Cell title="选择周" description={ date3 && date3.length ? `${date3[0]}${translated['8dab2f66']}${date3[1]}` : '请选择' } onClick={ openSwitch3 } />
+      <Cell title="选择周" description={ date3 && date3.length ? `${date3[0]}$-${date3[1]}` : '请选择' } onClick={ openSwitch3 } />
       <Calendar
         visible={isVisible3}
         defaultValue={date3}
@@ -190,7 +190,6 @@ const App = () => {
 export default App;
 
 ```
-
 :::
 
 ### 日期不可选
@@ -224,7 +223,7 @@ const App = () => {
 
   return (
     <>
-      <Cell title="选择周" description={ date3 && date3.length ? `${date3[0]}${translated['8dab2f66']}${date3[1]}` : '请选择' } onClick={ openSwitch3 } />
+      <Cell title="选择周" description={ date3 && date3.length ? `${date3[0]}$-${date3[1]}` : '请选择' } onClick={ openSwitch3 } />
       <Calendar
         visible={isVisible3}
         defaultValue={date3}
@@ -243,6 +242,130 @@ export default App;
 ```
 
 :::
+
+### 和Datepicker 联动
+
+:::demo
+```tsx
+import  React, {useRef, useState } from "react";
+import { Cell, Calendar, DatePicker } from '@nutui/nutui-react';
+
+const App = () => {
+  const openSwitch42 = () => {
+    setIsVisible42(true)
+  }
+  const [date42, setDate42] = useState<string[]>([])
+  const [isVisible42, setIsVisible42] = useState(false)
+  const disableDate = (date: Day) => {
+    return date.day === 25 || date.day === 20 || date.day === 22
+  }
+  const [show1, setShow1] = useState(false)
+  const [dpAbled, setDatePickerAbled] = useState([false, false])
+  const [desc1, setDesc1] = useState('10:00:00')
+  const [desc2, setDesc2] = useState('20:00:00')
+  const desc = useRef(0)
+  const padZero = (d: number | string) => {
+    return d <= 9 ? `0${d}` : d
+  }
+  const setChooseValue42 = (chooseData: any) => {
+    const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
+    setDate42([...dateArr])
+  } 
+  const confirm1 = (values: (string | number)[], options: any[]) => {
+    if (desc.current === 1) {
+      setDesc1(
+        options.map((option) => padZero(parseInt(option.text))).join(':')
+      )
+    } else {
+      setDesc2(
+        options.map((option) => padZero(parseInt(option.text))).join(':')
+      )
+    }
+  }
+  const showDatePicker = (e: any, index: number) => {
+    if (dpAbled[index - 1]) {
+      e.stopPropagation()
+      setShow1(true)
+      desc.current = index
+    }
+  }
+
+  return (
+    <>
+      <Cell
+          title="日期区间"
+          description={
+            <div className="desc-box">
+              <div className="desc" onClick={openSwitch42}>
+                {date42 && date42.length
+                  ? `${date42[0]} ${desc1}`
+                  : '请选择起始时间'}
+              </div>
+              <div className="desc1">-</div>
+              <div className="desc" onClick={openSwitch42}>
+                {date42 && date42.length
+                  ? `${date42[1]} ${desc2}`
+                  : '请选择截止时间'}
+              </div>
+            </div>
+          }
+        />
+        <Calendar
+          visible={isVisible42}
+          defaultValue={date42}
+          type="range"
+          startDate="2023-01-01"
+          endDate="2024-09-10"
+          disableDate={disableDate}
+          firstDayOfWeek={1}
+          onDayClick={(date) => {
+            let d = [false, false]
+            if (date.length > 1) {
+              d = [true, true]
+            } else if (date.length > 0) {
+              d = [true, false]
+            }
+            setDatePickerAbled(d)
+          }}
+          onClose={closeSwitch42}
+          onConfirm={setChooseValue42}
+        >
+          <div className="nut-calendar-btns">
+            <div
+              className={`nut-calendar-date ${dpAbled[0] ? '' : 'disabled'}`}
+              onClick={(e) => {
+                showDatePicker(e, 1)
+              }}
+            >
+              开始时间：{desc1}
+            </div>
+            -
+            <div
+              className={`nut-calendar-date ${dpAbled[1] ? '' : 'disabled'}`}
+              onClick={(e) => {
+                showDatePicker(e, 2)
+              }}
+            >
+              结束时间：{desc2}
+            </div>
+          </div>
+          <DatePicker
+            title="时间选择"
+            type="time"
+            visible={show1}
+            showChinese
+            onClose={() => setShow1(false)}
+            onConfirm={(options, values) => confirm1(values, options)}
+          />
+        </Calendar>
+    </>
+  );
+};
+export default App;
+
+```
+:::
+
 
 ### 快捷选择
 
@@ -594,12 +717,12 @@ export default App;
 | \--nutui-calendar-choose-background-color | 日历选中时区间内元素的背景色，区别区间两头元素的背景色 | `rgba(#fa2c19, 0.09)` |
 | \--nutui-calendar-choose-color | 日历选中元素的字色 | `$color-primary` |
 | \--nutui-calendar-choose-disable-background-color | 日历不可选元素的选中时的背景色 | `rgba(191, 191, 191, 0.09)` |
-| \--nutui-calendar-choose-disable-color | 日历不可选元素的选中时的字色 | `$color-disabled` |
+| \--nutui-calendar-choose-disable-color | 日历不可选元素的选中时的字色 | `$color-text-disable` |
 | \--nutui-calendar-disable-color | 日历不可选元素的字色 | `#d1d0d0` |
-| \--nutui-calendar-base-font-size | 日历字号 | `$font-card-title` |
-| \--nutui-calendar-title-font-size | 日历标题字号 | `$font-title` |
+| \--nutui-calendar-base-font-size | 日历字号 | `$font-size-large` |
+| \--nutui-calendar-title-font-size | 日历标题字号 | `$font-size-xl` |
 | \--nutui-calendar-title-font-weight | 日历标题字重 | `500` |
-| \--nutui-calendar-sub-title-font-size | 日历副标题字号 | `$font-text` |
+| \--nutui-calendar-sub-title-font-size | 日历副标题字号 | `$font-size` |
 | \--nutui-calendar-day67-color | 日历周末字色 | `$color-primary` |
 | \--nutui-calendar-header-height | 日历自定义部分高度 | `24px` |
 | \--nutui-calendar-day-width | 日历元素宽度 | `14.28%` |

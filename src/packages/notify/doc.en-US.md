@@ -197,7 +197,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-notify-font-size | The font size of notify | `14px` |
 | \--nutui-notify-line-height | The row height of notify | `auto` |
 | \--nutui-notify-text-color | The text color of notify | `$white` |
-| \--nutui-notify-base-background-color | The background color of notify | `linear-gradient(135deg, $color-primary 0%, $color-primary-end 100%)` |
+| \--nutui-notify-base-background-color | The background color of notify | `linear-gradient(135deg, $color-primary 0%, $color-primary-stop-2 100%)` |
 | \--nutui-notify-primary-background-color | The main notify background color | `linear-gradient(315deg,rgba(73, 143, 242, 1) 0%,rgba(73, 101, 242,1) 100%)` |
 | \--nutui-notify-success-background-color | Background color of successful notify | `linear-gradient(135deg,rgba(38, 191, 38, 1) 0%,rgba(39, 197, 48, 1) 45%,rgba(40, 207, 63, 1) 83%,rgba(41, 212, 70, 1) 100%)` |
 | \--nutui-notify-danger-background-color | Danger notify background color | `rgba(250, 50, 25, 1)` |
