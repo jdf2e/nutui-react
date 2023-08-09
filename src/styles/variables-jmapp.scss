@@ -1061,10 +1061,6 @@ $dialog-content-text-align: var(
   --nutui-dialog-content-text-align,
   center
 ) !default;
-$dialog-overlay-z-index: var(
-  --nutui-dialog-mask-z-index,
-  $mask-z-index
-) !default;
 $dialog-overlay-background-color: var(
   --nutui-dialog-mask-background-color,
   $mask-color
