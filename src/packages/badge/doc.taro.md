@@ -264,7 +264,7 @@ export default App;
 | --- | --- | --- |
 | \--nutui-badge-background-color | badge 背景色 | `linear-gradient(135deg, $color-primary 0%, $color-primary-stop-2 100%))` |
 | \--nutui-badge-color | badge 内容色值 | `#fff` |
-| \--nutui-badge-font-size | badge 内容字号 | `$font-text-help` |
+| \--nutui-badge-font-size | badge 内容字号 | `$font-size-small` |
 | \--nutui-badge-border | badge 边框 | `0px solid $color-primary-text` |
 | \--nutui-badge-border-radius | badge 边框圆角 | `14px` |
 | \--nutui-badge-padding | badge 的padding值 | `0 5px` |

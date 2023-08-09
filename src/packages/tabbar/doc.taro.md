@@ -229,7 +229,7 @@ export default App;
 | \--nutui-tabbar-border-top | 上边框 | `1px solid #eee` |
 | \--nutui-tabbar-border-bottom | 下边框 | `1px solid #eee` |
 | \--nutui-tabbar-box-shadow | 阴影 | `none` |
-| \--nutui-tabbar-text-font-size | 标题字体大小 | `$font-size-0` |
-| \--nutui-tabbar-text-large-font-size | 无图标时标题字体大小 | `$font-card-title` |
+| \--nutui-tabbar-text-font-size | 标题字体大小 | `$font-size-xs` |
+| \--nutui-tabbar-text-large-font-size | 无图标时标题字体大小 | `$font-size-large` |
 | \--nutui-tabbar-text-line-height | 字体行高 | `initial` |
 | \--nutui-tabbar-text-margin-top | 标题上外边距 | `3px` |

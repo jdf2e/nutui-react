@@ -12,7 +12,7 @@ page {
   --nutui-brand-10: #4d0004; // 梯度10
 
   --nutui-brand-101: rgba(250, 44, 25, 0.5); // 梯度101
-  --nutui-brand-stop-1: #f53d4c; // 渐变色起
+  --nutui-brand-stop-1: #f53d4d; // 渐变色起
   --nutui-brand-stop-2: #fa2c19; // 渐变色止
 
   --nutui-color-primary: var(--nutui-brand-6);
@@ -23,6 +23,7 @@ page {
   --nutui-color-primary-text: #ffffff;
   --nutui-color-primary-light: var(--nutui-brand-1);
   --nutui-color-primary-light-press: var(--nutui-brand-2);
+
   --nutui-color-text-link: #396acc;
 
   // 背景色
@@ -92,6 +93,7 @@ page {
   --nutui-font-size-10: 28px;
   // 字重
   --nutui-font-weight: 400;
+  --nutui-font-weight-bold: 500;
   // 行高
   --nutui-line-height-base: 1.5;
 }

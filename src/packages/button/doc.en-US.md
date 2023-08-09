@@ -290,8 +290,8 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-button-default-line-height | The line height of the button whose type is default | `36px` |
 | \--nutui-button-default-font-size | The font size of the button whose type is default | `$font-text` |
 | \--nutui-button-large-font-size | The font size of buttons whose size is large | `$button-default-font-size` |
-| \--nutui-button-small-font-size | The font size of the button whose size is small | `$font-text-help` |
-| \--nutui-button-mini-font-size | The font size of the button whose size is mini | `$font-text-help` |
+| \--nutui-button-small-font-size | The font size of the button whose size is small | `$font-size-small` |
+| \--nutui-button-mini-font-size | The font size of the button whose size is mini | `$font-size-small` |
 | \--nutui-button-mini-line-height | The line height of the button whose size is mini | `1.2` |
 | \--nutui-button-text-icon-margin-left | left margin of text with icon button | `5px` |
 | \--nutui-button-text-icon-large-margin-left | size is the left margin of the text of the large button | `10px` |

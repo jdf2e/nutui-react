@@ -29,7 +29,7 @@
 
   &__label {
     color: $color-primary-text;
-    font-size: $font-text-help;
+    font-size: $font-size-small;
 
     &.open {
       transform: translateX(-16px);

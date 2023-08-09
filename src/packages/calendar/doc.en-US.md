@@ -725,8 +725,8 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-calendar-choose-disable-background-color | calendar choose but disable background color | `rgba(191, 191, 191, 0.09)` |
 | \--nutui-calendar-choose-disable-color | calendar choose but disable color | `$color-text-disable` |
 | \--nutui-calendar-disable-color | calendar disable color | `#d1d0d0` |
-| \--nutui-calendar-base-font-size | calendar base font size | `$font-card-title` |
-| \--nutui-calendar-title-font-size | calendar title font size | `$font-title` |
+| \--nutui-calendar-base-font-size | calendar base font size | `$font-size-large` |
+| \--nutui-calendar-title-font-size | calendar title font size | `$font-size-xl` |
 | \--nutui-calendar-title-font-weight | calendar title font weight | `500` |
 | \--nutui-calendar-sub-title-font-size | calendar sub title font size | `$font-text` |
 | \--nutui-calendar-day67-color | calendar day67 color | `$color-primary` |

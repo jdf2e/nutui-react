@@ -290,8 +290,8 @@ export default App;
 | \--nutui-button-default-line-height | type 为 default 的按钮的行高 | `36px` |
 | \--nutui-button-default-font-size | type 为 default 的按钮的字号 | `$font-text` |
 | \--nutui-button-large-font-size | size 为 large 的按钮的字号 | `$button-default-font-size` |
-| \--nutui-button-small-font-size | size 为 small 的按钮的字号 | `$font-text-help` |
-| \--nutui-button-mini-font-size | size 为 mini 的按钮的字号 | `$font-text-help` |
+| \--nutui-button-small-font-size | size 为 small 的按钮的字号 | `$font-size-small` |
+| \--nutui-button-mini-font-size | size 为 mini 的按钮的字号 | `$font-size-small` |
 | \--nutui-button-mini-line-height | size 为 mini 的按钮的行高 | `1.2` |
 | \--nutui-button-text-icon-margin-left | 带 icon按钮的文本的左边距 | `5px` |
 | \--nutui-button-text-icon-large-margin-left | size 为 large 按钮的文本的左边距 | `10px` |
