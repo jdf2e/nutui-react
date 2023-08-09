@@ -1,3 +1,18 @@
+# v2.0.11
+`2023-08-09`
+
+* :sparkles: feat: 新增 tour 引导组件 (#1279) @junjun666
+* :bug: fix: h5下多选上传时 uid 重复的问题 (#1269) @Liuqh233
+* :bug: fix: input 组件点击清除图标无法清空内容 (#1292) @oasis-cloud
+* :bug: fix: numberkeyboard 设置标题后，完成按钮应该触发 onConfirm 事件 (#1285) @oasis-cloud
+* :bug: fix: uploader h5/taro 增加校验 (#1297) @junjun666
+* :bug: fix: uploader taro-h5 上传状态样式错乱 (#1293) @junjun666
+* 📖 docs: divider 组件的 styles 属性示例改为 style (#1290) @oasis-cloud
+* 📖 docs: numberkeyboard 的 type 属性类型更新 (#1284) @oasis-cloud
+* 📖 docs: step 组件的 description 属性示例改为节点的实现方式 (#1289) @oasis-cloud
+* 📖 docs: 调整 image tao 文档中引入包名 (#1295) @oasis-cloud
+
+
 # v2.0.10
 `2023-08-04`
 
