@@ -4,7 +4,7 @@ exports[`should match custom snapshot 1`] = `
 <div>
   <div
     class="nut-overlay"
-    style="z-index: 1000; background-color: rgba(0, 0, 0, 0);"
+    style="background-color: rgba(0, 0, 0, 0); --nutui-overlay-zIndex: 1000;"
   />
   <div
     class="nut-popup nut-popup-bottom "
@@ -197,7 +197,7 @@ exports[`should match snapshot 1`] = `
 <div>
   <div
     class="nut-overlay"
-    style="z-index: 1000; background-color: rgba(0, 0, 0, 0);"
+    style="background-color: rgba(0, 0, 0, 0); --nutui-overlay-zIndex: 1000;"
   />
   <div
     class="nut-popup nut-popup-bottom "
