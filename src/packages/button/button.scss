@@ -20,6 +20,10 @@
 
   &-text {
     margin-left: $button-text-icon-margin;
+
+    &.right {
+      margin-right: $button-text-icon-margin;
+    }
   }
 
   &::before {
@@ -46,8 +50,6 @@
   }
 
   &-warp {
-    height: 100%;
-    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -76,6 +78,11 @@
   &.nut-button--none {
     background: transparent;
     border-color: transparent;
+  }
+
+  &.nut-button--icononly {
+    width: $button-default-height;
+    padding: 0;
   }
 
   &--normal {

@@ -150,20 +150,56 @@ export default App;
 ```tsx
 import React from "react";
 import { Button } from '@nutui/nutui-react';
+import { Star, Plus } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <>
-      <Button shape="square" plain type="primary" icon="star-fill" />
-      <Button shape="square" type="primary" icon="star">收藏</Button>
+      <Button
+        type="primary"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{ margin: 8 }}
+      >
+        操作按鈕
+      </Button>
+      <Button
+        type="primary"
+        fill="outline"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{ margin: 8 }}
+      >
+        操作按鈕
+      </Button>
+      <Button
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{
+          margin: 8,
+          backgroundColor: `var(--nutui-color-primary-light)`,
+          borderColor: `var(--nutui-color-primary)`,
+          color: `var(--nutui-color-primary)`,
+        }}
+      >
+        操作按鈕
+      </Button>
+      <Button
+        shape="square"
+        fill="outline"
+        type="primary"
+        icon={<Plus width="20" />}
+        style={{ margin: 8 }}
+      />
       <Button
         shape="round"
         type="primary"
         size="large"
-        icon="star"
-        iconSize={20}
+        icon={<Star width={20} height={20} />}
+        rightIcon={<Star width={20} height={20} />}
+        style={{ margin: 8 }}
       >
-        收藏
+        操作按鈕
       </Button>
     </>
   );
@@ -261,7 +297,7 @@ export default App;
 | block | 是否為塊級元素 | `boolean` | `false` |
 | icon | 按鈕圖標 | `ReactNode` | `-` |
 | loading | 按鈕loading狀態 | `boolean` | `false` |
-| onClick | 點擊按鈕時觸發 | `onClick: (e: MouseEvent) => void` | `false` |
+| onClick | 點擊按鈕時觸發 | `(e: MouseEvent<HTMLButtonElement>) => void` | `-` |
 
 ## 主題定制
 

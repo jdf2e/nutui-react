@@ -169,22 +169,58 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
+import React from "react";
 import { Button } from '@nutui/nutui-react-taro';
+import { Star, Plus } from '@nutui/icons-react-taro'
 
 const App = () => {
   return (
     <>
-      <Button shape="square" plain type="primary" icon="star-fill" />
-      <Button shape="square" type="primary" icon="star">收藏</Button>
+      <Button
+        type="primary"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{ margin: 8 }}
+      >
+        操作按钮
+      </Button>
+      <Button
+        type="primary"
+        fill="outline"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{ margin: 8 }}
+      >
+        操作按钮
+      </Button>
+      <Button
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{
+          margin: 8,
+          backgroundColor: `var(--nutui-color-primary-light)`,
+          borderColor: `var(--nutui-color-primary)`,
+          color: `var(--nutui-color-primary)`,
+        }}
+      >
+        操作按钮
+      </Button>
+      <Button
+        shape="square"
+        fill="outline"
+        type="primary"
+        icon={<Plus width="20" />}
+        style={{ margin: 8 }}
+      />
       <Button
         shape="round"
         type="primary"
         size="large"
-        icon="star"
-        iconSize={20}
+        icon={<Star width={20} height={20} />}
+        rightIcon={<Star width={20} height={20} />}
+        style={{ margin: 8 }}
       >
-        收藏
+        操作按钮
       </Button>
     </>
   );

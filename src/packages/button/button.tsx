@@ -25,6 +25,7 @@ export interface ButtonProps extends BasicComponent {
   loading: boolean
   disabled: boolean
   icon: React.ReactNode
+  rightIcon: React.ReactNode
   id: string
   nativeType: 'submit' | 'reset' | 'button'
   onClick: (e: MouseEvent<HTMLButtonElement>) => void
@@ -43,6 +44,7 @@ const defaultProps = {
   disabled: false,
   block: false,
   icon: null,
+  rightIcon: null,
   nativeType: 'button',
   onClick: (e: MouseEvent<HTMLButtonElement>) => {},
 } as ButtonProps
@@ -58,6 +60,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       size,
       block,
       icon,
+      rightIcon,
       children,
       className,
       style,
@@ -102,6 +105,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
           props.type ? `${prefixCls}--${type}` : null,
           props.fill ? '' : `${prefixCls}--${type}`,
           props.fill ? `${prefixCls}--${fill}` : null,
+          children ? '' : `${prefixCls}--icononly`,
           {
             [`${prefixCls}--${size}`]: size,
             [`${prefixCls}--${shape}`]: shape,
@@ -117,10 +121,15 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
           {loading ? <Loading className="nut-icon-loading" /> : null}
           {!loading && icon ? icon : null}
           {children && (
-            <div className={icon || loading ? 'nut-button-text' : ''}>
+            <div
+              className={`${icon || loading ? 'nut-button-text' : ''}  ${
+                rightIcon ? 'nut-button-text right' : ''
+              }`}
+            >
               {children}
             </div>
           )}
+          {rightIcon || null}
         </div>
       </button>
     )

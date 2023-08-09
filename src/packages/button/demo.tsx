@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Star, StarFill } from '@nutui/icons-react'
+import { Star, Plus } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Button } from './button'
 import Cell from '../cell'
@@ -51,7 +51,7 @@ const ButtonDemo = () => {
       d04fcbda: '加载中',
       '0aaad622': '图标按钮',
       '0aaad620': '按钮尺寸',
-      '60a53514': '收藏',
+      '60a53514': '操作按钮',
       b8a453e3: '大号按钮',
       '248be9e1': '普通按钮',
       ea3d02f2: '小型按钮',
@@ -77,7 +77,7 @@ const ButtonDemo = () => {
       d04fcbda: '載入中',
       '0aaad622': '图标按钮',
       '0aaad620': '按鈕尺寸',
-      '60a53514': '收藏',
+      '60a53514': '操作按鈕',
       b8a453e3: '大號按鈕',
       '248be9e1': '普通按鈕',
       ea3d02f2: '小型按鈕',
@@ -103,7 +103,7 @@ const ButtonDemo = () => {
       d04fcbda: 'Loading',
       '0aaad622': 'Icon Button',
       '0aaad620': 'Button size',
-      '60a53514': 'Favorite',
+      '60a53514': 'Operation Button',
       b8a453e3: 'Large button',
       '248be9e1': 'Normal Button',
       ea3d02f2: 'Mini Button',
@@ -155,6 +155,62 @@ const ButtonDemo = () => {
           </Button>
           <Button fill="none" style={{ margin: 8 }}>
             None
+          </Button>
+        </Cell>
+        <h2>{translated['0aaad622']}</h2>
+
+        <Cell className="button-cell">
+          <Button
+            type="primary"
+            icon={<Star />}
+            rightIcon={<Star />}
+            style={{ margin: 8 }}
+          >
+            {translated['60a53514']}
+          </Button>
+          <Button
+            type="primary"
+            fill="outline"
+            icon={<Star />}
+            rightIcon={<Star />}
+            style={{ margin: 8 }}
+          >
+            {translated['60a53514']}
+          </Button>
+          <Button
+            icon={<Star />}
+            rightIcon={<Star />}
+            style={{
+              margin: 8,
+              backgroundColor: `var(--nutui-color-primary-light)`,
+              borderColor: `var(--nutui-color-primary)`,
+              color: `var(--nutui-color-primary)`,
+            }}
+          >
+            {translated['60a53514']}
+          </Button>
+          <Button
+            shape="square"
+            fill="outline"
+            type="primary"
+            icon={<Plus width="20" />}
+            style={{ margin: 8 }}
+          />
+          <Button
+            fill="outline"
+            type="primary"
+            icon={<Plus width="20" />}
+            style={{ margin: 8 }}
+          />
+          <Button
+            shape="round"
+            type="primary"
+            size="large"
+            icon={<Star width={20} height={20} />}
+            rightIcon={<Star width={20} height={20} />}
+            style={{ margin: 8 }}
+          >
+            {translated['60a53514']}
           </Button>
         </Cell>
         <h2>{translated['7db1a8b2']}</h2>
@@ -209,34 +265,6 @@ const ButtonDemo = () => {
           </Button>
         </Cell>
 
-        <h2>{translated['0aaad622']}</h2>
-
-        <Cell className="button-cell">
-          <Button
-            shape="square"
-            fill="outline"
-            type="primary"
-            icon={<StarFill />}
-            style={{ margin: 8 }}
-          />
-          <Button
-            shape="square"
-            type="primary"
-            icon={<Star />}
-            style={{ margin: 8 }}
-          >
-            {translated['60a53514']}
-          </Button>
-          <Button
-            shape="round"
-            type="primary"
-            size="large"
-            icon={<Star width={20} height={20} />}
-            style={{ margin: 8 }}
-          >
-            {translated['60a53514']}
-          </Button>
-        </Cell>
         <h2>{translated['0aaad620']}</h2>
         <Cell className="button-cell">
           <Button size="large" type="primary">
