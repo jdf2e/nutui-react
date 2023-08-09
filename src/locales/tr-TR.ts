@@ -134,6 +134,11 @@ const trTR: BaseLang = {
     refreshingText: 'Yükleniyor...',
     completeText: 'Yenileme başarılı',
   },
+  tour: {
+    prevStepText: 'Sonraki adım',
+    completeText: 'Sona ermek',
+    nextStepText: 'Sonraki adım',
+  },
   watermark: {
     errorCanvasTips: 'Geçerli ortam Canvası desteklemiyor',
   },

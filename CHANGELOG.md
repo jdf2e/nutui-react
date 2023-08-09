@@ -1,3 +1,12 @@
+# v2.0.10
+`2023-08-04`
+
+* :sparkles: feat: loading 组件 (#1204) @mike8625
+* :sparkles: feat: 日历支持footer的children定义，增加日历+datepicker的demo (#1277) @xiaoyatong
+* :bug: fix: elevator 计算索引出现 -1，导致组件运行报错 (#1276) @oasis-cloud
+* :bug: fix: loading 组件导出 props 类型 (#1278) @oasis-cloud
+
+
 # v2.0.9
 `2023-08-02`
 

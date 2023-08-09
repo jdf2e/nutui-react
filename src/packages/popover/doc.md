@@ -503,6 +503,7 @@ export default App
 | visible | 是否展示气泡弹出层 | `boolean` | `false` |
 | location | 弹出位置，里面具体的参数值可以参考上面的位置自定义例子 | `string` | `bottom` |
 | offset | 出现位置的偏移量 | `string[]` \| `number[]` | `[0, 12]` |
+| arrowOffset | 小箭头的偏移量 | `number` | `0` |
 | showArrow | 是否显示小箭头 | `boolean` | `true` |
 | closeOnActionClick | 是否在点击选项后关闭 | `boolean` | `true` |
 | closeOnOutsideClick | 是否在点击外部元素后关闭菜单 | `boolean` | `true` |
