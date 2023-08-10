@@ -6,6 +6,7 @@ import React, {
   useContext,
 } from 'react'
 import type { MouseEvent } from 'react'
+import Taro, { getEnv } from '@tarojs/taro'
 import classNames from 'classnames'
 import { My } from '@nutui/icons-react-taro'
 import Image from '@/packages/image/index.taro'
@@ -105,13 +106,26 @@ export const Avatar: FunctionComponent<
     }
   }, [])
 
+  const isAvatarInClassList = (element: any) => {
+    if (getEnv() === Taro.ENV_TYPE.WEB) {
+      return (
+        element.classList[0] === 'nut-avatar' ||
+        element.classList.values().next().value === 'nut-avatar'
+      )
+    }
+
+    return (
+      element.classList?.tokenList[0] === 'nut-avatar' ||
+      element.classList?.tokenList.values().next().value === 'nut-avatar'
+    )
+  }
+
   const avatarLength = (children: any) => {
     for (let i = 0; i < children.length; i++) {
       if (
         children[i] &&
         children[i].classList &&
-        (children[i].classList[0] === 'nut-avatar' ||
-          children[i].classList.values().next().value === 'nut-avatar')
+        isAvatarInClassList(children[i])
       ) {
         children[i].setAttribute('data-index', i + 1)
       }
