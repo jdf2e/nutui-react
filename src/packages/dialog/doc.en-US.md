@@ -187,7 +187,6 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-dialog-content-margin | dialog content margin | `20px 0` |
 | \--nutui-dialog-content-max-height | dialog content max height | `268px` |
 | \--nutui-dialog-content-line-height | dialog content line height | `16px` |
-| \--nutui-dialog-overlay-z-index | dialog overlay z-index | `$mask-z-index` |
 | \--nutui-dialog-overlay-background-color | dialog overlay background color | `$mask-color` |
 | \--nutui-dialog-outer-z-index | dialog outer z index | `$mask-content-z-index` |
 | \--nutui-dialog-outer-border-radius | dialog outer border radius | `20px` |

@@ -67,7 +67,6 @@ export const Overlay: FunctionComponent<
   const classes = classNames(className, classPrefix)
 
   const styles = {
-    zIndex,
     ...style,
   }
 
