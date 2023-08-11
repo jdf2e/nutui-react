@@ -1,3 +1,11 @@
+# v2.0.12
+`2023-08-11`
+
+* :bug: fix(Avatar): 解决在小程序环境下，使用Avatar.Group无法正常展示头像问题 (#1296) @Tralafalgar Wang
+* :bug: fix: overlay 的 zIndex 属性改为 css 变量 (#1294) @oasis-cloud
+* :bug: fix: 修复 form 设置 labelPosition=top 的样式 (#1300) @oasis-cloud
+
+
 # v2.0.11
 `2023-08-09`
 
