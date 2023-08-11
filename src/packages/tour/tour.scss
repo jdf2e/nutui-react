@@ -4,6 +4,7 @@
     box-shadow: 0px 0px 0px 150vh rgba(0, 0, 0, 0.5);
     border-radius: $tour-mask-border-radius;
     z-index: 999;
+
     &-none {
       box-shadow: none;
     }
@@ -39,21 +40,24 @@
       margin-top: $tour-content-bottom-margin-top;
       display: flex;
       justify-content: space-between;
+
       &-operate {
         display: flex;
         justify-content: flex-end;
+
         &-btn {
           display: inline-block;
-          border: 1px solid $disable-color;
+          border: 1px solid $color-text-disable;
           margin-left: $tour-content-bottom-btn-margin-left;
           padding: $tour-content-bottom-btn-padding;
           font-size: $tour-content-bottom-btn-font-size;
           border-radius: $tour-content-bottom-btn-border-radius;
-          color: $text-color;
+          color: $color-text;
+
           &.active {
             color: #fff;
             border: 0;
-            background: $primary-color;
+            background: $color-primary;
           }
         }
       }
