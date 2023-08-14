@@ -22,7 +22,7 @@ import { Skeleton } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Skeleton width="250px" height="15px" animated />
+    <Skeleton  animated />
   )
 }
 export default App;
@@ -40,7 +40,7 @@ import { Skeleton } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Skeleton width="250px" height="15px" rows={3} title animated />
+    <Skeleton  rows={3} title animated />
   )
 }
 export default App;
@@ -58,7 +58,7 @@ import { Skeleton } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Skeleton width="250px" height="15px" rows={3} title animated avatar avatarSize="100px" />
+    <Skeleton  rows={3} title animated avatar avatarSize="100px" />
   )
 }
 export default App;
@@ -108,7 +108,7 @@ const App = () => {
   return (
     <div className="content">
       <Switch size="15px" change={(value, event) => changeStatus(value, event)} />
-      <Skeleton width="250px" height="15px" title animated avatar rows={3} visible={checked}>
+      <Skeleton  title animated avatar rows={3} visible={checked}>
         <div className="container">
           <Avatar
             size="50"
