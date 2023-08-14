@@ -1,5 +1,6 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { Events, getCurrentInstance } from '@tarojs/taro'
+import { useForceUpdate } from '@/utils/use-force-update'
 
 export const customEvents = new Events()
 
@@ -23,4 +24,15 @@ export function useCustomEvent(selector: string, cb: any) {
     customEvents.off(path)
   }
   return [trigger, off]
+}
+
+export function useParams<T = any>(args: T) {
+  const forceUpdate = useForceUpdate()
+  const pRef = useRef(args)
+  const setParams = (args: T) => {
+    pRef.current = { ...pRef.current, ...args }
+    forceUpdate()
+  }
+  const params = pRef.current
+  return { params, setParams }
 }
