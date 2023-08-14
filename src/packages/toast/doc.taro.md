@@ -153,26 +153,26 @@ import  React, {useState} from "react";
 import { Toast, Cell } from '@nutui/nutui-react-taro';
 
 const App = () => {
-    const [showNotify, SetShowNotify] = useState(false)
-    const [states, SetStates] = useState({
-        message: '',
-        type: 'danger',
-    })
-    const changeNotify = (message: string, type?: string) => {
-        const change = Object.assign(states, {message,type})
-        SetStates(change)
-    }
-    return (
-        <>
-            <Toast id="test" />
-            <Cell
-                title="函数调用"
-                onClick={(event: React.MouseEvent) => {
-                  Toast.show('test', { title: '函数调用' })
-                }}
-            />
-        </>
-    )
+  const [showNotify, SetShowNotify] = useState(false)
+  const [states, SetStates] = useState({
+    message: '',
+    type: 'danger',
+  })
+  const changeNotify = (message: string, type?: string) => {
+    const change = Object.assign(states, {message,type})
+    SetStates(change)
+  }
+  return (
+    <>
+      <Toast id="test" />
+      <Cell
+        title="函数调用"
+        onClick={(event: React.MouseEvent) => {
+          Toast.show('test', { title: '函数调用' })
+        }}
+      />
+    </>
+  )
 }
 export default App
 ```
