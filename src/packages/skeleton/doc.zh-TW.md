@@ -142,6 +142,8 @@ export default App;
 | avatarShape | 頭像形狀：正方形/圓形 | `string` | `round` |
 | avatarSize | 頭像大小 | `string` | `50px` |
 | rows | 設置段落行數 | `string` | `1` |
+| rowWidth | 段落占位圖寬度，可傳數組來設置每一行的寬度          | `number \| string \|  (number \| string)[]` | `100%` |
+| rowHeight | 段落占位圖高度，可傳數組來設置每一行的高度         | `number \| string \|  (number \| string)[]` | `15px` |
 | title | 是否顯示段落標題 | `boolean` | `true` |
 
 ## 主題定制
@@ -153,6 +155,5 @@ export default App;
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-skeleton-background | 背景 | `rgb(239, 239, 239)` |
-| \--nutui-skeleton-line-width | 線條寬度 | `100%` |
 | \--nutui-skeleton-line-height | 線條高度 | `15px` |
 | \--nutui-skeleton-line-border-radius | 線條邊框圓角 | `0` |

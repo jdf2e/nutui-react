@@ -134,15 +134,17 @@ export default App;
 
 ### Props
 
-| Property | Description | Type | Default |
-| --- | --- | --- | --- |
-| visible | Whether to display skeleton screen | `boolean` | `false` |
+| Property | Description                                  | Type | Default |
+| --- |----------------------------------------------| --- | --- |
+| visible | Whether to display skeleton screen           | `boolean` | `false` |
 | animated | Whether to turn on skeleton screen animation | `boolean` | `false` |
-| avatar | Show avatar | `boolean` | `false` |
-| avatarShape | Avatar shape: square / round | `string` | `round` |
-| avatarSize | Avatar size | `string` | `50px` |
-| rows | Set the number of paragraph lines | `number` | `1` |
-| title | Show paragraph titles | `boolean` | `false` |
+| avatar | Show avatar                                  | `boolean` | `false` |
+| avatarShape | Avatar shape: square / round                 | `string` | `round` |
+| avatarSize | Avatar size                                  | `string` | `50px` |
+| rows | Set the number of paragraph lines            | `number` | `1` |
+| rowWidth | Row width, can be array                      | `number \| string \|  (number \| string)[]` | `100%` |
+| rowHeight | Row height, can be array                     | `number \| string \|  (number \| string)[]` | `15px` |
+| title | Show paragraph titles                        | `boolean` | `false` |
 
 ## Theming
 
@@ -153,6 +155,5 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-skeleton-background | background | `rgb(239, 239, 239)` |
-| \--nutui-skeleton-line-width | line width | `100%` |
 | \--nutui-skeleton-line-height | line height | `15px` |
 | \--nutui-skeleton-line-border-radius | line borderRadius | `0` |

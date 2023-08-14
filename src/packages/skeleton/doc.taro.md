@@ -142,6 +142,8 @@ export default App;
 | avatarShape | 头像形状：正方形/圆形 | `string` | `round` |
 | avatarSize | 头像大小 | `string` | `50px` |
 | rows | 设置段落行数 | `string` | `1` |
+| rowWidth | 段落占位图宽度，可传数组来设置每一行的宽度          | `number \| string \|  (number \| string)[]` | `100%` |
+| rowHeight | 段落占位图高度，可传数组来设置每一行的高度          | `number \| string \|  (number \| string)[]` | `15px` |
 | title | 是否显示段落标题 | `boolean` | `true` |
 
 ## 主题定制
@@ -153,6 +155,5 @@ export default App;
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-skeleton-background | 背景 | `rgb(239, 239, 239)` |
-| \--nutui-skeleton-line-width | 线条宽度 | `100%` |
 | \--nutui-skeleton-line-height | 线条高度 | `15px` |
 | \--nutui-skeleton-line-border-radius | 线条边框圆角 | `0` |

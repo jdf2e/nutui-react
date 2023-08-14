@@ -68,7 +68,7 @@ const SkeletonDemo = () => {
       <div className="demo">
         <h2>{translated['84aa6bce']}</h2>
         <Cell className="ske-cell-single">
-          <Skeleton animated />
+          <Skeleton animated rows={2} />
           <Skeleton />
         </Cell>
 
