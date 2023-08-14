@@ -97,6 +97,9 @@ importers:
       '@tarojs/plugin-platform-weapp':
         specifier: 3.6.8
         version: 3.6.8(@types/react@18.0.37)(react@18.2.0)
+      '@tarojs/react':
+        specifier: 3.6.8
+        version: 3.6.8(react@18.2.0)
       '@tarojs/taro':
         specifier: 3.6.8
         version: 3.6.8(@types/react@18.0.37)
@@ -3944,7 +3947,6 @@ packages:
       react-reconciler: 0.27.0(react@18.2.0)
     transitivePeerDependencies:
       - react
-    dev: false
 
   /@tarojs/router@3.6.8(@types/react@18.0.37):
     resolution: {integrity: sha512-ilZuLS4vBmTz9weLSgS1/HswaFFIuvwuDSDYedr8xbCiG+ZDvc+dXck8Cpxxh0flHdAKkmvX8omMnsrfCS35tQ==}
@@ -15783,7 +15785,6 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.21.0
-    dev: false
 
   /react-refresh@0.11.0:
     resolution: {integrity: sha512-F27qZr8uUqwhWZboondsPx8tnC3Ct3SxZA3V5WyEvujRyyNv0VYPhoBg1gZ8/MV5tubQp76Trw8lTv9hzRBa+A==}
@@ -16528,7 +16529,6 @@ packages:
     resolution: {integrity: sha512-1r87x5fz9MXqswA2ERLo0EbOAU74DpIUO090gIasYTqlVoJeMcl+Z1Rg7WHz+qtPujhS/hGIt9kxZOYBV3faRQ==}
     dependencies:
       loose-envify: 1.4.0
-    dev: false
 
   /scheduler@0.23.0:
     resolution: {integrity: sha512-CtuThmgHNg7zIZWAXi3AsyIzA3n4xx7aNyjwC2VJldO2LMVDhFK+63xGqq6CsJH4rTAt6/M+N4GhZiDYPx9eUw==}
