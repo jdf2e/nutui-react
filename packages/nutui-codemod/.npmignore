@@ -1,0 +1,14 @@
+*.diff
+*.log
+*.patch
+*.bak
+.idea
+.DS_Store
+.github
+.vscode
+node_modules
+.eslint*
+.prettier*
+__testfixtures__
+__tests__
+test
