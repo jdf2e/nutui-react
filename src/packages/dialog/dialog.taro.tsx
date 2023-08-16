@@ -1,11 +1,13 @@
 import React, { forwardRef } from 'react'
 import type { MouseEvent } from 'react'
 import classNames from 'classnames'
+import { CSSTransition } from 'react-transition-group'
 import { View } from '@tarojs/components'
 import Button from '@/packages/button/index.taro'
 import { BasicDialogProps } from './config'
-import { DialogWrap } from './dialogwrap.taro'
+import { Content } from './content.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import Overlay from '@/packages/overlay/index.taro'
 
 export type DialogProps = BasicDialogProps
 const defaultProps = {
@@ -20,6 +22,7 @@ const defaultProps = {
   lockScroll: true,
   beforeCancel: () => true,
   beforeClose: () => true,
+  onOverlayClick: () => undefined,
 } as DialogProps
 
 export const BaseDialog = forwardRef(
@@ -35,13 +38,17 @@ export const BaseDialog = forwardRef(
     const {
       visible,
       footer,
+      title,
+      footerDirection,
       hideConfirmButton,
       hideCancelButton,
       lockScroll,
       disableConfirmButton,
       closeOnOverlayClick,
+      onOverlayClick,
       confirmText,
       cancelText,
+      overlay,
       onClose,
       onCancel,
       onConfirm,
@@ -99,20 +106,45 @@ export const BaseDialog = forwardRef(
         )
       )
     }
+    const onHandleClickOverlay = (e: any) => {
+      console.log('onClose?.()', closeOnOverlayClick)
+      if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
+        const closed = onOverlayClick && onOverlayClick()
+        closed && onClose?.()
+        closed && onCancel?.()
+      }
+    }
 
     return (
       <View
         style={{ display: visible ? 'block' : 'none' }}
         catchMove={lockScroll}
       >
-        <DialogWrap
-          {...props}
-          visible={visible}
-          lockScroll={lockScroll}
-          footer={renderFooter()}
-          onClose={onClose}
-          onCancel={onCancel}
-        />
+        <>
+          {overlay ? (
+            <Overlay
+              visible
+              closeOnOverlayClick={closeOnOverlayClick}
+              lockScroll={lockScroll}
+              onClick={onHandleClickOverlay}
+            />
+          ) : null}
+
+          <CSSTransition
+            in={visible}
+            timeout={300}
+            classNames="fadeDialog"
+            unmountOnExit
+            appear
+          >
+            <Content
+              title={title}
+              footer={renderFooter()}
+              footerDirection={footerDirection}
+              visible={visible}
+            />
+          </CSSTransition>
+        </>
       </View>
     )
   }
