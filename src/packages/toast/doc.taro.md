@@ -146,6 +146,37 @@ const App = () => {
 export default App
 ```
 
+
+### 函数调用
+```tsx
+import  React, {useState} from "react";
+import { Toast, Cell } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  const [showNotify, SetShowNotify] = useState(false)
+  const [states, SetStates] = useState({
+    message: '',
+    type: 'danger',
+  })
+  const changeNotify = (message: string, type?: string) => {
+    const change = Object.assign(states, {message,type})
+    SetStates(change)
+  }
+  return (
+    <>
+      <Toast id="test" />
+      <Cell
+        title="函数调用"
+        onClick={(event: React.MouseEvent) => {
+          Toast.show('test', { title: '函数调用' })
+        }}
+      />
+    </>
+  )
+}
+export default App
+```
+
 :::
 
 ## Toast
@@ -167,6 +198,14 @@ export default App
 | type | 弹框类型 可选值（text、success、fail、warn、loading） | `string` | `-` |
 | visible | 弹窗是否显示开关 | `boolean` | `false` |
 | onClose | 关闭时触发的事件 | `Function` | `null` |
+
+### ToastOptions
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| msg | 消息文本内容,支持传入HTML | `string \| VNode` | `-` |
+| duration | 展示时长（秒），值为 0 时，toast 不会自动消失（loading类型默认为0） | `number` | `2` |
+| title | 标题 | `string` | `-` |
+| type | 弹框类型 可选值（text、success、fail、warn、loading） | `string` | `-` |
 
 ## 主题定制
 
