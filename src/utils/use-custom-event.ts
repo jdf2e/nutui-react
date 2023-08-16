@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import isEqual from 'lodash.isequal'
 import { Events, getCurrentInstance } from '@tarojs/taro'
 import { useForceUpdate } from '@/utils/use-force-update'
 
@@ -28,11 +29,22 @@ export function useCustomEvent(selector: string, cb: any) {
 
 export function useParams<T = any>(args: T) {
   const forceUpdate = useForceUpdate()
-  const pRef = useRef(args)
+  const stateRef = useRef(args)
+
+  const currentRef = useRef<T>()
+  const previousRef = useRef<T>()
+
+  if (!isEqual(currentRef.current, args)) {
+    previousRef.current = currentRef.current
+    currentRef.current = args
+    stateRef.current = args
+  }
+
   const setParams = (args: T) => {
-    pRef.current = { ...pRef.current, ...args }
+    stateRef.current = { ...stateRef.current, ...args }
     forceUpdate()
   }
-  const params = pRef.current
+
+  const params = stateRef.current
   return { params, setParams }
 }

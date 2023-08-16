@@ -199,13 +199,14 @@ export default App
 | visible | 弹窗是否显示开关 | `boolean` | `false` |
 | onClose | 关闭时触发的事件 | `Function` | `null` |
 
-### ToastOptions
-| 属性 | 说明 | 类型 | 默认值 |
-| --- | --- | --- | --- |
-| msg | 消息文本内容,支持传入HTML | `string \| VNode` | `-` |
-| duration | 展示时长（秒），值为 0 时，toast 不会自动消失（loading类型默认为0） | `number` | `2` |
-| title | 标题 | `string` | `-` |
-| type | 弹框类型 可选值（text、success、fail、warn、loading） | `string` | `-` |
+### Methods
+| 方法名 | 说明 | 类型 |
+| --- | --- | --- |
+| Toast.show | 打开 Toast | (id: string, options: ToastOptions) => void |
+| Toast.hide | 关闭 Toast | (id: string) => void |
+
+ToastOptions 是 ToastProps 的子集，包含如下属性：msg, title, type, duration
+
 
 ## 主题定制
 

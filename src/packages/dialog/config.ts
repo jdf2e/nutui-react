@@ -26,6 +26,7 @@ export interface BasicDialogProps {
   onConfirm?: (e?: MouseEvent<HTMLButtonElement>) => Promise<() => void> | void
   onCancel?: () => void
   onClick?: () => void
+  onOverlayClick?: () => void
 }
 
 export type DialogReturnProps = {
