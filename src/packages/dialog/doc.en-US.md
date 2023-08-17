@@ -169,6 +169,35 @@ export default App;
 | onClick | Click yourself to call back | `() => void` | `-` |
 | onOverlayClick | Click Overlay | `() => void` | `-` |
 
+It should be noted that for the Dialog created by instructive, ** will not perceive the re-rendering of the parent component and the update of the state in it**, so the following writing is completely wrong:
+
+```tsx
+import React from 'react'
+import { Dialog, Input, Button } from '@nutui/nutui-react'
+
+export default function App() {
+  const [captcha, setCaptcha] = useState<string>("");
+  const showCaptcha = () => {
+    return Dialog.confirm({
+      content: (
+          <Input
+            placeholder="请输入验证码"
+            value={captcha} // App 中 captcha 的更新是不会传递到 Dialog 中的
+            onChange={(v) => {
+              setCaptcha(v)
+            }}
+          />
+      )
+    });
+  };
+  return (
+    <div>
+      <Button onClick={showCaptcha}>Show</Button>
+    </div>
+  );
+}
+```
+
 ## Theming
 
 ### CSS Variables
