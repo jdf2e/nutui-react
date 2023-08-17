@@ -175,6 +175,36 @@ export default App;
 | onClick | 點擊自身回調 | `() => void` | `-` |
 | onOverlayClick | 點擊蒙層触发 | `() => void` | `-` |
 
+
+对于**指令式**创建出来的 Dialog，**并不会感知父组件的重渲染和其中 state 的更新**，因此下面这种写法是错误的：
+
+```tsx
+import React from 'react'
+import { Dialog, Input, Button } from '@nutui/nutui-react'
+
+export default function App() {
+  const [captcha, setCaptcha] = useState<string>("");
+  const showCaptcha = () => {
+    return Dialog.confirm({
+      content: (
+          <Input
+            placeholder="请输入验证码"
+            value={captcha} // App 中 captcha 的更新是不会传递到 Dialog 中的
+            onChange={(v) => {
+              setCaptcha(v)
+            }}
+          />
+      )
+    });
+  };
+  return (
+    <div>
+      <Button onClick={showCaptcha}>Show</Button>
+    </div>
+  );
+}
+```
+
 ## 主題定制
 
 ### 樣式變量
