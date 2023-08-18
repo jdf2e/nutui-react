@@ -106,7 +106,7 @@ export default App;
 
 ```
 
-## API
+## Space
 
 ### Props
 
