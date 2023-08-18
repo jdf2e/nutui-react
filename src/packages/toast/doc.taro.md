@@ -146,6 +146,37 @@ const App = () => {
 export default App
 ```
 
+
+### 函数调用
+```tsx
+import  React, {useState} from "react";
+import { Toast, Cell } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  const [showNotify, SetShowNotify] = useState(false)
+  const [states, SetStates] = useState({
+    message: '',
+    type: 'danger',
+  })
+  const changeNotify = (message: string, type?: string) => {
+    const change = Object.assign(states, {message,type})
+    SetStates(change)
+  }
+  return (
+    <>
+      <Toast id="test" />
+      <Cell
+        title="函数调用"
+        onClick={(event: React.MouseEvent) => {
+          Toast.show('test', { title: '函数调用' })
+        }}
+      />
+    </>
+  )
+}
+export default App
+```
+
 :::
 
 ## Toast
@@ -167,6 +198,15 @@ export default App
 | type | 弹框类型 可选值（text、success、fail、warn、loading） | `string` | `-` |
 | visible | 弹窗是否显示开关 | `boolean` | `false` |
 | onClose | 关闭时触发的事件 | `Function` | `null` |
+
+### Methods
+| 方法名 | 说明 | 类型 |
+| --- | --- | --- |
+| Toast.show | 打开 Toast | (id: string, options: ToastOptions) => void |
+| Toast.hide | 关闭 Toast | (id: string) => void |
+
+ToastOptions 是 ToastProps 的子集，包含如下属性：msg, title, type, duration
+
 
 ## 主题定制
 

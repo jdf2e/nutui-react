@@ -33,6 +33,9 @@
         height: $skeleton-line-height;
         background: $skeleton-background;
       }
+      .nut-skeleton__block:last-child {
+        width: 70%;
+      }
     }
   }
 

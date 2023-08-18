@@ -14,6 +14,41 @@ import { Dialog } from '@nutui/nutui-react-taro'
 
 ## 代码演示
 
+### 函数调用
+:::demo
+
+```tsx
+import React, {useState} from "react";
+import { Cell,Dialog } from '@nutui/nutui-react-taro';
+
+const App = () => {
+
+  return (
+    <>
+      <Dialog id="test" />
+      <Cell
+        title="函数调用"
+        onClick={() =>
+          Dialog.open('test', {
+            title: 'ok?',
+            onConfirm: () => {
+              Dialog.close('test')
+            },
+            onCancel: () => {
+              Dialog.close('test')
+            },
+          })
+        }
+      />
+    </>
+  )
+}
+export default App;
+```
+
+:::
+
+
 ### 组件调用
 
 :::demo
@@ -147,6 +182,14 @@ export default App;
 | onClose | 关闭回调，任何情况关闭弹窗都会触发 | `() => void` | `-` |
 | onClick | 点击自身回调 | `() => void` | `-` |
 | onOverlayClick | 点击蒙层触发 | `() => void` | `-` |
+
+### Methods
+| 方法名 | 说明 | 类型 |
+| --- | --- | --- |
+| Dialog.open | 打开 Dialog | (id: string, options: DialogOptions) => void |
+| Dialog.close | 关闭 Dialog | (id: string) => void |
+
+DialogOptions 是 DialogProps 的子集，包含如下属性：title, content, footer, confirmText, cancelText, overlay, closeOnOverlayClick, hideConfirmButton, hideCancelButton, disableConfirmButton, footerDirection, lockScroll, beforeCancel, beforeClose, onOverlayClick,
 
 ## 主题定制
 
