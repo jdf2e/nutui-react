@@ -48,6 +48,8 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
       visible,
       footer,
       title,
+      content,
+      children,
       footerDirection,
       hideConfirmButton,
       hideCancelButton,
@@ -162,7 +164,9 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
             footer={renderFooter()}
             footerDirection={footerDirection}
             visible={visible}
-          />
+          >
+            {content || children}
+          </Content>
         </CSSTransition>
       </>
     </View>
