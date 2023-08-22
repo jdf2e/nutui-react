@@ -8,6 +8,7 @@ import React, {
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { isBrowser } from '@/utils/is-browser'
 
 export interface FileType {
   jpg: string
@@ -57,7 +58,7 @@ const InternalSignature: ForwardRefRenderFunction<
     const elem = document.createElement('canvas')
     return !!(elem.getContext && elem.getContext('2d'))
   }
-  const isSupportTouch = 'ontouchstart' in window
+  const isSupportTouch = isBrowser ? 'ontouchstart' in window : false
   const events = isSupportTouch
     ? ['touchstart', 'touchmove', 'touchend', 'touchleave']
     : ['mousedown', 'mousemove', 'mouseup', 'mouseleave']
