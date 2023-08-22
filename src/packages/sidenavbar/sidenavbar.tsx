@@ -13,7 +13,7 @@ export interface SideNavBarProps
   width?: string
   indent?: number
   position?: 'left' | 'right'
-  onClose: () => void
+  onClose?: () => void
 }
 
 const defaultProps = {
