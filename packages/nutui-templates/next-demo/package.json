@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@nutui/icons-react": "^0.0.1",
     "@nutui/nutui-react": "^2.0.13",
     "@types/node": "20.5.0",
     "@types/react": "18.2.20",
