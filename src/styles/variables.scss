@@ -1826,19 +1826,18 @@ $table-tr-odd-bg-color: var(--nutui-table-tr-odd-bg-color, $white) !default;
 $navbar-width: var(--nutui-navbar-width, 100%) !default;
 $navbar-height: var(--nutui-navbar-height, 44px) !default;
 $navbar-margin-bottom: var(--nutui-navbar-margin-bottom, 20px) !default;
-$navbar-padding: var(--nutui-navbar-padding, 13px 16px) !default;
 $navbar-background: var(--nutui-navbar-background, $color-background) !default;
-$navbar-box-shadow: var(
-  --nutui-navbar-box-shadow,
-  0px 1px 7px 0px rgba(237, 238, 241, 1)
-) !default;
-$navbar-color: var(--nutui-navbar-color, $color-text) !default;
+$navbar-box-shadow: var(--nutui-navbar-box-shadow, 0px) !default;
+$navbar-color: var(--nutui-navbar-color, $color-title) !default;
 $navbar-font-size: var(--nutui-navbar-font-size, $font-size) !default;
 $navbar-title-font-size: var(
   --nutui-navbar-title-font-size,
-  $font-size
+  $font-size-xl
 ) !default;
-$navbar-title-font-weight: var(--nutui-navbar-title-font-weight, 0) !default;
+$navbar-title-font-weight: var(
+  --nutui-navbar-title-font-weight,
+  $font-weight-bold
+) !default;
 $navbar-title-font-color: var(
   --nutui-navbar-title-font-color,
   $color-title

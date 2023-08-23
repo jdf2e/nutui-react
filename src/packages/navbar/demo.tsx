@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Share, MoreX, Cart2, Left, Close } from '@nutui/icons-react'
+import { Share, MoreX, Cart2, RectLeft, Close } from '@nutui/icons-react'
 import { NavBar } from './navbar'
 import './demo.scss'
 import { Tabs } from '../tabs/tabs'
@@ -59,14 +59,14 @@ const NavBarDemo = () => {
         <NavBar
           back={
             <>
-              <Left name="left" color="#979797" />
+              <RectLeft name="left" width={24} color="#979797" />
               {translated.a74a1fd4}
             </>
           }
-          left={<Close width={12} />}
+          left={<Close width={24} />}
           right={
             <span className="flex-center" onClick={(e) => Toast.show('icon')}>
-              <Share />
+              <Share width={24} />
             </span>
           }
           onBackClick={(e) => Toast.show(translated.a74a1fd4)}
@@ -82,7 +82,7 @@ const NavBarDemo = () => {
               {translated.cfbdc781}
             </span>
           }
-          back={<Left name="left" color="#979797" />}
+          back={<RectLeft name="left" width={24} color="#979797" />}
           onBackClick={(e) => Toast.show(translated.a74a1fd4)}
         >
           <span onClick={(e) => Toast.show(translated.b840c88f)}>
@@ -90,7 +90,7 @@ const NavBarDemo = () => {
           </span>
         </NavBar>
         <NavBar
-          back={<Left name="left" color="#979797" />}
+          back={<RectLeft name="left" width={24} color="#979797" />}
           right={
             <>
               <span
@@ -99,7 +99,7 @@ const NavBarDemo = () => {
               >
                 {translated['8dab2f66']}
               </span>
-              <MoreX onClick={(e) => Toast.show('icon')} />
+              <MoreX width={24} onClick={(e) => Toast.show('icon')} />
             </>
           }
           onBackClick={(e) => Toast.show(translated.a74a1fd4)}
@@ -117,7 +117,7 @@ const NavBarDemo = () => {
         </NavBar>
 
         <NavBar
-          back={<Left name="left" color="#979797" />}
+          back={<RectLeft name="left" color="#979797" />}
           right={
             <>
               <span
