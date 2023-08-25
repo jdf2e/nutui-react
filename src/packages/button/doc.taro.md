@@ -47,7 +47,6 @@ const App = () => {
   return (
     <>
     <Button type="primary">主要按钮</Button>
-    <Button type="info">信息按钮</Button>
     <Button type="default">默认按钮</Button>
     <Button type="danger">危险按钮</Button>
     <Button type="warning">警告按钮</Button>
@@ -74,88 +73,6 @@ const App = () => {
       <Button fill="solid">Solid</Button>
       <Button fill="outline">Outline</Button>
       <Button fill="none">None</Button>
-    </>
-  );
-};
-export default App;
-```
-
-:::
-
-### 禁用状态
-
-通过 `disabled` 属性来禁用按钮，禁用状态下按钮不可点击。
-
-:::demo
-
-```tsx
-import  React from "react";
-import { Button } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <Button disabled type="primary">禁用状态</Button>
-      <Button fill="outline" disabled type="info">禁用状态</Button>
-      <Button fill="outline" disabled type="primary">禁用状态</Button>
-    </>
-  );
-};
-export default App;
-```
-
-:::
-
-### 按钮形状
-
-通过 `shape` 属性设置按钮形状，支持圆形、方形按钮，默认为圆形。
-
-:::demo
-
-```tsx
-import  React from "react";
-import { Button } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <Button shape="square" type="primary">方形按钮</Button>
-      <Button type="info">圆形按钮</Button>
-    </>
-  );
-};
-export default App;
-```
-
-:::
-
-### 加载状态
-
-:::demo
-
-```tsx
-import  React ,{useState} from "react";
-import { Button } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [loading,setLoading] = useState(false)
-  return (
-    <>
-      <Button loading type="info" />
-      <Button loading type="warning">加载中...</Button>
-      <Button
-            loading={loading}
-            type="success"
-            onClick={() => {
-              setTimeout(() => {
-                setLoading(false)
-              }, 1500);
-                setLoading(!loading)
-            }}
-            style={{ margin: 8 }}
-          >
-            Click me!
-      </Button>
     </>
   );
 };
@@ -206,6 +123,42 @@ const App = () => {
         操作按钮
       </Button>
       <Button
+        type="default"
+        fill="none"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{
+          margin: 8,
+          backgroundColor: `var(--nutui-gray-3)`,
+          color: `var(--nutui-gray-7)`,
+        }}
+      >
+        操作按钮
+      </Button>
+      <Button
+        type="default"
+        fill="none"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{
+          margin: 8,
+          backgroundColor: `var(--nutui-gray-1)`,
+          color: `var(--nutui-gray-7)`,
+        }}
+      >
+        操作按钮
+      </Button>
+      <Button
+        type="default"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{
+          margin: 8,
+        }}
+      >
+        操作按钮
+      </Button>
+      <Button
         shape="square"
         fill="outline"
         type="primary"
@@ -229,6 +182,174 @@ export default App;
 ```
 
 :::
+
+### 禁用状态
+
+通过 `disabled` 属性来禁用按钮，禁用状态下按钮不可点击。
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Button } from '@nutui/nutui-react-taro';
+import { Star, Plus } from '@nutui/icons-react-taro';
+
+const App = () => {
+  return (
+    <>
+      <Button
+        disabled
+        type="primary"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{ margin: 8 }}
+      >
+        操作按钮
+      </Button>
+      <Button
+        disabled
+        type="primary"
+        fill="outline"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{ margin: 8 }}
+      >
+        操作按钮
+      </Button>
+      <Button
+        disabled
+        fill="solid"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{ margin: 8 }}
+      >
+        操作按钮
+      </Button>
+      <Button
+        disabled
+        type="default"
+        fill="none"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{
+          margin: 8,
+          backgroundColor: `var(--nutui-gray-3)`,
+          color: `var(--nutui-gray-5)`,
+        }}
+      >
+        操作按钮
+      </Button>
+      <Button
+        disabled
+        type="default"
+        fill="none"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{
+          margin: 8,
+          backgroundColor: `var(--nutui-gray-1)`,
+          color: `var(--nutui-gray-5)`,
+        }}
+      >
+        操作按钮
+      </Button>
+      <Button
+        disabled
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{
+          margin: 8,
+        }}
+      >
+        操作按钮
+      </Button>
+      <Button
+        shape="square"
+        fill="outline"
+        type="primary"
+        icon={<Plus width="20" />}
+        style={{ margin: 8 }}
+      />
+      <Button
+        disabled
+        type="primary"
+        icon={<Plus width="20" />}
+        style={{ margin: 8 }}
+      />
+      <Button
+        shape="round"
+        type="primary"
+        size="large"
+        icon={<Star width={20} height={20} />}
+        rightIcon={<Star width={20} height={20} />}
+        style={{ margin: 8 }}
+      >
+        操作按钮
+      </Button>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### 按钮形状
+
+通过 `shape` 属性设置按钮形状，支持圆形、方形按钮，默认为圆形。
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Button } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  return (
+    <>
+      <Button shape="square" type="primary">方形按钮</Button>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### 加载状态
+
+:::demo
+
+```tsx
+import  React ,{useState} from "react";
+import { Button } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  const [loading, setLoading] = useState(false)
+  return (
+    <>
+      <Button loading type="warning">加载中...</Button>
+      <Button
+        loading={loading}
+        type="success"
+        onClick={() => {
+          setTimeout(() => {
+            setLoading(false)
+          }, 1500);
+            setLoading(!loading)
+        }}
+        style={{ margin: 8 }}
+      >
+        Click me!
+      </Button>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
 
 ### 按钮尺寸
 
@@ -309,7 +430,7 @@ export default App;
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| type | 按钮的样式 | `default` \| `primary` \| `info` \| `warning` \| `danger` \| `success` | `default` |
+| type | 按钮的样式 | `default` \| `primary` \| `warning` \| `danger` \| `success` | `default` |
 | size | 按钮的尺寸 | `normal` \| `large` \| `small` | `normal` |
 | shape | 按钮的形状 | `square` \| `round` | `round` |
 | color | 按钮颜色，支持传入 linear-gradient 渐变色 | `string` | `-` |
@@ -339,6 +460,7 @@ export default App;
 | \--nutui-button-default-color | type 为 default 的按钮的文本色 | `$color-title` |
 | \--nutui-button-default-background-color | type 为 default 的按钮的背景色 | `$white` |
 | \--nutui-button-default-border-color | type 为 default 的按钮的边框色 | `$color-text` |
+| \--nutui-button-default-disable | type 为 default 的按钮的禁用色 | `$color-text-disable` |
 | \--nutui-button-default-padding | type 为 default 的按钮的内边距 | `0 18px` |
 | \--nutui-button-default-font-size | type 为 default 的按钮的字号 | `$font-size` |
 | \--nutui-button-default-font-weight | type 为 default 的按钮的字重 | `$font-weight-bold` |
@@ -352,16 +474,4 @@ export default App;
 | \--nutui-button-mini-height | size 为 mini 的按钮的高度 | `24px` |
 | \--nutui-button-mini-font-size | size 为 mini 的按钮的字号 | `$font-size-small` |
 | \--nutui-button-mini-font-weight | type 为 mini 的按钮的字重 | `$font-weight` |
-| \--nutui-button-primary-color | type 为 primary 按钮的文本颜色 | `$white` |
-| \--nutui-button-primary-border-color | type 为 primary 按钮的边框颜色 | `$color-primary` |
-| \--nutui-button-info-color | type 为 info 按钮的文本颜色 | `$white` |
-| \--nutui-button-info-border-color | type 为 info 按钮的边框颜色 | `#496af2` |
-| \--nutui-button-success-color | type 为 success 按钮的文本颜色 | `$white` |
-| \--nutui-button-success-border-color | type 为 success 按钮的边框颜色 | `rgba(38, 191, 38, 1)` |
-| \--nutui-button-danger-color | type 为 danger 按钮的文本颜色 | `$white` |
-| \--nutui-button-danger-border-color | type 为 danger 按钮的边框颜色 | `rgba(250, 44, 25, 1)` |
-| \--nutui-button-danger-background-color | type 为 danger 按钮的背景颜色 | `rgba(250, 44, 25, 1)` |
-| \--nutui-button-warning-color | type 为 warning 按钮的文本颜色 | `$white` |
-| \--nutui-button-warning-border-color | type 为 warning 按钮的边框颜色 | `rgba(255, 158, 13, 1)` |
 | \--nutui-button-text-icon-margin | 带 icon按钮的文本的左边距 | `4px` |
-| \--nutui-button-disabled-opacity | disabled 状态下按钮的透明度 | `0.68` |

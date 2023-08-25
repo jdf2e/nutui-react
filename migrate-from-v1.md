@@ -140,7 +140,9 @@ plugins: [
 #### Button
 - 移除 `plain`，通过 `fill="outline"` 实现
 - 增加 `ref`，对外暴露组件内 `button` 元素
-
+- 移除 `type` 中的 `info` 属性
+- CSS 变量中，对 `type` 类型对应的色值的定义，不在暴露到文档中，建议使用默认值，或修改主题变量
+ 
 #### Cell
 - `subTitle` 重命名为 `description`，类型修改为 `React.Node`
 - `desc` 重命名为 `extra`，类型修改为 `React.Node`

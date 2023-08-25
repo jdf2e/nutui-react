@@ -339,4 +339,3 @@ export default App;
 | \--nutui-button-warning-color | type 為 warning 按鈕的文本顏色 | `$white` |
 | \--nutui-button-warning-border-color | type 為 warning 按鈕的邊框顏色 | `rgba(255, 158, 13, 1)` |
 | \--nutui-button-text-icon-margin | 帶 icon按鈕的文本的左邊距 | `4px` |
-| \--nutui-button-disabled-opacity | disabled 狀態下按鈕的透明度 | `0.68` |

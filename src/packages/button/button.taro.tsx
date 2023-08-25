@@ -14,7 +14,6 @@ type OmitMiniProgramButtonProps = Omit<
 export type ButtonType =
   | 'default'
   | 'primary'
-  | 'info'
   | 'success'
   | 'warning'
   | 'danger'
@@ -34,6 +33,7 @@ export interface ButtonProps
   loading: boolean
   disabled: boolean
   icon: React.ReactNode
+  rightIcon: React.ReactNode
   onClick: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
@@ -45,11 +45,12 @@ const defaultProps = {
   type: 'default',
   size: 'normal',
   shape: 'round',
-  fill: 'solid',
+  fill: 'outline',
   loading: false,
   disabled: false,
   block: false,
   icon: null,
+  rightIcon: null,
   onClick: (e: MouseEvent<HTMLButtonElement>) => {},
 } as ButtonProps
 export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
@@ -64,10 +65,11 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       size,
       block,
       icon,
+      rightIcon,
       children,
-      onClick,
       className,
       style,
+      onClick,
       ...rest
     } = {
       ...defaultProps,
@@ -76,7 +78,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
     const getStyle = useCallback(() => {
       const style: CSSProperties = {}
       if (props.color) {
-        if (fill && fill === 'outline') {
+        if (props.fill && props.fill === 'outline') {
           style.color = color
           style.background = '#fff'
           if (!color?.includes('gradient')) {
@@ -109,8 +111,9 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         className={classNames(
           prefixCls,
           className,
-          props.type ? `${prefixCls}--${type}` : null,
+          `${prefixCls}--${type}`,
           props.fill ? `${prefixCls}--${fill}` : null,
+          children ? '' : `${prefixCls}--icononly`,
           {
             [`${prefixCls}--${size}`]: size,
             [`${prefixCls}--${shape}`]: shape,
@@ -122,14 +125,18 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         style={{ ...getStyle(), ...style }}
         onClick={(e) => handleClick(e)}
       >
-        <div className="nut-button__warp">
+        <div className="nut-button-warp">
           {loading && <Loading className="nut-icon-loading" />}
           {!loading && icon ? icon : null}
           {children && (
-            <div className={icon || loading ? 'nut-button-text' : ''}>
+            <div
+              className={`${icon || loading ? 'nut-button-text' : ''} 
+               ${rightIcon ? 'nut-button-text right' : ''}`}
+            >
               {children}
             </div>
           )}
+          {rightIcon || null}
         </div>
       </button>
     )
