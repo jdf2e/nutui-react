@@ -790,6 +790,7 @@ $calendar-day-active-border-radius: var(
 
 //overlay（✅）
 $overlay-bg-color: var(--nutui-overlay-bg-color, $color-mask) !default;
+$overlay-zIndex: var(--nutui-overlay-zIndex, 1000) !default;
 $overlay-content-bg-color: var(
   --nutui-overlay-content-bg-color,
   $color-background-overlay
@@ -1055,9 +1056,9 @@ $dialog-content-text-align: var(
   --nutui-dialog-content-text-align,
   center
 ) !default;
-$dialog-overlay-z-index: var(
-  --nutui-dialog-overlay-z-index,
-  $mask-z-index
+$dialog-overlay-background-color: var(
+  --nutui-dialog-overlay-background-color,
+  $mask-color
 ) !default;
 $dialog-outer-z-index: var(
   --nutui-dialog-outer-z-index,

@@ -111,7 +111,7 @@ export const Popup: FunctionComponent<
 
   const overlayStyles = {
     ...overlayStyle,
-    ...baseStyle,
+    '--nutui-overlay-zIndex': index,
   }
 
   const popStyles = {
@@ -257,7 +257,6 @@ export const Popup: FunctionComponent<
               className={overlayClassName}
               visible={innerVisible}
               closeOnOverlayClick={closeOnOverlayClick}
-              zIndex={zIndex}
               lockScroll={lockScroll}
               duration={duration}
               onClick={onHandleClickOverlay}

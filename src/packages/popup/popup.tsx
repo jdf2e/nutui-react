@@ -108,7 +108,7 @@ export const Popup: FunctionComponent<
 
   const overlayStyles = {
     ...overlayStyle,
-    ...baseStyle,
+    '--nutui-overlay-zIndex': index,
   }
 
   const popStyles = {

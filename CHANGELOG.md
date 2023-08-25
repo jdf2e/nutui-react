@@ -1,3 +1,47 @@
+# v2.0.14
+`2023-08-18`
+
+* :bug: fix: skeleton row 设置为 1 时, 宽度只能固定为70% (#1306) @ivan-My
+* :bug: fix: loading 构建产物增加类型注释 (#1320) @oasis-cloud
+* :bug: fix: space 构建产物增加类型注释 (#1321) @oasis-cloud
+* 📖 docs: dialog 指令式用法注意事项 (#1318) @oasis-cloud
+
+
+
+# v2.0.13
+`2023-08-16`
+
+* :sparkles: feat: dialog 支持函数调用 (#1315) @oasis-cloud
+* :sparkles: feat: toast 支持函数调用 (#1307) @oasis-cloud
+* :sparkles: feat: 提取 Taro 的 Demo 到 workspace (#1302) @oasis-cloud
+* :bug: fix: icons 版本更新 (#1310) @oasis-cloud
+* :bug: fix: 非 undefined 的 falsely 值无法传递给子组件 (#1312) @qnnp
+* 📖 docs: 删除了skeleton文档中无用的props(width,height) (#1303) @ivan-My
+
+
+# v2.0.12
+`2023-08-11`
+
+* :bug: fix(Avatar): 解决在小程序环境下，使用Avatar.Group无法正常展示头像问题 (#1296) @Tralafalgar Wang
+* :bug: fix: overlay 的 zIndex 属性改为 css 变量 (#1294) @oasis-cloud
+* :bug: fix: 修复 form 设置 labelPosition=top 的样式 (#1300) @oasis-cloud
+
+
+# v2.0.11
+`2023-08-09`
+
+* :sparkles: feat: 新增 tour 引导组件 (#1279) @junjun666
+* :bug: fix: h5下多选上传时 uid 重复的问题 (#1269) @Liuqh233
+* :bug: fix: input 组件点击清除图标无法清空内容 (#1292) @oasis-cloud
+* :bug: fix: numberkeyboard 设置标题后，完成按钮应该触发 onConfirm 事件 (#1285) @oasis-cloud
+* :bug: fix: uploader h5/taro 增加校验 (#1297) @junjun666
+* :bug: fix: uploader taro-h5 上传状态样式错乱 (#1293) @junjun666
+* 📖 docs: divider 组件的 styles 属性示例改为 style (#1290) @oasis-cloud
+* 📖 docs: numberkeyboard 的 type 属性类型更新 (#1284) @oasis-cloud
+* 📖 docs: step 组件的 description 属性示例改为节点的实现方式 (#1289) @oasis-cloud
+* 📖 docs: 调整 image tao 文档中引入包名 (#1295) @oasis-cloud
+
+
 # v2.0.10
 `2023-08-04`
 

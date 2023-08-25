@@ -104,7 +104,7 @@ const OverlayDemo = () => {
           <Overlay
             visible={visible}
             onClick={onClose}
-            zIndex={2020}
+            style={{ '--nutui-overlay-zIndex': 2020 }}
             afterShow={() => {
               console.log('afterShow')
             }}
@@ -122,9 +122,9 @@ const OverlayDemo = () => {
           <Overlay
             visible={visible2}
             onClick={onClose2}
-            zIndex={2000}
             style={{
               backgroundColor: 'rgba(0, 0, 0, .2)',
+              '--nutui-overlay-zIndex': 2000,
             }}
           />
         </Cell>
