@@ -128,14 +128,12 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
     )
   }
   const onHandleClickOverlay = (e: any) => {
-    console.log('onClose?.()', closeOnOverlayClick)
     if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
       const closed = onOverlayClick && onOverlayClick()
       closed && onClose?.()
       closed && onCancel?.()
     }
   }
-  console.log('props', props, visible)
 
   return (
     <View
