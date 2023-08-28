@@ -139,19 +139,19 @@ const BadgeDemo = () => {
           <Cell>
             <Badge
               style={{ marginRight: '40px' }}
-              value={<Checklist color="#fff" size={12} />}
+              value={<Checklist color="#fff" />}
             >
               <Avatar icon={<My />} shape="square" />
             </Badge>
             <Badge
               style={{ marginRight: '40px' }}
-              value={<LinkIcon color="#fff" size={12} />}
+              value={<LinkIcon color="#fff" />}
             >
               <Avatar icon={<My />} shape="square" />
             </Badge>
             <Badge
               style={{ marginRight: '40px' }}
-              value={<Download color="#fff" size={12} />}
+              value={<Download color="#fff" />}
             >
               <Avatar icon={<My />} shape="square" />
             </Badge>

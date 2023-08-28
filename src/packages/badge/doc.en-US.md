@@ -130,15 +130,15 @@ const App = () => {
   return (
     <Cell>
       <Badge
-        value={<Checklist color="#fff" width={12} height={12} />}
+        value={<Checklist color="#fff"  />}
         className="test"
       >
         <Avatar icon={<My />} shape="square" />
       </Badge>
-      <Badge value={<LinkIcon color="#fff" width={12} height={12} />}>
+      <Badge value={<LinkIcon color="#fff"  />}>
         <Avatar icon={<My />} shape="square" />
       </Badge>
-      <Badge value={<Download color="#fff" width={12} height={12} />}>
+      <Badge value={<Download color="#fff"  />}>
         <Avatar icon={<My />} shape="square" />
       </Badge>
     </Cell>
@@ -262,6 +262,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
+| \--nutui-badge-height | badge height | `14px` |
 | \--nutui-badge-background-color | badge background color | `linear-gradient(135deg, $color-primary 0%, $color-primary-stop-2 100%))` |
 | \--nutui-badge-color | badge content color | `#fff` |
 | \--nutui-badge-font-size | badge content font size | `$font-size-small` |
@@ -269,6 +270,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-badge-border-radius | badge border-radius | `14px` |
 | \--nutui-badge-padding | badge padding value | `0 5px` |
 | \--nutui-badge-icon-padding | when badge is icon,badge padding | `2px` |
-| \--nutui-badge-content-transform | badge content transform | `translateY(-50%) translateX(100%)` |
 | \--nutui-badge-z-index | when badge is icon, badge z-index | `1` |
 | \--nutui-badge-dot-width | when badge is dot, the dot width,height and border radius | `7px` |

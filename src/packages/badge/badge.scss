@@ -3,8 +3,12 @@
   display: inline-block;
 
   &__icon {
-    display: flex;
     position: absolute;
+    height: $badge-height;
+    width: $badge-height;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: $badge-background-color;
     top: -20%;
     right: -20%;
@@ -13,19 +17,34 @@
     border: $badge-border;
     border-radius: $badge-border-radius;
     z-index: $badge-z-index;
+
+    .nut-icon {
+      width: 10px;
+      height: 10px;
+      font-size: 10px;
+    }
   }
 
   &__sup {
+    height: $badge-height;
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background: $badge-background-color;
     color: $badge-color;
     padding: $badge-padding;
     font-size: $badge-font-size;
     font-weight: normal;
     text-align: center;
-    line-height: 16px;
     border: $badge-border;
     border-radius: $badge-border-radius;
+  }
+
+  &__one {
+    height: $badge-height;
+    width: $badge-height;
+    padding: 0;
   }
 
   &__content {
