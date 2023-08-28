@@ -1,4 +1,4 @@
 import { useEffect, useLayoutEffect } from 'react'
-import { isBrowser } from '@/utils/is-browser'
+import { canUseDom } from '@/utils/can-use-dom'
 
-export const useIsomorphicLayoutEffect = isBrowser ? useLayoutEffect : useEffect
+export const useIsomorphicLayoutEffect = canUseDom ? useLayoutEffect : useEffect
