@@ -65,7 +65,14 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    padding: 0 16px;
+    padding: 0 14px;
+
+    .nut-icon,
+    .nutui-iconfont {
+      width: 20px;
+      height: 20px;
+      font-size: 20px;
+    }
   }
 
   &__left {

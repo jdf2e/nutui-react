@@ -59,21 +59,18 @@ const NavBarDemo = () => {
         <NavBar
           back={
             <>
-              <RectLeft name="left" width={24} color="#979797" />
+              <RectLeft name="left" color="#979797" />
               {translated.a74a1fd4}
             </>
           }
-          left={<Close width={24} />}
           right={
             <span className="flex-center" onClick={(e) => Toast.show('icon')}>
-              <Share width={24} />
+              <Share />
             </span>
           }
           onBackClick={(e) => Toast.show(translated.a74a1fd4)}
         >
-          <span onClick={(e) => Toast.show(translated.b840c88f)}>
-            {translated.c38a08ef}
-          </span>
+          {translated.c38a08ef}
         </NavBar>
 
         <NavBar
@@ -82,15 +79,19 @@ const NavBarDemo = () => {
               {translated.cfbdc781}
             </span>
           }
-          back={<RectLeft name="left" width={24} color="#979797" />}
+          left={<Close />}
+          back={<RectLeft name="left" color="#979797" />}
           onBackClick={(e) => Toast.show(translated.a74a1fd4)}
         >
-          <span onClick={(e) => Toast.show(translated.b840c88f)}>
-            {translated.e51e4582}
-          </span>
+          <div className="title">
+            <span onClick={(e) => Toast.show(translated.b840c88f)}>
+              {translated.e51e4582}
+            </span>
+            <span className="desc">{translated.e51e4582}</span>
+          </div>
         </NavBar>
         <NavBar
-          back={<RectLeft name="left" width={24} color="#979797" />}
+          back={<RectLeft name="left" color="#979797" />}
           right={
             <>
               <span
@@ -99,7 +100,7 @@ const NavBarDemo = () => {
               >
                 {translated['8dab2f66']}
               </span>
-              <MoreX width={24} onClick={(e) => Toast.show('icon')} />
+              <MoreX onClick={(e) => Toast.show('icon')} />
             </>
           }
           onBackClick={(e) => Toast.show(translated.a74a1fd4)}

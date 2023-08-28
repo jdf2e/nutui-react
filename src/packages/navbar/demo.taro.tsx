@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { Share, MoreX, Cart2, Left, Close } from '@nutui/icons-react-taro'
+import { Share, MoreX, Cart2, RectLeft, Close } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { NavBar, Tabs, TabPane } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
@@ -59,17 +59,16 @@ const NavBarDemo = () => {
         <NavBar
           back={
             <>
-              <Left name="left" color="#979797" />
+              <RectLeft name="left" color="#979797" />
               {translated.a74a1fd4}
             </>
           }
-          left={<Close size={12} />}
           right={
             <span
               className="flex-center"
               onClick={(e) => Taro.showToast({ title: 'icon' })}
             >
-              <Share />
+              <Share size={20} />
             </span>
           }
           onBackClick={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
@@ -87,15 +86,21 @@ const NavBarDemo = () => {
               {translated.cfbdc781}
             </span>
           }
-          back={<Left name="left" color="#979797" />}
+          left={<Close size={14} />}
+          back={<RectLeft name="left" color="#979797" />}
           onBackClick={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
         >
-          <span onClick={(e) => Taro.showToast({ title: translated.b840c88f })}>
-            {translated.e51e4582}
-          </span>
+          <div className="title">
+            <span
+              onClick={(e) => Taro.showToast({ title: translated.cfbdc781 })}
+            >
+              {translated.e51e4582}
+            </span>
+            <span className="desc">{translated.e51e4582}</span>
+          </div>
         </NavBar>
         <NavBar
-          back={<Left name="left" color="#979797" />}
+          back={<RectLeft name="left" color="#979797" />}
           right={
             <>
               <span
@@ -106,7 +111,10 @@ const NavBarDemo = () => {
               >
                 {translated['8dab2f66']}
               </span>
-              <MoreX onClick={(e) => Taro.showToast({ title: 'icon' })} />
+              <MoreX
+                size={20}
+                onClick={(e) => Taro.showToast({ title: 'icon' })}
+              />
             </>
           }
           onBackClick={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
@@ -119,12 +127,12 @@ const NavBarDemo = () => {
             className="flex-center"
             onClick={(e) => Taro.showToast({ title: 'icon' })}
           >
-            <Cart2 />
+            <Cart2 size={20} />
           </i>
         </NavBar>
 
         <NavBar
-          back={<Left name="left" color="#979797" />}
+          back={<RectLeft size={20} name="left" color="#979797" />}
           right={
             <>
               <span
@@ -135,7 +143,10 @@ const NavBarDemo = () => {
               >
                 {translated['8dab2f66']}
               </span>
-              <MoreX onClick={(e) => Taro.showToast({ title: 'icon' })} />
+              <MoreX
+                size={20}
+                onClick={(e) => Taro.showToast({ title: 'icon' })}
+              />
             </>
           }
           onBackClick={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
