@@ -114,7 +114,7 @@ export const CheckboxGroup = React.forwardRef(
       >
         <div
           className={classNames(classPrefix, className, {
-            [`nut-checkboxgroup--${props.direction}`]: props.direction,
+            [`nut-checkboxgroup-${props.direction}`]: props.direction,
           })}
           {...rest}
         >

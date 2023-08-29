@@ -3,11 +3,11 @@
 exports[`should match snapshot 1`] = `
 <DocumentFragment>
   <div
-    class="nut-checkbox nut-checkbox--reverse"
+    class="nut-checkbox nut-checkbox-reverse"
   >
     <svg
       aria-labelledby="Checked"
-      class="nut-checkbox__icon nut-icon nut-icon-Checked"
+      class="nut-checkbox-icon-checked nut-icon nut-icon-Checked"
       role="presentation"
       viewBox="0 0 1024 1024"
       xmlns="http://www.w3.org/2000/svg"
@@ -19,7 +19,7 @@ exports[`should match snapshot 1`] = `
       />
     </svg>
     <span
-      class="nut-checkbox__label "
+      class="nut-checkbox-label "
     >
       复选框
     </span>

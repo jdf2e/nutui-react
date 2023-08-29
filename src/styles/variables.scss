@@ -1,38 +1,43 @@
 // ----------------------------------------------------
 // 主色调
-$color-primary: var(--nutui-color-primary) !default;
-$color-primary-stop-1: var(--nutui-color-primary-stop-1) !default;
-$color-primary-stop-2: var(--nutui-color-primary-stop-2) !default;
-$color-primary-press: var(--nutui-color-primary-press) !default;
-$color-primary-disable: var(--nutui-color-primary-disable) !default;
-$color-primary-light: var(--nutui-color-primary-light) !default;
-$color-primary-light-press: var(--nutui-color-primary-light-press) !default;
+$color-primary: var(--nutui-color-primary, #fa2c19) !default;
+$color-primary-stop-1: var(--nutui-color-primary-stop-1, #f53d4d) !default;
+$color-primary-stop-2: var(--nutui-color-primary-stop-2, #fa2c19) !default;
+$color-primary-press: var(--nutui-color-primary-press, #cf1f0f) !default;
+$color-primary-disable: var(--nutui-color-primary-disable, #fd9d94) !default;
+$color-primary-light: var(--nutui-color-primary-light, #ffeae8) !default;
+$color-primary-light-press: var(
+  --nutui-color-primary-light-press,
+  #fec3be
+) !default;
 
 // 页面基底色，用于卡片式页面的兜底，永远置于页面最底层。
-$color-background: var(--nutui-gray-3) !default;
+$color-background: var(--nutui-gray-3, #f6f6f6) !default;
 // 卡片背景色
-$color-background-overlay: var(--nutui-gray-1) !default;
+$color-background-overlay: var(--nutui-gray-1, #ffffff) !default;
 // 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
-$color-background-sunken: var(--nutui-gray-2) !default;
+$color-background-sunken: var(--nutui-gray-2, #f8f8f8) !default;
 
 // 标题重要字
 // 主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
-$color-title: var(--nutui-gray-7) !default;
+$color-title: var(--nutui-gray-7, #1a1a1a) !default;
 // 常规: 次要文字色，用于次级标题、属性标示、非主要信息引导等。
-$color-text: var(--nutui-gray-6) !default;
+$color-text: var(--nutui-gray-6, #595959) !default;
 // 辅助色，暂无用到。todo
-$color-text-help: var(--nutui-gray-5) !default;
+$color-text-help: var(--nutui-gray-5, #8c8c8c) !default;
 // 特殊禁用色
-$color-text-disable: var(--nutui-color-text-disable) !default;
+$color-text-disable: var(--nutui-color-text-disable, #bfbfbf) !default;
 
 // 蒙层颜色
 // 页面全局蒙层
-$color-mask: var(--nutui-black-10) !default;
+$color-mask: var(--nutui-black-10, rgba(0, 0, 0, 0.7)) !default;
 // 容错蒙层
-$color-mask-part: var(--nutui-black-2) !default;
+$color-mask-part: var(--nutui-black-2, rgba(0, 0, 0, 0.02)) !default;
 // 分割信息的颜色
-$color-border: var(--nutui-black-3) !default;
-$color-border-disable: var(--nutui-gray-4) !default;
+$color-border: var(--nutui-black-3, rgba(0, 0, 0, 0.06)) !default;
+$color-border-disable: var(--nutui-gray-4, #bfbfbf) !default;
+
+$spacing-icon-text: var(--nutui-spacing-2, 4px) !default;
 
 // ---- Font Family ----
 $font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun,
@@ -55,12 +60,12 @@ $line-height-base: var(--nutui-line-height-base, 1.5) !default;
 
 // todo
 // 与品牌色一起使用，默认为白色，不区分暗黑与明亮模式。
-$color-primary-text: var(--nutui-color-primary-text) !default;
+$color-primary-text: var(--nutui-color-primary-text, #ffffff) !default;
 $color-info: var(--nutui-color-info) !default;
 // 链接色 todo
-$color-text-link: var(--nutui-color-text-link) !default;
+$color-text-link: var(--nutui-color-text-link, #396acc) !default;
 
-$white: var(--nutui-gray-1) !default;
+$white: var(--nutui-gray-1, #ffffff) !default;
 $black: $color-title !default;
 
 // todo
@@ -1079,21 +1084,19 @@ $dialog-footer-ok-max-width: var(
 ) !default;
 
 // checkbox（✅）
-$checkbox-label-color: var(--nutui-checkbox-label-color, $color-title) !default;
-$checkbox-label-disable-color: var(
-  --nutui-checkbox-label-disable-color,
-  #999
-) !default;
-$checkbox-icon-disable-color: var(
-  --nutui-checkbox-icon-disable-color,
-  #d6d6d6
-) !default;
 $checkbox-label-margin-left: var(
   --nutui-checkbox-label-margin-left,
-  10px
+  $spacing-icon-text
 ) !default;
-$checkbox-label-font-size: var(--nutui-checkbox-label-font-size, 14px) !default;
-$checkbox-icon-font-size: var(--nutui-checkbox-icon-font-size, 18px) !default;
+$checkbox-label-color: var(--nutui-checkbox-label-color, $color-title) !default;
+$checkbox-label-font-size: var(
+  --nutui-checkbox-label-font-size,
+  $font-size-small
+) !default;
+$checkbox-icon-font-size: var(
+  --nutui-checkbox-icon-font-size,
+  $font-size-large
+) !default;
 $checkbox-icon-disable-color2: var(
   --nutui-checkbox-icon-disable-color2,
   $color-text-help
