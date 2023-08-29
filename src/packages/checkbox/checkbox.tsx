@@ -129,6 +129,9 @@ export const Checkbox: FunctionComponent<
       if (innerChecked && !innerIndeterminate) {
         return `${cls}${classPrefix}-icon-checked ${classPrefix}-icon-disabled`
       }
+      if (innerChecked && innerIndeterminate) {
+        return `${cls}${classPrefix}-icon-indeterminate ${classPrefix}-icon-disabled`
+      }
       return `${cls}${classPrefix}-icon-disabled`
     }
     if (innerChecked) {

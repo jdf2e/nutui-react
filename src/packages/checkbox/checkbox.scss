@@ -15,7 +15,7 @@
     transition-property: color, border-color, background-color;
 
     &.nut-checkbox-icon-disabled {
-      color: #fec3be;
+      color: $color-primary-light-press;
     }
   }
 
@@ -31,6 +31,10 @@
 
   &-icon-indeterminate {
     color: $color-primary;
+
+    &.nut-checkbox-icon-disabled {
+      color: $color-primary-light-press;
+    }
   }
 
   &-icon-disabled {
