@@ -16,8 +16,8 @@ const defaultProps = {
   value: '',
   dot: false,
   max: 99,
-  top: '0',
-  right: '5',
+  top: '4',
+  right: '8',
   color: '',
 } as BadgeProps
 export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
@@ -27,18 +27,36 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
   }
   const classPrefix = 'nut-badge'
   const classes = classNames(classPrefix, className)
-  const contentClasses = classNames(
-    { [`${classPrefix}__dot`]: dot },
-    `${classPrefix}__content`,
-    `${classPrefix}__sup`
-  )
+
   function content() {
     if (dot || typeof value === 'object') return null
     if (typeof value === 'number' && typeof max === 'number') {
-      return max < value ? `${max}+` : value
+      return max < value ? `${max}+` : `${value}`
     }
     return value
   }
+
+  function isIcon() {
+    if (typeof value === 'object' && value) return value
+  }
+
+  function isNumber() {
+    if (typeof value === 'number' && value) return value
+  }
+
+  function isString() {
+    if (typeof value === 'string' && value) return value
+  }
+
+  const contentClasses = classNames(
+    { [`${classPrefix}__dot`]: dot },
+    `${classPrefix}__content`,
+    { [`${classPrefix}__sup`]: isNumber() || isString() || dot },
+    {
+      [`${classPrefix}__one`]:
+        typeof content() === 'string' && `${content()}`?.length === 1,
+    }
+  )
   const getStyle = () => {
     const style: CSSProperties = {}
     style.top = `${Number(top) || parseFloat(top) || 0}px`
@@ -48,10 +66,8 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
   }
   return (
     <div className={classes} style={style}>
-      {typeof value === 'object' && value && (
-        <div className={`${classPrefix}__icon`}>{value}</div>
-      )}
-      <div>{children}</div>
+      {isIcon() && <div className={`${classPrefix}__icon`}>{value}</div>}
+      {children}
       <div className={contentClasses} style={getStyle()}>
         {content()}
       </div>

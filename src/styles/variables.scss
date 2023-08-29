@@ -92,7 +92,11 @@ $button-default-background-color: var(
 ) !default;
 $button-default-border-color: var(
   --nutui-button-default-border-color,
-  $color-text-help
+  $color-text
+) !default;
+$button-default-disable: var(
+  --nutui-button-default-disable,
+  $color-text-disable
 ) !default;
 $button-default-padding: var(--nutui-button-default-padding, 0px 19px) !default;
 $button-default-font-size: var(
@@ -145,19 +149,9 @@ $button-primary-background-color: linear-gradient(
   $color-primary-stop-1 0%,
   $color-primary-stop-2 100%
 ) !default;
-
-$button-info-color: var(
-  --nutui-button-info-color,
-  $color-primary-text
-) !default;
-$button-info-border-color: var(
-  --nutui-button-info-border-color,
-  #496af2
-) !default;
-$button-info-background-color: linear-gradient(
-  315deg,
-  rgba(73, 143, 242, 1) 0%,
-  rgba(73, 101, 242, 1) 100%
+$button-primary-disable: var(
+  --nutui-button-primary-disable,
+  $color-primary-disable
 ) !default;
 
 $button-success-color: var(
@@ -166,15 +160,13 @@ $button-success-color: var(
 ) !default;
 $button-success-border-color: var(
   --nutui-button-success-border-color,
-  rgba(38, 191, 38, 1)
+  #00bc14
 ) !default;
-$button-success-background-color: linear-gradient(
-  135deg,
-  rgba(38, 191, 38, 1) 0%,
-  rgba(39, 197, 48, 1) 45%,
-  rgba(40, 207, 63, 1) 83%,
-  rgba(41, 212, 70, 1) 100%
+$button-success-background-color: var(
+  --nutui-button-success-background-color,
+  #00bc14
 ) !default;
+$button-success-disable: var(--nutui-button-success-disable, #b2f0ae) !default;
 
 $button-danger-color: var(
   --nutui-button-danger-color,
@@ -182,11 +174,15 @@ $button-danger-color: var(
 ) !default;
 $button-danger-border-color: var(
   --nutui-button-danger-border-color,
-  rgba(250, 44, 25, 1)
+  $color-primary
 ) !default;
 $button-danger-background-color: var(
   --nutui-button-danger-background-color,
-  rgba(250, 44, 25, 1)
+  $color-primary
+) !default;
+$button-danger-disable: var(
+  --nutui-button-danger-disable,
+  $color-primary-disable
 ) !default;
 
 $button-warning-color: var(
@@ -197,13 +193,13 @@ $button-warning-border-color: var(
   --nutui-button-warning-border-color,
   rgba(255, 158, 13, 1)
 ) !default;
-$button-warning-background-color: linear-gradient(
-  135deg,
-  rgba(255, 158, 13, 1) 0%,
-  rgba(255, 167, 13, 1) 45%,
-  rgba(255, 182, 13, 1) 83%,
-  rgba(255, 190, 13, 1) 100%
+$button-warning-background-color: var(
+  --nutui-button-warning-background-color,
+  rgba(255, 158, 13, 1)
 ) !default;
+$button-warning-disable: var(--nutui-button-warning-disable, #fdd3b9) !default;
+
+$button-text-icon-margin: var(--nutui-button-text-icon-margin, 4px) !default;
 
 $button-text-icon-margin: var(--nutui-button-text-icon-margin, 4px) !default;
 $button-disabled-opacity: var(--nutui-button-disabled-opacity, 0.68) !default;
@@ -790,6 +786,7 @@ $calendar-day-active-border-radius: var(
 
 //overlay（✅）
 $overlay-bg-color: var(--nutui-overlay-bg-color, $color-mask) !default;
+$overlay-zIndex: var(--nutui-overlay-zIndex, 1000) !default;
 $overlay-content-bg-color: var(
   --nutui-overlay-content-bg-color,
   $color-background-overlay
@@ -1055,9 +1052,9 @@ $dialog-content-text-align: var(
   --nutui-dialog-content-text-align,
   center
 ) !default;
-$dialog-overlay-z-index: var(
-  --nutui-dialog-overlay-z-index,
-  $mask-z-index
+$dialog-overlay-background-color: var(
+  --nutui-dialog-overlay-background-color,
+  $color-mask
 ) !default;
 $dialog-outer-z-index: var(
   --nutui-dialog-outer-z-index,
@@ -1310,18 +1307,22 @@ $tag-warning-background-color: var(
 ) !default;
 
 //badge（✅）
+$badge-height: var(--nutui-badge-height, 14px) !default;
 $badge-background-color: var(
   --nutui-badge-background-color,
   linear-gradient(135deg, $color-primary-stop-1 0%, $color-primary-stop-2 100%)
 ) !default;
 $badge-color: var(--nutui-badge-color, #fff) !default;
-$badge-font-size: var(--nutui-badge-font-size, $font-size-small) !default;
+$badge-font-size: var(--nutui-badge-font-size, $font-size-xs) !default;
 $badge-border: var(
   --nutui-badge-border,
   0px solid $color-primary-text
 ) !default;
-$badge-border-radius: var(--nutui-badge-border-radius, 14px) !default;
-$badge-padding: var(--nutui-badge-padding, 0 5px) !default;
+$badge-border-radius: var(
+  --nutui-badge-border-radius,
+  calc($badge-height/2)
+) !default;
+$badge-padding: var(--nutui-badge-padding, 0 4px) !default;
 $badge-icon-padding: var(--nutui-badge-icon-padding, 3px) !default;
 $badge-content-transform: var(
   --nutui-badge-content-transform,
@@ -1826,19 +1827,18 @@ $table-tr-odd-bg-color: var(--nutui-table-tr-odd-bg-color, $white) !default;
 $navbar-width: var(--nutui-navbar-width, 100%) !default;
 $navbar-height: var(--nutui-navbar-height, 44px) !default;
 $navbar-margin-bottom: var(--nutui-navbar-margin-bottom, 20px) !default;
-$navbar-padding: var(--nutui-navbar-padding, 13px 16px) !default;
-$navbar-background: var(--nutui-navbar-background, $white) !default;
-$navbar-box-shadow: var(
-  --nutui-navbar-box-shadow,
-  0px 1px 7px 0px rgba(237, 238, 241, 1)
-) !default;
-$navbar-color: var(--nutui-navbar-color, $color-text) !default;
+$navbar-background: var(--nutui-navbar-background, $color-background) !default;
+$navbar-box-shadow: var(--nutui-navbar-box-shadow, 0px) !default;
+$navbar-color: var(--nutui-navbar-color, $color-title) !default;
 $navbar-font-size: var(--nutui-navbar-font-size, $font-size) !default;
 $navbar-title-font-size: var(
   --nutui-navbar-title-font-size,
-  $font-size
+  $font-size-xl
 ) !default;
-$navbar-title-font-weight: var(--nutui-navbar-title-font-weight, 0) !default;
+$navbar-title-font-weight: var(
+  --nutui-navbar-title-font-weight,
+  $font-weight-bold
+) !default;
 $navbar-title-font-color: var(
   --nutui-navbar-title-font-color,
   $color-title

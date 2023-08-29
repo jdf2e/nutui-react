@@ -14,7 +14,6 @@ type OmitMiniProgramButtonProps = Omit<
 export type ButtonType =
   | 'default'
   | 'primary'
-  | 'info'
   | 'success'
   | 'warning'
   | 'danger'
@@ -112,8 +111,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         className={classNames(
           prefixCls,
           className,
-          props.type ? `${prefixCls}--${type}` : null,
-          props.fill ? '' : `${prefixCls}--${type}`,
+          `${prefixCls}--${type}`,
           props.fill ? `${prefixCls}--${fill}` : null,
           children ? '' : `${prefixCls}--icononly`,
           {
@@ -132,9 +130,8 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
           {!loading && icon ? icon : null}
           {children && (
             <div
-              className={`${icon || loading ? 'nut-button-text' : ''}  ${
-                rightIcon ? 'nut-button-text right' : ''
-              }`}
+              className={`${icon || loading ? 'nut-button-text' : ''} 
+               ${rightIcon ? 'nut-button-text right' : ''}`}
             >
               {children}
             </div>

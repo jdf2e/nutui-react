@@ -94,7 +94,7 @@ export const FixedNav: FunctionComponent<
       {overlay && (
         <Overlay
           visible={visible}
-          zIndex={200}
+          style={{ '--nutui-overlay-zIndex': 200 }}
           onClick={() => onUpdateValue(false)}
         />
       )}

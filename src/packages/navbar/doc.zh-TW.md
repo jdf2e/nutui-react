@@ -178,7 +178,6 @@ export default App;
 | \--nutui-navbar-width | 頭部導航的寬度 | `100%` |
 | \--nutui-navbar-height | 頭部導航的高度 | `44px` |
 | \--nutui-navbar-margin-bottom | 頭部導航的下邊距 | `20px` |
-| \--nutui-navbar-padding | 頭部導航的內邊距 | `13px 16px` |
 | \--nutui-navbar-background | 頭部導航的背景顏色 | `$white` |
 | \--nutui-navbar-box-shadow | 頭部導航的陰影 | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
 | \--nutui-navbar-color | 頭部導航的字體顏色 | `$color-text` |

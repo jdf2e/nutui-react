@@ -36,7 +36,7 @@ const App = () => {
       <Overlay
         visible={visible}
         onClick={onClose}
-        zIndex={2020}
+        style={{'--nutui-overlay-zIndex': 2000,}}
         afterShow={() => {
           console.log('afterShow')
         }}
@@ -73,9 +73,9 @@ const App = () => {
       <Overlay
         visible={visible}
         onClick={onClose}
-        zIndex={2000}
         style={{
           backgroundColor: 'rgba(0, 0, 0, .2)',
+          '--nutui-overlay-zIndex': 2000,
         }}
       />
     </>
@@ -248,7 +248,6 @@ export default App;
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | visible | Whether the current component is displayed | `boolean` | `false` |
-| zIndex | Mask hierarchy | `number` | `2000` |
 | duration | Animation duration, in ms | `number` | `300` |
 | lockScroll | Whether the background is locked | `boolean` | `true` |
 | closeOnOverlayClick | Tap Mask off | `boolean` | `true` |

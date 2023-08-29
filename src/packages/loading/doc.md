@@ -213,12 +213,12 @@ export default App;
 
 :::
 
-## API
+## Loading
 
 ### Props
 
-| 参数         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | type         | loading图标的样式                    | circular \| spinner | `circular`          |
 | direction    | loading图标和文字的排列方式           | horizontal \| vertical | `horizontal`     |     
-| icon         | 自定义loading的图标                  | JSX.Element         |  `-`
+| icon         | 自定义loading的图标                  | JSX.Element         |  `-` |

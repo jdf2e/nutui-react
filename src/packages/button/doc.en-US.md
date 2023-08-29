@@ -14,7 +14,7 @@ import { Button } from '@nutui/nutui-react';
 
 ### The button type
 
-The button supports six types: 'default', 'primary', 'info', 'warning', 'danger', 'success', which defaults to ' default'.
+The button supports six types: 'default', 'primary', 'warning', 'danger', 'success', which defaults to ' default'.
 
 :::demo
 
@@ -26,7 +26,6 @@ const App = () => {
   return (
     <>
       <Button type="primary">primary</Button>
-      <Button type="info">info</Button>
       <Button type="default">default</Button>
       <Button type="danger">danger</Button>
       <Button type="warning">warning</Button>
@@ -75,7 +74,6 @@ const App = () => {
   return (
     <>
       <Button disabled type="primary">primary</Button>
-      <Button fill="outline" disabled type="info">info</Button>
       <Button fill="outline" disabled type="primary">primary</Button>
     </>
   );
@@ -99,7 +97,6 @@ const App = () => {
   return (
     <>
       <Button shape="square" type="primary">square</Button>
-      <Button type="info">circular</Button>
     </>
   );
 };
@@ -120,7 +117,6 @@ const App = () => {
   const [loading, setLoading] = useState(false)
   return (
     <>
-      <Button loading type="info" />
       <Button loading type="warning">Loading...</Button>
       <Button
         loading={loading}
@@ -288,7 +284,7 @@ export default App;
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| type | button style | `default` \| `primary` \| `info` \| `warning` \| `danger` \| `success` | `default` |
+| type | button style | `default` \| `primary` \| `warning` \| `danger` \| `success` | `default` |
 | size | button size | `normal` \| `large` \| `small` | `normal` |
 | shape | button shape | `square` \| `round` | `round` | 
 | color | button color | `string` | `-` |
@@ -314,6 +310,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-button-default-color | The text color of the button whose type is default |`$color-title` |
 | \--nutui-button-default-background-color | The background color of the button whose type is default | `$white` |
 | \--nutui-button-default-border-color | The border color of the button whose type is default | `$color-text` |
+| \--nutui-button-default-disable | The color of the button whose type is default and whose status is disable | `$color-text-disable` |
 | \--nutui-button-default-padding | padding of buttons with type default | `0 18px` |
 | \--nutui-button-default-font-size | The font size of the button whose type is default | `$font-size` |
 | \--nutui-button-default-font-weight |The font weight of the button whose type is default | `$font-weight-bold` |
@@ -327,16 +324,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-button-mini-height | The height of the button whose size is mini | `24px` |
 | \--nutui-button-mini-font-size | The font size of the button whose size is mini | `$font-size-small` |
 | \--nutui-button-mini-font-weight | The font weight of the button whose size is mini | `$font-weight` |
-| \--nutui-button-primary-color | type is the text color of the primary button | `$white` |
-| \--nutui-button-primary-border-color | Type is the border color of the primary button | `$color-primary` |
-| \--nutui-button-info-color | Type is info button text color | `$white` |
-| \--nutui-button-info-border-color | type is the border color of info button | `#496af2` |
-| \--nutui-button-success-color | Type is the text color of the success button | `$white` |
-| \--nutui-button-success-border-color | type is the border color of the success button | `rgba(38, 191, 38, 1)` |
-| \--nutui-button-danger-color | Type is the text color of danger button | `$white` |
-| \--nutui-button-danger-border-color | type is the border color of danger button | `rgba(250, 44, 25, 1)` |
-| \--nutui-button-danger-background-color | type is the background color of the danger button | `rgba(250, 44, 25, 1)` |
-| \--nutui-button-warning-color | Type is warning button text color | `$white` |
-| \--nutui-button-warning-border-color | type is warning button border color | `rgba(255, 158, 13, 1)` |
 | \--nutui-button-text-icon-margin | left margin of text with icon button | `4px` |
-| \--nutui-button-disabled-opacity | opacity of button in disabled state | `0.68` |

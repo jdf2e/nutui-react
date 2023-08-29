@@ -4,7 +4,6 @@ exports[`content test 1`] = `
 <div>
   <div
     class="nut-overlay"
-    style="z-index: 1000;"
   >
     <div
       class="wrapper"

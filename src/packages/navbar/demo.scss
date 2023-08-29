@@ -3,4 +3,15 @@
     display: inline-flex;
     align-items: center;
   }
+
+  .nut-navbar__title .title {
+    display: flex;
+    flex-direction: column;
+
+    .desc {
+      font-weight: 400;
+      font-size: 12px;
+      color: $color-text-help;
+    }
+  }
 }

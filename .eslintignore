@@ -15,3 +15,7 @@ iconfont.js
 **/nutui.react.ts
 **/nutui.taro.react.build.ts
 **/app.config.ts
+packages/nutui-taro-demo/**/*
+packages/nutui-codemod/test/*
+packages/nutui-codemod/transforms/__test__/*
+packages/nutui-codemod/transforms/__testfixtures__/**/*

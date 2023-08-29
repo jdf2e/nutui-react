@@ -5117,7 +5117,7 @@
     "第一列": "disable",
     "第二列": "禁用状态",
     "第三列": "`string`",
-    "第四列": "$disable-color"
+    "第四列": "$color-text-disable"
   },
   {
     "组件分类": "操作反馈",

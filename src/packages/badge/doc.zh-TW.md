@@ -130,15 +130,15 @@ const App = () => {
   return (
     <Cell>
       <Badge
-        value={<Checklist color="#fff" width={12} height={12} />}
+        value={<Checklist color="#fff"  />}
         className="test"
       >
         <Avatar icon={<My />} shape="square" />
       </Badge>
-      <Badge value={<LinkIcon color="#fff" width={12} height={12} />}>
+      <Badge value={<LinkIcon color="#fff"  />}>
         <Avatar icon={<My />} shape="square" />
       </Badge>
-      <Badge value={<Download color="#fff" width={12} height={12} />}>
+      <Badge value={<Download color="#fff"  />}>
         <Avatar icon={<My />} shape="square" />
       </Badge>
     </Cell>
@@ -262,13 +262,13 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
+| \--nutui-badge-height | badge 的高度 | `14px` |
 | \--nutui-badge-background-color | badge 背景色 | `linear-gradient(135deg, $color-primary 0%, $color-primary-stop-2 100%))` |
 | \--nutui-badge-color | badge 內容色值 | `#fff` |
 | \--nutui-badge-font-size | badge 內容字號 | `$font-size-small` |
 | \--nutui-badge-border | badge 邊框 | `0px solid $color-primary-text` |
-| \--nutui-badge-border-radius | badge 邊框圓角 | `14px` |
+| \--nutui-badge-border-radius | badge 邊框圓角 | `高度/2` |
 | \--nutui-badge-padding | badge 的padding值 | `0 5px` |
 | \--nutui-badge-icon-padding | badge 為自定義icon時 的 padding值 | `2px` |
-| \--nutui-badge-content-transform | badge 內容位置 | `translateY(-50%) translateX(100%)` |
 | \--nutui-badge-z-index | badge 自定義icon時的z-index | `1` |
 | \--nutui-badge-dot-width | badge 為圓點時的寬度、高度、圓角 | `7px` |

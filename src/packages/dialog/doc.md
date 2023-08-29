@@ -195,6 +195,35 @@ export default App;
 | onClick | 点击自身回调 | `() => void` | `-` |
 | onOverlayClick | 点击蒙层触发 | `() => void` | `-` |
 
+对于**指令式**创建出来的 Dialog，**并不会感知父组件的重渲染和其中 state 的更新**，因此下面这种写法是错误的：
+
+```tsx
+import React from 'react'
+import { Dialog, Input, Button } from '@nutui/nutui-react'
+
+export default function App() {
+  const [captcha, setCaptcha] = useState<string>("");
+  const showCaptcha = () => {
+    return Dialog.confirm({
+      content: (
+          <Input
+            placeholder="请输入验证码"
+            value={captcha} // App 中 captcha 的更新是不会传递到 Dialog 中的
+            onChange={(v) => {
+              setCaptcha(v)
+            }}
+          />
+      )
+    });
+  };
+  return (
+    <div>
+      <Button onClick={showCaptcha}>Show</Button>
+    </div>
+  );
+}
+```
+
 ## 主题定制
 
 ### 样式变量
@@ -213,7 +242,6 @@ export default App;
 | \--nutui-dialog-content-margin | 对话框内容 margin | `20px 0` |
 | \--nutui-dialog-content-max-height | 对话框内容最大高度 | `268px` |
 | \--nutui-dialog-content-line-height | 对话框内容行高 | `16px` |
-| \--nutui-dialog-overlay-z-index | 对话框蒙层的z-index值 | `$mask-z-index` |
 | \--nutui-dialog-outer-z-index | 对话框的z-index | `$mask-content-z-index` |
 | \--nutui-dialog-outer-border-radius | 对话框圆角 | `20px` |
 | \--nutui-dialog-vertical-footer-ok-margin-top | 对话框底部按钮纵向排布时的margin值 | `10px` |

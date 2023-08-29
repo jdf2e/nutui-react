@@ -14,6 +14,41 @@ import { Dialog } from '@nutui/nutui-react-taro'
 
 ## 代码演示
 
+### 函数调用
+:::demo
+
+```tsx
+import React, {useState} from "react";
+import { Cell,Dialog } from '@nutui/nutui-react-taro';
+
+const App = () => {
+
+  return (
+    <>
+      <Dialog id="test" />
+      <Cell
+        title="函数调用"
+        onClick={() =>
+          Dialog.open('test', {
+            title: 'ok?',
+            onConfirm: () => {
+              Dialog.close('test')
+            },
+            onCancel: () => {
+              Dialog.close('test')
+            },
+          })
+        }
+      />
+    </>
+  )
+}
+export default App;
+```
+
+:::
+
+
 ### 组件调用
 
 :::demo
@@ -148,6 +183,14 @@ export default App;
 | onClick | 点击自身回调 | `() => void` | `-` |
 | onOverlayClick | 点击蒙层触发 | `() => void` | `-` |
 
+### Methods
+| 方法名 | 说明 | 类型 |
+| --- | --- | --- |
+| Dialog.open | 打开 Dialog | (id: string, options: DialogOptions) => void |
+| Dialog.close | 关闭 Dialog | (id: string) => void |
+
+DialogOptions 是 DialogProps 的子集，包含如下属性：title, content, footer, confirmText, cancelText, overlay, closeOnOverlayClick, hideConfirmButton, hideCancelButton, disableConfirmButton, footerDirection, lockScroll, beforeCancel, beforeClose, onOverlayClick,
+
 ## 主题定制
 
 ### 样式变量
@@ -166,7 +209,6 @@ export default App;
 | \--nutui-dialog-content-margin | 对话框内容 margin | `20px 0` |
 | \--nutui-dialog-content-max-height | 对话框内容最大高度 | `268px` |
 | \--nutui-dialog-content-line-height | 对话框内容行高 | `16px` |
-| \--nutui-dialog-overlay-z-index | 对话框蒙层的z-index值 | `$mask-z-index` |
 | \--nutui-dialog-outer-z-index | 对话框的z-index | `$mask-content-z-index` |
 | \--nutui-dialog-outer-border-radius | 对话框圆角 | `20px` |
 | \--nutui-dialog-vertical-footer-ok-margin-top | 对话框底部按钮纵向排布时的margin值 | `10px` |

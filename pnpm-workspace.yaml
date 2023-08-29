@@ -1,2 +1,2 @@
 packages:
-  - 'src/sites/mobile-taro'
+  - 'packages/*'
