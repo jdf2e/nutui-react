@@ -30,7 +30,8 @@ const App = () => {
         title="函数调用"
         onClick={() =>
           Dialog.open('test', {
-            title: 'ok?',
+            title: '函数调用',
+            content: '可通过 Dialog.open 打开对话框',
             onConfirm: () => {
               Dialog.close('test')
             },

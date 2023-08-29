@@ -33,7 +33,7 @@ import { Space, Button } from '@nutui/nutui-react';
 export default App;
 
 ```
-
+:::
 ### Wrap
 
 :::demo
@@ -57,7 +57,7 @@ const App = () => {
 export default App;
 
 ```
-
+:::
 ### Direction
 
 :::demo
@@ -78,7 +78,7 @@ const App = () => {
 export default App;
 
 ```
-
+:::
 ### Gap
 
 :::demo
@@ -105,8 +105,8 @@ const App = () => {
 export default App;
 
 ```
-
-## API
+:::
+## Space
 
 ### Props
 

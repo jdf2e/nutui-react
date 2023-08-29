@@ -48,6 +48,8 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
       visible,
       footer,
       title,
+      content,
+      children,
       footerDirection,
       hideConfirmButton,
       hideCancelButton,
@@ -126,14 +128,12 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
     )
   }
   const onHandleClickOverlay = (e: any) => {
-    console.log('onClose?.()', closeOnOverlayClick)
     if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
       const closed = onOverlayClick && onOverlayClick()
       closed && onClose?.()
       closed && onCancel?.()
     }
   }
-  console.log('props', props, visible)
 
   return (
     <View
@@ -162,7 +162,9 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
             footer={renderFooter()}
             footerDirection={footerDirection}
             visible={visible}
-          />
+          >
+            {content || children}
+          </Content>
         </CSSTransition>
       </>
     </View>
