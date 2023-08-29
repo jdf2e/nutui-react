@@ -13,7 +13,6 @@ page {
   --nutui-brand-11: #1b3663; // 梯度11
   --nutui-brand-12: #162d54; // 梯度12
 
-  --nutui-brand-101: var(--nutui-brand-8); // 梯度101
   --nutui-brand-stop-1: var(--nutui-brand-7); // 渐变色起
   --nutui-brand-stop-2: var(--nutui-brand-7); // 渐变色止
 
@@ -95,4 +94,28 @@ page {
   --nutui-font-weight: 400;
   // 行高
   --nutui-line-height-base: 1.5;
+
+  // space
+  --nutui-spacing-1: 2px;
+  --nutui-spacing-2: 4px;
+  --nutui-spacing-3: 6px;
+  --nutui-spacing-4: 8px;
+  --nutui-spacing-5: 10px;
+  --nutui-spacing-6: 12px;
+  --nutui-spacing-7: 14px;
+  --nutui-spacing-8: 16px;
+  --nutui-spacing-9: 18px;
+  --nutui-spacing-10: 20px;
+
+  // radius
+  --nutui-radius-1: 0px;
+  --nutui-radius-2: 2px;
+  --nutui-radius-3: 4px;
+  --nutui-radius-4: 6px;
+  --nutui-radius-5: 8px;
+  --nutui-radius-6: 10px;
+  --nutui-radius-7: 12px;
+  --nutui-radius-8: 14px;
+  --nutui-radius-9: 16px;
+  --nutui-radius-10: 18px;
 }

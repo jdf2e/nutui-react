@@ -15,6 +15,7 @@ interface T {
   DisabledState: string
   selective: string
   disabledState: string
+  disabledSelectiveState: string
   customSize: string
   customIcon: string
   triggerEvent: string
@@ -44,6 +45,7 @@ const CheckboxDemo = () => {
       DisabledState: '未选时禁用状态',
       selective: '半选状态',
       disabledState: '选中时禁用状态',
+      disabledSelectiveState: '半选时禁用状态',
       customSize: '自定义尺寸',
       customIcon: '自定义图标',
       triggerEvent: '点击触发事件',
@@ -70,6 +72,7 @@ const CheckboxDemo = () => {
       DisabledState: '未選時禁用狀態',
       selective: '半选状态',
       disabledState: '選中時禁用狀態',
+      disabledSelectiveState: '半選時禁用狀態',
       customSize: '自定義尺寸',
       customIcon: '自定義圖示',
       triggerEvent: '點擊觸發事件',
@@ -96,6 +99,7 @@ const CheckboxDemo = () => {
       DisabledState: 'Disabled state',
       selective: 'Semi selective',
       disabledState: 'Disabled state',
+      disabledSelectiveState: 'Semi selective Disabled',
       customSize: 'Custom size',
       customIcon: 'Custom Icon',
       triggerEvent: 'Click Trigger Event',
@@ -115,14 +119,14 @@ const CheckboxDemo = () => {
     },
   })
 
-  const [checked, setChecked] = useState(false)
+  const [checked] = useState(false)
   const [checkbox1, setCheckbox1] = useState(false)
   const [indeterminate, setIndeterminate] = useState(false)
   const [checkboxgroup1, setCheckboxgroup1] = useState(['1'])
   const [checkboxgroup2] = useState(['1'])
   const [checkboxgroup3] = useState(['1'])
   const [checkboxgroup4] = useState([])
-  const [checkboxgroup5, setCheckboxgroup5] = useState<string[]>([])
+  const [checkboxgroup5] = useState<string[]>([])
   const checkboxgroup2Ref = useRef(null)
   const checkboxgroup3Ref = useRef(null)
   const [optionsDemo1] = useState([
@@ -216,6 +220,15 @@ const CheckboxDemo = () => {
         <Cell className="nut-cell">
           <Checkbox
             labelPosition="right"
+            label={translated.disabledSelectiveState}
+            checked
+            disabled
+            indeterminate
+          />
+        </Cell>
+        <Cell className="nut-cell">
+          <Checkbox
+            labelPosition="right"
             label={translated.disabledState}
             checked
             disabled
@@ -239,7 +252,7 @@ const CheckboxDemo = () => {
           <Checkbox
             defaultChecked={false}
             icon={<Checklist />}
-            activeIcon={<Checklist className="nut-checkbox__icon" />}
+            activeIcon={<Checklist className="nut-checkbox-icon-checked" />}
           >
             {translated.customIcon}
           </Checkbox>
@@ -327,7 +340,6 @@ const CheckboxDemo = () => {
             {translated.selectAll}
           </Button>
           <Button
-            type="info"
             onClick={() => {
               ;(checkboxgroup2Ref.current as any).toggle(false)
             }}
@@ -346,13 +358,7 @@ const CheckboxDemo = () => {
         </Cell>
         <h2>{translated.max}</h2>
         <Cell>
-          <Checkbox.Group
-            defaultValue={checkboxgroup3}
-            max={2}
-            onChange={(value) => {
-              //   Toast.show(value)
-            }}
-          >
+          <Checkbox.Group defaultValue={checkboxgroup3} max={2}>
             <Checkbox value="1">{translated.options1}</Checkbox>
             <Checkbox value="2">{translated.options1}</Checkbox>
             <Checkbox value="3">{translated.options1}</Checkbox>

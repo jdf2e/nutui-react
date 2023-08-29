@@ -173,7 +173,7 @@ const CheckBoxDemo = () => {
   return (<>
     <Checkbox icon={<Checklist />}
               checkedIcon={<Checklist
-                className="nut-checkbox__icon" />}>自定义图标</Checkbox>
+                className="nut-checkbox-icon" />}>自定义图标</Checkbox>
   </>)
 }
 export default CheckBoxDemo;
@@ -537,7 +537,5 @@ export default CheckboxGroupOptions;
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-checkbox-label-color | label 的文本颜色 | `$color-title` |
-| \--nutui-checkbox-label-disable-color | label 的禁用颜色 | `#999` |
-| \--nutui-checkbox-icon-disable-color | 默认 icon 的禁用颜色 | `#d6d6d6` |
 | \--nutui-checkbox-label-margin-left | label 的左边距 | `15px` |
 | \--nutui-checkbox-label-font-size | label 的字号 | `14px` |

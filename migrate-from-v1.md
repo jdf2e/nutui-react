@@ -311,6 +311,9 @@ plugins: [
 - `iconAcitveName` 重命名为 `activeIcon`
 - `iconIndeterminateName` 重命名为 `iconIndeterminateIcon`
 - 移除 `iconSize`
+- 部分 className 命名变更，废弃 `nutui-checkbox__xx` 命名方式，直接使用 `nutui-checkbox-xx`，并对选中状态命名修订为 `nutui-checkbox-icon-checked`
+- 增加半选的禁用状态
+
 #### Checkbox.Group
 - 新增 `defaultValue`，用于非受控，`value` 用于受控
 - `textPosition` 重命名为 `labelPosition`
