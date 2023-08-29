@@ -1,0 +1,20 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base", "schedule:weekly", "group:allNonMajor"
+  ],
+  "labels": ["dependencies"],
+  "ignorePaths": [
+    "src/**"
+  ],
+  "packageRules": [
+    {
+      "matchPackagePatterns": ["^@tarojs"],
+      "enabled": false
+    }
+  ],
+  "ignoreDeps": [
+    "node",
+    "typescript"
+  ]
+}
