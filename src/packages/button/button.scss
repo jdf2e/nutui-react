@@ -121,40 +121,6 @@
     }
   }
 
-  &.nut-button--icononly {
-    width: $button-default-height;
-    padding: 0;
-  }
-
-  &--normal {
-    padding: $button-normal-padding;
-  }
-
-  &--large {
-    width: 100%;
-    height: $button-large-height;
-    font-size: $button-large-font-size;
-  }
-
-  &--small {
-    height: $button-small-height;
-    padding: $button-small-padding;
-    font-size: $button-small-font-size;
-    font-weight: $button-small-font-weight;
-  }
-
-  &--mini {
-    height: $button-mini-height;
-    padding: $button-mini-padding;
-    font-size: $button-mini-font-size;
-    font-weight: $button-mini-font-weight;
-  }
-
-  &--default {
-    padding: $button-default-padding;
-    border: $button-border-width solid $button-default-border-color;
-  }
-
   &--primary {
     color: $button-primary-color;
     background: $button-primary-background-color;

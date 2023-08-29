@@ -323,7 +323,6 @@ export default App;
 ```tsx
 import  React ,{useState} from "react";
 import { Button } from '@nutui/nutui-react-taro';
-import { Star, Plus } from '@nutui/icons-react-taro'
 
 const App = () => {
   const [loading, setLoading] = useState(false)

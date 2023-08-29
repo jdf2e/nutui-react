@@ -246,6 +246,7 @@ const ButtonDemo = () => {
             {translated['60a53514']}
           </Button>
         </Cell>
+
         <h2>{translated['7db1a8b2']}</h2>
         <Cell className="button-cell">
           <Button
