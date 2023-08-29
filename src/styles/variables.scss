@@ -34,6 +34,8 @@ $color-mask-part: var(--nutui-black-2) !default;
 $color-border: var(--nutui-black-3) !default;
 $color-border-disable: var(--nutui-gray-4) !default;
 
+$spacing-icon-text: var(--nutui-spacing-2) !default;
+
 // ---- Font Family ----
 $font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun,
   sans-serif !default;
@@ -1079,21 +1081,19 @@ $dialog-footer-ok-max-width: var(
 ) !default;
 
 // checkbox（✅）
-$checkbox-label-color: var(--nutui-checkbox-label-color, $color-title) !default;
-$checkbox-label-disable-color: var(
-  --nutui-checkbox-label-disable-color,
-  #999
-) !default;
-$checkbox-icon-disable-color: var(
-  --nutui-checkbox-icon-disable-color,
-  #d6d6d6
-) !default;
 $checkbox-label-margin-left: var(
   --nutui-checkbox-label-margin-left,
-  10px
+  $spacing-icon-text
 ) !default;
-$checkbox-label-font-size: var(--nutui-checkbox-label-font-size, 14px) !default;
-$checkbox-icon-font-size: var(--nutui-checkbox-icon-font-size, 18px) !default;
+$checkbox-label-color: var(--nutui-checkbox-label-color, $color-title) !default;
+$checkbox-label-font-size: var(
+  --nutui-checkbox-label-font-size,
+  $font-size-small
+) !default;
+$checkbox-icon-font-size: var(
+  --nutui-checkbox-icon-font-size,
+  $font-size-large
+) !default;
 $checkbox-icon-disable-color2: var(
   --nutui-checkbox-icon-disable-color2,
   $color-text-help

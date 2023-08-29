@@ -1051,14 +1051,6 @@ $dialog-footer-ok-max-width: var(
 
 // checkbox（✅）
 $checkbox-label-color: var(--nutui-checkbox-label-color, $color-title) !default;
-$checkbox-label-disable-color: var(
-  --nutui-checkbox-label-disable-color,
-  #999
-) !default;
-$checkbox-icon-disable-color: var(
-  --nutui-checkbox-icon-disable-color,
-  #d6d6d6
-) !default;
 $checkbox-label-margin-left: var(
   --nutui-checkbox-label-margin-left,
   10px
