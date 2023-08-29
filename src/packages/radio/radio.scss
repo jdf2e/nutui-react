@@ -10,14 +10,45 @@
     margin-right: 0 !important;
   }
 
-  &.nut-radio--reverse {
-    .nut-radio__label {
+  &.nut-radio-reverse {
+    .nut-radio-label {
       margin-right: $radio-label-margin-left;
       margin-left: 0;
     }
   }
 
-  &__button {
+  &-label {
+    margin-left: $radio-label-margin-left;
+    font-size: $radio-label-font-size;
+    color: $radio-label-color;
+
+    &-disabled {
+      color: $color-text-disable;
+    }
+  }
+
+  &-icon {
+    color: $color-text-disable;
+    transition-duration: 0.3s;
+    transition-property: color, border-color, background-color;
+    font-size: $radio-icon-font-size;
+  }
+
+  &-icon {
+    &-checked {
+      color: $color-primary;
+
+      &.nut-radio-icon-disabled {
+        color: #fec3be;
+      }
+    }
+
+    &-disabled {
+      color: $color-text-disable;
+    }
+  }
+
+  &-button {
     display: inline-flex;
     align-items: center;
     padding: $radio-button-padding;
@@ -28,48 +59,21 @@
     box-sizing: border-box;
     border: 1px solid $radio-button-background;
 
-    &--active {
-      background: $radio-button-active-background;
-      color: $radio-label-font-active-color;
-      border: 1px solid $radio-button-active-border-color;
+    &-active {
+      background: $color-primary-light;
+      color: $color-primary;
+      border: 1px solid $color-primary;
     }
 
-    &--disabled {
+    &-disabled {
       color: $color-text-disable;
       border: 1px solid $radio-button-background;
     }
   }
 
-  .nut-radio__button--active.nut-radio__button--disabled {
-    background: $radio-button-disabled-active-background;
-    color: $radio-button-disabled-active-color;
-    border: 1px solid $radio-button-disabled-active-border-color;
-  }
-
-  &__label {
-    margin-left: $radio-label-margin-left;
-    font-size: $radio-label-font-size;
-    color: $radio-label-color;
-
-    &--disabled {
-      color: $color-text-disable;
-    }
-  }
-
-  &__icon {
-    color: $radio-label-font-active-color;
-    transition-duration: 0.3s;
-    transition-property: color, border-color, background-color;
-    font-size: $radio-icon-font-size;
-  }
-
-  &__icon {
-    &--unchecked {
-      color: $color-text;
-    }
-
-    &--disable {
-      color: $color-text-disable;
-    }
+  .nut-radio-button-active.nut-radio-button-disabled {
+    background: $color-text-disable;
+    color: $white;
+    border: 1px solid $color-text-disable;
   }
 }

@@ -1100,16 +1100,20 @@ $checkbox-icon-disable-color2: var(
 ) !default;
 
 //radio（✅）
-$radio-icon-font-size: var(--nutui-radio-icon-font-size, 18px) !default;
-$radio-label-font-size: var(--nutui-radio-label-font-size, 14px) !default;
-$radio-label-color: var(--nutui-radio-label-color, $color-title) !default;
-$radio-label-font-active-color: var(
-  --nutui-radio-label-font-active-color,
-  $color-primary
+$radio-icon-font-size: var(
+  --nutui-radio-icon-font-size,
+  $font-size-large
 ) !default;
-$radio-label-margin-left: var(--nutui-radio-label-margin-left, 6px) !default;
-
-$radio-button-font-size: var(--nutui-radio-button-font-size, 12px) !default;
+$radio-label-font-size: var(
+  --nutui-radio-label-font-size,
+  $font-size-small
+) !default;
+$radio-label-color: var(--nutui-radio-label-color, $color-title) !default;
+$radio-label-margin-left: var(--nutui-radio-label-margin-left, 4px) !default;
+$radio-button-font-size: var(
+  --nutui-radio-button-font-size,
+  $font-size-small
+) !default;
 $radio-button-color: $color-text;
 $radio-button-background: $color-background;
 $radio-button-padding: var(--nutui-radio-button-padding, 5px 18px) !default;
@@ -1117,25 +1121,9 @@ $radio-button-border-radius: var(
   --nutui-radio-button-border-radius,
   15px
 ) !default;
-$radio-button-active-border-color: var(
-  --nutui-radio-button-active-border-color,
-  $color-primary
-) !default;
-$radio-button-active-background: var(
-  --nutui-radio-button-active-background,
-  $color-primary-light
-) !default;
-$radio-button-disabled-active-background: var(
-  --nutui-radio-button-disabled-active-background,
-  $color-text-disable
-) !default;
 $radio-button-disabled-active-color: var(
   --nutui-radio-button-disabled-active-color,
   $white
-) !default;
-$radio-button-disabled-active-border-color: var(
-  --nutui-radio-button-disabled-active-border-color,
-  $color-text-disable
 ) !default;
 $radiogroup-radio-margin: var(
   --nutui-radiogroup-radio-margin,
