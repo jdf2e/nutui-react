@@ -267,7 +267,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-badge-color | badge content color | `#fff` |
 | \--nutui-badge-font-size | badge content font size | `$font-size-small` |
 | \--nutui-badge-border | badge border | `0px solid $color-primary-text` |
-| \--nutui-badge-border-radius | badge border-radius | `14px` |
+| \--nutui-badge-border-radius | badge border-radius | `height/2` |
 | \--nutui-badge-padding | badge padding value | `0 5px` |
 | \--nutui-badge-icon-padding | when badge is icon,badge padding | `2px` |
 | \--nutui-badge-z-index | when badge is icon, badge z-index | `1` |
