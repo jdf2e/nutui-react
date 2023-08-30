@@ -26,8 +26,8 @@ const App = () => {
   const [showBasic, setShowBasic] = useState(false);
   return (
     <>
-        <Cell title="展示弹出层"  onClick={() => { setShowBasic(true) }}/>
-        <Popup visible={ showBasic } style={{ padding: '30px 50px' }} onClose={ () => { setShowBasic(false) } }>正文</Popup>
+      <Cell title="展示弹出层"  onClick={() => { setShowBasic(true) }}/>
+      <Popup visible={ showBasic } style={{ padding: '30px 50px' }} onClose={ () => { setShowBasic(false) } }>正文</Popup>
     </>
   );
 };
@@ -53,14 +53,14 @@ const App = () => {
 
   return (
     <>
-        <Cell title="顶部弹出"  onClick={() => { setShowTop(true) }}/>
-        <Cell title="底部弹出"  onClick={() => { setShowBottom(true) }}/>
-        <Cell title="左侧弹出"  onClick={() => { setShowLeft(true) }}/>
-        <Cell title="右侧弹出"  onClick={() => { setShowRight(true) }}/>
-        <Popup visible={ showTop } style={{ height: '20%' }} position="top" onClose={ () => { setShowTop(false) } } />
-        <Popup visible={ showBottom } style={{ height: '20%' }} position="bottom" onClose={ () => { setShowBottom(false) } } />
-        <Popup visible={ showLeft } style={{ width: '20%', height: '100%' }} position="left" onClose={ () => { setShowLeft(false) } } />
-        <Popup visible={ showRight } style={{ width: '20%', height: '100%' }} position="right" onClose={ () => { setShowRight(false) } } />
+      <Cell title="顶部弹出"  onClick={() => { setShowTop(true) }}/>
+      <Cell title="底部弹出"  onClick={() => { setShowBottom(true) }}/>
+      <Cell title="左侧弹出"  onClick={() => { setShowLeft(true) }}/>
+      <Cell title="右侧弹出"  onClick={() => { setShowRight(true) }}/>
+      <Popup visible={ showTop } style={{ height: '20%' }} position="top" onClose={ () => { setShowTop(false) } } />
+      <Popup visible={ showBottom } position="bottom" onClose={ () => { setShowBottom(false) } } />
+      <Popup visible={ showLeft } style={{ width: '20%', height: '100%' }} position="left" onClose={ () => { setShowLeft(false) } } />
+      <Popup visible={ showRight } style={{ width: '20%', height: '100%' }} position="right" onClose={ () => { setShowRight(false) } } />
     </>
   );
 };
@@ -115,8 +115,8 @@ const App = () => {
 
   return (
     <>
-        <Cell title="圆角弹框"  onClick={() => { setShowBottomRound(true) }}/>
-        <Popup closeable visible={ showBottomRound } style={{ height: '20%' }} position="bottom" round onClose={ () => { setShowBottomRound(false) } } />
+      <Cell title="圆角弹框"  onClick={() => { setShowBottomRound(true) }}/>
+      <Popup visible={ showBottomRound } style={{ height: '20%' }} position="top" round onClose={ () => { setShowBottomRound(false) } } />
     </>
   );
 };
@@ -138,10 +138,10 @@ const App = () => {
 
   return (
     <>
-        <Cell title="指定节点挂载"  onClick={() => { setShowMountNode(true) }}/>
-        <Popup visible={showMountNode} style={{ padding: '30px 50px' }} portal={ document.body } onClose={() => { setShowMountNode(false) }}>
-          body
-        </Popup>
+      <Cell title="指定节点挂载"  onClick={() => { setShowMountNode(true) }}/>
+      <Popup visible={showMountNode} style={{ padding: '30px 50px' }} portal={ document.body } onClose={() => { setShowMountNode(false) }}>
+        body
+      </Popup>
     </>
   );
 };
@@ -229,7 +229,10 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-popup-border-radius | 弹框的圆角值 | `20px` |
-| \--nutui-popup-close-icon-margin | 弹框关闭按钮的margin值 | `16px` |
-| \--nutui-popup-close-icon-size | 弹框关闭按钮的大小 | `30px` |
+| \--nutui-popup-border-radius | 弹框的圆角值 | `24px` |
+| \--nutui-popup-icon-size | 弹框关闭按钮的大小 | `18px` |
+| \--nutui-popup-title-padding | 标题栏的padding值 | `16px` |
+| \--nutui-popup-title-font-size | 标题栏的字号 | `18px` |
+| \--nutui-popup-title-height | 标题栏的高度 | `50px` |
+| \--nutui-popup-title-border-bottom | 标题栏底部边框 | `0` |
 | \--nutui-popup-animation-duration | 弹框动画的延时 | `0.3s` |

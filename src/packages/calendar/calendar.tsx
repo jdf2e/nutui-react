@@ -178,7 +178,7 @@ export const Calendar = React.forwardRef<
           destroyOnClose
           onOverlayClick={closePopup}
           onCloseIconClick={closePopup}
-          style={{ height: '85vh' }}
+          style={{ height: '83%' }}
         >
           {renderItem()}
         </Popup>

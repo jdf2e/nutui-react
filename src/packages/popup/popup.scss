@@ -2,293 +2,301 @@
 
 .nut-popup {
   position: fixed;
+  min-height: 40%;
   max-height: 100%;
   overflow-y: auto;
   background-color: $overlay-content-bg-color;
   color: $color-title;
   -webkit-overflow-scrolling: touch;
+  font-size: $font-size;
 
   &-title {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: $color-title;
-    padding: $popup-title-padding;
-    font-weight: $font-weight-bold;
-    line-height: $popup-title-line-height;
-    font-size: $popup-title-font-size;
+    height: $popup-title-height;
     border-bottom: $popup-title-border-bottom;
-  }
+    padding: $popup-title-padding;
+    position: relative;
 
-  &-left-icon {
-    position: absolute;
-    top: $popup-close-icon-margin;
-    left: $popup-close-icon-margin;
-  }
-
-  &__close-icon {
-    position: absolute !important;
-    z-index: 1;
-    cursor: pointer;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    &:active {
-      opacity: 0.7;
+    &-left {
+      position: absolute;
+      left: $popup-title-padding;
     }
 
-    &--top-left {
-      top: $popup-close-icon-margin;
-      left: $popup-close-icon-margin;
+    &-title {
+      font-weight: $font-weight-bold;
+      font-size: $popup-title-font-size;
     }
 
-    &--top-right {
-      top: $popup-close-icon-margin;
-      right: $popup-close-icon-margin;
-    }
+    &-right {
+      position: absolute !important;
+      z-index: 1;
+      cursor: pointer;
+      width: $popup-icon-size;
+      height: $popup-icon-size;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: $popup-title-padding;
+      right: $popup-title-padding;
+      color: $color-text-help;
 
-    &--bottom-left {
-      bottom: $popup-close-icon-margin;
-      left: $popup-close-icon-margin;
-    }
+      &:active {
+        opacity: 0.7;
+      }
 
-    &--bottom-right {
-      right: $popup-close-icon-margin;
-      bottom: $popup-close-icon-margin;
-    }
-  }
-}
+      &--top-left {
+        top: $popup-title-padding;
+        left: $popup-title-padding;
+      }
 
-.nut-popup-center {
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+      &--bottom-left {
+        bottom: $popup-title-padding;
+        left: $popup-title-padding;
+      }
 
-  &.round {
-    border-radius: $popup-border-radius;
-  }
-}
-
-.nut-popup-bottom {
-  bottom: 0;
-  left: 0;
-  width: 100%;
-
-  &.round {
-    border-radius: $popup-border-radius $popup-border-radius 0 0;
-  }
-}
-
-.nut-popup-right {
-  top: 0;
-  right: 0;
-
-  &.round {
-    border-radius: $popup-border-radius 0 0 $popup-border-radius;
-  }
-}
-
-.nut-popup-left {
-  top: 0;
-  left: 0;
-
-  &.round {
-    border-radius: 0 $popup-border-radius $popup-border-radius 0;
-  }
-}
-
-.nut-popup-top {
-  top: 0;
-  left: 0;
-  width: 100%;
-
-  &.round {
-    border-radius: 0 0 $popup-border-radius $popup-border-radius;
-  }
-}
-
-.nut-popup-slide {
-  @keyframes popup-scale-fade-in {
-    from {
-      opacity: 0;
-      transform: scale(0.8);
-    }
-
-    to {
-      opacity: 1;
-      transform: scale(1);
+      &--bottom-right {
+        right: $popup-title-padding;
+        bottom: $popup-title-padding;
+      }
     }
   }
 
-  @keyframes popup-scale-fade-out {
-    from {
-      opacity: 1;
-      transform: scale(1);
-    }
+  &-center {
+    top: 50%;
+    left: 50%;
+    min-height: 10%;
+    transform: translate(-50%, -50%);
 
-    to {
-      opacity: 0;
-      transform: scale(0.8);
-    }
-  }
-
-  &-default-enter-active {
-    animation-fill-mode: both;
-    animation-name: popup-scale-fade-in;
-    animation-duration: $popup-animation-duration;
-  }
-
-  &-default-exit-active {
-    animation-fill-mode: both;
-    animation-name: popup-scale-fade-out;
-    animation-duration: $popup-animation-duration;
-  }
-
-  @keyframes popup-fade-in {
-    from {
-      opacity: 0;
-    }
-
-    to {
-      opacity: 1;
+    &.nut-popup-round {
+      border-radius: $popup-border-radius;
     }
   }
 
-  @keyframes popup-fade-out {
-    from {
-      opacity: 1;
-    }
-
-    to {
-      opacity: 0;
-    }
+  &-bottom,
+  &-top {
+    max-height: 83%;
   }
 
-  &-center-enter-active {
-    animation-fill-mode: both;
-    animation-name: popup-fade-in;
-    animation-duration: $popup-animation-duration;
-  }
+  &-bottom {
+    bottom: 0;
+    left: 0;
+    width: 100%;
 
-  &-center-exit-active {
-    animation-fill-mode: both;
-    animation-name: popup-fade-out;
-    animation-duration: $popup-animation-duration;
-  }
-
-  /* 从顶部滑出 */
-  @keyframes popup-slide-top-enter {
-    from {
-      transform: translate3d(0, -100%, 0);
+    &.nut-popup-round {
+      border-radius: $popup-border-radius $popup-border-radius 0 0;
     }
   }
 
-  @keyframes popup-slide-top-exit {
-    to {
-      transform: translate3d(0, -100%, 0);
+  &-right {
+    top: 0;
+    right: 0;
+
+    &.nut-popup-round {
+      border-radius: $popup-border-radius 0 0 $popup-border-radius;
     }
   }
 
-  &-top-enter-active,
-  &-top-appear-active {
-    transform: translate3d(0, 0%, 0);
-    animation-fill-mode: both;
-    animation-name: popup-slide-top-enter;
-    animation-duration: $popup-animation-duration;
-  }
+  &-left {
+    top: 0;
+    left: 0;
 
-  &-top-exit-active {
-    animation-fill-mode: both;
-    animation-name: popup-slide-top-exit;
-    animation-duration: $popup-animation-duration;
-  }
-
-  /* 从右侧滑出 */
-  @keyframes popup-slide-right-enter {
-    from {
-      transform: translate3d(100%, 0, 0);
+    &.nut-popup-round {
+      border-radius: 0 $popup-border-radius $popup-border-radius 0;
     }
   }
 
-  @keyframes popup-slide-right-exit {
-    to {
-      transform: translate3d(100%, 0, 0);
+  &-top {
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    &.nut-popup-round {
+      border-radius: 0 0 $popup-border-radius $popup-border-radius;
     }
   }
 
-  &-right-enter-active,
-  &-right-appear-active {
-    transform: translate3d(0, 0, 0);
-    animation-fill-mode: both;
-    animation-name: popup-slide-right-enter;
-    animation-duration: $popup-animation-duration;
-  }
+  &-slide {
+    @keyframes popup-scale-fade-in {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
 
-  &-right-exit {
-    animation-fill-mode: both;
-    animation-name: popup-slide-right-exit;
-    animation-duration: $popup-animation-duration;
-  }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
 
-  /* 从底部滑出 */
-  @keyframes popup-slide-bottom-enter {
-    from {
-      transform: translate3d(0, 100%, 0);
+    @keyframes popup-scale-fade-out {
+      from {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      to {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+    }
+
+    &-default-enter-active {
+      animation-fill-mode: both;
+      animation-name: popup-scale-fade-in;
+      animation-duration: $popup-animation-duration;
+    }
+
+    &-default-exit-active {
+      animation-fill-mode: both;
+      animation-name: popup-scale-fade-out;
+      animation-duration: $popup-animation-duration;
+    }
+
+    @keyframes popup-fade-in {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes popup-fade-out {
+      from {
+        opacity: 1;
+      }
+
+      to {
+        opacity: 0;
+      }
+    }
+
+    &-center-enter-active {
+      animation-fill-mode: both;
+      animation-name: popup-fade-in;
+      animation-duration: $popup-animation-duration;
+    }
+
+    &-center-exit-active {
+      animation-fill-mode: both;
+      animation-name: popup-fade-out;
+      animation-duration: $popup-animation-duration;
+    }
+
+    /* 从顶部滑出 */
+    @keyframes popup-slide-top-enter {
+      from {
+        transform: translate3d(0, -100%, 0);
+      }
+    }
+
+    @keyframes popup-slide-top-exit {
+      to {
+        transform: translate3d(0, -100%, 0);
+      }
+    }
+
+    &-top-enter-active,
+    &-top-appear-active {
+      transform: translate3d(0, 0%, 0);
+      animation-fill-mode: both;
+      animation-name: popup-slide-top-enter;
+      animation-duration: $popup-animation-duration;
+    }
+
+    &-top-exit-active {
+      animation-fill-mode: both;
+      animation-name: popup-slide-top-exit;
+      animation-duration: $popup-animation-duration;
+    }
+
+    /* 从右侧滑出 */
+    @keyframes popup-slide-right-enter {
+      from {
+        transform: translate3d(100%, 0, 0);
+      }
+    }
+
+    @keyframes popup-slide-right-exit {
+      to {
+        transform: translate3d(100%, 0, 0);
+      }
+    }
+
+    &-right-enter-active,
+    &-right-appear-active {
+      transform: translate3d(0, 0, 0);
+      animation-fill-mode: both;
+      animation-name: popup-slide-right-enter;
+      animation-duration: $popup-animation-duration;
+    }
+
+    &-right-exit {
+      animation-fill-mode: both;
+      animation-name: popup-slide-right-exit;
+      animation-duration: $popup-animation-duration;
+    }
+
+    /* 从底部滑出 */
+    @keyframes popup-slide-bottom-enter {
+      from {
+        transform: translate3d(0, 100%, 0);
+      }
+    }
+
+    @keyframes slide-bottom-exit {
+      to {
+        transform: translate3d(0, 100%, 0);
+      }
+    }
+
+    &-bottom-enter-active,
+    &-bottom-appear-active {
+      transform: translate(0, 0);
+      animation-fill-mode: both;
+      animation-name: popup-slide-bottom-enter;
+      animation-duration: $popup-animation-duration;
+    }
+
+    &-bottom-exit {
+      animation-fill-mode: both;
+      animation-name: slide-bottom-exit;
+      animation-duration: $popup-animation-duration;
+    }
+
+    /* 从左侧滑出 */
+    @keyframes popup-slide-left-enter {
+      from {
+        transform: translate3d(-100%, 0, 0);
+      }
+    }
+
+    @keyframes popup-slide-left-exit {
+      to {
+        transform: translate3d(-100%, 0, 0);
+      }
+    }
+
+    &-left-enter-active,
+    &-left-appear-active {
+      transform: translate(0, 0);
+      animation-fill-mode: both;
+      animation-name: popup-slide-left-enter;
+      animation-duration: $popup-animation-duration;
+    }
+
+    &-left-exit-active,
+    &-left-exit-done {
+      animation-fill-mode: both;
+      animation-name: popup-slide-left-exit;
+      animation-duration: $popup-animation-duration;
     }
   }
 
-  @keyframes slide-bottom-exit {
-    to {
-      transform: translate3d(0, 100%, 0);
-    }
+  .nut-overflow-hidden {
+    overflow: hidden !important;
   }
-
-  &-bottom-enter-active,
-  &-bottom-appear-active {
-    transform: translate(0, 0);
-    animation-fill-mode: both;
-    animation-name: popup-slide-bottom-enter;
-    animation-duration: $popup-animation-duration;
-  }
-
-  &-bottom-exit {
-    animation-fill-mode: both;
-    animation-name: slide-bottom-exit;
-    animation-duration: $popup-animation-duration;
-  }
-
-  /* 从左侧滑出 */
-  @keyframes popup-slide-left-enter {
-    from {
-      transform: translate3d(-100%, 0, 0);
-    }
-  }
-
-  @keyframes popup-slide-left-exit {
-    to {
-      transform: translate3d(-100%, 0, 0);
-    }
-  }
-
-  &-left-enter-active,
-  &-left-appear-active {
-    transform: translate(0, 0);
-    animation-fill-mode: both;
-    animation-name: popup-slide-left-enter;
-    animation-duration: $popup-animation-duration;
-  }
-
-  &-left-exit-active,
-  &-left-exit-done {
-    animation-fill-mode: both;
-    animation-name: popup-slide-left-exit;
-    animation-duration: $popup-animation-duration;
-  }
-}
-
-.nut-overflow-hidden {
-  overflow: hidden !important;
 }

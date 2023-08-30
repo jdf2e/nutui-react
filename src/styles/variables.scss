@@ -368,31 +368,13 @@ $uploader-preview-close-top: var(
 ) !default;
 
 // picker（✅）（todo:react版本picker组件dom元素类名变化较大，picker.scss暂不改动）
-$picker-bar-cancel-color: var(
-  --nutui-picker-cancel-color,
-  $color-text
+$picker-title-cancel-font-size: var(
+  --nutui-picker-title-cancel-font-size,
+  $font-size
 ) !default;
-$picker-bar-ok-color: var(--nutui-picker-ok-color, $color-primary) !default;
-$picker-bar-cancel-font-size: var(
-  --nutui-picker-bar-cancel-font-size,
-  14px
-) !default;
-$picker-bar-ok-font-size: var(--nutui-picker-bar-ok-font-size, 14px) !default;
-$picker-bar-button-padding: var(
-  --nutui-picker-bar-button-padding,
-  0 15px
-) !default;
-$picker-bar-title-font-size: var(
-  --nutui-picker-bar-title-font-size,
-  16px
-) !default;
-$picker-bar-title-color: var(
-  --nutui-picker-bar-title-color,
-  $color-title
-) !default;
-$picker-bar-title-font-weight: var(
-  --nutui-picker-bar-title-font-weight,
-  normal
+$picker-title-ok-font-size: var(
+  --nutui-picker-title-ok-font-size,
+  $font-size
 ) !default;
 $picker-list-height: var(--nutui-picker-list-height, 252px) !default;
 $picker-item-height: var(--nutui-picker-item-height, 36px) !default;
@@ -402,18 +384,18 @@ $picker-item-text-color: var(
 ) !default;
 $picker-item-active-text-color: var(
   --nutui-picker-item-active-text-color,
-  inherit
+  $color-text
 ) !default;
 $picker-item-text-font-size: var(
   --nutui-picker-item-text-font-size,
-  14px
+  $font-size
 ) !default;
 $picker-item-active-line-border: var(
   --nutui-picker-item-active-line-border,
   1px solid $color-border
 ) !default;
-$picker-mask-bg-img: var(
-  --picker-mask-bg-img,
+$picker-mask-background: var(
+  --picker-mask-background,
   linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),
   linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))
 ) !default;
@@ -802,12 +784,11 @@ $overlay-animation-duration: var(
   0.3s
 ) !default;
 //popup（✅）
-$popup-close-icon-margin: var(--nutui-popup-close-icon-margin, 16px) !default;
 $popup-border-radius: var(--nutui-popup-border-radius, 24px) !default;
-$popup-close-icon-size: var(--nutui-popup-close-icon-size, 30px) !default;
-$popup-title-padding: var(--nutui-popup-title-padding, 15px) !default;
+$popup-icon-size: var(--nutui-popup-icon-size, $font-size-xl) !default;
+$popup-title-padding: var(--nutui-popup-title-padding, 16px) !default;
 $popup-title-font-size: var(--nutui-popup-title-font-size, 18px) !default;
-$popup-title-line-height: var(--nutui-popup-title-line-height, 18px) !default;
+$popup-title-height: var(--nutui-popup-title-height, 50px) !default;
 $popup-title-border-bottom: var(--nutui-popup-title-border-bottom, 0) !default;
 $popup-animation-duration: var(--nutui-popup-animation-duration, 0.3s) !default;
 

@@ -367,28 +367,13 @@ $uploader-preview-close-top: var(
 ) !default;
 
 // picker（✅）（todo:react版本picker组件dom元素类名变化较大，picker.scss暂不改动）
-$picker-bar-cancel-color: var(--nutui-picker-cancel-color, #808080) !default;
-$picker-bar-ok-color: var(--nutui-picker-ok-color, $color-primary) !default;
-$picker-bar-cancel-font-size: var(
-  --nutui-picker-bar-cancel-font-size,
+$picker-title-cancel-font-size: var(
+  --nutui-picker-title-cancel-font-size,
   14px
 ) !default;
-$picker-bar-ok-font-size: var(--nutui-picker-bar-ok-font-size, 14px) !default;
-$picker-bar-button-padding: var(
-  --nutui-picker-bar-button-padding,
-  0 15px
-) !default;
-$picker-bar-title-font-size: var(
-  --nutui-picker-bar-title-font-size,
-  16px
-) !default;
-$picker-bar-title-color: var(
-  --nutui-picker-bar-title-color,
-  $color-title
-) !default;
-$picker-bar-title-font-weight: var(
-  --nutui-picker-bar-title-font-weight,
-  normal
+$picker-title-ok-font-size: var(
+  --nutui-picker-title-ok-font-size,
+  14px
 ) !default;
 $picker-list-height: var(--nutui-picker-list-height, 252px) !default;
 $picker-item-height: var(--nutui-picker-item-height, 48px) !default;
@@ -409,8 +394,8 @@ $picker-item-active-line-border: var(
   1px solid #d8d8d8
 ) !default;
 
-$picker-mask-bg-img: var(
-  --picker-mask-bg-img,
+$picker-mask-background: var(
+  --picker-mask-background,
   linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),
   linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))
 ) !default;
@@ -763,9 +748,8 @@ $overlay-animation-duration: var(
   0.3s
 ) !default;
 //popup（✅）
-$popup-close-icon-margin: var(--nutui-popup-close-icon-margin, 16px) !default;
 $popup-border-radius: var(--nutui-popup-border-radius, 8px) !default;
-$popup-close-icon-size: var(--nutui-popup-close-icon-size, 30px) !default;
+$popup-icon-size: var(--nutui-popup-icon-size, 30px) !default;
 $popup-title-padding: var(--nutui-popup-title-padding, 15px) !default;
 $popup-title-font-size: var(--nutui-popup-title-font-size, 18px) !default;
 $popup-title-line-height: var(--nutui-popup-title-line-height, 18px) !default;

@@ -229,6 +229,10 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-popup-border-radius | 彈框的圓角值 | `20px` |
-| \--nutui-popup-close-icon-margin | 彈框關閉按钮的margin值 | `16px` |
-| \--nutui-popup-close-icon-size | 彈框關閉按钮的大小 | `30px` |
+| \--nutui-popup-border-radius | 彈框的圓角值 | `24px` |
+| \--nutui-popup-icon-size | 彈框關閉按鈕的大小 | `18px` |
+| \--nutui-popup-title-padding | 標題欄的padding值 | `16px` |
+| \--nutui-popup-title-font-size | 標題欄的字號 | `18px` |
+| \--nutui-popup-title-height | 標題欄的高度 | `50px` |
+| \--nutui-popup-title-border-bottom | 標題欄底部邊框 | `0` |
+| \--nutui-popup-animation-duration | 彈框動畫的延時 | `0.3s` |

@@ -42,7 +42,7 @@
     color: $color-title;
     font-size: $calendar-title-font-size;
     font-weight: $calendar-title-font-weight;
-    line-height: 44px;
+    line-height: 50px;
   }
 
   &-sub-title {
@@ -224,6 +224,6 @@
   }
 }
 
-.nut-popup__close-icon {
+.nut-popup-title-right {
   top: 7px !important;
 }

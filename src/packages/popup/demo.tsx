@@ -131,9 +131,7 @@ const PopupDemo = () => {
         <Popup
           visible={showTop}
           destroyOnClose
-          style={{ height: '20%' }}
           position="top"
-          round
           onClose={() => {
             setShowTop(false)
           }}
@@ -146,7 +144,6 @@ const PopupDemo = () => {
         />
         <Popup
           visible={showBottom}
-          style={{ height: '40%' }}
           position="bottom"
           onClose={() => {
             setShowBottom(false)
@@ -160,7 +157,7 @@ const PopupDemo = () => {
         />
         <Popup
           visible={showLeft}
-          style={{ width: '20%', height: '100%' }}
+          style={{ width: '40%', height: '100%' }}
           position="left"
           onClose={() => {
             setShowLeft(false)
@@ -174,7 +171,7 @@ const PopupDemo = () => {
         />
         <Popup
           visible={showRight}
-          style={{ width: '20%', height: '100%' }}
+          style={{ width: '40%', height: '100%' }}
           position="right"
           onClose={() => {
             setShowRight(false)
@@ -190,11 +187,9 @@ const PopupDemo = () => {
         />
         <Popup
           closeable
-          closeIcon={<CircleClose width="12px" height="12px" />}
           visible={showIcon}
           left="返回"
           title="我是标题"
-          style={{ height: '20%' }}
           position="bottom"
           onClose={() => {
             setShowIcon(false)
@@ -209,7 +204,6 @@ const PopupDemo = () => {
         <Popup
           closeable
           visible={showIconPosition}
-          style={{ height: '20%' }}
           closeIconPosition="top-left"
           position="bottom"
           onClose={() => {
@@ -226,7 +220,7 @@ const PopupDemo = () => {
           closeable
           closeIcon={<Heart width="15px" height="15px" />}
           visible={showIconDefine}
-          style={{ height: '20%' }}
+          style={{ height: '100%' }}
           position="bottom"
           onClose={() => {
             setShowIconDefine(false)
@@ -264,7 +258,7 @@ const PopupDemo = () => {
           closeIcon={<CircleClose width="12px" height="12px" />}
           visible={showCloseIconStop}
           closeOnOverlayClick={false}
-          style={{ height: '20%' }}
+          style={{ height: '40%' }}
           position="bottom"
           onClose={() => {
             setShowIcon(false)
@@ -282,10 +276,9 @@ const PopupDemo = () => {
           }}
         />
         <Popup
-          closeable
           visible={showBottomRound}
           style={{ height: '20%' }}
-          position="bottom"
+          position="top"
           round
           onClose={() => {
             setShowBottomRound(false)
