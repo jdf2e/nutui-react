@@ -157,7 +157,7 @@
     "jest": "^27.5.1",
     "jest-canvas-mock": "^2.5.0",
     "jscodeshift": "^0.15.0",
-    "lint-staged": "^11.2.6",
+    "lint-staged": "^14.0.0",
     "lzutf8": "0.6.0",
     "map-stream": "0.0.7",
     "markdown-it": "^13.0.1",
