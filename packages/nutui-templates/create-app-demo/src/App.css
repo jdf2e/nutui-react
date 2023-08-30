@@ -12,6 +12,11 @@
   flex-shrink: 0;
 }
 
+.nut-img {
+  width: 100%;
+  height: 100%;
+}
+
 .info {
   display: flex;
   flex-direction: column;
