@@ -183,8 +183,8 @@ importers:
         specifier: ^6.7.1
         version: 6.7.1(eslint@7.32.0)
       eslint-plugin-markdown:
-        specifier: ^2.2.1
-        version: 2.2.1(eslint@7.32.0)
+        specifier: ^3.0.0
+        version: 3.0.1(eslint@7.32.0)
       eslint-plugin-prettier:
         specifier: ^4.2.1
         version: 4.2.1(eslint-config-prettier@9.0.0)(eslint@7.32.0)(prettier@2.3.0)
@@ -8934,11 +8934,11 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /eslint-plugin-markdown@2.2.1(eslint@7.32.0):
-    resolution: {integrity: sha512-FgWp4iyYvTFxPwfbxofTvXxgzPsDuSKHQy2S+a8Ve6savbujey+lgrFFbXQA0HPygISpRYWYBjooPzhYSF81iA==}
-    engines: {node: ^8.10.0 || ^10.12.0 || >= 12.0.0}
+  /eslint-plugin-markdown@3.0.1(eslint@7.32.0):
+    resolution: {integrity: sha512-8rqoc148DWdGdmYF6WSQFT3uQ6PO7zXYgeBpHAOAakX/zpq+NvFYbDA/H7PYzHajwtmaOzAwfxyl++x0g1/N9A==}
+    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
-      eslint: '>=6.0.0'
+      eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
     dependencies:
       eslint: 7.32.0
       mdast-util-from-markdown: 0.8.5
