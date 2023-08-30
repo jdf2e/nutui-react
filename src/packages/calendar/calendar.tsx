@@ -171,6 +171,7 @@ export const Calendar = React.forwardRef<
     <>
       {popup ? (
         <Popup
+          className="nut-calendar-popup"
           visible={visible}
           position="bottom"
           round
