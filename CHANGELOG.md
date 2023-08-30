@@ -1,3 +1,12 @@
+# v2.0.15
+`2023-08-30`
+
+* :sparkles: feat: support next.js (#1326) @oasis-cloud
+* :bug: fix: dialog content 失效 (#1323) @oasis-cloud
+* :bug: fix: space 复制按钮重复 (#1322) @oasis-cloud
+* 🔨 chore(tabs): 更新文档与 demo (#1339) @Eiinu
+
+
 # v2.0.14
 `2023-08-18`
 
