@@ -5,17 +5,7 @@
   background-color: $color-background-overlay;
   display: flex;
   flex-direction: column;
-  height: 100%;
-
-  &__title {
-    height: $timeselect-title-height;
-    line-height: $timeselect-title-line-height;
-    margin-bottom: 10px;
-    font-size: $timeselect-title-font-size;
-    background: $timeselect-title-background;
-    color: $color-title;
-    text-align: center;
-  }
+  height: calc(100% - 50px);
 
   &__content {
     display: flex;
@@ -32,15 +22,16 @@
 }
 
 .nut-timepannel {
+  padding: 0 16px;
   height: $timeselect-date-height;
-  line-height: $timeselect-date-line-height;
-  text-align: center;
-  color: $timeselect-date-color;
-  font-size: $timeselect-date-font-size;
+  line-height: $timeselect-date-height;
+  text-align: left;
+  color: $color-text;
+  font-size: $font-size;
 
   &.active {
     background: $color-background-overlay;
     color: $timeselect-date-active-color;
-    font-weight: 700;
+    font-weight: 500;
   }
 }

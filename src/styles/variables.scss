@@ -64,7 +64,7 @@ $color-primary-text: var(--nutui-color-primary-text, #ffffff) !default;
 $color-info: var(--nutui-color-info) !default;
 // 链接色 todo
 $color-text-link: var(--nutui-color-text-link, #396acc) !default;
-
+$color-danger: var(--nutui-color-danger, #fa2c19) !default;
 $white: var(--nutui-gray-1, #ffffff) !default;
 $black: $color-title !default;
 
@@ -515,7 +515,7 @@ $actionsheet-item-color: var(
 ) !default;
 $actionsheet-item-danger: var(
   --nutui-actionsheet-item-danger,
-  $color-primary
+  $color-danger
 ) !default;
 
 //shortpassword（✅）
@@ -1186,69 +1186,21 @@ $noticebar-righticon-margin: var(
 ) !default;
 
 // TimeSelect（✅）
-$timeselect-title-height: var(--nutui-timeselect-title-height, 50px) !default;
-$timeselect-title-line-height: var(
-  --nutui-timeselect-title-line-height,
-  50px
-) !default;
-$timeselect-title-color: var(
-  --nutui-timeselect-title-color,
-  $color-title
-) !default;
-$timeselect-title-font-size: var(
-  --nutui-timeselect-title-font-size,
-  $font-size
-) !default;
-$timeselect-title-background: var(
-  --nutui-timeselect-title-background,
-  $color-background-overlay
-) !default;
-
 $timeselect-date-width: var(--nutui-timeselect-date-width, 140px) !default;
 $timeselect-date-height: var(--nutui-timeselect-date-height, 40px) !default;
-$timeselect-date-line-height: var(
-  --nutui-timeselect-date-line-height,
-  40px
-) !default;
-$timeselect-date-color: var(
-  --nutui-timeselect-date-color,
-  $color-text
-) !default;
 $timeselect-date-active-color: var(
   --nutui-timeselect-date-active-color,
   $color-title
 ) !default;
-$timeselect-date-font-size: var(
-  --nutui-timeselect-date-font-size,
-  $font-size
-) !default;
-
 $timeselect-time-width: var(--nutui-timeselect-time-width, 100px) !default;
 $timeselect-time-height: var(--nutui-timeselect-time-height, 50px) !default;
-$timeselect-time-line-height: var(
-  --nutui-timeselect-time-line-height,
-  50px
-) !default;
-$timeselect-time-font-size: var(--nutui-timeselect-font-size, 14px) !default;
 $timeselect-time-margin: var(
   --nutui-timeselect-time-margin,
   0 10px 10px 0
 ) !default;
-$timeselect-time-color: var(
-  --nutui-timeselect-time-color,
-  $color-title
-) !default;
-$timeselect-time-active-color: var(
-  --nutui-timeselect-time-active-color,
-  $color-primary
-) !default;
 $timeselect-time-background: var(
   --nutui-timeselect-time-background,
   $color-background
-) !default;
-$timeselect-time-active-background: var(
-  --nutui-timeselect-time-active-background,
-  $color-background-sunken
 ) !default;
 
 //tag（✅）
