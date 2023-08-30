@@ -140,7 +140,7 @@
     "autoprefixer": "^10.4.14",
     "axios": "^0.21.4",
     "babel-plugin-react-scoped-css": "^1.1.1",
-    "eslint": "^7.32.0",
+    "eslint": "^8.0.0",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.27.5",
