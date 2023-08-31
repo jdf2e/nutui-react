@@ -117,15 +117,15 @@ export const Popup: FunctionComponent<
   }
 
   const popClassName = classNames({
-    round,
+    [`${classPrefix}-round`]: round || position === 'bottom',
     [`${classPrefix}`]: true,
     [`${classPrefix}-${position}`]: true,
     [`${className || ''}`]: true,
   })
 
   const closeClasses = classNames({
-    [`${classPrefix}__close-icon`]: true,
-    [`${classPrefix}__close-icon--${closeIconPosition}`]: true,
+    [`${classPrefix}-title-right`]: true,
+    [`${classPrefix}-title-right--${closeIconPosition}`]: true,
   })
 
   const open = () => {
@@ -196,31 +196,39 @@ export const Popup: FunctionComponent<
     return node
   }
 
-  const renderIcon = () => {
-    if (closeable) {
+  const renderTitle = () => {
+    if (left || title) {
       return (
-        <div className={closeClasses} onClick={onHandleClickCloseIcon}>
-          {React.isValidElement(closeIcon) ? (
-            closeIcon
-          ) : (
-            <Close width={12} height={12} />
+        <div className={`${classPrefix}-title`}>
+          {position === 'bottom' && (
+            <>
+              {left && (
+                <div className={`${classPrefix}-title-left`}>{left}</div>
+              )}
+              {title && (
+                <div className={`${classPrefix}-title-title`}>{title}</div>
+              )}
+            </>
+          )}
+          {closeable && (
+            <div className={closeClasses} onClick={onHandleClickCloseIcon}>
+              {React.isValidElement(closeIcon) ? closeIcon : <Close />}
+            </div>
           )}
         </div>
       )
     }
-    return null
-  }
-  const renderTitle = () => {
-    return (
-      <>
-        {position === 'bottom' && (
-          <>
-            {left && <div className={`${classPrefix}-left-icon`}>{left}</div>}
-            {title && <div className={`${classPrefix}-title`}>{title}</div>}
-          </>
-        )}
-      </>
-    )
+    if (closeable) {
+      return (
+        <>
+          {closeable && (
+            <div className={closeClasses} onClick={onHandleClickCloseIcon}>
+              {React.isValidElement(closeIcon) ? closeIcon : <Close />}
+            </div>
+          )}
+        </>
+      )
+    }
   }
   const renderPop = () => {
     return (
@@ -234,7 +242,6 @@ export const Popup: FunctionComponent<
       >
         <div style={popStyles} className={popClassName} onClick={onHandleClick}>
           {renderTitle()}
-          {renderIcon()}
           {showChildren ? children : ''}
         </div>
       </CSSTransition>

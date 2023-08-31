@@ -409,18 +409,11 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-picker-bar-cancel-color | 取消文案的色值 | `#808080` |
-| \--nutui-picker-bar-ok-color | 确认文案的色值 | `$color-primary` |
-| \--nutui-picker-bar-cancel-font-size | 取消字号 | `14px` |
-| \--nutui-picker-bar-ok-font-size | 确认字号 | `14px` |
-| \--nutui-picker-bar-button-padding | 取消和确认的padding值 | `0 15px` |
-| \--nutui-picker-bar-title-font-size | 标题字号 | `16px` |
-| \--nutui-picker-bar-title-color | 标题色值 | `$color-title` |
-| \--nutui-picker-bar-title-font-weight | 标题字重 | `normal` |
+| \--nutui-picker-title-cancel-font-size | 取消字号 | `14px` |
+| \--nutui-picker-title-ok-font-size | 确认字号 | `14px` |
 | \--nutui-picker-list-height | 面板高度 | `252px` |
 | \--nutui-picker-item-height | 面板每一条数据高度 | `36px` |
 | \--nutui-picker-item-text-color | 面板每一条数据的字色 | `$color-title` |
 | \--nutui-picker-item-active-text-color | 面板当前选中数据的字色 | `inherit` |
 | \--nutui-picker-item-text-font-size | 面板每条数据字号 | `14px` |
 | \--nutui-picker-item-active-line-border | 面板当前选中的border值 | `1px solid #d8d8d8` |
-| \--nutui-picker-mask-bg-img | 面板数据区域的遮罩层背景 | `linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))` |

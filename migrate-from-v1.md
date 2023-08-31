@@ -179,6 +179,7 @@ plugins: [
 - `onOpened` 和 `onClosed`  重命名为  `afterShow` 和 `afterClose`，继承自`Overlay`，用于完全关闭后触发的回调和完全展示后触发的回调 
 - `destroyOnClose` 的描述进行了修订，改为：“组件不可见时，卸载内容”，并把其默认值改为了`false`
 - `onClickCloseIcon` 和 `onClickOverlay` 两个方法，增加布尔判断，如返回false 或 未定义返回值时，将不再关闭 Popup；默认值为 `true`；在demo中已增加相应示例；同时，两者的名字变更为 `onCloseIconClick`、`onOverlayClick`
+- 为底部弹出的 `Popup` 时，默认支持圆角。
 
 ### 布局组件
 #### Divider

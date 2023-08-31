@@ -6,6 +6,10 @@
   padding-bottom: env(safe-area-inset-bottom);
   text-align: center;
 
+  &.nut-popup {
+    min-height: 10%;
+  }
+
   .nut-popup-title {
     border-bottom: 1px solid $actionsheet-border-color;
   }

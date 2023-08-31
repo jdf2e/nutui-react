@@ -2,25 +2,24 @@
   display: flex;
   align-content: flex-start;
   flex-wrap: wrap;
-  padding: 0 0 50px 13px;
+  padding: 0 0 50px 12px;
 
   &__item {
     width: $timeselect-time-width;
     height: $timeselect-time-height;
-    line-height: $timeselect-time-line-height;
+    line-height: $timeselect-time-height;
     text-align: center;
     margin: $timeselect-time-margin;
     background: $timeselect-time-background;
-    color: $timeselect-time-color;
     border-radius: 5px;
-    font-size: $timeselect-time-font-size;
+    font-size: $font-size;
     border: 1px solid transparent;
-    font-weight: 700;
 
     &.active {
-      background-color: $timeselect-time-active-background;
-      border: 1px solid $timeselect-time-active-color;
-      color: $timeselect-time-active-color;
+      background-color: $color-primary-light;
+      border: 1px solid $color-primary;
+      color: $color-primary;
+      font-weight: $font-weight-bold;
     }
   }
 }
