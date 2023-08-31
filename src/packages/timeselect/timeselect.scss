@@ -32,6 +32,6 @@
   &.active {
     background: $color-background-overlay;
     color: $timeselect-date-active-color;
-    font-weight: 500;
+    font-weight: $font-weight-bold;
   }
 }
