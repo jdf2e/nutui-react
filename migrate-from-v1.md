@@ -319,6 +319,7 @@ plugins: [
 - `textPosition` 重命名为 `labelPosition`
 - `toggleAll` 重命名为 `toggle`
 - `toggleReverse` 重命名为 `reverse`
+- 部分 className 命名变更，废弃 `nutui-checkbox__xx` 命名方式，直接使用 `nutui-checkbox-xx`，并对选中状态命名修订为 `nutui-checkbox-icon-checked`
 #### DatePicker
 - `modelValue` 重命名为 `value`，并增加 `defaultValue`
 - `isShowChinese` 重命名为 `showChinese`
@@ -367,10 +368,12 @@ plugins: [
 - 增加 `labelPosition`，用于设置 `label` 的位置
 - 增加 `checked` 和 `defaultChecked` ，用于受控和非受控
 - `onChange` 类型修改为 `(checked: boolean) => void`
+- 部分 className 命名变更，废弃 `nutui-radio__xx` 命名方式，直接使用 `nutui-radio-xx`，并对选中状态命名修订为 `nutui-radio-icon-checked`
 ### Radio.Group
 - `textPosition` 重命名为 `labelPosition` 
 - 增加 `defaultValue` ，用于非受控
 - `onChange` 类型修改为 `(value: string| number) => void`
+- 部分 className 命名变更，废弃 `nutui-radio__xx` 命名方式，直接使用 `nutui-radio-xx`，并对选中状态命名修订为 `nutui-radio-icon-checked`
 #### Range
 - `maxDesc` 重命名为 `maxDescription`，类型改为 `ReactNode`
 - `minDesc` 重命名为 `minDescription`，类型改为 `ReactNode`

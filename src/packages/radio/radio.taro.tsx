@@ -1,5 +1,9 @@
 import React, { FunctionComponent, MouseEventHandler, useContext } from 'react'
-import { CheckChecked, CheckNormal } from '@nutui/icons-react-taro'
+import {
+  CheckChecked,
+  CheckNormal,
+  CheckDisabled,
+} from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import RadioContext from '../radiogroup/context'
 import RadioGroup from '@/packages/radiogroup/index.taro'
@@ -82,8 +86,8 @@ export const Radio: FunctionComponent<
   const renderLabel = () => {
     return (
       <div
-        className={classNames(`${classPrefix}__label`, {
-          [`${classPrefix}__label--disabled`]: disabled,
+        className={classNames(`${classPrefix}-label`, {
+          [`${classPrefix}-label-disabled`]: disabled,
         })}
       >
         {children}
@@ -93,9 +97,9 @@ export const Radio: FunctionComponent<
   const renderButton = () => {
     return (
       <div
-        className={classNames(`${classPrefix}__button`, {
-          [`${classPrefix}__button--active`]: checkedStatement,
-          [`${classPrefix}__button--disabled`]: disabled,
+        className={classNames(`${classPrefix}-button`, {
+          [`${classPrefix}-button-active`]: checkedStatement,
+          [`${classPrefix}-button-disabled`]: disabled,
         })}
       >
         {children}
@@ -104,13 +108,17 @@ export const Radio: FunctionComponent<
   }
   const color = () => {
     return {
-      [`${classPrefix}__icon--disable`]: disabled,
-      [`${classPrefix}__icon`]: checkedStatement,
-      [`${classPrefix}__icon--unchecked`]: !checkedStatement,
+      [`${classPrefix}-icon-disabled`]: disabled,
+      [`${classPrefix}-icon`]: !checkedStatement,
+      [`${classPrefix}-icon-checked`]: checkedStatement,
     }
   }
   const renderIcon = () => {
     const { icon, activeIcon } = props
+
+    if (disabled && !checkedStatement) {
+      return <CheckDisabled className={classNames(color())} />
+    }
 
     if (checkedStatement) {
       return React.isValidElement(activeIcon) ? (
@@ -159,7 +167,7 @@ export const Radio: FunctionComponent<
   return (
     <div
       className={`${classPrefix} ${className} ${
-        reverse ? `${classPrefix}--reverse` : ''
+        reverse ? `${classPrefix}-reverse` : ''
       }`}
       style={style}
       onClick={handleClick}

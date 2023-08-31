@@ -2,51 +2,51 @@
   .nut-radio {
     margin: $radiogroup-radio-margin;
 
-    &__label {
+    &-label {
       margin: $radiogroup-radio-label-margin;
     }
 
-    &__button {
+    &-button {
       background-color: $radio-button-background;
     }
   }
 
-  &--vertical {
+  &-vertical {
     .nut-radio {
-      &.nut-radio--reverse {
+      &.nut-radio-reverse {
         width: 100%;
         justify-content: space-between;
       }
 
-      &__button {
+      &-button {
         border: 1px solid $radio-button-background;
       }
 
-      &__button--active {
-        border-color: $radio-button-active-border-color;
-        background-color: $radio-button-active-background;
+      &-button-active {
+        border-color: $color-primary;
+        background-color: $color-primary-light;
       }
     }
   }
 
-  &--horizontal {
+  &-horizontal {
     .nut-radio {
       display: inline-flex;
 
-      &__button {
+      &-button {
         border: 1px solid $white;
       }
 
-      &__button--active {
-        border-color: $radio-button-active-border-color;
-        background-color: $radio-button-active-background;
+      &-button-active {
+        border-color: $color-primary;
+        background-color: $color-primary-light;
       }
     }
   }
 
-  .nut-radio__button--active.nut-radio__button--disabled {
-    background: $radio-button-disabled-active-background;
-    color: $radio-button-disabled-active-color;
-    border: 1px solid $radio-button-disabled-active-border-color;
+  .nut-radio-button-active.nut-radio-button-disabled {
+    background: $color-text-disable;
+    color: $white;
+    border: 1px solid $color-text-disable;
   }
 }
