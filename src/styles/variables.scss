@@ -690,7 +690,7 @@ $switch-close-disabled-background-color: var(
 ) !default;
 $switch-open-disabled-background-color: var(
   --nutui-switch-open-disabled-background-color,
-  $color-primary-light-press
+  $color-primary-disable
 ) !default;
 $switch-close-line-background-color: var(
   --nutui-switch-close-line-bg-color,
