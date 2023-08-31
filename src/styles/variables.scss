@@ -676,31 +676,39 @@ $avatar-normal-width: var(--nutui-avatar-normal-width, 40px) !default;
 $avatar-normal-height: var(--nutui-avatar-normal-height, 40px) !default;
 
 //switch（✅）
-$switch-inactive-background-color: var(
+$switch-close-background-color: var(
   --nutui-switch-close-background-color,
-  #ebebeb
+  $color-text-disable
 ) !default;
-$switch-active-background-color: var(
+$switch-open-background-color: var(
   --nutui-switch-open-background-color,
   $color-primary
 ) !default;
+$switch-close-disabled-background-color: var(
+  --nutui-switch-close-disabled-background-color,
+  var(--nutui-black-3)
+) !default;
+$switch-open-disabled-background-color: var(
+  --nutui-switch-open-disabled-background-color,
+  $color-primary-disable
+) !default;
 $switch-close-line-background-color: var(
   --nutui-switch-close-line-bg-color,
-  #f0f0f0
+  #fff
 ) !default;
-$switch-width: var(--nutui-switch-width, 36px) !default;
-$switch-height: var(--nutui-switch-height, 21px) !default;
-$switch-line-height: var(--nutui-switch-line-height, 21px) !default;
-$switch-border-radius: var(--nutui-switch-border-radius, 21px) !default;
-$switch-inside-width: var(--nutui-switch-inside-width, 13px) !default;
-$switch-inside-height: var(--nutui-switch-inside-height, 13px) !default;
+$switch-width: var(--nutui-switch-width, 40px) !default;
+$switch-height: var(--nutui-switch-height, 24px) !default;
+$switch-line-height: var(--nutui-switch-line-height, 24px) !default;
+$switch-border-radius: var(--nutui-switch-border-radius, 24px) !default;
+$switch-inside-width: var(--nutui-switch-inside-width, 20px) !default;
+$switch-inside-height: var(--nutui-switch-inside-height, 20px) !default;
 $switch-inside-open-transform: var(
   --nutui-switch-inside-open-transform,
-  translateX(146%)
+  translateX(90%)
 ) !default;
 $switch-inside-close-transform: var(
   --nutui-switch-inside-close-transform,
-  translateX(30%)
+  translateX(14%)
 ) !default;
 
 // toast（✅）

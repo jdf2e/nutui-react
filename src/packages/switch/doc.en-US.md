@@ -172,8 +172,10 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-switch-close-background-color | Switch off state background color | `#ebebeb` |
+| \--nutui-switch-close-background-color | Switch off state background color | `$color-text-disable` |
 | \--nutui-switch-open-background-color | Switch on background color | `$color-primary` |
+| \--nutui-switch-close-disabled-background-color | Switch off state's disabled background color | `rgba(0, 0, 0, 0.06)` |
+| \--nutui-switch-open-disabled-background-color | Switch on state's disabled background color | `$color-primary-disable` |
 | \--nutui-switch-width | Switch width | `36px` |
 | \--nutui-switch-height | Switch height | `21px` |
 | \--nutui-switch-line-height | Switch line height | `21px` |

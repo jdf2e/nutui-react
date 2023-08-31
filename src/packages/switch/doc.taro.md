@@ -174,8 +174,10 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-switch-close-background-color | 开关关闭状态背景颜色 | `#ebebeb` |
+| \--nutui-switch-close-background-color | 开关关闭状态背景颜色 | `$color-text-disable` |
 | \--nutui-switch-open-background-color | 开关打开状态背景颜色 | `$color-primary` |
+| \--nutui-switch-close-disabled-background-color | 开关关闭时的禁用时的背景颜色 | `rgba(0, 0, 0, 0.06)` |
+| \--nutui-switch-open-disabled-background-color | 开关打开时的禁用时的背景颜色 | `$color-primary-disable` |
 | \--nutui-switch-width | 开关宽度 | `36px` |
 | \--nutui-switch-height | 开关高度 | `21px` |
 | \--nutui-switch-line-height | 开关行高 | `21px` |
