@@ -3,6 +3,12 @@ import classNames from 'classnames'
 import { Failure, Loading, Success, Tips } from '@nutui/icons-react-taro'
 import Overlay from '@/packages/overlay/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import {
+  customEvents,
+  useCustomEvent,
+  useCustomEventsPath,
+  useParams,
+} from '@/utils/use-custom-event'
 
 export type ToastPositionType = 'top' | 'bottom' | 'center'
 
@@ -48,40 +54,55 @@ const classPrefix = 'nut-toast'
 // export default class Notification extends React.PureComponent<NotificationProps> {
 export const Toast: FunctionComponent<
   Partial<ToastProps> & React.HTMLAttributes<HTMLDivElement>
-> = (props) => {
+> & {
+  show: typeof show
+  hide: typeof hide
+} = (props) => {
   const {
-    children,
-    id,
-    position,
-    contentStyle,
-    icon,
-    iconSize,
-    msg,
-    duration,
-    type,
-    title,
-    closeOnOverlayClick,
-    lockScroll,
-    contentClassName,
-    size,
-    visible,
-    className,
-    style,
-    onClose,
-    ...rest
-  } = { ...defaultProps, ...props }
+    params: {
+      id,
+      position,
+      contentStyle,
+      icon,
+      iconSize,
+      msg,
+      duration,
+      type,
+      title,
+      closeOnOverlayClick,
+      lockScroll,
+      contentClassName,
+      size,
+      visible,
+      className,
+      style,
+      onClose,
+    },
+    setParams,
+  } = useParams({ ...defaultProps, ...props })
   let timer: number | null
 
   const [openState, SetOpenState] = useState(false)
 
   useEffect(() => {
     if (visible) {
-      SetOpenState(true)
       show()
     } else {
       hide()
     }
   }, [visible])
+
+  useCustomEvent(
+    id as string,
+    ({ status, options }: { status: boolean; options: any }) => {
+      if (status) {
+        setParams(options)
+        show()
+      } else {
+        hide()
+      }
+    }
+  )
 
   const clearTimer = () => {
     if (timer) {
@@ -91,10 +112,11 @@ export const Toast: FunctionComponent<
   }
   const hide = () => {
     SetOpenState(false)
-    onClose()
+    onClose?.()
   }
   const show = () => {
     clearTimer()
+    SetOpenState(true)
     if (duration) {
       timer = window.setTimeout(() => {
         hide()
@@ -163,5 +185,26 @@ export const Toast: FunctionComponent<
   )
 }
 
+export interface ToastOptions {
+  title: string
+  msg?: string
+  type?: string
+  duration?: number
+}
+
+export function show(selector: string, options: ToastOptions) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const path = useCustomEventsPath(selector)
+  customEvents.trigger(path, { status: true, options })
+}
+
+export function hide(selector: string) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const path = useCustomEventsPath(selector)
+  customEvents.trigger(path, { status: false })
+}
+
 Toast.defaultProps = defaultProps
 Toast.displayName = 'NutToast'
+Toast.show = show
+Toast.hide = hide

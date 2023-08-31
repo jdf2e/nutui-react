@@ -213,12 +213,12 @@ export default App;
 
 :::
 
-## API
+## Loading
 
 ### Props
 
-| Name         | Description                          | type   | default           |
+| Property         | Description                          | type   | default           |
 |--------------|----------------------------------|--------|------------------|
 | type         | loading icon type                    | circular \| spinner | `circular`          |
 | direction    | direction of icon and text           | horizontal \| vertical | `horizontal`     | 
-| icon         | custom loading icon                  | JSX.Element         |  `-`
+| icon         | custom loading icon                  | JSX.Element         |  `-` |

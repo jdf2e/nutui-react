@@ -11,7 +11,8 @@ interface ContentProps {
 }
 
 export const Content: FunctionComponent<
-  Partial<ContentProps> & Omit<HTMLAttributes<HTMLDivElement>, 'onClick'>
+  Partial<ContentProps> &
+    Omit<HTMLAttributes<HTMLDivElement>, 'onClick' | 'title'>
 > = (props) => {
   const { visible, title, footer, footerDirection, onClick, children } = props
 

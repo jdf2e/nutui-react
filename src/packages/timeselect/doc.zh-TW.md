@@ -21,7 +21,7 @@ import React, { useState } from 'react'
 import { TimeSelect, Cell } from '@nutui/nutui-react'
 
 const Demo = () => {
-  const [visible, SetVisible] = useState(false)
+  const [visible, setVisible] = useState(false)
   const options = [
     {
       value: '20230520',
@@ -85,7 +85,7 @@ import React, { useState } from 'react'
 import { TimeSelect, Cell } from '@nutui/nutui-react'
 
 const Demo = () => {
-  const [visible, SetVisible] = useState(false)
+  const [visible, setVisible] = useState(false)
   const optionKey = {
     valueKey: 'value1',
     textKey: 'text1',
@@ -162,7 +162,7 @@ import React, { useState } from 'react'
 import { TimeSelect, Cell } from '@nutui/nutui-react'
 
 const Demo = () => {
-  const [visible, SetVisible] = useState(false)
+  const [visible, setVisible] = useState(false)
   const options = [
     {
       value: '20230520',
@@ -227,7 +227,7 @@ import React, { useState } from 'react'
 import { TimeSelect, Cell } from '@nutui/nutui-react'
 
 const Demo = () => {
-  const [visible, SetVisible] = useState(false)
+  const [visible, setVisible] = useState(false)
   const options = [
     {
       value: 'zhejiang',

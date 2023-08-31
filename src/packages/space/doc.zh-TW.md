@@ -33,7 +33,7 @@ import { Space, Button } from '@nutui/nutui-react';
 export default App;
 
 ```
-
+:::
 ### 換行
 
 :::demo
@@ -57,7 +57,7 @@ const App = () => {
 export default App;
 
 ```
-
+:::
 ### 垂直
 
 :::demo
@@ -78,7 +78,7 @@ const App = () => {
 export default App;
 
 ```
-
+:::
 ### 間距大小
 
 :::demo
@@ -105,8 +105,8 @@ const App = () => {
 export default App;
 
 ```
-
-## API
+:::
+## Space
 
 ### Props
 

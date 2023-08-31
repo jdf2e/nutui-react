@@ -11,6 +11,7 @@ import { PopupProps } from '@/packages/popup/popup'
 import { getRect } from '@/utils/use-client-rect'
 import { ComponentDefaults } from '@/utils/typings'
 import useClickAway from '@/utils/use-click-away'
+import { canUseDom } from '@/utils/can-use-dom'
 
 export type PopoverLocation =
   | 'bottom'
@@ -119,9 +120,12 @@ export const Popover: FunctionComponent<
       }, 0)
     }
   }, [visible])
-
+  let element
+  if (canUseDom) {
+    element = targetId && document.querySelector(`#${targetId}`)
+  }
   const targetSet = [
-    targetId ? document.querySelector(`#${targetId}`) : popoverRef.current,
+    targetId ? element : popoverRef.current,
     popoverContentRef.current,
   ]
 
