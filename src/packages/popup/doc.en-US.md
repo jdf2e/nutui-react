@@ -229,7 +229,10 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-popup-border-radius | popup's border radius | `20px` |
-| \--nutui-popup-close-icon-margin | the margin of the close icon | `16px` |
-| \--nutui-popup-close-icon-size | close icon's size | `30px` |
-| \--nutui-popup-animation-duration | close icon's animation duration | `0.3s` |
+| \--nutui-popup-border-radius | popup's border radius | `24px` |
+| \--nutui-popup-icon-size | popup's title icon size | `18px` |
+| \--nutui-popup-title-padding | popup's title padding | `16px` |
+| \--nutui-popup-title-font-size | popup's title font size | `18px` |
+| \--nutui-popup-title-height | popup's title height | `50px` |
+| \--nutui-popup-title-border-bottom | popup's title border-bottom | `0` |
+| \--nutui-popup-animation-duration | lose icon's animation duration | `0.3s` |

@@ -44,10 +44,12 @@ export const Overlay: FunctionComponent<
     ...defaultOverlayProps,
     ...props,
   }
-
-  const [innerVisible, setInnerVisible] = useState(visible)
-
   const classPrefix = `nut-overlay`
+  const classes = classNames(className, classPrefix)
+  const styles = {
+    ...style,
+  }
+  const [innerVisible, setInnerVisible] = useState(visible)
 
   useEffect(() => {
     if (visible) {
@@ -63,12 +65,6 @@ export const Overlay: FunctionComponent<
       document.body.classList.remove('nut-overflow-hidden')
     }
   }, [])
-
-  const classes = classNames(className, classPrefix)
-
-  const styles = {
-    ...style,
-  }
 
   const lock = () => {
     if (lockScroll && visible) {

@@ -22,7 +22,7 @@ const OverlayDemo = () => {
       '2a9e4928': '显示遮罩层',
       duration: '设置动画时间',
       lockscroll: '不锁定背景滚动',
-      abbf9359: '遮罩样式',
+      abbf9359: '自定义遮罩样式',
       ec0d7acf: '嵌套内容',
       ce1e18a2: '这里是正文',
       closeClickLay: '点击遮罩不关闭',
@@ -32,7 +32,7 @@ const OverlayDemo = () => {
       '2a9e4928': '顯示遮罩層',
       duration: '設置動畫時間',
       lockscroll: '不鎖定背景滾動',
-      abbf9359: '遮罩樣式',
+      abbf9359: '自定義遮罩樣式',
       ec0d7acf: '嵌套內容',
       ce1e18a2: '這裡是正文',
       closeClickLay: '點擊遮罩不關閉',
@@ -42,7 +42,7 @@ const OverlayDemo = () => {
       '2a9e4928': 'Show mask layer',
       duration: 'Set animation time',
       lockscroll: 'Donot Lock background scrolling',
-      abbf9359: 'Mask style',
+      abbf9359: 'Custom mask style',
       ec0d7acf: 'nested content',
       ce1e18a2: 'here is the text',
       closeClickLay: 'Click the mask not to close',
@@ -124,7 +124,7 @@ const OverlayDemo = () => {
             visible={visible2}
             onClick={onClose2}
             style={{
-              backgroundColor: 'rgba(0, 0, 0, .2)',
+              backgroundColor: 'rgba(0, 0, 0, .4)',
               '--nutui-overlay-zIndex': 2000,
             }}
           />

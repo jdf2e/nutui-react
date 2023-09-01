@@ -13,6 +13,7 @@
   background-color: $color-background-overlay;
 
   .steps-button {
-    text-align: center;
+    display: flex;
+    justify-content: center;
   }
 }

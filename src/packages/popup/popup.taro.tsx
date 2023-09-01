@@ -30,8 +30,8 @@ export interface PopupProps extends OverlayProps {
   closeable: boolean
   closeIconPosition: string
   closeIcon: ReactNode
-  left?: ReactNode
-  title?: ReactNode
+  left: ReactNode
+  title: ReactNode
   destroyOnClose: boolean
   portal: Teleport
   overlay: boolean
@@ -120,15 +120,15 @@ export const Popup: FunctionComponent<
   }
 
   const popClassName = classNames({
-    round,
+    [`${classPrefix}-round`]: round || position === 'bottom',
     [`${classPrefix}`]: true,
     [`${classPrefix}-${position}`]: true,
     [`${className || ''}`]: true,
   })
 
   const closeClasses = classNames({
-    [`${classPrefix}__close-icon`]: true,
-    [`${classPrefix}__close-icon--${closeIconPosition}`]: true,
+    [`${classPrefix}-title-right`]: true,
+    [`${classPrefix}-title-right--${closeIconPosition}`]: true,
   })
 
   const open = () => {
@@ -197,32 +197,28 @@ export const Popup: FunctionComponent<
     return node
   }
 
-  const renderIcon = () => {
-    if (closeable) {
+  const renderTitle = () => {
+    if (left || title || closeable) {
       return (
-        <View className={closeClasses} onClick={onHandleClickCloseIcon}>
-          {React.isValidElement(closeIcon) ? (
-            closeIcon
-          ) : (
-            <Close width={12} height={12} />
+        <View className={`${classPrefix}-title`}>
+          {position === 'bottom' && (
+            <>
+              {left && (
+                <View className={`${classPrefix}-title-left`}>{left}</View>
+              )}
+              {title && (
+                <View className={`${classPrefix}-title-title`}>{title}</View>
+              )}
+            </>
+          )}
+          {closeable && (
+            <View className={closeClasses} onClick={onHandleClickCloseIcon}>
+              {React.isValidElement(closeIcon) ? closeIcon : <Close />}
+            </View>
           )}
         </View>
       )
     }
-    return null
-  }
-
-  const renderTitle = () => {
-    return (
-      <>
-        {position === 'bottom' && (
-          <>
-            {left && <View className={`${classPrefix}-left-icon`}>{left}</View>}
-            {title && <View className={`${classPrefix}-title`}>{title}</View>}
-          </>
-        )}
-      </>
-    )
   }
   const renderPop = () => {
     return (
@@ -240,7 +236,6 @@ export const Popup: FunctionComponent<
           onClick={onHandleClick}
         >
           {renderTitle()}
-          {renderIcon()}
           {showChildren ? children : ''}
         </View>
       </CSSTransition>

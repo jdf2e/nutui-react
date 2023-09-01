@@ -40,7 +40,7 @@ export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
   })
 
   const classes = () => {
-    return `${classPrefix} ${value ? 'switch-open' : 'switch-close'} ${
+    return `${classPrefix} ${value ? 'nut-switch-open' : 'nut-switch-close'} ${
       disabled ? `${classPrefix}-disabled` : ''
     } ${`${classPrefix}-base`} ${className}`
   }
@@ -62,11 +62,9 @@ export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
         {activeText && (
           <>
             {value ? (
-              <div className={`${classPrefix}__label open`}>{activeText}</div>
+              <div className={`${classPrefix}-label open`}>{activeText}</div>
             ) : (
-              <div className={`${classPrefix}__label close`}>
-                {inactiveText}
-              </div>
+              <div className={`${classPrefix}-label close`}>{inactiveText}</div>
             )}
           </>
         )}

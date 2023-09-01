@@ -86,7 +86,7 @@ export const RadioGroup = React.forwardRef(
       >
         <div
           className={classNames(classPrefix, className, {
-            [`${classPrefix}--${props.direction}`]: props.direction,
+            [`${classPrefix}-${props.direction}`]: props.direction,
           })}
           {...rest}
         >
