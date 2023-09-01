@@ -1,5 +1,5 @@
 .nut-inputnumber {
-  display: $inputnumber-display;
+  display: flex;
   align-items: center;
 
   .nut-input-minus,
@@ -15,7 +15,7 @@
 
   &--disabled {
     input {
-      color: $inputnumber-icon-void-color !important;
+      color: $inputnumber-disabled-color !important;
     }
   }
 
@@ -25,7 +25,7 @@
     cursor: pointer;
 
     &--disabled {
-      color: $inputnumber-icon-disabled-color;
+      color: $inputnumber-disabled-color;
       cursor: not-allowed;
     }
   }
@@ -33,15 +33,18 @@
   input,
   .nut-number-input,
   &__text--readonly {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: $inputnumber-input-width;
     height: $inputnumber-input-height;
     text-align: center;
     outline: none;
     border: $inputnumber-input-border;
+    border-radius: $inputnumber-input-border-radius;
     margin: $inputnumber-input-margin;
     color: $inputnumber-input-font-color;
     background-color: $inputnumber-input-background-color;
-    border-radius: $inputnumber-input-border-radius;
   }
 
   input::-webkit-outer-spin-button,
@@ -54,12 +57,12 @@
 
 .nut-icon-Minus,
 .nut-icon-minus {
-  --nut-icon-width: 20px;
-  --nut-icon-height: 20px;
+  --nut-icon-width: 16px;
+  --nut-icon-height: 16px;
 }
 
 .nut-icon-Plus,
 .nut-icon-plus {
-  --nut-icon-width: 20px;
-  --nut-icon-height: 20px;
+  --nut-icon-width: 16px;
+  --nut-icon-height: 16px;
 }
