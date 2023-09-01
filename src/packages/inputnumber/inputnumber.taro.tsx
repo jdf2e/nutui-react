@@ -99,7 +99,7 @@ export const InputNumber: FunctionComponent<
   const classes = classNames(
     {
       [`${classPrefix}`]: true,
-      [`${classPrefix}--disabled`]: disabled,
+      [`${classPrefix}-disabled`]: disabled,
     },
     className
   )
@@ -126,12 +126,12 @@ export const InputNumber: FunctionComponent<
     return Number(value) > Number(min) && !disabled
   }
 
-  const iconMinusClasses = classNames('nut-inputnumber__icon icon-minus', {
-    'nut-inputnumber__icon--disabled': !reduceAllow(),
+  const iconMinusClasses = classNames('nut-inputnumber-icon icon-minus', {
+    'nut-inputnumber-icon-disabled': !reduceAllow(),
   })
 
-  const iconAddClasses = classNames('nut-inputnumber__icon icon-plus', {
-    'nut-inputnumber__icon--disabled': !addAllow(),
+  const iconAddClasses = classNames('nut-inputnumber-icon icon-plus', {
+    'nut-inputnumber-icon-disabled': !addAllow(),
   })
 
   const fixedDecimalPlaces = (v: string | number): string => {

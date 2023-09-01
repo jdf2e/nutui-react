@@ -13,18 +13,18 @@
     border-radius: $inputnumber-button-border-radius;
   }
 
-  &--disabled {
+  &-disabled {
     input {
       color: $inputnumber-disabled-color !important;
     }
   }
 
-  &__icon {
+  &-icon {
     color: $inputnumber-icon-color;
     font-size: $inputnumber-icon-size;
     cursor: pointer;
 
-    &--disabled {
+    &-disabled {
       color: $inputnumber-disabled-color;
       cursor: not-allowed;
     }
@@ -32,7 +32,7 @@
 
   input,
   .nut-number-input,
-  &__text--readonly {
+  &-text-readonly {
     display: flex;
     justify-content: center;
     align-items: center;
