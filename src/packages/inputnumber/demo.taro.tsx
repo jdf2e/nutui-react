@@ -8,7 +8,6 @@ import {
   ConfigProvider,
 } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import '@/packages/inputnumber/demo.scss'
 
 interface T {
   '6333c786': string

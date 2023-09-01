@@ -5,7 +5,6 @@ import Cell from '@/packages/cell'
 import Toast from '@/packages/toast'
 
 import ConfigProvider from '@/packages/configprovider'
-import './demo.scss'
 
 interface T {
   '6333c786': string
