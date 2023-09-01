@@ -69,6 +69,7 @@ const ToastDemo = () => {
     Toast.show({
       content: msg,
       icon: 'success',
+      title: `${translated.toastTitle}`,
     })
   }
   const errorToast = (msg: string) => {

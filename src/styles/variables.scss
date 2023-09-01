@@ -685,14 +685,13 @@ $switch-inside-close-transform: var(
 $toast-title-font-size: var(--nutui-toast-title-font-size, 16px) !default;
 $toast-text-font-size: var(--nutui-toast-text-font-size, 14px) !default;
 $toast-font-color: var(--nutui-toast-font-color, $white) !default;
-$toast-inner-padding: var(--nutui-toast-inner-padding, 24px 30px) !default;
+$toast-inner-padding: var(--nutui-toast-inner-padding, 16px 24px) !default;
 $toast-inner-bg-color: var(--nutui-toast-inner-bg-color, $color-mask) !default;
 $toast-inner-border-radius: var(
   --nutui-toast-inner-border-radius,
-  12px
+  16px
 ) !default;
 $toast-inner-top: var(--nutui-toast-inner-top, 50%) !default;
-$toast-inner-text-align: var(--nutui-toast-inner-text-align, 'center') !default;
 
 //tour（✅）
 $tour-mask-border-radius: var(--nutui-tour-mask-border-radius, 10px) !default;
