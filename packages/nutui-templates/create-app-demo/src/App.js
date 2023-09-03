@@ -1,3 +1,4 @@
+import React from 'react'
 import './App.css'
 import { Star } from '@nutui/icons-react'
 import { Row, Col, Image, Button } from '@nutui/nutui-react'
