@@ -215,7 +215,6 @@ export const Swipe = forwardRef<
     if (props[`${side}Action`]) {
       return (
         <div
-          id="left"
           ref={side === 'left' ? leftWrapper : rightWrapper}
           className={`${classPrefix}__${side}`}
           onClick={(e) => handleOperate(e, side)}
