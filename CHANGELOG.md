@@ -1,3 +1,22 @@
+# v2.0.15
+`2023-08-30`
+
+* :sparkles: feat: support next.js (#1326) @oasis-cloud
+* :bug: fix: dialog content 失效 (#1323) @oasis-cloud
+* :bug: fix: space 复制按钮重复 (#1322) @oasis-cloud
+* 🔨 chore(tabs): 更新文档与 demo (#1339) @Eiinu
+
+
+# v2.0.14
+`2023-08-18`
+
+* :bug: fix: skeleton row 设置为 1 时, 宽度只能固定为70% (#1306) @ivan-My
+* :bug: fix: loading 构建产物增加类型注释 (#1320) @oasis-cloud
+* :bug: fix: space 构建产物增加类型注释 (#1321) @oasis-cloud
+* 📖 docs: dialog 指令式用法注意事项 (#1318) @oasis-cloud
+
+
+
 # v2.0.13
 `2023-08-16`
 

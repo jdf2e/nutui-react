@@ -350,7 +350,6 @@ const TabsDemo = () => {
           onChange={(value) => {
             setTab82value(value)
           }}
-          activeType="smile"
           direction="vertical"
         >
           <Tabs.TabPane title="Tab 1">
@@ -359,7 +358,6 @@ const TabsDemo = () => {
               onChange={(value) => {
                 setTab9value(value)
               }}
-              activeType="smile"
               direction="horizontal"
             >
               <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
@@ -378,7 +376,6 @@ const TabsDemo = () => {
             setTab8value(value)
           }}
           autoHeight
-          activeType="smile"
         >
           <Tabs.TabPane title="Tab 1">
             <Tabs

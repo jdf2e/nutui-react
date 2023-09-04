@@ -47,7 +47,6 @@ export const DialogWrap: FunctionComponent<
   } = props
 
   const onHandleClickOverlay = (e: any) => {
-    console.log('onClose?.()', closeOnOverlayClick)
     if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
       const closed = onOverlayClick && onOverlayClick(e)
       closed && onClose?.()
