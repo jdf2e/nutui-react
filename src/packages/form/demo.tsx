@@ -1,6 +1,6 @@
 import React from 'react'
 import { Right } from '@nutui/icons-react'
-import { Form } from './form'
+import Form from './index'
 import { Input } from '../input/input'
 import Cell from '@/packages/cell'
 import { useTranslate } from '../../sites/assets/locale'
