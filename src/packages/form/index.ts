@@ -21,4 +21,6 @@ type CompoundedComponent = React.ForwardRefExoticComponent<
 
 const InnerForm = Form as CompoundedComponent
 
+InnerForm.Item = FormItem
+
 export default InnerForm
