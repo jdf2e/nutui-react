@@ -87,8 +87,8 @@ importers:
         specifier: ^6.0.3
         version: 6.0.3(@babel/core@7.21.4)(rollup@3.20.6)
       '@rollup/plugin-commonjs':
-        specifier: ^24.1.0
-        version: 24.1.0(rollup@3.20.6)
+        specifier: ^25.0.0
+        version: 25.0.4(rollup@3.20.6)
       '@rollup/plugin-node-resolve':
         specifier: 15.0.1
         version: 15.0.1(rollup@3.20.6)
@@ -3210,8 +3210,8 @@ packages:
       rollup: 3.20.6
     dev: true
 
-  /@rollup/plugin-commonjs@24.1.0(rollup@3.20.6):
-    resolution: {integrity: sha512-eSL45hjhCWI0jCCXcNtLVqM5N1JlBGvlFfY0m6oOYnLCJ6N0qEXoZql4sY2MOUArzhH4SA/qBpTxvvZp2Sc+DQ==}
+  /@rollup/plugin-commonjs@25.0.4(rollup@3.20.6):
+    resolution: {integrity: sha512-L92Vz9WUZXDnlQQl3EwbypJR4+DM2EbsO+/KOcEkP4Mc6Ct453EeDB2uH9lgRwj4w5yflgNpq9pHOiY8aoUXBQ==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       rollup: ^2.68.0||^3.0.0
