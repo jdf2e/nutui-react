@@ -219,6 +219,7 @@ ToastOptions 是 ToastProps 的子集，包含如下属性：msg, title, type, d
 | \--nutui-toast-title-font-size | `toast`标题文字大小 | `16px` |
 | \--nutui-toast-text-font-size | `toast`内容文字大小 | `14px` |
 | \--nutui-toast-font-color | `toast`文字颜色 | `#fff` |
+| \--nutui-toast-inner-top           | `toast`内容区自定义高度    | `50%`              |
 | \--nutui-toast-inner-padding | `toast`内容区padding值 | `24px 30px` |
 | \--nutui-toast-inner-bg-color | `toast`内容区背景色 | `$gray7` |
 | \--nutui-toast-inner-border-radius | `toast`内容区圆角值 | `12px` |
