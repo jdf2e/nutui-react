@@ -120,7 +120,7 @@
     "@tarojs/plugin-platform-weapp": "3.6.8",
     "@tarojs/react": "3.6.8",
     "@tarojs/taro": "3.6.8",
-    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/jest-dom": "^6.0.0",
     "@testing-library/react": "^14.0.0",
     "@types/jest": "^27.5.2",
     "@types/loadable__component": "^5.13.4",
