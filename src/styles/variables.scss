@@ -278,22 +278,15 @@ $divider-text-font-size: var(
   --nutui-divider-text-font-size,
   $font-size
 ) !default;
+$divider-border-color: var(
+  --nutui-divider-border-color,
+  $color-border
+) !default;
 $divider-text-color: var(--nutui-divider-text-color, $color-text) !default;
 $divider-line-height: var(--nutui-divider-line-height, 2px) !default;
-$divider-before-margin-right: var(
-  --nutui-divider-before-margin-right,
-  16px
-) !default;
-$divider-after-margin-left: var(
-  --nutui-divider-after-margin-left,
-  16px
-) !default;
+$divider-spacing: var(--nutui-divider-spacing, 8px) !default;
 $divider-vertical-height: var(--nutui-divider-vertical-height, 12px) !default;
 $divider-vertical-top: var(--nutui-divider-vertical-top, 2px) !default;
-$divider-vertical-border-left: var(
-  --nutui-divider-vertical-border-left,
-  rgba(0, 0, 0, 0.06)
-) !default;
 $divider-vertical-margin: var(--nutui-divider-vertical-margin, 0 8px) !default;
 
 // icon（✅）
@@ -740,7 +733,10 @@ $tour-content-bottom-btn-border-radius: var(
 ) !default;
 
 //backtop（✅）
-$backtop-border-color: var(--nutui-backtop-border-color, #e0e0e0) !default;
+$backtop-border-color: var(
+  --nutui-backtop-border-color,
+  $color-border
+) !default;
 
 // calendar（✅）
 $calendar-choose-background-color: var(
