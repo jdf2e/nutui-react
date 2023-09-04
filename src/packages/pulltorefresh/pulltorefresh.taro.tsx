@@ -72,6 +72,7 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
 
   const handleTouchStart: any = (e: ITouchEvent) => {
     touch.start(e as any)
+    pullingRef.current = true
   }
   const handleTouchMove: any = (e: ITouchEvent) => {
     if (props.scrollTop > 0) {
@@ -80,16 +81,17 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
     if (status === 'refreshing' || status === 'complete') return
     // touch 的封装不好，比如在使用高度控制的时候，就很迷
     touch.move(e as any)
-    if (touch.isVertical()) {
-      pullingRef.current = true
-      setHeight(
-        Math.max(
-          rubberbandIfOutOfBounds(touch.deltaY, 0, 0, headHeight * 5, 0.5),
-          0
-        )
-      )
-      setStatus(height > threshold ? 'canRelease' : 'pulling')
+    if ((e as any).cancelable) {
+      e.preventDefault()
     }
+    e.stopPropagation()
+    setHeight(
+      Math.max(
+        rubberbandIfOutOfBounds(touch.deltaY, 0, 0, headHeight * 5, 0.5),
+        0
+      )
+    )
+    setStatus(height > threshold ? 'canRelease' : 'pulling')
   }
 
   async function doRefresh() {
