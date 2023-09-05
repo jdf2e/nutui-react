@@ -88,9 +88,9 @@ export const Cell: FunctionComponent<
               {extra}
             </div>
           ) : null}
-          <div className={`${classPrefix}__divider`} />
         </>
       )}
+      <div className={`${classPrefix}__divider`} />
     </div>
   )
 }
