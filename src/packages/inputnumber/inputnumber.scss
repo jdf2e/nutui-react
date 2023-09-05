@@ -53,16 +53,16 @@
   .nut-number-input::-webkit-inner-spin-button {
     appearance: none;
   }
-}
 
-.nut-icon-Minus,
-.nut-icon-minus {
-  --nut-icon-width: 16px;
-  --nut-icon-height: 16px;
-}
+  .nut-icon-Minus,
+  .nut-icon-minus {
+    --nut-icon-width: 16px;
+    --nut-icon-height: 16px;
+  }
 
-.nut-icon-Plus,
-.nut-icon-plus {
-  --nut-icon-width: 16px;
-  --nut-icon-height: 16px;
+  .nut-icon-Plus,
+  .nut-icon-plus {
+    --nut-icon-width: 16px;
+    --nut-icon-height: 16px;
+  }
 }
