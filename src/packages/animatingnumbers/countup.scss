@@ -8,21 +8,30 @@
   &__listitem {
     height: $countup-height;
     overflow: hidden;
-    font-size: $countup-base-size;
     color: $color-title;
-    font-weight: bold;
+    font-size: $countup-base-size;
+    font-weight: $font-weight-bold;
+
+    &--number {
+      margin: 0 $countup-lr-margin;
+      border-radius: $countup-border-radius;
+      color: $countup-color;
+      background-color: $countup-bgcolor;
+    }
   }
 
   &__separator {
     display: flex;
     height: 80%;
     align-items: flex-end;
+    color: $countup-bgcolor;
   }
 
   &__number {
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: $countup-width;
 
     span {
       height: $countup-height;
