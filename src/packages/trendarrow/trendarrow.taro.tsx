@@ -24,7 +24,7 @@ const defaultProps = {
   left: false,
   sync: true,
   color: '#333',
-  riseColor: '#fa2c19',
+  riseColor: 'var(--nutui-brand-6)',
   dropColor: '#64b578',
   riseIcon: null,
   dropIcon: null,

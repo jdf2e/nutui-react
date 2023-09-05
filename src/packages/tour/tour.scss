@@ -1,7 +1,7 @@
 .nut-tour {
   &-mask {
     position: fixed;
-    box-shadow: 0px 0px 0px 150vh rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 0px 0px 150vh $color-mask;
     border-radius: $tour-mask-border-radius;
     z-index: 999;
 
@@ -53,6 +53,7 @@
           font-size: $tour-content-bottom-btn-font-size;
           border-radius: $tour-content-bottom-btn-border-radius;
           color: $color-text;
+          cursor: pointer;
 
           &.active {
             color: #fff;
