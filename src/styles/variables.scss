@@ -88,7 +88,6 @@ $button-border-radius: var(--nutui-button-border-radius, 24px) !default;
 $button-border-width: var(--nutui-button-border-width, 1px) !default;
 
 $button-normal-padding: var(--nutui-button-normal-padding, 0px 20px) !default;
-
 $button-default-height: var(--nutui-button-default-height, 40px) !default;
 $button-default-color: var(--nutui-button-default-color, $color-title) !default;
 $button-default-background-color: var(
@@ -1006,58 +1005,41 @@ $steps-dot-icon-border: var(
 $steps-dot-head-margin: var(--nutui-steps-dot-head-margin, 7px 0 0 0) !default;
 
 // dialog（✅）
-$dialog-width: var(--nutui-dialog-width, 296px) !default;
-$dialog-header-font-weight: var(
-  --nutui-dialog-header-font-weight,
-  normal
+$dialog-z-index: var(
+  --nutui-dialog-outer-z-index,
+  $mask-content-z-index
 ) !default;
-$dialog-header-color: var(
-  --nutui-dialog-header-color,
-  rgba(38, 38, 38, 1)
-) !default;
+$dialog-width: var(--nutui-dialog-width, 295px) !default;
+$dialog-padding: var(--nutui-dialog-padding, 24px) !default;
+$dialog-min-height: var(--nutui-dialog-min-height, 124px) !default;
+$dialog-border-radius: var(--nutui-dialog-border-radius, 16px) !default;
 $dialog-footer-justify-content: var(
   --nutui-dialog-footer-justify-content,
   space-around
 ) !default;
-$dialog-min-height: var(--nutui-dialog-min-height, 156px) !default;
-$dialog-padding: var(--nutui-dialog-padding, 28px 24px 16px 24px) !default;
-$dialog-header-height: var(--nutui-dialog-header-height, 20px) !default;
-$dialog-content-margin: var(--nutui-dialog-content-margin, 20px 0) !default;
+$dialog-content-margin: var(
+  --nutui-dialog-content-margin,
+  5px 0 24px 0
+) !default;
 $dialog-content-max-height: var(
   --nutui-dialog-content-max-height,
   268px
 ) !default;
 $dialog-content-line-height: var(
   --nutui-dialog-content-line-height,
-  16px
+  20px
 ) !default;
 $dialog-content-text-align: var(
   --nutui-dialog-content-text-align,
-  center
-) !default;
-$dialog-overlay-background-color: var(
-  --nutui-dialog-overlay-background-color,
-  $color-mask
-) !default;
-$dialog-outer-z-index: var(
-  --nutui-dialog-outer-z-index,
-  $mask-content-z-index
-) !default;
-$dialog-outer-border-radius: var(
-  --nutui-dialog-outer-border-radius,
-  20px
-) !default;
-$dialog-vertical-footer-ok-margin-top: var(
-  --nutui-dialog-vertical-footer-ok-margin-top,
-  10px
+  left
 ) !default;
 $dialog-footer-button-min-width: var(
   --nutui-dialog-footer-button-min-width,
-  100px
+  117px
 ) !default;
 $dialog-footer-cancel-margin-right: var(
   --nutui-dialog-footer-cancel-margin-right,
-  20px
+  12px
 ) !default;
 $dialog-footer-ok-max-width: var(
   --nutui-dialog-footer-ok-max-width,

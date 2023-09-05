@@ -232,19 +232,16 @@ export default function App() {
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-dialog-width | 对话框宽度 | `296px` |
-| \--nutui-dialog-header-font-weight | 对话框标题字重 | `normal` |
-| \--nutui-dialog-header-color | 对话框标题字色 | `rgba(38, 38, 38, 1)` |
-| \--nutui-dialog-footer-justify-content | 对话框底部按钮排布 | `space-around` |
+| \--nutui-dialog-z-index | 对话框的z-index | `$mask-content-z-index` |
+| \--nutui-dialog-width | 对话框宽度 | `295px` |
+| \--nutui-dialog-padding | 对话框padding | `24px` |
 | \--nutui-dialog-min-height | 对话框最小高度 | `156px` |
-| \--nutui-dialog-padding | 对话框padding | `28px 24px 16px 24px` |
-| \--nutui-dialog-header-height | 对话框标题高度 | `20px` |
-| \--nutui-dialog-content-margin | 对话框内容 margin | `20px 0` |
+| \--nutui-dialog-border-radius | 对话框圆角 | `16px` |
+| \--nutui-dialog-content-margin | 对话框内容 margin | `5px 0 24px 0` |
 | \--nutui-dialog-content-max-height | 对话框内容最大高度 | `268px` |
-| \--nutui-dialog-content-line-height | 对话框内容行高 | `16px` |
-| \--nutui-dialog-outer-z-index | 对话框的z-index | `$mask-content-z-index` |
-| \--nutui-dialog-outer-border-radius | 对话框圆角 | `20px` |
-| \--nutui-dialog-vertical-footer-ok-margin-top | 对话框底部按钮纵向排布时的margin值 | `10px` |
-| \--nutui-dialog-footer-button-min-width | 对话框底部按钮最小宽度 | `100px` |
-| \--nutui-dialog-footer-cancel-margin-right | 对话框取消按钮的margin-right | `20px` |
+| \--nutui-dialog-content-line-height | 对话框内容行高 | `20px` |
+| \--nutui-dialog-content-text-align | 对话框内容文本对齐方式 | `left` |
+| \--nutui-dialog-footer-justify-content | 对话框底部按钮排布 | `space-around` |
+| \--nutui-dialog-footer-button-min-width | 对话框底部按钮最小宽度 | `117px` |
+| \--nutui-dialog-footer-cancel-margin-right | 对话框取消按钮的margin-right | `12px` |
 | \--nutui-dialog-footer-ok-max-width | 对话框确认按钮的最大宽度 | `128px` |
