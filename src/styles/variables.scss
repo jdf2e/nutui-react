@@ -1265,7 +1265,10 @@ $progress-color: var(
   --nutui-progress-color,
   linear-gradient(135deg, $color-primary-stop-1 0%, $color-primary-stop-2 100%)
 ) !default;
-$progress-background: var(--nutui-progress-background, #f3f3f3) !default;
+$progress-background: var(
+  --nutui-progress-background,
+  $color-background
+) !default;
 $progress-border-radius: var(--nutui-progress-border-radius, 12px) !default;
 $progress-text-color: var(
   --nutui-progress-text-color,
@@ -1718,7 +1721,7 @@ $grid-item-text-font-size: var(
 ) !default;
 
 // table（✅）
-$table-border-color: var(--nutui-table-border-color, #ececec) !default;
+$table-border-color: var(--nutui-table-border-color, $color-border) !default;
 $table-cols-padding: var(--nutui-table-cols-padding, 10px) !default;
 $table-tr-even-bg-color: var(
   --nutui-table-tr-even-bg-color,
@@ -1998,7 +2001,7 @@ $circleprogress-primary-color: var(
 ) !default;
 $circleprogress-path-color: var(
   --nutui-circleprogress-path-color,
-  #f3f3f3
+  $color-background
 ) !default;
 $circleprogress-text-color: var(
   --nutui-circleprogress-text-color,
