@@ -1,18 +1,23 @@
 .demo-signature {
   width: 100%;
+
   &.demo-taro-signature {
     position: fixed;
     height: 100%;
     overflow: hidden;
   }
+
   .demo-tips {
-    color: #1a1a1a;
+    color: $color-text;
   }
+
   .demo-btn {
+    margin-top: 0;
     display: inline-flex;
     align-items: center;
   }
 }
+
 // 小程序需要锁定页面滚定
 page {
   overflow: hidden;

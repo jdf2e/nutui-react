@@ -33,7 +33,7 @@ const defaultProps = {
   canvasId: 'spcanvas',
   type: 'png',
   lineWidth: 2,
-  strokeStyle: '#000',
+  strokeStyle: '#1a1a1a',
 } as SignatureProps
 
 const InternalSignature: ForwardRefRenderFunction<

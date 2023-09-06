@@ -16,7 +16,7 @@
       margin: 0 $countup-lr-margin;
       border-radius: $countup-border-radius;
       color: $countup-color;
-      background-color: $countup-bgcolor;
+      background-color: $countup-bg-color;
     }
   }
 
@@ -24,7 +24,7 @@
     display: flex;
     height: 80%;
     align-items: flex-end;
-    color: $countup-bgcolor;
+    color: $countup-bg-color;
   }
 
   &__number {

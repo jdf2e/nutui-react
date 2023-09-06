@@ -129,10 +129,10 @@ const CircleProgressDemo = () => {
           radius="0 0 6px 6px"
           style={{ justifyContent: 'center' }}
         >
-          <Button type="primary" onClick={setReduceVal}>
+          <Button type="primary" size="small" onClick={setReduceVal}>
             {translated['43c9f2ba']}
           </Button>
-          <Button type="primary" onClick={setAddVal}>
+          <Button type="primary" size="small" onClick={setAddVal}>
             {translated.bce53fe7}
           </Button>
         </Cell>

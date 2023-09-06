@@ -28,7 +28,7 @@ const AnimatingNumbersDemo = () => {
   })
   const customTheme = {
     nutuiCountupWidth: '24px',
-    nutuiCountupBgcolor: `var(--nutui-color-primary)`,
+    nutuiCountupBgColor: `var(--nutui-color-primary)`,
     nutuiCountupColor: `#fff`,
     nutuiCountupLrMargin: `1px`,
   }

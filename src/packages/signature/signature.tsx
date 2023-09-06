@@ -25,7 +25,7 @@ const defaultProps = {
   ...ComponentDefaults,
   type: 'png',
   lineWidth: 2,
-  strokeStyle: '#000',
+  strokeStyle: '#1a1a1a',
   unsupported: '',
 } as SignatureProps
 const InternalSignature: ForwardRefRenderFunction<

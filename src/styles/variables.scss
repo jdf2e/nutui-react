@@ -992,10 +992,7 @@ $steps-dot-icon-border: var(
 $steps-dot-head-margin: var(--nutui-steps-dot-head-margin, 7px 0 0 0) !default;
 
 // dialog（✅）
-$dialog-z-index: var(
-  --nutui-dialog-outer-z-index,
-  $mask-content-z-index
-) !default;
+$dialog-z-index: var(--nutui-dialog-z-index, $mask-content-z-index) !default;
 $dialog-width: var(--nutui-dialog-width, 295px) !default;
 $dialog-padding: var(--nutui-dialog-padding, 24px) !default;
 $dialog-min-height: var(--nutui-dialog-min-height, 124px) !default;
@@ -2016,13 +2013,13 @@ $trendarrow-font-size: var(--nutui-trendarrow-font-size, 14px) !default;
 $trendarrow-icon-margin: var(--nutui-trendarrow-icon-margin, 4px) !default;
 
 // animatingnumbers（✅）
+$countup-width: var(--nutui-countup-width, auto) !default;
 $countup-height: var(--nutui-countup-height, 32px) !default;
 $countup-base-size: var(--nutui-countup-base-size, 18px) !default;
 $countup-border-radius: var(--nutui-countup-border-radius, 4px) !default;
 $countup-lr-margin: var(--nutui-countup-lr-margin, 0) !default;
-$countup-bgcolor: var(--nutui-countup-bgcolor, inherit) !default;
+$countup-bg-color: var(--nutui-countup-bg-color, inherit) !default;
 $countup-color: var(--nutui-countup-color, $color-title) !default;
-$countup-width: var(--nutui-countup-width, auto) !default;
 
 // layout（✅）
 $row-content-border-radius: var(
