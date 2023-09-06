@@ -267,6 +267,7 @@ const FormDemo = () => {
         </Form>
         <h2>{translated.title2}</h2>
         <Form
+          divider
           onFinish={(values) => submitSucceed(values)}
           onFinishFailed={(values, errors) => submitFailed(errors)}
           footer={
