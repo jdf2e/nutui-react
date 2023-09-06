@@ -433,14 +433,38 @@ $textarea-disabled-color: var(
 ) !default;
 
 // inputnumber（✅）
-$inputnumber-button-width: var(--nutui-inputnumber-button-width, 20px) !default;
+$inputnumber-input-width: var(--nutui-inputnumber-input-width, 40px) !default;
+$inputnumber-input-height: var(--nutui-inputnumber-input-height, 24px) !default;
+$inputnumber-input-background-color: var(
+  --nutui-inputnumber-input-background-color,
+  $color-background
+) !default;
+$inputnumber-input-font-color: var(
+  --nutui-inputnumber-input-font-color,
+  $color-title
+) !default;
+$inputnumber-input-font-size: var(
+  --nutui-inputnumber-input-font-size,
+  14px
+) !default;
+$inputnumber-input-border: var(--nutui-inputnumber-input-border, 0) !default;
+$inputnumber-input-border-radius: var(
+  --nutui-inputnumber-input-border-radius,
+  6px
+) !default;
+$inputnumber-input-margin: var(
+  --nutui-inputnumber-input-margin,
+  0 6px
+) !default;
+
+$inputnumber-button-width: var(--nutui-inputnumber-button-width, 16px) !default;
 $inputnumber-button-height: var(
   --nutui-inputnumber-button-height,
-  20px
+  16px
 ) !default;
 $inputnumber-button-border-radius: var(
   --nutui-inputnumber-button-border-radius,
-  30px
+  16px
 ) !default;
 $inputnumber-button-background-color: var(
   --nutui-inputnumber-button-background-color,
@@ -448,49 +472,13 @@ $inputnumber-button-background-color: var(
 ) !default;
 $inputnumber-icon-color: var(
   --nutui-inputnumber-icon-color,
-  $color-title
+  $color-text
 ) !default;
-$inputnumber-icon-void-color: var(
-  --nutui-inputnumber-icon-void-color,
+$inputnumber-icon-size: var(--nutui-inputnumber-icon-size, 8px) !default;
+$inputnumber-disabled-color: var(
+  --nutui-inputnumber-disabled-color,
   $color-text-disable
 ) !default;
-$inputnumber-icon-disabled-color: var(
-  --nutui-inputnumber-icon-disabled-color,
-  $color-text-disable
-) !default;
-$inputnumber-icon-size: var(--nutui-inputnumber-icon-size, 20px) !default;
-$inputnumber-input-font-size: var(
-  --nutui-inputnumber-input-font-size,
-  12px
-) !default;
-$inputnumber-input-font-color: var(
-  --nutui-inputnumber-input-font-color,
-  $color-title
-) !default;
-$inputnumber-input-background-color: var(
-  --nutui-inputnumber-input-background-color,
-  $color-background
-) !default;
-$inputnumber-input-border-radius: var(
-  --nutui-inputnumber-input-border-radius,
-  4px
-) !default;
-$inputnumber-input-width: var(--nutui-inputnumber-input-width, 40px) !default;
-$inputnumber-input-height: var(--nutui-inputnumber-input-height, 24px) !default;
-$inputnumber-input-margin: var(
-  --nutui-inputnumber-input-margin,
-  0 6px
-) !default;
-$inputnumber-input-border: var(--nutui-inputnumber-input-border, 0) !default;
-$inputnumber-border: var(--nutui-inputnumber-border, 0) !default;
-$inputnumber-border-radius: var(--nutui-inputnumber-border-radius, 0) !default;
-$inputnumber-height: var(--nutui-inputnumber-height, auto) !default;
-$inputnumber-line-height: var(--nutui-inputnumber-line-height, normal) !default;
-$inputnumber-border-box: var(
-  --nutui-inputnumber-border-box,
-  content-box
-) !default;
-$inputnumber-display: var(--nutui-inputnumber-display, flex) !default;
 
 // actionsheet（✅）
 $actionsheet-border-color: var(
@@ -697,14 +685,13 @@ $switch-inside-close-transform: var(
 $toast-title-font-size: var(--nutui-toast-title-font-size, 16px) !default;
 $toast-text-font-size: var(--nutui-toast-text-font-size, 14px) !default;
 $toast-font-color: var(--nutui-toast-font-color, $white) !default;
-$toast-inner-padding: var(--nutui-toast-inner-padding, 24px 30px) !default;
+$toast-inner-padding: var(--nutui-toast-inner-padding, 16px 24px) !default;
 $toast-inner-bg-color: var(--nutui-toast-inner-bg-color, $color-mask) !default;
 $toast-inner-border-radius: var(
   --nutui-toast-inner-border-radius,
-  12px
+  16px
 ) !default;
 $toast-inner-top: var(--nutui-toast-inner-top, 50%) !default;
-$toast-inner-text-align: var(--nutui-toast-inner-text-align, 'center') !default;
 
 //tour（✅）
 $tour-mask-border-radius: var(--nutui-tour-mask-border-radius, 10px) !default;

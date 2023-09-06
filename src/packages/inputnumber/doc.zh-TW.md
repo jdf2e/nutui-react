@@ -289,19 +289,19 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-inputnumber-button-width | 數字輸入框左右按鈕的寬度 | `20px` |
-| \--nutui-inputnumber-button-height | 數字輸入框左右按鈕的高度 | `20px` |
-| \--nutui-inputnumber-button-border-radius | 數字輸入框左右按鈕的圓角 | `30px` |
-| \--nutui-inputnumber-button-background-color | 數字輸入框左右按鈕的背景色 | `$white` |
-| \--nutui-inputnumber-icon-color | 數字輸入框中icon的顏色 | `$color-title` |
-| \--nutui-inputnumber-icon-void-color | 數字輸入框中禁用input的字號顏色 | `$color-text-disable` |
-| \--nutui-inputnumber-icon-disabled-color | 數字輸入框中禁用icon的顏色 | `$color-text` |
-| \--nutui-inputnumber-input-font-size | 數字輸入框中input的字號大小 | `12px` |
-| \--nutui-inputnumber-input-font-color | 數字輸入框中input的字號顏色 | `$color-title` |
-| \--nutui-inputnumber-input-background-color | 數字輸入框中input的背景顏色 | `$color-background` |
-| \--nutui-inputnumber-input-border-radius | 數字輸入框中input的圓角 | `4px` |
 | \--nutui-inputnumber-input-width | 數字輸入框中input的寬度 | `40px` |
 | \--nutui-inputnumber-input-height | 數字輸入框中input的高度 | `24px` |
-| \--nutui-inputnumber-input-margin | 數字輸入框中input的margin值 | `0 6px` |
+| \--nutui-inputnumber-input-background-color | 數字輸入框中input的背景顏色 | `$color-background` |
+| \--nutui-inputnumber-input-font-color | 數字輸入框中input的字號顏色 | `$color-title` |
+| \--nutui-inputnumber-input-font-size | 數字輸入框中input的字號大小 | `14px` |
 | \--nutui-inputnumber-input-border | 數字輸入框中input的border值 | `0` |
-| \--nutui-inputnumber-display | 數字輸入框整體的display佈局 | `flex` |
+| \--nutui-inputnumber-input-border-radius | 數字輸入框中input的圓角 | `6px` |
+| \--nutui-inputnumber-input-margin | 數字輸入框中input的margin值 | `0 6px` |
+
+| \--nutui-inputnumber-button-width | 數字輸入框左右按鈕的寬度 | `16px` |
+| \--nutui-inputnumber-button-height | 數字輸入框左右按鈕的高度 | `16px` |
+| \--nutui-inputnumber-button-border-radius | 數字輸入框左右按鈕的圓角 | `30px` |
+| \--nutui-inputnumber-button-background-color | 數字輸入框左右按鈕的背景色 | `$white` |
+| \--nutui-inputnumber-icon-color | 數字輸入框中icon的顏色 | `$color-text` |
+| \--nutui-inputnumber-icon-size | 數字輸入框中icon的大小 | `8px` |
+| \--nutui-inputnumber-disabled-color | 數字輸入框禁用色 | `$color-text-disable` |

@@ -3,7 +3,8 @@ import { useTranslate } from '../../sites/assets/locale'
 import { InputNumber } from './inputnumber'
 import Cell from '@/packages/cell'
 import Toast from '@/packages/toast'
-import './demo.scss'
+
+import ConfigProvider from '@/packages/configprovider'
 
 interface T {
   '6333c786': string
@@ -19,6 +20,28 @@ interface T {
   '65bafb1d': string
   '7e2394ae': string
   '7e2394be': string
+}
+
+const customTheme = {
+  nutuiInputnumberButtonWidth: '30px',
+  nutuiInputnumberButtonHeight: '30px',
+  nutuiInputnumberButtonBorderRadius: '2px',
+  nutuiInputnumberInputBackgroundColor: '#fff',
+  nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
+  nutuiInputnumberInputHeight: '30px',
+  nutuiInputnumberInputMargin: '0 2px',
+}
+
+const customTheme2 = {
+  nutuiInputnumberButtonWidth: '30px',
+  nutuiInputnumberButtonHeight: '30px',
+  nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
+  nutuiInputnumberInputBackgroundColor: '#fff',
+  nutuiInputnumberInputMargin: '0 2px',
+}
+
+const customTheme3 = {
+  nutuiInputnumberInputWidth: '60px',
 }
 
 const InputNumberDemo = () => {
@@ -117,12 +140,16 @@ const InputNumberDemo = () => {
 
         <h2>{translated.e7b2ce1g}</h2>
         <Cell>
-          <InputNumber className="custom-theme" defaultValue={1} />
+          <ConfigProvider theme={customTheme}>
+            <InputNumber defaultValue={1} />
+          </ConfigProvider>
         </Cell>
 
         <h2>{translated.e7b2ce1y}</h2>
         <Cell>
-          <InputNumber className="custom-theme-two" defaultValue={1} />
+          <ConfigProvider theme={customTheme2}>
+            <InputNumber defaultValue={1} />
+          </ConfigProvider>
         </Cell>
 
         <h2>{translated['3a42134b']}</h2>
@@ -137,24 +164,28 @@ const InputNumberDemo = () => {
 
         <h2>支持formatter</h2>
         <Cell>
-          <InputNumber
-            className="format-width"
-            defaultValue="1000"
-            min={10}
-            max={15020}
-            formatter={(value) =>
-              `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-            }
-          />
+          <ConfigProvider theme={customTheme3}>
+            <InputNumber
+              className="format-width"
+              defaultValue="1000"
+              min={10}
+              max={15020}
+              formatter={(value) =>
+                `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+              }
+            />
+          </ConfigProvider>
         </Cell>
         <Cell>
-          <InputNumber
-            className="format-width"
-            defaultValue="100"
-            min={0}
-            max={100}
-            formatter={(value) => `${value}%`}
-          />
+          <ConfigProvider theme={customTheme3}>
+            <InputNumber
+              className="format-width"
+              defaultValue="100"
+              min={0}
+              max={100}
+              formatter={(value) => `${value}%`}
+            />
+          </ConfigProvider>
         </Cell>
       </div>
     </>
