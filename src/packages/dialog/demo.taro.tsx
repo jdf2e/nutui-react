@@ -69,6 +69,7 @@ const DialogDemo = () => {
           title="函数调用"
           onClick={() =>
             Dialog.open('test', {
+              className: 'dialog-func',
               title: '函数调用',
               content: '可通过 Dialog.open 打开对话框',
               onConfirm: () => {
@@ -83,6 +84,7 @@ const DialogDemo = () => {
         <h2>{translated.title1}</h2>
         <Cell title={translated.basic} onClick={() => setVisible1(true)} />
         <Dialog
+          className="dialog-tag"
           title={translated.title1}
           visible={visible1}
           onConfirm={() => setVisible1(false)}

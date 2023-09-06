@@ -1,12 +1,13 @@
 import { ReactNode, ForwardRefExoticComponent, PropsWithChildren } from 'react'
 import type { MouseEvent } from 'react'
+import { BasicComponent } from '@/utils/typings'
 
 export type DialogConfigType = {
   prefixCls?: string
   simple?: boolean
 }
 
-export interface BasicDialogProps {
+export interface BasicDialogProps extends BasicComponent {
   visible?: boolean
   title?: ReactNode
   content?: ReactNode

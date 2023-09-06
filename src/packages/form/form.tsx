@@ -11,6 +11,7 @@ export interface FormProps extends BasicComponent {
   initialValues: any
   name: string
   form: any
+  divider: boolean
   labelPosition: 'top' | 'left' | 'right'
   starPosition: 'left' | 'right'
   onFinish: (values: any) => void
@@ -21,6 +22,7 @@ const defaultProps = {
   ...ComponentDefaults,
   labelPosition: 'right',
   starPosition: 'left',
+  divider: false,
   onFinish: (values) => {},
   onFinishFailed: (values, errorFields) => {},
 } as FormProps
@@ -40,6 +42,7 @@ export const Form = React.forwardRef<FormInstance, Partial<FormProps>>(
       footer,
       children,
       initialValues,
+      divider,
       onFinish,
       onFinishFailed,
       labelPosition,
@@ -91,7 +94,7 @@ export const Form = React.forwardRef<FormInstance, Partial<FormProps>>(
           resetFields()
         }}
       >
-        <Cell.Group>
+        <Cell.Group divider={divider}>
           <Context.Provider value={formInstance}>{children}</Context.Provider>
           {footer ? <Cell>{footer}</Cell> : null}
         </Cell.Group>
