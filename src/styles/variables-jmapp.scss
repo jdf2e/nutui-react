@@ -429,6 +429,30 @@ $textarea-disabled-color: var(
 ) !default;
 
 // inputnumber（✅）
+$inputnumber-input-width: var(--nutui-inputnumber-input-width, 40px) !default;
+$inputnumber-input-height: var(--nutui-inputnumber-input-height, 24px) !default;
+$inputnumber-input-background-color: var(
+  --nutui-inputnumber-input-background-color,
+  #f7f7f7
+) !default;
+$inputnumber-input-font-color: var(
+  --nutui-inputnumber-input-font-color,
+  $color-title
+) !default;
+$inputnumber-input-font-size: var(
+  --nutui-inputnumber-input-font-size,
+  12px
+) !default;
+$inputnumber-input-border: var(--nutui-inputnumber-input-border, 0) !default;
+$inputnumber-input-border-radius: var(
+  --nutui-inputnumber-input-border-radius,
+  4px
+) !default;
+$inputnumber-input-margin: var(
+  --nutui-inputnumber-input-margin,
+  0 6px
+) !default;
+
 $inputnumber-button-width: var(--nutui-inputnumber-button-width, 20px) !default;
 $inputnumber-button-height: var(
   --nutui-inputnumber-button-height,
@@ -446,47 +470,11 @@ $inputnumber-icon-color: var(
   --nutui-inputnumber-icon-color,
   $color-title
 ) !default;
-$inputnumber-icon-void-color: var(
-  --nutui-inputnumber-icon-void-color,
-  $color-text-disable
-) !default;
-$inputnumber-icon-disabled-color: var(
-  --nutui-inputnumber-icon-disabled-color,
+$inputnumber-icon-size: var(--nutui-inputnumber-icon-size, 20px) !default;
+$inputnumber-disabled-color: var(
+  --nutui-inputnumber-disabled-color,
   #cccccc
 ) !default;
-$inputnumber-icon-size: var(--nutui-inputnumber-icon-size, 20px) !default;
-$inputnumber-input-font-size: var(
-  --nutui-inputnumber-input-font-size,
-  12px
-) !default;
-$inputnumber-input-font-color: var(
-  --nutui-inputnumber-input-font-color,
-  $color-title
-) !default;
-$inputnumber-input-background-color: var(
-  --nutui-inputnumber-input-background-color,
-  #f7f7f7
-) !default;
-$inputnumber-input-border-radius: var(
-  --nutui-inputnumber-input-border-radius,
-  4px
-) !default;
-$inputnumber-input-width: var(--nutui-inputnumber-input-width, 40px) !default;
-$inputnumber-input-height: var(--nutui-inputnumber-input-height, 24px) !default;
-$inputnumber-input-margin: var(
-  --nutui-inputnumber-input-margin,
-  0 6px
-) !default;
-$inputnumber-input-border: var(--nutui-inputnumber-input-border, 0) !default;
-$inputnumber-border: var(--nutui-inputnumber-border, 0) !default;
-$inputnumber-border-radius: var(--nutui-inputnumber-border-radius, 0) !default;
-$inputnumber-height: var(--nutui-inputnumber-height, auto) !default;
-$inputnumber-line-height: var(--nutui-inputnumber-line-height, normal) !default;
-$inputnumber-border-box: var(
-  --nutui-inputnumber-border-box,
-  content-box
-) !default;
-$inputnumber-display: var(--nutui-inputnumber-display, flex) !default;
 
 // actionsheet（✅）
 $actionsheet-border-color: var(
