@@ -81,14 +81,18 @@ const StickyDemo = () => {
         <h2>{basic}</h2>
         <Cell>
           <Sticky threshold={57} onChange={(val: boolean) => handleChange(val)}>
-            <Button type="primary">{button1}</Button>
+            <Button type="primary" size="small">
+              {button1}
+            </Button>
           </Sticky>
         </Cell>
 
         <h2>{title1}</h2>
         <Cell>
           <Sticky threshold={120}>
-            <Button type="primary">{button2}</Button>
+            <Button type="primary" size="small">
+              {button2}
+            </Button>
           </Sticky>
         </Cell>
         <h2>{title2}</h2>
@@ -99,7 +103,11 @@ const StickyDemo = () => {
             style={{ height: '600px' }}
           >
             <Sticky container={containerTopRef} threshold={57}>
-              <Button style={{ marginLeft: '100px' }} type="info">
+              <Button
+                type="primary"
+                style={{ marginLeft: '100px' }}
+                size="small"
+              >
                 {button3}
               </Button>
             </Sticky>
@@ -108,7 +116,9 @@ const StickyDemo = () => {
         <h2>{title4}</h2>
         <Cell style={{ height: '64px' }}>
           <Sticky threshold={0} position="bottom">
-            <Button type="primary">{button5}</Button>
+            <Button type="primary" size="small">
+              {button5}
+            </Button>
           </Sticky>
         </Cell>
       </div>

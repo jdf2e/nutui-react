@@ -3,11 +3,13 @@
   display: block;
   position: relative;
   overflow: hidden;
+
   &__list {
     display: block;
     position: relative;
     top: 1px;
     overflow: hidden;
+
     &__inner {
       height: 100%;
       width: 100%;
@@ -15,10 +17,12 @@
       background-color: $elevator-list-inner-bg-color;
       overflow: auto;
     }
+
     &__item {
       display: block;
       font-size: $elevator-list-item-font-size;
       color: $elevator-list-item-font-color;
+
       &__code {
         display: flex;
         position: relative;
@@ -32,17 +36,20 @@
         border-bottom: $elevator-list-item-code-border-bottom solid
           $elevator-list-item-code-border-bottom-color;
       }
+
       &__name {
         display: flex;
         align-items: center;
         padding: $elevator-list-item-name-padding;
         height: $elevator-list-item-name-height;
         line-height: $elevator-list-item-name-line-height;
+
         &--highcolor {
           color: $elevator-list-item-highcolor;
         }
       }
     }
+
     &__fixed {
       width: 100%;
       position: absolute;
@@ -60,6 +67,7 @@
       box-shadow: $elevator-list-fixed-box-shadow;
     }
   }
+
   &__code--current {
     position: $elevator-list-item-code-current-position;
     right: $elevator-list-item-code-current-right;
@@ -73,7 +81,9 @@
     box-shadow: $elevator-list-item-code-current-box-shadow;
     text-align: $elevator-list-item-code-current-text-align;
   }
+
   &__bars {
+    color: $color-text-help;
     position: $elevator-list-item-bars-position;
     right: $elevator-list-item-bars-right;
     top: $elevator-list-item-bars-top;
@@ -83,14 +93,17 @@
     border-radius: $elevator-list-item-bars-border-radius;
     text-align: $elevator-list-item-bars-text-align;
     z-index: $elevator-list-item-bars-z-index;
+
     &__inner {
       &__item {
         display: block;
         padding: $elevator-list-item-bars-inner-item-padding;
         font-size: $elevator-list-item-bars-inner-item-font-size;
+
         &--active {
           color: $elevator-list-item-bars-inner-item-active-color;
         }
+
         cursor: pointer;
       }
     }

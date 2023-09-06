@@ -1614,7 +1614,7 @@ $cascader-item-padding: var(--nutui-cascader-item-padding, 10px 20px) !default;
 $cascader-item-margin: var(--nutui-cascader-item-margin, 0px) !default;
 $cascader-item-border-bottom: var(
   --nutui-cascader-item-border-bottom,
-  0px solid #ddd
+  0px solid $color-border
 ) !default;
 $cascader-item-color: var(--nutui-cascader-item-color, $color-title) !default;
 $cascader-item-font-size: var(
@@ -1908,7 +1908,7 @@ $elevator-list-item-bars-padding: var(
 ) !default;
 $elevator-list-item-bars-background-color: var(
   --nutui-elevator-list-item-bars-background-color,
-  #eeeff2
+  $color-background
 ) !default;
 $elevator-list-item-bars-border-radius: var(
   --nutui-elevator-list-item-bars-border-radius,
@@ -2022,15 +2022,9 @@ $countup-bg-color: var(--nutui-countup-bg-color, inherit) !default;
 $countup-color: var(--nutui-countup-color, $color-title) !default;
 
 // layout（✅）
-$row-content-border-radius: var(
-  --nutui-row-content-border-radius,
-  2px
-) !default;
-$row-content-height: var(--nutui-row-content-height, 50px) !default;
-$row-content-line-height: var(--nutui-row-content-line-height, 40px) !default;
 $col-default-margin-bottom: var(
   --nutui-col-default-margin-bottom,
-  15px
+  2px
 ) !default;
 
 // TrendArrow

@@ -1,9 +1,9 @@
 .layout-flex-content {
-  line-height: $row-content-line-height;
+  line-height: 40px;
   color: $white;
   text-align: center;
-  border-radius: $row-content-border-radius;
-  background: var(--nutui-brand-stop-1);
+  border-radius: 2px;
+  background: var(--nutui-brand-4);
   font-size: 14px;
 }
 
@@ -12,7 +12,7 @@
 }
 
 .layout-flex-content-height {
-  height: $row-content-height;
+  height: 50px;
 }
 
 .layout-box-item {
