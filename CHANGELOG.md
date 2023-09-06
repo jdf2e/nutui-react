@@ -1,3 +1,16 @@
+# v2.0.16
+`2023-09-06`
+
+* :sparkles: feat: form 支持分割线 (#1389) @oasis-cloud
+* :bug: fix(pulltorefresh): 修复 H5 卡顿 & 小程序滑动距离问题 @Eiinu
+* :bug: fix: csstransition using findDOMNode which is deprecated (#1370) @oasis-cloud
+* :bug: fix: dialog 的函数调用增加对 classname 和 style 的支持 (#1391) @oasis-cloud
+* :bug: fix: swipe 阻止页面滚动 (#1380) @oasis-cloud
+* :bug: fix: useForm 在类组件下报错，可以采用 ref 的方式使用 FormInstance (#1383) @oasis-cloud
+* :bug: fix: 多个 Swipe 的滑动选项完全相等 (#1334) @Clay Zhang
+* 📖 docs: toast组件完善了样式变量 (#1379) @ivan-My
+
+
 # v2.0.15
 `2023-08-30`
 
