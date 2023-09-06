@@ -27,6 +27,7 @@ const App = () => {
     <>
       <Cell title="Basic bullet" onClick={() => {
         Dialog.alert({
+            className: 'dialog-func',
             title: 'Basic bullet',
             content: 'Support function calls and module call.',
         });

@@ -38,7 +38,11 @@ export const Content: FunctionComponent<
   }
 
   return (
-    <div className={`${classPrefix}__outer`} onClick={(e) => handleClick(e)}>
+    <div
+      className={classNames(`${classPrefix}__outer`, props.className)}
+      style={props.style}
+      onClick={(e) => handleClick(e)}
+    >
       <div
         className={classPrefix}
         style={{ display: visible ? 'flex' : 'none' }}
