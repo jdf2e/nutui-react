@@ -45,6 +45,8 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
   const {
     params: {
       id,
+      className,
+      style,
       visible,
       footer,
       title,
@@ -158,6 +160,8 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
           appear
         >
           <Content
+            className={className}
+            style={style}
             title={title}
             footer={renderFooter()}
             footerDirection={footerDirection}
