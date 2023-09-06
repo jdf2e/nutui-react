@@ -36,18 +36,18 @@
 
   &__inner {
     display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: $toast-inner-top;
+    min-width: 30%;
+    max-width: 95.7%;
     font-size: $toast-text-font-size;
-    min-width: 40%;
-    max-width: 65%;
-    text-align: $toast-inner-text-align;
+    // text-align: $toast-inner-text-align;
     padding: $toast-inner-padding;
     word-break: break-all;
     background: $toast-inner-bg-color;
     border-radius: $toast-inner-border-radius;
     color: $toast-font-color;
-    position: absolute;
-    left: 50%;
-    top: $toast-inner-top;
     transform: translate(-50%, -50%);
   }
 
@@ -64,8 +64,6 @@
   }
 
   &-text {
-    font-size: $toast-text-font-size;
-
     &:empty {
       margin-bottom: -8px;
     }
@@ -73,6 +71,7 @@
 
   &-title {
     font-size: $toast-title-font-size;
+    font-weight: 500;
 
     &:empty {
       margin-bottom: -8px;
@@ -86,6 +85,11 @@
       align-items: center;
       justify-content: center;
       margin-bottom: 8px;
+
+      .nut-icon {
+        width: 24px;
+        height: 24px;
+      }
     }
   }
 
@@ -99,6 +103,11 @@
 
     .nut-toast__icon-wrapper {
       animation: rotation 2s linear infinite;
+
+      .nut-icon {
+        width: 24px;
+        height: 24px;
+      }
     }
   }
 }
