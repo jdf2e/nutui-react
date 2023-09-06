@@ -29,9 +29,6 @@ exports[`should match snapshot 1`] = `
         </button>
       </div>
     </div>
-    <div
-      class="nut-cell__divider"
-    />
   </div>
 </DocumentFragment>
 `;
