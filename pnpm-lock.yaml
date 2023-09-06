@@ -162,8 +162,8 @@ importers:
         specifier: ^10.4.14
         version: 10.4.14(postcss@8.4.23)
       axios:
-        specifier: ^0.21.4
-        version: 0.21.4
+        specifier: ^1.0.0
+        version: 1.5.0
       babel-plugin-react-scoped-css:
         specifier: ^1.1.1
         version: 1.1.1(@babel/core@7.21.4)
@@ -5854,10 +5854,12 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /axios@0.21.4:
-    resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
+  /axios@1.5.0:
+    resolution: {integrity: sha512-D4DdjDo5CY50Qms0qGQTTw6Q44jl7zRwY7bthds06pUGfChBCTcQs+N743eFWGEd6pRTMd6A+I87aWyFV5wiZQ==}
     dependencies:
       follow-redirects: 1.15.2
+      form-data: 4.0.0
+      proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
     dev: true
