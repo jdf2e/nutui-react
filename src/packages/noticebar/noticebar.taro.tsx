@@ -314,10 +314,13 @@ export const NoticeBar: FunctionComponent<
   const autoplay = () => {
     if (childCount <= 1) return
     stopAutoPlay()
-    swiperRef.current.autoplayTimer = setTimeout(() => {
-      next()
-      autoplay()
-    }, Number(duration) + 100 * speed)
+    swiperRef.current.autoplayTimer = setTimeout(
+      () => {
+        next()
+        autoplay()
+      },
+      Number(duration) + 100 * speed
+    )
   }
 
   // 切换方法
@@ -365,7 +368,7 @@ export const NoticeBar: FunctionComponent<
     const target = innerRef.current
     let _offset = 0
     // 容器高度-元素高度
-    const val = rect?.height - height
+    const val = (rect?.height || 0) - height
     _offset = moveOffset + Number(active === childCount - 1 && val / 2)
 
     target.style.transitionDuration = `${

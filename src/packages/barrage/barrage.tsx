@@ -119,8 +119,9 @@ const InternalBarrage: ForwardRefRenderFunction<
   )
 }
 
-export const Barrage =
-  React.forwardRef<unknown, Partial<BarrageProps>>(InternalBarrage)
+export const Barrage = React.forwardRef<unknown, Partial<BarrageProps>>(
+  InternalBarrage
+)
 
 Barrage.defaultProps = defaultProps
 Barrage.displayName = 'NutBarrage'

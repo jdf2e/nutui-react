@@ -137,7 +137,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
   const listScroll = (e: any) => {
     const scrollTop = e.detail ? e.detail.scrollTop : e.target.scrollTop
     const scrollSize = Math.floor(scrollTop)
-    const startIndex = binarySearch(positions, scrollSize, false)
+    const startIndex = binarySearch(positions, false, scrollSize)
 
     const overStart = startIndex - overscan > -1 ? startIndex - overscan : 0
     const endIndex = end()
