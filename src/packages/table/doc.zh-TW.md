@@ -34,7 +34,7 @@ const App = () => {
       title: 'ID',
       key: 'id',
       render: (record: any, index) => {
-        return index
+        return index + 1
       }
     },
     {
