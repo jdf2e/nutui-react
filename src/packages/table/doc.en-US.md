@@ -31,6 +31,13 @@ interface TableColumnProps {
 const App = () => {
   const [columns1, setColumns1] = useState([
     {
+      title: 'ID',
+      key: 'id',
+      render: (record: any, index) => {
+        return index
+      }
+    },
+    {
       title: '姓名',
       key: 'name',
     },
