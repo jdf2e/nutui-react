@@ -88,6 +88,7 @@ module.exports = {
     'react/no-danger': 0,
     'react/button-has-type': 0,
     'react/function-component-definition': 0,
+    'react/jsx-no-useless-fragment': 0,
     'jsx-a11y/aria-proptypes': 0,
     'jsx-a11y/anchor-is-valid': 0,
     'jsx-a11y/no-static-element-interactions': 0,
