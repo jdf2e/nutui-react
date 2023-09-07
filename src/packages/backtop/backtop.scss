@@ -5,20 +5,21 @@
   &.show {
     width: 40px;
     height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: $color-background-overlay;
     color: $color-title;
     border: 1px solid $backtop-border-color;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
 
-  &.show :active {
-    background: rgba(0, 0, 0, 0.1);
+    &:active {
+      background: $color-background;
+    }
   }
 
   &-main {
     transition: all 0.2s ease-in-out;
+    color: $color-title;
   }
 }

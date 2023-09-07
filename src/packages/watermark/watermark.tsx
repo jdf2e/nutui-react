@@ -68,7 +68,6 @@ export const WaterMark: FunctionComponent<
   }
 
   const [base64Url, setBase64Url] = useState('')
-
   const classPrefix = 'nut-watermark'
   const classes = classNames(classPrefix, {
     [`${classPrefix}-full-page`]: fullPage,
@@ -116,11 +115,9 @@ export const WaterMark: FunctionComponent<
         // 文字绕中间旋转
         ctx.translate(markWidth / 2, markHeight / 2)
         ctx.rotate((Math.PI / 180) * Number(rotate))
-
         const markSize = Number(fontSize) * ratio
         ctx.font = `${fontStyle} normal ${fontWeight} ${markSize}px/${markHeight}px ${fontFamily}`
         ctx.fillStyle = color
-
         ctx.fillText(content, 0, 0) // 在画布上绘制"被填充的"文本。
         ctx.restore() // 返回之前保存过的路径状态和属性。
         setBase64Url(canvas.toDataURL())

@@ -271,7 +271,6 @@ export default App;
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-numberkeyboard-padding | 內邊距 | `0 0 22px 0` |
-| \--nutui-numberkeyboard-background-color | 背景顏色 | `#f2f3f5` |
 | \--nutui-numberkeyboard-header-height | 頭部高度 | `34px` |
 | \--nutui-numberkeyboard-header-padding | 頭部內邊距 | `6px 0 0 0` |
 | \--nutui-numberkeyboard-header-color | 頭部字體顏色 | `#646566` |

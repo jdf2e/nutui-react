@@ -4,7 +4,7 @@
   font-size: $divider-text-font-size;
   color: $divider-text-color;
   margin: $divider-margin;
-  border: 0 solid currentColor;
+  border: 0 solid $divider-border-color;
   width: 100%;
 
   &::before,
@@ -21,11 +21,11 @@
   &__left,
   &__right {
     &::before {
-      margin-right: $divider-before-margin-right;
+      margin-right: $divider-spacing;
     }
 
     &::after {
-      margin-left: $divider-after-margin-left;
+      margin-left: $divider-spacing;
     }
   }
 
@@ -53,7 +53,7 @@
     top: $divider-vertical-top;
     display: inline-block;
     height: $divider-vertical-height;
-    border-left: 1px solid $divider-vertical-border-left;
+    border-left: 1px solid $divider-border-color;
     margin: $divider-vertical-margin;
     width: auto;
   }
