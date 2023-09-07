@@ -1,3 +1,24 @@
+import { createSelectorQuery } from '@tarojs/taro'
+
+export const inBrowser = typeof document !== "undefined" && !!document.scripts
+
+export interface Rect {
+  dataset: Record<string, any>
+  id: string
+  top: number
+  right: number
+  bottom: number
+  left: number
+  width: number
+  height: number
+}
+
+
+
+export function isWindow(val: unknown): val is Window {
+  return val === window
+}
+
 /**
   获取元素的大小及其相对于视口的位置，等价于 Element.getBoundingClientRect。
   width 宽度	number
@@ -7,11 +28,6 @@
   right	右侧与视图窗口左上角的距离	number
   bottom	底部与视图窗口左上角的距离	number
  */
-
-function isWindow(val: unknown): val is Window {
-  return val === window
-}
-
 export const getRect = (elementRef: Element | Window | undefined) => {
   const element = elementRef
 
@@ -43,10 +59,32 @@ export const getRect = (elementRef: Element | Window | undefined) => {
   }
 }
 
+export function makeRect(width: number, height: number) {
+  return {
+    top: 0,
+    left: 0,
+    right: width,
+    bottom: height,
+    width,
+    height,
+  } as Rect
+}
+
 export const getRectByTaro = async (element: any) => {
   if (element) {
-    const res = await element.getBoundingClientRect()
-    return res
+    if (inBrowser) {
+      return Promise.resolve(getRect(element))
+    } else {
+      // 小程序下的逻辑
+      return new Promise((resolve, reject) => {
+        createSelectorQuery()
+          .select(`#${element.uid}`)
+          .boundingClientRect()
+          .exec(([rects]) => {
+            resolve(rects)
+          })
+      })
+    }
   }
-  return Promise.resolve({})
+  return Promise.resolve(makeRect(0, 0))
 }
