@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import Schema from 'async-validator'
-import { Store, Callbacks, FormInstance, FieldEntity } from './types'
+import { Store, Callbacks, FormInstance, FieldEntity, NamePath } from './types'
 
 /**
  * 用于存储表单的数据
@@ -45,8 +45,22 @@ class FormStore {
    * 获取 formItem 的值
    * @param name
    */
-  getFieldValue = (name: string) => {
+  getFieldValue = (name: NamePath) => {
     return this.store?.[name]
+  }
+
+  /**
+   * 获取全部字段
+   */
+  getFieldsValue = (name: NamePath[]): { [key: NamePath]: any } => {
+    if (typeof name === 'boolean') {
+      return JSON.parse(JSON.stringify(this.store))
+    }
+    const fieldsValue: { [key: NamePath]: any } = {}
+    name.forEach((field) => {
+      fieldsValue[field] = this.getFieldValue(field)
+    })
+    return fieldsValue
   }
 
   /**
@@ -54,6 +68,7 @@ class FormStore {
    * @param values
    * @param init
    */
+
   setInitialValues = (values: Store, init: boolean) => {
     if (init) {
       this.initialValues = values
@@ -141,6 +156,7 @@ class FormStore {
       setCallback: this.setCallback,
       registerField: this.registerField,
       getFieldValue: this.getFieldValue,
+      getFieldsValue: this.getFieldsValue,
       setFieldsValue: this.setFieldsValue,
       resetFields: this.resetFields,
       submit: this.submit,

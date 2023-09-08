@@ -21,6 +21,7 @@ export interface Store {
 export interface FormInstance<Values = any> {
   registerField: (entity: FieldEntity) => () => void
   getFieldValue: (name: NamePath) => StoreValue
+  getFieldsValue: (name: NamePath) => StoreValue
   setInitialValues: (values: any, init: boolean) => void
   setFieldsValue: (value: any) => void
   resetFields: (fields?: NamePath[]) => void

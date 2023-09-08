@@ -25,6 +25,7 @@ export interface FormItemProps extends BasicComponent, BaseFormField {
     componentRef: React.MutableRefObject<any>
   ) => void
   errorMessageAlign: TextAlign
+  validateTrigger: string | string[]
 }
 
 const defaultProps = {
@@ -34,6 +35,7 @@ const defaultProps = {
   label: '',
   rules: [{ required: false, message: '' }],
   errorMessageAlign: 'left',
+  validateTrigger: 'onChange',
 } as FormItemProps
 
 export class FormItem extends React.Component<
