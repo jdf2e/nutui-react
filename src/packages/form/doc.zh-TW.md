@@ -53,7 +53,7 @@ const App = () => {
           name="address"
           rules={[
             { max: 15, message: '地址不能超过15个字' },
-            { required: true, message: '请输入姓名' },
+            { required: true, message: '請輸入地址' },
           ]}
         >
           <TextArea placeholder="請輸入地址" maxLength={100} />
@@ -487,6 +487,7 @@ Form.useForm()創建 Form 實例，用於管理所有數據狀態。
 | 屬性 | 說明 | 類型 |
 | --- | --- | --- |
 | getFieldValue | 獲取對應字段名的值 | `(name: NamePath) => any` |
+| getFieldsValue | 获取一组字段名对应的值，会按照对应结构返回。默认返回现存字段值，当调用 getFieldsValue(true) 时返回所有值 | `(name: NamePath | boolean) => any` |
 | setFieldsValue | 設置錶單的值 | `(values) => void` |
 | resetFields | 重置錶單提示狀態 | `() => void` |
 | submit | 提交錶單進行校驗的方法 | `Promise` |

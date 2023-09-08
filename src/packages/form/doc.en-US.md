@@ -38,8 +38,8 @@ const App = () => {
           label="name"
           name="username"
           rules={[
-            { max: 5, message: '姓名不能超过5个字' },
-            { required: true, message: '请输入姓名' },
+            { max: 5, message: 'Name cannot exceed 5 characters' },
+            { required: true, message: 'Please enter your name' },
           ]}
         >
           <Input
@@ -52,8 +52,8 @@ const App = () => {
           label="address"
           name="address"
           rules={[
-            { max: 15, message: '地址不能超过15个字' },
-            { required: true, message: '请输入姓名' },
+            { max: 15, message: 'The address should not exceed 15 characters' },
+            { required: true, message: 'Please enter your address' },
           ]}
         >
           <TextArea placeholder="please enter address" maxLength={100} />
@@ -495,6 +495,7 @@ Form.useForm() creates a Form instance, which is used to manage all data states.
 | Property | Description | Type |
 | --- | --- | --- |
 | getFieldValue | Get the value of the corresponding field name | `(name: NamePath) => any` |
+| getFieldsValue | Get values by a set of field names. Return according to the corresponding structure. Default return mounted field value, but you can use getFieldsValue(true) to get all values | `(name: NamePath | boolean) => any` |
 | setFieldsValue | set field values | `(values) => void` |
 | resetFields | Reset form prompt state | `() => void` |
 | submit | method to submit a form for validation | `Promise` |
