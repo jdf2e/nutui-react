@@ -78,10 +78,11 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
     }
     return null
   }
-  const handleOnChange: CommonEventFunction<TaroSwiperProps.onChangeEventDetail> =
-    (value) => {
-      setCurrent(value.detail.current)
-    }
+  const handleOnChange: CommonEventFunction<
+    TaroSwiperProps.onChangeEventDetail
+  > = (value) => {
+    setCurrent(value.detail.current)
+  }
   useImperativeHandle(ref, () => ({
     to: (value: number) => {
       setCurrent(value)

@@ -191,7 +191,9 @@ export const Avatar: FunctionComponent<
             <div className="text">
               {parent?.propAvatarGroup?.maxContent
                 ? parent?.propAvatarGroup?.maxContent
-                : `+ ${avatarIndex - parent?.propAvatarGroup?.max}`}
+                : `+ ${
+                    avatarIndex - Number(parent?.propAvatarGroup?.max || 0)
+                  }`}
             </div>
           )}
         </div>

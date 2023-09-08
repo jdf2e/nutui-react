@@ -7,7 +7,10 @@ import { CascaderOption } from '../types'
 import Tree from '../tree'
 import { formatTree, convertListToOptions } from '../helper'
 
-const later = (t = 0) => new Promise((r) => setTimeout(r, t))
+const later = (t = 0) =>
+  new Promise((r) => {
+    setTimeout(r, t)
+  })
 const mockOptions = [
   {
     value: '浙江',

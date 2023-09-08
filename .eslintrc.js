@@ -111,6 +111,9 @@ module.exports = {
     'no-param-reassign': 0,
     'prefer-destructuring': 0,
     'react/require-default-props': 0,
+    'react/no-unused-class-component-methods': 0,
+    'react/jsx-no-constructed-context-values': 0,
+    'react/no-unstable-nested-components': 0,
     'react/sort-comp': [
       0,
       {
