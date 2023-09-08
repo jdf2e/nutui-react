@@ -287,14 +287,29 @@ const FormDemo = () => {
             </>
           }
         >
-          <Form.Item required label={translated.name} name="username">
+          <Form.Item
+            required
+            label={translated.name}
+            name="username"
+            rules={[
+              { max: 5, message: '姓名不能超过5个字' },
+              { required: true, message: '请输入姓名' },
+            ]}
+          >
             <Input
               className="nut-input-text"
               placeholder={translated.nameTip}
               type="text"
             />
           </Form.Item>
-          <Form.Item label={translated.address} name="address">
+          <Form.Item
+            label={translated.address}
+            name="address"
+            rules={[
+              { max: 15, message: '地址不能超过15个字' },
+              { required: true, message: '请输入地址' },
+            ]}
+          >
             <TextArea
               placeholder={translated.addressTip}
               maxLength={100}

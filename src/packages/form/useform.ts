@@ -18,7 +18,7 @@ class FormStore {
   // 校验成功或失败的回调，onFinish、onFinishFailed
   private callbacks: Callbacks = {}
 
-  private errors: any[] = []
+  private errors: { [key: NamePath]: any } = {}
 
   constructor() {
     this.callbacks = {
@@ -124,13 +124,47 @@ class FormStore {
       validator.validate({ [name]: this.store?.[name] }, (errors) => {
         if (errors) {
           err.push(...errors)
-          this.errors.push(...errors)
-          // 表单项更新
+          this.errors[name] = errors
         }
         entity.onStoreChange('validate')
       })
     })
     return err
+  }
+
+  validateFields = (nameList?: NamePath[]) => {
+    if (!nameList || nameList.length === 0) {
+      this.validate()
+      return
+    }
+    this.fieldEntities
+      .filter(({ props: { name } }) => {
+        return nameList.includes(name)
+      })
+      .forEach((entity) => {
+        const { name, rules = [] } = entity.props
+        const descriptor: any = {}
+        if (rules.length) {
+          // 多条校验规则
+          if (rules.length > 1) {
+            descriptor[name] = []
+            rules.forEach((v: any) => {
+              descriptor[name].push(v)
+            })
+          } else {
+            descriptor[name] = rules[0]
+          }
+        }
+        const validator = new Schema(descriptor)
+        validator.messages()
+        validator.validate({ [name]: this.store?.[name] }, (errors) => {
+          this.errors[name] = []
+          if (errors) {
+            this.errors[name] = errors
+          }
+          entity.onStoreChange('validate')
+        })
+      })
   }
 
   submit = () => {
@@ -150,8 +184,13 @@ class FormStore {
     })
   }
 
+  dispatch = ({ name }: { name: string }) => {
+    this.validateFields([name])
+  }
+
   getForm = () => {
     return {
+      dispatch: this.dispatch,
       setInitialValues: this.setInitialValues,
       setCallback: this.setCallback,
       registerField: this.registerField,

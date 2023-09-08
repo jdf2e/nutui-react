@@ -37,6 +37,10 @@ const App = () => {
           required
           label="name"
           name="username"
+          rules={[
+            { max: 5, message: '姓名不能超过5个字' },
+            { required: true, message: '请输入姓名' },
+          ]}
         >
           <Input
             className="nut-input-text"
@@ -44,7 +48,14 @@ const App = () => {
             type="text"
           />
         </Form.Item>
-        <Form.Item label="address" name="address">
+        <Form.Item
+          label="address"
+          name="address"
+          rules={[
+            { max: 15, message: '地址不能超过15个字' },
+            { required: true, message: '请输入姓名' },
+          ]}
+        >
           <TextArea placeholder="please enter address" maxLength={100} />
         </Form.Item>
         <Form.Item
@@ -458,6 +469,7 @@ export default App;
 | trigger | Set the timing to collect field value changes | `string` | `-` |
 | valuePropName | The property of the value of the child node, such as 'checked' for Checkbox | `string` | `-` |
 | getValueFromEvent | Set how to convert event value to field value | `(...args: any) => any` | `-` |
+| validateTrigger | When to validate the value of children node | `string | string[]` | `onChange` |
 | onClick | Click event and collect child component Ref | `(event: React.MouseEvent, componentRef: React.MutableRefObject<any>) => void` | `-` |
 
 ### Form.Item Rule

@@ -37,6 +37,10 @@ const App = () => {
           required
           label="姓名"
           name="username"
+          rules={[
+            { max: 5, message: '姓名不能超过5个字' },
+            { required: true, message: '请输入姓名' },
+          ]}
         >
           <Input
             className="nut-input-text"
@@ -44,7 +48,14 @@ const App = () => {
             type="text"
           />
         </Form.Item>
-        <Form.Item label="地址" name="address">
+        <Form.Item
+          label="地址"
+          name="address"
+          rules={[
+            { max: 15, message: '地址不能超过15个字' },
+            { required: true, message: '请输入姓名' },
+          ]}
+        >
           <TextArea placeholder="請輸入地址" maxLength={100} />
         </Form.Item>
         <Form.Item
@@ -451,6 +462,7 @@ export default App;
 | trigger | 設置收集字段值變更的時機 | `string` | `-` |
 | valuePropName | 子節點的值的屬性，如 Checkbox 的是 'checked' | `string` | `-` |
 | getValueFromEvent | 設置如何將 event 的值轉換成字段值 | `(...args: any) => any` | `-` |
+| validateTrigger | 统一设置字段触发验证的时机 | `string | string[]` | `onChange` |
 | onClick | 點擊事件併收集子組件 Ref | `(event: React.MouseEvent, componentRef: React.MutableRefObject<any>) => void` | `-` |
 
 ### Form.Item Rule
