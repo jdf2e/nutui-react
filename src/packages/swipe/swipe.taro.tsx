@@ -142,9 +142,11 @@ export const Swipe = forwardRef<
     }
 
     touch.move(event)
-    props.onTouchMove && props.onTouchMove(event)
 
     if (touch.isHorizontal()) {
+      // 可以在这里处理通过样式方式滚动穿透
+      props.onTouchMove && props.onTouchMove(event)
+
       lockClick.current = true
       const newState = { ...state, dragging: true }
       const isEdge = !opened || touch.deltaX * startOffset.current < 0
@@ -273,7 +275,6 @@ export const Swipe = forwardRef<
       onTouchMove={(e) => onTouchMove(e)}
       onTouchEnd={(e) => onTouchEnd(e)}
       style={style}
-      catchMove
     >
       <div className={`${classPrefix}__wrapper`} style={wrapperStyle}>
         {renderActionContent('left')}

@@ -1,76 +1,129 @@
-import { useState } from 'react'
+import { useCallback, useEffect, useRef } from 'react'
 
 const MIN_DISTANCE = 10
 
-type Direction = '' | 'vertical' | 'horizontal'
+export enum TouchDirection {
+  Horizontal = 'horizontal',
+  Vertical = 'vertical',
+}
 
-function getDirection(x: number, y: number) {
+function getDirection(x: number, y: number): TouchDirection | undefined {
   if (x > y && x > MIN_DISTANCE) {
-    return 'horizontal'
+    return TouchDirection.Horizontal
   }
   if (y > x && y > MIN_DISTANCE) {
-    return 'vertical'
+    return TouchDirection.Vertical
   }
-  return ''
+}
+
+export interface TouchRef {
+  startX: number
+  startY: number
+  deltaX: number
+  deltaY: number
+  offsetX: number
+  offsetY: number
+  direction?: TouchDirection
+
+  isVertical(): boolean
+
+  isHorizontal(): boolean
+
+  start(event: React.TouchEvent<HTMLElement>): void
+
+  move(event: React.TouchEvent<HTMLElement>): void
+
+  reset(): void
 }
 
 export function useTouch() {
-  const [startX, SetStartX] = useState(0)
-  const [startY, SetStartY] = useState(0)
-  const [moveX, SetMoveX] = useState(0)
-  const [moveY, SetMoveY] = useState(0)
-  const [deltaX, SetDeltaX] = useState(0)
-  const [deltaY, SetDeltaY] = useState(0)
-  const [offsetX, SetOffsetX] = useState(0)
-  const [offsetY, SetOffsetY] = useState(0)
-  const [direction, SetDirection] = useState<Direction>('')
+  const touchRef = useRef<TouchRef>({
+    startX: 0,
+    startY: 0,
+    deltaX: 0,
+    deltaY: 0,
+    offsetX: 0,
+    offsetY: 0,
+    isVertical: () => false,
+    isHorizontal: () => false,
+    start: () => undefined,
+    move: () => undefined,
+    reset: () => undefined,
+  })
 
-  const isVertical = () => direction === 'vertical'
-  const isHorizontal = () => direction === 'horizontal'
+  const isVertical = useCallback(
+    () => touchRef.current.direction === TouchDirection.Vertical,
+    []
+  )
 
-  const reset = () => {
-    SetDeltaX(0)
-    SetDeltaY(0)
-    SetOffsetX(0)
-    SetOffsetY(0)
-    SetDirection('')
-  }
+  const isHorizontal = useCallback(
+    () => touchRef.current.direction === TouchDirection.Horizontal,
+    []
+  )
 
-  const start = (event: React.TouchEvent<HTMLElement>) => {
-    reset()
-    SetStartX(event.touches[0].clientX)
-    SetStartY(event.touches[0].clientY)
-  }
+  const reset = useCallback(() => {
+    touchRef.current.deltaX = 0
+    touchRef.current.deltaY = 0
+    touchRef.current.offsetX = 0
+    touchRef.current.offsetY = 0
+    touchRef.current.direction = undefined
+  }, [])
 
-  const move = (event: React.TouchEvent<HTMLElement>) => {
+  const start = useCallback(
+    (event: React.TouchEvent<HTMLElement>) => {
+      reset()
+      touchRef.current.startX = event.touches[0].clientX
+      touchRef.current.startY = event.touches[0].clientY
+    },
+    [reset]
+  )
+
+  const move = useCallback((event: React.TouchEvent<HTMLElement>) => {
+    console.log('move')
     const touch = event.touches[0]
-    const dX = touch.clientX - startX
-    const dY = touch.clientY - startY
-    SetDeltaX(dX)
-    SetDeltaY(dY)
-    SetMoveX(touch.clientX)
-    SetMoveY(touch.clientY)
-    SetOffsetX(Math.abs(dX))
-    SetOffsetY(Math.abs(dY))
-    if (!direction) {
-      SetDirection(getDirection(offsetX, offsetY))
-    }
-  }
+    touchRef.current.deltaX =
+      touch.clientX < 0 ? 0 : touch.clientX - touchRef.current.startX
+    touchRef.current.deltaY = touch.clientY - touchRef.current.startY
+    touchRef.current.offsetX = Math.abs(touchRef.current.deltaX)
+    touchRef.current.offsetY = Math.abs(touchRef.current.deltaY)
 
-  return {
-    move,
-    start,
-    reset,
-    startX,
-    startY,
-    moveX,
-    moveY,
-    deltaX,
-    deltaY,
-    offsetX,
-    offsetY,
-    direction,
-    isVertical,
-    isHorizontal,
-  }
+    if (!touchRef.current.direction) {
+      touchRef.current.direction = getDirection(
+        touchRef.current.offsetX,
+        touchRef.current.offsetY
+      )
+    }
+  }, [])
+
+  useEffect(() => {
+    if (touchRef.current.isHorizontal !== isHorizontal) {
+      touchRef.current.isHorizontal = isHorizontal
+    }
+  }, [touchRef, isHorizontal])
+
+  useEffect(() => {
+    if (touchRef.current.isVertical !== isVertical) {
+      touchRef.current.isVertical = isVertical
+    }
+  }, [touchRef, isVertical])
+
+  useEffect(() => {
+    if (touchRef.current.reset !== reset) {
+      touchRef.current.reset = reset
+    }
+  }, [touchRef, reset])
+
+  useEffect(() => {
+    if (touchRef.current.start !== start) {
+      touchRef.current.start = start
+    }
+  }, [touchRef, start])
+
+  useEffect(() => {
+    if (touchRef.current.move !== move) {
+      touchRef.current.move = move
+    }
+  }, [touchRef, move])
+
+  return touchRef.current
 }
