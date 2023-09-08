@@ -23,7 +23,7 @@ interface T {
 const BarrageDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      ed8c172b: '画美不看',
+      ed8c172b: '画美不看画美不看画美不看画美不看',
       ae9cd4a0: '不明觉厉',
       ab05020c: '喜大普奔',
       bc555a83: '男默女泪',

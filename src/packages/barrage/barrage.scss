@@ -10,13 +10,12 @@
   color: $color-title;
 
   .barrage-item {
-    width: 120px;
     display: block;
     position: absolute;
     right: 0;
-    padding: 3px 25px;
-    border-radius: 50px;
-    font-size: 12px;
+    padding: 4px 16px;
+    border-radius: 16px;
+    font-size: $font-size-small;
     text-align: center;
     white-space: pre;
     transform: translateX(100%);

@@ -76,7 +76,7 @@ const CircleProgressDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <div className="demo demo-circleprogress">
         <h2>{translated['84aa6bce']}</h2>
         <Cell style={{ justifyContent: 'center' }}>
           <CircleProgress percent={20} />
@@ -125,10 +125,10 @@ const CircleProgressDemo = () => {
           radius="0 0 6px 6px"
           style={{ justifyContent: 'center' }}
         >
-          <Button type="primary" onClick={setReduceVal}>
+          <Button type="primary" size="small" onClick={setReduceVal}>
             {translated['43c9f2ba']}
           </Button>
-          <Button type="primary" onClick={setAddVal}>
+          <Button type="primary" size="small" onClick={setAddVal}>
             {translated.bce53fe7}
           </Button>
         </Cell>
