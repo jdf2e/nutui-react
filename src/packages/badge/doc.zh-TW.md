@@ -250,8 +250,8 @@ export default App;
 | value | 顯示的內容，支持數字、字符和自定義內容 | `ReactNode` | `-` |
 | max | value 為數值時，最大值 | `number` | `99` |
 | dot | 是否為小點 | `boolean` | `false` |
-| top | 上下偏移量，支持單位設置，可設置為：5 等 | `number` | `0` |
-| right | 左右偏移量，支持單位設置，可設置為：5 等 | `number` | `0` |
+| top | 上下偏移量，支持單位設置，可設置為："5" 等 | `string` | `"0"` |
+| right | 左右偏移量，支持單位設置，可設置為："5" 等 | `string` | `"5"` |
 | color | 徽標背景顏色,默認值為當前主題色 | `string` | `-` |
 
 ## 主題定制
