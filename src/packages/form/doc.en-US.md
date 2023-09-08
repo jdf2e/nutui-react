@@ -84,6 +84,8 @@ const App = () => {
   return (
     <>
       <Form
+        divider
+        labelPosition="left"
         onFinish={(values) => submitSucceed(values)}
         onFinishFailed={(values, errors) => submitFailed(errors)}
         footer={
@@ -128,7 +130,7 @@ const App = () => {
         <Form.Item
           label="telephone"
           name="tel"
-          rules={[{ required: true, message: "Please type your phone number" }]}
+          rules={[{ max: 13, message: "Please type your phone number" }]}
         >
           <Input placeholder="The phone format is incorrect" type="number" />
         </Form.Item>

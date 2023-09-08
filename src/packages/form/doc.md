@@ -84,6 +84,8 @@ const App = () => {
   return (
     <>
       <Form
+        divider
+        labelPosition="left"
         onFinish={(values) => submitSucceed(values)}
         onFinishFailed={(values, errors) => submitFailed(errors)}
         footer={
@@ -122,9 +124,9 @@ const App = () => {
           <Input placeholder="请输入年龄，必须数字且0-200区间" type="text" />
         </Form.Item>
         <Form.Item
-          label="电话"
+          label="联系电话"
           name="tel"
-          rules={[{ required: true, message: "请输入联系电话" }]}
+          rules={[{ max: 13, message: "请输入联系电话" }]}
         >
           <Input placeholder="电话格式不正确" type="number" />
         </Form.Item>
