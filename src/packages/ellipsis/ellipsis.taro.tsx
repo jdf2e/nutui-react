@@ -213,7 +213,7 @@ export const Ellipsis: FunctionComponent<
       if (direction === 'end') {
         ellipsis.current.leading = ellipsis.current?.leading?.slice(
           0,
-          ellipsis.current?.leading.length - 1
+          (ellipsis.current?.leading?.length || 0) - 1
         )
       } else {
         ellipsis.current.tailing = ellipsis.current?.tailing?.slice(
