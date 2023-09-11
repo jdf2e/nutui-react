@@ -106,6 +106,9 @@ const App = () => {
       }}
      />
     <Cascader
+      popupProps={{
+        className: 'cascader-popup',
+      }}
       visible={isVisibleDemo1}
       value={value1}
       title="地址选择"
