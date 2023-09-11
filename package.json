@@ -163,7 +163,7 @@
     "markdown-it": "^13.0.1",
     "marked": "^8.0.0",
     "mobx": "^6.9.0",
-    "mobx-react-lite": "^3.4.3",
+    "mobx-react-lite": "^4.0.0",
     "postcss": "^8.4.21",
     "postcss-import": "^14.1.0",
     "postcss-modules": "^4.3.1",
