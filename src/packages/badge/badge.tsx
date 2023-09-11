@@ -8,8 +8,8 @@ export interface BadgeProps extends BasicComponent {
   dot: boolean
   max: number
   top: string
-  right: string
-  color: string
+  right: string | number
+  color: string | number
 }
 const defaultProps = {
   ...ComponentDefaults,
