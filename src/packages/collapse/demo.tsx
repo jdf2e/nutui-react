@@ -290,7 +290,6 @@ const CollapseDemo = () => {
         </Button>
         <Button
           style={{ marginBottom: '20px', marginTop: '20px' }}
-          type="info"
           size="small"
           onClick={() => changeOldData()}
         >
