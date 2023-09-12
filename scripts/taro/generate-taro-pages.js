@@ -70,10 +70,8 @@ const replaceAppSCSS = () => {
       if (lines[0].indexOf(`@import '../../../styles/font`) !== -1) {
         lines[0] = ''
       }
-      // fileString = fileStr + lines.join('\n')
       fsExtra.outputFile(filePath, fileString, 'utf8', (error) => {
         if (error) console.log('Error', error)
-        // console.log(`文件写入成功`)
       })
     }
   })
