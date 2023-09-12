@@ -203,9 +203,9 @@ const UploaderDemo = () => {
     type: string,
     quality: number
   ): Promise<Blob | null> => {
-    return new Promise((resolve) =>
+    return new Promise((resolve) => {
       canvas.toBlob((blob) => resolve(blob), type, quality)
-    )
+    })
   }
   const onOversize = (files: File[]) => {
     console.log(translated['25e04d44'], files)

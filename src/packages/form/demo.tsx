@@ -1,6 +1,6 @@
 import React from 'react'
 import { Right } from '@nutui/icons-react'
-import { Form } from './form'
+import Form from './index'
 import { Input } from '../input/input'
 import Cell from '@/packages/cell'
 import { useTranslate } from '../../sites/assets/locale'
@@ -267,6 +267,7 @@ const FormDemo = () => {
         </Form>
         <h2>{translated.title2}</h2>
         <Form
+          divider
           onFinish={(values) => submitSucceed(values)}
           onFinishFailed={(values, errors) => submitFailed(errors)}
           footer={

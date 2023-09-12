@@ -11,6 +11,7 @@ import { PopupProps } from '@/packages/popup/popup'
 import { getRect } from '@/utils/use-client-rect'
 import { ComponentDefaults } from '@/utils/typings'
 import useClickAway from '@/utils/use-click-away'
+import { canUseDom } from '@/utils/can-use-dom'
 
 export type PopoverLocation =
   | 'bottom'
@@ -101,14 +102,13 @@ export const Popover: FunctionComponent<
   const [showPopup, setShowPopup] = useState(false)
   const [elWidth, setElWidth] = useState(0)
   const [elHeight, setElHeight] = useState(0)
-  const [rootPosition, setRootPosition] =
-    useState<{
-      width: number
-      height: number
-      left: number
-      top: number
-      right: number
-    }>()
+  const [rootPosition, setRootPosition] = useState<{
+    width: number
+    height: number
+    left: number
+    top: number
+    right: number
+  }>()
 
   useEffect(() => {
     setShowPopup(visible)
@@ -119,9 +119,12 @@ export const Popover: FunctionComponent<
       }, 0)
     }
   }, [visible])
-
+  let element
+  if (canUseDom) {
+    element = targetId && document.querySelector(`#${targetId}`)
+  }
   const targetSet = [
-    targetId ? document.querySelector(`#${targetId}`) : popoverRef.current,
+    targetId ? element : popoverRef.current,
     popoverContentRef.current,
   ]
 
@@ -204,7 +207,6 @@ export const Popover: FunctionComponent<
       if (['bottom', 'top'].includes(direction)) {
         const h =
           direction === 'bottom' ? height + cross : -(contentHeight + cross)
-
         styles.top = `${top + h}px`
 
         if (!skew) {

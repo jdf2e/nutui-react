@@ -170,10 +170,6 @@ test('should render indicator', () => {
   const indicatorItem = container.querySelectorAll(
     '.nut-swiper__indicator-item'
   )
-  // expect(indicatorItem).toHaveLength(4)
-  // expect(indicatorItem[1]).toHaveStyle({
-  //   backgroundColor: 'red',
-  // })
 })
 
 test('should render loop and auto-play', async () => {
@@ -230,7 +226,7 @@ test('should not allow to drag when touchable is false', () => {
     width: 375,
     direction: 'vertical',
   }
-  const { height, defaultValue, width, direction } = state
+  const { height, defaultValue, width } = state
   const { container } = render(
     <Swiper
       height={height}
@@ -267,7 +263,7 @@ test('should not allow to drag when loop is false', async () => {
     width: 375,
     direction: 'vertical',
   }
-  const { height, defaultValue, width, direction } = state
+  const { height, defaultValue, width } = state
   let _container: any
   act(() => {
     const { container } = render(

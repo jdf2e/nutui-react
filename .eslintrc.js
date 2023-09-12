@@ -57,6 +57,7 @@ module.exports = {
         semi: false,
         singleQuote: true,
         printWidth: 80,
+        proseWrap: 'preserve',
         endOfLine: 'auto',
       },
     ],
@@ -86,6 +87,8 @@ module.exports = {
     'react/no-children-prop': 0,
     'react/no-danger': 0,
     'react/button-has-type': 0,
+    'react/function-component-definition': 0,
+    'react/jsx-no-useless-fragment': 0,
     'jsx-a11y/aria-proptypes': 0,
     'jsx-a11y/anchor-is-valid': 0,
     'jsx-a11y/no-static-element-interactions': 0,
@@ -108,6 +111,9 @@ module.exports = {
     'no-param-reassign': 0,
     'prefer-destructuring': 0,
     'react/require-default-props': 0,
+    'react/no-unused-class-component-methods': 0,
+    'react/jsx-no-constructed-context-values': 0,
+    'react/no-unstable-nested-components': 0,
     'react/sort-comp': [
       0,
       {

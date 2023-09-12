@@ -25,7 +25,7 @@ interface TableColumnProps {
   title?: string
   align?: string
   sorter?: ((a: any, b: any) => number) | boolean | string
-  render?: (rowData?: any, rowIndex?: number) => string | React.ReactNode
+  render?: (rowData: any, rowIndex: number) => string | React.ReactNode
 }
 
 const TableDemo = () => {
@@ -63,6 +63,13 @@ const TableDemo = () => {
   })
 
   const [columns1, setColumns1] = useState<Array<TableColumnProps>>([
+    {
+      title: 'ID',
+      key: 'id',
+      render: (record: any, index) => {
+        return index + 1
+      },
+    },
     {
       title: '姓名',
       key: 'name',

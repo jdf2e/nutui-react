@@ -57,6 +57,13 @@ const TableDemo = () => {
 
   const [columns1, setColumns1] = useState<Array<TableColumnProps>>([
     {
+      title: 'ID',
+      key: 'id',
+      render: (record: any, index) => {
+        return index + 1
+      },
+    },
+    {
       title: '姓名',
       key: 'name',
     },
@@ -230,67 +237,65 @@ const TableDemo = () => {
   }
 
   return (
-    <>
-      <div className="demo">
-        <h2>{translated.basic}</h2>
-        <Table columns={columns1} data={data1} style={{ background: '#fff' }} />
-        <h2>{translated.borderedAndAlign}</h2>
-        <Table
-          columns={columns2}
-          data={data1}
-          bordered={false}
-          style={{ background: '#fff' }}
-        />
-        <h2>{translated.summaryTitle}</h2>
-        <Table
-          columns={columns1}
-          data={data1}
-          summary={translated.summary}
-          style={{ background: '#fff' }}
-        />
-        <h2>{translated.striped}</h2>
-        <Table
-          columns={columns1}
-          data={data1}
-          style={{ background: '#fff' }}
-          striped
-        />
-        <h2>{translated.hideHeader}</h2>
-        <Table
-          columns={columns1}
-          data={data1}
-          style={{ background: '#fff' }}
-          showHeader={false}
-        />
-        <h2>{translated.noDataTitle}</h2>
-        <Table columns={columns1} data={data2} style={{ background: '#fff' }} />
-        <Table
-          columns={columns1}
-          data={data2}
-          style={{ background: '#fff' }}
-          noData={translated.customNoData}
-        />
-        <h2>{translated.customCell}</h2>
-        <Table columns={columns4} data={data4} style={{ background: '#fff' }} />
-        <h2>{translated.asynchronousRendering}</h2>
-        <Table columns={columns1} data={data3} style={{ background: '#fff' }} />
-        <h2>{translated.sorting}</h2>
-        <Table
-          columns={columns5}
-          data={data5}
-          onSort={handleSorter}
-          style={{ background: '#fff' }}
-        />
-        <h2>{translated.sorterIcon}</h2>
-        <Table
-          columns={columns5}
-          data={data5}
-          onSort={handleSorter}
-          style={{ background: '#fff' }}
-          sorterIcon={<TriangleDown width="12px" height="12px" />}
-        />
-      </div>
-    </>
+    <div className="demo">
+      <h2>{translated.basic}</h2>
+      <Table columns={columns1} data={data1} style={{ background: '#fff' }} />
+      <h2>{translated.borderedAndAlign}</h2>
+      <Table
+        columns={columns2}
+        data={data1}
+        bordered={false}
+        style={{ background: '#fff' }}
+      />
+      <h2>{translated.summaryTitle}</h2>
+      <Table
+        columns={columns1}
+        data={data1}
+        summary={translated.summary}
+        style={{ background: '#fff' }}
+      />
+      <h2>{translated.striped}</h2>
+      <Table
+        columns={columns1}
+        data={data1}
+        style={{ background: '#fff' }}
+        striped
+      />
+      <h2>{translated.hideHeader}</h2>
+      <Table
+        columns={columns1}
+        data={data1}
+        style={{ background: '#fff' }}
+        showHeader={false}
+      />
+      <h2>{translated.noDataTitle}</h2>
+      <Table columns={columns1} data={data2} style={{ background: '#fff' }} />
+      <Table
+        columns={columns1}
+        data={data2}
+        style={{ background: '#fff' }}
+        noData={translated.customNoData}
+      />
+      <h2>{translated.customCell}</h2>
+      <Table columns={columns4} data={data4} style={{ background: '#fff' }} />
+      <h2>{translated.asynchronousRendering}</h2>
+      <Table columns={columns1} data={data3} style={{ background: '#fff' }} />
+      <h2>{translated.sorting}</h2>
+      <Table
+        columns={columns5}
+        data={data5}
+        onSort={handleSorter}
+        style={{ background: '#fff' }}
+      />
+      <h2>{translated.sorterIcon}</h2>
+      <Table
+        columns={columns5}
+        data={data5}
+        onSort={handleSorter}
+        style={{ background: '#fff' }}
+        sorterIcon={<TriangleDown width="12px" height="12px" />}
+      />
+    </div>
   )
 }
 
