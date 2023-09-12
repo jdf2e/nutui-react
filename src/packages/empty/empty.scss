@@ -7,7 +7,7 @@
   padding: $empty-padding;
   background-color: $white;
 
-  &__image {
+  &-image {
     width: $empty-image-size;
     height: $empty-image-size;
 
@@ -24,11 +24,41 @@
     }
   }
 
-  &__description {
+  &-title {
+    margin-top: $empty-title-margin-top;
+    margin-bottom: $empty-title-margin-bottom;
+    color: $color-title;
+    font-size: $font-size;
+    line-height: $empty-title-line-height;
+  }
+
+  &-description {
     margin-top: $empty-description-margin-top;
     padding: $empty-description-padding;
-    color: $empty-description-color;
-    font-size: $empty-description-font-size;
+    color: $color-text-help;
+    font-size: $font-size-small;
     line-height: $empty-description-line-height;
+  }
+
+  &-small {
+    .nut-empty-image {
+      width: 120px;
+      height: 120px;
+    }
+  }
+
+  &-actions {
+    display: flex;
+    margin-top: 16px;
+
+    .nut-button.nut-empty-actions-left,
+    .nut-button.nut-empty-actions-right {
+      height: 28px;
+      padding: 0px 12px;
+      font-weight: 400;
+    }
+    .nut-button.nut-empty-actions-left {
+      margin-right: 16px;
+    }
   }
 }

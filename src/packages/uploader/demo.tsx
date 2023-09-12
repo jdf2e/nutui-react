@@ -344,17 +344,19 @@ const UploaderDemo = () => {
           ref={uploadRef}
         />
         <br />
-        <Button
-          type="success"
-          size="small"
-          onClick={submitUpload}
-          style={{ marginRight: '10px' }}
-        >
-          {translated.fcf01d1a}
-        </Button>
-        <Button type="primary" size="small" onClick={clearUpload}>
-          {translated.clearBtnUpload}
-        </Button>
+        <div style={{ display: 'flex' }}>
+          <Button
+            type="success"
+            size="small"
+            onClick={submitUpload}
+            style={{ marginRight: '10px' }}
+          >
+            {translated.fcf01d1a}
+          </Button>
+          <Button type="primary" size="small" onClick={clearUpload}>
+            {translated.clearBtnUpload}
+          </Button>
+        </div>
 
         <h2>{translated['7db1a8b2']}</h2>
         <Uploader disabled />

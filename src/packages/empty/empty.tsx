@@ -1,10 +1,14 @@
 import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { EmptyAction } from '@/packages/empty/index'
+
+import Button from '../button'
 
 type statusOptions = {
   [key: string]: string
 }
+
 /**
  * 内置图片地址
  */
@@ -16,29 +20,38 @@ const defaultStatus: statusOptions = {
 export interface EmptyProps extends BasicComponent {
   image?: ReactNode
   imageSize: number | string
+  title: ReactNode
   description: ReactNode
+  size: 'small' | 'base'
   status: 'empty' | 'error' | 'network'
+  actions: Array<EmptyAction>
 }
 
 const defaultProps = {
   ...ComponentDefaults,
+  title: '',
   description: '',
   imageSize: '',
+  size: 'base',
   status: 'empty',
+  actions: [],
 } as EmptyProps
 
 const classPrefix = `nut-empty`
 export const Empty: FunctionComponent<
-  Partial<EmptyProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<EmptyProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > = (props) => {
   const { locale } = useConfig()
   const {
     image,
     imageSize,
+    title,
     description,
     children,
     className,
+    size,
     status,
+    actions,
     ...rest
   } = {
     ...defaultProps,
@@ -73,20 +86,50 @@ export const Empty: FunctionComponent<
     })
   }, [imageSize])
   return (
-    <div className={`${classPrefix} ${className}`} {...rest}>
-      <>
-        <div className={`${classPrefix}__image`} style={imgStyle}>
-          {imageNode}
-        </div>
-        {typeof description === 'string' ? (
-          <div className={`${classPrefix}__description`}>
-            {description || locale.noData}
-          </div>
-        ) : (
-          description
-        )}
-        {children}
-      </>
+    <div
+      className={`${classPrefix} ${className} ${
+        size === 'base' ? '' : `${classPrefix}-${size}`
+      }`}
+      {...rest}
+    >
+      <div className={`${classPrefix}-image`} style={imgStyle}>
+        {imageNode}
+      </div>
+      {typeof title === 'string' && title ? (
+        <div className={`${classPrefix}-title`}>{title}</div>
+      ) : (
+        title
+      )}
+      {typeof description === 'string' ? (
+        <div className={`${classPrefix}-description`}>{description}</div>
+      ) : (
+        description
+      )}
+      <div className={`${classPrefix}-actions`}>
+        {actions.map((item, index) => {
+          return (
+            <Button
+              className={`${
+                // eslint-disable-next-line no-nested-ternary
+                actions.length > 1
+                  ? index === 0
+                    ? `${classPrefix}-actions-left`
+                    : `${classPrefix}-actions-right`
+                  : ''
+              }`}
+              type={`${
+                actions.length > 1 && index === 0 ? 'default' : 'primary'
+              }`}
+              size="small"
+              fill="outline"
+              key={`action-${index}`}
+            >
+              {item?.text}
+            </Button>
+          )
+        })}
+      </div>
+      {children}
     </div>
   )
 }

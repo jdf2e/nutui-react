@@ -22,7 +22,40 @@ import { Empty } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Empty description="無數據" />
+    <>
+      <Empty description="無數據" />
+      <Empty
+        title="標題"
+        description="輔助信息輔助信息"
+        actions={[
+          { text: "操作按鈕" },
+          { text: "操作按鈕" },
+        ]}
+      />
+      <Empty
+        description="輔助信息輔助信息"
+        actions={[{ text: "操作按鈕" }]}
+        style={{ marginTop: '10px' }}
+      />
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### Size 为 small 时，可用于半屏
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Empty } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <Empty description="無數據" size="small" />
   );
 };
 export default App;

@@ -276,8 +276,7 @@ const CollapseDemo = () => {
         {/* eslint-disable-next-line react/button-has-type */}
         <Button
           style={{
-            marginBottom: '20px',
-            marginTop: '20px',
+            margin: '20px',
             marginRight: '10px',
           }}
           type="primary"
@@ -287,8 +286,7 @@ const CollapseDemo = () => {
           {translated.buttonTextOne}
         </Button>
         <Button
-          style={{ marginBottom: '20px', marginTop: '20px' }}
-          type="info"
+          style={{ marginTop: '20px' }}
           size="small"
           onClick={() => changeOldData()}
         >

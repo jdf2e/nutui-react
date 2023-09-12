@@ -22,7 +22,40 @@ import { Empty } from '@nutui/nutui-react-taro';
 
 const App = () => {
   return (
-    <Empty description="无数据" />
+    <>
+      <Empty description="无数据" />
+      <Empty
+        title="标题"
+        description="辅助信息辅助信息"
+        actions={[
+          { text: "操作按钮" },
+          { text: "操作按钮" },
+        ]}
+      />
+      <Empty
+        description="辅助信息辅助信息"
+        actions={[{ text: "操作按钮" }]}
+        style={{ marginTop: '10px' }}
+      />
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### Size 为 small 时，可用于半屏
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Empty } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  return (
+    <Empty description="无数据" size="small" />
   );
 };
 export default App;

@@ -22,7 +22,40 @@ import { Empty } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Empty description="No Data" />
+    <>
+      <Empty description="No Data" />
+      <Empty
+        title="title"
+        description="No Data"
+        actions={[
+          { text: "Button" },
+          { text: "Button" },
+        ]}
+      />
+      <Empty
+        description="No Data"
+        actions={[{ text: "Button" }]}
+        style={{ marginTop: '10px' }}
+      />
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### Size is small
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Empty } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <Empty description="No Data" size="small" />
   );
 };
 export default App;

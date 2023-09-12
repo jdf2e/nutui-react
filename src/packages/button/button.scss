@@ -112,14 +112,12 @@
     height: $button-small-height;
     padding: $button-small-padding;
     font-size: $button-small-font-size;
-    font-weight: $button-small-font-weight;
   }
 
   &--mini {
     height: $button-mini-height;
     padding: $button-mini-padding;
     font-size: $button-mini-font-size;
-    font-weight: $button-mini-font-weight;
   }
 
   &--primary {
@@ -143,6 +141,8 @@
 
     &.nut-button--outline {
       background: transparent;
+      color: $button-primary-border-color;
+      border: $button-border-width solid $button-primary-border-color;
 
       &.nut-button--disabled {
         color: $button-primary-disable;
@@ -247,8 +247,6 @@
   }
 
   &.nut-button--outline {
-    color: $button-primary-border-color;
-    border: $button-border-width solid $button-primary-border-color;
     background: transparent;
   }
 
