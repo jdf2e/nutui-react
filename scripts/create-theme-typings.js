@@ -151,6 +151,7 @@ function generate() {
       : `./src/styles/variables-${projectID}.scss`,
     ...glob.sync('./src/packages/**/*.scss', {
       ignore: './src/**/demo.scss',
+      dotRelative: true
     }),
   ]
   Promise.all(
