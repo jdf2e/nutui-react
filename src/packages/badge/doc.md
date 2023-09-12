@@ -267,6 +267,7 @@ export default App;
 | \--nutui-badge-font-size | badge 内容字号 | `$font-size-1` |
 | \--nutui-badge-border | badge 边框 | `0px solid $primary-text-color` |
 | \--nutui-badge-border-radius | badge 边框圆角 | `14px` |
+| \--nutui-badge-min-width | badge 最小宽度 | `5px` |
 | \--nutui-badge-padding | badge 的padding值 | `0 5px` |
 | \--nutui-badge-icon-padding | badge 为自定义icon时 的 padding值 | `2px` |
 | \--nutui-badge-content-transform | badge 内容位置 | `translateY(-50%) translateX(100%)` |
