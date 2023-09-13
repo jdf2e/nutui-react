@@ -78,7 +78,7 @@ interface T {
 }
 
 const FormDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
       title1: '动态表单',
@@ -90,6 +90,7 @@ const FormDemo = () => {
       name: '姓名',
       nameTip: '请输入姓名',
       nameTip1: '请输入姓名',
+      nameErr: '姓名不能超过5个字',
       age: '年龄',
       ageTip: '请输入年龄',
       ageTip1: '请输入年龄，必须数字且0-200区间',
@@ -103,6 +104,7 @@ const FormDemo = () => {
       addressTip: '请输入地址',
       addressTip1: '请选择地址',
       addressTip2: '请选择所在地区',
+      addressErr: '地址不能超过15个字',
       remarks: '备注',
       remarksTip: '请输入备注',
       add: '添加',
@@ -144,6 +146,7 @@ const FormDemo = () => {
       name: 'Name',
       nameTip: 'Please enter your name',
       nameTip1: 'Please enter name',
+      nameErr: 'Name cannot exceed 5 characters',
       age: 'Age',
       ageTip: 'Please enter age',
       ageTip1:
@@ -158,6 +161,7 @@ const FormDemo = () => {
       addressTip: 'Please enter address',
       addressTip1: 'Please select an address',
       addressTip2: 'Please select your region',
+      addressErr: 'Address should not exceed 15 characters',
       remarks: 'Remarks',
       remarksTip: 'Please enter remarks',
       add: 'Add',
@@ -292,8 +296,8 @@ const FormDemo = () => {
             label={translated.name}
             name="username"
             rules={[
-              { max: 5, message: '姓名不能超过5个字' },
-              { required: true, message: '请输入姓名' },
+              { max: 5, message: translated.nameErr },
+              { required: true, message: translated.nameTip1 },
             ]}
           >
             <Input
@@ -306,8 +310,8 @@ const FormDemo = () => {
             label={translated.address}
             name="address"
             rules={[
-              { max: 15, message: '地址不能超过15个字' },
-              { required: true, message: '请输入地址' },
+              { max: 15, message: translated.addressErr },
+              { required: true, message: translated.addressTip },
             ]}
           >
             <TextArea
