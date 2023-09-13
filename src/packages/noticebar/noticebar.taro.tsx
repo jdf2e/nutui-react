@@ -9,7 +9,7 @@ import React, {
 } from 'react'
 import { Close, Notice } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
-import { getRectByTaro } from '../../utils/use-client-rect'
+import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface NoticeBarProps extends BasicComponent {
