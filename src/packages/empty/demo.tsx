@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Refresh } from '@nutui/icons-react'
 import { Empty } from './empty'
 import { Button } from '@/packages/button/button'
 import { Tabs } from '@/packages/tabs/tabs'
@@ -139,7 +140,7 @@ const EmptyDemo = () => {
           style={{ marginBottom: '20px' }}
         >
           <div style={{ marginTop: '10px' }}>
-            <Button icon="refresh" type="primary">
+            <Button icon={<Refresh />} type="primary">
               {translated.b8a453e3}
             </Button>
           </div>

@@ -23,7 +23,6 @@ import { Empty } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Empty description="無數據" />
       <Empty
         title="標題"
         description="輔助信息輔助信息"
@@ -37,6 +36,7 @@ const App = () => {
         actions={[{ text: "操作按鈕" }]}
         style={{ marginTop: '10px' }}
       />
+      <Empty description="無數據" />
     </>
   );
 };

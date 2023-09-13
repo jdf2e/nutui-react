@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
+import { Refresh } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Tabs, TabPane, Empty } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
@@ -133,14 +134,13 @@ const EmptyDemo = () => {
         />
 
         <h2>{translated['8dab2f66']}</h2>
-
         <Empty
           status="error"
           description={translated.d04fcbda}
           style={{ marginBottom: '20px' }}
         >
           <div style={{ marginTop: '10px' }}>
-            <Button icon="refresh" type="primary">
+            <Button icon={<Refresh />} type="primary">
               {translated.b8a453e3}
             </Button>
           </div>

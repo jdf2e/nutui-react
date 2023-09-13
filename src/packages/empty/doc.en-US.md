@@ -23,7 +23,6 @@ import { Empty } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Empty description="No Data" />
       <Empty
         title="title"
         description="No Data"
@@ -37,6 +36,7 @@ const App = () => {
         actions={[{ text: "Button" }]}
         style={{ marginTop: '10px' }}
       />
+      <Empty description="No Data" />
     </>
   );
 };
