@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import { PickerOption } from './types'
 import { useTouch } from '../../utils/use-touch'
-import { getRectByTaro } from '@/utils/use-client-rect'
+import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { passiveSupported } from '@/utils/supports-passive'
 
 interface PickerPanelProps {

@@ -1,19 +1,4 @@
-import { createSelectorQuery } from '@tarojs/taro'
-
-export const inBrowser = typeof document !== "undefined" && !!document.scripts
-
-export interface Rect {
-  dataset: Record<string, any>
-  id: string
-  top: number
-  right: number
-  bottom: number
-  left: number
-  width: number
-  height: number
-}
-
-
+export const inBrowser = typeof document !== 'undefined' && !!document.scripts
 
 export function isWindow(val: unknown): val is Window {
   return val === window
@@ -28,7 +13,7 @@ export function isWindow(val: unknown): val is Window {
   right	右侧与视图窗口左上角的距离	number
   bottom	底部与视图窗口左上角的距离	number
  */
-export const getRect = (elementRef: Element | Window | undefined) => {
+export const getRect = (elementRef: Element | Window | undefined): any => {
   const element = elementRef
 
   if (isWindow(element)) {
@@ -57,34 +42,4 @@ export const getRect = (elementRef: Element | Window | undefined) => {
     width: 0,
     height: 0,
   }
-}
-
-export function makeRect(width: number, height: number) {
-  return {
-    top: 0,
-    left: 0,
-    right: width,
-    bottom: height,
-    width,
-    height,
-  } as Rect
-}
-
-export const getRectByTaro = async (element: any) => {
-  if (element) {
-    if (inBrowser) {
-      return Promise.resolve(getRect(element))
-    } else {
-      // 小程序下的逻辑
-      return new Promise((resolve, reject) => {
-        createSelectorQuery()
-          .select(`#${element.uid}`)
-          .boundingClientRect()
-          .exec(([rects]) => {
-            resolve(rects)
-          })
-      })
-    }
-  }
-  return Promise.resolve(makeRect(0, 0))
 }
