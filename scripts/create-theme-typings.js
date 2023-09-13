@@ -151,6 +151,7 @@ function generate() {
       : `./src/styles/variables-${projectID}.scss`,
     ...glob.sync('./src/packages/**/*.scss', {
       ignore: './src/**/demo.scss',
+      dotRelative: true
     }),
   ]
   Promise.all(
@@ -166,18 +167,22 @@ function generate() {
     }, [])
     const unique = Array.from(new Set(result))
 
-    fse.writeFile(
-      path.join(process.cwd(), './src/packages/configprovider/types.ts'),
-      prettier.format(`export type NutCSSVariables = ${unique.join('|')}`, {
+    const formatStrFunc = async () => {
+      const str = await prettier.format(`export type NutCSSVariables = ${unique.join('|')}`, {
         trailingComma: 'es5',
-        tabWidth: 2,
         semi: false,
         singleQuote: true,
-        printWidth: 80,
         endOfLine: 'auto',
-        parser: 'babel',
+        parser: 'typescript',
       })
-    )
+
+      fse.writeFile(
+        path.join(process.cwd(), './src/packages/configprovider/types.ts'),
+        str
+      )
+    }
+
+    formatStrFunc()
   })
 }
 
