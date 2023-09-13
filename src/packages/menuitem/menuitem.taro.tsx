@@ -15,6 +15,7 @@ import { Check } from '@nutui/icons-react-taro'
 import { Overlay } from '../overlay/overlay.taro'
 import { getRectByTaro } from '@/utils/use-client-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { usePropsValue } from '@/utils/use-props-value'
 
 export interface OptionItem {
   text: string
@@ -32,6 +33,7 @@ export interface MenuItemProps extends BasicComponent {
   activeTitleClass: string
   inactiveTitleClass: string
   value: string | number
+  defaultValue: string | number
   onChange: (event: any) => void
   children: React.ReactNode
 }
@@ -52,6 +54,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     style,
     options,
     value,
+    defaultValue,
     columns,
     title,
     icon,
@@ -71,7 +74,16 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   } as any
 
   const [showPopup, setShowPopup] = useState(show)
-  const [innerValue, setValue] = useState(value)
+  const [innerValue, setValue] = usePropsValue({
+    defaultValue,
+    value,
+    finalValue: undefined,
+    onChange: (v) => {
+      const [option] = options.filter((o: any) => o.value === v)
+      console.log(option)
+      onChange?.(option)
+    },
+  })
   useEffect(() => {
     setShowPopup(show)
   }, [show])

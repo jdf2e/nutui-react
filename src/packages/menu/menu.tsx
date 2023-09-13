@@ -110,9 +110,11 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
   const menuTitle = () => {
     return React.Children.map(children, (child, index) => {
       if (React.isValidElement(child)) {
-        const { title, options, value, disabled, direction } = child.props
+        const { title, options, value, defaultValue, disabled, direction } =
+          child.props
         const selected = options?.filter(
-          (option: OptionItem) => option.value === value
+          (option: OptionItem) =>
+            option.value === (value !== undefined ? value : defaultValue)
         )
         const finallyTitle = () => {
           if (title) return title

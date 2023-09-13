@@ -48,6 +48,44 @@ export default App
 
 :::
 
+### 受控
+
+:::demo
+
+```tsx
+import React, { useState } from 'react'
+import { Menu } from '@nutui/nutui-react';
+
+const App = () => {
+  const [options] = useState([
+    { text: '全部商品', value: 0 },
+    { text: '新款商品', value: 1 },
+    { text: '活動商品', value: 2 },
+  ])
+  const [options1] = useState([
+    { text: '默認排序', value: 'a' },
+    { text: '好評排序', value: 'b' },
+    { text: '銷量排序', value: 'c' },
+  ])
+  const [stateOne, setStateOne] = useState(0)
+  const [stateTwo, setStateTwo] = useState('a')
+  return (
+    <>
+      <div className="demo full">
+        <Menu>
+          <Menu.Item options={options} value={stateOne} onChange={(v) => setStateOne(v.value)} />
+          <Menu.Item options={options1} value={stateTwo} onChange={(v) => setStateTwo(v.value)} />
+        </Menu>
+      </div>
+    </>
+  )
+}
+export default App
+
+```
+
+:::
+
 ### 自定義菜單內容
 
 使用實例上的 toggle 方法可以手動關閉彈框。
