@@ -118,6 +118,7 @@
     "@rollup/plugin-typescript": "^11.1.0",
     "@tarojs/components": "3.6.8",
     "@tarojs/plugin-platform-weapp": "3.6.8",
+    "@tarojs/plugin-platform-alipay": "3.6.8",
     "@tarojs/react": "3.6.8",
     "@tarojs/taro": "3.6.8",
     "@testing-library/jest-dom": "^6.0.0",

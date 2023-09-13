@@ -94,6 +94,9 @@ importers:
       '@tarojs/components':
         specifier: 3.6.8
         version: 3.6.8(@types/react@18.0.37)(react@18.2.0)
+      '@tarojs/plugin-platform-alipay':
+        specifier: 3.6.8
+        version: 3.6.8(@types/react@18.0.37)(react@18.2.0)
       '@tarojs/plugin-platform-weapp':
         specifier: 3.6.8
         version: 3.6.8(@types/react@18.0.37)(react@18.2.0)
