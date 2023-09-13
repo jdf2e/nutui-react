@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
+import { Jd } from '@nutui/icons-react-taro'
 import { Cell, Toast } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 
@@ -61,7 +62,18 @@ const ToastDemo = () => {
         <Cell
           title="函数调用"
           onClick={() => {
-            Toast.show('test', { title: '函数调用' })
+            Toast.show('test', {
+              title: '函数调用',
+              type: 'fail',
+              duration: 3,
+              position: 'center',
+              icon: <Jd />,
+              size: 'large',
+              lockScroll: true,
+              onClose: () => {
+                console.log('close')
+              },
+            })
           }}
         />
         <h2>成功提示</h2>
@@ -118,7 +130,7 @@ const ToastDemo = () => {
         <Cell
           title="传入icon组件中的'JD'图标"
           onClick={() => {
-            openToast('text', '设置icon为JD', 2, 'JD')
+            openToast('text', '设置icon为JD', 2, <Jd />)
             SetShowToast(true)
           }}
         />

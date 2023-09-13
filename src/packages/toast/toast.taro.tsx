@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { Failure, Loading, Success, Tips } from '@nutui/icons-react-taro'
 import Overlay from '@/packages/overlay/index.taro'
@@ -9,8 +9,10 @@ import {
   useCustomEventsPath,
   useParams,
 } from '@/utils/use-custom-event'
+import { usePropsValue } from '@/utils/use-props-value'
 
 export type ToastPositionType = 'top' | 'bottom' | 'center'
+export type ToastSize = 'small' | 'base' | 'large'
 
 export interface ToastProps extends BasicComponent {
   id?: string
@@ -26,7 +28,7 @@ export interface ToastProps extends BasicComponent {
   title: string
   closeOnOverlayClick: boolean
   lockScroll: boolean
-  size: string | number
+  size: ToastSize
   visible: boolean
   onClose: () => void
 }
@@ -72,57 +74,68 @@ export const Toast: FunctionComponent<
       closeOnOverlayClick,
       lockScroll,
       contentClassName,
-      size,
       visible,
+      size,
       className,
       style,
       onClose,
     },
     setParams,
   } = useParams({ ...defaultProps, ...props })
-  let timer: number | null
+  const timer = useRef(-1)
 
-  const [openState, SetOpenState] = useState(false)
+  const [innerVisible, setInnerVisible] = usePropsValue({
+    value: visible,
+    defaultValue: undefined,
+    finalValue: false,
+    onChange: (v: boolean) => {
+      !v && onClose?.()
+    },
+  })
 
   useEffect(() => {
-    if (visible) {
-      show()
-    } else {
-      hide()
+    if (innerVisible) {
+      autoClose()
     }
-  }, [visible])
+  }, [innerVisible, duration])
 
   useCustomEvent(
     id as string,
     ({ status, options }: { status: boolean; options: any }) => {
       if (status) {
+        options.visible = true
         setParams(options)
         show()
       } else {
+        setParams({ visible: false } as any)
         hide()
       }
     }
   )
 
   const clearTimer = () => {
-    if (timer) {
-      clearTimeout(timer)
-      timer = null
+    if (timer.current) {
+      clearTimeout(timer.current)
+      timer.current = -1
     }
   }
-  const hide = () => {
-    SetOpenState(false)
-    onClose?.()
-  }
   const show = () => {
+    setInnerVisible(true)
+  }
+  const hide = () => {
     clearTimer()
-    SetOpenState(true)
+    setInnerVisible(false)
+  }
+  const autoClose = () => {
+    clearTimer()
     if (duration) {
-      timer = window.setTimeout(() => {
+      timer.current = window.setTimeout(() => {
+        setParams({ visible: false } as any)
         hide()
       }, duration * 1000)
     }
   }
+
   const clickCover = () => {
     if (closeOnOverlayClick) {
       hide()
@@ -154,9 +167,9 @@ export const Toast: FunctionComponent<
   })
   return (
     <>
-      {openState ? (
+      {innerVisible ? (
         <Overlay
-          visible={openState}
+          visible={innerVisible}
           style={style}
           className={`${classPrefix}__overlay-default ${className}`}
           closeOnOverlayClick={closeOnOverlayClick}
@@ -185,12 +198,7 @@ export const Toast: FunctionComponent<
   )
 }
 
-export interface ToastOptions {
-  title: string
-  msg?: string
-  type?: string
-  duration?: number
-}
+export interface ToastOptions extends Partial<Omit<ToastProps, 'visible'>> {}
 
 export function show(selector: string, options: ToastOptions) {
   // eslint-disable-next-line react-hooks/rules-of-hooks

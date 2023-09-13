@@ -16,7 +16,7 @@ import {
 } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import useWatch from '@/utils/use-watch'
-import { getRectByTaro } from '@/utils/use-client-rect'
+import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { getScrollParent } from '@/utils/get-scroll-parent'
 
 export interface StickyProps extends BasicComponent {

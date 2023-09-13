@@ -25,6 +25,7 @@ export interface FormItemProps extends BasicComponent, BaseFormField {
     componentRef: React.MutableRefObject<any>
   ) => void
   errorMessageAlign: TextAlign
+  validateTrigger: string | string[]
 }
 
 const defaultProps = {
@@ -34,6 +35,7 @@ const defaultProps = {
   label: '',
   rules: [{ required: false, message: '' }],
   errorMessageAlign: 'left',
+  validateTrigger: 'onChange',
 } as FormItemProps
 
 export class FormItem extends React.Component<
@@ -71,18 +73,17 @@ export class FormItem extends React.Component<
 
   // children添加value属性和onChange事件
   getControlled = (children: React.ReactElement) => {
-    const { setFieldsValue, getFieldValue } = this.context
+    const { setFieldsValue, getFieldValue, dispatch } = this.context
     const { name = '' } = this.props
 
     if (children?.props?.defaultValue) {
       console.warn('通过 initialValue 设置初始值')
     }
+    const fieldValue = getFieldValue(name)
     const controlled = {
       ...children.props,
       [this.props.valuePropName || 'value']:
-        getFieldValue(name) === undefined
-          ? this.props.initialValue
-          : getFieldValue(name),
+        fieldValue !== undefined ? fieldValue : this.props.initialValue,
       [this.props.trigger || 'onChange']: (...args: any) => {
         // args [a, b]
         const originOnChange = (children as any).props[
@@ -98,6 +99,28 @@ export class FormItem extends React.Component<
         setFieldsValue({ [name]: next })
       },
     }
+    const { validateTrigger } = this.props
+    let validateTriggers: string[] = [this.props.trigger || 'onChange']
+    if (validateTrigger) {
+      validateTriggers =
+        typeof validateTrigger === 'string'
+          ? [...validateTriggers, validateTrigger]
+          : [...validateTriggers, ...validateTrigger]
+      validateTriggers.forEach((trigger) => {
+        const originTrigger = controlled[trigger]
+        controlled[trigger] = (...args: any) => {
+          if (originTrigger) {
+            originTrigger(...args)
+          }
+          if (this.props.rules && this.props.rules.length) {
+            dispatch({
+              name: this.props.name,
+            })
+          }
+        }
+      })
+    }
+
     if (isForwardRefComponent(children)) {
       controlled.ref = (componentInstance: any) => {
         const originRef = (children as any).ref
@@ -131,19 +154,26 @@ export class FormItem extends React.Component<
   }
 
   renderLayout = (childNode: React.ReactNode) => {
-    const { label, name, required, className, style, errorMessageAlign } = {
+    const {
+      label,
+      name,
+      required,
+      rules,
+      className,
+      style,
+      errorMessageAlign,
+    } = {
       ...defaultProps,
       ...this.props,
     }
+    const requiredInRules = rules?.some((rule: any) => rule.required)
 
-    const item =
-      this.context.errors?.length > 0 &&
-      this.context.errors?.filter((item: any) => {
-        return item.field === name
-      })
+    const item = name ? this.context.errors[name] : []
 
     const { starPosition } = this.context
-    const renderStar = required && <i className="required" />
+    const renderStar = (required || requiredInRules) && (
+      <i className="required" />
+    )
     const renderLabel = (
       <>
         {starPosition === 'left' ? renderStar : null}
@@ -166,7 +196,7 @@ export class FormItem extends React.Component<
         ) : null}
         <div className="nut-cell__value nut-form-item__body">
           <div className="nut-form-item__body__slots">{childNode}</div>
-          {item.length > 0 && (
+          {item && item.length > 0 && (
             <div
               className="nut-form-item__body__tips"
               style={{ textAlign: errorMessageAlign }}
