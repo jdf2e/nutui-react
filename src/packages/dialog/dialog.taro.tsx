@@ -45,9 +45,13 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
   const {
     params: {
       id,
+      className,
+      style,
       visible,
       footer,
       title,
+      content,
+      children,
       footerDirection,
       hideConfirmButton,
       hideCancelButton,
@@ -99,7 +103,6 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
         <>
           {!hideCancelButton && (
             <Button
-              size="small"
               fill="outline"
               type="primary"
               className={`${classPrefix}__footer-cancel`}
@@ -110,7 +113,6 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
           )}
           {!hideConfirmButton && (
             <Button
-              size="small"
               type="primary"
               className={classNames(`${classPrefix}__footer-ok`, {
                 disabled: disableConfirmButton,
@@ -126,14 +128,12 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
     )
   }
   const onHandleClickOverlay = (e: any) => {
-    console.log('onClose?.()', closeOnOverlayClick)
     if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
       const closed = onOverlayClick && onOverlayClick()
       closed && onClose?.()
       closed && onCancel?.()
     }
   }
-  console.log('props', props, visible)
 
   return (
     <View
@@ -158,11 +158,15 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
           appear
         >
           <Content
+            className={className}
+            style={style}
             title={title}
             footer={renderFooter()}
             footerDirection={footerDirection}
             visible={visible}
-          />
+          >
+            {content || children}
+          </Content>
         </CSSTransition>
       </>
     </View>

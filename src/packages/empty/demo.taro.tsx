@@ -1,16 +1,19 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
+import { Refresh } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Tabs, TabPane, Empty } from '@/packages/nutui.react.taro'
-import '@/packages/empty/demo.scss'
 import Header from '@/sites/components/header'
 
 interface T {
   ce5c5446: string
+  c38a08ee: string
   c38a08ef: string
   b840c88f: string
   a74a1fd4: string
   '8dab2f66': string
+  cfbdc782: string
+  cfbdc784: string
   cfbdc781: string
   c3a3a1d2: string
   e51e4582: string
@@ -24,10 +27,13 @@ const EmptyDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
       ce5c5446: '基础用法',
+      c38a08ee: 'Size 为 small 时，可用于半屏',
       c38a08ef: '自定义内容大小',
       b840c88f: '图片类型，内置3个',
       a74a1fd4: '自定义图片',
       '8dab2f66': '底部内容',
+      cfbdc782: '标题',
+      cfbdc784: '操作按钮',
       cfbdc781: '无数据',
       c3a3a1d2: '无内容',
       e51e4582: '加载失败/错误',
@@ -38,10 +44,13 @@ const EmptyDemo = () => {
     },
     'zh-TW': {
       ce5c5446: '基礎用法',
+      c38a08ee: 'Size 为 small 时，可用于半屏',
       c38a08ef: '自定義內容大小',
       b840c88f: '圖片類型，內置3個',
       a74a1fd4: '自定義圖片',
       '8dab2f66': '底部內容',
+      cfbdc782: '标题',
+      cfbdc784: '操作按钮',
       cfbdc781: '無數據',
       c3a3a1d2: '無內容',
       e51e4582: '加載失敗/錯誤',
@@ -52,10 +61,13 @@ const EmptyDemo = () => {
     },
     'en-US': {
       ce5c5446: 'Basic usage',
+      c38a08ee: 'Size is small',
       c38a08ef: 'Custom content size',
       b840c88f: 'Picture type, built-in 3',
       a74a1fd4: 'Custom image',
       '8dab2f66': 'Bottom content',
+      cfbdc782: 'Title',
+      cfbdc784: 'Operation Button',
       cfbdc781: 'No Data',
       c3a3a1d2: 'No Content',
       e51e4582: 'Load Failed',
@@ -72,55 +84,67 @@ const EmptyDemo = () => {
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.ce5c5446}</h2>
-        <div className="show">
-          <Empty description={translated.cfbdc781} />
-        </div>
+        <Empty
+          title={translated.cfbdc782}
+          description={translated.cfbdc781}
+          actions={[
+            { text: translated.cfbdc784 },
+            { text: translated.cfbdc784 },
+          ]}
+        />
+        <Empty
+          description={translated.cfbdc781}
+          actions={[{ text: translated.cfbdc784 }]}
+          style={{ marginTop: '10px' }}
+        />
+        <Empty
+          description={translated.cfbdc781}
+          style={{ marginTop: '10px' }}
+        />
+        <h2>{translated.c38a08ee}</h2>
+        <Empty description={translated.cfbdc781} size="small" />
         <h2>{translated.c38a08ef}</h2>
-        <div className="show">
-          <Empty description={translated.cfbdc781} imageSize={100} />
-        </div>
+        <Empty description={translated.cfbdc781} imageSize={80} />
         <h2>{translated.b840c88f}</h2>
-        <div className="show">
-          <Tabs
-            value={tabvalue}
-            onChange={(paneKey) => {
-              setTabvalue(paneKey)
-            }}
-          >
-            <TabPane title={translated.c3a3a1d2} value="0">
-              <Empty status="empty" description={translated.c3a3a1d2} />
-            </TabPane>
-            <TabPane title={translated.e51e4582} value="1">
-              <Empty status="error" description={translated.e51e4582} />
-            </TabPane>
-            <TabPane title={translated.adb1a8b2} value="2">
-              <Empty status="network" description={translated.adb1a8b2} />
-            </TabPane>
-          </Tabs>
-        </div>
+        <Tabs
+          value={tabvalue}
+          onChange={(paneKey) => {
+            setTabvalue(paneKey)
+          }}
+        >
+          <TabPane title={translated.c3a3a1d2} value="0">
+            <Empty status="empty" title={translated.c3a3a1d2} />
+          </TabPane>
+          <TabPane title={translated.e51e4582} value="1">
+            <Empty status="error" title={translated.e51e4582} />
+          </TabPane>
+          <TabPane title={translated.adb1a8b2} value="2">
+            <Empty status="network" title={translated.adb1a8b2} />
+          </TabPane>
+        </Tabs>
         <h2>{translated.a74a1fd4}</h2>
-        <div className="show">
-          <Empty
-            description={translated.a52bef0c}
-            image={
-              <img
-                src="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png"
-                alt=""
-              />
-            }
-          />
-        </div>
+        <Empty
+          description={translated.a52bef0c}
+          image={
+            <img
+              src="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png"
+              alt=""
+            />
+          }
+        />
 
         <h2>{translated['8dab2f66']}</h2>
-        <div className="show">
-          <Empty status="error" description={translated.d04fcbda}>
-            <div style={{ marginTop: '10px' }}>
-              <Button icon="refresh" type="primary">
-                {translated.b8a453e3}
-              </Button>
-            </div>
-          </Empty>
-        </div>
+        <Empty
+          status="error"
+          description={translated.d04fcbda}
+          style={{ marginBottom: '20px' }}
+        >
+          <div style={{ marginTop: '10px' }}>
+            <Button icon={<Refresh />} type="primary">
+              {translated.b8a453e3}
+            </Button>
+          </div>
+        </Empty>
       </div>
     </>
   )

@@ -59,7 +59,7 @@ export const TrendArrow: FunctionComponent<
     }
     num = parseFloat(num)
     // eslint-disable-next-line no-restricted-properties
-    const numPow = Math.pow(10, digit)
+    const numPow = 10 ** digit
     return (Math.round((num + Number.EPSILON) * numPow) / numPow).toFixed(digit)
   }
 

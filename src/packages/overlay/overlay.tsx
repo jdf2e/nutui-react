@@ -4,6 +4,7 @@ import React, {
   FunctionComponent,
   MouseEvent,
   MouseEventHandler,
+  useRef,
 } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
@@ -20,6 +21,7 @@ export interface OverlayProps extends BasicComponent {
   afterShow: () => void
   afterClose: () => void
 }
+
 export const defaultOverlayProps = {
   ...ComponentDefaults,
   zIndex: 1000,
@@ -55,6 +57,8 @@ export const Overlay: FunctionComponent<
     ...style,
   }
   const [innerVisible, setInnerVisible] = useState(visible)
+
+  const nodeRef = useRef(null)
 
   useEffect(() => {
     if (visible) {
@@ -100,6 +104,7 @@ export const Overlay: FunctionComponent<
   return (
     <>
       <CSSTransition
+        nodeRef={nodeRef}
         classNames={`${classPrefix}-slide`}
         unmountOnExit
         timeout={duration}
@@ -107,7 +112,13 @@ export const Overlay: FunctionComponent<
         onEntered={onHandleOpened}
         onExited={onHandleClosed}
       >
-        <div className={classes} style={styles} {...rest} onClick={handleClick}>
+        <div
+          ref={nodeRef}
+          className={classes}
+          style={styles}
+          {...rest}
+          onClick={handleClick}
+        >
           {children}
         </div>
       </CSSTransition>

@@ -26,14 +26,14 @@
   },
   "license": "MIT",
   "dependencies": {
-    "chalk": "^2.4.2",
+    "chalk": "^5.0.0",
     "is-git-clean": "^1.1.0",
     "jscodeshift": "^0.15.0"
   },
   "devDependencies": {
     "jest": "^29.5.0",
-    "prettier": "^2.8.8",
-    "release-it": "^15.11.0",
+    "prettier": "^3.0.0",
+    "release-it": "^16.0.0",
     "ts-jest": "^29.1.0"
   }
 }

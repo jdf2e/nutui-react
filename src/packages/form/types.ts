@@ -21,9 +21,8 @@ export interface Store {
 export interface FormInstance<Values = any> {
   registerField: (entity: FieldEntity) => () => void
   getFieldValue: (name: NamePath) => StoreValue
-  // getFieldsValue(): Values
+  setInitialValues: (values: any, init: boolean) => void
   setFieldsValue: (value: any) => void
-  // validateFields: (nameList?: NamePath[]) => Promise<Store>
   resetFields: (fields?: NamePath[]) => void
   submit: () => void
   setCallback: (callbacks: Callbacks) => void

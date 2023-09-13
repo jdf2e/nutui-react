@@ -23,7 +23,7 @@ import { CircleProgress } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <CircleProgress progress={20} />
+      <CircleProgress percent={20} />
       <CircleProgress percent={60}>60%</CircleProgress>
     </>
   )

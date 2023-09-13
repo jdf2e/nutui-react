@@ -95,7 +95,7 @@ export const Popup: FunctionComponent<
     afterClose,
     onClick,
   } = { ...defaultProps, ...props }
-
+  const nodeRef = React.useRef(null)
   const [index, setIndex] = useState(zIndex || _zIndex)
   const [innerVisible, setInnerVisible] = useState(visible)
   const [showChildren, setShowChildren] = useState(true)
@@ -233,6 +233,7 @@ export const Popup: FunctionComponent<
   const renderPop = () => {
     return (
       <CSSTransition
+        nodeRef={nodeRef}
         classNames={transitionName}
         unmountOnExit
         timeout={duration}
@@ -240,7 +241,12 @@ export const Popup: FunctionComponent<
         onEntered={onHandleOpened}
         onExited={onHandleClosed}
       >
-        <div style={popStyles} className={popClassName} onClick={onHandleClick}>
+        <div
+          ref={nodeRef}
+          style={popStyles}
+          className={popClassName}
+          onClick={onHandleClick}
+        >
           {renderTitle()}
           {showChildren ? children : ''}
         </div>

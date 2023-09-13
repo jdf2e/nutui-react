@@ -40,7 +40,12 @@ $color-border-disable: var(--nutui-gray-4, #bfbfbf) !default;
 $spacing-icon-text: var(--nutui-spacing-2, 4px) !default;
 
 // ---- Font Family ----
-$font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun,
+$font-family:
+  PingFang SC,
+  Microsoft YaHei,
+  Helvetica,
+  Hiragino Sans GB,
+  SimSun,
   sans-serif !default;
 
 // Font
@@ -87,8 +92,8 @@ $padding-xs: var(--nutui-padding-xs, 12px) !default;
 $button-border-radius: var(--nutui-button-border-radius, 24px) !default;
 $button-border-width: var(--nutui-button-border-width, 1px) !default;
 
-$button-normal-padding: var(--nutui-button-normal-padding, 0px 20px) !default;
-$button-default-height: var(--nutui-button-default-height, 40px) !default;
+$button-normal-padding: var(--nutui-button-normal-padding, 0px 16px) !default;
+$button-default-height: var(--nutui-button-default-height, 32px) !default;
 $button-default-color: var(--nutui-button-default-color, $color-title) !default;
 $button-default-background-color: var(
   --nutui-button-default-background-color,
@@ -102,42 +107,38 @@ $button-default-disable: var(
   --nutui-button-default-disable,
   $color-text-disable
 ) !default;
-$button-default-padding: var(--nutui-button-default-padding, 0px 19px) !default;
+$button-default-padding: var(--nutui-button-default-padding, 0px 16px) !default;
 $button-default-font-size: var(
   --nutui-button-default-font-size,
   $font-size
 ) !default;
 $button-default-font-weight: var(
   --nutui-button-default-font-weight,
-  $font-weight-bold
+  $font-weight
 ) !default;
 
-$button-large-height: var(--nutui-button-large-height, 48px) !default;
+$button-large-height: var(--nutui-button-large-height, 40px) !default;
 $button-large-font-size: var(
   --nutui-button-large-font-size,
-  $font-size-xl
+  $font-size
+) !default;
+$button-large-font-weight: var(
+  --nutui-button-large-font-weight,
+  $font-weight-bold
 ) !default;
 
 $button-small-font-size: var(
   --nutui-button-small-font-size,
-  $font-size
+  $font-size-small
 ) !default;
-$button-small-padding: var(--nutui-button-small-padding, 0px 16px) !default;
-$button-small-height: var(--nutui-button-small-height, 32px) !default;
-$button-small-font-weight: var(
-  --nutui-button-small-font-weight,
-  $font-weight
-) !default;
+$button-small-padding: var(--nutui-button-small-padding, 0px 12px) !default;
+$button-small-height: var(--nutui-button-small-height, 28px) !default;
 
-$button-mini-padding: var(--nutui-button-mini-padding, 5px 12px) !default;
+$button-mini-padding: var(--nutui-button-mini-padding, 0px 12px) !default;
 $button-mini-height: var(--nutui-button-mini-height, 24px) !default;
 $button-mini-font-size: var(
   --nutui-button-mini-font-size,
   $font-size-small
-) !default;
-$button-mini-font-weight: var(
-  --nutui-button-mini-font-weight,
-  $font-weight
 ) !default;
 
 $button-primary-color: var(
@@ -300,7 +301,7 @@ $uploader-picture-height: var(--nutui-uploader-picture-height, 100px) !default;
 $uploader-picture-border: var(--nutui-uploader-picture-border, 0px) !default;
 $uploader-picture-border-radius: var(
   --nutui-uploader-picture-border-radius,
-  2px
+  4px
 ) !default;
 $uploader-background: var(
   --nutui-uploader-background,
@@ -1564,28 +1565,27 @@ $searchbar-clear-icon-padding: var(
 
 // empty（✅）
 
-$empty-padding: var(--nutui-empty-padding, 32px 0) !default;
-$empty-image-size: var(--nutui-empty-image-size, 170px) !default;
+$empty-padding: var(--nutui-empty-padding, 32px 40px) !default;
+$empty-image-size: var(--nutui-empty-image-size, 160px) !default;
+$empty-image-small-size: var(--nutui-empty-image-small-size, 120px) !default;
+$empty-title-margin-top: var(--nutui-empty-title-margin-top, 0px) !default;
+$empty-title-margin-bottom: var(
+  --nutui-empty-title-margin-bottom,
+  8px
+) !default;
+$empty-title-line-height: var(
+  --nutui-empty-title-line-height,
+  $font-size
+) !default;
 $empty-description-margin-top: var(
   --nutui-empty-description-margin-top,
-  4px
-) !default;
-$empty-description-color: var(
-  --nutui-empty-description-color,
-  $color-text-help
-) !default;
-$empty-description-font-size: var(
-  --nutui-empty-description-font-size,
-  14px
+  0px
 ) !default;
 $empty-description-line-height: var(
   --nutui-empty-description-line-height,
-  20px
+  1.2
 ) !default;
-$empty-description-padding: var(
-  --nutui-empty-description-padding,
-  0 40px
-) !default;
+
 // cascader（✅）
 $cascader-font-size: var(--nutui-cascader-font-size, $font-size) !default;
 $cascader-line-height: var(--nutui-cascader-line-height, 22px) !default;
