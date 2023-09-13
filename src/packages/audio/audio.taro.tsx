@@ -12,8 +12,6 @@ import Button from '@/packages/button/index.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-const warn = console.warn
-
 export interface AudioProps extends BasicComponent {
   className?: string
   style?: CSSProperties
@@ -94,7 +92,7 @@ export const Audio: FunctionComponent<
   })
   audioCtx.onEnded(() => {
     if (props.loop) {
-      warn(locale.audio.tips || 'onPlayEnd事件在loop=false时才会触发')
+      console.warn(locale.audio.tips || 'onPlayEnd事件在loop=false时才会触发')
     } else {
       props.onPlayEnd && props.onPlayEnd(audioCtx)
     }
