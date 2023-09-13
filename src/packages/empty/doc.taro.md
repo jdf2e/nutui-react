@@ -165,10 +165,11 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-empty-padding | Empty组件图片的padding值 | `32px 0` |
-| \--nutui-empty-image-size | Empty组件图片的尺寸大小 | `170px` |
+| \--nutui-empty-padding | Empty组件图片的padding值 | `32px 40px` |
+| \--nutui-empty-image-size | Empty组件图片的尺寸大小 | `160px` |
+| \--nutui-empty-image-small-size | size 为 small 时，Empty组件图片的尺寸大小 | `120px` |
+| \--nutui-empty-title-margin-top | Empty组件图片标题margin-top的值 | `0px` |
+| \--nutui-empty-title-margin-top | Empty组件图片标题margin-top的值 | `8px` |
+| \--nutui-empty-title-line-height | Empty组件图片标题行高 | `$font-size` |
 | \--nutui-empty-description-margin-top | Empty组件图片描述margin-top的值 | `4px` |
-| \--nutui-empty-description-color | Empty组件图片描述颜色值 | `#666666` |
-| \--nutui-empty-description-font-size | Empty组件图片描述font-size值大小 | `14px` |
-| \--nutui-empty-description-line-height | Empty组件图片描述行高 | `20px` |
-| \--nutui-empty-description-padding | Empty组件图片描述padding值 | `0 40px` |
+| \--nutui-empty-description-line-height | Empty组件图片描述行高 | `1.2` |

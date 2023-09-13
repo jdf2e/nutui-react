@@ -165,10 +165,11 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-empty-padding | The padding value of the Empty component image | `32px 0` |
-| \--nutui-empty-image-size | The size of the Empty component image | `170px` |
+| \--nutui-empty-padding | The padding value of the Empty component image | `32px 40px` |
+| \--nutui-empty-image-size | The size of the Empty component image | `160px` |
+| \--nutui-empty-image-small-size | The size of the Empty component image when the size is small | `120px` |
+| \--nutui-empty-title-margin-top | Empty component image title margin-top value | `0px` |
+| \--nutui-empty-title-margin-top | Empty component image title margin-top value | `8px` |
+| \--nutui-empty-title-line-height | Empty component image title row height | `$font-size` |
 | \--nutui-empty-description-margin-top | Empty component image description margin-top value | `4px` |
-| \--nutui-empty-description-color | Empty component image description color value | `#666666` |
-| \--nutui-empty-description-font-size | Empty component image description font-size value size | `14px` |
-| \--nutui-empty-description-line-height | Empty component image description row height | `20px` |
-| \--nutui-empty-description-padding | Empty component picture description padding value | `0 40px` |
+| \--nutui-empty-description-line-height | Empty component image description row height | `1.2` |

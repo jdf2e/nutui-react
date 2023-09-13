@@ -34,7 +34,6 @@
 
   &-description {
     margin-top: $empty-description-margin-top;
-    padding: $empty-description-padding;
     color: $color-text-help;
     font-size: $font-size-small;
     line-height: $empty-description-line-height;
@@ -42,8 +41,8 @@
 
   &-small {
     .nut-empty-image {
-      width: 120px;
-      height: 120px;
+      width: $empty-image-small-size;
+      height: $empty-image-small-size;
     }
   }
 

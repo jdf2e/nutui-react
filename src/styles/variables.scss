@@ -1565,8 +1565,9 @@ $searchbar-clear-icon-padding: var(
 
 // empty（✅）
 
-$empty-padding: var(--nutui-empty-padding, 32px 0) !default;
+$empty-padding: var(--nutui-empty-padding, 32px 40px) !default;
 $empty-image-size: var(--nutui-empty-image-size, 160px) !default;
+$empty-image-small-size: var(--nutui-empty-image-small-size, 120px) !default;
 $empty-title-margin-top: var(--nutui-empty-title-margin-top, 0px) !default;
 $empty-title-margin-bottom: var(
   --nutui-empty-title-margin-bottom,
@@ -1576,18 +1577,13 @@ $empty-title-line-height: var(
   --nutui-empty-title-line-height,
   $font-size
 ) !default;
-$empty-title-padding: var(--nutui-empty-title-padding, 0 40px) !default;
 $empty-description-margin-top: var(
   --nutui-empty-description-margin-top,
   0px
 ) !default;
 $empty-description-line-height: var(
   --nutui-empty-description-line-height,
-  $font-size-small
-) !default;
-$empty-description-padding: var(
-  --nutui-empty-description-padding,
-  0 40px
+  1.2
 ) !default;
 
 // cascader（✅）
