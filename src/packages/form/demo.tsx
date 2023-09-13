@@ -237,6 +237,7 @@ const FormDemo = () => {
       <div className="demo">
         <h2>{translated.basic}</h2>
         <Form
+          divider
           labelPosition="right"
           onFinish={(values) => submitSucceed(values)}
           footer={
@@ -268,6 +269,7 @@ const FormDemo = () => {
         <h2>{translated.title2}</h2>
         <Form
           divider
+          labelPosition="left"
           onFinish={(values) => submitSucceed(values)}
           onFinishFailed={(values, errors) => submitFailed(errors)}
           footer={
@@ -310,8 +312,7 @@ const FormDemo = () => {
           <Form.Item
             label={translated.tel}
             name="tel"
-            required
-            rules={[{ required: true, message: translated.telTip }]}
+            rules={[{ max: 13, message: translated.telTip }]}
           >
             <Input placeholder={translated.telTip2} type="number" />
           </Form.Item>

@@ -84,6 +84,8 @@ const App = () => {
   return (
     <>
       <Form
+        divider
+        labelPosition="left"
         onFinish={(values) => submitSucceed(values)}
         onFinishFailed={(values, errors) => submitFailed(errors)}
         footer={
@@ -122,9 +124,9 @@ const App = () => {
           <Input placeholder="請輸入年齡，必須數字且0-200區間" type="text" />
         </Form.Item>
         <Form.Item
-          label="電話"
+          label="聯繫電話"
           name="tel"
-          rules={[{ required: true, message: "請輸入聯繫電話" }]}
+          rules={[{ max: 13, message: "請輸入聯繫電話" }]}
         >
           <Input placeholder="電話格式不正確" type="number" />
         </Form.Item>
