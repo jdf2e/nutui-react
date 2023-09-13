@@ -1,6 +1,6 @@
 {
-  "name": "@nutui/nutui-react",
-  "version": "2.0.16",
+  "name": "@nutui/nutui-react-taro",
+  "version": "2.0.17",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/esm/nutui-react.es.js",
