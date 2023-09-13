@@ -22,8 +22,30 @@ import Tree from './tree'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 
-export interface CascaderProps extends PopupProps {
+export interface CascaderProps
+  extends Pick<
+    PopupProps,
+    | 'className'
+    | 'style'
+    | 'closeIcon'
+    | 'closeable'
+    | 'title'
+    | 'left'
+    | 'closeIconPosition'
+    | 'onClose'
+  > {
   popup: boolean
+  popupProps: Partial<
+    Omit<
+      PopupProps,
+      | 'closeIcon'
+      | 'closeable'
+      | 'title'
+      | 'left'
+      | 'closeIconPosition'
+      | 'onClose'
+    >
+  >
   visible: boolean // popup 显示状态
   activeColor: string
   activeIcon: string
@@ -69,6 +91,7 @@ const InternalCascader: ForwardRefRenderFunction<
     activeColor,
     activeIcon,
     popup,
+    popupProps = {},
     visible,
     options,
     value,
@@ -434,6 +457,7 @@ const InternalCascader: ForwardRefRenderFunction<
     <>
       {popup ? (
         <Popup
+          {...popupProps}
           visible={visible}
           position="bottom"
           round
