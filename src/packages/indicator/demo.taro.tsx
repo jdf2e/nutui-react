@@ -73,7 +73,16 @@ const IndicatorDemo = () => {
                   var(--nutui-color-primary-stop-2) 100%)`,
               }}
             >
-              {5}
+              <div
+                style={{
+                  height: '12px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                {5}
+              </div>
             </div>
           </Indicator>
         </Cell>
@@ -103,19 +112,26 @@ const IndicatorDemo = () => {
                   display: 'inline-block',
                   width: '14px',
                   height: '14px',
-                  lineHeight: '14px',
-                  textAlign: 'center',
                   fontSize: 'var(--nutui-font-size-1)',
                   color: 'var(--nutui-gray-1)',
                   border: '1px solid var(--nutui-gray-1)',
                   borderRadius: '50%',
-                  margin: 'var(--nutui-indicator-dot-margin)',
                   background: `linear-gradient(135deg, 
                   var(--nutui-color-primary-stop-1) 0%,
                   var(--nutui-color-primary-stop-2) 100%)`,
                 }}
               >
-                {5}
+                <div
+                  style={{
+                    width: '13px',
+                    height: '11px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  {5}
+                </div>
               </div>
             </Indicator>
           </div>
