@@ -151,6 +151,7 @@ export default App
 ```tsx
 import  React, {useState} from "react";
 import { Toast, Cell } from '@nutui/nutui-react-taro';
+import { Jd } from '@nutui/icons-react-taro'
 
 const App = () => {
   const [showNotify, SetShowNotify] = useState(false)
@@ -168,7 +169,18 @@ const App = () => {
       <Cell
         title="函数调用"
         onClick={(event: React.MouseEvent) => {
-          Toast.show('test', { title: '函数调用' })
+          Toast.show('test', {
+            title: '函数调用',
+            type: 'fail',
+            duration: 3,
+            position: 'center',
+            icon: <Jd />,
+            size: 'large',
+            lockScroll: true,
+            onClose: () => {
+              console.log('close')
+            },
+          })
         }}
       />
     </>

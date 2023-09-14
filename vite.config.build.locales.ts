@@ -18,9 +18,8 @@ interface Entries {
 const entries: Entries = {}
 
 const locales = glob.sync(`./src/locales/*.ts`)
-
 locales.forEach((item: string) => {
-  entries[item.replace('.ts', '').replace('./src/locales/', '')] = path.join(
+  entries[item.replace('.ts', '').replace('src/locales/', '')] = path.join(
     __dirname,
     item
   )
