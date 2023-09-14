@@ -75,7 +75,6 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
         <>
           {!hideCancelButton && (
             <Button
-              size="small"
               type="default"
               className={`${classPrefix}__footer-cancel`}
               onClick={(e) => handleCancel(e)}
@@ -85,7 +84,6 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
           )}
           {!hideConfirmButton && (
             <Button
-              size="small"
               type="primary"
               className={classNames(`${classPrefix}__footer-ok`, {
                 disabled: disableConfirmButton,

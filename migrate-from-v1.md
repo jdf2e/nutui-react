@@ -581,7 +581,11 @@ plugins: [
 
 #### Empty
 - 新增 `status` 属性，用于默认图片错误类型
+- 新增 `size` 属性，用于区分全屏与半屏状态下图片的不同大小
+- 新增 `title` 属性，用于展示提示的标题部分
+- 新增 `actions` 属性，用于展示提示的操作部分，支持1个或2个操作
 - `image` 属性类型更改为 `ReactNode`
+
 
 #### ImagePreview
 - `show` 重命名为 `visible`

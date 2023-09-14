@@ -160,7 +160,7 @@ const ButtonDemo = () => {
           <Button fill="solid" style={{ margin: 8 }}>
             Solid
           </Button>
-          <Button fill="outline" style={{ margin: 8 }}>
+          <Button type="primary" fill="outline" style={{ margin: 8 }}>
             Outline
           </Button>
           <Button fill="none" style={{ margin: 8 }}>
@@ -400,7 +400,11 @@ const ButtonDemo = () => {
           <Button type="primary" style={{ margin: 8 }}>
             {translated['248be9e1']}
           </Button>
+          <Button style={{ margin: 8 }}>{translated['248be9e1']}</Button>
           <Button size="small" style={{ margin: 8 }} type="primary">
+            {translated.ea3d02f2}
+          </Button>
+          <Button size="small" style={{ margin: 8 }}>
             {translated.ea3d02f2}
           </Button>
         </Cell>
