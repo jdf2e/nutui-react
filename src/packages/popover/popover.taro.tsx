@@ -9,8 +9,9 @@ import classNames from 'classnames'
 import Taro, { createSelectorQuery } from '@tarojs/taro'
 import Popup from '@/packages/popup/index.taro'
 import { PopupProps } from '@/packages/popup/popup.taro'
-import { getRect, getRectByTaro } from '@/utils/use-client-rect'
+import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { ComponentDefaults } from '@/utils/typings'
+import { getRect } from '@/utils/use-client-rect'
 
 export type PopoverLocation =
   | 'bottom'
