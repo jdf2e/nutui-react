@@ -56,4 +56,27 @@
     background-color: $pagination-disable-background-color;
     cursor: not-allowed;
   }
+
+  &-few {
+    width: $pagination-few-width;
+    height: $pagination-few-height;
+    display: flex;
+    font-size: $font-size-xs;
+    color: $color-primary-text;
+    background-color: $pagination-few-background-color;
+    border-radius: $pagination-few-radius;
+    &-active,
+    &-default {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: $pagination-few-height;
+      height: $pagination-few-height;
+    }
+    &-active {
+      border-radius: $pagination-few-radius;
+      font-size: $font-size-small;
+      background-color: $pagination-few-active-background-color;
+    }
+  }
 }

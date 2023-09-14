@@ -198,8 +198,14 @@ export default App;
 | \--nutui-pagination-color | 页码字色 |  `$color-primary` |
 | \--nutui-pagination-font-size | 页码字号 | `$font-size` |
 | \--nutui-pagination-item-border-color | 边框颜色 | `$color-border` |
+| \--nutui-pagination-active-background-color | 当前页码的背景色 | `$color-primary` |
 | \--nutui-pagination-disable-color | 不可用色 | `$color-text-disable` |
 | \--nutui-pagination-disable-background-color | 不可用背景色 | `$color-text-disable` |
 | \--nutui-pagination-item-border-width | 边框宽度 | `1px` |
 | \--nutui-pagination-item-border-radius | 边框圆角 | `2px` |
 | \--nutui-pagination-prev-next-padding | padding 值 | `0 11px` |
+| \--nutui-pagination-few-width | Few模式下的宽度 | `40px` |
+| \--nutui-pagination-few-height | Few模式下的高度 | `20px` |
+| \--nutui-pagination-few-radius| Few模式下的圆角 | `12px` |
+| \--nutui-pagination-few-background-color | Few模式下的默认背景色 | `var(--nutui-black-7)` |
+| \--nutui-pagination-few-active-background-color | Few模式下的当前选中的背景色 | `var(--nutui-black-5)` |

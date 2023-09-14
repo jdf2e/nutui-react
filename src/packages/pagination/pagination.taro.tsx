@@ -7,7 +7,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 export interface PaginationProps extends BasicComponent {
   defaultValue: number
   value: number
-  mode: 'multi' | 'simple'
+  mode: 'multi' | 'simple' | 'few'
   prev: ReactNode
   next: ReactNode
   total: number
@@ -106,51 +106,64 @@ export const Pagination: FunctionComponent<
 
   return (
     <div className={classNames(classPrefix, className)} {...rest}>
-      <div
-        className={classNames(
-          `${classPrefix}__prev`,
-          mode === 'multi' ? '' : 'simple-border',
-          currentPage === 1 ? 'disabled' : ''
-        )}
-        onClick={(e) => handleSelectPage(currentPage - 1)}
-      >
-        {prev || locale.pagination.prev}
-      </div>
-      {mode === 'multi' && (
-        <div className={`${classPrefix}__contain`}>
-          {pages.map((item: any, index: number) => {
-            return (
-              <div
-                key={`${index}pagination`}
-                className={classNames(`${classPrefix}__item`, {
-                  active: item.number === currentPage,
-                })}
-                onClick={(e) => {
-                  item.number !== currentPage && handleSelectPage(item.number)
-                }}
-              >
-                {itemRender ? itemRender(item) : item.text}
-              </div>
-            )
-          })}
-        </div>
-      )}
-      {mode === 'simple' && (
-        <div className={`${classPrefix}__contain`}>
-          <div className={`${classPrefix}__simple`}>
-            {currentPage}/{pageCount}
+      {(mode === 'multi' || mode === 'simple') && (
+        <>
+          <div
+            className={classNames(
+              `${classPrefix}__prev`,
+              mode === 'multi' ? '' : 'simple-border',
+              currentPage === 1 ? 'disabled' : ''
+            )}
+            onClick={(e) => handleSelectPage(currentPage - 1)}
+          >
+            {prev || locale.pagination.prev}
           </div>
-        </div>
+          {mode === 'multi' && (
+            <div className={`${classPrefix}__contain`}>
+              {pages.map((item: any, index: number) => {
+                return (
+                  <div
+                    key={`${index}pagination`}
+                    className={classNames(`${classPrefix}__item`, {
+                      active: item.number === currentPage,
+                    })}
+                    onClick={(e) => {
+                      item.number !== currentPage &&
+                        handleSelectPage(item.number)
+                    }}
+                  >
+                    {itemRender ? itemRender(item) : item.text}
+                  </div>
+                )
+              })}
+            </div>
+          )}
+          {mode === 'simple' && (
+            <div className={`${classPrefix}__contain`}>
+              <div className={`${classPrefix}__simple`}>
+                {currentPage}/{pageCount}
+              </div>
+            </div>
+          )}
+          <div
+            className={classNames(
+              `${classPrefix}__next`,
+              currentPage >= pageCount ? 'disabled' : ''
+            )}
+            onClick={(e) => handleSelectPage(currentPage + 1)}
+          >
+            {next || locale.pagination.next}
+          </div>
+        </>
       )}
-      <div
-        className={classNames(
-          `${classPrefix}__next`,
-          currentPage >= pageCount ? 'disabled' : ''
-        )}
-        onClick={(e) => handleSelectPage(currentPage + 1)}
-      >
-        {next || locale.pagination.next}
-      </div>
+      {mode === 'few' && (
+        <>
+          <div className={`${classPrefix}-few`}>
+            <div className={`${classPrefix}-few-active`}>{2}</div>
+            <div className={`${classPrefix}-few-default`}>{8}</div>
+          </div>
+        </>
+      )}
     </div>
   )
 }
