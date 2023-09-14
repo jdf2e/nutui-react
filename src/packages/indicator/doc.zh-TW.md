@@ -134,6 +134,5 @@ export default App;
 | \--nutui-indicator-dot-color | 指示器默認色值 | `$color-text-disable` |
 | \--nutui-indicator-dot-size | 指示器尺寸 | `5px` |
 | \--nutui-indicator-dot-active-size | 指示器焦點時尺寸 | `15px` |
-| \--nutui-indicator-border-size | 指示器焦點時的border值 | `3px` |
+| \--nutui-indicator-border-radius-size | 指示器焦點時的border值 | `3px` |
 | \--nutui-indicator-dot-margin | 指示器橫嚮時的margin值 | `4px` |
-| \--nutui-indicator-dot-vertical-margin | 指示器縱嚮時的margin值 | `4px` |

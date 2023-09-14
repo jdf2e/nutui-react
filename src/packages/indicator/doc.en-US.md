@@ -134,6 +134,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-indicator-dot-color | indicator default color | `$color-text-disable` |
 | \--nutui-indicator-dot-size | indicator dot size | `5px` |
 | \--nutui-indicator-dot-active-size | indicator dot active size | `15px` |
-| \--nutui-indicator-border-size | indicator active border size | `3px` |
+| \--nutui-indicator-border-radius-size | indicator active border size | `3px` |
 | \--nutui-indicator-dot-margin | when horizontal, indicator margin | `4px` |
-| \--nutui-indicator-dot-vertical-margin | when vertical, indicator margin | `4px` |
