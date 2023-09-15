@@ -1285,11 +1285,11 @@ $pagination-color: var(--nutui-pagination-color, $color-primary) !default;
 $pagination-font-size: var(--nutui-pagination-font-size, $font-size) !default;
 $pagination-item-border-color: var(
   --nutui-pagination-item-border-color,
-  #e4e7eb
+  $color-border
 ) !default;
 $pagination-active-background-color: linear-gradient(
   135deg,
-  $color-primary 0%,
+  $color-primary-stop-1 0%,
   $color-primary-stop-2 100%
 ) !default;
 $pagination-disable-color: var(
@@ -1298,7 +1298,7 @@ $pagination-disable-color: var(
 ) !default;
 $pagination-disable-background-color: var(
   --nutui-pagination-disable-background-color,
-  #f7f8fa
+  $disable-bg-color
 ) !default;
 $pagination-item-border-width: var(
   --nutui-pagination-item-border-width,
@@ -1310,7 +1310,18 @@ $pagination-item-border-radius: var(
 ) !default;
 $pagination-prev-next-padding: var(
   --nutui-pagination-prev-next-padding,
-  0 11px
+  0 12px
+) !default;
+$pagination-few-width: var(--nutui-pagination-few-width, 40px) !default;
+$pagination-few-height: var(--nutui-pagination-few-height, 20px) !default;
+$pagination-few-radius: var(--nutui-pagination-few-radius, 12px) !default;
+$pagination-few-background-color: var(
+  --nutui-pagination-few-background-color,
+  var(--nutui-black-7)
+) !default;
+$pagination-few-active-background-color: var(
+  --nutui-pagination-few-active-background-color,
+  var(--nutui-black-5)
 ) !default;
 
 // tabs（✅）
