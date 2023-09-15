@@ -73,6 +73,40 @@ export default App;
 
 :::
 
+
+### 极简模式
+
+将 mode 设置为 "lite" 来切换到极简模式，可用于主图切换。
+
+
+:::demo
+
+```tsx
+import React, { useState } from 'react'
+import { Pagination } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  const [currentPage2, setCurrentPage2] = useState(1)
+  const pageChange2 = (v: number) => {
+    const c = v
+    setCurrentPage2(c)
+  }
+  return (
+    <Pagination
+      value={currentPage2}
+      total={12}
+      pageSize={1}
+      mode="lite" 
+      onChange={pageChange2} 
+    />
+  )
+}
+export default App;
+```
+
+:::
+
+
 ### 显示省略号
 
 设置 force-ellipses 后会展示省略号按钮，点击后可以快速跳转。 
@@ -203,8 +237,8 @@ export default App;
 | \--nutui-pagination-item-border-width | 边框宽度 | `1px` |
 | \--nutui-pagination-item-border-radius | 边框圆角 | `2px` |
 | \--nutui-pagination-prev-next-padding | padding 值 | `0 11px` |
-| \--nutui-pagination-few-width | Few模式下的宽度 | `40px` |
-| \--nutui-pagination-few-height | Few模式下的高度 | `20px` |
-| \--nutui-pagination-few-radius| Few模式下的圆角 | `12px` |
-| \--nutui-pagination-few-background-color | Few模式下的默认背景色 | `var(--nutui-black-7)` |
-| \--nutui-pagination-few-active-background-color | Few模式下的当前选中的背景色 | `var(--nutui-black-5)` |
+| \--nutui-pagination-lite-width | lite模式下的宽度 | `40px` |
+| \--nutui-pagination-lite-height | lite模式下的高度 | `20px` |
+| \--nutui-pagination-lite-radius| lite模式下的圆角 | `12px` |
+| \--nutui-pagination-lite-background-color | lite模式下的默认背景色 | `var(--nutui-black-7)` |
+| \--nutui-pagination-lite-active-background-color | lite模式下的当前选中的背景色 | `var(--nutui-black-5)` |

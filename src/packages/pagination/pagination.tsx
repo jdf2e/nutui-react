@@ -7,7 +7,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 export interface PaginationProps extends BasicComponent {
   value: number
   defaultValue: number
-  mode: 'multi' | 'simple' | 'few'
+  mode: 'multi' | 'simple' | 'lite'
   prev: ReactNode
   next: ReactNode
   total: number
@@ -156,11 +156,11 @@ export const Pagination: FunctionComponent<
           </div>
         </>
       )}
-      {mode === 'few' && (
+      {mode === 'lite' && (
         <>
-          <div className={`${classPrefix}-few`}>
-            <div className={`${classPrefix}-few-active`}>{2}</div>
-            <div className={`${classPrefix}-few-default`}>{8}</div>
+          <div className={`${classPrefix}-lite`}>
+            <div className={`${classPrefix}-lite-active`}>{2}</div>
+            <div className={`${classPrefix}-lite-default`}>{8}</div>
           </div>
         </>
       )}

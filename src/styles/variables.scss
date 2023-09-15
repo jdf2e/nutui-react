@@ -1310,15 +1310,15 @@ $pagination-prev-next-padding: var(
   --nutui-pagination-prev-next-padding,
   0 12px
 ) !default;
-$pagination-few-width: var(--nutui-pagination-few-width, 40px) !default;
-$pagination-few-height: var(--nutui-pagination-few-height, 20px) !default;
-$pagination-few-radius: var(--nutui-pagination-few-radius, 12px) !default;
-$pagination-few-background-color: var(
-  --nutui-pagination-few-background-color,
+$pagination-lite-width: var(--nutui-pagination-lite-width, 40px) !default;
+$pagination-lite-height: var(--nutui-pagination-lite-height, 20px) !default;
+$pagination-lite-radius: var(--nutui-pagination-lite-radius, 12px) !default;
+$pagination-lite-background-color: var(
+  --nutui-pagination-lite-background-color,
   var(--nutui-black-7)
 ) !default;
-$pagination-few-active-background-color: var(
-  --nutui-pagination-few-active-background-color,
+$pagination-lite-active-background-color: var(
+  --nutui-pagination-lite-active-background-color,
   var(--nutui-black-5)
 ) !default;
 
