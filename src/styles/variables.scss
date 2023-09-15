@@ -83,7 +83,12 @@ $background-color3: $gray6 !default;
 $divider-color: $gray9 !default;
 
 // ---- Font Family ----
-$font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun,
+$font-family:
+  PingFang SC,
+  Microsoft YaHei,
+  Helvetica,
+  Hiragino Sans GB,
+  SimSun,
   sans-serif !default;
 
 // --- z-index ----
@@ -1621,7 +1626,7 @@ $menu-bar-border-bottom-color: var(
   --nutui-menu-bar-border-bottom-color,
   #eaf0fb
 ) !default;
-$menu-bar-opened-z-index: var(--nutui-menu-bar-opened-z-index, 2001) !default;
+$menu-bar-opened-z-index: var(--nutui-menu-bar-opened-z-index, 1000) !default;
 $menu-item-disabled-color: var(
   --nutui-menu-item-disabled-color,
   #969799
