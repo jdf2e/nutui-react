@@ -35,7 +35,12 @@ $color-border: var(--nutui-black-3) !default;
 $color-border-disable: var(--nutui-black-3) !default;
 
 // ---- Font Family ----
-$font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun,
+$font-family:
+  PingFang SC,
+  Microsoft YaHei,
+  Helvetica,
+  Hiragino Sans GB,
+  SimSun,
   sans-serif !default;
 
 // Font
@@ -1406,10 +1411,6 @@ $indicator-dot-active-size: var(
 ) !default;
 $indicator-border-size: var(--nutui-indicator-border-size, 3px) !default;
 $indicator-dot-margin: var(--nutui-indicator-dot-margin, 4px) !default;
-$indicator-dot-vertical-margin: var(
-  --nutui-indicator-dot-vertical-margin,
-  4px
-) !default;
 
 // menu（✅）
 $menu-bar-line-height: var(--nutui-menu-bar-line-height, 48px) !default;

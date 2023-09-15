@@ -2,7 +2,6 @@ import React from 'react'
 import { Indicator } from './indicator'
 import Cell from '@/packages/cell'
 import { useTranslate } from '../../sites/assets/locale'
-import '@/packages/indicator/demo.scss'
 import ConfigProvider from '@/packages/configprovider'
 
 interface T {
@@ -36,7 +35,7 @@ const IndicatorDemo = () => {
   const customTheme = {
     nutuiIndicatorColor: '#3768fa',
     nutuiIndicatorDotColor: '#ddd',
-    nutuiIndicatorDotSize: '8px',
+    nutuiIndicatorDotSize: '6px',
     nutuiIndicatorDotActiveSize: '24px',
   }
   return (
@@ -44,13 +43,46 @@ const IndicatorDemo = () => {
       <div className="demo">
         <h2>{translated.ce5c5446}</h2>
         <Cell>
+          <Indicator total={3} current={0} />
+        </Cell>
+        <Cell>
+          <Indicator total={3} current={1} />
+        </Cell>
+        <Cell>
           <Indicator total={3} current={2} />
         </Cell>
 
         <h2>{translated.c38a08ef}</h2>
         <Cell>
           <Indicator total={6} current={5}>
-            <div className="number">{5}</div>
+            <div
+              style={{
+                display: 'inline-block',
+                width: '14px',
+                height: '14px',
+                lineHeight: '14px',
+                textAlign: 'center',
+                fontSize: 'var(--nutui-font-size-1)',
+                color: 'var(--nutui-gray-1)',
+                border: '1px solid var(--nutui-gray-1)',
+                borderRadius: '50%',
+                margin: 'var(--nutui-indicator-dot-margin)',
+                background: `linear-gradient(135deg, 
+                  var(--nutui-color-primary-stop-1) 0%,
+                  var(--nutui-color-primary-stop-2) 100%)`,
+              }}
+            >
+              <div
+                style={{
+                  height: '12px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}
+              >
+                {5}
+              </div>
+            </div>
           </Indicator>
         </Cell>
 
@@ -63,12 +95,55 @@ const IndicatorDemo = () => {
 
         <h2>{translated.c123sda1}</h2>
         <Cell>
-          <div className="vertical_cell">
+          <div
+            style={{
+              height: '100px',
+              width: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              overflow: 'hidden',
+            }}
+          >
             <Indicator total={6} current={5} direction="vertical">
-              <div className="number">{5}</div>
+              <div
+                style={{
+                  display: 'inline-block',
+                  width: '14px',
+                  height: '14px',
+                  fontSize: 'var(--nutui-font-size-1)',
+                  color: 'var(--nutui-gray-1)',
+                  border: '1px solid var(--nutui-gray-1)',
+                  borderRadius: '50%',
+                  background: `linear-gradient(135deg, 
+                  var(--nutui-color-primary-stop-1) 0%,
+                  var(--nutui-color-primary-stop-2) 100%)`,
+                }}
+              >
+                <div
+                  style={{
+                    width: '13px',
+                    height: '11px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  {5}
+                </div>
+              </div>
             </Indicator>
           </div>
-          <div className="vertical_cell">
+          <div
+            style={{
+              height: '100px',
+              width: '50%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              overflow: 'hidden',
+            }}
+          >
             <Indicator total={6} current={2} direction="vertical" />
           </div>
         </Cell>

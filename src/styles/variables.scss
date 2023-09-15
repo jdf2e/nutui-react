@@ -10,6 +10,11 @@ $color-primary-light-press: var(
   --nutui-color-primary-light-press,
   #fec3be
 ) !default;
+$color-primary-gradient-1: linear-gradient(
+  135deg,
+  $color-primary-stop-1 0%,
+  $color-primary-stop-2 100%
+) !default;
 
 // 页面基底色，用于卡片式页面的兜底，永远置于页面最底层。
 $color-background: var(--nutui-gray-3, #f6f6f6) !default;
@@ -149,11 +154,7 @@ $button-primary-border-color: var(
   --nutui-button-primary-border-color,
   $color-primary
 ) !default;
-$button-primary-background-color: linear-gradient(
-  135deg,
-  $color-primary-stop-1 0%,
-  $color-primary-stop-2 100%
-) !default;
+$button-primary-background-color: $color-primary-gradient-1 !default;
 $button-primary-disable: var(
   --nutui-button-primary-disable,
   $color-primary-disable
@@ -787,7 +788,7 @@ $notify-height: var(--nutui-notify-height, 44px) !default;
 $notify-line-height: var(--nutui-notify-line-height, auto) !default;
 $notify-base-background-color: var(
   --nutui-notify-base-background-color,
-  linear-gradient(135deg, $color-primary-stop-1 0%, $color-primary-stop-2 100%)
+  $color-primary-gradient-1
 ) !default;
 $notify-primary-background-color: var(
   --nutui-notify-primary-background-color,
@@ -809,7 +810,7 @@ $notify-danger-background-color: var(
 ) !default;
 $notify-warning-background-color: var(
   --nutui-notify-warning-background-color,
-  linear-gradient(135deg, rgba(255, 93, 13, 1) 0%, rgba(255, 154, 13, 1) 100%)
+  $color-primary-gradient-1
 ) !default;
 
 // rate（✅）
@@ -1198,7 +1199,7 @@ $tag-warning-background-color: var(
 $badge-height: var(--nutui-badge-height, 14px) !default;
 $badge-background-color: var(
   --nutui-badge-background-color,
-  linear-gradient(135deg, $color-primary-stop-1 0%, $color-primary-stop-2 100%)
+  $color-primary-gradient-1
 ) !default;
 $badge-color: var(--nutui-badge-color, #fff) !default;
 $badge-font-size: var(--nutui-badge-font-size, $font-size-xs) !default;
@@ -1248,7 +1249,7 @@ $popover-menu-item-padding: var(
 $progress-height: var(--nutui-progress-height, 10px) !default;
 $progress-color: var(
   --nutui-progress-color,
-  linear-gradient(135deg, $color-primary-stop-1 0%, $color-primary-stop-2 100%)
+  $color-primary-gradient-1
 ) !default;
 $progress-background: var(
   --nutui-progress-background,
@@ -1384,22 +1385,21 @@ $tabs-vertical-titles-width: var(
 ) !default;
 
 // indicator（✅）
-$indicator-color: var(--nutui-indicator-color, $color-primary) !default;
-$indicator-dot-color: var(
-  --nutui-indicator-dot-color,
-  $color-text-disable
+$indicator-color: var(
+  --nutui-indicator-color,
+  $color-primary-gradient-1
 ) !default;
-$indicator-dot-size: var(--nutui-indicator-dot-size, 5px) !default;
+$indicator-dot-color: var(--nutui-indicator-dot-color, $color-border) !default;
+$indicator-dot-size: var(--nutui-indicator-dot-size, 4px) !default;
 $indicator-dot-active-size: var(
   --nutui-indicator-dot-active-size,
-  15px
+  8px
 ) !default;
-$indicator-border-size: var(--nutui-indicator-border-size, 3px) !default;
-$indicator-dot-margin: var(--nutui-indicator-dot-margin, 4px) !default;
-$indicator-dot-vertical-margin: var(
-  --nutui-indicator-dot-vertical-margin,
-  4px
+$indicator-border-radius-size: var(
+  --nutui-indicator-border-radius-size,
+  2px
 ) !default;
+$indicator-dot-margin: var(--nutui-indicator-dot-margin, 2px) !default;
 
 // menu（✅）
 $menu-bar-line-height: var(--nutui-menu-bar-line-height, 48px) !default;
