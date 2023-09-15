@@ -11,7 +11,7 @@ import { View } from '@tarojs/components'
 import { nextTick, useReady } from '@tarojs/taro'
 import { BaseEventOrig } from '@tarojs/components/types/common'
 import { useTouch } from '@/utils/use-touch'
-import { getRectByTaro } from '@/utils/use-client-rect'
+import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type SwipeSide = 'left' | 'right'

@@ -34,7 +34,12 @@ const App = () => {
   return (
     <>
       <div className="demo full">
-        <Menu>
+        <Menu
+          closeOnOverlayClick
+          lockScroll={false}
+          onClose={(i: number) => console.log('onClose', i)}
+          onOpen={(i: number) => console.log('onOpen', i)}
+        >
           <Menu.Item options={options} value={0} />
           <Menu.Item options={options1} value="a" />
         </Menu>
@@ -315,6 +320,8 @@ export default App
 | lockScroll | 背景是否锁定 | `boolean` | `true` |
 | scrollFixed | 滚动后是否固定，可设置固定位置 | `boolean` \| `string` \| `number` | `true` |
 | icon | 自定义标题图标 | `React.ReactNode` | `-` |
+| onOpen | menu 展开触发 | `(index: number) => void` | `-` |
+| onClose | menu 关闭触发 | `(index: number) => void` | `-` |
 
 ## Menu.Item
 

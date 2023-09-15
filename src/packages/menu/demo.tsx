@@ -110,7 +110,12 @@ const MenuDemo = () => {
       <style>{style}</style>
       <div className="demo full">
         <h2>{translated.basic}</h2>
-        <Menu closeOnOverlayClick lockScroll={false}>
+        <Menu
+          closeOnOverlayClick
+          lockScroll={false}
+          onClose={(i: number) => console.log('onClose', i)}
+          onOpen={(i: number) => console.log('onOpen', i)}
+        >
           <Menu.Item
             options={options}
             defaultValue={0}
