@@ -163,16 +163,18 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
       ref={micRef}
       // style={{ position: 'absolute', left: 0, right: 0 }}
     >
-      <Overlay
-        className="nut-menu__overlay"
-        style={getPosition()}
-        lockScroll={parent.lockScroll}
-        visible={showPopup}
-        closeOnOverlayClick={parent.closeOnOverlayClick}
-        onClick={() => {
-          parent.closeOnOverlayClick && parent.toggleMenuItem(index)
-        }}
-      />
+      {parent.overlay ? (
+        <Overlay
+          className="nut-menu__overlay"
+          style={getPosition()}
+          lockScroll={parent.lockScroll}
+          visible={showPopup}
+          closeOnOverlayClick={parent.closeOnOverlayClick}
+          onClick={() => {
+            parent.closeOnOverlayClick && parent.toggleMenuItem(index)
+          }}
+        />
+      ) : null}
       <div
         className={classNames(className, {
           'nut-menu-item__wrap': direction === 'down',

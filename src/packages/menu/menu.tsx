@@ -6,6 +6,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface MenuProps extends BasicComponent {
   activeColor: string
+  overlay: boolean
   closeOnOverlayClick: boolean
   scrollFixed: boolean | string | number
   lockScroll: boolean
@@ -21,6 +22,7 @@ const defaultProps = {
   closeOnOverlayClick: true,
   scrollFixed: false,
   lockScroll: true,
+  overlay: true,
   icon: null,
   onOpen: () => {},
   onClose: () => {},
@@ -33,6 +35,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
     icon,
     scrollFixed,
     lockScroll,
+    overlay,
     closeOnOverlayClick,
     children,
     activeColor,
@@ -98,6 +101,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
         activeColor,
         parent: {
           closeOnOverlayClick,
+          overlay,
           lockScroll,
           toggleMenuItem,
           updateTitle,
