@@ -22,8 +22,8 @@
 
   &__active {
     width: $indicator-dot-active-size;
-    border-radius: $indicator-border-size;
-    background-color: $indicator-color;
+    border-radius: $indicator-border-radius-size;
+    background: $indicator-color;
   }
 
   &__vertical {
@@ -33,7 +33,7 @@
     justify-content: center;
 
     .nut-indicator__dot {
-      margin: $indicator-dot-vertical-margin 0;
+      margin: $indicator-dot-margin 0;
 
       &:first-child {
         margin-top: 0px;
