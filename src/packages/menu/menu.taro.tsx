@@ -132,6 +132,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
             style={{ color: showMenuItem[index] ? activeColor : '' }}
             key={index}
             onClick={() => {
+              if (!options || !options.length) return
               !disabled && toggleMenuItem(index)
             }}
           >
