@@ -74,6 +74,40 @@ export default App;
 
 :::
 
+
+### 極簡模式
+
+將 mode 設置為 "lite" 來切換到極簡模式，可用於主圖切換。
+
+
+:::demo
+
+```tsx
+import React, { useState } from 'react'
+import { Pagination } from '@nutui/nutui-react';
+
+const App = () => {
+  const [currentPage2, setCurrentPage2] = useState(1)
+  const pageChange2 = (v: number) => {
+    const c = v
+    setCurrentPage2(c)
+  }
+  return (
+    <Pagination
+      value={currentPage2}
+      total={12}
+      pageSize={1}
+      mode="lite" 
+      onChange={pageChange2} 
+    />
+  )
+}
+export default App;
+```
+
+:::
+
+
 ### 顯示省略號
 
 設置 force-ellipses 後會展示省略號按鈕，點擊後可以快速跳轉。 
@@ -198,8 +232,14 @@ export default App;
 | \--nutui-pagination-color | 頁碼字色 |  `$color-primary` |
 | \--nutui-pagination-font-size | 頁碼字號 | `$font-size` |
 | \--nutui-pagination-item-border-color | 邊框顏色 | `$color-border` |
+| \--nutui-pagination-active-background-color | 當前頁碼的背景色 | `$color-primary` |
 | \--nutui-pagination-disable-color | 不可用色 | `$color-text-disable` |
 | \--nutui-pagination-disable-background-color | 不可用背景色 | `$color-text-disable` |
 | \--nutui-pagination-item-border-width | 邊框寬度 | `1px` |
 | \--nutui-pagination-item-border-radius | 邊框圓角 | `2px` |
 | \--nutui-pagination-prev-next-padding | padding 值 | `0 11px` |
+| \--nutui-pagination-lite-width | lite模式下的寬度 | `40px` |
+| \--nutui-pagination-lite-height | lite模式下的高度 | `20px` |
+| \--nutui-pagination-lite-radius| lite模式下的圓角 | `12px` |
+| \--nutui-pagination-lite-background-color | lite模式下的默認背景色 | `var(--nutui-black-7)` |
+| \--nutui-pagination-lite-active-background-color | lite模式下的當前選中的背景色 | `var(--nutui-black-5)` |
