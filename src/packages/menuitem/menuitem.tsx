@@ -3,6 +3,7 @@ import React, {
   forwardRef,
   useEffect,
   useImperativeHandle,
+  useMemo,
   useRef,
   useState,
 } from 'react'
@@ -13,6 +14,7 @@ import { Overlay } from '../overlay/overlay'
 import useClickAway from '@/utils/use-click-away'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
+import { getScrollParent } from '@/utils/get-scroll-parent'
 
 export interface OptionItem {
   text: string
@@ -117,6 +119,11 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     top: 0,
     height: 0,
   })
+
+  const scrollParent = useMemo(() => {
+    return getScrollParent(parent.menuRef, window)
+  }, [parent.menuRef])
+
   const getParentOffset = () => {
     setTimeout(() => {
       const p = parent.menuRef.current
@@ -127,6 +134,13 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
       })
     })
   }
+
+  useEffect(() => {
+    scrollParent?.addEventListener('scroll', getParentOffset, false)
+    return () => {
+      scrollParent?.removeEventListener('scroll', getParentOffset, false)
+    }
+  }, [])
 
   const getPosition = (): CSSProperties => {
     return direction === 'down'
