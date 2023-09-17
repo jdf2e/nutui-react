@@ -784,17 +784,16 @@ $popup-animation-duration: var(--nutui-popup-animation-duration, 0.3s) !default;
 
 // Notify（✅）
 $notify-text-color: var(--nutui-notify-text-color, $white) !default;
-$notify-padding: var(--nutui-notify-padding, 12px 0) !default;
-$notify-font-size: var(--nutui-notify-font-size, 14px) !default;
-$notify-height: var(--nutui-notify-height, 44px) !default;
-$notify-line-height: var(--nutui-notify-line-height, auto) !default;
+$notify-padding: var(--nutui-notify-padding, 0px 10px) !default;
+$notify-font-size: var(--nutui-notify-font-size, $font-size) !default;
+$notify-height: var(--nutui-notify-height, 40px) !default;
 $notify-base-background-color: var(
   --nutui-notify-base-background-color,
   $color-primary-gradient-1
 ) !default;
 $notify-primary-background-color: var(
   --nutui-notify-primary-background-color,
-  linear-gradient(315deg, rgba(73, 143, 242, 1) 0%, rgba(73, 101, 242, 1) 100%)
+  $color-info
 ) !default;
 $notify-success-background-color: var(
   --nutui-notify-success-background-color,
@@ -808,7 +807,7 @@ $notify-success-background-color: var(
 ) !default;
 $notify-danger-background-color: var(
   --nutui-notify-danger-background-color,
-  rgba(250, 50, 25, 1)
+  $color-primary
 ) !default;
 $notify-warning-background-color: var(
   --nutui-notify-warning-background-color,
@@ -1334,11 +1333,11 @@ $tabs-titles-item-font-size: var(
 ) !default;
 $tabs-titles-item-active-font-weight: var(
   --nutui-tabs-titles-item-active-font-weight,
-  600
+  $font-weight-bold
 ) !default;
 $tabs-horizontal-tab-line-color: var(
   --nutui-tabs-horizontal-tab-line-color,
-  linear-gradient(90deg, $color-primary-stop-1 0%, $color-primary-light 100%)
+  $color-primary-gradient-1
 ) !default;
 $tabs-horizontal-tab-line-bottom: var(
   --nutui-tabs-horizontal-line-bottom,

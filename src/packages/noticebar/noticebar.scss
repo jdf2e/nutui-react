@@ -2,12 +2,12 @@
   width: 100%;
 
   .nut-noticebar-page {
-    display: flex;
-    padding: $noticebar-box-padding;
-    height: $noticebar-height;
-    font-size: $noticebar-font-size;
     position: relative;
+    display: flex;
     align-items: center;
+    height: $noticebar-height;
+    padding: $noticebar-box-padding;
+    font-size: $noticebar-font-size;
     background: $noticebar-background;
     color: $noticebar-color;
 
