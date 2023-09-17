@@ -125,7 +125,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
               </i>
             ) : (
               <Close
-                size={12}
+                size={8}
                 onClick={(e) => {
                   setVisible(false)
                   onClose && onClose(e)

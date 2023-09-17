@@ -16,6 +16,8 @@ $color-primary-gradient-1: linear-gradient(
   $color-primary-stop-2 100%
 ) !default;
 
+$color-warning: var(--nutui-color-warning, rgba(255, 158, 13, 1)) !default;
+
 // 页面基底色，用于卡片式页面的兜底，永远置于页面最底层。
 $color-background: var(--nutui-gray-3, #f6f6f6) !default;
 // 卡片背景色
@@ -197,11 +199,11 @@ $button-warning-color: var(
 ) !default;
 $button-warning-border-color: var(
   --nutui-button-warning-border-color,
-  rgba(255, 158, 13, 1)
+  $color-warning
 ) !default;
 $button-warning-background-color: var(
   --nutui-button-warning-background-color,
-  rgba(255, 158, 13, 1)
+  $color-warning
 ) !default;
 $button-warning-disable: var(--nutui-button-warning-disable, #fdd3b9) !default;
 
@@ -810,7 +812,7 @@ $notify-danger-background-color: var(
 ) !default;
 $notify-warning-background-color: var(
   --nutui-notify-warning-background-color,
-  $color-primary-gradient-1
+  $color-warning
 ) !default;
 
 // rate（✅）
@@ -1160,21 +1162,16 @@ $timeselect-time-background: var(
 ) !default;
 
 //tag（✅）
-$tag-padding: var(--nutui-tag-padding, 0 4px) !default;
-$tag-font-size: var(--nutui-tag-font-size, 12px) !default;
-$tag-border-radius: var(--nutui-tag-border-radius, 4px) !default;
-$tag-height: var(--nutui-tag-height, auto) !default;
+$tag-padding: var(--nutui-tag-padding, 0px 2px) !default;
+$tag-font-size: var(--nutui-tag-font-size, $font-size-xs) !default;
+$tag-border-radius: var(--nutui-tag-border-radius, 2px) !default;
+$tag-height: var(--nutui-tag-height, 14px) !default;
 $tag-color: var(--nutui-tag-color, #ffffff) !default;
 $tag-border-width: var(--nutui-tag-border-width, 1px) !default;
-$tag-round-border-radius: var(--nutui-tag-round-border-radius, 8px) !default;
-$tag-mark-border-radius: var(
-  --nutui-tag-mark-border-radius,
-  0 12px 12px 0
-) !default;
-$tag-background-color: var(--nutui-tag-background-color, #000000) !default;
+$tag-background-color: var(--nutui-tag-background-color, $color-title) !default;
 $tag-primary-background-color: var(
   --nutui-tag-primary-background-color,
-  $color-primary
+  $color-primary-gradient-1
 ) !default;
 $tag-info-background-color: var(
   --nutui-tag-info-background-color,
@@ -1184,15 +1181,18 @@ $tag-success-background-color: var(
   --nutui-tag-success-background-color,
   #4fc08d
 ) !default;
-$tag-danger-background-color: linear-gradient(
-  135deg,
-  rgba(242, 20, 12, 1) 0%,
-  rgba(232, 34, 14, 1) 69.83950099728881%,
-  rgba(242, 77, 12, 1) 100%
+$tag-danger-background-color: var(
+  --nutui-tag-danger-background-color,
+  $color-primary
 ) !default;
 $tag-warning-background-color: var(
   --nutui-tag-warning-background-color,
-  #f3812e
+  $color-warning
+) !default;
+$tag-round-border-radius: var(--nutui-tag-round-border-radius, 8px) !default;
+$tag-mark-border-radius: var(
+  --nutui-tag-mark-border-radius,
+  0 8px 8px 0
 ) !default;
 
 //badge（✅）

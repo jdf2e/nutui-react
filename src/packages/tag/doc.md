@@ -56,7 +56,7 @@ const App = () => {
            onClose={() => alert('Tag closed')} 
            type='primary'>标签</Tag>
       <Tag closeable
-           closeIcon={<CircleClose width={12} height={12} />}
+           closeIcon={<CircleClose width={8} height={8} />}
            onClose={() => alert('Tag closed')}
            type='primary'>标签</Tag>
     </>
@@ -115,16 +115,17 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-tag-padding | padding 值 | `0 4px` |
-| \--nutui-tag-font-size | 字号 | `12px` |
-| \--nutui-tag-border-radius | 圆角 | `4px` |
-| \--nutui-tag-height | 高度 | `auto` |
+| \--nutui-tag-padding | padding 值 | `0 2px` |
+| \--nutui-tag-font-size | 字号 | `10px` |
+| \--nutui-tag-border-radius | 圆角 | `2px` |
+| \--nutui-tag-height | 高度 | `14px` |
 | \--nutui-tag-color | 字色 | `#ffffff` |
 | \--nutui-tag-border-width | 边宽 | `1px` |
-| \--nutui-tag-background-color | 背景色 | `#000000` |
-| \--nutui-tag-primary-background-color | 主色背景色 | `#3460fa` |
+| \--nutui-tag-background-color | 背景色 | `$color-title` |
+| \--nutui-tag-primary-background-color | 主色背景色 | `$color-primary-gradient-1` |
 | \--nutui-tag-success-background-color | 成功背景色 | `#4fc08d` |
 | \--nutui-tag-info-background-color | 信息背景色 | `$brand-info-color` |
 | \--nutui-tag-warning-background-color | 警告背景色 | `#f3812e` |
+| \--nutui-tag-danger-background-color | 危险背景色 | `$color-primary` |
 | \--nutui-tag-round-border-radius | round模式下的圆角 | `8px` |
-| \--nutui-tag-mark-border-radius | mark模式下的圆角 | `0 12px 12px 0` |
+| \--nutui-tag-mark-border-radius | mark模式下的圆角 | `0 8px 8px 0` |
