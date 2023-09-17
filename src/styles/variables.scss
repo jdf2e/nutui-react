@@ -1098,13 +1098,15 @@ $signature-background-color: var(
 $signature-font-size: var(--nutui-signature-font-size, $font-size) !default;
 
 //fixednav（✅）
-$fixednav-bg-color: var(--nutui-fixednav-bg-color, #fff) !default;
-$fixednav-color: var(--nutui-fixednav-color, #000) !default;
+$fixednav-background-color: var(
+  --nutui-fixednav-background-color,
+  $color-background
+) !default;
+$fixednav-color: var(--nutui-fixednav-color, $color-title) !default;
 $fixednav-index: var(--nutui-fixednav-index, 201) !default;
-$fixednav-btn-bg: linear-gradient(
-  135deg,
-  $color-primary-stop-1 0%,
-  $color-primary-stop-2 100%
+$fixednav-button-background: var(
+  --nutui-fixednav-button-background,
+  $color-primary-gradient-1
 ) !default;
 $fixednav-item-active-color: var(
   --nutui-fixednav-item-active-color,
