@@ -210,6 +210,8 @@ export default App;
 | closeable | 是否顯示關閉按鈕 | `boolean` | `false` |
 | closeIconPosition | 關閉按鈕位置（top-left,top-right,bottom-left,bottom-right） | `string` | `top-right` |
 | closeIcon | 自定義 Icon | `ReactNode` | `close` |
+| left | 标题左侧部分 | `ReactNode` | `-` |
+| title | 标题中间部分 | `ReactNode` | `-` |
 | destroyOnClose | 组件不可见时，卸载内容 | `boolean` | `false` |
 | round | 是否顯示圓角 | `boolean` | `false` |
 | portal | 指定節點掛載 | `HTMLElement` \| `(() => HTMLElement)` | null` | `null` |

@@ -210,7 +210,7 @@ export default App;
 | --- | --- | --- | --- |
 | value | current page number, controlled value | `number` | `-` |
 | defaultValue | default page number, uncontrolled value | `number` | `1` |
-| mode | Display mode  | `multi` \| `simple` | `multi` |
+| mode | Display mode  | `multi` \| `simple` \| `lite` | `multi` |
 | prev | Customize previous page button content | `ReactNode` | `Previous` |
 | next | Customize next page button content | `ReactNode` | `Next` |
 | total | total | `number` | `50` |
