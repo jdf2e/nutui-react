@@ -11,7 +11,7 @@ exports[`should match snapshot 1`] = `
     >
       <div
         class="nut-sticky--box"
-        style="top: 0px; z-index: 2000;"
+        style="top: 0px; z-index: 900;"
       >
         <button
           class="nut-button nut-button--primary nut-button--normal nut-button--round"
