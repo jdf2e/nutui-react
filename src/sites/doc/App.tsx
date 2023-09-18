@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react'
-import { HashRouter, Switch, Route, useLocation } from 'react-router-dom'
+import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
 import './App.scss'
 import { nav } from '@/config.json'
 import remarkGfm from 'remark-gfm'
@@ -131,80 +131,95 @@ const App = () => {
             </div>
           </div>
           <div className="doc-content-document isComponent">
-            <Switch>
+            <Routes>
               {routers.map((ru, k) => {
                 return (
-                  <Route key={Math.random()} path={ru.path}>
-                    {taros.docs[ru.name.replace('-taro', '')] ? (
-                      <div className="doc-content-tabs ">
-                        <div
-                          className={`tab-item ${
-                            docname === 'react' ? 'cur' : ''
-                          }`}
-                          onClick={() => switchDoc('react')}
-                        >
-                          React
-                        </div>
-                        <div
-                          className={`tab-item ${
-                            docname === 'taro' ? 'cur' : ''
-                          }`}
-                          onClick={() => switchDoc('taro')}
-                        >
-                          Taro
-                        </div>
-                      </div>
-                    ) : (
-                      <div
-                        className="doc-content-tabs single"
-                        style={{
-                          display: `${
-                            taros.support[ru.name.replace('-taro', '')]
-                              ? 'inherit'
-                              : 'none'
-                          }`,
-                        }}
-                      >
-                        <div className="tab-item cur">React / Taro</div>
-                      </div>
-                    )}
-
-                    <ReactMarkdown
-                      children={ru.component}
-                      remarkPlugins={[
-                        remarkGfm,
-                        remarkDirective,
-                        myRemarkPlugin,
-                      ]}
-                      components={{
-                        code({ node, inline, className, children, ...props }) {
-                          const match = /language-([^(scss)]\w+)/.exec(
-                            className || ''
-                          )
-                          return !inline && match ? (
-                            <Demoblock
-                              text={String(children).replace(/\n$/, '')}
-                              scss={(scssRaws as any)[ru.name + 'Scss']}
+                  <Route
+                    key={Math.random()}
+                    path={ru.path}
+                    element={
+                      <>
+                        {taros.docs[ru.name.replace('-taro', '')] ? (
+                          <div className="doc-content-tabs ">
+                            <div
+                              className={`tab-item ${
+                                docname === 'react' ? 'cur' : ''
+                              }`}
+                              onClick={() => switchDoc('react')}
                             >
-                              <SyntaxHighlighter
-                                children={String(children).replace(/\n$/, '')}
-                                language={match[1]}
-                                PreTag="div"
-                                {...props}
-                              />
-                            </Demoblock>
-                          ) : (
-                            <code className={className} {...props}>
-                              {children}
-                            </code>
-                          )
-                        },
-                      }}
-                    />
-                  </Route>
+                              React
+                            </div>
+                            <div
+                              className={`tab-item ${
+                                docname === 'taro' ? 'cur' : ''
+                              }`}
+                              onClick={() => switchDoc('taro')}
+                            >
+                              Taro
+                            </div>
+                          </div>
+                        ) : (
+                          <div
+                            className="doc-content-tabs single"
+                            style={{
+                              display: `${
+                                taros.support[ru.name.replace('-taro', '')]
+                                  ? 'inherit'
+                                  : 'none'
+                              }`,
+                            }}
+                          >
+                            <div className="tab-item cur">React / Taro</div>
+                          </div>
+                        )}
+
+                        <ReactMarkdown
+                          children={ru.component}
+                          remarkPlugins={[
+                            remarkGfm,
+                            remarkDirective,
+                            myRemarkPlugin,
+                          ]}
+                          components={{
+                            code({
+                              node,
+                              inline,
+                              className,
+                              children,
+                              ...props
+                            }) {
+                              const match = /language-([^(scss)]\w+)/.exec(
+                                className || ''
+                              )
+                              return !inline && match ? (
+                                <Demoblock
+                                  text={String(children).replace(/\n$/, '')}
+                                  scss={(scssRaws as any)[ru.name + 'Scss']}
+                                >
+                                  <SyntaxHighlighter
+                                    children={String(children).replace(
+                                      /\n$/,
+                                      ''
+                                    )}
+                                    language={match[1]}
+                                    PreTag="div"
+                                    {...props}
+                                  />
+                                </Demoblock>
+                              ) : (
+                                <code className={className} {...props}>
+                                  {children}
+                                </code>
+                              )
+                            },
+                          }}
+                        />
+                      </>
+                    }
+                  ></Route>
                 )
               })}
-            </Switch>
+            </Routes>
           </div>
           {/*<div className="markdown-body">*/}
           <DemoPreview className={`${fixed ? 'fixed' : ''}`}></DemoPreview>
