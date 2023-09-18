@@ -62,7 +62,7 @@ const defaultProps = {
   ...defaultOverlayProps,
 } as PopupProps
 
-let _zIndex = 2000
+let _zIndex = 1100
 
 export const Popup: FunctionComponent<
   Partial<PopupProps> &
