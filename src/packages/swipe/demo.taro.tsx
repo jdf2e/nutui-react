@@ -260,7 +260,7 @@ const SwipeDemo = () => {
               <Button shape="square" type="primary">
                 {translated.del}
               </Button>
-              <Button shape="square" type="info">
+              <Button shape="square" type="primary">
                 {translated.collect}
               </Button>
             </>
