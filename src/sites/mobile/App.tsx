@@ -5,7 +5,7 @@ import React, {
   useCallback,
   useState,
 } from 'react'
-import { HashRouter, Switch, Route, Redirect } from 'react-router-dom'
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import loadable, { LoadableComponent } from '@loadable/component'
 import { Left } from '@nutui/icons-react'
 import routes from './router'
@@ -55,8 +55,8 @@ const darkTheme = {
   rowContentLightBgColor: 'rgba(0, 0, 0, 0.4)',
 }
 
-const WithNavRouter = (C: LoadableComponent<any>) => {
-  const WithNav: FunctionComponent = () => {
+const WithNavRouter = ({C}: any) => {
+  // const WithNav: FunctionComponent = () => {
     const context = useConfig()
     const handleSwitchLocale = () => {
       let locale = getLocale()
@@ -93,17 +93,6 @@ const WithNavRouter = (C: LoadableComponent<any>) => {
           </div>
           {getComponentName()['name']}
           <div className="translate">
-            {/*<Icon*/}
-            {/*  className={'dark-model'}*/}
-            {/*  name="https://storage.360buyimg.com/imgtools/71a2689855-ba1f4000-80cb-11ed-aa68-651117499129.png"*/}
-            {/*  onClick={() => handleSwitchDarkModel()}*/}
-            {/*/>*/}
-
-            {/*<Icon*/}
-            {/*  className={'translate-icon'}*/}
-            {/*  name="https://img14.360buyimg.com/imagetools/jfs/t1/135168/8/21387/6193/625fa81aEe07cc347/55ad5bc2580c53a6.png"*/}
-            {/*  onClick={() => handleSwitchLocale()}*/}
-            {/*/>*/}
             <img
               className={'dark-model'}
               src="https://storage.360buyimg.com/imgtools/71a2689855-ba1f4000-80cb-11ed-aa68-651117499129.png"
@@ -121,8 +110,8 @@ const WithNavRouter = (C: LoadableComponent<any>) => {
         <C key={Math.random()} />
       </>
     )
-  }
-  return WithNav
+  // }
+  // return WithNav
 }
 const AppSwitch = () => {
   const [locale] = useLocale()
@@ -140,7 +129,7 @@ const AppSwitch = () => {
       theme={theme}
       changeTheme={changeTheme}
     >
-      <Switch>
+      <Routes>
         <Route path="/" exact>
           <div className="index">
             <div className="index-header">
@@ -162,21 +151,14 @@ const AppSwitch = () => {
             <Route
               key={Math.random()}
               path={`${item.path}`}
-              component={WithNavRouter(C)}
+              element={<WithNavRouter C={C} />}
             />
           )
         })}
-        {/* <Route path="*-taro">
-          <TaroDemo />
-        </Route> */}
         <Route path="*">
-          <Redirect
-            to={{
-              pathname: '/',
-            }}
-          />
+          <Navigate to="/" />
         </Route>
-      </Switch>
+      </Routes>
     </Configprovider>
   )
 }
