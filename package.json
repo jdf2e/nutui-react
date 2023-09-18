@@ -174,7 +174,7 @@
     "react-dom": "^18.2.0",
     "react-markdown": "^7.1.2",
     "react-refresh": "^0.14.0",
-    "react-router-dom": "^5.3.4",
+    "react-router-dom": "^6.0.0",
     "react-syntax-highlighter": "^15.5.0",
     "react-test-renderer": "^18.2.0",
     "reactcss": "^1.2.3",
