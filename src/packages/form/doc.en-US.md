@@ -37,6 +37,10 @@ const App = () => {
           required
           label="name"
           name="username"
+          rules={[
+            { max: 5, message: 'Name cannot exceed 5 characters' },
+            { required: true, message: 'Please enter your name' },
+          ]}
         >
           <Input
             className="nut-input-text"
@@ -44,7 +48,14 @@ const App = () => {
             type="text"
           />
         </Form.Item>
-        <Form.Item label="address" name="address">
+        <Form.Item
+          label="address"
+          name="address"
+          rules={[
+            { max: 15, message: 'The address should not exceed 15 characters' },
+            { required: true, message: 'Please enter your address' },
+          ]}
+        >
           <TextArea placeholder="please enter address" maxLength={100} />
         </Form.Item>
         <Form.Item
@@ -84,6 +95,8 @@ const App = () => {
   return (
     <>
       <Form
+        divider
+        labelPosition="left"
         onFinish={(values) => submitSucceed(values)}
         onFinishFailed={(values, errors) => submitFailed(errors)}
         footer={
@@ -128,7 +141,7 @@ const App = () => {
         <Form.Item
           label="telephone"
           name="tel"
-          rules={[{ required: true, message: "Please type your phone number" }]}
+          rules={[{ max: 13, message: "Please type your phone number" }]}
         >
           <Input placeholder="The phone format is incorrect" type="number" />
         </Form.Item>
@@ -458,6 +471,7 @@ export default App;
 | trigger | Set the timing to collect field value changes | `string` | `-` |
 | valuePropName | The property of the value of the child node, such as 'checked' for Checkbox | `string` | `-` |
 | getValueFromEvent | Set how to convert event value to field value | `(...args: any) => any` | `-` |
+| validateTrigger | When to validate the value of children node | `string \| string[]` | `onChange` |
 | onClick | Click event and collect child component Ref | `(event: React.MouseEvent, componentRef: React.MutableRefObject<any>) => void` | `-` |
 
 ### Form.Item Rule
@@ -483,6 +497,7 @@ Form.useForm() creates a Form instance, which is used to manage all data states.
 | Property | Description | Type |
 | --- | --- | --- |
 | getFieldValue | Get the value of the corresponding field name | `(name: NamePath) => any` |
+| getFieldsValue | Get values by a set of field names. Return according to the corresponding structure. Default return mounted field value, but you can use getFieldsValue(true) to get all values | `(name: NamePath \| boolean) => any` |
 | setFieldsValue | set field values | `(values) => void` |
 | resetFields | Reset form prompt state | `() => void` |
 | submit | method to submit a form for validation | `Promise` |

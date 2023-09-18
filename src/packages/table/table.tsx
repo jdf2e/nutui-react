@@ -100,7 +100,6 @@ export const Table: FunctionComponent<
   }
 
   const renderBodyTds = (item: any, rowIndex: number) => {
-    console.log(sortDataItem())
     return sortDataItem().map(([value, render]) => {
       return (
         <span

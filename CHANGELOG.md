@@ -1,3 +1,18 @@
+# v2.0.17
+`2023-09-13`
+
+* :sparkles: feat: form 增加 validateTrigger 和 getFieldsValue (#1411) @oasis-cloud
+* :bug: fix: add popupProps (#1426) @oasis-cloud
+* :bug: fix: form label position left (#1412) @oasis-cloud
+* :bug: fix: lint errors (#1406) @xiaoyatong
+* :bug: fix: review package update (#1423) @xiaoyatong
+* :bug: fix: swipe component fails to slide in Alipay (#1399) @oasis-cloud
+* :bug: fix: table expose rowIndex (#1400) @oasis-cloud
+* :bug: fix: toast组件 duration 设置无效 (#1424) @oasis-cloud
+* 🔨 chore: glob & prettier update (#1427) @xiaoyatong
+* 🔨 chore: swc 版本恢复 (#1425) @oasis-cloud
+
+
 # v2.0.16
 `2023-09-06`
 
