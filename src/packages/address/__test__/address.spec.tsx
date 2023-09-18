@@ -111,7 +111,7 @@ test('Address: show custom', async () => {
   expect(items[0]?.innerHTML).toBe('浙江')
   expect(items[2]?.innerHTML).toBe('福建')
 
-  const title = container.querySelector('.nut-popup-title')
+  const title = container.querySelector('.nut-popup-title-title')
   expect(title?.innerHTML).toBe('选择地址')
 
   expect(container.innerHTML).toMatchSnapshot()
@@ -131,7 +131,7 @@ test('Address: show exist', async () => {
   expect(items[0]?.innerHTML).toContain('通州区')
   expect(items[2]?.innerHTML).toContain('京东大厦')
 
-  const title = container.querySelector('.nut-popup-title')
+  const title = container.querySelector('.nut-popup-title-title')
   expect(title?.innerHTML).toBe('选择地址')
 
   const icons = container.querySelectorAll('.nut-icon')
@@ -214,7 +214,7 @@ describe('Address', () => {
     await waitFor(
       async () => {
         await sleep(1000)
-        const title = screen.container.querySelector('.nut-popup-title')
+        const title = screen.container.querySelector('.nut-popup-title-title')
         expect(title?.innerHTML).toBe('选择地址')
       },
       {
@@ -226,7 +226,9 @@ describe('Address', () => {
     await waitFor(
       async () => {
         await sleep(1000)
-        expect(screen.container.querySelector('.nut-popup-title')).toBe(null)
+        expect(screen.container.querySelector('.nut-popup-title-title')).toBe(
+          null
+        )
       },
       {
         timeout: 2000,

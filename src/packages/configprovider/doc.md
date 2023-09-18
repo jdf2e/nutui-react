@@ -51,9 +51,9 @@ import {
 } from "@nutui/nutui-react";
 
 const darkTheme = {
-  nutuiBrandColor: 'green',
-  nutuiBrandColorStart: 'green',
-  nutuiBrandColorEnd: 'green',
+  nutuiColorPrimary: 'green',
+  nutuiColorPrimaryStop1: 'green',
+  nutuiColorPrimaryStop2: 'green',
 }
 const App = () => {
   return (

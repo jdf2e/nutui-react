@@ -120,8 +120,9 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
           {!loading && icon ? icon : null}
           {children && (
             <div
-              className={`${icon || loading ? 'nut-button-text' : ''} 
-              ${rightIcon ? 'nut-button-text right' : ''}`}
+              className={`${icon || loading ? 'nut-button-text' : ''}${
+                rightIcon ? ' nut-button-text right' : ''
+              }`}
             >
               {children}
             </div>

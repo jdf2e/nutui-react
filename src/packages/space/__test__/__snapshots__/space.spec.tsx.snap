@@ -9,11 +9,11 @@ exports[`should match snapshot 1`] = `
       class="nut-space-item"
     >
       <button
-        class="nut-button nut-button--normal nut-button--round"
+        class="nut-button nut-button--default nut-button--normal nut-button--round"
         type="button"
       >
         <div
-          class="nut-button__warp"
+          class="nut-button-warp"
         >
           <div
             class=""
@@ -27,11 +27,11 @@ exports[`should match snapshot 1`] = `
       class="nut-space-item"
     >
       <button
-        class="nut-button nut-button--normal nut-button--round"
+        class="nut-button nut-button--default nut-button--normal nut-button--round"
         type="button"
       >
         <div
-          class="nut-button__warp"
+          class="nut-button-warp"
         >
           <div
             class=""
@@ -45,11 +45,11 @@ exports[`should match snapshot 1`] = `
       class="nut-space-item"
     >
       <button
-        class="nut-button nut-button--normal nut-button--round"
+        class="nut-button nut-button--default nut-button--normal nut-button--round"
         type="button"
       >
         <div
-          class="nut-button__warp"
+          class="nut-button-warp"
         >
           <div
             class=""

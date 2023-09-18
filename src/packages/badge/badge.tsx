@@ -68,9 +68,11 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     <div className={classes} style={style}>
       {isIcon() && <div className={`${classPrefix}__icon`}>{value}</div>}
       {children}
-      <div className={contentClasses} style={getStyle()}>
-        {content()}
-      </div>
+      {!isIcon() && (
+        <div className={contentClasses} style={getStyle()}>
+          {content()}
+        </div>
+      )}
     </div>
   )
 }
