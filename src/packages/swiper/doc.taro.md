@@ -380,7 +380,7 @@ export default App;
 | loop | 是否循环轮播 | `boolean` | `true` |
 | autoPlay | 自动轮播 | `boolean` | `false` |
 | defaultValue | 初始化索引值 | `number` | `0` |
-| onChange | 卡片切换后的回调 | `当前索引值index` | `-` |
+| onChange | 卡片切换后的回调 | `(current: number) => void` | `-` |
 
 > Swiper 是对 Taro Swiper 进行的封装，可以支持 Taro Swiper 属性的透传。具体支持属性可参考[https://taro-docs.jd.com/docs/components/viewContainer/swiper](https://taro-docs.jd.com/docs/components/viewContainer/swiper)
 
