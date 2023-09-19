@@ -252,6 +252,7 @@ const UploaderDemo = () => {
         <h2>{translated['84aa6bce']}</h2>
         <Cell style={{ flexWrap: 'wrap', paddingBottom: '0px' }}>
           <Uploader
+            previewType="list"
             url={uploadUrl}
             onStart={onStart}
             style={{ marginRight: '10px', marginBottom: '10px' }}
