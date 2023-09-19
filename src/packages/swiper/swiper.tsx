@@ -10,7 +10,7 @@ import React, {
 import classNames from 'classnames'
 import { DataContext } from './context'
 import { getRect } from '@/utils/use-client-rect'
-import Indicator from '@/packages/indicator'
+import Indicator from '@/packages/indicator/index'
 import { BasicComponent } from '@/utils/typings'
 
 export type SwiperRef = {
