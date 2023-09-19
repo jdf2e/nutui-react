@@ -80,7 +80,6 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     finalValue: undefined,
     onChange: (v) => {
       const [option] = options.filter((o: any) => o.value === v)
-      console.log(option)
       onChange?.(option)
     },
   })
