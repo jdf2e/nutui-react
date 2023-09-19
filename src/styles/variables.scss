@@ -518,26 +518,9 @@ $shortpassword-forget: var(
 ) !default;
 
 //numberkeyboard（✅）
-$numberkeyboard-width: var(--nutui-numberkeyboard-width, 100%) !default;
 $numberkeyboard-padding: var(
   --nutui-numberkeyboard-padding,
   0 0 22px 0
-) !default;
-$numberkeyboard-header-height: var(
-  --nutui-numberkeyboard-header-height,
-  34px
-) !default;
-$numberkeyboard-header-padding: var(
-  --nutui-numberkeyboard-header-padding,
-  6px 0 0 0
-) !default;
-$numberkeyboard-header-color: var(
-  --nutui-numberkeyboard-header-color,
-  #646566
-) !default;
-$numberkeyboard-header-font-size: var(
-  --nutui-numberkeyboard-header-font-size,
-  16px
 ) !default;
 $numberkeyboard-header-close-padding: var(
   --nutui-numberkeyboard-header-close-padding,
@@ -577,15 +560,15 @@ $numberkeyboard-key-border-radius: var(
 ) !default;
 $numberkeyboard-key-font-size: var(
   --nutui-numberkeyboard-key-font-size,
-  28px
+  $font-size-xl
 ) !default;
 $numberkeyboard-key-font-color: var(
   --nutui-numberkeyboard-key-font-color,
-  #333
+  $color-text
 ) !default;
 $numberkeyboard-key-confirm-font-size: var(
   --nutui-numberkeyboard-key-confirm-font-size,
-  16px
+  $font-size-large
 ) !default;
 $numberkeyboard-key-confirm-font-color: var(
   --nutui-numberkeyboard-key-confirm-font-color,

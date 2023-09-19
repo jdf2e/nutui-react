@@ -510,11 +510,11 @@ $actionsheet-item-danger: var(
 //shortpassword（✅）
 $shortpassword-background-color: var(
   --nutui-shortpassword-background-color,
-  rgba(245, 245, 245, 1)
+  $color-background
 ) !default;
 $shortpassword-border-color: var(
   --nutui-shortpassword-border-color,
-  #ddd
+  $color-border
 ) !default;
 $shortpassword-error: var(--nutui-shortpassword-error, $color-primary) !default;
 $shortpassword-forget: var(

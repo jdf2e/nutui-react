@@ -1,7 +1,7 @@
 @import '../popup/popup.scss';
 
 .nut-numberkeyboard {
-  width: $numberkeyboard-width;
+  width: 100%;
   padding: $numberkeyboard-padding;
   user-select: none;
   background-color: $color-background;
@@ -12,10 +12,9 @@
     align-items: center;
     justify-content: center;
     box-sizing: content-box;
-    height: $numberkeyboard-header-height;
-    padding: $numberkeyboard-header-padding;
-    color: $numberkeyboard-header-color;
-    font-size: $numberkeyboard-header-font-size;
+    padding: $popup-title-padding;
+    color: $color-title;
+    font-size: $popup-title-font-size;
 
     &__title {
       color: $color-title;
@@ -63,6 +62,7 @@
         background-color: $numberkeyboard-key-background-color;
         color: $numberkeyboard-key-font-color;
         border-radius: $numberkeyboard-key-border-radius;
+        font-weight: $font-weight-bold;
         cursor: pointer;
 
         &.active {
