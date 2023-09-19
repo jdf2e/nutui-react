@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import Badge from '../badge'
+import Badge from '@/packages/badge/index'
 
 export interface TabbarItemProps extends BasicComponent {
   title: ReactNode
