@@ -110,7 +110,6 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     parent.toggleMenuItem(index)
     setTitle(item.text)
     setValue(item.value)
-    // onChange && onChange(item)
   }
 
   const isShow = () => {

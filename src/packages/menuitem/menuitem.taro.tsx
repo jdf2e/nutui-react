@@ -125,7 +125,6 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     parent.toggleMenuItem(index)
     setTitle(item.text)
     setValue(item.value)
-    onChange && onChange(item)
   }
   const [position, setPosition] = useState<{ top: number; height: number }>({
     top: 0,
