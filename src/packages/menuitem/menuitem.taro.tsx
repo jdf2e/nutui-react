@@ -15,6 +15,7 @@ import { Check } from '@nutui/icons-react-taro'
 import { Overlay } from '@/packages/overlay/overlay.taro'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { usePropsValue } from '@/utils/use-props-value'
 
 export interface OptionItem {
   text: string
@@ -32,6 +33,7 @@ export interface MenuItemProps extends BasicComponent {
   activeTitleClass: string
   inactiveTitleClass: string
   value: string | number
+  defaultValue: string | number
   onChange: (event: any) => void
   children: React.ReactNode
 }
@@ -41,7 +43,7 @@ const defaultProps = {
   columns: 1,
   direction: 'down',
   icon: null,
-  closeOnClickAway: false,
+  closeOnClickAway: true,
   activeTitleClass: '',
   inactiveTitleClass: '',
   onChange: (value: OptionItem) => undefined,
@@ -52,6 +54,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     style,
     options,
     value,
+    defaultValue,
     columns,
     title,
     icon,
@@ -71,7 +74,15 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   } as any
 
   const [showPopup, setShowPopup] = useState(show)
-  const [innerValue, setValue] = useState(value)
+  const [innerValue, setValue] = usePropsValue({
+    defaultValue,
+    value,
+    finalValue: undefined,
+    onChange: (v) => {
+      const [option] = options.filter((o: any) => o.value === v)
+      onChange?.(option)
+    },
+  })
   useEffect(() => {
     setShowPopup(show)
   }, [show])
@@ -114,7 +125,6 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     parent.toggleMenuItem(index)
     setTitle(item.text)
     setValue(item.value)
-    onChange && onChange(item)
   }
   const [position, setPosition] = useState<{ top: number; height: number }>({
     top: 0,
@@ -174,17 +184,18 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
           onClick={() => parent.toggleMenuItem(index)}
         />
       ) : null}
-
-      <Overlay
-        className="nut-menu__overlay"
-        style={getPosition()}
-        lockScroll={parent.lockScroll}
-        visible={showPopup}
-        closeOnOverlayClick={parent.closeOnOverlayClick}
-        onClick={() => {
-          parent.closeOnOverlayClick && parent.toggleMenuItem(index)
-        }}
-      />
+      {parent.overlay ? (
+        <Overlay
+          className="nut-menu__overlay"
+          style={getPosition()}
+          lockScroll={parent.lockScroll}
+          visible={showPopup}
+          closeOnOverlayClick={parent.closeOnOverlayClick}
+          onClick={() => {
+            parent.closeOnOverlayClick && parent.toggleMenuItem(index)
+          }}
+        />
+      ) : null}
       <View
         className={classNames(className, {
           'nut-menu-item__wrap': direction === 'down',
