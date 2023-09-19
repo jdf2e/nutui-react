@@ -86,8 +86,8 @@ export const Empty: FunctionComponent<
   }, [imageSize])
   return (
     <div
-      className={`${classPrefix} ${className} ${
-        size === 'base' ? '' : `${classPrefix}-${size}`
+      className={`${classPrefix} ${className}${
+        size === 'base' ? '' : ` ${classPrefix}-${size}`
       }`}
       {...rest}
     >
@@ -104,30 +104,32 @@ export const Empty: FunctionComponent<
       ) : (
         description
       )}
-      <div className={`${classPrefix}-actions`}>
-        {actions.map((item, index) => {
-          return (
-            <Button
-              className={`${
-                // eslint-disable-next-line no-nested-ternary
-                actions.length > 1
-                  ? index === 0
-                    ? `${classPrefix}-actions-left`
-                    : `${classPrefix}-actions-right`
-                  : ''
-              }`}
-              type={`${
-                actions.length > 1 && index === 0 ? 'default' : 'primary'
-              }`}
-              size="small"
-              fill="outline"
-              key={`action-${index}`}
-            >
-              {item?.text}
-            </Button>
-          )
-        })}
-      </div>
+      {actions.length > 0 && (
+        <div className={`${classPrefix}-actions`}>
+          {actions.map((item, index) => {
+            return (
+              <Button
+                className={`${
+                  // eslint-disable-next-line no-nested-ternary
+                  actions.length > 1
+                    ? index === 0
+                      ? `${classPrefix}-actions-left`
+                      : `${classPrefix}-actions-right`
+                    : ''
+                }`}
+                type={`${
+                  actions.length > 1 && index === 0 ? 'default' : 'primary'
+                }`}
+                size="small"
+                fill="outline"
+                key={`action-${index}`}
+              >
+                {item?.text}
+              </Button>
+            )
+          })}
+        </div>
+      )}
       {children}
     </div>
   )

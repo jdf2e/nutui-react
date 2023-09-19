@@ -7,7 +7,7 @@ exports[`Cascader change tab 1`] = `
     style="--nutui-overlay-zIndex: 1000;"
   />
   <div
-    class="round nut-popup nut-popup-bottom "
+    class="nut-popup-round nut-popup nut-popup-bottom "
     style="z-index: 1000;"
   >
     <div
@@ -90,7 +90,7 @@ exports[`Cascader change tab 2`] = `
     style="--nutui-overlay-zIndex: 1000;"
   />
   <div
-    class="round nut-popup nut-popup-bottom "
+    class="nut-popup-round nut-popup nut-popup-bottom "
     style="z-index: 1000;"
   >
     <div
@@ -181,7 +181,7 @@ exports[`Cascader visible true 1`] = `
     style="--nutui-overlay-zIndex: 1000;"
   />
   <div
-    class="round nut-popup nut-popup-bottom "
+    class="nut-popup-round nut-popup nut-popup-bottom "
     style="z-index: 1000;"
   >
     <div

@@ -50,7 +50,7 @@ const App = () => {
   return (
     <>
       <Button fill="solid">Solid</Button>
-      <Button fill="outline">Outline</Button>
+      <Button type="primary" fill="outline">Outline</Button>
       <Button fill="none">None</Button>
     </>
   );

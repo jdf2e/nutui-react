@@ -56,7 +56,7 @@ const App = () => {
            onClose={() => alert('Tag closed')}
            type='primary'>Label</Tag>
       <Tag closeable
-           closeIcon={<CircleClose width={12} height={12} />}
+           closeIcon={<CircleClose width={8} height={8} />}
            onClose={() => alert('Tag closed')}
            type='primary'>Label</Tag>
     </>
@@ -162,16 +162,17 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default | 
 | --- | --- | --- | 
-| \--nutui-tag-padding | padding | `0 4px`| 
-| \--nutui-tag-font-size | font size | `12px` | 
-| \--nutui-tag-border-radius | border radius | `4px` | 
-| \--nutui-tag-height | height | `auto` | 
+| \--nutui-tag-padding | padding | `0 2px`| 
+| \--nutui-tag-font-size | font size | `10px` | 
+| \--nutui-tag-border-radius | border radius | `2px` | 
+| \--nutui-tag-height | height | `14px` | 
 | \--nutui-tag-color | color | `#ffffff` | 
 | \--nutui-tag-border-width | border width | `1px` | 
-| \--nutui-tag-background-color | background color | `#000000` | 
-| \--nutui-tag-primary-background-color |primary background color | `#3460fa` | 
+| \--nutui-tag-background-color | background color | `$color-title` | 
+| \--nutui-tag-primary-background-color |primary background color | `$color-primary-gradient-1` | 
 | \--nutui-tag-success-background-color | success background color | `#4fc08d` | 
-| \--nutui-tag-info-background-color | 信息背景色 | `$brand-info-color` |
+| \--nutui-tag-info-background-color | info background color | `$brand-info-color` |
 | \--nutui-tag-warning-background-color | warn background color | `#f3812e` | 
+| \--nutui-tag-danger-background-color | danger background color | `$color-primary` |
 | \--nutui-tag-round-border-radius | round border radius | `8px` | 
-| \--nutui-tag-mark-border-radius | mark border radius | `0 12px 12px 0` |
+| \--nutui-tag-mark-border-radius | mark border radius | `0 8px 8px 0` |

@@ -16,9 +16,9 @@
 
   @mixin plain {
     &.nut-tag--plain {
-      color: $tag-background-color;
+      color: $color-title;
       background-color: #fff;
-      border: $tag-border-width solid $tag-background-color;
+      border: $tag-border-width solid $color-title;
     }
   }
 

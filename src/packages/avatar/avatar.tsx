@@ -81,7 +81,7 @@ export const Avatar: FunctionComponent<
     width: sizeValue.indexOf(size) > -1 ? '' : `${size}px`,
     height: sizeValue.indexOf(size) > -1 ? '' : `${size}px`,
     backgroundColor: `${background}`,
-    color: `${color}`,
+    color,
     marginLeft:
       avatarIndex !== 1 && parent?.propAvatarGroup?.gap
         ? `${parent?.propAvatarGroup?.gap}px`

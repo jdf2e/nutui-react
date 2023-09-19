@@ -51,9 +51,8 @@ test('should render left icon when left', async () => {
 
 test('should render sync text color when sync is true', async () => {
   const { container } = render(<TrendArrow value={12.325} sync />)
-  expect(container.querySelector('.nut-trendarrow__value')).toHaveAttribute(
-    'style',
-    'color: rgb(250, 44, 25);'
+  expect(container.querySelector('.nut-trendarrow__value')).toHaveStyle(
+    `color: var(--nutui-brand-6)`
   )
 })
 
@@ -63,7 +62,7 @@ test('should render sync text color when color is true', async () => {
   )
   expect(container.querySelector('.nut-trendarrow__value')).toHaveAttribute(
     'style',
-    'color: rgb(39, 197, 48);'
+    `color: rgb(39, 197, 48);`
   )
 })
 

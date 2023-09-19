@@ -293,7 +293,7 @@ import { People } from '@nutui/icons-react';
 
 const customTheme3 = {
   nutuiStepsDotHeadMargin: '0 0 12px 0',
-  nutuiBrandColorEnd: '#fff',
+  nutuiColorPrimaryStop2: '#fff',
   nutuiStepsDotIconBorder: '0',
   nutuiStepsBaseIconWidth: '6px',
   nutuiStepsBaseIconHeight: '6px',
