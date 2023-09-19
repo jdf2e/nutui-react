@@ -342,6 +342,7 @@ export default App
 | options | Options | `Array` | `-` |
 | disabled | Whether to disable dropdown item | `boolean` | `false` |
 | columns | Display how many options in one line | `number` | `1` |
+| closeOnClickAway | Click on the blank space to close the menu | `boolean` | `true` |
 | icon | Custome option icon | `React.ReactNode` | `Check` |
 | direction | Expand direction, can be set to up | `string` | `down` |
 | onChange | Emitted select option changed | `(event: any) => void` | `-` |

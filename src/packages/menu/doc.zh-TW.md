@@ -331,6 +331,7 @@ export default App
 | options | 選項數組 | `array` | `-` |
 | disabled | 是否禁用菜單 | `boolean` | `false` |
 | columns | 可以設置一行展示多少列 options | `number` | `1` |
+| closeOnClickAway | 点击空白处关闭菜单 | `boolean` | `true` |
 | icon | 自定義選項圖標 | `React.ReactNode` | `Check` |
 | direction | 菜單展開方嚮，可選值為up | `string` | `down` |
 | onChange | 選擇 option 之後觸發 | `(event: any) => void` | `-` |
