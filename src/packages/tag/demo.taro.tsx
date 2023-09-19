@@ -86,7 +86,7 @@ const TagDemo = () => {
             extra={
               <Tag
                 closeable
-                closeIcon={<CircleClose width={12} height={12} />}
+                closeIcon={<CircleClose width={8} height={8} />}
                 onClose={() => Taro.showToast({ title: 'Tag closed' })}
                 type="primary"
               >

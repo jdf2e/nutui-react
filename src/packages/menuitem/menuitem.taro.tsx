@@ -94,7 +94,9 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   usePageScroll(updateItemOffset)
 
   useImperativeHandle<any, any>(ref, () => ({
-    toggle: parent.toggleMenuItem,
+    toggle: (s: boolean) => {
+      s ? parent.toggleMenuItem(index) : parent.hideMenuItem(index)
+    },
   }))
 
   const getIconCName = (optionVal: string | number, value: string | number) => {

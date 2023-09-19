@@ -42,28 +42,20 @@
 }
 
 .nut-notify {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   box-sizing: border-box;
   padding: $notify-padding;
   color: $notify-text-color;
   font-size: $notify-font-size;
   white-space: pre-wrap;
-  text-align: center;
   word-wrap: break-word;
   height: $notify-height;
-  line-height: $notify-line-height;
-  &--popup-top {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    overflow-y: auto;
-    transition: transform 0.3s;
-    z-index: 9999;
-  }
-
+  &--popup-top,
   &--popup-bottom {
     position: fixed;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 100%;
     overflow-y: auto;

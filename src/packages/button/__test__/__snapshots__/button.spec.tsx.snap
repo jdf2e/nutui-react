@@ -8,7 +8,7 @@ exports[`should match snapshot 1`] = `
     type="button"
   >
     <div
-      class="nut-button__warp"
+      class="nut-button-warp"
     >
       <div
         class=""

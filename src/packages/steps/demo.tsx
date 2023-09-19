@@ -56,7 +56,7 @@ const customTheme2 = {
 
 const customTheme3 = {
   nutuiStepsDotHeadMargin: '0 0 12px 0',
-  nutuiBrandColorEnd: 'var(--nutui-gray-1)',
+  nutuiColorPrimaryStop2: 'var(--nutui-gray-1)',
   nutuiStepsDotIconBorder: '0',
   nutuiStepsBaseIconWidth: '6px',
   nutuiStepsBaseIconHeight: '6px',

@@ -60,7 +60,7 @@ const defaultProps = {
 } as PopupProps
 
 // 默认1000，参看variables
-let _zIndex = 1000
+let _zIndex = 1100
 
 export const Popup: FunctionComponent<
   Partial<PopupProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>

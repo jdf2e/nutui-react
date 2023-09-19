@@ -7,7 +7,7 @@ exports[`should match snapshot 1`] = `
   >
     <svg
       aria-labelledby="Checked"
-      class="nut-checkbox-icon-checked nut-icon nut-icon-Checked"
+      class="nut-checkbox-icon nut-checkbox-icon-checked nut-icon nut-icon-Checked"
       role="presentation"
       viewBox="0 0 1024 1024"
       xmlns="http://www.w3.org/2000/svg"

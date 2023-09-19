@@ -25,8 +25,8 @@ const App = () => {
   return (
     <>
       <Tag type="primary">標簽</Tag>
-      <Tag type="success">標簽</Tag>
       <Tag type="info">標簽</Tag>
+      <Tag type="success">標簽</Tag>
       <Tag type="danger">標簽</Tag>
       <Tag type="warning">標簽</Tag>
     </>
@@ -37,82 +37,32 @@ export default App;
 
 :::
 
-### 空心樣式
+### 樣式風格
 
 :::demo
 
 ```tsx
-import React from "react";
-import { Tag } from '@nutui/nutui-react';
+import React from 'react'
+import { CircleClose } from '@nutui/icons-react'
+import { Tag } from '@nutui/nutui-react'
 
 const App = () => {
   return (
     <>
       <Tag plain>標簽</Tag>
+      <Tag round type='primary'>標簽</Tag>
+      <Tag mark type='primary'>標簽</Tag>
+      <Tag closeable
+           onClose={() => alert('Tag closed')} 
+           type='primary'>標簽</Tag>
+      <Tag closeable
+           closeIcon={<CircleClose width={8} height={8} />}
+           onClose={() => alert('Tag closed')}
+           type='primary'>標簽</Tag>
     </>
   )
 }
-export default App;
-```
-
-:::
-
-### 圓角樣式
-
-:::demo
-
-```tsx
-import React from "react";
-import { Tag } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Tag round type="primary">標簽</Tag>
-    </>
-  )
-}
-export default App;
-```
-
-:::
-
-### 標記樣式
-
-:::demo
-
-```tsx
-import React from "react";
-import { Tag } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Tag mark type="primary">標簽</Tag>
-    </>
-  )
-}
-export default App;
-```
-
-:::
-
-### 可關閉標簽
-
-:::demo
-
-```tsx
-import React from "react";
-import { Tag } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Tag  closeable onClose={()=>alert('Tag closed')}  type="primary">標簽</Tag>
-    </>
-  )
-}
-export default App;
+export default App
 ```
 
 :::
@@ -139,52 +89,6 @@ export default App;
 
 :::
 
-### 點擊事件
-
-:::demo
-
-```tsx
-import React from "react";
-import { Tag } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Tag type='primary' onClick={()=>alert('Tag clicked')}>標簽</Tag>
-    </>
-  )
-}
-export default App;
-```
-
-:::
-
-### 展示控制
-
-:::demo
-
-```tsx
-import React, {useState} from "react";
-import { Tag,Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const  [isShow,setIsShow] = useState(true) // 是否展示Tag組件
-  return (
-    <>
-    {
-      isShow? (
-        <Tag type='primary' onClick={()=>alert('Tag clicked')}>標簽</Tag>
-      ):null
-    }  
-    <Button type='default' size="small" onClick={()=>{setIsShow(false)}} >點擊刪除Tag</Button>
-    </>
-  )
-  
-}
-export default App;
-```
-
-:::
 
 ## Tag
 
@@ -200,7 +104,7 @@ export default App;
 | mark | 是否為標記樣式 | `boolean` | `false` |
 | closeable | 是否為可關閉標簽 | `boolean` | `false` |
 | closeIcon | 關閉按鈕 | `ReactNode` | `null` |
-| onClick | 點擊事件 | `(e: MouseEvent) => void` | `-` |
+| onClick | 點擊事件 | `(e: MouseEvent<HTMLDivElement>) => void` | `-` |
 | onClose | 關閉事件 | `(e?: any) => void` | `-` |
 
 ## 主題定制
@@ -211,16 +115,17 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-tag-padding | padding 值 | `0 4px` |
-| \--nutui-tag-font-size | 字號 | `12px` |
-| \--nutui-tag-border-radius | 圓角 | `4px` |
-| \--nutui-tag-height | 高度 | `auto` |
+| \--nutui-tag-padding | padding 值 | `0 2px` |
+| \--nutui-tag-font-size | 字號 | `10px` |
+| \--nutui-tag-border-radius | 圓角 | `2px` |
+| \--nutui-tag-height | 高度 | `14px` |
 | \--nutui-tag-color | 字色 | `#ffffff` |
 | \--nutui-tag-border-width | 邊寬 | `1px` |
-| \--nutui-tag-background-color | 背景色 | `#000000` |
-| \--nutui-tag-primary-background-color | 主色背景色 | `#3460fa` |
+| \--nutui-tag-background-color | 背景色 | `$color-title` |
+| \--nutui-tag-primary-background-color | 主色背景色 | `$color-primary-gradient-1` |
 | \--nutui-tag-success-background-color | 成功背景色 | `#4fc08d` |
 | \--nutui-tag-info-background-color | 信息背景色 | `$brand-info-color` |
 | \--nutui-tag-warning-background-color | 警告背景色 | `#f3812e` |
+| \--nutui-tag-danger-background-color | 危險背景色 | `$color-primary` |
 | \--nutui-tag-round-border-radius | round模式下的圓角 | `8px` |
-| \--nutui-tag-mark-border-radius | mark模式下的圓角 | `0 12px 12px 0` |
+| \--nutui-tag-mark-border-radius | mark模式下的圓角 | `0 8px 8px 0` |

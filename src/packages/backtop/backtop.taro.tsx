@@ -15,7 +15,7 @@ export interface BackTopProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   threshold: 200,
-  zIndex: 10,
+  zIndex: 900,
   duration: 1000,
 } as BackTopProps
 

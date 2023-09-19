@@ -1,7 +1,7 @@
 export type NutCSSVariables =
-  | 'nutuiBrandColor'
-  | 'nutuiBrandColorStart'
-  | 'nutuiBrandColorEnd'
+  | 'nutuiColorPrimary'
+  | 'nutuiColorPrimaryStop1'
+  | 'nutuiColorPrimaryStop2'
   | 'nutuiBrandLinkColor'
   | 'nutuiBrandTextColor'
   | 'nutuiBrandInfoColor'

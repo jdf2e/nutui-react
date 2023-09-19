@@ -34,7 +34,12 @@ const App = () => {
   return (
     <>
       <div className="demo full">
-        <Menu>
+        <Menu
+          closeOnOverlayClick
+          lockScroll={false}
+          onClose={(i: number) => console.log('onClose', i)}
+          onOpen={(i: number) => console.log('onOpen', i)}
+        >
           <Menu.Item options={options} value={0} />
           <Menu.Item options={options1} value="a" />
         </Menu>
@@ -288,12 +293,14 @@ export default App
 | lockScroll | Whether the background is locked | `boolean` | `true` |
 | scrollFixed | Whether to fixed when window is scrolled, fixed position can be set | `boolean` \| `string` \| `number` | `true` |
 | icon | Custome title icon | `React.ReactNode` | `-` |
+| onOpen | menu 展开触发 | `(index: number) => void` | `-` |
+| onClose | menu 关闭触发 | `(index: number) => void` | `-` |
 
 ## Menu.Item
 
 ### Props
 
-| 属性 | 说明 | 类型 | 默认值 |
+| Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | title | Item title | `string` | `Current selected value` |
 | options | Options | `Array` | `-` |
@@ -302,10 +309,12 @@ export default App
 | icon | Custome option icon | `React.ReactNode` | `Check` |
 | direction | Expand direction, can be set to up | `string` | `down` |
 | onChange | Emitted select option changed | `(event: any) => void` | `-` |
+| onOpen | menu expand trigger | `(index: number) => void` | `-` |
+| onClose | menu close trigger | `(index: number) => void` | `-` |
 
 ### Ref
 
-| Event | Description | Arguments |
+| Property | Description | Parameters |
 | --- | --- | --- |
 | toggle | Toggle menu display status, true to show，false to hide, no param is negated | `show?: boolean` |
 
