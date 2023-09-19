@@ -353,8 +353,6 @@ export const Swiper = React.forwardRef<
   }
 
   const onTouchStart = (e: TouchEvent) => {
-    if (props.preventDefault) e.preventDefault()
-    if (props.stopPropagation) e.stopPropagation()
     if (!props.touchable) return
     touchStart(e)
     touch.touchTime = Date.now()
@@ -363,6 +361,8 @@ export const Swiper = React.forwardRef<
   }
 
   const onTouchMove = (e: TouchEvent) => {
+    if (props.preventDefault) e.preventDefault()
+    if (props.stopPropagation) e.stopPropagation()
     if (props.touchable && swiperRef.current.moving) {
       handleTouchMove(e)
       if (touch.stateDirection === props.direction) {
