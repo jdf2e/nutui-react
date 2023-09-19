@@ -52,7 +52,7 @@ class FormStore {
   /**
    * 获取全部字段
    */
-  getFieldsValue = (name: NamePath[] | boolean): { [key: NamePath]: any } => {
+  getFieldsValue = (name: NamePath[] | true): { [key: NamePath]: any } => {
     if (typeof name === 'boolean') {
       return JSON.parse(JSON.stringify(this.store))
     }
