@@ -254,7 +254,12 @@ const UploaderDemo = () => {
           <Uploader
             url={uploadUrl}
             onStart={onStart}
-            style={{ marginRight: '10px', marginBottom: '10px' }}
+            style={{
+              marginRight: '10px',
+              marginBottom: '10px',
+              '--nutui-uploader-picture-border': '1px solid red',
+              '--nutui-uploader-picture-border-radius': '16px',
+            }}
           />
           <Uploader
             url={uploadUrl}
