@@ -1425,7 +1425,7 @@ $menu-bar-border-bottom-color: var(
 $menu-bar-opened-z-index: var(--nutui-menu-bar-opened-z-index, 2001) !default;
 $menu-item-disabled-color: var(
   --nutui-menu-item-disabled-color,
-  #969799
+  $color-text-disable
 ) !default;
 $menu-title-text-padding-left: var(
   --nutui-menu-title-text-padding-left,
@@ -2043,7 +2043,7 @@ $trendarrow-icon-margin: var(--nutui-trendarrow-icon-margin, 4px) !default;
 $space-gap: var(--nutui-space-gap, 8px) !default;
 
 // loading
-$loading-icon-color: var(--nutui-loading-icon-color, #9ea9af) !default;
-$loading-icon-size: var(--nutui-loading-icon-size, 32px) !default;
-$loading-text-color: var(--nutui-loading-text-color, #9ea9af) !default;
-$loading-text-size: var(--nutui-loading-text-size, 14px) !default;
+$loading-icon-color: var(--nutui-loading-icon-color, $color-text-help) !default;
+$loading-icon-size: var(--nutui-loading-icon-size, $font-size-small) !default;
+$loading-color: var(--nutui-loading-color, $color-text-help) !default;
+$loading-font-size: var(--nutui-loading-font-size, $font-size-small) !default;

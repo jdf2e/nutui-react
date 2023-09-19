@@ -2189,3 +2189,9 @@ $col-default-margin-bottom: var(
 // TrendArrow
 $trendarrow-font-size: var(--nutui-trendarrow-font-size, 14px) !default;
 $trendarrow-icon-margin: var(--nutui-trendarrow-icon-margin, 4px) !default;
+
+// loading
+$loading-icon-color: var(--nutui-loading-icon-color, $color-text-help) !default;
+$loading-icon-size: var(--nutui-loading-icon-size, $font-size-small) !default;
+$loading-color: var(--nutui-loading-color, $color-text-help) !default;
+$loading-font-size: var(--nutui-loading-font-size, $font-size-small) !default;

@@ -275,16 +275,16 @@ export default App;
 | onClear | Triggered when the clear button is clicked | `(value: string) => void` | `-` |
 | onClick | Triggered when the input container is clicked | `(value: MouseEvent<HTMLDivElement>) => void` | `-` |
 
-## 主题定制
+## Theming
 
-### 样式变量
+### CSS Variables
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| 名称 | 说明 | 默认值 |
+| Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-input-border-bottom | 边框颜色 | `#eaf0fb` |
-| \--nutui-input-border-bottom-width | 边框宽度 | `0px` |
-| \--nutui-input-disabled-color | 禁用的文本颜色 | `#c8c9cc` |
-| \--nutui-input-font-size | 文本字号 | `$font-size` |
-| \--nutui-input-padding | 输入框容器的内边距 | `10px 25px` |
+| \--nutui-input-border-bottom | border color | `#eaf0fb` |
+| \--nutui-input-border-bottom-width | border width | `0px` |
+| \--nutui-input-disabled-color | disable color | `#c8c9cc` |
+| \--nutui-input-font-size | font size  | `$font-size` |
+| \--nutui-input-padding | input padding | `10px 25px` |
