@@ -1403,7 +1403,7 @@ $menu-item-active-text-color: var(
 ) !default;
 $menu-bar-border-bottom-color: var(
   --nutui-menu-bar-border-bottom-color,
-  #eaf0fb
+  $color-border
 ) !default;
 $menu-bar-opened-z-index: var(--nutui-menu-bar-opened-z-index, 2001) !default;
 $menu-item-disabled-color: var(
@@ -1579,7 +1579,6 @@ $empty-description-line-height: var(
 
 // cascader（✅）
 $cascader-font-size: var(--nutui-cascader-font-size, $font-size) !default;
-$cascader-line-height: var(--nutui-cascader-line-height, 22px) !default;
 $cascader-pane-height: var(--nutui-cascader-pane-height, 342px) !default;
 $cascader-pane-paddingTop: var(--nutui-cascader-pane-paddingTop, 10px) !default;
 $cascader-icon-checklist-marginLeft: var(
