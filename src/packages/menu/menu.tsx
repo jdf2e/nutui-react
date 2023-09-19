@@ -137,7 +137,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
             key={index}
             onClick={(e) => {
               e.stopPropagation()
-              if (!options || !options.length) return
+              if ((!options || !options.length) && !child.props.children) return
               !disabled && toggleMenuItem(index)
             }}
           >
