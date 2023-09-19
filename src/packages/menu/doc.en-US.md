@@ -35,8 +35,6 @@ const App = () => {
     <>
       <div className="demo full">
         <Menu
-          closeOnOverlayClick
-          lockScroll={false}
           onClose={(i: number) => console.log('onClose', i)}
           onOpen={(i: number) => console.log('onOpen', i)}
         >

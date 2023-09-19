@@ -43,7 +43,7 @@ const defaultProps = {
   columns: 1,
   direction: 'down',
   icon: null,
-  closeOnClickAway: false,
+  closeOnClickAway: true,
   activeTitleClass: '',
   inactiveTitleClass: '',
   onChange: (value: OptionItem) => undefined,

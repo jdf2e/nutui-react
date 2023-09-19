@@ -111,27 +111,23 @@ const MenuDemo = () => {
       <div className="demo full">
         <h2>{translated.basic}</h2>
         <Menu
-          closeOnOverlayClick
-          lockScroll={false}
           onClose={(i: number) => console.log('onClose', i)}
           onOpen={(i: number) => console.log('onOpen', i)}
         >
           <Menu.Item
             options={options}
             defaultValue={0}
-            closeOnClickAway
             onChange={(val) => {
               console.log(val)
             }}
           />
-          <Menu.Item options={options1} defaultValue="a" closeOnClickAway />
+          <Menu.Item options={options1} defaultValue="a" />
         </Menu>
         <h2>{translated.controlled}</h2>
-        <Menu closeOnOverlayClick lockScroll={false}>
+        <Menu>
           <Menu.Item
             options={options}
             value={stateOne}
-            closeOnClickAway
             onChange={(val) => {
               setStateOne(val.value)
             }}
@@ -139,7 +135,6 @@ const MenuDemo = () => {
           <Menu.Item
             options={options1}
             value={stateTwo}
-            closeOnClickAway
             onChange={(val) => {
               setStateTwo(val.value)
             }}
