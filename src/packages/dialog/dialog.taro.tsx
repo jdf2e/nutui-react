@@ -147,6 +147,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
             closeOnOverlayClick={closeOnOverlayClick}
             lockScroll={lockScroll}
             onClick={onHandleClickOverlay}
+            className={classNames('nut-dialog-overlay')}
           />
         ) : null}
 

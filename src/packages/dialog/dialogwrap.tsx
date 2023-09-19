@@ -1,5 +1,6 @@
 import React, { FunctionComponent, HTMLAttributes } from 'react'
 import { CSSTransition } from 'react-transition-group'
+import classNames from 'classnames'
 import { Content } from './content'
 import { OverlayProps, defaultOverlayProps } from '@/packages/overlay/overlay'
 import { ComponentDefaults } from '@/utils/typings'
@@ -55,7 +56,7 @@ export const DialogWrap: FunctionComponent<
       {overlay ? (
         <Overlay
           style={overlayStyle}
-          className={overlayClassName}
+          className={classNames('nut-dialog-overlay', overlayClassName)}
           visible={visible}
           closeOnOverlayClick={closeOnOverlayClick}
           lockScroll={lockScroll}
