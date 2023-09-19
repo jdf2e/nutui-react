@@ -24,7 +24,7 @@ const defaultProps = {
   ...ComponentDefaults,
   position: 'top',
   threshold: 0,
-  zIndex: 2000,
+  zIndex: 900,
 } as StickyProps
 
 const classPrefix = 'nut-sticky'

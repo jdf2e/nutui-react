@@ -4,18 +4,17 @@ import { nav } from '@/config.json'
 import { version } from '/package.json'
 import config from '@/sites/config/env'
 import './header.scss'
-import { useHistory, useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import '@/packages/popover/popover.scss'
-import Popover from '@/packages/popover'
 
 const Header = () => {
-  const history = useHistory()
+  const navigate = useNavigate()
   const location = useLocation()
 
   const [currLang, setCurrLang] = useState({})
 
   const toHome = () => {
-    history.replace('/')
+    navigate(`/`);
   }
 
   useEffect(() => {
@@ -71,13 +70,6 @@ const Header = () => {
           https//github.com/jdf2e/nutui-docs
         </a>
       </div>
-      {/*<div className={'switch'}>*/}
-      {/*  <div className={'switch-content'}>*/}
-      {/*    <Popover visible={visible} theme={'dark'} onClick={handleSwitchLocale} list={langs}>*/}
-      {/*      <span className={'curr-lang'}>{currLang ? currLang['name'] : '中文'}</span>*/}
-      {/*    </Popover>*/}
-      {/*  </div>*/}
-      {/*</div>*/}
     </div>
   )
 }

@@ -11,8 +11,8 @@ export interface MenuProps extends BasicComponent {
   lockScroll: boolean
   icon: React.ReactNode
   children: React.ReactNode
-  onOpen: () => void
-  onClose: () => void
+  onOpen: (index: number) => void
+  onClose: (index: number) => void
 }
 
 const defaultProps = {
@@ -22,8 +22,8 @@ const defaultProps = {
   scrollFixed: false,
   lockScroll: true,
   icon: null,
-  onOpen: () => {},
-  onClose: () => {},
+  onOpen: (index: number) => {},
+  onClose: (index: number) => {},
 } as MenuProps
 export const Menu: FunctionComponent<Partial<MenuProps>> & {
   Item: typeof MenuItem
@@ -70,9 +70,9 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
   const toggleMenuItem = (index: number) => {
     showMenuItem[index] = !showMenuItem[index]
     if (showMenuItem[index]) {
-      onOpen && onOpen()
+      onOpen && onOpen(index)
     } else {
-      onClose && onClose()
+      onClose && onClose(index)
     }
     const temp = showMenuItem.map((i: boolean, idx) =>
       idx === index ? i : false
@@ -82,7 +82,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
   const hideMenuItem = (index: number) => {
     showMenuItem[index] = false
     setShowMenuItem([...showMenuItem])
-    onClose && onClose()
+    onClose && onClose(index)
   }
   const updateTitle = (text: string, index: number) => {
     menuItemTitle[index] = text
