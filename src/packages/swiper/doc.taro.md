@@ -20,24 +20,25 @@ import { Swiper } from '@nutui/nutui-react-taro';
 import React, { useState } from 'react'
 import { Swiper } from '@nutui/nutui-react-taro';
 
+const list = [
+  'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+  'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+  'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+]
 const App = () => {
   return (
     <Swiper
       defaultValue={0}
       indicator
     >
-      <Swiper.Item >
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-      </Swiper.Item>
-      <Swiper.Item >
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-      </Swiper.Item>
-      <Swiper.Item >
-        <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-      </Swiper.Item>
-      <Swiper.Item >
-        <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-      </Swiper.Item>
+      {list.map((item, index) => {
+        return (
+          <Swiper.Item key={item}>
+            <img src={item} onClick={() => console.log(index)} alt="" />
+          </Swiper.Item>
+        )
+      })}
     </Swiper>
   )
 }

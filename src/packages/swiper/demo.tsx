@@ -101,10 +101,10 @@ const SwiperDemo = () => {
           onChange={onChange}
           indicator
         >
-          {list.map((item) => {
+          {list.map((item, index) => {
             return (
               <Swiper.Item key={item}>
-                <img src={item} alt="" />
+                <img src={item} onClick={() => console.log(index)} alt="" />
               </Swiper.Item>
             )
           })}
