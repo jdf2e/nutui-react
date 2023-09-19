@@ -16,10 +16,10 @@
     align-items: center;
     justify-content: center;
     background: $uploader-background;
-    width: $uploader-picture-width;
-    height: $uploader-picture-height;
-    border: $uploader-picture-border;
-    border-radius: $uploader-picture-border-radius;
+    width: $uploader-image-width;
+    height: $uploader-image-height;
+    border: $uploader-image-border;
+    border-radius: $uploader-image-border-radius;
   }
 
   &__icon {
@@ -27,16 +27,16 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: $uploader-picture-color;
+    color: $uploader-image-color;
 
     i,
     .nut-icon {
-      color: $uploader-picture-color;
-      margin-bottom: $uploader-picture-icon-margin-bottom;
+      color: $uploader-image-color;
+      margin-bottom: $uploader-image-icon-margin-bottom;
     }
 
     &-tip {
-      font-size: $uploader-picture-icon-tip-font-size;
+      font-size: $uploader-image-icon-tip-font-size;
     }
   }
 
@@ -57,13 +57,13 @@
 
   &__upload-disabled {
     background: $uploader-background-disabled;
-    color: $uploader-picture-disabled;
+    color: $uploader-image-disabled;
 
     .nut-uploader__icon {
       i,
       .nut-icon {
-        color: $uploader-picture-disabled;
-        margin-bottom: $uploader-picture-icon-margin-bottom;
+        color: $uploader-image-disabled;
+        margin-bottom: $uploader-image-icon-margin-bottom;
       }
     }
   }
@@ -85,10 +85,10 @@
       width: 100%;
       height: 100%;
       background: $uploader-preview-progress-background;
-      border-radius: $uploader-picture-border-radius;
+      border-radius: $uploader-image-border-radius;
 
       i {
-        margin-bottom: $uploader-picture-icon-margin-bottom;
+        margin-bottom: $uploader-image-icon-margin-bottom;
       }
 
       &__msg {
@@ -136,9 +136,9 @@
 
     &-img {
       position: relative;
-      width: $uploader-picture-width;
-      height: $uploader-picture-height;
-      border-radius: $uploader-picture-border-radius;
+      width: $uploader-image-width;
+      height: $uploader-image-height;
+      border-radius: $uploader-image-border-radius;
 
       .tips {
         position: absolute;
@@ -150,7 +150,7 @@
         box-sizing: border-box;
         height: $uploader-preview-tips-height;
         line-height: $uploader-preview-tips-height;
-        border-radius: $uploader-picture-border-radius;
+        border-radius: $uploader-image-border-radius;
         border-top-left-radius: 0;
         border-top-right-radius: 0;
         padding: $uploader-preview-tips-padding;

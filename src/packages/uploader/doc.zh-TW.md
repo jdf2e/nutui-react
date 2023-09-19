@@ -575,14 +575,14 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-uploader-picture-width | 上傳圖片的寬度 | `100px` |
-| \--nutui-uploader-picture-height | 上傳圖片的高度 | `100px` |
-| \--nutui-uploader-picture-border | 上傳圖片的border值 | `0px` |
-| \--nutui-uploader-picture-border-radius | 上傳圖片的border圓角 | `4px` |
+| \--nutui-uploader-image-width | 上傳圖片的寬度 | `100px` |
+| \--nutui-uploader-image-height | 上傳圖片的高度 | `100px` |
+| \--nutui-uploader-image-border | 上傳圖片的border值 | `0px` |
+| \--nutui-uploader-image-border-radius | 上傳圖片的border圓角 | `4px` |
 | \--nutui-uploader-background | 上傳圖片的背景顏色 | `$color-background` |
 | \--nutui-uploader-background-disabled | 上傳圖片禁用狀態的背景顏色 | `$color-background` |
-| \--nutui-uploader-picture-icon-tip-font-size | 上傳區域圖片下方文字大小 | `12px` |
-| \--nutui-uploader-picture-icon-tip-color | 上傳區域圖片下方文字顏色 | `#BFBFBF` |
+| \--nutui-uploader-image-icon-tip-font-size | 上傳區域圖片下方文字大小 | `12px` |
+| \--nutui-uploader-image-icon-tip-color | 上傳區域圖片下方文字顏色 | `#BFBFBF` |
 | \--nutui-uploader-preview-progress-background | 上傳區域預覽進度的背景顏色 | `rgba(0, 0, 0, 0.65)` |
 | \--nutui-uploader-preview-margin-right | 上傳區域預覽margin-right的值 | `10px` |
 | \--nutui-uploader-preview-margin-bottom | 上傳區域預覽margin-bottom的值 | `10px` |

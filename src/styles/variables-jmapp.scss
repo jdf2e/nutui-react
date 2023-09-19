@@ -307,11 +307,11 @@ $icon-width: var(--nutui-icon-width, 20px) !default;
 $icon-line-height: var(--nutui-icon-line-height, 20px) !default;
 
 // uploader（✅）
-$uploader-picture-width: var(--nutui-uploader-picture-width, 100px) !default;
-$uploader-picture-height: var(--nutui-uploader-picture-height, 100px) !default;
-$uploader-picture-border: var(--nutui-uploader-picture-border, 0px) !default;
-$uploader-picture-border-radius: var(
-  --nutui-uploader-picture-border-radius,
+$uploader-image-width: var(--nutui-uploader-image-width, 100px) !default;
+$uploader-image-height: var(--nutui-uploader-image-height, 100px) !default;
+$uploader-image-border: var(--nutui-uploader-image-border, 0px) !default;
+$uploader-image-border-radius: var(
+  --nutui-uploader-image-border-radius,
   2px
 ) !default;
 $uploader-background: var(
@@ -322,20 +322,20 @@ $uploader-background-disabled: var(
   --nutui-uploader-background-disabled,
   $color-background
 ) !default;
-$uploader-picture-color: var(
-  --nutui-uploader-picture-color,
+$uploader-image-color: var(
+  --nutui-uploader-image-color,
   $color-text-help
 ) !default;
-$uploader-picture-disabled: var(
-  --nutui-uploader-picture-disabled,
+$uploader-image-disabled: var(
+  --nutui-uploader-image-disabled,
   $color-text-disable
 ) !default;
-$uploader-picture-icon-margin-bottom: var(
-  --nutui-uploader-picture-icon-margin-bottom,
+$uploader-image-icon-margin-bottom: var(
+  --nutui-uploader-image-icon-margin-bottom,
   6px
 ) !default;
-$uploader-picture-icon-tip-font-size: var(
-  --nutui-uploader-picture-icon-tip-font-size,
+$uploader-image-icon-tip-font-size: var(
+  --nutui-uploader-image-icon-tip-font-size,
   12px
 ) !default;
 $uploader-preview-progress-background: var(
