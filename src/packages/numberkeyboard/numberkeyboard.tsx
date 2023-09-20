@@ -80,7 +80,7 @@ export const NumberKeyboard: FunctionComponent<
 
   const DeleteIcon = () => {
     return (
-      <svg viewBox="0 0 1024 1024" width="36" height="36">
+      <svg viewBox="0 0 1024 1024" width="28" height="28">
         <path
           d="M875.594 186.122H390.803a51.162 51.162 0 0 0-36.18 14.986L79.91 475.821a51.166 51.166 0 0 0 0 72.358l274.714 274.712a51.164 51.164 0 0 0 36.179 14.986h484.791c46.033 0 83.484-37.45 83.484-83.483V269.606c.001-46.033-37.45-83.484-83.483-83.484zm32.32 568.274c0 17.85-14.473 32.318-32.32 32.318H390.803L116.089 512l274.714-274.714h484.791c17.849 0 32.32 14.47 32.32 32.32v484.789z"
           fill="currentColor"
@@ -132,7 +132,7 @@ export const NumberKeyboard: FunctionComponent<
             <div>{item.id}</div>
           )}
           {item.type === 'delete' && <DeleteIcon />}
-          {item.type === 'close' && <RectDown width={25} height={25} />}
+          {item.type === 'close' && <RectDown width={18} height={18} />}
           {item.type === 'confirm' && <>{confirmText || locale.done}</>}
         </div>
       </div>
@@ -151,7 +151,7 @@ export const NumberKeyboard: FunctionComponent<
       <div className={classNames(classPrefix, className)} style={style}>
         {title && (
           <div className={`${classPrefix}__header`}>
-            <h3 className={`${classPrefix}__header__title`}>{title}</h3>
+            <div className={`${classPrefix}__header__title`}>{title}</div>
             {type === 'default' && (
               <span
                 className={`${classPrefix}__header__close`}

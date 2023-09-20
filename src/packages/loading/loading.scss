@@ -19,9 +19,9 @@
     }
   }
   .nut-loading-text {
-    padding: 4px;
-    color: $loading-text-color;
-    font-size: $loading-text-size;
+    padding: 8px;
+    color: $loading-color;
+    font-size: $loading-font-size;
   }
 }
 @keyframes nut-loading-rotation {
