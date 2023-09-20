@@ -228,7 +228,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   }
   const onCloseInner = () => {
     setShowPop(false)
-    setActive(1)
+    setActive(innerNo)
     scaleNow()
     onClose && onClose()
     setStore({
