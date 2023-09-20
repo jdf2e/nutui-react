@@ -39,6 +39,7 @@
     text-align: center;
     border: $badge-border;
     border-radius: $badge-border-radius;
+    min-width: $badge-min-width;
   }
 
   &__one {

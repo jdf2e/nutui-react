@@ -250,8 +250,8 @@ export default App;
 | value | value to show, eg number、charctor and custom content | `ReactNode` | `-` |
 | max | when value is number, it's the max size | `number` | `99` |
 | dot | Is dotted | `boolean` | `false` |
-| top | Up and down offset, support unit setting, can be set to: 5, etc. | `number` | `0` |
-| right | Left and right offset, support unit setting, can be set to: 5, etc. | `number` | `0` |
+| top | Up and down offset, support unit setting, can be set to: "0" or 0, etc. | `string` \| `number` | `"0"` |
+| right | Left and right offset, support unit setting, can be set to: "5" or 5, etc. | `string` \| `number` | `"5"` |
 | color | background color,the default value is the theme primary color | `string` | `-` |
 
 ## Theming
@@ -268,6 +268,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-badge-font-size | badge content font size | `$font-size-small` |
 | \--nutui-badge-border | badge border | `0px solid $color-primary-text` |
 | \--nutui-badge-border-radius | badge border-radius | `height/2` |
+| \--nutui-badge-min-width | badge min-width | `5px` |
 | \--nutui-badge-padding | badge padding value | `0 5px` |
 | \--nutui-badge-icon-padding | when badge is icon,badge padding | `2px` |
 | \--nutui-badge-z-index | when badge is icon, badge z-index | `1` |
