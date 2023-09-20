@@ -487,14 +487,14 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default Value |
 | --- | --- | --- |
-| \--nutui-uploader-picture-width | The width of the uploaded image | `100px` |
-| \--nutui-uploader-picture-height | The height of the uploaded image | `100px` |
-| \--nutui-uploader-picture-border | The border value of the uploaded image | `0px` | `-` |
-| \--nutui-uploader-picture-border-radius | Border rounded corners of uploaded images | `4px` |
+| \--nutui-uploader-image-width | The width of the uploaded image | `100px` |
+| \--nutui-uploader-image-height | The height of the uploaded image | `100px` |
+| \--nutui-uploader-image-border | The border value of the uploaded image | `0px` | `-` |
+| \--nutui-uploader-image-border-radius | Border rounded corners of uploaded images | `4px` |
 | \--nutui-uploader-background | The background color of the uploaded image | `$color-background` |
 | \--nutui-uploader-background-disabled | The background color of the disabled state of uploading images | `$color-background` |
-| \--nutui-uploader-picture-icon-tip-font-size | The size of the text below the image in the upload area | `12px` |
-| \--nutui-uploader-picture-icon-tip-color | The color of the text below the image in the upload area | `#BFBFBF` |
+| \--nutui-uploader-image-icon-tip-font-size | The size of the text below the image in the upload area | `12px` |
+| \--nutui-uploader-image-icon-tip-color | The color of the text below the image in the upload area | `#BFBFBF` |
 | \--nutui-uploader-preview-progress-background | The background color of the upload area preview progress | `rgba(0, 0, 0, 0.65)` |
 | \--nutui-uploader-preview-margin-right | Upload area preview margin-right value | `10px` |
 | \--nutui-uploader-preview-margin-bottom | Upload area preview margin-bottom value | `10px` |

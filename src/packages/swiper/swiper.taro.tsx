@@ -15,7 +15,7 @@ import {
 } from '@tarojs/components'
 import classNames from 'classnames'
 import { CommonEventFunction } from '@tarojs/components/types/common'
-import { Indicator } from '../indicator/indicator.taro'
+import Indicator from '@/packages/indicator/index.taro'
 
 export interface SwiperProps extends Omit<TaroSwiperProps, 'ref'> {
   width: number

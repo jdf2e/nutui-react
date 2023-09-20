@@ -605,7 +605,6 @@ export default App;
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-cascader-font-size | 级联总字号 | `$font-size` |
-| \--nutui-cascader-line-height | 行高 | `22px` |
 | \--nutui-cascader-pane-height | 级联面板高度 | `342px` |
 | \--nutui-cascader-tabs-item-padding | 级联tabs的标题部分的padding 值 | `0 10px` |
 | \--nutui-cascader-item-height | 级联数据每一条的高度 | `40px` |

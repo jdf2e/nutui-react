@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import classNames from 'classnames'
 import { RadioGroupOptionType } from './type'
 import RadioContext from './context'
-import { Radio } from '../radio/radio'
+import Radio from '@/packages/radio/index'
 import { usePropsValue } from '@/utils/use-props-value'
 
 type Position = 'left' | 'right'

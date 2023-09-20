@@ -271,10 +271,6 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-numberkeyboard-padding | padding | `0 0 22px 0` |
-| \--nutui-numberkeyboard-header-height | header height | `34px` |
-| \--nutui-numberkeyboard-header-padding | header padding | `6px 0 0 0` |
-| \--nutui-numberkeyboard-header-color | header color | `#646566` |
-| \--nutui-numberkeyboard-header-font-size | header fontSize | `16px` |
 | \--nutui-numberkeyboard-header-close-padding | header close padding | `0 16px` |
 | \--nutui-numberkeyboard-header-close-color | header close color | `#576b95` |
 | \--nutui-numberkeyboard-header-close-font-size | header close fontSize | `14px` |

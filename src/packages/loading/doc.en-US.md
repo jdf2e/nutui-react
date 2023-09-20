@@ -1,4 +1,4 @@
-#  Loading
+# Loading
 
 ### Intro
 
@@ -217,8 +217,21 @@ export default App;
 
 ### Props
 
-| Property         | Description                          | type   | default           |
-|--------------|----------------------------------|--------|------------------|
-| type         | loading icon type                    | circular \| spinner | `circular`          |
-| direction    | direction of icon and text           | horizontal \| vertical | `horizontal`     | 
-| icon         | custom loading icon                  | JSX.Element         |  `-` |
+| Property | Description | type | default |
+| --- | --- | --- | --- |
+| type | loading icon type | circular | spinner | `circular` |
+| direction | direction of icon and text | horizontal | vertical | `horizontal` |
+| icon | custom loading icon | JSX.Element | `-` |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Description | Default |
+| --- | --- | --- |
+| \--nutui-loading-icon-color | icon color | `$color-text-help` |
+| \--nutui-loading-icon-size | icon size | `$font-size-small` |
+| \--nutui-loading-color | font color | `$color-text-help` |
+| \--nutui-loading-font-size | font size | `$font-size-small` |
