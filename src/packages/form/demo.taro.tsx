@@ -54,7 +54,6 @@ interface T {
   switch: string
   checkbox: string
   gender: string
-  // option: (v: string) => `选项${v}`
   rate: string
   inputnumber: string
   range: string
@@ -110,7 +109,7 @@ const FormDemo = () => {
       add: '添加',
       remove: '删除',
       submit: '提交',
-      reset: '重置提示状态',
+      reset: '重置',
       switch: '开关',
       checkbox: '复选框',
       gender: '性别',
@@ -167,7 +166,7 @@ const FormDemo = () => {
       add: 'Add',
       remove: 'Remove',
       submit: 'Submit',
-      reset: 'Reset alert state',
+      reset: 'Reset',
       switch: 'Switch',
       checkbox: 'Checkbox',
       gender: 'Gender',

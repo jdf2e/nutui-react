@@ -19,7 +19,6 @@ export interface Store {
 }
 
 export interface FormInstance<Values = any> {
-  registerField: (entity: FieldEntity) => () => void
   getFieldValue: (name: NamePath) => StoreValue
   getFieldsValue: (nameList: NamePath[] | true) => { [key: NamePath]: any }
   setFieldsValue: (value: any) => void

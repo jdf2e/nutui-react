@@ -63,7 +63,8 @@ export class FormItem extends React.Component<
 
   componentDidMount() {
     // 注册组件实例到FormStore
-    this.cancelRegister = this.context.registerField(this)
+    const { registerField } = this.context.getInternal(SECRET)
+    this.cancelRegister = registerField(this)
   }
 
   componentWillUnmount() {

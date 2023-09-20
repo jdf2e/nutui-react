@@ -192,6 +192,7 @@ class FormStore {
   getInternal = (key: string) => {
     if (key === SECRET) {
       return {
+        registerField: this.registerField,
         setCallback: this.setCallback,
         setInitialValues: this.setInitialValues,
         dispatch: this.dispatch,
@@ -203,7 +204,6 @@ class FormStore {
 
   getForm = () => {
     return {
-      registerField: this.registerField,
       getFieldValue: this.getFieldValue,
       getFieldsValue: this.getFieldsValue,
       setFieldsValue: this.setFieldsValue,
