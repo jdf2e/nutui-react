@@ -25,6 +25,7 @@ export interface SwiperProps extends Omit<TaroSwiperProps, 'ref'> {
   autoPlay: boolean
   loop: boolean
   defaultValue: number
+  onChange: (e: any) => void
 }
 
 const defaultProps = {
@@ -48,6 +49,7 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
     duration,
     direction,
     defaultValue,
+    onChange,
     ...rest
   } = {
     ...defaultProps,
@@ -125,7 +127,10 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
           autoplay={autoPlay}
           vertical={direction === 'vertical'}
           indicatorDots={false}
-          onChange={handleOnChange}
+          onChange={(e) => {
+            handleOnChange(e)
+            props.onChange?.(e)
+          }}
           style={{
             width: !width ? '100%' : `${width}px`,
             height: !height ? '150px' : `${height}px`,

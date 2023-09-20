@@ -84,7 +84,7 @@ const ImagePreviewDemo = () => {
   const [init1, setInit1] = useState<any>(1)
   const [init2, setInit2] = useState<any>(2)
   const [init3, setInit3] = useState<any>(3)
-  const [init5, setInit5] = useState<any>(1)
+  const [init5, setInit5] = useState<any>(2)
 
   const showFn0 = () => {
     setShowPreview0(true)
@@ -135,6 +135,7 @@ const ImagePreviewDemo = () => {
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <ImagePreview
+          autoPlay
           images={images}
           visible={showPreview0}
           onClose={hideFn0}
@@ -156,6 +157,7 @@ const ImagePreviewDemo = () => {
           ))}
         </Cell>
         <ImagePreview
+          autoPlay
           images={images}
           visible={showPreview1}
           defaultValue={init1}
@@ -164,6 +166,7 @@ const ImagePreviewDemo = () => {
         />
         <h2>{translated.withInitNo}</h2>
         <ImagePreview
+          autoPlay
           images={images}
           visible={showPreview2}
           defaultValue={init2}
@@ -178,9 +181,11 @@ const ImagePreviewDemo = () => {
         />
         <h2>{translated.withControl}</h2>
         <ImagePreview
+          autoPlay
           images={images}
           visible={showPreview5}
           value={init5}
+          defaultValue={init5}
           indicator
           onChange={(value) => setInit5(value)}
           onClose={hideFn5}
@@ -193,6 +198,7 @@ const ImagePreviewDemo = () => {
         />
         <h2>{translated.withPagination}</h2>
         <ImagePreview
+          autoPlay
           images={images}
           visible={showPreview3}
           indicator
