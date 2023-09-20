@@ -4,6 +4,7 @@ import { Context } from '../form/context'
 import Cell from '@/packages/cell'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { isForwardRefComponent } from '@/utils/is-forward-ref-component'
+import { SECRET } from '@/packages/form/useform'
 
 type TextAlign =
   | 'start'
@@ -73,7 +74,8 @@ export class FormItem extends React.Component<
 
   // children添加value属性和onChange事件
   getControlled = (children: React.ReactElement) => {
-    const { setFieldsValue, getFieldValue, dispatch } = this.context
+    const { setFieldsValue, getFieldValue } = this.context
+    const { dispatch } = this.context.getInternal(SECRET)
     const { name = '' } = this.props
 
     if (children?.props?.defaultValue) {

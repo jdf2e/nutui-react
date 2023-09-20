@@ -2,6 +2,7 @@ import { useRef } from 'react'
 import Schema from 'async-validator'
 import { Store, Callbacks, FormInstance, FieldEntity, NamePath } from './types'
 
+export const SECRET = 'NUT_FORM_INTERNAL'
 /**
  * 用于存储表单的数据
  */
@@ -188,32 +189,40 @@ class FormStore {
     this.validateFields([name])
   }
 
+  getInternal = (key: string) => {
+    if (key === SECRET) {
+      return {
+        setCallback: this.setCallback,
+        setInitialValues: this.setInitialValues,
+        dispatch: this.dispatch,
+        store: this.store,
+        fieldEntities: this.fieldEntities,
+      }
+    }
+  }
+
   getForm = () => {
     return {
-      dispatch: this.dispatch,
-      setInitialValues: this.setInitialValues,
-      setCallback: this.setCallback,
       registerField: this.registerField,
       getFieldValue: this.getFieldValue,
       getFieldsValue: this.getFieldsValue,
       setFieldsValue: this.setFieldsValue,
       resetFields: this.resetFields,
       submit: this.submit,
-      store: this.store,
       errors: this.errors,
-      fieldEntities: this.fieldEntities,
+      getInternal: this.getInternal,
     }
   }
 }
 
-export const useForm = (form?: FormInstance) => {
-  const formRef = useRef<any>()
+export const useForm = (form?: FormInstance): [FormInstance] => {
+  const formRef = useRef<FormInstance>()
   if (!formRef.current) {
     if (form) {
       formRef.current = form
     } else {
       const formStore = new FormStore()
-      formRef.current = formStore.getForm()
+      formRef.current = formStore.getForm() as FormInstance
     }
   }
   return [formRef.current]

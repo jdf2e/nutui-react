@@ -22,11 +22,10 @@ export interface FormInstance<Values = any> {
   registerField: (entity: FieldEntity) => () => void
   getFieldValue: (name: NamePath) => StoreValue
   getFieldsValue: (nameList: NamePath[] | true) => { [key: NamePath]: any }
-  setInitialValues: (values: any, init: boolean) => void
   setFieldsValue: (value: any) => void
   resetFields: (fields?: NamePath[]) => void
   submit: () => void
-  setCallback: (callbacks: Callbacks) => void
+  getInternal: (secret: string) => any
 }
 
 export interface FieldEntity {
