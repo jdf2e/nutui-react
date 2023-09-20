@@ -70,6 +70,7 @@ interface T {
   clearBtnUpload: string
   '7db1a8b2': string
 }
+
 const UploaderDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
@@ -286,7 +287,10 @@ const UploaderDemo = () => {
           <Uploader
             url={uploadUrl}
             onStart={onStart}
-            style={{ marginRight: '10px', marginBottom: '10px' }}
+            style={{
+              marginRight: '10px',
+              marginBottom: '10px',
+            }}
           />
           <Uploader
             url={uploadUrl}
