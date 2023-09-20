@@ -70,6 +70,7 @@ interface T {
   clearBtnUpload: string
   '7db1a8b2': string
 }
+
 const UploaderDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
@@ -289,8 +290,6 @@ const UploaderDemo = () => {
             style={{
               marginRight: '10px',
               marginBottom: '10px',
-              '--nutui-uploader-picture-border': '1px solid red',
-              '--nutui-uploader-picture-border-radius': '16px',
             }}
           />
           <Uploader
