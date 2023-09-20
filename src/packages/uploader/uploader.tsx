@@ -388,9 +388,9 @@ const InternalUploader: ForwardRefRenderFunction<
   }
 
   const deleted = (file: FileItem, index: number) => {
-    fileList.splice(index, 1)
-    onDelete && onDelete(file, fileList)
-    setFileList([...fileList])
+    const deletedFileList = fileList.filter((file, idx) => idx !== index)
+    onDelete?.(file, deletedFileList)
+    setFileList(deletedFileList)
   }
 
   const onDeleteItem = (file: FileItem, index: number) => {

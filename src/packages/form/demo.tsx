@@ -408,6 +408,18 @@ const FormDemo = () => {
         <h2>{translated.title5}</h2>
         <Form
           style={{ '--nutui-form-item-label-width': '120px' }}
+          initialValues={{
+            files: [
+              {
+                name: 'file1.png',
+                url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
+                status: 'success',
+                message: 'success',
+                type: 'image',
+                uid: '122',
+              },
+            ],
+          }}
           footer={
             <div
               style={{
@@ -496,20 +508,7 @@ const FormDemo = () => {
               }}
             </Picker>
           </Form.Item>
-          <Form.Item
-            label={translated.uploader}
-            name="files"
-            initialValue={[
-              {
-                name: 'file1.png',
-                url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-                status: 'success',
-                message: 'success',
-                type: 'image',
-                uid: '122',
-              },
-            ]}
-          >
+          <Form.Item label={translated.uploader} name="files">
             <Uploader url="https://my-json-server.typicode.com/linrufeng/demo/posts" />
           </Form.Item>
         </Form>
