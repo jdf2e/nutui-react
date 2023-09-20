@@ -1191,6 +1191,7 @@ $badge-border-radius: var(
   --nutui-badge-border-radius,
   calc($badge-height/2)
 ) !default;
+$badge-min-width: var(--nutui-badge-min-width, 5px) !default;
 $badge-padding: var(--nutui-badge-padding, 0 4px) !default;
 $badge-icon-padding: var(--nutui-badge-icon-padding, 3px) !default;
 $badge-content-transform: var(
@@ -1405,7 +1406,8 @@ $menu-bar-border-bottom-color: var(
   --nutui-menu-bar-border-bottom-color,
   $color-border
 ) !default;
-$menu-bar-opened-z-index: var(--nutui-menu-bar-opened-z-index, 2001) !default;
+$menu-bar-opened-z-index: var(--nutui-menu-bar-opened-z-index, 1000) !default;
+$menu-item-z-index: var(--nutui-menu-item-z-index, 1000) !default;
 $menu-item-disabled-color: var(
   --nutui-menu-item-disabled-color,
   $color-text-disable

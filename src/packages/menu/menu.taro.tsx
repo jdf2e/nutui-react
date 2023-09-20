@@ -6,6 +6,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface MenuProps extends BasicComponent {
   activeColor: string
+  overlay: boolean
   closeOnOverlayClick: boolean
   scrollFixed: boolean | string | number
   lockScroll: boolean
@@ -21,6 +22,7 @@ const defaultProps = {
   closeOnOverlayClick: true,
   scrollFixed: false,
   lockScroll: true,
+  overlay: true,
   icon: null,
   onOpen: (index: number) => {},
   onClose: (index: number) => {},
@@ -33,6 +35,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
     icon,
     scrollFixed,
     lockScroll,
+    overlay,
     closeOnOverlayClick,
     children,
     activeColor,
@@ -98,6 +101,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
         activeColor,
         parent: {
           closeOnOverlayClick,
+          overlay,
           lockScroll,
           toggleMenuItem,
           updateTitle,
@@ -110,9 +114,11 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
   const menuTitle = () => {
     return React.Children.map(children, (child, index) => {
       if (React.isValidElement(child)) {
-        const { title, options, value, disabled, direction } = child.props
+        const { title, options, value, defaultValue, disabled, direction } =
+          child.props
         const selected = options?.filter(
-          (option: OptionItem) => option.value === value
+          (option: OptionItem) =>
+            option.value === (value !== undefined ? value : defaultValue)
         )
         const finallyTitle = () => {
           if (title) return title
@@ -121,7 +127,6 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
             return selected[0].text
           return ''
         }
-
         return (
           <div
             className={classNames('nut-menu__item ', className, {
@@ -131,6 +136,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
             style={{ color: showMenuItem[index] ? activeColor : '' }}
             key={index}
             onClick={() => {
+              if ((!options || !options.length) && !child.props.children) return
               !disabled && toggleMenuItem(index)
             }}
           >
