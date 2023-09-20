@@ -350,21 +350,20 @@ export default App
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-menu-bar-line-height | menu標題欄的行高 | `48px` |
-| \--nutui-menu-item-font-size | 標題的字號 | `$font-size` |
-| \--nutui-menu-item-text-color | 標題的顏色 | `$color-title` |
-| \--nutui-menu-item-active-text-color | 打開狀態的顏色 | `$color-primary` |
-| \--nutui-menu-bar-opened-z-index | 打開狀態的 z-index | `2001` |
-| \--nutui-menu-item-disabled-color | 禁用狀態的顏色 | `#969799` |
-| \--nutui-menu-title-text-padding-left | 標題的左內邊距 | `8px` |
-| \--nutui-menu-title-text-padding-right | 標題的右內邊距 | `8px` |
-| \--nutui-menu-item-content-padding | 菜單選項容器的內邊距 | `12px 24px` |
-| \--nutui-menu-item-content-max-height | 菜單選項容器的最大高度 | `214px` |
-| \--nutui-menu-item-option-padding-top | 菜單選項的頂部內邊距 | `12px` |
-| \--nutui-menu-item-option-padding-bottom | 菜單選項的底部內邊距 | `12px` |
-| \--nutui-menu-item-option-i-margin-right | 菜單選項文本與icon的距離 | `6px` |
-| \--nutui-menu-bar-box-shadow | 菜單標題欄的陰影 | `0 2px 12px rgba(89, 89, 89, 0.12)` |
 | \--nutui-menu-scroll-fixed-top | fix 狀態的頂部距離 | `0` |
 | \--nutui-menu-scroll-fixed-z-index | fix 狀態的z-index | `$mask-z-index` |
-| \--nutui-menu-active-item-font-weight | 選中狀態的字重 | `500` |
-| \--nutui-menu-item-content-bg-color | 菜單選項容器的背景色 | `$white` |
+| \--nutui-menu-bar-line-height | menu標題欄的行高 | `48px` |
+| \--nutui-menu-bar-opened-z-index | 打開狀態的 z-index | `2001` |
+| \--nutui-menu-bar-box-shadow | 菜單標題欄的陰影 | `0 2px 12px rgba(89, 89, 89, 0.12)` |
+| \--nutui-menu-title-padding | 標題的內邊距 | `8px` |
+| \--nutui-menu-title-font-size | 標題的字號 | `$font-size` |
+| \--nutui-menu-title-color | 標題的顏色 | `$color-title` |
+| \--nutui-menu-container-z-index | 菜單選項容器的zindex | `1000` |
+| \--nutui-menu-content-padding | 菜單選項容器的內邊距 | `12px 24px` |
+| \--nutui-menu-content-max-height | 菜單選項容器的最大高度 | `214px` |
+| \--nutui-menu-content-background-color | 菜單選項容器的背景色 | `$white` |
+| \--nutui-menu-item-active-color | 打開狀態的顏色 | `$color-primary` |
+| \--nutui-menu-item-active-font-weight | 選中狀態的字重 | `$font-weight-bold` |
+| \--nutui-menu-item-disabled-color | 禁用狀態的顏色 | `$color-text-disable` |
+| \--nutui-menu-item-padding | 菜單選項的內邊距 | `12px 0` |
+| \--nutui-menu-item-icon-margin | 菜單選項文本與icon的距離 | `8px` |

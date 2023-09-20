@@ -145,8 +145,17 @@ const MenuDemo = () => {
         <Menu>
           <Menu.Item options={options} defaultValue={0} />
           <Menu.Item title={translated.screen} ref={itemRef}>
-            <div>{translated.customContent}</div>
+            <div
+              style={{
+                width: '50%',
+                lineHeight: '28px',
+                padding: '0 30px',
+              }}
+            >
+              {translated.customContent}
+            </div>
             <Button
+              size="small"
               onClick={() => {
                 ;(itemRef.current as any)?.toggle(false)
               }}
