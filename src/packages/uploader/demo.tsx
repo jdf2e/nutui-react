@@ -263,6 +263,9 @@ const UploaderDemo = () => {
               marginRight: '10px',
               marginBottom: '10px',
             }}
+            onChange={(v) => {
+              console.log('outer onChange', v)
+            }}
           />
           <Uploader
             url={uploadUrl}
