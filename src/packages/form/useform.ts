@@ -52,12 +52,12 @@ class FormStore {
   /**
    * 获取全部字段
    */
-  getFieldsValue = (name: NamePath[] | true): { [key: NamePath]: any } => {
-    if (typeof name === 'boolean') {
+  getFieldsValue = (nameList: NamePath[] | true): { [key: NamePath]: any } => {
+    if (typeof nameList === 'boolean') {
       return JSON.parse(JSON.stringify(this.store))
     }
     const fieldsValue: { [key: NamePath]: any } = {}
-    name.forEach((field) => {
+    nameList.forEach((field) => {
       fieldsValue[field] = this.getFieldValue(field)
     })
     return fieldsValue
