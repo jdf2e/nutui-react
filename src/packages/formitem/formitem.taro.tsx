@@ -4,6 +4,7 @@ import { Context } from '../form/context'
 import Cell from '@/packages/cell/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { isForwardRefComponent } from '@/utils/is-forward-ref-component'
+import { SECRET } from '@/packages/form/useform'
 
 type TextAlign =
   | 'start'
@@ -62,7 +63,8 @@ export class FormItem extends React.Component<
 
   componentDidMount() {
     // 注册组件实例到FormStore
-    this.cancelRegister = this.context.registerField(this)
+    const { registerField } = this.context.getInternal(SECRET)
+    this.cancelRegister = registerField(this)
   }
 
   componentWillUnmount() {
@@ -73,7 +75,8 @@ export class FormItem extends React.Component<
 
   // children添加value属性和onChange事件
   getControlled = (children: React.ReactElement) => {
-    const { setFieldsValue, getFieldValue, dispatch } = this.context
+    const { setFieldsValue, getFieldValue } = this.context
+    const { dispatch } = this.context.getInternal(SECRET)
     const { name = '' } = this.props
 
     if (children?.props?.defaultValue) {

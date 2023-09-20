@@ -19,6 +19,7 @@ import { useConfig } from '@/packages/configprovider'
 import { funcInterceptor } from '@/utils/interceptor'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import Button from '../button'
 
 export type FileType<T> = { [key: string]: T }
 
@@ -431,10 +432,14 @@ const InternalUploader: ForwardRefRenderFunction<
 
   return (
     <div className={classes} {...restProps}>
-      {children && (
+      {(children || previewType === 'list') && (
         <div className="nut-uploader__slot">
           <>
-            {children}
+            {children || (
+              <Button size="small" type="primary">
+                上传文件
+              </Button>
+            )}
             {maxCount > fileList.length && (
               <>
                 {capture ? (
@@ -473,16 +478,15 @@ const InternalUploader: ForwardRefRenderFunction<
               className={`nut-uploader__preview ${previewType}`}
               key={item.uid}
             >
+              {previewType === 'picture' && deletable && (
+                <Failure
+                  color="rgba(0,0,0,0.6)"
+                  className="close"
+                  onClick={() => onDeleteItem(item, index)}
+                />
+              )}
               {previewType === 'picture' && !children && (
                 <div className="nut-uploader__preview-img">
-                  {deletable && (
-                    <Failure
-                      color="rgba(0,0,0,0.6)"
-                      className="close"
-                      onClick={() => onDeleteItem(item, index)}
-                    />
-                  )}
-
                   {item.status === 'ready' ? (
                     <div className="nut-uploader__preview__progress">
                       <div className="nut-uploader__preview__progress__msg">
@@ -537,8 +541,7 @@ const InternalUploader: ForwardRefRenderFunction<
                             className="nut-uploader__preview-img__file__name"
                           >
                             <LinkIcon color="#808080" />
-                            &nbsp;
-                            {item.name}
+                            <span>&nbsp;{item.name}</span>
                           </div>
                         </div>
                       )}
@@ -557,7 +560,7 @@ const InternalUploader: ForwardRefRenderFunction<
                     onClick={() => handleItemClick(item)}
                   >
                     <LinkIcon />
-                    &nbsp;{item.name}
+                    <span>&nbsp;{item.name}</span>
                   </div>
                   {deletable && (
                     <Del

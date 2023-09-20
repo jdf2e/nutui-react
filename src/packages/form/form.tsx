@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import classNames from 'classnames'
 import { Context } from './context'
-import { useForm } from './useform'
+import { SECRET, useForm } from './useform'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Cell from '@/packages/cell'
 import { FormInstance } from '@/packages/form/types'
@@ -62,7 +62,8 @@ export const Form = React.forwardRef<FormInstance, Partial<FormProps>>(
     }
     React.useImperativeHandle(ref, () => formInstance)
     ;(formInstance as any).starPosition = starPosition
-    const { setCallback, submit, resetFields, setInitialValues } = formInstance
+    const { submit, resetFields } = formInstance
+    const { setCallback, setInitialValues } = formInstance.getInternal(SECRET)
     // 设置校验后的回调，给组件的使用者暴露的接口
     setCallback({
       onFinish,

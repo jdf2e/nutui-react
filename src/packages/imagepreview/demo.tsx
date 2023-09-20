@@ -83,7 +83,7 @@ const ImagePreviewDemo = () => {
   const [init1, setInit1] = useState<any>(1)
   const [init2, setInit2] = useState<any>(2)
   const [init3, setInit3] = useState<any>(3)
-  const [init5, setInit5] = useState<any>(1)
+  const [init5, setInit5] = useState<any>(2)
 
   const showFn0 = () => {
     setShowPreview0(true)
@@ -180,6 +180,7 @@ const ImagePreviewDemo = () => {
           images={images}
           visible={showPreview5}
           value={init5}
+          defaultValue={init5}
           indicator
           onChange={(value) => setInit5(value)}
           onClose={hideFn5}
