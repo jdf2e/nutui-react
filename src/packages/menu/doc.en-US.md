@@ -35,13 +35,49 @@ const App = () => {
     <>
       <div className="demo full">
         <Menu
-          closeOnOverlayClick
-          lockScroll={false}
           onClose={(i: number) => console.log('onClose', i)}
           onOpen={(i: number) => console.log('onOpen', i)}
         >
           <Menu.Item options={options} value={0} />
           <Menu.Item options={options1} value="a" />
+        </Menu>
+      </div>
+    </>
+  )
+}
+export default App
+
+```
+
+:::
+
+### Controlled
+
+:::demo
+
+```tsx
+import React, { useState } from 'react'
+import { Menu } from '@nutui/nutui-react';
+
+const App = () => {
+  const [options] = useState([
+    { text: 'All Products', value: 0 },
+    { text: 'New Products', value: 1 },
+    { text: 'Activity Products', value: 2 }
+  ])
+  const [options1] = useState([
+    { text: 'Default Sort', value: 'a' },
+    { text: 'Praise Sort', value: 'b' },
+    { text: 'Sales Volume Sort', value: 'c' }
+  ])
+  const [stateOne, setStateOne] = useState(0)
+  const [stateTwo, setStateTwo] = useState('a')
+  return (
+    <>
+      <div className="demo full">
+        <Menu>
+          <Menu.Item options={options} value={stateOne} onChange={(v) => setStateOne(v.value)} />
+          <Menu.Item options={options1} value={stateTwo} onChange={(v) => setStateTwo(v.value)} />
         </Menu>
       </div>
     </>
@@ -306,6 +342,7 @@ export default App
 | options | Options | `Array` | `-` |
 | disabled | Whether to disable dropdown item | `boolean` | `false` |
 | columns | Display how many options in one line | `number` | `1` |
+| closeOnClickAway | Click on the blank space to close the menu | `boolean` | `true` |
 | icon | Custome option icon | `React.ReactNode` | `Check` |
 | direction | Expand direction, can be set to up | `string` | `down` |
 | onChange | Emitted select option changed | `(event: any) => void` | `-` |

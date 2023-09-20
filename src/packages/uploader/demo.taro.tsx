@@ -52,6 +52,7 @@ interface T {
   ca3903f3: string
   uploadProgressAction: string
   '84aa6bce': string
+  uploadListDefault: string
   uploadListShow: string
   uploadDefaultProgress: string
   a4afedb5: string
@@ -83,7 +84,8 @@ const UploaderDemo = () => {
       ca3903f3: 'delete事件触发',
       uploadProgressAction: 'progress事件触发',
       '84aa6bce': '基础用法',
-      uploadListShow: '基础用法-上传列表展示',
+      uploadListDefault: '基础用法-上传列表展示',
+      uploadListShow: '自定义上传按钮',
       uploadDefaultProgress: '自定义上传使用默认进度条',
       a4afedb5: '上传状态',
       '37c65f47': '自定义上传样式',
@@ -112,7 +114,8 @@ const UploaderDemo = () => {
       ca3903f3: 'delete事件觸發',
       uploadProgressAction: 'progress事件觸發',
       '84aa6bce': '基础用法',
-      uploadListShow: '基礎用法-上傳列表展示',
+      uploadListDefault: '基础用法-上傳列表展示',
+      uploadListShow: '自定義上傳按钮',
       uploadDefaultProgress: '自定義上傳使用默認進度條',
       a4afedb5: '上傳狀態',
       '37c65f47': '自定義上傳樣式',
@@ -141,7 +144,8 @@ const UploaderDemo = () => {
       ca3903f3: 'The delete event is triggered',
       uploadProgressAction: 'The progress event is triggered',
       '84aa6bce': 'Basic usage',
-      uploadListShow: 'Basic usage - upload list display',
+      uploadListDefault: 'Basic usage - upload list dispaly',
+      uploadListShow: 'Custom Upload Area',
       uploadDefaultProgress: 'Custom upload uses default progress bar',
       a4afedb5: 'Upload status',
       '37c65f47': 'Customize the upload style',
@@ -300,6 +304,11 @@ const UploaderDemo = () => {
             uploadIcon={<Dongdong />}
             onStart={onStart}
           />
+        </Cell>
+
+        <h2>{translated['84aa6bce']}</h2>
+        <Cell>
+          <Uploader previewType="list" url={uploadUrl} onStart={onStart} />
         </Cell>
 
         <h2>{translated.a4afedb5}</h2>

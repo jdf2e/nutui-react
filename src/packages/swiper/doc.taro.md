@@ -20,24 +20,25 @@ import { Swiper } from '@nutui/nutui-react-taro';
 import React, { useState } from 'react'
 import { Swiper } from '@nutui/nutui-react-taro';
 
+const list = [
+  'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+  'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+  'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+]
 const App = () => {
   return (
     <Swiper
       defaultValue={0}
       indicator
     >
-      <Swiper.Item >
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-      </Swiper.Item>
-      <Swiper.Item >
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-      </Swiper.Item>
-      <Swiper.Item >
-        <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-      </Swiper.Item>
-      <Swiper.Item >
-        <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-      </Swiper.Item>
+      {list.map((item, index) => {
+        return (
+          <Swiper.Item key={item}>
+            <img src={item} onClick={() => console.log(index)} alt="" />
+          </Swiper.Item>
+        )
+      })}
     </Swiper>
   )
 }
@@ -379,7 +380,7 @@ export default App;
 | loop | 是否循环轮播 | `boolean` | `true` |
 | autoPlay | 自动轮播 | `boolean` | `false` |
 | defaultValue | 初始化索引值 | `number` | `0` |
-| onChange | 卡片切换后的回调 | `当前索引值index` | `-` |
+| onChange | 卡片切换后的回调 | `(current: number) => void` | `-` |
 
 > Swiper 是对 Taro Swiper 进行的封装，可以支持 Taro Swiper 属性的透传。具体支持属性可参考[https://taro-docs.jd.com/docs/components/viewContainer/swiper](https://taro-docs.jd.com/docs/components/viewContainer/swiper)
 

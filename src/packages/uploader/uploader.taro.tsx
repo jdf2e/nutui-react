@@ -526,10 +526,14 @@ const InternalUploader: ForwardRefRenderFunction<
 
   return (
     <div className={classes} {...restProps}>
-      {children && (
+      {(children || previewType === 'list') && (
         <div className="nut-uploader__slot">
           <>
-            {children}
+            {children || (
+              <Button size="small" type="primary">
+                上传文件
+              </Button>
+            )}
             {maxCount > fileList.length && (
               <Button className="nut-uploader__input" onClick={_chooseImage} />
             )}

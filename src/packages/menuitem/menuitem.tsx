@@ -3,15 +3,18 @@ import React, {
   forwardRef,
   useEffect,
   useImperativeHandle,
+  useMemo,
   useRef,
   useState,
 } from 'react'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 import { Check } from '@nutui/icons-react'
-import { Overlay } from '../overlay/overlay'
+import { Overlay } from '@/packages/overlay/overlay'
 import useClickAway from '@/utils/use-click-away'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { usePropsValue } from '@/utils/use-props-value'
+import { getScrollParent } from '@/utils/get-scroll-parent'
 
 export interface OptionItem {
   text: string
@@ -29,6 +32,7 @@ export interface MenuItemProps extends BasicComponent {
   activeTitleClass: string
   inactiveTitleClass: string
   value: string | number
+  defaultValue: string | number
   onChange: (event: any) => void
   children: React.ReactNode
 }
@@ -38,6 +42,7 @@ const defaultProps = {
   columns: 1,
   direction: 'down',
   icon: null,
+  closeOnClickAway: true,
   activeTitleClass: '',
   inactiveTitleClass: '',
   onChange: (value: OptionItem) => undefined,
@@ -48,6 +53,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     style,
     options,
     value,
+    defaultValue,
     columns,
     title,
     icon,
@@ -67,7 +73,15 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   } as any
 
   const [showPopup, setShowPopup] = useState(show)
-  const [innerValue, setValue] = useState(value)
+  const [innerValue, setValue] = usePropsValue({
+    defaultValue,
+    value,
+    finalValue: undefined,
+    onChange: (v) => {
+      const [option] = options.filter((o: any) => o.value === v)
+      onChange?.(option)
+    },
+  })
   useEffect(() => {
     setShowPopup(show)
   }, [show])
@@ -96,7 +110,6 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     parent.toggleMenuItem(index)
     setTitle(item.text)
     setValue(item.value)
-    onChange && onChange(item)
   }
 
   const isShow = () => {
@@ -107,6 +120,11 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     top: 0,
     height: 0,
   })
+
+  const scrollParent = useMemo(() => {
+    return getScrollParent(parent.menuRef, window)
+  }, [parent.menuRef])
+
   const getParentOffset = () => {
     setTimeout(() => {
       const p = parent.menuRef.current
@@ -117,6 +135,13 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
       })
     })
   }
+
+  useEffect(() => {
+    scrollParent?.addEventListener('scroll', getParentOffset, false)
+    return () => {
+      scrollParent?.removeEventListener('scroll', getParentOffset, false)
+    }
+  }, [])
 
   const getPosition = (): CSSProperties => {
     return direction === 'down'
@@ -153,16 +178,18 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
       ref={micRef}
       // style={{ position: 'absolute', left: 0, right: 0 }}
     >
-      <Overlay
-        className="nut-menu__overlay"
-        style={getPosition()}
-        lockScroll={parent.lockScroll}
-        visible={showPopup}
-        closeOnOverlayClick={parent.closeOnOverlayClick}
-        onClick={() => {
-          parent.closeOnOverlayClick && parent.toggleMenuItem(index)
-        }}
-      />
+      {parent.overlay ? (
+        <Overlay
+          className="nut-menu__overlay"
+          style={getPosition()}
+          lockScroll={parent.lockScroll}
+          visible={showPopup}
+          closeOnOverlayClick={parent.closeOnOverlayClick}
+          onClick={() => {
+            parent.closeOnOverlayClick && parent.toggleMenuItem(index)
+          }}
+        />
+      ) : null}
       <div
         className={classNames(className, {
           'nut-menu-item__wrap': direction === 'down',
