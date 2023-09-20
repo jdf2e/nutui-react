@@ -86,13 +86,14 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
 
   const [showPop, setShowPop] = useState(visible)
   const [active, setActive] = useState(0)
-  const [maxNo] = useState(images?.length || 0 + (videos?.length || 0))
+  const [maxNo, setMaxNo] = useState(
+    images?.length || 0 + (videos?.length || 0)
+  )
   const [store, setStore] = useState({
     scale: 1,
     moveable: false,
   })
   const [lastTouchEndTime, setLastTouchEndTime] = useState(0) // 用来辅助监听双击
-
   const onTouchStart = (event: TouchEvent) => {
     const touches = event.touches
     const events = touches[0]
@@ -201,6 +202,10 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     setActive(innerNo as number)
   }, [innerNo])
 
+  useEffect(() => {
+    setMaxNo(images?.length || 0 + (videos?.length || 0))
+  }, [images, videos])
+
   const scaleNow = () => {
     if (ref.current as any) {
       ;(ref.current as any).style.transform = `scale(${store.scale})`
@@ -223,7 +228,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
 
   const onCloseInner = () => {
     setShowPop(false)
-    setActive(1)
+    setActive(innerNo)
     scaleNow()
     onClose && onClose()
     setStore({

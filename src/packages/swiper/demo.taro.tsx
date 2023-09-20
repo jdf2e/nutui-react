@@ -106,7 +106,10 @@ const SwiperDemo = () => {
         <h2>{translated.indicator}</h2>
         <Swiper
           defaultValue={0}
-          onChange={(e) => setCurrent(e.detail.current)}
+          onChange={(e) => {
+            console.log('e.detail.current', e.detail.current)
+            setCurrent(e.detail.current)
+          }}
           indicator={
             <div
               style={{

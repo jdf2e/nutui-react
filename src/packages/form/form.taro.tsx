@@ -1,9 +1,9 @@
 import React, { ReactNode } from 'react'
 import classNames from 'classnames'
+import { Context } from './context'
+import { SECRET, useForm } from './useform.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Cell from '@/packages/cell/index.taro'
-import { Context } from './context'
-import { useForm } from './useform.taro'
 import { FormInstance } from '@/packages/form/types'
 
 export interface FormProps extends BasicComponent {
@@ -53,15 +53,17 @@ export const Form = React.forwardRef<FormInstance, Partial<FormProps>>(
       ...props,
     }
 
-    let formInstance
+    let formInstance: FormInstance
     if (form !== undefined) {
       formInstance = form
     } else {
       // eslint-disable-next-line react-hooks/rules-of-hooks
       ;[formInstance] = useForm()
     }
-    formInstance.starPosition = starPosition
-    const { setCallback, submit, resetFields, setInitialValues } = formInstance
+    React.useImperativeHandle(ref, () => formInstance)
+    ;(formInstance as any).starPosition = starPosition
+    const { submit, resetFields } = formInstance
+    const { setCallback, setInitialValues } = formInstance.getInternal(SECRET)
     // 设置校验后的回调，给组件的使用者暴露的接口
     setCallback({
       onFinish,
