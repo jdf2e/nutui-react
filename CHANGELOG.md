@@ -1,3 +1,20 @@
+# v2.0.18
+`2023-09-20`
+
+* :sparkles: feat(menu): 增加受控和非受控的模式 (#1433) @oasis-cloud
+* :sparkles: feat: menu 展开关闭事件增加参数 (#1447) @oasis-cloud
+* :bug: fix(Badge): Badge位置值兼容两种类型，添加css变量min-width (#1410) @beginnerZhang
+* :bug: fix(Notify): type NotifyType incorrectly spelling warning as waring (#1441) @Katz
+* :bug: fix: calendar 在 iOS 中不展示开始和结束 (#1471) @oasis-cloud
+* :bug: fix: swiperItem 的子元素在 H5 中设置 onClick 无效 (#1472) @oasis-cloud
+* :bug: fix: uploader 列表类型内置上传按钮 (#1477) @oasis-cloud
+* :bug: fix: uploader 缩略图圆角样式未生效 (#1476) @oasis-cloud
+* :bug: fix: useFrom 类型优化 (#1473) @oasis-cloud
+* :bug: fix: zIndex 层级统一调整 (#1460) @oasis-cloud
+* :bug: fix: 组件依赖样式处理 (#1474) @xiaoyatong
+* 📖 docs: form 组件文档格式化 (#1436) @oasis-cloud
+
+
 # v2.0.17
 `2023-09-13`
 
