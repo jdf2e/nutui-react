@@ -41,7 +41,7 @@ export const Indicator: FunctionComponent<
     return childs
   }
   return (
-    <div className={classNames(classes, className)} {...rest}>
+    <div className={classNames(classPrefix, classes, className)} {...rest}>
       {renderElement()}
     </div>
   )
