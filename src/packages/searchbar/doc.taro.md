@@ -24,7 +24,7 @@ import { SearchBar } from '@nutui/nutui-react-taro';
 
 const App = () => {
   return <>
-    <SearchBar placeholder="上京东，购好物" />
+    <SearchBar backable placeholder="上京东，购好物" />
   </>
 }
 export default App;
@@ -109,19 +109,42 @@ export default App;
 
 ```tsx
 import React from "react";
-import { SearchBar, Icon } from '@nutui/nutui-react-taro';
-import { HeartFill1, StarFill, ArrowDown } from '@nutui/icons-react-taro'
+import { SearchBar } from '@nutui/nutui-react-taro';
+import {   Left,
+  Photograph,
+  ArrowDown,
+  MoreS,
+  Close,
+  Star
+} from '@nutui/icons-react-taro'
 
 const App = () => {
   return <>
     <SearchBar
-      left={<HeartFill1 size={14}/>}
-      right={<StarFill size={14} />}
+      left={
+        <>
+          <Left width={20} height={20} />
+          <Close width={20} height={20} />
+        </>
+      }
+      right={
+        <>
+          <Star
+            width={20}
+            height={20}
+            style={{
+              color: 'var(--nutui-color-primary)',
+            }}
+          />
+          <MoreS width={20} height={20} />
+        </>
+      }
       rightIn={
-        <StarFill
-          size={14}
+        <Photograph
+          width={16}
+          height={16}
           onClick={() => {
-            console.log('StarFill right in')
+            console.log('Photograph right in')
           }}
         />
       }
@@ -233,21 +256,17 @@ export default App;
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-searchbar-width | 搜索框的宽度 | `100%` |
-| \--nutui-searchbar-background | 搜索框背景色 | `$white` |
-| \--nutui-searchbar-padding | 搜索框的padding值 | `9px 10px` |
-| \--nutui-searchbar-content-border-radius | 搜索框内容区圆角 | `2px` |
-| \--nutui-searchbar-left-fontsize | 搜索框外左侧区域字号 | `12px` |
-| \--nutui-searchbar-left-padding | 搜索框外左侧区域padding值 | `0 12px 0 0` |
-| \--nutui-searchbar-left-color | 搜索框外左侧区域字色 | `$color-title` |
-| \--nutui-searchbar-right-fontsize | 搜索框外右侧区域字号 | `14px` |
-| \--nutui-searchbar-right-padding | 搜索框外右侧区域padding值 | `0 0 0 8px` |
-| \--nutui-searchbar-right-color | 搜索框外右侧区域字色 | `$color-title` |
+| \--nutui-searchbar-padding | 搜索框的padding值 | `6px 16px` |
+| \--nutui-searchbar-background | 搜索框背景色 | `$color-background` |
+| \--nutui-searchbar-color | 搜索框字色 | `$color-title` |
+| \--nutui-searchbar-gap | 搜索框各个间距 | `16px` |
+| \--nutui-searchbar-font-size | 搜索框字号 | `$font-size` |
+| \--nutui-searchbar-content-padding | 搜索框中间内容区的padding值 | `0px 12px` |
+| \--nutui-searchbar-content-background | 搜索框中间内容区的背景色 | `$color-background-overlay` |
+| \--nutui-searchbar-content-border-radius | 搜索框内容区圆角 | `4px` |
+| \--nutui-searchbar-content-round-border-radius | 搜索框内容区在round模式下的圆角 | `18px` |
 | \--nutui-searchbar-input-height | 搜索框输入区高度 | `32px` |
-| \--nutui-searchbar-input-padding | 搜索框输入区padding | `0 28px` |
-| \--nutui-searchbar-input-background | 搜索框输入区背景色 | `#f7f7f7` |
+| \--nutui-searchbar-input-padding | 搜索框输入区padding | `0 4px` |
 | \--nutui-searchbar-input-text-color | 搜索框输入区字色 | `$color-title` |
 | \--nutui-searchbar-input-curror-color | 搜索框输入区输入色 | `$color-title` |
-| \--nutui-searchbar-input-width | 搜索框输入区宽度 | `100%` |
-| \--nutui-searchbar-input-text-align | 搜索框输入区对齐方式 | `100%` |
-| \--nutui-searchbar-input-border-radius | 搜索框输入区圆角 | `16px` |
-| \--nutui-searchbar-clear-icon-padding | 搜索框清除icon的padding值 | `0 10px 0 5px` |
+| \--nutui-searchbar-input-text-align | 搜索框输入区对齐方式 | `left` |
