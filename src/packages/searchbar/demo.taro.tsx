@@ -6,7 +6,6 @@ import {
   ArrowDown,
   MoreS,
   Close,
-  Star,
 } from '@nutui/icons-react-taro'
 import {
   ConfigProvider,
@@ -130,13 +129,7 @@ const SearchBarDemo = () => {
           }
           right={
             <>
-              <Star
-                width={20}
-                height={20}
-                style={{
-                  color: 'var(--nutui-color-primary)',
-                }}
-              />
+              <span>{translated.test}</span>
               <MoreS width={20} height={20} />
             </>
           }

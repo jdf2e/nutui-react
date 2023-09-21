@@ -1,12 +1,5 @@
 import React, { useState } from 'react'
-import {
-  Left,
-  Photograph,
-  ArrowDown,
-  MoreS,
-  Close,
-  Star,
-} from '@nutui/icons-react'
+import { Left, Photograph, ArrowDown, MoreS, Close } from '@nutui/icons-react'
 import { SearchBar } from './searchbar'
 import Toast from '../toast'
 import { useTranslate } from '../../sites/assets/locale'
@@ -120,13 +113,7 @@ const SearchBarDemo = () => {
           }
           right={
             <>
-              <Star
-                width={20}
-                height={20}
-                style={{
-                  color: 'var(--nutui-color-primary)',
-                }}
-              />
+              <span>{translated.test}</span>
               <MoreS width={20} height={20} />
             </>
           }

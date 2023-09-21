@@ -64,7 +64,8 @@
     }
   }
 
-  &__left > text {
+  &__left > text,
+  &__left > view {
     margin-right: $searchbar-gap;
 
     &:last-child {
@@ -72,7 +73,8 @@
     }
   }
 
-  &__right > text {
+  &__right > text,
+  &__right > view {
     margin-left: $searchbar-gap;
 
     &:first-child {
