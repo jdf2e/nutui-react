@@ -3,23 +3,14 @@ import React, {
   useImperativeHandle,
   ForwardRefRenderFunction,
   PropsWithChildren,
-  useEffect,
 } from 'react'
 import classNames from 'classnames'
-import {
-  Link as LinkIcon,
-  Failure,
-  Del,
-  Photograph,
-  Loading,
-} from '@nutui/icons-react'
-import Progress from '@/packages/progress'
-import { Upload, UploadOptions } from './upload'
+import { Photograph } from '@nutui/icons-react'
+import { ERROR, SUCCESS, Upload, UPLOADING, UploadOptions } from './upload'
 import { useConfig } from '@/packages/configprovider'
 import { funcInterceptor } from '@/utils/interceptor'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import Button from '../button'
+import Button from '@/packages/button'
 import { usePropsValue } from '@/utils/use-props-value'
 import { Preview } from '@/packages/uploader/preview'
 
@@ -182,7 +173,6 @@ const InternalUploader: ForwardRefRenderFunction<
     beforeDelete,
     ...restProps
   } = { ...defaultProps, ...props }
-  // const [fileList, setFileList] = useState<any>(defaultValue || [])
   const [fileList, setFileList] = usePropsValue({
     value,
     defaultValue,
@@ -193,12 +183,6 @@ const InternalUploader: ForwardRefRenderFunction<
     },
   })
   const [uploadQueue, setUploadQueue] = useState<Promise<Upload>[]>([])
-
-  // useEffect(() => {
-  //   if (value) {
-  //     setFileList(value)
-  //   }
-  // }, [value])
 
   const classes = classNames(className, 'nut-uploader')
 
@@ -266,7 +250,7 @@ const InternalUploader: ForwardRefRenderFunction<
       setFileList(
         fileList.map((item) => {
           if (item.uid === fileItem.uid) {
-            item.status = 'uploading'
+            item.status = UPLOADING
             item.message = locale.uploader.uploading
             item.percentage = ((e.loaded / e.total) * 100).toFixed(0)
             onProgress && onProgress({ e, option, percentage: item.percentage })
@@ -281,14 +265,14 @@ const InternalUploader: ForwardRefRenderFunction<
     ) => {
       const list = fileList.map((item) => {
         if (item.uid === fileItem.uid) {
-          item.status = 'success'
+          item.status = SUCCESS
           item.message = locale.uploader.success
           item.responseText = responseText
         }
         return item
       })
-      onUpdate?.(list)
       setFileList(list)
+      onUpdate?.(list)
       onSuccess?.({
         responseText,
         option,
@@ -302,7 +286,7 @@ const InternalUploader: ForwardRefRenderFunction<
       setFileList(
         fileList.map((item) => {
           if (item.uid === fileItem.uid) {
-            item.status = 'error'
+            item.status = ERROR
             item.message = locale.uploader.error
             item.responseText = responseText
           }
