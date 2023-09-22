@@ -3,7 +3,7 @@ import React, {
   useImperativeHandle,
   ForwardRefRenderFunction,
   PropsWithChildren,
-  useEffect,
+  useCallback,
 } from 'react'
 import classNames from 'classnames'
 import Taro, {
@@ -11,33 +11,17 @@ import Taro, {
   uploadFile,
   getEnv,
   chooseMedia,
+  nextTick,
 } from '@tarojs/taro'
-
-import {
-  Link as LinkIcon,
-  Failure,
-  Del,
-  Photograph,
-  Loading,
-} from '@nutui/icons-react-taro'
-
-import { Image } from '@tarojs/components'
+import { Photograph } from '@nutui/icons-react-taro'
 import Button from '@/packages/button/index.taro'
-import Progress from '@/packages/progress/index.taro'
-import { UploaderTaro, UploadOptions } from './upload'
+import { ERROR, SUCCESS, UploaderTaro, UploadOptions } from './upload'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { funcInterceptor } from '@/utils/interceptor'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export type FileType<T> = { [key: string]: T }
-
-export type FileItemStatus =
-  | 'ready'
-  | 'uploading'
-  | 'success'
-  | 'error'
-  | 'removed'
+import { FileItem } from './file-item'
+import { usePropsValue } from '@/utils/use-props-value'
+import { Preview } from '@/packages/uploader/preview.taro'
 
 /** 图片的尺寸 */
 interface sizeType {
@@ -81,8 +65,8 @@ export interface UploaderProps extends BasicComponent {
   mediaType: (keyof mediaType)[]
   camera: string
   maxFileSize: number
-  defaultValue?: FileType<React.ReactNode>[]
-  value?: FileType<string>[]
+  defaultValue?: FileItem[]
+  value?: FileItem[]
   previewType: 'picture' | 'list'
   fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
   uploadIcon?: React.ReactNode
@@ -104,11 +88,11 @@ export interface UploaderProps extends BasicComponent {
   maxDuration: number
   style: React.CSSProperties
   onStart?: (option: UploadOptions) => void
-  onDelete?: (file: FileItem, fileList: FileType<React.ReactNode>[]) => void
+  onDelete?: (file: FileItem, fileList: FileItem[]) => void
   onSuccess?: (param: {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
-    fileList: FileType<React.ReactNode>[]
+    fileList: FileItem[]
   }) => void
   onProgress?: (param: {
     e: ProgressEvent<XMLHttpRequestEventTarget>
@@ -118,15 +102,15 @@ export interface UploaderProps extends BasicComponent {
   onFailure?: (param: {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
-    fileList: FileType<React.ReactNode>[]
+    fileList: FileItem[]
   }) => void
-  onUpdate?: (fileList: FileType<React.ReactNode>[]) => void
+  onUpdate?: (fileList: FileItem[]) => void
   onOversize?: (
     files: Taro.chooseImage.ImageFile[] | Taro.chooseMedia.ChooseMedia[] | any
   ) => void
-  onChange?: (param: { fileList: FileType<React.ReactNode>[] }) => void
+  onChange?: (p: FileItem[]) => void
   beforeXhrUpload?: (xhr: XMLHttpRequest, options: any) => void
-  beforeDelete?: (file: FileItem, files: FileType<React.ReactNode>[]) => boolean
+  beforeDelete?: (file: FileItem, files: FileItem[]) => boolean
   onFileItemClick?: (file: FileItem) => void
 }
 
@@ -157,30 +141,11 @@ const defaultProps = {
   preview: true,
   deletable: true,
   maxDuration: 10,
-  beforeDelete: (file: FileItem, files: FileType<string>[]) => {
+  beforeDelete: (file: FileItem, files: FileItem[]) => {
     return true
   },
 } as UploaderProps
 
-export class FileItem {
-  status: FileItemStatus = 'ready'
-
-  message = '准备中..'
-
-  uid: string = Date.now().toString()
-
-  name?: string
-
-  url?: string
-
-  type?: string
-
-  path?: string
-
-  percentage: string | number = 0
-
-  formData: any = {}
-}
 const InternalUploader: ForwardRefRenderFunction<
   unknown,
   PropsWithChildren<Partial<UploaderProps>>
@@ -229,14 +194,16 @@ const InternalUploader: ForwardRefRenderFunction<
     beforeDelete,
     ...restProps
   } = { ...defaultProps, ...props }
-  const [fileList, setFileList] = useState<any>(defaultValue || [])
+  const [fileList, setFileList] = usePropsValue({
+    value,
+    defaultValue,
+    finalValue: [],
+    onChange: (v) => {
+      console.log('inner onChange', v)
+      onChange?.(v)
+    },
+  })
   const [uploadQueue, setUploadQueue] = useState<Promise<UploaderTaro>[]>([])
-
-  useEffect(() => {
-    if (value) {
-      setFileList(value)
-    }
-  }, [value])
 
   const classes = classNames(className, 'nut-uploader')
 
@@ -320,6 +287,7 @@ const InternalUploader: ForwardRefRenderFunction<
   }
 
   const executeUpload = (fileItem: FileItem, index: number) => {
+    console.log('executeUpload ', fileList)
     const uploadOption = new UploadOptions()
     uploadOption.name = name
     uploadOption.url = url
@@ -334,75 +302,70 @@ const InternalUploader: ForwardRefRenderFunction<
 
     uploadOption.onStart = (option: UploadOptions) => {
       clearUploadQueue(index)
-      setFileList((fileList: FileType<React.ReactNode>[]) => {
-        fileList.forEach((item) => {
+      setFileList(
+        fileList.map((item) => {
           if (item.uid === fileItem.uid) {
             item.status = 'ready'
             item.message = locale.uploader.readyUpload
           }
+          return item
         })
-        return [...fileList]
-      })
+      )
       onStart && onStart(option)
     }
 
     uploadOption.onProgress = (e: any, option: UploadOptions) => {
-      setFileList((fileList: FileType<React.ReactNode>[]) => {
-        fileList.forEach((item) => {
+      setFileList(
+        fileList.map((item) => {
           if (item.uid === fileItem.uid) {
             item.status = 'uploading'
             item.message = locale.uploader.uploading
             item.percentage = e.progress
             onProgress && onProgress({ e, option, percentage: item.percentage })
           }
+          return item
         })
-        return [...fileList]
-      })
+      )
     }
 
     uploadOption.onSuccess = (
       responseText: XMLHttpRequest['responseText'],
       option: UploadOptions
     ) => {
-      setFileList((fileList: FileType<React.ReactNode>[]) => {
-        onUpdate && onUpdate(fileList)
-        fileList.forEach((item) => {
-          if (item.uid === fileItem.uid) {
-            item.status = 'success'
-            item.message = locale.uploader.success
-            item.responseText = responseText
-          }
-        })
-        return [...fileList]
+      const list = fileList.map((item) => {
+        if (item.uid === fileItem.uid) {
+          item.status = SUCCESS
+          item.message = locale.uploader.success
+          item.responseText = responseText
+        }
+        return item
       })
-      onSuccess &&
-        onSuccess({
-          responseText,
-          option,
-          fileList,
-        })
+      setFileList(list)
+      onSuccess?.({
+        responseText,
+        option,
+        fileList: list,
+      })
     }
 
     uploadOption.onFailure = (
       responseText: XMLHttpRequest['responseText'],
       option: UploadOptions
     ) => {
-      setFileList((fileList: FileType<React.ReactNode>[]) => {
-        fileList.forEach((item) => {
-          if (item.uid === fileItem.uid) {
-            item.status = 'error'
-            item.message = locale.uploader.error
-            item.responseText = responseText
-          }
-        })
-        return [...fileList]
+      const list = fileList.map((item) => {
+        if (item.uid === fileItem.uid) {
+          item.status = ERROR
+          item.message = locale.uploader.error
+          item.responseText = responseText
+        }
+        return item
       })
-      onFailure &&
-        onFailure({
-          responseText,
-          option,
-          fileList,
-        })
+      setFileList(list)
+      onFailure?.({
+        responseText,
+        option,
+        fileList: list,
+      })
     }
 
     const task = new UploaderTaro(uploadOption)
@@ -440,11 +403,9 @@ const InternalUploader: ForwardRefRenderFunction<
       fileItem.status = 'ready'
       fileItem.type = fileType
       fileItem.uid = `${fileItem.uid}_${index}`
-      if (autoUpload) {
-        fileItem.message = locale.uploader.readyUpload
-      } else {
-        fileItem.message = locale.uploader.waitingUpload
-      }
+      fileItem.message = autoUpload
+        ? locale.uploader.readyUpload
+        : locale.uploader.waitingUpload
 
       if (getEnv() === 'WEB') {
         const formData = new FormData()
@@ -461,9 +422,9 @@ const InternalUploader: ForwardRefRenderFunction<
       if (preview) {
         fileItem.url = fileType === 'video' ? file.thumbTempFilePath : filepath
       }
-
-      fileList.push(fileItem as any)
-      setFileList([...fileList])
+      console.log('readFile', fileItem)
+      fileList.push(fileItem)
+      setFileList(fileList)
       executeUpload(fileItem, index)
     })
   }
@@ -491,9 +452,9 @@ const InternalUploader: ForwardRefRenderFunction<
   }
 
   const deleted = (file: FileItem, index: number) => {
-    fileList.splice(index, 1)
-    onDelete && onDelete(file, fileList)
-    setFileList([...fileList])
+    const deletedFileList = fileList.filter((file, idx) => idx !== index)
+    onDelete?.(file, deletedFileList)
+    setFileList(deletedFileList)
   }
 
   const onDeleteItem = (file: FileItem, index: number) => {
@@ -509,7 +470,6 @@ const InternalUploader: ForwardRefRenderFunction<
     const { tempFiles } = res
     const _files: Taro.chooseMedia.ChooseMedia[] = filterFiles(tempFiles)
     readFile(_files)
-    onChange && onChange({ fileList })
   }
 
   const onChangeImage = (res: Taro.chooseImage.SuccessCallbackResult) => {
@@ -517,11 +477,10 @@ const InternalUploader: ForwardRefRenderFunction<
     const { tempFiles } = res
     const _files: Taro.chooseImage.ImageFile[] = filterFiles(tempFiles)
     readFile(_files)
-    onChange && onChange({ fileList })
   }
 
   const handleItemClick = (file: FileItem) => {
-    onFileItemClick && onFileItemClick(file)
+    onFileItemClick?.(file)
   }
 
   return (
@@ -541,112 +500,17 @@ const InternalUploader: ForwardRefRenderFunction<
         </div>
       )}
 
-      {fileList.length !== 0 &&
-        Array.isArray(fileList) &&
-        fileList.map((item: any, index: number) => {
-          return (
-            <div
-              className={`nut-uploader__preview ${previewType}`}
-              key={item.uid}
-            >
-              {previewType === 'picture' && deletable && (
-                <Failure
-                  color="rgba(0,0,0,0.6)"
-                  className="close"
-                  onClick={() => onDeleteItem(item, index)}
-                />
-              )}
-              {previewType === 'picture' && !children && (
-                <div className="nut-uploader__preview-img">
-                  {item.status === 'ready' ? (
-                    <div className="nut-uploader__preview__progress">
-                      <div className="nut-uploader__preview__progress__msg">
-                        {item.message}
-                      </div>
-                    </div>
-                  ) : (
-                    item.status !== 'success' && (
-                      <div className="nut-uploader__preview__progress">
-                        {item.failIcon !== ' ' &&
-                          item.loadingIcon !== ' ' &&
-                          (item.status === 'error'
-                            ? item.failIcon || <Failure color="#fff" />
-                            : item.loadingIcon || <Loading color="#fff" />)}
-
-                        <div className="nut-uploader__preview__progress__msg">
-                          {item.message}
-                        </div>
-                      </div>
-                    )
-                  )}
-                  {item.type.includes('image') ? (
-                    <>
-                      {item.url && (
-                        <Image
-                          className="nut-uploader__preview-img__c"
-                          style={{ objectFit: fit }}
-                          mode="aspectFit"
-                          src={item.url}
-                          onClick={() => handleItemClick(item)}
-                        />
-                      )}
-                    </>
-                  ) : (
-                    <>
-                      {previewUrl ? (
-                        <Image
-                          className="nut-uploader__preview-img__c"
-                          mode="aspectFit"
-                          src={previewUrl}
-                          onClick={() => handleItemClick(item)}
-                        />
-                      ) : (
-                        <div className="nut-uploader__preview-img__file">
-                          <div
-                            onClick={() => handleItemClick(item)}
-                            className="nut-uploader__preview-img__file__name"
-                          >
-                            <LinkIcon color="#808080" />
-                            <span>&nbsp;{item.name}</span>
-                          </div>
-                        </div>
-                      )}
-                    </>
-                  )}
-                  {item.status === 'success' ? (
-                    <div className="tips">{item.name}</div>
-                  ) : null}
-                </div>
-              )}
-
-              {previewType === 'list' && (
-                <div className="nut-uploader__preview-list">
-                  <div
-                    className={`nut-uploader__preview-img__file__name ${item.status}`}
-                    onClick={() => handleItemClick(item)}
-                  >
-                    <LinkIcon />
-                    <span>&nbsp;{item.name}</span>
-                  </div>
-                  {deletable && (
-                    <Del
-                      color="#808080"
-                      className="nut-uploader__preview-img__file__del"
-                      onClick={() => onDeleteItem(item, index)}
-                    />
-                  )}
-                  {item.status === 'uploading' && (
-                    <Progress
-                      percent={item.percentage}
-                      color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
-                      showText={false}
-                    />
-                  )}
-                </div>
-              )}
-            </div>
-          )
-        })}
+      <Preview
+        {...{
+          fileList,
+          previewType,
+          deletable,
+          onDeleteItem,
+          handleItemClick,
+          previewUrl,
+          children,
+        }}
+      />
 
       {maxCount > fileList.length && previewType === 'picture' && !children && (
         <div

@@ -13,15 +13,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Button from '@/packages/button'
 import { usePropsValue } from '@/utils/use-props-value'
 import { Preview } from '@/packages/uploader/preview'
-
-export type FileType<T> = { [key: string]: T }
-
-export type FileItemStatus =
-  | 'ready'
-  | 'uploading'
-  | 'success'
-  | 'error'
-  | 'removed'
+import { FileItem } from './file-item'
 
 export interface UploaderProps extends BasicComponent {
   url: string
@@ -103,28 +95,6 @@ const defaultProps = {
     return true
   },
 } as UploaderProps
-
-export class FileItem {
-  status: FileItemStatus = 'ready'
-
-  message = '准备中..'
-
-  uid: string = new Date().getTime().toString()
-
-  name?: string
-
-  url?: string
-
-  type?: string
-
-  path?: string
-
-  percentage: string | number = 0
-
-  formData: FormData = new FormData()
-
-  responseText?: string
-}
 
 const InternalUploader: ForwardRefRenderFunction<
   unknown,
@@ -213,6 +183,7 @@ const InternalUploader: ForwardRefRenderFunction<
   }
 
   const executeUpload = (fileItem: FileItem, index: number) => {
+    console.log('executeUpload ', fileList)
     const uploadOption = new UploadOptions()
     uploadOption.url = url
     for (const [key, value] of Object.entries<string | Blob>(data)) {
@@ -276,27 +247,26 @@ const InternalUploader: ForwardRefRenderFunction<
       onSuccess?.({
         responseText,
         option,
-        fileList,
+        fileList: list,
       })
     }
     uploadOption.onFailure = (
       responseText: XMLHttpRequest['responseText'],
       option: UploadOptions
     ) => {
-      setFileList(
-        fileList.map((item) => {
-          if (item.uid === fileItem.uid) {
-            item.status = ERROR
-            item.message = locale.uploader.error
-            item.responseText = responseText
-          }
-          return item
-        })
-      )
+      const list = fileList.map((item) => {
+        if (item.uid === fileItem.uid) {
+          item.status = ERROR
+          item.message = locale.uploader.error
+          item.responseText = responseText
+        }
+        return item
+      })
+      setFileList(list)
       onFailure?.({
         responseText,
         option,
-        fileList,
+        fileList: list,
       })
     }
     const task = new Upload(uploadOption)
@@ -322,12 +292,9 @@ const InternalUploader: ForwardRefRenderFunction<
       fileItem.type = file.type
       fileItem.formData = formData
       fileItem.uid = file.lastModified + fileItem.uid
-
-      if (autoUpload) {
-        fileItem.message = locale.uploader.readyUpload
-      } else {
-        fileItem.message = locale.uploader.waitingUpload
-      }
+      fileItem.message = autoUpload
+        ? locale.uploader.readyUpload
+        : locale.uploader.waitingUpload
 
       executeUpload(fileItem, index)
 
@@ -340,8 +307,7 @@ const InternalUploader: ForwardRefRenderFunction<
         }
         reader.readAsDataURL(file)
       } else {
-        fileList.push(fileItem)
-        setFileList([...fileList])
+        setFileList([...fileList, fileItem])
       }
     })
   }
@@ -412,7 +378,7 @@ const InternalUploader: ForwardRefRenderFunction<
   }
 
   const handleItemClick = (file: FileItem) => {
-    onFileItemClick && onFileItemClick(file)
+    onFileItemClick?.(file)
   }
 
   return (
