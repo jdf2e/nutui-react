@@ -235,6 +235,7 @@ export default App;
 | maxLength | maximum input length | `number` | `9999` |
 | clearable | whether to display the clear button | `boolean` | `true` |
 | autoFocus | auto focus | `boolean` | `false` |
+| backable | whether to display the back button | `boolean` | `false` |
 | leftIn | input box, left in area | `ReactNode` | `<Search width="12" height="12" />` |
 | rightIn | input box, right in area | `ReactNode` | `-` |
 | left | outside the input box, left | `ReactNode` | `-` |

@@ -236,6 +236,7 @@ export default App;
 | maxLength | 最大輸入長度 | `number` | `9999` |
 | clearable | 是否展示清除按鈕 | `boolean` | `true` |
 | autoFocus | 是否自動聚焦 | `boolean` | `false` |
+| backable | 是否展示返回按钮 | `boolean` | `false` |
 | left | 搜索框左側區域 | `ReactNode` | `-` |
 | right | 搜搜框右側區域 | `ReactNode` | `-` |
 | leftIn | 輸入框內左側區域 | `ReactNode` | `<Search width="12" height="12" />` |
