@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import type { ChangeEvent, FocusEvent, MouseEvent } from 'react'
-import { CircleClose, Search } from '@nutui/icons-react'
+import { MaskClose, Search, RectLeft } from '@nutui/icons-react'
 import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -21,6 +21,7 @@ export interface SearchBarProps extends BasicComponent {
   readOnly?: boolean
   /**  是否自动聚焦，iOS 系统不支持该属性	 */
   autoFocus?: boolean
+  backable: boolean
   left: React.ReactNode
   right: React.ReactNode
   leftIn: React.ReactNode
@@ -48,10 +49,11 @@ const defaultProps = {
   clearable: true,
   readOnly: false,
   autoFocus: false,
+  backable: false,
   left: '',
   right: '',
   rightIn: '',
-  leftIn: <Search width="12" height="12" />,
+  leftIn: <Search width="16" height="16" />,
 } as SearchBarProps
 export const SearchBar: FunctionComponent<
   Partial<SearchBarProps> &
@@ -75,6 +77,7 @@ export const SearchBar: FunctionComponent<
     clearable,
     readOnly,
     autoFocus,
+    backable,
     right,
     left,
     leftIn,
@@ -149,8 +152,12 @@ export const SearchBar: FunctionComponent<
     )
   }
   const renderLeft = () => {
-    if (!left) return null
-    return <div className={`${classPrefix}__left`}>{left}</div>
+    if (!backable && !left) return null
+    return (
+      <div className={`${classPrefix}__left`}>
+        {backable ? <RectLeft width="20" height="20" /> : left}
+      </div>
+    )
   }
 
   const renderRightIn = () => {
@@ -170,10 +177,10 @@ export const SearchBar: FunctionComponent<
   const handleClear = () => {
     return (
       <div
-        className={`${classPrefix}__clear ${rightIn ? 'pos-right' : ''}`}
+        className={`${classPrefix}__clear ${classPrefix}__icon`}
         onClick={(e) => clearaVal(e)}
       >
-        <CircleClose color="#555" width={12} height={12} />
+        <MaskClose />
       </div>
     )
   }
@@ -212,7 +219,7 @@ export const SearchBar: FunctionComponent<
       >
         {renderLeftIn()}
         {renderField()}
-        {renderRightIn()}
+        {clearable && !value && renderRightIn()}
         {clearable && value && handleClear()}
       </div>
       {renderRight()}

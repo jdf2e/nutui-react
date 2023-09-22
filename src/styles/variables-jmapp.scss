@@ -1531,13 +1531,13 @@ $collapse-wrapper-content-background-color: var(
 ) !default;
 
 // searchbar（✅）
+$searchbar-width: var(--nutui-searchbar-width, 100%) !default;
+$searchbar-padding: var(--nutui-searchbar-padding, 6px 16px) !default;
 $searchbar-background: var(--nutui-searchbar-background, #fff) !default;
 $searchbar-content-border-radius: var(
   --nutui-searchbar-content-border-radius,
   2px
 ) !default;
-$searchbar-padding: var(--nutui-searchbar-padding, 9px 10px) !default;
-$searchbar-width: var(--nutui-searchbar-width, 100%) !default;
 $searchbar-left-fontsize: var(--nutui-searchbar-left-fontsize, 12px) !default;
 $searchbar-left-padding: var(
   --nutui-searchbar-left-padding,
@@ -1567,7 +1567,6 @@ $searchbar-input-curror-color: var(
   --nutui-searchbar-input-curror-color,
   $color-title
 ) !default;
-$searchbar-input-width: var(--nutui-searchbar-input-width, 100%) !default;
 $searchbar-input-text-align: var(
   --nutui-searchbar-input-text-align,
   left
@@ -1575,10 +1574,6 @@ $searchbar-input-text-align: var(
 $searchbar-input-border-radius: var(
   --nutui-searchbar-input-border-radius,
   16px
-) !default;
-$searchbar-clear-icon-padding: var(
-  --nutui-searchbar-clear-icon-padding,
-  0 10px 0 5px
 ) !default;
 
 // empty（✅）

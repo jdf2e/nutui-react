@@ -4,7 +4,8 @@
   width: $searchbar-width;
   padding: $searchbar-padding;
   background: $searchbar-background;
-  color: $color-title;
+  color: $searchbar-color;
+  font-size: $searchbar-font-size;
   box-sizing: border-box;
   justify-content: center;
 
@@ -13,20 +14,72 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: $searchbar-content-padding;
     height: $searchbar-input-height;
-    background: $searchbar-input-background;
+    background: $searchbar-content-background;
     border-radius: $searchbar-content-border-radius;
   }
 
   &__icon {
-    padding: 0 5px 0 10px;
     display: flex;
     justify-content: center;
+    align-items: center;
   }
 
+  &__clear,
   &__rightin {
+    width: 16px;
+    height: 16px;
+    color: var(--nutui-black-5);
+  }
+
+  &__left,
+  &__right {
     display: flex;
-    padding: 0 5px;
+    &.nut-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &__left {
+    margin-right: $searchbar-gap;
+    & > * {
+      margin-right: $searchbar-gap;
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &__right {
+    margin-left: $searchbar-gap;
+
+    & > * {
+      margin-left: $searchbar-gap;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &__left > text,
+  &__left > view {
+    margin-right: $searchbar-gap;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__right > text,
+  &__right > view {
+    margin-left: $searchbar-gap;
+
+    &:first-child {
+      margin-left: 0;
+    }
   }
 
   &__input-box {
@@ -39,13 +92,11 @@
     border: 0;
     outline: 0;
     box-sizing: border-box;
-    width: $searchbar-input-width;
+    width: 100%;
     height: $searchbar-input-height;
     line-height: $searchbar-input-height;
-    width: 100%;
     padding: $searchbar-input-padding;
-    border-radius: 0;
-    font-size: $font-size-small;
+    font-size: $searchbar-font-size;
     color: $searchbar-input-text-color;
     caret-color: $searchbar-input-curror-color;
     background: transparent;
@@ -53,32 +104,10 @@
   }
 
   &__round {
-    border-radius: $searchbar-input-border-radius;
+    border-radius: $searchbar-content-round-border-radius;
   }
 
   &__disabled {
     cursor: not-allowed;
-  }
-
-  &__clear {
-    padding: $searchbar-clear-icon-padding;
-  }
-
-  .pos-right {
-    right: 40px;
-  }
-
-  &__left {
-    display: flex;
-    padding: $searchbar-left-padding;
-    font-size: $searchbar-left-fontsize;
-    color: $searchbar-left-color;
-  }
-
-  &__right {
-    display: flex;
-    padding: $searchbar-right-padding;
-    font-size: $searchbar-right-fontsize;
-    color: $searchbar-right-color;
   }
 }
