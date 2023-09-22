@@ -1436,10 +1436,6 @@ $menu-item-active-text-color: var(
   --nutui-menu-item-active-text-color,
   $color-primary
 ) !default;
-$menu-bar-border-bottom-color: var(
-  --nutui-menu-bar-border-bottom-color,
-  #eaf0fb
-) !default;
 $menu-bar-opened-z-index: var(--nutui-menu-bar-opened-z-index, 1000) !default;
 $menu-item-disabled-color: var(
   --nutui-menu-item-disabled-color,

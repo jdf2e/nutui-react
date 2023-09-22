@@ -2,16 +2,13 @@
 @import '../menuitem/menuitem.scss';
 
 .nut-menu {
+  position: relative;
   &.scroll-fixed {
     position: fixed;
     top: $menu-scroll-fixed-top;
     z-index: $menu-scroll-fixed-z-index;
     width: 100%;
   }
-}
-
-.nut-menu-relative {
-  position: relative;
 }
 
 .nut-menu__bar {
@@ -25,41 +22,36 @@
     z-index: $menu-bar-opened-z-index;
   }
 }
-
-.nut-menu__item {
+.nut-menu__title {
   flex: 1;
   text-align: center;
-  font-size: $menu-item-font-size;
-  color: $menu-item-text-color;
+  font-size: $menu-title-font-size;
+  color: $menu-title-color;
   min-width: 0;
-
-  &.active {
-    color: $menu-item-active-text-color;
-  }
-
-  &.disabled {
-    color: $menu-item-disabled-color;
-  }
-}
-
-.nut-menu__title-icon {
-  transition: all 0.2s linear;
-}
-
-.nut-menu__title {
   display: flex;
   align-items: center;
   justify-content: center;
   max-width: 100%;
 
+  &-text {
+    @include text-ellipsis;
+    display: block;
+    padding: $menu-title-padding;
+  }
+
+  &-icon {
+    transition: all 0.2s linear;
+  }
+
+  &.active {
+    color: $menu-item-active-color;
+  }
+
+  &.disabled {
+    color: $menu-item-disabled-color;
+  }
+
   &.active .nut-menu__title-icon {
     transform: rotate(180deg);
   }
-}
-
-.nut-menu__title-text {
-  @include text-ellipsis;
-  display: block;
-  padding-left: $menu-title-text-padding-left;
-  padding-right: $menu-title-text-padding-right;
 }
