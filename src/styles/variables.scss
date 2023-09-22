@@ -1305,56 +1305,38 @@ $pagination-lite-active-background-color: var(
 ) !default;
 
 // tabs（✅）
+$nut-tabs-title-gap: var(--nutui-tabs-title-gap, 12px) !default;
+$tabs-titles-height: var(--nutui-tabs-titles-height, 44px) !default;
 $tabs-titles-background-color: var(
   --nutui-tabs-titles-background-color,
   $color-background
 ) !default;
-$tabs-titles-border-radius: var(--nutui-tabs-titles-border-radius, 0) !default;
-$nut-tabs-title-gap: var(--nutui-tabs-title-gap, 0) !default;
-$tabs-titles-item-font-size: var(
-  --nutui-tabs-titles-item-font-size,
-  $font-size
+$tabs-titles-font-size: var(--nutui-tabs-titles-font-size, $font-size) !default;
+
+$tabs-titles-item-min-width: var(
+  --nutui-tabs-titles-item-min-width,
+  50px
+) !default;
+$tabs-titles-item-active-color: var(
+  --nutui-tabs-titles-item-active-color,
+  $color-primary
 ) !default;
 $tabs-titles-item-active-font-weight: var(
   --nutui-tabs-titles-item-active-font-weight,
   $font-weight-bold
 ) !default;
-$tabs-horizontal-tab-line-color: var(
-  --nutui-tabs-horizontal-tab-line-color,
-  $color-primary-gradient-1
-) !default;
-$tabs-horizontal-tab-line-bottom: var(
-  --nutui-tabs-horizontal-line-bottom,
-  15%
-) !default;
-$tabs-horizontal-tab-line-border-radius: var(
-  --nutui-tabs-horizontal-line-border-radius,
+// $tabs-titles-item-active-background-color: var(--nutui-tabs-titles-item-active-background-color,
+//         $color-background-overlay) !default;
+$tabs-tab-line-width: var(--nutui-tabs-tab-line-width, 12px) !default;
+$tabs-tab-line-height: var(--nutui-tabs-tab-line-height, 2px) !default;
+$tabs-tab-line-color: var(--nutui-tabs-tab-line-color, $color-primary) !default;
+$tabs-tab-line-bottom: var(--nutui-tabs-line-bottom, 15%) !default;
+$tabs-tab-line-border-radius: var(
+  --nutui-tabs-line-border-radius,
   2px
 ) !default;
-$tabs-horizontal-tab-line-opacity: var(
-  --nutui-tabs-horizontal-tab-line-opacity,
-  1
-) !default;
-$tabs-horizontal-titles-height: var(
-  --nutui-tabs-horizontal-titles-height,
-  46px
-) !default;
-$tabs-horizontal-titles-item-min-width: var(
-  --nutui-tabs-horizontal-titles-item-min-width,
-  50px
-) !default;
-$tabs-horizontal-titles-item-active-background-color: var(
-  --nutui-tabs-horizontal-titles-item-active-background-color,
-  $color-background-overlay
-) !default;
-$tabs-horizontal-titles-item-active-line-width: var(
-  --nutui-tabs-horizontal-titles-item-active-line-width,
-  40px
-) !default;
-$tabs-horizontal-titles-item-active-line-height: var(
-  --nutui-tabs-horizontal-titles-item-active-line-height,
-  3px
-) !default;
+$tabs-tab-line-opacity: var(--nutui-tabs-tab-line-opacity, 1) !default;
+
 $tabs-vertical-tab-line-color: var(
   --nutui-tabs-vertical-tab-line-color,
   linear-gradient(180deg, $color-primary-stop-1 0%, $color-primary-light 100%)

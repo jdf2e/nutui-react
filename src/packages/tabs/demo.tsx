@@ -3,6 +3,7 @@ import { Dongdong, Jd } from '@nutui/icons-react'
 import { Tabs } from './tabs'
 import Swiper from '../swiper'
 import { useTranslate } from '../../sites/assets/locale'
+import ConfigProvider from '@/packages/configprovider'
 
 interface T {
   basic: string
@@ -114,10 +115,31 @@ const TabsDemo = () => {
   const swiperRef = useRef<any>(null)
   const [tabIndex, setTabIndex] = useState<string | number>(0)
 
+  const customTheme = {
+    nutuiTabsTabLineOpacity: '0',
+    nutuiTabsTitlesItemActiveColor: `#333`,
+    nutuiCountupColor: `#fff`,
+    nutuiCountupLrMargin: `1px`,
+  }
+
   return (
     <>
       <div className="demo full no-overflow">
         <h2>{translated.basic}</h2>
+
+        <ConfigProvider theme={customTheme}>
+          <Tabs
+            value={tab1value}
+            onChange={(value) => {
+              setTab1value(value)
+            }}
+          >
+            <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
+            <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+            <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+          </Tabs>
+        </ConfigProvider>
+
         <Tabs
           value={tab1value}
           onChange={(value) => {
@@ -389,7 +411,7 @@ const TabsDemo = () => {
           onChange={(value) => {
             setTab11value(value)
           }}
-          style={{ '--nutui-tabs-titles-item-font-size': '20px' }}
+          style={{ '--nutui-tabs-titles-font-size': '20px' }}
         >
           <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
           <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
@@ -400,7 +422,7 @@ const TabsDemo = () => {
           onChange={(value) => {
             setTab12value(value)
           }}
-          style={{ '--nutui-tabs-titles-item-font-size': '12px' }}
+          style={{ '--nutui-tabs-titles-font-size': '12px' }}
         >
           <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
           <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>

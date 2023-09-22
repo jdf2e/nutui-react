@@ -1337,12 +1337,8 @@ $tabs-titles-background-color: var(
   --nutui-tabs-titles-background-color,
   $color-background
 ) !default;
-$tabs-titles-border-radius: var(--nutui-tabs-titles-border-radius, 0) !default;
 $nut-tabs-title-gap: var(--nutui-tabs-title-gap, 0) !default;
-$tabs-titles-item-font-size: var(
-  --nutui-tabs-titles-item-font-size,
-  $font-size
-) !default;
+$tabs-titles-font-size: var(--nutui-tabs-titles-font-size, $font-size) !default;
 
 $tabs-titles-item-color: var(
   --nutui-tabs-titles-item-color,
