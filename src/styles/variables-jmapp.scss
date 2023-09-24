@@ -1337,8 +1337,7 @@ $tabs-titles-background-color: var(
   --nutui-tabs-titles-background-color,
   $color-background
 ) !default;
-$nut-tabs-title-gap: var(--nutui-tabs-title-gap, 0) !default;
-$tabs-titles-font-size: var(--nutui-tabs-titles-font-size, $font-size) !default;
+$tabs-titles-gap: var(--nutui-tabs-title-gap, 0) !default;
 
 $tabs-titles-item-color: var(
   --nutui-tabs-titles-item-color,
@@ -1396,12 +1395,12 @@ $tabs-vertical-titles-item-height: var(
   --nutui-tabs-vertical-titles-item-height,
   40px
 ) !default;
-$tabs-vertical-titles-item-active-line-width: var(
-  --nutui-tabs-vertical-titles-item-active-line-width,
+$tabs-vertical-tab-line-width: var(
+  --nutui-tabs-vertical-tab-line-width,
   3px
 ) !default;
-$tabs-vertical-titles-item-active-line-height: var(
-  --nutui-tabs-vertical-titles-item-active-line-height,
+$tabs-vertical-tab-line-height: var(
+  --nutui-tabs-vertical-tab-line-height,
   14px
 ) !default;
 $tabs-vertical-titles-width: var(

@@ -1305,14 +1305,13 @@ $pagination-lite-active-background-color: var(
 ) !default;
 
 // tabs（✅）
-$nut-tabs-title-gap: var(--nutui-tabs-title-gap, 12px) !default;
 $tabs-titles-height: var(--nutui-tabs-titles-height, 44px) !default;
 $tabs-titles-background-color: var(
   --nutui-tabs-titles-background-color,
   $color-background
 ) !default;
+$tabs-titles-gap: var(--nutui-tabs-titles-gap, 12px) !default;
 $tabs-titles-font-size: var(--nutui-tabs-titles-font-size, $font-size) !default;
-
 $tabs-titles-item-min-width: var(
   --nutui-tabs-titles-item-min-width,
   50px
@@ -1325,8 +1324,14 @@ $tabs-titles-item-active-font-weight: var(
   --nutui-tabs-titles-item-active-font-weight,
   $font-weight-bold
 ) !default;
-// $tabs-titles-item-active-background-color: var(--nutui-tabs-titles-item-active-background-color,
-//         $color-background-overlay) !default;
+$tabs-titles-item-active-font-size: var(
+  --nutui-tabs-titles-item-active-font-size,
+  $font-size-large
+) !default;
+$tabs-titles-item-active-background-color: var(
+  --nutui-tabs-titles-item-active-background-color,
+  $color-background-overlay
+) !default;
 $tabs-tab-line-width: var(--nutui-tabs-tab-line-width, 12px) !default;
 $tabs-tab-line-height: var(--nutui-tabs-tab-line-height, 2px) !default;
 $tabs-tab-line-color: var(--nutui-tabs-tab-line-color, $color-primary) !default;
@@ -1336,26 +1341,25 @@ $tabs-tab-line-border-radius: var(
   2px
 ) !default;
 $tabs-tab-line-opacity: var(--nutui-tabs-tab-line-opacity, 1) !default;
-
-$tabs-vertical-tab-line-color: var(
-  --nutui-tabs-vertical-tab-line-color,
-  linear-gradient(180deg, $color-primary-stop-1 0%, $color-primary-light 100%)
+$tabs-vertical-titles-width: var(
+  --nutui-tabs-vertical-titles-width,
+  100px
 ) !default;
 $tabs-vertical-titles-item-height: var(
   --nutui-tabs-vertical-titles-item-height,
   40px
 ) !default;
-$tabs-vertical-titles-item-active-line-width: var(
-  --nutui-tabs-vertical-titles-item-active-line-width,
+$tabs-vertical-tab-line-color: var(
+  --nutui-tabs-vertical-tab-line-color,
+  linear-gradient(180deg, $color-primary-stop-1 0%, $color-primary-light 100%)
+) !default;
+$tabs-vertical-tab-line-width: var(
+  --nutui-tabs-vertical-tab-line-width,
   3px
 ) !default;
-$tabs-vertical-titles-item-active-line-height: var(
-  --nutui-tabs-vertical-titles-item-active-line-height,
-  14px
-) !default;
-$tabs-vertical-titles-width: var(
-  --nutui-tabs-vertical-titles-width,
-  100px
+$tabs-vertical-tab-line-height: var(
+  --nutui-tabs-vertical-tab-line-height,
+  12px
 ) !default;
 
 // indicator（✅）

@@ -53,7 +53,7 @@ const App = () => {
     <>
       <Tabs value={tab1value} onChange={(value) => {
         setTab1value(value)
-      }} type="smile">
+      }} activeType="smile">
         <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
@@ -64,6 +64,33 @@ const App = () => {
 export default App;
 ```
 
+:::
+
+
+### 基礎用法-簡約模式
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs value={tab1value} onChange={(value) => {
+        setTab1value(value)
+      }} activeType="simple">
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
 :::
 
 ### 基礎用法-Title 左對齊
@@ -285,7 +312,7 @@ const App = () => {
         setTab3value(value)
       }}>
         {list3.map(item => <Tabs.TabPane key={item}
-                                         title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
+            title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
       </Tabs>
     </>
   );
@@ -340,7 +367,7 @@ const App = () => {
               setTab5value(value)
             }} direction="vertical">
         {list5.map(item => <Tabs.TabPane key={item}
-                                         title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
+            title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
       </Tabs>
     </>
   );
@@ -366,7 +393,7 @@ const App = () => {
       <Tabs style={{ height: '300px' }} value={tab6value}
             onChange={(value) => {
               setTab6value(value)
-            }} type="smile" direction="vertical">
+            }} activeType="smile" direction="vertical">
         {list5.map(item => <Tabs.TabPane key={item}
                                          title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
       </Tabs>
@@ -396,7 +423,6 @@ const App = () => {
         onChange={(value) => {
           setTab8value(value)
         }}
-        type="smile"
         direction="vertical"
       >
         <Tabs.TabPane title="Tab 1">
@@ -405,7 +431,6 @@ const App = () => {
             onChange={(value) => {
               setTab9value(value)
             }}
-            type="smile"
             direction="horizontal"
           >
             <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
@@ -423,7 +448,6 @@ const App = () => {
           setTab8value(paneKey)
         }}
         autoHeight
-        type="smile"
       >
         <Tabs.TabPane title="Tab 1">
           <Tabs
@@ -550,8 +574,8 @@ export default App;
 | value | 當前激活 tab 面闆的值 | `number` \| `string` | `0` |
 | defaultValue | 初始化激活 tab 的值 | `number` \| `string` | `0` |
 | activeColor | 標簽選中色 | `string` | `#1a1a1a` |
-| direction | 使用橫縱方嚮 | `horizontal` \| `vertical`  | `horizontal` |
-| activeType | 選中底部展示樣式 可選值 `line`、`smile` | `string` | `line` |
+| direction | 使用橫縱方嚮 | `horizontal` \| `vertical` | `horizontal` |
+| activeType | 選中底部展示樣式 可選值 `line`、`smile`、`simple` | `line` \| `smile` \| `simple` | `line` |
 | duration | 切換動畫時長,單位 ms 0 代錶無動畫 | `number` \| `string` | `300` |
 | title | 自定義導航區域 | `() => JSX.Element[]` | `-` |
 | align | 標題左對齊 | `left` \| `right` | `-` |
@@ -578,21 +602,24 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
+| \--nutui-tabs-titles-height | 水平方嚮標題的高度 | `44px` |
 | \--nutui-tabs-titles-background-color | Tab 標題的背景色 | `$color-background` |
-| \--nutui-tabs-titles-font-size | Tab 標題的字號 | `$font-size` |
 | \--nutui-tabs-title-gap | Tab 標題的左右 margin | `0px` |
-| \--nutui-tabs-titles-item-active-font-weight | Tab 選中標題的字重 | `600` |
-| \--nutui-tabs-tab-line-color | 水平方嚮線條顏色 | `linear-gradient(90deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |
-| \--nutui-tabs-line-bottom | 水平方嚮線條距離 | `15%` |
-| \--nutui-tabs-line-border-radius | 水平方嚮線的圓角 | `0px` |
-| \--nutui-tabs-tab-line-opacity | 水平方嚮線的透明度 | `1` |
-| \--nutui-tabs-titles-height | 水平方嚮標題的高度 | `46px` |
+| \--nutui-tabs-titles-font-size | Tab 標題的字號 | `$font-size` |
 | \--nutui-tabs-titles-item-min-width | 水平方嚮標題的最小寬度 | `50px` |
+| \--nutui-tabs-titles-item-active-color | Tab 選中標題的字色 | `$color-primary` |
+| \--nutui-tabs-titles-item-active-font-weight | Tab 選中標題的字重 | `$font-weight-bold` |
+| \--nutui-tabs-titles-item-active-font-size | Tab 選中標題的字號 | `$font-size-large` |
 | \--nutui-tabs-titles-item-active-background-color | 水平方嚮激活選項卡標題的背景色 | `$color-background-overlay` |
-| \--nutui-tabs-tab-line-width | 水平方嚮激活選項卡線條的寬度 | `40px` |
-| \--nutui-tabs-tab-line-height | 水平方嚮激活選項卡線條的高度 | `3px` |
-| \--nutui-tabs-vertical-tab-line-color | 垂直方嚮線條顏色 | `linear-gradient(180deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |
-| \--nutui-tabs-vertical-titles-item-height | 垂直方嚮標題的高度 | `40px` |
-| \--nutui-tabs-vertical-titles-item-active-line-width | 垂直方嚮標題線條的寬度 | `3px` |
-| \--nutui-tabs-vertical-titles-item-active-line-height | 垂直方嚮標題線條的高度 | `14px` |
+| \--nutui-tabs-tab-line-width | 水平方嚮激活選項卡線條的寬度 | `12px` |
+| \--nutui-tabs-tab-line-height | 水平方嚮激活選項卡線條的高度 | `2px` |
+| \--nutui-tabs-tab-line-color | 水平方嚮線條顏色 | `$color-primary` |
+| \--nutui-tabs-line-bottom | 水平方嚮線條距離 | `15%` |
+| \--nutui-tabs-line-border-radius | 水平方嚮線的圓角 | `2px` |
+| \--nutui-tabs-tab-line-opacity | 水平方嚮線的透明度 | `1` |
 | \--nutui-tabs-vertical-titles-width | 垂直方嚮標題的寬度 | `100px` |
+| \--nutui-tabs-vertical-titles-item-height | 垂直方嚮標題的高度 | `40px` |
+
+| \--nutui-tabs-vertical-tab-line-color | 垂直方嚮線條顏色 | `linear-gradient(180deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |
+| \--nutui-tabs-vertical-tab-line-width | 垂直方嚮標題線條的寬度 | `3px` |
+| \--nutui-tabs-vertical-tab-line-height | 垂直方嚮標題線條的高度 | `12px` |

@@ -50,8 +50,8 @@
     flex: 1;
     align-items: center;
     justify-content: center;
-    margin: 0 $nut-tabs-title-gap;
-    // min-width: $tabs-titles-item-min-width;
+    margin: 0 $tabs-titles-gap;
+    min-width: $tabs-titles-item-min-width;
     font-size: $tabs-titles-font-size;
     color: $color-title;
     overflow: hidden;
@@ -103,18 +103,18 @@
       color: $tabs-titles-item-active-color;
       font-weight: $tabs-titles-item-active-font-weight;
 
-      .nut-tabs__titles-item__smile {
-        overflow: unset;
-        width: 40px;
-        height: 20px;
-      }
-
       .nut-tabs__titles-item__line {
         overflow: unset;
         content: ' ';
         width: $tabs-tab-line-width;
         height: $tabs-tab-line-height;
         background: $tabs-tab-line-color;
+      }
+
+      .nut-tabs__titles-item__smile {
+        overflow: unset;
+        width: 40px;
+        height: 20px;
       }
     }
 
@@ -124,6 +124,13 @@
 
     &:first-child {
       margin-left: 0;
+    }
+  }
+
+  &--none {
+    .nut-tabs__titles-item--active {
+      color: $color-title;
+      font-size: $tabs-titles-item-active-font-size;
     }
   }
 }
@@ -176,12 +183,12 @@
     }
 
     &--active {
-      // background-color: $tabs-titles-item-active-background-color;
+      background-color: $tabs-titles-item-active-background-color;
 
       .nut-tabs__titles-item__line {
         left: 10px;
-        width: $tabs-vertical-titles-item-active-line-width;
-        height: $tabs-vertical-titles-item-active-line-height;
+        width: $tabs-vertical-tab-line-width;
+        height: $tabs-vertical-tab-line-height;
         background: $tabs-vertical-tab-line-color;
       }
 
@@ -261,6 +268,7 @@
         &--active {
           color: $color-primary;
           font-weight: $tabs-titles-item-active-font-weight;
+          font-size: $tabs-titles-item-active-font-size;
 
           .nut-tabs__titles-item__line {
             content: ' ';

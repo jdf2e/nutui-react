@@ -3,11 +3,11 @@ import { Dongdong, Jd } from '@nutui/icons-react'
 import { Tabs } from './tabs'
 import Swiper from '../swiper'
 import { useTranslate } from '../../sites/assets/locale'
-import ConfigProvider from '@/packages/configprovider'
 
 interface T {
   basic: string
   title1: string
+  title111: string
   title2: string
   title3: string
   title4: string
@@ -30,6 +30,7 @@ const TabsDemo = () => {
     'zh-CN': {
       basic: '基础用法',
       title1: '基础用法-微笑曲线',
+      title111: '基础用法-简约模式',
       title2: '通过 value 匹配',
       title3: '数据异步渲染 3s',
       title4: '数量多,滚动操作',
@@ -49,6 +50,7 @@ const TabsDemo = () => {
     'en-US': {
       basic: 'Basic Usage',
       title1: 'Basic Usage - Smile Curve',
+      title111: 'Basic Usage - simple mode',
       title2: 'Match by value',
       title3: 'Data is rendered asynchronously for 3s',
       title4: 'A large number of scrolling operations',
@@ -69,6 +71,7 @@ const TabsDemo = () => {
 
   const [tab1value, setTab1value] = useState<string | number>('0')
   const [tab11value, setTab11value] = useState<string | number>('0')
+  const [tab111value, setTab111value] = useState<string | number>('0')
   const [tab12value, setTab12value] = useState<string | number>('0')
   const [tab2value, setTab2value] = useState<string | number>('0')
   const [tab3value, setTab3value] = useState<string | number>('0')
@@ -115,30 +118,10 @@ const TabsDemo = () => {
   const swiperRef = useRef<any>(null)
   const [tabIndex, setTabIndex] = useState<string | number>(0)
 
-  const customTheme = {
-    nutuiTabsTabLineOpacity: '0',
-    nutuiTabsTitlesItemActiveColor: `#333`,
-    nutuiCountupColor: `#fff`,
-    nutuiCountupLrMargin: `1px`,
-  }
-
   return (
     <>
       <div className="demo full no-overflow">
         <h2>{translated.basic}</h2>
-
-        <ConfigProvider theme={customTheme}>
-          <Tabs
-            value={tab1value}
-            onChange={(value) => {
-              setTab1value(value)
-            }}
-          >
-            <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
-            <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
-            <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
-          </Tabs>
-        </ConfigProvider>
 
         <Tabs
           value={tab1value}
@@ -159,6 +142,18 @@ const TabsDemo = () => {
           activeType="smile"
         >
           <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+        </Tabs>
+        <h2>{translated.title111}</h2>
+        <Tabs
+          value={tab111value}
+          activeType="simple"
+          onChange={(value) => {
+            setTab111value(value)
+          }}
+        >
+          <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
           <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
           <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
         </Tabs>

@@ -66,6 +66,33 @@ export default App;
 
 :::
 
+
+### Basic Usage - Simple Mode
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs value={tab1value} onChange={(value) => {
+        setTab1value(value)
+      }} activeType="simple">
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+:::
+
 ### Basic Usage - Title Left Align
 
 :::demo
@@ -378,6 +405,7 @@ export default App;
 
 :::
 
+
 ### Tabs in Tabs
 
 :::demo
@@ -548,7 +576,7 @@ export default App;
 | defaultValue | Initialize the value of the active tab | `number` \| `string` | `0` |
 | activeColor | Label selected color | `string` | `#1a1a1a` |
 | direction | Use horizontal and vertical directions | `horizontal` \| `vertical` | `horizontal` |
-| activeType | Select the bottom display style Optional values `line`, `smile` | `string` | `line` |
+| activeType | Select the bottom display style Optional values `line`, `smile`, `simple` | `line` \| `smile` \| `simple` | `line` |
 | duration | Switch animation duration, unit ms 0 means no animation | `number` \| `string` | `300` |
 | title | custom navigation area | `() => JSX.Element[]` | `-` |
 | align | title left alignment | `left` \| `right` | `-` |
@@ -575,21 +603,28 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
+| \--nutui-tabs-titles-height | height of titles in horizontal direction | `44px` |
 | \--nutui-tabs-titles-background-color | Tab title background color | `$color-background` |
-| \--nutui-tabs-titles-font-size | Tab title font size | `$font-size` |
 | \--nutui-tabs-title-gap | Tab title margin | `0px` |
-| \--nutui-tabs-titles-item-active-font-weight | Tab selected titles font weight | `600` |
-| \--nutui-tabs-tab-line-color | Horizontal line color | `linear-gradient(90deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |
-| \--nutui-tabs-line-bottom | Horizontal line distance | `15%` |
-| \--nutui-tabs-line-border-radius | rounded corners for horizontal lines | `0px` |
-| \--nutui-tabs-tab-line-opacity | Opacity of horizontal tabs | `1` |
-| \--nutui-tabs-titles-height | height of titles in horizontal direction | `46px` |
+| \--nutui-tabs-titles-font-size | Tab title font size | `$font-size` |
+
 | \--nutui-tabs-titles-item-min-width | Minimum width of horizontal titles | `50px` |
+| \--nutui-tabs-titles-item-active-color | Tab selected titles font color | `$color-primary` |
+| \--nutui-tabs-titles-item-active-font-weight | Tab selected titles font weight | `$font-weight-bold` |
+| \--nutui-tabs-titles-item-active-font-size | Tab selected titles font size | `$font-size-large` |
 | \--nutui-tabs-titles-item-active-background-color | Background color of active tab titles in horizontal direction | `$color-background-overlay` |
-| \--nutui-tabs-tab-line-width | Horizontal active tab line width | `40px` |
-| \--nutui-tabs-tab-line-height | Height of active tabs line in horizontal direction | `3px` |
-| \--nutui-tabs-vertical-tab-line-color | vertical line color | `linear-gradient(180deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |
-| \--nutui-tabs-vertical-titles-item-height | height of vertical titles | `40px` |
-| \--nutui-tabs-vertical-titles-item-active-line-width | Vertical title line width | `3px` |
-| \--nutui-tabs-vertical-titles-item-active-line-height | The height of the vertical title line | `14px` |
+
+| \--nutui-tabs-tab-line-width |  Horizontal active tab line width | `12px` |
+| \--nutui-tabs-tab-line-height | Height of active tabs line in horizontal direction | `2px` |
+| \--nutui-tabs-tab-line-color | Horizontal line color | `$color-primary` |
+| \--nutui-tabs-line-bottom | Horizontal line distance | `15%` |
+| \--nutui-tabs-line-border-radius | rounded corners for horizontal lines | `2px` |
+| \--nutui-tabs-tab-line-opacity | Opacity of horizontal tabs | `1` |
 | \--nutui-tabs-vertical-titles-width | Width of vertical titles | `100px` |
+| \--nutui-tabs-vertical-titles-item-height |  height of vertical titles | `40px` |
+| \--nutui-tabs-vertical-tab-line-color | vertical line color | `linear-gradient(180deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |
+| \--nutui-tabs-vertical-tab-line-width | Vertical title line width | `3px` |
+| \--nutui-tabs-vertical-tab-line-height | The height of the vertical title line | `12px` |
+
+
+
