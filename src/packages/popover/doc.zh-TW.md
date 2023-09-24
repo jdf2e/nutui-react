@@ -73,7 +73,7 @@ export default App
 ```tsx
 import React, { useState, useRef } from 'react'
 import { Popover, Button } from '@nutui/nutui-react'
-import { My2, Cart2, Location2 } from '@nutui/icons-react'
+import { My2, Cart2, Location2, Close } from '@nutui/icons-react'
 
 const App = () => {
   const [showIcon, setShowIcon] = useState(false)
@@ -82,17 +82,36 @@ const App = () => {
     {
       key: 'key1',
       name: 'option1',
-      icon: <My2 color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />,
+      icon: <My2 color="rgba(250, 44, 25, 1)"  />,
+      action: {
+        icon: <Close />,
+        onClick: (e: any) => {
+          console.log('onclick 1')
+          e.stopPropagation()
+        },
+      },
     },
     {
       key: 'key2',
       name: 'option2',
-      icon: <Cart2 style={{ marginRight: '8px' }} />,
+      icon: <Cart2  />,
+      action: {
+        icon: <Close />,
+        onClick: () => {
+          console.log('onclick 2')
+        },
+      },
     },
     {
       key: 'key3',
       name: 'option3',
-      icon: <Location2 style={{ marginRight: '8px' }} />,
+      icon: <Location2  />,
+      action: {
+        icon: <Close />,
+        onClick: () => {
+          console.log('onclick 3')
+        },
+      },
     },
   ]
   const itemListDisabled = [
@@ -400,17 +419,17 @@ const App = () => {
     {
       key: 'key1',
       name: 'option1',
-      icon: <My2 color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />,
+      icon: <My2 color="rgba(250, 44, 25, 1)"  />,
     },
     {
       key: 'key2',
       name: 'option2',
-      icon: <Cart2 style={{ marginRight: '8px' }} />,
+      icon: <Cart2  />,
     },
     {
       key: 'key3',
       name: 'option3',
-      icon: <Location2 style={{ marginRight: '8px' }} />,
+      icon: <Location2  />,
     },
   ]
 
@@ -498,24 +517,20 @@ export default App
 ### Props
 
 | 屬性 | 說明 | 類型 | 默認值 |
-| ---- | ---------- | ------------- | ---------- |
+| --- | --- | --- | --- |
 | list | 選項列錶 | `List[]` | `[]` |
-| visible | 是否展示氣泡彈出層 | `boolean` | `false`  |
+| visible | 是否展示氣泡彈出層 | `boolean` | `false` |
 | location | 彈出位置，裏面具體的參數值可以參考上面的位置自定義例子 | `string` | `bottom` |
 | offset | 出現位置的偏移量 | `string[]` \| `number[]` | `[0, 12]` |
+| arrowOffset | 小箭頭的偏移量 | `number` | `0` |
 | showArrow | 是否顯示小箭頭 | `boolean` | `true` |
-| duration | 動畫時長，單位秒 | `string \| number` | `0.3` |
-| overlay | 是否顯示遮罩層 | `boolean` | `false` |
-| overlayClassName | 自定義遮罩層類名 | `string` | `-` |
-| overlayStyle | 自定義遮罩層樣式 | `React.CSSProperties` | `{}` |
-| closeOnOverlayClick | 是否在點擊遮罩層後關閉菜單 | `boolean` | `true` |
 | closeOnActionClick | 是否在點擊選項後關閉 | `boolean` | `true` |
 | closeOnOutsideClick | 是否在點擊外部元素後關閉菜單 | `boolean` | `true` |
 | targetId | 自定義目標元素 id | `string` | `-` |
-| onClick | 點擊切換 popover 展示狀態 | `() => void` | `() =&amp;gt; {}` |
-| onSelect | 點擊選項時觸發 | `(item: List, index: number) => void` | `(item, index) =&amp;gt; {}` |
-| onOpen | 點擊菜單時觸發 | `() => void` | `() =&amp;gt; {}` |
-| onClose | 關閉菜單時觸發 | `() => void` | `() =&amp;gt; {}` |
+| onClick | 點擊切換 popover 展示狀態 | `() => void` | `() => {}` |
+| onSelect | 點擊選項時觸發 | `(item: List, index: number) => void` | `(item, index) => {}` |
+| onOpen | 點擊菜單時觸發 | `() => void` | `() => {}` |
+| onClose | 關閉菜單時觸發 | `() => void` | `() => {}` |
 
 ```
 此外，還支持Popup組件的overlayStyle、overlayClassName、overlay、closeOnOverlayClick屬性。    
@@ -532,6 +547,7 @@ List 屬性是一個由對象構成的數組，數組中的每個對象配置一
 | icon | 參考 Icon 組件 | `ReactNode` | `-` |
 | disabled | 是否為禁用狀態 | `boolean` | `false` |
 | className | 為對應選項添加額外的類名 | `string` | `-` |
+| action | 為對應選項添加方法 | `{ icon?: React.ReactNode; onClick?: (e: any) => void }` | `-` |
 
 ## 主題定制
 
@@ -542,12 +558,10 @@ List 屬性是一個由對象構成的數組，數組中的每個對象配置一
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-popover-border-radius | popover 內容區的 border 的圓角值 | `8px` |
-| \--nutui-popover-font-size | popover 內容區的 font-size 值 | `14px` |
-| \--nutui-popover-menu-item-hover-background-color | 手指點擊菜單選項選中的背景顏色 | `#fff` |
-| \--nutui-popover-menu-item-hover-text-color | 手指點擊菜單選項選中的文字顏色 | `#1a1a1a` |
-| \--nutui-popover-primary-text-color | 選項區的文字顏色 | `#ffffff` |
-| \--nutui-popover-content-background-color | 選項區的背景顏色 | `#ffffff` |
-| \--nutui-popover-white-background-color | top、bottom、left 和 right 的箭頭顏色 | `#ffffff` |
-| \--nutui-popover-border-bottom-color | 選項區的底部 border 顏色 | `rgba(229, 229, 229, 1)` |
-| \--nutui-popover-disable-color | 選項禁用的顏色 | `rgba(154, 155, 157, 1)` |
+| \--nutui-popover-font-size | popover 內容區的 font-size 值 | `12px` |
+| \--nutui-popover-text-color | 選項區的文字顏色 | `$color-title` |
+| \--nutui-popover-content-background-color | 選項區的背景顏色 | `$white` |
+| \--nutui-popover-border-color | top、bottom、left 和 right 的箭頭顏色| `$white` |
+| \--nutui-popover-divider-color | 選項區的底部 border 顏色 | `$color-border` |
+| \--nutui-popover-disable-color | 選項禁用的顏色 | `$color-text-disable` |
 | \--nutui-popover-menu-item-padding | 選項區菜單每一項的 padding 值 | `8px` |

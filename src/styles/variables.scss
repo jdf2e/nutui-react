@@ -1215,16 +1215,13 @@ $badge-dot-width: var(--nutui-badge-dot-width, 7px) !default;
 
 //popover（✅）
 $popover-border-radius: var(--nutui-popover-border-radius, 8px) !default;
-$popover-font-size: var(--nutui-popover-font-size, $font-size) !default;
+$popover-font-size: var(--nutui-popover-font-size, $font-size-small) !default;
 $popover-border-color: var(--nutui-popover-border-color, $white) !default;
 $popover-content-background-color: var(
   --nutui-popover-content-background-color,
   $white
 ) !default;
-$popover-primary-text-color: var(
-  --nutui-popover-primary-text-color,
-  $color-title
-) !default;
+$popover-text-color: var(--nutui-popover-text-color, $color-title) !default;
 $popover-disable-color: var(
   --nutui-popover-disable-color,
   $color-text-disable
