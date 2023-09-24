@@ -14,7 +14,7 @@
   -webkit-appearance: none;
   user-select: none;
   touch-action: manipulation;
-
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
   color: $button-default-color;
   background: $button-default-bg-color;
   border: $button-border-width solid $button-default-border-color;
