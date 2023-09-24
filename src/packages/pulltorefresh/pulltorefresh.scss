@@ -2,7 +2,7 @@
   &-head {
     overflow: hidden;
     position: relative;
-    font-size: 14px;
+    font-size: 12px;
 
     &-content {
       position: absolute;
@@ -11,8 +11,15 @@
       width: 100%;
       color: $color-title;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
+
+      &-icons {
+        width: $pulltorefresh-top-icon-width;
+        height: $pulltorefresh-top-icon-height;
+        margin-bottom: 4px;
+      }
     }
   }
 }

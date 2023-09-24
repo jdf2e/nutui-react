@@ -8,6 +8,8 @@
     justify-content: center;
     width: 100%;
     overflow: hidden;
+    font-size: $font-size-small;
+    color: $infiniteloading-color;
 
     .top-box {
       width: 100%;
@@ -15,13 +17,14 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: $color-text;
-    }
-  }
-
-  .nut-infinite-container {
-    .infiniteLi {
-      color: $color-title;
+      &-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: $pulltorefresh-top-icon-width;
+        height: $pulltorefresh-top-icon-height;
+        margin-bottom: 4px;
+      }
     }
   }
 
@@ -32,11 +35,19 @@
     width: 100%;
     padding-top: 6px;
     font-size: $font-size-small;
-    color: $infiniteloading-bottom-color;
+    color: $infiniteloading-color;
     text-align: center;
 
     .bottom-box {
-      color: $color-text;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &-icons {
+        width: $infiniteloading-bottom-icon-size;
+        height: $infiniteloading-bottom-icon-size;
+        margin-right: 8px;
+      }
     }
   }
 }

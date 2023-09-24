@@ -221,10 +221,7 @@ export const NoticeBar: FunctionComponent<
     }, time)
   }
 
-  /**
-   * 点击滚动单元
-   */
-
+  // 点击滚动单元
   const handleClickIcon = (event: MouseEvent) => {
     event.stopPropagation()
     SetShowNoticeBar(!closeable)
@@ -262,9 +259,7 @@ export const NoticeBar: FunctionComponent<
     marginTop: animate ? `-${height}px` : '',
   }
 
-  /**
-   * 垂直自定义滚动方式
-   */
+  // 垂直自定义滚动方式
   const init = (active = +0) => {
     const rects = getRect(container?.current)
     const _active = Math.max(Math.min(childCount - 1, active), 0)
@@ -419,7 +414,7 @@ export const NoticeBar: FunctionComponent<
   }
 
   const noticebarClass = classNames({
-    'nut-noticebar-page': true,
+    'nut-noticebar-box': true,
     withicon: closeable,
     close: closeable,
     wrapable: wrap,
@@ -482,12 +477,12 @@ export const NoticeBar: FunctionComponent<
               })}
             </div>
           ) : (
-            <div className="horseLamp_list" style={horseLampStyle}>
+            <div className="horseLamp-list" style={horseLampStyle}>
               {scrollList.current.map((item: string, index: number) => {
                 return (
                   // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
                   <div
-                    className="horseLamp_list_item"
+                    className="horseLamp-list-item"
                     style={{ height }}
                     key={index}
                     onClick={(e) => {

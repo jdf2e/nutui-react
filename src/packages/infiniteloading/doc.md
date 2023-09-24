@@ -297,4 +297,5 @@ export default App
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-infiniteloading-bottom-color | 滑动到底部的文字颜色 | `#c8c8c8` |
+| \--nutui-infiniteloading-color | 滑动到底部的文字颜色 | `$color-text-help` |
+| \--nutui-infiniteloading-bottom-icon-size | 滑动到底部的文字颜色 | `24px` |

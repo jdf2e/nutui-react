@@ -1,7 +1,7 @@
 .nut-noticebar {
   width: 100%;
 
-  .nut-noticebar-page {
+  .nut-noticebar-box {
     position: relative;
     display: flex;
     align-items: center;
@@ -34,7 +34,7 @@
     .left-icon {
       height: $noticebar-left-icon-width;
       min-width: $noticebar-left-icon-width;
-      margin: $noticebar-lefticon-margin;
+      margin-right: $noticebar-icon-gap;
       background-size: 100% 100%;
     }
 
@@ -43,7 +43,7 @@
       align-items: center;
       justify-content: center;
       width: $noticebar-right-icon-width;
-      margin: $noticebar-righticon-margin;
+      margin-left: $noticebar-icon-gap;
     }
 
     .wrap {
@@ -112,19 +112,19 @@
     .left-icon {
       height: $noticebar-left-icon-width;
       min-width: $noticebar-left-icon-width;
-      margin: $noticebar-lefticon-margin;
+      margin: $noticebar-icon-gap;
       background-size: 100% 100%;
       display: flex;
       align-self: center;
     }
 
-    .horseLamp_list {
+    .horseLamp-list {
       margin: 0;
       padding: 0;
       display: block;
       flex: 1;
 
-      .horseLamp_list_item {
+      .horseLamp-list-item {
         display: flex;
         align-items: center;
         height: $noticebar-height;
@@ -146,7 +146,7 @@
       display: flex;
       justify-content: center;
       width: $noticebar-right-icon-width;
-      margin: $noticebar-righticon-margin;
+      margin-left: $noticebar-icon-gap;
     }
   }
 }
