@@ -293,14 +293,13 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default Value |
 | --- | --- | --- |
+| \--nutui-noticebar-height | noticebar height | `36px` |
 | \--nutui-noticebar-background | noticebar background | `rgba(251, 248, 220, 1)` |
 | \--nutui-noticebar-color | noticebar color | `#d9500b` |
-| \--nutui-noticebar-font-size | noticebar font size | `14px` |
-| \--nutui-noticebar-height | noticebar height | `40px` |
+| \--nutui-noticebar-font-size | noticebar font size | `$font-size-small` |
 | \--nutui-noticebar-line-height | noticebar line height | `24px` |
-| \--nutui-noticebar-left-icon-width | noticebar left icon width | `16px` |
-| \--nutui-noticebar-right-icon-width | noticebar right icon width | `16px` |
 | \--nutui-noticebar-box-padding | noticebar box padding | `0 16px` |
 | \--nutui-noticebar-wrap-padding | noticebar wrap padding | `16px` |
-| \--nutui-noticebar-lefticon-margin | noticebar lefticon margin | `0px 10px` |
-| \--nutui-noticebar-righticon-margin | noticebar righticon margin | `0px 10px` |
+| \--nutui-noticebar-icon-gap | gap of icon and text | `4px` |
+| \--nutui-noticebar-left-icon-width | noticebar left icon width | `16px` |
+| \--nutui-noticebar-right-icon-width | noticebar right icon width | `16px` |

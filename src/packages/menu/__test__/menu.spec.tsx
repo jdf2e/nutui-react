@@ -45,7 +45,7 @@ test('test props', () => {
   )
   fireEvent.click(getByText('custom title'))
 
-  fireEvent.click(container.querySelectorAll('.nut-menu-item__option ')[1])
+  fireEvent.click(container.querySelectorAll('.nut-menu-container-item ')[1])
   expect(testClick).toBeCalledWith({ text: '新款商品', value: 1 })
 
   expect(container.querySelector('.custom-className')).toHaveClass(

@@ -23,7 +23,7 @@ export interface TabsProps extends BasicComponent {
   activeColor: string
   name: string
   direction: 'horizontal' | 'vertical'
-  activeType: 'line' | 'smile'
+  activeType: 'line' | 'smile' | 'simple'
   duration: number | string
   align: 'left' | 'right'
   title: () => JSX.Element[]
