@@ -137,9 +137,17 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
           }}
           {...rest}
         >
-          {Children.toArray(children).map((child, index) => (
-            <TaroSwiperItem key={index}>{child}</TaroSwiperItem>
-          ))}
+          {Children.toArray(children).map((child, index) => {
+            let className
+            if (React.isValidElement(child)) {
+              className = child.props.className
+            }
+            return (
+              <TaroSwiperItem className={className} key={index}>
+                {child}
+              </TaroSwiperItem>
+            )
+          })}
         </TaroSwiper>
       </View>
       {renderIndicator()}
