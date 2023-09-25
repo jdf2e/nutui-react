@@ -317,8 +317,8 @@ export default App
 | lockScroll | 背景是否锁定 | `boolean` | `true` |
 | scrollFixed | 滚动后是否固定，可设置固定位置 | `boolean` \| `string` \| `number` | `true` |
 | icon | 自定义标题图标 | `React.ReactNode` | `-` |
-| onOpen | menu 展开触发 | `(index: number) => void` | `-` |
-| onClose | menu 关闭触发 | `(index: number) => void` | `-` |
+| onOpen | menu 展开触发 | `(index: number, from: 'NORMAL' \| 'REF') => void` | `-` |
+| onClose | menu 关闭触发 | `(index: number, from: 'NORMAL' \| 'REF') => void` | `-` |
 
 ## Menu.Item
 
