@@ -8,6 +8,7 @@
   line-height: 24px;
   font-size: $input-font-size;
   box-sizing: border-box;
+  background-color: $color-background-overlay;
   border-bottom: $input-border-bottom-width solid $input-border-bottom;
 
   .nut-icon {

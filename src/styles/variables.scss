@@ -245,7 +245,10 @@ $cell-group-title-padding: var(
   --nutui-cell-group-title-padding,
   0 10px
 ) !default;
-$cell-group-title-color: var(--nutui-cell-group-title-color, #909ca4) !default;
+$cell-group-title-color: var(
+  --nutui-cell-group-title-color,
+  $color-title
+) !default;
 $cell-group-title-font-size: var(
   --nutui-cell-group-title-font-size,
   $font-size
@@ -260,7 +263,7 @@ $cell-group-description-padding: var(
 ) !default;
 $cell-group-description-color: var(
   --nutui-cell-group-description-color,
-  #909ca4
+  $color-text
 ) !default;
 $cell-group-description-font-size: var(
   --nutui-cell-group-description-font-size,
@@ -433,7 +436,7 @@ $inputnumber-input-width: var(--nutui-inputnumber-input-width, 40px) !default;
 $inputnumber-input-height: var(--nutui-inputnumber-input-height, 24px) !default;
 $inputnumber-input-background-color: var(
   --nutui-inputnumber-input-background-color,
-  $color-background
+  $color-background-overlay
 ) !default;
 $inputnumber-input-font-color: var(
   --nutui-inputnumber-input-font-color,
@@ -1088,7 +1091,7 @@ $signature-border-width: var(--nutui-signature-border-width, 1px) !default;
 $signature-height: var(--nutui-signature-height, 10rem) !default;
 $signature-background-color: var(
   --nutui-signature-background-color,
-  $color-background
+  $color-background-overlay
 ) !default;
 $signature-font-size: var(--nutui-signature-font-size, $font-size) !default;
 
@@ -1221,7 +1224,7 @@ $popover-content-background-color: var(
   --nutui-popover-content-background-color,
   #ffffff
 ) !default;
-$popover-text-color: var(--nutui-popover-text-color, $color-title) !default;
+$popover-text-color: var(--nutui-popover-text-color, #1a1a1a) !default;
 $popover-disable-color: var(
   --nutui-popover-disable-color,
   $color-text-disable
@@ -1408,7 +1411,7 @@ $menu-content-padding: var(--nutui-menu-content-padding, 12px 24px) !default;
 $menu-content-max-height: var(--nutui-menu-content-max-height, 214px) !default;
 $menu-content-background-color: var(
   --nutui-menu-content-background-color,
-  $color-background
+  $color-background-overlay
 ) !default;
 $menu-item-active-color: var(
   --nutui-menu-item-active-color,
@@ -1465,7 +1468,7 @@ $collapse-wrapper-content-line-height: var(
 ) !default;
 $collapse-wrapper-content-background-color: var(
   --nutui-collapse-wrapper-content-background-color,
-  $white
+  $color-background-overlay
 ) !default;
 
 // searchbar（✅）
