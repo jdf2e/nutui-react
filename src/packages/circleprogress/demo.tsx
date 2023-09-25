@@ -91,7 +91,7 @@ const CircleProgressDemo = () => {
 
         <h2>{translated['3fee7d50']}</h2>
         <Cell style={{ justifyContent: 'center' }}>
-          <CircleProgress percent={50} color="var(--nutui-brand-link-color)">
+          <CircleProgress percent={50} color="var(--nutui-color-text-link)">
             50%
           </CircleProgress>
           <CircleProgress percent={100} color={gradientColor}>
