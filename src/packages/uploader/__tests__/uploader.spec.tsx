@@ -3,6 +3,7 @@ import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { Uploader } from '../uploader'
+import { FileItem } from '../file-item'
 
 test('should render base uploader and type', () => {
   const { container, getByTestId } = render(
@@ -19,7 +20,7 @@ test('should render base uploader props', () => {
   const { container } = render(
     <Uploader
       autoUpload
-      capture
+      capture="user"
       name="files"
       accept=".jpg"
       maxFileSize={1024 * 50}
@@ -42,7 +43,7 @@ test('should render base uploader other props', () => {
   const onDelete = jest.fn()
   const fileItemClick = jest.fn()
   const App = () => {
-    const defaultFileList = [
+    const defaultFileList: FileItem[] = [
       {
         name: '文件1.png',
         url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
@@ -102,7 +103,7 @@ test('should render base uploader other props', () => {
 
 test('should render base uploader list', () => {
   const App = () => {
-    const defaultFileList = [
+    const defaultFileList: FileItem[] = [
       {
         name: '文件1.png',
         url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
@@ -151,7 +152,7 @@ test('should render base uploader props disabled', () => {
 test('before-delete prop return false', () => {
   const onDelete = jest.fn()
   const App = () => {
-    const defaultFileList = [
+    const defaultFileList: FileItem[] = [
       {
         name: '文件1.png',
         url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
@@ -180,7 +181,7 @@ test('before-delete prop return false', () => {
 test('before-delete prop return true', () => {
   const onDelete = jest.fn()
   const App = () => {
-    const defaultFileList = [
+    const defaultFileList: FileItem[] = [
       {
         name: '文件1.png',
         url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',

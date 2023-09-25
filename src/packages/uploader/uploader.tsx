@@ -39,7 +39,7 @@ export interface UploaderProps extends BasicComponent {
   clearInput: boolean
   preview: boolean
   deletable: boolean
-  capture: boolean
+  capture: boolean | 'user' | 'environment'
   className: string
   previewUrl?: string
   style: React.CSSProperties
