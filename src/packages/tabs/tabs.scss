@@ -127,7 +127,7 @@
     }
   }
 
-  &--none {
+  &--simple {
     .nut-tabs__titles-item--active {
       color: $color-title;
       font-size: $tabs-titles-item-active-font-size;
@@ -200,6 +200,10 @@
         height: 20px;
         transform: rotate(320deg);
       }
+    }
+
+    &:first-child {
+      margin: 0 $tabs-titles-gap;
     }
   }
 

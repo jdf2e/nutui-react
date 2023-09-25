@@ -6,93 +6,85 @@ exports[`should match snapshot 1`] = `
     class="nut-menu"
   >
     <div
-      class="nut-menu-relative"
+      class="nut-menu__bar"
     >
       <div
-        class="nut-menu__bar"
+        class="nut-menu__title "
       >
         <div
-          class="nut-menu__item "
+          class="nut-menu__title-text"
+        >
+          全部商品
+        </div>
+        <svg
+          aria-labelledby="ArrowDown2"
+          class="nut-menu__title-icon nut-icon nut-icon-ArrowDown2"
+          role="presentation"
+          viewBox="0 0 2472 1024"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1741.19 227.497a121.654 121.654 0 1 1 127.858 206.812L1292.65 790.27a182.482 182.482 0 0 1-191.727 0L524.646 434.31a121.654 121.654 0 1 1 127.859-206.812l544.403 335.887c181.387-111.8 362.773-223.965 544.282-335.887"
+            fill="currentColor"
+            fill-opacity="0.9"
+          />
+        </svg>
+      </div>
+    </div>
+    <div
+      class="nut-menu-container"
+    >
+      <div
+        class="nut-menu-container-wrap"
+        style="display: none;"
+      >
+        <div
+          class="nut-menu-container-content"
         >
           <div
-            class="nut-menu__title "
+            class="nut-menu-container-item active"
+            style="flex-basis: 100%;"
           >
+            <i>
+              <svg
+                aria-labelledby="Check"
+                class="nut-icon nut-icon-Check"
+                color=""
+                role="presentation"
+                viewBox="0 0 1024 1024"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M998.4 245.029c-219.429 153.6-398.629 332.8-552.229 552.228-40.228 58.514-128 54.857-164.571-3.657-69.486-106.057-149.943-186.514-256-256-51.2-32.914-18.286-113.371 40.229-98.743C182.857 460.8 274.286 508.343 358.4 585.143c157.257-190.172 358.4-340.114 588.8-435.2 62.171-25.6 106.057 58.514 51.2 95.086"
+                  fill="currentColor"
+                  fill-opacity="0.9"
+                />
+              </svg>
+            </i>
             <div
-              class="nut-menu__title-text"
+              class=""
             >
               全部商品
             </div>
-            <svg
-              aria-labelledby="ArrowDown2"
-              class="nut-menu__title-icon nut-icon nut-icon-ArrowDown2"
-              role="presentation"
-              viewBox="0 0 2472 1024"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M1741.19 227.497a121.654 121.654 0 1 1 127.858 206.812L1292.65 790.27a182.482 182.482 0 0 1-191.727 0L524.646 434.31a121.654 121.654 0 1 1 127.859-206.812l544.403 335.887c181.387-111.8 362.773-223.965 544.282-335.887"
-                fill="currentColor"
-                fill-opacity="0.9"
-              />
-            </svg>
           </div>
-        </div>
-      </div>
-      <div
-        class="nut-menu-item-container"
-      >
-        <div
-          class="nut-menu-item__wrap"
-          style="display: none;"
-        >
           <div
-            class="nut-menu-item__content"
+            class="nut-menu-container-item "
+            style="flex-basis: 100%;"
           >
             <div
-              class="nut-menu-item__option active"
-              style="flex-basis: 100%;"
+              class=""
             >
-              <i>
-                <svg
-                  aria-labelledby="Check"
-                  class="nut-icon nut-icon-Check"
-                  color=""
-                  role="presentation"
-                  viewBox="0 0 1024 1024"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M998.4 245.029c-219.429 153.6-398.629 332.8-552.229 552.228-40.228 58.514-128 54.857-164.571-3.657-69.486-106.057-149.943-186.514-256-256-51.2-32.914-18.286-113.371 40.229-98.743C182.857 460.8 274.286 508.343 358.4 585.143c157.257-190.172 358.4-340.114 588.8-435.2 62.171-25.6 106.057 58.514 51.2 95.086"
-                    fill="currentColor"
-                    fill-opacity="0.9"
-                  />
-                </svg>
-              </i>
-              <div
-                class=""
-              >
-                全部商品
-              </div>
+              新款商品
             </div>
+          </div>
+          <div
+            class="nut-menu-container-item "
+            style="flex-basis: 100%;"
+          >
             <div
-              class="nut-menu-item__option "
-              style="flex-basis: 100%;"
+              class=""
             >
-              <div
-                class=""
-              >
-                新款商品
-              </div>
-            </div>
-            <div
-              class="nut-menu-item__option "
-              style="flex-basis: 100%;"
-            >
-              <div
-                class=""
-              >
-                活动商品
-              </div>
+              活动商品
             </div>
           </div>
         </div>
