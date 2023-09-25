@@ -318,8 +318,8 @@ export default App
 | lockScroll | 背景是否鎖定 | `boolean` | `true` |
 | scrollFixed | 滾動後是否固定，可設置固定位置 | `boolean` \| `string` \| `number` | `true` |
 | icon | 自定義標題圖標 | `React.ReactNode` | `-` |
-| onOpen | menu 展开触发 | `(index: number) => void` | `-` |
-| onClose | menu 关闭触发 | `(index: number) => void` | `-` |
+| onOpen | menu 展开触发 | `(index: number, from: 'NORMAL' \| 'REF') => void` | `-` |
+| onClose | menu 关闭触发 | `(index: number, from: 'NORMAL' \| 'REF') => void` | `-` |
 
 ## Menu.Item
 

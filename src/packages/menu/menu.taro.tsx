@@ -4,6 +4,9 @@ import { ArrowDown2, ArrowUp2 } from '@nutui/icons-react-taro'
 import { OptionItem, MenuItem } from '@/packages/menuitem/menuitem.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
+export type TriggerType = 'NORMAL' | 'REF'
+export type CallBackFunction = (index: number, from?: TriggerType) => void
+
 export interface MenuProps extends BasicComponent {
   activeColor: string
   overlay: boolean
@@ -12,8 +15,8 @@ export interface MenuProps extends BasicComponent {
   lockScroll: boolean
   icon: React.ReactNode
   children: React.ReactNode
-  onOpen: (index: number) => void
-  onClose: (index: number) => void
+  onOpen: CallBackFunction
+  onClose: CallBackFunction
 }
 
 const defaultProps = {
@@ -24,8 +27,8 @@ const defaultProps = {
   lockScroll: true,
   overlay: true,
   icon: null,
-  onOpen: (index: number) => {},
-  onClose: (index: number) => {},
+  onOpen: (index: number, from: 'NORMAL' | 'REF') => {},
+  onClose: (index: number, from: 'NORMAL' | 'REF') => {},
 } as MenuProps
 export const Menu: FunctionComponent<Partial<MenuProps>> & {
   Item: typeof MenuItem
@@ -70,22 +73,22 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
 
   const [showMenuItem, setShowMenuItem] = useState<boolean[]>([])
   const [menuItemTitle, setMenuItemTitle] = useState<string[]>([])
-  const toggleMenuItem = (index: number) => {
+  const toggleMenuItem: CallBackFunction = (index, from = 'NORMAL') => {
     showMenuItem[index] = !showMenuItem[index]
     if (showMenuItem[index]) {
-      onOpen && onOpen(index)
+      onOpen && onOpen(index, from)
     } else {
-      onClose && onClose(index)
+      onClose && onClose(index, from)
     }
     const temp = showMenuItem.map((i: boolean, idx) =>
       idx === index ? i : false
     )
     setShowMenuItem([...temp])
   }
-  const hideMenuItem = (index: number) => {
+  const hideMenuItem: CallBackFunction = (index, from = 'NORMAL') => {
     showMenuItem[index] = false
     setShowMenuItem([...showMenuItem])
-    onClose && onClose(index)
+    onClose && onClose(index, from)
   }
   const updateTitle = (text: string, index: number) => {
     menuItemTitle[index] = text
