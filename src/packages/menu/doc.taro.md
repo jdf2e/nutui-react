@@ -349,22 +349,20 @@ export default App
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-menu-bar-line-height | menu标题栏的行高 | `48px` |
-| \--nutui-menu-placeholder-top | 透明遮罩层的 top 值 | `-48px` |
-| \--nutui-menu-item-font-size | 标题的字号 | `$font-size` |
-| \--nutui-menu-item-text-color | 标题的颜色 | `$color-title` |
-| \--nutui-menu-item-active-text-color | 打开状态的颜色 | `$color-primary` |
-| \--nutui-menu-bar-opened-z-index | 打开状态的 z-index | `2001` |
-| \--nutui-menu-item-disabled-color | 禁用状态的颜色 | `#969799` |
-| \--nutui-menu-title-text-padding-left | 标题的左内边距 | `8px` |
-| \--nutui-menu-title-text-padding-right | 标题的右内边距 | `8px` |
-| \--nutui-menu-item-content-padding | 菜单选项容器的内边距 | `12px 24px` |
-| \--nutui-menu-item-content-max-height | 菜单选项容器的最大高度 | `214px` |
-| \--nutui-menu-item-option-padding-top | 菜单选项的顶部内边距 | `12px` |
-| \--nutui-menu-item-option-padding-bottom | 菜单选项的底部内边距 | `12px` |
-| \--nutui-menu-item-option-i-margin-right | 菜单选项文本与icon的距离 | `6px` |
-| \--nutui-menu-bar-box-shadow | 菜单标题栏的阴影 | `0 2px 12px rgba(89, 89, 89, 0.12)` |
 | \--nutui-menu-scroll-fixed-top | fix 状态的顶部距离 | `0` |
 | \--nutui-menu-scroll-fixed-z-index | fix 状态的z-index | `$mask-z-index` |
-| \--nutui-menu-active-item-font-weight | 选中状态的字重 | `500` |
-| \--nutui-menu-item-content-bg-color | 菜单选项容器的背景色 | `$white` |
+| \--nutui-menu-bar-line-height | menu标题栏的行高 | `48px` |
+| \--nutui-menu-bar-opened-z-index | 打开状态的 z-index | `2001` |
+| \--nutui-menu-bar-box-shadow | 菜单标题栏的阴影 | `0 2px 12px rgba(89, 89, 89, 0.12)` |
+| \--nutui-menu-title-padding | 标题的内边距 | `8px` |
+| \--nutui-menu-title-font-size | 标题的字号 | `$font-size` |
+| \--nutui-menu-title-color | 标题的颜色 | `$color-title` |
+| \--nutui-menu-container-z-index | 菜单选项容器的zindex | `1000` |
+| \--nutui-menu-content-padding | 菜单选项容器的内边距 | `12px 24px` |
+| \--nutui-menu-content-max-height | 菜单选项容器的最大高度 | `214px` |
+| \--nutui-menu-content-background-color | 菜单选项容器的背景色 | `$white` |
+| \--nutui-menu-item-active-color | 打开状态的颜色 | `$color-primary` |
+| \--nutui-menu-item-active-font-weight | 选中状态的字重 | `$font-weight-bold` |
+| \--nutui-menu-item-disabled-color | 禁用状态的颜色 | `$color-text-disable` |
+| \--nutui-menu-item-padding | 菜单选项的内边距 | `12px 0` |
+| \--nutui-menu-item-icon-margin | 菜单选项文本与icon的距离 | `8px` |

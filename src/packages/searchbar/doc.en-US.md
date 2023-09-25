@@ -24,7 +24,7 @@ import { SearchBar } from '@nutui/nutui-react';
 
 const App = () => {
   return <>
-    <SearchBar placeholder="Go to jd.com and buy good things" />
+    <SearchBar backable placeholder="Go to jd.com and buy good things" />
   </>
 }
 export default App;
@@ -110,19 +110,41 @@ export default App;
 ```tsx
 import React from "react";
 import { SearchBar } from '@nutui/nutui-react';
-import { HeartFill1, StarFill, ArrowDown } from '@nutui/icons-react'
+import {   Left,
+  Photograph,
+  ArrowDown,
+  MoreS,
+  Close,
+  Star
+} from '@nutui/icons-react'
 
 const App = () => {
   return <>
     <SearchBar
-      left={<HeartFill1 width={14} height={14} />}
-      right={<StarFill width={14} height={14} />}
+      left={
+        <>
+          <Left width={20} height={20} />
+          <Close width={20} height={20} />
+        </>
+      }
+      right={
+        <>
+          <Star
+            width={20}
+            height={20}
+            style={{
+              color: 'var(--nutui-color-primary)',
+            }}
+          />
+          <MoreS width={20} height={20} />
+        </>
+      }
       rightIn={
-        <StarFill
-          width={14}
-          height={14}
+        <Photograph
+          width={16}
+          height={16}
           onClick={() => {
-            console.log('StarFill right in')
+            console.log('Photograph right in')
           }}
         />
       }
@@ -130,7 +152,6 @@ const App = () => {
   </>
 }
 export default App;
-
 ```
 
 :::
@@ -214,6 +235,7 @@ export default App;
 | maxLength | maximum input length | `number` | `9999` |
 | clearable | whether to display the clear button | `boolean` | `true` |
 | autoFocus | auto focus | `boolean` | `false` |
+| backable | whether to display the back button | `boolean` | `false` |
 | leftIn | input box, left in area | `ReactNode` | `<Search width="12" height="12" />` |
 | rightIn | input box, right in area | `ReactNode` | `-` |
 | left | outside the input box, left | `ReactNode` | `-` |
@@ -234,21 +256,18 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default Value |
 | --- | --- | --- |
 | \--nutui-searchbar-width | searchbar width | `100%` |
-| \--nutui-searchbar-background | searchbar background | `$white` |
-| \--nutui-searchbar-padding | searchbar padding | `9px 10px` |
-| \--nutui-searchbar-content-border-radius | searchbar content border radius | `2px` |
-| \--nutui-searchbar-left-fontsize | searchbar left fontsize | `12px` |
-| \--nutui-searchbar-left-padding | searchbar left padding | `0 12px 0 0` |
-| \--nutui-searchbar-left-color | searchbar left color | `$color-title` |
-| \--nutui-searchbar-right-fontsize | searchbar right fontsize | `14px` |
-| \--nutui-searchbar-right-padding | searchbar right padding | `0 0 0 8px` |
-| \--nutui-searchbar-right-color | searchbar right color | `$color-title` |
-| \--nutui-searchbar-input-height | searchbar input height | `32px` |
-| \--nutui-searchbar-input-padding | searchbar input padding | `0 28px` |
-| \--nutui-searchbar-input-background | searchbar input background | `#f7f7f7` |
+| \--nutui-searchbar-padding | searchbar padding | `6px 16px` |
+| \--nutui-searchbar-background | searchbar background | `$color-background` |
+| \--nutui-searchbar-color | searchbar font color | `$color-title` |
+| \--nutui-searchbar-gap | searchbar gap | `16px` |
+| \--nutui-searchbar-font-size | searchbar font size | `$font-size` |
+| \--nutui-searchbar-content-padding | searchbar content padding | `0px 12px` |
+| \--nutui-searchbar-content-background | searchbar content background | `$color-background-overlay` |
+| \--nutui-searchbar-content-border-radius | searchbar content border radius | `4px` |
+| \--nutui-searchbar-content-round-border-radius | searchbar content border radius when mode is round | `18px` |
+
+| \--nutui-searchbar-input-height |  searchbar input height  | `32px` |
+| \--nutui-searchbar-input-padding | searchbar input padding | `0 4px` |
 | \--nutui-searchbar-input-text-color | searchbar input text color | `$color-title` |
 | \--nutui-searchbar-input-curror-color | searchbar input curror color | `$color-title` |
-| \--nutui-searchbar-input-width | searchbar input width | `100%` |
-| \--nutui-searchbar-input-text-align | searchbar input text align | `100%` |
-| \--nutui-searchbar-input-border-radius | searchbar input border radius | `16px` |
-| \--nutui-searchbar-clear-icon-padding | searchbar clear icon padding | `0 10px 0 5px` |
+| \--nutui-searchbar-input-text-align | searchbar input text align | `left` |
