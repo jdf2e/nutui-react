@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { HeartFill1, StarFill, ArrowDown } from '@nutui/icons-react-taro'
+import {
+  Left,
+  Photograph,
+  ArrowDown,
+  MoreS,
+  Close,
+} from '@nutui/icons-react-taro'
 import {
   ConfigProvider,
   SearchBar,
@@ -94,7 +100,7 @@ const SearchBarDemo = () => {
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.title1}</h2>
-        <SearchBar placeholder={translated.basePlaceholder} />
+        <SearchBar backable placeholder={translated.basePlaceholder} />
         <h2>{translated.title2}</h2>
         <SearchBar shape="round" maxLength={5} />
         <h2>{translated.title3}</h2>
@@ -115,13 +121,24 @@ const SearchBarDemo = () => {
         />
         <h2>{translated.title5}</h2>
         <SearchBar
-          left={<HeartFill1 size={14} />}
-          right={<StarFill size={14} />}
+          left={
+            <>
+              <Left width={20} height={20} />
+              <Close width={20} height={20} />
+            </>
+          }
+          right={
+            <>
+              <span>{translated.test}</span>
+              <MoreS width={20} height={20} />
+            </>
+          }
           rightIn={
-            <StarFill
-              size={14}
+            <Photograph
+              width={16}
+              height={16}
               onClick={() => {
-                console.log('StarFill right in')
+                console.log('Photograph right in')
               }}
             />
           }

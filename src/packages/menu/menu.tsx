@@ -129,7 +129,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
         }
         return (
           <div
-            className={classNames('nut-menu__item ', className, {
+            className={classNames('nut-menu__title ', className, {
               active: showMenuItem[index],
               disabled,
             })}
@@ -141,20 +141,13 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
               !disabled && toggleMenuItem(index)
             }}
           >
-            <div
-              className={classNames('nut-menu__title ', {
-                active: showMenuItem[index],
-                disabled,
-              })}
-            >
-              <div className="nut-menu__title-text">{finallyTitle()}</div>
-              {icon ||
-                (direction === 'up' ? (
-                  <ArrowUp2 className="nut-menu__title-icon" />
-                ) : (
-                  <ArrowDown2 className="nut-menu__title-icon" />
-                ))}
-            </div>
+            <div className="nut-menu__title-text">{finallyTitle()}</div>
+            {icon ||
+              (direction === 'up' ? (
+                <ArrowUp2 className="nut-menu__title-icon" />
+              ) : (
+                <ArrowDown2 className="nut-menu__title-icon" />
+              ))}
           </div>
         )
       }
@@ -169,16 +162,14 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
       })}
       ref={menuRef}
     >
-      <div className="nut-menu-relative">
-        <div
-          className={classNames('nut-menu__bar', {
-            opened: showMenuItem.includes(true),
-          })}
-        >
-          {menuTitle()}
-        </div>
-        {cloneChildren()}
+      <div
+        className={classNames('nut-menu__bar', {
+          opened: showMenuItem.includes(true),
+        })}
+      >
+        {menuTitle()}
       </div>
+      {cloneChildren()}
     </div>
   )
 }

@@ -401,7 +401,7 @@ plugins: [
 - 移除 `leftoutIcon` 和 `label`，使用 `left` 实现
 - 移除 `rightoutIcon` 和 `actionText`，使用 `right` 实现
 - 移除 `leftinIcon`，使用 `leftIn` 实现
-- 移除 `rightinIcon`，使用 `rightIn` 实现
+- 移除 `rightinIcon`，使用 `rightIn` 实现，同时兼顾和 clearIcon 的交互，当设置rightIn时，默认展示 rightIn，当触发输入后，展示 clearIcon。同时增加 `backable` 来标记是否展示左侧返回Icon
 - 移除 `onCancel`，使用 `right` 来实现事件处理
 - 移除 `onClickLeftinIcon`，用户可使用 `left` 来实现事件处理
 - 移除 `onClickLeftoutIcon`，用户可使用 `left` 来实现事件处理
