@@ -8,6 +8,7 @@ import {
   Category,
   Scan2,
   Location,
+  Close,
   Message,
 } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
@@ -116,17 +117,36 @@ const PopoverDemo = () => {
     {
       key: 'key1',
       name: 'option1',
-      icon: <My2 color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />,
+      icon: <My2 color="rgba(250, 44, 25, 1)" />,
+      action: {
+        icon: <Close />,
+        onClick: (e: any) => {
+          console.log('onclick 1')
+          e.stopPropagation()
+        },
+      },
     },
     {
       key: 'key2',
       name: 'option2',
-      icon: <Cart2 style={{ marginRight: '8px' }} />,
+      icon: <Cart2 />,
+      action: {
+        icon: <Close />,
+        onClick: () => {
+          console.log('onclick 2')
+        },
+      },
     },
     {
       key: 'key3',
       name: 'option3',
-      icon: <Location2 style={{ marginRight: '8px' }} />,
+      icon: <Location2 />,
+      action: {
+        icon: <Close />,
+        onClick: () => {
+          console.log('onclick 3')
+        },
+      },
     },
   ]
   const itemListDisabled = [
@@ -350,9 +370,9 @@ const PopoverDemo = () => {
           </div>
         </Picker>
         <Popover
+          className="custom-color"
           visible={customPositon}
           targetId="pickerTarget"
-          className="custom-color"
           list={positionList}
           location={curPostion}
         />

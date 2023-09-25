@@ -57,3 +57,15 @@ export default App
 | renderText | 根據下拉狀態，自定義下拉提示文案 | `ReactNode` | `-` |
 | threshold | 觸發刷新需要下拉多少距離，單位為 px | `number` | `60` |
 | onRefresh | 觸發刷新時的處理函數 | `() => Promise<any>` | `-` |
+
+
+## 主題定制
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 說明 | 默認值 |
+| --- | --- | --- |
+| \--nutui-pulltorefresh-top-icon-width | 下拉時icon寬度 | `36px` |
+| \--nutui-pulltorefresh-top-icon-height | 下拉時icon高度 | `26px` |

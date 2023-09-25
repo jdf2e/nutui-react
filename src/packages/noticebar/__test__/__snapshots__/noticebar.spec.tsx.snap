@@ -6,7 +6,7 @@ exports[`noticebar base test 1`] = `
     class="nut-noticebar "
   >
     <div
-      class="nut-noticebar-page"
+      class="nut-noticebar-box"
     >
       <div
         class="left-icon"
@@ -47,7 +47,7 @@ exports[`scrollable test 1`] = `
     class="nut-noticebar "
   >
     <div
-      class="nut-noticebar-page"
+      class="nut-noticebar-box"
     >
       <div
         class="left-icon"

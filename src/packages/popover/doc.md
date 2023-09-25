@@ -73,7 +73,7 @@ export default App
 ```tsx
 import React, { useState, useRef } from 'react'
 import { Popover, Button } from '@nutui/nutui-react'
-import { My2, Cart2, Location2 } from '@nutui/icons-react'
+import { My2, Cart2, Location2, Close } from '@nutui/icons-react'
 
 const App = () => {
   const [showIcon, setShowIcon] = useState(false)
@@ -82,17 +82,36 @@ const App = () => {
     {
       key: 'key1',
       name: 'option1',
-      icon: <My2 color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />,
+      icon: <My2 color="rgba(250, 44, 25, 1)"  />,
+      action: {
+        icon: <Close />,
+        onClick: (e: any) => {
+          console.log('onclick 1')
+          e.stopPropagation()
+        },
+      },
     },
     {
       key: 'key2',
       name: 'option2',
-      icon: <Cart2 style={{ marginRight: '8px' }} />,
+      icon: <Cart2  />,
+      action: {
+        icon: <Close />,
+        onClick: () => {
+          console.log('onclick 2')
+        },
+      },
     },
     {
       key: 'key3',
       name: 'option3',
-      icon: <Location2 style={{ marginRight: '8px' }} />,
+      icon: <Location2  />,
+      action: {
+        icon: <Close />,
+        onClick: () => {
+          console.log('onclick 3')
+        },
+      },
     },
   ]
   const itemListDisabled = [
@@ -400,17 +419,17 @@ const App = () => {
     {
       key: 'key1',
       name: 'option1',
-      icon: <My2 color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />,
+      icon: <My2 color="rgba(250, 44, 25, 1)"  />,
     },
     {
       key: 'key2',
       name: 'option2',
-      icon: <Cart2 style={{ marginRight: '8px' }} />,
+      icon: <Cart2  />,
     },
     {
       key: 'key3',
       name: 'option3',
-      icon: <Location2 style={{ marginRight: '8px' }} />,
+      icon: <Location2  />,
     },
   ]
 
@@ -528,6 +547,7 @@ List 属性是一个由对象构成的数组，数组中的每个对象配置一
 | icon | 参考 Icon 组件 | `ReactNode` | `-` |
 | disabled | 是否为禁用状态 | `boolean` | `false` |
 | className | 为对应选项添加额外的类名 | `string` | `-` |
+| action | 为对应选项添加方法 | `{ icon?: React.ReactNode; onClick?: (e: any) => void }` | `-` |
 
 ## 主题定制
 
@@ -538,8 +558,8 @@ List 属性是一个由对象构成的数组，数组中的每个对象配置一
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-popover-border-radius | popover 内容区的 border 的圆角值 | `8px` |
-| \--nutui-popover-font-size | popover 内容区的 font-size 值 | `14px` |
-| \--nutui-popover-primary-text-color | 选项区的文字颜色 | `$color-title` |
+| \--nutui-popover-font-size | popover 内容区的 font-size 值 | `12px` |
+| \--nutui-popover-text-color | 选项区的文字颜色 | `$color-title` |
 | \--nutui-popover-content-background-color | 选项区的背景颜色 | `$white` |
 | \--nutui-popover-border-color | top、bottom、left 和 right 的箭头颜色| `$white` |
 | \--nutui-popover-divider-color | 选项区的底部 border 颜色 | `$color-border` |

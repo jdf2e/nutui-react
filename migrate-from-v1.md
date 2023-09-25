@@ -275,6 +275,8 @@ plugins: [
 - `onClick` 类型改为 `(index: string | number) => void`
 - `onChange` 类型改为 `(index: string | number) => void`
 - 增加 defaultValue
+- 增加 `activeType` 类型 `simple`，实现选项卡的简约选择，只修改字号和字重，不处理字色。
+
 #### Tabs.Tabpane
 - `paneKey` 重命名为 `value`
 ### 数据录入

@@ -73,7 +73,7 @@ export default App
 ```tsx
 import React, { useState, useRef } from 'react'
 import { Popover, Button } from '@nutui/nutui-react'
-import { My2, Cart2, Location2 } from '@nutui/icons-react'
+import { My2, Cart2, Location2, Close } from '@nutui/icons-react'
 
 const App = () => {
   const [showIcon, setShowIcon] = useState(false)
@@ -82,17 +82,36 @@ const App = () => {
     {
       key: 'key1',
       name: 'option1',
-      icon: <My2 color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />,
+      icon: <My2 color="rgba(250, 44, 25, 1)"  />,
+      action: {
+        icon: <Close />,
+        onClick: (e: any) => {
+          console.log('onclick 1')
+          e.stopPropagation()
+        },
+      },
     },
     {
       key: 'key2',
       name: 'option2',
-      icon: <Cart2 style={{ marginRight: '8px' }} />,
+      icon: <Cart2  />,
+      action: {
+        icon: <Close />,
+        onClick: () => {
+          console.log('onclick 2')
+        },
+      },
     },
     {
       key: 'key3',
       name: 'option3',
-      icon: <Location2 style={{ marginRight: '8px' }} />,
+      icon: <Location2  />,
+      action: {
+        icon: <Close />,
+        onClick: () => {
+          console.log('onclick 3')
+        },
+      },
     },
   ]
   const itemListDisabled = [
@@ -521,6 +540,7 @@ The List property is an array of objects, each object in the array is configured
 | icon | @nutui/icons-react name | `ReactNode` | `-` |
 | disabled | whether to disable | `boolean` | `false` |
 | className | Add additional class names for corresponding options | `string` | `-` |
+| action | Add additional actions for corresponding options | `{ icon?: React.ReactNode; onClick?: (e: any) => void }` | `-` |
 
 ## Theming
 
@@ -531,10 +551,12 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-popover-border-radius | The rounded corner value of the border of the popover content area | `8px` |
-| \--nutui-popover-font-size | The font-size value of the popover content area | `14px` |
-| \--nutui-popover-primary-text-color | Text color of options area | `$color-title` |
+| \--nutui-popover-font-size | The font-size value of the popover content area | `12px` |
+| \--nutui-popover-text-color | Text color of options area | `$color-title` |
 | \--nutui-popover-content-background-color | The background color of the options area | `$white` |
 | \--nutui-popover-border-color| Arrow colors for top, bottom, left and right | `$white` |
 | \--nutui-popover-divider-color | The bottom border color of the options area | `$color-border` |
 | \--nutui-popover-disable-color | Option Disabled Colors | `$color-text-disable` |
 | \--nutui-popover-menu-item-padding | The padding value of each item in the option area menu | `8px` |
+
+

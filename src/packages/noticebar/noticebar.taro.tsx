@@ -425,7 +425,7 @@ export const NoticeBar: FunctionComponent<
   }
 
   const noticebarClass = classNames({
-    'nut-noticebar-page': true,
+    'nut-noticebar-box': true,
     withicon: closeable,
     close: closeable,
     wrapable: wrap,
@@ -486,12 +486,12 @@ export const NoticeBar: FunctionComponent<
               })}
             </div>
           ) : (
-            <div className="horseLamp_list" style={horseLampStyle}>
+            <div className="horseLamp-list" style={horseLampStyle}>
               {scrollList.current.map((item: string, index: number) => {
                 return (
                   // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
                   <div
-                    className="horseLamp_list_item"
+                    className="horseLamp-list-item"
                     style={{ height }}
                     key={index}
                     onClick={(e) => {

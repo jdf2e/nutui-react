@@ -56,3 +56,14 @@ export default App
 | renderText | Customize the drop-down prompt text according to the drop-down state | `ReactNode` | `-` |
 | threshold | How far to pull down to trigger refresh, the unit is px | `number` | `60` |
 | onRefresh | the handler function for triggering a refresh | `() => Promise<any>` | `-` |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Description | Default |
+| --- | --- | --- |
+| \--nutui-pulltorefresh-top-icon-width | Swipe to top icon width  | `36px` |
+| \--nutui-pulltorefresh-top-icon-height | Swipe to top icon height   | `26px` |

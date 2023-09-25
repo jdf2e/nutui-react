@@ -76,7 +76,7 @@
   &-description {
     display: block;
     font-size: $steps-base-description-font-size;
-    color: $steps-base-content-color;
+    color: $steps-base-description-color;
   }
 
   &:last-child {
@@ -105,7 +105,7 @@
     }
 
     .nut-step-description {
-      color: $steps-wait-content-color;
+      color: $steps-wait-description-color;
     }
   }
 
@@ -149,7 +149,7 @@
     }
 
     .nut-step-description {
-      color: $steps-wait-content-color;
+      color: $steps-wait-description-color;
     }
   }
 
@@ -212,7 +212,7 @@
     text-align: left;
 
     .nut-step-description {
-      color: $steps-base-content-color;
+      color: $steps-base-description-color;
     }
   }
 }
