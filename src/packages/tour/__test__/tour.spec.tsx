@@ -71,8 +71,8 @@ test('custom style', () => {
       location="bottom-end"
       style={{
         '--nutui-popover-content-background-color': 'rgb(255, 0, 0)',
-        '--nutui-popover-primary-text-color': 'rgb(255, 255, 255)',
-        '--nutui-popover-white-background-color': 'rgb(255, 0, 0)',
+        '--nutui-popover-text-color': 'rgb(255, 255, 255)',
+        '--nutui-popover-border-color': 'rgb(255, 0, 0)',
       }}
       offset={[0, 0]}
       maskWidth={50}
@@ -96,8 +96,8 @@ test('custom offset', () => {
       location="bottom-end"
       style={{
         '--nutui-popover-content-background-color': 'rgb(255, 0, 0)',
-        '--nutui-popover-primary-text-color': 'rgb(255, 255, 255)',
-        '--nutui-popover-white-background-color': 'rgb(255, 0, 0)',
+        '--nutui-popover-text-color': 'rgb(255, 255, 255)',
+        '--nutui-popover-border-color': 'rgb(255, 0, 0)',
       }}
       offset={[8, 8]}
     />
@@ -117,9 +117,9 @@ test('slot render', () => {
       location="bottom-end"
       offset={[8, 8]}
       style={{
-        '--nutui-popover-content-background-color': 'rgb(75, 76, 77)',
-        '--nutui-popover-primary-text-color': 'rgb(255, 255, 255)',
-        '--nutui-popover-white-background-color': 'rgb(75, 76, 77)',
+        '--nutui-popover-content-background-color': 'rgb(0, 0, 0)',
+        '--nutui-popover-text-color': 'rgb(255, 255, 255)',
+        '--nutui-popover-border-color': 'rgb(0, 0, 0)',
       }}
     >
       <div className="tour-demo-custom-content">
