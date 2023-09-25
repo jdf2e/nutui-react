@@ -141,7 +141,11 @@ const MenuDemo = () => {
           />
         </Menu>
         <h2>{translated.customMenuContent}</h2>
-        <Menu>
+        <Menu
+          onClose={(a, f) => {
+            console.log(a, f)
+          }}
+        >
           <Menu.Item options={options} defaultValue={0} />
           <Menu.Item title={translated.screen} ref={itemRef}>
             <div

@@ -91,7 +91,8 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
 
   useImperativeHandle<any, any>(ref, () => ({
     toggle: (s: boolean) => {
-      s ? parent.toggleMenuItem(index) : parent.hideMenuItem(index)
+      const from = 'REF'
+      s ? parent.toggleMenuItem(index, from) : parent.hideMenuItem(index, from)
     },
   }))
 
@@ -182,7 +183,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
           visible={showPopup}
           closeOnOverlayClick={parent.closeOnOverlayClick}
           onClick={() => {
-            parent.closeOnOverlayClick && parent.toggleMenuItem(index)
+            parent.closeOnOverlayClick && parent.hideMenuItem(index)
           }}
         />
       ) : null}
