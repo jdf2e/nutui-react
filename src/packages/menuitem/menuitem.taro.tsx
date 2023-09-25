@@ -106,7 +106,8 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
 
   useImperativeHandle<any, any>(ref, () => ({
     toggle: (s: boolean) => {
-      s ? parent.toggleMenuItem(index) : parent.hideMenuItem(index)
+      const from = 'REF'
+      s ? parent.toggleMenuItem(index, from) : parent.hideMenuItem(index, from)
     },
   }))
 
