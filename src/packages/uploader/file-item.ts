@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 export class FileItem {
   status: FileItemStatus = 'ready'
 
@@ -13,11 +15,15 @@ export class FileItem {
 
   path?: string
 
-  percentage: string | number = 0
+  percentage?: string | number = 0
 
-  formData: FormData = ({} as FormData)
+  formData?: FormData = {} as FormData
 
   responseText?: string
+
+  loadingIcon?: ReactNode
+
+  failIcon?: ReactNode
 }
 
 export type FileItemStatus =

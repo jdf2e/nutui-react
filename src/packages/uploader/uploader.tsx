@@ -148,7 +148,6 @@ const InternalUploader: ForwardRefRenderFunction<
     defaultValue,
     finalValue: [],
     onChange: (v) => {
-      console.log('inner onChange', v)
       onChange?.(v)
     },
   })
@@ -183,11 +182,10 @@ const InternalUploader: ForwardRefRenderFunction<
   }
 
   const executeUpload = (fileItem: FileItem, index: number) => {
-    console.log('executeUpload ', fileList)
     const uploadOption = new UploadOptions()
     uploadOption.url = url
     for (const [key, value] of Object.entries<string | Blob>(data)) {
-      fileItem.formData.append(key, value)
+      fileItem.formData?.append(key, value)
     }
     uploadOption.formData = fileItem.formData
     uploadOption.timeout = timeout * 1
@@ -197,7 +195,7 @@ const InternalUploader: ForwardRefRenderFunction<
     uploadOption.withCredentials = withCredentials
     uploadOption.beforeXhrUpload = beforeXhrUpload
     try {
-      uploadOption.sourceFile = fileItem.formData.get(name)
+      uploadOption.sourceFile = fileItem.formData?.get(name)
     } catch (error) {
       console.warn(error)
     }

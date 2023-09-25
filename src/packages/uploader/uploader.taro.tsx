@@ -3,7 +3,6 @@ import React, {
   useImperativeHandle,
   ForwardRefRenderFunction,
   PropsWithChildren,
-  useCallback,
 } from 'react'
 import classNames from 'classnames'
 import Taro, {
@@ -11,7 +10,6 @@ import Taro, {
   uploadFile,
   getEnv,
   chooseMedia,
-  nextTick,
 } from '@tarojs/taro'
 import { Photograph } from '@nutui/icons-react-taro'
 import Button from '@/packages/button/index.taro'
@@ -422,7 +420,6 @@ const InternalUploader: ForwardRefRenderFunction<
       if (preview) {
         fileItem.url = fileType === 'video' ? file.thumbTempFilePath : filepath
       }
-      console.log('readFile', fileItem)
       fileList.push(fileItem)
       setFileList(fileList)
       executeUpload(fileItem, index)

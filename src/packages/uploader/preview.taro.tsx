@@ -17,7 +17,6 @@ export const Preview: React.FunctionComponent<any> = ({
   previewUrl,
   children,
 }) => {
-  console.log('fileList', fileList)
   return (
     <>
       {fileList.length !== 0 &&
