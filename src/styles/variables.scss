@@ -77,7 +77,7 @@ $color-info: var(--nutui-color-info) !default;
 // 链接色 todo
 $color-text-link: var(--nutui-color-text-link, #396acc) !default;
 $color-danger: var(--nutui-color-danger, #fa2c19) !default;
-$white: var(--nutui-gray-1, #ffffff) !default;
+$white: #ffffff !default;
 $black: $color-title !default;
 
 // todo
@@ -272,7 +272,7 @@ $cell-group-description-line-height: var(
 ) !default;
 $cell-group-background-color: var(
   --nutui-cell-group-background-color,
-  $white
+  $color-background-overlay
 ) !default;
 
 // divider（✅）
@@ -392,8 +392,8 @@ $picker-item-active-line-border: var(
 ) !default;
 $picker-mask-background: var(
   --picker-mask-background,
-  linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),
-  linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))
+  linear-gradient(180deg, var(--nutui-white-12), var(--nutui-white-7)),
+  linear-gradient(0deg, var(--nutui-white-12), var(--nutui-white-7))
 ) !default;
 
 //input（✅）
@@ -464,7 +464,7 @@ $inputnumber-button-border-radius: var(
 ) !default;
 $inputnumber-button-background-color: var(
   --nutui-inputnumber-button-background-color,
-  $white
+  $color-background
 ) !default;
 $inputnumber-icon-color: var(
   --nutui-inputnumber-icon-color,
@@ -1088,16 +1088,16 @@ $signature-border-width: var(--nutui-signature-border-width, 1px) !default;
 $signature-height: var(--nutui-signature-height, 10rem) !default;
 $signature-background-color: var(
   --nutui-signature-background-color,
-  $white
+  $color-background
 ) !default;
 $signature-font-size: var(--nutui-signature-font-size, $font-size) !default;
 
 //fixednav（✅）
 $fixednav-background-color: var(
   --nutui-fixednav-background-color,
-  $color-background
+  $white
 ) !default;
-$fixednav-color: var(--nutui-fixednav-color, $color-title) !default;
+$fixednav-color: var(--nutui-fixednav-color, #1a1a1a) !default;
 $fixednav-index: var(--nutui-fixednav-index, 900) !default;
 $fixednav-button-background: var(
   --nutui-fixednav-button-background,
@@ -1216,10 +1216,10 @@ $badge-dot-width: var(--nutui-badge-dot-width, 7px) !default;
 //popover（✅）
 $popover-border-radius: var(--nutui-popover-border-radius, 8px) !default;
 $popover-font-size: var(--nutui-popover-font-size, $font-size-small) !default;
-$popover-border-color: var(--nutui-popover-border-color, $white) !default;
+$popover-border-color: var(--nutui-popover-border-color, #ffffff) !default;
 $popover-content-background-color: var(
   --nutui-popover-content-background-color,
-  $white
+  #ffffff
 ) !default;
 $popover-text-color: var(--nutui-popover-text-color, $color-title) !default;
 $popover-disable-color: var(
@@ -1408,7 +1408,7 @@ $menu-content-padding: var(--nutui-menu-content-padding, 12px 24px) !default;
 $menu-content-max-height: var(--nutui-menu-content-max-height, 214px) !default;
 $menu-content-background-color: var(
   --nutui-menu-content-background-color,
-  $white
+  $color-background
 ) !default;
 $menu-item-active-color: var(
   --nutui-menu-item-active-color,
@@ -1586,7 +1586,7 @@ $form-item-error-message-color: var(
 ) !default;
 $form-item-label-font-size: var(
   --nutui-form-item-label-font-size,
-  14px
+  $font-size
 ) !default;
 $form-item-label-width: var(--nutui-form-item-label-width, 90px) !default;
 $form-item-label-margin-right: var(
@@ -1601,7 +1601,10 @@ $form-item-required-margin-right: var(
   --nutui-form-item-required-margin-right,
   4px
 ) !default;
-$form-item-body-font-size: var(--nutui-form-item-body-font-size, 14px) !default;
+$form-item-body-font-size: var(
+  --nutui-form-item-body-font-size,
+  $font-size
+) !default;
 $form-item-body-slots-text-align: var(
   --nutui-form-item-body-slots-text-align,
   left
@@ -1610,7 +1613,10 @@ $form-item-body-input-text-align: var(
   --nutui-form-item-body-input-text-align,
   left
 ) !default;
-$form-item-tip-font-size: var(--nutui-form-item-tip-font-size, 10px) !default;
+$form-item-tip-font-size: var(
+  --nutui-form-item-tip-font-size,
+  $font-size-xs
+) !default;
 $form-item-tip-text-align: var(--nutui-form-item-tip-text-align, left) !default;
 
 // skeleton（✅）
