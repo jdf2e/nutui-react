@@ -177,7 +177,7 @@
     "react-syntax-highlighter": "^15.5.0",
     "react-test-renderer": "^18.2.0",
     "reactcss": "^1.2.3",
-    "remark-directive": "^2.0.1",
+    "remark-directive": "^3.0.0",
     "remark-gfm": "^4.0.0",
     "rollup": "^3.20.2",
     "rollup-plugin-delete": "^2.0.0",
