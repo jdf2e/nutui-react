@@ -138,9 +138,11 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   }
 
   useEffect(() => {
-    scrollParent?.addEventListener('scroll', getParentOffset, false)
-    return () => {
-      scrollParent?.removeEventListener('scroll', getParentOffset, false)
+    if (!parent.lockScroll) {
+      scrollParent?.addEventListener('scroll', getParentOffset, false)
+      return () => {
+        scrollParent?.removeEventListener('scroll', getParentOffset, false)
+      }
     }
   }, [])
 
