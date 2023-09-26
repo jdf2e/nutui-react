@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { Heart1, HeartFill, Left, Close } from '@nutui/icons-react'
+import { Heart, HeartFill, ArrowLeft, Close } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Address } from './address'
 import Cell from '@/packages/cell'
@@ -244,9 +244,9 @@ const AddressDemo = () => {
 
   const [icon, setIcon] = useState({
     selectIcon: <HeartFill color="red" />,
-    defaultIcon: <Heart1 />,
+    defaultIcon: <Heart />,
     closeIcon: <Close />,
-    backIcon: <Left />,
+    backIcon: <ArrowLeft />,
   })
 
   const [existList2, setExistList2] = useState([

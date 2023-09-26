@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useMemo, useState } from 'react'
 import classNames from 'classnames'
-import { RectDown } from '@nutui/icons-react'
+import { ArrowDown } from '@nutui/icons-react'
 import Popup from '@/packages/popup'
 import { PopupProps } from '@/packages/popup/popup'
 import { useConfig } from '@/packages/configprovider'
@@ -132,7 +132,7 @@ export const NumberKeyboard: FunctionComponent<
             <div>{item.id}</div>
           )}
           {item.type === 'delete' && <DeleteIcon />}
-          {item.type === 'close' && <RectDown width={18} height={18} />}
+          {item.type === 'close' && <ArrowDown width={18} height={18} />}
           {item.type === 'confirm' && <>{confirmText || locale.done}</>}
         </div>
       </div>

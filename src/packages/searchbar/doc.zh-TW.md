@@ -110,10 +110,10 @@ export default App;
 ```tsx
 import React from "react";
 import { SearchBar } from '@nutui/nutui-react';
-import {   Left,
+import {   ArrowLeft,
   Photograph,
   ArrowDown,
-  MoreS,
+  More,
   Close,
   Star
 } from '@nutui/icons-react'
@@ -123,7 +123,7 @@ const App = () => {
     <SearchBar
       left={
         <>
-          <Left width={20} height={20} />
+          <ArrowLeft width={20} height={20} />
           <Close width={20} height={20} />
         </>
       }
@@ -136,7 +136,7 @@ const App = () => {
               color: 'var(--nutui-color-primary)',
             }}
           />
-          <MoreS width={20} height={20} />
+          <More width={20} height={20} />
         </>
       }
       rightIn={

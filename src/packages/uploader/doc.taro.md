@@ -50,7 +50,7 @@ export default App;
 ```tsx
 import React, { useState } from "react";
 import { Uploader } from '@nutui/nutui-react-taro';
-import { Dongdong, Loading1 } from '@nutui/icons-react-taro';
+import { Dongdong, Loading } from '@nutui/icons-react-taro';
 
 type FileType<T> = { [key: string]: T }
 
@@ -117,7 +117,7 @@ const App = () => {
       message: '上传中',
       type: 'image',
       uid: '126',
-      loadingIcon: <Loading1 className="nut-icon-loading1" color="#fff" />,
+      loadingIcon: <Loading className="nut-icon-Loading" color="#fff" />,
     },
     {
       name: '文件4.png',

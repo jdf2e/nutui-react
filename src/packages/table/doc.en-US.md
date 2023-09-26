@@ -693,7 +693,7 @@ export default App;
 | striped | Whether the stripes alternate light and dark | `boolean` | `false` |
 | showHeader | Show Header | `boolean` | `true` |
 | noData | Custom noData | `ReactNode` | `-` |
-| sorterIcon | Sort icon | `ReactNode` | `<DownArrow />` |
+| sorterIcon | Sort icon | `ReactNode` | `<ArrowDown />` |
 
 ### TableColumnProps
 

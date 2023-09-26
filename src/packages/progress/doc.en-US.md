@@ -138,7 +138,7 @@ export default App;
 ```jsx
 import  React from "react";
 import { Progress, Cell } from '@nutui/nutui-react';
-import { Checked, Issue } from '@nutui/icons-react';
+import { Checked, Tips } from '@nutui/icons-react';
 
 const App = () => {
   return (
@@ -160,7 +160,7 @@ const App = () => {
           color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
           strokeWidth="15"
         />
-        <Issue color="red" style={{ margin: '0 5px' }} />
+        <Tips color="red" style={{ margin: '0 5px' }} />
       </Cell>
     </>
   );

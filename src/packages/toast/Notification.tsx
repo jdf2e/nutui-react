@@ -1,6 +1,6 @@
 import * as React from 'react'
 import classNames from 'classnames'
-import { Check, Loading, Failure, Issue } from '@nutui/icons-react'
+import { Check, Loading, Failure, Tips } from '@nutui/icons-react'
 import { render, unmount } from '@/utils/render'
 import Overlay from '@/packages/overlay/index'
 import { BasicComponent } from '@/utils/typings'
@@ -93,7 +93,7 @@ export default class Notification extends React.PureComponent<
           iconNode = <Failure />
           break
         case 'warn':
-          iconNode = <Issue />
+          iconNode = <Tips />
           break
         default:
           break

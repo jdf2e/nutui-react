@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import type { ChangeEvent, FocusEvent, MouseEvent } from 'react'
-import { MaskClose, Search, RectLeft } from '@nutui/icons-react-taro'
+import { MaskClose, Search, ArrowLeft } from '@nutui/icons-react-taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -156,7 +156,7 @@ export const SearchBar: FunctionComponent<
     if (!backable && !left) return null
     return (
       <div className={`${classPrefix}__left`}>
-        {backable ? <RectLeft size="20" /> : left}
+        {backable ? <ArrowLeft size="20" /> : left}
       </div>
     )
   }

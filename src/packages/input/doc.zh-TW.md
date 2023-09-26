@@ -200,7 +200,7 @@ export default App;
 ```tsx
 import  React, { useState } from "react";
 import { Input, Button } from '@nutui/nutui-react';
-import { Ask } from '@nutui/icons-react'
+import { Tips } from '@nutui/icons-react'
 
 const App = () => {
   return (
@@ -213,7 +213,7 @@ const App = () => {
            padding: '0 10px',
          }}
        >
-         <Ask />
+         <Tips />
          <Input placeholder={translated.codeplaceholder} />
          <div className="right">
            <Button type="primary" size="small">

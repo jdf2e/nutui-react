@@ -1,6 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { CircleClose, Fabulous } from '@nutui/icons-react-taro'
+import { Failure, Fabulous } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { NoticeBar } from '@/packages/nutui.react.taro'
 import '@/packages/noticebar/demo.scss'
@@ -73,7 +73,7 @@ const NoticeBarDemo = () => {
           {translated.text}
         </NoticeBar>
         <br />
-        <NoticeBar closeable rightIcon={<CircleClose />} onClick={hello}>
+        <NoticeBar closeable rightIcon={<Failure />} onClick={hello}>
           {translated.text}
         </NoticeBar>
         <br />

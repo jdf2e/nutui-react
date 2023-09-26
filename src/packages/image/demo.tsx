@@ -1,5 +1,5 @@
 import React from 'react'
-import { CircleClose, Loading } from '@nutui/icons-react'
+import { Failure, Loading } from '@nutui/icons-react'
 import { Image } from './image'
 import { useTranslate } from '../../sites/assets/locale'
 import Row from '@/packages/row'
@@ -207,7 +207,7 @@ const ImageDemo = () => {
                 src="https://x"
                 width="100"
                 height="100"
-                error={<CircleClose />}
+                error={<Failure />}
               />
               <div className="image-text">{translated.custom}</div>
             </Col>

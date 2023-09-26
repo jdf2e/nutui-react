@@ -1,5 +1,5 @@
 import React from 'react'
-import { My, Right } from '@nutui/icons-react'
+import { My, ArrowRight } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import Cell from './index'
 import { Switch } from '../switch/switch'
@@ -157,7 +157,7 @@ const CellDemo = () => {
             className="nutui-cell--clickable"
             title={translated.link}
             align="center"
-            extra={<Right />}
+            extra={<ArrowRight />}
           />
           <Cell
             className="nutui-cell--clickable"
@@ -165,7 +165,7 @@ const CellDemo = () => {
             extra={
               <>
                 <span style={{ marginRight: '5px' }}>https://jd.com</span>
-                <Right />
+                <ArrowRight />
               </>
             }
             align="center"

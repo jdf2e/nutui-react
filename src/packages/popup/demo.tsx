@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { CircleClose, Heart } from '@nutui/icons-react'
+import { Failure, Heart } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import Cell from '@/packages/cell'
 import Popup from '@/packages/popup'
@@ -255,7 +255,7 @@ const PopupDemo = () => {
         />
         <Popup
           closeable
-          closeIcon={<CircleClose width="12px" height="12px" />}
+          closeIcon={<Failure width="12px" height="12px" />}
           visible={showCloseIconStop}
           closeOnOverlayClick={false}
           style={{ height: '40%' }}

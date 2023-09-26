@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Share, MoreX, Cart2, RectLeft, Close } from '@nutui/icons-react'
+import { Share, More, Cart, ArrowLeft, Close } from '@nutui/icons-react'
 import { NavBar } from './navbar'
 import './demo.scss'
 import { Tabs } from '../tabs/tabs'
@@ -59,7 +59,7 @@ const NavBarDemo = () => {
         <NavBar
           back={
             <>
-              <RectLeft name="left" color="#979797" />
+              <ArrowLeft />
               {translated.a74a1fd4}
             </>
           }
@@ -80,7 +80,7 @@ const NavBarDemo = () => {
             </span>
           }
           left={<Close />}
-          back={<RectLeft name="left" color="#979797" />}
+          back={<ArrowLeft />}
           onBackClick={(e) => Toast.show(translated.a74a1fd4)}
         >
           <div className="title">
@@ -91,7 +91,7 @@ const NavBarDemo = () => {
           </div>
         </NavBar>
         <NavBar
-          back={<RectLeft name="left" color="#979797" />}
+          back={<ArrowLeft />}
           right={
             <>
               <span
@@ -100,7 +100,7 @@ const NavBarDemo = () => {
               >
                 {translated['8dab2f66']}
               </span>
-              <MoreX onClick={(e) => Toast.show('icon')} />
+              <More onClick={(e) => Toast.show('icon')} />
             </>
           }
           onBackClick={(e) => Toast.show(translated.a74a1fd4)}
@@ -113,12 +113,12 @@ const NavBarDemo = () => {
             className="flex-center"
             onClick={(e) => Toast.show('icon')}
           >
-            <Cart2 />
+            <Cart />
           </i>
         </NavBar>
 
         <NavBar
-          back={<RectLeft name="left" color="#979797" />}
+          back={<ArrowLeft />}
           right={
             <>
               <span
@@ -127,7 +127,7 @@ const NavBarDemo = () => {
               >
                 {translated['8dab2f66']}
               </span>
-              <MoreX onClick={(e) => Toast.show('icon')} />
+              <More onClick={(e) => Toast.show('icon')} />
             </>
           }
           onBackClick={(e) => Toast.show(translated.a74a1fd4)}

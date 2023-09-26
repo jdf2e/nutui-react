@@ -14,7 +14,7 @@ importers:
         version: 7.21.0
       '@nutui/icons-react':
         specifier: 0.0.1
-        version: 0.0.1
+        version: link:../nutui-icons/packages/icons-react
       '@nutui/icons-react-taro':
         specifier: 0.0.1
         version: 0.0.1
@@ -2982,12 +2982,6 @@ packages:
 
   /@nutui/icons-react-taro@0.0.1:
     resolution: {integrity: sha512-uHUaVnh9yfkUdbYLEfoxArFedP7pti+sOrnBTDknemsJKqK/jnQ9xnIKpO2l+1CgGWpbAkipQVBDUM7CXKuWaA==}
-    dependencies:
-      classnames: 2.3.2
-    dev: false
-
-  /@nutui/icons-react@0.0.1:
-    resolution: {integrity: sha512-MB0M8rvfqVC50GZGT20Y8bAs9Yi+aIpDk+PcEwLQ55oevHlnUtYhytNjVUXFhRLrTQDt3BYDuH7nHOQW//ShGg==}
     dependencies:
       classnames: 2.3.2
     dev: false

@@ -56,7 +56,7 @@ export default App;
 ```tsx
 import React, { useState } from "react";
 import { Uploader } from '@nutui/nutui-react';
-import { Dongdong, Loading1 } from '@nutui/icons-react';
+import { Dongdong, Loading } from '@nutui/icons-react';
 
 type FileType<T> = { [key: string]: T }
 
@@ -123,7 +123,7 @@ const App = () => {
       message: '上传中',
       type: 'image',
       uid: '126',
-      loadingIcon: <Loading1 className="nut-icon-loading1" color="#fff" />,
+      loadingIcon: <Loading className="nut-icon-Loading" color="#fff" />,
     },
     {
       name: '文件7.png',
@@ -161,7 +161,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Loading1 } from '@nutui/icons-react';
+import { Loading } from '@nutui/icons-react';
 import { Uploader, Button } from '@nutui/nutui-react';
 
 const App = () => {
@@ -208,7 +208,7 @@ const App = () => {
       message: '上传中',
       type: 'image',
       uid: '126',
-      loadingIcon: <Loading1 className="nut-icon-loading1" color="#fff" />,
+      loadingIcon: <Loading className="nut-icon-Loading" color="#fff" />,
     },
     {
       name: '文件7.png',

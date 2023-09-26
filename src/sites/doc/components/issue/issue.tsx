@@ -1,6 +1,6 @@
 import './issue.scss'
 import React, { useEffect, useState } from 'react'
-import { Issue as IssueIcon, Checklist, Uploader } from '@nutui/icons-react'
+import { Tips as IssueIcon, Checklist, Uploader } from '@nutui/icons-react'
 import { useLocation } from 'react-router-dom'
 import { nav } from '@/config.json'
 

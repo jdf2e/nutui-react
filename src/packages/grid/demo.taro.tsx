@@ -1,6 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { Dongdong, My } from '@nutui/icons-react-taro'
+import { Dongdong, Health } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Avatar, Grid } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
@@ -232,7 +232,7 @@ const GridDemo = () => {
           <Grid.Item>
             <Avatar
               className="demo-avatar"
-              icon={<My color="#fff" />}
+              icon={<Health color="#fff" />}
               background="#FA2C19"
             />
           </Grid.Item>

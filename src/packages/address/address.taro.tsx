@@ -4,7 +4,6 @@ import React, {
   forwardRef,
   useState,
 } from 'react'
-import { Left } from '@nutui/icons-react-taro'
 import Popup from '@/packages/popup/index.taro'
 import { ExistRender } from './existRender.taro'
 import { CustomRender } from './customRender.taro'
@@ -130,7 +129,7 @@ const InternalAddress: ForwardRefRenderFunction<
             {React.isValidElement(backIcon) ? (
               backIcon
             ) : (
-              <Left color="#cccccc" />
+              <ArrowLeft color="#cccccc" />
             )}
           </div>
         )}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Left, Right } from '@nutui/icons-react'
+import { ArrowLeft, ArrowRight } from '@nutui/icons-react'
 // import Swiper.Item from '@/packages/swiperitem'
 import Swiper from '@/packages/swiper'
 import '@/packages/swiper/demo.scss'
@@ -205,10 +205,10 @@ const SwiperDemo = () => {
         </Swiper>
         <div className="nut-swiper-btns">
           <span className="nut-swiper-btns__left" onClick={(e) => handlePrev()}>
-            <Left />
+            <ArrowLeft />
           </span>
           <span className="nut-swiper-btns__left" onClick={(e) => handleNext()}>
-            <Right />
+            <ArrowRight />
           </span>
         </div>
       </div>

@@ -464,7 +464,7 @@ const customTheme = {
   nutuiCascaderItemPadding: '10px',
   nutuiCascaderItemBorderBottom: '1px solid #F0F0F0',
   nutuiTabsTitlesItemActiveColor: '#3768FA',
-  nutuiTabsHorizontalTabLineColor: '#3768FA',
+  nutuiTabsTabLineColor: '#3768FA',
 }
 
 const App = () => {

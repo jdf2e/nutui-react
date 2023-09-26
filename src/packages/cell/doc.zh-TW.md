@@ -121,7 +121,7 @@ export default App
 ```tsx
 import React from 'react'
 import { Cell } from '@nutui/nutui-react'
-import { Right } from '@nutui/icons-react'
+import { ArrowRight } from '@nutui/icons-react'
 
 const App = () => {
   const onJumpclick = (
@@ -142,7 +142,7 @@ const App = () => {
         className='nutui-cell--clickable'
         title='鏈接'
         align='center'
-        extra={<Right />}
+        extra={<ArrowRight />}
       />
       <Cell
         className='nutui-cell--clickable'
@@ -150,7 +150,7 @@ const App = () => {
         extra={
           <>
             <span style={{ marginRight: '5px' }}>https://jd.com</span>
-            <Right />
+            <ArrowRight />
           </>
         }
         align='center'

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Taro from '@tarojs/taro'
-import { Checked, DownArrow, HeartFill, Star } from '@nutui/icons-react-taro'
+import { Checked, ArrowDown, HeartFill, Star } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Collapse, Button } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
@@ -140,7 +140,7 @@ const CollapseDemo = () => {
       <Header />
       <div className={`demo full ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.header1}</h2>
-        <Collapse defaultActiveName={['1', '2']} expandIcon={<DownArrow />}>
+        <Collapse defaultActiveName={['1', '2']} expandIcon={<ArrowDown />}>
           <Collapse.Item title={translated.title1} name="1">
             {translated.content1}
           </Collapse.Item>
@@ -182,7 +182,7 @@ const CollapseDemo = () => {
         <Collapse
           defaultActiveName={['1']}
           accordion
-          expandIcon={<DownArrow />}
+          expandIcon={<ArrowDown />}
         >
           <Collapse.Item
             title={translated.title1}
@@ -202,7 +202,7 @@ const CollapseDemo = () => {
         <Collapse
           defaultActiveName={['1']}
           accordion
-          expandIcon={<DownArrow />}
+          expandIcon={<ArrowDown />}
           rotate={90}
         >
           <Collapse.Item

@@ -116,7 +116,7 @@ export default App;
 ```tsx
 import React from "react";
 import { Image } from '@nutui/nutui-react-taro';
-import { CircleClose } from '@nutui/icons-react-taro';
+import { Failure } from '@nutui/icons-react-taro';
 
 const App = () => {
   return <>
@@ -125,7 +125,7 @@ const App = () => {
       src="https://x"
       width="100"
       height="100"
-      error={<CircleClose />}
+      error={<Failure />}
     />
   </>
 }
@@ -141,7 +141,7 @@ export default App;
 ```tsx
 import React from "react";
 import { Cell, Col, Image } from '@nutui/nutui-react-taro';
-import { CircleClose } from '@nutui/icons-react-taro';
+import { Failure } from '@nutui/icons-react-taro';
 
 const App = () => {
   return <>
@@ -174,7 +174,7 @@ export default App;
 ```tsx
 import React from "react";
 import { Cell, Col, Image } from '@nutui/nutui-react-taro';
-import { CircleClose } from '@nutui/icons-react-taro';
+import { Failure } from '@nutui/icons-react-taro';
 
 const App = () => {
   return <>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Ask, Close, Eye, Marshalling } from '@nutui/icons-react'
+import { Tips, Close, Eye, Marshalling } from '@nutui/icons-react'
 import { Input } from './input'
 import Form from '@/packages/form'
 import { useTranslate } from '../../sites/assets/locale'
@@ -185,7 +185,7 @@ const InputDemo = () => {
             padding: '0 10px',
           }}
         >
-          <Ask color="var(--nutui-gray-7)" />
+          <Tips color="var(--nutui-gray-7)" />
           <Input placeholder={translated.codeplaceholder} />
           <div className="right">
             <Button type="primary" size="small">

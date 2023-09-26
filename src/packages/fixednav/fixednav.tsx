@@ -1,6 +1,6 @@
 import React, { FunctionComponent, MouseEvent } from 'react'
 import classNames from 'classnames'
-import { Left } from '@nutui/icons-react'
+import { ArrowLeft } from '@nutui/icons-react'
 import Overlay from '@/packages/overlay'
 import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -121,7 +121,7 @@ export const FixedNav: FunctionComponent<
       <div className={`${classPrefix}__btn`} onClick={() => onUpdateValue()}>
         {content || (
           <>
-            <Left color="#fff" />
+            <ArrowLeft color="#fff" />
             <div className="text">
               {visible
                 ? activeText || locale.fixednav.activeText

@@ -19,12 +19,12 @@ import { Collapse } from 'nutui-react'
 ```jsx
 import  React from "react";
 import { Collapse } from '@nutui/nutui-react';
-import { DownArrow } from '@nutui/icons-react';
+import { ArrowDown } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <>
-    <Collapse defaultActiveName={['1', '2']} expandIcon={<DownArrow />}>
+    <Collapse defaultActiveName={['1', '2']} expandIcon={<ArrowDown />}>
       <Collapse.Item title="標題1" name="1">
         京東“廠直優品計劃”首推“政府優品館” 3年覆蓋80%鎮級政府
       </Collapse.Item>
@@ -50,7 +50,7 @@ export default App;
 ```jsx
 import React, {useState} from "react";
 import { Collapse } from '@nutui/nutui-react';
-import { DownArrow } from '@nutui/icons-react';
+import { ArrowDown } from '@nutui/icons-react';
 
 const App = () => {
   const [activeName, setActiveName] = useState(['1', '2'])
@@ -83,7 +83,7 @@ export default App;
 ```tsx
 import React, { useState } from 'react'
 import { Collapse} from '@nutui/nutui-react'
-import { DownArrow } from '@nutui/icons-react'
+import { ArrowDown } from '@nutui/icons-react'
 
 const App = () => {
   const handleChange = (activeName, name, status) => {
@@ -115,11 +115,11 @@ export default App;
 ```tsx
 import React from 'react'
 import { Collapse} from '@nutui/nutui-react'
-import { DownArrow } from '@nutui/icons-react'
+import { ArrowDown } from '@nutui/icons-react'
 
 const App = () => {
   return (  
-  <Collapse defaultActiveName={['1']} accordion expandIcon={<DownArrow />}>
+  <Collapse defaultActiveName={['1']} accordion expandIcon={<ArrowDown />}>
     <Collapse.Item title="標題1" name="1" extra="文本內容">
       京東“廠直優品計劃”首推“政府優品館” 3年覆蓋80%鎮級政府
     </Collapse.Item>
@@ -144,11 +144,11 @@ export default App;
 ```jsx
 import React from 'react'
 import { Collapse} from '@nutui/nutui-react'
-import { DownArrow, Checked, HeartFill } from '@nutui/icons-react'
+import { ArrowDown, Checked, HeartFill } from '@nutui/icons-react'
 
 const App = () => {
   return (  
-  <Collapse defaultActiveName={['1']} accordion expandIcon={<DownArrow />} rotate={90}>
+  <Collapse defaultActiveName={['1']} accordion expandIcon={<ArrowDown />} rotate={90}>
     <Collapse.Item title="標題1" name="1" expandIcon={<Checked />}>
       京東“廠直優品計劃”首推“政府優品館” 3年覆蓋80%鎮級政府
     </Collapse.Item>
@@ -173,11 +173,11 @@ export default App;
 ```jsx
 import React from 'react'
 import { Collapse, Button} from '@nutui/nutui-react'
-import { DownArrow, Checked, HeartFill } from '@nutui/icons-react'
+import { ArrowDown, Checked, HeartFill } from '@nutui/icons-react'
 
 const App = () => {
   return (  
-    <Collapse defaultActiveName={['1']} accordion expandIcon={<DownArrow />}>
+    <Collapse defaultActiveName={['1']} accordion expandIcon={<ArrowDown />}>
       <Collapse.Item
         title={
           <div

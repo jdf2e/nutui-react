@@ -43,7 +43,7 @@ export default App;
 
 ```tsx
 import React from 'react'
-import { CircleClose } from '@nutui/icons-react'
+import { Failure } from '@nutui/icons-react'
 import { Tag } from '@nutui/nutui-react'
 
 const App = () => {
@@ -56,7 +56,7 @@ const App = () => {
            onClose={() => alert('Tag closed')} 
            type='primary'>標簽</Tag>
       <Tag closeable
-           closeIcon={<CircleClose width={8} height={8} />}
+           closeIcon={<Failure width={8} height={8} />}
            onClose={() => alert('Tag closed')}
            type='primary'>標簽</Tag>
     </>
