@@ -1,3 +1,17 @@
+# v2.0.19
+`2023-09-27`
+
+* :sparkles: feat(menu):  overlay onclick 事件中调用 hideMenuItem 实现关闭 (#1505) @oasis-cloud
+* :sparkles: feat(menu): onClose 事件增加触发来源参数 (#1502) @oasis-cloud
+* :sparkles: feat(swiper): swiperItem 支持设置 className (#1504) @oasis-cloud
+* :bug: fix(uploader): 受控模式调整，props 类型调整，回调参数修正 (#1500) @oasis-cloud
+* :bug: fix: imagepreview with control (#1480) @xiaoyatong
+* :bug: fix: indicator 超长换行 (#1486) @oasis-cloud
+* :bug: fix: menu 在 lockscroll 的时候不需要加滚动事件 (#1509) @oasis-cloud
+* :bug: fix: ios和android下点击button时出现半透明灰色遮罩 (#1495) @Kurisu
+
+
+
 # v2.0.18
 `2023-09-20`
 
