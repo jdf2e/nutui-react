@@ -92,6 +92,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
 
   const windowHeight = useMemo(() => getSystemInfoSync().windowHeight, [])
   const updateItemOffset = useCallback(() => {
+    if (!parent.lockScroll) return
     const p = parent.menuRef.current
     p.getBoundingClientRect().then((rect: any) => {
       if (rect) {
