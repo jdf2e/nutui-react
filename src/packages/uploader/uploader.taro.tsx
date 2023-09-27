@@ -13,7 +13,13 @@ import Taro, {
 } from '@tarojs/taro'
 import { Photograph } from '@nutui/icons-react-taro'
 import Button from '@/packages/button/index.taro'
-import { ERROR, SUCCESS, UploaderTaro, UploadOptions } from './upload'
+import {
+  ERROR,
+  SUCCESS,
+  UploaderTaro,
+  UPLOADING,
+  UploadOptions,
+} from './upload'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { funcInterceptor } from '@/utils/interceptor'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -95,7 +101,7 @@ export interface UploaderProps extends BasicComponent {
   onProgress?: (param: {
     e: ProgressEvent<XMLHttpRequestEventTarget>
     option: UploadOptions
-    percentage: React.ReactNode
+    percentage: number | string
   }) => void
   onFailure?: (param: {
     responseText: XMLHttpRequest['responseText']
@@ -120,7 +126,7 @@ const defaultProps = {
   sourceType: ['album', 'camera'],
   mediaType: ['image', 'video'],
   camera: 'back',
-  uploadIcon: null,
+  uploadIcon: <Photograph size="20px" color="#808080" />,
   uploadLabel: '',
   previewType: 'picture',
   fit: 'cover',
@@ -197,7 +203,6 @@ const InternalUploader: ForwardRefRenderFunction<
     defaultValue,
     finalValue: [],
     onChange: (v) => {
-      console.log('inner onChange', v)
       onChange?.(v)
     },
   })
@@ -285,7 +290,6 @@ const InternalUploader: ForwardRefRenderFunction<
   }
 
   const executeUpload = (fileItem: FileItem, index: number) => {
-    console.log('executeUpload ', fileList)
     const uploadOption = new UploadOptions()
     uploadOption.name = name
     uploadOption.url = url
@@ -316,10 +320,11 @@ const InternalUploader: ForwardRefRenderFunction<
       setFileList(
         fileList.map((item) => {
           if (item.uid === fileItem.uid) {
-            item.status = 'uploading'
+            item.status = UPLOADING
             item.message = locale.uploader.uploading
             item.percentage = e.progress
-            onProgress && onProgress({ e, option, percentage: item.percentage })
+            onProgress &&
+              onProgress({ e, option, percentage: item.percentage as number })
           }
           return item
         })
@@ -516,7 +521,7 @@ const InternalUploader: ForwardRefRenderFunction<
           }`}
         >
           <div className="nut-uploader__icon">
-            {uploadIcon || <Photograph size="20px" color="#808080" />}
+            {uploadIcon}
             <span className="nut-uploader__icon-tip">{uploadLabel}</span>
           </div>
           <Button className="nut-uploader__input" onClick={_chooseImage} />

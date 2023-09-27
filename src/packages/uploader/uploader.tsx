@@ -91,6 +91,7 @@ const defaultProps = {
   preview: true,
   deletable: true,
   capture: false,
+  uploadIcon: <Photograph width="20px" height="20px" color="#808080" />,
   beforeDelete: (file: FileItem, files: FileItem[]) => {
     return true
   },
@@ -422,9 +423,7 @@ const InternalUploader: ForwardRefRenderFunction<
           })}
         >
           <div className="nut-uploader__icon">
-            {uploadIcon || (
-              <Photograph width="20px" height="20px" color="#808080" />
-            )}
+            {uploadIcon}
             <span className="nut-uploader__icon-tip">{uploadLabel}</span>
           </div>
 

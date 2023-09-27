@@ -110,7 +110,7 @@ const App = () => {
       message: '上傳中',
       type: 'image',
       uid: '127',
-      loadingIcon: ' ',
+      loadingIcon: null,
     },
   ]
   const onDelete = (file: FileItem, fileList: FileType<React.ReactNode>[]) => {
