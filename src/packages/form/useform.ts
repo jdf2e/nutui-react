@@ -180,7 +180,6 @@ class FormStore {
   resetFields = () => {
     this.errors.length = 0
     this.store = this.initialValues
-    console.log(this.store)
     this.fieldEntities.forEach((entity: FieldEntity) => {
       entity.onStoreChange('reset')
     })
