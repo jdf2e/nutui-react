@@ -1,6 +1,8 @@
 import React from 'react'
 import { Del, Failure, Link as LinkIcon, Loading } from '@nutui/icons-react'
 import Progress from '@/packages/progress'
+import { FileItem } from '@/packages/uploader/file-item'
+import { ERROR } from '@/packages/uploader/upload'
 
 export const Preview: React.FunctionComponent<any> = ({
   fileList,
@@ -11,6 +13,14 @@ export const Preview: React.FunctionComponent<any> = ({
   previewUrl,
   children,
 }) => {
+  const renderIcon = (item: FileItem) => {
+    if (item.status === ERROR) {
+      return item.failIcon || <Failure color="#fff" />
+    }
+    return (
+      item.loadingIcon || <Loading className="nut-icon-loading" color="#fff" />
+    )
+  }
   return (
     <>
       {fileList.length !== 0 &&
@@ -38,16 +48,7 @@ export const Preview: React.FunctionComponent<any> = ({
                   ) : (
                     item.status !== 'success' && (
                       <div className="nut-uploader__preview__progress">
-                        {item.failIcon !== ' ' &&
-                          item.loadingIcon !== ' ' &&
-                          (item.status === 'error'
-                            ? item.failIcon || <Failure color="#fff" />
-                            : item.loadingIcon || (
-                                <Loading
-                                  className="nut-icon-loading"
-                                  color="#fff"
-                                />
-                              ))}
+                        {renderIcon(item)}
                         <div className="nut-uploader__preview__progress__msg">
                           {item.message}
                         </div>
