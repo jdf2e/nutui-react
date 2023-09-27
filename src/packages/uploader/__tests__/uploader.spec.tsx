@@ -206,3 +206,27 @@ test('before-delete prop return true', () => {
   fireEvent.click(container.querySelectorAll('.nut-icon-Failure')[0])
   expect(onDelete).toBeCalled()
 })
+
+test('ready file list', () => {
+  const list = new FileItem()
+  list.name = '文件1.png'
+  list.url =
+    'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif'
+  list.status = 'ready'
+  list.message = '准备上传'
+  list.type = 'image'
+  list.uid = '12'
+  const App = () => {
+    return (
+      <Uploader
+        deletable
+        defaultValue={[list]}
+        beforeDelete={() => {
+          return true
+        }}
+      />
+    )
+  }
+  const { container, getByText } = render(<App />)
+  expect(getByText('准备上传')).toHaveTextContent('准备上传')
+})
