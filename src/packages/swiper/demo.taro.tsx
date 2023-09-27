@@ -69,7 +69,7 @@ const SwiperDemo = () => {
         <h2>{translated.basic}</h2>
         <Swiper defaultValue={1} autoPlay indicator>
           {list.map((item, index) => (
-            <Swiper.Item key={item}>
+            <Swiper.Item key={item} className="demo-class">
               <img
                 width="100%"
                 height="100%"
