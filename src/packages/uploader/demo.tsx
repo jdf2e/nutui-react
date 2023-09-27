@@ -1,7 +1,8 @@
 import React, { useState, useRef } from 'react'
-import { Dongdong, Loading1 } from '@nutui/icons-react'
+import { Dongdong, Loading1, Star } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
-import { Uploader, FileItem, FileType } from './uploader'
+import { Uploader } from './uploader'
+import { FileItem } from './file-item'
 import Button from '@/packages/button'
 import Cell from '@/packages/cell'
 import Progress from '@/packages/progress'
@@ -136,7 +137,7 @@ const UploaderDemo = () => {
   const formData = {
     custom: 'test',
   }
-  const defaultFileList: FileType<React.ReactNode>[] = [
+  const defaultFileList: FileItem[] = [
     {
       name: translated['6114cef1'],
       url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
@@ -160,7 +161,7 @@ const UploaderDemo = () => {
       message: translated['219481a6'],
       type: 'image',
       uid: '124',
-      errorIcon: 'star',
+      failIcon: <Star style={{ color: 'white' }} />,
     },
     {
       name: translated['29ab0c96'],
@@ -186,7 +187,7 @@ const UploaderDemo = () => {
       message: translated['403b055e'],
       type: 'image',
       uid: '127',
-      loadingIcon: ' ',
+      loadingIcon: null,
     },
   ]
   const fileToDataURL = (file: Blob): Promise<any> => {
@@ -262,6 +263,9 @@ const UploaderDemo = () => {
             style={{
               marginRight: '10px',
               marginBottom: '10px',
+            }}
+            onChange={(v) => {
+              console.log('outer onChange', v)
             }}
           />
           <Uploader
