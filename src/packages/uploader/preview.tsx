@@ -55,7 +55,7 @@ export const Preview: React.FunctionComponent<any> = ({
                     )
                   )}
 
-                  {item.type.includes('image') ? (
+                  {item.type?.includes('image') ? (
                     <>
                       {item.url && (
                         <img

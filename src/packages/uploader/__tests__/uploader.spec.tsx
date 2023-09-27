@@ -4,6 +4,7 @@ import '@testing-library/jest-dom'
 
 import { Uploader } from '../uploader'
 import { FileItem } from '../file-item'
+import { Preview } from '../preview'
 
 test('should render base uploader and type', () => {
   const { container, getByTestId } = render(
@@ -229,4 +230,46 @@ test('ready file list', () => {
   }
   const { container, getByText } = render(<App />)
   expect(getByText('准备上传')).toHaveTextContent('准备上传')
+})
+
+test('preview component', () => {
+  const delFunc = jest.fn()
+  const clickFunc = jest.fn()
+  const list: FileItem[] = [
+    {
+      name: '文件1.png',
+      status: 'success',
+      message: '上传成功',
+      uid: '12',
+    },
+  ]
+
+  const { container } = render(
+    <Preview
+      fileList={list}
+      previewType="picture"
+      deletable
+      onDeleteItem={delFunc}
+      handleItemClick={clickFunc}
+      previewUrl="https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif"
+    />
+  )
+
+  fireEvent.click(container.querySelectorAll('.close')[0])
+  expect(delFunc).toBeCalled()
+
+  const { container: container1 } = render(
+    <Preview
+      fileList={list}
+      previewType="picture"
+      deletable
+      onDeleteItem={delFunc}
+      handleItemClick={clickFunc}
+    />
+  )
+
+  fireEvent.click(
+    container1.querySelectorAll('.nut-uploader__preview-img__file__name')[0]
+  )
+  expect(clickFunc).toBeCalled()
 })
