@@ -109,8 +109,11 @@ export const DatePicker: FunctionComponent<
     value: props.value && formatValue(props.value),
     defaultValue: formatValue(props.defaultValue || null),
     finalValue: 0,
-    onChange: (val: number) => {},
+    onChange: (val: number) => {
+      _setCurrentDate(val)
+    },
   })
+  const [_currentDate, _setCurrentDate] = useState(currentDate)
   function getMonthEndDay(year: number, month: number): number {
     return new Date(year, month, 0).getDate()
   }
@@ -151,7 +154,7 @@ export const DatePicker: FunctionComponent<
     }
   }
   const ranges = () => {
-    const curDate = new Date(currentDate)
+    const curDate = new Date(_currentDate)
     if (!curDate) return []
     const { maxYear, maxDate, maxMonth, maxHour, maxMinute, maxSeconds } =
       getBoundary('max', curDate)
@@ -332,8 +335,8 @@ export const DatePicker: FunctionComponent<
   }
 
   const getDateIndex = (type: string) => {
-    const date = new Date(currentDate)
-    if (!currentDate) return 0
+    const date = new Date(_currentDate)
+    if (!_currentDate) return 0
     if (type === 'year') {
       return date.getFullYear()
     }
@@ -369,10 +372,10 @@ export const DatePicker: FunctionComponent<
   }
 
   useEffect(() => {
-    if (currentDate) {
+    if (_currentDate) {
       setOptions(columns())
     }
-  }, [currentDate])
+  }, [_currentDate])
 
   return (
     <View
