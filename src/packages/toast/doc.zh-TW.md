@@ -367,6 +367,7 @@ export default App
 | \--nutui-toast-title-font-size | `toast`標題文字大小 | `16px` |
 | \--nutui-toast-text-font-size | `toast`內容文字大小 | `14px` |
 | \--nutui-toast-font-color | `toast`文字顏色 | `#fff` |
+| \--nutui-toast-inner-top           | `toast`內容區自定義高度    | `50%`              |
 | \--nutui-toast-inner-padding | `toast`內容區padding值 | `24px 30px` |
 | \--nutui-toast-inner-bg-color | `toast`內容區背景色 | `$gray7` |
 | \--nutui-toast-inner-border-radius | `toast`內容區圓角值 | `12px` |

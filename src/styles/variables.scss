@@ -83,7 +83,12 @@ $background-color3: $gray6 !default;
 $divider-color: $gray9 !default;
 
 // ---- Font Family ----
-$font-family: PingFang SC, Microsoft YaHei, Helvetica, Hiragino Sans GB, SimSun,
+$font-family:
+  PingFang SC,
+  Microsoft YaHei,
+  Helvetica,
+  Hiragino Sans GB,
+  SimSun,
   sans-serif !default;
 
 // --- z-index ----
@@ -1213,7 +1218,7 @@ $signature-font-size: var(--nutui-signature-font-size, $font-size-2) !default;
 //fixednav（✅）
 $fixednav-bg-color: var(--nutui-fixednav-bg-color, #fff) !default;
 $fixednav-font-color: var(--nutui-fixednav-font-color, #000) !default;
-$fixednav-index: var(--nutui-fixednav-index, 201) !default;
+$fixednav-index: var(--nutui-fixednav-index, 900) !default;
 $fixednav-btn-bg: linear-gradient(
   135deg,
   $primary-color 0%,
@@ -1366,6 +1371,7 @@ $badge-border: var(
   0px solid $primary-text-color
 ) !default;
 $badge-border-radius: var(--nutui-badge-border-radius, 14px) !default;
+$badge-min-width: var(--nutui-badge-min-width, 5px) !default;
 $badge-padding: var(--nutui-badge-padding, 0 5px) !default;
 $badge-icon-padding: var(--nutui-badge-icon-padding, 3px) !default;
 $badge-content-transform: var(
@@ -1621,7 +1627,8 @@ $menu-bar-border-bottom-color: var(
   --nutui-menu-bar-border-bottom-color,
   #eaf0fb
 ) !default;
-$menu-bar-opened-z-index: var(--nutui-menu-bar-opened-z-index, 2001) !default;
+$menu-bar-opened-z-index: var(--nutui-menu-bar-opened-z-index, 1000) !default;
+$menu-item-z-index: var(--nutui-menu-item-z-index, 1000) !default;
 $menu-item-disabled-color: var(
   --nutui-menu-item-disabled-color,
   #969799

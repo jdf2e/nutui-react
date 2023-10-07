@@ -34,9 +34,50 @@ const App = () => {
   return (
     <>
       <div className="demo full">
-        <Menu>
+        <Menu
+          onClose={(i: number) => console.log('onClose', i)}
+          onOpen={(i: number) => console.log('onOpen', i)}
+        >
           <Menu.Item options={options} value={0} />
           <Menu.Item options={options1} value="a" />
+        </Menu>
+      </div>
+    </>
+  )
+}
+export default App
+
+```
+
+:::
+
+### 受控
+
+:::demo
+
+```tsx
+import React, { useState } from 'react'
+import { Menu } from '@nutui/nutui-react';
+
+const App = () => {
+  const [options] = useState([
+    { text: '全部商品', value: 0 },
+    { text: '新款商品', value: 1 },
+    { text: '活動商品', value: 2 },
+  ])
+  const [options1] = useState([
+    { text: '默認排序', value: 'a' },
+    { text: '好評排序', value: 'b' },
+    { text: '銷量排序', value: 'c' },
+  ])
+  const [stateOne, setStateOne] = useState(0)
+  const [stateTwo, setStateTwo] = useState('a')
+  return (
+    <>
+      <div className="demo full">
+        <Menu>
+          <Menu.Item options={options} value={stateOne} onChange={(v) => setStateOne(v.value)} />
+          <Menu.Item options={options1} value={stateTwo} onChange={(v) => setStateTwo(v.value)} />
         </Menu>
       </div>
     </>
@@ -277,6 +318,8 @@ export default App
 | lockScroll | 背景是否鎖定 | `boolean` | `true` |
 | scrollFixed | 滾動後是否固定，可設置固定位置 | `boolean` \| `string` \| `number` | `true` |
 | icon | 自定義標題圖標 | `React.ReactNode` | `-` |
+| onOpen | menu 展开触发 | `(index: number, from: 'NORMAL' \| 'REF') => void` | `-` |
+| onClose | menu 关闭触发 | `(index: number, from: 'NORMAL' \| 'REF') => void` | `-` |
 
 ## Menu.Item
 
@@ -288,6 +331,7 @@ export default App
 | options | 選項數組 | `array` | `-` |
 | disabled | 是否禁用菜單 | `boolean` | `false` |
 | columns | 可以設置一行展示多少列 options | `number` | `1` |
+| closeOnClickAway | 点击空白处关闭菜单 | `boolean` | `true` |
 | icon | 自定義選項圖標 | `React.ReactNode` | `Check` |
 | direction | 菜單展開方嚮，可選值為up | `string` | `down` |
 | onChange | 選擇 option 之後觸發 | `(event: any) => void` | `-` |

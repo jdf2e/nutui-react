@@ -69,6 +69,7 @@
     position: relative;
     margin-right: $uploader-preview-margin-right;
     margin-bottom: $uploader-preview-margin-bottom;
+    border-radius: $uploader-picture-border-radius;
     box-shadow: 0 2px 10px 0 rgb(0 0 0 / 10%);
 
     &__progress {
@@ -104,21 +105,18 @@
     &-list {
       width: 100%;
       height: 32px;
+      box-sizing: border-box;
       display: flex;
-      flex-direction: column;
-      position: relative;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 10px;
       background-color: $gray5;
 
       .nut-uploader__preview-img__file__name {
+        display: flex;
         -webkit-line-clamp: 1;
         padding: 2px;
         height: 24px;
-      }
-
-      .nut-uploader__preview-img__file__del {
-        position: absolute;
-        right: 4px;
-        top: 6px;
       }
 
       .nut-progress {
@@ -138,6 +136,7 @@
       right: $uploader-preview-close-right;
       top: $uploader-preview-close-top;
       transform: translate(50%, -50%);
+      z-index: 1;
     }
 
     &-img {
@@ -145,6 +144,7 @@
       width: $uploader-picture-width;
       height: $uploader-picture-height;
       border-radius: $uploader-picture-border-radius;
+      overflow: hidden;
 
       i {
         color: $gray1;
@@ -172,7 +172,7 @@
         width: 100%;
         height: 100%;
         position: initial;
-        border-radius: 6px;
+        border-radius: $uploader-picture-border-radius;
       }
 
       &__file {
@@ -185,7 +185,7 @@
 
         &__name {
           display: flex;
-          width: 100%;
+          width: 90%;
           font-size: 12px;
           color: $text-color;
 
@@ -199,8 +199,8 @@
 
           .nut-icon-link {
             &::before {
-              margin-left: -25%;
-              margin-top: -25%;
+              margin-left: -45%;
+              margin-top: -45%;
               transform: none;
             }
           }

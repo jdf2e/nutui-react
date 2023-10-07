@@ -4,7 +4,7 @@ export const Utils = {
    * @return {Boolse} true|false
    */
   isLeapYear(y: number): boolean {
-    return (y % 4 == 0 && y % 100 != 0) || y % 400 == 0
+    return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0
   },
 
   /**
@@ -117,9 +117,9 @@ export const Utils = {
    * 时间是否相等
    * @return {Boolean}
    */
-  isEqual(date1 = '', date2: string): boolean {
-    const startTime = new Date(date1.replace('-', '/')).getTime()
-    const endTime = new Date(date2.replace('-', '/')).getTime()
+  isEqual(date1: string, date2: string): boolean {
+    const startTime = new Date((date1 || '').replace(/-/g, '/')).getTime()
+    const endTime = new Date(date2.replace(/-/g, '/')).getTime()
     if (startTime === endTime) {
       return true
     }

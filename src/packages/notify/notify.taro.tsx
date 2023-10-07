@@ -9,7 +9,7 @@ import {
 } from '@/utils/use-custom-event'
 
 export type NotifyPosition = 'top' | 'bottom'
-export type NotifyType = 'primary' | 'success' | 'danger' | 'waring'
+export type NotifyType = 'primary' | 'success' | 'danger' | 'warning'
 
 export interface NotifyProps extends BasicComponent {
   id?: string

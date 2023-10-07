@@ -81,10 +81,9 @@ export const Audio: FunctionComponent<
     handPlaying: false,
   })
   const classPrefix = 'nut-audio'
-  const warn = console.warn
   const handleEnded = (e: SyntheticEvent<HTMLAudioElement>) => {
     if (props.loop) {
-      warn(locale.audio.tips || 'onPlayEnd事件在loop=false时才会触发')
+      console.warn(locale.audio.tips || 'onPlayEnd事件在loop=false时才会触发')
     } else {
       props.onEnd && props.onEnd(e)
     }

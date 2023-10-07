@@ -99,8 +99,8 @@ export const Table: FunctionComponent<
     })
   }
 
-  const renderBodyTds = (item: any) => {
-    return sortDataItem().map(([value, render], index) => {
+  const renderBodyTds = (item: any, rowIndex: number) => {
+    return sortDataItem().map(([value, render]) => {
       return (
         <span
           className={classNames(
@@ -110,7 +110,7 @@ export const Table: FunctionComponent<
           key={value}
         >
           {typeof item[value] === 'function' || typeof render === 'function' ? (
-            <div>{render ? render(item) : item[value](item)}</div>
+            <div>{render ? render(item, rowIndex) : item[value](item)}</div>
           ) : (
             item[value]
           )}
@@ -123,7 +123,7 @@ export const Table: FunctionComponent<
     return curData.map((item, index) => {
       return (
         <div className={bodyClassPrefix} key={index}>
-          {renderBodyTds(item)}
+          {renderBodyTds(item, index)}
         </div>
       )
     })

@@ -25,6 +25,7 @@ const App = () => {
     <>
       <Cell title="基礎彈框" onClick={() => {
         Dialog.alert({
+            className: 'dialog-func',
             title: '基礎彈框',
             content: '支持函數調用和組件調用兩種方式。',
         });

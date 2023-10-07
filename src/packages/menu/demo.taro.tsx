@@ -13,6 +13,7 @@ const MenuDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
+      controlled: '受控',
       customMenuContent: '自定义菜单内容',
       customContent: '自定义内容',
       screen: '筛选',
@@ -48,6 +49,7 @@ const MenuDemo = () => {
     },
     'en-US': {
       basic: 'Basic Usage',
+      controlled: 'Controlled',
       customMenuContent: 'Custom Menu Content',
       customContent: 'Custom content',
       screen: 'Screen',
@@ -100,6 +102,8 @@ const MenuDemo = () => {
   }, [translated])
 
   const itemRef = useRef(null)
+  const [stateOne, setStateOne] = useState(0)
+  const [stateTwo, setStateTwo] = useState('a')
 
   return (
     <>
@@ -107,60 +111,77 @@ const MenuDemo = () => {
       <style>{style}</style>
       <div className={`demo demo-full ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
-        <Menu closeOnOverlayClick lockScroll={false}>
+        <Menu
+          onClose={(i: number) => console.log('onClose', i)}
+          onOpen={(i: number) => console.log('onOpen', i)}
+        >
           <Menu.Item
             options={options}
-            value={0}
-            closeOnClickAway
+            defaultValue={0}
             onChange={(val) => {
               console.log(val)
             }}
           />
-          <Menu.Item closeOnClickAway options={options1} value="a" />
+          <Menu.Item options={options1} defaultValue="a" />
+        </Menu>
+        <h2>{translated.controlled}</h2>
+        <Menu>
+          <Menu.Item
+            options={options}
+            value={stateOne}
+            onChange={(val) => {
+              setStateOne(val.value)
+            }}
+          />
+          <Menu.Item
+            options={options1}
+            value={stateTwo}
+            onChange={(val) => {
+              setStateTwo(val.value)
+            }}
+          />
         </Menu>
         <h2>{translated.customMenuContent}</h2>
-        <Menu>
-          <Menu.Item options={options} value={0} />
+        <Menu
+          onClose={(a, f) => {
+            console.log(a, f)
+          }}
+        >
+          <Menu.Item options={options} defaultValue={0} />
           <Menu.Item title={translated.screen} ref={itemRef}>
             <div>{translated.customContent}</div>
-            <Button onClick={() => (itemRef.current as any).toggle(false)}>
+            <Button
+              onClick={() => {
+                ;(itemRef.current as any)?.toggle(false)
+              }}
+            >
               {translated.confirm}
             </Button>
           </Menu.Item>
         </Menu>
         <h2>{translated.twoColsInOneLine}</h2>
         <Menu>
-          <Menu.Item options={options} value={0} columns={2} />
+          <Menu.Item options={options} defaultValue={0} columns={2} />
         </Menu>
         <h2>{translated.customActiveColor}</h2>
         <Menu activeColor="green">
-          <Menu.Item options={options} value={0} />
-          <Menu.Item options={options1} value="a" />
+          <Menu.Item options={options} defaultValue={0} />
+          <Menu.Item options={options1} defaultValue="a" />
         </Menu>
         <h2>{translated.customIcons}</h2>
         <Menu icon={<TriangleDown />}>
-          <Menu.Item options={options} value={0} icon={<Success />} />
-          <Menu.Item options={options1} value="a" />
+          <Menu.Item options={options} defaultValue={0} icon={<Success />} />
+          <Menu.Item options={options1} defaultValue="a" />
         </Menu>
         <h2>{translated.expandDirection}</h2>
         <Menu>
-          <Menu.Item
-            options={options}
-            value={0}
-            direction="up"
-            closeOnClickAway
-          />
-          <Menu.Item
-            options={options1}
-            value="a"
-            direction="up"
-            closeOnClickAway
-          />
+          <Menu.Item options={options} defaultValue={0} direction="up" />
+          <Menu.Item options={options1} defaultValue="a" direction="up" />
         </Menu>
         <h2>{translated.disableMenu}</h2>
         <Menu>
-          <Menu.Item options={options} value={0} disabled />
-          <Menu.Item options={options1} value="a" disabled />
+          <Menu.Item options={options} defaultValue={0} disabled />
+          <Menu.Item options={options1} defaultValue="a" disabled />
         </Menu>
       </div>
     </>

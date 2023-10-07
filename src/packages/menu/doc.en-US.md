@@ -34,9 +34,50 @@ const App = () => {
   return (
     <>
       <div className="demo full">
-        <Menu>
+        <Menu
+          onClose={(i: number) => console.log('onClose', i)}
+          onOpen={(i: number) => console.log('onOpen', i)}
+        >
           <Menu.Item options={options} value={0} />
           <Menu.Item options={options1} value="a" />
+        </Menu>
+      </div>
+    </>
+  )
+}
+export default App
+
+```
+
+:::
+
+### Controlled
+
+:::demo
+
+```tsx
+import React, { useState } from 'react'
+import { Menu } from '@nutui/nutui-react';
+
+const App = () => {
+  const [options] = useState([
+    { text: 'All Products', value: 0 },
+    { text: 'New Products', value: 1 },
+    { text: 'Activity Products', value: 2 }
+  ])
+  const [options1] = useState([
+    { text: 'Default Sort', value: 'a' },
+    { text: 'Praise Sort', value: 'b' },
+    { text: 'Sales Volume Sort', value: 'c' }
+  ])
+  const [stateOne, setStateOne] = useState(0)
+  const [stateTwo, setStateTwo] = useState('a')
+  return (
+    <>
+      <div className="demo full">
+        <Menu>
+          <Menu.Item options={options} value={stateOne} onChange={(v) => setStateOne(v.value)} />
+          <Menu.Item options={options1} value={stateTwo} onChange={(v) => setStateTwo(v.value)} />
         </Menu>
       </div>
     </>
@@ -288,24 +329,27 @@ export default App
 | lockScroll | Whether the background is locked | `boolean` | `true` |
 | scrollFixed | Whether to fixed when window is scrolled, fixed position can be set | `boolean` \| `string` \| `number` | `true` |
 | icon | Custome title icon | `React.ReactNode` | `-` |
+| onOpen | menu 展开触发 | `(index: number, from: 'NORMAL' \| 'REF') => void` | `-` |
+| onClose | menu 关闭触发 | `(index: number, from: 'NORMAL' \| 'REF') => void` | `-` |
 
 ## Menu.Item
 
 ### Props
 
-| 属性 | 说明 | 类型 | 默认值 |
+| Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | title | Item title | `string` | `Current selected value` |
 | options | Options | `Array` | `-` |
 | disabled | Whether to disable dropdown item | `boolean` | `false` |
 | columns | Display how many options in one line | `number` | `1` |
+| closeOnClickAway | Click on the blank space to close the menu | `boolean` | `true` |
 | icon | Custome option icon | `React.ReactNode` | `Check` |
 | direction | Expand direction, can be set to up | `string` | `down` |
 | onChange | Emitted select option changed | `(event: any) => void` | `-` |
 
 ### Ref
 
-| Event | Description | Arguments |
+| Property | Description | Parameters |
 | --- | --- | --- |
 | toggle | Toggle menu display status, true to show，false to hide, no param is negated | `show?: boolean` |
 

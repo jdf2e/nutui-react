@@ -10,7 +10,7 @@ const projectID = process.env.VITE_APP_PROJECT_ID
 
 function scannerFiles() {
   const prefix = './dist/esm/'
-  const list = glob.sync(prefix + '**/style/index.js')
+  const list = glob.sync(prefix + '**/style/index.js', { dotRelative: true })
   return list
 }
 
@@ -23,9 +23,8 @@ function viteConfig(file) {
       preprocessorOptions: {
         scss: {
           charset: false,
-          additionalData: `@import "@/styles/variables${
-            projectID ? `-${projectID}` : ''
-          }.scss";`,
+          additionalData: `@import "@/styles/variables${projectID ? `-${projectID}` : ''
+            }.scss";`,
         },
         postcss: {
           plugins: [atImport({ path: path.join(__dirname, 'src`') })],
@@ -57,7 +56,7 @@ function build(files) {
       return vite.build(viteConfig(file))
     })
   ).then(() => {
-    const fileList = glob.sync('./dist/esm/**/style.css')
+    const fileList = glob.sync('./dist/esm/**/style.css', { dotRelative: true })
     fileList.forEach((file) => {
       fse.writeFile(file.replace('style.css', 'css.js'), `import './style.css'`)
     })

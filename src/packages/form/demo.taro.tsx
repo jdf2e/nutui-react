@@ -54,7 +54,6 @@ interface T {
   switch: string
   checkbox: string
   gender: string
-  // option: (v: string) => `选项${v}`
   rate: string
   inputnumber: string
   range: string
@@ -78,7 +77,7 @@ interface T {
 }
 
 const FormDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
       title1: '动态表单',
@@ -90,6 +89,7 @@ const FormDemo = () => {
       name: '姓名',
       nameTip: '请输入姓名',
       nameTip1: '请输入姓名',
+      nameErr: '姓名不能超过5个字',
       age: '年龄',
       ageTip: '请输入年龄',
       ageTip1: '请输入年龄，必须数字且0-200区间',
@@ -103,12 +103,13 @@ const FormDemo = () => {
       addressTip: '请输入地址',
       addressTip1: '请选择地址',
       addressTip2: '请选择所在地区',
+      addressErr: '地址不能超过15个字',
       remarks: '备注',
       remarksTip: '请输入备注',
       add: '添加',
       remove: '删除',
       submit: '提交',
-      reset: '重置提示状态',
+      reset: '重置',
       switch: '开关',
       checkbox: '复选框',
       gender: '性别',
@@ -144,6 +145,7 @@ const FormDemo = () => {
       name: 'Name',
       nameTip: 'Please enter your name',
       nameTip1: 'Please enter name',
+      nameErr: 'Name cannot exceed 5 characters',
       age: 'Age',
       ageTip: 'Please enter age',
       ageTip1:
@@ -158,12 +160,13 @@ const FormDemo = () => {
       addressTip: 'Please enter address',
       addressTip1: 'Please select an address',
       addressTip2: 'Please select your region',
+      addressErr: 'Address should not exceed 15 characters',
       remarks: 'Remarks',
       remarksTip: 'Please enter remarks',
       add: 'Add',
       remove: 'Remove',
       submit: 'Submit',
-      reset: 'Reset alert state',
+      reset: 'Reset',
       switch: 'Switch',
       checkbox: 'Checkbox',
       gender: 'Gender',
@@ -287,14 +290,29 @@ const FormDemo = () => {
             </>
           }
         >
-          <Form.Item required label={translated.name} name="username">
+          <Form.Item
+            required
+            label={translated.name}
+            name="username"
+            rules={[
+              { max: 5, message: translated.nameErr },
+              { required: true, message: translated.nameTip1 },
+            ]}
+          >
             <Input
               className="nut-input-text"
               placeholder={translated.nameTip}
               type="text"
             />
           </Form.Item>
-          <Form.Item label={translated.address} name="address">
+          <Form.Item
+            label={translated.address}
+            name="address"
+            rules={[
+              { max: 15, message: translated.addressErr },
+              { required: true, message: translated.addressTip },
+            ]}
+          >
             <TextArea
               placeholder={translated.addressTip}
               maxLength={100}
@@ -311,6 +329,8 @@ const FormDemo = () => {
         </Form>
         <h2>{translated.title2}</h2>
         <Form
+          divider
+          labelPosition="left"
           onFinish={(values) => submitSucceed(values)}
           onFinishFailed={(values, errors) => submitFailed(errors)}
           footer={
@@ -353,8 +373,7 @@ const FormDemo = () => {
           <Form.Item
             label={translated.tel}
             name="tel"
-            required
-            rules={[{ required: true, message: translated.telTip }]}
+            rules={[{ max: 13, message: translated.telTip }]}
           >
             <Input placeholder={translated.telTip2} type="number" />
           </Form.Item>

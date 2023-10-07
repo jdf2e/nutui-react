@@ -1,12 +1,5 @@
 @import '../overlay/overlay.scss';
-.nut-theme-dark {
-  .nut-fixednav {
-    &__list {
-      // background-color: $dark2;
-      // color: $white;
-    }
-  }
-}
+
 .nut-fixednav {
   position: fixed;
   z-index: $fixednav-index;

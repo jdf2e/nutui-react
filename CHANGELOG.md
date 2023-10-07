@@ -1,3 +1,62 @@
+# v2.0.19
+`2023-09-27`
+
+* :sparkles: feat(menu):  overlay onclick 事件中调用 hideMenuItem 实现关闭 (#1505) @oasis-cloud
+* :sparkles: feat(menu): onClose 事件增加触发来源参数 (#1502) @oasis-cloud
+* :sparkles: feat(swiper): swiperItem 支持设置 className (#1504) @oasis-cloud
+* :bug: fix(uploader): 受控模式调整，props 类型调整，回调参数修正 (#1500) @oasis-cloud
+* :bug: fix: imagepreview with control (#1480) @xiaoyatong
+* :bug: fix: indicator 超长换行 (#1486) @oasis-cloud
+* :bug: fix: menu 在 lockscroll 的时候不需要加滚动事件 (#1509) @oasis-cloud
+* :bug: fix: ios和android下点击button时出现半透明灰色遮罩 (#1495) @Kurisu
+
+
+
+# v2.0.18
+`2023-09-20`
+
+* :sparkles: feat(menu): 增加受控和非受控的模式 (#1433) @oasis-cloud
+* :sparkles: feat: menu 展开关闭事件增加参数 (#1447) @oasis-cloud
+* :bug: fix(Badge): Badge位置值兼容两种类型，添加css变量min-width (#1410) @beginnerZhang
+* :bug: fix(Notify): type NotifyType incorrectly spelling warning as waring (#1441) @Katz
+* :bug: fix: calendar 在 iOS 中不展示开始和结束 (#1471) @oasis-cloud
+* :bug: fix: swiperItem 的子元素在 H5 中设置 onClick 无效 (#1472) @oasis-cloud
+* :bug: fix: uploader 列表类型内置上传按钮 (#1477) @oasis-cloud
+* :bug: fix: uploader 缩略图圆角样式未生效 (#1476) @oasis-cloud
+* :bug: fix: useFrom 类型优化 (#1473) @oasis-cloud
+* :bug: fix: zIndex 层级统一调整 (#1460) @oasis-cloud
+* :bug: fix: 组件依赖样式处理 (#1474) @xiaoyatong
+* 📖 docs: form 组件文档格式化 (#1436) @oasis-cloud
+
+
+# v2.0.17
+`2023-09-13`
+
+* :sparkles: feat: form 增加 validateTrigger 和 getFieldsValue (#1411) @oasis-cloud
+* :bug: fix: add popupProps (#1426) @oasis-cloud
+* :bug: fix: form label position left (#1412) @oasis-cloud
+* :bug: fix: lint errors (#1406) @xiaoyatong
+* :bug: fix: review package update (#1423) @xiaoyatong
+* :bug: fix: swipe component fails to slide in Alipay (#1399) @oasis-cloud
+* :bug: fix: table expose rowIndex (#1400) @oasis-cloud
+* :bug: fix: toast组件 duration 设置无效 (#1424) @oasis-cloud
+* 🔨 chore: glob & prettier update (#1427) @xiaoyatong
+* 🔨 chore: swc 版本恢复 (#1425) @oasis-cloud
+
+
+# v2.0.16
+`2023-09-06`
+
+* :sparkles: feat: form 支持分割线 (#1389) @oasis-cloud
+* :bug: fix(pulltorefresh): 修复 H5 卡顿 & 小程序滑动距离问题 @Eiinu
+* :bug: fix: csstransition using findDOMNode which is deprecated (#1370) @oasis-cloud
+* :bug: fix: dialog 的函数调用增加对 classname 和 style 的支持 (#1391) @oasis-cloud
+* :bug: fix: swipe 阻止页面滚动 (#1380) @oasis-cloud
+* :bug: fix: useForm 在类组件下报错，可以采用 ref 的方式使用 FormInstance (#1383) @oasis-cloud
+* :bug: fix: 多个 Swipe 的滑动选项完全相等 (#1334) @Clay Zhang
+* 📖 docs: toast组件完善了样式变量 (#1379) @ivan-My
+
+
 # v2.0.15
 `2023-08-30`
 

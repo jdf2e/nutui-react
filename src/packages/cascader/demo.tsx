@@ -338,6 +338,9 @@ const CascaderDemo = () => {
           }}
         />
         <Cascader
+          popupProps={{
+            className: 'cascader-popup',
+          }}
           visible={isVisibleDemo1}
           value={value1}
           title={translated.addressTip}

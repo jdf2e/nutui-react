@@ -2,6 +2,7 @@ import React, { FunctionComponent, ReactNode } from 'react'
 
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import CellGroupContext from '@/packages/cellgroup/context'
 
 export interface CellGroupProps extends BasicComponent {
   title: ReactNode
@@ -9,6 +10,7 @@ export interface CellGroupProps extends BasicComponent {
   children?: ReactNode
   divider: boolean
 }
+
 const defaultProps = {
   ...ComponentDefaults,
   title: '',
@@ -36,7 +38,9 @@ export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
           divider ? `${classPrefix}__wrap--divider` : ''
         }`}
       >
-        {children}
+        <CellGroupContext.Provider value={{ divider }}>
+          {children}
+        </CellGroupContext.Provider>
       </div>
     </div>
   )

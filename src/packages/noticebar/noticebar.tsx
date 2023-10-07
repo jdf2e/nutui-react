@@ -308,10 +308,13 @@ export const NoticeBar: FunctionComponent<
   const autoplay = () => {
     if (childCount <= 1) return
     stopAutoPlay()
-    swiperRef.current.autoplayTimer = setTimeout(() => {
-      next()
-      autoplay()
-    }, Number(duration) + 100 * speed)
+    swiperRef.current.autoplayTimer = setTimeout(
+      () => {
+        next()
+        autoplay()
+      },
+      Number(duration) + 100 * speed
+    )
   }
 
   // 切换方法

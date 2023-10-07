@@ -11,12 +11,18 @@
   padding: $dialog-padding;
   box-sizing: border-box;
 
+  &-overlay {
+    --nutui-overlay-zIndex: 1200;
+  }
+
   &__outer {
     position: fixed;
     max-height: 100%;
     overflow-y: auto;
     background-color: $white;
-    transition: transform 0.2s, -webkit-transform 0.2s;
+    transition:
+      transform 0.2s,
+      -webkit-transform 0.2s;
     -webkit-overflow-scrolling: touch;
     top: 50%;
     left: 50%;

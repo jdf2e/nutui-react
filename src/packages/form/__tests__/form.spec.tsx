@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Form from '../index'
+import { useEffect } from 'react'
+import Form from '@/packages/form'
 import Input from '@/packages/input'
 
 test('form set initialValues', () => {
@@ -12,6 +13,27 @@ test('form set initialValues', () => {
       </Form.Item>
     </Form>
   )
+  expect(container.querySelector('.nut-input-native')).toHaveValue(
+    'NutUI-React'
+  )
+})
+
+test('useForm', () => {
+  const App = () => {
+    const [form] = Form.useForm()
+    useEffect(() => {
+      form.setFieldsValue({ username: 'NutUI-React' })
+      form.getFieldsValue(['username'])
+    }, [])
+    return (
+      <Form form={form}>
+        <Form.Item name="username">
+          <Input />
+        </Form.Item>
+      </Form>
+    )
+  }
+  const { container } = render(<App />)
   expect(container.querySelector('.nut-input-native')).toHaveValue(
     'NutUI-React'
   )

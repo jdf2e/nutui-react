@@ -102,14 +102,13 @@ export const Popover: FunctionComponent<
   const [showPopup, setShowPopup] = useState(false)
   const [elWidth, setElWidth] = useState(0)
   const [elHeight, setElHeight] = useState(0)
-  const [rootPosition, setRootPosition] =
-    useState<{
-      width: number
-      height: number
-      left: number
-      top: number
-      right: number
-    }>()
+  const [rootPosition, setRootPosition] = useState<{
+    width: number
+    height: number
+    left: number
+    top: number
+    right: number
+  }>()
 
   useEffect(() => {
     setShowPopup(visible)
@@ -208,7 +207,6 @@ export const Popover: FunctionComponent<
       if (['bottom', 'top'].includes(direction)) {
         const h =
           direction === 'bottom' ? height + cross : -(contentHeight + cross)
-
         styles.top = `${top + h}px`
 
         if (!skew) {

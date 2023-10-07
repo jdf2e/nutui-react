@@ -34,7 +34,10 @@ const App = () => {
   return (
     <>
       <div className="demo full">
-        <Menu>
+        <Menu
+          onClose={(i: number) => console.log('onClose', i)}
+          onOpen={(i: number) => console.log('onOpen', i)}
+        >
           <Menu.Item options={options} value={0} />
           <Menu.Item options={options1} value="a" />
         </Menu>
@@ -48,6 +51,43 @@ export default App
 
 :::
 
+### 受控
+
+:::demo
+
+```tsx
+import React, { useState } from 'react'
+import { Menu } from '@nutui/nutui-react';
+
+const App = () => {
+  const [options] = useState([
+    { text: '全部商品', value: 0 },
+    { text: '新款商品', value: 1 },
+    { text: '活动商品', value: 2 },
+  ])
+  const [options1] = useState([
+    { text: '默认排序', value: 'a' },
+    { text: '好评排序', value: 'b' },
+    { text: '销量排序', value: 'c' },
+  ])
+  const [stateOne, setStateOne] = useState(0)
+  const [stateTwo, setStateTwo] = useState('a')
+  return (
+    <>
+      <div className="demo full">
+        <Menu>
+          <Menu.Item options={options} value={stateOne} onChange={(v) => setStateOne(v.value)} />
+          <Menu.Item options={options1} value={stateTwo} onChange={(v) => setStateTwo(v.value)} />
+        </Menu>
+      </div>
+    </>
+  )
+}
+export default App
+
+```
+
+:::
 ### 自定义菜单内容
 
 使用实例上的 toggle 方法可以手动关闭弹框。
@@ -277,6 +317,8 @@ export default App
 | lockScroll | 背景是否锁定 | `boolean` | `true` |
 | scrollFixed | 滚动后是否固定，可设置固定位置 | `boolean` \| `string` \| `number` | `true` |
 | icon | 自定义标题图标 | `React.ReactNode` | `-` |
+| onOpen | menu 展开触发 | `(index: number, from: 'NORMAL' \| 'REF') => void` | `-` |
+| onClose | menu 关闭触发 | `(index: number, from: 'NORMAL' \| 'REF') => void` | `-` |
 
 ## Menu.Item
 
@@ -288,6 +330,7 @@ export default App
 | options | 选项数组 | `array` | `-` |
 | disabled | 是否禁用菜单 | `boolean` | `false` |
 | columns | 可以设置一行展示多少列 options | `number` | `1` |
+| closeOnClickAway | 点击空白处关闭菜单 | `boolean` | `true` |
 | icon | 自定义选项图标 | `React.ReactNode` | `Check` |
 | direction | 菜单展开方向，可选值为up | `string` | `down` |
 | onChange | 选择 option 之后触发 | `(event: any) => void` | `-` |

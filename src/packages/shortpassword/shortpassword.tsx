@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import Popup from '@/packages/popup'
 import { useConfig } from '@/packages/configprovider'
 import { ComponentDefaults } from '@/utils/typings'
-import { PopupProps } from '../popup/popup'
+import { PopupProps } from '@/packages/popup/index'
 import { usePropsValue } from '@/utils/use-props-value'
 
 export interface ShortPasswordProps extends PopupProps {

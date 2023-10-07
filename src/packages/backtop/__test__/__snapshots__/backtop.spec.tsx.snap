@@ -4,7 +4,7 @@ exports[`backtop custom test 1`] = `
 <div>
   <div
     class="nut-backtop custom-class"
-    style="z-index: 10; bottom: 110px; right: 10px;"
+    style="z-index: 900; bottom: 110px; right: 10px;"
   >
     <div
       class="backtop-demo"

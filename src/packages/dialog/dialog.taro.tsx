@@ -45,6 +45,8 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
   const {
     params: {
       id,
+      className,
+      style,
       visible,
       footer,
       title,
@@ -147,6 +149,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
             closeOnOverlayClick={closeOnOverlayClick}
             lockScroll={lockScroll}
             onClick={onHandleClickOverlay}
+            className={classNames('nut-dialog-overlay')}
           />
         ) : null}
 
@@ -158,6 +161,8 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
           appear
         >
           <Content
+            className={className}
+            style={style}
             title={title}
             footer={renderFooter()}
             footerDirection={footerDirection}

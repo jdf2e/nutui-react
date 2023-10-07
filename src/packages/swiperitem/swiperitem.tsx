@@ -36,7 +36,6 @@ export const SwiperItem = React.forwardRef<
     }
     return style
   }
-
   return (
     <div className={classes} style={{ ...style, ...getStyle() }}>
       {children}

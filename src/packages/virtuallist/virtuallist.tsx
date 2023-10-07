@@ -129,7 +129,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
   const scroll = useCallback(() => {
     requestAnimationFrame((e) => {
       const scrollSize = getElement()[scrollKey]
-      const startIndex = binarySearch(positions, scrollSize, horizontal)
+      const startIndex = binarySearch(positions, horizontal, scrollSize)
       const overStart = startIndex - overscan > -1 ? startIndex - overscan : 0
       // const offSetSize = horizontal ? getElement().offsetWidth : getElement().offsetHeight
       if (!itemEqual) {

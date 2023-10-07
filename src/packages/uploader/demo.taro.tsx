@@ -1,39 +1,11 @@
 import React, { useState, useRef } from 'react'
 import Taro from '@tarojs/taro'
-import { Dongdong, Loading1 } from '@nutui/icons-react-taro'
+import { Dongdong, Loading1, Star } from '@nutui/icons-react-taro'
+import { FileItem } from '@/packages/uploader/file-item'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Uploader, Progress, Cell } from '@/packages/nutui.react.taro'
 import '@/packages/uploader/demo.scss'
 import Header from '@/sites/components/header'
-
-export type FileItemStatus =
-  | 'ready'
-  | 'uploading'
-  | 'success'
-  | 'error'
-  | 'removed'
-
-export type FileType<T> = { [key: string]: T }
-
-export class FileItem {
-  status: FileItemStatus = 'ready'
-
-  message = '准备中..'
-
-  uid: string = new Date().getTime().toString()
-
-  name?: string
-
-  url?: string
-
-  path?: string
-
-  type?: string
-
-  percentage: string | number = 0
-
-  formData: FormData = new FormData()
-}
 
 interface uploadRefState {
   submit: () => void
@@ -52,6 +24,7 @@ interface T {
   ca3903f3: string
   uploadProgressAction: string
   '84aa6bce': string
+  uploadListDefault: string
   uploadListShow: string
   uploadDefaultProgress: string
   a4afedb5: string
@@ -69,6 +42,7 @@ interface T {
   clearBtnUpload: string
   '7db1a8b2': string
 }
+
 const UploaderDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
@@ -83,7 +57,8 @@ const UploaderDemo = () => {
       ca3903f3: 'delete事件触发',
       uploadProgressAction: 'progress事件触发',
       '84aa6bce': '基础用法',
-      uploadListShow: '基础用法-上传列表展示',
+      uploadListDefault: '基础用法-上传列表展示',
+      uploadListShow: '自定义上传按钮',
       uploadDefaultProgress: '自定义上传使用默认进度条',
       a4afedb5: '上传状态',
       '37c65f47': '自定义上传样式',
@@ -112,7 +87,8 @@ const UploaderDemo = () => {
       ca3903f3: 'delete事件觸發',
       uploadProgressAction: 'progress事件觸發',
       '84aa6bce': '基础用法',
-      uploadListShow: '基礎用法-上傳列表展示',
+      uploadListDefault: '基础用法-上傳列表展示',
+      uploadListShow: '自定義上傳按钮',
       uploadDefaultProgress: '自定義上傳使用默認進度條',
       a4afedb5: '上傳狀態',
       '37c65f47': '自定義上傳樣式',
@@ -141,7 +117,8 @@ const UploaderDemo = () => {
       ca3903f3: 'The delete event is triggered',
       uploadProgressAction: 'The progress event is triggered',
       '84aa6bce': 'Basic usage',
-      uploadListShow: 'Basic usage - upload list display',
+      uploadListDefault: 'Basic usage - upload list dispaly',
+      uploadListShow: 'Custom Upload Area',
       uploadDefaultProgress: 'Custom upload uses default progress bar',
       a4afedb5: 'Upload status',
       '37c65f47': 'Customize the upload style',
@@ -168,7 +145,7 @@ const UploaderDemo = () => {
   const formData = {
     custom: 'test',
   }
-  const defaultFileList: FileType<React.ReactNode>[] = [
+  const defaultFileList: FileItem[] = [
     {
       name: translated['6114cef1'],
       url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
@@ -192,7 +169,7 @@ const UploaderDemo = () => {
       message: translated['219481a6'],
       type: 'image',
       uid: '124',
-      errorIcon: 'star',
+      failIcon: <Star style={{ color: 'white' }} />,
     },
     {
       name: translated['29ab0c96'],
@@ -218,7 +195,7 @@ const UploaderDemo = () => {
       message: translated['403b055e'],
       type: 'image',
       uid: '127',
-      loadingIcon: ' ',
+      loadingIcon: null,
     },
   ]
   const onOversize = (files: Taro.chooseImage.ImageFile[]) => {
@@ -231,7 +208,7 @@ const UploaderDemo = () => {
     setProgressPercent(percentage)
     console.log(translated.uploadProgressAction)
   }
-  const onDelete = (file: FileItem, fileList: FileType<React.ReactNode>[]) => {
+  const onDelete = (file: FileItem, fileList: FileItem[]) => {
     console.log(translated.ca3903f3, file, fileList)
   }
   const beforeXhrUpload = (taroUploadFile: any, options: any) => {
@@ -282,7 +259,10 @@ const UploaderDemo = () => {
           <Uploader
             url={uploadUrl}
             onStart={onStart}
-            style={{ marginRight: '10px', marginBottom: '10px' }}
+            style={{
+              marginRight: '10px',
+              marginBottom: '10px',
+            }}
           />
           <Uploader
             url={uploadUrl}
@@ -295,6 +275,11 @@ const UploaderDemo = () => {
             uploadIcon={<Dongdong />}
             onStart={onStart}
           />
+        </Cell>
+
+        <h2>{translated['84aa6bce']}</h2>
+        <Cell>
+          <Uploader previewType="list" url={uploadUrl} onStart={onStart} />
         </Cell>
 
         <h2>{translated.a4afedb5}</h2>

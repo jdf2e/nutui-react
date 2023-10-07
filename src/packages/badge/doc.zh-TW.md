@@ -250,8 +250,8 @@ export default App;
 | value | 顯示的內容，支持數字、字符和自定義內容 | `ReactNode` | `-` |
 | max | value 為數值時，最大值 | `number` | `99` |
 | dot | 是否為小點 | `boolean` | `false` |
-| top | 上下偏移量，支持單位設置，可設置為：5 等 | `number` | `0` |
-| right | 左右偏移量，支持單位設置，可設置為：5 等 | `number` | `0` |
+| top | 上下偏移量，支持單位設置，可設置為："0"或0 等 | `string` \| `number` | `"0"` |
+| right | 左右偏移量，支持單位設置，可設置為："5"或5 等 | `string` \| `number` | `"5"` |
 | color | 徽標背景顏色,默認值為當前主題色 | `string` | `-` |
 
 ## 主題定制
@@ -267,6 +267,7 @@ export default App;
 | \--nutui-badge-font-size | badge 內容字號 | `$font-size-1` |
 | \--nutui-badge-border | badge 邊框 | `0px solid $primary-text-color` |
 | \--nutui-badge-border-radius | badge 邊框圓角 | `14px` |
+| \--nutui-badge-min-width | badge 最小寬度 | `5px` |
 | \--nutui-badge-padding | badge 的padding值 | `0 5px` |
 | \--nutui-badge-icon-padding | badge 為自定義icon時 的 padding值 | `2px` |
 | \--nutui-badge-content-transform | badge 內容位置 | `translateY(-50%) translateX(100%)` |

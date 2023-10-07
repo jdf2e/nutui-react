@@ -4,15 +4,19 @@ import { ArrowDown2, ArrowUp2 } from '@nutui/icons-react-taro'
 import { OptionItem, MenuItem } from '@/packages/menuitem/menuitem.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
+export type TriggerType = 'NORMAL' | 'REF'
+export type CallBackFunction = (index: number, from?: TriggerType) => void
+
 export interface MenuProps extends BasicComponent {
   activeColor: string
+  overlay: boolean
   closeOnOverlayClick: boolean
   scrollFixed: boolean | string | number
   lockScroll: boolean
   icon: React.ReactNode
   children: React.ReactNode
-  onOpen: () => void
-  onClose: () => void
+  onOpen: CallBackFunction
+  onClose: CallBackFunction
 }
 
 const defaultProps = {
@@ -21,9 +25,10 @@ const defaultProps = {
   closeOnOverlayClick: true,
   scrollFixed: false,
   lockScroll: true,
+  overlay: true,
   icon: null,
-  onOpen: () => {},
-  onClose: () => {},
+  onOpen: (index: number, from: 'NORMAL' | 'REF') => {},
+  onClose: (index: number, from: 'NORMAL' | 'REF') => {},
 } as MenuProps
 export const Menu: FunctionComponent<Partial<MenuProps>> & {
   Item: typeof MenuItem
@@ -33,6 +38,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
     icon,
     scrollFixed,
     lockScroll,
+    overlay,
     closeOnOverlayClick,
     children,
     activeColor,
@@ -67,22 +73,22 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
 
   const [showMenuItem, setShowMenuItem] = useState<boolean[]>([])
   const [menuItemTitle, setMenuItemTitle] = useState<string[]>([])
-  const toggleMenuItem = (index: number) => {
+  const toggleMenuItem: CallBackFunction = (index, from = 'NORMAL') => {
     showMenuItem[index] = !showMenuItem[index]
     if (showMenuItem[index]) {
-      onOpen && onOpen()
+      onOpen && onOpen(index, from)
     } else {
-      onClose && onClose()
+      onClose && onClose(index, from)
     }
     const temp = showMenuItem.map((i: boolean, idx) =>
       idx === index ? i : false
     )
     setShowMenuItem([...temp])
   }
-  const hideMenuItem = (index: number) => {
+  const hideMenuItem: CallBackFunction = (index, from = 'NORMAL') => {
     showMenuItem[index] = false
     setShowMenuItem([...showMenuItem])
-    onClose && onClose()
+    onClose && onClose(index, from)
   }
   const updateTitle = (text: string, index: number) => {
     menuItemTitle[index] = text
@@ -98,6 +104,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
         activeColor,
         parent: {
           closeOnOverlayClick,
+          overlay,
           lockScroll,
           toggleMenuItem,
           updateTitle,
@@ -110,9 +117,11 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
   const menuTitle = () => {
     return React.Children.map(children, (child, index) => {
       if (React.isValidElement(child)) {
-        const { title, options, value, disabled, direction } = child.props
+        const { title, options, value, defaultValue, disabled, direction } =
+          child.props
         const selected = options?.filter(
-          (option: OptionItem) => option.value === value
+          (option: OptionItem) =>
+            option.value === (value !== undefined ? value : defaultValue)
         )
         const finallyTitle = () => {
           if (title) return title
@@ -121,7 +130,6 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
             return selected[0].text
           return ''
         }
-
         return (
           <div
             className={classNames('nut-menu__item ', className, {
@@ -131,6 +139,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
             style={{ color: showMenuItem[index] ? activeColor : '' }}
             key={index}
             onClick={() => {
+              if ((!options || !options.length) && !child.props.children) return
               !disabled && toggleMenuItem(index)
             }}
           >

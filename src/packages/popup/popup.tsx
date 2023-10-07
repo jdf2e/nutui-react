@@ -60,7 +60,7 @@ const defaultProps = {
 } as PopupProps
 
 // 默认1000，参看variables
-let _zIndex = 1000
+let _zIndex = 1100
 
 export const Popup: FunctionComponent<
   Partial<PopupProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
@@ -95,7 +95,7 @@ export const Popup: FunctionComponent<
     afterClose,
     onClick,
   } = { ...defaultProps, ...props }
-
+  const nodeRef = React.useRef(null)
   const [index, setIndex] = useState(zIndex || _zIndex)
   const [innerVisible, setInnerVisible] = useState(visible)
   const [showChildren, setShowChildren] = useState(true)
@@ -225,6 +225,7 @@ export const Popup: FunctionComponent<
   const renderPop = () => {
     return (
       <CSSTransition
+        nodeRef={nodeRef}
         classNames={transitionName}
         unmountOnExit
         timeout={duration}
@@ -232,7 +233,12 @@ export const Popup: FunctionComponent<
         onEntered={onHandleOpened}
         onExited={onHandleClosed}
       >
-        <div style={popStyles} className={popClassName} onClick={onHandleClick}>
+        <div
+          ref={nodeRef}
+          style={popStyles}
+          className={popClassName}
+          onClick={onHandleClick}
+        >
           {renderTitle()}
           {renderIcon()}
           {showChildren ? children : ''}

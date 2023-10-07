@@ -200,7 +200,7 @@ export const InputNumber: FunctionComponent<
   const changeFormatValue = (e: ChangeEvent<HTMLInputElement>) => {
     const input = e.target.value
 
-    const numReg = new RegExp('^[0-9]*$')
+    const numReg = /^[0-9]*$/
     const numValue = input.replace(/[^0-9|.]/gi, '')
 
     if (formatter) {
@@ -223,7 +223,7 @@ export const InputNumber: FunctionComponent<
   const burFormatValue = (e: ChangeEvent<HTMLInputElement>) => {
     const input = e.target.value
 
-    const numReg = new RegExp('^[0-9]*$')
+    const numReg = /^[0-9]*$/
     const numValue = input.replace(/[^0-9|.]/gi, '')
     if (formatter) {
       if (formatter(numValue) === input) {

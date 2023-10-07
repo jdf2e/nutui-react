@@ -11,9 +11,11 @@ import {
   DialogComponent,
   ConfirmProps,
 } from './config'
+import { ComponentDefaults } from '@/utils/typings'
 
 export type DialogProps = BasicDialogProps
 const defaultProps = {
+  ...ComponentDefaults,
   confirmText: '',
   cancelText: '',
   overlay: true,

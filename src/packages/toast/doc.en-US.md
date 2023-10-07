@@ -369,6 +369,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-toast-title-font-size | the title font-size of toast | `16px` |
 | \--nutui-toast-text-font-size | the content font-size of toast | `14px` |
 | \--nutui-toast-font-color | the text color of toast | `#fff` |
+| \--nutui-toast-inner-top           | the custom height of content    | `50%` |
 | \--nutui-toast-inner-padding | the padding value of toast content | `24px 30px` |
 | \--nutui-toast-inner-bg-color | the background color of toast content | `$gray7` |
 | \--nutui-toast-inner-border-radius | the border-radius value of toast content | `12px` |

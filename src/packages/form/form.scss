@@ -10,10 +10,18 @@
 }
 
 .form-layout-left .nut-form-item__label {
+  position: relative;
   text-align: left;
   font-size: 14px;
-  padding-right: 24px;
+  padding-left: 12px;
   white-space: nowrap;
+
+  .required {
+    display: block;
+    line-height: 1.5;
+    position: absolute;
+    left: 0.1em;
+  }
 }
 
 .form-layout-top .nut-form-item {

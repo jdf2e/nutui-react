@@ -35,8 +35,8 @@ const getListTotalSize = (
 // 通过二分法找到 scrollOffset 对应的值
 const binarySearch = (
   positionsList: Array<PositionType>,
-  value = 0,
-  horizontal: true | false
+  horizontal: true | false,
+  value = 0
 ): number => {
   let start = 0
   let end: number = positionsList.length - 1

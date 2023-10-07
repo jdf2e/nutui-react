@@ -1,4 +1,9 @@
 .nut-indicator {
+  display: flex;
+  width: auto;
+  flex-wrap: nowrap;
+  align-items: center;
+
   &__dot {
     margin: 0 $indicator-dot-margin;
 

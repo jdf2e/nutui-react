@@ -1,3 +1,9 @@
+export const inBrowser = typeof document !== 'undefined' && !!document.scripts
+
+export function isWindow(val: unknown): val is Window {
+  return val === window
+}
+
 /**
   获取元素的大小及其相对于视口的位置，等价于 Element.getBoundingClientRect。
   width 宽度	number
@@ -7,12 +13,7 @@
   right	右侧与视图窗口左上角的距离	number
   bottom	底部与视图窗口左上角的距离	number
  */
-
-function isWindow(val: unknown): val is Window {
-  return val === window
-}
-
-export const getRect = (elementRef: Element | Window | undefined) => {
+export const getRect = (elementRef: Element | Window | undefined): any => {
   const element = elementRef
 
   if (isWindow(element)) {
@@ -41,12 +42,4 @@ export const getRect = (elementRef: Element | Window | undefined) => {
     width: 0,
     height: 0,
   }
-}
-
-export const getRectByTaro = async (element: any) => {
-  if (element) {
-    const res = await element.getBoundingClientRect()
-    return res
-  }
-  return Promise.resolve({})
 }

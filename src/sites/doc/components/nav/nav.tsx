@@ -32,7 +32,9 @@ const Nav = () => {
                   return (
                     <NavLink
                       key={Math.random()}
-                      activeClassName="selected"
+                      className={({ isActive, isPending }) =>
+                      isPending ? "" : isActive ? "selected" : ""
+                    }
                       to={`${lang ? `/${lang}` : ''}/component/${cp.name}`}
                     >
                       <li>

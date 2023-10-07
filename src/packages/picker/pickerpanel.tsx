@@ -62,10 +62,10 @@ const InternalPickerPanel: ForwardRefRenderFunction<
   }
 
   const setTransform = (
-    translateY = 0,
     type: string,
+    deg: string,
     time = DEFAULT_DURATION,
-    deg: string
+    translateY = 0
   ) => {
     let nTime = time
     if (type !== 'end') {
@@ -93,7 +93,7 @@ const InternalPickerPanel: ForwardRefRenderFunction<
         (Math.abs(Math.round(endMove / lineSpacing)) + 1) * rotation
       }deg`
 
-      setTransform(endMove, type, time, deg)
+      setTransform(type, deg, time, endMove)
       setCurrIndex(Math.abs(Math.round(endMove / lineSpacing)) + 1)
     } else {
       let deg = 0
@@ -106,7 +106,7 @@ const InternalPickerPanel: ForwardRefRenderFunction<
       deg = Math.min(Math.max(currentDeg, minDeg), maxDeg)
 
       if (minDeg < deg && deg < maxDeg) {
-        setTransform(updateMove, '', undefined, `${deg}deg`)
+        setTransform('', `${deg}deg`, undefined, updateMove)
         setCurrIndex(Math.abs(Math.round(updateMove / lineSpacing)) + 1)
       }
     }
@@ -287,9 +287,8 @@ const InternalPickerPanel: ForwardRefRenderFunction<
     </div>
   )
 }
-const PickerPanel =
-  React.forwardRef<
-    { stopMomentum: () => void; moving: boolean },
-    Partial<PickerPanelProps>
-  >(InternalPickerPanel)
+const PickerPanel = React.forwardRef<
+  { stopMomentum: () => void; moving: boolean },
+  Partial<PickerPanelProps>
+>(InternalPickerPanel)
 export default PickerPanel

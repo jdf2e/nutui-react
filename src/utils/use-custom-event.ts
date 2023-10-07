@@ -5,7 +5,8 @@ import { useForceUpdate } from '@/utils/use-force-update'
 
 export const customEvents = new Events()
 
-export function useCustomEventsPath(selector: string) {
+export function useCustomEventsPath(selector?: string) {
+  selector = selector || ''
   const path = getCurrentInstance().router?.path
   return path ? `${path}__${selector}` : selector
 }

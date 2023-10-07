@@ -1,17 +1,6 @@
 .nut-form-item {
   display: flex;
 
-  &::before {
-    position: absolute;
-    box-sizing: border-box;
-    content: ' ';
-    pointer-events: none;
-    right: 16px;
-    bottom: 0;
-    left: 16px;
-    transform: scaleX(0);
-  }
-
   &.error {
     &.line {
       &::before {
