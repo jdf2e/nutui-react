@@ -134,7 +134,9 @@ export const Popup: FunctionComponent<
   const open = () => {
     if (!innerVisible) {
       setInnerVisible(true)
-      setIndex(++_zIndex)
+      if(props.zIndex === undefined) {
+        setIndex(++_zIndex)
+      }
     }
     if (destroyOnClose) {
       setShowChildren(true)
