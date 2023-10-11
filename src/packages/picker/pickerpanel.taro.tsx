@@ -51,7 +51,7 @@ const InternalPickerPanel: ForwardRefRenderFunction<
 
   const listRef = useRef<any>(null)
   const rollerRef = useRef<any>(null)
-  const PickerPanelRef = useRef<any>(null)
+  const pickerPanelRef = useRef<any>(null)
 
   const [startTime, setStartTime] = useState(0)
   const [startY, setStartY] = useState(0)
@@ -118,8 +118,7 @@ const InternalPickerPanel: ForwardRefRenderFunction<
   }
 
   const setChooseValue = (move: number) => {
-    chooseItem &&
-      chooseItem(options?.[Math.round(-move / lineSpacing.current)], keyIndex)
+    chooseItem?.(options?.[Math.round(-move / lineSpacing.current)], keyIndex)
   }
 
   // 开始滚动
@@ -203,14 +202,7 @@ const InternalPickerPanel: ForwardRefRenderFunction<
     event: React.TouchEvent<HTMLElement>,
     isStopPropagation?: boolean
   ) => {
-    /* istanbul ignore else */
-    if (
-      !passiveSupported &&
-      (typeof event.cancelable !== 'boolean' || event.cancelable)
-    ) {
-      event.preventDefault()
-    }
-
+    event.preventDefault()
     if (isStopPropagation) {
       event.stopPropagation()
     }
@@ -257,14 +249,23 @@ const InternalPickerPanel: ForwardRefRenderFunction<
     moving: moving.current,
   }))
 
+  useEffect(() => {
+    const eventOptions = passiveSupported
+      ? { passive: false, once: true }
+      : false
+    const element = pickerPanelRef.current
+    element.addEventListener('touchstart', touchStart, eventOptions)
+    element.addEventListener('touchmove', touchMove, eventOptions)
+    element.addEventListener('touchend', touchEnd, eventOptions)
+    return () => {
+      element.removeEventListener('touchstart', touchStart, eventOptions)
+      element.removeEventListener('touchmove', touchMove, eventOptions)
+      element.removeEventListener('touchend', touchEnd, eventOptions)
+    }
+  })
+
   return (
-    <div
-      className="nut-picker-list"
-      ref={PickerPanelRef}
-      onTouchStart={touchStart}
-      onTouchMove={touchMove}
-      onTouchEnd={touchEnd}
-    >
+    <div className="nut-picker-list" ref={pickerPanelRef}>
       <div
         className="nut-picker-roller"
         ref={rollerRef}

@@ -5,7 +5,7 @@ import { passiveSupported } from './supports-passive'
 
 let totalLockCount = 0
 
-const BODY_LOCK_CLASS = 'adm-overflow-hidden'
+const BODY_LOCK_CLASS = 'nut-overflow-hidden'
 
 function getScrollableElement(el: HTMLElement | null) {
   let current = el?.parentElement
@@ -26,14 +26,12 @@ export function useLockScroll(
   rootRef: RefObject<HTMLElement>,
   shouldLock: boolean | 'strict'
 ) {
-  console.log('rootRef', rootRef)
   const touch = useTouch()
 
   const onTouchMove = (event: React.TouchEvent<HTMLElement>) => {
     touch.move(event)
 
     const direction = touch.deltaY.current > 0 ? '10' : '01'
-    console.log('direction', direction)
     const el = getScrollParent(
       event.target as Element,
       rootRef.current
@@ -54,14 +52,11 @@ export function useLockScroll(
 
     const { scrollHeight, offsetHeight, scrollTop } = el
     let status = '11'
-    console.log(scrollTop, scrollHeight, offsetHeight)
     if (scrollTop === 0) {
       status = offsetHeight >= scrollHeight ? '00' : '01'
     } else if (scrollTop + offsetHeight >= scrollHeight) {
       status = '10'
     }
-
-    console.log('status', status, direction)
 
     if (
       status !== '11' &&
