@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useRef } from 'react'
 
 const MIN_DISTANCE = 10
 
@@ -15,45 +15,41 @@ function getDirection(x: number, y: number) {
 }
 
 export function useTouch() {
-  const [startX, SetStartX] = useState(0)
-  const [startY, SetStartY] = useState(0)
-  const [moveX, SetMoveX] = useState(0)
-  const [moveY, SetMoveY] = useState(0)
-  const [deltaX, SetDeltaX] = useState(0)
-  const [deltaY, SetDeltaY] = useState(0)
-  const [offsetX, SetOffsetX] = useState(0)
-  const [offsetY, SetOffsetY] = useState(0)
-  const [direction, SetDirection] = useState<Direction>('')
+  const startX = useRef(0)
+  const startY = useRef(0)
+  const deltaX = useRef(0)
+  const deltaY = useRef(0)
+  const offsetX = useRef(0)
+  const offsetY = useRef(0)
+  const direction = useRef<Direction>('')
 
-  const isVertical = () => direction === 'vertical'
-  const isHorizontal = () => direction === 'horizontal'
+  const isVertical = () => direction.current === 'vertical'
+  const isHorizontal = () => direction.current === 'horizontal'
 
   const reset = () => {
-    SetDeltaX(0)
-    SetDeltaY(0)
-    SetOffsetX(0)
-    SetOffsetY(0)
-    SetDirection('')
+    deltaX.current = 0
+    deltaY.current = 0
+    offsetX.current = 0
+    offsetY.current = 0
+    direction.current = ''
   }
 
   const start = (event: React.TouchEvent<HTMLElement>) => {
     reset()
-    SetStartX(event.touches[0].clientX)
-    SetStartY(event.touches[0].clientY)
+    startX.current = event.touches[0].clientX
+    startY.current = event.touches[0].clientY
   }
 
   const move = (event: React.TouchEvent<HTMLElement>) => {
     const touch = event.touches[0]
-    const dX = touch.clientX - startX
-    const dY = touch.clientY - startY
-    SetDeltaX(dX)
-    SetDeltaY(dY)
-    SetMoveX(touch.clientX)
-    SetMoveY(touch.clientY)
-    SetOffsetX(Math.abs(dX))
-    SetOffsetY(Math.abs(dY))
-    if (!direction) {
-      SetDirection(getDirection(offsetX, offsetY))
+    // Fix: Safari back will set clientX to negative number
+    deltaX.current = touch.clientX < 0 ? 0 : touch.clientX - startX.current
+    deltaY.current = touch.clientY - startY.current
+    offsetX.current = Math.abs(deltaX.current)
+    offsetY.current = Math.abs(deltaY.current)
+
+    if (!direction.current) {
+      direction.current = getDirection(offsetX.current, offsetY.current)
     }
   }
 
@@ -63,8 +59,6 @@ export function useTouch() {
     reset,
     startX,
     startY,
-    moveX,
-    moveY,
     deltaX,
     deltaY,
     offsetX,
