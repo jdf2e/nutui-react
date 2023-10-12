@@ -6,8 +6,9 @@ import React, {
   TouchEvent,
 } from 'react'
 import Taro from '@tarojs/taro'
-import { Image as TaroImage, Video as TaroVideo } from '@tarojs/components'
+import { Video as TaroVideo } from '@tarojs/components'
 import Popup from '@/packages/popup/index.taro'
+import Image from '@/packages/image/index.taro'
 import Swiper from '@/packages/swiper/index.taro'
 import SwiperItem from '@/packages/swiperitem/index.taro'
 
@@ -291,13 +292,14 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
                   return (
                     <SwiperItem key={index}>
                       {Taro.getEnv() === 'WEB' ? (
-                        <img src={item.src} alt="" />
+                        <Image src={item.src} mode="aspectFit" />
                       ) : (
-                        <TaroImage
+                        <Image
                           src={item.src}
                           mode="aspectFit"
                           showMenuByLongpress
-                          style={{ width: '100%', height: '100%' }}
+                          width="100%"
+                          height="100%"
                         />
                       )}
                     </SwiperItem>
