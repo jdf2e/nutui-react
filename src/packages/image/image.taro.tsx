@@ -6,7 +6,7 @@ import React, {
   CSSProperties,
 } from 'react'
 import { Image as TImage, ImageProps as TImageProps } from '@tarojs/components'
-import { ImageError, Image as ImageIcon } from '@nutui/icons-react-taro'
+import { Image as ImageIcon, ImageError } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { BaseEventOrig } from '@tarojs/components/types/common'
 
@@ -21,6 +21,8 @@ export interface ImageProps extends Omit<TImageProps, 'style'> {
 
 const defaultProps = {
   src: '',
+  width: '100%',
+  height: '100%',
   error: true,
   loading: true,
 } as ImageProps

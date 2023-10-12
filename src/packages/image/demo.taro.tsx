@@ -136,14 +136,14 @@ const ImageDemo = () => {
         <h2>{translated.position}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
           {[
-            'top',
-            'bottom',
-            'center',
-            'left',
-            'right',
             'top left',
+            'top',
             'top right',
+            'left',
+            'center',
+            'right',
             'bottom left',
+            'bottom',
             'bottom right',
           ].map((mode) => {
             return (
