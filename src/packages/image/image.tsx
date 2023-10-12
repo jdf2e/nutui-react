@@ -32,7 +32,7 @@ const defaultProps: Partial<ImageProps> = {
   fit: 'fill',
   position: 'center',
   alt: '',
-  width: 'center',
+  width: '',
   height: '',
   error: true,
   loading: true,
