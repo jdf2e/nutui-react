@@ -42,7 +42,7 @@ const ImageDemo = () => {
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <Cell>
-          <Image src={src} width="100%" height={200} />
+          <Image src={src} />
         </Cell>
         <h2>{translated.circle}</h2>
         <Cell>
