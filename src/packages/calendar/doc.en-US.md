@@ -15,6 +15,7 @@ import { Calendar } from '@nutui/nutui-react';
 ### Basic usage
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Cell, Calendar } from '@nutui/nutui-react';
@@ -53,11 +54,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ### Interval selection
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Cell, Calendar } from '@nutui/nutui-react';
@@ -96,11 +99,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ### select multiple dates
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Cell, Calendar } from '@nutui/nutui-react';
@@ -139,12 +144,13 @@ const App = () => {
 export default App;
 
 ```
-:::
 
+:::
 
 ### Select Week
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Cell, Calendar } from '@nutui/nutui-react';
@@ -184,12 +190,13 @@ const App = () => {
 export default App;
 
 ```
-:::
 
+:::
 
 ### Disable Date
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Cell, Calendar } from '@nutui/nutui-react';
@@ -234,13 +241,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
-
-
 
 ### Calendar & Datepicker
 
 :::demo
+
 ```tsx
 import  React, {useRef, useState } from "react";
 import { Cell, Calendar, DatePicker } from '@nutui/nutui-react';
@@ -359,11 +366,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ### quick selection
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Cell, Calendar } from '@nutui/nutui-react';
@@ -402,11 +411,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ### Custom Calendar - Custom Time Copy
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Cell, Calendar } from '@nutui/nutui-react';
@@ -470,11 +481,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ### Custom Calendar - Custom Button
 
 :::demo
+
 ```tsx
 import  React, { useState, useRef } from "react";
 import { Cell, Calendar } from '@nutui/nutui-react';
@@ -613,11 +626,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ### Tiled display
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Calendar } from '@nutui/nutui-react';
@@ -645,54 +660,54 @@ const App = () => {
 export default App;
 
 ```
-:::
 
+:::
 
 ## Calendar
 
 ### Props
 
-| Property | Description    | Type | Default |
-|--------|----------------|-----------------|-----------------|
-| visible   | Is it visible | `boolean`         | `false`           |
-| type |  type, 'single' and 'range' | `string` | `single` |
-| popup |  Whether to display the pop-up status | `boolean`         | `true` |
-| autoBackfill | Automatic backfill | `boolean`         | `false`           |
-| title | show title | `string`          | `日期选择`      |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| visible | Is it visible | `boolean` | `false` |
+| type | type, 'single' and 'range' | `string` | `single` |
+| popup | Whether to display the pop-up status | `boolean` | `true` |
+| autoBackfill | Automatic backfill | `boolean` | `false` |
+| title | show title | `string` | `日期选择` |
 | defaultValue | defaultValue, string for date, and Array for range | `string` \| `Array` | `-` |
-| startDate | the start date| `string`          | 今天            |
-| endDate | the end date | `string`          | 距离今天 365 天 |
-| showToday | whether to show today mark | `boolean`          | `true` |
-| startText | start text for range | `ReactNode`          | `开始` |
-| endText         | end text for range  | `ReactNode`          | `结束` |
-| confirmText          | confirm text at footer | `ReactNode`          | `确认` |
-| showTitle          | whether to show title for calendar | `boolean`          | `true` |
-| showSubTitle | whether to show sub title for calendar | `boolean`          | `true` |
+| startDate | the start date | `string` | `今天` |
+| endDate | the end date | `string` | `距离今天 365 天` |
+| showToday | whether to show today mark | `boolean` | `true` |
+| startText | start text for range | `ReactNode` | `开始` |
+| endText | end text for range | `ReactNode` | `结束` |
+| confirmText | confirm text at footer | `ReactNode` | `确认` |
+| showTitle | whether to show title for calendar | `boolean` | `true` |
+| showSubTitle | whether to show sub title for calendar | `boolean` | `true` |
 | scrollAnimation | whether to start scroll animation | `boolean` | `true` |
 | firstDayOfWeek | first day of week | `0-6` | `0` |
 | disableDate | set disable date | `(date: Day) => boolean` | `-` |
-| renderHeaderButtons | custom buttons, under the title but above the subtitle | `() => string \| JSX.Element` | `-` |
-| renderDay  | day info | `(date: Day) => string \| JSX.Element` | `-` |
-| renderDayTop  | something above day  | `(date: Day) => string \| JSX.Element` | `-` |
-| renderDayBottom  | something under day | `(date: Day) => string \| JSX.Element` | `-` |
-| onDayClick  | trigger when click the day element |  `(data: string) => {}` |
-| onPageChange   | page change ,one month makes as a page | `(param: string) => {}` |
-| onConfirm | trigger when click the confirm button, or after the click when it is not popup | `(param: string) => {}` |
-| onClose  | trigger close | `() => {}` |
-
+| renderHeaderButtons | custom buttons, under the title but above the subtitle | `() => string` \| `JSX.Element` | `-` |
+| renderDay | day info | `(date: Day) => string` \| `JSX.Element` | `-` |
+| renderDayTop | something above day | `(date: Day) => string` \| `JSX.Element` | `-` |
+| renderDayBottom | something under day | `(date: Day) => string` \| `JSX.Element` | `-` |
+| onDayClick | trigger when click the day element | `(data: string) => {}` | `-` |
+| onPageChange | page change ,one month makes as a page | `(param: string) => {}` | `-` |
+| onConfirm | trigger when click the confirm button, or after the click when it is not popup | `(param: string) => {}` | `-` |
+| onClose | trigger close | `() => {}` | `-` |
 
 ### Day
-| Property | Description            |
-|-------------------|-----------------|
-| day   | `string \| number`           |
-| type   | `string`          |
+
+| Property | Description |
+| --- | --- |
+| day | `string` \| `number` |
+| type | `string` |
 
 ### Ref
 
 Through ref, you can get the Calendar instance and call the instance method.
 
 | Name | Description | Arguments |
-| ----- | ----- | -- |
+| --- | --- | --- |
 | scrollToDate | Scroll to the month of the specified date:'2023-06-30' | `string` |
 
 ## Theming
@@ -704,18 +719,18 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-calendar-active-background-color | calendar active background color | `$primary-color` |
-| \--nutui-calendar-choose-background-color | calendar choose background color  | `rgba(#fa2c19, 0.09)` |
-| \--nutui-calendar-choose-color| calendar choose color | `$primary-color` |
-| \--nutui-calendar-choose-disable-background-color | calendar choose but disable background color  | `rgba(191, 191, 191, 0.09)` |
-| \--nutui-calendar-choose-disable-color| calendar choose but disable  color | `$gray3` |
+| \--nutui-calendar-choose-background-color | calendar choose background color | `rgba(#fa2c19, 0.09)` |
+| \--nutui-calendar-choose-color | calendar choose color | `$primary-color` |
+| \--nutui-calendar-choose-disable-background-color | calendar choose but disable background color | `rgba(191, 191, 191, 0.09)` |
+| \--nutui-calendar-choose-disable-color | calendar choose but disable color | `$gray3` |
 | \--nutui-calendar-disable-color | calendar disable color | `#d1d0d0` |
 | \--nutui-calendar-base-font-size | calendar base font size | `$font-size-3` |
 | \--nutui-calendar-title-font-size | calendar title font size | `$font-size-4` |
-| \--nutui-calendar-title-font-weight | calendar title font weight  | `500` |
+| \--nutui-calendar-title-font-weight | calendar title font weight | `500` |
 | \--nutui-calendar-sub-title-font-size | calendar sub title font size | `$font-size-2` |
 | \--nutui-calendar-day67-color | calendar day67 color | `$primary-color` |
 | \--nutui-calendar-header-height | calendar header height | `24px` |
 | \--nutui-calendar-day-width | calendar day width | `14.28%` |
 | \--nutui-calendar-day-height | calendar day height | `60px` |
 | \--nutui-calendar-day-font-weight | calendar day font weight | `500` |
-| \--nutui-calendar-day-active-border-radius| calendar day active border radius | `4px` |
+| \--nutui-calendar-day-active-border-radius | calendar day active border radius | `4px` |

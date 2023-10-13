@@ -15,6 +15,7 @@ import { Calendar } from '@nutui/nutui-react';
 ### 基础用法
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Cell, Calendar } from '@nutui/nutui-react';
@@ -53,11 +54,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ### 区间选择
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Cell, Calendar } from '@nutui/nutui-react';
@@ -96,11 +99,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ### 选择多个日期
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Cell, Calendar } from '@nutui/nutui-react';
@@ -139,11 +144,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ### 选择周
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Cell, Calendar } from '@nutui/nutui-react';
@@ -183,11 +190,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ### 日期不可选
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Cell, Calendar } from '@nutui/nutui-react';
@@ -232,11 +241,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ### 和Datepicker 联动
 
 :::demo
+
 ```tsx
 import  React, {useRef, useState } from "react";
 import { Cell, Calendar, DatePicker } from '@nutui/nutui-react';
@@ -355,12 +366,13 @@ const App = () => {
 export default App;
 
 ```
-:::
 
+:::
 
 ### 快捷选择
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Cell, Calendar } from '@nutui/nutui-react';
@@ -399,11 +411,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ### 自定义日历-自定义时间文案
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Cell, Calendar } from '@nutui/nutui-react';
@@ -466,11 +480,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ### 自定义日历-自定义按钮
 
 :::demo
+
 ```tsx
 import  React, { useState, useRef } from "react";
 import { Cell, Calendar } from '@nutui/nutui-react';
@@ -608,11 +624,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ### 平铺展示
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Calendar } from '@nutui/nutui-react';
@@ -639,51 +657,54 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ## Calendar
+
 ### Props
 
-| 属性 | 说明    | 类型            | 默认值          |
-|-------|--------|-----------------|-----------------|
-| visible   | 是否可见 | `boolean`         | `false`           |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| visible | 是否可见 | `boolean` | `false` |
 | type | 类型，日期选择'single'，区间选择'range' | `string` | `single` |
-| popup | 是否弹窗状态展示 | `boolean`         | `true`            |
-| autoBackfill | 自动回填 | `boolean`         | `false`           |
-| title | 显示标题 | `string`          | `日期选择`      |
+| popup | 是否弹窗状态展示 | `boolean` | `true` |
+| autoBackfill | 自动回填 | `boolean` | `false` |
+| title | 显示标题 | `string` | `日期选择` |
 | defaultValue | 默认值，日期选择 string 格式，区间选择 Array 格式 | `string` \| `Array` | `-` |
-| startDate | 开始日期， 如果不限制开始日期传 null | `string`          | 今天            |
-| endDate | 结束日期，如果不限制结束日期传 null | `string`          | 距离今天 365 天 |
-| showToday | 是否展示今天标记 | `boolean`          | `true` |
-| startText | 范围选择，开始信息文案 | `ReactNode`          | `开始` |
-| endText         | 范围选择，结束信息文案 | `ReactNode`          | `结束` |
-| confirmText          | 底部确认按钮文案 | `ReactNode`          | `确认` |
-| showTitle          | 是否在展示日历标题 | `boolean`          | `true` |
-| showSubTitle | 是否展示日期标题 | `boolean`          | `true` |
+| startDate | 开始日期， 如果不限制开始日期传 null | `string` | `今天` |
+| endDate | 结束日期，如果不限制结束日期传 null | `string` | `距离今天 365 天` |
+| showToday | 是否展示今天标记 | `boolean` | `true` |
+| startText | 范围选择，开始信息文案 | `ReactNode` | `开始` |
+| endText | 范围选择，结束信息文案 | `ReactNode` | `结束` |
+| confirmText | 底部确认按钮文案 | `ReactNode` | `确认` |
+| showTitle | 是否在展示日历标题 | `boolean` | `true` |
+| showSubTitle | 是否展示日期标题 | `boolean` | `true` |
 | scrollAnimation | 是否启动滚动动画 | `boolean` | `true` |
 | firstDayOfWeek | 设置周起始日 | `0-6` | `0` |
 | disableDate | 设置不可选日期 | `(date: Day) => boolean` | `-` |
-| renderHeaderButtons | 自定义日历标题下部，可用以添加自定义操作 |  `() => string \| JSX.Element` | `-` |
-| renderDay  | 日期信息 | `(date: Day) => string \| JSX.Element` | `-` |
-| renderDayTop  | 日期顶部信息 | `(date: Day) => string \| JSX.Element` | `-` |
-| renderDayBottom  | 日期底部信息 | `(date: Day) => string \| JSX.Element` | `-` |
-| onDayClick  | 点击/选择后触发 |  `(data: string) => {}` |
-| onPageChange   | 年月子标题到达顶部时触发 | `(param: string) => {}` |
-| onConfirm | 选择之后或是点击确认按钮触发 | `(param: string) => {}` |
-| onClose  | 关闭时触发 | `() => {}` |
+| renderHeaderButtons | 自定义日历标题下部，可用以添加自定义操作 | `() => string` \| `JSX.Element` | `-` |
+| renderDay | 日期信息 | `(date: Day) => string` \| `JSX.Element` | `-` |
+| renderDayTop | 日期顶部信息 | `(date: Day) => string` \| `JSX.Element` | `-` |
+| renderDayBottom | 日期底部信息 | `(date: Day) => string` \| `JSX.Element` | `-` |
+| onDayClick | 点击/选择后触发 | `(data: string) => {}` | `-` |
+| onPageChange | 年月子标题到达顶部时触发 | `(param: string) => {}` | `-` |
+| onConfirm | 选择之后或是点击确认按钮触发 | `(param: string) => {}` | `-` |
+| onClose | 关闭时触发 | `() => {}` | `-` |
 
 ### Day
-| 属性 | 类型            |
-|-------------------|-----------------|
-| day   | `string \| number`           |
-| type   | `string`          |
+
+| 属性 | 类型 |
+| --- | --- |
+| day | `string` \| `number` |
+| type | `string` |
 
 ### Ref
 
 通过 ref 可以获取到 Calendar 实例并调用实例方法。
 
 | 方法名 | 说明 | 参数 |
-| ----- | ----- | -- |
+| --- | --- | --- |
 | scrollToDate | 滚动到指定日期所在月,如：'2023-06-30' | `string` |
 
 ## 主题定制
@@ -696,9 +717,9 @@ export default App;
 | --- | --- | --- |
 | \--nutui-calendar-active-background-color | 日历选中状态时的元素背景色 | `$primary-color` |
 | \--nutui-calendar-choose-background-color | 日历选中时区间内元素的背景色，区别区间两头元素的背景色 | `rgba(#fa2c19, 0.09)` |
-| \--nutui-calendar-choose-color| 日历选中元素的字色 | `$primary-color` |
-| \--nutui-calendar-choose-disable-background-color | 日历不可选元素的选中时的背景色  | `rgba(191, 191, 191, 0.09)` |
-| \--nutui-calendar-choose-disable-color| 日历不可选元素的选中时的字色 | `$gray3` |
+| \--nutui-calendar-choose-color | 日历选中元素的字色 | `$primary-color` |
+| \--nutui-calendar-choose-disable-background-color | 日历不可选元素的选中时的背景色 | `rgba(191, 191, 191, 0.09)` |
+| \--nutui-calendar-choose-disable-color | 日历不可选元素的选中时的字色 | `$gray3` |
 | \--nutui-calendar-disable-color | 日历不可选元素的字色 | `#d1d0d0` |
 | \--nutui-calendar-base-font-size | 日历字号 | `$font-size-3` |
 | \--nutui-calendar-title-font-size | 日历标题字号 | `$font-size-4` |
@@ -709,4 +730,4 @@ export default App;
 | \--nutui-calendar-day-width | 日历元素宽度 | `14.28%` |
 | \--nutui-calendar-day-height | 日历元素高度 | `60px` |
 | \--nutui-calendar-day-font-weight | 日历元素字重 | `500` |
-| \--nutui-calendar-day-active-border-radius| 日历选中元素的圆角 | `4px` |
+| \--nutui-calendar-day-active-border-radius | 日历选中元素的圆角 | `4px` |
