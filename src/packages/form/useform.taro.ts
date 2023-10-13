@@ -104,17 +104,17 @@ class FormStore {
   }
 
   validateFields = async (nameList?: NamePath[]) => {
-    let filterEntitys = []
+    let filterEntities = []
     const errs = []
     this.errors.length = 0
     if (!nameList || nameList.length === 0) {
-      filterEntitys = this.fieldEntities
+      filterEntities = this.fieldEntities
     } else {
-      filterEntitys = this.fieldEntities.filter(({ props: { name } }) =>
+      filterEntities = this.fieldEntities.filter(({ props: { name } }) =>
         nameList.includes(name)
       )
     }
-    for (const entity of filterEntitys) {
+    for (const entity of filterEntities) {
       const { name, rules = [] } = entity.props
       const descriptor: any = {}
       if (rules.length) {
@@ -134,7 +134,7 @@ class FormStore {
       try {
         this.errors[name] = []
         await validator.validate({ [name]: this.store?.[name] })
-      } catch ({ errors }: any) {
+      } catch ({ errors }) {
         if (errors) {
           errs.push(...(errors as any[]))
           this.errors[name] = errors
