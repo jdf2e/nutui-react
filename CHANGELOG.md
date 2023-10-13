@@ -1,3 +1,14 @@
+# v2.0.20
+`2023-10-13`
+
+* :sparkles: feat: add demo about infiniteloading (#1533) @xiaoyatong
+* :bug: fix(form): 自定义校验 promise 返回错误不能被正确收集 (#1523) @samber
+* :bug: fix(popup): popup zIndex 无效 (#1521) @Clay Zhang
+* :bug: fix: demo format (#1530) @xiaoyatong
+* :bug: fix: taro image and imagepreivew on h5 (#1532) @xiaoyatong
+* :bug: fix: taro image default width and height (#1531) @xiaoyatong
+
+
 # v2.0.19
 `2023-09-27`
 
