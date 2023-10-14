@@ -19,7 +19,7 @@ import { Tabbar } from '@nutui/nutui-react-taro';
 ```tsx
 import React from "react";
 import { Tabbar } from '@nutui/nutui-react-taro';
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react-taro-taro';
+import { Cart, Category, Find, Home, My } from '@nutui/icons-react-taro';
 
 const App = () => (
   <Tabbar onSwitch={(child, idx) => {console.log(idx)}}>
@@ -74,7 +74,7 @@ export default App;
 
 ```tsx
 import React from "react";
-import { Tabbar } from '@nutui/nutui-react-taro-taro';
+import { Tabbar } from '@nutui/nutui-react-taro';
 import { Cart, Category, Find, Home, My } from '@nutui/icons-react-taro';
 
 const App = () => (
