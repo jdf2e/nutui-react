@@ -3,6 +3,7 @@ import Schema from 'async-validator'
 import { Store, Callbacks, FormInstance, FieldEntity, NamePath } from './types'
 
 export const SECRET = 'NUT_FORM_INTERNAL'
+
 /**
  * 用于存储表单的数据
  */
@@ -132,12 +133,15 @@ class FormStore {
       // 此处合并无值message 没有意义？
       // validator.messages()
       try {
-        this.errors[name] = []
         await validator.validate({ [name]: this.store?.[name] })
       } catch ({ errors }) {
         if (errors) {
           errs.push(...(errors as any[]))
           this.errors[name] = errors
+        }
+      } finally {
+        if (!errs || errs.length === 0) {
+          this.errors[name] = []
         }
       }
       entity.onStoreChange('validate')
