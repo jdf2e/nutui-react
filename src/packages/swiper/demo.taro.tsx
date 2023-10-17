@@ -69,7 +69,7 @@ const SwiperDemo = () => {
         <h2>{translated.basic}</h2>
         <Swiper defaultValue={1} autoPlay indicator>
           {list.map((item, index) => (
-            <Swiper.Item key={item}>
+            <Swiper.Item key={item} className="demo-class">
               <img
                 width="100%"
                 height="100%"
@@ -106,7 +106,10 @@ const SwiperDemo = () => {
         <h2>{translated.indicator}</h2>
         <Swiper
           defaultValue={0}
-          onChange={(e) => setCurrent(e.detail.current)}
+          onChange={(e) => {
+            console.log('e.detail.current', e.detail.current)
+            setCurrent(e.detail.current)
+          }}
           indicator={
             <div
               style={{

@@ -16,6 +16,7 @@ import {
 import classNames from 'classnames'
 import { CommonEventFunction } from '@tarojs/components/types/common'
 import Indicator from '@/packages/indicator/index.taro'
+import { pxCheck } from '@/utils/px-check'
 
 export interface SwiperProps extends Omit<TaroSwiperProps, 'ref'> {
   width: number
@@ -25,6 +26,7 @@ export interface SwiperProps extends Omit<TaroSwiperProps, 'ref'> {
   autoPlay: boolean
   loop: boolean
   defaultValue: number
+  onChange: (e: any) => void
 }
 
 const defaultProps = {
@@ -48,6 +50,7 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
     duration,
     direction,
     defaultValue,
+    onChange,
     ...rest
   } = {
     ...defaultProps,
@@ -108,15 +111,15 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
     <View
       className={classNames(classPrefix, className)}
       style={{
-        width: !width ? '100%' : `${width}px`,
-        height: !height ? '150px' : `${height}px`,
+        width: !width ? '100%' : pxCheck(width),
+        height: !height ? '150px' : pxCheck(height),
       }}
     >
       <View
         className="nut-swiper__inner"
         style={{
-          width: !width ? '100%' : `${width}px`,
-          height: !height ? '150px' : `${height}px`,
+          width: !width ? '100%' : pxCheck(width),
+          height: !height ? '150px' : pxCheck(height),
         }}
       >
         <TaroSwiper
@@ -125,16 +128,27 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
           autoplay={autoPlay}
           vertical={direction === 'vertical'}
           indicatorDots={false}
-          onChange={handleOnChange}
+          onChange={(e) => {
+            handleOnChange(e)
+            props.onChange?.(e)
+          }}
           style={{
-            width: !width ? '100%' : `${width}px`,
-            height: !height ? '150px' : `${height}px`,
+            width: !width ? '100%' : pxCheck(width),
+            height: !height ? '150px' : pxCheck(height),
           }}
           {...rest}
         >
-          {Children.toArray(children).map((child, index) => (
-            <TaroSwiperItem key={index}>{child}</TaroSwiperItem>
-          ))}
+          {Children.toArray(children).map((child, index) => {
+            let className
+            if (React.isValidElement(child)) {
+              className = child.props.className
+            }
+            return (
+              <TaroSwiperItem className={className} key={index}>
+                {child}
+              </TaroSwiperItem>
+            )
+          })}
         </TaroSwiper>
       </View>
       {renderIndicator()}

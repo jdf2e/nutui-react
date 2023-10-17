@@ -1,3 +1,28 @@
+# v2.0.20
+`2023-10-13`
+
+* :sparkles: feat: add demo about infiniteloading (#1533) @xiaoyatong
+* :bug: fix(form): 自定义校验 promise 返回错误不能被正确收集 (#1523) @samber
+* :bug: fix(popup): popup zIndex 无效 (#1521) @Clay Zhang
+* :bug: fix: demo format (#1530) @xiaoyatong
+* :bug: fix: taro image and imagepreivew on h5 (#1532) @xiaoyatong
+* :bug: fix: taro image default width and height (#1531) @xiaoyatong
+
+
+# v2.0.19
+`2023-09-27`
+
+* :sparkles: feat(menu):  overlay onclick 事件中调用 hideMenuItem 实现关闭 (#1505) @oasis-cloud
+* :sparkles: feat(menu): onClose 事件增加触发来源参数 (#1502) @oasis-cloud
+* :sparkles: feat(swiper): swiperItem 支持设置 className (#1504) @oasis-cloud
+* :bug: fix(uploader): 受控模式调整，props 类型调整，回调参数修正 (#1500) @oasis-cloud
+* :bug: fix: imagepreview with control (#1480) @xiaoyatong
+* :bug: fix: indicator 超长换行 (#1486) @oasis-cloud
+* :bug: fix: menu 在 lockscroll 的时候不需要加滚动事件 (#1509) @oasis-cloud
+* :bug: fix: ios和android下点击button时出现半透明灰色遮罩 (#1495) @Kurisu
+
+
+
 # v2.0.18
 `2023-09-20`
 
