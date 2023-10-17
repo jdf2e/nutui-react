@@ -66,7 +66,7 @@ export interface UploaderProps extends BasicComponent {
   beforeUpload?: (file: File[]) => Promise<File[] | boolean>
   beforeXhrUpload?: (xhr: XMLHttpRequest, options: any) => void
   beforeDelete?: (file: FileItem, files: FileItem[]) => boolean
-  onFileItemClick?: (file: FileItem) => void
+  onFileItemClick?: (file: FileItem, index: number) => void
 }
 
 const defaultProps = {
@@ -376,8 +376,8 @@ const InternalUploader: ForwardRefRenderFunction<
     }
   }
 
-  const handleItemClick = (file: FileItem) => {
-    onFileItemClick?.(file)
+  const handleItemClick = (file: FileItem, index: number) => {
+    onFileItemClick?.(file, index)
   }
 
   return (

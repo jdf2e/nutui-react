@@ -514,14 +514,14 @@ export default App;
 | beforeUpload | 上傳前的函數需要返回一個`Promise`對象 | `(file: File[]) => Promise<File[] \| boolean>` | `-` |
 | beforeXhrUpload | 執行 XHR 上傳時，自定義方式 | `(xhr: XMLHttpRequest, options: any) => void` | `-` |
 | beforeDelete | 除文件時的回調，返回值為 false 時不移除。支持返回一個 `Promise` 對象，`Promise` 對象 resolve(false) 或 reject 時不移除 | `(file: FileItem, files: FileItem[]) => boolean` | `-` |
-| onStart | 文件上傳開始 | `options` | `-` |
-| onProgress | 文件上傳的進度 | `event, options, percentage` | `-` |
-| onOversize | 文件大小超過限制時觸發 | `files` | `-` |
-| onSuccess | 上傳成功 | `responseText, options` | `-` |
-| onFailure | 上傳失敗 | `responseText, options` | `-` |
-| onChange | 上傳文件改變時的狀態 | `fileList, event` | `-` |
-| onDelete | 文件刪除之前的狀態 | `files, fileList` | `-` |
-| onFileItemClick | 文件上傳成功後點擊觸發 | `fileItem` | `-` |
+| onStart | 文件上傳開始 | `(option: UploadOptions) => void` | `-` |
+| onProgress | 文件上傳的進度 | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
+| onOversize | 文件大小超過限制時觸發 | `(file: File[]) => void` | `-` |
+| onSuccess | 上傳成功 | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
+| onFailure | 上傳失敗 | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
+| onChange | 上傳文件改變時的狀態 | `(p: FileItem[]) => void` | `-` |
+| onDelete | 文件刪除之前的狀態 | `(file: FileItem, fileList: FileItem[]) => void` | `-` |
+| onFileItemClick | 文件上傳成功後點擊觸發 | `(file: FileItem, index: number) => void` | `-` |
 
 > 註意：accept、capture 和 multiple 為瀏覽器 input 標簽的原生屬性，移動端各種機型對這些屬性的支持程度有所差異，因此在不同機型和 WebView 下可能出現一些兼容性問題。
 

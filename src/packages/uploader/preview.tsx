@@ -64,7 +64,7 @@ export const Preview: React.FunctionComponent<any> = ({
                           style={{ objectFit: 'fill' }}
                           src={item.url}
                           alt=""
-                          onClick={() => handleItemClick(item)}
+                          onClick={() => handleItemClick(item, index)}
                         />
                       )}
                     </>
@@ -75,12 +75,12 @@ export const Preview: React.FunctionComponent<any> = ({
                           className="nut-uploader__preview-img__c"
                           src={previewUrl}
                           alt=""
-                          onClick={() => handleItemClick(item)}
+                          onClick={() => handleItemClick(item, index)}
                         />
                       ) : (
                         <div className="nut-uploader__preview-img__file">
                           <div
-                            onClick={() => handleItemClick(item)}
+                            onClick={() => handleItemClick(item, index)}
                             className="nut-uploader__preview-img__file__name"
                           >
                             <LinkIcon color="#808080" />
@@ -100,7 +100,7 @@ export const Preview: React.FunctionComponent<any> = ({
                 <div className="nut-uploader__preview-list">
                   <div
                     className={`nut-uploader__preview-img__file__name ${item.status}`}
-                    onClick={() => handleItemClick(item)}
+                    onClick={() => handleItemClick(item, index)}
                   >
                     <LinkIcon />
                     <span>&nbsp;{item.name}</span>
