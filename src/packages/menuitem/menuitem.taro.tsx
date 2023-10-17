@@ -94,7 +94,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   const updateItemOffset = useCallback(() => {
     if (!parent.lockScroll) return
     const p = parent.menuRef.current
-    p.getBoundingClientRect().then((rect: any) => {
+    getRectByTaro(p).then((rect: any) => {
       if (rect) {
         setPosition({
           height: rect.height,
