@@ -26,8 +26,8 @@ export function usePropsValue<T>({
       stateRef.current = v
       if (prevState !== stateRef.current) {
         forceUpdate()
+        onChange?.(v)
       }
-      onChange?.(v)
     },
     [value, onChange]
   )
