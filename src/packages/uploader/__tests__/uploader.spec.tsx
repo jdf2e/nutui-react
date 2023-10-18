@@ -29,11 +29,14 @@ test('should render base uploader props', () => {
       onChange={change}
     />
   )
+  const file = new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' })
   const input = container.querySelectorAll('.nut-uploader__input')[0]
   expect(input?.getAttribute('capture')).toBe('user')
   expect(input?.getAttribute('name')).toBe('files')
   expect(input?.getAttribute('accept')).toBe('.jpg')
-  fireEvent.change(input)
+  fireEvent.change(input, {
+    target: { files: [file] },
+  })
   expect(change).toBeCalled()
 
   const input1 = container.querySelector('.nut-uploader__upload')
