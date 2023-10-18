@@ -44,11 +44,11 @@ export interface UploaderProps extends BasicComponent {
   previewUrl?: string
   style: React.CSSProperties
   onStart?: (option: UploadOptions) => void
-  onDelete?: (file: FileItem, fileList: FileItem[]) => void
+  onDelete?: (file: FileItem, files: FileItem[]) => void
   onSuccess?: (param: {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
-    fileList: FileItem[]
+    files: FileItem[]
   }) => void
   onProgress?: (param: {
     e: ProgressEvent<XMLHttpRequestEventTarget>
@@ -58,12 +58,12 @@ export interface UploaderProps extends BasicComponent {
   onFailure?: (param: {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
-    fileList: FileItem[]
+    files: FileItem[]
   }) => void
   onUpdate?: (fileList: FileItem[]) => void
-  onOversize?: (file: File[]) => void
-  onChange?: (param: FileItem[]) => void
-  beforeUpload?: (file: File[]) => Promise<File[] | boolean>
+  onOversize?: (files: File[]) => void
+  onChange?: (files: FileItem[]) => void
+  beforeUpload?: (files: File[]) => Promise<File[] | boolean>
   beforeXhrUpload?: (xhr: XMLHttpRequest, options: any) => void
   beforeDelete?: (file: FileItem, files: FileItem[]) => boolean
   onFileItemClick?: (file: FileItem, index: number) => void
@@ -246,7 +246,7 @@ const InternalUploader: ForwardRefRenderFunction<
       onSuccess?.({
         responseText,
         option,
-        fileList: list,
+        files: list,
       })
     }
     uploadOption.onFailure = (
@@ -265,7 +265,7 @@ const InternalUploader: ForwardRefRenderFunction<
       onFailure?.({
         responseText,
         option,
-        fileList: list,
+        files: list,
       })
     }
     const task = new Upload(uploadOption)

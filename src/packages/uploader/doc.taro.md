@@ -396,11 +396,11 @@ export default App;
 | beforeDelete | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除 | `(file: FileItem, files: FileItem[]) => boolean` | `-` |
 | onStart | 文件上传开始 | `(option: UploadOptions) => void` | `-` |
 | onProgress | 文件上传的进度 | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
-| onOversize | 文件大小超过限制时触发 | `(param: {responseText: XMLHttpRequest['responseText'];option: UploadOptions;fileList: FileItem[]}) => void` | `-` |
+| onOversize | 文件大小超过限制时触发 | `(param: {responseText: XMLHttpRequest['responseText'];option: UploadOptions;files: FileItem[]}) => void` | `-` |
 | onSuccess | 上传成功 | `(param: {responseText: XMLHttpRequest['responseText'];option: UploadOptions;percentage: string \| number}) => void` | `-` |
 | onFailure | 上传失败 | `(param: {responseText: XMLHttpRequest['responseText'];option: UploadOptions;percentage: string \| number}) => void` | `-` |
 | onChange | 上传文件改变时的状态 | `(param: FileItem[]) => void` | `-` |
-| onDelete | 文件删除之前的状态 | `(file: FileItem, fileList: FileItem[]) => void` | `-` |
+| onDelete | 文件删除之前的状态 | `(file: FileItem, files: FileItem[]) => void` | `-` |
 | onFileItemClick | 文件上传成功后点击触发 | `(file: FileItem, index: number) => void` | `-` |
 
 ### FileItem

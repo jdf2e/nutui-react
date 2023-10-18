@@ -519,8 +519,8 @@ export default App;
 | onOversize | 文件大小超過限制時觸發 | `(file: File[]) => void` | `-` |
 | onSuccess | 上傳成功 | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
 | onFailure | 上傳失敗 | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
-| onChange | 上傳文件改變時的狀態 | `(param: FileItem[]) => void` | `-` |
-| onDelete | 文件刪除之前的狀態 | `(file: FileItem, fileList: FileItem[]) => void` | `-` |
+| onChange | 上傳文件改變時的狀態 | `(files: FileItem[]) => void` | `-` |
+| onDelete | 文件刪除之前的狀態 | `(file: FileItem, files: FileItem[]) => void` | `-` |
 | onFileItemClick | 文件上傳成功後點擊觸發 | `(file: FileItem, index: number) => void` | `-` |
 
 > 註意：accept、capture 和 multiple 為瀏覽器 input 標簽的原生屬性，移動端各種機型對這些屬性的支持程度有所差異，因此在不同機型和 WebView 下可能出現一些兼容性問題。
