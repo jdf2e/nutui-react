@@ -108,7 +108,7 @@ export interface UploaderProps extends BasicComponent {
     option: UploadOptions
     files: FileItem[]
   }) => void
-  onUpdate?: (fileList: FileItem[]) => void
+  onUpdate?: (files: FileItem[]) => void
   onOversize?: (
     files: Taro.chooseImage.ImageFile[] | Taro.chooseMedia.ChooseMedia[] | any
   ) => void

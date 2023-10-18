@@ -60,7 +60,7 @@ export interface UploaderProps extends BasicComponent {
     option: UploadOptions
     files: FileItem[]
   }) => void
-  onUpdate?: (fileList: FileItem[]) => void
+  onUpdate?: (files: FileItem[]) => void
   onOversize?: (files: File[]) => void
   onChange?: (files: FileItem[]) => void
   beforeUpload?: (files: File[]) => Promise<File[] | boolean>
