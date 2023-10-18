@@ -426,14 +426,14 @@ export default App;
 | beforeUpload | The pre-upload function needs to return a `Promise` object | `(file: File[]) => Promise<File[] \| boolean>` | `-` |
 | beforeXhrUpload | When performing an XHR upload, the custom method | `(xhr: XMLHttpRequest, options: any) => void` | `-` |
 | beforeDelete | Callback when file is removed. If the return value is false, it will not be removed. Supports returning a `Promise` object, which is not removed when the `Promise` object resolves(false) or rejects | `(file: FileItem, files: FileItem[]) => boolean` | `-` |
-| onStart | File upload started | `options` | `-` |
-| onProgress | Progress of file upload | `event, options, percentage` | `-` |
-| onOversize | Triggered when the file size exceeds the limit | `files` | `-` |
-| onSuccess | uploaded successfully | `responseText, options` | `-` |
-| onFailure | upload failed | `responseText, options` | `-` |
-| onChange | Status when uploaded files change | `fileList, event` | `-` |
-| onDelete | The state of the file before deletion | `files, fileList` | `-` |
-| onFileItemClick | Click trigger after the file is uploaded successfully | `fileItem` | `-` |
+| onStart | File upload started | `(option: UploadOptions) => void` | `-` |
+| onProgress | Progress of file upload | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
+| onOversize | Triggered when the file size exceeds the limit | `(file: File[]) => void` | `-` |
+| onSuccess | uploaded successfully | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
+| onFailure | upload failed | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
+| onChange | Status when uploaded files change | `(files: FileItem[]) => void` | `-` |
+| onDelete | The state of the file before deletion | `(file: FileItem, files: FileItem[]) => void` | `-` |
+| onFileItemClick | Click trigger after the file is uploaded successfully | `(file: FileItem, index: number) => void` | `-` |
 
 > Note: accept, capture, and multiple are the native attributes of the browser's input tag. The mobile terminal's different models support these attributes differently, so there may be some compatibility problems under different models and WebView.
 

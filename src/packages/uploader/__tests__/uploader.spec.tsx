@@ -254,9 +254,13 @@ test('preview component', () => {
       previewUrl="https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif"
     />
   )
-
   fireEvent.click(container.querySelectorAll('.close')[0])
   expect(delFunc).toBeCalled()
+
+  fireEvent.click(
+    container.querySelectorAll('.nut-uploader__preview-img__c')[0]
+  )
+  expect(clickFunc).toBeCalled()
 
   const { container: container1 } = render(
     <Preview
@@ -267,9 +271,23 @@ test('preview component', () => {
       handleItemClick={clickFunc}
     />
   )
-
   fireEvent.click(
     container1.querySelectorAll('.nut-uploader__preview-img__file__name')[0]
+  )
+  expect(clickFunc).toBeCalled()
+
+  const { container: container2 } = render(
+    <Preview
+      fileList={list}
+      previewType="list"
+      deletable
+      onDeleteItem={delFunc}
+      handleItemClick={clickFunc}
+    />
+  )
+
+  fireEvent.click(
+    container2.querySelectorAll('.nut-uploader__preview-img__file__name')[0]
   )
   expect(clickFunc).toBeCalled()
 })

@@ -92,11 +92,11 @@ export interface UploaderProps extends BasicComponent {
   maxDuration: number
   style: React.CSSProperties
   onStart?: (option: UploadOptions) => void
-  onDelete?: (file: FileItem, fileList: FileItem[]) => void
+  onDelete?: (file: FileItem, files: FileItem[]) => void
   onSuccess?: (param: {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
-    fileList: FileItem[]
+    files: FileItem[]
   }) => void
   onProgress?: (param: {
     e: ProgressEvent<XMLHttpRequestEventTarget>
@@ -106,16 +106,16 @@ export interface UploaderProps extends BasicComponent {
   onFailure?: (param: {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
-    fileList: FileItem[]
+    files: FileItem[]
   }) => void
-  onUpdate?: (fileList: FileItem[]) => void
+  onUpdate?: (files: FileItem[]) => void
   onOversize?: (
     files: Taro.chooseImage.ImageFile[] | Taro.chooseMedia.ChooseMedia[] | any
   ) => void
-  onChange?: (p: FileItem[]) => void
+  onChange?: (files: FileItem[]) => void
   beforeXhrUpload?: (xhr: XMLHttpRequest, options: any) => void
   beforeDelete?: (file: FileItem, files: FileItem[]) => boolean
-  onFileItemClick?: (file: FileItem) => void
+  onFileItemClick?: (file: FileItem, index: number) => void
 }
 
 const defaultProps = {
@@ -347,7 +347,7 @@ const InternalUploader: ForwardRefRenderFunction<
       onSuccess?.({
         responseText,
         option,
-        fileList: list,
+        files: list,
       })
     }
 
@@ -367,7 +367,7 @@ const InternalUploader: ForwardRefRenderFunction<
       onFailure?.({
         responseText,
         option,
-        fileList: list,
+        files: list,
       })
     }
 
@@ -481,8 +481,8 @@ const InternalUploader: ForwardRefRenderFunction<
     readFile(_files)
   }
 
-  const handleItemClick = (file: FileItem) => {
-    onFileItemClick?.(file)
+  const handleItemClick = (file: FileItem, index: number) => {
+    onFileItemClick?.(file, index)
   }
 
   return (
