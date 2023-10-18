@@ -62,7 +62,7 @@ export interface UploaderProps extends BasicComponent {
   }) => void
   onUpdate?: (fileList: FileItem[]) => void
   onOversize?: (file: File[]) => void
-  onChange?: (p: FileItem[]) => void
+  onChange?: (param: FileItem[]) => void
   beforeUpload?: (file: File[]) => Promise<File[] | boolean>
   beforeXhrUpload?: (xhr: XMLHttpRequest, options: any) => void
   beforeDelete?: (file: FileItem, files: FileItem[]) => boolean

@@ -519,7 +519,7 @@ export default App;
 | onOversize | 文件大小超過限制時觸發 | `(file: File[]) => void` | `-` |
 | onSuccess | 上傳成功 | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
 | onFailure | 上傳失敗 | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
-| onChange | 上傳文件改變時的狀態 | `(p: FileItem[]) => void` | `-` |
+| onChange | 上傳文件改變時的狀態 | `(param: FileItem[]) => void` | `-` |
 | onDelete | 文件刪除之前的狀態 | `(file: FileItem, fileList: FileItem[]) => void` | `-` |
 | onFileItemClick | 文件上傳成功後點擊觸發 | `(file: FileItem, index: number) => void` | `-` |
 

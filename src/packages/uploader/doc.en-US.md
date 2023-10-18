@@ -431,7 +431,7 @@ export default App;
 | onOversize | Triggered when the file size exceeds the limit | `(file: File[]) => void` | `-` |
 | onSuccess | uploaded successfully | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
 | onFailure | upload failed | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
-| onChange | Status when uploaded files change | `(p: FileItem[]) => void` | `-` |
+| onChange | Status when uploaded files change | `(param: FileItem[]) => void` | `-` |
 | onDelete | The state of the file before deletion | `(file: FileItem, fileList: FileItem[]) => void` | `-` |
 | onFileItemClick | Click trigger after the file is uploaded successfully | `(file: FileItem, index: number) => void` | `-` |
 

@@ -399,7 +399,7 @@ export default App;
 | onOversize | 文件大小超过限制时触发 | `(param: {responseText: XMLHttpRequest['responseText'];option: UploadOptions;fileList: FileItem[]}) => void` | `-` |
 | onSuccess | 上传成功 | `(param: {responseText: XMLHttpRequest['responseText'];option: UploadOptions;percentage: string \| number}) => void` | `-` |
 | onFailure | 上传失败 | `(param: {responseText: XMLHttpRequest['responseText'];option: UploadOptions;percentage: string \| number}) => void` | `-` |
-| onChange | 上传文件改变时的状态 | `(p: FileItem[]) => void` | `-` |
+| onChange | 上传文件改变时的状态 | `(param: FileItem[]) => void` | `-` |
 | onDelete | 文件删除之前的状态 | `(file: FileItem, fileList: FileItem[]) => void` | `-` |
 | onFileItemClick | 文件上传成功后点击触发 | `(file: FileItem, index: number) => void` | `-` |
 
