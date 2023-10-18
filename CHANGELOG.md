@@ -1,3 +1,17 @@
+# v2.0.21
+`2023-10-18`
+
+* :sparkles: feat(Uploader): onFileItemClick 增加索引参数 (#1544) @oasis-cloud
+* :sparkles: feat: add demo about infiniteloading (#1533) @xiaoyatong
+* :bug: fix(menu): getBoundingClientRect 兼容 H5 (#1548) @oasis-cloud
+* :bug: fix: form input blur (#1542) @oasis-cloud
+* :bug: fix: imagepreview h5 (#1538) @xiaoyatong
+* :bug: fix: jdapp picker's item-height doesn't match jdapp's default setting (#1545) @xiaoyatong
+* :bug: fix: taro image and imagepreivew on h5 (#1532) @xiaoyatong
+* :bug: fix: zindex of popover because popup changed its zindex (#1543) @xiaoyatong
+* 📖 docs(tabbar): Correct module names of tabbar component (#1539) @HUMORCE
+
+
 # v2.0.20
 `2023-10-13`
 
