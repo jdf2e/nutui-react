@@ -93,7 +93,7 @@ export const CollapseItem: FunctionComponent<
     // 一开始content都有高度，在这里根据isOpen，改变其高度
     setTimeout(() => {
       if (domHeight !== -1) {
-        isOpen ? setCurrHeight(`${domHeight}px`) : setCurrHeight('0px')
+        isOpen ? setCurrHeight(`auto`) : setCurrHeight('0px')
       }
       const newIconStyle = isOpen
         ? { transform: `translateY(-50%) rotate(${rotate}deg)` }
