@@ -152,7 +152,6 @@ export class FormItem extends React.Component<
     if (type === 'reset') {
       this.refresh()
     } else {
-      console.log('force update')
       this.forceUpdate()
     }
   }
