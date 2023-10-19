@@ -6,8 +6,7 @@ import {
   Service,
   Notice,
   Category,
-  Scan2,
-  Location,
+  Scan,
   Close,
   Message,
 } from '@nutui/icons-react'
@@ -188,7 +187,7 @@ const PopoverDemo = () => {
     },
     {
       key: 'key5',
-      name: <Scan2 />,
+      name: <Scan />,
       description: 'option5',
     },
     {

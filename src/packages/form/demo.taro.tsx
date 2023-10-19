@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
+import { ArrowRight } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import {
   Input,
