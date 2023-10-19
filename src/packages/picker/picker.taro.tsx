@@ -405,6 +405,9 @@ const InternalPicker: ForwardRefRenderFunction<
                 onPickStart={pickerStart}
                 onChange={pickerChange}
                 onPickEnd={pickerEnd}
+                indicatorClass={
+                  Taro.getEnv() === 'JD' ? 'nut-picker-indicator-jdapp' : ''
+                }
                 className="nut-picker-view-panel"
               >
                 {columnsList?.map((columnOptions, index) => {
