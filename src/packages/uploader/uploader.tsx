@@ -3,39 +3,24 @@ import React, {
   useImperativeHandle,
   ForwardRefRenderFunction,
   PropsWithChildren,
-  useEffect,
 } from 'react'
 import classNames from 'classnames'
-import {
-  Link as LinkIcon,
-  Failure,
-  Del,
-  Photograph,
-  Loading,
-} from '@nutui/icons-react'
-import Progress from '@/packages/progress'
-import { Upload, UploadOptions } from './upload'
+import { Photograph } from '@nutui/icons-react'
+import { ERROR, SUCCESS, Upload, UPLOADING, UploadOptions } from './upload'
 import { useConfig } from '@/packages/configprovider'
 import { funcInterceptor } from '@/utils/interceptor'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import Button from '../button'
-
-export type FileType<T> = { [key: string]: T }
-
-export type FileItemStatus =
-  | 'ready'
-  | 'uploading'
-  | 'success'
-  | 'error'
-  | 'removed'
+import Button from '@/packages/button'
+import { usePropsValue } from '@/utils/use-props-value'
+import { Preview } from '@/packages/uploader/preview'
+import { FileItem } from './file-item'
 
 export interface UploaderProps extends BasicComponent {
   url: string
   maxCount: string | number
   maxFileSize: number
-  defaultValue?: FileType<React.ReactNode>[]
-  value?: FileType<string>[]
+  defaultValue?: FileItem[]
+  value?: FileItem[]
   previewType: 'picture' | 'list'
   fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
   uploadIcon?: React.ReactNode
@@ -54,16 +39,16 @@ export interface UploaderProps extends BasicComponent {
   clearInput: boolean
   preview: boolean
   deletable: boolean
-  capture: boolean
+  capture: boolean | 'user' | 'environment'
   className: string
   previewUrl?: string
   style: React.CSSProperties
   onStart?: (option: UploadOptions) => void
-  onDelete?: (file: FileItem, fileList: FileItem[]) => void
+  onDelete?: (file: FileItem, files: FileItem[]) => void
   onSuccess?: (param: {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
-    fileList: FileItem[]
+    files: FileItem[]
   }) => void
   onProgress?: (param: {
     e: ProgressEvent<XMLHttpRequestEventTarget>
@@ -73,18 +58,15 @@ export interface UploaderProps extends BasicComponent {
   onFailure?: (param: {
     responseText: XMLHttpRequest['responseText']
     option: UploadOptions
-    fileList: FileItem[]
+    files: FileItem[]
   }) => void
-  onUpdate?: (fileList: FileItem[]) => void
-  onOversize?: (file: File[]) => void
-  onChange?: (param: {
-    fileList: FileItem[]
-    event: React.ChangeEvent<HTMLInputElement>
-  }) => void
-  beforeUpload?: (file: File[]) => Promise<File[] | boolean>
+  onUpdate?: (files: FileItem[]) => void
+  onOversize?: (files: File[]) => void
+  onChange?: (files: FileItem[]) => void
+  beforeUpload?: (files: File[]) => Promise<File[] | boolean>
   beforeXhrUpload?: (xhr: XMLHttpRequest, options: any) => void
   beforeDelete?: (file: FileItem, files: FileItem[]) => boolean
-  onFileItemClick?: (file: FileItem) => void
+  onFileItemClick?: (file: FileItem, index: number) => void
 }
 
 const defaultProps = {
@@ -109,32 +91,11 @@ const defaultProps = {
   preview: true,
   deletable: true,
   capture: false,
+  uploadIcon: <Photograph width="20px" height="20px" color="#808080" />,
   beforeDelete: (file: FileItem, files: FileItem[]) => {
     return true
   },
 } as UploaderProps
-
-export class FileItem {
-  status: FileItemStatus = 'ready'
-
-  message = '准备中..'
-
-  uid: string = new Date().getTime().toString()
-
-  name?: string
-
-  url?: string
-
-  type?: string
-
-  path?: string
-
-  percentage: string | number = 0
-
-  formData: FormData = new FormData()
-
-  responseText?: string
-}
 
 const InternalUploader: ForwardRefRenderFunction<
   unknown,
@@ -183,14 +144,15 @@ const InternalUploader: ForwardRefRenderFunction<
     beforeDelete,
     ...restProps
   } = { ...defaultProps, ...props }
-  const [fileList, setFileList] = useState<any>(defaultValue || [])
+  const [fileList, setFileList] = usePropsValue({
+    value,
+    defaultValue,
+    finalValue: [],
+    onChange: (v) => {
+      onChange?.(v)
+    },
+  })
   const [uploadQueue, setUploadQueue] = useState<Promise<Upload>[]>([])
-
-  useEffect(() => {
-    if (value) {
-      setFileList(value)
-    }
-  }, [value])
 
   const classes = classNames(className, 'nut-uploader')
 
@@ -224,7 +186,7 @@ const InternalUploader: ForwardRefRenderFunction<
     const uploadOption = new UploadOptions()
     uploadOption.url = url
     for (const [key, value] of Object.entries<string | Blob>(data)) {
-      fileItem.formData.append(key, value)
+      fileItem.formData?.append(key, value)
     }
     uploadOption.formData = fileItem.formData
     uploadOption.timeout = timeout * 1
@@ -234,13 +196,13 @@ const InternalUploader: ForwardRefRenderFunction<
     uploadOption.withCredentials = withCredentials
     uploadOption.beforeXhrUpload = beforeXhrUpload
     try {
-      uploadOption.sourceFile = fileItem.formData.get(name)
+      uploadOption.sourceFile = fileItem.formData?.get(name)
     } catch (error) {
       console.warn(error)
     }
     uploadOption.onStart = (option: UploadOptions) => {
       clearUploadQueue(index)
-      setFileList((fileList: FileItem[]) => {
+      setFileList(
         fileList.map((item) => {
           if (item.uid === fileItem.uid) {
             item.status = 'ready'
@@ -248,71 +210,63 @@ const InternalUploader: ForwardRefRenderFunction<
           }
           return item
         })
-        return [...fileList]
-      })
+      )
       onStart && onStart(option)
     }
     uploadOption.onProgress = (
       e: ProgressEvent<XMLHttpRequestEventTarget>,
       option: UploadOptions
     ) => {
-      setFileList((fileList: FileItem[]) => {
+      setFileList(
         fileList.map((item) => {
           if (item.uid === fileItem.uid) {
-            item.status = 'uploading'
+            item.status = UPLOADING
             item.message = locale.uploader.uploading
             item.percentage = ((e.loaded / e.total) * 100).toFixed(0)
             onProgress && onProgress({ e, option, percentage: item.percentage })
           }
           return item
         })
-        return [...fileList]
-      })
+      )
     }
     uploadOption.onSuccess = (
       responseText: XMLHttpRequest['responseText'],
       option: UploadOptions
     ) => {
-      setFileList((fileList: FileItem[]) => {
-        onUpdate && onUpdate(fileList)
-        fileList.map((item) => {
-          if (item.uid === fileItem.uid) {
-            item.status = 'success'
-            item.message = locale.uploader.success
-            item.responseText = responseText
-          }
-          return item
-        })
-        return [...fileList]
+      const list = fileList.map((item) => {
+        if (item.uid === fileItem.uid) {
+          item.status = SUCCESS
+          item.message = locale.uploader.success
+          item.responseText = responseText
+        }
+        return item
       })
-      onSuccess &&
-        onSuccess({
-          responseText,
-          option,
-          fileList,
-        })
+      setFileList(list)
+      onUpdate?.(list)
+      onSuccess?.({
+        responseText,
+        option,
+        files: list,
+      })
     }
     uploadOption.onFailure = (
       responseText: XMLHttpRequest['responseText'],
       option: UploadOptions
     ) => {
-      setFileList((fileList: FileItem[]) => {
-        fileList.map((item) => {
-          if (item.uid === fileItem.uid) {
-            item.status = 'error'
-            item.message = locale.uploader.error
-            item.responseText = responseText
-          }
-          return item
-        })
-        return [...fileList]
+      const list = fileList.map((item) => {
+        if (item.uid === fileItem.uid) {
+          item.status = ERROR
+          item.message = locale.uploader.error
+          item.responseText = responseText
+        }
+        return item
       })
-      onFailure &&
-        onFailure({
-          responseText,
-          option,
-          fileList,
-        })
+      setFileList(list)
+      onFailure?.({
+        responseText,
+        option,
+        files: list,
+      })
     }
     const task = new Upload(uploadOption)
     if (props.autoUpload) {
@@ -337,12 +291,9 @@ const InternalUploader: ForwardRefRenderFunction<
       fileItem.type = file.type
       fileItem.formData = formData
       fileItem.uid = file.lastModified + fileItem.uid
-
-      if (autoUpload) {
-        fileItem.message = locale.uploader.readyUpload
-      } else {
-        fileItem.message = locale.uploader.waitingUpload
-      }
+      fileItem.message = autoUpload
+        ? locale.uploader.readyUpload
+        : locale.uploader.waitingUpload
 
       executeUpload(fileItem, index)
 
@@ -355,8 +306,7 @@ const InternalUploader: ForwardRefRenderFunction<
         }
         reader.readAsDataURL(file)
       } else {
-        fileList.push(fileItem)
-        setFileList([...fileList])
+        setFileList([...fileList, fileItem])
       }
     })
   }
@@ -387,9 +337,9 @@ const InternalUploader: ForwardRefRenderFunction<
   }
 
   const deleted = (file: FileItem, index: number) => {
-    fileList.splice(index, 1)
-    onDelete && onDelete(file, fileList)
-    setFileList([...fileList])
+    const deletedFileList = fileList.filter((file, idx) => idx !== index)
+    onDelete?.(file, deletedFileList)
+    setFileList(deletedFileList)
   }
 
   const onDeleteItem = (file: FileItem, index: number) => {
@@ -419,198 +369,31 @@ const InternalUploader: ForwardRefRenderFunction<
       readFile(_files)
     }
 
-    onChange && onChange({ fileList, event })
+    setFileList(fileList)
 
     if (clearInput) {
       clearInputValue($el)
     }
   }
 
-  const handleItemClick = (file: FileItem) => {
-    onFileItemClick && onFileItemClick(file)
+  const handleItemClick = (file: FileItem, index: number) => {
+    onFileItemClick?.(file, index)
   }
 
   return (
     <div className={classes} {...restProps}>
       {(children || previewType === 'list') && (
         <div className="nut-uploader__slot">
-          <>
-            {children || (
-              <Button size="small" type="primary">
-                上传文件
-              </Button>
-            )}
-            {maxCount > fileList.length && (
-              <>
-                {capture ? (
-                  <input
-                    className="nut-uploader__input"
-                    type="file"
-                    capture="user"
-                    name={name}
-                    accept={accept}
-                    disabled={disabled}
-                    multiple={multiple}
-                    onChange={fileChange}
-                  />
-                ) : (
-                  <input
-                    className="nut-uploader__input"
-                    type="file"
-                    name={name}
-                    accept={accept}
-                    disabled={disabled}
-                    multiple={multiple}
-                    onChange={fileChange}
-                  />
-                )}
-              </>
-            )}
-          </>
-        </div>
-      )}
-
-      {fileList.length !== 0 &&
-        Array.isArray(fileList) &&
-        fileList.map((item: any, index: number) => {
-          return (
-            <div
-              className={`nut-uploader__preview ${previewType}`}
-              key={item.uid}
-            >
-              {previewType === 'picture' && deletable && (
-                <Failure
-                  color="rgba(0,0,0,0.6)"
-                  className="close"
-                  onClick={() => onDeleteItem(item, index)}
-                />
-              )}
-              {previewType === 'picture' && !children && (
-                <div className="nut-uploader__preview-img">
-                  {item.status === 'ready' ? (
-                    <div className="nut-uploader__preview__progress">
-                      <div className="nut-uploader__preview__progress__msg">
-                        {item.message}
-                      </div>
-                    </div>
-                  ) : (
-                    item.status !== 'success' && (
-                      <div className="nut-uploader__preview__progress">
-                        {item.failIcon !== ' ' &&
-                          item.loadingIcon !== ' ' &&
-                          (item.status === 'error'
-                            ? item.failIcon || <Failure color="#fff" />
-                            : item.loadingIcon || (
-                                <Loading
-                                  className="nut-icon-loading"
-                                  color="#fff"
-                                />
-                              ))}
-                        <div className="nut-uploader__preview__progress__msg">
-                          {item.message}
-                        </div>
-                      </div>
-                    )
-                  )}
-
-                  {item.type.includes('image') ? (
-                    <>
-                      {item.url && (
-                        <img
-                          className="nut-uploader__preview-img__c"
-                          style={{ objectFit: fit }}
-                          src={item.url}
-                          alt=""
-                          onClick={() => handleItemClick(item)}
-                        />
-                      )}
-                    </>
-                  ) : (
-                    <>
-                      {previewUrl ? (
-                        <img
-                          className="nut-uploader__preview-img__c"
-                          src={previewUrl}
-                          alt=""
-                          onClick={() => handleItemClick(item)}
-                        />
-                      ) : (
-                        <div className="nut-uploader__preview-img__file">
-                          <div
-                            onClick={() => handleItemClick(item)}
-                            className="nut-uploader__preview-img__file__name"
-                          >
-                            <LinkIcon color="#808080" />
-                            <span>&nbsp;{item.name}</span>
-                          </div>
-                        </div>
-                      )}
-                    </>
-                  )}
-                  {item.status === 'success' ? (
-                    <div className="tips">{item.name}</div>
-                  ) : null}
-                </div>
-              )}
-
-              {previewType === 'list' && (
-                <div className="nut-uploader__preview-list">
-                  <div
-                    className={`nut-uploader__preview-img__file__name ${item.status}`}
-                    onClick={() => handleItemClick(item)}
-                  >
-                    <LinkIcon />
-                    <span>&nbsp;{item.name}</span>
-                  </div>
-                  {deletable && (
-                    <Del
-                      color="#808080"
-                      className="nut-uploader__preview-img__file__del"
-                      onClick={() => onDeleteItem(item, index)}
-                    />
-                  )}
-
-                  {item.status === 'uploading' && (
-                    <Progress
-                      percent={item.percentage}
-                      color="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
-                      showText={false}
-                    />
-                  )}
-                </div>
-              )}
-            </div>
-          )
-        })}
-
-      {maxCount > fileList.length && previewType === 'picture' && !children && (
-        <div
-          className={`nut-uploader__upload ${previewType} ${
-            disabled ? 'nut-uploader__upload-disabled' : ''
-          }`}
-        >
-          <div className="nut-uploader__icon">
-            {uploadIcon || (
-              <Photograph width="20px" height="20px" color="#808080" />
-            )}
-            <span className="nut-uploader__icon-tip">{uploadLabel}</span>
-          </div>
-
-          {capture ? (
+          {children || (
+            <Button size="small" type="primary">
+              上传文件
+            </Button>
+          )}
+          {maxCount > fileList.length && (
             <input
               className="nut-uploader__input"
               type="file"
-              capture="user"
-              name={name}
-              accept={accept}
-              disabled={disabled}
-              multiple={multiple}
-              onChange={fileChange}
-            />
-          ) : (
-            <input
-              className="nut-uploader__input"
-              type="file"
+              capture={capture}
               name={name}
               accept={accept}
               disabled={disabled}
@@ -618,6 +401,42 @@ const InternalUploader: ForwardRefRenderFunction<
               onChange={fileChange}
             />
           )}
+        </div>
+      )}
+
+      <Preview
+        {...{
+          fileList,
+          previewType,
+          deletable,
+          onDeleteItem,
+          handleItemClick,
+          previewUrl,
+          children,
+        }}
+      />
+
+      {maxCount > fileList.length && previewType === 'picture' && !children && (
+        <div
+          className={classNames('nut-uploader__upload', previewType, {
+            'nut-uploader__upload-disabled': disabled,
+          })}
+        >
+          <div className="nut-uploader__icon">
+            {uploadIcon}
+            <span className="nut-uploader__icon-tip">{uploadLabel}</span>
+          </div>
+
+          <input
+            className="nut-uploader__input"
+            type="file"
+            capture={capture}
+            name={name}
+            accept={accept}
+            disabled={disabled}
+            multiple={multiple}
+            onChange={fileChange}
+          />
         </div>
       )}
     </div>

@@ -31,6 +31,10 @@ export class UploadOptions {
 
   beforeXhrUpload?: any
 }
+export const UPLOADING = 'uploading'
+export const SUCCESS = 'success'
+export const ERROR = 'error'
+
 export class Upload {
   options: UploadOptions
 

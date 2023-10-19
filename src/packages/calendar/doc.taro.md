@@ -244,10 +244,10 @@ export default App;
 
 :::
 
-
 ### 和Datepicker 联动
 
 :::demo
+
 ```tsx
 import  React, {useRef, useState } from "react";
 import { Cell, Calendar, DatePicker } from '@nutui/nutui-react-taro';
@@ -369,6 +369,7 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ### 快捷选择
@@ -686,10 +687,10 @@ export default App;
 | scrollAnimation | 是否启动滚动动画 | `boolean` | `true` |
 | firstDayOfWeek | 设置周起始日 | `0-6` | `0` |
 | disableDate | 设置不可选日期 | `(date: Day) => boolean` | `-` |
-| renderHeaderButtons | 自定义日历标题下部，可用以添加自定义操作 | `() => string` | `JSX.Element` |
-| renderDay | 日期信息 | `(date: Day) => string` | `JSX.Element` |
-| renderDayTop | 日期顶部信息 | `(date: Day) => string` | `JSX.Element` |
-| renderDayBottom | 日期底部信息 | `(date: Day) => string` | `JSX.Element` |
+| renderHeaderButtons | 自定义日历标题下部，可用以添加自定义操作 | `() => string` \| `JSX.Element` | `-` |
+| renderDay | 日期信息 | `(date: Day) => string` \| `JSX.Element` | `-` |
+| renderDayTop | 日期顶部信息 | `(date: Day) => string` \| `JSX.Element` | `-` |
+| renderDayBottom | 日期底部信息 | `(date: Day) => string` \| `JSX.Element` | `-` |
 | onDayClick | 点击/选择后触发 | `(data: string) => {}` | `-` |
 | onPageChange | 年月子标题到达顶部时触发 | `(param: string) => {}` | `-` |
 | onConfirm | 选择之后或是点击确认按钮触发 | `(param: string) => {}` | `-` |

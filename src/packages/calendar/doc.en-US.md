@@ -244,11 +244,10 @@ export default App;
 
 :::
 
-
-
 ### Calendar & Datepicker
 
 :::demo
+
 ```tsx
 import  React, {useRef, useState } from "react";
 import { Cell, Calendar, DatePicker } from '@nutui/nutui-react';
@@ -367,6 +366,7 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ### quick selection
@@ -663,7 +663,6 @@ export default App;
 
 :::
 
-
 ## Calendar
 
 ### Props
@@ -687,10 +686,10 @@ export default App;
 | scrollAnimation | whether to start scroll animation | `boolean` | `true` |
 | firstDayOfWeek | first day of week | `0-6` | `0` |
 | disableDate | set disable date | `(date: Day) => boolean` | `-` |
-| renderHeaderButtons | custom buttons, under the title but above the subtitle | `() => string` | `JSX.Element` |
-| renderDay | day info | `(date: Day) => string` | `JSX.Element` |
-| renderDayTop | something above day | `(date: Day) => string` | `JSX.Element` |
-| renderDayBottom | something under day | `(date: Day) => string` | `JSX.Element` |
+| renderHeaderButtons | custom buttons, under the title but above the subtitle | `() => string` \| `JSX.Element` | `-` |
+| renderDay | day info | `(date: Day) => string` \| `JSX.Element` | `-` |
+| renderDayTop | something above day | `(date: Day) => string` \| `JSX.Element` | `-` |
+| renderDayBottom | something under day | `(date: Day) => string` \| `JSX.Element` | `-` |
 | onDayClick | trigger when click the day element | `(data: string) => {}` | `-` |
 | onPageChange | page change ,one month makes as a page | `(param: string) => {}` | `-` |
 | onConfirm | trigger when click the confirm button, or after the click when it is not popup | `(param: string) => {}` | `-` |

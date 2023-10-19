@@ -60,6 +60,8 @@ export const Overlay: FunctionComponent<
 
   const nodeRef = useRef(null)
 
+  const nodeRef = useRef(null)
+
   useEffect(() => {
     if (visible) {
       setInnerVisible(true)

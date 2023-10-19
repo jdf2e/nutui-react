@@ -28,7 +28,7 @@ test('test props', () => {
   const testClick = jest.fn((val) => undefined)
 
   const { container, getByText } = render(
-    <Menu>
+    <Menu lockScroll={false}>
       <MenuItem
         className="custom-className"
         title="custom title"

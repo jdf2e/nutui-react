@@ -56,33 +56,11 @@ export default App;
 ```tsx
 import React, { useState } from "react";
 import { Uploader } from '@nutui/nutui-react';
-import { Dongdong, Loading } from '@nutui/icons-react';
-
-type FileType<T> = { [key: string]: T }
-
-class FileItem {
-  status: FileItemStatus = 'ready'
-
-  message = '准备中..'
-
-  uid: string = new Date().getTime().toString()
-
-  name?: string
-
-  url?: string
-
-  path?: string
-
-  type?: string
-
-  percentage: string | number = 0
-
-  formData: FormData = new FormData()
-}
+import { Dongdong, Loading, Star } from '@nutui/icons-react';
 
 const App = () => {
   const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const defaultFileList: FileType<React.ReactNode>[] = [
+  const defaultFileList = [
     {
       name: '文件文件文件1.png',
       url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
@@ -106,7 +84,7 @@ const App = () => {
       message: '上传失败',
       type: 'image',
       uid: '124',
-      errorIcon: 'star',
+      failIcon: <Star style={{ color: 'white' }}/>,
     },
     {
       name: '文件5.png',
@@ -132,10 +110,10 @@ const App = () => {
       message: '上传中',
       type: 'image',
       uid: '127',
-      loadingIcon: ' ',
+      loadingIcon: null,
     },
   ]
-  const onDelete = (file: FileItem, fileList: FileType<React.ReactNode>[]) => {
+  const onDelete = (file, fileList) => {
     console.log(translated.ca3903f3, file, fileList)
   }
   return (
@@ -161,13 +139,13 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Loading } from '@nutui/icons-react';
+import { Loading, Star } from '@nutui/icons-react';
 import { Uploader, Button } from '@nutui/nutui-react';
 
 const App = () => {
   const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
 
-  const defaultFileList: FileType<React.ReactNode>[] = [
+  const defaultFileList = [
     {
       name: '文件文件文件1.png',
       url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
@@ -191,7 +169,7 @@ const App = () => {
       message: '上传失败',
       type: 'image',
       uid: '124',
-      errorIcon: 'star',
+      failIcon: <Star style-={{ color: 'white' }}/>,
     },
     {
       name: '文件5.png',
@@ -217,7 +195,7 @@ const App = () => {
       message: '上传中',
       type: 'image',
       uid: '127',
-      loadingIcon: ' ',
+      loadingIcon: null,
     },
   ]
   return (
@@ -536,14 +514,14 @@ export default App;
 | beforeUpload | 上传前的函数需要返回一个`Promise`对象 | `(file: File[]) => Promise<File[] \| boolean>` | `-` |
 | beforeXhrUpload | 执行 XHR 上传时，自定义方式 | `(xhr: XMLHttpRequest, options: any) => void` | `-` |
 | beforeDelete | 除文件时的回调，返回值为 false 时不移除。支持返回一个 `Promise` 对象，`Promise` 对象 resolve(false) 或 reject 时不移除 | `(file: FileItem, files: FileItem[]) => boolean` | `-` |
-| onStart | 文件上传开始 | `options` | `-` |
-| onProgress | 文件上传的进度 | `event, options, percentage` | `-` |
-| onOversize | 文件大小超过限制时触发 | `files` | `-` |
-| onSuccess | 上传成功 | `responseText, options` | `-` |
-| onFailure | 上传失败 | `responseText, options` | `-` |
-| onChange | 上传文件改变时的状态 | `fileList, event` | `-` |
-| onDelete | 文件删除之前的状态 | `files, fileList` | `-` |
-| onFileItemClick | 文件上传成功后点击触发 | `fileItem` | `-` |
+| onStart | 文件上传开始 | `(option: UploadOptions) => void` | `-` |
+| onProgress | 文件上传的进度 | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
+| onOversize | 文件大小超过限制时触发 | `(file: File[]) => void` | `-` |
+| onSuccess | 上传成功 | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
+| onFailure | 上传失败 | `(param: {e: ProgressEvent<XMLHttpRequestEventTarget>;option: UploadOptions;percentage: string \| number}) => void` | `-` |
+| onChange | 上传文件改变时的状态 | `(files: FileItem[]) => void` | `-` |
+| onDelete | 文件删除之前的状态 | `(file: FileItem, files: FileItem[]) => void` | `-` |
+| onFileItemClick | 文件上传成功后点击触发 | `(file: FileItem, index: number) => void` | `-` |
 
 > 注意：accept、capture 和 multiple 为浏览器 input 标签的原生属性，移动端各种机型对这些属性的支持程度有所差异，因此在不同机型和 WebView 下可能出现一些兼容性问题。
 

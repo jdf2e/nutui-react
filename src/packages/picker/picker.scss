@@ -50,6 +50,18 @@
     color: $picker-item-text-color;
     font-size: $picker-item-text-font-size;
     z-index: 3;
+
+    &-jdapp {
+      height: $picker-item-height;
+      border: 0;
+
+      &::before,
+      &::after {
+        border: $picker-item-active-line-border;
+        border-left: 0;
+        border-right: 0;
+      }
+    }
   }
 
   &-list {

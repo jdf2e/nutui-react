@@ -69,7 +69,6 @@ const ImageDemo = () => {
         <Cell>
           <Image
             src={src}
-            width="100%"
             onClick={() => {
               console.log('click image')
             }}

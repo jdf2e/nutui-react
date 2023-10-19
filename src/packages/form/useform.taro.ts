@@ -87,11 +87,11 @@ class FormStore {
       ...this.store,
       ...newStore,
     }
-    this.fieldEntities.forEach((enetity: FieldEntity) => {
-      const { name } = enetity.props
+    this.fieldEntities.forEach((entity: FieldEntity) => {
+      const { name } = entity.props
       Object.keys(newStore).forEach((key) => {
         if (key === name) {
-          enetity.onStoreChange('update')
+          entity.onStoreChange('update')
         }
       })
     })
@@ -104,10 +104,18 @@ class FormStore {
     }
   }
 
-  validate = () => {
-    const err: any = []
+  validateFields = async (nameList?: NamePath[]) => {
+    let filterEntities = []
+    const errs = []
     this.errors.length = 0
-    this.fieldEntities.forEach((entity: FieldEntity) => {
+    if (!nameList || nameList.length === 0) {
+      filterEntities = this.fieldEntities
+    } else {
+      filterEntities = this.fieldEntities.filter(({ props: { name } }) =>
+        nameList.includes(name)
+      )
+    }
+    for (const entity of filterEntities) {
       const { name, rules = [] } = entity.props
       const descriptor: any = {}
       if (rules.length) {
@@ -122,55 +130,27 @@ class FormStore {
         }
       }
       const validator = new Schema(descriptor)
-      validator.messages()
-      validator.validate({ [name]: this.store?.[name] }, (errors) => {
+      // 此处合并无值message 没有意义？
+      // validator.messages()
+      try {
+        await validator.validate({ [name]: this.store?.[name] })
+      } catch ({ errors }) {
         if (errors) {
-          err.push(...errors)
+          errs.push(...(errors as any[]))
           this.errors[name] = errors
         }
-        entity.onStoreChange('validate')
-      })
-    })
-    return err
-  }
-
-  validateFields = (nameList?: NamePath[]) => {
-    if (!nameList || nameList.length === 0) {
-      this.validate()
-      return
-    }
-    this.fieldEntities
-      .filter(({ props: { name } }) => {
-        return nameList.includes(name)
-      })
-      .forEach((entity) => {
-        const { name, rules = [] } = entity.props
-        const descriptor: any = {}
-        if (rules.length) {
-          // 多条校验规则
-          if (rules.length > 1) {
-            descriptor[name] = []
-            rules.forEach((v: any) => {
-              descriptor[name].push(v)
-            })
-          } else {
-            descriptor[name] = rules[0]
-          }
-        }
-        const validator = new Schema(descriptor)
-        validator.messages()
-        validator.validate({ [name]: this.store?.[name] }, (errors) => {
+      } finally {
+        if (!errs || errs.length === 0) {
           this.errors[name] = []
-          if (errors) {
-            this.errors[name] = errors
-          }
-          entity.onStoreChange('validate')
-        })
-      })
+        }
+      }
+      entity.onStoreChange('validate')
+    }
+    return errs
   }
 
-  submit = () => {
-    const errors = this.validate()
+  submit = async () => {
+    const errors = await this.validateFields()
     if (errors.length === 0) {
       this.callbacks.onFinish?.(this.store)
     } else if (errors.length > 0) {
