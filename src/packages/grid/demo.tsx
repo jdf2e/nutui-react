@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dongdong, My } from '@nutui/icons-react'
+import { Dongdong, Health } from '@nutui/icons-react'
 import Avatar from '../avatar'
 import { Grid } from './grid'
 import { useTranslate } from '../../sites/assets/locale'
@@ -229,7 +229,7 @@ const GridDemo = () => {
           <Grid.Item>
             <Avatar
               className="demo-avatar"
-              icon={<My color="#fff" />}
+              icon={<Health color="#fff" />}
               background="#FA2C19"
             />
           </Grid.Item>

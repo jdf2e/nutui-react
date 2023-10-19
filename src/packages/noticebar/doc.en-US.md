@@ -69,7 +69,7 @@ export default App
 ```tsx
 import  React, {useState} from "react";
 import { NoticeBar, Image } from '@nutui/nutui-react';
-import { CircleClose } from '@nutui/icons-react';
+import { Failure } from '@nutui/icons-react';
 
 const App = () => {
     const hello = () => {
@@ -81,7 +81,7 @@ const App = () => {
           Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.
         </NoticeBar>
         <br />
-        <NoticeBar closeable rightIcon={<CircleClose />} click={hello}>
+        <NoticeBar closeable rightIcon={<Failure />} click={hello}>
           Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.
         </NoticeBar>
         <br />

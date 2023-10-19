@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { Left, Right } from '@nutui/icons-react-taro'
+import { ArrowLeft, ArrowRight } from '@nutui/icons-react-taro'
 import { Pagination, Cell } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
@@ -118,8 +118,8 @@ const PaginationDemo = () => {
             total={500}
             itemSize={5}
             onChange={pageChange4}
-            prev={<Left />}
-            next={<Right />}
+            prev={<ArrowLeft />}
+            next={<ArrowRight />}
             itemRender={itemRender}
           />
         </Cell>

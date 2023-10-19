@@ -142,7 +142,7 @@ export default App
 ```tsx
 import React from 'react'
 import { Cell } from '@nutui/nutui-react'
-import { Right } from '@nutui/icons-react'
+import { ArrowRight } from '@nutui/icons-react'
 
 const App = () => {
   const onJumpclick = (
@@ -163,7 +163,7 @@ const App = () => {
         lassName="nutui-cell--clickable"
         title="Link Usage"
         align="center"
-        extra={<Right />}
+        extra={<ArrowRight />}
         />
         <Cell
           className="nutui-cell--clickable"
@@ -171,7 +171,7 @@ const App = () => {
           extra={
             <>
             <span style={{ marginRight: '5px' }}>https://jd.com</span>
-            <Right />
+            <ArrowRight />
             </>
         }
         align="center"
@@ -255,7 +255,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-cell-padding | Inside margins of cells | `13px 16px` |
 | \--nutui-cell-line-height | The row height of the cell | `20px` |
 | \--nutui-cell-divider-left | Left margin of cell divider | `16px` |
-| \--nutui-cell-divider-right | Right margin of cell divider | `16px` |
+| \--nutui-cell-divider-right | ArrowRight margin of cell divider | `16px` |
 | \--nutui-cell-divider-border-bottom | Border bottom of cell divider | `2px solid #f5f6f7` |
 | \--nutui-cell-background-color | The background color of the cell | `$white` |
 | \--nutui-cell-box-shadow | The shadow of the cell | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |

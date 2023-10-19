@@ -329,8 +329,8 @@ export default App
 | lockScroll | Whether the background is locked | `boolean` | `true` |
 | scrollFixed | Whether to fixed when window is scrolled, fixed position can be set | `boolean` \| `string` \| `number` | `true` |
 | icon | Custome title icon | `React.ReactNode` | `-` |
-| onOpen | menu 展开触发 | `(index: number) => void` | `-` |
-| onClose | menu 关闭触发 | `(index: number) => void` | `-` |
+| onOpen | menu 展开触发 | `(index: number, from: 'NORMAL' \| 'REF') => void` | `-` |
+| onClose | menu 关闭触发 | `(index: number, from: 'NORMAL' \| 'REF') => void` | `-` |
 
 ## Menu.Item
 
@@ -346,8 +346,6 @@ export default App
 | icon | Custome option icon | `React.ReactNode` | `Check` |
 | direction | Expand direction, can be set to up | `string` | `down` |
 | onChange | Emitted select option changed | `(event: any) => void` | `-` |
-| onOpen | menu expand trigger | `(index: number) => void` | `-` |
-| onClose | menu close trigger | `(index: number) => void` | `-` |
 
 ### Ref
 

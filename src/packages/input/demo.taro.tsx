@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { Ask, Close, Eye, Marshalling } from '@nutui/icons-react-taro'
+import { Tips, Close, Eye, Marshalling } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Input, Button } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
@@ -180,7 +180,7 @@ const InputDemo = () => {
             padding: '0 10px',
           }}
         >
-          <Ask color="var(--nutui-gray-7)" />
+          <Tips color="var(--nutui-gray-7)" />
           <Input placeholder={translated.codeplaceholder} />
           <div
             className="right"

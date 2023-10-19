@@ -17,6 +17,14 @@ export default defineConfig({
   resolve: {
     alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
   },
+  server: {
+    fs: {
+      allow: [
+        '/Users/tongen/Documents/开源/nutui-icons/packages/icons-react/',
+        '/Users/tongen/Documents/开源/nutui-react-yu-next',
+      ],
+    },
+  },
   css: {
     preprocessorOptions: {
       scss: {

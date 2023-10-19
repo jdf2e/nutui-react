@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import type { ChangeEvent, FocusEvent, MouseEvent } from 'react'
-import { MaskClose, Search, RectLeft } from '@nutui/icons-react'
+import { MaskClose, Search, ArrowLeft } from '@nutui/icons-react'
 import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -155,7 +155,7 @@ export const SearchBar: FunctionComponent<
     if (!backable && !left) return null
     return (
       <div className={`${classPrefix}__left`}>
-        {backable ? <RectLeft width="20" height="20" /> : left}
+        {backable ? <ArrowLeft width="20" height="20" /> : left}
       </div>
     )
   }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { My, Right } from '@nutui/icons-react-taro'
+import { My, ArrowRight } from '@nutui/icons-react-taro'
 import Taro, { redirectTo, navigateTo } from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Switch, Cell } from '@/packages/nutui.react.taro'
@@ -159,7 +159,7 @@ const CellDemo = () => {
             className="nutui-cell--clickable"
             title={translated.link}
             align="center"
-            extra={<Right />}
+            extra={<ArrowRight />}
           />
           <Cell
             className="nutui-cell--clickable"
@@ -167,7 +167,7 @@ const CellDemo = () => {
             extra={
               <>
                 <span className="demo-extra">/pages/index/index</span>
-                <Right />
+                <ArrowRight />
               </>
             }
             align="center"

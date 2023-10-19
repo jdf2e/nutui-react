@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import Taro from '@tarojs/taro'
-import { Dongdong, Loading1 } from '@nutui/icons-react-taro'
+import { Dongdong, Loading } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Uploader, Progress, Cell } from '@/packages/nutui.react.taro'
 import '@/packages/uploader/demo.scss'
@@ -214,7 +214,7 @@ const UploaderDemo = () => {
       message: translated['403b055e'],
       type: 'image',
       uid: '126',
-      loadingIcon: <Loading1 className="nut-icon-loading1" color="#fff" />,
+      loadingIcon: <Loading className="nut-icon-Loading" color="#fff" />,
     },
     {
       name: translated['29ab0c96'],

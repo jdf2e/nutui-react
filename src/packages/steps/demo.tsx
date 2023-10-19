@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Service, People, Location2 } from '@nutui/icons-react'
+import { Service, People, Location } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Steps } from './steps'
 import Button from '@/packages/button'
@@ -346,7 +346,7 @@ const StepsDemo = () => {
             <Step
               value={3}
               title={translated.f6e0d691}
-              icon={<Location2 width={12} height={12} />}
+              icon={<Location width={12} height={12} />}
             >
               3
             </Step>

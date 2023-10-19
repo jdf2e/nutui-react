@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Left, Right } from '@nutui/icons-react'
+import { ArrowLeft, ArrowRight } from '@nutui/icons-react'
 import Pagination from '@/packages/pagination'
 import Cell from '@/packages/cell'
 import { useTranslate } from '../../sites/assets/locale'
@@ -115,8 +115,8 @@ const PaginationDemo = () => {
           total={500}
           itemSize={5}
           onChange={pageChange4}
-          prev={<Left />}
-          next={<Right />}
+          prev={<ArrowLeft />}
+          next={<ArrowRight />}
           itemRender={itemRender}
         />
       </Cell>

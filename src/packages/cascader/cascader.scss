@@ -7,7 +7,7 @@
 
   .nut-tabs__titles {
     padding: $cascader-tabs-item-padding;
-    background: $white;
+    background: $color-background-overlay;
   }
 
   .nut-tabs__titles-item {
@@ -20,6 +20,7 @@
 
   .nut-tabpane {
     padding: 0;
+    background: $color-background-overlay;
   }
 
   &-pane {

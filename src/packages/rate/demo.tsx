@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { HeartFill1 } from '@nutui/icons-react'
+import { HeartFill } from '@nutui/icons-react'
 import { Rate } from './rate'
 import Cell from '@/packages/cell'
 import { useTranslate } from '@/sites/assets/locale'
@@ -67,7 +67,7 @@ const RateDemo = () => {
 
         <h2>{translated.customIcon}</h2>
         <Cell>
-          <Rate checkedIcon={<HeartFill1 />} defaultValue={3} />
+          <Rate checkedIcon={<HeartFill />} defaultValue={3} />
         </Cell>
 
         <h2>{translated.customQuantity}</h2>
@@ -84,7 +84,7 @@ const RateDemo = () => {
         <Cell>
           <Rate
             defaultValue={3}
-            checkedIcon={<HeartFill1 color="rgb(255, 200, 0)" />}
+            checkedIcon={<HeartFill color="rgb(255, 200, 0)" />}
           />
         </Cell>
 

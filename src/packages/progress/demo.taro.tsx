@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { Checked, Issue } from '@nutui/icons-react-taro'
+import { Checked, Tips } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import {
   Cell,
@@ -126,7 +126,7 @@ const ProgressDemo = () => {
             color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
             strokeWidth="15"
           />
-          <Issue color="red" style={{ margin: '0 5px' }} />
+          <Tips color="red" style={{ margin: '0 5px' }} />
         </Cell>
         <h2>{translated.dynamicChange}</h2>
         <Cell.Group>

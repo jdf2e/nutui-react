@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { Dongdong, Loading1 } from '@nutui/icons-react'
+import { Dongdong, Loading } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Uploader, FileItem, FileType } from './uploader'
 import Button from '@/packages/button'
@@ -177,7 +177,7 @@ const UploaderDemo = () => {
       message: translated['403b055e'],
       type: 'image',
       uid: '126',
-      loadingIcon: <Loading1 className="nut-icon-loading1" color="#fff" />,
+      loadingIcon: <Loading className="nut-icon-Loading" color="#fff" />,
     },
     {
       name: translated['29ab0c96'],

@@ -69,7 +69,7 @@ const gradientColor = {
 const App = () => {
   return (
     <>
-      <CircleProgress percent={50} color="var(--nutui-brand-link-color)">
+      <CircleProgress percent={50} color="var(--nutui-color-text-link)">
         50%
       </CircleProgress>
       <CircleProgress percent={100} color={gradientColor}>

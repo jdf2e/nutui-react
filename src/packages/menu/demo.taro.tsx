@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { TriangleDown, Success } from '@nutui/icons-react-taro'
+import { ArrowDown, Star } from '@nutui/icons-react-taro'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Menu, Button } from '@/packages/nutui.react.taro'
@@ -142,7 +142,11 @@ const MenuDemo = () => {
           />
         </Menu>
         <h2>{translated.customMenuContent}</h2>
-        <Menu>
+        <Menu
+          onClose={(a, f) => {
+            console.log(a, f)
+          }}
+        >
           <Menu.Item options={options} defaultValue={0} />
           <Menu.Item title={translated.screen} ref={itemRef}>
             <div
@@ -174,8 +178,8 @@ const MenuDemo = () => {
           <Menu.Item options={options1} defaultValue="a" />
         </Menu>
         <h2>{translated.customIcons}</h2>
-        <Menu icon={<TriangleDown />}>
-          <Menu.Item options={options} defaultValue={0} icon={<Success />} />
+        <Menu icon={<ArrowDown />}>
+          <Menu.Item options={options} defaultValue={0} icon={<Star />} />
           <Menu.Item options={options1} defaultValue="a" />
         </Menu>
         <h2>{translated.expandDirection}</h2>

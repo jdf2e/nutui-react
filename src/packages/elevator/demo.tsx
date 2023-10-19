@@ -1,5 +1,5 @@
 import React from 'react'
-import { Jd } from '@nutui/icons-react'
+import { Fabulous } from '@nutui/icons-react'
 import { Elevator } from './elevator'
 import { useTranslate } from '../../sites/assets/locale'
 import './demo.scss'
@@ -523,7 +523,7 @@ const ElevatorDemo = () => {
               {(value) => {
                 return (
                   <>
-                    <Jd width={12} height={12} />
+                    <Fabulous width={12} height={12} />
                     <span style={{ marginLeft: '15px' }}>{value?.name}</span>
                   </>
                 )

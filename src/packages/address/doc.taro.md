@@ -292,15 +292,15 @@ export default App;
 ```tsx
 import React, { useState } from "react";
 import { Address, Cell, Popup } from '@nutui/nutui-react-taro';
-import { Heart1, HeartFill, Left, Close } from '@nutui/icons-react-taro';
+import { Heart, HeartFill, ArrowLeft, Close } from '@nutui/icons-react-taro';
 
 const App = () => {
   const [text, setText] = useState('请选择地址')
   const [icon, setIcon] = useState({
     selectIcon: <HeartFill color="red" />,
-    defaultIcon: <Heart1 />,
+    defaultIcon: <Heart />,
     closeIcon: <Close />,
-    backIcon: <Left />,
+    backIcon: <ArrowLeft />,
   })
 
   const [visible, setVisible] = useState(false)
@@ -376,15 +376,15 @@ export default App;
 ```tsx
 import React, { useState } from "react";
 import { Address, Cell, Popup } from '@nutui/nutui-react-taro';
-import { Heart1, HeartFill, Left, Close } from '@nutui/icons-react-taro';
+import { Heart, HeartFill, ArrowLeft, Close } from '@nutui/icons-react-taro';
 
 const App = () => {
   const [text, setText] = useState('请选择地址')
   const [icon, setIcon] = useState({
     selectIcon: <HeartFill color="red" />,
-    defaultIcon: <Heart1 />,
+    defaultIcon: <Heart />,
     closeIcon: <Close />,
-    backIcon: <Left />,
+    backIcon: <ArrowLeft />,
   })
   const [visible, setVisible] = useState(false)
   const [existList, setExistAddress] = useState([

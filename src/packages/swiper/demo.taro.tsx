@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import '@/packages/swiper/demo.scss'
 import Taro from '@tarojs/taro'
-import { Left, Right } from '@nutui/icons-react-taro'
+import { ArrowLeft, ArrowRight } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Swiper } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
@@ -163,13 +163,13 @@ const SwiperDemo = () => {
               className="nut-swiper-btns__left"
               onClick={(e) => swiperRef.current?.prev()}
             >
-              <Left />
+              <ArrowLeft />
             </span>
             <span
               className="nut-swiper-btns__left"
               onClick={(e) => swiperRef.current?.next()}
             >
-              <Right />
+              <ArrowRight />
             </span>
           </div>
         </div>

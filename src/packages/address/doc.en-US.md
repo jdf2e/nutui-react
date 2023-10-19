@@ -298,15 +298,15 @@ export default App;
 ```tsx
 import React, { useState } from "react";
 import { Address, Cell, Popup } from '@nutui/nutui-react';
-import { Heart1, HeartFill, Left, Close } from '@nutui/icons-react';
+import { Heart, HeartFill, ArrowLeft, Close } from '@nutui/icons-react';
 
 const App = () => {
   const [text, setText] = useState('Choose Address')
   const [icon, setIcon] = useState({
     selectIcon: <HeartFill color="red" />,
-    defaultIcon: <Heart1 />,
+    defaultIcon: <Heart />,
     closeIcon: <Close />,
-    backIcon: <Left />,
+    backIcon: <ArrowLeft />,
   })
 
   const [visible, setVisible] = useState(false)
@@ -382,15 +382,15 @@ export default App;
 ```tsx
 import  React,{useState} from "react";
 import { Address, Cell ,Popup} from '@nutui/nutui-react';
-import { Heart1, HeartFill, Left, Close } from '@nutui/icons-react';
+import { Heart, HeartFill, ArrowLeft, Close } from '@nutui/icons-react';
 
 const App = () => {
   const [text, setText] = useState('Choose Address')
   const [icon, setIcon] = useState({
     selectIcon: <HeartFill color="red" />,
-    defaultIcon: <Heart1 />,
+    defaultIcon: <Heart />,
     closeIcon: <Close />,
-    backIcon: <Left />,
+    backIcon: <ArrowLeft />,
   })
   const [visible, setVisible] = useState(false)
   const [existList, setExistAddress] = useState([

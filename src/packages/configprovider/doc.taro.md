@@ -85,7 +85,7 @@ page {
   --nutui-color-primary: #fa2c19;
   --nutui-color-primary-stop-1: #ff404f;
   --nutui-color-primary-stop-2: #fa2c19;
-  --nutui-brand-link-color: #396acc;
+  --nutui-color-text-link: #396acc;
   --nutui-brand-text-color: #ffffff;
   // 主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
   --nutui-gray-7: #1a1a1a;

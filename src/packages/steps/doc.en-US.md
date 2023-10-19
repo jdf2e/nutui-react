@@ -375,7 +375,7 @@ const App = () => {
         <Step value={2} title="In progress" icon="people">
           2
         </Step>
-        <Step value={3} title="Not started" icon="location2">
+        <Step value={3} title="Not started" icon="Location">
           3
         </Step>
       </Steps>

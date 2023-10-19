@@ -1,13 +1,12 @@
 import React, { useState } from 'react'
 import {
-  My2,
-  Cart2,
-  Location2,
+  My,
+  Cart,
+  Location,
   Service,
   Notice,
   Category,
-  Scan2,
-  Location,
+  Scan,
   Close,
   Message,
 } from '@nutui/icons-react'
@@ -117,7 +116,7 @@ const PopoverDemo = () => {
     {
       key: 'key1',
       name: 'option1',
-      icon: <My2 color="rgba(250, 44, 25, 1)" />,
+      icon: <My color="rgba(250, 44, 25, 1)" />,
       action: {
         icon: <Close />,
         onClick: (e: any) => {
@@ -129,7 +128,7 @@ const PopoverDemo = () => {
     {
       key: 'key2',
       name: 'option2',
-      icon: <Cart2 />,
+      icon: <Cart />,
       action: {
         icon: <Close />,
         onClick: () => {
@@ -140,7 +139,7 @@ const PopoverDemo = () => {
     {
       key: 'key3',
       name: 'option3',
-      icon: <Location2 />,
+      icon: <Location />,
       action: {
         icon: <Close />,
         onClick: () => {
@@ -188,7 +187,7 @@ const PopoverDemo = () => {
     },
     {
       key: 'key5',
-      name: <Scan2 />,
+      name: <Scan />,
       description: 'option5',
     },
     {

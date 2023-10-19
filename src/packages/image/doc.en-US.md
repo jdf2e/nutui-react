@@ -153,7 +153,7 @@ The Image component provides a default loading failure warning and supports cust
 ```tsx
 import React from "react";
 import { Image } from '@nutui/nutui-react';
-import { CircleClose } from '@nutui/icons-react';
+import { Failure } from '@nutui/icons-react';
 
 const App = () => {
   return <>
@@ -161,7 +161,7 @@ const App = () => {
       src="https://x"
       width="100"
       height="100"
-      error={<CircleClose />}
+      error={<Failure />}
     />
   </>
 }

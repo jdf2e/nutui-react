@@ -5,7 +5,7 @@ import React, {
   useState,
 } from 'react'
 import classNames from 'classnames'
-import { StarFillN } from '@nutui/icons-react'
+import { StarFill } from '@nutui/icons-react'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 
@@ -72,14 +72,14 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
 
   const renderIcon = (n: number) => {
     return n <= score
-      ? checkedIcon || <StarFillN />
+      ? checkedIcon || <StarFill />
       : uncheckedIcon ||
           (checkedIcon ? (
             React.cloneElement(checkedIcon as ReactElement, {
               color: undefined,
             })
           ) : (
-            <StarFillN />
+            <StarFill />
           ))
   }
 

@@ -69,7 +69,7 @@ export default App
 ```tsx
 import  React, {useState} from "react";
 import { NoticeBar } from '@nutui/nutui-react-taro';
-import { CircleClose } from '@nutui/icons-react';
+import { Failure } from '@nutui/icons-react';
 
 const App = () => {
     const hello = () => {
@@ -81,7 +81,7 @@ const App = () => {
           NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
         </NoticeBar>
         <br />
-        <NoticeBar closeable rightIcon={<CircleClose />} onClick={hello}>
+        <NoticeBar closeable rightIcon={<Failure />} onClick={hello}>
           NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
         </NoticeBar>
         <br />

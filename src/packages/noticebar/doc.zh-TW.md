@@ -69,7 +69,7 @@ export default App
 ```tsx
 import  React, {useState} from "react";
 import { NoticeBar, Image } from '@nutui/nutui-react';
-import { CircleClose } from '@nutui/icons-react';
+import { Failure } from '@nutui/icons-react';
 
 const App = () => {
     const hello = () => {
@@ -81,7 +81,7 @@ const App = () => {
           NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。
         </NoticeBar>
         <br />
-        <NoticeBar closeable rightIcon={<CircleClose />} onClick={hello}>
+        <NoticeBar closeable rightIcon={<Failure />} onClick={hello}>
           NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。
         </NoticeBar>
         <br />

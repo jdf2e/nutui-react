@@ -200,7 +200,7 @@ export default App;
 ```tsx
 import  React, { useState } from "react";
 import { Input, Button } from '@nutui/nutui-react-taro';
-import { Ask } from '@nutui/icons-react-taro'
+import { Tips } from '@nutui/icons-react-taro'
 
 const App = () => {
   return (
@@ -213,7 +213,7 @@ const App = () => {
            padding: '0 10px',
          }}
        >
-         <Ask />
+         <Tips />
          <Input placeholder="请输入短信验证码" />
          <div
            className="right"

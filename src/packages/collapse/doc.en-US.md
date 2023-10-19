@@ -19,12 +19,12 @@ import { Collapse } from 'nutui-react'
 ```jsx
 import  React from "react";
 import { Collapse } from '@nutui/nutui-react';
-import { DownArrow } from '@nutui/icons-react';
+import { ArrowDown } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <>
-    <Collapse defaultActiveName={['1', '2']} expandIcon={<DownArrow />}>
+    <Collapse defaultActiveName={['1', '2']} expandIcon={<ArrowDown />}>
       <Collapse.Item title="title1" name="1">
         Nutui-React is a lightweight React component library with JD style
       </Collapse.Item>
@@ -50,7 +50,7 @@ export default App;
 ```jsx
 import React, {useState} from "react";
 import { Collapse } from '@nutui/nutui-react-taro';
-import { DownArrow } from '@nutui/icons-react-taro';
+import { ArrowDown } from '@nutui/icons-react-taro';
 
 const App = () => {
   const [activeName, setActiveName] = useState(['1', '2'])
@@ -114,11 +114,11 @@ export default App;
 ```tsx
 import React from 'react'
 import { Collapse} from '@nutui/nutui-react'
-import { DownArrow } from '@nutui/icons-react';
+import { ArrowDown } from '@nutui/icons-react';
 
 const App = () => {
   return (  
-  <Collapse defaultActiveName={['1']} accordion expandIcon={<DownArrow />}>
+  <Collapse defaultActiveName={['1']} accordion expandIcon={<ArrowDown />}>
     <Collapse.Item title="title1" name="1" extra="文本内容">
       Nutui-React is a lightweight React component library with JD style
     </Collapse.Item>
@@ -143,11 +143,11 @@ export default App;
 ```jsx
 import React from 'react'
 import { Collapse } from '@nutui/nutui-react'
-import { DownArrow, Checked, HeartFill } from '@nutui/icons-react';
+import { ArrowDown, Checked, HeartFill } from '@nutui/icons-react';
 
 const App = () => {
   return (  
-  <Collapse defaultActiveName={['1']} accordion expandIcon={<DownArrow />} rotate={90}>
+  <Collapse defaultActiveName={['1']} accordion expandIcon={<ArrowDown />} rotate={90}>
     <Collapse.Item title="title1" name="1" expandIcon={<Checked />}>
       Nutui-React is a lightweight React component library with JD style
     </Collapse.Item>
@@ -172,11 +172,11 @@ export default App;
 ```jsx
 import React from 'react'
 import { Collapse } from '@nutui/nutui-react'
-import { DownArrow, Checked, HeartFill } from '@nutui/icons-react';
+import { ArrowDown, Checked, HeartFill } from '@nutui/icons-react';
 
 const App = () => {
   return (  
-    <Collapse defaultActiveName={['1']} accordion expandIcon={<DownArrow />}>
+    <Collapse defaultActiveName={['1']} accordion expandIcon={<ArrowDown />}>
       <Collapse.Item
         title={
           <div

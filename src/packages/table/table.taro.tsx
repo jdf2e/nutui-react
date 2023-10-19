@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
-import { DownArrow } from '@nutui/icons-react-taro'
+import { ArrowDown } from '@nutui/icons-react-taro'
 import { BasicTableProps, TableColumnProps } from './types'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { ComponentDefaults } from '@/utils/typings'
@@ -86,7 +86,7 @@ export const Table: FunctionComponent<
           onClick={() => handleSorterClick(item)}
         >
           {item.title}&nbsp;
-          {item.sorter && (sorterIcon || <DownArrow size="12px" />)}
+          {item.sorter && (sorterIcon || <ArrowDown size="12px" />)}
         </span>
       )
     })

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { Location2, People, Service } from '@nutui/icons-react'
+import { Location, People, Service } from '@nutui/icons-react'
 import { Steps } from '../steps'
 import Step from '../../step'
 import Button from '../../button'
@@ -60,7 +60,7 @@ test('should render horizontal class when props direction is to be horizontal', 
         value={3}
         title="未开始"
         description="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦"
-        icon={<Location2 />}
+        icon={<Location />}
       >
         3
       </Step>
@@ -73,7 +73,7 @@ test('should render horizontal class when props direction is to be horizontal', 
     '您的订单正在配送途中'
   )
   expect(container.querySelectorAll('.nut-icon')[2]).toHaveClass(
-    'nut-icon-Location2'
+    'nut-icon-Location'
   )
 })
 

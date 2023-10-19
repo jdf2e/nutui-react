@@ -147,7 +147,7 @@ export default App;
 ```tsx
 import React, { useState } from 'react'
 import { Pagination} from '@nutui/nutui-react-taro'; 
-import { Left, Right } from '@nutui/icons-react-taro';
+import { ArrowLeft, ArrowRight } from '@nutui/icons-react-taro';
 
 const App = () => {
   const [currentPage4, setCurrentPage4] = useState(1)
@@ -165,8 +165,8 @@ const App = () => {
       itemSize={5}
       onChange={pageChange4}
       itemRender={itemRender} 
-      prev={<Left />}
-      next={<Right />}
+      prev={<ArrowLeft />}
+      next={<ArrowRight />}
     />
   )
 }
