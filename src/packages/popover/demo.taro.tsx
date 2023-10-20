@@ -2,14 +2,13 @@ import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import {
   Cart,
-  Location,
   My,
   Category,
   Location,
   Close,
   Message,
   Notice,
-  Scan2,
+  Scan,
   Service,
 } from '@nutui/icons-react-taro'
 import { useTranslate } from '../../sites/assets/locale'
@@ -188,7 +187,7 @@ const PopoverDemo = () => {
     },
     {
       key: 'key5',
-      name: <Scan2 />,
+      name: <Scan />,
       description: 'option5',
     },
     {

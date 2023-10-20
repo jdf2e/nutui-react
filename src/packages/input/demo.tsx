@@ -84,7 +84,10 @@ const InputDemo = () => {
     <>
       <div className="demo" style={{ paddingBottom: '20px' }}>
         <h2>{translated.basic}</h2>
-        <Input placeholder={translated.text} />
+        <Input
+          placeholder={translated.text}
+          onChange={(val) => console.log('ee', val)}
+        />
         <h2>{translated.uncontrolled}</h2>
         <Input defaultValue="NutUI React" placeholder={translated.text} />
         <h2>{translated.controlled}</h2>
