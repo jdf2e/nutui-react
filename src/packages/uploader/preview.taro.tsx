@@ -18,6 +18,7 @@ export const Preview: React.FunctionComponent<any> = ({
   handleItemClick,
   previewUrl,
   children,
+  fit,
 }) => {
   const renderIcon = (item: FileItem) => {
     if (item.status === ERROR) {
@@ -66,7 +67,7 @@ export const Preview: React.FunctionComponent<any> = ({
                       {item.url && (
                         <Image
                           className="nut-uploader__preview-img__c"
-                          style={{ objectFit: 'fill' }}
+                          style={{ objectFit: fit }}
                           mode="aspectFit"
                           src={item.url}
                           onClick={() => handleItemClick(item, index)}

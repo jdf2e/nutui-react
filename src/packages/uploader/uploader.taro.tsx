@@ -511,6 +511,7 @@ const InternalUploader: ForwardRefRenderFunction<
           handleItemClick,
           previewUrl,
           children,
+          fit,
         }}
       />
 
