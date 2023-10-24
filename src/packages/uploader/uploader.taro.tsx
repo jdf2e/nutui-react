@@ -11,6 +11,7 @@ import Taro, {
   getEnv,
   chooseMedia,
 } from '@tarojs/taro'
+import { ImageProps } from '@tarojs/components'
 import { Photograph } from '@nutui/icons-react-taro'
 import Button from '@/packages/button/index.taro'
 import {
@@ -72,7 +73,7 @@ export interface UploaderProps extends BasicComponent {
   defaultValue?: FileItem[]
   value?: FileItem[]
   previewType: 'picture' | 'list'
-  fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
+  fit: keyof ImageProps.Mode
   uploadIcon?: React.ReactNode
   uploadLabel?: React.ReactNode
   name: string
@@ -129,7 +130,7 @@ const defaultProps = {
   uploadIcon: <Photograph size="20px" color="#808080" />,
   uploadLabel: '',
   previewType: 'picture',
-  fit: 'cover',
+  fit: 'scaleToFill',
   name: 'file',
   accept: '*',
   disabled: false,

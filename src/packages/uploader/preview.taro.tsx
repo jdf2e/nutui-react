@@ -67,8 +67,7 @@ export const Preview: React.FunctionComponent<any> = ({
                       {item.url && (
                         <Image
                           className="nut-uploader__preview-img__c"
-                          style={{ objectFit: fit }}
-                          mode="aspectFit"
+                          mode={fit}
                           src={item.url}
                           onClick={() => handleItemClick(item, index)}
                         />
@@ -79,7 +78,7 @@ export const Preview: React.FunctionComponent<any> = ({
                       {previewUrl ? (
                         <Image
                           className="nut-uploader__preview-img__c"
-                          mode="aspectFit"
+                          mode={fit}
                           src={previewUrl}
                           onClick={() => handleItemClick(item, index)}
                         />
