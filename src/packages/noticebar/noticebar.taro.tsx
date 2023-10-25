@@ -41,7 +41,7 @@ const defaultProps = {
   content: '',
   closeable: false,
   wrap: false,
-  leftIcon: null,
+  leftIcon: <Notice width={16} height={16} />,
   rightIcon: null,
   delay: 1,
   scrollable: null,
@@ -439,7 +439,7 @@ export const NoticeBar: FunctionComponent<
     <div className={`${classPrefix} ${className || ''}`} style={style}>
       {showNoticeBar && direction === 'horizontal' ? (
         <div className={noticebarClass} style={barStyle} onClick={handleClick}>
-          <div className="left-icon">{leftIcon || <Notice size={16} />}</div>
+          {leftIcon ? <div className="left-icon">{leftIcon}</div> : null}
           <div ref={wrapRef} className="wrap">
             <div
               ref={contentRef}
@@ -455,7 +455,7 @@ export const NoticeBar: FunctionComponent<
           </div>
           {closeable || rightIcon ? (
             <div className="right-icon" onClick={onClickIcon}>
-              {rightIcon || <Close size={12} />}
+              {closeable ? <Close width={12} height={12} /> : rightIcon}
             </div>
           ) : null}
         </div>
@@ -510,7 +510,7 @@ export const NoticeBar: FunctionComponent<
               handleClickIcon(e)
             }}
           >
-            {rightIcon || (closeable ? <Close size={12} /> : null)}
+            {closeable ? <Close width={12} height={12} /> : rightIcon}
           </div>
         </div>
       ) : null}
