@@ -1,0 +1,113 @@
+.nut-calendarcard {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: 16px;
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: normal;
+
+    &-left,
+    &-right {
+      display: flex;
+      flex-direction: row;
+      cursor: pointer;
+      margin: 16px;
+      line-height: 1;
+
+      .left {
+        margin-left: 8px;
+      }
+      .right {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  &_content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-days {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  &-day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    width: $calendar-day-width;
+    cursor: pointer;
+    height: 48px;
+
+    &.active,
+    &.start,
+    &.end {
+      color: $white;
+
+      .nut-calendarcard-day-inner {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: $primary-color;
+        border-radius: 50%;
+        border-color: transparent;
+        box-shadow: 0px 2px 8px 0px #ffeae8;
+        z-index: 1;
+      }
+    }
+
+    &.start::before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 50%;
+      height: 40px;
+      background: #ffeae8;
+      right: 0;
+    }
+
+    &.end::before {
+      content: '';
+      display: block;
+      position: absolute;
+      width: 50%;
+      height: 40px;
+      background: #ffeae8;
+      left: 0;
+    }
+
+    &.mid {
+      .nut-calendarcard-day-inner {
+        background: #ffeae8;
+        width: 100%;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    // 上个月、下个月
+    &.prev,
+    &.next,
+    &.disabled {
+      color: $calendar-disable-color;
+    }
+    &.disabled {
+      cursor: not-allowed;
+    }
+  }
+}
