@@ -9,6 +9,7 @@ import React, {
 } from 'react'
 import Taro, { useReady } from '@tarojs/taro'
 import classNames from 'classnames'
+import { Canvas } from '@tarojs/components'
 import { Refresh2, Retweet } from '@nutui/icons-react-taro'
 import { Button } from '@/packages/button/button.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -153,7 +154,6 @@ const InternalAvatarCropper: ForwardRefRenderFunction<
       ...canvasAll,
       cropperCanvasContext: Taro.createCanvasContext(canvasAll.canvasId),
     })
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // 触摸
@@ -253,7 +253,7 @@ const InternalAvatarCropper: ForwardRefRenderFunction<
       // 绘制图片
       ctx.drawImage(src as HTMLImageElement, x, y, width, height)
     },
-    [drawImage, pixelRatio, space, state]
+    [drawImage, state]
   )
 
   // web绘制
@@ -269,12 +269,7 @@ const InternalAvatarCropper: ForwardRefRenderFunction<
     canvas.height = state.displayHeight
     const ctx = canvas.getContext('2d') as CanvasRenderingContext2D
     canvas2dDraw(ctx)
-  }, [
-    canvas2dDraw,
-    canvasAll.canvasId,
-    state.displayHeight,
-    state.displayWidth,
-  ])
+  }, [canvas2dDraw])
 
   const alipayDraw = useCallback(() => {
     const ctx = canvasAll.cropperCanvas.getContext(
@@ -334,15 +329,7 @@ const InternalAvatarCropper: ForwardRefRenderFunction<
     // 绘制图片
     ctx.drawImage(src as string, x, y, width, height)
     ctx.draw()
-  }, [
-    showAlipayCanvas2D,
-    drawImage,
-    state,
-    canvasAll,
-    space,
-    webDraw,
-    alipayDraw,
-  ])
+  }, [drawImage, state.scale, state.angle, state.moveX, state.moveY])
 
   useEffect(() => {
     if (Math.abs(state.moveX) > maxMoveX) {
@@ -727,11 +714,9 @@ const InternalAvatarCropper: ForwardRefRenderFunction<
           className="nut-cropper-popup"
           style={{ display: visible ? 'block' : 'none' }}
         >
-          <canvas
+          <Canvas
             id={canvasId}
-            // eslint-disable-next-line react/no-unknown-property
             canvas-id={canvasId}
-            // eslint-disable-next-line react/no-unknown-property
             type={showAlipayCanvas2D ? '2d' : undefined}
             style={canvasStyle}
             className="nut-cropper-popup__canvas"
