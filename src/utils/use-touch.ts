@@ -38,22 +38,26 @@ export function useTouch() {
 
   const start = (event: React.TouchEvent<HTMLElement>) => {
     reset()
-    SetStartX(event.touches[0].clientX)
-    SetStartY(event.touches[0].clientY)
+    if (event.touches && event.touches.length >= 1) {
+      SetStartX(event.touches[0].clientX)
+      SetStartY(event.touches[0].clientY)
+    }
   }
 
   const move = (event: React.TouchEvent<HTMLElement>) => {
-    const touch = event.touches[0]
-    const dX = touch.clientX - startX
-    const dY = touch.clientY - startY
-    SetDeltaX(dX)
-    SetDeltaY(dY)
-    SetMoveX(touch.clientX)
-    SetMoveY(touch.clientY)
-    SetOffsetX(Math.abs(dX))
-    SetOffsetY(Math.abs(dY))
-    if (!direction) {
-      SetDirection(getDirection(offsetX, offsetY))
+    if (event.touches && event.touches.length >= 1) {
+      const touch = event.touches[0]
+      const dX = touch.clientX - startX
+      const dY = touch.clientY - startY
+      SetDeltaX(dX)
+      SetDeltaY(dY)
+      SetMoveX(touch.clientX)
+      SetMoveY(touch.clientY)
+      SetOffsetX(Math.abs(dX))
+      SetOffsetY(Math.abs(dY))
+      if (!direction) {
+        SetDirection(getDirection(offsetX, offsetY))
+      }
     }
   }
 

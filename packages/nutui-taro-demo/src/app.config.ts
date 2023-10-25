@@ -105,6 +105,7 @@ const subPackages = [
   {
     "root": "business",
     "pages": [
+      "pages/avatarcropper/index",
       "pages/barrage/index",
       "pages/card/index",
       "pages/timeselect/index",
