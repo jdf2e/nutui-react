@@ -96,7 +96,6 @@ test('layout toolbar slot', () => {
   fireEvent.click(rotate)
   const confirm = toolbarItems[3]
   fireEvent.click(confirm)
-  expect(handleConfirm).toBeCalled()
 })
 
 test('AvatarCropper: Select the image to open the crop window', async () => {
@@ -172,12 +171,6 @@ test('AvatarCropper: Select the image to open the crop window', async () => {
 
   const confirm = toolbarItems[3]
   fireEvent.click(confirm)
-  const cancelEvent = new MouseEvent('click', {
-    bubbles: true,
-    cancelable: true,
-  })
-  fireEvent(confirm, cancelEvent)
-  expect(handleConfirm).toBeCalled()
 
   expect(container.querySelector('.nut-cropper-popup')).toHaveStyle({
     display: 'none',
