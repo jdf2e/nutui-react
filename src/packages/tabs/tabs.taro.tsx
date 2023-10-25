@@ -158,7 +158,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   const scrollWithAnimation = useRef(false)
   const navRectRef = useRef<any>()
   const titleRectRef = useRef<RectItem[]>([])
-  const canShowLabel = useRef(false)
   const scrollLeft = useRef(0)
   const scrollTop = useRef(0)
   const scrollDirection = (
@@ -172,11 +171,10 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
 
     function animate() {
       if (direction === 'horizontal') {
-        scrollLeft.current += (to - from) / frames
+        scrollLeft.current = to
       } else {
-        scrollTop.current += (to - from) / frames
+        scrollTop.current = to
       }
-
       if (++count < frames) {
         raf(animate)
       }
@@ -194,31 +192,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
       ]).then(([navRect, titleRects]: any) => {
         navRectRef.current = navRect
         titleRectRef.current = titleRects
-
-        if (navRectRef.current) {
-          if (props.direction === 'vertical') {
-            const titlesTotalHeight = titleRects.reduce(
-              (prev: number, curr: RectItem) => prev + curr.height,
-              0
-            )
-            if (titlesTotalHeight > navRectRef.current.height) {
-              canShowLabel.current = true
-            } else {
-              canShowLabel.current = false
-            }
-          } else {
-            const titlesTotalWidth = titleRects.reduce(
-              (prev: number, curr: RectItem) => prev + curr.width,
-              0
-            )
-            if (titlesTotalWidth > navRectRef.current.width) {
-              canShowLabel.current = true
-            } else {
-              canShowLabel.current = false
-            }
-          }
-        }
-
         // @ts-ignore
         const titleRect: RectItem = titleRectRef.current[value]
 
@@ -228,21 +201,20 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
           const top = titleRects
             .slice(0, value)
             .reduce(
-              (prev: number, curr: RectItem) => prev + curr.height + 0,
+              (prev: number, curr: RectItem) => prev + curr.height,
               DEFAULT_PADDING
             )
           to = top - (navRectRef.current.height - titleRect.height) / 2
         } else {
-          const DEFAULT_PADDING = 31
+          const DEFAULT_PADDING = 20
           const left = titleRects
             .slice(0, value)
             .reduce(
-              (prev: number, curr: RectItem) => prev + curr.width + 20,
+              (prev: number, curr: RectItem) => prev + curr.width,
               DEFAULT_PADDING
             )
           to = left - (navRectRef.current.width - titleRect.width) / 2
         }
-
         nextTick(() => {
           scrollWithAnimation.current = true
         })
@@ -252,7 +224,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     })
   }
 
-  const scrollIntoRef = useRef(0)
   useEffect(() => {
     const index = titles.current.findIndex((t) => t.value === value)
     setContentStyle({
@@ -262,9 +233,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
           : `translate3d( 0,-${index * 100}%, 0)`,
       transitionDuration: `${duration}ms`,
     })
-    const scrollToIndex = index - 2
-    scrollIntoRef.current = scrollToIndex < 0 ? 0 : scrollToIndex
-
     scrollIntoView()
   }, [value])
 
@@ -285,9 +253,8 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         scrollLeft={scrollLeft.current}
         scrollTop={scrollTop.current}
         showScrollbar={false}
-        scrollIntoViewAlignment="center"
+        // scrollIntoViewAlignment="center"
         scrollWithAnimation={scrollWithAnimation.current}
-        // scrollIntoView={`scrollIntoView${scrollIntoRef.current}`}
         id={`nut-tabs__titles_${name}`}
         className={classesTitle}
         style={{ ...tabStyle }}
