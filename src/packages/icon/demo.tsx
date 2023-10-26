@@ -36,7 +36,7 @@ const copyTag = (text: string) => {
 }
 
 const style = `
-.nut-cell > .nutui-iconfont {
+.nut-cell > .nutui-iconfont, .nut-icon {
   margin-right: 10px;
 }
 ul {
@@ -48,15 +48,14 @@ ul {
 ul li {
     flex: 0 0 25%;
     max-width: 25%;
+    height: 60px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-ul li  span {
-  height: 40px;
-  font-size: 12px;
-  text-align: center;
+ul li  .nut-icon {
+  margin-right: 0;
 }
 ul li span .nutui-iconfont {
   margin: 16px 0 16px;
@@ -67,7 +66,7 @@ const IconDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
       '84aa6bce': '基础用法',
-      svg: 'Svg 按需使用',
+      svg: 'SVG 按需使用',
       dab8a74f: '图片链接',
       '52c15454': '图标颜色',
       '7aeb5407': '图标大小',
@@ -75,7 +74,7 @@ const IconDemo = () => {
     },
     'zh-TW': {
       '84aa6bce': '基礎用法',
-      svg: 'Svg 按需使用',
+      svg: 'SVG 按需使用',
       dab8a74f: '圖片連結',
       '52c15454': '圖示顏色',
       '7aeb5407': '圖示大小',
@@ -83,7 +82,7 @@ const IconDemo = () => {
     },
     'en-US': {
       '84aa6bce': 'Basic Usage',
-      svg: 'Svg import on demand',
+      svg: 'SVG import on demand',
       dab8a74f: 'Image link',
       '52c15454': 'IconFont color',
       '7aeb5407': 'IconFont size',
@@ -136,7 +135,6 @@ const IconDemo = () => {
                         onClick={() => copyTag(generateCopyText(icon))}
                       >
                         <IconFont name={icon} />
-                        <span>{icon}</span>
                       </li>
                     )
                   })}
@@ -160,7 +158,6 @@ const IconDemo = () => {
                           name={icon.name}
                           className={`nut-icon-${icon['animation-name']}  nut-icon-${icon['animation-time']}`}
                         />
-                        <span>{icon['animation-name']}</span>
                       </li>
                     )
                   })}
