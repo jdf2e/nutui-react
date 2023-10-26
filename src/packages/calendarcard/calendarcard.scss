@@ -1,8 +1,9 @@
 .nut-calendarcard {
-  background: #fff;
+  background: $white;
   border-radius: 12px;
   overflow: hidden;
-  font-size: 16px;
+  font-size: $calendar-base-font-size;
+  color: $gray1;
 
   &__header {
     display: flex;
@@ -46,14 +47,14 @@
     justify-content: center;
     flex-direction: column;
     position: relative;
-    width: $calendar-day-width;
+    width: 14.28%;
     cursor: pointer;
     height: 48px;
 
     &.active,
     &.start,
     &.end {
-      color: $white;
+      color: white;
 
       .nut-calendarcard-day-inner {
         width: 40px;
@@ -61,10 +62,10 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background: $primary-color;
+        background: $calendar-active-background-color;
         border-radius: 50%;
         border-color: transparent;
-        box-shadow: 0px 2px 8px 0px #ffeae8;
+        box-shadow: 0px 2px 8px 0px $calendar-choose-background-color;
         z-index: 1;
       }
     }
@@ -75,7 +76,7 @@
       position: absolute;
       width: 50%;
       height: 40px;
-      background: #ffeae8;
+      background: $calendar-choose-background-color;
       right: 0;
     }
 
@@ -85,13 +86,13 @@
       position: absolute;
       width: 50%;
       height: 40px;
-      background: #ffeae8;
+      background: $calendar-choose-background-color;
       left: 0;
     }
 
     &.mid {
       .nut-calendarcard-day-inner {
-        background: #ffeae8;
+        background: $calendar-choose-background-color;
         width: 100%;
         height: 40px;
         display: flex;
