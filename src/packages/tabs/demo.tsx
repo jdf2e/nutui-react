@@ -4,8 +4,33 @@ import { Tabs } from './tabs'
 import Swiper from '../swiper'
 import { useTranslate } from '../../sites/assets/locale'
 
+interface T {
+  basic: string
+  title1: string
+  title2: string
+  title3: string
+  title4: string
+  title5: string
+  title6: string
+  title12: string
+  title13: string
+  title7: string
+  title8: string
+  title9: string
+  title10: string
+  title11: string
+  custom1: string
+  custom2: string
+  custom3: string
+  pane1: string
+  pane2: string
+  pane3: string
+  pane4: string
+  pane5: string
+}
+
 const TabsDemo = () => {
-  const [translated] = useTranslate({
+  const [translated] = useTranslate<T>({
     'zh-CN': {
       basic: '基础用法',
       title1: '基础用法-微笑曲线',
@@ -270,11 +295,21 @@ const TabsDemo = () => {
             setTab91value(value)
           }}
         >
-          <Tabs.TabPane title="低阶特卖">低阶特卖</Tabs.TabPane>
-          <Tabs.TabPane title="上新日">上新日</Tabs.TabPane>
-          <Tabs.TabPane title="百亿补贴">百亿补贴</Tabs.TabPane>
-          <Tabs.TabPane title="今日聚超值">今日聚超值</Tabs.TabPane>
-          <Tabs.TabPane title="真好真便宜">真好真便宜</Tabs.TabPane>
+          <Tabs.TabPane title={translated.pane1}>
+            {translated.pane1}
+          </Tabs.TabPane>
+          <Tabs.TabPane title={translated.pane2}>
+            {translated.pane2}
+          </Tabs.TabPane>
+          <Tabs.TabPane title={translated.pane3}>
+            {translated.pane3}
+          </Tabs.TabPane>
+          <Tabs.TabPane title={translated.pane4}>
+            {translated.pane4}
+          </Tabs.TabPane>
+          <Tabs.TabPane title={translated.pane5}>
+            {translated.pane5}
+          </Tabs.TabPane>
         </Tabs>
         <h2>{translated.title4}</h2>
         <Tabs
