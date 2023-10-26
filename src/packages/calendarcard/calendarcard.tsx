@@ -274,9 +274,14 @@ export const CalendarCard = React.forwardRef<
 
   const jump = (step = 1) => {
     const current = month.year * 12 + month.month
+    let newMonth = (current + step) % 12
+    if (newMonth === 0) {
+      newMonth = 12
+    }
+    const newYear = Math.floor((current + step - newMonth) / 12)
     setMonth({
-      year: Math.floor((current + step) / 12),
-      month: (current + step) % 12,
+      year: newYear,
+      month: newMonth,
     })
   }
 
