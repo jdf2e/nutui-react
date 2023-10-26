@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import CalendarCard from '../calendarcard'
 import { useTranslate } from '../../sites/assets/locale'
+import { CalendarValue } from './calendarcard'
 
 interface T {
   ce5c5446: string
@@ -98,8 +99,8 @@ const CalendarDemo = () => {
       '6ab47cd2': 'This Month',
     },
   })
-  const output = (a: any) => {
-    console.log(a)
+  const change = (d: CalendarValue) => {
+    console.log(d)
   }
   const [val1, setVal1] = useState<Date | null>(() => {
     return null
@@ -108,97 +109,46 @@ const CalendarDemo = () => {
     console.log('受控', v)
     setVal1(v)
   }
-  const [val2, setVal2] = useState<Date[]>(() => {
-    return [new Date('2022-09-23'), new Date('2022-09-29')]
-  })
-  const change2 = (v: any) => {
-    console.log('受控', v)
-    setVal2(v)
-  }
   return (
     <>
       <div className="demo">
-        <h2>日视图-选择单个日期-无默认值</h2>
+        <h2>选择单个日期</h2>
+        <CalendarCard defaultValue={new Date('2023-01-01')} onChange={change} />
+
+        <h2>选择多个日期</h2>
         <CalendarCard
-          onChange={output}
-          startDate={new Date('2023-08-01')}
-          endDate={new Date('2023-11-11')}
+          type="multiple"
+          defaultValue={[new Date('2023-01-01'), new Date('2023-01-03')]}
+          onChange={change}
         />
 
-        <h2>日视图-选择单个日期-有默认值</h2>
-        <CalendarCard defaultValue={new Date('2022-09-23')} onChange={output} />
+        <h2>选择范围</h2>
+        <CalendarCard type="range" onChange={change} />
 
-        <h2>日视图-选择单个日期-受控模式</h2>
+        <h2>选择周</h2>
+        <CalendarCard type="week" onChange={change} />
+
+        <h2>受控模式</h2>
         <CalendarCard value={val1} onChange={change1} />
 
-        <h2>日视图-选择多个日期-无默认值</h2>
+        <h2>自定义周起始日</h2>
+        <CalendarCard firstDayOfWeek={0} onChange={change} />
+
+        <h2>自定义选择范围</h2>
         <CalendarCard
-          type="multiple"
-          onChange={output}
-          // disableDay={(day) => {
-          //   const d = new Date(`${day.year}-${day.month}-${day.date}`).getDay()
-          //   return d === 1 || d === 3
-          // }}
           startDate={new Date('2023-08-01')}
-          endDate={new Date('2023-11-11')}
+          endDate={new Date('2025-11-11')}
+          onChange={change}
         />
 
-        <h2>日视图-选择多个日期-有默认值</h2>
+        <h2>自定义禁止选择日期</h2>
         <CalendarCard
-          type="multiple"
-          defaultValue={[new Date('2022-10-26'), new Date('2023-10-23')]}
-          onChange={output}
+          disableDay={(day) => {
+            const d = new Date(`${day.year}-${day.month}-${day.date}`).getDay()
+            return d === 1 || d === 3
+          }}
+          onChange={change}
         />
-
-        <h2>日视图-选择多个日期-受控模式</h2>
-        <CalendarCard type="multiple" value={val2} onChange={change2} />
-
-        <h2>日视图-选择范围-无默认值</h2>
-        <CalendarCard
-          type="range"
-          onChange={output}
-          // disableDay={(day) => {
-          //   const d = new Date(`${day.year}-${day.month}-${day.date}`).getDay()
-          //   return d === 1 || d === 3
-          // }}
-          startDate={new Date('2023-08-01')}
-          endDate={new Date('2023-11-11')}
-        />
-
-        <h2>日视图-选择范围-有默认值</h2>
-        <CalendarCard
-          type="range"
-          defaultValue={[new Date('2022-10-23'), new Date('2022-10-26')]}
-          onChange={output}
-        />
-
-        <h2>日视图-选择范围-受控模式</h2>
-        <CalendarCard type="range" value={val2} onChange={change2} />
-
-        <h2>日视图-设置周日为周起始日</h2>
-        <CalendarCard firstDayOfWeek={0} onChange={output} />
-
-        <h2>周视图-无默认值</h2>
-        <CalendarCard
-          type="week"
-          onChange={output}
-          // disableDay={(day) => {
-          //   const d = new Date(`${day.year}-${day.month}-${day.date}`).getDay()
-          //   return d === 1 || d === 3
-          // }}
-          startDate={new Date('2023-08-01')}
-          endDate={new Date('2023-11-11')}
-        />
-
-        <h2>周视图-有默认值</h2>
-        <CalendarCard
-          type="week"
-          defaultValue={[new Date('2022-10-17'), new Date('2022-10-23')]}
-          onChange={output}
-        />
-
-        <h2>周视图-设置周日为周起始日</h2>
-        <CalendarCard type="week" firstDayOfWeek={1} onChange={output} />
       </div>
     </>
   )
