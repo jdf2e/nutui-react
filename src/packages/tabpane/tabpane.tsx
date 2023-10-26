@@ -1,5 +1,6 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useContext } from 'react'
 import classNames from 'classnames'
+import { TabsContext } from '@/packages/tabs/context'
 
 interface TabPanelInnerProps {
   autoHeightClassName: string
@@ -22,22 +23,22 @@ const defaultProps = {
 export const TabPane: FunctionComponent<
   Partial<TabPaneProps & TabPanelInnerProps>
 > = (props) => {
-  const { children, autoHeightClassName, className, disabled } = {
+  const { children, className, disabled } = {
     ...defaultProps,
     ...props,
   }
+  const tabsCtx = useContext(TabsContext)
 
   const classPrefix = 'nut-tabpane'
   const classes = classNames(
     {
       active: !disabled && (props as any).active,
+      // eslint-disable-next-line eqeqeq
+      inactive: tabsCtx.autoHeight && tabsCtx.value != props.value,
     },
     classPrefix,
-    autoHeightClassName,
     className
   )
 
-  return children ? (
-    <div className={classes}>{!disabled && children}</div>
-  ) : null
+  return <div className={classes}>{!disabled && children}</div>
 }

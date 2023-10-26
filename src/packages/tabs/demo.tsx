@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Dongdong, Jd } from '@nutui/icons-react'
 import { Tabs } from './tabs'
+import ImagePreview from '../imagepreview'
+import Button from '../button'
 import Swiper from '../swiper'
 import { useTranslate } from '../../sites/assets/locale'
 
@@ -27,6 +29,36 @@ interface T {
   pane3: string
   pane4: string
   pane5: string
+}
+
+const MyImagePreview: React.FC<any> = () => {
+  const [imagePreviewState, setImagePreviewState] = React.useState({
+    visible: false,
+    defaultValue: 1,
+  })
+  return (
+    <>
+      {/* 显示后会跑到 tab1 */}
+      <ImagePreview
+        images={[
+          {
+            src: 'https://m.360buyimg.com/mobilecms/s750x366_jfs/t1/30042/36/427/82951/5c3bfdabE3faf2f66/9adca782661c988c.jpg',
+          },
+        ]}
+        visible={imagePreviewState.visible}
+        defaultValue={imagePreviewState.defaultValue}
+        onClose={() =>
+          setImagePreviewState({ visible: false, defaultValue: 1 })
+        }
+        autoPlay={0}
+      />
+      <Button
+        onClick={() => setImagePreviewState({ visible: true, defaultValue: 1 })}
+      >
+        点我显示 ImagePreview
+      </Button>
+    </>
+  )
 }
 
 const TabsDemo = () => {
@@ -133,15 +165,14 @@ const TabsDemo = () => {
     <>
       <div className="demo full no-overflow">
         <h2>{translated.basic}</h2>
-        <Tabs
-          value={tab1value}
-          onChange={(value) => {
-            setTab1value(value)
-          }}
-        >
-          <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
-          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
-          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+        <Tabs defaultValue={1} autoHeight>
+          <Tabs.TabPane title="tab1">
+            <div style={{ height: '80px' }}>tab1</div>
+          </Tabs.TabPane>
+          <Tabs.TabPane title="tab2" />
+          <Tabs.TabPane title="tab3">
+            <MyImagePreview />
+          </Tabs.TabPane>
         </Tabs>
         <h2>{translated.title1}</h2>
         <Tabs
