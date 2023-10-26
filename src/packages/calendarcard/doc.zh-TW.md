@@ -182,6 +182,44 @@ export default App;
 
 :::
 
+### 與 Popup 組合使用
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Cell, Popup, Button, Calendar } from '@nutui/nutui-react';
+
+const App = () => {
+  const [visible, setVisible] = useState(false)
+  const [date, setDate] = useState(null)
+  return <>
+    <Cell
+      title="點擊選擇日期"
+      description={String(date)}
+      onClick={() => setVisible(true)}
+    />
+    <Popup
+      title="選擇日期"
+      visible={visible}
+      position="bottom"
+      closeable
+      onClose={() => setVisible(false)}
+    >
+      <Calendar value={date} onChange={(d) => setDate(d)} />
+      <div style={{ padding: '10px' }}>
+        <Button block type="danger" onClick={() => setVisible(false)}>
+          確定
+        </Button>
+      </div>
+    </Popup>
+  </>;
+};
+export default App;
+```
+
+:::
+
 ## Calendar
 
 ### Props
@@ -189,16 +227,16 @@ export default App;
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | type | 類型，單個日期 `single`，多個日期 `multiple`，日期範圍 `range`，周選擇 `week` | `string` | `single` |
-| defaultValue | 默認值，日期選擇 string 格式，區間選擇 Array 格式 | `Date \| Date[]` | `-` |
+| defaultValue | 默認值，單個日期 Date 格式，多個日期/範圍選擇 Date[] 格式 | `Date \| Date[]` | `-` |
 | startDate | 限製範圍開始日期 | `Date` | `-` |
 | endDate | 限製範圍結束日期 | `Date` | `-` |
 | firstDayOfWeek | 設置周起始日，0 為周日，1 為周一 | `0-6` | `0` |
 | disableDay | 設置不可選日期 | `(day: CalendarDay) => boolean` | `-` |
-| renderDay | 日期信息 | `(date: Day) => string` \| `JSX.Element` | `-` |
+| renderDay | 日期信息 | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
+| value | 受控模式下的值，與 onChange 搭配使用 | `Date \| Date[]` | `-` |
 | onDayClick | 點擊後觸發 | `(day: CalendarDay) => void` | `-` |
 | onPageChange | 切換月份時觸發 | `(val: { year, month }) => void` | `-` |
-| value | 受控模式下的值，與 onChange 搭配使用 | `Date \| Date[]` | `-` |
-| onChange | 選擇之後或是點擊確認按鈕觸發 | `(val: Date | Date[]) => void` | `-` |
+| onChange | 選擇值發生變化時觸發 | `(val: Date \| Date[]) => void` | `-` |
 
 ### CalendarDay
 

@@ -182,6 +182,44 @@ export default App;
 
 :::
 
+### Use with Popup
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Cell, Popup, Button, Calendar } from '@nutui/nutui-react';
+
+const App = () => {
+  const [visible, setVisible] = useState(false)
+  const [date, setDate] = useState(null)
+  return <>
+    <Cell
+      title="Click to select"
+      description={String(date)}
+      onClick={() => setVisible(true)}
+    />
+    <Popup
+      title="Select"
+      visible={visible}
+      position="bottom"
+      closeable
+      onClose={() => setVisible(false)}
+    >
+      <Calendar value={date} onChange={(d) => setDate(d)} />
+      <div style={{ padding: '10px' }}>
+        <Button block type="danger" onClick={() => setVisible(false)}>
+          Confirm
+        </Button>
+      </div>
+    </Popup>
+  </>;
+};
+export default App;
+```
+
+:::
+
 ## Calendar
 
 ### Props
@@ -195,19 +233,19 @@ export default App;
 | firstDayOfWeek | Set the starting day of the week, 0 is Sunday, 1 is Monday | `0-6` | `0` |
 | disableDay | Set disable date | `(day: CalendarDay) => boolean` | `-` |
 | renderDay | Date information | `(date: Day) => string` \| `JSX.Element` | `-` |
+| value | Value in controlled mode, used with onChange | `Date \| Date[]` | `-` |
 | onDayClick | Triggered after click | `(day: CalendarDay) => void` | `-` |
 | onPageChange | Triggered when switching months | `(val: { year, month }) => void` | `-` |
-| value | Value in controlled mode, used with onChange | `Date \| Date[]` | `-` |
-| onChange | Triggered after selection or clicking the confirm button | `(val: Date | Date[]) => void` | `-` |
+| onChange | Triggered when value update | `(val: Date | Date[]) => void` | `-` |
 
 ### CalendarDay
 
 | Property | Type | Description |
 | --- | --- | --- |
-| year | `number` | 年 |
-| month | `number` | 月 |
-| date | `number` | 日 |
-| type | `prev \| current \| next | 可选项。表示上一个月、当月、下一个月 |
+| year | `number` | year |
+| month | `number` | month |
+| date | `number` | date |
+| type | `prev \| current \| next | - |
 
 ### Ref
 
@@ -215,10 +253,7 @@ Through ref, you can get the Calendar instance and call the instance method.
 
 | Name | Description | Arguments |
 | --- | --- | --- |
-| year | `number` | year |
-| month | `number` | month |
-| date | `number` | day |
-| type | `prev \| current \| next | Optional. Indicates the previous month, current month, and next month |
+| stepDate | change month | `` |
 
 ## Theming
 
