@@ -108,27 +108,27 @@ export default App;
 
 :::
 
-## API
+## AvatarCropper
 
-### AvatarCropper Props
+### Props
 
 | 参数             | 说明                                        | 类型   | 默认值 |
 | ---------------- | ------------------------------------------- | ------ | ------ |
-| maxZoom         | 最大缩放倍数                                | number | 3      |
-| space            | 裁剪区域两边预留的间隙                      | number | 10     |
-| toolbarPosition | 裁剪区域工具栏位置,可选值为：`top` `bottom` | string | bottom |
-| editText        | 中间的文字内容                              | string | 编辑   |
-| cancelText      | 取消按钮的文字                              | string | 取消   |
-| cancelConfirm   | 确认按钮的文字                              | string | 确认   |
-| toolbar         | 自定义裁剪区域工具栏                       |  ReactNode   |  - |
-| onConfirm       | 裁剪后点击确认触发                    | Function(url: string) |  - |
-| onCancel        | 点击取消触发                          | -                |  - |
+| maxZoom         | 最大缩放倍数                                | `number` | `3`      |
+| space            | 裁剪区域两边预留的间隙                      | `number` | `10`     |
+| toolbarPosition | 裁剪区域工具栏位置,可选值为：`top` `bottom` | `string` | `bottom` |
+| editText        | 中间的文字内容                              | `string` | `编辑`   |
+| cancelText      | 取消按钮的文字                              | `string` | `取消`   |
+| cancelConfirm   | 确认按钮的文字                              | `string` | `确认`   |
+| toolbar         | 自定义裁剪区域工具栏                       |  `ReactNode`   |  `-` |
+| onConfirm       | 裁剪后点击确认触发                    | `(url: string) => void` |  `-` |
+| onCancel        | 点击取消触发                          | `-`                |  `-` |
 
-### AvatarCropper Ref
+### Ref
 
 | 事件名  | 说明      |  类型 |
 | ------- | --------- | ----- |
-| cancel  | 取消裁剪  | () => void |
-| reset   | 重置为0度 | () => void |
-| rotate  | 旋转90度  | () => void |
-| confirm | 确定裁剪  | () => void |
+| cancel  | 取消裁剪  | `() => void` |
+| reset   | 重置为0度 | `() => void` |
+| rotate  | 旋转90度  | `() => void` |
+| confirm | 确定裁剪  | `() => void` |

@@ -108,28 +108,28 @@ export default App;
 
 :::
 
-## API
+## AvatarCropper
 
-### AvatarCropper Props
+### Props
 
 | Attribute        | Description                                                                         | Type   | Default |
 | ---------------- | ----------------------------------------------------------------------------------- | ------ | ------- |
-| max-zoom         | Maximum zoom                                                                        | number | 3       |
-| space            | The gap reserved on both sides of the clipping area                                 | number | 20      |
-| toolbar-position | Location of the toolbar in the clipping area. The optional value is：`top` `bottom` | string | bottom  |
-| edit-text        | The text content in the middle                                                      | string | 编辑    |
-| cancel-text      | Cancel button text                                                                  | string | 取消    |
-| cancel-confirm   | Confirm button text                                                                 | string | 确认    |
-| toolbar         | After selecting the file, crop the bottom element of the pop-up window can be customized, and invoke the method of the component through ref                       |  ReactNode   |  - |
-| onConfirm       | Click Confirm to trigger after cropping                    | Function(url: string) |  - |
-| onCancel        | Click cancel trigger                  | -                |  - |
+| max-zoom         | Maximum zoom                                                                        | `number` | `3`       |
+| space            | The gap reserved on both sides of the clipping area                                 | `number` | `20`      |
+| toolbar-position | Location of the toolbar in the clipping area. The optional value is：`top` `bottom` | `string` | `bottom`  |
+| edit-text        | The text content in the middle                                                      | `string` | `编辑`    |
+| cancel-text      | Cancel button text                                                                  | `string` | `取消`    |
+| cancel-confirm   | Confirm button text                                                                 | `string` | `确认`    |
+| toolbar         | After selecting the file, crop the bottom element of the pop-up window can be customized, and invoke the method of the component through ref                       |  `ReactNode`   |  - |
+| onConfirm       | Click Confirm to trigger after cropping                    | `(url: string) => void` |  `-` |
+| onCancel        | Click cancel trigger                  | `-`                |  `-` |
 
 
-### AvatarCropper Ref
+### Ref
 
 | Event   | Explain            |  type |
 | ------- | ------------------ | ----- |
-| cancel  | uncrop             | () => void |
-| reset   | Reset to 0 degrees | () => void |
-| rotate  | Rotate 90 degrees  | () => void |
-| confirm | Definite cut       | () => void |
+| cancel  | uncrop             | `() => void` |
+| reset   | Reset to 0 degrees | `() => void` |
+| rotate  | Rotate 90 degrees  | `() => void` |
+| confirm | Definite cut       | `() => void` |
