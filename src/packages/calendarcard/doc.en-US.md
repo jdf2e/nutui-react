@@ -1,13 +1,13 @@
-# Calendar
+# CalendarCard
 
 ## Intro
 
-Calendar
+CalendarCard
 
 ## Install
 
 ```tsx
-import { Calendar } from '@nutui/nutui-react';
+import { CalendarCard } from '@nutui/nutui-react';
 ```
 
 ## Demo
@@ -18,7 +18,7 @@ import { Calendar } from '@nutui/nutui-react';
 
 ```tsx
 import React from "react";
-import { Calendar } from '@nutui/nutui-react';
+import { CalendarCard } from '@nutui/nutui-react';
 
 // const date = null;
 const date = new Date('2023-01-01');
@@ -27,7 +27,7 @@ const App = () => {
   const onChange = (val) => {
     console.log(val);
   };
-  return <Calendar defaultValue={date} onChange={onChange} />;
+  return <CalendarCard defaultValue={date} onChange={onChange} />;
 };
 export default App;
 ```
@@ -40,7 +40,7 @@ export default App;
 
 ```tsx
 import React from "react";
-import { Calendar } from '@nutui/nutui-react';
+import { CalendarCard } from '@nutui/nutui-react';
 
 // const date = [];
 const date = [new Date('2023-01-01'), new Date('2023-01-03')];
@@ -49,7 +49,7 @@ const App = () => {
   const onChange = (val) => {
     console.log(val);
   };
-  return <Calendar type="multiple" defaultValue={date} onChange={onChange} />;
+  return <CalendarCard type="multiple" defaultValue={date} onChange={onChange} />;
 };
 export default App;
 ```
@@ -62,13 +62,13 @@ export default App;
 
 ```tsx
 import React from "react";
-import { Calendar } from '@nutui/nutui-react';
+import { CalendarCard } from '@nutui/nutui-react';
 
 const App = () => {
   const onChange = (val) => {
     console.log(val);
   };
-  return <Calendar type="range" onChange={onChange} />;
+  return <CalendarCard type="range" onChange={onChange} />;
 };
 export default App;
 ```
@@ -81,13 +81,13 @@ export default App;
 
 ```tsx
 import React from "react";
-import { Calendar } from '@nutui/nutui-react';
+import { CalendarCard } from '@nutui/nutui-react';
 
 const App = () => {
   const onChange = (val) => {
     console.log(val);
   };
-  return <Calendar type="week" onChange={onChange} />;
+  return <CalendarCard type="week" onChange={onChange} />;
 };
 export default App;
 ```
@@ -100,7 +100,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Calendar } from '@nutui/nutui-react';
+import { CalendarCard } from '@nutui/nutui-react';
 
 const App = () => {
   const [date, setDate] = useState(() => new Date('2023-01-01'));
@@ -108,7 +108,7 @@ const App = () => {
     console.log(val);
     setDate(val);
   };
-  return <Calendar value={date} onChange={onChange} />;
+  return <CalendarCard value={date} onChange={onChange} />;
 };
 export default App;
 ```
@@ -121,13 +121,13 @@ export default App;
 
 ```tsx
 import React from "react";
-import { Calendar } from '@nutui/nutui-react';
+import { CalendarCard } from '@nutui/nutui-react';
 
 const App = () => {
   const onChange = (val) => {
     console.log(val);
   };
-  return <Calendar firstDayOfWeek={0} onChange={change} />;
+  return <CalendarCard firstDayOfWeek={0} onChange={change} />;
 };
 export default App;
 ```
@@ -140,13 +140,13 @@ export default App;
 
 ```tsx
 import React from "react";
-import { Calendar } from '@nutui/nutui-react';
+import { CalendarCard } from '@nutui/nutui-react';
 
 const App = () => {
   const onChange = (val) => {
     console.log(val);
   };
-  return <Calendar
+  return <CalendarCard
     startDate={new Date('2023-08-01')}
     endDate={new Date('2025-11-11')}
     onChange={change}
@@ -163,13 +163,13 @@ export default App;
 
 ```tsx
 import React from "react";
-import { Calendar } from '@nutui/nutui-react';
+import { CalendarCard } from '@nutui/nutui-react';
 
 const App = () => {
   const onChange = (val) => {
     console.log(val);
   };
-  return <Calendar
+  return <CalendarCard
     disableDay={(day) => {
       const d = new Date(`${day.year}-${day.month}-${day.date}`).getDay()
       return d === 1 || d === 3
@@ -188,7 +188,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Cell, Popup, Button, Calendar } from '@nutui/nutui-react';
+import { Cell, Popup, Button, CalendarCard } from '@nutui/nutui-react';
 
 const App = () => {
   const [visible, setVisible] = useState(false)
@@ -206,7 +206,7 @@ const App = () => {
       closeable
       onClose={() => setVisible(false)}
     >
-      <Calendar value={date} onChange={(d) => setDate(d)} />
+      <CalendarCard value={date} onChange={(d) => setDate(d)} />
       <div style={{ padding: '10px' }}>
         <Button block type="danger" onClick={() => setVisible(false)}>
           Confirm
@@ -226,7 +226,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Space, Button, Calendar } from '@nutui/nutui-react';
+import { Space, Button, CalendarCard } from '@nutui/nutui-react';
 
 const App = () => {
   const CalendarCardRef = useRef(null)
@@ -243,7 +243,7 @@ const App = () => {
         2023 01
       </Button>
     </Space>
-    <Calendar ref={CalendarCardRef} />
+    <CalendarCard ref={CalendarCardRef} />
   </>;
 };
 export default App;
@@ -251,7 +251,7 @@ export default App;
 
 :::
 
-## Calendar
+## CalendarCard
 
 ### Props
 
@@ -280,12 +280,12 @@ export default App;
 
 ### Ref
 
-Through ref, you can get the Calendar instance and call the instance method.
+Through ref, you can get the CalendarCard instance and call the instance method.
 
 | Name | Description | Arguments |
 | --- | --- | --- |
-| Jump | Advance or retreat months from the current basis, positive forward, negative rigid | `step:number` |
-|Jump to |Jump to a specific year and month | `Year: Number, Month: Number`|
+| jump | Advance or retreat months from the current basis, positive forward, negative rigid | `step: number` |
+| jumpTo | Jump to a specific year and month | `year: number, month: number`|
 
 ## Theming
 
