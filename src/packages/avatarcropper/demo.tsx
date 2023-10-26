@@ -67,7 +67,7 @@ const AvatarCropperDemo = () => {
         <h2>{translated.c0a1c0a1}</h2>
         <Cell>
           <AvatarCropper onConfirm={cutImage}>
-            <Avatar size="large" style={{ height: '100%' }} src={imageUrl} />
+            <Avatar size="large" src={imageUrl} />
           </AvatarCropper>
         </Cell>
         <h2>{translated.c0a1c0a2}</h2>
@@ -79,7 +79,7 @@ const AvatarCropperDemo = () => {
             onConfirm={cutImage}
             toolbar={<Toolbar />}
           >
-            <Avatar size="large" style={{ height: '100%' }} src={imageUrl} />
+            <Avatar size="large" src={imageUrl} />
           </AvatarCropper>
         </Cell>
       </div>

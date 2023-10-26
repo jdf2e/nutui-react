@@ -1,16 +1,18 @@
 # AvatarCropper Head cropping
 
-### introduce
+## introduce
 
 Used to cut the profile picture to create a new image.
 
-### install
+## install
 
 ```tsx
 import { AvatarCropper } from '@nutui/nutui-react';
 ```
 
-### 基础用法
+## Code demonstration
+
+### Grammar and Usage
 
 Use the avatar component directly in the middle, and the image content will be replaced with the new one after cropping.
 
