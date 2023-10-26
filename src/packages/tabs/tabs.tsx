@@ -6,6 +6,7 @@ import TabPane from '@/packages/tabpane'
 import raf from '@/utils/raf'
 import { usePropsValue } from '@/utils/use-props-value'
 import { useForceUpdate } from '@/utils/use-force-update'
+import { TabsContext } from './context'
 
 export type TabsTitle = {
   title: string
@@ -93,6 +94,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         raf(animate)
       }
     }
+
     animate()
   }
   const scrollIntoView = (index: number, immediate?: boolean) => {
@@ -166,10 +168,9 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     // eslint-disable-next-line eqeqeq
     const index = titles.current.findIndex((t) => t.value == value)
     setContentStyle({
-      transform:
-        direction === 'horizontal'
-          ? `translate3d(-${index * 100}%, 0, 0)`
-          : `translate3d( 0,-${index * 100}%, 0)`,
+      ...(direction === 'horizontal'
+        ? { left: `-${index * 100}%` }
+        : { top: `-${index * 100}%` }),
       transitionDuration: `${duration}ms`,
     })
     setTimeout(() => {
@@ -235,27 +236,24 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
       </div>
       <div className={`${classPrefix}__content__wrap`}>
         <div className={`${classPrefix}__content`} style={contentStyle}>
-          {React.Children.map(children, (child, idx) => {
-            if (!React.isValidElement(child)) {
-              return null
-            }
-
-            let childProps = {
-              ...child.props,
-              active: value === child.props.value,
-            }
-
-            if (
-              String(value) !== String(child.props.value || idx) &&
-              autoHeight
-            ) {
-              childProps = {
-                ...childProps,
-                autoHeightClassName: 'inactive',
+          <TabsContext.Provider
+            value={{
+              value,
+              autoHeight,
+            }}
+          >
+            {React.Children.map(children, (child, idx) => {
+              if (!React.isValidElement(child)) {
+                return null
               }
-            }
-            return React.cloneElement(child, childProps)
-          })}
+
+              const childProps = {
+                ...child.props,
+                value: child.props.value || idx,
+              }
+              return React.cloneElement(child, childProps)
+            })}
+          </TabsContext.Provider>
         </div>
       </div>
     </div>
