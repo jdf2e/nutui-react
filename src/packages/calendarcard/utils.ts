@@ -27,7 +27,7 @@ export const getPrevMonthDays = (
   let prevYear = year
   if (prevMonth <= 0) {
     prevMonth = 12
-    prevYear += 1
+    prevYear -= 1
   }
   let days = Utils.getMonthPreDay(year, month)
   days -= firstDayOfWeek
