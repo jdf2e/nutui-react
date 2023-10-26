@@ -449,7 +449,7 @@ export const NoticeBar: FunctionComponent<
           </div>
           {closeable || rightIcon ? (
             <div className="right-icon" onClick={onClickIcon}>
-              {closeable ? <Close width={12} height={12} /> : rightIcon}
+              {rightIcon || <Close width={12} height={12} />}
             </div>
           ) : null}
         </div>
@@ -504,7 +504,7 @@ export const NoticeBar: FunctionComponent<
               handleClickIcon(e)
             }}
           >
-            {closeable ? <Close width={12} height={12} /> : rightIcon}
+            {rightIcon || (closeable ? <Close width={12} height={12} /> : null)}
           </div>
         </div>
       ) : null}
