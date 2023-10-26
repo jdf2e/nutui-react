@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import CalendarCard from '../calendarcard'
 import { useTranslate } from '../../sites/assets/locale'
 import { CalendarValue } from './calendarcard'
 import Cell from '@/packages/cell'
 import Popup from '@/packages/popup'
 import Button from '@/packages/button'
+import Space from '@/packages/space'
 
 interface T {
   single: string
@@ -18,6 +19,7 @@ interface T {
   popup: string
   select: string
   confirm: string
+  ref: string
 }
 
 const CalendarDemo = () => {
@@ -34,6 +36,7 @@ const CalendarDemo = () => {
       popup: '与 Popup 组合使用',
       select: '选择日期',
       confirm: '确定',
+      ref: '使用 Ref 上的方法',
     },
     'zh-TW': {
       single: '選擇單個日期',
@@ -47,6 +50,7 @@ const CalendarDemo = () => {
       popup: '與 Popup 組合使用',
       select: '選擇日期',
       confirm: '確定',
+      ref: '使用 Ref 上的方法',
     },
     'en-US': {
       single: 'Select a single date',
@@ -60,6 +64,7 @@ const CalendarDemo = () => {
       popup: 'Use with Popup',
       select: 'Select',
       confirm: 'Confirm',
+      ref: 'Use ref',
     },
   })
   const change = (d: CalendarValue) => {
@@ -74,6 +79,8 @@ const CalendarDemo = () => {
   }
   const [visible, setVisible] = useState(false)
   const [date, setDate] = useState(null)
+
+  const CalendarCardRef = useRef<any>(null)
   return (
     <>
       <div className="demo">
@@ -139,6 +146,21 @@ const CalendarDemo = () => {
             </Button>
           </div>
         </Popup>
+
+        <h2>{translated.ref}</h2>
+        <Space style={{ marginBottom: '10px' }}>
+          <Button onClick={() => CalendarCardRef.current?.jump(1)}>+ 1</Button>
+          <Button onClick={() => CalendarCardRef.current?.jump(12)}>
+            + 12
+          </Button>
+          <Button onClick={() => CalendarCardRef.current?.jump(-12)}>
+            - 12
+          </Button>
+          <Button onClick={() => CalendarCardRef.current?.jumpTo(2023, 1)}>
+            2023 01
+          </Button>
+        </Space>
+        <CalendarCard ref={CalendarCardRef} />
       </div>
     </>
   )

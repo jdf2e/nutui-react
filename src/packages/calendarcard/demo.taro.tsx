@@ -1,7 +1,13 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { CalendarCard, Cell, Popup, Button } from '@/packages/nutui.react.taro'
+import {
+  CalendarCard,
+  Cell,
+  Popup,
+  Button,
+  Space,
+} from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 import { CalendarValue } from './calendarcard'
 
@@ -17,6 +23,7 @@ interface T {
   popup: string
   select: string
   confirm: string
+  ref: string
 }
 
 const CalendarDemo = () => {
@@ -33,6 +40,7 @@ const CalendarDemo = () => {
       popup: '与 Popup 组合使用',
       select: '选择日期',
       confirm: '确定',
+      ref: '使用 Ref 上的方法',
     },
     'zh-TW': {
       single: '選擇單個日期',
@@ -46,6 +54,7 @@ const CalendarDemo = () => {
       popup: '與 Popup 組合使用',
       select: '選擇日期',
       confirm: '確定',
+      ref: '使用 Ref 上的方法',
     },
     'en-US': {
       single: 'Select a single date',
@@ -59,6 +68,7 @@ const CalendarDemo = () => {
       popup: 'Use with Popup',
       select: 'Select',
       confirm: 'Confirm',
+      ref: 'Use ref',
     },
   })
   const change = (d: CalendarValue) => {
@@ -73,6 +83,8 @@ const CalendarDemo = () => {
   }
   const [visible, setVisible] = useState(false)
   const [date, setDate] = useState(null)
+
+  const CalendarCardRef = useRef<any>(null)
   return (
     <>
       <Header />
@@ -139,6 +151,21 @@ const CalendarDemo = () => {
             </Button>
           </div>
         </Popup>
+
+        <h2>{translated.ref}</h2>
+        <Space style={{ marginBottom: '10px' }}>
+          <Button onClick={() => CalendarCardRef.current?.jump(1)}>+ 1</Button>
+          <Button onClick={() => CalendarCardRef.current?.jump(12)}>
+            + 12
+          </Button>
+          <Button onClick={() => CalendarCardRef.current?.jump(-12)}>
+            - 12
+          </Button>
+          <Button onClick={() => CalendarCardRef.current?.jumpTo(2023, 1)}>
+            2023 01
+          </Button>
+        </Space>
+        <CalendarCard ref={CalendarCardRef} />
       </div>
     </>
   )

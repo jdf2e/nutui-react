@@ -220,6 +220,37 @@ export default App;
 
 :::
 
+### 使用 Ref 上的方法
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Space, Button, Calendar } from '@nutui/nutui-react';
+
+const App = () => {
+  const CalendarCardRef = useRef(null)
+  return <>
+    <Space>
+      <Button onClick={() => CalendarCardRef.current?.jump(1)}>+ 1</Button>
+      <Button onClick={() => CalendarCardRef.current?.jump(12)}>
+        + 12
+      </Button>
+      <Button onClick={() => CalendarCardRef.current?.jump(-12)}>
+        - 12
+      </Button>
+      <Button onClick={() => CalendarCardRef.current?.jumpTo(2023, 1)}>
+        2023 01
+      </Button>
+    </Space>
+    <Calendar ref={CalendarCardRef} />
+  </>;
+};
+export default App;
+```
+
+:::
+
 ## Calendar
 
 ### Props
@@ -253,7 +284,8 @@ export default App;
 
 | 方法名 | 说明 | 参数 |
 | --- | --- | --- |
-| stepDate | 切换月份 | `` |
+| jump | 在当前基础上前进或后退月数，正数向前，负数向后 | `step: number` |
+| jumpTo | 跳转至特定的年月 | `year: number, month: number`|
 
 ## 主题定制
 

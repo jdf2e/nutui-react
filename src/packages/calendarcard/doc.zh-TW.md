@@ -220,6 +220,37 @@ export default App;
 
 :::
 
+### 使用 Ref 上的方法
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Space, Button, Calendar } from '@nutui/nutui-react';
+
+const App = () => {
+  const CalendarCardRef = useRef(null)
+  return <>
+    <Space>
+      <Button onClick={() => CalendarCardRef.current?.jump(1)}>+ 1</Button>
+      <Button onClick={() => CalendarCardRef.current?.jump(12)}>
+        + 12
+      </Button>
+      <Button onClick={() => CalendarCardRef.current?.jump(-12)}>
+        - 12
+      </Button>
+      <Button onClick={() => CalendarCardRef.current?.jumpTo(2023, 1)}>
+        2023 01
+      </Button>
+    </Space>
+    <Calendar ref={CalendarCardRef} />
+  </>;
+};
+export default App;
+```
+
+:::
+
 ## Calendar
 
 ### Props
@@ -253,7 +284,8 @@ export default App;
 
 | 方法名 | 說明 | 參數 |
 | --- | --- | --- |
-| stepDate | 切換月份 | `` |
+| jump | 在當前基礎上前進或後退月數，正數向前，負數向後 | `step: number` |
+| jumpTo | 跳轉至特定的年月 | `year: number, month: number`|
 
 ## 主題定製
 
@@ -263,7 +295,7 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-calendar-active-background-color | 日歷選中狀態時的元素背景色 | `$primary-color` |
-| \--nutui-calendar-choose-background-color | 日歷選中時區間內元素的背景色，區別區間兩頭元素的背景色 | `rgba(#fa2c19, 0.09)` |
-| \--nutui-calendar-disable-color | 日歷不可選元素的字色 | `#d1d0d0` |
-| \--nutui-calendar-base-font-size | 日歷字號 | `$font-size-3` |
+| \--nutui-calendar-active-background-color | 選中狀態時的元素背景色 | `$primary-color` |
+| \--nutui-calendar-choose-background-color | 選中時區間內元素的背景色，區別區間兩頭元素的背景色 | `rgba(#fa2c19, 0.09)` |
+| \--nutui-calendar-disable-color | 不可選元素的字色 | `#bfbfbf` |
+| \--nutui-calendar-base-font-size | 字號 | `$font-size-3` |

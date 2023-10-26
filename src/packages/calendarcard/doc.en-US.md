@@ -220,6 +220,37 @@ export default App;
 
 :::
 
+### Use ref
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Space, Button, Calendar } from '@nutui/nutui-react';
+
+const App = () => {
+  const CalendarCardRef = useRef(null)
+  return <>
+    <Space>
+      <Button onClick={() => CalendarCardRef.current?.jump(1)}>+ 1</Button>
+      <Button onClick={() => CalendarCardRef.current?.jump(12)}>
+        + 12
+      </Button>
+      <Button onClick={() => CalendarCardRef.current?.jump(-12)}>
+        - 12
+      </Button>
+      <Button onClick={() => CalendarCardRef.current?.jumpTo(2023, 1)}>
+        2023 01
+      </Button>
+    </Space>
+    <Calendar ref={CalendarCardRef} />
+  </>;
+};
+export default App;
+```
+
+:::
+
 ## Calendar
 
 ### Props
@@ -253,7 +284,8 @@ Through ref, you can get the Calendar instance and call the instance method.
 
 | Name | Description | Arguments |
 | --- | --- | --- |
-| stepDate | change month | `` |
+| Jump | Advance or retreat months from the current basis, positive forward, negative rigid | `step:number` |
+|Jump to |Jump to a specific year and month | `Year: Number, Month: Number`|
 
 ## Theming
 

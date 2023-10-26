@@ -39,14 +39,18 @@ const defaultProps = {
   firstDayOfWeek: 1,
 }
 
+type CalendarCardRef = {
+  jump: (step: number) => void
+  jumpTo: (year: number, month: number) => void
+}
+
 export const CalendarCard = React.forwardRef<
-  CalendarCardProps,
+  CalendarCardRef,
   Partial<CalendarCardProps>
 >((props, ref) => {
   const { locale } = useConfig()
   const {
     style,
-    children,
     type,
     value,
     defaultValue,
@@ -264,33 +268,24 @@ export const CalendarCard = React.forwardRef<
     return res
   }
 
-  const stepDate = (
-    type: 'year' | 'month',
-    direction: 'prev' | 'next' = 'next',
-    step = 1
-  ) => {
-    if (type === 'year') {
-      const newYear = month.year + (direction === 'next' ? 1 : -1) * step
-      setMonth({
-        year: newYear,
-        month: month.month,
-      })
-    } else {
-      let newMonth = month.month + (direction === 'next' ? 1 : -1) * step
-      let newYear = month.year
-      if (newMonth === 0) {
-        newYear -= 1
-        newMonth = 12
-      } else if (newMonth === 13) {
-        newYear += 1
-        newMonth = 1
-      }
-      setMonth({
-        year: newYear,
-        month: newMonth,
-      })
-    }
+  const jumpTo = (year: number, month: number) => {
+    setMonth({ year, month })
   }
+
+  const jump = (step = 1) => {
+    const current = month.year * 12 + month.month
+    setMonth({
+      year: Math.floor((current + step) / 12),
+      month: (current + step) % 12,
+    })
+  }
+
+  React.useImperativeHandle(ref, () => {
+    return {
+      jump,
+      jumpTo,
+    }
+  })
 
   const handleDayClick = (day: CalendarDay) => {
     onDayClick?.(day)
@@ -298,9 +293,9 @@ export const CalendarCard = React.forwardRef<
       return
     }
     if (day.type === 'prev') {
-      stepDate('month', 'prev')
+      jump(-1)
     } else if (day.type === 'next') {
-      stepDate('month', 'next')
+      jump(1)
     }
     switch (type) {
       case 'single': {
@@ -353,28 +348,27 @@ export const CalendarCard = React.forwardRef<
     }
   }
 
+  const monthTitle = locale.calendaritem.monthTitle
+
   const renderHeader = () => {
     return (
       <div className="nut-calendarcard__header">
         <div className="nut-calendarcard__header-left">
-          <div className="double-left" onClick={() => stepDate('year', 'prev')}>
+          <div className="double-left" onClick={() => jump(-12)}>
             <DoubleLeft />
           </div>
-          <div className="left" onClick={() => stepDate('month', 'prev')}>
+          <div className="left" onClick={() => jump(-1)}>
             <Left />
           </div>
         </div>
         <div className="nut-calendarcard__header-title">
-          {month.year} 年 {month.month} 月
+          {monthTitle(month.year, month.month)}
         </div>
         <div className="nut-calendarcard__header-right">
-          <div className="right" onClick={() => stepDate('month', 'next')}>
+          <div className="right" onClick={() => jump(1)}>
             <Right />
           </div>
-          <div
-            className="double-right"
-            onClick={() => stepDate('year', 'next')}
-          >
+          <div className="double-right" onClick={() => jump(12)}>
             <DoubleRight />
           </div>
         </div>
