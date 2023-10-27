@@ -44,8 +44,9 @@
 
 .nut-tabs__titles-item {
   position: relative;
+  min-width: $tabs-horizontal-titles-item-min-width;
   display: flex;
-  flex: 1;
+  flex: 1 0 auto;
   padding: 0 10px;
   align-items: center;
   justify-content: center;
