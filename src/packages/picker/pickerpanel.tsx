@@ -6,7 +6,8 @@ import React, {
   useImperativeHandle,
 } from 'react'
 import { PickerOption } from './types'
-import { useTouch } from '../../utils/use-touch'
+import { useTouch } from '@/utils/use-touch'
+import { passiveSupported } from '@/utils/supports-passive'
 
 interface PickerPanelProps {
   keyIndex?: number
@@ -235,6 +236,18 @@ const InternalPickerPanel: ForwardRefRenderFunction<
     stopMomentum,
     moving: moving.current,
   }))
+
+  useEffect(() => {
+    const options = passiveSupported ? { passive: false } : false
+    PickerPanelRef.current?.addEventListener('touchstart', touchStart, options)
+    PickerPanelRef.current?.addEventListener('touchmove', touchMove, options)
+    PickerPanelRef.current?.addEventListener('touchend', touchEnd, options)
+    return () => {
+      PickerPanelRef.current?.removeEventListener('touchstart', touchStart)
+      PickerPanelRef.current?.removeEventListener('touchmove', touchMove)
+      PickerPanelRef.current?.removeEventListener('touchend', touchEnd)
+    }
+  })
 
   return (
     <div
