@@ -264,7 +264,7 @@ const InternalPicker: ForwardRefRenderFunction<
     if (moving) {
       isConfirmEvent.current = true
     } else {
-      setSelectedValue(innerValue)
+      setSelectedValue(innerValue, true)
       closePicker()
     }
     setTimeout(() => {
