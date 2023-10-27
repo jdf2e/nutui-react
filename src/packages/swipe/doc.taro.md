@@ -38,6 +38,41 @@ export default App;
 
 :::
 
+### 阻止父元素滚动
+
+:::demo
+```tsx
+import React from "react";
+import { View } from '@tarojs/components';
+import { Swipe, Cell, Button } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  const [shouldCatchMove, setShouldCatchMove] = useState(false)
+
+  return <>
+    <View catchMove={shouldCatchMove}>
+      <Swipe
+        rightAction={
+          <Button type="primary" shape="square">
+            {translated.del}
+          </Button>
+        }
+        onTouchEnd={(e) => {
+          setShouldCatchMove(false)
+        }}
+        onTouchMove={(e) => {
+          setShouldCatchMove(true)
+        }}
+      >
+        <Cell title="左滑删除" radius={0} />
+      </Swipe>
+    </View>
+  </>
+}
+export default App;
+```
+:::
+
 ### 通过实例方法控制
 
 :::demo
