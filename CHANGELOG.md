@@ -1,3 +1,14 @@
+# v2.0.22
+`2023-10-27`
+
+* :sparkles: feat(NoticeBar): leftIcon 可自定义，并且支持设置 null 后不展示 icon (#1562) @oasis-cloud
+* :bug: fix(Dialog): 点击蒙层无法关闭 (#1552) @oasis-cloud
+* :bug: fix(Input): onChange 执行多次 (#1551) @oasis-cloud
+* :bug: fix(Swipe): 禁止父元素滚动的 demo (#1560) @oasis-cloud
+* :bug: fix: image height in taro (#1567) @xiaoyatong
+* 🛠 refactor(Tabs): 滚动到可视区域代码优化，同时放开 tab title 的宽度限制 (#1563) @oasis-cloud
+
+
 # v2.0.21
 `2023-10-18`
 
