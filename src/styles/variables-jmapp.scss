@@ -1,24 +1,23 @@
 // ============== JDesignTokens 基础变量  ============== //
-// 默认
-$color-default: var(--nutui-gray-2) !default;
-$color-default-press: var(--nutui-gray-4) !default;
-$color-default-light: var(--nutui-gray-1) !default;
-$color-default-disabled: var(--nutui-gray-1) !default;
-
 // 主色调
 $color-primary: var(--nutui-brand-8) !default;
+$color-primary-stop-1: var(--nutui-brand-8) !default;
+$color-primary-stop-2: var(--nutui-brand-8) !default;
 $color-primary-press: var(--nutui-brand-9) !default;
 $color-primary-disable: var(--nutui-brand-3) !default;
 $color-primary-light: var(--nutui-brand-1) !default;
 $color-primary-light-press: var(--nutui-brand-2) !default;
-$color-primary-stop-1: var(--nutui-brand-8) !default;
-$color-primary-stop-2: var(--nutui-brand-8) !default;
-
 $color-primary-gradient-1: linear-gradient(
   135deg,
   $color-primary-stop-1 0%,
   $color-primary-stop-2 100%
 ) !default;
+
+// 默认
+$color-default: var(--nutui-gray-2) !default;
+$color-default-press: var(--nutui-gray-4) !default;
+$color-default-light: var(--nutui-gray-1) !default;
+$color-default-disabled: var(--nutui-gray-1) !default;
 
 // 成功
 $color-success: var(--nutui-green-6) !default;
@@ -75,7 +74,7 @@ $color-text-help: var(
 ) !default; //	三级文字色；注释帮助说明文本，面包屑、输入字段占位符等。
 $color-text-disabled: var(
   --nutui-gray-7
-) !default; //,0.3)	四级文字色；禁用文本，失效文本
+) !default; // 四级文字色；禁用文本，失效文本
 $color-text-dark: var(--nutui-white-12) !default; //	深色背景下的反向文本色
 $color-text-link: $color-primary !default; //链接文本色
 $color-text-title: $color-title;
@@ -155,9 +154,6 @@ $color-background-overlay: $color-surface-2 !default;
 // 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
 $color-background-sunken: var(--nutui-gray-2, #f8f8f8) !default;
 
-// 特殊禁用色
-// $color-text-disable: var(--nutui-color-text-disable, #bfbfbf) !default;
-
 // 蒙层颜色
 // 页面全局蒙层
 $color-mask: $color-surface-overlay;
@@ -213,6 +209,7 @@ $animation-timing-fun: cubic-bezier(0.55, 0.085, 0.68, 0.53) !default;
 
 // padding
 $padding-xs: var(--nutui-padding-xs, 12px) !default;
+
 // button（✅）
 $button-border-radius: var(--nutui-button-border-radius, 24px) !default;
 $button-border-width: var(--nutui-button-border-width, 1px) !default;
