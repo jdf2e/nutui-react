@@ -142,7 +142,9 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
       Taro.createSelectorQuery()
         .selectAll(selector)
         .boundingClientRect()
-        .exec((rect = []) => resolve(rect[0]))
+        .exec((rect = []) => {
+          resolve(rect[0])
+        })
     })
   }
   type RectItem = {
@@ -158,22 +160,20 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   const scrollWithAnimation = useRef(false)
   const navRectRef = useRef<any>()
   const titleRectRef = useRef<RectItem[]>([])
-  const scrollLeft = useRef(0)
-  const scrollTop = useRef(0)
+  const [scrollLeft, setScrollLeft] = useState(0)
+  const [scrollTop, setScrollTop] = useState(0)
   const scrollDirection = (
     to: number,
     direction: 'horizontal' | 'vertical'
   ) => {
     let count = 0
-    const from =
-      direction === 'horizontal' ? scrollLeft.current : scrollTop.current
     const frames = 1
 
     function animate() {
       if (direction === 'horizontal') {
-        scrollLeft.current = to
+        setScrollLeft(to)
       } else {
-        scrollTop.current = to
+        setScrollTop(to)
       }
       if (++count < frames) {
         raf(animate)
@@ -187,7 +187,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
 
     raf(() => {
       Promise.all([
-        getRect(`#nut-tabs__titles_${name}`),
+        getRect(`#nut-tabs__titles_${name} .nut-tabs__list`),
         getAllRect(`#nut-tabs__titles_${name} .nut-tabs__titles-item`),
       ]).then(([navRect, titleRects]: any) => {
         navRectRef.current = navRect
@@ -250,17 +250,15 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         enableFlex
         scrollX={direction === 'horizontal'}
         scrollY={direction === 'vertical'}
-        scrollLeft={scrollLeft.current}
-        scrollTop={scrollTop.current}
+        scrollLeft={scrollLeft}
+        scrollTop={scrollTop}
         showScrollbar={false}
-        // scrollIntoViewAlignment="center"
         scrollWithAnimation={scrollWithAnimation.current}
         id={`nut-tabs__titles_${name}`}
         className={classesTitle}
         style={{ ...tabStyle }}
-        ref={navRef}
       >
-        <View className="nut-tabs__list">
+        <View className="nut-tabs__list" ref={navRef}>
           {!!title && typeof title === 'function'
             ? title()
             : titles.current.map((item, index) => {

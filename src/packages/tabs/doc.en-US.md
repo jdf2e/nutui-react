@@ -305,7 +305,6 @@ import { Tabs } from '@nutui/nutui-react';
 
 const App = () => {
   const [tab4value, setTab4value] = useState('0');
-  const list4 = Array.from(new Array(10).keys());
   return (
     <>
       <Tabs value={tab4value} onChange={(value) => {
