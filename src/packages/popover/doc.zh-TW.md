@@ -563,5 +563,5 @@ List 屬性是一個由對象構成的數組，數組中的每個對象配置一
 | \--nutui-popover-content-background-color | 選項區的背景顏色 | `$white` |
 | \--nutui-popover-border-color | top、bottom、left 和 right 的箭頭顏色| `$white` |
 | \--nutui-popover-divider-color | 選項區的底部 border 顏色 | `$color-border` |
-| \--nutui-popover-disable-color | 選項禁用的顏色 | `$color-text-disable` |
+| \--nutui-popover-disable-color | 選項禁用的顏色 | `$color-text-disabled` |
 | \--nutui-popover-menu-item-padding | 選項區菜單每一項的 padding 值 | `8px` |

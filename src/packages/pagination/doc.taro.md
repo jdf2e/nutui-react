@@ -232,8 +232,8 @@ export default App;
 | \--nutui-pagination-font-size | 页码字号 | `$font-size` |
 | \--nutui-pagination-item-border-color | 边框颜色 | `$color-border` |
 | \--nutui-pagination-active-background-color | 当前页码的背景色 | `$color-primary` |
-| \--nutui-pagination-disable-color | 不可用色 | `$color-text-disable` |
-| \--nutui-pagination-disable-background-color | 不可用背景色 | `$color-text-disable` |
+| \--nutui-pagination-disable-color | 不可用色 | `$color-text-disabled` |
+| \--nutui-pagination-disable-background-color | 不可用背景色 | `$color-text-disabled` |
 | \--nutui-pagination-item-border-width | 边框宽度 | `1px` |
 | \--nutui-pagination-item-border-radius | 边框圆角 | `2px` |
 | \--nutui-pagination-prev-next-padding | padding 值 | `0 11px` |

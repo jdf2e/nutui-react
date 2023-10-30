@@ -19,11 +19,11 @@ page {
   --nutui-color-primary: var(--nutui-brand-6);
   --nutui-color-primary-stop-1: var(--nutui-brand-stop-1);
   --nutui-color-primary-stop-2: var(--nutui-brand-stop-2);
-  --nutui-color-primary-press: var(--nutui-brand-7);
-  --nutui-color-primary-disable: var(--nutui-brand-3);
+  --nutui-color-primary-pressed: var(--nutui-brand-7);
+  --nutui-color-primary-disabled: var(--nutui-brand-3);
   --nutui-color-primary-text: #ffffff;
   --nutui-color-primary-light: var(--nutui-brand-1);
-  --nutui-color-primary-light-press: var(--nutui-brand-2);
+  --nutui-color-primary-light-pressed: var(--nutui-brand-2);
   --nutui-color-text-link: #040608;
 
   // 背景色
@@ -78,7 +78,7 @@ page {
   // --nutui-white-13: rgba(255, 255, 255, 1);
 
   --nutui-color-info: #1988fa;
-  --nutui-color-text-disable: var(--nutui-gray-4);
+  --nutui-color-text-disabled: var(--nutui-gray-4);
 
   // 字体
   --nutui-font-size-1: 10px;

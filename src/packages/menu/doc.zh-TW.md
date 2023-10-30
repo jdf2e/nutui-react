@@ -364,6 +364,6 @@ export default App
 | \--nutui-menu-content-background-color | 菜單選項容器的背景色 | `$white` |
 | \--nutui-menu-item-active-color | 打開狀態的顏色 | `$color-primary` |
 | \--nutui-menu-item-active-font-weight | 選中狀態的字重 | `$font-weight-bold` |
-| \--nutui-menu-item-disabled-color | 禁用狀態的顏色 | `$color-text-disable` |
+| \--nutui-menu-item-disabled-color | 禁用狀態的顏色 | `$color-text-disabled` |
 | \--nutui-menu-item-padding | 菜單選項的內邊距 | `12px 0` |
 | \--nutui-menu-item-icon-margin | 菜單選項文本與icon的距離 | `8px` |

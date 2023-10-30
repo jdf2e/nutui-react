@@ -304,4 +304,4 @@ export default App;
 | \--nutui-inputnumber-button-background-color | 数字输入框左右按钮的背景色 | `$white` |
 | \--nutui-inputnumber-icon-color | 数字输入框中icon的颜色 | `$color-text` |
 | \--nutui-inputnumber-icon-size | 数字输入框中icon的大小 | `8px` |
-| \--nutui-inputnumber-disabled-color | 数字输入框禁用色 | `$color-text-disable` |
+| \--nutui-inputnumber-disabled-color | 数字输入框禁用色 | `$color-text-disabled` |

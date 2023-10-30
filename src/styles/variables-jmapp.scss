@@ -3,10 +3,10 @@
 $color-primary: var(--nutui-brand-8) !default;
 $color-primary-stop-1: var(--nutui-brand-8) !default;
 $color-primary-stop-2: var(--nutui-brand-8) !default;
-$color-primary-press: var(--nutui-brand-9) !default;
-$color-primary-disable: var(--nutui-brand-3) !default;
+$color-primary-pressed: var(--nutui-brand-9) !default;
+$color-primary-disabled: var(--nutui-brand-3) !default;
 $color-primary-light: var(--nutui-brand-1) !default;
-$color-primary-light-press: var(--nutui-brand-2) !default;
+$color-primary-light-pressed: var(--nutui-brand-2) !default;
 $color-primary-gradient-1: linear-gradient(
   135deg,
   $color-primary-stop-1 0%,
@@ -15,27 +15,27 @@ $color-primary-gradient-1: linear-gradient(
 
 // 默认
 $color-default: var(--nutui-gray-2) !default;
-$color-default-press: var(--nutui-gray-4) !default;
+$color-default-pressed: var(--nutui-gray-4) !default;
 $color-default-light: var(--nutui-gray-1) !default;
 $color-default-disabled: var(--nutui-gray-1) !default;
 
 // 成功
 $color-success: var(--nutui-green-6) !default;
-$color-success-press: var(--nutui-green-8) !default;
+$color-success-pressed: var(--nutui-green-8) !default;
 $color-success-disabled: var(--nutui-green-3) !default;
 $color-success-light: var(--nutui-green-1) !default;
 $color-success-background: var(--nutui-green-1) !default;
 
 // 警告
 $color-warning: var(--nutui-orange-6) !default;
-$color-warning-press: var(--nutui-orange-8) !default;
+$color-warning-pressed: var(--nutui-orange-8) !default;
 $color-warning-disabled: var(--nutui-orange-3) !default;
 $color-warning-light: var(--nutui-orange-3) !default;
 $color-warning-background: var(--nutui-orange-1) !default;
 
 // 危险
 $color-danger: var(--nutui-red-6) !default;
-$color-danger-press: var(--nutui-red-8) !default;
+$color-danger-pressed: var(--nutui-red-8) !default;
 $color-danger-disabled: var(--nutui-red-3) !default;
 $color-danger-light: var(--nutui-red-1) !default;
 $color-danger-background: var(--nutui-red-1) !default;
@@ -146,7 +146,7 @@ $shadow-overlay: 0 0 8 0 rgba(0, 0, 0, 0.2) !default;
 // =================== 基础变量 END ==========  //
 
 // ========= nutui 变量 ======== //
-$color-text-disable: $color-text-disabled;
+$color-text-disabled: $color-text-disabled;
 // 页面基底色，用于卡片式页面的兜底，永远置于页面最底层。
 $color-background: $color-surface-1 !default;
 // 卡片背景色
@@ -196,7 +196,7 @@ $white: #ffffff !default;
 $black: $color-text-title !default;
 
 // todo
-$disable-bg-color: $white !default;
+$color-background-disabled: $white !default;
 $required-color: $color-primary !default;
 
 // --- z-index ----
@@ -231,8 +231,8 @@ $button-default-border-color: var(
   --nutui-button-default-border-color,
   $color-default
 ) !default;
-$button-default-disable: var(
-  --nutui-button-default-disable,
+$button-default-disabled: var(
+  --nutui-button-default-disabled,
   $color-text-disabled
 ) !default;
 $button-default-padding: var(
@@ -291,9 +291,9 @@ $button-primary-border-color: var(
   $color-primary
 ) !default;
 $button-primary-background-color: $color-primary-gradient-1 !default;
-$button-primary-disable: var(
-  --nutui-button-primary-disable,
-  $color-primary-disable
+$button-primary-disabled: var(
+  --nutui-button-primary-disabled,
+  $color-primary-disabled
 ) !default;
 
 $button-success-color: var(
@@ -308,8 +308,8 @@ $button-success-background-color: var(
   --nutui-button-success-background-color,
   $color-success
 ) !default;
-$button-success-disable: var(
-  --nutui-button-success-disable,
+$button-success-disabled: var(
+  --nutui-button-success-disabled,
   $color-success-disabled
 ) !default;
 
@@ -325,8 +325,8 @@ $button-warning-background-color: var(
   --nutui-button-warning-background-color,
   $color-warning
 ) !default;
-$button-warning-disable: var(
-  --nutui-button-warning-disable,
+$button-warning-disabled: var(
+  --nutui-button-warning-disabled,
   $color-warning-disabled
 ) !default;
 
@@ -342,8 +342,8 @@ $button-danger-background-color: var(
   --nutui-button-danger-background-color,
   $color-danger
 ) !default;
-$button-danger-disable: var(
-  --nutui-button-danger-disable,
+$button-danger-disabled: var(
+  --nutui-button-danger-disabled,
   $color-danger-disabled
 ) !default;
 
@@ -781,7 +781,7 @@ $switch-close-disabled-background-color: var(
 ) !default;
 $switch-open-disabled-background-color: var(
   --nutui-switch-open-disabled-background-color,
-  $color-primary-disable
+  $color-primary-disabled
 ) !default;
 $switch-close-line-background-color: var(
   --nutui-switch-close-line-bg-color,
@@ -861,8 +861,8 @@ $calendar-choose-background-color: var(
   --nutui-calendar-choose-background-color,
   $color-primary-light
 ) !default;
-$calendar-choose-disable-background-color: var(
-  --nutui-calendar-choose-disable-background-color,
+$calendar-choose-background-color-disabled: var(
+  --nutui-calendar-choose-background-color-disabled,
   rgba(191, 191, 191, 0.09)
 ) !default;
 $calendar-base-font-size: var(
@@ -1200,10 +1200,6 @@ $checkbox-icon-font-size: var(
   --nutui-checkbox-icon-font-size,
   $font-size-large
 ) !default;
-$checkbox-icon-disable-color2: var(
-  --nutui-checkbox-icon-disable-color2,
-  $color-text-help
-) !default;
 
 //radio（✅）
 $radio-icon-font-size: var(
@@ -1448,7 +1444,7 @@ $pagination-disable-color: var(
 ) !default;
 $pagination-disable-background-color: var(
   --nutui-pagination-disable-background-color,
-  $disable-bg-color
+  $color-background-disabled
 ) !default;
 $pagination-item-border-width: var(
   --nutui-pagination-item-border-width,

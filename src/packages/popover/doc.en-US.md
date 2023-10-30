@@ -556,7 +556,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-popover-content-background-color | The background color of the options area | `$white` |
 | \--nutui-popover-border-color| Arrow colors for top, bottom, left and right | `$white` |
 | \--nutui-popover-divider-color | The bottom border color of the options area | `$color-border` |
-| \--nutui-popover-disable-color | Option Disabled Colors | `$color-text-disable` |
+| \--nutui-popover-disable-color | Option Disabled Colors | `$color-text-disabled` |
 | \--nutui-popover-menu-item-padding | The padding value of each item in the option area menu | `8px` |
 
 

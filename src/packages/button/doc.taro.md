@@ -460,7 +460,7 @@ export default App;
 | \--nutui-button-default-color | type 为 default 的按钮的文本色 | `$color-title` |
 | \--nutui-button-default-background-color | type 为 default 的按钮的背景色 | `$white` |
 | \--nutui-button-default-border-color | type 为 default 的按钮的边框色 | `$color-text` |
-| \--nutui-button-default-disable | type 为 default 的按钮的禁用色 | `$color-text-disable` |
+| \--nutui-button-default-disabled | type 为 default 的按钮的禁用色 | `$color-text-disabled` |
 | \--nutui-button-default-padding | type 为 default 的按钮的内边距 | `0 16px` |
 | \--nutui-button-default-font-size | type 为 default 的按钮的字号 | `$font-size` |
 | \--nutui-button-default-font-weight | type 为 default 的按钮的字重 | `$font-weight` |

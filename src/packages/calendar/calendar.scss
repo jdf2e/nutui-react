@@ -183,7 +183,7 @@
     }
 
     &-disabled {
-      color: $color-text-disable !important;
+      color: $color-text-disabled !important;
 
       .nut-calendar-day-info-curr {
         display: none;
@@ -191,8 +191,8 @@
     }
 
     &-choose-disabled {
-      background-color: $calendar-choose-disable-background-color;
-      color: $color-text-disable !important;
+      background-color: $calendar-choose-background-color-disabled;
+      color: $color-text-disabled !important;
 
       .nut-calendar-day-info-curr {
         display: none;

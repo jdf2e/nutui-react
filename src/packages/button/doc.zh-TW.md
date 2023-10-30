@@ -314,7 +314,7 @@ export default App;
 | \--nutui-button-default-color | type 為 default 的按鈕的文本色 | `$color-title` |
 | \--nutui-button-default-background-color | type 為 default 的按鈕的背景色 | `$white` |
 | \--nutui-button-default-border-color | type 為 default 的按鈕的邊框色 | `$color-text` |
-| \--nutui-button-default-disable | type 為 default 的按鈕的禁用色 | `$color-text-disable` |
+| \--nutui-button-default-disabled | type 為 default 的按鈕的禁用色 | `$color-text-disabled` |
 | \--nutui-button-default-padding | type 為 default 的按鈕的內邊距 | `0 16px` |
 | \--nutui-button-default-font-size | type 為 default 的按鈕的字號 | `$font-size` |
 | \--nutui-button-default-font-weight | type 為 default 的按鈕的字重 | `$font-weight` |

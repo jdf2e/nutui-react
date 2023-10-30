@@ -5,7 +5,7 @@
   align-items: center;
 
   &-icon {
-    color: $color-text-disable;
+    color: $color-text-disabled;
     font-size: $checkbox-icon-font-size;
   }
 
@@ -15,7 +15,7 @@
     transition-property: color, border-color, background-color;
 
     &.nut-checkbox-icon-disabled {
-      color: $color-primary-disable;
+      color: $color-primary-disabled;
     }
   }
 
@@ -25,7 +25,7 @@
     color: $checkbox-label-color;
 
     &-disabled {
-      color: $color-text-disable;
+      color: $color-text-disabled;
     }
   }
 
@@ -33,12 +33,12 @@
     color: $color-primary;
 
     &.nut-checkbox-icon-disabled {
-      color: $color-primary-disable;
+      color: $color-primary-disabled;
     }
   }
 
   &-icon-disabled {
-    color: $color-text-disable;
+    color: $color-text-disabled;
   }
 
   &-reverse {

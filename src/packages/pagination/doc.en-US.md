@@ -232,8 +232,8 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-pagination-font-size | font size | `$font-size` |
 | \--nutui-pagination-item-border-color | border color  | `$color-border` |
 | \--nutui-pagination-active-background-color | background color of current page | `$color-primary` |
-| \--nutui-pagination-disable-color | disable color | `$color-text-disable` |
-| \--nutui-pagination-disable-background-color | disable background color | `$color-text-disable` |
+| \--nutui-pagination-disable-color | disable color | `$color-text-disabled` |
+| \--nutui-pagination-disable-background-color | disable background color | `$color-text-disabled` |
 | \--nutui-pagination-item-border-width | border width | `1px` |
 | \--nutui-pagination-item-border-radius | border radius  | `2px` |
 | \--nutui-pagination-prev-next-padding | padding  | `0 11px` |
