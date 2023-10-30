@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import Taro from '@tarojs/taro'
+import { View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import {
   Button,
@@ -18,8 +19,9 @@ type TSwipeDemo = {
   title4: string
   title5: string
   title6: string
-  openOrClose: string
   title7: string
+  openOrClose: string
+  title8: string
   click: string
   sure: string
   del: string
@@ -49,6 +51,7 @@ const SwipeDemo = () => {
       title6: '通过实例方法控制',
       openOrClose: '点击下方按钮打开或关闭',
       title7: '点击关闭',
+      title8: '阻止父元素滚动',
       click: '点击',
       sure: '确定',
       del: '删除',
@@ -75,6 +78,7 @@ const SwipeDemo = () => {
       title6: '通過實例方法控制',
       openOrClose: '點擊下方按鈕打開或關閉',
       title7: '点击关闭',
+      title8: '阻止父元素滾動',
       click: '點擊',
       sure: '確定',
       del: '刪除',
@@ -101,6 +105,7 @@ const SwipeDemo = () => {
       title6: 'Control via instance method',
       openOrClose: 'Click the button below',
       title7: 'Click to close',
+      title8: 'Prevent parent scrolling',
       click: 'click',
       sure: 'ok',
       del: 'delete',
@@ -118,32 +123,6 @@ const SwipeDemo = () => {
       chooseTips: 'are you sure to choose?',
       deleteTips: 'are you sure to delete?',
     },
-    'id-ID': {
-      title1: 'penggunaan dasar',
-      title2: 'Lumpuhkan sliding',
-      title3: 'Monitor waktu',
-      title4: 'kontrol asinkron',
-      title5: 'isi suai',
-      title6: 'kontrol melalui metode instance',
-      openOrClose: 'Klik tombol di bawah untuk membuka atau menutup',
-      title7: 'klik untuk menutup',
-      click: 'klik',
-      sure: 'OK',
-      del: 'Hapus',
-      choose: 'pilih',
-      event: 'peristiwa',
-      goods: 'barang',
-      collect: 'kumpulkan',
-      open: 'buka',
-      close: 'tutup',
-      closeLeft: 'Klik tombol kanan untuk menutup',
-      tips: 'tip',
-      cart: 'tambah ke kereta belanja',
-      leftDel: 'padam slide kiri',
-      disabled: 'Lumpuhkan sliding',
-      chooseTips: 'Apakah kamu benar-benar memilih?',
-      deleteTips: 'Apakah Anda yakin untuk menghapus?',
-    },
   })
   const [show, SetShow] = useState(false)
   const [toastMsg, SetToastMsg] = useState('')
@@ -159,14 +138,6 @@ const SwipeDemo = () => {
   }
   const pRef = useRef('left')
   const beforeClose = (postion: string) => {
-    // Dialog.alert({
-    //   title: translated.tips,
-    //   content:
-    //     postion === 'left' ? translated.chooseTips : translated.deleteTips,
-    //   onConfirm: () => {
-    //     refDom.current && refDom.current.close()
-    //   },
-    // })
     pRef.current = postion
     setShowDialog(true)
   }
@@ -177,7 +148,7 @@ const SwipeDemo = () => {
 
   const closeRef = useRef(null)
   const openRef = useRef(null)
-
+  const [shouldCatchMove, setShouldCatchMove] = useState(false)
   return (
     <>
       <Header />
@@ -189,12 +160,29 @@ const SwipeDemo = () => {
               {translated.del}
             </Button>
           }
-          onTouchEnd={(e) => console.log(e)}
-          onTouchMove={(e) => console.log(e)}
-          onTouchStart={(e) => console.log(e)}
         >
           <Cell title={translated.leftDel} radius={0} />
         </Swipe>
+
+        <h2>{translated.title8}</h2>
+        <View catchMove={shouldCatchMove}>
+          <Swipe
+            rightAction={
+              <Button type="primary" shape="square">
+                {translated.del}
+              </Button>
+            }
+            onTouchEnd={(e) => {
+              setShouldCatchMove(false)
+            }}
+            onTouchMove={(e) => {
+              setShouldCatchMove(true)
+            }}
+          >
+            <Cell title={translated.leftDel} radius={0} />
+          </Swipe>
+        </View>
+
         <h2>{translated.title6}</h2>
         <Swipe
           ref={openRef}

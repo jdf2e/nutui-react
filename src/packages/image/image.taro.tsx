@@ -62,7 +62,7 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
 
   const containerStyle = {
     // eslint-disable-next-line no-nested-ternary
-    height: height ? pxCheck(height) : Taro.getEnv() === 'WEB' ? '' : '100px',
+    height: height ? pxCheck(height) : Taro.getEnv() === 'WEB' ? '' : '100%',
     // eslint-disable-next-line no-nested-ternary
     width: width ? pxCheck(width) : Taro.getEnv() === 'WEB' ? '' : '100%',
     overflow: radius !== undefined && radius !== null ? 'hidden' : '',

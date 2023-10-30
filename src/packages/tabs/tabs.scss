@@ -11,7 +11,6 @@
   height: $tabs-titles-height;
   padding: 0 16px;
   user-select: none;
-  flex-shrink: 0;
   overflow: hidden;
   background: $tabs-titles-background-color;
 
@@ -39,22 +38,19 @@
   &--scrollable {
     overflow-x: auto;
     overflow-y: hidden;
-    .nut-tabs__titles-item {
-      width: auto;
-    }
   }
 
   &-item {
     position: relative;
     display: flex;
-    flex: 1;
     align-items: center;
     justify-content: center;
+    flex: 1 0 auto;
+    padding: 0 10px;
     margin: 0 $tabs-titles-gap;
     min-width: $tabs-titles-item-min-width;
     font-size: $tabs-titles-font-size;
     color: $color-title;
-    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
 

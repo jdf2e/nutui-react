@@ -1,6 +1,7 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import pkg from '@/packages/../config.json'
+import packageJson from '@/packages/../../package.json'
 import './index.scss'
 import Schema from 'async-validator'
 //
@@ -44,6 +45,7 @@ const Index = () => {
           <div className="info">
             <h1>NutUI React</h1>
             <p>京东风格的轻量级小程序组件库 React 版</p>
+            <p>v{packageJson.version}</p>
           </div>
         </div>
         <div className="index-components">

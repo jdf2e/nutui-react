@@ -306,8 +306,6 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
                           src={item.src}
                           mode="aspectFit"
                           showMenuByLongpress
-                          width="100%"
-                          height="100%"
                         />
                       )}
                     </SwiperItem>

@@ -332,14 +332,16 @@ import { Tabs } from '@nutui/nutui-react';
 
 const App = () => {
   const [tab4value, setTab4value] = useState('0');
-  const list4 = Array.from(new Array(10).keys());
   return (
     <>
       <Tabs value={tab4value} onChange={(value) => {
         setTab4value(value)
       }}>
-        {list4.map(item => <Tabs.TabPane key={item}
-          title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
+        <Tabs.TabPane title="Low-level sale">Low-level sale</Tabs.TabPane>
+        <Tabs.TabPane title="Shangxinri">Shangxinri</Tabs.TabPane>
+        <Tabs.TabPane title="Ten billion subsidies">Ten billion subsidies</Tabs.TabPane>
+        <Tabs.TabPane title="Today's great value">Today&lsquo;s great value</Tabs.TabPane>
+        <Tabs.TabPane title="So good and so cheap">So good and so cheap</Tabs.TabPane>
       </Tabs>
     </>
   );

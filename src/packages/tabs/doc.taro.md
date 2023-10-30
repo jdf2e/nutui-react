@@ -332,14 +332,16 @@ import { Tabs } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const [tab4value, setTab4value] = useState('0');
-  const list4 = Array.from(new Array(10).keys());
   return (
     <>
       <Tabs value={tab4value} onChange={(value) => {
         setTab4value(value)
       }}>
-        {list4.map(item => <Tabs.TabPane key={item}
-                                         title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
+        <Tabs.TabPane title="低阶特卖">低阶特卖</Tabs.TabPane>
+        <Tabs.TabPane title="上新日">上新日</Tabs.TabPane>
+        <Tabs.TabPane title="百亿补贴">百亿补贴</Tabs.TabPane>
+        <Tabs.TabPane title="今日聚超值">今日聚超值</Tabs.TabPane>
+        <Tabs.TabPane title="真好真便宜">真好真便宜</Tabs.TabPane>
       </Tabs>
     </>
   );

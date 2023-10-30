@@ -142,7 +142,9 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
       Taro.createSelectorQuery()
         .selectAll(selector)
         .boundingClientRect()
-        .exec((rect = []) => resolve(rect[0]))
+        .exec((rect = []) => {
+          resolve(rect[0])
+        })
     })
   }
   type RectItem = {
@@ -158,25 +160,21 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   const scrollWithAnimation = useRef(false)
   const navRectRef = useRef<any>()
   const titleRectRef = useRef<RectItem[]>([])
-  const canShowLabel = useRef(false)
-  const scrollLeft = useRef(0)
-  const scrollTop = useRef(0)
+  const [scrollLeft, setScrollLeft] = useState(0)
+  const [scrollTop, setScrollTop] = useState(0)
   const scrollDirection = (
     to: number,
     direction: 'horizontal' | 'vertical'
   ) => {
     let count = 0
-    const from =
-      direction === 'horizontal' ? scrollLeft.current : scrollTop.current
     const frames = 1
 
     function animate() {
       if (direction === 'horizontal') {
-        scrollLeft.current += (to - from) / frames
+        setScrollLeft(to)
       } else {
-        scrollTop.current += (to - from) / frames
+        setScrollTop(to)
       }
-
       if (++count < frames) {
         raf(animate)
       }
@@ -189,36 +187,11 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
 
     raf(() => {
       Promise.all([
-        getRect(`#nut-tabs__titles_${name}`),
+        getRect(`#nut-tabs__titles_${name} .nut-tabs__list`),
         getAllRect(`#nut-tabs__titles_${name} .nut-tabs__titles-item`),
       ]).then(([navRect, titleRects]: any) => {
         navRectRef.current = navRect
         titleRectRef.current = titleRects
-
-        if (navRectRef.current) {
-          if (props.direction === 'vertical') {
-            const titlesTotalHeight = titleRects.reduce(
-              (prev: number, curr: RectItem) => prev + curr.height,
-              0
-            )
-            if (titlesTotalHeight > navRectRef.current.height) {
-              canShowLabel.current = true
-            } else {
-              canShowLabel.current = false
-            }
-          } else {
-            const titlesTotalWidth = titleRects.reduce(
-              (prev: number, curr: RectItem) => prev + curr.width,
-              0
-            )
-            if (titlesTotalWidth > navRectRef.current.width) {
-              canShowLabel.current = true
-            } else {
-              canShowLabel.current = false
-            }
-          }
-        }
-
         // @ts-ignore
         const titleRect: RectItem = titleRectRef.current[value]
 
@@ -228,21 +201,20 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
           const top = titleRects
             .slice(0, value)
             .reduce(
-              (prev: number, curr: RectItem) => prev + curr.height + 0,
+              (prev: number, curr: RectItem) => prev + curr.height,
               DEFAULT_PADDING
             )
           to = top - (navRectRef.current.height - titleRect.height) / 2
         } else {
-          const DEFAULT_PADDING = 31
+          const DEFAULT_PADDING = 20
           const left = titleRects
             .slice(0, value)
             .reduce(
-              (prev: number, curr: RectItem) => prev + curr.width + 20,
+              (prev: number, curr: RectItem) => prev + curr.width,
               DEFAULT_PADDING
             )
           to = left - (navRectRef.current.width - titleRect.width) / 2
         }
-
         nextTick(() => {
           scrollWithAnimation.current = true
         })
@@ -252,7 +224,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     })
   }
 
-  const scrollIntoRef = useRef(0)
   useEffect(() => {
     const index = titles.current.findIndex((t) => t.value === value)
     setContentStyle({
@@ -262,9 +233,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
           : `translate3d( 0,-${index * 100}%, 0)`,
       transitionDuration: `${duration}ms`,
     })
-    const scrollToIndex = index - 2
-    scrollIntoRef.current = scrollToIndex < 0 ? 0 : scrollToIndex
-
     scrollIntoView()
   }, [value])
 
@@ -282,18 +250,15 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         enableFlex
         scrollX={direction === 'horizontal'}
         scrollY={direction === 'vertical'}
-        scrollLeft={scrollLeft.current}
-        scrollTop={scrollTop.current}
+        scrollLeft={scrollLeft}
+        scrollTop={scrollTop}
         showScrollbar={false}
-        scrollIntoViewAlignment="center"
         scrollWithAnimation={scrollWithAnimation.current}
-        // scrollIntoView={`scrollIntoView${scrollIntoRef.current}`}
         id={`nut-tabs__titles_${name}`}
         className={classesTitle}
         style={{ ...tabStyle }}
-        ref={navRef}
       >
-        <View className="nut-tabs__list">
+        <View className="nut-tabs__list" ref={navRef}>
           {!!title && typeof title === 'function'
             ? title()
             : titles.current.map((item, index) => {
