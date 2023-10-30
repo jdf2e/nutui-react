@@ -113,7 +113,6 @@ const TabsDemo = () => {
     },
   })
 
-  const [tab1value, setTab1value] = useState<string | number>('0')
   const [tab11value, setTab11value] = useState<string | number>('0')
   const [tab12value, setTab12value] = useState<string | number>('0')
   const [tab2value, setTab2value] = useState<string | number>('0')
@@ -165,14 +164,10 @@ const TabsDemo = () => {
     <>
       <div className="demo full no-overflow">
         <h2>{translated.basic}</h2>
-        <Tabs defaultValue={1} autoHeight>
-          <Tabs.TabPane title="tab1">
-            <div style={{ height: '80px' }}>tab1</div>
-          </Tabs.TabPane>
-          <Tabs.TabPane title="tab2" />
-          <Tabs.TabPane title="tab3">
-            <MyImagePreview />
-          </Tabs.TabPane>
+        <Tabs defaultValue={1}>
+          <Tabs.TabPane title="tab1">tab1</Tabs.TabPane>
+          <Tabs.TabPane title="tab2">tab2</Tabs.TabPane>
+          <Tabs.TabPane title="tab3">tab3</Tabs.TabPane>
         </Tabs>
         <h2>{translated.title1}</h2>
         <Tabs

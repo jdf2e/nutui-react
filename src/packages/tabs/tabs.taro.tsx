@@ -1,4 +1,11 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, {
+  FunctionComponent,
+  ReactNode,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { ScrollView, View } from '@tarojs/components'
 import classNames from 'classnames'
 import { JoySmile } from '@nutui/icons-react-taro'
@@ -8,6 +15,7 @@ import TabPane from '@/packages/tabpane/index.taro'
 import { usePropsValue } from '@/utils/use-props-value'
 import { useForceUpdate } from '@/utils/use-force-update'
 import raf from '@/utils/raf'
+import { TabsContext } from './context'
 
 export type TabsTitle = {
   title: string
@@ -227,10 +235,9 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   useEffect(() => {
     const index = titles.current.findIndex((t) => t.value === value)
     setContentStyle({
-      transform:
-        direction === 'horizontal'
-          ? `translate3d(-${index * 100}%, 0, 0)`
-          : `translate3d( 0,-${index * 100}%, 0)`,
+      ...(direction === 'horizontal'
+        ? { left: `-${index * 100}%` }
+        : { top: `-${index * 100}%` }),
       transitionDuration: `${duration}ms`,
     })
     scrollIntoView()
@@ -243,6 +250,16 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     }
     setValue(item.value)
   }
+
+  const isEmpty = useMemo(() => {
+    let result = true
+    React.Children.map<any, ReactNode>(children, (child, index) => {
+      if (React.isValidElement(child) && child?.props.children) {
+        result = false
+      }
+    })
+    return result
+  }, [props.children])
 
   return (
     <View className={classes} {...rest}>
@@ -309,29 +326,29 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         </View>
       </ScrollView>
       <View className={`${classPrefix}__content__wrap`}>
-        <View className={`${classPrefix}__content`} style={contentStyle}>
-          {React.Children.map(children, (child, idx) => {
-            if (!React.isValidElement(child)) {
-              return null
-            }
+        {!isEmpty ? (
+          <View className={`${classPrefix}__content`} style={contentStyle}>
+            <TabsContext.Provider
+              value={{
+                value,
+                autoHeight,
+              }}
+            >
+              {React.Children.map(children, (child, idx) => {
+                if (!React.isValidElement(child)) {
+                  return null
+                }
 
-            let childProps = {
-              ...child.props,
-              active: value === child.props.value,
-            }
+                const childProps = {
+                  ...child.props,
+                  value: child.props.value || idx,
+                }
 
-            if (
-              String(value) !== String(child.props.value || idx) &&
-              autoHeight
-            ) {
-              childProps = {
-                ...childProps,
-                autoHeightClassName: 'inactive',
-              }
-            }
-            return React.cloneElement(child, childProps)
-          })}
-        </View>
+                return React.cloneElement(child, childProps)
+              })}
+            </TabsContext.Provider>
+          </View>
+        ) : null}
       </View>
     </View>
   )
