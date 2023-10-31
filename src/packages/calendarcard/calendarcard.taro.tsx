@@ -390,7 +390,7 @@ export const CalendarCard = React.forwardRef<
         <div className="nut-calendarcard-days">
           {weekHeader.map((i) => {
             return (
-              <div className="nut-calendarcard-day" key={i}>
+              <div className="nut-calendarcard-day header" key={i}>
                 {i}
               </div>
             )

@@ -51,6 +51,10 @@
     cursor: pointer;
     height: 48px;
 
+    &.header {
+      cursor: auto;
+    }
+
     &.active,
     &.start,
     &.end {
