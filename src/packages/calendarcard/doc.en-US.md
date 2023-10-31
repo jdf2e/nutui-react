@@ -115,6 +115,35 @@ export default App;
 
 :::
 
+### Custom day information
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { CalendarCard } from '@nutui/nutui-react';
+
+const App = () => {
+  const renderDayTop = (day) => {
+    return day.date === 8 ? '☺' : ''
+  }
+  const renderDay = (day) => {
+    return day.date <= 9 ? `0${day.date}` : day.date
+  }
+  const renderDayBottom = (day) => {
+    return day.date === 8 ? '节日' : ''
+  }
+  return <CalendarCard
+    renderDayTop={renderDayTop}
+    renderDay={renderDay}
+    renderDayBottom={renderDayBottom}
+  />;
+};
+export default App;
+```
+
+:::
+
 ### Custom week start day
 
 :::demo
@@ -263,7 +292,9 @@ export default App;
 | endDate | Limit range end date | `Date` | `-` |
 | firstDayOfWeek | Set the starting day of the week, 0 is Sunday, 1 is Monday | `0-6` | `0` |
 | disableDay | Set disable date | `(day: CalendarDay) => boolean` | `-` |
-| renderDay | Date information | `(date: Day) => string` \| `JSX.Element` | `-` |
+| renderDay | Date information | `(date: Day) => ReactNode` | `-` |
+| renderDayTop | Date top information | `(date: Day) => ReactNode` | `-` |
+| renderDayBottom | Date bottom information | `(date: Day) => ReactNode` | `-` |
 | value | Value in controlled mode, used with onChange | `Date \| Date[]` | `-` |
 | onDayClick | Triggered after click | `(day: CalendarDay) => void` | `-` |
 | onPageChange | Triggered when switching months | `(val: { year, month }) => void` | `-` |

@@ -6,6 +6,7 @@ import Cell from '@/packages/cell'
 import Popup from '@/packages/popup'
 import Button from '@/packages/button'
 import Space from '@/packages/space'
+import { CalendarDay } from './type'
 
 interface T {
   single: string
@@ -13,6 +14,7 @@ interface T {
   range: string
   week: string
   control: string
+  renderDay: string
   firstDay: string
   customRange: string
   disable: string
@@ -30,6 +32,7 @@ const CalendarDemo = () => {
       range: '选择范围',
       week: '选择周',
       control: '受控模式',
+      renderDay: '自定义日期信息',
       firstDay: '自定义周起始日',
       customRange: '自定义选择范围',
       disable: '自定义禁止选择日期',
@@ -44,6 +47,7 @@ const CalendarDemo = () => {
       range: '選擇範圍',
       week: '選擇周',
       control: '受控模式',
+      renderDay: '自定义日期信息',
       firstDay: '自定義周起始日',
       customRange: '自定義選擇範圍',
       disable: '自定義禁止選擇日期',
@@ -58,6 +62,7 @@ const CalendarDemo = () => {
       range: 'Select a range',
       week: 'Select a week',
       control: 'Controlled mode',
+      renderDay: 'Custom day information',
       firstDay: 'Custom week start day',
       customRange: 'Custom selection range',
       disable: 'Custom prohibition date selection',
@@ -81,6 +86,18 @@ const CalendarDemo = () => {
   const [date, setDate] = useState(null)
 
   const CalendarCardRef = useRef<any>(null)
+
+  const renderDayTop = (day: CalendarDay) => {
+    return day.date === 8 ? '☺' : ''
+  }
+
+  const renderDay = (day: CalendarDay) => {
+    return day.date <= 9 ? `0${day.date}` : day.date
+  }
+
+  const renderDayBottom = (day: CalendarDay) => {
+    return day.date === 8 ? '节日' : ''
+  }
   return (
     <>
       <div className="demo">
@@ -102,6 +119,13 @@ const CalendarDemo = () => {
 
         <h2>{translated.control}</h2>
         <CalendarCard value={val1} onChange={change1} />
+
+        <h2>{translated.renderDay}</h2>
+        <CalendarCard
+          renderDayTop={renderDayTop}
+          renderDay={renderDay}
+          renderDayBottom={renderDayBottom}
+        />
 
         <h2>{translated.firstDay}</h2>
         <CalendarCard firstDayOfWeek={0} onChange={change} />

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, ReactNode } from 'react'
 import classNames from 'classnames'
 import { Left, Right, DoubleLeft, DoubleRight } from './icon'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -28,7 +28,9 @@ export interface CalendarCardProps extends BasicComponent {
   startDate?: Date
   endDate?: Date
   disableDay?: (day: CalendarDay) => boolean
-  renderDay?: (day: CalendarDay) => JSX.Element
+  renderDay?: (day: CalendarDay) => ReactNode
+  renderDayTop?: (day: CalendarDay) => ReactNode
+  renderDayBottom?: (day: CalendarDay) => ReactNode
   onDayClick?: (day: CalendarDay) => void
   onPageChange: (data: CalendarMonth) => void
   onChange: (value: CalendarValue) => void
@@ -59,6 +61,8 @@ export const CalendarCard = React.forwardRef<
     endDate,
     disableDay,
     renderDay,
+    renderDayTop,
+    renderDayBottom,
     onDayClick,
     onPageChange,
     onChange,
@@ -407,8 +411,14 @@ export const CalendarCard = React.forwardRef<
               key={`${day.year}-${day.month}-${day.date}`}
               onClick={() => handleDayClick(day)}
             >
+              <div className="nut-calendarcard-day-top">
+                {renderDayTop ? renderDayTop(day) : ''}
+              </div>
               <div className="nut-calendarcard-day-inner">
                 {renderDay ? renderDay(day) : day.date}
+              </div>
+              <div className="nut-calendarcard-day-bottom">
+                {renderDayBottom ? renderDayBottom(day) : ''}
               </div>
             </div>
           ))}

@@ -115,6 +115,35 @@ export default App;
 
 :::
 
+### 自定義日期信息
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { CalendarCard } from '@nutui/nutui-react';
+
+const App = () => {
+  const renderDayTop = (day) => {
+    return day.date === 8 ? '☺' : ''
+  }
+  const renderDay = (day) => {
+    return day.date <= 9 ? `0${day.date}` : day.date
+  }
+  const renderDayBottom = (day) => {
+    return day.date === 8 ? '節日' : ''
+  }
+  return <CalendarCard
+    renderDayTop={renderDayTop}
+    renderDay={renderDay}
+    renderDayBottom={renderDayBottom}
+  />;
+};
+export default App;
+```
+
+:::
+
 ### 自定義周起始日
 
 :::demo
@@ -263,7 +292,9 @@ export default App;
 | endDate | 限製範圍結束日期 | `Date` | `-` |
 | firstDayOfWeek | 設置周起始日，0 為周日，1 為周一 | `0-6` | `0` |
 | disableDay | 設置不可選日期 | `(day: CalendarDay) => boolean` | `-` |
-| renderDay | 日期信息 | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
+| renderDay | 日期信息 | `(date: CalendarDay) => ReactNode` | `-` |
+| renderDayTop | 日期頂部信息 | `(date: CalendarDay) => ReactNode` | `-` |
+| renderDayBottom | 日期底部信息 | `(date: CalendarDay) => ReactNode` | `-` |
 | value | 受控模式下的值，與 onChange 搭配使用 | `Date \| Date[]` | `-` |
 | onDayClick | 點擊後觸發 | `(day: CalendarDay) => void` | `-` |
 | onPageChange | 切換月份時觸發 | `(val: { year, month }) => void` | `-` |

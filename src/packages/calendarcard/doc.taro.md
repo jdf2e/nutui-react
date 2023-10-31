@@ -115,6 +115,35 @@ export default App;
 
 :::
 
+### 自定义日期信息
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { CalendarCard } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  const renderDayTop = (day) => {
+    return day.date === 8 ? '☺' : ''
+  }
+  const renderDay = (day) => {
+    return day.date <= 9 ? `0${day.date}` : day.date
+  }
+  const renderDayBottom = (day) => {
+    return day.date === 8 ? '节日' : ''
+  }
+  return <CalendarCard
+    renderDayTop={renderDayTop}
+    renderDay={renderDay}
+    renderDayBottom={renderDayBottom}
+  />;
+};
+export default App;
+```
+
+:::
+
 ### 自定义周起始日
 
 :::demo
@@ -263,7 +292,9 @@ export default App;
 | endDate | 限制范围结束日期 | `Date` | `-` |
 | firstDayOfWeek | 设置周起始日，0 为周日，1 为周一 | `0-6` | `0` |
 | disableDay | 设置不可选日期 | `(day: CalendarDay) => boolean` | `-` |
-| renderDay | 日期信息 | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
+| renderDay | 日期信息 | `(date: CalendarDay) => ReactNode` | `-` |
+| renderDayTop | 日期顶部信息 | `(date: CalendarDay) => ReactNode` | `-` |
+| renderDayBottom | 日期底部信息 | `(date: CalendarDay) => ReactNode` | `-` |
 | value | 受控模式下的值，与 onChange 搭配使用 | `Date \| Date[]` | `-` |
 | onDayClick | 点击后触发 | `(day: CalendarDay) => void` | `-` |
 | onPageChange | 切换月份时触发 | `(val: { year, month }) => void` | `-` |
