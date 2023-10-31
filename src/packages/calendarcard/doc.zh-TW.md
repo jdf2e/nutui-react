@@ -330,3 +330,6 @@ export default App;
 | \--nutui-calendar-choose-background-color | 選中時區間內元素的背景色，區別區間兩頭元素的背景色 | `rgba(#fa2c19, 0.09)` |
 | \--nutui-calendar-disable-color | 不可選元素的字色 | `#bfbfbf` |
 | \--nutui-calendar-base-font-size | 字號 | `$font-size-3` |
+| \--nutui-calendar-day-width | 日歷元素寬度 | `14.28%` |
+| \--nutui-calendar-choose-color | 日歷選中元素的字色 | `$primary-color` |
+| \--nutui-calendar-day-active-border-radius | 日歷選中元素的圓角 | `4px` |
