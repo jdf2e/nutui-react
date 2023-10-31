@@ -1,6 +1,6 @@
 import './issue.scss'
 import React, { useEffect, useState } from 'react'
-import { Tips as IssueIcon, Checklist, Uploader } from '@nutui/icons-react'
+import { Tips as IssueIcon, Checklist, Add } from '@nutui/icons-react'
 import { useLocation } from 'react-router-dom'
 import { nav } from '@/config.json'
 
@@ -35,7 +35,7 @@ export function Issue() {
           href="https://github.com/jdf2e/nutui-react/issues"
           target="_blank"
         >
-          <Uploader />
+          <Add />
           Issue
         </a>
         <a

@@ -1,5 +1,5 @@
 import React from 'react'
-import { My } from '@nutui/icons-react'
+import { User } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Avatar } from './avatar'
 import Cell from '@/packages/cell'
@@ -79,13 +79,13 @@ const AvatarDemo = () => {
         </Cell>
         <h2>{translated['3928b17e']}</h2>
         <Cell>
-          <Avatar icon={<My />} shape="square" />
-          <Avatar icon={<My />} shape="round" />
+          <Avatar icon={<User />} shape="square" />
+          <Avatar icon={<User />} shape="round" />
         </Cell>
         <h2>{translated['049b6a97']}</h2>
         <Cell>
           <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />
-          <Avatar icon={<My />} />
+          <Avatar icon={<User />} />
           <Avatar>N</Avatar>
         </Cell>
         <h2>{translated.a304dabf}</h2>
@@ -94,7 +94,7 @@ const AvatarDemo = () => {
             className="demo-avatar"
             color="var(--nutui-gray-1)"
             background="var(--nutui-color-primary)"
-            icon={<My />}
+            icon={<User />}
           />
           <Avatar
             color="var(--nutui-color-primary)"
@@ -106,17 +106,17 @@ const AvatarDemo = () => {
         <h2>{translated['89bca4e7']}</h2>
         <Cell>
           <Badge value="8">
-            <Avatar icon={<My />} shape="square" />
+            <Avatar icon={<User />} shape="square" />
           </Badge>
           <Badge dot>
-            <Avatar icon={<My />} shape="square" />
+            <Avatar icon={<User />} shape="square" />
           </Badge>
         </Cell>
         <h2>{translated.e981579e}</h2>
         <Cell>
           <Avatar.Group gap="-4">
             <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
-            <Avatar icon={<My />} />
+            <Avatar icon={<User />} />
             <Avatar
               color="var(--nutui-color-primary)"
               background="var(--nutui-brand-2)"
@@ -128,33 +128,33 @@ const AvatarDemo = () => {
         <Cell>
           <Avatar.Group max="3" maxColor="#fff" maxBackground="#498ff2">
             <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
-            <Avatar icon={<My />} />
+            <Avatar icon={<User />} />
             <Avatar
               color="var(--nutui-color-primary)"
               background="var(--nutui-brand-2)"
             >
               U
             </Avatar>
-            <Avatar icon={<My />} />
+            <Avatar icon={<User />} />
           </Avatar.Group>
         </Cell>
         <h2>{translated.f645fc65}</h2>
         <Cell>
           <Avatar.Group max="3" level="right" maxContent="...">
             <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
-            <Avatar icon={<My />} />
+            <Avatar icon={<User />} />
             <Avatar
               color="var(--nutui-color-primary)"
               background="var(--nutui-brand-2)"
             >
               U
             </Avatar>
-            <Avatar icon={<My />} />
+            <Avatar icon={<User />} />
           </Avatar.Group>
         </Cell>
         <h2>{translated['43f00872']}</h2>
         <Cell>
-          <Avatar icon={<My />} onClick={activeAvatar} />
+          <Avatar icon={<User />} onClick={activeAvatar} />
         </Cell>
       </div>
     </>

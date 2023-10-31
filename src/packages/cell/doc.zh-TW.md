@@ -70,14 +70,14 @@ export default App;
 ```tsx
 import  React from "react";
 import { Cell } from '@nutui/nutui-react';
-import { My } from '@nutui/icons-react'
+import { User } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Cell
         title={
         <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-            <My />
+            <User />
             我是標題<span style={{ marginLeft: '5px' }}>{translated.title}</span>
         </div>
         }

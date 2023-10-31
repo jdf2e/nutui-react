@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {
-  My,
+  User,
   Cart,
   Location,
   Service,
@@ -116,7 +116,7 @@ const PopoverDemo = () => {
     {
       key: 'key1',
       name: 'option1',
-      icon: <My color="rgba(250, 44, 25, 1)" />,
+      icon: <User color="rgba(250, 44, 25, 1)" />,
       action: {
         icon: <Close />,
         onClick: (e: any) => {

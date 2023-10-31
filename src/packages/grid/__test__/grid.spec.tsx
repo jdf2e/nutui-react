@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { Dongdong, My } from '@nutui/icons-react'
+import { Dongdong, User } from '@nutui/icons-react'
 import { Grid } from '../grid'
 import Avatar from '@/packages/avatar'
 import Image from '@/packages/image'
@@ -180,7 +180,7 @@ test('render with custom content', () => {
           text={
             <Avatar
               className="demo-avatar"
-              icon={<My color="#fff" />}
+              icon={<User color="#fff" />}
               background="#FA2C19"
             />
           }
@@ -188,7 +188,7 @@ test('render with custom content', () => {
         <Grid.Item>
           <Avatar
             className="demo-avatar"
-            icon={<My color="#fff" />}
+            icon={<User color="#fff" />}
             background="#FA2C19"
           />
         </Grid.Item>

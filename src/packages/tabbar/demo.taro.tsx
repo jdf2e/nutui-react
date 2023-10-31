@@ -1,6 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react-taro'
+import { Cart, Category, Find, Home, User } from '@nutui/icons-react-taro'
 import { Tabbar } from '@/packages/nutui.react.taro'
 import '@/packages/tabbar/demo.scss'
 import { useTranslate } from '@/sites/assets/locale/taro'
@@ -88,7 +88,7 @@ const TabbarDemo = () => {
           <Tabbar.Item title={translated.d04fcbda} icon={<Category />} />
           <Tabbar.Item title={translated.a52bef0c} icon={<Find />} />
           <Tabbar.Item title={translated['7db1a8b2']} icon={<Cart />} />
-          <Tabbar.Item title={translated.e51e4582} icon={<My />} />
+          <Tabbar.Item title={translated.e51e4582} icon={<User />} />
         </Tabbar>
 
         <h2>{translated.c38a08ef}</h2>
@@ -97,7 +97,7 @@ const TabbarDemo = () => {
           <Tabbar.Item title={translated.d04fcbda} icon={<Category />} />
           <Tabbar.Item title={translated.a52bef0c} icon={<Find />} />
           <Tabbar.Item title={translated['7db1a8b2']} icon={<Cart />} />
-          <Tabbar.Item title={translated.e51e4582} icon={<My />} />
+          <Tabbar.Item title={translated.e51e4582} icon={<User />} />
         </Tabbar>
 
         <h2>{translated.ce5c5448}</h2>
@@ -110,7 +110,7 @@ const TabbarDemo = () => {
           <Tabbar.Item title={translated.d04fcbda} icon={<Category />} />
           <Tabbar.Item icon={<Find size={24} />} />
           <Tabbar.Item title={translated['7db1a8b2']} icon={<Cart />} />
-          <Tabbar.Item title={translated.e51e4582} icon={<My />} />
+          <Tabbar.Item title={translated.e51e4582} icon={<User />} />
         </Tabbar>
 
         <h2>{translated.ce5c5440}</h2>
@@ -136,7 +136,7 @@ const TabbarDemo = () => {
             icon={<Cart />}
             value={110}
           />
-          <Tabbar.Item title={translated.e51e4582} icon={<My />} />
+          <Tabbar.Item title={translated.e51e4582} icon={<User />} />
         </Tabbar>
 
         <h2>{translated.c9e6df49}</h2>
@@ -145,7 +145,7 @@ const TabbarDemo = () => {
           <Tabbar.Item title={translated.d04fcbda} icon={<Category />} />
           <Tabbar.Item title={translated.a52bef0c} icon={<Find />} />
           <Tabbar.Item title={translated['7db1a8b2']} icon={<Cart />} dot />
-          <Tabbar.Item title={translated.e51e4582} icon={<My />} />
+          <Tabbar.Item title={translated.e51e4582} icon={<User />} />
         </Tabbar>
 
         <h2>{translated.a74a1fd4}</h2>
@@ -154,7 +154,7 @@ const TabbarDemo = () => {
           <Tabbar.Item title={translated.d04fcbda} icon={<Category />} />
           <Tabbar.Item title={translated.a52bef0c} icon={<Find />} />
           <Tabbar.Item title={translated['7db1a8b2']} icon={<Cart />} />
-          <Tabbar.Item title={translated.e51e4582} icon={<My />} />
+          <Tabbar.Item title={translated.e51e4582} icon={<User />} />
         </Tabbar>
 
         <h2>{translated['8dab2f66']}</h2>
@@ -170,7 +170,7 @@ const TabbarDemo = () => {
           <Tabbar.Item title={translated.d04fcbda} icon={<Category />} />
           <Tabbar.Item title={translated.a52bef0c} icon={<Find />} />
           <Tabbar.Item title={translated['7db1a8b2']} icon={<Cart />} />
-          <Tabbar.Item title={translated.e51e4582} icon={<My />} />
+          <Tabbar.Item title={translated.e51e4582} icon={<User />} />
         </Tabbar>
       </div>
     </>

@@ -49,8 +49,8 @@ exports[`render with custom content 1`] = `
             style="background-color: rgb(250, 44, 25);"
           >
             <svg
-              aria-labelledby="My"
-              class=" icon nut-icon nut-icon-My"
+              aria-labelledby="User"
+              class=" icon nut-icon nut-icon-User"
               color="#fff"
               role="presentation"
               viewBox="0 0 1024 1024"
@@ -78,8 +78,8 @@ exports[`render with custom content 1`] = `
           style="background-color: rgb(250, 44, 25);"
         >
           <svg
-            aria-labelledby="My"
-            class=" icon nut-icon nut-icon-My"
+            aria-labelledby="User"
+            class=" icon nut-icon nut-icon-User"
             color="#fff"
             role="presentation"
             viewBox="0 0 1024 1024"

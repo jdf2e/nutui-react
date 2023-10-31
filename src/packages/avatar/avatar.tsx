@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import type { MouseEvent } from 'react'
 import classNames from 'classnames'
-import { My } from '@nutui/icons-react'
+import { User } from '@nutui/icons-react'
 import { AvatarContext } from '@/packages/avatargroup/context'
 import Image from '@/packages/image'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -169,7 +169,7 @@ export const Avatar: FunctionComponent<
                   })
                 : null}
               {children && <span className="text">{children}</span>}
-              {!src && !icon && !children && <My className="icon" />}
+              {!src && !icon && !children && <User className="icon" />}
             </>
           )}
           {/* 折叠头像 */}

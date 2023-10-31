@@ -2,7 +2,7 @@ import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react'
+import { Cart, Category, Find, Home, User } from '@nutui/icons-react'
 import { Tabbar } from '../tabbar'
 
 test('should render tabbar when default', () => {
@@ -13,7 +13,7 @@ test('should render tabbar when default', () => {
         <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
         <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
         <Tabbar.Item title="购物车" icon={<Cart width={20} height={20} />} />
-        <Tabbar.Item title="我的" icon={<My width={20} height={20} />} />
+        <Tabbar.Item title="我的" icon={<User width={20} height={20} />} />
       </Tabbar>
     </>
   )

@@ -1,5 +1,5 @@
 import React from 'react'
-import { My, ArrowRight } from '@nutui/icons-react-taro'
+import { User, ArrowRight } from '@nutui/icons-react-taro'
 import Taro, { redirectTo, navigateTo } from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Switch, Cell } from '@/packages/nutui.react.taro'
@@ -130,7 +130,7 @@ const CellDemo = () => {
         <Cell
           title={
             <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-              <My />
+              <User />
               <span style={{ marginLeft: '5px' }}>{translated.title}</span>
             </div>
           }

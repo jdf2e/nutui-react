@@ -73,7 +73,7 @@ export default App
 ```tsx
 import React, { useState, useRef } from 'react'
 import { Popover, Button } from '@nutui/nutui-react'
-import { My, Cart, Location, Close } from '@nutui/icons-react'
+import { User, Cart, Location, Close } from '@nutui/icons-react'
 
 const App = () => {
   const [showIcon, setShowIcon] = useState(false)
@@ -82,7 +82,7 @@ const App = () => {
     {
       key: 'key1',
       name: 'option1',
-      icon: <My color="rgba(250, 44, 25, 1)"  />,
+      icon: <User color="rgba(250, 44, 25, 1)"  />,
       action: {
         icon: <Close />,
         onClick: (e: any) => {
@@ -406,7 +406,7 @@ export default App
 ```tsx
 import React, { useState, useRef } from 'react'
 import { Popover, Button } from '@nutui/nutui-react'
-import { My, Cart, Location } from '@nutui/icons-react'
+import { User, Cart, Location } from '@nutui/icons-react'
 
 const App = () => {
   const [customTarget, setCustomTarget] = useState(false)
@@ -414,7 +414,7 @@ const App = () => {
     {
       key: 'key1',
       name: 'option1',
-      icon: <My color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />,
+      icon: <User color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />,
     },
     {
       key: 'key2',

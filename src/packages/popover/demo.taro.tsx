@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import {
   Cart,
-  My,
+  User,
   Category,
   Location,
   Close,
@@ -116,7 +116,7 @@ const PopoverDemo = () => {
     {
       key: 'key1',
       name: 'option1',
-      icon: <My color="rgba(250, 44, 25, 1)" />,
+      icon: <User color="rgba(250, 44, 25, 1)" />,
       action: {
         icon: <Close />,
         onClick: (e: any) => {

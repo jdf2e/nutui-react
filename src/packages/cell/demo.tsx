@@ -1,5 +1,5 @@
 import React from 'react'
-import { My, ArrowRight } from '@nutui/icons-react'
+import { User, ArrowRight } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import Cell from './index'
 import { Switch } from '../switch/switch'
@@ -129,7 +129,7 @@ const CellDemo = () => {
         <Cell
           title={
             <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-              <My />
+              <User />
               <span style={{ marginLeft: '5px' }}>{translated.title}</span>
             </div>
           }

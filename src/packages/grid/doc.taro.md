@@ -225,7 +225,7 @@ export default App
 ```tsx
 import React from 'react'
 import { Grid, Avatar } from '@nutui/nutui-react-taro'
-import { Dongdong, My } from '@nutui/icons-react-taro'
+import { Dongdong, User } from '@nutui/icons-react-taro'
 
 const App = () => {
   return (
@@ -234,7 +234,7 @@ const App = () => {
       <Grid.Item>
         <Avatar
           className="demo-avatar"
-          icon={<My color="#fff"/>}
+          icon={<User color="#fff"/>}
           background="#FA2C19"
         />
       </Grid.Item>

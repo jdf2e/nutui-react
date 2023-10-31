@@ -70,14 +70,14 @@ export default App;
 ```tsx
 import  React from "react";
 import { Cell } from '@nutui/nutui-react-taro';
-import { My } from '@nutui/icons-react-taro'
+import { User } from '@nutui/icons-react-taro'
 
 const App = () => {
   return (
     <Cell
         title={
         <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-            <My />
+            <User />
             我是标题<span style={{ marginLeft: '5px' }}>{translated.title}</span>
         </div>
         }

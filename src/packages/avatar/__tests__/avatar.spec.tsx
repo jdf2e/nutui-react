@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { My } from '@nutui/icons-react'
+import { User } from '@nutui/icons-react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
@@ -44,8 +44,8 @@ test('color props', () => {
 })
 
 test('icon props', () => {
-  const { container } = render(<Avatar icon={<My />} />)
-  expect(container.querySelector('.nut-icon')).toHaveClass('nut-icon-My')
+  const { container } = render(<Avatar icon={<User />} />)
+  expect(container.querySelector('.nut-icon')).toHaveClass('nut-icon-User')
 })
 
 test('url props', () => {

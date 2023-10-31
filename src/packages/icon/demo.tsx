@@ -1,6 +1,12 @@
 import React from 'react'
 import '@nutui/icons-react/dist/style_iconfont.css'
-import { Add, IconFontConfig, IconFont, Dongdong } from '@nutui/icons-react'
+import {
+  Add,
+  IconFontConfig,
+  IconFont,
+  Dongdong,
+  UserAdd,
+} from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import Cell from '../cell'
 import Toast from '../toast'
@@ -97,6 +103,7 @@ const IconDemo = () => {
         <h2>{translated.svg}</h2>
         <Cell>
           <Add color="red" />
+          <UserAdd />
           <Dongdong />
         </Cell>
         <h2>{translated['84aa6bce']}</h2>
