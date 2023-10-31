@@ -106,8 +106,6 @@
     &.next,
     &.disabled {
       color: $calendar-disable-color;
-    }
-    &.disabled {
       cursor: not-allowed;
     }
   }
