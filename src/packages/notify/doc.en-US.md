@@ -194,7 +194,7 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-notify-height | Height of notify | `40px` |
 | \--nutui-notify-padding | Inside margin of notify | `0 10px` |
-| \--nutui-notify-font-size | The font size of notify | `$font-size` |
+| \--nutui-notify-font-size | The font size of notify | `$font-size-base` |
 | \--nutui-notify-text-color | The text color of notify | `$white` |
 | \--nutui-notify-base-background-color | The background color of notify | `$color-primary-gradient-1` |
 | \--nutui-notify-primary-background-color | The main notify background color | `$color-info` |

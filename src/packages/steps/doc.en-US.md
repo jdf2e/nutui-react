@@ -527,7 +527,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-steps-base-icon-font-size | The font size of the icon container |  `$font-size-small` |
 | \--nutui-steps-base-line-width | The width of the dividing line | `100%` |
 | \--nutui-steps-base-line-background | The background color of the dividing line | `$color-text-help` |
-| \--nutui-steps-base-title-font-size | The font size of the title | `$font-size` |
+| \--nutui-steps-base-title-font-size | The font size of the title | `$font-size-base` |
 | \--nutui-steps-base-title-color | Title color | `$color-title` |
 | \--nutui-steps-base-title-margin-bottom | Title bottom margin | `10px` |
 | \--nutui-steps-base-description-font-size | The font size of the description text | `$font-size-small` |
@@ -539,7 +539,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-steps-process-icon-bg-color | Process icon container background color | `$color-primary` |
 | \--nutui-steps-process-icon-color | Process icon container font color | `$white` |
 | \--nutui-steps-process-title-color | Process title font color | `$color-primary` |
-| \--nutui-steps-process-title-font-size | Process title font size | `$font-size` |
+| \--nutui-steps-process-title-font-size | Process title font size | `$font-size-base` |
 | \--nutui-steps-process-title-font-weight | Process title font weight | `$font-weight-bold` |
 | \--nutui-steps-process-description-color | Process description font color | `$color-text` |
 | \--nutui-steps-finish-icon-bg-color | background color of finish status icon container | `$color-primary-text` |

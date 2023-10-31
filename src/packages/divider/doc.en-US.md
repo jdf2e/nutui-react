@@ -166,7 +166,7 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-divider-margin | The margin value of the overall content of the dividing line | `16px 0` |
 | \--nutui-divider-border-color | The border color of the divider | `$color-border` |
-| \--nutui-divider-text-font-size | The font-size of the overall content of the dividing line | `$font-size` |
+| \--nutui-divider-text-font-size | The font-size of the overall content of the dividing line | `$font-size-base` |
 | \--nutui-divider-text-color | The color of the overall content of the dividing line | `$color-title` |
 | \--nutui-divider-line-height | The row height of the dividing line | `2px` |
 | \--nutui-divider-spacing | The spacing value between the dividing line of the text | `8px` |

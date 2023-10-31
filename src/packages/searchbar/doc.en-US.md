@@ -260,7 +260,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-searchbar-background | searchbar background | `$color-background` |
 | \--nutui-searchbar-color | searchbar font color | `$color-title` |
 | \--nutui-searchbar-gap | searchbar gap | `16px` |
-| \--nutui-searchbar-font-size | searchbar font size | `$font-size` |
+| \--nutui-searchbar-font-size | searchbar font size | `$font-size-base` |
 | \--nutui-searchbar-content-padding | searchbar content padding | `0px 12px` |
 | \--nutui-searchbar-content-background | searchbar content background | `$color-background-overlay` |
 | \--nutui-searchbar-content-border-radius | searchbar content border radius | `4px` |

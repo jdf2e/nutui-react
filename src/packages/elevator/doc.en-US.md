@@ -572,7 +572,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-elevator-list-item-padding | Floor area list item inside margin | `0 20px` | 
 | \--nutui-elevator-list-item-name-height | Height of floor area list item | `30px` | 
 | \--nutui-elevator-list-item-name-line-height | Floor area list item row height | `30px` | 
-| \--nutui-elevator-list-item-code-font-size | Floor area list item heading font size | `$font-size` | 
+| \--nutui-elevator-list-item-code-font-size | Floor area list item heading font size | `$font-size-base` | 
 | \--nutui-elevator-list-item-code-color | Floor area list item heading color | `$color-title` |
 | \--nutui-elevator-list-item-code-font-weight | Floor area list item heading font size | `$font-weight-bold` | 
 | \--nutui-elevator-list-item-code-height | Floor area list item heading height | `35px` | 

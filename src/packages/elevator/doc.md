@@ -572,7 +572,7 @@ export default App
 | \--nutui-elevator-list-item-padding | 楼层区域列表项内边距 | `0 20px` |
 | \--nutui-elevator-list-item-name-height | 楼层区域列表项高度 | `30px` |
 | \--nutui-elevator-list-item-name-line-height | 楼层区域列表项行高 | `30px` |
-| \--nutui-elevator-list-item-code-font-size | 楼层区域列表项标题字体大小 | `$font-size` |
+| \--nutui-elevator-list-item-code-font-size | 楼层区域列表项标题字体大小 | `$font-size-base` |
 | \--nutui-elevator-list-item-code-color | 楼层区域列表项标题颜色 | `$color-title` |
 | \--nutui-elevator-list-item-code-font-weight | 楼层区域列表项标题字体粗细 | `$font-weight-bold` |
 | \--nutui-elevator-list-item-code-height | 楼层区域列表项标题高度 | `35px` |

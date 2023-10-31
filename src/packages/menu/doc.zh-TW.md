@@ -356,7 +356,7 @@ export default App
 | \--nutui-menu-bar-opened-z-index | 打開狀態的 z-index | `2001` |
 | \--nutui-menu-bar-box-shadow | 菜單標題欄的陰影 | `0 2px 12px rgba(89, 89, 89, 0.12)` |
 | \--nutui-menu-title-padding | 標題的內邊距 | `8px` |
-| \--nutui-menu-title-font-size | 標題的字號 | `$font-size` |
+| \--nutui-menu-title-font-size | 標題的字號 | `$font-size-base` |
 | \--nutui-menu-title-color | 標題的顏色 | `$color-title` |
 | \--nutui-menu-container-z-index | 菜單選項容器的zindex | `1000` |
 | \--nutui-menu-content-padding | 菜單選項容器的內邊距 | `12px 24px` |

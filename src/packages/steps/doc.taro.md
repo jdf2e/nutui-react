@@ -528,7 +528,7 @@ export default App;
 | \--nutui-steps-base-icon-font-size | icon 容器的字号 | `$font-size-small` |
 | \--nutui-steps-base-line-width | 分割线的宽度 | `100%` |
 | \--nutui-steps-base-line-background | 分割线的背景色 | `$color-text-help` |
-| \--nutui-steps-base-title-font-size | 标题的字号 | `$font-size` |
+| \--nutui-steps-base-title-font-size | 标题的字号 | `$font-size-base` |
 | \--nutui-steps-base-title-color | 标题的颜色 | `$color-title` |
 | \--nutui-steps-base-title-margin-bottom | 标题底部外边距 | `10px` |
 | \--nutui-steps-base-description-font-size | 描述文案的字号 | `$font-size-small` |
@@ -540,7 +540,7 @@ export default App;
 | \--nutui-steps-process-icon-bg-color | 进行中icon容器背景色 | `$color-primary` |
 | \--nutui-steps-process-icon-color | 进行中icon容器字体颜色 | `$white` |
 | \--nutui-steps-process-title-color | 进行中标题字体颜色 | `$color-primary` |
-| \--nutui-steps-process-title-font-size | 进行中标题字号 | `$font-size` |
+| \--nutui-steps-process-title-font-size | 进行中标题字号 | `$font-size-base` |
 | \--nutui-steps-process-title-font-weight | 进行中标题字重 | `$font-weight-bold` |
 | \--nutui-steps-process-description-color | 进行中描述字体颜色 | `$color-text` |
 | \--nutui-steps-finish-icon-bg-color | 完成状态icon 容器的背景色 | `$color-primary-text` |

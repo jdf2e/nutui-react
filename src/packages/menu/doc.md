@@ -356,7 +356,7 @@ export default App
 | \--nutui-menu-bar-opened-z-index | 打开状态的 z-index | `2001` |
 | \--nutui-menu-bar-box-shadow | 菜单标题栏的阴影 | `0 2px 12px rgba(89, 89, 89, 0.12)` |
 | \--nutui-menu-title-padding | 标题的内边距 | `8px` |
-| \--nutui-menu-title-font-size | 标题的字号 | `$font-size` |
+| \--nutui-menu-title-font-size | 标题的字号 | `$font-size-base` |
 | \--nutui-menu-title-color | 标题的颜色 | `$color-title` |
 | \--nutui-menu-container-z-index | 菜单选项容器的zindex | `1000` |
 | \--nutui-menu-content-padding | 菜单选项容器的内边距 | `12px 24px` |

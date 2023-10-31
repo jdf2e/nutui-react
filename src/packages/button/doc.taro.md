@@ -462,10 +462,10 @@ export default App;
 | \--nutui-button-default-border-color | type 为 default 的按钮的边框色 | `$color-text` |
 | \--nutui-button-default-disabled | type 为 default 的按钮的禁用色 | `$color-text-disabled` |
 | \--nutui-button-default-padding | type 为 default 的按钮的内边距 | `0 16px` |
-| \--nutui-button-default-font-size | type 为 default 的按钮的字号 | `$font-size` |
+| \--nutui-button-default-font-size | type 为 default 的按钮的字号 | `$font-size-base` |
 | \--nutui-button-default-font-weight | type 为 default 的按钮的字重 | `$font-weight` |
 | \--nutui-button-large-height | size 为 large 的按钮的高度 | `40px` |
-| \--nutui-button-large-font-size | size 为 large 的按钮的字号 | `$font-size` |
+| \--nutui-button-large-font-size | size 为 large 的按钮的字号 | `$font-size-base` |
 | \--nutui-button-small-padding | size 为 small 的按钮的内边距 | `0 12px` |
 | \--nutui-button-small-height | size 为 small 的按钮的高度 | `28px` |
 | \--nutui-button-small-font-size | size 为 small 的按钮的字号 | `$font-size-small` |

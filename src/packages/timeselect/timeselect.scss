@@ -27,7 +27,7 @@
   line-height: $timeselect-date-height;
   text-align: left;
   color: $color-text;
-  font-size: $font-size;
+  font-size: $font-size-base;
 
   &.active {
     background: $color-background-overlay;

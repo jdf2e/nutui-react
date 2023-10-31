@@ -19,7 +19,7 @@
     display: flex;
     align-items: center;
     color: $color-title;
-    font-size: $font-size;
+    font-size: $font-size-base;
     padding: $menu-item-padding;
 
     &.active {

@@ -312,7 +312,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-button-default-border-color | The border color of the button whose type is default | `$color-text` |
 | \--nutui-button-default-disabled | The color of the button whose type is default and whose status is disable | `$color-text-disabled` |
 | \--nutui-button-default-padding | padding of buttons with type default | `0 16px` |
-| \--nutui-button-default-font-size | The font size of the button whose type is default | `$font-size` |
+| \--nutui-button-default-font-size | The font size of the button whose type is default | `$font-size-base` |
 | \--nutui-button-default-font-weight |The font weight of the button whose type is default | `$font-weight` |
 | \--nutui-button-large-height | The height of the button whose size is large | `40px` |
 | \--nutui-button-large-font-size | The font size of buttons whose size is large | `$button-default-font-size` |

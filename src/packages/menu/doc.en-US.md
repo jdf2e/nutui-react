@@ -367,7 +367,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-menu-bar-opened-z-index | z-index of opened state | `2001` |
 | \--nutui-menu-bar-box-shadow | Shadow of menu title bar | `0 2px 12px rgba(89, 89, 89, 0.12)` |
 | \--nutui-menu-title-padding |  Padding of title | `0 8px` |
-| \--nutui-menu-title-font-size | The font size of the title | `$font-size` |
+| \--nutui-menu-title-font-size | The font size of the title | `$font-size-base` |
 | \--nutui-menu-title-color | Title color | `$color-title` |
 | \--nutui-menu-container-z-index | zindex of container | `1000` |
 | \--nutui-menu-content-padding | Padding of menu item container  | `12px 24px` |

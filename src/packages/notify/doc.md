@@ -193,7 +193,7 @@ export default App
 | --- | --- | --- |
 | \--nutui-notify-height | 消息通知的高度 | `40px` |
 | \--nutui-notify-padding | 消息通知的内边距 | `0 10px` |
-| \--nutui-notify-font-size | 消息通知的字体大小 | `$font-size` |
+| \--nutui-notify-font-size | 消息通知的字体大小 | `$font-size-base` |
 | \--nutui-notify-text-color | 消息通知的文本颜色 | `$white` |
 | \--nutui-notify-base-background-color | 消息通知的背景颜色 | `$color-primary-gradient-1` |
 | \--nutui-notify-primary-background-color | 主要通知的背景颜色 | `$color-info` |

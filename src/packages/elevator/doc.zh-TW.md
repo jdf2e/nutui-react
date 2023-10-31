@@ -572,7 +572,7 @@ export default App
 | \--nutui-elevator-list-item-padding | 樓層區域列錶項內邊距 | `0 20px` |
 | \--nutui-elevator-list-item-name-height | 樓層區域列錶項高度 | `30px` |
 | \--nutui-elevator-list-item-name-line-height | 樓層區域列錶項行高 | `30px` |
-| \--nutui-elevator-list-item-code-font-size | 樓層區域列錶項標題字體大小 | `$font-size` |
+| \--nutui-elevator-list-item-code-font-size | 樓層區域列錶項標題字體大小 | `$font-size-base` |
 | \--nutui-elevator-list-item-code-color | 樓層區域列錶項標題顏色 | `$color-title` |
 | \--nutui-elevator-list-item-code-font-weight | 樓層區域列錶項標題字體粗細 | `$font-weight-bold` |
 | \--nutui-elevator-list-item-code-height | 樓層區域列錶項標題高度 | `35px` |

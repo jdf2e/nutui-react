@@ -261,7 +261,7 @@ export default App;
 | \--nutui-searchbar-background | 搜索框背景色 | `$color-background` |
 | \--nutui-searchbar-color | 搜索框字色 | `$color-title` |
 | \--nutui-searchbar-gap | 搜索框各个间距 | `16px` |
-| \--nutui-searchbar-font-size | 搜索框字号 | `$font-size` |
+| \--nutui-searchbar-font-size | 搜索框字号 | `$font-size-base` |
 | \--nutui-searchbar-content-padding | 搜索框中间内容区的padding值 | `0px 12px` |
 | \--nutui-searchbar-content-background | 搜索框中间内容区的背景色 | `$color-background-overlay` |
 | \--nutui-searchbar-content-border-radius | 搜索框内容区圆角 | `4px` |
