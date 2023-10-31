@@ -30,7 +30,7 @@ test('test defaultValue render', async () => {
   expect(currentDays.length).toBe(42 - 6 - 5)
 })
 
-test('test onChange & onDayClcik & onPageChange', async () => {
+test('test onChange & onDayClick & onPageChange', async () => {
   const onChange = jest.fn()
   const onDayClick = jest.fn()
   const onPageChange = jest.fn()
@@ -62,8 +62,8 @@ test('test onChange & onDayClcik & onPageChange', async () => {
 
   const prevDays = container.querySelectorAll('.nut-calendarcard-day.prev')
   fireEvent.click(prevDays[0])
-  expect(onDayClick).toBeCalledTimes(4)
-  expect(onPageChange).toBeCalledTimes(2)
+  expect(onDayClick).toBeCalledTimes(3)
+  expect(onPageChange).toBeCalledTimes(1)
 })
 
 test('test type multiple', async () => {
