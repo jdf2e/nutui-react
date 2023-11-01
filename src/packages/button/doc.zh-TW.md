@@ -292,7 +292,7 @@ export default App;
 | size | 按鈕的尺寸 | `normal` \| `large` \| `small` | `normal` |
 | shape | 按鈕的形狀 | `square` \| `round` | `round` |
 | color | 按鈕顏色，支持傳入 linear-gradient 漸變色 | `string` | `-` |
-| fill | 填充模式 | `solid` \| `ouline` \| `none` | `solid` |
+| fill | 填充模式 | `solid` \| `ouline`  \| `dashed` \| `none` | `solid` |
 | disabled | 是否禁用按鈕 | `boolean` | `false` |
 | block | 是否為塊級元素 | `boolean` | `false` |
 | icon | 按鈕圖標 | `ReactNode` | `-` |

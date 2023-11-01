@@ -163,6 +163,9 @@ const ButtonDemo = () => {
           <Button type="primary" fill="outline" style={{ margin: 8 }}>
             Outline
           </Button>
+          <Button type="primary" fill="dashed" style={{ margin: 8 }}>
+            Dashed
+          </Button>
           <Button fill="none" style={{ margin: 8 }}>
             None
           </Button>

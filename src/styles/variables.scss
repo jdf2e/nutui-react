@@ -191,6 +191,10 @@ $animation-timing-fun: cubic-bezier(0.55, 0.085, 0.68, 0.53) !default;
 $padding-xs: var(--nutui-padding-xs, 12px) !default;
 
 // button（✅）
+$button-square-border-radius: var(
+  --nutui-button-square-border-radius,
+  0
+) !default;
 $button-border-radius: var(--nutui-button-border-radius, 24px) !default;
 $button-border-width: var(--nutui-button-border-width, 1px) !default;
 
@@ -219,7 +223,9 @@ $button-default-font-weight: var(
   $font-weight
 ) !default;
 
+$button-large-width: var(--nutui-button-large-width, 100%) !default;
 $button-large-height: var(--nutui-button-large-height, 40px) !default;
+$button-large-padding: var(--nutui-button-large-padding, 0px 0px) !default;
 $button-large-font-size: var(
   --nutui-button-large-font-size,
   $font-size-base

@@ -211,6 +211,10 @@ $animation-timing-fun: cubic-bezier(0.55, 0.085, 0.68, 0.53) !default;
 $padding-xs: var(--nutui-padding-xs, 12px) !default;
 
 // button（✅）
+$button-square-border-radius: var(
+  --nutui-button-square-border-radius,
+  $radius-s
+) !default;
 $button-border-radius: var(--nutui-button-border-radius, 24px) !default;
 $button-border-width: var(--nutui-button-border-width, 1px) !default;
 
@@ -248,6 +252,7 @@ $button-default-font-weight: var(
   $font-weight
 ) !default;
 
+$button-large-width: var(--nutui-button-large-width, auto) !default;
 $button-large-height: var(--nutui-button-large-height, 44px) !default;
 $button-large-padding: var(
   --nutui-button-large-padding,
@@ -351,7 +356,10 @@ $button-text-icon-margin: var(--nutui-button-text-icon-margin, 4px) !default;
 
 // cell（✅）
 $cell-title-color: var(--nutui-cell-title-color, $color-text-title) !default;
-$cell-title-font-size: var(--nutui-cell-title-font-size, $font-size) !default;
+$cell-title-font-size: var(
+  --nutui-cell-title-font-size,
+  $font-size-base
+) !default;
 $cell-description-font-size: var(
   --nutui-cell-description-font-size,
   $font-size-small
@@ -360,7 +368,10 @@ $cell-description-color: var(
   --nutui-cell-description-color,
   $color-text
 ) !default;
-$cell-extra-font-size: var(--nutui-cell-extra-font-size, $font-size) !default;
+$cell-extra-font-size: var(
+  --nutui-cell-extra-font-size,
+  $font-size-base
+) !default;
 $cell-extra-color: var(--nutui-cell-extra-color, $color-text) !default;
 $cell-border-radius: var(--nutui-cell-border-radius, 6px) !default;
 $cell-padding: var(--nutui-cell-padding, 13px 16px) !default;

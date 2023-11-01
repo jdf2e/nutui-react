@@ -88,7 +88,8 @@
       }
     }
 
-    &.nut-button--outline {
+    &.nut-button--outline,
+    &.nut-button--dashed {
       background: transparent;
 
       &.nut-button--disabled {
@@ -103,8 +104,9 @@
   }
 
   &--large {
-    width: 100%;
+    width: $button-large-width;
     height: $button-large-height;
+    padding: $button-large-padding;
     font-size: $button-large-font-size;
   }
 
@@ -149,6 +151,17 @@
         border-color: $button-primary-disabled;
       }
     }
+
+    &.nut-button--dashed {
+      background: transparent;
+      color: $button-primary-border-color;
+      border: $button-border-width dashed $button-primary-border-color;
+
+      &.nut-button--disabled {
+        color: $button-primary-disabled;
+        border-color: $button-primary-disabled;
+      }
+    }
   }
 
   &--success {
@@ -161,7 +174,8 @@
       border-color: $button-success-disabled;
     }
 
-    &.nut-button--outline {
+    &.nut-button--outline,
+    &.nut-button--dashed {
       color: $button-success-border-color;
       border-color: $button-success-border-color;
       background: transparent;
@@ -187,7 +201,8 @@
       border-color: $button-danger-disabled;
     }
 
-    &.nut-button--outline {
+    &.nut-button--outline,
+    &.nut-button--dashed {
       color: $button-danger-border-color;
       border-color: $button-danger-border-color;
       background: transparent;
@@ -213,7 +228,8 @@
       border-color: $button-warning-disabled;
     }
 
-    &.nut-button--outline {
+    &.nut-button--outline,
+    &.nut-button--dashed {
       color: $button-warning-border-color;
       border-color: $button-warning-border-color;
       background: transparent;
@@ -246,7 +262,8 @@
     }
   }
 
-  &.nut-button--outline {
+  &.nut-button--outline,
+  &.nut-button--dashed {
     background: transparent;
   }
 
@@ -274,6 +291,6 @@
   }
 
   &--square {
-    border-radius: 0;
+    border-radius: $button-square-border-radius;
   }
 }
