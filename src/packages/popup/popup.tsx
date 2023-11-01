@@ -60,7 +60,7 @@ const defaultProps = {
 } as PopupProps
 
 // 默认1000，参看variables
-let _zIndex = 1100
+const _zIndex = 1100
 
 export const Popup: FunctionComponent<
   Partial<PopupProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
@@ -96,7 +96,8 @@ export const Popup: FunctionComponent<
     onClick,
   } = { ...defaultProps, ...props }
   const nodeRef = React.useRef(null)
-  const [index, setIndex] = useState(zIndex || _zIndex)
+  let innerIndex = zIndex || _zIndex
+  const [index, setIndex] = useState(innerIndex)
   const [innerVisible, setInnerVisible] = useState(visible)
   const [showChildren, setShowChildren] = useState(true)
   const [transitionName, setTransitionName] = useState('')
@@ -131,7 +132,7 @@ export const Popup: FunctionComponent<
   const open = () => {
     if (!innerVisible) {
       setInnerVisible(true)
-      setIndex(++_zIndex)
+      setIndex(++innerIndex)
     }
     if (destroyOnClose) {
       setShowChildren(true)
