@@ -146,7 +146,11 @@ export const Input = forwardRef(
       }
       setValue(val)
       const eventHandler = props[trigger]
-      if (eventHandler && typeof eventHandler === 'function') {
+      if (
+        eventHandler &&
+        typeof eventHandler === 'function' &&
+        trigger !== 'onChange'
+      ) {
         eventHandler(val)
       }
     }

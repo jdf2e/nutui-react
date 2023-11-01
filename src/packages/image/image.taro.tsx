@@ -5,10 +5,12 @@ import React, {
   useCallback,
   CSSProperties,
 } from 'react'
+import Taro from '@tarojs/taro'
 import { Image as TImage, ImageProps as TImageProps } from '@tarojs/components'
-import { ImageError, Image as ImageIcon } from '@nutui/icons-react-taro'
+import { Image as ImageIcon, ImageError } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { BaseEventOrig } from '@tarojs/components/types/common'
+import { pxCheck } from '@/utils/px-check'
 
 export interface ImageProps extends Omit<TImageProps, 'style'> {
   style?: CSSProperties
@@ -58,12 +60,11 @@ export const Image: FunctionComponent<Partial<ImageProps>> = (props) => {
     }
   }
 
-  const pxCheck = (value: string | number): string => {
-    return Number.isNaN(Number(value)) ? String(value) : `${value}px`
-  }
   const containerStyle = {
-    height: height ? pxCheck(height) : '',
-    width: width ? pxCheck(width) : '',
+    // eslint-disable-next-line no-nested-ternary
+    height: height ? pxCheck(height) : Taro.getEnv() === 'WEB' ? '' : '100%',
+    // eslint-disable-next-line no-nested-ternary
+    width: width ? pxCheck(width) : Taro.getEnv() === 'WEB' ? '' : '100%',
     overflow: radius !== undefined && radius !== null ? 'hidden' : '',
     borderRadius:
       radius !== undefined && radius !== null ? pxCheck(radius) : '',

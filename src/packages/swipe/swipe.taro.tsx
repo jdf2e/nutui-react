@@ -146,6 +146,7 @@ export const Swipe = forwardRef<
 
     if (touch.isHorizontal()) {
       lockClick.current = true
+      props.onTouchMove && props.onTouchMove(event)
       const newState = { ...state, dragging: true }
       const isEdge = !opened || touch.deltaX.current * startOffset.current < 0
       if (isEdge) {
@@ -273,7 +274,6 @@ export const Swipe = forwardRef<
       onTouchMove={(e) => onTouchMove(e)}
       onTouchEnd={(e) => onTouchEnd(e)}
       style={style}
-      catchMove
     >
       <div className={`${classPrefix}__wrapper`} style={wrapperStyle}>
         {renderActionContent('left')}

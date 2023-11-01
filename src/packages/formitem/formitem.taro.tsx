@@ -199,14 +199,16 @@ export class FormItem extends React.Component<
         ) : null}
         <div className="nut-cell__value nut-form-item__body">
           <div className="nut-form-item__body__slots">{childNode}</div>
-          {item && item.length > 0 && (
-            <div
-              className="nut-form-item__body__tips"
-              style={{ textAlign: errorMessageAlign }}
-            >
-              {item[0].message}
-            </div>
-          )}
+
+          <div
+            className="nut-form-item__body__tips"
+            style={{
+              textAlign: errorMessageAlign,
+              display: item?.length ? 'inherit' : 'none',
+            }}
+          >
+            {item?.[0]?.message}
+          </div>
         </div>
       </Cell>
     )

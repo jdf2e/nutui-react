@@ -33,7 +33,7 @@ const defaultProps = {
   lockScroll: true,
   beforeCancel: () => true,
   beforeClose: () => true,
-  onOverlayClick: () => undefined,
+  onOverlayClick: () => true,
 } as DialogProps
 
 export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
