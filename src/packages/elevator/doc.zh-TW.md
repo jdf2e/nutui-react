@@ -578,6 +578,7 @@ export default App
 | \--nutui-elevator-list-item-code-height | 樓層區域列錶項標題高度 | `35px` |
 | \--nutui-elevator-list-item-code-line-height | 樓層區域列錶項標題行高 | `35px` |
 | \--nutui-elevator-list-item-code-border-bottom | 樓層區域列錶項標題下邊框寬度 | `1px solid $color-border` |
+| \--nutui-elevator-list-item-code-background-color | 樓層區域列錶項標題背景顏色 | `inherit` |
 | \--nutui-elevator-list-item-code-current-bg-color | 電梯提示背景顏色 | `#fff` |
 | \--nutui-elevator-list-item-code-current-border-radius | 電梯提示圓角 | `50%` |
 | \--nutui-elevator-list-item-code-current-width | 電梯提示寬度 | `45px` |

@@ -1976,6 +1976,10 @@ $elevator-list-item-code-border-bottom: var(
   --nutui-elevator-list-item-code-border-bottom,
   none
 ) !default;
+$elevator-list-item-code-background-color: var(
+  --nutui-elevator-list-item-code-background-color,
+  $color-default-light
+) !default;
 $elevator-list-item-code-current-box-shadow: 0px 2px 6px 0px
   rgba(4, 1, 135, 0.08) !default;
 $elevator-list-item-code-current-bg-color: var(
@@ -2019,13 +2023,13 @@ $elevator-bars-transform: var(
 $elevator-bars-padding: var(--nutui-elevator-bars-padding, 15px 0) !default;
 $elevator-bars-background-color: var(
   --nutui-elevator-bars-background-color,
-  $white
+  transparent
 ) !default;
 $elevator-bars-border-radius: var(
   --nutui-elevator-bars-border-radius,
   6px
 ) !default;
-$elevator-bars-z-index: var(--nutui-elevator-bars-z-index, 1) !default;
+$elevator-bars-z-index: var(--nutui-elevator-bars-z-index, 2) !default;
 $elevator-bars-inner-item-padding: var(
   --nutui-elevator-bars-inner-item-padding,
   3px
@@ -2044,7 +2048,7 @@ $elevator-list-fixed-color: var(
 ) !default;
 $elevator-list-fixed-bg-color: var(
   --nutui-elevator-list-fixed-bg-color,
-  $white
+  $color-default-light
 ) !default;
 $elevator-list-fixed-box-shadow: var(
   --nutui-elevator-list-fixed-box-shadow,

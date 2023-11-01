@@ -1905,6 +1905,10 @@ $elevator-list-item-code-border-bottom: var(
   --nutui-elevator-list-item-code-border-bottom,
   1px solid $color-border
 ) !default;
+$elevator-list-item-code-background-color: var(
+  --nutui-elevator-list-item-code-background-color,
+  inherit
+) !default;
 $elevator-list-item-code-current-box-shadow: 0 3px 3px 1px
   rgba(240, 240, 240, 1) !default;
 $elevator-list-item-code-current-bg-color: var(

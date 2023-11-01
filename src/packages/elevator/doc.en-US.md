@@ -578,6 +578,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-elevator-list-item-code-height | Floor area list item heading height | `35px` | 
 | \--nutui-elevator-list-item-code-line-height | Floor area list item header row height | `35px` | 
 | \--nutui-elevator-list-item-code-border-bottom | Width of bottom border of floor area list item heading | `1px solid $color-border` | 
+| \--nutui-elevator-list-item-code-background-color | background color of floor area list item heading | `inherit` |
 | \--nutui-elevator-list-item-code-current-bg-color | Elevator cue background color | `#fff` | 
 | \--nutui-elevator-list-item-code-current-border-radius | Elevator cue border radius | `50%` |
 | \--nutui-elevator-list-item-code-current-width | Elevator cue width | `45px` | 
