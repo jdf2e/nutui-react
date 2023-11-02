@@ -559,6 +559,12 @@ $input-disabled-color: var(
   $color-text-disabled
 ) !default;
 $input-font-size: var(--nutui-input-font-size, $font-size-base) !default;
+$input-border-radius: var(--nutui-input-border-radius, $radius-xs) !default;
+$input-color: var(--nutui-input-color, $color-text) !default;
+$input-background-color: var(
+  --nutui-input-background-color,
+  $color-default
+) !default;
 $input-padding: var(--nutui-input-padding, 8px 12px) !default;
 
 // textarea（✅）
