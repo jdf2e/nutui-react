@@ -976,11 +976,8 @@ $tabbar-inactive-color: var(
   --nutui-tabbar-inactive-color,
   $color-text
 ) !default;
-$tabbar-border-top: var(--nutui-tabbar-border-top, 1px solid #eee) !default;
-$tabbar-border-bottom: var(
-  --nutui-tabbar-border-bottom,
-  1px solid #eee
-) !default;
+$tabbar-border-top: var(--nutui-tabbar-border-top, none) !default;
+$tabbar-border-bottom: var(--nutui-tabbar-border-bottom, none) !default;
 $tabbar-box-shadow: var(--nutui-tabbar-box-shadow, none) !default;
 $tabbar-text-font-size: var(
   --nutui-tabbar-text-font-size,
@@ -988,7 +985,11 @@ $tabbar-text-font-size: var(
 ) !default;
 $tabbar-text-large-font-size: var(
   --nutui-tabbar-text-large-font-size,
-  $font-size-base
+  $font-h4
+) !default;
+$tabbar-text-large-font-weight: var(
+  --nutui-tabbar-text-large-font-weight,
+  $font-weight-bold
 ) !default;
 $tabbar-text-line-height: var(--nutui-tabbar-text-line-height, 20px) !default;
 $tabbar-height: var(--nutui-tabbar-height, 50px) !default;
