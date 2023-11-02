@@ -10,6 +10,7 @@ import {
 } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 import { CalendarValue } from './calendarcard'
+import { CalendarDay } from './type'
 
 interface T {
   single: string
