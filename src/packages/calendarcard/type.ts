@@ -5,3 +5,10 @@ export interface CalendarCardDay {
   month: number
   date: number
 }
+
+export interface CalendarCardMonth {
+  year: number
+  month: number
+}
+
+export type CalendarCardValue = Date | Date[] | null

@@ -10,14 +10,7 @@ import {
   getPrevMonthDays,
 } from './utils'
 import { useConfig } from '@/packages/configprovider/configprovider'
-import { CalendarCardDay } from './type'
-
-interface CalendarCardMonth {
-  year: number
-  month: number
-}
-
-export type CalendarCardValue = Date | Date[] | null
+import { CalendarCardDay, CalendarCardMonth, CalendarCardValue } from './type'
 
 export interface CalendarCardProps extends BasicComponent {
   // 日视图-选择一个日期 | 日视图-选择多个日期 | 日视图-选择范围 | 周视图-选择某一周
