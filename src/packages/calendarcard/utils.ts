@@ -12,7 +12,7 @@ export const convertDateToDay = (date: Date) => {
 }
 
 export const convertDayToDate = (day: CalendarDay) => {
-  return day ? new Date(`${day.year}-${day.month}-${day.date}`) : null
+  return day ? new Date(day.year, day.month - 1, day.date) : null
 }
 
 /**
@@ -69,7 +69,7 @@ export const getCurrentWeekDays = (
   day: CalendarDay,
   firstDayOfWeek: number
 ): CalendarDay[] => {
-  const current = new Date(`${day.year}-${day.month}-${day.date}`)
+  const current = new Date(day.year, day.month - 1, day.date)
   const count = (current.getDay() + 7 - firstDayOfWeek) % 7
   return [
     convertDateToDay(
