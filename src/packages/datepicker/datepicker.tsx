@@ -377,6 +377,9 @@ export const DatePicker: FunctionComponent<
     <div className={`nut-datepicker ${className}`} style={style} {...rest}>
       {options.length && (
         <Picker
+          popupProps={{
+            zIndex: 1220,
+          }}
           title={title}
           visible={visible}
           options={options}

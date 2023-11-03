@@ -7,7 +7,7 @@ import React, {
   useImperativeHandle,
 } from 'react'
 import classNames from 'classnames'
-import Popup from '@/packages/popup'
+import { Popup, PopupProps } from '@/packages/popup/popup'
 import PickerPanel from './pickerpanel'
 import useRefs from '@/utils/use-refs'
 import { useConfig } from '@/packages/configprovider'
@@ -28,6 +28,17 @@ export interface PickerProps extends Omit<BasicComponent, 'children'> {
   defaultValue?: (number | string)[]
   threeDimensional?: boolean
   duration: number | string
+  popupProps: Partial<
+    Omit<
+      PopupProps,
+      | 'closeIcon'
+      | 'closeable'
+      | 'title'
+      | 'left'
+      | 'closeIconPosition'
+      | 'onClose'
+    >
+  >
   onConfirm?: (
     selectedOptions: PickerOption[],
     selectedValue: (string | number)[]
@@ -57,7 +68,7 @@ const defaultProps = {
   defaultValue: [],
   threeDimensional: true,
   duration: 1000,
-} as PickerProps
+} as unknown as PickerProps
 const InternalPicker: ForwardRefRenderFunction<
   unknown,
   Partial<PickerProps>
@@ -68,6 +79,7 @@ const InternalPicker: ForwardRefRenderFunction<
     visible,
     title,
     options = [],
+    popupProps = {},
     defaultValue = [],
     className,
     style,
@@ -264,7 +276,7 @@ const InternalPicker: ForwardRefRenderFunction<
     if (moving) {
       isConfirmEvent.current = true
     } else {
-      setSelectedValue(innerValue)
+      setSelectedValue(innerValue, true)
       closePicker()
     }
     setTimeout(() => {
@@ -308,6 +320,7 @@ const InternalPicker: ForwardRefRenderFunction<
     <>
       {typeof children === 'function' && children(selectedValue)}
       <Popup
+        {...popupProps}
         visible={innerVisible}
         position="bottom"
         afterClose={() => {

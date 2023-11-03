@@ -297,7 +297,7 @@ const PopupDemo = () => {
         {/* <h2>{translated.ea3d02f2}</h2>
         <Cell
           title={translated.ea3d02f2}
-          
+
           onClick={() => {
             setShowMountNode(true)
           }}

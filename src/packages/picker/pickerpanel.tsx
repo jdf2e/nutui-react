@@ -6,7 +6,8 @@ import React, {
   useImperativeHandle,
 } from 'react'
 import { PickerOption } from './types'
-import { useTouch } from '../../utils/use-touch'
+import { useTouch } from '@/utils/use-touch'
+import { passiveSupported } from '@/utils/supports-passive'
 
 interface PickerPanelProps {
   keyIndex?: number
@@ -120,7 +121,7 @@ const InternalPickerPanel: ForwardRefRenderFunction<
   // 开始滚动
   const touchStart = (event: React.TouchEvent<HTMLDivElement>) => {
     touch.start(event)
-    setStartY(touch.deltaY)
+    setStartY(touch.deltaY.current)
     setStartTime(Date.now())
     transformY.current = scrollDistance
   }
@@ -131,13 +132,13 @@ const InternalPickerPanel: ForwardRefRenderFunction<
       moving.current = true
       preventDefault(event, true)
     }
-    const move = touch.deltaY - startY
+    const move = touch.deltaY.current - startY
     setMove(move)
   }
 
   const touchEnd = (event: React.TouchEvent<HTMLElement>) => {
     if (!moving.current) return
-    const move = touch.deltaY - startY
+    const move = touch.deltaY.current - startY
     const moveTime = Date.now() - startTime
     // 区分是否为惯性滚动
     if (moveTime <= INERTIA_TIME && Math.abs(move) > INERTIA_DISTANCE) {
@@ -235,6 +236,18 @@ const InternalPickerPanel: ForwardRefRenderFunction<
     stopMomentum,
     moving: moving.current,
   }))
+
+  useEffect(() => {
+    const options = passiveSupported ? { passive: false } : false
+    PickerPanelRef.current?.addEventListener('touchstart', touchStart, options)
+    PickerPanelRef.current?.addEventListener('touchmove', touchMove, options)
+    PickerPanelRef.current?.addEventListener('touchend', touchEnd, options)
+    return () => {
+      PickerPanelRef.current?.removeEventListener('touchstart', touchStart)
+      PickerPanelRef.current?.removeEventListener('touchmove', touchMove)
+      PickerPanelRef.current?.removeEventListener('touchend', touchEnd)
+    }
+  })
 
   return (
     <div
