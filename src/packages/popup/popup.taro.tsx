@@ -63,7 +63,8 @@ const defaultProps = {
   ...defaultOverlayProps,
 } as PopupProps
 
-let _zIndex = 1100
+// 默认1000，参看variables
+const _zIndex = 1100
 
 export const Popup: FunctionComponent<
   Partial<PopupProps> &
@@ -99,8 +100,8 @@ export const Popup: FunctionComponent<
     afterClose,
     onClick,
   } = { ...defaultProps, ...props }
-
-  const [index, setIndex] = useState(zIndex || _zIndex)
+  let innerIndex = zIndex || _zIndex
+  const [index, setIndex] = useState(innerIndex)
   const [innerVisible, setInnerVisible] = useState(visible)
   const [showChildren, setShowChildren] = useState(true)
   const [transitionName, setTransitionName] = useState('')
@@ -135,9 +136,7 @@ export const Popup: FunctionComponent<
   const open = () => {
     if (!innerVisible) {
       setInnerVisible(true)
-      if (props.zIndex === undefined) {
-        setIndex(++_zIndex)
-      }
+      setIndex(++innerIndex)
     }
     if (destroyOnClose) {
       setShowChildren(true)
