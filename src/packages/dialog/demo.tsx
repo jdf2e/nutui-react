@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import { Dialog } from './dialog'
 import Cell from '../cell'
-import DatePicker from '../datepicker'
-import Button from '../button'
 import { useTranslate } from '@/sites/assets/locale'
 
 interface T {
@@ -68,8 +66,7 @@ const DialogDemo = () => {
   const [visible4, setVisible4] = useState(false)
   const [visible5, setVisible5] = useState(false)
   const [visible6, setVisible6] = useState(false)
-  const [show8, setShow8] = useState(false)
-  const [visible, setVisible] = useState(false)
+
   return (
     <>
       <div className="demo">
@@ -173,21 +170,7 @@ const DialogDemo = () => {
           onCancel={() => setVisible1(false)}
         >
           {translated.content}
-          <Button onClick={() => setShow8(true)}> 选择日期</Button>
-          <Button onClick={() => setVisible(false)}>关闭dialog</Button>
         </Dialog>
-        <DatePicker
-          title="时分选择"
-          type="hour-minutes"
-          visible={show8}
-          pickerProps={{
-            popupProps: { zIndex: 1220 },
-          }}
-          onClose={() => setShow8(false)}
-          onConfirm={(options, values) =>
-            console.log('values', values, 'options', options)
-          }
-        />
         <Cell title={translated.noTitle} onClick={() => setVisible5(true)} />
         <Dialog
           visible={visible5}
