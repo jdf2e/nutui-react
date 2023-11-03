@@ -360,6 +360,9 @@ export const NoticeBar: FunctionComponent<
 
   const getStyle = (moveOffset = offset) => {
     const target = innerRef.current
+    if (!target) {
+      return
+    }
     let _offset = 0
     // 容器高度-元素高度
     const val = rect.height - height

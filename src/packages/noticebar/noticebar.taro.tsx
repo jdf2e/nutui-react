@@ -119,7 +119,9 @@ export const NoticeBar: FunctionComponent<
       childCount,
     }
   }, [children])
+  // 滚动消息的总高度
   let trackSize = childCount * Number(height)
+  // 设置最小偏移量（最后一条的偏移位置）
   const minOffset = (() => {
     if (rect) {
       const base = isVertical ? rect.height : rect.width
@@ -134,9 +136,7 @@ export const NoticeBar: FunctionComponent<
         scrollList.current = [].concat(childs)
       } else {
         scrollList.current = [].concat(list)
-        setTimeout(() => {
-          startRollEasy()
-        }, Number(duration))
+        startRollEasy()
       }
     } else {
       initScrollWrap(content)
@@ -297,11 +297,9 @@ export const NoticeBar: FunctionComponent<
 
   useEffect(() => {
     if (isVertical && children) {
-      setTimeout(() => {
-        init()
-        stopAutoPlay()
-        autoplay()
-      }, 300)
+      init()
+      stopAutoPlay()
+      autoplay()
     }
   }, [children, container?.current])
 
@@ -366,6 +364,9 @@ export const NoticeBar: FunctionComponent<
 
   const getStyle = (moveOffset = offset) => {
     const target = innerRef.current
+    if (!target) {
+      return
+    }
     let _offset = 0
     // 容器高度-元素高度
     const val = (rect?.height || 0) - height
