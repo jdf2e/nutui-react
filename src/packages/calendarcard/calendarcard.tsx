@@ -365,8 +365,8 @@ export const CalendarCard = React.forwardRef<
 
   const renderHeader = () => {
     return (
-      <div className="nut-calendarcard__header">
-        <div className="nut-calendarcard__header-left">
+      <div className="nut-calendarcard-header">
+        <div className="nut-calendarcard-header-left">
           <div className="double-left" onClick={() => jump(-12)}>
             <DoubleLeft />
           </div>
@@ -374,10 +374,10 @@ export const CalendarCard = React.forwardRef<
             <Left />
           </div>
         </div>
-        <div className="nut-calendarcard__header-title">
+        <div className="nut-calendarcard-header-title">
           {monthTitle(month.year, month.month)}
         </div>
-        <div className="nut-calendarcard__header-right">
+        <div className="nut-calendarcard-header-right">
           <div className="right" onClick={() => jump(1)}>
             <Right />
           </div>
@@ -404,7 +404,7 @@ export const CalendarCard = React.forwardRef<
 
   const renderContent = () => {
     return (
-      <div className="nut-calendarcard__content">
+      <div className="nut-calendarcard-content">
         <div className="nut-calendarcard-days">
           {weekHeader.map((day) => {
             return (
