@@ -6,7 +6,7 @@ import Popup from '@/packages/popup'
 import Button from '@/packages/button'
 import Space from '@/packages/space'
 import Tag from '@/packages/tag'
-import { CalendarValue } from './calendarcard'
+import { CalendarCardValue } from './calendarcard'
 import { CalendarCardDay } from './type'
 
 interface T {
@@ -73,7 +73,7 @@ const CalendarDemo = () => {
       ref: 'Use ref',
     },
   })
-  const change = (d: CalendarValue) => {
+  const change = (d: CalendarCardValue) => {
     console.log(d)
   }
   const [val1, setVal1] = useState<Date | null>(() => {

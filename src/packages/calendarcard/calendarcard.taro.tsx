@@ -12,18 +12,18 @@ import {
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { CalendarCardDay } from './type'
 
-interface CalendarMonth {
+interface CalendarCardMonth {
   year: number
   month: number
 }
 
-export type CalendarValue = Date | Date[] | null
+export type CalendarCardValue = Date | Date[] | null
 
 export interface CalendarCardProps extends BasicComponent {
   // 日视图-选择一个日期 | 日视图-选择多个日期 | 日视图-选择范围 | 周视图-选择某一周
   type: 'single' | 'multiple' | 'range' | 'week'
-  value?: CalendarValue
-  defaultValue?: CalendarValue
+  value?: CalendarCardValue
+  defaultValue?: CalendarCardValue
   firstDayOfWeek?: number // 0-6
   startDate?: Date
   endDate?: Date
@@ -32,8 +32,8 @@ export interface CalendarCardProps extends BasicComponent {
   renderDayTop?: (day: CalendarCardDay) => ReactNode
   renderDayBottom?: (day: CalendarCardDay) => ReactNode
   onDayClick?: (day: CalendarCardDay) => void
-  onPageChange: (data: CalendarMonth) => void
-  onChange: (value: CalendarValue) => void
+  onPageChange: (data: CalendarCardMonth) => void
+  onChange: (value: CalendarCardValue) => void
 }
 const defaultProps = {
   ...ComponentDefaults,
@@ -69,7 +69,7 @@ export const CalendarCard = React.forwardRef<
   } = { ...defaultProps, ...props }
 
   // 当前月份信息
-  const [month, setMonth] = useState<CalendarMonth>(() => {
+  const [month, setMonth] = useState<CalendarCardMonth>(() => {
     let date = new Date(Date.now())
     const val = value || defaultValue
     if (Array.isArray(val)) {
@@ -88,7 +88,7 @@ export const CalendarCard = React.forwardRef<
   // 当前月份对应的日期(6 * 7 视图)
   const [days, setDays] = useState<CalendarCardDay[]>([])
 
-  const valueToRange = (val?: CalendarValue) => {
+  const valueToRange = (val?: CalendarCardValue) => {
     if (Array.isArray(val)) {
       return val.map((date: Date) => {
         return convertDateToDay(date)
@@ -126,12 +126,12 @@ export const CalendarCard = React.forwardRef<
       const date = convertDayToDate(v[0])
       onChange?.(date)
     } else if (type === 'multiple' || type === 'range' || type === 'week') {
-      const val = rangeTovalue(v) as CalendarValue
+      const val = rangeTovalue(v) as CalendarCardValue
       onChange?.(val)
     }
   }
 
-  const getDays = (month: CalendarMonth) => {
+  const getDays = (month: CalendarCardMonth) => {
     const y = month.year
     const m = month.month
     const days = [
