@@ -5,6 +5,7 @@ import Cell from '@/packages/cell'
 import Popup from '@/packages/popup'
 import Button from '@/packages/button'
 import Space from '@/packages/space'
+import Tag from '@/packages/tag'
 import { CalendarValue } from './calendarcard'
 import { CalendarDay } from './type'
 
@@ -78,6 +79,9 @@ const CalendarDemo = () => {
   const [val1, setVal1] = useState<Date | null>(() => {
     return null
   })
+  const [val2, setVal2] = useState(() => {
+    return [new Date('2023-01-01'), new Date('2023-01-03')]
+  })
   const change1 = (v: any) => {
     console.log(v)
     setVal1(v)
@@ -105,10 +109,19 @@ const CalendarDemo = () => {
         <CalendarCard defaultValue={new Date('2023-01-01')} onChange={change} />
 
         <h2>{translated.multiple}</h2>
+        <Space wrap>
+          {val2.map((d) => {
+            return (
+              <Tag key={d.getTime()} type="info">
+                {`${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`}
+              </Tag>
+            )
+          })}
+        </Space>
         <CalendarCard
           type="multiple"
-          defaultValue={[new Date('2023-01-01'), new Date('2023-01-03')]}
-          onChange={change}
+          value={val2}
+          onChange={(v: any) => setVal2(v)}
         />
 
         <h2>{translated.range}</h2>

@@ -42,14 +42,16 @@ export default App;
 import React from "react";
 import { CalendarCard } from '@nutui/nutui-react';
 
-// const date = [];
-const date = [new Date('2023-01-01'), new Date('2023-01-03')];
-
 const App = () => {
+  const [val, setVal] = useState(() => {
+    // return [];
+    return [new Date('2023-01-01'), new Date('2023-01-03')];
+  })
   const onChange = (val) => {
+    setVal(val);
     console.log(val);
   };
-  return <CalendarCard type="multiple" defaultValue={date} onChange={onChange} />;
+  return <CalendarCard type="multiple" value={val} onChange={onChange} />;
 };
 export default App;
 ```
