@@ -9,7 +9,7 @@ import React, {
 import classNames from 'classnames'
 import Taro from '@tarojs/taro'
 import { View, PickerView, PickerViewColumn } from '@tarojs/components'
-import Popup from '@/packages/popup/index.taro'
+import { Popup, PopupProps } from '@/packages/popup/popup.taro'
 import PickerPanel from './pickerpanel.taro'
 import useRefs from '@/utils/use-refs'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
@@ -30,6 +30,7 @@ export interface PickerProps extends Omit<BasicComponent, 'children'> {
   defaultValue?: (number | string)[]
   threeDimensional?: boolean
   duration: number | string
+  popupProps: Partial<Omit<PopupProps, 'title' | 'onClose'>>
   onConfirm?: (
     selectedOptions: PickerOption[],
     selectedValue: (string | number)[]
@@ -60,7 +61,7 @@ const defaultProps = {
   defaultValue: [],
   threeDimensional: true,
   duration: 1000,
-} as PickerProps
+} as unknown as PickerProps
 const InternalPicker: ForwardRefRenderFunction<
   unknown,
   Partial<PickerProps>
@@ -71,6 +72,7 @@ const InternalPicker: ForwardRefRenderFunction<
     visible,
     title,
     options = [],
+    popupProps = {},
     defaultValue = [],
     className,
     style,
@@ -366,6 +368,7 @@ const InternalPicker: ForwardRefRenderFunction<
     <>
       {typeof children === 'function' && children(selectedValue)}
       <Popup
+        {...popupProps}
         visible={innerVisible}
         position="bottom"
         afterClose={() => {

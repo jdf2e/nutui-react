@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { Dialog, Cell } from '@/packages/nutui.react.taro'
+import { Dialog, Cell, Button, DatePicker } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 
@@ -59,6 +59,9 @@ const DialogDemo = () => {
   const [visible6, setVisible6] = useState(false)
   const [visible7, setVisible7] = useState(false)
 
+  const [show8, setShow8] = useState(false)
+  const [visible, setVisible] = useState(false)
+
   return (
     <>
       <Header />
@@ -91,7 +94,21 @@ const DialogDemo = () => {
           onCancel={() => setVisible1(false)}
         >
           {translated.content}
+          <Button onClick={() => setShow8(true)}> 选择日期</Button>
+          <Button onClick={() => setVisible(false)}>关闭dialog</Button>
         </Dialog>
+        <DatePicker
+          title="时分选择"
+          type="hour-minutes"
+          visible={show8}
+          pickerProps={{
+            popupProps: { zIndex: 1220 },
+          }}
+          onClose={() => setShow8(false)}
+          onConfirm={(options, values) =>
+            console.log('values', values, 'options', options)
+          }
+        />
         <Cell title={translated.noTitle} onClick={() => setVisible2(true)} />
         <Dialog
           visible={visible2}

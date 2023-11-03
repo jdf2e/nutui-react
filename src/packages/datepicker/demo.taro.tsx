@@ -278,6 +278,9 @@ const DatePickerDemo = () => {
         <DatePicker
           title={translated.basic}
           visible={show1}
+          pickerProps={{
+            popupProps: { zIndex: 1220 },
+          }}
           defaultValue={new Date(`${defaultDescription}`)}
           showChinese
           onClose={() => setShow1(false)}

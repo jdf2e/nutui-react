@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState, useEffect } from 'react'
 import { View } from '@tarojs/components'
 import Picker from '@/packages/picker/index.taro'
-import { PickerOption } from '@/packages/picker/index'
+import { PickerOption, PickerProps } from '@/packages/picker/index'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -24,6 +24,18 @@ export interface DatePickerProps extends BasicComponent {
   startDate: Date
   endDate: Date
   threeDimensional: boolean
+  pickerProps: Partial<
+    Omit<
+      PickerProps,
+      | 'defaultValue'
+      | 'threeDimensional'
+      | 'title'
+      | 'value'
+      | 'onConfirm'
+      | 'onClose'
+      | 'onChange'
+    >
+  >
   formatter: (type: string, option: PickerOption) => PickerOption
   filter: (type: string, option: PickerOption[]) => PickerOption[]
   onClose: () => void
@@ -63,6 +75,7 @@ export const DatePicker: FunctionComponent<
     visible,
     title,
     defaultValue,
+    pickerProps = {},
     formatter,
     onClose,
     onConfirm,
@@ -383,6 +396,7 @@ export const DatePicker: FunctionComponent<
     >
       {options.length && (
         <Picker
+          {...pickerProps}
           title={title}
           visible={visible}
           options={options}

@@ -28,17 +28,7 @@ export interface PickerProps extends Omit<BasicComponent, 'children'> {
   defaultValue?: (number | string)[]
   threeDimensional?: boolean
   duration: number | string
-  popupProps: Partial<
-    Omit<
-      PopupProps,
-      | 'closeIcon'
-      | 'closeable'
-      | 'title'
-      | 'left'
-      | 'closeIconPosition'
-      | 'onClose'
-    >
-  >
+  popupProps: Partial<Omit<PopupProps, 'title' | 'onClose'>>
   onConfirm?: (
     selectedOptions: PickerOption[],
     selectedValue: (string | number)[]
