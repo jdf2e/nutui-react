@@ -19,6 +19,7 @@ import {
 } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
+import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
 
 type Teleport = HTMLElement | (() => HTMLElement) | null
 
@@ -103,7 +104,7 @@ export const Popup: FunctionComponent<
   const [innerVisible, setInnerVisible] = useState(visible)
   const [showChildren, setShowChildren] = useState(true)
   const [transitionName, setTransitionName] = useState('')
-
+  const refObject = useLockScrollTaro(innerVisible && lockScroll)
   const classPrefix = 'nut-popup'
   const baseStyle = {
     zIndex: index,
@@ -237,9 +238,11 @@ export const Popup: FunctionComponent<
         onExited={onHandleClosed}
       >
         <View
+          ref={refObject}
           style={popStyles}
           className={popClassName}
           onClick={onHandleClick}
+          catchMove={lockScroll}
         >
           {renderTitle()}
           {renderIcon()}

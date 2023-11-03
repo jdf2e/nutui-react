@@ -15,6 +15,7 @@ interface T {
   ce1e18a2: string
   closeClickLay: string
 }
+
 const OverlayDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
