@@ -293,16 +293,16 @@ export default App;
 | startDate | Limit range start date | `Date` | `-` |
 | endDate | Limit range end date | `Date` | `-` |
 | firstDayOfWeek | Set the starting day of the week, 0 is Sunday, 1 is Monday | `0-6` | `1` |
-| disableDay | Set disable date | `(day: CalendarDay) => boolean` | `-` |
-| renderDay | Date information | `(date: Day) => ReactNode` | `-` |
-| renderDayTop | Date top information | `(date: Day) => ReactNode` | `-` |
-| renderDayBottom | Date bottom information | `(date: Day) => ReactNode` | `-` |
+| disableDay | Set disable date | `(day: CalendarCardDay) => boolean` | `-` |
+| renderDay | Date information | `(date: CalendarCardDay) => ReactNode` | `-` |
+| renderDayTop | Date top information | `(date: CalendarCardDay) => ReactNode` | `-` |
+| renderDayBottom | Date bottom information | `(date: CalendarCardDay) => ReactNode` | `-` |
 | value | Value in controlled mode, used with onChange | `Date \| Date[]` | `-` |
-| onDayClick | Triggered after click | `(day: CalendarDay) => void` | `-` |
+| onDayClick | Triggered after click | `(day: CalendarCardDay) => void` | `-` |
 | onPageChange | Triggered when switching months | `(val: { year, month }) => void` | `-` |
 | onChange | Triggered when value update | `(val: Date | Date[]) => void` | `-` |
 
-### CalendarDay
+### CalendarCardDay
 
 | Property | Type | Description |
 | --- | --- | --- |

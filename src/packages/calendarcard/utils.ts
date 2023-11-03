@@ -1,5 +1,5 @@
 import { Utils } from '@/utils/date'
-import { CalendarDay } from './type'
+import { CalendarCardDay } from './type'
 
 export const convertDateToDay = (date: Date) => {
   return date
@@ -11,7 +11,7 @@ export const convertDateToDay = (date: Date) => {
     : null
 }
 
-export const convertDayToDate = (day: CalendarDay) => {
+export const convertDayToDate = (day: CalendarCardDay) => {
   return day ? new Date(day.year, day.month - 1, day.date) : null
 }
 
@@ -42,7 +42,7 @@ export const getPrevMonthDays = (
       year: prevYear,
       month: prevMonth,
       date: k + 1,
-    } as CalendarDay
+    } as CalendarCardDay
   })
   return months.slice(preDates - days)
 }
@@ -58,7 +58,7 @@ export const getCurrentMonthDays = (year: number, month: number) => {
       year,
       month,
       date: k + 1,
-    } as CalendarDay
+    } as CalendarCardDay
   })
 }
 
@@ -66,17 +66,17 @@ export const getCurrentMonthDays = (year: number, month: number) => {
  * 根据日期获取当前周的起始日期
  */
 export const getCurrentWeekDays = (
-  day: CalendarDay,
+  day: CalendarCardDay,
   firstDayOfWeek: number
-): CalendarDay[] => {
+): CalendarCardDay[] => {
   const current = new Date(day.year, day.month - 1, day.date)
   const count = (current.getDay() + 7 - firstDayOfWeek) % 7
   return [
     convertDateToDay(
       new Date(current.getTime() - 24 * 60 * 60 * 1000 * count)
-    ) as CalendarDay,
+    ) as CalendarCardDay,
     convertDateToDay(
       new Date(current.getTime() + 24 * 60 * 60 * 1000 * (6 - count))
-    ) as CalendarDay,
+    ) as CalendarCardDay,
   ]
 }

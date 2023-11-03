@@ -293,16 +293,16 @@ export default App;
 | startDate | 限制范围开始日期 | `Date` | `-` |
 | endDate | 限制范围结束日期 | `Date` | `-` |
 | firstDayOfWeek | 设置周起始日，0 为周日，1 为周一 | `0-6` | `1` |
-| disableDay | 设置不可选日期 | `(day: CalendarDay) => boolean` | `-` |
-| renderDay | 日期信息 | `(date: CalendarDay) => ReactNode` | `-` |
-| renderDayTop | 日期顶部信息 | `(date: CalendarDay) => ReactNode` | `-` |
-| renderDayBottom | 日期底部信息 | `(date: CalendarDay) => ReactNode` | `-` |
+| disableDay | 设置不可选日期 | `(day: CalendarCardDay) => boolean` | `-` |
+| renderDay | 日期信息 | `(date: CalendarCardDay) => ReactNode` | `-` |
+| renderDayTop | 日期顶部信息 | `(date: CalendarCardDay) => ReactNode` | `-` |
+| renderDayBottom | 日期底部信息 | `(date: CalendarCardDay) => ReactNode` | `-` |
 | value | 受控模式下的值，与 onChange 搭配使用 | `Date \| Date[]` | `-` |
-| onDayClick | 点击后触发 | `(day: CalendarDay) => void` | `-` |
+| onDayClick | 点击后触发 | `(day: CalendarCardDay) => void` | `-` |
 | onPageChange | 切换月份时触发 | `(val: { year, month }) => void` | `-` |
 | onChange | 选择值发生变化时触发 | `(val: Date \| Date[]) => void` | `-` |
 
-### CalendarDay
+### CalendarCardDay
 
 | 属性 | 类型 | 说明 |
 | --- | --- | --- |

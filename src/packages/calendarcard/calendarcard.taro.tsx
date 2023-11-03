@@ -10,7 +10,7 @@ import {
   getPrevMonthDays,
 } from './utils'
 import { useConfig } from '@/packages/configprovider/configprovider'
-import { CalendarDay } from './type'
+import { CalendarCardDay } from './type'
 
 interface CalendarMonth {
   year: number
@@ -27,11 +27,11 @@ export interface CalendarCardProps extends BasicComponent {
   firstDayOfWeek?: number // 0-6
   startDate?: Date
   endDate?: Date
-  disableDay?: (day: CalendarDay) => boolean
-  renderDay?: (day: CalendarDay) => ReactNode
-  renderDayTop?: (day: CalendarDay) => ReactNode
-  renderDayBottom?: (day: CalendarDay) => ReactNode
-  onDayClick?: (day: CalendarDay) => void
+  disableDay?: (day: CalendarCardDay) => boolean
+  renderDay?: (day: CalendarCardDay) => ReactNode
+  renderDayTop?: (day: CalendarCardDay) => ReactNode
+  renderDayBottom?: (day: CalendarCardDay) => ReactNode
+  onDayClick?: (day: CalendarCardDay) => void
   onPageChange: (data: CalendarMonth) => void
   onChange: (value: CalendarValue) => void
 }
@@ -86,7 +86,7 @@ export const CalendarCard = React.forwardRef<
   })
 
   // 当前月份对应的日期(6 * 7 视图)
-  const [days, setDays] = useState<CalendarDay[]>([])
+  const [days, setDays] = useState<CalendarCardDay[]>([])
 
   const valueToRange = (val?: CalendarValue) => {
     if (Array.isArray(val)) {
@@ -97,30 +97,30 @@ export const CalendarCard = React.forwardRef<
     return val ? [convertDateToDay(val)] : []
   }
 
-  const rangeTovalue = (range?: CalendarDay[]) => {
+  const rangeTovalue = (range?: CalendarCardDay[]) => {
     if (Array.isArray(range)) {
-      return range.map((day: CalendarDay) => {
+      return range.map((day: CalendarCardDay) => {
         return convertDayToDate(day)
       })
     }
     return range ? [convertDayToDate(range)] : []
   }
 
-  const [innerValue, setInnerValue] = useState<CalendarDay[]>(() => {
+  const [innerValue, setInnerValue] = useState<CalendarCardDay[]>(() => {
     const val = (
       value || defaultValue ? valueToRange(value || defaultValue) : []
-    ) as CalendarDay[]
+    ) as CalendarCardDay[]
     return val
   })
 
   useEffect(() => {
     const val = (
       value || defaultValue ? valueToRange(value || defaultValue) : []
-    ) as CalendarDay[]
+    ) as CalendarCardDay[]
     setInnerValue(val)
   }, [value])
 
-  const change = (v: CalendarDay[]) => {
+  const change = (v: CalendarCardDay[]) => {
     setInnerValue(v)
     if (type === 'single') {
       const date = convertDayToDate(v[0])
@@ -137,7 +137,7 @@ export const CalendarCard = React.forwardRef<
     const days = [
       ...getPrevMonthDays(y, m, firstDayOfWeek),
       ...getCurrentMonthDays(y, m),
-    ] as CalendarDay[]
+    ] as CalendarCardDay[]
     const size = days.length
     const yearOfNextMonth = month.month === 12 ? month.year + 1 : month.year
     const monthOfNextMonth = month.month === 12 ? 1 : month.month + 1
@@ -159,7 +159,7 @@ export const CalendarCard = React.forwardRef<
     onPageChange?.(month)
   }, [month])
 
-  const isSameDay = (day1: CalendarDay, day2: CalendarDay) => {
+  const isSameDay = (day1: CalendarCardDay, day2: CalendarCardDay) => {
     return (
       day1?.year === day2?.year &&
       day1?.month === day2?.month &&
@@ -167,7 +167,7 @@ export const CalendarCard = React.forwardRef<
     )
   }
 
-  const compareDay = (day1: CalendarDay, day2: CalendarDay) => {
+  const compareDay = (day1: CalendarCardDay, day2: CalendarCardDay) => {
     if (day1 && day2) {
       if (day1.year === day2.year) {
         if (day1.month === day2.month) {
@@ -179,26 +179,27 @@ export const CalendarCard = React.forwardRef<
     }
   }
 
-  const isDisable = (day: CalendarDay) => {
+  const isDisable = (day: CalendarCardDay) => {
     if (disableDay && disableDay(day)) {
       return true
     }
     if (
       startDate &&
-      Number(compareDay(day, convertDateToDay(startDate) as CalendarDay)) < 0
+      Number(compareDay(day, convertDateToDay(startDate) as CalendarCardDay)) <
+        0
     ) {
       return true
     }
     if (
       endDate &&
-      Number(compareDay(day, convertDateToDay(endDate) as CalendarDay)) > 0
+      Number(compareDay(day, convertDateToDay(endDate) as CalendarCardDay)) > 0
     ) {
       return true
     }
     return false
   }
 
-  const isActive = (day: CalendarDay) => {
+  const isActive = (day: CalendarCardDay) => {
     if (type === 'single' || type === 'multiple') {
       for (const val of innerValue) {
         if (isSameDay(day, val)) {
@@ -215,7 +216,7 @@ export const CalendarCard = React.forwardRef<
     return false
   }
 
-  const isStart = (day: CalendarDay) => {
+  const isStart = (day: CalendarCardDay) => {
     return (
       (type === 'range' || type === 'week') &&
       innerValue.length === 2 &&
@@ -223,7 +224,7 @@ export const CalendarCard = React.forwardRef<
     )
   }
 
-  const isEnd = (day: CalendarDay) => {
+  const isEnd = (day: CalendarCardDay) => {
     return (
       (type === 'range' || type === 'week') &&
       innerValue.length === 2 &&
@@ -231,7 +232,7 @@ export const CalendarCard = React.forwardRef<
     )
   }
 
-  const isMid = (day: CalendarDay) => {
+  const isMid = (day: CalendarCardDay) => {
     if (type === 'range' || type === 'week') {
       if (innerValue.length === 2) {
         const c1 = compareDay(innerValue[0], day)
@@ -244,12 +245,12 @@ export const CalendarCard = React.forwardRef<
     return false
   }
 
-  const isWeekend = (day: CalendarDay) => {
+  const isWeekend = (day: CalendarCardDay) => {
     const d = new Date(day.year, day.month - 1, day.date).getDay()
     return d === 0 || d === 6
   }
 
-  const getClasses = (day: CalendarDay) => {
+  const getClasses = (day: CalendarCardDay) => {
     /**
      * active: single、multiple 激活日期
      * start: 范围开始日期
@@ -304,7 +305,7 @@ export const CalendarCard = React.forwardRef<
     }
   })
 
-  const handleDayClick = (day: CalendarDay) => {
+  const handleDayClick = (day: CalendarCardDay) => {
     if (day.type === 'prev' || day.type === 'next' || isDisable(day)) {
       return
     }
@@ -419,7 +420,7 @@ export const CalendarCard = React.forwardRef<
           })}
         </div>
         <div className="nut-calendarcard-days">
-          {days.map((day: CalendarDay) => (
+          {days.map((day: CalendarCardDay) => (
             <div
               className={classNames(
                 'nut-calendarcard-day',
