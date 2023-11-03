@@ -244,6 +244,11 @@ export const CalendarCard = React.forwardRef<
     return false
   }
 
+  const isWeekend = (day: CalendarDay) => {
+    const d = new Date(day.year, day.month - 1, day.date).getDay()
+    return d === 0 || d === 6
+  }
+
   const getClasses = (day: CalendarDay) => {
     /**
      * active: single、multiple 激活日期
@@ -267,6 +272,9 @@ export const CalendarCard = React.forwardRef<
       }
       if (isMid(day)) {
         res.push('mid')
+      }
+      if (isWeekend(day)) {
+        res.push('weekend')
       }
     }
     return res
@@ -381,7 +389,12 @@ export const CalendarCard = React.forwardRef<
   }
 
   const [weekHeader] = useState(() => {
-    const weekdays = locale.calendaritem.weekdays
+    const weekdays = locale.calendaritem.weekdays.map((day, index) => {
+      return {
+        name: day,
+        key: index,
+      }
+    })
     return [
       ...weekdays.slice(firstDayOfWeek, 7),
       ...weekdays.slice(0, firstDayOfWeek),
@@ -392,10 +405,15 @@ export const CalendarCard = React.forwardRef<
     return (
       <div className="nut-calendarcard__content">
         <div className="nut-calendarcard-days">
-          {weekHeader.map((i) => {
+          {weekHeader.map((day) => {
             return (
-              <div className="nut-calendarcard-day header" key={i}>
-                {i}
+              <div
+                className={classNames('nut-calendarcard-day', 'header', {
+                  weekend: day.key === 0 || day.key === 6,
+                })}
+                key={day.key}
+              >
+                {day.name}
               </div>
             )
           })}

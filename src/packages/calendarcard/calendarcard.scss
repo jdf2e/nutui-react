@@ -90,6 +90,10 @@
       color: $calendar-choose-color;
     }
 
+    &.weekend {
+      color: $calendar-choose-color;
+    }
+
     .nut-calendar-day-info {
       color: $primary-text-color;
     }
