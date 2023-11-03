@@ -156,7 +156,7 @@ const App = () => {
   const onChange = (val) => {
     console.log(val);
   };
-  return <CalendarCard firstDayOfWeek={0} onChange={change} />;
+  return <CalendarCard firstDayOfWeek={1} onChange={change} />;
 };
 export default App;
 ```
@@ -290,7 +290,7 @@ export default App;
 | defaultValue | 默認值，單個日期 Date 格式，多個日期/範圍選擇 Date[] 格式 | `Date \| Date[]` | `-` |
 | startDate | 限製範圍開始日期 | `Date` | `-` |
 | endDate | 限製範圍結束日期 | `Date` | `-` |
-| firstDayOfWeek | 設置周起始日，0 為周日，1 為周一 | `0-6` | `0` |
+| firstDayOfWeek | 設置周起始日，0 為周日，1 為周一 | `0-6` | `1` |
 | disableDay | 設置不可選日期 | `(day: CalendarDay) => boolean` | `-` |
 | renderDay | 日期信息 | `(date: CalendarDay) => ReactNode` | `-` |
 | renderDayTop | 日期頂部信息 | `(date: CalendarDay) => ReactNode` | `-` |

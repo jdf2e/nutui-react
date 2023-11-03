@@ -156,7 +156,7 @@ const App = () => {
   const onChange = (val) => {
     console.log(val);
   };
-  return <CalendarCard firstDayOfWeek={0} onChange={change} />;
+  return <CalendarCard firstDayOfWeek={1} onChange={change} />;
 };
 export default App;
 ```
@@ -290,7 +290,7 @@ export default App;
 | defaultValue | Default value, choose string format for date, choose Array format for interval | `Date \| Date[]` | `-` |
 | startDate | Limit range start date | `Date` | `-` |
 | endDate | Limit range end date | `Date` | `-` |
-| firstDayOfWeek | Set the starting day of the week, 0 is Sunday, 1 is Monday | `0-6` | `0` |
+| firstDayOfWeek | Set the starting day of the week, 0 is Sunday, 1 is Monday | `0-6` | `1` |
 | disableDay | Set disable date | `(day: CalendarDay) => boolean` | `-` |
 | renderDay | Date information | `(date: Day) => ReactNode` | `-` |
 | renderDayTop | Date top information | `(date: Day) => ReactNode` | `-` |

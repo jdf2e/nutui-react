@@ -133,7 +133,7 @@ const CalendarDemo = () => {
         />
 
         <h2>{translated.firstDay}</h2>
-        <CalendarCard firstDayOfWeek={0} onChange={change} />
+        <CalendarCard firstDayOfWeek={1} onChange={change} />
 
         <h2>{translated.customRange}</h2>
         <CalendarCard

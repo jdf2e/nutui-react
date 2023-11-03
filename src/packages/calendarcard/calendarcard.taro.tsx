@@ -38,7 +38,7 @@ export interface CalendarCardProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   type: 'single',
-  firstDayOfWeek: 1,
+  firstDayOfWeek: 0,
 }
 
 type CalendarCardRef = {
