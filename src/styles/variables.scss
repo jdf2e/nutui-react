@@ -645,6 +645,14 @@ $numberkeyboard-padding: var(
   --nutui-numberkeyboard-padding,
   0 0 22px 0
 ) !default;
+$numberkeyboard-background-color: var(
+  --nutui-numberkeyboard-background-color,
+  $color-background
+) !default;
+$numberkeyboard-wrapper-background-color: var(
+  --nutui-numberkeyboard-wrapper-background-color,
+  $color-background-sunken
+) !default;
 $numberkeyboard-header-close-padding: var(
   --nutui-numberkeyboard-header-close-padding,
   0 16px
@@ -680,6 +688,10 @@ $numberkeyboard-key-line-height: var(
 $numberkeyboard-key-border-radius: var(
   --nutui-numberkeyboard-key-border-radius,
   8px
+) !default;
+$numberkeyboard-key-border: var(
+  --nutui-numberkeyboard-key-border,
+  none
 ) !default;
 $numberkeyboard-key-font-size: var(
   --nutui-numberkeyboard-key-font-size,
@@ -778,6 +790,7 @@ $switch-inside-close-transform: var(
   --nutui-switch-inside-close-transform,
   translateX(14%)
 ) !default;
+$switch-button-box-shadow: var(--nutui-switch-box-shadow, none) !default;
 
 // toast（✅）
 $toast-title-font-size: var(--nutui-toast-title-font-size, 16px) !default;

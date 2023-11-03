@@ -139,9 +139,9 @@ $radius-circle: 50px !default; // 按钮、徽标等组件的胶囊形态圆角�
 $radius-full: 50% !default; // 头像、图片等不限制尺寸规格，需要以圆形呈现
 
 // 阴影 shadows
-$shadow-light: 0 0 4 0 rgba(0, 0, 0, 0.05) !default;
-$shadow-raised: 0 0 6 0 rgba(0, 0, 0, 0.1) !default;
-$shadow-overlay: 0 0 8 0 rgba(0, 0, 0, 0.2) !default;
+$shadow-light: 0 0 4px 0 rgba(0, 0, 0, 0.05) !default;
+$shadow-raised: 0 0 6px 0 rgba(0, 0, 0, 0.1) !default;
+$shadow-overlay: 0 0 8px 0 rgba(0, 0, 0, 0.2) !default;
 
 // =================== 基础变量 END ==========  //
 
@@ -624,7 +624,7 @@ $inputnumber-button-height: var(
 ) !default;
 $inputnumber-button-border-radius: var(
   --nutui-inputnumber-button-border-radius,
-  16px
+  $radius-xxs
 ) !default;
 $inputnumber-button-background-color: var(
   --nutui-inputnumber-button-background-color,
@@ -641,10 +641,7 @@ $inputnumber-disabled-color: var(
 ) !default;
 
 // actionsheet（✅）
-$actionsheet-border-color: var(
-  --nutui-actionsheet-border-color,
-  $color-border
-) !default;
+$actionsheet-border-color: var(--nutui-actionsheet-border-color, none) !default;
 $actionsheet-item-text-align: var(
   --nutui-actionsheet-item-text-align,
   center
@@ -686,6 +683,14 @@ $numberkeyboard-padding: var(
   --nutui-numberkeyboard-padding,
   0 0 22px 0
 ) !default;
+$numberkeyboard-background-color: var(
+  --nutui-numberkeyboard-background-color,
+  $color-surface-2
+) !default;
+$numberkeyboard-wrapper-background-color: var(
+  --nutui-numberkeyboard-wrapper-background-color,
+  $color-surface-2
+) !default;
 $numberkeyboard-header-close-padding: var(
   --nutui-numberkeyboard-header-close-padding,
   0 16px
@@ -720,7 +725,11 @@ $numberkeyboard-key-line-height: var(
 ) !default;
 $numberkeyboard-key-border-radius: var(
   --nutui-numberkeyboard-key-border-radius,
-  8px
+  $radius-base
+) !default;
+$numberkeyboard-key-border: var(
+  --nutui-numberkeyboard-key-border,
+  1px solid $color-border
 ) !default;
 $numberkeyboard-key-font-size: var(
   --nutui-numberkeyboard-key-font-size,
@@ -787,7 +796,7 @@ $avatar-normal-height: var(--nutui-avatar-normal-height, 40px) !default;
 //switch（✅）
 $switch-close-background-color: var(
   --nutui-switch-close-background-color,
-  $color-default-light
+  $color-default
 ) !default;
 $switch-open-background-color: var(
   --nutui-switch-open-background-color,
@@ -818,6 +827,10 @@ $switch-inside-open-transform: var(
 $switch-inside-close-transform: var(
   --nutui-switch-inside-close-transform,
   translateX(14%)
+) !default;
+$switch-button-box-shadow: var(
+  --nutui-switch-box-shadow,
+  $shadow-raised
 ) !default;
 
 // toast（✅）
@@ -913,7 +926,7 @@ $overlay-bg-color: var(--nutui-overlay-bg-color, $color-mask) !default;
 $overlay-zIndex: var(--nutui-overlay-zIndex, 1000) !default;
 $overlay-content-bg-color: var(
   --nutui-overlay-content-bg-color,
-  $color-background-overlay
+  $color-surface-1
 ) !default;
 $overlay-content-color: var(
   --nutui-overlay-content-color,
@@ -1036,10 +1049,7 @@ $range-button-background: var(
 ) !default;
 $range-button-width: var(--nutui-range-button-width, 24px) !default;
 $range-button-height: var(--nutui-range-button-height, 24px) !default;
-$range-button-border: var(
-  --nutui-range-button-border,
-  1px solid $color-primary
-) !default;
+$range-button-border: var(--nutui-range-button-border, none) !default;
 
 //swiper（✅）
 $swiper-indicator-bottom: var(--nutui-swiper-indicator-bottom, 12px);

@@ -16,6 +16,7 @@
     border-radius: 50%;
     background: $color-primary-text;
     transition: transform 0.3s;
+    box-shadow: $switch-button-box-shadow;
   }
 
   &-base {
