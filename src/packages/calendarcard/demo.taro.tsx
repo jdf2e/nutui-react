@@ -10,7 +10,7 @@ import {
   Tag,
 } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import { CalendarCardDay, CalendarCardValue } from './type'
+import { CalendarCardDay, CalendarCardValue } from './types'
 
 interface T {
   single: string

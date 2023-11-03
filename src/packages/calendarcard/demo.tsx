@@ -6,7 +6,7 @@ import Popup from '@/packages/popup'
 import Button from '@/packages/button'
 import Space from '@/packages/space'
 import Tag from '@/packages/tag'
-import { CalendarCardDay, CalendarCardValue } from './type'
+import { CalendarCardDay, CalendarCardValue } from './types'
 
 interface T {
   single: string

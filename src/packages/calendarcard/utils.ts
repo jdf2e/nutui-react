@@ -1,5 +1,5 @@
 import { Utils } from '@/utils/date'
-import { CalendarCardDay } from './type'
+import { CalendarCardDay } from './types'
 
 export const convertDateToDay = (date: Date) => {
   return date
