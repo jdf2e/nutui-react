@@ -95,7 +95,6 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
 
   useEffect(() => {
     const pos = initPositinoCache(itemHeight, list.length)
-
     setPositions(pos)
   }, [itemHeight, list])
 
@@ -138,16 +137,13 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
     const scrollTop = e.detail ? e.detail.scrollTop : e.target.scrollTop
     const scrollSize = Math.floor(scrollTop)
     const startIndex = binarySearch(positions, false, scrollSize)
-
     const overStart = startIndex - overscan > -1 ? startIndex - overscan : 0
     const endIndex = end()
     if (!itemEqual) {
       updateTotalSize()
     }
     setStart(Math.floor(scrollTop / itemHeight))
-
     setOptions({ startOffset, startIndex, overStart, endIndex })
-
     if (end() > list.length - 1) {
       onScroll && onScroll()
     }
@@ -191,7 +187,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
               <div
                 data-index={`${dataIndex}`}
                 className="nut-virtuallist-item"
-                key={`${data}`}
+                key={`${keyVal}`}
                 style={{
                   height: `${itemEqual ? `${itemHeight}px` : 'auto'}`,
                 }}
