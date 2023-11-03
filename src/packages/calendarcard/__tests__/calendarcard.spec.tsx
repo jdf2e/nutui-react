@@ -17,17 +17,17 @@ test('test defaultValue render', async () => {
 
   // prev
   const prevDays = container.querySelectorAll('.nut-calendarcard-day.prev')
-  expect(prevDays.length).toBe(6)
+  expect(prevDays.length).toBe(0)
 
   // next
   const nextDays = container.querySelectorAll('.nut-calendarcard-day.next')
-  expect(nextDays.length).toBe(5)
+  expect(nextDays.length).toBe(11)
 
   // current
   const currentDays = container.querySelectorAll(
     '.nut-calendarcard-day.current'
   )
-  expect(currentDays.length).toBe(42 - 6 - 5)
+  expect(currentDays.length).toBe(42 - 0 - 11)
 })
 
 test('test onChange & onDayClick & onPageChange', async () => {
@@ -60,8 +60,8 @@ test('test onChange & onDayClick & onPageChange', async () => {
   fireEvent.click(currentDays[5])
   expect(onChange).toBeCalledTimes(3)
 
-  const prevDays = container.querySelectorAll('.nut-calendarcard-day.prev')
-  fireEvent.click(prevDays[0])
+  const nextDays = container.querySelectorAll('.nut-calendarcard-day.next')
+  fireEvent.click(nextDays[0])
   expect(onDayClick).toBeCalledTimes(3)
   expect(onPageChange).toBeCalledTimes(1)
 })
@@ -109,7 +109,7 @@ test('test type range', async () => {
 test('test type week', async () => {
   const { container } = render(
     <CalendarCard
-      defaultValue={[new Date('2023-01-23'), new Date('2023-01-29')]}
+      defaultValue={[new Date('2023-01-22'), new Date('2023-01-28')]}
       type="week"
     />
   )
@@ -122,13 +122,13 @@ test('test type week', async () => {
   const start = container.querySelector(
     '.nut-calendarcard-day.start .nut-calendarcard-day-inner'
   )
-  expect(start?.innerHTML).toBe('9') // 0109
+  expect(start?.innerHTML).toBe('8') // 0108
   const end = container.querySelector(
     '.nut-calendarcard-day.end .nut-calendarcard-day-inner'
   )
-  expect(end?.innerHTML).toBe('15') // 0115
+  expect(end?.innerHTML).toBe('14') // 0114
   const midDays = container.querySelectorAll('.nut-calendarcard-day.mid')
-  expect(midDays.length).toBe(5) // 0109-0114
+  expect(midDays.length).toBe(5) // 0109-0113
 })
 
 test('test disableDay', async () => {
