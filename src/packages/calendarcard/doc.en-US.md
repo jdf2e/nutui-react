@@ -309,7 +309,7 @@ export default App;
 | year | `number` | year |
 | month | `number` | month |
 | date | `number` | date |
-| type | `prev \| current \| next | - |
+| type | `prev \| current \| next` | - |
 
 ### Ref
 

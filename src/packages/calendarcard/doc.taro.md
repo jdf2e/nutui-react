@@ -309,7 +309,7 @@ export default App;
 | year | `number` | 年 |
 | month | `number` | 月 |
 | date | `number` | 日 |
-| type | `prev \| current \| next | 可选项。表示上一个月、当月、下一个月 |
+| type | `prev \| current \| next` | 可选项。表示上一个月、当月、下一个月 |
 
 ### Ref
 
