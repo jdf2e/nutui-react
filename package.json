@@ -1,6 +1,6 @@
 {
   "name": "@nutui/nutui-react",
-  "version": "2.0.22",
+  "version": "2.0.23",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/esm/nutui-react.es.js",
