@@ -275,12 +275,12 @@ export const Range: FunctionComponent<
     setDragStatus('draging')
 
     const rect = getRect(root.current)
-    let delta = touch.deltaX
+    let delta = touch.deltaX.current
     let total = rect.width
     let diff = (delta / total) * scope()
 
     if (vertical) {
-      delta = touch.deltaY
+      delta = touch.deltaY.current
       total = rect.height
       diff = (delta / total) * scope()
     }

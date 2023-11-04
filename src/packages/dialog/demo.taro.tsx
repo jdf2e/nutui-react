@@ -58,7 +58,6 @@ const DialogDemo = () => {
   const [visible5, setVisible5] = useState(false)
   const [visible6, setVisible6] = useState(false)
   const [visible7, setVisible7] = useState(false)
-
   return (
     <>
       <Header />

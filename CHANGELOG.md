@@ -1,3 +1,27 @@
+# v2.0.23
+`2023-11-03`
+
+* :sparkles: feat(image): ssr 适配 (#1579) @Eiinu
+* :sparkles: feat: 新增组件 calendar (#1565) @Eiinu
+* :bug: fix: calendar scrolltop bad (#1583) @xiaoyatong
+* :bug: fix: noticebar 垂直滚动初始化时,无法及时展示元素信息 (#1576) @xiaoyatong
+* :bug: fix: popup zindex at taro and picker adds popupProps (#1581) @xiaoyatong
+* :bug: fix: popup zindex failed to set (#1578) @xiaoyatong
+* :bug: fix: searchbar lose focus when input nothing but input the delete (#1577) @xiaoyatong
+* :bug: fix: taro 编译 H5 出现滚动穿透 (#1537) @oasis-cloud
+
+
+# v2.0.22
+`2023-10-27`
+
+* :sparkles: feat(NoticeBar): leftIcon 可自定义，并且支持设置 null 后不展示 icon (#1562) @oasis-cloud
+* :bug: fix(Dialog): 点击蒙层无法关闭 (#1552) @oasis-cloud
+* :bug: fix(Input): onChange 执行多次 (#1551) @oasis-cloud
+* :bug: fix(Swipe): 禁止父元素滚动的 demo (#1560) @oasis-cloud
+* :bug: fix: image height in taro (#1567) @xiaoyatong
+* 🛠 refactor(Tabs): 滚动到可视区域代码优化，同时放开 tab title 的宽度限制 (#1563) @oasis-cloud
+
+
 # v2.0.21
 `2023-10-18`
 

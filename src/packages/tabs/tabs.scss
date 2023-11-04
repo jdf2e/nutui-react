@@ -6,14 +6,13 @@
 }
 
 .nut-tabs__titles {
+  display: flex;
   box-sizing: border-box;
   height: $tabs-horizontal-titles-height;
   padding: 0 10px;
-  display: flex;
   user-select: none;
   background: $tabs-titles-background-color;
   border-radius: $tabs-titles-border-radius;
-  flex-shrink: 0;
   overflow: hidden;
 
   &::-webkit-scrollbar {
@@ -21,6 +20,7 @@
     width: 0;
     background: transparent;
   }
+
   .nut-tabs__list {
     width: 100%;
     height: auto;
@@ -40,23 +40,19 @@
 .nut-tabs__titles--scrollable {
   overflow-x: auto;
   overflow-y: hidden;
-
-  .nut-tabs__titles-item {
-    width: auto;
-  }
 }
 
 .nut-tabs__titles-item {
   position: relative;
   min-width: $tabs-horizontal-titles-item-min-width;
   display: flex;
-  flex: 1;
+  flex: 1 0 auto;
+  padding: 0 10px;
   align-items: center;
   justify-content: center;
   margin: 0 $nut-tabs-title-gap;
   font-size: $tabs-titles-item-font-size;
   color: $tabs-titles-item-color;
-  overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 
@@ -140,6 +136,7 @@
     padding: 0;
     width: $tabs-vertical-titles-width;
     flex-shrink: 0;
+
     .nut-tabs__list {
       width: 100%;
       display: flex;
@@ -198,6 +195,7 @@
       overflow-x: auto;
       overflow-y: hidden;
       height: $tabs-horizontal-titles-height;
+
       .nut-tabs__list {
         width: 100%;
         display: flex;

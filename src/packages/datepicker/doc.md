@@ -32,6 +32,9 @@ const App = () => {
       <DatePicker
         title="日期选择"
         visible={show1}
+        pickerProps={{
+          popupProps: { zIndex: 1220 },
+        }}
         showChinese
         onClose={() => setShow1(false)}
         onConfirm={(options, values) => confirm1(values,options)}
@@ -390,6 +393,7 @@ export default App;
 | title | 设置标题 | `string` | `null` |
 | startDate | 开始日期 | `Date` | `十年前` |
 | endDate | 结束日期 | `Date` | `十年后` |
+| pickerProps | 透传picker属性 | `object` | `-` |
 | formatter | 选项格式化函数 | `(type: string, option: PickerOption) => PickerOption` | `-` |
 | filter | 选项过滤函数 | `(type: string, option: PickerOption) => PickerOption[]` | `-` |
 | threeDimensional | 是否开启3D效果 | `boolean` | `true` |

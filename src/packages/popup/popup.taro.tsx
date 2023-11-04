@@ -19,6 +19,7 @@ import {
 } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
+import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
 
 type Teleport = HTMLElement | (() => HTMLElement) | null
 
@@ -62,7 +63,8 @@ const defaultProps = {
   ...defaultOverlayProps,
 } as PopupProps
 
-let _zIndex = 1100
+// 默认1000，参看variables
+const _zIndex = 1100
 
 export const Popup: FunctionComponent<
   Partial<PopupProps> &
@@ -98,12 +100,12 @@ export const Popup: FunctionComponent<
     afterClose,
     onClick,
   } = { ...defaultProps, ...props }
-
-  const [index, setIndex] = useState(zIndex || _zIndex)
+  let innerIndex = zIndex || _zIndex
+  const [index, setIndex] = useState(innerIndex)
   const [innerVisible, setInnerVisible] = useState(visible)
   const [showChildren, setShowChildren] = useState(true)
   const [transitionName, setTransitionName] = useState('')
-
+  const refObject = useLockScrollTaro(innerVisible && lockScroll)
   const classPrefix = 'nut-popup'
   const baseStyle = {
     zIndex: index,
@@ -134,9 +136,7 @@ export const Popup: FunctionComponent<
   const open = () => {
     if (!innerVisible) {
       setInnerVisible(true)
-      if (props.zIndex === undefined) {
-        setIndex(++_zIndex)
-      }
+      setIndex(++innerIndex)
     }
     if (destroyOnClose) {
       setShowChildren(true)
@@ -237,9 +237,11 @@ export const Popup: FunctionComponent<
         onExited={onHandleClosed}
       >
         <View
+          ref={refObject}
           style={popStyles}
           className={popClassName}
           onClick={onHandleClick}
+          catchMove={lockScroll}
         >
           {renderTitle()}
           {renderIcon()}

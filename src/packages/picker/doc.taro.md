@@ -388,6 +388,7 @@ export default App;
 | defaultValue | 默认选中 | `Array` | `[]` |
 | threeDimensional | 是否开启3D效果 | `boolean` | `true` |
 | duration | 快速滑动时惯性滚动的时长，单位 ms | `string`  \|  `number` | `1000` |
+| popupProps | 透传popup属性 | `object` | `-` |
 | onConfirm | 点击确认按钮时候回调 | `(options, value) => void` | `-` |
 | onChange | 每一列值变更时调用 | `(options, value) => void` | `-` |
 | onClose | 关闭时触发 | `(options, value) => void` | `-` |

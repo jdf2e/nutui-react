@@ -385,6 +385,7 @@ export default App;
 | defaultValue | Default Index | `Array` | `[]` |
 | threeDimensional | Turn on 3D effects | `boolean` | `true` |
 | duration | move animation duration, ms | `string`  \|  `number` | `1000` |
+| popupProps | popup props | `object` | `-` |
 | onConfirm | Emitted when click confirm button. | `(options, value) => void` | `-` |
 | onChange | Emitted when current option changed. | `(options, value) => void` | `-` |
 | onClose | Emitted when click close button. | `(options, value) => void` | `-` |

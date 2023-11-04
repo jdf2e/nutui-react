@@ -391,6 +391,7 @@ export default App;
 | startDate | 開始日期 | `Date` | `十年前` |
 | endDate | 結束日期 | `Date` | `十年後` |
 | formatter | 選項格式化函數 | `(type: string, option: PickerOption) => PickerOption` | `-` |
+| pickerProps | 透传 picker 屬性 | `object` | `-` |
 | filter | 選項過濾函數 | `(type: string, option: PickerOption) => PickerOption[]` | `-` |
 | threeDimensional | 是否開啟3D效果 | `boolean` | `true` |
 | onConfirm | 點擊確定按鈕時觸發 | `(options, value) => void` | `-` |
