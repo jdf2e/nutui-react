@@ -91,7 +91,7 @@ const InternalAvatarCropper: ForwardRefRenderFunction<
 
   const cls = classNames(classPrefix, className, 'taro')
   const toolbarPositionCls = classNames(
-    'nut-cropper-popup__toolbar',
+    'nut-cropper-popup-toolbar',
     toolbarPosition
   )
   const [visible, setVisible] = useState(false)
@@ -677,25 +677,25 @@ const InternalAvatarCropper: ForwardRefRenderFunction<
         ) : (
           <div className="flex-sb">
             <div
-              className="nut-cropper-popup__toolbar-item"
+              className="nut-cropper-popup-toolbar-item"
               onClick={(_e) => cancel()}
             >
               <Button type="danger">{cancelText}</Button>
             </div>
             <div
-              className="nut-cropper-popup__toolbar-item"
+              className="nut-cropper-popup-toolbar-item"
               onClick={(_e) => reset()}
             >
               <Refresh2 color="#fff" />
             </div>
             <div
-              className="nut-cropper-popup__toolbar-item"
+              className="nut-cropper-popup-toolbar-item"
               onClick={(_e) => rotate()}
             >
               <Retweet color="#fff" />
             </div>
             <div
-              className="nut-cropper-popup__toolbar-item"
+              className="nut-cropper-popup-toolbar-item"
               onClick={(_e) => confirm()}
             >
               <Button type="success">{confirmText}</Button>
@@ -719,10 +719,10 @@ const InternalAvatarCropper: ForwardRefRenderFunction<
             canvas-id={canvasId}
             type={showAlipayCanvas2D ? '2d' : undefined}
             style={canvasStyle}
-            className="nut-cropper-popup__canvas"
+            className="nut-cropper-popup-canvas"
           />
           <div
-            className="nut-cropper-popup__highlight"
+            className="nut-cropper-popup-highlight"
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
@@ -741,7 +741,7 @@ const InternalAvatarCropper: ForwardRefRenderFunction<
     <>
       <div className={cls} {...rest} style={style}>
         {children}
-        <div className="nut-avatar-cropper__edit-text" onClick={chooseImage}>
+        <div className="nut-avatar-cropper-edit-text" onClick={chooseImage}>
           {editText}
         </div>
       </div>

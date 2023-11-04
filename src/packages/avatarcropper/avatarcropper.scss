@@ -2,7 +2,7 @@
   position: relative;
   display: flex;
   &::after,
-  &__edit-text {
+  &-edit-text {
     content: attr(data-edit-text);
     position: absolute;
     top: 0;
@@ -21,7 +21,7 @@
       content: none;
     }
   }
-  &__input {
+  &-input {
     position: absolute;
     top: 0;
     left: 0;
@@ -41,8 +41,8 @@
   height: 100%;
   background: var(--nut-overlay-bg-color, rgba(0, 0, 0, 0.7));
   z-index: 1000;
-  &__canvas,
-  &__cut-canvas {
+  &-canvas,
+  &-cut-canvas {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -50,10 +50,10 @@
     height: 100%;
     z-index: 1;
   }
-  &__cut-canvas {
+  &-cut-canvas {
     z-index: 0;
   }
-  &__toolbar {
+  &-toolbar {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -76,7 +76,7 @@
       align-items: center;
     }
   }
-  &__highlight {
+  &-highlight {
     position: absolute;
     left: 0;
     top: 0;
@@ -91,7 +91,6 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      z-index: 1;
       background-color: transparent;
       box-shadow: 0 0 1000px 1000px rgba(0, 0, 0, 0.6);
     }
