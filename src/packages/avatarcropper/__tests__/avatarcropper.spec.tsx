@@ -29,7 +29,7 @@ test('should render base cutAvatar and type', async () => {
 
   expect(container.querySelector('.nut-avatar-cropper')).toBeInTheDocument()
 
-  const input = container.querySelector('.nut-avatar-cropper__input')
+  const input = container.querySelector('.nut-avatar-cropper-input')
   expect(input?.getAttribute('type')).toBe('file')
 })
 
@@ -114,7 +114,7 @@ test('AvatarCropper: Select the image to open the crop window', async () => {
     />
   )
 
-  const input = container.querySelector('.nut-avatar-cropper__input') as
+  const input = container.querySelector('.nut-avatar-cropper-input') as
     | Element
     | Node
     | Document
@@ -136,15 +136,15 @@ test('AvatarCropper: Select the image to open the crop window', async () => {
     display: 'block',
   })
   expect(
-    container.querySelector('.nut-cropper-popup__canvas')
+    container.querySelector('.nut-cropper-popup-canvas')
   ).toBeInTheDocument()
 
-  const track = container.querySelector('.nut-cropper-popup__highlight')
+  const track = container.querySelector('.nut-cropper-popup-highlight')
 
   await simulateTouchZoom(track as HTMLElement, 0, 400, 1000)
 
   const toolbarItems = container.querySelectorAll(
-    '.nut-cropper-popup__toolbar-item'
+    '.nut-cropper-popup-toolbar-item'
   )
   expect(toolbarItems.length).toBe(4)
 

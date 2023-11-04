@@ -11,7 +11,7 @@ exports[`layout default slot 1`] = `
   />
   <input
     accept="image/*"
-    class="nut-avatar-cropper__input"
+    class="nut-avatar-cropper-input"
     type="file"
   />
 </div>
