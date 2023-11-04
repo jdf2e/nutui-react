@@ -479,8 +479,8 @@ const InternalAvatarCropper: ForwardRefRenderFunction<
 
     if (moving) {
       const { deltaX, deltaY } = touch
-      const moveX = +deltaX * state.scale + startMoveX
-      const moveY = +deltaY * state.scale + startMoveY
+      const moveX = deltaX.current * state.scale + startMoveX
+      const moveY = deltaY.current * state.scale + startMoveY
       setState({
         ...state,
         moveX: clamp(moveX, -maxMoveX, maxMoveX),
