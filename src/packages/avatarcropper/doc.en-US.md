@@ -116,11 +116,11 @@ export default App;
 | ---------------- | ----------------------------------------------------------------------------------- | ------ | ------- |
 | max-zoom         | Maximum zoom                                                                        | `number` | `3`       |
 | space            | The gap reserved on both sides of the clipping area                                 | `number` | `20`      |
-| toolbar-position | Location of the toolbar in the clipping area. The optional value is：`top` `bottom` | `string` | `bottom`  |
 | edit-text        | The text content in the middle                                                      | `string` | `编辑`    |
 | cancel-text      | Cancel button text                                                                  | `string` | `取消`    |
 | cancel-confirm   | Confirm button text                                                                 | `string` | `确认`    |
-| toolbar         | After selecting the file, crop the bottom element of the pop-up window can be customized, and invoke the method of the component through ref                       |  `ReactNode`   |  - |
+| toolbar         | Customize the clipping area toolbar, after setting this content, the property cancelText and cancelConfirm will be invalid  |  `ReactNode`   |  `-` |
+| toolbar-position | Location of the toolbar in the clipping area. The optional value is：`top` `bottom` | `string` | `bottom`  |
 | onConfirm       | Click Confirm to trigger after cropping                    | `(url: string) => void` |  `-` |
 | onCancel        | Click cancel trigger                  | `-`                |  `-` |
 

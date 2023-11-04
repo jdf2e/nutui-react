@@ -123,7 +123,7 @@ export default App;
 | editText        | 中間的文字內容                              | `string` | `編輯`   |
 | cancelText      | 取消按鈕的文字                              | `string` | `取消`   |
 | cancelConfirm   | 確認按鈕的文字                              | `string` | `確認`   |
-| toolbar         | 自定義裁剪區域工具欄                       |  `ReactNode`   |  `-` |
+| toolbar         | 自定義裁剪區域工具欄，設置該內容後，屬性`cancelText``cancelConfirm`將失效  |  `ReactNode`   |  `-` |
 | onConfirm       | 裁剪後點擊確認觸發                    | `(url: string) => void` |  `-` |
 | onCancel        | 點擊取消觸發                          | `-`                |  `-` |
 
