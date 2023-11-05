@@ -476,7 +476,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
         />
         <div className="nut-avatar-cropper-edit-text">{editText}</div>
       </div>
-      <CropperPopup />
+      {CropperPopup()}
     </>
   )
 }
