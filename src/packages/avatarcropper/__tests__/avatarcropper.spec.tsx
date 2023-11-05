@@ -1,7 +1,8 @@
 import React from 'react'
 import '@testing-library/jest-dom'
+import { Refresh2, Retweet } from '@nutui/icons-react'
 import { render, screen, fireEvent } from '@testing-library/react'
-import AvatarCropper, { AvatarCropperRef } from '../index'
+import AvatarCropper from '../index'
 import { simulateTouchMove, simulateTouchZoom } from '@/utils/test/event'
 import { sleep } from '@/utils/sleep'
 import Button from '@/packages/button'
@@ -36,41 +37,18 @@ test('should render base cutAvatar and type', async () => {
 test('layout toolbar slot', () => {
   const handleCancel = jest.fn()
   const handleConfirm = jest.fn()
-  const avatarCropperRef = React.createRef<AvatarCropperRef>()
-  const Toolbar = () => {
-    return (
-      <div className="toolbar">
-        <Button
-          type="primary"
-          onClick={(e: any) => avatarCropperRef.current?.cancel()}
-        >
-          取消
-        </Button>
-        <Button
-          type="primary"
-          onClick={(e: any) => avatarCropperRef.current?.reset()}
-        >
-          重置
-        </Button>
-        <Button
-          type="primary"
-          onClick={(e: any) => avatarCropperRef.current?.rotate()}
-        >
-          旋转
-        </Button>
-        <Button
-          type="primary"
-          onClick={(e: any) => avatarCropperRef.current?.confirm()}
-        >
-          确认
-        </Button>
-      </div>
-    )
-  }
   const { container } = render(
     <AvatarCropper
-      ref={avatarCropperRef}
-      toolbar={Toolbar()}
+      toolbar={[
+        <Button type="danger" key="cancel">
+          取消
+        </Button>,
+        <Refresh2 key="reset" />,
+        <Retweet key="rotate" />,
+        <Button type="success" key="confirm">
+          确认
+        </Button>,
+      ]}
       onCancel={handleCancel}
       onConfirm={handleConfirm}
     >
@@ -80,10 +58,13 @@ test('layout toolbar slot', () => {
       />
     </AvatarCropper>
   )
-  expect(container.querySelector('.toolbar')).toBeInTheDocument()
+  expect(
+    container.querySelector('.nut-avatar-cropper-popup-toolbar-flex')
+  ).toBeInTheDocument()
   // 验证toolbar的点击事件
-  const toolbarItems = container.querySelectorAll('.toolbar button')
-  expect(toolbarItems.length).toBe(4)
+  const toolbarItems = container.querySelectorAll(
+    '.nut-avatar-cropper-popup-toolbar-item'
+  )
   const cancel = toolbarItems[0]
   fireEvent.click(cancel)
   expect(handleCancel).toBeCalled()
@@ -107,8 +88,6 @@ test('AvatarCropper: Select the image to open the crop window', async () => {
       space={20}
       toolbarPosition="top"
       editText="修改"
-      cancelText="取消"
-      confirmText="裁剪"
       onCancel={handleCancel}
       onConfirm={handleConfirm}
     />
@@ -127,30 +106,30 @@ test('AvatarCropper: Select the image to open the crop window', async () => {
     get: jest.fn().mockReturnValue([mockFile, smallFile]),
   })
 
-  expect(container.querySelector('.nut-cropper-popup')).toHaveStyle({
+  expect(container.querySelector('.nut-avatar-cropper-popup')).toHaveStyle({
     display: 'none',
   })
   fireEvent.change(input)
   await sleep(10)
-  expect(container.querySelector('.nut-cropper-popup')).toHaveStyle({
+  expect(container.querySelector('.nut-avatar-cropper-popup')).toHaveStyle({
     display: 'block',
   })
   expect(
-    container.querySelector('.nut-cropper-popup-canvas')
+    container.querySelector('.nut-avatar-cropper-popup-canvas')
   ).toBeInTheDocument()
 
-  const track = container.querySelector('.nut-cropper-popup-highlight')
+  const track = container.querySelector('.nut-avatar-cropper-popup-highlight')
 
   await simulateTouchZoom(track as HTMLElement, 0, 400, 1000)
 
   const toolbarItems = container.querySelectorAll(
-    '.nut-cropper-popup-toolbar-item'
+    '.nut-avatar-cropper-popup-toolbar-item'
   )
   expect(toolbarItems.length).toBe(4)
 
   const cancel = toolbarItems[0]
   fireEvent.click(cancel)
-  expect(container.querySelector('.nut-cropper-popup')).toHaveStyle({
+  expect(container.querySelector('.nut-avatar-cropper-popup')).toHaveStyle({
     display: 'none',
   })
   expect(handleCancel).toBeCalled()
@@ -172,7 +151,7 @@ test('AvatarCropper: Select the image to open the crop window', async () => {
   const confirm = toolbarItems[3]
   fireEvent.click(confirm)
 
-  expect(container.querySelector('.nut-cropper-popup')).toHaveStyle({
+  expect(container.querySelector('.nut-avatar-cropper-popup')).toHaveStyle({
     display: 'none',
   })
 })

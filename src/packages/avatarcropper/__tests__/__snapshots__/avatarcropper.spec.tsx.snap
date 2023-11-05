@@ -3,7 +3,6 @@
 exports[`layout default slot 1`] = `
 <div
   class="nut-avatar-cropper"
-  data-edit-text="编辑"
 >
   <img
     alt="avatar"
@@ -14,5 +13,10 @@ exports[`layout default slot 1`] = `
     class="nut-avatar-cropper-input"
     type="file"
   />
+  <div
+    class="nut-avatar-cropper-edit-text"
+  >
+    编辑
+  </div>
 </div>
 `;

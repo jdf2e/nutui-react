@@ -1,38 +1,27 @@
 import React, {
   useState,
   useEffect,
-  forwardRef,
-  ForwardRefRenderFunction,
-  useImperativeHandle,
   useMemo,
   useCallback,
+  FunctionComponent,
 } from 'react'
 import Taro, { useReady } from '@tarojs/taro'
 import classNames from 'classnames'
 import { Canvas } from '@tarojs/components'
-import { Refresh2, Retweet } from '@nutui/icons-react-taro'
 import { Button } from '@/packages/button/button.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useTouch } from '@/utils/use-touch'
 import { clamp, preventDefault } from '@/utils'
 
-export type AvatarCropperRef = {
-  cancel: () => void
-  reset: () => void
-  rotate: () => void
-  confirm: () => void
-}
 export type AvatarCropperToolbarPosition = 'top' | 'bottom'
 export type AvatarCropperSizeType = 'original' | 'compressed'
 export type AvatarCropperSourceType = 'album' | 'camera'
 export interface AvatarCropperProps extends BasicComponent {
   maxZoom: number
   space: number
-  toolbar: React.ReactNode
+  toolbar: React.ReactNode[]
   toolbarPosition: AvatarCropperToolbarPosition
-  editText: string
-  cancelText: string
-  confirmText: string
+  editText: React.ReactNode | string
   sizeType: AvatarCropperSizeType[]
   sourceType: AvatarCropperSourceType[]
   onConfirm: (e: string) => void
@@ -43,19 +32,30 @@ const defaultProps = {
   ...ComponentDefaults,
   maxZoom: 3,
   space: 10,
+  toolbar: [
+    <Button type="danger" key="cancel">
+      取消
+    </Button>,
+    <Button type="info" key="reset">
+      重置
+    </Button>,
+    <Button type="warning" key="rotate">
+      旋转
+    </Button>,
+    <Button type="success" key="confirm">
+      确认
+    </Button>,
+  ],
   toolbarPosition: 'bottom',
   editText: '编辑',
-  cancelText: '取消',
-  confirmText: '确认',
   sizeType: ['original', 'compressed'],
   sourceType: ['album', 'camera'],
 } as AvatarCropperProps
 
 const classPrefix = `nut-avatar-cropper`
-const InternalAvatarCropper: ForwardRefRenderFunction<
-  AvatarCropperRef,
-  Partial<AvatarCropperProps>
-> = (props, ref) => {
+export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
+  props
+) => {
   const {
     children,
     toolbar,
@@ -63,8 +63,6 @@ const InternalAvatarCropper: ForwardRefRenderFunction<
     space,
     toolbarPosition,
     editText,
-    cancelText,
-    confirmText,
     sizeType,
     sourceType,
     className,
@@ -91,7 +89,7 @@ const InternalAvatarCropper: ForwardRefRenderFunction<
 
   const cls = classNames(classPrefix, className, 'taro')
   const toolbarPositionCls = classNames(
-    'nut-cropper-popup-toolbar',
+    `${classPrefix}-popup-toolbar`,
     toolbarPosition
   )
   const [visible, setVisible] = useState(false)
@@ -261,7 +259,7 @@ const InternalAvatarCropper: ForwardRefRenderFunction<
     const canvasDom: HTMLElement | null = document.getElementById(
       canvasAll.canvasId
     )
-    let canvas: HTMLCanvasElement = canvasDom as HTMLCanvasElement
+    let canvas = canvasDom as HTMLCanvasElement
     if (canvasDom?.tagName !== 'CANVAS') {
       canvas = canvasDom?.getElementsByTagName('canvas')[0] as HTMLCanvasElement
     }
@@ -437,28 +435,25 @@ const InternalAvatarCropper: ForwardRefRenderFunction<
     startMoveY: 0,
     startScale: 0,
     startDistance: 0,
-    fingerNum: 0,
   })
-  const { startMoveX, startMoveY, startScale, startDistance, fingerNum } =
-    startMove
+  const { startMoveX, startMoveY, startScale, startDistance } = startMove
 
   // 触摸开始
   const onTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
     const { touches } = event
     const { offsetX } = touch
 
-    touch.start(event as any)
+    touch.start(event)
     const fingerNum = touches?.length
     setStartMove({
       ...startMove,
       startMoveX: state.moveX,
       startMoveY: state.moveY,
-      fingerNum,
     })
     setMoving(fingerNum === 1)
-    setZooming(fingerNum === 2 && !offsetX)
+    setZooming(fingerNum === 2 && !offsetX.current)
 
-    if (fingerNum === 2 && !offsetX) {
+    if (fingerNum === 2 && !offsetX.current) {
       setStartMove({
         ...startMove,
         startScale: state.scale,
@@ -471,7 +466,7 @@ const InternalAvatarCropper: ForwardRefRenderFunction<
   const onTouchMove = (event: React.TouchEvent<HTMLDivElement>) => {
     const { touches } = event
 
-    touch.move(event as any)
+    touch.move(event)
 
     if (moving || zooming) {
       preventDefault(event, true)
@@ -652,56 +647,21 @@ const InternalAvatarCropper: ForwardRefRenderFunction<
     })
   }
 
-  useImperativeHandle(ref, () => {
-    return {
-      cancel() {
-        cancel()
-      },
-      confirm() {
-        confirm()
-      },
-      reset() {
-        reset()
-      },
-      rotate() {
-        rotate()
-      },
-    }
-  })
-
   const ToolBar = () => {
+    const actions = [cancel, reset, rotate, confirm]
     return (
       <>
-        {React.isValidElement(toolbar) ? (
-          toolbar
-        ) : (
-          <div className="flex-sb">
+        <div className={`${classPrefix}-popup-toolbar-flex`}>
+          {actions.map((action, index) => (
             <div
-              className="nut-cropper-popup-toolbar-item"
-              onClick={(_e) => cancel()}
+              key={index}
+              className={`${classPrefix}-popup-toolbar-item`}
+              onClick={(_e) => action()}
             >
-              <Button type="danger">{cancelText}</Button>
+              {toolbar[index]}
             </div>
-            <div
-              className="nut-cropper-popup-toolbar-item"
-              onClick={(_e) => reset()}
-            >
-              <Refresh2 color="#fff" />
-            </div>
-            <div
-              className="nut-cropper-popup-toolbar-item"
-              onClick={(_e) => rotate()}
-            >
-              <Retweet color="#fff" />
-            </div>
-            <div
-              className="nut-cropper-popup-toolbar-item"
-              onClick={(_e) => confirm()}
-            >
-              <Button type="success">{confirmText}</Button>
-            </div>
-          </div>
-        )}
+          ))}
+        </div>
       </>
     )
   }
@@ -711,7 +671,7 @@ const InternalAvatarCropper: ForwardRefRenderFunction<
     return (
       <>
         <div
-          className="nut-cropper-popup"
+          className={`${classPrefix}-popup`}
           style={{ display: visible ? 'block' : 'none' }}
         >
           <Canvas
@@ -719,10 +679,10 @@ const InternalAvatarCropper: ForwardRefRenderFunction<
             canvas-id={canvasId}
             type={showAlipayCanvas2D ? '2d' : undefined}
             style={canvasStyle}
-            className="nut-cropper-popup-canvas"
+            className={`${classPrefix}-popup-canvas`}
           />
           <div
-            className="nut-cropper-popup-highlight"
+            className={`${classPrefix}-popup-highlight`}
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
@@ -745,12 +705,9 @@ const InternalAvatarCropper: ForwardRefRenderFunction<
           {editText}
         </div>
       </div>
-      {CropperPopup()}
+      <CropperPopup />
     </>
   )
 }
-
-export const AvatarCropper = forwardRef(InternalAvatarCropper)
-
 AvatarCropper.defaultProps = defaultProps
 AvatarCropper.displayName = 'NutAvatarCropper'

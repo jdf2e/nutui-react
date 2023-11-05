@@ -1,7 +1,7 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
+import { Refresh2, Retweet } from '@nutui/icons-react'
 import { useTranslate } from '@/sites/assets/locale'
 import { AvatarCropper } from './avatarcropper'
-import type { AvatarCropperRef } from './avatarcropper'
 import { Cell, Button, Avatar } from '@/packages/nutui.react'
 import './demo.scss'
 
@@ -27,39 +27,8 @@ const AvatarCropperDemo = () => {
   const [imageUrl, setImageUrl] = useState(
     'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'
   )
-  const avatarCropperRef = useRef<AvatarCropperRef>(null)
   const cutImage = (data: any) => {
     setImageUrl(data)
-  }
-  const Toolbar = () => {
-    return (
-      <div className="toolbar">
-        <Button
-          type="primary"
-          onClick={(e: any) => avatarCropperRef.current?.cancel()}
-        >
-          取消
-        </Button>
-        <Button
-          type="primary"
-          onClick={(e: any) => avatarCropperRef.current?.reset()}
-        >
-          重置
-        </Button>
-        <Button
-          type="primary"
-          onClick={(e: any) => avatarCropperRef.current?.rotate()}
-        >
-          旋转
-        </Button>
-        <Button
-          type="primary"
-          onClick={(e: any) => avatarCropperRef.current?.confirm()}
-        >
-          确认
-        </Button>
-      </div>
-    )
   }
   return (
     <>
@@ -73,11 +42,19 @@ const AvatarCropperDemo = () => {
         <h2>{translated.c0a1c0a2}</h2>
         <Cell>
           <AvatarCropper
-            ref={avatarCropperRef}
             toolbarPosition="top"
             editText="修改"
             onConfirm={cutImage}
-            toolbar={<Toolbar />}
+            toolbar={[
+              <Button type="danger" key="cancel">
+                取消
+              </Button>,
+              <Refresh2 key="reset" />,
+              <Retweet key="rotate" />,
+              <Button type="success" key="confirm">
+                确认
+              </Button>,
+            ]}
           >
             <Avatar size="large" src={imageUrl} />
           </AvatarCropper>

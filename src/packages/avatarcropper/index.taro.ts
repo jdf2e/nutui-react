@@ -5,6 +5,5 @@ export type {
   AvatarCropperToolbarPosition,
   AvatarCropperSizeType,
   AvatarCropperSourceType,
-  AvatarCropperRef,
 } from './avatarcropper.taro'
 export default AvatarCropper

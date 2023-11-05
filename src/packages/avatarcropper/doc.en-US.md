@@ -51,53 +51,32 @@ Customize the clipping area toolbar, and toolbar-position controls the toolbar p
 ```tsx
 import React, { useState } from "react";
 import { Avatar, AvatarCropper, Button } from '@nutui/nutui-react';
+import { Refresh2, Retweet } from '@nutui/icons-react-taro'
 
 const App = () => {
   const [imageUrl, setImageUrl] = useState(
     'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'
   )
-  const avatarCropperRef = useRef(null)
   const cutImage = (data: any) => {
     setImageUrl(data)
   }
-  const styles = {
-    display: 'flex',
-    justifyContent: 'space-between',
-    padding: '10px',
-  }
-  const Toolbar = () => {
-    return (
-      <div style={styles}>
-        <Button
-          type="primary"
-          onClick={(e: any) => avatarCropperRef.current?.cancel()}
-        >
-          取消
-        </Button>
-        <Button
-          type="primary"
-          onClick={(e: any) => avatarCropperRef.current?.reset()}
-        >
-          重置
-        </Button>
-        <Button
-          type="primary"
-          onClick={(e: any) => avatarCropperRef.current?.rotate()}
-        >
-          旋转
-        </Button>
-        <Button
-          type="primary"
-          onClick={(e: any) => avatarCropperRef.current?.confirm()}
-        >
-          确认
-        </Button>
-      </div>
-    )
-  }
   return (
     <>
-      <AvatarCropper ref={avatarCropperRef} toolbar-position="top" edit-text="修改" onConfirm={cutImage} toolbar={<Toolbar />}>
+      <AvatarCropper
+        toolbarPosition="top"
+        editText="Modify"
+        onConfirm={cutImage}
+        toolbar={[
+          <Button type="danger" key="cancel">
+            Cancel
+          </Button>,
+          <Refresh2 key="reset" />,
+          <Retweet key="rotate" />,
+          <Button type="success" key="confirm">
+            Confirm
+          </Button>,
+        ]}
+        >
         <Avatar size="large" src={imageUrl} />
       </AvatarCropper>
     </>
@@ -116,20 +95,9 @@ export default App;
 | ---------------- | ----------------------------------------------------------------------------------- | ------ | ------- |
 | max-zoom         | Maximum zoom                                                                        | `number` | `3`       |
 | space            | The gap reserved on both sides of the clipping area                                 | `number` | `20`      |
-| edit-text        | The text content in the middle                                                      | `string` | `编辑`    |
-| cancel-text      | Cancel button text                                                                  | `string` | `取消`    |
-| cancel-confirm   | Confirm button text                                                                 | `string` | `确认`    |
-| toolbar         | Customize the clipping area toolbar, after setting this content, the property cancelText and cancelConfirm will be invalid  |  `ReactNode`   |  `-` |
+| edit-text        | The text content in the middle                                                      | `ReactNode` \| `string` | `编辑`    |
+| toolbar         | Customize the clipping area toolbar, after setting this content  |  `ReactNode[]`   | `[<Button type="danger" key="cancel">取消</Button>, <Button type="info" key="reset">重置</Button>,<Button type="warning" key="rotate">旋转</Button>,<Button type="success" key="confirm">确认</Button>,
+  ]` |
 | toolbar-position | Location of the toolbar in the clipping area. The optional value is：`top` `bottom` | `string` | `bottom`  |
 | onConfirm       | Click Confirm to trigger after cropping                    | `(url: string) => void` |  `-` |
 | onCancel        | Click cancel trigger                  | `-`                |  `-` |
-
-
-### Ref
-
-| Event   | Explain            |  type |
-| ------- | ------------------ | ----- |
-| cancel  | uncrop             | `() => void` |
-| reset   | Reset to 0 degrees | `() => void` |
-| rotate  | Rotate 90 degrees  | `() => void` |
-| confirm | Definite cut       | `() => void` |
