@@ -135,7 +135,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
 
   // 滚动监听
   const listScroll = (e: any) => {
-    const scrollTop = e.detail ? e.detail.scrollTop : e.target.scrollTop
+    const scrollTop = e.target.scrollTop
     const scrollSize = Math.floor(scrollTop)
     const startIndex = binarySearch(positions, false, scrollSize)
 
