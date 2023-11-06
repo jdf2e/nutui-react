@@ -187,7 +187,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
               <div
                 data-index={`${dataIndex}`}
                 className="nut-virtuallist-item"
-                key={`${keyVal}`}
+                key={`${data}`}
                 style={{
                   height: `${itemEqual ? `${itemHeight}px` : 'auto'}`,
                 }}
