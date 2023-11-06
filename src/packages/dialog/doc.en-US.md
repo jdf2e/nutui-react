@@ -150,6 +150,7 @@ export default App;
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | visible | Whether the dialog box is visible | `boolean` | `-` |
+| header | Customize the header, but it will not be displayed in NULL | `ReactNode` | `-` |
 | title | title | `ReactNode` | `-` |
 | content | The content of the dialog box is suitable for function calls | `ReactNode` | `-` |
 | footer | Customize the notes, but it will not be displayed in NULL | `ReactNode` | `-` |

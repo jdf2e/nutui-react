@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Dialog } from './dialog'
 import Cell from '../cell'
 import { useTranslate } from '@/sites/assets/locale'
+import Image from '../image'
 
 interface T {
   funUse: string
@@ -19,6 +20,7 @@ interface T {
   tips: string
   confirmText: string
   cancelText: string
+  header: string
 }
 
 const DialogDemo = () => {
@@ -39,6 +41,7 @@ const DialogDemo = () => {
       content: '支持函数调用和组件调用两种方式。',
       confirmText: '确定',
       cancelText: '取消',
+      header: '顶部带插图',
     },
     'en-US': {
       funUse: 'Function use',
@@ -57,6 +60,7 @@ const DialogDemo = () => {
       content: 'Function call and template call are supported.',
       confirmText: 'confirm',
       cancelText: 'cancel',
+      header: 'Top with illustration',
     },
   })
 
@@ -66,6 +70,7 @@ const DialogDemo = () => {
   const [visible4, setVisible4] = useState(false)
   const [visible5, setVisible5] = useState(false)
   const [visible6, setVisible6] = useState(false)
+  const [visible7, setVisible7] = useState(false)
 
   return (
     <>
@@ -155,6 +160,19 @@ const DialogDemo = () => {
             })
           }}
         />
+        <Cell
+          title={translated.header}
+          onClick={() => {
+            Dialog.alert({
+              className: 'dialog-func',
+              header: (
+                <Image src="https://img13.360buyimg.com/imagetools/jfs/t1/219330/27/30033/11784/6544af3fF5c0fd98f/64c41bb05ef09189.png" />
+              ),
+              title: translated.basic,
+              content: translated.content,
+            })
+          }}
+        />
         <h2>{translated.title1}</h2>
         <Cell
           title={translated.basic}
@@ -225,6 +243,24 @@ const DialogDemo = () => {
           onClose={() => {
             setVisible6(false)
           }}
+        >
+          {translated.content}
+        </Dialog>
+        <Cell
+          title={translated.header}
+          onClick={() => {
+            setVisible7(true)
+          }}
+        />
+        <Dialog
+          className="test-dialog"
+          title={translated.header}
+          visible={visible7}
+          header={
+            <Image src="https://img13.360buyimg.com/imagetools/jfs/t1/219330/27/30033/11784/6544af3fF5c0fd98f/64c41bb05ef09189.png" />
+          }
+          onConfirm={() => setVisible7(false)}
+          onCancel={() => setVisible7(false)}
         >
           {translated.content}
         </Dialog>
