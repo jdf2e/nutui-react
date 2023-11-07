@@ -147,7 +147,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
       <>
         {overlay ? (
           <Overlay
-            visible
+            visible={visible}
             closeOnOverlayClick={closeOnOverlayClick}
             lockScroll={lockScroll}
             onClick={onHandleClickOverlay}
