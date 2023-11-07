@@ -8,11 +8,13 @@ import React, {
 } from 'react'
 import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { canUseDom } from '@/utils/can-use-dom'
 
 export interface FileType {
   jpg: string
   png: string
 }
+
 export interface SignatureProps extends BasicComponent {
   type: keyof FileType
   lineWidth: number
@@ -21,6 +23,7 @@ export interface SignatureProps extends BasicComponent {
   onConfirm?: (canvas: HTMLCanvasElement, dataurl: string) => void
   onClear?: () => void
 }
+
 const defaultProps = {
   ...ComponentDefaults,
   type: 'png',
@@ -53,23 +56,29 @@ const InternalSignature: ForwardRefRenderFunction<
   const [canvasHeight, setCanvasHeight] = useState(0)
   const [canvasWidth, setCanvasWidth] = useState(0)
   const ctx = useRef<CanvasRenderingContext2D | null>(null)
-  const isCanvasSupported = () => {
+  const checkCanvas = () => {
     const elem = document.createElement('canvas')
     return !!(elem.getContext && elem.getContext('2d'))
   }
-  const isSupportTouch = 'ontouchstart' in window
+  const [isCanvasSupported, setIsCanvasSupported] = useState(false)
+
+  const isSupportTouch = canUseDom ? 'ontouchstart' in window : false
   const events = isSupportTouch
     ? ['touchstart', 'touchmove', 'touchend', 'touchleave']
     : ['mousedown', 'mousemove', 'mouseup', 'mouseleave']
 
   useEffect(() => {
-    if (isCanvasSupported() && canvasRef.current && wrapRef.current) {
+    setIsCanvasSupported(checkCanvas)
+  }, [])
+
+  useEffect(() => {
+    if (isCanvasSupported && canvasRef.current && wrapRef.current) {
       ctx.current = canvasRef.current.getContext('2d')
       setCanvasWidth(wrapRef.current.offsetWidth)
       setCanvasHeight(wrapRef.current.offsetHeight)
       addEvent()
     }
-  }, [])
+  }, [isCanvasSupported])
 
   const startEventHandler = (event: any) => {
     event.preventDefault()
@@ -153,23 +162,25 @@ const InternalSignature: ForwardRefRenderFunction<
   return (
     <div className={`${classPrefix} ${className}`} style={style} {...rest}>
       <div className={`${classPrefix}__inner`} ref={wrapRef}>
-        {isCanvasSupported() ? (
-          <canvas ref={canvasRef} height={canvasHeight} width={canvasWidth} />
-        ) : (
-          <>
-            {unsupported || (
-              <p className={`${classPrefix}__unsupport`}>
-                {locale.signature.unsupported}
-              </p>
-            )}
-          </>
-        )}
+        <>
+          {/* eslint-disable-next-line no-nested-ternary */}
+          {isCanvasSupported ? (
+            <canvas ref={canvasRef} height={canvasHeight} width={canvasWidth} />
+          ) : unsupported ? (
+            <>{unsupported}</>
+          ) : (
+            <p className={`${classPrefix}__unsupport`}>
+              {locale.signature.unsupported}
+            </p>
+          )}
+        </>
       </div>
     </div>
   )
 }
 
-export const Signature =
-  React.forwardRef<unknown, Partial<SignatureProps>>(InternalSignature)
+export const Signature = React.forwardRef<unknown, Partial<SignatureProps>>(
+  InternalSignature
+)
 Signature.defaultProps = defaultProps
 Signature.displayName = 'NutSignature'

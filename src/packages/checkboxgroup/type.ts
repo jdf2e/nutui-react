@@ -1,5 +1,3 @@
-import { MouseEventHandler } from 'react'
-
 export interface CheckboxGroupOptionType {
   label: string
   value: string

@@ -2,15 +2,15 @@ import React, {
   useRef,
   forwardRef,
   useState,
-  TouchEvent,
   useCallback,
   useImperativeHandle,
   useEffect,
 } from 'react'
+import type { TouchEvent, MouseEvent } from 'react'
 import classNames from 'classnames'
-import bem from '@/utils/bem'
 import { useTouch } from '@/utils/use-touch'
 import { getRect } from '@/utils/use-client-rect'
+import { BasicComponent } from '@/utils/typings'
 
 export type SwipeSide = 'left' | 'right'
 
@@ -29,11 +29,7 @@ export interface SwipeInstance {
   open: (side: SwipeSide) => void
   close: () => void
 }
-export interface SwipeProps {
-  /** 自定义类名 */
-  className: string
-  /** 自定义样式 */
-  style: React.CSSProperties
+export interface SwipeProps extends BasicComponent {
   /** 标识符，可以在事件参数中获取到 */
   name?: string | number
   /** 左侧滑动区域的内容 */
@@ -61,11 +57,13 @@ export interface SwipeProps {
     position: SwipeSide
   }) => void
   /** 点击时触发 */
-  onActionClick?: (event: Event, position: SwipeSide) => void
-  onTouchStart?: (event: Event) => void
-  onTouchEnd?: (event: Event) => void
-  onTouchMove?: (event: Event) => void
-  children?: React.ReactNode
+  onActionClick?: (
+    event: MouseEvent<HTMLDivElement>,
+    position: SwipeSide
+  ) => void
+  onTouchStart?: (event: TouchEvent<HTMLDivElement>) => void
+  onTouchEnd?: (event: TouchEvent<HTMLDivElement>) => void
+  onTouchMove?: (event: TouchEvent<HTMLDivElement>) => void
 }
 const defaultProps = {
   name: '',
@@ -78,8 +76,8 @@ export const Swipe = forwardRef<
       'onTouchStart' | 'onTouchMove' | 'onTouchEnd'
     >
 >((props, instanceRef) => {
-  const swipeBem = bem('swipe')
-  const touch: any = useTouch()
+  const classPrefix = 'nut-swipe'
+  const touch = useTouch()
 
   const { children, className, style } = { ...defaultProps, ...props }
 
@@ -104,32 +102,32 @@ export const Swipe = forwardRef<
 
   const rightWidth = actionWidth.right
 
-  const onTouchStart = (event: Event) => {
+  const onTouchStart = (event: TouchEvent<HTMLDivElement>) => {
     if (!props.disabled) {
       startOffset.current = state.offset
       touch.start(event)
-      props.onTouchStart && props.onTouchStart(event)
+      props.onTouchStart?.(event)
     }
   }
 
-  const onTouchMove = (event: Event) => {
+  const onTouchMove = (event: TouchEvent<HTMLDivElement>) => {
     if (props.disabled) {
       return
     }
 
     touch.move(event)
-    props.onTouchMove && props.onTouchMove(event)
+    props.onTouchMove?.(event)
 
     if (touch.isHorizontal()) {
       lockClick.current = true
       const newState = { ...state, dragging: true }
-      const isEdge = !opened || touch.deltaX * startOffset.current < 0
+      const isEdge = !opened || touch.deltaX.current * startOffset.current < 0
       if (isEdge) {
         preventDefault(event, true)
       }
 
       newState.offset = rangeCalculation(
-        touch.deltaX + startOffset.current,
+        touch.deltaX.current + startOffset.current,
         -rightWidth,
         leftWidth
       )
@@ -138,7 +136,7 @@ export const Swipe = forwardRef<
     }
   }
 
-  const onTouchEnd = (event: Event) => {
+  const onTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
     if (state.dragging) {
       setState((v) => ({ ...v, dragging: false }))
       toggle(state.offset > 0 ? 'left' : 'right')
@@ -146,7 +144,7 @@ export const Swipe = forwardRef<
       setTimeout(() => {
         lockClick.current = false
       }, 0)
-      props.onTouchEnd && props.onTouchEnd(event)
+      props.onTouchEnd?.(event)
     }
   }
 
@@ -217,8 +215,8 @@ export const Swipe = forwardRef<
       return (
         <div
           ref={measuredRef}
-          className={`${swipeBem(side)}`}
-          onClick={(e: any) => handleOperate(e, side)}
+          className={`${classPrefix}__${side}`}
+          onClick={(e) => handleOperate(e, side)}
         >
           {props[`${side}Action`]}
         </div>
@@ -226,7 +224,10 @@ export const Swipe = forwardRef<
     }
     return null
   }
-  const handleOperate = (event: Event, position: SwipeSide) => {
+  const handleOperate = (
+    event: MouseEvent<HTMLDivElement>,
+    position: SwipeSide
+  ) => {
     event.stopPropagation()
     if (props.beforeClose) {
       props.beforeClose(position)
@@ -264,13 +265,13 @@ export const Swipe = forwardRef<
   return (
     <div
       ref={root}
-      className={classNames(swipeBem(), className)}
-      onTouchStart={(e: any) => onTouchStart(e)}
-      onTouchMove={(e: any) => onTouchMove(e)}
-      onTouchEnd={(e: any) => onTouchEnd(e)}
+      className={classNames(classPrefix, className)}
+      onTouchStart={(e) => onTouchStart(e)}
+      onTouchMove={(e) => onTouchMove(e)}
+      onTouchEnd={(e) => onTouchEnd(e)}
       style={style}
     >
-      <div className={`${swipeBem('wrapper')}`} style={wrapperStyle}>
+      <div className={`${classPrefix}__wrapper`} style={wrapperStyle}>
         {renderActionContent('left', leftRef)}
         {children}
         {renderActionContent('right', rightRef)}

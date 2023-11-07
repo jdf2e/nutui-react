@@ -1,4 +1,5 @@
 import React, { CSSProperties, useCallback } from 'react'
+import type { MouseEvent } from 'react'
 import classNames from 'classnames'
 import { Loading } from '@nutui/icons-react'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -25,7 +26,8 @@ export interface ButtonProps extends BasicComponent {
   disabled: boolean
   icon: React.ReactNode
   id: string
-  onClick: (e: MouseEvent) => void
+  nativeType: 'submit' | 'reset' | 'button'
+  onClick: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
 const prefixCls = 'nut-button'
@@ -41,7 +43,8 @@ const defaultProps = {
   disabled: false,
   block: false,
   icon: null,
-  onClick: (e: MouseEvent) => {},
+  nativeType: 'button',
+  onClick: (e: MouseEvent<HTMLButtonElement>) => {},
 } as ButtonProps
 export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
   (props, ref) => {
@@ -59,6 +62,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       onClick,
       className,
       style,
+      nativeType,
       ...rest
     } = {
       ...defaultProps,
@@ -81,17 +85,17 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       return style
     }, [color])
 
-    const handleClick = (e: any) => {
+    const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
       if (!loading && !disabled && onClick) {
         onClick(e)
       }
     }
 
     return (
-      // eslint-disable-next-line react/button-has-type
       <button
         {...rest}
         ref={ref}
+        type={nativeType}
         className={classNames(
           prefixCls,
           className,

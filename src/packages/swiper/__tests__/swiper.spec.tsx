@@ -2,8 +2,7 @@ import React from 'react'
 import { render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { act } from 'react-dom/test-utils'
-import { Swiper } from '../swiper'
-import { SwiperItem } from '../../swiperitem/swiperitem'
+import Swiper from '../index'
 import { triggerDrag } from '@/utils/test/event'
 
 function sleep(delay = 0): Promise<void> {
@@ -38,9 +37,9 @@ test('should render width and height', () => {
     >
       {list.map((item) => {
         return (
-          <SwiperItem key={item}>
+          <Swiper.Item key={item}>
             <img src={item} alt="" />
-          </SwiperItem>
+          </Swiper.Item>
         )
       })}
     </Swiper>
@@ -80,9 +79,9 @@ test('should render initpage', () => {
     >
       {list.map((item) => {
         return (
-          <SwiperItem key={item}>
+          <Swiper.Item key={item}>
             <img src={item} alt="" />
-          </SwiperItem>
+          </Swiper.Item>
         )
       })}
     </Swiper>
@@ -120,9 +119,9 @@ test('should render direction', () => {
     >
       {list.map((item) => {
         return (
-          <SwiperItem key={item}>
+          <Swiper.Item key={item}>
             <img src={item} alt="" />
-          </SwiperItem>
+          </Swiper.Item>
         )
       })}
     </Swiper>
@@ -161,9 +160,9 @@ test('should render indicator', () => {
     >
       {list.map((item) => {
         return (
-          <SwiperItem key={item}>
+          <Swiper.Item key={item}>
             <img src={item} alt="" />
-          </SwiperItem>
+          </Swiper.Item>
         )
       })}
     </Swiper>
@@ -171,10 +170,6 @@ test('should render indicator', () => {
   const indicatorItem = container.querySelectorAll(
     '.nut-swiper__indicator-item'
   )
-  // expect(indicatorItem).toHaveLength(4)
-  // expect(indicatorItem[1]).toHaveStyle({
-  //   backgroundColor: 'red',
-  // })
 })
 
 test('should render loop and auto-play', async () => {
@@ -202,9 +197,9 @@ test('should render loop and auto-play', async () => {
     >
       {list.map((item) => {
         return (
-          <SwiperItem key={item}>
+          <Swiper.Item key={item}>
             <img src={item} alt="" />
-          </SwiperItem>
+          </Swiper.Item>
         )
       })}
     </Swiper>
@@ -231,7 +226,7 @@ test('should not allow to drag when touchable is false', () => {
     width: 375,
     direction: 'vertical',
   }
-  const { height, defaultValue, width, direction } = state
+  const { height, defaultValue, width } = state
   const { container } = render(
     <Swiper
       height={height}
@@ -242,9 +237,9 @@ test('should not allow to drag when touchable is false', () => {
     >
       {list.map((item) => {
         return (
-          <SwiperItem key={item}>
+          <Swiper.Item key={item}>
             <img src={item} alt="" />
-          </SwiperItem>
+          </Swiper.Item>
         )
       })}
     </Swiper>
@@ -268,7 +263,7 @@ test('should not allow to drag when loop is false', async () => {
     width: 375,
     direction: 'vertical',
   }
-  const { height, defaultValue, width, direction } = state
+  const { height, defaultValue, width } = state
   let _container: any
   act(() => {
     const { container } = render(
@@ -282,9 +277,9 @@ test('should not allow to drag when loop is false', async () => {
       >
         {list.map((item) => {
           return (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           )
         })}
       </Swiper>

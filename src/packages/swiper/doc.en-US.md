@@ -6,18 +6,26 @@ Often used in a group of pictures or card rotation.
 
 ## Install
 
-```javascript
-// react
-import { Swiper, SwiperItem } from '@nutui/nutui-react';
+```tsx
+import { Swiper } from '@nutui/nutui-react';
 ```
+
 ## Demo
+
 ### Basic Usage
 
 :::demo
-``` tsx
-import React, { useState } from 'react'
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
+```tsx
+import React, { useState } from 'react'
+import { Swiper } from '@nutui/nutui-react';
+
+const list = [
+  'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+  'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+  'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+]
 const App = () => {
   const [defaultValue1, setdefaultValue1] = useState(0)
   const [height, setHeight] = useState<any>(150)
@@ -33,31 +41,29 @@ const App = () => {
         defaultValue={defaultValue1}
         indicator
       >
-        <SwiperItem >
-          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
-          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
-          <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
-          <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-        </SwiperItem>
+        {list.map((item, index) => {
+            return (
+              <Swiper.Item key={item}>
+                <img src={item} onClick={() => console.log(index)} alt="" />
+              </Swiper.Item>
+            )
+          })}
       </Swiper>
     </div>
   )
 }
 export default App;
 ```
+
 :::
+
 ### Asynchronous loading
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState, useEffect } from 'react'
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react';
 
 const App = () => {
   const [defaultValue1, setdefaultValue1] = useState(0)
@@ -87,9 +93,9 @@ const App = () => {
       >
         {list.map((item) => {
           return (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           )
         })}
       </Swiper>
@@ -98,6 +104,7 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Dynamic loading
@@ -105,9 +112,10 @@ export default App;
 Support dynamic addition / deletion of pictures
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState, useEffect } from 'react'
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react';
 
 const App = () => {
   const [defaultValue1, setdefaultValue1] = useState(0)
@@ -138,9 +146,9 @@ const App = () => {
       >
         {list.map((item) => {
           return (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           )
         })}
       </Swiper>
@@ -149,15 +157,18 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Custom size
+
 `width` Custom rotation size
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react';
 
 const App = () => {
   const [defaultValue2, setdefaultValue2] = useState(0)
@@ -168,24 +179,25 @@ const App = () => {
         height={150}
         defaultValue={defaultValue2}
       >
-        <SwiperItem >
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-        </SwiperItem>
+        </Swiper.Item>
       </Swiper>
     </div>
   )
 }
 export default App;
 ```
+
 :::
 
 ### Custom paging indicator
@@ -193,9 +205,10 @@ export default App;
 `indicator` Custom indicator
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react';
 
 const App = () => {
   const [defaultValue3, setdefaultValue3] = useState(0)
@@ -212,24 +225,25 @@ const App = () => {
         onChange={onChange3}
         indicator={<div className="page"> {current}/4 </div>}
       >
-        <SwiperItem >
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-        </SwiperItem>
+        </Swiper.Item>
       </Swiper>
     </div>
   )
 }
 export default App;
 ```
+
 :::
 
 ### Manual switching
@@ -237,9 +251,10 @@ export default App;
 You can manually switch through `ref` (`prev`, `next`)
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState, useRef } from 'react'
-import { Swiper, SwiperItem, Icon } from '@nutui/nutui-react';
+import { Swiper, Icon } from '@nutui/nutui-react';
 
 const App = () => {
   const swiperRef = React.useRef<any>(null)
@@ -303,9 +318,9 @@ const App = () => {
       >
         {list.map((item) => {
           return (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           )
         })}
       </Swiper>
@@ -322,6 +337,7 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### Vertical direction
@@ -329,9 +345,10 @@ export default App;
 `direction` Custom rotation direction
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react';
 
 const App = () => {
   const [defaultValue4, setdefaultValue4] = useState(0)
@@ -349,35 +366,36 @@ const App = () => {
         height="150"
         indicator
       >
-        <SwiperItem >
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-        </SwiperItem>
+        </Swiper.Item>
       </Swiper>
     </div>
   )
 }
 export default App;
 ```
-:::
 
+:::
 
 ### Horizontal center display
 
 `isCenter` means it can be centered, and `width` must be passed at the same time
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react';
 
 const App = () => {
   const [defaultValue8, setdefaultValue8] = useState(0)
@@ -399,9 +417,9 @@ const App = () => {
       >
         {list.map((item) => {
           return (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           )
         })}
       </Swiper>
@@ -410,15 +428,18 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ### Vertically centered display
 
 `isCenter` means that it can be centered, and `height` must be passed
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react';
 
 const App = () => {
   const [defaultValue9, setdefaultValue9] = useState(0)
@@ -441,9 +462,9 @@ const App = () => {
       >
         {list.map((item) => {
           return (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           )
         })}
       </Swiper>
@@ -452,38 +473,37 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
-## API
+## Swiper
 
 ### Props
 
-| Property        | Description          | Type           | Default      |
-|-----------------| -------------------------------------- | ------------------------- | ----------------- |
-| width           | Width of rotation car                         | number \| string          | `window.innerWidth` |
-| height          | Height of rotation card                         | string \| number          | `0`                 |
-| direction       | Rotation direction, optional value：`horizontal`,`vertical` | string                    | `horizontal`      |
-| indicator       | Whether the pagination indicator is displayed                     | boolean                   | `false`             |
-| loop            | Whether to rotate                             | boolean                   | `true`              |
-| duration        | Animation duration（Unit ms                 | number \| string          | `500`               |
-| autoPlay        | Automatic rotation duration, 0 means no automatic        | number \| string          | `0`                 |
-| initPage        | Initialize index value                          | number \| string          | `0`                 |
-| touchable       | Is it possible to touch swipe                         | boolean                   | `true`              |
-| preventDefault  | Whether to disable default events during swipe             | boolean                   | `true`              |
-| stopPropagation | Whether to prohibit bubbling during sliding                 | boolean                   | `true`              |
-| center          | Whether to display in the center, the corresponding `width` and `height` must be passed                 | boolean                   | `false`              |
-| onChange        | Callback after card switching | `(current: number) => void` | `-` |
-
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| width | Width of rotation car | `number` \| `string` | `window.innerWidth` |
+| height | Height of rotation card | `string` \| `number`  | `0` |
+| direction | Rotation direction | `horizontal` \| `vertical` | `horizontal` |
+| indicator | Whether the pagination indicator is displayed | `boolean` | `false` |
+| loop | Whether to rotate | `boolean` | `true` |
+| duration | Animation duration（Unit ms | `number` \| `string` | `500` |
+| autoPlay | Automatic rotation duration, 0 means no automatic | `number` \| `string` | `0` |
+| initPage | Initialize index value | `number` \| `string` | `0` |
+| touchable | Is it possible to touch swipe | `boolean` | `true` |
+| preventDefault | Whether to disable default events during swipe | `boolean` | `true` |
+| stopPropagation | Whether to prohibit bubbling during sliding | `boolean` | `true` |
+| center | Whether to display in the center, the corresponding `width` and `height` must be passed | `boolean` | `false` |
+| onChange | Callback after card switching | `(current: number) => void` | `-` |
 
 ### Ref
 
-| Property | Description                   | Type                       |
-|----------| -------------- |---------------------------|
-| prev   | Switch to previous page   | `()=>void`                |
-| next   | Switch to next page   | `()=>void`                |
-| to     | Switch to the specified rotation | `(index: number)=>void`   |
-| resize | This method can be called to trigger redraw when the size of the outer element or the display state of the component changes | `()=>void`                |
-
+| Property | Description | Type |
+| --- | --- | --- |
+| prev | Switch to previous page | `()=>void` |
+| next | Switch to next page | `()=>void` |
+| to | Switch to the specified rotation | `(index: number)=>void` |
+| resize | This method can be called to trigger redraw when the size of the outer element or the display state of the component changes | `()=>void` |
 
 ## Theming
 
@@ -492,5 +512,5 @@ export default App;
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Description | Default |
-| --- |-------------|---------|
-| --nutui-swiper-pagination-bottom |  The distance from the bottom of the pager | `12px`  |
+| --- | --- | --- |
+| \--nutui-swiper-pagination-bottom | The distance from the bottom of the pager | `12px` |

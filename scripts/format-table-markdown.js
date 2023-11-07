@@ -11,7 +11,6 @@ function convertMdTables(inputFile, outputFile) {
 
   // 在 HTML 中查找表格，并将其转换为数组
   const tables = html.match(/<table[\s\S]*?<\/table>/g)
-
   // 将数组中的每个表格转换为对象
   const tableObjects = tables.map((table) => {
     const rows = table.match(/<tr[\s\S]*?<\/tr>/g)

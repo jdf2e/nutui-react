@@ -6,13 +6,13 @@
 
 ## 安装
 
-```javascript
+```tsx
 import { VirtualList } from '@nutui/nutui-react';
 ```
 
 ## 代码演示
 
-### 1、基础用法-垂直等高
+### 基础用法-垂直等高
 
 :::demo
 
@@ -36,16 +36,15 @@ const App =() => {
   useEffect(() => {
     getData()
   }, [getData])
-  const ItemRender = ({ data,index }) => {
-    return <p>自定义-{data}-{index}</p>
+  const itemRender = (data, dataIndex) => {
+    return <p>自定义-{data}-{dataIndex}</p>
   }
-  const ItemRenderMemo = React.memo(ItemRender)
   return (
     <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
       <VirtualList
         itemHeight={66}
         list={list}
-        ItemRender={ItemRenderMemo}
+        itemRender={itemRender}
       />
     </div>
   )
@@ -55,7 +54,7 @@ export default App;
 
 :::
 
-### 2、垂直不等高&无限下滑
+### 垂直不等高&无限下滑
 
 :::demo
 
@@ -83,18 +82,17 @@ const App =() => {
   useEffect(() => {
     getData()
   }, [getData])
-  const ItemVariable = ({ data, index }) => {
+  const itemVariable = (data, dataIndex) => {
     return (
-      <p className={index % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>可变大小隔行展示-{data}</p>
+      <p className={dataIndex % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>可变大小隔行展示-{data}</p>
     )
   }
   /** itemSize为首屏最大元素大小 */
-  const ItemVariableDemo = React.memo(ItemVariable)
   return (
     <div className='nut-virtualList-demo-box  hideScrollbar heigh1'>
       <VirtualList
         list={list}
-        ItemRender={ItemVariableDemo}
+        itemRender={itemVariable}
         itemHeight={128}
         itemEqual={false}
         onScroll={onScroll}
@@ -107,7 +105,7 @@ export default App;
 
 :::
 
-### 3、水平等宽
+### 水平等宽
 
 :::demo
 
@@ -131,15 +129,14 @@ const App =() => {
   useEffect(() => {
     getData()
   }, [getData])
-  const ItemRender = ({ data,index }) => {
-    return <p>自定义-{data}-{index}</p>
+  const itemRender = (data, dataIndex) => {
+    return <p>自定义-{data}-{dataIndex}</p>
   }
-  const ItemRenderMemo = React.memo(ItemRender)
   return (
     <div className='nut-virtualList-demo-box  hideScrollbar'>
       <VirtualList
         list={list}
-        ItemRender={ItemRenderMemo}
+        itemRender={itemRender}
         itemHeight={124}
         direction="horizontal"
       />
@@ -151,7 +148,7 @@ export default App;
 
 :::
 
-### 4、水平不等宽&无限滑动
+### 水平不等宽&无限滑动
 
 :::demo
 
@@ -179,19 +176,18 @@ const App =() => {
   useEffect(() => {
     getData()
   }, [getData])
-  const ItemVariable = ({ data, index }) => {
+  const itemVariable = (data, dataIndex) => {
     return (
-      <p className={index % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>可变大小隔行展示-{data}</p>
+      <p className={dataIndex % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>可变大小隔行展示-{data}</p>
     )
   }
   /** itemSize为首屏最大元素大小 */
-  const ItemVariableDemo = React.memo(ItemVariable)
   return (
     <div className='nut-virtualList-demo-box  hideScrollbar'>
       <VirtualList
         list={list}
         itemHeight={300}
-        ItemRender={ItemVariableDemo}
+        itemRender={itemVariable}
         direction="horizontal"
         itemEqual={false}
         onScroll={onScroll}
@@ -210,12 +206,12 @@ export default App;
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| list | 获取数据 | `Array` | - |
+| list | 获取数据 | `Array` | `-` |
 | containerHeight | 容器高度 | `number` | `获取元素的 offsetWidth 或 offsetHeight，需要 css 给出` |
-| ItemRender | virtual 列表父节点渲染的函数 | `React.FC` | - |
+| itemRender | virtual 列表父节点渲染的函数 | `(data: any, dataIndex: number, index: number) => ReactNode` | `-` |
 | itemHeight | item 高度，如果不定高，则为首屏单个最大 height | `number` | `66` |
 | itemEqual | item 高度是否一致 | `boolean` | `true` |
 | overscan | 除了视窗里面默认的元素, 还需要额外渲染的 item 个数 | `number` | `2` |
-| key | 用于指定 list 数据每一项的唯一 key 的字段名，默认取下标 | `string` | - |
+| key | 用于指定 list 数据每一项的唯一 key 的字段名，默认取下标 | `string` | `-` |
 | direction | `vertical`、`horizontal` | `string` | `vertical` |
-| onScroll | 滑动到底(右)的事件，可以实现无限滚动 | `() => void` | - |
+| onScroll | 滑动到底(右)的事件，可以实现无限滚动 | `() => void` | `-` |

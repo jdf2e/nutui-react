@@ -1,13 +1,27 @@
-import React, { forwardRef } from 'react'
+import React, { FunctionComponent } from 'react'
+import type { MouseEvent } from 'react'
 import classNames from 'classnames'
+import { CSSTransition } from 'react-transition-group'
 import { View } from '@tarojs/components'
 import Button from '@/packages/button/index.taro'
 import { BasicDialogProps } from './config'
-import { DialogWrap } from './dialogwrap.taro'
+import { Content } from './content.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import Overlay from '@/packages/overlay/index.taro'
+import {
+  customEvents,
+  useCustomEvent,
+  useCustomEventsPath,
+  useParams,
+} from '@/utils/use-custom-event'
+import { BasicComponent } from '@/utils/typings'
+import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
 
-export type DialogProps = BasicDialogProps
+export type DialogProps = BasicDialogProps & BasicComponent
 const defaultProps = {
+  title: '',
+  content: '',
+  footer: '',
   confirmText: '',
   cancelText: '',
   overlay: true,
@@ -19,103 +33,164 @@ const defaultProps = {
   lockScroll: true,
   beforeCancel: () => true,
   beforeClose: () => true,
+  onOverlayClick: () => true,
 } as DialogProps
 
-export const BaseDialog = forwardRef(
-  (
-    props: Partial<DialogProps> &
-      Omit<
-        React.HTMLAttributes<HTMLDivElement>,
-        'title' | 'content' | 'onClick'
-      >,
-    ref
-  ) => {
-    const { locale } = useConfig()
-    const {
+export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
+  open: typeof open
+  close: typeof close
+} = (props) => {
+  const classPrefix = 'nut-dialog'
+  const { locale } = useConfig()
+
+  const {
+    params: {
+      id,
+      className,
+      style,
       visible,
       footer,
+      title,
+      content,
+      children,
+      footerDirection,
       hideConfirmButton,
       hideCancelButton,
       lockScroll,
       disableConfirmButton,
       closeOnOverlayClick,
+      onOverlayClick,
       confirmText,
       cancelText,
+      overlay,
       onClose,
       onCancel,
       onConfirm,
       beforeCancel,
       beforeClose,
-      ...restProps
-    } = props
-    const classPrefix = 'nut-dialog'
+    },
+    setParams,
+  } = useParams({ ...defaultProps, ...props })
 
-    const renderFooter = () => {
-      if (footer === null) return ''
-
-      const handleCancel = (e: MouseEvent) => {
-        e.stopPropagation()
-        if (!beforeCancel?.()) return
-        if (!beforeClose?.()) return
-        onClose?.()
-        onCancel?.()
+  useCustomEvent(
+    id as string,
+    ({ status, options }: { status: boolean; options: any }) => {
+      if (status) {
+        setParams({ ...options, visible: true })
+      } else {
+        setParams({ ...options, visible: false })
       }
+    }
+  )
+  const refObject = useLockScrollTaro(!!(visible && lockScroll))
+  const renderFooter = () => {
+    if (footer === null) return ''
 
-      const handleOk = (e: MouseEvent) => {
-        e.stopPropagation()
-        onClose?.()
-        onConfirm?.(e)
-      }
-
-      return (
-        footer || (
-          <>
-            {!hideCancelButton && (
-              <Button
-                size="small"
-                fill="outline"
-                type="primary"
-                className={`${classPrefix}__footer-cancel`}
-                onClick={(e) => handleCancel(e)}
-              >
-                {cancelText || locale.cancel}
-              </Button>
-            )}
-            {!hideConfirmButton && (
-              <Button
-                size="small"
-                type="primary"
-                className={classNames(`${classPrefix}__footer-ok`, {
-                  disabled: disableConfirmButton,
-                })}
-                disabled={disableConfirmButton}
-                onClick={(e) => handleOk(e)}
-              >
-                {confirmText || locale.confirm}
-              </Button>
-            )}
-          </>
-        )
-      )
+    const handleCancel = (e: MouseEvent<HTMLButtonElement>) => {
+      e.stopPropagation()
+      if (!beforeCancel?.()) return
+      if (!beforeClose?.()) return
+      onClose?.()
+      onCancel?.()
     }
 
+    const handleOk = (e: MouseEvent<HTMLButtonElement>) => {
+      e.stopPropagation()
+      onClose?.()
+      onConfirm?.(e)
+    }
     return (
-      <View
-        style={{ display: visible ? 'block' : 'none' }}
-        catchMove={lockScroll}
-      >
-        <DialogWrap
-          {...props}
-          visible={visible}
-          lockScroll={lockScroll}
-          footer={renderFooter()}
-          onClose={onClose}
-          onCancel={onCancel}
-        />
-      </View>
+      footer || (
+        <>
+          {!hideCancelButton && (
+            <Button
+              size="small"
+              fill="outline"
+              type="primary"
+              className={`${classPrefix}__footer-cancel`}
+              onClick={(e) => handleCancel(e)}
+            >
+              {cancelText || locale.cancel}
+            </Button>
+          )}
+          {!hideConfirmButton && (
+            <Button
+              size="small"
+              type="primary"
+              className={classNames(`${classPrefix}__footer-ok`, {
+                disabled: disableConfirmButton,
+              })}
+              disabled={disableConfirmButton}
+              onClick={(e) => handleOk(e)}
+            >
+              {confirmText || locale.confirm}
+            </Button>
+          )}
+        </>
+      )
     )
   }
-)
+  const onHandleClickOverlay = (e: any) => {
+    if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
+      const closed = onOverlayClick && onOverlayClick()
+      closed && onClose?.()
+      closed && onCancel?.()
+    }
+  }
+
+  return (
+    <View
+      style={{ display: visible ? 'block' : 'none' }}
+      ref={refObject}
+      catchMove={lockScroll}
+    >
+      <>
+        {overlay ? (
+          <Overlay
+            visible
+            closeOnOverlayClick={closeOnOverlayClick}
+            lockScroll={lockScroll}
+            onClick={onHandleClickOverlay}
+            className={classNames('nut-dialog-overlay')}
+          />
+        ) : null}
+
+        <CSSTransition
+          in={visible}
+          timeout={300}
+          classNames="fadeDialog"
+          unmountOnExit
+          appear
+        >
+          <Content
+            className={className}
+            style={style}
+            title={title}
+            footer={renderFooter()}
+            footerDirection={footerDirection}
+            visible={visible}
+          >
+            {content || children}
+          </Content>
+        </CSSTransition>
+      </>
+    </View>
+  )
+}
+
+export function open(selector: string, options: Partial<typeof defaultProps>) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const path = useCustomEventsPath(selector)
+  customEvents.trigger(path, { status: true, options })
+}
+
+export function close(selector: string) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const path = useCustomEventsPath(selector)
+  customEvents.trigger(path, { status: false })
+}
 
 BaseDialog.defaultProps = defaultProps
 BaseDialog.displayName = 'NutDialog'
+BaseDialog.open = open
+BaseDialog.close = close

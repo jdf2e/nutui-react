@@ -1,8 +1,9 @@
 import React, { FunctionComponent, ReactNode, HTMLAttributes } from 'react'
 import classNames from 'classnames'
 import { ITouchEvent } from '@tarojs/components'
+import { BasicComponent } from '@/utils/typings'
 
-interface ContentProps {
+interface ContentProps extends BasicComponent {
   visible: boolean
   title: ReactNode
   footer: ReactNode
@@ -11,7 +12,8 @@ interface ContentProps {
 }
 
 export const Content: FunctionComponent<
-  Partial<ContentProps> & Omit<HTMLAttributes<HTMLDivElement>, 'onClick'>
+  Partial<ContentProps> &
+    Omit<HTMLAttributes<HTMLDivElement>, 'onClick' | 'title'>
 > = (props) => {
   const { visible, title, footer, footerDirection, onClick, children } = props
 
@@ -40,7 +42,11 @@ export const Content: FunctionComponent<
   }
 
   return (
-    <div className={`${classPrefix}__outer`} onClick={(e) => handleClick(e)}>
+    <div
+      className={classNames(`${classPrefix}__outer`, props.className)}
+      style={props.style}
+      onClick={(e) => handleClick(e)}
+    >
       <div
         className={classPrefix}
         style={{ display: visible ? 'flex' : 'none' }}

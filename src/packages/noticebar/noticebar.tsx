@@ -9,7 +9,7 @@ import React, {
 } from 'react'
 import { Close, Notice } from '@nutui/icons-react'
 import classNames from 'classnames'
-import { getRect } from '../../utils/use-client-rect'
+import { getRect } from '@/utils/use-client-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface NoticeBarProps extends BasicComponent {
@@ -29,7 +29,7 @@ export interface NoticeBarProps extends BasicComponent {
   click?: (event: any) => void
   onClose?: (event: any) => void
   onClick?: (event: any) => void
-  onClickItem?: (event: any, value: any) => void
+  onItemClick?: (event: any, value: any) => void
 }
 
 const defaultProps = {
@@ -41,7 +41,7 @@ const defaultProps = {
   content: '',
   closeable: false,
   wrap: false,
-  leftIcon: null,
+  leftIcon: <Notice width={16} height={16} />,
   rightIcon: null,
   delay: 1,
   scrollable: null,
@@ -71,7 +71,7 @@ export const NoticeBar: FunctionComponent<
     click,
     onClose,
     onClick,
-    onClickItem,
+    onItemClick,
   } = {
     ...defaultProps,
     ...props,
@@ -253,10 +253,8 @@ export const NoticeBar: FunctionComponent<
     height / speed / 4 < 1
       ? Number((height / speed / 4).toFixed(1))
       : ~~(height / speed / 4)
-
   const noDuring =
     height / speed < 1 ? (height / speed).toFixed(1) : ~~(height / speed)
-
   const horseLampStyle = {
     transition: animate
       ? `all ${duringTime === 0 ? noDuring : duringTime}s`
@@ -310,10 +308,13 @@ export const NoticeBar: FunctionComponent<
   const autoplay = () => {
     if (childCount <= 1) return
     stopAutoPlay()
-    swiperRef.current.autoplayTimer = setTimeout(() => {
-      next()
-      autoplay()
-    }, Number(duration) + 100 * speed)
+    swiperRef.current.autoplayTimer = setTimeout(
+      () => {
+        next()
+        autoplay()
+      },
+      Number(duration) + 100 * speed
+    )
   }
 
   // 切换方法
@@ -354,12 +355,14 @@ export const NoticeBar: FunctionComponent<
     })
   }
   const handleItemClick = (event: MouseEvent, value: any) => {
-    onClickItem && onClickItem(event, value)
+    onItemClick && onItemClick(event, value)
   }
 
   const getStyle = (moveOffset = offset) => {
     const target = innerRef.current
-
+    if (!target) {
+      return
+    }
     let _offset = 0
     // 容器高度-元素高度
     const val = rect.height - height
@@ -418,7 +421,6 @@ export const NoticeBar: FunctionComponent<
     }
   }
 
-  // const b = bem('noticebar')
   const noticebarClass = classNames({
     'nut-noticebar-page': true,
     withicon: closeable,
@@ -434,9 +436,7 @@ export const NoticeBar: FunctionComponent<
     <div className={`${classPrefix} ${className || ''}`} style={style}>
       {showNoticeBar && direction === 'horizontal' ? (
         <div className={noticebarClass} style={barStyle} onClick={handleClick}>
-          <div className="left-icon">
-            {leftIcon || <Notice width={16} height={16} />}
-          </div>
+          {leftIcon ? <div className="left-icon">{leftIcon}</div> : null}
           <div ref={wrapRef} className="wrap">
             <div
               ref={contentRef}
@@ -466,24 +466,22 @@ export const NoticeBar: FunctionComponent<
         >
           {leftIcon ? <div className="left-icon">{leftIcon}</div> : null}
           {children ? (
-            <>
-              <div className="nut-noticebar__inner" ref={innerRef}>
-                {scrollList.current.map((item: string, index: number) => {
-                  return (
-                    <div
-                      className="scroll-inner "
-                      style={itemStyle(index)}
-                      key={index}
-                      onClick={(e) => {
-                        handleItemClick(e, item)
-                      }}
-                    >
-                      {item}
-                    </div>
-                  )
-                })}
-              </div>
-            </>
+            <div className="nut-noticebar__inner" ref={innerRef}>
+              {scrollList.current.map((item: string, index: number) => {
+                return (
+                  <div
+                    className="scroll-inner "
+                    style={itemStyle(index)}
+                    key={index}
+                    onClick={(e) => {
+                      handleItemClick(e, item)
+                    }}
+                  >
+                    {item}
+                  </div>
+                )
+              })}
+            </div>
           ) : (
             <div className="horseLamp_list" style={horseLampStyle}>
               {scrollList.current.map((item: string, index: number) => {

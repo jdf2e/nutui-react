@@ -3,19 +3,16 @@
 exports[`Cascader change tab 1`] = `
 <div>
   <div
-    class="nut-overlay-fade-enter-active nut-overlay"
-    style="z-index: 1000; animation-duration: 0.3s;"
+    class="nut-overlay"
+    style="--nutui-overlay-zIndex: 1000;"
   />
   <div
     class="round nut-popup nut-popup-bottom "
-    style="z-index: 1000; animation-duration: 0.3s;"
+    style="z-index: 1000;"
   >
     <div
       class="nut-cascader "
     >
-      <div
-        class="nut-cascader__title"
-      />
       <div
         class="nut-tabs nut-tabs--horizontal"
         value="c1"
@@ -89,19 +86,16 @@ exports[`Cascader change tab 1`] = `
 exports[`Cascader change tab 2`] = `
 <div>
   <div
-    class="nut-overlay-fade-enter-active nut-overlay"
-    style="z-index: 1000; animation-duration: 0.3s;"
+    class="nut-overlay"
+    style="--nutui-overlay-zIndex: 1000;"
   />
   <div
     class="round nut-popup nut-popup-bottom "
-    style="z-index: 1000; animation-duration: 0.3s;"
+    style="z-index: 1000;"
   >
     <div
       class="nut-cascader "
     >
-      <div
-        class="nut-cascader__title"
-      />
       <div
         class="nut-tabs nut-tabs--horizontal"
         value="c1"
@@ -172,76 +166,27 @@ exports[`Cascader change tab 2`] = `
 </div>
 `;
 
-exports[`Cascader options 1`] = `
-<div>
-  <div
-    class="nut-overlay-first-render nut-overlay-hidden-render nut-overlay"
-    style="z-index: 1000; animation-duration: 0.3s;"
-  />
-</div>
-`;
+exports[`Cascader options 1`] = `<div />`;
 
-exports[`Cascader options with format 1`] = `
-<div>
-  <div
-    class="nut-overlay-first-render nut-overlay-hidden-render nut-overlay"
-    style="z-index: 1000; animation-duration: 0.3s;"
-  />
-</div>
-`;
+exports[`Cascader options with format 1`] = `<div />`;
 
-exports[`Cascader options with valueKey/textKey/childrenKey 1`] = `
-<div>
-  <div
-    class="nut-overlay-first-render nut-overlay-hidden-render nut-overlay"
-    style="z-index: 1000; animation-duration: 0.3s;"
-  />
-</div>
-`;
+exports[`Cascader options with valueKey/textKey/childrenKey 1`] = `<div />`;
 
-exports[`Cascader select with lazy 1`] = `
-<div>
-  <div
-    class="nut-overlay-first-render nut-overlay-hidden-render nut-overlay"
-    style="z-index: 1000; animation-duration: 0.3s;"
-  />
-</div>
-`;
-
-exports[`Cascader select with lazy 2`] = `
-<div>
-  <div
-    class="nut-overlay-first-render nut-overlay-hidden-render nut-overlay"
-    style="z-index: 1000; animation-duration: 0.3s;"
-  />
-</div>
-`;
-
-exports[`Cascader value 1`] = `
-<div>
-  <div
-    class="nut-overlay-first-render nut-overlay-hidden-render nut-overlay"
-    style="z-index: 1000; animation-duration: 0.3s;"
-  />
-</div>
-`;
+exports[`Cascader value 1`] = `<div />`;
 
 exports[`Cascader visible true 1`] = `
 <div>
   <div
-    class="nut-overlay-fade-enter-active nut-overlay"
-    style="z-index: 1000; animation-duration: 0.3s;"
+    class="nut-overlay"
+    style="--nutui-overlay-zIndex: 1000;"
   />
   <div
     class="round nut-popup nut-popup-bottom "
-    style="z-index: 1000; animation-duration: 0.3s;"
+    style="z-index: 1000;"
   >
     <div
       class="nut-cascader "
     >
-      <div
-        class="nut-cascader__title"
-      />
       <div
         class="nut-tabs nut-tabs--horizontal"
         value="c3"
@@ -327,7 +272,7 @@ exports[`Cascader visible true 1`] = `
                   </div>
                   <svg
                     aria-labelledby="Checklist"
-                    class="nut-cascader-item__icon-check nut-icon nut-icon-Checklist"
+                    class="nut-cascader__icon-check nut-icon nut-icon-Checklist"
                     role="presentation"
                     viewBox="0 0 1024 1024"
                     xmlns="http://www.w3.org/2000/svg"
@@ -357,7 +302,7 @@ exports[`Cascader visible true 1`] = `
                   </div>
                   <svg
                     aria-labelledby="Checklist"
-                    class="nut-cascader-item__icon-check nut-icon nut-icon-Checklist"
+                    class="nut-cascader__icon-check nut-icon nut-icon-Checklist"
                     role="presentation"
                     viewBox="0 0 1024 1024"
                     xmlns="http://www.w3.org/2000/svg"
@@ -387,7 +332,7 @@ exports[`Cascader visible true 1`] = `
                   </div>
                   <svg
                     aria-labelledby="Checklist"
-                    class="nut-cascader-item__icon-check nut-icon nut-icon-Checklist"
+                    class="nut-cascader__icon-check nut-icon nut-icon-Checklist"
                     role="presentation"
                     viewBox="0 0 1024 1024"
                     xmlns="http://www.w3.org/2000/svg"
@@ -429,7 +374,7 @@ exports[`Cascader visible true 2`] = `
   </div>
   <svg
     aria-labelledby="Checklist"
-    class="nut-cascader-item__icon-check nut-icon nut-icon-Checklist"
+    class="nut-cascader__icon-check nut-icon nut-icon-Checklist"
     role="presentation"
     viewBox="0 0 1024 1024"
     xmlns="http://www.w3.org/2000/svg"

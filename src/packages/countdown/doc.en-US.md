@@ -6,8 +6,7 @@ Used to display the countdown value in real time, and precision supports millise
 
 ## Install
 
-```ts
-// react
+```tsx
 import { CountDown } from '@nutui/nutui-react'
 ```
 
@@ -220,15 +219,6 @@ export default App;
 import React, {  useRef, useState } from 'react'
 import { Cell, CountDown } from '@nutui/nutui-react';
 
-const [resetTime, setResetTime] = useState({
-    d: '1',
-    h: '00',
-    m: '00',
-    s: '00',
-})
-const stateRef = useRef({
-    endTime: Date.now() + 60 * 1000,
-})
 const partItemStyle = {
     flexShrink: 0,
     display: 'flex',
@@ -248,6 +238,15 @@ const App = () => {
   const onUpdate = (v) => {
     setResetTime(v)
   }
+  const [resetTime, setResetTime] = useState({
+    d: '1',
+    h: '00',
+    m: '00',
+    s: '00',
+  })
+  const stateRef = useRef({
+    endTime: Date.now() + 60 * 1000,
+  })
   
   return (
     <Cell>
@@ -357,8 +356,6 @@ export default App;
 | millisecond | Whether to enable millisecond render | `boolean` | `false` |
 | autoStart | Whether to auto start count down | `boolean` | `true` |
 | time | Total time, unit milliseconds | `number` | `0` |
-| showDays | Show Text Day | `boolean` | `false` |
-| showPlainText | Show Text | `boolean` | `false` |
 | destroy | destroy instance | `boolean` | `false` |
 | onPaused | Emitted when count down paused | `onPaused: (restTime: number) => void` | `-` |
 | onRestart | Emitted when count down restart | `onRestart: (restTime: number) => void` | `-` |

@@ -6,18 +6,26 @@
 
 ## 安装
 
-```javascript
-// react
-import { Swiper, SwiperItem } from '@nutui/nutui-react';
+```tsx
+import { Swiper } from '@nutui/nutui-react';
 ```
+
 ## 代码演示
+
 ### 基础用法
 
 :::demo
-``` tsx
-import React, { useState } from 'react'
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
 
+```tsx
+import React, { useState } from 'react'
+import { Swiper } from '@nutui/nutui-react';
+
+const list = [
+  'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+  'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+  'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+]
 const App = () => {
   const [defaultValue1, setdefaultValue1] = useState(0)
   const [height, setHeight] = useState<any>(150)
@@ -33,31 +41,29 @@ const App = () => {
         defaultValue={defaultValue1}
         indicator
       >
-        <SwiperItem >
-          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
-          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
-          <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
-          <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-        </SwiperItem>
+        {list.map((item, index) => {
+            return (
+              <Swiper.Item key={item}>
+                <img src={item} onClick={() => console.log(index)} alt="" />
+              </Swiper.Item>
+            )
+          })}
       </Swiper>
     </div>
   )
 }
 export default App;
 ```
+
 :::
+
 ### 异步加载
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState, useEffect } from 'react'
-import { Swiper, SwiperItem } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react';
 
 const App = () => {
   const [defaultValue1, setdefaultValue1] = useState(0)
@@ -87,9 +93,9 @@ const App = () => {
       >
         {list.map((item) => {
           return (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           )
         })}
       </Swiper>
@@ -98,6 +104,7 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 动态加载
@@ -105,9 +112,10 @@ export default App;
 支持动态增加/删除图片
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState, useEffect } from 'react'
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react';
 
 const App = () => {
   const [defaultValue1, setdefaultValue1] = useState(0)
@@ -138,9 +146,9 @@ const App = () => {
       >
         {list.map((item) => {
           return (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           )
         })}
       </Swiper>
@@ -149,15 +157,18 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 自定义大小
 
-`width` 自定义轮播大小
+`width` 自定义轮播大小 
+
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react';
 
 const App = () => {
   const [defaultValue2, setdefaultValue2] = useState(0)
@@ -168,24 +179,25 @@ const App = () => {
         height={150}
         defaultValue={defaultValue2}
       >
-        <SwiperItem >
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-        </SwiperItem>
+        </Swiper.Item>
       </Swiper>
     </div>
   )
 }
 export default App;
 ```
+
 :::
 
 ### 自定义分页指示器
@@ -193,9 +205,10 @@ export default App;
 `indicator` 表示自定义指示器
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react';
 
 const App = () => {
   const [defaultValue3, setdefaultValue3] = useState(0)
@@ -212,24 +225,25 @@ const App = () => {
         onChange={onChange3}
         indicator={<div className="page"> {current}/4 </div>}
       >
-        <SwiperItem >
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-        </SwiperItem>
+        </Swiper.Item>
       </Swiper>
     </div>
   )
 }
 export default App;
 ```
+
 :::
 
 ### 手动切换
@@ -237,9 +251,10 @@ export default App;
 可通过 `ref`调用 `prev`,`next` 进行切换
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState, useRef } from 'react'
-import { Swiper, SwiperItem, Icon } from '@nutui/nutui-react';
+import { Swiper, Icon } from '@nutui/nutui-react';
 
 const App = () => {
   const swiperRef = React.useRef<any>(null)
@@ -303,9 +318,9 @@ const App = () => {
       >
         {list.map((item) => {
           return (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           )
         })}
       </Swiper>
@@ -322,6 +337,7 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 垂直方向
@@ -329,9 +345,10 @@ export default App;
 `direction` 自定义轮播方向
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react';
 
 const App = () => {
   const [defaultValue4, setdefaultValue4] = useState(0)
@@ -349,35 +366,36 @@ const App = () => {
         height="150"
         indicator
       >
-        <SwiperItem >
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-        </SwiperItem>
-        <SwiperItem >
+        </Swiper.Item>
+        <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-        </SwiperItem>
+        </Swiper.Item>
       </Swiper>
     </div>
   )
 }
 export default App;
 ```
-:::
 
+:::
 
 ### 水平居中展示
 
 `center` 代表可居中，同时必须传 `width`
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react';
 
 const App = () => {
   const [defaultValue8, setdefaultValue8] = useState(0)
@@ -399,9 +417,9 @@ const App = () => {
       >
         {list.map((item) => {
           return (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           )
         })}
       </Swiper>
@@ -410,15 +428,18 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
+
 ### 垂直居中展示
 
 `center` 代表可居中，同时必须传 `height`
 
 :::demo
-``` tsx
+
+```tsx
 import React, { useState } from 'react'
-import { Swiper,SwiperItem } from '@nutui/nutui-react';
+import { Swiper } from '@nutui/nutui-react';
 
 const App = () => {
   const [defaultValue9, setdefaultValue9] = useState(0)
@@ -441,9 +462,9 @@ const App = () => {
       >
         {list.map((item) => {
           return (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           )
         })}
       </Swiper>
@@ -452,36 +473,37 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ## Swiper
 
 ### Props
 
-| 属性    | 说明 | 类型    | 默认值    |
-|-----------------|---------------------------------|-----------------------------| ----------------- |
-| width           | 轮播卡片的宽度                         | `number \| string`          | `window.innerWidth` |
-| height          | 轮播卡片的高度                         | `number \| string`          | `0`                 |
-| direction       | 轮播方向,可选值`horizontal`,`vertical` | `string`                    | `horizontal`      |
-| indicator       | 分页指示器是否展示，可传入自定义的 HTML 结构       | `ReactNode`                 | `false`             |
-| loop            | 是否循环轮播                          | `boolean`                   | `true`              |
-| duration        | 动画时长（单位是ms）                     | `number \| string`          | `500`               |
-| autoPlay        | 自动轮播时长，0表示不会自动轮播                | `number \| string`          | `0`                 |
-| defaultValue    | 初始化索引值                          | `number \| string`          | `0`                 |
-| touchable       | 是否可触摸滑动                         | `boolean`                   | `true`              |
-| preventDefault  | 滑动过程中是否禁用默认事件                   | `boolean`                   | `true`              |
-| stopPropagation | 滑动过程中是否禁止冒泡                     | `boolean`                   | `true`              |
-| center          | 是否居中展示，必须传对应的`width` 和 `height` | `boolean`                   | `false`              |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| width | 轮播卡片的宽度 | `number` \| `string` | `window.innerWidth` |
+| height | 轮播卡片的高度 | `number` \| `string` | `0` |
+| direction | 轮播方向 | `horizontal` \| `vertical` | `horizontal` |
+| indicator | 分页指示器是否展示，可传入自定义的 HTML 结构 | `ReactNode` | `false` |
+| loop | 是否循环轮播 | `boolean` | `true` |
+| duration | 动画时长（单位是ms） | `number` \| `string` | `500` |
+| autoPlay | 自动轮播时长，0表示不会自动轮播 | `number` \| `string` | `0` |
+| defaultValue | 初始化索引值 | `number` \| `string` | `0` |
+| touchable | 是否可触摸滑动 | `boolean` | `true` |
+| preventDefault | 滑动过程中是否禁用默认事件 | `boolean` | `true` |
+| stopPropagation | 滑动过程中是否禁止冒泡 | `boolean` | `true` |
+| center | 是否居中展示，必须传对应的`width` 和 `height` | `boolean` | `false` |
 | onChange | 卡片切换后的回调 | `(current: number) => void` | `-` |
 
 ### Ref
 
-| 属性    | 说明 | 类型                      |
-|--------| -------------- |-------------------------|
-| prev   | 切换到上一页   | `()=>void`              |
-| next   | 切换到下一页   | `()=>void`              |
-| to     | 切换到指定轮播 | `(index: number)=>void` |
-| resize | 外层元素大小或组件显示状态变化时，可以调用此方法来触发重绘 | `()=>void`   |
+| 属性 | 说明 | 类型 |
+| --- | --- | --- |
+| prev | 切换到上一页 | `()=>void` |
+| next | 切换到下一页 | `()=>void` |
+| to | 切换到指定轮播 | `(index: number)=>void` |
+| resize | 外层元素大小或组件显示状态变化时，可以调用此方法来触发重绘 | `()=>void` |
 
 ## 主题定制
 
@@ -489,6 +511,6 @@ export default App;
 
 组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 说明         | 默认值     |
-| --- |------------|---------|
-| --nutui-swiper-pagination-bottom | 分页器距离底部的距离 |  `12px` |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| \--nutui-swiper-pagination-bottom | 分页器距离底部的距离 | `12px` |

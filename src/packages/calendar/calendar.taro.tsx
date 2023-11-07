@@ -1,47 +1,48 @@
-import React, { useRef } from 'react'
+import React, { useRef, ReactNode } from 'react'
 import Popup from '@/packages/popup/index.taro'
 import CalendarItem from '@/packages/calendaritem/index.taro'
-import Utils from '@/utils/date'
+import { Utils } from '@/utils/date'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import { Day, SelectedType } from './type'
+import { ComponentDefaults } from '@/utils/typings'
 
 type CalendarRef = {
   scrollToDate: (date: string) => void
 }
 
-interface Day {
-  day: string | number
-  type: string
-}
 export interface CalendarProps {
-  type?: string
-  isAutoBackFill?: boolean
-  poppable?: boolean
+  type?: SelectedType
+  autoBackfill?: boolean
+  popup?: boolean
   visible?: boolean
   title?: string
   defaultValue?: string | string[]
   startDate?: string
   endDate?: string
   showToday?: boolean
-  startText?: string
-  endText?: string
-  confirmText?: string
+  startText?: ReactNode
+  endText?: ReactNode
+  confirmText?: ReactNode
   showTitle?: boolean
   showSubTitle?: boolean
-  toDateAnimation?: boolean
-  onBtn?: (() => string | JSX.Element) | undefined
-  onDay?: ((date: Day) => string | JSX.Element) | undefined
-  onTopInfo?: ((date: Day) => string | JSX.Element) | undefined
-  onBottomInfo?: ((date: Day) => string | JSX.Element) | undefined
+  scrollAnimation?: boolean
+  firstDayOfWeek: number
+  disableDate: (date: Day) => boolean
+  renderHeaderButtons?: () => string | JSX.Element
+  renderDay?: (date: Day) => string | JSX.Element
+  renderDayTop?: (date: Day) => string | JSX.Element
+  renderDayBottom?: (date: Day) => string | JSX.Element
   onClose?: () => void
-  onChoose?: (param: string) => void
-  onSelected?: (data: string) => void
-  onYearMonthChange?: (param: string) => void
+  onConfirm?: (param: string) => void
+  onDayClick?: (data: string) => void
+  onPageChange?: (param: string) => void
 }
 
 const defaultProps = {
-  type: 'one',
-  isAutoBackFill: false,
-  poppable: true,
+  ...ComponentDefaults,
+  type: 'single',
+  autoBackfill: false,
+  popup: true,
   visible: false,
   title: '',
   defaultValue: '',
@@ -53,15 +54,17 @@ const defaultProps = {
   confirmText: '',
   showTitle: true,
   showSubTitle: true,
-  toDateAnimation: true,
-  onBtn: undefined,
-  onDay: undefined,
-  onTopInfo: undefined,
-  onBottomInfo: undefined,
+  scrollAnimation: true,
+  firstDayOfWeek: 0,
+  disableDate: (date: Day) => false,
+  renderHeaderButtons: undefined,
+  renderDay: undefined,
+  renderDayTop: undefined,
+  renderDayBottom: undefined,
   onClose: () => {},
-  onChoose: (param: string) => {},
-  onSelected: (data: string) => {},
-  onYearMonthChange: (param: string) => {},
+  onConfirm: (param: string) => {},
+  onDayClick: (data: string) => {},
+  onPageChange: (param: string) => {},
 } as CalendarProps
 
 export const Calendar = React.forwardRef<
@@ -70,11 +73,13 @@ export const Calendar = React.forwardRef<
 >((props, ref) => {
   const { locale } = useConfig()
   const {
+    style,
+    className,
     children,
-    poppable,
+    popup,
     visible,
     type,
-    isAutoBackFill,
+    autoBackfill,
     title,
     defaultValue,
     startDate,
@@ -85,15 +90,17 @@ export const Calendar = React.forwardRef<
     confirmText,
     showTitle,
     showSubTitle,
-    toDateAnimation,
-    onBtn,
-    onDay,
-    onTopInfo,
-    onBottomInfo,
+    scrollAnimation,
+    firstDayOfWeek,
+    disableDate,
+    renderHeaderButtons,
+    renderDay,
+    renderDayTop,
+    renderDayBottom,
     onClose,
-    onChoose,
-    onSelected,
-    onYearMonthChange,
+    onConfirm,
+    onDayClick,
+    onPageChange,
   } = { ...defaultProps, ...props }
 
   const calendarRef = useRef<any>(null)
@@ -102,17 +109,16 @@ export const Calendar = React.forwardRef<
     onClose && onClose()
   }
 
-  const update = () => {}
   const choose = (param: string) => {
     close()
-    onChoose && onChoose(param)
+    onConfirm && onConfirm(param)
   }
   const closePopup = () => {
     close()
   }
 
   const select = (param: string) => {
-    onSelected && onSelected(param)
+    onDayClick && onDayClick(param)
   }
 
   const scrollToDate = (date: string) => {
@@ -120,7 +126,7 @@ export const Calendar = React.forwardRef<
   }
 
   const yearMonthChange = (param: string) => {
-    onYearMonthChange && onYearMonthChange(param)
+    onPageChange && onPageChange(param)
   }
 
   React.useImperativeHandle(ref, () => ({
@@ -131,9 +137,12 @@ export const Calendar = React.forwardRef<
     return (
       <CalendarItem
         ref={calendarRef}
+        style={style}
+        className={className}
+        children={children}
         type={type}
-        isAutoBackFill={isAutoBackFill}
-        poppable={poppable}
+        autoBackfill={autoBackfill}
+        popup={popup}
         title={title || locale.calendaritem.title}
         defaultValue={defaultValue}
         startDate={startDate}
@@ -144,30 +153,31 @@ export const Calendar = React.forwardRef<
         confirmText={confirmText || locale.calendaritem.confirm}
         showTitle={showTitle}
         showSubTitle={showSubTitle}
-        toDateAnimation={toDateAnimation}
-        onBtn={onBtn}
-        onDay={onDay}
-        onTopInfo={onTopInfo}
-        onBottomInfo={onBottomInfo}
-        onChoose={choose}
-        onSelected={select}
-        onYearMonthChange={yearMonthChange}
+        scrollAnimation={scrollAnimation}
+        firstDayOfWeek={firstDayOfWeek}
+        disableDate={disableDate}
+        renderHeaderButtons={renderHeaderButtons}
+        renderDay={renderDay}
+        renderDayTop={renderDayTop}
+        renderDayBottom={renderDayBottom}
+        onConfirm={choose}
+        onDayClick={select}
+        onPageChange={yearMonthChange}
       />
     )
   }
 
   return (
     <>
-      {poppable ? (
+      {popup ? (
         <Popup
           visible={visible}
           position="bottom"
           round
-          duration={0.5}
           closeable
           destroyOnClose
-          onClickOverlay={closePopup}
-          onClickCloseIcon={closePopup}
+          onOverlayClick={closePopup}
+          onCloseIconClick={closePopup}
           style={{ height: '85vh' }}
         >
           {renderItem()}

@@ -6,7 +6,8 @@ import React, {
   useImperativeHandle,
 } from 'react'
 import { PickerOption } from './types'
-import { useTouch } from '../../utils/use-touch'
+import { useTouch } from '@/utils/use-touch'
+import { passiveSupported } from '@/utils/supports-passive'
 
 interface PickerPanelProps {
   keyIndex?: number
@@ -62,10 +63,10 @@ const InternalPickerPanel: ForwardRefRenderFunction<
   }
 
   const setTransform = (
-    translateY = 0,
     type: string,
+    deg: string,
     time = DEFAULT_DURATION,
-    deg: string
+    translateY = 0
   ) => {
     let nTime = time
     if (type !== 'end') {
@@ -93,7 +94,7 @@ const InternalPickerPanel: ForwardRefRenderFunction<
         (Math.abs(Math.round(endMove / lineSpacing)) + 1) * rotation
       }deg`
 
-      setTransform(endMove, type, time, deg)
+      setTransform(type, deg, time, endMove)
       setCurrIndex(Math.abs(Math.round(endMove / lineSpacing)) + 1)
     } else {
       let deg = 0
@@ -106,7 +107,7 @@ const InternalPickerPanel: ForwardRefRenderFunction<
       deg = Math.min(Math.max(currentDeg, minDeg), maxDeg)
 
       if (minDeg < deg && deg < maxDeg) {
-        setTransform(updateMove, '', undefined, `${deg}deg`)
+        setTransform('', `${deg}deg`, undefined, updateMove)
         setCurrIndex(Math.abs(Math.round(updateMove / lineSpacing)) + 1)
       }
     }
@@ -118,26 +119,26 @@ const InternalPickerPanel: ForwardRefRenderFunction<
   }
 
   // 开始滚动
-  const touchStart = (event: React.TouchEvent<HTMLElement>) => {
-    touch.start(event as any)
-    setStartY(touch.deltaY)
+  const touchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    touch.start(event)
+    setStartY(touch.deltaY.current)
     setStartTime(Date.now())
     transformY.current = scrollDistance
   }
 
-  const touchMove = (event: React.TouchEvent<HTMLElement>) => {
-    touch.move(event as any)
+  const touchMove = (event: React.TouchEvent<HTMLDivElement>) => {
+    touch.move(event)
     if ((touch as any).isVertical) {
       moving.current = true
       preventDefault(event, true)
     }
-    const move = touch.deltaY - startY
+    const move = touch.deltaY.current - startY
     setMove(move)
   }
 
   const touchEnd = (event: React.TouchEvent<HTMLElement>) => {
     if (!moving.current) return
-    const move = touch.deltaY - startY
+    const move = touch.deltaY.current - startY
     const moveTime = Date.now() - startTime
     // 区分是否为惯性滚动
     if (moveTime <= INERTIA_TIME && Math.abs(move) > INERTIA_DISTANCE) {
@@ -236,6 +237,18 @@ const InternalPickerPanel: ForwardRefRenderFunction<
     moving: moving.current,
   }))
 
+  useEffect(() => {
+    const options = passiveSupported ? { passive: false } : false
+    PickerPanelRef.current?.addEventListener('touchstart', touchStart, options)
+    PickerPanelRef.current?.addEventListener('touchmove', touchMove, options)
+    PickerPanelRef.current?.addEventListener('touchend', touchEnd, options)
+    return () => {
+      PickerPanelRef.current?.removeEventListener('touchstart', touchStart)
+      PickerPanelRef.current?.removeEventListener('touchmove', touchMove)
+      PickerPanelRef.current?.removeEventListener('touchend', touchEnd)
+    }
+  })
+
   return (
     <div
       className="nut-picker-list"
@@ -287,9 +300,8 @@ const InternalPickerPanel: ForwardRefRenderFunction<
     </div>
   )
 }
-const PickerPanel =
-  React.forwardRef<
-    { stopMomentum: () => void; moving: boolean },
-    Partial<PickerPanelProps>
-  >(InternalPickerPanel)
+const PickerPanel = React.forwardRef<
+  { stopMomentum: () => void; moving: boolean },
+  Partial<PickerPanelProps>
+>(InternalPickerPanel)
 export default PickerPanel

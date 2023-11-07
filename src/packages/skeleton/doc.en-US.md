@@ -6,8 +6,7 @@ Filling gray bitmap in the area to be loaded on the page is essentially the tran
 
 ## Install
 
-```ts
-// react
+```tsx
 import { Skeleton } from '@nutui/nutui-react';
 ```
 
@@ -23,7 +22,7 @@ import { Skeleton } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Skeleton width={250} height={15} animated />
+    <Skeleton  animated />
   )
 }
 export default App;
@@ -41,7 +40,7 @@ import { Skeleton } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Skeleton width={250} height={15} rows={3} title animated />
+    <Skeleton rows={3} title animated />
   )
 }
 export default App;
@@ -59,7 +58,7 @@ import { Skeleton } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Skeleton width={250} height={15} rows={3} title animated avatar />
+    <Skeleton  rows={3} title animated avatar />
   )
 }
 export default App;
@@ -109,7 +108,7 @@ const App = () => {
   return (
     <div className="content">
       <Switch size="15px" change={(value, event) => changeStatus(value, event)} />
-      <Skeleton width="250px" height="15px" title animated avatar rows={3} visible={checked}>
+      <Skeleton  title animated avatar rows={3} visible={checked}>
         <div className="container">
           <Avatar
             size="50"

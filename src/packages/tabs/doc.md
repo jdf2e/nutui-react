@@ -6,7 +6,7 @@
 
 ## 安装
 
-```ts
+```tsx
 import { Tabs } from '@nutui/nutui-react';
 ```
 
@@ -53,7 +53,7 @@ const App = () => {
     <>
       <Tabs value={tab1value} onChange={(value) => {
         setTab1value(value)
-      }} type="smile">
+      }} activeType="smile">
         <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
@@ -128,7 +128,7 @@ export default App;
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs, Swiper, SwiperItem } from '@nutui/nutui-react';
+import { Tabs, Swiper } from '@nutui/nutui-react';
 
 const App = () => {
   const [tab2value, setTab2value] = useState('0');
@@ -155,21 +155,21 @@ const App = () => {
           setTabIndex(page)
         }}
       >
-        <SwiperItem>
+        <Swiper.Item>
           <div style={{ backgroundColor: '#fff', padding: '10px' }}>
             Tab 1
           </div>
-        </SwiperItem>
-        <SwiperItem>
+        </Swiper.Item>
+        <Swiper.Item>
           <div style={{ backgroundColor: '#fff', padding: '10px' }}>
             Tab 2
           </div>
-        </SwiperItem>
-        <SwiperItem>
+        </Swiper.Item>
+        <Swiper.Item>
           <div style={{ backgroundColor: '#fff', padding: '10px' }}>
             Tab 3
           </div>
-        </SwiperItem>
+        </Swiper.Item>
       </Swiper>
     </>
   );
@@ -285,7 +285,7 @@ const App = () => {
         setTab3value(value)
       }}>
         {list3.map(item => <Tabs.TabPane key={item}
-                                         title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
+            title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
       </Tabs>
     </>
   );
@@ -305,14 +305,16 @@ import { Tabs } from '@nutui/nutui-react';
 
 const App = () => {
   const [tab4value, setTab4value] = useState('0');
-  const list4 = Array.from(new Array(10).keys());
   return (
     <>
       <Tabs value={tab4value} onChange={(value) => {
         setTab4value(value)
       }}>
-        {list4.map(item => <Tabs.TabPane key={item}
-                                         title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
+        <Tabs.TabPane title="低阶特卖">低阶特卖</Tabs.TabPane>
+        <Tabs.TabPane title="上新日">上新日</Tabs.TabPane>
+        <Tabs.TabPane title="百亿补贴">百亿补贴</Tabs.TabPane>
+        <Tabs.TabPane title="今日聚超值">今日聚超值</Tabs.TabPane>
+        <Tabs.TabPane title="真好真便宜">真好真便宜</Tabs.TabPane>
       </Tabs>
     </>
   );
@@ -340,7 +342,7 @@ const App = () => {
               setTab5value(value)
             }} direction="vertical">
         {list5.map(item => <Tabs.TabPane key={item}
-                                         title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
+            title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
       </Tabs>
     </>
   );
@@ -366,7 +368,7 @@ const App = () => {
       <Tabs style={{ height: '300px' }} value={tab6value}
             onChange={(value) => {
               setTab6value(value)
-            }} type="smile" direction="vertical">
+            }} activeType="smile" direction="vertical">
         {list5.map(item => <Tabs.TabPane key={item}
                                          title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
       </Tabs>
@@ -396,7 +398,6 @@ const App = () => {
         onChange={(value) => {
           setTab8value(value)
         }}
-        type="smile"
         direction="vertical"
       >
         <Tabs.TabPane title="Tab 1">
@@ -405,7 +406,6 @@ const App = () => {
             onChange={(value) => {
               setTab9value(value)
             }}
-            type="smile"
             direction="horizontal"
           >
             <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
@@ -423,7 +423,6 @@ const App = () => {
           setTab8value(paneKey)
         }}
         autoHeight
-        type="smile"
       >
         <Tabs.TabPane title="Tab 1">
           <Tabs
@@ -547,14 +546,14 @@ export default App;
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| value | 当前激活 tab 面板的值 | `number \| string` | `0` |
-| defaultValue | 初始化激活 tab 的值 | `number \| string` | `0` |
+| value | 当前激活 tab 面板的值 | `number` \| `string` | `0` |
+| defaultValue | 初始化激活 tab 的值 | `number` \| `string` | `0` |
 | activeColor | 标签选中色 | `string` | `#1a1a1a` |
-| direction | 使用横纵方向 可选值 `horizontal`、`vertical` | `string` | `horizontal` |
+| direction | 使用横纵方向 | `horizontal` \| `vertical` | `horizontal` |
 | activeType | 选中底部展示样式 可选值 `line`、`smile` | `string` | `line` |
-| duration | 切换动画时长,单位 ms 0 代表无动画 | `number \| string` | `300` |
+| duration | 切换动画时长,单位 ms 0 代表无动画 | `number` \| `string` | `300` |
 | title | 自定义导航区域 | `() => JSX.Element[]` | `-` |
-| align | 标题左对齐 | `left \| right` | `-` |
+| align | 标题左对齐 | `left` \| `right` | `-` |
 | autoHeight | 自动高度。设置为 true 时，nut-tabs 和 nut-tabs\_\_content 会随着当前 nut-tabpane 的高度而发生变化。 | `boolean` | `false` |
 | tabStyle | 标签栏样式 | `CSSProperties` | `{}` |
 | onClick | 点击标签时触发 | `(index: string \| number) => void` | `-` |
@@ -567,7 +566,7 @@ export default App;
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | title | 标题 | `string` | `-` |
-| value | 标签 Key , 匹配的标识符, 默认为索引值 | `string\| number` | `-` |
+| value | 标签 Key , 匹配的标识符, 默认为索引值 | `string` \| `number` | `-` |
 | disabled | 是否禁用标签 | `boolean` | `false` |
 
 ## 主题定制

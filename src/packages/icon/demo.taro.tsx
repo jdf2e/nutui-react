@@ -3,7 +3,7 @@ import Taro from '@tarojs/taro'
 import '@nutui/icons-react-taro/dist/style_iconfont.css'
 import { Add, IconFontConfig, IconFont } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Cell, CellGroup, Toast } from '@/packages/nutui.react.taro'
+import { Cell, Toast } from '@/packages/nutui.react.taro'
 import '@/packages/icon/demo.scss'
 import Header from '@/sites/components/header'
 import { camelCase } from '@/utils/camel-case'
@@ -154,7 +154,7 @@ const IconDemo = () => {
         </Cell>
         {(IconFontConfig as any).data.map((item: any) => {
           return (
-            <CellGroup key={item.name} title={item.name}>
+            <Cell.Group key={item.name} title={item.name}>
               <Cell>
                 <ul>
                   {item.icons.map((icon: any) => {
@@ -177,12 +177,12 @@ const IconDemo = () => {
                   })}
                 </ul>
               </Cell>
-            </CellGroup>
+            </Cell.Group>
           )
         })}
         {(IconFontConfig as any).style.map((item: any) => {
           return (
-            <CellGroup key={item.name} title={item.name}>
+            <Cell.Group key={item.name} title={item.name}>
               <Cell>
                 <ul>
                   {item.icons.map((icon: any) => {
@@ -208,7 +208,7 @@ const IconDemo = () => {
                   })}
                 </ul>
               </Cell>
-            </CellGroup>
+            </Cell.Group>
           )
         })}
       </div>

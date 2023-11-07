@@ -126,6 +126,11 @@ export interface BaseLang {
     refreshingText: string
     completeText: string
   }
+  tour: {
+    prevStepText: string
+    completeText: string
+    nextStepText: string
+  }
   watermark: {
     errorCanvasTips: string
   }

@@ -11,7 +11,7 @@ export interface NavBarProps extends BasicComponent {
   safeAreaInsetTop: boolean
   placeholder: boolean
   zIndex: number | string
-  onClickBack: (e: React.MouseEvent<HTMLElement>) => void
+  onBackClick: (e: React.MouseEvent<HTMLElement>) => void
   children?: React.ReactNode
 }
 
@@ -36,7 +36,7 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
     safeAreaInsetTop,
     placeholder,
     zIndex,
-    onClickBack,
+    onBackClick,
   } = {
     ...defaultProps,
     ...props,
@@ -61,7 +61,7 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
         {back && (
           <div
             className={`${classPrefix}__left__back`}
-            onClick={(e) => onClickBack(e)}
+            onClick={(e) => onBackClick(e)}
           >
             {back}
           </div>

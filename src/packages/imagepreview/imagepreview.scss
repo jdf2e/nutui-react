@@ -1,6 +1,7 @@
 @import '../popup/popup.scss';
 @import '../swiper/swiper.scss';
 @import '../video/video.scss';
+@import '../image/image.scss';
 
 .nut-imagepreview {
   width: 100%;
@@ -48,28 +49,7 @@
   }
 
   &-swiper {
-    swiper {
-      width: 100%;
-      height: 100%;
-    }
-
-    swiper-item {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100%;
-
-      .nut-image-preview-box {
-        width: 100%;
-      }
-
-      .nut-video {
-        video {
-          object-fit: contain;
-        }
-      }
-    }
-
+    .nut-imagepreview-swiper-item,
     .nut-swiper-item {
       display: flex;
       align-items: center;

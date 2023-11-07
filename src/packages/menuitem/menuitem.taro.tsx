@@ -1,16 +1,21 @@
 import React, {
+  CSSProperties,
   forwardRef,
+  useCallback,
   useEffect,
   useImperativeHandle,
+  useMemo,
   useState,
 } from 'react'
 import classNames from 'classnames'
-import { getSystemInfoSync } from '@tarojs/taro'
+import { getSystemInfoSync, usePageScroll } from '@tarojs/taro'
+import { View } from '@tarojs/components'
 import { CSSTransition } from 'react-transition-group'
 import { Check } from '@nutui/icons-react-taro'
-import { Overlay } from '../overlay/overlay.taro'
-import { getRectByTaro } from '@/utils/use-client-rect'
+import { Overlay } from '@/packages/overlay/overlay.taro'
+import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { usePropsValue } from '@/utils/use-props-value'
 
 export interface OptionItem {
   text: string
@@ -28,6 +33,7 @@ export interface MenuItemProps extends BasicComponent {
   activeTitleClass: string
   inactiveTitleClass: string
   value: string | number
+  defaultValue: string | number
   onChange: (event: any) => void
   children: React.ReactNode
 }
@@ -37,7 +43,7 @@ const defaultProps = {
   columns: 1,
   direction: 'down',
   icon: null,
-  closeOnClickAway: false,
+  closeOnClickAway: true,
   activeTitleClass: '',
   inactiveTitleClass: '',
   onChange: (value: OptionItem) => undefined,
@@ -48,6 +54,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     style,
     options,
     value,
+    defaultValue,
     columns,
     title,
     icon,
@@ -66,17 +73,43 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     ...props,
   } as any
 
-  const [_showPopup, setShowPopup] = useState(show)
-  const [_value, setValue] = useState(value)
+  const [showPopup, setShowPopup] = useState(show)
+  const [innerValue, setValue] = usePropsValue({
+    defaultValue,
+    value,
+    finalValue: undefined,
+    onChange: (v) => {
+      const [option] = options.filter((o: any) => o.value === v)
+      onChange?.(option)
+    },
+  })
   useEffect(() => {
     setShowPopup(show)
   }, [show])
   useEffect(() => {
     getParentOffset()
-  }, [_showPopup])
+  }, [showPopup])
+
+  const windowHeight = useMemo(() => getSystemInfoSync().windowHeight, [])
+  const updateItemOffset = useCallback(() => {
+    if (!parent.lockScroll) return
+    const p = parent.menuRef.current
+    getRectByTaro(p).then((rect: any) => {
+      if (rect) {
+        setPosition({
+          height: rect.height,
+          top: rect.top,
+        })
+      }
+    })
+  }, [direction, windowHeight])
+  usePageScroll(updateItemOffset)
 
   useImperativeHandle<any, any>(ref, () => ({
-    toggle: parent.toggleMenuItem,
+    toggle: (s: boolean) => {
+      const from = 'REF'
+      s ? parent.toggleMenuItem(index, from) : parent.hideMenuItem(index, from)
+    },
   }))
 
   const getIconCName = (optionVal: string | number, value: string | number) => {
@@ -94,7 +127,6 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     parent.toggleMenuItem(index)
     setTitle(item.text)
     setValue(item.value)
-    onChange && onChange(item)
   }
   const [position, setPosition] = useState<{ top: number; height: number }>({
     top: 0,
@@ -111,16 +143,21 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     }, 100)
   }
   const isShow = () => {
-    if (_showPopup) return {}
+    if (showPopup) return {}
     return { display: 'none' }
   }
 
-  const getPosition = () => {
+  const getPosition = (): CSSProperties => {
     return direction === 'down'
-      ? { top: `${position.top + position.height}px` }
+      ? {
+          top: `${position.top + position.height}px`,
+          bottom: '0',
+          height: 'initial',
+        }
       : {
           bottom: `${getSystemInfoSync().windowHeight - position.top}px`,
-          top: 'auto',
+          top: '0',
+          height: 'initial',
         }
   }
 
@@ -128,22 +165,20 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     if (direction === 'down') {
       return {
         height: `${position.top + position.height}px`,
-        top: 0,
         ...isShow(),
       }
     }
     return {
       height: `${getSystemInfoSync().windowHeight - position.top}px`,
-      bottom: `0px`,
       top: 'auto',
       ...isShow(),
     }
   }
 
   return (
-    <>
+    <View className="nut-menu-item-container">
       {closeOnClickAway ? (
-        <div
+        <View
           className={`placeholder-element ${classNames({
             up: direction === 'up',
           })}`}
@@ -151,18 +186,19 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
           onClick={() => parent.toggleMenuItem(index)}
         />
       ) : null}
-
-      <Overlay
-        className="nut-menu__overlay"
-        style={getPosition()}
-        lockScroll={parent.lockScroll}
-        visible={_showPopup}
-        closeOnOverlayClick={parent.closeOnOverlayClick}
-        onClick={() => {
-          parent.closeOnOverlayClick && parent.toggleMenuItem(index)
-        }}
-      />
-      <div
+      {parent.overlay ? (
+        <Overlay
+          className="nut-menu__overlay"
+          style={getPosition()}
+          lockScroll={parent.lockScroll}
+          visible={showPopup}
+          closeOnOverlayClick={parent.closeOnOverlayClick}
+          onClick={() => {
+            parent.closeOnOverlayClick && parent.hideMenuItem(index)
+          }}
+        />
+      ) : null}
+      <View
         className={classNames(className, {
           'nut-menu-item__wrap': direction === 'down',
           'nut-menu-item__wrap-up': direction !== 'down',
@@ -173,16 +209,16 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
         }}
       >
         <CSSTransition
-          in={_showPopup}
+          in={showPopup}
           timeout={100}
           classNames={direction === 'down' ? 'menu-item' : 'menu-item-up'}
         >
-          <div className="nut-menu-item__content">
+          <View className="nut-menu-item__content">
             {options?.map((item: any, index: any) => {
               return (
-                <div
+                <View
                   className={`nut-menu-item__option ${classNames({
-                    active: item.value === _value,
+                    active: item.value === innerValue,
                   })}`}
                   key={item.text}
                   style={{
@@ -192,7 +228,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
                     handleClick(item)
                   }}
                 >
-                  {item.value === _value ? (
+                  {item.value === innerValue ? (
                     <>
                       {icon || (
                         <Check
@@ -203,22 +239,22 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
                       )}
                     </>
                   ) : null}
-                  <div
+                  <View
                     className={getIconCName(item.value, value)}
                     style={{
-                      color: `${item.value === _value ? activeColor : ''}`,
+                      color: `${item.value === innerValue ? activeColor : ''}`,
                     }}
                   >
                     {item.text}
-                  </div>
-                </div>
+                  </View>
+                </View>
               )
             })}
             {children}
-          </div>
+          </View>
         </CSSTransition>
-      </div>
-    </>
+      </View>
+    </View>
   )
 })
 

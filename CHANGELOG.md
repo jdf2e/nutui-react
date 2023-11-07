@@ -1,3 +1,351 @@
+# v2.0.23
+`2023-11-03`
+
+* :sparkles: feat(image): ssr 适配 (#1579) @Eiinu
+* :sparkles: feat: 新增组件 calendar (#1565) @Eiinu
+* :bug: fix: calendar scrolltop bad (#1583) @xiaoyatong
+* :bug: fix: noticebar 垂直滚动初始化时,无法及时展示元素信息 (#1576) @xiaoyatong
+* :bug: fix: popup zindex at taro and picker adds popupProps (#1581) @xiaoyatong
+* :bug: fix: popup zindex failed to set (#1578) @xiaoyatong
+* :bug: fix: searchbar lose focus when input nothing but input the delete (#1577) @xiaoyatong
+* :bug: fix: taro 编译 H5 出现滚动穿透 (#1537) @oasis-cloud
+
+
+# v2.0.22
+`2023-10-27`
+
+* :sparkles: feat(NoticeBar): leftIcon 可自定义，并且支持设置 null 后不展示 icon (#1562) @oasis-cloud
+* :bug: fix(Dialog): 点击蒙层无法关闭 (#1552) @oasis-cloud
+* :bug: fix(Input): onChange 执行多次 (#1551) @oasis-cloud
+* :bug: fix(Swipe): 禁止父元素滚动的 demo (#1560) @oasis-cloud
+* :bug: fix: image height in taro (#1567) @xiaoyatong
+* 🛠 refactor(Tabs): 滚动到可视区域代码优化，同时放开 tab title 的宽度限制 (#1563) @oasis-cloud
+
+
+# v2.0.21
+`2023-10-18`
+
+* :sparkles: feat(Uploader): onFileItemClick 增加索引参数 (#1544) @oasis-cloud
+* :sparkles: feat: add demo about infiniteloading (#1533) @xiaoyatong
+* :bug: fix(menu): getBoundingClientRect 兼容 H5 (#1548) @oasis-cloud
+* :bug: fix: form input blur (#1542) @oasis-cloud
+* :bug: fix: imagepreview h5 (#1538) @xiaoyatong
+* :bug: fix: jdapp picker's item-height doesn't match jdapp's default setting (#1545) @xiaoyatong
+* :bug: fix: taro image and imagepreivew on h5 (#1532) @xiaoyatong
+* :bug: fix: zindex of popover because popup changed its zindex (#1543) @xiaoyatong
+* 📖 docs(tabbar): Correct module names of tabbar component (#1539) @HUMORCE
+
+
+# v2.0.20
+`2023-10-13`
+
+* :sparkles: feat: add demo about infiniteloading (#1533) @xiaoyatong
+* :bug: fix(form): 自定义校验 promise 返回错误不能被正确收集 (#1523) @samber
+* :bug: fix(popup): popup zIndex 无效 (#1521) @Clay Zhang
+* :bug: fix: demo format (#1530) @xiaoyatong
+* :bug: fix: taro image and imagepreivew on h5 (#1532) @xiaoyatong
+* :bug: fix: taro image default width and height (#1531) @xiaoyatong
+
+
+# v2.0.19
+`2023-09-27`
+
+* :sparkles: feat(menu):  overlay onclick 事件中调用 hideMenuItem 实现关闭 (#1505) @oasis-cloud
+* :sparkles: feat(menu): onClose 事件增加触发来源参数 (#1502) @oasis-cloud
+* :sparkles: feat(swiper): swiperItem 支持设置 className (#1504) @oasis-cloud
+* :bug: fix(uploader): 受控模式调整，props 类型调整，回调参数修正 (#1500) @oasis-cloud
+* :bug: fix: imagepreview with control (#1480) @xiaoyatong
+* :bug: fix: indicator 超长换行 (#1486) @oasis-cloud
+* :bug: fix: menu 在 lockscroll 的时候不需要加滚动事件 (#1509) @oasis-cloud
+* :bug: fix: ios和android下点击button时出现半透明灰色遮罩 (#1495) @Kurisu
+
+
+
+# v2.0.18
+`2023-09-20`
+
+* :sparkles: feat(menu): 增加受控和非受控的模式 (#1433) @oasis-cloud
+* :sparkles: feat: menu 展开关闭事件增加参数 (#1447) @oasis-cloud
+* :bug: fix(Badge): Badge位置值兼容两种类型，添加css变量min-width (#1410) @beginnerZhang
+* :bug: fix(Notify): type NotifyType incorrectly spelling warning as waring (#1441) @Katz
+* :bug: fix: calendar 在 iOS 中不展示开始和结束 (#1471) @oasis-cloud
+* :bug: fix: swiperItem 的子元素在 H5 中设置 onClick 无效 (#1472) @oasis-cloud
+* :bug: fix: uploader 列表类型内置上传按钮 (#1477) @oasis-cloud
+* :bug: fix: uploader 缩略图圆角样式未生效 (#1476) @oasis-cloud
+* :bug: fix: useFrom 类型优化 (#1473) @oasis-cloud
+* :bug: fix: zIndex 层级统一调整 (#1460) @oasis-cloud
+* :bug: fix: 组件依赖样式处理 (#1474) @xiaoyatong
+* 📖 docs: form 组件文档格式化 (#1436) @oasis-cloud
+
+
+# v2.0.17
+`2023-09-13`
+
+* :sparkles: feat: form 增加 validateTrigger 和 getFieldsValue (#1411) @oasis-cloud
+* :bug: fix: add popupProps (#1426) @oasis-cloud
+* :bug: fix: form label position left (#1412) @oasis-cloud
+* :bug: fix: lint errors (#1406) @xiaoyatong
+* :bug: fix: review package update (#1423) @xiaoyatong
+* :bug: fix: swipe component fails to slide in Alipay (#1399) @oasis-cloud
+* :bug: fix: table expose rowIndex (#1400) @oasis-cloud
+* :bug: fix: toast组件 duration 设置无效 (#1424) @oasis-cloud
+* 🔨 chore: glob & prettier update (#1427) @xiaoyatong
+* 🔨 chore: swc 版本恢复 (#1425) @oasis-cloud
+
+
+# v2.0.16
+`2023-09-06`
+
+* :sparkles: feat: form 支持分割线 (#1389) @oasis-cloud
+* :bug: fix(pulltorefresh): 修复 H5 卡顿 & 小程序滑动距离问题 @Eiinu
+* :bug: fix: csstransition using findDOMNode which is deprecated (#1370) @oasis-cloud
+* :bug: fix: dialog 的函数调用增加对 classname 和 style 的支持 (#1391) @oasis-cloud
+* :bug: fix: swipe 阻止页面滚动 (#1380) @oasis-cloud
+* :bug: fix: useForm 在类组件下报错，可以采用 ref 的方式使用 FormInstance (#1383) @oasis-cloud
+* :bug: fix: 多个 Swipe 的滑动选项完全相等 (#1334) @Clay Zhang
+* 📖 docs: toast组件完善了样式变量 (#1379) @ivan-My
+
+
+# v2.0.15
+`2023-08-30`
+
+* :sparkles: feat: support next.js (#1326) @oasis-cloud
+* :bug: fix: dialog content 失效 (#1323) @oasis-cloud
+* :bug: fix: space 复制按钮重复 (#1322) @oasis-cloud
+* 🔨 chore(tabs): 更新文档与 demo (#1339) @Eiinu
+
+
+# v2.0.14
+`2023-08-18`
+
+* :bug: fix: skeleton row 设置为 1 时, 宽度只能固定为70% (#1306) @ivan-My
+* :bug: fix: loading 构建产物增加类型注释 (#1320) @oasis-cloud
+* :bug: fix: space 构建产物增加类型注释 (#1321) @oasis-cloud
+* 📖 docs: dialog 指令式用法注意事项 (#1318) @oasis-cloud
+
+
+
+# v2.0.13
+`2023-08-16`
+
+* :sparkles: feat: dialog 支持函数调用 (#1315) @oasis-cloud
+* :sparkles: feat: toast 支持函数调用 (#1307) @oasis-cloud
+* :sparkles: feat: 提取 Taro 的 Demo 到 workspace (#1302) @oasis-cloud
+* :bug: fix: icons 版本更新 (#1310) @oasis-cloud
+* :bug: fix: 非 undefined 的 falsely 值无法传递给子组件 (#1312) @qnnp
+* 📖 docs: 删除了skeleton文档中无用的props(width,height) (#1303) @ivan-My
+
+
+# v2.0.12
+`2023-08-11`
+
+* :bug: fix(Avatar): 解决在小程序环境下，使用Avatar.Group无法正常展示头像问题 (#1296) @Tralafalgar Wang
+* :bug: fix: overlay 的 zIndex 属性改为 css 变量 (#1294) @oasis-cloud
+* :bug: fix: 修复 form 设置 labelPosition=top 的样式 (#1300) @oasis-cloud
+
+
+# v2.0.11
+`2023-08-09`
+
+* :sparkles: feat: 新增 tour 引导组件 (#1279) @junjun666
+* :bug: fix: h5下多选上传时 uid 重复的问题 (#1269) @Liuqh233
+* :bug: fix: input 组件点击清除图标无法清空内容 (#1292) @oasis-cloud
+* :bug: fix: numberkeyboard 设置标题后，完成按钮应该触发 onConfirm 事件 (#1285) @oasis-cloud
+* :bug: fix: uploader h5/taro 增加校验 (#1297) @junjun666
+* :bug: fix: uploader taro-h5 上传状态样式错乱 (#1293) @junjun666
+* 📖 docs: divider 组件的 styles 属性示例改为 style (#1290) @oasis-cloud
+* 📖 docs: numberkeyboard 的 type 属性类型更新 (#1284) @oasis-cloud
+* 📖 docs: step 组件的 description 属性示例改为节点的实现方式 (#1289) @oasis-cloud
+* 📖 docs: 调整 image tao 文档中引入包名 (#1295) @oasis-cloud
+
+
+# v2.0.10
+`2023-08-04`
+
+* :sparkles: feat: loading 组件 (#1204) @mike8625
+* :sparkles: feat: 日历支持footer的children定义，增加日历+datepicker的demo (#1277) @xiaoyatong
+* :bug: fix: elevator 计算索引出现 -1，导致组件运行报错 (#1276) @oasis-cloud
+* :bug: fix: loading 组件导出 props 类型 (#1278) @oasis-cloud
+
+
+# v2.0.9
+`2023-08-02`
+
+* :sparkles: feat(notify): 支持函数调用的展开和关闭 (#1271) @oasis-cloud
+* :bug: fix: space 版本号修改为 2.0 (#1265) @oasis-cloud
+* 🔨 chore(config): 优化 taro demo 环境配置文件 (#1266) @oasis-cloud
+* 📖 docs: cascader 文档更新 (#1270) @vapao
+* 📖 docs: tag 文档和 demo 同步 (#1275) @oasis-cloud
+* 📖 docs: 升级文档更新 (#1274) @oasis-cloud
+
+
+# v2.0.8
+`2023-07-28`
+
+* :sparkles: feat: 增加了space组件 (#1259) @ivan-My
+* 🛠 refactor: tabs 去除 console (#1261) @vapao
+* 🔨 chore(script): 简化开发环境启动逻辑 (#1264) @Eiinu
+
+
+
+# v2.0.7
+`2023-07-26`
+
+* :sparkles: feat: formitem label 支持 reactnode (#1254) @oasis-cloud
+* :sparkles: feat: uploader 添加上传的响应数据 (#1251) @逍遥
+* 🔨 chore: 优化 any 类型 (#1222) @junjun666
+* 📖 docs(SearchBar): 补充 onClear 属性说明 (#1256) @Tralafalgar Wang
+
+
+# v2.0.6
+`2023-07-21`
+
+* :bug: fix(Address): 修复Address组件通过点击CloseIcon和Overlay关闭后，无法再次打开的问题 (#1233) @Tralafalgar Wang
+* :bug: fix(button): 渐变色导致边框出现重叠 (#1250) @oasis-cloud
+
+
+# v2.0.5
+`2023-07-19`
+
+* :bug: fix(sticky): 组件卸载移除 tap 事件改为移除 scroll 事件 (#1235) @oasis-cloud
+* :bug: fix: height is null (#1239) @Liuqh233
+* :bug: fix: 修复popover滑动定位错位的问题 (#1232) @junjun666
+* :sparkles: perf: configProvider 组件性能优化 (#1230) @大喵
+* 🔨 chore: site 内部移除 taro components @oasis-cloud
+
+
+# v2.0.4
+`2023-07-14`
+
+* :sparkles: feat: configprovider 组件支持传入 className 和 style 属性 (#1219) @大喵
+* :bug: fix(button): fill=none & type=default 样式修复 (#1215) @Eiinu
+* :bug: fix(form): formItem 的 props 改为 Partial (#1221) @oasis-cloud
+* :bug: fix: cascader onChange 触发2次问题修复 (#1224) @xiaoyatong
+* :bug: fix: countdown手动控制demo展示样式优化 (#1229) @songsong
+* :bug: fix: signature组件提取样式变量+修复taro h5 demo签字时滚动问题 (#1220) @songsong
+* :bug: fix: tabs组件在抖音小程序展示异常 (#1211) @oasis-cloud
+* :bug: fix: 修复signature小程序下demo签字时页面跟随滚动问题 (#1225) @songsong
+* :bug: fix: 文档格式化 @hanyuxinting
+
+
+# v2.0.3
+`2023-07-12`
+
+* :sparkles: feat: image 支持 taro (#1190) @oasis-cloud
+* :sparkles: feat: menu 增加打开和关闭的回调方法 (#1206) @oasis-cloud
+* :sparkles: feat: 类型文件中导出组件的 props, 简化组件 props 引入方式 (#1205) @oasis-cloud
+* :bug: fix: infiniteloading taro doc (#1207) @junjun666
+* :bug: fix: 组件2.0走查问题修复 (#1172) @junjun666
+* 🔨 chore: pnpm workspace (#1199) @junjun666
+* 🔨 chore: 兼容ssr之修复引入组件库启动报错 (#1212) @junjun666
+* 📖 docs(form): nativeType 改为 formType (#1209) @oasis-cloud
+
+
+# v2.0.2
+`2023-07-07`
+
+* :sparkles: feat: 日历增加不可选状态、增加style、className 的透传 (#1193) @xiaoyatong
+* :bug: fix: animatingNumber组件暗黑模式适配+demo优化 (#1184) @songsong
+* :bug: fix: circleprogress color 属性的类型优化 (#1191) @junjun666
+* 🔨 chore(backtop): 优化 demo 和文档 (#1186) @Eiinu
+* 🔨 chore(deps): add @nutui/touch-emulator (#1196) @Eiinu
+* 🔨 chore(progress): update demo (#1192) @Eiinu
+* 🔨 chore: overlay 动效优化 (#1183) @junjun666
+
+# v2.0.1
+`2023-07-05`
+
+* :sparkles: feat: tag 新增 info 类型 (#1180) @xiaoyatong
+* :bug: fix(searchbar): 修复 Taro-H5 下 onSearch 无法触发的问题 (#1178) @Eiinu
+* :bug: fix: button 组件在 taro h5 中不设置 opentype (#1167) @oasis-cloud
+* :bug: fix: datepicker 修改列数据后，更新下一级数据 (#1179) @xiaoyatong
+* :bug: fix: demo 中 input 布局换行 (#1170) @oasis-cloud
+* :bug: fix: demo 中 tabs 采用独立状态 (#1169) @oasis-cloud
+* :bug: fix: eslint 错误修复 (#1175) @oasis-cloud
+* :bug: fix: form 在处理组件受控和非受控的时候存在冲突 (#1166) @oasis-cloud
+* :bug: fix: 关闭主题定制入口 (#1171) @oasis-cloud
+* :bug: fix: 调整 demo 中 image 组件的间距 (#1168) @oasis-cloud
+* 📖 docs: swiper 文档中的 autoplay 描述修复 (#1165) @oasis-cloud
+* 📖 docs: update doc link (#1176) @Eiinu
+
+
+# v2.0.0-beta.3
+`2023-06-30`
+
+* 🔨 chore: 增加组件名称调整的内容 (#1161) @oasis-cloud
+* 📖 docs: 统一升级文档中的修改的描述术语 (#1159) @xiaoyatong
+* :bug: fix: 修改migrate文档 (#1164) @junjun666
+* :bug: fix: 单元测试问题修复 (#1158) @Eiinu
+* 🛠 refactor: 调整 MenuItem CellGroup SwiperItem 使用方式为 Menu.Item Cell.Group… (#1160) @oasis-cloud
+
+
+# v2.0.0-beta.2
+`2023-06-28`
+
+* :sparkles: feat: 日历组件新增选择周 type='week' 模式 (#1152) @xiaoyatong
+* :bug: fix: dialog spelling mistake (#1148) @Katz
+* :bug: fix: fit&wxwork (#1146) @junjun666
+* :bug: fix: 优化 TrendArrow 组件 props (#1150) @songsong
+* :bug: fix: 修改navbar组件demo样式 (#1145) @songsong
+* 🛠 refactor: 属性定义走查修复 (#1149) @xiaoyatong
+* 🔨 chore(virtuallist): 调整 itemRender (#1151) @Eiinu
+
+
+# v2.0.0-beta.1
+`2023-06-21`
+
+* :bug: fix(collapse): 测试问题修复 (#1132) @Eiinu
+* :bug: fix: address taro 白屏 (#1140) @xiaoyatong
+* :bug: fix: popup title (#1143) @xiaoyatong
+* :bug: fix: remove bem (#1138) @oasis-cloud
+* :bug: fix: 修复toast组件屏幕锁定不能滚动的问题 (#1134) @junjun666
+* :bug: fix: 单元测试问题修复 (#1137) @Eiinu
+* 🛠 refactor: address (#1104) @xiaoyatong
+* 🛠 refactor: calendar (#1087) @xiaoyatong
+* 🔨 chore(ci): delete sync-gitcode.yml @Eiinu
+* 🔨 chore: popover review (#1127) @junjun666
+* 🔨 chore: 更新 taro 版本到 3.6.8 @oasis-cloud
+* 🔨 chore: 移除 @bem-react/classname (#1142) @oasis-cloud
+
+
+# v2.0.0-alpha.18
+`2023-06-16`
+
+* 🔨 chore(tabbar): 调整 Badge 相关 Props (#1126) @Eiinu
+* 📖 docs: update migrate-from-v1.md (#1131) @Eiinu
+* :sparkles: feat: 修改升级文档 (#1125) @oasis-cloud
+* :bug: fix: button 组件在 taro h5 中的类型优化 (#1133) @oasis-cloud
+* :bug: fix: uploader 英文文档修改 (#1124) @oasis-cloud
+* :bug: fix: 修复inputnumber在taro H5样式失效的问题 (#1130) @junjun666
+* :bug: fix: 完善migrate-from-v1文档 (#1129) @songsong
+
+
+# v2.0.0-alpha.17
+`2023-06-14`
+
+* :bug: fix: searchbar shape=round 效果差的问题 (#1109) @xiaoyatong
+* :bug: fix: swipe 类型和文档优化 (#1122) @oasis-cloud
+* 🛠 refactor: form (#1118) @oasis-cloud
+* 📖 docs: 修改布局文档相关 @hanyuxinting
+* 📖 docs: 文档走查及问题修复 (#1123) @xiaoyatong
+* 📖 docs: 文档走查及问题修复-基础&布局组件(#1117) @Eiinu
+* 📖 docs: 文档走查及问题修复-导航组件 (#1119) @xiaoyatong
+
+
+# v2.0.0-alpha.16
+`2023-06-09`
+
+* :bug: fix(toast): 修复连续调用 show 方法时无法销毁的问题 (#1102) @Eiinu
+* :bug: fix: dialog 需要增加 overlay 的样式，否则按需加载样式出现异常 (#1103) @oasis-cloud
+* :bug: fix: menu 组件被使用 transform 的组件嵌套后，遮罩层发生偏移 (#1093) @oasis-cloud
+* :bug: fix: noticebar 修复小程序多行展示问题 (#1107) @xiaoyatong
+* :bug: fix: pikcer 在关闭动画未结束时修改 visible，导致状态更新异常 (#1097) @oasis-cloud
+* 🛠 refactor: datepicker (#1091) @xiaoyatong
+* 🔨 chore: 修复 Taro Demo 的字号 (#1105) @oasis-cloud
+* 🔨 chore(script): 生成 Props 功能增强 (#1096) @Eiinu
+* 📖 docs: 文档修订 (#1106) @xiaoyatong
+
+
 # v2.0.0-alpha.15
 `2023-06-07`
 

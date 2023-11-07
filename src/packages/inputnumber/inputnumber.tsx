@@ -15,7 +15,7 @@ export interface InputNumberProps extends BasicComponent {
   disabled: boolean
   min: string | number
   max: string | number
-  readonly: boolean
+  readOnly: boolean
   value: string | number
   defaultValue: string | number
   allowEmpty: boolean
@@ -39,7 +39,7 @@ const defaultProps = {
   disabled: false,
   min: 1,
   max: 9999,
-  readonly: false,
+  readOnly: false,
   allowEmpty: false,
   defaultValue: 0,
   step: 1,
@@ -57,7 +57,7 @@ export const InputNumber: FunctionComponent<
     disabled,
     min,
     max,
-    readonly,
+    readOnly,
     value,
     defaultValue,
     allowEmpty,
@@ -106,7 +106,7 @@ export const InputNumber: FunctionComponent<
   }
   const addAllow = (value = _checked) => {
     if (formatter) {
-      const numValue = String(value).replace(/[^0-9|\.]/gi, '')
+      const numValue = String(value).replace(/[^0-9|.]/gi, '')
       return Number(numValue) < Number(max) && !disabled
     }
 
@@ -115,7 +115,7 @@ export const InputNumber: FunctionComponent<
 
   const reduceAllow = (value = _checked) => {
     if (formatter) {
-      const numValue = String(value).replace(/[^0-9|\.]/gi, '')
+      const numValue = String(value).replace(/[^0-9|.]/gi, '')
       return Number(numValue) > Number(min) && !disabled
     }
 
@@ -155,7 +155,7 @@ export const InputNumber: FunctionComponent<
     onMinus && onMinus(e)
     if (reduceAllow()) {
       if (formatter) {
-        const numValue = String(_checked).replace(/[^0-9|\.]/gi, '')
+        const numValue = String(_checked).replace(/[^0-9|.]/gi, '')
         const outputValue = Number(numValue) - Number(step)
         inputRef.current = formatter(outputValue)
         emitChange(outputValue, e)
@@ -172,7 +172,7 @@ export const InputNumber: FunctionComponent<
     onPlus && onPlus(e)
     if (addAllow()) {
       if (formatter) {
-        const numValue = String(_checked).replace(/[^0-9|\.]/gi, '')
+        const numValue = String(_checked).replace(/[^0-9|.]/gi, '')
         const outputValue = Number(numValue) + Number(step)
         inputRef.current = formatter(outputValue)
         emitChange(outputValue, e)
@@ -200,8 +200,8 @@ export const InputNumber: FunctionComponent<
   const changeFormatValue = (e: ChangeEvent<HTMLInputElement>) => {
     const input = e.target.value
 
-    const numReg = new RegExp('^[0-9]*$')
-    const numValue = input.replace(/[^0-9|\.]/gi, '')
+    const numReg = /^[0-9]*$/
+    const numValue = input.replace(/[^0-9|.]/gi, '')
 
     if (formatter) {
       if (!numReg.test(input[0]) && numValue) {
@@ -223,8 +223,8 @@ export const InputNumber: FunctionComponent<
   const burFormatValue = (e: ChangeEvent<HTMLInputElement>) => {
     const input = e.target.value
 
-    const numReg = new RegExp('^[0-9]*$')
-    const numValue = input.replace(/[^0-9|\.]/gi, '')
+    const numReg = /^[0-9]*$/
+    const numValue = input.replace(/[^0-9|.]/gi, '')
     if (formatter) {
       if (formatter(numValue) === input) {
         emitChange(numValue, e)
@@ -238,13 +238,13 @@ export const InputNumber: FunctionComponent<
 
   const focusValue = (e: FocusEvent<HTMLInputElement>) => {
     if (disabled) return
-    if (readonly) return
+    if (readOnly) return
     onFocus && onFocus(e)
   }
 
   const burValue = (e: ChangeEvent<HTMLInputElement>) => {
     if (disabled) return
-    if (readonly) return
+    if (readOnly) return
     const input = e.target as HTMLInputElement
     let value = input.valueAsNumber
     if (Number.isNaN(value) && !allowEmpty) {
@@ -273,7 +273,7 @@ export const InputNumber: FunctionComponent<
             min={min}
             max={max}
             disabled={disabled}
-            readOnly={readonly}
+            readOnly={readOnly}
             value={_checked}
             onInput={changeFormatValue}
             onBlur={burFormatValue}
@@ -285,7 +285,7 @@ export const InputNumber: FunctionComponent<
             min={min}
             max={max}
             disabled={disabled}
-            readOnly={readonly}
+            readOnly={readOnly}
             value={_checked}
             onInput={changeValue}
             onBlur={burValue}

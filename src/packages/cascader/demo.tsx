@@ -26,7 +26,7 @@ const customTheme = {
 const CascaderDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       title1: '自定义属性名称',
       title2: '动态加载',
       title3: '部分数据动态加载',
@@ -36,7 +36,7 @@ const CascaderDemo = () => {
       addressTip1: '请选择地址',
     },
     'zh-TW': {
-      basic: '基本用法',
+      basic: '基础用法',
       title1: '自定義屬性名稱',
       title2: '動態加載',
       title3: '部分數據動態加載',
@@ -239,7 +239,7 @@ const CascaderDemo = () => {
   })
 
   const change1 = (value: any, path: any) => {
-    console.log('onChange', value, path)
+    console.log('change1', value, path)
     setText({
       ...text,
       desc1: value,
@@ -247,7 +247,7 @@ const CascaderDemo = () => {
     setValue1(value)
   }
   const change2 = (value: any, path: any) => {
-    console.log('onChange', value, path)
+    console.log('change2', value, path)
     setText({
       ...text,
       desc2: value,
@@ -338,6 +338,9 @@ const CascaderDemo = () => {
           }}
         />
         <Cascader
+          popupProps={{
+            className: 'cascader-popup',
+          }}
           visible={isVisibleDemo1}
           value={value1}
           title={translated.addressTip}
@@ -347,7 +350,6 @@ const CascaderDemo = () => {
             setIsVisibleDemo1(false)
           }}
           onChange={change1}
-          onPathChange={onPathChange}
         />
         <h2>{translated.title1}</h2>
         <Cell
@@ -372,7 +374,6 @@ const CascaderDemo = () => {
             setIsVisibleDemo2(false)
           }}
           onChange={change2}
-          onPathChange={onPathChange}
         />
         <h2>{translated.title2}</h2>
         <Cell
@@ -391,7 +392,6 @@ const CascaderDemo = () => {
             setIsVisibleDemo3(false)
           }}
           onChange={change3}
-          onPathChange={onPathChange}
           lazy
           onLoad={lazyLoadDemo3}
         />
@@ -413,7 +413,6 @@ const CascaderDemo = () => {
             setIsVisibleDemo4(false)
           }}
           onChange={change4}
-          onPathChange={onPathChange}
           lazy
           onLoad={lazyLoadDemo4}
         />
@@ -436,7 +435,6 @@ const CascaderDemo = () => {
             setIsVisibleDemo5(false)
           }}
           onChange={change5}
-          onPathChange={onPathChange}
         />
         <h2>{translated.title5}</h2>
         <Cell

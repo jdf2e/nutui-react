@@ -32,7 +32,8 @@ const enUS: BaseLang = {
     start: 'Start',
     confirm: 'Confirm',
     title: 'Calendar',
-    monthTitle: (year: number, month: number) => `${year}/${month}`,
+    monthTitle: (year: number, month: number) =>
+      `${year}/${Number(month) < 10 ? `0${Number(month)}` : month}`,
     today: 'Today',
     loadPreviousMonth: 'Load Previous Month',
     noEarlierMonth: 'No Earlier Month',
@@ -58,7 +59,7 @@ const enUS: BaseLang = {
     second: ' Second ',
   },
   address: {
-    selectRegion: 'Select Region',
+    selectRegion: 'Choose Address',
     deliveryTo: 'Delivery To',
     chooseAnotherAddress: 'Choose Another Address',
   },
@@ -123,6 +124,11 @@ const enUS: BaseLang = {
     canReleaseText: 'Release to refresh',
     refreshingText: 'Loading...',
     completeText: 'Refresh successful',
+  },
+  tour: {
+    prevStepText: 'Previous',
+    completeText: 'Finish',
+    nextStepText: 'Next step',
   },
   watermark: {
     errorCanvasTips: 'Canvas is not supported in the current environment',

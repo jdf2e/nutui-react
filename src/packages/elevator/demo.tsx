@@ -55,7 +55,7 @@ const ElevatorDemo = () => {
   const floorKey = 'num'
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       customIndex: '自定义索引key',
       sticky: '索引吸顶',
       customContent: '自定义内容',
@@ -102,7 +102,7 @@ const ElevatorDemo = () => {
       three: '三',
     },
     'zh-TW': {
-      basic: '基本用法',
+      basic: '基础用法',
       customIndex: '自定義索引key',
       sticky: '索引吸頂',
       customContent: '自定義內容',
@@ -461,11 +461,11 @@ const ElevatorDemo = () => {
       ],
     },
   ]
-  const onClickItem = (key: string, item: any) => {
+  const onItemClick = (key: string, item: any) => {
     console.log(key, JSON.stringify(item))
   }
 
-  const onClickIndex = (key: string) => {
+  const onIndexClick = (key: string) => {
     console.log(key)
   }
   return (
@@ -476,8 +476,8 @@ const ElevatorDemo = () => {
           <Elevator
             list={dataList}
             height="260"
-            onClickItem={(key: string, item: any) => onClickItem(key, item)}
-            onClickIndex={(key: string) => onClickIndex(key)}
+            onItemClick={(key: string, item: any) => onItemClick(key, item)}
+            onIndexClick={(key: string) => onIndexClick(key)}
           />
         </div>
 
@@ -487,8 +487,8 @@ const ElevatorDemo = () => {
             list={dataList2}
             height="220"
             floorKey={floorKey}
-            onClickItem={(key: string, item: any) => onClickItem(key, item)}
-            onClickIndex={(key: string) => onClickIndex(key)}
+            onItemClick={(key: string, item: any) => onItemClick(key, item)}
+            onIndexClick={(key: string) => onIndexClick(key)}
           />
         </div>
         <h2>{translated.showKeys}</h2>
@@ -497,8 +497,8 @@ const ElevatorDemo = () => {
             showKeys={false}
             list={dataList}
             height="260"
-            onClickItem={(key: string, item: any) => onClickItem(key, item)}
-            onClickIndex={(key: string) => onClickIndex(key)}
+            onItemClick={(key: string, item: any) => onItemClick(key, item)}
+            onIndexClick={(key: string) => onIndexClick(key)}
           />
         </div>
         <h2>{translated.sticky}</h2>
@@ -507,8 +507,8 @@ const ElevatorDemo = () => {
             list={dataList3}
             sticky
             height="220"
-            onClickItem={(key: string, item: any) => onClickItem(key, item)}
-            onClickIndex={(key: string) => onClickIndex(key)}
+            onItemClick={(key: string, item: any) => onItemClick(key, item)}
+            onIndexClick={(key: string) => onIndexClick(key)}
           />
         </div>
         <h2>{translated.customContent}</h2>
@@ -516,8 +516,8 @@ const ElevatorDemo = () => {
           <Elevator
             list={dataList}
             height="260"
-            onClickItem={(key: string, item: any) => onClickItem(key, item)}
-            onClickIndex={(key: string) => onClickIndex(key)}
+            onItemClick={(key: string, item: any) => onItemClick(key, item)}
+            onIndexClick={(key: string) => onIndexClick(key)}
           >
             <Elevator.Context.Consumer>
               {(value) => {

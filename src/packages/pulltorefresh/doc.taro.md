@@ -6,7 +6,7 @@
 
 ## 安装
 
-```js
+```tsx
 import { PullToRefresh } from '@nutui/nutui-react-taro';
 ```
 

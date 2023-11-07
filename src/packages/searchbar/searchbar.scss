@@ -9,7 +9,6 @@
   justify-content: center;
 
   &__content {
-    position: relative;
     flex: 1;
     display: flex;
     align-items: center;
@@ -21,6 +20,8 @@
 
   &__icon {
     padding: 0 5px 0 10px;
+    display: flex;
+    justify-content: center;
   }
 
   &__rightin {

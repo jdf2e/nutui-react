@@ -24,7 +24,7 @@ interface T {
 const ToastDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       toastText: '文字提示',
       toastTitle: '标题展示',
       toastSuccess: '成功提示',

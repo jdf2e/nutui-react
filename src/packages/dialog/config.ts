@@ -1,11 +1,13 @@
 import { ReactNode, ForwardRefExoticComponent, PropsWithChildren } from 'react'
+import type { MouseEvent } from 'react'
+import { BasicComponent } from '@/utils/typings'
 
 export type DialogConfigType = {
   prefixCls?: string
   simple?: boolean
 }
 
-export interface BasicDialogProps {
+export interface BasicDialogProps extends BasicComponent {
   visible?: boolean
   title?: ReactNode
   content?: ReactNode
@@ -22,9 +24,10 @@ export interface BasicDialogProps {
   beforeClose?: () => boolean
   beforeCancel?: () => boolean
   onClose?: () => void
-  onConfirm?: (e?: MouseEvent) => Promise<() => void> | void
+  onConfirm?: (e?: MouseEvent<HTMLButtonElement>) => Promise<() => void> | void
   onCancel?: () => void
   onClick?: () => void
+  onOverlayClick?: () => void
 }
 
 export type DialogReturnProps = {

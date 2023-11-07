@@ -1,5 +1,6 @@
 import React, {
   FunctionComponent,
+  ReactNode,
   useCallback,
   useEffect,
   useRef,
@@ -16,7 +17,7 @@ const clientHeight = getSystemInfoSync().windowHeight - 5 || 667
 export interface VirtualListProps extends BasicComponent {
   list: Array<Data>
   containerHeight: number
-  ItemRender: React.FC<any>
+  itemRender: (data: any, dataIndex: number, index: number) => ReactNode
   itemHeight: number
   itemEqual: boolean
   overscan: number
@@ -37,7 +38,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
 ) => {
   const {
     list,
-    ItemRender,
+    itemRender,
     itemHeight,
     itemEqual,
     overscan,
@@ -58,7 +59,6 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
   const scrollRef = useRef<HTMLDivElement>(null)
   // 虚拟列表显示区域ref
   const itemsRef = useRef<HTMLDivElement>(null)
-  const firstItemRef = useRef(null)
   // 列表位置信息
   const [positions, setPositions] = useState<PositionType[]>([
     {
@@ -95,7 +95,6 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
 
   useEffect(() => {
     const pos = initPositinoCache(itemHeight, list.length)
-
     setPositions(pos)
   }, [itemHeight, list])
 
@@ -135,19 +134,16 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
 
   // 滚动监听
   const listScroll = (e: any) => {
-    const scrollTop = e.detail ? e.detail.scrollTop : e.target.scrollTop
+    const scrollTop = e.target.scrollTop
     const scrollSize = Math.floor(scrollTop)
-    const startIndex = binarySearch(positions, scrollSize, false)
-
+    const startIndex = binarySearch(positions, false, scrollSize)
     const overStart = startIndex - overscan > -1 ? startIndex - overscan : 0
     const endIndex = end()
     if (!itemEqual) {
       updateTotalSize()
     }
     setStart(Math.floor(scrollTop / itemHeight))
-
     setOptions({ startOffset, startIndex, overStart, endIndex })
-
     if (end() > list.length - 1) {
       onScroll && onScroll()
     }
@@ -189,19 +185,14 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
             const keyVal = key && data[key] ? data[key] : dataIndex
             return (
               <div
-                ref={dataIndex === 0 ? firstItemRef : null}
                 data-index={`${dataIndex}`}
                 className="nut-virtuallist-item"
-                key={`${data}`}
+                key={`${keyVal}`}
                 style={{
                   height: `${itemEqual ? `${itemHeight}px` : 'auto'}`,
                 }}
               >
-                {ItemRender ? (
-                  <ItemRender data={data} index={`${index}`} />
-                ) : (
-                  data
-                )}
+                {itemRender ? itemRender(data, dataIndex, index) : data}
               </div>
             )
           })}

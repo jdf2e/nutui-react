@@ -17,7 +17,7 @@ test('should limit maxlength of input value when using maxlength prop', () => {
     'maxlength',
     '5'
   )
-  expect(container.querySelector('.nut-searchbar__input')).toHaveClass(
+  expect(container.querySelector('.nut-searchbar__content')).toHaveClass(
     'nut-searchbar__round'
   )
 })

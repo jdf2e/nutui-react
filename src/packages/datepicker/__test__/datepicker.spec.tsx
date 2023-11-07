@@ -10,9 +10,9 @@ test('Show Chinese', async () => {
     <DatePicker
       title="日期选择"
       visible
-      isShowChinese
+      showChinese
       threeDimensional={false}
-      onConfirmDatePicker={(options) => confirm(options)}
+      onConfirm={(options) => confirm(options)}
     />
   )
 
@@ -31,10 +31,10 @@ test('Min date & Max date', async () => {
     <DatePicker
       title="日期选择"
       visible
-      minDate={new Date(2020, 0, 1)}
-      maxDate={new Date(2022, 0, 1)}
+      startDate={new Date(2020, 0, 1)}
+      endDate={new Date(2022, 0, 1)}
       threeDimensional={false}
-      onConfirmDatePicker={confirm}
+      onConfirm={confirm}
     />
   )
 
@@ -53,10 +53,10 @@ test('should pick defaultValue', async () => {
     <DatePicker
       title="日期选择"
       visible
-      modelValue={new Date(2021, 2, 1)}
-      minDate={new Date(2020, 0, 1)}
-      maxDate={new Date(2022, 0, 1)}
-      onConfirmDatePicker={(options, values) => confirm(options)}
+      defaultValue={new Date(2021, 2, 1)}
+      startDate={new Date(2020, 0, 1)}
+      endDate={new Date(2022, 0, 1)}
+      onConfirm={(options, values) => confirm(options)}
     />
   )
 
@@ -77,7 +77,7 @@ test('Increment step setting', async () => {
       visible
       minuteStep={5}
       type="time"
-      onConfirmDatePicker={confirm}
+      onConfirm={confirm}
     />
   )
 

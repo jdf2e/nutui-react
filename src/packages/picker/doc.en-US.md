@@ -1,25 +1,27 @@
-#  Picker
+# Picker
 
 ## Intro
 
 The picker component is usually used with Popup Component.
 
 ## Install
-```ts
-// react
+
+```tsx
 import { Picker } from '@nutui/nutui-react';
 ```
 
 ## Demo
+
 ### Basic Usage
 
 :::demo
+
 ```tsx
 import  React, { useState  } from "react";
 import { Picker,Cell } from '@nutui/nutui-react';
 
 const App = () => {
-  const [isVisible1, setIsVisible1] = useState(false)
+  const [visible, setVisible] = useState(false)
   const [baseDesc, setBaseDesc] = useState('')
   const listData1 = [
     [
@@ -46,12 +48,12 @@ const App = () => {
   }
   return ( 
     <>   
-      <Cell title="Choose City" description={baseDesc} onClick={() => setIsVisible1(!isVisible1)}/>
+      <Cell title="Choose City" description={baseDesc} onClick={() => setVisible(!visible)}/>
       <Picker
-        visible={isVisible1}
+        visible={visible}
         options={listData1}
         onConfirm={(list, values) => confirmPicker(list, values)}
-        onClose={() => setIsVisible1(false)}
+        onClose={() => setVisible(false)}
         onChange={changePicker}
        />
     </>
@@ -59,16 +61,19 @@ const App = () => {
 };  
 export default App;
 ```
+
 :::
 
 ### Default Index
+
 :::demo
+
 ```tsx
 import  React, { useState  } from "react";
 import { Picker,Cell } from '@nutui/nutui-react';
 
 const App = () => {
-  const [isVisible1, setIsVisible1] = useState(false)
+  const [visible, setVisible] = useState(false)
   const [baseDefault, setbaseDefault] = useState('')
   const [defaultValue, setDefaultValue] = useState([2])
   const listData1 = [
@@ -93,24 +98,26 @@ const App = () => {
   }
   return ( 
     <>   
-      <Cell title="Choose City" description={baseDefault} onClick={() => setIsVisible1(!isVisible1)}/>
+      <Cell title="Choose City" description={baseDefault} onClick={() => setVisible(!visible)}/>
       <Picker
-        visible={isVisible1}
+        visible={visible}
         options={listData1}
         defaultValue={defaultValue}
         onConfirm={(list, values) => confirmPicker(list, values)}
-        onClose={() => setIsVisible1(false)}
+        onClose={() => setVisible(false)}
        />
     </>
   );
 };  
 export default App;
 ```
+
 :::
 
 ### Multiple Columns
 
 :::demo
+
 ```tsx
 import  React, { useState  } from "react";
 import { Picker,Cell } from '@nutui/nutui-react';
@@ -156,11 +163,13 @@ const App = () => {
 };  
 export default App;
 ```
+
 :::
 
 ### Tile
 
 :::demo
+
 ```tsx
 import  React, { useState  } from "react";
 import { Picker,Cell } from '@nutui/nutui-react';
@@ -204,10 +213,13 @@ const App = () => {
 };  
 export default App;
 ```
+
 :::
+
 ### Cascade
 
 :::demo
+
 ```tsx
 import  React, { useState  } from "react";
 import { Picker,Cell } from '@nutui/nutui-react';
@@ -271,11 +283,13 @@ const App = () => {
 };  
 export default App;
 ```
+
 :::
 
 ### Async
 
 :::demo
+
 ```tsx
 import  React, { useState  } from "react";
 import { Picker,Cell } from '@nutui/nutui-react';
@@ -355,32 +369,34 @@ const App = () => {
 };  
 export default App;
 ```
-:::
 
+:::
 
 ## Picker
 
 ### Props
 
-| Property | Description | Type   | Default           |
-| ----- | ----- | ----- | ----- |
-| visible | Is Show  | `boolean` | `false` |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| visible | Is Show | `boolean` | `false` |
 | title | Toolbar title | `string` | `-` |
-| options |  Columns data | `Array` | `[]` | 
+| options | Columns data | `Array` | `[]` |
 | value | Controlled Value | `Array` | `[]` |
-| defaultValue | Default Index  | `Array` | `[]` |
-| threeDimensional| Turn on 3D effects| `boolean`  | `true`   |
-| duration | move animation duration, ms | `string \| number` | `1000`   |
+| defaultValue | Default Index | `Array` | `[]` |
+| threeDimensional | Turn on 3D effects | `boolean` | `true` |
+| duration | move animation duration, ms | `string`  \|  `number` | `1000` |
+| popupProps | popup props | `object` | `-` |
 | onConfirm | Emitted when click confirm button. | `(options, value) => void` | `-` |
 | onChange | Emitted when current option changed. | `(options, value) => void` | `-` |
-| onClose | Emitted when click close button. | `(options, value) => void`  | `-` |
-| afterClose | Emitted when cascade changed.   | `(options, value) => void` | `-` |
+| onClose | Emitted when click close button. | `(options, value) => void` | `-` |
+| afterClose | Emitted when cascade changed. | `(options, value) => void` | `-` |
 
-### options 
-| Property | Description | Type   | Default |
-|--------------|-------|--------|------------------|
-| text | Text of column | `string \| number` | | 
-| value | Value of column | `string \| number` | |
+### options
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| text | Text of column | `string`  \|  `number` | `-` |
+| value | Value of column | `string`  \|  `number` | `-` |
 | children | Cascader Option | `Array` | `-` |
 
 ## Theming
@@ -390,19 +406,19 @@ export default App;
 The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
 | Name | Description | Default |
-| --- | --- | -- |
-| --nutui-picker-bar-cancel-color | picker bar cancel color | `#808080` |
-| --nutui-picker-bar-ok-color | picker bar confirm color | `$primary-color` |
-| --nutui-picker-bar-cancel-font-size | picker bar cancel font size | `14px` |
-| --nutui-picker-bar-ok-font-size | picker bar confirm font size | `14px` |
-| --nutui-picker-bar-button-padding | picker bar button padding | `0 15px` |
-| --nutui-picker-bar-title-font-size | picker bar title font size | `16px` |
-| --nutui-picker-bar-title-color | picker bar title color | `$title-color` |
-| --nutui-picker-bar-title-font-weight | picker bar title font weight | `normal` |
-| --nutui-picker-list-height  | picker pannel list height | `252px` |
-| --nutui-picker-item-height | picker pannel item height | `36px` |
-| --nutui-picker-item-text-color | picker pannel item text color | `$title-color` |
-| --nutui-picker-item-active-text-color | picker pannel item active text color  | `inherit` |
-| --nutui-picker-item-text-font-size | picker pannel item text font size  | `14px` |
-| --nutui-picker-item-active-line-border | picker pannel item active line border | `1px solid #d8d8d8` |
-| --nutui-picker-mask-bg-img  | picker pannel mask background image | `linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))` |
+| --- | --- | --- |
+| \--nutui-picker-bar-cancel-color | picker bar cancel color | `#808080` |
+| \--nutui-picker-bar-ok-color | picker bar confirm color | `$primary-color` |
+| \--nutui-picker-bar-cancel-font-size | picker bar cancel font size | `14px` |
+| \--nutui-picker-bar-ok-font-size | picker bar confirm font size | `14px` |
+| \--nutui-picker-bar-button-padding | picker bar button padding | `0 15px` |
+| \--nutui-picker-bar-title-font-size | picker bar title font size | `16px` |
+| \--nutui-picker-bar-title-color | picker bar title color | `$title-color` |
+| \--nutui-picker-bar-title-font-weight | picker bar title font weight | `normal` |
+| \--nutui-picker-list-height | picker pannel list height | `252px` |
+| \--nutui-picker-item-height | picker pannel item height | `36px` |
+| \--nutui-picker-item-text-color | picker pannel item text color | `$title-color` |
+| \--nutui-picker-item-active-text-color | picker pannel item active text color | `inherit` |
+| \--nutui-picker-item-text-font-size | picker pannel item text font size | `14px` |
+| \--nutui-picker-item-active-line-border | picker pannel item active line border | `1px solid #d8d8d8` |
+| \--nutui-picker-mask-bg-img | picker pannel mask background image | `linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))` |

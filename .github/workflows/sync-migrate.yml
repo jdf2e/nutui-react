@@ -14,7 +14,7 @@ jobs:
   copy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - run: npm i fs-extra --force
       - run: node scripts/copy-migrate-from-v1.js
       - name : Sync

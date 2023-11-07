@@ -1,16 +1,22 @@
 import React, {
   CSSProperties,
   FunctionComponent,
-  useEffect,
   useState,
   ReactNode,
 } from 'react'
+import type { MouseEvent } from 'react'
 import { Close } from '@nutui/icons-react'
 import classNames from 'classnames'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export type TagType = 'default' | 'primary' | 'success' | 'warning' | 'danger'
+export type TagType =
+  | 'default'
+  | 'primary'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'danger'
 
 export interface TagProps extends BasicComponent {
   type: TagType
@@ -21,7 +27,7 @@ export interface TagProps extends BasicComponent {
   mark: boolean
   closeable: boolean
   closeIcon: ReactNode
-  onClick: (e: MouseEvent) => void
+  onClick: (e: MouseEvent<HTMLDivElement>) => void
   onClose: (e?: any) => void
 }
 
@@ -36,7 +42,7 @@ const defaultProps = {
   closeable: false,
   closeIcon: null,
   onClose: (e: any) => {},
-  onClick: (e: MouseEvent) => {},
+  onClick: (e: MouseEvent<HTMLDivElement>) => {},
 } as TagProps
 export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
   const {
@@ -57,25 +63,19 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     ...defaultProps,
     ...props,
   }
-  const [tagClass, setTagClass] = useState('')
   const [visible, setVisible] = useState(true)
   const classPrefix = 'nut-tag'
-  const classes = () => {
-    return classNames({
-      [classPrefix]: true,
-      [`${classPrefix}--${type}`]: type,
-      [`${classPrefix}--plain`]: plain,
-      [`${classPrefix}--round`]: round,
-      [`${classPrefix}--mark`]: mark,
-      [`${classPrefix}--close`]: closeable,
-      [`${className}`]: className,
-    })
-  }
-  useEffect(() => {
-    setTagClass(classes())
-  }, [type, background, color, plain, round, mark, closeable, className])
+  const classes = classNames({
+    [classPrefix]: true,
+    [`${classPrefix}--${type}`]: type,
+    [`${classPrefix}--plain`]: plain,
+    [`${classPrefix}--round`]: round,
+    [`${classPrefix}--mark`]: mark,
+    [`${classPrefix}--close`]: closeable,
+    [`${className}`]: className,
+  })
 
-  const handleClick = (e: any) => {
+  const handleClick = (e: MouseEvent<HTMLDivElement>) => {
     onClick && onClick(e)
   }
   // 综合考虑 color、background、plain 组合使用时的效果
@@ -100,7 +100,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
       {closeable ? (
         visible && (
           <div
-            className={tagClass}
+            className={classes}
             style={{ ...style, ...getStyle() }}
             onClick={(e) => handleClick(e)}
           >
@@ -131,7 +131,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
         )
       ) : (
         <div
-          className={tagClass}
+          className={classes}
           style={{ ...style, ...getStyle() }}
           onClick={(e) => handleClick(e)}
         >

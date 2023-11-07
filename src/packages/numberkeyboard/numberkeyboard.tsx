@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode, useMemo, useState } from 'react'
+import React, { FunctionComponent, useMemo, useState } from 'react'
 import classNames from 'classnames'
 import { RectDown } from '@nutui/icons-react'
 import Popup from '@/packages/popup'
@@ -8,7 +8,6 @@ import { ComponentDefaults } from '@/utils/typings'
 
 export interface NumberKeyboardProps extends PopupProps {
   visible: boolean
-  title?: ReactNode
   confirmText?: string
   type: 'default' | 'rightColumn'
   custom: Array<string>
@@ -144,8 +143,8 @@ export const NumberKeyboard: FunctionComponent<
     <Popup
       visible={visible}
       position="bottom"
-      onClickOverlay={onClose}
-      onClickCloseIcon={onClose}
+      onOverlayClick={onClose}
+      onCloseIconClick={onClose}
       overlayStyle={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}
       {...rest}
     >
@@ -156,7 +155,7 @@ export const NumberKeyboard: FunctionComponent<
             {type === 'default' && (
               <span
                 className={`${classPrefix}__header__close`}
-                onClick={onClose}
+                onClick={onConfirm}
               >
                 {locale.done}
               </span>

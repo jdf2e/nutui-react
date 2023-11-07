@@ -40,7 +40,8 @@ const trTR: BaseLang = {
     start: 'Başlangıç',
     confirm: 'Onayla',
     title: 'Takvim seçimi',
-    monthTitle: (year: number, month: number) => `${year}/${month}`,
+    monthTitle: (year: number, month: number) =>
+      `${year}/${Number(month) < 10 ? `0${Number(month)}` : month}`,
     today: 'Bugün',
     loadPreviousMonth: 'Önceki ayı yükle',
     noEarlierMonth: 'Önceki ay yok',
@@ -132,6 +133,11 @@ const trTR: BaseLang = {
     canReleaseText: 'Yenilemek için bırakın',
     refreshingText: 'Yükleniyor...',
     completeText: 'Yenileme başarılı',
+  },
+  tour: {
+    prevStepText: 'Sonraki adım',
+    completeText: 'Sona ermek',
+    nextStepText: 'Sonraki adım',
   },
   watermark: {
     errorCanvasTips: 'Geçerli ortam Canvası desteklemiyor',

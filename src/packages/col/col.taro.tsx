@@ -5,6 +5,7 @@ import React, {
   CSSProperties,
   useContext,
 } from 'react'
+import type { MouseEvent } from 'react'
 import classNames from 'classnames'
 import { DataContext } from '@/packages/row/UserContext'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -15,7 +16,7 @@ export interface ColProps extends BasicComponent {
   span: string | number
   offset: string | number
   gutter: string | number
-  onClick: (e: any, type: ColEventType) => void
+  onClick: (e: MouseEvent<HTMLDivElement>, type: ColEventType) => void
 }
 
 const defaultProps = {

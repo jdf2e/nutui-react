@@ -65,18 +65,18 @@ const NoticeBarDemo = () => {
 
         <h2>{translated.scrollable}</h2>
         <NoticeBar content={translated.textShort} scrollable />
-        <br />
+        <br style={{ display: 'block', height: '10px' }} />
         <NoticeBar content={translated.text} scrollable={false} />
 
         <h2>{translated.mode}</h2>
         <NoticeBar closeable onClick={hello}>
           {translated.text}
         </NoticeBar>
-        <br />
+        <br style={{ display: 'block', height: '10px' }} />
         <NoticeBar closeable rightIcon={<CircleClose />} onClick={hello}>
           {translated.text}
         </NoticeBar>
-        <br />
+        <br style={{ display: 'block', height: '10px' }} />
         <NoticeBar
           leftIcon={
             <img
@@ -127,7 +127,7 @@ const NoticeBarDemo = () => {
             onClick={(e) => {
               console.log('listClick', e.target)
             }}
-            onClickItem={(e, val) => {
+            onItemClick={(e, val) => {
               console.log('dom', e.target)
               console.log('value', val)
             }}
@@ -171,7 +171,7 @@ const NoticeBarDemo = () => {
             list={horseLamp1}
             speed={10}
             duration={1000}
-            onClickItem={(e, v) => {
+            onItemClick={(e, v) => {
               console.log('onclick-custom', v)
             }}
             rightIcon={<Fabulous size={16} color="#f0250f" />}

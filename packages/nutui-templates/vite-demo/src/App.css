@@ -1,0 +1,23 @@
+.indexHeader {
+  display: flex;
+  align-items: center;
+  padding: 0 34px;
+  height: 117px;
+}
+
+.image {
+  width: 67px;
+  height: 67px;
+  margin-right: 18px;
+  flex-shrink: 0;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+}
+
+.flexCenter {
+  display: flex;
+  justify-content: center;
+}

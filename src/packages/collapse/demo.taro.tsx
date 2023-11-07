@@ -138,7 +138,7 @@ const CollapseDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <div className={`demo full ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.header1}</h2>
         <Collapse defaultActiveName={['1', '2']} expandIcon={<DownArrow />}>
           <Collapse.Item title={translated.title1} name="1">

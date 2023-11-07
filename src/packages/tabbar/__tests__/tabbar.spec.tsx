@@ -104,3 +104,17 @@ test('should show sure emitted when click', async () => {
   fireEvent.click(tabbarItem[1])
   expect(onSwitch).toBeCalled()
 })
+
+test('should only render title', async () => {
+  const onSwitch = jest.fn()
+  const { container } = render(
+    <>
+      <Tabbar inactiveColor="grey" activeColor="blue" onSwitch={onSwitch}>
+        <Tabbar.Item title="首页" value={11} />
+        <Tabbar.Item title="分类" />
+        <Tabbar.Item title="发现" />
+      </Tabbar>
+    </>
+  )
+  expect(container.innerHTML).toMatchSnapshot()
+})

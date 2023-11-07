@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import type { ChangeEvent, FocusEvent, MouseEvent } from 'react'
 import { CircleClose, Search } from '@nutui/icons-react'
 import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -27,15 +28,15 @@ export interface SearchBarProps extends BasicComponent {
   /**  确定搜索时触发	 */
   onSearch?: (val: string) => void
   /** 输入框内容变化时触发	 */
-  onChange?: (value: string, event: Event) => void
+  onChange?: (value: string, event: ChangeEvent<HTMLInputElement>) => void
   /** 输入框获得焦点时触发	 */
-  onFocus?: (value: string, event: Event) => void
+  onFocus?: (value: string, event: FocusEvent<HTMLInputElement>) => void
   /** 输入框失去焦点时触发	 */
-  onBlur?: (value: string, event: Event) => void
+  onBlur?: (value: string, event: FocusEvent<HTMLInputElement>) => void
   /** 点击清除按钮后触发	 */
-  onClear?: (event: Event) => void
+  onClear?: (event: MouseEvent<HTMLDivElement>) => void
   /** 点击输入区域时触发	 */
-  onClickInput?: (event: Event) => void
+  onInputClick?: (event: MouseEvent<HTMLInputElement>) => void
 }
 
 const defaultProps = {
@@ -83,7 +84,7 @@ export const SearchBar: FunctionComponent<
     onBlur,
     onClear,
     onSearch,
-    onClickInput,
+    onInputClick,
   } = {
     ...defaultProps,
     ...props,
@@ -93,19 +94,19 @@ export const SearchBar: FunctionComponent<
     const searchSelf: HTMLInputElement | null = searchRef.current
     searchSelf && searchSelf.focus()
   }
-  const change = (event: Event) => {
-    const { value } = event.target as any
+  const change = (event: ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target
     onChange && onChange?.(value, event)
     setValue(value)
   }
-  const focus = (event: Event) => {
-    const { value } = event.target as any
+  const focus = (event: FocusEvent<HTMLInputElement>) => {
+    const { value } = event.target
     onFocus && onFocus?.(value, event)
   }
-  const blur = (event: Event) => {
+  const blur = (event: FocusEvent<HTMLInputElement>) => {
     const searchSelf: HTMLInputElement | null = searchRef.current
     searchSelf && searchSelf.blur()
-    const { value } = event.target as any
+    const { value } = event.target
     onBlur && onBlur?.(value, event)
   }
   useEffect(() => {
@@ -118,8 +119,8 @@ export const SearchBar: FunctionComponent<
     return (
       <input
         className={`${classPrefix}__input ${
-          shape === 'round' ? `${classPrefix}__round` : ''
-        } ${clearable ? `${classPrefix}__input-clear` : ''}`}
+          clearable ? `${classPrefix}__input-clear` : ''
+        }`}
         ref={searchRef}
         style={{ ...props.style }}
         value={value || ''}
@@ -127,16 +128,16 @@ export const SearchBar: FunctionComponent<
         disabled={disabled}
         readOnly={readOnly}
         maxLength={maxLength}
-        onKeyPress={onKeypress}
-        onChange={(e: any) => change(e)}
-        onFocus={(e: any) => focus(e)}
-        onBlur={(e: any) => blur(e)}
-        onClick={(e: any) => clickInput(e)}
+        onKeyDown={onKeydown}
+        onChange={(e) => change(e)}
+        onFocus={(e) => focus(e)}
+        onBlur={(e) => blur(e)}
+        onClick={(e) => clickInput(e)}
       />
     )
   }
-  const clickInput = (e: Event) => {
-    onClickInput && onClickInput(e)
+  const clickInput = (e: MouseEvent<HTMLInputElement>) => {
+    onInputClick && onInputClick(e)
   }
 
   const renderLeftIn = () => {
@@ -147,7 +148,6 @@ export const SearchBar: FunctionComponent<
       </div>
     )
   }
-
   const renderLeft = () => {
     if (!left) return null
     return <div className={`${classPrefix}__left`}>{left}</div>
@@ -171,14 +171,14 @@ export const SearchBar: FunctionComponent<
     return (
       <div
         className={`${classPrefix}__clear ${rightIn ? 'pos-right' : ''}`}
-        onClick={(e: any) => clearaVal(e)}
+        onClick={(e) => clearaVal(e)}
       >
         <CircleClose color="#555" width={12} height={12} />
       </div>
     )
   }
 
-  const clearaVal = (event: Event) => {
+  const clearaVal = (event: MouseEvent<HTMLDivElement>) => {
     if (disabled || readOnly) {
       return
     }
@@ -187,7 +187,7 @@ export const SearchBar: FunctionComponent<
     forceFocus()
   }
 
-  const onKeypress = (e: React.KeyboardEvent) => {
+  const onKeydown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter') {
       const event = e.nativeEvent
       if (typeof event.cancelable !== 'boolean' || event.cancelable) {
@@ -205,7 +205,11 @@ export const SearchBar: FunctionComponent<
       style={{ ...props.style }}
     >
       {renderLeft()}
-      <div className={`${classPrefix}__content`}>
+      <div
+        className={`${classPrefix}__content ${
+          shape === 'round' ? `${classPrefix}__round` : ''
+        }`}
+      >
         {renderLeftIn()}
         {renderField()}
         {renderRightIn()}

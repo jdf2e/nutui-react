@@ -1,8 +1,5 @@
 blank_issues_enabled: false
 contact_links:
-  - name: 我要反馈 NutUI-react 的 Issue
-    url: https://nutui.jd.com/nutui-issue-helper/?repo=jdf2e/nutui-react&lang=zh-cn
-    about: 请点击 「Open」 按钮打开新链接创建 Issue
-  - name: 我想要一个 NutUI-react 的新功能
-    url: https://nutui.jd.com/nutui-issue-helper/?repo=jdf2e/nutui-react&lang=zh-cn&type=feature-request
-    about: 请点击 「Open」 按钮打开新链接创建 Feature Request
+  - name: 🤖 常见问题 QA
+    url: https://github.com/jdf2e/nutui-react/discussions/1324
+    about: 这里可能会有解决方案。

@@ -1,16 +1,15 @@
 import React from 'react'
+import Taro from '@tarojs/taro'
 import {
   ConfigProvider,
   TextArea,
   Button,
-  CellGroup,
   Cell,
   Rate,
 } from '@/packages/nutui.react.taro'
 import enUS from '@/locales/en-US'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import Taro from '@tarojs/taro'
 
 const darkTheme = {
   nutuiBrandColor: 'green',
@@ -55,7 +54,7 @@ const ConfigProviderDemo = () => {
         </ConfigProvider>
         <h2>{translated.defaultTheme}</h2>
         <ConfigProvider>
-          <CellGroup>
+          <Cell.Group>
             <Cell>
               <Rate defaultValue={3} />
             </Cell>
@@ -64,11 +63,11 @@ const ConfigProviderDemo = () => {
                 {translated.submit}
               </Button>
             </Cell>
-          </CellGroup>
+          </Cell.Group>
         </ConfigProvider>
         <h2>{translated.customTheme}</h2>
         <ConfigProvider theme={darkTheme}>
-          <CellGroup>
+          <Cell.Group>
             <Cell>
               <Rate defaultValue={3} />
             </Cell>
@@ -77,7 +76,7 @@ const ConfigProviderDemo = () => {
                 {translated.submit}
               </Button>
             </Cell>
-          </CellGroup>
+          </Cell.Group>
         </ConfigProvider>
       </div>
     </>

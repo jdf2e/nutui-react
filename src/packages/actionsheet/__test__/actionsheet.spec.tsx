@@ -11,7 +11,7 @@ const menulist: ItemType<string | boolean>[] = [
   },
   {
     name: '选项二',
-    disable: true,
+    disabled: true,
   },
   {
     name: '必填',
@@ -85,7 +85,7 @@ test('props test choose item and show value', async () => {
   await waitFor(() => expect(choose.mock.calls[0][0].name).toEqual('选项一'))
 })
 
-test('props test disable item has disable classes', async () => {
+test('props test disabled item has disabled classes', async () => {
   const choose = jest.fn()
   const { container } = render(
     <ActionSheet
@@ -104,7 +104,7 @@ test('props test disable item has disable classes', async () => {
   expect(disableItem).toHaveClass('nut-actionsheet__item disabled')
 })
 
-test('props test click disable item and not call fn', async () => {
+test('props test click disabled item and not call fn', async () => {
   const choose = jest.fn()
   const { container } = render(
     <ActionSheet

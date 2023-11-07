@@ -6,8 +6,7 @@ Action menu panel that pops up from the bottom.
 
 ## Install
 
-```ts
-// react
+```tsx
 import { ActionSheet } from '@nutui/nutui-react';
 ```
 
@@ -24,7 +23,7 @@ import { ActionSheet,Cell } from '@nutui/nutui-react';
 interface Item {
   name: string
   description?: string
-  disable?: boolean
+  disabled?: boolean
 }
 const App = () => {
   const [val1, setVal1] = useState('')
@@ -184,7 +183,7 @@ const App = () => {
     },
     {
       name: 'Disable Option',
-      disable: true,
+      disabled: true,
     },
   ]
   return ( 
@@ -266,7 +265,7 @@ const App = () => {
     },
     {
       title: 'Disable Option',
-      disable: true,
+      disabled: true,
     },
   ]
   const optionKey = {
@@ -306,7 +305,7 @@ export default App;
 | description | Set panel subtitle/description | `string` | `-` |
 | cancelText | Cancel Text | `string` | `Cancel` |
 | options | Menu Item | `Array` | `[]` |
-| optionKey | Menu Item Custom key | `{ [key: string]: string }` | \`\`\`\` |
+| optionKey | Menu Item Custom key | `{ [key: string]: string }` | `-` |
 | onSelect | Triggered after selection | `(item: any, index: number) => void` | `-` |
 | onCancel | Triggered when onCancel copy is clicked | `() => void` | `-` |
 

@@ -7,10 +7,10 @@ import TextArea from '@/packages/textarea'
 
 test('textarea props test', () => {
   const { container } = render(
-    <TextArea defaultValue="基本用法" showCount maxLength={20} />
+    <TextArea defaultValue="基础用法" showCount maxLength={20} />
   )
   expect(container.querySelector('.nut-textarea__textarea')?.innerHTML).toBe(
-    '基本用法'
+    '基础用法'
   )
   expect(container.querySelector('.nut-textarea__limit')?.innerHTML).toBe(
     '4/20'

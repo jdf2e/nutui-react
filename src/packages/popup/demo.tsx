@@ -113,6 +113,7 @@ const PopupDemo = () => {
         />
         <Popup
           visible={showBasic}
+          zIndex={2000}
           style={{ padding: '30px 50px' }}
           onClose={() => {
             setShowBasic(false)
@@ -192,6 +193,8 @@ const PopupDemo = () => {
           closeable
           closeIcon={<CircleClose width="12px" height="12px" />}
           visible={showIcon}
+          left="返回"
+          title="我是标题"
           style={{ height: '20%' }}
           position="bottom"
           onClose={() => {
@@ -244,8 +247,8 @@ const PopupDemo = () => {
           onClose={() => {
             setShowOverlayStop(false)
           }}
-          onClickOverlay={() => {
-            console.log('onClickOverlay')
+          onOverlayClick={() => {
+            console.log('onOverlayClick')
             return false
           }}
         >
@@ -267,8 +270,8 @@ const PopupDemo = () => {
           onClose={() => {
             setShowIcon(false)
           }}
-          onClickCloseIcon={() => {
-            console.log('onClickCloseIcon')
+          onCloseIconClick={() => {
+            console.log('onCloseIconClick')
           }}
         />
 

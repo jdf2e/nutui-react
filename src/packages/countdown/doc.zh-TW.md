@@ -6,8 +6,7 @@
 
 ## 安裝
 
-```ts
-// react
+```tsx
 import { CountDown } from '@nutui/nutui-react'
 ```
 
@@ -220,15 +219,7 @@ export default App;
 import React, {  useRef, useState } from 'react'
 import { Cell, CountDown } from '@nutui/nutui-react';
 
-const [resetTime, setResetTime] = useState({
-    d: '1',
-    h: '00',
-    m: '00',
-    s: '00',
-})
-const stateRef = useRef({
-    endTime: Date.now() + 60 * 1000,
-})
+
 const partItemStyle = {
     flexShrink: 0,
     display: 'flex',
@@ -248,7 +239,15 @@ const App = () => {
   const onUpdate = (v) => {
     setResetTime(v)
   }
-  
+  const [resetTime, setResetTime] = useState({
+    d: '1',
+    h: '00',
+    m: '00',
+    s: '00',
+  })
+  const stateRef = useRef({
+    endTime: Date.now() + 60 * 1000,
+  }) 
   return (
     <Cell>
         <span>
@@ -357,8 +356,6 @@ export default App;
 | millisecond | 是否開啟毫秒級渲染 | `boolean` | `false` |
 | autoStart | 是否自動開始倒計時 | `boolean` | `true` |
 | time | 倒計時顯示時間，單位是毫秒。autoStart 為 false 時生效 | `number` | `0` |
-| showDays | 是否顯示天 | `boolean` | `false` |
-| showPlainText | 顯示為純文本 | `boolean` | `false` |
 | destroy | 銷毀實例 | `boolean` | `false` |
 | onEnd | 倒計時結束時回調函數 | `無` | `-` |
 | onPaused | 暫停倒計時回調函數 | `onPaused: (restTime: number) => void` | `-` |

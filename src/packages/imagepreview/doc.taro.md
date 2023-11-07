@@ -1,4 +1,4 @@
-#  ImagePreview组件
+# ImagePreview组件
 
 ## 介绍
 
@@ -6,17 +6,16 @@
 
 ## 安装
 
-
-```ts
+```tsx
 import { ImagePreview } from '@nutui/nutui-react-taro'
 ```
-
 
 ## 代码演示
 
 ### 基础用法
 
 :::demo
+
 ```tsx
 import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react-taro';
@@ -117,6 +116,7 @@ export default App;
 ### 设置初始页码
 
 :::demo
+
 ```tsx
 import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react-taro';
@@ -155,8 +155,8 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ### 受控模式
 
@@ -216,10 +216,10 @@ export default App;
 
 :::
 
-
 ### 设置轮播指示器及颜色
 
 :::demo
+
 ```tsx
 import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react-taro';
@@ -258,11 +258,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 视频、图片预览
 
 :::demo
+
 ```tsx
 import React, { useState } from 'react';
 import { ImagePreview, Cell } from '@nutui/nutui-react-taro';
@@ -324,23 +326,23 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ## ImagePreview
 
 ### Props
 
-| 属性         | 说明                             | 类型   | 默认值           |
-|--------------|----------------------------------|--------|------------------|
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
 | visible | 是否展示预览图片 | `boolean` | `false` |
 | videos | 预览的视频数组（视频自动放到图片之前） | `Array<Object>` | `[]` |
 | images | 预览图片数组 | `{ src: string }[]` | `[]` |
-| autoPlay | 自动轮播时长，0表示不会自动轮播 | `number \| string`  | `3000`  |
+| autoPlay | 自动轮播时长，0表示不会自动轮播 | `number` \| `string` | `3000` |
 | defaultValue | 初始页码 | `number` | `1` |
 | value | 页码，受控 | `number` | `1` |
-| indicator | 分页指示器是否展示    |  `boolean` | `false` |
-| indicatorColor   | 分页指示器选中的颜色    | `string`  | `#fff`  |
-| showMenuByLongpress   | 开启长按图片显示识别小程序码菜单    | `boolean`  | `false`  |
-| closeOnContentClick   | 点击图片可以退出预览    |  `boolean`  | `false`  |
-| onClose | 点击遮罩关闭图片预览时触发| `() => void` | `-` | 
+| indicator | 分页指示器是否展示 | `boolean` | `false` |
+| indicatorColor | 分页指示器选中的颜色 | `string` | `#fff` |
+| showMenuByLongpress | 开启长按图片显示识别小程序码菜单 | `boolean` | `false` |
+| closeOnContentClick | 点击图片可以退出预览 | `boolean` | `false` |
+| onClose | 点击遮罩关闭图片预览时触发 | `() => void` | `-` |

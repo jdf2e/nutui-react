@@ -1,4 +1,6 @@
 @import '../cellgroup/cellgroup.scss';
+@import '../cell/cell.scss';
+@import '../formitem/formitem.scss';
 
 .form-layout-right .nut-form-item__label {
   text-align: right;
@@ -8,10 +10,18 @@
 }
 
 .form-layout-left .nut-form-item__label {
+  position: relative;
   text-align: left;
   font-size: 14px;
-  padding-right: 24px;
+  padding-left: 12px;
   white-space: nowrap;
+
+  .required {
+    display: block;
+    line-height: 1.5;
+    position: absolute;
+    left: 0.1em;
+  }
 }
 
 .form-layout-top .nut-form-item {
@@ -29,4 +39,5 @@
 
 .form-layout-top .nut-form-item__body {
   margin-left: 0;
+  width: 100%;
 }

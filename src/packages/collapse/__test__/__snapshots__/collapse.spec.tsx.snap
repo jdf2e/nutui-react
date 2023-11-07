@@ -6,7 +6,7 @@ exports[`should match snapshot 1`] = `
     class="nut-collapse"
   >
     <div
-      class=""
+      class="nut-collapse-item"
     >
       <div
         class="nut-collapse-item__header"
@@ -44,7 +44,6 @@ exports[`should match snapshot 1`] = `
       </div>
       <div
         class="nut-collapse-item__content"
-        style="height: 0px;"
       >
         <div
           class="nut-collapse-item__content-text"
@@ -54,7 +53,7 @@ exports[`should match snapshot 1`] = `
       </div>
     </div>
     <div
-      class=""
+      class="nut-collapse-item"
     >
       <div
         class="nut-collapse-item__header"
@@ -92,7 +91,6 @@ exports[`should match snapshot 1`] = `
       </div>
       <div
         class="nut-collapse-item__content"
-        style="height: 0px;"
       >
         <div
           class="nut-collapse-item__content-text"
@@ -102,7 +100,7 @@ exports[`should match snapshot 1`] = `
       </div>
     </div>
     <div
-      class=""
+      class="nut-collapse-item"
     >
       <div
         class="nut-collapse-item__header disabled"
@@ -140,6 +138,7 @@ exports[`should match snapshot 1`] = `
       </div>
       <div
         class="nut-collapse-item__content"
+        style="height: 0px;"
       >
         <div
           class="nut-collapse-item__content-text"

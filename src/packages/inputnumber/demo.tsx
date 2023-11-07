@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { useTranslate } from '../../sites/assets/locale'
 import { InputNumber } from './inputnumber'
-import ConfigProvider from '@/packages/configprovider'
 import Cell from '@/packages/cell'
 import Toast from '@/packages/toast'
 import './demo.scss'
@@ -20,23 +19,6 @@ interface T {
   '65bafb1d': string
   '7e2394ae': string
   '7e2394be': string
-}
-
-const customTheme = {
-  nutuiInputnumberButtonWidth: '30px',
-  nutuiInputnumberButtonHeight: '30px',
-  nutuiInputnumberButtonBorderRadius: '2px',
-  nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
-  nutuiInputnumberInputHeight: '30px',
-  nutuiInputnumberInputMargin: '0 2px',
-}
-
-const customTheme2 = {
-  nutuiInputnumberButtonWidth: '30px',
-  nutuiInputnumberButtonHeight: '30px',
-  nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
-  nutuiInputnumberInputBackgroundColor: '#fff',
-  nutuiInputnumberInputMargin: '0 2px',
 }
 
 const InputNumberDemo = () => {
@@ -130,26 +112,22 @@ const InputNumberDemo = () => {
 
         <h2>{translated.e7b2ce1f}</h2>
         <Cell>
-          <InputNumber defaultValue={1} readonly />
+          <InputNumber defaultValue={1} readOnly />
         </Cell>
 
         <h2>{translated.e7b2ce1g}</h2>
         <Cell>
-          <ConfigProvider theme={customTheme}>
-            <InputNumber defaultValue={1} />
-          </ConfigProvider>
+          <InputNumber className="custom-theme" defaultValue={1} />
         </Cell>
 
         <h2>{translated.e7b2ce1y}</h2>
         <Cell>
-          <ConfigProvider theme={customTheme2}>
-            <InputNumber defaultValue={1} />
-          </ConfigProvider>
+          <InputNumber className="custom-theme-two" defaultValue={1} />
         </Cell>
 
         <h2>{translated['3a42134b']}</h2>
         <Cell>
-          <InputNumber defaultValue={5.5} step="0.1" digits="1" readonly />
+          <InputNumber defaultValue={5.5} step="0.1" digits="1" readOnly />
         </Cell>
 
         <h2>{translated['65bafb1d']}</h2>

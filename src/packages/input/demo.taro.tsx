@@ -87,7 +87,12 @@ const InputDemo = () => {
         style={{ paddingBottom: '20px' }}
       >
         <h2>{translated.basic}</h2>
-        <Input placeholder={translated.text} />
+        <Input
+          placeholder={translated.text}
+          onChange={(v) => {
+            console.log('onChange', v)
+          }}
+        />
         <h2>{translated.uncontrolled}</h2>
         <Input defaultValue="NutUI React" placeholder={translated.text} />
         <h2>{translated.controlled}</h2>
@@ -185,7 +190,10 @@ const InputDemo = () => {
         >
           <Ask />
           <Input placeholder={translated.codeplaceholder} />
-          <div className="right">
+          <div
+            className="right"
+            style={{ display: 'flex', alignItems: 'center' }}
+          >
             <Button type="primary" size="small">
               {translated.sendCode}
             </Button>

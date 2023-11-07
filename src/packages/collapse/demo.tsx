@@ -136,7 +136,7 @@ const CollapseDemo = () => {
 
   return (
     <>
-      <div className="demo">
+      <div className="demo full">
         <h2>{translated.header1}</h2>
         <Collapse
           className="test"

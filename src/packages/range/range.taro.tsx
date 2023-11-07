@@ -9,9 +9,9 @@ import React, {
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { useTouch } from '@/utils/use-touch'
-import { getRectByTaro } from '@/utils/use-client-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
+import { getRectByTaro } from '@/utils/get-rect-by-taro'
 
 export type RangeValue = number | number[]
 
@@ -261,7 +261,7 @@ export const Range: FunctionComponent<
     setDragStatus('start')
   }
 
-  const onTouchMove = async (event: TouchEvent) => {
+  const onTouchMove = async (event: any) => {
     if (disabled || !root.current) {
       return
     }
@@ -274,12 +274,12 @@ export const Range: FunctionComponent<
     setDragStatus('draging')
 
     const rect = await getRectByTaro(root.current)
-    let delta = touch.deltaX
+    let delta = touch.deltaX.current
     let total = rect.width
     let diff = (delta / total) * scope()
 
     if (vertical) {
-      delta = touch.deltaY
+      delta = touch.deltaY.current
       total = rect.height
       diff = (delta / total) * scope()
     }
@@ -295,7 +295,7 @@ export const Range: FunctionComponent<
     updateValue(newValue)
   }
 
-  const onTouchEnd = (event: TouchEvent) => {
+  const onTouchEnd = () => {
     if (disabled) {
       return
     }
@@ -373,9 +373,9 @@ export const Range: FunctionComponent<
                     }
                     onTouchStart(e)
                   }}
-                  onTouchMove={(e: any) => onTouchMove(e)}
-                  onTouchEnd={(e: any) => onTouchEnd(e)}
-                  onTouchCancel={(e: any) => onTouchEnd(e)}
+                  onTouchMove={(e) => onTouchMove(e)}
+                  onTouchEnd={onTouchEnd}
+                  onTouchCancel={onTouchEnd}
                   onClick={(e) => e.stopPropagation()}
                 >
                   {renderButton(index)}
@@ -387,9 +387,9 @@ export const Range: FunctionComponent<
               catchMove
               className="nut-range-button-wrapper"
               onTouchStart={(e) => onTouchStart(e)}
-              onTouchMove={(e: any) => onTouchMove(e)}
-              onTouchEnd={(e: any) => onTouchEnd(e)}
-              onTouchCancel={(e: any) => onTouchEnd(e)}
+              onTouchMove={(e) => onTouchMove(e)}
+              onTouchEnd={onTouchEnd}
+              onTouchCancel={onTouchEnd}
               onClick={(e) => e.stopPropagation()}
             >
               {renderButton()}

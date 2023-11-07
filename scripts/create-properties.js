@@ -1,9 +1,10 @@
+// 扫描文档，生成所有组件的 Properties、Ref 表格，以 JSON 格式输出，可由在线工具转为 EXCEL
+// 支持 argv [2] 中传 taro 扫描小程序端文档
+
 const path = require('path')
 const fs = require('fs')
 const MarkdownIt = require('markdown-it')()
-
 const basePath = path.resolve(__dirname, './../src/packages')
-const componentDirs = fs.readdirSync(basePath, 'utf8')
 const cfg = require('./../src/config.json')
 const TBODY_OPEN = 'tbody_open'
 const TBODY_CLOSE = 'tbody_close'
@@ -67,20 +68,16 @@ const gen = (tokens) => {
 }
 
 const genaratorWebTypes = () => {
-  let typesData = []
-
-  if (!componentDirs.length) return
-
-  for (let componentDir of componentDirs) {
-    let stat = fs.lstatSync(`${basePath}/${componentDir}`)
-    if (stat.isDirectory()) {
-      let absolutePath = path.join(`${basePath}/${componentDir}`, `doc.md`)
-      if (argv === 'taro') {
-        absolutePath = path.join(`${basePath}/${componentDir}`, `doc.taro.md`)
-      }
+  const typesData = []
+  for (const nav of cfg.nav) {
+    for (const component of nav.packages) {
+      const absolutePath = path.join(
+        `${basePath}/${component.name.toLowerCase()}`,
+        argv === 'taro' ? `doc.taro.md` : `doc.md`
+      )
       if (!fs.existsSync(absolutePath)) continue
       const data = fs.readFileSync(absolutePath, 'utf8')
-      let sources = MarkdownIt.parse(data, {})
+      const sources = MarkdownIt.parse(data, {})
       const res = gen(sources)
       res.forEach((r) => {
         if (r.h2.includes('主题')) return
@@ -97,9 +94,7 @@ const genaratorWebTypes = () => {
           const infoItem =
             inlineItem.length > 1 ? `${inlineItem[1].content}` : ''
           const typeItem =
-            inlineItem.length > 2
-              ? `${inlineItem[2].content.toLowerCase()}`
-              : ''
+            inlineItem.length > 2 ? `${inlineItem[2].content}` : ''
           let defaultItem =
             inlineItem.length > 3 ? `${inlineItem[3].content}` : ''
           const formatDefault = (str) => {
@@ -114,7 +109,9 @@ const genaratorWebTypes = () => {
           }
           defaultItem = formatDefault(defaultItem)
           typesData.push({
+            组件分类: nav.name,
             组件名: r.h2,
+            版本号: component.version,
             表格名: r.h3,
             第一列: propItem,
             第二列: infoItem,
@@ -125,7 +122,6 @@ const genaratorWebTypes = () => {
       })
     }
   }
-
   return typesData
 }
 

@@ -17,7 +17,6 @@ export interface StickyProps extends BasicComponent {
   position: 'top' | 'bottom'
   threshold: number
   zIndex: number
-  children: React.ReactNode
   onChange: (val: boolean) => void
 }
 
@@ -25,7 +24,7 @@ const defaultProps = {
   ...ComponentDefaults,
   position: 'top',
   threshold: 0,
-  zIndex: 2000,
+  zIndex: 900,
 } as StickyProps
 
 const classPrefix = 'nut-sticky'
@@ -157,7 +156,7 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
     const el = getElement() as HTMLElement | Window
     el.addEventListener('scroll', handleScroll, false)
     return () => {
-      el.removeEventListener('tap', handleScroll)
+      el.removeEventListener('scroll', handleScroll)
     }
   }, [getElement, handleScroll])
 

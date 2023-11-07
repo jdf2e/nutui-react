@@ -6,15 +6,14 @@
 
 ## 安装
 
-``` ts
-// react
+```tsx
 import { Radio } from '@nutui/nutui-react-taro';
 
 ```
 
 ## 代码演示
 
-### 基本用法
+### 基础用法
 
 :::demo
 
@@ -236,54 +235,53 @@ export default RadioGroupOptions;
 
 ### Props
 
-| 属性             | 说明                                      | 类型                          | 默认值              |
-|----------------|-----------------------------------------|-----------------------------|------------------|
-| checked        | 指定当前是否选中                                | `boolean` | -                |
-| defaultChecked | 初始是否选中                                  | `boolean` | -                |
-| disabled       | 是否禁用选择                                  | `boolean`                   | `false`          |
-| value          | 携带的标识值，用于 Group 模式                      | `string \| number`          | -                |
-| labelPosition | 文本所在的位置                                 | `left\| right`    | `right`   |
-| icon           | [图标名称](#/icon)，选中前(建议和`activeIcon`一起修改) | `ReactNode`            | `'CheckNormal'`  |
-| activeIcon     | [图标名称](#/icon)，选中后(建议和`icon`一起修改)       | `ReactNode`                 | `'CheckChecked'` |
-| shape          | 形状                                      | `'button' \| 'round'`                    | round            |
-| onChange | 选中态变化时触发                                | `(checked: boolean) => void`            | `-`       |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| checked | 指定当前是否选中 | `boolean` | `-` |
+| defaultChecked | 初始是否选中 | `boolean` | `-` |
+| disabled | 是否禁用选择 | `boolean` | `false` |
+| value | 携带的标识值，用于 Group 模式 | `string`  \|  `number` | `-` |
+| labelPosition | 文本所在的位置 | `left\| right` | `right` |
+| icon | <a href="#/icon">图标名称</a>，选中前(建议和`activeIcon`一起修改) | `ReactNode` | `'CheckNormal'` |
+| activeIcon | <a href="#/icon">图标名称</a>，选中后(建议和`icon`一起修改) | `ReactNode` | `'CheckChecked'` |
+| shape | 形状 | `button` \| `round` \| `round` |`round` |
+| onChange | 选中态变化时触发 | `(checked: boolean) => void` | `-` |
 
 ## Radio.Group
 
 ### Props
 
-| 属性          | 说明      | 类型                                                         | 默认值              |
-|---------------|-------------|------------------------------------------------------------|------------------|
-| value       | 当前选中项的标识符 | `string \| number`          | -          |
-| labelPosition | 文本所在的位置  | `left \| right`           | `right`   |
-| disabled       | 是否禁用  | `boolean`                                                  | `false`          |
-| direction     | 使用横纵方向  | `horizontal \| vertical`        | `vertical` |
-| options | 配置 options 渲染单选按钮  | `Array<{ label: string value: string disabled?: boolean }` | `-`              |
-| onChange | 值变化时触发 | `(value: string \| number) => void` | `-`       |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| value | 当前选中项的标识符 | `string`  \|  `number` | `-` |
+| labelPosition | 文本所在的位置 | `left` \| `right` | `right` |
+| disabled | 是否禁用 | `boolean` | `false` |
+| direction | 使用横纵方向 | `horizontal` \| `vertical` | `vertical` |
+| options | 配置 options 渲染单选按钮 | `Array<{ label: string value: string disabled?: boolean }>`  | `-` |
+| onChange | 值变化时触发 | `(value: string \| number) => void` | `-` |
 
 ## 主题定制
 
 ### 样式变量
 
-组件提供了下列 CSS
-变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
 
-| 名称 | 说明                | 默认值                       |
-| --- |-------------------|---------------------------|
-| --nutui-radio-label-font-color | 字体颜色              | `$gray1`                  |
-| --nutui-radio-label-font-active-color | 按钮状态下选中字体颜色       | `$primary-color`          |
-| --nutui-radio-label-disable-color | label 的禁用字体颜色     | `$gray3`                  |
-| --nutui-radio-icon-disable-color | label 的禁用字体颜色     | `$gray2`                  |
-| --nutui-radio-label-button-border-color | shape为button的边框颜色 | `$primary-color`          |
-| --nutui-radio-label-button-background | shape为button的背景色  | `rgba(250, 44, 25, 0.05)` |
-| --nutui-radio-label-margin-left | label 的左外边距       | `15px`                    |
-| --nutui-radio-label-font-size | 字号                | `14px`                    |
-| --nutui-radio-button-border-radius | shape为button的圆角   | `15px`                    |
-| --nutui-radio-button-font-size | shape为button的字号   | `12px`                    |
-| --nutui-radio-button-padding | shape为button的内边距  | `5px 18px`                |
-| --nutui-radio-icon-disable-color2 | icon 的禁用颜色        | `$gray3`                  |
-| --nutui-radiogroup-radio-margin | Group模式下每个 radio 的外边距  | `0 20px 5px 0`   |
-| --nutui-radiogroup-radio-label-margin | Group模式下每个 radio 中的 label 外边距  | `0 5px 0 5px`   |
-| --nutui-radio-button-disabled-active-background | button模式下选中且禁用的背景色 | `rgba(0, 0, 0, 0.15)`   |
-| --nutui-radio-button-disabled-active-color | button模式下选中且禁用的字体色  | `rgba(0, 0, 0, 0.25)`   |
-| --nutui-radio-button-disabled-active-border-color | button模式下选中且禁用的边框色  | `rgba(211, 211, 211, 0.15)`   |
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| \--nutui-radio-label-font-color | 字体颜色 | `$gray1` |
+| \--nutui-radio-label-font-active-color | 按钮状态下选中字体颜色 | `$primary-color` |
+| \--nutui-radio-label-disable-color | label 的禁用字体颜色 | `$gray3` |
+| \--nutui-radio-icon-disable-color | label 的禁用字体颜色 | `$gray2` |
+| \--nutui-radio-label-button-border-color | shape为button的边框颜色 | `$primary-color` |
+| \--nutui-radio-label-button-background | shape为button的背景色 | `rgba(250, 44, 25, 0.05)` |
+| \--nutui-radio-label-margin-left | label 的左外边距 | `15px` |
+| \--nutui-radio-label-font-size | 字号 | `14px` |
+| \--nutui-radio-button-border-radius | shape为button的圆角 | `15px` |
+| \--nutui-radio-button-font-size | shape为button的字号 | `12px` |
+| \--nutui-radio-button-padding | shape为button的内边距 | `5px 18px` |
+| \--nutui-radio-icon-disable-color2 | icon 的禁用颜色 | `$gray3` |
+| \--nutui-radiogroup-radio-margin | Group模式下每个 radio 的外边距 | `0 20px 5px 0` |
+| \--nutui-radiogroup-radio-label-margin | Group模式下每个 radio 中的 label 外边距 | `0 5px 0 5px` |
+| \--nutui-radio-button-disabled-active-background | button模式下选中且禁用的背景色 | `rgba(0, 0, 0, 0.15)` |
+| \--nutui-radio-button-disabled-active-color | button模式下选中且禁用的字体色 | `rgba(0, 0, 0, 0.25)` |
+| \--nutui-radio-button-disabled-active-border-color | button模式下选中且禁用的边框色 | `rgba(211, 211, 211, 0.15)` |

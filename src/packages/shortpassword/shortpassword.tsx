@@ -4,7 +4,7 @@ import classNames from 'classnames'
 import Popup from '@/packages/popup'
 import { useConfig } from '@/packages/configprovider'
 import { ComponentDefaults } from '@/utils/typings'
-import { PopupProps } from '../popup/popup'
+import { PopupProps } from '@/packages/popup/index'
 import { usePropsValue } from '@/utils/use-props-value'
 
 export interface ShortPasswordProps extends PopupProps {
@@ -61,8 +61,8 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
     onCancel,
     onClose,
     onComplete,
-    onClickOverlay,
-    onClickCloseIcon,
+    onOverlayClick,
+    onCloseIconClick,
     ...rest
   } = {
     ...defaultProps,
@@ -101,8 +101,8 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
       }}
       visible={visible}
       closeable
-      onClickOverlay={onClose}
-      onClickCloseIcon={onClose}
+      onOverlayClick={onClose}
+      onCloseIconClick={onClose}
       {...rest}
     >
       <div className={classNames(className, classPrefix)} style={style}>

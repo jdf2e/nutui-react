@@ -3,7 +3,6 @@ import './demo.scss'
 import { TriangleDown, Success } from '@nutui/icons-react'
 import Button from '../button'
 import { Menu } from './menu'
-import MenuItem from '../menuitem'
 import { useTranslate } from '../../sites/assets/locale'
 
 const MenuDemo = () => {
@@ -13,7 +12,8 @@ const MenuDemo = () => {
   }`
   const [translated] = useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
+      controlled: '受控',
       customMenuContent: '自定义菜单内容',
       customContent: '自定义内容',
       screen: '筛选',
@@ -49,6 +49,7 @@ const MenuDemo = () => {
     },
     'en-US': {
       basic: 'Basic Usage',
+      controlled: 'Controlled',
       customMenuContent: 'Custom Menu Content',
       customContent: 'Custom content',
       screen: 'Screen',
@@ -101,26 +102,52 @@ const MenuDemo = () => {
   }, [translated])
 
   const itemRef = useRef(null)
+  const [stateOne, setStateOne] = useState(0)
+  const [stateTwo, setStateTwo] = useState('a')
 
   return (
     <>
       <style>{style}</style>
       <div className="demo full">
         <h2>{translated.basic}</h2>
-        <Menu closeOnOverlayClick lockScroll={false}>
-          <MenuItem
+        <Menu
+          onClose={(i: number) => console.log('onClose', i)}
+          onOpen={(i: number) => console.log('onOpen', i)}
+        >
+          <Menu.Item
             options={options}
-            value={0}
+            defaultValue={0}
             onChange={(val) => {
               console.log(val)
             }}
           />
-          <MenuItem options={options1} value="a" />
+          <Menu.Item options={options1} defaultValue="a" />
+        </Menu>
+        <h2>{translated.controlled}</h2>
+        <Menu>
+          <Menu.Item
+            options={options}
+            value={stateOne}
+            onChange={(val) => {
+              setStateOne(val.value)
+            }}
+          />
+          <Menu.Item
+            options={options1}
+            value={stateTwo}
+            onChange={(val) => {
+              setStateTwo(val.value)
+            }}
+          />
         </Menu>
         <h2>{translated.customMenuContent}</h2>
-        <Menu>
-          <MenuItem options={options} value={0} />
-          <MenuItem title={translated.screen} ref={itemRef}>
+        <Menu
+          onClose={(a, f) => {
+            console.log(a, f)
+          }}
+        >
+          <Menu.Item options={options} defaultValue={0} />
+          <Menu.Item title={translated.screen} ref={itemRef}>
             <div>{translated.customContent}</div>
             <Button
               onClick={() => {
@@ -129,31 +156,31 @@ const MenuDemo = () => {
             >
               {translated.confirm}
             </Button>
-          </MenuItem>
+          </Menu.Item>
         </Menu>
         <h2>{translated.twoColsInOneLine}</h2>
         <Menu>
-          <MenuItem options={options} value={0} columns={2} />
+          <Menu.Item options={options} defaultValue={0} columns={2} />
         </Menu>
         <h2>{translated.customActiveColor}</h2>
         <Menu activeColor="green">
-          <MenuItem options={options} value={0} />
-          <MenuItem options={options1} value="a" />
+          <Menu.Item options={options} defaultValue={0} />
+          <Menu.Item options={options1} defaultValue="a" />
         </Menu>
         <h2>{translated.customIcons}</h2>
         <Menu icon={<TriangleDown />}>
-          <MenuItem options={options} value={0} icon={<Success />} />
-          <MenuItem options={options1} value="a" />
+          <Menu.Item options={options} defaultValue={0} icon={<Success />} />
+          <Menu.Item options={options1} defaultValue="a" />
         </Menu>
         <h2>{translated.expandDirection}</h2>
         <Menu>
-          <MenuItem options={options} value={0} direction="up" />
-          <MenuItem options={options1} value="a" direction="up" />
+          <Menu.Item options={options} defaultValue={0} direction="up" />
+          <Menu.Item options={options1} defaultValue="a" direction="up" />
         </Menu>
         <h2>{translated.disableMenu}</h2>
         <Menu>
-          <MenuItem options={options} value={0} disabled />
-          <MenuItem options={options1} value="a" disabled />
+          <Menu.Item options={options} defaultValue={0} disabled />
+          <Menu.Item options={options1} defaultValue="a" disabled />
         </Menu>
       </div>
     </>

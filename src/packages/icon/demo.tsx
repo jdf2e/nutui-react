@@ -3,7 +3,6 @@ import '@nutui/icons-react/dist/style_iconfont.css'
 import { Add, IconFontConfig, IconFont } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import Cell from '../cell'
-import CellGroup from '../cellgroup'
 import Toast from '../toast'
 import { camelCase } from '@/utils/camel-case'
 
@@ -126,7 +125,7 @@ const IconDemo = () => {
         </Cell>
         {(IconFontConfig as any).data.map((item: any) => {
           return (
-            <CellGroup key={item.name} title={item.name}>
+            <Cell.Group key={item.name} title={item.name}>
               <Cell>
                 <ul>
                   {item.icons.map((icon: any) => {
@@ -142,12 +141,12 @@ const IconDemo = () => {
                   })}
                 </ul>
               </Cell>
-            </CellGroup>
+            </Cell.Group>
           )
         })}
         {(IconFontConfig as any).style.map((item: any) => {
           return (
-            <CellGroup key={item.name} title={item.name}>
+            <Cell.Group key={item.name} title={item.name}>
               <Cell>
                 <ul>
                   {item.icons.map((icon: any) => {
@@ -166,7 +165,7 @@ const IconDemo = () => {
                   })}
                 </ul>
               </Cell>
-            </CellGroup>
+            </Cell.Group>
           )
         })}
       </div>

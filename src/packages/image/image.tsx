@@ -32,7 +32,7 @@ const defaultProps: Partial<ImageProps> = {
   fit: 'fill',
   position: 'center',
   alt: '',
-  width: 'center',
+  width: '',
   height: '',
   error: true,
   loading: true,
@@ -77,33 +77,45 @@ export const Image: FunctionComponent<
     onLoad,
     onError,
   } = { ...defaultProps, ...props }
-  const [innerLoading, setInnerLoading] = useState(true)
+  const [innerLoading, setInnerLoading] = useState(false)
   const [isError, setIsError] = useState(false)
+  const [complete, setComplete] = useState(false)
   const imgRef = useRef<HTMLImageElement>(null)
 
   useEffect(() => {
-    if (
-      imgRef.current &&
-      imgRef.current.complete &&
-      imgRef.current.naturalHeight !== 0
-    ) {
-      setInnerLoading(false)
-    } else if (src) {
+    if (imgRef.current && imgRef.current.complete) {
+      if (imgRef.current.naturalHeight === 0) {
+        handleError()
+      } else {
+        handleLoad()
+      }
+    } else {
+      // 非 SSR 模式下开启 loading
       setInnerLoading(true)
     }
+  }, [imgRef])
+
+  useEffect(() => {
+    setComplete(false)
   }, [src])
 
   // 图片加载
   const handleLoad = () => {
-    setIsError(false)
-    setInnerLoading(false)
-    onLoad && onLoad()
+    if (!complete) {
+      setIsError(false)
+      setInnerLoading(false)
+      onLoad && onLoad()
+      setComplete(true)
+    }
   }
   // 图片加载失败
   const handleError = () => {
-    setIsError(true)
-    setInnerLoading(false)
-    onError && onError()
+    if (!complete) {
+      setIsError(true)
+      setInnerLoading(false)
+      onError && onError()
+      setComplete(true)
+    }
   }
 
   const containerStyle = {

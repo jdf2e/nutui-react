@@ -1,7 +1,9 @@
 import React, { CSSProperties, useCallback } from 'react'
+import type { MouseEvent } from 'react'
 import classNames from 'classnames'
 import { ButtonProps as MiniProgramButtonProps } from '@tarojs/components'
 import { Loading } from '@nutui/icons-react-taro'
+import { getEnv } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 type OmitMiniProgramButtonProps = Omit<
@@ -32,7 +34,7 @@ export interface ButtonProps
   loading: boolean
   disabled: boolean
   icon: React.ReactNode
-  onClick: (e: MouseEvent) => void
+  onClick: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
 const prefixCls = 'nut-button'
@@ -48,7 +50,7 @@ const defaultProps = {
   disabled: false,
   block: false,
   icon: null,
-  onClick: (e: MouseEvent) => {},
+  onClick: (e: MouseEvent<HTMLButtonElement>) => {},
 } as ButtonProps
 export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
   (props, ref) => {
@@ -88,18 +90,21 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       return style
     }, [color])
 
-    const handleClick = (e: any) => {
+    const handleClick = (e: MouseEvent<HTMLButtonElement>) => {
       if (!loading && !disabled && onClick) {
         onClick(e)
       }
     }
-
+    if (getEnv() === 'WEB') {
+      ;(rest as any).type = rest.formType
+    }
     return (
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       // eslint-disable-next-line react/button-has-type
       <button
         {...rest}
+        // type={Taro.getEnv() === 'WEB''reset'}
         ref={ref}
         className={classNames(
           prefixCls,

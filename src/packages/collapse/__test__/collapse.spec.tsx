@@ -71,38 +71,6 @@ test('prop activeName', () => {
   }, 100)
 })
 
-test('prop accordion', () => {
-  const { getByTestId, container } = render(
-    <>
-      <Collapse activeName={['1']} accordion expandIcon={<DownArrow />}>
-        <CollapseItem
-          title="标题1"
-          name="1"
-          extra="文本内容"
-          data-testid="collapse-one"
-        >
-          第一个内容
-        </CollapseItem>
-        <CollapseItem title="标题2" name="2" data-testid="collapse-item">
-          第二个内容
-        </CollapseItem>
-        <CollapseItem title="标题3" name="3">
-          第三个内容
-        </CollapseItem>
-      </Collapse>
-    </>
-  )
-  fireEvent.click(getByTestId('collapse-item'))
-  setTimeout(() => {
-    expect(
-      getByTestId('collapse-one').querySelector('.nut-collapse-item__content')
-    ).toHaveStyle('height: 0px')
-    expect(
-      getByTestId('collapse-item').querySelector('.nut-collapse-item__content')
-    ).toHaveStyle('height: 45px')
-  }, 100)
-})
-
 test('prop rotate', () => {
   const { getByTestId, container } = render(
     <>
@@ -137,7 +105,7 @@ test('prop rotate', () => {
   }, 100)
 })
 
-test('prop title extra titleIconColor titleIconSize titleIconPosition', () => {
+test('prop title extra', () => {
   const { getByTestId, container } = render(
     <>
       <Collapse activeName={['1']} accordion expandIcon={<ArrowRight2 />}>
@@ -167,4 +135,70 @@ test('prop title extra titleIconColor titleIconSize titleIconPosition', () => {
   expect(getByTestId('collapse-one').querySelector('.nut-icon')).toHaveClass(
     'nut-icon-ArrowRight2'
   )
+})
+
+test('event onChange & prop disabled', () => {
+  const handleChange = jest.fn()
+  const { getByTestId } = render(
+    <>
+      <Collapse defaultActiveName={['1']} onChange={handleChange}>
+        <CollapseItem title="标题1" name="1" data-testid="item1">
+          京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+        </CollapseItem>
+        <CollapseItem title="标题2" name="2" data-testid="item2">
+          京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+        </CollapseItem>
+        <CollapseItem title="标题3" name="3" data-testid="item3" disabled>
+          京东“厂直优品计划”首推“政府优品馆”
+        </CollapseItem>
+      </Collapse>
+    </>
+  )
+  const item1 = getByTestId('item1').querySelector('.nut-collapse-item__title')
+  const item2 = getByTestId('item2').querySelector('.nut-collapse-item__title')
+  const item3 = getByTestId('item3').querySelector('.nut-collapse-item__title')
+  fireEvent.click(item3 as Element)
+  expect(handleChange).not.toBeCalled()
+  fireEvent.click(item2 as Element)
+  expect(handleChange).toBeCalledWith(['1', '2'], '2', true)
+  setTimeout(() => {
+    fireEvent.click(item1 as Element)
+    expect(handleChange).toBeCalledWith(
+      ['1', '2'],
+      '2',
+      true,
+      ['2'],
+      '1',
+      false
+    )
+  }, 0)
+})
+
+test('event onChange & prop accordion', () => {
+  const handleChange = jest.fn()
+  const { getByTestId } = render(
+    <>
+      <Collapse defaultActiveName="1" accordion onChange={handleChange}>
+        <CollapseItem title="标题1" name="1" data-testid="item1">
+          京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+        </CollapseItem>
+        <CollapseItem title="标题2" name="2" data-testid="item2">
+          京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+        </CollapseItem>
+        <CollapseItem title="标题3" name="3" data-testid="item3" disabled>
+          京东“厂直优品计划”首推“政府优品馆”
+        </CollapseItem>
+      </Collapse>
+    </>
+  )
+  const item2 = getByTestId('item2').querySelector('.nut-collapse-item__title')
+  const item3 = getByTestId('item3').querySelector('.nut-collapse-item__title')
+  fireEvent.click(item3 as Element)
+  expect(handleChange).not.toBeCalled()
+  fireEvent.click(item2 as Element)
+  expect(handleChange).toBeCalledWith('2', '2', true)
+  setTimeout(() => {
+    fireEvent.click(item2 as Element)
+    expect(handleChange).toBeCalledWith('2', '2', true, '', '2', false)
+  }, 0)
 })

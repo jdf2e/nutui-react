@@ -4,11 +4,10 @@ import { CountUp } from './countup.taro'
 
 export interface AnimatingNumbersProps {}
 const defaultProps = {} as AnimatingNumbersProps
-type AnimatingNumbersStates = {}
 
 export class AnimatingNumbers extends Component<
   AnimatingNumbersProps,
-  AnimatingNumbersStates
+  unknown
 > {
   static defaultProps = defaultProps
 

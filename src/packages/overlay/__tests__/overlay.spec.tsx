@@ -6,16 +6,20 @@ import { Overlay } from '../overlay'
 
 test('should change z-index when using z-index prop', () => {
   const { getByTestId } = render(
-    <Overlay data-testid="overlay-zindex" visible zIndex={99} />
+    <Overlay
+      data-testid="overlay-zindex"
+      visible
+      style={{ '--nutui-overlay-zIndex': 99 }}
+    />
   )
-  expect(getByTestId('overlay-zindex').style.zIndex).toBe('99')
-})
-
-test('should change animation duration when using duration prop', () => {
-  const { getByTestId } = render(
-    <Overlay data-testid="overlay-animation" visible duration={1} />
-  )
-  expect(getByTestId('overlay-animation').style.animationDuration).toBe('1s')
+  // @ts-ignore
+  expect(getByTestId('overlay-zindex')).toMatchInlineSnapshot(`
+    <div
+      class="nut-overlay"
+      data-testid="overlay-zindex"
+      style="--nutui-overlay-zIndex: 99;"
+    />
+  `)
 })
 
 test('prop close-on-click-overlay test', () => {

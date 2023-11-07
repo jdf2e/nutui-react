@@ -15,14 +15,14 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Install pnpm
       run: corepack enable
 
-    - uses: actions/setup-node@v2
+    - uses: actions/setup-node@v4
       with:
-        node-version: '16'
+        node-version: '18'
         cache: 'pnpm'
 
     - name: Install dependencies
@@ -34,14 +34,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Install pnpm
       run: corepack enable
 
-    - uses: actions/setup-node@v2
+    - uses: actions/setup-node@v4
       with:
-        node-version: '16'
+        node-version: '18'
         cache: 'pnpm'
 
     - name: Install dependencies
@@ -59,14 +59,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v4
 
     - name: Install pnpm
       run: corepack enable
 
-    - uses: actions/setup-node@v2
+    - uses: actions/setup-node@v4
       with:
-        node-version: '16'
+        node-version: '18'
         cache: 'pnpm'
 
     - name: Install dependencies
@@ -80,3 +80,6 @@ jobs:
 
     - name: Build NutUI-React Demo
       run: npm run build:site
+
+    - name: Build NutUI-React Taro H5 Demo
+      run: npm run build:taro:site

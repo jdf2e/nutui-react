@@ -1,12 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import {
-  Cell,
-  CellGroup,
-  Radio,
-  VirtualList,
-} from '@/packages/nutui.react.taro'
+import { Cell, Radio, VirtualList } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 
 const ListDemo = () => {
@@ -64,7 +59,7 @@ const ListDemo = () => {
     const pageSize = 10
     for (let i = (pageNo - 1) * pageSize; i < pageNo * pageSize; i++) {
       const num = i > 9 ? i : `0${i}`
-      datas.push(` list${num}`)
+      datas.push({ v: ` list${num}`, k: '3333' })
     }
     if (pageNo === 1) {
       setsourceData(() => {
@@ -81,24 +76,22 @@ const ListDemo = () => {
     getData()
   }, [getData])
 
-  const ItemRender = ({ data }: any) => {
-    return <div style={itemStyle}>{data}</div>
+  const itemRender = (data: any) => {
+    return <div style={itemStyle}>{data.v + data.k}</div>
   }
-  const ItemRenderMemo = React.memo(ItemRender)
 
-  const ItemVariable = ({ data, index }: any) => {
+  const itemVariable = (data: any, dataIndex: number, index: number) => {
     return (
       <div
         style={{
-          height: `${index % 2 === 0 ? '100px' : '50px'}`,
+          height: `${dataIndex % 2 === 0 ? '100px' : '50px'}`,
           ...itemStyel2,
         }}
       >
-        {data}
+        {data.v}
       </div>
     )
   }
-  const ItemVariableDemo = React.memo(ItemVariable)
   const onScroll = () => {
     if (pageNo > 50 || isLoading) return
     setIsLoading(true)
@@ -115,7 +108,7 @@ const ListDemo = () => {
           <VirtualList
             itemHeight={50}
             list={list}
-            ItemRender={ItemRenderMemo}
+            itemRender={itemRender}
             onScroll={onScroll}
           />
         )
@@ -124,7 +117,7 @@ const ListDemo = () => {
           <VirtualList
             itemHeight={80}
             list={list}
-            ItemRender={ItemVariableDemo}
+            itemRender={itemVariable}
             onScroll={onScroll}
             itemEqual={false}
             containerHeight={500}
@@ -135,7 +128,7 @@ const ListDemo = () => {
           <VirtualList
             itemHeight={50}
             list={list}
-            ItemRender={ItemRenderMemo}
+            itemRender={itemRender}
             onScroll={onScroll}
           />
         )
@@ -145,7 +138,7 @@ const ListDemo = () => {
     <>
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <CellGroup>
+        <Cell.Group>
           <Cell>
             <Radio.Group
               value={radioVal}
@@ -156,7 +149,7 @@ const ListDemo = () => {
               <Radio value="2">{translated.text2}</Radio>
             </Radio.Group>
           </Cell>
-        </CellGroup>
+        </Cell.Group>
         <div style={{ height: '100%' }}>{showNode()}</div>
       </div>
     </>

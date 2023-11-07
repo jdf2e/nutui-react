@@ -6,8 +6,7 @@
 
 ## Install
 
-```ts
-// react
+```tsx
 import { Checkbox } from '@nutui/nutui-react';
 
 ```
@@ -489,49 +488,54 @@ export default CheckboxGroupOptions;
 :::
 
 ## Checkbox
+
 ### props
+
 | Property | Description | Type | Default |
-|-------------------|---------------------------------------|---------|-------------------|
+| --- | --- | --- | --- |
 | checked | whether checked | `boolean` | `false` |
 | defaultChecked | Initially checked or not | `boolean` | `false` |
 | disabled | Whether to disable selection | `boolean` | `false` |
-| labelPosition | The position of the text, optional values: `left`, `right` | `string` | `right` |
-| icon | [icon](#/icon), before selection (recommended to be modified together with `ActiveIcon`) | `ReactNode` | `'CheckNormal'` |
-| activeIcon | [icon](#/icon), after selection (it is recommended to modify it together with `iconName`) | `ReactNode` | `'Checked'` |
-| indeterminateIcon | [icon](#/icon), half-selected state | `ReactNode` | `'CheckDisabled'` |
-| label | text content of the checkbox | `string` | - |
-| value | identification value, used in Group mode | `string\| number` | - |
-| onChange | Triggered when the value changes | `(value: boolean) => void` | - |
+| labelPosition | The position of the text  | `left` \| `right` | `right` |
+| icon | before selection | `ReactNode` | `'CheckNormal'` |
+| activeIcon |  after selection | `ReactNode` | `'Checked'` |
+| indeterminateIcon | half-selected state | `ReactNode` | `'CheckDisabled'` |
+| label | text content of the checkbox | `string` | `-` |
+| value | identification value, used in Group mode | `string` \| `number` | `-` |
+| onChange | Triggered when the value changes | `(value: boolean) => void` | `-` |
+
 ## Checkbox.Group
+
 ### Props
+
 | Property | Description | Type | Default |
-|--------------| ----- |-------------| -- |
-| value | identifier of the currently selected item | `string\|number` | -|
-| defaultValue | Identifier of the initially selected item | `string\|number` | -|
-| disabled | Whether to disable selection, will be used for all checkboxes under it | `boolean` | `false`|
-| max | limit the maximum number of options | `undefined|number` | `undefined`|
-| labelPosition | The position of the text, optional values: `left`,`right`| `string`| `right` |
-| direction | Use horizontal and vertical directions Optional values horizontal、vertical| `string`| `vertical` |
-| options | Configure options to render check buttons | `Array<{ label: string value: string disabled?: boolean }` | - |
-| onChange | Triggered when the value changes | `(value: string[]) => void` | - |
-###  Ref
+| --- | --- | --- | --- |
+| value | identifier of the currently selected item | `string` \| `number` | `-` |
+| defaultValue | Identifier of the initially selected item | `string` \| `number` | `-` |
+| disabled | Whether to disable selection, will be used for all checkboxes under it | `boolean` | `false` |
+| max | limit the maximum number of options | `number` | `-` |
+| labelPosition | The position of the text | `left` \| `right` | `right` |
+| direction | Use horizontal and vertical directions Optional values horizontal、vertical | `string` | `vertical` |
+| options | Configure options to render check buttons | `Array<{ label: string value: string disabled?: boolean }>` | `-` |
+| onChange | Triggered when the value changes | `(value: string[]) => void` | `-` |
+
+### Ref
 
 | Property | Description | Parameters |
-|--------------------| ----- | ----- |
+| --- | --- | --- |
 | toggle | Select All/Cancel | Pass `true` to select all, pass `false` to cancel all selection |
-| reverse | reverse election | - |
+| reverse | reverse election | `-` |
 
 ## Theming
 
 ### CSS Variables
 
-The component provides the following CSS variables, which can be used to customize styles. Please refer
-to [ConfigProvider component](#/en-US/component/configprovider).
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
 
-| Name | Description |  Default           |
-| --- |-----------------| --- |
-| --nutui-checkbox-label-color | text color of label | `$gray1` |
-| --nutui-checkbox-label-disable-color | disabled color for label | `#999` |
-| --nutui-checkbox-icon-disable-color | Default icon disable color |`#d6d6d6` |
-| --nutui-checkbox-label-margin-left | left margin of label |`15px` |
-| --nutui-checkbox-label-font-size | font size of label | `14px` |
+| Name | Description | Default |
+| --- | --- | --- |
+| \--nutui-checkbox-label-color | text color of label | `$gray1` |
+| \--nutui-checkbox-label-disable-color | disabled color for label | `#999` |
+| \--nutui-checkbox-icon-disable-color | Default icon disable color | `#d6d6d6` |
+| \--nutui-checkbox-label-margin-left | left margin of label | `15px` |
+| \--nutui-checkbox-label-font-size | font size of label | `14px` |

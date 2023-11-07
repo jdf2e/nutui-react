@@ -114,7 +114,9 @@ const ButtonDemo = () => {
       '6ab47cd2': 'Gradient button',
     },
   })
-
+  const openType: any = Taro.getEnv() === 'WEB' ? {} : { openType: 'share' }
+  const openSetting: any =
+    Taro.getEnv() === 'WEB' ? {} : { openType: 'openSetting' }
   const [loading, setLoading] = useState(false)
   return (
     <>
@@ -122,10 +124,10 @@ const ButtonDemo = () => {
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>设置 open-type </h2>
         <Cell className="button-cell">
-          <Button openType="share" style={{ margin: 8 }}>
+          <Button {...openType} style={{ margin: 8 }}>
             分享给好友
           </Button>
-          <Button openType="openSetting" style={{ margin: 8 }}>
+          <Button {...openSetting} style={{ margin: 8 }}>
             打开授权设置页
           </Button>
         </Cell>

@@ -3,7 +3,7 @@ import '@/packages/swiper/demo.scss'
 import Taro from '@tarojs/taro'
 import { Left, Right } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { SwiperItem, Swiper } from '@/packages/nutui.react.taro'
+import { Swiper } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 
 interface T {
@@ -16,20 +16,22 @@ interface T {
   vertical: string
   horizontalCenter: string
   verticalCenter: string
+  multiItems: string
 }
 
 const SwiperDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       asyc: '异步加载(3s)',
       dynamicDel: '动态加载',
       size: '自定义大小',
       indicator: '自定义指示器',
       btns: '手动切换',
       vertical: '垂直方向',
-      horizontalCenter: '水平居中展示',
+      horizontalCenter: '水平居中展示（无指示器）',
       verticalCenter: '垂直居中展示',
+      multiItems: '一屏多个数据时',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -39,8 +41,9 @@ const SwiperDemo = () => {
       indicator: 'Custom indicator',
       btns: 'Manual switching',
       vertical: 'Vertical direction',
-      horizontalCenter: 'Horizontal center display',
+      horizontalCenter: 'Horizontal center display(no indicator)',
       verticalCenter: 'Vertical center display',
+      multiItems: 'many datas in a frame',
     },
   })
 
@@ -68,18 +71,25 @@ const SwiperDemo = () => {
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} padding`}>
         <h2>{translated.basic}</h2>
         <Swiper defaultValue={1} autoPlay indicator>
-          {list.map((item) => (
-            <SwiperItem key={item}>
-              <img width="100%" height="100%" src={item} alt="" />
-            </SwiperItem>
+          {list.map((item, index) => (
+            <Swiper.Item key={item} className="demo-class">
+              <img
+                width="100%"
+                height="100%"
+                onClick={() => console.log(index)}
+                src={item}
+                alt=""
+              />
+            </Swiper.Item>
           ))}
         </Swiper>
+
         <h2>{translated.asyc}</h2>
         <Swiper defaultValue={0} indicator>
-          {asyncList.map((item) => (
-            <SwiperItem key={item}>
+          {asyncList.map((item, index) => (
+            <Swiper.Item key={item}>
               <img width="100%" height="100%" src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           ))}
         </Swiper>
 
@@ -89,18 +99,22 @@ const SwiperDemo = () => {
           width={300}
           height={150}
           defaultValue={0}
+          indicator
         >
           {list.map((item) => (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img width="100%" height="100%" src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           ))}
         </Swiper>
 
         <h2>{translated.indicator}</h2>
         <Swiper
           defaultValue={0}
-          onChange={(e) => setCurrent(e.detail.current)}
+          onChange={(e) => {
+            console.log('e.detail.current', e.detail.current)
+            setCurrent(e.detail.current)
+          }}
           indicator={
             <div
               style={{
@@ -114,6 +128,7 @@ const SwiperDemo = () => {
                 textAlign: 'center',
                 color: '#fff',
                 fontSize: '14px',
+                zIndex: '1',
               }}
             >
               {current + 1}/{list.length}
@@ -121,9 +136,9 @@ const SwiperDemo = () => {
           }
         >
           {list.map((item) => (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img width="100%" height="100%" src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           ))}
         </Swiper>
 
@@ -143,9 +158,9 @@ const SwiperDemo = () => {
           >
             {list.map((item) => {
               return (
-                <SwiperItem key={item}>
+                <Swiper.Item key={item}>
                   <img src={item} alt="" />
-                </SwiperItem>
+                </Swiper.Item>
               )
             })}
           </Swiper>
@@ -165,19 +180,19 @@ const SwiperDemo = () => {
           </div>
         </div>
         <h2>{translated.vertical}</h2>
-        <Swiper defaultValue={0} direction="vertical">
+        <Swiper defaultValue={0} direction="vertical" indicator>
           {list.map((item) => (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img width="100%" height="100%" src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           ))}
         </Swiper>
         <h2>{translated.horizontalCenter}</h2>
         <Swiper defaultValue={0} loop previousMargin="20px" nextMargin="20px">
           {list.map((item) => (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img width="100%" height="100%" src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           ))}
         </Swiper>
         <h2>{translated.verticalCenter}</h2>
@@ -187,12 +202,40 @@ const SwiperDemo = () => {
           height={220}
           previousMargin="20px"
           nextMargin="20px"
+          indicator
         >
           {list.map((item) => (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img width="100%" height="100%" src={item} alt="" />
-            </SwiperItem>
+            </Swiper.Item>
           ))}
+        </Swiper>
+        <h2>{translated.multiItems}</h2>
+        <Swiper loop>
+          <Swiper.Item>
+            <div style={{ display: 'flex' }}>
+              <div style={{ flex: '1', border: '1 red' }}>Item1</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item2</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item3</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item4</div>
+            </div>
+          </Swiper.Item>
+          <Swiper.Item>
+            <div style={{ display: 'flex' }}>
+              <div style={{ flex: '1', border: '1 red' }}>Item5</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item6</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item7</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item8</div>
+            </div>
+          </Swiper.Item>
+          <Swiper.Item>
+            <div style={{ display: 'flex' }}>
+              <div style={{ flex: '1', border: '1 red' }}>Item9</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item10</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item11</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item12</div>
+            </div>
+          </Swiper.Item>
         </Swiper>
       </div>
     </>

@@ -7,7 +7,6 @@
 ## 安装
 
 ```tsx
-// react
 import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react-taro';
 ```
 
@@ -139,7 +138,7 @@ export default App;
 | visible | 组件是否显示 | `boolean` | `false` |
 | title | 整体标题 | `string` | `-` |
 | width | 遮罩宽度百分比 | `string` | `80%` |
-| position | 弹出位置 | `'left' \| 'right'` | `left` |
+| position | 弹出位置 | `left` \| `right` | `left` |
 | indent | 缩进宽度 | `number` | `20` |
 | onClose | 关闭遮罩时触发 | `-` | `-` |
 
@@ -149,7 +148,7 @@ export default App;
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| key | 导航唯一标识 | `string \| number` | `-` |
+| key | 导航唯一标识 | `string`  \|  `number` | `-` |
 | title | 整体标题 | `string` | `-` |
 | open | 导航是否默认展开 | `boolean` | `true` |
 | onClick | 导航点击 | `data: {title: string, key: string \| number, isShow: boolean}` | `-` |
@@ -160,7 +159,7 @@ export default App;
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| key | 导航唯一标识 | `string \| number` | `-` |
+| key | 导航唯一标识 | `string`  \|  `number` | `-` |
 | title | 整体标题 | `string` | `-` |
 | onClick | 导航点击 | `data: {title: string, key: string \| number}` | `-` |
 

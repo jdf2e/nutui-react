@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import { Checklist } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Radio, Cell, CellGroup } from '@/packages/nutui.react.taro'
+import { Radio, Cell } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 
 interface T {
@@ -21,7 +21,7 @@ interface T {
 const RadioDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      '74fc5d8a': '基本用法',
+      '74fc5d8a': '基础用法',
       bb7486f4: '选项',
       c1bae1ec: '水平使用',
       '8a2e2847': '自定义尺寸',
@@ -33,7 +33,7 @@ const RadioDemo = () => {
       options: '配置 options 渲染单选按钮',
     },
     'zh-TW': {
-      '74fc5d8a': '基本用法',
+      '74fc5d8a': '基础用法',
       bb7486f4: '選項',
       c1bae1ec: '水準使用',
       '8a2e2847': '自定義尺寸',
@@ -82,7 +82,7 @@ const RadioDemo = () => {
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated['74fc5d8a']}</h2>
-        <CellGroup>
+        <Cell.Group>
           <Cell>
             <Radio defaultChecked>{translated.bb7486f4}1</Radio>
           </Cell>
@@ -91,7 +91,7 @@ const RadioDemo = () => {
               {translated.bb7486f4}1
             </Radio>
           </Cell>
-        </CellGroup>
+        </Cell.Group>
         <h2>{translated.disableOne}</h2>
         <Cell>
           <Radio.Group defaultValue="1">
@@ -195,7 +195,7 @@ const RadioDemo = () => {
           </Radio>
         </Cell>
         <h2>{translated['0f261484']}</h2>
-        <CellGroup>
+        <Cell.Group>
           <Cell>
             <Radio.Group
               defaultValue={checkedValue}
@@ -210,7 +210,7 @@ const RadioDemo = () => {
               <Radio value={2}>{translated['0f261484']}</Radio>
             </Radio.Group>
           </Cell>
-        </CellGroup>
+        </Cell.Group>
         <h2>{translated.options}</h2>
         <Cell>
           <Radio.Group

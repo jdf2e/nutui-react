@@ -1,11 +1,7 @@
-import React, {
-  FunctionComponent,
-  useState,
-  useRef,
-  useLayoutEffect,
-} from 'react'
+import React, { FunctionComponent, useState, useRef } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { useIsomorphicLayoutEffect } from '@/utils/use-isomprphic-layout-effect'
 
 export type EllipsisDirection = 'start' | 'end' | 'middle'
 type EllipsisValue = {
@@ -24,6 +20,7 @@ export interface EllipsisProps extends BasicComponent {
   onClick: () => void
   onChange: (type: string) => void
 }
+
 const defaultProps = {
   ...ComponentDefaults,
   content: '',
@@ -63,7 +60,7 @@ export const Ellipsis: FunctionComponent<
 
   const classes = classNames(classPrefix, className)
 
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (content) {
       createContainer()
     }

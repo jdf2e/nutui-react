@@ -81,7 +81,7 @@ export const InfiniteLoading: FunctionComponent<
     const parentElement = getParentElement('scroller')
     parentElement
       .boundingClientRect((rect: any) => {
-        scrollHeight.current = rect.height
+        scrollHeight.current = rect?.height ?? 0
       })
       .exec()
   }
@@ -108,27 +108,27 @@ export const InfiniteLoading: FunctionComponent<
   }
 
   const scrollAction = (e: any) => {
-    if (e.detail.scrollTop <= 0) {
+    if (e.target.scrollTop <= 0) {
       // 滚动到最顶部
-      e.detail.scrollTop = 0
-    } else if (e.detail.scrollTop >= scrollHeight.current) {
+      e.target.scrollTop = 0
+    } else if (e.target.scrollTop >= scrollHeight.current) {
       // 滚动到最底部
-      e.detail.scrollTop = scrollHeight.current
+      e.target.scrollTop = scrollHeight.current
     }
     if (
-      e.detail.scrollTop > scrollTop.current ||
-      e.detail.scrollTop >= scrollHeight.current
+      e.target.scrollTop > scrollTop.current ||
+      e.target.scrollTop >= scrollHeight.current
     ) {
       direction.current = 'down'
     } else {
       direction.current = 'up'
     }
-    scrollTop.current = e.detail.scrollTop
-    onScroll && onScroll(e.detail.scrollTop)
+    scrollTop.current = e.target.scrollTop
+    onScroll && onScroll(e.target.scrollTop)
   }
 
   const lower = () => {
-    if (direction.current == 'up' || !hasMore || isInfiniting) {
+    if (direction.current === 'up' || !hasMore || isInfiniting) {
       return false
     }
     setIsInfiniting(true)
@@ -136,7 +136,7 @@ export const InfiniteLoading: FunctionComponent<
   }
 
   const touchStart = (event: any) => {
-    if (scrollTop.current == 0 && !isTouching.current && pullRefresh) {
+    if (scrollTop.current === 0 && !isTouching.current && pullRefresh) {
       y.current = event.touches[0].pageY
       isTouching.current = true
     }

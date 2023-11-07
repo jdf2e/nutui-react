@@ -1,17 +1,21 @@
-
-#  Sticky组件
+# Sticky组件
 
 ## Intro
 
 The effect is the same as position: sticky in CSS, which can be used for compatibility with low-end browsers
 
 ## Install
+
 ```tsx
 import { Sticky } from '@nutui/nutui-react';
 ```
+
 ## Demo
+
 ### Basic Usage
+
 :::demo
+
 ```tsx
 import React, { useEffect, useRef, useState } from 'react'
 import {Button,Cell, Sticky } from '@nutui/nutui-react'
@@ -45,10 +49,13 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ### 指定容器内
+
 :::demo
+
 ```tsx
 import React, { useEffect, useRef, useState } from 'react'
 import {Button,Cell, Sticky } from '@nutui/nutui-react'
@@ -91,6 +98,7 @@ const App = () => {
 }
 export default App;
 ```
+
 :::
 
 ## Sticky
@@ -98,9 +106,9 @@ export default App;
 ### Props
 
 | Property | Description | Type | Default |
-|--------------|----------------------------------|- -------|------------------|
-| position | adsorption position (top, bottom) | string | `top` |
-| threshold | distance, when position is top, set top | number | `0` |
-| zIndex | The level when snapping | number | `2000` |
-| container | the container's ref | `React.RefObject<HTMLElement>`| - |
-| onChange | Triggered when the snap state changes | `val: boolean` | - |
+| --- | --- | --- | --- |
+| position | adsorption position| `top` \| `bottom` | `top` |
+| threshold | distance, when position is top, set top | `number` | `0` |
+| zIndex | The level when snapping | `number` | `2000` |
+| container | the container's ref | `React.RefObject<HTMLElement>` | `-` |
+| onChange | Triggered when the snap state changes |  `(val: boolean) => void` | `-` |

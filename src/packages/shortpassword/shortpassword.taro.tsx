@@ -61,8 +61,8 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
     onCancel,
     onClose,
     onComplete,
-    onClickOverlay,
-    onClickCloseIcon,
+    onOverlayClick,
+    onCloseIconClick,
     ...rest
   } = {
     ...defaultProps,
@@ -101,8 +101,8 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
       }}
       visible={visible}
       closeable
-      onClickOverlay={onClose}
-      onClickCloseIcon={onClose}
+      onOverlayClick={onClose}
+      onCloseIconClick={onClose}
       {...rest}
     >
       <div className={classNames(className, classPrefix)} style={style}>

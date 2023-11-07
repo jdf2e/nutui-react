@@ -11,8 +11,12 @@
     color: $title-color;
     font-weight: bold;
   }
-  &__number,
   &__separator {
+    display: flex;
+    height: 80%;
+    align-items: flex-end;
+  }
+  &__number {
     display: flex;
     flex-direction: column;
     align-items: center;

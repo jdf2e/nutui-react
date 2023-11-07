@@ -35,12 +35,9 @@ config.nav.map((item) => {
           raws.push(langComponentName)
         }
       })
-    // fs.existsSync(path.join(__dirname, `../src/packages/${name.toLowerCase()}/doc.md`))
-    // console.log(__dirname)
     importMarkdownStr += `import ${name} from '@/packages/${name.toLowerCase()}/doc.md?raw'\n`
     mds.push(name)
     raws.push(name)
-    // }
   })
 })
 

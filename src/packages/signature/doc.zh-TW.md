@@ -6,8 +6,7 @@
 
 ## 安裝
 
-```javascript
-// react
+```tsx
 import { Signature } from '@nutui/nutui-react'
 ```
 
@@ -96,7 +95,6 @@ export default App;
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| customClass | 自定義 class | `string` | `-` |
 | lineWidth | 線條的寬度 | `number` | `3` |
 | strokeStyle | 繪圖筆觸顏色 | `string` | `#000` |
 | type | 圖片格式 | `string` | `png` |
@@ -110,3 +108,15 @@ export default App;
 | --- | --- | --- |
 | confirm | 確認簽字 | `() => void` |
 | clear | 清除簽字 | `() => void` |
+
+### 樣式變量
+
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+
+| 名稱 | 說明 | 默認值 |
+| --- | --- | --- |
+| \--nutui-signature-border-height | 簽名區域高度 | `10rem` |
+| \--nutui-signature-border-color | 簽名邊框顏色 | `$gray9` |
+| \--nutui-signature-border-width | 簽名邊框寬度 | `1px` |
+| \--nutui-signature-background-color | 簽名背景顏色 | `$gray6` |
+| \--nutui-signature-font-size | 簽名文字字號 | `$font-size-2` |

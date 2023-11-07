@@ -1,13 +1,12 @@
-# Range 
+# Range
 
 ## Intro
-  
+
 Slide the input bar to select a value within a given range.
 
 ## Install
 
-```javascript
-// react
+```tsx
 import { Range } from '@nutui/nutui-react';
 ```
 
@@ -82,6 +81,7 @@ export default App;
 ```
 
 :::
+
 ### Dual thumb
 
 :::demo
@@ -208,6 +208,7 @@ export default App;
 ```
 
 :::
+
 ### Disabled
 
 :::demo
@@ -274,7 +275,6 @@ export default App;
 
 :::
 
-
 ### Custom Button
 
 :::demo
@@ -310,6 +310,7 @@ export default App;
 ```
 
 :::
+
 ### Vertical
 
 :::demo
@@ -345,6 +346,7 @@ export default App;
 ```
 
 :::
+
 ### Marks
 
 :::demo
@@ -407,24 +409,24 @@ export default App;
 
 ### Props
 
-| Property         | Description            |  Type            | Default                   |
-| ------------- | ------------------ | ---------------- | ------------------------ |
-| defaultValue | default percentage, uncontrolled | `number \| number[]` | `0` |
-| value | current percentage, controlled     | `number \| number[]` | `0` |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| defaultValue | default percentage, uncontrolled | `number` \| `number[]` | `0` |
+| value | current percentage, controlled | `number` \| `number[]` | `0` |
 | range | Whether to enable dual slider mode | `boolean` | `false` |
 | max | maximum | `number` | `100` |
 | min | minimum | `number` | `0` |
-| maxDescription | maximum description, `null` to hidden | `ReactNode` | - |
-| minDescription | minimum description, `null` to hidden | `ReactNode` | - |
-| currentDescription | current progress percentage description, `null` to hidden  | `((value) => ReactNode) | null` | - |
-| step | step size | `number`   | `1` |
+| maxDescription | maximum description, `null` to hidden | `ReactNode` | `-` |
+| minDescription | minimum description, `null` to hidden | `ReactNode` | `-` |
+| currentDescription | current progress percentage description, `null` to hidden | `((value) => ReactNode)` | `-` |
+| step | step size | `number` | `1` |
 | disabled | Whether to disable the slider | `boolean` | `false` |
 | vertical | Whether to display vertically | `boolean` | `false` |
 | marks | scale mark | `Object{key: number}` | `{}` |
-| button | custom slide button | `ReactNode` | - |
-| onChange | Triggered when the progress changes | `(value) => void` | - |
-| onStart | Triggered when dragging starts | - | - |
-| onEnd | Triggered when the drag is over | `(value) => void` | - |
+| button | custom slide button | `ReactNode` | `-` |
+| onChange | Triggered when the progress changes | `(value) => void` | `-` |
+| onStart | Triggered when dragging starts | `-` | `-` |
+| onEnd | Triggered when the drag is over | `(value) => void` | `-` |
 
 ## Theming
 
@@ -434,12 +436,12 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| --nutui-range-font-color | font color | `$gray1` |
-| --nutui-range-margin | margin | `15px` |
-| --nutui-range-height | stroke width  | `4px` |
-| --nutui-range-active-color | active color | `$primary-color` |
-| --nutui-range-inactive-color | inactive color | `#fa958c` |
-| --nutui-range-button-background | button background | `$white` |
-| --nutui-range-button-width | button width | `24px` |
-| --nutui-range-button-height | button height | `24px` |
-| --nutui-range-button-border | button border | `1px solid $primary-color` |
+| \--nutui-range-font-color | font color | `$gray1` |
+| \--nutui-range-margin | margin | `15px` |
+| \--nutui-range-height | stroke width | `4px` |
+| \--nutui-range-active-color | active color | `$primary-color` |
+| \--nutui-range-inactive-color | inactive color | `#fa958c` |
+| \--nutui-range-button-background | button background | `$white` |
+| \--nutui-range-button-width | button width | `24px` |
+| \--nutui-range-button-height | button height | `24px` |
+| \--nutui-range-button-border | button border | `1px solid $primary-color` |

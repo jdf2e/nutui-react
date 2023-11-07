@@ -278,7 +278,7 @@ const PopoverDemo = () => {
           title="点击查看更多方向"
           description={baseDesc}
           onClick={handlePicker}
-        ></Cell>
+        />
         <Picker
           visible={showPicker}
           options={columns}
@@ -302,17 +302,16 @@ const PopoverDemo = () => {
           }}
         >
           <div className="brickBox">
-            <div className="brick" id="pickerTarget"></div>
+            <div className="brick" id="pickerTarget" />
           </div>
         </Picker>
         <Popover
+          className="custom-color"
           visible={customPositon}
           targetId="pickerTarget"
-          background="#1a1a1a"
-          color="rgb(255, 255, 255)"
           list={positionList}
           location={curPostion}
-        ></Popover>
+        />
 
         <h2>自定义目标元素</h2>
         <Popover
@@ -323,7 +322,7 @@ const PopoverDemo = () => {
           onClick={() => {
             setCustomTarget(false)
           }}
-        ></Popover>
+        />
         <Button
           type="primary"
           shape="square"
@@ -335,11 +334,10 @@ const PopoverDemo = () => {
 
         <h2>自定义颜色</h2>
         <Popover
+          className="custom-color"
           visible={customColor}
           list={itemList}
           location="right-start"
-          background="#f00"
-          color="rgb(255, 255, 255)"
           onClick={() => {
             customColor ? setCustomColor(false) : setCustomColor(true)
           }}

@@ -15,7 +15,7 @@ interface T {
 const AudioDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       progress: '进度条模式',
       none: '自定义模式',
       control: '控件模式',

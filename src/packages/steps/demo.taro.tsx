@@ -75,8 +75,8 @@ const customTheme3 = {
 const StepsDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      '74fc5d8a': '基本用法',
-      '74fc5d8b': '基本用法：点状',
+      '74fc5d8a': '基础用法',
+      '74fc5d8b': '基础用法：点状',
       '606ae3f5': '步骤一',
       '3c6225eb': '步骤二',
       '979df428': '步骤三',
@@ -98,8 +98,8 @@ const StepsDemo = () => {
       d98503f5: '点状步骤和垂直方向',
     },
     'zh-TW': {
-      '74fc5d8a': '基本用法',
-      '74fc5d8b': '基本用法：点状',
+      '74fc5d8a': '基础用法',
+      '74fc5d8b': '基础用法：点状',
       '606ae3f5': '步驟一',
       '3c6225eb': '步驟二',
       '979df428': '步驟三',

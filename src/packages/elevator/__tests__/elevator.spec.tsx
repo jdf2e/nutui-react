@@ -50,7 +50,7 @@ const list = [
   },
 ]
 
-const onClickIndex = (key: string) => {
+const onIndexClick = (key: string) => {
   console.log(key)
 }
 test('should render elevator list height after height props to be 200', () => {
@@ -68,13 +68,13 @@ test('should render list data when list props not empty', () => {
   )
 })
 
-test('should list item highlight when onClickItem trigger click', () => {
+test('should list item highlight when onItemClick trigger click', () => {
   const testClick = jest.fn()
   const { container } = render(
     <Elevator
       list={list}
       height={200}
-      onClickItem={(key: string, item: any) => testClick(key, item)}
+      onItemClick={(key: string, item: any) => testClick(key, item)}
     />
   )
 
@@ -92,13 +92,13 @@ test('should list item highlight when onClickItem trigger click', () => {
   expect(testClick).toBeCalledWith('A', { id: 1, name: '安徽' }) // 点击传参测试
 })
 
-test('onClickIndex trigger click', () => {
+test('onIndexClick trigger click', () => {
   const testClick = jest.fn()
   const { container } = render(
     <Elevator
       list={list}
       height={200}
-      onClickIndex={(key: string) => testClick(key)}
+      onIndexClick={(key: string) => testClick(key)}
     />
   )
   const listItem = container.querySelectorAll(
@@ -119,7 +119,7 @@ test('index is sticky', () => {
       list={list}
       height={200}
       sticky
-      onClickIndex={(key: string) => testClick(key)}
+      onIndexClick={(key: string) => testClick(key)}
     />
   )
   const listItem = container.querySelectorAll(

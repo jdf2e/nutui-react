@@ -5,6 +5,7 @@ import { useTranslate } from '../../sites/assets/locale'
 import Button from '../button'
 import Grid from '../grid'
 import GridItem from '../griditem'
+import './demo.scss'
 
 interface countdownRefState {
   start: () => void
@@ -32,7 +33,7 @@ interface T {
 const CountDownDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       remainingTime: '剩余时间用法',
       format: '自定义格式',
       millisecond: '毫秒级渲染',
@@ -50,7 +51,7 @@ const CountDownDemo = () => {
       second: '秒',
     },
     'zh-TW': {
-      basic: '基本用法',
+      basic: '基础用法',
       remainingTime: '剩余時間用法',
       format: '自定義格式',
       millisecond: '毫秒級渲染',
@@ -161,7 +162,7 @@ const CountDownDemo = () => {
   }
   return (
     <>
-      <div className="demo">
+      <div className="demo demo-countdown">
         <h2>{translated.basic}</h2>
         <Cell>
           <CountDown

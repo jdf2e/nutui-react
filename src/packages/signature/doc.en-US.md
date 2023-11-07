@@ -6,8 +6,7 @@ Signature component based on canvas.
 
 ## Install
 
-```javascript
-// react
+```tsx
 import { Signature } from '@nutui/nutui-react'
 ```
 
@@ -96,7 +95,6 @@ export default App;
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| customClass | Custom class | `string` | `-` |
 | lineWidth | Width of line | `number` | `3` |
 | strokeStyle | Drawing stroke color | `string` | `#000` |
 | type | Picture format | `string` | `png` |
@@ -110,3 +108,15 @@ export default App;
 | --- | --- | --- |
 | confirm | Confirmation of signature | `() => void` |
 | clear | Clear signature | `() => void` |
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Description | Default |
+| --- | --- | --- |
+| \--nutui-signature-border-height | Signature area height | `10rem` |
+| \--nutui-signature-border-color | Signature border color | `$gray9` |
+| \--nutui-signature-border-width | Signature border width | `1px` |
+| \--nutui-signature-background-color | Signature background color | `$gray6` |
+| \--nutui-signature-font-size | Signature text size | `$font-size-2` |

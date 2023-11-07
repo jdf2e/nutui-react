@@ -61,6 +61,7 @@ class Tree {
     return pathNodes
   }
 
+  // eslint-disable-next-line class-methods-use-this
   isLeaf = (node: CascaderOption, lazy: boolean): boolean => {
     const { leaf, children } = node
     const hasChildren = Array.isArray(children) && Boolean(children.length)

@@ -21,10 +21,6 @@
       background: $skeleton-background;
       margin-top: 10px;
       border-radius: $skeleton-line-border-radius;
-
-      &:last-child {
-        width: 70%;
-      }
     }
 
     &-line {
@@ -36,6 +32,9 @@
         width: 30%;
         height: $skeleton-line-height;
         background: $skeleton-background;
+      }
+      .nut-skeleton__block:last-child {
+        width: 70%;
       }
     }
   }

@@ -11,7 +11,6 @@ import {
   Avatar,
   Badge,
   Cell,
-  CellGroup,
   ConfigProvider,
 } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
@@ -69,7 +68,7 @@ const BadgeDemo = () => {
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated['8ab98966']}</h2>
-        <CellGroup>
+        <Cell.Group>
           <Cell>
             <Badge style={{ marginRight: '40px' }} value={8}>
               <Avatar icon={<My />} shape="square" />
@@ -84,10 +83,10 @@ const BadgeDemo = () => {
               <Avatar icon={<My />} shape="square" />
             </Badge>
           </Cell>
-        </CellGroup>
+        </Cell.Group>
 
         <h2>{translated['1e7a2282']}</h2>
-        <CellGroup>
+        <Cell.Group>
           <Cell>
             <Badge style={{ marginRight: '40px' }} value={200} max={9}>
               <Avatar icon={<My />} shape="square" />
@@ -99,10 +98,10 @@ const BadgeDemo = () => {
               <Avatar icon={<My />} shape="square" />
             </Badge>
           </Cell>
-        </CellGroup>
+        </Cell.Group>
 
         <h2>{translated['781b07fd']}</h2>
-        <CellGroup>
+        <Cell.Group>
           <Cell>
             <Badge
               style={{ marginRight: '40px' }}
@@ -133,10 +132,10 @@ const BadgeDemo = () => {
               <Avatar icon={<My />} shape="square" />
             </Badge>
           </Cell>
-        </CellGroup>
+        </Cell.Group>
 
         <h2>{translated['1c730245']}</h2>
-        <CellGroup>
+        <Cell.Group>
           <Cell>
             <Badge
               style={{ marginRight: '40px' }}
@@ -157,10 +156,10 @@ const BadgeDemo = () => {
               <Avatar icon={<My />} shape="square" />
             </Badge>
           </Cell>
-        </CellGroup>
+        </Cell.Group>
 
         <h2>{translated['1c730248']}</h2>
-        <CellGroup>
+        <Cell.Group>
           <Cell>
             <ConfigProvider theme={customTheme}>
               <Badge style={{ marginRight: '40px' }} value="NEW">
@@ -174,10 +173,10 @@ const BadgeDemo = () => {
               </Badge>
             </ConfigProvider>
           </Cell>
-        </CellGroup>
+        </Cell.Group>
 
         <h2>{translated['915d7b01']}</h2>
-        <CellGroup>
+        <Cell.Group>
           <Cell>
             <Badge style={{ marginRight: '40px' }} value={8} top="5" right="5">
               <Avatar icon={<My />} shape="square" />
@@ -194,16 +193,16 @@ const BadgeDemo = () => {
               <Avatar icon={<My />} shape="square" />
             </Badge>
           </Cell>
-        </CellGroup>
+        </Cell.Group>
 
         <h2>{translated.f1089312}</h2>
-        <CellGroup>
+        <Cell.Group>
           <Cell style={{ height: '80px' }}>
             <Badge style={{ marginRight: '40px' }} value={8} />
             <Badge style={{ marginRight: '40px' }} value={76} />
             <Badge style={{ marginRight: '40px' }} value="NEW" />
           </Cell>
-        </CellGroup>
+        </Cell.Group>
       </div>
     </>
   )

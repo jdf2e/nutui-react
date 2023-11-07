@@ -6,7 +6,7 @@
 
 ### 安裝
 
-```javascript
+```tsx
 import { Notify } from '@nutui/nutui-react';
 ```
 

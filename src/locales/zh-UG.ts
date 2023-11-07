@@ -32,7 +32,8 @@ const zhUG: BaseLang = {
     start: 'بېشى',
     confirm: 'جەزملەشتۈرۈڭ',
     title: 'تاللاڭ',
-    monthTitle: (year: number, month: number) => `${year} يىلى ${month} ئاي`,
+    monthTitle: (year: number, month: number) =>
+      `${year} يىلى ${Number(month) < 10 ? `0${Number(month)}` : month} ئاي`,
     today: 'بۈگۈن',
     loadPreviousMonth: 'ئالدىنقى ئاي',
     noEarlierMonth: 'تۈگىدى',
@@ -122,6 +123,11 @@ const zhUG: BaseLang = {
     canReleaseText: 'قويۇپ بېرىڭ',
     refreshingText: 'يېڭىلىنىۋاتىدۇ...',
     completeText: 'تامام',
+  },
+  tour: {
+    prevStepText: 'ئالدىنقى',
+    completeText: 'تامام',
+    nextStepText: 'كېيىنكى قەدەم',
   },
   watermark: {
     errorCanvasTips: 'Canvas نى قوللىمايدۇ',

@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import type { MouseEvent } from 'react'
 import classNames from 'classnames'
 import { DataContext } from './UserContext'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -11,7 +12,7 @@ export interface RowProps extends BasicComponent {
   align: string
   wrap: string
   gutter: string | number
-  onClick: (e: any, type: RowEventType) => void
+  onClick: (e: MouseEvent<HTMLDivElement>, type: RowEventType) => void
 }
 
 const classPrefix = 'nut-row'
@@ -66,7 +67,7 @@ export const Row: FunctionComponent<
         {
           className: classNames(getClasses(), className),
           style,
-          onClick: (e: any) => {
+          onClick: (e: MouseEvent<HTMLDivElement>) => {
             onClick && onClick(e, 'row')
           },
         },

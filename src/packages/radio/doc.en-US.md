@@ -6,8 +6,7 @@ Used to single select in a set of alternatives
 
 ## Install
 
-``` ts
-// react
+```tsx
 import { Radio } from '@nutui/nutui-react';
 
 ```
@@ -237,15 +236,15 @@ export default RadioGroupOptions;
 ### Props
 
 | Property | Description | Type | Default |
-|----------------|-----------------------------------------|-----------------------------|------------------|
-| checked | specifies whether it is currently checked | `boolean` | - |
-| defaultChecked | Initially checked or not | `boolean` | - |
+| --- | --- | --- | --- |
+| checked | specifies whether it is currently checked | `boolean` | `-` |
+| defaultChecked | Initially checked or not | `boolean` | `-` |
 | disabled | Whether to disable selection | `boolean` | `false` |
-| value | The identification value carried, used in Group mode | `string \| number` | - |
-| labelPosition | The position of the text | `left \| right` | `right` |
-| icon | [icon name](#/icon), before selection (it is recommended to modify it together with `activeIcon`) | `ReactNode` | `'CheckNormal'` |
-| activeIcon | [icon name](#/icon), after selected (it is recommended to modify it together with `icon`) | `ReactNode` | `'CheckChecked'` |
-| shape | shape | `'button' \| 'round'` | round |
+| value | The identification value carried, used in Group mode | `string`  \|  `number` | `-` |
+| labelPosition | The position of the text | `left` \| `right` | `right` |
+| icon | <a href="#/icon">icon name</a>, before selection (it is recommended to modify it together with `activeIcon`) | `ReactNode` | `'CheckNormal'` |
+| activeIcon | <a href="#/icon">icon name</a>, after selected (it is recommended to modify it together with `icon`) | `ReactNode` | `'CheckChecked'` |
+| shape | shape | `button` \| `round` \| `round` | `round` |
 | onChange | Triggered when the checked state changes | `(checked: boolean) => void` | `-` |
 
 ## Radio.Group
@@ -253,37 +252,36 @@ export default RadioGroupOptions;
 ### Props
 
 | Property | Description | Type | Default |
-|---------------|-------------|------------------------------------------------------------|------------------|
-| value | identifier of the currently selected item | `string \| number` | - |
-| labelPosition | The position of the text | `left \| right` | `right` |
+| --- | --- | --- | --- |
+| value | identifier of the currently selected item | `string`  \|  `number` | `-` |
+| labelPosition | The position of the text | `left` \| `right` | `right` |
 | disabled | Whether to disable | `boolean` | `false` |
-| direction | use landscape orientation | `horizontal \| vertical` | `vertical` |
-| options | Configure options to render radio buttons | `Array<{ label: string value: string disabled?: boolean }` | `-` |
+| direction | use landscape orientation | `horizontal` \| `vertical` | `vertical` |
+| options | Configure options to render radio buttons | `Array<{ label: string value: string disabled?: boolean }>`  | `-` |
 | onChange | Triggered when the value changes | `(value: string \| number) => void` | `-` |
 
 ## Theming
 
 ### CSS Variables
 
-The component provides the following CSS
-Variables, which can be used for custom styles, please refer to [ConfigProvider Components](#/zh-CN/component/configprovider) for usage methods.
+The component provides the following CSS Variables, which can be used for custom styles, please refer to [ConfigProvider Components](#/zh-CN/component/configprovider) for usage methods.
 
 | Name | Description | Default |
-| --- |-------------------|---------------------------|
-| --nutui-radio-label-font-color | font color | `$gray1` |
-| --nutui-radio-label-font-active-color | The selected font color in the button state | `$primary-color` |
-| --nutui-radio-label-disable-color | disabled font color for label | `$gray3` |
-| --nutui-radio-icon-disable-color | disabled font color for label | `$gray2` |
-| --nutui-radio-label-button-border-color | shape is the border color of the button | `$primary-color` |
-| --nutui-radio-label-button-background | shape is the background color of the button | `rgba(250, 44, 25, 0.05)` |
-| --nutui-radio-label-margin-left | left margin of label | `15px` |
-| --nutui-radio-label-font-size | font size | `14px` |
-| --nutui-radio-button-border-radius | The shape is the rounded corner of the button | `15px` |
-| --nutui-radio-button-font-size | shape is the font size of the button | `12px` |
-| --nutui-radio-button-padding | The shape is the padding of the button | `5px 18px` |
-| --nutui-radio-icon-disable-color2 | disabled color for icon | `$gray3` |
-| --nutui-radiogroup-radio-margin | Margin of each radio in Group mode | `0 20px 5px 0` |
-| --nutui-radiogroup-radio-label-margin | Label margin in each radio in Group mode | `0 5px 0 5px` |
-| --nutui-radio-button-disabled-active-background | Selected and disabled background color in button mode | `rgba(0, 0, 0, 0.15)` |
-| --nutui-radio-button-disabled-active-color | The font color that is selected and disabled in button mode | `rgba(0, 0, 0, 0.25)` |
-| --nutui-radio-button-disabled-active-border-color | Selected and disabled border color in button mode | `rgba(211, 211, 211, 0.15)` |
+| --- | --- | --- |
+| \--nutui-radio-label-font-color | font color | `$gray1` |
+| \--nutui-radio-label-font-active-color | The selected font color in the button state | `$primary-color` |
+| \--nutui-radio-label-disable-color | disabled font color for label | `$gray3` |
+| \--nutui-radio-icon-disable-color | disabled font color for label | `$gray2` |
+| \--nutui-radio-label-button-border-color | shape is the border color of the button | `$primary-color` |
+| \--nutui-radio-label-button-background | shape is the background color of the button | `rgba(250, 44, 25, 0.05)` |
+| \--nutui-radio-label-margin-left | left margin of label | `15px` |
+| \--nutui-radio-label-font-size | font size | `14px` |
+| \--nutui-radio-button-border-radius | The shape is the rounded corner of the button | `15px` |
+| \--nutui-radio-button-font-size | shape is the font size of the button | `12px` |
+| \--nutui-radio-button-padding | The shape is the padding of the button | `5px 18px` |
+| \--nutui-radio-icon-disable-color2 | disabled color for icon | `$gray3` |
+| \--nutui-radiogroup-radio-margin | Margin of each radio in Group mode | `0 20px 5px 0` |
+| \--nutui-radiogroup-radio-label-margin | Label margin in each radio in Group mode | `0 5px 0 5px` |
+| \--nutui-radio-button-disabled-active-background | Selected and disabled background color in button mode | `rgba(0, 0, 0, 0.15)` |
+| \--nutui-radio-button-disabled-active-color | The font color that is selected and disabled in button mode | `rgba(0, 0, 0, 0.25)` |
+| \--nutui-radio-button-disabled-active-border-color | Selected and disabled border color in button mode | `rgba(211, 211, 211, 0.15)` |

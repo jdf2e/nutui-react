@@ -1,3 +1,5 @@
+@import '../cellgroup/cellgroup.scss';
+
 .nut-cell {
   position: relative;
   display: flex;
@@ -11,6 +13,7 @@
   color: $cell-title-color;
   margin: 10px 0;
   box-sizing: border-box;
+
   &__left {
     display: flex;
     flex-direction: column;

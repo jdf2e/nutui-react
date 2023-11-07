@@ -6,8 +6,7 @@ Used to display product pictures, prices and other information.
 
 ## Install
 
-```js
-// react
+```tsx
 import { Card, Price, Tag } from '@nutui/nutui-react'
 ```
 
@@ -17,7 +16,7 @@ import { Card, Price, Tag } from '@nutui/nutui-react'
 
 :::demo
 
-```ts
+```tsx
 import React from 'react'
 import { Card, Price, Tag } from '@nutui/nutui-react'
 
@@ -40,7 +39,7 @@ const App = () => {
       shopDescription={state.shopDescription}
       delivery={state.delivery}
       shopName={state.shopName}
-    ></Card>
+     />
   )
 }
 export default App
@@ -52,7 +51,7 @@ export default App
 
 :::demo
 
-```ts
+```tsx
 import React from 'react'
 import { Card, Price, Tag } from '@nutui/nutui-react'
 
@@ -103,7 +102,7 @@ const App = () => {
           })}
         </div>
       }
-    ></Card>
+     />
   )
 }
 export default App
@@ -115,7 +114,7 @@ export default App
 
 :::demo
 
-```ts
+```tsx
 import React from 'react'
 import { Card, Price, Tag } from '@nutui/nutui-react'
 
@@ -152,7 +151,7 @@ const App = () => {
           alt=""
         />
       }
-    ></Card>
+     />
   )
 }
 export default App
@@ -164,7 +163,7 @@ export default App
 
 :::demo
 
-```ts
+```tsx
 import React from 'react'
 import { Card, Price, Tag } from '@nutui/nutui-react'
 
@@ -188,7 +187,7 @@ const App = () => {
       delivery={state.delivery}
       shopName={state.shopName}
       tag={<div>Custom Content</div>}
-    ></Card>
+     />
   )
 }
 export default App
@@ -200,7 +199,7 @@ export default App
 
 :::demo
 
-```ts
+```tsx
 import React from 'react'
 import { Card, Price, Tag } from '@nutui/nutui-react'
 
@@ -225,7 +224,7 @@ const App = () => {
       delivery={state.delivery}
       shopName={state.shopName}
       extra={<div style={{ fontSize: '12px' }}>custom</div>}
-    ></Card>
+     />
   )
 }
 export default App

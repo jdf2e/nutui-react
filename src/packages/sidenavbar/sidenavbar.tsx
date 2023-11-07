@@ -10,9 +10,9 @@ export interface SideNavBarProps
     BasicComponent {
   title: ReactNode
   visible: boolean
-  width?: string
-  indent?: number
-  position?: 'left' | 'right'
+  width: string
+  indent: number
+  position: 'left' | 'right'
   onClose: () => void
 }
 
@@ -22,7 +22,9 @@ const defaultProps = {
   width: '80%',
 } as SideNavBarProps
 
-export const SideNavBar: FunctionComponent<SideNavBarProps> = (props) => {
+export const SideNavBar: FunctionComponent<Partial<SideNavBarProps>> = (
+  props
+) => {
   const classPrefix = 'nut-sidenavbar'
   const {
     title,

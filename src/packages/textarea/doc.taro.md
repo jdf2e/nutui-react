@@ -6,7 +6,7 @@
 
 ## 安装
 
-```javascript
+```tsx
 import { TextArea } from '@nutui/nutui-react-taro';
 ```
 
@@ -34,6 +34,7 @@ const App = () => {
 };
 export default App
 ```
+
 :::
 
 ### 受控方式
@@ -55,6 +56,7 @@ const App = () => {
 };
 export default App
 ```
+
 :::
 
 ### 显示字数统计
@@ -72,6 +74,7 @@ const App = () => {
 };
 export default App
 ```
+
 :::
 
 ### 自定义行数，设置自动高度
@@ -89,6 +92,7 @@ const App = () => {
 };
 export default App
 ```
+
 :::
 
 ### 自定义字数统计样式
@@ -133,6 +137,7 @@ const App = () => {
 };
 export default App
 ```
+
 :::
 
 ### 文本位置
@@ -155,26 +160,27 @@ const App = () => {
 };
 export default App
 ```
+
 :::
 
 ## TextArea
 
 ### Props
 
-| 属性         | 说明                                              | 类型           | 默认值         |
-| ------------ | ------------------------------------------------- | -------------- | -------------- |
-| value        | 输入框内容，受控 | `string` | - |
-| defaultValue | 初始默认值，非受控                          | `string`         | -              |
-| placeholder  | 设置占位提示文字                                  | `string`         | `请输入内容` |
-| maxLength    | 限制最长输入字符，-1 表示无限制                                  | `number` | `140`              |
-| rows         | textarea 的行数（仅支持H5）                                   | `number` | `2`            |
-| showCount    | textarea 是否展示输入字符。须配合`maxLength`使用 | `boolean`        | `false`        |
-| autoSize     | 高度是否可拉伸                                    | `boolean`        | `false`        |
-| readOnly     | 只读属性                                          | `boolean`        | `false`        |
-| disabled     | 禁用属性                                          | `boolean`        | `false`        |
-| onChange     | 输入内容时触发 | `(value) => void`      | - |
-| onFocus      | 聚焦时触发     | `(event) => void`      | - |
-| onBlur       | 失焦时触发     | `(event) => void`      | - |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| value | 输入框内容，受控 | `string` | `-` |
+| defaultValue | 初始默认值，非受控 | `string` | `-` |
+| placeholder | 设置占位提示文字 | `string` | `请输入内容` |
+| maxLength | 限制最长输入字符，-1 表示无限制 | `number` | `140` |
+| rows | textarea 的行数（仅支持H5） | `number` | `2` |
+| showCount | textarea 是否展示输入字符。须配合`maxLength`使用 | `boolean` | `false` |
+| autoSize | 高度是否可拉伸 | `boolean` | `false` |
+| readOnly | 只读属性 | `boolean` | `false` |
+| disabled | 禁用属性 | `boolean` | `false` |
+| onChange | 输入内容时触发 | `(value) => void` | `-` |
+| onFocus | 聚焦时触发 | `(event) => void` | `-` |
+| onBlur | 失焦时触发 | `(event) => void` | `-` |
 
 ## 主题定制
 
@@ -184,9 +190,9 @@ export default App
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| --nutui-textarea-font | 字体大小 | `$font-size-2` |
-| --nutui-textarea-padding | 内边距 | `10px 25px`|
-| --nutui-textarea-limit-color | 字数统计颜色 | `$text-color` |
-| --nutui-textarea-text-color | 文本颜色 | `$title-color` |
-| --nutui-textarea-text-curror-color  | 光标颜色 | `$title-color`|
-| --nutui-textarea-disabled-color | 禁用颜色 | `$disable-color` |
+| \--nutui-textarea-font | 字体大小 | `$font-size-2` |
+| \--nutui-textarea-padding | 内边距 | `10px 25px` |
+| \--nutui-textarea-limit-color | 字数统计颜色 | `$text-color` |
+| \--nutui-textarea-text-color | 文本颜色 | `$title-color` |
+| \--nutui-textarea-text-curror-color | 光标颜色 | `$title-color` |
+| \--nutui-textarea-disabled-color | 禁用颜色 | `$disable-color` |

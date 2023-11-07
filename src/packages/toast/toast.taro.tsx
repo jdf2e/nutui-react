@@ -1,10 +1,18 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { Failure, Loading, Success, Tips } from '@nutui/icons-react-taro'
-import Overlay from '@/packages/overlay/index'
+import Overlay from '@/packages/overlay/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import {
+  customEvents,
+  useCustomEvent,
+  useCustomEventsPath,
+  useParams,
+} from '@/utils/use-custom-event'
+import { usePropsValue } from '@/utils/use-props-value'
 
 export type ToastPositionType = 'top' | 'bottom' | 'center'
+export type ToastSize = 'small' | 'base' | 'large'
 
 export interface ToastProps extends BasicComponent {
   id?: string
@@ -19,7 +27,8 @@ export interface ToastProps extends BasicComponent {
   type: string
   title: string
   closeOnOverlayClick: boolean
-  size: string | number
+  lockScroll: boolean
+  size: ToastSize
   visible: boolean
   onClose: () => void
 }
@@ -35,6 +44,7 @@ const defaultProps = {
   type: 'text',
   title: '',
   closeOnOverlayClick: false,
+  lockScroll: false,
   contentClassName: '', // 内容自定义样式名
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   visible: false,
@@ -46,58 +56,86 @@ const classPrefix = 'nut-toast'
 // export default class Notification extends React.PureComponent<NotificationProps> {
 export const Toast: FunctionComponent<
   Partial<ToastProps> & React.HTMLAttributes<HTMLDivElement>
-> = (props) => {
+> & {
+  show: typeof show
+  hide: typeof hide
+} = (props) => {
   const {
-    children,
-    id,
-    position,
-    contentStyle,
-    icon,
-    iconSize,
-    msg,
-    duration,
-    type,
-    title,
-    closeOnOverlayClick,
-    contentClassName,
-    size,
-    visible,
-    className,
-    style,
-    onClose,
-    ...rest
-  } = { ...defaultProps, ...props }
-  let timer: number | null
+    params: {
+      id,
+      position,
+      contentStyle,
+      icon,
+      iconSize,
+      msg,
+      duration,
+      type,
+      title,
+      closeOnOverlayClick,
+      lockScroll,
+      contentClassName,
+      visible,
+      size,
+      className,
+      style,
+      onClose,
+    },
+    setParams,
+  } = useParams({ ...defaultProps, ...props })
+  const timer = useRef(-1)
 
-  const [openState, SetOpenState] = useState(false)
+  const [innerVisible, setInnerVisible] = usePropsValue({
+    value: visible,
+    defaultValue: undefined,
+    finalValue: false,
+    onChange: (v: boolean) => {
+      !v && onClose?.()
+    },
+  })
 
   useEffect(() => {
-    if (visible) {
-      SetOpenState(true)
-      show()
-    } else {
-      hide()
+    if (innerVisible) {
+      autoClose()
     }
-  }, [visible])
+  }, [innerVisible, duration])
+
+  useCustomEvent(
+    id as string,
+    ({ status, options }: { status: boolean; options: any }) => {
+      if (status) {
+        options.visible = true
+        setParams(options)
+        show()
+      } else {
+        setParams({ visible: false } as any)
+        hide()
+      }
+    }
+  )
 
   const clearTimer = () => {
-    if (timer) {
-      clearTimeout(timer)
-      timer = null
+    if (timer.current) {
+      clearTimeout(timer.current)
+      timer.current = -1
     }
   }
-  const hide = () => {
-    SetOpenState(false)
-    onClose()
-  }
   const show = () => {
+    setInnerVisible(true)
+  }
+  const hide = () => {
+    clearTimer()
+    setInnerVisible(false)
+  }
+  const autoClose = () => {
     clearTimer()
     if (duration) {
-      timer = window.setTimeout(() => {
+      timer.current = window.setTimeout(() => {
+        setParams({ visible: false } as any)
         hide()
       }, duration * 1000)
     }
   }
+
   const clickCover = () => {
     if (closeOnOverlayClick) {
       hide()
@@ -129,12 +167,13 @@ export const Toast: FunctionComponent<
   })
   return (
     <>
-      {openState ? (
+      {innerVisible ? (
         <Overlay
-          visible={openState}
+          visible={innerVisible}
           style={style}
           className={`${classPrefix}__overlay-default ${className}`}
           closeOnOverlayClick={closeOnOverlayClick}
+          lockScroll={lockScroll}
           onClick={() => {
             clickCover()
           }}
@@ -159,5 +198,21 @@ export const Toast: FunctionComponent<
   )
 }
 
+export interface ToastOptions extends Partial<Omit<ToastProps, 'visible'>> {}
+
+export function show(selector: string, options: ToastOptions) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const path = useCustomEventsPath(selector)
+  customEvents.trigger(path, { status: true, options })
+}
+
+export function hide(selector: string) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const path = useCustomEventsPath(selector)
+  customEvents.trigger(path, { status: false })
+}
+
 Toast.defaultProps = defaultProps
 Toast.displayName = 'NutToast'
+Toast.show = show
+Toast.hide = hide

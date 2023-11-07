@@ -84,7 +84,13 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
       pullingRef.current = true
       setHeight(
         Math.max(
-          rubberbandIfOutOfBounds(touch.deltaY, 0, 0, headHeight * 5, 0.5),
+          rubberbandIfOutOfBounds(
+            touch.deltaY.current,
+            0,
+            0,
+            headHeight * 5,
+            0.5
+          ),
           0
         )
       )

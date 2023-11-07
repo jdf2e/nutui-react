@@ -1,11 +1,9 @@
 import './App.scss'
 import React, {
-  FunctionComponent,
-  PropsWithChildren,
   useCallback,
   useState,
 } from 'react'
-import { HashRouter, Switch, Route, Redirect } from 'react-router-dom'
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import loadable, { LoadableComponent } from '@loadable/component'
 import { Left } from '@nutui/icons-react'
 import routes from './router'
@@ -17,9 +15,7 @@ import zhTW from '@/locales/zh-TW'
 import zhCN from '@/locales/zh-CN'
 import enUS from '@/locales/en-US'
 import { BaseLang } from '@/locales/base'
-// import Icon from '@/packages/Icon'
 import { nav } from '@/config.json'
-// import TaroDemo from '@/sites/mobile/TaroDemo'
 
 interface Languages {
   [key: string]: BaseLang
@@ -55,74 +51,60 @@ const darkTheme = {
   rowContentLightBgColor: 'rgba(0, 0, 0, 0.4)',
 }
 
-const WithNavRouter = (C: LoadableComponent<any>) => {
-  const WithNav: FunctionComponent = () => {
-    const context = useConfig()
-    const handleSwitchLocale = () => {
-      let locale = getLocale()
-      let location = window.parent.location
-      if (locale == 'zh-CN') {
-        location.replace(location.href.replace('zh-CN', 'en-US'))
-      } else {
-        location.replace(location.href.replace('en-US', 'zh-CN'))
-      }
+const WithNavRouter = ({ C }: any) => {
+  const context = useConfig()
+  const handleSwitchLocale = () => {
+    let locale = getLocale()
+    let location = window.parent.location
+    if (locale == 'zh-CN') {
+      location.replace(location.href.replace('zh-CN', 'en-US'))
+    } else {
+      location.replace(location.href.replace('en-US', 'zh-CN'))
     }
-    const getComponentName = () => {
-      const s = window.location.hash.split('/')
-      const cname = s[s.length - 1].toLowerCase()
-      const component: any = {}
-      nav.forEach((item: any) => {
-        item.packages.forEach((sItem: any) => {
-          if (sItem.name.toLowerCase() == cname) {
-            component.name = sItem.name
-            component.cName = sItem.cName
-            return
-          }
-        })
-      })
-      return component
-    }
-    const handleSwitchDarkModel = () => {
-      context.changeTheme()
-    }
-    return (
-      <>
-        <div id="nav">
-          <div className="back" onClick={() => window.parent.history.back()}>
-            <Left />
-          </div>
-          {getComponentName()['name']}
-          <div className="translate">
-            {/*<Icon*/}
-            {/*  className={'dark-model'}*/}
-            {/*  name="https://storage.360buyimg.com/imgtools/71a2689855-ba1f4000-80cb-11ed-aa68-651117499129.png"*/}
-            {/*  onClick={() => handleSwitchDarkModel()}*/}
-            {/*/>*/}
-
-            {/*<Icon*/}
-            {/*  className={'translate-icon'}*/}
-            {/*  name="https://img14.360buyimg.com/imagetools/jfs/t1/135168/8/21387/6193/625fa81aEe07cc347/55ad5bc2580c53a6.png"*/}
-            {/*  onClick={() => handleSwitchLocale()}*/}
-            {/*/>*/}
-            <img
-              className={'dark-model'}
-              src="https://storage.360buyimg.com/imgtools/71a2689855-ba1f4000-80cb-11ed-aa68-651117499129.png"
-              alt=""
-              onClick={() => handleSwitchDarkModel()}
-            />
-            <img
-              className={'dark-model'}
-              src="https://img14.360buyimg.com/imagetools/jfs/t1/135168/8/21387/6193/625fa81aEe07cc347/55ad5bc2580c53a6.png"
-              alt=""
-              onClick={() => handleSwitchLocale()}
-            />
-          </div>
-        </div>
-        <C key={Math.random()} />
-      </>
-    )
   }
-  return WithNav
+  const getComponentName = () => {
+    const s = window.location.hash.split('/')
+    const cname = s[s.length - 1].toLowerCase()
+    const component: any = {}
+    nav.forEach((item: any) => {
+      item.packages.forEach((sItem: any) => {
+        if (sItem.name.toLowerCase() == cname) {
+          component.name = sItem.name
+          component.cName = sItem.cName
+          return
+        }
+      })
+    })
+    return component
+  }
+  const handleSwitchDarkModel = () => {
+    context.changeTheme()
+  }
+  return (
+    <>
+      <div id="nav">
+        <div className="back" onClick={() => window.parent.history.back()}>
+          <Left />
+        </div>
+        {getComponentName()['name']}
+        <div className="translate">
+          <img
+            className={'dark-model'}
+            src="https://storage.360buyimg.com/imgtools/71a2689855-ba1f4000-80cb-11ed-aa68-651117499129.png"
+            alt=""
+            onClick={() => handleSwitchDarkModel()}
+          />
+          <img
+            className={'dark-model'}
+            src="https://img14.360buyimg.com/imagetools/jfs/t1/135168/8/21387/6193/625fa81aEe07cc347/55ad5bc2580c53a6.png"
+            alt=""
+            onClick={() => handleSwitchLocale()}
+          />
+        </div>
+      </div>
+      <C key={Math.random()} />
+    </>
+  )
 }
 const AppSwitch = () => {
   const [locale] = useLocale()
@@ -140,21 +122,25 @@ const AppSwitch = () => {
       theme={theme}
       changeTheme={changeTheme}
     >
-      <Switch>
-        <Route path="/" exact>
-          <div className="index">
-            <div className="index-header">
-              <img src={logo} alt="" srcSet="" />
-              <div className="info">
-                <h1>NutUI-React</h1>
-                <p>京东风格的轻量级移动端 React 组件库</p>
+      <Routes>
+        <Route
+          path="/"
+          exact
+          element={
+            <div className="index">
+              <div className="index-header">
+                <img src={logo} alt="" srcSet="" />
+                <div className="info">
+                  <h1>NutUI-React</h1>
+                  <p>京东风格的轻量级移动端 React 组件库</p>
+                </div>
+              </div>
+              <div className="index-components">
+                <Links />
               </div>
             </div>
-            <div className="index-components">
-              <Links />
-            </div>
-          </div>
-        </Route>
+          }
+        />
 
         {routes.map((item: any, index: number) => {
           const C = loadable(item.component)
@@ -162,21 +148,12 @@ const AppSwitch = () => {
             <Route
               key={Math.random()}
               path={`${item.path}`}
-              component={WithNavRouter(C)}
+              element={<WithNavRouter C={C} />}
             />
           )
         })}
-        {/* <Route path="*-taro">
-          <TaroDemo />
-        </Route> */}
-        <Route path="*">
-          <Redirect
-            to={{
-              pathname: '/',
-            }}
-          />
-        </Route>
-      </Switch>
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
     </Configprovider>
   )
 }
@@ -184,7 +161,7 @@ const App = () => {
   return (
     <>
       <HashRouter>
-        <AppSwitch></AppSwitch>
+        <AppSwitch />
       </HashRouter>
     </>
   )

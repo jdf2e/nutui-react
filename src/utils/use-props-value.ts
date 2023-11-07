@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useRef, useCallback } from 'react'
+import { useForceUpdate } from '@/utils/use-force-update'
 
 interface UsePropsValue<T> {
   value?: T
@@ -12,19 +13,23 @@ export function usePropsValue<T>({
   defaultValue,
   finalValue,
   onChange = (value: T) => {},
-}: UsePropsValue<T>): [value: T, onChange: (value: T) => void] {
-  const [uncontrolled, setUncontrolled] = useState(
-    defaultValue !== undefined ? defaultValue : finalValue
-  )
-
-  const handleUncontrolledChange = (val: T) => {
-    setUncontrolled(val)
-    onChange?.(val)
-  }
-
+}: UsePropsValue<T>) {
+  const forceUpdate = useForceUpdate()
+  const dfValue = (defaultValue !== undefined ? defaultValue : finalValue) as T
+  const stateRef = useRef<T>(value !== undefined ? value : dfValue)
   if (value !== undefined) {
-    return [value as T, onChange]
+    stateRef.current = value
   }
-
-  return [uncontrolled as T, handleUncontrolledChange]
+  const setState = useCallback(
+    (v: T, forceTrigger: boolean = false) => {
+      const prevState = stateRef.current
+      stateRef.current = v
+      if (prevState !== stateRef.current || forceTrigger) {
+        forceUpdate()
+        onChange?.(v)
+      }
+    },
+    [value, onChange]
+  )
+  return [stateRef.current, setState] as const
 }

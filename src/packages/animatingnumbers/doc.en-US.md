@@ -6,8 +6,7 @@ Digital animation collection
 
 ## Install
 
-```javascript
-// react
+```tsx
 import { AnimatingNumbers } from '@nutui/nutui-react'
 ```
 
@@ -19,10 +18,10 @@ import { AnimatingNumbers } from '@nutui/nutui-react'
 
 ```tsx
 import React from 'react'
-import { AnimatingNumbers } from '@nutui/nutui-react'
+import { AnimatingNumbers, Cell } from '@nutui/nutui-react'
 
 const App = () => {
-  return <AnimatingNumbers.CountUp value="678.94" />
+    return  <Cell title={<AnimatingNumbers.CountUp value="678.94" />} />
 }
 export default App
 ```
@@ -35,7 +34,7 @@ export default App
 
 ```tsx
 import React, { useEffect, useState } from 'react'
-import { AnimatingNumbers } from '@nutui/nutui-react'
+import { AnimatingNumbers, Cell } from '@nutui/nutui-react'
 
 const App = () => {
   const [value, setEndNumer] = useState('1570.99')
@@ -49,11 +48,15 @@ const App = () => {
     }, 30000)
   }, [])
   return (
-    <AnimatingNumbers.CountUp
-      value={value}
-      duration={1.2}
-      length={6}
-      className="custom-coutup"
+    <Cell
+        title={
+        <AnimatingNumbers.CountUp
+            value={value}
+            duration={1.2}
+            length={6}
+            className="custom-coutup"
+        />
+        }
     />
   )
 }
@@ -72,4 +75,4 @@ export default App
 | value | The end value, | `string` | `number` |
 | delay | Wait time for animation execution, in ms | `number` | `300` |
 | duration | Animation execution time, in s | `number` | `1` |
-| thousands | 是否有千位分隔符 Whether there are thousands separators | `boolean` | `false` |
+| thousands | Whether there are thousands separators | `boolean` | `false` |

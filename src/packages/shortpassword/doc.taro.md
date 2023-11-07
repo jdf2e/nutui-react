@@ -6,8 +6,7 @@
 
 ## 安装
 
-```ts
-// react
+```tsx
 import { ShortPassword } from '@nutui/nutui-react-taro';
 ```
 
@@ -312,7 +311,7 @@ export default App;
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| value | 密码字符串 | `string` | - |
+| value | 密码字符串 | `string` | `-` |
 | visible | 是否展示短密码框 | `boolean` | `false` |
 | plain | 是否展示明文 | `boolean` | `false` |
 | title | 标题 | `ReactNode` | `请输入密码` |
@@ -320,15 +319,15 @@ export default App;
 | tips | 提示语 | `ReactNode` | `忘记密码` |
 | hideFooter | 是否隐藏底部按钮 | `boolean` | `true` |
 | length | 密码长度，取值为4~6 | `number` | `6` |
-| error | 错误信息提示 | `ReactNode` | - |
+| error | 错误信息提示 | `ReactNode` | `-` |
 | autoFocus | 自动聚焦 | `boolean` | `false` |
-| onChange | 输入密码时触发事件 | `(value) => void` | - |
-| onConfirm | 点击确认时触发事件 | `(value) => void` | - |
-| onCancel | 点击取消时触发事件 | `() => void` | - |
-| onClose | 点击关闭图标和遮罩时触发事件 | `() => void` | - |
-| onTips | 点击忘记密码时触发事件 | `() => void` | - |
-| onComplete | 输入完成的回调 | `(value) => void` | - |
-| onFocus | 输入框聚焦 | `() => void` | - |
+| onChange | 输入密码时触发事件 | `(value) => void` | `-` |
+| onConfirm | 点击确认时触发事件 | `(value) => void` | `-` |
+| onCancel | 点击取消时触发事件 | `() => void` | `-` |
+| onClose | 点击关闭图标和遮罩时触发事件 | `() => void` | `-` |
+| onTips | 点击忘记密码时触发事件 | `() => void` | `-` |
+| onComplete | 输入完成的回调 | `(value) => void` | `-` |
+| onFocus | 输入框聚焦 | `() => void` | `-` |
 
 ## 主题定制
 

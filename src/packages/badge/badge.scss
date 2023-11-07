@@ -26,6 +26,7 @@
     line-height: 16px;
     border: $badge-border;
     border-radius: $badge-border-radius;
+    min-width: $badge-min-width;
   }
 
   &__content {

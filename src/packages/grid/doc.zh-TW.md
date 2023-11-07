@@ -1,13 +1,12 @@
-#  Grid 宮格
+# Grid 宮格
 
-### 介紹
+## 介紹
 
-用于分隔成等寬區塊進行頁面導航。
+用於分隔成等寬區塊進行頁面導航。
 
-### 安裝
+## 安裝
 
-```javascript
-// react
+```tsx
 import { Grid } from '@nutui/nutui-react'
 ```
 
@@ -16,6 +15,7 @@ import { Grid } from '@nutui/nutui-react'
 ### 基礎用法
 
 :::demo
+
 ```tsx
 import React from 'react'
 import { Grid } from '@nutui/nutui-react'
@@ -37,11 +37,13 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ### 自定義列數
 
 :::demo
+
 ```tsx
 import React from 'react'
 import { Grid } from '@nutui/nutui-react'
@@ -61,11 +63,13 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ### 正方形格子
 
 :::demo
+
 ```tsx
 import React from 'react'
 import { Grid } from '@nutui/nutui-react'
@@ -82,12 +86,13 @@ const App = () => {
 }
 export default App
 ```
-:::
 
+:::
 
 ### 格子間距
 
 :::demo
+
 ```tsx
 import React from 'react'
 import { Grid } from '@nutui/nutui-react'
@@ -109,11 +114,13 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ### 內容翻轉
 
 :::demo
+
 ```tsx
 import React from 'react'
 import { Grid } from '@nutui/nutui-react'
@@ -131,11 +138,13 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
-### 內容橫向
+### 內容橫嚮
 
 :::demo
+
 ```tsx
 import React from 'react'
 import { Grid } from '@nutui/nutui-react'
@@ -153,11 +162,13 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
-### 内容翻转 + 横向
+### 內容翻轉 + 橫嚮
 
 :::demo
+
 ```tsx
 import React from 'react'
 import { Grid } from '@nutui/nutui-react'
@@ -175,11 +186,13 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ### 圖標顏色/大小
 
 :::demo
+
 ```tsx
 import React from 'react'
 import { Grid } from '@nutui/nutui-react'
@@ -202,11 +215,13 @@ const App = () => {
 }
 export default App
 ```
+
 :::
 
 ### 自定義內容
 
 :::demo
+
 ```tsx
 import React from 'react'
 import { Grid, Avatar, Image } from '@nutui/nutui-react'
@@ -216,57 +231,49 @@ const App = () => {
   return (
     <Grid>
       <Grid.Item text={<span>More</span>}><Dongdong /></Grid.Item>
-      <Grid.Item>
-        <Avatar
-          className="demo-avatar"
-          icon={<My color="#fff" />}
-          background="#FA2C19"
-        />
-      </Grid.Item>
-      <Grid.Item>
-      <Avatar
-        size="large"
-        icon={<Image src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />}
-      />
-      </Grid.Item>
+        <Grid.Item>
+          <Avatar
+            className="demo-avatar"
+            icon={<My color="#fff"/>}
+            background="#FA2C19"
+          />
+        </Grid.Item>
+        <Grid.Item>
+          <Avatar
+            size="large"
+            icon={<Image src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />}
+          />
+        </Grid.Item>
     </Grid>
   )
 }
 export default App
 ```
+
 :::
 
-## API
+## Grid
 
-### Grid Props
-
-| 屬性 | 說明 | 類型 | 默認值 |
-|-|-|-|-|
-| columns | 列數 | number \| string | `4` |
-| gap | 格子之間的間距，默認單位為`px` | number \| string | `0` |
-| center | 是否將格子內容居中顯示 | boolean | `true` |
-| square | 是否將格子固定為正方形 | boolean | `false` |
-| reverse | 內容翻轉 | boolean | `false` |
-| direction | 格子內容排列的方向，可選值為 `horizontal` | string | `vertical` |
-
-### Grid Events
-
-| 属性 | 說明 | 回調參數 |
-|-|-|-|
-| onClick | 宮格子項點擊事件 | 點擊當前項數據, 索引 |
-
-### Grid.Item Props
+### Props
 
 | 屬性 | 說明 | 類型 | 默認值 |
-|-|-|-|-|
-| text | 文字 | string \| ReactNode | - |
+| --- | --- | --- | --- |
+| columns | 列數 | `number` \| `string` | `4` |
+| gap | 格子之間的間距，默認單位為`px` | `number` \| `string` | `0` |
+| center | 是否將格子內容居中顯示 | `boolean` | `true` |
+| square | 是否將格子固定為正方形 | `boolean` | `false` |
+| reverse | 內容翻轉 | `boolean` | `false` |
+| direction | 格子內容排列的方嚮 | `horizontal` \| `vertical` | `vertical` |
+| onClick | 宮格子項點擊事件 | `(index) => void` | `-` |
 
-### Grid.Item Events
+## Grid.Item
 
-| 屬性 | 說明 | 回調參數 |
-|-|-|-|
-| onClick | 點擊格子時觸發 | `event: Event` |
+### Props
 
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| text | 文字 | `string` \| `ReactNode` | `-` |
+| onClick | 點擊格子時觸發 | `(event: Event) => void` | `-` |
 
 ## 主題定制
 
@@ -274,12 +281,11 @@ export default App
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 默認值 |
-| --- | --- |
-| --nutui-grid-border-color | `#f5f6f7` |
-| --nutui-grid-item-content-padding | `16px 8px` |
-| --nutui-grid-item-content-bg-color | `$white` |
-| --nutui-grid-item-text-margin | `8px` |
-| --nutui-grid-item-text-color | `$gray1` |
-| --nutui-grid-item-icon-color | `$gray1` |
-| --nutui-grid-item-text-font-size | `$font-size-1` |
+| 名稱 | 說明 | 默認值 |
+| --- | --- | --- |
+| \--nutui-grid-border-color | 邊框顏色 | `#f5f6f7` |
+| \--nutui-grid-item-content-padding | 內邊距 | `16px 8px` |
+| \--nutui-grid-item-content-bg-color | 背景 | `$white` |
+| \--nutui-grid-item-text-margin | 外邊距 | `8px` |
+| \--nutui-grid-item-text-color | 文字顏色 | `$gray1` |
+| \--nutui-grid-item-text-font-size | 文字字體大小 | `$font-size-1` |

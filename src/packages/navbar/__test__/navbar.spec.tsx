@@ -55,15 +55,15 @@ test('should render placeholder element when using placeholder prop', () => {
 })
 
 test('should emit click-back event when clicking back text', () => {
-  const onClickBack = jest.fn()
+  const onBackClick = jest.fn()
   const { container } = render(
-    <NavBar back="返回" onClickBack={onClickBack}>
+    <NavBar back="返回" onBackClick={onBackClick}>
       订单详情
     </NavBar>
   )
 
   fireEvent.click(container.querySelectorAll('.nut-navbar__left__back')[0])
-  expect(onClickBack).toBeCalled()
+  expect(onBackClick).toBeCalled()
 })
 
 test('should change z-index when using z-index prop', () => {

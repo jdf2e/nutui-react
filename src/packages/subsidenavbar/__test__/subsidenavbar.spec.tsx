@@ -31,9 +31,7 @@ test('navigation should be hide', async () => {
   )
 })
 test('should emit titleClick event', async () => {
-  const titleClick = jest.fn(({ title, value, isShow }) => {
-    console.log('titleClick>>>>', title, value, isShow)
-  })
+  const titleClick = jest.fn()
   const { getByTestId } = render(
     <>
       <SubSideNavBar

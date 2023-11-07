@@ -81,7 +81,7 @@ const SearchBarDemo = () => {
   const [lightTheme, setLightTheme] = useState(false)
 
   const [value, setValue] = useState('')
-  const change = (val: string, e: Event) => {
+  const change = (val: string, e: React.ChangeEvent<HTMLInputElement>) => {
     setValue(val)
   }
 
@@ -105,7 +105,7 @@ const SearchBarDemo = () => {
             nutuiSearchbarInputTextAlign: 'right',
           }}
         >
-          <SearchBar onSearch={(value) => Taro.showToast({ title: value })} />
+          <SearchBar onSearch={() => toastShow()} />
         </ConfigProvider>
         <h2>{translated.title4}</h2>
         <SearchBar
@@ -153,7 +153,9 @@ const SearchBarDemo = () => {
         />
         <h2>{translated.title6}</h2>
         <SearchBar
-          onChange={(val: string, e: Event) => change(val, e)}
+          onChange={(val: string, e: React.ChangeEvent<HTMLInputElement>) =>
+            change(val, e)
+          }
           maxLength={10}
         />
         <div

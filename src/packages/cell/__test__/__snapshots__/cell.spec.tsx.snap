@@ -20,9 +20,6 @@ exports[`prop  1`] = `
     >
       https://m.jd.com/
     </div>
-    <div
-      class="nut-cell__divider"
-    />
   </div>
 </div>
 `;
@@ -53,9 +50,6 @@ exports[`prop title extra description test 1`] = `
     >
       描述文字
     </div>
-    <div
-      class="nut-cell__divider"
-    />
   </div>
 </div>
 `;
@@ -82,9 +76,6 @@ exports[`slot default test 1`] = `
     >
       描述文字
     </div>
-    <div
-      class="nut-cell__divider"
-    />
   </div>
 </div>
 `;
@@ -115,9 +106,6 @@ exports[`slot extra 1`] = `
         />
       </div>
     </div>
-    <div
-      class="nut-cell__divider"
-    />
   </div>
 </div>
 `;

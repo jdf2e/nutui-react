@@ -2,7 +2,7 @@ import React from 'react'
 import { My, Right } from '@nutui/icons-react-taro'
 import Taro, { redirectTo, navigateTo } from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Switch, Cell, CellGroup } from '@/packages/nutui.react.taro'
+import { Switch, Cell } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 import '@/packages/cell/demo.scss'
 
@@ -29,7 +29,7 @@ interface T {
 const CellDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       extra: '描述文字',
       description: '使用 nut-cell-group 支持 title description',
       title: '我是标题',
@@ -48,7 +48,7 @@ const CellDemo = () => {
       clickEventToast: '点击事件',
     },
     'zh-TW': {
-      basic: '基本用法',
+      basic: '基础用法',
       extra: '描述文字',
       description: '使用 nut-cell-group 支持 title description',
       title: '我是標題',
@@ -74,7 +74,7 @@ const CellDemo = () => {
       title1: 'Description',
       title2: 'Click Test',
       title3: 'Round Radius 0',
-      title4: 'Link | CellGroup Usage',
+      title4: 'Link | Cell.Group Usage',
       title5: 'Vertical Center',
       title6: 'Customize the title area',
       title7: 'Grouping usage',
@@ -141,9 +141,9 @@ const CellDemo = () => {
           }
           extra={translated.extra}
         />
-        <CellGroup title={translated.customRight}>
+        <Cell.Group title={translated.customRight}>
           <Cell title="Switch" extra={<Switch defaultChecked />} />
-        </CellGroup>
+        </Cell.Group>
         <h2>{translated.title5}</h2>
         <Cell
           align="center"
@@ -151,7 +151,7 @@ const CellDemo = () => {
           description={translated.title1}
           extra={translated.extra}
         />
-        <CellGroup
+        <Cell.Group
           title={translated.title4}
           description={translated.description}
         >
@@ -175,15 +175,15 @@ const CellDemo = () => {
               event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
             ) => onJumpclick(event, '/pages/index/index')}
           />
-        </CellGroup>
-        <CellGroup
+        </Cell.Group>
+        <Cell.Group
           divider={false}
           title={translated.title7}
           description={translated.description1}
         >
           <Cell title={translated.title} extra={translated.extra} />
           <Cell title={translated.title} extra={translated.extra} />
-        </CellGroup>
+        </Cell.Group>
       </div>
     </>
   )

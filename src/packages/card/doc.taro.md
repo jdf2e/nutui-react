@@ -6,17 +6,17 @@
 
 ## 安装
 
-```js
+```tsx
 import { Card, Price, Tag } from '@nutui/nutui-react-taro'
 ```
 
 ## 代码演示
 
-### 基本用法
+### 基础用法
 
 :::demo
 
-```ts
+```tsx
 import React from 'react'
 import { Card, Price, Tag } from '@nutui/nutui-react-taro'
 
@@ -40,9 +40,7 @@ const App = () => {
       shopDescription={state.shopDescription}
       delivery={state.delivery}
       shopName={state.shopName}
-    >
-     
-    </Card>
+     />
   )
 }
 export default App
@@ -54,7 +52,7 @@ export default App
 
 :::demo
 
-```ts
+```tsx
 import React from "react";
 import { Card, Price, Tag } from '@nutui/nutui-react-taro';
 
@@ -97,8 +95,7 @@ const App = () => {
         {['鲜活', '礼盒', '国产'].map((item) => {
         return (
             <span style = { wordStyles } className = "word" key = { item } >{ item }</span>)})}
-        </div>}>
-    </Card>
+        </div>} />
 );
 };
 export default App;
@@ -111,7 +108,7 @@ export default App;
 
 :::demo
 
-```ts
+```tsx
 import React from 'react'
 import { Card, Price, Tag } from '@nutui/nutui-react-taro'
 
@@ -149,7 +146,7 @@ const App = () => {
           alt=""
         />
       }
-    ></Card>
+     />
   )
 }
 export default App
@@ -161,7 +158,7 @@ export default App
 
 :::demo
 
-```ts
+```tsx
 import React from "react";
 import { Card, Price, Tag } from '@nutui/nutui-react-taro';
 
@@ -197,7 +194,7 @@ export default App;
 
 :::demo
 
-```ts
+```tsx
 import React from "react";
 import { Card, Price, Tag } from '@nutui/nutui-react-taro';
 
@@ -222,7 +219,7 @@ const App = () => {
         shopDescription = { state.shopDescription }
         delivery = { state.delivery }
         shopName = { state.shopName }
-        extra = { < div style = {{fontSize: '12px'}}>自定义</div>}></Card>
+        extra = { < div style = {{fontSize: '12px'}}>自定义</div>} />
     );
 };
 export default App;

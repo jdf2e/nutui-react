@@ -4,6 +4,7 @@ import React, {
   useEffect,
   ReactElement,
   ReactPortal,
+  ReactNode,
 } from 'react'
 import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
@@ -18,6 +19,7 @@ import {
 } from '@/packages/overlay/overlay.taro'
 import Overlay from '@/packages/overlay/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
+import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
 
 type Teleport = HTMLElement | (() => HTMLElement) | null
 
@@ -28,15 +30,17 @@ export interface PopupProps extends OverlayProps {
   overlayClassName: string
   closeable: boolean
   closeIconPosition: string
-  closeIcon: React.ReactNode
+  closeIcon: ReactNode
+  left?: ReactNode
+  title?: ReactNode
   destroyOnClose: boolean
   portal: Teleport
   overlay: boolean
   round: boolean
   onOpen: () => void
   onClose: () => void
-  onClickOverlay: (e: ITouchEvent) => boolean | void
-  onClickCloseIcon: (e: ITouchEvent) => boolean | void
+  onOverlayClick: (e: ITouchEvent) => boolean | void
+  onCloseIconClick: (e: ITouchEvent) => boolean | void
 }
 
 const defaultProps = {
@@ -54,15 +58,17 @@ const defaultProps = {
   round: false,
   onOpen: () => {},
   onClose: () => {},
-  onClickOverlay: (e: ITouchEvent) => true,
-  onClickCloseIcon: (e: ITouchEvent) => true,
+  onOverlayClick: (e: ITouchEvent) => true,
+  onCloseIconClick: (e: ITouchEvent) => true,
   ...defaultOverlayProps,
 } as PopupProps
 
-let _zIndex = 2000
+// 默认1000，参看variables
+const _zIndex = 1100
 
 export const Popup: FunctionComponent<
-  Partial<PopupProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
+  Partial<PopupProps> &
+    Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick' | 'title'>
 > = (props) => {
   const {
     children,
@@ -77,6 +83,8 @@ export const Popup: FunctionComponent<
     closeable,
     closeIconPosition,
     closeIcon,
+    left,
+    title,
     style,
     transition,
     round,
@@ -86,27 +94,26 @@ export const Popup: FunctionComponent<
     portal,
     onOpen,
     onClose,
-    onClickOverlay,
-    onClickCloseIcon,
+    onOverlayClick,
+    onCloseIconClick,
     afterShow,
     afterClose,
     onClick,
-  } = props
-
-  const [index, setIndex] = useState(zIndex || _zIndex)
+  } = { ...defaultProps, ...props }
+  let innerIndex = zIndex || _zIndex
+  const [index, setIndex] = useState(innerIndex)
   const [innerVisible, setInnerVisible] = useState(visible)
   const [showChildren, setShowChildren] = useState(true)
   const [transitionName, setTransitionName] = useState('')
-
+  const refObject = useLockScrollTaro(innerVisible && lockScroll)
   const classPrefix = 'nut-popup'
   const baseStyle = {
     zIndex: index,
-    animationDuration: `${duration}s`,
   }
 
   const overlayStyles = {
     ...overlayStyle,
-    ...baseStyle,
+    '--nutui-overlay-zIndex': index,
   }
 
   const popStyles = {
@@ -129,7 +136,7 @@ export const Popup: FunctionComponent<
   const open = () => {
     if (!innerVisible) {
       setInnerVisible(true)
-      setIndex(++_zIndex)
+      setIndex(++innerIndex)
     }
     if (destroyOnClose) {
       setShowChildren(true)
@@ -143,15 +150,16 @@ export const Popup: FunctionComponent<
       if (destroyOnClose) {
         setTimeout(() => {
           setShowChildren(false)
-        }, Number(duration) * 1000)
+        }, Number(duration))
       }
       onClose && onClose()
     }
   }
 
   const onHandleClickOverlay = (e: ITouchEvent) => {
+    e.stopPropagation()
     if (closeOnOverlayClick) {
-      const closed = onClickOverlay && onClickOverlay(e)
+      const closed = onOverlayClick && onOverlayClick(e)
       closed && close()
     }
   }
@@ -161,7 +169,7 @@ export const Popup: FunctionComponent<
   }
 
   const onHandleClickCloseIcon = (e: ITouchEvent) => {
-    const closed = onClickCloseIcon && onClickCloseIcon(e)
+    const closed = onCloseIconClick && onCloseIconClick(e)
     closed && close()
   }
 
@@ -205,23 +213,39 @@ export const Popup: FunctionComponent<
     }
     return null
   }
+
+  const renderTitle = () => {
+    return (
+      <>
+        {position === 'bottom' && (
+          <>
+            {left && <View className={`${classPrefix}-left-icon`}>{left}</View>}
+            {title && <View className={`${classPrefix}-title`}>{title}</View>}
+          </>
+        )}
+      </>
+    )
+  }
   const renderPop = () => {
     return (
       <CSSTransition
         classNames={transitionName}
         unmountOnExit
-        timeout={500}
+        timeout={duration}
         in={innerVisible}
         onEntered={onHandleOpened}
         onExited={onHandleClosed}
       >
         <View
+          ref={refObject}
           style={popStyles}
           className={popClassName}
           onClick={onHandleClick}
+          catchMove={lockScroll}
         >
-          {showChildren ? children : ''}
+          {renderTitle()}
           {renderIcon()}
+          {showChildren ? children : ''}
         </View>
       </CSSTransition>
     )
@@ -237,7 +261,6 @@ export const Popup: FunctionComponent<
               className={overlayClassName}
               visible={innerVisible}
               closeOnOverlayClick={closeOnOverlayClick}
-              zIndex={zIndex}
               lockScroll={lockScroll}
               duration={duration}
               onClick={onHandleClickOverlay}

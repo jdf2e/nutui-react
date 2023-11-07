@@ -75,6 +75,7 @@ const DialogDemo = () => {
           title={translated.basic}
           onClick={() => {
             Dialog.alert({
+              className: 'dialog-func',
               title: translated.basic,
               content: translated.content,
             })
@@ -162,6 +163,7 @@ const DialogDemo = () => {
           }}
         />
         <Dialog
+          className="test-dialog"
           title={translated.title1}
           visible={visible1}
           onConfirm={() => setVisible1(false)}

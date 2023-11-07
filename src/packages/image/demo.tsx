@@ -9,7 +9,7 @@ import Cell from '@/packages/cell'
 const ImageDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       fill: '填充模式',
       position: '图片位置',
       circle: '圆形图片',
@@ -69,7 +69,6 @@ const ImageDemo = () => {
         <Cell>
           <Image
             src={src}
-            width="100%"
             onClick={() => {
               console.log('click image')
             }}
@@ -82,7 +81,7 @@ const ImageDemo = () => {
             {fits.map((i) => {
               return (
                 <Col span="8" key={i}>
-                  <Image src={src} width="100" height="100" fit={i} />
+                  <Image src={src} width="80" height="80" fit={i} />
                   <div className="image-text">{i}</div>
                 </Col>
               )
@@ -98,8 +97,8 @@ const ImageDemo = () => {
                 <Col span="8" key={i}>
                   <Image
                     src={src}
-                    width="100"
-                    height="100"
+                    width="80"
+                    height="80"
                     fit="contain"
                     position={i}
                   />
@@ -113,8 +112,8 @@ const ImageDemo = () => {
                 <Col span="8" key={i}>
                   <Image
                     src={src}
-                    width="100"
-                    height="100"
+                    width="80"
+                    height="80"
                     fit="cover"
                     position={i}
                   />

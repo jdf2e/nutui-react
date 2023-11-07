@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Price } from './price'
 import { Cell } from '../cell/cell'
-import { CellGroup } from '../cellgroup/cellgroup'
 import { useTranslate } from '@/sites/assets/locale'
 
 interface T {
@@ -61,7 +60,7 @@ const PriceDemo = () => {
   }, [])
   return (
     <div className="demo">
-      <CellGroup title={translated.title1}>
+      <Cell.Group title={translated.title1}>
         <Cell>
           <Price price={0} size="small" thousands />
         </Cell>
@@ -71,7 +70,7 @@ const PriceDemo = () => {
         <Cell>
           <Price price={0} size="large" thousands />
         </Cell>
-      </CellGroup>
+      </Cell.Group>
       <h2>{translated.title2}</h2>
       <Cell>
         <Price price={8888} digits={0} size="normal" thousands />

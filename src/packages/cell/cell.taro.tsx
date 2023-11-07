@@ -1,6 +1,8 @@
-import React, { FunctionComponent, ReactNode } from 'react'
+import React, { FunctionComponent, ReactNode, useContext } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { CellGroup } from '@/packages/cellgroup/cellgroup.taro'
+import CellGroupContext from '@/packages/cellgroup/context'
 
 export interface CellProps extends BasicComponent {
   title: ReactNode
@@ -25,7 +27,8 @@ const classPrefix = 'nut-cell'
 
 export const Cell: FunctionComponent<
   Partial<CellProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
-> = (props) => {
+> & { Group: typeof CellGroup } = (props) => {
+  const ctx = useContext(CellGroupContext)
   const {
     children,
     onClick,
@@ -87,12 +90,13 @@ export const Cell: FunctionComponent<
               {extra}
             </div>
           ) : null}
-          <div className={`${classPrefix}__divider`} />
         </>
       )}
+      {ctx?.divider ? <div className={`${classPrefix}__divider`} /> : null}
     </div>
   )
 }
 
 Cell.defaultProps = defaultProps
 Cell.displayName = 'NutCell'
+Cell.Group = CellGroup

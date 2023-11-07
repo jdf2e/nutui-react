@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useState, useRef, useEffect } from 'react'
 import { useReady, nextTick, createSelectorQuery } from '@tarojs/taro'
 import classNames from 'classnames'
-import { getRectByTaro } from '@/utils/use-client-rect'
+import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type EllipsisDirection = 'start' | 'end' | 'middle'
@@ -213,7 +213,7 @@ export const Ellipsis: FunctionComponent<
       if (direction === 'end') {
         ellipsis.current.leading = ellipsis.current?.leading?.slice(
           0,
-          ellipsis.current?.leading.length - 1
+          (ellipsis.current?.leading?.length || 0) - 1
         )
       } else {
         ellipsis.current.tailing = ellipsis.current?.tailing?.slice(

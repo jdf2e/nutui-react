@@ -104,10 +104,10 @@ test('should not trigger click when disabled props to be true', () => {
   expect(container.querySelector('input')?.value).toBe('1')
 })
 
-test('should not focus input when readonly props to be true', () => {
+test('should not focus input when readOnly props to be true', () => {
   const focus = jest.fn()
   const { container } = render(
-    <InputNumber readonly defaultValue={2} onFocus={focus} />
+    <InputNumber readOnly defaultValue={2} onFocus={focus} />
   )
   const iconMinus = container.querySelectorAll('.nut-icon-Minus')[0]
   fireEvent.click(iconMinus)

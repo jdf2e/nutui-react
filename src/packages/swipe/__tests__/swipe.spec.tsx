@@ -15,7 +15,7 @@ test('base swipe', () => {
         </Button>
       }
     >
-      <Cell title={'基础用法'} radius={0} />
+      <Cell title="基础用法" radius={0} />
     </Swipe>
   )
   expect(

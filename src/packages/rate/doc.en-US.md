@@ -4,10 +4,9 @@
 
 Use for quick rating actions, or to showcase reviews.
 
-### Install
+## Install
 
-```ts
-// react
+```tsx
 import { Rate } from '@nutui/nutui-react';
 ```
 
@@ -16,6 +15,7 @@ import { Rate } from '@nutui/nutui-react';
 ### Basic Usage
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
@@ -28,6 +28,7 @@ const App = () => {
 export default App;
 
 ```
+
 :::
 
 ### Controlled Mode
@@ -52,6 +53,7 @@ export default App;
 ### Half Star
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
@@ -64,10 +66,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
+
 ### Custom Icon
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
@@ -84,10 +89,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
+
 ### Custom Quantity
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
@@ -100,10 +108,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
+
 ### Set Minimum Quantity (Support Half Star)
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
@@ -116,10 +127,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
+
 ### Custom Color
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
@@ -136,10 +150,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
+
 ### Disabled State
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
@@ -152,10 +169,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
+
 ### ReadOnly State
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
@@ -168,10 +188,13 @@ const App = () => {
 export default App;
 
 ```
+
 :::
+
 ### OnChange Event
 
 :::demo
+
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
@@ -192,18 +215,18 @@ export default App;
 
 ### Props
 
-| Property           | Description                                 | Type    | Default    |
-|----------------|-------------------------------------------|---------|-------------|
-| defaultValue             | Uncontrolled star value | number | `0`           |
-| value             | Controlled star value | number | `0`           |
-| count          | total number of stars                    | number | `5`           |
-| min  | At least the number of STAR              | number | `0`           |
-| uncheckedIcon | Use icon (unchecked) | ReactNode  | `star-n`      |
-| checkedIcon   | Use icon (checked) | ReactNode  | `star-n` |
-| allowHalf     | Half star or not                         | boolean | `false`       |
-| readOnly       |Read only                              | boolean | `false`       |
-| disabled       | Disable or not                          | boolean | `false`       |
-| onChange | Event triggered when the current score is modified | (value: number) => void | - |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| defaultValue | Uncontrolled star value | `number` | `0` |
+| value | Controlled star value | `number` | `0` |
+| count | total number of stars | `number` | `5` |
+| min | At least the number of STAR | `number` | `0` |
+| uncheckedIcon | Use icon (unchecked) | `ReactNode` | `star-n` |
+| checkedIcon | Use icon (checked) | `ReactNode` | `star-n` |
+| allowHalf | Half star or not | `boolean` | `false` |
+| readOnly | Read only | `boolean` | `false` |
+| disabled | Disable or not | `boolean` | `false` |
+| onChange | Event triggered when the current score is modified | `(value: number) => void` | `-` |
 
 ## Theme
 
@@ -213,6 +236,6 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default Value |
 | --- | --- | --- |
-| --nutui-rate-item-margin | rate item margin | `14px` |
-| --nutui-rate-icon-color | checked icon color | `$primary-color` |
-| --nutui-rate-icon-void-color | unchecked icon color  | `$disable-color` |
+| \--nutui-rate-item-margin | rate item margin | `14px` |
+| \--nutui-rate-icon-color | checked icon color | `$primary-color` |
+| \--nutui-rate-icon-void-color | unchecked icon color | `$disable-color` |

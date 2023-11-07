@@ -15,12 +15,6 @@
         "show": true
       },
       {
-        "name": "starttaro-react",
-        "cName": "快速上手",
-        "eName": "WeChat",
-        "show": true
-      },
-      {
         "name": "theme-react",
         "cName": "主题定制",
         "eName": "Customize Theme",
@@ -131,7 +125,7 @@
           "desc": "增强版的 img 标签，提供多种图片填充模式，支持图片加载中提示、加载失败提示。",
           "sort": 8,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "vickyYE"
         },
         {
@@ -217,6 +211,17 @@
           "show": false,
           "exportEmpty": true,
           "author": "yushuang24"
+        },
+        {
+          "version": "2.0.0",
+          "name": "Space",
+          "type": "component",
+          "cName": "间距",
+          "desc": "元素之间的间距，保持相同的宽度",
+          "sort": 8,
+          "show": true,
+          "taro": true,
+          "author": "ivan"
         },
         {
           "version": "2.0.0",
@@ -365,7 +370,7 @@
       "enName": "dentry",
       "packages": [
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Address",
           "type": "component",
           "cName": "地址",
@@ -376,7 +381,7 @@
           "author": "yangxiaolu"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Calendar",
           "type": "component",
           "cName": "日历",
@@ -387,7 +392,7 @@
           "author": "szg2008"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "CalendarItem",
           "type": "component",
           "cName": "日历",
@@ -396,6 +401,17 @@
           "show": false,
           "exportEmpty": true,
           "author": "szg2008"
+        },
+        {
+          "version": "2.0.0",
+          "name": "CalendarCard",
+          "type": "component",
+          "cName": "日历卡片",
+          "desc": "日历卡片，支持多种选择类型",
+          "sort": 10,
+          "show": true,
+          "taro": true,
+          "author": "eiinu"
         },
         {
           "version": "2.0.0",
@@ -431,7 +447,7 @@
           "author": "oasis"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "DatePicker",
           "type": "component",
           "cName": "日期选择器",
@@ -442,25 +458,25 @@
           "author": "dsj"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "Form",
           "type": "component",
           "cName": "表单",
           "desc": "用于数据录入、校验，支持输入框、单选框、复选框等类型。",
           "sort": 19,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "hanyuxinting"
         },
         {
-          "version": "1.0.0",
+          "version": "2.0.0",
           "name": "FormItem",
           "type": "component",
           "cName": "表单项",
           "desc": "用于数据录入、校验，支持输入框、单选框、复选框等类型。",
           "sort": 19,
           "show": false,
-          "taro": false,
+          "taro": true,
           "exportEmpty": true,
           "author": "hanyuxinting"
         },
@@ -717,6 +733,17 @@
         },
         {
           "version": "2.0.0",
+          "name": "Loading",
+          "type": "component",
+          "cName": "加载中",
+          "desc": "加载图标，用于显示正在加载中的状态",
+          "sort": 15,
+          "show": true,
+          "taro": true,
+          "author": "mike8625"
+        },
+        {
+          "version": "2.0.0",
           "name": "NoticeBar",
           "type": "component",
           "cName": "公告栏",
@@ -751,6 +778,17 @@
         },
         {
           "version": "2.0.0",
+          "name": "Popup",
+          "sort": 9,
+          "cName": "弹出层",
+          "type": "component",
+          "show": true,
+          "taro": true,
+          "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
+          "author": "szg2008"
+        },
+        {
+          "version": "2.0.0",
           "name": "PullToRefresh",
           "type": "component",
           "cName": "下拉刷新",
@@ -781,17 +819,6 @@
           "show": true,
           "taro": true,
           "author": "Ymm0008"
-        },
-        {
-          "version": "2.0.0",
-          "name": "Popup",
-          "sort": 9,
-          "cName": "弹出层",
-          "type": "component",
-          "show": true,
-          "taro": true,
-          "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
-          "author": "szg2008"
         },
         {
           "version": "2.0.0",
@@ -945,18 +972,6 @@
         },
         {
           "version": "2.0.0",
-          "name": "VirtualList",
-          "type": "component",
-          "cName": "虚拟列表",
-          "desc": "长列表渲染",
-          "sort": 20,
-          "tarodoc": true,
-          "show": true,
-          "taro": true,
-          "author": "hx"
-        },
-        {
-          "version": "2.0.0",
           "name": "Pagination",
           "type": "component",
           "cName": "分页",
@@ -1056,6 +1071,17 @@
         },
         {
           "version": "2.0.0",
+          "name": "Tour",
+          "type": "component",
+          "cName": "引导",
+          "desc": "用于引导用户了解产品功能的气泡组件。自 4.0 版本开始提供该组件。",
+          "sort": 24,
+          "show": true,
+          "taro": true,
+          "author": "swag~jun"
+        },
+        {
+          "version": "2.0.0",
           "name": "Video",
           "type": "component",
           "cName": "视频播放器",
@@ -1065,6 +1091,18 @@
           "show": true,
           "taro": true,
           "author": "swag~jun"
+        },
+        {
+          "version": "2.0.0",
+          "name": "VirtualList",
+          "type": "component",
+          "cName": "虚拟列表",
+          "desc": "长列表渲染",
+          "sort": 20,
+          "tarodoc": true,
+          "show": true,
+          "taro": true,
+          "author": "hx"
         }
       ]
     },

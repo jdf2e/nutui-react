@@ -146,7 +146,11 @@ export const Input = forwardRef(
       }
       setValue(val)
       const eventHandler = props[trigger]
-      if (eventHandler && typeof eventHandler === 'function') {
+      if (
+        eventHandler &&
+        typeof eventHandler === 'function' &&
+        trigger !== 'onChange'
+      ) {
         eventHandler(val)
       }
     }
@@ -164,7 +168,9 @@ export const Input = forwardRef(
     const handleBlur = (event: Event) => {
       const val: any = (event.target as any).value
       updateValue(val, 'onBlur')
-      setActive(false)
+      setTimeout(() => {
+        setActive(false)
+      }, 200)
     }
 
     const inputType = (type: string) => {

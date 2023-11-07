@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { CircleClose, Heart } from '@nutui/icons-react-taro'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import '@/packages/popup/demo.scss'
 import { Cell, Popup } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
 interface T {
   ce5c5446: string
@@ -194,6 +194,8 @@ const PopupDemo = () => {
           closeable
           closeIcon={<CircleClose size="12px" />}
           visible={showIcon}
+          left="返回"
+          title="我是标题"
           style={{ height: '20%' }}
           position="bottom"
           onClose={() => {
@@ -246,8 +248,8 @@ const PopupDemo = () => {
           onClose={() => {
             setShowOverlayStop(false)
           }}
-          onClickOverlay={() => {
-            console.log('onClickOverlay')
+          onOverlayClick={() => {
+            console.log('onOverlayClick')
             return false
           }}
         >
@@ -269,8 +271,8 @@ const PopupDemo = () => {
           onClose={() => {
             setShowIcon(false)
           }}
-          onClickCloseIcon={() => {
-            console.log('onClickCloseIcon')
+          onCloseIconClick={() => {
+            console.log('onCloseIconClick')
           }}
         />
 
@@ -295,7 +297,7 @@ const PopupDemo = () => {
         {/* <h2>{translated.ea3d02f2}</h2>
         <Cell
           title={translated.ea3d02f2}
-          
+
           onClick={() => {
             setShowMountNode(true)
           }}

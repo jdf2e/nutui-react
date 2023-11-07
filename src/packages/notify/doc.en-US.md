@@ -6,7 +6,7 @@ Show message tips at the top of the page
 
 ## Install
 
-```javascript
+```tsx
 import { Notify } from '@nutui/nutui-react';
 ```
 

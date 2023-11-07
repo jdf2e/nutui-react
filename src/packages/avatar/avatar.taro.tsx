@@ -4,14 +4,15 @@ import React, {
   useRef,
   FunctionComponent,
   useContext,
-  MouseEventHandler,
 } from 'react'
+import type { MouseEvent } from 'react'
+import Taro, { getEnv } from '@tarojs/taro'
 import classNames from 'classnames'
+import { My } from '@nutui/icons-react-taro'
 import Image from '@/packages/image/index.taro'
 import { AvatarContext } from '@/packages/avatargroup/context'
-import { My } from '@nutui/icons-react-taro'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import AvatarGroup from '@/packages/avatargroup/index.taro'
 
 export interface AvatarProps extends BasicComponent {
   size: string
@@ -22,7 +23,7 @@ export interface AvatarProps extends BasicComponent {
   fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
   src: string
   alt: string
-  onClick: (e: MouseEvent) => void
+  onClick: (e: MouseEvent<HTMLDivElement>) => void
   onError: () => void
 }
 
@@ -43,7 +44,7 @@ const defaultProps = {
 const classPrefix = `nut-avatar`
 export const Avatar: FunctionComponent<
   Partial<AvatarProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
-> = (props) => {
+> & { Group: typeof AvatarGroup } = (props) => {
   const {
     children,
     size,
@@ -105,13 +106,26 @@ export const Avatar: FunctionComponent<
     }
   }, [])
 
+  const isAvatarInClassList = (element: any) => {
+    if (getEnv() === Taro.ENV_TYPE.WEB) {
+      return (
+        element.classList[0] === 'nut-avatar' ||
+        element.classList.values().next().value === 'nut-avatar'
+      )
+    }
+
+    return (
+      element.classList?.tokenList[0] === 'nut-avatar' ||
+      element.classList?.tokenList.values().next().value === 'nut-avatar'
+    )
+  }
+
   const avatarLength = (children: any) => {
     for (let i = 0; i < children.length; i++) {
       if (
         children[i] &&
         children[i].classList &&
-        (children[i].classList[0] === 'nut-avatar' ||
-          children[i].classList.values().next().value === 'nut-avatar')
+        isAvatarInClassList(children[i])
       ) {
         children[i].setAttribute('data-index', i + 1)
       }
@@ -135,7 +149,7 @@ export const Avatar: FunctionComponent<
     }
   }
 
-  const clickAvatar: MouseEventHandler<HTMLDivElement> = (e: any) => {
+  const clickAvatar = (e: MouseEvent<HTMLDivElement>) => {
     onClick && onClick(e)
   }
 
@@ -159,7 +173,6 @@ export const Avatar: FunctionComponent<
                   className="avatar-img"
                   src={src}
                   style={{ objectFit: fit }}
-                  alt={alt}
                   onError={errorEvent}
                 />
               )}
@@ -178,7 +191,9 @@ export const Avatar: FunctionComponent<
             <div className="text">
               {parent?.propAvatarGroup?.maxContent
                 ? parent?.propAvatarGroup?.maxContent
-                : `+ ${avatarIndex - parent?.propAvatarGroup?.max}`}
+                : `+ ${
+                    avatarIndex - Number(parent?.propAvatarGroup?.max || 0)
+                  }`}
             </div>
           )}
         </div>
@@ -189,3 +204,4 @@ export const Avatar: FunctionComponent<
 
 Avatar.defaultProps = defaultProps
 Avatar.displayName = 'NutAvatar'
+Avatar.Group = AvatarGroup

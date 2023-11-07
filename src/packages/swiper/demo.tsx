@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Left, Right } from '@nutui/icons-react'
-import SwiperItem from '@/packages/swiperitem'
+// import Swiper.Item from '@/packages/swiperitem'
 import Swiper from '@/packages/swiper'
 import '@/packages/swiper/demo.scss'
 import { useTranslate } from '../../sites/assets/locale'
@@ -15,12 +15,13 @@ interface T {
   vertical: string
   horizontalCenter: string
   verticalCenter: string
+  multiItems: string
 }
 
 const SwiperDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基本用法',
+      basic: '基础用法',
       asyc: '异步加载(3s)',
       dynamicDel: '动态加载',
       size: '自定义大小',
@@ -29,6 +30,7 @@ const SwiperDemo = () => {
       vertical: '垂直方向',
       horizontalCenter: '水平居中展示',
       verticalCenter: '垂直居中展示',
+      multiItems: '一屏多个数据时',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -40,6 +42,7 @@ const SwiperDemo = () => {
       vertical: 'Vertical direction',
       horizontalCenter: 'Horizontal center display',
       verticalCenter: 'Vertical center display',
+      multiItems: 'many datas in a frame',
     },
   })
   const swiperRef = React.useRef<any>(null)
@@ -101,11 +104,11 @@ const SwiperDemo = () => {
           onChange={onChange}
           indicator
         >
-          {list.map((item) => {
+          {list.map((item, index) => {
             return (
-              <SwiperItem key={item}>
-                <img src={item} alt="" />
-              </SwiperItem>
+              <Swiper.Item key={item}>
+                <img src={item} onClick={() => console.log(index)} alt="" />
+              </Swiper.Item>
             )
           })}
         </Swiper>
@@ -125,9 +128,9 @@ const SwiperDemo = () => {
         >
           {list1.map((item) => {
             return (
-              <SwiperItem key={item}>
+              <Swiper.Item key={item}>
                 <img src={item} alt="" />
-              </SwiperItem>
+              </Swiper.Item>
             )
           })}
         </Swiper>
@@ -147,9 +150,9 @@ const SwiperDemo = () => {
         >
           {list2.map((item) => {
             return (
-              <SwiperItem key={item}>
+              <Swiper.Item key={item}>
                 <img src={item} alt="" />
-              </SwiperItem>
+              </Swiper.Item>
             )
           })}
         </Swiper>
@@ -160,9 +163,9 @@ const SwiperDemo = () => {
         <Swiper defaultValue={initPage4} width="300" height={height}>
           {list.map((item) => {
             return (
-              <SwiperItem key={item}>
+              <Swiper.Item key={item}>
                 <img src={item} alt="" />
-              </SwiperItem>
+              </Swiper.Item>
             )
           })}
         </Swiper>
@@ -178,9 +181,9 @@ const SwiperDemo = () => {
         >
           {list.map((item) => {
             return (
-              <SwiperItem key={item}>
+              <Swiper.Item key={item}>
                 <img src={item} alt="" />
-              </SwiperItem>
+              </Swiper.Item>
             )
           })}
         </Swiper>
@@ -197,9 +200,9 @@ const SwiperDemo = () => {
         >
           {list.map((item) => {
             return (
-              <SwiperItem key={item}>
+              <Swiper.Item key={item}>
                 <img src={item} alt="" />
-              </SwiperItem>
+              </Swiper.Item>
             )
           })}
         </Swiper>
@@ -224,9 +227,9 @@ const SwiperDemo = () => {
         >
           {list.map((item) => {
             return (
-              <SwiperItem key={item}>
+              <Swiper.Item key={item}>
                 <img src={item} alt="" />
-              </SwiperItem>
+              </Swiper.Item>
             )
           })}
         </Swiper>
@@ -243,9 +246,9 @@ const SwiperDemo = () => {
         >
           {list.map((item) => {
             return (
-              <SwiperItem key={item}>
+              <Swiper.Item key={item}>
                 <img src={item} alt="" />
-              </SwiperItem>
+              </Swiper.Item>
             )
           })}
         </Swiper>
@@ -263,11 +266,38 @@ const SwiperDemo = () => {
         >
           {list.map((item) => {
             return (
-              <SwiperItem key={item}>
+              <Swiper.Item key={item}>
                 <img src={item} alt="" />
-              </SwiperItem>
+              </Swiper.Item>
             )
           })}
+        </Swiper>
+        <h2>{translated.multiItems}</h2>
+        <Swiper loop>
+          <Swiper.Item>
+            <div style={{ display: 'flex' }}>
+              <div style={{ flex: '1', border: '1 red' }}>Item1</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item2</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item3</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item4</div>
+            </div>
+          </Swiper.Item>
+          <Swiper.Item>
+            <div style={{ display: 'flex' }}>
+              <div style={{ flex: '1', border: '1 red' }}>Item5</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item6</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item7</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item8</div>
+            </div>
+          </Swiper.Item>
+          <Swiper.Item>
+            <div style={{ display: 'flex' }}>
+              <div style={{ flex: '1', border: '1 red' }}>Item9</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item10</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item11</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item12</div>
+            </div>
+          </Swiper.Item>
         </Swiper>
       </div>
     </div>

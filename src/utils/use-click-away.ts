@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { isFunction } from './index'
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 type TargetType = Function | HTMLElement | Element
 
 const getTargetElement = (target: TargetType) => {
@@ -19,7 +20,8 @@ const getTargetElement = (target: TargetType) => {
 export default function useClickAway(
   onClickAway: () => void,
   target: TargetType | TargetType[],
-  eventName: string = 'click',
+  eventName = 'click',
+  useCapture: boolean,
   isListener?: boolean,
   outerVar?: boolean
 ) {
@@ -42,13 +44,13 @@ export default function useClickAway(
 
   useEffect(() => {
     if (isListener) {
-      window.addEventListener(eventName, handler, true)
+      window.addEventListener(eventName, handler, useCapture)
     } else {
-      window.removeEventListener(eventName, handler, true)
+      window.removeEventListener(eventName, handler, useCapture)
     }
 
     return () => {
-      window.removeEventListener(eventName, handler, true)
+      window.removeEventListener(eventName, handler, useCapture)
     }
   }, [target])
 }

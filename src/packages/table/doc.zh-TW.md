@@ -1,21 +1,21 @@
-#  Table組件
+# Table組件
 
 ## 介紹
 
 用於展示基礎錶格
 
 ## 安裝
-```ts
-// react
+
+```tsx
 import { Table } from '@nutui/nutui-react';
 ```
 
-
 ## 代碼演示
 
-### 基本用法
+### 基礎用法
 
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table } from '@nutui/nutui-react';
@@ -30,6 +30,13 @@ interface TableColumnProps {
 
 const App = () => {
   const [columns1, setColumns1] = useState<Array<TableColumnProps>>([
+    {
+      title: 'ID',
+      key: 'id',
+      render: (record: any, index) => {
+        return index + 1
+      }
+    },
     {
       title: '姓名',
       key: 'name',
@@ -55,12 +62,12 @@ const App = () => {
     {
       name: 'Tom',
       sex: '男',
-      record: '國小',
+      record: '小學',
     },
     {
       name: 'Lucy',
       sex: '女',
-      record: '大學部',
+      record: '本科',
     },
     {
       name: 'Jack',
@@ -73,10 +80,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 是否顯示邊框，文字對齊
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table } from '@nutui/nutui-react';
@@ -110,12 +120,12 @@ const App = () => {
     {
       name: 'Tom',
       sex: '男',
-      record: '國小',
+      record: '小學',
     },
     {
       name: 'Lucy',
       sex: '女',
-      record: '大學部',
+      record: '本科',
     },
     {
       name: 'Jack',
@@ -132,11 +142,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
-
 ### 顯示總結欄
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table } from '@nutui/nutui-react';
@@ -176,12 +188,12 @@ const App = () => {
     {
       name: 'Tom',
       sex: '男',
-      record: '國小',
+      record: '小學',
     },
     {
       name: 'Lucy',
       sex: '女',
-      record: '大學部',
+      record: '本科',
     },
     {
       name: 'Jack',
@@ -198,10 +210,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 條紋、明暗交替
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table } from '@nutui/nutui-react';
@@ -241,12 +256,12 @@ const App = () => {
     {
       name: 'Tom',
       sex: '男',
-      record: '國小',
+      record: '小學',
     },
     {
       name: 'Lucy',
       sex: '女',
-      record: '大學部',
+      record: '本科',
     },
     {
       name: 'Jack',
@@ -263,10 +278,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 隱藏錶頭
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table } from '@nutui/nutui-react';
@@ -306,12 +324,12 @@ const App = () => {
     {
       name: 'Tom',
       sex: '男',
-      record: '國小',
+      record: '小學',
     },
     {
       name: 'Lucy',
       sex: '女',
-      record: '大學部',
+      record: '本科',
     },
     {
       name: 'Jack',
@@ -328,10 +346,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
-### 無數據預設展示，支援自定義
+### 無數據默認展示，支持自定義
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table } from '@nutui/nutui-react';
@@ -382,10 +403,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
 ### 自定義單元格
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table, Button } from '@nutui/nutui-react';
@@ -416,7 +440,7 @@ const App = () => {
     {
       name: 'Tom',
       sex: '男',
-      record: '國小',
+      record: '小學',
       render: () => {
         return (
           <Button
@@ -432,7 +456,7 @@ const App = () => {
     {
       name: 'Lucy',
       sex: '女',
-      record: '大學部',
+      record: '本科',
       render: () => {
         return <Dongdong height="14px" width="14px" />
       },
@@ -459,10 +483,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
-### 支援異步渲染(5s之後看效果)
+### 支持異步渲染(5s之後看效果)
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table, Button } from '@nutui/nutui-react';
@@ -473,12 +500,12 @@ const App = () => {
     {
       name: 'Tom',
       sex: '男',
-      record: '國小',
+      record: '小學',
     },
     {
       name: 'Lucy',
       sex: '女',
-      record: '大學部',
+      record: '本科',
     },
     {
       name: 'Jack',
@@ -516,10 +543,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
-### 支援排序
+### 支持排序
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table, Button } from '@nutui/nutui-react';
@@ -530,13 +560,13 @@ const App = () => {
     {
       name: 'Tom',
       sex: '男',
-      record: '國小',
+      record: '小學',
       age: 10,
     },
     {
       name: 'Lucy',
       sex: '女',
-      record: '大學部',
+      record: '本科',
       age: 30,
     },
     {
@@ -585,10 +615,13 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
-### 支援排序替換ICON
+### 支持排序替換ICON
+
 :::demo
+
 ```tsx
 import  React, { useState } from "react";
 import { Table, Button } from '@nutui/nutui-react';
@@ -599,13 +632,13 @@ const App = () => {
     {
       name: 'Tom',
       sex: '男',
-      record: '國小',
+      record: '小學',
       age: 10,
     },
     {
       name: 'Lucy',
       sex: '女',
-      record: '大學部',
+      record: '本科',
       age: 30,
     },
     {
@@ -655,46 +688,44 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ## Table
 
 ### Props
 
-| 屬性         | 說明 | 類型   | 預設值           |
-|--------------|----------------|--------|------------------|
-| bordered         | 是否顯示邊框 | 	`boolean` | `true`                |
-| columns         | 錶頭數據 | 	TableColumnProps[] | `[]`                |
-| data         | 錶格數據 | 	Object[] | `[]`                |
-| summary         | 是否顯示簡介 | 	`ReactNode` | -                |
-| striped         | 條紋是否明暗交替 | 	`boolean` | `false`                |
-| showHeader      | 是否顯示錶頭 | 	`boolean` | `true`                |
-| noData         | 自定義無數據 | 	`ReactNode` | -                |
-| onSort  | 點選排序按鈕觸發 | `item: TableColumnProps, data: Array<any>` |
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| bordered | 是否顯示邊框 | `boolean` | `true` |
+| columns | 錶頭數據 | `TableColumnProps[]` | `[]` |
+| data | 錶格數據 | `Object[]` | `[]` |
+| summary | 是否顯示簡介 | `ReactNode` | `-` |
+| striped | 條紋是否明暗交替 | `boolean` | `false` |
+| showHeader | 是否顯示錶頭 | `boolean` | `true` |
+| noData | 自定義無數據 | `ReactNode` | `-` |
+| onSort | 點擊排序按鈕觸發 | `item: TableColumnProps, data: Array<any>` | `-` |
 
 ### TableColumnProps
 
-| 屬性         | 說明 | 類型   | 預設值           |
-|--------------|------------------|--------|------------------|
-| key | 列的唯一標識 | 	`string` | `-`                |
-| title | 錶頭標題 | 	`string` | `-`                |
-| align | 列的對齊方式，可選值left,center,right | 	`string` | `left`                |
-| sorter         | 排序，可選值有 true,function, default, 其中 default錶示點選之後可能會依賴接口, function可以返回具體的排序函數, default錶示採用預設的排序算法 | 	`boolean \| Function \| string` | `-`                |
-| render         | 自定義渲染列數據，優先級高 | 	`Function(record)` | `-`                |
-| sorterIcon       | 排序 icon | 	`ReactNode` | `<DownArrow />`               |
-
-
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| key | 列的唯一標識 | `string` | `-` |
+| title | 錶頭標題 | `string` | `-` |
+| align | 列的對齊方式 | `left` \| `center` \| `right` | `left` |
+| sorter | 排序，可選值有 true,function, default, 其中 default錶示點擊之後可能會依賴接口, function可以返回具體的排序函數, default錶示採用默認的排序算法 | `boolean` \| `Function` \| `string` | `-` |
+| render | 自定義渲染列數據，優先級高 | `Function(record)` | `-` |
+| sorterIcon | 排序 icon | `ReactNode` | `<DownArrow />` |
 
 ## 主題定制
 
-### 樣式變數
+### 樣式變量
 
-組件提供了下列 CSS 變數，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 說明 | 預設值 |
+| 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| --nutui-table-border-color | 錶格的邊框色值 | `#ececec` |
-| --nutui-table-cols-padding | 錶格列的padding值 |`10px` |
-| --nutui-table-tr-even-background-color | 錶格偶數行的背景色 |`$gray4` |
-| --nutui-table-tr-odd-background-color |錶格奇數行的背景色 | `$gray6` |
+| \--nutui-table-border-color | 錶格的邊框色值 | `#ececec` |
+| \--nutui-table-cols-padding | 錶格列的padding值 | `10px` |
+| \--nutui-table-tr-even-background-color | 錶格偶數行的背景色 | `$gray4` |
+| \--nutui-table-tr-odd-background-color | 錶格奇數行的背景色 | `$gray6` |

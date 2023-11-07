@@ -19,14 +19,11 @@ describe('Countdown', () => {
   })
   test('endTime props', async () => {
     const testClick = jest.fn()
-    render(
-      <CountDown endTime={Date.now() + 1 * 1000} onEnd={() => testClick()} />
-    )
+    render(<CountDown endTime={Date.now() + 1 * 1000} onEnd={testClick} />)
     expect(testClick).not.toBeCalled()
-
     await act(async () => {
       await sleep(1000)
-      await waitFor(() => {
+      waitFor(() => {
         expect(testClick).toBeCalled()
       })
     })
@@ -40,7 +37,7 @@ describe('Countdown', () => {
     const countdownEle = container.querySelector('.nut-countdown__block')
     await act(async () => {
       await sleep(1000)
-      await waitFor(() => {
+      waitFor(() => {
         expect(countdownEle?.innerHTML).toBe('00天00时00分00秒')
       })
     })
@@ -79,7 +76,7 @@ describe('Countdown', () => {
       </>
     )
     await act(async () => {
-      await waitFor(() => {
+      waitFor(() => {
         const button1 = container.querySelector('.nut-button') as Element
         const laterShapShot =
           container.querySelector('.nut-countdown')?.innerHTML

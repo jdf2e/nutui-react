@@ -6,6 +6,7 @@ import React, {
   MouseEvent,
   ReactElement,
   ReactPortal,
+  ReactNode,
 } from 'react'
 import { createPortal } from 'react-dom'
 import { CSSTransition } from 'react-transition-group'
@@ -15,6 +16,7 @@ import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
 import { OverlayProps, defaultOverlayProps } from '@/packages/overlay/overlay'
 import Overlay from '@/packages/overlay'
 import { ComponentDefaults } from '@/utils/typings'
+import { useLockScroll } from '@/utils/use-lock-scroll'
 
 type Teleport = HTMLElement | (() => HTMLElement) | null
 
@@ -25,15 +27,17 @@ export interface PopupProps extends OverlayProps {
   overlayClassName: string
   closeable: boolean
   closeIconPosition: string
-  closeIcon: React.ReactNode
+  closeIcon: ReactNode
+  left: ReactNode
+  title: ReactNode
   destroyOnClose: boolean
   portal: Teleport
   overlay: boolean
   round: boolean
   onOpen: () => void
   onClose: () => void
-  onClickOverlay: (e: MouseEvent) => boolean | void
-  onClickCloseIcon: (e: MouseEvent) => boolean | void
+  onOverlayClick: (e: MouseEvent) => boolean | void
+  onCloseIconClick: (e: MouseEvent) => boolean | void
 }
 
 const defaultProps = {
@@ -51,16 +55,16 @@ const defaultProps = {
   round: false,
   onOpen: () => {},
   onClose: () => {},
-  onClickOverlay: (e: MouseEvent) => true,
-  onClickCloseIcon: (e: MouseEvent) => true,
+  onOverlayClick: (e: MouseEvent) => true,
+  onCloseIconClick: (e: MouseEvent) => true,
   ...defaultOverlayProps,
 } as PopupProps
 
 // 默认1000，参看variables
-let _zIndex = 1000
+const _zIndex = 1100
 
 export const Popup: FunctionComponent<
-  Partial<PopupProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<PopupProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > = (props) => {
   const {
     children,
@@ -75,6 +79,8 @@ export const Popup: FunctionComponent<
     closeable,
     closeIconPosition,
     closeIcon,
+    left,
+    title,
     style,
     transition,
     round,
@@ -84,27 +90,27 @@ export const Popup: FunctionComponent<
     portal,
     onOpen,
     onClose,
-    onClickOverlay,
-    onClickCloseIcon,
+    onOverlayClick,
+    onCloseIconClick,
     afterShow,
     afterClose,
     onClick,
-  } = props
-
-  const [index, setIndex] = useState(zIndex || _zIndex)
+  } = { ...defaultProps, ...props }
+  const nodeRef = React.useRef(null)
+  let innerIndex = zIndex || _zIndex
+  const [index, setIndex] = useState(innerIndex)
   const [innerVisible, setInnerVisible] = useState(visible)
   const [showChildren, setShowChildren] = useState(true)
   const [transitionName, setTransitionName] = useState('')
-
+  useLockScroll(nodeRef, innerVisible && lockScroll)
   const classPrefix = 'nut-popup'
   const baseStyle = {
     zIndex: index,
-    animationDuration: `${duration}s`,
   }
 
   const overlayStyles = {
     ...overlayStyle,
-    ...baseStyle,
+    '--nutui-overlay-zIndex': index,
   }
 
   const popStyles = {
@@ -127,7 +133,7 @@ export const Popup: FunctionComponent<
   const open = () => {
     if (!innerVisible) {
       setInnerVisible(true)
-      setIndex(++_zIndex)
+      setIndex(++innerIndex)
     }
     if (destroyOnClose) {
       setShowChildren(true)
@@ -141,15 +147,16 @@ export const Popup: FunctionComponent<
       if (destroyOnClose) {
         setTimeout(() => {
           setShowChildren(false)
-        }, Number(duration) * 1000)
+        }, Number(duration))
       }
       onClose && onClose()
     }
   }
 
   const onHandleClickOverlay = (e: MouseEvent) => {
+    e.stopPropagation()
     if (closeOnOverlayClick) {
-      const closed = onClickOverlay && onClickOverlay(e)
+      const closed = onOverlayClick && onOverlayClick(e)
       closed && close()
     }
   }
@@ -161,7 +168,7 @@ export const Popup: FunctionComponent<
   const onHandleClickCloseIcon: MouseEventHandler<HTMLDivElement> = (
     e: MouseEvent
   ) => {
-    const closed = onClickCloseIcon && onClickCloseIcon(e)
+    const closed = onCloseIconClick && onCloseIconClick(e)
     closed && close()
   }
 
@@ -205,19 +212,38 @@ export const Popup: FunctionComponent<
     }
     return null
   }
+  const renderTitle = () => {
+    return (
+      <>
+        {position === 'bottom' && (
+          <>
+            {left && <div className={`${classPrefix}-left-icon`}>{left}</div>}
+            {title && <div className={`${classPrefix}-title`}>{title}</div>}
+          </>
+        )}
+      </>
+    )
+  }
   const renderPop = () => {
     return (
       <CSSTransition
+        nodeRef={nodeRef}
         classNames={transitionName}
         unmountOnExit
-        timeout={500}
+        timeout={duration}
         in={innerVisible}
         onEntered={onHandleOpened}
         onExited={onHandleClosed}
       >
-        <div style={popStyles} className={popClassName} onClick={onHandleClick}>
-          {showChildren ? children : ''}
+        <div
+          ref={nodeRef}
+          style={popStyles}
+          className={popClassName}
+          onClick={onHandleClick}
+        >
+          {renderTitle()}
           {renderIcon()}
+          {showChildren ? children : ''}
         </div>
       </CSSTransition>
     )
@@ -233,7 +259,6 @@ export const Popup: FunctionComponent<
               className={overlayClassName}
               visible={innerVisible}
               closeOnOverlayClick={closeOnOverlayClick}
-              zIndex={zIndex}
               lockScroll={lockScroll}
               duration={duration}
               onClick={onHandleClickOverlay}

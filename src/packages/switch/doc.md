@@ -6,8 +6,7 @@
 
 ## 安装
 
-```ts
-// react
+```tsx
 import { Switch } from '@nutui/nutui-react';
 ```
 

@@ -32,6 +32,7 @@
     }
 
     .left-icon {
+      display: flex;
       height: $noticebar-left-icon-width;
       min-width: $noticebar-left-icon-width;
       margin: $noticebar-lefticon-margin;
@@ -67,7 +68,6 @@
       }
     }
 
-    // 只跑一次
     .play {
       animation: nut-notice-bar-play linear both running;
     }
@@ -93,14 +93,12 @@
     }
   }
 
-  // 垂直方向的滚动
   @keyframes nut-notice-bar-play-vertical {
     to {
       transform: translateY($noticebar-height);
     }
   }
 
-  // 纵向
   .nut-noticebar-vertical {
     position: relative;
     display: flex;

@@ -12,7 +12,7 @@ export interface CircleProgressProps extends BasicComponent {
   strokeWidth?: string | number
   radius?: number | string
   strokeLinecap?: 'butt' | 'round' | 'square' | 'inherit'
-  color?: object | string
+  color?: Record<string, string> | string
   background?: string
   clockwise?: boolean
 }
@@ -82,8 +82,8 @@ export const CircleProgress: FunctionComponent<
     const colorArr = Object.keys(color).sort(
       (a, b) => parseFloat(a) - parseFloat(b)
     )
-    const stopArr: object[] = []
-    colorArr.map((item) => {
+    const stopArr: Record<string, string>[] = []
+    colorArr.forEach((item) => {
       const obj = {
         key: '',
         value: '',
@@ -100,7 +100,7 @@ export const CircleProgress: FunctionComponent<
       <svg viewBox="0 0 100 100">
         <defs>
           <linearGradient id={refRandomId} x1="100%" y1="0%" x2="0%" y2="0%">
-            {stop()?.map((item: any, index) => {
+            {stop()?.map((item: Record<string, string>, index) => {
               return (
                 <stop key={index} offset={item.key} stopColor={item.value} />
               )

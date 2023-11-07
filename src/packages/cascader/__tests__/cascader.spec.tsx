@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, fireEvent, waitFor } from '@testing-library/react'
+import { render, fireEvent, waitFor, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Cascader } from '../cascader'
 
@@ -7,7 +7,10 @@ import { CascaderOption } from '../types'
 import Tree from '../tree'
 import { formatTree, convertListToOptions } from '../helper'
 
-const later = (t = 0) => new Promise((r) => setTimeout(r, t))
+const later = (t = 0) =>
+  new Promise((r) => {
+    setTimeout(r, t)
+  })
 const mockOptions = [
   {
     value: '浙江',
@@ -244,39 +247,6 @@ describe('Tree', () => {
     expect(node).toBeTruthy()
     expect(node.value).toBe('鼓楼区')
   })
-
-  // test('updateChildren with CascaderConfig', () => {
-  //   const tree = new Tree(
-  //     [
-  //       {
-  //         name: '福建',
-  //         items: [{ name: '福州' }],
-  //       },
-  //     ],
-  //     {
-  //       value: 'name',
-  //       text: 'name',
-  //       children: 'items',
-  //     }
-  //   )
-  //   expect(tree.nodes).toMatchObject([
-  //     {
-  //       text: '福建',
-  //       value: '福建',
-  //       children: [{ text: '福州', value: '福州' }],
-  //     },
-  //   ])
-
-  //   let node = tree.getNodeByValue('福州') as CascaderOption
-  //   expect(node).toBeTruthy()
-  //   tree.updateChildren([{ name: '鼓楼区' }], node)
-  //   node = tree.getNodeByValue('鼓楼区') as CascaderOption
-  //   expect(node).toBeTruthy()
-  //   expect(node).toMatchObject({
-  //     text: '鼓楼区',
-  //     value: '鼓楼区',
-  //   })
-  // })
 })
 
 describe('Cascader', () => {
@@ -369,79 +339,29 @@ describe('Cascader', () => {
       const pane = container.querySelectorAll('.nut-cascader-pane')[2]
       fireEvent.click(pane)
       const item = pane.childNodes[0]
-      // console.log('item', item)
       fireEvent.click(item)
-      // let pathChange: any = container.emitted().pathChange[0];
       expect(pathChange).toBeCalled()
-      // ...
     })
   })
 
-  // it('value with lazy', async () => {
-  //   const { container } = render(
-  //     <Cascader
-  //       visible
-  //       value={['A0', 'A12', 'A21']}
-  //       lazy
-  //       onLoad={(node: any, resolve: (children: any) => void) => {
-  //         setTimeout(() => {
-  //           if (node.root) {
-  //             resolve([
-  //               { value: 'A0', text: 'A0' },
-  //               { value: 'B0', text: 'B0' },
-  //               { value: 'C0', text: 'C0' },
-  //             ])
-  //           } else {
-  //             const { value, level } = node
-  //             const text = value.substring(0, 1)
-  //             const value1 = `${text}${level + 1}1`
-  //             const value2 = `${text}${level + 1}2`
-  //             resolve([
-  //               { value: value1, text: value1, leaf: level >= 1 },
-  //               { value: value2, text: value2, leaf: level >= 1 },
-  //             ])
-  //           }
-  //         }, 50)
-  //       }}
-  //     />
-  //   )
-  //   await later(160)
-  //   expect(container).toMatchSnapshot()
-  // })
-
   it('select with lazy', async () => {
+    const lazyFunc = jest.fn()
     const { container } = render(
       <Cascader
         lazy
         onLoad={(node: any, resolve: (children: any) => void) => {
           setTimeout(() => {
-            setTimeout(() => {
-              // root表示第一层数据
-              if (node.root) {
-                resolve([
-                  { value: 'A0', text: 'A0' },
-                  { value: 'B0', text: 'B0' },
-                ])
-              } else {
-                const { value, level } = node
-                const text = value.substring(0, 1)
-                const value1 = `${text}${level + 1}1`
-                const value2 = `${text}${level + 1}2`
-                resolve([
-                  { value: value1, text: value1, leaf: level >= 1 },
-                  { value: value2, text: value2, leaf: level >= 1 },
-                ])
-              }
-            }, 50)
+            lazyFunc()
+            resolve({})
           }, 50)
         }}
       />
     )
-
-    expect(container).toMatchSnapshot()
-    await later(160)
-    expect(container).toMatchSnapshot()
-    // ...
+    expect(lazyFunc).not.toBeCalled()
+    await act(async () => {
+      await later(100)
+      expect(lazyFunc).toBeCalled()
+    })
   })
 
   it('change tab', async () => {

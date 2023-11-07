@@ -4,7 +4,6 @@ import { useTranslate } from '../../sites/assets/locale'
 import { Avatar } from './avatar'
 import Cell from '@/packages/cell'
 import Badge from '@/packages/badge'
-import AvatarGroup from '@/packages/avatargroup'
 import Toast from '@/packages/toast'
 import './demo.scss'
 
@@ -115,35 +114,35 @@ const AvatarDemo = () => {
         </Cell>
         <h2>{translated.e981579e}</h2>
         <Cell>
-          <AvatarGroup gap="-4">
+          <Avatar.Group gap="-4">
             <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
             <Avatar icon={<My />} />
             <Avatar color="rgb(245, 106, 0)" bg-color="rgb(253, 227, 207)">
               U
             </Avatar>
-          </AvatarGroup>
+          </Avatar.Group>
         </Cell>
 
         <Cell>
-          <AvatarGroup max="3" maxColor="#fff" maxBackground="#498ff2">
+          <Avatar.Group max="3" maxColor="#fff" maxBackground="#498ff2">
             <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
             <Avatar icon={<My />} />
             <Avatar color="rgb(245, 106, 0)" background="rgb(253, 227, 207)">
               U
             </Avatar>
             <Avatar icon={<My />} />
-          </AvatarGroup>
+          </Avatar.Group>
         </Cell>
         <h2>{translated.f645fc65}</h2>
         <Cell>
-          <AvatarGroup max="3" level="right" maxContent="...">
+          <Avatar.Group max="3" level="right" maxContent="...">
             <Avatar src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png" />
             <Avatar icon={<My />} />
             <Avatar color="rgb(245, 106, 0)" background="rgb(253, 227, 207)">
               U
             </Avatar>
             <Avatar icon={<My />} />
-          </AvatarGroup>
+          </Avatar.Group>
         </Cell>
         <h2>{translated['43f00872']}</h2>
         <Cell>

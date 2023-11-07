@@ -80,10 +80,12 @@ test('event show-success-toast', async () => {
       onClick={() => onClickToast('success', 'success')}
     />
   )
-  fireEvent.click(getByTestId('emit-click'))
-  expect(onClickToast).toBeCalled()
-  expect(document.querySelector('.nut-icon')).toHaveClass('nut-icon-Check')
-  expect(document.querySelector('.nut-toast-text')?.innerHTML).toBe('success')
+  await waitFor(() => {
+    fireEvent.click(getByTestId('emit-click'))
+    expect(onClickToast).toBeCalled()
+    expect(document.querySelector('.nut-icon')).toHaveClass('nut-icon-Check')
+    expect(document.querySelector('.nut-toast-text')?.innerHTML).toBe('success')
+  })
 })
 
 test('event show-fail-toast', async () => {
