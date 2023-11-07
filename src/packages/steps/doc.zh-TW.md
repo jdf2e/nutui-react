@@ -553,3 +553,4 @@ export default App;
 | \--nutui-steps-dot-icon-height | 點狀進度條點的高度 | `6px` |
 | \--nutui-steps-dot-icon-border | 點狀進度條點的邊框 | `2px solid $white` |
 | \--nutui-steps-dot-head-margin | 點狀進度條點的外邊距 | `7px 0 0 0` |
+| \--nutui-steps-process-icon-before-bg-color | 進行中點狀進度條點的外邊顏色 | `$color-primary-stop-2` |

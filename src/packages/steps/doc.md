@@ -540,6 +540,7 @@ export default App;
 | \--nutui-steps-wait-description-color | 等待状态描述字体颜色 | `$color-text` |
 | \--nutui-steps-process-icon-bg-color | 进行中icon容器背景色 | `$color-primary` |
 | \--nutui-steps-process-icon-color | 进行中icon容器字体颜色 | `$white` |
+| \--nutui-steps-process-icon-before-bg-color | 进行中颜色 | `$color-primary-stop-2` |
 | \--nutui-steps-process-title-color | 进行中标题字体颜色 | `$color-primary` |
 | \--nutui-steps-process-title-font-size | 进行中标题字号 | `$font-size-base` |
 | \--nutui-steps-process-title-font-weight | 进行中标题字重 | `$font-weight-bold` |
@@ -553,3 +554,4 @@ export default App;
 | \--nutui-steps-dot-icon-height | 点状进度条点的高度 | `6px` |
 | \--nutui-steps-dot-icon-border | 点状进度条点的边框 | `2px solid $white` |
 | \--nutui-steps-dot-head-margin | 点状进度条点的外边距 | `7px 0 0 0` |
+| \--nutui-steps-process-icon-before-bg-color | 进行中点状进度条点的外边颜色 | `$color-primary-stop-2` |
