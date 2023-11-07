@@ -7,7 +7,7 @@
   &__list {
     display: block;
     position: relative;
-    top: 1px;
+    top: 0;
     overflow: hidden;
     font-size: $elevator-list-font-size;
     color: $elevator-list-color;
@@ -34,6 +34,7 @@
         font-weight: $elevator-list-item-code-font-weight;
         box-sizing: border-box;
         border-bottom: $elevator-list-item-code-border-bottom;
+        background-color: $elevator-list-item-code-background-color;
       }
 
       &__name {

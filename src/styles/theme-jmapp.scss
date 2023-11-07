@@ -146,22 +146,22 @@ page {
   --nutui-line-height-base: 1.5;
 
   // space
-  --nutui-spacing-1: 2px;
-  --nutui-spacing-2: 4px;
-  --nutui-spacing-3: 6px;
-  --nutui-spacing-4: 8px;
-  --nutui-spacing-5: 10px;
-  --nutui-spacing-6: 12px;
-  --nutui-spacing-7: 14px;
-  --nutui-spacing-8: 16px;
+  --nutui-spacing-1: 2px; // spacing-xxs
+  --nutui-spacing-2: 4px; // spacing-xs
+  --nutui-spacing-3: 6px; // spacing-s
+  --nutui-spacing-4: 8px; // spacing-base
+  --nutui-spacing-5: 10px; // spacing-l
+  --nutui-spacing-6: 12px; // spacing-xl
+  --nutui-spacing-7: 14px; // spacing-xxl
+  --nutui-spacing-8: 16px; // spacing-xxxl
   --nutui-spacing-9: 18px;
   --nutui-spacing-10: 20px;
 
   // radius
-  --nutui-radius-1: 2px; // radius-mini
-  --nutui-radius-2: 4px; // radius-small
-  --nutui-radius-3: 6px; // radius-base
-  --nutui-radius-4: 8px;
-  --nutui-radius-5: 12px; // radius-large
-  --nutui-radius-6: 16px;
+  --nutui-radius-1: 2px; // radius-xxs
+  --nutui-radius-2: 4px; // radius-xs
+  --nutui-radius-3: 6px; // radius-s
+  --nutui-radius-4: 8px; // radius-base
+  --nutui-radius-5: 12px; // radius-l
+  --nutui-radius-6: 16px; // radius-xl
 }

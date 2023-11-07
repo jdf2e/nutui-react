@@ -288,7 +288,7 @@ export default App;
 | size | button size | `normal` \| `large` \| `small` | `normal` |
 | shape | button shape | `square` \| `round` | `round` | 
 | color | button color | `string` | `-` |
-| fill | fill pattern | `solid` \| `ouline` \| `none` | `solid` |
+| fill | fill pattern | `solid` \| `ouline`  \| `dashed` \| `none` | `solid` |
 | disabled | disable the button | `boolean` | `false` |
 | block | block element | `boolean` | `false` |
 | icon | icon | `ReactNode` | `-` |

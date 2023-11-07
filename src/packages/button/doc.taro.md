@@ -434,7 +434,7 @@ export default App;
 | size | 按钮的尺寸 | `normal` \| `large` \| `small` | `normal` |
 | shape | 按钮的形状 | `square` \| `round` | `round` |
 | color | 按钮颜色，支持传入 linear-gradient 渐变色 | `string` | `-` |
-| fill | 填充模式 | `solid` \| `ouline` \| `none` | `solid` |
+| fill | 填充模式 | `solid` \| `ouline`  \| `dashed` \| `none` | `solid` |
 | disabled | 是否禁用按钮 | `boolean` | `false` |
 | block | 是否为块级元素 | `boolean` | `false` |
 | icon | 按钮图标 | `ReactNode` | `-` |

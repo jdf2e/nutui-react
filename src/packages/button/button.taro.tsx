@@ -19,7 +19,7 @@ export type ButtonType =
   | 'danger'
 export type ButtonSize = 'large' | 'normal' | 'small' | 'mini'
 export type ButtonShape = 'square' | 'round'
-export type ButtonFill = 'solid' | 'outline' | 'none'
+export type ButtonFill = 'solid' | 'outline' | 'dashed' | 'none'
 
 export interface ButtonProps
   extends BasicComponent,
@@ -78,7 +78,10 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
     const getStyle = useCallback(() => {
       const style: CSSProperties = {}
       if (props.color) {
-        if (props.fill && props.fill === 'outline') {
+        if (
+          props.fill &&
+          (props.fill === 'outline' || props.fill === 'dashed')
+        ) {
           style.color = color
           style.background = '#fff'
           if (!color?.includes('gradient')) {
@@ -110,7 +113,6 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         ref={ref}
         className={classNames(
           prefixCls,
-          className,
           `${prefixCls}--${type}`,
           props.fill ? `${prefixCls}--${fill}` : null,
           children ? '' : `${prefixCls}--icononly`,
@@ -120,7 +122,8 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
             [`${prefixCls}--block`]: block,
             [`${prefixCls}--disabled`]: disabled,
             [`${prefixCls}--loading`]: loading,
-          }
+          },
+          className
         )}
         style={{ ...getStyle(), ...style }}
         onClick={(e) => handleClick(e)}

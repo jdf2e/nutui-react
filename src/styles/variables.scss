@@ -191,6 +191,10 @@ $animation-timing-fun: cubic-bezier(0.55, 0.085, 0.68, 0.53) !default;
 $padding-xs: var(--nutui-padding-xs, 12px) !default;
 
 // button（✅）
+$button-square-border-radius: var(
+  --nutui-button-square-border-radius,
+  0
+) !default;
 $button-border-radius: var(--nutui-button-border-radius, 24px) !default;
 $button-border-width: var(--nutui-button-border-width, 1px) !default;
 
@@ -219,7 +223,9 @@ $button-default-font-weight: var(
   $font-weight
 ) !default;
 
+$button-large-width: var(--nutui-button-large-width, 100%) !default;
 $button-large-height: var(--nutui-button-large-height, 40px) !default;
+$button-large-padding: var(--nutui-button-large-padding, 0px 0px) !default;
 $button-large-font-size: var(
   --nutui-button-large-font-size,
   $font-size-base
@@ -398,6 +404,7 @@ $divider-border-color: var(
 $divider-text-color: var(--nutui-divider-text-color, $color-text) !default;
 $divider-line-height: var(--nutui-divider-line-height, 2px) !default;
 $divider-spacing: var(--nutui-divider-spacing, 8px) !default;
+$divider-max-width: var(--nutui-divider-max-width, 10%) !default;
 $divider-vertical-height: var(--nutui-divider-vertical-height, 12px) !default;
 $divider-vertical-top: var(--nutui-divider-vertical-top, 2px) !default;
 $divider-vertical-margin: var(--nutui-divider-vertical-margin, 0 8px) !default;
@@ -517,6 +524,12 @@ $input-disabled-color: var(
   $color-text-disabled
 ) !default;
 $input-font-size: var(--nutui-input-font-size, $font-size-base) !default;
+$input-border-radius: var(--nutui-input-border-radius, 0) !default;
+$input-color: var(--nutui-input-color, $color-title) !default;
+$input-background-color: var(
+  --nutui-input-background-color,
+  $color-background-overlay
+) !default;
 $input-padding: var(--nutui-input-padding, 10px 25px) !default;
 
 // textarea（✅）
@@ -632,6 +645,14 @@ $numberkeyboard-padding: var(
   --nutui-numberkeyboard-padding,
   0 0 22px 0
 ) !default;
+$numberkeyboard-background-color: var(
+  --nutui-numberkeyboard-background-color,
+  $color-background
+) !default;
+$numberkeyboard-wrapper-background-color: var(
+  --nutui-numberkeyboard-wrapper-background-color,
+  $color-background-sunken
+) !default;
 $numberkeyboard-header-close-padding: var(
   --nutui-numberkeyboard-header-close-padding,
   0 16px
@@ -667,6 +688,10 @@ $numberkeyboard-key-line-height: var(
 $numberkeyboard-key-border-radius: var(
   --nutui-numberkeyboard-key-border-radius,
   8px
+) !default;
+$numberkeyboard-key-border: var(
+  --nutui-numberkeyboard-key-border,
+  none
 ) !default;
 $numberkeyboard-key-font-size: var(
   --nutui-numberkeyboard-key-font-size,
@@ -765,6 +790,7 @@ $switch-inside-close-transform: var(
   --nutui-switch-inside-close-transform,
   translateX(14%)
 ) !default;
+$switch-button-box-shadow: var(--nutui-switch-box-shadow, none) !default;
 
 // toast（✅）
 $toast-title-font-size: var(--nutui-toast-title-font-size, 16px) !default;
@@ -935,6 +961,10 @@ $tabbar-text-font-size: var(
 $tabbar-text-large-font-size: var(
   --nutui-tabbar-text-large-font-size,
   $font-size-large
+) !default;
+$tabbar-text-large-font-weight: var(
+  --nutui-tabbar-text-large-font-weight,
+  $font-weight
 ) !default;
 $tabbar-text-line-height: var(--nutui-tabbar-text-line-height, 20px) !default;
 $tabbar-height: var(--nutui-tabbar-height, 50px) !default;
@@ -1897,6 +1927,10 @@ $elevator-list-item-code-line-height: var(
 $elevator-list-item-code-border-bottom: var(
   --nutui-elevator-list-item-code-border-bottom,
   1px solid $color-border
+) !default;
+$elevator-list-item-code-background-color: var(
+  --nutui-elevator-list-item-code-background-color,
+  inherit
 ) !default;
 $elevator-list-item-code-current-box-shadow: 0 3px 3px 1px
   rgba(240, 240, 240, 1) !default;

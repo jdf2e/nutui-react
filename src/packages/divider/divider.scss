@@ -31,13 +31,13 @@
 
   &__left {
     &::before {
-      max-width: 10%;
+      max-width: $divider-max-width;
     }
   }
 
   &__right {
     &::after {
-      max-width: 10%;
+      max-width: $divider-max-width;
     }
   }
 

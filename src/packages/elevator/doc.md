@@ -578,6 +578,7 @@ export default App
 | \--nutui-elevator-list-item-code-height | 楼层区域列表项标题高度 | `35px` |
 | \--nutui-elevator-list-item-code-line-height | 楼层区域列表项标题行高 | `35px` |
 | \--nutui-elevator-list-item-code-border-bottom | 楼层区域列表项标题下边框宽度 | `1px solid $color-border` |
+| \--nutui-elevator-list-item-code-background-color | 楼层区域列表项标题背景色 | `inherit` |
 | \--nutui-elevator-list-item-code-current-bg-color | 电梯提示背景颜色 | `#fff` |
 | \--nutui-elevator-list-item-code-current-border-radius | 电梯提示圆角 | `50%` |
 | \--nutui-elevator-list-item-code-current-width | 电梯提示宽度 | `45px` |

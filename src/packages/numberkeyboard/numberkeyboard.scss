@@ -4,7 +4,7 @@
   width: 100%;
   padding: $numberkeyboard-padding;
   user-select: none;
-  background-color: $color-background;
+  background-color: $numberkeyboard-background-color;
 
   &__header {
     position: relative;
@@ -50,7 +50,7 @@
       flex-basis: 33%;
       box-sizing: border-box;
       padding: 0 6px 6px 0;
-      background-color: $color-background-sunken;
+      background-color: $numberkeyboard-wrapper-background-color;
 
       .key {
         display: flex;
@@ -62,6 +62,7 @@
         background-color: $numberkeyboard-key-background-color;
         color: $numberkeyboard-key-font-color;
         border-radius: $numberkeyboard-key-border-radius;
+        border: $numberkeyboard-key-border;
         font-weight: $font-weight-bold;
         cursor: pointer;
 
