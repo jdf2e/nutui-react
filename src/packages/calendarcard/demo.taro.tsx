@@ -1,5 +1,6 @@
 import React, { useRef, useState } from 'react'
 import Taro from '@tarojs/taro'
+import { CustomWrapper } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import {
   CalendarCard,
@@ -110,98 +111,127 @@ const CalendarDemo = () => {
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.single}</h2>
-        <CalendarCard defaultValue={new Date('2023-01-01')} onChange={change} />
+        <CustomWrapper>
+          <CalendarCard
+            defaultValue={new Date('2023-01-01')}
+            onChange={change}
+          />
+        </CustomWrapper>
 
         <h2>{translated.multiple}</h2>
-        <Space wrap>
-          {val2.map((d) => {
-            return (
-              <Tag key={d.getTime()} type="info">
-                {`${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`}
-              </Tag>
-            )
-          })}
-        </Space>
-        <CalendarCard
-          type="multiple"
-          value={val2}
-          onChange={(v: any) => setVal2(v)}
-        />
+        <CustomWrapper>
+          <Space wrap>
+            {val2.map((d) => {
+              return (
+                <Tag key={d.getTime()} type="info">
+                  {`${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`}
+                </Tag>
+              )
+            })}
+          </Space>
+          <CalendarCard
+            type="multiple"
+            value={val2}
+            onChange={(v: any) => setVal2(v)}
+          />
+        </CustomWrapper>
 
         <h2>{translated.range}</h2>
-        <CalendarCard type="range" onChange={change} />
+        <CustomWrapper>
+          <CalendarCard type="range" onChange={change} />
+        </CustomWrapper>
 
         <h2>{translated.week}</h2>
-        <CalendarCard type="week" onChange={change} />
+        <CustomWrapper>
+          <CalendarCard type="week" onChange={change} />
+        </CustomWrapper>
 
         <h2>{translated.control}</h2>
-        <CalendarCard value={val1} onChange={change1} />
+        <CustomWrapper>
+          <CalendarCard value={val1} onChange={change1} />
+        </CustomWrapper>
 
         <h2>{translated.renderDay}</h2>
-        <CalendarCard
-          renderDayTop={renderDayTop}
-          renderDay={renderDay}
-          renderDayBottom={renderDayBottom}
-        />
+        <CustomWrapper>
+          <CalendarCard
+            renderDayTop={renderDayTop}
+            renderDay={renderDay}
+            renderDayBottom={renderDayBottom}
+          />
+        </CustomWrapper>
 
         <h2>{translated.firstDay}</h2>
-        <CalendarCard firstDayOfWeek={1} onChange={change} />
+        <CustomWrapper>
+          <CalendarCard firstDayOfWeek={1} onChange={change} />
+        </CustomWrapper>
 
         <h2>{translated.customRange}</h2>
-        <CalendarCard
-          startDate={new Date('2023-08-01')}
-          endDate={new Date('2025-11-11')}
-          onChange={change}
-        />
+        <CustomWrapper>
+          <CalendarCard
+            startDate={new Date('2023-08-01')}
+            endDate={new Date('2025-11-11')}
+            onChange={change}
+          />
+        </CustomWrapper>
 
         <h2>{translated.disable}</h2>
-        <CalendarCard
-          disableDay={(day) => {
-            const d = new Date(`${day.year}-${day.month}-${day.date}`).getDay()
-            return d === 1 || d === 3
-          }}
-          onChange={change}
-        />
+        <CustomWrapper>
+          <CalendarCard
+            disableDay={(day) => {
+              const d = new Date(
+                `${day.year}-${day.month}-${day.date}`
+              ).getDay()
+              return d === 1 || d === 3
+            }}
+            onChange={change}
+          />
+        </CustomWrapper>
 
         <h2>{translated.popup}</h2>
-        <Cell
-          title={translated.select}
-          description={String(date)}
-          onClick={() => setVisible(true)}
-        />
-        <Popup
-          title={translated.select}
-          visible={visible}
-          position="bottom"
-          closeable
-          onClose={() => setVisible(false)}
-        >
-          <CalendarCard value={date} onChange={(d: any) => setDate(d)} />
-          <div
-            style={{
-              padding: '10px',
-            }}
+        <CustomWrapper>
+          <Cell
+            title={translated.select}
+            description={String(date)}
+            onClick={() => setVisible(true)}
+          />
+          <Popup
+            title={translated.select}
+            visible={visible}
+            position="bottom"
+            closeable
+            onClose={() => setVisible(false)}
           >
-            <Button block type="danger" onClick={() => setVisible(false)}>
-              {translated.confirm}
-            </Button>
-          </div>
-        </Popup>
+            <CalendarCard value={date} onChange={(d: any) => setDate(d)} />
+            <div
+              style={{
+                padding: '10px',
+              }}
+            >
+              <Button block type="danger" onClick={() => setVisible(false)}>
+                {translated.confirm}
+              </Button>
+            </div>
+          </Popup>
+        </CustomWrapper>
 
         <h2>{translated.ref}</h2>
-        <Space style={{ marginBottom: '10px' }}>
-          <Button onClick={() => CalendarCardRef.current?.jump(1)}>+ 1</Button>
-          <Button onClick={() => CalendarCardRef.current?.jump(12)}>
-            + 12
-          </Button>
-          <Button onClick={() => CalendarCardRef.current?.jump(-12)}>
-            - 12
-          </Button>
-          <Button onClick={() => CalendarCardRef.current?.jumpTo(2023, 1)}>
-            2023 01
-          </Button>
-        </Space>
-        <CalendarCard ref={CalendarCardRef} />
+        <CustomWrapper>
+          <Space style={{ marginBottom: '10px' }}>
+            <Button onClick={() => CalendarCardRef.current?.jump(1)}>
+              + 1
+            </Button>
+            <Button onClick={() => CalendarCardRef.current?.jump(12)}>
+              + 12
+            </Button>
+            <Button onClick={() => CalendarCardRef.current?.jump(-12)}>
+              - 12
+            </Button>
+            <Button onClick={() => CalendarCardRef.current?.jumpTo(2023, 1)}>
+              2023 01
+            </Button>
+          </Space>
+          <CalendarCard ref={CalendarCardRef} />
+        </CustomWrapper>
       </div>
     </>
   )
