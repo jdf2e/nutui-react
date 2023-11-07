@@ -439,14 +439,12 @@ export const CalendarCard = React.forwardRef<
     )
   }
 
-  return (
-    <>
-      <div className="nut-calendarcard" style={style}>
-        {renderHeader()}
-        {renderContent()}
-      </div>
-    </>
-  )
+  return days.length > 0 ? (
+    <div className="nut-calendarcard" style={style}>
+      {renderHeader()}
+      {renderContent()}
+    </div>
+  ) : null
 })
 
 CalendarCard.defaultProps = defaultProps as CalendarCardProps
