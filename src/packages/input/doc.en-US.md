@@ -285,9 +285,9 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-input-border-bottom | border color | `#eaf0fb` |
 | \--nutui-input-border-bottom-width | border width | `0px` |
-| \--nutui-input-color | color | `#1a1a1a` |
+| \--nutui-input-color | color | `$color-title` |
 | \--nutui-input-disabled-color | disable color | `#c8c9cc` |
-| \--nutui-input-background-color | background color | `#FFFFFF` |
+| \--nutui-input-background-color | background color | `$color-background-overlay` |
 | \--nutui-input-border-radius | border radius | `0` |
 | \--nutui-input-font-size | font size  | `$font-size-base` |
 | \--nutui-input-padding | input padding | `10px 25px` |

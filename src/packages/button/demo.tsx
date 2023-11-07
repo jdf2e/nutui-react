@@ -178,6 +178,15 @@ const ButtonDemo = () => {
             {translated['60a53514']}
           </Button>
           <Button
+            type="primary"
+            fill="dashed"
+            icon={<Star />}
+            rightIcon={<Star />}
+            style={{ margin: 8 }}
+          >
+            {translated['60a53514']}
+          </Button>
+          <Button
             icon={<Star />}
             rightIcon={<Star />}
             style={{
@@ -239,6 +248,12 @@ const ButtonDemo = () => {
             style={{ margin: 8 }}
           />
           <Button
+            type="primary"
+            fill="dashed"
+            icon={<Plus width="20" />}
+            style={{ margin: 8 }}
+          />
+          <Button
             shape="round"
             type="primary"
             size="large"
@@ -270,6 +285,16 @@ const ButtonDemo = () => {
             style={{ margin: 8 }}
           >
             {translated['7db1a8b2']}
+          </Button>
+          <Button
+            disabled
+            type="primary"
+            fill="dashed"
+            icon={<Star />}
+            rightIcon={<Star />}
+            style={{ margin: 8 }}
+          >
+            {translated['60a53514']}
           </Button>
           <Button
             disabled
@@ -329,6 +354,13 @@ const ButtonDemo = () => {
           <Button
             disabled
             type="primary"
+            icon={<Plus width="20" />}
+            style={{ margin: 8 }}
+          />
+          <Button
+            disabled
+            type="primary"
+            fill="dashed"
             icon={<Plus width="20" />}
             style={{ margin: 8 }}
           />
