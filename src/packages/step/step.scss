@@ -62,7 +62,7 @@
     text-align: center;
 
     .nut-step-description {
-      color: $color-title;
+      color: $steps-base-description-color;
     }
   }
 
@@ -112,7 +112,7 @@
   &.nut-step-finish {
     .nut-step-icon {
       background-color: $steps-finish-icon-bg-color;
-      border-color: $steps-finish-icon-color;
+      border-color: $steps-finish-icon-border-color;
       color: $steps-finish-icon-color;
     }
 
@@ -151,12 +151,15 @@
     .nut-step-description {
       color: $steps-wait-description-color;
     }
+    .nut-step-icon {
+      background-color: $steps-dot-wait-icon-bg-color;
+    }
   }
 
   .nut-step-finish {
     .nut-step-icon {
-      background-color: $steps-finish-icon-bg-color;
-      border-color: $steps-finish-icon-color;
+      background-color: $steps-dot-finish-icon-bg-color;
+      border-color: $steps-dot-finish-icon-border-color;
     }
   }
 
@@ -175,7 +178,7 @@
         margin-top: -7px;
         width: 14px;
         height: 14px;
-        background-color: $color-primary-stop-2;
+        background-color: $steps-process-icon-before-bg-color;
         border-radius: 50%;
         opacity: 0.23;
       }
@@ -202,17 +205,24 @@
     position: absolute;
     display: inline-block;
     width: 1px;
-    height: 100%;
-    background: #909ca4;
+    height: $steps-base-line-width;
+    background: $steps-base-line-background;
+    top: calc(
+      $steps-base-icon-height +
+        (100% - $steps-base-line-width - $steps-base-icon-margin-bottom) / 2
+    );
+    left: calc(50% - 1px);
+  }
+
+  &.nut-steps-dot {
+    .nut-step-line {
+      top: calc($steps-dot-icon-height + (100% - $steps-base-line-width) / 2);
+    }
   }
 
   .nut-step-main {
     display: inline-block;
     padding-left: 6%;
     text-align: left;
-
-    .nut-step-description {
-      color: $steps-base-description-color;
-    }
   }
 }
