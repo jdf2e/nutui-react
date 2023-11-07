@@ -277,6 +277,8 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-numberkeyboard-header-close-background-color | header close backgroundColor | `transparent` |
 | \--nutui-numberkeyboard-key-background-color | key backgroundColor | `#fff` |
 | \--nutui-numberkeyboard-key-active-background-color | key active backgroundColor | `#ebedf0` |
+| \--nutui-numberkeyboard-wrapper-background-color | key wrapper backgroundColor | `$color-background-sunken` |
+| \--nutui-numberkeyboard-key-border | key border | `none` |
 | \--nutui-numberkeyboard-key-height | key height | `48px` |
 | \--nutui-numberkeyboard-key-line-height | key lineHeight | `1.5` |
 | \--nutui-numberkeyboard-key-border-radius | key borderRadius | `8px` |
@@ -285,3 +287,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-numberkeyboard-key-confirm-font-size | key confirm fontSize | `16px` |
 | \--nutui-numberkeyboard-key-confirm-font-color | key confirm fontColor | `#fff` |
 | \--nutui-numberkeyboard-key-confirm-background-color | key confirm backgroundColor | `#1989fa` |
+| \--nutui-numberkeyboard-background-color | keyboard container backgroundColor | `$color-background` |
