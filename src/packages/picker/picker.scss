@@ -29,7 +29,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     text-align: center;
-    color: $color-title;
+    color: $picker-title-color;
     font-size: $popup-title-font-size;
     font-weight: $font-weight-bold;
   }
@@ -137,7 +137,7 @@
     position: absolute;
     top: 0;
     width: 100%;
-    color: $color-title;
+    color: $picker-item-text-color;
   }
 
   &-roller-item-title {

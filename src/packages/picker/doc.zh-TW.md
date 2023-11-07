@@ -409,6 +409,7 @@ export default App;
 
 | 名稱 | 說明 | 預設值 |
 | --- | --- | --- |
+| \---nutui-picker-title-color | 標題顏色 | `$color-title` |
 | \--nutui-picker-title-cancel-font-size | 取消字號 | `14px` |
 | \--nutui-picker-title-ok-font-size | 確認字號 | `14px` |
 | \--nutui-picker-list-height | 面闆高度 | `252px` |

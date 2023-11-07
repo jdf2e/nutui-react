@@ -481,6 +481,7 @@ $uploader-preview-close-top: var(
 ) !default;
 
 // picker（✅）（todo:react版本picker组件dom元素类名变化较大，picker.scss暂不改动）
+$picker-title-color: var(--nutui-picker-title-color, $color-title) !default;
 $picker-title-cancel-font-size: var(
   --nutui-picker-title-cancel-font-size,
   $font-size-base
