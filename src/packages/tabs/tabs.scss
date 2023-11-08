@@ -84,7 +84,7 @@
     }
 
     &__smile {
-      bottom: -2%;
+      bottom: $tabs-titles-item-smile-bottom;
 
       .nut-icon {
         position: absolute;
@@ -127,6 +127,35 @@
     .nut-tabs__titles-item--active {
       color: $color-title;
       font-size: $tabs-titles-item-active-font-size;
+    }
+  }
+
+  &--card {
+    padding: 0;
+    background-color: $color-default-light;
+    .nut-tabs__titles-item {
+      margin: 0;
+      &--active {
+        font-weight: $font-weight-bold;
+        background-color: $white;
+        border-radius: $radius-s $radius-s 0 0;
+      }
+    }
+  }
+
+  &--button {
+    padding: 8px 9px;
+    height: 44px;
+    .nut-tabs__titles-item {
+      background: $color-default-light;
+      color: $color-text;
+      border-radius: $radius-xs;
+      margin: 0 3px;
+      &--active {
+        font-weight: $font-weight-bold;
+        background-color: $color-primary-light;
+        color: $color-text-link;
+      }
     }
   }
 }
