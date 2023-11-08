@@ -7,3 +7,7 @@
   background: 'rgba(251, 248, 220, 1)';
   color: '#d9500b';
 }
+
+.nut-noticebar + .nut-noticebar {
+  margin-top: 8px;
+}

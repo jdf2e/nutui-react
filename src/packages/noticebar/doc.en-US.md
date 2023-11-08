@@ -14,6 +14,8 @@ import { NoticeBar } from '@nutui/nutui-react';
 
 ### Basic Usage
 
+The noticebar supports six types: 'default', 'primary', 'warning', 'danger', 'success', which defaults to ' warning'.
+
 :::demo
 
 ```tsx
@@ -262,6 +264,7 @@ export default App
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
+| type | noticebar style | `default` \| `primary` \| `warning` \| `danger` \| `success` | `warning` |
 | direction | Rolling direction | `string` | `horizontal` |
 | content | Notice text content | `string` | `-` |
 | closeable | Whether to enable the off mode | `boolean` | `false` |
@@ -293,6 +296,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default Value |
 | --- | --- | --- |
+| \--nutui-noticebar-border-radius | noticebar borderRadius | `0` |
 | \--nutui-noticebar-height | noticebar height | `36px` |
 | \--nutui-noticebar-background | noticebar background | `rgba(251, 248, 220, 1)` |
 | \--nutui-noticebar-color | noticebar color | `#d9500b` |

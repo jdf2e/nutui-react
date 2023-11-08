@@ -15,6 +15,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 export interface NoticeBarProps extends BasicComponent {
   direction: string
   list: any
+  type: string
   duration: number
   height: number
   content: string
@@ -35,6 +36,7 @@ export interface NoticeBarProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   direction: 'horizontal',
+  type: '',
   list: [],
   duration: 1000,
   height: 40,
@@ -57,6 +59,7 @@ export const NoticeBar: FunctionComponent<
     style,
     direction,
     list,
+    type,
     duration,
     height,
     content,
@@ -425,7 +428,14 @@ export const NoticeBar: FunctionComponent<
     }
   }, [])
   return (
-    <div className={`${classPrefix} ${className || ''}`} style={style}>
+    <div
+      className={classNames(
+        classPrefix,
+        type ? `${classPrefix}--${type}` : '',
+        className
+      )}
+      style={style}
+    >
       {showNoticeBar && direction === 'horizontal' ? (
         <div className={noticebarClass} style={barStyle} onClick={handleClick}>
           {leftIcon ? <div className="left-icon">{leftIcon}</div> : null}

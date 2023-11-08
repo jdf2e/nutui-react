@@ -10,6 +10,7 @@
     font-size: $noticebar-font-size;
     background: $noticebar-background;
     color: $noticebar-color;
+    border-radius: $noticebar-border-radius;
 
     &.wrapable {
       height: auto;
@@ -147,6 +148,41 @@
       justify-content: center;
       width: $noticebar-right-icon-width;
       margin-left: $noticebar-icon-gap;
+    }
+  }
+
+  &--default {
+    .nut-noticebar-box {
+      color: $color-text;
+      background-color: $color-default-light;
+    }
+  }
+
+  &--primary {
+    .nut-noticebar-box {
+      color: $color-primary;
+      background-color: $color-primary-light;
+    }
+  }
+
+  &--success {
+    .nut-noticebar-box {
+      color: $color-success;
+      background-color: $color-success-light;
+    }
+  }
+
+  &--warning {
+    .nut-noticebar-box {
+      color: $color-warning;
+      background-color: $color-warning-light;
+    }
+  }
+
+  &--danger {
+    .nut-noticebar-box {
+      color: $color-danger;
+      background-color: $color-danger-light;
     }
   }
 }

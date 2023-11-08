@@ -14,6 +14,8 @@ import { NoticeBar } from '@nutui/nutui-react';
 
 ### 基礎用法
 
+支持 `default`、`primary`、`warning`、`danger`、`success` 六種類型，默認為 `warning`。
+
 :::demo
 
 ```tsx
@@ -272,6 +274,7 @@ export default App
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
+| type | 樣式 | `default` \| `primary` \| `warning` \| `danger` \| `success` | `warning` |
 | direction | 滾動的方嚮，可選 horizontal、vertical | `string` | `horizontal` |
 | content | 提示的信息 | `string` | `-` |
 | closeable | 是否啟用關閉模式 | `boolean` | `false` |
@@ -303,6 +306,7 @@ export default App
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
+| \--nutui-noticebar-border-radius | 圓角 | `0` |
 | \--nutui-noticebar-height | 高度 | `36px` |
 | \--nutui-noticebar-background | 背景色 | `rgba(251, 248, 220, 1)` |
 | \--nutui-noticebar-color | 文字色 | `#d9500b` |

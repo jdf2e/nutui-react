@@ -1292,6 +1292,7 @@ $noticebar-background: var(
   rgba(251, 248, 220, 1)
 ) !default;
 $noticebar-color: var(--nutui-noticebar-color, #d9500b) !default;
+$noticebar-border-radius: var(--nutui-noticebar-border-radius, 0) !default;
 $noticebar-font-size: var(
   --nutui-noticebar-font-size,
   $font-size-small
