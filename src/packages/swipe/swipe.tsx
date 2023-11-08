@@ -98,7 +98,7 @@ export const Swipe = forwardRef<
     if (!props.disabled) {
       startOffset.current = state.offset
       touch.start(event)
-      props.onTouchStart && props.onTouchStart(event)
+      props.onTouchStart?.(event)
     }
   }
 
@@ -108,18 +108,18 @@ export const Swipe = forwardRef<
     }
 
     touch.move(event)
-    props.onTouchMove && props.onTouchMove(event)
+    props.onTouchMove?.(event)
 
     if (touch.isHorizontal()) {
       lockClick.current = true
       const newState = { ...state, dragging: true }
-      const isEdge = !opened || touch.deltaX * startOffset.current < 0
+      const isEdge = !opened || touch.deltaX.current * startOffset.current < 0
       if (isEdge) {
         preventDefault(event, true)
       }
 
       newState.offset = rangeCalculation(
-        touch.deltaX + startOffset.current,
+        touch.deltaX.current + startOffset.current,
         -rightWidth,
         leftWidth
       )
@@ -136,7 +136,7 @@ export const Swipe = forwardRef<
       setTimeout(() => {
         lockClick.current = false
       }, 0)
-      props.onTouchEnd && props.onTouchEnd(event)
+      props.onTouchEnd?.(event)
     }
   }
 

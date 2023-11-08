@@ -380,6 +380,7 @@ export default App;
 | title | Title | `string` | `null` |
 | startDate | Start date | `Date` | `Ten years ago on January 1` |
 | endDate | End date | `Date` | `Ten years later on December 31` |
+| pickerProps | picker props | `object` | `-` |
 | formatter | Option text formatter | `(type: string, option: PickerOption) => PickerOption` | `-` |
 | filter | Option filter | `(type: string, option: PickerOption) => PickerOption[]` | `-` |
 | threeDimensional | Turn on 3D effects | `boolean` | `true` |

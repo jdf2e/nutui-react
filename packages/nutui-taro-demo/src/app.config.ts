@@ -38,6 +38,7 @@ const subPackages = [
     "pages": [
       "pages/address/index",
       "pages/calendar/index",
+      "pages/calendarcard/index",
       "pages/cascader/index",
       "pages/checkbox/index",
       "pages/datepicker/index",

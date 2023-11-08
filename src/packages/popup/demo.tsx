@@ -113,6 +113,7 @@ const PopupDemo = () => {
         />
         <Popup
           visible={showBasic}
+          zIndex={2000}
           style={{ padding: '30px 50px' }}
           onClose={() => {
             setShowBasic(false)
