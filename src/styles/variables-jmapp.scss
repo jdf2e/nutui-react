@@ -1217,10 +1217,7 @@ $checkbox-label-margin-left: var(
   --nutui-checkbox-label-margin-left,
   $spacing-icon-text
 ) !default;
-$checkbox-label-color: var(
-  --nutui-checkbox-label-color,
-  $color-text-title
-) !default;
+$checkbox-label-color: var(--nutui-checkbox-label-color, $color-text) !default;
 $checkbox-label-font-size: var(
   --nutui-checkbox-label-font-size,
   $font-size-small
@@ -1228,6 +1225,28 @@ $checkbox-label-font-size: var(
 $checkbox-icon-font-size: var(
   --nutui-checkbox-icon-font-size,
   $font-size-large
+) !default;
+$checkbox-button-font-size: var(
+  --nutui-checkbox-button-font-size,
+  $font-size-small
+) !default;
+$checkbox-button-color: $color-text;
+$checkbox-button-background: $color-background;
+$checkbox-button-padding: var(
+  --nutui-checkbox-button-padding,
+  5px 18px
+) !default;
+$checkbox-button-border-radius: var(
+  --nutui-checkbox-button-border-radius,
+  $radius-xs
+) !default;
+$checkbox-button-active-border: var(
+  --nutui-checkbox-button-active-border,
+  1px solid $color-primary-light
+) !default;
+$checkbox-button-disabled-active-color: var(
+  --nutui-checkbox-button-disabled-active-color,
+  $white
 ) !default;
 
 //radio（✅）
