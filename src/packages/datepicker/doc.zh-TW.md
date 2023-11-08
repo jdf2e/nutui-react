@@ -395,5 +395,6 @@ export default App;
 | filter | 選項過濾函數 | `(type: string, option: PickerOption) => PickerOption[]` | `-` |
 | threeDimensional | 是否開啟3D效果 | `boolean` | `true` |
 | onConfirm | 點擊確定按鈕時觸發 | `(options, value) => void` | `-` |
-| onClose | 關閉時觸發 | `(options, value) => void` | `-` |
+| onCancel | 點擊取消按鈕時觸發 | `() => void` | `-` |
+| onClose | 確定和取消時，都觸發 | `(options, value) => void` | `-` |
 | onChange | 選項改變時觸發 | `(options, value, index) => void` | `-` |
