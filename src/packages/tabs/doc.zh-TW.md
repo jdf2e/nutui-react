@@ -577,7 +577,7 @@ export default App;
 | defaultValue | 初始化激活 tab 的值 | `number` \| `string` | `0` |
 | activeColor | 標簽選中色 | `string` | `#1a1a1a` |
 | direction | 使用橫縱方嚮 | `horizontal` \| `vertical` | `horizontal` |
-| activeType | 選中底部展示樣式 可選值 `line`、`smile`、`simple` | `line` \| `smile` \| `simple` | `line` |
+| activeType | 選中底部展示樣式 可選值 `line`、`smile`、`simple`、`card`、`button` | `line` \| `smile` \| `simple` | `line` |
 | duration | 切換動畫時長,單位 ms 0 代錶無動畫 | `number` \| `string` | `300` |
 | title | 自定義導航區域 | `() => JSX.Element[]` | `-` |
 | align | 標題左對齊 | `left` \| `right` | `-` |
@@ -621,7 +621,6 @@ export default App;
 | \--nutui-tabs-tab-line-opacity | 水平方嚮線的透明度 | `1` |
 | \--nutui-tabs-vertical-titles-width | 垂直方嚮標題的寬度 | `100px` |
 | \--nutui-tabs-vertical-titles-item-height | 垂直方嚮標題的高度 | `40px` |
-
 | \--nutui-tabs-vertical-tab-line-color | 垂直方嚮線條顏色 | `linear-gradient(180deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |
 | \--nutui-tabs-vertical-tab-line-width | 垂直方嚮標題線條的寬度 | `3px` |
 | \--nutui-tabs-vertical-tab-line-height | 垂直方嚮標題線條的高度 | `12px` |
