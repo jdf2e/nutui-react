@@ -91,13 +91,12 @@ export default App;
 
 ### Props
 
-| 參數             | 說明                                        | 類型   | 預設值 |
-| ---------------- | ------------------------------------------- | ------ | ------ |
-| maxZoom         | 最大縮放倍數                                | `number` | `3`      |
-| space            | 裁剪區域兩邊預留的間隙                      | `number` | `10`     |
+| 參數 | 說明 | 類型 | 預設值 |
+| --- | --- | --- | --- |
+| maxZoom | 最大縮放倍數 | `number` | `3` |
+| space | 裁剪區域兩邊預留的間隙 | `number` | `10` |
 | toolbarPosition | 裁剪區域工具欄位置,可選值為：`top` `bottom` | `string` | `bottom` |
-| editText        | 中間的文字內容                              | `ReactNode` \| `string` | `編輯`   |
-| toolbar         | 自定義裁剪區域工具欄  |  `ReactNode[]`   |  `[<Button type="danger" key="cancel">取消</Button>, <Button type="info" key="reset">重置</Button>,<Button type="warning" key="rotate">旋转</Button>,<Button type="success" key="confirm">确认</Button>,
-  ]` |
-| onConfirm       | 裁剪後點擊確認觸發                    | `(url: string) => void` |  `-` |
-| onCancel        | 點擊取消觸發                          | `-`                |  `-` |
+| editText | 中間的文字內容 | `ReactNode \| string` | `編輯` |
+| toolbar | 自定義裁剪區域工具欄 | `ReactNode[]` | `[<Button type="danger" key="cancel">取消</Button>, <Button type="info" key="reset">重置</Button>,<Button type="warning" key="rotate">旋转</Button>,<Button type="success" key="confirm">确认</Button>]` |
+| onConfirm | 裁剪後點擊確認觸發 | `(url: string) => void` | `-` |
+| onCancel | 點擊取消觸發 | `-` | `-` |
