@@ -7,6 +7,7 @@ export interface NavBarProps extends BasicComponent {
   left: React.ReactNode
   back: React.ReactNode
   right: React.ReactNode
+  titleAlign: 'center' | 'left'
   fixed: boolean
   safeAreaInsetTop: boolean
   placeholder: boolean
@@ -19,6 +20,7 @@ const defaultProps = {
   ...ComponentDefaults,
   left: '',
   right: '',
+  titleAlign: 'center',
   back: '',
   fixed: false,
   safeAreaInsetTop: false,
@@ -29,6 +31,7 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   const {
     right,
     left,
+    titleAlign,
     className,
     style,
     back,
@@ -92,6 +95,7 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   const classes = classNames({
     [`${classPrefix}--fixed`]: fixed,
     [`${classPrefix}--safe-area-inset-top`]: safeAreaInsetTop,
+    [`${classPrefix}--title-align-${titleAlign}`]: true,
   })
 
   const cls = classNames(classPrefix, classes, className)

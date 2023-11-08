@@ -152,6 +152,43 @@ export default App;
 
 :::
 
+:::demo
+
+```tsx
+import  React from "react";
+import { NavBar, Toast } from '@nutui/nutui-react';
+import { ArrowLeft, Share, Close } from '@nutui/icons-react'
+
+const App = () => {
+  return ( 
+    <NavBar
+        titleAlign="left"
+        back={
+        <>
+            <ArrowLeft name="left" color="#979797" />
+            返回
+        </>
+        }
+        left={<Close width={12} />}
+        right={
+        <span onClick={(e) =>  Toast.show('icon')}>
+            <Share />
+        </span>
+        }
+        onBackClick={(e) =>  Toast.show("返回")}
+    >
+        <span onClick={(e) =>  Toast.show("標題")}>
+        訂單詳情
+        </span>
+    </NavBar>
+  );
+};  
+export default App;
+
+```
+
+:::
+
 ## Navbar
 
 ### Props
@@ -161,6 +198,7 @@ export default App;
 | right | 右側內容 | `ReactNode` | `-` |
 | left | 左側內容，渲染在返回區域的右側 | `ReactNode` | `-` |
 | back | 返回區域的文字 | `ReactNode` | `-` |
+| titleAlign | 標題位置,可選值center left | `string` | `center` |
 | fixed | 是否固定 | `boolean` | `false` |
 | safeArea | 是否適配安全區 | `boolean` | `false` |
 | placeholder | 固定在頂部時，是否在標簽位置生成一個等高的佔位元素 | `boolean` | `false` |

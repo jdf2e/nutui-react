@@ -164,6 +164,120 @@ const NavBarDemo = () => {
             </Tabs>
           </div>
         </NavBar>
+        <NavBar
+          titleAlign="left"
+          back={
+            <>
+              <ArrowLeft name="left" color="#979797" />
+              {translated.a74a1fd4}
+            </>
+          }
+          right={
+            <span
+              className="flex-center"
+              onClick={(e) => Taro.showToast({ title: 'icon' })}
+            >
+              <Share size={20} />
+            </span>
+          }
+          onBackClick={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
+        >
+          <span onClick={(e) => Taro.showToast({ title: translated.b840c88f })}>
+            {translated.c38a08ef}
+          </span>
+        </NavBar>
+
+        <NavBar
+          titleAlign="left"
+          right={
+            <span
+              onClick={(e) => Taro.showToast({ title: translated.cfbdc781 })}
+            >
+              {translated.cfbdc781}
+            </span>
+          }
+          left={<Close size={14} />}
+          back={<ArrowLeft name="left" color="#979797" />}
+          onBackClick={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
+        >
+          <div className="title">
+            <span
+              onClick={(e) => Taro.showToast({ title: translated.cfbdc781 })}
+            >
+              {translated.e51e4582}
+            </span>
+            <span className="desc">{translated.e51e4582}</span>
+          </div>
+        </NavBar>
+        <NavBar
+          titleAlign="left"
+          back={<ArrowLeft name="left" color="#979797" />}
+          right={
+            <>
+              <span
+                style={{ marginRight: '5px' }}
+                onClick={(e) =>
+                  Taro.showToast({ title: translated['8dab2f66'] })
+                }
+              >
+                {translated['8dab2f66']}
+              </span>
+              <More
+                size={20}
+                onClick={(e) => Taro.showToast({ title: 'icon' })}
+              />
+            </>
+          }
+          onBackClick={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
+        >
+          <span onClick={(e) => Taro.showToast({ title: translated.b840c88f })}>
+            {translated.c3a3a1d2}
+          </span>
+          <i
+            style={{ marginLeft: '5px' }}
+            className="flex-center"
+            onClick={(e) => Taro.showToast({ title: 'icon' })}
+          >
+            <Cart size={20} />
+          </i>
+        </NavBar>
+        <NavBar
+          titleAlign="left"
+          back={<ArrowLeft size={20} name="left" color="#979797" />}
+          right={
+            <>
+              <span
+                style={{ marginRight: '5px' }}
+                onClick={(e) =>
+                  Taro.showToast({ title: translated['8dab2f66'] })
+                }
+              >
+                {translated['8dab2f66']}
+              </span>
+              <More
+                size={20}
+                onClick={(e) => Taro.showToast({ title: 'icon' })}
+              />
+            </>
+          }
+          onBackClick={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
+        >
+          <div>
+            <Tabs
+              className="navbar-tabs"
+              align="left"
+              activeType="simple"
+              value={tab1value}
+              onChange={(paneKey) => {
+                setTab1value(paneKey)
+              }}
+            >
+              <TabPane title="Tab 1"> Tab 1 </TabPane>
+              <TabPane title="Tab 2"> Tab 2 </TabPane>
+              <TabPane title="Tab 3"> Tab 3 </TabPane>
+            </Tabs>
+          </div>
+        </NavBar>
       </div>
     </>
   )

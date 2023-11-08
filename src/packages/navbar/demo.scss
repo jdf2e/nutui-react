@@ -14,4 +14,18 @@
       color: $color-text-help;
     }
   }
+
+  .navbar-tabs {
+    .nut-tabs__titles {
+      padding: 0;
+      .nut-tabs__titles-item {
+        margin: 0;
+        font-size: 16px;
+
+        &--active {
+          font-size: 20px;
+        }
+      }
+    }
+  }
 }
