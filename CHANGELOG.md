@@ -1,3 +1,16 @@
+# v2.0.23
+`2023-11-03`
+
+* :sparkles: feat(image): ssr 适配 (#1579) @Eiinu
+* :sparkles: feat: 新增组件 calendar (#1565) @Eiinu
+* :bug: fix: calendar scrolltop bad (#1583) @xiaoyatong
+* :bug: fix: noticebar 垂直滚动初始化时,无法及时展示元素信息 (#1576) @xiaoyatong
+* :bug: fix: popup zindex at taro and picker adds popupProps (#1581) @xiaoyatong
+* :bug: fix: popup zindex failed to set (#1578) @xiaoyatong
+* :bug: fix: searchbar lose focus when input nothing but input the delete (#1577) @xiaoyatong
+* :bug: fix: taro 编译 H5 出现滚动穿透 (#1537) @oasis-cloud
+
+
 # v2.0.22
 `2023-10-27`
 

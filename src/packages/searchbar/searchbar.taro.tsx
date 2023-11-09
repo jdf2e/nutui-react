@@ -95,10 +95,10 @@ export const SearchBar: FunctionComponent<
     searchSelf && searchSelf.focus()
   }
   const change = (event: ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target
-    onChange && onChange?.(value, event)
-    setValue(value)
-    value === '' && forceFocus()
+    if (value === event.target.value) return
+    onChange && onChange?.(event.target.value, event)
+    setValue(event.target.value)
+    event.target.value === '' && forceFocus()
   }
   const focus = (event: FocusEvent<HTMLInputElement>) => {
     const { value } = event.target
@@ -111,7 +111,7 @@ export const SearchBar: FunctionComponent<
     onBlur && onBlur?.(value, event)
   }
   useEffect(() => {
-    setValue(props.value)
+    setValue(props.value || '')
   }, [props.value])
   useEffect(() => {
     autoFocus && forceFocus()
@@ -140,7 +140,6 @@ export const SearchBar: FunctionComponent<
   const clickInput = (e: MouseEvent<HTMLInputElement>) => {
     onInputClick && onInputClick(e)
   }
-
   const renderLeftIn = () => {
     if (!leftIn) return null
     return (
@@ -153,7 +152,6 @@ export const SearchBar: FunctionComponent<
     if (!left) return null
     return <div className={`${classPrefix}__left`}>{left}</div>
   }
-
   const renderRightIn = () => {
     if (!rightIn) return null
     return (
@@ -162,12 +160,10 @@ export const SearchBar: FunctionComponent<
       </div>
     )
   }
-
   const renderRight = () => {
     if (!right) return null
     return <div className={`${classPrefix}__right`}>{right}</div>
   }
-
   const handleClear = () => {
     return (
       <div
@@ -178,16 +174,14 @@ export const SearchBar: FunctionComponent<
       </div>
     )
   }
-
   const clearaVal = (event: MouseEvent<HTMLDivElement>) => {
     if (disabled || readOnly) {
       return
     }
     setValue('')
-    onClear && onClear(event)
     forceFocus()
+    onClear && onClear(event)
   }
-
   const onKeypress = (e: any) => {
     if (e.key === 'Enter' || e.keyCode === 13) {
       if (typeof e.cancelable !== 'boolean' || e.cancelable) {
@@ -196,7 +190,6 @@ export const SearchBar: FunctionComponent<
       onSearch && onSearch(value as string)
     }
   }
-
   return (
     <div
       className={`${classPrefix} ${

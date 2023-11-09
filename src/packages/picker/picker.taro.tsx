@@ -9,7 +9,7 @@ import React, {
 import classNames from 'classnames'
 import Taro from '@tarojs/taro'
 import { View, PickerView, PickerViewColumn } from '@tarojs/components'
-import Popup from '@/packages/popup/index.taro'
+import { Popup, PopupProps } from '@/packages/popup/popup.taro'
 import PickerPanel from './pickerpanel.taro'
 import useRefs from '@/utils/use-refs'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
@@ -30,10 +30,15 @@ export interface PickerProps extends Omit<BasicComponent, 'children'> {
   defaultValue?: (number | string)[]
   threeDimensional?: boolean
   duration: number | string
+  closeOnOverlayClick: boolean
+  popupProps: Partial<
+    Omit<PopupProps, 'title' | 'onClose' | 'closeOnOverlayClick'>
+  >
   onConfirm?: (
     selectedOptions: PickerOption[],
     selectedValue: (string | number)[]
   ) => void
+  onCancel?: () => void
   onClose?: (
     selectedOptions: PickerOption[],
     selectedValue: (string | number)[]
@@ -59,8 +64,9 @@ const defaultProps = {
   value: [],
   defaultValue: [],
   threeDimensional: true,
+  closeOnOverlayClick: true,
   duration: 1000,
-} as PickerProps
+} as unknown as PickerProps
 const InternalPicker: ForwardRefRenderFunction<
   unknown,
   Partial<PickerProps>
@@ -71,12 +77,15 @@ const InternalPicker: ForwardRefRenderFunction<
     visible,
     title,
     options = [],
+    closeOnOverlayClick,
+    popupProps = {},
     defaultValue = [],
     className,
     style,
     threeDimensional,
     duration,
     onConfirm,
+    onCancel,
     onClose,
     afterClose,
     onChange,
@@ -98,6 +107,9 @@ const InternalPicker: ForwardRefRenderFunction<
     value: props.visible,
     defaultValue: false,
     finalValue: false,
+    onChange: (val: boolean) => {
+      props.onClose?.(setSelectedOptions(), innerValue)
+    },
   })
   const [innerValue, setInnerValue] = useState(selectedValue)
   const [currentValue, setCurrentValue] = useState<number[]>([])
@@ -293,18 +305,12 @@ const InternalPicker: ForwardRefRenderFunction<
     if (moving) {
       isConfirmEvent.current = true
     } else {
-      setSelectedValue(innerValue)
-      closePicker()
+      setSelectedValue(innerValue, true)
+      setInnerVisible(false)
     }
     setTimeout(() => {
       isConfirmEvent.current = false
     }, 0)
-  }
-
-  const closePicker = () => {
-    setInnerVisible(false)
-    onClose && onClose(setSelectedOptions(), innerValue)
-    afterClose && afterClose(setSelectedOptions(), innerValue, pickerRef)
   }
 
   const renderTitleBar = () => {
@@ -313,8 +319,8 @@ const InternalPicker: ForwardRefRenderFunction<
         <span
           className={`${classPrefix}__cancel-btn`}
           onClick={(e) => {
-            e.stopPropagation()
-            closePicker()
+            onCancel?.()
+            setInnerVisible(false)
           }}
         >
           {locale.cancel}
@@ -323,7 +329,6 @@ const InternalPicker: ForwardRefRenderFunction<
         <span
           className={`${classPrefix}__confirm-btn`}
           onClick={(e) => {
-            e.stopPropagation()
             confirm()
           }}
         >
@@ -366,10 +371,17 @@ const InternalPicker: ForwardRefRenderFunction<
     <>
       {typeof children === 'function' && children(selectedValue)}
       <Popup
+        {...popupProps}
         visible={innerVisible}
         position="bottom"
+        onOverlayClick={() => {
+          if (closeOnOverlayClick) {
+            props.onCancel?.()
+            setInnerVisible(false)
+          }
+        }}
         afterClose={() => {
-          closePicker()
+          afterClose?.(setSelectedOptions(), innerValue, pickerRef)
         }}
       >
         <View className={classes} style={style} {...rest} catchMove>

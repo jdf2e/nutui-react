@@ -16,6 +16,7 @@ interface T {
   vertical: string
   horizontalCenter: string
   verticalCenter: string
+  multiItems: string
 }
 
 const SwiperDemo = () => {
@@ -28,8 +29,9 @@ const SwiperDemo = () => {
       indicator: '自定义指示器',
       btns: '手动切换',
       vertical: '垂直方向',
-      horizontalCenter: '水平居中展示',
+      horizontalCenter: '水平居中展示（无指示器）',
       verticalCenter: '垂直居中展示',
+      multiItems: '一屏多个数据时',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -39,8 +41,9 @@ const SwiperDemo = () => {
       indicator: 'Custom indicator',
       btns: 'Manual switching',
       vertical: 'Vertical direction',
-      horizontalCenter: 'Horizontal center display',
+      horizontalCenter: 'Horizontal center display(no indicator)',
       verticalCenter: 'Vertical center display',
+      multiItems: 'many datas in a frame',
     },
   })
 
@@ -80,6 +83,7 @@ const SwiperDemo = () => {
             </Swiper.Item>
           ))}
         </Swiper>
+
         <h2>{translated.asyc}</h2>
         <Swiper defaultValue={0} indicator>
           {asyncList.map((item, index) => (
@@ -95,6 +99,7 @@ const SwiperDemo = () => {
           width={300}
           height={150}
           defaultValue={0}
+          indicator
         >
           {list.map((item) => (
             <Swiper.Item key={item}>
@@ -123,6 +128,7 @@ const SwiperDemo = () => {
                 textAlign: 'center',
                 color: '#fff',
                 fontSize: '14px',
+                zIndex: '1',
               }}
             >
               {current + 1}/{list.length}
@@ -174,7 +180,7 @@ const SwiperDemo = () => {
           </div>
         </div>
         <h2>{translated.vertical}</h2>
-        <Swiper defaultValue={0} direction="vertical">
+        <Swiper defaultValue={0} direction="vertical" indicator>
           {list.map((item) => (
             <Swiper.Item key={item}>
               <img width="100%" height="100%" src={item} alt="" />
@@ -196,12 +202,40 @@ const SwiperDemo = () => {
           height={220}
           previousMargin="20px"
           nextMargin="20px"
+          indicator
         >
           {list.map((item) => (
             <Swiper.Item key={item}>
               <img width="100%" height="100%" src={item} alt="" />
             </Swiper.Item>
           ))}
+        </Swiper>
+        <h2>{translated.multiItems}</h2>
+        <Swiper loop>
+          <Swiper.Item>
+            <div style={{ display: 'flex' }}>
+              <div style={{ flex: '1', border: '1 red' }}>Item1</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item2</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item3</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item4</div>
+            </div>
+          </Swiper.Item>
+          <Swiper.Item>
+            <div style={{ display: 'flex' }}>
+              <div style={{ flex: '1', border: '1 red' }}>Item5</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item6</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item7</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item8</div>
+            </div>
+          </Swiper.Item>
+          <Swiper.Item>
+            <div style={{ display: 'flex' }}>
+              <div style={{ flex: '1', border: '1 red' }}>Item9</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item10</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item11</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item12</div>
+            </div>
+          </Swiper.Item>
         </Swiper>
       </div>
     </>

@@ -4,6 +4,7 @@ import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
 import classNames from 'classnames'
 import { View, ITouchEvent } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
 
 export interface OverlayProps extends BasicComponent {
   zIndex: number
@@ -15,6 +16,7 @@ export interface OverlayProps extends BasicComponent {
   afterShow: () => void
   afterClose: () => void
 }
+
 export const defaultOverlayProps = {
   ...ComponentDefaults,
   zIndex: 1000,
@@ -49,33 +51,20 @@ export const Overlay: FunctionComponent<
 
   const classPrefix = `nut-overlay`
 
+  const nodeRef = useLockScrollTaro(!!props.lockScroll && innerVisible)
+
   useEffect(() => {
     if (visible) {
       setInnerVisible(true)
     } else {
       setInnerVisible(false)
     }
-    lock()
   }, [visible])
-
-  useEffect(() => {
-    return () => {
-      document.body.classList.remove('nut-overflow-hidden')
-    }
-  }, [])
 
   const classes = classNames(className, classPrefix)
 
   const styles = {
     ...style,
-  }
-
-  const lock = () => {
-    if (lockScroll && visible) {
-      document.body.classList.add('nut-overflow-hidden')
-    } else {
-      document.body.classList.remove('nut-overflow-hidden')
-    }
   }
 
   const handleClick = (e: ITouchEvent) => {
@@ -99,6 +88,7 @@ export const Overlay: FunctionComponent<
   return (
     <>
       <CSSTransition
+        nodeRef={nodeRef}
         classNames={`${classPrefix}-slide`}
         unmountOnExit
         timeout={duration}
@@ -107,6 +97,7 @@ export const Overlay: FunctionComponent<
         onExited={onHandleClosed}
       >
         <View
+          ref={nodeRef}
           className={classes}
           style={styles}
           {...(rest as any)}

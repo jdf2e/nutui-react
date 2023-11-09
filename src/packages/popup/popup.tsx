@@ -16,6 +16,7 @@ import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
 import { OverlayProps, defaultOverlayProps } from '@/packages/overlay/overlay'
 import Overlay from '@/packages/overlay'
 import { ComponentDefaults } from '@/utils/typings'
+import { useLockScroll } from '@/utils/use-lock-scroll'
 
 type Teleport = HTMLElement | (() => HTMLElement) | null
 
@@ -101,7 +102,7 @@ export const Popup: FunctionComponent<
   const [innerVisible, setInnerVisible] = useState(visible)
   const [showChildren, setShowChildren] = useState(true)
   const [transitionName, setTransitionName] = useState('')
-
+  useLockScroll(nodeRef, innerVisible && lockScroll)
   const classPrefix = 'nut-popup'
   const baseStyle = {
     zIndex: index,
@@ -258,7 +259,6 @@ export const Popup: FunctionComponent<
               className={overlayClassName}
               visible={innerVisible}
               closeOnOverlayClick={closeOnOverlayClick}
-              zIndex={zIndex}
               lockScroll={lockScroll}
               duration={duration}
               onClick={onHandleClickOverlay}

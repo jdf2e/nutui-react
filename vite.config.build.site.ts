@@ -14,7 +14,7 @@ if (projectID) {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: 'https://nutui.jd.com/h5/react/2x',
+  base: '/h5/react/2x',
   resolve: {
     alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
   },
@@ -30,6 +30,7 @@ export default defineConfig({
     postcss: {
       plugins: [
         atImport({ path: path.join(__dirname, 'src`') }),
+        // eslint-disable-next-line global-require
         require('autoprefixer')({
           overrideBrowserslist: [
             '> 0.5%',

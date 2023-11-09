@@ -15,6 +15,7 @@ import {
   useParams,
 } from '@/utils/use-custom-event'
 import { BasicComponent } from '@/utils/typings'
+import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
 
 export type DialogProps = BasicDialogProps & BasicComponent
 const defaultProps = {
@@ -81,7 +82,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
       }
     }
   )
-
+  const refObject = useLockScrollTaro(!!(visible && lockScroll))
   const renderFooter = () => {
     if (footer === null) return ''
 
@@ -140,12 +141,13 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
   return (
     <View
       style={{ display: visible ? 'block' : 'none' }}
+      ref={refObject}
       catchMove={lockScroll}
     >
       <>
         {overlay ? (
           <Overlay
-            visible
+            visible={visible}
             closeOnOverlayClick={closeOnOverlayClick}
             lockScroll={lockScroll}
             onClick={onHandleClickOverlay}

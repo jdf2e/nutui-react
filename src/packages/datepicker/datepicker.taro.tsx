@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useState, useEffect } from 'react'
 import { View } from '@tarojs/components'
-import Picker from '@/packages/picker/index.taro'
-import { PickerOption } from '@/packages/picker/index'
+import Picker, { PickerOption, PickerProps } from '@/packages/picker/index.taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -24,9 +23,23 @@ export interface DatePickerProps extends BasicComponent {
   startDate: Date
   endDate: Date
   threeDimensional: boolean
+  pickerProps: Partial<
+    Omit<
+      PickerProps,
+      | 'defaultValue'
+      | 'threeDimensional'
+      | 'title'
+      | 'value'
+      | 'onConfirm'
+      | 'onClose'
+      | 'onCancel'
+      | 'onChange'
+    >
+  >
   formatter: (type: string, option: PickerOption) => PickerOption
   filter: (type: string, option: PickerOption[]) => PickerOption[]
   onClose: () => void
+  onCancel: () => void
   onConfirm: (
     selectedOptions: PickerOption[],
     selectedValue: (string | number)[]
@@ -63,8 +76,10 @@ export const DatePicker: FunctionComponent<
     visible,
     title,
     defaultValue,
+    pickerProps = {},
     formatter,
     onClose,
+    onCancel,
     onConfirm,
     filter,
     onChange,
@@ -383,10 +398,12 @@ export const DatePicker: FunctionComponent<
     >
       {options.length && (
         <Picker
+          {...pickerProps}
           title={title}
           visible={visible}
           options={options}
           onClose={onClose}
+          onCancel={onCancel}
           defaultValue={defaultValueOfPicker}
           onConfirm={(options: PickerOption[], value: (string | number)[]) =>
             onConfirm && onConfirm(options, value)

@@ -519,9 +519,10 @@ export const CalendarItem = React.forwardRef<
     if (monthsData.length <= 1) {
       return
     }
-    const scrollTop = (e.detail as HTMLElement).scrollTop
+    const scrollTop = (e.target as HTMLElement).scrollTop
     Taro.getEnv() === 'WEB' && setScrollTop(scrollTop)
     let current = Math.floor(scrollTop / avgHeight)
+    if (!monthsData[current + 1]) return
     const nextTop = monthsData[current + 1].scrollTop
     const nextHeight = monthsData[current + 1].cssHeight
     if (current === 0) {

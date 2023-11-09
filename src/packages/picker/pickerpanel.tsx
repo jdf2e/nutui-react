@@ -114,14 +114,13 @@ const InternalPickerPanel: ForwardRefRenderFunction<
   }
 
   const setChooseValue = (move: number) => {
-    chooseItem &&
-      chooseItem(options?.[Math.round(-move / lineSpacing)], keyIndex)
+    chooseItem?.(options?.[Math.round(-move / lineSpacing)], keyIndex)
   }
 
   // 开始滚动
   const touchStart = (event: React.TouchEvent<HTMLDivElement>) => {
     touch.start(event)
-    setStartY(touch.deltaY)
+    setStartY(touch.deltaY.current)
     setStartTime(Date.now())
     transformY.current = scrollDistance
   }
@@ -132,13 +131,13 @@ const InternalPickerPanel: ForwardRefRenderFunction<
       moving.current = true
       preventDefault(event, true)
     }
-    const move = touch.deltaY - startY
+    const move = touch.deltaY.current - startY
     setMove(move)
   }
 
-  const touchEnd = (event: React.TouchEvent<HTMLElement>) => {
+  const touchEnd = () => {
     if (!moving.current) return
-    const move = touch.deltaY - startY
+    const move = touch.deltaY.current - startY
     const moveTime = Date.now() - startTime
     // 区分是否为惯性滚动
     if (moveTime <= INERTIA_TIME && Math.abs(move) > INERTIA_DISTANCE) {
@@ -149,7 +148,6 @@ const InternalPickerPanel: ForwardRefRenderFunction<
       setMove(move, 'end')
     }
     setTimeout(() => {
-      // moving.current = false
       touch.reset()
     }, 0)
   }

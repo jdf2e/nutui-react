@@ -1,12 +1,14 @@
-import React, { useState, useEffect, useRef, FunctionComponent } from 'react'
+import React, { useEffect, useRef, FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { isObject } from '@/utils'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { useForceUpdate } from '@/utils/use-force-update'
 
 export interface Color {
   [key: string]: string
 }
+
 export interface CircleProgressProps extends BasicComponent {
   percent: string | number
   strokeWidth?: string | number
@@ -16,6 +18,7 @@ export interface CircleProgressProps extends BasicComponent {
   background?: string
   clockwise?: boolean
 }
+
 const defaultProps = {
   ...ComponentDefaults,
   strokeWidth: 5,
@@ -46,7 +49,8 @@ export const CircleProgress: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const [oldValue, setOldValue] = useState(percent)
+  const oldValue = useRef(percent)
+  const forceUpdate = useForceUpdate()
 
   const classes = classNames(className, classPrefix)
   const refRandomId = Math.random().toString(36).slice(-8)
@@ -60,16 +64,19 @@ export const CircleProgress: FunctionComponent<
 
   useEffect(() => {
     const startTime = Date.now()
-    const startRate = Number(oldValue) // 30
+    const startRate = Number(oldValue.current) // 30
     const endRate = Number(percent) // 40
     const duration = Math.abs(((startRate - endRate) * 1000) / +100) // 100
     const animate = () => {
       const now = Date.now()
       const progress = Math.min((now - startTime) / duration, 1)
       const rate = progress * (endRate - startRate) + startRate
-      setOldValue(Math.min(Math.max(+rate, 0), 100))
+      oldValue.current = Math.min(Math.max(+rate, 0), 100)
       if (endRate > startRate ? rate < endRate : rate > endRate) {
+        forceUpdate()
         animateIdRef.current = window.requestAnimationFrame(animate)
+      } else {
+        window.cancelAnimationFrame(animateIdRef.current)
       }
     }
     animateIdRef.current = window.requestAnimationFrame(animate)
@@ -116,7 +123,7 @@ export const CircleProgress: FunctionComponent<
       })
     }
     const perimeter = 283
-    const progress = +oldValue
+    const progress = +oldValue.current
     const offset =
       (perimeter * Number(format(parseFloat(progress.toFixed(1))))) / 100
     const isWise = props.clockwise ? 1 : 0

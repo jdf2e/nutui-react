@@ -28,21 +28,15 @@ export interface PickerProps extends Omit<BasicComponent, 'children'> {
   defaultValue?: (number | string)[]
   threeDimensional?: boolean
   duration: number | string
+  closeOnOverlayClick: boolean
   popupProps: Partial<
-    Omit<
-      PopupProps,
-      | 'closeIcon'
-      | 'closeable'
-      | 'title'
-      | 'left'
-      | 'closeIconPosition'
-      | 'onClose'
-    >
+    Omit<PopupProps, 'title' | 'onClose' | 'closeOnOverlayClick'>
   >
   onConfirm?: (
     selectedOptions: PickerOption[],
     selectedValue: (string | number)[]
   ) => void
+  onCancel?: () => void
   onClose?: (
     selectedOptions: PickerOption[],
     selectedValue: (string | number)[]
@@ -67,6 +61,7 @@ const defaultProps = {
   value: [],
   defaultValue: [],
   threeDimensional: true,
+  closeOnOverlayClick: true,
   duration: 1000,
 } as unknown as PickerProps
 const InternalPicker: ForwardRefRenderFunction<
@@ -79,6 +74,7 @@ const InternalPicker: ForwardRefRenderFunction<
     visible,
     title,
     options = [],
+    closeOnOverlayClick,
     popupProps = {},
     defaultValue = [],
     className,
@@ -86,6 +82,7 @@ const InternalPicker: ForwardRefRenderFunction<
     threeDimensional,
     duration,
     onConfirm,
+    onCancel,
     onClose,
     afterClose,
     onChange,
@@ -107,6 +104,9 @@ const InternalPicker: ForwardRefRenderFunction<
     value: props.visible,
     defaultValue: false,
     finalValue: false,
+    onChange: (val: boolean) => {
+      props.onClose?.(setSelectedOptions(), innerValue)
+    },
   })
   const [innerValue, setInnerValue] = useState(selectedValue)
   const [columnIndex, setColumnIndex] = useState(0) // 选中列
@@ -277,17 +277,11 @@ const InternalPicker: ForwardRefRenderFunction<
       isConfirmEvent.current = true
     } else {
       setSelectedValue(innerValue, true)
-      closePicker()
+      setInnerVisible(false)
     }
     setTimeout(() => {
       isConfirmEvent.current = false
     }, 0)
-  }
-
-  const closePicker = () => {
-    setInnerVisible(false)
-    onClose && onClose(setSelectedOptions(), innerValue)
-    afterClose && afterClose(setSelectedOptions(), innerValue, pickerRef)
   }
 
   const renderTitleBar = () => {
@@ -296,8 +290,8 @@ const InternalPicker: ForwardRefRenderFunction<
         <span
           className={`${classPrefix}__cancel-btn`}
           onClick={(e) => {
-            e.stopPropagation()
-            closePicker()
+            onCancel?.()
+            setInnerVisible(false)
           }}
         >
           {locale.cancel}
@@ -306,7 +300,6 @@ const InternalPicker: ForwardRefRenderFunction<
         <span
           className={`${classPrefix}__confirm-btn`}
           onClick={(e) => {
-            e.stopPropagation()
             confirm()
           }}
         >
@@ -323,8 +316,14 @@ const InternalPicker: ForwardRefRenderFunction<
         {...popupProps}
         visible={innerVisible}
         position="bottom"
+        onOverlayClick={() => {
+          if (closeOnOverlayClick) {
+            props.onCancel?.()
+            setInnerVisible(false)
+          }
+        }}
         afterClose={() => {
-          closePicker()
+          afterClose?.(setSelectedOptions(), innerValue, pickerRef)
         }}
       >
         <div className={classes} style={style} {...rest}>
