@@ -948,7 +948,7 @@ $overlay-animation-duration: var(
 //popup（✅）
 $popup-border-radius: var(--nutui-popup-border-radius, 12px) !default;
 $popup-icon-size: var(--nutui-popup-icon-size, $font-size-xl) !default;
-$popup-title-padding: var(--nutui-popup-title-padding, 8px 12px) !default;
+$popup-title-padding: var(--nutui-popup-title-padding, 12px) !default;
 $popup-title-font-size: var(--nutui-popup-title-font-size, $font-h1) !default;
 $popup-subtitle-font-size: var(
   --nutui-popup-subtitle-font-size,
