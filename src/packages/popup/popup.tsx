@@ -29,6 +29,7 @@ export interface PopupProps extends OverlayProps {
   closeIcon: ReactNode
   left: ReactNode
   title: ReactNode
+  subtitle: ReactNode
   destroyOnClose: boolean
   portal: Teleport
   overlay: boolean
@@ -80,6 +81,7 @@ export const Popup: FunctionComponent<
     closeIcon,
     left,
     title,
+    subtitle,
     style,
     transition,
     round,
@@ -197,7 +199,7 @@ export const Popup: FunctionComponent<
   }
 
   const renderTitle = () => {
-    if (left || title) {
+    if (left || title || subtitle) {
       return (
         <div className={`${classPrefix}-title`}>
           {position === 'bottom' && (
@@ -205,8 +207,15 @@ export const Popup: FunctionComponent<
               {left && (
                 <div className={`${classPrefix}-title-left`}>{left}</div>
               )}
-              {title && (
-                <div className={`${classPrefix}-title-title`}>{title}</div>
+              {(title || subtitle) && (
+                <div className={`${classPrefix}-title-title`}>
+                  {title}
+                  {subtitle && (
+                    <div className={`${classPrefix}-title-title--subtitle`}>
+                      {subtitle}
+                    </div>
+                  )}
+                </div>
               )}
             </>
           )}

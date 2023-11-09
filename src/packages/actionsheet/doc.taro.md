@@ -302,6 +302,7 @@ export default App;
 | --- | --- | --- | --- |
 | visible | 遮罩层可见 | `boolean` | `false` |
 | title | 设置列表面板标题 | `string` | `-` |
+| subtitle | 设置列表面板子标题 | `string` | `-` |
 | description | 设置列表面板副标题/描述 | `string` | `-` |
 | options | 列表项 | `Array` | `[]` |
 | optionKey | 列表项的自定义设置 | `{ [key: string]: string }` | `-` |
@@ -326,6 +327,8 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
+| \--nutui-actionsheet-background-color | 背景色 | `$color-background-overlay` |
+| \--nutui-actionsheet-border-radius | 列表和取消按钮圆角 | `0` |
 | \--nutui-actionsheet-border-color | 标题和取消位置的border色值 | `#f6f6f6` |
 | \--nutui-actionsheet-item-text-align | 列表项的文字对齐方式 | `center` |
 | \--nutui-actionsheet-item-border-bottom | 列表项的底部border | `none` |

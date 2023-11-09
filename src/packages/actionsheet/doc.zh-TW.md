@@ -302,6 +302,7 @@ export default App;
 | --- | --- | --- | --- |
 | visible | 遮罩層可見 | `boolean` | `false` |
 | title | 設定列錶面闆標題 | `string` | \- |
+| subtitle | 設定列錶面闆子標題 | `string` | `-` |
 | description | 設定列錶面闆副標題/描述 | `string` | \- |
 | options | 列錶項 | `Array` | `[]` |
 | optionKey | 列錶項的自定義設定 | `{ [key: string]: string }` | `-` |
@@ -326,6 +327,8 @@ export default App;
 
 | 名稱 | 說明 | 預設值 |
 | --- | --- | --- |
+| \--nutui-actionsheet-background-color | 背景色 | `$color-background-overlay` |
+| \--nutui-actionsheet-border-radius | 列錶和取消按鈕圓角 | `0` |
 | \--nutui-actionsheet-border-color | 標題和取消位置的border色值 | `#f6f6f6` |
 | \--nutui-actionsheet-item-text-align | 列錶項的文字對齊方式 | center |
 | \--nutui-actionsheet-item-border-bottom | 列錶項的底部border | `none` |

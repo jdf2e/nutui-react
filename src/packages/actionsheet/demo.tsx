@@ -227,6 +227,7 @@ const ActionSheetDemo = () => {
         <ActionSheet
           visible={isVisible3}
           title={translated['0f87771f']}
+          subtitle={translated.e1699442}
           description={translated.e1699442}
           cancelText={translated['2cd0f3be']}
           options={optionsTwo}

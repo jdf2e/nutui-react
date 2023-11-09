@@ -302,6 +302,7 @@ export default App;
 | --- | --- | --- | --- |
 | visible | 遮罩层可见 | `boolean` | `false` |
 | title | 设置列表面板标题 | `string` | `-` |
+| subtitle | 设置列表面板子标题 | `string` | `-` |
 | description | 设置列表面板副标题/描述 | `string` | `-` |
 | options | 列表项 | `Array` | `[]` |
 | optionKey | 列表项的自定义设置 | `{ [key: string]: string }` | `-` |

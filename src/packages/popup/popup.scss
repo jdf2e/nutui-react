@@ -27,6 +27,12 @@
     &-title {
       font-weight: $font-weight-bold;
       font-size: $popup-title-font-size;
+
+      &--subtitle {
+        color: $color-text-help;
+        font-size: $popup-subtitle-font-size;
+        font-weight: $font-weight;
+      }
     }
 
     &-right {

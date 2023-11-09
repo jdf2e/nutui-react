@@ -212,6 +212,7 @@ export default App;
 | closeIcon | 自定義 Icon | `ReactNode` | `close` |
 | left | 标题左侧部分 | `ReactNode` | `-` |
 | title | 标题中间部分 | `ReactNode` | `-` |
+| subTitle | 子標題部分 | `ReactNode` | `-` |
 | destroyOnClose | 组件不可见时，卸载内容 | `boolean` | `false` |
 | round | 是否顯示圓角 | `boolean` | `false` |
 | portal | 指定節點掛載 | `HTMLElement` \| `(() => HTMLElement)` | null` | `null` |
@@ -235,6 +236,7 @@ export default App;
 | \--nutui-popup-icon-size | 彈框關閉按鈕的大小 | `18px` |
 | \--nutui-popup-title-padding | 標題欄的padding值 | `16px` |
 | \--nutui-popup-title-font-size | 標題欄的字號 | `18px` |
+| \--nutui-popup-subtitle-font-size | 子標題欄的字號 | `10px` |
 | \--nutui-popup-title-height | 標題欄的高度 | `50px` |
 | \--nutui-popup-title-border-bottom | 標題欄底部邊框 | `0` |
 | \--nutui-popup-animation-duration | 彈框動畫的延時 | `0.3s` |

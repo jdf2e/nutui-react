@@ -32,6 +32,7 @@ export const ActionSheet: FunctionComponent<
     cancelText,
     optionKey,
     title,
+    subtitle,
     description,
     options,
     onCancel,
@@ -60,12 +61,17 @@ export const ActionSheet: FunctionComponent<
       visible={visible}
       position="bottom"
       title={title}
+      subtitle={subtitle}
       className={classPrefix}
       onClose={() => {
         onCancel && onCancel()
       }}
     >
-      <div className={`${className}`} style={style} {...rest}>
+      <div
+        className={`${classPrefix}-body ${className}`}
+        style={style}
+        {...rest}
+      >
         {description && (
           <div className={`${classPrefix}__description`}>{description}</div>
         )}

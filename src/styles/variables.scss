@@ -601,10 +601,15 @@ $inputnumber-disabled-color: var(
 ) !default;
 
 // actionsheet（✅）
+$actionsheet-background-color: var(
+  --nutui-actionsheet-background-color,
+  $color-background-overlay
+) !default;
 $actionsheet-border-color: var(
   --nutui-actionsheet-border-color,
   $color-border
 ) !default;
+$actionsheet-border-radius: var(--nutui-actionsheet-border-radius, 0) !default;
 $actionsheet-item-text-align: var(
   --nutui-actionsheet-item-text-align,
   center
@@ -898,6 +903,10 @@ $popup-border-radius: var(--nutui-popup-border-radius, 24px) !default;
 $popup-icon-size: var(--nutui-popup-icon-size, $font-size-xl) !default;
 $popup-title-padding: var(--nutui-popup-title-padding, 16px) !default;
 $popup-title-font-size: var(--nutui-popup-title-font-size, 18px) !default;
+$popup-subtitle-font-size: var(
+  --nutui-popup-subtitle-font-size,
+  $font-size-xs
+) !default;
 $popup-title-height: var(--nutui-popup-title-height, 50px) !default;
 $popup-title-border-bottom: var(--nutui-popup-title-border-bottom, 0) !default;
 $popup-animation-duration: var(--nutui-popup-animation-duration, 0.3s) !default;
