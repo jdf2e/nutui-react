@@ -17,11 +17,11 @@ importers:
         specifier: ^7.21.0
         version: 7.23.2
       '@nutui/icons-react':
-        specifier: ^0.0.2
-        version: 0.0.2
+        specifier: ^0.0.4
+        version: 0.0.4
       '@nutui/icons-react-taro':
-        specifier: ^0.0.2
-        version: 0.0.2
+        specifier: ^0.0.4
+        version: 0.0.4
       '@nutui/touch-emulator':
         specifier: ^1.0.0
         version: 1.0.0
@@ -2800,12 +2800,12 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@nutui/icons-react-taro@0.0.2:
-    resolution: {integrity: sha512-tMl7U3rlaZgteNx882Ge/8BMP4xrKMDvUJ/k2AU5ZMQ1/bXMk1WvDJkHvxg63w15Z+uGAzs7NlCZZa6nTw9Z5A==}
+  /@nutui/icons-react-taro@0.0.4:
+    resolution: {integrity: sha512-29XhXpYb1x/lsWGKudho0sKTQZi1B9bbMDo70UxfxSD34rNiHIthHJeLcKc++aLMxu88cVPWD+qwt4AQQf8lBw==}
     dev: false
 
-  /@nutui/icons-react@0.0.2:
-    resolution: {integrity: sha512-jbzeUegJEdc6cso8ORwsjYad6pHUtYiQmfdodzSqJ98eghyh3Aka5R0LMUl+sK2fCSa88d21ccVKUFkp7JX7IQ==}
+  /@nutui/icons-react@0.0.4:
+    resolution: {integrity: sha512-QHqPCSV1s3Hxs++OvSlsu3UvpuWe/jkIbBuyhBUaTianuNqe/ahXS7/6Ub3HAySspbm6rZh/gy0u2NhZoULRtw==}
     dev: false
 
   /@nutui/touch-emulator@1.0.0:
