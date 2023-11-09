@@ -32,12 +32,14 @@ export interface DatePickerProps extends BasicComponent {
       | 'value'
       | 'onConfirm'
       | 'onClose'
+      | 'onCancel'
       | 'onChange'
     >
   >
   formatter: (type: string, option: PickerOption) => PickerOption
   filter: (type: string, option: PickerOption[]) => PickerOption[]
   onClose: () => void
+  onCancel: () => void
   onConfirm: (
     selectedOptions: PickerOption[],
     selectedValue: (string | number)[]
@@ -77,6 +79,7 @@ export const DatePicker: FunctionComponent<
     pickerProps = {},
     formatter,
     onClose,
+    onCancel,
     onConfirm,
     filter,
     onChange,
@@ -395,6 +398,7 @@ export const DatePicker: FunctionComponent<
           visible={visible}
           options={options}
           onClose={onClose}
+          onCancel={onCancel}
           defaultValue={defaultValueOfPicker}
           onConfirm={(options: PickerOption[], value: (string | number)[]) =>
             onConfirm && onConfirm(options, value)
