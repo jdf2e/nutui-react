@@ -255,18 +255,22 @@ const PickerDemo = () => {
     })
     if (type === 'base') {
       setBaseDesc(description)
+      setIsVisible1(false)
     }
     if (type === 'mutil') {
       setMutilDesc(description)
+      setIsVisible2(false)
     }
 
     if (type === 'default') {
       setbaseDefault(description)
       setDefaultValue([options[0].value as number])
+      setIsVisible4(false)
     }
 
     if (type === 'tile') {
       settileDesc(description)
+      setIsVisible6(false)
     }
   }
   return (
@@ -277,15 +281,17 @@ const PickerDemo = () => {
         <Cell
           title="请选择城市"
           description={baseDesc}
-          onClick={() => setIsVisible1(!isVisible1)}
+          onClick={() => setIsVisible1(true)}
         />
         <Picker
           title="请选择城市"
           visible={isVisible1}
           options={listData1}
           onConfirm={(list, values) => confirmPicker('base', list, values)}
-          onClose={() => setIsVisible1(false)}
-          onChange={changePicker}
+          onClose={() => {
+            setIsVisible1(false)
+            console.log('onclose')
+          }}
         />
 
         <h2>默认选中项</h2>
@@ -316,6 +322,7 @@ const PickerDemo = () => {
           options={listData1}
           onConfirm={(list, values) => {
             confirmPicker('base', list, values)
+            setIsVisible7(false)
             setVal(values)
           }}
           onClose={() => {

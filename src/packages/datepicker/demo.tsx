@@ -281,9 +281,16 @@ const DatePickerDemo = () => {
           }}
           defaultValue={new Date(`${defaultDescription}`)}
           showChinese
-          onClose={() => setShow1(false)}
+          onCancel={() => {
+            setShow1(false)
+            console.log('onCancel')
+          }}
           threeDimensional={false}
-          onConfirm={(options, values) => confirm1(options, values)}
+          onConfirm={(options, values) => {
+            setShow1(false)
+            confirm1(options, values)
+            console.log('onconfirm')
+          }}
         />
         {/* 选择日期 */}
         <DatePicker

@@ -385,5 +385,6 @@ export default App;
 | filter | Option filter | `(type: string, option: PickerOption) => PickerOption[]` | `-` |
 | threeDimensional | Turn on 3D effects | `boolean` | `true` |
 | onConfirm | Emitted when click confirm button. | `(options, value) => void` | `-` |
-| onClose | Emitted when click close button. | `(options, value) => void` | `-` |
+| onCancel | Emitted when click cancel button. | `() => void` | `-` |
+| onClose | Emitted when click confirm and cancel button. | `(options, value) => void` | `-` |
 | onChange | Emitted when current option changed. | `(options, value, index) => void` | `-` |

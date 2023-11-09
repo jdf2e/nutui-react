@@ -273,18 +273,22 @@ const PickerDemo = () => {
     })
     if (type === 'base') {
       setBaseDesc(description)
+      setIsVisible7(false)
     }
     if (type === 'mutil') {
       setMutilDesc(description)
+      setIsVisible2(false)
     }
 
     if (type === 'default') {
       setbaseDefault(description)
       setDefaultValue([options[0].value as number])
+      setIsVisible4(false)
     }
 
     if (type === 'tile') {
       settileDesc(description)
+      setIsVisible6(false)
     }
   }
   return (
@@ -294,18 +298,21 @@ const PickerDemo = () => {
         <Cell
           title={translated.chooseCity}
           description={baseDesc}
-          onClick={() => setIsVisible7(!isVisible7)}
+          onClick={() => setIsVisible7(true)}
         />
         <Picker
           title={translated.chooseCity}
           visible={isVisible7}
           options={listData1}
-          onChange={(option, value) => console.log('onChange', option, value)}
           onConfirm={(list, values) => confirmPicker('base', list, values)}
           onClose={() => {
             console.log('onClose')
             setIsVisible7(false)
           }}
+          // onCancel={() => {
+          //   console.log('onCancel')
+          //   setIsVisible7(false)
+          // }}
         />
 
         <h2>{translated.defaultSelected}</h2>
