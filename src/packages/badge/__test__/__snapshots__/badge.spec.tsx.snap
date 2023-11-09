@@ -10,7 +10,7 @@ exports[`should match custom icon 1`] = `
     >
       <svg
         aria-labelledby="Checklist"
-        class="nut-icon nut-icon-Checklist"
+        class="nut-icon nut-icon-Checklist "
         role="presentation"
         viewBox="0 0 1024 1024"
         xmlns="http://www.w3.org/2000/svg"
