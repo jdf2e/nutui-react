@@ -35,28 +35,28 @@ const App = () => {
       >
         <Form.Item
           required
-          label="name"
+          label="Field A"
           name="username"
           rules={[
-            { max: 5, message: 'Name cannot exceed 5 characters' },
-            { required: true, message: 'Please enter your name' },
+            { max: 5, message: 'Field A cannot exceed 5 characters' },
+            { required: true, message: 'Please enter Field A' },
           ]}
         >
           <Input
             className="nut-input-text"
-            placeholder="Please type in your name"
+            placeholder="Please type in Field A"
             type="text"
           />
         </Form.Item>
         <Form.Item
-          label="address"
+          label="Field D"
           name="address"
           rules={[
-            { max: 15, message: 'The address should not exceed 15 characters' },
-            { required: true, message: 'Please enter your address' },
+            { max: 15, message: 'Field D should not exceed 15 characters' },
+            { required: true, message: 'Please enter Field D' },
           ]}
         >
-          <TextArea placeholder="please enter address" maxLength={100} />
+          <TextArea placeholder="please enter Field D" maxLength={100} />
         </Form.Item>
         <Form.Item
           label="count"
@@ -117,17 +117,17 @@ const App = () => {
         }
       >
         <Form.Item
-          label="name"
+          label="Field A"
           name="username"
-          rules={[{ required: true, message: "Please type in your name" }]}
+          rules={[{ required: true, message: "Please type in Field A" }]}
         >
-          <Input placeholder="Please type in your name" type="text" />
+          <Input placeholder="Please type in Field A" type="text" />
         </Form.Item>
         <Form.Item
-          label="age"
-          name="age"
+          label="Field B"
+          name="Field B"
           rules={[
-            { required: true, message: "Please enter age" },
+            { required: true, message: "Please enter Field B" },
             { validator: customValidator, message: "number must be entered" },
             {
               validator: valueRangeValidator,
@@ -135,22 +135,22 @@ const App = () => {
             },
           ]}
         >
-          <Input placeholder="Please enter age，0-200 range must be entered"
+          <Input placeholder="Please enter Field B，0-200 range must be entered"
                  type="text" />
         </Form.Item>
         <Form.Item
-          label="telephone"
+          label="Field C"
           name="tel"
-          rules={[{ max: 13, message: "Please type your phone number" }]}
+          rules={[{ max: 13, message: "Please type Field C" }]}
         >
-          <Input placeholder="The phone format is incorrect" type="number" />
+          <Input placeholder="Field C format is incorrect" type="number" />
         </Form.Item>
         <Form.Item
-          label="address"
+          label="Field D"
           name="address"
-          rules={[{ required: true, message: "please enter address" }]}
+          rules={[{ required: true, message: "please enter Field D" }]}
         >
-          <Input placeholder="please enter address" type="text" />
+          <Input placeholder="please enter Field D" type="text" />
         </Form.Item>
       </Form>
     </>
@@ -210,15 +210,15 @@ const App = () => {
         }
       >
         <Form.Item
-          label="name"
+          label="Field A"
           name="username"
-          rules={[{ required: true, message: "Please type in your name" }]}
+          rules={[{ required: true, message: "Please type in Field A" }]}
           initialValue="ZhangSan"
         >
-          <Input placeholder="Please type in your name" type="text" />
+          <Input placeholder="Please type in Field A" type="text" />
         </Form.Item>
-        <Form.Item label="age" name="age" initialValue={18} rules={[
-          { required: true, message: "Please enter age" },
+        <Form.Item label="Field B" name="age" initialValue={18} rules={[
+          { required: true, message: "Please enter Field B" },
           { validator: customValidator, message: "number must be entered" },
           {
             validator: valueRangeValidator,
@@ -226,7 +226,7 @@ const App = () => {
           },
         ]}>
           <Input
-            placeholder="Please enter age，0-200 range must be entered"
+            placeholder="Please enter Field B，0-200 range must be entered"
             type="number"
           />
         </Form.Item>
@@ -275,19 +275,19 @@ const App = () => {
         onFinishFailed={(values, errors) => submitFailed(errors)}
       >
         <Form.Item
-          label="name"
+          label="Field A"
           name="username"
-          rules={[{ required: true, message: "Please type in your name" }]}
+          rules={[{ required: true, message: "Please type in Field A" }]}
         >
-          <Input placeholder="Please type in your name" type="text" />
+          <Input placeholder="Please type in Field A" type="text" />
         </Form.Item>
         <Form.Item label="tag" name="note">
           <Input placeholder="Please enter a label" type="string" />
         </Form.Item>
-        <Form.Item label="gender" name="gender">
+        <Form.Item label="Field E" name="gender">
           <Radio.Group onChange={onMenuChange}>
-            <Radio value="male">male</Radio>
-            <Radio value="female">female</Radio>
+            <Radio value="male">A</Radio>
+            <Radio value="female">B</Radio>
           </Radio.Group>
         </Form.Item>
       </Form>
