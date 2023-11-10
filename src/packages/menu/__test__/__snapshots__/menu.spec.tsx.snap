@@ -24,7 +24,7 @@ exports[`should match snapshot 1`] = `
             </div>
             <svg
               aria-labelledby="ArrowDown2"
-              class="nut-menu__title-icon nut-icon nut-icon-ArrowDown2"
+              class="nut-icon nut-icon-ArrowDown2 nut-menu__title-icon"
               role="presentation"
               viewBox="0 0 2472 1024"
               xmlns="http://www.w3.org/2000/svg"
@@ -55,7 +55,7 @@ exports[`should match snapshot 1`] = `
               <i>
                 <svg
                   aria-labelledby="Check"
-                  class="nut-icon nut-icon-Check"
+                  class="nut-icon nut-icon-Check "
                   color=""
                   role="presentation"
                   viewBox="0 0 1024 1024"

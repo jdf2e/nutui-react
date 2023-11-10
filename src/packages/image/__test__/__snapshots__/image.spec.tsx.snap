@@ -17,7 +17,7 @@ exports[`image props test 1`] = `
     >
       <svg
         aria-labelledby="Image"
-        class="nut-icon nut-icon-Image"
+        class="nut-icon nut-icon-Image "
         role="presentation"
         viewBox="0 0 1024 1024"
         xmlns="http://www.w3.org/2000/svg"
