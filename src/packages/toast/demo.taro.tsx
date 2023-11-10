@@ -3,6 +3,7 @@ import Taro from '@tarojs/taro'
 import { Jd } from '@nutui/icons-react-taro'
 import { Cell, Toast } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
+import { ToastWordBreakType } from './toast.taro'
 
 const ToastDemo = () => {
   const [state, SetState] = useState({
@@ -14,6 +15,7 @@ const ToastDemo = () => {
     bottom: '',
     icon: '',
     center: true,
+    wordBreak: 'break-all' as ToastWordBreakType,
   })
   const [showToast, SetShowToast] = useState(false)
 
@@ -22,7 +24,8 @@ const ToastDemo = () => {
     msg: string,
     duration?: number,
     icon?: string | React.ReactNode,
-    closeOnOverlayClick?: boolean
+    closeOnOverlayClick?: boolean,
+    wordBreak: ToastWordBreakType = 'break-all'
   ) => {
     const changeState = Object.assign(state, {
       msg,
@@ -30,6 +33,7 @@ const ToastDemo = () => {
       duration,
       icon,
       closeOnOverlayClick,
+      wordBreak,
     })
     SetState(changeState)
   }
@@ -48,6 +52,7 @@ const ToastDemo = () => {
           onClose={() => {
             SetShowToast(false)
           }}
+          wordBreak={state.wordBreak}
         />
         <h2>基础用法</h2>
         <Cell
@@ -134,6 +139,37 @@ const ToastDemo = () => {
             SetShowToast(true)
           }}
         />
+        <h2>换行截断方式</h2>
+        <Cell.Group>
+          <Cell
+            title="换行时截断单词"
+            onClick={() => {
+              openToast(
+                'text',
+                `Let's try ABCDEFGHIJKLMN here.`,
+                2,
+                undefined,
+                undefined,
+                'break-all'
+              )
+              SetShowToast(true)
+            }}
+          />
+          <Cell
+            title="换行时不截断单词"
+            onClick={() => {
+              openToast(
+                'text',
+                `Let's try ABCDEFGHIJKLMN here.`,
+                2,
+                undefined,
+                undefined,
+                'break-word'
+              )
+              SetShowToast(true)
+            }}
+          />
+        </Cell.Group>
       </div>
     </>
   )

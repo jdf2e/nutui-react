@@ -191,6 +191,50 @@ export default App
 
 :::
 
+### 文字提示
+
+:::demo
+
+```tsx
+import React, { useState } from 'react'
+import { Cell, Toast } from '@/packages/nutui.react.taro'
+
+const App = () => {
+  const [state, setState] = useState({
+    msg: `Let's try ABCDEFGHIJKLMN here.`,
+    wordBreak: 'break-all'
+  })
+  const msg = `Let's try ABCDEFGHIJKLMN here.`
+  const [show, setShow] = useState(false)
+  return (
+    <>
+      <Toast msg={state.msg} visible={show} type="text" onClose={() => {
+        setShow(false)
+      }} wordBreak={state.wordBreak} />
+      <Cell.Group>
+        <Cell
+          title="换行时截断单词"
+          onClick={() => setShow(true)}
+        />
+        <Cell
+          title="换行时不截断单词"
+          onClick={() => {
+            setState({
+              msg: `Let's try ABCDEFGHIJKLMN here.`,
+              wordBreak: 'break-word'
+            });
+            setShow(true);
+          }}
+        />
+      </Cell.Group>
+    </>
+  )
+}
+export default App
+```
+
+:::
+
 ## Toast
 
 ### Props
@@ -209,6 +253,7 @@ export default App
 | lockScroll | 背景是否锁定 | `boolean` | `false` |
 | type | 弹框类型 可选值（text、success、fail、warn、loading） | `string` | `-` |
 | visible | 弹窗是否显示开关 | `boolean` | `false` |
+| wordBreak | 换行截断方式 | `normal \| break-all \| break-word ` | `break-all` |
 | onClose | 关闭时触发的事件 | `Function` | `null` |
 
 ### Methods
