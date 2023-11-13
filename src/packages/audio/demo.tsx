@@ -28,14 +28,14 @@ const AudioDemo = () => {
     },
   })
   const [duration, setDuration] = useState(0)
-  const [voiceIcon, setVoiceIcon] = useState<any>(PlayCircleFill)
+  const [voiceIcon, setVoiceIcon] = useState<any>(<PlayCircleFill />)
   const audioElement = document.querySelectorAll('audio')[2]
   if (audioElement) {
     audioElement.addEventListener('playing', (e) => {
-      setVoiceIcon(PoweroffCircleFill)
+      setVoiceIcon(<PoweroffCircleFill />)
     })
     audioElement.addEventListener('pause', (e) => {
-      setVoiceIcon(PlayCircleFill)
+      setVoiceIcon(<PlayCircleFill />)
     })
   }
   return (
