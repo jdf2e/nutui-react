@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { Cell, Picker } from '@/packages/nutui.react.taro'
+import { Cell, Picker, ConfigProvider } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 
 interface PickerOption {
@@ -19,6 +19,7 @@ const PickerDemo = () => {
   const [isVisible5, setIsVisible5] = useState(false)
   const [isVisible6, setIsVisible6] = useState(false)
   const [isVisible7, setIsVisible7] = useState(false)
+  const [isVisible8, setIsVisible8] = useState(false)
 
   const [cityCustmer, setCityCustmer] = useState('')
   const [baseDesc, setBaseDesc] = useState('')
@@ -404,6 +405,32 @@ const PickerDemo = () => {
             )
           }
         />
+
+        <h2>主题</h2>
+        <Cell
+          title="请选择城市"
+          description={asyncDesc}
+          onClick={() => setIsVisible8(!isVisible8)}
+        />
+        <ConfigProvider
+          theme={{
+            nutuiPickerItemHeight: '48px',
+            nutuiPickerItemActiveLineBorder:
+              '1px dashed var(--nutui-brand-color)',
+            nutuiPickerItemTextColor: 'var(--nutui-brand-color)',
+          }}
+        >
+          <Picker
+            title="请选择城市"
+            visible={isVisible8}
+            options={listData1}
+            onConfirm={(list, values) => confirmPicker('base', list, values)}
+            onClose={() => {
+              setIsVisible8(false)
+              console.log('onclose')
+            }}
+          />
+        </ConfigProvider>
       </div>
     </>
   )

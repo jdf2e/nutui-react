@@ -3,6 +3,7 @@ import { useTranslate } from '../../sites/assets/locale'
 import { Internation } from './doc.en'
 import Picker from './picker'
 import Cell from '@/packages/cell'
+import ConfigProvider from '@/packages/configprovider'
 
 interface T {
   [props: string]: string
@@ -26,6 +27,7 @@ const PickerDemo = () => {
   const [isVisible5, setIsVisible5] = useState(false)
   const [isVisible6, setIsVisible6] = useState(false)
   const [isVisible7, setIsVisible7] = useState(false)
+  const [isVisible8, setIsVisible8] = useState(false)
 
   const [cityCustmer, setCityCustmer] = useState('')
   const [baseDesc, setBaseDesc] = useState('')
@@ -306,13 +308,9 @@ const PickerDemo = () => {
           options={listData1}
           onConfirm={(list, values) => confirmPicker('base', list, values)}
           onClose={() => {
-            console.log('onClose')
             setIsVisible7(false)
+            console.log('onClose')
           }}
-          // onCancel={() => {
-          //   console.log('onCancel')
-          //   setIsVisible7(false)
-          // }}
         />
 
         <h2>{translated.defaultSelected}</h2>
@@ -429,6 +427,32 @@ const PickerDemo = () => {
             )
           }
         />
+
+        <h2>主题</h2>
+        <Cell
+          title={translated.chooseCity}
+          description={asyncDesc}
+          onClick={() => setIsVisible8(!isVisible8)}
+        />
+        <ConfigProvider
+          theme={{
+            nutuiPickerItemHeight: '48px',
+            nutuiPickerItemActiveLineBorder:
+              '1px dashed var(--nutui-brand-color)',
+            nutuiPickerItemTextColor: 'var(--nutui-brand-color)',
+          }}
+        >
+          <Picker
+            title={translated.chooseCity}
+            visible={isVisible8}
+            options={listData1}
+            onConfirm={(list, values) => confirmPicker('base', list, values)}
+            onClose={() => {
+              setIsVisible8(false)
+              console.log('onclose')
+            }}
+          />
+        </ConfigProvider>
       </div>
     </>
   )
