@@ -272,7 +272,7 @@ exports[`Cascader visible true 1`] = `
                   </div>
                   <svg
                     aria-labelledby="Checklist"
-                    class="nut-cascader__icon-check nut-icon nut-icon-Checklist"
+                    class="nut-icon nut-icon-Checklist nut-cascader__icon-check"
                     role="presentation"
                     viewBox="0 0 1024 1024"
                     xmlns="http://www.w3.org/2000/svg"
@@ -302,7 +302,7 @@ exports[`Cascader visible true 1`] = `
                   </div>
                   <svg
                     aria-labelledby="Checklist"
-                    class="nut-cascader__icon-check nut-icon nut-icon-Checklist"
+                    class="nut-icon nut-icon-Checklist nut-cascader__icon-check"
                     role="presentation"
                     viewBox="0 0 1024 1024"
                     xmlns="http://www.w3.org/2000/svg"
@@ -332,7 +332,7 @@ exports[`Cascader visible true 1`] = `
                   </div>
                   <svg
                     aria-labelledby="Checklist"
-                    class="nut-cascader__icon-check nut-icon nut-icon-Checklist"
+                    class="nut-icon nut-icon-Checklist nut-cascader__icon-check"
                     role="presentation"
                     viewBox="0 0 1024 1024"
                     xmlns="http://www.w3.org/2000/svg"
@@ -374,7 +374,7 @@ exports[`Cascader visible true 2`] = `
   </div>
   <svg
     aria-labelledby="Checklist"
-    class="nut-cascader__icon-check nut-icon nut-icon-Checklist"
+    class="nut-icon nut-icon-Checklist nut-cascader__icon-check"
     role="presentation"
     viewBox="0 0 1024 1024"
     xmlns="http://www.w3.org/2000/svg"

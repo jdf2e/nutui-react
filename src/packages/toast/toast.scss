@@ -53,6 +53,14 @@
     left: 50%;
     top: $toast-inner-top;
     transform: translate(-50%, -50%);
+    &.normal {
+      word-break: normal;
+      word-wrap: normal;
+    }
+    &.break-word {
+      word-break: normal;
+      word-wrap: break-word;
+    }
   }
   &-center {
     top: var(--nutui-toast-inner-top, 50%);
