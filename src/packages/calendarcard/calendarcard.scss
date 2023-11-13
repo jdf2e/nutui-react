@@ -1,9 +1,9 @@
 .nut-calendarcard {
-  background: $white;
+  background: $color-background-overlay;
   border-radius: 12px;
   overflow: hidden;
   font-size: $calendar-base-font-size;
-  color: $gray1;
+  color: $color-title;
 
   &-header {
     display: flex;
@@ -63,8 +63,8 @@
     &.active,
     &.start,
     &.end {
-      background-color: $calendar-active-background-color;
-      color: $primary-text-color !important;
+      background-color: $color-primary;
+      color: $color-primary-text !important;
       border-radius: $calendar-day-active-border-radius;
     }
 
@@ -82,22 +82,22 @@
 
     &.mid {
       background-color: $calendar-choose-background-color;
-      color: $calendar-choose-color;
+      color: $color-primary;
     }
 
     &.weekend {
-      color: $calendar-choose-color;
+      color: $color-primary;
     }
 
     .nut-calendar-day-info {
-      color: $primary-text-color;
+      color: $color-primary-text;
     }
 
     // 上个月、下个月
     &.prev,
     &.next,
     &.disabled {
-      color: $calendar-disable-color;
+      color: $color-text-disabled;
       cursor: not-allowed;
     }
   }
