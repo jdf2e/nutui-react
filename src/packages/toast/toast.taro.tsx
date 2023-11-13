@@ -13,6 +13,7 @@ import { usePropsValue } from '@/utils/use-props-value'
 
 export type ToastPositionType = 'top' | 'bottom' | 'center'
 export type ToastSize = 'small' | 'base' | 'large'
+export type ToastWordBreakType = 'normal' | 'break-all' | 'break-word'
 
 export interface ToastProps extends BasicComponent {
   id?: string
@@ -30,6 +31,7 @@ export interface ToastProps extends BasicComponent {
   lockScroll: boolean
   size: ToastSize
   visible: boolean
+  wordBreak?: ToastWordBreakType
   onClose: () => void
 }
 
@@ -48,6 +50,7 @@ const defaultProps = {
   contentClassName: '', // 内容自定义样式名
   size: 'base', // 设置字体大小，默认base,可选large\small\base
   visible: false,
+  wordBreak: 'break-all',
   onClose: () => {}, // 未实现
 } as unknown as ToastProps
 
@@ -79,6 +82,7 @@ export const Toast: FunctionComponent<
       className,
       style,
       onClose,
+      wordBreak,
     },
     setParams,
   } = useParams({ ...defaultProps, ...props })
@@ -180,7 +184,7 @@ export const Toast: FunctionComponent<
         >
           <div className={`${classPrefix} ${classes}`} id={id}>
             <div
-              className={`${classPrefix}__inner ${classPrefix}-${position} ${contentClassName}`}
+              className={`${classPrefix}__inner ${classPrefix}-${position} ${contentClassName} ${wordBreak}`}
               style={contentStyle}
             >
               {hasIcon() ? (

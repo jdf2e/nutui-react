@@ -10,6 +10,7 @@ import { CSSTransition } from 'react-transition-group'
 import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { useLockScroll } from '@/utils/use-lock-scroll'
 
 export interface OverlayProps extends BasicComponent {
   zIndex: number
@@ -52,10 +53,7 @@ export const Overlay: FunctionComponent<
     ...props,
   }
   const classPrefix = `nut-overlay`
-  const classes = classNames(className, classPrefix)
-  const styles = {
-    ...style,
-  }
+
   const [innerVisible, setInnerVisible] = useState(visible)
 
   const nodeRef = useRef(null)
@@ -66,21 +64,14 @@ export const Overlay: FunctionComponent<
     } else {
       setInnerVisible(false)
     }
-    lock()
   }, [visible])
 
-  useEffect(() => {
-    return () => {
-      document.body.classList.remove('nut-overflow-hidden')
-    }
-  }, [])
+  useLockScroll(nodeRef, !!props.lockScroll && innerVisible)
 
-  const lock = () => {
-    if (lockScroll && visible) {
-      document.body.classList.add('nut-overflow-hidden')
-    } else {
-      document.body.classList.remove('nut-overflow-hidden')
-    }
+  const classes = classNames(className, classPrefix)
+
+  const styles = {
+    ...style,
   }
 
   const handleClick: MouseEventHandler<HTMLDivElement> = (e: MouseEvent) => {

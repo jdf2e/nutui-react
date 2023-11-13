@@ -1,3 +1,36 @@
+# v2.0.24
+`2023-11-10`
+
+* 🚀 perf(deps): 升级 icons 依赖，icons 包体积缩减 (#1604) @oasis-cloud
+* 🚀 perf(CalendarCard): taro demo 性能优化 (#1593) @Eiinu
+* :sparkles: feat(Toast): 新增 wordBreak 属性 (#1606) @Eiinu
+* :sparkles: feat: picker and datepicker add onCancel (#1603) @xiaoyatong
+* :sparkles: feat: 类似微信头像裁剪组件 (#1564) @Marvin Gui
+* :bug: fix(CalendarCard): 初始化渲染逻辑优化 (#1596) @Eiinu
+* :bug: fix(circleprogress): 计算出现 NaN 导致组件展示为 100% 的情况 (#1602) @oasis-cloud
+* :bug: fix(elevator): 替换文档展示pagation到showKeys (#1598) @HaiTao
+* :bug: fix(tag): 修复加载样式问题 #1588 (#1592) @Eiinu
+* :bug: fix: picker & DatePicker onConfirm failed (#1601) @xiaoyatong
+* :bug: fix: swiper indicator zindex at taro (#1586) @xiaoyatong
+* :bug: fix: taro event detail is undefined (#1591) @xiaoyatong
+* :bug: fix: virtuallist key at taro (#1584) @xiaoyatong
+* :bug: fix: 标签上的属性默认为 true，导致渲染 lockscroll 相关的 class (#1599) @oasis-cloud
+* 📖 docs(form): 由于文案包含姓名等文字，导致小程序审核不通过 (#1609) @oasis-cloud
+* 📖 docs: V1 升 V2 差异点更新 (#1607) @JQ
+
+# v2.0.23
+`2023-11-03`
+
+* :sparkles: feat(image): ssr 适配 (#1579) @Eiinu
+* :sparkles: feat: 新增组件 calendar (#1565) @Eiinu
+* :bug: fix: calendar scrolltop bad (#1583) @xiaoyatong
+* :bug: fix: noticebar 垂直滚动初始化时,无法及时展示元素信息 (#1576) @xiaoyatong
+* :bug: fix: popup zindex at taro and picker adds popupProps (#1581) @xiaoyatong
+* :bug: fix: popup zindex failed to set (#1578) @xiaoyatong
+* :bug: fix: searchbar lose focus when input nothing but input the delete (#1577) @xiaoyatong
+* :bug: fix: taro 编译 H5 出现滚动穿透 (#1537) @oasis-cloud
+
+
 # v2.0.22
 `2023-10-27`
 

@@ -33,6 +33,7 @@
     }
 
     .left-icon {
+      display: flex;
       height: $noticebar-left-icon-width;
       min-width: $noticebar-left-icon-width;
       margin-right: $noticebar-icon-gap;

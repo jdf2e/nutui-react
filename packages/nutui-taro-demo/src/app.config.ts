@@ -38,6 +38,7 @@ const subPackages = [
     "pages": [
       "pages/address/index",
       "pages/calendar/index",
+      "pages/calendarcard/index",
       "pages/cascader/index",
       "pages/checkbox/index",
       "pages/datepicker/index",
@@ -105,6 +106,7 @@ const subPackages = [
   {
     "root": "business",
     "pages": [
+      "pages/avatarcropper/index",
       "pages/barrage/index",
       "pages/card/index",
       "pages/timeselect/index",

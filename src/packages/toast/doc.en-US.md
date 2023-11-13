@@ -328,6 +328,39 @@ export default App
 
 :::
 
+### Word Break
+
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { Toast, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  const showToast = (mode) => {
+    Toast.show({
+      content: `Let's try ABCDEFGHIJKLMN here.`,
+      wordBreak: mode
+    });
+  }
+  return (
+    <Cell.Group>
+      <Cell
+        title="Break All"
+        onClick={() => showToast('break-all')}
+      />
+      <Cell
+        title="Break Word"
+        onClick={() => showToast('break-word')}
+      />
+    </Cell.Group>
+  )
+}
+export default App
+```
+
+:::
+
 ## Toast
 
 
@@ -345,6 +378,7 @@ export default App
 | contentStyle | Toast content style | `React.CSSProperties` | `-` |
 | closeOnOverlayClick | Whether to close when overlay is clicked | `boolean` | `false` |
 | lockScroll | Whether the background is locked | `boolean` | `false` |
+| wordBreak | Word Break Mode | `normal \| break-all \| break-word ` | `break-all` |
 | onClose | Callback function after close | `() => void` | `null` |
 
 `Toast` only supports Imperative calls.

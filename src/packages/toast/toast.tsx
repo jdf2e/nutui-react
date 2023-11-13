@@ -11,6 +11,7 @@ export type ToastIconType =
   | 'loading'
   | 'warn'
   | React.ReactNode
+export type ToastWordBreakType = 'normal' | 'break-all' | 'break-word'
 
 export interface ToastProps extends BasicComponent {
   id?: string
@@ -25,6 +26,7 @@ export interface ToastProps extends BasicComponent {
   onClose?: () => void
   contentClassName?: string
   contentStyle?: React.CSSProperties
+  wordBreak?: ToastWordBreakType
 }
 
 const options: ToastProps = {
@@ -39,6 +41,7 @@ const options: ToastProps = {
   closeOnOverlayClick: false, // 是否点击遮罩可关闭
   lockScroll: false,
   contentClassName: '',
+  wordBreak: 'break-all',
 }
 
 function getInstance(

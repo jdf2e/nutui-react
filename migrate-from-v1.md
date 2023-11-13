@@ -174,11 +174,13 @@ plugins: [
 - 新增 `afterClose` 和 `afterShow`，用于完全关闭后触发的回调和完全展示后触发的回调
 #### Popup
 - `popClass` 重命名为 `className`，统一将组件的样式类名使用 `className`，不再指定特殊名字，减轻用户使用的记忆成本
-- `overlayClass` 重命名为 `OverlayClassName`，继承自`Overlay`
+- `overlayClass` 重命名为 `overlayClassName`，继承自`Overlay`
 - `closeOnClickOverlay` 重命名为 `closeOnOverlayClick`
 - `onOpened` 和 `onClosed`  重命名为  `afterShow` 和 `afterClose`，继承自`Overlay`，用于完全关闭后触发的回调和完全展示后触发的回调 
 - `destroyOnClose` 的描述进行了修订，改为：“组件不可见时，卸载内容”，并把其默认值改为了`false`
 - `onClickCloseIcon` 和 `onClickOverlay` 两个方法，增加布尔判断，如返回false 或 未定义返回值时，将不再关闭 Popup；默认值为 `true`；在demo中已增加相应示例；同时，两者的名字变更为 `onCloseIconClick`、`onOverlayClick`
+- `closeIcon` 类型从 `string` 改为 `ReactNode`，以前的 `closeIcon='mask-close'` 需改为 `closeIcon={<MaskClose />}`
+- `onOverlayClick` 和 `onCloseIconClick` 不会自动触发 `onClose` 了，如需触发关闭事件，需主动调用 `onClose` 回调函数
 - 为底部弹出的 `Popup` 时，默认支持圆角。
 
 ### 布局组件
@@ -351,6 +353,10 @@ plugins: [
 - 移除 `inputWidth`, 通过`--nutui-inputnumber-input-width`控制输入框的宽度
 - 移除 `buttonSize`, 通过`–nutui-inputnumber-button-width` 和 `–nutui-inputnumber-button-height`控制按钮的宽度和高度
 - taro 新增 `formatter` 属性, 用于指定输入框展示值的格式
+- 移除 `errorMessage`
+- 移除 `showWordLimit`
+- `autofocus` 重命名为 `autoFocus`
+- `type="textarea"` 建议改为使用 `TextArea` 组件实现
 #### NumberKeyboard
 - `randomKeys` 重命名为 `random`
 - `customKey` 重命名为 `custom`
@@ -443,7 +449,8 @@ plugins: [
 - 增加 `fit`，用于图片填充模式
 - 增加 `value`，用于受控传值
 - 移除 `uploadIconSize`，可通过 icon 属性传入自定义 icon 或借助 CSS Variables 修改 icon 大小
-
+- `uploadIcon` 类型从 `string` 调整为 `ReactNode`
+- `onChange` 参数类型从 `{fileList: FileItem[], event: any}` 调整为 `FileItem[]`
 
 ### 操作反馈
 #### ActionSheet
@@ -479,6 +486,7 @@ plugins: [
 - `onClickSelf` 重命名为 `onClick`，语义不变，仍表示点击弹框自身时触发事件。
 - 增加 `overlayStyle` 和 `overlayClassName`，用来配置 Overlay 组件样式。
 - 增加 `onOverlayClick`，支持点击overlay时，触发事件。
+- `onCancel` 回调不会自动关闭弹层，需主动调用 `Dialog.close(xx)`
 
 #### Drag
 #### InfiniteLoading

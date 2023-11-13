@@ -70,18 +70,18 @@ const NoticeBarDemo = () => {
 
         <h2>{translated.scrollable}</h2>
         <NoticeBar content={translated.textShort} scrollable />
-        <br />
+        <br style={{ display: 'block', height: '10px' }} />
         <NoticeBar content={translated.text} scrollable={false} />
 
         <h2>{translated.mode}</h2>
         <NoticeBar closeable onClick={hello}>
           {translated.text}
         </NoticeBar>
-        <br />
+        <br style={{ display: 'block', height: '10px' }} />
         <NoticeBar closeable rightIcon={<Failure />} onClick={hello}>
           {translated.text}
         </NoticeBar>
-        <br />
+        <br style={{ display: 'block', height: '10px' }} />
         <NoticeBar
           leftIcon={
             <img

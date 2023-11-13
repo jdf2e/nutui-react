@@ -292,7 +292,7 @@ const App = () => {
   }
   return (
     <Elevator
-      pagation={false}
+      showKeys={false}
       list={dataList}
       height="260"
       onItemClick={(key: string, item: any) => onItemClick(key, item)}

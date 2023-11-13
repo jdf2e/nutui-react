@@ -1,7 +1,6 @@
 import React, {
   CSSProperties,
   FunctionComponent,
-  useEffect,
   useState,
   ReactNode,
 } from 'react'
@@ -18,6 +17,7 @@ export type TagType =
   | 'success'
   | 'warning'
   | 'danger'
+
 export interface TagProps extends BasicComponent {
   type: TagType
   background: string
@@ -63,23 +63,17 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     ...defaultProps,
     ...props,
   }
-  const [tagClass, setTagClass] = useState('')
   const [visible, setVisible] = useState(true)
   const classPrefix = 'nut-tag'
-  const classes = () => {
-    return classNames({
-      [classPrefix]: true,
-      [`${classPrefix}--${type}`]: type,
-      [`${classPrefix}--plain`]: plain,
-      [`${classPrefix}--round`]: round,
-      [`${classPrefix}--mark`]: mark,
-      [`${classPrefix}--close`]: closeable,
-      [`${className}`]: className,
-    })
-  }
-  useEffect(() => {
-    setTagClass(classes())
-  }, [type, background, color, plain, round, mark, closeable, className])
+  const classes = classNames({
+    [classPrefix]: true,
+    [`${classPrefix}--${type}`]: type,
+    [`${classPrefix}--plain`]: plain,
+    [`${classPrefix}--round`]: round,
+    [`${classPrefix}--mark`]: mark,
+    [`${classPrefix}--close`]: closeable,
+    [`${className}`]: className,
+  })
 
   const handleClick = (e: MouseEvent<HTMLDivElement>) => {
     onClick && onClick(e)
@@ -106,7 +100,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
       {closeable ? (
         visible && (
           <div
-            className={tagClass}
+            className={classes}
             style={{ ...style, ...getStyle() }}
             onClick={(e) => handleClick(e)}
           >
@@ -136,7 +130,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
         )
       ) : (
         <div
-          className={tagClass}
+          className={classes}
           style={{ ...style, ...getStyle() }}
           onClick={(e) => handleClick(e)}
         >
