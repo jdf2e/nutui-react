@@ -286,5 +286,5 @@ export default App;
 | \--nutui-numberkeyboard-key-font-color | 按鍵字體顏色 | `#333` |
 | \--nutui-numberkeyboard-key-confirm-font-size | 確認按鍵字體大小 | `16px` |
 | \--nutui-numberkeyboard-key-confirm-font-color | 確認按鍵字體顏色 | `#fff` |
-| \--nutui-numberkeyboard-key-confirm-background-color | 確認按鍵背景顏色 | `#1989fa` |
+| \--nutui-numberkeyboard-key-confirm-background-color | 確認按鍵背景顏色 | `$color-primary` |
 | \--nutui-numberkeyboard-background-color | 鍵盤容器背景色 | `$color-background` |

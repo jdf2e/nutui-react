@@ -286,5 +286,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-numberkeyboard-key-font-color | key fontColor | `#333` |
 | \--nutui-numberkeyboard-key-confirm-font-size | key confirm fontSize | `16px` |
 | \--nutui-numberkeyboard-key-confirm-font-color | key confirm fontColor | `#fff` |
-| \--nutui-numberkeyboard-key-confirm-background-color | key confirm backgroundColor | `#1989fa` |
+| \--nutui-numberkeyboard-key-confirm-background-color | key confirm backgroundColor | `$color-primary` |
 | \--nutui-numberkeyboard-background-color | keyboard container backgroundColor | `$color-background` |
