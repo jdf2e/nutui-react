@@ -389,9 +389,11 @@ export default App;
 | threeDimensional | 是否開啟3D效果 | `boolean` | `true` |
 | duration | 快速滑動時慣性滾動的時長，單位 ms | `string`  \|  `number` | `1000` |
 | popupProps | 透传popup属性 | `object` | `-` |
+| closeOnOverlayClick | 是否點擊遮罩關閉 | `boolean` | `true` |
 | onConfirm | 點選確認按鈕時候回調 | `(options, value) => void` | `-` |
 | onChange | 每一列值變更時調用 | `(options, value) => void` | `-` |
-| onClose | 關閉時觸發 | `(options, value) => void` | `-` |
+| onCancel | 點擊取消按鈕時觸發 | `() => void` | `-` |
+| onClose | 確定和取消時，都觸發 | `(options, value) => void` | `-` |
 | afterClose | 聯動時，關閉時回調 | `(options, value) => void` | `-` |
 
 ### options 數據結構

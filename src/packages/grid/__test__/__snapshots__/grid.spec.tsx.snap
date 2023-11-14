@@ -14,7 +14,7 @@ exports[`render with custom content 1`] = `
       >
         <svg
           aria-labelledby="Dongdong"
-          class="nut-icon nut-icon-Dongdong"
+          class="nut-icon nut-icon-Dongdong "
           role="presentation"
           viewBox="0 0 1079 1024"
           xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +50,7 @@ exports[`render with custom content 1`] = `
           >
             <svg
               aria-labelledby="My"
-              class=" icon nut-icon nut-icon-My"
+              class="nut-icon nut-icon-My  icon"
               color="#fff"
               role="presentation"
               viewBox="0 0 1024 1024"
@@ -79,7 +79,7 @@ exports[`render with custom content 1`] = `
         >
           <svg
             aria-labelledby="My"
-            class=" icon nut-icon nut-icon-My"
+            class="nut-icon nut-icon-My  icon"
             color="#fff"
             role="presentation"
             viewBox="0 0 1024 1024"
@@ -119,7 +119,7 @@ exports[`render with custom content 1`] = `
             >
               <svg
                 aria-labelledby="Image"
-                class="nut-icon nut-icon-Image"
+                class="nut-icon nut-icon-Image "
                 role="presentation"
                 viewBox="0 0 1024 1024"
                 xmlns="http://www.w3.org/2000/svg"
@@ -159,7 +159,7 @@ exports[`should match snapshot 1`] = `
       >
         <svg
           aria-labelledby="Dongdong"
-          class="nut-icon nut-icon-Dongdong"
+          class="nut-icon nut-icon-Dongdong "
           role="presentation"
           viewBox="0 0 1079 1024"
           xmlns="http://www.w3.org/2000/svg"
@@ -186,7 +186,7 @@ exports[`should match snapshot 1`] = `
       >
         <svg
           aria-labelledby="Dongdong"
-          class="nut-icon nut-icon-Dongdong"
+          class="nut-icon nut-icon-Dongdong "
           role="presentation"
           viewBox="0 0 1079 1024"
           xmlns="http://www.w3.org/2000/svg"
@@ -213,7 +213,7 @@ exports[`should match snapshot 1`] = `
       >
         <svg
           aria-labelledby="Dongdong"
-          class="nut-icon nut-icon-Dongdong"
+          class="nut-icon nut-icon-Dongdong "
           role="presentation"
           viewBox="0 0 1079 1024"
           xmlns="http://www.w3.org/2000/svg"

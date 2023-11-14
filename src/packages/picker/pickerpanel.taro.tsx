@@ -6,7 +6,7 @@ import React, {
   useImperativeHandle,
 } from 'react'
 import { PickerOption } from './types'
-import { useTouch } from '../../utils/use-touch'
+import { useTouch } from '@/utils/use-touch'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { passiveSupported } from '@/utils/supports-passive'
 

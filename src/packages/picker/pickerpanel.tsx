@@ -114,8 +114,7 @@ const InternalPickerPanel: ForwardRefRenderFunction<
   }
 
   const setChooseValue = (move: number) => {
-    chooseItem &&
-      chooseItem(options?.[Math.round(-move / lineSpacing)], keyIndex)
+    chooseItem?.(options?.[Math.round(-move / lineSpacing)], keyIndex)
   }
 
   // 开始滚动
@@ -136,7 +135,7 @@ const InternalPickerPanel: ForwardRefRenderFunction<
     setMove(move)
   }
 
-  const touchEnd = (event: React.TouchEvent<HTMLElement>) => {
+  const touchEnd = () => {
     if (!moving.current) return
     const move = touch.deltaY.current - startY
     const moveTime = Date.now() - startTime
@@ -149,7 +148,6 @@ const InternalPickerPanel: ForwardRefRenderFunction<
       setMove(move, 'end')
     }
     setTimeout(() => {
-      // moving.current = false
       touch.reset()
     }, 0)
   }

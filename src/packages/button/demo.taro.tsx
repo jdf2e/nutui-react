@@ -27,6 +27,7 @@ interface T {
   b8a453e3: string
   '248be9e1': string
   ea3d02f2: string
+  ea379d01: string
   c9e6df49: string
   '781b07fd': string
   '1076d771': string
@@ -56,6 +57,7 @@ const ButtonDemo = () => {
       b8a453e3: '大号按钮',
       '248be9e1': '普通按钮',
       ea3d02f2: '小型按钮',
+      ea379d01: '迷你按钮',
       c9e6df49: '块级元素',
       '781b07fd': '自定义颜色',
       '1076d771': '单色按钮',
@@ -82,6 +84,7 @@ const ButtonDemo = () => {
       b8a453e3: '大號按鈕',
       '248be9e1': '普通按鈕',
       ea3d02f2: '小型按鈕',
+      ea379d01: '迷你按鈕',
       c9e6df49: '塊級元素',
       '781b07fd': '自定義顏色',
       '1076d771': '單色按鈕',
@@ -107,7 +110,8 @@ const ButtonDemo = () => {
       '60a53514': 'Favorite',
       b8a453e3: 'Large button',
       '248be9e1': 'Normal Button',
-      ea3d02f2: 'Mini Button',
+      ea3d02f2: 'Small Button',
+      ea379d01: 'Mini Button',
       c9e6df49: 'Block-level elements',
       '781b07fd': 'Custom Colors',
       '1076d771': 'Monochrome button',
@@ -260,6 +264,9 @@ const ButtonDemo = () => {
           </Button>
           <Button size="small" style={{ margin: 8 }} type="primary">
             {translated.ea3d02f2}
+          </Button>
+          <Button size="mini" style={{ margin: 8 }} type="primary">
+            {translated.ea379d01}
           </Button>
         </Cell>
         <h2>{translated.c9e6df49}</h2>
