@@ -4,7 +4,7 @@
     align-items: center;
   }
 
-  .nut-navbar__title .title {
+  .nut-navbar-title .title {
     display: flex;
     flex-direction: column;
 
@@ -16,13 +16,13 @@
   }
 
   .navbar-tabs {
-    .nut-tabs__titles {
+    .nut-tabs-titles {
       padding: 0;
-      .nut-tabs__titles-item {
+      .nut-tabs-titles-item {
         margin: 0;
         font-size: 16px;
 
-        &--active {
+        &-active {
           font-size: 20px;
         }
       }

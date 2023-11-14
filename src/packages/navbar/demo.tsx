@@ -72,7 +72,16 @@ const NavBarDemo = () => {
         >
           {translated.c38a08ef}
         </NavBar>
-
+        <NavBar
+          right={
+            <span className="flex-center" onClick={(e) => Toast.show('icon')}>
+              <Share />
+            </span>
+          }
+          onBackClick={(e) => Toast.show(translated.a74a1fd4)}
+        >
+          {translated.c38a08ef}
+        </NavBar>
         <NavBar
           right={
             <span onClick={(e) => Toast.show(translated.cfbdc781)}>
@@ -94,10 +103,7 @@ const NavBarDemo = () => {
           back={<ArrowLeft />}
           right={
             <>
-              <span
-                style={{ marginRight: '5px' }}
-                onClick={(e) => Toast.show(translated['8dab2f66'])}
-              >
+              <span onClick={(e) => Toast.show(translated['8dab2f66'])}>
                 {translated['8dab2f66']}
               </span>
               <More onClick={(e) => Toast.show('icon')} />
@@ -116,15 +122,11 @@ const NavBarDemo = () => {
             <Cart />
           </i>
         </NavBar>
-
         <NavBar
           back={<ArrowLeft />}
           right={
             <>
-              <span
-                style={{ marginRight: '5px' }}
-                onClick={(e) => Toast.show(translated['8dab2f66'])}
-              >
+              <span onClick={(e) => Toast.show(translated['8dab2f66'])}>
                 {translated['8dab2f66']}
               </span>
               <More onClick={(e) => Toast.show('icon')} />
@@ -162,6 +164,17 @@ const NavBarDemo = () => {
         >
           {translated.c38a08ef}
         </NavBar>
+        <NavBar
+          titleAlign="left"
+          right={
+            <span className="flex-center" onClick={(e) => Toast.show('icon')}>
+              <Share />
+            </span>
+          }
+          onBackClick={(e) => Toast.show(translated.a74a1fd4)}
+        >
+          {translated.c38a08ef}
+        </NavBar>
 
         <NavBar
           titleAlign="left"
@@ -186,10 +199,7 @@ const NavBarDemo = () => {
           back={<ArrowLeft />}
           right={
             <>
-              <span
-                style={{ marginRight: '5px' }}
-                onClick={(e) => Toast.show(translated['8dab2f66'])}
-              >
+              <span onClick={(e) => Toast.show(translated['8dab2f66'])}>
                 {translated['8dab2f66']}
               </span>
               <More onClick={(e) => Toast.show('icon')} />
@@ -213,10 +223,7 @@ const NavBarDemo = () => {
           back={<ArrowLeft />}
           right={
             <>
-              <span
-                style={{ marginRight: '5px' }}
-                onClick={(e) => Toast.show(translated['8dab2f66'])}
-              >
+              <span onClick={(e) => Toast.show(translated['8dab2f66'])}>
                 {translated['8dab2f66']}
               </span>
               <More onClick={(e) => Toast.show('icon')} />

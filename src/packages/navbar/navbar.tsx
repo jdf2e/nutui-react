@@ -59,11 +59,11 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   }
 
   const renderLeft = () => {
-    return (
-      <div className={`${classPrefix}__left`}>
+    return back || left ? (
+      <div className={`${classPrefix}-left`}>
         {back && (
           <div
-            className={`${classPrefix}__left__back`}
+            className={`${classPrefix}-left-back`}
             onClick={(e) => onBackClick(e)}
           >
             {back}
@@ -71,15 +71,15 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
         )}
         {left}
       </div>
-    )
+    ) : null
   }
 
   const renderContent = () => {
-    return <div className={`${classPrefix}__title`}>{children}</div>
+    return <div className={`${classPrefix}-title`}>{children}</div>
   }
 
   const renderRight = () => {
-    return <div className={`${classPrefix}__right`}>{right}</div>
+    return <div className={`${classPrefix}-right`}>{right}</div>
   }
 
   const renderWrapper = () => {
@@ -93,9 +93,9 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   }
 
   const classes = classNames({
-    [`${classPrefix}--fixed`]: fixed,
-    [`${classPrefix}--safe-area-inset-top`]: safeAreaInsetTop,
-    [`${classPrefix}--title-align-${titleAlign}`]: true,
+    [`${classPrefix}-fixed`]: fixed,
+    [`${classPrefix}-safe-area-inset-top`]: safeAreaInsetTop,
+    [`${classPrefix}-title-align-${titleAlign}`]: true,
   })
 
   const cls = classNames(classPrefix, classes, className)
@@ -103,7 +103,7 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   return (
     <>
       {fixed && placeholder ? (
-        <div className={`${classPrefix}--placeholder`}>{renderWrapper()}</div>
+        <div className={`${classPrefix}-placeholder`}>{renderWrapper()}</div>
       ) : (
         renderWrapper()
       )}
