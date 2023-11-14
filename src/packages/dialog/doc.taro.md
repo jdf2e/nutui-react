@@ -164,6 +164,7 @@ export default App;
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | visible | 对话框是否可见 | `boolean` | `-` |
+| header | 自定义页头，传入 null 则不显示 | `ReactNode` | `-` |
 | title | 标题 | `ReactNode` | `-` |
 | content | 对话框的内容，适用于函数式调用 | `ReactNode` | `-` |
 | footer | 自定义页脚，传入 null 则不显示 | `ReactNode` | `-` |

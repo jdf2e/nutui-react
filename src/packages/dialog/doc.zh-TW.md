@@ -156,6 +156,7 @@ export default App;
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | visible | 對話框是否可見 | `boolean` | `-` |
+| header | 自定義頁頭，傳入 null 则不显示 | `ReactNode` | `-` |
 | title | 標題 | `ReactNode` | `-` |
 | content | 對話框的內容，適用於函數式調用 | `ReactNode` | `-` |
 | footer | 自定義頁腳，傳入 null 則不顯示 | `ReactNode` | `-` |
