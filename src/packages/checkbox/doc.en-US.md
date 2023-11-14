@@ -502,6 +502,7 @@ export default CheckboxGroupOptions;
 | indeterminateIcon | half-selected state | `ReactNode` | `'CheckDisabled'` |
 | label | text content of the checkbox | `string` | `-` |
 | value | identification value, used in Group mode | `string` \| `number` | `-` |
+| shape | shape | `button` \| `round` \| `round` |`round` |
 | onChange | Triggered when the value changes | `(value: boolean) => void` | `-` |
 
 ## Checkbox.Group
@@ -537,3 +538,9 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-checkbox-label-color | text color of label | `$color-title` |
 | \--nutui-checkbox-label-margin-left | left margin of label | `15px` |
 | \--nutui-checkbox-label-font-size | font size of label | `14px` |
+| \--nutui-checkbox-button-font-size | shape is the font size of the button | `12px` |
+| \--nutui-checkbox-button-color | button font color | `$color-text` |
+| \--nutui-checkbox-button-background | shape is the background color of the button | `$color-background` |
+| \--nutui-checkbox-button-active-border | The shape is the border of the active button | `1px solid $color-primary` |
+| \--nutui-checkbox-button-padding | The shape is the padding of the button | `5px 18px` |
+| \--nutui-checkbox-button-border-radius | The shape is the rounded corner of the button | `15px` |

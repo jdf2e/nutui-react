@@ -193,6 +193,28 @@ const RadioDemo = () => {
             {translated['70ffa5d8']}
           </Radio>
         </Cell>
+        <Cell>
+          <Radio.Group
+            defaultValue="1"
+            labelPosition="left"
+            style={{ width: '100%' }}
+          >
+            <Radio
+              icon={<Checklist />}
+              activeIcon={<Checklist style={{ color: 'red' }} />}
+              value="1"
+            >
+              {translated['70ffa5d8']}
+            </Radio>
+            <Radio
+              icon={<Checklist />}
+              value="2"
+              activeIcon={<Checklist style={{ color: 'red' }} />}
+            >
+              {translated['70ffa5d8']}
+            </Radio>
+          </Radio.Group>
+        </Cell>
         <h2>{translated['0f261484']}</h2>
         <Cell.Group>
           <Cell>
