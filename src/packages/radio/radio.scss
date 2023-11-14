@@ -62,7 +62,7 @@
     &-active {
       background: $color-primary-light;
       color: $color-primary;
-      border: 1px solid $color-primary;
+      border: $radio-button-active-border;
     }
 
     &-disabled {

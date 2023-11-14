@@ -23,7 +23,7 @@
       }
 
       &-button-active {
-        border-color: $color-primary;
+        border: $radio-button-active-border;
         background-color: $color-primary-light;
       }
     }
@@ -38,7 +38,7 @@
       }
 
       &-button-active {
-        border-color: $color-primary;
+        border: $radio-button-active-border;
         background-color: $color-primary-light;
       }
     }

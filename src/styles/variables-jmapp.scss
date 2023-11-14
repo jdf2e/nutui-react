@@ -1250,7 +1250,11 @@ $radio-button-background: $color-background;
 $radio-button-padding: var(--nutui-radio-button-padding, 5px 18px) !default;
 $radio-button-border-radius: var(
   --nutui-radio-button-border-radius,
-  15px
+  $radius-xs
+) !default;
+$radio-button-active-border: var(
+  --nutui-radio-button-active-border,
+  1px solid $color-primary-light
 ) !default;
 $radio-button-disabled-active-color: var(
   --nutui-radio-button-disabled-active-color,
