@@ -4,7 +4,7 @@ import classNames from 'classnames'
 interface ContentProps {
   visible: boolean
   title: ReactNode
-  header?: ReactNode
+  header: ReactNode
   footer: ReactNode
   footerDirection: string
 }

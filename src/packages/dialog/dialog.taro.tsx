@@ -21,6 +21,7 @@ export type DialogProps = BasicDialogProps & BasicComponent
 const defaultProps = {
   title: '',
   content: '',
+  header: '',
   footer: '',
   confirmText: '',
   cancelText: '',
@@ -51,6 +52,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
       visible,
       footer,
       title,
+      header,
       content,
       children,
       footerDirection,
@@ -164,6 +166,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
             className={className}
             style={style}
             title={title}
+            header={header}
             footer={renderFooter()}
             footerDirection={footerDirection}
             visible={visible}
