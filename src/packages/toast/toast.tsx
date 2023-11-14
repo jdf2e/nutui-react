@@ -66,11 +66,13 @@ function notice(opts: any) {
       opts.onClose && opts.onClose()
     }
   }
+
   const opts2 = { ...options, ...opts, onClose: close }
   getInstance(opts2, (notification: any) => {
     messageInstance = notification
   })
 }
+
 const errorMsg = (msg: any) => {
   if (!msg) {
     console.warn('[NutUI Toast]: msg cannot be null')
@@ -91,7 +93,11 @@ function show(option: ToastProps | string) {
 function config(
   config: Pick<
     ToastProps,
-    'duration' | 'position' | 'closeOnOverlayClick' | 'lockScroll'
+    | 'duration'
+    | 'position'
+    | 'closeOnOverlayClick'
+    | 'lockScroll'
+    | 'contentClassName'
   >
 ) {
   if (config.duration !== undefined) {
@@ -105,6 +111,9 @@ function config(
   }
   if (config.lockScroll !== undefined) {
     options.lockScroll = config.lockScroll
+  }
+  if (config.contentClassName !== undefined) {
+    options.contentClassName = config.contentClassName
   }
 }
 
