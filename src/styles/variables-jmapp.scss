@@ -172,14 +172,14 @@ $font-family:
   sans-serif !default;
 
 // Font
-$font-size-xs: var(--nutui-font-size-1) !default;
-$font-size-small: var(--nutui-font-size-2) !default;
-$font-size-base: var(--nutui-font-size-3) !default;
-$font-size-large: var(--nutui-font-size-4) !default;
-$font-size-xl: var(--nutui-font-size-5) !default;
-$font-size-xxl: var(--nutui-font-size-6) !default;
-$font-size-xxxl: var(--nutui-font-size-8) !default;
-$font-size-xxxxl: var(--nutui-font-size-10) !default;
+$font-size-xxs: var(--nutui-font-size-1) !default;
+$font-size-xs: var(--nutui-font-size-2) !default;
+$font-size-small: var(--nutui-font-size-3) !default;
+$font-size-base: var(--nutui-font-size-4) !default;
+$font-size-large: var(--nutui-font-size-5) !default;
+$font-size-xl: var(--nutui-font-size-6) !default;
+$font-size-xxl: var(--nutui-font-size-8) !default;
+$font-size-xxxl: var(--nutui-font-size-10) !default;
 
 $space-mini: $spacing-xs !default;
 $space-large: $spacing-l !default;
@@ -1407,25 +1407,22 @@ $badge-z-index: var(--nutui-badge-z-index, 1) !default;
 $badge-dot-width: var(--nutui-badge-dot-width, 7px) !default;
 
 //popover（✅）
-$popover-border-radius: var(--nutui-popover-border-radius, 8px) !default;
-$popover-font-size: var(--nutui-popover-font-size, $font-size-small) !default;
+$popover-border-radius: var(--nutui-popover-border-radius, $radius-s) !default;
+$popover-font-size: var(--nutui-popover-font-size, $font-size-base) !default;
 $popover-border-color: var(--nutui-popover-border-color, #ffffff) !default;
 $popover-content-background-color: var(
   --nutui-popover-content-background-color,
   #ffffff
 ) !default;
-$popover-text-color: var(--nutui-popover-text-color, #1a1a1a) !default;
+$popover-text-color: var(--nutui-popover-text-color, $color-text) !default;
 $popover-disable-color: var(
   --nutui-popover-disable-color,
   $color-text-disabled
 ) !default;
-$popover-divider-color: var(
-  --nutui-popover-divider-color,
-  $color-border
-) !default;
+$popover-divider-color: var(--nutui-popover-divider-color, none) !default;
 $popover-menu-item-padding: var(
   --nutui-popover-menu-item-padding,
-  8px
+  $spacing-xl
 ) !default;
 
 //progress（✅）
