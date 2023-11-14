@@ -91,6 +91,11 @@ const RadioDemo = () => {
             <Radio defaultChecked>{translated.bb7486f4}1</Radio>
           </Cell>
           <Cell>
+            <Radio defaultChecked labelPosition="left">
+              {translated.bb7486f4}1
+            </Radio>
+          </Cell>
+          <Cell>
             <Radio defaultChecked disabled>
               {translated.bb7486f4}1
             </Radio>

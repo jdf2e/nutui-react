@@ -11,6 +11,7 @@
   }
 
   &.nut-radio-reverse {
+    flex-direction: row-reverse;
     .nut-radio-label {
       margin-right: $radio-label-margin-left;
       margin-left: 0;
