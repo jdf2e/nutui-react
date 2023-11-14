@@ -18,7 +18,7 @@ const zhCN: BaseLang = {
   },
   infiniteloading: {
     pullRefreshText: '松开刷新',
-    loadText: '加载中……',
+    loadText: '加载中',
     loadMoreText: '哎呀，这里是底部了啦',
   },
   pagination: {
@@ -122,8 +122,8 @@ const zhCN: BaseLang = {
   },
   pullToRefresh: {
     pullingText: '下拉刷新',
-    canReleaseText: '松开刷新',
-    refreshingText: '加载中...',
+    canReleaseText: '松手刷新',
+    refreshingText: '刷新中',
     completeText: '刷新成功',
   },
   tour: {
