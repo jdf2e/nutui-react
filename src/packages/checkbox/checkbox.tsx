@@ -181,7 +181,7 @@ export const Checkbox: FunctionComponent<
       >
         {children || label}
         {innerChecked && activeIcon ? (
-          <div className={classNames(`${classPrefix}-button--icon`)}>
+          <div className={classNames(`${classPrefix}-button-icon`)}>
             {activeIcon}
           </div>
         ) : null}
@@ -189,7 +189,7 @@ export const Checkbox: FunctionComponent<
     )
   }
 
-  const renderRadioItem = () => {
+  const renderCheckboxItem = () => {
     if (shape === 'button') {
       return renderButton()
     }
@@ -209,7 +209,7 @@ export const Checkbox: FunctionComponent<
       {...rest}
       onClick={handleClick}
     >
-      {renderRadioItem()}
+      {renderCheckboxItem()}
     </div>
   )
 }

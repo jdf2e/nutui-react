@@ -171,7 +171,7 @@ const CheckboxDemo = () => {
             style={{ marginRight: '8px' }}
             shape="button"
             activeIcon={
-              <Checklist className="nut-checkbox-button--icon-checked" />
+              <Checklist className="nut-checkbox-button-icon-checked" />
             }
             className="test"
             label={translated.checkbox}
@@ -215,7 +215,7 @@ const CheckboxDemo = () => {
           >
             <Checkbox
               activeIcon={
-                <Checklist className="nut-checkbox-button--icon-checked" />
+                <Checklist className="nut-checkbox-button-icon-checked" />
               }
               shape="button"
               value="1"
@@ -223,7 +223,7 @@ const CheckboxDemo = () => {
             />
             <Checkbox
               activeIcon={
-                <Checklist className="nut-checkbox-button--icon-checked" />
+                <Checklist className="nut-checkbox-button-icon-checked" />
               }
               shape="button"
               value="2"
@@ -231,7 +231,7 @@ const CheckboxDemo = () => {
             />
             <Checkbox
               activeIcon={
-                <Checklist className="nut-checkbox-button--icon-checked" />
+                <Checklist className="nut-checkbox-button-icon-checked" />
               }
               shape="button"
               value="3"

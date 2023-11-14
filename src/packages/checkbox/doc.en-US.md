@@ -502,7 +502,7 @@ export default CheckboxGroupOptions;
 | indeterminateIcon | half-selected state | `ReactNode` | `'CheckDisabled'` |
 | label | text content of the checkbox | `string` | `-` |
 | value | identification value, used in Group mode | `string` \| `number` | `-` |
-| shape | shape | `button` \| `round` \| `round` |`round` |
+| shape | shape | `button` \| `round` |`round` |
 | onChange | Triggered when the value changes | `(value: boolean) => void` | `-` |
 
 ## Checkbox.Group

@@ -504,7 +504,7 @@ export default CheckboxGroupOptions;
 | indeterminateIcon | 半选状态| `ReactNode` | `'CheckDisabled'` |
 | label | 复选框的文本内容 | `string` | `-` |
 | value | 标识值，用于 Group 模式 | `string` \|  `number` | `-` |
-| shape | 形状 | `button` \| `round` \| `round` |`round` |
+| shape | 形状 | `button` \| `round` |`round` |
 | onChange | 值变化时触发 | `(value: boolean) => void` | `-` |
 
 ## Checkbox.Group
