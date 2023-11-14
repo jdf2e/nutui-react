@@ -189,6 +189,7 @@ const App = () => {
       <Button size="large" type="primary">大號按鈕</Button>
       <Button type="primary">普通按鈕</Button>
       <Button size="small" type="primary">小型按鈕</Button>
+      <Button size="mini" type="primary">迷你按鈕</Button>
     </>
   );
 };
