@@ -29,7 +29,7 @@ export interface ToastProps extends BasicComponent {
   wordBreak?: ToastWordBreakType
 }
 
-const options: ToastProps = {
+let options: ToastProps = {
   ...ComponentDefaults,
   id: '',
   duration: 2, // 时长,duration为0则一直展示
@@ -90,31 +90,8 @@ function show(option: ToastProps | string) {
   })
 }
 
-function config(
-  config: Pick<
-    ToastProps,
-    | 'duration'
-    | 'position'
-    | 'closeOnOverlayClick'
-    | 'lockScroll'
-    | 'contentClassName'
-  >
-) {
-  if (config.duration !== undefined) {
-    options.duration = config.duration
-  }
-  if (config.position !== undefined) {
-    options.position = config.position
-  }
-  if (config.closeOnOverlayClick !== undefined) {
-    options.closeOnOverlayClick = config.closeOnOverlayClick
-  }
-  if (config.lockScroll !== undefined) {
-    options.lockScroll = config.lockScroll
-  }
-  if (config.contentClassName !== undefined) {
-    options.contentClassName = config.contentClassName
-  }
+function config(config: ToastProps) {
+  options = { ...options, ...config }
 }
 
 export default {

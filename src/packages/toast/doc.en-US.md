@@ -385,12 +385,17 @@ export default App
 
 You can also pass in a string directly, and `Toast.show` will automatically use it as `content`.
 
+Toast.config global configuration：
+```js
+Toast.config({className: 'demo', contentClassName:'content-demo'})
+```
+
 ### Ref
 
 | Property | Description | Parameters |
 | --- | --- | --- |
 | clear | Turn off `Toast` in all displays. | `-`|
-| config | Methods for global configuration | `{ duration: number, position: 'top' \| 'center' \| 'bottom', closeOnOverlayClick: boolean, lockScroll: boolean }` |
+| config | Methods for global configuration | `ToastProps` |
 
 ## Theming
 
