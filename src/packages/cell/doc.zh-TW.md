@@ -200,7 +200,7 @@ const App = () => {
               我是描述
             </div>
           }
-          extra={<Button type='info'>Action</Button>}
+          extra={<Button type='primary'>Action</Button>}
         />
       </Cell.Group>
 
@@ -216,7 +216,7 @@ const App = () => {
         <Cell>
           <div style={{ minHeight: '50px' }}>自定義內容</div>
         </Cell>
-        <Cell align='center' extra={<Button type='info'>Action</Button>} />
+        <Cell align='center' extra={<Button type='primary'>Action</Button>} />
       </Cell.Group>
 
       <Cell.Group>

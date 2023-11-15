@@ -216,7 +216,7 @@ const CellDemo = () => {
                 {translated.title1}
               </div>
             }
-            extra={<Button type="info">Action</Button>}
+            extra={<Button type="primary">Action</Button>}
           />
         </Cell.Group>
 
@@ -232,7 +232,7 @@ const CellDemo = () => {
           <Cell>
             <div style={{ minHeight: '50px' }}>{translated.content}</div>
           </Cell>
-          <Cell align="center" extra={<Button type="info">Action</Button>} />
+          <Cell align="center" extra={<Button type="primary">Action</Button>} />
         </Cell.Group>
 
         <Cell.Group>

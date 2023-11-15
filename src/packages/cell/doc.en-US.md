@@ -221,7 +221,7 @@ const App = () => {
               Description
             </div>
           }
-          extra={<Button type='info'>Action</Button>}
+          extra={<Button type='primary'>Action</Button>}
         />
       </Cell.Group>
 
@@ -237,7 +237,7 @@ const App = () => {
         <Cell>
           <div style={{ minHeight: '50px' }}>Content</div>
         </Cell>
-        <Cell align='center' extra={<Button type='info'>Action</Button>} />
+        <Cell align='center' extra={<Button type='primary'>Action</Button>} />
       </Cell.Group>
 
       <Cell.Group>
