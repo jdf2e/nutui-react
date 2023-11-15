@@ -641,7 +641,15 @@ $inputnumber-disabled-color: var(
 ) !default;
 
 // actionsheet（✅）
+$actionsheet-background-color: var(
+  --nutui-actionsheet-background-color,
+  $color-surface-1
+) !default;
 $actionsheet-border-color: var(--nutui-actionsheet-border-color, none) !default;
+$actionsheet-border-radius: var(
+  --nutui-actionsheet-border-radius,
+  $radius-l
+) !default;
 $actionsheet-item-text-align: var(
   --nutui-actionsheet-item-text-align,
   center
@@ -926,7 +934,7 @@ $overlay-bg-color: var(--nutui-overlay-bg-color, $color-mask) !default;
 $overlay-zIndex: var(--nutui-overlay-zIndex, 1000) !default;
 $overlay-content-bg-color: var(
   --nutui-overlay-content-bg-color,
-  $color-surface-1
+  $white
 ) !default;
 $overlay-content-color: var(
   --nutui-overlay-content-color,
@@ -939,9 +947,13 @@ $overlay-animation-duration: var(
 //popup（✅）
 $popup-border-radius: var(--nutui-popup-border-radius, 12px) !default;
 $popup-icon-size: var(--nutui-popup-icon-size, $font-size-xl) !default;
-$popup-title-padding: var(--nutui-popup-title-padding, 12px) !default;
+$popup-title-padding: var(--nutui-popup-title-padding, 8px 12px) !default;
 $popup-title-font-size: var(--nutui-popup-title-font-size, $font-h1) !default;
-$popup-title-height: var(--nutui-popup-title-height, 44px) !default;
+$popup-description-font-size: var(
+  --nutui-popup-description-font-size,
+  $font-size-xs
+) !default;
+$popup-title-height: var(--nutui-popup-title-height, auto) !default;
 $popup-title-border-bottom: var(--nutui-popup-title-border-bottom, 0) !default;
 $popup-animation-duration: var(--nutui-popup-animation-duration, 0.3s) !default;
 

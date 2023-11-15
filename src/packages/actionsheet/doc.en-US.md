@@ -317,6 +317,8 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default Value |
 | --- | --- | --- |
+| \--nutui-actionsheet-background-color | the backgroundColor of actionsheet panel | `$color-background-overlay` |
+| \--nutui-actionsheet-border-radius | the borderRadius of list and cancel button | `0` |
 | \--nutui-actionsheet-border-color | title border-bottom and cancle border-top | `#f6f6f6` |
 | \--nutui-actionsheet-item-text-align | item text align | `center` |
 | \--nutui-actionsheet-item-border-bottom | item border bottom | `none` |

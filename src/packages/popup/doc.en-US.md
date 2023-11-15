@@ -212,6 +212,7 @@ export default App;
 | closeIcon | Custom Icon | `ReactNode` | `close` |
 | left | The left of title | `ReactNode` | `-` |
 | title | The center of title | `ReactNode` | `-` |
+| description | The subtitle/description | `ReactNode` | `-` |
 | destroyOnClose | Whether to close after the component is destroyed | `boolean` | `false` |
 | round | Whether to show rounded corners | `boolean` | `false` |
 | portal | Mount the specified node | `HTMLElement` \| `(() => HTMLElement)` | null` | `null` |
@@ -235,6 +236,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-popup-icon-size | popup's title icon size | `18px` |
 | \--nutui-popup-title-padding | popup's title padding | `16px` |
 | \--nutui-popup-title-font-size | popup's title font size | `18px` |
+| \--nutui-popup-description-font-size | popup's subtitle/description font size | `10px` |
 | \--nutui-popup-title-height | popup's title height | `50px` |
 | \--nutui-popup-title-border-bottom | popup's title border-bottom | `0` |
 | \--nutui-popup-animation-duration | lose icon's animation duration | `0.3s` |
