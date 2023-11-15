@@ -149,13 +149,13 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
 
   const classes = classNames(
     classPrefix,
-    `${classPrefix}--${direction}`,
+    `${classPrefix}-${direction}`,
     className
   )
   const classesTitle = classNames(`${classPrefix}__titles`, {
-    [`${classPrefix}__titles--${activeType}`]: activeType,
-    [`${classPrefix}__titles--scrollable`]: true,
-    [`${classPrefix}__titles--${align}`]: align,
+    [`${classPrefix}__titles-${activeType}`]: activeType,
+    [`${classPrefix}__titles-scrollable`]: true,
+    [`${classPrefix}__titles-${align}`]: align,
   })
 
   const tabsActiveStyle = {
@@ -197,10 +197,10 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
                     tabChange(item)
                   }}
                   className={classNames(`${classPrefix}__titles-item`, {
-                    [`nut-tabs__titles-item--active`]:
+                    [`nut-tabs__titles-item-active`]:
                       !item.disabled && String(item.value) === String(value),
-                    [`nut-tabs__titles-item--disabled`]: item.disabled,
-                    [`nut-tabs__titles-item--${align}`]: align,
+                    [`nut-tabs__titles-item-disabled`]: item.disabled,
+                    [`nut-tabs__titles-item-${align}`]: align,
                   })}
                   ref={(ref: HTMLDivElement) => titleItemsRef.current.push(ref)}
                   key={item.value}

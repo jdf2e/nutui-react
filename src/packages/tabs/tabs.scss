@@ -27,15 +27,15 @@
     flex-shrink: 0;
   }
 
-  &--left {
+  &-left {
     justify-content: flex-start;
   }
 
-  &--right {
+  &-right {
     justify-content: flex-end;
   }
 
-  &--scrollable {
+  &-scrollable {
     overflow-x: auto;
     overflow-y: hidden;
   }
@@ -59,8 +59,8 @@
       line-height: 44px;
     }
 
-    &--left,
-    &--right {
+    &-left,
+    &-right {
       flex: none;
     }
 
@@ -95,7 +95,7 @@
       }
     }
 
-    &--active {
+    &-active {
       color: $tabs-titles-item-active-color;
       font-weight: $tabs-titles-item-active-font-weight;
 
@@ -114,7 +114,7 @@
       }
     }
 
-    &--disabled {
+    &-disabled {
       color: $color-text-disabled;
     }
 
@@ -123,19 +123,19 @@
     }
   }
 
-  &--simple {
-    .nut-tabs__titles-item--active {
+  &-simple {
+    .nut-tabs__titles-item-active {
       color: $color-title;
       font-size: $tabs-titles-item-active-font-size;
     }
   }
 
-  &--card {
+  &-card {
     padding: 0;
     background-color: $color-default-light;
     .nut-tabs__titles-item {
       margin: 0;
-      &--active {
+      &-active {
         font-weight: $font-weight-bold;
         background-color: $white;
         border-radius: $radius-s $radius-s 0 0;
@@ -143,7 +143,7 @@
     }
   }
 
-  &--button {
+  &-button {
     padding: 8px 9px;
     height: 44px;
     .nut-tabs__titles-item {
@@ -151,7 +151,7 @@
       color: $color-text;
       border-radius: $radius-xs;
       margin: 0 3px;
-      &--active {
+      &-active {
         font-weight: $font-weight-bold;
         background-color: $color-primary-light;
         color: $color-text-link;
@@ -160,11 +160,11 @@
   }
 }
 
-.nut-tabs--horizontal {
+.nut-tabs-horizontal {
   flex-direction: column;
 }
 
-.nut-tabs--vertical {
+.nut-tabs-vertical {
   flex-direction: row;
   width: 100%;
 
@@ -184,7 +184,7 @@
     }
   }
 
-  .nut-tabs__titles--scrollable {
+  .nut-tabs__titles-scrollable {
     overflow-x: hidden;
     overflow-y: auto;
   }
@@ -207,7 +207,7 @@
       transition: height 0.3s ease;
     }
 
-    &--active {
+    &-active {
       background-color: $tabs-titles-item-active-background-color;
 
       .nut-tabs__titles-item__line {
@@ -232,7 +232,7 @@
     }
   }
 
-  .nut-tabs--horizontal {
+  .nut-tabs-horizontal {
     .nut-tabs__titles {
       flex-direction: row;
       overflow-x: auto;
@@ -251,7 +251,7 @@
       flex-direction: row;
     }
 
-    .nut-tabs__titles-item--active {
+    .nut-tabs__titles-item-active {
       background-color: initial;
 
       .nut-tabs__titles-item__line {
@@ -281,7 +281,7 @@
     }
   }
 
-  .nut-tabs--horizontal {
+  .nut-tabs-horizontal {
     .nut-tabs__titles {
       display: flex;
       flex-direction: row;
@@ -294,7 +294,7 @@
         justify-content: center;
         flex: 1 0 auto;
 
-        &--active {
+        &-active {
           color: $color-primary;
           font-weight: $tabs-titles-item-active-font-weight;
           font-size: $tabs-titles-item-active-font-size;
