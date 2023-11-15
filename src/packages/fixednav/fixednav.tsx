@@ -66,12 +66,12 @@ export const FixedNav: FunctionComponent<
   const classPrefix = 'nut-fixednav'
 
   const classes = classNames(
+    classPrefix,
     {
       active: visible,
     },
     type,
-    className,
-    classPrefix
+    className
   )
 
   const handleClick = (item: any, event: MouseEvent): void => {

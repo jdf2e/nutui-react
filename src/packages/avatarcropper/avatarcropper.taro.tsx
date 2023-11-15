@@ -87,7 +87,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     cropperCanvasContext: Taro.CanvasContext | null
   }
 
-  const cls = classNames(classPrefix, className, 'taro')
+  const cls = classNames(classPrefix, 'taro', className)
   const toolbarPositionCls = classNames(
     `${classPrefix}-popup-toolbar`,
     toolbarPosition

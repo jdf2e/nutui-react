@@ -6,6 +6,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
+import classNames from 'classnames'
 import type { Data, VirtualListState, PositionType } from './type'
 import {
   initPositinoCache,
@@ -27,6 +28,7 @@ export interface VirtualListProps extends BasicComponent {
   onScroll: () => void
   key: string
 }
+
 const defaultProps = {
   ...ComponentDefaults,
   list: [] as Array<Data>,
@@ -179,9 +181,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
 
   return (
     <div
-      className={
-        className ? `${className} nut-virtualList-box` : 'nut-virtualList-box'
-      }
+      className={classNames('nut-virtualList-box', className)}
       {...rest}
       style={{
         [sizeKey]: containerHeight ? `${offSetSize}px` : '',
@@ -189,18 +189,20 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
     >
       <div
         ref={scrollRef}
-        className={horizontal ? 'nut-horizontal-box' : 'nut-vertical-box'}
+        className={classNames({
+          'nut-horizontal-box': horizontal,
+          'nut-vertical-box': !horizontal,
+        })}
         style={{
           position: 'relative',
           [sizeKey]: `${listTotalSize}px`,
         }}
       >
         <ul
-          className={
-            horizontal
-              ? 'nut-virtuallist-items nut-horizontal-items'
-              : 'nut-virtuallist-items nut-vertical-items'
-          }
+          className={classNames('nut-virtuallist-items', {
+            'nut-horizontal-items': horizontal,
+            'nut-vertical-items': !horizontal,
+          })}
           ref={itemsRef}
           style={{
             transform: horizontal

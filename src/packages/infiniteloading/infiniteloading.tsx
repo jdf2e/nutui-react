@@ -72,7 +72,7 @@ export const InfiniteLoading: FunctionComponent<
   const y = useRef(0)
   const distance = useRef(0)
 
-  const classes = classNames(className, classPrefix)
+  const classes = classNames(classPrefix, className)
 
   useEffect(() => {
     if (target && document.getElementById(target)) {

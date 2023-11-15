@@ -19,6 +19,7 @@ export interface TextAreaProps extends BasicComponent {
   onBlur: (event: FocusEvent<HTMLTextAreaElement>) => void
   onFocus: (event: FocusEvent<HTMLTextAreaElement>) => void
 }
+
 const defaultProps = {
   ...ComponentDefaults,
   defaultValue: '',
@@ -111,9 +112,13 @@ export const TextArea: FunctionComponent<
 
   return (
     <div
-      className={classNames(classPrefix, className, {
-        [`${classPrefix}__disabled`]: disabled,
-      })}
+      className={classNames(
+        classPrefix,
+        {
+          [`${classPrefix}__disabled`]: disabled,
+        },
+        className
+      )}
     >
       <textarea
         ref={textareaRef}

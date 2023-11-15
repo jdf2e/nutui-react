@@ -53,9 +53,13 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> & {
 
   return (
     <div
-      className={classNames(classPrefix, className, {
-        [`${classPrefix}__fixed`]: fixed,
-      })}
+      className={classNames(
+        classPrefix,
+        {
+          [`${classPrefix}__fixed`]: fixed,
+        },
+        className
+      )}
       style={style}
     >
       <div className={`${classPrefix}__wrap`}>

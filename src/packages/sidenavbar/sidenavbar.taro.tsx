@@ -49,7 +49,7 @@ export const SideNavBar: FunctionComponent<Partial<SideNavBarProps>> = (
       position={position}
       onClose={onClose}
     >
-      <div className={classNames(className, classPrefix)} {...rest}>
+      <div className={classNames(classPrefix, className)} {...rest}>
         <div className={`${classPrefix}__content`}>
           <div
             className={`${classPrefix}__list ${

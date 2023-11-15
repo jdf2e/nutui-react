@@ -158,9 +158,9 @@ export const Radio: FunctionComponent<
 
   return (
     <div
-      className={`${classPrefix} ${className} ${
+      className={`${classPrefix} ${
         reverse ? `${classPrefix}--reverse` : ''
-      }`}
+      } ${className}`}
       style={style}
       onClick={handleClick}
       {...rest}
