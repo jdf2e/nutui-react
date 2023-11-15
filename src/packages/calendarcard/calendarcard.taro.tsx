@@ -39,6 +39,8 @@ type CalendarCardRef = {
   jumpTo: (year: number, month: number) => void
 }
 
+const prefixCls = 'nut-calendarcard'
+
 export const CalendarCard = React.forwardRef<
   CalendarCardRef,
   Partial<CalendarCardProps>
@@ -46,6 +48,7 @@ export const CalendarCard = React.forwardRef<
   const { locale } = useConfig()
   const {
     style,
+    className,
     type,
     value,
     defaultValue,
@@ -358,8 +361,8 @@ export const CalendarCard = React.forwardRef<
 
   const renderHeader = () => {
     return (
-      <div className="nut-calendarcard-header">
-        <div className="nut-calendarcard-header-left">
+      <div className={`${prefixCls}-header`}>
+        <div className={`${prefixCls}-header-left`}>
           <div className="double-left" onClick={() => jump(-12)}>
             <DoubleLeft />
           </div>
@@ -367,10 +370,10 @@ export const CalendarCard = React.forwardRef<
             <Left />
           </div>
         </div>
-        <div className="nut-calendarcard-header-title">
+        <div className={`${prefixCls}-header-title`}>
           {monthTitle(month.year, month.month)}
         </div>
-        <div className="nut-calendarcard-header-right">
+        <div className={`${prefixCls}-header-right`}>
           <div className="right" onClick={() => jump(1)}>
             <Right />
           </div>
@@ -397,12 +400,12 @@ export const CalendarCard = React.forwardRef<
 
   const renderContent = () => {
     return (
-      <div className="nut-calendarcard-content">
-        <div className="nut-calendarcard-days">
+      <div className={`${prefixCls}-content`}>
+        <div className={`${prefixCls}-days`}>
           {weekHeader.map((day) => {
             return (
               <div
-                className={classNames('nut-calendarcard-day', 'header', {
+                className={classNames(`${prefixCls}-day`, 'header', {
                   weekend: day.key === 0 || day.key === 6,
                 })}
                 key={day.key}
@@ -412,24 +415,24 @@ export const CalendarCard = React.forwardRef<
             )
           })}
         </div>
-        <div className="nut-calendarcard-days">
+        <div className={`${prefixCls}-days`}>
           {days.map((day: CalendarCardDay) => (
             <div
               className={classNames(
-                'nut-calendarcard-day',
+                `${prefixCls}-day`,
                 day.type,
                 getClasses(day)
               )}
               key={`${day.year}-${day.month}-${day.date}`}
               onClick={() => handleDayClick(day)}
             >
-              <div className="nut-calendarcard-day-top">
+              <div className={`${prefixCls}-day-top`}>
                 {renderDayTop ? renderDayTop(day) : ''}
               </div>
-              <div className="nut-calendarcard-day-inner">
+              <div className={`${prefixCls}-day-inner`}>
                 {renderDay ? renderDay(day) : day.date}
               </div>
-              <div className="nut-calendarcard-day-bottom">
+              <div className={`${prefixCls}-day-bottom`}>
                 {renderDayBottom ? renderDayBottom(day) : ''}
               </div>
             </div>
@@ -440,7 +443,7 @@ export const CalendarCard = React.forwardRef<
   }
 
   return days.length > 0 ? (
-    <div className="nut-calendarcard" style={style}>
+    <div className={classNames(prefixCls, className)} style={style}>
       {renderHeader()}
       {renderContent()}
     </div>
