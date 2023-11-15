@@ -33,6 +33,32 @@ export default App
 
 :::
 
+### 自定義主題
+
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { NoticeBar, ConfigProvider } from '@nutui/nutui-react';
+
+const App = () => {
+    const text = 'NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。'
+    return (
+      <ConfigProvider
+          theme={{
+            nutuiNoticebarBackground: '#EDF4FF',
+            nutuiNoticebarColor: '#3768FA',
+          }}
+        >
+          <NoticeBar content={translated.text} />
+        </ConfigProvider>
+    )
+}
+export default App
+```
+
+:::
+
 ### 滾動播放
 
 通知欄的內容長度溢出時會自動開啟滾動播放，可通過 scrollable 屬性可以控制該行為
@@ -309,6 +335,7 @@ export default App
 | \--nutui-noticebar-font-size | 字號 | `$font-size-small` |
 | \--nutui-noticebar-line-height | 行高 | `24px` |
 | \--nutui-noticebar-box-padding | padding值 | `0 16px` |
+| \--nutui-noticebar-border-radius | 圆角 | `0` |
 | \--nutui-noticebar-wrap-padding | 多行展示的padding值 | `8px 16px` |
 | \--nutui-noticebar-icon-gap | icon、text間距 | `4px` |
 | \--nutui-noticebar-left-icon-width | 左側icon的寬度和高度的設定 | `16px` |

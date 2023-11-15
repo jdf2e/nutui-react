@@ -1313,6 +1313,7 @@ $noticebar-box-padding: var(
   --nutui-noticebar-box-padding,
   $spacing-s $spacing-l
 ) !default;
+$noticebar-border-radius: var(--nutui-noticebar-border-radius, 8px) !default;
 $noticebar-wrap-padding: var(--nutui-noticebar-wrapable-padding, 16px) !default;
 $noticebar-icon-gap: var(--nutui-noticebar-icon-gap, 4px) !default;
 $noticebar-left-icon-width: var(
