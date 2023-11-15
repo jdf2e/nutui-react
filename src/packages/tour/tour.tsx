@@ -36,6 +36,7 @@ export interface TourProps extends BasicComponent {
   onClose: (e: MouseEvent<HTMLDivElement>) => void
   onChange: (value: number) => void
 }
+
 const defaultProps = {
   ...ComponentDefaults,
   visible: false,
@@ -97,7 +98,7 @@ export const Tour: FunctionComponent<
     height: 0,
   })
 
-  const classes = classNames(className, classPrefix)
+  const classes = classNames(classPrefix, className)
 
   useEffect(() => {
     if (visible) {

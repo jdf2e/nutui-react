@@ -68,7 +68,7 @@ exports[`description slot test 1`] = `
           </div>
         </div>
         <div
-          class="nut-price nut-cardright-price-origin "
+          class="nut-price  nut-cardright-price-origin"
         >
           <div
             class="nut-price__symbol nut-price__symbol-normal"
@@ -177,7 +177,7 @@ exports[`extra slot test 1`] = `
           </div>
         </div>
         <div
-          class="nut-price nut-cardright-price-origin "
+          class="nut-price  nut-cardright-price-origin"
         >
           <div
             class="nut-price__symbol nut-price__symbol-normal"
@@ -380,7 +380,7 @@ exports[`props test 1`] = `
           </div>
         </div>
         <div
-          class="nut-price nut-cardright-price-origin "
+          class="nut-price  nut-cardright-price-origin"
         >
           <div
             class="nut-price__symbol nut-price__symbol-normal"
@@ -489,7 +489,7 @@ exports[`tag slot test 1`] = `
           </div>
         </div>
         <div
-          class="nut-price nut-cardright-price-origin "
+          class="nut-price  nut-cardright-price-origin"
         >
           <div
             class="nut-price__symbol nut-price__symbol-normal"

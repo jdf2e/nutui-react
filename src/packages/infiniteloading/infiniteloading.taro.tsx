@@ -67,7 +67,7 @@ export const InfiniteLoading: FunctionComponent<
   const refreshMaxH = useRef(0)
   const distance = useRef(0)
 
-  const classes = classNames(className, classPrefix)
+  const classes = classNames(classPrefix, className)
 
   useEffect(() => {
     refreshMaxH.current = threshold
