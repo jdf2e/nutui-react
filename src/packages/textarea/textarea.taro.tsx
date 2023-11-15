@@ -22,6 +22,7 @@ export interface TextAreaProps
   onBlur: (event: Event) => void
   onFocus: (event: Event) => void
 }
+
 const defaultProps = {
   ...ComponentDefaults,
   defaultValue: '',
@@ -93,9 +94,13 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
 
   return (
     <div
-      className={classNames(classPrefix, className, {
-        [`${classPrefix}__disabled`]: disabled,
-      })}
+      className={classNames(
+        classPrefix,
+        {
+          [`${classPrefix}__disabled`]: disabled,
+        },
+        className
+      )}
     >
       <Textarea
         nativeProps={{

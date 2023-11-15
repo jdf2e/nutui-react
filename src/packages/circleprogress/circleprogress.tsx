@@ -47,7 +47,7 @@ export const CircleProgress: FunctionComponent<
     ...props,
   }
 
-  const classes = classNames(className, classPrefix)
+  const classes = classNames(classPrefix, className)
   const refRandomId = Math.random().toString(36).slice(-8)
 
   const styles: React.CSSProperties = {

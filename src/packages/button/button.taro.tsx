@@ -108,7 +108,6 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         ref={ref}
         className={classNames(
           prefixCls,
-          className,
           props.type ? `${prefixCls}--${type}` : null,
           props.fill ? `${prefixCls}--${fill}` : null,
           {
@@ -117,7 +116,8 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
             [`${prefixCls}--block`]: block,
             [`${prefixCls}--disabled`]: disabled,
             [`${prefixCls}--loading`]: loading,
-          }
+          },
+          className
         )}
         style={{ ...getStyle(), ...style }}
         onClick={(e) => handleClick(e)}

@@ -80,8 +80,8 @@ export const Form = React.forwardRef<FormInstance, Partial<FormProps>>(
       <form
         className={classNames(
           classPrefix,
-          className,
-          PositionInfo[labelPosition]
+          PositionInfo[labelPosition],
+          className
         )}
         style={style}
         onSubmit={(e) => {

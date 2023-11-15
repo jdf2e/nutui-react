@@ -29,10 +29,10 @@ export const TabPane: FunctionComponent<
 
   const classPrefix = 'nut-tabpane'
   const classes = classNames(
+    classPrefix,
     {
       active: !disabled && (props as any).active,
     },
-    classPrefix,
     autoHeightClassName,
     className
   )

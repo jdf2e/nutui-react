@@ -61,7 +61,7 @@ export const Overlay: FunctionComponent<
     }
   }, [visible])
 
-  const classes = classNames(className, classPrefix)
+  const classes = classNames(classPrefix, className)
 
   const styles = {
     ...style,

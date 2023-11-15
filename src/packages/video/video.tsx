@@ -19,6 +19,7 @@ export interface VideoProps extends BasicComponent {
   onPause: (element: HTMLVideoElement) => void
   onPlayEnd: (element: HTMLVideoElement) => void
 }
+
 const defaultProps = {
   ...ComponentDefaults,
   source: {
@@ -54,7 +55,7 @@ export const Video: FunctionComponent<
     ...props,
   }
   const rootRef = useRef<HTMLVideoElement>(null)
-  const classes = classNames(className, classPrefix)
+  const classes = classNames(classPrefix, className)
 
   useEffect(() => {
     init()

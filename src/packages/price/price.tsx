@@ -10,6 +10,7 @@ export interface PriceProps extends BasicComponent {
   size: string
   line: boolean
 }
+
 const defaultProps = {
   ...ComponentDefaults,
   price: 0,
@@ -94,9 +95,9 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
 
   return (
     <div
-      className={`${classPrefix} ${className} ${
+      className={`${classPrefix} ${
         line ? `${classPrefix}--line` : ''
-      }`}
+      } ${className}`}
       style={style}
       {...rest}
     >
