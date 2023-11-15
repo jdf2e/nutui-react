@@ -53,7 +53,7 @@ describe('PullToRefresh', () => {
       })
     })
 
-    expect(screen.getByText('松开刷新')).toBeInTheDocument()
+    expect(screen.getByText('松手刷新')).toBeInTheDocument()
   })
 
   test('refreshing', async () => {
@@ -82,6 +82,6 @@ describe('PullToRefresh', () => {
         clientY: 300,
       })
     })
-    expect(screen.getByText('松开刷新')).toBeInTheDocument()
+    expect(screen.getByText('松手刷新')).toBeInTheDocument()
   })
 })
