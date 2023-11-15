@@ -141,13 +141,13 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Cell } from '@nutui/nutui-react'
-import { Right } from '@nutui/icons-react'
+import { Cell, Button } from '@nutui/nutui-react'
+import { Right, Star } from '@nutui/icons-react'
 
 const App = () => {
   const onJumpclick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    url: string
+    url: string,
   ) => {
     const replace = false
     if (url) {
@@ -155,31 +155,107 @@ const App = () => {
     }
   }
   return (
+    <>
       <Cell.Group
-        title="Link | Cell.Group Usage"
-        extra="Usage nut-cell-group support title extra"
+        title='Link | Cell.Group Usage'
+        extra='Usage nut-cell-group support title extra'
       >
-        <Cell 
-        lassName="nutui-cell--clickable"
-        title="Link Usage"
-        align="center"
-        extra={<Right />}
+        <Cell
+          lassName='nutui-cell--clickable'
+          title='Link Usage'
+          align='center'
+          extra={<Right />}
         />
         <Cell
-          className="nutui-cell--clickable"
-          title="URL Jump"
+          className='nutui-cell--clickable'
+          title='URL Jump'
           extra={
             <>
-            <span style={{ marginRight: '5px' }}>https://jd.com</span>
-            <Right />
+              <span style={{ marginRight: '5px' }}>https://jd.com</span>
+              <Right />
             </>
-        }
-        align="center"
-        onClick={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => onJumpclick(event, 'https://jd.com')}
+          }
+          align='center'
+          onClick={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>,
+          ) => onJumpclick(event, 'https://jd.com')}
         />
       </Cell.Group>
+      
+      <Cell.Group>
+        <Cell
+          title={
+            <div style={{ display: 'flex', alignItems: 'flex-end' }}>
+              <span style={{ fontWeight: '500' }}>Title</span>
+              <span
+                style={{
+                  color: '#8C8C8C',
+                  fontSize: '10px',
+                  marginLeft: '5px',
+                  lineHeight: 1.5,
+                }}
+              >
+                  Description
+                </span>
+            </div>
+          }
+          extra={
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              More
+              <Right width={12} height={12} style={{ marginLeft: '5px' }} />
+            </div>
+          }
+        />
+        <Cell>
+          <div style={{ minHeight: '50px' }}>Content</div>
+        </Cell>
+        <Cell
+          align='center'
+          title={
+            <div
+              style={{
+                color: '#8C8C8C',
+                fontSize: '12px',
+              }}
+            >
+              Description
+            </div>
+          }
+          extra={<Button type='info'>Action</Button>}
+        />
+      </Cell.Group>
+
+      <Cell.Group>
+        <Cell
+          title={
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <Star style={{ marginRight: '5px' }} /> Title
+            </div>
+          }
+          extra={<Right />}
+        />
+        <Cell>
+          <div style={{ minHeight: '50px' }}>Content</div>
+        </Cell>
+        <Cell align='center' extra={<Button type='info'>Action</Button>} />
+      </Cell.Group>
+
+      <Cell.Group>
+        <Cell
+          title={
+            <div
+              style={{ display: 'flex', alignItems: 'center', color: 'blue' }}
+            >
+              Title
+            </div>
+          }
+        />
+        <Cell>
+          <div style={{ color: '#26bf26' }}>Content</div>
+        </Cell>
+      </Cell.Group>
+    </>
+
   )
 }
 export default App

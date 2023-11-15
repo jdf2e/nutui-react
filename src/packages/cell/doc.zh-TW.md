@@ -120,8 +120,8 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Cell } from '@nutui/nutui-react'
-import { Right } from '@nutui/icons-react'
+import { Cell, Button } from '@nutui/nutui-react'
+import { Right, Star } from '@nutui/icons-react'
 
 const App = () => {
   const onJumpclick = (
@@ -134,31 +134,106 @@ const App = () => {
     }
   }
   return (
-    <Cell.Group
-      title='鏈接 | 分組用法'
-      description='使用 nut-cell-group 支持 title extra'
-    >
-      <Cell
-        className='nutui-cell--clickable'
-        title='鏈接'
-        align='center'
-        extra={<Right />}
-      />
-      <Cell
-        className='nutui-cell--clickable'
-        title='URL 跳轉'
-        extra={
-          <>
-            <span style={{ marginRight: '5px' }}>https://jd.com</span>
-            <Right />
-          </>
-        }
-        align='center'
-        onClick={(
-          event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>,
-        ) => onJumpclick(event, 'https://jd.com')}
-      />
-    </Cell.Group>
+    <>
+      <Cell.Group
+        title='鏈接 | 分組用法'
+        description='使用 nut-cell-group 支持 title extra'
+      >
+        <Cell
+          className='nutui-cell--clickable'
+          title='鏈接'
+          align='center'
+          extra={<Right />}
+        />
+        <Cell
+          className='nutui-cell--clickable'
+          title='URL 跳轉'
+          extra={
+            <>
+              <span style={{ marginRight: '5px' }}>https://jd.com</span>
+              <Right />
+            </>
+          }
+          align='center'
+          onClick={(
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>,
+          ) => onJumpclick(event, 'https://jd.com')}
+        />
+      </Cell.Group>
+
+      <Cell.Group>
+        <Cell
+          title={
+            <div style={{ display: 'flex', alignItems: 'flex-end' }}>
+              <span style={{ fontWeight: '500' }}>我是標題</span>
+              <span
+                style={{
+                  color: '#8C8C8C',
+                  fontSize: '10px',
+                  marginLeft: '5px',
+                  lineHeight: 1.5,
+                }}
+              >
+                  我是描述
+                </span>
+            </div>
+          }
+          extra={
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              More
+              <Right width={12} height={12} style={{ marginLeft: '5px' }} />
+            </div>
+          }
+        />
+        <Cell>
+          <div style={{ minHeight: '50px' }}>自定義內容</div>
+        </Cell>
+        <Cell
+          align='center'
+          title={
+            <div
+              style={{
+                color: '#8C8C8C',
+                fontSize: '12px',
+              }}
+            >
+              我是描述
+            </div>
+          }
+          extra={<Button type='info'>Action</Button>}
+        />
+      </Cell.Group>
+
+      <Cell.Group>
+        <Cell
+          title={
+            <div style={{ display: 'flex', alignItems: 'center' }}>
+              <Star style={{ marginRight: '5px' }} /> 我是標題
+            </div>
+          }
+          extra={<Right />}
+        />
+        <Cell>
+          <div style={{ minHeight: '50px' }}>自定義內容</div>
+        </Cell>
+        <Cell align='center' extra={<Button type='info'>Action</Button>} />
+      </Cell.Group>
+
+      <Cell.Group>
+        <Cell
+          title={
+            <div
+              style={{ display: 'flex', alignItems: 'center', color: 'blue' }}
+            >
+              我是標題
+            </div>
+          }
+        />
+        <Cell>
+          <div style={{ color: '#26bf26' }}>自定義內容</div>
+        </Cell>
+      </Cell.Group>
+    </>
   )
 }
 export default App
