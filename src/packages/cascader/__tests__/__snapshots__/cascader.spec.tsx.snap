@@ -41,7 +41,7 @@ exports[`Cascader change tab 1`] = `
             style="transform: translate3d(--100%, 0, 0); transition-duration: 300ms;"
           >
             <div
-              class="active nut-tabpane"
+              class="nut-tabpane active"
             >
               <div
                 class="nut-cascader-pane"
@@ -124,7 +124,7 @@ exports[`Cascader change tab 2`] = `
             style="transform: translate3d(--100%, 0, 0); transition-duration: 300ms;"
           >
             <div
-              class="active nut-tabpane"
+              class="nut-tabpane active"
             >
               <div
                 class="nut-cascader-pane"
@@ -317,7 +317,7 @@ exports[`Cascader visible true 1`] = `
               </div>
             </div>
             <div
-              class="active nut-tabpane"
+              class="nut-tabpane active"
             >
               <div
                 class="nut-cascader-pane"
