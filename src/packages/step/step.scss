@@ -60,10 +60,6 @@
     padding-left: 10%;
     padding-right: 10%;
     text-align: center;
-
-    .nut-step-description {
-      color: $steps-base-description-color;
-    }
   }
 
   &-title {
@@ -91,11 +87,13 @@
       border-color: $steps-process-icon-bg-color;
       color: $steps-process-icon-color;
     }
-
     .nut-step-title {
       color: $steps-process-title-color;
       font-size: $steps-process-title-font-size;
       font-weight: $steps-process-title-font-weight;
+    }
+    .nut-step-description {
+      color: $steps-process-description-color;
     }
   }
 
@@ -103,7 +101,6 @@
     .nut-step-title {
       color: $steps-wait-title-color;
     }
-
     .nut-step-description {
       color: $steps-wait-description-color;
     }
@@ -123,6 +120,9 @@
     .nut-step-title {
       color: $steps-finish-title-color;
     }
+    .nut-step-description {
+      color: $steps-finish-description-color;
+    }
   }
 }
 
@@ -130,11 +130,9 @@
   .nut-step-head {
     margin: $steps-dot-head-margin;
   }
-
   .nut-step-line {
     top: 7px;
   }
-
   .nut-step-icon {
     width: $steps-dot-icon-width;
     height: $steps-dot-icon-height;
@@ -142,31 +140,20 @@
     border-radius: 50%;
     box-sizing: content-box;
   }
-
   .nut-step-wait {
-    .nut-step-title {
-      color: $steps-wait-title-color;
-    }
-
-    .nut-step-description {
-      color: $steps-wait-description-color;
-    }
     .nut-step-icon {
       background-color: $steps-dot-wait-icon-bg-color;
     }
   }
-
   .nut-step-finish {
     .nut-step-icon {
       background-color: $steps-dot-finish-icon-bg-color;
       border-color: $steps-dot-finish-icon-border-color;
     }
   }
-
   .nut-step-process {
     .nut-step-icon {
       position: relative;
-      background-color: $steps-process-icon-bg-color;
 
       &:before {
         content: '';
