@@ -6,10 +6,6 @@
   padding-bottom: calc(env(safe-area-inset-bottom) + 4px);
   text-align: center;
 
-  &-body {
-    padding: 10px 4px 0;
-  }
-
   &.nut-popup {
     min-height: 10%;
     background-color: $actionsheet-background-color;
