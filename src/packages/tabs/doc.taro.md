@@ -577,7 +577,7 @@ export default App;
 | defaultValue | 初始化激活 tab 的值 | `number` \| `string` | `0` |
 | activeColor | 标签选中色 | `string` | `#1a1a1a` |
 | direction | 使用横纵方向 | `horizontal` \| `vertical` | `horizontal` |
-| activeType | 选中底部展示样式 可选值 `line`、`smile`、`simple`、`card`、`button` | `line` \| `smile` \| `simple` | `line` |
+| activeType | 选中底部展示样式 可选值 `line`、`smile`、`simple`、`card`、`button` | `line` \| `smile` \| `simple`  \| `card` \| `button` | `line` |
 | duration | 切换动画时长,单位 ms 0 代表无动画 | `number` \| `string` | `300` |
 | title | 自定义导航区域 | `() => JSX.Element[]` | `-` |
 | align | 标题左对齐 | `left` \| `right` | `-` |
