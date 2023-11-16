@@ -56,7 +56,7 @@ import { Cell } from '@nutui/nutui-react'
 const App = () => {
   return (
     <Cell>
-        <div>Customize Content</div>
+      <div>Customize Content</div>
     </Cell>
   )
 }
@@ -77,16 +77,18 @@ import { My } from '@nutui/icons-react'
 const App = () => {
   return (
     <Cell
-        title={
+      title={
         <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-            <My />
-            Title<span style={{ marginLeft: '5px' }}>Description</span>
+          <My />
+          Title<span style={{ marginLeft: '5px' }}>Description</span>
         </div>
-        }
-        description={
-        <span>Description<b style={{ color: 'red' }}>1</b></span>
-        }
-        extra="extra"
+      }
+      description={
+        <span>
+          Description<b style={{ color: 'red' }}>1</b>
+        </span>
+      }
+      extra="extra"
     />
   )
 }
@@ -127,7 +129,7 @@ import { Cell } from '@nutui/nutui-react'
 
 const App = () => {
   return (
-    <Cell align="center"  title="Title" description="Description" extra="Desc" />
+    <Cell align="center" title="Title" description="Description" extra="Desc" />
   )
 }
 export default App
@@ -147,7 +149,7 @@ import { Right, Star } from '@nutui/icons-react'
 const App = () => {
   const onJumpclick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    url: string,
+    url: string
   ) => {
     const replace = false
     if (url) {
@@ -157,31 +159,31 @@ const App = () => {
   return (
     <>
       <Cell.Group
-        title='Link | Cell.Group Usage'
-        extra='Usage nut-cell-group support title extra'
+        title="Link | Cell.Group Usage"
+        extra="Usage nut-cell-group support title extra"
       >
         <Cell
-          lassName='nutui-cell--clickable'
-          title='Link Usage'
-          align='center'
+          lassName="nutui-cell--clickable"
+          title="Link Usage"
+          align="center"
           extra={<Right />}
         />
         <Cell
-          className='nutui-cell--clickable'
-          title='URL Jump'
+          className="nutui-cell--clickable"
+          title="URL Jump"
           extra={
             <>
               <span style={{ marginRight: '5px' }}>https://jd.com</span>
               <Right />
             </>
           }
-          align='center'
+          align="center"
           onClick={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>,
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => onJumpclick(event, 'https://jd.com')}
         />
       </Cell.Group>
-      
+
       <Cell.Group>
         <Cell
           title={
@@ -195,8 +197,8 @@ const App = () => {
                   lineHeight: 1.5,
                 }}
               >
-                  Description
-                </span>
+                Description
+              </span>
             </div>
           }
           extra={
@@ -210,7 +212,7 @@ const App = () => {
           <div style={{ minHeight: '50px' }}>Content</div>
         </Cell>
         <Cell
-          align='center'
+          align="center"
           title={
             <div
               style={{
@@ -221,7 +223,7 @@ const App = () => {
               Description
             </div>
           }
-          extra={<Button type='primary'>Action</Button>}
+          extra={<Button type="primary">Action</Button>}
         />
       </Cell.Group>
 
@@ -237,7 +239,7 @@ const App = () => {
         <Cell>
           <div style={{ minHeight: '50px' }}>Content</div>
         </Cell>
-        <Cell align='center' extra={<Button type='primary'>Action</Button>} />
+        <Cell align="center" extra={<Button type="primary">Action</Button>} />
       </Cell.Group>
 
       <Cell.Group>
@@ -255,7 +257,6 @@ const App = () => {
         </Cell>
       </Cell.Group>
     </>
-
   )
 }
 export default App
@@ -270,22 +271,22 @@ The 'divider' property allows you to keep the lower edge from being displayed be
 :::demo
 
 ```tsx
-import  React from "react"
+import React from 'react'
 import { Cell } from '@nutui/nutui-react'
 
 const App = () => {
   return (
-     <Cell.Group
-        divider={false}
-        title="Grouping usage"
-        description="The bottom edge is not displayed between cells"
+    <Cell.Group
+      divider={false}
+      title="Grouping usage"
+      description="The bottom edge is not displayed between cells"
     >
-        <Cell title="Title" extra="extra" />
-        <Cell title="Title" extra="extra" />
+      <Cell title="Title" extra="extra" />
+      <Cell title="Title" extra="extra" />
     </Cell.Group>
-  );
-};
-export default App;
+  )
+}
+export default App
 ```
 
 :::

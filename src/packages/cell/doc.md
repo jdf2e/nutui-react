@@ -17,28 +17,30 @@ import { Cell } from '@nutui/nutui-react'
 :::demo
 
 ```tsx
-import  React from "react";
-import { Cell, Toast } from '@nutui/nutui-react';
+import React from 'react'
+import { Cell, Toast } from '@nutui/nutui-react'
 
 const App = () => {
-  const testClick = (event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>) => {
+  const testClick = (
+    event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+  ) => {
     Toast.show('点击事件')
-}
+  }
   return (
     <>
-    <Cell title="我是标题" extra="描述文字" />
-    <Cell title="我是标题" description="我是描述" extra="描述文字" />
-    <Cell
+      <Cell title="我是标题" extra="描述文字" />
+      <Cell title="我是标题" description="我是描述" extra="描述文字" />
+      <Cell
         title="点击测试"
         onClick={(
-        event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+          event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
         ) => testClick(event)}
-    />
-    <Cell title="圆角设置0" radius={0} />
+      />
+      <Cell title="圆角设置0" radius={0} />
     </>
-  );
-};
-export default App;
+  )
+}
+export default App
 ```
 
 :::
@@ -48,17 +50,17 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { Cell } from '@nutui/nutui-react';
+import React from 'react'
+import { Cell } from '@nutui/nutui-react'
 
 const App = () => {
   return (
     <Cell>
-        <div>自定义内容</div>
+      <div>自定义内容</div>
     </Cell>
-  );
-};
-export default App;
+  )
+}
+export default App
 ```
 
 :::
@@ -68,27 +70,29 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { Cell } from '@nutui/nutui-react';
+import React from 'react'
+import { Cell } from '@nutui/nutui-react'
 import { My } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Cell
-        title={
+      title={
         <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-            <My />
-            我是标题<span style={{ marginLeft: '5px' }}>{translated.title}</span>
+          <My />
+          我是标题<span style={{ marginLeft: '5px' }}>{translated.title}</span>
         </div>
-        }
-        description={
-        <span>我是描述<b style={{ color: 'red' }}>1</b></span>
-        }
-        extra="描述文字"
+      }
+      description={
+        <span>
+          我是描述<b style={{ color: 'red' }}>1</b>
+        </span>
+      }
+      extra="描述文字"
     />
-  );
-};
-export default App;
+  )
+}
+export default App
 ```
 
 :::
@@ -98,18 +102,17 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { Cell,Switch } from '@nutui/nutui-react';
-
+import React from 'react'
+import { Cell, Switch } from '@nutui/nutui-react'
 
 const App = () => {
   return (
     <Cell.Group title="自定义右侧箭头区域">
       <Cell title="Switch" extra={<Switch defaultChecked />} />
     </Cell.Group>
-  );
-};
-export default App;
+  )
+}
+export default App
 ```
 
 :::
@@ -121,15 +124,20 @@ export default App;
 :::demo
 
 ```tsx
-import  React from "react";
-import { Cell } from '@nutui/nutui-react';
+import React from 'react'
+import { Cell } from '@nutui/nutui-react'
 
 const App = () => {
   return (
-     <Cell align="center" title="我是标题" description="我是描述" extra="描述文字" />
-  );
-};
-export default App;
+    <Cell
+      align="center"
+      title="我是标题"
+      description="我是描述"
+      extra="描述文字"
+    />
+  )
+}
+export default App
 ```
 
 :::
@@ -146,7 +154,7 @@ import { Right, Star } from '@nutui/icons-react'
 const App = () => {
   const onJumpclick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    url: string,
+    url: string
   ) => {
     const replace = false
     if (url) {
@@ -156,27 +164,27 @@ const App = () => {
   return (
     <>
       <Cell.Group
-        title='链接 | 分组用法'
-        description='使用 nut-cell-group 支持 title extra'
+        title="链接 | 分组用法"
+        description="使用 nut-cell-group 支持 title extra"
       >
         <Cell
-          className='nutui-cell--clickable'
-          title='链接'
-          align='center'
+          className="nutui-cell--clickable"
+          title="链接"
+          align="center"
           extra={<Right />}
         />
         <Cell
-          className='nutui-cell--clickable'
-          title='URL 跳转'
+          className="nutui-cell--clickable"
+          title="URL 跳转"
           extra={
             <>
               <span style={{ marginRight: '5px' }}>https://jd.com</span>
               <Right />
             </>
           }
-          align='center'
+          align="center"
           onClick={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>,
+            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => onJumpclick(event, 'https://jd.com')}
         />
       </Cell.Group>
@@ -194,8 +202,8 @@ const App = () => {
                   lineHeight: 1.5,
                 }}
               >
-                  我是描述
-                </span>
+                我是描述
+              </span>
             </div>
           }
           extra={
@@ -209,7 +217,7 @@ const App = () => {
           <div style={{ minHeight: '50px' }}>自定义内容</div>
         </Cell>
         <Cell
-          align='center'
+          align="center"
           title={
             <div
               style={{
@@ -220,7 +228,7 @@ const App = () => {
               我是描述
             </div>
           }
-          extra={<Button type='primary'>Action</Button>}
+          extra={<Button type="primary">Action</Button>}
         />
       </Cell.Group>
 
@@ -236,7 +244,7 @@ const App = () => {
         <Cell>
           <div style={{ minHeight: '50px' }}>自定义内容</div>
         </Cell>
-        <Cell align='center' extra={<Button type='primary'>Action</Button>} />
+        <Cell align="center" extra={<Button type="primary">Action</Button>} />
       </Cell.Group>
 
       <Cell.Group>
@@ -268,22 +276,22 @@ export default App
 :::demo
 
 ```tsx
-import  React from "react";
-import { Cell } from '@nutui/nutui-react';
+import React from 'react'
+import { Cell } from '@nutui/nutui-react'
 
 const App = () => {
   return (
-     <Cell.Group
-        divider={false}
-        title="分组用法"
-        description="单元格之间不显示下边线"
+    <Cell.Group
+      divider={false}
+      title="分组用法"
+      description="单元格之间不显示下边线"
     >
-        <Cell title="我是标题" extra="描述文字" />
-        <Cell title="我是标题" extra="描述文字" />
+      <Cell title="我是标题" extra="描述文字" />
+      <Cell title="我是标题" extra="描述文字" />
     </Cell.Group>
-  );
-};
-export default App;
+  )
+}
+export default App
 ```
 
 :::
