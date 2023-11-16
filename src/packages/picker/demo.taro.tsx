@@ -1,8 +1,13 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { Cell, Picker } from '@/packages/nutui.react.taro'
+import { useTranslate } from '@/sites/assets/locale/taro'
+import { Cell, Picker, ConfigProvider } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
+import { Internation } from './doc.en'
 
+interface T {
+  [props: string]: string
+}
 interface PickerOption {
   text: string | number
   value: string | number
@@ -12,6 +17,8 @@ interface PickerOption {
 }
 
 const PickerDemo = () => {
+  const [translated] = useTranslate<T>(Internation)
+
   const [isVisible1, setIsVisible1] = useState(false)
   const [isVisible2, setIsVisible2] = useState(false)
   const [isVisible3, setIsVisible3] = useState(false)
@@ -19,6 +26,7 @@ const PickerDemo = () => {
   const [isVisible5, setIsVisible5] = useState(false)
   const [isVisible6, setIsVisible6] = useState(false)
   const [isVisible7, setIsVisible7] = useState(false)
+  const [isVisible8, setIsVisible8] = useState(false)
 
   const [cityCustmer, setCityCustmer] = useState('')
   const [baseDesc, setBaseDesc] = useState('')
@@ -33,51 +41,52 @@ const PickerDemo = () => {
     [
       {
         value: 1,
-        text: '南京市',
+        text: translated.nanJing,
       },
       {
         value: 2,
-        text: '无锡市',
+        text: translated.wuXi,
       },
       {
         value: 3,
-        text: '海北藏族自治区',
+        text: translated.zangZu,
       },
       {
         value: 4,
-        text: '北京市',
+        text: translated.beiJing,
       },
       {
         value: 5,
-        text: '连云港市',
+        text: translated.lianYunGang,
+        disabled: true,
       },
       {
         value: 6,
-        text: '石家庄市',
+        text: translated.wuhan,
       },
       {
         value: 7,
-        text: '扬州市',
+        text: translated.yangzhou,
       },
       {
         value: 8,
-        text: '大庆市',
+        text: translated.daQing,
       },
       {
         value: 9,
-        text: '绥化市',
+        text: translated.suiHua,
       },
       {
         value: 10,
-        text: '潍坊市',
+        text: translated.weiFang,
       },
       {
         value: 11,
-        text: '徐州市',
+        text: translated.shijiazhuang,
       },
       {
         value: 12,
-        text: '乌鲁木齐市',
+        text: translated.wlmq,
       },
     ],
   ]
@@ -85,74 +94,74 @@ const PickerDemo = () => {
   const listData2 = [
     // 第一列
     [
-      { text: '周一', value: 'Monday' },
-      { text: '周二', value: 'Tuesday' },
-      { text: '周三', value: 'Wednesday' },
-      { text: '周四', value: 'Thursday' },
-      { text: '周五', value: 'Friday' },
+      { text: translated.monday, value: 'Monday' },
+      { text: translated.tuesday, value: 'Tuesday' },
+      { text: translated.wednesday, value: 'Wednesday' },
+      { text: translated.thursday, value: 'Thursday' },
+      { text: translated.friday, value: 'Friday' },
     ],
     // 第二列
     [
-      { text: '上午', value: 'Morning' },
-      { text: '下午', value: 'Afternoon' },
-      { text: '晚上', value: 'Evening' },
+      { text: translated.morning, value: 'Morning' },
+      { text: translated.afternoon, value: 'Afternoon' },
+      { text: translated.evening, value: 'Evening' },
     ],
   ]
 
-  const [custmerCityData, setCustmerCityData] = useState([
+  const [custmerCityData] = useState([
     {
       value: 1,
-      text: '北京',
+      text: translated.beiJing,
       children: [
         {
           value: 1,
-          text: '朝阳区',
+          text: translated.chaoYang,
         },
         {
           value: 2,
-          text: '海淀区',
+          text: translated.haiDian,
         },
         {
           value: 3,
-          text: '大兴区',
+          text: translated.daXing,
         },
         {
           value: 4,
-          text: '东城区',
+          text: translated.dongCheng,
         },
         {
           value: 5,
-          text: '西城区',
+          text: translated.xiCheng,
         },
         {
           value: 6,
-          text: '丰台区',
+          text: translated.fengTai,
         },
       ],
     },
     {
       value: 2,
-      text: '上海',
+      text: translated.shangHai,
       children: [
         {
           value: 1,
-          text: '黄浦区',
+          text: translated.huangPu,
         },
         {
           value: 2,
-          text: '长宁区',
+          text: translated.changNing,
         },
         {
           value: 3,
-          text: '普陀区',
+          text: translated.puTuo,
         },
         {
           value: 4,
-          text: '杨浦区',
+          text: translated.yangPu,
         },
         {
           value: 5,
-          text: '浦东新区',
+          text: translated.puDong,
         },
       ],
     },
@@ -161,37 +170,37 @@ const PickerDemo = () => {
   const [asyncData, setAsyncData] = useState([
     {
       value: 1,
-      text: '北京',
+      text: translated.beiJing,
       children: [
         {
           value: 1,
-          text: '朝阳区',
+          text: translated.chaoYang,
         },
         {
           value: 2,
-          text: '海淀区',
+          text: translated.haiDian,
         },
         {
           value: 3,
-          text: '大兴区',
+          text: translated.daXing,
         },
         {
           value: 4,
-          text: '东城区',
+          text: translated.dongCheng,
         },
         {
           value: 5,
-          text: '西城区',
+          text: translated.xiCheng,
         },
         {
           value: 6,
-          text: '丰台区',
+          text: translated.fengTai,
         },
       ],
     },
     {
       value: 2,
-      text: '上海',
+      text: translated.shangHai,
       children: [],
     },
   ])
@@ -219,18 +228,32 @@ const PickerDemo = () => {
     values: (string | number)[],
     columnIndex: number
   ) => {
-    console.log('异步获取change', columnIndex, values, options)
+    console.log('updateChooseValueCustmer', columnIndex, values, options)
     if (columnIndex === 0 && values[0] === 2) {
       setTimeout(() => {
         if (asyncData[1].children.length === 0) {
           asyncData[1].children = [
-            { value: 1, text: '黄浦区' },
-            { value: 2, text: '长宁区' },
-            { value: 3, text: '普陀区' },
-            { value: 4, text: '杨浦区' },
-            { value: 5, text: '浦东新区' },
+            {
+              value: 1,
+              text: translated.huangPu,
+            },
+            {
+              value: 2,
+              text: translated.changNing,
+            },
+            {
+              value: 3,
+              text: translated.puTuo,
+            },
+            {
+              value: 4,
+              text: translated.yangPu,
+            },
+            {
+              value: 5,
+              text: translated.puDong,
+            },
           ]
-
           setAsyncData([...asyncData])
         }
       }, 100)
@@ -277,14 +300,14 @@ const PickerDemo = () => {
     <>
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>基础用法</h2>
+        <h2>{translated.basic}</h2>
         <Cell
-          title="请选择城市"
+          title={translated.chooseCity}
           description={baseDesc}
           onClick={() => setIsVisible1(true)}
         />
         <Picker
-          title="请选择城市"
+          title={translated.chooseCity}
           visible={isVisible1}
           options={listData1}
           onConfirm={(list, values) => confirmPicker('base', list, values)}
@@ -294,9 +317,9 @@ const PickerDemo = () => {
           }}
         />
 
-        <h2>默认选中项</h2>
+        <h2>{translated.defaultSelected}</h2>
         <Cell
-          title="请选择城市"
+          title={translated.chooseCity}
           description={baseDefault}
           onClick={() => setIsVisible4(!isVisible4)}
         />
@@ -309,14 +332,14 @@ const PickerDemo = () => {
           onChange={changePicker}
         />
 
-        <h2>受控</h2>
+        <h2>{translated.controlled}</h2>
         <Cell
-          title="请选择城市"
+          title={translated.chooseCity}
           description={baseDesc}
           onClick={() => setIsVisible7(!isVisible7)}
         />
         <Picker
-          title="请选择城市"
+          title={translated.chooseCity}
           visible={isVisible7}
           value={val}
           options={listData1}
@@ -330,9 +353,9 @@ const PickerDemo = () => {
           }}
         />
 
-        <h2>多列用法</h2>
+        <h2>{translated.multipleColumns}</h2>
         <Cell
-          title="多列用法"
+          title={translated.multipleColumns}
           description={mutilDesc}
           onClick={() => setIsVisible2(!isVisible2)}
         />
@@ -344,9 +367,9 @@ const PickerDemo = () => {
           onChange={changePicker}
           onConfirm={(list, values) => confirmPicker('mutil', list, values)}
         />
-        <h2>平铺展示</h2>
+        <h2>{translated.tileDesc}</h2>
         <Cell
-          title="请选择城市"
+          title={translated.chooseCity}
           description={tileDesc}
           onClick={() => setIsVisible6(!isVisible6)}
         />
@@ -361,9 +384,9 @@ const PickerDemo = () => {
           onChange={changePicker}
         />
 
-        <h2>多级联动</h2>
+        <h2>{translated.cascade}</h2>
         <Cell
-          title="多级联动"
+          title={translated.cascade}
           description={cityCustmer}
           onClick={() => setIsVisible3(!isVisible3)}
         />
@@ -380,9 +403,9 @@ const PickerDemo = () => {
           ) => console.log(asyncData, '多级联动', columnIndex, value, options)}
         />
 
-        <h2>动态获取</h2>
+        <h2>{translated.async}</h2>
         <Cell
-          title="请选择城市"
+          title={translated.chooseCity}
           description={asyncDesc}
           onClick={() => setIsVisible5(!isVisible5)}
         />
@@ -404,6 +427,32 @@ const PickerDemo = () => {
             )
           }
         />
+
+        <h2>{translated.theme}</h2>
+        <Cell
+          title={translated.chooseCity}
+          description={asyncDesc}
+          onClick={() => setIsVisible8(!isVisible8)}
+        />
+        <ConfigProvider
+          theme={{
+            nutuiPickerItemHeight: '48px',
+            nutuiPickerItemActiveLineBorder:
+              '1px dashed var(--nutui-brand-color)',
+            nutuiPickerItemTextColor: 'var(--nutui-brand-color)',
+          }}
+        >
+          <Picker
+            title={translated.chooseCity}
+            visible={isVisible8}
+            options={listData1}
+            onConfirm={(list, values) => confirmPicker('base', list, values)}
+            onClose={() => {
+              setIsVisible8(false)
+              console.log('onclose')
+            }}
+          />
+        </ConfigProvider>
       </div>
     </>
   )
