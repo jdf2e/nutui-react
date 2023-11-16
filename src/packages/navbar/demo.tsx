@@ -72,7 +72,16 @@ const NavBarDemo = () => {
         >
           {translated.c38a08ef}
         </NavBar>
-
+        <NavBar
+          right={
+            <span className="flex-center" onClick={(e) => Toast.show('icon')}>
+              <Share />
+            </span>
+          }
+          onBackClick={(e) => Toast.show(translated.a74a1fd4)}
+        >
+          {translated.c38a08ef}
+        </NavBar>
         <NavBar
           right={
             <span onClick={(e) => Toast.show(translated.cfbdc781)}>
@@ -94,10 +103,7 @@ const NavBarDemo = () => {
           back={<ArrowLeft />}
           right={
             <>
-              <span
-                style={{ marginRight: '5px' }}
-                onClick={(e) => Toast.show(translated['8dab2f66'])}
-              >
+              <span onClick={(e) => Toast.show(translated['8dab2f66'])}>
                 {translated['8dab2f66']}
               </span>
               <More onClick={(e) => Toast.show('icon')} />
@@ -116,15 +122,11 @@ const NavBarDemo = () => {
             <Cart />
           </i>
         </NavBar>
-
         <NavBar
           back={<ArrowLeft />}
           right={
             <>
-              <span
-                style={{ marginRight: '5px' }}
-                onClick={(e) => Toast.show(translated['8dab2f66'])}
-              >
+              <span onClick={(e) => Toast.show(translated['8dab2f66'])}>
                 {translated['8dab2f66']}
               </span>
               <More onClick={(e) => Toast.show('icon')} />
@@ -142,6 +144,106 @@ const NavBarDemo = () => {
               <TabPane title="Tab 1"> Tab 1 </TabPane>
               <TabPane title="Tab 2"> Tab 2 </TabPane>
               <TabPane title="Tab 3"> Tab 3 </TabPane>
+            </Tabs>
+          </div>
+        </NavBar>
+        <NavBar
+          titleAlign="left"
+          back={
+            <>
+              <ArrowLeft />
+              {translated.a74a1fd4}
+            </>
+          }
+          right={
+            <span className="flex-center" onClick={(e) => Toast.show('icon')}>
+              <Share />
+            </span>
+          }
+          onBackClick={(e) => Toast.show(translated.a74a1fd4)}
+        >
+          {translated.c38a08ef}
+        </NavBar>
+        <NavBar
+          titleAlign="left"
+          right={
+            <span className="flex-center" onClick={(e) => Toast.show('icon')}>
+              <Share />
+            </span>
+          }
+          onBackClick={(e) => Toast.show(translated.a74a1fd4)}
+        >
+          {translated.c38a08ef}
+        </NavBar>
+
+        <NavBar
+          titleAlign="left"
+          right={
+            <span onClick={(e) => Toast.show(translated.cfbdc781)}>
+              {translated.cfbdc781}
+            </span>
+          }
+          left={<Close />}
+          back={<ArrowLeft />}
+          onBackClick={(e) => Toast.show(translated.a74a1fd4)}
+        >
+          <div className="title">
+            <span onClick={(e) => Toast.show(translated.b840c88f)}>
+              {translated.e51e4582}
+            </span>
+            <span className="desc">{translated.e51e4582}</span>
+          </div>
+        </NavBar>
+        <NavBar
+          titleAlign="left"
+          back={<ArrowLeft />}
+          right={
+            <>
+              <span onClick={(e) => Toast.show(translated['8dab2f66'])}>
+                {translated['8dab2f66']}
+              </span>
+              <More onClick={(e) => Toast.show('icon')} />
+            </>
+          }
+          onBackClick={(e) => Toast.show(translated.a74a1fd4)}
+        >
+          <span onClick={(e) => Toast.show(translated.b840c88f)}>
+            {translated.c3a3a1d2}
+          </span>
+          <i
+            style={{ marginLeft: '5px' }}
+            className="flex-center"
+            onClick={(e) => Toast.show('icon')}
+          >
+            <Cart />
+          </i>
+        </NavBar>
+        <NavBar
+          titleAlign="left"
+          back={<ArrowLeft />}
+          right={
+            <>
+              <span onClick={(e) => Toast.show(translated['8dab2f66'])}>
+                {translated['8dab2f66']}
+              </span>
+              <More onClick={(e) => Toast.show('icon')} />
+            </>
+          }
+          onBackClick={(e) => Toast.show(translated.a74a1fd4)}
+        >
+          <div>
+            <Tabs
+              className="navbar-tabs"
+              align="left"
+              activeType="simple"
+              value={tab1value}
+              onChange={(paneKey) => {
+                setTab1value(paneKey)
+              }}
+            >
+              <TabPane title="Tab1"> Tab1 </TabPane>
+              <TabPane title="Tab2"> Tab2 </TabPane>
+              <TabPane title="Tab3"> Tab3 </TabPane>
             </Tabs>
           </div>
         </NavBar>

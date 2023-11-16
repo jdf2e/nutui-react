@@ -19,6 +19,9 @@ interface T {
   toastDurationText: string
   toastHide: string
   toastCustomIcon: string
+  toastWordBreak: string
+  toastWordBreak1: string
+  toastWordBreak2: string
 }
 
 const ToastDemo = () => {
@@ -38,6 +41,9 @@ const ToastDemo = () => {
       toastDurationText: '展示时长为10秒',
       toastHide: '隐藏Toast',
       toastCustomIcon: '自定义Icon',
+      toastWordBreak: '换行截断方式',
+      toastWordBreak1: '换行时截断单词',
+      toastWordBreak2: '换行时不截断单词',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -54,6 +60,9 @@ const ToastDemo = () => {
       toastDurationText: 'Show for 10 seconds',
       toastHide: 'Hide Toast',
       toastCustomIcon: 'Custom Icon',
+      toastWordBreak: 'Word Break',
+      toastWordBreak1: 'Break All',
+      toastWordBreak2: 'Break Word',
     },
   })
   const textToast = (msg: string) => {
@@ -201,6 +210,28 @@ const ToastDemo = () => {
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => iconToast(`${translated.toastTransparent}`)}
         />
+
+        <h2>{translated.toastWordBreak}</h2>
+        <Cell.Group>
+          <Cell
+            title={translated.toastWordBreak1}
+            onClick={() => {
+              Toast.show({
+                content: `Let's try ABCDEFGHIJKLMN here.`,
+                wordBreak: 'break-all',
+              })
+            }}
+          />
+          <Cell
+            title={translated.toastWordBreak2}
+            onClick={() => {
+              Toast.show({
+                content: `Let's try ABCDEFGHIJKLMN here.`,
+                wordBreak: 'break-word',
+              })
+            }}
+          />
+        </Cell.Group>
       </div>
     </>
   )

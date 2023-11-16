@@ -4,6 +4,7 @@ import classNames from 'classnames'
 interface ContentProps {
   visible: boolean
   title: ReactNode
+  header: ReactNode
   footer: ReactNode
   footerDirection: string
 }
@@ -11,7 +12,8 @@ interface ContentProps {
 export const Content: FunctionComponent<
   Partial<ContentProps> & HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { visible, title, footer, footerDirection, onClick, children } = props
+  const { visible, title, header, footer, footerDirection, onClick, children } =
+    props
 
   const classPrefix = 'nut-dialog'
 
@@ -43,6 +45,7 @@ export const Content: FunctionComponent<
       style={props.style}
       onClick={(e) => handleClick(e)}
     >
+      {header}
       <div
         className={classPrefix}
         style={{ display: visible ? 'flex' : 'none' }}

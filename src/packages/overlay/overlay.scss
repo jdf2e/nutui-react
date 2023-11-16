@@ -6,6 +6,7 @@
   height: 100%;
   background: $overlay-bg-color;
   z-index: $overlay-zIndex;
+
   .wrapper {
     .content {
       background-color: $overlay-content-bg-color;
@@ -16,6 +17,10 @@
 
 .nut-overflow-hidden {
   overflow: hidden !important;
+
+  .taro_page {
+    overflow: hidden !important;
+  }
 }
 
 .nut-overlay-slide {

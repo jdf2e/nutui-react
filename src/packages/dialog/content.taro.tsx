@@ -6,6 +6,7 @@ import { BasicComponent } from '@/utils/typings'
 interface ContentProps extends BasicComponent {
   visible: boolean
   title: ReactNode
+  header: ReactNode
   footer: ReactNode
   footerDirection: string
   onClick: (event: ITouchEvent) => void
@@ -15,10 +16,10 @@ export const Content: FunctionComponent<
   Partial<ContentProps> &
     Omit<HTMLAttributes<HTMLDivElement>, 'onClick' | 'title'>
 > = (props) => {
-  const { visible, title, footer, footerDirection, onClick, children } = props
+  const { visible, title, header, footer, footerDirection, onClick, children } =
+    props
 
   const classPrefix = 'nut-dialog'
-
   const renderHeader = () => {
     return title ? (
       <div className={`${classPrefix}__header`}>{title}</div>
@@ -47,6 +48,7 @@ export const Content: FunctionComponent<
       style={props.style}
       onClick={(e) => handleClick(e)}
     >
+      {header}
       <div
         className={classPrefix}
         style={{ display: visible ? 'flex' : 'none' }}

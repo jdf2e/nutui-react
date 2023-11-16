@@ -11,6 +11,7 @@
   }
 
   &.nut-radio-reverse {
+    flex-direction: row-reverse;
     .nut-radio-label {
       margin-right: $radio-label-margin-left;
       margin-left: 0;
@@ -62,7 +63,7 @@
     &-active {
       background: $color-primary-light;
       color: $color-primary;
-      border: 1px solid $color-primary;
+      border: $radio-button-active-border;
     }
 
     &-disabled {

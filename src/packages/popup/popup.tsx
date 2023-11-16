@@ -16,6 +16,7 @@ import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
 import { OverlayProps, defaultOverlayProps } from '@/packages/overlay/overlay'
 import Overlay from '@/packages/overlay'
 import { ComponentDefaults } from '@/utils/typings'
+import { useLockScroll } from '@/utils/use-lock-scroll'
 
 type Teleport = HTMLElement | (() => HTMLElement) | null
 
@@ -60,7 +61,7 @@ const defaultProps = {
 } as PopupProps
 
 // 默认1000，参看variables
-let _zIndex = 1100
+const _zIndex = 1100
 
 export const Popup: FunctionComponent<
   Partial<PopupProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
@@ -96,11 +97,12 @@ export const Popup: FunctionComponent<
     onClick,
   } = { ...defaultProps, ...props }
   const nodeRef = React.useRef(null)
-  const [index, setIndex] = useState(zIndex || _zIndex)
+  let innerIndex = zIndex || _zIndex
+  const [index, setIndex] = useState(innerIndex)
   const [innerVisible, setInnerVisible] = useState(visible)
   const [showChildren, setShowChildren] = useState(true)
   const [transitionName, setTransitionName] = useState('')
-
+  useLockScroll(nodeRef, innerVisible && lockScroll)
   const classPrefix = 'nut-popup'
   const baseStyle = {
     zIndex: index,
@@ -131,7 +133,7 @@ export const Popup: FunctionComponent<
   const open = () => {
     if (!innerVisible) {
       setInnerVisible(true)
-      setIndex(++_zIndex)
+      setIndex(++innerIndex)
     }
     if (destroyOnClose) {
       setShowChildren(true)
@@ -264,7 +266,6 @@ export const Popup: FunctionComponent<
               className={overlayClassName}
               visible={innerVisible}
               closeOnOverlayClick={closeOnOverlayClick}
-              zIndex={zIndex}
               lockScroll={lockScroll}
               duration={duration}
               onClick={onHandleClickOverlay}

@@ -4,7 +4,7 @@
     align-items: center;
   }
 
-  .nut-navbar__title .title {
+  .nut-navbar-title .title {
     display: flex;
     flex-direction: column;
 
@@ -12,6 +12,20 @@
       font-weight: 400;
       font-size: 12px;
       color: $color-text-help;
+    }
+  }
+
+  .navbar-tabs {
+    .nut-tabs-titles {
+      padding: 0;
+      .nut-tabs-titles-item {
+        margin: 0;
+        font-size: 16px;
+
+        &-active {
+          font-size: 20px;
+        }
+      }
     }
   }
 }

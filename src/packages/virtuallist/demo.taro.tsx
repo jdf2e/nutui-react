@@ -59,7 +59,7 @@ const ListDemo = () => {
     const pageSize = 10
     for (let i = (pageNo - 1) * pageSize; i < pageNo * pageSize; i++) {
       const num = i > 9 ? i : `0${i}`
-      datas.push(` list${num}`)
+      datas.push({ v: ` list${num}`, k: '3333' })
     }
     if (pageNo === 1) {
       setsourceData(() => {
@@ -77,7 +77,7 @@ const ListDemo = () => {
   }, [getData])
 
   const itemRender = (data: any) => {
-    return <div style={itemStyle}>{data}</div>
+    return <div style={itemStyle}>{data.v + data.k}</div>
   }
 
   const itemVariable = (data: any, dataIndex: number, index: number) => {
@@ -88,7 +88,7 @@ const ListDemo = () => {
           ...itemStyel2,
         }}
       >
-        {data}
+        {data.v}
       </div>
     )
   }

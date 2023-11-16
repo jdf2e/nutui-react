@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { Dialog, Cell } from '@/packages/nutui.react.taro'
+import { Dialog, Cell, Image } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 
@@ -12,11 +12,14 @@ interface T {
   title1: string
   title2: string
   title3: string
+  title4: string
+  title5: string
   title6: string
   content: string
   tips: string
   confirmText: string
   cancelText: string
+  header: string
 }
 
 const DialogDemo = () => {
@@ -26,14 +29,17 @@ const DialogDemo = () => {
       noTitle: '无标题弹框、不锁背景滚动',
       tipDialog: '提示弹框',
       tips: '提示',
-      title: '底部按钮 垂直使用',
+      title: '底部按钮 垂直布局 使用',
       title1: '标签式使用',
       title2: '无底部 Footer 区域',
       title3: '底部 Footer 为 Button 时，点击遮罩不关闭',
+      title4: '打开弹框 3s 后调用关闭方法',
+      title5: '打开弹框 3s 后更新弹框内容',
       title6: '点击取消时，拦截',
       content: '这里是弹框内容',
       confirmText: '确定',
       cancelText: '取消',
+      header: '顶部带插图',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -44,10 +50,14 @@ const DialogDemo = () => {
       title1: 'Template use',
       title2: 'no Footer',
       title3: 'Footer Button, and does not close when click overlay',
+      title4: 'after opened the dialog for 3 seconds, call close method',
+      title5:
+        'after opened the dialog for 3 seconds, update the content of the dialog',
       title6: 'Stop it when click cancel button',
       content: 'Function call and template call are supported.',
       confirmText: 'confirm',
       cancelText: 'cancel',
+      header: 'Top with illustration',
     },
   })
 
@@ -58,7 +68,7 @@ const DialogDemo = () => {
   const [visible5, setVisible5] = useState(false)
   const [visible6, setVisible6] = useState(false)
   const [visible7, setVisible7] = useState(false)
-
+  const [visible8, setVisible8] = useState(false)
   return (
     <>
       <Header />
@@ -155,6 +165,29 @@ const DialogDemo = () => {
           onClose={() => {
             setVisible7(false)
           }}
+        >
+          {translated.content}
+        </Dialog>
+        <Cell
+          title={translated.header}
+          onClick={() => {
+            setVisible8(true)
+          }}
+        />
+        <Dialog
+          className="test-dialog"
+          title={translated.header}
+          visible={visible8}
+          header={
+            <div style={{ height: '166px' }}>
+              <Image
+                src="https://img13.360buyimg.com/imagetools/jfs/t1/219330/27/30033/11784/6544af3fF5c0fd98f/64c41bb05ef09189.png"
+                mode="aspectFit"
+              />
+            </div>
+          }
+          onConfirm={() => setVisible8(false)}
+          onCancel={() => setVisible8(false)}
         >
           {translated.content}
         </Dialog>

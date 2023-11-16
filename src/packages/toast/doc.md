@@ -327,6 +327,39 @@ export default App
 
 :::
 
+### 换行截断方式
+
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { Toast, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  const showToast = (mode) => {
+    Toast.show({
+      content: `Let's try ABCDEFGHIJKLMN here.`,
+      wordBreak: mode
+    });
+  }
+  return (
+    <Cell.Group>
+      <Cell
+        title="换行时截断单词"
+        onClick={() => showToast('break-all')}
+      />
+      <Cell
+        title="换行时不截断单词"
+        onClick={() => showToast('break-word')}
+      />
+    </Cell.Group>
+  )
+}
+export default App
+```
+
+:::
+
 ## Toast
 
 
@@ -344,6 +377,7 @@ export default App
 | contentStyle | 自定义内容区样式 | `React.CSSProperties` | `-` |
 | closeOnOverlayClick | 是否在点击遮罩层后关闭提示 | `boolean` | `false` |
 | lockScroll | 背景是否锁定 | `boolean` | `false` |
+| wordBreak | 换行截断方式 | `normal \| break-all \| break-word ` | `break-all` |
 | onClose | 关闭时触发的事件 | `() => void` | `() => void` |
 
 `Toast`只支持指令式调用

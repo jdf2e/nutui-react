@@ -11,6 +11,7 @@ interface T {
   c1bae1ec: string
   '8a2e2847': string
   '70ffa5d8': string
+  '70ffa5d9': string
   '0f261484': string
   '6b1f669d': string
   disableOne: string
@@ -26,6 +27,7 @@ const RadioDemo = () => {
       c1bae1ec: '水平使用',
       '8a2e2847': '自定义尺寸',
       '70ffa5d8': '自定义图标',
+      '70ffa5d9': '自定义图标，通过Group实现列表形式',
       '0f261484': '触发事件',
       '6b1f669d': '当前选中值',
       disableOne: 'Group 模式下禁用某一项',
@@ -38,6 +40,7 @@ const RadioDemo = () => {
       c1bae1ec: '水準使用',
       '8a2e2847': '自定義尺寸',
       '70ffa5d8': '自定義圖示',
+      '70ffa5d9': '自定義圖標，通過Group實現列表形式',
       '0f261484': '觸發事件',
       '6b1f669d': '當前選中值',
       disableOne: 'Group 模式下禁用某一项',
@@ -50,6 +53,7 @@ const RadioDemo = () => {
       c1bae1ec: 'Horizontal use',
       '8a2e2847': 'Custom size',
       '70ffa5d8': 'Custom Icon',
+      '70ffa5d9': 'Custom Icon, render list in Group mode',
       '0f261484': 'Trigger Event',
       '6b1f669d': 'Currently selected',
       disableOne: 'Disable an item in Group mode',
@@ -84,6 +88,11 @@ const RadioDemo = () => {
         <Cell.Group>
           <Cell>
             <Radio defaultChecked>{translated.bb7486f4}1</Radio>
+          </Cell>
+          <Cell>
+            <Radio defaultChecked labelPosition="left">
+              {translated.bb7486f4}1
+            </Radio>
           </Cell>
           <Cell>
             <Radio defaultChecked disabled>
@@ -192,6 +201,29 @@ const RadioDemo = () => {
           >
             {translated['70ffa5d8']}
           </Radio>
+        </Cell>
+        <h2>{translated['70ffa5d9']}</h2>
+        <Cell>
+          <Radio.Group
+            defaultValue="1"
+            labelPosition="left"
+            style={{ width: '100%' }}
+          >
+            <Radio
+              icon={<Checklist />}
+              activeIcon={<Checklist style={{ color: 'red' }} />}
+              value="1"
+            >
+              {translated['70ffa5d8']}
+            </Radio>
+            <Radio
+              icon={<Checklist />}
+              activeIcon={<Checklist style={{ color: 'red' }} />}
+              value="2"
+            >
+              {translated['70ffa5d8']}
+            </Radio>
+          </Radio.Group>
         </Cell>
         <h2>{translated['0f261484']}</h2>
         <Cell.Group>

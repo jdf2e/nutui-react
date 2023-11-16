@@ -35,28 +35,28 @@ const App = () => {
       >
         <Form.Item
           required
-          label="姓名"
+          label="字段A"
           name="username"
           rules={[
-            { max: 5, message: '姓名不能超过5个字' },
-            { required: true, message: '请输入姓名' },
+            { max: 5, message: '字段A不能超过5个字' },
+            { required: true, message: '请输入字段A' },
           ]}
         >
           <Input
             className="nut-input-text"
-            placeholder="请输入姓名"
+            placeholder="请输入字段A"
             type="text"
           />
         </Form.Item>
         <Form.Item
-          label="地址"
+          label="字段D"
           name="address"
           rules={[
-            { max: 15, message: '地址不能超过15个字' },
-            { required: true, message: '请输入地址' },
+            { max: 15, message: '字段D不能超过15个字' },
+            { required: true, message: '请输入字段D' },
           ]}
         >
-          <TextArea placeholder="请输入地址" maxLength={100} />
+          <TextArea placeholder="请输入字段D" maxLength={100} />
         </Form.Item>
         <Form.Item
           label="数量"
@@ -117,36 +117,36 @@ const App = () => {
         }
       >
         <Form.Item
-          label="姓名"
+          label="字段A"
           name="username"
-          rules={[{ required: true, message: "请输入姓名" }]}
+          rules={[{ required: true, message: "请输入字段A" }]}
         >
-          <Input placeholder="请输入姓名" type="text" />
+          <Input placeholder="请输入字段A" type="text" />
         </Form.Item>
         <Form.Item
-          label="年龄"
+          label="字段B"
           name="age"
           rules={[
-            { required: true, message: "请输入年龄" },
+            { required: true, message: "请输入字段B" },
             { validator: customValidator, message: "必须输入数字" },
             { validator: valueRangeValidator, message: "必须输入0-200区间" },
           ]}
         >
-          <Input placeholder="请输入年龄，必须数字且0-200区间" type="text" />
+          <Input placeholder="请输入字段B，必须数字且0-200区间" type="text" />
         </Form.Item>
         <Form.Item
-          label="联系电话"
+          label="字段C"
           name="tel"
-          rules={[{ max: 13, message: "请输入联系电话" }]}
+          rules={[{ max: 13, message: "请输入字段C" }]}
         >
-          <Input placeholder="电话格式不正确" type="number" />
+          <Input placeholder="字段C格式不正确" type="number" />
         </Form.Item>
         <Form.Item
-          label="地址"
+          label="字段D"
           name="address"
-          rules={[{ required: true, message: "请输入地址" }]}
+          rules={[{ required: true, message: "请输入字段D" }]}
         >
-          <Input placeholder="请输入地址" type="text" />
+          <Input placeholder="请输入字段D" type="text" />
         </Form.Item>
       </Form>
     </>
@@ -206,20 +206,20 @@ const App = () => {
         }
       >
         <Form.Item
-          label="姓名"
+          label="字段A"
           name="username"
-          rules={[{ required: true, message: "请输入姓名" }]}
+          rules={[{ required: true, message: "请输入字段A" }]}
           initialValue="ZhangSan"
         >
-          <Input placeholder="请输入姓名" type="text" />
+          <Input placeholder="请输入字段A" type="text" />
         </Form.Item>
-        <Form.Item label="年龄" name="age" initialValue={18} rules={[
-          { required: true, message: "请输入年龄" },
+        <Form.Item label="字段B" name="age" initialValue={18} rules={[
+          { required: true, message: "请输入字段B" },
           { validator: customValidator, message: "必须输入数字" },
           { validator: valueRangeValidator, message: "必须输入0-200区间" },
         ]}>
           <Input
-            placeholder="请输入年龄，必须数字且0-200区间"
+            placeholder="请输入字段B，必须数字且0-200区间"
             type="number"
           />
         </Form.Item>
@@ -268,19 +268,19 @@ const App = () => {
         onFinishFailed={(values, errors) => submitFailed(errors)}
       >
         <Form.Item
-          label="姓名"
+          label="字段A"
           name="username"
-          rules={[{ required: true, message: "请输入姓名" }]}
+          rules={[{ required: true, message: "请输入字段A" }]}
         >
-          <Input placeholder="请输入姓名" type="text" />
+          <Input placeholder="请输入字段A" type="text" />
         </Form.Item>
         <Form.Item label="标注" name="note">
           <Input placeholder="请输入标注" type="string" />
         </Form.Item>
-        <Form.Item label="性别" name="gender">
+        <Form.Item label="字段E" name="gender">
           <Radio.Group onChange={onMenuChange}>
-            <Radio value="male">男性</Radio>
-            <Radio value="female">女性</Radio>
+            <Radio value="male">A</Radio>
+            <Radio value="female">B</Radio>
           </Radio.Group>
         </Form.Item>
       </Form>

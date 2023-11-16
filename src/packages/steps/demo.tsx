@@ -182,7 +182,7 @@ const StepsDemo = () => {
               3
             </Step>
           </Steps>
-          <div className="steps-button">
+          <div className="steps-button" style={{ marginTop: '10px' }}>
             <Button
               type="primary"
               size="small"
@@ -200,7 +200,7 @@ const StepsDemo = () => {
             <Step value={2}>2</Step>
             <Step value={3}>3</Step>
           </Steps>
-          <div className="steps-button">
+          <div className="steps-button" style={{ marginTop: '10px' }}>
             <Button
               type="primary"
               size="small"
@@ -288,7 +288,7 @@ const StepsDemo = () => {
               <Step value={3}>3</Step>
             </Steps>
           </ConfigProvider>
-          <div className="steps-button">
+          <div className="steps-button" style={{ marginTop: '10px' }}>
             <Button
               type="primary"
               size="small"

@@ -58,18 +58,18 @@ const customTheme2 = {
 
 const customTheme3 = {
   nutuiStepsDotHeadMargin: '0 0 12px 0',
-  nutuiColorPrimaryStop2: '#fff',
+  nutuiColorPrimaryStop2: 'var(--nutui-gray-1)',
   nutuiStepsDotIconBorder: '0',
   nutuiStepsBaseIconWidth: '6px',
   nutuiStepsBaseIconHeight: '6px',
-  nutuiStepsBaseLineBackground: `#ddd`,
-  nutuiStepsFinishIconBgColor: 'black',
-  nutuiStepsFinishIconColor: 'black',
-  nutuiStepsProcessIconBgColor: 'white',
-  nutuiStepsWaitIconBgColor: '#ddd',
+  nutuiStepsBaseLineBackground: `var(--nutui-gray-4)`,
+  nutuiStepsFinishIconBgColor: 'var(--nutui-gray-7)',
+  nutuiStepsFinishIconColor: 'var(--nutui-gray-7)',
+  nutuiStepsProcessIconBgColor: 'var(--nutui-gray-1)',
+  nutuiStepsWaitIconBgColor: 'var(--nutui-gray-4)',
   nutuiStepsBaseLineWidth: '45px',
   nutuiStepsBaseLineHeight: '1px',
-  nutuiStepsFinishLineBackground: `black`,
+  nutuiStepsFinishLineBackground: `var(--nutui-gray-7)`,
 }
 
 const StepsDemo = () => {
@@ -185,7 +185,7 @@ const StepsDemo = () => {
               3
             </Step>
           </Steps>
-          <div className="steps-button">
+          <div className="steps-button" style={{ marginTop: '10px' }}>
             <Button
               type="primary"
               size="small"
@@ -203,7 +203,7 @@ const StepsDemo = () => {
             <Step value={2}>2</Step>
             <Step value={3}>3</Step>
           </Steps>
-          <div className="steps-button">
+          <div className="steps-button" style={{ marginTop: '10px' }}>
             <Button
               type="primary"
               size="small"
@@ -291,7 +291,7 @@ const StepsDemo = () => {
               <Step value={3}>3</Step>
             </Steps>
           </ConfigProvider>
-          <div className="steps-button">
+          <div className="steps-button" style={{ marginTop: '10px' }}>
             <Button
               type="primary"
               size="small"

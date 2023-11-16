@@ -391,8 +391,10 @@ export default App;
 | startDate | 开始日期 | `Date` | `十年前` |
 | endDate | 结束日期 | `Date` | `十年后` |
 | formatter | 选项格式化函数 | `(type: string, option: PickerOption) => PickerOption` | `-` |
+| pickerProps | 透传picker属性 | `object` | `-` |
 | filter | 选项过滤函数 | `(type: string, option: PickerOption) => PickerOption[]` | `-` |
 | threeDimensional | 是否开启3D效果 | `boolean` | `true` |
 | onConfirm | 点击确定按钮时触发 | `(options, value) => void` | `-` |
-| onClose | 关闭时触发 | `(options, value) => void` | `-` |
+| onCancel | 点击取消按钮时触发 | `() => void` | `-` |
+| onClose | 确定和取消时，都触发 | `(options, value) => void` | `-` |
 | onChange | 选项改变时触发 | `(options, value, index) => void` | `-` |

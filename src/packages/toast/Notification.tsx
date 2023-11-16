@@ -4,6 +4,7 @@ import { Check, Loading, Failure, Tips } from '@nutui/icons-react'
 import { render, unmount } from '@/utils/render'
 import Overlay from '@/packages/overlay/index'
 import { BasicComponent } from '@/utils/typings'
+import { ToastWordBreakType } from './toast'
 
 export interface NotificationProps extends BasicComponent {
   id?: string
@@ -17,6 +18,7 @@ export interface NotificationProps extends BasicComponent {
   lockScroll: boolean
   contentClassName?: string
   contentStyle?: React.CSSProperties
+  wordBreak?: ToastWordBreakType
   onClose: () => void
 }
 export interface NotificationState {
@@ -125,6 +127,7 @@ export default class Notification extends React.PureComponent<
       className,
       contentClassName,
       contentStyle,
+      wordBreak,
     } = this.props
 
     const { show } = this.state
@@ -147,7 +150,7 @@ export default class Notification extends React.PureComponent<
         >
           <div className={`${classPrefix} ${classes}`} id={`toast-${id}`}>
             <div
-              className={`${classPrefix}__inner ${classPrefix}-${position} ${contentClassName}`}
+              className={`${classPrefix}__inner ${classPrefix}-${position} ${contentClassName} ${wordBreak}`}
               style={contentStyle}
             >
               {this.renderIcon()}

@@ -35,7 +35,7 @@ const App = () => {
       {list.map((item, index) => {
         return (
           <Swiper.Item key={item}>
-            <img src={item} onClick={() => console.log(index)} alt="" />
+            <img width="100%" height="100%" src={item} onClick={() => console.log(index)} alt="" />
           </Swiper.Item>
         )
       })}
@@ -78,7 +78,7 @@ const App = () => {
         {list.map((item) => {
           return (
             <Swiper.Item key={item}>
-              <img src={item} alt="" />
+              <img width="100%" height="100%" src={item} alt="" />
             </Swiper.Item>
           )
         })}

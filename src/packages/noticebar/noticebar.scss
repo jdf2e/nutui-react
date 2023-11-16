@@ -10,6 +10,7 @@
     font-size: $noticebar-font-size;
     background: $noticebar-background;
     color: $noticebar-color;
+    border-radius: $noticebar-border-radius;
 
     &.wrapable {
       height: auto;
@@ -32,6 +33,7 @@
     }
 
     .left-icon {
+      display: flex;
       height: $noticebar-left-icon-width;
       min-width: $noticebar-left-icon-width;
       margin-right: $noticebar-icon-gap;

@@ -404,6 +404,17 @@
         },
         {
           "version": "2.0.0",
+          "name": "CalendarCard",
+          "type": "component",
+          "cName": "日历卡片",
+          "desc": "日历卡片，支持多种选择类型",
+          "sort": 10,
+          "show": true,
+          "taro": true,
+          "author": "eiinu"
+        },
+        {
+          "version": "2.0.0",
           "name": "Cascader",
           "type": "component",
           "cName": "级联选择器",
@@ -1164,6 +1175,17 @@
           "show": true,
           "taro": true,
           "author": "swag~jun"
+        },
+        {
+          "version": "2.0.0",
+          "name": "AvatarCropper",
+          "type": "component",
+          "cName": "头像裁剪",
+          "desc": "仿微信头像裁剪功能",
+          "sort": 26,
+          "show": true,
+          "taro": true,
+          "author": "Marvin"
         }
       ]
     }

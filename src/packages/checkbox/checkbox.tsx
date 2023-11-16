@@ -11,10 +11,13 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Context from '../checkboxgroup/context'
 import { usePropsValue } from '@/utils/use-props-value'
 
+export type CheckboxShape = 'button' | 'round'
+
 export interface CheckboxProps extends BasicComponent {
   checked: boolean
   disabled: boolean
   defaultChecked: boolean
+  shape: CheckboxShape
   labelPosition: 'left' | 'right'
   icon: React.ReactNode
   activeIcon: React.ReactNode
@@ -28,6 +31,7 @@ export interface CheckboxProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   disabled: false,
+  shape: 'round',
   labelPosition: 'right',
   icon: null,
   activeIcon: null,
@@ -52,6 +56,7 @@ export const Checkbox: FunctionComponent<
     checked,
     value,
     defaultChecked,
+    shape,
     disabled,
     onChange,
     indeterminate,
@@ -166,6 +171,36 @@ export const Checkbox: FunctionComponent<
     setChecked(latestChecked)
   }
 
+  const renderButton = () => {
+    return (
+      <div
+        className={classNames(`${classPrefix}-button`, {
+          [`${classPrefix}-button-active`]: innerChecked,
+          [`${classPrefix}-button-disabled`]: disabled,
+        })}
+      >
+        {children || label}
+        {innerChecked && activeIcon ? (
+          <div className={classNames(`${classPrefix}-button-icon`)}>
+            {activeIcon}
+          </div>
+        ) : null}
+      </div>
+    )
+  }
+
+  const renderCheckboxItem = () => {
+    if (shape === 'button') {
+      return renderButton()
+    }
+    return (
+      <>
+        {renderIcon()}
+        {renderLabel()}
+      </>
+    )
+  }
+
   return (
     <div
       className={classNames(classPrefix, className, {
@@ -174,8 +209,7 @@ export const Checkbox: FunctionComponent<
       {...rest}
       onClick={handleClick}
     >
-      {renderIcon()}
-      {renderLabel()}
+      {renderCheckboxItem()}
     </div>
   )
 }

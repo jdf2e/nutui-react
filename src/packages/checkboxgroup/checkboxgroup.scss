@@ -21,6 +21,11 @@
       &-label {
         margin-right: 5px;
       }
+
+      &-button-active {
+        border: $radio-button-active-border;
+        background-color: $color-primary-light;
+      }
     }
   }
 
@@ -28,6 +33,11 @@
     .nut-checkbox {
       display: inline-flex;
       margin-right: 20px;
+
+      &-button-active {
+        border: $radio-button-active-border;
+        background-color: $color-primary-light;
+      }
     }
   }
 }

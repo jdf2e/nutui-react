@@ -331,6 +331,8 @@ const App = () => {
 | \--nutui-collapse-item-color | 字體顏色 | `#666666` |
 | \--nutui-collapse-item-disabled-color | 禁用顏色 | `$color-text-disabled` |
 | \--nutui-collapse-item-extra-color | Extra 字體顏色 | `#666666` |
+| \--nutui-collapse-item-border-bottom | Item 底部邊框 | `none` |
+| \--nutui-collapse-item-header-border-bottom | Item header 底部邊框 | `1px solid $color-border` |
 | \--nutui-collapse-wrapper-content-background-color | 背景顏色 | `$white` |
 | \--nutui-collapse-wrapper-content-color | 內容字體顏色 | `#666666` |
 | \--nutui-collapse-wrapper-content-font-size | 內容字體大小 | `$font-size-base` |

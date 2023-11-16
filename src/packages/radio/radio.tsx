@@ -111,7 +111,6 @@ export const Radio: FunctionComponent<
   }
   const renderIcon = () => {
     const { icon, activeIcon } = props
-
     if (disabled && !checkedStatement) {
       return <CheckDisabled className={classNames(color())} />
     }
@@ -135,18 +134,9 @@ export const Radio: FunctionComponent<
       <CheckNormal className={classNames(color())} />
     )
   }
-  const reverse = labelPosition === 'left'
   const renderRadioItem = () => {
     if (shape === 'button') {
       return renderButton()
-    }
-    if (reverse) {
-      return (
-        <>
-          {renderLabel()}
-          {renderIcon()}
-        </>
-      )
     }
     return (
       <>
@@ -162,9 +152,9 @@ export const Radio: FunctionComponent<
 
   return (
     <div
-      className={`${classPrefix} ${className} ${
-        reverse ? `${classPrefix}-reverse` : ''
-      }`}
+      className={classNames(classPrefix, className, {
+        [`${classPrefix}-reverse`]: labelPosition === 'left',
+      })}
       style={style}
       onClick={handleClick}
       {...rest}

@@ -504,6 +504,7 @@ export default CheckboxGroupOptions;
 | indeterminateIcon | 半选状态| `ReactNode` | `'CheckDisabled'` |
 | label | 复选框的文本内容 | `string` | `-` |
 | value | 标识值，用于 Group 模式 | `string` \|  `number` | `-` |
+| shape | 形状 | `button` \| `round` |`round` |
 | onChange | 值变化时触发 | `(value: boolean) => void` | `-` |
 
 ## Checkbox.Group
@@ -539,3 +540,10 @@ export default CheckboxGroupOptions;
 | \--nutui-checkbox-label-color | label 的文本颜色 | `$color-title` |
 | \--nutui-checkbox-label-margin-left | label 的左边距 | `15px` |
 | \--nutui-checkbox-label-font-size | label 的字号 | `14px` |
+| \--nutui-checkbox-button-font-size | shape為button的字號 | `12px` |
+| \--nutui-checkbox-button-color | 字體顏色 | `$color-text` |
+| \--nutui-checkbox-button-background | shape為button的背景色 | `$color-background` |
+| \--nutui-checkbox-label-button-border-color | shape為button的邊框顏色 | `$color-primary` |
+| \--nutui-checkbox-button-active-border | shape為button選中態的邊框 | `1px solid $color-primary` |
+| \--nutui-checkbox-button-padding | shape為button的內邊距 | `5px 18px` |
+| \--nutui-checkbox-button-border-radius | shape為button的圓角 | `15px` |

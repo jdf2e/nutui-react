@@ -33,6 +33,34 @@ export default App
 
 :::
 
+:::
+
+### Custom Theme
+
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { NoticeBar, ConfigProvider } from '@nutui/nutui-react';
+
+const App = () => {
+    const text = 'Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.'
+    return (
+      <ConfigProvider
+          theme={{
+            nutuiNoticebarBackground: '#EDF4FF',
+            nutuiNoticebarColor: '#3768FA',
+          }}
+        >
+          <NoticeBar content={translated.text} />
+        </ConfigProvider>
+    )
+}
+export default App
+```
+
+:::
+
 ### Scrollable
 
 Scrolling is automatically enabled when the content length of the notification bar overflows, which can be controlled through the scrollable property.
@@ -299,6 +327,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-noticebar-font-size | noticebar font size | `$font-size-small` |
 | \--nutui-noticebar-line-height | noticebar line height | `24px` |
 | \--nutui-noticebar-box-padding | noticebar box padding | `0 16px` |
+| \--nutui-noticebar-border-radius | noticebar border radius | `0` |
 | \--nutui-noticebar-wrap-padding | noticebar wrap padding | `16px` |
 | \--nutui-noticebar-icon-gap | gap of icon and text | `4px` |
 | \--nutui-noticebar-left-icon-width | noticebar left icon width | `16px` |
