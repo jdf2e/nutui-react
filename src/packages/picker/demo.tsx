@@ -8,7 +8,6 @@ import ConfigProvider from '@/packages/configprovider'
 interface T {
   [props: string]: string
 }
-
 interface PickerOption {
   text: string | number
   value: string | number
@@ -428,7 +427,7 @@ const PickerDemo = () => {
           }
         />
 
-        <h2>主题</h2>
+        <h2>{translated.theme}</h2>
         <Cell
           title={translated.chooseCity}
           description={asyncDesc}
