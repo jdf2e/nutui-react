@@ -60,15 +60,13 @@ export const ActionSheet: FunctionComponent<
       visible={visible}
       position="bottom"
       title={title}
+      description={description}
       className={classPrefix}
       onClose={() => {
         onCancel && onCancel()
       }}
     >
-      <div className={`${className}`} style={style}>
-        {description && (
-          <div className={`${classPrefix}__description`}>{description}</div>
-        )}
+      <div className={`${className}`} style={style} {...rest}>
         {options.length ? (
           <div className={`${classPrefix}__list`}>
             {options.map((item, index) => {

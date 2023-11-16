@@ -29,6 +29,12 @@
       font-size: $popup-title-font-size;
     }
 
+    &-description {
+      color: $color-text-help;
+      font-size: $popup-description-font-size;
+      font-weight: $font-weight;
+    }
+
     &-right {
       position: absolute !important;
       z-index: 1;
