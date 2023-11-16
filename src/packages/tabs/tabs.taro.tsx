@@ -114,13 +114,13 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   }, [children])
   const classes = classNames(
     classPrefix,
-    `${classPrefix}--${direction}`,
+    `${classPrefix}-${direction}`,
     className
   )
-  const classesTitle = classNames(`${classPrefix}__titles`, {
-    [`${classPrefix}__titles--${activeType}`]: activeType,
-    [`${classPrefix}__titles--scrollable`]: true,
-    [`${classPrefix}__titles--${align}`]: align,
+  const classesTitle = classNames(`${classPrefix}-titles`, {
+    [`${classPrefix}-titles-${activeType}`]: activeType,
+    [`${classPrefix}-titles-scrollable`]: true,
+    [`${classPrefix}-titles-${align}`]: align,
   })
 
   const tabsActiveStyle = {
@@ -187,8 +187,8 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
 
     raf(() => {
       Promise.all([
-        getRect(`#nut-tabs__titles_${name} .nut-tabs__list`),
-        getAllRect(`#nut-tabs__titles_${name} .nut-tabs__titles-item`),
+        getRect(`#nut-tabs-titles-${name} .nut-tabs-list`),
+        getAllRect(`#nut-tabs-titles-${name} .nut-tabs-titles-item`),
       ]).then(([navRect, titleRects]: any) => {
         navRectRef.current = navRect
         titleRectRef.current = titleRects
@@ -254,11 +254,11 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         scrollTop={scrollTop}
         showScrollbar={false}
         scrollWithAnimation={scrollWithAnimation.current}
-        id={`nut-tabs__titles_${name}`}
+        id={`nut-tabs-titles-${name}`}
         className={classesTitle}
         style={{ ...tabStyle }}
       >
-        <View className="nut-tabs__list" ref={navRef}>
+        <View className="nut-tabs-list" ref={navRef}>
           {!!title && typeof title === 'function'
             ? title()
             : titles.current.map((item, index) => {
@@ -271,23 +271,23 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
                     onClick={(e) => {
                       tabChange(item, index)
                     }}
-                    className={classNames(`${classPrefix}__titles-item taro`, {
-                      [`nut-tabs__titles-item--active`]:
+                    className={classNames(`${classPrefix}-titles-item taro`, {
+                      [`nut-tabs-titles-item-active`]:
                         !item.disabled && String(item.value) === String(value),
-                      [`nut-tabs__titles-item--disabled`]: item.disabled,
-                      [`nut-tabs__titles-item--${align}`]: align,
+                      [`nut-tabs-titles-item-disabled`]: item.disabled,
+                      [`nut-tabs-titles-item-${align}`]: align,
                     })}
                     key={item.value}
                   >
                     {activeType === 'line' && (
                       <View
-                        className={`${classPrefix}__titles-item__line`}
+                        className={`${classPrefix}-titles-item-line`}
                         style={tabsActiveStyle}
                       />
                     )}
                     {activeType === 'smile' && (
                       <View
-                        className={`${classPrefix}__titles-item__smile`}
+                        className={`${classPrefix}-titles-item-smile`}
                         style={tabsActiveStyle}
                       >
                         <JoySmile color={activeColor} width={40} height={20} />
@@ -298,7 +298,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
                         {
                           ellipsis: true,
                         },
-                        `${classPrefix}__titles-item__text`
+                        `${classPrefix}-titles-item-text`
                       )}
                     >
                       {item.title}
@@ -308,8 +308,8 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
               })}
         </View>
       </ScrollView>
-      <View className={`${classPrefix}__content__wrap`}>
-        <View className={`${classPrefix}__content`} style={contentStyle}>
+      <View className={`${classPrefix}-content-wrap`}>
+        <View className={`${classPrefix}-content`} style={contentStyle}>
           {React.Children.map(children, (child, idx) => {
             if (!React.isValidElement(child)) {
               return null

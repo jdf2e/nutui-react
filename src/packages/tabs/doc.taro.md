@@ -542,12 +542,12 @@ const App = () => {
         return list6.map(item => (
           <div
             onClick={() => setTab7value(item.paneKey)}
-            className={`nut-tabs__titles-item ${tab7value === item.paneKey ? 'nut-tabs__titles-item--active' : ''}`}
+            className={`nut-tabs-titles-item ${tab7value === item.paneKey ? 'nut-tabs-titles-item-active' : ''}`}
             key={item.paneKey}
           >
             {item.icon || null}
-            <span className="nut-tabs__titles-item__text">{item.title}</span>
-            <span className="nut-tabs__titles-item__line" />
+            <span className="nut-tabs-titles-item-text">{item.title}</span>
+            <span className="nut-tabs-titles-item-line" />
           </div>
         ))
       }
