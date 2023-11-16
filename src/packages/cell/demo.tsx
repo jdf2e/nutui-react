@@ -1,8 +1,9 @@
 import React from 'react'
-import { My, Right } from '@nutui/icons-react'
+import { My, Right, Star } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import Cell from './index'
 import { Switch } from '../switch/switch'
+import { Button } from '../button/button'
 import Toast from '../toast'
 import './demo.scss'
 
@@ -171,6 +172,80 @@ const CellDemo = () => {
             align="center"
           />
         </Cell.Group>
+
+        <Cell.Group>
+          <Cell
+            title={
+              <div style={{ display: 'flex', alignItems: 'flex-end' }}>
+                <span style={{ fontWeight: '500' }}>{translated.title}</span>
+                <span
+                  style={{
+                    color: '#8C8C8C',
+                    fontSize: '10px',
+                    marginLeft: '5px',
+                    lineHeight: 1.5,
+                  }}
+                >
+                  {translated.title1}
+                </span>
+              </div>
+            }
+            extra={
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                More
+                <Right width={12} height={12} style={{ marginLeft: '5px' }} />
+              </div>
+            }
+          />
+          <Cell>
+            <div style={{ minHeight: '50px' }}>{translated.content}</div>
+          </Cell>
+          <Cell
+            align="center"
+            title={
+              <div
+                style={{
+                  color: '#8C8C8C',
+                  fontSize: '12px',
+                }}
+              >
+                {translated.title1}
+              </div>
+            }
+            extra={<Button type="primary">Action</Button>}
+          />
+        </Cell.Group>
+
+        <Cell.Group>
+          <Cell
+            title={
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <Star style={{ marginRight: '5px' }} /> {translated.title}
+              </div>
+            }
+            extra={<Right />}
+          />
+          <Cell>
+            <div style={{ minHeight: '50px' }}>{translated.content}</div>
+          </Cell>
+          <Cell align="center" extra={<Button type="primary">Action</Button>} />
+        </Cell.Group>
+
+        <Cell.Group>
+          <Cell
+            title={
+              <div
+                style={{ display: 'flex', alignItems: 'center', color: 'blue' }}
+              >
+                {translated.title}
+              </div>
+            }
+          />
+          <Cell>
+            <div style={{ color: '#26bf26' }}>{translated.content}</div>
+          </Cell>
+        </Cell.Group>
+
         <Cell.Group
           divider={false}
           title={translated.title7}
