@@ -31,6 +31,30 @@ const App = () => {
 export default App
 ```
 
+### 自定义主题
+
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { NoticeBar, ConfigProvider } from '@nutui/nutui-react';
+
+const App = () => {
+    const text = 'NutUI-React 是京东风格的 React 移动端组件库，开发和服务于移动 Web 界面的企业级产品。'
+    return (
+      <ConfigProvider
+          theme={{
+            nutuiNoticebarBackground: '#EDF4FF',
+            nutuiNoticebarColor: '#3768FA',
+          }}
+        >
+          <NoticeBar content={translated.text} />
+        </ConfigProvider>
+    )
+}
+export default App
+```
+
 :::
 
 ### 滚动播放
@@ -309,6 +333,7 @@ export default App
 | \--nutui-noticebar-font-size | 字号 | `$font-size-small` |
 | \--nutui-noticebar-line-height | 行高 | `24px` |
 | \--nutui-noticebar-box-padding | padding值 | `0 16px` |
+| \--nutui-noticebar-border-radius | 圆角 | `0` |
 | \--nutui-noticebar-wrap-padding | 多行展示的padding值 | `8px 16px` |
 | \--nutui-noticebar-icon-gap | icon、text间距 | `4px` |
 | \--nutui-noticebar-left-icon-width | 左侧icon的宽度和高度的设定 | `16px` |

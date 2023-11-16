@@ -10,6 +10,7 @@
     font-size: $noticebar-font-size;
     background: $noticebar-background;
     color: $noticebar-color;
+    border-radius: $noticebar-border-radius;
 
     &.wrapable {
       height: auto;

@@ -1286,6 +1286,7 @@ $noticebar-font-size: var(
 ) !default;
 $noticebar-line-height: var(--nutui-noticebar-line-height, 24px) !default;
 $noticebar-box-padding: var(--nutui-noticebar-box-padding, 0 16px) !default;
+$noticebar-border-radius: var(--nutui-noticebar-border-radius, 0) !default;
 $noticebar-wrap-padding: var(
   --nutui-noticebar-wrapable-padding,
   8px 16px
