@@ -95,7 +95,7 @@ export const Infiniteloading: FunctionComponent<
     return () => {
       scrollEl.current.removeEventListener('scroll', handleScroll, useCapture)
     }
-  }, [hasMore, isInfiniting])
+  }, [hasMore, isInfiniting, onLoadMore])
 
   useEffect(() => {
     const element = scroller.current as HTMLDivElement
