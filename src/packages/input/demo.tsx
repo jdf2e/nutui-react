@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { Input } from './input'
 import { useTranslate } from '../../sites/assets/locale'
 import Button from '@/packages/button'
@@ -26,6 +26,7 @@ interface Idata {
   noBorder2: string
   event: string
 }
+
 const InputDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
@@ -154,12 +155,13 @@ const InputDemo = () => {
     console.log('clickRightIcon:', value)
   }
   const formatter = (value: string) => value.replace(/\d/g, '')
-
+  const re = useRef<HTMLInputElement>(null)
   return (
     <>
       <div className="demo" style={{ paddingBottom: '20px' }}>
         <h2>{translated.basic}</h2>
         <Input
+          ref={re}
           name="text"
           label={translated.text}
           placeholder={translated.text}

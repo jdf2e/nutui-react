@@ -175,7 +175,6 @@ export const VirtualList: FunctionComponent<
       }}
     >
       <ScrollView
-        scrollTop={0}
         scrollY
         ref={scrollRef}
         className="nut-virtuallist"

@@ -536,14 +536,6 @@ export const CalendarItem = React.forwardRef<
     } else {
       const viewPosition = Math.round(currentScrollTop + viewHeight)
       if (
-        viewPosition <
-          state.monthsData[current].cssScrollHeight +
-            state.monthsData[current].cssHeight &&
-        currentScrollTop > state.monthsData[current - 1].cssScrollHeight
-      ) {
-        current -= 1
-      }
-      if (
         current + 1 <= state.monthsNum &&
         viewPosition >=
           state.monthsData[current + 1].cssScrollHeight +

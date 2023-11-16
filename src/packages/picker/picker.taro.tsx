@@ -306,7 +306,6 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
     const pickerChange = (data: any) => {
       const prevDefaultValue = currentValue
       let changeIndex = 0
-      console.log('chage', data)
       // 判断变化的是第几个
       const list = data.detail.value
       for (let i = 0, len = list.length; i < len; i++) {
@@ -365,7 +364,7 @@ const InternalPicker: ForwardRefRenderFunction<unknown, Partial<PickerProps>> =
                 onPickStart={pickerStart}
                 onChange={pickerChange}
                 onPickEnd={pickerEnd}
-                className="picker-view-panel"
+                className="nut-picker-view-panel"
               >
                 {columnsList?.map((column, index) => {
                   return (

@@ -52,6 +52,19 @@ const App = () => {
             footerDirection: 'vertical'
         });
         }} />
+      <Cell
+        title="打开弹框 3s 后调用关闭方法"
+        onClick={() => {
+          const dialog = Dialog.alert({
+            title: '温馨提示',
+            content: '支持函数调用和组件调用两种方式。',
+            footerDirection: 'vertical'
+          });
+          setTimeout(()=>{
+            dialog.close()
+          }, 2000)
+        }}
+      />
     </>
   )
 }

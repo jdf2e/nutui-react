@@ -161,7 +161,7 @@ export default App;
 |background | search box external background color |string | - |
 |inputbackground | search box background color |string | - |
 |inputalign | alignment, optional `center` `right` | string | `left` |
-|autofocus | auto focus | boolean | `false` |
+|autoFocus | auto focus | boolean | `false` |
 |label | left text of search box | string | - |
 |actiontext | cancel button text | ReactNode | - |
 |leftinicon | input box, left Icon | ReactNode | `< Icon name="search" size="12" />` |

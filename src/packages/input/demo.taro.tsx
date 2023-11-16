@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Input, Button } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import Taro from '@tarojs/taro'
 
 interface Idata {
   val1: string
@@ -179,6 +179,7 @@ const InputDemo = () => {
         />
         <h2>{translated.title1}</h2>
         <Input
+          ref={(r) => console.log(r)}
           name="text"
           label={translated.text}
           placeholder={translated.text}

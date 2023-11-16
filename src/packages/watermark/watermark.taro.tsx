@@ -88,8 +88,8 @@ export const WaterMark: FunctionComponent<
     let ratio = 1
     getSystemInfo().then((res) => {
       ratio = res.pixelRatio
-      const canvasWidth = `${(gapX + width) * ratio}px`
-      const canvasHeight = `${(gapY + height) * ratio}px`
+      const canvasWidth = `${(gapX + width) * ratio}`
+      const canvasHeight = `${(gapY + height) * ratio}`
       const markWidth = width * ratio
       const markHeight = height * ratio
       let ctx: any
@@ -97,8 +97,8 @@ export const WaterMark: FunctionComponent<
       if (process.env.TARO_ENV === 'h5') {
         canvas = document.createElement('canvas')
         ctx = canvas.getContext('2d')
-        canvas.setAttribute('width', canvasWidth)
-        canvas.setAttribute('height', canvasHeight)
+        canvas.setAttribute('width', `${canvasWidth}px`)
+        canvas.setAttribute('height', `${canvasHeight}px`)
       } else {
         canvas = createOffscreenCanvas({
           type: '2d',

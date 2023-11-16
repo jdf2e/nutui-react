@@ -297,7 +297,6 @@ const InternalCascader: ForwardRefRenderFunction<
   /* type: 是否是静默模式，是的话不触发事件
   tabsCursor: tab的索引 */
   const chooseItem = async (node: CascaderOption, type: boolean) => {
-    // console.log('chooseItem', node)
     if ((!type && node.disabled) || !state.panes[state.tabsCursor]) {
       return
     }

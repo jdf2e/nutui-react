@@ -161,7 +161,7 @@ export default App;
 | background |蒐索框外部背景色| string | - |
 | inputBackground |蒐索框背景色| string | - |
 | inputAlign |對齊管道，可選`center` `right` | string | `left` |
-| autofocus |是否自動聚焦| boolean | `false` |
+| autoFocus |是否自動聚焦| boolean | `false` |
 | label |蒐索框左側文字| string | - |
 | actionText |取消按鈕文字| ReactNode | - |
 | leftinIcon |輸入框內，左icon | ReactNode | `< Icon name=“search”size=“12”/>` |

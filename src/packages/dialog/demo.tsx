@@ -10,6 +10,7 @@ interface T {
   tipDialog: string
   title: string
   title1: string
+  title4: string
   content: string
   tips: string
   okText: string
@@ -26,6 +27,7 @@ const DialogDemo = () => {
       tips: '提示',
       title: '底部按钮 垂直使用',
       title1: '标签式使用',
+      title4: '打开弹框 3s 后调用关闭方法',
       content: '支持函数调用和组件调用两种方式。',
       okText: '确定',
       cancelText: '取消',
@@ -38,6 +40,7 @@ const DialogDemo = () => {
       tips: 'Tips',
       title: 'Bottom button vertical use',
       title1: 'Template use',
+      title4: 'after opened the dialog for 3 seconds, call close method',
       content: 'Function call and template call are supported.',
       okText: 'confirm',
       cancelText: 'cancel',
@@ -94,6 +97,19 @@ const DialogDemo = () => {
               okText: translated.okText,
               cancelText: translated.cancelText,
             })
+          }}
+        />
+        <Cell
+          title={translated.title4}
+          onClick={() => {
+            const dialog = Dialog.alert({
+              title: translated.tips,
+              content: translated.content,
+              footerDirection: 'vertical',
+            })
+            setTimeout(() => {
+              dialog.close()
+            }, 2000)
           }}
         />
         <h2>{translated.title1}</h2>

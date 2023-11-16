@@ -104,7 +104,7 @@ const MenuDemo = () => {
     <>
       <Header />
       <style>{style}</style>
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} full`}>
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} demo-full`}>
         <h2>{translated.basic}</h2>
         <Menu closeOnClickOverlay={false} lockScroll={false}>
           <MenuItem

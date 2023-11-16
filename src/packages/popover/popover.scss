@@ -54,6 +54,7 @@
       .popover-menu-item-name {
         margin: $popover-menu-item-name-margin;
         width: 100%;
+        word-break: keep-all;
       }
 
       &:first-child {

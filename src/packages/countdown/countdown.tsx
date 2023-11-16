@@ -16,6 +16,7 @@ export interface CountDownProps {
   paused: boolean
   startTime: number
   endTime: number
+  remainingTime: number
   millisecond: boolean
   format: string
   autoStart: boolean
@@ -32,6 +33,7 @@ const defaultProps = {
   paused: false,
   startTime: Date.now(),
   endTime: Date.now(),
+  remainingTime: 0,
   millisecond: false,
   format: 'HH:mm:ss',
   autoStart: true,
@@ -48,6 +50,7 @@ const InternalCountDown: ForwardRefRenderFunction<
     paused,
     startTime,
     endTime,
+    remainingTime,
     millisecond,
     format,
     autoStart,
@@ -86,8 +89,12 @@ const InternalCountDown: ForwardRefRenderFunction<
 
   // 倒计时 interval
   const initTime = () => {
-    stateRef.current.handleEndTime = endTime
-    stateRef.current.diffTime = Date.now() - getTimeStamp(startTime) // 时间差
+    if (remainingTime) {
+      stateRef.current.handleEndTime = Date.now() + Number(remainingTime)
+    } else {
+      stateRef.current.handleEndTime = endTime
+      stateRef.current.diffTime = Date.now() - getTimeStamp(startTime) // 时间差
+    }
     if (!stateRef.current.counting) stateRef.current.counting = true
     tick()
   }
@@ -261,7 +268,7 @@ const InternalCountDown: ForwardRefRenderFunction<
     if (stateRef.current.isIninted) {
       initTime()
     }
-  }, [endTime, startTime])
+  }, [endTime, startTime, remainingTime])
 
   // 初始化
   useEffect(() => {

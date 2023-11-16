@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { ScrollView } from '@tarojs/components'
+import Taro, { nextTick } from '@tarojs/taro'
 import bem from '@/utils/bem'
 import Utils from '@/utils/date'
 import requestAniFrame from '@/utils/raf'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import { nextTick } from '@tarojs/taro'
 
 type CalendarRef = {
   scrollToDate: (date: string) => void
@@ -522,6 +522,7 @@ export const CalendarItem = React.forwardRef<
     }
     const target = e.target as HTMLElement
     const currentScrollTop = target.scrollTop
+    Taro.getEnv() === 'WEB' && setScrollTop(currentScrollTop)
     let current = Math.floor(currentScrollTop / state.avgHeight)
     if (current === 0) {
       if (currentScrollTop >= state.monthsData[current + 1].cssScrollHeight) {
@@ -536,14 +537,6 @@ export const CalendarItem = React.forwardRef<
       }
     } else {
       const viewPosition = Math.round(currentScrollTop + viewHeight)
-      if (
-        viewPosition <
-          state.monthsData[current].cssScrollHeight +
-            state.monthsData[current].cssHeight &&
-        currentScrollTop > state.monthsData[current - 1].cssScrollHeight
-      ) {
-        current -= 1
-      }
       if (
         current + 1 <= state.monthsNum &&
         viewPosition >=

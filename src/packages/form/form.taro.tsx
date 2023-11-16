@@ -42,8 +42,6 @@ export const Form: FunctionComponent<
     ...props,
   }
 
-  console.log('46 dddd')
-
   const [formInstance] = useForm()
   formInstance.starPositon = starPositon
   const { setCallback, submit } = formInstance

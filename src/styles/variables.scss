@@ -1776,6 +1776,7 @@ $indicator-dot-last-margin: var(
 
 // menu（✅）
 $menu-bar-line-height: var(--nutui-menu-bar-line-height, 48px) !default;
+$menu-placeholder-top: var(--nutui-menu-placeholder-top, -48px) !default;
 $menu-item-font-size: var(--nutui-menu-item-font-size, $font-size-2) !default;
 $menu-item-text-color: var(--nutui-menu-item-text-color, $title-color) !default;
 $menu-item-active-text-color: var(
@@ -1786,7 +1787,7 @@ $menu-bar-border-bottom-color: var(
   --nutui-menu-bar-border-bottom-color,
   #eaf0fb
 ) !default;
-$menu-bar-opened-z-index: var(--nutui-menu-bar-opened-z-index, 2001) !default;
+$menu-bar-opened-z-index: var(--nutui-menu-bar-opened-z-index, 2054) !default;
 $menu-item-disabled-color: var(
   --nutui-menu-item-disabled-color,
   #969799

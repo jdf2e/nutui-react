@@ -1,6 +1,5 @@
 import React, {
   CSSProperties,
-  FunctionComponent,
   useEffect,
   useState,
   useCallback,
@@ -114,13 +113,14 @@ const defaultProps = {
   slotInput: null,
 } as unknown as InputProps
 
-export const Input: FunctionComponent<
+export const Input = forwardRef<
+  HTMLDivElement,
   Partial<InputProps> &
     Omit<
       React.HTMLAttributes<HTMLDivElement>,
       'onChange' | 'onBlur' | 'onFocus' | 'onClick'
     >
-> = forwardRef((props, ref) => {
+>((props, ref) => {
   const { locale } = useConfig()
   const {
     children,
