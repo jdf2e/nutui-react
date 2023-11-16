@@ -578,7 +578,7 @@ export default App;
 | defaultValue | Initialize the value of the active tab | `number` \| `string` | `0` |
 | activeColor | Label selected color | `string` | `#1a1a1a` |
 | direction | Use horizontal and vertical directions | `horizontal` \| `vertical` | `horizontal` |
-| activeType | Select the bottom display style Optional values `line`, `smile`, `simple` | `line` \| `smile` \| `simple` | `line` |
+| activeType | Select the bottom display style Optional values `line`, `smile`, `simple`, `card`, `button` | `line` \| `smile` \| `simple` | `line` |
 | duration | Switch animation duration, unit ms 0 means no animation | `number` \| `string` | `300` |
 | title | custom navigation area | `() => JSX.Element[]` | `-` |
 | align | title left alignment | `left` \| `right` | `-` |
@@ -615,7 +615,6 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tabs-titles-item-active-font-weight | Tab selected titles font weight | `$font-weight-bold` |
 | \--nutui-tabs-titles-item-active-font-size | Tab selected titles font size | `$font-size-large` |
 | \--nutui-tabs-titles-item-active-background-color | Background color of active tab titles in horizontal direction | `$color-background-overlay` |
-
 | \--nutui-tabs-tab-line-width |  Horizontal active tab line width | `12px` |
 | \--nutui-tabs-tab-line-height | Height of active tabs line in horizontal direction | `2px` |
 | \--nutui-tabs-tab-line-color | Horizontal line color | `$color-primary` |

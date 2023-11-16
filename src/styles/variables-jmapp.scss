@@ -1606,6 +1606,10 @@ $tabs-vertical-tab-line-height: var(
   --nutui-tabs-vertical-tab-line-height,
   12px
 ) !default;
+$tabs-titles-item-smile-bottom: var(
+  --nutui-tabs-titles-item-smile-bottom,
+  -10px
+) !default;
 
 // indicator（✅）
 $indicator-color: var(--nutui-indicator-color, $color-primary) !default;

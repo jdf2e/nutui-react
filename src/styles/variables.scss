@@ -985,16 +985,30 @@ $tabs-tab-line-bottom: var(--nutui-tabs-line-bottom, 15%) !default;
 $tabs-tab-line-border-radius: var(--nutui-tabs-line-border-radius,
     2px) !default;
 $tabs-tab-line-opacity: var(--nutui-tabs-tab-line-opacity, 1) !default;
-$tabs-vertical-titles-width: var(--nutui-tabs-vertical-titles-width,
-    100px) !default;
-$tabs-vertical-titles-item-height: var(--nutui-tabs-vertical-titles-item-height,
-    40px) !default;
-$tabs-vertical-tab-line-color: var(--nutui-tabs-vertical-tab-line-color,
-    linear-gradient(180deg, $color-primary-stop-1 0%, $color-primary-light 100%)) !default;
-$tabs-vertical-tab-line-width: var(--nutui-tabs-vertical-tab-line-width,
-    3px) !default;
-$tabs-vertical-tab-line-height: var(--nutui-tabs-vertical-tab-line-height,
-    12px) !default;
+$tabs-vertical-titles-width: var(
+  --nutui-tabs-vertical-titles-width,
+  100px
+) !default;
+$tabs-vertical-titles-item-height: var(
+  --nutui-tabs-vertical-titles-item-height,
+  40px
+) !default;
+$tabs-vertical-tab-line-color: var(
+  --nutui-tabs-vertical-tab-line-color,
+  linear-gradient(180deg, $color-primary-stop-1 0%, $color-primary-light 100%)
+) !default;
+$tabs-vertical-tab-line-width: var(
+  --nutui-tabs-vertical-tab-line-width,
+  3px
+) !default;
+$tabs-vertical-tab-line-height: var(
+  --nutui-tabs-vertical-tab-line-height,
+  12px
+) !default;
+$tabs-titles-item-smile-bottom: var(
+  --nutui-tabs-titles-item-smile-bottom,
+  -2%
+) !default;
 
 // indicator（✅）
 $indicator-color: var(--nutui-indicator-color,
