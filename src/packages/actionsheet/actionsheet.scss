@@ -9,14 +9,11 @@
   &.nut-popup {
     min-height: 10%;
     background-color: $actionsheet-background-color;
+    padding: $actionsheet-padding;
   }
 
   .nut-popup-title {
     border-bottom: 1px solid $actionsheet-border-color;
-
-    & + .nut-actionsheet-body {
-      padding: 0 4px;
-    }
   }
 
   &__list {
@@ -25,7 +22,6 @@
     padding: 0;
     margin: 0;
     border-radius: $actionsheet-border-radius;
-    overflow: hidden;
   }
 
   &__cancel,
