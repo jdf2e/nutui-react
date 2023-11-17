@@ -241,13 +241,8 @@ const App = () => {
 export default App;
 
 ```
-<<<<<<< HEAD
-
 :::
-=======
->>>>>>> next
 
-:::
 
 ### 和Datepicker 聯動
 

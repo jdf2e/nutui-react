@@ -10,7 +10,7 @@
   ],
   "packageRules": [
     {
-      "matchPackagePatterns": ["^@tarojs"],
+      "matchPackagePatterns": ["^@tarojs", "^@react-spring", "^@use-gesture"],
       "enabled": false
     }
   ],
