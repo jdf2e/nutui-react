@@ -127,7 +127,7 @@ export const Swipe = forwardRef<
     }
     if (rightWrapper.current) {
       const rightRect = await getRectByTaro(rightWrapper.current)
-      setActionWidth((v) => ({ ...v, right: rightRect.width }))
+      setActionWidth((v) => ({ ...v, right: rightRect?.width }))
     }
     if (!props.disabled) {
       startOffset.current = state.offset
