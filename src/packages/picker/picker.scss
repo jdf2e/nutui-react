@@ -51,7 +51,7 @@
     font-size: $picker-item-text-font-size;
     z-index: 3;
 
-    &-jdapp {
+    &-taro {
       height: $picker-item-height;
       border: 0;
 
@@ -142,8 +142,8 @@
   &-roller-item-title {
     display: block;
     width: 100%;
-    height: 36px;
-    line-height: 36px;
+    height: $picker-item-height;
+    line-height: $picker-item-height;
     text-align: center;
     color: $color-title;
     font-size: $font-size-base;

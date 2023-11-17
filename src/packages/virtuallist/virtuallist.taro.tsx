@@ -8,6 +8,7 @@ import React, {
 } from 'react'
 import { ScrollView } from '@tarojs/components'
 import { getSystemInfoSync } from '@tarojs/taro'
+import classNames from 'classnames'
 import { Data, PositionType, VirtualListState } from './type'
 import { binarySearch, initPositinoCache, updateItemSize } from './utils'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -24,6 +25,7 @@ export interface VirtualListProps extends BasicComponent {
   onScroll: () => void
   key: string
 }
+
 const defaultProps = {
   ...ComponentDefaults,
   list: [] as Array<Data>,
@@ -152,9 +154,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
 
   return (
     <div
-      className={
-        className ? `${className} nut-virtualList-box` : 'nut-virtualList-box'
-      }
+      className={classNames('nut-virtualList-box', className)}
       {...rest}
       style={{
         height: containerHeight ? `${offSetSize}px` : '',

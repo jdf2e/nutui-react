@@ -42,8 +42,8 @@ export const Loading: FunctionComponent<
     <div
       className={classNames(
         classPrefix,
-        className,
-        direction === 'vertical' ? `${classPrefix}-vertical` : ''
+        direction === 'vertical' ? `${classPrefix}-vertical` : '',
+        className
       )}
       style={style}
     >

@@ -190,10 +190,13 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
         />
       ) : null}
       <div
-        className={classNames(className, {
-          'nut-menu-container-wrap': direction === 'down',
-          'nut-menu-container-wrap-up': direction !== 'down',
-        })}
+        className={classNames(
+          {
+            'nut-menu-container-wrap': direction === 'down',
+            'nut-menu-container-wrap-up': direction !== 'down',
+          },
+          className
+        )}
         style={{
           ...style,
           ...isShow(),

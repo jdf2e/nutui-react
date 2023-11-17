@@ -200,9 +200,13 @@ export const Checkbox: FunctionComponent<
 
   return (
     <div
-      className={classNames(classPrefix, className, {
-        [`${classPrefix}-reverse`]: labelPosition === 'left',
-      })}
+      className={classNames(
+        classPrefix,
+        {
+          [`${classPrefix}-reverse`]: labelPosition === 'left',
+        },
+        className
+      )}
       {...rest}
       onClick={handleClick}
     >

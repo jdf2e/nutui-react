@@ -384,12 +384,17 @@ export default App
 
 如果传入的参数是字符串类型，`Toast.show`会自动把它作为`content`
 
+Toast.config 全局配置：
+```js
+Toast.config({className: 'demo', contentClassName:'content-demo'})
+```
+
 ### Ref
 
 | 方法名 | 说明 | 参数 |
 | --- | --- | --- |
 | clear | 关闭所有显示中的`Toast` | `-` |
-| config | `Toast`全局配置 | `{ duration: number, position: 'top' \| 'center' \| 'bottom', closeOnOverlayClick: boolean, lockScroll: boolean }` |
+| config | `Toast`全局配置 | `ToastProps` |
 
 ## 主题定制
 

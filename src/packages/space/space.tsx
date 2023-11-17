@@ -29,12 +29,12 @@ export const Space: FunctionComponent<
     ...props,
   }
   const cls = classNames(
-    className,
     prefixCls,
     wrap && `${prefixCls}-wrap`,
     direction && `${prefixCls}-${direction}`,
     align && `${prefixCls}-align-${align}`,
-    justify && `${prefixCls}-justify-${justify}`
+    justify && `${prefixCls}-justify-${justify}`,
+    className
   )
   return (
     <div className={cls} style={style}>

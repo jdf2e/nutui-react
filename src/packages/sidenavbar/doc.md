@@ -50,7 +50,7 @@ const App = () => {
           title="首页"
           visible={navBarState.visible}
           position={navBarState.position}
-          handleClose={() => {
+          onClose={() => {
             changeNarBar(false)
           }}
         >
@@ -103,7 +103,7 @@ const App = () => {
           title="首页"
           visible={visible}
           position='left'
-          handleClose={() => {
+          onClose={() => {
             changeNarBar(false)
           }}
         >

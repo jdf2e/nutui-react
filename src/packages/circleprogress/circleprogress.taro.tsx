@@ -52,7 +52,7 @@ export const CircleProgress: FunctionComponent<
   const oldValue = useRef(percent)
   const forceUpdate = useForceUpdate()
 
-  const classes = classNames(className, classPrefix)
+  const classes = classNames(classPrefix, className)
   const refRandomId = Math.random().toString(36).slice(-8)
   const animateIdRef = useRef(0)
 

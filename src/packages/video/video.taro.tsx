@@ -20,6 +20,7 @@ export interface VideoProps extends BasicComponent {
   onPause: (event: BaseEventOrig<any>) => void
   onPlayEnd: (event: BaseEventOrig<any>) => void
 }
+
 const defaultProps = {
   ...ComponentDefaults,
   source: {
@@ -54,7 +55,7 @@ export const Video: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const classes = classNames(className, classPrefix)
+  const classes = classNames(classPrefix, className)
 
   return (
     <div className={classes} {...restProps}>

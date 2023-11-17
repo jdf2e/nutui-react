@@ -37,12 +37,12 @@ export const Steps: FunctionComponent<
 
   const classPrefix = `nut-steps`
   const classes = classNames(
+    classPrefix,
     {
       [`${classPrefix}-${direction}`]: true,
       [`${classPrefix}-dot`]: !!props.dot,
     },
-    className,
-    classPrefix
+    className
   )
   return (
     <DataContext.Provider value={parentSteps}>

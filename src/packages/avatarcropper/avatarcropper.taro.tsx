@@ -36,12 +36,8 @@ const defaultProps = {
     <Button type="danger" key="cancel">
       取消
     </Button>,
-    <Button type="info" key="reset">
-      重置
-    </Button>,
-    <Button type="warning" key="rotate">
-      旋转
-    </Button>,
+    <Button key="reset">重置</Button>,
+    <Button key="rotate">旋转</Button>,
     <Button type="success" key="confirm">
       确认
     </Button>,
@@ -87,7 +83,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     cropperCanvasContext: Taro.CanvasContext | null
   }
 
-  const cls = classNames(classPrefix, className, 'taro')
+  const cls = classNames(classPrefix, 'taro', className)
   const toolbarPositionCls = classNames(
     `${classPrefix}-popup-toolbar`,
     toolbarPosition

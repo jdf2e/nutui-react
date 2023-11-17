@@ -105,7 +105,7 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
       onCloseIconClick={onClose}
       {...rest}
     >
-      <div className={classNames(className, classPrefix)} style={style}>
+      <div className={classNames(classPrefix, className)} style={style}>
         <div className={`${classPrefix}__title`}>
           {title || locale.shortpassword.title}
         </div>

@@ -50,9 +50,13 @@ export const Grid: FunctionComponent<
   const classPrefix = 'nut-grid'
 
   const rootClass = () => {
-    return classNames(className, classPrefix, {
-      [`${classPrefix}__border`]: !gap,
-    })
+    return classNames(
+      classPrefix,
+      {
+        [`${classPrefix}__border`]: !gap,
+      },
+      className
+    )
   }
 
   const rootStyle = () => {

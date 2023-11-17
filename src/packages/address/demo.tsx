@@ -242,8 +242,8 @@ const AddressDemo = () => {
     select: false,
   })
 
-  const [icon, setIcon] = useState({
-    selectIcon: <HeartFill color="red" />,
+  const [icon] = useState({
+    selectIcon: <HeartFill color="var(--nutui-color-primary)" />,
     defaultIcon: <Heart />,
     closeIcon: <Close />,
     backIcon: <ArrowLeft />,

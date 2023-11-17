@@ -59,9 +59,13 @@ export const BackTop: FunctionComponent<
 
   return (
     <div
-      className={classNames(classPrefix, className, {
-        show: backTop,
-      })}
+      className={classNames(
+        classPrefix,
+        {
+          show: backTop,
+        },
+        className
+      )}
       style={styles}
       onClick={(e) => {
         goTop(e)

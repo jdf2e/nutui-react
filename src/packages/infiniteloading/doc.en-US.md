@@ -161,7 +161,7 @@ const App = () => {
             pullingText={
               <>
                 <Jd />
-                <span style={{ fontSize: '10px' }}>松开刷新</span>
+                <span style={{ fontSize: '10px' }}>松手刷新</span>
               </>
             }
             loadingText={<Jd />}

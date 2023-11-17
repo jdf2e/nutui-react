@@ -712,8 +712,8 @@ export const CalendarItem = React.forwardRef<
       [`${classPrefix}-title`]: !popup,
       [`${classPrefix}-nofooter`]: !!autoBackfill,
     },
-    className,
-    classPrefix
+    classPrefix,
+    className
   )
 
   const headerClasses = classNames({

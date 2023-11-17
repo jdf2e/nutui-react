@@ -61,13 +61,12 @@ export const InfiniteLoading: FunctionComponent<
   const refreshTop = useRef<HTMLDivElement>(null)
   const scrollHeight = useRef(0)
   const scrollTop = useRef(0)
-  const direction = useRef('down')
   const isTouching = useRef(false)
   const y = useRef(0)
   const refreshMaxH = useRef(0)
   const distance = useRef(0)
 
-  const classes = classNames(className, classPrefix)
+  const classes = classNames(classPrefix, className)
 
   useEffect(() => {
     refreshMaxH.current = threshold
@@ -115,20 +114,11 @@ export const InfiniteLoading: FunctionComponent<
       // 滚动到最底部
       e.target.scrollTop = scrollHeight.current
     }
-    if (
-      e.target.scrollTop > scrollTop.current ||
-      e.target.scrollTop >= scrollHeight.current
-    ) {
-      direction.current = 'down'
-    } else {
-      direction.current = 'up'
-    }
-    scrollTop.current = e.target.scrollTop
     onScroll && onScroll(e.target.scrollTop)
   }
 
   const lower = () => {
-    if (direction.current === 'up' || !hasMore || isInfiniting) {
+    if (!hasMore || isInfiniting) {
       return false
     }
     setIsInfiniting(true)

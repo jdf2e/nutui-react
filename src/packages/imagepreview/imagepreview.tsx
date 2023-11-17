@@ -5,6 +5,7 @@ import React, {
   useRef,
   TouchEvent,
 } from 'react'
+import classNames from 'classnames'
 import Popup from '@/packages/popup'
 import Image from '@/packages/image'
 import Video from '@/packages/video'
@@ -62,6 +63,8 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   props
 ) => {
   const {
+    className,
+    style,
     images,
     videos,
     visible,
@@ -252,7 +255,8 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
       onClick={onCloseInner}
     >
       <div
-        className={classPrefix}
+        className={classNames(classPrefix, className)}
+        style={style}
         ref={ref}
         onClick={closeOnImg}
         onTouchStart={onTouchStart as any}
