@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Checked, Issue } from '@nutui/icons-react'
+import { Checked, Tips } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Progress } from './progress'
 import { Cell } from '@/packages/cell/cell'
@@ -120,7 +120,7 @@ const ProgressDemo = () => {
             color="linear-gradient(90deg, rgba(180,236,81,1) 0%,rgba(66,147,33,1) 100%)"
             strokeWidth="15"
           />
-          <Issue color="red" style={{ margin: '0 5px' }} />
+          <Tips color="red" style={{ margin: '0 5px' }} />
         </Cell>
         <h2>{translated.dynamicChange}</h2>
         <Cell.Group>
