@@ -297,7 +297,7 @@ const InternalUploader: ForwardRefRenderFunction<
 
       executeUpload(fileItem, index)
 
-      if (preview && file.type.includes('image')) {
+      if (preview && file.type?.includes('image')) {
         const reader = new FileReader()
         reader.onload = (event: ProgressEvent<FileReader>) => {
           fileItem.url = (event.target as FileReader).result as string
