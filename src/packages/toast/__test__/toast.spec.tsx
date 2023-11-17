@@ -113,7 +113,7 @@ test('event show-warn-toast', async () => {
   await waitFor(() => {
     fireEvent.click(getByTestId('emit-click'))
     expect(onClickToast).toBeCalled()
-    expect(document.querySelector('.nut-icon')).toHaveClass('nut-icon-Issue')
+    expect(document.querySelector('.nut-icon')).toHaveClass('nut-icon-Tips')
     expect(document.querySelector('.nut-toast-text')?.innerHTML).toBe('warn')
   })
 })

@@ -1,5 +1,5 @@
 import React from 'react'
-import { CircleClose, Fabulous } from '@nutui/icons-react'
+import { Failure, Fabulous } from '@nutui/icons-react'
 import Image from '@/packages/image'
 import { NoticeBar } from './noticebar'
 import { useTranslate } from '../../sites/assets/locale'
@@ -68,7 +68,7 @@ const NoticeBarDemo = () => {
           {translated.text}
         </NoticeBar>
         <br />
-        <NoticeBar closeable rightIcon={<CircleClose />} onClick={hello}>
+        <NoticeBar closeable rightIcon={<Failure />} onClick={hello}>
           {translated.text}
         </NoticeBar>
         <br />

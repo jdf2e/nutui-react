@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { CircleClose, Heart } from '@nutui/icons-react-taro'
+import { Failure, Heart } from '@nutui/icons-react-taro'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import '@/packages/popup/demo.scss'
@@ -192,7 +192,7 @@ const PopupDemo = () => {
         />
         <Popup
           closeable
-          closeIcon={<CircleClose size="12px" />}
+          closeIcon={<Failure size="12px" />}
           visible={showIcon}
           left="返回"
           title="我是标题"
@@ -263,7 +263,7 @@ const PopupDemo = () => {
         />
         <Popup
           closeable
-          closeIcon={<CircleClose width="12px" height="12px" />}
+          closeIcon={<Failure width="12px" height="12px" />}
           visible={showCloseIconStop}
           closeOnOverlayClick={false}
           style={{ height: '20%' }}
