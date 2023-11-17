@@ -1,5 +1,5 @@
 import React from 'react'
-import { CircleClose } from '@nutui/icons-react'
+import { Failure } from '@nutui/icons-react'
 import { Tag } from './tag'
 import Cell from '@/packages/cell'
 import { useTranslate } from '@/sites/assets/locale'
@@ -92,7 +92,7 @@ const TagDemo = () => {
             extra={
               <Tag
                 closeable
-                closeIcon={<CircleClose width={12} height={12} />}
+                closeIcon={<Failure width={12} height={12} />}
                 onClose={() => alert('Tag closed')}
                 type="primary"
               >

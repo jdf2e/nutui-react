@@ -4,17 +4,18 @@
   &.show {
     width: 40px;
     height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: $background-color3;
     color: $title-color;
     border: 1px solid $backtop-border-color;
     border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    &:active {
+      background: rgba(0, 0, 0, 0.1);
+    }
   }
-  &.show :active {
-    background: rgba(0, 0, 0, 0.1);
-  }
+
   &-main {
     transition: all 0.2s ease-in-out;
   }

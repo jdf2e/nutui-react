@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Refresh2, Retweet } from '@nutui/icons-react'
+import { Refresh, Retweet } from '@nutui/icons-react'
 import { useTranslate } from '@/sites/assets/locale'
 import { AvatarCropper } from './avatarcropper'
 import { Cell, Button, Avatar } from '@/packages/nutui.react'
@@ -49,7 +49,7 @@ const AvatarCropperDemo = () => {
               <Button type="danger" key="cancel">
                 取消
               </Button>,
-              <Refresh2 key="reset" />,
+              <Refresh key="reset" />,
               <Retweet key="rotate" />,
               <Button type="success" key="confirm">
                 确认
