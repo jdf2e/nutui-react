@@ -8,6 +8,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { Popup, PopupProps } from '@/packages/popup/popup'
+import { SafeArea } from '@/packages/safearea/safearea'
 import PickerPanel from './pickerpanel'
 import useRefs from '@/utils/use-refs'
 import { useConfig } from '@/packages/configprovider'
@@ -348,6 +349,7 @@ const InternalPicker: ForwardRefRenderFunction<
             })}
           </div>
         </div>
+        <SafeArea position="bottom" />
       </Popup>
     </>
   )
