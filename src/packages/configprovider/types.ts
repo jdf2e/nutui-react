@@ -129,7 +129,6 @@ export type NutCSSVariables =
   | 'nutuiPickerListHeight'
   | 'nutuiPickerItemHeight'
   | 'nutuiPickerItemTextColor'
-  | 'nutuiPickerItemActiveTextColor'
   | 'nutuiPickerItemTextFontSize'
   | 'nutuiPickerItemActiveLineBorder'
   | 'nutuiInputBorderBottom'
@@ -764,3 +763,4 @@ export type NutCSSVariables =
   | 'nutuiLoadingIconSize'
   | 'nutuiLoadingTextColor'
   | 'nutuiLoadingTextSize'
+  | 'nutuiSafeAreaMultiple'
