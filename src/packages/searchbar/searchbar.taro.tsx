@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import type { ChangeEvent, FocusEvent, MouseEvent } from 'react'
-import { CircleClose, Search } from '@nutui/icons-react-taro'
+import { Failure, Search } from '@nutui/icons-react-taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -170,7 +170,7 @@ export const SearchBar: FunctionComponent<
         className={`${classPrefix}__clear ${rightIn ? 'pos-right' : ''}`}
         onClick={(e: any) => clearaVal(e)}
       >
-        <CircleClose color="#555" size={12} />
+        <Failure color="#555" size={12} />
       </div>
     )
   }

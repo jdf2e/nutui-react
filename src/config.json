@@ -233,6 +233,17 @@
           "show": true,
           "taro": true,
           "author": "hx"
+        },
+        {
+          "version": "2.0.0",
+          "name": "SafeArea",
+          "type": "component",
+          "cName": "安全区",
+          "desc": "在全面屏下提供自适应的边距调整。",
+          "sort": 9,
+          "show": true,
+          "taro": true,
+          "author": "oasis"
         }
       ]
     },

@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import type { ChangeEvent, FocusEvent, MouseEvent } from 'react'
-import { CircleClose, Search } from '@nutui/icons-react'
+import { Failure, Search } from '@nutui/icons-react'
 import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -173,7 +173,7 @@ export const SearchBar: FunctionComponent<
         className={`${classPrefix}__clear ${rightIn ? 'pos-right' : ''}`}
         onClick={(e) => clearaVal(e)}
       >
-        <CircleClose color="#555" width={12} height={12} />
+        <Failure color="#555" width={12} height={12} />
       </div>
     )
   }

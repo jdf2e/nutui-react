@@ -1,7 +1,7 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
-import { CircleClose, Loading } from '@nutui/icons-react-taro'
+import { Failure, Loading } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Image, Cell, Row, Col } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
@@ -109,7 +109,7 @@ const ImageDemo = () => {
                 src="https://x"
                 width="80"
                 height="80"
-                error={<CircleClose />}
+                error={<Failure />}
               />
               <View style={{ textAlign: 'left' }}>{translated.custom}</View>
             </Col>

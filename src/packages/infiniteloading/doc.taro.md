@@ -86,7 +86,7 @@ const App = () => {
             pullingText={
               <>
                 <Jd />
-                <span style={{ fontSize: '10px' }}>松开刷新</span>
+                <span style={{ fontSize: '10px' }}>松手刷新</span>
               </>
             }
             loadingText="加载中···"
@@ -127,7 +127,7 @@ export default App
 | loadMoreText | “没有更多数”据展示文案 | `string` | `哎呀，这里是底部了啦` |
 | pullRefresh | 是否开启下拉刷新 | `boolean` | `false` |
 | pullingText | 下拉刷新提示文案 | `ReactNode` | `松手刷新` |
-| loadingText | 上拉加载提示文案 | `ReactNode` | `加载中...` |
+| loadingText | 上拉加载提示文案 | `ReactNode` | `刷新中` |
 | onRefresh | 下拉刷新事件回调 | `(param: () => void) => void` | `-` |
 | onLoadMore | 继续加载的回调函数 | `(param: () => void) => void` | `-` |
 | onScroll | 实时监听滚动高度 | `(param: number) => void` | `-` |

@@ -72,7 +72,7 @@ export const InfiniteLoading: FunctionComponent<
   const y = useRef(0)
   const distance = useRef(0)
 
-  const classes = classNames(className, classPrefix)
+  const classes = classNames(classPrefix, className)
 
   useEffect(() => {
     if (target && document.getElementById(target)) {
@@ -85,7 +85,7 @@ export const InfiniteLoading: FunctionComponent<
     return () => {
       scrollEl.current.removeEventListener('scroll', handleScroll, capture)
     }
-  }, [hasMore, isInfiniting])
+  }, [hasMore, isInfiniting, onLoadMore])
 
   useEffect(() => {
     const element = scroller.current as HTMLDivElement

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { Refresh2, Retweet } from '@nutui/icons-react-taro'
+import { Refresh, Retweet } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { AvatarCropper } from './avatarcropper.taro'
 import Header from '@/sites/components/header'
@@ -56,7 +56,7 @@ const AvatarCropperDemo = () => {
               <Button type="danger" key="cancel">
                 取消
               </Button>,
-              <Refresh2 key="reset" />,
+              <Refresh key="reset" />,
               <Retweet key="rotate" />,
               <Button type="success" key="confirm">
                 确认

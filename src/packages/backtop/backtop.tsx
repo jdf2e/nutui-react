@@ -110,16 +110,19 @@ export const BackTop: FunctionComponent<
       }
     )
   }
+
   // 监听事件
   function addEventListener() {
     scrollEl.current?.addEventListener('scroll', scrollListener, false)
     scrollEl.current?.addEventListener('resize', scrollListener, false)
   }
+
   // 移除监听事件
   function removeEventListener() {
     scrollEl.current?.removeEventListener('scroll', scrollListener, false)
     scrollEl.current?.removeEventListener('resize', scrollListener, false)
   }
+
   // 返回顶部点击事件
   const goTop = (e: MouseEvent<HTMLDivElement>) => {
     onClick && onClick(e)
@@ -141,9 +144,13 @@ export const BackTop: FunctionComponent<
 
   return (
     <div
-      className={classNames(classPrefix, className, {
-        show: backTop,
-      })}
+      className={classNames(
+        classPrefix,
+        {
+          show: backTop,
+        },
+        className
+      )}
       style={styles}
       onClick={(e) => {
         goTop(e)

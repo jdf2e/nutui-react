@@ -4,6 +4,7 @@ import Avatar from '@/packages/avatar'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 type avatarShape = 'round' | 'square'
+
 export interface SkeletonProps extends BasicComponent {
   animated: boolean
   rows: number
@@ -13,6 +14,7 @@ export interface SkeletonProps extends BasicComponent {
   visible: boolean
   avatarShape: avatarShape
 }
+
 const defaultProps = {
   ...ComponentDefaults,
   rows: 1,
@@ -41,7 +43,7 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
   }
 
   const classPrefix = 'nut-skeleton'
-  const classes = classNames(className, classPrefix)
+  const classes = classNames(classPrefix, className)
   const avatarClass = classNames({
     avatar: true,
     [`avatar--${avatarShape}`]: avatarShape,

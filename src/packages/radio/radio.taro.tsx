@@ -149,9 +149,13 @@ export const Radio: FunctionComponent<
 
   return (
     <div
-      className={classNames(classPrefix, className, {
-        [`${classPrefix}--reverse`]: labelPosition === 'left',
-      })}
+      className={classNames(
+        classPrefix,
+        {
+          [`${classPrefix}--reverse`]: labelPosition === 'left',
+        },
+        className
+      )}
       style={style}
       onClick={handleClick}
       {...rest}

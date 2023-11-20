@@ -56,9 +56,13 @@ const InternalBarrage: ForwardRefRenderFunction<
   const timeId = useRef(new Date().getTime())
   const timer = useRef(0)
 
-  const classes = classNames(className, classPrefix, {
-    [`${classPrefix}__body${timeId.current}`]: true,
-  })
+  const classes = classNames(
+    classPrefix,
+    {
+      [`${classPrefix}__body${timeId.current}`]: true,
+    },
+    className
+  )
 
   useImperativeHandle(ref, () => ({
     add: (word: string) => {

@@ -85,9 +85,13 @@ export const RadioGroup = React.forwardRef(
         }}
       >
         <div
-          className={classNames(classPrefix, className, {
-            [`${classPrefix}--${props.direction}`]: props.direction,
-          })}
+          className={classNames(
+            classPrefix,
+            {
+              [`${classPrefix}--${props.direction}`]: props.direction,
+            },
+            className
+          )}
           {...rest}
         >
           {options?.length ? renderOptionsChildren() : children}

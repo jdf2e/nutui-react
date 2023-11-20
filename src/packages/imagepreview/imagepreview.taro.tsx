@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import Taro from '@tarojs/taro'
 import { Video as TaroVideo } from '@tarojs/components'
+import classNames from 'classnames'
 import Popup from '@/packages/popup/index.taro'
 import Image from '@/packages/image/index.taro'
 import Swiper from '@/packages/swiper/index.taro'
@@ -66,6 +67,8 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   props
 ) => {
   const {
+    className,
+    style,
     images,
     videos,
     visible,
@@ -252,7 +255,8 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
       onClick={onCloseInner}
     >
       <div
-        className={classPrefix}
+        className={classNames(classPrefix, className)}
+        style={style}
         ref={ref}
         onClick={closeOnImg}
         onTouchStart={onTouchStart as any}

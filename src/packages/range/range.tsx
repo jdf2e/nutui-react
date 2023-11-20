@@ -114,9 +114,13 @@ export const Range: FunctionComponent<
     [`${classPrefix}-vertical`]: vertical,
   })
 
-  const containerClasses = classNames(`${classPrefix}-container`, className, {
-    [`${classPrefix}-container-vertical`]: vertical,
-  })
+  const containerClasses = classNames(
+    `${classPrefix}-container`,
+    {
+      [`${classPrefix}-container-vertical`]: vertical,
+    },
+    className
+  )
 
   const markClassName = useCallback(
     (mark: any) => {

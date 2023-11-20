@@ -1,6 +1,6 @@
 {
-  "name": "@nutui/nutui-react-taro",
-  "version": "2.0.24",
+  "name": "@nutui/nutui-react",
+  "version": "2.1.0",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/esm/nutui-react.es.js",
@@ -163,7 +163,7 @@
     "lzutf8": "0.6.3",
     "map-stream": "0.0.7",
     "markdown-it": "^13.0.1",
-    "marked": "^9.0.0",
+    "marked": "^10.0.0",
     "mobx": "^6.9.0",
     "mobx-react-lite": "^4.0.0",
     "postcss": "^8.4.21",

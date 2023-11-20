@@ -81,8 +81,8 @@ export const Ellipsis: FunctionComponent<
 
   const classes = classNames(
     classPrefix,
-    className,
-    width ? `${classPrefix}-width` : ''
+    width ? `${classPrefix}-width` : '',
+    className
   )
 
   const init = () => {

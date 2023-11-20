@@ -39,11 +39,11 @@ export const Step: FunctionComponent<
 
   const classPrefix = `nut-step`
   const classes = classNames(
+    classPrefix,
     {
       [`${classPrefix}-${getCurrentStatus()}`]: true,
     },
-    className,
-    classPrefix
+    className
   )
 
   const renderIconClass = () => {
