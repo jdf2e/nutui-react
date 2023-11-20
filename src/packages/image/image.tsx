@@ -124,6 +124,7 @@ export const Image: FunctionComponent<
     overflow: radius !== undefined && radius !== null ? 'hidden' : '',
     borderRadius:
       radius !== undefined && radius !== null ? pxCheck(radius) : '',
+    ...style,
   }
 
   const imgStyle: any = {
