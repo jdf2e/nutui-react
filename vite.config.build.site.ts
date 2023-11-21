@@ -14,7 +14,7 @@ if (projectID) {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/h5/react/2x',
+  base: `/h5/react/${projectID === 'jmapp' ? 'jm' : '2x'}`,
   resolve: {
     alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
   },
@@ -46,7 +46,7 @@ export default defineConfig({
   plugins: [reactRefresh()],
   build: {
     target: 'es2015',
-    outDir: './dist/2x/',
+    outDir: `./dist/${projectID === 'jmapp' ? 'jm' : '2x'}/`,
     cssCodeSplit: true,
     rollupOptions: {
       input: {
