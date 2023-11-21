@@ -150,6 +150,7 @@ export default App;
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | visible | Whether the dialog box is visible | `boolean` | `-` |
+| header | Customize the header, but it will not be displayed in NULL | `ReactNode` | `-` |
 | title | title | `ReactNode` | `-` |
 | content | The content of the dialog box is suitable for function calls | `ReactNode` | `-` |
 | footer | Customize the notes, but it will not be displayed in NULL | `ReactNode` | `-` |
@@ -207,20 +208,16 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-dialog-width | dialog width | `296px` |
-| \--nutui-dialog-header-font-weight | dialog header font weight | `normal` |
-| \--nutui-dialog-header-color | dialog header color | `rgba(38, 38, 38, 1)` |
-| \--nutui-dialog-footer-justify-content | dialog footer justify content | `space-around` |
+| \--nutui-dialog-z-index | dialog z index | `$mask-content-z-index` |
+| \--nutui-dialog-width | dialog width | `295px` |
+| \--nutui-dialog-padding | dialog padding | `24px` |
 | \--nutui-dialog-min-height | dialog min height | `156px` |
-| \--nutui-dialog-padding | dialog padding | `28px 24px 16px 24px` |
-| \--nutui-dialog-header-height | dialog header height | `20px` |
-| \--nutui-dialog-content-margin | dialog content margin | `20px 0` |
+| \--nutui-dialog-border-radius | dialog border radius | `16px` |
+| \--nutui-dialog-content-margin | dialog content margin | `5px 0 24px 0` |
 | \--nutui-dialog-content-max-height | dialog content max height | `268px` |
-| \--nutui-dialog-content-line-height | dialog content line height | `16px` |
-| \--nutui-dialog-overlay-background-color | dialog overlay background color | `$mask-color` |
-| \--nutui-dialog-outer-z-index | dialog outer z index | `$mask-content-z-index` |
-| \--nutui-dialog-outer-border-radius | dialog outer border radius | `20px` |
-| \--nutui-dialog-vertical-footer-ok-margin-top | dialog vertical footer confirm button margin top | `10px` |
-| \--nutui-dialog-footer-button-min-width | dialog footer button min width | `100px` |
-| \--nutui-dialog-footer-cancel-margin-right | dialog footer cancel button's margin right | `20px` |
+| \--nutui-dialog-content-line-height | dialog content line height | `20px` |
+| \--nutui-dialog-content-text-align | dialog content text align | `left` |
+| \--nutui-dialog-footer-justify-content | dialog footer justify content | `space-around` |
+| \--nutui-dialog-footer-button-min-width | dialog footer button min width | `117px` |
+| \--nutui-dialog-footer-cancel-margin-right | dialog footer cancel button's margin right | `12px` |
 | \--nutui-dialog-footer-ok-max-width | dialog footer confirm button's max width | `128px` |
