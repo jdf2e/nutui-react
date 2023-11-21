@@ -2,7 +2,9 @@
 
 ## 介紹
 
-模態對話框，在浮層中顯示，引導用戶進行相關操作，常用於消息提示、消息確認，或在當前頁面內完成特定的交互操作。 彈出框組件支持函數調用和組件調用兩種方式。
+模態對話框，在浮層中顯示，引導用戶進行相關操作，常用於消息提示、消息確認，或在當前頁面內完成特定的交互操作。
+
+彈出框組件支持函數調用和組件調用兩種方式。
 
 ## 安裝
 
@@ -24,41 +26,43 @@ const App = () => {
   return (
     <>
       <Cell title="基礎彈框" onClick={() => {
-        Dialog.alert({
+          Dialog.alert({
             className: 'dialog-func',
             title: '基礎彈框',
             content: '支持函數調用和組件調用兩種方式。',
-        });
+          });
         }} />
-      <Cell title="無標題彈框" onClick={() => {
-            Dialog.alert({
+      <Cell title="無標題彈框、不鎖背景滾動" onClick={() => {
+          Dialog.alert({
             content: '無標題彈框',
             confirmText: '確認',
             cancelText: '取消',
             lockScroll: false
-        });
-        }} />
+          });
+        }} 
+      />
       <Cell title="提示彈框" onClick={() => {
-        Dialog.alert({
-            title: '溫馨提示',
-            content: '支持函數調用和組件調用兩種方式。',
-            hideCancelButton: true,
-            confirmText: '確認'
-        });
-        }} />
-      <Cell title="底部按鈕 垂直調用" onClick={() => {
-        Dialog.alert({
-            title: '溫馨提示',
+          Dialog.alert({
+              title: '提示',
+              content: '支持函數調用和組件調用兩種方式。',
+              hideCancelButton: true,
+              confirmText: '確認'
+          });
+        }} 
+      />
+      <Cell title="底部按鈕 垂直布局 使用" onClick={() => {
+          Dialog.alert({
+            title: '提示',
             content: '支持函數調用和組件調用兩種方式。',
             footerDirection: 'vertical',
             confirmText: '確認',
             cancelText: '取消',
-        });
+          });
         }} 
       />
-      <Cell title="打开弹框 3s 后调用关闭方法" onClick={() => {
+      <Cell title="打開彈框 3s 後調用關閉方法" onClick={() => {
           const dialog = Dialog.confirm({
-            content: '打开弹框 3s 后调用关闭方法',
+            content: '打開彈框 3s 後調用關閉方法',
             confirmText: '確認',
             cancelText: '取消',
           });
@@ -67,13 +71,13 @@ const App = () => {
           }, 3000);
         }} 
       />
-      <Cell title="打开弹框 3s 后调用关闭方法" onClick={() => {
+      <Cell title="打開彈框 3s 後調用關閉方法" onClick={() => {
           const dialog = Dialog.confirm({
-            content: '打开弹框 3s 后调用关闭方法',
+            content: '打開彈框 3s 後調用關閉方法',
           });
           setTimeout(() => {
             dialog.update({
-              content: '打开弹框 3s 后调用关闭方法 我是更新',
+              content: '打開彈框 3s 後調用關閉方法 我是更新',
             })
           }, 3000);
         }} 
@@ -86,61 +90,95 @@ export default App;
 
 :::
 
-### 标签式使用
+### 標簽式使用
 
 :::demo
 
 ```tsx
 import React, {useState} from "react";
-import { Cell,Dialog } from '@nutui/nutui-react';
+import { Cell,Dialog,Image } from '@nutui/nutui-react';
 
 const App = () => {
   const [visible1, setVisible1] = useState(false);
   const [visible2, setVisible2] = useState(false);
+  const [visible3, setVisible3] = useState(false);
   return (
     <>
-    <Cell title="基礎彈框" onClick={() => setVisible1(true)} />
-    <Dialog 
-        title="标签式使用"
+      <Cell title="基礎彈框" onClick={() => setVisible1(true)} />
+      <Dialog 
+        title="標簽式使用"
         visible={visible1}
         onConfirm={() => setVisible1(false)}
         onCancel={() => setVisible1(false)}
-    >
+      >
         如果需要在彈窗內嵌入組件或其他自定義內容，可以使用組件調用的方式。
-    </Dialog>
-    <Cell title="底部按鈕 垂直調用" onClick={() => setVisible2(true)} />
-    <Dialog 
-        title="标签式使用"
+      </Dialog>
+      <Cell title="底部按鈕 垂直布局 使用" onClick={() => setVisible2(true)} />
+      <Dialog 
+        title="標簽式使用"
         visible={visible2}
         footerDirection='vertical'
         onConfirm={() => setVisible2(false)}
         onCancel={() => setVisible2(false)}
-    >
+      >
         如果需要在彈窗內嵌入組件或其他自定義內容，可以使用組件調用的方式。
-    </Dialog>
-    <Cell title="底部 Footer 为 Button 时，点击遮罩不关闭" onClick={() => setVisible2(true)} />
-    <Dialog 
-      title="底部 Footer 为 Button 时，点击遮罩不关闭"
-      visible={visible2}
-      lockScroll={false}
-      footerDirection='vertical'
-      closeOnOverlayClick={false}
-      onConfirm={() => setVisible2(false)}
-      onCancel={() => setVisible2(false)}
-    >
-      如果需要在彈窗內嵌入組件或其他自定義內容，可以使用組件調用的方式。
-    </Dialog>
-    <Cell title="无底部 Footer 区域" onClick={() => setVisible2(true)} />
-    <Dialog 
-      title="无底部 Footer 区域"
-      visible={visible2}
-      footer={null}
-      onClose={() => {
-        setVisible2(false)
-      }}
-    >
-      如果需要在彈窗內嵌入組件或其他自定義內容，可以使用組件調用的方式。
-    </Dialog>
+      </Dialog>
+      <Cell title="底部 Footer 為 Button 時，點擊遮罩不關閉" onClick={() => setVisible2(true)} />
+      <Dialog 
+        title="底部 Footer 為 Button 時，點擊遮罩不關閉"
+        visible={visible2}
+        lockScroll={false}
+        footerDirection='vertical'
+        closeOnOverlayClick={false}
+        onConfirm={() => setVisible2(false)}
+        onCancel={() => setVisible2(false)}
+      >
+        如果需要在彈窗內嵌入組件或其他自定義內容，可以使用組件調用的方式。
+      </Dialog>
+      <Cell title="無底部 Footer 區域" onClick={() => setVisible2(true)} />
+      <Dialog 
+        title="無底部 Footer 區域"
+        visible={visible2}
+        footer={null}
+        onClose={() => {
+          setVisible2(false)
+        }}
+      >
+        如果需要在彈窗內嵌入組件或其他自定義內容，可以使用組件調用的方式。
+      </Dialog>
+      <Cell title="點擊取消時，攔截" onClick={() => setVisible3(true)} />
+      <Dialog 
+        title="點擊取消時，攔截"
+        visible={visible3}
+        closeOnOverlayClick={false}
+        beforeCancel={() => {
+          console.log('stop close')
+          return false
+        }}
+        onClose={() => {
+          setVisible3(false)
+        }}
+      >
+        如果需要在彈窗內嵌入組件或其他自定義內容，可以使用組件調用的方式。
+      </Dialog>
+      <Cell
+        title="頂部帶插圖"
+        onClick={() => {
+          setVisible7(true)
+        }}
+      />
+      <Dialog
+        className="test-dialog"
+        title="頂部帶插圖"
+        visible={visible7}
+        header={
+          <Image src="https://img13.360buyimg.com/imagetools/jfs/t1/219330/27/30033/11784/6544af3fF5c0fd98f/64c41bb05ef09189.png" />
+        }
+        onConfirm={() => setVisible7(false)}
+        onCancel={() => setVisible7(false)}
+      >
+        如果需要在彈窗內嵌入組件或其他自定義內容，可以使用組件調用的方式。
+      </Dialog>
     </>
   )
 }
@@ -156,7 +194,7 @@ export default App;
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | visible | 對話框是否可見 | `boolean` | `-` |
-| header | 自定義頁頭，傳入 null 则不显示 | `ReactNode` | `-` |
+| header | 自定義頁頭，傳入 null 則不顯示 | `ReactNode` | `-` |
 | title | 標題 | `ReactNode` | `-` |
 | content | 對話框的內容，適用於函數式調用 | `ReactNode` | `-` |
 | footer | 自定義頁腳，傳入 null 則不顯示 | `ReactNode` | `-` |
@@ -169,16 +207,15 @@ export default App;
 | closeOnOverlayClick | 點擊蒙層是否關閉對話框 | `boolean` | `true` |
 | footerDirection | 使用橫縱方向 可選值 horizontal、vertical | `string` | `horizontal` |
 | lockScroll | 背景是否鎖定 | `boolean` | `true` |
-| beforeCancel | 取消前回调，点击取消时触发 | `() => boolean` | `-` |
-| beforeClose | 关闭前回调 | `() => boolean` | `-` |
+| beforeCancel | 取消前回調，點擊取消時觸發 | `() => boolean` | `-` |
+| beforeClose | 關閉前回調 | `() => boolean` | `-` |
 | onConfirm | 確定按鈕回調 | `(e?: MouseEvent) => Promise \| void` | `-` |
 | onCancel | 取消按鈕回調 | `() => void` | `-` |
 | onClose | 關閉回調，任何情況關閉彈窗都會觸發 | `() => void` | `-` |
 | onClick | 點擊自身回調 | `() => void` | `-` |
-| onOverlayClick | 點擊蒙層触发 | `() => void` | `-` |
+| onOverlayClick | 點擊蒙層觸發 | `() => void` | `-` |
 
-
-对于**指令式**创建出来的 Dialog，**并不会感知父组件的重渲染和其中 state 的更新**，因此下面这种写法是错误的：
+對於**指令式**創建出來的 Dialog，**並不會感知父組件的重渲染和其中 state 的更新**，因此下面這種寫法是錯誤的：
 
 ```tsx
 import React from 'react'
@@ -190,8 +227,8 @@ export default function App() {
     return Dialog.confirm({
       content: (
           <Input
-            placeholder="请输入验证码"
-            value={captcha} // App 中 captcha 的更新是不会传递到 Dialog 中的
+            placeholder="請輸入驗證碼"
+            value={captcha} // App 中 captcha 的更新是不會傳遞到 Dialog 中的
             onChange={(v) => {
               setCaptcha(v)
             }}
@@ -207,7 +244,7 @@ export default function App() {
 }
 ```
 
-## 主題定制
+## 主題定製
 
 ### 樣式變量
 
@@ -224,9 +261,9 @@ export default function App() {
 | \--nutui-dialog-content-max-height | 對話框內容最大高度 | `268px` |
 | \--nutui-dialog-content-line-height | 對話框內容行高 | `20px` |
 | \--nutui-dialog-content-text-align | 對話框內容文本對齊方式 | `left` |
-| \--nutui-dialog-header-font-weight | 对话框标题字重 | `normal` |
-| \--nutui-dialog-footer-justify-content | 對話框底部按鈕排佈 | `space-around` |
+| \--nutui-dialog-header-font-weight | 對話框標題字重 | `normal` |
+| \--nutui-dialog-footer-justify-content | 對話框底部按鈕排布 | `space-around` |
 | \--nutui-dialog-footer-button-min-width | 對話框底部按鈕最小寬度 | `117px` |
 | \--nutui-dialog-footer-cancel-margin-right | 對話框取消按鈕的margin-right | `12px` |
 | \--nutui-dialog-footer-ok-max-width | 對話框確認按鈕的最大寬度 | `128px` |
-| \--nutui-dialog-vertical-footer-ok-margin-top | 对话框底部按钮纵向排布时的margin值 | `5px` |
+| \--nutui-dialog-vertical-footer-ok-margin-top | 對話框底部按鈕縱向排布時的margin值 | `5px` |

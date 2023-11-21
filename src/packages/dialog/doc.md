@@ -96,7 +96,7 @@ export default App;
 
 ```tsx
 import React, {useState} from "react";
-import { Cell,Dialog } from '@nutui/nutui-react';
+import { Cell,Dialog,Image } from '@nutui/nutui-react';
 
 const App = () => {
   const [visible1, setVisible1] = useState(false);
@@ -104,63 +104,81 @@ const App = () => {
   const [visible3, setVisible3] = useState(false);
   return (
     <>
-    <Cell title="基础弹框" onClick={() => setVisible1(true)} />
-    <Dialog 
-      title="标签式使用"
-      visible={visible1}
-      onConfirm={() => setVisible1(false)}
-      onCancel={() => setVisible1(false)}
-    >
-      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
-    </Dialog>
-    <Cell title="底部按钮 垂直布局 使用" onClick={() => setVisible2(true)} />
-    <Dialog 
-      title="标签式使用"
-      visible={visible2}
-      footerDirection='vertical'
-      onConfirm={() => setVisible2(false)}
-      onCancel={() => setVisible2(false)}
-    >
-      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
-    </Dialog>
-    <Cell title="底部 Footer 为 Button 时，点击遮罩不关闭" onClick={() => setVisible2(true)} />
-    <Dialog 
-      title="底部 Footer 为 Button 时，点击遮罩不关闭"
-      visible={visible2}
-      lockScroll={false}
-      footerDirection='vertical'
-      closeOnOverlayClick={false}
-      onConfirm={() => setVisible2(false)}
-      onCancel={() => setVisible2(false)}
-    >
-      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
-    </Dialog>
-    <Cell title="无底部 Footer 区域" onClick={() => setVisible2(true)} />
-    <Dialog 
-      title="无底部 Footer 区域"
-      visible={visible2}
-      footer={null}
-      onClose={() => {
-        setVisible2(false)
-      }}
-    >
-      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
-    </Dialog>
-    <Cell title="点击取消时，拦截" onClick={() => setVisible3(true)} />
-    <Dialog 
-      title="点击取消时，拦截"
-      visible={visible3}
-      closeOnOverlayClick={false}
-      beforeCancel={() => {
-        console.log('stop close')
-        return false
-      }}
-      onClose={() => {
-        setVisible3(false)
-      }}
-    >
-      如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
-    </Dialog>
+      <Cell title="基础弹框" onClick={() => setVisible1(true)} />
+      <Dialog 
+        title="标签式使用"
+        visible={visible1}
+        onConfirm={() => setVisible1(false)}
+        onCancel={() => setVisible1(false)}
+      >
+        如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+      </Dialog>
+      <Cell title="底部按钮 垂直布局 使用" onClick={() => setVisible2(true)} />
+      <Dialog 
+        title="标签式使用"
+        visible={visible2}
+        footerDirection='vertical'
+        onConfirm={() => setVisible2(false)}
+        onCancel={() => setVisible2(false)}
+      >
+        如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+      </Dialog>
+      <Cell title="底部 Footer 为 Button 时，点击遮罩不关闭" onClick={() => setVisible2(true)} />
+      <Dialog 
+        title="底部 Footer 为 Button 时，点击遮罩不关闭"
+        visible={visible2}
+        lockScroll={false}
+        footerDirection='vertical'
+        closeOnOverlayClick={false}
+        onConfirm={() => setVisible2(false)}
+        onCancel={() => setVisible2(false)}
+      >
+        如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+      </Dialog>
+      <Cell title="无底部 Footer 区域" onClick={() => setVisible2(true)} />
+      <Dialog 
+        title="无底部 Footer 区域"
+        visible={visible2}
+        footer={null}
+        onClose={() => {
+          setVisible2(false)
+        }}
+      >
+        如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+      </Dialog>
+      <Cell title="点击取消时，拦截" onClick={() => setVisible3(true)} />
+      <Dialog 
+        title="点击取消时，拦截"
+        visible={visible3}
+        closeOnOverlayClick={false}
+        beforeCancel={() => {
+          console.log('stop close')
+          return false
+        }}
+        onClose={() => {
+          setVisible3(false)
+        }}
+      >
+        如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+      </Dialog>
+      <Cell
+        title="顶部带插图"
+        onClick={() => {
+          setVisible7(true)
+        }}
+      />
+      <Dialog
+        className="test-dialog"
+        title="顶部带插图"
+        visible={visible7}
+        header={
+          <Image src="https://img13.360buyimg.com/imagetools/jfs/t1/219330/27/30033/11784/6544af3fF5c0fd98f/64c41bb05ef09189.png" />
+        }
+        onConfirm={() => setVisible7(false)}
+        onCancel={() => setVisible7(false)}
+      >
+        如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+      </Dialog>
     </>
   )
 }
