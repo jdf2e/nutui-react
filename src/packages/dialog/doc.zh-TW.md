@@ -224,7 +224,9 @@ export default function App() {
 | \--nutui-dialog-content-max-height | 對話框內容最大高度 | `268px` |
 | \--nutui-dialog-content-line-height | 對話框內容行高 | `20px` |
 | \--nutui-dialog-content-text-align | 對話框內容文本對齊方式 | `left` |
+| \--nutui-dialog-header-font-weight | 对话框标题字重 | `normal` |
 | \--nutui-dialog-footer-justify-content | 對話框底部按鈕排佈 | `space-around` |
 | \--nutui-dialog-footer-button-min-width | 對話框底部按鈕最小寬度 | `117px` |
 | \--nutui-dialog-footer-cancel-margin-right | 對話框取消按鈕的margin-right | `12px` |
 | \--nutui-dialog-footer-ok-max-width | 對話框確認按鈕的最大寬度 | `128px` |
+| \--nutui-dialog-vertical-footer-ok-margin-top | 对话框底部按钮纵向排布时的margin值 | `5px` |

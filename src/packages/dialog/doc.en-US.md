@@ -217,7 +217,9 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-dialog-content-max-height | dialog content max height | `268px` |
 | \--nutui-dialog-content-line-height | dialog content line height | `20px` |
 | \--nutui-dialog-content-text-align | dialog content text align | `left` |
+| \--nutui-dialog-header-font-weight | dialog header font weight | `normal` |
 | \--nutui-dialog-footer-justify-content | dialog footer justify content | `space-around` |
 | \--nutui-dialog-footer-button-min-width | dialog footer button min width | `117px` |
 | \--nutui-dialog-footer-cancel-margin-right | dialog footer cancel button's margin right | `12px` |
 | \--nutui-dialog-footer-ok-max-width | dialog footer confirm button's max width | `128px` |
+| \--nutui-dialog-vertical-footer-ok-margin-top | dialog vertical footer confirm button margin top | `5px` |
