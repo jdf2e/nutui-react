@@ -306,7 +306,8 @@ const InternalUploader: ForwardRefRenderFunction<
         }
         reader.readAsDataURL(file)
       } else {
-        setFileList([...fileList, fileItem])
+        fileList.push(fileItem)
+        setFileList([...fileList])
       }
     })
   }
