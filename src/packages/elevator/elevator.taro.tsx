@@ -158,12 +158,12 @@ export const Elevator: FunctionComponent<
   }
 
   const touchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    scrolling.current = true
-    setScrollStart(true)
     const index = Number(getData(e.target as HTMLElement))
     const firstTouch = e.touches[0]
+    scrolling.current = true
     touchState.current.y1 = firstTouch.pageY
     state.current.anchorIndex = +index
+    setScrollStart(true)
     setCodeIndex(index)
     scrollTo(index)
   }
