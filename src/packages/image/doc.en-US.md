@@ -170,6 +170,43 @@ export default App;
 
 :::
 
+
+### Image + text Mode
+
+`Image` and text
+
+:::demo
+
+```tsx
+import React from "react";
+import { Image } from '@nutui/nutui-react';
+
+const App = () => {
+  return <>
+    <Image
+      src="http://m.360buyimg.com/babel/s181x181_jfs/t1/210178/19/10205/31538/619bbcd9E5071aed5/8e1b7eb632aeed49.png"
+      width="30"
+      height="30"
+      style={{ marginRight: '10px' }}
+      onError={() => {
+        console.log('image error')
+      }}
+    />
+    <div
+      style={{
+        width: '220px',
+      }}
+    >
+      Chiffon, 2021, spring, the new easy-to-wear blouse
+    </div>
+  </>
+}
+export default App;
+```
+
+:::
+
+
 ### Image LazyLoad
 
 The Image component provides lazy loading of images, which can be realized by configuring `isLazy`, which is not enabled by default.

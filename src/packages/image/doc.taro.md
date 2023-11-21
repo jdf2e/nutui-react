@@ -134,6 +134,44 @@ export default App;
 
 :::
 
+
+
+### Image + text 模式
+
+`Image` 组件和文本组合。
+
+:::demo
+
+```tsx
+import React from "react";
+import { Image } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  return <>
+    <Image
+      src="http://m.360buyimg.com/babel/s181x181_jfs/t1/210178/19/10205/31538/619bbcd9E5071aed5/8e1b7eb632aeed49.png"
+      width="30"
+      height="30"
+      style={{ marginRight: '10px' }}
+      onError={() => {
+        console.log('image error')
+      }}
+    />
+    <div
+      style={{
+        width: '220px',
+      }}
+    >
+      雪纺衫女2021年春季新款洋气轻熟上衣
+    </div>
+  </>
+}
+export default App;
+```
+
+:::
+
+
 ### 填充模式
 
 :::demo
