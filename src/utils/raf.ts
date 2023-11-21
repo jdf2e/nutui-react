@@ -1,5 +1,6 @@
 export const inBrowser = typeof window !== 'undefined'
 
+// 防频
 function requestAniFrame() {
   if (typeof window !== 'undefined') {
     const _window = window as any
@@ -11,7 +12,7 @@ function requestAniFrame() {
       }
     )
   }
-  return function (callback: any) {
+  return (callback: any) => {
     setTimeout(callback, 1000 / 60)
   }
 }

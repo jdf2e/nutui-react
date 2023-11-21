@@ -7,8 +7,8 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import requestAniFrame from '@/utils/raf'
 
 export interface InfiniteLoadingProps extends BasicComponent {
   hasMore: boolean
@@ -108,7 +108,7 @@ export const InfiniteLoading: FunctionComponent<
   }
 
   const handleScroll = () => {
-    requestAniFrame()(() => {
+    requestAniFrame(() => {
       if (!isScrollAtBottom() || !hasMore || isInfiniting) {
         return false
       }
@@ -173,17 +173,6 @@ export const InfiniteLoading: FunctionComponent<
     } else {
       onRefresh && onRefresh(refreshDone)
     }
-  }
-
-  const requestAniFrame = () => {
-    return (
-      window.requestAnimationFrame ||
-      window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame ||
-      function fn(callback) {
-        window.setTimeout(callback, 1000 / 60)
-      }
-    )
   }
 
   const getWindowScrollTop = () => {

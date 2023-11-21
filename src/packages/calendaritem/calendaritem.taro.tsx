@@ -448,7 +448,6 @@ export const CalendarItem = React.forwardRef<
         nextTick(() => setScrollWithAnimation(true))
       }
     })
-
     setAvgHeight(Math.floor(containerHeight / (monthNum + 1)))
   }
 
