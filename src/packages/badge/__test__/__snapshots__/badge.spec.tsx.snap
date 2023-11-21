@@ -22,11 +22,6 @@ exports[`should match custom icon 1`] = `
         />
       </svg>
     </div>
-    <div />
-    <div
-      class="nut-badge__content nut-badge__sup"
-      style="top: 0px; right: 5px;"
-    />
   </div>
 </DocumentFragment>
 `;
@@ -36,10 +31,9 @@ exports[`should match snapshot 1`] = `
   <div
     class="nut-badge"
   >
-    <div />
     <div
-      class="nut-badge__content nut-badge__sup"
-      style="top: 0px; right: 5px;"
+      class="nut-badge__content nut-badge__sup nut-badge__one"
+      style="top: 4px; right: 8px;"
     >
       8
     </div>
