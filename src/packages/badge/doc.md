@@ -271,6 +271,7 @@ export default App;
 | \--nutui-badge-min-width | badge 最小宽度 | `5px` |
 | \--nutui-badge-padding | badge 的padding值 | `0 5px` |
 | \--nutui-badge-icon-padding | badge 为自定义icon时 的 padding值 | `2px` |
+| \--nutui-badge-icon-size | badge 为自定义icon时 的 size | `12px` |
 | \--nutui-badge-content-transform | badge 内容位置 | `translateY(-50%) translateX(100%)` |
 | \--nutui-badge-z-index | badge 自定义icon时的z-index | `1` |
 | \--nutui-badge-dot-width | badge 为圆点时的宽度、高度、圆角 | `7px` |
