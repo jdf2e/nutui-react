@@ -1,5 +1,6 @@
 export const inBrowser = typeof window !== 'undefined'
 
+// 防频
 function requestAniFrame() {
   if (typeof window !== 'undefined') {
     const _window = window as any

@@ -1,3 +1,23 @@
+# v2.1.0
+`2023-11-17`
+
+* :sparkles: feat(Button): size 增加可选值 mini (#1617) @Eiinu
+* :sparkles: feat(calendarcard): 增加自定义 className (#1636) @Eiinu
+* :sparkles: feat(infiniteLoading): 通过scrolltolower触发加载事件 (#1633) @oasis-cloud
+* :sparkles: feat(safearea): 新增安全区组件 (#1642) @oasis-cloud
+* :sparkles: feat(toast): 通过 config 方法设置内容区的className (#1632) @oasis-cloud
+* :sparkles: feat: uploader taro h5 支持 video (#1605) @xiaoyatong
+* :bug: fix(infiniteloading): onloadmore 无法获取最新的 state (#1644) @oasis-cloud
+* :bug: fix: change text in locales (#1634) @xiaoyatong
+* :bug: fix: picker and datepicker theme config at taro and indicator css at taro (#1615) @xiaoyatong
+* :bug: fix: 日历close样式，可自定义样式；修改弹幕样式；更名CircleClose为Failure、Issue 为 Tips (#1648) @xiaoyatong
+* :bug: fix: 🐛 修复swipe存在点击事件时,触发onTouchStart,获取到rightRect为null导致的报错问题 (#1608) @Levidcd
+* 🚀 perf: radio reverse and demos (#1631) @xiaoyatong
+* 🛠 refactor(classname): 调整 classname 的顺序 (#1637) @oasis-cloud
+* 📖 docs(cell): 增加卡片类型的 demo (#1639) @oasis-cloud
+* 📖 docs(sideNavBar): handleClose 改为 onClose (#1635) @haitao
+
+
 # v2.0.24
 `2023-11-10`
 
