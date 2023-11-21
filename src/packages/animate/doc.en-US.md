@@ -130,7 +130,7 @@ export default AnimateDemo
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | type | For animation type, see the description of type value below | `AnimateType` | `shake` |
-| action | Triggering method,'initial'-- initialization execution; ' Click'-- Click to execute | `initial` \| `click` | `initial` |
+| action | Triggering method,'initial' initialization execution; ' Click'-- Click to execute | `initial` \| `click` | `initial` |
 | loop | Whether to execute circularly. True： loop execution; False： execute once | `boolean` | `false` |
 | onClick | Triggered when an element is clicked | `event: Event` | `-` |
 
