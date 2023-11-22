@@ -4,11 +4,13 @@ import reactRefresh from '@vitejs/plugin-react'
 const atImport = require('postcss-import')
 const path = require('path')
 
-const { resolve } = path
-let fileStr = `@import "@/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";`
 const projectID = process.env.VITE_APP_PROJECT_ID
+
+const { resolve } = path
+
+let fileStr = `@import "@/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";@import '@/styles/theme-default.scss';\n`
 if (projectID) {
-  fileStr = `@import '@/styles/variables-${projectID}.scss';\n@import "@/sites/assets/styles/variables.scss";\n`
+  fileStr = `@import '@/styles/variables-${projectID}.scss';\n@import "@/sites/assets/styles/variables.scss";\n@import '@/styles/font-${projectID}/iconfont.css';\n@import '@/styles/theme-${projectID}.scss';\n`
 }
 
 // https://vitejs.dev/config/

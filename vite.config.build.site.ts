@@ -6,10 +6,10 @@ const atImport = require('postcss-import')
 const config = require('./package.json')
 
 const { resolve } = path
-let fileStr = `@import "@/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";`
+let fileStr = `@import "@/styles/variables.scss";`
 const projectID = process.env.VITE_APP_PROJECT_ID
 if (projectID) {
-  fileStr = `@import '@/styles/variables-${projectID}.scss';\n@import "@/sites/assets/styles/variables.scss";\n`
+  fileStr = `@import '@/styles/variables-${projectID}.scss';`
 }
 
 // https://vitejs.dev/config/
