@@ -7,7 +7,7 @@
 ## 安裝
 
 ```tsx
-import { Elevator } from '@nutui/nutui-react-taro'
+import { Elevator } from '@nutui/nutui-react'
 ```
 
 ## 代碼演示
@@ -18,7 +18,7 @@ import { Elevator } from '@nutui/nutui-react-taro'
 
 ```tsx
 import React from 'react'
-import { Elevator } from '@nutui/nutui-react-taro'
+import { Elevator } from '@nutui/nutui-react'
 
 const App = () => {
   const dataList = [
@@ -98,7 +98,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Elevator } from '@nutui/nutui-react-taro'
+import { Elevator } from '@nutui/nutui-react'
 
 const App = () => {
   const dataList = [
@@ -230,7 +230,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Elevator } from '@nutui/nutui-react-taro'
+import { Elevator } from '@nutui/nutui-react'
 
 const App = () => {
   const dataList = [
@@ -311,7 +311,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Elevator } from '@nutui/nutui-react-taro'
+import { Elevator } from '@nutui/nutui-react'
 
 const App = () => {
   const dataList = [
@@ -456,8 +456,8 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Elevator } from '@nutui/nutui-react-taro'
-import { Jd } from '@nutui/icons-react-taro'
+import { Elevator } from '@nutui/nutui-react'
+import { Jd } from '@nutui/icons-react'
 
 const App = () => {
   const dataList = [
