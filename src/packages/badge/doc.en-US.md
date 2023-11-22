@@ -262,6 +262,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
+| \--nutui-badge-height | badge height | `14px` |
 | \--nutui-badge-background-color | badge background color | `linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%))` |
 | \--nutui-badge-color | badge content color | `#fff` |
 | \--nutui-badge-font-size | badge content font size | `$font-size-1` |
@@ -270,6 +271,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-badge-min-width | badge min-width | `5px` |
 | \--nutui-badge-padding | badge padding value | `0 5px` |
 | \--nutui-badge-icon-padding | when badge is icon,badge padding | `2px` |
+| \--nutui-badge-icon-size | when badge is icon,badge size | `12px` |
 | \--nutui-badge-content-transform | badge content transform | `translateY(-50%) translateX(100%)` |
 | \--nutui-badge-z-index | when badge is icon, badge z-index | `1` |
 | \--nutui-badge-dot-width | when badge is dot, the dot width,height and border radius | `7px` |

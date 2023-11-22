@@ -551,7 +551,8 @@ plugins: [
 - 移除 `zIndex`，目前没有用到，也不生效，直接去掉。
 - 移除 `icon`，自定义 `icon` 可放在 `value` 中实现，扩充了 `value` 的类型。
 - 修改 `max` 的最大值为99（之前为10000），比较贴合实际场景。
-- 主题定制的 `css` 变量中，去掉和 `dot` 有关的其他值，只保留 `width`。其他值由 `width` 计算而来。
+- 主题定制的 `css` 变量中，去掉和 `dot` 有关的其他值，只保留 `width`。其他值由 `width` 计算而来.
+- 主题定制，增加包含 icon 情况下的样式变量。
 
 #### CircleProgress
 - `progress` 重命名为 `percent`
