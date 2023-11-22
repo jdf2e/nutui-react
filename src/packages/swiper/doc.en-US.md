@@ -482,8 +482,8 @@ export default App;
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| width | Width of rotation car | `number` \| `string` | `window.innerWidth` |
-| height | Height of rotation card | `string` \| `number`  | `0` |
+| width | Width of rotation car | `number` \| `string` | `-` |
+| height | Height of rotation card | `string` \| `number`  | `-` |
 | direction | Rotation direction | `horizontal` \| `vertical` | `horizontal` |
 | indicator | Whether the pagination indicator is displayed | `boolean` | `false` |
 | loop | Whether to rotate | `boolean` | `true` |

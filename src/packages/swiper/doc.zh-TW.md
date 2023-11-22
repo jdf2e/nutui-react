@@ -482,8 +482,8 @@ export default App;
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| width | 輪播卡片的寬度 | `number` \| `string` | `window.innerWidth` |
-| height | 輪播卡片的高度 | `number` \| `string` | `0` |
+| width | 輪播卡片的寬度 | `number` \| `string` | `-` |
+| height | 輪播卡片的高度 | `number` \| `string` | `-` |
 | direction | 輪播方嚮 | `horizontal` \| `vertical` | `horizontal` |
 | indicator | 分頁指示器是否展示，可傳入自定義的 HTML 結構 | `ReactNode` | `false` |
 | loop | 是否循環輪播 | `boolean` | `true` |
