@@ -71,7 +71,7 @@ const BadgeDemo = () => {
             <Badge style={{ marginRight: '40px' }} value="NEW">
               <Avatar icon={<User />} shape="square" />
             </Badge>
-            <Badge style={{ marginRight: '40px' }} dot>
+            <Badge style={{ marginRight: '40px' }} dot top="2" right="4">
               <Avatar icon={<User />} shape="square" />
             </Badge>
           </Cell>
@@ -118,6 +118,8 @@ const BadgeDemo = () => {
             </Badge>
             <Badge
               style={{ marginRight: '40px' }}
+              top="2"
+              right="4"
               dot
               color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
             >

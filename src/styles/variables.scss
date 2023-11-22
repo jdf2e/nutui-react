@@ -1399,13 +1399,11 @@ $badge-border: var(
   --nutui-badge-border,
   0px solid $color-primary-text
 ) !default;
-$badge-border-radius: var(
-  --nutui-badge-border-radius,
-  calc($badge-height/2)
-) !default;
+$badge-border-radius: var(--nutui-badge-border-radius, $badge-height) !default;
 $badge-min-width: var(--nutui-badge-min-width, 5px) !default;
 $badge-padding: var(--nutui-badge-padding, 0 4px) !default;
 $badge-icon-padding: var(--nutui-badge-icon-padding, 3px) !default;
+$badge-icon-size: var(--nutui-badge-icon-size, 12px) !default;
 $badge-content-transform: var(
   --nutui-badge-content-transform,
   translateY(-50%) translateX(100%)

@@ -4,14 +4,12 @@
 
   &__icon {
     position: absolute;
-    height: $badge-height;
-    width: $badge-height;
     display: flex;
     justify-content: center;
     align-items: center;
     background: $badge-background-color;
-    top: -20%;
-    right: -20%;
+    top: -10%;
+    right: -15%;
     padding: $badge-icon-padding;
     text-align: center;
     border: $badge-border;
@@ -19,9 +17,9 @@
     z-index: $badge-z-index;
 
     .nut-icon {
-      width: 10px;
-      height: 10px;
-      font-size: 10px;
+      width: $badge-icon-size;
+      height: $badge-icon-size;
+      font-size: $badge-icon-size;
     }
   }
 
