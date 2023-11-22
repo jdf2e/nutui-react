@@ -262,6 +262,7 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
+| \--nutui-badge-height | badge 的高度 | `14px` |
 | \--nutui-badge-background-color | badge 背景色 | `linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%))` |
 | \--nutui-badge-color | badge 內容色值 | `#fff` |
 | \--nutui-badge-font-size | badge 內容字號 | `$font-size-1` |
@@ -270,6 +271,7 @@ export default App;
 | \--nutui-badge-min-width | badge 最小寬度 | `5px` |
 | \--nutui-badge-padding | badge 的padding值 | `0 5px` |
 | \--nutui-badge-icon-padding | badge 為自定義icon時 的 padding值 | `2px` |
+| \--nutui-badge-icon-size | badge 為自定義icon時 的 size | `12px` |
 | \--nutui-badge-content-transform | badge 內容位置 | `translateY(-50%) translateX(100%)` |
 | \--nutui-badge-z-index | badge 自定義icon時的z-index | `1` |
 | \--nutui-badge-dot-width | badge 為圓點時的寬度、高度、圓角 | `7px` |
