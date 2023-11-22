@@ -2,7 +2,6 @@ import React from 'react'
 import * as ReactDOM from 'react-dom/client'
 import { isMobile } from '@/sites/assets/util'
 import '@/sites/assets/styles/reset.scss'
-import '@/styles/theme-default.scss'
 import '@/sites/assets/styles/md-style.scss'
 import App from './App'
 
