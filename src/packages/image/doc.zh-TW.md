@@ -36,7 +36,7 @@ export default App;
 
 ### 填充模式
 
-通過 fit 屬性可以設置圖片填充模式，等同於原生的 object-fit 屬性，可選值見下方錶格。
+通過 fit 屬性可以設置圖片填充模式，等同於原生的 object-fit 屬性，可選值見下方表格。
 
 :::demo
 
@@ -168,6 +168,43 @@ export default App;
 ```
 
 :::
+
+
+### Image + text 模式
+
+`Image` 組件和文本組合。
+
+:::demo
+
+```tsx
+import React from "react";
+import { Image } from '@nutui/nutui-react';
+
+const App = () => {
+  return <>
+    <Image
+      src="http://m.360buyimg.com/babel/s181x181_jfs/t1/210178/19/10205/31538/619bbcd9E5071aed5/8e1b7eb632aeed49.png"
+      width="30"
+      height="30"
+      style={{ marginRight: '10px' }}
+      onError={() => {
+        console.log('image error')
+      }}
+    />
+    <div
+      style={{
+        width: '220px',
+      }}
+    >
+      雪紡衫女2021年春季新款洋氣輕熟上衣
+    </div>
+  </>
+}
+export default App;
+```
+
+:::
+
 
 ### 圖片懶加載
 
