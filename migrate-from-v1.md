@@ -203,6 +203,7 @@ plugins: [
 - `onClickIndex` 重命名为 `onIndexClick`
 - `onClickItem` 重命名为 `onItemClick`
 - 新增`showKeys`，是否展示右侧导航
+- CSS 变量部分，对命名做了简化。
 #### FixedNav
 - `unActiveText` 重命名为 `inactiveText`
 - `navList` 重命名为 `list`

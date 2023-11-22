@@ -1190,6 +1190,14 @@ $dialog-footer-ok-max-width: var(
   --nutui-dialog-footer-ok-max-width,
   128px
 ) !default;
+$dialog-header-font-weight: var(
+  --nutui-dialog-header-font-weight,
+  normal
+) !default;
+$dialog-vertical-footer-ok-margin-top: var(
+  --nutui-dialog-vertical-footer-ok-margin-top,
+  5px
+) !default;
 
 // checkbox（✅）
 $checkbox-label-margin-left: var(

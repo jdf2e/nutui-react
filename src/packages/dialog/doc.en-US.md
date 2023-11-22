@@ -93,7 +93,7 @@ export default App;
 
 ```tsx
 import React, {useState} from "react";
-import { Cell,Dialog } from '@nutui/nutui-react';
+import { Cell,Dialog,Image } from '@nutui/nutui-react';
 
 const App = () => {
   const [visible1, setVisible1] = useState(false);
@@ -101,40 +101,58 @@ const App = () => {
   const [visible3, setVisible3] = useState(false);
   return (
     <>
-    <Cell title="Basic bullet" onClick={() => setVisible1(true)} />
-    <Dialog 
-        title="Module call"
-        visible={visible1}
-        onConfirm={() => setVisible1(false)}
-        onCancel={() => setVisible1(false)}
-    >
+      <Cell title="Basic bullet" onClick={() => setVisible1(true)} />
+      <Dialog 
+          title="Module call"
+          visible={visible1}
+          onConfirm={() => setVisible1(false)}
+          onCancel={() => setVisible1(false)}
+      >
+          If you need to embed the component or other custom content in the pop -up window, you can use the Module Call method.
+      </Dialog>
+      <Cell title="The bottom button is called vertically" onClick={() => setVisible2(true)} />
+      <Dialog 
+          title="Module call"
+          visible={visible2}
+          footerDirection='vertical'
+          onConfirm={() => setVisible2(false)}
+          onCancel={() => setVisible2(false)}
+      >
+          If you need to embed the component or other custom content in the pop -up window, you can use the Module Call method.
+      </Dialog>
+      <Cell title="Stop it when click cancel button" onClick={() => setVisible3(true)} />
+      <Dialog 
+        title="Stop it when click cancel button"
+        visible={visible3}
+        closeOnOverlayClick={false}
+        beforeCancel={() => {
+          console.log('stop close')
+          return false
+        }}
+        onClose={() => {
+          setVisible3(false)
+        }}
+      >
         If you need to embed the component or other custom content in the pop -up window, you can use the Module Call method.
-    </Dialog>
-    <Cell title="The bottom button is called vertically" onClick={() => setVisible2(true)} />
-    <Dialog 
-        title="Module call"
-        visible={visible2}
-        footerDirection='vertical'
-        onConfirm={() => setVisible2(false)}
-        onCancel={() => setVisible2(false)}
-    >
+      </Dialog>
+      <Cell
+        title="Image in header"
+        onClick={() => {
+          setVisible7(true)
+        }}
+      />
+      <Dialog
+        className="test-dialog"
+        title="Image in header"
+        visible={visible7}
+        header={
+          <Image src="https://img13.360buyimg.com/imagetools/jfs/t1/219330/27/30033/11784/6544af3fF5c0fd98f/64c41bb05ef09189.png" />
+        }
+        onConfirm={() => setVisible7(false)}
+        onCancel={() => setVisible7(false)}
+      >
         If you need to embed the component or other custom content in the pop -up window, you can use the Module Call method.
-    </Dialog>
-    <Cell title="Stop it when click cancel button" onClick={() => setVisible3(true)} />
-    <Dialog 
-      title="Stop it when click cancel button"
-      visible={visible3}
-      closeOnOverlayClick={false}
-      beforeCancel={() => {
-        console.log('stop close')
-        return false
-      }}
-      onClose={() => {
-        setVisible3(false)
-      }}
-    >
-      If you need to embed the component or other custom content in the pop -up window, you can use the Module Call method.
-    </Dialog>
+      </Dialog>
     </>
   )
 }
@@ -217,7 +235,9 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-dialog-content-max-height | dialog content max height | `268px` |
 | \--nutui-dialog-content-line-height | dialog content line height | `20px` |
 | \--nutui-dialog-content-text-align | dialog content text align | `left` |
+| \--nutui-dialog-header-font-weight | dialog header font weight | `normal` |
 | \--nutui-dialog-footer-justify-content | dialog footer justify content | `space-around` |
 | \--nutui-dialog-footer-button-min-width | dialog footer button min width | `117px` |
 | \--nutui-dialog-footer-cancel-margin-right | dialog footer cancel button's margin right | `12px` |
 | \--nutui-dialog-footer-ok-max-width | dialog footer confirm button's max width | `128px` |
+| \--nutui-dialog-vertical-footer-ok-margin-top | dialog vertical footer confirm button margin top | `5px` |

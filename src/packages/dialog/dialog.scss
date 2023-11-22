@@ -38,8 +38,7 @@
     display: block;
     text-align: center;
     font-size: $font-size-large;
-    line-height: 24px;
-    font-weight: 500;
+    font-weight: $dialog-header-font-weight;
     color: $color-title;
     @include oneline-ellipsis();
   }
@@ -80,6 +79,7 @@
           order: 2;
           display: flex;
           align-items: flex-end;
+          margin-top: $dialog-vertical-footer-ok-margin-top;
         }
       }
     }
