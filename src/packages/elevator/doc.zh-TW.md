@@ -2,7 +2,7 @@
 
 ## 介紹
 
-用於列錶快速定位以及索引的顯示
+用於列表快速定位以及索引的顯示
 
 ## 安裝
 
@@ -528,7 +528,7 @@ const App = () => {
         {(value) => {
           return (
             <>
-              <Jd size={12} />
+              <Jd width={12} height={12} />
               <span style={{ marginLeft: '15px' }}>{value?.name}</span>
             </>
           )
@@ -550,7 +550,7 @@ export default App
 | --- | --- | --- | --- |
 | height | 電梯區域的高度 | `number` \| `string` | `200px` |
 | floorKey | 索引 key 值 | `string` | `title` |
-| list | 索引列錶 | `Array（item 需包含 id、name 屬性, name 支持傳入 html 結構）` | `[{id: 0, name: ''}]` |
+| list | 索引列表 | `Array（item 需包含 id、name 屬性, name 支持傳入 html 結構）` | `[{id: 0, name: ''}]` |
 | sticky | 索引是否吸頂 | `boolean` | `false` |
 | showKeys | 展示右側導航 | `boolean` | `true` |
 | spaceHeight | 右側錨點的上下間距 | `number` | `23` |
@@ -558,7 +558,7 @@ export default App
 | onItemClick | 點擊內容 | `onItemClick:(key: string, item: { id: number, name: string })=>void` | `false` |
 | onIndexClick | 點擊索引 | `onIndexClick:(key: string)=>void` | `false` |
 
-## 主題定制
+## 主題定製
 
 ### 樣式變量
 
@@ -567,18 +567,18 @@ export default App
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-elevator-list-bg-color | 樓層區域背景顏色 | `$white` |
-| \--nutui-elevator-list-font-size | 樓層區域列錶項字體大小 | `$font-size-small` |
-| \--nutui-elevator-list-color | 樓層區域列錶項字體顏色 | `$color-title` |
-| \--nutui-elevator-list-item-padding | 樓層區域列錶項內邊距 | `0 20px` |
-| \--nutui-elevator-list-item-name-height | 樓層區域列錶項高度 | `30px` |
-| \--nutui-elevator-list-item-name-line-height | 樓層區域列錶項行高 | `30px` |
-| \--nutui-elevator-list-item-code-font-size | 樓層區域列錶項標題字體大小 | `$font-size-base` |
-| \--nutui-elevator-list-item-code-color | 樓層區域列錶項標題顏色 | `$color-title` |
-| \--nutui-elevator-list-item-code-font-weight | 樓層區域列錶項標題字體粗細 | `$font-weight-bold` |
-| \--nutui-elevator-list-item-code-height | 樓層區域列錶項標題高度 | `35px` |
-| \--nutui-elevator-list-item-code-line-height | 樓層區域列錶項標題行高 | `35px` |
-| \--nutui-elevator-list-item-code-border-bottom | 樓層區域列錶項標題下邊框寬度 | `1px solid $color-border` |
-| \--nutui-elevator-list-item-code-background-color | 樓層區域列錶項標題背景顏色 | `inherit` |
+| \--nutui-elevator-list-font-size | 樓層區域列表項字體大小 | `$font-size-small` |
+| \--nutui-elevator-list-color | 樓層區域列表項字體顏色 | `$color-title` |
+| \--nutui-elevator-list-item-padding | 樓層區域列表項內邊距 | `0 20px` |
+| \--nutui-elevator-list-item-name-height | 樓層區域列表項高度 | `30px` |
+| \--nutui-elevator-list-item-name-line-height | 樓層區域列表項行高 | `30px` |
+| \--nutui-elevator-list-item-code-font-size | 樓層區域列表項標題字體大小 | `$font-size-base` |
+| \--nutui-elevator-list-item-code-color | 樓層區域列表項標題顏色 | `$color-title` |
+| \--nutui-elevator-list-item-code-font-weight | 樓層區域列表項標題字體粗細 | `$font-weight-bold` |
+| \--nutui-elevator-list-item-code-height | 樓層區域列表項標題高度 | `35px` |
+| \--nutui-elevator-list-item-code-line-height | 樓層區域列表項標題行高 | `35px` |
+| \--nutui-elevator-list-item-code-border-bottom | 樓層區域列表項標題下邊框寬度 | `1px solid $color-border` |
+| \--nutui-elevator-list-item-code-background-color | 樓層區域列表項標題背景色 | `inherit` |
 | \--nutui-elevator-list-item-code-current-bg-color | 電梯提示背景顏色 | `#fff` |
 | \--nutui-elevator-list-item-code-current-border-radius | 電梯提示圓角 | `50%` |
 | \--nutui-elevator-list-item-code-current-width | 電梯提示寬度 | `45px` |
