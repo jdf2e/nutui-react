@@ -156,7 +156,7 @@ export default App;
 | contentPosition | 內容位置 | `left` \| `center` \| `right` | `center` |
 | direction | 水平還是垂直類型 | `horizontal` \| `vertical` | `horizontal` |
 
-## 主題定制
+## 主題定製
 
 ### 樣式變量
 

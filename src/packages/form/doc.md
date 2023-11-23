@@ -502,9 +502,9 @@ Form.useForm()创建 Form 实例，用于管理所有数据状态。
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-form-item-error-line-color | 错误信息边框颜色 | `$required-color` |
-| \--nutui-form-item-required-color | 必选标识的字体颜色 | `$required-color` |
-| \--nutui-form-item-error-message-color | 错误信息的文本颜色 | `$required-color` |
+| \--nutui-form-item-error-line-color | 错误信息边框颜色 | `$primary-color` |
+| \--nutui-form-item-required-color | 必选标识的字体颜色 | `$primary-color` |
+| \--nutui-form-item-error-message-color | 错误信息的文本颜色 | `$primary-color` |
 | \--nutui-form-item-label-font-size | label 字号 | `14px` |
 | \--nutui-form-item-label-width | label 宽度 | `90px` |
 | \--nutui-form-item-label-margin-right | label 右外边距 | `10px` |

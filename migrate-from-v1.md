@@ -187,6 +187,7 @@ plugins: [
 #### Divider
 - 移除 `dashed`, 通过 `style` 属性实现
 - 移除 `hairline`, 默认为 `true`
+- CSS 变量调整：`$divider-before-margin-right`、`$divider-after-margin-left` 统一为 `$divider-spacing`，`$divider-vertical-border-left` 变更为 `$divider-border-color`，增加 `$divider-side-width`。
 #### Grid
 - 移除 `fontSize`，可自行控制传入的组件字体大小
 - 移除 `border`，作为默认样式
