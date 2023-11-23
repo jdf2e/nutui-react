@@ -1849,15 +1849,15 @@ $cascader-item-active-color: var(
 // form
 $form-item-error-line-color: var(
   --nutui-form-item-error-line-color,
-  $primary-color
+  $color-primary
 ) !default;
 $form-item-required-color: var(
   --nutui-form-item-required-color,
-  $primary-color
+  $color-primary
 ) !default;
 $form-item-error-message-color: var(
   --nutui-form-item-error-message-color,
-  $primary-color
+  $color-primary
 ) !default;
 $form-item-label-font-size: var(
   --nutui-form-item-label-font-size,
