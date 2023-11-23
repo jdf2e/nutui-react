@@ -329,14 +329,14 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-timeselect-title-height | title height | `50px` |
 | \--nutui-timeselect-title-line-height | title lineHeight | `50px` |
 | \--nutui-timeselect-title-color | title color | `$title-color` |
-| \--nutui-timeselect-title-font-size | title fontSize | `$font-size-2` |
+| \--nutui-timeselect-title-font-size | title fontSize | `$font-size-base` |
 | \--nutui-timeselect-title-background | title background | `$background-color3` |
 | \--nutui-timeselect-date-width | date width | `140px` |
 | \--nutui-timeselect-date-height | date height | `40px` |
 | \--nutui-timeselect-date-line-height | date lineHeight | `40px` |
 | \--nutui-timeselect-date-color | date color | `$title-color2` |
 | \--nutui-timeselect-date-active-color | date active color | `$title-color` |
-| \--nutui-timeselect-date-font-size | date fontSize | `$font-size-2` |
+| \--nutui-timeselect-date-font-size | date fontSize | `$font-size-base` |
 | \--nutui-timeselect-time-width | time width | `100px` |
 | \--nutui-timeselect-time-height | time height | `50px` |
 | \--nutui-timeselect-time-line-height | time lineHeight | `50px` |
