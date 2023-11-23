@@ -351,7 +351,7 @@ export default App
 | --- | --- | --- |
 | \--nutui-menu-bar-line-height | menu标题栏的行高 | `48px` |
 | \--nutui-menu-placeholder-top | 透明遮罩层的 top 值 | `-48px` |
-| \--nutui-menu-item-font-size | 标题的字号 | `$font-size-2` |
+| \--nutui-menu-item-font-size | 标题的字号 | `$font-size-base` |
 | \--nutui-menu-item-text-color | 标题的颜色 | `$title-color` |
 | \--nutui-menu-item-active-text-color | 打开状态的颜色 | `$primary-color` |
 | \--nutui-menu-bar-opened-z-index | 打开状态的 z-index | `2001` |

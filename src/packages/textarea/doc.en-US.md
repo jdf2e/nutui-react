@@ -190,7 +190,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default | 
 | --- | --- | --- | 
-| \--nutui-textarea-font | fontSize | `$font-size-2` | 
+| \--nutui-textarea-font | fontSize | `$font-size-base` | 
 | \--nutui-textarea-padding | padding | `10px 25px`| 
 | \--nutui-textarea-limit-color | limit color | `$text-color` | 
 | \--nutui-textarea-text-color | text color | `$title-color` | 

@@ -580,7 +580,7 @@ export default App;
 | \--nutui-tabs-tab-smile-color | 微笑曲线的颜色 | `$primary-color` |
 | \--nutui-tabs-titles-background-color | Tab 标题的背景色 | `$background-color` |
 | \--nutui-tabs-titles-border-radius | Tab 标题的边框圆角 | `0` |
-| \--nutui-tabs-titles-item-font-size | Tab 标题的字号 | `$font-size-2` |
+| \--nutui-tabs-titles-item-font-size | Tab 标题的字号 | `$font-size-basease` |
 | \--nutui-tabs-titles-item-color | Tab 标题的文本颜色 | `$title-color` |
 | \--nutui-tabs-title-gap | Tab 标题的左右 margin | `0px` |
 | \--nutui-tabs-titles-item-active-color | Tab 选中标题的文本颜色 | `$title-color` |

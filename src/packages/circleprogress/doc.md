@@ -202,4 +202,4 @@ export default App;
 | \--nutui-circleprogress-primary-color | 环形进度条填充部分的颜色 | `$primary-color` |
 | \--nutui-circleprogress-path-color | 环形进度条轨道的颜色 | `#e5e9f2` |
 | \--nutui-circleprogress-text-color | 环形进度条轨道内容区的颜色 | `$title-color` |
-| \--nutui-circleprogress-text-size | 环形进度条轨道内容区的大小 | `$font-size-3` |
+| \--nutui-circleprogress-text-size | 环形进度条轨道内容区的大小 | `$font-size-large` |
