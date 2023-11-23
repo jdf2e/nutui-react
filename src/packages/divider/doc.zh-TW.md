@@ -156,7 +156,7 @@ export default App;
 | contentPosition | 內容位置 | `left` \| `center` \| `right` | `center` |
 | direction | 水平還是垂直類型 | `horizontal` \| `vertical` | `horizontal` |
 
-## 主題定制
+## 主題定製
 
 ### 樣式變量
 
@@ -165,12 +165,11 @@ export default App;
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-divider-margin | 分割線整體內容的margin值 | `16px 0` |
-| \--nutui-divider-text-font-size | 分割線整體內容的font-size大小 | `$font-size-2` |
-| \--nutui-divider-text-color | 分割線整體內容的顏色 | `$gray1` |
+| \--nutui-divider-border-color | 分割線的邊框色值 | `$color-border` |
+| \--nutui-divider-text-font-size | 分割線整體內容的font-size大小 | `$font-size-base` |
+| \--nutui-divider-text-color | 分割線整體內容的顏色 | `$color-title` |
 | \--nutui-divider-line-height | 分割線的行高 | `2px` |
-| \--nutui-divider-before-margin-right | 左邊分割線的margin-right值 | `16px` |
-| \--nutui-divider-after-margin-left | 右邊分割線的margin-left值 | `16px` |
+| \--nutui-divider-spacing | 左邊分割線與文案的間隔值 | `8px` |
 | \--nutui-divider-vertical-height | 垂直分割線的高度 | `12px` |
 | \--nutui-divider-vertical-top | 垂直分割線的top值 | `2px` |
-| \--nutui-divider-vertical-border-left | 垂直分割線的border-left值 | `rgba(0, 0, 0, 0.06)` |
 | \--nutui-divider-vertical-margin | 垂直分割線的margin值 | `0 8px` |
