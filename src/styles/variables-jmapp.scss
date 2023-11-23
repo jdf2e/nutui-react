@@ -102,7 +102,7 @@ $font-weight: 400;
 $font-weight-bold: 600;
 
 // 行高
-$line-height-base: 1.4 !default;
+$line-height-base: var(--nutui-line-height-base, 1.4) !default;
 
 // 间距 space
 $spacing-xxs: var(--nutui-spacing-1) !default; // 多用于文本与图标之间的间距
