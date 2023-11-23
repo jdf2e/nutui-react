@@ -602,7 +602,6 @@ const App = () => {
   
   const handleSorter = (item: TableColumnProps, data: Array<any>) => {
     Toast.show(`${JSON.stringify(item)}`)
-    setData5([...data])
   }
 
   return <Table
@@ -674,7 +673,6 @@ const App = () => {
   
   const handleSorter = (item: TableColumnProps, data: Array<any>) => {
     Toast.show(`${JSON.stringify(item)}`)
-    setData5([...data])
   }
 
   return <Table

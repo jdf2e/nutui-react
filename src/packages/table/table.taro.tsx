@@ -1,9 +1,10 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { DownArrow } from '@nutui/icons-react-taro'
 import { BasicTableProps, TableColumnProps } from './types'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { ComponentDefaults } from '@/utils/typings'
+import { usePropsValue } from '@/utils/use-props-value'
 
 export type TableProps = BasicTableProps
 
@@ -42,13 +43,10 @@ export const Table: FunctionComponent<
     ...props,
   }
 
-  const [curData, setCurData] = useState(data)
-
-  useEffect(() => {
-    if (data && String(data) !== String(curData)) {
-      setCurData(data)
-    }
-  }, [data])
+  const [innerValue, setValue] = usePropsValue({
+    value: data,
+    finalValue: [],
+  })
 
   const classPrefix = 'nut-table'
   const headerClassPrefix = `${classPrefix}__main__head__tr`
@@ -57,12 +55,14 @@ export const Table: FunctionComponent<
 
   const handleSorterClick = (item: TableColumnProps) => {
     if (item.sorter) {
-      onSort && onSort(item, curData)
+      let sortedValue = innerValue
       if (typeof item.sorter === 'function') {
-        setCurData(curData.sort(item.sorter as (a: any, b: any) => number))
-      } else {
-        setCurData(item.sorter === 'default' ? curData.sort() : curData)
+        sortedValue = innerValue.sort(item.sorter as (a: any, b: any) => number)
+      } else if (item.sorter === 'default') {
+        sortedValue = innerValue.sort()
       }
+      setValue(sortedValue, true)
+      onSort && onSort(item, sortedValue)
     }
   }
 
@@ -119,10 +119,10 @@ export const Table: FunctionComponent<
   }
 
   const renderBoyTrs = () => {
-    return curData.map((item, rowIndex) => {
+    return innerValue.map((item, index) => {
       return (
-        <div className={bodyClassPrefix} key={rowIndex}>
-          {renderBodyTds(item, rowIndex)}
+        <div className={bodyClassPrefix} key={index}>
+          {renderBodyTds(item, index)}
         </div>
       )
     })
@@ -142,7 +142,7 @@ export const Table: FunctionComponent<
         )}
         <div className={`${classPrefix}__main__body`}>{renderBoyTrs()}</div>
       </div>
-      {(summary || curData.length === 0) && (
+      {(summary || innerValue.length === 0) && (
         <div className={`${classPrefix}__summary`}>{summary || noData}</div>
       )}
     </div>
