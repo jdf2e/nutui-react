@@ -28,7 +28,7 @@
 
   &__label {
     color: $primary-text-color;
-    font-size: $font-size-1;
+    font-size: $font-size-small;
     &.open {
       transform: translateX(-16px);
     }

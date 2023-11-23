@@ -580,7 +580,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tabs-tab-smile-color | The color of the smile curve | `$primary-color` |
 | \--nutui-tabs-titles-background-color | Tab title background color | `$background-color` |
 | \--nutui-tabs-titles-border-radius | Tab title border rounded | `0` |
-| \--nutui-tabs-titles-item-font-size | Tab title font size | `$font-size-2` |
+| \--nutui-tabs-titles-item-font-size | Tab title font size | `$font-size-base` |
 | \--nutui-tabs-titles-item-color | Tab title text color | `$title-color` |
 | \--nutui-tabs-title-gap | Tab title margin | `0px` |
 | \--nutui-tabs-titles-item-active-color | Tab selected titles text color | `$title-color` |

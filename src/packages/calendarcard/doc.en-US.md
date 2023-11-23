@@ -331,7 +331,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-calendar-active-background-color | calendar active background color | `$primary-color` |
 | \--nutui-calendar-choose-background-color | calendar choose background color | `rgba(#fa2c19, 0.09)` |
 | \--nutui-calendar-disable-color | calendar disable color | `#d1d0d0` |
-| \--nutui-calendar-base-font-size | calendar base font size | `$font-size-3` |
+| \--nutui-calendar-base-font-size | calendar base font size | `$font-size-large` |
 | \--nutui-calendar-day-width | calendar day width | `14.28%` |
 | \--nutui-calendar-choose-color | calendar choose color | `$primary-color` |
 | \--nutui-calendar-day-active-border-radius | calendar day active border radius | `4px` |

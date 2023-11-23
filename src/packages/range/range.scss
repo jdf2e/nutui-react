@@ -6,7 +6,7 @@
   align-items: center;
   .min,
   .max {
-    font-size: $font-size-1;
+    font-size: $font-size-small;
     color: $range-font-color;
     user-select: none;
   }
@@ -147,7 +147,7 @@
       align-items: center;
       justify-content: center;
       user-select: none;
-      font-size: $font-size-1;
+      font-size: $font-size-small;
       color: $range-font-color;
       transform: translate3d(0, -100%, 0);
     }

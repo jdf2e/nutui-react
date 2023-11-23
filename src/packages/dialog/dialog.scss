@@ -37,7 +37,7 @@
   &__header {
     display: block;
     text-align: center;
-    font-size: $font-size-3;
+    font-size: $font-size-large;
     font-weight: $dialog-header-font-weight;
     color: $title-color;
     @include oneline-ellipsis();
@@ -48,7 +48,7 @@
     margin: $dialog-content-margin;
     max-height: $dialog-content-max-height;
     line-height: $dialog-content-line-height;
-    font-size: $font-size-1;
+    font-size: $font-size-small;
     color: $text-color;
     word-wrap: break-word;
     word-break: break-all;
