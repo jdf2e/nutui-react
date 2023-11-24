@@ -1529,7 +1529,7 @@ $pagination-disable-color: var(
 ) !default;
 $pagination-disable-background-color: var(
   --nutui-pagination-disable-background-color,
-  $color-background-disabled
+  #f7f8fa
 ) !default;
 $pagination-item-border-width: var(
   --nutui-pagination-item-border-width,
