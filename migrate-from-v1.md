@@ -19,6 +19,9 @@ npm install @nutui/nutui-react-taro
 
 你可以手动对照下面的列表逐条检查代码进行修改，另外，我们也提供了一个 codemod cli 工具 @nutui/nutui-react-codemod 以帮助你快速升级到 v2 版本。在运行 codemod cli 前，请先提交你的本地代码修改。
 
+4. 主题变量更名：
+如，primary-color 更名为 color-primary；注意在使用自定义主题，特别是使用 ConfigProvider 组件的情况下，有没有使用 `nutuiBrandColor`，这时记得更名为 `nutuiColorPrimary`
+
 ## 兼容更新
 1. 组件样式处理
 

@@ -63,7 +63,7 @@
     &.active,
     &.start,
     &.end {
-      background-color: $color-primary;
+      background-color: $calendar-active-background-color;
       color: $color-primary-text !important;
       border-radius: $calendar-day-active-border-radius;
     }

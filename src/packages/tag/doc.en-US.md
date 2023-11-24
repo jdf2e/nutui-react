@@ -171,7 +171,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tag-background-color | background color | `$color-title` | 
 | \--nutui-tag-primary-background-color |primary background color | `$color-primary-gradient-1` | 
 | \--nutui-tag-success-background-color | success background color | `#4fc08d` | 
-| \--nutui-tag-info-background-color | info background color | `$brand-info-color` |
+| \--nutui-tag-info-background-color | info background color | `$color-info` |
 | \--nutui-tag-warning-background-color | warn background color | `#f3812e` | 
 | \--nutui-tag-danger-background-color | danger background color | `$color-primary` |
 | \--nutui-tag-round-border-radius | round border radius | `8px` | 

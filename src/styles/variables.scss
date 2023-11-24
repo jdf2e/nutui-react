@@ -22,6 +22,13 @@ $color-default-pressed: var(--nutui-color-default-pressed) !default;
 $color-default-light: var(--nutui-color-default-light) !default;
 $color-default-disabled: var(--nutui-color-default-disabled) !default;
 
+// 信息
+$color-info: var(--nutui-color-info, #1988fa) !default;
+$color-info-pressed: var(--nutui-color-info-pressed) !default;
+$color-info-disabled: var(--nutui-color-info-disabled, #b2f0ae) !default;
+$color-info-light: var(--nutui-color-info-light) !default;
+$color-info-background: var(--nutui-color-info-background) !default;
+
 // 成功
 $color-success: var(--nutui-color-success, #00bc14) !default;
 $color-success-pressed: var(--nutui-color-success-pressed) !default;
@@ -174,9 +181,6 @@ $color-info: var(--nutui-color-info) !default;
 $color-text-link: var(--nutui-color-text-link, #396acc) !default;
 $white: #ffffff !default;
 $black: $color-title !default;
-
-// todo
-$color-background-disabled: $white !default;
 
 // --- z-index ----
 $mask-z-index: 1000;
@@ -845,6 +849,10 @@ $backtop-border-color: var(
 ) !default;
 
 // calendar（✅）
+$calendar-active-background-color: var(
+  --nutui-calendar-active-background-color,
+  $color-primary
+) !default;
 $calendar-choose-background-color: var(
   --nutui-calendar-choose-background-color,
   $color-primary-light
@@ -1147,7 +1155,7 @@ $steps-dot-icon-width: var(--nutui-steps-dot-icon-width, 6px) !default;
 $steps-dot-icon-height: var(--nutui-steps-dot-icon-height, 6px) !default;
 $steps-dot-icon-border: var(
   --nutui-steps-dot-icon-border,
-  2px solid $white
+  2px solid $color-primary-text
 ) !default;
 $steps-dot-head-margin: var(--nutui-steps-dot-head-margin, 10px 0) !default;
 

@@ -596,7 +596,7 @@ export default App
 | \--nutui-elevator-bars-active-color | 电梯楼层高亮文字颜色 | `$color-primary` |
 | \--nutui-elevator-bars-z-index | 电梯楼层层级 | `1` |
 | \--nutui-elevator-bars-inner-item-padding | 电梯楼层标识项内边距 | `3px` |
-| \--nutui-elevator-bars-inner-item-font-size | 电梯楼层标识项字体大小 | `10px` |
+| \--nutui-elevator-bars-font-size | 电梯楼层标识项字体大小 | `10px` |
 | \--nutui-elevator-list-fixed-color | 吸顶楼层文字颜色 | `$color-primary` |
 | \--nutui-elevator-list-fixed-bg-color | 吸顶楼层背景颜色 | `$white` |
 | \--nutui-elevator-list-fixed-box-shadow | 吸顶楼层阴影 | `0 0 10px #eee` |

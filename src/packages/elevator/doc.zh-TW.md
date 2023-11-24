@@ -566,37 +566,37 @@ export default App
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-elevator-list-bg-color | 楼层区域背景颜色 | `$white` |
-| \--nutui-elevator-list-font-size | 楼层区域列表项字体大小 | `$font-size-small` |
-| \--nutui-elevator-list-color | 楼层区域列表项字体颜色 | `$color-title` |
-| \--nutui-elevator-list-item-padding | 楼层区域列表项内边距 | `0 20px` |
-| \--nutui-elevator-list-item-name-height | 楼层区域列表项高度 | `30px` |
-| \--nutui-elevator-list-item-name-line-height | 楼层区域列表项行高 | `30px` |
-| \--nutui-elevator-list-item-code-font-size | 楼层区域列表项标题字体大小 | `$font-size-base` |
-| \--nutui-elevator-list-item-code-color | 楼层区域列表项标题颜色 | `$color-title` |
-| \--nutui-elevator-list-item-code-font-weight | 楼层区域列表项标题字体粗细 | `$font-weight-bold` |
-| \--nutui-elevator-list-item-code-height | 楼层区域列表项标题高度 | `35px` |
-| \--nutui-elevator-list-item-code-line-height | 楼层区域列表项标题行高 | `35px` |
-| \--nutui-elevator-list-item-code-border-bottom | 楼层区域列表项标题下边框宽度 | `1px solid $color-border` |
-| \--nutui-elevator-list-item-code-background-color | 楼层区域列表项标题背景色 | `inherit` |
-| \--nutui-elevator-list-item-code-current-bg-color | 电梯提示背景颜色 | `#fff` |
-| \--nutui-elevator-list-item-code-current-border-radius | 电梯提示圆角 | `50%` |
-| \--nutui-elevator-list-item-code-current-width | 电梯提示宽度 | `45px` |
-| \--nutui-elevator-list-item-code-current-height | 电梯提示高度 | `45px` |
-| \--nutui-elevator-list-item-code-current-line-height | 电梯提示行高 | `45px` |
-| \--nutui-elevator-list-item-code-current-right | 电梯提示定位后右边缘位置 | `60px` |
-| \--nutui-elevator-list-item-code-current-top | 电梯提示定位后top边缘位置 | `50%` |
-| \--nutui-elevator-list-item-code-current-text-align | 电梯提示文字对齐方式 | `center` |
-| \--nutui-elevator-bars-right | 电梯楼层定位后右边缘位置 | `10px` |
-| \--nutui-elevator-bars-top | 电梯楼层定位后顶部边缘位置 | `50%` |
-| \--nutui-elevator-bars-transform | 电梯楼层定位后滑动距离 | `translateY(-50%)` |
-| \--nutui-elevator-bars-padding | 电梯楼层内边距 | `15px 0` |
-| \--nutui-elevator-bars-background-color | 电梯楼层背景颜色 | `#eeeff2` |
-| \--nutui-elevator-bars-border-radius | 电梯楼层圆角大小 | `6px` |
-| \--nutui-elevator-bars-active-color | 电梯楼层高亮文字颜色 | `$color-primary` |
-| \--nutui-elevator-bars-z-index | 电梯楼层层级 | `1` |
-| \--nutui-elevator-bars-inner-item-padding | 电梯楼层标识项内边距 | `3px` |
-| \--nutui-elevator-bars-inner-item-font-size | 电梯楼层标识项字体大小 | `10px` |
-| \--nutui-elevator-list-fixed-color | 吸顶楼层文字颜色 | `$color-primary` |
-| \--nutui-elevator-list-fixed-bg-color | 吸顶楼层背景颜色 | `$white` |
-| \--nutui-elevator-list-fixed-box-shadow | 吸顶楼层阴影 | `0 0 10px #eee` |
+| \--nutui-elevator-list-bg-color | 樓層區域背景顏色 | `$white` |
+| \--nutui-elevator-list-font-size | 樓層區域列表項字體大小 | `$font-size-small` |
+| \--nutui-elevator-list-color | 樓層區域列表項字體顏色 | `$color-title` |
+| \--nutui-elevator-list-item-padding | 樓層區域列表項內邊距 | `0 20px` |
+| \--nutui-elevator-list-item-name-height | 樓層區域列表項高度 | `30px` |
+| \--nutui-elevator-list-item-name-line-height | 樓層區域列表項行高 | `30px` |
+| \--nutui-elevator-list-item-code-font-size | 樓層區域列表項標題字體大小 | `$font-size-base` |
+| \--nutui-elevator-list-item-code-color | 樓層區域列表項標題顏色 | `$color-title` |
+| \--nutui-elevator-list-item-code-font-weight | 樓層區域列表項標題字體粗細 | `$font-weight-bold` |
+| \--nutui-elevator-list-item-code-height | 樓層區域列表項標題高度 | `35px` |
+| \--nutui-elevator-list-item-code-line-height | 樓層區域列表項標題行高 | `35px` |
+| \--nutui-elevator-list-item-code-border-bottom | 樓層區域列表項標題下邊框寬度 | `1px solid $color-border` |
+| \--nutui-elevator-list-item-code-background-color | 樓層區域列表項標題背景色 | `inherit` |
+| \--nutui-elevator-list-item-code-current-bg-color | 電梯提示背景顏色 | `#fff` |
+| \--nutui-elevator-list-item-code-current-border-radius | 電梯提示圓角 | `50%` |
+| \--nutui-elevator-list-item-code-current-width | 電梯提示寬度 | `45px` |
+| \--nutui-elevator-list-item-code-current-height | 電梯提示高度 | `45px` |
+| \--nutui-elevator-list-item-code-current-line-height | 電梯提示行高 | `45px` |
+| \--nutui-elevator-list-item-code-current-right | 電梯提示定位後右邊緣位置 | `60px` |
+| \--nutui-elevator-list-item-code-current-top | 電梯提示定位後top邊緣位置 | `50%` |
+| \--nutui-elevator-list-item-code-current-text-align | 電梯提示文字對齊方式 | `center` |
+| \--nutui-elevator-bars-right | 電梯樓層定位後右邊緣位置 | `10px` |
+| \--nutui-elevator-bars-top | 電梯樓層定位後頂部邊緣位置 | `50%` |
+| \--nutui-elevator-bars-transform | 電梯樓層定位後滑動距離 | `translateY(-50%)` |
+| \--nutui-elevator-bars-padding | 電梯樓層內邊距 | `15px 0` |
+| \--nutui-elevator-bars-background-color | 電梯樓層背景顏色 | `#eeeff2` |
+| \--nutui-elevator-bars-border-radius | 電梯樓層圓角大小 | `6px` |
+| \--nutui-elevator-bars-active-color | 電梯樓層高亮文字顏色 | `$color-primary` |
+| \--nutui-elevator-bars-z-index | 電梯樓層層級 | `1` |
+| \--nutui-elevator-bars-inner-item-padding | 電梯樓層標識項內邊距 | `3px` |
+| \--nutui-elevator-bars-font-size | 電梯樓層標識項字體大小 | `10px` |
+| \--nutui-elevator-list-fixed-color | 吸頂樓層文字顏色 | `$color-primary` |
+| \--nutui-elevator-list-fixed-bg-color | 吸頂樓層背景顏色 | `$white` |
+| \--nutui-elevator-list-fixed-box-shadow | 吸頂樓層陰影 | `0 0 10px #eee` |

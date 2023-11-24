@@ -50,7 +50,7 @@ describe('configprovider', () => {
     const ele = container.querySelector('.nut-configprovider')
     expect(ele).toHaveTextContent('確認')
     expect(ele).toHaveClass('nut-configprovider')
-    expect(ele).toHaveStyle(`--nutui-color-primary: red;`)
+    expect(ele).toHaveStyle('--nutui-color-primary: red')
   })
 
   test('should theme variable and locale variable injection correctly', () => {

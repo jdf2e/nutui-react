@@ -102,7 +102,7 @@ const AvatarDemo = () => {
           />
           <Avatar
             color="var(--nutui-color-primary)"
-            background="var(--nutui-brand-2)"
+            background="var(--nutui-color-primary-light)"
           >
             U
           </Avatar>
