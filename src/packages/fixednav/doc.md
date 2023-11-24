@@ -323,4 +323,4 @@ export default App;
 | \--nutui-fixednav-bg-color | 背景颜色 | `#fff` |
 | \--nutui-fixednav-font-color | 字体颜色 | `#000` |
 | \--nutui-fixednav-index | zIndex | `201` |
-| \--nutui-fixednav-item-active-color | 激活颜色 | `$primary-color` |
+| \--nutui-fixednav-item-active-color | 激活颜色 | `$color-primary` |

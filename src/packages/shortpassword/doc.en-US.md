@@ -339,5 +339,5 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-shortpassword-background-color | backgroundColor | `rgba(245, 245, 245, 1)` |
 | \--nutui-shortpassword-border-color | border color | `#ddd` |
-| \--nutui-shortpassword-error | error color | `$primary-color` |
+| \--nutui-shortpassword-error | error color | `$color-primary` |
 | \--nutui-shortpassword-forget | forget color | `rgba(128, 128, 128, 1)` |

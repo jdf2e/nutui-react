@@ -414,7 +414,7 @@ export default App;
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-picker-bar-cancel-color | 取消文案的色值 | `#808080` |
-| \--nutui-picker-bar-ok-color | 确认文案的色值 | `$primary-color` |
+| \--nutui-picker-bar-ok-color | 确认文案的色值 | `$color-primary` |
 | \--nutui-picker-bar-cancel-font-size | 取消字号 | `14px` |
 | \--nutui-picker-bar-ok-font-size | 确认字号 | `14px` |
 | \--nutui-picker-bar-button-padding | 取消和确认的padding值 | `0 15px` |

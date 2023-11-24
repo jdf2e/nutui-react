@@ -580,7 +580,7 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-tabs-tab-smile-color | 微笑曲線的顏色 | `$primary-color` |
+| \--nutui-tabs-tab-smile-color | 微笑曲線的顏色 | `$color-primary` |
 | \--nutui-tabs-titles-background-color | Tab 標題的背景色 | `$background-color` |
 | \--nutui-tabs-titles-border-radius | Tab 標題的邊框圓角 | `0` |
 | \--nutui-tabs-titles-item-font-size | Tab 標題的字號 | `$font-size-base` |
@@ -588,7 +588,7 @@ export default App;
 | \--nutui-tabs-title-gap | Tab 標題的左右 margin | `0px` |
 | \--nutui-tabs-titles-item-active-color | Tab 選中標題的文本顏色 | `$title-color` |
 | \--nutui-tabs-titles-item-active-font-weight | Tab 選中標題的字重 | `600` |
-| \--nutui-tabs-horizontal-tab-line-color | 水平方嚮線條顏色 | `linear-gradient(90deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)` |
+| \--nutui-tabs-horizontal-tab-line-color | 水平方嚮線條顏色 | `linear-gradient(90deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |
 | \--nutui-tabs-horizontal-line-bottom | 水平方嚮線條距離 | `15%` |
 | \--nutui-tabs-horizontal-line-border-radius | 水平方嚮線的圓角 | `0px` |
 | \--nutui-tabs-horizontal-tab-line-opacity | 水平方嚮線的透明度 | `1` |
@@ -597,7 +597,7 @@ export default App;
 | \--nutui-tabs-horizontal-titles-item-active-background-color | 水平方嚮激活選項卡標題的背景色 | `$background-color3` |
 | \--nutui-tabs-horizontal-titles-item-active-line-width | 水平方嚮激活選項卡線條的寬度 | `40px` |
 | \--nutui-tabs-horizontal-titles-item-active-line-height | 水平方嚮激活選項卡線條的高度 | `3px` |
-| \--nutui-tabs-vertical-tab-line-color | 垂直方嚮線條顏色 | `linear-gradient(180deg, $primary-color 0%, rgba(#fa2c19, 0.15) 100%)` |
+| \--nutui-tabs-vertical-tab-line-color | 垂直方嚮線條顏色 | `linear-gradient(180deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |
 | \--nutui-tabs-vertical-titles-item-height | 垂直方嚮標題的高度 | `40px` |
 | \--nutui-tabs-vertical-titles-item-active-line-width | 垂直方嚮標題線條的寬度 | `3px` |
 | \--nutui-tabs-vertical-titles-item-active-line-height | 垂直方嚮標題線條的高度 | `14px` |

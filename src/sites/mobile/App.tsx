@@ -1,8 +1,5 @@
 import './App.scss'
-import React, {
-  useCallback,
-  useState,
-} from 'react'
+import React, { useCallback, useState } from 'react'
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import loadable, { LoadableComponent } from '@loadable/component'
 import { Left } from '@nutui/icons-react'
@@ -29,10 +26,10 @@ const languages: Languages = {
 
 const defaultTheme = {}
 const darkTheme = {
-  nutuiBrandColor: '#fa2c19',
-  nutuiBrandColorStart: '#ff404f',
-  nutuiBrandColorEnd: '#fa2c19',
-  nutuiBrandLinkColor: '#396acc',
+  nutuiColorPrimary: '#fa2c19',
+  nutuiColorPrimaryStop1: '#ff404f',
+  nutuiColorPrimaryStop2: '#fa2c19',
+  nutuiColorTextLink: '#396acc',
   nutuiGray0: '#000000',
   nutuiGray1: '#e6e6e6',
   nutuiGray2: '#828282',

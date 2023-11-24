@@ -300,7 +300,7 @@ export default App;
 | \--nutui-button-text-icon-mini-margin-left | size 為 mini 按鈕的文本的左邊距 | `1px` |
 | \--nutui-button-disabled-opacity | disabled 狀態下按鈕的透明度 | `0.68` |
 | \--nutui-button-primary-color | type 為 primary 按鈕的文本顏色 | `$white` |
-| \--nutui-button-primary-border-color | type 為 primary 按鈕的邊框顏色 | `$primary-color` |
+| \--nutui-button-primary-border-color | type 為 primary 按鈕的邊框顏色 | `$color-primary` |
 | \--nutui-button-info-color | type 為 info 按鈕的文本顏色 | `$white` |
 | \--nutui-button-info-border-color | type 為 info 按鈕的邊框顏色 | `#496af2` |
 | \--nutui-button-success-color | type 為 success 按鈕的文本顏色 | `$white` |

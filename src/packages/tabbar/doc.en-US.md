@@ -286,7 +286,7 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-tabbar-height | tabbar height | `50px` |
-| \--nutui-tabbar-active-color | active color | `$primary-color` |
+| \--nutui-tabbar-active-color | active color | `$color-primary` |
 | \--nutui-tabbar-inactive-color | default color | `$gray1` |
 | \--nutui-tabbar-border-top | borderTop | `1px solid #eee` |
 | \--nutui-tabbar-border-bottom | borderBottom | `1px solid #eee` |

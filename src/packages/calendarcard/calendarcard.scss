@@ -64,7 +64,7 @@
     &.start,
     &.end {
       background-color: $calendar-active-background-color;
-      color: $primary-text-color !important;
+      color: $color-primary-text !important;
       border-radius: $calendar-day-active-border-radius;
     }
 
@@ -90,7 +90,7 @@
     }
 
     .nut-calendar-day-info {
-      color: $primary-text-color;
+      color: $color-primary-text;
     }
 
     // 上个月、下个月

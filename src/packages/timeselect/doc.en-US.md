@@ -343,6 +343,6 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-timeselect-time-font-size | time fontSize | `14px` |
 | \--nutui-timeselect-time-margin | time margin | `0 10px 10px 0` |
 | \--nutui-timeselect-time-color | time color | `$title-color` |
-| \--nutui-timeselect-time-active-color | time active color | `$primary-color` |
+| \--nutui-timeselect-time-active-color | time active color | `$color-primary` |
 | \--nutui-timeselect-time-background | time background | `$background-color` |
 | \--nutui-timeselect-time-active-background | time active background | `$background-color2` |
