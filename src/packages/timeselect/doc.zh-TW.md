@@ -343,6 +343,6 @@ export default Demo
 | \--nutui-timeselect-time-font-size | time 字體大小 | `14px` |
 | \--nutui-timeselect-time-margin | time 外邊距 | `0 10px 10px 0` |
 | \--nutui-timeselect-time-color | time 字體顏色 | `$title-color` |
-| \--nutui-timeselect-time-active-color | time 激活字體顏色 | `$primary-color` |
+| \--nutui-timeselect-time-active-color | time 激活字體顏色 | `$color-primary` |
 | \--nutui-timeselect-time-background | time 背景 | `$background-color` |
 | \--nutui-timeselect-time-active-background | time 激活背景 | `$background-color2` |

@@ -22,12 +22,12 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background: $primary-text-color;
+    background: $color-primary-text;
     transition: transform 0.3s;
   }
 
   &__label {
-    color: $primary-text-color;
+    color: $color-primary-text;
     font-size: $font-size-small;
     &.open {
       transform: translateX(-16px);

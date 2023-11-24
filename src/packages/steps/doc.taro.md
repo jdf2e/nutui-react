@@ -292,7 +292,7 @@ import { People } from '@nutui/icons-react';
 
 const customTheme3 = {
   nutuiStepsDotHeadMargin: '0 0 12px 0',
-  nutuiBrandColorEnd: '#fff',
+  nutuiColorPrimaryStop2: '#fff',
   nutuiStepsDotIconBorder: '0',
   nutuiStepsBaseIconWidth: '6px',
   nutuiStepsBaseIconHeight: '6px',
@@ -537,18 +537,18 @@ export default App;
 | \--nutui-steps-wait-icon-color | 等待状态的 icon 容器的字体颜色 | `$white` |
 | \--nutui-steps-wait-title-color | 等待状态标题字体颜色 | `$title-color2` |
 | \--nutui-steps-wait-description-color | 等待状态描述字体颜色 | `$title-color2` |
-| \--nutui-steps-process-icon-bg-color | 进行中icon容器背景色 | `$primary-color` |
+| \--nutui-steps-process-icon-bg-color | 进行中icon容器背景色 | `$color-primary` |
 | \--nutui-steps-process-icon-color | 进行中icon容器字体颜色 | `$white` |
-| \--nutui-steps-process-title-color | 进行中标题字体颜色 | `$primary-color` |
+| \--nutui-steps-process-title-color | 进行中标题字体颜色 | `$color-primary` |
 | \--nutui-steps-process-title-font-size | 进行中标题字号 | `14px` |
 | \--nutui-steps-process-title-font-weight | 进行中标题字重 | `400` |
-| \--nutui-steps-process-description-color | 进行中描述字体颜色 | `$primary-color` |
-| \--nutui-steps-finish-icon-bg-color | 完成状态icon 容器的背景色 | `$primary-text-color` |
-| \--nutui-steps-finish-icon-color | 完成状态icon 容器的字体颜色 | `$primary-color` |
-| \--nutui-steps-finish-title-color | 完成状态标题的字体颜色 | `$primary-color` |
+| \--nutui-steps-process-description-color | 进行中描述字体颜色 | `$color-primary` |
+| \--nutui-steps-finish-icon-bg-color | 完成状态icon 容器的背景色 | `$color-primary-text` |
+| \--nutui-steps-finish-icon-color | 完成状态icon 容器的字体颜色 | `$color-primary` |
+| \--nutui-steps-finish-title-color | 完成状态标题的字体颜色 | `$color-primary` |
 | \--nutui-steps-finish-description-color | 完成状态描述的字体颜色 | `$title-color2` |
-| \--nutui-steps-finish-line-background | 完成状态分割线的颜色 | `$primary-color` |
+| \--nutui-steps-finish-line-background | 完成状态分割线的颜色 | `$color-primary` |
 | \--nutui-steps-dot-icon-width | 点状进度条点的宽度 | `6px` |
 | \--nutui-steps-dot-icon-height | 点状进度条点的高度 | `6px` |
-| \--nutui-steps-dot-icon-border | 点状进度条点的边框 | `2px solid $primary-text-color` |
+| \--nutui-steps-dot-icon-border | 点状进度条点的边框 | `2px solid $color-primary-text` |
 | \--nutui-steps-dot-head-margin | 点状进度条点的外边距 | `7px 0 0 0` |

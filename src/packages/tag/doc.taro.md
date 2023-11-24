@@ -124,7 +124,7 @@ export default App;
 | \--nutui-tag-background-color | 背景色 | `#000000` |
 | \--nutui-tag-primary-background-color | 主色背景色 | `#3460fa` |
 | \--nutui-tag-success-background-color | 成功背景色 | `#4fc08d` |
-| \--nutui-tag-info-background-color | 信息背景色 | `$brand-info-color` |
+| \--nutui-tag-info-background-color | 信息背景色 | `$color-info` |
 | \--nutui-tag-warning-background-color | 警告背景色 | `#f3812e` |
 | \--nutui-tag-round-border-radius | round模式下的圆角 | `8px` |
 | \--nutui-tag-mark-border-radius | mark模式下的圆角 | `0 12px 12px 0` |

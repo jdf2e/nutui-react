@@ -300,7 +300,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-button-text-icon-mini-margin-left | size is the left margin of the text of the mini button | `1px` |
 | \--nutui-button-disabled-opacity | opacity of button in disabled state | `0.68` |
 | \--nutui-button-primary-color | type is the text color of the primary button | `$white` |
-| \--nutui-button-primary-border-color | Type is the border color of the primary button | `$primary-color` |
+| \--nutui-button-primary-border-color | Type is the border color of the primary button | `$color-primary` |
 | \--nutui-button-info-color | Type is info button text color | `$white` |
 | \--nutui-button-info-border-color | type is the border color of info button | `#496af2` |
 | \--nutui-button-success-color | Type is the text color of the success button | `$white` |

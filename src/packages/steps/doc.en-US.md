@@ -293,7 +293,7 @@ import { People } from '@nutui/icons-react';
 
 const customTheme3 = {
   nutuiStepsDotHeadMargin: '0 0 12px 0',
-  nutuiBrandColorEnd: '#fff',
+  nutuiColorPrimaryStop2: '#fff',
   nutuiStepsDotIconBorder: '0',
   nutuiStepsBaseIconWidth: '6px',
   nutuiStepsBaseIconHeight: '6px',
@@ -536,18 +536,18 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-steps-wait-icon-color | font color of icon container in waiting state | `$white` |
 | \--nutui-steps-wait-title-color | wait state title font color | `$title-color2` |
 | \--nutui-steps-wait-description-color | wait state description font color | `$title-color2` |
-| \--nutui-steps-process-icon-bg-color | Process icon container background color | `$primary-color` |
+| \--nutui-steps-process-icon-bg-color | Process icon container background color | `$color-primary` |
 | \--nutui-steps-process-icon-color | Process icon container font color | `$white` |
-| \--nutui-steps-process-title-color | Process title font color | `$primary-color` |
+| \--nutui-steps-process-title-color | Process title font color | `$color-primary` |
 | \--nutui-steps-process-title-font-size | Process title font size | `14px` |
 | \--nutui-steps-process-title-font-weight | Process title font weight | `400` |
-| \--nutui-steps-process-description-color | Process description font color | `$primary-color` |
-| \--nutui-steps-finish-icon-bg-color | background color of finish status icon container | `$primary-text-color` |
-| \--nutui-steps-finish-icon-color | font color of finish status icon container | `$primary-color` |
-| \--nutui-steps-finish-title-color | Font color of finish status title | `$primary-color` |
+| \--nutui-steps-process-description-color | Process description font color | `$color-primary` |
+| \--nutui-steps-finish-icon-bg-color | background color of finish status icon container | `$color-primary-text` |
+| \--nutui-steps-finish-icon-color | font color of finish status icon container | `$color-primary` |
+| \--nutui-steps-finish-title-color | Font color of finish status title | `$color-primary` |
 | \--nutui-steps-finish-description-color | Font color of finish state description | `$title-color2` |
-| \--nutui-steps-finish-line-background | The color of the finishing line | `$primary-color` |
+| \--nutui-steps-finish-line-background | The color of the finishing line | `$color-primary` |
 | \--nutui-steps-dot-icon-width | Width of dot progress bar dots | `6px` |
 | \--nutui-steps-dot-icon-height | Height of dot icon progress bar | `6px` |
-| \--nutui-steps-dot-icon-border | Dot progress bar dot border | `2px solid $primary-text-color` |
+| \--nutui-steps-dot-icon-border | Dot progress bar dot border | `2px solid $color-primary-text` |
 | \--nutui-steps-dot-head-margin | Dot progress bar dot margin | `7px 0 0 0` |
