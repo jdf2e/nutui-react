@@ -364,7 +364,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-menu-bar-line-height | The height of the menu title bar | `48px` |
 | \--nutui-menu-item-font-size | The font size of the title | `$font-size-base` |
 | \--nutui-menu-item-text-color | Title color | `$title-color` |
-| \--nutui-menu-item-active-text-color | Open state color | `$primary-color` |
+| \--nutui-menu-item-active-text-color | Open state color | `$color-primary` |
 | \--nutui-menu-bar-opened-z-index | z-index of opened state | `2001` |
 | \--nutui-menu-item-disabled-color | Disabled state color | `#969799` |
 | \--nutui-menu-title-text-padding-left | Left padding of title | `8px` |

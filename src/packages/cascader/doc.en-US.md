@@ -614,4 +614,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-cascader-item-border-bottom | cascader item border bottom | `0px solid #ddd` |
 | \--nutui-cascader-item-color | cascader item color | `$title-color` |
 | \--nutui-cascader-item-font-size | cascader item font size | `$font-size-base` |
-| \--nutui-cascader-item-active-color | cascader item active color | `$primary-color` |
+| \--nutui-cascader-item-active-color | cascader item active color | `$color-primary` |

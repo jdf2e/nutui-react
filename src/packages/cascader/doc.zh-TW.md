@@ -614,4 +614,4 @@ export default App;
 | \--nutui-cascader-item-border-bottom | 級聯數據每一條的底部邊框 | `0px solid #ddd` |
 | \--nutui-cascader-item-color | 級聯數據每一條的色值 | `$title-color` |
 | \--nutui-cascader-item-font-size | 級聯數據每一條的字號 | `$font-size-base` |
-| \--nutui-cascader-item-active-color | 級聯數據每一條的選中色值 | `$primary-color` |
+| \--nutui-cascader-item-active-color | 級聯數據每一條的選中色值 | `$color-primary` |

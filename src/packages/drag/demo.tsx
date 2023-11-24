@@ -58,7 +58,7 @@ const DragDemo = () => {
     color: '#fff',
     display: 'inline-block',
     lineHeight: '36px',
-    background: `var(--nutui-brand-color)`,
+    background: `var(--nutui-color-primary)`,
   }
   return (
     <div className="demo">
@@ -92,7 +92,7 @@ const DragDemo = () => {
           left: '8px',
           width: '300px',
           height: '200px',
-          border: '1px solid var(--nutui-brand-color)',
+          border: '1px solid var(--nutui-color-primary)',
         }}
       />
       <Drag

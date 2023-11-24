@@ -322,4 +322,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-actionsheet-item-border-bottom | item border bottom | `none` |
 | \--nutui-actionsheet-item-line-height | item line height | `24px` |
 | \--nutui-actionsheet-item-color | item color | `$title-color` |
-| \--nutui-actionsheet-item-danger | item danger color | `$primary-color` |
+| \--nutui-actionsheet-item-danger | item danger color | `$color-primary` |

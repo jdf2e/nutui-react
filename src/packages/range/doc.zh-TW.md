@@ -439,9 +439,9 @@ export default App;
 | \--nutui-range-font-color | 字體顏色 | `$gray1` |
 | \--nutui-range-margin | 進度條外邊距 | `15px` |
 | \--nutui-range-height | 進度條的寬度 | `4px` |
-| \--nutui-range-active-color | 激活顏色 | `$primary-color` |
+| \--nutui-range-active-color | 激活顏色 | `$color-primary` |
 | \--nutui-range-inactive-color | 未激活顏色 | `#fa958c` |
 | \--nutui-range-button-background | 按鈕背景 | `$white` |
 | \--nutui-range-button-width | 按鈕寬度 | `24px` |
 | \--nutui-range-button-height | 按鈕高度 | `24px` |
-| \--nutui-range-button-border | 按鈕邊框 | `1px solid $primary-color` |
+| \--nutui-range-button-border | 按鈕邊框 | `1px solid $color-primary` |

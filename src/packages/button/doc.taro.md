@@ -325,7 +325,7 @@ export default App;
 | \--nutui-button-text-icon-mini-margin-left | size 为 mini 按钮的文本的左边距 | `1px` |
 | \--nutui-button-disabled-opacity | disabled 状态下按钮的透明度 | `0.68` |
 | \--nutui-button-primary-color | type 为 primary 按钮的文本颜色 | `$white` |
-| \--nutui-button-primary-border-color | type 为 primary 按钮的边框颜色 | `$primary-color` |
+| \--nutui-button-primary-border-color | type 为 primary 按钮的边框颜色 | `$color-primary` |
 | \--nutui-button-info-color | type 为 info 按钮的文本颜色 | `$white` |
 | \--nutui-button-info-border-color | type 为 info 按钮的边框颜色 | `#496af2` |
 | \--nutui-button-success-color | type 为 success 按钮的文本颜色 | `$white` |

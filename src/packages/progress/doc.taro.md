@@ -263,7 +263,7 @@ export default App;
 | \--nutui-progress-border-radius | 进度条边框圆角 | `12px` |
 | \--nutui-progress-color | 进度条颜色 | `linear-gradient(135deg, #fa2c19 0%, #fa6419 100%)` |
 | \--nutui-progress-background | 进度条背景色 | `#f3f3f3` |
-| \--nutui-progress-text-color | 文本颜色 | `$primary-text-color` |
+| \--nutui-progress-text-color | 文本颜色 | `$color-primary-text` |
 | \--nutui-progress-text-padding | 文本内边距 | `0 5px` |
 | \--nutui-progress-text-font-size | 文本字体大小 | `9px` |
 | \--nutui-progress-text-position-top | 文本定位 top | `-4px` |
