@@ -596,7 +596,7 @@ export default App
 | \--nutui-elevator-bars-active-color | 電梯樓層高亮文字顏色 | `$color-primary` |
 | \--nutui-elevator-bars-z-index | 電梯樓層層級 | `1` |
 | \--nutui-elevator-bars-inner-item-padding | 電梯樓層標識項內邊距 | `3px` |
-| \--nutui-elevator-bars-inner-item-font-size | 電梯樓層標識項字體大小 | `10px` |
+| \--nutui-elevator-bars-font-size | 電梯樓層標識項字體大小 | `10px` |
 | \--nutui-elevator-list-fixed-color | 吸頂樓層文字顏色 | `$color-primary` |
 | \--nutui-elevator-list-fixed-bg-color | 吸頂樓層背景顏色 | `$white` |
 | \--nutui-elevator-list-fixed-box-shadow | 吸頂樓層陰影 | `0 0 10px #eee` |
