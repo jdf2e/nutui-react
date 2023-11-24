@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { AnimatingNumbers } from './animatingnumbers'
 import { Cell } from '../cell/cell'
 import { useTranslate } from '../../sites/assets/locale'
-import './demo.scss'
+import ConfigProvider from '@/packages/configprovider'
 
 interface T {
   basic: string
@@ -24,6 +24,12 @@ const AnimatingNumbersDemo = () => {
         'Custom styles to dynamically modify data (maximum number of bits required)',
     },
   })
+  const customTheme = {
+    nutuiCountupWidth: '24px',
+    nutuiCountupBgColor: `var(--nutui-color-primary)`,
+    nutuiCountupColor: `#fff`,
+    nutuiCountupLrMargin: `1px`,
+  }
   const [value, setEndNumer] = useState('1570.99')
   useEffect(() => {
     const timer = setInterval(() => {
@@ -46,12 +52,13 @@ const AnimatingNumbersDemo = () => {
         <h2>CountUp-{translated.custom}</h2>
         <Cell
           title={
-            <AnimatingNumbers.CountUp
-              value={value}
-              duration={1.2}
-              length={6}
-              className="custom-coutup"
-            />
+            <ConfigProvider theme={customTheme}>
+              <AnimatingNumbers.CountUp
+                value={value}
+                duration={1.2}
+                length={6}
+              />
+            </ConfigProvider>
           }
         />
       </div>
