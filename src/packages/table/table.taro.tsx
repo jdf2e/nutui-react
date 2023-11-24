@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { DownArrow } from '@nutui/icons-react-taro'
 import { BasicTableProps, TableColumnProps } from './types'
@@ -42,11 +42,15 @@ export const Table: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-
+  const sortedMapping = useRef<{ [key: string]: boolean }>({})
   const [innerValue, setValue] = usePropsValue({
-    value: data,
+    defaultValue: data,
     finalValue: [],
   })
+
+  useEffect(() => {
+    setValue(data)
+  }, [data])
 
   const classPrefix = 'nut-table'
   const headerClassPrefix = `${classPrefix}__main__head__tr`
@@ -54,15 +58,19 @@ export const Table: FunctionComponent<
   const cls = classNames(classPrefix, className)
 
   const handleSorterClick = (item: TableColumnProps) => {
-    if (item.sorter) {
-      let sortedValue = innerValue
+    if (item.sorter && !sortedMapping.current[item.key]) {
+      const copied = [...innerValue]
       if (typeof item.sorter === 'function') {
-        sortedValue = innerValue.sort(item.sorter as (a: any, b: any) => number)
+        copied.sort(item.sorter as (a: any, b: any) => number)
       } else if (item.sorter === 'default') {
-        sortedValue = innerValue.sort()
+        copied.sort()
       }
-      setValue(sortedValue, true)
-      onSort && onSort(item, sortedValue)
+      sortedMapping.current[item.key] = true
+      setValue(copied, true)
+      onSort && onSort(item, copied)
+    } else {
+      sortedMapping.current[item.key] = false
+      setValue(data)
     }
   }
 
