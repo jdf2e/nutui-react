@@ -1,5 +1,5 @@
 import React from 'react'
-import { My, Right, Star } from '@nutui/icons-react'
+import { My, Right } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import Cell from './index'
 import { Switch } from '../switch/switch'
@@ -220,7 +220,7 @@ const CellDemo = () => {
           <Cell
             title={
               <div style={{ display: 'flex', alignItems: 'center' }}>
-                <Star style={{ marginRight: '5px' }} /> {translated.title}
+                <My style={{ marginRight: '5px' }} /> {translated.title}
               </div>
             }
             extra={<Right />}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { HeartFill1, StarFill, ArrowDown } from '@nutui/icons-react'
+import { StarFill, ArrowDown } from '@nutui/icons-react'
 import { SearchBar } from './searchbar'
 import Toast from '../toast'
 import { useTranslate } from '../../sites/assets/locale'
@@ -105,7 +105,7 @@ const SearchBarDemo = () => {
         />
         <h2>{translated.title5}</h2>
         <SearchBar
-          left={<HeartFill1 width={14} height={14} />}
+          left={<StarFill width={14} height={14} />}
           right={<StarFill width={14} height={14} />}
           rightIn={
             <StarFill

@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
 import {
-  My2,
-  Cart2,
-  Location2,
+  Home,
+  Cart,
+  Location,
   Service,
   Notice,
   Category,
-  Scan2,
-  Location,
-  Message,
 } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Popover } from './popover'
@@ -116,17 +113,19 @@ const PopoverDemo = () => {
     {
       key: 'key1',
       name: 'option1',
-      icon: <My2 color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />,
+      icon: (
+        <Home color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />
+      ),
     },
     {
       key: 'key2',
       name: 'option2',
-      icon: <Cart2 style={{ marginRight: '8px' }} />,
+      icon: <Cart style={{ marginRight: '8px' }} />,
     },
     {
       key: 'key3',
       name: 'option3',
-      icon: <Location2 style={{ marginRight: '8px' }} />,
+      icon: <Location style={{ marginRight: '8px' }} />,
     },
   ]
   const itemListDisabled = [
@@ -168,12 +167,12 @@ const PopoverDemo = () => {
     },
     {
       key: 'key5',
-      name: <Scan2 />,
+      name: <Cart />,
       description: 'option5',
     },
     {
       key: 'key6',
-      name: <Message />,
+      name: <Home />,
       description: 'option6',
     },
   ]
@@ -350,9 +349,9 @@ const PopoverDemo = () => {
           </div>
         </Picker>
         <Popover
+          className="custom-color"
           visible={customPositon}
           targetId="pickerTarget"
-          className="custom-color"
           list={positionList}
           location={curPostion}
         />
