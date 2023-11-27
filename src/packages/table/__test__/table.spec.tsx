@@ -250,4 +250,7 @@ test('sorter', async () => {
   )[3]
   fireEvent.click(th)
   await waitFor(() => expect(fn.mock.calls[0][1][0].age).toEqual(4))
+  fireEvent.click(th)
+  const td = container.querySelectorAll('.nut-table__main__body__tr__td')[3]
+  expect(td).toHaveTextContent('10')
 })
