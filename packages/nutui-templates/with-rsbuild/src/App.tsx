@@ -6,7 +6,7 @@ const App = () => {
   return (
     <div>
       <div className="indexHeader">
-        <Image className="image" src="https://nutui.jd.com/h5/react/2x/demo-2.1.0/logo-red.png"></Image>
+        <Image className="image" src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png"></Image>
         <div className="info">
           <h1>NutUI-React</h1>
           <p>京东风格的轻量级移动端 React 组件库</p>
