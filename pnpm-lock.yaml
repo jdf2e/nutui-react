@@ -17,11 +17,11 @@ importers:
         specifier: ^7.21.0
         version: 7.23.2
       '@nutui/icons-react':
-        specifier: 0.0.2-beta.9
-        version: 0.0.2-beta.9
+        specifier: 0.0.5-beta.0
+        version: 0.0.5-beta.0
       '@nutui/icons-react-taro':
-        specifier: 0.0.2-beta.9
-        version: 0.0.2-beta.9
+        specifier: 0.0.5-beta.0
+        version: 0.0.5-beta.0
       '@nutui/touch-emulator':
         specifier: ^1.0.0
         version: 1.0.0
@@ -516,7 +516,7 @@ packages:
       '@jridgewell/trace-mapping': 0.3.20
 
   /@babel/code-frame@7.22.13:
-    resolution: {integrity: sha1-48HAmUAlmEg7eoxGpyHRA4gDdV4=, tarball: http://registry.m.jd.com/@babel/code-frame/download/@babel/code-frame-7.22.13.tgz}
+    resolution: {integrity: sha512-XktuhWlJ5g+3TJXc5upd9Ks1HutSArik6jf2eAjYFyIOf4ej3RN+184cZbzDvbPnuTJIUhPKKJE3cIsYTiAT3w==}
     engines: {node: '>=6.9.0'}
     dependencies:
       '@babel/highlight': 7.22.20
@@ -2800,16 +2800,12 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@nutui/icons-react-taro@0.0.2-beta.9:
-    resolution: {integrity: sha512-HF7PXoZnF5neYuJLraUWYdMBuP78wgLJMM/XCUGStSK/v6cPLa8K/+bNAwKZA6S8dF5ndFDOiuHIyiy6M+gxCQ==}
-    dependencies:
-      classnames: 2.3.2
+  /@nutui/icons-react-taro@0.0.5-beta.0:
+    resolution: {integrity: sha512-P4VmONckVkpVgsImRlFNDqqk7g46wXOnwBw3oGD63gpCZMsq9CIYT7D6JA78x0u5SidV2x0QQxvnR9DKz+0wrw==}
     dev: false
 
-  /@nutui/icons-react@0.0.2-beta.9:
-    resolution: {integrity: sha512-z1j4/3GZkQRFn1ilHL/l2MQBnnQdzNL0SW18IEHPRzFi/Dhkt8B2YozPQTg3so80Y4u+qsjlbzCmAKFROia4kg==}
-    dependencies:
-      classnames: 2.3.2
+  /@nutui/icons-react@0.0.5-beta.0:
+    resolution: {integrity: sha512-eLRKndDXKj30n4oo1Q2oJPeZ6T1EKxh6kocnsAmjO4D8m5MHfb4JJAPH1gxbUc7vGuE00eQXYZ8cBw8UVgAyTg==}
     dev: false
 
   /@nutui/touch-emulator@1.0.0:
