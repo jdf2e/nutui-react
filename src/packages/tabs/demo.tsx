@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { Dongdong, Jd } from '@nutui/icons-react'
+import { Star } from '@nutui/icons-react'
 import { Tabs } from './tabs'
 import Swiper from '../swiper'
 import { useTranslate } from '../../sites/assets/locale'
@@ -106,12 +106,11 @@ const TabsDemo = () => {
     {
       title: translated.custom1,
       value: 'c1',
-      icon: <Dongdong style={{ marginRight: '10px' }} />,
+      icon: <Star style={{ marginRight: '10px' }} />,
     },
     {
       title: translated.custom2,
       value: 'c2',
-      icon: <Jd style={{ marginRight: '10px' }} />,
     },
     {
       title: translated.custom3,

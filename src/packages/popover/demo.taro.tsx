@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import {
-  Cart2,
-  Location2,
-  My2,
-  Category,
+  Home,
+  Cart,
   Location,
-  Message,
-  Notice,
-  Scan2,
   Service,
+  Notice,
+  Category,
 } from '@nutui/icons-react-taro'
 import { Button, Popover, Cell, Picker } from '@/packages/nutui.react.taro'
 import '@/packages/popover/demo.scss'
@@ -70,17 +67,19 @@ const PopoverDemo = () => {
     {
       key: 'key1',
       name: 'option1',
-      icon: <My2 color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />,
+      icon: (
+        <Home color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />
+      ),
     },
     {
       key: 'key2',
       name: 'option2',
-      icon: <Cart2 style={{ marginRight: '8px' }} />,
+      icon: <Cart style={{ marginRight: '8px' }} />,
     },
     {
       key: 'key3',
       name: 'option3',
-      icon: <Location2 style={{ marginRight: '8px' }} />,
+      icon: <Location style={{ marginRight: '8px' }} />,
     },
   ]
   const itemListDisabled = [
@@ -122,12 +121,12 @@ const PopoverDemo = () => {
     },
     {
       key: 'key5',
-      name: <Scan2 />,
+      name: <Cart />,
       description: 'option5',
     },
     {
       key: 'key6',
-      name: <Message />,
+      name: <Home />,
       description: 'option6',
     },
   ]

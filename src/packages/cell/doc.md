@@ -149,7 +149,7 @@ export default App
 ```tsx
 import React from 'react'
 import { Cell, Button } from '@nutui/nutui-react'
-import { Right, Star } from '@nutui/icons-react'
+import { Right, My } from '@nutui/icons-react'
 
 const App = () => {
   const onJumpclick = (
@@ -236,7 +236,7 @@ const App = () => {
         <Cell
           title={
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <Star style={{ marginRight: '5px' }} /> 我是标题
+              <My style={{ marginRight: '5px' }} /> 我是标题
             </div>
           }
           extra={<Right />}

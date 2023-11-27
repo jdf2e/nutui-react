@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Dongdong, TriangleDown } from '@nutui/icons-react'
+import { Star, TriangleDown } from '@nutui/icons-react'
 import Button from '@/packages/button'
 import Toast from '@/packages/toast'
 import Table from '@/packages/table'
@@ -185,7 +185,7 @@ const TableDemo = () => {
       sex: '女',
       record: '本科',
       render: () => {
-        return <Dongdong height="14px" width="14px" />
+        return <Star height="14px" width="14px" />
       },
     },
     {

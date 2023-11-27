@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Taro from '@tarojs/taro'
-import { Dongdong, Jd } from '@nutui/icons-react-taro'
+import { Star } from '@nutui/icons-react-taro'
 import { Tabs } from '@/packages/nutui.react.taro'
 import Swiper from '@/packages/swiper/index.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
@@ -108,12 +108,11 @@ const TabsDemo = () => {
     {
       title: translated.custom1,
       value: 'c1',
-      icon: <Dongdong size={16} style={{ marginRight: '10px' }} />,
+      icon: <Star size={16} style={{ marginRight: '10px' }} />,
     },
     {
       title: translated.custom2,
       value: 'c2',
-      icon: <Jd size={16} style={{ marginRight: '10px' }} />,
     },
     {
       title: translated.custom3,
