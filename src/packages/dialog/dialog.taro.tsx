@@ -21,6 +21,7 @@ export type DialogProps = BasicDialogProps & BasicComponent
 const defaultProps = {
   title: '',
   content: '',
+  header: '',
   footer: '',
   confirmText: '',
   cancelText: '',
@@ -51,6 +52,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
       visible,
       footer,
       title,
+      header,
       content,
       children,
       footerDirection,
@@ -104,9 +106,9 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
         <>
           {!hideCancelButton && (
             <Button
-              size="small"
               fill="outline"
-              type="primary"
+              size="small"
+              type="default"
               className={`${classPrefix}__footer-cancel`}
               onClick={(e) => handleCancel(e)}
             >
@@ -166,6 +168,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
             className={className}
             style={style}
             title={title}
+            header={header}
             footer={renderFooter()}
             footerDirection={footerDirection}
             visible={visible}

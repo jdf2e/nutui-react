@@ -12,9 +12,9 @@ import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
 
 const darkTheme = {
-  nutuiBrandColor: 'green',
-  nutuiBrandColorStart: 'green',
-  nutuiBrandColorEnd: 'green',
+  nutuiColorPrimary: 'green',
+  nutuiColorPrimaryStop1: 'green',
+  nutuiColorPrimaryStop2: 'green',
 }
 const ConfigProviderDemo = () => {
   const [translated] = useTranslate({

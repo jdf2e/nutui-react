@@ -36,8 +36,6 @@ export interface SwiperProps extends BasicComponent {
 }
 
 const defaultProps = {
-  width: typeof window === 'object' ? window.innerWidth : 375,
-  height: 0,
   duration: 500,
   defaultValue: 0,
   autoPlay: 0,

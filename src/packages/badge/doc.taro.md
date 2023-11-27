@@ -262,14 +262,16 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-badge-background-color | badge 背景色 | `linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%))` |
+| \--nutui-badge-height | badge 的高度 | `14px` |
+| \--nutui-badge-background-color | badge 背景色 | `linear-gradient(135deg, $color-primary 0%, $color-primary-stop-2 100%))` |
 | \--nutui-badge-color | badge 内容色值 | `#fff` |
-| \--nutui-badge-font-size | badge 内容字号 | `$font-size-1` |
-| \--nutui-badge-border | badge 边框 | `0px solid $primary-text-color` |
+| \--nutui-badge-font-size | badge 内容字号 | `$font-size-small` |
+| \--nutui-badge-border | badge 边框 | `0px solid $color-primary-text` |
 | \--nutui-badge-border-radius | badge 边框圆角 | `14px` |
 | \--nutui-badge-min-width | badge 最小宽度 | `5px` |
 | \--nutui-badge-padding | badge 的padding值 | `0 5px` |
 | \--nutui-badge-icon-padding | badge 为自定义icon时 的 padding值 | `2px` |
+| \--nutui-badge-icon-size | badge 为自定义icon时 的 size | `12px` |
 | \--nutui-badge-content-transform | badge 内容位置 | `translateY(-50%) translateX(100%)` |
 | \--nutui-badge-z-index | badge 自定义icon时的z-index | `1` |
 | \--nutui-badge-dot-width | badge 为圆点时的宽度、高度、圆角 | `7px` |

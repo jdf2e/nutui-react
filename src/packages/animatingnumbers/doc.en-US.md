@@ -76,3 +76,19 @@ export default App
 | delay | Wait time for animation execution, in ms | `number` | `300` |
 | duration | Animation execution time, in s | `number` | `1` |
 | thousands | Whether there are thousands separators | `boolean` | `false` |
+
+## Theming
+
+### CSS Variables
+
+The component provides the following CSS variables, which can be used to customize styles. Please refer to [ConfigProvider component](#/en-US/component/configprovider).
+
+| Name | Description | Default |
+| --- | --- | --- |
+| \--nutui-countup-width | width of countup item | `auto` |
+| \--nutui-countup-height | height of countup item | `32px` |
+| \--nutui-countup-base-size | countup font size | `18px` |
+| \--nutui-countup-border-radius | border radius of item | `4px` |
+| \--nutui-countup-lr-margin | margin of item | `0` |
+| \--nutui-countup-bg-color | background color of item | `inherit` |
+| \--nutui-countup-color | color of item | `$color-title` |

@@ -289,10 +289,10 @@ export default App;
 | \--nutui-button-block-height | block 的按钮的高度 | `48px` |
 | \--nutui-button-block-line-height | block 的按钮的行高 | `46px` |
 | \--nutui-button-default-line-height | type 为 default 的按钮的行高 | `36px` |
-| \--nutui-button-default-font-size | type 为 default 的按钮的字号 | `$font-size-2` |
+| \--nutui-button-default-font-size | type 为 default 的按钮的字号 | `$font-size-base` |
 | \--nutui-button-large-font-size | size 为 large 的按钮的字号 | `$button-default-font-size` |
-| \--nutui-button-small-font-size | size 为 small 的按钮的字号 | `$font-size-1` |
-| \--nutui-button-mini-font-size | size 为 mini 的按钮的字号 | `$font-size-1` |
+| \--nutui-button-small-font-size | size 为 small 的按钮的字号 | `$font-size-small` |
+| \--nutui-button-mini-font-size | size 为 mini 的按钮的字号 | `$font-size-small` |
 | \--nutui-button-mini-line-height | size 为 mini 的按钮的行高 | `1.2` |
 | \--nutui-button-text-icon-margin-left | 带 icon按钮的文本的左边距 | `5px` |
 | \--nutui-button-text-icon-large-margin-left | size 为 large 按钮的文本的左边距 | `10px` |
@@ -300,7 +300,7 @@ export default App;
 | \--nutui-button-text-icon-mini-margin-left | size 为 mini 按钮的文本的左边距 | `1px` |
 | \--nutui-button-disabled-opacity | disabled 状态下按钮的透明度 | `0.68` |
 | \--nutui-button-primary-color | type 为 primary 按钮的文本颜色 | `$white` |
-| \--nutui-button-primary-border-color | type 为 primary 按钮的边框颜色 | `$primary-color` |
+| \--nutui-button-primary-border-color | type 为 primary 按钮的边框颜色 | `$color-primary` |
 | \--nutui-button-info-color | type 为 info 按钮的文本颜色 | `$white` |
 | \--nutui-button-info-border-color | type 为 info 按钮的边框颜色 | `#496af2` |
 | \--nutui-button-success-color | type 为 success 按钮的文本颜色 | `$white` |

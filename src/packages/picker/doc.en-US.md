@@ -410,7 +410,7 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-picker-bar-cancel-color | picker bar cancel color | `#808080` |
-| \--nutui-picker-bar-ok-color | picker bar confirm color | `$primary-color` |
+| \--nutui-picker-bar-ok-color | picker bar confirm color | `$color-primary` |
 | \--nutui-picker-bar-cancel-font-size | picker bar cancel font size | `14px` |
 | \--nutui-picker-bar-ok-font-size | picker bar confirm font size | `14px` |
 | \--nutui-picker-bar-button-padding | picker bar button padding | `0 15px` |

@@ -18,6 +18,8 @@ const ImageDemo = () => {
       lazyload: '图片懒加载',
       default: '默认',
       custom: '自定义',
+      imageText: 'image + text 模式',
+      text: '雪纺衫女2021年春季新款洋气轻熟上衣',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -29,6 +31,8 @@ const ImageDemo = () => {
       lazyload: 'Lazyload',
       default: 'Default',
       custom: 'Custom',
+      imageText: 'image + text ',
+      text: 'Chiffon, 2021, spring, the new easy-to-wear blouse',
     },
   })
   const src =
@@ -211,6 +215,25 @@ const ImageDemo = () => {
               <div className="image-text">{translated.custom}</div>
             </Col>
           </Row>
+        </Cell>
+        <h2>{translated.imageText}</h2>
+        <Cell>
+          <Image
+            src="http://m.360buyimg.com/babel/s181x181_jfs/t1/210178/19/10205/31538/619bbcd9E5071aed5/8e1b7eb632aeed49.png"
+            width="30"
+            height="30"
+            style={{ marginRight: '10px' }}
+            onError={() => {
+              console.log('image error')
+            }}
+          />
+          <div
+            style={{
+              width: '220px',
+            }}
+          >
+            {translated.text}
+          </div>
         </Cell>
         <h2>{translated.lazyload}</h2>
         <Cell>

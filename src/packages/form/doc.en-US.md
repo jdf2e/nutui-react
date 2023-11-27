@@ -510,9 +510,9 @@ The component provides the following CSS Variables, which can be used for custom
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-form-item-error-line-color | Error message border color | `$required-color` |
-| \--nutui-form-item-required-color | font color of required logo | `$required-color` |
-| \--nutui-form-item-error-message-color | text color of error message | `$required-color` |
+| \--nutui-form-item-error-line-color | Error message border color | `$color-primary` |
+| \--nutui-form-item-required-color | font color of required logo | `$color-primary` |
+| \--nutui-form-item-error-message-color | text color of error message | `$color-primary` |
 | \--nutui-form-item-label-font-size | label font size | `14px` |
 | \--nutui-form-item-label-width | label width | `90px` |
 | \--nutui-form-item-label-margin-right | label right margin | `10px` |

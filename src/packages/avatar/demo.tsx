@@ -97,8 +97,8 @@ const AvatarDemo = () => {
             icon={<My />}
           />
           <Avatar
-            color="var(--nutui-brand-color)"
-            background="var(--nutui-brand-color-opacity)"
+            color="var(--nutui-color-primary)"
+            background="var(--nutui-color-primary-light)"
           >
             U
           </Avatar>

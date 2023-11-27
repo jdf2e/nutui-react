@@ -1,10 +1,210 @@
-// 品牌色
-$brand-color: var(--nutui-brand-color, #3768fa) !default;
-// 品牌渐变色
-$brand-color-start: var(--nutui-brand-color-start, #3768fa) !default;
-$brand-color-end: var(--nutui-brand-color-end, #2c53c8) !default;
-$brand-link-color: var(--nutui-brand-link-color, #396acc);
-$brand-text-color: var(--nutui-brand-text-color, #ffffff);
+// ============== JDesignTokens 基础变量  ============== //
+// 主色调
+$color-primary: var(--nutui-brand-8) !default;
+$color-primary-stop-1: var(--nutui-brand-8) !default;
+$color-primary-stop-2: var(--nutui-brand-8) !default;
+$color-primary-pressed: var(--nutui-brand-9) !default;
+$color-primary-disabled: var(--nutui-brand-3) !default;
+$color-primary-light: var(--nutui-brand-1) !default;
+$color-primary-light-pressed: var(--nutui-brand-2) !default;
+$color-primary-gradient-1: linear-gradient(
+  135deg,
+  $color-primary-stop-1 0%,
+  $color-primary-stop-2 100%
+) !default;
+
+// 默认
+$color-default: var(--nutui-gray-2) !default;
+$color-default-pressed: var(--nutui-gray-4) !default;
+$color-default-light: var(--nutui-gray-1) !default;
+$color-default-disabled: var(--nutui-gray-1) !default;
+
+// 成功
+$color-success: var(--nutui-green-6) !default;
+$color-success-pressed: var(--nutui-green-8) !default;
+$color-success-disabled: var(--nutui-green-3) !default;
+$color-success-light: var(--nutui-green-1) !default;
+$color-success-background: var(--nutui-green-1) !default;
+
+// 警告
+$color-warning: var(--nutui-orange-6) !default;
+$color-warning-pressed: var(--nutui-orange-8) !default;
+$color-warning-disabled: var(--nutui-orange-3) !default;
+$color-warning-light: var(--nutui-orange-3) !default;
+$color-warning-background: var(--nutui-orange-1) !default;
+
+// 危险
+$color-danger: var(--nutui-red-6) !default;
+$color-danger-pressed: var(--nutui-red-8) !default;
+$color-danger-disabled: var(--nutui-red-3) !default;
+$color-danger-light: var(--nutui-red-1) !default;
+$color-danger-background: var(--nutui-red-1) !default;
+
+// 中性
+$color-dark: var(--nutui-gray-12) !default; // 分隔线
+$color-light: var(--nutui-gray-0) !default; // 输入框、头像边框等
+
+// 界面
+$color-surface-1: var(--nutui-gray-1) !default; // APP 的框架背景色
+$color-surface-2: var(--nutui-white-12) !default; // 卡片、内容容器背景色
+$color-surface-3: var(
+  --nutui-white-12
+) !default; // 3333	下拉菜单，即时反馈控件背景色
+$color-surface-4: var(--nutui-white-12) !default;
+$color-surface-overlay: var(--nutui-black-8) !default; // 	Mask遮罩
+
+// 边框
+$color-border-shade: var(--nutui-gray-3) !default;
+$color-border: var(
+  --nutui-gray-2
+) !default; // 默认按钮、输入框等表单组件默认的边框色，分隔线默认色
+$color-border-tint: var(
+  --nutui-gray-1
+) !default; // 默认按钮、输入框等表单组件默认的边框禁用色
+
+// 文本
+$color-title: var(
+  --nutui-gray-12
+) !default; // 一级文字色；主要内容用色，常用语常规标题内容、细文浏览
+$color-text: var(
+  --nutui-gray-10
+) !default; //	二级文字色；次要文字色，用于次级标题、正文等属性标示、非主要信息引导等。
+$color-text-help: var(
+  --nutui-gray-8
+) !default; //	三级文字色；注释帮助说明文本，面包屑、输入字段占位符等。
+$color-text-disabled: var(
+  --nutui-gray-7
+) !default; // 四级文字色；禁用文本，失效文本
+$color-text-dark: var(--nutui-white-12) !default; //	深色背景下的反向文本色
+$color-text-link: $color-primary !default; //链接文本色
+$color-text-title: $color-title;
+
+// 字号
+$font-h1: var(--nutui-font-size-7) !default; //导航栏标题、
+$font-h2: var(--nutui-font-size-6) !default;
+$font-h3: var(
+  --nutui-font-size-5
+) !default; //标题文本，卡片标题、板块标题、tabs 标题，小号标题
+$font-h4: var(--nutui-font-size-4) !default; //次要文本，List 列表标题
+$font-h5: var(--nutui-font-size-3) !default; //级联选择等小号组件标题
+$font-text-large: var(
+  --nutui-font-size-5
+) !default; //大字号，label、大号按钮等文本
+$font-text-base: var(--nutui-font-size-4) !default; //标准字号，正文字号
+$font-text-small: var(--nutui-font-size-3) !default;
+$font-text-xs: var(--nutui-font-size-2) !default; //注释说明文本字号
+$font-text-mini: var(
+  --nutui-font-size-1
+) !default; //提示标记备注，最小宽容度的字号，如徽标中的数值字号
+
+// 字重
+$font-weight: 400;
+$font-weight-bold: 600;
+
+// 行高
+$line-height-base: var(--nutui-line-height-base, 1.4) !default;
+
+// 间距 space
+$spacing-xxs: var(--nutui-spacing-1) !default; // 多用于文本与图标之间的间距
+$spacing-xs: var(--nutui-spacing-2) !default; // 多用于文本与图标之间的间距
+$spacing-s: var(--nutui-spacing-3) !default; // 二级卡片与屏幕两侧的间距
+$spacing-base: var(
+  --nutui-spacing-4
+) !default; // 楼层间距（二级卡片之间的上下间距）
+$spacing-l: var(
+  --nutui-spacing-5
+) !default; // 卡片布局容器中，同类信息组之间的上下间距（比如两行金刚位之间的间距）
+$spacing-xl: var(
+  --nutui-spacing-6
+) !default; // 卡片布局容器中，信息组之间的上下间距
+$spacing-xxl: var(--nutui-spacing-7) !default; // 卡片布局容器的内容左右间距，
+$spacing-xxxl: var(--nutui-spacing-8) !default; // 卡片布局容器的内容上下间距
+
+// 圆角 corners
+$radius-xxs: var(
+  --nutui-radius-1
+) !default; // 极小号按钮、标签、多选框等组件的圆角样式
+$radius-xs: var(
+  --nutui-radius-2
+) !default; // 极小、小号的按钮、标签等组件的圆角样式
+$radius-s: var(
+  --nutui-radius-3
+) !default; // 中号、大号按钮、输入框等表单组件的圆角样式
+$radius-base: var(--nutui-radius-4) !default; // 常规宫格排列的卡片圆角样式
+$radius-l: var(
+  --nutui-radius-5
+) !default; // 下拉菜单、popup 等组件的默认圆角样式
+$radius-xl: var(--nutui-radius-6) !default; // 一级页面模块容器使用的圆角样式
+$radius-circle: 50px !default; // 按钮、徽标等组件的胶囊形态圆角样式
+$radius-full: 50% !default; // 头像、图片等不限制尺寸规格，需要以圆形呈现
+
+// 阴影 shadows
+$shadow-light: 0 0 4px 0 rgba(0, 0, 0, 0.05) !default;
+$shadow-raised: 0 0 6px 0 rgba(0, 0, 0, 0.1) !default;
+$shadow-overlay: 0 0 8px 0 rgba(0, 0, 0, 0.2) !default;
+
+// =================== 基础变量 END ==========  //
+
+// ========= nutui 变量 ======== //
+$color-text-disabled: $color-text-disabled;
+// 页面基底色，用于卡片式页面的兜底，永远置于页面最底层。
+$color-background: $color-surface-1 !default;
+// 卡片背景色
+$color-background-overlay: $color-surface-2 !default;
+// 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
+$color-background-sunken: var(--nutui-gray-2, #f8f8f8) !default;
+
+// 蒙层颜色
+// 页面全局蒙层
+$color-mask: $color-surface-overlay;
+// 容错蒙层
+$color-mask-part: var(--nutui-black-2, rgba(0, 0, 0, 0.02)) !default;
+
+$spacing-icon-text: var(--nutui-spacing-2, 4px) !default;
+
+// ---- Font Family ----
+$font-family:
+  PingFang SC,
+  Microsoft YaHei,
+  Helvetica,
+  Hiragino Sans GB,
+  SimSun,
+  sans-serif !default;
+
+// Font
+$font-size-xxs: var(--nutui-font-size-1) !default;
+$font-size-xs: var(--nutui-font-size-2) !default;
+$font-size-small: var(--nutui-font-size-3) !default;
+$font-size-base: var(--nutui-font-size-4) !default;
+$font-size-large: var(--nutui-font-size-5) !default;
+$font-size-xl: var(--nutui-font-size-6) !default;
+$font-size-xxl: var(--nutui-font-size-8) !default;
+$font-size-xxxl: var(--nutui-font-size-10) !default;
+
+$space-mini: $spacing-xs !default;
+$space-large: $spacing-l !default;
+$space-xl: $spacing-xl !default;
+$space-xxl: $spacing-xxl !default;
+
+// todo
+// 与品牌色一起使用，默认为白色，不区分暗黑与明亮模式。
+$color-primary-text: var(--nutui-color-primary-text) !default;
+$color-info: var(--nutui-color-info) !default;
+// 链接色 todo
+$color-text-link: var(--nutui-color-text-link) !default;
+$white: #ffffff !default;
+$black: $color-text-title !default;
+
+// --- z-index ----
+$mask-z-index: 1000;
+$mask-content-z-index: 1200;
+
+// ---- Animation ----
+$animation-duration: 0.25s !default;
+$animation-timing-fun: cubic-bezier(0.55, 0.085, 0.68, 0.53) !default;
+
+// padding
+$padding-xs: var(--nutui-padding-xs, 12px) !default;
 
 $gray0: var(--nutui-gray-0, #000000) !default;
 // 主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
@@ -28,28 +228,6 @@ $gray9: var(--nutui-gray-9, #f0f0f0) !default;
 // 图片容错蒙层
 $gray10: var(--nutui-gray-10, rgba(0, 0, 0, 0.02)) !default;
 
-// 暗黑映射,用于 nut-theme-dark 方式
-$dark-brand-color: #3768fa !default;
-$dark-brand-color-start: #3768fa !default;
-$dark-brand-color-end: #2c53c8 !default;
-$dark0: #000000 !default;
-$dark1: #e6e6e6 !default;
-$dark2: #828282 !default;
-$dark3: #404040 !default;
-$dark4: #0a0a0a !default;
-$dark5: #141414 !default;
-$dark6: #1f1f1f !default;
-$dark7: rgba(0, 0, 0, 0.7) !default;
-$dark8: rgba(0, 0, 0, 0.4) !default;
-$dark9: rgba(0, 0, 0, 0.08) !default;
-$dark10: rgba(0, 0, 0, 0.02) !default;
-// ----------------------------------------------------
-// 主色调
-$primary-color: $brand-color !default;
-$primary-color-start: $brand-color-start !default;
-$primary-color-end: $brand-color-end !default;
-$primary-link-color: #396acc !default;
-$primary-text-color: $brand-text-color !default;
 // ----------------------------------------------------
 // 标题常规文字
 $title-color: $gray1 !default;
@@ -61,58 +239,17 @@ $text-color: $gray2 !default;
 $help-color: $gray5 !default;
 // 特殊禁用色
 $disable-color: $gray3 !default;
-$required-color: $primary-color !default;
 $white: $gray6 !default;
 $black: $gray0 !default;
 // ----------------------------------------------------
 // 蒙层颜色
 // 页面全局蒙层
 $mask-color: $gray7 !default;
-// 局部蒙层，用于非整页遮罩
-$mask-color2: $gray8 !default;
-// 图片容错蒙层
-$mask-color3: $gray10 !default;
 
 // 背景色
 $background-color: $gray4 !default;
 $background-color2: $gray5 !default;
 $background-color3: $gray6 !default;
-
-// 分割信息的颜色
-$divider-color: $gray9 !default;
-
-// ---- Font Family ----
-$font-family:
-  PingFang SC,
-  Microsoft YaHei,
-  Helvetica,
-  Hiragino Sans GB,
-  SimSun,
-  sans-serif !default;
-
-// --- z-index ----
-$mask-z-index: 1000;
-$mask-content-z-index: 1200;
-
-// ---- Animation ----
-$animation-duration: 0.25s !default;
-$animation-timing-fun: cubic-bezier(0.55, 0.085, 0.68, 0.53) !default;
-
-// Font
-$font-size-0: var(--nutui-font-size-0, 10px) !default;
-$font-size-1: var(--nutui-font-size-1, 12px) !default;
-$font-size-2: var(--nutui-font-size-2, 14px) !default;
-$font-size-3: var(--nutui-font-size-3, 16px) !default;
-$font-size-4: var(--nutui-font-size-4, 18px) !default;
-$font-weight-bold: var(--nutui-font-weight-bold, 400) !default;
-
-$font-size-small: $font-size-1 !default;
-$font-size-base: $font-size-2 !default;
-$font-size-large: $font-size-3 !default;
-$line-height-base: var(--nutui-line-height-base, 1.5) !default;
-
-// padding
-$padding-xs: var(--nutui-padding-xs, 12px) !default;
 
 // button（✅）
 $button-border-radius: var(--nutui-button-border-radius, 4px) !default;
@@ -144,7 +281,7 @@ $button-default-line-height: var(
 $button-block-line-height: var(--nutui-button-block-line-height, 46px) !default;
 $button-default-font-size: var(
   --nutui-button-default-font-size,
-  $font-size-2
+  $font-size-base
 ) !default;
 $button-large-font-size: var(
   --nutui-button-large-font-size,
@@ -152,11 +289,11 @@ $button-large-font-size: var(
 ) !default;
 $button-small-font-size: var(
   --nutui-button-small-font-size,
-  $font-size-1
+  $font-size-small
 ) !default;
 $button-mini-font-size: var(
   --nutui-button-mini-font-size,
-  $font-size-1
+  $font-size-small
 ) !default;
 $button-mini-line-height: var(--nutui-button-mini-line-height, 1.2) !default;
 
@@ -180,16 +317,16 @@ $button-text-icon-mini-margin-left: var(
 $button-disabled-opacity: var(--nutui-button-disabled-opacity, 0.68) !default;
 $button-primary-color: var(
   --nutui-button-primary-color,
-  $primary-text-color
+  $color-primary-text
 ) !default;
 $button-primary-border-color: var(
   --nutui-button-primary-border-color,
-  $primary-color
+  $color-primary
 ) !default;
 $button-primary-background-color: linear-gradient(
   135deg,
-  $primary-color 0%,
-  $primary-color-end 100%
+  $color-primary 0%,
+  $color-primary-stop-2 100%
 ) !default;
 $button-info-color: var(--nutui-button-info-color, #3768fa) !default;
 $button-info-border-color: var(
@@ -202,7 +339,7 @@ $button-info-background-color: var(
 ) !default;
 $button-success-color: var(
   --nutui-button-success-color,
-  $primary-text-color
+  $color-primary-text
 ) !default;
 $button-success-border-color: var(
   --nutui-button-success-border-color,
@@ -218,7 +355,7 @@ $button-success-background-color: linear-gradient(
 
 $button-danger-color: var(
   --nutui-button-danger-color,
-  $primary-text-color
+  $color-primary-text
 ) !default;
 $button-danger-border-color: var(
   --nutui-button-danger-border-color,
@@ -230,7 +367,7 @@ $button-danger-background-color: var(
 ) !default;
 $button-warning-color: var(
   --nutui-button-warning-color,
-  $primary-text-color
+  $color-primary-text
 ) !default;
 $button-warning-border-color: var(
   --nutui-button-warning-border-color,
@@ -247,17 +384,23 @@ $button-warning-background-color: linear-gradient(
 // cell（✅）
 
 $cell-title-color: var(--nutui-cell-title-color, #262626) !default;
-$cell-title-font-size: var(--nutui-cell-title-font-size, $font-size-2) !default;
+$cell-title-font-size: var(
+  --nutui-cell-title-font-size,
+  $font-size-base
+) !default;
 $cell-description-font-size: var(
   --nutui-cell-description-font-size,
-  $font-size-1
+  $font-size-small
 ) !default;
 $cell-description-font: var(
   --nutui-cell-extra-font-size,
-  $font-size-2
+  $font-size-base
 ) !default;
 $cell-description-color: var(--nutui-cell-extra-color, $disable-color) !default;
-$cell-extra-font-size: var(--nutui-cell-extra-font-size, $font-size-2) !default;
+$cell-extra-font-size: var(
+  --nutui-cell-extra-font-size,
+  $font-size-base
+) !default;
 $cell-extra-color: var(--nutui-cell-extra-color, $gray2) !default;
 $cell-subtitle-color: var(--nutui-cell-description-color, $gray2) !default;
 $cell-border-radius: var(--nutui-cell-border-radius, 4px) !default;
@@ -284,7 +427,7 @@ $cell-large-title-description-font: var(
 $cell-large-padding: var(--nutui-cell-large-padding, 16px 16px) !default;
 $cell-background-color: var(
   --nutui-cell-background-color,
-  $primary-text-color
+  $color-primary-text
 ) !default;
 $cell-box-shadow: var(
   --nutui-cell-box-shadow,
@@ -300,7 +443,7 @@ $cell-group-title-padding: var(
 $cell-group-title-color: var(--nutui-cell-group-title-color, #262626) !default;
 $cell-group-title-font-size: var(
   --nutui-cell-group-title-font-size,
-  $font-size-2
+  $font-size-base
 ) !default;
 $cell-group-title-line-height: var(
   --nutui-cell-group-title-line-height,
@@ -316,7 +459,7 @@ $cell-group-description-color: var(
 ) !default;
 $cell-group-description-font-size: var(
   --nutui-cell-group-description-font-size,
-  $font-size-1
+  $font-size-small
 ) !default;
 $cell-group-description-line-height: var(
   --nutui-cell-group-description-line-height,
@@ -332,7 +475,7 @@ $cell-group-background-color: var(
 $divider-margin: var(--nutui-divider-margin, 16px 0) !default;
 $divider-text-font-size: var(
   --nutui-divider-text-font-size,
-  $font-size-2
+  $font-size-base
 ) !default;
 $divider-text-color: var(--nutui-divider-text-color, #f0f0f0) !default;
 $divider-line-height: var(--nutui-divider-line-height, 2px) !default;
@@ -426,7 +569,7 @@ $uploader-preview-close-top: var(
 ) !default;
 // picker（✅）（todo:react版本picker组件dom元素类名变化较大，picker.scss暂不改动）
 $picker-bar-cancel-color: var(--nutui-picker-cancel-color, #808080) !default;
-$picker-bar-ok-color: var(--nutui-picker-ok-color, $primary-color) !default;
+$picker-bar-ok-color: var(--nutui-picker-ok-color, $color-primary) !default;
 $picker-bar-cancel-font-size: var(
   --nutui-picker-bar-cancel-font-size,
   14px
@@ -479,12 +622,12 @@ $input-border-bottom-width: var(
   0px
 ) !default;
 $input-disabled-color: var(--nutui-input-disabled-color, #c8c9cc) !default;
-$input-font-size: var(--nutui-input-font-size, $font-size-2) !default;
+$input-font-size: var(--nutui-input-font-size, $font-size-base) !default;
 $input-padding: var(--nutui-input-padding, 10px 25px) !default;
 
 // textarea（✅）
 
-$textarea-font: var(--nutui-textarea-font, $font-size-2) !default;
+$textarea-font: var(--nutui-textarea-font, $font-size-base) !default;
 $textarea-padding: var(--nutui-textarea-padding, 10px 25px) !default;
 $textarea-limit-color: var(--nutui-textarea-limit-color, $text-color) !default;
 $textarea-text-color: var(--nutui-textarea-text-color, $title-color) !default;
@@ -584,7 +727,7 @@ $actionsheet-item-color: var(
 ) !default;
 $actionsheet-item-danger: var(
   --nutui-actionsheet-item-danger,
-  $primary-color
+  $color-primary
 ) !default;
 
 //shortpassword（✅）
@@ -596,7 +739,7 @@ $shortpassword-border-color: var(
   --nutui-shortpassword-border-color,
   #ddd
 ) !default;
-$shortpassword-error: var(--nutui-shortpassword-error, $primary-color) !default;
+$shortpassword-error: var(--nutui-shortpassword-error, $color-primary) !default;
 $shortpassword-forget: var(
   --nutui-shortpassword-forget,
   rgba(128, 128, 128, 1)
@@ -733,7 +876,7 @@ $switch-inactive-background-color: var(
 ) !default;
 $switch-active-background-color: var(
   --nutui-switch-open-background-color,
-  $primary-color
+  $color-primary
 ) !default;
 $switch-close-line-background-color: var(
   --nutui-switch-close-line-bg-color,
@@ -774,7 +917,7 @@ $backtop-border-color: var(--nutui-backtop-border-color, #e0e0e0) !default;
 // calendar（✅）
 $calendar-active-background-color: var(
   --nutui-calendar-active-background-color,
-  $primary-color
+  $color-primary
 ) !default;
 $calendar-choose-background-color: var(
   --nutui-calendar-choose-background-color,
@@ -782,16 +925,16 @@ $calendar-choose-background-color: var(
 ) !default;
 $calendar-choose-color: var(
   --nutui-calendar-choose-color,
-  $primary-color
+  $color-primary
 ) !default;
 $calendar-disable-color: var(--nutui-calendar-disable-color, #d1d0d0) !default;
 $calendar-base-font-size: var(
   --nutui-calendar-base-font-size,
-  $font-size-3
+  $font-size-large
 ) !default;
 $calendar-title-font-size: var(
   --nutui-calendar-title-font-size,
-  $font-size-4
+  $font-size-xl
 ) !default;
 $calendar-title-font-weight: var(
   --nutui-calendar-title-font-weight,
@@ -799,11 +942,11 @@ $calendar-title-font-weight: var(
 ) !default;
 $calendar-sub-title-font-size: var(
   --nutui-calendar-sub-title-font-size,
-  $font-size-2
+  $font-size-base
 ) !default;
 $calendar-day67-color: var(
   --nutui-calendar-day67-color,
-  $primary-color
+  $color-primary
 ) !default;
 $calendar-header-height: var(--nutui-calendar-header-height, 24px) !default;
 $calendar-day-width: var(--nutui-calendar-day-width, 14.28%) !default;
@@ -835,7 +978,7 @@ $notify-height: var(--nutui-notify-height, 44px) !default;
 $notify-line-height: var(--nutui-notify-line-height, auto) !default;
 $notify-base-background-color: var(
   --nutui-notify-base-background-color,
-  linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%)
+  linear-gradient(135deg, $color-primary 0%, $color-primary-stop-2 100%)
 ) !default;
 $notify-primary-background-color: var(
   --nutui-notify-primary-background-color,
@@ -862,7 +1005,7 @@ $notify-warning-background-color: var(
 
 // rate（✅）
 $rate-item-margin: var(--nutui-rate-item-margin, 14px) !default;
-$rate-icon-color: var(--nutui-rate-icon-color, $primary-color) !default;
+$rate-icon-color: var(--nutui-rate-icon-color, $color-primary) !default;
 $rate-icon-void-color: var(
   --nutui-rate-icon-void-color,
   $disable-color
@@ -870,7 +1013,7 @@ $rate-icon-void-color: var(
 
 // tabbar（✅）
 $tabbar-height: var(--nutui-tabbar-height, 50px) !default;
-$tabbar-active-color: var(--nutui-tabbar-active-color, $primary-color) !default;
+$tabbar-active-color: var(--nutui-tabbar-active-color, $color-primary) !default;
 $tabbar-inactive-color: var(--nutui-tabbar-inactive-color, $gray1) !default;
 $tabbar-border-top: var(--nutui-tabbar-border-top, 1px solid #eee) !default;
 $tabbar-border-bottom: var(
@@ -901,16 +1044,16 @@ $range-font-color: var(--nutui-range-font-color, $gray1) !default;
 $range-height: var(--nutui-range-height, 4px) !default;
 $range-margin: var(--nutui-range-margin, 15px) !default;
 $range-inactive-color: var(--nutui-range-inactive-color, #fa958c) !default;
-$range-active-color: var(--nutui-range-active-color, $primary-color) !default;
+$range-active-color: var(--nutui-range-active-color, $color-primary) !default;
 $range-button-background: var(
   --nutui-range-button-background,
-  $primary-text-color
+  $color-primary-text
 ) !default;
 $range-button-width: var(--nutui-range-button-width, 24px) !default;
 $range-button-height: var(--nutui-range-button-height, 24px) !default;
 $range-button-border: var(
   --nutui-range-button-border,
-  1px solid $primary-color
+  1px solid $color-primary
 ) !default;
 
 //swiper（✅）
@@ -923,8 +1066,8 @@ $swiper-indicator-item-background-color: var(
 //address
 $address-tab-line-background: linear-gradient(
   90deg,
-  $primary-color 0%,
-  $primary-color-end 100%
+  $color-primary 0%,
+  $color-primary-stop-2 100%
 ) !default;
 
 //steps（✅）
@@ -984,7 +1127,7 @@ $steps-wait-content-color: var(
 ) !default;
 $steps-process-icon-bg-color: var(
   --nutui-steps-process-icon-bg-color,
-  $primary-color
+  $color-primary
 ) !default;
 $steps-process-icon-color: var(
   --nutui-steps-process-icon-color,
@@ -992,7 +1135,7 @@ $steps-process-icon-color: var(
 ) !default;
 $steps-process-title-color: var(
   --nutui-steps-process-title-color,
-  $primary-color
+  $color-primary
 ) !default;
 $steps-process-title-font-size: var(
   --nutui-steps-process-title-font-size,
@@ -1009,15 +1152,15 @@ $steps-process-content-color: var(
 
 $steps-finish-icon-bg-color: var(
   --nutui-steps-finish-icon-bg-color,
-  $primary-text-color
+  $color-primary-text
 ) !default;
 $steps-finish-icon-color: var(
   --nutui-steps-finish-icon-color,
-  $primary-color
+  $color-primary
 ) !default;
 $steps-finish-title-color: var(
   --nutui-steps-finish-title-color,
-  $primary-color
+  $color-primary
 ) !default;
 $steps-finish-content-color: var(
   --nutui-steps-finish-description-color,
@@ -1025,14 +1168,14 @@ $steps-finish-content-color: var(
 ) !default;
 $steps-finish-line-background: var(
   --nutui-steps-finish-line-background,
-  $primary-color
+  $color-primary
 ) !default;
 
 $steps-dot-icon-width: var(--nutui-steps-dot-icon-width, 6px) !default;
 $steps-dot-icon-height: var(--nutui-steps-dot-icon-height, 6px) !default;
 $steps-dot-icon-border: var(
   --nutui-steps-dot-icon-border,
-  2px solid $primary-text-color
+  2px solid $color-primary-text
 ) !default;
 $steps-dot-head-margin: var(--nutui-steps-dot-head-margin, 7px 0 0 0) !default;
 
@@ -1123,7 +1266,7 @@ $checkbox-icon-disable-color2: var(
 $radio-label-font-color: var(--nutui-radio-label-font-color, $gray1) !default;
 $radio-label-font-active-color: var(
   --nutui-radio-label-font-active-color,
-  $primary-color
+  $color-primary
 ) !default;
 $radio-label-disable-color: var(
   --nutui-radio-label-disable-color,
@@ -1135,7 +1278,7 @@ $radio-icon-disable-color: var(
 ) !default;
 $radio-label-button-border-color: var(
   --nutui-radio-label-button-border-color,
-  $primary-color
+  $color-primary
 ) !default;
 $radio-label-button-background: var(
   --nutui-radio-label-button-background,
@@ -1184,7 +1327,10 @@ $signature-background-color: var(
   --nutui-signature-background-color,
   $gray6
 ) !default;
-$signature-font-size: var(--nutui-signature-font-size, $font-size-2) !default;
+$signature-font-size: var(
+  --nutui-signature-font-size,
+  $font-size-base
+) !default;
 
 //fixednav（✅）
 $fixednav-bg-color: var(--nutui-fixednav-bg-color, #fff) !default;
@@ -1192,12 +1338,12 @@ $fixednav-font-color: var(--nutui-fixednav-font-color, #000) !default;
 $fixednav-index: var(--nutui-fixednav-index, 900) !default;
 $fixednav-btn-bg: linear-gradient(
   135deg,
-  $primary-color 0%,
-  $primary-color-end 100%
+  $color-primary 0%,
+  $color-primary-stop-2 100%
 ) !default;
 $fixednav-item-active-color: var(
   --nutui-fixednav-item-active-color,
-  $primary-color
+  $color-primary
 ) !default;
 
 // NoticeBar（✅）
@@ -1240,7 +1386,7 @@ $timeselect-title-color: var(
 ) !default;
 $timeselect-title-font-size: var(
   --nutui-timeselect-title-font-size,
-  $font-size-2
+  $font-size-base
 ) !default;
 $timeselect-title-background: var(
   --nutui-timeselect-title-background,
@@ -1263,7 +1409,7 @@ $timeselect-date-active-color: var(
 ) !default;
 $timeselect-date-font-size: var(
   --nutui-timeselect-date-font-size,
-  $font-size-2
+  $font-size-base
 ) !default;
 
 $timeselect-time-width: var(--nutui-timeselect-time-width, 100px) !default;
@@ -1283,7 +1429,7 @@ $timeselect-time-color: var(
 ) !default;
 $timeselect-time-active-color: var(
   --nutui-timeselect-time-active-color,
-  $primary-color
+  $color-primary
 ) !default;
 $timeselect-time-background: var(
   --nutui-timeselect-time-background,
@@ -1309,7 +1455,7 @@ $tag-mark-border-radius: var(
 $tag-background-color: var(--nutui-tag-background-color, #000000) !default;
 $tag-primary-background-color: var(
   --nutui-tag-primary-background-color,
-  $primary-color
+  $color-primary
 ) !default;
 $tag-success-background-color: var(
   --nutui-tag-success-background-color,
@@ -1329,17 +1475,17 @@ $tag-warning-background-color: var(
 //badge（✅）
 $badge-background-color: var(
   --nutui-badge-background-color,
-  linear-gradient(135deg, $primary-color 0%, $primary-color-end 100%)
+  linear-gradient(135deg, $color-primary 0%, $color-primary-stop-2 100%)
 ) !default;
 $badge-color: var(--nutui-badge-color, #fff) !default;
-$badge-font-size: var(--nutui-badge-font-size, $font-size-1) !default;
+$badge-font-size: var(--nutui-badge-font-size, $font-size-small) !default;
 $badge-default-background-color: var(
   --nutui-badge-default-background-color,
   rgba(255, 255, 255, 1)
 ) !default;
 $badge-border: var(
   --nutui-badge-border,
-  0px solid $primary-text-color
+  0px solid $color-primary-text
 ) !default;
 $badge-border-radius: var(--nutui-badge-border-radius, 14px) !default;
 $badge-min-width: var(--nutui-badge-min-width, 5px) !default;
@@ -1357,7 +1503,7 @@ $badge-dot-padding: var(--nutui-badge-dot-padding, 0px) !default;
 
 //popover（✅）
 $popover-border-radius: var(--nutui-popover-border-radius, 8px) !default;
-$popover-font-size: var(--nutui-popover-font-size, $font-size-1) !default;
+$popover-font-size: var(--nutui-popover-font-size, $font-size-small) !default;
 $popover-menu-item-height: var(--nutui-popover-menu-item-height, 30px) !default;
 $popover-menu-item-name-margin: var(
   --nutui-popover-menu-item-name-margin,
@@ -1365,11 +1511,11 @@ $popover-menu-item-name-margin: var(
 ) !default;
 $popover-menu-item-hover-background-color: var(
   --nutui-popover-menu-item-hover-background-color,
-  $primary-color
+  $color-primary
 ) !default;
 $popover-menu-item-hover-text-color: var(
   --nutui-popover-menu-item-hover-text-color,
-  $primary-text-color
+  $color-primary-text
 ) !default;
 $popover-menu-item-border-width: var(
   --nutui-popover-menu-item-border-width,
@@ -1430,7 +1576,7 @@ $progress-background: var(--nutui-progress-background, #f3f3f3) !default;
 $progress-border-radius: var(--nutui-progress-border-radius, 12px) !default;
 $progress-text-color: var(
   --nutui-progress-text-color,
-  $primary-text-color
+  $color-primary-text
 ) !default;
 $progress-text-background: var(
   --nutui-progress-text-background,
@@ -1452,20 +1598,19 @@ $progress-text-border-radius: var(
 ) !default;
 
 //pagination（✅）
-$pagination-color: var(--nutui-pagination-color, $primary-color) !default;
-$pagination-font-size: var(--nutui-pagination-font-size, $font-size-2) !default;
+$pagination-color: var(--nutui-pagination-color, $color-primary) !default;
+$pagination-font-size: var(
+  --nutui-pagination-font-size,
+  $font-size-base
+) !default;
 $pagination-item-border-color: var(
   --nutui-pagination-item-border-color,
   #e4e7eb
 ) !default;
 $pagination-active-background-color: linear-gradient(
   135deg,
-  $primary-color 0%,
-  $primary-color-end 100%
-) !default;
-$dark-pagination-active-background-color: var(
-  --nutui-dark-pagination-active-background-color,
-  $dark-brand-color
+  $color-primary 0%,
+  $color-primary-stop-2 100%
 ) !default;
 $pagination-disable-color: var(
   --nutui-pagination-disable-color,
@@ -1491,7 +1636,7 @@ $pagination-prev-next-padding: var(
 // tabs（✅）
 $tabs-tab-smile-color: var(
   --nutui-tabs-tab-smile-color,
-  $primary-color
+  $color-primary
 ) !default;
 $tabs-titles-background-color: var(
   --nutui-tabs-titles-background-color,
@@ -1501,7 +1646,7 @@ $tabs-titles-border-radius: var(--nutui-tabs-titles-border-radius, 0) !default;
 $nut-tabs-title-gap: var(--nutui-tabs-title-gap, 0) !default;
 $tabs-titles-item-font-size: var(
   --nutui-tabs-titles-item-font-size,
-  $font-size-2
+  $font-size-base
 ) !default;
 
 $tabs-titles-item-color: var(
@@ -1510,7 +1655,7 @@ $tabs-titles-item-color: var(
 ) !default;
 $tabs-titles-item-active-color: var(
   --nutui-tabs-titles-item-active-color,
-  $primary-color
+  $color-primary
 ) !default;
 $tabs-titles-item-active-font-weight: var(
   --nutui-tabs-titles-item-active-font-weight,
@@ -1518,7 +1663,7 @@ $tabs-titles-item-active-font-weight: var(
 ) !default;
 $tabs-horizontal-tab-line-color: var(
   --nutui-tabs-horizontal-tab-line-color,
-  linear-gradient(90deg, $primary-color 0%, rgba(#2c53c8, 0.15) 100%)
+  linear-gradient(90deg, $color-primary 0%, rgba(#2c53c8, 0.15) 100%)
 ) !default;
 $tabs-horizontal-tab-line-bottom: var(
   --nutui-tabs-horizontal-line-bottom,
@@ -1554,7 +1699,7 @@ $tabs-horizontal-titles-item-active-line-height: var(
 ) !default;
 $tabs-vertical-tab-line-color: var(
   --nutui-tabs-vertical-tab-line-color,
-  linear-gradient(180deg, $primary-color 0%, rgba(#2c53c8, 0.15) 100%)
+  linear-gradient(180deg, $color-primary 0%, rgba(#2c53c8, 0.15) 100%)
 ) !default;
 $tabs-vertical-titles-item-height: var(
   --nutui-tabs-vertical-titles-item-height,
@@ -1574,7 +1719,7 @@ $tabs-vertical-titles-width: var(
 ) !default;
 
 // indicator（✅）
-$indicator-color: var(--nutui-indicator-color, $primary-color) !default;
+$indicator-color: var(--nutui-indicator-color, $color-primary) !default;
 $indicator-dot-color: var(--nutui-indicator-dot-color, $disable-color) !default;
 $indicator-dot-size: var(--nutui-indicator-dot-size, 5px) !default;
 $indicator-dot-active-size: var(
@@ -1591,11 +1736,14 @@ $indicator-dot-vertical-margin: var(
 // menu（✅）
 $menu-bar-line-height: var(--nutui-menu-bar-line-height, 48px) !default;
 $menu-placeholder-top: var(--nutui-menu-placeholder-top, -48px) !default;
-$menu-item-font-size: var(--nutui-menu-item-font-size, $font-size-2) !default;
+$menu-item-font-size: var(
+  --nutui-menu-item-font-size,
+  $font-size-base
+) !default;
 $menu-item-text-color: var(--nutui-menu-item-text-color, $title-color) !default;
 $menu-item-active-text-color: var(
   --nutui-menu-item-active-text-color,
-  $primary-color
+  $color-primary
 ) !default;
 $menu-bar-border-bottom-color: var(
   --nutui-menu-bar-border-bottom-color,
@@ -1664,7 +1812,7 @@ $collapse-item-disabled-color: var(
 ) !default;
 $collapse-item-font-size: var(
   --nutui-collapse-item-font-size,
-  $font-size-2
+  $font-size-base
 ) !default;
 $collapse-item-line-height: var(
   --nutui-collapse-item-line-height,
@@ -1684,7 +1832,7 @@ $collapse-wrapper-content-color: var(
 ) !default;
 $collapse-wrapper-content-font-size: var(
   --nutui-collapse-wrapper-content-font-size,
-  $font-size-2
+  $font-size-base
 ) !default;
 $collapse-wrapper-content-line-height: var(
   --nutui-collapse-wrapper-content-line-height,
@@ -1767,7 +1915,7 @@ $empty-description-padding: var(
   0 40px
 ) !default;
 // cascader（✅）
-$cascader-font-size: var(--nutui-cascader-font-size, $font-size-2) !default;
+$cascader-font-size: var(--nutui-cascader-font-size, $font-size-base) !default;
 $cascader-line-height: var(--nutui-cascader-line-height, 22px) !default;
 $cascader-title-padding: var(
   --nutui-cascader-title-padding,
@@ -1794,7 +1942,7 @@ $cascader-bar-padding: var(
 ) !default;
 $cascader-bar-font-size: var(
   --nutui-cascader-bar-font-size,
-  $font-size-4
+  $font-size-xl
 ) !default;
 $cascader-bar-line-height: var(--nutui-cascader-bar-line-height, 20px) !default;
 $cascader-bar-color: var(--nutui-cascader-bar-color, $title-color) !default;
@@ -1808,25 +1956,25 @@ $cascader-item-border-bottom: var(
 $cascader-item-color: var(--nutui-cascader-item-color, $title-color) !default;
 $cascader-item-font-size: var(
   --nutui-cascader-item-font-size,
-  $font-size-2
+  $font-size-base
 ) !default;
 $cascader-item-active-color: var(
   --nutui-cascader-item-active-color,
-  $primary-color
+  $color-primary
 ) !default;
 
 // form（✅ todo：react版本该组件暂无，将变量先迁过来）
 $form-item-error-line-color: var(
   --nutui-form-item-error-line-color,
-  $required-color
+  $color-primary
 ) !default;
 $form-item-required-color: var(
   --nutui-form-item-required-color,
-  $required-color
+  $color-primary
 ) !default;
 $form-item-error-message-color: var(
   --nutui-form-item-error-message-color,
-  $required-color
+  $color-primary
 ) !default;
 $form-item-label-font-size: var(
   --nutui-form-item-label-font-size,
@@ -1872,7 +2020,7 @@ $skeleton-line-border-radius: var(
 // sku（✅ todo：react版本该组件暂无，将变量先迁过来）
 $sku-item-border: var(
   --nutui-sku-item-border,
-  1px solid $primary-color
+  1px solid $color-primary
 ) !default;
 $sku-item-disable-line: var(
   --nutui-sku-item-disable-line,
@@ -1880,12 +2028,12 @@ $sku-item-disable-line: var(
 ) !default;
 $sku-opetate-bg-default: linear-gradient(
   90deg,
-  $primary-color,
-  $primary-color-end 100%
+  $color-primary,
+  $color-primary-stop-2 100%
 ) !default;
 $sku-item-active-bg: var(
   --nutui-sku-item-active-bg,
-  rgba($primary-color, 0.15)
+  rgba($color-primary, 0.15)
 ) !default;
 $sku-opetate-bg-buy: linear-gradient(
   135deg,
@@ -1967,7 +2115,7 @@ $grid-item-text-color: var(--nutui-grid-item-text-color, $gray1) !default;
 $grid-item-icon-color: var(--nutui-grid-item-icon-color, $gray1) !default;
 $grid-item-text-font-size: var(
   --nutui-grid-item-text-font-size,
-  $font-size-1
+  $font-size-small
 ) !default;
 
 // table（✅）
@@ -1987,10 +2135,10 @@ $navbar-box-shadow: var(
   0px 1px 7px 0px rgba(237, 238, 241, 1)
 ) !default;
 $navbar-color: var(--nutui-navbar-color, $gray1) !default;
-$navbar-font-size: var(--nutui-navbar-font-size, $font-size-2) !default;
+$navbar-font-size: var(--nutui-navbar-font-size, $font-size-base) !default;
 $navbar-title-font-size: var(
   --nutui-navbar-title-font-size,
-  $font-size-2
+  $font-size-base
 ) !default;
 $navbar-title-font-weight: var(--nutui-navbar-title-font-weight, 0) !default;
 $navbar-title-font-color: var(
@@ -2058,7 +2206,7 @@ $elevator-list-inner-bg-color: var(
 ) !default;
 $elevator-list-item-highcolor: var(
   --nutui-elevator-list-item-highcolor,
-  $primary-color
+  $color-primary
 ) !default;
 $elevator-list-item-font-size: var(
   --nutui-elevator-list-item-font-size,
@@ -2200,7 +2348,7 @@ $elevator-list-item-bars-inner-item-font-size: var(
 ) !default;
 $elevator-list-fixed-color: var(
   --nutui-elevator-list-fixed-color,
-  $primary-color
+  $color-primary
 ) !default;
 $elevator-list-fixed-bg-color: var(
   --nutui-elevator-list-fixed-bg-color,
@@ -2212,7 +2360,7 @@ $elevator-list-fixed-box-shadow: var(
 ) !default;
 $elevator-list-item-bars-inner-item-active-color: var(
   --nutui-elevator-list-item-bars-inner-item-active-color,
-  $primary-color
+  $color-primary
 ) !default;
 
 // list（✅）
@@ -2242,7 +2390,7 @@ $addresslist-set-bg: var(--nutui-addresslist-set-bg, #f5a623) !default;
 $addresslist-del-bg: var(--nutui-addresslist-del-bg, #e1251b) !default;
 $addresslist-contnts-contact-default: var(
   --nutui-addresslist-contnts-contact-default,
-  $primary-color
+  $color-primary
 ) !default;
 $addresslist-contnts-contact-color: var(
   --nutui-addresslist-contnts-contact-color,
@@ -2268,7 +2416,7 @@ $category-list-item-checked-color: var(
 ) !default;
 $category-list-item-checked-img-bg-color: var(
   --nutui-category-list-item-checked-img-bg-color,
-  $primary-color
+  $color-primary
 ) !default;
 $category-pane-gray-color: var(--nutui-category-pane-gray-color, #666) !default;
 $category-pane-border-color: var(
@@ -2283,7 +2431,7 @@ $category-pane-title-color: var(
 // circleProgress（✅）
 $circleprogress-primary-color: var(
   --nutui-circleprogress-primary-color,
-  $primary-color
+  $color-primary
 ) !default;
 $circleprogress-path-color: var(
   --nutui-circleprogress-path-color,
@@ -2295,7 +2443,7 @@ $circleprogress-text-color: var(
 ) !default;
 $circleprogress-text-size: var(
   --nutui-circleprogress-text-size,
-  $font-size-3
+  $font-size-large
 ) !default;
 
 // Comment（✅ todo：react版本该组件暂无，将变量先迁过来）
@@ -2311,7 +2459,7 @@ $comment-bottom-label-color: var(
   --nutui-comment-bottom-label-color,
   rgba(153, 153, 153, 1)
 ) !default;
-$comment-shop-color: var(--nutui-comment-shop-color, $primary-color) !default;
+$comment-shop-color: var(--nutui-comment-shop-color, $color-primary) !default;
 
 // Ellipsis（✅ todo：react版本该组件暂无，将变量先迁过来）
 $ellipsis-expand-collapse-color: var(
@@ -2333,13 +2481,13 @@ $trendarrow-font-size: var(--nutui-trendarrow-font-size, 14px) !default;
 $trendarrow-icon-margin: var(--nutui-trendarrow-icon-margin, 4px) !default;
 
 // animatingnumbers（✅）
+$countup-width: var(--nutui-countup-width, auto) !default;
 $countup-height: var(--nutui-countup-height, 32px) !default;
 $countup-base-size: var(--nutui-countup-base-size, 18px) !default;
-$countup-border-raduis: var(--nutui-countup-border-raduis, 4px) !default;
-$countup-lr-margin: var(--nutui-countup-lr-margin, 1px) !default;
-$countup-bgcolor: var(--nutui-countup-bgcolor, $brand-color) !default;
-$countup-color: var(--nutui-countup-color, #ffffff) !default;
-$countup-width: var(--nutui-countup-width, 24px) !default;
+$countup-border-radius: var(--nutui-countup-border-radius, 4px) !default;
+$countup-lr-margin: var(--nutui-countup-lr-margin, 0) !default;
+$countup-bg-color: var(--nutui-countup-bg-color, inherit) !default;
+$countup-color: var(--nutui-countup-color, $title-color) !default;
 
 // layout（✅）
 $row-content-color: var(--nutui-row-content-color, #fff) !default;

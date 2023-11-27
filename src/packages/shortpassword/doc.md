@@ -339,5 +339,5 @@ export default App;
 | --- | --- | --- |
 | \--nutui-shortpassword-background-color | 背景颜色 | `rgba(245, 245, 245, 1)` |
 | \--nutui-shortpassword-border-color | 边框颜色 | `#ddd` |
-| \--nutui-shortpassword-error | 错误提示字体颜色 | `$primary-color` |
+| \--nutui-shortpassword-error | 错误提示字体颜色 | `$color-primary` |
 | \--nutui-shortpassword-forget | 忘记密码字体颜色 | `rgba(128, 128, 128, 1)` |
