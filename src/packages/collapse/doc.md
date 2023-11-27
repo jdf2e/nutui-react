@@ -144,7 +144,7 @@ export default App;
 ```jsx
 import React from 'react'
 import { Collapse} from '@nutui/nutui-react'
-import { ArrowDown, Checked, HeartFill } from '@nutui/icons-react'
+import { ArrowDown, Checked } from '@nutui/icons-react'
 
 const App = () => {
   return (  
@@ -152,7 +152,7 @@ const App = () => {
     <Collapse.Item title="标题1" name="1" expandIcon={<Checked />}>
       京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
     </Collapse.Item>
-    <Collapse.Item title="标题2" name="2" expandIcon={<HeartFill />}>
+    <Collapse.Item title="标题2" name="2" expandIcon={<Checked />}>
       京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
     </Collapse.Item>
     <Collapse.Item title="标题3" name="3">
@@ -173,7 +173,7 @@ export default App;
 ```jsx
 import React from 'react'
 import { Collapse, Button} from '@nutui/nutui-react'
-import { ArrowDown, Checked, HeartFill } from '@nutui/icons-react'
+import { ArrowDown, Checked } from '@nutui/icons-react'
 
 const App = () => {
   return (  
@@ -203,7 +203,7 @@ const App = () => {
               alignItems: 'center',
             }}
           >
-            标题2<HeartFill color="red" />
+            标题2<Checked color="red" />
           </div>
         }
       >
