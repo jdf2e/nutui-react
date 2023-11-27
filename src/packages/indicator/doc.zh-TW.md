@@ -130,7 +130,7 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-indicator-color | 指示器焦點時色值 | `$primary-color` |
+| \--nutui-indicator-color | 指示器焦點時色值 | `$color-primary` |
 | \--nutui-indicator-dot-color | 指示器默認色值 | `$disable-color` |
 | \--nutui-indicator-dot-size | 指示器尺寸 | `5px` |
 | \--nutui-indicator-dot-active-size | 指示器焦點時尺寸 | `15px` |

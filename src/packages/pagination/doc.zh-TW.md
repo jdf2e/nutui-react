@@ -195,8 +195,8 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-pagination-color | 頁碼字色 |  `$primary-color` |
-| \--nutui-pagination-font-size | 頁碼字號 | `$font-size-2` |
+| \--nutui-pagination-color | 頁碼字色 |  `$color-primary` |
+| \--nutui-pagination-font-size | 頁碼字號 | `$font-size-base` |
 | \--nutui-pagination-item-border-color | 邊框顏色 | `#e4e7eb` |
 | \--nutui-pagination-disable-color | 不可用色 | `$disable-color` |
 | \--nutui-pagination-disable-background-color | 不可用背景色 | `#f7f8fa` |

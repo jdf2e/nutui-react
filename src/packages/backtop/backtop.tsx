@@ -3,6 +3,7 @@ import type { MouseEvent } from 'react'
 import { Top } from '@nutui/icons-react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import requestAniFrame from '@/utils/raf'
 
 declare const window: any
 
@@ -85,11 +86,11 @@ export const BackTop: FunctionComponent<
   }
 
   const scrollAnimation = () => {
-    let cid = requestAniFrame()(function fn() {
+    let cid = requestAniFrame(function fn() {
       const t = duration - Math.max(0, startTime - +new Date() + duration / 2)
       const y = (t * -scrollTop) / duration + scrollTop
       scroll(y)
-      cid = requestAniFrame()(fn)
+      cid = requestAniFrame(fn)
       if (t === duration || y === 0) {
         window.cancelAnimationFrame(cid)
       }
@@ -98,17 +99,6 @@ export const BackTop: FunctionComponent<
 
   const initCancelAniFrame = () => {
     window.cancelAnimationFrame = window.webkitCancelAnimationFrame
-  }
-  // 防频
-  const requestAniFrame = () => {
-    return (
-      window.requestAnimationFrame ||
-      window.webkitRequestAnimationFrame ||
-      window.mozRequestAnimationFrame ||
-      function (callback: any) {
-        window.setTimeout(callback, 1000 / 60)
-      }
-    )
   }
 
   // 监听事件

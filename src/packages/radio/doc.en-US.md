@@ -269,10 +269,10 @@ The component provides the following CSS Variables, which can be used for custom
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-radio-label-font-color | font color | `$gray1` |
-| \--nutui-radio-label-font-active-color | The selected font color in the button state | `$primary-color` |
+| \--nutui-radio-label-font-active-color | The selected font color in the button state | `$color-primary` |
 | \--nutui-radio-label-disable-color | disabled font color for label | `$gray3` |
 | \--nutui-radio-icon-disable-color | disabled font color for label | `$gray2` |
-| \--nutui-radio-label-button-border-color | shape is the border color of the button | `$primary-color` |
+| \--nutui-radio-label-button-border-color | shape is the border color of the button | `$color-primary` |
 | \--nutui-radio-label-button-background | shape is the background color of the button | `rgba(250, 44, 25, 0.05)` |
 | \--nutui-radio-label-margin-left | left margin of label | `15px` |
 | \--nutui-radio-label-font-size | font size | `14px` |

@@ -269,10 +269,10 @@ export default RadioGroupOptions;
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-radio-label-font-color | 字體顏色 | `$gray1` |
-| \--nutui-radio-label-font-active-color | 按鈕狀態下選中字體顏色 | `$primary-color` |
+| \--nutui-radio-label-font-active-color | 按鈕狀態下選中字體顏色 | `$color-primary` |
 | \--nutui-radio-label-disable-color | label 的禁用字體顏色 | `$gray3` |
 | \--nutui-radio-icon-disable-color | label 的禁用字體顏色 | `$gray2` |
-| \--nutui-radio-label-button-border-color | shape為button的邊框顏色 | `$primary-color` |
+| \--nutui-radio-label-button-border-color | shape為button的邊框顏色 | `$color-primary` |
 | \--nutui-radio-label-button-background | shape為button的背景色 | `rgba(250, 44, 25, 0.05)` |
 | \--nutui-radio-label-margin-left | label 的左外邊距 | `15px` |
 | \--nutui-radio-label-font-size | 字號 | `14px` |

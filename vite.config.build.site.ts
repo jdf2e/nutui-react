@@ -6,15 +6,15 @@ const atImport = require('postcss-import')
 const config = require('./package.json')
 
 const { resolve } = path
-let fileStr = `@import "@/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";`
+let fileStr = `@import "@/styles/variables.scss";`
 const projectID = process.env.VITE_APP_PROJECT_ID
 if (projectID) {
-  fileStr = `@import '@/styles/variables-${projectID}.scss';\n@import "@/sites/assets/styles/variables.scss";\n`
+  fileStr = `@import '@/styles/variables-${projectID}.scss';`
 }
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/h5/react/2x',
+  base: `/h5/react/${projectID === 'jmapp' ? 'jm' : '2x'}`,
   resolve: {
     alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
   },
@@ -46,7 +46,7 @@ export default defineConfig({
   plugins: [reactRefresh()],
   build: {
     target: 'es2015',
-    outDir: './dist/2x/',
+    outDir: `./dist/${projectID === 'jmapp' ? 'jm' : '2x'}/`,
     cssCodeSplit: true,
     rollupOptions: {
       input: {

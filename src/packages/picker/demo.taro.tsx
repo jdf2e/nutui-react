@@ -438,8 +438,8 @@ const PickerDemo = () => {
           theme={{
             nutuiPickerItemHeight: '48px',
             nutuiPickerItemActiveLineBorder:
-              '1px dashed var(--nutui-brand-color)',
-            nutuiPickerItemTextColor: 'var(--nutui-brand-color)',
+              '1px dashed var(--nutui-color-primary)',
+            nutuiPickerItemTextColor: 'var(--nutui-color-primary)',
           }}
         >
           <Picker

@@ -413,7 +413,7 @@ export default App;
 | 名稱 | 說明 | 預設值 |
 | --- | --- | --- |
 | \--nutui-picker-bar-cancel-color | 取消文案的色值 | `#808080` |
-| \--nutui-picker-bar-ok-color | 確認文案的色值 | `$primary-color` |
+| \--nutui-picker-bar-ok-color | 確認文案的色值 | `$color-primary` |
 | \--nutui-picker-bar-cancel-font-size | 取消字號 | `14px` |
 | \--nutui-picker-bar-ok-font-size | 確認字號 | `14px` |
 | \--nutui-picker-bar-button-padding | 取消和確認的padding值 | `0 15px` |

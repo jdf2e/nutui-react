@@ -3,53 +3,60 @@
   display: block;
   position: relative;
   overflow: hidden;
+
   &__list {
     display: block;
     position: relative;
-    top: 1px;
+    top: 0;
     overflow: hidden;
+    font-size: $elevator-list-font-size;
+    color: $elevator-list-color;
+
     &__inner {
       height: 100%;
       width: 100%;
       display: block;
-      background-color: $elevator-list-inner-bg-color;
+      background-color: $elevator-list-bg-color;
       overflow: auto;
     }
+
     &__item {
       display: block;
-      font-size: $elevator-list-item-font-size;
-      color: $elevator-list-item-font-color;
+
       &__code {
         display: flex;
         position: relative;
         height: $elevator-list-item-code-height;
         line-height: $elevator-list-item-code-line-height;
         font-size: $elevator-list-item-code-font-size;
-        color: $elevator-list-item-code-font-color;
-        padding: $elevator-list-item-code-padding;
+        color: $elevator-list-item-code-color;
+        padding: $elevator-list-item-padding;
         font-weight: $elevator-list-item-code-font-weight;
         box-sizing: border-box;
-        border-bottom: $elevator-list-item-code-border-bottom solid
-          $elevator-list-item-code-border-bottom-color;
+        border-bottom: $elevator-list-item-code-border-bottom;
+        background-color: $elevator-list-item-code-background-color;
       }
+
       &__name {
         display: flex;
         align-items: center;
-        padding: $elevator-list-item-name-padding;
+        padding: $elevator-list-item-padding;
         height: $elevator-list-item-name-height;
         line-height: $elevator-list-item-name-line-height;
+
         &--highcolor {
-          color: $elevator-list-item-highcolor;
+          color: $color-primary;
         }
       }
     }
+
     &__fixed {
       width: 100%;
       position: absolute;
       top: 0;
       left: 0;
       z-index: 1;
-      padding: $elevator-list-item-code-padding;
+      padding: $elevator-list-item-padding;
       height: $elevator-list-item-code-height;
       line-height: $elevator-list-item-code-line-height;
       font-size: $elevator-list-item-code-font-size;
@@ -60,11 +67,12 @@
       box-shadow: $elevator-list-fixed-box-shadow;
     }
   }
+
   &__code--current {
-    position: $elevator-list-item-code-current-position;
+    position: absolute;
     right: $elevator-list-item-code-current-right;
     top: $elevator-list-item-code-current-top;
-    transform: $elevator-list-item-code-current-transform;
+    transform: $elevator-bars-transform;
     width: $elevator-list-item-code-current-width;
     height: $elevator-list-item-code-current-height;
     line-height: $elevator-list-item-code-current-line-height;
@@ -73,24 +81,29 @@
     box-shadow: $elevator-list-item-code-current-box-shadow;
     text-align: $elevator-list-item-code-current-text-align;
   }
+
   &__bars {
-    position: $elevator-list-item-bars-position;
-    right: $elevator-list-item-bars-right;
-    top: $elevator-list-item-bars-top;
-    transform: $elevator-list-item-bars-transform;
-    padding: $elevator-list-item-bars-padding;
-    background-color: $elevator-list-item-bars-background-color;
-    border-radius: $elevator-list-item-bars-border-radius;
-    text-align: $elevator-list-item-bars-text-align;
-    z-index: $elevator-list-item-bars-z-index;
+    position: absolute;
+    right: $elevator-bars-right;
+    top: $elevator-bars-top;
+    font-size: $elevator-bars-font-size;
+    transform: $elevator-bars-transform;
+    padding: $elevator-bars-padding;
+    background-color: $elevator-bars-background-color;
+    border-radius: $elevator-bars-border-radius;
+    text-align: center;
+    z-index: $elevator-bars-z-index;
+
     &__inner {
       &__item {
         display: block;
-        padding: $elevator-list-item-bars-inner-item-padding;
-        font-size: $elevator-list-item-bars-inner-item-font-size;
+        padding: $elevator-bars-inner-item-padding;
+
         &--active {
-          color: $elevator-list-item-bars-inner-item-active-color;
+          font-weight: $font-weight-bold;
+          color: $elevator-bars-active-color;
         }
+
         cursor: pointer;
       }
     }

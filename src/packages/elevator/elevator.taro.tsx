@@ -24,6 +24,7 @@ export interface ElevatorProps extends BasicComponent {
   onItemClick: (key: string, item: ElevatorData) => void
   onIndexClick: (key: string) => void
 }
+
 const defaultProps = {
   ...ComponentDefaults,
   height: '200px',
@@ -35,11 +36,14 @@ const defaultProps = {
   showKeys: true,
   className: 'weapp-elevator',
 } as ElevatorProps
+
 interface ElevatorData {
   name: string
   id: number | string
+
   [key: string]: string | number
 }
+
 export const Elevator: FunctionComponent<
   Partial<ElevatorProps> & React.HTMLAttributes<HTMLDivElement>
 > & { Context: typeof elevatorContext } = (props) => {
@@ -78,10 +82,10 @@ export const Elevator: FunctionComponent<
     {} as ElevatorData
   )
   const [currentKey, setCurrentKey] = useState('')
-  const [currentIndex, setCurrentIndex] = useState<number>(0)
   const [codeIndex, setCodeIndex] = useState<number>(0)
   const [scrollStart, setScrollStart] = useState<boolean>(false)
   const state = useRef(initData)
+  const scrolling = useRef(false)
   const [scrollTop, setScrollTop] = useState(0)
   const [scrollY, setScrollY] = useState(0)
   // 重置滚动参数
@@ -154,16 +158,13 @@ export const Elevator: FunctionComponent<
   }
 
   const touchStart = (e: React.TouchEvent<HTMLDivElement>) => {
-    setScrollStart(true)
     const index = Number(getData(e.target as HTMLElement))
-
     const firstTouch = e.touches[0]
+    scrolling.current = true
     touchState.current.y1 = firstTouch.pageY
     state.current.anchorIndex = +index
-    setCodeIndex((codeIndex) => {
-      return codeIndex + index
-    })
-
+    setScrollStart(true)
+    setCodeIndex(index)
     scrollTo(index)
   }
 
@@ -201,12 +202,12 @@ export const Elevator: FunctionComponent<
     if (sticky && scrollTop !== scrollY) {
       setScrollY(Math.floor(scrollTop) > 0 ? 1 : 0)
     }
+    if (scrolling.current) return
     for (let i = 0; i < listHeight.length - 1; i++) {
       const height1 = listHeight[i]
       const height2 = listHeight[i + 1]
       if (state.current.scrollY >= height1 && state.current.scrollY < height2) {
-        setCurrentIndex(i)
-        return
+        return setCodeIndex(i)
       }
     }
   }
@@ -234,6 +235,9 @@ export const Elevator: FunctionComponent<
           type="list"
           ref={listview}
           onScroll={listViewScroll}
+          onTouchStart={(e) => {
+            scrolling.current = false
+          }}
         >
           {list.map((item: any, idx: number) => {
             return (
@@ -301,7 +305,7 @@ export const Elevator: FunctionComponent<
                     className={classNames({
                       [`${classPrefix}__bars__inner__item`]: true,
                       [`${classPrefix}__bars__inner__item--active`]:
-                        item[floorKey] === list[currentIndex][floorKey],
+                        item[floorKey] === list[codeIndex][floorKey],
                     })}
                     data-index={index}
                     key={index}
@@ -318,7 +322,7 @@ export const Elevator: FunctionComponent<
       {sticky && scrollY > 0 ? (
         <div className={`${classPrefix}__list__fixed`}>
           <span className={`${classPrefix}__list__fixed__title`}>
-            {list[currentIndex][floorKey]}
+            {list[codeIndex][floorKey]}
           </span>
         </div>
       ) : null}

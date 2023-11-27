@@ -69,7 +69,7 @@ const gradientColor = {
 const App = () => {
   return (
     <>
-      <CircleProgress percent={50} color="var(--nutui-brand-link-color)">
+      <CircleProgress percent={50} color="var(--nutui-color-info)">
         50%
       </CircleProgress>
       <CircleProgress percent={100} color={gradientColor}>
@@ -206,7 +206,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-circleprogress-primary-color | The color of the filled part of the circular progress bar | `$primary-color` |
+| \--nutui-circleprogress-primary-color | The color of the filled part of the circular progress bar | `$color-primary` |
 | \--nutui-circleprogress-path-color | The color of the circular progress bar track | `#e5e9f2` |
 | \--nutui-circleprogress-text-color | The color of the track content area of ​​the circular progress bar | `$title-color` |
-| \--nutui-circleprogress-text-size | The size of the track content area of ​​the circular progress bar | `$font-size-3` |
+| \--nutui-circleprogress-text-size | The size of the track content area of ​​the circular progress bar | `$font-size-large` |

@@ -34,7 +34,7 @@ describe('configprovider', () => {
     setDefaultConfig({
       locale: zhTW,
       theme: {
-        nutuiBrandColor: 'red',
+        nutuiColorPrimary: 'red',
       },
     })
     const Children: React.FC = () => {
@@ -50,7 +50,7 @@ describe('configprovider', () => {
     const ele = container.querySelector('.nut-configprovider')
     expect(ele).toHaveTextContent('確認')
     expect(ele).toHaveClass('nut-configprovider')
-    expect(ele).toHaveStyle('--nutui-brand-color: red')
+    expect(ele).toHaveStyle('--nutui-color-primary: red')
   })
 
   test('should theme variable and locale variable injection correctly', () => {
@@ -59,9 +59,9 @@ describe('configprovider', () => {
       return <>{locale.save}</>
     }
     const darkTheme = {
-      nutuiBrandColor: 'green',
-      nutuiBrandColorStart: 'green',
-      nutuiBrandColorEnd: 'green',
+      nutuiColorPrimary: 'green',
+      nutuiColorPrimaryStop1: 'green',
+      nutuiColorPrimaryStop2: 'green',
     }
     const { container } = render(
       <ConfigProvider
@@ -79,7 +79,7 @@ describe('configprovider', () => {
     expect(ele).toHaveTextContent('Save')
     expect(ele).toHaveClass('nut-configprovider bb')
     expect(ele).toHaveStyle(
-      '--nutui-brand-color: green; --nutui-brand-color-start: green; --nutui-brand-color-end: green; margin: 8px;'
+      '--nutui-color-primary: green; --nutui-color-primary-stop-1: green; --nutui-color-primary-stop-2: green; margin: 8px;'
     )
   })
 })

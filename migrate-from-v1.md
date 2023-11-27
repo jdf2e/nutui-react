@@ -19,6 +19,9 @@ npm install @nutui/nutui-react-taro
 
 你可以手动对照下面的列表逐条检查代码进行修改，另外，我们也提供了一个 codemod cli 工具 @nutui/nutui-react-codemod 以帮助你快速升级到 v2 版本。在运行 codemod cli 前，请先提交你的本地代码修改。
 
+4. 主题变量更名：
+如，primary-color 更名为 color-primary；注意在使用自定义主题，特别是使用 ConfigProvider 组件的情况下，有没有使用 `nutuiBrandColor`，这时记得更名为 `nutuiColorPrimary`
+
 ## 兼容更新
 1. 组件样式处理
 
@@ -184,6 +187,7 @@ plugins: [
 #### Divider
 - 移除 `dashed`, 通过 `style` 属性实现
 - 移除 `hairline`, 默认为 `true`
+- CSS 变量调整：`$divider-before-margin-right`、`$divider-after-margin-left` 统一为 `$divider-spacing`，`$divider-vertical-border-left` 变更为 `$divider-border-color`，增加 `$divider-side-width`。
 #### Grid
 - 移除 `fontSize`，可自行控制传入的组件字体大小
 - 移除 `border`，作为默认样式
@@ -200,6 +204,7 @@ plugins: [
 - `onClickIndex` 重命名为 `onIndexClick`
 - `onClickItem` 重命名为 `onItemClick`
 - 新增`showKeys`，是否展示右侧导航
+- CSS 变量部分，对命名做了简化。
 #### FixedNav
 - `unActiveText` 重命名为 `inactiveText`
 - `navList` 重命名为 `list`
@@ -550,7 +555,8 @@ plugins: [
 - 移除 `zIndex`，目前没有用到，也不生效，直接去掉。
 - 移除 `icon`，自定义 `icon` 可放在 `value` 中实现，扩充了 `value` 的类型。
 - 修改 `max` 的最大值为99（之前为10000），比较贴合实际场景。
-- 主题定制的 `css` 变量中，去掉和 `dot` 有关的其他值，只保留 `width`。其他值由 `width` 计算而来。
+- 主题定制的 `css` 变量中，去掉和 `dot` 有关的其他值，只保留 `width`。其他值由 `width` 计算而来.
+- 主题定制，增加包含 icon 情况下的样式变量。
 
 #### CircleProgress
 - `progress` 重命名为 `percent`

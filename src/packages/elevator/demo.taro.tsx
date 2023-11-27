@@ -1,6 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { Jd } from '@nutui/icons-react-taro'
+import { Fabulous } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Elevator } from '@/packages/nutui.react.taro'
 import '@/packages/elevator/demo.scss'
@@ -536,7 +536,7 @@ const ElevatorDemo = () => {
               {(value) => {
                 return (
                   <>
-                    <Jd size={10} />
+                    <Fabulous size={10} />
                     <span style={{ marginLeft: '15px' }}>{value?.name}</span>
                   </>
                 )

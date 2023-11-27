@@ -112,7 +112,7 @@ const CountDownDemo = () => {
     justifyContent: 'center',
     width: '20px',
     height: '25px',
-    background: 'var(--nutui-brand-color)',
+    background: 'var(--nutui-color-primary)',
     color: '#fff',
     fontSize: '14px',
     borderRadius: '6px',
