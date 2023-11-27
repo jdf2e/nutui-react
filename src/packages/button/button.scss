@@ -127,6 +127,7 @@
     color: $button-primary-color;
     background: $button-primary-background-color;
     background-origin: border-box;
+    border: none;
 
     &.nut-button--disabled {
       background: $button-primary-disabled;
@@ -142,21 +143,11 @@
       }
     }
 
+    &.nut-button--dashed,
     &.nut-button--outline {
       background: transparent;
       color: $button-primary-border-color;
-      border: $button-border-width solid $button-primary-border-color;
-
-      &.nut-button--disabled {
-        color: $button-primary-disabled;
-        border-color: $button-primary-disabled;
-      }
-    }
-
-    &.nut-button--dashed {
-      background: transparent;
-      color: $button-primary-border-color;
-      border: $button-border-width dashed $button-primary-border-color;
+      border-color: $button-primary-border-color;
 
       &.nut-button--disabled {
         color: $button-primary-disabled;
@@ -169,6 +160,7 @@
     color: $button-success-color;
     background: $button-success-background-color;
     background-origin: border-box;
+    border: none;
 
     &.nut-button--disabled {
       background: $button-success-disabled;
@@ -196,6 +188,7 @@
     color: $button-danger-color;
     background: $button-danger-background-color;
     background-origin: border-box;
+    border: none;
 
     &.nut-button--disabled {
       background: $button-danger-disabled;
@@ -223,6 +216,7 @@
     color: $button-warning-color;
     background: $button-warning-background-color;
     background-origin: border-box;
+    border: none;
 
     &.nut-button--disabled {
       background: $button-warning-disabled;
@@ -266,6 +260,15 @@
   &.nut-button--outline,
   &.nut-button--dashed {
     background: transparent;
+    border-width: 1px;
+  }
+
+  &.nut-button--outline {
+    border-style: solid;
+  }
+
+  &.nut-button--dashed {
+    border-style: dashed;
   }
 
   &.nut-button--none {
