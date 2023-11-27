@@ -2481,13 +2481,13 @@ $trendarrow-font-size: var(--nutui-trendarrow-font-size, 14px) !default;
 $trendarrow-icon-margin: var(--nutui-trendarrow-icon-margin, 4px) !default;
 
 // animatingnumbers（✅）
+$countup-width: var(--nutui-countup-width, auto) !default;
 $countup-height: var(--nutui-countup-height, 32px) !default;
 $countup-base-size: var(--nutui-countup-base-size, 18px) !default;
-$countup-border-raduis: var(--nutui-countup-border-raduis, 4px) !default;
-$countup-lr-margin: var(--nutui-countup-lr-margin, 1px) !default;
-$countup-bgcolor: var(--nutui-countup-bgcolor, $color-primary) !default;
-$countup-color: var(--nutui-countup-color, #ffffff) !default;
-$countup-width: var(--nutui-countup-width, 24px) !default;
+$countup-border-radius: var(--nutui-countup-border-radius, 4px) !default;
+$countup-lr-margin: var(--nutui-countup-lr-margin, 0) !default;
+$countup-bg-color: var(--nutui-countup-bg-color, inherit) !default;
+$countup-color: var(--nutui-countup-color, $title-color) !default;
 
 // layout（✅）
 $row-content-color: var(--nutui-row-content-color, #fff) !default;
