@@ -1,5 +1,5 @@
 import React from 'react'
-import { My, Right, Star } from '@nutui/icons-react-taro'
+import { My, Right } from '@nutui/icons-react-taro'
 import Taro, { redirectTo, navigateTo } from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Switch, Cell, Button } from '@/packages/nutui.react.taro'
@@ -224,7 +224,7 @@ const CellDemo = () => {
           <Cell
             title={
               <div style={{ display: 'flex', alignItems: 'center' }}>
-                <Star style={{ marginRight: '5px' }} /> {translated.title}
+                <My style={{ marginRight: '5px' }} /> {translated.title}
               </div>
             }
             extra={<Right />}

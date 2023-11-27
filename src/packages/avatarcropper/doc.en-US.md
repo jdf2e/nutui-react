@@ -51,7 +51,7 @@ Customize the clipping area toolbar, and toolbar-position controls the toolbar p
 ```tsx
 import React, { useState } from "react";
 import { Avatar, AvatarCropper, Button } from '@nutui/nutui-react';
-import { Refresh2, Retweet } from '@nutui/icons-react-taro'
+import { Refresh, Retweet } from '@nutui/icons-react-taro'
 
 const App = () => {
   const [imageUrl, setImageUrl] = useState(
@@ -70,7 +70,7 @@ const App = () => {
           <Button type="danger" key="cancel">
             Cancel
           </Button>,
-          <Refresh2 key="reset" />,
+          <Refresh key="reset" />,
           <Retweet key="rotate" />,
           <Button type="success" key="confirm">
             Confirm

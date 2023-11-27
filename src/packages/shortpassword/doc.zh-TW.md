@@ -112,7 +112,7 @@ export default App;
 ```tsx
 import React, { useState } from "react";
 import { Cell, ShortPassword, NumberKeyboard } from '@nutui/nutui-react';
-import { HeartFill1 } from '@nutui/icons-react';
+import { Star } from '@nutui/icons-react';
 
 const App = () => {
   const [visible3, setVisible3] = useState(false)
@@ -132,7 +132,7 @@ const App = () => {
         value={value}
         tips={
           <>
-            <HeartFill1 width={11} height={11} />
+            <Star width={11} height={11} />
             自定義提示語
           </>
         }

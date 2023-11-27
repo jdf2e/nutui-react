@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { HeartFill1, StarFill, ArrowDown } from '@nutui/icons-react-taro'
+import { StarFill, ArrowDown } from '@nutui/icons-react-taro'
 import {
   ConfigProvider,
   SearchBar,
@@ -115,7 +115,7 @@ const SearchBarDemo = () => {
         />
         <h2>{translated.title5}</h2>
         <SearchBar
-          left={<HeartFill1 size={14} />}
+          left={<StarFill size={14} />}
           right={<StarFill size={14} />}
           rightIn={
             <StarFill
