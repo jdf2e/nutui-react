@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { Share, MoreX, Cart2, Left, Close } from '@nutui/icons-react-taro'
+import { Share, MoreX, Cart2, ArrowLeft, Close } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { NavBar, Tabs, TabPane } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
@@ -59,7 +59,7 @@ const NavBarDemo = () => {
         <NavBar
           back={
             <>
-              <Left name="left" color="#979797" />
+              <ArrowLeft name="left" color="#979797" />
               {translated.a74a1fd4}
             </>
           }
@@ -87,7 +87,7 @@ const NavBarDemo = () => {
               {translated.cfbdc781}
             </span>
           }
-          back={<Left name="left" color="#979797" />}
+          back={<ArrowLeft name="left" color="#979797" />}
           onBackClick={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
         >
           <span onClick={(e) => Taro.showToast({ title: translated.b840c88f })}>
@@ -95,7 +95,7 @@ const NavBarDemo = () => {
           </span>
         </NavBar>
         <NavBar
-          back={<Left name="left" color="#979797" />}
+          back={<ArrowLeft name="left" color="#979797" />}
           right={
             <>
               <span
@@ -124,7 +124,7 @@ const NavBarDemo = () => {
         </NavBar>
 
         <NavBar
-          back={<Left name="left" color="#979797" />}
+          back={<ArrowLeft name="left" color="#979797" />}
           right={
             <>
               <span

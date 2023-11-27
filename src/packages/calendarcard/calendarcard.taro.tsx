@@ -1,6 +1,6 @@
 import React, { useState, useEffect, ReactNode } from 'react'
 import classNames from 'classnames'
-import { Left, Right, DoubleLeft, DoubleRight } from './icon.taro'
+import { ArrowLeft, ArrowRight, DoubleLeft, DoubleRight } from './icon.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import {
   convertDateToDay,
@@ -367,7 +367,7 @@ export const CalendarCard = React.forwardRef<
             <DoubleLeft />
           </div>
           <div className="left" onClick={() => jump(-1)}>
-            <Left />
+            <ArrowLeft />
           </div>
         </div>
         <div className={`${prefixCls}-header-title`}>
@@ -375,7 +375,7 @@ export const CalendarCard = React.forwardRef<
         </div>
         <div className={`${prefixCls}-header-right`}>
           <div className="right" onClick={() => jump(1)}>
-            <Right />
+            <ArrowRight />
           </div>
           <div className="double-right" onClick={() => jump(12)}>
             <DoubleRight />

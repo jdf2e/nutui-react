@@ -61,7 +61,7 @@ test('readOnly test', () => {
   const el = container.querySelector('.nut-rate-item')
   if (el) {
     fireEvent.click(el)
-    expect(el.childNodes[0].childNodes[0]).toHaveClass('nut-icon-StarFillN')
+    expect(el.childNodes[0].childNodes[0]).toHaveClass('nut-icon-StarFill')
   }
 })
 

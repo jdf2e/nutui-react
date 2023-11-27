@@ -19,7 +19,7 @@ import { Tabbar } from '@nutui/nutui-react';
 ```tsx
 import React, { useState } from "react";
 import { Tabbar } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
+import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
 
 const App = () => {
   const [activeIndex, setActiveIndex] = useState(2)
@@ -35,7 +35,7 @@ const App = () => {
     <Tabbar.Item title="Category" icon={<Category width={18} height={18} />} dot />
     <Tabbar.Item title="Find" icon={<Find width={18} height={18} />} />
     <Tabbar.Item title="Cart" icon={<Cart width={18} height={18} />} />
-    <Tabbar.Item title="Mine" icon={<My width={18} height={18} />} />
+    <Tabbar.Item title="Mine" icon={<User width={18} height={18} />} />
   </Tabbar>
 }
 
@@ -51,7 +51,7 @@ export default App;
 ```tsx
 import React from "react";
 import { Tabbar } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
+import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar defaultValue={2}>
@@ -59,7 +59,7 @@ const App = () => (
     <Tabbar.Item title="Category" icon={<Category width={20} height={20} />} />
     <Tabbar.Item title="Find" icon={<Find width={20} height={20} />} />
     <Tabbar.Item title="Cart" icon={<Cart width={20} height={20} />} />
-    <Tabbar.Item title="Mine" icon={<My width={20} height={20} />} />
+    <Tabbar.Item title="Mine" icon={<User width={20} height={20} />} />
   </Tabbar>
 );
 
@@ -75,7 +75,7 @@ export default App;
 ```tsx
 import React from "react";
 import { Tabbar } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
+import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar
@@ -98,7 +98,7 @@ const App = () => (
     />
     <Tabbar.Item
       title="Mine"
-      icon={<My width={12} height={12} />}
+      icon={<User width={12} height={12} />}
     />
   </Tabbar>
 )
@@ -138,7 +138,7 @@ const App = () => (
 ```tsx
 import React from "react";
 import { Tabbar } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
+import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar>
@@ -146,7 +146,7 @@ const App = () => (
     <Tabbar.Item title="Category" icon={<Category width={12} height={12} />} />
     <Tabbar.Item title="Find" icon={<Find width={12} height={12} />} />
     <Tabbar.Item title="Cart" icon={<Cart width={12} height={12} />} value={110} />
-    <Tabbar.Item title="Mine" icon={<My width={12} height={12} />} />
+    <Tabbar.Item title="Mine" icon={<User width={12} height={12} />} />
   </Tabbar>
 );
 
@@ -162,7 +162,7 @@ export default App;
 ```tsx
 import React from "react";
 import { Tabbar } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
+import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar>
@@ -170,7 +170,7 @@ const App = () => (
     <Tabbar.Item title="Category" icon={<Category width={20} height={20} />} />
     <Tabbar.Item title="Find" icon={<Find width={20} height={20} />} />
     <Tabbar.Item title="Cart" icon={<Cart width={20} height={20} />} dot />
-    <Tabbar.Item title="Mine" icon={<My width={20} height={20} />} />
+    <Tabbar.Item title="Mine" icon={<User width={20} height={20} />} />
   </Tabbar>
 )
 
@@ -186,7 +186,7 @@ export default App;
 ```tsx
 import React from "react";
 import { Tabbar } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
+import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
@@ -194,7 +194,7 @@ const App = () => (
     <Tabbar.Item title="Category" icon={<Category width={20} height={20} />} />
     <Tabbar.Item title="Find" icon={<Find width={20} height={20} />} />
     <Tabbar.Item title="Cart" icon={<Cart width={20} height={20} />} />
-    <Tabbar.Item title="Mine" icon={<My width={20} height={20} />} />
+    <Tabbar.Item title="Mine" icon={<User width={20} height={20} />} />
   </Tabbar>
 );
 
@@ -232,7 +232,7 @@ export default App;
 ```tsx
 import React from "react";
 import { Tabbar } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react';
+import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar fixed>
@@ -240,7 +240,7 @@ const App = () => (
     <Tabbar.Item title="Category" icon={<Category width={20} height={20} />} />
     <Tabbar.Item title="Find" icon={<Find width={20} height={20} />} />
     <Tabbar.Item title="Cart" icon={<Cart width={20} height={20} />} />
-    <Tabbar.Item title="Mine" icon={<My width={20} height={20} />} />
+    <Tabbar.Item title="Mine" icon={<User width={20} height={20} />} />
   </Tabbar>
 );
 

@@ -3,7 +3,7 @@ import Taro from '@tarojs/taro'
 import {
   Checklist,
   Download,
-  My,
+  User,
   Link as LinkIcon,
 } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
@@ -71,16 +71,16 @@ const BadgeDemo = () => {
         <Cell.Group>
           <Cell>
             <Badge style={{ marginRight: '40px' }} value={8}>
-              <Avatar icon={<My />} shape="square" />
+              <Avatar icon={<User />} shape="square" />
             </Badge>
             <Badge style={{ marginRight: '40px' }} value={76}>
-              <Avatar icon={<My />} shape="square" />
+              <Avatar icon={<User />} shape="square" />
             </Badge>
             <Badge style={{ marginRight: '40px' }} value="NEW">
-              <Avatar icon={<My />} shape="square" />
+              <Avatar icon={<User />} shape="square" />
             </Badge>
             <Badge style={{ marginRight: '40px' }} dot top="2" right="4">
-              <Avatar icon={<My />} shape="square" />
+              <Avatar icon={<User />} shape="square" />
             </Badge>
           </Cell>
         </Cell.Group>
@@ -89,13 +89,13 @@ const BadgeDemo = () => {
         <Cell.Group>
           <Cell>
             <Badge style={{ marginRight: '40px' }} value={200} max={9}>
-              <Avatar icon={<My />} shape="square" />
+              <Avatar icon={<User />} shape="square" />
             </Badge>
             <Badge style={{ marginRight: '40px' }} value={200} max={20}>
-              <Avatar icon={<My />} shape="square" />
+              <Avatar icon={<User />} shape="square" />
             </Badge>
             <Badge style={{ marginRight: '40px' }} value={200} max={99}>
-              <Avatar icon={<My />} shape="square" />
+              <Avatar icon={<User />} shape="square" />
             </Badge>
           </Cell>
         </Cell.Group>
@@ -108,21 +108,21 @@ const BadgeDemo = () => {
               value={8}
               color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
             >
-              <Avatar icon={<My />} shape="square" />
+              <Avatar icon={<User />} shape="square" />
             </Badge>
             <Badge
               style={{ marginRight: '40px' }}
               value={76}
               color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
             >
-              <Avatar icon={<My />} shape="square" />
+              <Avatar icon={<User />} shape="square" />
             </Badge>
             <Badge
               style={{ marginRight: '40px' }}
               value="NEW"
               color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
             >
-              <Avatar icon={<My />} shape="square" />
+              <Avatar icon={<User />} shape="square" />
             </Badge>
             <Badge
               style={{ marginRight: '40px' }}
@@ -131,7 +131,7 @@ const BadgeDemo = () => {
               right="4"
               color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
             >
-              <Avatar icon={<My />} shape="square" />
+              <Avatar icon={<User />} shape="square" />
             </Badge>
           </Cell>
         </Cell.Group>
@@ -143,19 +143,19 @@ const BadgeDemo = () => {
               style={{ marginRight: '40px' }}
               value={<Checklist color="#fff" size={12} />}
             >
-              <Avatar icon={<My />} shape="square" />
+              <Avatar icon={<User />} shape="square" />
             </Badge>
             <Badge
               style={{ marginRight: '40px' }}
               value={<LinkIcon color="#fff" size={12} />}
             >
-              <Avatar icon={<My />} shape="square" />
+              <Avatar icon={<User />} shape="square" />
             </Badge>
             <Badge
               style={{ marginRight: '40px' }}
               value={<Download color="#fff" size={12} />}
             >
-              <Avatar icon={<My />} shape="square" />
+              <Avatar icon={<User />} shape="square" />
             </Badge>
           </Cell>
         </Cell.Group>
@@ -165,13 +165,13 @@ const BadgeDemo = () => {
           <Cell>
             <ConfigProvider theme={customTheme}>
               <Badge style={{ marginRight: '40px' }} value="NEW">
-                <Avatar icon={<My />} shape="square" />
+                <Avatar icon={<User />} shape="square" />
               </Badge>
             </ConfigProvider>
 
             <ConfigProvider theme={customTheme2}>
               <Badge style={{ marginRight: '40px' }} dot top="2" right="8">
-                <Avatar icon={<My />} shape="square" />
+                <Avatar icon={<User />} shape="square" />
               </Badge>
             </ConfigProvider>
           </Cell>
@@ -181,7 +181,7 @@ const BadgeDemo = () => {
         <Cell.Group>
           <Cell>
             <Badge style={{ marginRight: '40px' }} value={8} top="5" right="5">
-              <Avatar icon={<My />} shape="square" />
+              <Avatar icon={<User />} shape="square" />
             </Badge>
             <Badge
               style={{ marginRight: '40px' }}
@@ -189,10 +189,10 @@ const BadgeDemo = () => {
               top="10"
               right="10"
             >
-              <Avatar icon={<My />} shape="square" />
+              <Avatar icon={<User />} shape="square" />
             </Badge>
             <Badge style={{ marginRight: '40px' }} value="NEW">
-              <Avatar icon={<My />} shape="square" />
+              <Avatar icon={<User />} shape="square" />
             </Badge>
           </Cell>
         </Cell.Group>

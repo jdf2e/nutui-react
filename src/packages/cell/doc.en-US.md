@@ -72,14 +72,14 @@ export default App
 ```tsx
 import React from 'react'
 import { Cell } from '@nutui/nutui-react'
-import { My } from '@nutui/icons-react'
+import { User } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Cell
       title={
         <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-          <My />
+          <User />
           Title<span style={{ marginLeft: '5px' }}>Description</span>
         </div>
       }
@@ -144,7 +144,7 @@ export default App
 ```tsx
 import React from 'react'
 import { Cell, Button } from '@nutui/nutui-react'
-import { Right, My } from '@nutui/icons-react'
+import { ArrowRight, User } from '@nutui/icons-react'
 
 const App = () => {
   const onJumpclick = (
@@ -166,7 +166,7 @@ const App = () => {
           lassName="nutui-cell--clickable"
           title="Link Usage"
           align="center"
-          extra={<Right />}
+          extra={<ArrowRight />}
         />
         <Cell
           className="nutui-cell--clickable"
@@ -174,7 +174,7 @@ const App = () => {
           extra={
             <>
               <span style={{ marginRight: '5px' }}>https://jd.com</span>
-              <Right />
+              <ArrowRight />
             </>
           }
           align="center"
@@ -204,7 +204,7 @@ const App = () => {
           extra={
             <div style={{ display: 'flex', alignItems: 'center' }}>
               More
-              <Right width={12} height={12} style={{ marginLeft: '5px' }} />
+              <ArrowRight width={12} height={12} style={{ marginLeft: '5px' }} />
             </div>
           }
         />
@@ -231,10 +231,10 @@ const App = () => {
         <Cell
           title={
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <My style={{ marginRight: '5px' }} /> Title
+              <User style={{ marginRight: '5px' }} /> Title
             </div>
           }
-          extra={<Right />}
+          extra={<ArrowRight />}
         />
         <Cell>
           <div style={{ minHeight: '50px' }}>Content</div>
@@ -332,7 +332,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-cell-padding | Inside margins of cells | `13px 16px` |
 | \--nutui-cell-line-height | The row height of the cell | `20px` |
 | \--nutui-cell-divider-left | Left margin of cell divider | `16px` |
-| \--nutui-cell-divider-right | Right margin of cell divider | `16px` |
+| \--nutui-cell-divider-right | ArrowRight margin of cell divider | `16px` |
 | \--nutui-cell-divider-border-bottom | Border bottom of cell divider | `2px solid #f5f6f7` |
 | \--nutui-cell-background-color | The background color of the cell | `$gray6` |
 | \--nutui-cell-box-shadow | The shadow of the cell | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |

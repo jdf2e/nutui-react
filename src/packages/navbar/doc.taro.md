@@ -19,7 +19,7 @@ import { NavBar } from '@nutui/nutui-react-taro';
 ```tsx
 import  React from "react";
 import { NavBar } from '@nutui/nutui-react-taro';
-import { Left, Share, Close  } from '@nutui/icons-react-taro'
+import { ArrowLeft, Share, Close  } from '@nutui/icons-react-taro'
 import Taro from '@tarojs/taro'
 
 const App = () => {
@@ -27,7 +27,7 @@ const App = () => {
     <NavBar
         back={
         <>
-            <Left name="left" color="#979797" />
+            <ArrowLeft name="left" color="#979797" />
             返回
         </>
         }
@@ -56,7 +56,7 @@ export default App;
 ```tsx
 import  React from "react";
 import { NavBar } from '@nutui/nutui-react-taro';
-import { Left } from '@nutui/icons-react-taro'
+import { ArrowLeft } from '@nutui/icons-react-taro'
 import Taro from '@tarojs/taro'
 
 const App = () => {
@@ -67,7 +67,7 @@ const App = () => {
             清空
         </span>
         }
-        back={<Left name="left" color="#979797" />}
+        back={<ArrowLeft name="left" color="#979797" />}
         onBackClick={(e) => Taro.showtoast({ title: '返回' })}
     >
         <span onClick={(e) => Taro.showtoast({ title: '标题' })}>
@@ -87,13 +87,13 @@ export default App;
 ```tsx
 import  React from "react";
 import { NavBar } from '@nutui/nutui-react-taro';
-import { Cart2, Left, MoreX } from '@nutui/icons-react-taro'
+import { Cart2, ArrowLeft, MoreX } from '@nutui/icons-react-taro'
 import Taro from '@tarojs/taro'
 
 const App = () => {
   return ( 
     <NavBar
-        back={<Left name="left" color="#979797" />}
+        back={<ArrowLeft name="left" color="#979797" />}
         right={
         <>
             <span style={{ marginRight: '5px' }} onClick={(e) => Taro.showtoast({ title: '编辑' })}>
@@ -124,14 +124,14 @@ export default App;
 ```tsx
 import  React, { useState } from "react";
 import { NavBar, Tabs, TabPane } from '@nutui/nutui-react-taro';
-import { Left,MoreX } from '@nutui/icons-react-taro'
+import { ArrowLeft,MoreX } from '@nutui/icons-react-taro'
 import Taro from '@tarojs/taro'
 
 const App = () => {
   const [tab1value, setTab1value] = useState('0')
   return (   
       <NavBar
-         back={<Left name="left" color="#979797" />}
+         back={<ArrowLeft name="left" color="#979797" />}
           right={
             <>
               <span style={{ marginRight: '5px' }} onClick={(e) => Taro.showtoast({ title: '编辑' })}>
