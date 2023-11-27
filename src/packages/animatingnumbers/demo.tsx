@@ -4,8 +4,6 @@ import { Cell } from '../cell/cell'
 import { useTranslate } from '../../sites/assets/locale'
 import ConfigProvider from '@/packages/configprovider'
 
-import './demo.scss'
-
 interface T {
   basic: string
   custom: string

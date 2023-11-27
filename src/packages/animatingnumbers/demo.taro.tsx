@@ -7,7 +7,6 @@ import {
 } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
-import '@/packages/animatingnumbers/demo.scss'
 
 interface T {
   basic: string

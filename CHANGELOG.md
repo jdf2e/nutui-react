@@ -1,3 +1,27 @@
+# v2.2.0
+`2023-11-24`
+
+* :sparkles: feat(badge): 优化结构 (#1663) @xiaoyatong
+* :sparkles: feat(dialog): 标题前增加结构 (#1666) @xiaoyatong
+* :sparkles: feat(grid): 增加 demo (#1660) @xiaoyatong
+* :sparkles: feat(image): 增加 demo (#1658) @xiaoyatong
+* :sparkles: feat(theme): 修订 fontSize (#1674) @xiaoyatong
+* :bug: fix(elevator): 索引定位不准 (#1667) @oasis-cloud
+* :bug: fix(swiper): swiper-item 宽高异常问题 (#1657) @Eiinu
+* :bug: fix(uploader): Update uploader.tsx (#1656) @Kurisu
+* :bug: fix(uploader): uploader when item type is undefined (#1650) @xiaoyatong
+* 🛠 refactor: css 变量命名规范（主题色部分，不含灰阶） (#1679) @xiaoyatong
+* 🛠 refactor: elevator css and variables (#1668) @xiaoyatong
+* 🛠 refactor: 防抖方法归一 (#1664) @xiaoyatong
+* 🌈 style: delete dark in demos (#1670) @xiaoyatong
+* 🌈 style: divider css 修改, 修改部分css变量 (#1669) @xiaoyatong
+* 🌈 style: 清理样式变量 (#1673) @xiaoyatong
+* 📖 docs(address): 修复非受控模式演示代码不显示 (#1659) @haitao
+* 📖 docs: fix docs (#1678) @xiaoyatong
+* 📖 docs: 修改文档 (#1662) @xiaoyatong
+* 🔨 chore: add jmapp (#1665) @xiaoyatong
+
+
 # v2.1.0
 `2023-11-17`
 
