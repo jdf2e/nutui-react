@@ -43,14 +43,14 @@ test('test onChange & onDayClick & onPageChange', async () => {
     />
   )
 
-  expect(onPageChange).toBeCalledTimes(1)
+  expect(onPageChange).toHaveBeenCalledTimes(1)
 
   // current
   const currentDays = container.querySelectorAll(
     '.nut-calendarcard-day.current'
   )
   fireEvent.click(currentDays[1])
-  expect(onDayClick).toBeCalledWith({
+  expect(onDayClick).toHaveBeenCalledWith({
     year: 2023,
     month: 1,
     date: 2,
@@ -58,12 +58,12 @@ test('test onChange & onDayClick & onPageChange', async () => {
   })
   fireEvent.click(currentDays[3])
   fireEvent.click(currentDays[5])
-  expect(onChange).toBeCalledTimes(3)
+  expect(onChange).toHaveBeenCalledTimes(3)
 
   const nextDays = container.querySelectorAll('.nut-calendarcard-day.next')
   fireEvent.click(nextDays[0])
-  expect(onDayClick).toBeCalledTimes(3)
-  expect(onPageChange).toBeCalledTimes(1)
+  expect(onDayClick).toHaveBeenCalledTimes(3)
+  expect(onPageChange).toHaveBeenCalledTimes(1)
 })
 
 test('test type multiple', async () => {
@@ -155,9 +155,9 @@ test('test disableDay', async () => {
     '.nut-calendarcard-day.current'
   )
   fireEvent.click(currentDays[22]) // 0123 disabled
-  expect(onDayClick).toBeCalledTimes(0)
+  expect(onDayClick).toHaveBeenCalledTimes(0)
   fireEvent.click(currentDays[25]) // 0126
-  expect(onDayClick).toBeCalledTimes(1)
+  expect(onDayClick).toHaveBeenCalledTimes(1)
 })
 
 test('test ref methods', async () => {
@@ -184,7 +184,7 @@ test('test ref methods', async () => {
   }
   const screen = render(<App />)
 
-  expect(onPageChange).toBeCalledWith({
+  expect(onPageChange).toHaveBeenCalledWith({
     year: 2023,
     month: 1,
   })
@@ -200,4 +200,33 @@ test('test ref methods', async () => {
     year: 2021,
     month: 2,
   })
+})
+
+test('test startDate & endDate', async () => {
+  const { container } = render(
+    <CalendarCard
+      defaultValue={new Date('2023-01-24')}
+      startDate={new Date('2022-12-01')}
+      endDate={new Date('2023-03-01')}
+    />
+  )
+
+  const title1 = container.querySelector('.nut-calendarcard-header-title')
+  expect(title1?.innerHTML).toBe('2023年01月')
+
+  const left = container.querySelectorAll('.nut-calendarcard-header .left')
+  const doubleRight = container.querySelectorAll(
+    '.nut-calendarcard-header .double-right'
+  )
+  fireEvent.click(left[0])
+  const title2 = container.querySelector('.nut-calendarcard-header-title')
+  expect(title2?.innerHTML).toBe('2022年12月')
+
+  fireEvent.click(left[0])
+  const title3 = container.querySelector('.nut-calendarcard-header-title')
+  expect(title3?.innerHTML).toBe('2022年12月')
+
+  fireEvent.click(doubleRight[0])
+  const title4 = container.querySelector('.nut-calendarcard-header-title')
+  expect(title4?.innerHTML).toBe('2022年12月')
 })
