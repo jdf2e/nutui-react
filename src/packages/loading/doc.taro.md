@@ -155,12 +155,12 @@ export default App;
 ```jsx
 import  React from "react";
 import { Loading, Cell } from '@nutui/nutui-react-taro';
-import { Category } from '@nutui/icons-react'
+import { Star } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Cell>
-      <Loading direction="vertical" icon={<Category width='30' height='30' color='red'/>}/>
+      <Loading direction="vertical" icon={<Star width='30' height='30' color='red'/>}/>
     </Cell>
   );
 };

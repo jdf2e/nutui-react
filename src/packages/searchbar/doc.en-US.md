@@ -110,12 +110,12 @@ export default App;
 ```tsx
 import React from "react";
 import { SearchBar } from '@nutui/nutui-react';
-import { HeartFill1, StarFill, ArrowDown } from '@nutui/icons-react'
+import { StarFill, ArrowDown } from '@nutui/icons-react'
 
 const App = () => {
   return <>
     <SearchBar
-      left={<HeartFill1 width={14} height={14} />}
+      left={<StarFill width={14} height={14} />}
       right={<StarFill width={14} height={14} />}
       rightIn={
         <StarFill

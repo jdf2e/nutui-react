@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { Star, StarFill } from '@nutui/icons-react-taro'
+import { Star } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import { Button, Cell } from '@/packages/nutui.react.taro'
@@ -233,7 +233,7 @@ const ButtonDemo = () => {
             shape="square"
             fill="outline"
             type="primary"
-            icon={<StarFill />}
+            icon={<Star />}
             style={{ margin: 8 }}
           />
           <Button

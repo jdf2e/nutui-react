@@ -73,7 +73,7 @@ export default App
 ```tsx
 import React, { useState, useRef } from 'react'
 import { Popover, Button } from '@nutui/nutui-react'
-import { My2, Cart2, Location2 } from '@nutui/icons-react'
+import { Home, Cart, Location } from '@nutui/icons-react'
 
 const App = () => {
   const [showIcon, setShowIcon] = useState(false)
@@ -82,17 +82,17 @@ const App = () => {
     {
       key: 'key1',
       name: 'option1',
-      icon: <My2 color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />,
+      icon: <Home color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />,
     },
     {
       key: 'key2',
       name: 'option2',
-      icon: <Cart2 style={{ marginRight: '8px' }} />,
+      icon: <Cart style={{ marginRight: '8px' }} />,
     },
     {
       key: 'key3',
       name: 'option3',
-      icon: <Location2 style={{ marginRight: '8px' }} />,
+      icon: <Location style={{ marginRight: '8px' }} />,
     },
   ]
   const itemListDisabled = [
@@ -159,12 +159,12 @@ export default App
 import React, { useState, useRef } from 'react'
 import { Popover, Button } from '@nutui/nutui-react'
 import {
+  Home,
+  Cart,
+  Location,
   Service,
   Notice,
-  Location,
   Category,
-  Scan2,
-  Message,
 } from '@nutui/icons-react'
 
 const App = () => {
@@ -192,12 +192,12 @@ const App = () => {
     },
     {
       key: 'key5',
-      name: <Scan2 />,
+      name: <Cart />,
       description: 'option5',
     },
     {
       key: 'key6',
-      name: <Message />,
+      name: <Home />,
       description: 'option6',
     },
   ]
@@ -270,7 +270,7 @@ export default App
 
 ### 位置自定義
 
-通過 location 屬性來控制氣泡的彈出位置。可選值
+通過 location 屬性來控製氣泡的彈出位置。可選值
 
 ```
 top           # 頂部中間位置
@@ -339,7 +339,7 @@ const App = () => {
   return (
     <>
       <Cell
-        title="點擊查看更多方嚮"
+        title="點擊查看更多方向"
         description={baseDesc}
         onClick={handlePicker}
        />
@@ -370,10 +370,9 @@ const App = () => {
         </div>
       </Picker>
       <Popover
+        className='custom-color'
         visible={customPositon}
         targetId="pickerTarget"
-        background="#1a1a1a"
-        color="rgb(255, 255, 255)"
         list={positionList}
         location={curPostion}
        />
@@ -393,7 +392,7 @@ export default App
 ```tsx
 import React, { useState, useRef } from 'react'
 import { Popover, Button } from '@nutui/nutui-react'
-import { My2, Cart2, Location2 } from '@nutui/icons-react'
+import { Home, Cart, Location } from '@nutui/icons-react'
 
 const App = () => {
   const [customTarget, setCustomTarget] = useState(false)
@@ -401,17 +400,17 @@ const App = () => {
     {
       key: 'key1',
       name: 'option1',
-      icon: <My2 color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />,
+      icon: <Home color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />,
     },
     {
       key: 'key2',
       name: 'option2',
-      icon: <Cart2 style={{ marginRight: '8px' }} />,
+      icon: <Cart style={{ marginRight: '8px' }} />,
     },
     {
       key: 'key3',
       name: 'option3',
-      icon: <Location2 style={{ marginRight: '8px' }} />,
+      icon: <Location style={{ marginRight: '8px' }} />,
     },
   ]
 
@@ -473,11 +472,10 @@ const App = () => {
   return (
     <>
       <Popover
+        className='custom-color'
         visible={customColor}
         list={itemList}
         location="right-start"
-        background="#f00"
-        color="rgb(255, 255, 255)"
         onClick={() => {
           customColor ? setCustomColor(false) : setCustomColor(true)
         }}
@@ -501,25 +499,23 @@ export default App
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| list | 選項列錶 | `List[]` | `[]` |
+| list | 選項列表 | `List[]` | `[]` |
 | visible | 是否展示氣泡彈出層 | `boolean` | `false` |
 | location | 彈出位置，裏面具體的參數值可以參考上面的位置自定義例子 | `string` | `bottom` |
 | offset | 出現位置的偏移量 | `string[]` \| `number[]` | `[0, 12]` |
+| arrowOffset | 小箭頭的偏移量 | `number` | `0` |
 | showArrow | 是否顯示小箭頭 | `boolean` | `true` |
-| duration | 動畫時長，單位秒 | `string \| number` | `0.3` |
-| overlay | 是否顯示遮罩層 | `boolean` | `false` |
-| overlayClassName | 自定義遮罩層類名 | `string` | `-` |
-| overlayStyle | 自定義遮罩層樣式 | `React.CSSProperties` | `{}` |
-| closeOnOverlayClick | 是否在點擊遮罩層後關閉菜單 | `boolean` | `true` |
 | closeOnActionClick | 是否在點擊選項後關閉 | `boolean` | `true` |
 | closeOnOutsideClick | 是否在點擊外部元素後關閉菜單 | `boolean` | `true` |
-| background | 自定義背景色 | `string` | `-` |
-| color | 自定義選項文字顏色 | `string` | `-` |
 | targetId | 自定義目標元素 id | `string` | `-` |
-| onClick | 點擊切換 popover 展示狀態 | `() => void` | `() =&amp;gt; {}` |
-| onSelect | 點擊選項時觸發 | `(item: List, index: number) => void` | `(item, index) =&amp;gt; {}` |
-| onOpen | 點擊菜單時觸發 | `() => void` | `() =&amp;gt; {}` |
-| onClose | 關閉菜單時觸發 | `() => void` | `() =&amp;gt; {}` |
+| onClick | 點擊切換 popover 展示狀態 | `() => void` | `() => {}` |
+| onSelect | 點擊選項時觸發 | `(item: List, index: number) => void` | `(item, index) => {}` |
+| onOpen | 點擊菜單時觸發 | `() => void` | `() => {}` |
+| onClose | 關閉菜單時觸發 | `() => void` | `() => {}` |
+
+```
+此外，還支持Popup組件的overlayStyle、overlayClassName、overlay、closeOnOverlayClick屬性。    
+```
 
 ### List 數據結構
 
@@ -533,7 +529,7 @@ List 屬性是一個由對象構成的數組，數組中的每個對象配置一
 | disabled | 是否為禁用狀態 | `boolean` | `false` |
 | className | 為對應選項添加額外的類名 | `string` | `-` |
 
-## 主題定制
+## 主題定製
 
 ### 樣式變量
 
@@ -543,8 +539,8 @@ List 屬性是一個由對象構成的數組，數組中的每個對象配置一
 | --- | --- | --- |
 | \--nutui-popover-border-radius | popover 內容區的 border 的圓角值 | `8px` |
 | \--nutui-popover-font-size | popover 內容區的 font-size 值 | `14px` |
-| \--nutui-popover-menu-item-hover-background-color | 手指點擊菜單選項的背景顏色 | `#fff` |
-| \--nutui-popover-menu-item-hover-text-color | 手指點擊菜單選項的文字顏色 | `#1a1a1a` |
+| \--nutui-popover-menu-item-hover-background-color | 手指點擊菜單選項選中的背景顏色 | `#fff` |
+| \--nutui-popover-menu-item-hover-text-color | 手指點擊菜單選項選中的文字顏色 | `#1a1a1a` |
 | \--nutui-popover-primary-text-color | 選項區的文字顏色 | `#ffffff` |
 | \--nutui-popover-content-background-color | 選項區的背景顏色 | `#ffffff` |
 | \--nutui-popover-white-background-color | top、bottom、left 和 right 的箭頭顏色 | `#ffffff` |

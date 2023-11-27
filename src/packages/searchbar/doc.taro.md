@@ -110,12 +110,12 @@ export default App;
 ```tsx
 import React from "react";
 import { SearchBar, Icon } from '@nutui/nutui-react-taro';
-import { HeartFill1, StarFill, ArrowDown } from '@nutui/icons-react-taro'
+import {StarFill, ArrowDown } from '@nutui/icons-react-taro'
 
 const App = () => {
   return <>
     <SearchBar
-      left={<HeartFill1 size={14}/>}
+      left={<StarFill size={14}/>}
       right={<StarFill size={14} />}
       rightIn={
         <StarFill

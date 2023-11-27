@@ -457,7 +457,7 @@ export default App
 ```tsx
 import React from 'react'
 import { Elevator } from '@nutui/nutui-react'
-import { Jd } from '@nutui/icons-react'
+import { Fabulous } from '@nutui/icons-react'
 
 const App = () => {
   const dataList = [
@@ -528,7 +528,7 @@ const App = () => {
         {(value) => {
           return (
             <>
-              <Jd width={12} height={12} />
+              <Fabulous width={12} height={12} />
               <span style={{ marginLeft: '15px' }}>{value?.name}</span>
             </>
           )
