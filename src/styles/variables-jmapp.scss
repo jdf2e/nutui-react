@@ -893,6 +893,10 @@ $backtop-border-color: var(
 ) !default;
 
 // calendar（✅）
+$calendar-active-background-color: var(
+  --nutui-calendar-active-background-color,
+  $color-primary
+) !default;
 $calendar-choose-background-color: var(
   --nutui-calendar-choose-background-color,
   $color-primary-light
@@ -944,7 +948,7 @@ $overlay-animation-duration: var(
 //popup（✅）
 $popup-border-radius: var(--nutui-popup-border-radius, 12px) !default;
 $popup-icon-size: var(--nutui-popup-icon-size, $font-size-xl) !default;
-$popup-title-padding: var(--nutui-popup-title-padding, 8px 12px) !default;
+$popup-title-padding: var(--nutui-popup-title-padding, 12px) !default;
 $popup-title-font-size: var(--nutui-popup-title-font-size, $font-h1) !default;
 $popup-description-font-size: var(
   --nutui-popup-description-font-size,
@@ -1240,6 +1244,14 @@ $dialog-footer-ok-max-width: var(
   --nutui-dialog-footer-ok-max-width,
   128px
 ) !default;
+$dialog-header-font-weight: var(
+  --nutui-dialog-header-font-weight,
+  normal
+) !default;
+$dialog-vertical-footer-ok-margin-top: var(
+  --nutui-dialog-vertical-footer-ok-margin-top,
+  5px
+) !default;
 
 // checkbox（✅）
 $checkbox-label-margin-left: var(
@@ -1448,6 +1460,7 @@ $badge-border-radius: var(
 $badge-min-width: var(--nutui-badge-min-width, 10px) !default;
 $badge-padding: var(--nutui-badge-padding, 0 4px) !default;
 $badge-icon-padding: var(--nutui-badge-icon-padding, 3px) !default;
+$badge-icon-size: var(--nutui-badge-icon-size, 12px) !default;
 $badge-content-transform: var(
   --nutui-badge-content-transform,
   translateY(-50%) translateX(100%)
