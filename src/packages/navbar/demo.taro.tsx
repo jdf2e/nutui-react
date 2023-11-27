@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { Share, MoreX, Cart2, ArrowLeft, Close } from '@nutui/icons-react-taro'
+import { Share, More, Cart, ArrowLeft, Close } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { NavBar, Tabs, TabPane } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
@@ -106,7 +106,7 @@ const NavBarDemo = () => {
               >
                 {translated['8dab2f66']}
               </span>
-              <MoreX onClick={(e) => Taro.showToast({ title: 'icon' })} />
+              <More onClick={(e) => Taro.showToast({ title: 'icon' })} />
             </>
           }
           onBackClick={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
@@ -119,7 +119,7 @@ const NavBarDemo = () => {
             className="flex-center"
             onClick={(e) => Taro.showToast({ title: 'icon' })}
           >
-            <Cart2 />
+            <Cart />
           </i>
         </NavBar>
 
@@ -135,7 +135,7 @@ const NavBarDemo = () => {
               >
                 {translated['8dab2f66']}
               </span>
-              <MoreX onClick={(e) => Taro.showToast({ title: 'icon' })} />
+              <More onClick={(e) => Taro.showToast({ title: 'icon' })} />
             </>
           }
           onBackClick={(e) => Taro.showToast({ title: translated.a74a1fd4 })}

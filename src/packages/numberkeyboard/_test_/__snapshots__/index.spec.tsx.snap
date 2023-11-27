@@ -318,8 +318,8 @@ exports[`should match snapshot 1`] = `
               class="key close"
             >
               <svg
-                aria-labelledby="RectDown"
-                class="nut-icon nut-icon-RectDown "
+                aria-labelledby="ArrowDown"
+                class="nut-icon nut-icon-ArrowDown "
                 role="presentation"
                 style="width: 25px; height: 25px;"
                 viewBox="0 0 1024 1024"

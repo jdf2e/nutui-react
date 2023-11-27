@@ -87,7 +87,7 @@ export default App;
 ```tsx
 import  React from "react";
 import { NavBar } from '@nutui/nutui-react-taro';
-import { Cart2, ArrowLeft, MoreX } from '@nutui/icons-react-taro'
+import { Cart, ArrowLeft, More } from '@nutui/icons-react-taro'
 import Taro from '@tarojs/taro'
 
 const App = () => {
@@ -99,7 +99,7 @@ const App = () => {
             <span style={{ marginRight: '5px' }} onClick={(e) => Taro.showtoast({ title: '编辑' })}>
             编辑
             </span>
-            <MoreX onClick={(e) => Taro.showtoast({ title: 'icon' })} />
+            <More onClick={(e) => Taro.showtoast({ title: 'icon' })} />
         </>
         }
         onBackClick={(e) => Taro.showtoast({ title: '返回' })}
@@ -108,7 +108,7 @@ const App = () => {
         购物车
         </span>
         <i style={{ marginLeft: '5px' }} onClick={(e) => Taro.showtoast({ title: 'icon' })}>
-            <Cart2 />
+            <Cart />
         </i>
     </NavBar>
   );
@@ -124,7 +124,7 @@ export default App;
 ```tsx
 import  React, { useState } from "react";
 import { NavBar, Tabs, TabPane } from '@nutui/nutui-react-taro';
-import { ArrowLeft,MoreX } from '@nutui/icons-react-taro'
+import { ArrowLeft,More } from '@nutui/icons-react-taro'
 import Taro from '@tarojs/taro'
 
 const App = () => {
@@ -137,7 +137,7 @@ const App = () => {
               <span style={{ marginRight: '5px' }} onClick={(e) => Taro.showtoast({ title: '编辑' })}>
                 编辑
               </span>
-              <MoreX onClick={(e) => Taro.showtoast({ title: 'icon' })} />
+              <More onClick={(e) => Taro.showtoast({ title: 'icon' })} />
             </>
           }
           onBackClick={(e) => Taro.showtoast({ title: '返回' })}

@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
-import { DownArrow } from '@nutui/icons-react'
+import { ArrowDown } from '@nutui/icons-react'
 import { BasicTableProps, TableColumnProps } from './types'
 import { useConfig } from '@/packages/configprovider'
 import { ComponentDefaults } from '@/utils/typings'
@@ -87,7 +87,7 @@ export const Table: FunctionComponent<
         >
           {item.title}&nbsp;
           {item.sorter &&
-            (sorterIcon || <DownArrow width="12px" height="12px" />)}
+            (sorterIcon || <ArrowDown width="12px" height="12px" />)}
         </span>
       )
     })
