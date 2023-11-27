@@ -112,7 +112,7 @@ export default App;
 ```tsx
 import React, { useState } from "react";
 import { Cell, ShortPassword, NumberKeyboard } from '@nutui/nutui-react-taro';
-import { HeartFill } from '@nutui/icons-react-taro';
+import { Star } from '@nutui/icons-react-taro';
 
 const App = () => {
   const [visible3, setVisible3] = useState(false)
@@ -132,7 +132,7 @@ const App = () => {
         value={value}
         tips={
           <>
-            <HeartFill size={11} />
+            <Star size={11} />
             自定义提示语
           </>
         }

@@ -97,7 +97,6 @@ const InternalAddress: ForwardRefRenderFunction<
     ...defaultProps,
     ...props,
   }
-
   const classPrefix = 'nut-address'
   const [currentType, setCurrentType] = useState<string>(type)
   const [innerVisible, setInnerVisible] = usePropsValue<boolean>({
@@ -161,6 +160,7 @@ const InternalAddress: ForwardRefRenderFunction<
           title={title || locale.address.selectRegion}
           left={renderLeftOnCustomSwitch()}
           defaultValue={defaultValue}
+          closeIcon={closeIcon}
           options={options}
           format={format}
           optionKey={optionKey}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Category } from '@nutui/icons-react'
+import { Star } from '@nutui/icons-react'
 import { Loading } from './loading'
 import Cell from '../cell'
 import Button from '../button'
@@ -70,7 +70,7 @@ const LoadingDemo = () => {
         <Cell>
           <Loading
             direction="vertical"
-            icon={<Category width="30" height="30" color="red" />}
+            icon={<Star width="30" height="30" color="red" />}
           />
         </Cell>
         <h2>与遮罩层结合</h2>

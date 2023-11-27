@@ -56,7 +56,7 @@ export interface CascaderProps
   format: Record<string, string | number | null>
   closeable: boolean
   closeIconPosition: string
-  closeIcon: string
+  closeIcon: ReactNode
   lazy: boolean
   onLoad: (node: any, resolve: any) => void
   onChange: (value: CascaderValue, params?: any) => void

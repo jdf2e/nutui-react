@@ -73,7 +73,7 @@ export default App
 ```tsx
 import React, { useState, useRef } from 'react'
 import { Popover, Button } from '@nutui/nutui-react'
-import { User, Cart, Location, Close } from '@nutui/icons-react'
+import { Home, Cart, Location } from '@nutui/icons-react'
 
 const App = () => {
   const [showIcon, setShowIcon] = useState(false)
@@ -82,36 +82,17 @@ const App = () => {
     {
       key: 'key1',
       name: 'option1',
-      icon: <User color="rgba(250, 44, 25, 1)"  />,
-      action: {
-        icon: <Close />,
-        onClick: (e: any) => {
-          console.log('onclick 1')
-          e.stopPropagation()
-        },
-      },
+      icon: <Home color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />,
     },
     {
       key: 'key2',
       name: 'option2',
-      icon: <Cart  />,
-      action: {
-        icon: <Close />,
-        onClick: () => {
-          console.log('onclick 2')
-        },
-      },
+      icon: <Cart style={{ marginRight: '8px' }} />,
     },
     {
       key: 'key3',
       name: 'option3',
-      icon: <Location  />,
-      action: {
-        icon: <Close />,
-        onClick: () => {
-          console.log('onclick 3')
-        },
-      },
+      icon: <Location style={{ marginRight: '8px' }} />,
     },
   ]
   const itemListDisabled = [
@@ -178,12 +159,12 @@ export default App
 import React, { useState, useRef } from 'react'
 import { Popover, Button } from '@nutui/nutui-react'
 import {
+  Home,
+  Cart,
+  Location,
   Service,
   Notice,
-  Location,
   Category,
-  Scan2,
-  Message,
 } from '@nutui/icons-react'
 
 const App = () => {
@@ -211,12 +192,12 @@ const App = () => {
     },
     {
       key: 'key5',
-      name: <Scan2 />,
+      name: <Cart />,
       description: 'option5',
     },
     {
       key: 'key6',
-      name: <Message />,
+      name: <Home />,
       description: 'option6',
     },
   ]
@@ -289,7 +270,7 @@ export default App
 
 ### 位置自定義
 
-通過 location 屬性來控制氣泡的彈出位置。可選值
+通過 location 屬性來控製氣泡的彈出位置。可選值
 
 ```
 top           # 頂部中間位置
@@ -358,7 +339,7 @@ const App = () => {
   return (
     <>
       <Cell
-        title="點擊查看更多方嚮"
+        title="點擊查看更多方向"
         description={baseDesc}
         onClick={handlePicker}
        />
@@ -411,7 +392,7 @@ export default App
 ```tsx
 import React, { useState, useRef } from 'react'
 import { Popover, Button } from '@nutui/nutui-react'
-import { User, Cart, Location } from '@nutui/icons-react'
+import { Home, Cart, Location } from '@nutui/icons-react'
 
 const App = () => {
   const [customTarget, setCustomTarget] = useState(false)
@@ -419,17 +400,17 @@ const App = () => {
     {
       key: 'key1',
       name: 'option1',
-      icon: <User color="rgba(250, 44, 25, 1)"  />,
+      icon: <Home color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />,
     },
     {
       key: 'key2',
       name: 'option2',
-      icon: <Cart  />,
+      icon: <Cart style={{ marginRight: '8px' }} />,
     },
     {
       key: 'key3',
       name: 'option3',
-      icon: <Location  />,
+      icon: <Location style={{ marginRight: '8px' }} />,
     },
   ]
 
@@ -518,7 +499,7 @@ export default App
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| list | 選項列錶 | `List[]` | `[]` |
+| list | 選項列表 | `List[]` | `[]` |
 | visible | 是否展示氣泡彈出層 | `boolean` | `false` |
 | location | 彈出位置，裏面具體的參數值可以參考上面的位置自定義例子 | `string` | `bottom` |
 | offset | 出現位置的偏移量 | `string[]` \| `number[]` | `[0, 12]` |
@@ -549,7 +530,7 @@ List 屬性是一個由對象構成的數組，數組中的每個對象配置一
 | className | 為對應選項添加額外的類名 | `string` | `-` |
 | action | 為對應選項添加方法 | `{ icon?: React.ReactNode; onClick?: (e: any) => void }` | `-` |
 
-## 主題定制
+## 主題定製
 
 ### 樣式變量
 

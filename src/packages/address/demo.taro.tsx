@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
-import { Heart, HeartFill, ArrowLeft, Close } from '@nutui/icons-react-taro'
 import Taro from '@tarojs/taro'
+import { Heart } from '@nutui/icons-react'
 import { Address, Cell } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
@@ -77,8 +77,7 @@ const AddressDemo = () => {
     },
   })
 
-  const [value2, setValue2] = useState(['福建', '福州', '台江区'])
-  const [value5, setValue5] = useState(['广东省', '广州市'])
+  const [value2] = useState(['福建', '福州', '台江区'])
 
   const [optionsDemo1] = useState([
     {
@@ -242,10 +241,9 @@ const AddressDemo = () => {
   })
 
   const [icon, setIcon] = useState({
-    selectIcon: <HeartFill />,
+    selectIcon: <Heart color="red" />,
     defaultIcon: <Heart />,
-    closeIcon: <Close />,
-    backIcon: <ArrowLeft />,
+    closeIcon: <Heart />,
   })
 
   const [existList2, setExistList2] = useState([
@@ -284,7 +282,7 @@ const AddressDemo = () => {
     },
   ])
 
-  const [existList3, setExistList3] = useState([
+  const [existList3] = useState([
     {
       id: 10,
       addressDetail: '',
@@ -320,7 +318,7 @@ const AddressDemo = () => {
     },
   ])
 
-  const [existList4, setExistList4] = useState([
+  const [existList4] = useState([
     {
       id: 100,
       addressDetail: '',
@@ -475,6 +473,7 @@ const AddressDemo = () => {
         <Address
           visible={showPopup.normal}
           options={optionsDemo1}
+          closeIcon={icon.closeIcon}
           title={translated.title}
           onChange={(value, params) => {
             change1(value, params, 'one')
@@ -534,7 +533,6 @@ const AddressDemo = () => {
           title={customeTitle}
           options={optionsDemo5}
           format={convertConfigDemo5}
-          backIcon={icon.backIcon}
           custom={translated.other}
           onExistSelect={selectedFour}
           onSwitch={onSwitch}

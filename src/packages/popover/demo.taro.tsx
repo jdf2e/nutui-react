@@ -1,15 +1,12 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import {
+  Home,
   Cart,
-  User,
-  Category,
   Location,
-  Close,
-  Message,
-  Notice,
-  Scan,
   Service,
+  Notice,
+  Category,
 } from '@nutui/icons-react-taro'
 import { useTranslate } from '../../sites/assets/locale'
 import { Button, Popover, Cell, Picker } from '@/packages/nutui.react.taro'
@@ -116,9 +113,11 @@ const PopoverDemo = () => {
     {
       key: 'key1',
       name: 'option1',
-      icon: <User color="rgba(250, 44, 25, 1)" />,
+      icon: (
+        <Home color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />
+      ),
       action: {
-        icon: <Close />,
+        icon: <Home />,
         onClick: (e: any) => {
           console.log('onclick 1')
           e.stopPropagation()
@@ -128,24 +127,12 @@ const PopoverDemo = () => {
     {
       key: 'key2',
       name: 'option2',
-      icon: <Cart />,
-      action: {
-        icon: <Close />,
-        onClick: () => {
-          console.log('onclick 2')
-        },
-      },
+      icon: <Cart style={{ marginRight: '8px' }} />,
     },
     {
       key: 'key3',
       name: 'option3',
-      icon: <Location />,
-      action: {
-        icon: <Close />,
-        onClick: () => {
-          console.log('onclick 3')
-        },
-      },
+      icon: <Location style={{ marginRight: '8px' }} />,
     },
   ]
   const itemListDisabled = [
@@ -187,12 +174,12 @@ const PopoverDemo = () => {
     },
     {
       key: 'key5',
-      name: <Scan />,
+      name: <Cart />,
       description: 'option5',
     },
     {
       key: 'key6',
-      name: <Message />,
+      name: <Home />,
       description: 'option6',
     },
   ]

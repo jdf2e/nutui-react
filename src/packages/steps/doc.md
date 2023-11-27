@@ -348,7 +348,7 @@ export default App;
 ```tsx
 import React, { useState } from "react";
 import { Steps, Step, Button } from '@nutui/nutui-react';
-import { Service, People, Location } from '@nutui/icons-react';
+import { Service, People, Checklist } from '@nutui/icons-react';
 
 const App = () => {
   const [stepState, setStepState] = useState<any>({
@@ -376,7 +376,7 @@ const App = () => {
         <Step value={2} title="进行中" icon={<People />}>
           2
         </Step>
-        <Step value={3} title="未开始" icon={<Location />}>
+        <Step value={3} title="未开始" icon={<Checklist />}>
           3
         </Step>
       </Steps>
