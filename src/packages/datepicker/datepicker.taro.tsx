@@ -387,7 +387,7 @@ export const DatePicker: FunctionComponent<
     if (currentDate) {
       setOptions(columns())
     }
-  }, [currentDate])
+  }, [currentDate, startDate, endDate])
 
   return (
     <View
