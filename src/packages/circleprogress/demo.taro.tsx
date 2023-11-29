@@ -71,7 +71,7 @@ const CircleProgressDemo = () => {
 
   const gradientColor = {
     '0%': '#ff404f',
-    '100%': '#fa2c19',
+    '100%': '#1988fa',
   }
 
   return (
@@ -90,12 +90,13 @@ const CircleProgressDemo = () => {
 
         <h2>{translated['67eacf7f']}</h2>
         <Cell style={{ justifyContent: 'center' }}>
-          <CircleProgress percent={50} strokeWidth={10} />
+          <CircleProgress percent={50} strokeWidth={2} />
+          <CircleProgress percent={60} strokeWidth={10} background="#e5e9f2" />
         </Cell>
 
         <h2>{translated['3fee7d50']}</h2>
         <Cell style={{ justifyContent: 'center' }}>
-          <CircleProgress percent={50} color="#fa2c19">
+          <CircleProgress percent={50} color="#1988fa">
             50%
           </CircleProgress>
           <CircleProgress percent={100} color={gradientColor}>
@@ -114,7 +115,7 @@ const CircleProgressDemo = () => {
         <Cell style={{ justifyContent: 'center' }}>
           <CircleProgress percent={50} radius={60}>
             <div>3000</div>
-            <div style={{ fontSize: '12px', color: 'var(--nutui-gray-2)' }}>
+            <div style={{ fontSize: '12px', color: 'var(--nutui-black-10)' }}>
               步
             </div>
           </CircleProgress>
@@ -124,11 +125,15 @@ const CircleProgressDemo = () => {
         <Cell style={{ justifyContent: 'center' }}>
           <CircleProgress percent={percent}>{percent}%</CircleProgress>
         </Cell>
-        <Cell className="demo__btn" style={{ justifyContent: 'center' }}>
-          <Button type="primary" onClick={setReduceVal}>
+        <Cell
+          className="demo-btn"
+          radius="0 0 6px 6px"
+          style={{ justifyContent: 'center' }}
+        >
+          <Button type="primary" size="small" onClick={setReduceVal}>
             {translated['43c9f2ba']}
           </Button>
-          <Button type="primary" onClick={setAddVal}>
+          <Button type="primary" size="small" onClick={setAddVal}>
             {translated.bce53fe7}
           </Button>
         </Cell>

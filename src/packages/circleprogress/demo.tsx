@@ -70,13 +70,13 @@ const CircleProgressDemo = () => {
   }
 
   const gradientColor = {
-    '0%': '#FF5E5E',
-    '100%': '#FFA062',
+    '0%': 'var(--nutui-color-primary-stop-1)',
+    '100%': 'var(--nutui-color-primary-stop-2)',
   }
 
   return (
     <>
-      <div className="demo">
+      <div className="demo demo-circleprogress">
         <h2>{translated['84aa6bce']}</h2>
         <Cell style={{ justifyContent: 'center' }}>
           <CircleProgress percent={20} />
@@ -110,7 +110,7 @@ const CircleProgressDemo = () => {
         <Cell style={{ justifyContent: 'center' }}>
           <CircleProgress percent={50} radius={60}>
             <div>3000</div>
-            <div style={{ fontSize: '12px', color: 'var(--nutui-gray-2)' }}>
+            <div style={{ fontSize: '12px', color: 'var(--nutui-black-10)' }}>
               步
             </div>
           </CircleProgress>
@@ -120,11 +120,15 @@ const CircleProgressDemo = () => {
         <Cell style={{ justifyContent: 'center' }}>
           <CircleProgress percent={percent}>{percent}%</CircleProgress>
         </Cell>
-        <Cell className="demo-btn" style={{ justifyContent: 'center' }}>
-          <Button type="primary" onClick={setReduceVal}>
+        <Cell
+          className="demo-btn"
+          radius="0 0 6px 6px"
+          style={{ justifyContent: 'center' }}
+        >
+          <Button type="primary" size="small" onClick={setReduceVal}>
             {translated['43c9f2ba']}
           </Button>
-          <Button type="primary" onClick={setAddVal}>
+          <Button type="primary" size="small" onClick={setAddVal}>
             {translated.bce53fe7}
           </Button>
         </Cell>
