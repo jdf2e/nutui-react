@@ -11,7 +11,7 @@ test('should render description correctly', () => {
 })
 test('should render imageSize correctly', () => {
   const { container } = render(<Empty description="暂无数据" imageSize={100} />)
-  expect(container.querySelector('.nut-empty__image')).toHaveStyle({
+  expect(container.querySelector('.nut-empty-image')).toHaveStyle({
     width: '100px',
   })
 })

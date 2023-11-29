@@ -6,7 +6,7 @@ exports[`should render description correctly 1`] = `
     class="nut-empty "
   >
     <div
-      class="nut-empty__image"
+      class="nut-empty-image"
     >
       <img
         alt="empty"
@@ -15,7 +15,7 @@ exports[`should render description correctly 1`] = `
       />
     </div>
     <div
-      class="nut-empty__description"
+      class="nut-empty-description"
     >
       暂无数据
     </div>

@@ -590,6 +590,7 @@ plugins: [
 #### Empty
 - 新增 `status` 属性，用于默认图片错误类型
 - `image` 属性类型更改为 `ReactNode`
+- 新增 `title`、`size`、`actions` 属性，支持标题的设置、图片大小的设置、可能的操作设置，操作设置默认以`Button`实现。
 
 #### ImagePreview
 - `show` 重命名为 `visible`

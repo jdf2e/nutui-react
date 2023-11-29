@@ -1913,29 +1913,27 @@ $searchbar-clear-icon-padding: var(
 ) !default;
 
 // empty（✅）
-
-$empty-padding: var(--nutui-empty-padding, 32px 0) !default;
-$empty-image-size: var(--nutui-empty-image-size, 170px) !default;
+$empty-padding: var(--nutui-empty-padding, 32px 40px) !default;
+$empty-image-size: var(--nutui-empty-image-size, 160px) !default;
+$empty-image-small-size: var(--nutui-empty-image-small-size, 120px) !default;
+$empty-title-margin-top: var(--nutui-empty-title-margin-top, 0px) !default;
+$empty-title-margin-bottom: var(
+  --nutui-empty-title-margin-bottom,
+  8px
+) !default;
+$empty-title-line-height: var(
+  --nutui-empty-title-line-height,
+  $font-size-base
+) !default;
 $empty-description-margin-top: var(
   --nutui-empty-description-margin-top,
-  4px
-) !default;
-$empty-description-color: var(
-  --nutui-empty-description-color,
-  #666666
-) !default;
-$empty-description-font-size: var(
-  --nutui-empty-description-font-size,
-  14px
+  0px
 ) !default;
 $empty-description-line-height: var(
   --nutui-empty-description-line-height,
-  20px
+  1.2
 ) !default;
-$empty-description-padding: var(
-  --nutui-empty-description-padding,
-  0 40px
-) !default;
+
 // cascader（✅）
 $cascader-font-size: var(--nutui-cascader-font-size, $font-size-base) !default;
 $cascader-line-height: var(--nutui-cascader-line-height, 22px) !default;
