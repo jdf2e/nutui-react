@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Star } from '@nutui/icons-react'
+import { Star, Plus } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Button } from './button'
 import Cell from '../cell'
@@ -52,7 +52,7 @@ const ButtonDemo = () => {
       d04fcbda: '加载中',
       '0aaad622': '图标按钮',
       '0aaad620': '按钮尺寸',
-      '60a53514': '收藏',
+      '60a53514': '操作按钮',
       b8a453e3: '大号按钮',
       '248be9e1': '普通按钮',
       ea3d02f2: '小型按钮',
@@ -79,7 +79,7 @@ const ButtonDemo = () => {
       d04fcbda: '載入中',
       '0aaad622': '图标按钮',
       '0aaad620': '按鈕尺寸',
-      '60a53514': '收藏',
+      '60a53514': '操作按鈕',
       b8a453e3: '大號按鈕',
       '248be9e1': '普通按鈕',
       ea3d02f2: '小型按鈕',
@@ -106,7 +106,7 @@ const ButtonDemo = () => {
       d04fcbda: 'Loading',
       '0aaad622': 'Icon Button',
       '0aaad620': 'Button size',
-      '60a53514': 'Favorite',
+      '60a53514': 'Operation Button',
       b8a453e3: 'Large button',
       '248be9e1': 'Normal Button',
       ea3d02f2: 'Small Button',
@@ -132,7 +132,12 @@ const ButtonDemo = () => {
           >
             {translated.c38a08ef}
           </Button>
-          <Button type="info" style={{ margin: 8 }} shape="round">
+          <Button
+            className="aa"
+            style={{ margin: 8 }}
+            type="info"
+            shape="round"
+          >
             {translated.b840c88f}
           </Button>
           <Button shape="round" style={{ margin: 8 }}>
@@ -154,22 +159,137 @@ const ButtonDemo = () => {
           <Button fill="solid" style={{ margin: 8 }}>
             Solid
           </Button>
-          <Button fill="outline" style={{ margin: 8 }}>
+          <Button type="primary" fill="outline" style={{ margin: 8 }}>
             Outline
+          </Button>
+          <Button type="primary" fill="dashed" style={{ margin: 8 }}>
+            Dashed
           </Button>
           <Button fill="none" style={{ margin: 8 }}>
             None
           </Button>
         </Cell>
+
+        <h2>{translated['0aaad622']}</h2>
+        <Cell className="button-cell">
+          <Button
+            type="primary"
+            icon={<Star />}
+            rightIcon={<Star />}
+            style={{ margin: 8 }}
+          >
+            {translated['60a53514']}
+          </Button>
+          <Button
+            type="primary"
+            fill="outline"
+            icon={<Star />}
+            rightIcon={<Star />}
+            style={{ margin: 8 }}
+          >
+            {translated['60a53514']}
+          </Button>
+          <Button
+            type="primary"
+            fill="dashed"
+            icon={<Star />}
+            rightIcon={<Star />}
+            style={{ margin: 8 }}
+          >
+            {translated['60a53514']}
+          </Button>
+          <Button
+            shape="square"
+            fill="outline"
+            type="primary"
+            icon={<Plus width="20" />}
+            style={{ margin: 8 }}
+          />
+          <Button
+            fill="outline"
+            type="primary"
+            icon={<Plus width="20" />}
+            style={{ margin: 8 }}
+          />
+          <Button
+            type="primary"
+            fill="dashed"
+            icon={<Plus width="20" />}
+            style={{ margin: 8 }}
+          />
+          <Button
+            shape="round"
+            type="primary"
+            size="large"
+            icon={<Star width={20} height={20} />}
+            rightIcon={<Star width={20} height={20} />}
+            style={{ margin: 8 }}
+          >
+            {translated['60a53514']}
+          </Button>
+        </Cell>
+
         <h2>{translated['7db1a8b2']}</h2>
         <Cell className="button-cell">
-          <Button disabled style={{ margin: 8 }} type="primary">
+          <Button
+            disabled
+            type="primary"
+            icon={<Star />}
+            rightIcon={<Star />}
+            style={{ margin: 8 }}
+          >
             {translated['7db1a8b2']}
           </Button>
-          <Button disabled fill="outline" style={{ margin: 8 }} type="info">
+          <Button
+            disabled
+            type="primary"
+            fill="outline"
+            icon={<Star />}
+            rightIcon={<Star />}
+            style={{ margin: 8 }}
+          >
             {translated['7db1a8b2']}
           </Button>
-          <Button disabled fill="outline" style={{ margin: 8 }} type="primary">
+          <Button
+            disabled
+            type="primary"
+            fill="dashed"
+            icon={<Star />}
+            rightIcon={<Star />}
+            style={{ margin: 8 }}
+          >
+            {translated['60a53514']}
+          </Button>
+          <Button
+            disabled
+            shape="square"
+            fill="outline"
+            type="primary"
+            icon={<Plus width="20" />}
+            style={{ margin: 8 }}
+          />
+          <Button
+            disabled
+            type="primary"
+            icon={<Plus width="20" />}
+            style={{ margin: 8 }}
+          />
+          <Button
+            disabled
+            type="primary"
+            fill="dashed"
+            icon={<Plus width="20" />}
+            style={{ margin: 8 }}
+          />
+          <Button
+            disabled
+            shape="round"
+            type="primary"
+            size="large"
+            icon={<Star width={20} height={20} />}
+            rightIcon={<Star width={20} height={20} />}
+            style={{ margin: 8 }}
+          >
             {translated['7db1a8b2']}
           </Button>
         </Cell>
@@ -194,7 +314,6 @@ const ButtonDemo = () => {
         </Cell>
         <h2>{translated.a52bef0c}</h2>
         <Cell className="button-cell">
-          <Button loading type="info" style={{ margin: 8 }} />
           <Button loading type="warning" style={{ margin: 8 }}>
             {translated.d04fcbda}
           </Button>
@@ -213,42 +332,15 @@ const ButtonDemo = () => {
           </Button>
         </Cell>
 
-        <h2>{translated['0aaad622']}</h2>
-
-        <Cell className="button-cell">
-          <Button
-            shape="square"
-            fill="outline"
-            type="primary"
-            icon={<Star />}
-            style={{ margin: 8 }}
-          />
-          <Button
-            shape="square"
-            type="primary"
-            icon={<Star />}
-            style={{ margin: 8 }}
-          >
-            {translated['60a53514']}
-          </Button>
-          <Button
-            shape="round"
-            type="primary"
-            size="large"
-            icon={<Star width={20} height={20} />}
-            style={{ margin: 8 }}
-          >
-            {translated['60a53514']}
-          </Button>
-        </Cell>
         <h2>{translated['0aaad620']}</h2>
         <Cell className="button-cell">
-          <Button size="large" type="primary">
+          <Button size="large" type="primary" block>
             {translated.b8a453e3}
           </Button>
           <Button type="primary" style={{ margin: 8 }}>
             {translated['248be9e1']}
           </Button>
+          <Button style={{ margin: 8 }}>{translated['248be9e1']}</Button>
           <Button size="small" style={{ margin: 8 }} type="primary">
             {translated.ea3d02f2}
           </Button>
@@ -276,6 +368,7 @@ const ButtonDemo = () => {
             {translated['1076d771']}
           </Button>
           <Button
+            type="primary"
             color="linear-gradient(to right, #ff6034, #ee0a24)"
             style={{ margin: 8 }}
           >
