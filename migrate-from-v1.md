@@ -143,9 +143,11 @@ plugins: [
 #### Button
 - 移除 `plain`，通过 `fill="outline"` 实现
 - 增加 `ref`，对外暴露组件内 `button` 元素
-- 移除 `type` 中的 `info` 属性
 - CSS 变量中，对 `type` 类型对应的色值的定义，不在暴露到文档中，建议使用默认值，或修改主题变量
- 
+- 增加 `fill` 模式类型，`dashed`，修改 `fill` 默认值为 `outline`。
+- 增加 `rightIcon`，可满足同时设置左右两个icon的情况。
+- 修改 `size` 为 `large` 时的默认 `width` 为 `100%` 的值，如果使用通栏的 `button`，可搭配 `block` 来使用。
+
 #### Cell
 - `subTitle` 重命名为 `description`，类型修改为 `React.Node`
 - `desc` 重命名为 `extra`，类型修改为 `React.Node`

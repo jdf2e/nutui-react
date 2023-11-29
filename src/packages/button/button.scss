@@ -105,7 +105,6 @@
   }
 
   &--large {
-    width: $button-large-width;
     height: $button-large-height;
     padding: $button-large-padding;
     font-size: $button-large-font-size;
@@ -192,6 +191,34 @@
     }
   }
 
+  &--info {
+    color: $button-info-color;
+    background: $button-info-background-color;
+    background-origin: border-box;
+    border: $button-border-width solid transparent;
+
+    &.nut-button--disabled {
+      background: $button-info-disabled;
+      border-color: $button-info-disabled;
+    }
+
+    &.nut-button--outline,
+    &.nut-button--dashed {
+      color: $button-info-border-color;
+      border-color: $button-info-border-color;
+      background: transparent;
+
+      &.nut-button--disabled {
+        color: $button-primary-disabled;
+        border-color: $button-primary-disabled;
+      }
+    }
+
+    &.nut-button--none {
+      color: $button-info-border-color;
+    }
+  }
+
   &--danger {
     color: $button-danger-color;
     background: $button-danger-background-color;
@@ -255,7 +282,7 @@
     color: $button-primary-color;
     background: $button-primary-background-color;
     background-origin: border-box;
-    border: none;
+    border: $button-border-width solid transparent;
 
     &.nut-button--disabled {
       color: #ffffff;

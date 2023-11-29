@@ -132,6 +132,14 @@ const ButtonDemo = () => {
           >
             {translated.c38a08ef}
           </Button>
+          <Button
+            className="aa"
+            style={{ margin: 8 }}
+            type="info"
+            shape="round"
+          >
+            {translated.b840c88f}
+          </Button>
           <Button shape="round" style={{ margin: 8 }}>
             {translated.a74a1fd4}
           </Button>
@@ -421,7 +429,7 @@ const ButtonDemo = () => {
 
         <h2>{translated['0aaad620']}</h2>
         <Cell className="button-cell">
-          <Button size="large" type="primary">
+          <Button size="large" type="primary" block>
             {translated.b8a453e3}
           </Button>
           <Button type="primary" style={{ margin: 8 }}>
@@ -445,7 +453,7 @@ const ButtonDemo = () => {
         <h2>{translated['781b07fd']}</h2>
 
         <Cell className="button-cell">
-          <Button color="#7232dd" style={{ margin: 8 }}>
+          <Button color="blue" style={{ margin: 8 }}>
             {translated['1076d771']}
           </Button>
           <Button fill="outline" color="#7232dd" style={{ margin: 8 }}>

@@ -24,10 +24,13 @@ $color-default-disabled: var(--nutui-color-default-disabled) !default;
 
 // 信息
 $color-info: var(--nutui-color-info, #1988fa) !default;
-$color-info-pressed: var(--nutui-color-info-pressed) !default;
-$color-info-disabled: var(--nutui-color-info-disabled, #b2f0ae) !default;
+$color-info-pressed: var(--nutui-color-info-pressed, #496af2) !default;
+$color-info-disabled: var(--nutui-color-info-disabled, #89a6f8) !default;
 $color-info-light: var(--nutui-color-info-light) !default;
-$color-info-background: var(--nutui-color-info-background) !default;
+$color-info-background: var(
+  --nutui-color-info-background,
+  linear-gradient(315deg, rgba(73, 143, 242, 1) 0%, rgba(73, 101, 242, 1) 100%)
+) !default;
 
 // 成功
 $color-success: var(--nutui-color-success, #00bc14) !default;
@@ -176,7 +179,6 @@ $font-size-xxxxl: var(--nutui-font-size-10, 28px) !default;
 // todo
 // 与品牌色一起使用，默认为白色，不区分暗黑与明亮模式。
 $color-primary-text: var(--nutui-color-primary-text, #ffffff) !default;
-$color-info: var(--nutui-color-info) !default;
 // 链接色 todo
 $color-text-link: var(--nutui-color-text-link, #396acc) !default;
 $white: #ffffff !default;
@@ -226,9 +228,8 @@ $button-default-font-weight: var(
   $font-weight
 ) !default;
 
-$button-large-width: var(--nutui-button-large-width, 100%) !default;
 $button-large-height: var(--nutui-button-large-height, 40px) !default;
-$button-large-padding: var(--nutui-button-large-padding, 0px 0px) !default;
+$button-large-padding: var(--nutui-button-large-padding, 0px 32px) !default;
 $button-large-font-size: var(
   --nutui-button-large-font-size,
   $font-size-base
@@ -260,7 +261,11 @@ $button-primary-border-color: var(
   --nutui-button-primary-border-color,
   $color-primary
 ) !default;
-$button-primary-background-color: $color-primary-gradient-1 !default;
+$button-primary-background-color: linear-gradient(
+  135deg,
+  $color-primary-stop-1 0%,
+  $color-primary-stop-2 100%
+) !default;
 $button-primary-disabled: var(
   --nutui-button-primary-disabled,
   $color-primary-disabled
@@ -281,6 +286,23 @@ $button-success-background-color: var(
 $button-success-disabled: var(
   --nutui-button-success-disabled,
   $color-success-disabled
+) !default;
+
+$button-info-color: var(
+  --nutui-button-info-color,
+  $color-primary-text
+) !default;
+$button-info-border-color: var(
+  --nutui-button-info-border-color,
+  $color-info
+) !default;
+$button-info-background-color: var(
+  --nutui-button-info-background-color,
+  $color-info-background
+) !default;
+$button-info-disabled: var(
+  --nutui-button-info-disabled,
+  $color-info-disabled
 ) !default;
 
 $button-warning-color: var(
