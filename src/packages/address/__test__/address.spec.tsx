@@ -137,7 +137,7 @@ test('Address: show exist', async () => {
   const icons = container.querySelectorAll('.nut-icon')
   expect(icons[0]).toHaveClass('nut-icon-Close')
   expect(icons[1]).toHaveClass('nut-icon-Check')
-  expect(icons[2]).toHaveClass('nut-icon-Location2')
+  expect(icons[2]).toHaveClass('nut-icon-Location')
 
   expect(container.innerHTML).toMatchSnapshot()
 })

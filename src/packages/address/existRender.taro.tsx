@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode } from 'react'
-import { Check, Location2 } from '@nutui/icons-react-taro'
+import { Check, Location } from '@nutui/icons-react-taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { AddressList } from './type'
 
@@ -79,7 +79,7 @@ export const ExistRender: FunctionComponent<
                   {React.isValidElement(defaultIcon) ? (
                     defaultIcon
                   ) : (
-                    <Location2 />
+                    <Location />
                   )}
                 </>
               )}
