@@ -1,5 +1,5 @@
 import React from 'react'
-import { My, Right } from '@nutui/icons-react-taro'
+import { User, ArrowRight } from '@nutui/icons-react-taro'
 import Taro, { redirectTo, navigateTo } from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Switch, Cell, Button } from '@/packages/nutui.react.taro'
@@ -130,7 +130,7 @@ const CellDemo = () => {
         <Cell
           title={
             <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-              <My />
+              <User />
               <span style={{ marginLeft: '5px' }}>{translated.title}</span>
             </div>
           }
@@ -159,7 +159,7 @@ const CellDemo = () => {
             className="nutui-cell--clickable"
             title={translated.link}
             align="center"
-            extra={<Right />}
+            extra={<ArrowRight />}
           />
           <Cell
             className="nutui-cell--clickable"
@@ -167,7 +167,7 @@ const CellDemo = () => {
             extra={
               <>
                 <span className="demo-extra">/pages/index/index</span>
-                <Right />
+                <ArrowRight />
               </>
             }
             align="center"
@@ -197,7 +197,7 @@ const CellDemo = () => {
             extra={
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 More
-                <Right size={12} style={{ marginLeft: '5px' }} />
+                <ArrowRight size={12} style={{ marginLeft: '5px' }} />
               </div>
             }
           />
@@ -224,10 +224,10 @@ const CellDemo = () => {
           <Cell
             title={
               <div style={{ display: 'flex', alignItems: 'center' }}>
-                <My style={{ marginRight: '5px' }} /> {translated.title}
+                <User style={{ marginRight: '5px' }} /> {translated.title}
               </div>
             }
-            extra={<Right />}
+            extra={<ArrowRight />}
           />
           <Cell>
             <div style={{ minHeight: '50px' }}>{translated.content}</div>

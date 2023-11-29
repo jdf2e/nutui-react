@@ -602,7 +602,6 @@ const App = () => {
   
   const handleSorter = (item: TableColumnProps, data: Array<any>) => {
     Toast.show(`${JSON.stringify(item)}`)
-    setData5([...data])
   }
 
   return <Table
@@ -674,7 +673,6 @@ const App = () => {
   
   const handleSorter = (item: TableColumnProps, data: Array<any>) => {
     Toast.show(`${JSON.stringify(item)}`)
-    setData5([...data])
   }
 
   return <Table
@@ -714,7 +712,7 @@ export default App;
 | align | 列的对齐方式 | `left` \| `center` \| `right`  | `left` |
 | sorter | 排序，可选值有 true,function, default, 其中 default表示点击之后可能会依赖接口, function可以返回具体的排序函数, default表示采用默认的排序算法 | `boolean` \| `Function` \| `string` | `-` |
 | render | 自定义渲染列数据，优先级高 | `Function(record)` | `-` |
-| sorterIcon | 排序 icon | `ReactNode` | `<DownArrow />` |
+| sorterIcon | 排序 icon | `ReactNode` | `<ArrowDown />` |
 
 ## 主题定制
 

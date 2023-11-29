@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { DownArrow, Checked } from '@nutui/icons-react'
+import { ArrowDown, Checked } from '@nutui/icons-react'
 import { Collapse } from './collapse'
 import { Button } from '../button/button'
 import { useTranslate } from '../../sites/assets/locale'
@@ -141,7 +141,7 @@ const CollapseDemo = () => {
         <Collapse
           className="test"
           defaultActiveName={['1', '2']}
-          expandIcon={<DownArrow />}
+          expandIcon={<ArrowDown />}
         >
           <Collapse.Item title={translated.title1} name="1">
             {translated.content1}
@@ -184,7 +184,7 @@ const CollapseDemo = () => {
         <Collapse
           defaultActiveName={['1']}
           accordion
-          expandIcon={<DownArrow />}
+          expandIcon={<ArrowDown />}
         >
           <Collapse.Item
             title={translated.title1}
@@ -204,7 +204,7 @@ const CollapseDemo = () => {
         <Collapse
           defaultActiveName={['1']}
           accordion
-          expandIcon={<DownArrow />}
+          expandIcon={<ArrowDown />}
           rotate={-90}
         >
           <Collapse.Item
@@ -225,7 +225,7 @@ const CollapseDemo = () => {
         <Collapse
           defaultActiveName={['1']}
           accordion
-          expandIcon={<DownArrow />}
+          expandIcon={<ArrowDown />}
         >
           <Collapse.Item
             title={

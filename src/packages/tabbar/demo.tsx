@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react'
+import { Cart, Category, Find, Home, User } from '@nutui/icons-react'
 import { Tabbar } from './tabbar'
 import './demo.scss'
 import { useTranslate } from '../../sites/assets/locale'
@@ -100,7 +100,7 @@ const TabbarDemo = () => {
           />
           <Tabbar.Item
             title={translated.e51e4582}
-            icon={<My width={18} height={18} />}
+            icon={<User width={18} height={18} />}
           />
         </Tabbar>
 
@@ -130,7 +130,7 @@ const TabbarDemo = () => {
           />
           <Tabbar.Item
             title={translated.e51e4582}
-            icon={<My width={20} height={20} />}
+            icon={<User width={20} height={20} />}
           />
         </Tabbar>
 
@@ -155,7 +155,7 @@ const TabbarDemo = () => {
           />
           <Tabbar.Item
             title={translated.e51e4582}
-            icon={<My width={12} height={12} />}
+            icon={<User width={12} height={12} />}
           />
         </Tabbar>
 
@@ -194,7 +194,7 @@ const TabbarDemo = () => {
           />
           <Tabbar.Item
             title={translated.e51e4582}
-            icon={<My width={20} height={20} />}
+            icon={<User width={20} height={20} />}
           />
         </Tabbar>
 
@@ -220,7 +220,7 @@ const TabbarDemo = () => {
           />
           <Tabbar.Item
             title={translated.e51e4582}
-            icon={<My width={20} height={20} />}
+            icon={<User width={20} height={20} />}
           />
         </Tabbar>
 
@@ -244,7 +244,7 @@ const TabbarDemo = () => {
           />
           <Tabbar.Item
             title={translated.e51e4582}
-            icon={<My width={20} height={20} />}
+            icon={<User width={20} height={20} />}
           />
         </Tabbar>
 
@@ -284,7 +284,7 @@ const TabbarDemo = () => {
           />
           <Tabbar.Item
             title={translated.e51e4582}
-            icon={<My width={20} height={20} />}
+            icon={<User width={20} height={20} />}
           />
         </Tabbar>
       </div>

@@ -76,12 +76,12 @@ export default App;
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
-import { HeartFill1 } from '@nutui/icons-react';
+import { HeartFill } from '@nutui/icons-react';
 
 const App = () => {
   return ( 
     <Rate
-      checkedIcon={<HeartFill1 />}
+      checkedIcon={<HeartFill />}
       defaultValue={3}
     />
   );
@@ -137,13 +137,13 @@ export default App;
 ```tsx
 import  React from "react";
 import { Rate } from '@nutui/nutui-react';
-import { HeartFill1 } from '@nutui/icons-react';
+import { HeartFill } from '@nutui/icons-react';
 
 const App = () => {
   return (
     <Rate
       defaultValue={3}
-      checkedIcon={<HeartFill1 color="rgb(255, 200, 0)" />}
+      checkedIcon={<HeartFill color="rgb(255, 200, 0)" />}
     />
   );
 };  

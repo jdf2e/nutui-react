@@ -13,7 +13,7 @@ export type ButtonType =
   | 'danger'
 export type ButtonSize = 'large' | 'normal' | 'small' | 'mini'
 export type ButtonShape = 'square' | 'round'
-export type ButtonFill = 'solid' | 'outline' | 'none'
+export type ButtonFill = 'solid' | 'outline' | 'dashed' | 'none'
 
 export interface ButtonProps extends BasicComponent {
   color: string
@@ -25,6 +25,7 @@ export interface ButtonProps extends BasicComponent {
   loading: boolean
   disabled: boolean
   icon: React.ReactNode
+  rightIcon: React.ReactNode
   id: string
   nativeType: 'submit' | 'reset' | 'button'
   onClick: (e: MouseEvent<HTMLButtonElement>) => void
@@ -38,11 +39,12 @@ const defaultProps = {
   type: 'default',
   size: 'normal',
   shape: 'round',
-  fill: 'solid',
+  fill: 'outline',
   loading: false,
   disabled: false,
   block: false,
   icon: null,
+  rightIcon: null,
   nativeType: 'button',
   onClick: (e: MouseEvent<HTMLButtonElement>) => {},
 } as ButtonProps
@@ -58,11 +60,12 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       size,
       block,
       icon,
+      rightIcon,
       children,
-      onClick,
       className,
       style,
       nativeType,
+      onClick,
       ...rest
     } = {
       ...defaultProps,
@@ -71,7 +74,10 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
     const getStyle = useCallback(() => {
       const style: CSSProperties = {}
       if (props.color) {
-        if (fill && fill === 'outline') {
+        if (
+          props.fill &&
+          (props.fill === 'outline' || props.fill === 'dashed')
+        ) {
           style.color = color
           style.background = '#fff'
           if (!color?.includes('gradient')) {
@@ -98,8 +104,9 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         type={nativeType}
         className={classNames(
           prefixCls,
-          props.type ? `${prefixCls}--${type}` : null,
+          `${prefixCls}--${type}`,
           props.fill ? `${prefixCls}--${fill}` : null,
+          children ? '' : `${prefixCls}--icononly`,
           {
             [`${prefixCls}--${size}`]: size,
             [`${prefixCls}--${shape}`]: shape,
@@ -113,13 +120,18 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         onClick={(e) => handleClick(e)}
       >
         <div className="nut-button__warp">
-          {loading ? <Loading className="nut-icon-loading" /> : null}
+          {loading && <Loading className="nut-icon-loading" />}
           {!loading && icon ? icon : null}
           {children && (
-            <div className={icon || loading ? 'nut-button-text' : ''}>
+            <div
+              className={`${icon || loading ? 'nut-button-text' : ''}${
+                rightIcon ? ' nut-button-text right' : ''
+              }`}
+            >
               {children}
             </div>
           )}
+          {rightIcon || null}
         </div>
       </button>
     )

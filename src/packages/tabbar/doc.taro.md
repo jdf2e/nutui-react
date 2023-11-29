@@ -19,7 +19,7 @@ import { Tabbar } from '@nutui/nutui-react-taro';
 ```tsx
 import React from "react";
 import { Tabbar } from '@nutui/nutui-react-taro';
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react-taro';
+import { Cart, Category, Find, Home, User } from '@nutui/icons-react-taro';
 
 const App = () => (
   <Tabbar onSwitch={(child, idx) => {console.log(idx)}}>
@@ -27,7 +27,7 @@ const App = () => (
     <Tabbar.Item title="分类" icon={<Category width={18} height={18} />} />
     <Tabbar.Item title="发现" icon={<Find width={18} height={18} />} />
     <Tabbar.Item title="购物车" icon={<Cart width={18} height={18} />} />
-    <Tabbar.Item title="我的" icon={<My width={18} height={18} />} />
+    <Tabbar.Item title="我的" icon={<User width={18} height={18} />} />
   </Tabbar>
 )
 
@@ -43,7 +43,7 @@ export default App;
 ```tsx
 import React, { useState } from "react";
 import { Tabbar } from '@nutui/nutui-react-taro';
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react-taro';
+import { Cart, Category, Find, Home, User } from '@nutui/icons-react-taro';
 
 const App = () => {
   const [activeIndex, setActiveIndex] = useState(2)
@@ -59,7 +59,7 @@ const App = () => {
     <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} dot />
     <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
     <Tabbar.Item title="购物车" icon={<Cart width={20} height={20} />} />
-    <Tabbar.Item title="我的" icon={<My width={20} height={20} />} />
+    <Tabbar.Item title="我的" icon={<User width={20} height={20} />} />
   </Tabbar>
 }
 
@@ -75,7 +75,7 @@ export default App;
 ```tsx
 import React from "react";
 import { Tabbar } from '@nutui/nutui-react-taro';
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react-taro';
+import { Cart, Category, Find, Home, User } from '@nutui/icons-react-taro';
 
 const App = () => (
   <Tabbar>
@@ -83,7 +83,7 @@ const App = () => (
     <Tabbar.Item title="分类" icon={<Category width={12} height={12} />} dot />
     <Tabbar.Item title="发现" icon={<Find width={12} height={12} />} />
     <Tabbar.Item title="购物车" icon={<Cart width={12} height={12} />} value={110} />
-    <Tabbar.Item title="我的" icon={<My width={12} height={12} />} />
+    <Tabbar.Item title="我的" icon={<User width={12} height={12} />} />
   </Tabbar>
 )
 
@@ -99,7 +99,7 @@ export default App;
 ```tsx
 import React from "react";
 import { Tabbar } from '@nutui/nutui-react-taro';
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react-taro';
+import { Cart, Category, Find, Home, User } from '@nutui/icons-react-taro';
 
 const App = () => (
   <Tabbar>
@@ -107,7 +107,7 @@ const App = () => (
     <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
     <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
     <Tabbar.Item title="购物车" icon={<Cart width={20} height={20} />} dot />
-    <Tabbar.Item title="我的" icon={<My width={20} height={20} />} />
+    <Tabbar.Item title="我的" icon={<User width={20} height={20} />} />
   </Tabbar>
 )
 
@@ -123,7 +123,7 @@ export default App;
 ```tsx
 import React from "react";
 import { Tabbar } from '@nutui/nutui-react-taro';
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react-taro';
+import { Cart, Category, Find, Home, User } from '@nutui/icons-react-taro';
 
 
 const App = () => (
@@ -132,7 +132,7 @@ const App = () => (
     <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
     <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
     <Tabbar.Item title="购物车" icon={<Cart width={20} height={20} />} />
-    <Tabbar.Item title="我的" icon={<My width={20} height={20} />} />
+    <Tabbar.Item title="我的" icon={<User width={20} height={20} />} />
   </Tabbar>
 )
 
@@ -170,7 +170,7 @@ export default App;
 ```tsx
 import React from "react";
 import { Tabbar } from '@nutui/nutui-react-taro';
-import { Cart, Category, Find, Home, My } from '@nutui/icons-react-taro';
+import { Cart, Category, Find, Home, User } from '@nutui/icons-react-taro';
 
 const App = () => (
   <Tabbar fixed>
@@ -178,7 +178,7 @@ const App = () => (
     <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
     <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
     <Tabbar.Item title="购物车" icon={<Cart width={20} height={20} />} />
-    <Tabbar.Item title="我的" icon={<My width={20} height={20} />} />
+    <Tabbar.Item title="我的" icon={<User width={20} height={20} />} />
   </Tabbar>
 )
 

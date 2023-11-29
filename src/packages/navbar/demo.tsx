@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Share, MoreX, Cart2, Left, Close } from '@nutui/icons-react'
+import { Share, More, Cart, ArrowLeft, Close } from '@nutui/icons-react'
 import { NavBar } from './navbar'
 import './demo.scss'
 import { Tabs } from '../tabs/tabs'
@@ -59,7 +59,7 @@ const NavBarDemo = () => {
         <NavBar
           back={
             <>
-              <Left name="left" color="#979797" />
+              <ArrowLeft name="left" color="#979797" />
               {translated.a74a1fd4}
             </>
           }
@@ -82,7 +82,7 @@ const NavBarDemo = () => {
               {translated.cfbdc781}
             </span>
           }
-          back={<Left name="left" color="#979797" />}
+          back={<ArrowLeft name="left" color="#979797" />}
           onBackClick={(e) => Toast.show(translated.a74a1fd4)}
         >
           <span onClick={(e) => Toast.show(translated.b840c88f)}>
@@ -90,7 +90,7 @@ const NavBarDemo = () => {
           </span>
         </NavBar>
         <NavBar
-          back={<Left name="left" color="#979797" />}
+          back={<ArrowLeft name="left" color="#979797" />}
           right={
             <>
               <span
@@ -99,7 +99,7 @@ const NavBarDemo = () => {
               >
                 {translated['8dab2f66']}
               </span>
-              <MoreX onClick={(e) => Toast.show('icon')} />
+              <More onClick={(e) => Toast.show('icon')} />
             </>
           }
           onBackClick={(e) => Toast.show(translated.a74a1fd4)}
@@ -112,12 +112,12 @@ const NavBarDemo = () => {
             className="flex-center"
             onClick={(e) => Toast.show('icon')}
           >
-            <Cart2 />
+            <Cart />
           </i>
         </NavBar>
 
         <NavBar
-          back={<Left name="left" color="#979797" />}
+          back={<ArrowLeft name="left" color="#979797" />}
           right={
             <>
               <span
@@ -126,7 +126,7 @@ const NavBarDemo = () => {
               >
                 {translated['8dab2f66']}
               </span>
-              <MoreX onClick={(e) => Toast.show('icon')} />
+              <More onClick={(e) => Toast.show('icon')} />
             </>
           }
           onBackClick={(e) => Toast.show(translated.a74a1fd4)}
