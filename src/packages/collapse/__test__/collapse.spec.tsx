@@ -3,7 +3,7 @@ import * as React from 'react'
 
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { ArrowDown, ArrowRight2 } from '@nutui/icons-react'
+import { ArrowDown, ArrowRight } from '@nutui/icons-react'
 import { Collapse } from '../collapse'
 import { CollapseItem } from '../../collapseitem/collapseitem'
 
@@ -77,7 +77,7 @@ test('prop rotate', () => {
       <Collapse
         activeName={['1']}
         accordion
-        expandIcon={<ArrowRight2 />}
+        expandIcon={<ArrowRight />}
         rotate={180}
       >
         <CollapseItem
@@ -108,7 +108,7 @@ test('prop rotate', () => {
 test('prop title extra', () => {
   const { getByTestId, container } = render(
     <>
-      <Collapse activeName={['1']} accordion expandIcon={<ArrowRight2 />}>
+      <Collapse activeName={['1']} accordion expandIcon={<ArrowRight />}>
         <CollapseItem
           title="标题1"
           extra="副标题"
@@ -133,7 +133,7 @@ test('prop title extra', () => {
     getByTestId('collapse-one').querySelector('.nut-collapse-item__extra')
   ).toHaveTextContent('副标题')
   expect(getByTestId('collapse-one').querySelector('.nut-icon')).toHaveClass(
-    'nut-icon-ArrowRight2'
+    'nut-icon-ArrowRight'
   )
 })
 

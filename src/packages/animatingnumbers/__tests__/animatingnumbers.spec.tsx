@@ -24,12 +24,7 @@ test('test value props', () => {
 test('test aysnc value and  duration props', async () => {
   let value = '1570.99'
   const { container, rerender } = render(
-    <AnimatingNumbers.CountUp
-      value={value}
-      duration={1.2}
-      length={6}
-      className="custom-coutup"
-    />
+    <AnimatingNumbers.CountUp value={value} duration={1.2} length={6} />
   )
   const listNumbers = container.querySelectorAll('.nut-countup__number')
   expect(listNumbers.length).toBe(8)
@@ -41,13 +36,7 @@ test('test aysnc value and  duration props', async () => {
   value = `${Math.floor(Math.random() * 999999)}.${Math.floor(
     Math.random() * 89 + 10
   )}`
-  rerender(
-    <AnimatingNumbers.CountUp
-      value={value}
-      duration={0}
-      className="custom-coutup"
-    />
-  )
+  rerender(<AnimatingNumbers.CountUp value={value} duration={0} />)
   await waitFor(() => {
     const listNumbers2 = container.querySelectorAll('.nut-countup__number')
     const lastlen = value.length - 1
