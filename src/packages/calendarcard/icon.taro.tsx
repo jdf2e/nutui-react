@@ -27,9 +27,9 @@ const Icon: FC<IconProps> = ({ url }) => {
   return <View style={style} />
 }
 
-export const Left: FC = () => <Icon url={left} />
+export const ArrowLeft: FC = () => <Icon url={left} />
 
-export const Right: FC = () => <Icon url={right} />
+export const ArrowRight: FC = () => <Icon url={right} />
 
 export const DoubleLeft: FC = () => <Icon url={doubleLeft} />
 

@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useMemo, useState } from 'react'
 import classNames from 'classnames'
-import { RectDown } from '@nutui/icons-react-taro'
+import { ArrowDown } from '@nutui/icons-react-taro'
 import { View } from '@tarojs/components'
 import Popup from '@/packages/popup/index.taro'
 import { PopupProps } from '@/packages/popup/popup.taro'
@@ -128,7 +128,7 @@ export const NumberKeyboard: FunctionComponent<
             <div>{item.id}</div>
           )}
           {item.type === 'delete' && <DeleteIcon />}
-          {item.type === 'close' && <RectDown size={25} />}
+          {item.type === 'close' && <ArrowDown size={25} />}
           {item.type === 'confirm' && <>{confirmText || locale.done}</>}
         </div>
       </div>

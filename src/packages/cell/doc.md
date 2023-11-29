@@ -72,14 +72,14 @@ export default App
 ```tsx
 import React from 'react'
 import { Cell } from '@nutui/nutui-react'
-import { My } from '@nutui/icons-react'
+import { User } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <Cell
       title={
         <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-          <My />
+          <User />
           我是标题<span style={{ marginLeft: '5px' }}>{translated.title}</span>
         </div>
       }
@@ -149,7 +149,7 @@ export default App
 ```tsx
 import React from 'react'
 import { Cell, Button } from '@nutui/nutui-react'
-import { Right, My } from '@nutui/icons-react'
+import { ArrowRight, User } from '@nutui/icons-react'
 
 const App = () => {
   const onJumpclick = (
@@ -171,7 +171,7 @@ const App = () => {
           className="nutui-cell--clickable"
           title="链接"
           align="center"
-          extra={<Right />}
+          extra={<ArrowRight />}
         />
         <Cell
           className="nutui-cell--clickable"
@@ -179,7 +179,7 @@ const App = () => {
           extra={
             <>
               <span style={{ marginRight: '5px' }}>https://jd.com</span>
-              <Right />
+              <ArrowRight />
             </>
           }
           align="center"
@@ -209,7 +209,7 @@ const App = () => {
           extra={
             <div style={{ display: 'flex', alignItems: 'center' }}>
               More
-              <Right width={12} height={12} style={{ marginLeft: '5px' }} />
+              <ArrowRight width={12} height={12} style={{ marginLeft: '5px' }} />
             </div>
           }
         />
@@ -236,10 +236,10 @@ const App = () => {
         <Cell
           title={
             <div style={{ display: 'flex', alignItems: 'center' }}>
-              <My style={{ marginRight: '5px' }} /> 我是标题
+              <User style={{ marginRight: '5px' }} /> 我是标题
             </div>
           }
-          extra={<Right />}
+          extra={<ArrowRight />}
         />
         <Cell>
           <div style={{ minHeight: '50px' }}>自定义内容</div>

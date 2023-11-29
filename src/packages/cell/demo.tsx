@@ -1,5 +1,5 @@
 import React from 'react'
-import { My, Right } from '@nutui/icons-react'
+import { User, ArrowRight } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import Cell from './index'
 import { Switch } from '../switch/switch'
@@ -130,7 +130,7 @@ const CellDemo = () => {
         <Cell
           title={
             <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-              <My />
+              <User />
               <span style={{ marginLeft: '5px' }}>{translated.title}</span>
             </div>
           }
@@ -158,7 +158,7 @@ const CellDemo = () => {
             className="nutui-cell--clickable"
             title={translated.link}
             align="center"
-            extra={<Right />}
+            extra={<ArrowRight />}
           />
           <Cell
             className="nutui-cell--clickable"
@@ -166,7 +166,7 @@ const CellDemo = () => {
             extra={
               <>
                 <span style={{ marginRight: '5px' }}>https://jd.com</span>
-                <Right />
+                <ArrowRight />
               </>
             }
             align="center"
@@ -193,7 +193,11 @@ const CellDemo = () => {
             extra={
               <div style={{ display: 'flex', alignItems: 'center' }}>
                 More
-                <Right width={12} height={12} style={{ marginLeft: '5px' }} />
+                <ArrowRight
+                  width={12}
+                  height={12}
+                  style={{ marginLeft: '5px' }}
+                />
               </div>
             }
           />
@@ -220,10 +224,10 @@ const CellDemo = () => {
           <Cell
             title={
               <div style={{ display: 'flex', alignItems: 'center' }}>
-                <My style={{ marginRight: '5px' }} /> {translated.title}
+                <User style={{ marginRight: '5px' }} /> {translated.title}
               </div>
             }
-            extra={<Right />}
+            extra={<ArrowRight />}
           />
           <Cell>
             <div style={{ minHeight: '50px' }}>{translated.content}</div>

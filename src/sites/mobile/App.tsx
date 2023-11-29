@@ -2,7 +2,7 @@ import './App.scss'
 import React, { useCallback, useState } from 'react'
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import loadable, { LoadableComponent } from '@loadable/component'
-import { Left } from '@nutui/icons-react'
+import { ArrowLeft } from '@nutui/icons-react'
 import routes from './router'
 import Links from './Links'
 import logo from '@/sites/assets/images/logo-red.png'
@@ -81,7 +81,7 @@ const WithNavRouter = ({ C }: any) => {
     <>
       <div id="nav">
         <div className="back" onClick={() => window.parent.history.back()}>
-          <Left />
+          <ArrowLeft />
         </div>
         {getComponentName()['name']}
         <div className="translate">

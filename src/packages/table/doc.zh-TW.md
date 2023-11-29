@@ -713,7 +713,7 @@ export default App;
 | align | 列的對齊方式 | `left` \| `center` \| `right` | `left` |
 | sorter | 排序，可選值有 true,function, default, 其中 default錶示點擊之後可能會依賴接口, function可以返回具體的排序函數, default錶示採用默認的排序算法 | `boolean` \| `Function` \| `string` | `-` |
 | render | 自定義渲染列數據，優先級高 | `Function(record)` | `-` |
-| sorterIcon | 排序 icon | `ReactNode` | `<DownArrow />` |
+| sorterIcon | 排序 icon | `ReactNode` | `<ArrowDown />` |
 
 ## 主題定制
 

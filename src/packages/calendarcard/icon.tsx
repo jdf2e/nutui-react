@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 
-export const Left: FC = () => {
+export const ArrowLeft: FC = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -13,7 +13,7 @@ export const Left: FC = () => {
   )
 }
 
-export const Right: FC = () => {
+export const ArrowRight: FC = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"

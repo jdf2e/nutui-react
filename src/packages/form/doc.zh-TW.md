@@ -313,7 +313,7 @@ import {
   Range,
   Toast,
 } from '@nutui/nutui-react';
-import { Right } from '@nutui/icons-react'
+import { ArrowRight } from '@nutui/icons-react'
 
 const App = () => {
   const submitFailed = (error: any) => {
@@ -400,7 +400,7 @@ const App = () => {
                         ?.text
                       : 'Please select'
                   }
-                  extra={<Right />}
+                  extra={<ArrowRight />}
                   align="center"
                 />
               )

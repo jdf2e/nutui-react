@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
-import { ArrowDown2, ArrowUp2 } from '@nutui/icons-react'
+import { ArrowDown, ArrowUp } from '@nutui/icons-react'
 import { OptionItem, MenuItem } from '@/packages/menuitem/menuitem'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -157,9 +157,9 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
               <div className="nut-menu__title-text">{finallyTitle()}</div>
               {icon ||
                 (direction === 'up' ? (
-                  <ArrowUp2 className="nut-menu__title-icon" />
+                  <ArrowUp className="nut-menu__title-icon" />
                 ) : (
-                  <ArrowDown2 className="nut-menu__title-icon" />
+                  <ArrowDown className="nut-menu__title-icon" />
                 ))}
             </div>
           </div>
