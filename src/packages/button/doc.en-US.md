@@ -14,7 +14,7 @@ import { Button } from '@nutui/nutui-react';
 
 ### The button type
 
-The button supports six types: 'default', 'primary', 'warning', 'danger', 'success', which defaults to ' default'.
+The button supports six types: 'default', 'primary', 'info', 'warning', 'danger', 'success', which defaults to ' default'.
 
 :::demo
 
@@ -26,6 +26,7 @@ const App = () => {
   return (
     <>
       <Button type="primary">primary</Button>
+      <Button type="info">info</Button>
       <Button type="default">default</Button>
       <Button type="danger">danger</Button>
       <Button type="warning">warning</Button>
