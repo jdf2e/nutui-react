@@ -26,7 +26,7 @@ import { Add } from '@nutui/icons-react';
 
 ```
 where the component library internally uses Svg as:
-Loading,Location,Check,Close,ArrowLeft,Service,Top,ArrowRight,CheckNormal,Checked,CheckDisabled,JoySmile,Image,ImageError,CircleClose,MaskClose,Minus,Plus,ArrowUp,ArrowDown,Notice,CheckChecked,StarN,Tips,Loading1,TriangleUp,TriangleDown,Photograph,Failure,Del,Link,Download
+Loading,Location,Check,Close,ArrowLeft,Service,Top,ArrowRight,CheckNormal,Checked,CheckDisabled,ArrowDown,JoySmile,Image,ImageError,MaskClose,Minus,Plus,ArrowUp2,ArrowDown2,Notice,CheckChecked,Star,Tips,Loading,TriangleUp,TriangleDown,Photograph,Failure,Del,Link,Download
 ```
 
 ## SVG Icon
