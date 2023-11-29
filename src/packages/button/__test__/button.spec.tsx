@@ -1,10 +1,10 @@
 import * as React from 'react'
-// import * as renderer from 'react-test-renderer'
 
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { useState } from 'react'
+import { Star } from '@nutui/icons-react'
 import { Button } from '../button'
 
 test('should match snapshot', () => {
@@ -15,6 +15,42 @@ test('should match snapshot', () => {
   )
   expect(container.firstChild?.nodeName).toBe('BUTTON')
   expect(container).toMatchSnapshot()
+})
+
+test('should  fill is outline', () => {
+  const { getByTestId } = render(
+    <Button data-testid="button" type="primary" fill="outline">
+      主要按钮
+    </Button>
+  )
+  expect(getByTestId('button')).toHaveClass('nut-button--outline')
+})
+
+test('should have righticon correctly', () => {
+  const { getByText } = render(
+    <Button data-testid="button" icon={<Star />} rightIcon={<Star />}>
+      主要按钮
+    </Button>
+  )
+  expect(getByText('主要按钮')).toHaveClass('right')
+})
+
+test('should props color when use fill correctly', () => {
+  const { getByTestId } = render(
+    <Button data-testid="button" color="blue" fill="outline">
+      主要按钮
+    </Button>
+  )
+  expect(getByTestId('button')).toHaveStyle({ 'border-color': 'blue' })
+})
+
+test('should props color with no fill correctly', () => {
+  const { getByTestId } = render(
+    <Button data-testid="button" color="blue">
+      主要按钮
+    </Button>
+  )
+  expect(getByTestId('button')).toHaveStyle({ background: 'blue' })
 })
 
 test('should children correctly', () => {
