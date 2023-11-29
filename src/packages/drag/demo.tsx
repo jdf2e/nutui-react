@@ -52,7 +52,7 @@ const DragDemo = () => {
     return document.documentElement.clientHeight - 559
   }
   const btnStyle = {
-    borderRadius: '25px',
+    borderRadius: '24px',
     padding: '0 18px',
     fontSize: '14px',
     color: '#fff',
