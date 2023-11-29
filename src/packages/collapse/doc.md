@@ -329,8 +329,10 @@ const App = () => {
 | \--nutui-collapse-item-font-size | 字体大小 | `$font-size-base` |
 | \--nutui-collapse-item-line-height | 行高 | `24px` |
 | \--nutui-collapse-item-color | 字体颜色 | `#666666` |
-| \--nutui-collapse-item-disabled-color | 禁用颜色 | `#c8c9cc` |
+| \--nutui-collapse-item-disabled-color | 禁用颜色 | `$color-text-disabled` |
 | \--nutui-collapse-item-extra-color | Extra 字体颜色 | `#666666` |
+| \--nutui-collapse-item-border-bottom | Item 底部边框 | `none` |
+| \--nutui-collapse-item-header-border-bottom | Item header 底部边框 | `1px solid $color-border` |
 | \--nutui-collapse-wrapper-content-background-color | 背景颜色 | `$white` |
 | \--nutui-collapse-wrapper-content-color | 内容字体颜色 | `#666666` |
 | \--nutui-collapse-wrapper-content-font-size | 内容字体大小 | `$font-size-base` |

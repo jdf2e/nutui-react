@@ -328,8 +328,10 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-collapse-item-font-size | fontSize | `$font-size-base` |
 | \--nutui-collapse-item-line-height | lineHeight | `24px` |
 | \--nutui-collapse-item-color | font color | `#666666` |
-| \--nutui-collapse-item-disabled-color | disabled color | `#c8c9cc` |
+| \--nutui-collapse-item-disabled-color | disabled color | `$color-text-disabled` |
 | \--nutui-collapse-item-extra-color | Extra font color | `#666666` |
+| \--nutui-collapse-item-border-bottom | Item borderBottom | `none` |
+| \--nutui-collapse-item-header-border-bottom | Item header borderBottom | `1px solid $color-border` |
 | \--nutui-collapse-wrapper-content-background-color | background | `$white` |
 | \--nutui-collapse-wrapper-content-color | content font color | `#666666` |
 | \--nutui-collapse-wrapper-content-font-size | content fontSize | `$font-size-base` |

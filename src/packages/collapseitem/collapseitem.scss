@@ -1,4 +1,21 @@
 .nut-collapse-item {
+  position: relative;
+  &::after {
+    position: absolute;
+    box-sizing: border-box;
+    content: ' ';
+    pointer-events: none;
+    right: 16px;
+    bottom: 0;
+    left: 16px;
+    border-bottom: $collapse-item-border-bottom;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+  }
+  &:last-child::after {
+    display: none;
+  }
+
   &__header {
     position: relative;
     display: flex;
@@ -18,7 +35,7 @@
       right: 16px;
       bottom: 0;
       left: 16px;
-      border-bottom: 1px solid #ebedf0;
+      border-bottom: $collapse-item-header-border-bottom;
       -webkit-transform: scaleY(0.5);
       transform: scaleY(0.5);
     }
@@ -45,6 +62,7 @@
     display: flex;
     padding-right: 40px;
     position: relative;
+    // color: $color-text;
   }
 
   &__icon {
@@ -62,6 +80,10 @@
     color: $collapse-item-disabled-color;
 
     .nut-collapse-item__title {
+      color: $collapse-item-disabled-color;
+    }
+
+    .nut-collapse-item__icon {
       color: $collapse-item-disabled-color;
     }
   }
