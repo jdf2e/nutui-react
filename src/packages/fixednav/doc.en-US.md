@@ -229,12 +229,12 @@ const App = () => {
           </>
         }
       >
-        <ul className="nut-fixednav__list">
-          <li className="nut-fixednav__list-item">1</li>
-          <li className="nut-fixednav__list-item">2</li>
-          <li className="nut-fixednav__list-item">3</li>
-          <li className="nut-fixednav__list-item">4</li>
-          <li className="nut-fixednav__list-item">5</li>
+        <ul className="nut-fixednav-list">
+          <li className="nut-fixednav-list-item">1</li>
+          <li className="nut-fixednav-list-item">2</li>
+          <li className="nut-fixednav-list-item">3</li>
+          <li className="nut-fixednav-list-item">4</li>
+          <li className="nut-fixednav-list-item">5</li>
         </ul>
       </FixedNav>
     </>
@@ -321,7 +321,8 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-fixednav-bg-color | background color | `#fff` |
-| \--nutui-fixednav-font-color | font color | `#000` |
+| \--nutui-fixednav-background-color | background color | `$white` |
+| \--nutui-fixednav-color | font color | `$color-title` |
+| \--nutui-fixednav-button-background | button background | `$color-primary-gradient-1` |
 | \--nutui-fixednav-index | zIndex | `201` |
 | \--nutui-fixednav-item-active-color | active color | `$color-primary` |
