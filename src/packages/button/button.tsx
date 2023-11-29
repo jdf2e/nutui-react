@@ -7,6 +7,7 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 export type ButtonType =
   | 'default'
   | 'primary'
+  | 'info'
   | 'success'
   | 'warning'
   | 'danger'
@@ -119,7 +120,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         onClick={(e) => handleClick(e)}
       >
         <div className="nut-button-warp">
-          {loading ? <Loading className="nut-icon-loading" /> : null}
+          {loading && <Loading className="nut-icon-loading" />}
           {!loading && icon ? icon : null}
           {children && (
             <div
