@@ -24,10 +24,13 @@ $color-default-disabled: var(--nutui-color-default-disabled) !default;
 
 // 信息
 $color-info: var(--nutui-color-info, #1988fa) !default;
-$color-info-pressed: var(--nutui-color-info-pressed) !default;
-$color-info-disabled: var(--nutui-color-info-disabled, #b2f0ae) !default;
+$color-info-pressed: var(--nutui-color-info-pressed, #496af2) !default;
+$color-info-disabled: var(--nutui-color-info-disabled, #89a6f8) !default;
 $color-info-light: var(--nutui-color-info-light) !default;
-$color-info-background: var(--nutui-color-info-background) !default;
+$color-info-background: var(
+  --nutui-color-info-background,
+  linear-gradient(315deg, rgba(73, 143, 242, 1) 0%, rgba(73, 101, 242, 1) 100%)
+) !default;
 
 // 成功
 $color-success: var(--nutui-color-success, #00bc14) !default;
@@ -176,7 +179,6 @@ $font-size-xxxxl: var(--nutui-font-size-10, 28px) !default;
 // todo
 // 与品牌色一起使用，默认为白色，不区分暗黑与明亮模式。
 $color-primary-text: var(--nutui-color-primary-text, #ffffff) !default;
-$color-info: var(--nutui-color-info) !default;
 // 链接色 todo
 $color-text-link: var(--nutui-color-text-link, #396acc) !default;
 $white: #ffffff !default;
@@ -239,64 +241,64 @@ $background-color2: $gray5 !default;
 $background-color3: $gray6 !default;
 
 // button（✅）
-$button-border-radius: var(--nutui-button-border-radius, 25px) !default;
+$button-square-border-radius: var(
+  --nutui-button-square-border-radius,
+  0
+) !default;
+$button-border-radius: var(--nutui-button-border-radius, 24px) !default;
 $button-border-width: var(--nutui-button-border-width, 1px) !default;
-$button-default-bg-color: var(--nutui-button-default-bg-color, $white) !default;
+
+$button-normal-padding: var(--nutui-button-normal-padding, 0px 16px) !default;
+$button-default-height: var(--nutui-button-default-height, 32px) !default;
+$button-default-color: var(--nutui-button-default-color, $gray1) !default;
+$button-default-background-color: var(
+  --nutui-button-default-background-color,
+  transparent
+) !default;
 $button-default-border-color: var(
   --nutui-button-default-border-color,
   rgba(204, 204, 204, 1)
 ) !default;
-$button-default-color: var(--nutui-button-default-color, $gray1) !default;
-$button-plain-color: var(--nutui-button-plain-color, $gray2) !default;
-$button-default-padding: var(--nutui-button-default-padding, 0 18px) !default;
-$button-mini-padding: var(--nutui-button-mini-padding, 0 12px) !default;
-$button-small-padding: var(--nutui-button-small-padding, 0 12px) !default;
-$button-small-height: var(--nutui-button-small-height, 28px) !default;
-$button-mini-height: var(--nutui-button-mini-height, 24px) !default;
-$button-default-height: var(--nutui-button-default-height, 38px) !default;
-$button-large-height: var(--nutui-button-large-height, 48px) !default;
-$button-large-line-height: var(--nutui-button-large-line-height, 46px) !default;
-$button-small-line-height: var(--nutui-button-small-line-height, 26px) !default;
-$button-block-height: var(--nutui-button-block-height, 48px) !default;
-$button-default-line-height: var(
-  --nutui-button-default-line-height,
-  36px
+$button-default-disabled: var(
+  --nutui-button-default-disabled,
+  $color-text-disabled
 ) !default;
-$button-block-line-height: var(--nutui-button-block-line-height, 46px) !default;
+$button-default-padding: var(--nutui-button-default-padding, 0px 16px) !default;
 $button-default-font-size: var(
   --nutui-button-default-font-size,
   $font-size-base
 ) !default;
+$button-default-font-weight: var(
+  --nutui-button-default-font-weight,
+  $font-weight
+) !default;
+
+// $button-large-width: var(--nutui-button-large-width, 100%) !default;
+$button-large-height: var(--nutui-button-large-height, 40px) !default;
+$button-large-padding: var(--nutui-button-large-padding, 0px 32px) !default;
 $button-large-font-size: var(
   --nutui-button-large-font-size,
-  $button-default-font-size
+  $font-size-base
 ) !default;
+$button-large-font-weight: var(
+  --nutui-button-large-font-weight,
+  $font-weight-bold
+) !default;
+
 $button-small-font-size: var(
   --nutui-button-small-font-size,
   $font-size-small
 ) !default;
+$button-small-padding: var(--nutui-button-small-padding, 0px 12px) !default;
+$button-small-height: var(--nutui-button-small-height, 28px) !default;
+
+$button-mini-padding: var(--nutui-button-mini-padding, 0px 12px) !default;
+$button-mini-height: var(--nutui-button-mini-height, 24px) !default;
 $button-mini-font-size: var(
   --nutui-button-mini-font-size,
   $font-size-small
 ) !default;
-$button-mini-line-height: var(--nutui-button-mini-line-height, 1.2) !default;
-$button-text-icon-margin-left: var(
-  --nutui-button-text-icon-margin-left,
-  5px
-) !default;
-$button-text-icon-large-margin-left: var(
-  --nutui-button-text-icon-large-margin-left,
-  10px
-) !default;
-$button-text-icon-small-margin-left: var(
-  --nutui-button-text-icon-small-margin-left,
-  2px
-) !default;
-$button-text-icon-mini-margin-left: var(
-  --nutui-button-text-icon-mini-margin-left,
-  1px
-) !default;
-$button-disabled-opacity: var(--nutui-button-disabled-opacity, 0.68) !default;
+
 $button-primary-color: var(
   --nutui-button-primary-color,
   $color-primary-text
@@ -307,64 +309,83 @@ $button-primary-border-color: var(
 ) !default;
 $button-primary-background-color: linear-gradient(
   135deg,
-  $color-primary 0%,
+  $color-primary-stop-1 0%,
   $color-primary-stop-2 100%
 ) !default;
-$button-info-color: var(
-  --nutui-button-info-color,
-  $color-primary-text
+$button-primary-disabled: var(
+  --nutui-button-primary-disabled,
+  $color-primary-disabled
 ) !default;
-$button-info-border-color: var(
-  --nutui-button-info-border-color,
-  #496af2
-) !default;
-$button-info-background-color: linear-gradient(
-  315deg,
-  rgba(73, 143, 242, 1) 0%,
-  rgba(73, 101, 242, 1) 100%
-) !default;
+
 $button-success-color: var(
   --nutui-button-success-color,
   $color-primary-text
 ) !default;
 $button-success-border-color: var(
   --nutui-button-success-border-color,
-  rgba(38, 191, 38, 1)
+  $color-success
 ) !default;
-$button-success-background-color: linear-gradient(
-  135deg,
-  rgba(38, 191, 38, 1) 0%,
-  rgba(39, 197, 48, 1) 45%,
-  rgba(40, 207, 63, 1) 83%,
-  rgba(41, 212, 70, 1) 100%
+$button-success-background-color: var(
+  --nutui-button-success-background-color,
+  $color-success
 ) !default;
-$button-danger-color: var(
-  --nutui-button-danger-color,
+$button-success-disabled: var(
+  --nutui-button-success-disabled,
+  $color-success-disabled
+) !default;
+
+$button-info-color: var(
+  --nutui-button-info-color,
   $color-primary-text
 ) !default;
-$button-danger-border-color: var(
-  --nutui-button-danger-border-color,
-  rgba(250, 44, 25, 1)
+$button-info-border-color: var(
+  --nutui-button-info-border-color,
+  $color-info
 ) !default;
-$button-danger-background-color: var(
-  --nutui-button-danger-background-color,
-  rgba(250, 44, 25, 1)
+$button-info-background-color: var(
+  --nutui-button-info-background-color,
+  $color-info-background
 ) !default;
+$button-info-disabled: var(
+  --nutui-button-info-disabled,
+  $color-info-disabled
+) !default;
+
 $button-warning-color: var(
   --nutui-button-warning-color,
   $color-primary-text
 ) !default;
 $button-warning-border-color: var(
   --nutui-button-warning-border-color,
-  rgba(255, 158, 13, 1)
+  $color-warning
 ) !default;
-$button-warning-background-color: linear-gradient(
-  135deg,
-  rgba(255, 158, 13, 1) 0%,
-  rgba(255, 167, 13, 1) 45%,
-  rgba(255, 182, 13, 1) 83%,
-  rgba(255, 190, 13, 1) 100%
+$button-warning-background-color: var(
+  --nutui-button-warning-background-color,
+  $color-warning
 ) !default;
+$button-warning-disabled: var(
+  --nutui-button-warning-disabled,
+  $color-warning-disabled
+) !default;
+
+$button-danger-color: var(
+  --nutui-button-danger-color,
+  $color-primary-text
+) !default;
+$button-danger-border-color: var(
+  --nutui-button-danger-border-color,
+  $color-danger
+) !default;
+$button-danger-background-color: var(
+  --nutui-button-danger-background-color,
+  $color-danger
+) !default;
+$button-danger-disabled: var(
+  --nutui-button-danger-disabled,
+  $color-danger-disabled
+) !default;
+
+$button-text-icon-margin: var(--nutui-button-text-icon-margin, 4px) !default;
 
 // cell（✅）
 $cell-title-color: var(--nutui-cell-title-color, $gray1) !default;

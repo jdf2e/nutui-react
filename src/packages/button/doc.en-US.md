@@ -51,7 +51,7 @@ const App = () => {
   return (
     <>
       <Button fill="solid">Solid</Button>
-      <Button fill="outline">Outline</Button>
+      <Button type="primary" fill="outline">Outline</Button>
       <Button fill="none">None</Button>
     </>
   );
@@ -75,7 +75,6 @@ const App = () => {
   return (
     <>
       <Button disabled type="primary">primary</Button>
-      <Button fill="outline" disabled type="info">info</Button>
       <Button fill="outline" disabled type="primary">primary</Button>
     </>
   );
@@ -99,7 +98,6 @@ const App = () => {
   return (
     <>
       <Button shape="square" type="primary">square</Button>
-      <Button type="info">circular</Button>
     </>
   );
 };
@@ -120,7 +118,6 @@ const App = () => {
   const [loading, setLoading] = useState(false)
   return (
     <>
-      <Button loading type="info" />
       <Button loading type="warning">Loading...</Button>
       <Button
         loading={loading}
@@ -150,20 +147,56 @@ export default App;
 ```tsx
 import React from "react";
 import { Button } from '@nutui/nutui-react';
+import { Star, Plus } from '@nutui/icons-react'
 
 const App = () => {
   return (
     <>
-      <Button shape="square" plain type="primary" icon="star-fill" />
-      <Button shape="square" type="primary" icon="star">collection</Button>
+      <Button
+        type="primary"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{ margin: 8 }}
+      >
+        操作按钮
+      </Button>
+      <Button
+        type="primary"
+        fill="outline"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{ margin: 8 }}
+      >
+        操作按钮
+      </Button>
+      <Button
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{
+          margin: 8,
+          backgroundColor: `var(--nutui-color-primary-light)`,
+          borderColor: `var(--nutui-color-primary)`,
+          color: `var(--nutui-color-primary)`,
+        }}
+      >
+        操作按钮
+      </Button>
+      <Button
+        shape="square"
+        fill="outline"
+        type="primary"
+        icon={<Plus width="20" />}
+        style={{ margin: 8 }}
+      />
       <Button
         shape="round"
         type="primary"
         size="large"
-        icon="star"
-        iconSize={20}
+        icon={<Star width={20} height={20} />}
+        rightIcon={<Star width={20} height={20} />}
+        style={{ margin: 8 }}
       >
-        collection
+        操作按钮
       </Button>
     </>
   );
@@ -253,11 +286,11 @@ export default App;
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| type | button style | `default` \| `primary` \| `info` \| `warning` \| `danger` \| `success` | `default` |
+| type | button style | `default` \| `primary` \| `warning` \| `danger` \| `success` | `default` |
 | size | button size | `normal` \| `large` \| `small` | `normal` |
 | shape | button shape | `square` \| `round` | `round` | 
 | color | button color | `string` | `-` |
-| fill | fill pattern | `solid` \| `ouline` \| `none` | `solid` |
+| fill | fill pattern | `solid` \| `ouline`  \| `dashed` \| `none` | `solid` |
 | disabled | disable the button | `boolean` | `false` |
 | block | block element | `boolean` | `false` |
 | icon | icon | `ReactNode` | `-` |
@@ -272,41 +305,23 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-button-border-radius | Rounded corners of the button | `25px` |
+| \--nutui-button-border-radius | Rounded corners of the button | `24px` |
 | \--nutui-button-border-width | Button border width | `1px` |
-| \--nutui-button-default-bg-color | The background color of the button whose type is default | `$white` |
-| \--nutui-button-default-border-color | The border color of the button whose type is default | `rgba(204, 204, 204, 1)` |
-| \--nutui-button-default-color | The text color of the button whose type is default | `$gray1` |
-| \--nutui-button-default-padding | padding of buttons with type default | `0 18px` |
-| \--nutui-button-mini-padding | Padding for buttons with size mini | `0 12px` |
-| \--nutui-button-mini-height | The height of the button whose size is mini | `24px` |
+| \--nutui-button-normal-padding | The padding of the button whose size is normal | `0px 16px` |
+| \--nutui-button-default-height | The height of the button whose type is default | `32px` |
+| \--nutui-button-default-color | The text color of the button whose type is default |`$color-title` |
+| \--nutui-button-default-background-color | The background color of the button whose type is default | `$white` |
+| \--nutui-button-default-border-color | The border color of the button whose type is default | `$color-text` |
+| \--nutui-button-default-disabled | The color of the button whose type is default and whose status is disable | `$color-text-disabled` |
+| \--nutui-button-default-padding | padding of buttons with type default | `0 16px` |
+| \--nutui-button-default-font-size | The font size of the button whose type is default | `$font-size-base` |
+| \--nutui-button-default-font-weight |The font weight of the button whose type is default | `$font-weight` |
+| \--nutui-button-large-height | The height of the button whose size is large | `40px` |
+| \--nutui-button-large-font-size | The font size of buttons whose size is large | `$button-default-font-size` |
 | \--nutui-button-small-padding | Padding for small buttons | `0 12px` |
 | \--nutui-button-small-height | The height of the button whose size is small | `28px` |
-| \--nutui-button-default-height | The height of the button whose type is default | `38px` |
-| \--nutui-button-large-height | The height of the button whose size is large | `48px` |
-| \--nutui-button-large-line-height | The line height of the button whose size is large | `46px` |
-| \--nutui-button-small-line-height | The line height of the button whose size is small | `26px` |
-| \--nutui-button-block-height | The height of the block's button | `48px` |
-| \--nutui-button-block-line-height | The line height of the block's button | `46px` |
-| \--nutui-button-default-line-height | The line height of the button whose type is default | `36px` |
-| \--nutui-button-default-font-size | The font size of the button whose type is default | `$font-size-base` |
-| \--nutui-button-large-font-size | The font size of buttons whose size is large | `$button-default-font-size` |
 | \--nutui-button-small-font-size | The font size of the button whose size is small | `$font-size-small` |
+| \--nutui-button-mini-padding | Padding for buttons with size mini | `0 12px` |
+| \--nutui-button-mini-height | The height of the button whose size is mini | `24px` |
 | \--nutui-button-mini-font-size | The font size of the button whose size is mini | `$font-size-small` |
-| \--nutui-button-mini-line-height | The line height of the button whose size is mini | `1.2` |
-| \--nutui-button-text-icon-margin-left | left margin of text with icon button | `5px` |
-| \--nutui-button-text-icon-large-margin-left | size is the left margin of the text of the large button | `10px` |
-| \--nutui-button-text-icon-small-margin-left | size is the left margin of the small button text | `2px` |
-| \--nutui-button-text-icon-mini-margin-left | size is the left margin of the text of the mini button | `1px` |
-| \--nutui-button-disabled-opacity | opacity of button in disabled state | `0.68` |
-| \--nutui-button-primary-color | type is the text color of the primary button | `$white` |
-| \--nutui-button-primary-border-color | Type is the border color of the primary button | `$color-primary` |
-| \--nutui-button-info-color | Type is info button text color | `$white` |
-| \--nutui-button-info-border-color | type is the border color of info button | `#496af2` |
-| \--nutui-button-success-color | Type is the text color of the success button | `$white` |
-| \--nutui-button-success-border-color | type is the border color of the success button | `rgba(38, 191, 38, 1)` |
-| \--nutui-button-danger-color | Type is the text color of danger button | `$white` |
-| \--nutui-button-danger-border-color | type is the border color of danger button | `rgba(250, 44, 25, 1)` |
-| \--nutui-button-danger-background-color | type is the background color of the danger button | `rgba(250, 44, 25, 1)` |
-| \--nutui-button-warning-color | Type is warning button text color | `$white` |
-| \--nutui-button-warning-border-color | type is warning button border color | `rgba(255, 158, 13, 1)` |
+| \--nutui-button-text-icon-margin | left margin of text with icon button | `4px` |
