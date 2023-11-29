@@ -17,10 +17,10 @@ importers:
         specifier: ^7.21.0
         version: 7.23.2
       '@nutui/icons-react':
-        specifier: 0.0.5-beta.0
+        specifier: ^0.0.5-beta.0
         version: 0.0.5-beta.0
       '@nutui/icons-react-taro':
-        specifier: 0.0.5-beta.0
+        specifier: ^0.0.5-beta.0
         version: 0.0.5-beta.0
       '@nutui/touch-emulator':
         specifier: ^1.0.0

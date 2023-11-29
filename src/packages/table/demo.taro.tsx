@@ -242,9 +242,7 @@ const TableDemo = () => {
   }, 5000)
 
   const handleSorter = (item: TableColumnProps, data: Array<any>) => {
-    // Toast.show(`${JSON.stringify(item)}`)
     toastShow(`${JSON.stringify(item)}`)
-    setData5([...data])
   }
 
   const [show, SetShow] = useState(false)

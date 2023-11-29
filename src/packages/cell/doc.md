@@ -70,8 +70,8 @@ export default App
 :::demo
 
 ```tsx
-import  React from "react";
-import { Cell } from '@nutui/nutui-react';
+import React from 'react'
+import { Cell } from '@nutui/nutui-react'
 import { User } from '@nutui/icons-react'
 
 const App = () => {
@@ -147,8 +147,8 @@ export default App
 :::demo
 
 ```tsx
-import  React from "react";
-import { Cell, Button  } from '@nutui/nutui-react';
+import React from 'react'
+import { Cell, Button } from '@nutui/nutui-react'
 import { ArrowRight, User } from '@nutui/icons-react'
 
 const App = () => {

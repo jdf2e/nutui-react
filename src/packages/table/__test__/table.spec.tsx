@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useState } from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Star } from '@nutui/icons-react'
 import { Table } from '../table'
@@ -187,4 +187,70 @@ test('render async', async () => {
   expect(container.querySelectorAll('.nut-table__main__body__tr').length).toBe(
     3
   )
+})
+
+test('sorter', async () => {
+  const fn = jest.fn()
+  const TableDemo = () => {
+    return (
+      <>
+        <Table
+          onSort={fn}
+          columns={[
+            {
+              title: '姓名',
+              key: 'name',
+              align: 'center',
+              sorter: true,
+            },
+            {
+              title: '性别',
+              key: 'sex',
+            },
+            {
+              title: '学历',
+              key: 'record',
+            },
+            {
+              title: '年龄',
+              key: 'age',
+              sorter: (row1: any, row2: any) => {
+                return row1.age - row2.age
+              },
+            },
+          ]}
+          data={[
+            {
+              name: 'Tom',
+              sex: '男',
+              record: '小学',
+              age: 10,
+            },
+            {
+              name: 'Lucy',
+              sex: '女',
+              record: '本科',
+              age: 30,
+            },
+            {
+              name: 'Jack',
+              sex: '男',
+              record: '高中',
+              age: 4,
+            },
+          ]}
+        />
+      </>
+    )
+  }
+
+  const { container, getByTestId } = render(<TableDemo />)
+  const th = container.querySelectorAll(
+    '.nut-table__main__head__tr .nut-table__main__head__tr__th'
+  )[3]
+  fireEvent.click(th)
+  await waitFor(() => expect(fn.mock.calls[0][1][0].age).toEqual(4))
+  fireEvent.click(th)
+  const td = container.querySelectorAll('.nut-table__main__body__tr__td')[3]
+  expect(td).toHaveTextContent('10')
 })

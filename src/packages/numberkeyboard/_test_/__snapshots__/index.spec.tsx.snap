@@ -319,7 +319,7 @@ exports[`should match snapshot 1`] = `
             >
               <svg
                 aria-labelledby="ArrowDown"
-                class="nut-icon nut-icon-ArrowDown"
+                class="nut-icon nut-icon-ArrowDown "
                 role="presentation"
                 style="width: 18px; height: 18px;"
                 viewBox="0 0 1024 1024"

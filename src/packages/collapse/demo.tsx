@@ -205,7 +205,7 @@ const CollapseDemo = () => {
           defaultActiveName={['1']}
           accordion
           expandIcon={<ArrowDown />}
-          rotate={90}
+          rotate={-90}
         >
           <Collapse.Item
             title={translated.title1}

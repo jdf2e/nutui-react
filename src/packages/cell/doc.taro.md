@@ -70,8 +70,8 @@ export default App
 :::demo
 
 ```tsx
-import  React from "react";
-import { Cell } from '@nutui/nutui-react-taro';
+import React from 'react'
+import { Cell } from '@nutui/nutui-react-taro'
 import { User } from '@nutui/icons-react-taro'
 
 const App = () => {
@@ -148,8 +148,8 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Cell, Button  } from '@nutui/nutui-react-taro'
-import { ArrowRight,User } from '@nutui/icons-react-taro'
+import { Cell, Button } from '@nutui/nutui-react-taro'
+import { ArrowRight, User } from '@nutui/icons-react-taro'
 
 const App = () => {
   const onJumpclick = (

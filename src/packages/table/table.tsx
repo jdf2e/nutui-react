@@ -1,9 +1,10 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { ArrowDown } from '@nutui/icons-react'
 import { BasicTableProps, TableColumnProps } from './types'
 import { useConfig } from '@/packages/configprovider'
 import { ComponentDefaults } from '@/utils/typings'
+import { usePropsValue } from '@/utils/use-props-value'
 
 export type TableProps = BasicTableProps
 
@@ -41,13 +42,14 @@ export const Table: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-
-  const [curData, setCurData] = useState(data)
+  const sortedMapping = useRef<{ [key: string]: boolean }>({})
+  const [innerValue, setValue] = usePropsValue({
+    defaultValue: data,
+    finalValue: [],
+  })
 
   useEffect(() => {
-    if (data && String(data) !== String(curData)) {
-      setCurData(data)
-    }
+    setValue(data)
   }, [data])
 
   const classPrefix = 'nut-table'
@@ -56,13 +58,19 @@ export const Table: FunctionComponent<
   const cls = classNames(classPrefix, className)
 
   const handleSorterClick = (item: TableColumnProps) => {
-    if (item.sorter) {
-      onSort && onSort(item, curData)
+    if (item.sorter && !sortedMapping.current[item.key]) {
+      const copied = [...innerValue]
       if (typeof item.sorter === 'function') {
-        setCurData(curData.sort(item.sorter as (a: any, b: any) => number))
-      } else {
-        setCurData(item.sorter === 'default' ? curData.sort() : curData)
+        copied.sort(item.sorter as (a: any, b: any) => number)
+      } else if (item.sorter === 'default') {
+        copied.sort()
       }
+      sortedMapping.current[item.key] = true
+      setValue(copied, true)
+      onSort && onSort(item, copied)
+    } else {
+      sortedMapping.current[item.key] = false
+      setValue(data)
     }
   }
 
@@ -120,7 +128,7 @@ export const Table: FunctionComponent<
   }
 
   const renderBoyTrs = () => {
-    return curData.map((item, index) => {
+    return innerValue.map((item, index) => {
       return (
         <div className={bodyClassPrefix} key={index}>
           {renderBodyTds(item, index)}
@@ -143,7 +151,7 @@ export const Table: FunctionComponent<
         )}
         <div className={`${classPrefix}__main__body`}>{renderBoyTrs()}</div>
       </div>
-      {(summary || curData.length === 0) && (
+      {(summary || innerValue.length === 0) && (
         <div className={`${classPrefix}__summary`}>{summary || noData}</div>
       )}
     </div>
