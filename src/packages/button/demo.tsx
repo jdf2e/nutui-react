@@ -358,7 +358,7 @@ const ButtonDemo = () => {
         <h2>{translated['781b07fd']}</h2>
 
         <Cell className="button-cell">
-          <Button color="#7232dd" style={{ margin: 8 }}>
+          <Button color="blue" style={{ margin: 8 }}>
             {translated['1076d771']}
           </Button>
           <Button fill="outline" color="#7232dd" style={{ margin: 8 }}>
