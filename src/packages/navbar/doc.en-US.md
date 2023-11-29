@@ -19,14 +19,14 @@ import { NavBar } from '@nutui/nutui-react';
 ```tsx
 import  React from "react";
 import { NavBar, Toast } from '@nutui/nutui-react';
-import { Left, Share, Close } from '@nutui/icons-react'
+import { ArrowLeft, Share, Close } from '@nutui/icons-react'
 
 const App = () => {
   return ( 
     <NavBar
         back={
         <>
-            <Left name="left" color="#979797" />
+            <ArrowLeft name="left" color="#979797" />
             back
         </>
         }
@@ -55,7 +55,7 @@ export default App;
 ```tsx
 import  React from "react";
 import { NavBar, Toast } from '@nutui/nutui-react';
-import { Left } from '@nutui/icons-react'
+import { ArrowLeft } from '@nutui/icons-react'
 
 const App = () => {
   return ( 
@@ -65,7 +65,7 @@ const App = () => {
             clear
         </span>
         }
-        back={<Left name="left" color="#979797" />}
+        back={<ArrowLeft name="left" color="#979797" />}
         onBackClick={(e) => Toast.show("back")}
     >
         <span onClick={(e) => Toast.show("title")}>
@@ -85,18 +85,18 @@ export default App;
 ```tsx
 import  React from "react";
 import { NavBar, Toast } from '@nutui/nutui-react';
-import { Cart2, Left, MoreX} from '@nutui/icons-react'
+import { Cart, ArrowLeft, More} from '@nutui/icons-react'
 
 const App = () => {
   return ( 
     <NavBar
-        back={<Left name="left" color="#979797" />}
+        back={<ArrowLeft name="left" color="#979797" />}
         right={
         <>
             <span style={{ marginRight: '5px' }} onClick={(e) => Toast.show('edit')}>
             edit
             </span>
-            <MoreX onClick={(e) => Toast.show('icon')} />
+            <More onClick={(e) => Toast.show('icon')} />
         </>
         }
         onBackClick={(e) => Toast.show("back")}
@@ -105,7 +105,7 @@ const App = () => {
         cart
         </span>
         <i style={{ marginLeft: '5px' }} onClick={(e) => Toast.show('icon')}>
-            <Cart2 />
+            <Cart />
         </i>
     </NavBar>
   );
@@ -121,19 +121,19 @@ export default App;
 ```tsx
 import  React, { useState } from "react";
 import { NavBar, Tabs, TabPane, Toast } from '@nutui/nutui-react';
-import { Left,MoreX } from '@nutui/icons-react'
+import { ArrowLeft,More } from '@nutui/icons-react'
 
 const App = () => {
   const [tab1value, setTab1value] = useState('0')
   return ( 
     <NavBar
-         back={<Left name="left" color="#979797" />}
+         back={<ArrowLeft name="left" color="#979797" />}
           right={
             <>
               <span style={{ marginRight: '5px' }} onClick={(e) => Toast.show("edit")}>
                 edit
               </span>
-              <MoreX onClick={(e) => Toast.show('icon')} />
+              <More onClick={(e) => Toast.show('icon')} />
             </>
           }
           onBackClick={(e) => Toast.show("back")}

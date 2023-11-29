@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { Right } from '@nutui/icons-react-taro'
+import { ArrowRight } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import {
   Input,
@@ -532,7 +532,7 @@ const FormDemo = () => {
                             ?.text
                         : translated.select
                     }
-                    extra={<Right />}
+                    extra={<ArrowRight />}
                     align="center"
                   />
                 )

@@ -1,7 +1,7 @@
 import React from 'react'
 import './Links.scss'
 import { Link } from 'react-router-dom'
-import { Right } from '@nutui/icons-react'
+import { ArrowRight } from '@nutui/icons-react'
 import pkg from '../../config.json'
 import useLocale from '@/sites/assets/locale/uselocale'
 
@@ -21,7 +21,7 @@ const Links = () => {
                   <Link key={com.name} to={`${lang}/component/${com.name}`}>
                     {com.name}&nbsp;&nbsp;{com.cName}
                   </Link>
-                  <Right color="#979797" name="right"></Right>
+                  <ArrowRight color="#979797" name="right"></ArrowRight>
                 </li>
               ) : null
             )}

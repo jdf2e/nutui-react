@@ -4,7 +4,7 @@ import React, {
   forwardRef,
   useState,
 } from 'react'
-import { Left } from '@nutui/icons-react'
+import { ArrowLeft } from '@nutui/icons-react'
 import Popup from '@/packages/popup'
 import { CustomRender } from './customRender'
 import { ExistRender } from './existRender'
@@ -129,7 +129,7 @@ export const InternalAddress: ForwardRefRenderFunction<
             {React.isValidElement(backIcon) ? (
               backIcon
             ) : (
-              <Left color="#cccccc" />
+              <ArrowLeft color="#cccccc" />
             )}
           </div>
         )}

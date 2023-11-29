@@ -592,7 +592,6 @@ const App = () => {
   
   const handleSorter = (item: TableColumnProps, data: Array<any>) => {
     Toast.show(`${JSON.stringify(item)}`)
-    setData5([...data])
   }
 
   return <Table
@@ -664,7 +663,6 @@ const App = () => {
   
   const handleSorter = (item: TableColumnProps, data: Array<any>) => {
     Toast.show(`${JSON.stringify(item)}`)
-    setData5([...data])
   }
 
   return <Table
@@ -693,7 +691,7 @@ export default App;
 | striped | Whether the stripes alternate light and dark | `boolean` | `false` |
 | showHeader | Show Header | `boolean` | `true` |
 | noData | Custom noData | `ReactNode` | `-` |
-| sorterIcon | Sort icon | `ReactNode` | `<DownArrow />` |
+| sorterIcon | Sort icon | `ReactNode` | `<ArrowDown />` |
 
 ### TableColumnProps
 

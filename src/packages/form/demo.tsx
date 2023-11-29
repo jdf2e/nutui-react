@@ -1,5 +1,5 @@
 import React from 'react'
-import { Right } from '@nutui/icons-react'
+import { ArrowRight } from '@nutui/icons-react'
 import Form from './index'
 import { Input } from '../input/input'
 import Cell from '@/packages/cell'
@@ -501,7 +501,7 @@ const FormDemo = () => {
                             ?.text
                         : translated.select
                     }
-                    extra={<Right />}
+                    extra={<ArrowRight />}
                     align="center"
                   />
                 )

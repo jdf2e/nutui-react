@@ -8,7 +8,7 @@ import React, {
 import type { MouseEvent } from 'react'
 import Taro, { getEnv } from '@tarojs/taro'
 import classNames from 'classnames'
-import { My } from '@nutui/icons-react-taro'
+import { User } from '@nutui/icons-react-taro'
 import Image from '@/packages/image/index.taro'
 import { AvatarContext } from '@/packages/avatargroup/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -183,7 +183,7 @@ export const Avatar: FunctionComponent<
                   })
                 : null}
               {children && <span className="text">{children}</span>}
-              {!src && !icon && !children && <My className="icon" />}
+              {!src && !icon && !children && <User className="icon" />}
             </>
           )}
           {/* 折叠头像 */}

@@ -2,7 +2,7 @@ import * as React from 'react'
 import { useState } from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { HeartFill, Heart1 } from '@nutui/icons-react'
+import { HeartFill, Heart } from '@nutui/icons-react'
 import { Rate } from '../rate'
 
 test('props test', () => {
@@ -10,7 +10,7 @@ test('props test', () => {
     count: 7,
     defaultValue: 3,
     checkedIcon: <HeartFill />,
-    uncheckedIcon: <Heart1 />,
+    uncheckedIcon: <Heart />,
   }
 
   const RateParent: React.FunctionComponent<any> = () => {
@@ -41,7 +41,7 @@ test('props test', () => {
     expect(el[2].childNodes[0]).toHaveClass('nut-rate-item__icon') // active
     expect(el[2].childNodes[0].childNodes[0]).toHaveClass('nut-icon-HeartFill')
     expect(el[3].childNodes[0]).toHaveClass('nut-rate-item__icon--disabled') // disabled
-    expect(el[3].childNodes[0].childNodes[0]).toHaveClass('nut-icon-Heart1')
+    expect(el[3].childNodes[0].childNodes[0]).toHaveClass('nut-icon-Heart')
     fireEvent.click(el[1])
     expect(valueEl.innerHTML).toBe('2') // onChange
   }
@@ -61,7 +61,7 @@ test('readOnly test', () => {
   const el = container.querySelector('.nut-rate-item')
   if (el) {
     fireEvent.click(el)
-    expect(el.childNodes[0].childNodes[0]).toHaveClass('nut-icon-StarFillN')
+    expect(el.childNodes[0].childNodes[0]).toHaveClass('nut-icon-StarFill')
   }
 })
 
