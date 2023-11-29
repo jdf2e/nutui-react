@@ -578,7 +578,7 @@ export default App;
 | defaultValue | Initialize the value of the active tab | `number` \| `string` | `0` |
 | activeColor | Label selected color | `string` | `#1a1a1a` |
 | direction | Use horizontal and vertical directions | `horizontal` \| `vertical` | `horizontal` |
-| activeType | Select the bottom display style Optional values `line`, `smile`, `simple`, `card`, `button` | `line` \| `smile` \| `simple`  \| `card` \| `button` | `line` |
+| activeType | Select the bottom display style Optional values `line`、`smile`、`simple`、`card`、`button`、`divider` | `line` \| `smile` \| `simple`  \| `card` \| `button`\| `divider` | `line` |
 | duration | Switch animation duration, unit ms 0 means no animation | `number` \| `string` | `300` |
 | title | custom navigation area | `() => JSX.Element[]` | `-` |
 | align | title left alignment | `left` \| `right` | `-` |

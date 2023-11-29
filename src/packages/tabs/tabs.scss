@@ -145,16 +145,42 @@
 
   &-button {
     padding: 8px 9px;
-    height: 44px;
     .nut-tabs-titles-item {
       background: $color-default-light;
       color: $color-text;
       border-radius: $radius-xs;
       margin: 0 3px;
+      padding: 12px 0;
       &-active {
         font-weight: $font-weight-bold;
         background-color: $color-primary-light;
         color: $color-text-link;
+      }
+    }
+  }
+
+  &-divider {
+    padding: 0;
+    border-bottom: 1px solid $color-border;
+
+    .nut-tabs-titles-item {
+      margin: 0;
+      position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        height: 50%;
+        width: 1px;
+        background: $color-border;
+        transform: translateY(-50%);
+      }
+
+      &:last-child {
+        &::after {
+          display: none;
+        }
       }
     }
   }

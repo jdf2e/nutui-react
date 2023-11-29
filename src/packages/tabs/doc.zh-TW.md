@@ -577,7 +577,7 @@ export default App;
 | defaultValue | 初始化激活 tab 的值 | `number` \| `string` | `0` |
 | activeColor | 標簽選中色 | `string` | `#1a1a1a` |
 | direction | 使用橫縱方嚮 | `horizontal` \| `vertical` | `horizontal` |
-| activeType | 選中底部展示樣式 可選值 `line`、`smile`、`simple`、`card`、`button` | `line` \| `smile` \| `simple`  \| `card` \| `button` | `line` |
+| activeType | 選中底部展示樣式 可選值 `line`、`smile`、`simple`、`card`、`button`、`divider` | `line` \| `smile` \| `simple`  \| `card` \| `button`\| `divider` | `line` |
 | duration | 切換動畫時長,單位 ms 0 代錶無動畫 | `number` \| `string` | `300` |
 | title | 自定義導航區域 | `() => JSX.Element[]` | `-` |
 | align | 標題左對齊 | `left` \| `right` | `-` |

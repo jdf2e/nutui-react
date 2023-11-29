@@ -20,7 +20,7 @@ export interface TabsProps extends BasicComponent {
   defaultValue: string | number
   activeColor: string
   direction: 'horizontal' | 'vertical'
-  activeType: 'line' | 'smile' | 'simple' | 'card' | 'button'
+  activeType: 'line' | 'smile' | 'simple' | 'card' | 'button' | 'divider'
   duration: number | string
   align: 'left' | 'right'
   title: () => JSX.Element[]
