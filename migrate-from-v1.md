@@ -572,6 +572,7 @@ plugins: [
 - `activeName` 改为受控方式
 - `icon` 重命名为 `expandIcon`，类型修改为 `ReactNode`
 - `onChange` 参数变更为 `activeName, name, status`
+- 新增一种样式，尝试修改 `--nutui-collapse-item-border-bottom` 和 `-nutui-collapse-item-header-border-bottom`，看看会有什么奇迹吧~
 
 #### CollapseItem
 - 使用方式调整为 `Collapse.Item`
