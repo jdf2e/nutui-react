@@ -2,16 +2,20 @@
   display: inline-flex;
   align-items: center;
   font-size: $trendarrow-font-size;
-  &__icon-before {
+
+  &-icon-before {
     margin-right: $trendarrow-icon-margin;
   }
-  &__icon-after {
+
+  &-icon-after {
     margin-left: $trendarrow-icon-margin;
   }
-  &__rate {
+
+  &-rate {
     vertical-align: middle;
     display: inline;
   }
+
   .nut-icon {
     vertical-align: middle;
   }
