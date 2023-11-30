@@ -56,23 +56,23 @@ export const Card: FunctionComponent<
   const classPrefix = 'nut-card'
   return (
     <div className={classNames(classPrefix, className)} style={style} {...rest}>
-      <div className={`${classPrefix}__left`}>
+      <div className={`${classPrefix}-left`}>
         <img src={src} alt="" />
       </div>
-      <div className={`${classPrefix}__right`}>
-        <div className={`${classPrefix}__right-title`}>{title}</div>
+      <div className={`${classPrefix}-right`}>
+        <div className={`${classPrefix}-right-title`}>{title}</div>
         {description}
-        <div className={`${classPrefix}right-price`}>
+        <div className={`${classPrefix}-right-price`}>
           <Price size="normal" price={price} />
           {priceTag || (
             <Price
               size="normal"
-              className={`${classPrefix}right-price-origin`}
+              className={`${classPrefix}-right-price-origin`}
               price={vipPrice}
             />
           )}
         </div>
-        <div className={`${classPrefix}right-other`}>
+        <div className={`${classPrefix}-right-other`}>
           {tag || (
             <>
               <Tag type="danger">{shopDescription}</Tag>
@@ -80,8 +80,8 @@ export const Card: FunctionComponent<
             </>
           )}
         </div>
-        <div className={`${classPrefix}right-shop`}>
-          <div className={`${classPrefix}right-shop-name`}>{shopName}</div>
+        <div className={`${classPrefix}-right-shop`}>
+          <div className={`${classPrefix}-right-shop-name`}>{shopName}</div>
           {extra}
         </div>
       </div>

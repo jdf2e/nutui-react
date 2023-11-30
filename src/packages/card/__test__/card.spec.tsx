@@ -30,9 +30,9 @@ test('props test', () => {
   const priceDoms = container.querySelectorAll('.nut-price__integer-normal')
   const tagDoms = container.querySelectorAll('.nut-tag')
   expect(
-    container.querySelector('.nut-card__left img')?.getAttribute('src')
+    container.querySelector('.nut-card-left img')?.getAttribute('src')
   ).toBe(state.src)
-  expect(container.querySelector('.nut-card__right-title')).toContainHTML(
+  expect(container.querySelector('.nut-card-right-title')).toContainHTML(
     state.title
   )
   expect(priceDoms[0].innerHTML).toBe(state.price)
@@ -43,7 +43,7 @@ test('props test', () => {
   expect(tagDoms[1]).toContainHTML(
     `<div class="nut-tag nut-tag--default nut-tag--plain"><span class="nut-tag-text">${state.delivery}</span></div>`
   )
-  expect(container.querySelector('.nut-cardright-shop-name')).toContainHTML(
+  expect(container.querySelector('.nut-card-right-shop-name')).toContainHTML(
     state.shopName
   )
   expect(container).toMatchSnapshot()
@@ -115,7 +115,7 @@ test('priceTag slot test', () => {
     />
   )
   expect(
-    container.querySelector('.nut-cardright-price img')?.getAttribute('src')
+    container.querySelector('.nut-card-right-price img')?.getAttribute('src')
   ).toBe(plusIconUrl)
   expect(container).toMatchSnapshot()
 })
@@ -144,7 +144,7 @@ test('tag slot test', () => {
       tag={<div>这里是自定义区域</div>}
     />
   )
-  expect(container.querySelector('.nut-cardright-other')?.innerHTML).toBe(
+  expect(container.querySelector('.nut-card-right-other')?.innerHTML).toBe(
     '<div>这里是自定义区域</div>'
   )
   expect(container).toMatchSnapshot()
@@ -176,7 +176,7 @@ test('extra slot test', () => {
   )
   expect(
     container
-      .querySelectorAll('.nut-cardright-shop div')[1]
+      .querySelectorAll('.nut-card-right-shop div')[1]
       ?.getAttribute('style')
   ).toBe('font-size: 12px;')
   expect(container).toMatchSnapshot()
