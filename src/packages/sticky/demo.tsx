@@ -99,7 +99,7 @@ const StickyDemo = () => {
             style={{ height: '600px' }}
           >
             <Sticky container={containerTopRef} threshold={57}>
-              <Button style={{ marginLeft: '100px' }} type="info">
+              <Button type="primary" style={{ marginLeft: '100px' }}>
                 {button3}
               </Button>
             </Sticky>
