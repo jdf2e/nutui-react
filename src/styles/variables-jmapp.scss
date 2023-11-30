@@ -220,7 +220,7 @@ $button-square-border-radius: var(
   --nutui-button-square-border-radius,
   $radius-s
 ) !default;
-$button-border-radius: var(--nutui-button-border-radius, 24px) !default;
+$button-border-radius: var(--nutui-button-border-radius, $radius-xs) !default;
 $button-border-width: var(--nutui-button-border-width, 1px) !default;
 
 $button-normal-padding: var(
