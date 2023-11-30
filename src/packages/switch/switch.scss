@@ -2,44 +2,21 @@
   cursor: pointer;
   display: flex;
   align-items: center;
-  background-color: $switch-active-background-color;
+  background-color: $switch-open-background-color;
   border-radius: $switch-border-radius;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center center;
   flex: 0 0 auto; // 防止被压缩
 
-  &.switch-close {
-    background-color: $switch-inactive-background-color;
-    .close-line {
-      background: $switch-close-line-background-color;
-      border-radius: 2px;
-    }
-  }
-
-  .switch-button {
+  &-button {
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 50%;
     background: $color-primary-text;
     transition: transform 0.3s;
-  }
-
-  &__label {
-    color: $color-primary-text;
-    font-size: $font-size-small;
-    &.open {
-      transform: translateX(-16px);
-    }
-
-    &.close {
-      transform: translateX(16px);
-    }
-  }
-
-  &-disabled {
-    opacity: 0.6;
+    box-shadow: $switch-button-box-shadow;
   }
 
   &-base {
@@ -47,23 +24,53 @@
     height: $switch-height;
     line-height: $switch-line-height;
 
-    .switch-button {
+    .nut-switch-button {
       height: $switch-inside-height;
       width: $switch-inside-width;
       transform: $switch-inside-close-transform;
     }
 
-    &.switch-open {
-      .switch-button {
+    &.nut-switch-open {
+      .nut-switch-button {
         transform: $switch-inside-open-transform;
+      }
+
+      &.nut-switch-disabled {
+        background-color: $switch-open-disabled-background-color;
       }
     }
 
-    &.switch-close {
-      .close-line {
-        width: 8px;
+    &.nut-switch-close {
+      .nut-switch-close-line {
+        width: 12px;
         height: 2px;
       }
+
+      &.nut-switch-disabled {
+        background-color: $switch-close-disabled-background-color;
+      }
+    }
+  }
+
+  &-close {
+    background-color: $switch-close-background-color;
+
+    &-line {
+      background: $switch-close-line-background-color;
+      border-radius: 2px;
+    }
+  }
+
+  &-label {
+    color: $color-primary-text;
+    font-size: $font-size-small;
+
+    &.open {
+      transform: translateX(-18px);
+    }
+
+    &.close {
+      transform: translateX(14px);
     }
   }
 }
