@@ -20,7 +20,7 @@ export const Indicator: FunctionComponent<
     ...props,
   }
   const classes = classNames({
-    [`${classPrefix}__vertical`]: direction === 'vertical',
+    [`${classPrefix}-vertical`]: direction === 'vertical',
   })
   const renderElement = () => {
     const childs: ReactNode[] = []
@@ -30,11 +30,11 @@ export const Indicator: FunctionComponent<
           children || (
             <div
               key={item}
-              className={`${classPrefix}__dot ${classPrefix}__active`}
+              className={`${classPrefix}-dot ${classPrefix}-active`}
             />
           )
         ) : (
-          <div key={item} className={`${classPrefix}__dot`} />
+          <div key={item} className={`${classPrefix}-dot`} />
         )
       )
     }
