@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { ArrowLeft, ArrowRight } from '@nutui/icons-react'
-// import Swiper.Item from '@/packages/swiperitem'
 import Swiper from '@/packages/swiper'
 import '@/packages/swiper/demo.scss'
 import { useTranslate } from '../../sites/assets/locale'
@@ -94,10 +93,6 @@ const SwiperDemo = () => {
       <h2>{translated.basic}</h2>
       <div className="demo-box" style={{ height: 150 }}>
         <Swiper
-          style={{
-            '--nutui-indicator-color': '#426543',
-            '--nutui-indicator-dot-color': '#426ddd',
-          }}
           height={height}
           autoPlay="2000"
           defaultValue={initPage1}
@@ -117,10 +112,6 @@ const SwiperDemo = () => {
       <div className="demo-box" style={{ height: 150 }}>
         <Swiper
           height={height}
-          style={{
-            '--nutui-indicator-color': '#426543',
-            '--nutui-indicator-dot-color': '#426ddd',
-          }}
           autoPlay="2000"
           defaultValue={initPage2}
           onChange={onChange}
@@ -216,7 +207,7 @@ const SwiperDemo = () => {
         </div>
       </div>
       <h2>{translated.vertical}</h2>
-      <div className="demo-box vertical-center" style={{ height: 150 }}>
+      <div className="demo-box vertical-center">
         <Swiper
           loop
           defaultValue={initPage7}
@@ -272,8 +263,10 @@ const SwiperDemo = () => {
             )
           })}
         </Swiper>
-        <h2>{translated.multiItems}</h2>
-        <Swiper loop>
+      </div>
+      <h2>{translated.multiItems}</h2>
+      <div style={{ height: 150 }}>
+        <Swiper loop autoPlay="2000">
           <Swiper.Item>
             <div style={{ display: 'flex' }}>
               <div style={{ flex: '1', border: '1 red' }}>Item1</div>
