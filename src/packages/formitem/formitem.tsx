@@ -174,8 +174,6 @@ export class FormItem extends React.Component<
 
     const item = name ? this.context.errors[name] : []
 
-    console.log(this.context)
-
     const { starPosition } = this.context
     const renderStar = (required || requiredInRules) && (
       <i className="required" />
