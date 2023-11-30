@@ -136,7 +136,7 @@ const App = () => {
   return (
     <Empty status="error" description="Failed to load">
       <div style={{marginTop: "10px"}}>
-        <Button icon="refresh" type="primary">重试</Button>
+        <Button icon="refresh" type="primary" size="small">重试</Button>
       </div>
     </Empty>
   );

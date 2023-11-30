@@ -169,10 +169,10 @@ const App = () => {
         <CircleProgress percent={percent}>{percent}%</CircleProgress>
       </div>
       <div className="demo__btn">
-        <Button type="primary" onClick={setReduceVal} style={{ marginRight: '10px' }}>
+        <Button type="primary" size="small" onClick={setReduceVal} style={{ marginRight: '10px' }}>
           reduce
         </Button>
-        <Button type="primary" onClick={setAddVal}>
+        <Button type="primary" size="small" onClick={setAddVal}>
           add
         </Button>
       </div>

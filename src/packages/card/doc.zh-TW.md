@@ -12,7 +12,7 @@ import { Card, Price, Tag } from '@nutui/nutui-react'
 
 ## 代碼演示
 
-### 基础用法
+### 基礎用法
 
 :::demo
 
@@ -253,5 +253,4 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-card-left-border-radius | 卡片圖片的圓角大小 | `0` |
-| \--nutui-card-background-color | 卡片圖片的背景顏色 | `inherit` |
+| \--nutui-card-border-radius | 卡片、圖片的圓角大小 | `4px` |

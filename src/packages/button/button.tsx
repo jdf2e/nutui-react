@@ -119,7 +119,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         style={{ ...getStyle(), ...style }}
         onClick={(e) => handleClick(e)}
       >
-        <div className="nut-button-warp">
+        <div className="nut-button-wrap">
           {loading && <Loading className="nut-icon-loading" />}
           {!loading && icon ? icon : null}
           {children && (

@@ -217,6 +217,7 @@ plugins: [
 - `onSelected` 重命名为 `onSelect`
 - 移除 `fixednavClass`，通过 `className` 实现
 - 移除 `slotList`，通过 `children` 实现
+- 该组件已废弃 `BEM` 规范，记得把 `__` 改为 `-`
 #### Indicator
 - 移除 `block`，暴露自定义节点
 - 移除 `align`，暴露自定义节点
@@ -603,6 +604,7 @@ plugins: [
 - 新增 `title` 属性，用于展示提示的标题部分
 - 新增 `actions` 属性，用于展示提示的操作部分，支持1个或2个操作
 - `image` 属性类型更改为 `ReactNode`
+- 新增 `title`、`size`、`actions` 属性，支持标题的设置、图片大小的设置、可能的操作设置，操作设置默认以`Button`实现。
 
 
 #### ImagePreview

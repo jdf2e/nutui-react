@@ -25,14 +25,14 @@ const App = () => {
     <>
       <Empty
         title="標題"
-        description="輔助信息輔助信息"
+        description="無數據"
         actions={[
           { text: "操作按鈕" },
           { text: "操作按鈕" },
         ]}
       />
       <Empty
-        description="輔助信息輔助信息"
+        description="無數據"
         actions={[{ text: "操作按鈕" }]}
         style={{ marginTop: '10px' }}
       />
@@ -136,7 +136,7 @@ const App = () => {
   return (
     <Empty status="error" description="加載失敗">
       <div style={{marginTop: "10px"}}>
-        <Button icon="refresh" type="primary">重試</Button>
+        <Button icon="refresh" type="primary" size="small">重試</Button>
       </div>
     </Empty>
   );

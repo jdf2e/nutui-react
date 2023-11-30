@@ -47,15 +47,16 @@
     height: 150px;
   }
 
-  .nut-swiper__pagination-vertical {
-    i {
+  .nut-swiper__indicator-vertical {
+    .nut-indicator__dot {
       width: 6px;
       height: 6px;
       border-radius: 50%;
 
-      &.active {
+      &.nut-indicator__active {
         height: 18px;
         border-radius: 5px;
+        background-color: #426543;
       }
     }
   }

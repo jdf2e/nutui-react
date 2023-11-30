@@ -1329,7 +1329,7 @@ $fixednav-color: var(--nutui-fixednav-color, #1a1a1a) !default;
 $fixednav-index: var(--nutui-fixednav-index, 900) !default;
 $fixednav-button-background: var(
   --nutui-fixednav-button-background,
-  $color-primary-gradient-1
+  $color-primary
 ) !default;
 $fixednav-item-active-color: var(
   --nutui-fixednav-item-active-color,
@@ -1761,7 +1761,6 @@ $searchbar-input-text-align: var(
 ) !default;
 
 // empty（✅）
-
 $empty-padding: var(--nutui-empty-padding, 32px 40px) !default;
 $empty-image-size: var(--nutui-empty-image-size, 160px) !default;
 $empty-image-small-size: var(--nutui-empty-image-small-size, 120px) !default;
@@ -1883,11 +1882,7 @@ $skeleton-line-border-radius: var(
 ) !default;
 
 // card（✅）
-$card-left-border-radius: var(--nutui-card-left-border-radius, 2px) !default;
-$color-background-overlay: var(
-  --nutui-card-background-color,
-  $color-background
-) !default;
+$card-border-radius: var(--nutui-card-border-radius, 4px) !default;
 
 // grid（✅）
 $grid-border-color: var(--nutui-grid-border-color, $color-border) !default;

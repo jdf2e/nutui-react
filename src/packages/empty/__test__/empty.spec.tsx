@@ -22,6 +22,20 @@ test('should render image props correctly', () => {
     'https://static-ftcms.jd.com/p/files/61a9e3183985005b3958672b.png'
   )
 })
+test('should render actions correctly', () => {
+  const { container, getByTestId } = render(
+    <Empty
+      data-testid="testEmpty"
+      title="标题"
+      description="暂无数据"
+      actions={[{ text: '操作1' }, { text: '操作2' }]}
+    />
+  )
+  expect(container.querySelector('.nut-empty-actions')).toBeTruthy()
+  expect(
+    container.querySelectorAll('.nut-empty-actions .nut-button').length
+  ).toEqual(2)
+})
 test('should render custom image correctly', () => {
   const { getByTestId } = render(
     <Empty
