@@ -1028,8 +1028,8 @@ $notify-warning-background-color: var(
 // rate（✅）
 $rate-item-margin: var(--nutui-rate-item-margin, 14px) !default;
 $rate-icon-color: var(--nutui-rate-icon-color, $color-primary) !default;
-$rate-icon-void-color: var(
-  --nutui-rate-icon-void-color,
+$rate-icon-inactive-color: var(
+  --nutui-rate-icon-inactive-color,
   $disable-color
 ) !default;
 
@@ -1353,13 +1353,15 @@ $signature-font-size: var(
 ) !default;
 
 //fixednav（✅）
-$fixednav-bg-color: var(--nutui-fixednav-bg-color, #fff) !default;
-$fixednav-font-color: var(--nutui-fixednav-font-color, #000) !default;
+$fixednav-background-color: var(
+  --nutui-fixednav-background-color,
+  $white
+) !default;
+$fixednav-color: var(--nutui-fixednav-color, #1a1a1a) !default;
 $fixednav-index: var(--nutui-fixednav-index, 900) !default;
-$fixednav-btn-bg: linear-gradient(
-  135deg,
-  $color-primary 0%,
-  $color-primary-stop-2 100%
+$fixednav-button-background: var(
+  --nutui-fixednav-button-background,
+  $color-primary
 ) !default;
 $fixednav-item-active-color: var(
   --nutui-fixednav-item-active-color,
@@ -2106,12 +2108,7 @@ $sku-product-img-border-radius: var(
 ) !default;
 
 // card（✅）
-$card-font-size-0: var(--nutui-card-font-size-0, $font-size-xs) !default;
-$card-left-border-radius: var(--nutui-card-left-border-radius, 0) !default;
-$card-left-background-color: var(
-  --nutui-card-left-background-color,
-  inherit
-) !default;
+$card-border-radius: var(--nutui-card-border-radius, 4px) !default;
 
 // grid（✅）
 $grid-border-color: var(--nutui-grid-border-color, #f5f6f7) !default;

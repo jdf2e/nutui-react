@@ -120,7 +120,7 @@ const App = () => {
       <CircleProgress percent={50} radius={60}>
         <> 
           <div>3000</div>
-          <div style={{ fontSize: '12px', color: 'var(--nutui-gray-2)' }}>步</div>
+          <div style={{ fontSize: '12px', color: 'var(--nutui-black-10)' }}>步</div>
         </>
       </CircleProgress>
     </>
@@ -169,10 +169,10 @@ const App = () => {
         <CircleProgress percent={percent}>{percent}%</CircleProgress>
       </div>
       <div className="demo__btn">
-        <Button type="primary" onClick={setReduceVal} style={{ marginRight: '10px' }}>
+        <Button type="primary" size="small" onClick={setReduceVal} style={{ marginRight: '10px' }}>
           reduce
         </Button>
-        <Button type="primary" onClick={setAddVal}>
+        <Button type="primary" size="small" onClick={setAddVal}>
           add
         </Button>
       </div>
@@ -208,5 +208,5 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-circleprogress-primary-color | The color of the filled part of the circular progress bar | `$color-primary` |
 | \--nutui-circleprogress-path-color | The color of the circular progress bar track | `#e5e9f2` |
-| \--nutui-circleprogress-text-color | The color of the track content area of ​​the circular progress bar | `$title-color` |
+| \--nutui-circleprogress-text-color | The color of the track content area of ​​the circular progress bar | `$color-title` |
 | \--nutui-circleprogress-text-size | The size of the track content area of ​​the circular progress bar | `$font-size-large` |

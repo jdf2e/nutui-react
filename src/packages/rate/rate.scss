@@ -37,12 +37,11 @@
       cursor: pointer;
 
       &--disabled {
-        color: $rate-icon-void-color;
+        color: $rate-icon-inactive-color;
       }
 
       &.nut-rate-item__icon.nut-rate-item__icon--half {
         position: absolute;
-        // width: 50% !important;
         left: 0;
         top: 0;
         overflow: hidden;

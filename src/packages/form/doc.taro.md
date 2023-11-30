@@ -255,6 +255,8 @@ const App = () => {
   const submitSucceed = (values: any) => {
     Taro.showToast({ title: JSON.stringify(values), icon: 'success' })
   }
+
+  const [form] = Form.useForm()
   const onMenuChange = (value: string | number | boolean) => {
     switch (value) {
       case 'male':

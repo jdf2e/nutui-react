@@ -215,6 +215,7 @@ plugins: [
 - `onSelected` 重命名为 `onSelect`
 - 移除 `fixednavClass`，通过 `className` 实现
 - 移除 `slotList`，通过 `children` 实现
+- 该组件已废弃 `BEM` 规范，记得把 `__` 改为 `-`
 #### Indicator
 - 移除 `block`，暴露自定义节点
 - 移除 `align`，暴露自定义节点

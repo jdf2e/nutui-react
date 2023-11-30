@@ -52,10 +52,9 @@ export const Overlay: FunctionComponent<
     ...defaultOverlayProps,
     ...props,
   }
+  const classPrefix = `nut-overlay`
 
   const [innerVisible, setInnerVisible] = useState(visible)
-
-  const classPrefix = `nut-overlay`
 
   const nodeRef = useRef(null)
 
