@@ -2177,9 +2177,24 @@ $countup-bg-color: var(--nutui-countup-bg-color, inherit) !default;
 $countup-color: var(--nutui-countup-color, $color-title) !default;
 
 // layout（✅）
+$row-content-color: var(--nutui-row-content-color, #fff) !default;
+$row-content-background-color: var(
+  --nutui-row-content-background-color,
+  var(--row-content-bg-color, #ff8881)
+) !default;
+$row-content-light-background-color: var(
+  --row-content-light-bg-color,
+  #ffc7c4
+) !default;
+$row-content-border-radius: var(
+  --nutui-row-content-border-radius,
+  6px
+) !default;
+$row-content-height: var(--nutui-row-content-height, 50px) !default;
+$row-content-line-height: var(--nutui-row-content-line-height, 40px) !default;
 $col-default-margin-bottom: var(
   --nutui-col-default-margin-bottom,
-  2px
+  15px
 ) !default;
 
 // TrendArrow
