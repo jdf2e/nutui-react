@@ -143,9 +143,11 @@ plugins: [
 #### Button
 - 移除 `plain`，通过 `fill="outline"` 实现
 - 增加 `ref`，对外暴露组件内 `button` 元素
-- 移除 `type` 中的 `info` 属性
 - CSS 变量中，对 `type` 类型对应的色值的定义，不在暴露到文档中，建议使用默认值，或修改主题变量
- 
+- 增加 `fill` 模式类型，`dashed`，修改 `fill` 默认值为 `outline`。
+- 增加 `rightIcon`，可满足同时设置左右两个icon的情况。
+- 修改 `size` 为 `large` 时的默认 `width` 为 `100%` 的值，如果使用通栏的 `button`，可搭配 `block` 来使用。
+
 #### Cell
 - `subTitle` 重命名为 `description`，类型修改为 `React.Node`
 - `desc` 重命名为 `extra`，类型修改为 `React.Node`
@@ -215,6 +217,7 @@ plugins: [
 - `onSelected` 重命名为 `onSelect`
 - 移除 `fixednavClass`，通过 `className` 实现
 - 移除 `slotList`，通过 `children` 实现
+- 该组件已废弃 `BEM` 规范，记得把 `__` 改为 `-`
 #### Indicator
 - 移除 `block`，暴露自定义节点
 - 移除 `align`，暴露自定义节点
@@ -601,6 +604,7 @@ plugins: [
 - 新增 `title` 属性，用于展示提示的标题部分
 - 新增 `actions` 属性，用于展示提示的操作部分，支持1个或2个操作
 - `image` 属性类型更改为 `ReactNode`
+- 新增 `title`、`size`、`actions` 属性，支持标题的设置、图片大小的设置、可能的操作设置，操作设置默认以`Button`实现。
 
 
 #### ImagePreview

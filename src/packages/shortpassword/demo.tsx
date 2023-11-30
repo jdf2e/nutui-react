@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { HeartFill } from '@nutui/icons-react'
+import { Star } from '@nutui/icons-react'
 import Cell from '../cell'
 import Toast from '../toast'
 import { ShortPassword } from './shortpassword'
@@ -105,7 +105,7 @@ const ShortPasswordDemo = () => {
         value={value}
         tips={
           <>
-            <HeartFill width={11} height={11} />
+            <Star width={11} height={11} />
             自定义提示语
           </>
         }

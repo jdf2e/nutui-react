@@ -70,6 +70,8 @@ export const InternalAddress: ForwardRefRenderFunction<
 > = (props, ref) => {
   const { locale } = useConfig()
   const {
+    style,
+    className,
     visible,
     defaultVisible,
     defaultValue,
@@ -90,8 +92,6 @@ export const InternalAddress: ForwardRefRenderFunction<
     onExistSelect,
     onClose,
     onSwitch,
-    style,
-    className,
     ...rest
   } = {
     ...defaultProps,
@@ -160,6 +160,7 @@ export const InternalAddress: ForwardRefRenderFunction<
           title={title || locale.address.selectRegion}
           left={renderLeftOnCustomSwitch()}
           defaultValue={defaultValue}
+          closeIcon={closeIcon}
           options={options}
           format={format}
           optionKey={optionKey}

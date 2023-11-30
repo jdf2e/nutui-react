@@ -143,7 +143,7 @@ export default App;
 ```jsx
 import React from 'react'
 import { Collapse } from '@nutui/nutui-react'
-import { ArrowDown, Checked, HeartFill } from '@nutui/icons-react';
+import { ArrowDown, Checked } from '@nutui/icons-react';
 
 const App = () => {
   return (  
@@ -151,7 +151,7 @@ const App = () => {
     <Collapse.Item title="title1" name="1" expandIcon={<Checked />}>
       Nutui-React is a lightweight React component library with JD style
     </Collapse.Item>
-    <Collapse.Item title="title2" name="2" expandIcon={<HeartFill />}>
+    <Collapse.Item title="title2" name="2">
       The product has been comprehensively upgraded in terms of function, experience, ease of use and flexibility!
     </Collapse.Item>
     <Collapse.Item title="title3" name="3">
@@ -172,7 +172,7 @@ export default App;
 ```jsx
 import React from 'react'
 import { Collapse } from '@nutui/nutui-react'
-import { ArrowDown, Checked, HeartFill } from '@nutui/icons-react';
+import { ArrowDown, Checked } from '@nutui/icons-react';
 
 const App = () => {
   return (  
@@ -202,7 +202,7 @@ const App = () => {
               alignItems: 'center',
             }}
           >
-            title2<HeartFill color="red" />
+            title2<Checked color="red" />
           </div>
         }
       >

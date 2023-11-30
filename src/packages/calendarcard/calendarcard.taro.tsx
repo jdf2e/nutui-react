@@ -1,6 +1,6 @@
 import React, { useState, useEffect, ReactNode } from 'react'
 import classNames from 'classnames'
-import { Left, Right, DoubleLeft, DoubleRight } from './icon.taro'
+import { ArrowLeft, ArrowRight, DoubleLeft, DoubleRight } from './icon.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import {
   convertDateToDay,
@@ -278,6 +278,32 @@ export const CalendarCard = React.forwardRef<
   }
 
   const jumpTo = (year: number, month: number) => {
+    if (startDate) {
+      const c = compareDay(
+        {
+          year,
+          month,
+          date: 31,
+        },
+        convertDateToDay(startDate) as CalendarCardDay
+      )
+      if (c && c < 0) {
+        return
+      }
+    }
+    if (endDate) {
+      const c = compareDay(
+        {
+          year,
+          month,
+          date: 1,
+        },
+        convertDateToDay(endDate) as CalendarCardDay
+      )
+      if (c && c > 0) {
+        return
+      }
+    }
     setMonth({ year, month })
   }
 
@@ -288,10 +314,7 @@ export const CalendarCard = React.forwardRef<
       newMonth = 12
     }
     const newYear = Math.floor((current + step - newMonth) / 12)
-    setMonth({
-      year: newYear,
-      month: newMonth,
-    })
+    jumpTo(newYear, newMonth)
   }
 
   React.useImperativeHandle(ref, () => {
@@ -367,7 +390,7 @@ export const CalendarCard = React.forwardRef<
             <DoubleLeft />
           </div>
           <div className="left" onClick={() => jump(-1)}>
-            <Left />
+            <ArrowLeft />
           </div>
         </div>
         <div className={`${prefixCls}-header-title`}>
@@ -375,7 +398,7 @@ export const CalendarCard = React.forwardRef<
         </div>
         <div className={`${prefixCls}-header-right`}>
           <div className="right" onClick={() => jump(1)}>
-            <Right />
+            <ArrowRight />
           </div>
           <div className="double-right" onClick={() => jump(12)}>
             <DoubleRight />

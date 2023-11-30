@@ -73,7 +73,7 @@ export default App
 ```tsx
 import React, { useState, useRef } from 'react'
 import { Popover, Button } from '@nutui/nutui-react'
-import { User, Cart, Location, Close } from '@nutui/icons-react'
+import { Home, Cart, Location } from '@nutui/icons-react'
 
 const App = () => {
   const [showIcon, setShowIcon] = useState(false)
@@ -82,36 +82,17 @@ const App = () => {
     {
       key: 'key1',
       name: 'option1',
-      icon: <User color="rgba(250, 44, 25, 1)"  />,
-      action: {
-        icon: <Close />,
-        onClick: (e: any) => {
-          console.log('onclick 1')
-          e.stopPropagation()
-        },
-      },
+      icon: <Home color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />,
     },
     {
       key: 'key2',
       name: 'option2',
-      icon: <Cart  />,
-      action: {
-        icon: <Close />,
-        onClick: () => {
-          console.log('onclick 2')
-        },
-      },
+      icon: <Cart style={{ marginRight: '8px' }} />,
     },
     {
       key: 'key3',
       name: 'option3',
-      icon: <Location  />,
-      action: {
-        icon: <Close />,
-        onClick: () => {
-          console.log('onclick 3')
-        },
-      },
+      icon: <Location style={{ marginRight: '8px' }} />,
     },
   ]
   const itemListDisabled = [
@@ -178,12 +159,12 @@ export default App
 import React, { useState, useRef } from 'react'
 import { Popover, Button } from '@nutui/nutui-react'
 import {
+  Home,
+  Cart,
+  Location,
   Service,
   Notice,
-  Location,
   Category,
-  Scan2,
-  Message,
 } from '@nutui/icons-react'
 
 const App = () => {
@@ -211,12 +192,12 @@ const App = () => {
     },
     {
       key: 'key5',
-      name: <Scan2 />,
+      name: <Cart />,
       description: 'option5',
     },
     {
       key: 'key6',
-      name: <Message />,
+      name: <Home />,
       description: 'option6',
     },
   ]
@@ -406,7 +387,7 @@ export default App
 ```tsx
 import React, { useState, useRef } from 'react'
 import { Popover, Button } from '@nutui/nutui-react'
-import { User, Cart, Location } from '@nutui/icons-react'
+import { Home, Cart, Location } from '@nutui/icons-react'
 
 const App = () => {
   const [customTarget, setCustomTarget] = useState(false)
@@ -414,7 +395,7 @@ const App = () => {
     {
       key: 'key1',
       name: 'option1',
-      icon: <User color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />,
+      icon: <Home color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />,
     },
     {
       key: 'key2',

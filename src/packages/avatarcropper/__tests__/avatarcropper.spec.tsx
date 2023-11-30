@@ -1,6 +1,6 @@
 import React from 'react'
 import '@testing-library/jest-dom'
-import { Refresh2, Retweet } from '@nutui/icons-react'
+import { Refresh, Retweet } from '@nutui/icons-react'
 import { render, screen, fireEvent } from '@testing-library/react'
 import AvatarCropper from '../index'
 import { simulateTouchMove, simulateTouchZoom } from '@/utils/test/event'
@@ -43,7 +43,7 @@ test('layout toolbar slot', () => {
         <Button type="danger" key="cancel">
           取消
         </Button>,
-        <Refresh2 key="reset" />,
+        <Refresh key="reset" />,
         <Retweet key="rotate" />,
         <Button type="success" key="confirm">
           确认

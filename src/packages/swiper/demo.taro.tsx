@@ -196,22 +196,24 @@ const SwiperDemo = () => {
           ))}
         </Swiper>
         <h2>{translated.verticalCenter}</h2>
-        <Swiper
-          defaultValue={0}
-          direction="vertical"
-          height={220}
-          previousMargin="20px"
-          nextMargin="20px"
-          indicator
-        >
-          {list.map((item) => (
-            <Swiper.Item key={item}>
-              <img width="100%" height="100%" src={item} alt="" />
-            </Swiper.Item>
-          ))}
-        </Swiper>
+        <div className="demo-box vertical-center">
+          <Swiper
+            defaultValue={0}
+            direction="vertical"
+            height={220}
+            previousMargin="20px"
+            nextMargin="20px"
+            indicator
+          >
+            {list.map((item) => (
+              <Swiper.Item key={item}>
+                <img width="100%" height="100%" src={item} alt="" />
+              </Swiper.Item>
+            ))}
+          </Swiper>
+        </div>
         <h2>{translated.multiItems}</h2>
-        <Swiper loop>
+        <Swiper loop autoPlay>
           <Swiper.Item>
             <div style={{ display: 'flex' }}>
               <div style={{ flex: '1', border: '1 red' }}>Item1</div>

@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { Dongdong, User } from '@nutui/icons-react'
+import { Image as ImageIcon } from '@nutui/icons-react'
 import { Grid } from '../grid'
 import Avatar from '@/packages/avatar'
 import Image from '@/packages/image'
@@ -12,13 +12,13 @@ test('should match snapshot', () => {
     <>
       <Grid>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
       </Grid>
     </>
@@ -31,22 +31,22 @@ test('render with column num', () => {
     <>
       <Grid columns={3}>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
       </Grid>
     </>
@@ -61,28 +61,28 @@ test('render with props gap', () => {
     <>
       <Grid gap={3}>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
       </Grid>
     </>
@@ -97,16 +97,16 @@ test('render with props reverse', () => {
     <>
       <Grid reverse>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
       </Grid>
     </>
@@ -122,16 +122,16 @@ test('render with props direction horizontal', () => {
     <>
       <Grid direction="horizontal">
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
       </Grid>
     </>
@@ -147,13 +147,13 @@ test('render with custom', () => {
     <>
       <Grid columns="3">
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong width={40} height={40} color="#478EF2" />
+          <ImageIcon width={40} height={40} color="#478EF2" />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
       </Grid>
     </>
@@ -174,13 +174,13 @@ test('render with custom content', () => {
     <>
       <Grid direction="horizontal">
         <Grid.Item text={<span>More</span>}>
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item
           text={
             <Avatar
               className="demo-avatar"
-              icon={<User color="#fff" />}
+              icon={<ImageIcon color="#fff" />}
               background="#FA2C19"
             />
           }
@@ -188,7 +188,7 @@ test('render with custom content', () => {
         <Grid.Item>
           <Avatar
             className="demo-avatar"
-            icon={<User color="#fff" />}
+            icon={<ImageIcon color="#fff" />}
             background="#FA2C19"
           />
         </Grid.Item>
@@ -212,16 +212,16 @@ test('render with props center', () => {
     <>
       <Grid center>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
         <Grid.Item text="文本">
-          <Dongdong />
+          <ImageIcon />
         </Grid.Item>
       </Grid>
     </>

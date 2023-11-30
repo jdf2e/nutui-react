@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Taro from '@tarojs/taro'
-import { Checked, ArrowDown, HeartFill, Star } from '@nutui/icons-react-taro'
+import { Checked, ArrowDown } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Collapse, Button } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
@@ -203,7 +203,7 @@ const CollapseDemo = () => {
           defaultActiveName={['1']}
           accordion
           expandIcon={<ArrowDown />}
-          rotate={90}
+          rotate={-90}
         >
           <Collapse.Item
             title={translated.title1}
@@ -212,11 +212,7 @@ const CollapseDemo = () => {
           >
             {translated.content1}
           </Collapse.Item>
-          <Collapse.Item
-            title={translated.title2}
-            name="2"
-            expandIcon={<HeartFill />}
-          >
+          <Collapse.Item title={translated.title2} name="2">
             {translated.content2}
           </Collapse.Item>
           <Collapse.Item title={translated.title3} name="3">
@@ -224,7 +220,11 @@ const CollapseDemo = () => {
           </Collapse.Item>
         </Collapse>
         <h2>{translated.header5}</h2>
-        <Collapse defaultActiveName={['1']} accordion expandIcon={<Star />}>
+        <Collapse
+          defaultActiveName={['1']}
+          accordion
+          expandIcon={<ArrowDown />}
+        >
           <Collapse.Item
             title={
               <div
@@ -238,6 +238,7 @@ const CollapseDemo = () => {
               </div>
             }
             name="1"
+            expandIcon={<Checked />}
           >
             {translated.content1}
           </Collapse.Item>
@@ -251,7 +252,7 @@ const CollapseDemo = () => {
                 }}
               >
                 {translated.title2}
-                <HeartFill color="red" />
+                <Checked color="red" />
               </div>
             }
             name="2"

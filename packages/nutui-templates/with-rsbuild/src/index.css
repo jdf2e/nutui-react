@@ -1,0 +1,33 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  height: 48px;
+  line-height: 48px;
+  font-size: 26px;
+  color: #333;
+}
+
+p {
+  height: 18px;
+  line-height: 18px;
+  font-size: 13px;
+  color: #9a9b9d;
+  white-space: nowrap;
+}

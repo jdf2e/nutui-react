@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { HeartFill } from '@nutui/icons-react-taro'
+import { Star } from '@nutui/icons-react-taro'
 import {
   ShortPassword,
   Cell,
@@ -113,7 +113,7 @@ const ShortPasswordDemo = () => {
           value={value}
           tips={
             <>
-              <HeartFill size={11} />
+              <Star size={11} />
               自定义提示语
             </>
           }

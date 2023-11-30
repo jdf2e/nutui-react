@@ -70,8 +70,8 @@ export default App
 :::demo
 
 ```tsx
-import  React from "react";
-import { Cell } from '@nutui/nutui-react';
+import React from 'react'
+import { Cell } from '@nutui/nutui-react'
 import { User } from '@nutui/icons-react'
 
 const App = () => {
@@ -79,8 +79,8 @@ const App = () => {
     <Cell
       title={
         <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-            <User />
-            我是標題<span style={{ marginLeft: '5px' }}>{translated.title}</span>
+          <User />
+          我是標題<span style={{ marginLeft: '5px' }}>{translated.title}</span>
         </div>
       }
       description={

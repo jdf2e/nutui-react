@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { Dongdong, TriangleDown } from '@nutui/icons-react-taro'
+import { Star, TriangleDown } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Toast, Table } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
@@ -195,7 +195,7 @@ const TableDemo = () => {
       sex: '女',
       record: '本科',
       render: () => {
-        return <Dongdong size="14px" />
+        return <Star size="14px" />
       },
     },
     {
@@ -242,9 +242,7 @@ const TableDemo = () => {
   }, 5000)
 
   const handleSorter = (item: TableColumnProps, data: Array<any>) => {
-    // Toast.show(`${JSON.stringify(item)}`)
     toastShow(`${JSON.stringify(item)}`)
-    setData5([...data])
   }
 
   const [show, SetShow] = useState(false)

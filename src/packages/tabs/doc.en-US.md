@@ -517,7 +517,7 @@ export default App;
 ```tsx
 import React, { useState } from "react";
 import { Tabs } from '@nutui/nutui-react';  
-import { Dongdong, Jd } from '@nutui/icons-react';
+import { Star } from '@nutui/icons-react';
 
 const App = () => {
   const [tab7value, setTab7value] = useState('c1');
@@ -525,12 +525,11 @@ const App = () => {
     {
       title: 'custom 1',
       paneKey: 'c1',
-      icon: <Dongdong />,
+      icon: <Star />,
     },
     {
       title: 'custom 2',
       paneKey: 'c2',
-      icon: <Jd />,
     },
     {
       title: 'custom 3',

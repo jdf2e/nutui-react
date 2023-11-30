@@ -2,7 +2,7 @@
 
 ## 介紹
 
-按鈕用於觸發一個操作，如提交錶單。
+按鈕用於觸發一個操作，如提交表單。
 
 ## 安裝
 
@@ -61,88 +61,6 @@ export default App;
 
 :::
 
-### 禁用狀態
-
-通過 `disabled` 屬性來禁用按鈕，禁用狀態下按鈕不可點擊。
-
-:::demo
-
-```tsx
-import React from "react";
-import { Button } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Button disabled type="primary">禁用狀態</Button>
-      <Button fill="outline" disabled type="info">禁用狀態</Button>
-      <Button fill="outline" disabled type="primary">禁用狀態</Button>
-    </>
-  );
-};
-export default App;
-```
-
-:::
-
-### 按鈕形狀
-
-通過 `shape` 屬性設置按鈕形狀，支持圓形、方形按鈕，默認為圓形。
-
-:::demo
-
-```tsx
-import React from "react";
-import { Button } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Button shape="square" type="primary">方形按鈕</Button>
-      <Button type="info">圓形按鈕</Button>
-    </>
-  );
-};
-export default App;
-```
-
-:::
-
-### 加載狀態
-
-:::demo
-
-```tsx
-import React, { useState } from "react";
-import { Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const [loading, setLoading] = useState(false)
-  return (
-    <>
-      <Button loading type="info" />
-      <Button loading type="warning">加載中...</Button>
-      <Button
-        loading={loading}
-        type="success"
-        onClick={() => {
-          setTimeout(() => {
-            setLoading(false)
-          }, 1500);
-          setLoading(!loading)
-        }}
-        style={{ margin: 8 }}
-      >
-        Click me!
-      </Button>
-    </>
-  );
-};
-export default App;
-```
-
-:::
-
 ### 圖標按鈕
 
 :::demo
@@ -185,6 +103,42 @@ const App = () => {
         操作按鈕
       </Button>
       <Button
+        type="default"
+        fill="none"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{
+          margin: 8,
+          backgroundColor: `var(--nutui-gray-3)`,
+          color: `var(--nutui-gray-7)`,
+        }}
+      >
+        操作按鈕
+      </Button>
+      <Button
+        type="default"
+        fill="none"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{
+          margin: 8,
+          backgroundColor: `var(--nutui-gray-1)`,
+          color: `var(--nutui-gray-7)`,
+        }}
+      >
+        操作按鈕
+      </Button>
+      <Button
+        type="default"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{
+          margin: 8,
+        }}
+      >
+        操作按鈕
+      </Button>
+      <Button
         shape="square"
         fill="outline"
         type="primary"
@@ -208,6 +162,174 @@ export default App;
 ```
 
 :::
+
+### 禁用狀態
+
+通過 `disabled` 屬性來禁用按鈕，禁用狀態下按鈕不可點擊。
+
+:::demo
+
+```tsx
+import React from "react";
+import { Button } from '@nutui/nutui-react';
+import { Star, Plus } from '@nutui/icons-react'
+
+const App = () => {
+  return (
+    <>
+      <Button
+        disabled
+        type="primary"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{ margin: 8 }}
+      >
+        操作按鈕
+      </Button>
+      <Button
+        disabled
+        type="primary"
+        fill="outline"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{ margin: 8 }}
+      >
+        操作按鈕
+      </Button>
+      <Button
+        disabled
+        fill="solid"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{ margin: 8 }}
+      >
+        操作按鈕
+      </Button>
+      <Button
+        disabled
+        type="default"
+        fill="none"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{
+          margin: 8,
+          backgroundColor: `var(--nutui-gray-3)`,
+          color: `var(--nutui-gray-5)`,
+        }}
+      >
+        操作按鈕
+      </Button>
+      <Button
+        disabled
+        type="default"
+        fill="none"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{
+          margin: 8,
+          backgroundColor: `var(--nutui-gray-1)`,
+          color: `var(--nutui-gray-5)`,
+        }}
+      >
+        操作按鈕
+      </Button>
+      <Button
+        disabled
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{
+          margin: 8,
+        }}
+      >
+        操作按鈕
+      </Button>
+      <Button
+        shape="square"
+        fill="outline"
+        type="primary"
+        icon={<Plus width="20" />}
+        style={{ margin: 8 }}
+      />
+      <Button
+        disabled
+        type="primary"
+        icon={<Plus width="20" />}
+        style={{ margin: 8 }}
+      />
+      <Button
+        shape="round"
+        type="primary"
+        size="large"
+        icon={<Star width={20} height={20} />}
+        rightIcon={<Star width={20} height={20} />}
+        style={{ margin: 8 }}
+      >
+        操作按鈕
+      </Button>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### 按鈕形狀
+
+通過 `shape` 屬性設置按鈕形狀，支持圓形、方形按鈕，默認為圓形。
+
+:::demo
+
+```tsx
+import React from "react";
+import { Button } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Button shape="square" type="primary">方形按鈕</Button>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### 加載狀態
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const [loading, setLoading] = useState(false)
+  return (
+    <>
+      <Button loading type="warning">加載中...</Button>
+      <Button
+        loading={loading}
+        type="success"
+        onClick={() => {
+          setTimeout(() => {
+            setLoading(false)
+          }, 1500);
+          setLoading(!loading)
+        }}
+        style={{ margin: 8 }}
+      >
+        Click me!
+      </Button>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
 
 ### 按鈕尺寸
 
@@ -289,18 +411,18 @@ export default App;
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| type | 按鈕的樣式 | `default` \| `primary` \| `info` \| `warning` \| `danger` \| `success` | `default` |
+| type | 按鈕的樣式 | `default` \| `primary` \| `warning` \| `danger` \| `success` | `default` |
 | size | 按鈕的尺寸 | `normal` \| `large` \| `small` | `normal` |
 | shape | 按鈕的形狀 | `square` \| `round` | `round` |
 | color | 按鈕顏色，支持傳入 linear-gradient 漸變色 | `string` | `-` |
-| fill | 填充模式 | `solid` \| `ouline`  \| `dashed` \| `none` | `solid` |
+| fill | 填充模式 | `solid` \| `ouline` \| `dashed` \| `none` | `solid` |
 | disabled | 是否禁用按鈕 | `boolean` | `false` |
 | block | 是否為塊級元素 | `boolean` | `false` |
 | icon | 按鈕圖標 | `ReactNode` | `-` |
 | loading | 按鈕loading狀態 | `boolean` | `false` |
 | onClick | 點擊按鈕時觸發 | `(e: MouseEvent<HTMLButtonElement>) => void` | `-` |
 
-## 主題定制
+## 主題定製
 
 ### 樣式變量
 
@@ -327,4 +449,4 @@ export default App;
 | \--nutui-button-mini-padding | size 為 mini 的按鈕的內邊距 | `0 12px` |
 | \--nutui-button-mini-height | size 為 mini 的按鈕的高度 | `24px` |
 | \--nutui-button-mini-font-size | size 為 mini 的按鈕的字號 | `$font-size-small` |
-| \--nutui-button-text-icon-margin | 帶 icon按鈕的文本的左邊距 | `4px` |
+| \--nutui-button-text-icon-margin | 帶 icon按鈕的文本的邊距 | `4px` |

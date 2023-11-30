@@ -53,12 +53,12 @@ test('base swipe Slots', async () => {
     </Swipe>
   )
   expect(
-    container.querySelector('.nut-swipe .nut-swipe__left .nut-button-warp')
+    container.querySelector('.nut-swipe .nut-swipe__left .nut-button-wrap')
   ).toHaveTextContent('选择')
 
   expect(
     container.querySelector(
-      '.nut-swipe .nut-swipe__right .nut-button--danger .nut-button-warp'
+      '.nut-swipe .nut-swipe__right .nut-button--danger .nut-button-wrap'
     )
   ).toHaveTextContent('删除')
 })
@@ -93,6 +93,6 @@ test('base swipe content', async () => {
   ).toBeVisible()
 
   expect(
-    container.querySelector('.nut-swipe .nut-swipe__right .nut-button-warp')
+    container.querySelector('.nut-swipe .nut-swipe__right .nut-button-wrap')
   ).toHaveTextContent('购物车')
 })

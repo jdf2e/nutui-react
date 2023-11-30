@@ -413,7 +413,7 @@ export default App;
 ```tsx
 import  React, { useState } from "react";
 import { Table, Button } from '@nutui/nutui-react-taro';
-import { Dongdong } from '@nutui/icons-react-taro'
+import { Star } from '@nutui/icons-react-taro'
 
 const App = () => {
   const [columns4, setColumns4] = useState([
@@ -458,7 +458,7 @@ const App = () => {
       sex: '女',
       record: '本科',
       render: () => {
-        return <Dongdong size="14px" />
+        return <Star size="14px" />
       },
     },
     {
@@ -493,7 +493,7 @@ export default App;
 ```tsx
 import  React, { useState } from "react";
 import { Table, Button } from '@nutui/nutui-react';
-import { Dongdong } from '@nutui/icons-react'
+import { Star } from '@nutui/icons-react'
 
 const App = () => {
   const [data1, setData1] = useState([
@@ -602,7 +602,6 @@ const App = () => {
   
   const handleSorter = (item: TableColumnProps, data: Array<any>) => {
     Toast.show(`${JSON.stringify(item)}`)
-    setData5([...data])
   }
 
   return <Table
@@ -674,7 +673,6 @@ const App = () => {
   
   const handleSorter = (item: TableColumnProps, data: Array<any>) => {
     Toast.show(`${JSON.stringify(item)}`)
-    setData5([...data])
   }
 
   return <Table

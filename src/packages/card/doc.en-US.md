@@ -258,5 +258,4 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-card-left-border-radius | The size of the rounded corners of the card picture | `0` |
-| \--nutui-card-background-color | The background color of the card picture | `inherit` |
+| \--nutui-card-border-radius | The size of the rounded corners of the card picture and card | `4px` |

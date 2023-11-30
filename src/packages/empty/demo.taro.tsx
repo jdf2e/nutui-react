@@ -140,7 +140,7 @@ const EmptyDemo = () => {
           style={{ marginBottom: '20px' }}
         >
           <div style={{ marginTop: '10px' }}>
-            <Button icon={<Refresh />} type="primary">
+            <Button icon={<Refresh />} type="primary" size="small">
               {translated.b8a453e3}
             </Button>
           </div>

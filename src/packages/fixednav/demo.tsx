@@ -166,12 +166,12 @@ const FixedNavDemo = () => {
             </>
           }
         >
-          <ul className="nut-fixednav__list">
-            <li className="nut-fixednav__list-item">1</li>
-            <li className="nut-fixednav__list-item">2</li>
-            <li className="nut-fixednav__list-item">3</li>
-            <li className="nut-fixednav__list-item">4</li>
-            <li className="nut-fixednav__list-item">5</li>
+          <ul className="nut-fixednav-list">
+            <li className="nut-fixednav-list-item">1</li>
+            <li className="nut-fixednav-list-item">2</li>
+            <li className="nut-fixednav-list-item">3</li>
+            <li className="nut-fixednav-list-item">4</li>
+            <li className="nut-fixednav-list-item">5</li>
           </ul>
         </FixedNav>
         {/* <!-- 配合 Drag 支持拖拽 ，小程序暂不支持 --> */}

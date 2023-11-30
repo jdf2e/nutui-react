@@ -12,7 +12,7 @@
       transform: rotate(180deg);
     }
 
-    .nut-fixednav__list {
+    .nut-fixednav-list {
       transform: translateX(0%) !important;
     }
 
@@ -23,7 +23,7 @@
     }
   }
 
-  &__btn {
+  &-btn {
     box-sizing: border-box;
     position: absolute;
     right: 0;
@@ -54,7 +54,7 @@
     }
   }
 
-  &__list {
+  &-list {
     position: absolute;
     right: 0;
     transform: translateX(100%);
@@ -92,7 +92,7 @@
         margin-bottom: 2px;
       }
 
-      .nut-fixednav__list-text {
+      .nut-fixednav-list-text {
         font-size: 10px;
       }
 
@@ -117,7 +117,7 @@
     right: auto;
     left: 0;
 
-    .nut-fixednav__btn {
+    .nut-fixednav-btn {
       flex-direction: row-reverse;
       right: auto;
       left: 0;
@@ -128,7 +128,7 @@
       }
     }
 
-    .nut-fixednav__list {
+    .nut-fixednav-list {
       transform: translateX(-100%);
       right: auto;
       border-radius: 0px 25px 25px 0px;

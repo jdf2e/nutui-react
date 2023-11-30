@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { Location, People, Service } from '@nutui/icons-react-taro'
+import { Checklist, People, Service } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import {
   Button,
@@ -349,7 +349,7 @@ const StepsDemo = () => {
             <Step
               value={3}
               title={translated.f6e0d691}
-              icon={<Location width={12} height={12} />}
+              icon={<Checklist width={12} height={12} />}
             >
               3
             </Step>

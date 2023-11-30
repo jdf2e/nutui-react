@@ -1,4 +1,5 @@
 import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react'
+import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { EmptyAction } from '@/packages/empty/index.taro'
@@ -84,13 +85,13 @@ export const Empty: FunctionComponent<
       }
     })
   }, [imageSize])
+  const classes = classNames({
+    [`${classPrefix}-${size}`]: size !== 'base',
+  })
+  const cls = classNames(classPrefix, classes, className)
+
   return (
-    <div
-      className={`${classPrefix} ${className}${
-        size === 'base' ? '' : ` ${classPrefix}-${size}`
-      }`}
-      {...rest}
-    >
+    <div className={cls} {...rest}>
       <div className={`${classPrefix}-image`} style={imgStyle}>
         {imageNode}
       </div>
@@ -109,14 +110,11 @@ export const Empty: FunctionComponent<
           {actions.map((item, index) => {
             return (
               <Button
-                className={`${
-                  // eslint-disable-next-line no-nested-ternary
-                  actions.length > 1
-                    ? index === 0
-                      ? `${classPrefix}-actions-left`
-                      : `${classPrefix}-actions-right`
-                    : ''
-                }`}
+                className={classNames({
+                  [`${classPrefix}-actions-right`]: actions.length === 1,
+                  [`${classPrefix}-actions-left`]:
+                    actions.length > 1 && index === 0,
+                })}
                 type={`${
                   actions.length > 1 && index === 0 ? 'default' : 'primary'
                 }`}

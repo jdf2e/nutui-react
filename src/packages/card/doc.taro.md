@@ -253,5 +253,4 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-card-left-border-radius | 卡片图片的圆角大小 | `0` |
-| \--nutui-card-background-color | 卡片图片的背景颜色 | `inherit` |
+| \--nutui-card-border-radius | 卡片、图片的圆角大小 | `4px` |

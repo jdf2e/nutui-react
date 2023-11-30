@@ -84,20 +84,45 @@ const TabbarDemo = () => {
             console.log(value)
           }}
         >
-          <Tabbar.Item title={translated.c3a3a1d2} icon={<Home />} value={9} />
-          <Tabbar.Item title={translated.d04fcbda} icon={<Category />} />
-          <Tabbar.Item title={translated.a52bef0c} icon={<Find />} />
-          <Tabbar.Item title={translated['7db1a8b2']} icon={<Cart />} />
-          <Tabbar.Item title={translated.e51e4582} icon={<User />} />
+          <Tabbar.Item
+            title={translated.c3a3a1d2}
+            icon={<Home size={18} />}
+            value={9}
+          />
+          <Tabbar.Item
+            title={translated.d04fcbda}
+            icon={<Category size={18} />}
+          />
+          <Tabbar.Item title={translated.a52bef0c} icon={<Find size={18} />} />
+          <Tabbar.Item
+            title={translated['7db1a8b2']}
+            icon={<Cart size={18} />}
+          />
+          <Tabbar.Item title={translated.e51e4582} icon={<User size={18} />} />
         </Tabbar>
 
         <h2>{translated.c38a08ef}</h2>
         <Tabbar defaultValue={2}>
-          <Tabbar.Item title={translated.c3a3a1d2} icon={<Home />} />
-          <Tabbar.Item title={translated.d04fcbda} icon={<Category />} />
-          <Tabbar.Item title={translated.a52bef0c} icon={<Find />} />
-          <Tabbar.Item title={translated['7db1a8b2']} icon={<Cart />} />
-          <Tabbar.Item title={translated.e51e4582} icon={<User />} />
+          <Tabbar.Item
+            title={translated.c3a3a1d2}
+            icon={<Home width={20} height={20} />}
+          />
+          <Tabbar.Item
+            title={translated.d04fcbda}
+            icon={<Category width={20} height={20} />}
+          />
+          <Tabbar.Item
+            title={translated.a52bef0c}
+            icon={<Find width={20} height={20} />}
+          />
+          <Tabbar.Item
+            title={translated['7db1a8b2']}
+            icon={<Cart width={20} height={20} />}
+          />
+          <Tabbar.Item
+            title={translated.e51e4582}
+            icon={<User width={20} height={20} />}
+          />
         </Tabbar>
 
         <h2>{translated.ce5c5448}</h2>
@@ -109,8 +134,11 @@ const TabbarDemo = () => {
           <Tabbar.Item title={translated.c3a3a1d2} icon={<Home />} />
           <Tabbar.Item title={translated.d04fcbda} icon={<Category />} />
           <Tabbar.Item icon={<Find size={24} />} />
-          <Tabbar.Item title={translated['7db1a8b2']} icon={<Cart />} />
-          <Tabbar.Item title={translated.e51e4582} icon={<User />} />
+          <Tabbar.Item
+            title={translated['7db1a8b2']}
+            icon={<Cart size={12} />}
+          />
+          <Tabbar.Item title={translated.e51e4582} icon={<User size={12} />} />
         </Tabbar>
 
         <h2>{translated.ce5c5440}</h2>
@@ -136,25 +164,60 @@ const TabbarDemo = () => {
             icon={<Cart />}
             value={110}
           />
-          <Tabbar.Item title={translated.e51e4582} icon={<User />} />
+          <Tabbar.Item
+            title={translated.e51e4582}
+            icon={<User width={20} height={20} />}
+          />
         </Tabbar>
 
         <h2>{translated.c9e6df49}</h2>
         <Tabbar>
-          <Tabbar.Item title={translated.c3a3a1d2} icon={<Home />} dot />
-          <Tabbar.Item title={translated.d04fcbda} icon={<Category />} />
-          <Tabbar.Item title={translated.a52bef0c} icon={<Find />} />
-          <Tabbar.Item title={translated['7db1a8b2']} icon={<Cart />} dot />
-          <Tabbar.Item title={translated.e51e4582} icon={<User />} />
+          <Tabbar.Item
+            title={translated.c3a3a1d2}
+            icon={<Home width={20} height={20} />}
+            dot
+          />
+          <Tabbar.Item
+            title={translated.d04fcbda}
+            icon={<Category width={20} height={20} />}
+          />
+          <Tabbar.Item
+            title={translated.a52bef0c}
+            icon={<Find width={20} height={20} />}
+          />
+          <Tabbar.Item
+            title={translated['7db1a8b2']}
+            icon={<Cart width={20} height={20} />}
+            dot
+          />
+          <Tabbar.Item
+            title={translated.e51e4582}
+            icon={<User width={20} height={20} />}
+          />
         </Tabbar>
 
         <h2>{translated.a74a1fd4}</h2>
         <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
-          <Tabbar.Item title={translated.c3a3a1d2} icon={<Home />} />
-          <Tabbar.Item title={translated.d04fcbda} icon={<Category />} />
-          <Tabbar.Item title={translated.a52bef0c} icon={<Find />} />
-          <Tabbar.Item title={translated['7db1a8b2']} icon={<Cart />} />
-          <Tabbar.Item title={translated.e51e4582} icon={<User />} />
+          <Tabbar.Item
+            title={translated.c3a3a1d2}
+            icon={<Home width={20} height={20} />}
+          />
+          <Tabbar.Item
+            title={translated.d04fcbda}
+            icon={<Category width={20} height={20} />}
+          />
+          <Tabbar.Item
+            title={translated.a52bef0c}
+            icon={<Find width={20} height={20} />}
+          />
+          <Tabbar.Item
+            title={translated['7db1a8b2']}
+            icon={<Cart width={20} height={20} />}
+          />
+          <Tabbar.Item
+            title={translated.e51e4582}
+            icon={<User width={20} height={20} />}
+          />
         </Tabbar>
 
         <h2>{translated['8dab2f66']}</h2>
@@ -166,11 +229,26 @@ const TabbarDemo = () => {
 
         <h2 className="bottom-h2">{translated.cfbdc781}</h2>
         <Tabbar fixed>
-          <Tabbar.Item title={translated.c3a3a1d2} icon={<Home />} />
-          <Tabbar.Item title={translated.d04fcbda} icon={<Category />} />
-          <Tabbar.Item title={translated.a52bef0c} icon={<Find />} />
-          <Tabbar.Item title={translated['7db1a8b2']} icon={<Cart />} />
-          <Tabbar.Item title={translated.e51e4582} icon={<User />} />
+          <Tabbar.Item
+            title={translated.c3a3a1d2}
+            icon={<Home width={20} height={20} />}
+          />
+          <Tabbar.Item
+            title={translated.d04fcbda}
+            icon={<Category width={20} height={20} />}
+          />
+          <Tabbar.Item
+            title={translated.a52bef0c}
+            icon={<Find width={20} height={20} />}
+          />
+          <Tabbar.Item
+            title={translated['7db1a8b2']}
+            icon={<Cart width={20} height={20} />}
+          />
+          <Tabbar.Item
+            title={translated.e51e4582}
+            icon={<User width={20} height={20} />}
+          />
         </Tabbar>
       </div>
     </>

@@ -100,16 +100,16 @@ export const FixedNav: FunctionComponent<
       )}
       <div className="list">
         {children || (
-          <div className={`${classPrefix}__list`}>
+          <div className={`${classPrefix}-list`}>
             {list.map((item: any, index) => {
               return (
                 <div
-                  className={`${classPrefix}__list-item`}
+                  className={`${classPrefix}-list-item`}
                   onClick={(event) => handleClick(item, event)}
                   key={item.id || index}
                 >
                   <img src={item.icon} alt="" />
-                  <div className={`${classPrefix}__list-text`}>{item.text}</div>
+                  <div className={`${classPrefix}-list-text`}>{item.text}</div>
                   {item.num && <div className="b">{item.num}</div>}
                 </div>
               )
@@ -118,7 +118,7 @@ export const FixedNav: FunctionComponent<
         )}
       </div>
 
-      <div className={`${classPrefix}__btn`} onClick={() => onUpdateValue()}>
+      <div className={`${classPrefix}-btn`} onClick={() => onUpdateValue()}>
         {content || (
           <>
             <ArrowLeft color="#fff" />

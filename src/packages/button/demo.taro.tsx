@@ -145,6 +145,9 @@ const ButtonDemo = () => {
           >
             {translated.c38a08ef}
           </Button>
+          <Button type="info" style={{ margin: 8 }} shape="round">
+            {translated.b840c88f}
+          </Button>
           <Button shape="round" style={{ margin: 8 }}>
             {translated.a74a1fd4}
           </Button>
@@ -179,8 +182,8 @@ const ButtonDemo = () => {
         <Cell className="button-cell">
           <Button
             type="primary"
-            icon={<Star size="20" />}
-            rightIcon={<Star size="20" />}
+            icon={<Star size={20} />}
+            rightIcon={<Star />}
             style={{ margin: 8 }}
           >
             {translated['60a53514']}
@@ -188,8 +191,8 @@ const ButtonDemo = () => {
           <Button
             type="primary"
             fill="outline"
-            icon={<Star size="20" />}
-            rightIcon={<Star size="20" />}
+            icon={<Star />}
+            rightIcon={<Star />}
             style={{ margin: 8 }}
           >
             {translated['60a53514']}
@@ -197,15 +200,15 @@ const ButtonDemo = () => {
           <Button
             type="primary"
             fill="dashed"
-            icon={<Star size="20" />}
-            rightIcon={<Star size="20" />}
+            icon={<Star />}
+            rightIcon={<Star />}
             style={{ margin: 8 }}
           >
             {translated['60a53514']}
           </Button>
           <Button
-            icon={<Star size="20" />}
-            rightIcon={<Star size="20" />}
+            icon={<Star />}
+            rightIcon={<Star />}
             style={{
               margin: 8,
               backgroundColor: `var(--nutui-color-primary-light)`,
@@ -218,8 +221,8 @@ const ButtonDemo = () => {
           <Button
             type="default"
             fill="none"
-            icon={<Star size="20" />}
-            rightIcon={<Star size="20" />}
+            icon={<Star />}
+            rightIcon={<Star />}
             style={{
               margin: 8,
               backgroundColor: `var(--nutui-gray-3)`,
@@ -231,8 +234,8 @@ const ButtonDemo = () => {
           <Button
             type="default"
             fill="none"
-            icon={<Star size="20" />}
-            rightIcon={<Star size="20" />}
+            icon={<Star />}
+            rightIcon={<Star />}
             style={{
               margin: 8,
               backgroundColor: `var(--nutui-gray-1)`,
@@ -243,8 +246,8 @@ const ButtonDemo = () => {
           </Button>
           <Button
             type="default"
-            icon={<Star size="20" />}
-            rightIcon={<Star size="20" />}
+            icon={<Star />}
+            rightIcon={<Star />}
             style={{
               margin: 8,
             }}
@@ -255,27 +258,27 @@ const ButtonDemo = () => {
             shape="square"
             fill="outline"
             type="primary"
-            icon={<Plus size="20" />}
+            icon={<Plus />}
             style={{ margin: 8 }}
           />
           <Button
             fill="outline"
             type="primary"
-            icon={<Plus size="20" />}
+            icon={<Plus />}
             style={{ margin: 8 }}
           />
           <Button
             type="primary"
             fill="dashed"
-            icon={<Plus width="20" />}
+            icon={<Plus />}
             style={{ margin: 8 }}
           />
           <Button
             shape="round"
             type="primary"
             size="large"
-            icon={<Star size={20} />}
-            rightIcon={<Star size={20} />}
+            icon={<Star />}
+            rightIcon={<Star />}
             style={{ margin: 8 }}
           >
             {translated['60a53514']}
@@ -286,8 +289,8 @@ const ButtonDemo = () => {
           <Button
             disabled
             type="primary"
-            icon={<Star size={20} />}
-            rightIcon={<Star size={20} />}
+            icon={<Star />}
+            rightIcon={<Star />}
             style={{ margin: 8 }}
           >
             {translated['7db1a8b2']}
@@ -296,8 +299,8 @@ const ButtonDemo = () => {
             disabled
             type="primary"
             fill="outline"
-            icon={<Star size={20} />}
-            rightIcon={<Star size={20} />}
+            icon={<Star />}
+            rightIcon={<Star />}
             style={{ margin: 8 }}
           >
             {translated['7db1a8b2']}
@@ -306,8 +309,8 @@ const ButtonDemo = () => {
             disabled
             type="primary"
             fill="dashed"
-            icon={<Star size={20} />}
-            rightIcon={<Star size={20} />}
+            icon={<Star />}
+            rightIcon={<Star />}
             style={{ margin: 8 }}
           >
             {translated['60a53514']}
@@ -315,8 +318,8 @@ const ButtonDemo = () => {
           <Button
             disabled
             fill="solid"
-            icon={<Star size={20} />}
-            rightIcon={<Star size={20} />}
+            icon={<Star />}
+            rightIcon={<Star />}
             style={{ margin: 8 }}
           >
             {translated['7db1a8b2']}
@@ -325,8 +328,8 @@ const ButtonDemo = () => {
             disabled
             type="default"
             fill="none"
-            icon={<Star size={20} />}
-            rightIcon={<Star size={20} />}
+            icon={<Star />}
+            rightIcon={<Star />}
             style={{
               margin: 8,
               backgroundColor: `var(--nutui-gray-3)`,
@@ -339,8 +342,8 @@ const ButtonDemo = () => {
             disabled
             type="default"
             fill="none"
-            icon={<Star size={20} />}
-            rightIcon={<Star size={20} />}
+            icon={<Star />}
+            rightIcon={<Star />}
             style={{
               margin: 8,
               backgroundColor: `var(--nutui-gray-1)`,
@@ -351,8 +354,8 @@ const ButtonDemo = () => {
           </Button>
           <Button
             disabled
-            icon={<Star size={20} />}
-            rightIcon={<Star size={20} />}
+            icon={<Star />}
+            rightIcon={<Star />}
             style={{
               margin: 8,
             }}

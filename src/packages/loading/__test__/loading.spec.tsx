@@ -3,7 +3,7 @@ import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import { Category } from '@nutui/icons-react'
+import { Star } from '@nutui/icons-react'
 import { Loading } from '../loading'
 
 test('type test', () => {
@@ -26,7 +26,7 @@ test('orientation test', () => {
 
 test('custom icon test', () => {
   const { container } = render(
-    <Loading icon={<Category width="30" height="30" color="red" />} />
+    <Loading icon={<Star width="30" height="30" color="red" />} />
   )
-  expect(container.querySelector('svg')).toHaveClass('nut-icon-Category')
+  expect(container.querySelector('svg')).toHaveClass('nut-icon-Star')
 })
