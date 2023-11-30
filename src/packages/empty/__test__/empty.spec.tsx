@@ -11,7 +11,7 @@ test('should render description correctly', () => {
 })
 test('should render imageSize correctly', () => {
   const { container } = render(<Empty description="暂无数据" imageSize={100} />)
-  expect(container.querySelector('.nut-empty__image')).toHaveStyle({
+  expect(container.querySelector('.nut-empty-image')).toHaveStyle({
     width: '100px',
   })
 })
@@ -21,6 +21,20 @@ test('should render image props correctly', () => {
     'src',
     'https://static-ftcms.jd.com/p/files/61a9e3183985005b3958672b.png'
   )
+})
+test('should render actions correctly', () => {
+  const { container, getByTestId } = render(
+    <Empty
+      data-testid="testEmpty"
+      title="标题"
+      description="暂无数据"
+      actions={[{ text: '操作1' }, { text: '操作2' }]}
+    />
+  )
+  expect(container.querySelector('.nut-empty-actions')).toBeTruthy()
+  expect(
+    container.querySelectorAll('.nut-empty-actions .nut-button').length
+  ).toEqual(2)
 })
 test('should render custom image correctly', () => {
   const { getByTestId } = render(
