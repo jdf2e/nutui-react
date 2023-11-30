@@ -50,6 +50,7 @@ export interface DatePickerProps extends BasicComponent {
     columnIndex: number
   ) => void
 }
+
 const currentYear = new Date().getFullYear()
 const defaultProps = {
   ...ComponentDefaults,
@@ -126,9 +127,11 @@ export const DatePicker: FunctionComponent<
     finalValue: 0,
     onChange: (val: number) => {},
   })
+
   function getMonthEndDay(year: number, month: number): number {
     return new Date(year, month, 0).getDate()
   }
+
   const getBoundary = (type: string, value: Date) => {
     const boundary = type === 'min' ? startDate : endDate
     const year = boundary.getFullYear()
@@ -222,7 +225,7 @@ export const DatePicker: FunctionComponent<
         result = result.slice(0, 4)
         break
       default:
-        ''
+        break
     }
     return result
   }
