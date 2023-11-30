@@ -256,6 +256,8 @@ const App = () => {
   const submitSucceed = (values: any) => {
     Toast.show({ content: JSON.stringify(values), icon: 'success' })
   }
+
+  const [form] = Form.useForm()
   const onMenuChange = (value: string | number | boolean) => {
     switch (value) {
       case 'male':
