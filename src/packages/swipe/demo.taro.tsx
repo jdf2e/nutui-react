@@ -195,16 +195,22 @@ const SwipeDemo = () => {
         >
           <Cell title={translated.openOrClose} radius={0} />
         </Swipe>
-        <Button
-          style={{ marginRight: '10px' }}
-          type="primary"
-          onClick={() => (openRef.current as any)?.open()}
-        >
-          {translated.open}
-        </Button>
-        <Button onClick={() => (openRef.current as any)?.close()}>
-          {translated.close}
-        </Button>
+        <div style={{ display: 'flex' }}>
+          <Button
+            style={{ marginRight: '10px' }}
+            type="primary"
+            size="small"
+            onClick={() => (openRef.current as any)?.open()}
+          >
+            {translated.open}
+          </Button>
+          <Button
+            size="small"
+            onClick={() => (openRef.current as any)?.close()}
+          >
+            {translated.close}
+          </Button>
+        </div>
         <h2>{translated.title7}</h2>
         <Swipe
           ref={closeRef}
@@ -242,7 +248,7 @@ const SwipeDemo = () => {
               <Button shape="square" type="primary">
                 {translated.del}
               </Button>
-              <Button shape="square" type="info">
+              <Button shape="square" type="primary">
                 {translated.collect}
               </Button>
             </>

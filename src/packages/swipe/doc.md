@@ -60,7 +60,8 @@ const App = () => {
     >
       <Cell title='点击下方按钮打开或关闭' radius={0} />
     </Swipe>
-    <Button onClick={() => openRef.current?.open()}>
+    <Button onClick={() => openRef.current?.open()} type="primary"
+            size="small">
       打开
     </Button>
     <Button onClick={() => openRef.current?.close()}>
