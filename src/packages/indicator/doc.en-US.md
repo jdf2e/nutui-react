@@ -22,11 +22,9 @@ import { Indicator, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <div className="demo">
-      <Cell>
-        <Indicator total={3} current={2} />
-      </Cell>
-    </div>
+    <Cell>
+      <Indicator total={3} current={2} />
+    </Cell>
   );
 };
 export default App;
@@ -46,7 +44,24 @@ const App = () => {
   return (
     <Cell>
       <Indicator total={6} current={5}>
-        <div className="number">{5}</div>
+        <div
+          style={{
+            display: 'inline-block',
+            width: '14px',
+            height: '14px',
+            lineHeight: '14px',
+            textAlign: 'center',
+            fontSize: '12px',
+            color: '#FFFFFF',
+            border: '1px solid #FFFFFF',
+            borderRadius: '50%',
+            margin: '4px',
+            background: `var(--nutui-color-primary)`,
+            boxShadow: `0 0 1px 1px var(--nutui-color-primary)`,
+          }}
+        >
+          {5}
+        </div>
       </Indicator>
     </Cell>
   );
@@ -96,14 +111,34 @@ import { Indicator, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell>
-      <div className="vertical_cell">
-        <Indicator total={6} current={5} direction="vertical">
-          <div className="number">{5}</div>
-        </Indicator>
-      </div>
-      <div className="vertical_cell">
-        <Indicator total={6} current={2} direction="vertical" />
-      </div>
+      <Indicator total={6} current={5} direction="vertical">
+        <div
+          style={{
+            display: 'inline-block',
+            width: '14px',
+            height: '14px',
+            lineHeight: '14px',
+            textAlign: 'center',
+            fontSize: '12px',
+            color: '#FFFFFF',
+            border: '1px solid #FFFFFF',
+            borderRadius: '50%',
+            margin: '4px',
+            background: `var(--nutui-color-primary)`,
+            boxShadow: `0 0 1px 1px var(--nutui-color-primary)`,
+          }}
+        >
+          {5}
+        </div>
+      </Indicator>
+      <Indicator
+        total={6}
+        current={2}
+        direction="vertical"
+        style={{
+          marginLeft: '50px',
+        }}
+      />
     </Cell>
   );
 };
@@ -131,9 +166,8 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default Value |
 | --- | --- | --- |
 | \--nutui-indicator-color | indicator active color | `$color-primary` |
-| \--nutui-indicator-dot-color | indicator default color | `$disable-color` |
+| \--nutui-indicator-dot-color | indicator default color | `$color-text-disabled` |
 | \--nutui-indicator-dot-size | indicator dot size | `5px` |
 | \--nutui-indicator-dot-active-size | indicator dot active size | `15px` |
-| \--nutui-indicator-border-size | indicator active border size | `3px` |
+| \--nutui-indicator-border-radius | indicator active border size | `3px` |
 | \--nutui-indicator-dot-margin | when horizontal, indicator margin | `4px` |
-| \--nutui-indicator-dot-vertical-margin | when vertical, indicator margin | `4px` |
