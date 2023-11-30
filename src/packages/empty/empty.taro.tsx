@@ -1,6 +1,10 @@
 import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react'
+import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { EmptyAction } from '@/packages/empty/index.taro'
+
+import Button from '../button'
 
 type statusOptions = {
   [key: string]: string
@@ -16,30 +20,38 @@ const defaultStatus: statusOptions = {
 export interface EmptyProps extends BasicComponent {
   image?: ReactNode
   imageSize: number | string
+  title: ReactNode
   description: ReactNode
+  size: 'small' | 'base'
   status: 'empty' | 'error' | 'network'
+  actions: Array<EmptyAction>
 }
 
 const defaultProps = {
   ...ComponentDefaults,
+  title: '',
   description: '',
   imageSize: '',
+  size: 'base',
   status: 'empty',
+  actions: [],
 } as EmptyProps
 
 const classPrefix = `nut-empty`
 export const Empty: FunctionComponent<
-  Partial<EmptyProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<EmptyProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'title'>
 > = (props) => {
   const { locale } = useConfig()
-  defaultProps.description = locale.noData || defaultProps.description
   const {
     image,
     imageSize,
+    title,
     description,
     children,
     className,
+    size,
     status,
+    actions,
     ...rest
   } = {
     ...defaultProps,
@@ -73,19 +85,50 @@ export const Empty: FunctionComponent<
       }
     })
   }, [imageSize])
+  const classes = classNames({
+    [`${classPrefix}-${size}`]: size !== 'base',
+  })
+  const cls = classNames(classPrefix, classes, className)
+
   return (
-    <div className={`${classPrefix} ${className}`} {...rest}>
-      <>
-        <div className={`${classPrefix}__image`} style={imgStyle}>
-          {imageNode}
+    <div className={cls} {...rest}>
+      <div className={`${classPrefix}-image`} style={imgStyle}>
+        {imageNode}
+      </div>
+      {typeof title === 'string' && title ? (
+        <div className={`${classPrefix}-title`}>{title}</div>
+      ) : (
+        title
+      )}
+      {typeof description === 'string' ? (
+        <div className={`${classPrefix}-description`}>{description}</div>
+      ) : (
+        description
+      )}
+      {actions.length > 0 && (
+        <div className={`${classPrefix}-actions`}>
+          {actions.map((item, index) => {
+            return (
+              <Button
+                className={classNames({
+                  [`${classPrefix}-actions-right`]: actions.length === 1,
+                  [`${classPrefix}-actions-left`]:
+                    actions.length > 1 && index === 0,
+                })}
+                type={`${
+                  actions.length > 1 && index === 0 ? 'default' : 'primary'
+                }`}
+                size="small"
+                fill="outline"
+                key={`action-${index}`}
+              >
+                {item?.text}
+              </Button>
+            )
+          })}
         </div>
-        {typeof description === 'string' ? (
-          <div className={`${classPrefix}__description`}>{description}</div>
-        ) : (
-          description
-        )}
-        {children}
-      </>
+      )}
+      {children}
     </div>
   )
 }
