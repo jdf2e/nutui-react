@@ -1,18 +1,18 @@
-# Elevator 电梯楼层
+# Elevator 電梯樓層
 
-## 介绍
+## 介紹
 
-用于列表快速定位以及索引的显示
+用於列表快速定位以及索引的顯示
 
-## 安装
+## 安裝
 
 ```tsx
 import { Elevator } from '@nutui/nutui-react'
 ```
 
-## 代码演示
+## 代碼演示
 
-### 基础用法
+### 基礎用法
 
 :::demo
 
@@ -44,11 +44,11 @@ const App = () => {
       title: 'G',
       list: [
         {
-          name: '广西',
+          name: '廣西',
           id: 3,
         },
         {
-          name: '广东',
+          name: '廣東',
           id: 4,
         },
       ],
@@ -92,7 +92,7 @@ export default App
 
 :::
 
-### 自定义索引
+### 自定義索引
 
 :::demo
 
@@ -118,7 +118,7 @@ const App = () => {
           id: 3,
         },
         {
-          name: '广州',
+          name: '廣州',
           id: 4,
         },
         {
@@ -143,19 +143,19 @@ const App = () => {
           id: 8,
         },
         {
-          name: '武汉',
+          name: '武漢',
           id: 9,
         },
         {
-          name: '长沙',
+          name: '長沙',
           id: 10,
         },
         {
-          name: '重庆',
+          name: '重慶',
           id: 11,
         },
         {
-          name: '苏州',
+          name: '蘇州',
           id: 12,
         },
         {
@@ -168,31 +168,31 @@ const App = () => {
       num: '三',
       list: [
         {
-          name: '西宁',
+          name: '西寧',
           id: 14,
         },
         {
-          name: '兰州',
+          name: '蘭州',
           id: 15,
         },
         {
-          name: '石家庄',
+          name: '石家莊',
           id: 16,
         },
         {
-          name: '秦皇岛',
+          name: '秦皇島',
           id: 17,
         },
         {
-          name: '大连',
+          name: '大連',
           id: 18,
         },
         {
-          name: '哈尔滨',
+          name: '哈爾濱',
           id: 19,
         },
         {
-          name: '长春',
+          name: '長春',
           id: 20,
         },
         {
@@ -224,7 +224,7 @@ export default App
 
 :::
 
-### 不展示右侧导航
+### 不展示右側導航
 
 :::demo
 
@@ -256,11 +256,11 @@ const App = () => {
       title: 'G',
       list: [
         {
-          name: '广西',
+          name: '廣西',
           id: 3,
         },
         {
-          name: '广东',
+          name: '廣東',
           id: 4,
         },
       ],
@@ -305,7 +305,7 @@ export default App
 
 :::
 
-### 吸顶索引
+### 吸頂索引
 
 :::demo
 
@@ -337,7 +337,7 @@ const App = () => {
       title: 'C',
       list: [
         {
-          name: '重庆',
+          name: '重慶',
           id: 3,
         },
       ],
@@ -355,19 +355,19 @@ const App = () => {
       title: 'G',
       list: [
         {
-          name: '广西',
+          name: '廣西',
           id: 5,
         },
         {
-          name: '广东',
+          name: '廣東',
           id: 6,
         },
         {
-          name: '甘肃',
+          name: '甘肅',
           id: 7,
         },
         {
-          name: '贵州',
+          name: '貴州',
           id: 8,
         },
       ],
@@ -396,7 +396,7 @@ const App = () => {
           id: 13,
         },
         {
-          name: '黑龙江',
+          name: '黑龍江',
           id: 14,
         },
       ],
@@ -409,7 +409,7 @@ const App = () => {
           id: 15,
         },
         {
-          name: '江苏',
+          name: '江蘇',
           id: 16,
         },
         {
@@ -422,7 +422,7 @@ const App = () => {
       title: 'L',
       list: [
         {
-          name: '辽宁',
+          name: '遼寧',
           id: 18,
         },
       ],
@@ -450,7 +450,7 @@ export default App
 
 :::
 
-### 自定义内容
+### 自定義內容
 
 :::demo
 
@@ -483,11 +483,11 @@ const App = () => {
       title: 'G',
       list: [
         {
-          name: '广西',
+          name: '廣西',
           id: 3,
         },
         {
-          name: '广东',
+          name: '廣東',
           id: 4,
         },
       ],
@@ -546,25 +546,25 @@ export default App
 
 ### Props
 
-| 属性 | 说明 | 类型 | 默认值 |
+| 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| height | 电梯区域的高度 | `number` \| `string` | `200px` |
+| height | 電梯區域的高度 | `number` \| `string` | `200px` |
 | floorKey | 索引 key 值 | `string` | `title` |
-| list | 索引列表 | `Array（item 需包含 id、name 属性, name 支持传入 html 结构）` | `[{id: 0, name: ''}]` |
-| sticky | 索引是否吸顶 | `boolean` | `false` |
-| showKeys | 展示右侧导航 | `boolean` | `true` |
-| spaceHeight | 右侧锚点的上下间距 | `number` | `23` |
-| titleHeight | 左侧索引的高度 | `number` | `35` |
-| onItemClick | 点击内容 | `onItemClick:(key: string, item: { id: number, name: string })=>void` | `false` |
-| onIndexClick | 点击索引 | `onIndexClick:(key: string)=>void` | `false` |
+| list | 索引列表 | `Array（item 需包含 id、name 屬性, name 支持傳入 html 結構）` | `[{id: 0, name: ''}]` |
+| sticky | 索引是否吸頂 | `boolean` | `false` |
+| showKeys | 展示右側導航 | `boolean` | `true` |
+| spaceHeight | 右側錨點的上下間距 | `number` | `23` |
+| titleHeight | 左側索引的高度 | `number` | `35` |
+| onItemClick | 點擊內容 | `onItemClick:(key: string, item: { id: number, name: string })=>void` | `false` |
+| onIndexClick | 點擊索引 | `onIndexClick:(key: string)=>void` | `false` |
 
-## 主题定制
+## 主題定製
 
-### 样式变量
+### 樣式變量
 
-组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名称 | 说明 | 默认值 |
+| 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-elevator-list-bg-color | 樓層區域背景顏色 | `$white` |
 | \--nutui-elevator-list-font-size | 樓層區域列表項字體大小 | `$font-size-small` |

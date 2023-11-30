@@ -21,8 +21,8 @@ const defaultProps = {
   strokeWidth: 5,
   radius: 50,
   strokeLinecap: 'round',
-  color: '',
-  background: '',
+  color: '#fa2c19',
+  background: '#e5e9f2',
   clockwise: true,
 } as CircleProgressProps
 
