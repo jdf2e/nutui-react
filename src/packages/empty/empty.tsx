@@ -9,7 +9,6 @@ import Button from '../button'
 type statusOptions = {
   [key: string]: string
 }
-
 /**
  * 内置图片地址
  */
