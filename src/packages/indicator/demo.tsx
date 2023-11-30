@@ -2,7 +2,6 @@ import React from 'react'
 import { Indicator } from './indicator'
 import Cell from '@/packages/cell'
 import { useTranslate } from '../../sites/assets/locale'
-import '@/packages/indicator/demo.scss'
 import ConfigProvider from '@/packages/configprovider'
 
 interface T {
@@ -36,7 +35,7 @@ const IndicatorDemo = () => {
   const customTheme = {
     nutuiIndicatorColor: '#3768fa',
     nutuiIndicatorDotColor: '#ddd',
-    nutuiIndicatorDotSize: '8px',
+    nutuiIndicatorDotSize: '6px',
     nutuiIndicatorDotActiveSize: '24px',
   }
   return (
@@ -44,13 +43,36 @@ const IndicatorDemo = () => {
       <div className="demo">
         <h2>{translated.ce5c5446}</h2>
         <Cell>
+          <Indicator total={3} current={0} />
+        </Cell>
+        <Cell>
+          <Indicator total={3} current={1} />
+        </Cell>
+        <Cell>
           <Indicator total={3} current={2} />
         </Cell>
 
         <h2>{translated.c38a08ef}</h2>
         <Cell>
           <Indicator total={6} current={5}>
-            <div className="number">{5}</div>
+            <div
+              style={{
+                display: 'inline-block',
+                width: '14px',
+                height: '14px',
+                lineHeight: '14px',
+                textAlign: 'center',
+                fontSize: '12px',
+                color: '#FFFFFF',
+                border: '1px solid #FFFFFF',
+                borderRadius: '50%',
+                margin: '4px',
+                background: `var(--nutui-color-primary)`,
+                boxShadow: `0 0 1px 1px var(--nutui-color-primary)`,
+              }}
+            >
+              {5}
+            </div>
           </Indicator>
         </Cell>
 
@@ -63,14 +85,34 @@ const IndicatorDemo = () => {
 
         <h2>{translated.c123sda1}</h2>
         <Cell>
-          <div className="vertical_cell">
-            <Indicator total={6} current={5} direction="vertical">
-              <div className="number">{5}</div>
-            </Indicator>
-          </div>
-          <div className="vertical_cell">
-            <Indicator total={6} current={2} direction="vertical" />
-          </div>
+          <Indicator total={6} current={5} direction="vertical">
+            <div
+              style={{
+                display: 'inline-block',
+                width: '14px',
+                height: '14px',
+                lineHeight: '14px',
+                textAlign: 'center',
+                fontSize: '12px',
+                color: '#FFFFFF',
+                border: '1px solid #FFFFFF',
+                borderRadius: '50%',
+                margin: '4px',
+                background: `var(--nutui-color-primary)`,
+                boxShadow: `0 0 1px 1px var(--nutui-color-primary)`,
+              }}
+            >
+              {5}
+            </div>
+          </Indicator>
+          <Indicator
+            total={6}
+            current={2}
+            direction="vertical"
+            style={{
+              marginLeft: '50px',
+            }}
+          />
         </Cell>
       </div>
     </>

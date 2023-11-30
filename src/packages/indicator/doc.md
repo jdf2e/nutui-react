@@ -22,11 +22,9 @@ import { Indicator, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <div className="demo">
-      <Cell>
-        <Indicator total={3} current={2} />
-      </Cell>
-    </div>
+    <Cell>
+      <Indicator total={3} current={2} />
+    </Cell>
   );
 };
 export default App;
@@ -46,7 +44,24 @@ const App = () => {
   return (
     <Cell>
       <Indicator total={6} current={5}>
-        <div className="number">{5}</div>
+        <div
+          style={{
+            display: 'inline-block',
+            width: '14px',
+            height: '14px',
+            lineHeight: '14px',
+            textAlign: 'center',
+            fontSize: '12px',
+            color: '#FFFFFF',
+            border: '1px solid #FFFFFF',
+            borderRadius: '50%',
+            margin: '4px',
+            background: `var(--nutui-color-primary)`,
+            boxShadow: `0 0 1px 1px var(--nutui-color-primary)`,
+          }}
+        >
+          {5}
+        </div>
       </Indicator>
     </Cell>
   );
@@ -96,14 +111,34 @@ import { Indicator, Cell } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Cell>
-      <div className="vertical_cell">
-        <Indicator total={6} current={5} direction="vertical">
-          <div className="number">{5}</div>
-        </Indicator>
-      </div>
-      <div className="vertical_cell">
-        <Indicator total={6} current={2} direction="vertical" />
-      </div>
+      <Indicator total={6} current={5} direction="vertical">
+        <div
+          style={{
+            display: 'inline-block',
+            width: '14px',
+            height: '14px',
+            lineHeight: '14px',
+            textAlign: 'center',
+            fontSize: '12px',
+            color: '#FFFFFF',
+            border: '1px solid #FFFFFF',
+            borderRadius: '50%',
+            margin: '4px',
+            background: `var(--nutui-color-primary)`,
+            boxShadow: `0 0 1px 1px var(--nutui-color-primary)`,
+          }}
+        >
+          {5}
+        </div>
+      </Indicator>
+      <Indicator
+        total={6}
+        current={2}
+        direction="vertical"
+        style={{
+          marginLeft: '50px',
+        }}
+      />
     </Cell>
   );
 };
@@ -131,9 +166,8 @@ export default App;
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-indicator-color | 指示器焦点时色值 | `$color-primary` |
-| \--nutui-indicator-dot-color | 指示器默认色值 | `$disable-color` |
+| \--nutui-indicator-dot-color | 指示器默认色值 | `$color-text-disabled` |
 | \--nutui-indicator-dot-size | 指示器尺寸 | `5px` |
 | \--nutui-indicator-dot-active-size | 指示器焦点时尺寸 | `15px` |
-| \--nutui-indicator-border-size | 指示器焦点时的border值 | `3px` |
+| \--nutui-indicator-border-radius | 指示器焦点时的border值 | `3px` |
 | \--nutui-indicator-dot-margin | 指示器横向时的margin值 | `4px` |
-| \--nutui-indicator-dot-vertical-margin | 指示器纵向时的margin值 | `4px` |
