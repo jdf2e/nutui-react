@@ -150,6 +150,7 @@ export class FormItem extends React.Component<
 
   onStoreChange = (type?: string) => {
     if (type === 'reset') {
+      this.context.errors[this.props.name as string] = []
       this.refresh()
     } else {
       this.forceUpdate()
@@ -172,6 +173,8 @@ export class FormItem extends React.Component<
     const requiredInRules = rules?.some((rule: any) => rule.required)
 
     const item = name ? this.context.errors[name] : []
+
+    console.log(this.context)
 
     const { starPosition } = this.context
     const renderStar = (required || requiredInRules) && (
