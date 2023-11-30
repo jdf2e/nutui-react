@@ -228,12 +228,12 @@ const App = () => {
           </>
         }
       >
-        <ul className="nut-fixednav__list">
-          <li className="nut-fixednav__list-item">1</li>
-          <li className="nut-fixednav__list-item">2</li>
-          <li className="nut-fixednav__list-item">3</li>
-          <li className="nut-fixednav__list-item">4</li>
-          <li className="nut-fixednav__list-item">5</li>
+        <ul className="nut-fixednav-list">
+          <li className="nut-fixednav-list-item">1</li>
+          <li className="nut-fixednav-list-item">2</li>
+          <li className="nut-fixednav-list-item">3</li>
+          <li className="nut-fixednav-list-item">4</li>
+          <li className="nut-fixednav-list-item">5</li>
         </ul>
       </FixedNav>
     </>
@@ -320,7 +320,8 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-fixednav-bg-color | 背景顏色 | `#fff` |
-| \--nutui-fixednav-font-color | 字體顏色 | `#000` |
+| \--nutui-fixednav-background-color | 背景顏色 | `$white` |
+| \--nutui-fixednav-color | 字體顏色 | `$color-title` |
+| \--nutui-fixednav-button-background | button 的背景顏色 | `$color-primary-gradient-1` |
 | \--nutui-fixednav-index | zIndex | `201` |
 | \--nutui-fixednav-item-active-color | 激活顏色 | `$color-primary` |
