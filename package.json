@@ -166,7 +166,7 @@
     "lzutf8": "0.6.3",
     "map-stream": "0.0.7",
     "markdown-it": "^13.0.1",
-    "marked": "^10.0.0",
+    "marked": "^11.0.0",
     "mobx": "^6.9.0",
     "mobx-react-lite": "^4.0.0",
     "postcss": "^8.4.21",
