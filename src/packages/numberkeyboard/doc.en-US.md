@@ -271,17 +271,14 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-numberkeyboard-padding | padding | `0 0 22px 0` |
-| \--nutui-numberkeyboard-background-color | backgroundColor | `#f2f3f5` |
-| \--nutui-numberkeyboard-header-height | header height | `34px` |
-| \--nutui-numberkeyboard-header-padding | header padding | `6px 0 0 0` |
-| \--nutui-numberkeyboard-header-color | header color | `#646566` |
-| \--nutui-numberkeyboard-header-font-size | header fontSize | `16px` |
 | \--nutui-numberkeyboard-header-close-padding | header close padding | `0 16px` |
 | \--nutui-numberkeyboard-header-close-color | header close color | `#576b95` |
 | \--nutui-numberkeyboard-header-close-font-size | header close fontSize | `14px` |
 | \--nutui-numberkeyboard-header-close-background-color | header close backgroundColor | `transparent` |
 | \--nutui-numberkeyboard-key-background-color | key backgroundColor | `#fff` |
 | \--nutui-numberkeyboard-key-active-background-color | key active backgroundColor | `#ebedf0` |
+| \--nutui-numberkeyboard-wrapper-background-color | key wrapper backgroundColor | `$color-background-sunken` |
+| \--nutui-numberkeyboard-key-border | key border | `none` |
 | \--nutui-numberkeyboard-key-height | key height | `48px` |
 | \--nutui-numberkeyboard-key-line-height | key lineHeight | `1.5` |
 | \--nutui-numberkeyboard-key-border-radius | key borderRadius | `8px` |
@@ -289,4 +286,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-numberkeyboard-key-font-color | key fontColor | `#333` |
 | \--nutui-numberkeyboard-key-confirm-font-size | key confirm fontSize | `16px` |
 | \--nutui-numberkeyboard-key-confirm-font-color | key confirm fontColor | `#fff` |
-| \--nutui-numberkeyboard-key-confirm-background-color | key confirm backgroundColor | `#1989fa` |
+| \--nutui-numberkeyboard-key-confirm-background-color | key confirm backgroundColor | `$color-primary` |
+| \--nutui-numberkeyboard-background-color | keyboard container backgroundColor | `$color-background` |
