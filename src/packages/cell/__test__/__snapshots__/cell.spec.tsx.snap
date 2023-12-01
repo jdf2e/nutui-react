@@ -102,7 +102,7 @@ exports[`slot extra 1`] = `
         class="nut-switch nut-switch-open  nut-switch-base "
       >
         <div
-          class="switch-button"
+          class="nut-switch-button"
         />
       </div>
     </div>

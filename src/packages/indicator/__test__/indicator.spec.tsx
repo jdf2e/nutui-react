@@ -16,8 +16,8 @@ test('should be shown when passing size and current', () => {
       <Indicator total={3} current={2} />
     </Cell>
   )
-  expect(container.querySelectorAll('.nut-indicator__dot')).toHaveLength(3)
-  expect(container.querySelectorAll('.nut-indicator__active')).toHaveLength(1)
+  expect(container.querySelectorAll('.nut-indicator-dot')).toHaveLength(3)
+  expect(container.querySelectorAll('.nut-indicator-active')).toHaveLength(1)
 })
 
 test('should be shown when custom node', () => {
@@ -28,7 +28,7 @@ test('should be shown when custom node', () => {
       </Indicator>
     </Cell>
   )
-  expect(container.querySelectorAll('.nut-indicator__dot')).toHaveLength(5)
+  expect(container.querySelectorAll('.nut-indicator-dot')).toHaveLength(5)
 })
 
 test('should be shown when custom node', () => {
@@ -39,5 +39,5 @@ test('should be shown when custom node', () => {
       </Indicator>
     </Cell>
   )
-  expect(container.querySelectorAll('.nut-indicator__dot')).toHaveLength(5)
+  expect(container.querySelectorAll('.nut-indicator-dot')).toHaveLength(5)
 })

@@ -97,7 +97,7 @@ export const TrendArrow: FunctionComponent<
     const classNameSuffix = !left ? 'icon-after' : 'icon-before'
     return (
       <span
-        className={`${classPrefix}__${classNameSuffix} ${classPrefix}__value`}
+        className={`${classPrefix}-${classNameSuffix} ${classPrefix}-value`}
         style={calcStyle}
       >
         {calcRate}

@@ -57,8 +57,8 @@ export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
       style={style}
       {...rest}
     >
-      <div className="switch-button">
-        {!value && <div className="close-line" />}
+      <div className={`${classPrefix}-button`}>
+        {!value && <div className={`${classPrefix}-close-line`} />}
         {activeText && (
           <>
             {value ? (

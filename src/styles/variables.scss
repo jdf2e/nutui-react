@@ -70,9 +70,7 @@ $color-surface-4: var(--nutui-white-12) !default;
 $color-surface-overlay: var(--nutui-black-8) !default; // 	Mask遮罩
 
 // 边框
-// $color-border-shade: var(--nutui-gray-3) !default;
 $color-border: var(--nutui-black-3, rgba(0, 0, 0, 0.06)) !default;
-// $color-border-tint: var(--nutui-gray-1) !default; // 默认按钮、输入框等表单组件默认的边框禁用色
 $color-border-disabled: var(--nutui-gray-4, #bfbfbf) !default;
 
 // 文本
@@ -800,7 +798,7 @@ $switch-open-disabled-background-color: var(
   $color-primary-disabled
 ) !default;
 $switch-close-line-background-color: var(
-  --nutui-switch-close-line-bg-color,
+  --nutui-switch-close-line-background-color,
   #fff
 ) !default;
 $switch-width: var(--nutui-switch-width, 40px) !default;
@@ -1619,10 +1617,7 @@ $indicator-dot-active-size: var(
   --nutui-indicator-dot-active-size,
   8px
 ) !default;
-$indicator-border-radius-size: var(
-  --nutui-indicator-border-radius-size,
-  2px
-) !default;
+$indicator-border-radius: var(--nutui-indicator-border-radius, 2px) !default;
 $indicator-dot-margin: var(--nutui-indicator-dot-margin, 2px) !default;
 
 // menu（✅）
