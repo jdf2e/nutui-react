@@ -170,7 +170,7 @@ import { Checklist } from '@nutui/icons-react'
 const CheckBoxDemo = () => {
   return (<>
     <Checkbox icon={<Checklist />}
-              checkedIcon={<Checklist
+              activeIcon={<Checklist
                 className="nut-checkbox__icon" />}>Custom Icon</Checkbox>
   </>)
 }

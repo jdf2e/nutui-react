@@ -160,7 +160,7 @@ export default CheckBoxDemo;
 
 ## 自定义图标
 
-这里建议同时设置 `icon` 和 `checkedIcon` 属性
+这里建议同时设置 `icon` 和 `activeIcon` 属性
 
 :::demo
 
@@ -172,7 +172,7 @@ import { Checklist } from '@nutui/icons-react'
 const CheckBoxDemo = () => {
   return (<>
     <Checkbox icon={<Checklist />}
-              checkedIcon={<Checklist
+              activeIcon={<Checklist
                 className="nut-checkbox__icon" />}>自定义图标</Checkbox>
   </>)
 }
@@ -500,7 +500,7 @@ export default CheckboxGroupOptions;
 | disabled | 是否禁用选择 | `boolean` | `false` |
 | labelPosition | 文本所在的位置| `left` \| `right` | `string` | `right` |
 | icon | 选中前| `ReactNode` | `'CheckNormal'` |
-| activeIcon | ，选中后 | `ReactNode` | `'Checked'` |
+| activeIcon | 选中后 | `ReactNode` | `'Checked'` |
 | indeterminateIcon | 半选状态| `ReactNode` | `'CheckDisabled'` |
 | label | 复选框的文本内容 | `string` | `-` |
 | value | 标识值，用于 Group 模式 | `string` \|  `number` | `-` |
