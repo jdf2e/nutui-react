@@ -10,11 +10,8 @@ export type LoadingType = 'spinner' | 'circular'
 export type DirectionType = 'horizontal' | 'vertical'
 
 export interface LoadingProps extends BasicComponent {
-  // loading的类型
   type: LoadingType
-  // loading图标和文字的排列方式
   direction: DirectionType
-  // 自定义图标
   icon?: ReactNode
 }
 
@@ -38,9 +35,7 @@ export const Loading: FunctionComponent<
     ...props,
   }
 
-  // 样式class前缀
   const classPrefix = 'nut-loading'
-
   const CurLoadingIcon = loadingMap[rest.type] || IconLoading1
 
   return (
