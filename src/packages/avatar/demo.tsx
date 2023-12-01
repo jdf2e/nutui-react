@@ -92,7 +92,7 @@ const AvatarDemo = () => {
         <Cell>
           <Avatar
             className="demo-avatar"
-            color="var(--nutui-gray-1)"
+            color="#fff"
             background="var(--nutui-color-primary)"
             icon={<User />}
           />

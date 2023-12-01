@@ -35,8 +35,8 @@ const defaultProps = {
   shape: 'round',
   icon: '',
   fit: 'cover',
-  background: 'var(--nutui-gray-3)',
-  color: 'var(--nutui-gray-6)',
+  background: '#eee',
+  color: '#666',
   src: '',
   alt: '',
 } as AvatarProps
