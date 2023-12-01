@@ -136,7 +136,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     let current: string | number = ''
     titles.current.forEach((title) => {
       // eslint-disable-next-line eqeqeq
-      if (title.value == value) {
+      if (title.value === value) {
         current = value
       }
     })
