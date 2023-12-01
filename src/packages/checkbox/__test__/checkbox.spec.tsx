@@ -25,7 +25,7 @@ test('should props correctly', () => {
     />
   )
   expect(
-    container.querySelector('.nut-checkbox__label--disabled')
+    container.querySelector('.nut-checkbox-label-disabled')
   ).toBeInTheDocument()
   expect(getByTestId('checkbox')).toHaveClass('test')
   expect(getByTestId('checkbox')).toHaveStyle('color: red')

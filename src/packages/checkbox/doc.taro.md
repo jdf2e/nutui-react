@@ -172,8 +172,8 @@ import { Checklist } from '@nutui/icons-react-taro'
 const CheckBoxDemo = () => {
   return (<>
     <Checkbox icon={<Checklist />}
-              activeIcon={<Checklist
-                className="nut-checkbox__icon" />}>自定义图标</Checkbox>
+      activeIcon={<Checklist
+        className="nut-checkbox-icon" />}>自定义图标</Checkbox>
   </>)
 }
 export default CheckBoxDemo;
@@ -504,6 +504,7 @@ export default CheckboxGroupOptions;
 | indeterminateIcon | 半选状态| `ReactNode` | `'CheckDisabled'` |
 | label | 复选框的文本内容 | `string` | `-` |
 | value | 标识值，用于 Group 模式 | `string` \|  `number` | `-` |
+| shape | 形状 | `button` \| `round` |`round` |
 | onChange | 值变化时触发 | `(value: boolean) => void` | `-` |
 
 ## Checkbox.Group
@@ -536,8 +537,13 @@ export default CheckboxGroupOptions;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-checkbox-label-color | label 的文本颜色 | `$gray1` |
-| \--nutui-checkbox-label-disable-color | label 的禁用颜色 | `#999` |
-| \--nutui-checkbox-icon-disable-color | 默认 icon 的禁用颜色 | `#d6d6d6` |
+| \--nutui-checkbox-label-color | label 的文本颜色 | `$color-title` |
 | \--nutui-checkbox-label-margin-left | label 的左边距 | `15px` |
 | \--nutui-checkbox-label-font-size | label 的字号 | `14px` |
+| \--nutui-checkbox-button-font-size | shape为button的字号 | `12px` |
+| \--nutui-checkbox-button-color | 字体颜色 | `$color-text` |
+| \--nutui-checkbox-button-background | shape为button的背景色 | `$color-background` |
+| \--nutui-checkbox-label-button-border-color | shape为button的边框颜色 | `$color-primary` |
+| \--nutui-checkbox-button-active-border | shape为button选中态的边框 | `1px solid $color-primary` |
+| \--nutui-checkbox-button-padding | shape为button的内边距 | `5px 18px` |
+| \--nutui-checkbox-button-border-radius | shape为button的圆角 | `15px` |
