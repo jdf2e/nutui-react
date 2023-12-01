@@ -66,7 +66,6 @@ export default App;
 
 :::
 
-
 ### Basic Usage - Simple Mode
 
 :::demo
@@ -82,6 +81,60 @@ const App = () => {
       <Tabs value={tab1value} onChange={(value) => {
         setTab1value(value)
       }} activeType="simple">
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+:::
+
+
+### Basic Usage - Card Mode
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs value={tab1value} onChange={(value) => {
+        setTab1value(value)
+      }} activeType="card">
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+:::
+
+
+### Basic Usage - Button Mode
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs value={tab1value} onChange={(value) => {
+        setTab1value(value)
+      }} activeType="button">
         <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>

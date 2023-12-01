@@ -41,10 +41,10 @@
     font-weight: $navbar-title-font-weight;
     color: $navbar-title-font-color;
 
-    .nut-tabs__titles {
+    .nut-tabs-titles {
       background: $white;
 
-      &-item__text {
+      &-item-text {
         color: $title-color;
       }
     }

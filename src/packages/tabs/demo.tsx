@@ -7,7 +7,7 @@ import { useTranslate } from '../../sites/assets/locale'
 interface T {
   basic: string
   title1: string
-  title111: string
+  titleLite: string
   titleCard: string
   titleButton: string
   title2: string
@@ -39,7 +39,7 @@ const TabsDemo = () => {
     'zh-CN': {
       basic: '基础用法',
       title1: '基础用法-微笑曲线',
-      title111: '基础用法-简约模式',
+      titleLite: '基础用法-简约模式',
       titleCard: '基础用法-卡片样式',
       titleButton: '基础用法-按钮样式',
       title2: '通过 value 匹配',
@@ -68,7 +68,7 @@ const TabsDemo = () => {
     'en-US': {
       basic: 'Basic Usage',
       title1: 'Basic Usage - Smile Curve',
-      title111: 'Basic Usage - simple mode',
+      titleLite: 'Basic Usage - simple mode',
       titleCard: 'Basic Usage - card mode',
       titleButton: 'Basic Usage - button mode',
       title2: 'Match by value',
@@ -148,7 +148,6 @@ const TabsDemo = () => {
     <>
       <div className="demo full no-overflow">
         <h2>{translated.basic}</h2>
-
         <Tabs
           value={tab1value}
           onChange={(value) => {
@@ -171,7 +170,7 @@ const TabsDemo = () => {
           <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
           <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
         </Tabs>
-        <h2>{translated.title111}</h2>
+        <h2>{translated.titleLite}</h2>
         <Tabs
           value={tab111value}
           activeType="simple"

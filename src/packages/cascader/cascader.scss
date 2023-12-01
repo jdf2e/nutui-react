@@ -6,12 +6,12 @@
   font-size: $cascader-font-size;
   line-height: $cascader-line-height;
 
-  .nut-tabs__titles {
+  .nut-tabs-titles {
     padding: $cascader-tabs-item-padding;
     background: $gray6;
   }
 
-  .nut-tabs__titles-item {
+  .nut-tabs-titles-item {
     flex: initial;
     min-width: auto;
     width: auto;

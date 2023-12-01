@@ -93,6 +93,60 @@ export default App;
 ```
 :::
 
+
+### 基础用法-卡片模式
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs value={tab1value} onChange={(value) => {
+        setTab1value(value)
+      }} activeType="card">
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+:::
+
+
+### 基础用法-按钮/胶囊模式
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs value={tab1value} onChange={(value) => {
+        setTab1value(value)
+      }} activeType="button">
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+:::
+
 ### 基础用法-Title 左对齐
 
 :::demo

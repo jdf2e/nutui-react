@@ -93,6 +93,60 @@ export default App;
 ```
 :::
 
+
+### 基礎用法-卡片模式
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs value={tab1value} onChange={(value) => {
+        setTab1value(value)
+      }} activeType="card">
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+:::
+
+
+### 基礎用法-按鈕/膠囊模式
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs value={tab1value} onChange={(value) => {
+        setTab1value(value)
+      }} activeType="button">
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+:::
+
 ### 基礎用法-Title 左對齊
 
 :::demo
@@ -206,9 +260,9 @@ export default App;
 
 :::
 
-### CSS 黏性佈局
+### CSS 粘性布局
 
-通過設置tab的style 例如：`tabStyle={{ position: 'sticky', top: '0px', zIndex: 11 }}` ，來實現Css的黏性佈局，註意：在微信小程序裏組件外層元素不能存在 overflow 為 `hidden`、`auto`、`scroll`的設置。
+通過設置tab的style 例如：`tabStyle={{ position: 'sticky', top: '0px', zIndex: 11 }}` ，來實現Css的粘性布局，註意：在微信小程序裏組件外層元素不能存在 overflow 為 `hidden`、`auto`、`scroll`的設置。
 
 :::demo
 
@@ -337,7 +391,7 @@ const App = () => {
       <Tabs value={tab4value} onChange={(value) => {
         setTab4value(value)
       }}>
-        <Tabs.TabPane title="低階特賣會">低階特賣會</Tabs.TabPane>
+        <Tabs.TabPane title="低階特賣">低階特賣</Tabs.TabPane>
         <Tabs.TabPane title="上新日">上新日</Tabs.TabPane>
         <Tabs.TabPane title="百億補貼">百億補貼</Tabs.TabPane>
         <Tabs.TabPane title="今日聚超值">今日聚超值</Tabs.TabPane>
@@ -351,7 +405,7 @@ export default App;
 
 :::
 
-### 左右佈局
+### 左右布局
 
 :::demo
 
@@ -379,7 +433,7 @@ export default App;
 
 :::
 
-### 左右佈局-微笑曲線
+### 左右布局-微笑曲線
 
 :::demo
 
@@ -407,7 +461,7 @@ export default App;
 
 :::
 
-### 嵌套佈局
+### 嵌套布局
 
 :::demo
 
@@ -572,12 +626,12 @@ export default App;
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| value | 當前激活 tab 面闆的值 | `number` \| `string` | `0` |
+| value | 當前激活 tab 面板的值 | `number` \| `string` | `0` |
 | defaultValue | 初始化激活 tab 的值 | `number` \| `string` | `0` |
 | activeColor | 標簽選中色 | `string` | `#1a1a1a` |
-| direction | 使用橫縱方嚮 | `horizontal` \| `vertical` | `horizontal` |
+| direction | 使用橫縱方向 | `horizontal` \| `vertical` | `horizontal` |
 | activeType | 選中底部展示樣式 可選值 `line`、`smile`、`simple`、`card`、`button` | `line` \| `smile` \| `simple`  \| `card` \| `button` | `line` |
-| duration | 切換動畫時長,單位 ms 0 代錶無動畫 | `number` \| `string` | `300` |
+| duration | 切換動畫時長,單位 ms 0 代表無動畫 | `number` \| `string` | `300` |
 | title | 自定義導航區域 | `() => JSX.Element[]` | `-` |
 | align | 標題左對齊 | `left` \| `right` | `-` |
 | autoHeight | 自動高度。設置為 true 時，nut-tabs 和 nut-tabs\_\_content 會隨著當前 nut-tabpane 的高度而發生變化。 | `boolean` | `false` |
@@ -595,7 +649,7 @@ export default App;
 | value | 標簽 Key , 匹配的標識符, 默認為索引值 | `string` \| `number` | `-` |
 | disabled | 是否禁用標簽 | `boolean` | `false` |
 
-## 主題定制
+## 主題定製
 
 ### 樣式變量
 
@@ -603,23 +657,23 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-tabs-titles-height | 水平方嚮標題的高度 | `44px` |
+| \--nutui-tabs-titles-height | 水平方向標題的高度 | `44px` |
 | \--nutui-tabs-titles-background-color | Tab 標題的背景色 | `$color-background` |
 | \--nutui-tabs-title-gap | Tab 標題的左右 margin | `0px` |
 | \--nutui-tabs-titles-font-size | Tab 標題的字號 | `$font-size-base` |
-| \--nutui-tabs-titles-item-min-width | 水平方嚮標題的最小寬度 | `50px` |
+| \--nutui-tabs-titles-item-min-width | 水平方向標題的最小寬度 | `50px` |
 | \--nutui-tabs-titles-item-active-color | Tab 選中標題的字色 | `$color-primary` |
 | \--nutui-tabs-titles-item-active-font-weight | Tab 選中標題的字重 | `$font-weight-bold` |
 | \--nutui-tabs-titles-item-active-font-size | Tab 選中標題的字號 | `$font-size-large` |
-| \--nutui-tabs-titles-item-active-background-color | 水平方嚮激活選項卡標題的背景色 | `$color-background-overlay` |
-| \--nutui-tabs-tab-line-width | 水平方嚮激活選項卡線條的寬度 | `12px` |
-| \--nutui-tabs-tab-line-height | 水平方嚮激活選項卡線條的高度 | `2px` |
-| \--nutui-tabs-tab-line-color | 水平方嚮線條顏色 | `$color-primary` |
-| \--nutui-tabs-line-bottom | 水平方嚮線條距離 | `15%` |
-| \--nutui-tabs-line-border-radius | 水平方嚮線的圓角 | `2px` |
-| \--nutui-tabs-tab-line-opacity | 水平方嚮線的透明度 | `1` |
-| \--nutui-tabs-vertical-titles-width | 垂直方嚮標題的寬度 | `100px` |
-| \--nutui-tabs-vertical-titles-item-height | 垂直方嚮標題的高度 | `40px` |
-| \--nutui-tabs-vertical-tab-line-color | 垂直方嚮線條顏色 | `linear-gradient(180deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |
-| \--nutui-tabs-vertical-tab-line-width | 垂直方嚮標題線條的寬度 | `3px` |
-| \--nutui-tabs-vertical-tab-line-height | 垂直方嚮標題線條的高度 | `12px` |
+| \--nutui-tabs-titles-item-active-background-color | 水平方向激活選項卡標題的背景色 | `$color-background-overlay` |
+| \--nutui-tabs-tab-line-width | 水平方向激活選項卡線條的寬度 | `12px` |
+| \--nutui-tabs-tab-line-height | 水平方向激活選項卡線條的高度 | `2px` |
+| \--nutui-tabs-tab-line-color | 水平方向線條顏色 | `$color-primary` |
+| \--nutui-tabs-line-bottom | 水平方向線條距離 | `15%` |
+| \--nutui-tabs-line-border-radius | 水平方向線的圓角 | `2px` |
+| \--nutui-tabs-tab-line-opacity | 水平方向線的透明度 | `1` |
+| \--nutui-tabs-vertical-titles-width | 垂直方向標題的寬度 | `100px` |
+| \--nutui-tabs-vertical-titles-item-height | 垂直方向標題的高度 | `40px` |
+| \--nutui-tabs-vertical-tab-line-color | 垂直方向線條顏色 | `linear-gradient(180deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |
+| \--nutui-tabs-vertical-tab-line-width | 垂直方向標題線條的寬度 | `3px` |
+| \--nutui-tabs-vertical-tab-line-height | 垂直方向標題線條的高度 | `12px` |
