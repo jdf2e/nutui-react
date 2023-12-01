@@ -1,9 +1,8 @@
 import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react'
-
-const path = require('path')
-const atImport = require('postcss-import')
-const config = require('./package.json')
+import path from 'path'
+import atImport from 'postcss-import'
+import config from './package.json'
 
 const { resolve } = path
 let fileStr = `@import "@/styles/variables.scss";`
