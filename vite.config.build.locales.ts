@@ -1,9 +1,8 @@
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
-
-const glob = require('glob')
-const path = require('path')
-const config = require('./package.json')
+import path from 'path'
+import { globSync } from 'glob'
+import config from './package.json'
 
 const banner = `/*!
 * ${config.name} v${config.version} ${new Date()}
@@ -17,7 +16,7 @@ interface Entries {
 
 const entries: Entries = {}
 
-const locales = glob.sync(`./src/locales/*.ts`)
+const locales = globSync(`./src/locales/*.ts`)
 locales.forEach((item: string) => {
   entries[item.replace('.ts', '').replace('src/locales/', '')] = path.join(
     __dirname,
@@ -29,7 +28,10 @@ export default defineConfig({
   plugins: [
     dts({
       include: './src/locales/*.ts',
-      outputDir: './dist/locales',
+      outDir: './dist/locales',
+      beforeWriteFile(filePath, content) {
+        return { filePath: filePath.replace('src/locales', ''), content }
+      },
     }),
   ],
   build: {
