@@ -1060,10 +1060,13 @@ $infiniteloading-bottom-color: var(
 ) !default;
 
 //range（✅）
-$range-font-color: var(--nutui-range-font-color, $gray1) !default;
+$range-color: var(--nutui-range-color, $gray1) !default;
 $range-height: var(--nutui-range-height, 4px) !default;
 $range-margin: var(--nutui-range-margin, 15px) !default;
-$range-inactive-color: var(--nutui-range-inactive-color, #fa958c) !default;
+$range-inactive-color: var(
+  --nutui-range-inactive-color,
+  $color-primary-light
+) !default;
 $range-active-color: var(--nutui-range-active-color, $color-primary) !default;
 $range-button-background: var(
   --nutui-range-button-background,
