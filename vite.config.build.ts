@@ -1,12 +1,9 @@
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-// @ts-ignore
 import fse from 'fs-extra'
-
-const path = require('path')
-const config = require('./package.json')
-const componentsConfig = require('./src/config.json')
+import path from 'path'
+import config from './package.json'
+import componentsConfig from './src/config.json'
 
 const banner = `/*!
 * ${config.name} v${config.version} ${new Date()}
@@ -28,7 +25,7 @@ export default defineConfig({
   },
   plugins: [
     dts({
-      outputDir: 'dist/types',
+      outDir: 'dist/types',
       clearPureImport: false,
       exclude: [
         'node_modules/**',
@@ -37,6 +34,9 @@ export default defineConfig({
         'src/**/demo.taro.tsx',
         'src/**/*.spec.tsx',
       ],
+      beforeWriteFile(filePath, content) {
+        return { filePath: filePath.replace('src/', ''), content }
+      },
       afterBuild: () => {
         fse
           .readFile('./dist/types/packages/nutui.react.build.d.ts', 'utf-8')

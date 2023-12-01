@@ -1,9 +1,8 @@
 import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react'
 import autoprefixer from 'autoprefixer'
-
-const atImport = require('postcss-import')
-const path = require('path')
+import path from 'path'
+import atImport from 'postcss-import'
 
 const { resolve } = path
 let fileStr = `@import "@/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";`
