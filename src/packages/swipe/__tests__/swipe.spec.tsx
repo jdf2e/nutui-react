@@ -19,7 +19,7 @@ test('base swipe', () => {
     </Swipe>
   )
   expect(
-    container.querySelector('.nut-swipe .nut-cell__title')
+    container.querySelector('.nut-swipe .nut-cell-title')
   ).toHaveTextContent('基础用法')
 })
 

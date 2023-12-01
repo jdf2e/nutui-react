@@ -15,15 +15,11 @@ test('prop title extra description test', () => {
       />
     </>
   )
-  expect(container.querySelector('.nut-cell__title')?.innerHTML).toBe(
-    '我是标题'
-  )
-  expect(container.querySelector('.nut-cell__description')?.innerHTML).toBe(
+  expect(container.querySelector('.nut-cell-title')?.innerHTML).toBe('我是标题')
+  expect(container.querySelector('.nut-cell-description')?.innerHTML).toBe(
     '我是描述'
   )
-  expect(container.querySelector('.nut-cell__extra')?.innerHTML).toBe(
-    '描述文字'
-  )
+  expect(container.querySelector('.nut-cell-extra')?.innerHTML).toBe('描述文字')
   expect(container).toMatchSnapshot()
 })
 
@@ -31,7 +27,7 @@ test('prop ', () => {
   const { container } = render(
     <Cell title="URL 跳转" extra="https://m.jd.com/" />
   )
-  expect(container.querySelector('.nut-cell__extra')).toBeInTheDocument()
+  expect(container.querySelector('.nut-cell-extra')).toBeInTheDocument()
   expect(container).toMatchSnapshot()
 })
 

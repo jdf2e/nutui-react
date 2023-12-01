@@ -168,13 +168,13 @@ const App = () => {
         description="使用 nut-cell-group 支持 title extra"
       >
         <Cell
-          className="nutui-cell--clickable"
+          className="nutui-cell-clickable"
           title="链接"
           align="center"
           extra={<ArrowRight />}
         />
         <Cell
-          className="nutui-cell--clickable"
+          className="nutui-cell-clickable"
           title="URL 跳转"
           extra={
             <>

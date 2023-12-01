@@ -163,13 +163,13 @@ const App = () => {
         extra="Usage nut-cell-group support title extra"
       >
         <Cell
-          lassName="nutui-cell--clickable"
+          lassName="nutui-cell-clickable"
           title="Link Usage"
           align="center"
           extra={<ArrowRight />}
         />
         <Cell
-          className="nutui-cell--clickable"
+          className="nutui-cell-clickable"
           title="URL Jump"
           extra={
             <>

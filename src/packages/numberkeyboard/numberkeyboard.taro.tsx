@@ -111,7 +111,7 @@ export const NumberKeyboard: FunctionComponent<
       }
     }
     return (
-      <div key={item.id} className={`${classPrefix}__body__wrapper`}>
+      <div key={item.id} className={`${classPrefix}-body-wrapper`}>
         <div
           className={classNames({
             key: true,
@@ -146,11 +146,11 @@ export const NumberKeyboard: FunctionComponent<
     >
       <div className={classNames(classPrefix, className)} style={style}>
         {title && (
-          <div className={`${classPrefix}__header`}>
-            <div className={`${classPrefix}__header__title`}>{title}</div>
+          <div className={`${classPrefix}-header`}>
+            <div className={`${classPrefix}-header-title`}>{title}</div>
             {type === 'default' && (
               <span
-                className={`${classPrefix}__header__close`}
+                className={`${classPrefix}-header-close`}
                 onClick={onConfirm}
               >
                 {locale.done}
@@ -158,14 +158,14 @@ export const NumberKeyboard: FunctionComponent<
             )}
           </div>
         )}
-        <div className={`${classPrefix}__body`}>
-          <div className={`${classPrefix}__body__keys`}>
+        <div className={`${classPrefix}-body`}>
+          <div className={`${classPrefix}-body-keys`}>
             {keysList?.map((item: any) => {
               return <NumberKeyboardKey key={item.id} item={item} />
             })}
           </div>
           {type === 'rightColumn' && (
-            <div className={`${classPrefix}__sidebar`}>
+            <div className={`${classPrefix}-sidebar`}>
               <NumberKeyboardKey
                 key="delete"
                 item={{
