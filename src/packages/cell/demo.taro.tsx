@@ -156,13 +156,13 @@ const CellDemo = () => {
           description={translated.description}
         >
           <Cell
-            className="nutui-cell--clickable"
+            className="nutui-cell-clickable"
             title={translated.link}
             align="center"
             extra={<ArrowRight />}
           />
           <Cell
-            className="nutui-cell--clickable"
+            className="nutui-cell-clickable"
             title={translated.urlJump}
             extra={
               <>

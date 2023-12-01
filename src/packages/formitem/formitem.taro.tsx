@@ -193,11 +193,11 @@ export class FormItem extends React.Component<
         }
       >
         {label ? (
-          <div className="nut-cell__title nut-form-item__label">
+          <div className="nut-cell-title nut-form-item__label">
             {renderLabel}
           </div>
         ) : null}
-        <div className="nut-cell__value nut-form-item__body">
+        <div className="nut-cell-value nut-form-item__body">
           <div className="nut-form-item__body__slots">{childNode}</div>
 
           <div
