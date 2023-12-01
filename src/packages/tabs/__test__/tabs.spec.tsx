@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, waitFor, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Tabs } from '../tabs'
 import { TabPane } from '../../tabpane/tabpane'
@@ -41,10 +41,11 @@ test('base tabs props', () => {
   expect(el3).toHaveClass('nut-tabs-titles-card')
 })
 
-test('base other props', () => {
+test('base other props', async () => {
   const { container } = render(
     <Tabs duration={500}>
       <TabPane title="Tab 1"> Tab 1 </TabPane>
+      <TabPane title="Tab 2"> Tab 2 </TabPane>
     </Tabs>
   )
 
@@ -53,11 +54,18 @@ test('base other props', () => {
     'style',
     'transform: translate3d(-0%, 0, 0); transition-duration: 500ms;'
   )
-
+  const el2 = container.querySelectorAll('.nut-tabs-titles-item')[1]
+  fireEvent.click(el2)
+  let el3: Element | null
   setTimeout(() => {
-    const el2: Element | null = container.querySelector('.nut-tabs-titles-item')
-    expect(el2).toHaveAttribute('style', 'margin-left: 20px;')
-  }, 0)
+    el3 = container.querySelector('.nut-tabs-content')
+  }, 600)
+  await waitFor(() => {
+    expect(el3).toHaveAttribute(
+      'style',
+      'transform: translate3d(-100%, 0, 0); transition-duration: 500ms;'
+    )
+  })
 })
 
 test('base Tabpane Props', () => {
@@ -133,7 +141,7 @@ test('base click', () => {
   expect(handleClick).toBeCalled()
 })
 
-test('click tab when have many tabs', () => {
+test('click tab when have many tabs', async () => {
   const handleClick = jest.fn(() => {})
   const { container } = render(
     <Tabs value="0" onClick={handleClick} direction="vertical">
@@ -160,5 +168,5 @@ test('click tab when have many tabs', () => {
 
   const el = container.querySelectorAll('.nut-tabs-titles-item')[5]
   fireEvent.click(el)
-  expect(handleClick).toBeCalled()
+  await waitFor(() => expect(expect(handleClick).toBeCalled()))
 })
