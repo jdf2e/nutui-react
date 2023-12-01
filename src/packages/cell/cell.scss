@@ -14,18 +14,18 @@
   margin: 10px 0;
   box-sizing: border-box;
 
-  &__left {
+  &-left {
     display: flex;
     flex-direction: column;
     flex: 1;
   }
 
-  &__description {
+  &-description {
     font-size: $cell-description-font-size;
     color: $cell-description-color;
   }
 
-  &__extra {
+  &-extra {
     display: inline-flex;
     justify-content: flex-end;
     align-items: center;

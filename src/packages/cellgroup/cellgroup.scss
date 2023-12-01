@@ -1,7 +1,7 @@
 .nut-cell-group {
   display: block;
 
-  &__title {
+  &-title {
     display: inherit;
     padding: $cell-group-title-padding;
     color: $cell-group-title-color;
@@ -11,7 +11,7 @@
     margin-bottom: 10px;
   }
 
-  &__description {
+  &-description {
     display: inherit;
     padding: $cell-group-description-padding;
     color: $cell-group-description-color;
@@ -21,7 +21,7 @@
     margin-bottom: 10px;
   }
 
-  &__wrap {
+  &-wrap {
     display: inherit;
     border-radius: $cell-border-radius;
     overflow: hidden;
@@ -34,9 +34,9 @@
     }
   }
 
-  &__wrap--divider {
+  &-wrap-divider {
     .nut-cell {
-      &__divider {
+      &-divider {
         position: absolute;
         box-sizing: border-box;
         pointer-events: none;
@@ -47,7 +47,7 @@
         border-top: $cell-divider-border-bottom;
       }
       &:last-child {
-        .nut-cell__divider {
+        .nut-cell-divider {
           border-top: 0 !important;
         }
       }

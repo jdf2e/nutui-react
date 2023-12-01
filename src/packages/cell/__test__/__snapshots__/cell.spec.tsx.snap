@@ -7,16 +7,16 @@ exports[`prop  1`] = `
     style="border-radius: 6px; align-items: flex-start;"
   >
     <div
-      class="nut-cell__left"
+      class="nut-cell-left"
     >
       <div
-        class="nut-cell__title"
+        class="nut-cell-title"
       >
         URL 跳转
       </div>
     </div>
     <div
-      class="nut-cell__extra"
+      class="nut-cell-extra"
     >
       https://m.jd.com/
     </div>
@@ -32,21 +32,21 @@ exports[`prop title extra description test 1`] = `
     style="border-radius: 6px; align-items: flex-start;"
   >
     <div
-      class="nut-cell__left"
+      class="nut-cell-left"
     >
       <div
-        class="nut-cell__title"
+        class="nut-cell-title"
       >
         我是标题
       </div>
       <div
-        class="nut-cell__description"
+        class="nut-cell-description"
       >
         我是描述
       </div>
     </div>
     <div
-      class="nut-cell__extra"
+      class="nut-cell-extra"
     >
       描述文字
     </div>
@@ -61,10 +61,10 @@ exports[`slot default test 1`] = `
     style="border-radius: 6px; align-items: flex-start;"
   >
     <div
-      class="nut-cell__left"
+      class="nut-cell-left"
     >
       <div
-        class="nut-cell__title"
+        class="nut-cell-title"
       >
         <div>
           自定义内容
@@ -72,7 +72,7 @@ exports[`slot default test 1`] = `
       </div>
     </div>
     <div
-      class="nut-cell__extra"
+      class="nut-cell-extra"
     >
       描述文字
     </div>
@@ -87,16 +87,16 @@ exports[`slot extra 1`] = `
     style="border-radius: 6px; align-items: flex-start;"
   >
     <div
-      class="nut-cell__left"
+      class="nut-cell-left"
     >
       <div
-        class="nut-cell__title"
+        class="nut-cell-title"
       >
         Switch
       </div>
     </div>
     <div
-      class="nut-cell__extra"
+      class="nut-cell-extra"
     >
       <div
         class="nut-switch nut-switch-open  nut-switch-base "
