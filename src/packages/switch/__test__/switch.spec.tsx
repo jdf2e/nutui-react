@@ -37,7 +37,7 @@ test('activeColor && inactiveColor &&  activeText && checked && onChange && inac
   if (el) {
     expect(el).toHaveAttribute(
       'class',
-      `nut-switch switch-close  nut-switch-base switch-test`
+      `nut-switch nut-switch-close  nut-switch-base switch-test`
     )
     expect(el).toHaveAttribute(
       'style',
