@@ -412,18 +412,12 @@ export default App;
 
 | 名稱 | 說明 | 預設值 |
 | --- | --- | --- |
-| \--nutui-picker-bar-cancel-color | 取消文案的色值 | `#808080` |
-| \--nutui-picker-bar-ok-color | 確認文案的色值 | `$color-primary` |
-| \--nutui-picker-bar-cancel-font-size | 取消字號 | `14px` |
-| \--nutui-picker-bar-ok-font-size | 確認字號 | `14px` |
-| \--nutui-picker-bar-button-padding | 取消和確認的padding值 | `0 15px` |
-| \--nutui-picker-bar-title-font-size | 標題字號 | `16px` |
-| \--nutui-picker-bar-title-color | 標題色值 | `$title-color` |
-| \--nutui-picker-bar-title-font-weight | 標題字重 | `normal` |
-| \--nutui-picker-list-height | 面闆高度 | `252px` |
-| \--nutui-picker-item-height | 面闆每一條數據高度 | `36px` |
-| \--nutui-picker-item-text-color | 面闆每一條數據的字色 | `$title-color` |
-| \--nutui-picker-item-active-text-color | 面闆當前選中數據的字色 | `inherit` |
-| \--nutui-picker-item-text-font-size | 面闆每條數據字號 | `14px` |
-| \--nutui-picker-item-active-line-border | 面闆當前選中的border值 | `1px solid #d8d8d8` |
-| \--nutui-picker-mask-bg-img | 面闆數據區域的遮罩層背景 | `linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))` |
+| \--nutui-picker-title-cancel-color | 取消文案的色值 | `$text-color` |
+| \--nutui-picker-title-cancel-font-size | 取消字号 | `14px` |
+| \--nutui-picker-title-ok-color | 確認文案的色值 | `$color-primary` |
+| \--nutui-picker-title-ok-font-size | 确认字号 | `14px` |
+| \--nutui-picker-list-height | 面板高度 | `252px` |
+| \--nutui-picker-item-height | 面板每一条数据高度 | `36px` |
+| \--nutui-picker-item-text-color | 面板每一条数据的字色 | `$color-title` |
+| \--nutui-picker-item-text-font-size | 面板每条数据字号 | `14px` |
+| \--nutui-picker-item-active-line-border | 面板当前选中的border值 | `1px solid #d8d8d8` |
