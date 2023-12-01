@@ -71,12 +71,12 @@ export const Cell: FunctionComponent<
       {children || (
         <>
           {title || description ? (
-            <div className={`${classPrefix}__left`}>
+            <div className={`${classPrefix}-left`}>
               {title ? (
-                <div className={`${classPrefix}__title`}>{title}</div>
+                <div className={`${classPrefix}-title`}>{title}</div>
               ) : null}
               {description ? (
-                <div className={`${classPrefix}__description`}>
+                <div className={`${classPrefix}-description`}>
                   {description}
                 </div>
               ) : null}
@@ -84,7 +84,7 @@ export const Cell: FunctionComponent<
           ) : null}
           {extra ? (
             <div
-              className={`${classPrefix}__extra`}
+              className={`${classPrefix}-extra`}
               style={styles as React.CSSProperties}
             >
               {extra}
@@ -92,7 +92,7 @@ export const Cell: FunctionComponent<
           ) : null}
         </>
       )}
-      {ctx?.divider ? <div className={`${classPrefix}__divider`} /> : null}
+      {ctx?.divider ? <div className={`${classPrefix}-divider`} /> : null}
     </div>
   )
 }

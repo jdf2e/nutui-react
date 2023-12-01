@@ -163,13 +163,13 @@ const App = () => {
         extra="Usage nut-cell-group support title extra"
       >
         <Cell
-          lassName="nutui-cell--clickable"
+          lassName="nutui-cell-clickable"
           title="Link Usage"
           align="center"
           extra={<ArrowRight />}
         />
         <Cell
-          className="nutui-cell--clickable"
+          className="nutui-cell-clickable"
           title="URL Jump"
           extra={
             <>
@@ -322,11 +322,11 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-cell-title-color | The cell title the font color | `$gray1` |
+| \--nutui-cell-title-color | The cell title the font color | `$color-title` |
 | \--nutui-cell-title-font-size | The cell title the font size | `$font-size-base` |
-| \--nutui-cell-description-color | The cell describes the font color | `$gray2` |
+| \--nutui-cell-description-color | The cell describes the font color | `$color-text` |
 | \--nutui-cell-description-font-size | The cell describes the font size | `$font-size-small` |
-| \--nutui-cell-extra-color | The right side of the cell describes the font color | `$gray2` |
+| \--nutui-cell-extra-color | The right side of the cell describes the font color | `$color-text` |
 | \--nutui-cell-extra-font-size | The right side of the cell describes the font size | `$font-size-base` |
 | \--nutui-cell-border-radius | The rounded corner size of the cell | `6px` |
 | \--nutui-cell-padding | Inside margins of cells | `13px 16px` |
@@ -334,7 +334,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-cell-divider-left | Left margin of cell divider | `16px` |
 | \--nutui-cell-divider-right | ArrowRight margin of cell divider | `16px` |
 | \--nutui-cell-divider-border-bottom | Border bottom of cell divider | `2px solid #f5f6f7` |
-| \--nutui-cell-background-color | The background color of the cell | `$gray6` |
+| \--nutui-cell-background-color | The background color of the cell | `$white` |
 | \--nutui-cell-box-shadow | The shadow of the cell | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
 | \--nutui-cell-group-title-padding | The padding of the title of the cell group | `0 10px` |
 | \--nutui-cell-group-title-color | The title font color of the cell group | `#909ca4` |

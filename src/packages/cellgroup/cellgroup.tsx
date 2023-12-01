@@ -29,13 +29,13 @@ export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
   }
   return (
     <div className={classNames(classPrefix, className)} {...rest}>
-      {title ? <div className={`${classPrefix}__title`}>{title}</div> : null}
+      {title ? <div className={`${classPrefix}-title`}>{title}</div> : null}
       {description ? (
-        <div className={`${classPrefix}__description`}>{description}</div>
+        <div className={`${classPrefix}-description`}>{description}</div>
       ) : null}
       <div
-        className={`${classPrefix}__wrap ${
-          divider ? `${classPrefix}__wrap--divider` : ''
+        className={`${classPrefix}-wrap ${
+          divider ? `${classPrefix}-wrap-divider` : ''
         }`}
       >
         <CellGroupContext.Provider value={{ divider }}>

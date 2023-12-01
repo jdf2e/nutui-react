@@ -143,13 +143,13 @@ const App = () => {
         description="使用 nut-cell-group 支持 title extra"
       >
         <Cell
-          className="nutui-cell--clickable"
+          className="nutui-cell-clickable"
           title="鏈接"
           align="center"
           extra={<ArrowRight />}
         />
         <Cell
-          className="nutui-cell--clickable"
+          className="nutui-cell-clickable"
           title="URL 跳轉"
           extra={
             <>
@@ -300,11 +300,11 @@ export default App
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-cell-title-color | 單元格標題字體顏色 | `$gray1` |
+| \--nutui-cell-title-color | 單元格標題字體顏色 | `$color-title` |
 | \--nutui-cell-title-font-size | 單元格標題字體大小 | `$font-size-base` |
-| \--nutui-cell-description-color | 單元格描述字體顏色 | `$gray2` |
+| \--nutui-cell-description-color | 單元格描述字體顏色 | `$color-text` |
 | \--nutui-cell-description-font-size | 單元格描述字體大小 | `$font-size-small` |
-| \--nutui-cell-extra-color | 單元格右側描述字體顏色 | `$gray2` |
+| \--nutui-cell-extra-color | 單元格右側描述字體顏色 | `$color-text` |
 | \--nutui-cell-extra-font-size | 單元格右側描述字體大小 | `$font-size-base` |
 | \--nutui-cell-border-radius | 單元格圓角大小 | `6px` |
 | \--nutui-cell-padding | 單元格內邊距 | `13px 16px` |
@@ -312,7 +312,7 @@ export default App
 | \--nutui-cell-divider-left | 單元格分割線左邊距 | `16px` |
 | \--nutui-cell-divider-right | 單元格分割線右邊距 | `16px` |
 | \--nutui-cell-divider-border-bottom | 單元格分割線下邊框 | `2px solid #f5f6f7` |
-| \--nutui-cell-background-color | 單元格背景顏色 | `$gray6` |
+| \--nutui-cell-background-color | 單元格背景顏色 | `$white` |
 | \--nutui-cell-box-shadow | 單元格陰影 | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
 | \--nutui-cell-group-title-padding | 單元格分組的標題內邊距 | `0 10px` |
 | \--nutui-cell-group-title-color | 單元格分組的標題字體顏色 | `#909ca4` |

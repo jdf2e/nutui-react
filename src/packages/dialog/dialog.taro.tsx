@@ -106,8 +106,6 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
         <>
           {!hideCancelButton && (
             <Button
-              fill="outline"
-              size="small"
               type="default"
               className={`${classPrefix}__footer-cancel`}
               onClick={(e) => handleCancel(e)}
@@ -117,7 +115,6 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
           )}
           {!hideConfirmButton && (
             <Button
-              size="small"
               type="primary"
               className={classNames(`${classPrefix}__footer-ok`, {
                 disabled: disableConfirmButton,
