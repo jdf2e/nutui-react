@@ -20,7 +20,7 @@ export interface TabsProps extends BasicComponent {
   defaultValue: string | number
   activeColor: string
   direction: 'horizontal' | 'vertical'
-  activeType: 'line' | 'smile'
+  activeType: 'line' | 'smile' | 'simple' | 'card' | 'button'
   duration: number | string
   align: 'left' | 'right'
   title: () => JSX.Element[]
@@ -149,13 +149,13 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
 
   const classes = classNames(
     classPrefix,
-    `${classPrefix}--${direction}`,
+    `${classPrefix}-${direction}`,
     className
   )
-  const classesTitle = classNames(`${classPrefix}__titles`, {
-    [`${classPrefix}__titles--${activeType}`]: activeType,
-    [`${classPrefix}__titles--scrollable`]: true,
-    [`${classPrefix}__titles--${align}`]: align,
+  const classesTitle = classNames(`${classPrefix}-titles`, {
+    [`${classPrefix}-titles-${activeType}`]: activeType,
+    [`${classPrefix}-titles-scrollable`]: true,
+    [`${classPrefix}-titles-${align}`]: align,
   })
 
   const tabsActiveStyle = {
@@ -196,24 +196,24 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
                   onClick={() => {
                     tabChange(item)
                   }}
-                  className={classNames(`${classPrefix}__titles-item`, {
-                    [`nut-tabs__titles-item--active`]:
+                  className={classNames(`${classPrefix}-titles-item`, {
+                    [`nut-tabs-titles-item-active`]:
                       !item.disabled && String(item.value) === String(value),
-                    [`nut-tabs__titles-item--disabled`]: item.disabled,
-                    [`nut-tabs__titles-item--${align}`]: align,
+                    [`nut-tabs-titles-item-disabled`]: item.disabled,
+                    [`nut-tabs-titles-item-${align}`]: align,
                   })}
                   ref={(ref: HTMLDivElement) => titleItemsRef.current.push(ref)}
                   key={item.value}
                 >
                   {activeType === 'line' && (
                     <div
-                      className={`${classPrefix}__titles-item__line`}
+                      className={`${classPrefix}-titles-item-line`}
                       style={tabsActiveStyle}
                     />
                   )}
                   {activeType === 'smile' && (
                     <div
-                      className={`${classPrefix}__titles-item__smile`}
+                      className={`${classPrefix}-titles-item-smile`}
                       style={tabsActiveStyle}
                     >
                       <JoySmile color={activeColor} width={40} height={20} />
@@ -224,7 +224,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
                       {
                         ellipsis: true,
                       },
-                      `${classPrefix}__titles-item__text`
+                      `${classPrefix}-titles-item-text`
                     )}
                   >
                     {item.title}
@@ -233,8 +233,8 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
               )
             })}
       </div>
-      <div className={`${classPrefix}__content__wrap`}>
-        <div className={`${classPrefix}__content`} style={contentStyle}>
+      <div className={`${classPrefix}-content-wrap`}>
+        <div className={`${classPrefix}-content`} style={contentStyle}>
           {React.Children.map(children, (child, idx) => {
             if (!React.isValidElement(child)) {
               return null

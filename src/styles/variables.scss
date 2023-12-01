@@ -1656,24 +1656,19 @@ $pagination-prev-next-padding: var(
 ) !default;
 
 // tabs（✅）
-$tabs-tab-smile-color: var(
-  --nutui-tabs-tab-smile-color,
-  $color-primary
-) !default;
+$tabs-titles-height: var(--nutui-tabs-titles-height, 44px) !default;
 $tabs-titles-background-color: var(
   --nutui-tabs-titles-background-color,
   $background-color
 ) !default;
-$tabs-titles-border-radius: var(--nutui-tabs-titles-border-radius, 0) !default;
-$nut-tabs-title-gap: var(--nutui-tabs-title-gap, 0) !default;
-$tabs-titles-item-font-size: var(
-  --nutui-tabs-titles-item-font-size,
+$tabs-titles-gap: var(--nutui-tabs-titles-gap, 0px) !default;
+$tabs-titles-font-size: var(
+  --nutui-tabs-titles-font-size,
   $font-size-base
 ) !default;
-
-$tabs-titles-item-color: var(
-  --nutui-tabs-titles-item-color,
-  $title-color
+$tabs-titles-item-min-width: var(
+  --nutui-tabs-titles-item-min-width,
+  50px
 ) !default;
 $tabs-titles-item-active-color: var(
   --nutui-tabs-titles-item-active-color,
@@ -1681,63 +1676,60 @@ $tabs-titles-item-active-color: var(
 ) !default;
 $tabs-titles-item-active-font-weight: var(
   --nutui-tabs-titles-item-active-font-weight,
-  600
+  $font-weight-bold
 ) !default;
-$tabs-horizontal-tab-line-color: var(
-  --nutui-tabs-horizontal-tab-line-color,
-  linear-gradient(90deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)
+$tabs-titles-item-active-font-size: var(
+  --nutui-tabs-titles-item-active-font-size,
+  $font-size-large
 ) !default;
-$tabs-horizontal-tab-line-bottom: var(
-  --nutui-tabs-horizontal-line-bottom,
-  15%
-) !default;
-$tabs-horizontal-tab-line-border-radius: var(
-  --nutui-tabs-horizontal-line-border-radius,
-  2px
-) !default;
-$tabs-horizontal-tab-line-opacity: var(
-  --nutui-tabs-horizontal-tab-line-opacity,
-  1
-) !default;
-$tabs-horizontal-titles-height: var(
-  --nutui-tabs-horizontal-titles-height,
-  46px
-) !default;
-$tabs-horizontal-titles-item-min-width: var(
-  --nutui-tabs-horizontal-titles-item-min-width,
-  50px
-) !default;
-$tabs-horizontal-titles-item-active-background-color: var(
-  --nutui-tabs-horizontal-titles-item-active-background-color,
+$tabs-titles-item-active-background-color: var(
+  --nutui-tabs-titles-item-active-background-color,
   $background-color3
 ) !default;
-$tabs-horizontal-titles-item-active-line-width: var(
-  --nutui-tabs-horizontal-titles-item-active-line-width,
-  40px
+$tabs-tab-line-width: var(--nutui-tabs-tab-line-width, 12px) !default;
+$tabs-tab-line-height: var(--nutui-tabs-tab-line-height, 2px) !default;
+$tabs-tab-line-color: var(--nutui-tabs-tab-line-color, $color-primary) !default;
+$tabs-tab-line-bottom: var(--nutui-tabs-line-bottom, 15%) !default;
+$tabs-tab-line-border-radius: var(
+  --nutui-tabs-line-border-radius,
+  2px
 ) !default;
-$tabs-horizontal-titles-item-active-line-height: var(
-  --nutui-tabs-horizontal-titles-item-active-line-height,
-  3px
+$tabs-tab-line-opacity: var(--nutui-tabs-tab-line-opacity, 1) !default;
+$tabs-tab-button-border-radius: var(
+  --nutui-tabs-button-border-radius,
+  $radius-circle
 ) !default;
-$tabs-vertical-tab-line-color: var(
-  --nutui-tabs-vertical-tab-line-color,
-  linear-gradient(180deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)
+$tabs-tab-button-active-background-color: var(
+  --nutui-tabs-button-active-background-color,
+  $color-primary-light
+) !default;
+$tabs-tab-button-active-border: var(
+  --nutui-tabs-button-active-border,
+  1px solid $color-primary
+) !default;
+$tabs-vertical-titles-width: var(
+  --nutui-tabs-vertical-titles-width,
+  100px
 ) !default;
 $tabs-vertical-titles-item-height: var(
   --nutui-tabs-vertical-titles-item-height,
   40px
 ) !default;
-$tabs-vertical-titles-item-active-line-width: var(
-  --nutui-tabs-vertical-titles-item-active-line-width,
+$tabs-vertical-tab-line-color: var(
+  --nutui-tabs-vertical-tab-line-color,
+  linear-gradient(180deg, $color-primary-stop-1 0%, $color-primary-light 100%)
+) !default;
+$tabs-vertical-tab-line-width: var(
+  --nutui-tabs-vertical-tab-line-width,
   3px
 ) !default;
-$tabs-vertical-titles-item-active-line-height: var(
-  --nutui-tabs-vertical-titles-item-active-line-height,
-  14px
+$tabs-vertical-tab-line-height: var(
+  --nutui-tabs-vertical-tab-line-height,
+  12px
 ) !default;
-$tabs-vertical-titles-width: var(
-  --nutui-tabs-vertical-titles-width,
-  100px
+$tabs-titles-item-smile-bottom: var(
+  --nutui-tabs-titles-item-smile-bottom,
+  -10%
 ) !default;
 
 // indicator（✅）

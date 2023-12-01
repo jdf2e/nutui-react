@@ -7,6 +7,9 @@ import { useTranslate } from '../../sites/assets/locale'
 interface T {
   basic: string
   title1: string
+  title111: string
+  titleCard: string
+  titleButton: string
   title2: string
   title3: string
   title4: string
@@ -19,6 +22,8 @@ interface T {
   title9: string
   title10: string
   title11: string
+  titleLeftCard: string
+  titleLeftButton: string
   custom1: string
   custom2: string
   custom3: string
@@ -34,6 +39,9 @@ const TabsDemo = () => {
     'zh-CN': {
       basic: '基础用法',
       title1: '基础用法-微笑曲线',
+      title111: '基础用法-简约模式',
+      titleCard: '基础用法-卡片样式',
+      titleButton: '基础用法-按钮样式',
       title2: '通过 value 匹配',
       title3: '数据异步渲染 3s',
       title4: '数量多,滚动操作',
@@ -46,6 +54,8 @@ const TabsDemo = () => {
       title9: 'Tabpane 自动高度',
       title10: 'CSS 粘性布局',
       title11: 'Title 左对齐',
+      titleLeftCard: '左对齐-卡片样式',
+      titleLeftButton: '左对齐-按钮样式',
       custom1: '自定义 1',
       custom2: '自定义 2',
       custom3: '自定义 3',
@@ -58,6 +68,9 @@ const TabsDemo = () => {
     'en-US': {
       basic: 'Basic Usage',
       title1: 'Basic Usage - Smile Curve',
+      title111: 'Basic Usage - simple mode',
+      titleCard: 'Basic Usage - card mode',
+      titleButton: 'Basic Usage - button mode',
       title2: 'Match by value',
       title3: 'Data is rendered asynchronously for 3s',
       title4: 'A large number of scrolling operations',
@@ -70,6 +83,8 @@ const TabsDemo = () => {
       title9: 'Tabpane auto height',
       title10: 'CSS Sticky',
       title11: 'Title left align',
+      titleLeftCard: 'Title left align - card mode',
+      titleLeftButton: 'Title left align - button mode',
       custom1: 'custom 1',
       custom2: 'custom 2',
       custom3: 'custom 3',
@@ -83,6 +98,7 @@ const TabsDemo = () => {
 
   const [tab1value, setTab1value] = useState<string | number>('0')
   const [tab11value, setTab11value] = useState<string | number>('0')
+  const [tab111value, setTab111value] = useState<string | number>('0')
   const [tab12value, setTab12value] = useState<string | number>('0')
   const [tab2value, setTab2value] = useState<string | number>('0')
   const [tab3value, setTab3value] = useState<string | number>('0')
@@ -106,7 +122,7 @@ const TabsDemo = () => {
     {
       title: translated.custom1,
       value: 'c1',
-      icon: <Star style={{ marginRight: '10px' }} />,
+      icon: <Star style={{ marginRight: '4px' }} />,
     },
     {
       title: translated.custom2,
@@ -132,6 +148,7 @@ const TabsDemo = () => {
     <>
       <div className="demo full no-overflow">
         <h2>{translated.basic}</h2>
+
         <Tabs
           value={tab1value}
           onChange={(value) => {
@@ -154,12 +171,74 @@ const TabsDemo = () => {
           <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
           <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
         </Tabs>
+        <h2>{translated.title111}</h2>
+        <Tabs
+          value={tab111value}
+          activeType="simple"
+          onChange={(value) => {
+            setTab111value(value)
+          }}
+        >
+          <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+        </Tabs>
+        <h2>{translated.titleCard}</h2>
+        <Tabs
+          value={tab111value}
+          activeType="card"
+          onChange={(value) => {
+            setTab111value(value)
+          }}
+        >
+          <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+        </Tabs>
+        <h2>{translated.titleButton}</h2>
+        <Tabs
+          value={tab111value}
+          activeType="button"
+          onChange={(value) => {
+            setTab111value(value)
+          }}
+        >
+          <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+        </Tabs>
         <h2>{translated.title11}</h2>
         <Tabs
           value={tab3value}
           align="left"
           onChange={(value) => {
             setTab3value(value)
+          }}
+        >
+          <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+        </Tabs>
+        <h2>{translated.titleLeftCard}</h2>
+        <Tabs
+          value={tab111value}
+          activeType="card"
+          align="left"
+          onChange={(value) => {
+            setTab111value(value)
+          }}
+        >
+          <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+        </Tabs>
+        <h2>{translated.titleLeftButton}</h2>
+        <Tabs
+          value={tab111value}
+          activeType="button"
+          align="left"
+          onChange={(value) => {
+            setTab111value(value)
           }}
         >
           <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
@@ -413,7 +492,7 @@ const TabsDemo = () => {
           onChange={(value) => {
             setTab11value(value)
           }}
-          style={{ '--nutui-tabs-titles-item-font-size': '20px' }}
+          style={{ '--nutui-tabs-titles-font-size': '20px' }}
         >
           <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
           <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
@@ -424,7 +503,7 @@ const TabsDemo = () => {
           onChange={(value) => {
             setTab12value(value)
           }}
-          style={{ '--nutui-tabs-titles-item-font-size': '12px' }}
+          style={{ '--nutui-tabs-titles-font-size': '12px' }}
         >
           <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
           <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
@@ -438,18 +517,14 @@ const TabsDemo = () => {
             return list6.map((item) => (
               <div
                 onClick={() => setTab7value(item.value)}
-                className={`nut-tabs__titles-item ${
-                  tab7value === item.value
-                    ? 'nut-tabs__titles-item--active'
-                    : ''
+                className={`nut-tabs-titles-item ${
+                  tab7value === item.value ? 'nut-tabs-titles-item-active' : ''
                 }`}
                 key={item.value}
               >
                 {item.icon || null}
-                <span className="nut-tabs__titles-item__text">
-                  {item.title}
-                </span>
-                <span className="nut-tabs__titles-item__line" />
+                <span className="nut-tabs-titles-item-text">{item.title}</span>
+                <span className="nut-tabs-titles-item-line" />
               </div>
             ))
           }}
