@@ -23,6 +23,7 @@ interface T {
   customStyle: string
   handleControl: string
   start: string
+  stop: string
   pause: string
   reset: string
   day: string
@@ -43,6 +44,7 @@ const CountDownDemo = () => {
       customStyle: '自定义展示样式',
       handleControl: '手动控制',
       start: '开始',
+      stop: '结束',
       pause: '暂停',
       reset: '重置',
       day: '天',
@@ -61,6 +63,7 @@ const CountDownDemo = () => {
       customStyle: '自定義展示樣式',
       handleControl: '手動控製',
       start: '開始',
+      stop: '结束',
       pause: '暫停',
       reset: '重置',
       day: '天',
@@ -79,6 +82,7 @@ const CountDownDemo = () => {
       customStyle: 'Custom Style',
       handleControl: 'Handle Control',
       start: 'Start',
+      stop: 'Stop',
       pause: 'Pause',
       reset: 'Reset',
       day: 'Day',
@@ -216,7 +220,7 @@ const CountDownDemo = () => {
           <div style={{ position: 'absolute', right: '10px', top: '9px' }}>
             <div onClick={() => toggle()}>
               <Button type="primary" size="small">
-                {paused ? 'start' : 'stop'}
+                {paused ? translated.start : translated.stop}
               </Button>
             </div>
           </div>
