@@ -120,7 +120,13 @@ import { Switch } from '@nutui/nutui-react';
 
 const App = () => {
   return ( 
-    <Switch defaultChecked style={{ '--nutui-switch-open-background-color': 'blue' }} />
+    <Switch
+      defaultChecked
+      style={{
+        '--nutui-switch-open-background-color': 'blue',
+        '--nutui-switch-close-line-background-color': '#ebebeb',
+      }}
+    />
   );
 };  
 export default App;
@@ -172,8 +178,10 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-switch-close-background-color | 开关关闭状态背景颜色 | `#ebebeb` |
+| \--nutui-switch-close-background-color | 开关关闭状态背景颜色 | `$color-text-disabled` |
 | \--nutui-switch-open-background-color | 开关打开状态背景颜色 | `$color-primary` |
+| \--nutui-switch-close-disabled-background-color | 开关关闭时的禁用时的背景颜色 | `rgba(0, 0, 0, 0.06)` |
+| \--nutui-switch-open-disabled-background-color | 开关打开时的禁用时的背景颜色 | `$color-primary-disabled` |
 | \--nutui-switch-width | 开关宽度 | `36px` |
 | \--nutui-switch-height | 开关高度 | `21px` |
 | \--nutui-switch-line-height | 开关行高 | `21px` |

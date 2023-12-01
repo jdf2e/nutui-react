@@ -83,7 +83,10 @@ const SwitchDemo = () => {
         <Cell>
           <Switch
             defaultChecked
-            style={{ '--nutui-switch-open-background-color': 'blue' }}
+            style={{
+              '--nutui-switch-open-background-color': 'blue',
+              '--nutui-switch-close-line-background-color': '#ebebeb',
+            }}
           />
         </Cell>
         <h2>{translated.supportText}</h2>

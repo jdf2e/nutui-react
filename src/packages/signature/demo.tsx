@@ -79,6 +79,7 @@ const SignatureDemo = () => {
         <div className="demo-btn">
           <Button
             type="default"
+            size="small"
             style={{ margin: 8 }}
             onClick={() => {
               signatureRef.current?.clear()
@@ -88,6 +89,7 @@ const SignatureDemo = () => {
           </Button>
           <Button
             type="primary"
+            size="small"
             onClick={() => {
               signatureRef.current?.confirm()
             }}
@@ -108,7 +110,7 @@ const SignatureDemo = () => {
         />
         <div className="demo-btn">
           <Button
-            type="default"
+            size="small"
             style={{ margin: 8 }}
             onClick={() => {
               signatureRef1.current?.clear()
@@ -118,6 +120,7 @@ const SignatureDemo = () => {
           </Button>
           <Button
             type="primary"
+            size="small"
             onClick={() => {
               signatureRef1.current?.confirm()
             }}

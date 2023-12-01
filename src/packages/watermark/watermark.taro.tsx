@@ -69,7 +69,6 @@ export const WaterMark: FunctionComponent<
   }
 
   const [base64Url, setBase64Url] = useState('')
-
   const classPrefix = 'nut-watermark'
   const classes = classNames(classPrefix, {
     [`${classPrefix}-full-page`]: fullPage,
