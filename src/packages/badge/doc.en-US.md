@@ -130,15 +130,15 @@ const App = () => {
   return (
     <Cell>
       <Badge
-        value={<Checklist color="#fff" width={12} height={12} />}
+        value={<Checklist color="#fff"  />}
         className="test"
       >
         <Avatar icon={<User />} shape="square" />
       </Badge>
-      <Badge value={<LinkIcon color="#fff" width={12} height={12} />}>
+      <Badge value={<LinkIcon color="#fff"  />}>
         <Avatar icon={<User />} shape="square" />
       </Badge>
-      <Badge value={<Download color="#fff" width={12} height={12} />}>
+      <Badge value={<Download color="#fff"  />}>
         <Avatar icon={<User />} shape="square" />
       </Badge>
     </Cell>

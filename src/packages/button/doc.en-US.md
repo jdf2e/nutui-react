@@ -324,4 +324,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-button-mini-padding | Padding for buttons with size mini | `0 12px` |
 | \--nutui-button-mini-height | The height of the button whose size is mini | `24px` |
 | \--nutui-button-mini-font-size | The font size of the button whose size is mini | `$font-size-small` |
-| \--nutui-button-text-icon-margin | left margin of text with icon button | `4px` |
+| \--nutui-button-text-icon-margin | margin of text with icon button | `4px` |
