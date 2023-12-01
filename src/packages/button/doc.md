@@ -449,4 +449,4 @@ export default App;
 | \--nutui-button-mini-padding | size 为 mini 的按钮的内边距 | `0 12px` |
 | \--nutui-button-mini-height | size 为 mini 的按钮的高度 | `24px` |
 | \--nutui-button-mini-font-size | size 为 mini 的按钮的字号 | `$font-size-small` |
-| \--nutui-button-text-icon-margin | 带 icon按钮的文本的左边距 | `4px` |
+| \--nutui-button-text-icon-margin | 带 icon按钮的文本的边距 | `4px` |

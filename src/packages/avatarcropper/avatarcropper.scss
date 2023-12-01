@@ -65,6 +65,10 @@
         cursor: pointer;
         display: flex;
         align-items: center;
+
+        .nut-button {
+          color: #fff;
+        }
       }
     }
     &-highlight {
