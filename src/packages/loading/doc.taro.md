@@ -1,4 +1,4 @@
-#  Loading 加载中
+# Loading 加载中
 
 ### 介绍
 
@@ -219,6 +219,19 @@ export default App;
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| type         | loading图标的样式                    | circular \| spinner | `circular`          |
-| direction    | loading图标和文字的排列方式           | horizontal \| vertical | `horizontal`     |
-| icon         | 自定义loading的图标                  | JSX.Element         |  `-` |
+| type | loading图标的样式 | `circular \| spinner` | `circular` |
+| direction | loading图标和文字的排列方式 | `horizontal \| vertical` | `horizontal` |
+| icon | 自定义loading的图标 | `JSX.Element` | `-` |
+
+## 主题定制
+
+### 样式变量
+
+组件提供了下列 CSS 变量，可用于自定义样式，使用方法请参考 [ConfigProvider 组件](#/zh-CN/component/configprovider)。
+
+| 名称 | 说明 | 默认值 |
+| --- | --- | --- |
+| \--nutui-loading-icon-color | icon色值 | `$color-text-help` |
+| \--nutui-loading-icon-size | icon大小 | `$font-size-small` |
+| \--nutui-loading-color | 文本色值 | `$color-text-help` |
+| \--nutui-loading-font-size | 文本字号 | `$font-size-small` |
