@@ -592,10 +592,12 @@ $input-border-bottom-width: var(
 ) !default;
 $input-disabled-color: var(--nutui-input-disabled-color, #c8c9cc) !default;
 $input-font-size: var(--nutui-input-font-size, $font-size-base) !default;
+$input-border-radius: var(--nutui-input-border-radius, 0) !default;
+$input-color: var(--nutui-input-color, $gray1) !default;
+$input-background-color: var(--nutui-input-background-color, $white) !default;
 $input-padding: var(--nutui-input-padding, 10px 25px) !default;
 
 // textarea（✅）
-
 $textarea-font: var(--nutui-textarea-font, $font-size-base) !default;
 $textarea-padding: var(--nutui-textarea-padding, 10px 25px) !default;
 $textarea-limit-color: var(--nutui-textarea-limit-color, $text-color) !default;

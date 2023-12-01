@@ -200,7 +200,7 @@ export default App;
 ```tsx
 import  React, { useState } from "react";
 import { Input, Button } from '@nutui/nutui-react';
-import { Ask } from '@nutui/icons-react'
+import { Tips } from '@nutui/icons-react'
 
 const App = () => {
   return (
@@ -213,7 +213,7 @@ const App = () => {
            padding: '0 10px',
          }}
        >
-         <Ask />
+         <Tips />
          <Input placeholder="请输入短信验证码" />
          <div className="right">
            <Button type="primary" size="small">
@@ -288,6 +288,9 @@ export default App;
 | --- | --- | --- |
 | \--nutui-input-border-bottom | 边框颜色 | `#eaf0fb` |
 | \--nutui-input-border-bottom-width | 边框宽度 | `0px` |
+| \--nutui-input-color | 文本颜色 | `$color-title` |
 | \--nutui-input-disabled-color | 禁用的文本颜色 | `#c8c9cc` |
+| \--nutui-input-background-color | 输入框背景颜色 | `$color-background-overlay` |
+| \--nutui-input-border-radius | 输入框圆角 | `0` |
 | \--nutui-input-font-size | 文本字号 | `$font-size-base` |
 | \--nutui-input-padding | 输入框容器的内边距 | `10px 25px` |
