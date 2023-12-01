@@ -13,7 +13,7 @@ exports[`noticebar base test 1`] = `
       >
         <svg
           aria-labelledby="Notice"
-          class="nut-icon nut-icon-Notice"
+          class="nut-icon nut-icon-Notice "
           role="presentation"
           style="width: 16px; height: 16px;"
           viewBox="0 0 1024 1024"
@@ -54,7 +54,7 @@ exports[`scrollable test 1`] = `
       >
         <svg
           aria-labelledby="Notice"
-          class="nut-icon nut-icon-Notice"
+          class="nut-icon nut-icon-Notice "
           role="presentation"
           style="width: 16px; height: 16px;"
           viewBox="0 0 1024 1024"

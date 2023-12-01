@@ -73,30 +73,4 @@
       transform: translateX(14px);
     }
   }
-
-  &-close {
-    background-color: $switch-close-background-color;
-
-    .close-line {
-      background: $switch-close-line-background-color;
-      border-radius: 2px;
-    }
-  }
-
-  &-label {
-    color: $color-primary-text;
-    font-size: $font-size-small;
-
-    &.open {
-      transform: translateX(-16px);
-    }
-
-    &.close {
-      transform: translateX(16px);
-    }
-  }
-
-  // &-disabled {
-  //   opacity: 0.5;
-  // }
 }

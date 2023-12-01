@@ -14,7 +14,7 @@ exports[`render with custom content 1`] = `
       >
         <svg
           aria-labelledby="Image"
-          class="nut-icon nut-icon-Image"
+          class="nut-icon nut-icon-Image "
           role="presentation"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
@@ -52,11 +52,11 @@ exports[`render with custom content 1`] = `
         >
           <div
             class="nut-avatar nut-avatar-normal nut-avatar-round demo-avatar"
-            style="background-color: rgb(250, 44, 25);"
+            style="background-color: rgb(250, 44, 25); color: rgb(102, 102, 102);"
           >
             <svg
               aria-labelledby="Image"
-              class=" icon nut-icon nut-icon-Image"
+              class="nut-icon nut-icon-Image  icon"
               color="#fff"
               role="presentation"
               viewBox="0 0 1024 1024"
@@ -87,11 +87,11 @@ exports[`render with custom content 1`] = `
       >
         <div
           class="nut-avatar nut-avatar-normal nut-avatar-round demo-avatar"
-          style="background-color: rgb(250, 44, 25);"
+          style="background-color: rgb(250, 44, 25); color: rgb(102, 102, 102);"
         >
           <svg
             aria-labelledby="Image"
-            class=" icon nut-icon nut-icon-Image"
+            class="nut-icon nut-icon-Image  icon"
             color="#fff"
             role="presentation"
             viewBox="0 0 1024 1024"
@@ -121,6 +121,7 @@ exports[`render with custom content 1`] = `
       >
         <div
           class="nut-avatar nut-avatar-large nut-avatar-round"
+          style="background-color: rgb(238, 238, 238); color: rgb(102, 102, 102);"
         >
           <div
             class="nut-image  icon"
@@ -136,7 +137,7 @@ exports[`render with custom content 1`] = `
             >
               <svg
                 aria-labelledby="Image"
-                class="nut-icon nut-icon-Image"
+                class="nut-icon nut-icon-Image "
                 role="presentation"
                 viewBox="0 0 1024 1024"
                 xmlns="http://www.w3.org/2000/svg"
@@ -176,7 +177,7 @@ exports[`should match snapshot 1`] = `
       >
         <svg
           aria-labelledby="Image"
-          class="nut-icon nut-icon-Image"
+          class="nut-icon nut-icon-Image "
           role="presentation"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
@@ -209,7 +210,7 @@ exports[`should match snapshot 1`] = `
       >
         <svg
           aria-labelledby="Image"
-          class="nut-icon nut-icon-Image"
+          class="nut-icon nut-icon-Image "
           role="presentation"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
@@ -242,7 +243,7 @@ exports[`should match snapshot 1`] = `
       >
         <svg
           aria-labelledby="Image"
-          class="nut-icon nut-icon-Image"
+          class="nut-icon nut-icon-Image "
           role="presentation"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"
