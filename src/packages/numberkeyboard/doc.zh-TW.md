@@ -271,22 +271,20 @@ export default App;
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-numberkeyboard-padding | 內邊距 | `0 0 22px 0` |
-| \--nutui-numberkeyboard-background-color | 背景顏色 | `#f2f3f5` |
-| \--nutui-numberkeyboard-header-height | 頭部高度 | `34px` |
-| \--nutui-numberkeyboard-header-padding | 頭部內邊距 | `6px 0 0 0` |
-| \--nutui-numberkeyboard-header-color | 頭部字體顏色 | `#646566` |
-| \--nutui-numberkeyboard-header-font-size | 頭部字體大小 | `16px` |
 | \--nutui-numberkeyboard-header-close-padding | 頭部完成按鈕內邊距 | `0 16px` |
 | \--nutui-numberkeyboard-header-close-color | 頭部完成按鈕字體顏色 | `#576b95` |
 | \--nutui-numberkeyboard-header-close-font-size | 頭部完成按鈕字體大小 | `14px` |
 | \--nutui-numberkeyboard-header-close-background-color | 頭部完成按鈕背景顏色 | `transparent` |
 | \--nutui-numberkeyboard-key-background-color | 按鍵背景顏色 | `#fff` |
 | \--nutui-numberkeyboard-key-active-background-color | 按鈕激活背景顏色 | `#ebedf0` |
+| \--nutui-numberkeyboard-wrapper-background-color | 按鍵容器背景色 | `$color-background-sunken` |
+| \--nutui-numberkeyboard-key-border | 按鍵邊框 | `none` |
 | \--nutui-numberkeyboard-key-height | 按鍵高度 | `48px` |
 | \--nutui-numberkeyboard-key-line-height | 按鍵行高 | `1.5` |
-| \--nutui-numberkeyboard-key-border-radius | 按鍵邊框 | `8px` |
+| \--nutui-numberkeyboard-key-border-radius | 按鍵邊框圓角 | `8px` |
 | \--nutui-numberkeyboard-key-font-size | 按鍵字體大小 | `28px` |
 | \--nutui-numberkeyboard-key-font-color | 按鍵字體顏色 | `#333` |
 | \--nutui-numberkeyboard-key-confirm-font-size | 確認按鍵字體大小 | `16px` |
 | \--nutui-numberkeyboard-key-confirm-font-color | 確認按鍵字體顏色 | `#fff` |
-| \--nutui-numberkeyboard-key-confirm-background-color | 確認按鍵背景顏色 | `#1989fa` |
+| \--nutui-numberkeyboard-key-confirm-background-color | 確認按鍵背景顏色 | `$color-primary` |
+| \--nutui-numberkeyboard-background-color | 鍵盤容器背景色 | `$color-background` |

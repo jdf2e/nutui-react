@@ -14,13 +14,13 @@ exports[`should match custom snapshot 1`] = `
       class="nut-numberkeyboard"
     >
       <div
-        class="nut-numberkeyboard__body"
+        class="nut-numberkeyboard-body"
       >
         <div
-          class="nut-numberkeyboard__body__keys"
+          class="nut-numberkeyboard-body-keys"
         >
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key"
@@ -31,7 +31,7 @@ exports[`should match custom snapshot 1`] = `
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key"
@@ -42,7 +42,7 @@ exports[`should match custom snapshot 1`] = `
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key"
@@ -53,7 +53,7 @@ exports[`should match custom snapshot 1`] = `
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key"
@@ -64,7 +64,7 @@ exports[`should match custom snapshot 1`] = `
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key"
@@ -75,7 +75,7 @@ exports[`should match custom snapshot 1`] = `
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key"
@@ -86,7 +86,7 @@ exports[`should match custom snapshot 1`] = `
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key"
@@ -97,7 +97,7 @@ exports[`should match custom snapshot 1`] = `
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key"
@@ -108,7 +108,7 @@ exports[`should match custom snapshot 1`] = `
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key"
@@ -119,7 +119,7 @@ exports[`should match custom snapshot 1`] = `
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key"
@@ -130,7 +130,7 @@ exports[`should match custom snapshot 1`] = `
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key"
@@ -141,7 +141,7 @@ exports[`should match custom snapshot 1`] = `
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key"
@@ -153,18 +153,18 @@ exports[`should match custom snapshot 1`] = `
           </div>
         </div>
         <div
-          class="nut-numberkeyboard__sidebar"
+          class="nut-numberkeyboard-sidebar"
         >
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key delete"
             >
               <svg
-                height="36"
+                height="28"
                 viewBox="0 0 1024 1024"
-                width="36"
+                width="28"
               >
                 <path
                   d="M875.594 186.122H390.803a51.162 51.162 0 0 0-36.18 14.986L79.91 475.821a51.166 51.166 0 0 0 0 72.358l274.714 274.712a51.164 51.164 0 0 0 36.179 14.986h484.791c46.033 0 83.484-37.45 83.484-83.483V269.606c.001-46.033-37.45-83.484-83.483-83.484zm32.32 568.274c0 17.85-14.473 32.318-32.32 32.318H390.803L116.089 512l274.714-274.714h484.791c17.849 0 32.32 14.47 32.32 32.32v484.789z"
@@ -178,7 +178,7 @@ exports[`should match custom snapshot 1`] = `
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key confirm"
@@ -207,13 +207,13 @@ exports[`should match snapshot 1`] = `
       class="nut-numberkeyboard"
     >
       <div
-        class="nut-numberkeyboard__body"
+        class="nut-numberkeyboard-body"
       >
         <div
-          class="nut-numberkeyboard__body__keys"
+          class="nut-numberkeyboard-body-keys"
         >
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key"
@@ -224,7 +224,7 @@ exports[`should match snapshot 1`] = `
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key"
@@ -235,7 +235,7 @@ exports[`should match snapshot 1`] = `
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key"
@@ -246,7 +246,7 @@ exports[`should match snapshot 1`] = `
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key"
@@ -257,7 +257,7 @@ exports[`should match snapshot 1`] = `
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key"
@@ -268,7 +268,7 @@ exports[`should match snapshot 1`] = `
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key"
@@ -279,7 +279,7 @@ exports[`should match snapshot 1`] = `
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key"
@@ -290,7 +290,7 @@ exports[`should match snapshot 1`] = `
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key"
@@ -301,7 +301,7 @@ exports[`should match snapshot 1`] = `
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key"
@@ -312,7 +312,7 @@ exports[`should match snapshot 1`] = `
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key close"
@@ -321,7 +321,7 @@ exports[`should match snapshot 1`] = `
                 aria-labelledby="ArrowDown"
                 class="nut-icon nut-icon-ArrowDown "
                 role="presentation"
-                style="width: 25px; height: 25px;"
+                style="width: 18px; height: 18px;"
                 viewBox="0 0 1024 1024"
                 xmlns="http://www.w3.org/2000/svg"
               >
@@ -334,7 +334,7 @@ exports[`should match snapshot 1`] = `
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key"
@@ -345,15 +345,15 @@ exports[`should match snapshot 1`] = `
             </div>
           </div>
           <div
-            class="nut-numberkeyboard__body__wrapper"
+            class="nut-numberkeyboard-body-wrapper"
           >
             <div
               class="key delete"
             >
               <svg
-                height="36"
+                height="28"
                 viewBox="0 0 1024 1024"
-                width="36"
+                width="28"
               >
                 <path
                   d="M875.594 186.122H390.803a51.162 51.162 0 0 0-36.18 14.986L79.91 475.821a51.166 51.166 0 0 0 0 72.358l274.714 274.712a51.164 51.164 0 0 0 36.179 14.986h484.791c46.033 0 83.484-37.45 83.484-83.483V269.606c.001-46.033-37.45-83.484-83.483-83.484zm32.32 568.274c0 17.85-14.473 32.318-32.32 32.318H390.803L116.089 512l274.714-274.714h484.791c17.849 0 32.32 14.47 32.32 32.32v484.789z"
