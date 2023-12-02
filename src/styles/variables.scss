@@ -2137,12 +2137,7 @@ $sidenavbar-content-bg-color: var(
   --nutui-sidenavbar-content-bg-color,
   $white
 ) !default;
-$sidenav-bar-item-height: var(--nutui-sidenavbar-item-height, 40px) !default;
-$sidenavbar-head-bg-color: var(
-  --nutui-sidenavbar-head-bg-color,
-  #eeeff2
-) !default;
-$sidenavbar-head-padding: var(--nutui-sidenavbar-head-padding, 10px) !default;
+$sidenavbar-item-height: var(--nutui-sidenavbar-item-height, 40px) !default;
 $sidenavbar-title-padding: var(
   --nutui-sidenavbar-title-padding,
   10px 8px 10px 20px
@@ -2165,7 +2160,6 @@ $sidenavbar-sub-title-color: var(
   --nutui-sidenavbar-sub-title-color,
   $gray1
 ) !default;
-
 // sidenavbaritem（✅）
 $sidenavbar-sub-item-color: var(
   --nutui-sidenavbar-sub-item-color,
