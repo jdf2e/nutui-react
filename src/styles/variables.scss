@@ -540,29 +540,22 @@ $uploader-preview-close-top: var(
   0px
 ) !default;
 
-// picker（✅）（todo:react版本picker组件dom元素类名变化较大，picker.scss暂不改动）
-$picker-bar-cancel-color: var(--nutui-picker-cancel-color, #808080) !default;
-$picker-bar-ok-color: var(--nutui-picker-ok-color, $color-primary) !default;
-$picker-bar-cancel-font-size: var(
-  --nutui-picker-bar-cancel-font-size,
-  14px
+// picker（✅）
+$picker-title-cancel-color: var(
+  --nutui-picker-title-cancel-color,
+  $text-color
 ) !default;
-$picker-bar-ok-font-size: var(--nutui-picker-bar-ok-font-size, 14px) !default;
-$picker-bar-button-padding: var(
-  --nutui-picker-bar-button-padding,
-  0 15px
+$picker-title-cancel-font-size: var(
+  --nutui-picker-title-cancel-font-size,
+  $font-size-base
 ) !default;
-$picker-bar-title-font-size: var(
-  --nutui-picker-bar-title-font-size,
-  16px
+$picker-title-ok-color: var(
+  --nutui-picker-title-ok-color,
+  $color-primary
 ) !default;
-$picker-bar-title-color: var(
-  --nutui-picker-bar-title-color,
-  $title-color
-) !default;
-$picker-bar-title-font-weight: var(
-  --nutui-picker-bar-title-font-weight,
-  normal
+$picker-title-ok-font-size: var(
+  --nutui-picker-title-ok-font-size,
+  $font-size-base
 ) !default;
 $picker-list-height: var(--nutui-picker-list-height, 252px) !default;
 $picker-item-height: var(--nutui-picker-item-height, 36px) !default;
@@ -572,16 +565,16 @@ $picker-item-text-color: var(
 ) !default;
 $picker-item-text-font-size: var(
   --nutui-picker-item-text-font-size,
-  14px
+  $font-size-base
 ) !default;
 $picker-item-active-line-border: var(
   --nutui-picker-item-active-line-border,
-  1px solid #d8d8d8
+  1px solid $color-border
 ) !default;
-$picker-mask-bg-img: var(
-  --picker-mask-bg-img,
-  linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4)),
-  linear-gradient(0deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4))
+$picker-mask-background: var(
+  --picker-mask-background,
+  linear-gradient(180deg, var(--nutui-white-12), var(--nutui-white-7)),
+  linear-gradient(0deg, var(--nutui-white-12), var(--nutui-white-7))
 ) !default;
 
 //input（✅）
@@ -973,11 +966,21 @@ $popup-close-icon-margin: var(--nutui-popup-close-icon-margin, 16px) !default;
 $popup-border-radius: var(--nutui-popup-border-radius, 24px) !default;
 $popup-close-icon-color: var(--nutui-popup-close-icon-color, #969799) !default;
 $popup-close-icon-size: var(--nutui-popup-close-icon-size, 30px) !default;
-$popup-title-padding: var(--nutui-popup-title-padding, 15px) !default;
+$popup-title-padding: var(--nutui-popup-title-padding, 16px) !default;
 $popup-title-font-size: var(--nutui-popup-title-font-size, 18px) !default;
 $popup-title-line-height: var(--nutui-popup-title-line-height, 18px) !default;
 $popup-title-border-bottom: var(--nutui-popup-title-border-bottom, 0) !default;
 $popup-animation-duration: var(--nutui-popup-animation-duration, 0.3s) !default;
+$popup-icon-size: var(--nutui-popup-icon-size, $font-size-xl) !default;
+$popup-description-font-size: var(
+  --nutui-popup-description-font-size,
+  $font-size-xs
+) !default;
+$popup-title-font-weight: var(
+  --nutui-popup-title-font-weight,
+  $font-weight-bold
+) !default;
+$popup-title-height: var(--nutui-popup-title-height, 50px) !default;
 
 // Notify（✅）
 $notify-text-color: var(--nutui-notify-text-color, $white) !default;
