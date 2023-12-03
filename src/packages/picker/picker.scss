@@ -14,12 +14,12 @@
   }
 
   &__cancel-btn {
-    color: $color-text;
+    color: $picker-title-cancel-color;
     font-size: $picker-title-cancel-font-size;
   }
 
   &__confirm-btn {
-    color: $color-primary;
+    color: $picker-title-ok-color;
     font-size: $picker-title-ok-font-size;
   }
 
@@ -31,7 +31,7 @@
     text-align: center;
     color: $color-title;
     font-size: $popup-title-font-size;
-    font-weight: $font-weight-bold;
+    font-weight: $popup-title-font-weight;
   }
 
   &__panel {

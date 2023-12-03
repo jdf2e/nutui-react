@@ -272,6 +272,7 @@ plugins: [
 - 移除 `num`，支持传入所有 `Badge` Props
 - 移除 `color`，使用父元素的 `activeColor`，保持同样的 `active` 状态
 #### Tabs
+- 增加 `简约`、`卡片`、`按钮/胶囊` 模式。
 - 移除 `background`，通过 `className` 或 `style` 控制
 - 移除 `titleScroll`, 默认支持滚动
 - 移除 `ellipsis`，默认 `flex：1`

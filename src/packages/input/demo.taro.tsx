@@ -186,7 +186,10 @@ const InputDemo = () => {
           }}
         >
           <Tips color="var(--nutui-gray-7)" />
-          <Input placeholder={translated.codeplaceholder} />
+          <Input
+            placeholder={translated.codeplaceholder}
+            style={{ '--nutui-input-padding': '10px' }}
+          />
           <div
             className="right"
             style={{ display: 'flex', alignItems: 'center' }}

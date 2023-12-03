@@ -409,7 +409,9 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
+| \--nutui-picker-title-cancel-color | picker title cancel color | `$text-color` |
 | \--nutui-picker-title-cancel-font-size | picker bar cancel font size | `14px` |
+| \--nutui-picker-title-ok-color | picker title confirm color | `$color-primary` |
 | \--nutui-picker-title-ok-font-size | picker bar confirm font size | `14px` |
 | \--nutui-picker-list-height | picker pannel list height | `252px` |
 | \--nutui-picker-item-height | picker pannel item height | `36px` |

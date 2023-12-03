@@ -21,15 +21,15 @@ exports[`Cascader change tab 1`] = `
           class="nut-tabs-titles nut-tabs-titles-line nut-tabs-titles-scrollable"
         >
           <div
-            class="nut-tabs__titles-item nut-tabs__titles-item--active"
+            class="nut-tabs-titles-item nut-tabs-titles-item-active"
           >
             <span
-              class="nut-tabs__titles-item__text"
+              class="nut-tabs-titles-item-text"
             >
               请选择
             </span>
             <span
-              class="nut-tabs__titles-item__line"
+              class="nut-tabs-titles-item-line"
             />
           </div>
         </div>
@@ -104,15 +104,15 @@ exports[`Cascader change tab 2`] = `
           class="nut-tabs-titles nut-tabs-titles-line nut-tabs-titles-scrollable"
         >
           <div
-            class="nut-tabs__titles-item nut-tabs__titles-item--active"
+            class="nut-tabs-titles-item nut-tabs-titles-item-active"
           >
             <span
-              class="nut-tabs__titles-item__text"
+              class="nut-tabs-titles-item-text"
             >
               请选择
             </span>
             <span
-              class="nut-tabs__titles-item__line"
+              class="nut-tabs-titles-item-line"
             />
           </div>
         </div>
@@ -195,39 +195,39 @@ exports[`Cascader visible true 1`] = `
           class="nut-tabs-titles nut-tabs-titles-line nut-tabs-titles-scrollable"
         >
           <div
-            class="nut-tabs__titles-item "
+            class="nut-tabs-titles-item "
           >
             <span
-              class="nut-tabs__titles-item__text"
+              class="nut-tabs-titles-item-text"
             >
               福建
             </span>
             <span
-              class="nut-tabs__titles-item__line"
+              class="nut-tabs-titles-item-line"
             />
           </div>
           <div
-            class="nut-tabs__titles-item "
+            class="nut-tabs-titles-item "
           >
             <span
-              class="nut-tabs__titles-item__text"
+              class="nut-tabs-titles-item-text"
             >
               福州
             </span>
             <span
-              class="nut-tabs__titles-item__line"
+              class="nut-tabs-titles-item-line"
             />
           </div>
           <div
-            class="nut-tabs__titles-item nut-tabs__titles-item--active"
+            class="nut-tabs-titles-item nut-tabs-titles-item-active"
           >
             <span
-              class="nut-tabs__titles-item__text"
+              class="nut-tabs-titles-item-text"
             >
               鼓楼区
             </span>
             <span
-              class="nut-tabs__titles-item__line"
+              class="nut-tabs-titles-item-line"
             />
           </div>
         </div>
