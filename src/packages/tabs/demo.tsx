@@ -148,7 +148,6 @@ const TabsDemo = () => {
     <>
       <div className="demo full no-overflow">
         <h2>{translated.basic}</h2>
-
         <Tabs
           value={tab1value}
           onChange={(value) => {
