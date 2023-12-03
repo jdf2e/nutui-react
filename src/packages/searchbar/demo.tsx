@@ -1,5 +1,11 @@
 import React, { useState } from 'react'
-import { StarFill, ArrowDown } from '@nutui/icons-react'
+import {
+  ArrowLeft,
+  Photograph,
+  ArrowDown,
+  More,
+  Close,
+} from '@nutui/icons-react'
 import { SearchBar } from './searchbar'
 import Toast from '../toast'
 import { useTranslate } from '../../sites/assets/locale'
@@ -84,7 +90,7 @@ const SearchBarDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.title1}</h2>
-        <SearchBar placeholder={translated.basePlaceholder} />
+        <SearchBar backable placeholder={translated.basePlaceholder} />
         <h2>{translated.title2}</h2>
         <SearchBar shape="round" maxLength={5} />
         <h2>{translated.title3}</h2>
@@ -105,14 +111,24 @@ const SearchBarDemo = () => {
         />
         <h2>{translated.title5}</h2>
         <SearchBar
-          left={<StarFill width={14} height={14} />}
-          right={<StarFill width={14} height={14} />}
+          left={
+            <>
+              <ArrowLeft width={20} height={20} />
+              <Close width={20} height={20} />
+            </>
+          }
+          right={
+            <>
+              <span>{translated.test}</span>
+              <More width={20} height={20} />
+            </>
+          }
           rightIn={
-            <StarFill
-              width={14}
-              height={14}
+            <Photograph
+              width={16}
+              height={16}
               onClick={() => {
-                console.log('StarFill right in')
+                console.log('Photograph right in')
               }}
             />
           }

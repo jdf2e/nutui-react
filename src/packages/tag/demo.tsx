@@ -92,7 +92,7 @@ const TagDemo = () => {
             extra={
               <Tag
                 closeable
-                closeIcon={<Failure width={12} height={12} />}
+                closeIcon={<Failure width={8} height={8} />}
                 onClose={() => alert('Tag closed')}
                 type="primary"
               >

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { Ask, Close, Eye } from '@nutui/icons-react-taro'
+import { Tips, Close, Eye, Marshalling } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Input, Button } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
@@ -152,15 +152,9 @@ const InputDemo = () => {
             }
           >
             {inputType === 'text' ? (
-              <Eye size={14} />
+              <Eye color="var(--nutui-gray-7)" />
             ) : (
-              <img
-                width="16px"
-                height="16px"
-                style={{ display: 'block' }}
-                src="https://storage.360buyimg.com/imgtools/ac2c6b6b23-a6a8f1d0-ea4b-11ed-8ae6-f73921e8465b.png"
-                alt=""
-              />
+              <Marshalling color="var(--nutui-gray-7)" />
             )}
           </div>
         </div>
@@ -188,8 +182,11 @@ const InputDemo = () => {
             padding: '0 10px',
           }}
         >
-          <Ask />
-          <Input placeholder={translated.codeplaceholder} />
+          <Tips color="var(--nutui-gray-7)" />
+          <Input
+            placeholder={translated.codeplaceholder}
+            style={{ '--nutui-input-padding': '10px' }}
+          />
           <div
             className="right"
             style={{ display: 'flex', alignItems: 'center' }}

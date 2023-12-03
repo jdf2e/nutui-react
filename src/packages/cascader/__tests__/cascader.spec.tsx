@@ -381,7 +381,7 @@ describe('Cascader', () => {
 
     expect(container.querySelector('.nut-popup')).toBe
 
-    const tabPane = container.querySelectorAll('.nut-tabs__titles-item')[0]
+    const tabPane = container.querySelectorAll('.nut-tabs-titles-item')[0]
     fireEvent.click(tabPane)
     expect(container).toMatchSnapshot()
   })
