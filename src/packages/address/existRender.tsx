@@ -71,7 +71,7 @@ export const ExistRender: FunctionComponent<
                   {React.isValidElement(selectIcon) ? (
                     selectIcon
                   ) : (
-                    <Check color="var(--nutui-color-primary)" />
+                    <Check color="#FA2C19" />
                   )}
                 </>
               ) : (

@@ -122,7 +122,7 @@ const InputDemo = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            background: 'var(--nutui-gray-1)',
+            background: '#fff',
             padding: '0 10px',
           }}
         >
@@ -131,10 +131,7 @@ const InputDemo = () => {
             maxLength={20}
             onChange={(val) => setCurrentLength(val.length)}
           />
-          <div
-            className="right"
-            style={{ fontSize: '12px', color: 'var(--nutui-gray-7)' }}
-          >
+          <div className="right" style={{ fontSize: '12px' }}>
             {currentLength} / 20
           </div>
         </div>
@@ -143,7 +140,7 @@ const InputDemo = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            background: 'var(--nutui-gray-1)',
+            background: '#fff',
             padding: '0 10px',
           }}
         >
@@ -181,7 +178,7 @@ const InputDemo = () => {
           style={{
             display: 'flex',
             alignItems: 'center',
-            background: 'var(--nutui-gray-1)',
+            background: '#fff',
             padding: '0 10px',
           }}
         >
