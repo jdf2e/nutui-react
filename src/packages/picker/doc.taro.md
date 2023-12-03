@@ -419,6 +419,5 @@ export default App;
 | \--nutui-picker-list-height | 面板高度 | `252px` |
 | \--nutui-picker-item-height | 面板每一条数据高度 | `36px` |
 | \--nutui-picker-item-text-color | 面板每一条数据的字色 | `$color-title` |
-| \--nutui-picker-item-active-text-color | 面板当前选中数据的字色 | `inherit` |
 | \--nutui-picker-item-text-font-size | 面板每条数据字号 | `14px` |
 | \--nutui-picker-item-active-line-border | 面板当前选中的border值 | `1px solid #d8d8d8` |
