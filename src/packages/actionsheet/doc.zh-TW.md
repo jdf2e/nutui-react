@@ -326,9 +326,11 @@ export default App;
 
 | 名稱 | 說明 | 預設值 |
 | --- | --- | --- |
+| \--nutui-actionsheet-background-color | 背景色 | `$color-background-overlay` |
+| \--nutui-actionsheet-border-radius | 列錶和取消按鈕圓角 | `0` |
 | \--nutui-actionsheet-border-color | 標題和取消位置的border色值 | `#f6f6f6` |
 | \--nutui-actionsheet-item-text-align | 列錶項的文字對齊方式 | center |
 | \--nutui-actionsheet-item-border-bottom | 列錶項的底部border | `none` |
 | \--nutui-actionsheet-item-line-height | 列錶項行高 | `24px` |
-| \--nutui-actionsheet-item-color | 列錶項字色 | `$title-color` |
+| \--nutui-actionsheet-item-color | 列錶項字色 | `$color-title` |
 | \--nutui-actionsheet-item-danger | 列錶項danger字色 | `$color-primary` |

@@ -210,6 +210,9 @@ export default App;
 | closeable | 是否显示关闭按钮 | `boolean` | `false` |
 | closeIconPosition | 关闭按钮位置 | `top-left` \| `top-right` \| `bottom-left` \| `bottom-right` | `top-right` |
 | closeIcon | 自定义 Icon | `ReactNode` | `close` |
+| left | 标题左侧部分 | `ReactNode` | `-` |
+| title | 标题中间部分 | `ReactNode` | `-` |
+| description | 子标题/描述部分 | `ReactNode` | `-` |
 | destroyOnClose | 组件不可见时，卸载内容 | `boolean` | `false` |
 | round | 是否显示圆角 | `boolean` | `false` |
 | portal | 指定节点挂载 | `HTMLElement` \| `(() => HTMLElement)` | null` | `null` |
@@ -229,8 +232,11 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-popup-border-radius | 弹框的圆角值 | `20px` |
-| \--nutui-popup-close-icon-margin | 弹框关闭按钮的margin值 | `16px` |
-| \--nutui-popup-close-icon-color | 弹框关闭按钮的色值 | `#969799` |
-| \--nutui-popup-close-icon-size | 弹框关闭按钮的大小 | `30px` |
+| \--nutui-popup-border-radius | 弹框的圆角值 | `24px` |
+| \--nutui-popup-icon-size | 弹框关闭按钮的大小 | `18px` |
+| \--nutui-popup-title-padding | 标题栏的padding值 | `16px` |
+| \--nutui-popup-title-font-size | 标题栏的字号 | `18px` |
+| \--nutui-popup-description-font-size | 子标题/描述栏的字号 | `10px` |
+| \--nutui-popup-title-height | 标题栏的高度 | `50px` |
+| \--nutui-popup-title-border-bottom | 标题栏底部边框 | `0` |
 | \--nutui-popup-animation-duration | 弹框动画的延时 | `0.3s` |

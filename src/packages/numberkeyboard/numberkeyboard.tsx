@@ -145,6 +145,7 @@ export const NumberKeyboard: FunctionComponent<
       position="bottom"
       onOverlayClick={onClose}
       onCloseIconClick={onClose}
+      zIndex={9999}
       overlayStyle={{ backgroundColor: 'rgba(0, 0, 0, 0)' }}
       {...rest}
     >
