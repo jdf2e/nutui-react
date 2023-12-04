@@ -38,7 +38,7 @@ export default App;
 
 :::
 
-### 通過實例方法控制
+### 通過實例方法控製
 
 :::demo
 
@@ -60,7 +60,8 @@ const App = () => {
     >
       <Cell title='點擊下方按鈕打開或關閉' radius={0} />
     </Swipe>
-    <Button onClick={() => openRef.current?.open()}>
+    <Button onClick={() => openRef.current?.open()} type="primary"
+            size="small">
       打開
     </Button>
     <Button onClick={() => openRef.current?.close()}>
@@ -173,7 +174,7 @@ export default App;
 
 :::
 
-### 異步控制
+### 異步控製
 
 :::demo
 
@@ -267,14 +268,14 @@ export default App;
 | name | 標識符，可以在事件參數中獲取到 | `number` \| `string` | `-` |
 | leftAction | 左側滑動區域的內容 | `ReactNode` | `-` |
 | rightAction | 右側滑動區域的內容 | `ReactNode` | `-` |
-| beforeClose | 關閉前的回調函數，返回滑動區域所在方嚮 `position` | `(position: 'left \| 'right') => void` | `-` |
+| beforeClose | 關閉前的回調函數，返回滑動區域所在方向 `position` | `(position: 'left \| 'right') => void` | `-` |
 | disabled | 是否禁用滑動 | `boolean` | `false` |
 | onOpen | 打開單元格側邊欄 | `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | `-` |
 | onClose | 收起單元格側邊欄 | `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | `-` |
-| onActionClick | 點擊左側或者右側時觸發 | `(event: Event, position: 'left' \| 'right') => void` | `-` |
-| onTouchStart | onTouchStart | `(event: Event) => void` | `-` |
-| onTouchMove | onTouchMove | `(event: Event) => void` | `-` |
-| onTouchEnd | onTouchEnd | `(event: Event) => void` | `-` |
+| onActionClick | 點擊左側或者右側時觸發 | `(event: MouseEvent<HTMLDivElement>, position: 'left' \| 'right') => void` | `-` |
+| onTouchStart | onTouchStart | `(event: TouchEvent<HTMLDivElement>) => void` | `-` |
+| onTouchMove | onTouchMove | `(event: TouchEvent<HTMLDivElement>) => void` | `-` |
+| onTouchEnd | onTouchEnd | `(event: TouchEvent<HTMLDivElement>) => void` | `-` |
 
 ### Ref
 

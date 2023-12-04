@@ -63,26 +63,16 @@ const IndicatorDemo = () => {
                 height: '14px',
                 lineHeight: '14px',
                 textAlign: 'center',
-                fontSize: 'var(--nutui-font-size-1)',
-                color: 'var(--nutui-gray-1)',
-                border: '1px solid var(--nutui-gray-1)',
+                fontSize: '12px',
+                color: '#FFFFFF',
+                border: '1px solid #FFFFFF',
                 borderRadius: '50%',
-                margin: 'var(--nutui-indicator-dot-margin)',
-                background: `linear-gradient(135deg, 
-                  var(--nutui-color-primary-stop-1) 0%,
-                  var(--nutui-color-primary-stop-2) 100%)`,
+                margin: '4px',
+                background: `var(--nutui-color-primary)`,
+                boxShadow: `0 0 1px 1px var(--nutui-color-primary)`,
               }}
             >
-              <div
-                style={{
-                  height: '12px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                }}
-              >
-                {5}
-              </div>
+              {5}
             </div>
           </Indicator>
         </Cell>
@@ -96,57 +86,34 @@ const IndicatorDemo = () => {
 
         <h2>{translated.c123sda1}</h2>
         <Cell>
-          <div
+          <Indicator total={6} current={5} direction="vertical">
+            <div
+              style={{
+                display: 'inline-block',
+                width: '14px',
+                height: '14px',
+                lineHeight: '14px',
+                textAlign: 'center',
+                fontSize: '12px',
+                color: '#FFFFFF',
+                border: '1px solid #FFFFFF',
+                borderRadius: '50%',
+                margin: '4px',
+                background: `var(--nutui-color-primary)`,
+                boxShadow: `0 0 1px 1px var(--nutui-color-primary)`,
+              }}
+            >
+              {5}
+            </div>
+          </Indicator>
+          <Indicator
+            total={6}
+            current={2}
+            direction="vertical"
             style={{
-              height: '100px',
-              width: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              overflow: 'hidden',
+              marginLeft: '50px',
             }}
-          >
-            <Indicator total={6} current={5} direction="vertical">
-              <div
-                style={{
-                  display: 'inline-block',
-                  width: '14px',
-                  height: '14px',
-                  fontSize: 'var(--nutui-font-size-1)',
-                  color: 'var(--nutui-gray-1)',
-                  border: '1px solid var(--nutui-gray-1)',
-                  borderRadius: '50%',
-                  background: `linear-gradient(135deg, 
-                  var(--nutui-color-primary-stop-1) 0%,
-                  var(--nutui-color-primary-stop-2) 100%)`,
-                }}
-              >
-                <div
-                  style={{
-                    width: '13px',
-                    height: '11px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {5}
-                </div>
-              </div>
-            </Indicator>
-          </div>
-          <div
-            style={{
-              height: '100px',
-              width: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              overflow: 'hidden',
-            }}
-          >
-            <Indicator total={6} current={2} direction="vertical" />
-          </div>
+          />
         </Cell>
       </div>
     </>

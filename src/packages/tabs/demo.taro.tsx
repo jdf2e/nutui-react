@@ -9,10 +9,10 @@ import Header from '@/sites/components/header'
 interface T {
   basic: string
   title1: string
-  title111: string
-  title_card: string
-  title_button: string
-  title_divider: string
+  titleLite: string
+  titleCard: string
+  titleButton: string
+  titleDivider: string
   title2: string
   title3: string
   title4: string
@@ -25,9 +25,9 @@ interface T {
   title9: string
   title10: string
   title11: string
-  title_left_card: string
-  title_left_button: string
-  title_left_divider: string
+  titleLeftCard: string
+  titleLeftButton: string
+  titleLeftDivider: string
   custom1: string
   custom2: string
   custom3: string
@@ -43,10 +43,10 @@ const TabsDemo = () => {
     'zh-CN': {
       basic: '基础用法',
       title1: '基础用法-微笑曲线',
-      title111: '基础用法-简约模式',
-      title_card: '基础用法-卡片样式',
-      title_button: '基础用法-按钮样式',
-      title_left_divider: '基础用法-分割线样式',
+      titleLite: '基础用法-简约模式',
+      titleCard: '基础用法-卡片样式',
+      titleButton: '基础用法-按钮样式',
+      titleDivider: '基础用法-分割线样式',
       title2: '通过 value 匹配',
       title3: '数据异步渲染 3s',
       title4: '数量多,滚动操作',
@@ -59,8 +59,9 @@ const TabsDemo = () => {
       title9: 'Tabpane 自动高度',
       title10: 'CSS 粘性布局',
       title11: 'Title 左对齐',
-      title_left_card: '左对齐-卡片样式',
-      title_left_button: '左对齐-按钮样式',
+      titleLeftCard: '左对齐-卡片样式',
+      titleLeftButton: '左对齐-按钮样式',
+      titleLeftDivider: '左对齐-分割线样式',
       custom1: '自定义 1',
       custom2: '自定义 2',
       custom3: '自定义 3',
@@ -73,10 +74,10 @@ const TabsDemo = () => {
     'en-US': {
       basic: 'Basic Usage',
       title1: 'Basic Usage - Smile Curve',
-      title111: 'Basic Usage - simple mode',
-      title_card: 'Basic Usage - card mode',
-      title_button: 'Basic Usage - button mode',
-      title_divider: 'Basic Usage - divider mode',
+      titleLite: 'Basic Usage - simple mode',
+      titleCard: 'Basic Usage - card mode',
+      titleButton: 'Basic Usage - button mode',
+      titleDivider: 'Basic Usage - divider mode',
       title2: 'Match by value',
       title3: 'Data is rendered asynchronously for 3s',
       title4: 'A large number of scrolling operations',
@@ -89,9 +90,9 @@ const TabsDemo = () => {
       title9: 'Tabpane auto height',
       title10: 'CSS Sticky',
       title11: 'Title left align',
-      title_left_card: 'Title left align - card mode',
-      title_left_button: 'Title left align - button mode',
-      title_left_divider: 'Title left align - divider mode',
+      titleLeftCard: 'Title left align - card mode',
+      titleLeftButton: 'Title left align - button mode',
+      titleLeftDivider: 'Title left align - divider mode',
       custom1: 'custom 1',
       custom2: 'custom 2',
       custom3: 'custom 3',
@@ -129,7 +130,7 @@ const TabsDemo = () => {
     {
       title: translated.custom1,
       value: 'c1',
-      icon: <Star size={16} style={{ marginRight: '10px' }} />,
+      icon: <Star size={16} style={{ marginRight: '4px' }} />,
     },
     {
       title: translated.custom2,
@@ -182,7 +183,7 @@ const TabsDemo = () => {
           <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
           <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
         </Tabs>
-        <h2>{translated.title111}</h2>
+        <h2>{translated.titleLite}</h2>
         <Tabs
           value={tab111value}
           activeType="simple"
@@ -194,7 +195,7 @@ const TabsDemo = () => {
           <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
           <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
         </Tabs>
-        <h2>{translated.title_card}</h2>
+        <h2>{translated.titleCard}</h2>
         <Tabs
           value={tab111value}
           activeType="card"
@@ -206,7 +207,7 @@ const TabsDemo = () => {
           <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
           <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
         </Tabs>
-        <h2>{translated.title_button}</h2>
+        <h2>{translated.titleButton}</h2>
         <Tabs
           value={tab111value}
           activeType="button"
@@ -242,7 +243,7 @@ const TabsDemo = () => {
           <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
           <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
         </Tabs>
-        <h2>{translated.title_left_card}</h2>
+        <h2>{translated.titleLeftCard}</h2>
         <Tabs
           value={tab111value}
           activeType="card"
@@ -255,7 +256,7 @@ const TabsDemo = () => {
           <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
           <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
         </Tabs>
-        <h2>{translated.title_left_button}</h2>
+        <h2>{translated.titleLeftButton}</h2>
         <Tabs
           value={tab111value}
           activeType="button"

@@ -120,7 +120,13 @@ import { Switch } from '@nutui/nutui-react';
 
 const App = () => {
   return ( 
-    <Switch defaultChecked style={{ '--nutui-switch-open-background-color': 'blue' }} />
+    <Switch
+      defaultChecked
+      style={{
+        '--nutui-switch-open-background-color': 'blue',
+        '--nutui-switch-close-line-background-color': '#ebebeb',
+      }}
+    />
   );
 };  
 export default App;

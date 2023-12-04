@@ -70,9 +70,7 @@ $color-surface-4: var(--nutui-white-12) !default;
 $color-surface-overlay: var(--nutui-black-8) !default; // 	Mask遮罩
 
 // 边框
-// $color-border-shade: var(--nutui-gray-3) !default;
 $color-border: var(--nutui-black-3, rgba(0, 0, 0, 0.06)) !default;
-// $color-border-tint: var(--nutui-gray-1) !default; // 默认按钮、输入框等表单组件默认的边框禁用色
 $color-border-disabled: var(--nutui-gray-4, #bfbfbf) !default;
 
 // 文本
@@ -505,10 +503,18 @@ $uploader-preview-close-top: var(
   0px
 ) !default;
 
-// picker（✅）（todo:react版本picker组件dom元素类名变化较大，picker.scss暂不改动）
+// picker（✅）
+$picker-title-cancel-color: var(
+  --nutui-picker-title-cancel-color,
+  $text-color
+) !default;
 $picker-title-cancel-font-size: var(
   --nutui-picker-title-cancel-font-size,
   $font-size-base
+) !default;
+$picker-title-ok-color: var(
+  --nutui-picker-title-ok-color,
+  $color-primary
 ) !default;
 $picker-title-ok-font-size: var(
   --nutui-picker-title-ok-font-size,
@@ -554,7 +560,6 @@ $input-background-color: var(
 $input-padding: var(--nutui-input-padding, 10px 25px) !default;
 
 // textarea（✅）
-
 $textarea-font: var(--nutui-textarea-font, $font-size-base) !default;
 $textarea-padding: var(--nutui-textarea-padding, 10px 25px) !default;
 $textarea-limit-color: var(--nutui-textarea-limit-color, $color-text) !default;
@@ -596,7 +601,6 @@ $inputnumber-input-margin: var(
   --nutui-inputnumber-input-margin,
   0 6px
 ) !default;
-
 $inputnumber-button-width: var(--nutui-inputnumber-button-width, 16px) !default;
 $inputnumber-button-height: var(
   --nutui-inputnumber-button-height,
@@ -724,16 +728,16 @@ $numberkeyboard-key-font-size: var(
   --nutui-numberkeyboard-key-font-size,
   $font-size-xl
 ) !default;
-$numberkeyboard-key-font-color: var(
-  --nutui-numberkeyboard-key-font-color,
+$numberkeyboard-key-color: var(
+  --nutui-numberkeyboard-key-color,
   $color-text
 ) !default;
 $numberkeyboard-key-confirm-font-size: var(
   --nutui-numberkeyboard-key-confirm-font-size,
   $font-size-large
 ) !default;
-$numberkeyboard-key-confirm-font-color: var(
-  --nutui-numberkeyboard-key-confirm-font-color,
+$numberkeyboard-key-confirm-color: var(
+  --nutui-numberkeyboard-key-confirm-color,
   #fff
 ) !default;
 $numberkeyboard-key-confirm-background-color: var(
@@ -800,7 +804,7 @@ $switch-open-disabled-background-color: var(
   $color-primary-disabled
 ) !default;
 $switch-close-line-background-color: var(
-  --nutui-switch-close-line-bg-color,
+  --nutui-switch-close-line-background-color,
   #fff
 ) !default;
 $switch-width: var(--nutui-switch-width, 40px) !default;
@@ -935,6 +939,16 @@ $popup-description-font-size: var(
 $popup-title-height: var(--nutui-popup-title-height, 50px) !default;
 $popup-title-border-bottom: var(--nutui-popup-title-border-bottom, 0) !default;
 $popup-animation-duration: var(--nutui-popup-animation-duration, 0.3s) !default;
+$popup-icon-size: var(--nutui-popup-icon-size, $font-size-xl) !default;
+$popup-description-font-size: var(
+  --nutui-popup-description-font-size,
+  $font-size-xs
+) !default;
+$popup-title-font-weight: var(
+  --nutui-popup-title-font-weight,
+  $font-weight-bold
+) !default;
+$popup-title-height: var(--nutui-popup-title-height, 50px) !default;
 
 // Notify（✅）
 $notify-text-color: var(--nutui-notify-text-color, $white) !default;
@@ -1287,6 +1301,10 @@ $radio-button-border-radius: var(
   --nutui-radio-button-border-radius,
   15px
 ) !default;
+$radio-label-font-size: var(--nutui-radio-label-font-size, 14px) !default;
+$radio-button-font-size: var(--nutui-radio-button-font-size, 12px) !default;
+$radio-button-padding: var(--nutui-radio-button-padding, 5px 18px) !default;
+$radio-button-background: #f6f7f9;
 $radio-button-active-border: var(
   --nutui-radio-button-active-border,
   1px solid $color-primary
@@ -1583,6 +1601,18 @@ $tabs-tab-line-border-radius: var(
   2px
 ) !default;
 $tabs-tab-line-opacity: var(--nutui-tabs-tab-line-opacity, 1) !default;
+$tabs-tab-button-border-radius: var(
+  --nutui-tabs-button-border-radius,
+  $radius-circle
+) !default;
+$tabs-tab-button-active-background-color: var(
+  --nutui-tabs-button-active-background-color,
+  $color-primary-light
+) !default;
+$tabs-tab-button-active-border: var(
+  --nutui-tabs-button-active-border,
+  1px solid $color-primary
+) !default;
 $tabs-vertical-titles-width: var(
   --nutui-tabs-vertical-titles-width,
   100px
@@ -1619,10 +1649,7 @@ $indicator-dot-active-size: var(
   --nutui-indicator-dot-active-size,
   8px
 ) !default;
-$indicator-border-radius-size: var(
-  --nutui-indicator-border-radius-size,
-  2px
-) !default;
+$indicator-border-radius: var(--nutui-indicator-border-radius, 2px) !default;
 $indicator-dot-margin: var(--nutui-indicator-dot-margin, 2px) !default;
 
 // menu（✅）

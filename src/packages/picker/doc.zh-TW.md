@@ -1,4 +1,4 @@
-# Picker
+# Picker 選擇器
 
 ## 介紹
 
@@ -64,7 +64,7 @@ export default App;
 
 :::
 
-### 默认选中项
+### 默認選中項
 
 :::demo
 
@@ -76,6 +76,7 @@ const App = () => {
   const [visible, setVisible] = useState(false)
   const [baseDefault, setbaseDefault] = useState('')
   const [defaultValue, setDefaultValue] = useState([2])
+
   const listData1 = [
     [
       { value: 1, text: '南京市',},
@@ -168,7 +169,7 @@ export default App;
 
 ### 平鋪展示
 
-通過設定 `threeDimensional` 取消 3D 展示效果，併且通過設定 `duration` 可以控制快速滾動的時長。
+通過設置 `threeDimensional` 取消 3D 展示效果，並且通過設置 `duration` 可以控製快速滾動的時長。
 
 :::demo
 
@@ -274,7 +275,7 @@ const App = () => {
           ) =>
             console.log(
               asyncData,
-              '多級聯動',
+              '選擇用戶',
               columnIndex,
               value,
               options
@@ -335,11 +336,11 @@ const App = () => {
       setTimeout(() => {
         if(asyncData[1].children.length === 0){
           asyncData[1].children = [
-          { value: 1, text: '黃浦區',},
-          { value: 2, text: '長寧區',},
-          { value: 3, text: '普陀區',},
-          { value: 4, text: '楊浦區',},
-          { value: 5, text: '浦東新區',}]
+            { value: 1, text: '黃浦區',},
+            { value: 2, text: '長寧區',},
+            { value: 3, text: '普陀區',},
+            { value: 4, text: '楊浦區',},
+            { value: 5, text: '浦東新區',}]
             
             setAsyncData([...asyncData])
         }
@@ -379,18 +380,18 @@ export default App;
 
 ### Props
 
-| 屬性 | 說明 | 類型 | 預設值 |
+| 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | visible | 是否可見 | `boolean` | `false` |
-| title | 設定標題 | `string` | `-` |
-| options | 列錶數據 | `Array` | `[]` |
-| value | 选中值，受控 | `Array` | `[]` |
-| defaultValue | 預設選中 | `Array` | `[]` |
+| title | 設置標題 | `string` | `-` |
+| options | 列表數據 | `Array` | `[]` |
+| value | 選中值，受控 | `Array` | `[]` |
+| defaultValue | 默認選中 | `Array` | `[]` |
 | threeDimensional | 是否開啟3D效果 | `boolean` | `true` |
 | duration | 快速滑動時慣性滾動的時長，單位 ms | `string`  \|  `number` | `1000` |
-| popupProps | 透传popup属性 | `object` | `-` |
+| popupProps | 透傳popup屬性 | `object` | `-` |
 | closeOnOverlayClick | 是否點擊遮罩關閉 | `boolean` | `true` |
-| onConfirm | 點選確認按鈕時候回調 | `(options, value) => void` | `-` |
+| onConfirm | 點擊確認按鈕時候回調 | `(options, value) => void` | `-` |
 | onChange | 每一列值變更時調用 | `(options, value) => void` | `-` |
 | onCancel | 點擊取消按鈕時觸發 | `() => void` | `-` |
 | onClose | 確定和取消時，都觸發 | `(options, value) => void` | `-` |
@@ -398,25 +399,26 @@ export default App;
 
 ### options 數據結構
 
-| 屬性 | 說明 | 類型 | 預設值 |
+| 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | text | 選項的文字內容 | `string`  \|  `number` | `-` |
 | value | 選項對應的值，且唯一 | `string`  \|  `number` | `-` |
 | children | 用於級聯選項 | `Array` | `-` |
 
-## 主題定制
+## 主題定製
 
-### 樣式變數
+### 樣式變量
 
-組件提供了下列 CSS 變數，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
+組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 說明 | 預設值 |
+| 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
+| \--nutui-picker-title-cancel-color | 取消文案的色值 | `$text-color` |
 | \--nutui-picker-title-cancel-font-size | 取消字號 | `14px` |
+| \--nutui-picker-title-ok-color | 確認文案的色值 | `$color-primary` |
 | \--nutui-picker-title-ok-font-size | 確認字號 | `14px` |
-| \--nutui-picker-list-height | 面闆高度 | `252px` |
-| \--nutui-picker-item-height | 面闆每一條數據高度 | `36px` |
-| \--nutui-picker-item-text-color | 面闆每一條數據的字色 | `$color-title` |
-| \--nutui-picker-item-active-text-color | 面闆當前選中數據的字色 | `inherit` |
-| \--nutui-picker-item-text-font-size | 面闆每條數據字號 | `14px` |
-| \--nutui-picker-item-active-line-border | 面闆當前選中的border值 | `1px solid #d8d8d8` |
+| \--nutui-picker-list-height | 面板高度 | `252px` |
+| \--nutui-picker-item-height | 面板每一條數據高度 | `36px` |
+| \--nutui-picker-item-text-color | 面板每一條數據的字色 | `$color-title` |
+| \--nutui-picker-item-text-font-size | 面板每條數據字號 | `14px` |
+| \--nutui-picker-item-active-line-border | 面板當前選中的border值 | `1px solid #d8d8d8` |

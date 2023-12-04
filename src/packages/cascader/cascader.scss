@@ -5,12 +5,12 @@
   width: 100%;
   font-size: $cascader-font-size;
 
-  .nut-tabs__titles {
+  .nut-tabs-titles {
     padding: $cascader-tabs-item-padding;
     background: $color-background-overlay;
   }
 
-  .nut-tabs__titles-item {
+  .nut-tabs-titles-item {
     flex: initial;
     min-width: auto;
     width: auto;

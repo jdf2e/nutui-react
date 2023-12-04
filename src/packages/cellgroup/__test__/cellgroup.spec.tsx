@@ -11,9 +11,9 @@ test('prop title description extra', () => {
       <Cell title="URL 跳转" extra="https://jd.com" />
     </CellGroup>
   )
-  expect(
-    container.querySelectorAll('.nut-cell-group__title')[0].innerHTML
-  ).toBe('链接 | 分组用法')
+  expect(container.querySelectorAll('.nut-cell-group-title')[0].innerHTML).toBe(
+    '链接 | 分组用法'
+  )
   expect(container.querySelectorAll('.nut-cell').length).toEqual(2)
   expect(container).toMatchSnapshot()
 })

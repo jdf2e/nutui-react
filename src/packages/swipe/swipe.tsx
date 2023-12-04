@@ -50,7 +50,6 @@ export interface SwipeProps extends BasicComponent {
     name: string | number
     position: SwipeSide
   }) => void
-  /** 点击时触发 */
   onActionClick?: (
     event: MouseEvent<HTMLDivElement>,
     position: SwipeSide
@@ -207,7 +206,7 @@ export const Swipe = forwardRef<
       return (
         <div
           ref={measuredRef}
-          className={`${classPrefix}__${side}`}
+          className={`${classPrefix}-${side}`}
           onClick={(e) => handleOperate(e, side)}
         >
           {props[`${side}Action`]}
@@ -262,7 +261,7 @@ export const Swipe = forwardRef<
       onTouchEnd={(e) => onTouchEnd(e)}
       style={style}
     >
-      <div className={`${classPrefix}__wrapper`} style={wrapperStyle}>
+      <div className={`${classPrefix}-wrapper`} style={wrapperStyle}>
         {renderActionContent('left', leftRef)}
         {children}
         {renderActionContent('right', rightRef)}

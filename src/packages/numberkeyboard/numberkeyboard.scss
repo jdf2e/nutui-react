@@ -6,7 +6,7 @@
   user-select: none;
   background-color: $numberkeyboard-background-color;
 
-  &__header {
+  &-header {
     position: relative;
     display: flex;
     align-items: center;
@@ -16,12 +16,12 @@
     color: $color-title;
     font-size: $popup-title-font-size;
 
-    &__title {
+    &-title {
       color: $color-title;
       display: inline-block;
     }
 
-    &__close {
+    &-close {
       position: absolute;
       display: block;
       right: 0;
@@ -34,17 +34,17 @@
     }
   }
 
-  &__body {
+  &-body {
     display: flex;
     padding: 6px 0 0 6px;
 
-    &__keys {
+    &-keys {
       display: flex;
       flex: 3;
       flex-wrap: wrap;
     }
 
-    &__wrapper {
+    &-wrapper {
       position: relative;
       flex: 1;
       flex-basis: 33%;
@@ -60,7 +60,7 @@
         font-size: $numberkeyboard-key-font-size;
         line-height: $numberkeyboard-key-line-height;
         background-color: $numberkeyboard-key-background-color;
-        color: $numberkeyboard-key-font-color;
+        color: $numberkeyboard-key-color;
         border-radius: $numberkeyboard-key-border-radius;
         border: $numberkeyboard-key-border;
         font-weight: $font-weight-bold;
@@ -73,12 +73,12 @@
     }
   }
 
-  &__sidebar {
+  &-sidebar {
     display: flex;
     flex: 1;
     flex-direction: column;
 
-    .nut-numberkeyboard__body__wrapper {
+    .nut-numberkeyboard-body-wrapper {
       .key {
         position: absolute;
         top: 0;
@@ -90,7 +90,7 @@
 
       .confirm {
         font-size: $numberkeyboard-key-confirm-font-size;
-        color: $numberkeyboard-key-confirm-font-color;
+        color: $numberkeyboard-key-confirm-color;
         background-color: $numberkeyboard-key-confirm-background-color;
 
         &.active {

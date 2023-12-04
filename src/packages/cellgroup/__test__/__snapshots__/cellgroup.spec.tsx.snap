@@ -6,28 +6,28 @@ exports[`prop title description extra 1`] = `
     class="nut-cell-group"
   >
     <div
-      class="nut-cell-group__title"
+      class="nut-cell-group-title"
     >
       链接 | 分组用法
     </div>
     <div
-      class="nut-cell-group__wrap nut-cell-group__wrap--divider"
+      class="nut-cell-group-wrap nut-cell-group-wrap-divider"
     >
       <div
         class="nut-cell"
         style="border-radius: 6px; align-items: flex-start;"
       >
         <div
-          class="nut-cell__left"
+          class="nut-cell-left"
         >
           <div
-            class="nut-cell__title"
+            class="nut-cell-title"
           >
             链接
           </div>
         </div>
         <div
-          class="nut-cell__divider"
+          class="nut-cell-divider"
         />
       </div>
       <div
@@ -35,21 +35,21 @@ exports[`prop title description extra 1`] = `
         style="border-radius: 6px; align-items: flex-start;"
       >
         <div
-          class="nut-cell__left"
+          class="nut-cell-left"
         >
           <div
-            class="nut-cell__title"
+            class="nut-cell-title"
           >
             URL 跳转
           </div>
         </div>
         <div
-          class="nut-cell__extra"
+          class="nut-cell-extra"
         >
           https://jd.com
         </div>
         <div
-          class="nut-cell__divider"
+          class="nut-cell-divider"
         />
       </div>
     </div>

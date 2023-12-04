@@ -272,6 +272,7 @@ plugins: [
 - 移除 `num`，支持传入所有 `Badge` Props
 - 移除 `color`，使用父元素的 `activeColor`，保持同样的 `active` 状态
 #### Tabs
+- 增加 `简约`、`卡片`、`按钮/胶囊` 模式。
 - 移除 `background`，通过 `className` 或 `style` 控制
 - 移除 `titleScroll`, 默认支持滚动
 - 移除 `ellipsis`，默认 `flex：1`
@@ -583,6 +584,7 @@ plugins: [
 - `activeName` 改为受控方式
 - `icon` 重命名为 `expandIcon`，类型修改为 `ReactNode`
 - `onChange` 参数变更为 `activeName, name, status`
+- 新增一种样式，尝试修改 `--nutui-collapse-item-border-bottom` 和 `-nutui-collapse-item-header-border-bottom`，可查看
 
 #### CollapseItem
 - 使用方式调整为 `Collapse.Item`

@@ -9,7 +9,7 @@
   background-position: center center;
   flex: 0 0 auto; // 防止被压缩
 
-  .switch-button {
+  &-button {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -24,14 +24,14 @@
     height: $switch-height;
     line-height: $switch-line-height;
 
-    .switch-button {
+    .nut-switch-button {
       height: $switch-inside-height;
       width: $switch-inside-width;
       transform: $switch-inside-close-transform;
     }
 
     &.nut-switch-open {
-      .switch-button {
+      .nut-switch-button {
         transform: $switch-inside-open-transform;
       }
 
@@ -41,8 +41,8 @@
     }
 
     &.nut-switch-close {
-      .close-line {
-        width: 8px;
+      .nut-switch-close-line {
+        width: 12px;
         height: 2px;
       }
 
@@ -55,7 +55,7 @@
   &-close {
     background-color: $switch-close-background-color;
 
-    .close-line {
+    &-line {
       background: $switch-close-line-background-color;
       border-radius: 2px;
     }
@@ -66,15 +66,11 @@
     font-size: $font-size-small;
 
     &.open {
-      transform: translateX(-16px);
+      transform: translateX(-18px);
     }
 
     &.close {
-      transform: translateX(16px);
+      transform: translateX(14px);
     }
   }
-
-  // &-disabled {
-  //   opacity: 0.5;
-  // }
 }

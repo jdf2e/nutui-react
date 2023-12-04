@@ -19,7 +19,7 @@ test('base swipe', () => {
     </Swipe>
   )
   expect(
-    container.querySelector('.nut-swipe .nut-cell__title')
+    container.querySelector('.nut-swipe .nut-cell-title')
   ).toHaveTextContent('基础用法')
 })
 
@@ -29,7 +29,7 @@ test('disabled swipe', () => {
       <Cell title="禁用滑动" radius={0} />
     </Swipe>
   )
-  const dom = container.querySelector('.nut-swipe__wrapper')
+  const dom = container.querySelector('.nut-swipe-wrapper')
   expect((dom as HTMLElement).style.transform).toBe('translate3d(0px, 0, 0)')
 })
 
@@ -53,12 +53,12 @@ test('base swipe Slots', async () => {
     </Swipe>
   )
   expect(
-    container.querySelector('.nut-swipe .nut-swipe__left .nut-button-wrap')
+    container.querySelector('.nut-swipe .nut-swipe-left .nut-button-wrap')
   ).toHaveTextContent('选择')
 
   expect(
     container.querySelector(
-      '.nut-swipe .nut-swipe__right .nut-button--danger .nut-button-wrap'
+      '.nut-swipe .nut-swipe-right .nut-button--danger .nut-button-wrap'
     )
   ).toHaveTextContent('删除')
 })
@@ -89,10 +89,10 @@ test('base swipe content', async () => {
     </Swipe>
   )
   expect(
-    container.querySelector('.nut-swipe__wrapper .nut-inputnumber')
+    container.querySelector('.nut-swipe-wrapper .nut-inputnumber')
   ).toBeVisible()
 
   expect(
-    container.querySelector('.nut-swipe .nut-swipe__right .nut-button-wrap')
+    container.querySelector('.nut-swipe .nut-swipe-right .nut-button-wrap')
   ).toHaveTextContent('购物车')
 })
