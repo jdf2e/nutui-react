@@ -152,6 +152,43 @@ export default App;
 
 :::
 
+:::demo
+
+```tsx
+import  React from "react";
+import { NavBar, Toast } from '@nutui/nutui-react';
+import { ArrowLeft, Share, Close } from '@nutui/icons-react'
+
+const App = () => {
+  return ( 
+    <NavBar
+        titleAlign="left"
+        back={
+        <>
+            <ArrowLeft name="left" color="#979797" />
+            back
+        </>
+        }
+        left={<Close width={12} />}
+        right={
+        <span onClick={(e) =>  Toast.show('icon')}>
+            <Share />
+        </span>
+        }
+        onBackClick={(e) => Toast.show("back")}
+    >
+        <span onClick={(e) => Toast.show("title")}>
+        order details
+        </span>
+    </NavBar>
+  );
+};  
+export default App;
+
+```
+
+:::
+
 ## Navbar
 
 ### Props
@@ -161,6 +198,7 @@ export default App;
 | right | Right side content | `ReactNode` | `-` |
 | left | The left content, rendered to the right of the return area | `ReactNode` | `-` |
 | back | Returns the text of the area | `ReactNode` | `-` |
+| titleAlign | Title align, optional value center、left | `string` | `center` |
 | fixed | Is it fixed | `boolean` | `false` |
 | safeArea | Whether it is suitable for the safe area | `boolean` | `false` |
 | placeholder | When fixed to the top, whether to generate a placeholder element of equal height at the label position | `boolean` | `false` |
@@ -178,11 +216,10 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-navbar-width | The width of the navbar | `100%` |
 | \--nutui-navbar-height | The height of the navbar | `44px` |
 | \--nutui-navbar-margin-bottom | Bottom margin of the navbar | `20px` |
-| \--nutui-navbar-padding | The padding of the navbar | `13px 16px` |
 | \--nutui-navbar-background | The navbar's background color | `$white` |
 | \--nutui-navbar-box-shadow | Shadow of navbar | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
-| \--nutui-navbar-color | navbar font color | `$gray2` |
+| \--nutui-navbar-color | navbar font color | `$color-text` |
 | \--nutui-navbar-font-size | navbar font size | `$font-size-base` |
 | \--nutui-navbar-title-font-size | The font size of the navbar's title | `$font-size-base` |
 | \--nutui-navbar-title-font-weight | The font weight of the navbar's title | `0` |
-| \--nutui-navbar-title-font-color | The font color of the navbar's title | `$gray1` |
+| \--nutui-navbar-title-font-color | The font color of the navbar's title | `$color-title` |

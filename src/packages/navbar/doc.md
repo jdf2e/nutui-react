@@ -127,6 +127,7 @@ const App = () => {
   const [tab1value, setTab1value] = useState('0')
   return (   
       <NavBar
+         titleAlign="left"
          back={<ArrowLeft name="left" color="#979797" />}
           right={
             <>
@@ -152,6 +153,42 @@ export default App;
 
 :::
 
+:::demo
+
+```tsx
+import  React from "react";
+import { NavBar, Toast } from '@nutui/nutui-react';
+import { ArrowLeft, Share, Close } from '@nutui/icons-react'
+
+const App = () => {
+  return ( 
+    <NavBar
+        back={
+        <>
+            <ArrowLeft name="left" color="#979797" />
+            返回
+        </>
+        }
+        left={<Close width={12} />}
+        right={
+        <span onClick={(e) =>  Toast.show('icon')}>
+            <Share />
+        </span>
+        }
+        onBackClick={(e) =>  Toast.show("返回")}
+    >
+        <span onClick={(e) =>  Toast.show("标题")}>
+        订单详情
+        </span>
+    </NavBar>
+  );
+};  
+export default App;
+
+```
+
+:::
+
 ## Navbar
 
 ### Props
@@ -161,6 +198,7 @@ export default App;
 | right | 右侧内容 | `ReactNode` | `-` |
 | left | 左侧内容，渲染在返回区域的右侧 | `ReactNode` | `-` |
 | back | 返回区域的文字 | `ReactNode` | `-` |
+| titleAlign | 标题位置,可选值center left | `string` | `center` |
 | fixed | 是否固定 | `boolean` | `false` |
 | safeArea | 是否适配安全区 | `boolean` | `false` |
 | placeholder | 固定在顶部时，是否在标签位置生成一个等高的占位元素 | `boolean` | `false` |
@@ -178,11 +216,10 @@ export default App;
 | \--nutui-navbar-width | 头部导航的宽度 | `100%` |
 | \--nutui-navbar-height | 头部导航的高度 | `44px` |
 | \--nutui-navbar-margin-bottom | 头部导航的下边距 | `20px` |
-| \--nutui-navbar-padding | 头部导航的内边距 | `13px 16px` |
 | \--nutui-navbar-background | 头部导航的背景颜色 | `$white` |
 | \--nutui-navbar-box-shadow | 头部导航的阴影 | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
-| \--nutui-navbar-color | 头部导航的字体颜色 | `$gray2` |
+| \--nutui-navbar-color | 头部导航的字体颜色 | `$color-text` |
 | \--nutui-navbar-font-size | 头部导航的字体大小 | `$font-size-base` |
 | \--nutui-navbar-title-font-size | 头部导航标题的字体大小 | `$font-size-base` |
 | \--nutui-navbar-title-font-weight | 头部导航标题的字体粗细 | `0` |
-| \--nutui-navbar-title-font-color | 头部导航标题的字体颜色 | `$gray1` |
+| \--nutui-navbar-title-font-color | 头部导航标题的字体颜色 | `$color-title` |

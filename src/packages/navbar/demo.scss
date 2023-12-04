@@ -3,4 +3,29 @@
     display: inline-flex;
     align-items: center;
   }
+
+  .nut-navbar-title .title {
+    display: flex;
+    flex-direction: column;
+
+    .desc {
+      font-weight: 400;
+      font-size: 12px;
+      color: $title-color2;
+    }
+  }
+
+  .navbar-tabs {
+    .nut-tabs-titles {
+      padding: 0;
+      .nut-tabs-titles-item {
+        margin: 0;
+        font-size: 16px;
+
+        &-active {
+          font-size: 20px;
+        }
+      }
+    }
+  }
 }

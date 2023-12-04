@@ -5,7 +5,6 @@
   align-items: center;
   height: $navbar-height;
   box-sizing: border-box;
-  padding: $navbar-padding;
   background: $navbar-background;
   box-shadow: $navbar-box-shadow;
   font-size: $navbar-font-size;
@@ -13,24 +12,24 @@
   margin-bottom: $navbar-margin-bottom;
   overflow: hidden;
 
-  &--fixed {
+  &-fixed {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
   }
 
-  &--placeholder {
+  &-placeholder {
     display: inline-block;
     width: 100%;
   }
 
-  &--safe-area-inset-top {
+  &-safe-area-inset-top {
     padding-top: constant(safe-area-inset-top);
     padding-top: env(safe-area-inset-top);
   }
 
-  &__title {
+  &-title {
     min-width: 53%;
     margin: 0 auto;
     text-align: center;
@@ -42,7 +41,7 @@
     color: $navbar-title-font-color;
 
     .nut-tabs-titles {
-      background: $white;
+      background: transparent;
 
       &-item-text {
         color: $title-color;
@@ -54,24 +53,31 @@
     }
   }
 
-  &__title ::-webkit-scrollbar {
+  &-title ::-webkit-scrollbar {
     display: none;
   }
 
-  &__left,
-  &__right {
+  &-left,
+  &-right {
     position: absolute;
     top: 0;
     bottom: 0;
     display: flex;
     align-items: center;
     cursor: pointer;
-    padding: 0 16px;
+    padding: 0 14px;
+
+    .nut-icon,
+    .nutui-iconfont {
+      width: 20px;
+      height: 20px;
+      font-size: 20px;
+    }
   }
 
-  &__left {
+  &-left {
     left: 0;
-    &__back {
+    &-back {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -79,7 +85,37 @@
     }
   }
 
-  &__right {
+  &-right {
     right: 0;
+    .nut-icon {
+      margin-left: 12px;
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &-title-align-left {
+    padding: 0 14px;
+
+    .nut-navbar-left {
+      position: static;
+      padding: 0;
+      .nut-icon {
+        margin-left: 12px;
+        &:first-child {
+          margin-left: 0;
+        }
+      }
+    }
+    .nut-navbar-left-back {
+      margin-right: 0;
+    }
+    .nut-navbar-title {
+      margin: 0;
+      flex: 1;
+      justify-content: flex-start;
+      padding: 0 8px;
+    }
   }
 }
