@@ -18,17 +18,46 @@ import { Checkbox } from '@nutui/nutui-react';
 :::demo
 
 ```tsx
-import React, { useState } from "react";
-import { Checkbox } from '@nutui/nutui-react';
+import React, { useState } from 'react'
+import { Checklist } from '@nutui/icons-react'
+import { Cell, Checkbox } from '@nutui/nutui-react'
 
 const CheckBoxDemo = () => {
-  return (<Checkbox
-    className="test"
-    label="Option"
-    defaultChecked={false}
-  />)
+  return (<>
+    <Cell>
+      <Checkbox
+        className='test'
+        label='Option'
+        defaultChecked={false}
+      />
+    </Cell>
+    <Cell>
+      <Checkbox
+        style={{ marginRight: '8px' }}
+        shape='button'
+        label='Option'
+        defaultChecked
+      />
+      <Checkbox
+        style={{ marginRight: '8px' }}
+        shape='button'
+        label='Option'
+        activeIcon={
+          <Checklist className="nut-checkbox-button-icon-checked" />
+        }
+        defaultChecked={false}
+      />
+      <Checkbox
+        style={{ marginRight: '8px' }}
+        shape='button'
+        className='test'
+        label='Option'
+        defaultChecked={false}
+      />
+    </Cell>
+  </>)
 }
-export default CheckBoxDemo;
+export default CheckBoxDemo
 ```
 
 :::
