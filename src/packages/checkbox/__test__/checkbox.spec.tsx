@@ -90,3 +90,31 @@ test('Render checkboxs by configuring options', () => {
   }
   render(<CheckboxGroupOptions />)
 })
+
+test('Render checkboxs by configure indeterminate', () => {
+  const { container } = render(
+    <Checkbox value="1" checked label="labe1" indeterminate />
+  )
+  expect(
+    container.querySelector('.nut-checkbox-icon-indeterminate')
+  ).toBeTruthy()
+})
+
+test('Render checkboxs by configure disabled', () => {
+  const { container } = render(
+    <Checkbox value="1" checked label="labe1" disabled />
+  )
+  expect(container.querySelector('.nut-checkbox-icon-disabled')).toBeTruthy()
+})
+
+test('Render checkboxs by configure disabled and indeterminate', () => {
+  const { container } = render(
+    <Checkbox value="1" checked label="labe1" disabled indeterminate />
+  )
+  expect(
+    container.querySelector('.nut-checkbox-icon-indeterminate')
+  ).toBeTruthy()
+  expect(
+    container.querySelector('.nut-checkbox-icon-indeterminate')
+  ).toHaveClass('nut-checkbox-icon-disabled')
+})
