@@ -1102,9 +1102,9 @@ $steps-base-icon-margin-bottom: var(
 ) !default;
 $steps-base-icon-font-size: var(
   --nutui-steps-base-icon-font-size,
-  13px
+  $font-size-small
 ) !default;
-$steps-base-line-width: var(--nutui-steps-base-line-width, 100%) !default;
+$steps-base-line-width: var(--nutui-steps-base-line-width, 70%) !default;
 $steps-base-line-height: var(--nutui-steps-base-line-height, 1px) !default;
 $steps-base-line-background: var(
   --nutui-steps-base-line-background,
@@ -1112,7 +1112,7 @@ $steps-base-line-background: var(
 ) !default;
 $steps-base-title-font-size: var(
   --nutui-steps-base-title-font-size,
-  14px
+  $font-size-base
 ) !default;
 $steps-base-title-color: var(
   --nutui-steps-base-title-color,
@@ -1124,30 +1124,32 @@ $steps-base-title-margin-bottom: var(
 ) !default;
 $steps-base-description-font-size: var(
   --nutui-steps-base-description-font-size,
-  12px
+  $font-size-small
 ) !default;
-$steps-base-content-color: var(
+$steps-base-description-color: var(
   --nutui-steps-base-description-color,
   $title-color2
 ) !default;
-
 $steps-wait-icon-bg-color: var(
   --nutui-steps-wait-icon-bg-color,
-  #959fb1
+  $title-color2
 ) !default;
 $steps-wait-icon-color: var(--nutui-steps-wait-icon-color, $white) !default;
 $steps-wait-title-color: var(
   --nutui-steps-wait-title-color,
-  $title-color2
+  $title-color
 ) !default;
-$steps-wait-content-color: var(
+$steps-wait-description-color: var(
   --nutui-steps-wait-description-color,
   $title-color2
 ) !default;
-
 $steps-process-icon-bg-color: var(
   --nutui-steps-process-icon-bg-color,
   $color-primary
+) !default;
+$steps-process-icon-before-bg-color: var(
+  --nutui-steps-process-icon-before-bg-color,
+  $color-primary-stop-2
 ) !default;
 $steps-process-icon-color: var(
   --nutui-steps-process-icon-color,
@@ -1159,17 +1161,16 @@ $steps-process-title-color: var(
 ) !default;
 $steps-process-title-font-size: var(
   --nutui-steps-process-title-font-size,
-  14px
+  $font-size-base
 ) !default;
 $steps-process-title-font-weight: var(
   --nutui-steps-process-title-font-weight,
-  400
+  $font-weight-bold
 ) !default;
-$steps-process-content-color: var(
+$steps-process-description-color: var(
   --nutui-steps-process-description-color,
   $title-color2
 ) !default;
-
 $steps-finish-icon-bg-color: var(
   --nutui-steps-finish-icon-bg-color,
   $color-primary-text
@@ -1178,11 +1179,15 @@ $steps-finish-icon-color: var(
   --nutui-steps-finish-icon-color,
   $color-primary
 ) !default;
+$steps-finish-icon-border-color: var(
+  --nutui-steps-finish-icon-border-color,
+  $steps-finish-icon-color
+) !default;
 $steps-finish-title-color: var(
   --nutui-steps-finish-title-color,
   $color-primary
 ) !default;
-$steps-finish-content-color: var(
+$steps-finish-description-color: var(
   --nutui-steps-finish-description-color,
   $title-color2
 ) !default;
@@ -1190,14 +1195,25 @@ $steps-finish-line-background: var(
   --nutui-steps-finish-line-background,
   $color-primary
 ) !default;
-
+$steps-dot-finish-icon-bg-color: var(
+  --nutui-steps-finish-icon-bg-color,
+  $color-primary-text
+) !default;
+$steps-dot-finish-icon-border-color: var(
+  --nutui-steps-dot-finish-icon-bg-color,
+  $steps-finish-icon-color
+) !default;
+$steps-dot-wait-icon-bg-color: var(
+  --nutui-steps-dot-wait-icon-bg-color,
+  $steps-wait-icon-bg-color
+) !default;
 $steps-dot-icon-width: var(--nutui-steps-dot-icon-width, 6px) !default;
 $steps-dot-icon-height: var(--nutui-steps-dot-icon-height, 6px) !default;
 $steps-dot-icon-border: var(
   --nutui-steps-dot-icon-border,
   2px solid $color-primary-text
 ) !default;
-$steps-dot-head-margin: var(--nutui-steps-dot-head-margin, 7px 0 0 0) !default;
+$steps-dot-head-margin: var(--nutui-steps-dot-head-margin, 10px 0) !default;
 
 // dialog（✅）
 $dialog-z-index: var(--nutui-dialog-z-index, $mask-content-z-index) !default;

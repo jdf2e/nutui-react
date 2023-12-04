@@ -33,7 +33,7 @@ interface T {
 }
 
 const customTheme = {
-  nutuiStepsBaseLineWidth: '70%',
+  nutuiStepsBaseLineWidth: '60%',
   nutuiStepsProcessIconBgColor: '#3768FA',
   nutuiStepsProcessIconColor: '#fff',
   nutuiStepsProcessTitleColor: '#3768FA',
@@ -45,7 +45,7 @@ const customTheme = {
 }
 
 const customTheme2 = {
-  nutuiStepsBaseLineWidth: '70%',
+  nutuiStepsBaseLineWidth: '80%',
   nutuiStepsBaseLineHeight: '2px',
   nutuiStepsFinishLineBackground: `linear-gradient(135deg,
     rgba(250, 250, 25, 1) 0%,
@@ -182,7 +182,7 @@ const StepsDemo = () => {
               3
             </Step>
           </Steps>
-          <div className="steps-button">
+          <div className="steps-button" style={{ marginTop: '10px' }}>
             <Button
               type="primary"
               size="small"
@@ -200,7 +200,7 @@ const StepsDemo = () => {
             <Step value={2}>2</Step>
             <Step value={3}>3</Step>
           </Steps>
-          <div className="steps-button">
+          <div className="steps-button" style={{ marginTop: '10px' }}>
             <Button
               type="primary"
               size="small"
@@ -288,7 +288,7 @@ const StepsDemo = () => {
               <Step value={3}>3</Step>
             </Steps>
           </ConfigProvider>
-          <div className="steps-button">
+          <div className="steps-button" style={{ marginTop: '10px' }}>
             <Button
               type="primary"
               size="small"
