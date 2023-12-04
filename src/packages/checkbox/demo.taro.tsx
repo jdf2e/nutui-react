@@ -14,6 +14,7 @@ interface T {
   DisabledState: string
   selective: string
   disabledState: string
+  disabledSelectiveState: string
   customSize: string
   customIcon: string
   triggerEvent: string
@@ -43,6 +44,7 @@ const CheckboxDemo = () => {
       DisabledState: '未选时禁用状态',
       selective: '半选状态',
       disabledState: '选中时禁用状态',
+      disabledSelectiveState: '半选时禁用状态',
       customSize: '自定义尺寸',
       customIcon: '自定义图标',
       triggerEvent: '点击触发事件',
@@ -69,6 +71,7 @@ const CheckboxDemo = () => {
       DisabledState: '未選時禁用狀態',
       selective: '半选状态',
       disabledState: '選中時禁用狀態',
+      disabledSelectiveState: '半選時禁用狀態',
       customSize: '自定義尺寸',
       customIcon: '自定義圖示',
       triggerEvent: '點擊觸發事件',
@@ -95,6 +98,7 @@ const CheckboxDemo = () => {
       DisabledState: 'Disabled state',
       selective: 'Semi selective',
       disabledState: 'Disabled state',
+      disabledSelectiveState: 'Semi selective Disabled',
       customSize: 'Custom size',
       customIcon: 'Custom Icon',
       triggerEvent: 'Click Trigger Event',
@@ -155,6 +159,32 @@ const CheckboxDemo = () => {
             defaultChecked={checked}
           />
         </Cell>
+        <Cell className="nut-cell">
+          <Checkbox
+            style={{ marginRight: '8px' }}
+            shape="button"
+            className="test"
+            label={translated.checkbox}
+            defaultChecked={!checked}
+          />
+          <Checkbox
+            style={{ marginRight: '8px' }}
+            shape="button"
+            activeIcon={
+              <Checklist className="nut-checkbox-button-icon-checked" />
+            }
+            className="test"
+            label={translated.checkbox}
+            defaultChecked={checked}
+          />
+          <Checkbox
+            shape="button"
+            className="test"
+            disabled
+            label={translated.checkbox}
+            defaultChecked={checked}
+          />
+        </Cell>
         <h2>{translated.controlled}</h2>
         <Cell className="nut-cell">
           <Checkbox
@@ -175,6 +205,39 @@ const CheckboxDemo = () => {
             </span>
             <Checkbox value="2" label={optionsDemo1[1].label} />
             <Checkbox value="3" label={optionsDemo1[2].label} />
+          </Checkbox.Group>
+        </Cell>
+        <Cell className="nut-cell">
+          <Checkbox.Group
+            labelPosition="left"
+            value={controlledGroup}
+            onChange={(value) => setControlledGroup(value)}
+          >
+            <Checkbox
+              activeIcon={
+                <Checklist className="nut-checkbox-button-icon-checked" />
+              }
+              shape="button"
+              value="1"
+              label={optionsDemo1[0].label}
+            />
+            <Checkbox
+              activeIcon={
+                <Checklist className="nut-checkbox-button-icon-checked" />
+              }
+              shape="button"
+              value="2"
+              label={optionsDemo1[1].label}
+            />
+            <Checkbox
+              activeIcon={
+                <Checklist className="nut-checkbox-button-icon-checked" />
+              }
+              shape="button"
+              value="3"
+              label={optionsDemo1[2].label}
+              disabled
+            />
           </Checkbox.Group>
         </Cell>
         <h2>{translated.basic}</h2>
@@ -216,6 +279,15 @@ const CheckboxDemo = () => {
         <Cell className="nut-cell">
           <Checkbox
             labelPosition="right"
+            label={translated.disabledSelectiveState}
+            checked
+            disabled
+            indeterminate
+          />
+        </Cell>
+        <Cell className="nut-cell">
+          <Checkbox
+            labelPosition="right"
             label={translated.disabledState}
             checked
             disabled
@@ -243,10 +315,34 @@ const CheckboxDemo = () => {
           <Checkbox
             defaultChecked={false}
             icon={<Checklist />}
-            activeIcon={<Checklist className="nut-checkbox__icon" />}
+            activeIcon={<Checklist className="nut-checkbox-icon-checked" />}
           >
             {translated.customIcon}
           </Checkbox>
+        </Cell>
+        <Cell className="nut-cell">
+          <Checkbox.Group
+            labelPosition="left"
+            defaultValue={['1']}
+            style={{ width: '100%' }}
+          >
+            <Checkbox
+              value="1"
+              defaultChecked={false}
+              icon={<Checklist />}
+              activeIcon={<Checklist className="nut-checkbox-icon-checked" />}
+            >
+              {translated.customIcon}
+            </Checkbox>
+            <Checkbox
+              value="2"
+              defaultChecked={false}
+              icon={<Checklist />}
+              activeIcon={<Checklist className="nut-checkbox-icon-checked" />}
+            >
+              {translated.customIcon}
+            </Checkbox>
+          </Checkbox.Group>
         </Cell>
         <h2>{translated.triggerEvent}</h2>
         <Cell className="nut-cell">
@@ -341,7 +437,6 @@ const CheckboxDemo = () => {
             {translated.selectAll}
           </Button>
           <Button
-            type="info"
             onClick={() => {
               ;(checkboxgroup2Ref.current as any).toggle(false)
             }}

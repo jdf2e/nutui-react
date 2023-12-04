@@ -11,10 +11,13 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Context from '../checkboxgroup/context'
 import { usePropsValue } from '@/utils/use-props-value'
 
+export type CheckboxShape = 'button' | 'round'
+
 export interface CheckboxProps extends BasicComponent {
   checked: boolean
   disabled: boolean
   defaultChecked: boolean
+  shape: CheckboxShape
   labelPosition: 'left' | 'right'
   icon: React.ReactNode
   activeIcon: React.ReactNode
@@ -28,6 +31,7 @@ export interface CheckboxProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   disabled: false,
+  shape: 'round',
   labelPosition: 'right',
   icon: null,
   activeIcon: null,
@@ -52,6 +56,7 @@ export const Checkbox: FunctionComponent<
     checked,
     value,
     defaultChecked,
+    shape,
     disabled,
     onChange,
     indeterminate,
@@ -94,6 +99,15 @@ export const Checkbox: FunctionComponent<
   }
 
   const renderIcon = () => {
+    if (innerDisabled) {
+      if (innerIndeterminate) {
+        return <CheckDisabled className={color()} />
+      }
+      if (innerChecked) {
+        return <Checked className={color()} />
+      }
+      return <CheckDisabled className={color()} />
+    }
     if (!innerChecked) {
       return React.isValidElement(icon) ? (
         icon
@@ -115,22 +129,26 @@ export const Checkbox: FunctionComponent<
     )
   }
   const color = () => {
+    const cls = `${classPrefix}-icon `
     if (innerDisabled) {
-      return `${classPrefix}__icon--disable`
+      if (innerChecked && !innerIndeterminate) {
+        return `${cls}${classPrefix}-icon-checked ${classPrefix}-icon-disabled`
+      }
+      return `${cls}${classPrefix}-icon-disabled`
     }
     if (innerChecked) {
       if (innerIndeterminate) {
-        return `${classPrefix}__icon--indeterminate`
+        return `${cls}${classPrefix}-icon-indeterminate`
       }
-      return `${classPrefix}__icon`
+      return `${cls}${classPrefix}-icon-checked`
     }
-    return `${classPrefix}__icon--unchecked`
+    return cls
   }
   const renderLabel = () => {
     return (
       <span
-        className={classNames(`${classPrefix}__label `, {
-          [`${classPrefix}__label--disabled`]: innerDisabled,
+        className={classNames(`${classPrefix}-label `, {
+          [`${classPrefix}-label-disabled`]: innerDisabled,
         })}
       >
         {children || label}
@@ -150,20 +168,49 @@ export const Checkbox: FunctionComponent<
     setChecked(latestChecked)
   }
 
+  const renderButton = () => {
+    return (
+      <div
+        className={classNames(`${classPrefix}-button`, {
+          [`${classPrefix}-button-active`]: innerChecked,
+          [`${classPrefix}-button-disabled`]: disabled,
+        })}
+      >
+        {children || label}
+        {innerChecked && activeIcon ? (
+          <div className={classNames(`${classPrefix}-button-icon`)}>
+            {activeIcon}
+          </div>
+        ) : null}
+      </div>
+    )
+  }
+
+  const renderCheckboxItem = () => {
+    if (shape === 'button') {
+      return renderButton()
+    }
+    return (
+      <>
+        {renderIcon()}
+        {renderLabel()}
+      </>
+    )
+  }
+
   return (
     <div
       className={classNames(
         classPrefix,
         {
-          [`${classPrefix}--reverse`]: labelPosition === 'left',
+          [`${classPrefix}-reverse`]: labelPosition === 'left',
         },
         className
       )}
       {...rest}
       onClick={handleClick}
     >
-      {renderIcon()}
-      {renderLabel()}
+      {renderCheckboxItem()}
     </div>
   )
 }

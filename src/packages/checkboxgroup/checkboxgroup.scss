@@ -2,32 +2,42 @@
   .nut-checkbox {
     margin-bottom: 5px;
 
-    &__label {
+    &-label {
       margin-right: 5px;
     }
 
-    &__button {
+    &-button {
       background-color: $gray4;
     }
   }
 
-  &--vertical {
+  &-vertical {
     .nut-checkbox {
-      &.nut-checkbox--reverse {
+      &.nut-checkbox-reverse {
         width: 100%;
         justify-content: space-between;
       }
 
-      &__label {
+      &-label {
         margin-right: 5px;
+      }
+
+      &-button-active {
+        border: $radio-button-active-border;
+        background-color: $color-primary-light;
       }
     }
   }
 
-  &--horizontal {
+  &-horizontal {
     .nut-checkbox {
       display: inline-flex;
       margin-right: 20px;
+
+      &-button-active {
+        border: $radio-button-active-border;
+        background-color: $color-primary-light;
+      }
     }
   }
 }
