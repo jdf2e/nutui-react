@@ -176,7 +176,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   }
 
   return (
-    <View className="nut-menu-item-container">
+    <View className="nut-menu-container">
       {closeOnClickAway ? (
         <View
           className={`placeholder-element ${classNames({
@@ -188,7 +188,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
       ) : null}
       {parent.overlay ? (
         <Overlay
-          className="nut-menu__overlay"
+          className="nut-menu-container-overlay"
           style={getPosition()}
           lockScroll={parent.lockScroll}
           visible={showPopup}
@@ -201,8 +201,8 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
       <View
         className={classNames(
           {
-            'nut-menu-item__wrap': direction === 'down',
-            'nut-menu-item__wrap-up': direction !== 'down',
+            'nut-menu-container-wrap': direction === 'down',
+            'nut-menu-container-wrap-up': direction !== 'down',
           },
           className
         )}
@@ -214,13 +214,17 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
         <CSSTransition
           in={showPopup}
           timeout={100}
-          classNames={direction === 'down' ? 'menu-item' : 'menu-item-up'}
+          classNames={
+            direction === 'down'
+              ? 'nut-menu-container-down'
+              : 'nut-menu-container-up'
+          }
         >
-          <View className="nut-menu-item__content">
+          <View className="nut-menu-container-content">
             {options?.map((item: any, index: any) => {
               return (
                 <View
-                  className={`nut-menu-item__option ${classNames({
+                  className={`nut-menu-container-item ${classNames({
                     active: item.value === innerValue,
                   })}`}
                   key={item.text}
