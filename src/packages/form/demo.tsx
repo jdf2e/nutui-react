@@ -284,6 +284,50 @@ const FormDemo = () => {
             <InputNumber />
           </Form.Item>
         </Form>
+        <Form
+          divider
+          labelPosition="top"
+          onFinish={(values) => submitSucceed(values)}
+          footer={
+            <>
+              <Button block type="primary">
+                {translated.submit}
+              </Button>
+            </>
+          }
+        >
+          <Form.Item
+            label={translated.name}
+            name="username"
+            rules={[
+              { max: 5, message: translated.nameErr },
+              { required: true, message: translated.nameTip1 },
+            ]}
+          >
+            <Input
+              className="nut-input-text"
+              placeholder={translated.nameTip}
+              type="text"
+            />
+          </Form.Item>
+          <Form.Item
+            label={translated.address}
+            name="address"
+            rules={[
+              { max: 15, message: translated.addressErr },
+              { required: true, message: translated.addressTip },
+            ]}
+          >
+            <TextArea placeholder={translated.addressTip} maxLength={100} />
+          </Form.Item>
+          <Form.Item
+            label={translated.number}
+            name="num"
+            getValueFromEvent={(...args) => args[0]}
+          >
+            <InputNumber />
+          </Form.Item>
+        </Form>
         <h2>{translated.title2}</h2>
         <Form
           divider
