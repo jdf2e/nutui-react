@@ -6,16 +6,14 @@
   padding-bottom: env(safe-area-inset-bottom);
   text-align: center;
 
-  .nut-popup-title {
-    border-bottom: 1px solid $actionsheet-border-color;
+  &.nut-popup {
+    min-height: 10%;
+    background-color: $actionsheet-background-color;
+    padding: $actionsheet-padding;
   }
 
-  &__description {
-    padding: 10px;
-    display: block;
-    font-size: $font-size-base;
-    color: $title-color2;
-    margin-inline-start: 0px;
+  .nut-popup-title {
+    border-bottom: 1px solid $actionsheet-border-color;
   }
 
   &__list {
@@ -23,6 +21,7 @@
     list-style: none;
     padding: 0;
     margin: 0;
+    border-radius: $actionsheet-border-radius;
   }
 
   &__cancel,
@@ -55,5 +54,6 @@
   &__cancel {
     margin-top: 5px;
     border-top: 1px solid $actionsheet-border-color;
+    border-radius: $actionsheet-border-radius;
   }
 }

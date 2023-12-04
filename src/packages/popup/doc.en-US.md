@@ -210,6 +210,9 @@ export default App;
 | closeable | whether to show the close button | `boolean` | `false` |
 | closeIconPosition | close button position | `top-left` \| `top-right` \| `bottom-left` \| `bottom-right` | `top-right` |
 | closeIcon | Custom Icon | `ReactNode` | `close` |
+| left | The left of title | `ReactNode` | `-` |
+| title | The center of title | `ReactNode` | `-` |
+| description | The subtitle/description | `ReactNode` | `-` |
 | destroyOnClose | Whether to close after the component is destroyed | `boolean` | `false` |
 | round | Whether to show rounded corners | `boolean` | `false` |
 | portal | Mount the specified node | `HTMLElement` \| `(() => HTMLElement)` | null` | `null` |
@@ -229,8 +232,11 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-popup-border-radius | popup's border radius | `20px` |
-| \--nutui-popup-close-icon-margin | the margin of the close icon | `16px` |
-| \--nutui-popup-close-icon-color | close icon's color | `#969799` |
-| \--nutui-popup-close-icon-size | close icon's size | `30px` |
-| \--nutui-popup-animation-duration | close icon's animation duration | `0.3s` |
+| \--nutui-popup-border-radius | popup's border radius | `24px` |
+| \--nutui-popup-icon-size | popup's title icon size | `18px` |
+| \--nutui-popup-title-padding | popup's title padding | `16px` |
+| \--nutui-popup-title-font-size | popup's title font size | `18px` |
+| \--nutui-popup-description-font-size | popup's subtitle/description font size | `10px` |
+| \--nutui-popup-title-height | popup's title height | `50px` |
+| \--nutui-popup-title-border-bottom | popup's title border-bottom | `0` |
+| \--nutui-popup-animation-duration | lose icon's animation duration | `0.3s` |
