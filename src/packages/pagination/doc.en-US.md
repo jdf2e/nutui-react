@@ -73,6 +73,39 @@ export default App;
 
 :::
 
+
+### Lite Mode
+
+Pagination can be switched to lite mode with lite mode attribute, and you can use when it's swiper and so on.
+
+:::demo
+
+```tsx
+import React, { useState } from 'react'
+import { Pagination } from '@nutui/nutui-react';
+
+const App = () => {
+  const [currentPage2, setCurrentPage2] = useState(1)
+  const pageChange2 = (v: number) => {
+    const c = v
+    setCurrentPage2(c)
+  }
+  return (
+    <Pagination
+      value={currentPage2}
+      total={12}
+      pageSize={1}
+      mode="lite" 
+      onChange={pageChange2} 
+    />
+  )
+}
+export default App;
+```
+
+:::
+
+
 ### Show ellipses
 
 The ellipses button will display after with force-ellipses attribute, click it can jump quickly 
@@ -177,7 +210,7 @@ export default App;
 | --- | --- | --- | --- |
 | value | current page number, controlled value | `number` | `-` |
 | defaultValue | default page number, uncontrolled value | `number` | `1` |
-| mode | Display mode  | `multi` \| `simple` | `multi` |
+| mode | Display mode  | `multi` \| `simple` \| `lite` | `multi` |
 | prev | Customize previous page button content | `ReactNode` | `Previous` |
 | next | Customize next page button content | `ReactNode` | `Next` |
 | total | total | `number` | `50` |
@@ -197,9 +230,15 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-pagination-color | font color  |  `$color-primary` |
 | \--nutui-pagination-font-size | font size | `$font-size-base` |
-| \--nutui-pagination-item-border-color | border color  | `#e4e7eb` |
-| \--nutui-pagination-disable-color | disable color | `$disable-color` |
+| \--nutui-pagination-item-border-color | border color  | `$color-border` |
+| \--nutui-pagination-active-background-color | background color of current page | `$color-primary` |
+| \--nutui-pagination-disable-color | disable color | `$color-text-disabled` |
 | \--nutui-pagination-disable-background-color | disable background color | `#f7f8fa` |
 | \--nutui-pagination-item-border-width | border width | `1px` |
 | \--nutui-pagination-item-border-radius | border radius  | `2px` |
 | \--nutui-pagination-prev-next-padding | padding  | `0 11px` |
+| \--nutui-pagination-lite-width | lite mode width | `40px` |
+| \--nutui-pagination-lite-height | lite mode height | `20px` |
+| \--nutui-pagination-lite-radius| lite mode radius | `12px` |
+| \--nutui-pagination-lite-background-color | lite mode background color | `var(--nutui-black-7)` |
+| \--nutui-pagination-lite-active-background-color | lite mode background color of current page | `var(--nutui-black-5)` |

@@ -142,11 +142,11 @@ import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar>
-    <Tabbar.Item title="Home" icon={<Home width={12} height={12} />} value={11} />
-    <Tabbar.Item title="Category" icon={<Category width={12} height={12} />} />
-    <Tabbar.Item title="Find" icon={<Find width={12} height={12} />} />
-    <Tabbar.Item title="Cart" icon={<Cart width={12} height={12} />} value={110} />
-    <Tabbar.Item title="Mine" icon={<User width={12} height={12} />} />
+    <Tabbar.Item title="Home" icon={<Home />} value={11} />
+    <Tabbar.Item title="Category" icon={<Category />} />
+    <Tabbar.Item title="Find" icon={<Find />} />
+    <Tabbar.Item title="Cart" icon={<Cart />} value={110} />
+    <Tabbar.Item title="Mine" icon={<User />} />
   </Tabbar>
 );
 
@@ -287,11 +287,12 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-tabbar-height | tabbar height | `50px` |
 | \--nutui-tabbar-active-color | active color | `$color-primary` |
-| \--nutui-tabbar-inactive-color | default color | `$gray1` |
+| \--nutui-tabbar-inactive-color | default color | `$color-title` |
 | \--nutui-tabbar-border-top | borderTop | `1px solid #eee` |
 | \--nutui-tabbar-border-bottom | borderBottom | `1px solid #eee` |
 | \--nutui-tabbar-box-shadow | boxShadow | `none` |
 | \--nutui-tabbar-text-font-size | title fontSize | `$font-size-xs` |
 | \--nutui-tabbar-text-large-font-size | title fontSize when icon is null | `$font-size-large` |
+| \--nutui-tabbar-text-large-font-weight | title fontWeight when icon is null | `$font-weight` |
 | \--nutui-tabbar-text-line-height | title lineHeight | `initial` |
 | \--nutui-tabbar-text-margin-top | title marginTop | `3px` |

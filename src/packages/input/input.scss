@@ -6,9 +6,10 @@
   width: 100%;
   padding: $input-padding;
   line-height: 24px;
-  background: $white;
   font-size: $input-font-size;
   box-sizing: border-box;
+  border-radius: $input-border-radius;
+  background-color: $input-background-color;
   border-bottom: $input-border-bottom-width solid $input-border-bottom;
 
   .nut-icon {
@@ -17,7 +18,7 @@
 
   .nut-input-native {
     width: 100%;
-    color: $gray1;
+    color: $input-color;
     flex: 1;
     background-color: transparent;
     padding: 0;
@@ -25,6 +26,7 @@
     outline: 0 none;
     font: inherit;
     text-decoration: none;
+    background-color: transparent;
   }
 
   &-disabled {

@@ -527,6 +527,7 @@ List 属性是一个由对象构成的数组，数组中的每个对象配置一
 | icon | 参考 Icon 组件 | `ReactNode` | `-` |
 | disabled | 是否为禁用状态 | `boolean` | `false` |
 | className | 为对应选项添加额外的类名 | `string` | `-` |
+| action | 为对应选项添加方法 | `{ icon?: React.ReactNode; onClick?: (e: any) => void }` | `-` |
 
 ## 主题定制
 
@@ -537,12 +538,12 @@ List 属性是一个由对象构成的数组，数组中的每个对象配置一
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-popover-border-radius | popover 内容区的 border 的圆角值 | `8px` |
-| \--nutui-popover-font-size | popover 内容区的 font-size 值 | `14px` |
-| \--nutui-popover-menu-item-hover-background-color | 手指点击菜单选项的选中的背景颜色 | `#fff` |
-| \--nutui-popover-menu-item-hover-text-color | 手指点击菜单选项的选中的文字颜色 | `#1a1a1a` |
-| \--nutui-popover-primary-text-color | 选项区的文字颜色 | `#ffffff` |
-| \--nutui-popover-content-background-color | 选项区的背景颜色 | `#ffffff` |
-| \--nutui-popover-white-background-color | top、bottom、left 和 right 的箭头颜色 | `#ffffff` |
-| \--nutui-popover-border-bottom-color | 选项区的底部 border 颜色 | `rgba(229, 229, 229, 1)` |
-| \--nutui-popover-disable-color | 选项禁用的颜色 | `rgba(154, 155, 157, 1)` |
+| \--nutui-popover-font-size | popover 内容区的 font-size 值 | `12px` |
+| \--nutui-popover-text-color | 选项区的文字颜色 | `$color-title` |
+| \--nutui-popover-content-background-color | 选项区的背景颜色 | `$white` |
+| \--nutui-popover-hover-background-color | 手指点击菜单选项选中的背景颜色 | `#fff` |
+| \--nutui-popover-hover-text-color | 手指点击菜单选项选中的文字颜色 | `#1a1a1a` |
+| \--nutui-popover-border-color | top、bottom、left 和 right 的箭头颜色| `$white` |
+| \--nutui-popover-divider-color | 选项区的底部 border 颜色 | `$color-border` |
+| \--nutui-popover-disable-color | 选项禁用的颜色 | `$color-text-disabled` |
 | \--nutui-popover-menu-item-padding | 选项区菜单每一项的 padding 值 | `8px` |

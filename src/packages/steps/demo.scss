@@ -1,6 +1,7 @@
 .padding {
   padding-left: 0 !important;
   padding-right: 0 !important;
+
   h2 {
     padding-left: 27px !important;
   }
@@ -9,7 +10,9 @@
   width: 100%;
   padding: 15px 0;
   background-color: $background-color3;
+
   .steps-button {
-    text-align: center;
+    display: flex;
+    justify-content: center;
   }
 }

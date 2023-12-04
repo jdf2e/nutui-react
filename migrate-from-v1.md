@@ -244,6 +244,7 @@ plugins: [
 - 移除 `onClickTitle` `onClickRight` `onClickIcon`，通过在`left`、`title`、`right`自定义事件实现，参考文档demo示例
 - 
 #### Pagination
+- 新增 `lite` 模式，只展示页码，不支持事件交互
 - 新增 `defaultValue` 非受控值
 - `modelValue` 重命名为 `value`，受控值
 - `prevText` 重命名为 `prev`，类型修改为 `ReactNode`
@@ -270,6 +271,7 @@ plugins: [
 - 移除 `num`，支持传入所有 `Badge` Props
 - 移除 `color`，使用父元素的 `activeColor`，保持同样的 `active` 状态
 #### Tabs
+- 增加 `简约`、`卡片`、`按钮/胶囊` 模式。
 - 移除 `background`，通过 `className` 或 `style` 控制
 - 移除 `titleScroll`, 默认支持滚动
 - 移除 `ellipsis`，默认 `flex：1`
@@ -624,6 +626,7 @@ plugins: [
 - 新增 `targetId` 属性，用于自定义目标元素 id
 - 新增 `onOpen` 属性，用于点击菜单时触发
 - 新增 `onClose` 属性，用于关闭菜单时触发
+- 新增 `action` 属性，用于为对应的选项添加方法
 - `onChoose` 重命名为 `onSelect`
 - 继承Popup组件的 `overlayStyle` 、`overlayClassName` 、`overlay` 、`closeOnOverlayClick` 属性。    
 

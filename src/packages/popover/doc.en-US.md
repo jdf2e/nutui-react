@@ -521,6 +521,7 @@ The List property is an array of objects, each object in the array is configured
 | icon | @nutui/icons-react name | `ReactNode` | `-` |
 | disabled | whether to disable | `boolean` | `false` |
 | className | Add additional class names for corresponding options | `string` | `-` |
+| action | Add additional actions for corresponding options | `{ icon?: React.ReactNode; onClick?: (e: any) => void }` | `-` |
 
 ## Theming
 
@@ -531,12 +532,14 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-popover-border-radius | The rounded corner value of the border of the popover content area | `8px` |
-| \--nutui-popover-font-size | The font-size value of the popover content area | `14px` |
-| \--nutui-popover-menu-item-hover-background-color | The background color of the finger click menu option | `#fff` |
-| \--nutui-popover-menu-item-hover-text-color | Text color for finger click menu options | `#1a1a1a` |
-| \--nutui-popover-primary-text-color | Text color of options area | `#ffffff` |
-| \--nutui-popover-content-background-color | The background color of the options area | `#ffffff` |
-| \--nutui-popover-white-background-color | Arrow colors for top, bottom, left and right | `#ffffff` |
-| \--nutui-popover-border-bottom-color | The bottom border color of the options area | `rgba(229, 229, 229, 1)` |
-| \--nutui-popover-disable-color | Option Disabled Colors | `rgba(154, 155, 157, 1)` |
+| \--nutui-popover-font-size | The font-size value of the popover content area | `12px` |
+| \--nutui-popover-text-color | Text color of options area | `$color-title` |
+| \--nutui-popover-content-background-color | The background color of the options area | `$white` |
+| \--nutui-popover-hover-background-color | The background color of the finger click menu option | `#fff` |
+| \--nutui-popover-hover-text-color | Text color for finger click menu options | `#1a1a1a` |
+| \--nutui-popover-border-color| Arrow colors for top, bottom, left and right | `$white` |
+| \--nutui-popover-divider-color | The bottom border color of the options area | `$color-border` |
+| \--nutui-popover-disable-color | Option Disabled Colors | `$color-text-disabled` |
 | \--nutui-popover-menu-item-padding | The padding value of each item in the option area menu | `8px` |
+
+
