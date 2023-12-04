@@ -186,7 +186,8 @@ plugins: [
 - `onClickCloseIcon` 和 `onClickOverlay` 两个方法，增加布尔判断，如返回false 或 未定义返回值时，将不再关闭 Popup；默认值为 `true`；在demo中已增加相应示例；同时，两者的名字变更为 `onCloseIconClick`、`onOverlayClick`
 - `closeIcon` 类型从 `string` 改为 `ReactNode`，以前的 `closeIcon='mask-close'` 需改为 `closeIcon={<MaskClose />}`
 - `onOverlayClick` 和 `onCloseIconClick` 不会自动触发 `onClose` 了，如需触发关闭事件，需主动调用 `onClose` 回调函数
-- 为底部弹出的 `Popup` 时，默认支持圆角。
+- 新增 `description` 属性，支持标题下展示描述内容。
+- 调整 `position` 为 `bottom` 时的默认样式，默认支持圆角，此刻不需要再设置 `round` 属性。
 
 ### 布局组件
 #### Divider

@@ -123,12 +123,14 @@ export const Popup: FunctionComponent<
     ...baseStyle,
   }
 
-  const popClassName = classNames({
-    [`${classPrefix}-round`]: round || position === 'bottom',
-    [`${classPrefix}`]: true,
-    [`${classPrefix}-${position}`]: true,
-    [`${className || ''}`]: true,
-  })
+  const popClassName = classNames(
+    {
+      [`${classPrefix}`]: true,
+      [`${classPrefix}-round`]: round || position === 'bottom',
+      [`${classPrefix}-${position}`]: true,
+    },
+    className
+  )
 
   const closeClasses = classNames({
     [`${classPrefix}-title-right`]: true,

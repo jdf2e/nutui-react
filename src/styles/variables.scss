@@ -931,7 +931,10 @@ $overlay-animation-duration: var(
 $popup-border-radius: var(--nutui-popup-border-radius, 24px) !default;
 $popup-icon-size: var(--nutui-popup-icon-size, $font-size-xl) !default;
 $popup-title-padding: var(--nutui-popup-title-padding, 16px) !default;
-$popup-title-font-size: var(--nutui-popup-title-font-size, 18px) !default;
+$popup-title-font-size: var(
+  --nutui-popup-title-font-size,
+  $font-size-xl
+) !default;
 $popup-description-font-size: var(
   --nutui-popup-description-font-size,
   $font-size-xs
@@ -1243,6 +1246,19 @@ $dialog-vertical-footer-ok-margin-top: var(
 ) !default;
 
 // checkbox（✅）
+$checkbox-label-disable-color: var(
+  --nutui-checkbox-label-disable-color,
+  #999
+) !default;
+$checkbox-icon-disable-color: var(
+  --nutui-checkbox-icon-disable-color,
+  #d6d6d6
+) !default;
+$checkbox-icon-disable-color2: var(
+  --nutui-checkbox-icon-disable-color2,
+  $help-color
+) !default;
+
 $checkbox-label-margin-left: var(
   --nutui-checkbox-label-margin-left,
   $spacing-icon-text
@@ -1259,6 +1275,31 @@ $checkbox-icon-font-size: var(
 $checkbox-button-font-size: var(
   --nutui-checkbox-button-font-size,
   $font-size-small
+) !default;
+$checkbox-button-color: $text-color;
+$checkbox-button-background: #f6f7f9;
+$checkbox-button-padding: var(
+  --nutui-checkbox-button-padding,
+  5px 18px
+) !default;
+$checkbox-button-border-radius: var(
+  --nutui-checkbox-button-border-radius,
+  15px
+) !default;
+$checkbox-button-active-border: var(
+  --nutui-checkbox-button-active-border,
+  1px solid $color-primary
+) !default;
+$checkbox-button-disabled-active-color: var(
+  --nutui-checkbox-button-disabled-active-color,
+  $white
+) !default;
+
+//radio（✅）
+$radio-label-font-color: var(--nutui-radio-label-font-color, $gray1) !default;
+$radio-label-font-active-color: var(
+  --nutui-radio-label-font-active-color,
+  $color-primary
 ) !default;
 $checkbox-button-color: $color-text;
 $checkbox-button-background: $color-background;
