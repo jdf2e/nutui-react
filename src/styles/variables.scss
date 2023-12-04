@@ -656,10 +656,16 @@ $inputnumber-disabled-color: var(
 ) !default;
 
 // actionsheet（✅）
+$actionsheet-background-color: var(
+  --nutui-actionsheet-background-color,
+  $white
+) !default;
+$actionsheet-padding: var(--nutui-actionsheet-padding, 0 4px) !default;
 $actionsheet-border-color: var(
   --nutui-actionsheet-border-color,
-  #f6f6f6
+  $color-border
 ) !default;
+$actionsheet-border-radius: var(--nutui-actionsheet-border-radius, 0) !default;
 $actionsheet-item-text-align: var(
   --nutui-actionsheet-item-text-align,
   center
@@ -678,7 +684,7 @@ $actionsheet-item-color: var(
 ) !default;
 $actionsheet-item-danger: var(
   --nutui-actionsheet-item-danger,
-  $color-primary
+  $color-danger
 ) !default;
 
 //shortpassword（✅）
@@ -962,13 +968,18 @@ $overlay-animation-duration: var(
   0.3s
 ) !default;
 //popup（✅）
-$popup-close-icon-margin: var(--nutui-popup-close-icon-margin, 16px) !default;
 $popup-border-radius: var(--nutui-popup-border-radius, 24px) !default;
-$popup-close-icon-color: var(--nutui-popup-close-icon-color, #969799) !default;
-$popup-close-icon-size: var(--nutui-popup-close-icon-size, 30px) !default;
+$popup-icon-size: var(--nutui-popup-icon-size, $font-size-xl) !default;
 $popup-title-padding: var(--nutui-popup-title-padding, 16px) !default;
-$popup-title-font-size: var(--nutui-popup-title-font-size, 18px) !default;
-$popup-title-line-height: var(--nutui-popup-title-line-height, 18px) !default;
+$popup-title-font-size: var(
+  --nutui-popup-title-font-size,
+  $font-size-xl
+) !default;
+$popup-description-font-size: var(
+  --nutui-popup-description-font-size,
+  $font-size-xs
+) !default;
+$popup-title-height: var(--nutui-popup-title-height, 50px) !default;
 $popup-title-border-bottom: var(--nutui-popup-title-border-bottom, 0) !default;
 $popup-animation-duration: var(--nutui-popup-animation-duration, 0.3s) !default;
 $popup-icon-size: var(--nutui-popup-icon-size, $font-size-xl) !default;
@@ -1270,12 +1281,7 @@ $dialog-vertical-footer-ok-margin-top: var(
   5px
 ) !default;
 
-// 在组件中import
-//@import './mixins/index';
-//@import './animation/index';
-
 // checkbox（✅）
-$checkbox-label-color: var(--nutui-checkbox-label-color, $gray1) !default;
 $checkbox-label-disable-color: var(
   --nutui-checkbox-label-disable-color,
   #999
@@ -1284,15 +1290,45 @@ $checkbox-icon-disable-color: var(
   --nutui-checkbox-icon-disable-color,
   #d6d6d6
 ) !default;
-$checkbox-label-margin-left: var(
-  --nutui-checkbox-label-margin-left,
-  10px
-) !default;
-$checkbox-label-font-size: var(--nutui-checkbox-label-font-size, 14px) !default;
-$checkbox-icon-font-size: var(--nutui-checkbox-icon-font-size, 18px) !default;
 $checkbox-icon-disable-color2: var(
   --nutui-checkbox-icon-disable-color2,
   $help-color
+) !default;
+
+$checkbox-label-margin-left: var(
+  --nutui-checkbox-label-margin-left,
+  $spacing-icon-text
+) !default;
+$checkbox-label-color: var(--nutui-checkbox-label-color, $gray1) !default;
+$checkbox-label-font-size: var(
+  --nutui-checkbox-label-font-size,
+  $font-size-small
+) !default;
+$checkbox-icon-font-size: var(
+  --nutui-checkbox-icon-font-size,
+  $font-size-large
+) !default;
+$checkbox-button-font-size: var(
+  --nutui-checkbox-button-font-size,
+  $font-size-small
+) !default;
+$checkbox-button-color: $text-color;
+$checkbox-button-background: #f6f7f9;
+$checkbox-button-padding: var(
+  --nutui-checkbox-button-padding,
+  5px 18px
+) !default;
+$checkbox-button-border-radius: var(
+  --nutui-checkbox-button-border-radius,
+  15px
+) !default;
+$checkbox-button-active-border: var(
+  --nutui-checkbox-button-active-border,
+  1px solid $color-primary
+) !default;
+$checkbox-button-disabled-active-color: var(
+  --nutui-checkbox-button-disabled-active-color,
+  $white
 ) !default;
 
 //radio（✅）
@@ -1326,6 +1362,10 @@ $radio-label-font-size: var(--nutui-radio-label-font-size, 14px) !default;
 $radio-button-font-size: var(--nutui-radio-button-font-size, 12px) !default;
 $radio-button-padding: var(--nutui-radio-button-padding, 5px 18px) !default;
 $radio-button-background: #f6f7f9;
+$radio-button-active-border: var(
+  --nutui-radio-button-active-border,
+  1px solid $color-primary
+) !default;
 $radio-icon-font-size: var(--nutui-radio-icon-font-size, 18px) !default;
 $radio-icon-disable-color2: var(
   --nutui-radio-icon-disable-color2,
