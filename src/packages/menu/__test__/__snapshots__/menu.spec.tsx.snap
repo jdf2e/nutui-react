@@ -6,19 +6,19 @@ exports[`should match snapshot 1`] = `
     class="nut-menu"
   >
     <div
-      class="nut-menu__bar"
+      class="nut-menu-bar"
     >
       <div
-        class="nut-menu__title "
+        class="nut-menu-title "
       >
         <div
-          class="nut-menu__title-text"
+          class="nut-menu-title-text"
         >
           全部商品
         </div>
         <svg
           aria-labelledby="ArrowDown"
-          class="nut-icon nut-icon-ArrowDown nut-menu__title-icon"
+          class="nut-icon nut-icon-ArrowDown nut-menu-title-icon"
           role="presentation"
           viewBox="0 0 1024 1024"
           xmlns="http://www.w3.org/2000/svg"

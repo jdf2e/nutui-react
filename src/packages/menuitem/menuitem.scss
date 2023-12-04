@@ -51,12 +51,7 @@
   z-index: $menu-container-z-index;
 }
 
-// .nut-menu__pop.nut-popup {
-//   transition: all 0s ease 0s;
-//   transform: none;
-// }
-
-.placeholder-element {
+.nut-menu-placeholder-element {
   position: fixed;
   top: -$menu-bar-line-height;
   left: 0;

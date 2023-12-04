@@ -133,7 +133,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
         return (
           <div
             className={classNames(
-              'nut-menu__title ',
+              'nut-menu-title ',
               {
                 active: showMenuItem[index],
                 disabled,
@@ -148,12 +148,12 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
               !disabled && toggleMenuItem(index)
             }}
           >
-            <div className="nut-menu__title-text">{finallyTitle()}</div>
+            <div className="nut-menu-title-text">{finallyTitle()}</div>
             {icon ||
               (direction === 'up' ? (
-                <ArrowUp className="nut-menu__title-icon" />
+                <ArrowUp className="nut-menu-title-icon" />
               ) : (
-                <ArrowDown className="nut-menu__title-icon" />
+                <ArrowDown className="nut-menu-title-icon" />
               ))}
           </div>
         )
@@ -170,7 +170,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
       ref={menuRef}
     >
       <div
-        className={classNames('nut-menu__bar', {
+        className={classNames('nut-menu-bar', {
           opened: showMenuItem.includes(true),
         })}
       >
