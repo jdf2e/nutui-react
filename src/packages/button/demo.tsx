@@ -429,7 +429,7 @@ const ButtonDemo = () => {
 
         <h2>{translated['0aaad620']}</h2>
         <Cell className="button-cell">
-          <Button size="large" type="primary" block>
+          <Button size="large" type="primary">
             {translated.b8a453e3}
           </Button>
           <Button type="primary" style={{ margin: 8 }}>

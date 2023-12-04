@@ -59,6 +59,7 @@ const TabsDemo = () => {
       title11: 'Title 左对齐',
       titleLeftCard: '左对齐-卡片样式',
       titleLeftButton: '左对齐-按钮样式',
+      titleLeftDivider: '左对齐-分割线样式',
       custom1: '自定义 1',
       custom2: '自定义 2',
       custom3: '自定义 3',
@@ -211,7 +212,7 @@ const TabsDemo = () => {
           <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
           <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
         </Tabs>
-        <h2>{translated.title_divider}</h2>
+        <h2>{translated.titleDivider}</h2>
         <Tabs
           value={tab111value}
           activeType="divider"
@@ -261,7 +262,7 @@ const TabsDemo = () => {
           <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
           <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
         </Tabs>
-        <h2>{translated.title_left_divider}</h2>
+        <h2>{translated.titleLeftDivider}</h2>
         <Tabs
           value={tab111value}
           activeType="divider"

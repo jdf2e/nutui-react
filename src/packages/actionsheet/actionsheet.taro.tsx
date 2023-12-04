@@ -66,7 +66,7 @@ export const ActionSheet: FunctionComponent<
         onCancel && onCancel()
       }}
     >
-      <div className={`${className}`} style={style} {...rest}>
+      <div className={`${className}`} style={style}>
         {options.length ? (
           <div className={`${classPrefix}__list`}>
             {options.map((item, index) => {

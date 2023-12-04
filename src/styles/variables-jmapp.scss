@@ -18,7 +18,15 @@ $color-default: var(--nutui-gray-2) !default;
 $color-default-pressed: var(--nutui-gray-4) !default;
 $color-default-light: var(--nutui-gray-1) !default;
 $color-default-disabled: var(--nutui-gray-1) !default;
-
+// 信息
+$color-info: var(--nutui-color-info, #1988fa) !default;
+$color-info-pressed: var(--nutui-color-info-pressed, #496af2) !default;
+$color-info-disabled: var(--nutui-color-info-disabled, #89a6f8) !default;
+$color-info-light: var(--nutui-color-info-light) !default;
+$color-info-background: var(
+  --nutui-color-info-background,
+  linear-gradient(315deg, rgba(73, 143, 242, 1) 0%, rgba(73, 101, 242, 1) 100%)
+) !default;
 // 成功
 $color-success: var(--nutui-green-6) !default;
 $color-success-pressed: var(--nutui-green-8) !default;
@@ -193,16 +201,6 @@ $color-primary-text: var(--nutui-color-primary-text) !default;
 $color-text-link: var(--nutui-color-text-link) !default;
 $white: #ffffff !default;
 $black: $color-text-title !default;
-
-// 信息
-$color-info: var(--nutui-color-info, #1988fa) !default;
-$color-info-pressed: var(--nutui-color-info-pressed, #496af2) !default;
-$color-info-disabled: var(--nutui-color-info-disabled, #89a6f8) !default;
-$color-info-light: var(--nutui-color-info-light) !default;
-$color-info-background: var(
-  --nutui-color-info-background,
-  linear-gradient(315deg, rgba(73, 143, 242, 1) 0%, rgba(73, 101, 242, 1) 100%)
-) !default;
 
 // --- z-index ----
 $mask-z-index: 1000;
@@ -1515,6 +1513,14 @@ $popover-content-background-color: var(
   #ffffff
 ) !default;
 $popover-text-color: var(--nutui-popover-text-color, $color-text) !default;
+$popover-hover-background-color: var(
+  --nutui-popover-hover-background-color,
+  #fff
+) !default;
+$popover-hover-text-color: var(
+  --nutui-popover-hover-text-color,
+  $color-text
+) !default;
 $popover-disable-color: var(
   --nutui-popover-disable-color,
   $color-text-disabled

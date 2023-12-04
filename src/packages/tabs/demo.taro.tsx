@@ -219,7 +219,7 @@ const TabsDemo = () => {
           <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
           <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
         </Tabs>
-        <h2>{translated.title_divider}</h2>
+        <h2>{translated.titleDivider}</h2>
         <Tabs
           value={tab111value}
           activeType="divider"
@@ -269,7 +269,7 @@ const TabsDemo = () => {
           <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
           <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
         </Tabs>
-        <h2>{translated.title_left_divider}</h2>
+        <h2>{translated.titleLeftDivider}</h2>
         <Tabs
           value={tab111value}
           activeType="divider"
