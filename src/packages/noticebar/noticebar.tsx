@@ -221,10 +221,7 @@ export const NoticeBar: FunctionComponent<
     }, time)
   }
 
-  /**
-   * 点击滚动单元
-   */
-
+  // 点击滚动单元
   const handleClickIcon = (event: MouseEvent) => {
     event.stopPropagation()
     SetShowNoticeBar(!closeable)
@@ -262,9 +259,7 @@ export const NoticeBar: FunctionComponent<
     marginTop: animate ? `-${height}px` : '',
   }
 
-  /**
-   * 垂直自定义滚动方式
-   */
+  // 垂直自定义滚动方式
   const init = (active = +0) => {
     const rects = getRect(container?.current)
     const _active = Math.max(Math.min(childCount - 1, active), 0)
@@ -422,10 +417,8 @@ export const NoticeBar: FunctionComponent<
   }
 
   const noticebarClass = classNames({
-    'nut-noticebar-page': true,
-    withicon: closeable,
-    close: closeable,
-    wrapable: wrap,
+    'nut-noticebar-box': true,
+    [`nut-noticebar-box-wrapable`]: wrap,
   })
   useEffect(() => {
     return () => {
@@ -436,11 +429,13 @@ export const NoticeBar: FunctionComponent<
     <div className={`${classPrefix} ${className || ''}`} style={style}>
       {showNoticeBar && direction === 'horizontal' ? (
         <div className={noticebarClass} style={barStyle} onClick={handleClick}>
-          {leftIcon ? <div className="left-icon">{leftIcon}</div> : null}
-          <div ref={wrapRef} className="wrap">
+          {leftIcon ? (
+            <div className="nut-noticebar-box-left-icon">{leftIcon}</div>
+          ) : null}
+          <div ref={wrapRef} className="nut-noticebar-box-wrap">
             <div
               ref={contentRef}
-              className={`content ${animationClass} ${
+              className={`nut-noticebar-box-wrap-content ${animationClass} ${
                 isEllipsis() ? 'nut-ellipsis' : ''
               }`}
               style={contentStyle}
@@ -451,7 +446,7 @@ export const NoticeBar: FunctionComponent<
             </div>
           </div>
           {closeable || rightIcon ? (
-            <div className="right-icon" onClick={onClickIcon}>
+            <div className="nut-noticebar-box-right-icon" onClick={onClickIcon}>
               {rightIcon || <Close width={12} height={12} />}
             </div>
           ) : null}
@@ -464,13 +459,14 @@ export const NoticeBar: FunctionComponent<
           ref={container}
           onClick={handleClick}
         >
-          {leftIcon ? <div className="left-icon">{leftIcon}</div> : null}
+          {leftIcon ? (
+            <div className="nut-noticebar-box-left-icon">{leftIcon}</div>
+          ) : null}
           {children ? (
-            <div className="nut-noticebar__inner" ref={innerRef}>
+            <div className="nut-noticebar-box-wrap" ref={innerRef}>
               {scrollList.current.map((item: string, index: number) => {
                 return (
                   <div
-                    className="scroll-inner "
                     style={itemStyle(index)}
                     key={index}
                     onClick={(e) => {
@@ -483,12 +479,15 @@ export const NoticeBar: FunctionComponent<
               })}
             </div>
           ) : (
-            <div className="horseLamp_list" style={horseLampStyle}>
+            <div
+              className="nut-noticebar-box-horseLamp-list"
+              style={horseLampStyle}
+            >
               {scrollList.current.map((item: string, index: number) => {
                 return (
                   // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
                   <div
-                    className="horseLamp_list_item"
+                    className="nut-noticebar-box-horseLamp-list-item"
                     style={{ height }}
                     key={index}
                     onClick={(e) => {
@@ -502,7 +501,7 @@ export const NoticeBar: FunctionComponent<
             </div>
           )}
           <div
-            className="go"
+            className="nut-noticebar-box-right-icon"
             onClick={(e) => {
               handleClickIcon(e)
             }}

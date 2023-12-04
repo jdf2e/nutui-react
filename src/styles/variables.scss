@@ -1422,14 +1422,24 @@ $fixednav-item-active-color: var(
 ) !default;
 
 // NoticeBar（✅）
+$noticebar-height: var(--nutui-noticebar-height, 36px) !default;
 $noticebar-background: var(
   --nutui-noticebar-background,
   rgba(251, 248, 220, 1)
 ) !default;
 $noticebar-color: var(--nutui-noticebar-color, #d9500b) !default;
-$noticebar-font-size: var(--nutui-noticebar-font-size, 14px) !default;
-$noticebar-height: var(--nutui-noticebar-height, 40px) !default;
+$noticebar-font-size: var(
+  --nutui-noticebar-font-size,
+  $font-size-small
+) !default;
 $noticebar-line-height: var(--nutui-noticebar-line-height, 24px) !default;
+$noticebar-box-padding: var(--nutui-noticebar-box-padding, 0 16px) !default;
+$noticebar-border-radius: var(--nutui-noticebar-border-radius, 0) !default;
+$noticebar-wrap-padding: var(
+  --nutui-noticebar-wrapable-padding,
+  8px 16px
+) !default;
+$noticebar-icon-gap: var(--nutui-noticebar-icon-gap, 4px) !default;
 $noticebar-left-icon-width: var(
   --nutui-noticebar-left-icon-width,
   16px
@@ -1437,16 +1447,6 @@ $noticebar-left-icon-width: var(
 $noticebar-right-icon-width: var(
   --nutui-noticebar-right-icon-width,
   16px
-) !default;
-$noticebar-box-padding: var(--nutui-noticebar-box-padding, 0 16px) !default;
-$noticebar-wrap-padding: var(--nutui-noticebar-wrapable-padding, 16px) !default;
-$noticebar-lefticon-margin: var(
-  --nutui-noticebar-lefticon-margin,
-  0px 10px
-) !default;
-$noticebar-righticon-margin: var(
-  --nutui-noticebar-righticon-margin,
-  0px 10px
 ) !default;
 
 // TimeSelect（✅）
