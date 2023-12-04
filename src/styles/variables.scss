@@ -1128,7 +1128,7 @@ $steps-base-description-color: var(
 ) !default;
 $steps-wait-icon-bg-color: var(
   --nutui-steps-wait-icon-bg-color,
-  $color-text-help
+  $title-color2
 ) !default;
 $steps-wait-icon-color: var(--nutui-steps-wait-icon-color, $white) !default;
 $steps-wait-title-color: var(
