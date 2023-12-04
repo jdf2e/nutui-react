@@ -12,6 +12,7 @@ interface T {
   titleLite: string
   titleCard: string
   titleButton: string
+  titleDivider: string
   title2: string
   title3: string
   title4: string
@@ -26,6 +27,7 @@ interface T {
   title11: string
   titleLeftCard: string
   titleLeftButton: string
+  titleLeftDivider: string
   custom1: string
   custom2: string
   custom3: string
@@ -44,6 +46,7 @@ const TabsDemo = () => {
       titleLite: '基础用法-简约模式',
       titleCard: '基础用法-卡片样式',
       titleButton: '基础用法-按钮样式',
+      titleDivider: '基础用法-分割线样式',
       title2: '通过 value 匹配',
       title3: '数据异步渲染 3s',
       title4: '数量多,滚动操作',
@@ -58,6 +61,7 @@ const TabsDemo = () => {
       title11: 'Title 左对齐',
       titleLeftCard: '左对齐-卡片样式',
       titleLeftButton: '左对齐-按钮样式',
+      titleLeftDivider: '左对齐-分割线样式',
       custom1: '自定义 1',
       custom2: '自定义 2',
       custom3: '自定义 3',
@@ -73,6 +77,7 @@ const TabsDemo = () => {
       titleLite: 'Basic Usage - simple mode',
       titleCard: 'Basic Usage - card mode',
       titleButton: 'Basic Usage - button mode',
+      titleDivider: 'Basic Usage - divider mode',
       title2: 'Match by value',
       title3: 'Data is rendered asynchronously for 3s',
       title4: 'A large number of scrolling operations',
@@ -87,6 +92,7 @@ const TabsDemo = () => {
       title11: 'Title left align',
       titleLeftCard: 'Title left align - card mode',
       titleLeftButton: 'Title left align - button mode',
+      titleLeftDivider: 'Title left align - divider mode',
       custom1: 'custom 1',
       custom2: 'custom 2',
       custom3: 'custom 3',
@@ -213,6 +219,18 @@ const TabsDemo = () => {
           <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
           <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
         </Tabs>
+        <h2>{translated.title_divider}</h2>
+        <Tabs
+          value={tab111value}
+          activeType="divider"
+          onChange={(value) => {
+            setTab111value(value)
+          }}
+        >
+          <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+        </Tabs>
         <h2>{translated.title11}</h2>
         <Tabs
           value={tab3value}
@@ -242,6 +260,19 @@ const TabsDemo = () => {
         <Tabs
           value={tab111value}
           activeType="button"
+          align="left"
+          onChange={(value) => {
+            setTab111value(value)
+          }}
+        >
+          <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+        </Tabs>
+        <h2>{translated.title_left_divider}</h2>
+        <Tabs
+          value={tab111value}
+          activeType="divider"
           align="left"
           onChange={(value) => {
             setTab111value(value)
