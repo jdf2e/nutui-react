@@ -190,8 +190,8 @@ const TourDemo = () => {
           location="bottom-end"
           style={{
             '--nutui-popover-content-background-color': 'rgb(255, 0, 0)',
-            '--nutui-popover-primary-text-color': 'rgb(255, 255, 255)',
-            '--nutui-popover-white-background-color': 'rgb(255, 0, 0)',
+            '--nutui-popover-text-color': 'rgb(255, 255, 255)',
+            '--nutui-popover-border-color': 'rgb(255, 0, 0)',
           }}
           offset={[0, 0]}
           maskWidth={50}
@@ -231,8 +231,8 @@ const TourDemo = () => {
           location="bottom-end"
           style={{
             '--nutui-popover-content-background-color': 'rgb(255, 0, 0)',
-            '--nutui-popover-primary-text-color': 'rgb(255, 255, 255)',
-            '--nutui-popover-white-background-color': 'rgb(255, 0, 0)',
+            '--nutui-popover-text-color': 'rgb(255, 255, 255)',
+            '--nutui-popover-border-color': 'rgb(255, 0, 0)',
           }}
           offset={[8, 8]}
         />
@@ -259,8 +259,8 @@ const TourDemo = () => {
           offset={[8, 8]}
           style={{
             '--nutui-popover-content-background-color': 'rgb(75, 76, 77)',
-            '--nutui-popover-primary-text-color': 'rgb(255, 255, 255)',
-            '--nutui-popover-white-background-color': 'rgb(75, 76, 77)',
+            '--nutui-popover-text-color': 'rgb(255, 255, 255)',
+            '--nutui-popover-border-color': 'rgb(75, 76, 77)',
           }}
           closeOnOverlayClick={false}
         >
