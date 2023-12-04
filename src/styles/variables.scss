@@ -1467,6 +1467,14 @@ $popover-content-background-color: var(
   #ffffff
 ) !default;
 $popover-text-color: var(--nutui-popover-text-color, #1a1a1a) !default;
+$popover-hover-background-color: var(
+  --nutui-popover-hover-background-color,
+  #fff
+) !default;
+$popover-hover-text-color: var(
+  --nutui-popover-hover-text-color,
+  #1a1a1a
+) !default;
 $popover-disable-color: var(
   --nutui-popover-disable-color,
   $color-text-disabled

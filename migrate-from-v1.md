@@ -640,6 +640,7 @@ plugins: [
 - 新增 `targetId` 属性，用于自定义目标元素 id
 - 新增 `onOpen` 属性，用于点击菜单时触发
 - 新增 `onClose` 属性，用于关闭菜单时触发
+- 新增 `action` 属性，用于为对应的选项添加方法
 - `onChoose` 重命名为 `onSelect`
 - 继承Popup组件的 `overlayStyle` 、`overlayClassName` 、`overlay` 、`closeOnOverlayClick` 属性。    
 

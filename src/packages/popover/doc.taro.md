@@ -541,6 +541,8 @@ List 属性是一个由对象构成的数组，数组中的每个对象配置一
 | \--nutui-popover-font-size | popover 内容区的 font-size 值 | `12px` |
 | \--nutui-popover-text-color | 选项区的文字颜色 | `$color-title` |
 | \--nutui-popover-content-background-color | 选项区的背景颜色 | `$white` |
+| \--nutui-popover-hover-background-color | 手指点击菜单选项选中的背景颜色 | `#fff` |
+| \--nutui-popover-hover-text-color | 手指点击菜单选项选中的文字颜色 | `#1a1a1a` |
 | \--nutui-popover-border-color | top、bottom、left 和 right 的箭头颜色| `$white` |
 | \--nutui-popover-divider-color | 选项区的底部 border 颜色 | `$color-border` |
 | \--nutui-popover-disable-color | 选项禁用的颜色 | `$color-text-disabled` |

@@ -322,7 +322,7 @@ const StepsDemo = () => {
               >
                 2
               </Step>
-              <Step value={3} title={translated.f6e0d691} icon=" ">
+              <Step value={3} title={translated.f6e0d691}>
                 3
               </Step>
             </Steps>

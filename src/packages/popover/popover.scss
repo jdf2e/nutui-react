@@ -116,6 +116,12 @@
         border-bottom: none;
       }
 
+      &:hover {
+        cursor: pointer;
+        color: $popover-hover-text-color;
+        background-color: $popover-hover-background-color;
+      }
+
       &:hover:nth-of-type(2) {
         border-radius: 8px 8px 0px 0px;
       }
