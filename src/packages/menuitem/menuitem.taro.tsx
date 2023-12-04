@@ -179,7 +179,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     <View className="nut-menu-container">
       {closeOnClickAway ? (
         <View
-          className={`placeholder-element ${classNames({
+          className={`nut-menu-placeholder-element ${classNames({
             up: direction === 'up',
           })}`}
           style={placeholderStyle()}
