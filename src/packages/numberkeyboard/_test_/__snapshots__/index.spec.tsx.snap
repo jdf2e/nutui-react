@@ -4,11 +4,11 @@ exports[`should match custom snapshot 1`] = `
 <div>
   <div
     class="nut-overlay"
-    style="background-color: rgba(0, 0, 0, 0); --nutui-overlay-zIndex: 1000;"
+    style="background-color: rgba(0, 0, 0, 0); --nutui-overlay-zIndex: 9999;"
   />
   <div
     class="nut-popup nut-popup-round nut-popup-bottom"
-    style="z-index: 1000;"
+    style="z-index: 9999;"
   >
     <div
       class="nut-numberkeyboard"
@@ -197,11 +197,11 @@ exports[`should match snapshot 1`] = `
 <div>
   <div
     class="nut-overlay"
-    style="background-color: rgba(0, 0, 0, 0); --nutui-overlay-zIndex: 1000;"
+    style="background-color: rgba(0, 0, 0, 0); --nutui-overlay-zIndex: 9999;"
   />
   <div
     class="nut-popup nut-popup-round nut-popup-bottom"
-    style="z-index: 1000;"
+    style="z-index: 9999;"
   >
     <div
       class="nut-numberkeyboard"
