@@ -142,11 +142,11 @@ import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar>
-    <Tabbar.Item title="Home" icon={<Home width={12} height={12} />} value={11} />
-    <Tabbar.Item title="Category" icon={<Category width={12} height={12} />} />
-    <Tabbar.Item title="Find" icon={<Find width={12} height={12} />} />
-    <Tabbar.Item title="Cart" icon={<Cart width={12} height={12} />} value={110} />
-    <Tabbar.Item title="Mine" icon={<User width={12} height={12} />} />
+    <Tabbar.Item title="Home" icon={<Home />} value={11} />
+    <Tabbar.Item title="Category" icon={<Category />} />
+    <Tabbar.Item title="Find" icon={<Find />} />
+    <Tabbar.Item title="Cart" icon={<Cart />} value={110} />
+    <Tabbar.Item title="Mine" icon={<User />} />
   </Tabbar>
 );
 
