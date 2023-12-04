@@ -33,6 +33,7 @@ export interface List {
   icon?: React.ReactNode
   disabled?: boolean
   className?: string
+  action?: { icon?: React.ReactNode; onClick?: (e: any) => void }
 }
 
 export interface PopoverProps extends PopupProps {
@@ -327,8 +328,18 @@ export const Popover: FunctionComponent<
                   key={item.key || index}
                   onClick={() => handleSelect(item, index)}
                 >
-                  {item.icon ? item.icon : null}
+                  {item.icon ? (
+                    <i className="nut-popover-menu-item-icon">{item.icon}</i>
+                  ) : null}
                   <div className="nut-popover-menu-item-name">{item.name}</div>
+                  {item.action && item.action.icon ? (
+                    <i
+                      className="nut-popover-menu-item-action-icon"
+                      onClick={(e) => item.action?.onClick?.(e)}
+                    >
+                      {item.action.icon}
+                    </i>
+                  ) : null}
                 </div>
               )
             })}
