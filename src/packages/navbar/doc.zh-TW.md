@@ -152,6 +152,43 @@ export default App;
 
 :::
 
+:::demo
+
+```tsx
+import  React from "react";
+import { NavBar, Toast } from '@nutui/nutui-react';
+import { ArrowLeft, Share, Close } from '@nutui/icons-react'
+
+const App = () => {
+  return ( 
+    <NavBar
+        titleAlign="left"
+        back={
+        <>
+            <ArrowLeft name="left" color="#979797" />
+            返回
+        </>
+        }
+        left={<Close width={12} />}
+        right={
+        <span onClick={(e) =>  Toast.show('icon')}>
+            <Share />
+        </span>
+        }
+        onBackClick={(e) =>  Toast.show("返回")}
+    >
+        <span onClick={(e) =>  Toast.show("標題")}>
+        訂單詳情
+        </span>
+    </NavBar>
+  );
+};  
+export default App;
+
+```
+
+:::
+
 ## Navbar
 
 ### Props
@@ -161,6 +198,7 @@ export default App;
 | right | 右側內容 | `ReactNode` | `-` |
 | left | 左側內容，渲染在返回區域的右側 | `ReactNode` | `-` |
 | back | 返回區域的文字 | `ReactNode` | `-` |
+| titleAlign | 標題位置,可選值center left | `string` | `center` |
 | fixed | 是否固定 | `boolean` | `false` |
 | safeArea | 是否適配安全區 | `boolean` | `false` |
 | placeholder | 固定在頂部時，是否在標簽位置生成一個等高的佔位元素 | `boolean` | `false` |
@@ -178,11 +216,10 @@ export default App;
 | \--nutui-navbar-width | 頭部導航的寬度 | `100%` |
 | \--nutui-navbar-height | 頭部導航的高度 | `44px` |
 | \--nutui-navbar-margin-bottom | 頭部導航的下邊距 | `20px` |
-| \--nutui-navbar-padding | 頭部導航的內邊距 | `13px 16px` |
 | \--nutui-navbar-background | 頭部導航的背景顏色 | `$white` |
 | \--nutui-navbar-box-shadow | 頭部導航的陰影 | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
-| \--nutui-navbar-color | 頭部導航的字體顏色 | `$gray2` |
+| \--nutui-navbar-color | 頭部導航的字體顏色 | `$color-text` |
 | \--nutui-navbar-font-size | 頭部導航的字體大小 | `$font-size-base` |
 | \--nutui-navbar-title-font-size | 頭部導航標題的字體大小 | `$font-size-base` |
 | \--nutui-navbar-title-font-weight | 頭部導航標題的字體粗細 | `0` |
-| \--nutui-navbar-title-font-color | 頭部導航標題的字體顏色 | `$gray1` |
+| \--nutui-navbar-title-font-color | 頭部導航標題的字體顏色 | `$color-title` |

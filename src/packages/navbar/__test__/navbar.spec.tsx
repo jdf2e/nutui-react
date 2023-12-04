@@ -6,15 +6,15 @@ import { NavBar } from '../navbar'
 
 test('should render left slot correctly', () => {
   const { container } = render(<NavBar left={<span>left</span>} />)
-  expect(
-    container.querySelectorAll('.nut-navbar__left')[0].innerHTML
-  ).toContain('<span>left</span>')
+  expect(container.querySelectorAll('.nut-navbar-left')[0].innerHTML).toContain(
+    '<span>left</span>'
+  )
 })
 
 test('should render right slot correctly', () => {
   const { container } = render(<NavBar right={<span>right</span>} />)
   expect(
-    container.querySelectorAll('.nut-navbar__right')[0].innerHTML
+    container.querySelectorAll('.nut-navbar-right')[0].innerHTML
   ).toContain('<span>right</span>')
 })
 
@@ -25,20 +25,20 @@ test('should render title slot correctly', () => {
     </NavBar>
   )
   expect(
-    container.querySelectorAll('.nut-navbar__title')[0].innerHTML
+    container.querySelectorAll('.nut-navbar-title')[0].innerHTML
   ).toContain('<span>content</span>')
 })
 
 test('should left-text', () => {
   const { container } = render(<NavBar left="back">订单详情</NavBar>)
-  expect(container.querySelectorAll('.nut-navbar__left')[0].innerHTML).toBe(
+  expect(container.querySelectorAll('.nut-navbar-left')[0].innerHTML).toBe(
     'back'
   )
 })
 
 test('should description', () => {
   const { container } = render(<NavBar right="description">订单详情</NavBar>)
-  expect(container.querySelectorAll('.nut-navbar__right')[0].innerHTML).toBe(
+  expect(container.querySelectorAll('.nut-navbar-right')[0].innerHTML).toBe(
     'description'
   )
 })
@@ -50,7 +50,7 @@ test('should render placeholder element when using placeholder prop', () => {
     </NavBar>
   )
   expect(
-    container.querySelectorAll('.nut-navbar--placeholder')[0].innerHTML
+    container.querySelectorAll('.nut-navbar-placeholder')[0].innerHTML
   ).toMatchSnapshot()
 })
 
@@ -62,7 +62,7 @@ test('should emit click-back event when clicking back text', () => {
     </NavBar>
   )
 
-  fireEvent.click(container.querySelectorAll('.nut-navbar__left__back')[0])
+  fireEvent.click(container.querySelectorAll('.nut-navbar-left-back')[0])
   expect(onBackClick).toBeCalled()
 })
 
