@@ -6,21 +6,21 @@
 
   &__control {
     display: flex;
-    height: 56px;
-    font-size: 16px;
+    height: $popup-title-height;
+    font-size: $popup-title-font-size;
     align-items: center;
     justify-content: space-between;
-    padding: $picker-bar-button-padding;
+    padding: $popup-title-padding;
   }
 
   &__cancel-btn {
-    color: $picker-bar-cancel-color;
-    font-size: $picker-bar-cancel-font-size;
+    color: $picker-title-cancel-color;
+    font-size: $picker-title-cancel-font-size;
   }
 
   &__confirm-btn {
-    color: $picker-bar-ok-color;
-    font-size: $picker-bar-ok-font-size;
+    color: $picker-title-ok-color;
+    font-size: $picker-title-ok-font-size;
   }
 
   &__title {
@@ -29,9 +29,9 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     text-align: center;
-    color: $picker-bar-title-color;
-    font-size: $picker-bar-title-font-size;
-    font-weight: $picker-bar-title-font-weight;
+    color: $title-color;
+    font-size: $popup-title-font-size;
+    font-weight: $popup-title-font-weight;
   }
 
   &__panel {
@@ -82,7 +82,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: $picker-mask-bg-img;
+    background-image: $picker-mask-background;
     background-position: top, bottom;
     background-size: 100% 108px;
     background-repeat: no-repeat;
@@ -145,8 +145,8 @@
     height: $picker-item-height;
     line-height: $picker-item-height;
     text-align: center;
-    color: $picker-item-text-color;
-    font-size: $picker-bar-title-font-size;
+    color: $title-color;
+    font-size: $font-size-base;
   }
 
   &-roller-item-hidden {
