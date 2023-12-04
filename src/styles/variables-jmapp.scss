@@ -538,13 +538,21 @@ $uploader-preview-close-top: var(
 ) !default;
 
 // picker（✅）（todo:react版本picker组件dom元素类名变化较大，picker.scss暂不改动）
+$picker-title-cancel-color: var(
+  --nutui-picker-title-cancel-color,
+  #f0f0f0
+) !default;
 $picker-title-cancel-font-size: var(
   --nutui-picker-title-cancel-font-size,
-  $font-text-base
+  $font-size-base
+) !default;
+$picker-title-ok-color: var(
+  --nutui-picker-title-ok-color,
+  $color-primary
 ) !default;
 $picker-title-ok-font-size: var(
   --nutui-picker-title-ok-font-size,
-  $font-text-base
+  $font-size-base
 ) !default;
 $picker-list-height: var(--nutui-picker-list-height, 252px) !default;
 $picker-item-height: var(--nutui-picker-item-height, 40px) !default;
@@ -766,16 +774,16 @@ $numberkeyboard-key-font-size: var(
   --nutui-numberkeyboard-key-font-size,
   $font-size-xl
 ) !default;
-$numberkeyboard-key-font-color: var(
-  --nutui-numberkeyboard-key-font-color,
+$numberkeyboard-key-color: var(
+  --nutui-numberkeyboard-key-color,
   $color-text
 ) !default;
 $numberkeyboard-key-confirm-font-size: var(
   --nutui-numberkeyboard-key-confirm-font-size,
   $font-size-large
 ) !default;
-$numberkeyboard-key-confirm-font-color: var(
-  --nutui-numberkeyboard-key-confirm-font-color,
+$numberkeyboard-key-confirm-color: var(
+  --nutui-numberkeyboard-key-confirm-color,
   #fff
 ) !default;
 $numberkeyboard-key-confirm-background-color: var(
@@ -979,6 +987,10 @@ $popup-title-font-size: var(--nutui-popup-title-font-size, $font-h1) !default;
 $popup-description-font-size: var(
   --nutui-popup-description-font-size,
   $font-size-xs
+) !default;
+$popup-title-font-weight: var(
+  --nutui-popup-title-font-weight,
+  $font-weight-bold
 ) !default;
 $popup-title-height: var(--nutui-popup-title-height, auto) !default;
 $popup-title-border-bottom: var(--nutui-popup-title-border-bottom, 0) !default;
@@ -1667,10 +1679,7 @@ $indicator-dot-active-size: var(
   --nutui-indicator-dot-active-size,
   20px
 ) !default;
-$indicator-border-radius-size: var(
-  --nutui-indicator-border-radius-size,
-  $indicator-dot-size
-) !default;
+$indicator-border-radius: var(--nutui-indicator-border-radius, 2px) !default;
 $indicator-dot-margin: var(--nutui-indicator-dot-margin, $spacing-xs) !default;
 
 // menu（✅）
@@ -2245,6 +2254,22 @@ $countup-bg-color: var(--nutui-countup-bg-color, inherit) !default;
 $countup-color: var(--nutui-countup-color, $color-text-title) !default;
 
 // layout（✅）
+$row-content-color: var(--nutui-row-content-color, #fff) !default;
+$row-content-background-color: var(
+  --nutui-row-content-background-color,
+  var(--row-content-bg-color, #ff8881)
+) !default;
+$row-content-light-background-color: var(
+  --row-content-light-bg-color,
+  #ffc7c4
+) !default;
+$row-content-border-radius: var(
+  --nutui-row-content-border-radius,
+  6px
+) !default;
+$row-content-height: var(--nutui-row-content-height, 50px) !default;
+$row-content-line-height: var(--nutui-row-content-line-height, 40px) !default;
+
 $col-default-margin-bottom: var(
   --nutui-col-default-margin-bottom,
   2px
