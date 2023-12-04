@@ -1041,6 +1041,10 @@ $tabbar-text-large-font-size: var(
   --nutui-tabbar-text-large-font-size,
   $font-size-large
 ) !default;
+$tabbar-text-large-font-weight: var(
+  --nutui-tabbar-text-large-font-weight,
+  $font-weight
+) !default;
 $tabbar-text-line-height: var(--nutui-tabbar-text-line-height, 20px) !default;
 $tabbar-height: var(--nutui-tabbar-height, 50px) !default;
 $tabbar-text-margin-top: var(--nutui-tabbar-text-margin-top, 3px) !default;
