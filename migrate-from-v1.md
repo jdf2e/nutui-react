@@ -244,6 +244,7 @@ plugins: [
 - 移除 `onClickTitle` `onClickRight` `onClickIcon`，通过在`left`、`title`、`right`自定义事件实现，参考文档demo示例
 - 
 #### Pagination
+- 新增 `lite` 模式，只展示页码，不支持事件交互
 - 新增 `defaultValue` 非受控值
 - `modelValue` 重命名为 `value`，受控值
 - `prevText` 重命名为 `prev`，类型修改为 `ReactNode`
