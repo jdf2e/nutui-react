@@ -36,7 +36,7 @@ const App = () => {
       <Overlay
         visible={visible}
         onClick={onClose}
-        style={{'--nutui-overlay-zIndex': 2000,}}
+        style={{'--nutui-overlay-zIndex': 2020,}}
         afterShow={() => {
           console.log('afterShow')
         }}
@@ -110,7 +110,8 @@ const App = () => {
       <Overlay
         visible={visible}
         onClick={onClose}
-        duration={2.5}
+        style={{ '--nutui-overlay-animation-duration': '2.5s' }}
+        duration={2500}
         afterShow={() => {
           console.log('afterShow')
         }}
@@ -247,14 +248,14 @@ export default App;
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | visible | 當前組件是否顯示 | `boolean` | `false` |
-| duration | 動畫時長，單位秒 | `number` | `0.3` |
+| duration | 動畫時長，單位毫秒 | `number` | `300` |
 | lockScroll | 背景是否鎖定 | `boolean` | `true` |
 | closeOnOverlayClick | 是否點擊遮罩關閉 | `boolean` | `true` |
 | onClick | 點擊時觸發 | `event: Event` | `-` |
 | afterClose | 完全關閉後觸發 | `() => void` | `-` |
 | afterShow | 完全展示後觸發 | `() => void` | `-` |
 
-## 主題定制
+## 主題定製
 
 ### 樣式變量
 
@@ -262,7 +263,8 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-overlay-bg-color | 遮罩層背景顏色 | `$gray7` |
+| \--nutui-overlay-bg-color | 遮罩層背景顏色 | `$color-mask` |
 | \--nutui-overlay-zIndex | overlay 的 z-index | `1000` |
-| \--nutui-overlay-content-bg-color | 遮罩層嵌套內容背景顏色 | `$gray6` |
-| \--nutui-overlay-content-color | 遮罩層嵌套內容字體顏色 | `$gray1` |
+| \--nutui-overlay-content-bg-color | 遮罩層嵌套內容背景顏色 | `$white` |
+| \--nutui-overlay-content-color | 遮罩層嵌套內容字體顏色 | `$color-title` |
+| \--nutui-overlay-animation-duration| 遮罩層動畫延時的時長 | `0.3s` |
