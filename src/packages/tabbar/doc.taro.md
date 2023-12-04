@@ -23,7 +23,7 @@ import { Cart, Category, Find, Home, User } from '@nutui/icons-react-taro';
 
 const App = () => (
   <Tabbar onSwitch={(child, idx) => {console.log(idx)}}>
-    <Tabbar.Item title="首页" icon={<Home width={18} height={18} />} />
+    <Tabbar.Item title="首页" icon={<Home width={18} height={18} />} value={9}/>
     <Tabbar.Item title="分类" icon={<Category width={18} height={18} />} />
     <Tabbar.Item title="发现" icon={<Find width={18} height={18} />} />
     <Tabbar.Item title="购物车" icon={<Cart width={18} height={18} />} />
