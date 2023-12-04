@@ -411,14 +411,12 @@ const InternalCascader: ForwardRefRenderFunction<
                   setTabvalue(pane.paneKey)
                   state.tabsCursor = index
                 }}
-                className={`nut-tabs__titles-item ${
-                  tabvalue === pane.paneKey
-                    ? 'nut-tabs__titles-item--active'
-                    : ''
+                className={`nut-tabs-titles-item ${
+                  tabvalue === pane.paneKey ? 'nut-tabs-titles-item-active' : ''
                 }`}
                 key={pane.paneKey}
               >
-                <span className="nut-tabs__titles-item__text">
+                <span className="nut-tabs-titles-item-text">
                   {!state.initLoading &&
                     state.panes.length &&
                     pane?.selectedNode?.text}
@@ -428,7 +426,7 @@ const InternalCascader: ForwardRefRenderFunction<
                     '请选择'}
                   {!(!state.initLoading && state.panes.length) && 'Loading...'}
                 </span>
-                <span className="nut-tabs__titles-item__line" />
+                <span className="nut-tabs-titles-item-line" />
               </div>
             ))
           }}

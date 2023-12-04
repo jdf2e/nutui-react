@@ -3,7 +3,8 @@ import { useTranslate } from '../../sites/assets/locale'
 import { InputNumber } from './inputnumber'
 import Cell from '@/packages/cell'
 import Toast from '@/packages/toast'
-import './demo.scss'
+
+import ConfigProvider from '@/packages/configprovider'
 
 interface T {
   '6333c786': string
@@ -21,6 +22,28 @@ interface T {
   '7e2394be': string
 }
 
+const customTheme = {
+  nutuiInputnumberButtonWidth: '30px',
+  nutuiInputnumberButtonHeight: '30px',
+  nutuiInputnumberButtonBorderRadius: '2px',
+  nutuiInputnumberInputBackgroundColor: '#fff',
+  nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
+  nutuiInputnumberInputHeight: '30px',
+  nutuiInputnumberInputMargin: '0 2px',
+}
+
+const customTheme2 = {
+  nutuiInputnumberButtonWidth: '30px',
+  nutuiInputnumberButtonHeight: '30px',
+  nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
+  nutuiInputnumberInputBackgroundColor: '#fff',
+  nutuiInputnumberInputMargin: '0 2px',
+}
+
+const customTheme3 = {
+  nutuiInputnumberInputWidth: '60px',
+}
+
 const InputNumberDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
@@ -31,8 +54,8 @@ const InputNumberDemo = () => {
       '9636103a': '限制输入范围',
       '181965e2': '禁用操作',
       e7b2ce1f: '只读禁用输入框',
-      e7b2ce1g: '设置按钮样式1',
-      e7b2ce1y: '设置按钮样式2',
+      e7b2ce1g: '自定义按钮样式1',
+      e7b2ce1y: '自定义按钮样式2',
       '3a42134b': '支持小数点',
       '65bafb1d': '支持异步修改',
       '7e2394ae': '自定义按钮大小',
@@ -46,8 +69,8 @@ const InputNumberDemo = () => {
       '9636103a': '限制輸入範圍',
       '181965e2': '禁用操作',
       e7b2ce1f: '只讀禁用輸入框',
-      e7b2ce1g: '设置按钮样式1',
-      e7b2ce1y: '设置按钮样式2',
+      e7b2ce1g: '自定義按钮样式1',
+      e7b2ce1y: '自定義按钮样式2',
       '3a42134b': '支持小數點',
       '65bafb1d': '支持異步修改',
       '7e2394ae': '自定義按鈕大小',
@@ -61,8 +84,8 @@ const InputNumberDemo = () => {
       '9636103a': 'Limit input range',
       '181965e2': 'Disable operation',
       e7b2ce1f: 'read-only disabled input box',
-      e7b2ce1g: 'Button CSS1',
-      e7b2ce1y: 'Button CSS2',
+      e7b2ce1g: 'Custom Button CSS1',
+      e7b2ce1y: 'Custom Button CSS2',
       '3a42134b': 'support decimal point',
       '65bafb1d': 'Support for asynchronous modification',
       '7e2394ae': 'custom button size',
@@ -117,12 +140,16 @@ const InputNumberDemo = () => {
 
         <h2>{translated.e7b2ce1g}</h2>
         <Cell>
-          <InputNumber className="custom-theme" defaultValue={1} />
+          <ConfigProvider theme={customTheme}>
+            <InputNumber defaultValue={1} />
+          </ConfigProvider>
         </Cell>
 
         <h2>{translated.e7b2ce1y}</h2>
         <Cell>
-          <InputNumber className="custom-theme-two" defaultValue={1} />
+          <ConfigProvider theme={customTheme2}>
+            <InputNumber defaultValue={1} />
+          </ConfigProvider>
         </Cell>
 
         <h2>{translated['3a42134b']}</h2>
@@ -137,24 +164,28 @@ const InputNumberDemo = () => {
 
         <h2>支持formatter</h2>
         <Cell>
-          <InputNumber
-            className="format-width"
-            defaultValue="1000"
-            min={10}
-            max={15020}
-            formatter={(value) =>
-              `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-            }
-          />
+          <ConfigProvider theme={customTheme3}>
+            <InputNumber
+              className="format-width"
+              defaultValue="1000"
+              min={10}
+              max={15020}
+              formatter={(value) =>
+                `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+              }
+            />
+          </ConfigProvider>
         </Cell>
         <Cell>
-          <InputNumber
-            className="format-width"
-            defaultValue="100"
-            min={0}
-            max={100}
-            formatter={(value) => `${value}%`}
-          />
+          <ConfigProvider theme={customTheme3}>
+            <InputNumber
+              className="format-width"
+              defaultValue="100"
+              min={0}
+              max={100}
+              formatter={(value) => `${value}%`}
+            />
+          </ConfigProvider>
         </Cell>
       </div>
     </>

@@ -130,11 +130,11 @@ import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar>
-    <Tabbar.Item title="首頁" icon={<Home width={12} height={12} />} value={11} />
-    <Tabbar.Item title="分類" icon={<Category width={12} height={12} />} />
-    <Tabbar.Item title="發現" icon={<Find width={12} height={12} />} />
-    <Tabbar.Item title="購物車" icon={<Cart width={12} height={12} />} value={110} />
-    <Tabbar.Item title="我的" icon={<User width={12} height={12} />} />
+    <Tabbar.Item title="首頁" icon={<Home />} value={11} />
+    <Tabbar.Item title="分類" icon={<Category />} />
+    <Tabbar.Item title="發現" icon={<Find />} />
+    <Tabbar.Item title="購物車" icon={<Cart />} value={110} />
+    <Tabbar.Item title="我的" icon={<User />} />
   </Tabbar>
 )
 
@@ -276,11 +276,12 @@ export default App;
 | --- | --- | --- |
 | \--nutui-tabbar-height | 高度 | `50px` |
 | \--nutui-tabbar-active-color | 選中顏色 | `$color-primary` |
-| \--nutui-tabbar-inactive-color | 未選中顏色 | `$gray1` |
+| \--nutui-tabbar-inactive-color | 未選中顏色 | `$color-title` |
 | \--nutui-tabbar-border-top | 上邊框 | `1px solid #eee` |
 | \--nutui-tabbar-border-bottom | 下邊框 | `1px solid #eee` |
 | \--nutui-tabbar-box-shadow | 陰影 | `none` |
 | \--nutui-tabbar-text-font-size | 標題字體大小 | `$font-size-xs` |
 | \--nutui-tabbar-text-large-font-size | 無圖標時標題字體大小 | `$font-size-large` |
+| \--nutui-tabbar-text-large-font-weight | 無圖標時標題字體粗細 | `$font-weight` |
 | \--nutui-tabbar-text-line-height | 字體行高 | `initial` |
 | \--nutui-tabbar-text-margin-top | 標題上外邊距 | `3px` |

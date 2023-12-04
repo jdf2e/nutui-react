@@ -8,9 +8,14 @@ import {
   Notice,
   Category,
 } from '@nutui/icons-react-taro'
+import { useTranslate } from '../../sites/assets/locale'
 import { Button, Popover, Cell, Picker } from '@/packages/nutui.react.taro'
 import '@/packages/popover/demo.scss'
 import Header from '@/sites/components/header'
+
+interface T {
+  [props: string]: string
+}
 
 interface List {
   key?: string
@@ -29,6 +34,47 @@ interface PickerOption {
 }
 
 const PopoverDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      title: '基础用法',
+      title1: '选项配置',
+      title2: '自定义内容',
+      title3: '位置自定义',
+      title4: '自定义目标元素',
+      dark: '暗黑风格',
+      showIcon: '展示图标',
+      disableAction: '禁用选项',
+      content: '自定义内容',
+      contentColor: '自定义颜色',
+      showMoreDirection: '点击查看更多方向',
+    },
+    'en-US': {
+      title: 'Basic Usage',
+      title1: 'Option Configuration',
+      title2: 'Custom Content',
+      title3: 'Custom Location',
+      title4: 'Custom Target Element',
+      dark: 'Dark',
+      showIcon: 'Show Icon',
+      disableAction: 'Disabled',
+      content: 'Custom Content',
+      contentColor: 'Custom Color',
+      showMoreDirection: 'click show more direction',
+    },
+    'zh-TW': {
+      title: '基礎用法',
+      title1: '選項配置',
+      title2: '自定義內容',
+      title3: '位置自定義',
+      title4: '自定義目標元素',
+      dark: '暗黑風格',
+      showIcon: '展示圖標',
+      disableAction: '禁用選項',
+      content: '自定義內容',
+      contentColor: '自定義顏色',
+      showMoreDirection: '點擊查看更多方向',
+    },
+  })
   const selfContentStyle = {
     width: '195px',
     display: 'flex',
@@ -67,19 +113,24 @@ const PopoverDemo = () => {
     {
       key: 'key1',
       name: 'option1',
-      icon: (
-        <Home color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />
-      ),
+      icon: <Home color="rgba(250, 44, 25, 1)" />,
+      action: {
+        icon: <Home />,
+        onClick: (e: any) => {
+          console.log('onclick 1')
+          e.stopPropagation()
+        },
+      },
     },
     {
       key: 'key2',
       name: 'option2',
-      icon: <Cart style={{ marginRight: '8px' }} />,
+      icon: <Cart />,
     },
     {
       key: 'key3',
       name: 'option3',
-      icon: <Location style={{ marginRight: '8px' }} />,
+      icon: <Location />,
     },
   ]
   const itemListDisabled = [
@@ -185,8 +236,7 @@ const PopoverDemo = () => {
     <>
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>基础用法</h2>
-
+        <h2>{translated.title}</h2>
         <Popover
           visible={basic}
           list={itemList}
@@ -203,11 +253,11 @@ const PopoverDemo = () => {
           }}
         >
           <Button type="primary" shape="square">
-            基础用法
+            {translated.title}
           </Button>
         </Popover>
 
-        <h2>选项配置</h2>
+        <h2>{translated.title1}</h2>
         <Popover
           visible={showIcon}
           location="bottom-start"
@@ -218,7 +268,7 @@ const PopoverDemo = () => {
           style={{ marginRight: '30px' }}
         >
           <Button type="primary" shape="square">
-            展示图标
+            {translated.showIcon}
           </Button>
         </Popover>
         <Popover
@@ -231,11 +281,11 @@ const PopoverDemo = () => {
           onSelect={chooseHandle}
         >
           <Button type="primary" shape="square">
-            禁用选项
+            {translated.disableAction}
           </Button>
         </Popover>
 
-        <h2>自定义内容</h2>
+        <h2>{translated.content}</h2>
         <Popover
           visible={customized}
           onClick={() => {
@@ -245,7 +295,7 @@ const PopoverDemo = () => {
           className="customClass"
         >
           <Button type="primary" shape="square">
-            自定义内容
+            {translated.content}
           </Button>
           {customized ? (
             <div className="self-content" style={selfContentStyle}>
@@ -271,10 +321,10 @@ const PopoverDemo = () => {
             ''
           )}
         </Popover>
-        <h2 className="demoClass">位置自定义</h2>
 
+        <h2 className="demoClass">{translated.title3}</h2>
         <Cell
-          title="点击查看更多方向"
+          title={translated.showMoreDirection}
           description={baseDesc}
           onClick={handlePicker}
         />
@@ -312,7 +362,7 @@ const PopoverDemo = () => {
           location={curPostion}
         />
 
-        <h2>自定义目标元素</h2>
+        <h2>{translated.title4}</h2>
         <Popover
           visible={customTarget}
           targetId="popid"
@@ -328,10 +378,10 @@ const PopoverDemo = () => {
           id="popid"
           onClick={clickCustomHandle}
         >
-          自定义目标元素
+          {translated.title4}
         </Button>
 
-        <h2>自定义颜色</h2>
+        <h2>{translated.contentColor}</h2>
         <Popover
           className="custom-color"
           visible={customColor}
@@ -342,7 +392,7 @@ const PopoverDemo = () => {
           }}
         >
           <Button type="primary" shape="square">
-            自定义颜色
+            {translated.contentColor}
           </Button>
         </Popover>
       </div>

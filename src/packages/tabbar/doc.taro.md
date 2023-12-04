@@ -23,7 +23,7 @@ import { Cart, Category, Find, Home, User } from '@nutui/icons-react-taro';
 
 const App = () => (
   <Tabbar onSwitch={(child, idx) => {console.log(idx)}}>
-    <Tabbar.Item title="首页" icon={<Home width={18} height={18} />} />
+    <Tabbar.Item title="首页" icon={<Home width={18} height={18} />} value={9}/>
     <Tabbar.Item title="分类" icon={<Category width={18} height={18} />} />
     <Tabbar.Item title="发现" icon={<Find width={18} height={18} />} />
     <Tabbar.Item title="购物车" icon={<Cart width={18} height={18} />} />
@@ -225,11 +225,12 @@ export default App;
 | --- | --- | --- |
 | \--nutui-tabbar-height | 高度 | `50px` |
 | \--nutui-tabbar-active-color | 选中颜色 | `$color-primary` |
-| \--nutui-tabbar-inactive-color | 未选中颜色 | `$gray1` |
+| \--nutui-tabbar-inactive-color | 未选中颜色 | `$color-title` |
 | \--nutui-tabbar-border-top | 上边框 | `1px solid #eee` |
 | \--nutui-tabbar-border-bottom | 下边框 | `1px solid #eee` |
 | \--nutui-tabbar-box-shadow | 阴影 | `none` |
 | \--nutui-tabbar-text-font-size | 标题字体大小 | `$font-size-xs` |
 | \--nutui-tabbar-text-large-font-size | 无图标时标题字体大小 | `$font-size-large` |
+| \--nutui-tabbar-text-large-font-weight | 无图标时标题字体粗细 | `$font-weight` |
 | \--nutui-tabbar-text-line-height | 字体行高 | `initial` |
 | \--nutui-tabbar-text-margin-top | 标题上外边距 | `3px` |

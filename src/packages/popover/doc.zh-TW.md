@@ -528,6 +528,7 @@ List 屬性是一個由對象構成的數組，數組中的每個對象配置一
 | icon | 參考 Icon 組件 | `ReactNode` | `-` |
 | disabled | 是否為禁用狀態 | `boolean` | `false` |
 | className | 為對應選項添加額外的類名 | `string` | `-` |
+| action | 為對應選項添加方法 | `{ icon?: React.ReactNode; onClick?: (e: any) => void }` | `-` |
 
 ## 主題定製
 
@@ -538,12 +539,12 @@ List 屬性是一個由對象構成的數組，數組中的每個對象配置一
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-popover-border-radius | popover 內容區的 border 的圓角值 | `8px` |
-| \--nutui-popover-font-size | popover 內容區的 font-size 值 | `14px` |
-| \--nutui-popover-menu-item-hover-background-color | 手指點擊菜單選項選中的背景顏色 | `#fff` |
-| \--nutui-popover-menu-item-hover-text-color | 手指點擊菜單選項選中的文字顏色 | `#1a1a1a` |
-| \--nutui-popover-primary-text-color | 選項區的文字顏色 | `#ffffff` |
-| \--nutui-popover-content-background-color | 選項區的背景顏色 | `#ffffff` |
-| \--nutui-popover-white-background-color | top、bottom、left 和 right 的箭頭顏色 | `#ffffff` |
-| \--nutui-popover-border-bottom-color | 選項區的底部 border 顏色 | `rgba(229, 229, 229, 1)` |
-| \--nutui-popover-disable-color | 選項禁用的顏色 | `rgba(154, 155, 157, 1)` |
+| \--nutui-popover-font-size | popover 內容區的 font-size 值 | `12px` |
+| \--nutui-popover-text-color | 選項區的文字顏色 | `$color-title` |
+| \--nutui-popover-content-background-color | 選項區的背景顏色 | `$white` |
+| \--nutui-popover-hover-background-color | 手指點擊菜單選項選中的背景顏色 | `#fff` |
+| \--nutui-popover-hover-text-color | 手指點擊菜單選項選中的文字顏色 | `#1a1a1a` |
+| \--nutui-popover-border-color | top、bottom、left 和 right 的箭頭顏色| `$white` |
+| \--nutui-popover-divider-color | 選項區的底部 border 顏色 | `$color-border` |
+| \--nutui-popover-disable-color | 選項禁用的顏色 | `$color-text-disabled` |
 | \--nutui-popover-menu-item-padding | 選項區菜單每一項的 padding 值 | `8px` |

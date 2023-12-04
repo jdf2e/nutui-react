@@ -371,7 +371,6 @@ const CalendarDemo = () => {
           visible={isVisible}
           showTitle={false}
           defaultValue={date}
-          endDate="2023-11-30"
           onClose={closeSwitch}
           onConfirm={setChooseValue}
           onDayClick={select}

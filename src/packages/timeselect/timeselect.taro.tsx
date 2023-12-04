@@ -143,6 +143,7 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
       round
       visible={visible}
       position="bottom"
+      title={title || locale.timeselect.pickupTime}
       style={{
         width: '100%',
         height: '20%',
@@ -152,9 +153,6 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
       {...rest}
     >
       <div className={classNames(classPrefix, className)}>
-        <div className={`${classPrefix}__title`}>
-          {title || locale.timeselect.pickupTime}
-        </div>
         <div className={`${classPrefix}__content`}>
           <div className={`${classPrefix}__content-left`}>
             {options.map((item: DateType) => (

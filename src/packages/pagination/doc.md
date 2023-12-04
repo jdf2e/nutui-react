@@ -74,6 +74,38 @@ export default App;
 
 :::
 
+### 极简模式
+
+将 mode 设置为 "lite" 来切换到极简模式，可用于主图切换。
+
+
+:::demo
+
+```tsx
+import React, { useState } from 'react'
+import { Pagination } from '@nutui/nutui-react';
+
+const App = () => {
+  const [currentPage2, setCurrentPage2] = useState(1)
+  const pageChange2 = (v: number) => {
+    const c = v
+    setCurrentPage2(c)
+  }
+  return (
+    <Pagination
+      value={currentPage2}
+      total={12}
+      pageSize={1}
+      mode="lite" 
+      onChange={pageChange2} 
+    />
+  )
+}
+export default App;
+```
+
+:::
+
 ### 显示省略号
 
 设置 force-ellipses 后会展示省略号按钮，点击后可以快速跳转。 
@@ -177,7 +209,7 @@ export default App;
 | --- | --- | --- | --- |
 | value | 当前页码，受控值，与 onChange 搭配使用 | `number` | `-` |
 | defaultValue | 默认页码，非受控 | `number` | `1` |
-| mode | 显示模式 | `multi` \| `simple` | `multi` |
+| mode | 显示模式 | `multi` \| `simple` \| `lite` | `multi` |
 | prev | 自定义上一页按钮内容 | `ReactNode` | `上一页` |
 | next | 自定义下一页按钮内容 | `ReactNode` | `下一页` |
 | total | 总记录数 | `number` | `50` |
@@ -197,9 +229,15 @@ export default App;
 | --- | --- | --- |
 | \--nutui-pagination-color | 页码字色 |  `$color-primary` |
 | \--nutui-pagination-font-size | 页码字号 | `$font-size-base` |
-| \--nutui-pagination-item-border-color | 边框颜色 | `#e4e7eb` |
-| \--nutui-pagination-disable-color | 不可用色 | `$disable-color` |
+| \--nutui-pagination-item-border-color | 边框颜色 | `$color-border` |
+| \--nutui-pagination-active-background-color | 当前页码的背景色 | `$color-primary` |
+| \--nutui-pagination-disable-color | 不可用色 | `$color-text-disabled` |
 | \--nutui-pagination-disable-background-color | 不可用背景色 | `#f7f8fa` |
 | \--nutui-pagination-item-border-width | 边框宽度 | `1px` |
 | \--nutui-pagination-item-border-radius | 边框圆角 | `2px` |
 | \--nutui-pagination-prev-next-padding | padding 值 | `0 11px` |
+| \--nutui-pagination-lite-width | lite模式下的宽度 | `40px` |
+| \--nutui-pagination-lite-height | lite模式下的高度 | `20px` |
+| \--nutui-pagination-lite-radius| lite模式下的圆角 | `12px` |
+| \--nutui-pagination-lite-background-color | lite模式下的默认背景色 | `var(--nutui-black-7)` |
+| \--nutui-pagination-lite-active-background-color | lite模式下的当前选中的背景色 | `var(--nutui-black-5)` |

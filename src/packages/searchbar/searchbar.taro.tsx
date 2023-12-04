@@ -1,6 +1,6 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import type { ChangeEvent, FocusEvent, MouseEvent } from 'react'
-import { Failure, Search } from '@nutui/icons-react-taro'
+import { MaskClose, Search, ArrowLeft } from '@nutui/icons-react-taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -21,6 +21,7 @@ export interface SearchBarProps extends BasicComponent {
   readOnly?: boolean
   /**  是否自动聚焦，iOS 系统不支持该属性	 */
   autoFocus?: boolean
+  backable: boolean
   left: React.ReactNode
   right: React.ReactNode
   leftIn: React.ReactNode
@@ -48,10 +49,11 @@ const defaultProps = {
   clearable: true,
   readOnly: false,
   autoFocus: false,
+  backable: false,
   left: '',
   right: '',
   rightIn: '',
-  leftIn: <Search size="12" />,
+  leftIn: <Search size="16" />,
 } as SearchBarProps
 export const SearchBar: FunctionComponent<
   Partial<SearchBarProps> &
@@ -75,6 +77,7 @@ export const SearchBar: FunctionComponent<
     clearable,
     readOnly,
     autoFocus,
+    backable,
     right,
     left,
     leftIn,
@@ -149,8 +152,12 @@ export const SearchBar: FunctionComponent<
     )
   }
   const renderLeft = () => {
-    if (!left) return null
-    return <div className={`${classPrefix}__left`}>{left}</div>
+    if (!backable && !left) return null
+    return (
+      <div className={`${classPrefix}__left`}>
+        {backable ? <ArrowLeft size="20" /> : left}
+      </div>
+    )
   }
   const renderRightIn = () => {
     if (!rightIn) return null
@@ -167,10 +174,10 @@ export const SearchBar: FunctionComponent<
   const handleClear = () => {
     return (
       <div
-        className={`${classPrefix}__clear ${rightIn ? 'pos-right' : ''}`}
+        className={`${classPrefix}__clear  ${classPrefix}__icon`}
         onClick={(e: any) => clearaVal(e)}
       >
-        <Failure color="#555" size={12} />
+        <MaskClose size={20} />
       </div>
     )
   }
@@ -205,7 +212,7 @@ export const SearchBar: FunctionComponent<
       >
         {renderLeftIn()}
         <div className="nut-searchbar__input-box">{renderField()}</div>
-        {renderRightIn()}
+        {clearable && !value && renderRightIn()}
         {clearable && value && handleClear()}
       </div>
       {renderRight()}
