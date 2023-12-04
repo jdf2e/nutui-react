@@ -189,11 +189,20 @@ $space-xxl: $spacing-xxl !default;
 // todo
 // 与品牌色一起使用，默认为白色，不区分暗黑与明亮模式。
 $color-primary-text: var(--nutui-color-primary-text) !default;
-$color-info: var(--nutui-color-info) !default;
 // 链接色 todo
 $color-text-link: var(--nutui-color-text-link) !default;
 $white: #ffffff !default;
 $black: $color-text-title !default;
+
+// 信息
+$color-info: var(--nutui-color-info, #1988fa) !default;
+$color-info-pressed: var(--nutui-color-info-pressed, #496af2) !default;
+$color-info-disabled: var(--nutui-color-info-disabled, #89a6f8) !default;
+$color-info-light: var(--nutui-color-info-light) !default;
+$color-info-background: var(
+  --nutui-color-info-background,
+  linear-gradient(315deg, rgba(73, 143, 242, 1) 0%, rgba(73, 101, 242, 1) 100%)
+) !default;
 
 // --- z-index ----
 $mask-z-index: 1000;
@@ -211,7 +220,7 @@ $button-square-border-radius: var(
   --nutui-button-square-border-radius,
   $radius-s
 ) !default;
-$button-border-radius: var(--nutui-button-border-radius, 24px) !default;
+$button-border-radius: var(--nutui-button-border-radius, $radius-xs) !default;
 $button-border-width: var(--nutui-button-border-width, 1px) !default;
 
 $button-normal-padding: var(
@@ -312,6 +321,23 @@ $button-success-background-color: var(
 $button-success-disabled: var(
   --nutui-button-success-disabled,
   $color-success-disabled
+) !default;
+
+$button-info-color: var(
+  --nutui-button-info-color,
+  $color-primary-text
+) !default;
+$button-info-border-color: var(
+  --nutui-button-info-border-color,
+  $color-info
+) !default;
+$button-info-background-color: var(
+  --nutui-button-info-background-color,
+  $color-info-background
+) !default;
+$button-info-disabled: var(
+  --nutui-button-info-disabled,
+  $color-info-disabled
 ) !default;
 
 $button-warning-color: var(
@@ -690,11 +716,11 @@ $numberkeyboard-padding: var(
 ) !default;
 $numberkeyboard-background-color: var(
   --nutui-numberkeyboard-background-color,
-  $color-surface-2
+  $color-surface-1
 ) !default;
 $numberkeyboard-wrapper-background-color: var(
   --nutui-numberkeyboard-wrapper-background-color,
-  $color-surface-2
+  $color-surface-1
 ) !default;
 $numberkeyboard-header-close-padding: var(
   --nutui-numberkeyboard-header-close-padding,
@@ -734,7 +760,7 @@ $numberkeyboard-key-border-radius: var(
 ) !default;
 $numberkeyboard-key-border: var(
   --nutui-numberkeyboard-key-border,
-  1px solid $color-border
+  none
 ) !default;
 $numberkeyboard-key-font-size: var(
   --nutui-numberkeyboard-key-font-size,
@@ -893,6 +919,10 @@ $backtop-border-color: var(
 ) !default;
 
 // calendar（✅）
+$calendar-active-background-color: var(
+  --nutui-calendar-active-background-color,
+  $color-primary
+) !default;
 $calendar-choose-background-color: var(
   --nutui-calendar-choose-background-color,
   $color-primary-light
@@ -944,7 +974,7 @@ $overlay-animation-duration: var(
 //popup（✅）
 $popup-border-radius: var(--nutui-popup-border-radius, 12px) !default;
 $popup-icon-size: var(--nutui-popup-icon-size, $font-size-xl) !default;
-$popup-title-padding: var(--nutui-popup-title-padding, 8px 12px) !default;
+$popup-title-padding: var(--nutui-popup-title-padding, 12px) !default;
 $popup-title-font-size: var(--nutui-popup-title-font-size, $font-h1) !default;
 $popup-description-font-size: var(
   --nutui-popup-description-font-size,
@@ -1240,6 +1270,14 @@ $dialog-footer-ok-max-width: var(
   --nutui-dialog-footer-ok-max-width,
   128px
 ) !default;
+$dialog-header-font-weight: var(
+  --nutui-dialog-header-font-weight,
+  normal
+) !default;
+$dialog-vertical-footer-ok-margin-top: var(
+  --nutui-dialog-vertical-footer-ok-margin-top,
+  5px
+) !default;
 
 // checkbox（✅）
 $checkbox-label-margin-left: var(
@@ -1249,7 +1287,7 @@ $checkbox-label-margin-left: var(
 $checkbox-label-color: var(--nutui-checkbox-label-color, $color-text) !default;
 $checkbox-label-font-size: var(
   --nutui-checkbox-label-font-size,
-  $font-size-small
+  $font-size-base
 ) !default;
 $checkbox-icon-font-size: var(
   --nutui-checkbox-icon-font-size,
@@ -1257,7 +1295,7 @@ $checkbox-icon-font-size: var(
 ) !default;
 $checkbox-button-font-size: var(
   --nutui-checkbox-button-font-size,
-  $font-size-small
+  $font-size-base
 ) !default;
 $checkbox-button-color: $color-text;
 $checkbox-button-background: $color-background;
@@ -1285,13 +1323,13 @@ $radio-icon-font-size: var(
 ) !default;
 $radio-label-font-size: var(
   --nutui-radio-label-font-size,
-  $font-size-small
+  $font-size-base
 ) !default;
-$radio-label-color: var(--nutui-radio-label-color, $color-text-title) !default;
+$radio-label-color: var(--nutui-radio-label-color, $color-text) !default;
 $radio-label-margin-left: var(--nutui-radio-label-margin-left, 4px) !default;
 $radio-button-font-size: var(
   --nutui-radio-button-font-size,
-  $font-size-small
+  $font-size-base
 ) !default;
 $radio-button-color: $color-text;
 $radio-button-background: $color-background;
@@ -1448,6 +1486,7 @@ $badge-border-radius: var(
 $badge-min-width: var(--nutui-badge-min-width, 10px) !default;
 $badge-padding: var(--nutui-badge-padding, 0 4px) !default;
 $badge-icon-padding: var(--nutui-badge-icon-padding, 3px) !default;
+$badge-icon-size: var(--nutui-badge-icon-size, 12px) !default;
 $badge-content-transform: var(
   --nutui-badge-content-transform,
   translateY(-50%) translateX(100%)
@@ -1850,7 +1889,7 @@ $form-item-error-line-color: var(
 ) !default;
 $form-item-required-color: var(
   --nutui-form-item-required-color,
-  $color-primary
+  $color-danger
 ) !default;
 $form-item-error-message-color: var(
   --nutui-form-item-error-message-color,
@@ -1904,7 +1943,7 @@ $skeleton-line-border-radius: var(
 ) !default;
 
 // card（✅）
-$card-left-border-radius: var(--nutui-card-left-border-radius, 2px) !default;
+$card-border-radius: var(--nutui-card-border-radius, 4px) !default;
 $color-background-overlay: var(
   --nutui-card-background-color,
   $color-background
