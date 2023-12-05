@@ -37,7 +37,7 @@ const defaultProps = {
   completeText: '',
   completeDelay: 500,
   disabled: false,
-  headHeight: 40,
+  headHeight: 50,
   threshold: 60,
   onRefresh: () => {},
 } as PullToRefreshProps
@@ -59,9 +59,7 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
 
   const headHeight = props.headHeight
   const threshold = props.threshold
-
   const [status, setStatus] = useState<PullStatus>('pulling')
-
   const [springStyles, api] = useSpring(() => ({
     from: { height: 0 },
     config: {
@@ -108,7 +106,6 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
   useDrag(
     (state) => {
       if (status === 'refreshing' || status === 'complete') return
-
       const { event } = state
 
       // 最后一个事件，检查是否可以刷新或是否是开始状态（第一个状态也是最后一个状态）
@@ -150,7 +147,6 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
       }
 
       if (!pullingRef.current) return
-
       if (event.cancelable) {
         event.preventDefault()
       }
@@ -173,17 +169,53 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
     }
   )
 
+  const renderIcons = () => {
+    return (
+      <>
+        <i className={`${classPrefix}-head-content-icons`}>
+          {(status === 'pulling' || status === 'complete') && (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="36"
+              height="26"
+              viewBox="0 0 36 26"
+              fill="none"
+            >
+              <path
+                d="M34.7243 10.965C32.842 8.94809 32.4297 5.92727 31.2018 4.90525C29.9738 3.88324 28.1722 5.51123 27.5089 6.46993C23.8429 3.88324 17.9809 4.00082 17.9809 4.00082C17.9809 4.00082 12.1458 3.88324 8.47083 6.46993C7.80754 5.51123 6.01488 3.88324 4.78691 4.90525C3.55894 5.92727 3.15559 8.94809 1.2733 10.965C-0.133943 12.4844 -0.250465 12.9276 0.323186 14.1305C0.887874 15.3334 4.40149 16.3283 6.88432 13.9496C7.21596 15.1887 10.0125 21.9991 17.9899 21.9991C25.9672 21.9991 28.7817 15.1887 29.1043 13.9496C31.5872 16.3283 35.1098 15.3334 35.6834 14.1305C36.2481 12.9276 36.1316 12.4844 34.7243 10.965Z"
+                fill="#8C8C8C"
+              />
+            </svg>
+          )}
+          {(status === 'canRelease' || status === 'refreshing') && (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="36"
+              height="26"
+              viewBox="0 0 36 26"
+              fill="none"
+            >
+              <circle cx="33" cy="13" r="3" fill="#8C8C8C" />
+              <circle cx="18" cy="13" r="3" fill="#8C8C8C" />
+              <circle cx="3" cy="13" r="3" fill="#8C8C8C" />
+            </svg>
+          )}
+        </i>
+      </>
+    )
+  }
+
   const renderStatusText = () => {
     if (props.renderText) {
       return props.renderText?.(status)
     }
-
     if (status === 'pulling') return props.pullingText
     if (status === 'canRelease') return props.canReleaseText
     if (status === 'refreshing') return props.refreshingText
     if (status === 'complete') return props.completeText
     return ''
   }
+
   return (
     <animated.div
       ref={elementRef}
@@ -195,7 +227,8 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
           className={`${classPrefix}-head-content`}
           style={{ height: headHeight }}
         >
-          {renderStatusText()}
+          {renderIcons()}
+          <div>{renderStatusText()}</div>
         </div>
       </animated.div>
       <div className={`${classPrefix}-content`}>{props.children}</div>

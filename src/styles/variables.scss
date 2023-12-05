@@ -1054,10 +1054,18 @@ $tabbar-text-line-height: var(--nutui-tabbar-text-line-height, 20px) !default;
 $tabbar-height: var(--nutui-tabbar-height, 50px) !default;
 $tabbar-text-margin-top: var(--nutui-tabbar-text-margin-top, 3px) !default;
 
+//pulltorefresh
+$pulltorefresh-icon-width: var(--nutui-pulltorefresh-icon-width, 36px) !default;
+$pulltorefresh-icon-height: var(
+  --nutui-pulltorefresh-icon-height,
+  26px
+) !default;
+
 //infiniteloading（✅）
-$infiniteloading-bottom-color: var(
-  --nutui-infiniteloading-bottom-color,
-  #c8c8c8
+$infiniteloading-color: var(--nutui-infiniteloading-color, #c8c8c8) !default;
+$infiniteloading-icon-size: var(
+  --nutui-infiniteloading-icon-size,
+  24px
 ) !default;
 
 //range（✅）
