@@ -855,18 +855,17 @@ $switch-inside-close-transform: var(
 $switch-button-box-shadow: var(--nutui-switch-box-shadow, none) !default;
 
 // toast（✅）
+$toast-inner-text-align: var(--nutui-toast-inner-text-align, center) !default;
 $toast-title-font-size: var(--nutui-toast-title-font-size, 16px) !default;
 $toast-text-font-size: var(--nutui-toast-text-font-size, 14px) !default;
-$toast-font-color: var(--nutui-toast-font-color, #fff) !default;
-$toast-inner-padding: var(--nutui-toast-inner-padding, 24px 30px) !default;
+$toast-font-color: var(--nutui-toast-font-color, $white) !default;
+$toast-inner-padding: var(--nutui-toast-inner-padding, 16px 24px) !default;
 $toast-inner-bg-color: var(--nutui-toast-inner-bg-color, $gray7) !default;
 $toast-inner-border-radius: var(
   --nutui-toast-inner-border-radius,
-  12px
+  16px
 ) !default;
-$toast-cover-bg-color: var(--nutui-toast-cover-bg-color, $gray7) !default;
 $toast-inner-top: var(--nutui-toast-inner-top, 50%) !default;
-$toast-inner-text-align: var(--nutui-toast-inner-text-align, 'center') !default;
 
 //tour（✅）
 $tour-mask-border-radius: var(--nutui-tour-mask-border-radius, 10px) !default;
@@ -911,7 +910,7 @@ $calendar-active-background-color: var(
 ) !default;
 $calendar-choose-background-color: var(
   --nutui-calendar-choose-background-color,
-  rgba(#fa2c19, 0.09)
+  $color-primary-light
 ) !default;
 $calendar-choose-color: var(
   --nutui-calendar-choose-color,
@@ -920,10 +919,6 @@ $calendar-choose-color: var(
 $calendar-choose-disable-background-color: var(
   --nutui-calendar-choose-disable-background-color,
   rgba(191, 191, 191, 0.09)
-) !default;
-$calendar-choose-disable-color: var(
-  --nutui-calendar-choose-disable-color,
-  $gray3
 ) !default;
 $calendar-disable-color: var(--nutui-calendar-disable-color, $gray3) !default;
 $calendar-base-font-size: var(
@@ -936,20 +931,19 @@ $calendar-title-font-size: var(
 ) !default;
 $calendar-title-font-weight: var(
   --nutui-calendar-title-font-weight,
-  500
+  $font-weight-bold
 ) !default;
 $calendar-sub-title-font-size: var(
   --nutui-calendar-sub-title-font-size,
   $font-size-base
 ) !default;
-$calendar-day67-color: var(
-  --nutui-calendar-day67-color,
-  $color-primary
-) !default;
 $calendar-header-height: var(--nutui-calendar-header-height, 24px) !default;
 $calendar-day-width: var(--nutui-calendar-day-width, 14.28%) !default;
 $calendar-day-height: var(--nutui-calendar-day-height, 60px) !default;
-$calendar-day-font-weight: var(--nutui-calendar-day-font-weight, 500) !default;
+$calendar-day-font-weight: var(
+  --nutui-calendar-day-font-weight,
+  $font-weight-bold
+) !default;
 $calendar-day-active-border-radius: var(
   --nutui-calendar-day-active-border-radius,
   4px

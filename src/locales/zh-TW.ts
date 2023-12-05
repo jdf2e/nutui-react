@@ -1,12 +1,12 @@
 import { BaseLang } from './base'
 
-const zhTW: BaseLang = {
+const zhCN: BaseLang = {
   save: '保存',
   confirm: '確認',
   cancel: '取消',
   done: '完成',
   noData: '暫無數據',
-  placeholder: '請輸入',
+  placeholder: '請輸入內容',
   select: '請選擇',
   video: {
     errorTip: '視頻加載失敗',
@@ -17,21 +17,23 @@ const zhTW: BaseLang = {
     inactiveText: '快速導航',
   },
   infiniteloading: {
-    pullRefreshText: '鬆開刷新',
-    loadText: '加載中……',
-    loadMoreText: '哎呀，這裡是底部了啦',
+    pullRefreshText: '松開刷新',
+    loadText: '加載中',
+    loadMoreText: '沒有更多了',
   },
   pagination: {
     prev: '上一頁',
     next: '下一頁',
   },
-  range: { rangeText: '不在該區間內' },
+  range: {
+    rangeText: '不在該區間內',
+  },
   calendaritem: {
     weekdays: ['日', '一', '二', '三', '四', '五', '六'],
     end: '結束',
     start: '開始',
     confirm: '確認',
-    title: '行事曆選擇',
+    title: '日歷選擇',
     monthTitle: (year: number, month: number) =>
       `${year}年${Number(month) < 10 ? `0${Number(month)}` : month}月`,
     today: '今天',
@@ -40,7 +42,7 @@ const zhTW: BaseLang = {
   },
   shortpassword: {
     title: '請輸入密碼',
-    description: '您使用了虛擬資產,請進行驗證',
+    description: '您使用了虛擬資產，請進行驗證',
     tips: '忘記密碼',
   },
   uploader: {
@@ -50,7 +52,7 @@ const zhTW: BaseLang = {
     uploading: '上傳中...',
     success: '上傳成功',
     error: '上傳失敗',
-    deleteWord: '使用者阻止了刪除！',
+    deleteWord: '用戶阻止了刪除！',
   },
   countdown: {
     day: '天',
@@ -65,7 +67,7 @@ const zhTW: BaseLang = {
   },
   signature: {
     reSign: '重簽',
-    unsupported: '對不起,當前瀏覽器不支持Canvas,無法使用本控制項！',
+    unsupported: '對不起，當前瀏覽器不支持Canvas，無法使用本控件！',
   },
   ecard: {
     chooseText: '請選擇電子卡面值',
@@ -93,13 +95,13 @@ const zhTW: BaseLang = {
   },
   searchbar: {
     basePlaceholder: '上京東，購好物',
-    text: '文字',
+    text: '文本',
     test: '測試',
     title1: '基礎用法',
-    title2: '蒐索框形狀及最大長度',
-    title3: '蒐索框內外背景設定',
-    title4: '蒐索框文字設定',
-    title5: '自定義圖標設定',
+    title2: '搜索框形狀及最大長度',
+    title3: '搜索框內外背景設置',
+    title4: '搜索框文本設置',
+    title5: '自定義圖標設置',
     title6: '數據改變監聽',
   },
   audio: {
@@ -120,8 +122,8 @@ const zhTW: BaseLang = {
   },
   pullToRefresh: {
     pullingText: '下拉刷新',
-    canReleaseText: '鬆開刷新',
-    refreshingText: '加載中...',
+    canReleaseText: '松手刷新',
+    refreshingText: '刷新中',
     completeText: '刷新成功',
   },
   tour: {
@@ -133,4 +135,4 @@ const zhTW: BaseLang = {
     errorCanvasTips: '當前環境不支持Canvas',
   },
 }
-export default zhTW
+export default zhCN

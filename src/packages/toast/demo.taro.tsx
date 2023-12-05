@@ -4,8 +4,72 @@ import { Jd } from '@nutui/icons-react-taro'
 import { Cell, Toast } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 import { ToastWordBreakType } from './toast.taro'
+import { useTranslate } from '@/sites/assets/locale/taro'
+
+interface T {
+  basic: string
+  toastText: string
+  toastTitle: string
+  toastFunction: string
+  toastSuccess: string
+  toastError: string
+  toastLoading: string
+  toastWarning: string
+  toastAll: string
+  toastBottom: string
+  toastTransparent: string
+  toastDuration: string
+  toastDurationText: string
+  toastHide: string
+  toastCustomIcon: string
+  toastWordBreak: string
+  toastWordBreak1: string
+  toastWordBreak2: string
+}
 
 const ToastDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      basic: '基础用法',
+      toastText: '文字提示',
+      toastTitle: '标题展示',
+      toastFunction: '函数调用',
+      toastSuccess: '成功提示',
+      toastError: '错误提示',
+      toastWarning: '警告提示',
+      toastLoading: '加载提示',
+      toastAll: 'Toast 不消失',
+      toastBottom: '自定义底部高度',
+      toastTransparent: '加载状态透明遮罩',
+      toastDuration: '设置展示时长',
+      toastDurationText: '展示时长为10秒',
+      toastHide: '隐藏Toast',
+      toastCustomIcon: '自定义Icon',
+      toastWordBreak: '换行截断方式',
+      toastWordBreak1: '换行时截断单词',
+      toastWordBreak2: '换行时不截断单词',
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      toastText: 'Text Message',
+      toastTitle: 'Title',
+      toastFunction: 'Function',
+      toastSuccess: 'Success',
+      toastError: 'Error',
+      toastWarning: 'Warning',
+      toastLoading: 'Loading',
+      toastAll: 'Not Disappear',
+      toastBottom: 'Custom Bottom Height',
+      toastTransparent: 'Loading Transparent Cover',
+      toastDuration: 'Set Display Duration',
+      toastDurationText: 'Show for 10 seconds',
+      toastHide: 'Hide Toast',
+      toastCustomIcon: 'Custom Icon',
+      toastWordBreak: 'Word Break',
+      toastWordBreak1: 'Break All',
+      toastWordBreak2: 'Break Word',
+    },
+  })
   const [state, SetState] = useState({
     msg: 'toast',
     type: 'text',
@@ -54,23 +118,23 @@ const ToastDemo = () => {
           }}
           wordBreak={state.wordBreak}
         />
-        <h2>基础用法</h2>
+        <h2>{translated.basic}</h2>
         <Cell
-          title="Text文字提示"
+          title={translated.toastText}
           onClick={() => {
-            openToast('text', '网络失败，请稍后再试~')
+            openToast('text', `${translated.toastText}`)
             SetShowToast(true)
           }}
         />
-        <h2>函数调用</h2>
+        <h2>{translated.toastFunction}</h2>
         <Toast id="test" />
         <Cell
-          title="函数调用"
+          title={translated.toastFunction}
           onClick={() => {
             Toast.show('test', {
-              title: '函数调用',
+              title: translated.toastFunction,
               type: 'fail',
-              duration: 3,
+              duration: 2,
               position: 'center',
               icon: <Jd />,
               size: 'large',
@@ -81,68 +145,67 @@ const ToastDemo = () => {
             })
           }}
         />
-        <h2>成功提示</h2>
+        <h2>{translated.toastSuccess}</h2>
         <Cell
-          title="Success 成功提示"
+          title={translated.toastSuccess}
           onClick={() => {
-            openToast('success', '成功提示')
+            openToast('success', translated.toastSuccess)
             SetShowToast(true)
           }}
         />
 
-        <h2>失败提示</h2>
+        <h2>{translated.toastError}</h2>
         <Cell
-          title="Error 失败提示"
+          title={translated.toastError}
           onClick={() => {
-            openToast('fail', '失败提示')
+            openToast('fail', translated.toastError)
             SetShowToast(true)
           }}
         />
 
-        <h2>警告提示</h2>
+        <h2>{translated.toastWarning}</h2>
         <Cell
-          title=" Warning 警告提示"
+          title={translated.toastWarning}
           onClick={() => {
-            openToast('warn', '警告提示')
+            openToast('warn', translated.toastWarning)
             SetShowToast(true)
           }}
         />
 
-        <h2>加载提示</h2>
+        <h2>{translated.toastLoading}</h2>
         <Cell
-          title=" Loading 加载提示"
+          title={translated.toastLoading}
           onClick={() => {
-            openToast('loading', '加载中')
+            openToast('loading', `${translated.toastLoading}`)
             SetShowToast(true)
           }}
         />
-
-        <h2>展示时长设置</h2>
+        <h2>{translated.toastDuration}</h2>
         <Cell
-          title="设置展示时长为10秒提示"
+          title={translated.toastDurationText}
           onClick={() => {
-            openToast('text', '设置展示时长为10秒', 10, '', true)
+            openToast('text', translated.toastDurationText, 10, '', true)
             SetShowToast(true)
           }}
         />
         <Cell
-          title="关闭正在显示的toast"
+          title={translated.toastHide}
           onClick={() => {
             SetShowToast(false)
           }}
         />
-        <h2>自定义icon图标</h2>
+        <h2>{translated.toastCustomIcon}</h2>
         <Cell
-          title="传入icon组件中的'JD'图标"
+          title={translated.toastCustomIcon}
           onClick={() => {
-            openToast('text', '设置icon为JD', 2, <Jd />)
+            openToast('text', translated.toastCustomIcon, 2, <Jd />)
             SetShowToast(true)
           }}
         />
-        <h2>换行截断方式</h2>
+        <h2>{translated.toastWordBreak}</h2>
         <Cell.Group>
           <Cell
-            title="换行时截断单词"
+            title={translated.toastWordBreak1}
             onClick={() => {
               openToast(
                 'text',
@@ -156,7 +219,7 @@ const ToastDemo = () => {
             }}
           />
           <Cell
-            title="换行时不截断单词"
+            title={translated.toastWordBreak2}
             onClick={() => {
               openToast(
                 'text',

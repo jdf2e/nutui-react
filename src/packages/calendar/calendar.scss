@@ -7,7 +7,7 @@
   flex: 1;
   font-size: $calendar-base-font-size;
   background-color: $white;
-  color: $gray1;
+  color: $title-color;
   overflow: hidden;
   height: 100%;
 
@@ -39,9 +39,10 @@
   }
 
   &-title {
+    color: $title-color;
     font-size: $calendar-title-font-size;
     font-weight: $calendar-title-font-weight;
-    line-height: 44px;
+    line-height: 50px;
   }
 
   &-sub-title {
@@ -66,7 +67,7 @@
   &-week-item {
     &:first-of-type,
     &:last-of-type {
-      color: $calendar-day67-color;
+      color: $color-primary;
     }
   }
 
@@ -128,7 +129,7 @@
 
     &:nth-child(7n + 0),
     &:nth-child(7n + 1) {
-      color: $calendar-day67-color;
+      color: $color-primary;
     }
 
     &-info-curr {
@@ -223,6 +224,6 @@
   }
 }
 
-.nut-calendar-popup .nut-popup__close-icon {
+.nut-calendar-popup .nut-popup-title-right {
   top: 7px !important;
 }
