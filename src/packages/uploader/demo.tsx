@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react'
-import { Dongdong, Loading1, Star } from '@nutui/icons-react'
+import { Dongdong, Loading, Star } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Uploader } from './uploader'
 import { FileItem } from './file-item'
@@ -178,7 +178,7 @@ const UploaderDemo = () => {
       message: translated['403b055e'],
       type: 'image',
       uid: '126',
-      loadingIcon: <Loading1 className="nut-icon-loading1" color="#fff" />,
+      loadingIcon: <Loading className="nut-icon-Loading" color="#fff" />,
     },
     {
       name: translated['29ab0c96'],
@@ -272,7 +272,7 @@ const UploaderDemo = () => {
             url={uploadUrl}
             uploadLabel="商品主图"
             onStart={onStart}
-            style={{ marginRight: '10px', marginBottom: '10px' }}
+            style={{ marginRight: '2px', marginBottom: '10px' }}
           />
           <Uploader
             url={uploadUrl}
@@ -361,17 +361,19 @@ const UploaderDemo = () => {
           ref={uploadRef}
         />
         <br />
-        <Button
-          type="success"
-          size="small"
-          onClick={submitUpload}
-          style={{ marginRight: '10px' }}
-        >
-          {translated.fcf01d1a}
-        </Button>
-        <Button type="primary" size="small" onClick={clearUpload}>
-          {translated.clearBtnUpload}
-        </Button>
+        <div style={{ display: 'flex' }}>
+          <Button
+            type="success"
+            size="small"
+            onClick={submitUpload}
+            style={{ marginRight: '10px' }}
+          >
+            {translated.fcf01d1a}
+          </Button>
+          <Button type="primary" size="small" onClick={clearUpload}>
+            {translated.clearBtnUpload}
+          </Button>
+        </div>
 
         <h2>{translated['7db1a8b2']}</h2>
         <Uploader disabled />
