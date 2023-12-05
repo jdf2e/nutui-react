@@ -226,7 +226,7 @@ describe('Address', () => {
     await waitFor(
       async () => {
         await sleep(1000)
-        expect(screen.container.querySelector('.nut-popup-title-tile')).toBe(
+        expect(screen.container.querySelector('.nut-popup-title-title')).toBe(
           null
         )
       },
