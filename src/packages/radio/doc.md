@@ -268,20 +268,15 @@ export default RadioGroupOptions;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-radio-label-font-color | 字体颜色 | `$gray1` |
-| \--nutui-radio-label-font-active-color | 按钮状态下选中字体颜色 | `$color-primary` |
-| \--nutui-radio-label-disable-color | label 的禁用字体颜色 | `$gray3` |
-| \--nutui-radio-icon-disable-color | label 的禁用字体颜色 | `$gray2` |
-| \--nutui-radio-label-button-border-color | shape为button的边框颜色 | `$color-primary` |
-| \--nutui-radio-label-button-background | shape为button的背景色 | `rgba(250, 44, 25, 0.05)` |
-| \--nutui-radio-label-margin-left | label 的左外边距 | `15px` |
+| \--nutui-radio-icon-font-size | icon字号 | `18px` |
 | \--nutui-radio-label-font-size | 字号 | `14px` |
-| \--nutui-radio-button-border-radius | shape为button的圆角 | `15px` |
+| \--nutui-radio-label-color | 字体颜色 | `$color-title` |
+| \--nutui-radio-label-margin-left | label 的左外边距 | `6px` |
 | \--nutui-radio-button-font-size | shape为button的字号 | `12px` |
+| \--nutui-radio-button-color | 字体颜色 | `$color-text` |
+| \--nutui-radio-button-background | shape为button的背景色 | `$color-background` |
+| \--nutui-radio-button-active-border | shape为button选中态的边框 | `1px solid $color-primary` |
 | \--nutui-radio-button-padding | shape为button的内边距 | `5px 18px` |
-| \--nutui-radio-icon-disable-color2 | icon 的禁用颜色 | `$gray3` |
+| \--nutui-radio-button-border-radius | shape为button的圆角 | `15px` |
 | \--nutui-radiogroup-radio-margin | Group模式下每个 radio 的外边距 | `0 20px 5px 0` |
 | \--nutui-radiogroup-radio-label-margin | Group模式下每个 radio 中的 label 外边距 | `0 5px 0 5px` |
-| \--nutui-radio-button-disabled-active-background | button模式下选中且禁用的背景色 | `rgba(0, 0, 0, 0.15)` |
-| \--nutui-radio-button-disabled-active-color | button模式下选中且禁用的字体色 | `rgba(0, 0, 0, 0.25)` |
-| \--nutui-radio-button-disabled-active-border-color | button模式下选中且禁用的边框色 | `rgba(211, 211, 211, 0.15)` |
