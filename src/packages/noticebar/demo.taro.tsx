@@ -5,11 +5,13 @@ import { useTranslate } from '@/sites/assets/locale/taro'
 import { NoticeBar } from '@/packages/nutui.react.taro'
 import '@/packages/noticebar/demo.scss'
 import Header from '@/sites/components/header'
+import ConfigProvider from '../configprovider'
 
 const NoticeBarDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础使用',
+      customTheme: '自定义主题',
       scrollable: '滚动播放',
       mode: '关闭模式',
       multiline: '多行展示',
@@ -29,6 +31,7 @@ const NoticeBarDemo = () => {
     },
     'en-US': {
       basic: 'Basic Usage',
+      customTheme: 'custom theme',
       scrollable: 'Scrollable',
       mode: 'Mode',
       multiline: 'wrap',
@@ -62,6 +65,16 @@ const NoticeBarDemo = () => {
       >
         <h2>{translated.basic}</h2>
         <NoticeBar content={translated.text} />
+
+        <h2>{translated.customTheme}</h2>
+        <ConfigProvider
+          theme={{
+            nutuiNoticebarBackground: '#EDF4FF',
+            nutuiNoticebarColor: '#3768FA',
+          }}
+        >
+          <NoticeBar content={translated.text} />
+        </ConfigProvider>
 
         <h2>{translated.scrollable}</h2>
         <NoticeBar content={translated.textShort} scrollable />
