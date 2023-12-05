@@ -82,11 +82,11 @@
 
     &.mid {
       background-color: $calendar-choose-background-color;
-      color: $color-primary;
+      color: $calendar-choose-color;
     }
 
     &.weekend {
-      color: $color-primary;
+      color: $calendar-choose-color;
     }
 
     .nut-calendar-day-info {
