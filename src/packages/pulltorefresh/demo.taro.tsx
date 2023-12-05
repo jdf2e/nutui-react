@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView } from '@tarojs/components'
 import { PullToRefresh, Cell, Toast } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
@@ -8,12 +9,15 @@ const PullToRefreshDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
+      scrollView: 'ScrollView',
     },
     'zh-TW': {
       basic: '基礎用法',
+      scrollView: 'ScrollView',
     },
     'en-US': {
       basic: 'Basic Usage',
+      scrollView: 'ScrollView',
     },
   })
   const [list] = useState([1, 2, 3, 4, 5, 6, 7])
@@ -23,6 +27,7 @@ const PullToRefreshDemo = () => {
     SetToastMsg(msg)
     SetShow(true)
   }
+  const [scrollTop, setScrollTop] = useState(0)
   return (
     <>
       <Header />
@@ -49,6 +54,32 @@ const PullToRefreshDemo = () => {
             SetShow(false)
           }}
         />
+
+        <h2>{translated.scrollView}</h2>
+        <ScrollView
+          style={{ height: '150px' }}
+          scrollY
+          onScrollEnd={(e) => {
+            // scrollTop > 0, PullToRefresh 不触发 touchmove 事件。
+            if (e.detail?.scrollTop) {
+              setScrollTop(e.detail?.scrollTop)
+            }
+          }}
+        >
+          <PullToRefresh
+            scrollTop={scrollTop}
+            onRefresh={() =>
+              new Promise((resolve) => {
+                toastShow('😊')
+                resolve('done')
+              })
+            }
+          >
+            {list.map((item) => (
+              <Cell key={item}>{item}</Cell>
+            ))}
+          </PullToRefresh>
+        </ScrollView>
       </div>
     </>
   )
