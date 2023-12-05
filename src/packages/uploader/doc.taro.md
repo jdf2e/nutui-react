@@ -50,7 +50,7 @@ export default App;
 ```tsx
 import React, { useState } from "react";
 import { Uploader } from '@nutui/nutui-react-taro';
-import { Dongdong, Loading1, Star } from '@nutui/icons-react-taro';
+import { Dongdong, Loading, Star } from '@nutui/icons-react-taro';
 
 const App = () => {
   const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
@@ -95,7 +95,7 @@ const App = () => {
       message: '上传中',
       type: 'image',
       uid: '126',
-      loadingIcon: <Loading1 className="nut-icon-loading1" color="#fff" />,
+      loadingIcon: <Loading className="nut-icon-Loading" color="#fff" />,
     },
     {
       name: '文件4.png',
@@ -431,14 +431,14 @@ export default App;
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-uploader-picture-width | 上传图片的宽度 | `100px` |
-| \--nutui-uploader-picture-height | 上传图片的高度 | `100px` |
-| \--nutui-uploader-picture-border | 上传图片的border值 | `0px` |
-| \--nutui-uploader-picture-border-radius | 上传图片的border圆角 | `4px` |
-| \--nutui-uploader-background | 上传图片的背景颜色 | `$gray4` |
-| \--nutui-uploader-background-disabled | 上传图片禁用状态的背景颜色 | `$gray4` |
-| \--nutui-uploader-picture-icon-tip-font-size | 上传区域图片下方文字大小 | `12px` |
-| \--nutui-uploader-picture-icon-tip-color | 上传区域图片下方文字颜色 | `#BFBFBF` |
+| \--nutui-uploader-image-width | 上传图片的宽度 | `100px` |
+| \--nutui-uploader-image-height | 上传图片的高度 | `100px` |
+| \--nutui-uploader-image-border | 上传图片的border值 | `0px` |
+| \--nutui-uploader-image-border-radius | 上传图片的border圆角 | `4px` |
+| \--nutui-uploader-background | 上传图片的背景颜色 | `$color-background` |
+| \--nutui-uploader-background-disabled | 上传图片禁用状态的背景颜色 | `$color-background` |
+| \--nutui-uploader-image-icon-tip-font-size | 上传区域图片下方文字大小 | `12px` |
+| \--nutui-uploader-image-icon-tip-color | 上传区域图片下方文字颜色 | `#BFBFBF` |
 | \--nutui-uploader-preview-progress-background | 上传区域预览进度的背景颜色 | `rgba(0, 0, 0, 0.65)` |
 | \--nutui-uploader-preview-margin-right | 上传区域预览margin-right的值 | `10px` |
 | \--nutui-uploader-preview-margin-bottom | 上传区域预览margin-bottom的值 | `10px` |
