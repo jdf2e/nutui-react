@@ -19,7 +19,7 @@ const zhCN: BaseLang = {
   infiniteloading: {
     pullRefreshText: '松开刷新',
     loadText: '加载中',
-    loadMoreText: '哎呀，这里是底部了啦',
+    loadMoreText: '没有更多了',
   },
   pagination: {
     prev: '上一页',
