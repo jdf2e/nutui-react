@@ -933,10 +933,11 @@ $calendar-choose-background-color: var(
   --nutui-calendar-choose-background-color,
   $color-primary-light
 ) !default;
-$calendar-choose-background-color-disabled: var(
-  --nutui-calendar-choose-background-color-disabled,
+$calendar-choose-disable-background-color: var(
+  --nutui-calendar-choose-disable-background-color,
   rgba(191, 191, 191, 0.09)
 ) !default;
+$calendar-disable-color: var(--nutui-calendar-disable-color, $gray3) !default;
 $calendar-base-font-size: var(
   --nutui-calendar-base-font-size,
   $font-size-large
@@ -947,7 +948,7 @@ $calendar-title-font-size: var(
 ) !default;
 $calendar-title-font-weight: var(
   --nutui-calendar-title-font-weight,
-  500
+  $font-weight-bold
 ) !default;
 $calendar-sub-title-font-size: var(
   --nutui-calendar-sub-title-font-size,
@@ -956,7 +957,10 @@ $calendar-sub-title-font-size: var(
 $calendar-header-height: var(--nutui-calendar-header-height, 24px) !default;
 $calendar-day-width: var(--nutui-calendar-day-width, 14.28%) !default;
 $calendar-day-height: var(--nutui-calendar-day-height, 60px) !default;
-$calendar-day-font-weight: var(--nutui-calendar-day-font-weight, 400) !default;
+$calendar-day-font-weight: var(
+  --nutui-calendar-day-font-weight,
+  $font-weight-bold
+) !default;
 $calendar-day-active-border-radius: var(
   --nutui-calendar-day-active-border-radius,
   4px

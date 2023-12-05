@@ -413,4 +413,3 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-toast-inner-bg-color | the background color of toast content | `$color-mask` |
 | \--nutui-toast-inner-border-radius | the border-radius value of toast content | `12px` |
 | \--nutui-toast-inner-text-align | the text alignment of toast | `center` |
-| \--nutui-overlay-bg-color | the background color of toast mask | `rgba(0, 0, 0, 0)` |

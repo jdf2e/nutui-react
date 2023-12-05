@@ -228,6 +228,7 @@ const ToastDemo = () => {
               Toast.show({
                 content: `Let's try ABCDEFGHIJKLMN here.`,
                 wordBreak: 'break-word',
+                duration: 3,
               })
             }}
           />

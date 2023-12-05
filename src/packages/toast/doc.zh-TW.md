@@ -411,4 +411,3 @@ Toast.config({className: 'demo', contentClassName:'content-demo'})
 | \--nutui-toast-inner-bg-color | `toast`內容區背景色 | `$color-mask` |
 | \--nutui-toast-inner-border-radius | `toast`內容區圓角值 | `12px` |
 | \--nutui-toast-inner-text-align | `toast`內容區文本對齊方式 | `center` |
-| \--nutui-overlay-bg-color | `toast`遮罩背景色 | `rgba(0, 0, 0, 0)` |
