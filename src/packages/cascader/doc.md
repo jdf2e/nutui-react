@@ -605,13 +605,12 @@ export default App;
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
 | \--nutui-cascader-font-size | 级联总字号 | `$font-size-base` |
-| \--nutui-cascader-line-height | 行高 | `22px` |
 | \--nutui-cascader-pane-height | 级联面板高度 | `342px` |
 | \--nutui-cascader-tabs-item-padding | 级联tabs的标题部分的padding 值 | `0 10px` |
 | \--nutui-cascader-item-height | 级联数据每一条的高度 | `40px` |
 | \--nutui-cascader-item-padding | 级联数据每一条的padding值 | `10px 20px` |
 | \--nutui-cascader-item-margin | 级联数据每一条的margin值 | `0px` |
 | \--nutui-cascader-item-border-bottom | 级联数据每一条的底部边框 | `0px solid #ddd` |
-| \--nutui-cascader-item-color | 级联数据每一条的色值 | `$title-color` |
+| \--nutui-cascader-item-color | 级联数据每一条的色值 | `$color-title` |
 | \--nutui-cascader-item-font-size | 级联数据每一条的字号 | `$font-size-base` |
 | \--nutui-cascader-item-active-color | 级联数据每一条的选中色值 | `$color-primary` |
