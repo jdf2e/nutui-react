@@ -8,7 +8,9 @@ test('noticebar base test', () => {
     'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
 
   const { container } = render(<NoticeBar content={text} />)
-  expect(container.querySelector('.content')?.innerHTML).toBe(
+  expect(
+    container.querySelector('.nut-noticebar-box-wrap-content')?.innerHTML
+  ).toBe(
     'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
   )
 
@@ -21,8 +23,12 @@ test('scrollable test', () => {
 
   const { container } = render(<NoticeBar content={text} scrollable={false} />)
   setTimeout(() => {
-    expect(container.querySelector('.content')).toHaveClass('nut-ellipsis')
-    expect(container.querySelector('.content')).toHaveAttribute(
+    expect(
+      container.querySelector('.nut-noticebar-box-wrap-content')
+    ).toHaveClass('nut-ellipsis')
+    expect(
+      container.querySelector('.nut-noticebar-box-wrap-content')
+    ).toHaveAttribute(
       'style',
       'animation-delay: 1s; animation-duration: 0s; transform: translateX(0);'
     )
@@ -44,7 +50,7 @@ test('closeable & rightIcon test', () => {
     />
   )
   setTimeout(() => {
-    expect(container.querySelector('.right-icon')).toBeTruthy
+    expect(container.querySelector('.nut-noticebar-box-right-icon')).toBeTruthy
     expect(container.querySelector('.nutui-iconfont')).toHaveClass(
       'nut-icon-circle-close'
     )
@@ -60,14 +66,16 @@ test('customer leftIcon test', () => {
     </NoticeBar>
   )
   setTimeout(() => {
-    expect(container.querySelector('.left-icon')).toBeTruthy
-    expect(container.querySelector('.left-icon')).toHaveAttribute(
+    expect(container.querySelector('.nut-noticebar-box-left-icon')).toBeTruthy
+    expect(
+      container.querySelector('.nut-noticebar-box-left-icon')
+    ).toHaveAttribute(
       'style',
       'background-image: url("https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png");'
     )
-    expect(container.querySelector('.content')?.innerHTML).toBe(
-      '<a href="https://www.jd.com">京东商城</a>'
-    )
+    expect(
+      container.querySelector('.nut-noticebar-box-wrap-content')?.innerHTML
+    ).toBe('<a href="https://www.jd.com">京东商城</a>')
   }, 300)
 })
 
@@ -75,7 +83,9 @@ test('wrap test', () => {
   const text =
     'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
   const { container } = render(<NoticeBar content={text} wrap />)
-  expect(container.querySelector('.nut-noticebar-page')).toHaveClass('wrapable')
+  expect(container.querySelector('.nut-noticebar-box')).toHaveClass(
+    'nut-noticebar-box-wrapable'
+  )
 })
 
 test('vertical test', () => {
@@ -95,7 +105,8 @@ test('vertical test', () => {
     />
   )
   expect(container.querySelector('.nut-noticebar-vertical')).toBeTruthy
-  expect(container.querySelector('.horseLamp_list')).toBeTruthy
+  expect(container.querySelector('.nut-noticebar-box-horseLamp_list'))
+    .toBeTruthy
 })
 
 test('vertical test', () => {
