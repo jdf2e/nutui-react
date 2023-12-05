@@ -200,13 +200,8 @@ exports[`should match snapshot 1`] = `
     style="background-color: rgba(0, 0, 0, 0); --nutui-overlay-zIndex: 9999;"
   />
   <div
-<<<<<<< HEAD
-    class="nut-popup-round nut-popup nut-popup-bottom "
-    style="z-index: 1000;"
-=======
     class="nut-popup nut-popup-round nut-popup-bottom"
     style="z-index: 9999;"
->>>>>>> next
   >
     <div
       class="nut-numberkeyboard"

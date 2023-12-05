@@ -60,14 +60,14 @@ const customTheme3 = {
   nutuiStepsDotIconBorder: '0',
   nutuiStepsBaseIconWidth: '6px',
   nutuiStepsBaseIconHeight: '6px',
-  nutuiStepsBaseLineBackground: `var(--nutui-gray-4)`,
-  nutuiStepsFinishIconBgColor: 'var(--nutui-gray-7)',
-  nutuiStepsFinishIconColor: 'var(--nutui-gray-7)',
-  nutuiStepsProcessIconBgColor: 'var(--nutui-gray-1)',
-  nutuiStepsWaitIconBgColor: 'var(--nutui-gray-4)',
+  nutuiStepsBaseLineBackground: `#ddd`,
+  nutuiStepsFinishIconBgColor: 'black',
+  nutuiStepsFinishIconColor: 'black',
+  nutuiStepsProcessIconBgColor: 'white',
+  nutuiStepsWaitIconBgColor: '#ddd',
   nutuiStepsBaseLineWidth: '45px',
   nutuiStepsBaseLineHeight: '1px',
-  nutuiStepsFinishLineBackground: `var(--nutui-gray-7)`,
+  nutuiStepsFinishLineBackground: `black`,
 }
 
 const StepsDemo = () => {
