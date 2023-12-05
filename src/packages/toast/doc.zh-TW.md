@@ -408,7 +408,6 @@ Toast.config({className: 'demo', contentClassName:'content-demo'})
 | \--nutui-toast-font-color | `toast`文字顏色 | `#fff` |
 | \--nutui-toast-inner-top           | `toast`內容區自定義高度    | `50%`              |
 | \--nutui-toast-inner-padding | `toast`內容區padding值 | `24px 30px` |
-| \--nutui-toast-inner-bg-color | `toast`內容區背景色 | `$gray7` |
+| \--nutui-toast-inner-bg-color | `toast`內容區背景色 | `$color-mask` |
 | \--nutui-toast-inner-border-radius | `toast`內容區圓角值 | `12px` |
 | \--nutui-toast-inner-text-align | `toast`內容區文本對齊方式 | `center` |
-| \--nutui-overlay-bg-color | `toast`遮罩背景色 | `rgba(0, 0, 0, 0)` |

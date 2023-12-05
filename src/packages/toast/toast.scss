@@ -2,6 +2,7 @@
   0% {
     -webkit-transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
   }
@@ -20,38 +21,33 @@
     --nutui-overlay-bg-color: rgba(0, 0, 0, 0);
     --nutui-overlay-zIndex: 1300;
   }
+
   &-small {
     .nut-toast__inner {
       font-size: $font-size-small;
     }
   }
+
   &-large {
     .nut-toast__inner {
       font-size: $font-size-large;
     }
   }
-  &-cover {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    pointer-events: none;
-    height: 100%;
-    background: $toast-cover-bg-color;
-  }
+
   &__inner {
     display: inline-block;
+    position: absolute;
+    left: 50%;
+    top: $toast-inner-top;
+    min-width: 30%;
+    max-width: 95.7%;
     font-size: $toast-text-font-size;
-    min-width: 40%;
-    max-width: 65%;
     text-align: $toast-inner-text-align;
     padding: $toast-inner-padding;
     word-break: break-all;
     background: $toast-inner-bg-color;
     border-radius: $toast-inner-border-radius;
     color: $toast-font-color;
-    position: absolute;
-    left: 50%;
-    top: $toast-inner-top;
     transform: translate(-50%, -50%);
     &.normal {
       word-break: normal;
@@ -62,27 +58,34 @@
       word-wrap: break-word;
     }
   }
+
   &-center {
     top: var(--nutui-toast-inner-top, 50%);
   }
+
   &-bottom {
     top: var(--nutui-toast-inner-top, 80%);
   }
+
   &-top {
     top: var(--nutui-toast-inner-top, 20%);
   }
+
   &-text {
-    font-size: $toast-text-font-size;
     &:empty {
       margin-bottom: -8px;
     }
   }
+
   &-title {
     font-size: $toast-title-font-size;
+    font-weight: 500;
+
     &:empty {
       margin-bottom: -8px;
     }
   }
+
   &-has-icon {
     .nut-toast__icon-wrapper {
       width: 100%;
@@ -90,8 +93,14 @@
       align-items: center;
       justify-content: center;
       margin-bottom: 8px;
+
+      .nut-icon {
+        width: 24px;
+        height: 24px;
+      }
     }
   }
+
   &-loading {
     .nut-toast__inner {
       display: inline-flex;
@@ -99,8 +108,14 @@
       justify-content: center;
       align-items: center;
     }
+
     .nut-toast__icon-wrapper {
       animation: rotation 2s linear infinite;
+
+      .nut-icon {
+        width: 24px;
+        height: 24px;
+      }
     }
   }
 }

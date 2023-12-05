@@ -78,6 +78,7 @@ const ToastDemo = () => {
     Toast.show({
       content: msg,
       icon: 'success',
+      title: `${translated.toastTitle}`,
     })
   }
   const errorToast = (msg: string) => {
@@ -114,6 +115,7 @@ const ToastDemo = () => {
   }
   const iconToast = (msg: string) => {
     Toast.show({
+      duration: 2000,
       content: msg,
       style: {
         '--nutui-overlay-bg-color': 'rgba(0,0,0,0.7)',
@@ -226,6 +228,7 @@ const ToastDemo = () => {
               Toast.show({
                 content: `Let's try ABCDEFGHIJKLMN here.`,
                 wordBreak: 'break-word',
+                duration: 3,
               })
             }}
           />
