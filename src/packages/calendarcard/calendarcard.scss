@@ -97,7 +97,7 @@
     &.prev,
     &.next,
     &.disabled {
-      color: $color-text-disabled;
+      color: $calendar-disable-color;
       cursor: not-allowed;
     }
   }

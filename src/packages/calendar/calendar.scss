@@ -183,16 +183,15 @@
     }
 
     &-disabled {
-      color: $color-text-disabled !important;
-
+      color: $calendar-disable-color !important;
       .nut-calendar-day-info-curr {
         display: none;
       }
     }
 
     &-choose-disabled {
-      background-color: $calendar-choose-background-color-disabled;
-      color: $color-text-disabled !important;
+      background-color: $calendar-choose-disable-background-color;
+      color: $calendar-disable-color !important;
 
       .nut-calendar-day-info-curr {
         display: none;

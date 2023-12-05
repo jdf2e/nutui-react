@@ -888,11 +888,14 @@ $calendar-choose-color: var(
   --nutui-calendar-choose-color,
   $color-primary
 ) !default;
-$calendar-choose-background-color-disabled: var(
-  --nutui-calendar-choose-background-color-disabled,
+$calendar-choose-disable-background-color: var(
+  --nutui-calendar-choose-disable-background-color,
   rgba(191, 191, 191, 0.09)
 ) !default;
-$calendar-disable-color: var(--nutui-calendar-disable-color, $gray3) !default;
+$calendar-disable-color: var(
+  --nutui-calendar-disable-color,
+  $color-text-disabled
+) !default;
 $calendar-base-font-size: var(
   --nutui-calendar-base-font-size,
   $font-size-large
@@ -1263,11 +1266,6 @@ $checkbox-icon-disable-color: var(
   --nutui-checkbox-icon-disable-color,
   #d6d6d6
 ) !default;
-$checkbox-icon-disable-color2: var(
-  --nutui-checkbox-icon-disable-color2,
-  $help-color
-) !default;
-
 $checkbox-label-margin-left: var(
   --nutui-checkbox-label-margin-left,
   $spacing-icon-text
@@ -1305,7 +1303,10 @@ $checkbox-button-disabled-active-color: var(
 ) !default;
 
 //radio（✅）
-$radio-label-font-color: var(--nutui-radio-label-font-color, $gray1) !default;
+$radio-label-font-color: var(
+  --nutui-radio-label-font-color,
+  $color-text
+) !default;
 $radio-icon-font-size: var(
   --nutui-radio-icon-font-size,
   $font-size-large
