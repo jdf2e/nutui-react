@@ -19,7 +19,7 @@ export interface InfiniteLoadingProps extends BasicComponent {
   pullRefresh: boolean
   pullingText: ReactNode
   loadingText: ReactNode
-  loadMoreText: string
+  loadMoreText: ReactNode
   onRefresh: (param: () => void) => void
   onLoadMore: (param: () => void) => void
   onScroll: (param: number) => void
@@ -183,7 +183,7 @@ export const InfiniteLoading: FunctionComponent<
           </div>
         ) : (
           !hasMore && (
-            <div className="tips">
+            <div className="bottom-box">
               {loadMoreText || locale.infiniteloading.loadMoreText}
             </div>
           )
