@@ -1,9 +1,8 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { Drag } from '@/packages/nutui.react.taro'
+import { Drag, Button } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
-import Button from '@/packages/button/index.taro'
 
 interface T {
   basic: string

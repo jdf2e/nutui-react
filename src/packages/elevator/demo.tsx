@@ -2,7 +2,6 @@ import React from 'react'
 import { Fabulous } from '@nutui/icons-react'
 import { Elevator } from './elevator'
 import { useTranslate } from '../../sites/assets/locale'
-import './demo.scss'
 
 interface T {
   basic: string
@@ -472,7 +471,7 @@ const ElevatorDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
-        <div className="demo-component">
+        <div style={{ background: 'white' }}>
           <Elevator
             list={dataList}
             height="260"
@@ -482,7 +481,7 @@ const ElevatorDemo = () => {
         </div>
 
         <h2>{translated.customIndex}</h2>
-        <div className="demo-component">
+        <div style={{ background: 'white' }}>
           <Elevator
             list={dataList2}
             height="220"
@@ -492,7 +491,7 @@ const ElevatorDemo = () => {
           />
         </div>
         <h2>{translated.showKeys}</h2>
-        <div className="demo-component">
+        <div style={{ background: 'white' }}>
           <Elevator
             showKeys={false}
             list={dataList}
@@ -502,7 +501,7 @@ const ElevatorDemo = () => {
           />
         </div>
         <h2>{translated.sticky}</h2>
-        <div className="demo-component">
+        <div style={{ background: 'white' }}>
           <Elevator
             list={dataList3}
             sticky
@@ -512,7 +511,7 @@ const ElevatorDemo = () => {
           />
         </div>
         <h2>{translated.customContent}</h2>
-        <div className="demo-component">
+        <div style={{ background: 'white' }}>
           <Elevator
             list={dataList}
             height="260"

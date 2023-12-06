@@ -4,7 +4,6 @@ import { Star, Plus } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import { Button, Cell } from '@/packages/nutui.react.taro'
-import '@/packages/button/demo.scss'
 
 interface T {
   ce5c5446: string
@@ -127,7 +126,7 @@ const ButtonDemo = () => {
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>设置 open-type </h2>
-        <Cell className="button-cell">
+        <Cell style={{ flexWrap: 'wrap' }}>
           <Button {...openType} style={{ margin: 8 }}>
             分享给好友
           </Button>
@@ -136,7 +135,7 @@ const ButtonDemo = () => {
           </Button>
         </Cell>
         <h2>{translated.ce5c5446}</h2>
-        <Cell className="button-cell">
+        <Cell style={{ flexWrap: 'wrap' }}>
           <Button
             className="aa"
             style={{ margin: 8 }}
@@ -163,7 +162,7 @@ const ButtonDemo = () => {
         </Cell>
 
         <h2>{translated.e51e4582}</h2>
-        <Cell className="button-cell">
+        <Cell style={{ flexWrap: 'wrap' }}>
           <Button fill="solid" style={{ margin: 8 }}>
             Solid
           </Button>
@@ -179,7 +178,7 @@ const ButtonDemo = () => {
         </Cell>
 
         <h2>{translated['0aaad622']}</h2>
-        <Cell className="button-cell">
+        <Cell style={{ flexWrap: 'wrap' }}>
           <Button
             type="primary"
             icon={<Star size={20} />}
@@ -285,7 +284,7 @@ const ButtonDemo = () => {
           </Button>
         </Cell>
         <h2>{translated['7db1a8b2']}</h2>
-        <Cell className="button-cell">
+        <Cell style={{ flexWrap: 'wrap' }}>
           <Button
             disabled
             type="primary"
@@ -396,7 +395,7 @@ const ButtonDemo = () => {
           </Button>
         </Cell>
         <h2>{translated.ce5c5447}</h2>
-        <Cell className="button-cell">
+        <Cell style={{ flexWrap: 'wrap' }}>
           <Button
             className="aa"
             style={{ margin: 8 }}
@@ -415,7 +414,7 @@ const ButtonDemo = () => {
           </Button>
         </Cell>
         <h2>{translated.a52bef0c}</h2>
-        <Cell className="button-cell">
+        <Cell style={{ flexWrap: 'wrap' }}>
           <Button loading type="warning" style={{ margin: 8 }}>
             {translated.d04fcbda}
           </Button>
@@ -435,7 +434,7 @@ const ButtonDemo = () => {
         </Cell>
 
         <h2>{translated['0aaad620']}</h2>
-        <Cell className="button-cell">
+        <Cell style={{ flexWrap: 'wrap' }}>
           <Button size="large" type="primary">
             {translated.b8a453e3}
           </Button>
@@ -459,7 +458,7 @@ const ButtonDemo = () => {
 
         <h2>{translated['781b07fd']}</h2>
 
-        <Cell className="button-cell">
+        <Cell style={{ flexWrap: 'wrap' }}>
           <Button color="#7232dd" style={{ margin: 8 }}>
             {translated['1076d771']}
           </Button>
