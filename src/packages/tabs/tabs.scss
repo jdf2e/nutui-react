@@ -115,7 +115,7 @@
     }
 
     &-disabled {
-      color: $color-text-disabled;
+      color: $disable-color;
     }
 
     &:first-child {
@@ -166,6 +166,33 @@
     .nut-tabs-titles-item {
       margin: 0;
       position: relative;
+      &::after {
+        content: '';
+        position: absolute;
+        right: 0;
+        top: 50%;
+        height: 50%;
+        width: 1px;
+        background: $color-border;
+        transform: translateY(-50%);
+      }
+
+      &:last-child {
+        &::after {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &-divider {
+    padding: 0;
+    border-bottom: 1px solid $color-border;
+
+    .nut-tabs-titles-item {
+      margin: 0;
+      position: relative;
+
       &::after {
         content: '';
         position: absolute;

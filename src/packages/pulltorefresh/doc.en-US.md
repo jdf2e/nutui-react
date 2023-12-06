@@ -65,5 +65,5 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-pulltorefresh-top-icon-width | Swipe to top icon width  | `36px` |
-| \--nutui-pulltorefresh-top-icon-height | Swipe to top icon height   | `26px` |
+| \--nutui-pulltorefresh-icon-width | Swipe to icon width  | `36px` |
+| \--nutui-pulltorefresh-icon-height | Swipe to icon height   | `26px` |

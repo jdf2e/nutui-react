@@ -55,12 +55,19 @@
   &--popup-top,
   &--popup-bottom {
     position: fixed;
-    top: 0;
     left: 0;
     width: 100%;
     overflow-y: auto;
     transition: transform 0.3s;
     z-index: 9999;
+  }
+
+  &--popup-top {
+    top: 0;
+  }
+
+  &--popup-bottom {
+    bottom: 0;
   }
 
   &--base {

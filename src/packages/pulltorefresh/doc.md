@@ -67,5 +67,5 @@ export default App
 
 | 名称 | 说明 | 默认值 |
 | --- | --- | --- |
-| \--nutui-pulltorefresh-top-icon-width | 下拉时icon宽度 | `36px` |
-| \--nutui-pulltorefresh-top-icon-height | 下拉时icon高度 | `26px` |
+| \--nutui-pulltorefresh-icon-width | 下拉时icon宽度 | `36px` |
+| \--nutui-pulltorefresh-icon-height | 下拉时icon高度 | `26px` |

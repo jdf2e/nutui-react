@@ -980,13 +980,7 @@ $notify-primary-background-color: var(
 ) !default;
 $notify-success-background-color: var(
   --nutui-notify-success-background-color,
-  linear-gradient(
-    135deg,
-    rgba(38, 191, 38, 1) 0%,
-    rgba(39, 197, 48, 1) 45%,
-    rgba(40, 207, 63, 1) 83%,
-    rgba(41, 212, 70, 1) 100%
-  )
+  $color-success
 ) !default;
 $notify-danger-background-color: var(
   --nutui-notify-danger-background-color,
@@ -1035,12 +1029,9 @@ $tabbar-height: var(--nutui-tabbar-height, 50px) !default;
 $tabbar-text-margin-top: var(--nutui-tabbar-text-margin-top, 3px) !default;
 
 //pulltorefresh
-$pulltorefresh-top-icon-width: var(
-  --nutui-pulltorefresh-top-icon-width,
-  36px
-) !default;
-$pulltorefresh-top-icon-height: var(
-  --nutui-pulltorefresh-top-icon-height,
+$pulltorefresh-icon-width: var(--nutui-pulltorefresh-icon-width, 36px) !default;
+$pulltorefresh-icon-height: var(
+  --nutui-pulltorefresh-icon-height,
   26px
 ) !default;
 
@@ -1049,8 +1040,8 @@ $infiniteloading-color: var(
   --nutui-infiniteloading-color,
   $color-text-help
 ) !default;
-$infiniteloading-bottom-icon-size: var(
-  --nutui-infiniteloading-bottom-icon-size,
+$infiniteloading-icon-size: var(
+  --nutui-infiniteloading-icon-size,
   24px
 ) !default;
 

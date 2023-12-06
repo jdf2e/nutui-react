@@ -21,8 +21,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: $pulltorefresh-top-icon-width;
-        height: $pulltorefresh-top-icon-height;
+        width: $pulltorefresh-icon-width;
+        height: $pulltorefresh-icon-height;
         margin-bottom: 4px;
       }
     }
@@ -44,8 +44,8 @@
       align-items: center;
 
       &-icons {
-        width: $infiniteloading-bottom-icon-size;
-        height: $infiniteloading-bottom-icon-size;
+        width: $infiniteloading-icon-size;
+        height: $infiniteloading-icon-size;
         margin-right: 8px;
       }
     }
