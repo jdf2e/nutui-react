@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Range, Cell, Toast, ConfigProvider } from '@/packages/nutui.react.taro'
-import '@/packages/range/demo.scss'
 import Header from '@/sites/components/header'
 
 interface T {

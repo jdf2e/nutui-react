@@ -5,6 +5,7 @@ import Cell from '../cell'
 import Button from '../button'
 import Overlay from '../overlay'
 import ConfigProvider from '../configprovider'
+import Header from '@/sites/components/header'
 
 const LoadingDemo = () => {
   const [visible, setVisible] = useState(false)
@@ -25,6 +26,7 @@ const LoadingDemo = () => {
 
   return (
     <>
+      <Header />
       <div className="demo">
         <h2>基础用法</h2>
         <Cell>
