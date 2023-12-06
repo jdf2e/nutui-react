@@ -239,7 +239,7 @@ export const InfiniteLoading: FunctionComponent<
           </div>
         ) : (
           !hasMore && (
-            <div className="tips">
+            <div className="bottom-box">
               {loadMoreText || locale.infiniteloading.loadMoreText}
             </div>
           )
