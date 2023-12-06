@@ -3,6 +3,7 @@ import Taro from '@tarojs/taro'
 import { Drag } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
+import Button from '@/packages/button/index.taro'
 
 interface T {
   basic: string
@@ -57,22 +58,13 @@ const DragDemo = () => {
   const bottom = () => {
     return windowHeight - 501 - (isTaroWeb ? 57 : 0)
   }
-  const btnStyle = {
-    borderRadius: '24px',
-    padding: '0 18px',
-    fontSize: '14px',
-    color: '#fff',
-    display: 'inline-block',
-    lineHeight: '36px',
-    background: `var(--nutui-color-primary)`,
-  }
   return (
     <>
       <Header />
       <div className={`demo ${isTaroWeb ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <Drag style={{ left: '8px' }}>
-          <span style={btnStyle}>{translated.dragBasic}</span>
+          <Button type="primary">{translated.dragBasic}</Button>
         </Drag>
         <h2 style={{ top: '30px', position: 'relative' }}>
           {translated.direction}
@@ -85,7 +77,7 @@ const DragDemo = () => {
           }}
           className="weapp-drag1"
         >
-          <span style={btnStyle}> {translated.directionX}</span>
+          <Button type="primary"> {translated.directionX}</Button>
         </Drag>
         <Drag
           direction="y"
@@ -95,7 +87,7 @@ const DragDemo = () => {
           }}
           className="weapp-drag2"
         >
-          <span style={btnStyle}> {translated.directionY}</span>
+          <Button type="primary"> {translated.directionY}</Button>
         </Drag>
         <h2 style={{ top: '60px', position: 'relative' }}>
           {translated.attract}
@@ -109,7 +101,7 @@ const DragDemo = () => {
           }}
           className="weapp-drag3"
         >
-          <span style={btnStyle}>{translated.attractText}</span>
+          <Button type="primary">{translated.attractText}</Button>
         </Drag>
         <h2 style={{ top: '90px', position: 'relative' }}>
           {translated.limitBoundaries}
@@ -138,7 +130,7 @@ const DragDemo = () => {
           }}
           className="weapp-drag4"
         >
-          <span style={btnStyle}>{translated.limitBoundaries}</span>
+          <Button type="primary">{translated.limitBoundaries}</Button>
         </Drag>
       </div>
     </>

@@ -21,18 +21,9 @@ import  React from "react";
 import { Drag } from '@nutui/nutui-react';
 
 const App = () => {
-  const btnStyle = {
-    borderRadius: '25px',
-    padding: '0 18px',
-    fontSize: '14px',
-    color: '#fff',
-    display: 'inline-block',
-    lineHeight: '36px',
-    background: 'linear-gradient(135deg,#fa2c19 0,#fa6419 100%)',
-  }
   return (
     <Drag>
-        <div className="touch-dom" style={btnStyle}>Button</div>
+        <div className="touch-dom">Button</div>
     </Drag>
  );
 };
@@ -47,25 +38,16 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { Drag } from '@nutui/nutui-react';
+import { Drag, Button } from '@nutui/nutui-react';
 
 const App = () => {
-  const btnStyle = {
-    borderRadius: '25px',
-    padding: '0 18px',
-    fontSize: '14px',
-    color: '#fff',
-    display: 'inline-block',
-    lineHeight: '36px',
-    background: 'linear-gradient(135deg,#fa2c19 0,#fa6419 100%)',
-  }
   return (
     <>
     <Drag direction="x" style={{ top: '200px', left: '8px' }}>
-        <span style={btnStyle}>X axis</span>
+        <Button type="primary">X axis</Button>
       </Drag>
       <Drag direction="y" style={{ top: '200px', right: '50px' }}>
-        <span style={btnStyle}>Y axis</span>
+        <Button type="primary">Y axis</Button>
       </Drag>
     </>
  );
@@ -81,21 +63,12 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { Drag } from '@nutui/nutui-react';
+import { Drag, Button } from '@nutui/nutui-react';
 
 const App = () => {
-  const btnStyle = {
-    borderRadius: '25px',
-    padding: '0 18px',
-    fontSize: '14px',
-    color: '#fff',
-    display: 'inline-block',
-    lineHeight: '36px',
-    background: 'linear-gradient(135deg,#fa2c19 0,#fa6419 100%)',
-  }
   return (
     <Drag direction="x" attract>
-      <div className="touch-dom" style={btnStyle}>Button</div>
+      <Button>Button</Button>
     </Drag>
  );
 };
@@ -110,19 +83,9 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { Drag } from '@nutui/nutui-react';
+import { Drag, Button } from '@nutui/nutui-react';
 
 const App = () => {
-  const btnStyle = {
-    borderRadius: '25px',
-    padding: '0 18px',
-    fontSize: '14px',
-    color: '#fff',
-    display: 'inline-block',
-    lineHeight: '36px',
-    background: 'linear-gradient(135deg,#fa2c19 0,#fa6419 100%)',
-  }
-  
     const right = () => {
     return document.documentElement.clientWidth - 300 - 9
     }
@@ -146,7 +109,7 @@ const App = () => {
         boundary={{ top: 1, left: 9, bottom: bottom(), right: right() }}
         style={{ top: '40px', left: '50px' }}
       >
-        <span style={btnStyle}>Limit Boundaries</span>
+        <Button type="primary">Limit Boundaries</Button>
       </Drag>
     </>
    );
