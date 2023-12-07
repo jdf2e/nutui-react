@@ -84,9 +84,17 @@ const TagDemo = () => {
           <Cell
             title={translated.closeable}
             extra={
+              <Tag closeable onClose={() => alert('Tag closed')} type="primary">
+                {translated.tag}
+              </Tag>
+            }
+          />
+          <Cell
+            title={translated.closeable}
+            extra={
               <Tag
                 closeable
-                closeIcon={<Failure width={8} height={8} />}
+                closeIcon={<Failure size={8} />}
                 onClose={() => Taro.showToast({ title: 'Tag closed' })}
                 type="primary"
               >
@@ -111,7 +119,7 @@ const TagDemo = () => {
             }
           />
           <Cell
-            title="空心颜色"
+            title={translated.plainColor}
             extra={
               <Tag background="#FA2400" plain>
                 {translated.tag}

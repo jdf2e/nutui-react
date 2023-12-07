@@ -204,7 +204,7 @@ export const Popup: FunctionComponent<
   }
 
   const renderTitle = () => {
-    if (left || title || closeable || description) {
+    if (left || title || description) {
       return (
         <View className={`${classPrefix}-title`}>
           {position === 'bottom' && (
@@ -230,6 +230,17 @@ export const Popup: FunctionComponent<
             </View>
           )}
         </View>
+      )
+    }
+    if (closeable) {
+      return (
+        <>
+          {closeable && (
+            <View className={closeClasses} onClick={onHandleClickCloseIcon}>
+              {React.isValidElement(closeIcon) ? closeIcon : <Close />}
+            </View>
+          )}
+        </>
       )
     }
   }

@@ -180,12 +180,7 @@ const ImageDemo = () => {
               <div className="image-text">{translated.default}</div>
             </Col>
             <Col span="8">
-              <Image
-                width="100"
-                height="100"
-                lazy
-                loading={<Loading className="nut-icon-loading" />}
-              />
+              <Image width="100" height="100" lazy loading={<Loading />} />
               <div className="image-text">{translated.custom}</div>
             </Col>
           </Row>
