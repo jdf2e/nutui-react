@@ -154,11 +154,7 @@ const TabsDemo = () => {
   return (
     <>
       <Header />
-      <div
-        className={`demo ${
-          Taro.getEnv() === 'WEB' ? 'web' : ''
-        } full no-overflow`}
-      >
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} full `}>
         <h2>{translated.basic}</h2>
         <Tabs
           value={tab1value}
