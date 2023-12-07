@@ -703,6 +703,8 @@ export default App;
 | showHeader | 是否显示表头 | `boolean` | `true` |
 | noData | 自定义无数据 | `ReactNode` | `-` |
 | onSort | 点击排序按钮触发 | `item: TableColumnProps, data: Array<any>` | `-` |
+| width | 列宽度 | `number` | `auto` |
+| fixed | 固定位置 | `left` \| `right`  | `-` |
 
 ### TableColumnProps
 

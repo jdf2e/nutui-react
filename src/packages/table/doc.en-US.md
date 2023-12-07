@@ -692,6 +692,8 @@ export default App;
 | showHeader | Show Header | `boolean` | `true` |
 | noData | Custom noData | `ReactNode` | `-` |
 | sorterIcon | Sort icon | `ReactNode` | `<ArrowDown />` |
+| width | width of the column | `number` | `auto` |
+| fixed | fixed of the column | `left` \| `right`  | `-` |
 
 ### TableColumnProps
 
