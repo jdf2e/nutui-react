@@ -291,6 +291,7 @@ const InternalPicker: ForwardRefRenderFunction<
         <span
           className={`${classPrefix}__cancel-btn`}
           onClick={(e) => {
+            e.stopPropagation()
             onCancel?.()
             setInnerVisible(false)
           }}
@@ -301,6 +302,7 @@ const InternalPicker: ForwardRefRenderFunction<
         <span
           className={`${classPrefix}__confirm-btn`}
           onClick={(e) => {
+            e.stopPropagation()
             confirm()
           }}
         >
