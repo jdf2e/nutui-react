@@ -124,9 +124,8 @@ export const InfiniteLoading: FunctionComponent<
 
   const refreshDone = () => {
     distance.current = 0
-    ;(
-      refreshTop.current as HTMLDivElement
-    ).style.height = `${distance.current}px`
+    ;(refreshTop.current as HTMLDivElement).style.height =
+      `${distance.current}px`
     isTouching.current = false
   }
 
@@ -147,19 +146,16 @@ export const InfiniteLoading: FunctionComponent<
       event.preventDefault()
       if (distance.current >= refreshMaxH.current) {
         distance.current = refreshMaxH.current
-        ;(
-          refreshTop.current as HTMLDivElement
-        ).style.height = `${distance.current}px`
+        ;(refreshTop.current as HTMLDivElement).style.height =
+          `${distance.current}px`
       } else {
-        ;(
-          refreshTop.current as HTMLDivElement
-        ).style.height = `${distance.current}px`
+        ;(refreshTop.current as HTMLDivElement).style.height =
+          `${distance.current}px`
       }
     } else {
       distance.current = 0
-      ;(
-        refreshTop.current as HTMLDivElement
-      ).style.height = `${distance.current}px`
+      ;(refreshTop.current as HTMLDivElement).style.height =
+        `${distance.current}px`
       isTouching.current = false
     }
   }
@@ -167,9 +163,8 @@ export const InfiniteLoading: FunctionComponent<
   const touchEnd = () => {
     if (distance.current < refreshMaxH.current) {
       distance.current = 0
-      ;(
-        refreshTop.current as HTMLDivElement
-      ).style.height = `${distance.current}px`
+      ;(refreshTop.current as HTMLDivElement).style.height =
+        `${distance.current}px`
     } else {
       onRefresh && onRefresh(refreshDone)
     }
@@ -239,7 +234,7 @@ export const InfiniteLoading: FunctionComponent<
           </div>
         ) : (
           !hasMore && (
-            <div className="tips">
+            <div className="bottom-box">
               {loadMoreText || locale.infiniteloading.loadMoreText}
             </div>
           )

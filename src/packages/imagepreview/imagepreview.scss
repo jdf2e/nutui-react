@@ -21,23 +21,13 @@
     left: 0;
     right: 0;
     background: transparent;
-    color: #fff;
+    color: $white;
 
     .arrow {
       position: absolute;
       left: 15px;
       transform: rotateZ(180deg);
     }
-  }
-
-  .popup-bg {
-    background: rgba(0, 0, 0, 0.9);
-  }
-
-  .popup-box {
-    height: 100%;
-    overflow: visible;
-    background-color: transparent;
   }
 
   &-pop {

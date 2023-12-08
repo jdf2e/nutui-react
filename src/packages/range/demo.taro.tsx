@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Range, Cell, Toast, ConfigProvider } from '@/packages/nutui.react.taro'
-import '@/packages/range/demo.scss'
 import Header from '@/sites/components/header'
 
 interface T {
@@ -179,7 +178,21 @@ const RangeDemo = () => {
         <Cell style={cellStyle}>
           <Range
             value={value2}
-            button={<div className="range-custom-button">{value2}</div>}
+            button={
+              <div
+                style={{
+                  width: '26px',
+                  color: 'white',
+                  fontSize: '10px',
+                  lineHeight: '18px',
+                  textAlign: 'center',
+                  backgroundColor: 'red',
+                  borderRadius: '10px',
+                }}
+              >
+                {value2}
+              </div>
+            }
             onChange={(val: any) => setValue2(val)}
             onEnd={(val) => showToast(`${val}`)}
           />

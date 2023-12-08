@@ -143,6 +143,7 @@ plugins: [
 #### Button
 - 移除 `plain`，通过 `fill="outline"` 实现
 - 增加 `ref`，对外暴露组件内 `button` 元素
+- CSS 变量中，对 `type` 类型对应的色值的定义，不在暴露到文档中，建议使用默认值，或修改主题变量
 - 增加 `fill` 模式类型，`dashed`，修改 `fill` 默认值为 `outline`。
 - 增加 `rightIcon`，可满足同时设置左右两个icon的情况。
 - 修改 `size` 为 `large` 时的默认 `width` 为 `100%` 的值，如果使用通栏的 `button`，可搭配 `block` 来使用。
@@ -273,7 +274,7 @@ plugins: [
 - 移除 `num`，支持传入所有 `Badge` Props
 - 移除 `color`，使用父元素的 `activeColor`，保持同样的 `active` 状态
 #### Tabs
-- 增加 `简约`、`卡片`、`按钮/胶囊` 模式。
+- 增加 `lite`、`card`、`button`、`divider` 模式。
 - 移除 `background`，通过 `className` 或 `style` 控制
 - 移除 `titleScroll`, 默认支持滚动
 - 移除 `ellipsis`，默认 `flex：1`
@@ -287,6 +288,8 @@ plugins: [
 - `onClick` 类型改为 `(index: string | number) => void`
 - `onChange` 类型改为 `(index: string | number) => void`
 - 增加 defaultValue
+- 增加 `activeType` 类型 `simple`，实现选项卡的简约选择，只修改字号和字重，不处理字色。
+
 #### Tabs.Tabpane
 - `paneKey` 重命名为 `value`
 ### 数据录入
@@ -324,11 +327,15 @@ plugins: [
 - `iconAcitveName` 重命名为 `activeIcon`
 - `iconIndeterminateName` 重命名为 `iconIndeterminateIcon`
 - 移除 `iconSize`
+- 部分 className 命名变更，废弃 `nutui-checkbox__xx` 命名方式，直接使用 `nutui-checkbox-xx`，并对选中状态命名修订为 `nutui-checkbox-icon-checked`
+- 增加半选的禁用状态
+
 #### Checkbox.Group
 - 新增 `defaultValue`，用于非受控，`value` 用于受控
 - `textPosition` 重命名为 `labelPosition`
 - `toggleAll` 重命名为 `toggle`
 - `toggleReverse` 重命名为 `reverse`
+- 部分 className 命名变更，废弃 `nutui-checkbox__xx` 命名方式，直接使用 `nutui-checkbox-xx`，并对选中状态命名修订为 `nutui-checkbox-icon-checked`
 #### DatePicker
 - `modelValue` 重命名为 `value`，并增加 `defaultValue`
 - `isShowChinese` 重命名为 `showChinese`
@@ -381,10 +388,12 @@ plugins: [
 - 增加 `labelPosition`，用于设置 `label` 的位置
 - 增加 `checked` 和 `defaultChecked` ，用于受控和非受控
 - `onChange` 类型修改为 `(checked: boolean) => void`
+- 部分 className 命名变更，废弃 `nutui-radio__xx` 命名方式，直接使用 `nutui-radio-xx`，并对选中状态命名修订为 `nutui-radio-icon-checked`
 ### Radio.Group
 - `textPosition` 重命名为 `labelPosition` 
 - 增加 `defaultValue` ，用于非受控
 - `onChange` 类型修改为 `(value: string| number) => void`
+- 部分 className 命名变更，废弃 `nutui-radio__xx` 命名方式，直接使用 `nutui-radio-xx`，并对选中状态命名修订为 `nutui-radio-icon-checked`
 #### Range
 - `maxDesc` 重命名为 `maxDescription`，类型改为 `ReactNode`
 - `minDesc` 重命名为 `minDescription`，类型改为 `ReactNode`
@@ -411,7 +420,7 @@ plugins: [
 - 移除 `leftoutIcon` 和 `label`，使用 `left` 实现
 - 移除 `rightoutIcon` 和 `actionText`，使用 `right` 实现
 - 移除 `leftinIcon`，使用 `leftIn` 实现
-- 移除 `rightinIcon`，使用 `rightIn` 实现
+- 移除 `rightinIcon`，使用 `rightIn` 实现，同时兼顾和 clearIcon 的交互，当设置rightIn时，默认展示 rightIn，当触发输入后，展示 clearIcon。同时增加 `backable` 来标记是否展示左侧返回Icon
 - 移除 `onCancel`，使用 `right` 来实现事件处理
 - 移除 `onClickLeftinIcon`，用户可使用 `left` 来实现事件处理
 - 移除 `onClickLeftoutIcon`，用户可使用 `left` 来实现事件处理
@@ -595,8 +604,12 @@ plugins: [
 
 #### Empty
 - 新增 `status` 属性，用于默认图片错误类型
+- 新增 `size` 属性，用于区分全屏与半屏状态下图片的不同大小
+- 新增 `title` 属性，用于展示提示的标题部分
+- 新增 `actions` 属性，用于展示提示的操作部分，支持1个或2个操作
 - `image` 属性类型更改为 `ReactNode`
 - 新增 `title`、`size`、`actions` 属性，支持标题的设置、图片大小的设置、可能的操作设置，操作设置默认以`Button`实现。
+
 
 #### ImagePreview
 - `show` 重命名为 `visible`

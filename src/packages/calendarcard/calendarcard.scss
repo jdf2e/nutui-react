@@ -1,9 +1,9 @@
 .nut-calendarcard {
-  background: $white;
+  background: $color-background-overlay;
   border-radius: 12px;
   overflow: hidden;
   font-size: $calendar-base-font-size;
-  color: $gray1;
+  color: $color-title;
 
   &-header {
     display: flex;

@@ -17,7 +17,7 @@ describe('radio', () => {
   test('radio disable', () => {
     const { container } = render(<Radio disabled>Test Case</Radio>)
     expect(container.querySelector('.nut-icon')).toHaveClass(
-      'nut-radio__icon--disable'
+      'nut-radio-icon-disabled'
     )
   })
 

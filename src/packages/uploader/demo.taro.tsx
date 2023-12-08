@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import Taro from '@tarojs/taro'
-import { Dongdong, Loading1, Star } from '@nutui/icons-react-taro'
+import { Dongdong, Loading, Star } from '@nutui/icons-react-taro'
 import { FileItem } from '@/packages/uploader/file-item'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Uploader, Progress, Cell } from '@/packages/nutui.react.taro'
@@ -186,7 +186,7 @@ const UploaderDemo = () => {
       message: translated['403b055e'],
       type: 'image',
       uid: '126',
-      loadingIcon: <Loading1 className="nut-icon-loading1" color="#fff" />,
+      loadingIcon: <Loading className="nut-icon-Loading" color="#fff" />,
     },
     {
       name: translated['29ab0c96'],
@@ -362,17 +362,19 @@ const UploaderDemo = () => {
           autoUpload={false}
           ref={uploadRef}
         />
-        <Button
-          type="success"
-          size="small"
-          onClick={submitUpload}
-          style={{ marginRight: '10px', marginTop: '20px' }}
-        >
-          {translated.fcf01d1a}
-        </Button>
-        <Button type="primary" size="small" onClick={clearUpload}>
-          {translated.clearBtnUpload}
-        </Button>
+        <div style={{ display: 'flex' }}>
+          <Button
+            type="success"
+            size="small"
+            onClick={submitUpload}
+            style={{ marginRight: '10px' }}
+          >
+            {translated.fcf01d1a}
+          </Button>
+          <Button type="primary" size="small" onClick={clearUpload}>
+            {translated.clearBtnUpload}
+          </Button>
+        </div>
 
         <h2>{translated['7db1a8b2']}</h2>
         <Uploader disabled />

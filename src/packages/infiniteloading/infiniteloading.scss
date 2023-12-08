@@ -1,26 +1,33 @@
 .nut-infiniteloading {
   display: block;
   width: 100%;
+
   .nut-infinite-top {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     overflow: hidden;
+    font-size: $font-size-small;
+    color: $infiniteloading-color;
+
     .top-box {
       width: 100%;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      color: $text-color;
+      &-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: $pulltorefresh-icon-width;
+        height: $pulltorefresh-icon-height;
+        margin-bottom: 4px;
+      }
     }
   }
-  .nut-infinite-container {
-    .infiniteLi {
-      color: $title-color;
-    }
-  }
+
   .nut-infinite-bottom {
     display: flex;
     align-items: center;
@@ -28,11 +35,19 @@
     width: 100%;
     padding-top: 6px;
     font-size: $font-size-small;
-    color: $infiniteloading-bottom-color;
+    color: $infiniteloading-color;
     text-align: center;
 
     .bottom-box {
-      color: $text-color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &-icons {
+        width: $infiniteloading-icon-size;
+        height: $infiniteloading-icon-size;
+        margin-right: 8px;
+      }
     }
   }
 }

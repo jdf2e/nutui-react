@@ -6,20 +6,26 @@
   height: 100%;
   overflow: hidden;
   box-sizing: border-box;
-  background-color: $background-color;
-  color: $title-color;
+  background-color: $color-background;
+  color: $color-title;
+
   .barrage-item {
     display: block;
     position: absolute;
     right: 0;
-    padding: 3px 25px;
-    border-radius: 50px;
-    font-size: 12px;
+    padding: 4px 16px;
+    border-radius: 16px;
+    font-size: $font-size-small;
     text-align: center;
     white-space: pre;
     transform: translateX(100%);
-    background: linear-gradient(to right, $gray3, rgba(0, 0, 0, 0));
+    background: linear-gradient(
+      to right,
+      var(--nutui-black-3),
+      var(--nutui-black-1)
+    );
     box-sizing: border-box;
+
     &.move {
       will-change: transform;
       animation-name: moving;
@@ -27,18 +33,22 @@
       animation-play-state: running;
     }
   }
+
   @keyframes moving {
     from {
       transform: translateX(100%);
     }
+
     to {
       transform: translateX(var(--move-distance));
     }
   }
+
   @-webkit-keyframes moving {
     from {
       -webkit-transform: translateX(100%);
     }
+
     to {
       transform: translateX(var(--move-distance));
     }

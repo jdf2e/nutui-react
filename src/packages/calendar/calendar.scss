@@ -6,8 +6,8 @@
   flex-direction: column;
   flex: 1;
   font-size: $calendar-base-font-size;
-  background-color: $white;
-  color: $gray1;
+  background-color: $color-background-overlay;
+  color: $color-title;
   overflow: hidden;
   height: 100%;
 
@@ -39,9 +39,10 @@
   }
 
   &-title {
+    color: $color-title;
     font-size: $calendar-title-font-size;
     font-weight: $calendar-title-font-weight;
-    line-height: 44px;
+    line-height: 50px;
   }
 
   &-sub-title {
@@ -66,7 +67,7 @@
   &-week-item {
     &:first-of-type,
     &:last-of-type {
-      color: $calendar-day67-color;
+      color: $color-primary;
     }
   }
 
@@ -94,7 +95,7 @@
       left: 0;
       right: 0;
       font-size: $font-size-small;
-      color: $text-color;
+      color: $color-text;
     }
   }
 
@@ -128,7 +129,7 @@
 
     &:nth-child(7n + 0),
     &:nth-child(7n + 1) {
-      color: $calendar-day67-color;
+      color: $color-primary;
     }
 
     &-info-curr {
@@ -183,7 +184,6 @@
 
     &-disabled {
       color: $calendar-disable-color !important;
-
       .nut-calendar-day-info-curr {
         display: none;
       }
@@ -223,6 +223,6 @@
   }
 }
 
-.nut-calendar-popup .nut-popup__close-icon {
+.nut-calendar-popup .nut-popup-title-right {
   top: 7px !important;
 }

@@ -8,7 +8,7 @@ import {
   Notice,
   Category,
 } from '@nutui/icons-react-taro'
-import { useTranslate } from '../../sites/assets/locale'
+import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Popover, Cell, Picker } from '@/packages/nutui.react.taro'
 import '@/packages/popover/demo.scss'
 import Header from '@/sites/components/header'

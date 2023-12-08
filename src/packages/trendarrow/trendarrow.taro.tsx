@@ -24,8 +24,8 @@ const defaultProps = {
   left: false,
   sync: true,
   color: '#333',
-  riseColor: '#fa2c19',
-  dropColor: '#64b578',
+  riseColor: 'var(--nutui-brand-6)',
+  dropColor: 'var(--nutui-secondary-1)',
   riseIcon: null,
   dropIcon: null,
 } as TrendArrowProps

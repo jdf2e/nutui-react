@@ -34,16 +34,28 @@ const PullToRefreshDemo = () => {
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <PullToRefresh
+          style={{
+            backgroundColor: `var(--nutui-gray-3)`,
+            color: 'var(--nutui-gray-7)',
+          }}
           onRefresh={() =>
             new Promise((resolve) => {
-              //   Toast.show('😊')
               toastShow('😊')
               resolve('done')
             })
           }
         >
           {list.map((item) => (
-            <Cell key={item}>{item}</Cell>
+            <div
+              style={{
+                textAlign: 'center',
+                height: '50px',
+                lineHeight: '50px',
+              }}
+              key={item}
+            >
+              {item}
+            </div>
           ))}
         </PullToRefresh>
         <Toast

@@ -4,11 +4,10 @@
 .nut-cascader {
   width: 100%;
   font-size: $cascader-font-size;
-  line-height: $cascader-line-height;
 
   .nut-tabs-titles {
     padding: $cascader-tabs-item-padding;
-    background: $gray6;
+    background: $color-background-overlay;
   }
 
   .nut-tabs-titles-item {
@@ -21,6 +20,7 @@
 
   .nut-tabpane {
     padding: 0;
+    background: $color-background-overlay;
   }
 
   &-pane {

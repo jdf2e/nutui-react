@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import Taro from '@tarojs/taro'
-import { Heart } from '@nutui/icons-react'
+import { Heart } from '@nutui/icons-react-taro'
 import { Address, Cell } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'

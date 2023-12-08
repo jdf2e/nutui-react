@@ -16,10 +16,10 @@ import {
   Rate,
   Range,
   Toast,
+  Cell,
 } from '@/packages/nutui.react.taro'
 import { FormItemRuleWithoutValidator } from './types'
 import Header from '@/sites/components/header'
-import Cell from '@/packages/cell'
 
 interface T {
   basic: string

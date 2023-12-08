@@ -257,11 +257,6 @@ const TourDemo = () => {
           type="tile"
           location="bottom-end"
           offset={[8, 8]}
-          style={{
-            '--nutui-popover-content-background-color': 'rgb(75, 76, 77)',
-            '--nutui-popover-text-color': 'rgb(255, 255, 255)',
-            '--nutui-popover-border-color': 'rgb(75, 76, 77)',
-          }}
           closeOnOverlayClick={false}
         >
           <div className="tour-demo-custom-content">

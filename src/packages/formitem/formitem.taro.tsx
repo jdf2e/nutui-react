@@ -150,6 +150,7 @@ export class FormItem extends React.Component<
 
   onStoreChange = (type?: string) => {
     if (type === 'reset') {
+      this.context.errors[this.props.name as string] = []
       this.refresh()
     } else {
       this.forceUpdate()
@@ -204,7 +205,7 @@ export class FormItem extends React.Component<
             className="nut-form-item__body__tips"
             style={{
               textAlign: errorMessageAlign,
-              display: item?.length ? 'inherit' : 'none',
+              display: item?.length ? 'initial' : 'none',
             }}
           >
             {item?.[0]?.message}
