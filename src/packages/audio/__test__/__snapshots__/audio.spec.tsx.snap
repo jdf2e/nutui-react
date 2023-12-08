@@ -6,10 +6,10 @@ exports[`icon type test 1`] = `
     class="nut-audio"
   >
     <div
-      class="nut-audio__icon"
+      class="nut-audio-icon"
     >
       <div
-        class="nut-audio__icon-box nut-audio__icon-stop"
+        class="nut-audio-icon-box nut-audio-icon-stop"
       >
         <svg
           aria-labelledby="Service"
@@ -45,7 +45,7 @@ exports[`none type test 1`] = `
     class="nut-audio"
   >
     <div
-      class="nut-audio__none-container"
+      class="nut-audio-none-container"
     />
     <audio
       class="audioMain"
