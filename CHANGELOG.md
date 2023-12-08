@@ -1,3 +1,85 @@
+# v2.3.0
+`2023-12-08`
+
+* 🔨 chore(config): demo 的配置文件中增加 css 主题 (#1765) @oasis-cloud
+* 🔨 chore(deps): update dependency @nutui/icons-* to 0.0.5 (#1767) @oasis-cloud
+* 📖 docs(avatar): 修改demo值,改为可支持变量 (#1752) @xiaoyatong
+* 📖 docs(checkbox): checkedIcon 改为 activeIcon (#1724) @oasis-cloud
+* 📖 docs(countdown): 修复文档中的文案多语言化 (#1723) @xiaoyatong
+* 📖 docs(form): 文档增加 useForm 的示例 (#1708) @oasis-cloud
+* 📖 docs(overlay): 文档优化 (#1706) @xiaoyatong
+* 📖 docs(picker): fix docs (#1740) @xiaoyatong
+* 📖 docs(popup): 禁止滚动穿透示例 (#1769) @oasis-cloud
+* 📖 docs(pulltorefresh): 增加 scrollTop 相关 demo (#1755) @oasis-cloud
+* 📖 docs(table): 修改文档 (#1731) @xiaoyatong
+* 📖 docs(tour): fix tour demo (#1759) @xiaoyatong
+* 📖 docs: address and collapse doc icons (#1692) @xiaoyatong
+* 📖 docs: fix docs (#1678) @xiaoyatong
+* :sparkles: feat(calendarcard): 限制范围时禁止面板切换 (#1688) @Eiinu
+* :sparkles: feat(checkbox): add button mode (#1738) @xiaoyatong
+* :sparkles: feat(empty): adds title,size,and actions (#1697) @xiaoyatong
+* :sparkles: feat(example): add with-rsbuild example (#1661) @Kurisu
+* :sparkles: feat(form): 增加上下结构的展示的demo (#1729) @xiaoyatong
+* :sparkles: feat(infiniteloading): 优化布局,添加css变量,增加demo (#1760) @xiaoyatong
+* :sparkles: feat(navbar): 增加标题左对齐方式,优化左侧icon的布局,调整className类 名和css 变量 (#1750) @xiaoyatong
+* :sparkles: feat(pagination): add lite mode and css variable (#1743) @xiaoyatong
+* :sparkles: feat(popover): 新增属性 action,简化css 变量 (#1747) @xiaoyatong
+* :sparkles: feat(popup): 增加description属性,调整从底部弹出时的样式,默认为 round 模式 (#1749) @xiaoyatong
+* :sparkles: feat(searchbar): 增加属性 backable 可返回，简化css变量 (#1736) @xiaoyatong
+* :sparkles: feat(tabs): 新增模式 divider 及 demo (#1761) @xiaoyatong
+* :sparkles: feat(tabs): 新增简约,卡片,按钮/胶囊模式,简化CSS变量,变更className类 名 (#1727) @xiaoyatong
+* :sparkles: feat: add dashed and rightIcon, and changed fill default value as outline (#1695) @xiaoyatong
+* :sparkles: feat: theme updated to v12 (#1573) @xiaoyatong
+* :sparkles: feat: update icons (#1693) @xiaoyatong
+* :sparkles: feat: 收敛 icons (#1687) @xiaoyatong
+* :bug: fix(calendar): 日历设置结束时间超过开始时间后白屏 (#1745) @oasis-cloud
+* :bug: fix(datepicker): 起始时间与结束时间更新后，时间选项数组更新 (#1694) @学友
+* :bug: fix(dialog): 调整dialog button大小 (#1720) @xiaoyatong
+* :bug: fix(form): 设置 errorMessageAlign="right" 错误文案无法右对齐 (#1709) @oasis-cloud
+* :bug: fix(form): 重置功能无法清空报错信息 (#1711) @oasis-cloud
+* :bug: fix(image): 修复开启 lazy 后 loading 失效问题 (#1768) @Eiinu
+* :bug: fix(indicator): 修订样式名称和样式变量 (#1712) @xiaoyatong
+* :bug: fix(swiper): demo 中分页器样式显示错误 (#1703) @xiaoyatong
+* :bug: fix: address close icon cannot be customed (#1685) @xiaoyatong
+* :bug: fix: change drag demo radius value of button (#1701) @xiaoyatong
+* :bug: fix: picker 和 address 在 form 中使用，未阻止冒泡，导致取消和确认无法关闭 (#1710) @oasis-cloud
+* :bug: fix: 对使用icon的demo 进行了size 设置的废弃，使用了默认size (#1728) @xiaoyatong
+* :bug: fix: 调整demo中button大小,调整stoke的默认颜色 (#1717) @xiaoyatong
+* 🛠 refactor(cell): 修订类名 (#1722) @xiaoyatong
+* 🛠 refactor(numberkeyboard): 修订类名和样式变量 (#1719) @xiaoyatong
+* 🛠 refactor(swipe): 修订className类名 (#1715) @xiaoyatong
+* 🛠 refactor(switch): 修改样式名称及样式变量，添加相应demo (#1714) @xiaoyatong
+* 🛠 refactor(table): props 中的 data 校验逻辑异常 (#1675) @oasis-cloud
+* 🛠 refactor(timeselect): 优化结构,简化css变量 (#1732) @xiaoyatong
+* 🛠 refactor: css 变量命名规范（主题色部分，不含灰阶） (#1679) @xiaoyatong
+* 🛠 refactor: rename card classname (#1700) @xiaoyatong
+style(button): class 名 nut-button__warp 更改为 nut-button-wrap (#1705) @xiaoyatong
+style(calendar): 优化css变量 (#1753) @xiaoyatong
+style(cascader): 去掉无意义样式,修订文档样式变量 (#1757) @xiaoyatong
+style(circleprogress): docs 优化，修订 css 变量 (#1699) @xiaoyatong
+style(collapse): add border-bottom as an item (#1698) @xiaoyatong
+style(fixednav): 废弃 bem 规范, 修订 css 变量 (#1702) @xiaoyatong
+style(input): 增加css 变量,优化demo和文档 (#1730) @xiaoyatong
+style(inputnumber): 简化css变量,修订className类名 (#1737) @xiaoyatong
+style(loading): 修订css变量名,补充css变量文档 (#1721) @xiaoyatong
+style(menu): 优化css变量命名,修改className 类名 (#1746) @xiaoyatong
+style(noticebar): 修订类名和css变量 (#1751) @xiaoyatong
+style(notify): 优化样式布局 (#1762) @xiaoyatong
+style(picker): 修改css变量 (#1735) @xiaoyatong
+style(radio): 优化css变量和样式 (#1756) @xiaoyatong
+style(range): 修订样式变量 (#1718) @xiaoyatong
+style(rate): 修订 css 变量 (#1707) @xiaoyatong
+style(sidnavbar): 修订css 变量 (#1734) @xiaoyatong
+style(steps): 优化steps样式结构,改进css变量名 (#1741) @xiaoyatong
+style(tabbar): add css variable (#1742) @xiaoyatong
+style(tag): 修订样式变量 (#1733) @xiaoyatong
+style(toast): 调整样式,补充demo的多语言化 (#1754) @xiaoyatong
+style(trendarrow): 修订className类名 (#1716) @xiaoyatong
+style(uploader): 修订样式css变量 (#1758) @xiaoyatong
+style: animatenumbers number css (#1681) @xiaoyatong
+style: 修订className (#1770) @xiaoyatong
+
+
 # v2.2.0
 `2023-11-24`
 
