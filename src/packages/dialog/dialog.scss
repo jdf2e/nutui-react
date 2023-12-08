@@ -39,7 +39,7 @@
     text-align: center;
     font-size: $font-size-large;
     font-weight: $dialog-header-font-weight;
-    color: $title-color;
+    color: $color-title;
     @include oneline-ellipsis();
   }
 
@@ -49,7 +49,7 @@
     max-height: $dialog-content-max-height;
     line-height: $dialog-content-line-height;
     font-size: $font-size-base;
-    color: $text-color;
+    color: $color-text;
     word-wrap: break-word;
     word-break: break-all;
     white-space: pre-wrap;
@@ -75,7 +75,7 @@
 
         &.nut-dialog__footer-cancel {
           border: 0;
-          color: $text-color;
+          color: $color-text;
           order: 2;
           display: flex;
           align-items: flex-end;

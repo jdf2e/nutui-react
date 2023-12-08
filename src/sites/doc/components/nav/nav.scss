@@ -11,20 +11,25 @@
     border-right: 1px solid #eee;
     overflow: auto;
     padding-left: 35px;
+
     &.fixed {
       position: fixed;
       top: 0;
     }
+
     ol {
       &.introduce {
         padding-left: 5px;
+
         li {
           cursor: pointer;
+
           &:hover {
             color: $doc-default-color;
           }
         }
       }
+
       li {
         height: 48px;
         line-height: 48px;
@@ -49,6 +54,7 @@
           }
         }
       }
+
       > ul {
         li {
           padding-left: 29px;
@@ -59,6 +65,7 @@
               color: $doc-default-color;
             }
           }
+
           a {
             &.router-link-active,
             &.active {
@@ -67,17 +74,19 @@
 
             &:link,
             &:visited {
-              color: $title-color;
+              color: $color-title;
             }
 
             &:hover {
               color: $doc-default-color;
+
               &:visited {
                 color: $doc-default-color;
               }
             }
 
             height: 100%;
+
             b {
               font-weight: normal;
               font-size: 12px;
@@ -86,8 +95,10 @@
         }
       }
     }
+
     .selected {
       color: #fa2c19 !important;
+
       li {
         color: #fa2c19 !important;
       }

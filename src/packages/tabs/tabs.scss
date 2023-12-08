@@ -50,7 +50,7 @@
     margin: 0 $tabs-titles-gap;
     min-width: $tabs-titles-item-min-width;
     font-size: $tabs-titles-font-size;
-    color: $title-color;
+    color: $color-title;
     text-overflow: ellipsis;
     white-space: nowrap;
 
@@ -115,7 +115,7 @@
     }
 
     &-disabled {
-      color: $disable-color;
+      color: $color-text-disabled;
     }
 
     &:first-child {
@@ -125,19 +125,20 @@
 
   &-simple {
     .nut-tabs-titles-item-active {
-      color: $title-color;
+      color: $color-title;
       font-size: $tabs-titles-item-active-font-size;
     }
   }
 
   &-card {
     padding: 0;
-    // background-color: $color-default-light;
+    background-color: $color-default-light;
     .nut-tabs-titles-item {
       margin: 0;
+
       &-active {
         font-weight: $font-weight-bold;
-        background-color: $gray6;
+        background-color: $white;
         border-radius: $radius-s $radius-s 0 0;
       }
     }
@@ -149,9 +150,10 @@
         &.taro {
           height: 28px;
         }
+
         margin: 8px 9px;
         background: $color-default-light;
-        color: $text-color;
+        color: $color-text;
         border-radius: $tabs-tab-button-border-radius;
         font-weight: $font-weight-bold;
         background-color: $tabs-tab-button-active-background-color;

@@ -1,6 +1,7 @@
 .nut-image {
   display: block;
   position: relative;
+
   .nut-img {
     display: block;
     width: 100%;
@@ -22,9 +23,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #f7f8fa;
+    background: $color-background;
     background-size: 100% 100%;
   }
+
   .nut-img-error {
     width: 100%;
     height: 100%;
@@ -35,7 +37,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #f7f8fa;
+    background: $color-background;
     background-size: 100% 100%;
   }
 }

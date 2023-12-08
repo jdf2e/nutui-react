@@ -7,6 +7,7 @@ import {
   Overlay,
   ConfigProvider,
 } from '@/packages/nutui.react.taro'
+import Header from '@/sites/components/header'
 
 const LoadingDemo = () => {
   const [visible, setVisible] = useState(false)
@@ -27,6 +28,7 @@ const LoadingDemo = () => {
 
   return (
     <>
+      <Header />
       <div className="demo">
         <h2>基础用法</h2>
         <Cell>

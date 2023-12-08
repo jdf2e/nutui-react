@@ -3,7 +3,6 @@ import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Animate, Button } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import '@/packages/animate/demo.scss'
 
 interface T {
   f7a61168: string
@@ -69,73 +68,79 @@ const AnimateDemo = () => {
     },
   })
 
+  const sStyle = {
+    marginBottom: '10px',
+    display: 'inline-block',
+    width: '100%',
+  }
+
   return (
     <>
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.f7a61168}</h2>
-        <div className="ani-demo-div">
+        <div style={sStyle}>
           <Animate type="slide-right" action="click">
             <Button type="primary">{translated['3fae6217']}</Button>
           </Animate>
         </div>
 
-        <div className="ani-demo-div">
+        <div style={sStyle}>
           <Animate type="slide-left" action="click">
             <Button type="primary">{translated['65fd1cc5']}</Button>
           </Animate>
         </div>
 
-        <div className="ani-demo-div">
+        <div style={sStyle}>
           <Animate type="slide-top" action="click">
             <Button type="primary">{translated['9a7eec9c']}</Button>
           </Animate>
         </div>
 
-        <div className="ani-demo-div">
+        <div style={sStyle}>
           <Animate type="slide-bottom" action="click">
             <Button type="primary">{translated.f6ec5bd0}</Button>
           </Animate>
         </div>
 
         <h2>{translated.de274af8}</h2>
-        <div className="ani-demo-div">
+        <div style={sStyle}>
           <Animate type="shake" loop>
             <Button type="primary">{translated['7c7af45b']}</Button>
           </Animate>
         </div>
 
-        <div className="ani-demo-div">
+        <div style={sStyle}>
           <Animate type="ripple" loop>
             <Button type="primary">{translated['07b960ca']}</Button>
           </Animate>
         </div>
 
-        <div className="ani-demo-div">
+        <div style={sStyle}>
           <Animate type="breath" loop>
             <Button type="primary">{translated.e472af8e}</Button>
           </Animate>
         </div>
 
-        <div className="ani-demo-div">
+        <div style={sStyle}>
           <Animate type="twinkle" loop>
             <Button type="primary">{translated.b291ead9}</Button>
           </Animate>
         </div>
 
-        <div className="ani-demo-div">
+        <div style={sStyle}>
           <Animate type="flicker" loop>
             <Button type="primary">{translated['1b54b6b9']}</Button>
           </Animate>
         </div>
 
-        <div className="ani-demo-div">
+        <div style={sStyle}>
           <Animate type="jump" loop>
             <Button type="primary">{translated['92a089f6']}</Button>
           </Animate>
         </div>
 
-        <div className="ani-demo-div">
+        <div style={sStyle}>
           <Animate type="float" loop>
             <Button type="primary">{translated['4b869598']}</Button>
           </Animate>

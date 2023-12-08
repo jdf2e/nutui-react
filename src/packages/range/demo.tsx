@@ -3,7 +3,6 @@ import { Range } from './range'
 import { Cell } from '../cell/cell'
 import { useTranslate } from '../../sites/assets/locale'
 import Toast from '../toast'
-import './demo.scss'
 import ConfigProvider from '../configprovider'
 
 interface T {
@@ -172,7 +171,21 @@ const RangeDemo = () => {
         <Cell style={cellStyle}>
           <Range
             value={value2}
-            button={<div className="range-custom-button">{value2}</div>}
+            button={
+              <div
+                style={{
+                  width: '26px',
+                  color: 'white',
+                  fontSize: '10px',
+                  lineHeight: '18px',
+                  textAlign: 'center',
+                  backgroundColor: 'red',
+                  borderRadius: '10px',
+                }}
+              >
+                {value2}
+              </div>
+            }
             onChange={(val: any) => setValue2(val)}
             onEnd={(val) => Toast.show(`${val}`)}
           />

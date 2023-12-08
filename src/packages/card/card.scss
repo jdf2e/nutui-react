@@ -29,7 +29,7 @@
       @include moreline-ellipsis();
       line-height: 1.5;
       font-size: 14px;
-      color: $title-color;
+      color: $color-title;
     }
 
     &-price {
@@ -85,7 +85,7 @@
 
       &-name {
         line-height: 1.5;
-        color: $text-color;
+        color: $color-text;
         font-size: 12px;
         padding-top: 4px;
       }

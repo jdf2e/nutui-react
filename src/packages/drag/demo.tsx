@@ -1,6 +1,7 @@
 import React from 'react'
 import { Drag } from './drag'
 import { useTranslate } from '../../sites/assets/locale'
+import Button from '@/packages/button'
 
 interface T {
   basic: string
@@ -51,35 +52,27 @@ const DragDemo = () => {
   const bottom = () => {
     return document.documentElement.clientHeight - 559
   }
-  const btnStyle = {
-    borderRadius: '24px',
-    padding: '0 18px',
-    fontSize: '14px',
-    color: '#fff',
-    display: 'inline-block',
-    lineHeight: '36px',
-    background: `var(--nutui-color-primary)`,
-  }
+
   return (
     <div className="demo">
       <h2>{translated.basic}</h2>
       <Drag style={{ top: '120px', left: '8px' }}>
-        <span style={btnStyle}>{translated.dragBasic}</span>
+        <Button type="primary">{translated.dragBasic}</Button>
       </Drag>
       <h2 style={{ top: '30px', position: 'relative' }}>
         {translated.direction}
       </h2>
       <Drag direction="x" style={{ top: '200px', left: '8px' }}>
-        <span style={btnStyle}> {translated.directionX}</span>
+        <Button type="primary">{translated.directionX}</Button>
       </Drag>
       <Drag direction="y" style={{ top: '200px', right: '50px' }}>
-        <span style={btnStyle}> {translated.directionY}</span>
+        <Button type="primary">{translated.directionY}</Button>
       </Drag>
       <h2 style={{ top: '60px', position: 'relative' }}>
         {translated.attract}
       </h2>
       <Drag direction="x" attract style={{ top: '275px', left: '8px' }}>
-        <span style={btnStyle}>{translated.attractText}</span>
+        <Button type="primary">{translated.attractText}</Button>
       </Drag>
       <h2 style={{ top: '90px', position: 'relative' }}>
         {translated.limitBoundaries}
@@ -99,7 +92,7 @@ const DragDemo = () => {
         boundary={{ top: 361, left: 9, bottom: bottom(), right: right() }}
         style={{ top: '400px', left: '50px' }}
       >
-        <span style={btnStyle}>{translated.limitBoundaries}</span>
+        <Button type="primary">{translated.limitBoundaries}</Button>
       </Drag>
     </div>
   )

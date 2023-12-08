@@ -137,6 +137,7 @@ const ProgressDemo = () => {
           <Cell align="center">
             <Button
               type="default"
+              size="small"
               style={{ margin: 8 }}
               onClick={() => {
                 if (value <= 0) {
@@ -149,6 +150,7 @@ const ProgressDemo = () => {
             </Button>
             <Button
               type="primary"
+              size="small"
               style={{ margin: 8 }}
               onClick={() => {
                 if (value >= 100) {

@@ -5,7 +5,7 @@
   align-items: center;
 
   &-icon {
-    color: #d6d6d6;
+    color: $color-text-disabled;
     font-size: $checkbox-icon-font-size;
   }
 
@@ -25,7 +25,7 @@
     color: $checkbox-label-color;
 
     &-disabled {
-      color: #d6d6d6;
+      color: $color-text-disabled;
     }
   }
 
@@ -38,7 +38,7 @@
   }
 
   &-icon-disabled {
-    color: #d6d6d6;
+    color: $color-text-disabled;
   }
 
   &-reverse {
@@ -70,9 +70,10 @@
     }
 
     &-disabled {
-      color: #d6d6d6;
+      color: $color-text-disabled;
       border: 1px solid $checkbox-button-background;
     }
+
     &-icon {
       position: absolute;
       right: 0;
@@ -86,6 +87,7 @@
       display: flex;
       align-items: flex-end;
       justify-content: flex-end;
+
       &-checked {
         width: 12px;
         height: 12px;
@@ -93,15 +95,24 @@
         color: $white;
         top: 50%;
         left: 50%;
-        transform: translate(-2px, -2px);
+        transform: translate(-3px, -3px);
       }
+
       // background-color: $color-primary;
+      .nut-icon {
+        font-size: 12px;
+        &:before {
+          top: auto;
+          bottom: -22px;
+          margin-left: 6px;
+        }
+      }
     }
   }
 
   .nut-checkbox-button-active.nut-checkbox-button-disabled {
-    background: #d6d6d6;
+    background: $color-text-disabled;
     color: $white;
-    border: 1px solid #d6d6d6;
+    border: 1px solid $color-text-disabled;
   }
 }

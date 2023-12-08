@@ -2,7 +2,6 @@ import React from 'react'
 import Taro from '@tarojs/taro'
 import { Cart, Category, Find, Home, User } from '@nutui/icons-react-taro'
 import { Tabbar } from '@/packages/nutui.react.taro'
-import '@/packages/tabbar/demo.scss'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 
@@ -227,7 +226,7 @@ const TabbarDemo = () => {
           <Tabbar.Item title={translated.a52bef0c} icon={<Find />} />
         </Tabbar>
 
-        <h2 className="bottom-h2">{translated.cfbdc781}</h2>
+        <h2 style={{ marginBottom: '100px' }}>{translated.cfbdc781}</h2>
         <Tabbar fixed>
           <Tabbar.Item
             title={translated.c3a3a1d2}

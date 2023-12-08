@@ -204,7 +204,7 @@ export class FormItem extends React.Component<
             className="nut-form-item__body__tips"
             style={{
               textAlign: errorMessageAlign,
-              display: item?.length ? 'inherit' : 'none',
+              display: item?.length ? 'initial' : 'none',
             }}
           >
             {item?.[0]?.message}
