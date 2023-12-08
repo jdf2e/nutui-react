@@ -26,7 +26,7 @@ test('navigation should be hide', async () => {
     </>
   )
 
-  expect(container.querySelector('.nut-subsidenavbar__list')).toHaveClass(
+  expect(container.querySelector('.nut-subsidenavbar-list')).toHaveClass(
     'sidenavbar-hide'
   )
 })

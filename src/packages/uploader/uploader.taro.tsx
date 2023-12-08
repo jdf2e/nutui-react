@@ -488,7 +488,7 @@ const InternalUploader: ForwardRefRenderFunction<
   return (
     <div className={classes} {...restProps}>
       {(children || previewType === 'list') && (
-        <div className="nut-uploader__slot">
+        <div className="nut-uploader-slot">
           <>
             {children || (
               <Button size="small" type="primary">
@@ -496,7 +496,7 @@ const InternalUploader: ForwardRefRenderFunction<
               </Button>
             )}
             {maxCount > fileList.length && (
-              <Button className="nut-uploader__input" onClick={_chooseImage} />
+              <Button className="nut-uploader-input" onClick={_chooseImage} />
             )}
           </>
         </div>
@@ -516,15 +516,15 @@ const InternalUploader: ForwardRefRenderFunction<
 
       {maxCount > fileList.length && previewType === 'picture' && !children && (
         <div
-          className={`nut-uploader__upload ${previewType} ${
-            disabled ? 'nut-uploader__upload-disabled' : ''
+          className={`nut-uploader-upload ${previewType} ${
+            disabled ? 'nut-uploader-upload-disabled' : ''
           }`}
         >
-          <div className="nut-uploader__icon">
+          <div className="nut-uploader-icon">
             {uploadIcon}
-            <span className="nut-uploader__icon-tip">{uploadLabel}</span>
+            <span className="nut-uploader-icon-tip">{uploadLabel}</span>
           </div>
-          <Button className="nut-uploader__input" onClick={_chooseImage} />
+          <Button className="nut-uploader-input" onClick={_chooseImage} />
         </div>
       )}
     </div>

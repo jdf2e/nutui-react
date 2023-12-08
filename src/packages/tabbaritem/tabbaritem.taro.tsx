@@ -62,7 +62,7 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
     },
     className
   )
-  const boxPrefix = `${classPrefix}__icon-box`
+  const boxPrefix = `${classPrefix}-icon-box`
   const titleClass = classNames(boxPrefix, `${boxPrefix}-nav`, {
     [`${boxPrefix}-large`]: !icon,
   })

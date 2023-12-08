@@ -6,41 +6,41 @@ exports[`should match snapshot 1`] = `
     class="nut-pagination"
   >
     <div
-      class="nut-pagination__prev disabled"
+      class="nut-pagination-prev disabled"
     >
       上一页
     </div>
     <div
-      class="nut-pagination__contain"
+      class="nut-pagination-contain"
     >
       <div
-        class="nut-pagination__item active"
+        class="nut-pagination-item active"
       >
         1
       </div>
       <div
-        class="nut-pagination__item"
+        class="nut-pagination-item"
       >
         2
       </div>
       <div
-        class="nut-pagination__item"
+        class="nut-pagination-item"
       >
         3
       </div>
       <div
-        class="nut-pagination__item"
+        class="nut-pagination-item"
       >
         4
       </div>
       <div
-        class="nut-pagination__item"
+        class="nut-pagination-item"
       >
         5
       </div>
     </div>
     <div
-      class="nut-pagination__next"
+      class="nut-pagination-next"
     >
       下一页
     </div>

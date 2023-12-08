@@ -63,7 +63,7 @@ export const TimeDetail: FunctionComponent<
     <div className={classNames(classPrefix, className)}>
       {timeList[optionKey.childrenKey].map((item: TimeType) => (
         <span
-          className={classNames(`${classPrefix}__item`, {
+          className={classNames(`${classPrefix}-item`, {
             active: isActive(item[optionKey.valueKey]),
           })}
           key={item[optionKey.valueKey]}

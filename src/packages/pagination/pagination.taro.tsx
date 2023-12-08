@@ -110,7 +110,7 @@ export const Pagination: FunctionComponent<
         <>
           <div
             className={classNames(
-              `${classPrefix}__prev`,
+              `${classPrefix}-prev`,
               mode === 'multi' ? '' : 'simple-border',
               currentPage === 1 ? 'disabled' : ''
             )}
@@ -119,12 +119,12 @@ export const Pagination: FunctionComponent<
             {prev || locale.pagination.prev}
           </div>
           {mode === 'multi' && (
-            <div className={`${classPrefix}__contain`}>
+            <div className={`${classPrefix}-contain`}>
               {pages.map((item: any, index: number) => {
                 return (
                   <div
                     key={`${index}pagination`}
-                    className={classNames(`${classPrefix}__item`, {
+                    className={classNames(`${classPrefix}-item`, {
                       active: item.number === currentPage,
                     })}
                     onClick={(e) => {
@@ -139,15 +139,15 @@ export const Pagination: FunctionComponent<
             </div>
           )}
           {mode === 'simple' && (
-            <div className={`${classPrefix}__contain`}>
-              <div className={`${classPrefix}__simple`}>
+            <div className={`${classPrefix}-contain`}>
+              <div className={`${classPrefix}-simple`}>
                 {currentPage}/{pageCount}
               </div>
             </div>
           )}
           <div
             className={classNames(
-              `${classPrefix}__next`,
+              `${classPrefix}-next`,
               currentPage >= pageCount ? 'disabled' : ''
             )}
             onClick={(e) => handleSelectPage(currentPage + 1)}

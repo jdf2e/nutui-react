@@ -58,7 +58,7 @@ test('base swipe Slots', async () => {
 
   expect(
     container.querySelector(
-      '.nut-swipe .nut-swipe-right .nut-button--danger .nut-button-wrap'
+      '.nut-swipe .nut-swipe-right .nut-button-danger .nut-button-wrap'
     )
   ).toHaveTextContent('删除')
 })

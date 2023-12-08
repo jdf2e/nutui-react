@@ -53,7 +53,7 @@ export const Grid: FunctionComponent<
     return classNames(
       classPrefix,
       {
-        [`${classPrefix}__border`]: !gap,
+        [`${classPrefix}-border`]: !gap,
       },
       className
     )

@@ -319,8 +319,8 @@ export const Swiper = React.forwardRef<
   }
   const classPrefix = 'nut-swiper'
   const contentClass = classNames({
-    [`${classPrefix}__inner`]: true,
-    [`${classPrefix}__vertical`]: isVertical,
+    [`${classPrefix}-inner`]: true,
+    [`${classPrefix}-vertical`]: isVertical,
   })
   const getStyle = (moveOffset = offset) => {
     const target = innerRef.current
@@ -490,8 +490,8 @@ export const Swiper = React.forwardRef<
       return (
         <div
           className={classNames({
-            [`${classPrefix}__indicator`]: true,
-            [`${classPrefix}__indicator-vertical`]: isVertical,
+            [`${classPrefix}-indicator`]: true,
+            [`${classPrefix}-indicator-vertical`]: isVertical,
           })}
         >
           <Indicator
@@ -515,7 +515,7 @@ export const Swiper = React.forwardRef<
         <div className={contentClass} ref={innerRef}>
           {React.Children.map(childs, (child: any, index: number) => (
             <div
-              className={`${classPrefix}__item-wrapper`}
+              className={`${classPrefix}-item-wrapper`}
               style={getItemStyle(index)}
               key={index}
             >

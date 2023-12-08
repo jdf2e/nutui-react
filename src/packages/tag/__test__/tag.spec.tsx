@@ -10,7 +10,7 @@ test('color test', () => {
     color: 'rgb(250, 104, 93)',
   }
   const { container } = render(<Tag background={state.color}>TEST</Tag>)
-  expect(container.querySelector('.nut-tag--default')).toHaveAttribute(
+  expect(container.querySelector('.nut-tag-default')).toHaveAttribute(
     'style',
     'background: rgb(250, 104, 93);'
   )
@@ -32,7 +32,7 @@ test('plain test', () => {
     plain: true,
   }
   const { container } = render(<Tag plain={state.plain}>TEST</Tag>)
-  const el = container.querySelectorAll('.nut-tag--plain').length
+  const el = container.querySelectorAll('.nut-tag-plain').length
   expect(el > 0).toBe(true)
 })
 
@@ -45,7 +45,7 @@ test('color & plain test', () => {
       TEST
     </Tag>
   )
-  expect(container.querySelector('.nut-tag--plain')).toHaveAttribute(
+  expect(container.querySelector('.nut-tag-plain')).toHaveAttribute(
     'style',
     'color: rgb(250, 104, 93); border-color: rgb(250, 104, 93);'
   )
@@ -56,7 +56,7 @@ test('round test', () => {
     round: true,
   }
   const { container } = render(<Tag round={state.round}>TEST</Tag>)
-  const el: any = container.querySelectorAll('.nut-tag--round').length
+  const el: any = container.querySelectorAll('.nut-tag-round').length
   expect(el > 0).toBe(true)
 })
 
@@ -65,7 +65,7 @@ test('mark test', () => {
     mark: true,
   }
   const { container } = render(<Tag mark={state.mark}>TEST</Tag>)
-  const el: any = container.querySelectorAll('.nut-tag--mark')
+  const el: any = container.querySelectorAll('.nut-tag-mark')
   expect(el.length > 0).toBe(true)
 })
 
@@ -82,7 +82,7 @@ test('closeable && onClose  test', () => {
       </Tag>
     </>
   )
-  const el: any = container.querySelectorAll('.nut-tag--close')[0]
+  const el: any = container.querySelectorAll('.nut-tag-close')[0]
   const icon: any = el.childNodes[1]
   fireEvent.click(icon)
   expect(el && el.length > 0).toBe(false)

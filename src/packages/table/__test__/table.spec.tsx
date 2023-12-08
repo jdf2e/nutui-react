@@ -107,40 +107,38 @@ function sleep(delay = 0): Promise<void> {
 
 test('render bordered props', () => {
   const { container } = render(<Table columns={columns} data={data} />)
-  const headBorder = container.querySelector(
-    '.nut-table__main__head__tr--border'
-  )
+  const headBorder = container.querySelector('.nut-table-main-head-tr-border')
   expect(headBorder).toBeInTheDocument()
 })
 
 test('render align props', () => {
   const { container } = render(<Table columns={columns} data={data} />)
-  const headTh = container.querySelectorAll('.nut-table__main__head__tr__th')
-  const bodyTd = container.querySelectorAll('.nut-table__main__body__tr__td')
+  const headTh = container.querySelectorAll('.nut-table-main-head-tr-th')
+  const bodyTd = container.querySelectorAll('.nut-table-main-body-tr-td')
 
-  expect(headTh[0]).toHaveClass('nut-table__main__head__tr--aligncenter')
-  expect(bodyTd[0]).toHaveClass('nut-table__main__head__tr--aligncenter')
-  expect(bodyTd[3]).toHaveClass('nut-table__main__head__tr--aligncenter')
-  expect(bodyTd[6]).toHaveClass('nut-table__main__head__tr--aligncenter')
+  expect(headTh[0]).toHaveClass('nut-table-main-head-tr-aligncenter')
+  expect(bodyTd[0]).toHaveClass('nut-table-main-head-tr-aligncenter')
+  expect(bodyTd[3]).toHaveClass('nut-table-main-head-tr-aligncenter')
+  expect(bodyTd[6]).toHaveClass('nut-table-main-head-tr-aligncenter')
 })
 
 test('show summary', () => {
   const { container } = render(
     <Table columns={columns} data={data} summary="这是总结栏" />
   )
-  const tableSummary = container.querySelector('.nut-table__summary')
+  const tableSummary = container.querySelector('.nut-table-summary')
   expect(tableSummary).toBeInTheDocument()
 })
 
 test('render striped props', () => {
   const { container } = render(<Table columns={columns} data={data} striped />)
-  const tableMain = container.querySelector('.nut-table__main')
-  expect(tableMain).toHaveClass('nut-table__main--striped')
+  const tableMain = container.querySelector('.nut-table-main')
+  expect(tableMain).toHaveClass('nut-table-main-striped')
 })
 
 test('render no data', () => {
   const { container } = render(<Table columns={columns} data={[]} />)
-  const tableNoData = container.querySelector('.nut-table__summary')
+  const tableNoData = container.querySelector('.nut-table-summary')
   expect(tableNoData).toBeInTheDocument()
 })
 
@@ -159,7 +157,7 @@ test('render no data of user defined', () => {
 
 test('user defined td content', () => {
   const { container } = render(<Table columns={columns2} data={data2} />)
-  const bodyTd = container.querySelectorAll('.nut-table__main__body__tr__td')
+  const bodyTd = container.querySelectorAll('.nut-table-main-body-tr-td')
   const bodyTdButton = bodyTd[3].querySelector('.nut-button')
   expect(bodyTdButton).toBeInTheDocument()
 })
@@ -179,14 +177,10 @@ test('render async', async () => {
   }
 
   const { container, getByTestId } = render(<TableDemo />)
-  expect(container.querySelectorAll('.nut-table__main__body__tr').length).toBe(
-    0
-  )
+  expect(container.querySelectorAll('.nut-table-main-body-tr').length).toBe(0)
   await sleep(2000)
   fireEvent.click(getByTestId('test'))
-  expect(container.querySelectorAll('.nut-table__main__body__tr').length).toBe(
-    3
-  )
+  expect(container.querySelectorAll('.nut-table-main-body-tr').length).toBe(3)
 })
 
 test('sorter', async () => {
@@ -246,11 +240,11 @@ test('sorter', async () => {
 
   const { container, getByTestId } = render(<TableDemo />)
   const th = container.querySelectorAll(
-    '.nut-table__main__head__tr .nut-table__main__head__tr__th'
+    '.nut-table-main-head-tr .nut-table-main-head-tr-th'
   )[3]
   fireEvent.click(th)
   await waitFor(() => expect(fn.mock.calls[0][1][0].age).toEqual(4))
   fireEvent.click(th)
-  const td = container.querySelectorAll('.nut-table__main__body__tr__td')[3]
+  const td = container.querySelectorAll('.nut-table-main-body-tr-td')[3]
   expect(td).toHaveTextContent('10')
 })

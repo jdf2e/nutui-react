@@ -9,29 +9,27 @@ test('textarea props test', () => {
   const { container } = render(
     <TextArea defaultValue="基础用法" showCount maxLength={20} />
   )
-  expect(container.querySelector('.nut-textarea__textarea')?.innerHTML).toBe(
+  expect(container.querySelector('.nut-textarea-textarea')?.innerHTML).toBe(
     '基础用法'
   )
-  expect(container.querySelector('.nut-textarea__limit')?.innerHTML).toBe(
-    '4/20'
-  )
+  expect(container.querySelector('.nut-textarea-limit')?.innerHTML).toBe('4/20')
   expect(container).toMatchSnapshot()
 })
 
 test('textarea readOnly test', () => {
   const { container } = render(<TextArea readOnly />)
-  expect(container.querySelector('.nut-textarea__textarea')).toHaveAttribute(
+  expect(container.querySelector('.nut-textarea-textarea')).toHaveAttribute(
     'readonly'
   )
 })
 
 test('textarea disabled test', () => {
   const { container } = render(<TextArea disabled />)
-  expect(container.querySelector('.nut-textarea__textarea')).toHaveAttribute(
+  expect(container.querySelector('.nut-textarea-textarea')).toHaveAttribute(
     'disabled'
   )
   expect(container.querySelector('.nut-textarea')).toHaveClass(
-    'nut-textarea__disabled'
+    'nut-textarea-disabled'
   )
 })
 
@@ -49,15 +47,15 @@ test('textarea onChange event test', () => {
   }
 
   const { container } = render(<TextareaDemo />)
-  expect(container.querySelector('.nut-textarea__textarea')?.innerHTML).toBe(
+  expect(container.querySelector('.nut-textarea-textarea')?.innerHTML).toBe(
     '文字'
   )
   const textareaEl = container.querySelector(
-    '.nut-textarea__textarea'
+    '.nut-textarea-textarea'
   ) as Element
   fireEvent.change(textareaEl, { target: { value: '文字改变' } })
   expect(handleChange).toBeCalled()
-  expect(container.querySelector('.nut-textarea__textarea')?.innerHTML).toBe(
+  expect(container.querySelector('.nut-textarea-textarea')?.innerHTML).toBe(
     '文字改变'
   )
 })
@@ -78,7 +76,7 @@ test('textarea onFocus event test', () => {
   const { container } = render(<TextareaDemo />)
 
   const textareaEl = container.querySelector(
-    '.nut-textarea__textarea'
+    '.nut-textarea-textarea'
   ) as Element
   fireEvent.focus(textareaEl)
   expect(handleFocus).toBeCalled()

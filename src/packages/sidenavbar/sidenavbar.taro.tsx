@@ -50,15 +50,15 @@ export const SideNavBar: FunctionComponent<Partial<SideNavBarProps>> = (
       onClose={onClose}
     >
       <div className={classNames(classPrefix, className)} {...rest}>
-        <div className={`${classPrefix}__content`}>
+        <div className={`${classPrefix}-content`}>
           <div
-            className={`${classPrefix}__list ${
+            className={`${classPrefix}-list ${
               sidenavbarShow ? 'sidenavbar-show' : 'sidenavbar-hide'
             }`}
             onClick={handleClick}
           >
             <div
-              className={`${classPrefix}__title ${classPrefix}-border-bt`}
+              className={`${classPrefix}-title ${classPrefix}-border-bt`}
               style={{ paddingLeft: `${indent}px` }}
             >
               {title}
@@ -69,7 +69,7 @@ export const SideNavBar: FunctionComponent<Partial<SideNavBarProps>> = (
               />
             </div>
             <OffsetContext.Provider value={indent}>
-              <div className={`${classPrefix}__content`}>{children}</div>
+              <div className={`${classPrefix}-content`}>{children}</div>
             </OffsetContext.Provider>
           </div>
         </div>

@@ -5,7 +5,7 @@
   font-size: $font-size-base;
   color: $color-title;
 
-  &__main {
+  &-main {
     display: table;
     width: 100%;
     border-collapse: collapse;
@@ -13,41 +13,41 @@
     color: $color-title;
     background-color: $color-background-overlay;
 
-    &--striped {
-      .nut-table__main__head {
-        &__tr {
+    &-striped {
+      .nut-table-main-head {
+        &-tr {
           background-color: $table-tr-even-bg-color;
         }
       }
 
-      .nut-table__main__body {
-        &__tr:nth-child(odd) {
+      .nut-table-main-body {
+        &-tr:nth-child(odd) {
           background-color: $table-tr-odd-bg-color;
         }
       }
 
-      .nut-table__main__body {
-        &__tr:nth-child(even) {
+      .nut-table-main-body {
+        &-tr:nth-child(even) {
           background-color: $table-tr-even-bg-color;
         }
       }
     }
 
-    &__head,
-    &__body {
-      &__tr {
+    &-head,
+    &-body {
+      &-tr {
         display: table-row;
 
-        &__th {
+        &-th {
           display: table-cell;
           padding: $table-cols-padding;
         }
 
-        &__td {
+        &-td {
           display: table-cell;
           padding: $table-cols-padding;
 
-          &__nodata {
+          &-nodata {
             display: flex;
             height: 50px;
             align-items: center;
@@ -55,35 +55,35 @@
           }
         }
 
-        &--border {
+        &-border {
           border: 1px solid $table-border-color;
         }
 
-        &--alignleft,
-        &--align {
+        &-alignleft,
+        &-align {
           text-align: left;
         }
 
-        &--aligncenter {
+        &-aligncenter {
           text-align: center;
         }
 
-        &--alignright {
+        &-alignright {
           text-align: right;
         }
       }
     }
 
-    &__head {
+    &-head {
       display: table-header-group;
     }
 
-    &__body {
+    &-body {
       display: table-row-group;
     }
   }
 
-  &__summary {
+  &-summary {
     color: $color-title;
     background-color: $color-background-overlay;
     display: flex;

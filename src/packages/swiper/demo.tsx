@@ -198,10 +198,10 @@ const SwiperDemo = () => {
           })}
         </Swiper>
         <div className="nut-swiper-btns">
-          <span className="nut-swiper-btns__left" onClick={(e) => handlePrev()}>
+          <span className="nut-swiper-btns-left" onClick={(e) => handlePrev()}>
             <ArrowLeft />
           </span>
-          <span className="nut-swiper-btns__left" onClick={(e) => handleNext()}>
+          <span className="nut-swiper-btns-left" onClick={(e) => handleNext()}>
             <ArrowRight />
           </span>
         </div>

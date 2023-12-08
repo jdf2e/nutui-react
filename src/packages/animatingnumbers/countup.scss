@@ -1,18 +1,18 @@
 .nut-countup {
-  &__list {
+  &-list {
     display: inline-flex;
     height: $countup-height;
     overflow: hidden;
   }
 
-  &__listitem {
+  &-listitem {
     height: $countup-height;
     overflow: hidden;
     color: $color-title;
     font-size: $countup-base-size;
     font-weight: $font-weight-bold;
 
-    &--number {
+    &-number {
       margin: 0 $countup-lr-margin;
       border-radius: $countup-border-radius;
       color: $countup-color;
@@ -20,14 +20,14 @@
     }
   }
 
-  &__separator {
+  &-separator {
     display: flex;
     height: 80%;
     align-items: flex-end;
     color: $countup-bg-color;
   }
 
-  &__number {
+  &-number {
     display: flex;
     flex-direction: column;
     align-items: center;

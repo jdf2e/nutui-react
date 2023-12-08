@@ -21,7 +21,7 @@ test('should render tabbar when default', () => {
   expect(container.firstChild).toBeInTheDocument()
   expect(container.querySelectorAll('.nut-tabbar-item').length).toEqual(5)
   expect(
-    container.querySelectorAll('.nut-tabbar-item__icon-box').length
+    container.querySelectorAll('.nut-tabbar-item-icon-box').length
   ).toEqual(10)
 })
 

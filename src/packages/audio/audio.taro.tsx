@@ -169,12 +169,12 @@ export const Audio: FunctionComponent<
   const renderIcon = () => {
     return (
       <>
-        <div className={`${classPrefix}__icon`}>
+        <div className={`${classPrefix}-icon`}>
           <div
-            className={`${classPrefix}__icon-box} ${
+            className={`${classPrefix}-icon-box} ${
               playing
-                ? `${classPrefix}__icon-play}`
-                : `${classPrefix}__icon-stop}`
+                ? `${classPrefix}-icon-play}`
+                : `${classPrefix}-icon-stop}`
             }`}
             onClick={handleStatusChange}
           >
@@ -188,9 +188,9 @@ export const Audio: FunctionComponent<
   const renderProgerss = () => {
     return (
       <>
-        <div className={`${classPrefix}__progress`}>
+        <div className={`${classPrefix}-progress`}>
           <div className="time">{currentDuration}</div>
-          <div className={`${classPrefix}__progress-bar-wrapper`}>
+          <div className={`${classPrefix}-progress-bar-wrapper`}>
             <Range
               value={percent}
               onChange={(val: any) => setPercent(val)}
@@ -239,7 +239,7 @@ export const Audio: FunctionComponent<
   const renderNone = () => {
     return (
       <div
-        className={`${classPrefix}__none-container`}
+        className={`${classPrefix}-none-container`}
         onClick={handleStatusChange}
       >
         {children}

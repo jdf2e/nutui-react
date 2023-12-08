@@ -16,7 +16,7 @@
     display: none;
   }
 
-  &__header {
+  &-header {
     position: relative;
     display: flex;
     width: 100%;
@@ -41,13 +41,13 @@
     }
   }
 
-  &__title {
+  &-title {
     color: $collapse-item-color;
     display: flex;
     align-items: center;
   }
 
-  &__extra {
+  &-extra {
     flex: 1;
     display: flex;
     justify-content: flex-end;
@@ -58,14 +58,14 @@
     color: $collapse-item-extra-color;
   }
 
-  &__icon-box {
+  &-icon-box {
     display: flex;
     padding-right: 40px;
     position: relative;
     color: $color-text;
   }
 
-  &__icon {
+  &-icon {
     display: flex;
     align-items: center;
     position: absolute;
@@ -76,19 +76,19 @@
     transition: transform 0.3s;
   }
 
-  &__header.disabled {
+  &-header.disabled {
     color: $collapse-item-disabled-color;
 
-    .nut-collapse-item__title {
+    .nut-collapse-item-title {
       color: $collapse-item-disabled-color;
     }
 
-    .nut-collapse-item__icon {
+    .nut-collapse-item-icon {
       color: $collapse-item-disabled-color;
     }
   }
 
-  &__content {
+  &-content {
     overflow: hidden;
     display: block;
     color: $collapse-wrapper-content-color;

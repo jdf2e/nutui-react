@@ -3,14 +3,14 @@
 exports[`render with custom content 1`] = `
 <div>
   <div
-    class="nut-grid nut-grid__border"
+    class="nut-grid nut-grid-border"
   >
     <div
       class="nut-grid-item"
       style="flex-basis: 25%;"
     >
       <div
-        class="nut-grid-item__content nut-grid-item__content--border nut-grid-item__content--center nut-grid-item__content--horizontal"
+        class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-center nut-grid-item-content-horizontal"
       >
         <svg
           aria-labelledby="Image"
@@ -32,7 +32,7 @@ exports[`render with custom content 1`] = `
           />
         </svg>
         <div
-          class="nut-grid-item__text"
+          class="nut-grid-item-text"
         >
           <span>
             More
@@ -45,10 +45,10 @@ exports[`render with custom content 1`] = `
       style="flex-basis: 25%;"
     >
       <div
-        class="nut-grid-item__content nut-grid-item__content--border nut-grid-item__content--center nut-grid-item__content--horizontal"
+        class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-center nut-grid-item-content-horizontal"
       >
         <div
-          class="nut-grid-item__text"
+          class="nut-grid-item-text"
         >
           <div
             class="nut-avatar nut-avatar-normal nut-avatar-round demo-avatar"
@@ -83,7 +83,7 @@ exports[`render with custom content 1`] = `
       style="flex-basis: 25%;"
     >
       <div
-        class="nut-grid-item__content nut-grid-item__content--border nut-grid-item__content--center nut-grid-item__content--horizontal"
+        class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-center nut-grid-item-content-horizontal"
       >
         <div
           class="nut-avatar nut-avatar-normal nut-avatar-round demo-avatar"
@@ -117,7 +117,7 @@ exports[`render with custom content 1`] = `
       style="flex-basis: 25%;"
     >
       <div
-        class="nut-grid-item__content nut-grid-item__content--border nut-grid-item__content--center nut-grid-item__content--horizontal"
+        class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-center nut-grid-item-content-horizontal"
       >
         <div
           class="nut-avatar nut-avatar-large nut-avatar-round"
@@ -166,14 +166,14 @@ exports[`render with custom content 1`] = `
 exports[`should match snapshot 1`] = `
 <div>
   <div
-    class="nut-grid nut-grid__border"
+    class="nut-grid nut-grid-border"
   >
     <div
       class="nut-grid-item"
       style="flex-basis: 25%;"
     >
       <div
-        class="nut-grid-item__content nut-grid-item__content--border nut-grid-item__content--center nut-grid-item__content--vertical"
+        class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-center nut-grid-item-content-vertical"
       >
         <svg
           aria-labelledby="Image"
@@ -195,7 +195,7 @@ exports[`should match snapshot 1`] = `
           />
         </svg>
         <div
-          class="nut-grid-item__text"
+          class="nut-grid-item-text"
         >
           文本
         </div>
@@ -206,7 +206,7 @@ exports[`should match snapshot 1`] = `
       style="flex-basis: 25%;"
     >
       <div
-        class="nut-grid-item__content nut-grid-item__content--border nut-grid-item__content--center nut-grid-item__content--vertical"
+        class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-center nut-grid-item-content-vertical"
       >
         <svg
           aria-labelledby="Image"
@@ -228,7 +228,7 @@ exports[`should match snapshot 1`] = `
           />
         </svg>
         <div
-          class="nut-grid-item__text"
+          class="nut-grid-item-text"
         >
           文本
         </div>
@@ -239,7 +239,7 @@ exports[`should match snapshot 1`] = `
       style="flex-basis: 25%;"
     >
       <div
-        class="nut-grid-item__content nut-grid-item__content--border nut-grid-item__content--center nut-grid-item__content--vertical"
+        class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-center nut-grid-item-content-vertical"
       >
         <svg
           aria-labelledby="Image"
@@ -261,7 +261,7 @@ exports[`should match snapshot 1`] = `
           />
         </svg>
         <div
-          class="nut-grid-item__text"
+          class="nut-grid-item-text"
         >
           文本
         </div>

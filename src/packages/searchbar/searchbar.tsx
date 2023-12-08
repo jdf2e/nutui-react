@@ -121,8 +121,8 @@ export const SearchBar: FunctionComponent<
   const renderField = () => {
     return (
       <input
-        className={`${classPrefix}__input ${
-          clearable ? `${classPrefix}__input-clear` : ''
+        className={`${classPrefix}-input ${
+          clearable ? `${classPrefix}-input-clear` : ''
         }`}
         ref={searchRef}
         style={{ ...props.style }}
@@ -146,7 +146,7 @@ export const SearchBar: FunctionComponent<
   const renderLeftIn = () => {
     if (!leftIn) return null
     return (
-      <div className={`${classPrefix}__leftin ${classPrefix}__icon`}>
+      <div className={`${classPrefix}-leftin ${classPrefix}-icon`}>
         {leftIn}
       </div>
     )
@@ -154,7 +154,7 @@ export const SearchBar: FunctionComponent<
   const renderLeft = () => {
     if (!backable && !left) return null
     return (
-      <div className={`${classPrefix}__left`}>
+      <div className={`${classPrefix}-left`}>
         {backable ? <ArrowLeft width="20" height="20" /> : left}
       </div>
     )
@@ -163,7 +163,7 @@ export const SearchBar: FunctionComponent<
   const renderRightIn = () => {
     if (!rightIn) return null
     return (
-      <div className={`${classPrefix}__rightin ${classPrefix}__icon`}>
+      <div className={`${classPrefix}-rightin ${classPrefix}-icon`}>
         {rightIn}
       </div>
     )
@@ -171,13 +171,13 @@ export const SearchBar: FunctionComponent<
 
   const renderRight = () => {
     if (!right) return null
-    return <div className={`${classPrefix}__right`}>{right}</div>
+    return <div className={`${classPrefix}-right`}>{right}</div>
   }
 
   const handleClear = () => {
     return (
       <div
-        className={`${classPrefix}__clear ${classPrefix}__icon`}
+        className={`${classPrefix}-clear ${classPrefix}-icon`}
         onClick={(e) => clearaVal(e)}
       >
         <MaskClose />
@@ -207,14 +207,14 @@ export const SearchBar: FunctionComponent<
   return (
     <div
       className={`${classPrefix} ${
-        disabled ? `${classPrefix}__disabled` : ''
+        disabled ? `${classPrefix}-disabled` : ''
       }  ${className || ''}`}
       style={{ ...props.style }}
     >
       {renderLeft()}
       <div
-        className={`${classPrefix}__content ${
-          shape === 'round' ? `${classPrefix}__round` : ''
+        className={`${classPrefix}-content ${
+          shape === 'round' ? `${classPrefix}-round` : ''
         }`}
       >
         {renderLeftIn()}

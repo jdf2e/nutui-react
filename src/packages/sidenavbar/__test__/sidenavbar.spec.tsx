@@ -22,7 +22,7 @@ test('default props', () => {
     </>
   )
   expect(container.querySelector('.nut-popup')).toHaveClass('nut-popup-left')
-  expect(container.querySelector('.nut-sidenavbar__title')).toHaveAttribute(
+  expect(container.querySelector('.nut-sidenavbar-title')).toHaveAttribute(
     'style',
     'padding-left: 20px;'
   )
@@ -60,7 +60,7 @@ test('indent  should be 30', () => {
       </Sidenavbar>
     </>
   )
-  expect(container.querySelector('.nut-sidenavbar__title')).toHaveAttribute(
+  expect(container.querySelector('.nut-sidenavbar-title')).toHaveAttribute(
     'style',
     'padding-left: 30px;'
   )

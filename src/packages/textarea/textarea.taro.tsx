@@ -97,7 +97,7 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
       className={classNames(
         classPrefix,
         {
-          [`${classPrefix}__disabled`]: disabled,
+          [`${classPrefix}-disabled`]: disabled,
         },
         className
       )}
@@ -114,7 +114,7 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
             compositionRef.current = false
           },
         }}
-        className={`${classPrefix}__textarea`}
+        className={`${classPrefix}-textarea`}
         style={Taro.getEnv() === 'WEB' ? undefined : style}
         disabled={Taro.getEnv() === 'WEB' ? disabled : disabled || readOnly}
         value={inputValue}
@@ -128,7 +128,7 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
         {...rest}
       />
       {showCount && (
-        <div className={`${classPrefix}__limit`}>
+        <div className={`${classPrefix}-limit`}>
           {inputValue.length}/{maxLength < 0 ? 0 : maxLength}
         </div>
       )}

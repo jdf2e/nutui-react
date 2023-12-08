@@ -11,7 +11,7 @@
     }
   }
 
-  &__label {
+  &-label {
     font-size: $form-item-label-font-size;
     font-weight: normal;
     width: $form-item-label-width;
@@ -30,12 +30,12 @@
     }
   }
 
-  &__body {
+  &-body {
     flex: 1;
     display: flex !important;
     flex-direction: column;
 
-    &__slots {
+    &-slots {
       text-align: $form-item-body-slots-text-align;
 
       .nut-input {
@@ -61,14 +61,14 @@
       .nut-textarea {
         padding: 0 !important;
 
-        .nut-textarea__textarea {
+        .nut-textarea-textarea {
           font: inherit;
           text-align: $form-item-body-input-text-align;
         }
       }
     }
 
-    &__tips {
+    &-tips {
       text-align: $form-item-tip-text-align;
       font-size: $form-item-tip-font-size;
       color: $form-item-error-message-color;

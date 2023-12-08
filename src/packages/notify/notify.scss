@@ -52,8 +52,8 @@
   white-space: pre-wrap;
   word-wrap: break-word;
   height: $notify-height;
-  &--popup-top,
-  &--popup-bottom {
+  &-popup-top,
+  &-popup-bottom {
     position: fixed;
     left: 0;
     width: 100%;
@@ -62,31 +62,31 @@
     z-index: 9999;
   }
 
-  &--popup-top {
+  &-popup-top {
     top: 0;
   }
 
-  &--popup-bottom {
+  &-popup-bottom {
     bottom: 0;
   }
 
-  &--base {
+  &-base {
     background: $notify-base-background-color;
   }
 
-  &--primary {
+  &-primary {
     background: $notify-primary-background-color;
   }
 
-  &--success {
+  &-success {
     background: $notify-success-background-color;
   }
 
-  &--danger {
+  &-danger {
     background: $notify-danger-background-color;
   }
 
-  &--warning {
+  &-warning {
     background: $notify-warning-background-color;
   }
 }

@@ -53,7 +53,7 @@ test('timeselect event test', async () => {
     ReactTestUtils.Simulate.click(date as HTMLElement)
     expect(handleDateChange).toBeCalledWith(options[0], [])
 
-    const time = container.querySelector('.nut-timedetail__item')
+    const time = container.querySelector('.nut-timedetail-item')
     ReactTestUtils.Simulate.click(time as HTMLElement)
     expect(handleTimeChange).toBeCalledWith(options[0].children[0], [
       {

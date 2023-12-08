@@ -166,13 +166,13 @@ const SwiperDemo = () => {
           </Swiper>
           <div className="nut-swiper-btns">
             <span
-              className="nut-swiper-btns__left"
+              className="nut-swiper-btns-left"
               onClick={(e) => swiperRef.current?.prev()}
             >
               <ArrowLeft />
             </span>
             <span
-              className="nut-swiper-btns__left"
+              className="nut-swiper-btns-left"
               onClick={(e) => swiperRef.current?.next()}
             >
               <ArrowRight />

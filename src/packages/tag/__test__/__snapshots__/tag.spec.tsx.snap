@@ -3,7 +3,7 @@
 exports[`type test 1`] = `
 <div>
   <div
-    class="nut-tag nut-tag--primary"
+    class="nut-tag nut-tag-primary"
   >
     <span
       class="nut-tag-text"

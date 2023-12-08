@@ -360,7 +360,7 @@ const InternalCascader: ForwardRefRenderFunction<
     )
 
     const classesTitle = classNames({
-      [`${classPrefix2}__title`]: true,
+      [`${classPrefix2}-title`]: true,
     })
 
     const renderIcon = () => {
@@ -370,7 +370,7 @@ const InternalCascader: ForwardRefRenderFunction<
         }
         return (
           <Checklist
-            className={`${checked ? `${classPrefix}__icon-check` : ''}`}
+            className={`${checked ? `${classPrefix}-icon-check` : ''}`}
           />
         )
       }
@@ -388,10 +388,7 @@ const InternalCascader: ForwardRefRenderFunction<
       >
         <div className={classesTitle}>{node.text}</div>
         {node.loading ? (
-          <Loading
-            color="#969799"
-            className="nut-cascader-item__icon-loading"
-          />
+          <Loading color="#969799" className="nut-cascader-item-icon-loading" />
         ) : (
           renderIcon()
         )}

@@ -7,7 +7,7 @@
   vertical-align: middle;
   width: 100%;
 
-  &__content {
+  &-content {
     display: flex;
 
     .avatar {
@@ -15,7 +15,7 @@
       background: $skeleton-background !important;
     }
 
-    .nut-skeleton__block {
+    .nut-skeleton-block {
       width: $skeleton-line-width;
       height: $skeleton-line-height;
       background: $skeleton-background;
@@ -28,18 +28,18 @@
       display: flex;
       flex-direction: column;
 
-      .nut-skeleton__title {
+      .nut-skeleton-title {
         width: 30%;
         height: $skeleton-line-height;
         background: $skeleton-background;
       }
-      .nut-skeleton__block:last-child {
+      .nut-skeleton-block:last-child {
         width: 70%;
       }
     }
   }
 
-  &__animation {
+  &-animation {
     position: absolute;
     top: 0;
     left: 0;

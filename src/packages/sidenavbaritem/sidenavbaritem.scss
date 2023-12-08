@@ -1,12 +1,12 @@
 .nut-subsidenavbar {
-  &__item {
+  &-item {
     height: $sidenavbar-item-height;
     color: $sidenavbar-sub-item-color;
     padding: $sidenavbar-sub-item-padding;
     box-sizing: border-box;
   }
 
-  &__list {
+  &-list {
     background-color: $sidenavbar-sub-list-background;
     color: $sidenavbar-sub-list-color;
   }

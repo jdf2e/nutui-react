@@ -62,7 +62,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
   const setNumberTransform = () => {
     if (countupRef.current && numerArr.length) {
       const query = createSelectorQuery()
-        .selectAll('.nut-countup__listitem')
+        .selectAll('.nut-countup-listitem')
         .node((numberItems: any) => {
           const transformArrCache: string[] = []
           Object.keys(numberItems).forEach((key: any) => {
@@ -110,20 +110,20 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
 
   return (
     <div className={`${classPrefix} ${className}`} ref={countupRef}>
-      <ul className={`${classPrefix}__list`}>
+      <ul className={`${classPrefix}-list`}>
         {numerArr.map((item: string, idx: number) => {
           return (
             <li
-              className={`${classPrefix}__listitem ${
+              className={`${classPrefix}-listitem ${
                 !Number.isNaN(Number(item))
-                  ? `${classPrefix}__listitem--number`
+                  ? `${classPrefix}-listitem-number`
                   : ''
               }`}
               key={idx}
             >
               {!Number.isNaN(Number(item)) ? (
                 <span
-                  className={`${classPrefix}__number`}
+                  className={`${classPrefix}-number`}
                   style={numberEaseStyle(idx)}
                 >
                   {[...numbers, ...numbers].map((number, subidx) => {
@@ -131,7 +131,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
                   })}
                 </span>
               ) : (
-                <span className={`${classPrefix}__separator`}>{item}</span>
+                <span className={`${classPrefix}-separator`}>{item}</span>
               )}
             </li>
           )

@@ -21,15 +21,13 @@ export const Content: FunctionComponent<
 
   const classPrefix = 'nut-dialog'
   const renderHeader = () => {
-    return title ? (
-      <div className={`${classPrefix}__header`}>{title}</div>
-    ) : null
+    return title ? <div className={`${classPrefix}-header`}>{title}</div> : null
   }
 
   const renderFooter = () => {
     return footer ? (
       <div
-        className={classNames(`${classPrefix}__footer`, {
+        className={classNames(`${classPrefix}-footer`, {
           [footerDirection as any]: footerDirection,
         })}
       >
@@ -44,7 +42,7 @@ export const Content: FunctionComponent<
 
   return (
     <div
-      className={classNames(`${classPrefix}__outer`, props.className)}
+      className={classNames(`${classPrefix}-outer`, props.className)}
       style={props.style}
       onClick={(e) => handleClick(e)}
     >
@@ -54,7 +52,7 @@ export const Content: FunctionComponent<
         style={{ display: visible ? 'flex' : 'none' }}
       >
         {renderHeader()}
-        <div className={`${classPrefix}__content`}>
+        <div className={`${classPrefix}-content`}>
           <>{children}</>
         </div>
         {renderFooter()}

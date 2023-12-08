@@ -9,21 +9,21 @@ exports[`should match snapshot 1`] = `
       class="nut-collapse-item"
     >
       <div
-        class="nut-collapse-item__header"
+        class="nut-collapse-item-header"
       >
         <div
-          class="nut-collapse-item__title"
+          class="nut-collapse-item-title"
         >
           标题1
         </div>
         <div
-          class="nut-collapse-item__extra"
+          class="nut-collapse-item-extra"
         />
         <div
-          class="nut-collapse-item__icon-box"
+          class="nut-collapse-item-icon-box"
         >
           <div
-            class="nut-collapse-item__icon"
+            class="nut-collapse-item-icon"
             style="transform: translateY(-50%) rotate(180deg);"
           >
             <svg
@@ -43,10 +43,10 @@ exports[`should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="nut-collapse-item__content"
+        class="nut-collapse-item-content"
       >
         <div
-          class="nut-collapse-item__content-text"
+          class="nut-collapse-item-content-text"
         >
           京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
         </div>
@@ -56,21 +56,21 @@ exports[`should match snapshot 1`] = `
       class="nut-collapse-item"
     >
       <div
-        class="nut-collapse-item__header"
+        class="nut-collapse-item-header"
       >
         <div
-          class="nut-collapse-item__title"
+          class="nut-collapse-item-title"
         >
           标题2
         </div>
         <div
-          class="nut-collapse-item__extra"
+          class="nut-collapse-item-extra"
         />
         <div
-          class="nut-collapse-item__icon-box"
+          class="nut-collapse-item-icon-box"
         >
           <div
-            class="nut-collapse-item__icon"
+            class="nut-collapse-item-icon"
             style="transform: translateY(-50%) rotate(180deg);"
           >
             <svg
@@ -90,10 +90,10 @@ exports[`should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="nut-collapse-item__content"
+        class="nut-collapse-item-content"
       >
         <div
-          class="nut-collapse-item__content-text"
+          class="nut-collapse-item-content-text"
         >
           京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
         </div>
@@ -103,21 +103,21 @@ exports[`should match snapshot 1`] = `
       class="nut-collapse-item"
     >
       <div
-        class="nut-collapse-item__header disabled"
+        class="nut-collapse-item-header disabled"
       >
         <div
-          class="nut-collapse-item__title"
+          class="nut-collapse-item-title"
         >
           标题3
         </div>
         <div
-          class="nut-collapse-item__extra"
+          class="nut-collapse-item-extra"
         />
         <div
-          class="nut-collapse-item__icon-box"
+          class="nut-collapse-item-icon-box"
         >
           <div
-            class="nut-collapse-item__icon"
+            class="nut-collapse-item-icon"
             style="transform: translateY(-50%);"
           >
             <svg
@@ -137,11 +137,11 @@ exports[`should match snapshot 1`] = `
         </div>
       </div>
       <div
-        class="nut-collapse-item__content"
+        class="nut-collapse-item-content"
         style="height: 0px;"
       >
         <div
-          class="nut-collapse-item__content-text"
+          class="nut-collapse-item-content-text"
         >
           京东“厂直优品计划”首推“政府优品馆”
         </div>

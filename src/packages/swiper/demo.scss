@@ -47,13 +47,13 @@
     height: 150px;
   }
 
-  .nut-swiper__indicator-vertical {
-    .nut-indicator__dot {
+  .nut-swiper-indicator-vertical {
+    .nut-indicator-dot {
       width: 6px;
       height: 6px;
       border-radius: 50%;
 
-      &.nut-indicator__active {
+      &.nut-indicator-active {
         height: 18px;
         border-radius: 5px;
         background-color: #426543;
