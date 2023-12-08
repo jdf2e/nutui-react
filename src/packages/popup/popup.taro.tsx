@@ -248,6 +248,7 @@ export const Popup: FunctionComponent<
           style={popStyles}
           className={popClassName}
           onClick={onHandleClick}
+          catchMove={lockScroll}
         >
           {renderTitle()}
           {showChildren ? children : ''}
