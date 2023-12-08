@@ -1,3 +1,11 @@
+html,
+body {
+  &::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+  }
+}
+
 #app {
   background: #fff;
   height: 100%;
