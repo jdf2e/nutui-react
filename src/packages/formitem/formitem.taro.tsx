@@ -150,6 +150,7 @@ export class FormItem extends React.Component<
 
   onStoreChange = (type?: string) => {
     if (type === 'reset') {
+      this.context.errors[this.props.name as string] = []
       this.refresh()
     } else {
       this.forceUpdate()
