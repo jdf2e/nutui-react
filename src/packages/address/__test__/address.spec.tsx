@@ -107,7 +107,7 @@ test('Address: show custom', async () => {
   const { container } = render(
     <Address visible options={optionsDemo1} title="选择地址" />
   )
-  const items = container.querySelectorAll('.nut-cascader-item__title')
+  const items = container.querySelectorAll('.nut-cascader-item-title')
   expect(items[0]?.innerHTML).toBe('浙江')
   expect(items[2]?.innerHTML).toBe('福建')
 

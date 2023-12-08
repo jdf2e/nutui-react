@@ -106,26 +106,24 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
       {...rest}
     >
       <div className={classNames(classPrefix, className)} style={style}>
-        <div className={`${classPrefix}__title`}>
+        <div className={`${classPrefix}-title`}>
           {title || locale.shortpassword.title}
         </div>
-        <div className={`${classPrefix}__description`}>
+        <div className={`${classPrefix}-description`}>
           {description || locale.shortpassword.description}
         </div>
-        <div className={`${classPrefix}__input`} onClick={onFocus}>
-          <div className={`${classPrefix}__input-site`} />
-          <div className={`${classPrefix}__input-fake`}>
+        <div className={`${classPrefix}-input`} onClick={onFocus}>
+          <div className={`${classPrefix}-input-site`} />
+          <div className={`${classPrefix}-input-fake`}>
             {[...new Array(comLen).keys()].map((item, index) => {
               return (
-                <div className={`${classPrefix}__input-fake__li`} key={index}>
+                <div className={`${classPrefix}-input-fake-li`} key={index}>
                   {inputValue.length > index && (
                     <>
                       {plain ? (
                         inputValue[index]
                       ) : (
-                        <div
-                          className={`${classPrefix}__input-fake__li__icon`}
-                        />
+                        <div className={`${classPrefix}-input-fake-li-icon`} />
                       )}
                     </>
                   )}
@@ -134,9 +132,9 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
             })}
           </div>
         </div>
-        <div className={`${classPrefix}__message`}>
-          <div className={`${classPrefix}__message__error`}>{error}</div>
-          <div className={`${classPrefix}__message__forget`} onClick={onTips}>
+        <div className={`${classPrefix}-message`}>
+          <div className={`${classPrefix}-message-error`}>{error}</div>
+          <div className={`${classPrefix}-message-forget`} onClick={onTips}>
             {tips || (
               <>
                 <Tips width={11} height={11} style={{ marginRight: '3px' }} />
@@ -146,14 +144,11 @@ export const ShortPassword: FunctionComponent<Partial<ShortPasswordProps>> = (
           </div>
         </div>
         {!hideFooter && (
-          <div className={`${classPrefix}__footer`}>
-            <div
-              className={`${classPrefix}__footer__cancel`}
-              onClick={onCancel}
-            >
+          <div className={`${classPrefix}-footer`}>
+            <div className={`${classPrefix}-footer-cancel`} onClick={onCancel}>
               {locale.cancel}
             </div>
-            <div className={`${classPrefix}__footer__sure`} onClick={sure}>
+            <div className={`${classPrefix}-footer-sure`} onClick={sure}>
               {locale.confirm}
             </div>
           </div>

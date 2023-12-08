@@ -67,11 +67,11 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
   const classPrefix = 'nut-tag'
   const classes = classNames({
     [classPrefix]: true,
-    [`${classPrefix}--${type}`]: type,
-    [`${classPrefix}--plain`]: plain,
-    [`${classPrefix}--round`]: round,
-    [`${classPrefix}--mark`]: mark,
-    [`${classPrefix}--close`]: closeable,
+    [`${classPrefix}-${type}`]: type,
+    [`${classPrefix}-plain`]: plain,
+    [`${classPrefix}-round`]: round,
+    [`${classPrefix}-mark`]: mark,
+    [`${classPrefix}-close`]: closeable,
     [`${className}`]: className,
   })
 

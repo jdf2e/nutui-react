@@ -113,8 +113,8 @@ test('render with props reverse', () => {
   )
 
   const regionItem = container.querySelector('.nut-grid-item')
-  const item = regionItem?.querySelector('.nut-grid-item__content')
-  expect(item).toHaveClass('nut-grid-item__content--reverse')
+  const item = regionItem?.querySelector('.nut-grid-item-content')
+  expect(item).toHaveClass('nut-grid-item-content-reverse')
 })
 
 test('render with props direction horizontal', () => {
@@ -138,8 +138,8 @@ test('render with props direction horizontal', () => {
   )
 
   const regionItem = container.querySelector('.nut-grid-item')
-  const item = regionItem?.querySelector('.nut-grid-item__content')
-  expect(item).toHaveClass('nut-grid-item__content--horizontal')
+  const item = regionItem?.querySelector('.nut-grid-item-content')
+  expect(item).toHaveClass('nut-grid-item-content-horizontal')
 })
 
 test('render with custom', () => {
@@ -228,6 +228,6 @@ test('render with props center', () => {
   )
 
   const regionItem = container.querySelector('.nut-grid-item')
-  const item = regionItem?.querySelector('.nut-grid-item__content')
-  expect(item).toHaveClass('nut-grid-item__content--center')
+  const item = regionItem?.querySelector('.nut-grid-item-content')
+  expect(item).toHaveClass('nut-grid-item-content-center')
 })

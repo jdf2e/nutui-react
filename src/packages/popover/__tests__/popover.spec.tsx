@@ -46,7 +46,7 @@ test('render popover content', async () => {
   )
   const content = container.querySelectorAll('.nut-popover-content')[0]
   expect(content.className).toContain(
-    'nut-popup-default nut-popover-content nut-popover-content--bottom'
+    'nut-popup-default nut-popover-content nut-popover-content-bottom'
   )
 })
 

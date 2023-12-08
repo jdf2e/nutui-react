@@ -17,9 +17,9 @@
     flex: 1;
   }
 
-  &__center,
-  &__left,
-  &__right {
+  &-center,
+  &-left,
+  &-right {
     &::before {
       margin-right: $divider-spacing;
     }
@@ -29,26 +29,26 @@
     }
   }
 
-  &__left {
+  &-left {
     &::before {
       max-width: $divider-side-width;
     }
   }
 
-  &__right {
+  &-right {
     &::after {
       max-width: $divider-side-width;
     }
   }
 
-  &__hairline {
+  &-hairline {
     &::before,
     &::after {
       transform: scaleY(0.5);
     }
   }
 
-  &__vertical {
+  &-vertical {
     position: relative;
     top: $divider-vertical-top;
     display: inline-block;

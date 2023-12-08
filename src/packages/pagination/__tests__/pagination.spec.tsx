@@ -10,24 +10,24 @@ test('should match snapshot', () => {
 
 test('should render items', async () => {
   const { container } = render(<Pagination total={25} pageSize={5} />)
-  expect(container.querySelectorAll('.nut-pagination__item')).toHaveLength(5)
+  expect(container.querySelectorAll('.nut-pagination-item')).toHaveLength(5)
 })
 test('should render simple mode', async () => {
   const { container } = render(
     <Pagination total={12} pageSize={1} mode="simple" />
   )
-  expect(container.querySelectorAll('.nut-pagination__item')).toHaveLength(0)
-  expect(container.querySelectorAll('.nut-pagination__simple')).toHaveLength(1)
+  expect(container.querySelectorAll('.nut-pagination-item')).toHaveLength(0)
+  expect(container.querySelectorAll('.nut-pagination-simple')).toHaveLength(1)
 })
 test('should render ellipse and should emit change event after clicking ellipse option', async () => {
   const { container, getByText } = render(
     <Pagination total={125} itemSize={3} ellipse />
   )
-  expect(container.querySelectorAll('.nut-pagination__item')).toHaveLength(4)
+  expect(container.querySelectorAll('.nut-pagination-item')).toHaveLength(4)
   fireEvent.click(getByText('...'))
-  expect(container.querySelectorAll('.nut-pagination__item')).toHaveLength(5)
+  expect(container.querySelectorAll('.nut-pagination-item')).toHaveLength(5)
   expect(
-    container.querySelectorAll('.nut-pagination__item')[1]
+    container.querySelectorAll('.nut-pagination-item')[1]
   ).toHaveTextContent('3')
 })
 
@@ -38,8 +38,8 @@ test('should emit change event after clicking visible option', async () => {
   const next = getByText('下一页')
   fireEvent.click(next)
 
-  expect(container.querySelectorAll('.nut-pagination__item')).toHaveLength(5)
-  expect(container.querySelectorAll('.nut-pagination__item')[1]).toHaveClass(
+  expect(container.querySelectorAll('.nut-pagination-item')).toHaveLength(5)
+  expect(container.querySelectorAll('.nut-pagination-item')[1]).toHaveClass(
     'active'
   )
 })
@@ -60,7 +60,7 @@ test('should not emit change event after clicking disable option', async () => {
   const prev = getByText('上一页')
   fireEvent.click(prev)
 
-  expect(container.querySelectorAll('.nut-pagination__item')).toHaveLength(5)
+  expect(container.querySelectorAll('.nut-pagination-item')).toHaveLength(5)
   expect(flag).toBeFalsy()
 })
 
@@ -81,7 +81,7 @@ test('should render custom content correctly', () => {
   expect(getByText('pre')).toHaveTextContent('pre')
   expect(getByText('next')).toHaveTextContent('next')
   expect(
-    container.querySelectorAll('.nut-pagination__item')[2]
+    container.querySelectorAll('.nut-pagination-item')[2]
   ).toHaveTextContent('hot')
 })
 

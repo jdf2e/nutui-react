@@ -115,14 +115,14 @@ export const TextArea: FunctionComponent<
       className={classNames(
         classPrefix,
         {
-          [`${classPrefix}__disabled`]: disabled,
+          [`${classPrefix}-disabled`]: disabled,
         },
         className
       )}
     >
       <textarea
         ref={textareaRef}
-        className={`${classPrefix}__textarea`}
+        className={`${classPrefix}-textarea`}
         style={style}
         disabled={disabled}
         readOnly={readOnly}
@@ -142,7 +142,7 @@ export const TextArea: FunctionComponent<
         {...rest}
       />
       {showCount && (
-        <div className={`${classPrefix}__limit`}>
+        <div className={`${classPrefix}-limit`}>
           {inputValue.length}/{maxLength < 0 ? 0 : maxLength}
         </div>
       )}

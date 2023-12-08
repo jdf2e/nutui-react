@@ -5,7 +5,7 @@
 
   $block: &;
 
-  &__text {
+  &-text {
     color: $grid-item-text-color;
     font-size: $grid-item-text-font-size;
     line-height: 1.5;
@@ -13,7 +13,7 @@
     margin: $grid-item-text-margin 0 0 0;
   }
 
-  &__content {
+  &-content {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
@@ -22,53 +22,53 @@
     background: $grid-item-content-bg-color;
     border: 0 solid $grid-border-color;
 
-    &--border {
+    &-border {
       border-right-width: 1px;
       border-bottom-width: 1px;
     }
 
-    &--surround {
+    &-surround {
       border-top-width: 1px;
       border-left-width: 1px;
     }
 
-    &--center {
+    &-center {
       align-items: center;
       justify-content: center;
     }
 
-    &--square {
+    &-square {
       position: absolute;
       top: 0;
       right: 0;
       left: 0;
     }
 
-    &--reverse {
+    &-reverse {
       flex-direction: column-reverse;
 
-      #{$block}__text {
+      #{$block}-text {
         margin: 0 0 $grid-item-text-margin;
       }
     }
 
-    &--horizontal {
+    &-horizontal {
       flex-direction: row;
 
-      #{$block}__text {
+      #{$block}-text {
         margin: 0 0 0 $grid-item-text-margin;
       }
     }
 
-    &--horizontal#{&}--reverse {
+    &-horizontal#{&}-reverse {
       flex-direction: row-reverse;
 
-      #{$block}__text {
+      #{$block}-text {
         margin: 0 $grid-item-text-margin 0 0;
       }
     }
 
-    &--clickable {
+    &-clickable {
       cursor: pointer;
 
       &::before {

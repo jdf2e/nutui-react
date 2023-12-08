@@ -102,7 +102,7 @@ test('simple list-data confirm  event', async () => {
       onConfirm={(options, value) => confirm(value)}
     />
   )
-  const confirmBtn = container.querySelectorAll('.nut-picker__confirm-btn')[0]
+  const confirmBtn = container.querySelectorAll('.nut-picker-confirm-btn')[0]
   fireEvent.click(confirmBtn)
   await waitFor(() => expect(confirm.mock.calls[0][0]).toEqual(['NanJing']))
 })
@@ -112,7 +112,7 @@ test('simple list-data close event', async () => {
   const { container } = render(
     <Picker visible options={simpleColumns} onClose={cancel} />
   )
-  const cancelBtn = container.querySelectorAll('.nut-picker__cancel-btn')[0]
+  const cancelBtn = container.querySelectorAll('.nut-picker-cancel-btn')[0]
   fireEvent.click(cancelBtn)
   await waitFor(() => expect(cancel).toBeCalledTimes(1))
 })
@@ -127,7 +127,7 @@ test('simple list-data default checked item', async () => {
       onConfirm={(options, value) => confirm(value)}
     />
   )
-  const confirmBtn = container.querySelectorAll('.nut-picker__confirm-btn')[0]
+  const confirmBtn = container.querySelectorAll('.nut-picker-confirm-btn')[0]
   fireEvent.click(confirmBtn)
   await waitFor(() => expect(confirm.mock.calls[0][0]).toEqual(['WuXi']))
 })
@@ -141,7 +141,7 @@ test('multiple list-data render', async () => {
       onConfirm={(options, value) => confirm(value)}
     />
   )
-  const confirmBtn = container.querySelectorAll('.nut-picker__confirm-btn')[0]
+  const confirmBtn = container.querySelectorAll('.nut-picker-confirm-btn')[0]
   fireEvent.click(confirmBtn)
   await waitFor(() =>
     expect(confirm.mock.calls[0][0]).toEqual(['Monday', 'Morning'])
@@ -157,7 +157,7 @@ test('multistageColumns list-data render', async () => {
       onConfirm={(options, value) => confirm(value)}
     />
   )
-  const confirmBtn = container.querySelectorAll('.nut-picker__confirm-btn')[0]
+  const confirmBtn = container.querySelectorAll('.nut-picker-confirm-btn')[0]
   fireEvent.click(confirmBtn)
   await waitFor(() =>
     expect(confirm.mock.calls[0][0]).toEqual(['ZheJiang', 'HangZhou', 'XiHu'])
@@ -182,7 +182,7 @@ test('async list-data render', async () => {
     )
   }
   const container = render(<PenderContent />)
-  const confirmBtn = document.querySelectorAll('.nut-picker__confirm-btn')[0]
+  const confirmBtn = document.querySelectorAll('.nut-picker-confirm-btn')[0]
 
   await act(() => sleep(200))
 

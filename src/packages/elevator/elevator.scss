@@ -4,7 +4,7 @@
   position: relative;
   overflow: hidden;
 
-  &__list {
+  &-list {
     display: block;
     position: relative;
     top: 0;
@@ -12,7 +12,7 @@
     font-size: $elevator-list-font-size;
     color: $elevator-list-color;
 
-    &__inner {
+    &-inner {
       height: 100%;
       width: 100%;
       display: block;
@@ -20,10 +20,10 @@
       overflow: auto;
     }
 
-    &__item {
+    &-item {
       display: block;
 
-      &__code {
+      &-code {
         display: flex;
         position: relative;
         height: $elevator-list-item-code-height;
@@ -37,20 +37,20 @@
         background-color: $elevator-list-item-code-background-color;
       }
 
-      &__name {
+      &-name {
         display: flex;
         align-items: center;
         padding: $elevator-list-item-padding;
         height: $elevator-list-item-name-height;
         line-height: $elevator-list-item-name-line-height;
 
-        &--highcolor {
+        &-highcolor {
           color: $color-primary;
         }
       }
     }
 
-    &__fixed {
+    &-fixed {
       width: 100%;
       position: absolute;
       top: 0;
@@ -68,7 +68,7 @@
     }
   }
 
-  &__code--current {
+  &-code-current {
     position: absolute;
     right: $elevator-list-item-code-current-right;
     top: $elevator-list-item-code-current-top;
@@ -82,7 +82,7 @@
     text-align: $elevator-list-item-code-current-text-align;
   }
 
-  &__bars {
+  &-bars {
     position: absolute;
     right: $elevator-bars-right;
     top: $elevator-bars-top;
@@ -95,12 +95,12 @@
     text-align: center;
     z-index: $elevator-bars-z-index;
 
-    &__inner {
-      &__item {
+    &-inner {
+      &-item {
         display: block;
         padding: $elevator-bars-inner-item-padding;
 
-        &--active {
+        &-active {
           font-weight: $font-weight-bold;
           color: $elevator-bars-active-color;
         }

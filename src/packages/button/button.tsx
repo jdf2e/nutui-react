@@ -104,15 +104,15 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         type={nativeType}
         className={classNames(
           prefixCls,
-          `${prefixCls}--${type}`,
-          props.fill ? `${prefixCls}--${fill}` : null,
-          children ? '' : `${prefixCls}--icononly`,
+          `${prefixCls}-${type}`,
+          props.fill ? `${prefixCls}-${fill}` : null,
+          children ? '' : `${prefixCls}-icononly`,
           {
-            [`${prefixCls}--${size}`]: size,
-            [`${prefixCls}--${shape}`]: shape,
-            [`${prefixCls}--block`]: block,
-            [`${prefixCls}--disabled`]: disabled,
-            [`${prefixCls}--loading`]: loading,
+            [`${prefixCls}-${size}`]: size,
+            [`${prefixCls}-${shape}`]: shape,
+            [`${prefixCls}-block`]: block,
+            [`${prefixCls}-disabled`]: disabled,
+            [`${prefixCls}-loading`]: loading,
           },
           className
         )}

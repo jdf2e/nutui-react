@@ -2,13 +2,13 @@
   display: flex;
 
   &.disabled {
-    .nut-rate-item__icon {
+    .nut-rate-item-icon {
       cursor: not-allowed;
     }
   }
 
   &.readonly {
-    .nut-rate-item__icon {
+    .nut-rate-item-icon {
       cursor: default;
     }
   }
@@ -23,7 +23,7 @@
       margin-right: 0;
     }
 
-    &__half {
+    &-half {
       position: absolute;
       height: 100%;
       width: 50% !important;
@@ -32,22 +32,22 @@
       overflow: hidden;
     }
 
-    &__icon {
+    &-icon {
       color: $rate-icon-color;
       cursor: pointer;
 
-      &--disabled {
+      &-disabled {
         color: $rate-icon-inactive-color;
       }
 
-      &.nut-rate-item__icon.nut-rate-item__icon--half {
+      &.nut-rate-item-icon.nut-rate-item-icon-half {
         position: absolute;
         left: 0;
         top: 0;
         overflow: hidden;
       }
 
-      &.nut-rate-item__icon::before {
+      &.nut-rate-item-icon::before {
         position: relative;
         top: auto;
         left: auto;

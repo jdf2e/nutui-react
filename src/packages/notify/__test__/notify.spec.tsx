@@ -62,9 +62,7 @@ test('test toast props', async () => {
   await waitFor(() => {
     expect(onClickNotify).toBeCalled()
     expect(document.querySelector('.nut-notify')?.innerHTML).toBe('主要通知')
-    expect(document.querySelector('.nut-notify')).toHaveClass(
-      'nut-notify--base'
-    )
+    expect(document.querySelector('.nut-notify')).toHaveClass('nut-notify-base')
     expect(document.querySelector('.nut-notify')).toHaveClass('aa')
     expect(document.querySelector('.nut-notify')).toHaveAttribute(
       'position',
@@ -92,7 +90,7 @@ test('event show-primary-notify', async () => {
   await waitFor(() => {
     expect(onClickNotify).toBeCalled()
     expect(document.querySelector('.nut-notify')).toHaveClass(
-      'nut-notify--primary'
+      'nut-notify-primary'
     )
     expect(document.querySelector('.nut-notify')?.innerHTML).toBe('primary')
   })
@@ -109,7 +107,7 @@ test('event show-success-notify', async () => {
   await waitFor(() => {
     expect(onClickNotify).toBeCalled()
     expect(document.querySelector('.nut-notify')).toHaveClass(
-      'nut-notify--success'
+      'nut-notify-success'
     )
     expect(document.querySelector('.nut-notify')?.innerHTML).toBe('success')
   })
@@ -126,7 +124,7 @@ test('event show-danger-notify', async () => {
   await waitFor(() => {
     expect(onClickNotify).toBeCalled()
     expect(document.querySelector('.nut-notify')).toHaveClass(
-      'nut-notify--danger'
+      'nut-notify-danger'
     )
     expect(document.querySelector('.nut-notify')?.innerHTML).toBe('danger')
   })
@@ -143,7 +141,7 @@ test('event show-warning-notify', async () => {
   await waitFor(() => {
     expect(onClickNotify).toBeCalled()
     expect(document.querySelector('.nut-notify')).toHaveClass(
-      'nut-notify--warning'
+      'nut-notify-warning'
     )
     expect(document.querySelector('.nut-notify')?.innerHTML).toBe('warn')
   })

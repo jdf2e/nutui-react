@@ -59,7 +59,7 @@ const InternalBarrage: ForwardRefRenderFunction<
   const classes = classNames(
     classPrefix,
     {
-      [`${classPrefix}__body${timeId.current}`]: true,
+      [`${classPrefix}-body${timeId.current}`]: true,
     },
     className
   )
@@ -91,13 +91,13 @@ const InternalBarrage: ForwardRefRenderFunction<
     setTimeout(() => {
       let width = 100
       query
-        .select(`.${classPrefix}__body${timeId.current}`)
+        .select(`.${classPrefix}-body${timeId.current}`)
         .boundingClientRect((rec: any) => {
           width = rec.width || 300
         })
 
       query
-        .select(`.${classPrefix}__item${index}`)
+        .select(`.${classPrefix}-item${index}`)
         .boundingClientRect((recs: any) => {
           const height = recs.height
           const nodeTop = `${(index % rows) * (height + gapY) + 20}px`
@@ -129,7 +129,7 @@ const InternalBarrage: ForwardRefRenderFunction<
         {baItemList.map((item: any, index: number) => {
           return (
             <div
-              className={`barrage-item ${classPrefix}__item${index} move`}
+              className={`barrage-item ${classPrefix}-item${index} move`}
               style={styleList[index]}
               key={index}
             >

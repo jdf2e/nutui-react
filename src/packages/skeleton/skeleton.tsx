@@ -46,7 +46,7 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
   const classes = classNames(classPrefix, className)
   const avatarClass = classNames({
     avatar: true,
-    [`avatar--${avatarShape}`]: avatarShape,
+    [`avatar-${avatarShape}`]: avatarShape,
   })
 
   const repeatLines = (num: number) => {
@@ -72,8 +72,8 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
         <div>{children}</div>
       ) : (
         <div className={classes} {...rest}>
-          {animated && <div className={`${classPrefix}__animation`} />}
-          <div className={`${classPrefix}__content`}>
+          {animated && <div className={`${classPrefix}-animation`} />}
+          <div className={`${classPrefix}-content`}>
             {avatar && (
               <Avatar
                 className={avatarClass}
@@ -83,12 +83,12 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
               />
             )}
             {rows === 1 ? (
-              <div className={`${classPrefix}__block`} />
+              <div className={`${classPrefix}-block`} />
             ) : (
-              <div className={`${classPrefix}__content-line`}>
-                {title && <div className={`${classPrefix}__title`} />}
+              <div className={`${classPrefix}-content-line`}>
+                {title && <div className={`${classPrefix}-title`} />}
                 {repeatLines(rows).map((item, index) => {
-                  return <div className={`${classPrefix}__block`} key={index} />
+                  return <div className={`${classPrefix}-block`} key={index} />
                 })}
               </div>
             )}

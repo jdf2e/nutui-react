@@ -16,7 +16,7 @@ test('Show Chinese', async () => {
     />
   )
 
-  const confirmBtn = container.querySelectorAll('.nut-picker__confirm-btn')[0]
+  const confirmBtn = container.querySelectorAll('.nut-picker-confirm-btn')[0]
   fireEvent.click(confirmBtn)
   await waitFor(() => {
     expect(
@@ -60,7 +60,7 @@ test('should pick defaultValue', async () => {
     />
   )
 
-  const confirmBtn = container.querySelectorAll('.nut-picker__confirm-btn')[0]
+  const confirmBtn = container.querySelectorAll('.nut-picker-confirm-btn')[0]
   fireEvent.click(confirmBtn)
   await waitFor(() =>
     expect(

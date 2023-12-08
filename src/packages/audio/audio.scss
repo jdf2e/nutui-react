@@ -2,7 +2,7 @@
 @import '../range/range.scss';
 
 .nut-audio {
-  &__icon {
+  &-icon {
     position: relative;
     display: inline-block;
 
@@ -22,7 +22,7 @@
       }
     }
 
-    .nut-audio__icon-stop {
+    .nut-audio-icon-stop {
       position: relative;
 
       &::after {
@@ -40,7 +40,7 @@
     }
   }
 
-  &__progress {
+  &-progress {
     display: flex;
     align-items: center;
     width: 100%;
@@ -65,13 +65,13 @@
   }
 
   .custom-button-group {
-    .nut-button--primary {
+    .nut-button-primary {
       margin: 0 5px;
     }
   }
 
   .custom-button-group-disable {
-    .nut-button--primary {
+    .nut-button-primary {
       margin: 0 5px;
       pointer-events: none;
     }
@@ -81,7 +81,7 @@
     color: blue;
   }
 
-  .nut-audio__none-container {
+  .nut-audio-none-container {
     .nut-voice {
       border: 1px solid $color-title;
       align-items: center;

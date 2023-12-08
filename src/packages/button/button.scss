@@ -61,252 +61,252 @@
     background: initial;
   }
 
-  &--loading,
-  &--disabled {
+  &-loading,
+  &-disabled {
     &::before {
       display: none;
     }
   }
 
-  &.nut-button--icononly {
+  &.nut-button-icononly {
     width: $button-default-height;
     padding: 0;
   }
 
-  &--default {
+  &-default {
     padding: $button-default-padding;
     border: $button-border-width solid $button-default-border-color;
 
-    &.nut-button--disabled {
+    &.nut-button-disabled {
       color: $color-text-help;
       background: transparent;
     }
 
-    &.nut-button--none {
+    &.nut-button-none {
       background: transparent;
 
-      &.nut-button--disabled {
+      &.nut-button-disabled {
         color: $color-text-help;
       }
     }
 
-    &.nut-button--outline,
-    &.nut-button--dashed {
+    &.nut-button-outline,
+    &.nut-button-dashed {
       background: transparent;
 
-      &.nut-button--disabled {
+      &.nut-button-disabled {
         color: $color-text-help;
         border-color: $button-default-disabled;
       }
     }
   }
 
-  &--normal {
+  &-normal {
     padding: $button-normal-padding;
   }
 
-  &--large {
+  &-large {
     height: $button-large-height;
     padding: $button-large-padding;
     font-size: $button-large-font-size;
   }
 
-  &--small {
+  &-small {
     height: $button-small-height;
     padding: $button-small-padding;
     font-size: $button-small-font-size;
   }
 
-  &--mini {
+  &-mini {
     height: $button-mini-height;
     padding: $button-mini-padding;
     font-size: $button-mini-font-size;
   }
 
-  &--primary {
+  &-primary {
     color: $button-primary-color;
     background: $button-primary-background-color;
     background-origin: border-box;
     border: $button-border-width solid transparent;
 
-    &.nut-button--disabled {
+    &.nut-button-disabled {
       background: $button-primary-disabled;
       border-color: $button-primary-disabled;
     }
 
-    &.nut-button--none {
+    &.nut-button-none {
       background: transparent;
       color: $button-primary-border-color;
 
-      &.nut-button--disabled {
+      &.nut-button-disabled {
         color: $button-primary-disabled;
       }
     }
 
-    &.nut-button--outline {
+    &.nut-button-outline {
       background: transparent;
       color: $button-primary-border-color;
       border: $button-border-width solid $button-primary-border-color;
 
-      &.nut-button--disabled {
+      &.nut-button-disabled {
         color: $button-primary-disabled;
         border-color: $button-primary-disabled;
       }
     }
 
-    &.nut-button--dashed {
+    &.nut-button-dashed {
       background: transparent;
       color: $button-primary-border-color;
       border: $button-border-width dashed $button-primary-border-color;
 
-      &.nut-button--disabled {
+      &.nut-button-disabled {
         color: $button-primary-disabled;
         border-color: $button-primary-disabled;
       }
     }
   }
 
-  &--success {
+  &-success {
     color: $button-success-color;
     background: $button-success-background-color;
     background-origin: border-box;
     border: $button-border-width solid transparent;
 
-    &.nut-button--disabled {
+    &.nut-button-disabled {
       background: $button-success-disabled;
       border-color: $button-success-disabled;
     }
 
-    &.nut-button--outline,
-    &.nut-button--dashed {
+    &.nut-button-outline,
+    &.nut-button-dashed {
       color: $button-success-border-color;
       border-color: $button-success-border-color;
       background: transparent;
 
-      &.nut-button--disabled {
+      &.nut-button-disabled {
         color: $button-primary-disabled;
         border-color: $button-primary-disabled;
       }
     }
 
-    &.nut-button--none {
+    &.nut-button-none {
       color: $button-success-border-color;
     }
   }
 
-  &--info {
+  &-info {
     color: $button-info-color;
     background: $button-info-background-color;
     background-origin: border-box;
     border: $button-border-width solid transparent;
 
-    &.nut-button--disabled {
+    &.nut-button-disabled {
       background: $button-info-disabled;
       border-color: $button-info-disabled;
     }
 
-    &.nut-button--outline,
-    &.nut-button--dashed {
+    &.nut-button-outline,
+    &.nut-button-dashed {
       color: $button-info-border-color;
       border-color: $button-info-border-color;
       background: transparent;
 
-      &.nut-button--disabled {
+      &.nut-button-disabled {
         color: $button-primary-disabled;
         border-color: $button-primary-disabled;
       }
     }
 
-    &.nut-button--none {
+    &.nut-button-none {
       color: $button-info-border-color;
     }
   }
 
-  &--danger {
+  &-danger {
     color: $button-danger-color;
     background: $button-danger-background-color;
     background-origin: border-box;
     border: $button-border-width solid transparent;
 
-    &.nut-button--disabled {
+    &.nut-button-disabled {
       background: $button-danger-disabled;
       border-color: $button-danger-disabled;
     }
 
-    &.nut-button--outline,
-    &.nut-button--dashed {
+    &.nut-button-outline,
+    &.nut-button-dashed {
       color: $button-danger-border-color;
       border-color: $button-danger-border-color;
       background: transparent;
 
-      &.nut-button--disabled {
+      &.nut-button-disabled {
         color: $button-danger-disabled;
         border-color: $button-danger-disabled;
       }
     }
 
-    &.nut-button--none {
+    &.nut-button-none {
       color: $button-danger-border-color;
     }
   }
 
-  &--warning {
+  &-warning {
     color: $button-warning-color;
     background: $button-warning-background-color;
     background-origin: border-box;
     border: $button-border-width solid transparent;
 
-    &.nut-button--disabled {
+    &.nut-button-disabled {
       background: $button-warning-disabled;
       border-color: $button-warning-disabled;
     }
 
-    &.nut-button--outline,
-    &.nut-button--dashed {
+    &.nut-button-outline,
+    &.nut-button-dashed {
       color: $button-warning-border-color;
       border-color: $button-warning-border-color;
       background: transparent;
 
-      &.nut-button--disabled {
+      &.nut-button-disabled {
         color: $button-warning-disabled;
         border-color: $button-warning-disabled;
       }
     }
 
-    &.nut-button--none {
+    &.nut-button-none {
       color: $button-warning-border-color;
     }
   }
 
-  &--block {
+  &-block {
     display: block;
     width: 100%;
   }
 
-  &--solid {
+  &-solid {
     color: $button-primary-color;
     background: $button-primary-background-color;
     background-origin: border-box;
     border: $button-border-width solid transparent;
 
-    &.nut-button--disabled {
+    &.nut-button-disabled {
       color: #ffffff;
       background: $button-default-disabled;
     }
   }
 
-  &.nut-button--outline,
-  &.nut-button--dashed {
+  &.nut-button-outline,
+  &.nut-button-dashed {
     background: transparent;
   }
 
-  &.nut-button--none {
+  &.nut-button-none {
     background: transparent;
     border-color: transparent;
     background: transparent;
   }
 
-  &--disabled {
+  &-disabled {
     cursor: not-allowed;
     font-weight: 400;
     color: #ffffff;
@@ -314,16 +314,16 @@
     border-color: $button-default-disabled;
   }
 
-  &--loading {
+  &-loading {
     cursor: default;
     opacity: 0.9;
   }
 
-  &--round {
+  &-round {
     border-radius: $button-border-radius;
   }
 
-  &--square {
+  &-square {
     border-radius: $button-square-border-radius;
   }
 }

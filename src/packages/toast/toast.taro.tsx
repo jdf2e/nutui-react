@@ -175,7 +175,7 @@ export const Toast: FunctionComponent<
         <Overlay
           visible={innerVisible}
           style={style}
-          className={`${classPrefix}__overlay-default ${className}`}
+          className={`${classPrefix}-overlay-default ${className}`}
           closeOnOverlayClick={closeOnOverlayClick}
           lockScroll={lockScroll}
           onClick={() => {
@@ -184,11 +184,11 @@ export const Toast: FunctionComponent<
         >
           <div className={`${classPrefix} ${classes}`} id={id}>
             <div
-              className={`${classPrefix}__inner ${classPrefix}-${position} ${contentClassName} ${wordBreak}`}
+              className={`${classPrefix}-inner ${classPrefix}-${position} ${contentClassName} ${wordBreak}`}
               style={contentStyle}
             >
               {hasIcon() ? (
-                <p className={`${classPrefix}__icon-wrapper`}>{iconName()}</p>
+                <p className={`${classPrefix}-icon-wrapper`}>{iconName()}</p>
               ) : null}
               {title ? (
                 <div className={`${classPrefix}-title`}>{title}</div>

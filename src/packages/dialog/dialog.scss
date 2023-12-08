@@ -16,7 +16,7 @@
     --nutui-overlay-zIndex: 1200;
   }
 
-  &__outer {
+  &-outer {
     position: fixed;
     max-height: 100%;
     overflow-y: auto;
@@ -34,7 +34,7 @@
     animation-duration: 0.3s;
   }
 
-  &__header {
+  &-header {
     display: block;
     text-align: center;
     font-size: $font-size-large;
@@ -43,7 +43,7 @@
     @include oneline-ellipsis();
   }
 
-  &__content {
+  &-content {
     width: 100%;
     margin: $dialog-content-margin;
     max-height: $dialog-content-max-height;
@@ -56,7 +56,7 @@
     text-align: $dialog-content-text-align;
   }
 
-  &__footer {
+  &-footer {
     display: flex;
     align-items: center;
     width: 100%;
@@ -69,11 +69,11 @@
         min-width: 100%;
         margin: 0;
 
-        &.nut-dialog__footer-ok {
+        &.nut-dialog-footer-ok {
           order: 1;
         }
 
-        &.nut-dialog__footer-cancel {
+        &.nut-dialog-footer-cancel {
           border: 0;
           color: $color-text;
           order: 2;
@@ -88,7 +88,7 @@
       min-width: $dialog-footer-button-min-width;
     }
 
-    &-cancel.nut-dialog__footer-cancel {
+    &-cancel.nut-dialog-footer-cancel {
       margin-right: $dialog-footer-cancel-margin-right;
     }
 

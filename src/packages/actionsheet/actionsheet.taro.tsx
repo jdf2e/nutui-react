@@ -68,18 +68,18 @@ export const ActionSheet: FunctionComponent<
     >
       <div className={`${className}`} style={style}>
         {options.length ? (
-          <div className={`${classPrefix}__list`}>
+          <div className={`${classPrefix}-list`}>
             {options.map((item, index) => {
               return (
                 <div
-                  className={`${classPrefix}__item ${
+                  className={`${classPrefix}-item ${
                     item.disabled ? 'disabled' : ''
                   } ${item.danger ? 'danger' : ''}`}
                   key={index}
                   onClick={() => chooseItem(item, index)}
                 >
                   {item[optionKey.name]}
-                  <div className={`${classPrefix}__item-description`}>
+                  <div className={`${classPrefix}-item-description`}>
                     {item[optionKey.description]}
                   </div>
                 </div>
@@ -91,7 +91,7 @@ export const ActionSheet: FunctionComponent<
         )}
         {cancelText && (
           <div
-            className={`${classPrefix}__cancel`}
+            className={`${classPrefix}-cancel`}
             onClick={() => cancelActionSheet()}
           >
             {cancelText}

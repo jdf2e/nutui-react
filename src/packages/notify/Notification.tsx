@@ -83,10 +83,10 @@ export default class Notification extends React.PureComponent<
     const { style, message, type, className, position } = this.props
     const { show } = this.state
     const classes = classNames({
-      [`${classPrefix}--popup-top`]: position === 'top',
-      [`${classPrefix}--popup-bottom`]: position === 'bottom',
+      [`${classPrefix}-popup-top`]: position === 'top',
+      [`${classPrefix}-popup-bottom`]: position === 'bottom',
       [`${classPrefix}`]: true,
-      [`${classPrefix}--${type}`]: true,
+      [`${classPrefix}-${type}`]: true,
     })
     return (
       <>

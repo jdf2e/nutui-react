@@ -40,13 +40,13 @@
       margin-top: 9px;
 
       .nut-price {
-        .nut-price__big {
+        .nut-price-big {
           font-size: 18px;
         }
 
-        .nut-price__symbol,
-        .nut-price__point,
-        .nut-price__small {
+        .nut-price-symbol,
+        .nut-price-point,
+        .nut-price-small {
           font-size: 12px;
         }
       }
@@ -56,10 +56,10 @@
           margin-left: 2px;
           color: #d2a448;
 
-          .nut-price__big,
-          .nut-price__symbol,
-          .nut-price__point,
-          .nut-price__small {
+          .nut-price-big,
+          .nut-price-symbol,
+          .nut-price-point,
+          .nut-price-small {
             font-size: 12px;
           }
         }

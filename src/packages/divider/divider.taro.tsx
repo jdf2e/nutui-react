@@ -27,14 +27,14 @@ export const Divider: FunctionComponent<
     direction === 'horizontal'
       ? classNames({
           [`${classPrefix}`]: true,
-          [`${classPrefix}__center`]: children,
-          [`${classPrefix}__left`]: contentPosition === 'left',
-          [`${classPrefix}__right`]: contentPosition === 'right',
-          [`${classPrefix}__hairline`]: true,
+          [`${classPrefix}-center`]: children,
+          [`${classPrefix}-left`]: contentPosition === 'left',
+          [`${classPrefix}-right`]: contentPosition === 'right',
+          [`${classPrefix}-hairline`]: true,
         })
       : classNames({
           [`${classPrefix}`]: true,
-          [`${classPrefix}__vertical`]: direction === 'vertical',
+          [`${classPrefix}-vertical`]: direction === 'vertical',
         })
   return (
     <div className={`${classes} ${className || ''}`} style={style} {...rest}>

@@ -23,7 +23,7 @@ export const SideNavBarItem: FunctionComponent<SideNavBarItemProps> = (
   }
   return (
     <div
-      className={`${classPrefix}__item ${classPrefix}-border-bt`}
+      className={`${classPrefix}-item ${classPrefix}-border-bt`}
       onClick={clickFn}
       {...rest}
     >

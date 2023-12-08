@@ -54,14 +54,14 @@
         color: $cascader-item-active-color;
       }
 
-      .nut-cascader-item__icon-check {
+      .nut-cascader-item-icon-check {
         visibility: visible;
         color: inherit;
       }
     }
   }
 
-  &-item__title {
+  &-item-title {
     flex: 1;
   }
 

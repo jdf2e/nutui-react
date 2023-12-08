@@ -7,15 +7,15 @@
   font-size: $textarea-font;
   padding: $textarea-padding;
 
-  &__disabled {
-    .nut-textarea__textarea,
-    .nut-textarea__limit {
+  &-disabled {
+    .nut-textarea-textarea,
+    .nut-textarea-limit {
       cursor: not-allowed;
       color: $textarea-disabled-color !important;
     }
   }
 
-  &__limit {
+  &-limit {
     position: absolute;
     right: 15px;
     bottom: 12px;
@@ -23,7 +23,7 @@
     color: $textarea-limit-color;
   }
 
-  &__textarea {
+  &-textarea {
     outline: none;
     display: block;
     box-sizing: border-box;

@@ -53,8 +53,8 @@ export const Table: FunctionComponent<
   }, [data])
 
   const classPrefix = 'nut-table'
-  const headerClassPrefix = `${classPrefix}__main__head__tr`
-  const bodyClassPrefix = `${classPrefix}__main__body__tr`
+  const headerClassPrefix = `${classPrefix}-main-head-tr`
+  const bodyClassPrefix = `${classPrefix}-main-body-tr`
   const cls = classNames(classPrefix, className)
 
   const handleSorterClick = (item: TableColumnProps) => {
@@ -76,8 +76,8 @@ export const Table: FunctionComponent<
 
   const cellClasses = (item: TableColumnProps) => {
     return {
-      [`${headerClassPrefix}--border`]: props.bordered,
-      [`${headerClassPrefix}--align${item.align ? item.align : ''}`]: true,
+      [`${headerClassPrefix}-border`]: props.bordered,
+      [`${headerClassPrefix}-align${item.align ? item.align : ''}`]: true,
     }
   }
 
@@ -89,7 +89,7 @@ export const Table: FunctionComponent<
     return columns.map((item, index) => {
       return (
         <span
-          className={classNames(`${headerClassPrefix}__th`, cellClasses(item))}
+          className={classNames(`${headerClassPrefix}-th`, cellClasses(item))}
           key={item.key}
           onClick={() => handleSorterClick(item)}
         >
@@ -111,7 +111,7 @@ export const Table: FunctionComponent<
       return (
         <span
           className={classNames(
-            `${bodyClassPrefix}__td`,
+            `${bodyClassPrefix}-td`,
             cellClasses(getColumnItem(value))
           )}
           key={value}
@@ -139,19 +139,19 @@ export const Table: FunctionComponent<
   return (
     <div className={cls} style={style} {...rest}>
       <div
-        className={classNames(`${classPrefix}__main`, {
-          [`${classPrefix}__main--striped`]: striped,
+        className={classNames(`${classPrefix}-main`, {
+          [`${classPrefix}-main-striped`]: striped,
         })}
       >
         {showHeader && (
-          <div className={`${classPrefix}__main__head`}>
+          <div className={`${classPrefix}-main-head`}>
             <div className={headerClassPrefix}>{renderHeadCells()}</div>
           </div>
         )}
-        <div className={`${classPrefix}__main__body`}>{renderBoyTrs()}</div>
+        <div className={`${classPrefix}-main-body`}>{renderBoyTrs()}</div>
       </div>
       {(summary || innerValue.length === 0) && (
-        <div className={`${classPrefix}__summary`}>{summary || noData}</div>
+        <div className={`${classPrefix}-summary`}>{summary || noData}</div>
       )}
     </div>
   )

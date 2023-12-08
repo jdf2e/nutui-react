@@ -193,15 +193,15 @@ export class FormItem extends React.Component<
         }
       >
         {label ? (
-          <div className="nut-cell-title nut-form-item__label">
+          <div className="nut-cell-title nut-form-item-label">
             {renderLabel}
           </div>
         ) : null}
-        <div className="nut-cell-value nut-form-item__body">
-          <div className="nut-form-item__body__slots">{childNode}</div>
+        <div className="nut-cell-value nut-form-item-body">
+          <div className="nut-form-item-body-slots">{childNode}</div>
           {item && item.length > 0 && (
             <div
-              className="nut-form-item__body__tips"
+              className="nut-form-item-body-tips"
               style={{ textAlign: errorMessageAlign }}
             >
               {item[0].message}

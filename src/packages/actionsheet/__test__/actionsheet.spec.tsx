@@ -30,7 +30,7 @@ test('props test options ', async () => {
     />
   )
   const options = container.querySelectorAll(
-    '.nut-actionsheet__list .nut-actionsheet__item'
+    '.nut-actionsheet-list .nut-actionsheet-item'
   )
   expect(options.length).toBe(3)
 })
@@ -45,7 +45,7 @@ test('props test cancelText ', async () => {
       options={menulist}
     />
   )
-  const cancelEle = container.querySelectorAll('.nut-actionsheet__cancel')[0]
+  const cancelEle = container.querySelectorAll('.nut-actionsheet-cancel')[0]
   expect(cancelEle).toHaveTextContent('关闭弹层')
 })
 
@@ -60,7 +60,7 @@ test('props test has value ', async () => {
     />
   )
   const chooseTagEle = container.querySelectorAll(
-    '.nut-actionsheet__list .nut-actionsheet__item'
+    '.nut-actionsheet-list .nut-actionsheet-item'
   )[0]
   expect(chooseTagEle).toHaveTextContent('选项一')
   expect(chooseTagEle).toHaveClass('danger')
@@ -79,7 +79,7 @@ test('props test choose item and show value', async () => {
     />
   )
   const chooseTagEle = container.querySelectorAll(
-    '.nut-actionsheet__list .nut-actionsheet__item'
+    '.nut-actionsheet-list .nut-actionsheet-item'
   )[0]
   fireEvent.click(chooseTagEle)
   await waitFor(() => expect(choose.mock.calls[0][0].name).toEqual('选项一'))
@@ -98,10 +98,10 @@ test('props test disabled item has disabled classes', async () => {
     />
   )
   const options = container.querySelectorAll(
-    '.nut-actionsheet__list .nut-actionsheet__item'
+    '.nut-actionsheet-list .nut-actionsheet-item'
   )
   const disableItem = options[1]
-  expect(disableItem).toHaveClass('nut-actionsheet__item disabled')
+  expect(disableItem).toHaveClass('nut-actionsheet-item disabled')
 })
 
 test('props test click disabled item and not call fn', async () => {
@@ -117,7 +117,7 @@ test('props test click disabled item and not call fn', async () => {
     />
   )
   const options = container.querySelectorAll(
-    '.nut-actionsheet__list .nut-actionsheet__item'
+    '.nut-actionsheet-list .nut-actionsheet-item'
   )
   const disableItem = options[1]
   fireEvent.click(disableItem)

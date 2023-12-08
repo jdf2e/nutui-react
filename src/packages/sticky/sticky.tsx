@@ -167,7 +167,7 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
       className={classNames(classPrefix, className)}
       {...rest}
     >
-      <div className="nut-sticky--box" ref={stickyRef} style={stickyStyle}>
+      <div className="nut-sticky-box" ref={stickyRef} style={stickyStyle}>
         {children}
       </div>
     </div>

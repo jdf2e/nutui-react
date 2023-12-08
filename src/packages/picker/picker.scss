@@ -4,7 +4,7 @@
   background-color: $color-background-overlay;
   width: 100%;
 
-  &__control {
+  &-control {
     display: flex;
     height: $popup-title-height;
     font-size: $popup-title-font-size;
@@ -13,17 +13,17 @@
     padding: $popup-title-padding;
   }
 
-  &__cancel-btn {
+  &-cancel-btn {
     color: $picker-title-cancel-color;
     font-size: $picker-title-cancel-font-size;
   }
 
-  &__confirm-btn {
+  &-confirm-btn {
     color: $picker-title-ok-color;
     font-size: $picker-title-ok-font-size;
   }
 
-  &__title {
+  &-title {
     flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -34,7 +34,7 @@
     font-weight: $popup-title-font-weight;
   }
 
-  &__panel {
+  &-panel {
     display: flex;
     position: relative;
   }

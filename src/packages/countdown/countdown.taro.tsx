@@ -298,7 +298,7 @@ const InternalCountDown: ForwardRefRenderFunction<
     >
       {children || (
         <div
-          className={`${classPrefix}__block`}
+          className={`${classPrefix}-block`}
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
             __html: `${renderTime}`,

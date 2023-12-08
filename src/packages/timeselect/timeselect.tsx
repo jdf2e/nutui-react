@@ -153,8 +153,8 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
       {...rest}
     >
       <div className={classNames(classPrefix, className)}>
-        <div className={`${classPrefix}__content`}>
-          <div className={`${classPrefix}__content-left`}>
+        <div className={`${classPrefix}-content`}>
+          <div className={`${classPrefix}-content-left`}>
             {options.map((item: DateType) => (
               <div
                 key={item[optionKey.valueKey]}

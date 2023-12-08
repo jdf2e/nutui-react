@@ -23,7 +23,7 @@ test('should  fill is outline', () => {
       主要按钮
     </Button>
   )
-  expect(getByTestId('button')).toHaveClass('nut-button--outline')
+  expect(getByTestId('button')).toHaveClass('nut-button-outline')
 })
 
 test('should have righticon correctly', () => {
@@ -94,6 +94,6 @@ test('should fireEvent correctly', () => {
 
   fireEvent.click(getByText('Click me'))
   expect(container.querySelector('.nut-button')).toHaveClass(
-    'nut-button--loading'
+    'nut-button-loading'
   )
 })

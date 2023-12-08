@@ -44,7 +44,7 @@ test('should render width and height', () => {
       })}
     </Swiper>
   )
-  const swiper = container.querySelectorAll('.nut-swiper__inner')[0]
+  const swiper = container.querySelectorAll('.nut-swiper-inner')[0]
   const item = container.querySelectorAll('.nut-swiper-item')[0]
   expect(swiper).toHaveStyle({
     height: '150px',
@@ -86,7 +86,7 @@ test('should render initpage', () => {
       })}
     </Swiper>
   )
-  const swiper = container.querySelectorAll('.nut-swiper__inner')[0]
+  const swiper = container.querySelectorAll('.nut-swiper-inner')[0]
   expect(swiper).toHaveStyle({
     transform: 'translate3D(-375px,0,0)',
   })
@@ -126,7 +126,7 @@ test('should render direction', () => {
       })}
     </Swiper>
   )
-  const swiper = container.querySelectorAll('.nut-swiper__inner')[0]
+  const swiper = container.querySelectorAll('.nut-swiper-inner')[0]
   expect(swiper).toHaveStyle({
     transform: 'translate3D(0,-150px,0)',
   })
@@ -167,9 +167,7 @@ test('should render indicator', () => {
       })}
     </Swiper>
   )
-  const indicatorItem = container.querySelectorAll(
-    '.nut-swiper__indicator-item'
-  )
+  const indicatorItem = container.querySelectorAll('.nut-swiper-indicator-item')
 })
 
 test('should render loop and auto-play', async () => {
@@ -204,7 +202,7 @@ test('should render loop and auto-play', async () => {
       })}
     </Swiper>
   )
-  const swiper = container.querySelectorAll('.nut-swiper__inner')[0]
+  const swiper = container.querySelectorAll('.nut-swiper-inner')[0]
   await waitFor(() => {
     expect(swiper).toHaveStyle({
       transform: 'translate3D(-375px,0,0)',
@@ -244,7 +242,7 @@ test('should not allow to drag when touchable is false', () => {
       })}
     </Swiper>
   )
-  const swiper = container.querySelectorAll('.nut-swiper__inner')[0]
+  const swiper = container.querySelectorAll('.nut-swiper-inner')[0]
   triggerDrag(swiper, 220, 0)
   expect(swiper).toHaveStyle({
     transform: 'translate3D(0px,0,0)',
@@ -289,7 +287,7 @@ test('should not allow to drag when loop is false', async () => {
   await waitFor(
     async () => {
       await sleep(2000)
-      const swiper = _container.querySelectorAll('.nut-swiper__inner')[0]
+      const swiper = _container.querySelectorAll('.nut-swiper-inner')[0]
       expect(swiper).toHaveStyle({
         transform: 'translate3D(-1125px,0,0)',
       })
