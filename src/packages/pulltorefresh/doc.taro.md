@@ -7,7 +7,7 @@
 ## 安装
 
 ```tsx
-import { PullToRefresh } from '@nutui/nutui-react-taro';
+import { PullToRefresh } from '@nutui/nutui-react-taro'
 ```
 
 ## 代码演示
@@ -17,7 +17,7 @@ import { PullToRefresh } from '@nutui/nutui-react-taro';
 :::demo
 
 ```tsx
-import React, {useState}  from "react";
+import React, { useState } from 'react'
 import { PullToRefresh, Cell } from '@nutui/nutui-react-taro'
 
 const App = () => {
@@ -42,6 +42,55 @@ export default App
 :::
 
 > 在 PullToRefresh 组件内部采用 Selector API 获得父滚动元素的 scrollTop 值会带来下拉卡顿的性能问题。因此需要在 PullRefresh 组件外部判断 scrollTop 值，在页面中使用 usePageScroll() 钩子获得 scrollTop 值，在 ScrollView 组件内监听 onScroll 事件获得 scrollTop 值。
+
+### 基础用法
+
+:::demo
+
+```tsx
+import React, { useState } from 'react'
+import { ScrollView } from '@tarojs/components'
+import { PullToRefresh, Cell } from '@nutui/nutui-react-taro'
+
+const App = () => {
+  const [list] = useState([1, 2, 3, 4, 5, 6, 7])
+  return (
+    <>
+      <div className="demo">
+        <h2>ScrollView</h2>
+        <ScrollView
+          style={{ height: '150px' }}
+          scrollY
+          onScrollEnd={(e) => {
+            // scrollTop > 0, PullToRefresh 不触发 touchmove 事件。
+            if (e.detail?.scrollTop) {
+              setScrollTop(e.detail?.scrollTop)
+            }
+          }}
+        >
+          <PullToRefresh
+            scrollTop={scrollTop}
+            onRefresh={() =>
+              new Promise((resolve) => {
+                toastShow('😊')
+                resolve('done')
+              })
+            }
+          >
+            {list.map((item) => (
+              <Cell key={item}>{item}</Cell>
+            ))}
+          </PullToRefresh>
+        </ScrollView>
+      </div>
+    </>
+  )
+}
+
+export default App
+```
+
+:::
 
 ## PullToRefresh
 
