@@ -32,13 +32,13 @@
     line-height: $actionsheet-item-line-height;
     font-size: $font-size-base;
     color: $actionsheet-item-color;
-    background-color: $background-color3;
+    background-color: $color-background-overlay;
     cursor: pointer;
 
     &-description {
       display: block;
       font-size: $font-size-small;
-      color: $title-color2;
+      color: $color-text;
     }
 
     &.danger {
@@ -46,7 +46,7 @@
     }
 
     &.disabled {
-      color: #e1e1e1 !important;
+      color: $color-text-disabled !important;
       cursor: not-allowed;
     }
   }

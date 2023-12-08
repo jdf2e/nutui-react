@@ -45,8 +45,8 @@
   }
 
   .nut-radio-button-active.nut-radio-button-disabled {
-    background: $gray4;
-    color: $gray3;
-    border: 1px solid $gray4;
+    background: $color-text-disabled;
+    color: $white;
+    border: 1px solid $color-text-disabled;
   }
 }

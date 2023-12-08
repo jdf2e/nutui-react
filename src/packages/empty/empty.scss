@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: center;
   padding: $empty-padding;
-  background-color: $background-color3;
+  background-color: $color-background-overlay;
 
   &-image {
     width: $empty-image-size;
@@ -34,7 +34,7 @@
 
   &-description {
     margin-top: $empty-description-margin-top;
-    color: #8c8c8c;
+    color: $color-text-help;
     font-size: $font-size-small;
     line-height: $empty-description-line-height;
   }

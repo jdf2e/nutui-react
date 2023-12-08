@@ -21,18 +21,9 @@ import  React from "react";
 import { Drag } from '@nutui/nutui-react';
 
 const App = () => {
-  const btnStyle = {
-    borderRadius: '25px',
-    padding: '0 18px',
-    fontSize: '14px',
-    color: '#fff',
-    display: 'inline-block',
-    lineHeight: '36px',
-    background: 'linear-gradient(135deg,#fa2c19 0,#fa6419 100%)',
-  }
   return (
     <Drag>
-        <div className="touch-dom" style={btnStyle}>触摸移动</div>
+        <div className="touch-dom">触摸移动</div>
     </Drag>
  );
 };
@@ -47,25 +38,16 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { Drag } from '@nutui/nutui-react';
+import { Drag, Button } from '@nutui/nutui-react';
 
 const App = () => {
-  const btnStyle = {
-    borderRadius: '25px',
-    padding: '0 18px',
-    fontSize: '14px',
-    color: '#fff',
-    display: 'inline-block',
-    lineHeight: '36px',
-    background: 'linear-gradient(135deg,#fa2c19 0,#fa6419 100%)',
-  }
   return (
     <>
     <Drag direction="x" style={{ top: '200px', left: '8px' }}>
-        <span style={btnStyle}>只能X轴拖拽</span>
+        <Button type="primary">只能X轴拖拽</Button>
       </Drag>
       <Drag direction="y" style={{ top: '200px', right: '50px' }}>
-        <span style={btnStyle}>只能Y轴拖拽</span>
+        <Button type="primary">只能Y轴拖拽</Button>
       </Drag>
     </>
  );
@@ -84,18 +66,9 @@ import  React from "react";
 import { Drag } from '@nutui/nutui-react';
 
 const App = () => {
-  const btnStyle = {
-    borderRadius: '25px',
-    padding: '0 18px',
-    fontSize: '14px',
-    color: '#fff',
-    display: 'inline-block',
-    lineHeight: '36px',
-    background: 'linear-gradient(135deg,#fa2c19 0,#fa6419 100%)',
-  }
   return (
     <Drag direction="x" attract>
-      <div className="touch-dom" style={btnStyle}>按钮</div>
+      <div className="touch-dom">按钮</div>
     </Drag>
  );
 };
@@ -110,19 +83,9 @@ export default App;
 
 ```tsx
 import  React from "react";
-import { Drag } from '@nutui/nutui-react';
+import { Drag,Button } from '@nutui/nutui-react';
 
 const App = () => {
-  const btnStyle = {
-    borderRadius: '25px',
-    padding: '0 18px',
-    fontSize: '14px',
-    color: '#fff',
-    display: 'inline-block',
-    lineHeight: '36px',
-    background: 'linear-gradient(135deg,#fa2c19 0,#fa6419 100%)',
-  }
-  
     const right = () => {
     return document.documentElement.clientWidth - 300 - 9
     }
@@ -146,7 +109,7 @@ const App = () => {
         boundary={{ top: 1, left: 9, bottom: bottom(), right: right() }}
         style={{ top: '40px', left: '50px' }}
       >
-        <span style={btnStyle}>限制拖拽边界</span>
+        <Button type="primary">限制拖拽边界</Button>
       </Drag>
     </>
    );

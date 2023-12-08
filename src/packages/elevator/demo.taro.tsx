@@ -3,14 +3,7 @@ import Taro from '@tarojs/taro'
 import { Fabulous } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Elevator } from '@/packages/nutui.react.taro'
-import '@/packages/elevator/demo.scss'
 import Header from '@/sites/components/header'
-
-interface ElevatorData {
-  name: string
-  id: number | string
-  [key: string]: string | number
-}
 
 interface T {
   basic: string
@@ -481,7 +474,7 @@ const ElevatorDemo = () => {
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
-        <div className="demo-component">
+        <div style={{ background: 'white' }}>
           <Elevator
             list={dataList}
             height="260"
@@ -491,7 +484,7 @@ const ElevatorDemo = () => {
         </div>
 
         <h2>{translated.customIndex}</h2>
-        <div className="demo-component">
+        <div style={{ background: 'white' }}>
           <Elevator
             className="test-elevator1"
             list={dataList2}
@@ -502,7 +495,7 @@ const ElevatorDemo = () => {
           />
         </div>
         <h2>{translated.showKeys}</h2>
-        <div className="demo-component">
+        <div style={{ background: 'white' }}>
           <Elevator
             className="test-elevator4"
             showKeys={false}
@@ -513,7 +506,7 @@ const ElevatorDemo = () => {
           />
         </div>
         <h2>{translated.sticky}</h2>
-        <div className="demo-component">
+        <div style={{ background: 'white' }}>
           <Elevator
             className="test-elevator2"
             list={dataList3}
@@ -524,7 +517,7 @@ const ElevatorDemo = () => {
           />
         </div>
         <h2>{translated.customContent}</h2>
-        <div className="demo-component">
+        <div style={{ background: 'white' }}>
           <Elevator
             className="test-elevator3"
             list={dataList}

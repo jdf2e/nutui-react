@@ -1,6 +1,7 @@
 .nut-trendarrow {
   display: inline-flex;
   align-items: center;
+  color: $color-title;
   font-size: $trendarrow-font-size;
 
   &-icon-before {

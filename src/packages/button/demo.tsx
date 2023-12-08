@@ -3,7 +3,6 @@ import { Star, Plus } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import { Button } from './button'
 import Cell from '../cell'
-import './demo.scss'
 
 interface T {
   ce5c5446: string
@@ -123,7 +122,7 @@ const ButtonDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.ce5c5446}</h2>
-        <Cell className="button-cell">
+        <Cell style={{ flexWrap: 'wrap' }}>
           <Button
             className="aa"
             style={{ margin: 8 }}
@@ -155,7 +154,7 @@ const ButtonDemo = () => {
         </Cell>
 
         <h2>{translated.e51e4582}</h2>
-        <Cell className="button-cell">
+        <Cell style={{ flexWrap: 'wrap' }}>
           <Button fill="solid" style={{ margin: 8 }}>
             Solid
           </Button>
@@ -171,7 +170,7 @@ const ButtonDemo = () => {
         </Cell>
 
         <h2>{translated['0aaad622']}</h2>
-        <Cell className="button-cell">
+        <Cell style={{ flexWrap: 'wrap' }}>
           <Button
             type="primary"
             icon={<Star />}
@@ -195,6 +194,54 @@ const ButtonDemo = () => {
             icon={<Star />}
             rightIcon={<Star />}
             style={{ margin: 8 }}
+          >
+            {translated['60a53514']}
+          </Button>
+          <Button
+            icon={<Star />}
+            rightIcon={<Star />}
+            style={{
+              margin: 8,
+              backgroundColor: `var(--nutui-color-primary-light)`,
+              borderColor: `var(--nutui-color-primary)`,
+              color: `var(--nutui-color-primary)`,
+            }}
+          >
+            {translated['60a53514']}
+          </Button>
+          <Button
+            type="default"
+            fill="none"
+            icon={<Star />}
+            rightIcon={<Star />}
+            style={{
+              margin: 8,
+              backgroundColor: `var(--nutui-gray-3)`,
+              color: `var(--nutui-gray-7)`,
+            }}
+          >
+            {translated['60a53514']}
+          </Button>
+          <Button
+            type="default"
+            fill="none"
+            icon={<Star />}
+            rightIcon={<Star />}
+            style={{
+              margin: 8,
+              backgroundColor: `var(--nutui-gray-1)`,
+              color: `var(--nutui-gray-7)`,
+            }}
+          >
+            {translated['60a53514']}
+          </Button>
+          <Button
+            type="default"
+            icon={<Star />}
+            rightIcon={<Star />}
+            style={{
+              margin: 8,
+            }}
           >
             {translated['60a53514']}
           </Button>
@@ -230,7 +277,7 @@ const ButtonDemo = () => {
         </Cell>
 
         <h2>{translated['7db1a8b2']}</h2>
-        <Cell className="button-cell">
+        <Cell style={{ flexWrap: 'wrap' }}>
           <Button
             disabled
             type="primary"
@@ -259,6 +306,53 @@ const ButtonDemo = () => {
             style={{ margin: 8 }}
           >
             {translated['60a53514']}
+          </Button>
+          <Button
+            disabled
+            fill="solid"
+            icon={<Star />}
+            rightIcon={<Star />}
+            style={{ margin: 8 }}
+          >
+            {translated['7db1a8b2']}
+          </Button>
+          <Button
+            disabled
+            type="default"
+            fill="none"
+            icon={<Star />}
+            rightIcon={<Star />}
+            style={{
+              margin: 8,
+              backgroundColor: `var(--nutui-gray-3)`,
+              color: `var(--nutui-gray-5)`,
+            }}
+          >
+            {translated['7db1a8b2']}
+          </Button>
+          <Button
+            disabled
+            type="default"
+            fill="none"
+            icon={<Star />}
+            rightIcon={<Star />}
+            style={{
+              margin: 8,
+              backgroundColor: `var(--nutui-gray-1)`,
+              color: `var(--nutui-gray-5)`,
+            }}
+          >
+            {translated['7db1a8b2']}
+          </Button>
+          <Button
+            disabled
+            icon={<Star />}
+            rightIcon={<Star />}
+            style={{
+              margin: 8,
+            }}
+          >
+            {translated['7db1a8b2']}
           </Button>
           <Button
             disabled
@@ -294,7 +388,7 @@ const ButtonDemo = () => {
           </Button>
         </Cell>
         <h2>{translated.ce5c5447}</h2>
-        <Cell className="button-cell">
+        <Cell style={{ flexWrap: 'wrap' }}>
           <Button
             className="aa"
             style={{ margin: 8 }}
@@ -313,7 +407,7 @@ const ButtonDemo = () => {
           </Button>
         </Cell>
         <h2>{translated.a52bef0c}</h2>
-        <Cell className="button-cell">
+        <Cell style={{ flexWrap: 'wrap' }}>
           <Button loading type="warning" style={{ margin: 8 }}>
             {translated.d04fcbda}
           </Button>
@@ -333,8 +427,8 @@ const ButtonDemo = () => {
         </Cell>
 
         <h2>{translated['0aaad620']}</h2>
-        <Cell className="button-cell">
-          <Button size="large" type="primary" block>
+        <Cell style={{ flexWrap: 'wrap' }}>
+          <Button size="large" type="primary">
             {translated.b8a453e3}
           </Button>
           <Button type="primary" style={{ margin: 8 }}>
@@ -357,7 +451,7 @@ const ButtonDemo = () => {
 
         <h2>{translated['781b07fd']}</h2>
 
-        <Cell className="button-cell">
+        <Cell style={{ flexWrap: 'wrap' }}>
           <Button color="blue" style={{ margin: 8 }}>
             {translated['1076d771']}
           </Button>

@@ -6,8 +6,8 @@
   flex-direction: column;
   flex: 1;
   font-size: $calendar-base-font-size;
-  background-color: $white;
-  color: $title-color;
+  background-color: $color-background-overlay;
+  color: $color-title;
   overflow: hidden;
   height: 100%;
 
@@ -39,7 +39,7 @@
   }
 
   &-title {
-    color: $title-color;
+    color: $color-title;
     font-size: $calendar-title-font-size;
     font-weight: $calendar-title-font-weight;
     line-height: 50px;
@@ -95,7 +95,7 @@
       left: 0;
       right: 0;
       font-size: $font-size-small;
-      color: $text-color;
+      color: $color-text;
     }
   }
 
@@ -184,7 +184,6 @@
 
     &-disabled {
       color: $calendar-disable-color !important;
-
       .nut-calendar-day-info-curr {
         display: none;
       }

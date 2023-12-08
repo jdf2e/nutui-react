@@ -3,7 +3,6 @@ import { Failure, Heart } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import Cell from '@/packages/cell'
 import Popup from '@/packages/popup'
-import './demo.scss'
 
 interface T {
   ce5c5446: string

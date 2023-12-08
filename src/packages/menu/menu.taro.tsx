@@ -150,9 +150,9 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
             <div className="nut-menu-title-text">{finallyTitle()}</div>
             {icon ||
               (direction === 'up' ? (
-                <ArrowUp className="nut-menu-title-icon" size={10} />
+                <ArrowUp className="nut-menu-title-icon" size="12px" />
               ) : (
-                <ArrowDown className="nut-menu-title-icon" size={10} />
+                <ArrowDown className="nut-menu-title-icon" size="12px" />
               ))}
           </div>
         )

@@ -1,7 +1,7 @@
 @import '../popup/popup.scss';
 
 .nut-picker {
-  background-color: $background-color3;
+  background-color: $color-background-overlay;
   width: 100%;
 
   &__control {
@@ -29,7 +29,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     text-align: center;
-    color: $title-color;
+    color: $color-title;
     font-size: $popup-title-font-size;
     font-weight: $popup-title-font-weight;
   }
@@ -145,7 +145,7 @@
     height: $picker-item-height;
     line-height: $picker-item-height;
     text-align: center;
-    color: $title-color;
+    color: $color-title;
     font-size: $font-size-base;
   }
 

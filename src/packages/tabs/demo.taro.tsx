@@ -1,8 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import Taro from '@tarojs/taro'
 import { Star } from '@nutui/icons-react-taro'
-import { Tabs } from '@/packages/nutui.react.taro'
-import Swiper from '@/packages/swiper/index.taro'
+import { Tabs, Swiper } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 
@@ -155,11 +154,7 @@ const TabsDemo = () => {
   return (
     <>
       <Header />
-      <div
-        className={`demo ${
-          Taro.getEnv() === 'WEB' ? 'web' : ''
-        } full no-overflow`}
-      >
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} full `}>
         <h2>{translated.basic}</h2>
         <Tabs
           value={tab1value}
