@@ -164,6 +164,7 @@ export const ShortPassword: FunctionComponent<
               type="number"
               style={systemStyle()}
               maxLength={6}
+              pattern="[0-9]*"
               value={inputValue}
               autoFocus={autoFocus}
               onChange={(e) => changeValue(e)}
