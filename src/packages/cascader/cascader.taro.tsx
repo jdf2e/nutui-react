@@ -435,7 +435,7 @@ const InternalCascader: ForwardRefRenderFunction<
                 <ScrollView
                   className={classesPane}
                   scrollY
-                  style={{ height: '342px' }}
+                  style={{ height: '70%' }}
                 >
                   {pane.nodes?.map((node: any, index: number) =>
                     renderItem(pane, node, index)
@@ -460,6 +460,7 @@ const InternalCascader: ForwardRefRenderFunction<
           {...popupProps}
           visible={visible}
           position="bottom"
+          style={{ overflowY: 'hidden' }}
           round
           closeIcon={closeIcon}
           closeable={closeable}
