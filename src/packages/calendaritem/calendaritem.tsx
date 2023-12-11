@@ -144,6 +144,10 @@ export const CalendarItem = React.forwardRef<
     currDateArray: [],
   })
 
+  const getMonthsPanel = () => {
+    return monthsPanel.current as HTMLDivElement
+  }
+
   const resetDefaultValue = () => {
     if (
       defaultValue ||
@@ -438,12 +442,9 @@ export const CalendarItem = React.forwardRef<
     requestAniFrame(() => {
       // 初始化 日历位置
       if (monthsRef && monthsPanel && viewAreaRef) {
-        viewHeight = (monthsRef.current as HTMLDivElement).clientHeight
-        ;(
-          monthsPanel.current as HTMLDivElement
-        ).style.height = `${containerHeight}px`
-        ;(monthsRef.current as HTMLDivElement).scrollTop =
-          monthsData[current].scrollTop
+        viewHeight = getMonthsPanel().clientHeight
+        getMonthsPanel().style.height = `${containerHeight}px`
+        getMonthsPanel().scrollTop = monthsData[current].scrollTop
       }
     })
 

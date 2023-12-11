@@ -122,11 +122,13 @@ export const InfiniteLoading: FunctionComponent<
     setIsInfiniting(false)
   }
 
+  const getRefreshTop = () => {
+    return refreshTop.current as HTMLDivElement
+  }
+
   const refreshDone = () => {
     distance.current = 0
-    ;(
-      refreshTop.current as HTMLDivElement
-    ).style.height = `${distance.current}px`
+    getRefreshTop().style.height = `${distance.current}px`
     isTouching.current = false
   }
 
@@ -134,9 +136,8 @@ export const InfiniteLoading: FunctionComponent<
     if (beforeScrollTop.current === 0 && !isTouching.current && pullRefresh) {
       y.current = event.touches[0].pageY
       isTouching.current = true
-      const childHeight = (
-        (refreshTop.current as HTMLDivElement).firstElementChild as HTMLElement
-      ).offsetHeight
+      const childHeight = (getRefreshTop().firstElementChild as HTMLElement)
+        .offsetHeight
       refreshMaxH.current = Math.floor(childHeight * 1 + 10)
     }
   }
@@ -147,19 +148,13 @@ export const InfiniteLoading: FunctionComponent<
       event.preventDefault()
       if (distance.current >= refreshMaxH.current) {
         distance.current = refreshMaxH.current
-        ;(
-          refreshTop.current as HTMLDivElement
-        ).style.height = `${distance.current}px`
+        getRefreshTop().style.height = `${distance.current}px`
       } else {
-        ;(
-          refreshTop.current as HTMLDivElement
-        ).style.height = `${distance.current}px`
+        getRefreshTop().style.height = `${distance.current}px`
       }
     } else {
       distance.current = 0
-      ;(
-        refreshTop.current as HTMLDivElement
-      ).style.height = `${distance.current}px`
+      getRefreshTop().style.height = `${distance.current}px`
       isTouching.current = false
     }
   }
@@ -167,9 +162,7 @@ export const InfiniteLoading: FunctionComponent<
   const touchEnd = () => {
     if (distance.current < refreshMaxH.current) {
       distance.current = 0
-      ;(
-        refreshTop.current as HTMLDivElement
-      ).style.height = `${distance.current}px`
+      getRefreshTop().style.height = `${distance.current}px`
     } else {
       onRefresh && onRefresh(refreshDone)
     }
