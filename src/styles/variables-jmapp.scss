@@ -871,6 +871,7 @@ $switch-button-box-shadow: var(
 ) !default;
 
 // toast（✅）
+$toast-inner-text-align: var(--nutui-toast-inner-text-align, center) !default;
 $toast-title-font-size: var(--nutui-toast-title-font-size, 16px) !default;
 $toast-text-font-size: var(--nutui-toast-text-font-size, 14px) !default;
 $toast-font-color: var(--nutui-toast-font-color, $white) !default;
@@ -933,11 +934,18 @@ $calendar-choose-background-color: var(
   --nutui-calendar-choose-background-color,
   $color-primary-light
 ) !default;
+$calendar-choose-color: var(
+  --nutui-calendar-choose-color,
+  $color-primary
+) !default;
 $calendar-choose-disable-background-color: var(
   --nutui-calendar-choose-disable-background-color,
   rgba(191, 191, 191, 0.09)
 ) !default;
-$calendar-disable-color: var(--nutui-calendar-disable-color, $gray3) !default;
+$calendar-disable-color: var(
+  --nutui-calendar-disable-color,
+  $color-text-disabled
+) !default;
 $calendar-base-font-size: var(
   --nutui-calendar-base-font-size,
   $font-size-large
@@ -1068,12 +1076,9 @@ $tabbar-height: var(--nutui-tabbar-height, 50px) !default;
 $tabbar-text-margin-top: var(--nutui-tabbar-text-margin-top, 3px) !default;
 
 //pulltorefresh
-$pulltorefresh-top-icon-width: var(
-  --nutui-pulltorefresh-top-icon-width,
-  36px
-) !default;
-$pulltorefresh-top-icon-height: var(
-  --nutui-pulltorefresh-top-icon-height,
+$pulltorefresh-icon-width: var(--nutui-pulltorefresh-icon-width, 36px) !default;
+$pulltorefresh-icon-height: var(
+  --nutui-pulltorefresh-icon-height,
   26px
 ) !default;
 
@@ -1082,8 +1087,8 @@ $infiniteloading-color: var(
   --nutui-infiniteloading-color,
   $color-text-help
 ) !default;
-$infiniteloading-bottom-icon-size: var(
-  --nutui-infiniteloading-bottom-icon-size,
+$infiniteloading-icon-size: var(
+  --nutui-infiniteloading-icon-size,
   24px
 ) !default;
 
@@ -1335,22 +1340,30 @@ $radio-icon-font-size: var(
   --nutui-radio-icon-font-size,
   $font-size-large
 ) !default;
+$radio-label-color: var(--nutui-radio-label-color, $color-text) !default;
+$radio-label-disable-color: var(
+  --nutui-radio-label-disable-color,
+  $color-text-disabled
+) !default;
 $radio-label-font-size: var(
   --nutui-radio-label-font-size,
   $font-size-base
 ) !default;
-$radio-label-color: var(--nutui-radio-label-color, $color-text) !default;
+$radio-label-color: var(--nutui-radio-label-color, $color-title) !default;
 $radio-label-margin-left: var(--nutui-radio-label-margin-left, 4px) !default;
 $radio-button-font-size: var(
   --nutui-radio-button-font-size,
   $font-size-base
 ) !default;
 $radio-button-color: $color-text;
-$radio-button-background: $color-background;
 $radio-button-padding: var(--nutui-radio-button-padding, 5px 18px) !default;
 $radio-button-border-radius: var(
   --nutui-radio-button-border-radius,
   $radius-xs
+) !default;
+$radio-button-background: var(
+  --nutui-radio-button-background,
+  $color-background
 ) !default;
 $radio-button-active-border: var(
   --nutui-radio-button-active-border,
@@ -1656,6 +1669,18 @@ $tabs-tab-line-border-radius: var(
   3px
 ) !default;
 $tabs-tab-line-opacity: var(--nutui-tabs-tab-line-opacity, 1) !default;
+$tabs-tab-button-border-radius: var(
+  --nutui-tabs-button-border-radius,
+  $radius-circle
+) !default;
+$tabs-tab-button-active-background-color: var(
+  --nutui-tabs-button-active-background-color,
+  $color-primary-light
+) !default;
+$tabs-tab-button-active-border: var(
+  --nutui-tabs-button-active-border,
+  1px solid $color-primary
+) !default;
 $tabs-vertical-titles-width: var(
   --nutui-tabs-vertical-titles-width,
   100px
