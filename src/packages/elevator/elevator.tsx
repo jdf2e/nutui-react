@@ -161,7 +161,7 @@ export const Elevator: FunctionComponent<
 
   const setListGroup = () => {
     if (listview.current) {
-      const els = listview.current.querySelectorAll('.nut-elevator__list__item')
+      const els = listview.current.querySelectorAll('.nut-elevator-list-item')
 
       els.forEach((el: Element) => {
         if (el != null && !state.current.listGroup.includes(el)) {
@@ -202,21 +202,21 @@ export const Elevator: FunctionComponent<
   return (
     <div className={`${classPrefix} ${className}`} style={style} {...rest}>
       {sticky && scrollY > 0 ? (
-        <div className={`${classPrefix}__list__fixed`}>
-          <span className={`${classPrefix}__list__fixed__title`}>
+        <div className={`${classPrefix}-list-fixed`}>
+          <span className={`${classPrefix}-list-fixed-title`}>
             {list[currentIndex][floorKey]}
           </span>
         </div>
       ) : null}
       <div
-        className={`${classPrefix}__list`}
+        className={`${classPrefix}-list`}
         style={{ height: Number.isNaN(+height) ? height : `${height}px` }}
       >
-        <div className={`${classPrefix}__list__inner`} ref={listview}>
+        <div className={`${classPrefix}-list-inner`} ref={listview}>
           {list.map((item: any, idx: number) => {
             return (
-              <div className={`${classPrefix}__list__item`} key={idx}>
-                <div className={`${classPrefix}__list__item__code`}>
+              <div className={`${classPrefix}-list-item`} key={idx}>
+                <div className={`${classPrefix}-list-item-code`}>
                   {item[floorKey]}
                 </div>
                 <>
@@ -224,8 +224,8 @@ export const Elevator: FunctionComponent<
                     return (
                       <div
                         className={classNames({
-                          [`${classPrefix}__list__item__name`]: true,
-                          [`${classPrefix}__list__item__name--highcolor`]:
+                          [`${classPrefix}-list-item-name`]: true,
+                          [`${classPrefix}-list-item-name-highcolor`]:
                             currentData.id === subitem.id &&
                             currentKey === item[floorKey],
                         })}
@@ -255,16 +255,16 @@ export const Elevator: FunctionComponent<
           {list.length && scrollStart ? (
             <div
               className={classNames({
-                [`${classPrefix}__code--current`]: true,
-                [`${classPrefix}__code--current--current`]: true,
+                [`${classPrefix}-code-current`]: true,
+                [`${classPrefix}-code-current-current`]: true,
               })}
             >
               {list[codeIndex][floorKey]}
             </div>
           ) : null}
-          <div className={`${classPrefix}__bars`}>
+          <div className={`${classPrefix}-bars`}>
             <animated.div
-              className={`${classPrefix}__bars__inner`}
+              className={`${classPrefix}-bars-inner`}
               {...bind()}
               style={{ touchAction: 'pan-y' }}
             >
@@ -272,8 +272,8 @@ export const Elevator: FunctionComponent<
                 return (
                   <div
                     className={classNames({
-                      [`${classPrefix}__bars__inner__item`]: true,
-                      [`${classPrefix}__bars__inner__item--active`]:
+                      [`${classPrefix}-bars-inner-item`]: true,
+                      [`${classPrefix}-bars-inner-item-active`]:
                         item[floorKey] === list[currentIndex][floorKey],
                     })}
                     data-index={index}

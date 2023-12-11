@@ -2,7 +2,7 @@
   position: relative;
   display: inline-block;
 
-  &__icon {
+  &-icon {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -23,7 +23,7 @@
     }
   }
 
-  &__sup {
+  &-sup {
     height: $badge-height;
     position: absolute;
     display: flex;
@@ -40,17 +40,17 @@
     min-width: $badge-min-width;
   }
 
-  &__one {
+  &-one {
     height: $badge-height;
     width: $badge-height;
     padding: 0;
   }
 
-  &__content {
+  &-content {
     transform: $badge-content-transform;
   }
 
-  &__dot {
+  &-dot {
     width: $badge-dot-width;
     height: $badge-dot-width;
     border: $badge-border;

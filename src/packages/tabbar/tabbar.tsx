@@ -56,13 +56,13 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> & {
       className={classNames(
         classPrefix,
         {
-          [`${classPrefix}__fixed`]: fixed,
+          [`${classPrefix}-fixed`]: fixed,
         },
         className
       )}
       style={style}
     >
-      <div className={`${classPrefix}__wrap`}>
+      <div className={`${classPrefix}-wrap`}>
         {React.Children.map(children, (child, idx) => {
           if (!React.isValidElement(child)) {
             return null
@@ -78,7 +78,7 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> & {
           return React.cloneElement(child, childProps)
         })}
       </div>
-      {(fixed || safeArea) && <div className={`${classPrefix}__safe-area`} />}
+      {(fixed || safeArea) && <div className={`${classPrefix}-safe-area`} />}
     </div>
   )
 }

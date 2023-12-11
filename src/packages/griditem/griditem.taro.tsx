@@ -77,13 +77,13 @@ export const GridItem: FunctionComponent<
   }
 
   const contentClass = () => {
-    return classNames(`${classPrefix}__content`, {
-      [`${classPrefix}__content--border`]: true,
-      [`${classPrefix}__content--surround`]: gap,
-      [`${classPrefix}__content--center`]: center,
-      [`${classPrefix}__content--square`]: square,
-      [`${classPrefix}__content--reverse`]: reverse,
-      [`${classPrefix}__content--${direction}`]: !!direction,
+    return classNames(`${classPrefix}-content`, {
+      [`${classPrefix}-content-border`]: true,
+      [`${classPrefix}-content-surround`]: gap,
+      [`${classPrefix}-content-center`]: center,
+      [`${classPrefix}-content-square`]: square,
+      [`${classPrefix}-content-reverse`]: reverse,
+      [`${classPrefix}-content-${direction}`]: !!direction,
     })
   }
 
@@ -114,7 +114,7 @@ export const GridItem: FunctionComponent<
     >
       <div className={contentClass()}>
         {children && <>{children}</>}
-        {text && <div className={`${classPrefix}__text`}>{text}</div>}
+        {text && <div className={`${classPrefix}-text`}>{text}</div>}
       </div>
     </div>
   )

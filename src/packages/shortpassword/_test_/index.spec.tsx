@@ -6,10 +6,10 @@ import { ShortPassword } from '../shortpassword'
 
 test('should render shortpassword when visible is true', async () => {
   const { container } = render(<ShortPassword visible value="123" />)
-  const li = container.querySelectorAll('.nut-shortpassword__input-fake__li')
+  const li = container.querySelectorAll('.nut-shortpassword-input-fake-li')
   expect(li.length).toBe(6)
   const icon = container.querySelectorAll(
-    '.nut-shortpassword__input-fake__li__icon'
+    '.nut-shortpassword-input-fake-li-icon'
   )
   expect(icon.length).toBe(3)
 })
@@ -34,15 +34,15 @@ test('should render buttonShortpassword and error msg when hideFooter is false '
     />
   )
   const psdLength = container.querySelectorAll(
-    '.nut-shortpassword__input-fake__li'
+    '.nut-shortpassword-input-fake-li'
   )
   expect(psdLength.length).toBe(4)
-  const error = container.querySelector('.nut-shortpassword__message__error')
+  const error = container.querySelector('.nut-shortpassword-message-error')
   expect(error).toBeTruthy()
   expect((error as HTMLElement).innerHTML).toBe('错误信息')
-  const cancle = container.querySelector('.nut-shortpassword__footer__cancel')
+  const cancle = container.querySelector('.nut-shortpassword-footer-cancel')
   expect(cancle).toBeTruthy()
-  const sure = container.querySelector('.nut-shortpassword__footer__sure')
+  const sure = container.querySelector('.nut-shortpassword-footer-sure')
   expect(sure).toBeTruthy()
   fireEvent.click(cancle as HTMLElement)
   expect(value).toBe(1)
@@ -63,7 +63,7 @@ test('should limit input value when input', async () => {
       onChange={onChange}
     />
   )
-  const sure = container.querySelector('.nut-shortpassword__footer__sure')
+  const sure = container.querySelector('.nut-shortpassword-footer-sure')
   expect(sure).toBeTruthy()
   fireEvent.click(sure as HTMLElement)
   expect(inputValue).toBe('123456')

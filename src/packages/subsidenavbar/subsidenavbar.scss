@@ -1,5 +1,5 @@
 .nut-subsidenavbar {
-  &__title {
+  &-title {
     height: $sidenavbar-item-height;
     padding: $sidenavbar-sub-title-padding;
     box-sizing: border-box;
@@ -8,16 +8,16 @@
     box-sizing: border-box;
   }
 
-  &__list {
+  &-list {
     &.sidenavbar-show {
-      .nut-subsidenavbar__content {
+      .nut-subsidenavbar-content {
         height: auto;
         overflow: inherit;
       }
     }
 
     &.sidenavbar-hide {
-      .nut-subsidenavbar__content {
+      .nut-subsidenavbar-content {
         height: 0;
         overflow: hidden;
       }

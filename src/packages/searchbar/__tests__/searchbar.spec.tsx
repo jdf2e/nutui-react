@@ -5,7 +5,7 @@ import Searchbar from '@/packages/searchbar'
 
 test('basic usage', () => {
   const { container } = render(<Searchbar placeholder="请输入文字" />)
-  expect(container.querySelector('.nut-searchbar__input')).toHaveAttribute(
+  expect(container.querySelector('.nut-searchbar-input')).toHaveAttribute(
     'placeholder',
     '请输入文字'
   )
@@ -13,21 +13,19 @@ test('basic usage', () => {
 
 test('should limit maxlength of input value when using maxlength prop', () => {
   const { container } = render(<Searchbar shape="round" maxLength={5} />)
-  expect(container.querySelector('.nut-searchbar__input')).toHaveAttribute(
+  expect(container.querySelector('.nut-searchbar-input')).toHaveAttribute(
     'maxlength',
     '5'
   )
-  expect(container.querySelector('.nut-searchbar__content')).toHaveClass(
-    'nut-searchbar__round'
+  expect(container.querySelector('.nut-searchbar-content')).toHaveClass(
+    'nut-searchbar-round'
   )
 })
 
 test('Search box text settings', () => {
   const { container } = render(<Searchbar left="文本" right="确定" />)
-  expect(container.querySelector('.nut-searchbar__left')?.innerHTML).toBe(
-    '文本'
-  )
-  expect(container.querySelector('.nut-searchbar__right')?.innerHTML).toBe(
+  expect(container.querySelector('.nut-searchbar-left')?.innerHTML).toBe('文本')
+  expect(container.querySelector('.nut-searchbar-right')?.innerHTML).toBe(
     '确定'
   )
 })

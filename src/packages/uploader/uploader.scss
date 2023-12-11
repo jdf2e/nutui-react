@@ -6,11 +6,11 @@
   display: flex;
   flex-wrap: wrap;
 
-  &__slot {
+  &-slot {
     position: relative;
   }
 
-  &__upload {
+  &-upload {
     position: relative;
     display: flex;
     align-items: center;
@@ -22,7 +22,7 @@
     border-radius: $uploader-image-border-radius;
   }
 
-  &__icon {
+  &-icon {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,7 +40,7 @@
     }
   }
 
-  &__input {
+  &-input {
     position: absolute !important;
     top: 0;
     left: 0;
@@ -55,11 +55,11 @@
     }
   }
 
-  &__upload-disabled {
+  &-upload-disabled {
     background: $uploader-background-disabled;
     color: $uploader-image-disabled;
 
-    .nut-uploader__icon {
+    .nut-uploader-icon {
       i,
       .nut-icon {
         color: $uploader-image-disabled;
@@ -68,14 +68,14 @@
     }
   }
 
-  &__preview {
+  &-preview {
     position: relative;
     margin-right: $uploader-preview-margin-right;
     margin-bottom: $uploader-preview-margin-bottom;
     border-radius: $uploader-image-border-radius;
     box-shadow: 0 2px 10px 0 rgb(0 0 0 / 10%);
 
-    &__progress {
+    &-progress {
       position: absolute;
       left: 0;
       top: 0;
@@ -92,7 +92,7 @@
         margin-bottom: $uploader-image-icon-margin-bottom;
       }
 
-      &__msg {
+      &-msg {
         color: $color-text-help;
         font-size: 12px;
       }
@@ -116,7 +116,7 @@
       padding: 0 10px;
       background-color: $color-background-sunken;
 
-      .nut-uploader__preview-img__file__name {
+      .nut-uploader-preview-img-file-name {
         display: flex;
         -webkit-line-clamp: 1;
         padding: 2px;
@@ -172,14 +172,14 @@
         @include oneline-ellipsis();
       }
 
-      &__c {
+      &-c {
         width: 100%;
         height: 100%;
         position: initial;
         border-radius: $uploader-image-border-radius;
       }
 
-      &__file {
+      &-file {
         height: 100%;
         width: 100%;
         display: flex;
@@ -187,7 +187,7 @@
         justify-content: center;
         transition: all 0.3s;
 
-        &__name {
+        &-name {
           display: flex;
           width: 90%;
           font-size: 12px;

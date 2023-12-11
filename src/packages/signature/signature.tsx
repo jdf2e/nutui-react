@@ -161,7 +161,7 @@ const InternalSignature: ForwardRefRenderFunction<
   }))
   return (
     <div className={`${classPrefix} ${className}`} style={style} {...rest}>
-      <div className={`${classPrefix}__inner`} ref={wrapRef}>
+      <div className={`${classPrefix}-inner`} ref={wrapRef}>
         <>
           {/* eslint-disable-next-line no-nested-ternary */}
           {isCanvasSupported ? (
@@ -169,7 +169,7 @@ const InternalSignature: ForwardRefRenderFunction<
           ) : unsupported ? (
             <>{unsupported}</>
           ) : (
-            <p className={`${classPrefix}__unsupport`}>
+            <p className={`${classPrefix}-unsupport`}>
               {locale.signature.unsupported}
             </p>
           )}

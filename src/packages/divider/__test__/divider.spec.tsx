@@ -12,14 +12,14 @@ test('should divider snapshot match', () => {
 test('prop contentPosition left', () => {
   const { container } = render(<Divider contentPosition="left">文本</Divider>)
   expect(container.querySelector('.nut-divider')).toHaveClass(
-    'nut-divider__left'
+    'nut-divider-left'
   )
 })
 
 test('prop contentPosition right', () => {
   const { container } = render(<Divider contentPosition="right">文本</Divider>)
   expect(container.querySelector('.nut-divider')).toHaveClass(
-    'nut-divider__right'
+    'nut-divider-right'
   )
 })
 
@@ -56,6 +56,6 @@ test('prop direction vertical test', () => {
     </div>
   )
   expect(container.querySelector('.nut-divider')).toHaveClass(
-    'nut-divider__vertical'
+    'nut-divider-vertical'
   )
 })

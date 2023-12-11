@@ -83,7 +83,7 @@ export const Image: FunctionComponent<
   const imgRef = useRef<HTMLImageElement>(null)
 
   useEffect(() => {
-    if (imgRef.current && imgRef.current.complete) {
+    if (imgRef.current && imgRef.current.complete && !lazy) {
       if (imgRef.current.naturalHeight === 0) {
         handleError()
       } else {

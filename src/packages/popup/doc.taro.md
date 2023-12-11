@@ -191,6 +191,32 @@ export default App;
 
 :::
 
+### 禁止滚动穿透
+
+> 2.3.0 版本更新，仅适用于 H5 与微信小程序
+
+使用这类全局遮罩类型的组件时，滑动组件可能会出现底层页面一起滑动的问题。
+
+开启 lockScroll 可以阻止 Popup 的背景遮罩层的滚动穿透问题，已默认开启。
+
+使用 Taro 提供的 catchMove 可以阻止 Popup 的内容区域的滚动穿透问题，但会导致其本身无法滑动。
+
+```html
+<Popup lockscroll>
+  <View>在该内容区域溢出时，无法滑动</View>
+</Popup>
+```
+
+如果需要内容支持溢出滚动，则需要包裹一层 ScrollView 组件。
+
+```html
+<Popup lockscroll>
+  <ScrollView>
+    在该内容溢出时，则可以正常滑动
+  </ScrollView>
+</Popup>
+```
+
 ## Popup
 
 ### Props

@@ -27,7 +27,7 @@ export const Preview: React.FunctionComponent<any> = ({
         fileList.map((item: any, index: number) => {
           return (
             <div
-              className={`nut-uploader__preview ${previewType}`}
+              className={`nut-uploader-preview ${previewType}`}
               key={item.uid}
             >
               {previewType === 'picture' && deletable && (
@@ -38,18 +38,18 @@ export const Preview: React.FunctionComponent<any> = ({
                 />
               )}
               {previewType === 'picture' && !children && (
-                <div className="nut-uploader__preview-img">
+                <div className="nut-uploader-preview-img">
                   {item.status === 'ready' ? (
-                    <div className="nut-uploader__preview__progress">
-                      <div className="nut-uploader__preview__progress__msg">
+                    <div className="nut-uploader-preview-progress">
+                      <div className="nut-uploader-preview-progress-msg">
                         {item.message}
                       </div>
                     </div>
                   ) : (
                     item.status !== 'success' && (
-                      <div className="nut-uploader__preview__progress">
+                      <div className="nut-uploader-preview-progress">
                         {renderIcon(item)}
-                        <div className="nut-uploader__preview__progress__msg">
+                        <div className="nut-uploader-preview-progress-msg">
                           {item.message}
                         </div>
                       </div>
@@ -60,7 +60,7 @@ export const Preview: React.FunctionComponent<any> = ({
                     <>
                       {item.url && (
                         <img
-                          className="nut-uploader__preview-img__c"
+                          className="nut-uploader-preview-img-c"
                           style={{ objectFit: 'fill' }}
                           src={item.url}
                           alt=""
@@ -72,16 +72,16 @@ export const Preview: React.FunctionComponent<any> = ({
                     <>
                       {previewUrl ? (
                         <img
-                          className="nut-uploader__preview-img__c"
+                          className="nut-uploader-preview-img-c"
                           src={previewUrl}
                           alt=""
                           onClick={() => handleItemClick(item, index)}
                         />
                       ) : (
-                        <div className="nut-uploader__preview-img__file">
+                        <div className="nut-uploader-preview-img-file">
                           <div
                             onClick={() => handleItemClick(item, index)}
-                            className="nut-uploader__preview-img__file__name"
+                            className="nut-uploader-preview-img-file-name"
                           >
                             <LinkIcon color="#808080" />
                             <span>&nbsp;{item.name}</span>
@@ -97,9 +97,9 @@ export const Preview: React.FunctionComponent<any> = ({
               )}
 
               {previewType === 'list' && (
-                <div className="nut-uploader__preview-list">
+                <div className="nut-uploader-preview-list">
                   <div
-                    className={`nut-uploader__preview-img__file__name ${item.status}`}
+                    className={`nut-uploader-preview-img-file-name ${item.status}`}
                     onClick={() => handleItemClick(item, index)}
                   >
                     <LinkIcon />
@@ -108,7 +108,7 @@ export const Preview: React.FunctionComponent<any> = ({
                   {deletable && (
                     <Del
                       color="#808080"
-                      className="nut-uploader__preview-img__file__del"
+                      className="nut-uploader-preview-img-file-del"
                       onClick={() => onDeleteItem(item, index)}
                     />
                   )}

@@ -29,7 +29,7 @@
     border-right: 4px solid transparent;
   }
 
-  &__title {
+  &-title {
     height: $sidenavbar-item-height;
     padding: $sidenavbar-title-padding;
     background: $sidenavbar-title-background;
@@ -38,21 +38,21 @@
     transition: transform 0.5s;
   }
 
-  &__content {
+  &-content {
     position: relative;
     display: block;
   }
 
-  &__list {
+  &-list {
     &.sidenavbar-show {
-      .nut-sidenavbar__content {
+      .nut-sidenavbar-content {
         height: auto;
         overflow: inherit;
       }
     }
 
     &.sidenavbar-hide {
-      .nut-sidenavbar__content {
+      .nut-sidenavbar-content {
         height: 0;
         overflow: hidden;
       }

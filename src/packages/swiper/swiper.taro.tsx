@@ -67,8 +67,8 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
       return (
         <div
           className={classNames({
-            [`${classPrefix}__indicator`]: true,
-            [`${classPrefix}__indicator-vertical`]: direction === 'vertical',
+            [`${classPrefix}-indicator`]: true,
+            [`${classPrefix}-indicator-vertical`]: direction === 'vertical',
           })}
         >
           <Indicator
@@ -116,7 +116,7 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
       }}
     >
       <View
-        className="nut-swiper__inner"
+        className="nut-swiper-inner"
         style={{
           width: !width ? '100%' : pxCheck(width),
           height: !height ? '150px' : pxCheck(height),

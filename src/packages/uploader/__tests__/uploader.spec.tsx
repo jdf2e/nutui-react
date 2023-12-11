@@ -12,7 +12,7 @@ test('should render base uploader and type', () => {
   )
   expect(getByTestId('uploader-type')).toHaveClass('nut-uploader')
   expect(
-    container.querySelector('.nut-uploader__input')?.getAttribute('type')
+    container.querySelector('.nut-uploader-input')?.getAttribute('type')
   ).toBe('file')
 })
 
@@ -30,7 +30,7 @@ test('should render base uploader props', () => {
     />
   )
   const file = new File(['(⌐□_□)'], 'chucknorris.png', { type: 'image/png' })
-  const input = container.querySelectorAll('.nut-uploader__input')[0]
+  const input = container.querySelectorAll('.nut-uploader-input')[0]
   expect(input?.getAttribute('capture')).toBe('user')
   expect(input?.getAttribute('name')).toBe('files')
   expect(input?.getAttribute('accept')).toBe('.jpg')
@@ -39,7 +39,7 @@ test('should render base uploader props', () => {
   })
   expect(change).toBeCalled()
 
-  const input1 = container.querySelector('.nut-uploader__upload')
+  const input1 = container.querySelector('.nut-uploader-upload')
   expect(input1).toBeTruthy()
 })
 
@@ -90,15 +90,13 @@ test('should render base uploader other props', () => {
   const { container } = render(<App />)
   expect(container.querySelector('.nut-icon')).toBeTruthy()
   expect(container.querySelector('.close')).toBeTruthy()
-  expect(container.querySelectorAll('.nut-uploader__preview').length).toBe(3)
+  expect(container.querySelectorAll('.nut-uploader-preview').length).toBe(3)
   fireEvent.click(container.querySelectorAll('.close')[0])
   expect(onDelete).toBeCalled()
 
-  const toast2 = container.querySelector('.nut-uploader__preview-img__c')
+  const toast2 = container.querySelector('.nut-uploader-preview-img-c')
   expect(toast2).toBeTruthy()
-  fireEvent.click(
-    container.querySelectorAll('.nut-uploader__preview-img__c')[0]
-  )
+  fireEvent.click(container.querySelectorAll('.nut-uploader-preview-img-c')[0])
   expect(fileItemClick).toBeCalled()
   expect(toast2?.getAttribute('src')).toBe(
     'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif'
@@ -149,7 +147,7 @@ test('should render base uploader list', () => {
 
 test('should render base uploader props disabled', () => {
   const { container } = render(<Uploader disabled />)
-  const upLoad1 = container.querySelector('.nut-uploader__input')
+  const upLoad1 = container.querySelector('.nut-uploader-input')
   expect(upLoad1?.getAttribute('disabled')).toBe('')
 })
 
@@ -260,9 +258,7 @@ test('preview component', () => {
   fireEvent.click(container.querySelectorAll('.close')[0])
   expect(delFunc).toBeCalled()
 
-  fireEvent.click(
-    container.querySelectorAll('.nut-uploader__preview-img__c')[0]
-  )
+  fireEvent.click(container.querySelectorAll('.nut-uploader-preview-img-c')[0])
   expect(clickFunc).toBeCalled()
 
   const { container: container1 } = render(
@@ -275,7 +271,7 @@ test('preview component', () => {
     />
   )
   fireEvent.click(
-    container1.querySelectorAll('.nut-uploader__preview-img__file__name')[0]
+    container1.querySelectorAll('.nut-uploader-preview-img-file-name')[0]
   )
   expect(clickFunc).toBeCalled()
 
@@ -290,7 +286,7 @@ test('preview component', () => {
   )
 
   fireEvent.click(
-    container2.querySelectorAll('.nut-uploader__preview-img__file__name')[0]
+    container2.querySelectorAll('.nut-uploader-preview-img-file-name')[0]
   )
   expect(clickFunc).toBeCalled()
 })

@@ -15,52 +15,52 @@
   }
 
   @mixin plain {
-    &.nut-tag--plain {
+    &.nut-tag-plain {
       color: $color-title;
       background-color: #fff;
       border: $tag-border-width solid $color-title;
     }
   }
 
-  &--default {
+  &-default {
     background: $tag-background-color;
     @include plain;
   }
 
-  &--primary {
+  &-primary {
     background: $tag-primary-background-color;
     @include plain;
   }
 
-  &--info {
+  &-info {
     background: $tag-info-background-color;
     @include plain;
   }
 
-  &--success {
+  &-success {
     background: $tag-success-background-color;
     @include plain;
   }
 
-  &--danger {
+  &-danger {
     background: $tag-danger-background-color;
     @include plain;
   }
 
-  &--warning {
+  &-warning {
     background: $tag-warning-background-color;
     @include plain;
   }
 
-  &--round {
+  &-round {
     border-radius: $tag-round-border-radius;
   }
 
-  &--mark {
+  &-mark {
     border-radius: $tag-mark-border-radius;
   }
 
-  &--close {
+  &-close {
     cursor: pointer;
   }
 

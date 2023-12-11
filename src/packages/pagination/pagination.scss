@@ -3,20 +3,20 @@
   font-size: $pagination-font-size;
   color: $pagination-color;
 
-  &__contain {
+  &-contain {
     display: flex;
   }
 
-  &__simple {
+  &-simple {
     height: 39px;
     width: 124px;
     line-height: 39px;
     text-align: center;
   }
 
-  &__prev,
-  &__item,
-  &__next {
+  &-prev,
+  &-item,
+  &-next {
     height: 39px;
     min-width: 39px;
     flex-shrink: 0;
@@ -30,13 +30,13 @@
     cursor: pointer;
   }
 
-  &__prev,
-  &__item {
+  &-prev,
+  &-item {
     border-right: none;
   }
 
-  &__prev,
-  &__next {
+  &-prev,
+  &-next {
     padding: $pagination-prev-next-padding;
   }
 

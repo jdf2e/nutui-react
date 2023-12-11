@@ -55,7 +55,7 @@ export const CollapseItem: FunctionComponent<
   const wrapperRef: any = useRef(null)
   const contentRef: any = useRef(null)
   const [refRandomId] = useState(() => Math.random().toString(36).slice(-8))
-  const target = `#nut-collapse__content-${refRandomId}`
+  const target = `#nut-collapse-content-${refRandomId}`
 
   const expanded = useMemo(() => {
     if (context) {
@@ -149,19 +149,19 @@ export const CollapseItem: FunctionComponent<
   return (
     <div className={classNames(classPrefix, className)} style={style} {...rest}>
       <div
-        className={classNames(`${classPrefix}__header`, { disabled })}
+        className={classNames(`${classPrefix}-header`, { disabled })}
         onClick={handleClick}
       >
-        <div className={`${classPrefix}__title`}>{title}</div>
-        <div className={`${classPrefix}__extra`}>{extra}</div>
-        <div className={`${classPrefix}__icon-box`}>
-          <div className={`${classPrefix}__icon`} style={iconStyle}>
+        <div className={`${classPrefix}-title`}>{title}</div>
+        <div className={`${classPrefix}-extra`}>{extra}</div>
+        <div className={`${classPrefix}-icon-box`}>
+          <div className={`${classPrefix}-icon`} style={iconStyle}>
             {expandIcon || context.expandIcon}
           </div>
         </div>
       </div>
       <div
-        className={`${classPrefix}__content`}
+        className={`${classPrefix}-content`}
         ref={wrapperRef}
         style={{
           willChange: 'height',
@@ -170,8 +170,8 @@ export const CollapseItem: FunctionComponent<
       >
         <div
           ref={contentRef}
-          className={`${classPrefix}__content-text`}
-          id={`nut-collapse__content-${refRandomId}`}
+          className={`${classPrefix}-content-text`}
+          id={`nut-collapse-content-${refRandomId}`}
         >
           {children}
         </div>

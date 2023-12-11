@@ -287,20 +287,22 @@ const InternalPicker: ForwardRefRenderFunction<
 
   const renderTitleBar = () => {
     return (
-      <div className={`${classPrefix}__control`}>
+      <div className={`${classPrefix}-control`}>
         <span
-          className={`${classPrefix}__cancel-btn`}
+          className={`${classPrefix}-cancel-btn`}
           onClick={(e) => {
+            e.stopPropagation()
             onCancel?.()
             setInnerVisible(false)
           }}
         >
           {locale.cancel}
         </span>
-        <div className={`${classPrefix}__title`}>{title || ''}</div>
+        <div className={`${classPrefix}-title`}>{title || ''}</div>
         <span
-          className={`${classPrefix}__confirm-btn`}
+          className={`${classPrefix}-confirm-btn`}
           onClick={(e) => {
+            e.stopPropagation()
             confirm()
           }}
         >
@@ -330,7 +332,7 @@ const InternalPicker: ForwardRefRenderFunction<
         <div className={classes} style={style} {...rest}>
           {renderTitleBar()}
           {typeof children !== 'function' && children}
-          <div className={`${classPrefix}__panel`} ref={pickerRef}>
+          <div className={`${classPrefix}-panel`} ref={pickerRef}>
             {columnsList?.map((item, index) => {
               return (
                 <PickerPanel

@@ -47,22 +47,22 @@ exports[`description slot test 1`] = `
           class="nut-price  "
         >
           <div
-            class="nut-price__symbol nut-price__symbol-normal"
+            class="nut-price-symbol nut-price-symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-normal"
+            class="nut-price-integer nut-price-integer-normal"
           >
             388
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal"
           >
             00
           </div>
@@ -71,22 +71,22 @@ exports[`description slot test 1`] = `
           class="nut-price  nut-card-right-price-origin"
         >
           <div
-            class="nut-price__symbol nut-price__symbol-normal"
+            class="nut-price-symbol nut-price-symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-normal"
+            class="nut-price-integer nut-price-integer-normal"
           >
             378
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal"
           >
             00
           </div>
@@ -96,7 +96,7 @@ exports[`description slot test 1`] = `
         class="nut-card-right-other"
       >
         <div
-          class="nut-tag nut-tag--danger"
+          class="nut-tag nut-tag-danger"
         >
           <span
             class="nut-tag-text"
@@ -105,7 +105,7 @@ exports[`description slot test 1`] = `
           </span>
         </div>
         <div
-          class="nut-tag nut-tag--default nut-tag--plain"
+          class="nut-tag nut-tag-default nut-tag-plain"
         >
           <span
             class="nut-tag-text"
@@ -156,22 +156,22 @@ exports[`extra slot test 1`] = `
           class="nut-price  "
         >
           <div
-            class="nut-price__symbol nut-price__symbol-normal"
+            class="nut-price-symbol nut-price-symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-normal"
+            class="nut-price-integer nut-price-integer-normal"
           >
             388
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal"
           >
             00
           </div>
@@ -180,22 +180,22 @@ exports[`extra slot test 1`] = `
           class="nut-price  nut-card-right-price-origin"
         >
           <div
-            class="nut-price__symbol nut-price__symbol-normal"
+            class="nut-price-symbol nut-price-symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-normal"
+            class="nut-price-integer nut-price-integer-normal"
           >
             378
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal"
           >
             00
           </div>
@@ -205,7 +205,7 @@ exports[`extra slot test 1`] = `
         class="nut-card-right-other"
       >
         <div
-          class="nut-tag nut-tag--danger"
+          class="nut-tag nut-tag-danger"
         >
           <span
             class="nut-tag-text"
@@ -214,7 +214,7 @@ exports[`extra slot test 1`] = `
           </span>
         </div>
         <div
-          class="nut-tag nut-tag--default nut-tag--plain"
+          class="nut-tag nut-tag-default nut-tag-plain"
         >
           <span
             class="nut-tag-text"
@@ -270,22 +270,22 @@ exports[`priceTag slot test 1`] = `
           class="nut-price  "
         >
           <div
-            class="nut-price__symbol nut-price__symbol-normal"
+            class="nut-price-symbol nut-price-symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-normal"
+            class="nut-price-integer nut-price-integer-normal"
           >
             388
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal"
           >
             00
           </div>
@@ -299,7 +299,7 @@ exports[`priceTag slot test 1`] = `
         class="nut-card-right-other"
       >
         <div
-          class="nut-tag nut-tag--danger"
+          class="nut-tag nut-tag-danger"
         >
           <span
             class="nut-tag-text"
@@ -308,7 +308,7 @@ exports[`priceTag slot test 1`] = `
           </span>
         </div>
         <div
-          class="nut-tag nut-tag--default nut-tag--plain"
+          class="nut-tag nut-tag-default nut-tag-plain"
         >
           <span
             class="nut-tag-text"
@@ -359,22 +359,22 @@ exports[`props test 1`] = `
           class="nut-price  "
         >
           <div
-            class="nut-price__symbol nut-price__symbol-normal"
+            class="nut-price-symbol nut-price-symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-normal"
+            class="nut-price-integer nut-price-integer-normal"
           >
             388
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal"
           >
             00
           </div>
@@ -383,22 +383,22 @@ exports[`props test 1`] = `
           class="nut-price  nut-card-right-price-origin"
         >
           <div
-            class="nut-price__symbol nut-price__symbol-normal"
+            class="nut-price-symbol nut-price-symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-normal"
+            class="nut-price-integer nut-price-integer-normal"
           >
             378
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal"
           >
             00
           </div>
@@ -408,7 +408,7 @@ exports[`props test 1`] = `
         class="nut-card-right-other"
       >
         <div
-          class="nut-tag nut-tag--danger"
+          class="nut-tag nut-tag-danger"
         >
           <span
             class="nut-tag-text"
@@ -417,7 +417,7 @@ exports[`props test 1`] = `
           </span>
         </div>
         <div
-          class="nut-tag nut-tag--default nut-tag--plain"
+          class="nut-tag nut-tag-default nut-tag-plain"
         >
           <span
             class="nut-tag-text"
@@ -468,22 +468,22 @@ exports[`tag slot test 1`] = `
           class="nut-price  "
         >
           <div
-            class="nut-price__symbol nut-price__symbol-normal"
+            class="nut-price-symbol nut-price-symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-normal"
+            class="nut-price-integer nut-price-integer-normal"
           >
             388
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal"
           >
             00
           </div>
@@ -492,22 +492,22 @@ exports[`tag slot test 1`] = `
           class="nut-price  nut-card-right-price-origin"
         >
           <div
-            class="nut-price__symbol nut-price__symbol-normal"
+            class="nut-price-symbol nut-price-symbol-normal"
           >
             ¥
           </div>
           <div
-            class="nut-price__integer nut-price__integer-normal"
+            class="nut-price-integer nut-price-integer-normal"
           >
             378
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal"
           >
             .
           </div>
           <div
-            class="nut-price__decimal nut-price__decimal-normal"
+            class="nut-price-decimal nut-price-decimal-normal"
           >
             00
           </div>

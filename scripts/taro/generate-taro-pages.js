@@ -1,7 +1,6 @@
 const fse = require('fs-extra')
 const path = require('path')
 const fs = require('fs')
-const fsExtra = require('fs-extra')
 const config = require('../../src/config.json')
 const navs = config.nav
 
@@ -53,7 +52,9 @@ export default Demo;`
         })
       }
       fs.writeFile(demoFilePath, demoContent, (err) => {
-        if (err) { throw err }
+        if (err) {
+          throw err
+        }
         resolve(`生成 index.tsx 文件成功`)
       })
     }
@@ -70,7 +71,7 @@ const replaceAppSCSS = () => {
       if (lines[0].indexOf(`@import '../../../styles/font`) !== -1) {
         lines[0] = ''
       }
-      fsExtra.outputFile(filePath, fileString, 'utf8', (error) => {
+      fse.outputFile(filePath, fileString, 'utf8', (error) => {
         if (error) console.log('Error', error)
       })
     }

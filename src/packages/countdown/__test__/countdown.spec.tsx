@@ -34,7 +34,7 @@ describe('Countdown', () => {
       <CountDown endTime={Date.now() + 1 * 1000} format="DD天HH时mm分ss秒" />
     )
 
-    const countdownEle = container.querySelector('.nut-countdown__block')
+    const countdownEle = container.querySelector('.nut-countdown-block')
     await act(async () => {
       await sleep(1000)
       waitFor(() => {

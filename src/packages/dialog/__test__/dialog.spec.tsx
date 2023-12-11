@@ -12,19 +12,15 @@ test('show dialog base info display ', async () => {
   )
 
   const dialogEle = container.querySelector('.nut-dialog') as HTMLElement
-  const headerEle = container.querySelector(
-    '.nut-dialog__header'
-  ) as HTMLElement
-  const footerEle = container.querySelector(
-    '.nut-dialog__footer'
-  ) as HTMLElement
+  const headerEle = container.querySelector('.nut-dialog-header') as HTMLElement
+  const footerEle = container.querySelector('.nut-dialog-footer') as HTMLElement
   const contentEle = container.querySelector(
-    '.nut-dialog__content'
+    '.nut-dialog-content'
   ) as HTMLElement
   const footerCancelEle = container.querySelector(
-    '.nut-dialog__footer-cancel'
+    '.nut-dialog-footer-cancel'
   ) as HTMLElement
-  const wrapEle = container.querySelector('.nut-dialog__wrap') as HTMLElement
+  const wrapEle = container.querySelector('.nut-dialog-wrap') as HTMLElement
   expect(dialogEle).toBeInTheDocument()
   expect(headerEle.innerHTML).toEqual('title')
   expect(contentEle.innerHTML).toEqual('<div>content</div>')
@@ -43,7 +39,7 @@ test('show dialog custom footer-direction ', async () => {
   )
 
   const wrapEle = container.querySelector(
-    '.nut-dialog__footer.vertical'
+    '.nut-dialog-footer.vertical'
   ) as HTMLElement
   expect(wrapEle).toBeInTheDocument()
 })
@@ -55,12 +51,12 @@ test('hide dialog footer', async () => {
     </Dialog>
   )
 
-  expect(container.querySelectorAll('.nut-dialog__footer').length).toBe(0)
+  expect(container.querySelectorAll('.nut-dialog-footer').length).toBe(0)
 })
 
 test('hide dialog title', async () => {
   const { container } = render(<Dialog visible>content</Dialog>)
-  expect(container.querySelectorAll('.nut-dialog__header').length).toBe(0)
+  expect(container.querySelectorAll('.nut-dialog-header').length).toBe(0)
 })
 
 test('tips dialog', async () => {
@@ -69,9 +65,7 @@ test('tips dialog', async () => {
       content
     </Dialog>
   )
-  expect(container.querySelectorAll('.nut-dialog__footer-cancel').length).toBe(
-    0
-  )
+  expect(container.querySelectorAll('.nut-dialog-footer-cancel').length).toBe(0)
 })
 
 test('dialog cancelText confirmText', async () => {
@@ -81,8 +75,8 @@ test('dialog cancelText confirmText', async () => {
     </Dialog>
   )
 
-  const footerOkEle = container.querySelector('.nut-dialog__footer-ok')
-  const footerCancelEle = container.querySelector('.nut-dialog__footer-cancel')
+  const footerOkEle = container.querySelector('.nut-dialog-footer-ok')
+  const footerCancelEle = container.querySelector('.nut-dialog-footer-cancel')
   expect(footerOkEle).toHaveTextContent('确定文案自定义')
   expect(footerCancelEle).toHaveTextContent('取消文案自定义')
 })

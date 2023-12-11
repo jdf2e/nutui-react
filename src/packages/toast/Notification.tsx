@@ -100,7 +100,7 @@ export default class Notification extends React.PureComponent<
         default:
           break
       }
-      return <p className={`${classPrefix}__icon-wrapper`}>{iconNode}</p>
+      return <p className={`${classPrefix}-icon-wrapper`}>{iconNode}</p>
     }
     return icon
   }
@@ -141,7 +141,7 @@ export default class Notification extends React.PureComponent<
         <Overlay
           visible={show}
           style={style}
-          className={`${classPrefix}__overlay-default ${className}`}
+          className={`${classPrefix}-overlay-default ${className}`}
           onClick={() => {
             this.clickCover()
           }}
@@ -150,7 +150,7 @@ export default class Notification extends React.PureComponent<
         >
           <div className={`${classPrefix} ${classes}`} id={`toast-${id}`}>
             <div
-              className={`${classPrefix}__inner ${classPrefix}-${position} ${contentClassName} ${wordBreak}`}
+              className={`${classPrefix}-inner ${classPrefix}-${position} ${contentClassName} ${wordBreak}`}
               style={contentStyle}
             >
               {this.renderIcon()}

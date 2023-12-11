@@ -192,7 +192,7 @@ const InternalSignature: ForwardRefRenderFunction<
 
   return (
     <div className={`${classPrefix} ${className}`} {...rest}>
-      <div className={`${classPrefix}__inner spcanvas_WEAPP`} ref={wrapRef}>
+      <div className={`${classPrefix}-inner spcanvas_WEAPP`} ref={wrapRef}>
         {getEnv() === 'WEAPP' || getEnv() === 'JD' ? (
           <canvas
             id={canvasId}

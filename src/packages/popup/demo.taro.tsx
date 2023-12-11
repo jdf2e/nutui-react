@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Failure, Heart } from '@nutui/icons-react-taro'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Cell, Popup } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
@@ -12,6 +13,7 @@ interface T {
   a74a1fd4: string
   '8dab2f66': string
   cfbdc781: string
+  cfbdc782: string
   c3a3a1d2: string
   e51e4582: string
   '7db1a8b2': string
@@ -34,6 +36,7 @@ const PopupDemo = () => {
       a74a1fd4: '弹出位置',
       '8dab2f66': '顶部弹出',
       cfbdc781: '底部弹出',
+      cfbdc782: '禁止滚动穿透',
       c3a3a1d2: '左侧弹出',
       e51e4582: '右侧弹出',
       '7db1a8b2': '关闭图标',
@@ -53,6 +56,7 @@ const PopupDemo = () => {
       a74a1fd4: '彈出位置',
       '8dab2f66': '頂部彈出',
       cfbdc781: '底部彈出',
+      cfbdc782: '禁止滾動穿透',
       c3a3a1d2: '左側彈出',
       e51e4582: '右側彈出',
       '7db1a8b2': '關閉圖標',
@@ -72,6 +76,7 @@ const PopupDemo = () => {
       a74a1fd4: 'popup location',
       '8dab2f66': 'top pop',
       cfbdc781: 'bottom pop',
+      cfbdc782: 'No scroll penetration',
       c3a3a1d2: 'pop up left',
       e51e4582: 'pop up right',
       '7db1a8b2': 'close icon',
@@ -89,6 +94,7 @@ const PopupDemo = () => {
   const [showBasic, setShowBasic] = useState(false)
   const [showTop, setShowTop] = useState(false)
   const [showBottom, setShowBottom] = useState(false)
+  const [scrollPenetration, setScrollPenetration] = useState(false)
   const [showLeft, setShowLeft] = useState(false)
   const [showRight, setShowRight] = useState(false)
   const [showIcon, setShowIcon] = useState(false)
@@ -119,7 +125,13 @@ const PopupDemo = () => {
             setShowBasic(false)
           }}
         >
-          {translated.b840c88f}
+          <View style={{ height: '200px', overflowY: 'scroll' }}>
+            {Array.from({ length: 20 })
+              .fill('')
+              .map((v, i) => (
+                <View key={i}>{translated.b840c88f}</View>
+              ))}
+          </View>
         </Popup>
 
         <h2>{translated.a74a1fd4}</h2>
@@ -149,7 +161,18 @@ const PopupDemo = () => {
           onClose={() => {
             setShowBottom(false)
           }}
-        />
+          lockScroll
+        >
+          <ScrollView scrollY style={{ height: '200px' }}>
+            {Array.from({ length: 200 })
+              .fill('')
+              .map((v, i) => (
+                <View key={i}>
+                  {translated.cfbdc781}-{i}
+                </View>
+              ))}
+          </ScrollView>
+        </Popup>
         <Cell
           title={translated.c3a3a1d2}
           onClick={() => {
@@ -342,6 +365,32 @@ const PopupDemo = () => {
           >
             close
           </span>
+        </Popup>
+
+        <h2>{translated.cfbdc782}</h2>
+        <Cell
+          title={translated.cfbdc782}
+          onClick={() => {
+            setScrollPenetration(true)
+          }}
+        />
+        <Popup
+          visible={scrollPenetration}
+          position="bottom"
+          onClose={() => {
+            setShowBottom(false)
+          }}
+          lockScroll
+        >
+          <ScrollView scrollY style={{ height: '200px' }}>
+            {Array.from({ length: 200 })
+              .fill('')
+              .map((v, i) => (
+                <Cell key={i}>
+                  {translated.cfbdc782}-{i}
+                </Cell>
+              ))}
+          </ScrollView>
         </Popup>
       </div>
     </>

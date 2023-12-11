@@ -122,8 +122,8 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
             onClick={(event) => onClick(event, n)}
           >
             <div
-              className={classNames(`${classPrefix}-item__icon`, {
-                [`${classPrefix}-item__icon--disabled`]: disabled || n > score,
+              className={classNames(`${classPrefix}-item-icon`, {
+                [`${classPrefix}-item-icon-disabled`]: disabled || n > score,
               })}
             >
               {renderIcon(n)}
@@ -131,9 +131,9 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
             {allowHalf && score > n - 1 && (
               <div
                 className={classNames(
-                  `${classPrefix}-item__half`,
-                  `${classPrefix}-item__icon`,
-                  `${classPrefix}-item__icon--half`
+                  `${classPrefix}-item-half`,
+                  `${classPrefix}-item-icon`,
+                  `${classPrefix}-item-icon-half`
                 )}
                 onClick={(event) => onHalfClick(event, n)}
               >

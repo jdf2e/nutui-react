@@ -50,7 +50,7 @@ exports[`Cascader change tab 1`] = `
                   class="nut-cascader-item"
                 >
                   <div
-                    class="nut-cascader-item__title"
+                    class="nut-cascader-item-title"
                   >
                     浙江
                   </div>
@@ -59,7 +59,7 @@ exports[`Cascader change tab 1`] = `
                   class="disabled nut-cascader-item"
                 >
                   <div
-                    class="nut-cascader-item__title"
+                    class="nut-cascader-item-title"
                   >
                     湖南
                   </div>
@@ -68,7 +68,7 @@ exports[`Cascader change tab 1`] = `
                   class="nut-cascader-item"
                 >
                   <div
-                    class="nut-cascader-item__title"
+                    class="nut-cascader-item-title"
                   >
                     福建
                   </div>
@@ -133,7 +133,7 @@ exports[`Cascader change tab 2`] = `
                   class="nut-cascader-item"
                 >
                   <div
-                    class="nut-cascader-item__title"
+                    class="nut-cascader-item-title"
                   >
                     浙江
                   </div>
@@ -142,7 +142,7 @@ exports[`Cascader change tab 2`] = `
                   class="disabled nut-cascader-item"
                 >
                   <div
-                    class="nut-cascader-item__title"
+                    class="nut-cascader-item-title"
                   >
                     湖南
                   </div>
@@ -151,7 +151,7 @@ exports[`Cascader change tab 2`] = `
                   class="nut-cascader-item"
                 >
                   <div
-                    class="nut-cascader-item__title"
+                    class="nut-cascader-item-title"
                   >
                     福建
                   </div>
@@ -248,7 +248,7 @@ exports[`Cascader visible true 1`] = `
                   class="nut-cascader-item"
                 >
                   <div
-                    class="nut-cascader-item__title"
+                    class="nut-cascader-item-title"
                   >
                     浙江
                   </div>
@@ -257,7 +257,7 @@ exports[`Cascader visible true 1`] = `
                   class="disabled nut-cascader-item"
                 >
                   <div
-                    class="nut-cascader-item__title"
+                    class="nut-cascader-item-title"
                   >
                     湖南
                   </div>
@@ -266,13 +266,13 @@ exports[`Cascader visible true 1`] = `
                   class="active nut-cascader-item"
                 >
                   <div
-                    class="nut-cascader-item__title"
+                    class="nut-cascader-item-title"
                   >
                     福建
                   </div>
                   <svg
                     aria-labelledby="Checklist"
-                    class="nut-icon nut-icon-Checklist nut-cascader__icon-check"
+                    class="nut-icon nut-icon-Checklist nut-cascader-icon-check"
                     role="presentation"
                     viewBox="0 0 1024 1024"
                     xmlns="http://www.w3.org/2000/svg"
@@ -296,13 +296,13 @@ exports[`Cascader visible true 1`] = `
                   class="active nut-cascader-item"
                 >
                   <div
-                    class="nut-cascader-item__title"
+                    class="nut-cascader-item-title"
                   >
                     福州
                   </div>
                   <svg
                     aria-labelledby="Checklist"
-                    class="nut-icon nut-icon-Checklist nut-cascader__icon-check"
+                    class="nut-icon nut-icon-Checklist nut-cascader-icon-check"
                     role="presentation"
                     viewBox="0 0 1024 1024"
                     xmlns="http://www.w3.org/2000/svg"
@@ -326,13 +326,13 @@ exports[`Cascader visible true 1`] = `
                   class="active nut-cascader-item"
                 >
                   <div
-                    class="nut-cascader-item__title"
+                    class="nut-cascader-item-title"
                   >
                     鼓楼区
                   </div>
                   <svg
                     aria-labelledby="Checklist"
-                    class="nut-icon nut-icon-Checklist nut-cascader__icon-check"
+                    class="nut-icon nut-icon-Checklist nut-cascader-icon-check"
                     role="presentation"
                     viewBox="0 0 1024 1024"
                     xmlns="http://www.w3.org/2000/svg"
@@ -348,7 +348,7 @@ exports[`Cascader visible true 1`] = `
                   class="nut-cascader-item"
                 >
                   <div
-                    class="nut-cascader-item__title"
+                    class="nut-cascader-item-title"
                   >
                     台江区
                   </div>
@@ -368,13 +368,13 @@ exports[`Cascader visible true 2`] = `
   class="active nut-cascader-item"
 >
   <div
-    class="nut-cascader-item__title"
+    class="nut-cascader-item-title"
   >
     鼓楼区
   </div>
   <svg
     aria-labelledby="Checklist"
-    class="nut-icon nut-icon-Checklist nut-cascader__icon-check"
+    class="nut-icon nut-icon-Checklist nut-cascader-icon-check"
     role="presentation"
     viewBox="0 0 1024 1024"
     xmlns="http://www.w3.org/2000/svg"

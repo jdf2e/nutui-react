@@ -4,7 +4,7 @@ const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
   e.stopPropagation()
   const isIcon = (e.target as HTMLDivElement).className.includes('arrow-icon')
   const isTitle =
-    (e.target as HTMLDivElement).className.includes('__title') || isIcon
+    (e.target as HTMLDivElement).className.includes('-title') || isIcon
   const currentClass = e.currentTarget.className
   const isShow = currentClass.includes('sidenavbar-show')
   const arrowIcon = e.currentTarget.querySelector('.arrow-icon') as Element

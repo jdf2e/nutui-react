@@ -114,14 +114,14 @@ test('form onFinishFailed', async () => {
   const form = container.querySelector('form') as Element
 
   fireEvent.change(inputEl, { target: { value: 'NutUI React Taro' } })
+  fireEvent.reset(form)
   fireEvent.submit(form)
-
   await waitFor(() => {
     expect(handleFailed).toBeCalled()
-    expect(handleFailed).toBeCalledWith({ username: 'NutUI React Taro' }, [
+    expect(handleFailed).toBeCalledWith({ username: 'NutUI-React' }, [
       {
         field: 'username',
-        fieldValue: 'NutUI React Taro',
+        fieldValue: 'NutUI-React',
         message: 'min 50',
       },
     ])

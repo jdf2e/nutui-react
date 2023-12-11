@@ -16,7 +16,7 @@
     border-bottom: 1px solid $actionsheet-border-color;
   }
 
-  &__list {
+  &-list {
     display: block;
     list-style: none;
     padding: 0;
@@ -24,8 +24,8 @@
     border-radius: $actionsheet-border-radius;
   }
 
-  &__cancel,
-  &__item {
+  &-cancel,
+  &-item {
     display: block;
     padding: 10px;
     text-align: $actionsheet-item-text-align;
@@ -51,7 +51,7 @@
     }
   }
 
-  &__cancel {
+  &-cancel {
     margin-top: 5px;
     border-top: 1px solid $actionsheet-border-color;
     border-radius: $actionsheet-border-radius;

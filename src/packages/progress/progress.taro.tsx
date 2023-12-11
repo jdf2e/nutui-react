@@ -87,7 +87,7 @@ export const Progress: FunctionComponent<
             >
               {children || (
                 <div
-                  className={`${classPrefix}-text__inner`}
+                  className={`${classPrefix}-text-inner`}
                   style={{
                     background: color,
                   }}

@@ -56,7 +56,7 @@ test('base render', () => {
   )
   expect(container.querySelector('.nut-popover')).toBeTruthy()
   expect(
-    container.querySelector('.nut-popover-content--bottom-end')
+    container.querySelector('.nut-popover-content-bottom-end')
   ).toBeTruthy()
 })
 

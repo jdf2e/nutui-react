@@ -43,7 +43,7 @@ test('prop icon iconSize iconColor', () => {
     </>
   )
   expect(
-    container.querySelector('.nut-collapse-item__icon .nut-icon')
+    container.querySelector('.nut-collapse-item-icon .nut-icon')
   ).toHaveClass('nut-icon-ArrowDown')
 })
 
@@ -65,7 +65,7 @@ test('prop activeName', () => {
   )
 
   setTimeout(() => {
-    expect(container.querySelector('.nut-collapse-item__content')).toHaveStyle(
+    expect(container.querySelector('.nut-collapse-item-content')).toHaveStyle(
       'height: 66px'
     )
   }, 100)
@@ -100,7 +100,7 @@ test('prop rotate', () => {
   fireEvent.click(getByTestId('collapse-one'))
   setTimeout(() => {
     expect(
-      getByTestId('collapse-one').querySelector('.nut-collapse-item__icon')
+      getByTestId('collapse-one').querySelector('.nut-collapse-item-icon')
     ).toHaveStyle('transform: translateY(-50%) rotate(180deg);')
   }, 100)
 })
@@ -127,10 +127,10 @@ test('prop title extra', () => {
     </>
   )
   expect(
-    getByTestId('collapse-one').querySelector('.nut-collapse-item__title')
+    getByTestId('collapse-one').querySelector('.nut-collapse-item-title')
   ).toHaveTextContent('标题1')
   expect(
-    getByTestId('collapse-one').querySelector('.nut-collapse-item__extra')
+    getByTestId('collapse-one').querySelector('.nut-collapse-item-extra')
   ).toHaveTextContent('副标题')
   expect(getByTestId('collapse-one').querySelector('.nut-icon')).toHaveClass(
     'nut-icon-ArrowRight'
@@ -154,9 +154,9 @@ test('event onChange & prop disabled', () => {
       </Collapse>
     </>
   )
-  const item1 = getByTestId('item1').querySelector('.nut-collapse-item__title')
-  const item2 = getByTestId('item2').querySelector('.nut-collapse-item__title')
-  const item3 = getByTestId('item3').querySelector('.nut-collapse-item__title')
+  const item1 = getByTestId('item1').querySelector('.nut-collapse-item-title')
+  const item2 = getByTestId('item2').querySelector('.nut-collapse-item-title')
+  const item3 = getByTestId('item3').querySelector('.nut-collapse-item-title')
   fireEvent.click(item3 as Element)
   expect(handleChange).not.toBeCalled()
   fireEvent.click(item2 as Element)
@@ -191,8 +191,8 @@ test('event onChange & prop accordion', () => {
       </Collapse>
     </>
   )
-  const item2 = getByTestId('item2').querySelector('.nut-collapse-item__title')
-  const item3 = getByTestId('item3').querySelector('.nut-collapse-item__title')
+  const item2 = getByTestId('item2').querySelector('.nut-collapse-item-title')
+  const item3 = getByTestId('item3').querySelector('.nut-collapse-item-title')
   fireEvent.click(item3 as Element)
   expect(handleChange).not.toBeCalled()
   fireEvent.click(item2 as Element)

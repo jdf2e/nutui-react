@@ -38,7 +38,7 @@ export const SubSideNavBar: FunctionComponent<SubSideNavBarProps> = (props) => {
   const setListLevel = useCallback(
     (nodeList: HTMLCollection, level = 1) => {
       const titleClass = nodeList[0].className
-      if (titleClass.includes(`${classPrefix}__title`)) {
+      if (titleClass.includes(`${classPrefix}-title`)) {
         const left = offset * (level + 1)
         // eslint-disable-next-line no-param-reassign
         ;(nodeList[0] as HTMLElement).style.paddingLeft = `${left}px`
@@ -52,12 +52,12 @@ export const SubSideNavBar: FunctionComponent<SubSideNavBarProps> = (props) => {
       childNodes.forEach((item) => {
         const itemClass = item.className
 
-        if (itemClass.includes(`${classPrefix}__item`)) {
+        if (itemClass.includes(`${classPrefix}-item`)) {
           const left = offset * (level + 2)
           // eslint-disable-next-line no-param-reassign
           ;(item as HTMLElement).style.paddingLeft = `${left}px`
         }
-        if (itemClass.includes(`${classPrefix}__list`)) {
+        if (itemClass.includes(`${classPrefix}-list`)) {
           let level = item.getAttribute('level')
             ? Number(item.getAttribute('level'))
             : 1
@@ -81,16 +81,16 @@ export const SubSideNavBar: FunctionComponent<SubSideNavBarProps> = (props) => {
     childNodes && setListLevel(childNodes)
   }, [setListLevel])
   const divClass = open
-    ? `${classPrefix}__list sidenavbar-show`
-    : `${classPrefix}__list sidenavbar-hide`
+    ? `${classPrefix}-list sidenavbar-show`
+    : `${classPrefix}-list sidenavbar-hide`
   const iconClass = open ? 'arrow-icon arrow-down' : 'arrow-icon arrow-up'
 
   return (
     <div className={divClass} ref={listRef} onClick={clickFn} {...rest}>
-      <div className={`${classPrefix}__title ${classPrefix}-border-bt`}>
+      <div className={`${classPrefix}-title ${classPrefix}-border-bt`}>
         {title} <i className={iconClass} />
       </div>
-      <div className={`${classPrefix}__content`}>{children}</div>
+      <div className={`${classPrefix}-content`}>{children}</div>
     </div>
   )
 }

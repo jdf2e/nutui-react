@@ -96,7 +96,7 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
   const renderSymbol = () => {
     return (
       <div
-        className={`${classPrefix}__symbol ${classPrefix}__symbol-${size}`}
+        className={`${classPrefix}-symbol ${classPrefix}-symbol-${size}`}
         dangerouslySetInnerHTML={showSymbol()}
       />
     )
@@ -105,27 +105,23 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
   return (
     <div
       className={`${classPrefix} ${
-        line ? `${classPrefix}--line` : ''
+        line ? `${classPrefix}-line` : ''
       } ${className}`}
       style={style}
       {...rest}
     >
       {symbol && position === 'before' ? renderSymbol() : null}
-      <div
-        className={`${classPrefix}__integer ${classPrefix}__integer-${size}`}
-      >
+      <div className={`${classPrefix}-integer ${classPrefix}-integer-${size}`}>
         {formatThousands(price)}
       </div>
       {digits !== 0 ? (
         <div
-          className={`${classPrefix}__decimal ${classPrefix}__decimal-${size}`}
+          className={`${classPrefix}-decimal ${classPrefix}-decimal-${size}`}
         >
           .
         </div>
       ) : null}
-      <div
-        className={`${classPrefix}__decimal ${classPrefix}__decimal-${size}`}
-      >
+      <div className={`${classPrefix}-decimal ${classPrefix}-decimal-${size}`}>
         {formatDecimal(price)}
       </div>
       {symbol && position === 'after' ? renderSymbol() : null}

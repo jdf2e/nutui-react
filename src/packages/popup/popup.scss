@@ -52,17 +52,17 @@
         opacity: 0.7;
       }
 
-      &--top-left {
+      &-top-left {
         top: $popup-title-padding;
         left: $popup-title-padding;
       }
 
-      &--bottom-left {
+      &-bottom-left {
         bottom: $popup-title-padding;
         left: $popup-title-padding;
       }
 
-      &--bottom-right {
+      &-bottom-right {
         right: $popup-title-padding;
         bottom: $popup-title-padding;
       }

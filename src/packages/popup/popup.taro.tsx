@@ -134,7 +134,7 @@ export const Popup: FunctionComponent<
 
   const closeClasses = classNames({
     [`${classPrefix}-title-right`]: true,
-    [`${classPrefix}-title-right--${closeIconPosition}`]: true,
+    [`${classPrefix}-title-right-${closeIconPosition}`]: true,
   })
 
   const open = () => {

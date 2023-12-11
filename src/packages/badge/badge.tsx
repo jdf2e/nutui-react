@@ -49,11 +49,11 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
   }
 
   const contentClasses = classNames(
-    { [`${classPrefix}__dot`]: dot },
-    `${classPrefix}__content`,
-    { [`${classPrefix}__sup`]: isNumber() || isString() || dot },
+    { [`${classPrefix}-dot`]: dot },
+    `${classPrefix}-content`,
+    { [`${classPrefix}-sup`]: isNumber() || isString() || dot },
     {
-      [`${classPrefix}__one`]:
+      [`${classPrefix}-one`]:
         typeof content() === 'string' && `${content()}`?.length === 1,
     }
   )
@@ -66,7 +66,7 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
   }
   return (
     <div className={classes} style={style}>
-      {isIcon() && <div className={`${classPrefix}__icon`}>{value}</div>}
+      {isIcon() && <div className={`${classPrefix}-icon`}>{value}</div>}
       {children}
       {!isIcon() && (
         <div className={contentClasses} style={getStyle()}>

@@ -55,7 +55,7 @@ const onIndexClick = (key: string) => {
 }
 test('should render elevator list height after height props to be 200', () => {
   const { container } = render(<Elevator list={list} height={200} />)
-  expect(container.querySelector('.nut-elevator__list')).toHaveAttribute(
+  expect(container.querySelector('.nut-elevator-list')).toHaveAttribute(
     'style',
     'height: 200px;'
   )
@@ -63,7 +63,7 @@ test('should render elevator list height after height props to be 200', () => {
 
 test('should render list data when list props not empty', () => {
   const { container } = render(<Elevator list={list} height={200} />)
-  expect(container.querySelectorAll('.nut-elevator__list__item').length).toBe(
+  expect(container.querySelectorAll('.nut-elevator-list-item').length).toBe(
     list.length
   )
 })
@@ -78,14 +78,12 @@ test('should list item highlight when onItemClick trigger click', () => {
     />
   )
 
-  const listItem = container.querySelectorAll(
-    '.nut-elevator__list__item__name'
-  )[0]
+  const listItem = container.querySelectorAll('.nut-elevator-list-item-name')[0]
   fireEvent.click(listItem) // 模拟点击
   expect(testClick).toBeCalled() // 断言 是否已经被点击
   setTimeout(() => {
     expect(
-      container.querySelector('.nut-elevator__list__item__name--highcolor')
+      container.querySelector('.nut-elevator-list-item-name-highcolor')
         ?.innerHTML
     ).toBe('安徽')
   }, 100)
@@ -102,7 +100,7 @@ test('onIndexClick trigger click', () => {
     />
   )
   const listItem = container.querySelectorAll(
-    '.nut-elevator__bars__inner__item'
+    '.nut-elevator-bars-inner-item'
   )[2]
 
   fireEvent.click(listItem) // 模拟点击
@@ -123,12 +121,12 @@ test('index is sticky', () => {
     />
   )
   const listItem = container.querySelectorAll(
-    '.nut-elevator__bars__inner__item'
+    '.nut-elevator-bars-inner-item'
   )[2]
   fireEvent.click(listItem) // 模拟点击
   setTimeout(() => {
-    expect(
-      container.querySelectorAll('.nut-elevator__list__fixed').length
-    ).toBe(1)
+    expect(container.querySelectorAll('.nut-elevator-list-fixed').length).toBe(
+      1
+    )
   }, 300)
 })

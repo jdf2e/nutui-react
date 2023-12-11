@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ReactNode } from 'react'
+import React, { FunctionComponent, MouseEventHandler, ReactNode } from 'react'
 import { Check, Location } from '@nutui/icons-react-taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { AddressList } from './type'
@@ -50,7 +50,8 @@ export const ExistRender: FunctionComponent<
     onSelect && onSelect(item)
   }
 
-  const onClick = () => {
+  const onClick: MouseEventHandler = (e) => {
+    e.stopPropagation()
     onSwitch && onSwitch({ type: type === 'exist' ? 'custom' : 'exist' })
   }
 
@@ -64,7 +65,10 @@ export const ExistRender: FunctionComponent<
                 item.selectedAddress ? 'active' : ''
               }`}
               key={index}
-              onClick={() => selectedExist(item)}
+              onClick={(e) => {
+                e.stopPropagation()
+                selectedExist(item)
+              }}
             >
               {item.selectedAddress ? (
                 <>

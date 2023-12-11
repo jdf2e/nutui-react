@@ -8,7 +8,7 @@
     }
   }
 
-  &__inner {
+  &-inner {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,7 +17,7 @@
     background-color: $signature-background-color;
   }
 
-  &__unsupport {
+  &-unsupport {
     font-size: $signature-font-size;
   }
 }

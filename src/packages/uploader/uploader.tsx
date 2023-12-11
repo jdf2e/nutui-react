@@ -384,7 +384,7 @@ const InternalUploader: ForwardRefRenderFunction<
   return (
     <div className={classes} {...restProps}>
       {(children || previewType === 'list') && (
-        <div className="nut-uploader__slot">
+        <div className="nut-uploader-slot">
           {children || (
             <Button size="small" type="primary">
               上传文件
@@ -392,7 +392,7 @@ const InternalUploader: ForwardRefRenderFunction<
           )}
           {maxCount > fileList.length && (
             <input
-              className="nut-uploader__input"
+              className="nut-uploader-input"
               type="file"
               capture={capture}
               name={name}
@@ -419,17 +419,17 @@ const InternalUploader: ForwardRefRenderFunction<
 
       {maxCount > fileList.length && previewType === 'picture' && !children && (
         <div
-          className={classNames('nut-uploader__upload', previewType, {
-            'nut-uploader__upload-disabled': disabled,
+          className={classNames('nut-uploader-upload', previewType, {
+            'nut-uploader-upload-disabled': disabled,
           })}
         >
-          <div className="nut-uploader__icon">
+          <div className="nut-uploader-icon">
             {uploadIcon}
-            <span className="nut-uploader__icon-tip">{uploadLabel}</span>
+            <span className="nut-uploader-icon-tip">{uploadLabel}</span>
           </div>
 
           <input
-            className="nut-uploader__input"
+            className="nut-uploader-input"
             type="file"
             capture={capture}
             name={name}

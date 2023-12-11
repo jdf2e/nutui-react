@@ -7,12 +7,12 @@
   flex-direction: column;
   height: calc(100% - 50px);
 
-  &__content {
+  &-content {
     display: flex;
     flex: 1;
   }
 
-  &__content-left {
+  &-content-left {
     width: $timeselect-date-width;
     min-width: $timeselect-date-width;
     height: 100%;

@@ -13,7 +13,7 @@
   box-sizing: border-box;
   background: $color-background-overlay;
 
-  &__wrap {
+  &-wrap {
     width: 100%;
     height: $tabbar-height;
     display: flex;
@@ -26,13 +26,13 @@
     border-right: 0;
   }
 
-  &__fixed {
+  &-fixed {
     position: fixed;
     bottom: 0px;
     left: 0px;
   }
 
-  &__safe-area {
+  &-safe-area {
     display: block;
     width: 100%;
     padding-bottom: constant(safe-area-inset-bottom);

@@ -8,7 +8,7 @@ jest.useFakeTimers()
 test('test value props', () => {
   const { container } = render(<AnimatingNumbers.CountUp value="678.94" />)
 
-  const listNumbers = container.querySelectorAll('.nut-countup__number')
+  const listNumbers = container.querySelectorAll('.nut-countup-number')
   expect(listNumbers[0]).toHaveAttribute(
     'style',
     'transition: transform 1s ease-in-out;'
@@ -26,7 +26,7 @@ test('test aysnc value and  duration props', async () => {
   const { container, rerender } = render(
     <AnimatingNumbers.CountUp value={value} duration={1.2} length={6} />
   )
-  const listNumbers = container.querySelectorAll('.nut-countup__number')
+  const listNumbers = container.querySelectorAll('.nut-countup-number')
   expect(listNumbers.length).toBe(8)
   jest.advanceTimersByTime(CountUp.defaultProps?.delay ?? 0)
   expect(listNumbers[0]).toHaveAttribute(
@@ -38,7 +38,7 @@ test('test aysnc value and  duration props', async () => {
   )}`
   rerender(<AnimatingNumbers.CountUp value={value} duration={0} />)
   await waitFor(() => {
-    const listNumbers2 = container.querySelectorAll('.nut-countup__number')
+    const listNumbers2 = container.querySelectorAll('.nut-countup-number')
     const lastlen = value.length - 1
     const lastNumber = Number(value.slice(lastlen))
     const percentage = lastNumber === 0 ? 50 : 5 * lastNumber
