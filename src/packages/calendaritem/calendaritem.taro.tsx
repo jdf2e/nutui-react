@@ -439,8 +439,9 @@ export const CalendarItem = React.forwardRef<
       // 初始化 日历位置
       if (monthsRef && monthsPanel && viewAreaRef) {
         viewHeight = (monthsRef.current as HTMLDivElement).clientHeight
-        ;(monthsPanel.current as HTMLDivElement).style.height =
-          `${containerHeight}px`
+        ;(
+          monthsPanel.current as HTMLDivElement
+        ).style.height = `${containerHeight}px`
         ;(monthsRef.current as HTMLDivElement).scrollTop =
           monthsData[current].scrollTop
         setScrollTop(monthsData[current].scrollTop)
