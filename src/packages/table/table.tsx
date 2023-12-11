@@ -48,8 +48,13 @@ export const Table: FunctionComponent<
     defaultValue: data,
     finalValue: [],
   })
-  const { stickyLeftWidth, stickyRightWidth, getStickyClass, getStickyStyle } =
-    useTableSticky(columns)
+  const {
+    isSticky,
+    stickyLeftWidth,
+    stickyRightWidth,
+    getStickyClass,
+    getStickyStyle,
+  } = useTableSticky(columns)
 
   useEffect(() => {
     setValue(data)
@@ -163,14 +168,18 @@ export const Table: FunctionComponent<
           <div className={`${classPrefix}-main-body`}>{renderBoyTrs()}</div>
         </div>
       </div>
-      <div
-        className={`${classPrefix}-sticky-left`}
-        style={{ width: stickyLeftWidth }}
-      />
-      <div
-        className={`${classPrefix}-sticky-right`}
-        style={{ width: stickyRightWidth }}
-      />
+      {isSticky ? (
+        <>
+          <div
+            className={`${classPrefix}-sticky-left`}
+            style={{ width: stickyLeftWidth }}
+          />
+          <div
+            className={`${classPrefix}-sticky-right`}
+            style={{ width: stickyRightWidth }}
+          />
+        </>
+      ) : null}
       {(summary || innerValue.length === 0) && (
         <div className={`${classPrefix}-summary`}>{summary || noData}</div>
       )}
