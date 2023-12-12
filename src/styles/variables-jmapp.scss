@@ -1340,6 +1340,11 @@ $radio-icon-font-size: var(
   --nutui-radio-icon-font-size,
   $font-size-large
 ) !default;
+$radio-label-color: var(--nutui-radio-label-color, $color-text) !default;
+$radio-label-disable-color: var(
+  --nutui-radio-label-disable-color,
+  $color-text-disabled
+) !default;
 $radio-label-font-size: var(
   --nutui-radio-label-font-size,
   $font-size-base
@@ -1355,11 +1360,14 @@ $radio-button-font-size: var(
   $font-size-base
 ) !default;
 $radio-button-color: $color-text;
-$radio-button-background: $color-background;
 $radio-button-padding: var(--nutui-radio-button-padding, 5px 18px) !default;
 $radio-button-border-radius: var(
   --nutui-radio-button-border-radius,
   $radius-xs
+) !default;
+$radio-button-background: var(
+  --nutui-radio-button-background,
+  $color-background
 ) !default;
 $radio-button-active-border: var(
   --nutui-radio-button-active-border,
@@ -1675,7 +1683,7 @@ $tabs-tab-button-active-background-color: var(
 ) !default;
 $tabs-tab-button-active-border: var(
   --nutui-tabs-button-active-border,
-  1px solid transparent
+  1px solid $color-primary
 ) !default;
 $tabs-vertical-titles-width: var(
   --nutui-tabs-vertical-titles-width,
