@@ -59,7 +59,7 @@ const NavBarDemo = () => {
         <NavBar
           back={
             <>
-              <ArrowLeft name="left" color="#979797" />
+              <ArrowLeft size={14} />
               {translated.a74a1fd4}
             </>
           }
@@ -68,7 +68,7 @@ const NavBarDemo = () => {
               className="flex-center"
               onClick={(e) => Taro.showToast({ title: 'icon' })}
             >
-              <Share size={20} />
+              <Share size={14} />
             </span>
           }
           onBackClick={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
@@ -87,7 +87,7 @@ const NavBarDemo = () => {
             </span>
           }
           left={<Close size={14} />}
-          back={<ArrowLeft name="left" color="#979797" />}
+          back={<ArrowLeft size={14} />}
           onBackClick={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
         >
           <div className="title">
@@ -100,7 +100,7 @@ const NavBarDemo = () => {
           </div>
         </NavBar>
         <NavBar
-          back={<ArrowLeft name="left" color="#979797" />}
+          back={<ArrowLeft size={14} />}
           right={
             <>
               <span
@@ -127,12 +127,12 @@ const NavBarDemo = () => {
             className="flex-center"
             onClick={(e) => Taro.showToast({ title: 'icon' })}
           >
-            <Cart size={20} />
+            <Cart size={14} />
           </i>
         </NavBar>
 
         <NavBar
-          back={<ArrowLeft size={20} name="left" color="#979797" />}
+          back={<ArrowLeft size={14} />}
           right={
             <>
               <span
@@ -168,7 +168,7 @@ const NavBarDemo = () => {
           titleAlign="left"
           back={
             <>
-              <ArrowLeft name="left" color="#979797" />
+              <ArrowLeft size={14} />
               {translated.a74a1fd4}
             </>
           }
@@ -177,7 +177,7 @@ const NavBarDemo = () => {
               className="flex-center"
               onClick={(e) => Taro.showToast({ title: 'icon' })}
             >
-              <Share size={20} />
+              <Share size={14} />
             </span>
           }
           onBackClick={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
@@ -197,7 +197,7 @@ const NavBarDemo = () => {
             </span>
           }
           left={<Close size={14} />}
-          back={<ArrowLeft name="left" color="#979797" />}
+          back={<ArrowLeft size={14} />}
           onBackClick={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
         >
           <div className="title">
@@ -211,7 +211,7 @@ const NavBarDemo = () => {
         </NavBar>
         <NavBar
           titleAlign="left"
-          back={<ArrowLeft name="left" color="#979797" />}
+          back={<ArrowLeft size={14} />}
           right={
             <>
               <span
@@ -238,12 +238,12 @@ const NavBarDemo = () => {
             className="flex-center"
             onClick={(e) => Taro.showToast({ title: 'icon' })}
           >
-            <Cart size={20} />
+            <Cart size={14} />
           </i>
         </NavBar>
         <NavBar
           titleAlign="left"
-          back={<ArrowLeft size={20} name="left" color="#979797" />}
+          back={<ArrowLeft size={14} />}
           right={
             <>
               <span
