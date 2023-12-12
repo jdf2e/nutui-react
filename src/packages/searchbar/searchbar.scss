@@ -44,7 +44,9 @@
 
   &-left {
     margin-right: $searchbar-gap;
-    & > * {
+    & > div,
+    & > span,
+    & > svg {
       margin-right: $searchbar-gap;
       &:last-child {
         margin-right: 0;
@@ -55,7 +57,9 @@
   &-right {
     margin-left: $searchbar-gap;
 
-    & > * {
+    & > div,
+    & > span,
+    & > svg {
       margin-left: $searchbar-gap;
 
       &:first-child {
