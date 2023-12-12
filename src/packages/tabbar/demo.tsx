@@ -139,23 +139,11 @@ const TabbarDemo = () => {
             console.log(value)
           }}
         >
-          <Tabbar.Item
-            title={translated.c3a3a1d2}
-            icon={<Home width={12} height={12} />}
-          />
-          <Tabbar.Item
-            title={translated.d04fcbda}
-            icon={<Category width={12} height={12} />}
-          />
+          <Tabbar.Item icon={<Home width={24} height={24} />} />
+          <Tabbar.Item icon={<Category width={24} height={24} />} />
           <Tabbar.Item icon={<Find width={24} height={24} />} />
-          <Tabbar.Item
-            title={translated['7db1a8b2']}
-            icon={<Cart width={12} height={12} />}
-          />
-          <Tabbar.Item
-            title={translated.e51e4582}
-            icon={<User width={12} height={12} />}
-          />
+          <Tabbar.Item icon={<Cart width={24} height={24} />} />
+          <Tabbar.Item icon={<User width={24} height={24} />} />
         </Tabbar>
 
         <h2>{translated.ce5c5440}</h2>

@@ -172,7 +172,7 @@ const App = () => {
             返回
         </>
         }
-        left={<Close width={12} />}
+        left={<Close size={12} />}
         right={
         <span onClick={(e) =>  Toast.show('icon')}>
             <Share />

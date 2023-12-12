@@ -270,7 +270,7 @@ const App = () => {
             list={horseLamp1}
             speed={10}
             duration={1000}
-            rightIcon={<Fabulous width={16} height={16} color="#f0250f" />}
+            rightIcon={<Fabulous size={16}  color="#f0250f" />}
         />
         </>
     )

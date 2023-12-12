@@ -332,21 +332,21 @@ const StepsDemo = () => {
             <Step
               value={1}
               title={translated.f28461bb}
-              icon={<Service width={12} height={12} />}
+              icon={<Service width={14} height={14} />}
             >
               1
             </Step>
             <Step
               value={2}
               title={translated.dc9591e5}
-              icon={<People width={12} height={12} />}
+              icon={<People width={14} height={14} />}
             >
               2
             </Step>
             <Step
               value={3}
               title={translated.f6e0d691}
-              icon={<Checklist width={12} height={12} />}
+              icon={<Checklist width={14} height={14} />}
             >
               3
             </Step>

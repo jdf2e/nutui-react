@@ -313,11 +313,7 @@ const StepsDemo = () => {
                 value={2}
                 title={translated.dc9591e5}
                 icon={
-                  <People
-                    width={20}
-                    height={20}
-                    style={{ color: 'red', flex: 'none' }}
-                  />
+                  <People size={20} style={{ color: 'red', flex: 'none' }} />
                 }
               >
                 2
@@ -335,21 +331,21 @@ const StepsDemo = () => {
             <Step
               value={1}
               title={translated.f28461bb}
-              icon={<Service width={12} height={12} />}
+              icon={<Service size={14} />}
             >
               1
             </Step>
             <Step
               value={2}
               title={translated.dc9591e5}
-              icon={<People width={12} height={12} />}
+              icon={<People size={14} />}
             >
               2
             </Step>
             <Step
               value={3}
               title={translated.f6e0d691}
-              icon={<Checklist width={12} height={12} />}
+              icon={<Checklist size={14} />}
             >
               3
             </Step>

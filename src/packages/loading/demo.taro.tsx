@@ -49,7 +49,7 @@ const LoadingDemo = () => {
           <ConfigProvider theme={{ nutuiLoadingIconSize: '20px' }}>
             <Loading type="circular" />
           </ConfigProvider>
-          <ConfigProvider theme={{ nutuiLoadingIconSize: '40px' }}>
+          <ConfigProvider theme={{ nutuiLoadingIconSize: '28px' }}>
             <Loading type="spinner" />
           </ConfigProvider>
         </Cell>
@@ -72,10 +72,7 @@ const LoadingDemo = () => {
         </Cell>
         <h2>自定义图标</h2>
         <Cell>
-          <Loading
-            direction="vertical"
-            icon={<Star width="30" height="30" color="red" />}
-          />
+          <Loading direction="vertical" icon={<Star size={24} color="red" />} />
         </Cell>
         <h2>与遮罩层结合</h2>
         <Cell>

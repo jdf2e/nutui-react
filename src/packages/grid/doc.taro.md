@@ -202,13 +202,13 @@ const App = () => {
   return (
     <Grid columns="3">
       <Grid.Item text="文字">
-        <Image width={10} height={10} />
+        <Image size={10}  />
       </Grid.Item>
       <Grid.Item text="文字">
         <Image color="red" />
       </Grid.Item>
       <Grid.Item text="文字">
-        <Image width={20} height={20} color="#478EF2" />
+        <Image size={20}  color="#478EF2" />
       </Grid.Item>
     </Grid>
   )

@@ -209,7 +209,7 @@ const App = () => {
           extra={
             <div style={{ display: 'flex', alignItems: 'center' }}>
               More
-              <ArrowRight width={12} height={12} style={{ marginLeft: '5px' }} />
+              <ArrowRight size={12} style={{ marginLeft: '5px' }} />
             </div>
           }
         />
