@@ -123,20 +123,19 @@ const SearchBarDemo = () => {
         <SearchBar
           left={
             <>
-              <ArrowLeft width={20} height={20} />
-              <Close width={20} height={20} />
+              <ArrowLeft size={20} />
+              <Close size={20} />
             </>
           }
           right={
             <>
               <span>{translated.test}</span>
-              <More width={20} height={20} />
+              <More size={20} />
             </>
           }
           rightIn={
             <Photograph
-              width={16}
-              height={16}
+              size={16}
               onClick={() => {
                 console.log('Photograph right in')
               }}
@@ -163,7 +162,7 @@ const SearchBarDemo = () => {
                 }}
               >
                 更多
-                <ArrowDown size={8} style={{ marginLeft: '5px' }} />
+                <ArrowDown size={12} style={{ marginLeft: '5px' }} />
               </div>
             </Popover>
           }

@@ -23,11 +23,11 @@ import { Cart, Category, Find, Home, User } from '@nutui/icons-react-taro';
 
 const App = () => (
   <Tabbar onSwitch={(child, idx) => {console.log(idx)}}>
-    <Tabbar.Item title="首页" icon={<Home width={18} height={18} />} value={9}/>
-    <Tabbar.Item title="分类" icon={<Category width={18} height={18} />} />
-    <Tabbar.Item title="发现" icon={<Find width={18} height={18} />} />
-    <Tabbar.Item title="购物车" icon={<Cart width={18} height={18} />} />
-    <Tabbar.Item title="我的" icon={<User width={18} height={18} />} />
+    <Tabbar.Item title="首页" icon={<Home size={18}/>} value={9}/>
+    <Tabbar.Item title="分类" icon={<Category size={18}/>} />
+    <Tabbar.Item title="发现" icon={<Find size={18}/>} />
+    <Tabbar.Item title="购物车" icon={<Cart size={18}/>} />
+    <Tabbar.Item title="我的" icon={<User size={18}/>} />
   </Tabbar>
 )
 
@@ -55,11 +55,11 @@ const App = () => {
       setActiveIndex(value)
     }}
   >
-    <Tabbar.Item title="首页" icon={<Home width={20} height={20} />} value={9} />
-    <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} dot />
-    <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
-    <Tabbar.Item title="购物车" icon={<Cart width={20} height={20} />} />
-    <Tabbar.Item title="我的" icon={<User width={20} height={20} />} />
+    <Tabbar.Item title="首页" icon={<Home size={18}/>} value={9} />
+    <Tabbar.Item title="分类" icon={<Category size={18}/>} dot />
+    <Tabbar.Item title="发现" icon={<Find size={18}/>} />
+    <Tabbar.Item title="购物车" icon={<Cart size={18}/>} />
+    <Tabbar.Item title="我的" icon={<User size={18}/>} />
   </Tabbar>
 }
 
@@ -79,11 +79,11 @@ import { Cart, Category, Find, Home, User } from '@nutui/icons-react-taro';
 
 const App = () => (
   <Tabbar>
-    <Tabbar.Item title="首页" icon={<Home width={12} height={12} />} value={11} />
-    <Tabbar.Item title="分类" icon={<Category width={12} height={12} />} dot />
-    <Tabbar.Item title="发现" icon={<Find width={12} height={12} />} />
-    <Tabbar.Item title="购物车" icon={<Cart width={12} height={12} />} value={110} />
-    <Tabbar.Item title="我的" icon={<User width={12} height={12} />} />
+    <Tabbar.Item title="首页" icon={<Home size={12} />} value={11} />
+    <Tabbar.Item title="分类" icon={<Category size={12} />} dot />
+    <Tabbar.Item title="发现" icon={<Find size={12} />} />
+    <Tabbar.Item title="购物车" icon={<Cart size={12} />} value={110} />
+    <Tabbar.Item title="我的" icon={<User size={12} />} />
   </Tabbar>
 )
 
@@ -103,11 +103,11 @@ import { Cart, Category, Find, Home, User } from '@nutui/icons-react-taro';
 
 const App = () => (
   <Tabbar>
-    <Tabbar.Item title="首页" icon={<Home width={20} height={20} />} dot />
-    <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
-    <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
-    <Tabbar.Item title="购物车" icon={<Cart width={20} height={20} />} dot />
-    <Tabbar.Item title="我的" icon={<User width={20} height={20} />} />
+    <Tabbar.Item title="首页" icon={<Home size={18}/>} dot />
+    <Tabbar.Item title="分类" icon={<Category size={18}/>} />
+    <Tabbar.Item title="发现" icon={<Find size={18}/>} />
+    <Tabbar.Item title="购物车" icon={<Cart size={18}/>} dot />
+    <Tabbar.Item title="我的" icon={<User size={18}/>} />
   </Tabbar>
 )
 
@@ -128,11 +128,11 @@ import { Cart, Category, Find, Home, User } from '@nutui/icons-react-taro';
 
 const App = () => (
   <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
-    <Tabbar.Item title="首页" icon={<Home width={20} height={20} />} />
-    <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
-    <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
-    <Tabbar.Item title="购物车" icon={<Cart width={20} height={20} />} />
-    <Tabbar.Item title="我的" icon={<User width={20} height={20} />} />
+    <Tabbar.Item title="首页" icon={<Home size={18}/>} />
+    <Tabbar.Item title="分类" icon={<Category size={18}/>} />
+    <Tabbar.Item title="发现" icon={<Find size={18}/>} />
+    <Tabbar.Item title="购物车" icon={<Cart size={18}/>} />
+    <Tabbar.Item title="我的" icon={<User size={18}/>} />
   </Tabbar>
 )
 
@@ -152,9 +152,9 @@ import { Category, Find, Home } from '@nutui/icons-react-taro';
 
 const App = () => (
   <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
-    <Tabbar.Item title="首页" icon={<Home width={20} height={20} />} />
-    <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
-    <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
+    <Tabbar.Item title="首页" icon={<Home size={18}/>} />
+    <Tabbar.Item title="分类" icon={<Category size={18}/>} />
+    <Tabbar.Item title="发现" icon={<Find size={18}/>} />
   </Tabbar>
 )
 
@@ -174,11 +174,11 @@ import { Cart, Category, Find, Home, User } from '@nutui/icons-react-taro';
 
 const App = () => (
   <Tabbar fixed>
-    <Tabbar.Item title="首页" icon={<Home width={20} height={20} />} />
-    <Tabbar.Item title="分类" icon={<Category width={20} height={20} />} />
-    <Tabbar.Item title="发现" icon={<Find width={20} height={20} />} />
-    <Tabbar.Item title="购物车" icon={<Cart width={20} height={20} />} />
-    <Tabbar.Item title="我的" icon={<User width={20} height={20} />} />
+    <Tabbar.Item title="首页" icon={<Home size={18}/>} />
+    <Tabbar.Item title="分类" icon={<Category size={18}/>} />
+    <Tabbar.Item title="发现" icon={<Find size={18}/>} />
+    <Tabbar.Item title="购物车" icon={<Cart size={18}/>} />
+    <Tabbar.Item title="我的" icon={<User size={18}/>} />
   </Tabbar>
 )
 

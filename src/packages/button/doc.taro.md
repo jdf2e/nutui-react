@@ -163,15 +163,15 @@ const App = () => {
         shape="square"
         fill="outline"
         type="primary"
-        icon={<Plus width="20" />}
+        icon={<Plus size="20" />}
         style={{ margin: 8 }}
       />
       <Button
         shape="round"
         type="primary"
         size="large"
-        icon={<Star width={20} height={20} />}
-        rightIcon={<Star width={20} height={20} />}
+        icon={<Star size={20} />}
+        rightIcon={<Star size={20} />}
         style={{ margin: 8 }}
       >
         操作按钮
@@ -268,21 +268,21 @@ const App = () => {
         shape="square"
         fill="outline"
         type="primary"
-        icon={<Plus width="20" />}
+        icon={<Plus size="20" />}
         style={{ margin: 8 }}
       />
       <Button
         disabled
         type="primary"
-        icon={<Plus width="20" />}
+        icon={<Plus size="20" />}
         style={{ margin: 8 }}
       />
       <Button
         shape="round"
         type="primary"
         size="large"
-        icon={<Star width={20} height={20} />}
-        rightIcon={<Star width={20} height={20} />}
+        icon={<Star size={20} />}
+        rightIcon={<Star size={20} />}
         style={{ margin: 8 }}
       >
         操作按钮
