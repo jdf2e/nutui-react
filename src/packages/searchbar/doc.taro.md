@@ -123,26 +123,24 @@ const App = () => {
     <SearchBar
       left={
         <>
-          <ArrowLeft width={20} height={20} />
-          <Close width={20} height={20} />
+          <ArrowLeft size={20} />
+          <Close size={20} />
         </>
       }
       right={
         <>
           <Star
-            width={20}
-            height={20}
+            size={20}
             style={{
               color: 'var(--nutui-color-primary)',
             }}
           />
-          <More width={20} height={20} />
+          <More size={20} />
         </>
       }
       rightIn={
         <Photograph
-          width={16}
-          height={16}
+          size={16}
           onClick={() => {
             console.log('Photograph right in')
           }}

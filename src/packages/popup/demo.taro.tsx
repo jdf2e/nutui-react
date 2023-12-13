@@ -279,7 +279,7 @@ const PopupDemo = () => {
         />
         <Popup
           closeable
-          closeIcon={<Failure width="12px" height="12px" />}
+          closeIcon={<Failure size={12} />}
           visible={showCloseIconStop}
           closeOnOverlayClick={false}
           style={{ height: '40%' }}

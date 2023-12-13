@@ -366,20 +366,20 @@ const ButtonDemo = () => {
             shape="square"
             fill="outline"
             type="primary"
-            icon={<Plus width="20" />}
+            icon={<Plus size="20" />}
             style={{ margin: 8 }}
           />
           <Button
             disabled
             type="primary"
-            icon={<Plus width="20" />}
+            icon={<Plus size="20" />}
             style={{ margin: 8 }}
           />
           <Button
             disabled
             type="primary"
             fill="dashed"
-            icon={<Plus width="20" />}
+            icon={<Plus size="20" />}
             style={{ margin: 8 }}
           />
           <Button
@@ -387,8 +387,8 @@ const ButtonDemo = () => {
             shape="round"
             type="primary"
             size="large"
-            icon={<Star width={20} height={20} />}
-            rightIcon={<Star width={20} height={20} />}
+            icon={<Star size={20} />}
+            rightIcon={<Star size={20} />}
             style={{ margin: 8 }}
           >
             {translated['7db1a8b2']}

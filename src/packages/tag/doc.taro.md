@@ -56,7 +56,7 @@ const App = () => {
            onClose={() => alert('Tag closed')}
            type='primary'>标签</Tag>
       <Tag closeable
-           closeIcon={<Failure width={8} height={8} />}
+           closeIcon={<Failure size={8}  />}
            onClose={() => alert('Tag closed')}
            type='primary'>标签</Tag>
     </>

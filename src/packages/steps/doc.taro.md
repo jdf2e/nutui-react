@@ -319,8 +319,7 @@ const App = () => {
             title="进行中"
             icon={
               <People
-                width={20}
-                height={20}
+                size={20}
                 style={{ color: 'red', flex: 'none' }}
               />
             }
