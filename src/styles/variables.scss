@@ -1471,7 +1471,7 @@ $badge-icon-padding: var(--nutui-badge-icon-padding, 3px) !default;
 $badge-icon-size: var(--nutui-badge-icon-size, 12px) !default;
 $badge-content-transform: var(
   --nutui-badge-content-transform,
-  translateY(-50%) translateX(100%)
+  translateY(-50%) translateX(50%)
 ) !default;
 $badge-z-index: var(--nutui-badge-z-index, 1) !default;
 $badge-dot-width: var(--nutui-badge-dot-width, 7px) !default;

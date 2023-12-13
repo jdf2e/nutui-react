@@ -16,8 +16,8 @@ const defaultProps = {
   value: '',
   dot: false,
   max: 99,
-  top: '4',
-  right: '8',
+  top: '0',
+  right: '0',
   color: '',
 } as BadgeProps
 export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
