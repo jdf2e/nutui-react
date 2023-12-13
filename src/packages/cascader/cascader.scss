@@ -18,6 +18,11 @@
     white-space: nowrap;
   }
 
+  .nut-tabs-content {
+    overflow: hidden;
+    max-height: 372px;
+  }
+
   .nut-tabpane {
     padding: 0;
     background: $color-background-overlay;

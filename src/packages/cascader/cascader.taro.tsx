@@ -435,7 +435,7 @@ const InternalCascader: ForwardRefRenderFunction<
                 <ScrollView
                   className={classesPane}
                   scrollY
-                  style={{ height: '70%' }}
+                  style={{ height: '100%' }}
                 >
                   {pane.nodes?.map((node: any, index: number) =>
                     renderItem(pane, node, index)
