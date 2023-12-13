@@ -63,7 +63,7 @@ const BackTopDemo = () => {
               alignItems: 'center',
             }}
           >
-            <Top width={12} height={12} />
+            <Top size={12} />
             <div style={{ fontSize: '12px' }}>{translated.backText}</div>
           </div>
         </BackTop>

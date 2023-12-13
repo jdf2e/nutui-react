@@ -113,14 +113,14 @@ const SearchBarDemo = () => {
         <SearchBar
           left={
             <>
-              <ArrowLeft width={20} height={20} />
-              <Close width={20} height={20} />
+              <ArrowLeft width={16} height={16} />
+              <Close width={16} height={16} />
             </>
           }
           right={
             <>
               <span>{translated.test}</span>
-              <More width={20} height={20} />
+              <More width={16} height={16} />
             </>
           }
           rightIn={
