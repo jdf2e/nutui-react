@@ -41,7 +41,7 @@ const defaultProps = {
   icon: null,
   iconSize: '20',
   msg: '',
-  duration: 2, // 时长,duration为0则一直展示
+  duration: 30, // 时长,duration为0则一直展示
   position: 'center',
   type: 'text',
   title: '',
@@ -158,10 +158,10 @@ export const Toast: FunctionComponent<
       return icon
     }
     return {
-      success: <Success color="#ffffff" width={iconSize} height={iconSize} />,
-      fail: <Failure color="#ffffff" width={iconSize} height={iconSize} />,
-      warn: <Tips color="#ffffff" width={iconSize} height={iconSize} />,
-      loading: <Loading color="#ffffff" width={iconSize} height={iconSize} />,
+      success: <Success color="#ffffff" size={iconSize} />,
+      fail: <Failure color="#ffffff" size={iconSize} />,
+      warn: <Tips color="#ffffff" size={iconSize} />,
+      loading: <Loading color="#ffffff" size={iconSize} />,
     }[type]
   }
 

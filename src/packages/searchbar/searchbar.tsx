@@ -155,7 +155,7 @@ export const SearchBar: FunctionComponent<
     if (!backable && !left) return null
     return (
       <div className={`${classPrefix}-left`}>
-        {backable ? <ArrowLeft width="20" height="20" /> : left}
+        {backable ? <ArrowLeft width="16" height="16" /> : left}
       </div>
     )
   }

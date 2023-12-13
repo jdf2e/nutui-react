@@ -680,7 +680,7 @@ const App = () => {
           data={data5}
           onSort={handleSorter}
           style={{ background: '#fff' }}
-          sorterIcon={<TriangleDown width="12px" height="12px" />}
+          sorterIcon={<TriangleDown size={12}  />}
         />;
 };
 export default App;

@@ -71,7 +71,7 @@ export const BackTop: FunctionComponent<
         goTop(e)
       }}
     >
-      {children || <Top width={19} height={19} className="nut-backtop-main" />}
+      {children || <Top size={19} className="nut-backtop-main" />}
     </div>
   )
 }
