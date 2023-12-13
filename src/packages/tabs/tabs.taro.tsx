@@ -290,7 +290,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
                         className={`${classPrefix}-titles-item-smile`}
                         style={tabsActiveStyle}
                       >
-                        <JoySmile color={activeColor} width={40} height={20} />
+                        <JoySmile color={activeColor} />
                       </View>
                     )}
                     <View

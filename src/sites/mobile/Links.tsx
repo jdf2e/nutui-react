@@ -21,7 +21,7 @@ const Links = () => {
                   <Link key={com.name} to={`${lang}/component/${com.name}`}>
                     {com.name}&nbsp;&nbsp;{com.cName}
                   </Link>
-                  <ArrowRight color="#979797" name="right"></ArrowRight>
+                  <ArrowRight color="#979797"></ArrowRight>
                 </li>
               ) : null
             )}

@@ -26,7 +26,7 @@ const App = () => {
     <NavBar
         back={
         <>
-            <ArrowLeft name="left" color="#979797" />
+            <ArrowLeft color="#979797" />
             返回
         </>
         }
@@ -65,7 +65,7 @@ const App = () => {
             清空
         </span>
         }
-        back={<ArrowLeft name="left" color="#979797" />}
+        back={<ArrowLeft color="#979797" />}
         onBackClick={(e) =>  Toast.show("返回")}
     >
         <span onClick={(e) =>  Toast.show("標題")}>
@@ -90,7 +90,7 @@ import { Cart, ArrowLeft, More} from '@nutui/icons-react'
 const App = () => {
   return ( 
     <NavBar
-        back={<ArrowLeft name="left" color="#979797" />}
+        back={<ArrowLeft color="#979797" />}
         right={
         <>
             <span style={{ marginRight: '5px' }} onClick={(e) =>  Toast.show('編輯')}>
@@ -127,7 +127,7 @@ const App = () => {
   const [tab1value, setTab1value] = useState('0')
   return (   
       <NavBar
-         back={<ArrowLeft name="left" color="#979797" />}
+         back={<ArrowLeft color="#979797" />}
           right={
             <>
               <span style={{ marginRight: '5px' }} onClick={(e) =>  Toast.show("編輯")}>
@@ -165,7 +165,7 @@ const App = () => {
         titleAlign="left"
         back={
         <>
-            <ArrowLeft name="left" color="#979797" />
+            <ArrowLeft color="#979797" />
             返回
         </>
         }

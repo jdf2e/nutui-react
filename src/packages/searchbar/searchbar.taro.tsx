@@ -155,7 +155,7 @@ export const SearchBar: FunctionComponent<
     if (!backable && !left) return null
     return (
       <div className={`${classPrefix}-left`}>
-        {backable ? <ArrowLeft size="20" /> : left}
+        {backable ? <ArrowLeft size="16" /> : left}
       </div>
     )
   }
@@ -177,7 +177,7 @@ export const SearchBar: FunctionComponent<
         className={`${classPrefix}-clear  ${classPrefix}-icon`}
         onClick={(e: any) => clearaVal(e)}
       >
-        <MaskClose size={20} />
+        <MaskClose size={16} />
       </div>
     )
   }

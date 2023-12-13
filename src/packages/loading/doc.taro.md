@@ -160,7 +160,7 @@ import { Star } from '@nutui/icons-react'
 const App = () => {
   return (
     <Cell>
-      <Loading direction="vertical" icon={<Star width='30' height='30' color='red'/>}/>
+      <Loading direction="vertical" icon={<Star size={30} color='red'/>}/>
     </Cell>
   );
 };
