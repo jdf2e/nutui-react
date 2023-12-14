@@ -108,7 +108,11 @@ export const FixedNav: FunctionComponent<
                   onClick={(event) => handleClick(item, event)}
                   key={item.id || index}
                 >
-                  <img src={item.icon} alt="" />
+                  {React.isValidElement(item.icon) ? (
+                    item.icon
+                  ) : (
+                    <img src={item.icon} alt="" />
+                  )}
                   <div className={`${classPrefix}-list-text`}>{item.text}</div>
                   {item.num && <div className="b">{item.num}</div>}
                 </div>
