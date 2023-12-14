@@ -3,7 +3,7 @@ import Popup from '@/packages/popup/index.taro'
 import CalendarItem from '@/packages/calendaritem/index.taro'
 import { Utils } from '@/utils/date'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import { Day, SelectedType } from './type'
+import { Day, SelectedType } from './types'
 import { ComponentDefaults } from '@/utils/typings'
 
 type CalendarRef = {

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render, waitFor, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { AnimateType } from '../type'
+import { AnimateType } from '../types'
 
 import { Animate } from '../animate'
 
