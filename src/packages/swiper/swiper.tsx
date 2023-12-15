@@ -199,10 +199,8 @@ export const Swiper = React.forwardRef<
     isEmit = false,
     movingStatus = false,
   }) => {
-    console.log('move', pace)
     if (swiperItemCount <= 1) return
     const targetActive = getActive(pace)
-    console.log(targetActive)
     // 父级容器偏移量
     const targetOffset = getOffset(targetActive, offset)
     // 如果循环，调整开头结尾图片位置
@@ -226,8 +224,7 @@ export const Swiper = React.forwardRef<
       setChildOffset(childOffset)
     }
     if (isEmit && active !== targetActive) {
-      props.onChange &&
-        props.onChange((targetActive + swiperItemCount) % swiperItemCount)
+      props.onChange?.((targetActive + swiperItemCount) % swiperItemCount)
     }
     active = targetActive
     setActive(targetActive)
