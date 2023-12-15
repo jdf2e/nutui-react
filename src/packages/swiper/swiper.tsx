@@ -2,7 +2,6 @@ import React, {
   useState,
   useEffect,
   useRef,
-  TouchEvent,
   useMemo,
   CSSProperties,
   ReactNode,
@@ -12,6 +11,8 @@ import { DataContext } from './context'
 import { getRect } from '@/utils/use-client-rect'
 import Indicator from '@/packages/indicator/index'
 import { BasicComponent } from '@/utils/typings'
+import { useTouch } from '@/utils/use-touch'
+import requestAniFrame from '@/utils/raf'
 
 export type SwiperRef = {
   to: (index: number) => void
@@ -54,12 +55,11 @@ type Parent = {
   size?: number | string
 }
 
-const DISTANCE = 5
 export const Swiper = React.forwardRef<
   SwiperRef,
   Partial<SwiperProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 >((props, ref) => {
-  const propSwiper = { ...defaultProps, ...props }
+  const mergedProps = { ...defaultProps, ...props }
   const {
     children,
     direction,
@@ -73,7 +73,7 @@ export const Swiper = React.forwardRef<
     autoPlay,
     center,
     ...rest
-  } = propSwiper
+  } = mergedProps
   const container = useRef<any>(null)
   const innerRef = useRef<any>(null)
   const swiperRef = useRef<any>({
@@ -84,8 +84,9 @@ export const Swiper = React.forwardRef<
     offset: 0,
     size: 0,
   })
-  const isVertical = direction === 'vertical'
+  const touch = useTouch()
 
+  const isVertical = direction === 'vertical'
   const [rect, setRect] = useState(null as any | null)
   // eslint-disable-next-line prefer-const
   let [active, setActive] = useState(0)
@@ -94,43 +95,31 @@ export const Swiper = React.forwardRef<
   const [offset, setOffset] = useState(0)
   const [childOffset, setChildOffset] = useState<any[]>([])
   const [ready, setReady] = useState(false)
-
   let size = isVertical ? height : width
-  const [touch] = useState({
-    startX: 0,
-    startY: 0,
-    deltaX: 0,
-    deltaY: 0,
-    offsetX: 0,
-    offsetY: 0,
-    stateDirection: '',
-    delta: 0,
-    touchTime: 0,
-  })
 
-  const { childs, childCount } = useMemo(() => {
-    let childCount = 0
-    const childs = React.Children.map(props.children, (child) => {
+  const { swiperItems, swiperItemCount } = useMemo(() => {
+    let count = 0
+    const swiperItems = React.Children.map(props.children, (child) => {
       if (!React.isValidElement(child)) return null
-      childCount++
+      count++
       return child
     })
     return {
-      childs,
-      childCount,
+      swiperItems,
+      swiperItemCount: count,
     }
   }, [props.children])
-  let trackSize = childCount * Number(size)
+  let trackSize = swiperItemCount * Number(size)
 
   // 父组件参数传入子组件item
   const parent: Parent = {
-    propSwiper,
+    propSwiper: mergedProps,
     size,
   }
   const minOffset = (() => {
     if (rect) {
       const base = isVertical ? rect.height : rect.width
-      return base - Number(size) * childCount
+      return base - Number(size) * swiperItemCount
     }
     return 0
   })()
@@ -141,69 +130,62 @@ export const Swiper = React.forwardRef<
   }
   // 定时轮播
   const startPlay = () => {
-    if (propSwiper.autoPlay <= 0 || childCount <= 1) return
+    if (mergedProps.autoPlay <= 0 || swiperItemCount <= 1) return
     stopAutoPlay()
     swiperRef.current.autoplayTimer = setTimeout(() => {
       next()
       startPlay()
-    }, Number(propSwiper.autoPlay))
+    }, Number(mergedProps.autoPlay))
   }
   // 重置首尾位置信息
   const resetPosition = () => {
     swiperRef.current.moving = true
     if (active <= -1) {
-      move({ pace: childCount })
+      move({ pace: swiperItemCount })
     }
-    if (active >= childCount) {
-      move({ pace: -childCount })
+    if (active >= swiperItemCount) {
+      move({ pace: -swiperItemCount })
     }
   }
-
   // 上一页
   const prev = () => {
     resetPosition()
-    resetTouchDetails()
-    requestFrame(() => {
-      requestFrame(() => {
-        swiperRef.current.moving = false
-        move({
-          pace: -1,
-          isEmit: true,
-        })
+    touch.reset()
+    requestAniFrame(() => {
+      swiperRef.current.moving = false
+      move({
+        pace: -1,
+        isEmit: true,
       })
     })
   }
   // 下一页
   const next = () => {
     resetPosition()
-    resetTouchDetails()
-    requestFrame(() => {
-      requestFrame(() => {
-        swiperRef.current.moving = false
-        move({
-          pace: 1,
-          isEmit: true,
-        })
+    touch.reset()
+    requestAniFrame(() => {
+      swiperRef.current.moving = false
+      move({
+        pace: 1,
+        isEmit: true,
       })
     })
   }
   // 前往指定页
   const to = (index: number) => {
     resetPosition()
-    resetTouchDetails()
-    requestFrame(() => {
-      requestFrame(() => {
-        swiperRef.current.moving = false
-        let targetIndex
-        if (props.loop && childCount === index) {
-          targetIndex = active === 0 ? 0 : index
-        } else {
-          targetIndex = index % childCount
-        }
-        move({
-          pace: targetIndex - active,
-          isEmit: true,
-        })
+    touch.reset()
+    requestAniFrame(() => {
+      swiperRef.current.moving = false
+      let targetIndex
+      if (props.loop && swiperItemCount === index) {
+        targetIndex = active === 0 ? 0 : index
+      } else {
+        targetIndex = index % swiperItemCount
+      }
+      move({
+        pace: targetIndex - active,
+        isEmit: true,
       })
     })
   }
@@ -217,8 +199,10 @@ export const Swiper = React.forwardRef<
     isEmit = false,
     movingStatus = false,
   }) => {
-    if (childCount <= 1) return
+    console.log('move', pace)
+    if (swiperItemCount <= 1) return
     const targetActive = getActive(pace)
+    console.log(targetActive)
     // 父级容器偏移量
     const targetOffset = getOffset(targetActive, offset)
     // 如果循环，调整开头结尾图片位置
@@ -233,30 +217,39 @@ export const Swiper = React.forwardRef<
       }
       if (
         Array.isArray(children) &&
-        children[childCount - 1] &&
+        children[swiperItemCount - 1] &&
         targetOffset !== 0
       ) {
         const leftBound = targetOffset > 0
-        childOffset[childCount - 1] = leftBound ? -trackSize : 0
+        childOffset[swiperItemCount - 1] = leftBound ? -trackSize : 0
       }
       setChildOffset(childOffset)
     }
     if (isEmit && active !== targetActive) {
-      props.onChange && props.onChange((targetActive + childCount) % childCount)
+      props.onChange &&
+        props.onChange((targetActive + swiperItemCount) % swiperItemCount)
     }
     active = targetActive
     setActive(targetActive)
     setOffset(targetOffset)
     getStyle(targetOffset)
   }
+
+  React.useImperativeHandle(ref, () => ({
+    to,
+    next,
+    prev,
+    resize,
+  }))
+
   // 确定当前active 元素
   const getActive = (pace: number) => {
     if (pace) {
       const _active = active + pace
       if (props.loop) {
-        return range(_active, -1, childCount)
+        return range(_active, -1, swiperItemCount)
       }
-      return range(_active, 0, childCount - 1)
+      return range(_active, 0, swiperItemCount - 1)
     }
     return active
   }
@@ -272,51 +265,12 @@ export const Swiper = React.forwardRef<
     }
     return targetOffset
   }
-  // 浏览器 帧 事件
-  const requestFrame = (fn: FrameRequestCallback) => {
-    window.requestAnimationFrame.call(window, fn)
-  }
+
   // 取值 方法
   const range = (num: number, min: number, max: number) => {
     return Math.min(Math.max(num, min), max)
   }
 
-  const getDirection = (x: number, y: number) => {
-    if (x > y && x > DISTANCE) return 'horizontal'
-    if (y > x && y > DISTANCE) return 'vertical'
-    return ''
-  }
-  // 重置 全部位移信息
-  const resetTouchDetails = () => {
-    touch.startX = 0
-    touch.startY = 0
-    touch.deltaX = 0
-    touch.deltaY = 0
-    touch.offsetX = 0
-    touch.offsetY = 0
-    touch.delta = 0
-    touch.stateDirection = ''
-    touch.touchTime = 0
-  }
-
-  // 触摸事件开始
-  const touchStart = (e: TouchEvent) => {
-    resetTouchDetails()
-    touch.startX = e.touches[0].clientX
-    touch.startY = e.touches[0].clientY
-  }
-
-  // 触摸事件移动
-  const handleTouchMove = (e: TouchEvent) => {
-    touch.deltaX = e.touches[0].clientX - touch.startX
-    touch.deltaY = e.touches[0].clientY - touch.startY
-    touch.offsetX = Math.abs(touch.deltaX)
-    touch.offsetY = Math.abs(touch.deltaY)
-    touch.delta = isVertical ? touch.deltaY : touch.deltaX
-    if (!touch.stateDirection) {
-      touch.stateDirection = getDirection(touch.offsetX, touch.offsetY)
-    }
-  }
   const classPrefix = 'nut-swiper'
   const contentClass = classNames({
     [`${classPrefix}-inner`]: true,
@@ -334,13 +288,13 @@ export const Swiper = React.forwardRef<
         : (rect as DOMRect).width - _size
       _offset =
         moveOffset +
-        (active === childCount - 1 && !props.loop ? -val / 2 : val / 2)
+        (active === swiperItemCount - 1 && !props.loop ? -val / 2 : val / 2)
     }
     target.style.transitionDuration = `${
       swiperRef.current.moving ? 0 : props.duration
     }ms`
     target.style[isVertical ? 'height' : 'width'] = `${
-      Number(size) * childCount
+      Number(size) * swiperItemCount
     }px`
     target.style[isVertical ? 'width' : 'height'] = `${
       isVertical ? width : height
@@ -350,52 +304,52 @@ export const Swiper = React.forwardRef<
     }`
   }
 
-  const onTouchStart = (e: TouchEvent) => {
+  const onTouchStart = (e: React.TouchEvent<HTMLElement>) => {
     if (!props.touchable) return
-    touchStart(e)
-    touch.touchTime = Date.now()
+    touch.start(e)
     stopAutoPlay()
     resetPosition()
   }
 
-  const onTouchMove = (e: TouchEvent) => {
+  const onTouchMove = (e: React.TouchEvent<HTMLElement>) => {
     if (props.preventDefault) e.preventDefault()
     if (props.stopPropagation) e.stopPropagation()
     if (props.touchable && swiperRef.current.moving) {
-      handleTouchMove(e)
-      if (touch.stateDirection === props.direction) {
+      touch.move(e)
+      if (touch.direction.current === props.direction) {
         move({
-          offset: touch.delta,
+          offset: touch.delta.current,
         })
       }
     }
   }
-  const onTouchEnd = (e: TouchEvent) => {
+  const onTouchEnd = (e: React.TouchEvent<HTMLElement>) => {
     if (!props.touchable || !swiperRef.current.moving) return
-    const speed = touch.delta / (Date.now() - touch.touchTime)
+    const speed =
+      touch.delta.current / (Date.now() - (touch.touchTime.current as number))
     // 快速滑动产生的 swipe，和超过阈值的滑动
     const isShouldMove =
       Math.abs(speed) > 0.3 ||
-      Math.abs(touch.delta) > Number((size / 2).toFixed(2))
-    let pace = 0
+      Math.abs(touch.delta.current) > Number((size / 2).toFixed(2))
     swiperRef.current.moving = false
 
-    if (isShouldMove && touch.stateDirection === props.direction) {
-      const offset = isVertical ? touch.offsetY : touch.offsetX
+    if (isShouldMove && touch.direction.current === props.direction) {
+      let pace = 0
+      const offset = touch.isVertical() ? touch.offsetY : touch.offsetX
       if (props.loop) {
-        if (offset > 0) {
-          pace = touch.delta > 0 ? -1 : 1
-        } else {
-          pace = 0
+        if (offset.current > 0) {
+          pace = touch.delta.current > 0 ? -1 : 1
         }
       } else {
-        pace = -Math[touch.delta > 0 ? 'ceil' : 'floor'](touch.delta / size)
+        pace = -Math[touch.delta.current > 0 ? 'ceil' : 'floor'](
+          touch.delta.current / size
+        )
       }
       move({
         pace,
         isEmit: true,
       })
-    } else if (touch.delta) {
+    } else if (touch.delta.current) {
       move({ pace: 0 })
     } else {
       getStyle()
@@ -403,17 +357,30 @@ export const Swiper = React.forwardRef<
     startPlay()
   }
 
-  useEffect(() => {
-    swiperRef.current.activeIndicator = (active + childCount) % childCount
-  }, [active])
+  const getItemStyle = (index: any) => {
+    const style: CSSProperties = {}
+    if (size) {
+      style[direction === 'horizontal' ? 'width' : 'height'] = `${size}px`
+    }
+    const offset = childOffset[index]
+    if (offset) {
+      style.transform = `translate3D${
+        direction === 'horizontal' ? `(${offset}px,0,0)` : `(0,${offset}px,0)`
+      }`
+    }
+    return style
+  }
 
-  const init = (active: number = +propSwiper.defaultValue) => {
+  const init = (index?: number) => {
     const rect = getRect(container?.current)
-    const currentIndex = Math.max(Math.min(childCount - 1, active), 0)
-    const width = +propSwiper.width || rect.width
-    const height = +propSwiper.height || rect.height
+    const currentIndex = Math.max(
+      Math.min(swiperItemCount - 1, index || Number(mergedProps.defaultValue)),
+      0
+    )
+    const width = Number(mergedProps.width) || rect.width
+    const height = Number(mergedProps.height) || rect.height
     size = isVertical ? height : width
-    trackSize = childCount * Number(size)
+    trackSize = swiperItemCount * Number(size)
     const targetOffset = getOffset(currentIndex)
     swiperRef.current.moving = true
     if (ready) {
@@ -446,63 +413,46 @@ export const Swiper = React.forwardRef<
     startPlay()
   }, [children])
 
-  useEffect(() => init(), [propSwiper.defaultValue])
-
   useEffect(() => {
-    const target = container.current
-    target.addEventListener('touchstart', onTouchStart, false)
-    target.addEventListener('touchmove', onTouchMove, false)
-    target.addEventListener('touchend', onTouchEnd, false)
+    const events = [
+      { name: 'touchstart', e: onTouchStart },
+      { name: 'touchmove', e: onTouchMove },
+      { name: 'touchend', e: onTouchEnd },
+    ]
+    events.forEach((item) => {
+      container.current?.addEventListener(item.name, item.e, false)
+    })
+
     return () => {
-      target.removeEventListener('touchstart', onTouchStart, false)
-      target.removeEventListener('touchmove', onTouchMove, false)
-      target.removeEventListener('touchend', onTouchEnd, false)
+      events.forEach((item) => {
+        container.current?.removeEventListener(item.name, item.e, false)
+      })
     }
   })
+
+  useEffect(() => init(), [props.defaultValue])
 
   useEffect(() => {
     return () => stopAutoPlay()
   }, [])
 
-  const getItemStyle = (index: any) => {
-    const style: CSSProperties = {}
-    if (size) {
-      style[direction === 'horizontal' ? 'width' : 'height'] = `${size}px`
-    }
-    const offset = childOffset[index]
-    if (offset) {
-      style.transform = `translate3D${
-        direction === 'horizontal' ? `(${offset}px,0,0)` : `(0,${offset}px,0)`
-      }`
-    }
-    return style
-  }
-  React.useImperativeHandle(ref, () => ({
-    to,
-    next,
-    prev,
-    resize,
-  }))
-
   const renderIndicator = () => {
     if (React.isValidElement(indicator)) return indicator
-    if (indicator === true) {
-      return (
-        <div
-          className={classNames({
-            [`${classPrefix}-indicator`]: true,
-            [`${classPrefix}-indicator-vertical`]: isVertical,
-          })}
-        >
-          <Indicator
-            current={(active + childCount) % childCount}
-            total={childs?.length}
-            direction={direction}
-          />
-        </div>
-      )
-    }
-    return null
+    if (!indicator) return null
+    return (
+      <div
+        className={classNames({
+          [`${classPrefix}-indicator`]: true,
+          [`${classPrefix}-indicator-vertical`]: isVertical,
+        })}
+      >
+        <Indicator
+          current={(active + swiperItemCount) % swiperItemCount}
+          total={swiperItems?.length}
+          direction={direction}
+        />
+      </div>
+    )
   }
 
   return (
@@ -513,7 +463,7 @@ export const Swiper = React.forwardRef<
         {...rest}
       >
         <div className={contentClass} ref={innerRef}>
-          {React.Children.map(childs, (child: any, index: number) => (
+          {React.Children.map(swiperItems, (child: any, index: number) => (
             <div
               className={`${classPrefix}-item-wrapper`}
               style={getItemStyle(index)}
