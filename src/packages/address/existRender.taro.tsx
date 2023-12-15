@@ -1,7 +1,8 @@
 import React, { FunctionComponent, MouseEventHandler, ReactNode } from 'react'
 import { Check, Location } from '@nutui/icons-react-taro'
+import { ScrollView } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import { AddressList } from './type'
+import { AddressList } from './types'
 
 export interface ExistRenderProps {
   type: string
@@ -57,55 +58,58 @@ export const ExistRender: FunctionComponent<
 
   return (
     <>
-      <ul className={`${classPrefix}-exist`}>
-        {existList.map((item: AddressList, index: number) => {
-          return (
-            <li
-              className={`${classPrefix}-exist-item ${
-                item.selectedAddress ? 'active' : ''
-              }`}
-              key={index}
-              onClick={(e) => {
-                e.stopPropagation()
-                selectedExist(item)
-              }}
-            >
-              {item.selectedAddress ? (
-                <>
-                  {React.isValidElement(selectIcon) ? (
-                    selectIcon
-                  ) : (
-                    <Check color="#FA2C19" />
-                  )}
-                </>
-              ) : (
-                <>
-                  {React.isValidElement(defaultIcon) ? (
-                    defaultIcon
-                  ) : (
-                    <Location />
-                  )}
-                </>
-              )}
-              <div className={`${classPrefix}-exist-item-info`}>
-                {item.name && item.phone && (
+      <ScrollView scrollY style={{ height: '100%' }}>
+        <ul className={`${classPrefix}-exist`}>
+          {existList.map((item: AddressList, index: number) => {
+            return (
+              <li
+                className={`${classPrefix}-exist-item ${
+                  item.selectedAddress ? 'active' : ''
+                }`}
+                key={index}
+                onClick={(e) => {
+                  e.stopPropagation()
+                  selectedExist(item)
+                }}
+              >
+                {item.selectedAddress ? (
                   <>
-                    <div>{item.name}</div>
-                    <div>{item.phone}</div>
+                    {React.isValidElement(selectIcon) ? (
+                      selectIcon
+                    ) : (
+                      <Check color="#FA2C19" />
+                    )}
+                  </>
+                ) : (
+                  <>
+                    {React.isValidElement(defaultIcon) ? (
+                      defaultIcon
+                    ) : (
+                      <Location />
+                    )}
                   </>
                 )}
-                <div>
-                  {item.provinceName +
-                    item.cityName +
-                    item.countyName +
-                    item.townName +
-                    item.addressDetail}
+                <div className={`${classPrefix}-exist-item-info`}>
+                  {item.name && item.phone && (
+                    <>
+                      <div>{item.name}</div>
+                      <div>{item.phone}</div>
+                    </>
+                  )}
+                  <div>
+                    {item.provinceName +
+                      item.cityName +
+                      item.countyName +
+                      item.townName +
+                      item.addressDetail}
+                  </div>
                 </div>
-              </div>
-            </li>
-          )
-        })}
-      </ul>
+              </li>
+            )
+          })}
+        </ul>
+      </ScrollView>
+
       {(custom || (custom && locale.address.chooseAnotherAddress)) && (
         <div className={`${classPrefix}-footer`} onClick={onClick}>
           <div className={`${classPrefix}-footer-btn`}>{custom}</div>

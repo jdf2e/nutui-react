@@ -9,7 +9,7 @@ import Popup from '@/packages/popup'
 import { CustomRender } from './customRender'
 import { ExistRender } from './existRender'
 import { useConfig } from '@/packages/configprovider'
-import { AddressList } from './type'
+import { AddressList } from './types'
 import {
   CascaderOption,
   CascaderOptionKey,

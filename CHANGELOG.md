@@ -1,3 +1,12 @@
+# v2.3.1
+`2023-12-13`
+
+* :bug: fix(searchbar): 小程序环境不支持 * 选择器，将 * 展开为 div、span、svg (#1777) @oasis-cloud
+* :bug: fix: jmapp variables (#1776) @xiaoyatong
+* :bug: fix: icon  使用方式错误 (#1778) @xiaoyatong
+* :bug: fix: 使用 popup 的组件，采用 scrollview 实现 (#1782) @oasis-cloud
+
+
 # v2.3.0
 `2023-12-08`
 
