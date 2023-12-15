@@ -8,7 +8,7 @@ export type FixedNavPosition = {
 
 export interface FixedNavItem {
   id: Key
-  num: number
+  num?: number
   text: ReactNode
   icon: ReactNode
 }
