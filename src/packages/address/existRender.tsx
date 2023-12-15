@@ -1,7 +1,7 @@
 import React, { FunctionComponent, MouseEventHandler, ReactNode } from 'react'
 import { Check, Location } from '@nutui/icons-react'
 import { useConfig } from '@/packages/configprovider'
-import { AddressList } from './type'
+import { AddressList } from './types'
 
 export interface ExistRenderProps {
   type: string

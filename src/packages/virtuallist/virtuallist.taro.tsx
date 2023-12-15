@@ -9,7 +9,7 @@ import React, {
 import { ScrollView } from '@tarojs/components'
 import { getSystemInfoSync } from '@tarojs/taro'
 import classNames from 'classnames'
-import { Data, PositionType, VirtualListState } from './type'
+import { Data, PositionType, VirtualListState } from './types'
 import { binarySearch, initPositinoCache, updateItemSize } from './utils'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 

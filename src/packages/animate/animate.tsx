@@ -1,6 +1,6 @@
 import React, { useState, FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { AnimateType, AnimateAction } from './type'
+import { AnimateType, AnimateAction } from './types'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 

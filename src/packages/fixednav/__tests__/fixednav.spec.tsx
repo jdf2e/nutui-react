@@ -2,9 +2,9 @@ import * as React from 'react'
 import { render, fireEvent, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
-import FixedNav from '../index'
+import FixedNav, { FixedNavItem } from '../index'
 
-const list = [
+const list: FixedNavItem[] = [
   {
     id: 1,
     text: '首页',

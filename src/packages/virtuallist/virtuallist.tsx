@@ -7,7 +7,7 @@ import React, {
   useState,
 } from 'react'
 import classNames from 'classnames'
-import type { Data, VirtualListState, PositionType } from './type'
+import type { Data, VirtualListState, PositionType } from './types'
 import {
   initPositinoCache,
   getListTotalSize,

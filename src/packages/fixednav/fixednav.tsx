@@ -4,17 +4,16 @@ import { ArrowLeft } from '@nutui/icons-react'
 import Overlay from '@/packages/overlay'
 import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-
-export type FixedNavDirection = 'right' | 'left'
-export type FixedNavPosition = {
-  top?: string
-  bottom?: string
-}
+import {
+  FixedNavDirection,
+  FixedNavItem,
+  FixedNavPosition,
+} from '@/packages/fixednav/types'
 
 export interface FixedNavProps extends BasicComponent {
   visible: boolean
   overlay: boolean
-  list: Array<any>
+  list: Array<FixedNavItem>
   activeText: string
   inactiveText: string
   position: FixedNavPosition

@@ -3,7 +3,7 @@ import Popup from '@/packages/popup'
 import CalendarItem from '@/packages/calendaritem'
 import { Utils } from '@/utils/date'
 import { useConfig } from '@/packages/configprovider'
-import { Day, SelectedType } from './type'
+import { Day, SelectedType } from './types'
 import { ComponentDefaults } from '@/utils/typings'
 
 type CalendarRef = {
