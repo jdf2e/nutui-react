@@ -432,11 +432,7 @@ const InternalCascader: ForwardRefRenderFunction<
           {!state.initLoading && state.panes.length ? (
             optionsData.map((pane) => (
               <Tabs.TabPane key={pane.paneKey} value={pane.paneKey}>
-                <ScrollView
-                  className={classesPane}
-                  scrollY
-                  style={{ height: '100%' }}
-                >
+                <ScrollView className={classesPane} scrollY>
                   {pane.nodes?.map((node: any, index: number) =>
                     renderItem(pane, node, index)
                   )}
