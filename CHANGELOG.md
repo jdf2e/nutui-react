@@ -1,3 +1,15 @@
+# v2.3.2
+`2023-12-15`
+
+* 📖 docs(cascader): 动态加载文档代码与 demo 保持一致，回显已选数据 (#1787) @LING_ZI_QING
+* :sparkles: feat(fixednav): add the list icon for ReactNode (#1786) @sunsunmonkey
+* :bug: fix(cascader): second column data cannot be displayed (#1796) @xiaoyatong
+* :bug: fix: popup minheight for iPhone14 pro max (#1795) @xiaoyatong
+* :bug: fix: toast duration too long (#1794) @xiaoyatong
+* 🛠 refactor(swiper): implementing sliding logic through useTouch (#1793) @oasis-cloud
+* 🛠 refactor: 类型文件统一为 types，增加 fixednavitem 类型 (#1789) @oasis-cloud
+
+
 # v2.3.1
 `2023-12-13`
 
