@@ -730,3 +730,5 @@ export default App;
 | \--nutui-table-cols-padding | 錶格列的padding值 | `10px` |
 | \--nutui-table-tr-even-background-color | 錶格偶數行的背景色 | `$color-background` |
 | \--nutui-table-tr-odd-background-color | 錶格奇數行的背景色 | `$white` |
+| \--nutui-table-sticky-left-shadow | 錶格左側固定陰影 | `4px 0 8px 0 rgba(0, 0, 0, 0.1)` |
+| \--nutui-table-sticky-right-shadow | 錶格右側固定陰影 | `-4px 0 8px 0 rgba(0, 0, 0, 0.1)` |

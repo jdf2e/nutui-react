@@ -718,3 +718,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-table-cols-padding | table columns padding value | `10px` |
 | \--nutui-table-tr-even-background-color | table even rows background color | `$color-background` |
 | \--nutui-table-tr-odd-background-color | table odd rows background color | `$white` |
+| \--nutui-table-sticky-left-shadow | table sticky left shadow | `4px 0 8px 0 rgba(0, 0, 0, 0.1)` |
+| \--nutui-table-sticky-right-shadow | table sticky right shadow | `-4px 0 8px 0 rgba(0, 0, 0, 0.1)` |

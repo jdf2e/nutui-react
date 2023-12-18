@@ -1962,6 +1962,14 @@ $table-tr-even-bg-color: var(
   $color-background
 ) !default;
 $table-tr-odd-bg-color: var(--nutui-table-tr-odd-bg-color, $white) !default;
+$table-sticky-left-shadow: var(
+  --nutui-table-sticky-left-shadow,
+  4px 0 8px 0 rgba(0, 0, 0, 0.1)
+) !default;
+$table-sticky-right-shadow: var(
+  --nutui-table-sticky-right-shadow,
+  -4px 0 8px 0 rgba(0, 0, 0, 0.1)
+) !default;
 
 // navbar（✅）
 $navbar-width: var(--nutui-navbar-width, 100%) !default;
