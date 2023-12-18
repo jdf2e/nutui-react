@@ -2,7 +2,7 @@
 
 .nut-popup {
   position: fixed;
-  min-height: 32%;
+  min-height: 26%;
   max-height: 100%;
   overflow-y: auto;
   background-color: $overlay-content-bg-color;
@@ -14,7 +14,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    height: $popup-title-height;
+    // height: $popup-title-height;
     border-bottom: $popup-title-border-bottom;
     padding: $popup-title-padding;
     position: relative;

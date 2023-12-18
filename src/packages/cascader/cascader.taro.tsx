@@ -8,6 +8,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { Loading, Checklist } from '@nutui/icons-react-taro'
+import { ScrollView } from '@tarojs/components'
 import { Popup, PopupProps } from '@/packages/popup/popup.taro'
 import { Tabs } from '@/packages/tabs/tabs.taro'
 import { convertListToOptions } from './helper'
@@ -431,11 +432,11 @@ const InternalCascader: ForwardRefRenderFunction<
           {!state.initLoading && state.panes.length ? (
             optionsData.map((pane) => (
               <Tabs.TabPane key={pane.paneKey} value={pane.paneKey}>
-                <div className={classesPane}>
+                <ScrollView className={classesPane} scrollY>
                   {pane.nodes?.map((node: any, index: number) =>
                     renderItem(pane, node, index)
                   )}
-                </div>
+                </ScrollView>
               </Tabs.TabPane>
             ))
           ) : (
@@ -455,6 +456,7 @@ const InternalCascader: ForwardRefRenderFunction<
           {...popupProps}
           visible={visible}
           position="bottom"
+          style={{ overflowY: 'hidden' }}
           round
           closeIcon={closeIcon}
           closeable={closeable}

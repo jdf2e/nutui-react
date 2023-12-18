@@ -1,6 +1,6 @@
 import React, { useCallback, useImperativeHandle } from 'react'
 import classNames from 'classnames'
-import { RadioGroupOptionType } from '@/packages/radiogroup/type'
+import { RadioGroupOptionType } from '@/packages/radiogroup/types'
 import { Checkbox } from '../checkbox/checkbox.taro'
 import Context from './context'
 import { usePropsValue } from '@/utils/use-props-value'

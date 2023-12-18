@@ -148,6 +148,46 @@ const CascaderDemo = () => {
         },
       ],
     },
+    {
+      value: '河北',
+      text: '河北',
+      children: [],
+    },
+    {
+      value: '上海',
+      text: '上海',
+      children: [],
+    },
+    {
+      value: '新疆',
+      text: '新疆',
+      children: [],
+    },
+    {
+      value: '广东',
+      text: '广东',
+      children: [],
+    },
+    {
+      value: '广西',
+      text: '广西',
+      children: [],
+    },
+    {
+      value: '辽宁',
+      text: '辽宁',
+      children: [],
+    },
+    {
+      value: '山西',
+      text: '山西',
+      children: [],
+    },
+    {
+      value: '黑龙江',
+      text: '黑龙江',
+      children: [],
+    },
   ])
   const [optionsDemo2] = useState([
     {

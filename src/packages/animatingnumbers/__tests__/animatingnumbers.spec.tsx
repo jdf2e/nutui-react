@@ -29,10 +29,13 @@ test('test aysnc value and  duration props', async () => {
   const listNumbers = container.querySelectorAll('.nut-countup-number')
   expect(listNumbers.length).toBe(8)
   jest.advanceTimersByTime(CountUp.defaultProps?.delay ?? 0)
-  expect(listNumbers[0]).toHaveAttribute(
-    'style',
-    'transition: transform 1.2s ease-in-out; transform: translate(0, -50%); webkit-transform: translate(0, -50%);'
-  )
+  await waitFor(() => {
+    expect(listNumbers[0]).toHaveAttribute(
+      'style',
+      'transition: transform 1.2s ease-in-out; transform: translate(0, -50%); webkit-transform: translate(0, -50%);'
+    )
+  })
+
   value = `${Math.floor(Math.random() * 999999)}.${Math.floor(
     Math.random() * 89 + 10
   )}`

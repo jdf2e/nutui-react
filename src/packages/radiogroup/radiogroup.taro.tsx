@@ -1,6 +1,6 @@
 import React, { useCallback } from 'react'
 import classNames from 'classnames'
-import { RadioGroupOptionType } from './type'
+import { RadioGroupOptionType } from './types'
 import RadioContext from './context'
 import Radio from '@/packages/radio/index.taro'
 import { usePropsValue } from '@/utils/use-props-value'

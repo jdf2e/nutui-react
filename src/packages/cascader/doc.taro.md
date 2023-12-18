@@ -296,7 +296,7 @@ const App = () => {
      />
     <Cascader
       visible={isVisibleDemo3}
-      value={value3}
+      defaultValue={value3}
       title="地址选择"
       closeable
       onClose={()=>{setIsVisibleDemo3(false)}}
