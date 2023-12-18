@@ -692,8 +692,6 @@ export default App;
 | showHeader | Show Header | `boolean` | `true` |
 | noData | Custom noData | `ReactNode` | `-` |
 | sorterIcon | Sort icon | `ReactNode` | `<ArrowDown />` |
-| width | width of the column | `number` | `auto` |
-| fixed | fixed of the column | `left` \| `right`  | `-` |
 
 ### TableColumnProps
 
@@ -705,6 +703,8 @@ export default App;
 | sorter | sort，optional values `true`,`function`, `default`, Where `default` means that you may depend on the interface after clicking, `function` you can return a specific sorting function, `default` indicates that the default sorting algorithm is adopted | `boolean` \| `Function` \| `string` | `-` |
 | render | Custom render column data, high priority | `Function(record)` | `-` |
 | onSort | Click the sort button to trigger | `item: TableColumnProps, data: Array<any>` | `-` |
+| width | width of the column | `number` | `auto` |
+| fixed | fixed of the column | `left` \| `right`  | `-` |
 
 ## Theming
 

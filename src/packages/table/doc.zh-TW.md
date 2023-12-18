@@ -703,8 +703,6 @@ export default App;
 | showHeader | 是否顯示錶頭 | `boolean` | `true` |
 | noData | 自定義無數據 | `ReactNode` | `-` |
 | onSort | 點擊排序按鈕觸發 | `item: TableColumnProps, data: Array<any>` | `-` |
-| width | 列寬度 | `number` | `auto` |
-| fixed | 固定位置 | `left` \| `right`  | `-` |
 
 ### TableColumnProps
 
@@ -716,6 +714,8 @@ export default App;
 | sorter | 排序，可選值有 true,function, default, 其中 default錶示點擊之後可能會依賴接口, function可以返回具體的排序函數, default錶示採用默認的排序算法 | `boolean` \| `Function` \| `string` | `-` |
 | render | 自定義渲染列數據，優先級高 | `Function(record)` | `-` |
 | sorterIcon | 排序 icon | `ReactNode` | `<ArrowDown />` |
+| width | 列寬度 | `number` | `auto` |
+| fixed | 固定位置 | `left` \| `right`  | `-` |
 
 
 ## 主題定制

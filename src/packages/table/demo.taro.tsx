@@ -390,7 +390,7 @@ const TableDemo = () => {
           columns={columns6}
           data={data6}
           style={{ background: '#fff', height: 200 }}
-          sorterIcon={<TriangleDown width="12px" height="12px" />}
+          sorterIcon={<TriangleDown size="12px" />}
           summary={translated.summary}
         />
       </div>
