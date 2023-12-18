@@ -137,12 +137,12 @@
 
   &-sticky-left {
     left: 1px;
-    box-shadow: 4px 0 8px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: $table-sticky-left-shadow;
   }
 
   &-sticky-right {
     right: 1px;
-    box-shadow: -4px 0 8px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: $table-sticky-right-shadow;
   }
 
   &-fixed-left,
