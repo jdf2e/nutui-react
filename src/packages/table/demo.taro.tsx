@@ -19,7 +19,9 @@ interface T {
   sorting: string
   sorterIcon: string
   hideHeader: string
-  sticky: string
+  stickyHeader: string
+  stickyLeftColumn: string
+  stickyRightColumn: string
 }
 
 const TableDemo = () => {
@@ -37,7 +39,9 @@ const TableDemo = () => {
       asynchronousRendering: '支持异步渲染(5s之后看效果)',
       sorting: '支持排序',
       sorterIcon: '支持排序更换图标',
-      sticky: '固定表头&列',
+      stickyHeader: '固定表头',
+      stickyLeftColumn: '固定左列',
+      stickyRightColumn: '固定右列',
     },
     'en-US': {
       basic: 'Basic usage',
@@ -54,7 +58,9 @@ const TableDemo = () => {
         'Support asynchronous rendering(See the effect after 5S)',
       sorting: 'Support sorting',
       sorterIcon: 'Supports sorting and changing ICONS',
-      sticky: 'sticky header or column',
+      stickyHeader: 'sticky header',
+      stickyLeftColumn: 'sticky left column',
+      stickyRightColumn: 'sticky right column',
     },
   })
 
@@ -151,7 +157,32 @@ const TableDemo = () => {
       title: '姓名',
       key: 'name',
       align: 'center',
-      fixed: 'left',
+    },
+    {
+      title: '性别',
+      key: 'sex',
+    },
+    {
+      title: '学历',
+      key: 'record',
+    },
+    {
+      title: '生日',
+      key: 'birthday',
+    },
+    {
+      title: '年龄',
+      key: 'age',
+    },
+  ])
+
+  const [columnsStickRight, setColumnsStickRight] = useState<
+    Array<TableColumnProps>
+  >([
+    {
+      title: '姓名',
+      key: 'name',
+      align: 'center',
       width: 100,
     },
     {
@@ -162,16 +193,55 @@ const TableDemo = () => {
     {
       title: '学历',
       key: 'record',
-      // width: 100
+      width: 100,
     },
     {
       title: '生日',
       key: 'birthday',
+      width: 100,
     },
     {
       title: '年龄',
       key: 'age',
       fixed: 'right',
+      width: 100,
+      render: () => {
+        return (
+          <Button type="primary" size="mini">
+            操作
+          </Button>
+        )
+      },
+    },
+  ])
+
+  const [columnsStickLeft, setColumnsStickLeft] = useState<
+    Array<TableColumnProps>
+  >([
+    {
+      title: '姓名',
+      key: 'name',
+      align: 'center',
+      width: 100,
+    },
+    {
+      title: '性别',
+      key: 'sex',
+      width: 60,
+    },
+    {
+      title: '学历',
+      key: 'record',
+      width: 100,
+    },
+    {
+      title: '生日',
+      key: 'birthday',
+      width: 100,
+    },
+    {
+      title: '年龄',
+      key: 'age',
       width: 100,
     },
   ])
@@ -385,14 +455,17 @@ const TableDemo = () => {
           style={{ background: '#fff' }}
           sorterIcon={<TriangleDown size="12px" />}
         />
-        <h2>{translated.sticky}</h2>
+        <h2>{translated.stickyHeader}</h2>
         <Table
           columns={columns6}
           data={data6}
-          style={{ background: '#fff', height: 200 }}
-          sorterIcon={<TriangleDown size="12px" />}
+          style={{ height: 150 }}
           summary={translated.summary}
         />
+        <h2>{translated.stickyLeftColumn}</h2>
+        <Table columns={columnsStickLeft} data={data6} />
+        <h2>{translated.stickyRightColumn}</h2>
+        <Table columns={columnsStickRight} data={data6} />
       </div>
     </>
   )
