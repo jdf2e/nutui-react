@@ -5,6 +5,7 @@ import React, {
   useState,
   useEffect,
   ReactNode,
+  useImperativeHandle,
 } from 'react'
 import classNames from 'classnames'
 import { Loading, Checklist } from '@nutui/icons-react-taro'
@@ -64,12 +65,16 @@ export interface CascaderProps
   onPathChange: (value: CascaderValue, params: any) => void
 }
 
+export type CascaderActions = {
+  open: () => void
+  close: () => void
+}
+
 const defaultProps = {
   ...ComponentDefaults,
   activeColor: '',
   activeIcon: 'checklist',
   popup: true,
-  visible: false,
   options: [],
   optionKey: { textKey: 'text', valueKey: 'value', childrenKey: 'children' },
   format: {},
@@ -118,6 +123,21 @@ const InternalCascader: ForwardRefRenderFunction<
     defaultValue,
     finalValue: defaultValue,
   })
+  const [innerVisible, setInnerVisible] = usePropsValue<boolean>({
+    value: props.visible,
+    defaultValue: undefined,
+    finalValue: false,
+  })
+  const actions: CascaderActions = {
+    open: () => {
+      console.log('xxxx')
+      setInnerVisible(true)
+    },
+    close: () => {
+      setInnerVisible(false)
+    },
+  }
+  useImperativeHandle(ref, () => actions)
 
   const [state] = useState({
     optionsData: [] as any,
@@ -284,6 +304,7 @@ const InternalCascader: ForwardRefRenderFunction<
   }
 
   const close = () => {
+    setInnerVisible(false)
     onClose && onClose()
   }
 
@@ -454,7 +475,7 @@ const InternalCascader: ForwardRefRenderFunction<
       {popup ? (
         <Popup
           {...popupProps}
-          visible={visible}
+          visible={innerVisible}
           position="bottom"
           style={{ overflowY: 'hidden' }}
           round
