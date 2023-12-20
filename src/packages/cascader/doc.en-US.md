@@ -596,6 +596,13 @@ export default App;
 | onChange | Triggered when the selected value changes | `(value: CascaderValue, params?: any) => void` | `-` |
 | onPathChange | Triggered when the selected item changes | `(value: CascaderValue, params: any) => void` | `-` |
 
+### Ref
+
+| Method | Description | Parameter |
+|------| --- | --- |
+| open | show Cascader | `() => void` |
+| close | Close Cascader | `() => void` |
+
 ## Theming
 
 ### CSS Variables
