@@ -385,4 +385,35 @@ describe('Cascader', () => {
     fireEvent.click(tabPane)
     expect(container).toMatchSnapshot()
   })
+
+  it('ref', async () => {
+    const change = jest.fn()
+    const pathChange = jest.fn()
+    const ref = React.createRef<any>()
+    const { container } = render(
+      <>
+        <Cascader
+          value={['福建', '福州', '鼓楼区']}
+          ref={ref}
+          options={mockOptions}
+          onChange={change}
+          onPathChange={pathChange}
+        />
+        <div id="t" onClick={() => ref.current?.open()}>
+          Test
+        </div>
+      </>
+    )
+    const ele = container.querySelector('#t')
+    if (ele) {
+      fireEvent.click(ele)
+    }
+    const overlay = container.querySelector('.nut-overlay')
+    if (overlay) {
+      fireEvent.click(overlay)
+      waitFor(() => {
+        expect(ref.current.close).toBeCalled()
+      })
+    }
+  })
 })

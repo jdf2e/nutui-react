@@ -129,7 +129,6 @@ const InternalCascader: ForwardRefRenderFunction<
   })
   const actions: CascaderActions = {
     open: () => {
-      console.log('xxxx')
       setInnerVisible(true)
     },
     close: () => {
