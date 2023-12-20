@@ -19,6 +19,7 @@ interface T {
   title6: string
   title12: string
   title13: string
+  title14: string
   title7: string
   title8: string
   title9: string
@@ -53,6 +54,7 @@ const TabsDemo = () => {
       title6: '左右布局-微笑曲线',
       title12: '嵌套布局',
       title13: '嵌套布局2',
+      title14: '滑动切换',
       title7: 'Title 字体尺寸：20px 12px',
       title8: '自定义标签栏',
       title9: 'Tabpane 自动高度',
@@ -84,6 +86,7 @@ const TabsDemo = () => {
       title6: 'Left and Right Layout - Smile Curve',
       title12: 'Tabs in Tabs',
       title13: 'Tabs in Tabs 2',
+      title14: 'Slide to switch',
       title7: 'Title font size: 20px 12px',
       title8: 'custom tab bar',
       title9: 'Tabpane auto height',
@@ -119,7 +122,7 @@ const TabsDemo = () => {
   const [tab81value, setTab81value] = useState<string | number>('0')
   const [tab82value, setTab82value] = useState<string | number>('0')
   const [tab9value, setTab9value] = useState<string | number>('0')
-  const [tab91value, setTab91value] = useState<string | number>('0')
+  const [tab91value, setTab91value] = useState<string | number>('4')
   const [tab92value, setTab92value] = useState<string | number>('0')
   const [tab93value, setTab93value] = useState<string | number>('0')
   const [list8, setList8] = useState<any>([])
@@ -294,7 +297,7 @@ const TabsDemo = () => {
             Tab 3
           </Tabs.TabPane>
         </Tabs>
-        <h2>滑动切换</h2>
+        <h2>{translated.title14}</h2>
         <Tabs
           value={tabIndex}
           onChange={(page) => {

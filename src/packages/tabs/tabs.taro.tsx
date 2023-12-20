@@ -8,6 +8,7 @@ import TabPane from '@/packages/tabpane/index.taro'
 import { usePropsValue } from '@/utils/use-props-value'
 import { useForceUpdate } from '@/utils/use-force-update'
 import raf from '@/utils/raf'
+import useUuid from '@/utils/use-uuid'
 
 export type TabsTitle = {
   title: string
@@ -36,7 +37,6 @@ export interface TabsProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   tabStyle: {},
-  name: '',
   activeColor: '',
   direction: 'horizontal',
   activeType: 'line',
@@ -67,6 +67,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     ...defaultProps,
     ...props,
   }
+  const uuid = useUuid()
 
   const [value, setValue] = usePropsValue<string | number>({
     value: props.value,
@@ -183,17 +184,16 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     animate()
   }
   const scrollIntoView = () => {
-    if (!name) return
-
     raf(() => {
       Promise.all([
-        getRect(`#nut-tabs-titles-${name} .nut-tabs-list`),
-        getAllRect(`#nut-tabs-titles-${name} .nut-tabs-titles-item`),
+        getRect(`#nut-tabs-titles-${name || uuid} .nut-tabs-list`),
+        getAllRect(`#nut-tabs-titles-${name || uuid} .nut-tabs-titles-item`),
       ]).then(([navRect, titleRects]: any) => {
         navRectRef.current = navRect
         titleRectRef.current = titleRects
         // @ts-ignore
         const titleRect: RectItem = titleRectRef.current[value]
+        if (!titleRect) return
 
         let to = 0
         if (props.direction === 'vertical') {
@@ -254,7 +254,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         scrollTop={scrollTop}
         showScrollbar={false}
         scrollWithAnimation={scrollWithAnimation.current}
-        id={`nut-tabs-titles-${name}`}
+        id={`nut-tabs-titles-${name || uuid}`}
         className={classesTitle}
         style={{ ...tabStyle }}
       >
