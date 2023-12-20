@@ -118,7 +118,6 @@ export const DatePicker: FunctionComponent<
     value: props.value && formatValue(props.value),
     defaultValue: props.defaultValue && formatValue(props.defaultValue || null),
     finalValue: 0,
-    onChange: (val: number) => {},
   })
 
   function getMonthEndDay(year: number, month: number): number {
