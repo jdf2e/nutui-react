@@ -10,6 +10,7 @@ test('Show Chinese', async () => {
     <DatePicker
       title="日期选择"
       visible
+      defaultValue={new Date(currentYear - 10, 0, 1)}
       showChinese
       threeDimensional={false}
       onConfirm={(options) => confirm(options)}
@@ -31,6 +32,7 @@ test('Min date & Max date', async () => {
     <DatePicker
       title="日期选择"
       visible
+      defaultValue={new Date(2022, 0, 1)}
       startDate={new Date(2020, 0, 1)}
       endDate={new Date(2022, 0, 1)}
       threeDimensional={false}
@@ -75,6 +77,7 @@ test('Increment step setting', async () => {
     <DatePicker
       title="日期选择"
       visible
+      defaultValue={new Date(2022, 0, 1)}
       minuteStep={5}
       type="time"
       onConfirm={confirm}
@@ -95,7 +98,13 @@ test('Filter Time', async () => {
   })
 
   const { container } = render(
-    <DatePicker title="日期选择" visible type="datehour" filter={filter} />
+    <DatePicker
+      title="日期选择"
+      visible
+      type="datehour"
+      defaultValue={new Date(2022, 0, 1)}
+      filter={filter}
+    />
   )
 
   const columns = container.querySelectorAll('.nut-picker-list')[3]
