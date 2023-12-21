@@ -6,6 +6,7 @@ import { Utils } from '@/utils/date'
 import { useTranslate } from '../../sites/assets/locale'
 
 import './demo.scss'
+import { padZero } from '@/utils/pad-zero'
 
 interface Day {
   day: string | number
@@ -289,9 +290,6 @@ const CalendarDemo = () => {
   }
   const disableDate = (date: Day) => {
     return date.day === 25 || date.day === 20 || date.day === 22
-  }
-  const padZero = (d: number | string) => {
-    return d <= 9 ? `0${d}` : d
   }
 
   const renderDay = (date: Day) => {

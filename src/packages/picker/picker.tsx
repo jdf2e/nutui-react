@@ -198,7 +198,7 @@ const InternalPicker: ForwardRefRenderFunction<
 
   useEffect(() => {
     setInnerValue(innerValue !== selectedValue ? selectedValue : innerValue)
-  }, [innerVisible])
+  }, [innerVisible, selectedValue])
 
   useEffect(() => {
     if (innerVisible) {

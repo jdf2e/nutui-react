@@ -5,6 +5,7 @@ import { useConfig } from '@/packages/configprovider'
 import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { isDate } from '@/utils/is-date'
+import { padZero } from '@/utils/pad-zero'
 
 export interface DatePickerProps extends BasicComponent {
   value?: Date
@@ -276,13 +277,6 @@ export const DatePicker: FunctionComponent<
   }
 
   const formatOption = (type: string, value: string | number) => {
-    const padZero = (num: number | string, targetLength = 2) => {
-      let str = `${num}`
-      while (str.length < targetLength) {
-        str = `0${str}`
-      }
-      return str
-    }
     if (formatter) {
       return formatter(type, {
         text: padZero(value, 2),
