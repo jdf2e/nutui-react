@@ -47,7 +47,7 @@ $color-warning-light: var(--nutui-color-warning-light) !default;
 $color-warning-background: var(--nutui-color-warning-background) !default;
 
 // 危险
-$color-danger: var(--nutui-color-danger, $color-primary) !default;
+$color-danger: var(--nutui-color-danger, #fa2c19) !default;
 $color-danger-pressed: var(--nutui-color-danger-pressed) !default;
 $color-danger-disabled: var(
   --nutui-color-danger-disabled,
