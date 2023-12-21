@@ -142,7 +142,7 @@ export const Table: FunctionComponent<
     })
   }
 
-  const renderBoyTrs = () => {
+  const renderBodyTrs = () => {
     return innerValue.map((item, index) => {
       return (
         <div className={bodyClassPrefix} key={index}>
@@ -165,7 +165,7 @@ export const Table: FunctionComponent<
               <div className={headerClassPrefix}>{renderHeadCells()}</div>
             </div>
           )}
-          <div className={`${classPrefix}-main-body`}>{renderBoyTrs()}</div>
+          <div className={`${classPrefix}-main-body`}>{renderBodyTrs()}</div>
         </div>
       </div>
       {isSticky ? (
