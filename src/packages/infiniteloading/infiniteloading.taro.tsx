@@ -107,12 +107,10 @@ export const InfiniteLoading: FunctionComponent<
   }
 
   const scrollAction = (e: any) => {
+    scrollTop.current = e.target?.scrollTop
     if (e.target.scrollTop <= 0) {
       // 滚动到最顶部
       e.target.scrollTop = 0
-    } else if (e.target.scrollTop >= scrollHeight.current) {
-      // 滚动到最底部
-      e.target.scrollTop = scrollHeight.current
     }
     onScroll && onScroll(e.target.scrollTop)
   }
