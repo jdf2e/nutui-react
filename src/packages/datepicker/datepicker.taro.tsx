@@ -116,7 +116,7 @@ export const DatePicker: FunctionComponent<
   }
   const [selectedDate, setSelectedDate] = usePropsValue<number>({
     value: props.value && formatValue(props.value),
-    defaultValue: props.defaultValue && formatValue(props.defaultValue || null),
+    defaultValue: props.defaultValue && formatValue(props.defaultValue),
     finalValue: 0,
   })
 
