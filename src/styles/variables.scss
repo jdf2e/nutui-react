@@ -1453,6 +1453,8 @@ $tag-mark-border-radius: var(
 ) !default;
 
 //badge（✅）
+$badge-top: var(--nut-badge-top, 4px) !default;
+$badge-right: var(--nut-badge-right, 8px) !default;
 $badge-height: var(--nutui-badge-height, 14px) !default;
 $badge-background-color: var(
   --nutui-badge-background-color,
@@ -1471,7 +1473,7 @@ $badge-icon-padding: var(--nutui-badge-icon-padding, 3px) !default;
 $badge-icon-size: var(--nutui-badge-icon-size, 12px) !default;
 $badge-content-transform: var(
   --nutui-badge-content-transform,
-  translateY(-50%) translateX(50%)
+  translateY(-50%) translateX(100%)
 ) !default;
 $badge-z-index: var(--nutui-badge-z-index, 1) !default;
 $badge-dot-width: var(--nutui-badge-dot-width, 7px) !default;

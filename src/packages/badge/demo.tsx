@@ -71,7 +71,7 @@ const BadgeDemo = () => {
             <Badge style={{ marginRight: '40px' }} value="NEW">
               <Avatar icon={<User />} shape="square" />
             </Badge>
-            <Badge style={{ marginRight: '40px' }} dot>
+            <Badge style={{ marginRight: '40px' }} dot top="2" right="4">
               <Avatar icon={<User />} shape="square" />
             </Badge>
           </Cell>
@@ -118,6 +118,8 @@ const BadgeDemo = () => {
             </Badge>
             <Badge
               style={{ marginRight: '40px' }}
+              top="2"
+              right="4"
               dot
               color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
             >
@@ -160,7 +162,7 @@ const BadgeDemo = () => {
             </ConfigProvider>
 
             <ConfigProvider theme={customTheme2}>
-              <Badge style={{ marginRight: '40px' }} dot>
+              <Badge style={{ marginRight: '40px' }} dot top="2" right="8">
                 <Avatar icon={<User />} shape="square" />
               </Badge>
             </ConfigProvider>
@@ -170,10 +172,15 @@ const BadgeDemo = () => {
         <h2>{translated['915d7b01']}</h2>
         <Cell.Group>
           <Cell>
-            <Badge style={{ marginRight: '40px' }} value={8}>
+            <Badge style={{ marginRight: '40px' }} value={8} top="5" right="5">
               <Avatar icon={<User />} shape="square" />
             </Badge>
-            <Badge style={{ marginRight: '40px' }} value={76}>
+            <Badge
+              style={{ marginRight: '40px' }}
+              value={76}
+              top="10"
+              right="10"
+            >
               <Avatar icon={<User />} shape="square" />
             </Badge>
             <Badge style={{ marginRight: '40px' }} value="NEW">

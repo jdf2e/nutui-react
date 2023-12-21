@@ -7,8 +7,8 @@ export interface BadgeProps extends BasicComponent {
   value: ReactNode
   dot: boolean
   max: number
-  top: string | number
-  right: string | number
+  top?: string | number
+  right?: string | number
   color: string
 }
 const defaultProps = {
@@ -16,8 +16,6 @@ const defaultProps = {
   value: '',
   dot: false,
   max: 99,
-  top: '0',
-  right: '0',
   color: '',
 } as BadgeProps
 export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
@@ -59,8 +57,12 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
   )
   const getStyle = () => {
     const style: CSSProperties = {}
-    style.top = `${Number(top) || parseFloat(String(top)) || 0}px`
-    style.right = `${Number(right) || parseFloat(String(right)) || 0}px`
+    if (top !== undefined) {
+      style.top = `${Number(top) || parseFloat(String(top)) || 0}px`
+    }
+    if (right !== undefined) {
+      style.right = `${Number(right) || parseFloat(String(right)) || 0}px`
+    }
     style.background = color
     return style
   }

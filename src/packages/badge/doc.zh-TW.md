@@ -262,6 +262,8 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
+| \--nutui-badge-top | badge 的顶部位置 | `4px` |
+| \--nutui-badge-right | badge 的右侧位置 | `8px` |
 | \--nutui-badge-height | badge 的高度 | `14px` |
 | \--nutui-badge-background-color | badge 背景色 | `linear-gradient(135deg, $color-primary 0%, $color-primary-stop-2 100%))` |
 | \--nutui-badge-color | badge 內容色值 | `#fff` |

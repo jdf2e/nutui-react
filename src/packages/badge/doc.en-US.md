@@ -262,6 +262,8 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
+| \--nutui-badge-top | badge top | `4px` |
+| \--nutui-badge-right | badge right | `8px` |
 | \--nutui-badge-height | badge height | `14px` |
 | \--nutui-badge-background-color | badge background color | `linear-gradient(135deg, $color-primary 0%, $color-primary-stop-2 100%))` |
 | \--nutui-badge-color | badge content color | `#fff` |

@@ -1498,6 +1498,8 @@ $tag-mark-border-radius: var(
 ) !default;
 
 //badge（✅）
+$badge-top: var(--nut-badge-top, 0) !default;
+$badge-right: var(--nut-badge-right, 0) !default;
 $badge-height: var(--nutui-badge-height, 20px) !default;
 $badge-background-color: var(
   --nutui-badge-background-color,

@@ -48,6 +48,8 @@
 
   &-content {
     transform: $badge-content-transform;
+    top: $badge-top;
+    right: $badge-right;
   }
 
   &-dot {
