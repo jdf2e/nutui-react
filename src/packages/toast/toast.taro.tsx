@@ -41,7 +41,7 @@ const defaultProps = {
   icon: null,
   iconSize: '20',
   msg: '',
-  duration: 30, // 时长,duration为0则一直展示
+  duration: 2, // 时长,duration为0则一直展示
   position: 'center',
   type: 'text',
   title: '',
