@@ -33,7 +33,6 @@ exports[`should match snapshot 1`] = `
   >
     <div
       class="nut-badge-content nut-badge-sup nut-badge-one"
-      style="top: 0px; right: 0px;"
     >
       8
     </div>
