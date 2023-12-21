@@ -1,4 +1,4 @@
-import { PositionType, Data } from './type'
+import { PositionType, Data } from './types'
 
 // 缓存列表初始化信息
 const initPositinoCache = (reaItemSize: number, length = 0): PositionType[] => {

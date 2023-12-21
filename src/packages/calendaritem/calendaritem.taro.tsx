@@ -22,7 +22,7 @@ import {
   isEnd,
   isStartAndEnd,
 } from '../calendar/utils'
-import { Day, MonthInfo, InputDate, SelectedType } from '../calendar/type'
+import { Day, MonthInfo, InputDate, SelectedType } from '../calendar/types'
 
 type CalendarRef = {
   scrollToDate: (date: string) => void
