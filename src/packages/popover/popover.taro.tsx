@@ -318,6 +318,7 @@ export const Popover: FunctionComponent<
       <div className={classes} style={getRootPosition()}>
         <Popup
           className={`nut-popover-content nut-popover-content-${location}`}
+          // @ts-ignore
           position="default"
           overlay={overlay}
           visible={showPopup}

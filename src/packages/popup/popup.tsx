@@ -21,7 +21,7 @@ import { useLockScroll } from '@/utils/use-lock-scroll'
 type Teleport = HTMLElement | (() => HTMLElement) | null
 
 export interface PopupProps extends OverlayProps {
-  position: string
+  position: 'top' | 'bottom' | 'left' | 'right' | 'center'
   transition: string
   overlayStyle: React.CSSProperties
   overlayClassName: string
@@ -203,45 +203,30 @@ export const Popup: FunctionComponent<
   }
 
   const renderTitle = () => {
+    const closeElement = closeable && (
+      <div className={closeClasses} onClick={onHandleClickCloseIcon}>
+        {React.isValidElement(closeIcon) ? closeIcon : <Close />}
+      </div>
+    )
     if (left || title || description) {
       return (
         <div className={`${classPrefix}-title`}>
-          {position === 'bottom' && (
-            <>
-              {left && (
-                <div className={`${classPrefix}-title-left`}>{left}</div>
-              )}
-              {(title || description) && (
-                <div className={`${classPrefix}-title-title`}>
-                  {title}
-                  {description && (
-                    <div className={`${classPrefix}-title-description`}>
-                      {description}
-                    </div>
-                  )}
+          {left && <div className={`${classPrefix}-title-left`}>{left}</div>}
+          {(title || description) && (
+            <div className={`${classPrefix}-title-title`}>
+              {title}
+              {description && (
+                <div className={`${classPrefix}-title-description`}>
+                  {description}
                 </div>
               )}
-            </>
-          )}
-          {closeable && (
-            <div className={closeClasses} onClick={onHandleClickCloseIcon}>
-              {React.isValidElement(closeIcon) ? closeIcon : <Close />}
             </div>
           )}
+          {closeElement}
         </div>
       )
     }
-    if (closeable) {
-      return (
-        <>
-          {closeable && (
-            <div className={closeClasses} onClick={onHandleClickCloseIcon}>
-              {React.isValidElement(closeIcon) ? closeIcon : <Close />}
-            </div>
-          )}
-        </>
-      )
-    }
+    return closeElement
   }
   const renderPop = () => {
     return (

@@ -307,6 +307,7 @@ export const Popover: FunctionComponent<
           className={`nut-popover-content nut-popover-content-${location}`}
           visible={showPopup}
           overlay={overlay}
+          // @ts-ignore
           position="default"
           {...rest}
         >
