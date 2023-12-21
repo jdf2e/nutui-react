@@ -46,7 +46,7 @@ const InfiniteLoadingDemo = () => {
       for (let i = curLen; i < curLen + 10; i++) {
         defaultList.push(`${i}`)
       }
-      if (defaultList.length >= 30) {
+      if (defaultList.length >= 100) {
         setHasMore(false)
       } else {
         setDefaultList([...defaultList])
