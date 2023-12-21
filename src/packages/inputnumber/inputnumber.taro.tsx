@@ -261,7 +261,10 @@ export const InputNumber: FunctionComponent<
   return (
     <div className={classes} style={styles} {...restProps}>
       <div className="nut-input-minus">
-        <Minus className={iconMinusClasses} onClick={reduceNumber} />
+        <Minus
+          className={iconMinusClasses}
+          onClick={(e: any) => reduceNumber(e)}
+        />
       </div>
       <>
         {formatter ? (
@@ -293,7 +296,7 @@ export const InputNumber: FunctionComponent<
         )}
       </>
       <div className="nut-input-add">
-        <Plus className={iconAddClasses} onClick={addNumber} />
+        <Plus className={iconAddClasses} onClick={(e: any) => addNumber(e)} />
       </div>
     </div>
   )
