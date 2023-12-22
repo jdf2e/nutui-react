@@ -27,6 +27,10 @@ interface T {
   c9e6df49: string
 }
 
+const demoCommonPopupStyle = {
+  width: '75vw',
+}
+
 const PopupDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
@@ -120,7 +124,7 @@ const PopupDemo = () => {
         />
         <Popup
           visible={showBasic}
-          style={{ padding: '30px 50px' }}
+          style={demoCommonPopupStyle}
           onClose={() => {
             setShowBasic(false)
           }}
@@ -260,7 +264,7 @@ const PopupDemo = () => {
         />
         <Popup
           visible={showOverlayStop}
-          style={{ padding: '30px 50px' }}
+          style={demoCommonPopupStyle}
           onClose={() => {
             setShowOverlayStop(false)
           }}
@@ -319,7 +323,7 @@ const PopupDemo = () => {
         />
         <Popup
           visible={showMountNode}
-          style={{ padding: '30px 50px' }}
+          style={demoCommonPopupStyle}
           portal={document.body}
           onClose={() => {
             setShowMountNode(false)
@@ -337,7 +341,7 @@ const PopupDemo = () => {
         />
         <Popup
           visible={showMutiple}
-          style={{ padding: '30px 50px' }}
+          style={demoCommonPopupStyle}
           onClose={() => {
             setShowMutiple(false)
           }}
@@ -352,7 +356,7 @@ const PopupDemo = () => {
         </Popup>
         <Popup
           visible={showMutipleInner}
-          style={{ padding: '30px 50px' }}
+          style={demoCommonPopupStyle}
           overlayStyle={{ backgroundColor: 'transparent' }}
           onClose={() => {
             setShowMutipleInner(false)
