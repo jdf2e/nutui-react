@@ -176,7 +176,6 @@ class FormStore {
         setCallback: this.setCallback,
         setInitialValues: this.setInitialValues,
         dispatch: this.dispatch,
-        validateFields: this.validateFields,
         store: this.store,
         fieldEntities: this.fieldEntities,
       }
@@ -189,6 +188,7 @@ class FormStore {
       getFieldsValue: this.getFieldsValue,
       setFieldsValue: this.setFieldsValue,
       resetFields: this.resetFields,
+      validateFields: this.validateFields,
       submit: this.submit,
       errors: this.errors,
       getInternal: this.getInternal,
