@@ -10,6 +10,7 @@ test('Show Chinese', async () => {
     <DatePicker
       title="日期选择"
       visible
+      defaultValue={new Date(currentYear - 10, 0, 1)}
       showChinese
       threeDimensional={false}
       onConfirm={(options) => confirm(options)}
@@ -27,10 +28,11 @@ test('Show Chinese', async () => {
 
 test('Min date & Max date', async () => {
   const confirm = jest.fn()
-  const { container } = render(
+  const { container, rerender } = render(
     <DatePicker
       title="日期选择"
       visible
+      defaultValue={new Date(2022, 0, 1)}
       startDate={new Date(2020, 0, 1)}
       endDate={new Date(2022, 0, 1)}
       threeDimensional={false}
@@ -45,6 +47,88 @@ test('Min date & Max date', async () => {
   lists.forEach((list, i) => {
     expect(list.textContent).toEqual(years[i])
   })
+  rerender(
+    <DatePicker
+      title="日期选择"
+      visible
+      type="datetime"
+      defaultValue={new Date(2022, 0, 1)}
+      startDate={new Date(2020, 0, 1)}
+      endDate={new Date(2022, 0, 1)}
+      threeDimensional={false}
+      onConfirm={confirm}
+    />
+  )
+  rerender(
+    <DatePicker
+      title="日期选择"
+      visible
+      type="year-month"
+      defaultValue={new Date(2022, 0, 1)}
+      startDate={new Date(2020, 0, 1)}
+      endDate={new Date(2022, 0, 1)}
+      threeDimensional={false}
+      onConfirm={confirm}
+    />
+  )
+  rerender(
+    <DatePicker
+      title="日期选择"
+      visible
+      type="hour-minutes"
+      defaultValue={new Date(2022, 0, 1)}
+      startDate={new Date(2020, 0, 1)}
+      endDate={new Date(2022, 0, 1)}
+      threeDimensional={false}
+      onConfirm={confirm}
+    />
+  )
+  rerender(
+    <DatePicker
+      title="日期选择"
+      visible
+      type="month-day"
+      defaultValue={new Date(2022, 0, 1)}
+      startDate={new Date(2020, 0, 1)}
+      endDate={new Date(2022, 0, 1)}
+      threeDimensional={false}
+      onConfirm={confirm}
+    />
+  )
+  const formatter = (type: string, option: any) => {
+    switch (type) {
+      case 'year':
+        option.text += ''
+        break
+      case 'month':
+        option.text += 'M'
+        break
+      case 'day':
+        option.text += 'D'
+        break
+      case 'hour':
+        option.text += 'H'
+        break
+      case 'minute':
+        option.text += 'M'
+        break
+      default:
+        option.text += ''
+    }
+    return option
+  }
+  rerender(
+    <DatePicker
+      title="日期选择"
+      visible
+      defaultValue={new Date(2022, 0, 1)}
+      startDate={new Date(2020, 0, 1)}
+      endDate={new Date(2022, 0, 1)}
+      threeDimensional={false}
+      onConfirm={confirm}
+      formatter={formatter}
+    />
+  )
 })
 
 test('should pick defaultValue', async () => {
@@ -75,6 +159,7 @@ test('Increment step setting', async () => {
     <DatePicker
       title="日期选择"
       visible
+      defaultValue={new Date(2022, 0, 1)}
       minuteStep={5}
       type="time"
       onConfirm={confirm}
@@ -95,7 +180,13 @@ test('Filter Time', async () => {
   })
 
   const { container } = render(
-    <DatePicker title="日期选择" visible type="datehour" filter={filter} />
+    <DatePicker
+      title="日期选择"
+      visible
+      type="datehour"
+      defaultValue={new Date(2022, 0, 1)}
+      filter={filter}
+    />
   )
 
   const columns = container.querySelectorAll('.nut-picker-list')[3]
