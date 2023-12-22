@@ -1,8 +1,10 @@
 import React, { FunctionComponent, ReactNode, useRef, useState } from 'react'
 import { ITouchEvent, View } from '@tarojs/components'
+import { Loading, More } from '@nutui/icons-react-taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { useTouch } from '@/utils/use-touch'
 import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
+
 import { sleep } from '@/utils/sleep'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -19,6 +21,7 @@ export interface PullToRefreshProps extends BasicComponent {
   threshold: number
   disabled: boolean
   scrollTop: number
+  renderIcon: (status: PullStatus) => ReactNode
   renderText: (status: PullStatus) => ReactNode
 }
 
@@ -58,6 +61,20 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
   const [status, setStatus] = useState<PullStatus>('pulling')
   const [height, setHeight] = useState(0)
 
+  const renderIcons = (status: string) => {
+    return (
+      <>
+        {(status === 'pulling' || status === 'complete') && <Loading />}
+        {(status === 'canRelease' || status === 'refreshing') && <More />}
+      </>
+    )
+  }
+  const renderStatusIcon = () => {
+    if (props.renderIcon) {
+      return props.renderIcon?.(status)
+    }
+    return renderIcons(status)
+  }
   const renderStatusText = () => {
     if (props.renderText) {
       return props.renderText?.(status)
@@ -68,7 +85,6 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
     if (status === 'complete') return props.completeText
     return ''
   }
-
   const handleTouchStart: any = (e: ITouchEvent) => {
     touch.start(e as any)
   }
@@ -96,7 +112,6 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
       setStatus(height > threshold ? 'canRelease' : 'pulling')
     }
   }
-
   async function doRefresh() {
     setHeight(headHeight)
     setStatus('refreshing')
@@ -114,7 +129,6 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
     setHeight(0)
     setStatus('pulling')
   }
-
   const handleTouchEnd: any = () => {
     pullingRef.current = false
     if (status === 'canRelease') {
@@ -143,7 +157,8 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
           className={`${classPrefix}-head-content`}
           style={{ height: headHeight }}
         >
-          {renderStatusText()}
+          <div>{renderStatusIcon()}</div>
+          <div>{renderStatusText()}</div>
         </div>
       </View>
       <div className={`${classPrefix}-content`}>{props.children}</div>

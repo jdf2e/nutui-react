@@ -35,23 +35,6 @@ const PullToRefreshDemo = () => {
     )
   }
 
-  const svgRelease = () => {
-    return (
-      <i className="nut-pulltorefresh-head-content-icons">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="36"
-          height="26"
-          viewBox="0 0 36 26"
-          fill="none"
-        >
-          <circle cx="33" cy="13" r="3" fill="#8C8C8C" />
-          <circle cx="18" cy="13" r="3" fill="#8C8C8C" />
-          <circle cx="3" cy="13" r="3" fill="#8C8C8C" />
-        </svg>
-      </i>
-    )
-  }
   return (
     <>
       <div className="demo">
@@ -61,30 +44,6 @@ const PullToRefreshDemo = () => {
             backgroundColor: `var(--nutui-gray-3)`,
             color: 'var(--nutui-gray-7)',
           }}
-          pullingText={
-            <>
-              {svgPulling()}
-              <div>下拉刷新</div>
-            </>
-          }
-          canReleaseText={
-            <>
-              {svgRelease()}
-              <div>松手刷新</div>
-            </>
-          }
-          refreshingText={
-            <>
-              {svgRelease()}
-              <div>刷新中</div>
-            </>
-          }
-          completeText={
-            <>
-              {svgPulling()}
-              <div>刷新成功</div>
-            </>
-          }
           onRefresh={() =>
             new Promise((resolve) => {
               Toast.show('😊')

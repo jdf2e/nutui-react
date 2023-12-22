@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import { useDrag } from '@use-gesture/react'
 import { animated, useSpring } from '@react-spring/web'
+import { Loading, More } from '@nutui/icons-react'
 import { useConfig } from '@/packages/configprovider'
 import { getScrollParent } from '@/utils/get-scroll-parent'
 import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
@@ -26,6 +27,7 @@ export interface PullToRefreshProps extends BasicComponent {
   headHeight: number
   threshold: number
   disabled: boolean
+  renderIcon: (status: PullStatus) => ReactNode
   renderText: (status: PullStatus) => ReactNode
 }
 
@@ -169,6 +171,24 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
     }
   )
 
+  const renderIcons = (status: string) => {
+    return (
+      <>
+        <i className={`${classPrefix}-head-content-icons`}>
+          {(status === 'pulling' || status === 'complete') && <Loading />}
+          {(status === 'canRelease' || status === 'refreshing') && <More />}
+        </i>
+      </>
+    )
+  }
+
+  const renderStatusIcon = () => {
+    if (props.renderIcon) {
+      return props.renderIcon?.(status)
+    }
+    return renderIcons(status)
+  }
+
   const renderStatusText = () => {
     if (props.renderText) {
       return props.renderText?.(status)
@@ -191,7 +211,8 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
           className={`${classPrefix}-head-content`}
           style={{ height: headHeight }}
         >
-          {renderStatusText()}
+          <div>{renderStatusIcon()}</div>
+          <div>{renderStatusText()}</div>
         </div>
       </animated.div>
       <div className={`${classPrefix}-content`}>{props.children}</div>
