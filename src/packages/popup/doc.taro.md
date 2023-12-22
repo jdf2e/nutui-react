@@ -27,7 +27,7 @@ const App = () => {
   return (
     <>
         <Cell title="展示弹出层"  onClick={() => { setShowBasic(true) }}/>
-        <Popup visible={ showBasic } style={{ padding: '30px 50px' }} onClose={ () => { setShowBasic(false) } }>正文</Popup>
+        <Popup visible={ showBasic } style={{ width: '75vw' }} onClose={ () => { setShowBasic(false) } }>正文</Popup>
     </>
   );
 };
@@ -139,7 +139,7 @@ const App = () => {
   return (
     <>
         <Cell title="指定节点挂载"  onClick={() => { setShowMountNode(true) }}/>
-        <Popup visible={showMountNode} style={{ padding: '30px 50px' }} portal={ document.body } onClose={() => { setShowMountNode(false) }}>
+        <Popup visible={showMountNode} style={{ width: '75vw' }} portal={ document.body } onClose={() => { setShowMountNode(false) }}>
           body
         </Popup>
     </>
@@ -167,7 +167,7 @@ const App = () => {
         <Cell title="多层堆叠"  onClick={() => { setShowMutiple(true) }}/>
         <Popup
           visible={showMutiple}
-          style={{ padding: '30px 50px' }}
+          style={{ width: '75vw' }}
           onClose={() => {
             setShowMutiple(false)
           }}
@@ -176,7 +176,7 @@ const App = () => {
         </Popup>
         <Popup
           visible={showMutipleInner}
-          style={{ padding: '30px 50px' }}
+          style={{ width: '75vw' }}
           onClose={() => {
             setShowMutipleInner(false)
           }}
