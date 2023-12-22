@@ -2,7 +2,7 @@
 
 ## 介紹
 
-在列錶中通過手指下拉刷新加載新內容的交互操作。
+在列表中通過手指下拉刷新加載新內容的交互操作。
 
 ## 安裝
 
@@ -47,19 +47,20 @@ export default App
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| canReleaseText | 釋放的提示文案 | `ReactNode` | `釋放立即刷新` |
+| canReleaseText | 釋放的提示文案 | `ReactNode` | `松手刷新` |
 | completeText | 完成時的提示文案 | `ReactNode` | `刷新成功` |
 | completeDelay | 完成後延遲消失的時間，單位為 ms | `number` | `500` |
 | disabled | 是否禁用下拉刷新 | `boolean` | `false` |
 | headHeight | 頭部提示內容區的高度，單位為 px | `number` | `40` |
 | pullingText | 下拉的提示文案 | `ReactNode` | `下拉刷新` |
-| refreshingText | 刷新時的提示文案 | `ReactNode` | `加載中……` |
+| refreshingText | 刷新時的提示文案 | `ReactNode` | `刷新中` |
+| renderIcon | 根據下拉狀態，自定義下拉提示圖標 | `ReactNode` | `<Loading />` |
 | renderText | 根據下拉狀態，自定義下拉提示文案 | `ReactNode` | `-` |
 | threshold | 觸發刷新需要下拉多少距離，單位為 px | `number` | `60` |
 | onRefresh | 觸發刷新時的處理函數 | `() => Promise<any>` | `-` |
 
 
-## 主題定制
+## 主題定製
 
 ### 樣式變量
 
