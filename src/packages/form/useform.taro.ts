@@ -177,6 +177,7 @@ class FormStore {
         setCallback: this.setCallback,
         setInitialValues: this.setInitialValues,
         dispatch: this.dispatch,
+        validateFields: this.validateFields,
         store: this.store,
         fieldEntities: this.fieldEntities,
       }
