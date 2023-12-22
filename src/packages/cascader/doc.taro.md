@@ -595,7 +595,12 @@ export default App;
 | onLoad | 动态加载回调，开启动态加载时生效 |  `(node: any, resolve: any) => void` | `-` |
 | onChange | 选中值改变时触发 | `(value: CascaderValue, params?: any) => void` | `-` |
 | onPathChange | 选中项改变时触发 | `(value: CascaderValue, params: any) => void` | `-` |
+### Ref
 
+| 事件名  | 说明 | 回调参数 |
+|------| --- | --- |
+| open | 显示 Cascader | `() => void` |
+| close  | 关闭 Cascader | `() => void` |
 ## 主题定制
 
 ### 样式变量
