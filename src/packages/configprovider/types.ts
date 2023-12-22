@@ -653,6 +653,8 @@ export type NutCSSVariables =
   | 'nutuiTableColsPadding'
   | 'nutuiTableTrEvenBgColor'
   | 'nutuiTableTrOddBgColor'
+  | 'nutuiTableStickyLeftShadow'
+  | 'nutuiTableStickyRightShadow'
   | 'nutuiNavbarWidth'
   | 'nutuiNavbarHeight'
   | 'nutuiNavbarMarginBottom'

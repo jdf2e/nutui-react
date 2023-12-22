@@ -1,3 +1,18 @@
+# v2.3.3
+`2023-12-22`
+
+* :sparkles: feat(form): validateFields 挂到实例上 (#1813) @oasis-cloud
+* :sparkles: feat(table): 增加table锁定头部、左侧列、右侧列 (#1775) @zhehu1
+* :bug: fix(Button): incorrect color for danger (#1809) @vczyh
+* :bug: fix(cascader): 增加 ref 上的 open 和 close 方法，支持 form 中使用 (#1799) @oasis-cloud
+* :bug: fix(datepicker): 受控模式不生效 (#1797) @oasis-cloud
+* :bug: fix(infiniteloading): scrollview 的 scrolltop 不应该根据高度设置 (#1804) @oasis-cloud
+* :bug: fix(pulltorefresh): icon 部分拆到demo中 (#1812) @xiaoyatong
+* :bug: fix(tabbaritem): 将 clone 子元素的方法，改为 context 的方式，隐藏内部使用的 props，精简对外暴露的 props 类型 (#1811) @oasis-cloud
+* :bug: fix(tabs): 导航滚动到可视范围需要显示指定 name，调整为内置 uuid 替代 name (#1800) @oasis-cloud
+* 🔨 chore: use svg64 in taro (#1805) @xiaoyatong
+
+
 # v2.3.2
 `2023-12-15`
 
