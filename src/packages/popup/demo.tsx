@@ -24,6 +24,10 @@ interface T {
   c9e6df49: string
 }
 
+const demoCommonPopupStyle = {
+  width: '75vw',
+}
+
 const PopupDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
@@ -113,10 +117,12 @@ const PopupDemo = () => {
         <Popup
           visible={showBasic}
           zIndex={2000}
-          style={{ padding: '30px 50px' }}
+          style={demoCommonPopupStyle}
           onClose={() => {
             setShowBasic(false)
           }}
+          title="我是标题"
+          closeable
         >
           {translated.b840c88f}
         </Popup>
@@ -135,6 +141,8 @@ const PopupDemo = () => {
           onClose={() => {
             setShowTop(false)
           }}
+          title="我是标题"
+          closeable
         />
         <Cell
           title={translated.cfbdc781}
@@ -157,11 +165,13 @@ const PopupDemo = () => {
         />
         <Popup
           visible={showLeft}
-          style={{ width: '40%', height: '100%' }}
+          style={{ width: '60%', height: '100%' }}
           position="left"
           onClose={() => {
             setShowLeft(false)
           }}
+          title="我是标题"
+          closeable
         />
         <Cell
           title={translated.e51e4582}
@@ -171,11 +181,13 @@ const PopupDemo = () => {
         />
         <Popup
           visible={showRight}
-          style={{ width: '40%', height: '100%' }}
+          style={{ width: '60%', height: '100%' }}
           position="right"
           onClose={() => {
             setShowRight(false)
           }}
+          title="我是标题"
+          closeable
         />
 
         <h2>{translated['7db1a8b2']}</h2>
@@ -236,7 +248,7 @@ const PopupDemo = () => {
         />
         <Popup
           visible={showOverlayStop}
-          style={{ padding: '30px 50px' }}
+          style={demoCommonPopupStyle}
           onClose={() => {
             setShowOverlayStop(false)
           }}
@@ -294,7 +306,7 @@ const PopupDemo = () => {
         />
         <Popup
           visible={showMountNode}
-          style={{ padding: '30px 50px' }}
+          style={demoCommonPopupStyle}
           portal={document.body}
           onClose={() => {
             setShowMountNode(false)
@@ -312,7 +324,7 @@ const PopupDemo = () => {
         />
         <Popup
           visible={showMutiple}
-          style={{ padding: '30px 50px' }}
+          style={demoCommonPopupStyle}
           onClose={() => {
             setShowMutiple(false)
           }}
@@ -327,7 +339,7 @@ const PopupDemo = () => {
         </Popup>
         <Popup
           visible={showMutipleInner}
-          style={{ padding: '30px 50px' }}
+          style={demoCommonPopupStyle}
           overlayStyle={{ backgroundColor: 'transparent' }}
           onClose={() => {
             setShowMutipleInner(false)
