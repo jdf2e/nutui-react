@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 import TabbarItem from '../tabbaritem'
+import TabbarContext from './context'
 
 export interface TabbarProps extends BasicComponent {
   defaultValue: number
@@ -63,20 +64,19 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> & {
       style={style}
     >
       <div className={`${classPrefix}-wrap`}>
-        {React.Children.map(children, (child, idx) => {
-          if (!React.isValidElement(child)) {
-            return null
-          }
-          const childProps = {
-            ...child.props,
-            active: idx === selectIndex,
-            index: idx,
-            inactiveColor,
+        <TabbarContext.Provider
+          value={{
+            selectIndex,
             activeColor,
+            inactiveColor,
             handleClick: setSelectIndex,
-          }
-          return React.cloneElement(child, childProps)
-        })}
+          }}
+        >
+          {React.Children.map(children, (child, index) => {
+            if (!React.isValidElement(child)) return null
+            return React.cloneElement(child, { ...child.props, index })
+          })}
+        </TabbarContext.Provider>
       </div>
       {(fixed || safeArea) && <div className={`${classPrefix}-safe-area`} />}
     </div>
