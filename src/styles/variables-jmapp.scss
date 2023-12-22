@@ -1349,7 +1349,6 @@ $radio-label-font-size: var(
   --nutui-radio-label-font-size,
   $font-size-base
 ) !default;
-$radio-label-color: var(--nutui-radio-label-color, $color-title) !default;
 $radio-label-margin-left: var(--nutui-radio-label-margin-left, 4px) !default;
 $radio-button-font-size: var(
   --nutui-radio-button-font-size,
@@ -1671,7 +1670,7 @@ $tabs-tab-line-border-radius: var(
 $tabs-tab-line-opacity: var(--nutui-tabs-tab-line-opacity, 1) !default;
 $tabs-tab-button-border-radius: var(
   --nutui-tabs-button-border-radius,
-  $radius-circle
+  $radius-xs
 ) !default;
 $tabs-tab-button-active-background-color: var(
   --nutui-tabs-button-active-background-color,
@@ -2021,6 +2020,14 @@ $table-tr-even-bg-color: var(
   $color-background
 ) !default;
 $table-tr-odd-bg-color: var(--nutui-table-tr-odd-bg-color, $white) !default;
+$table-sticky-left-shadow: var(
+  --nutui-table-sticky-left-shadow,
+  4px 0 8px 0 rgba(0, 0, 0, 0.1)
+) !default;
+$table-sticky-right-shadow: var(
+  --nutui-table-sticky-right-shadow,
+  -4px 0 8px 0 rgba(0, 0, 0, 0.1)
+) !default;
 
 // navbar（✅）
 $navbar-width: var(--nutui-navbar-width, 100%) !default;

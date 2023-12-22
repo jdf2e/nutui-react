@@ -5,6 +5,7 @@ import { BasicTableProps, TableColumnProps } from './types'
 import { useConfig } from '@/packages/configprovider'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
+import useTableSticky from './useTableSticky'
 
 export type TableProps = BasicTableProps
 
@@ -47,6 +48,13 @@ export const Table: FunctionComponent<
     defaultValue: data,
     finalValue: [],
   })
+  const {
+    isSticky,
+    stickyLeftWidth,
+    stickyRightWidth,
+    getStickyClass,
+    getStickyStyle,
+  } = useTableSticky(columns)
 
   useEffect(() => {
     setValue(data)
@@ -88,15 +96,20 @@ export const Table: FunctionComponent<
   const renderHeadCells = () => {
     return columns.map((item, index) => {
       return (
-        <span
-          className={classNames(`${headerClassPrefix}-th`, cellClasses(item))}
+        <div
+          className={classNames(
+            `${headerClassPrefix}-th`,
+            cellClasses(item),
+            getStickyClass(item.key)
+          )}
           key={item.key}
           onClick={() => handleSorterClick(item)}
+          style={getStickyStyle(item.key)}
         >
           {item.title}&nbsp;
           {item.sorter &&
             (sorterIcon || <ArrowDown width="12px" height="12px" />)}
-        </span>
+        </div>
       )
     })
   }
@@ -110,24 +123,26 @@ export const Table: FunctionComponent<
   const renderBodyTds = (item: any, rowIndex: number) => {
     return sortDataItem().map(([value, render]) => {
       return (
-        <span
+        <div
           className={classNames(
             `${bodyClassPrefix}-td`,
-            cellClasses(getColumnItem(value))
+            cellClasses(getColumnItem(value)),
+            getStickyClass(value)
           )}
           key={value}
+          style={getStickyStyle(value)}
         >
           {typeof item[value] === 'function' || typeof render === 'function' ? (
             <div>{render ? render(item, rowIndex) : item[value](item)}</div>
           ) : (
             item[value]
           )}
-        </span>
+        </div>
       )
     })
   }
 
-  const renderBoyTrs = () => {
+  const renderBodyTrs = () => {
     return innerValue.map((item, index) => {
       return (
         <div className={bodyClassPrefix} key={index}>
@@ -138,19 +153,33 @@ export const Table: FunctionComponent<
   }
 
   return (
-    <div className={cls} style={style} {...rest}>
-      <div
-        className={classNames(`${classPrefix}-main`, {
-          [`${classPrefix}-main-striped`]: striped,
-        })}
-      >
-        {showHeader && (
-          <div className={`${classPrefix}-main-head`}>
-            <div className={headerClassPrefix}>{renderHeadCells()}</div>
-          </div>
-        )}
-        <div className={`${classPrefix}-main-body`}>{renderBoyTrs()}</div>
+    <div className={cls} {...rest}>
+      <div className={classNames(`${classPrefix}-wrapper`)} style={style}>
+        <div
+          className={classNames(`${classPrefix}-main`, {
+            [`${classPrefix}-main-striped`]: striped,
+          })}
+        >
+          {showHeader && (
+            <div className={`${classPrefix}-main-head`}>
+              <div className={headerClassPrefix}>{renderHeadCells()}</div>
+            </div>
+          )}
+          <div className={`${classPrefix}-main-body`}>{renderBodyTrs()}</div>
+        </div>
       </div>
+      {isSticky ? (
+        <>
+          <div
+            className={`${classPrefix}-sticky-left`}
+            style={{ width: stickyLeftWidth }}
+          />
+          <div
+            className={`${classPrefix}-sticky-right`}
+            style={{ width: stickyRightWidth }}
+          />
+        </>
+      ) : null}
       {(summary || innerValue.length === 0) && (
         <div className={`${classPrefix}-summary`}>{summary || noData}</div>
       )}

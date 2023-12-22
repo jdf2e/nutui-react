@@ -19,4 +19,6 @@ export interface TableColumnProps {
   align?: string
   sorter?: ((a: any, b: any) => number) | boolean | string
   render?: (rowData: any, rowIndex: number) => string | React.ReactNode
+  fixed?: 'left' | 'right'
+  width?: number
 }
