@@ -100,7 +100,10 @@
 
       // background-color: $color-primary;
       .nut-icon {
+        position: absolute;
         font-size: 12px;
+        width: 12px;
+        height: 12px;
         &:before {
           top: auto;
           bottom: -22px;

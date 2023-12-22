@@ -1,29 +1,23 @@
-import React, { FunctionComponent, ReactNode } from 'react'
+import React, { FunctionComponent, ReactNode, useContext } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Badge from '@/packages/badge/index.taro'
+import TabbarContext from '@/packages/tabbar/context'
 
 export interface TabbarItemProps extends BasicComponent {
   title: ReactNode
   icon: ReactNode
-  active: boolean
-  activeColor: string
-  inactiveColor: string
-  index: number
   value: ReactNode
   dot: boolean
   max: number
   top: string
   right: string
-  handleClick: (idx: number) => void
 }
 
 const defaultProps = {
   ...ComponentDefaults,
   title: '',
   icon: null,
-  active: false,
-  index: 0,
   value: '',
   dot: false,
   max: 99,
@@ -34,26 +28,25 @@ const defaultProps = {
 export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
   props
 ) => {
+  const ctx = useContext(TabbarContext)
   const {
     className,
     style,
     title,
     icon,
-    active,
-    activeColor,
-    inactiveColor,
-    index,
     value,
     dot,
     max,
     top,
     right,
-    handleClick,
+    // @ts-ignore
+    index,
     ...rest
   } = {
     ...defaultProps,
     ...props,
   }
+  const active = index === ctx?.selectIndex
   const classPrefix = 'nut-tabbar-item'
   const tabbarItemClass = classNames(
     classPrefix,
@@ -73,17 +66,17 @@ export const TabbarItem: FunctionComponent<Partial<TabbarItemProps>> = (
     max,
     top,
     right,
-    color: activeColor,
+    color: ctx?.activeColor,
   }
 
   return (
     <div
       className={tabbarItemClass}
       style={{
-        color: active ? activeColor : inactiveColor,
+        color: active ? ctx?.activeColor : ctx?.inactiveColor,
         ...style,
       }}
-      onClick={() => handleClick(index)}
+      onClick={() => ctx?.handleClick(index)}
       {...rest}
     >
       {icon ? (
