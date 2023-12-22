@@ -122,8 +122,13 @@ const DatePickerDemo = () => {
   }
 
   const confirm10 = (options: PickerOption[], values: (string | number)[]) => {
-    console.log('options confirm1', options)
-    setValue(options.map((option) => option.text).join(' '))
+    const v = options
+      .map((option) => option.text)
+      .join()
+      .replace('年', '-')
+      .replace('月', '-')
+      .replace('日', '')
+    setValue(v)
     setDesc10(options.map((option) => option.text).join(' '))
   }
 
