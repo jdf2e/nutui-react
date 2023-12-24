@@ -596,6 +596,12 @@ export default App;
 | onChange | 選中值改變時觸發 | `(value: CascaderValue, params?: any) => void` | `-` |
 | onPathChange | 選中項改變時觸發 | `(value: CascaderValue, params: any) => void` | `-` |
 
+### Ref
+
+|事件名 |說明 |回調參數 |
+|------| --- | --- |
+| open | 顯示 Cascader | `() => void` |
+| close  | 關閉 Cascader | `() => void` |
 ## 主題定制
 
 ### 樣式變量
