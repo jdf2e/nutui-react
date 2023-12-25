@@ -33,11 +33,8 @@ const WaterMarkDemo = () => {
   })
 
   const [flag, setFlag] = useState(false)
-  const src = useRef(
-    '//storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
-  )
   const imgSrc = useRef(
-    '//m.360buyimg.com/imagetools/jfs/t1/57345/6/20069/8019/62b995cdEd96fef03/51d3302dfeccd1d2.png'
+    'https://img13.360buyimg.com/imagetools/jfs/t1/230451/22/10532/3288/65893454Fa4cb86ab/5f564e17d19f4f29.png'
   )
 
   const showTextMark = () => {
@@ -71,8 +68,7 @@ const WaterMarkDemo = () => {
           )}
         </Cell>
         <h2>{translated.fa139733}</h2>
-        <Cell>
-          <img src={src.current} alt="" width="100%" height="100%" />
+        <Cell style={{ height: '200px' }}>
           <WaterMark fullPage={false} color="red" content="nutui" />
         </Cell>
       </div>
