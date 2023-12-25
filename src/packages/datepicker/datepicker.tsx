@@ -359,9 +359,7 @@ export const DatePicker: FunctionComponent<
   }
 
   useEffect(() => {
-    if (selectedDate) {
-      setPickerOptions(columns())
-    }
+    setPickerOptions(columns())
   }, [selectedDate, startDate, endDate])
 
   return (
