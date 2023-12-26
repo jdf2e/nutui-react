@@ -56,7 +56,7 @@ const ListDemo = () => {
   }
   const getData = useCallback(() => {
     const datas: any = []
-    const pageSize = 10
+    const pageSize = 20
     for (let i = (pageNo - 1) * pageSize; i < pageNo * pageSize; i++) {
       const num = i > 9 ? i : `0${i}`
       datas.push({ v: ` list${num}`, k: '3333' })
@@ -107,6 +107,7 @@ const ListDemo = () => {
         return (
           <VirtualList
             itemHeight={50}
+            containerHeight={600}
             list={list}
             itemRender={itemRender}
             onScroll={onScroll}

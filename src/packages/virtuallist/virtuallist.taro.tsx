@@ -6,7 +6,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { ScrollView } from '@tarojs/components'
+import { ScrollView, View } from '@tarojs/components'
 import { getSystemInfoSync } from '@tarojs/taro'
 import classNames from 'classnames'
 import { Data, PositionType, VirtualListState } from './types'
@@ -20,6 +20,7 @@ export interface VirtualListProps extends BasicComponent {
   containerHeight: number
   itemRender: (data: any, dataIndex: number, index: number) => ReactNode
   itemHeight: number
+  margin: number
   itemEqual: boolean
   overscan: number
   onScroll: () => void
@@ -31,6 +32,7 @@ const defaultProps = {
   list: [] as Array<Data>,
   containerHeight: clientHeight,
   itemHeight: 66,
+  margin: 10,
   itemEqual: true,
   overscan: 2,
 } as VirtualListProps
@@ -42,6 +44,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
     list,
     itemRender,
     itemHeight,
+    margin,
     itemEqual,
     overscan,
     key,
@@ -91,27 +94,27 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
 
   useEffect(() => {
     if (containerHeight) return
-
+    console.log('xx', getContainerHeight())
     setOffSetSize(getContainerHeight())
   }, [containerHeight])
 
   useEffect(() => {
-    const pos = initPositinoCache(itemHeight, list.length)
+    const pos = initPositinoCache(itemHeight + margin, list.length)
     setPositions(pos)
   }, [itemHeight, list])
 
   // 可视区域总高度
   const getContainerHeight = () => {
     // 初始首页列表高度
-    const initH = itemHeight * list.length
+    const initH = (itemHeight + margin) * list.length
     // 未设置containerHeight高度，判断首页高度小于设备高度时，滚动容器高度为首页数据高度，减5为分页触发的偏移量
     return initH < clientHeight
-      ? initH + overscan * itemHeight - 5
+      ? initH + overscan * (itemHeight + margin) - 5
       : Math.min(containerHeight, clientHeight) // Math.min(containerHeight, clientHeight)
   }
   // 可视区域条数
   const visibleCount = () => {
-    return Math.ceil(getContainerHeight() / itemHeight) + overscan
+    return Math.ceil(getContainerHeight() / (itemHeight + margin)) + overscan
   }
 
   const end = () => {
@@ -119,7 +122,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
   }
 
   const listHeight = () => {
-    return list.length * itemHeight
+    return list.length * (itemHeight + margin)
   }
 
   const visibleData = () => {
@@ -144,16 +147,17 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
     if (!itemEqual) {
       updateTotalSize()
     }
-    setStart(Math.floor(scrollTop / itemHeight))
+    setStart(Math.floor(scrollTop / (itemHeight + margin)))
     setOptions({ startOffset, startIndex, overStart, endIndex })
     if (end() > list.length - 1) {
+      console.log('xxxxxx, end', end())
       onScroll && onScroll()
     }
-    setStartOffset(scrollTop - (scrollTop % itemHeight))
+    setStartOffset(scrollTop - (scrollTop % (itemHeight + margin)))
   }
 
   return (
-    <div
+    <View
       className={classNames('nut-virtualList-box', className)}
       {...rest}
       style={{
@@ -170,11 +174,11 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
         }}
         onScroll={listScroll}
       >
-        <div
+        <View
           className="nut-virtuallist-phantom"
           style={{ height: `${listHeight()}px` }}
         />
-        <div
+        <View
           className="nut-virtuallist-container"
           ref={itemsRef}
           style={{ transform: `translate3d(0, ${startOffset}px, 0)` }}
@@ -184,7 +188,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
             const dataIndex = overStart + index
             const keyVal = key && data[key] ? data[key] : dataIndex
             return (
-              <div
+              <View
                 data-index={`${dataIndex}`}
                 className="nut-virtuallist-item"
                 key={`${keyVal}`}
@@ -193,12 +197,12 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
                 }}
               >
                 {itemRender ? itemRender(data, dataIndex, index) : data}
-              </div>
+              </View>
             )
           })}
-        </div>
+        </View>
       </ScrollView>
-    </div>
+    </View>
   )
 }
 
