@@ -9,8 +9,8 @@ import React, {
 import { ScrollView, View } from '@tarojs/components'
 import { getSystemInfoSync } from '@tarojs/taro'
 import classNames from 'classnames'
-import { Data, PositionType, VirtualListState } from './types'
-import { binarySearch, initPositinoCache, updateItemSize } from './utils'
+import { Data, PositionType } from './types'
+import { initPositinoCache, updateItemSize } from './utils'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 const clientHeight = getSystemInfoSync().windowHeight - 5 || 667
@@ -58,7 +58,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
   }
 
   const [startOffset, setStartOffset] = useState(0)
-  const [start, setStart] = useState(0)
+  const start = useRef(0)
 
   // 虚拟列表容器ref
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -78,12 +78,6 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
   ])
 
   const [offSetSize, setOffSetSize] = useState<number>(containerHeight || 0)
-  const [options, setOptions] = useState<VirtualListState>({
-    startOffset: 0, // 可视区域距离顶部的偏移量
-    startIndex: 0, // 可视区域开始索引
-    overStart: 0,
-    endIndex: 10, // 可视区域结束索引
-  })
 
   //   初始计算可视区域展示数量
   useEffect(() => {
@@ -94,7 +88,6 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
 
   useEffect(() => {
     if (containerHeight) return
-    console.log('xx', getContainerHeight())
     setOffSetSize(getContainerHeight())
   }, [containerHeight])
 
@@ -118,7 +111,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
   }
 
   const end = () => {
-    return start + visibleCount()
+    return start.current + visibleCount()
   }
 
   const listHeight = () => {
@@ -126,7 +119,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
   }
 
   const visibleData = () => {
-    return list.slice(start, Math.min(end(), list.length))
+    return list.slice(start.current, Math.min(end(), list.length))
   }
 
   const updateTotalSize = useCallback(() => {
@@ -134,23 +127,22 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
     const items: HTMLCollection = itemsRef.current.children
     if (!items.length) return
     // 更新缓存
-    updateItemSize(positions, items, 'height')
+    updateItemSize(positions, items, 'height', margin)
   }, [positions])
 
   // 滚动监听
   const listScroll = (e: any) => {
     const scrollTop = e.target.scrollTop
-    const scrollSize = Math.floor(scrollTop)
-    const startIndex = binarySearch(positions, false, scrollSize)
-    const overStart = startIndex - overscan > -1 ? startIndex - overscan : 0
+    if (scrollTop <= 0) {
+      e.target.scrollTop = 0
+      return setStartOffset(0)
+    }
     const endIndex = end()
     if (!itemEqual) {
       updateTotalSize()
     }
-    setStart(Math.floor(scrollTop / (itemHeight + margin)))
-    setOptions({ startOffset, startIndex, overStart, endIndex })
-    if (end() > list.length - 1) {
-      console.log('xxxxxx, end', end())
+    start.current = Math.floor(scrollTop / (itemHeight + margin))
+    if (endIndex > list.length - 1) {
       onScroll && onScroll()
     }
     setStartOffset(scrollTop - (scrollTop % (itemHeight + margin)))
@@ -166,6 +158,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
     >
       <ScrollView
         scrollY
+        bounces={false}
         type="list"
         ref={scrollRef}
         className="nut-virtuallist"
@@ -184,8 +177,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
           style={{ transform: `translate3d(0, ${startOffset}px, 0)` }}
         >
           {visibleData().map((data: any, index: number) => {
-            const { overStart } = options
-            const dataIndex = overStart + index
+            const dataIndex = start.current + index
             const keyVal = key && data[key] ? data[key] : dataIndex
             return (
               <View

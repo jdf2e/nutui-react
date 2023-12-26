@@ -88,7 +88,7 @@ const ListDemo = () => {
           ...itemStyel2,
         }}
       >
-        {data.v}
+        {data.v}-{dataIndex}
       </div>
     )
   }
@@ -107,7 +107,6 @@ const ListDemo = () => {
         return (
           <VirtualList
             itemHeight={50}
-            containerHeight={600}
             list={list}
             itemRender={itemRender}
             onScroll={onScroll}
@@ -116,12 +115,10 @@ const ListDemo = () => {
       case '2':
         return (
           <VirtualList
-            itemHeight={80}
             list={list}
             itemRender={itemVariable}
             onScroll={onScroll}
             itemEqual={false}
-            containerHeight={500}
           />
         )
       default:
