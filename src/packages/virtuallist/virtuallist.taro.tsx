@@ -146,7 +146,6 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
     setStartOffset(scrollTop - (scrollTop % (itemHeight + margin)))
     const endIndex = end()
     if (endIndex > list.length - 1) {
-      console.log(endIndex, list.length)
       onScroll && onScroll()
     }
   }
