@@ -96,7 +96,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
     setPositions(pos)
   }, [itemHeight, list])
 
-  const l = useRef(list.length)
+  const prevListLength = useRef(list.length)
 
   // 可视区域总高度
   const getContainerHeight = () => {
@@ -145,8 +145,10 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
     start.current = Math.floor(scrollTop / (itemHeight + margin))
     setStartOffset(scrollTop - (scrollTop % (itemHeight + margin)))
     const endIndex = end()
-    if (endIndex > list.length - 1) {
+    // list 变动说明触底
+    if (endIndex > list.length - 1 && prevListLength.current < list.length) {
       onScroll && onScroll()
+      prevListLength.current = list.length
     }
   }
 
