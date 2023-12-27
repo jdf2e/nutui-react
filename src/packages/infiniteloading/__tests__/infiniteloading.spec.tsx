@@ -147,7 +147,7 @@ test('infiniteloading base 02', async () => {
         for (let i = curLen; i < curLen + 10; i++) {
           refreshList.push(`${i}`)
         }
-        if (refreshList.length >= 300) {
+        if (refreshList.length >= 30) {
           setRefreshHasMore(false)
         } else {
           setRefreshList([...refreshList])
