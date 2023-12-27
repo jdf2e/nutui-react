@@ -96,6 +96,8 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
     setPositions(pos)
   }, [itemHeight, list])
 
+  const l = useRef(list.length)
+
   // 可视区域总高度
   const getContainerHeight = () => {
     // 初始首页列表高度
@@ -137,15 +139,16 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
       e.target.scrollTop = 0
       return setStartOffset(0)
     }
-    const endIndex = end()
     if (!itemEqual) {
       updateTotalSize()
     }
     start.current = Math.floor(scrollTop / (itemHeight + margin))
+    setStartOffset(scrollTop - (scrollTop % (itemHeight + margin)))
+    const endIndex = end()
     if (endIndex > list.length - 1) {
+      console.log(endIndex, list.length)
       onScroll && onScroll()
     }
-    setStartOffset(scrollTop - (scrollTop % (itemHeight + margin)))
   }
 
   return (
