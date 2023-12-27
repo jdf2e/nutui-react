@@ -113,7 +113,7 @@ const updateItemSize = (
   positions: PositionType[],
   items: HTMLCollection,
   sizeKey: 'width' | 'height',
-  margin: number
+  margin?: number
 ): void => {
   const newPos = positions.concat()
   Array.from(items).forEach((item) => {
