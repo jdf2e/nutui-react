@@ -42,7 +42,58 @@ exports[`infiniteloading base 02 1`] = `
     </div>
     <div
       class="nut-infinite-container"
-    />
+    >
+      <li
+        class="infiniteLi"
+      >
+        0
+      </li>
+      <li
+        class="infiniteLi"
+      >
+        1
+      </li>
+      <li
+        class="infiniteLi"
+      >
+        2
+      </li>
+      <li
+        class="infiniteLi"
+      >
+        3
+      </li>
+      <li
+        class="infiniteLi"
+      >
+        4
+      </li>
+      <li
+        class="infiniteLi"
+      >
+        5
+      </li>
+      <li
+        class="infiniteLi"
+      >
+        6
+      </li>
+      <li
+        class="infiniteLi"
+      >
+        7
+      </li>
+      <li
+        class="infiniteLi"
+      >
+        8
+      </li>
+      <li
+        class="infiniteLi"
+      >
+        9
+      </li>
+    </div>
     <div
       class="nut-infinite-bottom"
     />

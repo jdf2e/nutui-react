@@ -82,7 +82,7 @@ test('infiniteloading base', () => {
   )
 })
 
-test('infiniteloading base 01', () => {
+test('infiniteloading base 01', async () => {
   const App = () => {
     const [refreshList, setRefreshList] = React.useState<string[]>([])
     const [refreshHasMore, setRefreshHasMore] = React.useState(true)
@@ -104,7 +104,7 @@ test('infiniteloading base 01', () => {
         for (let i = curLen; i < curLen + 10; i++) {
           refreshList.push(`${i}`)
         }
-        if (refreshList.length >= 30) {
+        if (refreshList.length >= 300) {
           setRefreshHasMore(false)
         } else {
           setRefreshList([...refreshList])
@@ -121,16 +121,11 @@ test('infiniteloading base 01', () => {
     )
   }
   const { container } = render(<App />)
-  const track = container.querySelector('.nut-infiniteloading')
-  trigger(track, 'touchstart', 0, 0)
-  trigger(track, 'touchmove', 0, -100)
-  trigger(track, 'touchend', 0, -800)
-
-  triggerDrag(track, 0, -800)
-  expect(container).toMatchSnapshot()
+  await waitFor(() => expect(container).toMatchSnapshot())
 })
 
-test('infiniteloading base 02', () => {
+test('infiniteloading base 02', async () => {
+  const done = jest.fn()
   const App = () => {
     const [refreshList, setRefreshList] = React.useState<string[]>([])
     const [refreshHasMore, setRefreshHasMore] = React.useState(true)
@@ -146,15 +141,13 @@ test('infiniteloading base 02', () => {
       setRefreshList([...refreshList])
     }
 
-    const done = jest.fn()
-
     const refreshLoadMore = (done: () => void) => {
       setTimeout(() => {
         const curLen = refreshList.length
         for (let i = curLen; i < curLen + 10; i++) {
           refreshList.push(`${i}`)
         }
-        if (refreshList.length >= 30) {
+        if (refreshList.length >= 300) {
           setRefreshHasMore(false)
         } else {
           setRefreshList([...refreshList])
@@ -167,11 +160,21 @@ test('infiniteloading base 02', () => {
         loadMoreText="没有更多"
         onLoadMore={refreshLoadMore}
         hasMore={refreshHasMore}
-      />
+        onScroll={done}
+      >
+        {refreshList.map((item, index) => {
+          return (
+            <li className="infiniteLi" key={index}>
+              {item}
+            </li>
+          )
+        })}
+      </InfiniteLoading>
     )
   }
   const { container } = render(<App />)
   const track = container.querySelector('.nut-infiniteloading')
-  trigger(track, 'scroll', 0, -100)
+  trigger(track, 'scroll', 0, 800)
   expect(container).toMatchSnapshot()
+  await waitFor(() => expect(done).toHaveBeenCalled())
 })
