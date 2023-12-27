@@ -50,6 +50,76 @@ test('render popover content', async () => {
   )
 })
 
+test('render popover position', async () => {
+  const { container } = render(
+    <Popover visible list={itemList} location="bottom-start">
+      <Button type="primary" shape="square">
+        基础用法
+      </Button>
+    </Popover>
+  )
+  const content = container.querySelectorAll('.nut-popover-content')[0]
+  expect(content.className).toContain(
+    'nut-popup-default nut-popover-content nut-popover-content-bottom-start'
+  )
+})
+
+test('render popover position2', async () => {
+  const { container } = render(
+    <Popover visible list={itemList} location="bottom-start" arrowOffset={20}>
+      <Button type="primary" shape="square">
+        基础用法
+      </Button>
+    </Popover>
+  )
+  const content = container.querySelectorAll(
+    '.nut-popover-arrow'
+  )[0] as HTMLElement
+  expect(content).toHaveAttribute('style', 'left: 36px;')
+})
+
+test('render popover position22', async () => {
+  const { container } = render(
+    <Popover visible list={itemList} arrowOffset={20}>
+      <Button type="primary" shape="square">
+        基础用法
+      </Button>
+    </Popover>
+  )
+  const content = container.querySelectorAll(
+    '.nut-popover-arrow'
+  )[0] as HTMLElement
+  expect(content).toHaveAttribute('style', 'left: calc(50% + 20px);')
+})
+
+test('render popover position3', async () => {
+  const { container } = render(
+    <Popover visible list={itemList} location="left-start" arrowOffset={20}>
+      <Button type="primary" shape="square">
+        基础用法
+      </Button>
+    </Popover>
+  )
+  const content = container.querySelectorAll(
+    '.nut-popover-arrow'
+  )[0] as HTMLElement
+  expect(content).toHaveAttribute('style', 'top: -4px;')
+})
+
+test('render popover position33', async () => {
+  const { container } = render(
+    <Popover visible list={itemList} location="left" arrowOffset={20}>
+      <Button type="primary" shape="square">
+        基础用法
+      </Button>
+    </Popover>
+  )
+  const content = container.querySelectorAll(
+    '.nut-popover-arrow'
+  )[0] as HTMLElement
+  expect(content).toHaveAttribute('style', 'top: calc(50% - 20px);')
+})
+
 test('should emit onchoose event when clicking the action', async () => {
   const choose = jest.fn()
   const { container } = render(
