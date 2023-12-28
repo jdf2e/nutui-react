@@ -23,21 +23,6 @@
       border-bottom-color: $popover-border-color;
       border-top-width: 0;
       margin-top: -8px;
-
-      &.nut-popover-arrow-bottom {
-        left: 50%;
-        transform: translateX(-50%);
-      }
-
-      &.nut-popover-arrow-bottom-start {
-        left: 16px;
-        transform: translateX(0%);
-      }
-
-      &.nut-popover-arrow-bottom-end {
-        right: 16px;
-        transform: translateX(0%);
-      }
     }
 
     &-left {
@@ -190,8 +175,29 @@
       }
     }
 
+    &-bottom {
+      .nut-popover-arrow-bottom {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+
     &-bottom-end {
+      .nut-popover-arrow-bottom-end {
+        right: 16px;
+        transform: translateX(0%);
+      }
+
       right: 0;
+    }
+
+    &-bottom-start {
+      left: 0;
+
+      .nut-popover-arrow-bottom-start {
+        left: 16px;
+        transform: translateX(0%);
+      }
     }
 
     &-left-end {

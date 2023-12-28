@@ -329,16 +329,18 @@ export const Popover: FunctionComponent<
                   onClick={() => handleSelect(item, index)}
                 >
                   {item.icon ? (
-                    <i className="nut-popover-menu-item-icon">{item.icon}</i>
+                    <div className="nut-popover-menu-item-icon">
+                      {item.icon}
+                    </div>
                   ) : null}
                   <div className="nut-popover-menu-item-name">{item.name}</div>
                   {item.action && item.action.icon ? (
-                    <i
+                    <div
                       className="nut-popover-menu-item-action-icon"
                       onClick={(e) => item.action?.onClick?.(e)}
                     >
                       {item.action.icon}
-                    </i>
+                    </div>
                   ) : null}
                 </div>
               )
