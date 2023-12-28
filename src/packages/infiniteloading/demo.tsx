@@ -5,6 +5,7 @@ import { InfiniteLoading } from './infiniteloading'
 import Cell from '@/packages/cell'
 import Toast from '@/packages/toast'
 import './demo.scss'
+import { sleep } from '@/utils/sleep'
 
 interface T {
   '83913e71': string
@@ -14,6 +15,7 @@ interface T {
   '1254a90a': string
   '1254a90n': string
 }
+
 const InfiniteloadingDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
@@ -55,71 +57,63 @@ const InfiniteloadingDemo = () => {
     init()
   }, [])
 
-  const loadMore = (done: () => void) => {
-    setTimeout(() => {
-      const curLen = defaultList.length
-      for (let i = curLen; i < curLen + 10; i++) {
-        defaultList.push(`${i}`)
-      }
-      if (defaultList.length >= 30) {
-        setHasMore(false)
-      } else {
-        setDefaultList([...defaultList])
-      }
-      done()
-    }, 500)
+  const loadMore = async () => {
+    await sleep(2000)
+    // setTimeout(() => {
+    const curLen = defaultList.length
+    for (let i = curLen; i < curLen + 10; i++) {
+      defaultList.push(`${i}`)
+    }
+    if (defaultList.length >= 30) {
+      setHasMore(false)
+    } else {
+      setDefaultList([...defaultList])
+    }
+    // }, 500)
   }
 
-  const refreshLoadMore = (done: () => void) => {
-    setTimeout(() => {
-      const curLen = refreshList.length
-      for (let i = curLen; i < curLen + 10; i++) {
-        refreshList.push(`${i}`)
-      }
-      if (refreshList.length >= 30) {
-        setRefreshHasMore(false)
-      } else {
-        setRefreshList([...refreshList])
-      }
-      done()
-    }, 500)
+  const refreshLoadMore = async () => {
+    await sleep(2000)
+    const curLen = refreshList.length
+    for (let i = curLen; i < curLen + 10; i++) {
+      refreshList.push(`${i}`)
+    }
+    if (refreshList.length >= 30) {
+      setRefreshHasMore(false)
+    } else {
+      setRefreshList([...refreshList])
+    }
   }
 
-  const customLoadMore = (done: () => void) => {
-    setTimeout(() => {
-      const curLen = customList.length
-      for (let i = curLen; i < curLen + 10; i++) {
-        customList.push(`${i}`)
-      }
-      if (customList.length >= 30) {
-        setCustomHasMore(false)
-      } else {
-        setCustomList([...customList])
-      }
-      done()
-    }, 500)
+  const customLoadMore = async () => {
+    await sleep(2000)
+    const curLen = customList.length
+    for (let i = curLen; i < curLen + 10; i++) {
+      customList.push(`${i}`)
+    }
+    if (customList.length >= 30) {
+      setCustomHasMore(false)
+    } else {
+      setCustomList([...customList])
+    }
   }
 
-  const windowLoadMore = (done: () => void) => {
-    setTimeout(() => {
-      const curLen = windowList.length
-      for (let i = curLen; i < curLen + 10; i++) {
-        windowList.push(`${i}`)
-      }
-      if (windowList.length >= 300) {
-        setWindowHasMore(false)
-      } else {
-        setWindowList([...windowList])
-      }
-      done()
-    }, 500)
+  const windowLoadMore = async () => {
+    await sleep(2000)
+    const curLen = windowList.length
+    for (let i = curLen; i < curLen + 10; i++) {
+      windowList.push(`${i}`)
+    }
+    if (windowList.length >= 300) {
+      setWindowHasMore(false)
+    } else {
+      setWindowList([...windowList])
+    }
   }
 
-  const refresh = (done: () => void) => {
-    setTimeout(() => {
-      Toast.show(translated['83913e71'])
-      done()
-    }, 1000)
+  const refresh = async () => {
+    await sleep(1000)
+    Toast.show(translated['83913e71'])
   }
 
   const init = () => {

@@ -20,6 +20,8 @@ import { InfiniteLoading } from '@nutui/nutui-react'
 import React, { useState, useEffect } from 'react'
 import { Cell, InfiniteLoading } from '@nutui/nutui-react'
 
+const sleep = (time: number): Promise<unknown> =>
+  new Promise((resolve) => {setTimeout(resolve, time)})
 const InfiniteUlStyle = {
   height: '300px',
   width: '100%',
@@ -42,19 +44,17 @@ const App = () => {
     init()
   }, [])
 
-  const loadMore = (done: () => void) => {
-    setTimeout(() => {
-      const curLen = defaultList.length
-      for (let i = curLen; i < curLen + 10; i++) {
-        defaultList.push(`${i}`)
-      }
-      if (defaultList.length >= 30) {
-        setHasMore(false)
-      } else {
-        setDefaultList([...defaultList])
-      }
-      done()
-    }, 500)
+  const loadMore = async () => {
+    await sleep(2000)
+    const curLen = defaultList.length
+    for (let i = curLen; i < curLen + 10; i++) {
+      defaultList.push(`${i}`)
+    }
+    if (defaultList.length >= 30) {
+      setHasMore(false)
+    } else {
+      setDefaultList([...defaultList])
+    }
   }
 
   const init = () => {
@@ -101,6 +101,8 @@ import React, { useState, useEffect } from 'react'
 import { Cell, InfiniteLoading } from '@nutui/nutui-react'
 import { Jd } from '@nutui/icons-react'
 
+const sleep = (time: number): Promise<unknown> =>
+  new Promise((resolve) => {setTimeout(resolve, time)})
 const InfiniteUlStyle = {
   height: '300px',
   width: '100%',
@@ -130,26 +132,22 @@ const App = () => {
     setRefreshList([...refreshList])
   }
 
-  const refreshLoadMore = (done: () => void) => {
-    setTimeout(() => {
-      const curLen = refreshList.length
-      for (let i = curLen; i < curLen + 10; i++) {
-        refreshList.push(`${i}`)
-      }
-      if (refreshList.length >= 30) {
-        setRefreshHasMore(false)
-      } else {
-        setRefreshList([...refreshList])
-      }
-      done()
-    }, 500)
+  const refreshLoadMore = async () => {
+    await sleep(2000)
+    const curLen = refreshList.length
+    for (let i = curLen; i < curLen + 10; i++) {
+      refreshList.push(`${i}`)
+    }
+    if (refreshList.length >= 30) {
+      setRefreshHasMore(false)
+    } else {
+      setRefreshList([...refreshList])
+    }
   }
 
-  const refresh = (done: () => void) => {
-    setTimeout(() => {
-      Toast.show('Refresh success!')
-      done()
-    }, 1000)
+  const refresh = async () => {
+    await sleep(1000)
+    Toast.show('刷新成功')
   }
 
   return (
@@ -197,6 +195,8 @@ export default App
 import React, { useState, useEffect } from 'react'
 import { Cell, InfiniteLoading } from '@nutui/nutui-react'
 
+const sleep = (time: number): Promise<unknown> =>
+  new Promise((resolve) => {setTimeout(resolve, time)})
 const InfiniteUlStyle = {
   height: '300px',
   width: '100%',
@@ -226,19 +226,17 @@ const App = () => {
     setCustomList([...customList])
   }
 
-  const customLoadMore = (done: () => void) => {
-    setTimeout(() => {
-      const curLen = customList.length
-      for (let i = curLen; i < curLen + 10; i++) {
-        customList.push(`${i}`)
-      }
-      if (customList.length >= 30) {
-        setCustomHasMore(false)
-      } else {
-        setCustomList([...customList])
-      }
-      done()
-    }, 500)
+  const customLoadMore = async () => {
+    await sleep(2000)
+    const curLen = customList.length
+    for (let i = curLen; i < curLen + 10; i++) {
+      customList.push(`${i}`)
+    }
+    if (customList.length >= 30) {
+      setCustomHasMore(false)
+    } else {
+      setCustomList([...customList])
+    }
   }
 
   return (
@@ -280,6 +278,8 @@ export default App
 import React, { useState, useEffect } from 'react'
 import { Cell, InfiniteLoading } from '@nutui/nutui-react'
 
+const sleep = (time: number): Promise<unknown> =>
+  new Promise((resolve) => {setTimeout(resolve, time)})
 const InfiniteUlStyle = {
   width: '100%',
   padding: '0',
@@ -308,19 +308,17 @@ const App = () => {
     setCustomList([...customList])
   }
 
-  const customLoadMore = (done: () => void) => {
-    setTimeout(() => {
-      const curLen = customList.length
-      for (let i = curLen; i < curLen + 10; i++) {
-        customList.push(`${i}`)
-      }
-      if (customList.length >= 30) {
-        setCustomHasMore(false)
-      } else {
-        setCustomList([...customList])
-      }
-      done()
-    }, 500)
+  const customLoadMore = async () => {
+    await sleep(2000)
+    const curLen = customList.length
+    for (let i = curLen; i < curLen + 10; i++) {
+      customList.push(`${i}`)
+    }
+    if (customList.length >= 30) {
+      setCustomHasMore(false)
+    } else {
+      setCustomList([...customList])
+    }
   }
 
   return (
@@ -366,8 +364,8 @@ export default App
 | pullRefresh | Enable pull refresh | `boolean` | `false` |
 | pullingText | Pull refresh text | `ReactNode` | `Let go and refresh` |
 | loadingText | Pull on loading text | `ReactNode` | `loading...` |
-| onRefresh | Pull down refresh event callback | `(param: () => void) => void` | `-` |
-| onLoadMore | Callback function to continue loading | `(param: () => void) => void` | `-` |
+| onRefresh | Pull down refresh event callback | `() => Promise<void>` | `-` |
+| onLoadMore | Callback function to continue loading | `() => Promise<void>` | `-` |
 | onScroll | Monitor scroll height in real time | `(param: number) => void` | `-` |
 
 ## Theming

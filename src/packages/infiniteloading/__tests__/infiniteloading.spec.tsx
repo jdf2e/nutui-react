@@ -4,6 +4,7 @@ import { trigger, triggerDrag } from '@/utils/test/event'
 import '@testing-library/jest-dom'
 
 import { InfiniteLoading } from '../infiniteloading'
+import { sleep } from '@/utils/sleep'
 
 test('pull base', () => {
   const refresh = jest.fn()
@@ -27,11 +28,8 @@ test('pull base', () => {
 })
 
 test('pull base 01', async () => {
-  const done = jest.fn()
-  const refresh = (done: () => void) => {
-    setTimeout(() => {
-      done()
-    }, 10)
+  const refresh = async () => {
+    await sleep(10)
   }
   const { container } = render(
     <InfiniteLoading pullRefresh pullingText="下拉刷新" onRefresh={refresh} />
@@ -46,11 +44,6 @@ test('pull base 01', async () => {
   // loading
   trigger(track, 'touchend', 0, 100)
   expect(container).toMatchSnapshot()
-
-  // still loading
-  triggerDrag(track, 0, 100)
-  refresh(done)
-  await waitFor(() => expect(done).toHaveBeenCalled())
 })
 
 test('pull base 03', () => {
@@ -98,19 +91,17 @@ test('infiniteloading base 01', async () => {
       setRefreshList([...refreshList])
     }
 
-    const refreshLoadMore = (done: () => void) => {
-      setTimeout(() => {
-        const curLen = refreshList.length
-        for (let i = curLen; i < curLen + 10; i++) {
-          refreshList.push(`${i}`)
-        }
-        if (refreshList.length >= 300) {
-          setRefreshHasMore(false)
-        } else {
-          setRefreshList([...refreshList])
-        }
-        done()
-      }, 500)
+    const refreshLoadMore = async () => {
+      await sleep(10)
+      const curLen = refreshList.length
+      for (let i = curLen; i < curLen + 10; i++) {
+        refreshList.push(`${i}`)
+      }
+      if (refreshList.length >= 300) {
+        setRefreshHasMore(false)
+      } else {
+        setRefreshList([...refreshList])
+      }
     }
     return (
       <InfiniteLoading
@@ -141,19 +132,17 @@ test('infiniteloading base 02', async () => {
       setRefreshList([...refreshList])
     }
 
-    const refreshLoadMore = (done: () => void) => {
-      setTimeout(() => {
-        const curLen = refreshList.length
-        for (let i = curLen; i < curLen + 10; i++) {
-          refreshList.push(`${i}`)
-        }
-        if (refreshList.length >= 30) {
-          setRefreshHasMore(false)
-        } else {
-          setRefreshList([...refreshList])
-        }
-        done()
-      }, 500)
+    const refreshLoadMore = async () => {
+      await sleep(100)
+      const curLen = refreshList.length
+      for (let i = curLen; i < curLen + 10; i++) {
+        refreshList.push(`${i}`)
+      }
+      if (refreshList.length >= 30) {
+        setRefreshHasMore(false)
+      } else {
+        setRefreshList([...refreshList])
+      }
     }
     return (
       <InfiniteLoading
