@@ -27,25 +27,6 @@ test('pull base', () => {
   expect(refresh).toBeCalled()
 })
 
-test('pull base 01', async () => {
-  const refresh = async () => {
-    await sleep(10)
-  }
-  const { container } = render(
-    <InfiniteLoading pullRefresh pullingText="下拉刷新" onRefresh={refresh} />
-  )
-  const track = container.querySelector('.nut-infiniteloading')
-
-  // pulling
-  trigger(track, 'touchstart', 0, 0)
-  trigger(track, 'touchmove', 0, 20)
-  expect(container).toMatchSnapshot()
-
-  // loading
-  trigger(track, 'touchend', 0, 100)
-  expect(container).toMatchSnapshot()
-})
-
 test('pull base 03', () => {
   const refresh = jest.fn()
   const { container } = render(
@@ -166,4 +147,23 @@ test('infiniteloading base 02', async () => {
   trigger(track, 'scroll', 0, 800)
   expect(container).toMatchSnapshot()
   await waitFor(() => expect(done).toHaveBeenCalled())
+})
+
+test('pull base 01', async () => {
+  const refresh = async () => {
+    await sleep(10)
+  }
+  const { container } = render(
+    <InfiniteLoading pullRefresh pullingText="下拉刷新" onRefresh={refresh} />
+  )
+  const track = container.querySelector('.nut-infiniteloading')
+
+  // pulling
+  trigger(track, 'touchstart', 0, 0)
+  trigger(track, 'touchmove', 0, 20)
+  expect(container).toMatchSnapshot()
+
+  // loading
+  trigger(track, 'touchend', 0, 100)
+  expect(container).toMatchSnapshot()
 })
