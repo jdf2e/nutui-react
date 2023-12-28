@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Jd } from '@nutui/icons-react'
+import { Jd, Loading, More } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import { InfiniteLoading } from './infiniteloading'
 import Cell from '@/packages/cell'
@@ -147,45 +147,13 @@ const InfiniteloadingDemo = () => {
               onLoadMore={loadMore}
               loadingText={
                 <>
-                  <i className="bottom-box-icons">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                    >
-                      <circle cx="2" cy="12" r="2" fill="#8C8C8C" />
-                      <circle cx="12" cy="12" r="2" fill="#8C8C8C" />
-                      <circle cx="22" cy="12" r="2" fill="#8C8C8C" />
-                    </svg>
-                  </i>
+                  <Loading className="nut-infinite-bottom-tips-icons" />
                   加载中
                 </>
               }
               loadMoreText={
                 <>
-                  <i className="bottom-box-icons">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                    >
-                      <g clipPath="url(#clip0_202_858)">
-                        <path
-                          d="M23.1507 10.6435C21.8958 9.29889 21.6209 7.28491 20.8022 6.60353C19.9835 5.92216 18.7824 7.00753 18.3402 7.6467C15.896 5.92216 11.9879 6.00054 11.9879 6.00054C11.9879 6.00054 8.09759 5.92216 5.6475 7.6467C5.20528 7.00753 4.01012 5.92216 3.19143 6.60353C2.37274 7.28491 2.10383 9.29889 0.848906 10.6435C-0.0892994 11.6566 -0.166985 11.952 0.215468 12.754C0.591945 13.556 2.93447 14.2193 4.58977 12.6334C4.81088 13.4595 6.67534 18 11.9938 18C17.3123 18 19.1887 13.4595 19.4039 12.6334C21.0592 14.2193 23.4077 13.556 23.7901 12.754C24.1666 11.952 24.0889 11.6566 23.1507 10.6435Z"
-                          fill="#8C8C8C"
-                        />
-                      </g>
-                      <defs>
-                        <clipPath id="clip0_202_858">
-                          <rect width="24" height="24" fill="white" />
-                        </clipPath>
-                      </defs>
-                    </svg>
-                  </i>
+                  <More className="nut-infinite-bottom-tips-icons" />
                   没有更多了
                 </>
               }
@@ -207,7 +175,7 @@ const InfiniteloadingDemo = () => {
             <InfiniteLoading
               pullingText={
                 <>
-                  <i className="top-box-icons">
+                  <i className="nut-infinite-top-tips-icons">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="36"

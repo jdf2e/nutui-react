@@ -507,6 +507,7 @@ plugins: [
 - `pullTxt` 重命名为 `pullingText`，类型变更为 `ReactNode`
 - `loadTxt` 重命名为 `loadingText`，类型变更为 `ReactNode`
 - `containerId` 重命名为 `target`
+- 修订类名如 `top-box`、`bottom-box` 为 `nut-infinite-top-tips`、`nut-infinite-bottom-tips`
 
 #### Notify
 

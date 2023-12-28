@@ -11,10 +11,6 @@
   color: $tabbar-inactive-color;
   height: 100%;
 
-  &-active {
-    color: $tabbar-active-color;
-  }
-
   &-icon-box {
     padding: 0px;
     display: flex;
@@ -39,6 +35,16 @@
       margin-top: 0;
       line-height: $tabbar-text-line-height;
       font-weight: $tabbar-text-large-font-weight;
+    }
+  }
+
+  &-active {
+    color: $tabbar-active-color;
+    .nut-tabbar-item-icon-box {
+      color: inherit;
+      .nut-icon {
+        color: inherit;
+      }
     }
   }
 }

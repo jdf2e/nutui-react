@@ -11,7 +11,7 @@
     font-size: $font-size-small;
     color: $infiniteloading-color;
 
-    .top-box {
+    &-tips {
       width: 100%;
       display: flex;
       flex-direction: column;
@@ -21,8 +21,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        width: $pulltorefresh-icon-width;
-        height: $pulltorefresh-icon-height;
         margin-bottom: 4px;
       }
     }
@@ -38,14 +36,12 @@
     color: $infiniteloading-color;
     text-align: center;
 
-    .bottom-box {
+    &-tips {
       display: flex;
       justify-content: center;
       align-items: center;
 
       &-icons {
-        width: $infiniteloading-icon-size;
-        height: $infiniteloading-icon-size;
         margin-right: 8px;
       }
     }
