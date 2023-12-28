@@ -220,19 +220,19 @@ export const InfiniteLoading: FunctionComponent<
       {...restProps}
     >
       <div className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
-        <div className="top-box">
+        <div className="nut-infinite-top-tips">
           {pullingText || locale.infiniteloading.pullRefreshText}
         </div>
       </div>
       <div className="nut-infinite-container">{children}</div>
       <div className="nut-infinite-bottom">
         {isInfiniting ? (
-          <div className="bottom-box">
+          <div className="nut-infinite-bottom-tips">
             {loadingText || locale.infiniteloading.loadText}
           </div>
         ) : (
           !hasMore && (
-            <div className="bottom-box">
+            <div className="nut-infinite-bottom-tips">
               {loadMoreText || locale.infiniteloading.loadMoreText}
             </div>
           )
