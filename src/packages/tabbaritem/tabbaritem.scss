@@ -41,9 +41,9 @@
   &-active {
     color: $tabbar-active-color;
     .nut-tabbar-item-icon-box {
-      color: $tabbar-active-color;
+      color: inherit;
       .nut-icon {
-        color: $tabbar-active-color;
+        color: inherit;
       }
     }
   }
