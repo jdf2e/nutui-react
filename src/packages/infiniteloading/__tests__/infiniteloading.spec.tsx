@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, waitFor } from '@testing-library/react'
+import { act, render, waitFor } from '@testing-library/react'
 import { trigger, triggerDrag } from '@/utils/test/event'
 import '@testing-library/jest-dom'
 
@@ -147,8 +147,11 @@ test('infiniteloading base 02', async () => {
   trigger(track, 'scroll', 0, 800)
   expect(container).toMatchSnapshot()
   await waitFor(() => expect(done).toHaveBeenCalled())
+})
 
-  const { container: container1 } = render(
+test('hasMore false', () => {
+  const done = jest.fn()
+  const { container: container1, rerender } = render(
     <InfiniteLoading loadMoreText="没有更多" hasMore={false} onScroll={done}>
       {Array.from<string>({ length: 100 })
         .fill('NutUI')
@@ -162,7 +165,32 @@ test('infiniteloading base 02', async () => {
     </InfiniteLoading>
   )
   const track1 = container1.querySelector('.nut-infiniteloading')
-  trigger(track1, 'scroll', 0, 800)
+  trigger(track1, 'scroll', 0, 100)
+})
+
+test('hasMore', () => {
+  const done = jest.fn()
+  const { container } = render(
+    <InfiniteLoading loadMoreText="没有更多" hasMore onScroll={done}>
+      {Array.from<string>({ length: 100 })
+        .fill('NutUI')
+        .map((item: string, index) => {
+          return (
+            <li className="infiniteLi" key={index}>
+              {item}
+            </li>
+          )
+        })}
+    </InfiniteLoading>
+  )
+  const track1 = container.querySelector('.nut-infiniteloading')
+  act(() => {
+    trigger(track1, 'scroll', 0, 100)
+  })
+
+  waitFor(() => {
+    expect(done).toBeCalled()
+  })
 })
 
 test('pull base 01', async () => {
