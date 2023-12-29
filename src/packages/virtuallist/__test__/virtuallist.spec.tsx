@@ -5,6 +5,7 @@ import { render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { VirtualList } from '../virtuallist'
+import { trigger } from '@/utils/test/event'
 
 const props = {
   list: new Array(100).fill(0),
@@ -55,4 +56,23 @@ test('renders only visible items', async () => {
     const listElement = container.querySelectorAll('.nut-virtuallist-item')
     expect(listElement.length).toBe(visibleCount)
   })
+})
+test('scroll', async () => {
+  const boxHeight = 500
+  const { container } = render(
+    <VirtualList
+      {...props}
+      containerHeight={boxHeight}
+      itemEqual={false}
+      data-testid="scrollList3"
+    />
+  )
+  const track = container.querySelector('.nut-virtualList-box')
+  if (track) {
+    trigger(track, 'scroll', 0, 100)
+    await waitFor(() => {
+      const element18 = container.querySelector('[data-index="18"]')
+      expect(element18).toBeTruthy()
+    })
+  }
 })
