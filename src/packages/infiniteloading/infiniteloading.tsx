@@ -65,7 +65,7 @@ export const InfiniteLoading: FunctionComponent<
   const [isInfiniting, setIsInfiniting] = useState(false)
   const scroller = useRef<HTMLDivElement>(null)
   const refreshTop = useRef<HTMLDivElement>(null)
-  const scrollEl = useRef<Window | HTMLElement | (Node & ParentNode)>(window)
+  const scrollEl = useRef<Window | HTMLElement | (Node & ParentNode)>(null)
   const isTouching = useRef(false)
   const beforeScrollTop = useRef(0)
   const refreshMaxH = useRef(0)
