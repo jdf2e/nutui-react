@@ -147,6 +147,22 @@ test('infiniteloading base 02', async () => {
   trigger(track, 'scroll', 0, 800)
   expect(container).toMatchSnapshot()
   await waitFor(() => expect(done).toHaveBeenCalled())
+
+  const { container: container1 } = render(
+    <InfiniteLoading loadMoreText="没有更多" hasMore={false} onScroll={done}>
+      {Array.from<string>({ length: 100 })
+        .fill('NutUI')
+        .map((item: string, index) => {
+          return (
+            <li className="infiniteLi" key={index}>
+              {item}
+            </li>
+          )
+        })}
+    </InfiniteLoading>
+  )
+  const track1 = container1.querySelector('.nut-infiniteloading')
+  trigger(track1, 'scroll', 0, 800)
 })
 
 test('pull base 01', async () => {
