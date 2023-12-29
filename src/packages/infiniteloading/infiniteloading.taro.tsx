@@ -20,8 +20,8 @@ export interface InfiniteLoadingProps extends BasicComponent {
   pullingText: ReactNode
   loadingText: ReactNode
   loadMoreText: ReactNode
-  onRefresh: (param: () => void) => void
-  onLoadMore: (param: () => void) => void
+  onRefresh: () => Promise<void>
+  onLoadMore: () => Promise<void>
   onScroll: (param: number) => void
 }
 
@@ -115,12 +115,13 @@ export const InfiniteLoading: FunctionComponent<
     onScroll && onScroll(e.target.scrollTop)
   }
 
-  const lower = () => {
+  const lower = async () => {
     if (!hasMore || isInfiniting) {
       return false
     }
     setIsInfiniting(true)
-    onLoadMore && onLoadMore(infiniteDone)
+    await onLoadMore?.()
+    infiniteDone()
   }
 
   const touchStart = (event: any) => {
@@ -146,12 +147,13 @@ export const InfiniteLoading: FunctionComponent<
     }
   }
 
-  const touchEnd = () => {
+  const touchEnd = async () => {
     if (distance.current < refreshMaxH.current) {
       distance.current = 0
       setTopDisScoll(0)
     } else {
-      onRefresh && onRefresh(refreshDone)
+      await onRefresh?.()
+      refreshDone()
     }
   }
 
