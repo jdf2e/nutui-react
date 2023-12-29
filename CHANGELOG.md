@@ -1,3 +1,18 @@
+# v2.3.4
+`2023-12-29`
+
+* 📖 docs(nabvar): showtoas 改为 showToast (#1826) @MingHui
+* :bug: fix(datepicker): 未设置 value/defaultValue 时渲染 0 (#1819) @RyanCW
+* :bug: fix(infiniteLoading): ssr (#1828) @xiaoyatong
+* :bug: fix(infiniteLoading): 修改类名及demo (#1818) @xiaoyatong
+* :bug: fix(popover): icon cannot be displayed at taro (#1820) @xiaoyatong
+* :bug: fix(popver): bottom positon (#1823) @xiaoyatong
+* :bug: fix(tabbar): fix icon color (#1816) @xiaoyatong
+* :bug: fix(virtualList): 等高模式下的抖动处理, 不定高模式快速滑动白屏 (#1825) @oasis-cloud
+* :bug: fix(watermark): fix demos (#1817) @xiaoyatong
+* 🛠 refactor(infiniteloading): onRefresh、onLoadMore 改为 Promise 类型，去掉显示调用 done 方法 (#1827) @oasis-cloud
+
+
 # v2.3.3
 `2023-12-22`
 
