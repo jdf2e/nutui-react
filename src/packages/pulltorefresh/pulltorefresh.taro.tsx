@@ -1,6 +1,7 @@
 import React, { FunctionComponent, ReactNode, useRef, useState } from 'react'
 import { ITouchEvent, View } from '@tarojs/components'
 import { Loading, More } from '@nutui/icons-react-taro'
+import Taro from '@tarojs/taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { useTouch } from '@/utils/use-touch'
 import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
@@ -21,6 +22,7 @@ export interface PullToRefreshProps extends BasicComponent {
   threshold: number
   disabled: boolean
   scrollTop: number
+  pullTransitionTime: number
   renderIcon: (status: PullStatus) => ReactNode
   renderText: (status: PullStatus) => ReactNode
 }
@@ -36,6 +38,7 @@ const defaultProps = {
   headHeight: 50,
   threshold: 60,
   scrollTop: 0,
+  pullTransitionTime: 0,
   onRefresh: () => {},
 } as PullToRefreshProps
 export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
@@ -57,6 +60,7 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
 
   const headHeight = props.headHeight
   const threshold = props.threshold
+  const pullTransitionTime = props.pullTransitionTime
   const pullingRef = useRef(false)
   const [status, setStatus] = useState<PullStatus>('pulling')
   const [height, setHeight] = useState(0)
@@ -140,9 +144,18 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
       setStatus('pulling')
     }
   }
+  // 安卓微信小程序onTouchMove回调次数少导致下拉卡顿，增加动效会更顺畅
+  const isAndroidWeApp =
+    Taro.getSystemInfoSync().platform === 'android' && Taro.getEnv() === 'WEAPP'
+  const pullingSpringStyles =
+    isAndroidWeApp && pullTransitionTime > 0
+      ? { transition: `height ${pullTransitionTime}ms ease` }
+      : {}
   const springStyles = {
     height: `${height}px`,
-    ...(!pullingRef.current ? { transition: 'height .3s ease' } : {}),
+    ...(!pullingRef.current
+      ? { transition: 'height .3s ease' }
+      : pullingSpringStyles),
   }
   return (
     <View
