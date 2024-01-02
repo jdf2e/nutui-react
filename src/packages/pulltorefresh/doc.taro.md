@@ -108,7 +108,6 @@ export default App
 | refreshingText | 刷新时的提示文案 | `ReactNode` | `刷新中` |
 | renderIcon | 根据下拉状态，自定义下拉提示图标 | `ReactNode` | `<Loading />` |
 | renderText | 根据下拉状态，自定义下拉提示文案 | `ReactNode` | `-` |
-| pullTransitionTime | 安卓微信小程序下拉衔接动效时长，可优化卡顿问题，单位为 ms | `number` | `0` |
 | threshold | 触发刷新需要下拉多少距离，单位为 px | `number` | `60` |
 | onRefresh | 触发刷新时的处理函数 | `() => Promise<any>` | `-` |
 

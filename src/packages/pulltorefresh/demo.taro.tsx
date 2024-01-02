@@ -38,7 +38,6 @@ const PullToRefreshDemo = () => {
             backgroundColor: `var(--nutui-gray-3)`,
             color: 'var(--nutui-gray-7)',
           }}
-          pullTransitionTime={300}
           onRefresh={() =>
             new Promise((resolve) => {
               toastShow('😊')
@@ -81,7 +80,6 @@ const PullToRefreshDemo = () => {
         >
           <PullToRefresh
             scrollTop={scrollTop}
-            pullTransitionTime={300}
             onRefresh={() =>
               new Promise((resolve) => {
                 toastShow('😊')
