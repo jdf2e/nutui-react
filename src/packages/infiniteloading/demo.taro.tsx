@@ -5,6 +5,7 @@ import { useTranslate } from '@/sites/assets/locale/taro'
 import { InfiniteLoading, Cell } from '@/packages/nutui.react.taro'
 import '@/packages/infiniteloading/demo.scss'
 import Header from '@/sites/components/header'
+import { sleep } from '@/utils/sleep'
 
 interface T {
   '83913e71': string
@@ -12,6 +13,7 @@ interface T {
   eb4236fe: string
   '1254a90a': string
 }
+
 const InfiniteLoadingDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
@@ -41,30 +43,26 @@ const InfiniteLoadingDemo = () => {
     init()
   }, [])
 
-  const loadMore = (done: () => void) => {
-    setTimeout(() => {
-      const curLen = defaultList.length
-      for (let i = curLen; i < curLen + 10; i++) {
-        defaultList.push(`${i}`)
-      }
-      if (defaultList.length >= 100) {
-        setHasMore(false)
-      } else {
-        setDefaultList([...defaultList])
-      }
-      done()
-    }, 500)
+  const loadMore = async () => {
+    await sleep(2000)
+    const curLen = defaultList.length
+    for (let i = curLen; i < curLen + 10; i++) {
+      defaultList.push(`${i}`)
+    }
+    if (defaultList.length >= 100) {
+      setHasMore(false)
+    } else {
+      setDefaultList([...defaultList])
+    }
   }
 
-  const refresh = (done: () => void) => {
-    setTimeout(() => {
-      Taro.showToast({
-        title: translated['83913e71'],
-        icon: 'success',
-        duration: 2000,
-      })
-      done()
-    }, 1000)
+  const refresh = async () => {
+    await sleep(2000)
+    Taro.showToast({
+      title: translated['83913e71'],
+      icon: 'success',
+      duration: 2000,
+    })
   }
 
   const init = () => {

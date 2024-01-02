@@ -56,10 +56,10 @@ const ListDemo = () => {
   }
   const getData = useCallback(() => {
     const datas: any = []
-    const pageSize = 10
+    const pageSize = 20
     for (let i = (pageNo - 1) * pageSize; i < pageNo * pageSize; i++) {
       const num = i > 9 ? i : `0${i}`
-      datas.push({ v: ` list${num}`, k: '3333' })
+      datas.push({ v: ` list${num}` })
     }
     if (pageNo === 1) {
       setsourceData(() => {
@@ -77,7 +77,7 @@ const ListDemo = () => {
   }, [getData])
 
   const itemRender = (data: any) => {
-    return <div style={itemStyle}>{data.v + data.k}</div>
+    return <div style={itemStyle}>{data.v}</div>
   }
 
   const itemVariable = (data: any, dataIndex: number, index: number) => {
@@ -88,7 +88,7 @@ const ListDemo = () => {
           ...itemStyel2,
         }}
       >
-        {data.v}
+        {data.v}-{dataIndex}
       </div>
     )
   }
@@ -115,12 +115,10 @@ const ListDemo = () => {
       case '2':
         return (
           <VirtualList
-            itemHeight={80}
             list={list}
             itemRender={itemVariable}
             onScroll={onScroll}
             itemEqual={false}
-            containerHeight={500}
           />
         )
       default:

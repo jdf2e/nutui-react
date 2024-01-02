@@ -8,7 +8,6 @@ import React, {
 import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import requestAniFrame from '@/utils/raf'
 
 export interface InfiniteLoadingProps extends BasicComponent {
   hasMore: boolean
@@ -19,8 +18,8 @@ export interface InfiniteLoadingProps extends BasicComponent {
   pullingText: ReactNode
   loadingText: ReactNode
   loadMoreText: ReactNode
-  onRefresh: (param: () => void) => void
-  onLoadMore: (param: () => void) => void
+  onRefresh: () => Promise<void>
+  onLoadMore: () => Promise<void>
   onScroll: (param: number) => void
 }
 
@@ -65,7 +64,7 @@ export const InfiniteLoading: FunctionComponent<
   const [isInfiniting, setIsInfiniting] = useState(false)
   const scroller = useRef<HTMLDivElement>(null)
   const refreshTop = useRef<HTMLDivElement>(null)
-  const scrollEl = useRef<Window | HTMLElement | (Node & ParentNode)>(window)
+  const scrollEl = useRef<Window | HTMLElement | null>(null)
   const isTouching = useRef(false)
   const beforeScrollTop = useRef(0)
   const refreshMaxH = useRef(0)
@@ -76,14 +75,14 @@ export const InfiniteLoading: FunctionComponent<
 
   useEffect(() => {
     if (target && document.getElementById(target)) {
-      scrollEl.current = document.getElementById(target) as HTMLElement | Window
+      scrollEl.current = document.getElementById(target)
     } else {
       scrollEl.current = window
     }
-    scrollEl.current.addEventListener('scroll', handleScroll, capture)
+    scrollEl.current?.addEventListener('scroll', handleScroll, capture)
 
     return () => {
-      scrollEl.current.removeEventListener('scroll', handleScroll, capture)
+      scrollEl.current?.removeEventListener('scroll', handleScroll, capture)
     }
   }, [hasMore, isInfiniting, onLoadMore])
 
@@ -107,15 +106,13 @@ export const InfiniteLoading: FunctionComponent<
     }
   }
 
-  const handleScroll = () => {
-    requestAniFrame(() => {
-      if (!isScrollAtBottom() || !hasMore || isInfiniting) {
-        return false
-      }
-      setIsInfiniting(true)
-      onLoadMore && onLoadMore(infiniteDone)
-      return true
-    })
+  const handleScroll = async () => {
+    if (!isScrollAtBottom() || !hasMore || isInfiniting) {
+      return
+    }
+    setIsInfiniting(true)
+    await onLoadMore?.()
+    infiniteDone()
   }
 
   const infiniteDone = () => {
@@ -159,12 +156,13 @@ export const InfiniteLoading: FunctionComponent<
     }
   }
 
-  const touchEnd = () => {
+  const touchEnd = async () => {
     if (distance.current < refreshMaxH.current) {
       distance.current = 0
       getRefreshTop().style.height = `${distance.current}px`
     } else {
-      onRefresh && onRefresh(refreshDone)
+      await onRefresh?.()
+      refreshDone()
     }
   }
 

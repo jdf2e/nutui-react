@@ -200,7 +200,7 @@ export default App;
 | back | Returns the text of the area | `ReactNode` | `-` |
 | titleAlign | Title align, optional value center、left | `string` | `center` |
 | fixed | Is it fixed | `boolean` | `false` |
-| safeArea | Whether it is suitable for the safe area | `boolean` | `false` |
+| safeAreaInsetTop | Whether it is suitable for the safe area | `boolean` | `false` |
 | placeholder | When fixed to the top, whether to generate a placeholder element of equal height at the label position | `boolean` | `false` |
 | zIndex | Navigation Bar Hierarchy | `number` \| `string` | `10` |
 | onBackClick | Click the callback after the return area | `onBackClick:(event: Event)=>void` | `false` |

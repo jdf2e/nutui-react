@@ -112,14 +112,16 @@ const getEndIndex = ({
 const updateItemSize = (
   positions: PositionType[],
   items: HTMLCollection,
-  sizeKey: 'width' | 'height'
+  sizeKey: 'width' | 'height',
+  margin?: number
 ): void => {
   const newPos = positions.concat()
   Array.from(items).forEach((item) => {
     const index = Number(item.getAttribute('data-index'))
     const styleVal = item.getAttribute('style')
     if (styleVal && styleVal.includes('none')) return
-    const nowSize = item.getBoundingClientRect()[sizeKey]
+    let nowSize = item.getBoundingClientRect()[sizeKey]
+    if (margin) nowSize += margin
 
     const oldSize = positions[index][sizeKey] as number
     // 存在差值, 更新该节点以后所有的节点

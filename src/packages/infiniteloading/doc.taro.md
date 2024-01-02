@@ -22,6 +22,8 @@ import Taro from '@tarojs/taro'
 import { Jd } from '@nutui/icons-react-taro'
 import { Cell, InfiniteLoading } from '@nutui/nutui-react-taro'
 
+const sleep = (time: number): Promise<unknown> =>
+  new Promise((resolve) => {setTimeout(resolve, time)})
 const InfiniteUlStyle = {
   height: '500px',
   width: '100%',
@@ -44,30 +46,26 @@ const App = () => {
     init()
   }, [])
 
-  const loadMore = (done: () => void) => {
-    setTimeout(() => {
-      const curLen = defaultList.length
-      for (let i = curLen; i < curLen + 10; i++) {
-        defaultList.push(`${i}`)
-      }
-      if (defaultList.length >= 30) {
-        setHasMore(false)
-      } else {
-        setDefaultList([...defaultList])
-      }
-      done()
-    }, 500)
+  const loadMore = async () => {
+    await sleep(2000)
+    const curLen = defaultList.length
+    for (let i = curLen; i < curLen + 10; i++) {
+      defaultList.push(`${i}`)
+    }
+    if (defaultList.length >= 30) {
+      setHasMore(false)
+    } else {
+      setDefaultList([...defaultList])
+    }
   }
 
-  const refresh = (done: () => void) => {
-    setTimeout(() => {
-      Taro.showToast({
-        title: '刷新成功',
-        icon: 'success',
-        duration: 2000,
-      })
-      done()
-    }, 1000)
+  const refresh = async () => {
+    await sleep(1000)
+    Taro.showToast({
+      title: '刷新成功',
+      icon: 'success',
+      duration: 2000,
+    })
   }
 
   const init = () => {
@@ -183,8 +181,8 @@ export default App
 | pullRefresh | 是否开启下拉刷新 | `boolean` | `false` |
 | pullingText | 下拉刷新提示文案 | `ReactNode` | `松手刷新` |
 | loadingText | 上拉加载提示文案 | `ReactNode` | `刷新中` |
-| onRefresh | 下拉刷新事件回调 | `(param: () => void) => void` | `-` |
-| onLoadMore | 继续加载的回调函数 | `(param: () => void) => void` | `-` |
+| onRefresh | 下拉刷新事件回调 | `() => Promise<void>` | `-` |
+| onLoadMore | 继续加载的回调函数 | `() => Promise<void>` | `-` |
 | onScroll | 实时监听滚动高度 | `(param: number) => void` | `-` |
 
 ## 主题定制

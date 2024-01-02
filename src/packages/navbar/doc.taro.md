@@ -203,7 +203,7 @@ export default App;
 | back | 返回区域的文字 | `ReactNode` | `-` |
 | titleAlign | 标题位置,可选值center left | `string` | `center` |
 | fixed | 是否固定 | `boolean` | `false` |
-| safeArea | 是否适配安全区 | `boolean` | `false` |
+| safeAreaInsetTop | 是否适配安全区 | `boolean` | `false` |
 | placeholder | 固定在顶部时，是否在标签位置生成一个等高的占位元素 | `boolean` | `false` |
 | zIndex | 导航栏层级 | `number` \| `string` | `10` |
 | onBackClick | 点击返回区域后的回调 | `onBackClick:(event: Event)=>void` | `false` |
