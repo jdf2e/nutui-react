@@ -102,7 +102,8 @@ export const Range: FunctionComponent<
           .filter((point) => point.value >= min && point.value <= max)
         setMarksList(list.map((mark) => mark.value))
         list.forEach((mark) => {
-          marksRef.current[mark.value] = mark.label
+          marksRef.current[mark.value] =
+            mark.label !== undefined ? mark.label : mark.value
         })
       } else {
         const marksKeys = Object.keys(marks)
