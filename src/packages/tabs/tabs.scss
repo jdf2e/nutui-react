@@ -9,7 +9,7 @@
   display: flex;
   box-sizing: border-box;
   height: $tabs-titles-height;
-  padding: 0 16px;
+  padding: $tabs-titles-padding;
   user-select: none;
   overflow: hidden;
   background: $tabs-titles-background-color;
@@ -50,7 +50,7 @@
     margin: 0 $tabs-titles-gap;
     min-width: $tabs-titles-item-min-width;
     font-size: $tabs-titles-font-size;
-    color: $color-title;
+    color: $tabs-titles-item-color;
     text-overflow: ellipsis;
     white-space: nowrap;
 
