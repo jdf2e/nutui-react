@@ -276,7 +276,7 @@ const InternalPickerPanel: ForwardRefRenderFunction<
                 }}
                 key={item.value ? item.value : index}
               >
-                <>{item.text ? item.text : item}</>
+                <>{item.text}</>
               </div>
             )
           })}
@@ -288,7 +288,7 @@ const InternalPickerPanel: ForwardRefRenderFunction<
                 className="nut-picker-roller-item-title"
                 key={item.value ? item.value : index}
               >
-                <>{item.text ? item.text : item}</>
+                <>{item.text}</>
               </div>
             )
           })}

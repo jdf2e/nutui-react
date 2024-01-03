@@ -428,7 +428,7 @@ const InternalPicker: ForwardRefRenderFunction<
                             key={item.value || index}
                             className="nut-picker-roller-item-title"
                           >
-                            <>{item.text || item}</>
+                            <>{item.text}</>
                           </View>
                         )
                       })}
