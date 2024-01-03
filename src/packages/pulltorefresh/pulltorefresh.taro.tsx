@@ -1,6 +1,7 @@
 import React, { FunctionComponent, ReactNode, useRef, useState } from 'react'
 import { ITouchEvent, View } from '@tarojs/components'
 import { Loading, More } from '@nutui/icons-react-taro'
+import Taro from '@tarojs/taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { useTouch } from '@/utils/use-touch'
 import { rubberbandIfOutOfBounds } from '@/utils/rubberband'
@@ -140,9 +141,14 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
       setStatus('pulling')
     }
   }
+  // 安卓微信小程序onTouchMove回调次数少导致下拉卡顿，增加动效会更顺畅
+  const isAndroidWeApp =
+    Taro.getSystemInfoSync().platform === 'android' && Taro.getEnv() === 'WEAPP'
   const springStyles = {
     height: `${height}px`,
-    ...(!pullingRef.current ? { transition: 'height .3s ease' } : {}),
+    ...(!pullingRef.current || isAndroidWeApp
+      ? { transition: 'height .3s ease' }
+      : {}),
   }
   return (
     <View
