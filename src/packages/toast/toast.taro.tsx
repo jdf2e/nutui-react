@@ -161,7 +161,9 @@ export const Toast: FunctionComponent<
       success: <Success color="#ffffff" size={iconSize} />,
       fail: <Failure color="#ffffff" size={iconSize} />,
       warn: <Tips color="#ffffff" size={iconSize} />,
-      loading: <Loading color="#ffffff" size={iconSize} />,
+      loading: (
+        <Loading className="nut-icon-loading" color="#ffffff" size={iconSize} />
+      ),
     }[type]
   }
 
