@@ -20,8 +20,8 @@ export interface InfiniteLoadingProps extends BasicComponent {
   pullingText: ReactNode
   loadingText: ReactNode
   loadMoreText: ReactNode
-  onRefresh: (param: () => void) => void
-  onLoadMore: (param: () => void) => void
+  onRefresh: () => Promise<void>
+  onLoadMore: () => Promise<void>
   onScroll: (param: number) => void
 }
 
@@ -107,22 +107,21 @@ export const InfiniteLoading: FunctionComponent<
   }
 
   const scrollAction = (e: any) => {
+    scrollTop.current = e.target?.scrollTop
     if (e.target.scrollTop <= 0) {
       // 滚动到最顶部
       e.target.scrollTop = 0
-    } else if (e.target.scrollTop >= scrollHeight.current) {
-      // 滚动到最底部
-      e.target.scrollTop = scrollHeight.current
     }
     onScroll && onScroll(e.target.scrollTop)
   }
 
-  const lower = () => {
+  const lower = async () => {
     if (!hasMore || isInfiniting) {
       return false
     }
     setIsInfiniting(true)
-    onLoadMore && onLoadMore(infiniteDone)
+    await onLoadMore?.()
+    infiniteDone()
   }
 
   const touchStart = (event: any) => {
@@ -148,12 +147,13 @@ export const InfiniteLoading: FunctionComponent<
     }
   }
 
-  const touchEnd = () => {
+  const touchEnd = async () => {
     if (distance.current < refreshMaxH.current) {
       distance.current = 0
       setTopDisScoll(0)
     } else {
-      onRefresh && onRefresh(refreshDone)
+      await onRefresh?.()
+      refreshDone()
     }
   }
 
@@ -171,19 +171,19 @@ export const InfiniteLoading: FunctionComponent<
       onTouchEnd={touchEnd}
     >
       <div className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
-        <div className="top-box">
+        <div className="nut-infinite-top-tips">
           {pullingText || locale.infiniteloading.pullRefreshText}
         </div>
       </div>
       <div className="nut-infinite-container">{children}</div>
       <div className="nut-infinite-bottom">
         {isInfiniting ? (
-          <div className="bottom-box">
+          <div className="nut-infinite-bottom-tips">
             {loadingText || locale.infiniteloading.loadText}
           </div>
         ) : (
           !hasMore && (
-            <div className="bottom-box">
+            <div className="nut-infinite-bottom-tips">
               {loadMoreText || locale.infiniteloading.loadMoreText}
             </div>
           )

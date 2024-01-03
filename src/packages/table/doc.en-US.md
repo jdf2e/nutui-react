@@ -678,6 +678,268 @@ export default App;
 
 :::
 
+:::
+
+### Supports sticky header
+
+:::demo
+
+```tsx
+import  React, { useState } from "react";
+import { Table, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const [data6, setData6] = useState([
+    {
+      name: 'Tom',
+      sex: '男',
+      record: '小学',
+      birthday: '2010-01-01',
+      age: 10,
+    },
+    {
+      name: 'Lucy',
+      sex: '女',
+      record: '本科',
+      birthday: '2000-01-01',
+      age: 30,
+    },
+    {
+      name: 'Jack',
+      sex: '男',
+      record: '高中',
+      birthday: '2020-01-01',
+      age: 4,
+    },
+    {
+      name: 'Sara',
+      sex: '女',
+      record: '高中',
+      birthday: '2020-01-01',
+      age: 6,
+    },
+    {
+      name: 'Frank',
+      sex: '男',
+      record: '幼儿园',
+      birthday: '2020-01-01',
+      age: 3,
+    },
+  ])
+
+   const [columns6, setColumns6] = useState<Array<TableColumnProps>>([
+    {
+      title: '姓名',
+      key: 'name',
+      align: 'center',
+    },
+    {
+      title: '性别',
+      key: 'sex',
+    },
+    {
+      title: '学历',
+      key: 'record',
+    },
+    {
+      title: '生日',
+      key: 'birthday',
+    },
+    {
+      title: '年龄',
+      key: 'age',
+    },
+  ])
+
+  return <Table
+        columns={columns6}
+        data={data6}
+        style={{ height: 150 }}
+        summary={translated.summary}
+      />;
+};
+export default App;
+```
+
+### Supports left columns
+
+:::demo
+
+```tsx
+import  React, { useState } from "react";
+import { Table, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const [data6, setData6] = useState([
+    {
+      name: 'Tom',
+      sex: '男',
+      record: '小学',
+      birthday: '2010-01-01',
+      age: 10,
+    },
+    {
+      name: 'Lucy',
+      sex: '女',
+      record: '本科',
+      birthday: '2000-01-01',
+      age: 30,
+    },
+    {
+      name: 'Jack',
+      sex: '男',
+      record: '高中',
+      birthday: '2020-01-01',
+      age: 4,
+    },
+    {
+      name: 'Sara',
+      sex: '女',
+      record: '高中',
+      birthday: '2020-01-01',
+      age: 6,
+    },
+    {
+      name: 'Frank',
+      sex: '男',
+      record: '幼儿园',
+      birthday: '2020-01-01',
+      age: 3,
+    },
+  ])
+
+   const [columnsStickLeft, setColumnsStickLeft] = useState<
+    Array<TableColumnProps>
+  >([
+    {
+      title: '姓名',
+      key: 'name',
+      align: 'center',
+      fixed: 'left',
+      width: 100,
+    },
+    {
+      title: '性别',
+      key: 'sex',
+      width: 60,
+    },
+    {
+      title: '学历',
+      key: 'record',
+      width: 100,
+    },
+    {
+      title: '生日',
+      key: 'birthday',
+      width: 100,
+    },
+    {
+      title: '年龄',
+      key: 'age',
+      width: 100,
+    },
+  ])
+
+  return <Table columns={columnsStickLeft} data={data6} />;
+};
+export default App;
+```
+
+:::
+
+### Supports right columns
+
+:::demo
+
+```tsx
+import  React, { useState } from "react";
+import { Table, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const [data6, setData6] = useState([
+    {
+      name: 'Tom',
+      sex: '男',
+      record: '小学',
+      birthday: '2010-01-01',
+      age: 10,
+    },
+    {
+      name: 'Lucy',
+      sex: '女',
+      record: '本科',
+      birthday: '2000-01-01',
+      age: 30,
+    },
+    {
+      name: 'Jack',
+      sex: '男',
+      record: '高中',
+      birthday: '2020-01-01',
+      age: 4,
+    },
+    {
+      name: 'Sara',
+      sex: '女',
+      record: '高中',
+      birthday: '2020-01-01',
+      age: 6,
+    },
+    {
+      name: 'Frank',
+      sex: '男',
+      record: '幼儿园',
+      birthday: '2020-01-01',
+      age: 3,
+    },
+  ])
+
+   const [columnsStickRight, setColumnsStickRight] = useState<
+    Array<TableColumnProps>
+  >([
+    {
+      title: '姓名',
+      key: 'name',
+      align: 'center',
+      width: 100,
+    },
+    {
+      title: '性别',
+      key: 'sex',
+      width: 60,
+    },
+    {
+      title: '学历',
+      key: 'record',
+      width: 100,
+    },
+    {
+      title: '生日',
+      key: 'birthday',
+      width: 100,
+    },
+    {
+      title: '年龄',
+      key: 'age',
+      fixed: 'right',
+      width: 100,
+      render: () => {
+        return (
+          <Button type="primary" size="mini">
+            操作
+          </Button>
+        )
+      },
+    },
+  ])
+
+  return <Table columns={columnsStickRight} data={data6} />;
+};
+export default App;
+```
+
+:::
+
 ## Table
 
 ### Props
@@ -703,6 +965,8 @@ export default App;
 | sorter | sort，optional values `true`,`function`, `default`, Where `default` means that you may depend on the interface after clicking, `function` you can return a specific sorting function, `default` indicates that the default sorting algorithm is adopted | `boolean` \| `Function` \| `string` | `-` |
 | render | Custom render column data, high priority | `Function(record)` | `-` |
 | onSort | Click the sort button to trigger | `item: TableColumnProps, data: Array<any>` | `-` |
+| width | width of the column | `number` | `auto` |
+| fixed | fixed of the column | `left` \| `right`  | `-` |
 
 ## Theming
 
@@ -716,3 +980,5 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-table-cols-padding | table columns padding value | `10px` |
 | \--nutui-table-tr-even-background-color | table even rows background color | `$color-background` |
 | \--nutui-table-tr-odd-background-color | table odd rows background color | `$white` |
+| \--nutui-table-sticky-left-shadow | table sticky left shadow | `4px 0 8px 0 rgba(0, 0, 0, 0.1)` |
+| \--nutui-table-sticky-right-shadow | table sticky right shadow | `-4px 0 8px 0 rgba(0, 0, 0, 0.1)` |

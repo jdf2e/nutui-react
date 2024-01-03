@@ -4,6 +4,7 @@ import { Star, TriangleDown } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Toast, Table } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
+import { TableColumnProps } from './types'
 
 interface T {
   basic: string
@@ -18,14 +19,9 @@ interface T {
   sorting: string
   sorterIcon: string
   hideHeader: string
-}
-
-interface TableColumnProps {
-  key: string
-  title?: string
-  align?: string
-  sorter?: ((a: any, b: any) => number) | boolean | string
-  render?: (rowData: any, rowIndex: number) => string | React.ReactNode
+  stickyHeader: string
+  stickyLeftColumn: string
+  stickyRightColumn: string
 }
 
 const TableDemo = () => {
@@ -43,6 +39,9 @@ const TableDemo = () => {
       asynchronousRendering: '支持异步渲染(5s之后看效果)',
       sorting: '支持排序',
       sorterIcon: '支持排序更换图标',
+      stickyHeader: '固定表头',
+      stickyLeftColumn: '固定左列',
+      stickyRightColumn: '固定右列',
     },
     'en-US': {
       basic: 'Basic usage',
@@ -59,6 +58,9 @@ const TableDemo = () => {
         'Support asynchronous rendering(See the effect after 5S)',
       sorting: 'Support sorting',
       sorterIcon: 'Supports sorting and changing ICONS',
+      stickyHeader: 'sticky header',
+      stickyLeftColumn: 'sticky left column',
+      stickyRightColumn: 'sticky right column',
     },
   })
 
@@ -150,6 +152,100 @@ const TableDemo = () => {
     },
   ])
 
+  const [columns6, setColumns6] = useState<Array<TableColumnProps>>([
+    {
+      title: '姓名',
+      key: 'name',
+      align: 'center',
+    },
+    {
+      title: '性别',
+      key: 'sex',
+    },
+    {
+      title: '学历',
+      key: 'record',
+    },
+    {
+      title: '生日',
+      key: 'birthday',
+    },
+    {
+      title: '年龄',
+      key: 'age',
+    },
+  ])
+
+  const [columnsStickRight, setColumnsStickRight] = useState<
+    Array<TableColumnProps>
+  >([
+    {
+      title: '姓名',
+      key: 'name',
+      align: 'center',
+      width: 100,
+    },
+    {
+      title: '性别',
+      key: 'sex',
+      width: 60,
+    },
+    {
+      title: '学历',
+      key: 'record',
+      width: 100,
+    },
+    {
+      title: '生日',
+      key: 'birthday',
+      width: 100,
+    },
+    {
+      title: '年龄',
+      key: 'age',
+      fixed: 'right',
+      width: 100,
+      render: () => {
+        return (
+          <Button type="primary" size="mini">
+            操作
+          </Button>
+        )
+      },
+    },
+  ])
+
+  const [columnsStickLeft, setColumnsStickLeft] = useState<
+    Array<TableColumnProps>
+  >([
+    {
+      title: '姓名',
+      key: 'name',
+      align: 'center',
+      width: 100,
+    },
+    {
+      title: '性别',
+      key: 'sex',
+      width: 60,
+    },
+    {
+      title: '学历',
+      key: 'record',
+      width: 100,
+    },
+    {
+      title: '生日',
+      key: 'birthday',
+      width: 100,
+    },
+    {
+      title: '年龄',
+      key: 'age',
+      width: 100,
+    },
+  ])
+
   const [data1, setData1] = useState([
     {
       name: 'Tom',
@@ -237,6 +333,44 @@ const TableDemo = () => {
     },
   ])
 
+  const [data6, setData6] = useState([
+    {
+      name: 'Tom',
+      sex: '男',
+      record: '小学',
+      birthday: '2010-01-01',
+      age: 10,
+    },
+    {
+      name: 'Lucy',
+      sex: '女',
+      record: '本科',
+      birthday: '2000-01-01',
+      age: 30,
+    },
+    {
+      name: 'Jack',
+      sex: '男',
+      record: '高中',
+      birthday: '2020-01-01',
+      age: 4,
+    },
+    {
+      name: 'Sara',
+      sex: '女',
+      record: '高中',
+      birthday: '2020-01-01',
+      age: 6,
+    },
+    {
+      name: 'Frank',
+      sex: '男',
+      record: '幼儿园',
+      birthday: '2020-01-01',
+      age: 3,
+    },
+  ])
+
   setTimeout(() => {
     setData3(data1)
   }, 5000)
@@ -321,6 +455,17 @@ const TableDemo = () => {
           style={{ background: '#fff' }}
           sorterIcon={<TriangleDown size="12px" />}
         />
+        <h2>{translated.stickyHeader}</h2>
+        <Table
+          columns={columns6}
+          data={data6}
+          style={{ height: 150 }}
+          summary={translated.summary}
+        />
+        <h2>{translated.stickyLeftColumn}</h2>
+        <Table columns={columnsStickLeft} data={data6} />
+        <h2>{translated.stickyRightColumn}</h2>
+        <Table columns={columnsStickRight} data={data6} />
       </div>
     </>
   )

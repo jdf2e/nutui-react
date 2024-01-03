@@ -1,3 +1,45 @@
+# v2.3.4
+`2023-12-29`
+
+* 📖 docs(nabvar): showtoas 改为 showToast (#1826) @MingHui
+* :bug: fix(datepicker): 未设置 value/defaultValue 时渲染 0 (#1819) @RyanCW
+* :bug: fix(infiniteLoading): ssr (#1828) @xiaoyatong
+* :bug: fix(infiniteLoading): 修改类名及demo (#1818) @xiaoyatong
+* :bug: fix(popover): icon cannot be displayed at taro (#1820) @xiaoyatong
+* :bug: fix(popver): bottom positon (#1823) @xiaoyatong
+* :bug: fix(tabbar): fix icon color (#1816) @xiaoyatong
+* :bug: fix(virtualList): 等高模式下的抖动处理, 不定高模式快速滑动白屏 (#1825) @oasis-cloud
+* :bug: fix(watermark): fix demos (#1817) @xiaoyatong
+* 🛠 refactor(infiniteloading): onRefresh、onLoadMore 改为 Promise 类型，去掉显示调用 done 方法 (#1827) @oasis-cloud
+
+
+# v2.3.3
+`2023-12-22`
+
+* :sparkles: feat(form): validateFields 挂到实例上 (#1813) @oasis-cloud
+* :sparkles: feat(table): 增加table锁定头部、左侧列、右侧列 (#1775) @zhehu1
+* :bug: fix(Button): incorrect color for danger (#1809) @vczyh
+* :bug: fix(cascader): 增加 ref 上的 open 和 close 方法，支持 form 中使用 (#1799) @oasis-cloud
+* :bug: fix(datepicker): 受控模式不生效 (#1797) @oasis-cloud
+* :bug: fix(infiniteloading): scrollview 的 scrolltop 不应该根据高度设置 (#1804) @oasis-cloud
+* :bug: fix(pulltorefresh): icon 部分拆到demo中 (#1812) @xiaoyatong
+* :bug: fix(tabbaritem): 将 clone 子元素的方法，改为 context 的方式，隐藏内部使用的 props，精简对外暴露的 props 类型 (#1811) @oasis-cloud
+* :bug: fix(tabs): 导航滚动到可视范围需要显示指定 name，调整为内置 uuid 替代 name (#1800) @oasis-cloud
+* 🔨 chore: use svg64 in taro (#1805) @xiaoyatong
+
+
+# v2.3.2
+`2023-12-15`
+
+* 📖 docs(cascader): 动态加载文档代码与 demo 保持一致，回显已选数据 (#1787) @LING_ZI_QING
+* :sparkles: feat(fixednav): add the list icon for ReactNode (#1786) @sunsunmonkey
+* :bug: fix(cascader): second column data cannot be displayed (#1796) @xiaoyatong
+* :bug: fix: popup minheight for iPhone14 pro max (#1795) @xiaoyatong
+* :bug: fix: toast duration too long (#1794) @xiaoyatong
+* 🛠 refactor(swiper): implementing sliding logic through useTouch (#1793) @oasis-cloud
+* 🛠 refactor: 类型文件统一为 types，增加 fixednavitem 类型 (#1789) @oasis-cloud
+
+
 # v2.3.1
 `2023-12-13`
 

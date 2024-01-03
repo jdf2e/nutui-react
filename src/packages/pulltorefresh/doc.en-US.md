@@ -52,7 +52,8 @@ export default App
 | disabled | Whether to disable pull-to-refresh | `boolean` | `false` |
 | headHeight | The height of the head tip content area, in px | `number` | `40` |
 | pullingText | Pull down text | `ReactNode` | `Pull to refresh` |
-| refreshingText | Refresh text when refreshing | `ReactNode` | `Loading...` |
+| refreshingText | Refresh text when refreshing | `ReactNode` | `Loading` |
+| renderIcon | Customize the drop-down prompt icon according to the drop-down state | `ReactNode` | `<Loading />` |
 | renderText | Customize the drop-down prompt text according to the drop-down state | `ReactNode` | `-` |
 | threshold | How far to pull down to trigger refresh, the unit is px | `number` | `60` |
 | onRefresh | the handler function for triggering a refresh | `() => Promise<any>` | `-` |

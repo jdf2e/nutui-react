@@ -5,6 +5,7 @@ import '@testing-library/jest-dom'
 import { Star } from '@nutui/icons-react'
 import { Table } from '../table'
 import Button from '../../button'
+import { TableColumnProps } from '../types'
 
 const columns = [
   {
@@ -96,6 +97,73 @@ const data2 = [
         </Button>
       )
     },
+  },
+]
+
+const columns3: TableColumnProps[] = [
+  {
+    title: '姓名',
+    key: 'name',
+    align: 'center',
+    fixed: 'left',
+    width: 100,
+  },
+  {
+    title: '性别',
+    key: 'sex',
+    width: 60,
+  },
+  {
+    title: '学历',
+    key: 'record',
+  },
+  {
+    title: '生日',
+    key: 'birthday',
+  },
+  {
+    title: '年龄',
+    key: 'age',
+    fixed: 'right',
+    width: 100,
+  },
+]
+
+const data3 = [
+  {
+    name: 'Tom',
+    sex: '男',
+    record: '小学',
+    birthday: '2010-01-01',
+    age: 10,
+  },
+  {
+    name: 'Lucy',
+    sex: '女',
+    record: '本科',
+    birthday: '2000-01-01',
+    age: 30,
+  },
+  {
+    name: 'Jack',
+    sex: '男',
+    record: '高中',
+    birthday: '2020-01-01',
+    age: 4,
+  },
+  {
+    name: 'Sara',
+    sex: '女',
+    record: '高中',
+    birthday: '2020-01-01',
+    age: 6,
+  },
+  {
+    name: 'Frank',
+    sex: '男',
+    record: '幼儿园',
+    birthday: '2020-01-01',
+    age: 3,
   },
 ]
 
@@ -247,4 +315,12 @@ test('sorter', async () => {
   fireEvent.click(th)
   const td = container.querySelectorAll('.nut-table-main-body-tr-td')[3]
   expect(td).toHaveTextContent('10')
+})
+
+test('table head and column fixed', () => {
+  const { container } = render(<Table columns={columns3} data={data3} />)
+  const stickyLeft = container.querySelector('.nut-table-sticky-left')
+  const stickyRight = container.querySelector('.nut-table-sticky-right')
+  expect(stickyLeft).toBeInTheDocument()
+  expect(stickyRight).toBeInTheDocument()
 })

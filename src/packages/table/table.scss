@@ -1,17 +1,29 @@
 .nut-table {
-  display: flex;
-  width: 100%;
-  flex-direction: column;
-  font-size: $font-size-base;
-  color: $color-title;
+  overflow: hidden;
+  position: relative;
+
+  &-wrapper {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    font-size: $font-size-base;
+    color: $color-title;
+    overflow: auto;
+    position: relative;
+    border: 1px solid $table-border-color;
+  }
 
   &-main {
     display: table;
-    width: 100%;
-    border-collapse: collapse;
-    overflow-x: hidden;
+    // width: 100%;
+    // border-collapse: collapse;
+    overflow-x: auto;
     color: $color-title;
     background-color: $color-background-overlay;
+    table-layout: fixed;
+    width: max-content;
+    min-width: 100%;
+    position: relative;
 
     &-striped {
       .nut-table-main-head {
@@ -35,17 +47,41 @@
 
     &-head,
     &-body {
+      background: inherit;
       &-tr {
         display: table-row;
+        background: inherit;
+
+        &:last-child {
+          .nut-table-main-body-tr-td {
+            border-bottom: none;
+          }
+        }
 
         &-th {
           display: table-cell;
           padding: $table-cols-padding;
+          background: inherit;
+          position: sticky;
+          top: 0;
+          &.nut-table-fixed-left,
+          &.nut-table-fixed-right {
+            z-index: 4;
+          }
+
+          &:last-child {
+            border-right: none;
+          }
         }
 
         &-td {
           display: table-cell;
           padding: $table-cols-padding;
+          background: inherit;
+
+          &:last-child {
+            border-right: none;
+          }
 
           &-nodata {
             display: flex;
@@ -56,7 +92,8 @@
         }
 
         &-border {
-          border: 1px solid $table-border-color;
+          border-right: 1px solid $table-border-color;
+          border-bottom: 1px solid $table-border-color;
         }
 
         &-alignleft,
@@ -83,6 +120,40 @@
     }
   }
 
+  &-sticky-left,
+  &-sticky-right {
+    position: absolute;
+    top: 0px;
+    width: 8px;
+    bottom: -1px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    box-shadow: none;
+    touch-action: none;
+    pointer-events: none;
+    z-index: 3;
+    background: transparent;
+  }
+
+  &-sticky-left {
+    left: 1px;
+    box-shadow: $table-sticky-left-shadow;
+  }
+
+  &-sticky-right {
+    right: 1px;
+    box-shadow: $table-sticky-right-shadow;
+  }
+
+  &-fixed-left,
+  &-fixed-right {
+    position: sticky;
+    z-index: 2;
+  }
+  &-fixed-left-last {
+    border-right: none;
+  }
+
   &-summary {
     color: $color-title;
     background-color: $color-background-overlay;
@@ -91,5 +162,7 @@
     justify-content: center;
     height: 30px;
     padding: $table-cols-padding;
+    position: relative;
+    z-index: 5;
   }
 }

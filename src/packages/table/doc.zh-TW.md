@@ -689,6 +689,269 @@ export default App;
 
 :::
 
+
+:::
+
+### 固定錶頭
+
+:::demo
+
+```tsx
+import  React, { useState } from "react";
+import { Table, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const [data6, setData6] = useState([
+    {
+      name: 'Tom',
+      sex: '男',
+      record: '小学',
+      birthday: '2010-01-01',
+      age: 10,
+    },
+    {
+      name: 'Lucy',
+      sex: '女',
+      record: '本科',
+      birthday: '2000-01-01',
+      age: 30,
+    },
+    {
+      name: 'Jack',
+      sex: '男',
+      record: '高中',
+      birthday: '2020-01-01',
+      age: 4,
+    },
+    {
+      name: 'Sara',
+      sex: '女',
+      record: '高中',
+      birthday: '2020-01-01',
+      age: 6,
+    },
+    {
+      name: 'Frank',
+      sex: '男',
+      record: '幼儿园',
+      birthday: '2020-01-01',
+      age: 3,
+    },
+  ])
+
+   const [columns6, setColumns6] = useState<Array<TableColumnProps>>([
+    {
+      title: '姓名',
+      key: 'name',
+      align: 'center',
+    },
+    {
+      title: '性别',
+      key: 'sex',
+    },
+    {
+      title: '学历',
+      key: 'record',
+    },
+    {
+      title: '生日',
+      key: 'birthday',
+    },
+    {
+      title: '年龄',
+      key: 'age',
+    },
+  ])
+
+  return <Table
+        columns={columns6}
+        data={data6}
+        style={{ height: 150 }}
+        summary={translated.summary}
+      />;
+};
+export default App;
+```
+
+### 固定左側列
+
+:::demo
+
+```tsx
+import  React, { useState } from "react";
+import { Table, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const [data6, setData6] = useState([
+    {
+      name: 'Tom',
+      sex: '男',
+      record: '小学',
+      birthday: '2010-01-01',
+      age: 10,
+    },
+    {
+      name: 'Lucy',
+      sex: '女',
+      record: '本科',
+      birthday: '2000-01-01',
+      age: 30,
+    },
+    {
+      name: 'Jack',
+      sex: '男',
+      record: '高中',
+      birthday: '2020-01-01',
+      age: 4,
+    },
+    {
+      name: 'Sara',
+      sex: '女',
+      record: '高中',
+      birthday: '2020-01-01',
+      age: 6,
+    },
+    {
+      name: 'Frank',
+      sex: '男',
+      record: '幼儿园',
+      birthday: '2020-01-01',
+      age: 3,
+    },
+  ])
+
+   const [columnsStickLeft, setColumnsStickLeft] = useState<
+    Array<TableColumnProps>
+  >([
+    {
+      title: '姓名',
+      key: 'name',
+      align: 'center',
+      fixed: 'left',
+      width: 100,
+    },
+    {
+      title: '性别',
+      key: 'sex',
+      width: 60,
+    },
+    {
+      title: '学历',
+      key: 'record',
+      width: 100,
+    },
+    {
+      title: '生日',
+      key: 'birthday',
+      width: 100,
+    },
+    {
+      title: '年龄',
+      key: 'age',
+      width: 100,
+    },
+  ])
+
+  return <Table columns={columnsStickLeft} data={data6} />;
+};
+export default App;
+```
+
+:::
+
+### 固定右側列
+
+:::demo
+
+```tsx
+import  React, { useState } from "react";
+import { Table, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  const [data6, setData6] = useState([
+    {
+      name: 'Tom',
+      sex: '男',
+      record: '小学',
+      birthday: '2010-01-01',
+      age: 10,
+    },
+    {
+      name: 'Lucy',
+      sex: '女',
+      record: '本科',
+      birthday: '2000-01-01',
+      age: 30,
+    },
+    {
+      name: 'Jack',
+      sex: '男',
+      record: '高中',
+      birthday: '2020-01-01',
+      age: 4,
+    },
+    {
+      name: 'Sara',
+      sex: '女',
+      record: '高中',
+      birthday: '2020-01-01',
+      age: 6,
+    },
+    {
+      name: 'Frank',
+      sex: '男',
+      record: '幼儿园',
+      birthday: '2020-01-01',
+      age: 3,
+    },
+  ])
+
+   const [columnsStickRight, setColumnsStickRight] = useState<
+    Array<TableColumnProps>
+  >([
+    {
+      title: '姓名',
+      key: 'name',
+      align: 'center',
+      width: 100,
+    },
+    {
+      title: '性别',
+      key: 'sex',
+      width: 60,
+    },
+    {
+      title: '学历',
+      key: 'record',
+      width: 100,
+    },
+    {
+      title: '生日',
+      key: 'birthday',
+      width: 100,
+    },
+    {
+      title: '年龄',
+      key: 'age',
+      fixed: 'right',
+      width: 100,
+      render: () => {
+        return (
+          <Button type="primary" size="mini">
+            操作
+          </Button>
+        )
+      },
+    },
+  ])
+
+  return <Table columns={columnsStickRight} data={data6} />;
+};
+export default App;
+```
+
+:::
+
 ## Table
 
 ### Props
@@ -714,6 +977,9 @@ export default App;
 | sorter | 排序，可選值有 true,function, default, 其中 default錶示點擊之後可能會依賴接口, function可以返回具體的排序函數, default錶示採用默認的排序算法 | `boolean` \| `Function` \| `string` | `-` |
 | render | 自定義渲染列數據，優先級高 | `Function(record)` | `-` |
 | sorterIcon | 排序 icon | `ReactNode` | `<ArrowDown />` |
+| width | 列寬度 | `number` | `auto` |
+| fixed | 固定位置 | `left` \| `right`  | `-` |
+
 
 ## 主題定制
 
@@ -727,3 +993,5 @@ export default App;
 | \--nutui-table-cols-padding | 錶格列的padding值 | `10px` |
 | \--nutui-table-tr-even-background-color | 錶格偶數行的背景色 | `$color-background` |
 | \--nutui-table-tr-odd-background-color | 錶格奇數行的背景色 | `$white` |
+| \--nutui-table-sticky-left-shadow | 錶格左側固定陰影 | `4px 0 8px 0 rgba(0, 0, 0, 0.1)` |
+| \--nutui-table-sticky-right-shadow | 錶格右側固定陰影 | `-4px 0 8px 0 rgba(0, 0, 0, 0.1)` |

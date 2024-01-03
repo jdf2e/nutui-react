@@ -188,6 +188,7 @@ class FormStore {
       getFieldsValue: this.getFieldsValue,
       setFieldsValue: this.setFieldsValue,
       resetFields: this.resetFields,
+      validateFields: this.validateFields,
       submit: this.submit,
       errors: this.errors,
       getInternal: this.getInternal,

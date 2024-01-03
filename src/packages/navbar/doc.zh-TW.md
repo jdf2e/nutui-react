@@ -200,7 +200,7 @@ export default App;
 | back | 返回區域的文字 | `ReactNode` | `-` |
 | titleAlign | 標題位置,可選值center left | `string` | `center` |
 | fixed | 是否固定 | `boolean` | `false` |
-| safeArea | 是否適配安全區 | `boolean` | `false` |
+| safeAreaInsetTop | 是否適配安全區 | `boolean` | `false` |
 | placeholder | 固定在頂部時，是否在標簽位置生成一個等高的佔位元素 | `boolean` | `false` |
 | zIndex | 導航欄層級 | `number` \| `string` | `10` |
 | onBackClick | 點擊返回區域後的回調 | `onBackClick:(event: Event)=>void` | `false` |

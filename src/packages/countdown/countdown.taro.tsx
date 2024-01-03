@@ -8,6 +8,7 @@ import React, {
 } from 'react'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { padZero } from '@/utils/pad-zero'
 
 export interface CountDownProps extends BasicComponent {
   paused: boolean
@@ -195,15 +196,6 @@ const InternalCountDown: ForwardRefRenderFunction<
     }
     return formatCache
   }
-
-  const padZero = (num: number | string, length = 2) => {
-    num += ''
-    while ((num as string).length < length) {
-      num = `0${num}`
-    }
-    return num.toString()
-  }
-
   // 暂定
   const pause = () => {
     cancelAnimationFrame(stateRef.current.timer)

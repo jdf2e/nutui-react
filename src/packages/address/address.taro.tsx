@@ -9,7 +9,7 @@ import Popup from '@/packages/popup/index.taro'
 import { ExistRender } from './existRender.taro'
 import { CustomRender } from './customRender.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import { AddressList } from './type'
+import { AddressList } from './types'
 import {
   CascaderOption,
   CascaderOptionKey,

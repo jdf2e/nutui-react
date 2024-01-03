@@ -6,11 +6,11 @@ import React, {
   useRef,
   useState,
 } from 'react'
-import { ScrollView } from '@tarojs/components'
+import { ScrollView, View } from '@tarojs/components'
 import { getSystemInfoSync } from '@tarojs/taro'
 import classNames from 'classnames'
-import { Data, PositionType, VirtualListState } from './type'
-import { binarySearch, initPositinoCache, updateItemSize } from './utils'
+import { Data, PositionType } from './types'
+import { initPositinoCache, updateItemSize } from './utils'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 const clientHeight = getSystemInfoSync().windowHeight - 5 || 667
@@ -20,6 +20,7 @@ export interface VirtualListProps extends BasicComponent {
   containerHeight: number
   itemRender: (data: any, dataIndex: number, index: number) => ReactNode
   itemHeight: number
+  margin: number
   itemEqual: boolean
   overscan: number
   onScroll: () => void
@@ -31,6 +32,7 @@ const defaultProps = {
   list: [] as Array<Data>,
   containerHeight: clientHeight,
   itemHeight: 66,
+  margin: 10,
   itemEqual: true,
   overscan: 2,
 } as VirtualListProps
@@ -42,6 +44,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
     list,
     itemRender,
     itemHeight,
+    margin,
     itemEqual,
     overscan,
     key,
@@ -55,7 +58,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
   }
 
   const [startOffset, setStartOffset] = useState(0)
-  const [start, setStart] = useState(0)
+  const start = useRef(0)
 
   // 虚拟列表容器ref
   const scrollRef = useRef<HTMLDivElement>(null)
@@ -75,12 +78,6 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
   ])
 
   const [offSetSize, setOffSetSize] = useState<number>(containerHeight || 0)
-  const [options, setOptions] = useState<VirtualListState>({
-    startOffset: 0, // 可视区域距离顶部的偏移量
-    startIndex: 0, // 可视区域开始索引
-    overStart: 0,
-    endIndex: 10, // 可视区域结束索引
-  })
 
   //   初始计算可视区域展示数量
   useEffect(() => {
@@ -91,39 +88,40 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
 
   useEffect(() => {
     if (containerHeight) return
-
     setOffSetSize(getContainerHeight())
   }, [containerHeight])
 
   useEffect(() => {
-    const pos = initPositinoCache(itemHeight, list.length)
+    const pos = initPositinoCache(itemHeight + margin, list.length)
     setPositions(pos)
   }, [itemHeight, list])
+
+  const prevListLength = useRef(list.length)
 
   // 可视区域总高度
   const getContainerHeight = () => {
     // 初始首页列表高度
-    const initH = itemHeight * list.length
+    const initH = (itemHeight + margin) * list.length
     // 未设置containerHeight高度，判断首页高度小于设备高度时，滚动容器高度为首页数据高度，减5为分页触发的偏移量
     return initH < clientHeight
-      ? initH + overscan * itemHeight - 5
+      ? initH + overscan * (itemHeight + margin) - 5
       : Math.min(containerHeight, clientHeight) // Math.min(containerHeight, clientHeight)
   }
   // 可视区域条数
   const visibleCount = () => {
-    return Math.ceil(getContainerHeight() / itemHeight) + overscan
+    return Math.ceil(getContainerHeight() / (itemHeight + margin)) + overscan
   }
 
   const end = () => {
-    return start + visibleCount()
+    return start.current + visibleCount()
   }
 
   const listHeight = () => {
-    return list.length * itemHeight
+    return list.length * (itemHeight + margin)
   }
 
   const visibleData = () => {
-    return list.slice(start, Math.min(end(), list.length))
+    return list.slice(start.current, Math.min(end(), list.length))
   }
 
   const updateTotalSize = useCallback(() => {
@@ -131,29 +129,31 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
     const items: HTMLCollection = itemsRef.current.children
     if (!items.length) return
     // 更新缓存
-    updateItemSize(positions, items, 'height')
+    updateItemSize(positions, items, 'height', margin)
   }, [positions])
 
   // 滚动监听
   const listScroll = (e: any) => {
     const scrollTop = e.target.scrollTop
-    const scrollSize = Math.floor(scrollTop)
-    const startIndex = binarySearch(positions, false, scrollSize)
-    const overStart = startIndex - overscan > -1 ? startIndex - overscan : 0
-    const endIndex = end()
+    if (scrollTop <= 0) {
+      e.target.scrollTop = 0
+      return setStartOffset(0)
+    }
     if (!itemEqual) {
       updateTotalSize()
     }
-    setStart(Math.floor(scrollTop / itemHeight))
-    setOptions({ startOffset, startIndex, overStart, endIndex })
-    if (end() > list.length - 1) {
+    start.current = Math.floor(scrollTop / (itemHeight + margin))
+    setStartOffset(scrollTop - (scrollTop % (itemHeight + margin)))
+    const endIndex = end()
+    // list 变动说明触底
+    if (endIndex > list.length - 1 && prevListLength.current < list.length) {
       onScroll && onScroll()
+      prevListLength.current = list.length
     }
-    setStartOffset(scrollTop - (scrollTop % itemHeight))
   }
 
   return (
-    <div
+    <View
       className={classNames('nut-virtualList-box', className)}
       {...rest}
       style={{
@@ -162,6 +162,7 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
     >
       <ScrollView
         scrollY
+        bounces={false}
         type="list"
         ref={scrollRef}
         className="nut-virtuallist"
@@ -170,21 +171,20 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
         }}
         onScroll={listScroll}
       >
-        <div
+        <View
           className="nut-virtuallist-phantom"
           style={{ height: `${listHeight()}px` }}
         />
-        <div
+        <View
           className="nut-virtuallist-container"
           ref={itemsRef}
           style={{ transform: `translate3d(0, ${startOffset}px, 0)` }}
         >
           {visibleData().map((data: any, index: number) => {
-            const { overStart } = options
-            const dataIndex = overStart + index
+            const dataIndex = start.current + index
             const keyVal = key && data[key] ? data[key] : dataIndex
             return (
-              <div
+              <View
                 data-index={`${dataIndex}`}
                 className="nut-virtuallist-item"
                 key={`${keyVal}`}
@@ -193,12 +193,12 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
                 }}
               >
                 {itemRender ? itemRender(data, dataIndex, index) : data}
-              </div>
+              </View>
             )
           })}
-        </div>
+        </View>
       </ScrollView>
-    </div>
+    </View>
   )
 }
 
