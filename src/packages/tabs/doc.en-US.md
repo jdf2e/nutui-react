@@ -659,10 +659,11 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-tabs-titles-height | height of titles in horizontal direction | `44px` |
 | \--nutui-tabs-titles-background-color | Tab title background color | `$color-background` |
+| \--nutui-tabs-titles-padding | Tab title padding | `0 16px` |
 | \--nutui-tabs-title-gap | Tab title margin | `0px` |
 | \--nutui-tabs-titles-font-size | Tab title font size | `$font-size-base` |
-
 | \--nutui-tabs-titles-item-min-width | Minimum width of horizontal titles | `50px` |
+| \--nutui-tabs-titles-item-color | Tab titles font color | `$color-title` |
 | \--nutui-tabs-titles-item-active-color | Tab selected titles font color | `$color-primary` |
 | \--nutui-tabs-titles-item-active-font-weight | Tab selected titles font weight | `$font-weight-bold` |
 | \--nutui-tabs-titles-item-active-font-size | Tab selected titles font size | `$font-size-large` |
