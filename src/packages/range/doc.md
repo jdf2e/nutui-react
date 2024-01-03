@@ -17,18 +17,26 @@ import { Range } from '@nutui/nutui-react';
 :::demo
 
 ```tsx
-import React from "react";
-import { Range, Cell, Toast } from '@nutui/nutui-react';
+import React from 'react'
+import { Range, Cell, Toast } from '@nutui/nutui-react'
 
 const App = () => {
   const cellStyle = {
     padding: '40px 18px',
-  };
+  }
   return <Cell style={cellStyle}>
     <Range defaultValue={40} onEnd={(val) => Toast.show(`${val}`)} />
+    <Range
+      defaultValue={40}
+      marks={[
+        { value: 0, label: 'start' },
+        { value: 100, label: 'end' },
+      ]}
+      onEnd={(val) => Toast.show(`${val}`)}
+    />
   </Cell>
-};
-export default App;
+}
+export default App
 ```
 
 :::
