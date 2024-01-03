@@ -289,7 +289,7 @@ const InternalPickerPanel: ForwardRefRenderFunction<
                 }}
                 key={item.value ? item.value : index}
               >
-                <>{item.text ? item.text : item}</>
+                <>{item.text}</>
               </div>
             )
           })}
@@ -305,7 +305,7 @@ const InternalPickerPanel: ForwardRefRenderFunction<
                   lineHeight: `${lineSpacing.current}px`,
                 }}
               >
-                <>{item.text ? item.text : item}</>
+                <>{item.text}</>
               </div>
             )
           })}
