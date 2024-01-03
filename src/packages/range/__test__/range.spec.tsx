@@ -109,6 +109,23 @@ test('marks test', () => {
   )
 })
 
+test('marks array', () => {
+  const state = {
+    value0: 40,
+    marks: [
+      { value: 0, label: 'start' },
+      { value: 100, label: 'end' },
+    ],
+  }
+  const { container } = render(
+    <Range marks={state.marks} defaultValue={state.value0} />
+  )
+  expect(container.querySelector('.nut-range-mark')).toBeTruthy()
+  expect(container.querySelectorAll('.nut-range-mark-text')?.length).toEqual(
+    Object.keys(state.marks).length
+  )
+})
+
 test('custom-button test', () => {
   const state = {
     value0: 40,
