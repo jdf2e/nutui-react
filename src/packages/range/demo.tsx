@@ -64,12 +64,12 @@ const RangeDemo = () => {
   const [value1, setValue1] = useState(40)
   const [value2, setValue2] = useState(60)
   const [marks] = useState({
-    0: 0,
+    0: 'Start',
     20: 20,
     40: 40,
     60: 60,
     80: 80,
-    100: 100,
+    100: 'End',
   })
 
   return (
@@ -78,6 +78,16 @@ const RangeDemo = () => {
         <h2>{translated.title}</h2>
         <Cell style={cellStyle}>
           <Range defaultValue={40} onEnd={(val) => Toast.show(`${val}`)} />
+        </Cell>
+        <Cell style={cellStyle}>
+          <Range
+            defaultValue={40}
+            marks={[
+              { value: 0, label: 'start' },
+              { value: 100, label: 'end' },
+            ]}
+            onEnd={(val) => Toast.show(`${val}`)}
+          />
         </Cell>
         <h2>{translated.controlled}</h2>
         <Cell style={cellStyle}>
