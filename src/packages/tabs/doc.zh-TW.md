@@ -659,9 +659,11 @@ export default App;
 | --- | --- | --- |
 | \--nutui-tabs-titles-height | 水平方向標題的高度 | `44px` |
 | \--nutui-tabs-titles-background-color | Tab 標題的背景色 | `$color-background` |
+| \--nutui-tabs-titles-padding | Tab 標題的內邊距 | `0 16px` |
 | \--nutui-tabs-title-gap | Tab 標題的左右 margin | `0px` |
 | \--nutui-tabs-titles-font-size | Tab 標題的字號 | `$font-size-base` |
 | \--nutui-tabs-titles-item-min-width | 水平方向標題的最小寬度 | `50px` |
+| \--nutui-tabs-titles-item-color | Tab 標題的字色 | `$color-title` |
 | \--nutui-tabs-titles-item-active-color | Tab 選中標題的字色 | `$color-primary` |
 | \--nutui-tabs-titles-item-active-font-weight | Tab 選中標題的字重 | `$font-weight-bold` |
 | \--nutui-tabs-titles-item-active-font-size | Tab 選中標題的字號 | `$font-size-large` |
