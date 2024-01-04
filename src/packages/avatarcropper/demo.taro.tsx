@@ -2,9 +2,13 @@ import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import { Refresh, Retweet } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { AvatarCropper } from './avatarcropper.taro'
 import Header from '@/sites/components/header'
-import { Cell, Button, Avatar } from '@/packages/nutui.react.taro'
+import {
+  Cell,
+  Button,
+  Avatar,
+  AvatarCropper,
+} from '@/packages/nutui.react.taro'
 import './demo.scss'
 
 interface T {
