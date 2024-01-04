@@ -2,9 +2,8 @@ import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react'
 import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { EmptyAction } from '@/packages/empty/index.taro'
-
-import Button from '../button'
+import type { EmptyAction } from './types'
+import { Button } from '@/packages/button/button.taro'
 
 type statusOptions = {
   [key: string]: string
