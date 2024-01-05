@@ -261,6 +261,7 @@ export default function App() {
 | \--nutui-dialog-content-max-height | 對話框內容最大高度 | `268px` |
 | \--nutui-dialog-content-line-height | 對話框內容行高 | `20px` |
 | \--nutui-dialog-content-text-align | 對話框內容文本對齊方式 | `left` |
+| \--nutui-dialog-header-font-size | 對話框標題字体大小 | `$font-size-large` |
 | \--nutui-dialog-header-font-weight | 對話框標題字重 | `normal` |
 | \--nutui-dialog-footer-justify-content | 對話框底部按鈕排布 | `space-around` |
 | \--nutui-dialog-footer-button-min-width | 對話框底部按鈕最小寬度 | `117px` |
