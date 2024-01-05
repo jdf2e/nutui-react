@@ -12,8 +12,7 @@ import { useTouch } from '@/utils/use-touch'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
-
-export type RangeValue = number | number[]
+import { RangeMark, RangeValue } from './types'
 
 export interface RangeProps extends BasicComponent {
   value: RangeValue
@@ -27,7 +26,7 @@ export interface RangeProps extends BasicComponent {
   maxDescription: ReactNode
   button: ReactNode
   vertical: boolean
-  marks: Record<string, unknown>
+  marks: Record<string, ReactNode> | RangeMark[]
   currentDescription: ((value: RangeValue) => ReactNode) | null
   onChange: (value: RangeValue) => void
   onStart: () => void
@@ -76,7 +75,7 @@ export const Range: FunctionComponent<
   const [dragStatus, setDragStatus] = useState('start' || 'draging' || '')
   const touch = useTouch()
   const root = useRef<HTMLDivElement>(null)
-  const [marksList, setMarksList] = useState([])
+  const [marksList, setMarksList] = useState<number[]>([])
 
   const [startValue, setStartValue] = useState<any>(0)
 
@@ -93,15 +92,27 @@ export const Range: FunctionComponent<
   const [exactValue, setEaxctValue] = useState<RangeValue>(
     () => value || defaultValue || 0
   )
-
+  const marksRef = useRef<{ [key: string]: any }>({})
   useEffect(() => {
     if (marks) {
-      const marksKeys = Object.keys(marks)
-      const list: any = marksKeys
-        .map(parseFloat)
-        .sort((a, b) => a - b)
-        .filter((point) => point >= min && point <= max)
-      setMarksList(list)
+      if (Array.isArray(marks)) {
+        // 增加变量
+        const list = marks
+          .sort((a, b) => a.value - b.value)
+          .filter((point) => point.value >= min && point.value <= max)
+        setMarksList(list.map((mark) => mark.value))
+        list.forEach((mark) => {
+          marksRef.current[mark.value] =
+            mark.label !== undefined ? mark.label : mark.value
+        })
+      } else {
+        const marksKeys = Object.keys(marks)
+        const list: any = marksKeys
+          .map(parseFloat)
+          .sort((a, b) => a - b)
+          .filter((point) => point >= min && point <= max)
+        setMarksList(list)
+      }
     }
   }, [marks])
 
@@ -341,17 +352,17 @@ export const Range: FunctionComponent<
       <div ref={root} className={classes} onClick={(e) => click(e)}>
         {marksList.length > 0 && (
           <div className="nut-range-mark">
-            {marksList.map((marks: any) => {
+            {marksList.map((mark: any) => {
               return (
                 <span
-                  key={marks}
-                  className={markClassName(marks)}
-                  style={marksStyle(marks)}
+                  key={mark}
+                  className={markClassName(mark)}
+                  style={marksStyle(mark)}
                 >
-                  {marks}
+                  {Array.isArray(marks) ? marksRef.current[mark] : marks[mark]}
                   <span
                     className={classNames('nut-range-tick', {
-                      active: tickClass(marks),
+                      active: tickClass(mark),
                     })}
                   />
                 </span>

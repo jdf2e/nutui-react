@@ -26,6 +26,14 @@ const App = () => {
   };
   return <Cell style={cellStyle}>
     <Range defaultValue={40} onEnd={(val) => console.log(`${val}`)} />
+    <Range
+      defaultValue={40}
+      marks={[
+        { value: 0, label: 'start' },
+        { value: 100, label: 'end' },
+      ]}
+      onEnd={(val) => console.log(`${val}`)}
+    />
   </Cell>
 };
 export default App;
