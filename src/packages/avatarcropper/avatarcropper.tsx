@@ -14,12 +14,14 @@ import { clamp, preventDefault } from '@/utils'
 import { getRect } from '@/utils/use-client-rect'
 
 export type AvatarCropperToolbarPosition = 'top' | 'bottom'
+export type AvatarCropperShape = 'square' | 'round'
 export interface AvatarCropperProps extends BasicComponent {
   maxZoom: number
   space: number
   toolbar: React.ReactNode[]
   toolbarPosition: AvatarCropperToolbarPosition
   editText: React.ReactNode | string
+  shape: AvatarCropperShape
   onConfirm: (e: string) => void
   onCancel: () => void
 }
@@ -40,6 +42,7 @@ const defaultProps = {
   ],
   toolbarPosition: 'bottom',
   editText: '编辑',
+  shape: 'square',
 } as AvatarCropperProps
 
 const classPrefix = `nut-avatar-cropper`
@@ -53,6 +56,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     space,
     toolbarPosition,
     editText,
+    shape,
     className,
     style,
     onConfirm,
@@ -63,7 +67,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     ...props,
   }
 
-  const cls = classNames(classPrefix, className)
+  const cls = classNames(classPrefix, className, shape === 'round' && 'round')
   const toolbarPositionCls = classNames(
     `${classPrefix}-popup-toolbar`,
     toolbarPosition
@@ -109,6 +113,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     return {
       width,
       height,
+      borderRadius: shape === 'round' ? '50%' : '',
     }
   }, [devicePixelRatio, drawImage.swidth])
 
@@ -469,6 +474,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
           accept="image/*"
           className={`${classPrefix}-input`}
           onChange={(e: any) => inputImageChange(e)}
+          aria-label="选择图片"
         />
         <div className="nut-avatar-cropper-edit-text">{editText}</div>
       </div>

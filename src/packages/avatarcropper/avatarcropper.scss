@@ -89,4 +89,9 @@
       }
     }
   }
+  &.round {
+    .nut-avatar-cropper-edit-text {
+      border-radius: 50%;
+    }
+  }
 }

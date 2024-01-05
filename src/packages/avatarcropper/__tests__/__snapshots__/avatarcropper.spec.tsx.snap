@@ -10,6 +10,7 @@ exports[`layout default slot 1`] = `
   />
   <input
     accept="image/*"
+    aria-label="选择图片"
     class="nut-avatar-cropper-input"
     type="file"
   />
