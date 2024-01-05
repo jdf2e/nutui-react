@@ -37,7 +37,7 @@
   &-header {
     display: block;
     text-align: center;
-    font-size: $font-size-large;
+    font-size: $dialog-header-font-size;
     font-weight: $dialog-header-font-weight;
     color: $color-title;
     @include oneline-ellipsis();

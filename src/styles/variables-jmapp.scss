@@ -1289,6 +1289,10 @@ $dialog-footer-ok-max-width: var(
   --nutui-dialog-footer-ok-max-width,
   128px
 ) !default;
+$dialog-header-font-size: var(
+  --nutui-dialog-header-font-size,
+  $font-size-large
+) !default;
 $dialog-header-font-weight: var(
   --nutui-dialog-header-font-weight,
   normal
