@@ -2,28 +2,36 @@ import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import { Refresh, Retweet } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { AvatarCropper } from './avatarcropper.taro'
 import Header from '@/sites/components/header'
-import { Cell, Button, Avatar } from '@/packages/nutui.react.taro'
+import {
+  Cell,
+  Button,
+  Avatar,
+  AvatarCropper,
+} from '@/packages/nutui.react.taro'
 import './demo.scss'
 
 interface T {
   c0a1c0a1: string
   c0a1c0a2: string
+  c0a1c0a3: string
 }
 const AvatarCropperDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
       c0a1c0a1: '基础用法',
       c0a1c0a2: '自定义裁剪区域工具栏',
+      c0a1c0a3: '圆形裁剪',
     },
     'zh-TW': {
       c0a1c0a1: '基礎用法',
       c0a1c0a2: '自定義裁剪區域工具欄',
+      c0a1c0a3: '圓形裁剪',
     },
     'en-US': {
       c0a1c0a1: 'Basic usage',
       c0a1c0a2: 'Customize the cropping area toolbar',
+      c0a1c0a3: 'Roll Finger Cutting',
     },
   })
   const [imageUrl, setImageUrl] = useState(
@@ -64,6 +72,12 @@ const AvatarCropperDemo = () => {
             ]}
           >
             <Avatar size="large" src={imageUrl} />
+          </AvatarCropper>
+        </Cell>
+        <h2>{translated.c0a1c0a3}</h2>
+        <Cell>
+          <AvatarCropper shape="round" onConfirm={cutImage}>
+            <Avatar size="large" shape="round" src={imageUrl} />
           </AvatarCropper>
         </Cell>
       </div>
