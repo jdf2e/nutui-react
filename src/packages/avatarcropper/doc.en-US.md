@@ -87,6 +87,36 @@ export default App;
 
 :::
 
+### Roll Finger Cutting
+
+Set the shape of the crop display, which is still square after the crop, and need to set rounded corners in the display place
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Avatar, AvatarCropper } from '@nutui/nutui-react';
+
+const App = () => {
+  const [imageUrl, setImageUrl] = useState(
+    'https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png'
+  )
+  const cutImage = (data: any) => {
+    setImageUrl(data)
+  }
+  return (
+    <>
+      <AvatarCropper shape="round" onConfirm={cutImage}>
+        <Avatar size="large" shape="round" src={imageUrl} />
+      </AvatarCropper>
+    </>
+  )
+}
+export default App;
+```
+
+:::
+
 ## AvatarCropper
 
 ### Props
@@ -98,5 +128,6 @@ export default App;
 | edit-text | The text content in the middle | `ReactNode \| string` | `编辑` |
 | toolbar | Customize the clipping area toolbar, after setting this content | `ReactNode[]` | `[<Button type="danger" key="cancel">取消</Button>, <Button type="info" key="reset">重置</Button>,<Button type="warning" key="rotate">旋转</Button>,<Button type="success" key="confirm">确认</Button>]` |
 | toolbar-position | Location of the toolbar in the clipping area. The optional value is：`top` `bottom` | `string` | `bottom` |
+| shape | Crop shape, optional value is：`square` `round` | `string` | `square` |
 | onConfirm | Click Confirm to trigger after cropping | `(url: string) => void` | `-` |
 | onCancel | Click cancel trigger | `-` | `-` |

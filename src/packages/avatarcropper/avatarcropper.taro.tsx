@@ -16,6 +16,7 @@ import { clamp, preventDefault } from '@/utils'
 export type AvatarCropperToolbarPosition = 'top' | 'bottom'
 export type AvatarCropperSizeType = 'original' | 'compressed'
 export type AvatarCropperSourceType = 'album' | 'camera'
+export type AvatarCropperShape = 'square' | 'round'
 export interface AvatarCropperProps extends BasicComponent {
   maxZoom: number
   space: number
@@ -24,6 +25,7 @@ export interface AvatarCropperProps extends BasicComponent {
   editText: React.ReactNode | string
   sizeType: AvatarCropperSizeType[]
   sourceType: AvatarCropperSourceType[]
+  shape: AvatarCropperShape
   onConfirm: (e: string) => void
   onCancel: () => void
 }
@@ -46,6 +48,7 @@ const defaultProps = {
   editText: '编辑',
   sizeType: ['original', 'compressed'],
   sourceType: ['album', 'camera'],
+  shape: 'square',
 } as AvatarCropperProps
 
 const classPrefix = `nut-avatar-cropper`
@@ -61,6 +64,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     editText,
     sizeType,
     sourceType,
+    shape,
     className,
     style,
     onConfirm,
@@ -83,7 +87,12 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     cropperCanvasContext: Taro.CanvasContext | null
   }
 
-  const cls = classNames(classPrefix, 'taro', className)
+  const cls = classNames(
+    classPrefix,
+    'taro',
+    className,
+    shape === 'round' && 'round'
+  )
   const toolbarPositionCls = classNames(
     `${classPrefix}-popup-toolbar`,
     toolbarPosition
@@ -160,6 +169,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     return {
       width,
       height,
+      borderRadius: shape === 'round' ? '50%' : '',
     }
   }, [pixelRatio, state.cropperWidth])
 

@@ -1,3 +1,19 @@
+# v2.3.5
+`2024-01-05`
+
+* :sparkles: feat(avatarcropper): 新增属性shape，可设置裁剪样式为圆形 (#1842) @Marvin Gui
+* :sparkles: feat(dialog): 新增 CSS 变量 (#1844) @LING_ZI_QING
+* :sparkles: feat(range): marks type optimization (#1833) @oasis-cloud
+* :sparkles: feat(tabs): 新增 CSS 变量 (#1835) @LING_ZI_QING
+* :bug: fix(avatarcropper): fix cannot display when it is development at taro (#1840) @xiaoyatong
+* :bug: fix(empty): fix import at taro (#1839) @xiaoyatong
+* :bug: fix(picker): 优化 options 的 text 属性的判空逻辑 (#1837) @oasis-cloud
+* :bug: fix(picker): 修复 safari 下 mask 样式问题 (#1843) @Eiinu
+* :bug: fix(pulltorefresh): 修复安卓小程序下拉卡顿问题 (#1830) @NickH
+* :bug: fix(tabs): docs and jmapp css variables (#1838) @xiaoyatong
+* 🔨 chore(deps): update @nutui/icons to v1.0.1 (#1836) @oasis-cloud
+
+
 # v2.3.4
 `2023-12-29`
 
