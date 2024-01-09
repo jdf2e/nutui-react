@@ -1,479 +1,341 @@
 import React, {
-  useState,
-  useEffect,
-  useRef,
-  useMemo,
-  CSSProperties,
   ReactNode,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
 } from 'react'
+import { useDrag } from '@use-gesture/react'
+import { animated, useSpring } from '@react-spring/web'
 import classNames from 'classnames'
-import { DataContext } from './context'
-import { getRect } from '@/utils/use-client-rect'
-import Indicator from '@/packages/indicator/index'
-import { BasicComponent } from '@/utils/typings'
-import { useTouch } from '@/utils/use-touch'
-import requestAniFrame from '@/utils/raf'
-
-export type SwiperRef = {
-  to: (index: number) => void
-  next: () => void
-  prev: () => void
-}
+import Indicator, { IndicatorProps } from '@/packages/indicator'
+import { usePropsValue } from '@/utils/use-props-value'
+import { SwiperItem } from '@/packages/swiper/item'
+import { bound } from '@/utils/bound'
+import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { SwiperDirections, SwiperIndicator } from '@/packages/swiper/types'
 
 export interface SwiperProps extends BasicComponent {
-  width: number | string
-  height: number | string
-  duration: number | string
-  defaultValue: number | string
-  autoPlay: number | string
-  direction: 'horizontal' | 'vertical'
-  indicator: ReactNode
+  width: number
+  height: number
+  direction: SwiperDirections
+  indicator: ReactNode | SwiperIndicator
+  indicatorProps?: IndicatorProps
   loop: boolean
   touchable: boolean
-  preventDefault: boolean
-  stopPropagation: boolean
-  center: boolean
-  onChange?: (current: number) => void
+  duration: number
+  autoPlay: boolean
+  defaultValue?: number
+  slideSize: number
+  trackOffset: number
+  onChange: (index: number) => void
 }
 
 const defaultProps = {
-  duration: 500,
-  defaultValue: 0,
-  autoPlay: 0,
+  ...ComponentDefaults,
+  loop: false,
   direction: 'horizontal',
   indicator: false,
-  loop: false,
   touchable: true,
-  preventDefault: true,
-  stopPropagation: true,
-  center: false,
-  className: '',
+  duration: 3000,
+  slideSize: 100,
+  trackOffset: 0,
+  autoPlay: false,
+  indicatorProps: {},
+  onChange: (index: number) => undefined,
 } as SwiperProps
 
-type Parent = {
-  propSwiper: SwiperProps
-  size?: number | string
-}
-
-export const Swiper = React.forwardRef<
-  SwiperRef,
-  Partial<SwiperProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
->((props, ref) => {
-  const mergedProps = { ...defaultProps, ...props }
+const classPrefix = 'nut-swiper'
+export const Swiper = React.forwardRef((props: Partial<SwiperProps>, ref) => {
   const {
-    children,
-    direction,
-    className,
-    onChange,
-    defaultValue,
     indicator,
+    indicatorProps,
     touchable,
-    preventDefault,
-    stopPropagation,
+    loop,
+    slideSize,
+    trackOffset,
+    direction,
     autoPlay,
-    center,
-    ...rest
-  } = mergedProps
-  const container = useRef<any>(null)
-  const innerRef = useRef<any>(null)
-  const swiperRef = useRef<any>({
-    moving: false,
-    autoplayTimer: null,
-    width: 0,
-    height: 0,
-    offset: 0,
-    size: 0,
+  } = {
+    ...defaultProps,
+    ...props,
+  }
+  const [current, setCurrent] = usePropsValue({
+    defaultValue: props.defaultValue,
+    finalValue: 0,
+    onChange: props.onChange,
   })
-  const touch = useTouch()
-
   const isVertical = direction === 'vertical'
-  const [rect, setRect] = useState(null as any | null)
-  // eslint-disable-next-line prefer-const
-  let [active, setActive] = useState(0)
-  const [width, setWidth] = useState(0)
-  const [height, setHeight] = useState(0)
-  const [offset, setOffset] = useState(0)
-  const [childOffset, setChildOffset] = useState<any[]>([])
-  const [ready, setReady] = useState(false)
-  let size = isVertical ? height : width
+  const getStyle = () => {
+    const s = {}
+    if (slideSize) {
+      // @ts-ignore
+      s['--nutui-swiper-slide-size'] = `${slideSize}%`
+    }
+    if (trackOffset) {
+      // @ts-ignore
+      s['--nutui-swiper-track-offset'] = `${trackOffset}%`
+    }
+    return s
+  }
 
-  const { swiperItems, swiperItemCount } = useMemo(() => {
+  function boundIndex(current: number) {
+    const slideRatio = slideSize / 100
+    const offsetRatio = trackOffset / 100
+    let min = 0
+    let max = count - 1
+    min += offsetRatio / slideRatio
+    max -= (1 - slideRatio - offsetRatio) / slideRatio
+    return bound(current, min, max)
+  }
+
+  const { validChildren, count } = useMemo(() => {
     let count = 0
-    const swiperItems = React.Children.map(props.children, (child) => {
+    const validChildren = React.Children.map(props.children, (child) => {
       if (!React.isValidElement(child)) return null
+      if (child.type !== SwiperItem) {
+        return null
+      }
       count++
       return child
     })
     return {
-      swiperItems,
-      swiperItemCount: count,
+      validChildren,
+      count,
     }
   }, [props.children])
-  let trackSize = swiperItemCount * Number(size)
 
-  // 父组件参数传入子组件item
-  const parent: Parent = {
-    propSwiper: mergedProps,
-    size,
+  const [dragging, setDragging] = useState(false)
+  const draggingRef = useRef(false)
+  useEffect(() => {
+    draggingRef.current = dragging
+  }, [dragging])
+
+  const [{ position }, api] = useSpring(
+    () => ({
+      position: current * 100,
+      config: { tension: 200, friction: 30 },
+      onRest: () => {
+        if (draggingRef.current) return
+        if (!loop) return
+        const rawX = position.get()
+        const totalWidth = 100 * count
+        const standardPosition = modulus(rawX, totalWidth)
+        if (standardPosition === rawX) return
+        api.start({
+          position: standardPosition,
+          immediate: true,
+        })
+      },
+    }),
+    [count]
+  )
+  const getSlidePixels = () => {
+    const track = trackRef.current
+    if (!track) return 0
+    const offsetWidth = isVertical ? track.offsetHeight : track.offsetWidth
+    return (offsetWidth * slideSize) / 100
   }
-  const minOffset = (() => {
-    if (rect) {
-      const base = isVertical ? rect.height : rect.width
-      return base - Number(size) * swiperItemCount
-    }
-    return 0
-  })()
-  // 清除定时器
-  const stopAutoPlay = () => {
-    clearTimeout(swiperRef.current.autoplayTimer)
-    swiperRef.current.autoplayTimer = null
-  }
-  // 定时轮播
-  const startPlay = () => {
-    if (mergedProps.autoPlay <= 0 || swiperItemCount <= 1) return
-    stopAutoPlay()
-    swiperRef.current.autoplayTimer = setTimeout(() => {
-      next()
-      startPlay()
-    }, Number(mergedProps.autoPlay))
-  }
-  // 重置首尾位置信息
-  const resetPosition = () => {
-    swiperRef.current.moving = true
-    if (active <= -1) {
-      move({ pace: swiperItemCount })
-    }
-    if (active >= swiperItemCount) {
-      move({ pace: -swiperItemCount })
-    }
-  }
-  // 上一页
-  const prev = () => {
-    resetPosition()
-    touch.reset()
-    requestAniFrame(() => {
-      swiperRef.current.moving = false
-      move({
-        pace: -1,
-        isEmit: true,
-      })
-    })
-  }
-  // 下一页
-  const next = () => {
-    resetPosition()
-    touch.reset()
-    requestAniFrame(() => {
-      swiperRef.current.moving = false
-      move({
-        pace: 1,
-        isEmit: true,
-      })
-    })
-  }
-  // 前往指定页
-  const to = (index: number) => {
-    resetPosition()
-    touch.reset()
-    requestAniFrame(() => {
-      swiperRef.current.moving = false
-      let targetIndex
-      if (props.loop && swiperItemCount === index) {
-        targetIndex = active === 0 ? 0 : index
+  const trackRef = useRef<HTMLDivElement>(null)
+  const bind = useDrag(
+    (state) => {
+      const index = isVertical ? 1 : 0
+      const slidePixels = getSlidePixels()
+      const offset = state.offset[index]
+      const direction = state.direction[index]
+      const velocity = state.velocity[index]
+      setDragging(true)
+      if (!state.last) {
+        api.start({
+          position: (offset * 100) / slidePixels,
+          immediate: true,
+        })
       } else {
-        targetIndex = index % swiperItemCount
+        const minIndex = Math.floor(offset / slidePixels)
+        const maxIndex = minIndex + 1
+        const index = Math.round(
+          (offset + velocity * 2000 * direction) / slidePixels
+        )
+        to(bound(index, minIndex, maxIndex))
+        window?.setTimeout(() => setDragging(false))
       }
-      move({
-        pace: targetIndex - active,
-        isEmit: true,
-      })
-    })
-  }
-  const resize = () => {
-    init(active)
-  }
-  // 切换方法
-  const move = ({
-    pace = 0,
-    offset = 0,
-    isEmit = false,
-    movingStatus = false,
-  }) => {
-    if (swiperItemCount <= 1) return
-    const targetActive = getActive(pace)
-    // 父级容器偏移量
-    const targetOffset = getOffset(targetActive, offset)
-    // 如果循环，调整开头结尾图片位置
-    if (props.loop) {
-      if (
-        Array.isArray(children) &&
-        children[0] &&
-        targetOffset !== minOffset
-      ) {
-        const rightBound = targetOffset < minOffset
-        childOffset[0] = rightBound ? trackSize : 0
-      }
-      if (
-        Array.isArray(children) &&
-        children[swiperItemCount - 1] &&
-        targetOffset !== 0
-      ) {
-        const leftBound = targetOffset > 0
-        childOffset[swiperItemCount - 1] = leftBound ? -trackSize : 0
-      }
-      setChildOffset(childOffset)
+    },
+    {
+      transform: ([x, y]) => [-x, -y],
+      from: () => {
+        const slidePixels = getSlidePixels()
+        return [
+          (position.get() / 100) * slidePixels,
+          (position.get() / 100) * slidePixels,
+        ]
+      },
+      triggerAllEvents: true,
+      axis: isVertical ? 'y' : 'x',
+      pointer: {
+        touch: true,
+      },
+      rubberband: false,
+      preventScroll: !isVertical,
+      bounds: () => {
+        if (loop) return {}
+        const slidePixels = getSlidePixels()
+        const lowerBound = boundIndex(0) * slidePixels
+        const upperBound = boundIndex(count - 1) * slidePixels
+        return isVertical
+          ? {
+              top: lowerBound,
+              bottom: upperBound,
+            }
+          : {
+              left: lowerBound,
+              right: upperBound,
+            }
+      },
     }
-    if (isEmit && active !== targetActive) {
-      props.onChange?.((targetActive + swiperItemCount) % swiperItemCount)
-    }
-    active = targetActive
-    setActive(targetActive)
-    setOffset(targetOffset)
-    getStyle(targetOffset)
+  )
+
+  function modulus(value: number, division: number) {
+    const remainder = value % division
+    return remainder < 0 ? remainder + division : remainder
   }
 
-  React.useImperativeHandle(ref, () => ({
+  const to = (index: number) => {
+    const roundedIndex = Math.round(index)
+    const targetIndex = loop
+      ? modulus(roundedIndex, count)
+      : bound(roundedIndex, 0, count - 1)
+    setCurrent(targetIndex)
+
+    api.start({
+      position: (loop ? roundedIndex : boundIndex(roundedIndex)) * 100,
+    })
+  }
+  const next = () => {
+    to(Math.round(position.get() / 100) + 1)
+  }
+  const prev = () => {
+    to(Math.round(position.get() / 100) - 1)
+  }
+  useImperativeHandle(ref, () => ({
     to,
     next,
     prev,
-    resize,
   }))
 
-  // 确定当前active 元素
-  const getActive = (pace: number) => {
-    if (pace) {
-      const _active = active + pace
-      if (props.loop) {
-        return range(_active, -1, swiperItemCount)
-      }
-      return range(_active, 0, swiperItemCount - 1)
-    }
-    return active
-  }
-  // 计算位移
-  const getOffset = (active: number, offset = 0) => {
-    let currentPosition = active * Number(size)
-    if (!props.loop) {
-      currentPosition = Math.min(currentPosition, -minOffset)
-    }
-    let targetOffset = offset - currentPosition
-    if (!props.loop) {
-      targetOffset = range(targetOffset, minOffset, 0)
-    }
-    return targetOffset
-  }
-
-  // 取值 方法
-  const range = (num: number, min: number, max: number) => {
-    return Math.min(Math.max(num, min), max)
-  }
-
-  const classPrefix = 'nut-swiper'
-  const contentClass = classNames({
-    [`${classPrefix}-inner`]: true,
-    [`${classPrefix}-vertical`]: isVertical,
-  })
-  const getStyle = (moveOffset = offset) => {
-    const target = innerRef.current
-    let _offset = 0
-    if (!center) {
-      _offset = moveOffset
-    } else {
-      const _size = isVertical ? height : width
-      const val = isVertical
-        ? (rect as DOMRect).height - _size
-        : (rect as DOMRect).width - _size
-      _offset =
-        moveOffset +
-        (active === swiperItemCount - 1 && !props.loop ? -val / 2 : val / 2)
-    }
-    target.style.transitionDuration = `${
-      swiperRef.current.moving ? 0 : props.duration
-    }ms`
-    target.style[isVertical ? 'height' : 'width'] = `${
-      Number(size) * swiperItemCount
-    }px`
-    target.style[isVertical ? 'width' : 'height'] = `${
-      isVertical ? width : height
-    }px`
-    target.style.transform = `translate3D${
-      !isVertical ? `(${_offset}px,0,0)` : `(0,${_offset}px,0)`
-    }`
-  }
-
-  const onTouchStart = (e: React.TouchEvent<HTMLElement>) => {
-    if (!props.touchable) return
-    touch.start(e)
-    stopAutoPlay()
-    resetPosition()
-  }
-
-  const onTouchMove = (e: React.TouchEvent<HTMLElement>) => {
-    if (props.preventDefault) e.preventDefault()
-    if (props.stopPropagation) e.stopPropagation()
-    if (props.touchable && swiperRef.current.moving) {
-      touch.move(e)
-      if (touch.direction.current === props.direction) {
-        move({
-          offset: touch.delta.current,
-        })
-      }
-    }
-  }
-  const onTouchEnd = (e: React.TouchEvent<HTMLElement>) => {
-    if (!props.touchable || !swiperRef.current.moving) return
-    const speed =
-      touch.delta.current / (Date.now() - (touch.touchTime.current as number))
-    // 快速滑动产生的 swipe，和超过阈值的滑动
-    const isShouldMove =
-      Math.abs(speed) > 0.3 ||
-      Math.abs(touch.delta.current) > Number((size / 2).toFixed(2))
-    swiperRef.current.moving = false
-
-    if (isShouldMove && touch.direction.current === props.direction) {
-      let pace = 0
-      const offset = touch.isVertical() ? touch.offsetY : touch.offsetX
-      if (props.loop) {
-        if (offset.current > 0) {
-          pace = touch.delta.current > 0 ? -1 : 1
-        }
-      } else {
-        pace = -Math[touch.delta.current > 0 ? 'ceil' : 'floor'](
-          touch.delta.current / size
-        )
-      }
-      move({
-        pace,
-        isEmit: true,
-      })
-    } else if (touch.delta.current) {
-      move({ pace: 0 })
-    } else {
-      getStyle()
-    }
-    startPlay()
-  }
-
-  const getItemStyle = (index: any) => {
-    const style: CSSProperties = {}
-    if (size) {
-      style[direction === 'horizontal' ? 'width' : 'height'] = `${size}px`
-    }
-    const offset = childOffset[index]
-    if (offset) {
-      style.transform = `translate3D${
-        direction === 'horizontal' ? `(${offset}px,0,0)` : `(0,${offset}px,0)`
-      }`
-    }
-    return style
-  }
-
-  const init = (index?: number) => {
-    const rect = getRect(container?.current)
-    const currentIndex = Math.max(
-      Math.min(swiperItemCount - 1, index || Number(mergedProps.defaultValue)),
-      0
-    )
-    const width = Number(mergedProps.width) || rect.width
-    const height = Number(mergedProps.height) || rect.height
-    size = isVertical ? height : width
-    trackSize = swiperItemCount * Number(size)
-    const targetOffset = getOffset(currentIndex)
-    swiperRef.current.moving = true
-    if (ready) {
-      swiperRef.current.moving = false
-    }
-    setRect(rect)
-    setActive(currentIndex)
-    setWidth(width)
-    setHeight(height)
-    setOffset(targetOffset)
-    setReady(true)
+  const timerRef = useRef(-1)
+  const runTimer = () => {
+    timerRef.current = window.setTimeout(() => {
+      next()
+      runTimer()
+    }, props.duration)
   }
 
   useEffect(() => {
-    if (ready) {
-      getStyle()
-    }
-  }, [isVertical, width, height, offset, ready])
-
-  useEffect(() => {
-    if (ready) {
-      stopAutoPlay()
-      startPlay()
-    }
-    return () => setReady(false)
-  }, [ready])
-
-  useEffect(() => {
-    stopAutoPlay()
-    startPlay()
-  }, [children])
-
-  useEffect(() => {
-    const events = [
-      { name: 'touchstart', e: onTouchStart },
-      { name: 'touchmove', e: onTouchMove },
-      { name: 'touchend', e: onTouchEnd },
-    ]
-    events.forEach((item) => {
-      container.current?.addEventListener(item.name, item.e, false)
-    })
+    if (!autoPlay || dragging) return
+    runTimer()
 
     return () => {
-      events.forEach((item) => {
-        container.current?.removeEventListener(item.name, item.e, false)
-      })
+      clearTimeout(timerRef.current)
     }
-  })
-
-  useEffect(() => init(), [props.defaultValue])
-
-  useEffect(() => {
-    return () => stopAutoPlay()
-  }, [])
+  }, [autoPlay, dragging])
 
   const renderIndicator = () => {
-    if (React.isValidElement(indicator)) return indicator
-    if (!indicator) return null
-    return (
-      <div
-        className={classNames({
-          [`${classPrefix}-indicator`]: true,
-          [`${classPrefix}-indicator-vertical`]: isVertical,
-        })}
-      >
-        <Indicator
-          current={(active + swiperItemCount) % swiperItemCount}
-          total={swiperItems?.length}
-          direction={direction}
-        />
-      </div>
-    )
+    if (!indicator) return undefined
+    if (indicator === true) {
+      return (
+        <div className={classNames(`${classPrefix}-indicator`)}>
+          <Indicator
+            {...indicatorProps}
+            current={current}
+            direction={props.direction}
+            total={count}
+          />
+        </div>
+      )
+    }
+    if (React.isValidElement(indicator)) {
+      return indicator
+    }
+    if (typeof indicator === 'function') {
+      return indicator(current, count, direction)
+    }
   }
 
   return (
-    <DataContext.Provider value={parent}>
+    <div
+      className={classNames(
+        classPrefix,
+        `${classPrefix}-${props.direction}`,
+        props.className
+      )}
+      style={{
+        ...props.style,
+        ...(props.width ? { width: props.width } : {}),
+        ...(props.height ? { height: props.height } : {}),
+        ...getStyle(),
+      }}
+    >
       <div
-        className={classNames(classPrefix, className)}
-        ref={container}
-        {...rest}
+        className={classNames(`${classPrefix}-track`)}
+        ref={trackRef}
+        {...(!touchable ? {} : bind())}
       >
-        <div className={contentClass} ref={innerRef}>
-          {React.Children.map(swiperItems, (child: any, index: number) => (
-            <div
-              className={`${classPrefix}-item-wrapper`}
-              style={getItemStyle(index)}
-              key={index}
-            >
-              {child}
-            </div>
-          ))}
-        </div>
-        {renderIndicator()}
+        {loop ? (
+          <div className={classNames(`${classPrefix}-track-inner`)}>
+            {React.Children.map(validChildren, (child, index) => {
+              return (
+                <animated.div
+                  className={classNames(`${classPrefix}-slide`, {
+                    [`${classPrefix}-slide-active`]: current === index,
+                  })}
+                  style={{
+                    [isVertical ? 'y' : 'x']: position.to((position) => {
+                      let finalPosition = -position + index * 100
+                      const totalWidth = count * 100
+                      const flagWidth = totalWidth / 2
+                      finalPosition =
+                        modulus(finalPosition + flagWidth, totalWidth) -
+                        flagWidth
+                      return `${finalPosition}%`
+                    }),
+                    [isVertical ? 'top' : 'left']: `-${index * 100}%`,
+                  }}
+                >
+                  {child}
+                </animated.div>
+              )
+            })}
+          </div>
+        ) : (
+          <animated.div
+            className={classNames(`${classPrefix}-track-inner`)}
+            style={{
+              [isVertical ? 'y' : 'x']: position.to(
+                (position) => `${-position}%`
+              ),
+            }}
+          >
+            {validChildren?.map((child, idx) => {
+              return (
+                <div
+                  className={classNames(`${classPrefix}-slide`, {
+                    [`${classPrefix}-slide-active`]: current === idx,
+                  })}
+                  data-index={idx}
+                  key={idx}
+                >
+                  {child}
+                </div>
+              )
+            })}
+          </animated.div>
+        )}
       </div>
-    </DataContext.Provider>
+      {renderIndicator()}
+    </div>
   )
 })
+
 Swiper.defaultProps = defaultProps
 Swiper.displayName = 'NutSwiper'

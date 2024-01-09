@@ -109,7 +109,11 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
   }))
   return (
     <View
-      className={classNames(classPrefix, className)}
+      className={classNames(
+        classPrefix,
+        `${classPrefix}-${props.direction}`,
+        className
+      )}
       style={{
         width: !width ? '100%' : pxCheck(width),
         height: !height ? '150px' : pxCheck(height),

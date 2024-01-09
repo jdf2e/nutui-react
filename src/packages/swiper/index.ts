@@ -1,8 +1,10 @@
 import React from 'react'
-import { Swiper, SwiperProps, SwiperRef } from './swiper'
-import SwiperItem from '@/packages/swiperitem'
+import { Swiper, SwiperProps } from './swiper'
+import { SwiperRef } from './types'
+import { SwiperItem } from './item'
 
-export type { SwiperProps, SwiperRef } from './swiper'
+export type { SwiperProps } from './swiper'
+export type { SwiperIndicator, SwiperRef, SwiperDirections } from './types'
 type CompoundedComponent = React.ForwardRefExoticComponent<
   Partial<SwiperProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'> &

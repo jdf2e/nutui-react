@@ -1066,6 +1066,8 @@ $range-button-border: var(
 ) !default;
 
 //swiper（✅）
+$swiper-slide-size: var(--nutui-swiper-slide-size, 100%) !default;
+$swiper-track-offset: var(--nutui-swiper-track-offset, 0%) !default;
 $swiper-indicator-bottom: var(--nutui-swiper-indicator-bottom, 12px);
 
 //address
