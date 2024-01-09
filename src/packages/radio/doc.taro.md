@@ -244,7 +244,7 @@ export default RadioGroupOptions;
 | labelPosition | 文本所在的位置 | `left` \| `right` | `right` |
 | icon | <a href="#/icon">图标名称</a>，选中前(建议和`activeIcon`一起修改) | `ReactNode` | `'CheckNormal'` |
 | activeIcon | <a href="#/icon">图标名称</a>，选中后(建议和`icon`一起修改) | `ReactNode` | `'CheckChecked'` |
-| shape | 形状 | `button` \| `round` \| `round` |`round` |
+| shape | 形状 | `button` \| `round` |`round` |
 | onChange | 选中态变化时触发 | `(checked: boolean) => void` | `-` |
 
 ## Radio.Group

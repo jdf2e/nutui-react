@@ -360,7 +360,7 @@ export default App
 | threshold | 距離底部多遠加載 | `number` | `200` |
 | capture | 是否使用捕獲模式 true 捕獲 false 冒泡 | `boolean` | `false` |
 | target | 獲取監聽的目標元素 | `string` | `-` |
-| loadMoreText | “沒有更多數”據展示文案 | `string` | `哎呀，這裏是底部了啦` |
+| loadMoreText | “沒有更多數據”展示文案 | `string` | `哎呀，這裏是底部了啦` |
 | pullRefresh | 是否開啟下拉刷新 | `boolean` | `false` |
 | pullingText | 下拉刷新提示文案 | `ReactNode` | `鬆手刷新` |
 | loadingText | 上拉加載提示文案 | `ReactNode` | `加載中...` |

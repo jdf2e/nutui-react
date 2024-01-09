@@ -62,6 +62,8 @@ export default App;
 
 ### 填充模式
 
+按钮支持 `solid`、 `outline`、 `dashed`、`none`四种类型，默认为 `solid`。
+
 :::demo
 
 ```tsx
@@ -83,6 +85,8 @@ export default App;
 :::
 
 ### 图标按钮
+
+通过 `icon` 属性来设置按钮图标，并提供`rightIcon`属性使图标在右侧显示。
 
 :::demo
 
@@ -432,11 +436,11 @@ export default App;
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| type | 按钮的样式 | `default` \| `primary` \| `warning` \| `danger` \| `success` | `default` |
+| type | 按钮的样式 | `default` \| `primary` \| `warning` \| `danger` \| `success` \| `info` | `default` |
 | size | 按钮的尺寸 | `normal` \| `large` \| `small` | `normal` |
 | shape | 按钮的形状 | `square` \| `round` | `round` |
 | color | 按钮颜色，支持传入 linear-gradient 渐变色 | `string` | `-` |
-| fill | 填充模式 | `solid` \| `ouline`  \| `dashed` \| `none` | `solid` |
+| fill | 填充模式 | `solid` \| `outline`  \| `dashed` \| `none` | `solid` |
 | disabled | 是否禁用按钮 | `boolean` | `false` |
 | block | 是否为块级元素 | `boolean` | `false` |
 | icon | 按钮图标 | `ReactNode` | `-` |
