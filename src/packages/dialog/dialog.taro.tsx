@@ -25,6 +25,8 @@ const defaultProps = {
   footer: '',
   confirmText: '',
   cancelText: '',
+  confirmLoading: false,
+  cancelLoading: false,
   overlay: true,
   closeOnOverlayClick: true,
   hideConfirmButton: false,
@@ -64,6 +66,8 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
       onOverlayClick,
       confirmText,
       cancelText,
+      confirmLoading,
+      cancelLoading,
       overlay,
       onClose,
       onCancel,
@@ -108,6 +112,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
             <Button
               type="default"
               className={`${classPrefix}-footer-cancel`}
+              loading={cancelLoading}
               onClick={(e) => handleCancel(e)}
             >
               {cancelText || locale.cancel}
@@ -120,6 +125,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
                 disabled: disableConfirmButton,
               })}
               disabled={disableConfirmButton}
+              loading={confirmLoading}
               onClick={(e) => handleOk(e)}
             >
               {confirmText || locale.confirm}

@@ -21,6 +21,7 @@ interface T {
   confirmText: string
   cancelText: string
   header: string
+  confirmLoading: string
 }
 
 const DialogDemo = () => {
@@ -42,6 +43,7 @@ const DialogDemo = () => {
       confirmText: '确定',
       cancelText: '取消',
       header: '顶部带插图',
+      confirmLoading: '确认按钮 loading',
     },
     'en-US': {
       funUse: 'Function use',
@@ -61,6 +63,7 @@ const DialogDemo = () => {
       confirmText: 'confirm',
       cancelText: 'cancel',
       header: 'Top with illustration',
+      confirmLoading: 'Confirm button loading',
     },
   })
 
@@ -71,6 +74,8 @@ const DialogDemo = () => {
   const [visible5, setVisible5] = useState(false)
   const [visible6, setVisible6] = useState(false)
   const [visible7, setVisible7] = useState(false)
+  const [visible8, setVisible8] = useState(false)
+  const [confirmLoading8, setConfirmLoading8] = useState(false)
 
   return (
     <>
@@ -263,6 +268,28 @@ const DialogDemo = () => {
           onCancel={() => setVisible7(false)}
         >
           {translated.content}
+        </Dialog>
+        <Cell
+          title={translated.confirmLoading}
+          onClick={() => {
+            setVisible8(true)
+          }}
+        />
+        <Dialog
+          title={translated.tips}
+          visible={visible8}
+          confirmLoading={confirmLoading8}
+          onConfirm={() => {
+            setConfirmLoading8(true)
+
+            setTimeout(() => {
+              setConfirmLoading8(false)
+              setVisible8(false)
+            }, 500)
+          }}
+          onCancel={() => setVisible8(false)}
+        >
+          {translated.confirmLoading}
         </Dialog>
       </div>
     </>

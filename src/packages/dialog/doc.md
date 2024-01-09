@@ -102,6 +102,9 @@ const App = () => {
   const [visible1, setVisible1] = useState(false);
   const [visible2, setVisible2] = useState(false);
   const [visible3, setVisible3] = useState(false);
+  const [visible4, setVisible4] = useState(false);
+  const [visible5, setVisible5] = useState(false);
+  const [confirmLoading5, setConfirmLoading5] = useState(false);
   return (
     <>
       <Cell title="基础弹框" onClick={() => setVisible1(true)} />
@@ -164,20 +167,41 @@ const App = () => {
       <Cell
         title="顶部带插图"
         onClick={() => {
-          setVisible7(true)
+          setVisible4(true)
         }}
       />
       <Dialog
         className="test-dialog"
         title="顶部带插图"
-        visible={visible7}
+        visible={visible4}
         header={
           <Image src="https://img13.360buyimg.com/imagetools/jfs/t1/219330/27/30033/11784/6544af3fF5c0fd98f/64c41bb05ef09189.png" />
         }
-        onConfirm={() => setVisible7(false)}
-        onCancel={() => setVisible7(false)}
+        onConfirm={() => setVisible4(false)}
+        onCancel={() => setVisible4(false)}
       >
         如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+      </Dialog>
+      <Cell
+        title="确认按钮 loading"
+        onClick={() => {
+          setVisible5(true)
+        }}
+      />
+      <Dialog
+        title="提示"
+        visible={visible5}
+        onConfirm={() => {
+          setConfirmLoading5(true)
+
+          setTimeout(() => {
+            setConfirmLoading5(false)
+            setVisible5(false)
+          }, 500)
+        }}
+        onCancel={() => setVisible5(false)}
+      >
+        确定按钮 loading
       </Dialog>
     </>
   )
@@ -200,6 +224,8 @@ export default App;
 | footer | 自定义页脚，传入 null 则不显示 | `ReactNode` | `-` |
 | confirmText | 确认按钮文案 | `ReactNode` | `确定` |
 | cancelText | 取消按钮文案 | `ReactNode` | `取消` |
+| confirmLoading | 确认按钮 loading 状态 | `boolean` | `false` |
+| cancelLoading | 取消按钮 loading 状态 | `boolean` | `false` |
 | overlay | 是否展示遮罩 | `boolean` | `true` |
 | hideConfirmButton | 是否隐藏确定按钮 | `boolean` | `false` |
 | hideCancelButton | 是否隐藏取消按钮 | `boolean` | `false` |

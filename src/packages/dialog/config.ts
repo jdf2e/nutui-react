@@ -15,6 +15,8 @@ export interface BasicDialogProps extends BasicComponent {
   footer?: ReactNode
   confirmText?: ReactNode
   cancelText?: ReactNode
+  confirmLoading?: boolean
+  cancelLoading?: boolean
   overlay?: boolean
   hideConfirmButton?: boolean
   hideCancelButton?: boolean

@@ -65,8 +65,9 @@ const App = () => {
   const [visible4, setVisible4] = useState(false)
   const [visible5, setVisible5] = useState(false)
   const [visible6, setVisible6] = useState(false)
-  const [visible7, setVisible7] = useState(false);
-
+  const [visible7, setVisible7] = useState(false)
+  const [visible8, setVisible8] = useState(false)
+  const [confirmLoading8, setConfirmLoading8] = useState(false)
   return (
     <>
       <Cell title="基础弹框" onClick={() => setVisible1(true)} />
@@ -167,6 +168,28 @@ const App = () => {
       >
         如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
       </Dialog>
+      <Cell
+          title="确认按钮 loading"
+          onClick={() => {
+            setVisible8(true)
+          }}
+        />
+        <Dialog
+          title="提示"
+          visible={visible8}
+          confirmLoading={confirmLoading8}
+          onConfirm={() => {
+            setConfirmLoading8(true)
+
+            setTimeout(() => {
+              setConfirmLoading8(false)
+              setVisible8(false)
+            }, 500)
+          }}
+          onCancel={() => setVisible8(false)}
+        >
+          确认按钮 loading
+        </Dialog>
     </>
   )
 }
@@ -188,6 +211,8 @@ export default App;
 | footer | 自定义页脚，传入 null 则不显示 | `ReactNode` | `-` |
 | confirmText | 确认按钮文案 | `ReactNode` | `确定` |
 | cancelText | 取消按钮文案 | `ReactNode` | `取消` |
+| confirmLoading | 确认按钮 loading 状态 | `boolean` | `false` |
+| cancelLoading | 取消按钮 loading 状态 | `boolean` | `false` |
 | overlay | 是否展示遮罩 | `boolean` | `true` |
 | hideConfirmButton | 是否隐藏确定按钮 | `boolean` | `false` |
 | hideCancelButton | 是否隐藏取消按钮 | `boolean` | `false` |

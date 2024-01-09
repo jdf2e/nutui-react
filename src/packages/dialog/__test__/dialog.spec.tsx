@@ -80,3 +80,31 @@ test('dialog cancelText confirmText', async () => {
   expect(footerOkEle).toHaveTextContent('确定文案自定义')
   expect(footerCancelEle).toHaveTextContent('取消文案自定义')
 })
+
+test('dialog confirmLoading', async () => {
+  const { container } = render(
+    <Dialog visible confirmLoading>
+      content
+    </Dialog>
+  )
+
+  const footerOkEle = container.querySelector('.nut-dialog-footer-ok')!
+  const footerCancelEle = container.querySelector('.nut-dialog-footer-cancel')!
+
+  expect(footerOkEle.classList.contains('nut-button-loading')).toBeTruthy()
+  expect(!footerCancelEle.classList.contains('nut-button-loading')).toBeTruthy()
+})
+
+test('dialog cancelLoading', async () => {
+  const { container } = render(
+    <Dialog visible cancelLoading>
+      content
+    </Dialog>
+  )
+
+  const footerOkEle = container.querySelector('.nut-dialog-footer-ok')!
+  const footerCancelEle = container.querySelector('.nut-dialog-footer-cancel')!
+
+  expect(!footerOkEle.classList.contains('nut-button-loading')).toBeTruthy()
+  expect(footerCancelEle.classList.contains('nut-button-loading')).toBeTruthy()
+})

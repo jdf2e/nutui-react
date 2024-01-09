@@ -172,8 +172,10 @@ export default App;
 | title | title | `ReactNode` | `-` |
 | content | The content of the dialog box is suitable for function calls | `ReactNode` | `-` |
 | footer | Customize the notes, but it will not be displayed in NULL | `ReactNode` | `-` |
-| confirmText | Confirm the button copywriting | `ReactNode` | `Sure` |
-| cancelText | Cancellation of buttons | `ReactNode` | `Cancel` |
+| confirmText | Confirm button text | `ReactNode` | `Sure` |
+| cancelText | Cancel button text | `ReactNode` | `Cancel` |
+| confirmLoading | The loading state of the confirmation button | `boolean` | `false` |
+| cancelLoading | Cancel the loading state of the button | `boolean` | `false` |
 | overlay | Whether to show a overlay | `boolean` | `true` |
 | hideConfirmButton | Whether to hide the OK button | `boolean` | `false` |
 | hideCancelButton | Whether to hide the cancel button | `boolean` | `false` |
