@@ -3,8 +3,6 @@ import { ArrowLeft, ArrowRight } from '@nutui/icons-react'
 import Swiper from '@/packages/swiper'
 import '@/packages/swiper/demo.scss'
 import { useTranslate } from '../../sites/assets/locale'
-import { Stack } from '@/packages/swiper/stack'
-import { SwiperItem } from '@/packages/swiper/item'
 
 interface T {
   basic: string
@@ -93,10 +91,10 @@ const SwiperDemo = () => {
   return (
     <div className="demo padding">
       <h2>{translated.basic}</h2>
-      <Stack>
+      <Swiper.Stack slideSize={80} trackOffset={10}>
         {list.map((item, index) => {
           return (
-            <SwiperItem key={item}>
+            <Swiper.Item key={item}>
               <img
                 src={item}
                 width="100%"
@@ -104,216 +102,216 @@ const SwiperDemo = () => {
                 onClick={() => console.log(index)}
                 alt=""
               />
-            </SwiperItem>
+            </Swiper.Item>
           )
         })}
-      </Stack>
-      {/*<div className="demo-box" style={{ height: 150 }}>*/}
-      {/*  <Swiper*/}
-      {/*    height={height}*/}
-      {/*    autoPlay*/}
-      {/*    duration={2000}*/}
-      {/*    defaultValue={initPage1}*/}
-      {/*    onChange={onChange}*/}
-      {/*    indicator*/}
-      {/*  >*/}
-      {/*    {list.map((item, index) => {*/}
-      {/*      return (*/}
-      {/*        <Swiper.Item key={item}>*/}
-      {/*          <img src={item} onClick={() => console.log(index)} alt="" />*/}
-      {/*        </Swiper.Item>*/}
-      {/*      )*/}
-      {/*    })}*/}
-      {/*  </Swiper>*/}
-      {/*</div>*/}
-      {/*<h2>{translated.asyc}</h2>*/}
-      {/*<div className="demo-box" style={{ height: 150 }}>*/}
-      {/*  {list1.length ? (*/}
-      {/*    <Swiper*/}
-      {/*      height={height}*/}
-      {/*      autoPlay*/}
-      {/*      duration={2000}*/}
-      {/*      defaultValue={initPage2}*/}
-      {/*      onChange={onChange}*/}
-      {/*      indicator*/}
-      {/*    >*/}
-      {/*      {list1.map((item) => {*/}
-      {/*        return (*/}
-      {/*          <Swiper.Item key={item}>*/}
-      {/*            <img src={item} alt="" />*/}
-      {/*          </Swiper.Item>*/}
-      {/*        )*/}
-      {/*      })}*/}
-      {/*    </Swiper>*/}
-      {/*  ) : null}*/}
-      {/*</div>*/}
-      {/*<h2>{translated.dynamicDel}</h2>*/}
-      {/*<div className="demo-box" style={{ height: 150 }}>*/}
-      {/*  <Swiper*/}
-      {/*    height={height}*/}
-      {/*    style={{*/}
-      {/*      '--nutui-indicator-color': '#426543',*/}
-      {/*      '--nutui-indicator-dot-color': '#426ddd',*/}
-      {/*    }}*/}
-      {/*    autoPlay*/}
-      {/*    duration={2000}*/}
-      {/*    defaultValue={initPage3}*/}
-      {/*    onChange={onChange}*/}
-      {/*    indicator*/}
-      {/*  >*/}
-      {/*    {list2.map((item) => {*/}
-      {/*      return (*/}
-      {/*        <Swiper.Item key={item}>*/}
-      {/*          <img src={item} alt="" />*/}
-      {/*        </Swiper.Item>*/}
-      {/*      )*/}
-      {/*    })}*/}
-      {/*  </Swiper>*/}
-      {/*</div>*/}
+      </Swiper.Stack>
+      <div className="demo-box" style={{ height: 150 }}>
+        <Swiper
+          height={height}
+          autoPlay
+          duration={2000}
+          defaultValue={initPage1}
+          onChange={onChange}
+          indicator
+        >
+          {list.map((item, index) => {
+            return (
+              <Swiper.Item key={item}>
+                <img src={item} onClick={() => console.log(index)} alt="" />
+              </Swiper.Item>
+            )
+          })}
+        </Swiper>
+      </div>
+      <h2>{translated.asyc}</h2>
+      <div className="demo-box" style={{ height: 150 }}>
+        {list1.length ? (
+          <Swiper
+            height={height}
+            autoPlay
+            duration={2000}
+            defaultValue={initPage2}
+            onChange={onChange}
+            indicator
+          >
+            {list1.map((item) => {
+              return (
+                <Swiper.Item key={item}>
+                  <img src={item} alt="" />
+                </Swiper.Item>
+              )
+            })}
+          </Swiper>
+        ) : null}
+      </div>
+      <h2>{translated.dynamicDel}</h2>
+      <div className="demo-box" style={{ height: 150 }}>
+        <Swiper
+          height={height}
+          style={{
+            '--nutui-indicator-color': '#426543',
+            '--nutui-indicator-dot-color': '#426ddd',
+          }}
+          autoPlay
+          duration={2000}
+          defaultValue={initPage3}
+          onChange={onChange}
+          indicator
+        >
+          {list2.map((item) => {
+            return (
+              <Swiper.Item key={item}>
+                <img src={item} alt="" />
+              </Swiper.Item>
+            )
+          })}
+        </Swiper>
+      </div>
 
-      {/*<h2>{translated.size}</h2>*/}
-      {/*<div className="demo-box" style={{ height: 150 }}>*/}
-      {/*  <Swiper defaultValue={initPage4} slideSize={80}>*/}
-      {/*    {list.map((item) => {*/}
-      {/*      return (*/}
-      {/*        <Swiper.Item key={item}>*/}
-      {/*          <img src={item} alt="" />*/}
-      {/*        </Swiper.Item>*/}
-      {/*      )*/}
-      {/*    })}*/}
-      {/*  </Swiper>*/}
-      {/*</div>*/}
-      {/*<h2>{translated.indicator}</h2>*/}
-      {/*<div className="demo-box" style={{ height: 150 }}>*/}
-      {/*  <Swiper*/}
-      {/*    loop*/}
-      {/*    height={height}*/}
-      {/*    defaultValue={initPage5}*/}
-      {/*    onChange={(e) => setCurrent(e + 1)}*/}
-      {/*    indicator={<div className="page"> {current}/4 </div>}*/}
-      {/*  >*/}
-      {/*    {list.map((item) => {*/}
-      {/*      return (*/}
-      {/*        <Swiper.Item key={item}>*/}
-      {/*          <img src={item} alt="" />*/}
-      {/*        </Swiper.Item>*/}
-      {/*      )*/}
-      {/*    })}*/}
-      {/*  </Swiper>*/}
-      {/*</div>*/}
-      {/*<h2>{translated.btns}</h2>*/}
-      {/*<div className="demo-box" style={{ height: 150 }}>*/}
-      {/*  <Swiper*/}
-      {/*    ref={swiperRef}*/}
-      {/*    height={height}*/}
-      {/*    loop*/}
-      {/*    defaultValue={initPage6}*/}
-      {/*    onChange={(e) => setCurrent2(e + 1)}*/}
-      {/*    indicator={<div className="page"> {current2}/4 </div>}*/}
-      {/*  >*/}
-      {/*    {list.map((item) => {*/}
-      {/*      return (*/}
-      {/*        <Swiper.Item key={item}>*/}
-      {/*          <img src={item} alt="" />*/}
-      {/*        </Swiper.Item>*/}
-      {/*      )*/}
-      {/*    })}*/}
-      {/*  </Swiper>*/}
-      {/*  <div className="nut-swiper-btns">*/}
-      {/*    <span className="nut-swiper-btns-left" onClick={(e) => handlePrev()}>*/}
-      {/*      <ArrowLeft />*/}
-      {/*    </span>*/}
-      {/*    <span className="nut-swiper-btns-left" onClick={(e) => handleNext()}>*/}
-      {/*      <ArrowRight />*/}
-      {/*    </span>*/}
-      {/*  </div>*/}
-      {/*</div>*/}
-      {/*<h2>{translated.vertical}</h2>*/}
-      {/*<div className="demo-box vertical-center">*/}
-      {/*  <Swiper*/}
-      {/*    loop*/}
-      {/*    defaultValue={initPage7}*/}
-      {/*    direction="vertical"*/}
-      {/*    height={height}*/}
-      {/*    indicator*/}
-      {/*  >*/}
-      {/*    {list.map((item) => {*/}
-      {/*      return (*/}
-      {/*        <Swiper.Item key={item}>*/}
-      {/*          <img src={item} alt="" />*/}
-      {/*        </Swiper.Item>*/}
-      {/*      )*/}
-      {/*    })}*/}
-      {/*  </Swiper>*/}
-      {/*</div>*/}
-      {/*<h2>{translated.horizontalCenter}</h2>*/}
-      {/*<div className="demo-box " style={{ height: 150 }}>*/}
-      {/*  <Swiper*/}
-      {/*    defaultValue={initPage8}*/}
-      {/*    height={height}*/}
-      {/*    indicator*/}
-      {/*    loop*/}
-      {/*    slideSize={80}*/}
-      {/*    trackOffset={10}*/}
-      {/*  >*/}
-      {/*    {list.map((item) => {*/}
-      {/*      return (*/}
-      {/*        <Swiper.Item key={item}>*/}
-      {/*          <img src={item} alt="" />*/}
-      {/*        </Swiper.Item>*/}
-      {/*      )*/}
-      {/*    })}*/}
-      {/*  </Swiper>*/}
-      {/*</div>*/}
-      {/*<h2>{translated.verticalCenter}</h2>*/}
-      {/*<div className="demo-box vertical-center">*/}
-      {/*  <Swiper*/}
-      {/*    defaultValue={initPage9}*/}
-      {/*    direction="vertical"*/}
-      {/*    loop*/}
-      {/*    height={187}*/}
-      {/*    trackOffset={10}*/}
-      {/*    slideSize={80}*/}
-      {/*    indicator*/}
-      {/*  >*/}
-      {/*    {list.map((item) => {*/}
-      {/*      return (*/}
-      {/*        <Swiper.Item key={item}>*/}
-      {/*          <img src={item} alt="" />*/}
-      {/*        </Swiper.Item>*/}
-      {/*      )*/}
-      {/*    })}*/}
-      {/*  </Swiper>*/}
-      {/*</div>*/}
-      {/*<h2>{translated.multiItems}</h2>*/}
-      {/*<div style={{ height: 150 }}>*/}
-      {/*  <Swiper loop>*/}
-      {/*    <Swiper.Item>*/}
-      {/*      <div style={{ display: 'flex' }}>*/}
-      {/*        <div style={{ flex: '1', border: '1 red' }}>Item1</div>*/}
-      {/*        <div style={{ flex: '1', border: '1 red' }}>Item2</div>*/}
-      {/*        <div style={{ flex: '1', border: '1 red' }}>Item3</div>*/}
-      {/*        <div style={{ flex: '1', border: '1 red' }}>Item4</div>*/}
-      {/*      </div>*/}
-      {/*    </Swiper.Item>*/}
-      {/*    <Swiper.Item>*/}
-      {/*      <div style={{ display: 'flex' }}>*/}
-      {/*        <div style={{ flex: '1', border: '1 red' }}>Item5</div>*/}
-      {/*        <div style={{ flex: '1', border: '1 red' }}>Item6</div>*/}
-      {/*        <div style={{ flex: '1', border: '1 red' }}>Item7</div>*/}
-      {/*        <div style={{ flex: '1', border: '1 red' }}>Item8</div>*/}
-      {/*      </div>*/}
-      {/*    </Swiper.Item>*/}
-      {/*    <Swiper.Item>*/}
-      {/*      <div style={{ display: 'flex' }}>*/}
-      {/*        <div style={{ flex: '1', border: '1 red' }}>Item9</div>*/}
-      {/*        <div style={{ flex: '1', border: '1 red' }}>Item10</div>*/}
-      {/*        <div style={{ flex: '1', border: '1 red' }}>Item11</div>*/}
-      {/*        <div style={{ flex: '1', border: '1 red' }}>Item12</div>*/}
-      {/*      </div>*/}
-      {/*    </Swiper.Item>*/}
-      {/*  </Swiper>*/}
-      {/*</div>*/}
+      <h2>{translated.size}</h2>
+      <div className="demo-box" style={{ height: 150 }}>
+        <Swiper defaultValue={initPage4} slideSize={80}>
+          {list.map((item) => {
+            return (
+              <Swiper.Item key={item}>
+                <img src={item} alt="" />
+              </Swiper.Item>
+            )
+          })}
+        </Swiper>
+      </div>
+      <h2>{translated.indicator}</h2>
+      <div className="demo-box" style={{ height: 150 }}>
+        <Swiper
+          loop
+          height={height}
+          defaultValue={initPage5}
+          onChange={(e) => setCurrent(e + 1)}
+          indicator={<div className="page"> {current}/4 </div>}
+        >
+          {list.map((item) => {
+            return (
+              <Swiper.Item key={item}>
+                <img src={item} alt="" />
+              </Swiper.Item>
+            )
+          })}
+        </Swiper>
+      </div>
+      <h2>{translated.btns}</h2>
+      <div className="demo-box" style={{ height: 150 }}>
+        <Swiper
+          ref={swiperRef}
+          height={height}
+          loop
+          defaultValue={initPage6}
+          onChange={(e) => setCurrent2(e + 1)}
+          indicator={<div className="page"> {current2}/4 </div>}
+        >
+          {list.map((item) => {
+            return (
+              <Swiper.Item key={item}>
+                <img src={item} alt="" />
+              </Swiper.Item>
+            )
+          })}
+        </Swiper>
+        <div className="nut-swiper-btns">
+          <span className="nut-swiper-btns-left" onClick={(e) => handlePrev()}>
+            <ArrowLeft />
+          </span>
+          <span className="nut-swiper-btns-left" onClick={(e) => handleNext()}>
+            <ArrowRight />
+          </span>
+        </div>
+      </div>
+      <h2>{translated.vertical}</h2>
+      <div className="demo-box vertical-center">
+        <Swiper
+          loop
+          defaultValue={initPage7}
+          direction="vertical"
+          height={height}
+          indicator
+        >
+          {list.map((item) => {
+            return (
+              <Swiper.Item key={item}>
+                <img src={item} alt="" />
+              </Swiper.Item>
+            )
+          })}
+        </Swiper>
+      </div>
+      <h2>{translated.horizontalCenter}</h2>
+      <div className="demo-box " style={{ height: 150 }}>
+        <Swiper
+          defaultValue={initPage8}
+          height={height}
+          indicator
+          loop
+          slideSize={80}
+          trackOffset={10}
+        >
+          {list.map((item) => {
+            return (
+              <Swiper.Item key={item}>
+                <img src={item} alt="" />
+              </Swiper.Item>
+            )
+          })}
+        </Swiper>
+      </div>
+      <h2>{translated.verticalCenter}</h2>
+      <div className="demo-box vertical-center">
+        <Swiper
+          defaultValue={initPage9}
+          direction="vertical"
+          loop
+          height={187}
+          trackOffset={10}
+          slideSize={80}
+          indicator
+        >
+          {list.map((item) => {
+            return (
+              <Swiper.Item key={item}>
+                <img src={item} alt="" />
+              </Swiper.Item>
+            )
+          })}
+        </Swiper>
+      </div>
+      <h2>{translated.multiItems}</h2>
+      <div style={{ height: 150 }}>
+        <Swiper loop>
+          <Swiper.Item>
+            <div style={{ display: 'flex' }}>
+              <div style={{ flex: '1', border: '1 red' }}>Item1</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item2</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item3</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item4</div>
+            </div>
+          </Swiper.Item>
+          <Swiper.Item>
+            <div style={{ display: 'flex' }}>
+              <div style={{ flex: '1', border: '1 red' }}>Item5</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item6</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item7</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item8</div>
+            </div>
+          </Swiper.Item>
+          <Swiper.Item>
+            <div style={{ display: 'flex' }}>
+              <div style={{ flex: '1', border: '1 red' }}>Item9</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item10</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item11</div>
+              <div style={{ flex: '1', border: '1 red' }}>Item12</div>
+            </div>
+          </Swiper.Item>
+        </Swiper>
+      </div>
     </div>
   )
 }

@@ -1,4 +1,12 @@
-import React, { forwardRef, ReactNode, useMemo, useRef } from 'react'
+import React, {
+  forwardRef,
+  ReactNode,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import classNames from 'classnames'
 import { useDrag } from '@use-gesture/react'
 import { animated, useSpring } from '@react-spring/web'
@@ -7,14 +15,15 @@ import Indicator, { IndicatorProps } from '@/packages/indicator'
 import { SwiperItem } from '@/packages/swiper/item'
 import { usePropsValue } from '@/utils/use-props-value'
 import { SwiperDirections, SwiperIndicator } from '@/packages/swiper/types'
+import { bound } from '@/utils/bound'
 
 const classPrefix = 'nut-swiper'
 
 export interface SwiperStackProps extends BasicComponent {
   width: number
   height: number
+  scale: number
   defaultValue?: number
-  perSlideOffset: number
   slideSize: number
   trackOffset: number
   direction: 'left' | 'right'
@@ -26,15 +35,15 @@ export interface SwiperStackProps extends BasicComponent {
 const defaultProps = {
   slideSize: 80,
   trackOffset: 0,
-  perSlideOffset: 8,
+  scale: 0.95,
   direction: 'left',
   onChange: (index: number) => undefined,
 } as SwiperStackProps
 export const Stack = forwardRef((props: Partial<SwiperStackProps>, ref) => {
   const {
+    scale,
     trackOffset,
     direction,
-    perSlideOffset,
     indicator,
     indicatorProps,
     slideSize,
@@ -63,30 +72,60 @@ export const Stack = forwardRef((props: Partial<SwiperStackProps>, ref) => {
     }
   }, [props.children])
   const trackRef = useRef<HTMLDivElement>(null)
-
+  const [dragging, setDragging] = useState(false)
+  const draggingRef = useRef(false)
+  useEffect(() => {
+    draggingRef.current = dragging
+  }, [dragging])
   const [{ position }, api] = useSpring(
     () => ({
       position: 0,
-      config: { tension: 200, friction: 30 },
+      config: (key) => {
+        if (key === 'position') return { tension: 200, friction: 30 }
+      },
     }),
     [count]
   )
+  const getSlidePixels = () => {
+    const track = trackRef.current
+    if (!track) return 0
+    const offsetWidth = track.offsetWidth
+    return (offsetWidth * slideSize) / 100
+  }
   const bind = useDrag(
     (state) => {
+      dragCancelRef.current = state.cancel
+      const index = 0
+      const slidePixels = getSlidePixels()
+      const offset = state.offset[index]
+      const direction = state.direction[index]
+      const velocity = state.velocity[index]
+      setDragging(true)
       if (!state.last) {
-        const offset = state.offset[0]
-        console.log(offset)
         api.start({
-          position: offset,
+          position: (offset * 100) / slidePixels,
+          immediate: true,
         })
       } else {
-        // 是否滚动
+        const minIndex = Math.floor(offset / slidePixels)
+        const maxIndex = minIndex + 1
+        const index = Math.round(
+          (offset + velocity * 2000 * direction) / slidePixels
+        )
+        to(bound(index, minIndex, maxIndex))
+        window?.setTimeout(() => setDragging(false))
       }
     },
     {
+      transform: ([x, y]) => [-x, -y],
       from: () => {
-        return [position.get(), position.get()]
+        const slidePixels = getSlidePixels()
+        return [
+          (position.get() / 100) * slidePixels,
+          (position.get() / 100) * slidePixels,
+        ]
       },
+      axis: 'x',
       triggerAllEvents: true,
       pointer: {
         touch: true,
@@ -94,6 +133,32 @@ export const Stack = forwardRef((props: Partial<SwiperStackProps>, ref) => {
       rubberband: false,
     }
   )
+
+  useImperativeHandle(ref, () => ({
+    to,
+    next,
+    prev,
+  }))
+  const to = (index: number) => {
+    const roundedIndex = Math.round(index)
+    const targetIndex = modulus(roundedIndex, count)
+    setCurrent(targetIndex)
+
+    api.start({
+      position: roundedIndex * 100,
+    })
+  }
+  const next = () => {
+    to(Math.round(position.get() / 100) + 1)
+  }
+  const prev = () => {
+    to(Math.round(position.get() / 100) - 1)
+  }
+  useImperativeHandle(ref, () => ({
+    to,
+    next,
+    prev,
+  }))
   const renderIndicator = () => {
     if (!indicator) return undefined
     if (indicator === true) {
@@ -127,6 +192,19 @@ export const Stack = forwardRef((props: Partial<SwiperStackProps>, ref) => {
     }
     return s
   }
+
+  function modulus(value: number, division: number) {
+    const remainder = value % division
+    return remainder < 0 ? remainder + division : remainder
+  }
+
+  const dragCancelRef = useRef<(() => void) | null>(null)
+
+  function forceCancelDrag() {
+    dragCancelRef.current?.()
+    draggingRef.current = false
+  }
+
   return (
     <div
       className={classNames(classPrefix, `${classPrefix}-horizontal`)}
@@ -137,7 +215,18 @@ export const Stack = forwardRef((props: Partial<SwiperStackProps>, ref) => {
         ...getStyle(),
       }}
     >
-      <div className={classNames(`${classPrefix}-track`)} ref={trackRef}>
+      <div
+        className={classNames(`${classPrefix}-track`, {
+          [`${classPrefix}-track-allow-touch-move`]: true,
+        })}
+        ref={trackRef}
+        onClickCapture={(e) => {
+          if (draggingRef.current) {
+            e.stopPropagation()
+          }
+          forceCancelDrag()
+        }}
+      >
         <div className={classNames(`${classPrefix}-track-inner`)} {...bind()}>
           {React.Children.map(validChildren, (child, index) => {
             return (
@@ -146,17 +235,17 @@ export const Stack = forwardRef((props: Partial<SwiperStackProps>, ref) => {
                 style={{
                   position: 'relative',
                   overflow: 'hidden',
-                  left: position.to((p) => {
-                    if (index === current) {
-                      return `${index * perSlideOffset + p}px`
-                    }
-                    return `${index * perSlideOffset}px`
+                  transition: 'transform 0.3s ease-in-out',
+                  left: position.to((position) => {
+                    let finalPosition = -position + index * 100
+                    const totalWidth = count * 100
+                    const flagWidth = totalWidth / 2
+                    finalPosition =
+                      modulus(finalPosition + flagWidth, totalWidth) - flagWidth
+                    return `${finalPosition}%`
                   }),
-                  zIndex: count - index,
-                  transform: ` translateX(-${index * 100}%) scale(${
-                    1 - index * 0.1
-                  })`,
-                  transformOrigin: 'right center',
+                  scale: current === index ? 1 : scale,
+                  x: `-${index * 100}%`,
                 }}
               >
                 {child}

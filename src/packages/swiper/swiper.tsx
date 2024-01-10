@@ -277,7 +277,9 @@ export const Swiper = React.forwardRef((props: Partial<SwiperProps>, ref) => {
       }}
     >
       <div
-        className={classNames(`${classPrefix}-track`)}
+        className={classNames(`${classPrefix}-track`, {
+          [`${classPrefix}-track-allow-touch-move`]: touchable,
+        })}
         ref={trackRef}
         {...(!touchable ? {} : bind())}
       >
