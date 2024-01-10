@@ -417,7 +417,7 @@ export default App
 | threshold | 距离底部多远加载 | `number` | `200` |
 | capture | 是否使用捕获模式 true 捕获 false 冒泡 | `boolean` | `false` |
 | target | 获取监听的目标元素 | `string` | `-` |
-| loadMoreText | “没有更多数”据展示文案 | `string` | `哎呀，这里是底部了啦` |
+| loadMoreText | “没有更多数据”展示文案 | `string` | `哎呀，这里是底部了啦` |
 | pullRefresh | 是否开启下拉刷新 | `boolean` | `false` |
 | pullingText | 下拉刷新提示文案 | `ReactNode` | `松手刷新` |
 | loadingText | 上拉加载提示文案 | `ReactNode` | `刷新中` |

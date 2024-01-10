@@ -275,9 +275,9 @@ export default App;
 | onOpen | open the cell sidebar | `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | `-`|
 | onClose | collapse the cell sidebar | `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | `-`|
 | onActionClick | triggered when clicking on the left or right | `(event: MouseEvent<HTMLDivElement>, position: 'left' \|'right') => void` | `-`|
-| onTouchStart | onTouchStart | `(event: TouchEvent<HTMLDivElement>) => void` | `-`|
-| onTouchMove | onTouchMove | `(event: TouchEvent<HTMLDivElement>) => void` | `-`|
-| onTouchEnd | onTouchEnd | `(event: TouchEvent<HTMLDivElement>) => void` | `-`|
+| onTouchStart | triggered when starting to touch | `(event: TouchEvent<HTMLDivElement>) => void` | `-`|
+| onTouchMove | triggered when starting to move | `(event: TouchEvent<HTMLDivElement>) => void` | `-`|
+| onTouchEnd | triggered when finishing to touch | `(event: TouchEvent<HTMLDivElement>) => void` | `-`|
 
 ### Ref
 

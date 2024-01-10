@@ -33,6 +33,7 @@ import { Space, Button } from '@nutui/nutui-react';
 export default App;
 
 ```
+
 :::
 
 ### 换行
@@ -58,7 +59,9 @@ const App = () => {
 export default App;
 
 ```
+
 :::
+
 ### 垂直
 
 :::demo
@@ -79,7 +82,9 @@ const App = () => {
 export default App;
 
 ```
+
 :::
+
 ### 间距大小
 
 :::demo
@@ -106,17 +111,19 @@ const App = () => {
 export default App;
 
 ```
+
 :::
+
 ## Space
 
 ### Props
 
 | 属性 | 说明                       | 类型                                                                  | 默认值                            |
 | --- |--------------------------|---------------------------------------------------------------------|--------------------------------|
-| direction | 间距方向                     | ` vertical \|   horizontal`                                         | horizontal |
+| direction | 间距方向                     | `vertical \|   horizontal`                                         | `horizontal` |
 | align | 交叉轴对齐方式                  | `start \| end \|center \| baseline`                                 | `-`                            |
 | justify | 主轴对齐方式                   | `start  \| end \| center \| between \| around \| evenly \| stretch` | `-`                            |
-| wrap | 是否自动换行，仅在 horizontal 时有效 | `boolean / false`                                                   | `-`                            |
+| wrap | 是否自动换行，仅在 horizontal 时有效 | `boolean`                                                   | `false`                            |
 
 ## 主题定制
 

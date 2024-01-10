@@ -96,7 +96,7 @@ export default App;
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| type | 標簽類型 | `primary` \| `success` \| `danger` \| `warning` | `default` |
+| type | 標簽類型 | `primary` \| `default` \| `info` \| `success` \| `danger` \| `warning` | `default` |
 | background | 標簽顏色 | `string` | `-` |
 | color | 文本顏色，優先級高於color屬性 | `string` | `white` |
 | plain | 是否為空心樣式 | `boolean` | `false` |

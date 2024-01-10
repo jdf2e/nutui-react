@@ -143,7 +143,7 @@ export default App;
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| type | Label type | `primary` \| `success` \| `danger` \| `warning` | `default` |
+| type | Label type | `primary` \| `default` \| `info` \| `success` \| `danger` \| `warning` | `default` |
 | background | Label background | `string` | `-` |
 | color | Text color, priority is higher than the color attribute | `string` | `white` |
 | plain | Whether it is hollow | `boolean` | `false` |

@@ -41,6 +41,8 @@ export default App;
 
 ### 填充模式
 
+按鈕支援 `solid`、 `outline`、 `dashed`、`none`四種類型，預設為 `solid`。
+
 :::demo
 
 ```tsx
@@ -62,6 +64,8 @@ export default App;
 :::
 
 ### 圖標按鈕
+
+透過 `icon` 屬性來設定按鈕圖標，並提供`rightIcon`屬性使圖標在右側顯示。
 
 :::demo
 
@@ -411,11 +415,11 @@ export default App;
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| type | 按鈕的樣式 | `default` \| `primary` \| `warning` \| `danger` \| `success` | `default` |
+| type | 按鈕的樣式 | `default` \| `primary` \| `warning` \| `danger` \| `success` \| `info` | `default` |
 | size | 按鈕的尺寸 | `normal` \| `large` \| `small` | `normal` |
 | shape | 按鈕的形狀 | `square` \| `round` | `round` |
 | color | 按鈕顏色，支持傳入 linear-gradient 漸變色 | `string` | `-` |
-| fill | 填充模式 | `solid` \| `ouline` \| `dashed` \| `none` | `solid` |
+| fill | 填充模式 | `solid` \| `outline` \| `dashed` \| `none` | `solid` |
 | disabled | 是否禁用按鈕 | `boolean` | `false` |
 | block | 是否為塊級元素 | `boolean` | `false` |
 | icon | 按鈕圖標 | `ReactNode` | `-` |

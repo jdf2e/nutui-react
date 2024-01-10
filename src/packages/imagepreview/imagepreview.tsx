@@ -227,6 +227,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
 
   const slideChangeEnd = (page: number) => {
     setActive(page + 1)
+    props.onChange?.(page + 1)
   }
 
   const onCloseInner = () => {

@@ -187,7 +187,10 @@ const ImagePreviewDemo = () => {
           value={init5}
           defaultValue={init5}
           indicator
-          onChange={(value) => setInit5(value)}
+          onChange={(value) => {
+            console.log('demo onChange', value)
+            setInit5(value)
+          }}
           onClose={hideFn5}
         />
         <Cell

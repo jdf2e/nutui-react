@@ -633,7 +633,7 @@ export default App;
 | activeType | 選中底部展示樣式 可選值 `line`、`smile`、`simple`、`card`、`button`、`divider` | `line` \| `smile` \| `simple`  \| `card` \| `button`\| `divider` | `line` |
 | duration | 切換動畫時長,單位 ms 0 代表無動畫 | `number` \| `string` | `300` |
 | title | 自定義導航區域 | `() => JSX.Element[]` | `-` |
-| align | 標題左對齊 | `left` \| `right` | `-` |
+| align | 標題對齊方式 | `left` \| `right` | `-` |
 | autoHeight | 自動高度。設置為 true 時，nut-tabs 和 nut-tabs\_\_content 會隨著當前 nut-tabpane 的高度而發生變化。 | `boolean` | `false` |
 | tabStyle | 標簽欄樣式 | `CSSProperties` | `{}` |
 | onClick | 點擊標簽時觸發 | `(index: string \| number) => void` | `-` |

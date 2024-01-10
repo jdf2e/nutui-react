@@ -115,7 +115,7 @@ export default App;
 | direction | 間距方嚮 | `'vertical'｜ 'horizontal'` | `'horizontal'` |
 | align | 交叉軸對齊方式 | `'start'｜'end'｜'center'｜'baseline'` | `-` |
 | justify | 主軸對齊方式 | `'start' ｜ 'end' ｜ 'center' ｜ 'between' ｜ 'around' ｜ 'evenly' ｜ 'stretch'` | `-` |
-| wrap | 是否自動換行，僅在 horizontal 時有效 | `boolean / false` | `-` |
+| wrap | 是否自動換行，僅在 horizontal 時有效 | `boolean` | `false` |
 
 ## 主題定制
 

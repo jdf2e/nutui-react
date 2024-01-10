@@ -633,7 +633,7 @@ export default App;
 | activeType | Select the bottom display style Optional values `line`、`smile`、`simple`、`card`、`button`、`divider` | `line` \| `smile` \| `simple`  \| `card` \| `button`\| `divider` | `line` |
 | duration | Switch animation duration, unit ms 0 means no animation | `number` \| `string` | `300` |
 | title | custom navigation area | `() => JSX.Element[]` | `-` |
-| align | title left alignment | `left` \| `right` | `-` |
+| align | title alignment | `left` \| `right` | `-` |
 | autoHeight | Auto height. When set to true, nut-tabs and nut-tabs\_\_content will change with the height of the current nut-tabpane. | `boolean` | `false` |
 | tabStyle | tab bar style | `CSSProperties` | `{}` |
 | onClick | Triggered when the label is clicked | `(index: string \| number) => void` | `-` |
