@@ -7,7 +7,6 @@ import { useTranslate } from '../../sites/assets/locale'
 interface T {
   basic: string
   asyc: string
-  dynamicDel: string
   size: string
   indicator: string
   btns: string
@@ -22,7 +21,6 @@ const SwiperDemo = () => {
     'zh-CN': {
       basic: '基础用法',
       asyc: '异步加载(3s)',
-      dynamicDel: '动态加载',
       size: '自定义大小',
       indicator: '自定义指示器',
       btns: '手动切换',
@@ -34,7 +32,6 @@ const SwiperDemo = () => {
     'en-US': {
       basic: 'Basic Usage',
       asyc: 'Asynchronous loading(3s)',
-      dynamicDel: 'Dynamic loading',
       size: 'Custom size',
       indicator: 'Custom indicator',
       btns: 'Manual switching',
@@ -91,21 +88,6 @@ const SwiperDemo = () => {
   return (
     <div className="demo padding">
       <h2>{translated.basic}</h2>
-      <Swiper.Stack slideSize={80} trackOffset={10}>
-        {list.map((item, index) => {
-          return (
-            <Swiper.Item key={item}>
-              <img
-                src={item}
-                width="100%"
-                height="100%"
-                onClick={() => console.log(index)}
-                alt=""
-              />
-            </Swiper.Item>
-          )
-        })}
-      </Swiper.Stack>
       <div className="demo-box" style={{ height: 150 }}>
         <Swiper
           height={height}
@@ -124,6 +106,22 @@ const SwiperDemo = () => {
           })}
         </Swiper>
       </div>
+      <br />
+      <Swiper.Stack slideSize={80} trackOffset={10} scale={0.85}>
+        {list.map((item, index) => {
+          return (
+            <Swiper.Item key={item}>
+              <img
+                src={item}
+                width="100%"
+                height="100%"
+                onClick={() => console.log(index)}
+                alt=""
+              />
+            </Swiper.Item>
+          )
+        })}
+      </Swiper.Stack>
       <h2>{translated.asyc}</h2>
       <div className="demo-box" style={{ height: 150 }}>
         {list1.length ? (
@@ -144,29 +142,6 @@ const SwiperDemo = () => {
             })}
           </Swiper>
         ) : null}
-      </div>
-      <h2>{translated.dynamicDel}</h2>
-      <div className="demo-box" style={{ height: 150 }}>
-        <Swiper
-          height={height}
-          style={{
-            '--nutui-indicator-color': '#426543',
-            '--nutui-indicator-dot-color': '#426ddd',
-          }}
-          autoPlay
-          duration={2000}
-          defaultValue={initPage3}
-          onChange={onChange}
-          indicator
-        >
-          {list2.map((item) => {
-            return (
-              <Swiper.Item key={item}>
-                <img src={item} alt="" />
-              </Swiper.Item>
-            )
-          })}
-        </Swiper>
       </div>
 
       <h2>{translated.size}</h2>
@@ -277,7 +252,11 @@ const SwiperDemo = () => {
           {list.map((item) => {
             return (
               <Swiper.Item key={item}>
-                <img src={item} alt="" />
+                <img
+                  src={item}
+                  alt=""
+                  style={{ height: '150px', width: 'auto' }}
+                />
               </Swiper.Item>
             )
           })}
