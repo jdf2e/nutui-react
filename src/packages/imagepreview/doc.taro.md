@@ -345,4 +345,5 @@ export default App;
 | indicatorColor | 分页指示器选中的颜色 | `string` | `#fff` |
 | showMenuByLongpress | 开启长按图片显示识别小程序码菜单 | `boolean` | `false` |
 | closeOnContentClick | 点击图片可以退出预览 | `boolean` | `false` |
+| onChange | 切换时触发 | `(value:number) => void` | `-` |
 | onClose | 点击遮罩关闭图片预览时触发 | `() => void` | `-` |
