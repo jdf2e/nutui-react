@@ -115,7 +115,7 @@ export default App;
 | direction | space direction              | `vertical \| horizontal`                                           | `horizontal`                                                   |
 | align | space align                  | `start \| end \|center \| baseline`                                | `-`                                                              |
 | justify | space justify                | `start \| end \| center \| between \| around \| evenly \| stretch` | `-` |
-| wrap | space wrap，Only valid when horizontal | `boolean / false`                                                  | `-`                                                              |
+| wrap | space wrap，Only valid when horizontal | `boolean`                                                  | `false`                                                              |
 
 ## Theming
 
