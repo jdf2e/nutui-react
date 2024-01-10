@@ -197,8 +197,8 @@ export const CalendarCard = React.forwardRef<
 
   const isActive = (day: CalendarCardDay) => {
     if (type === 'single' || type === 'multiple') {
-      for (const val of innerValue) {
-        if (isSameDay(day, val)) {
+      for (const val in innerValue) {
+        if (isSameDay(day, innerValue[val])) {
           return true
         }
       }
