@@ -53,6 +53,41 @@ test('should render width and height', () => {
     width: '375px',
   })
 })
+
+test('should Focus render', () => {
+  const changeFn = jest.fn()
+  const list = [
+    'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+    'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+    'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+    'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
+  ]
+
+  const { container } = render(
+    <Swiper.Focus
+      autoPlay={3000}
+      defaultValue={1}
+      onChange={changeFn}
+      indicator
+    >
+      {list.map((item, index) => {
+        return (
+          <Swiper.Item key={item}>
+            <img
+              src={item}
+              width="100%"
+              height="100%"
+              onClick={() => console.log(index)}
+              alt=""
+            />
+          </Swiper.Item>
+        )
+      })}
+    </Swiper.Focus>
+  )
+  const swiper = container.querySelectorAll('.nut-swiper-focus-track-inner')[0]
+  expect(swiper).toBeTruthy()
+})
 test('should render initpage', () => {
   const list = [
     'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
