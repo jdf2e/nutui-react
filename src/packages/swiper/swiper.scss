@@ -1,43 +1,25 @@
 @import '../indicator/indicator.scss';
 
 .nut-swiper {
-  width: 100%;
   position: relative;
-  overflow: hidden;
-}
-
-.nut-swiper-track {
-  width: 100%;
-  height: 100%;
-}
-
-.nut-swiper-track-inner {
-  width: 100%;
-  height: 100%;
-  position: relative;
+  z-index: 1;
   display: flex;
-  flex-wrap: nowrap;
-  overflow: visible;
-}
+  transition-property: transform;
+  box-sizing: content-box;
+  overflow: hidden;
 
-.nut-swiper-slide {
-  flex: none;
-  width: 100%;
-  position: relative;
-}
-
-.nut-swiper-item {
-  display: block;
-  width: 100%;
-  height: 100%;
-  white-space: normal;
-}
-
-.nut-swiper-horizontal {
-  .nut-swiper-track-allow-touch-move {
-    touch-action: pan-y;
+  &-inner {
+    display: flex;
+    height: 100%;
   }
-  .nut-swiper-indicator {
+
+  &-vertical {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+  }
+
+  &-indicator {
     display: flex;
     position: absolute;
     left: 50%;
@@ -46,7 +28,70 @@
     z-index: 1;
   }
 
-  .nut-swiper-track {
+  &-indicator-vertical {
+    top: 50%;
+    left: 12px;
+    bottom: auto;
+    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+}
+
+.nut-swiper-item {
+  height: 100%;
+}
+
+.nut-swiper-focus {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.nut-swiper-focus-track {
+  width: 100%;
+  height: 100%;
+}
+
+.nut-swiper-focus-track-inner {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: visible;
+}
+
+.nut-swiper-focus-slide {
+  flex: none;
+  width: 100%;
+  position: relative;
+}
+
+.nut-swiper-focus-item {
+  display: block;
+  width: 100%;
+  height: 100%;
+  white-space: normal;
+}
+
+.nut-swiper-focus-horizontal {
+  .nut-swiper-focus-track-allow-touch-move {
+    touch-action: pan-y;
+  }
+
+  .nut-swiper-focus-indicator {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    bottom: $swiper-indicator-bottom;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  .nut-swiper-focus-track {
     transform: translateX($swiper-track-offset);
 
     &-inner {
@@ -56,18 +101,19 @@
   }
 }
 
-.nut-swiper-vertical {
-  .nut-swiper-track-allow-touch-move {
+.nut-swiper-focus-vertical {
+  .nut-swiper-focus-track-allow-touch-move {
     touch-action: pan-x;
   }
-  .nut-swiper-indicator {
+
+  .nut-swiper-focus-indicator {
     position: absolute;
     right: 6px;
     top: 50%;
     transform: translateY(-50%);
   }
 
-  .nut-swiper-track {
+  .nut-swiper-focus-track {
     transform: translateY($swiper-track-offset);
 
     &-inner {

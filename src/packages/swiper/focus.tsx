@@ -12,21 +12,21 @@ import { useDrag } from '@use-gesture/react'
 import { animated, useSpring } from '@react-spring/web'
 import { BasicComponent } from '@/utils/typings'
 import Indicator, { IndicatorProps } from '@/packages/indicator'
-import { SwiperItem } from '@/packages/swiper/item'
+import { SwiperItem } from '@/packages/swiperitem/swiperitem'
 import { usePropsValue } from '@/utils/use-props-value'
-import { SwiperDirections, SwiperIndicator } from '@/packages/swiper/types'
+import { SwiperIndicator } from '@/packages/swiper/types'
 import { bound } from '@/utils/bound'
 
-const classPrefix = 'nut-swiper'
+const classPrefix = 'nut-swiper-focus'
 
-export interface SwiperStackProps extends BasicComponent {
+export interface SwiperFocusProps extends BasicComponent {
   width: number
   height: number
   scale: number
+  autoPlay: boolean | number
   defaultValue?: number
   slideSize: number
   trackOffset: number
-  direction: 'left' | 'right'
   indicator?: ReactNode | SwiperIndicator
   indicatorProps?: IndicatorProps
   onChange: (index: number) => void
@@ -35,22 +35,16 @@ export interface SwiperStackProps extends BasicComponent {
 const defaultProps = {
   slideSize: 80,
   trackOffset: 0,
+  autoPlay: false,
   scale: 0.95,
-  direction: 'left',
   onChange: (index: number) => undefined,
-} as SwiperStackProps
-export const Stack = forwardRef((props: Partial<SwiperStackProps>, ref) => {
-  const {
-    scale,
-    trackOffset,
-    direction,
-    indicator,
-    indicatorProps,
-    slideSize,
-  } = {
-    ...defaultProps,
-    ...props,
-  }
+} as SwiperFocusProps
+export const Focus = forwardRef((props: Partial<SwiperFocusProps>, ref) => {
+  const { scale, trackOffset, autoPlay, indicator, indicatorProps, slideSize } =
+    {
+      ...defaultProps,
+      ...props,
+    }
   const [current, setCurrent] = usePropsValue({
     defaultValue: props.defaultValue,
     finalValue: 0,
@@ -159,17 +153,31 @@ export const Stack = forwardRef((props: Partial<SwiperStackProps>, ref) => {
     next,
     prev,
   }))
+
+  const timerRef = useRef(-1)
+  const duration = typeof autoPlay === 'number' ? autoPlay : 3000
+  const runTimer = () => {
+    timerRef.current = window.setTimeout(() => {
+      next()
+      runTimer()
+    }, duration)
+  }
+
+  useEffect(() => {
+    if (dragging) return
+    if (autoPlay === true || typeof autoPlay === 'number') {
+      runTimer()
+    }
+    return () => {
+      clearTimeout(timerRef.current)
+    }
+  }, [autoPlay, dragging, count])
   const renderIndicator = () => {
     if (!indicator) return undefined
     if (indicator === true) {
       return (
         <div className={classNames(`${classPrefix}-indicator`)}>
-          <Indicator
-            {...indicatorProps}
-            current={current}
-            direction={props.direction}
-            total={count}
-          />
+          <Indicator {...indicatorProps} current={current} total={count} />
         </div>
       )
     }
@@ -177,7 +185,7 @@ export const Stack = forwardRef((props: Partial<SwiperStackProps>, ref) => {
       return indicator
     }
     if (typeof indicator === 'function') {
-      return indicator(current, count, direction as SwiperDirections)
+      return indicator(current, count)
     }
   }
   const getStyle = () => {
@@ -259,5 +267,5 @@ export const Stack = forwardRef((props: Partial<SwiperStackProps>, ref) => {
   )
 })
 
-Stack.defaultProps = defaultProps
-Stack.displayName = 'NutSwiperStack'
+Focus.defaultProps = defaultProps
+Focus.displayName = 'NutSwiperStack'

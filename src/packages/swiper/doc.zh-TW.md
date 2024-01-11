@@ -57,6 +57,47 @@ export default App;
 
 :::
 
+
+### 焦點輪播
+
+:::demo
+
+```tsx
+import React, { useState } from 'react'
+import { Swiper } from '@nutui/nutui-react';
+
+const list = [
+  'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+  'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+  'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+]
+const App = () => {
+  return (
+    <div className="demo-box" style={{ height: 150 }}>
+      <Swiper.Focus slideSize={80} trackOffset={10} scale={0.85}>
+        {list.map((item, index) => {
+          return (
+            <Swiper.Item key={item}>
+              <img
+                src={item}
+                width="100%"
+                height="100%"
+                onClick={() => console.log(index)}
+                alt=""
+              />
+            </Swiper.Item>
+          )
+        })}
+      </Swiper.Focus>
+    </div>
+  )
+}
+export default App;
+```
+
+:::
+
 ### 異步加載
 
 :::demo
@@ -504,6 +545,30 @@ export default App;
 | next | 切換到下一頁 | `()=>void` |
 | to | 切換到指定輪播 | `(index: number)=>void` |
 | resize | 外層元素大小或組件顯示狀態變化時，可以調用此方法來觸發重繪 | `()=>void` |
+
+## Swiper.Focus
+
+| 屬性 | 說明 | 類型 | 默認值 |
+| --- | --- | --- | --- |
+| width | 輪播卡的寬度 | `string` | `-` |
+| height | 輪播卡的高度 | `string` | `-` |
+| indicator | 分頁指示器是否展示，可傳入自訂的 HTML 結構 | `ReactNode` | `false` |
+| loop | 是否循環輪播 | `boolean` | `true` |
+| autoPlay | 自動輪播時間 | `number` \| `boolean` | `false` |
+| defaultValue | 初始化索引值 | `number` | `0` |
+| slideSize | 滑桿的寬度百分比 | `number` | `100` |
+| trackOffset | 滑桿軌道整體的偏移量百分比 | `number` | `0` |
+| touchable | 是否可觸碰滑動 | `boolean` | `true` |
+| onChange | 卡片切換後的回呼 | `(current: number) => void` | `-` |
+
+### Ref
+
+| 屬性 | 說明 | 類型 |
+| --- | --- | --- |
+| prev | 切換到上一頁 | `()=>void` |
+| next | 切換到下一頁 | `()=>void` |
+| to | 切換到指定輪播 | `(index: number)=>void` |
+
 
 ## 主題定制
 

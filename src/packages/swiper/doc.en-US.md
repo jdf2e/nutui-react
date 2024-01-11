@@ -57,6 +57,45 @@ export default App;
 
 :::
 
+### Focus
+
+:::demo
+
+```tsx
+import React, { useState } from 'react'
+import { Swiper } from '@nutui/nutui-react';
+
+const list = [
+  'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+  'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+  'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+]
+const App = () => {
+  return (
+    <div className="demo-box" style={{ height: 150 }}>
+      <Swiper.Focus slideSize={80} trackOffset={10} scale={0.85}>
+        {list.map((item, index) => {
+          return (
+            <Swiper.Item key={item}>
+              <img
+                src={item}
+                width="100%"
+                height="100%"
+                onClick={() => console.log(index)}
+                alt=""
+              />
+            </Swiper.Item>
+          )
+        })}
+      </Swiper.Focus>
+    </div>
+  )
+}
+export default App;
+```
+
+:::
 ### Asynchronous loading
 
 :::demo
@@ -504,6 +543,29 @@ export default App;
 | next | Switch to next page | `()=>void` |
 | to | Switch to the specified rotation | `(index: number)=>void` |
 | resize | This method can be called to trigger redraw when the size of the outer element or the display state of the component changes | `()=>void` |
+
+## Swiper.Focus
+
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| width | width of carousel card | `string` | `-` |
+| height | The height of the carousel card | `string` | `-` |
+| indicator | Whether to display the paging indicator, you can pass in a custom HTML structure | `ReactNode` | `false` |
+| loop | Whether to loop the carousel | `boolean` | `true` |
+| autoPlay | Automatic rotation duration | `number` \| `boolean` | `false` |
+| defaultValue | Initialization index value | `number` | `0` |
+| slideSize | The width percentage of the slider | `number` | `100` |
+| trackOffset | The overall offset percentage of the slider track | `number` | `0` |
+| touchable | Whether touch sliding is possible | `boolean` | `true` |
+| onChange | Callback after card switching | `(current: number) => void` | `-` |
+
+### Ref
+
+| Property | Description | Type |
+| --- | --- | --- |
+| prev | Switch to previous page | `()=>void` |
+| next | Switch to next page | `()=>void` |
+| to | Switch to the specified rotation | `(index: number)=>void` |
 
 ## Theming
 

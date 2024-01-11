@@ -1,8 +1,8 @@
 import React from 'react'
 import { Swiper, SwiperProps } from './swiper'
 import { SwiperRef } from './types'
-import { SwiperItem } from './item'
-import { Stack } from './stack'
+import { SwiperItem } from '../swiperitem/swiperitem'
+import { Focus } from './focus'
 
 export type { SwiperProps } from './swiper'
 export type { SwiperIndicator, SwiperRef, SwiperDirections } from './types'
@@ -12,9 +12,9 @@ type CompoundedComponent = React.ForwardRefExoticComponent<
     React.RefAttributes<SwiperRef>
 > & {
   Item: typeof SwiperItem
-  Stack: typeof Stack
+  Focus: typeof Focus
 }
 const InnerSwiper = Swiper as CompoundedComponent
 InnerSwiper.Item = SwiperItem
-InnerSwiper.Stack = Stack
+InnerSwiper.Focus = Focus
 export default InnerSwiper

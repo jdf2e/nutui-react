@@ -6,10 +6,6 @@ export type SwiperRef = {
   pre: () => void
 }
 
-export type SwiperIndicator = (
-  current: number,
-  total: number,
-  direction: SwiperDirections
-) => ReactNode
+export type SwiperIndicator = (current: number, total: number) => ReactNode
 
 export type SwiperDirections = 'horizontal' | 'vertical'

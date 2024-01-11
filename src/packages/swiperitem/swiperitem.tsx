@@ -29,7 +29,7 @@ export const SwiperItem = React.forwardRef<
 
   const getStyle = () => {
     const style: Style = {}
-    const _direction = parent?.propSwiper.direction || direction
+    const _direction = parent?.propSwiper?.direction || direction
     const _size = parent?.size || size
     if (_size) {
       style[_direction === 'horizontal' ? 'width' : 'height'] = `${_size}px`
