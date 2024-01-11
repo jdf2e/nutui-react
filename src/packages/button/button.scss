@@ -1,14 +1,11 @@
 .nut-button {
   position: relative;
-  display: flex;
   display: inline-block;
-  justify-content: center;
-  align-items: center;
   flex-shrink: 0;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  height: $button-default-height;
+  height: auto;
   font-size: $button-default-font-size;
   font-weight: $button-default-font-weight;
   text-align: center;

@@ -112,6 +112,25 @@ const SpaceDemo = () => {
             </Space>
           </ConfigProvider>
         </Cell>
+
+        <h2>主轴对齐方式</h2>
+
+        <Cell style={{ display: 'block' }}>
+          <Space justify="center" wrap>
+            <Button style={{ height: '30px' }}>{translated.button1}</Button>
+            <Button style={{ height: '60px' }}>{translated.button2}</Button>
+            <Button style={{ height: '90px' }}>{translated.button3}</Button>
+          </Space>
+        </Cell>
+
+        <h2>交叉轴对齐方式</h2>
+        <Cell>
+          <Space align="end" wrap>
+            <Button style={{ height: '30px' }}>{translated.button1}</Button>
+            <Button style={{ height: '60px' }}>{translated.button2}</Button>
+            <Button style={{ height: '90px' }}>{translated.button3}</Button>
+          </Space>
+        </Cell>
       </div>
     </>
   )

@@ -469,6 +469,15 @@ const ButtonDemo = () => {
             {translated['6ab47cd2']}
           </Button>
         </Cell>
+
+        <h2>test</h2>
+        <Cell>
+          <Button>
+            <span>
+              1 <br />2 1 <br />2
+            </span>
+          </Button>
+        </Cell>
       </div>
     </>
   )
