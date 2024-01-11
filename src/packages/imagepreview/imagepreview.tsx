@@ -10,7 +10,7 @@ import Popup from '@/packages/popup'
 import Image from '@/packages/image'
 import Video from '@/packages/video'
 import Swiper from '@/packages/swiper'
-import { SwiperItem } from '@/packages/swiper/item'
+import SwiperItem from '@/packages/swiperitem'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 
@@ -36,8 +36,7 @@ export interface ImagePreviewProps extends BasicComponent {
     }
   }>
   visible: boolean
-  autoPlay: boolean
-  duration: number
+  autoPlay: number | string
   value?: number
   defaultValue: number
   closeOnContentClick: boolean
@@ -52,8 +51,7 @@ const defaultProps = {
   images: [],
   videos: [],
   visible: false,
-  autoPlay: true,
-  duration: 3000,
+  autoPlay: 3000,
   defaultValue: 0,
   closeOnContentClick: false,
   indicator: false,
@@ -74,7 +72,6 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     indicatorColor,
     indicator,
     autoPlay,
-    duration,
     closeOnContentClick,
     onClose,
   } = props
@@ -267,9 +264,9 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
       >
         <Swiper
           autoPlay={autoPlay}
-          duration={duration}
           className={`${classPrefix}-swiper`}
           loop
+          preventDefault={false}
           style={{
             display: showPop ? 'block' : 'none',
             '--nutui-indicator-color': indicatorColor,
