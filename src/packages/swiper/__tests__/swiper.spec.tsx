@@ -1,5 +1,5 @@
 import React from 'react'
-import { render, waitFor } from '@testing-library/react'
+import { fireEvent, render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { act } from 'react-dom/test-utils'
 import Swiper from '../index'
@@ -65,10 +65,12 @@ test('should Focus render', () => {
 
   const { container } = render(
     <Swiper.Focus
-      autoPlay={3000}
+      autoPlay
+      slideSize={80}
+      trackOffset={10}
+      scale={0.85}
       defaultValue={1}
       onChange={changeFn}
-      indicator
     >
       {list.map((item, index) => {
         return (
@@ -83,10 +85,25 @@ test('should Focus render', () => {
           </Swiper.Item>
         )
       })}
+      <div>test</div>
     </Swiper.Focus>
   )
   const swiper = container.querySelectorAll('.nut-swiper-focus-track-inner')[0]
   expect(swiper).toBeTruthy()
+  // 模拟拖拽事件
+  act(() => {
+    fireEvent.mouseDown(swiper, {
+      buttons: 1,
+      clientX: 20,
+      clientY: 20,
+    })
+    fireEvent.mouseMove(swiper, {
+      buttons: 1,
+      clientX: 200,
+      clientY: 200,
+    })
+    fireEvent.mouseUp(swiper)
+  })
 })
 test('should render initpage', () => {
   const list = [

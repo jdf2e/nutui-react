@@ -109,7 +109,13 @@ const SwiperDemo = () => {
         </Swiper>
       </div>
       <br />
-      <Swiper.Focus autoPlay slideSize={80} trackOffset={10} scale={0.85}>
+      <Swiper.Focus
+        autoPlay
+        slideSize={80}
+        trackOffset={10}
+        scale={0.85}
+        defaultValue={1}
+      >
         {list.map((item, index) => {
           return (
             <Swiper.Item key={item}>

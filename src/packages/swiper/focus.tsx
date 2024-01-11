@@ -73,7 +73,7 @@ export const Focus = forwardRef((props: Partial<SwiperFocusProps>, ref) => {
   }, [dragging])
   const [{ position }, api] = useSpring(
     () => ({
-      position: 0,
+      position: current * 100,
       config: (key) => {
         if (key === 'position') return { tension: 200, friction: 30 }
       },
@@ -88,6 +88,7 @@ export const Focus = forwardRef((props: Partial<SwiperFocusProps>, ref) => {
   }
   const bind = useDrag(
     (state) => {
+      console.log(state.offset)
       dragCancelRef.current = state.cancel
       const index = 0
       const slidePixels = getSlidePixels()
@@ -239,7 +240,9 @@ export const Focus = forwardRef((props: Partial<SwiperFocusProps>, ref) => {
           {React.Children.map(validChildren, (child, index) => {
             return (
               <animated.div
-                className={classNames(`${classPrefix}-slide`)}
+                className={classNames(`${classPrefix}-slide`, {
+                  [`${classPrefix}-slide-active`]: index === current,
+                })}
                 style={{
                   position: 'relative',
                   overflow: 'hidden',
