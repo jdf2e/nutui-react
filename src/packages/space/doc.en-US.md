@@ -112,7 +112,7 @@ export default App;
 
 ```
 
-### Main axis alignment
+### MainAxis alignment
 
 :::demo
 
@@ -133,7 +133,7 @@ export default App;
 
 ```
 
-### Cross axis alignment
+### CrossAxis alignment
 
 :::demo
 
