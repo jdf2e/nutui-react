@@ -14,7 +14,7 @@ import { Button } from '@nutui/nutui-react';
 
 ### The button type
 
-The button supports six types: 'default', 'primary', 'info', 'warning', 'danger', 'success', which defaults to ' default'.
+The button supports six types: 'default', 'primary', 'info', 'warning', 'danger', 'success', which defaults to 'default'.
 
 :::demo
 
@@ -40,6 +40,8 @@ export default App;
 :::
 
 ### Fill button
+
+The button supports four types: 'solid', 'outline', 'dashed', 'none', which defaults to 'solid'.
 
 :::demo
 
@@ -141,6 +143,8 @@ export default App;
 :::
 
 ### Icon button
+
+Set the button icon through the 'icon' property, and provide the 'rightIcon' property to display the icon on the right side.
 
 :::demo
 
@@ -286,11 +290,11 @@ export default App;
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| type | button style | `default` \| `primary` \| `warning` \| `danger` \| `success` | `default` |
+| type | button style | `default` \| `primary` \| `warning` \| `danger` \| `success` \| `info` | `default` |
 | size | button size | `normal` \| `large` \| `small` | `normal` |
 | shape | button shape | `square` \| `round` | `round` | 
 | color | button color | `string` | `-` |
-| fill | fill pattern | `solid` \| `ouline`  \| `dashed` \| `none` | `solid` |
+| fill | fill pattern | `solid` \| `outline`  \| `dashed` \| `none` | `solid` |
 | disabled | disable the button | `boolean` | `false` |
 | block | block element | `boolean` | `false` |
 | icon | icon | `ReactNode` | `-` |

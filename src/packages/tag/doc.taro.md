@@ -96,7 +96,7 @@ export default App;
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| type | 标签类型 | `primary` \| `success` \| `danger` \| `warning` | `default` |
+| type | 标签类型 | `primary` \| `default` \| `info` \| `success` \| `danger` \| `warning` | `default` |
 | background | 标签颜色 | `string` | `-` |
 | color | 文本颜色，优先级高于color属性 | `string` | `white` |
 | plain | 是否为空心样式 | `boolean` | `false` |

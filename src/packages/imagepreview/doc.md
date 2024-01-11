@@ -344,4 +344,5 @@ export default App;
 | indicator | 分页指示器是否展示 | `boolean` | `false` |
 | indicatorColor | 分页指示器选中的颜色 | `string` | `#fff` |
 | closeOnContentClick | 点击图片可以退出预览 | `boolean` | `false` |
+| onChange | 切换时触发 | `(value:number) => void` | `-` |
 | onClose | 点击遮罩关闭图片预览时触发 | `() => void` | `-` |

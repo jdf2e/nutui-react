@@ -273,9 +273,9 @@ export default App;
 | onOpen | 打开单元格侧边栏 | `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | `-` |
 | onClose | 收起单元格侧边栏 | `(name, position): { name: string \| number, position: 'left' \| 'right' } => void` | `-` |
 | onActionClick | 点击左侧或者右侧时触发 | `(event: MouseEvent<HTMLDivElement>, position: 'left' \| 'right') => void` | `-` |
-| onTouchStart | onTouchStart | `(event: TouchEvent<HTMLDivElement>) => void` | `-` |
-| onTouchMove | onTouchMove | `(event: TouchEvent<HTMLDivElement>) => void` | `-` |
-| onTouchEnd | onTouchEnd | `(event: TouchEvent<HTMLDivElement>) => void` | `-` |
+| onTouchStart | 开始触碰时触发 | `(event: TouchEvent<HTMLDivElement>) => void` | `-` |
+| onTouchMove | 滑动时触发 | `(event: TouchEvent<HTMLDivElement>) => void` | `-` |
+| onTouchEnd | 结束触碰时触发 | `(event: TouchEvent<HTMLDivElement>) => void` | `-` |
 
 ### Ref
 

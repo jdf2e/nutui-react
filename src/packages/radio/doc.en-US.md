@@ -244,7 +244,7 @@ export default RadioGroupOptions;
 | labelPosition | The position of the text | `left` \| `right` | `right` |
 | icon | <a href="#/icon">icon name</a>, before selection (it is recommended to modify it together with `activeIcon`) | `ReactNode` | `'CheckNormal'` |
 | activeIcon | <a href="#/icon">icon name</a>, after selected (it is recommended to modify it together with `icon`) | `ReactNode` | `'CheckChecked'` |
-| shape | shape | `button` \| `round` \| `round` | `round` |
+| shape | shape | `button` \| `round` | `round` |
 | onChange | Triggered when the checked state changes | `(checked: boolean) => void` | `-` |
 
 ## Radio.Group

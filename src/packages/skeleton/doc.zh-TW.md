@@ -141,7 +141,7 @@ export default App;
 | avatar | 是否顯示頭像 | `boolean` | `false` |
 | avatarShape | 頭像形狀：正方形/圓形 | `string` | `round` |
 | avatarSize | 頭像大小 | `string` | `50px` |
-| rows | 設置段落行數 | `string` | `1` |
+| rows | 設置段落行數 | `number` | `1` |
 | title | 是否顯示段落標題 | `boolean` | `true` |
 
 ## 主題定制

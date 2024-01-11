@@ -344,4 +344,5 @@ export default App;
 | indicator | Whether to show pagination | `boolean` | `false` |
 | indicatorColor | Pagination color | `string` | `#fff` |
 | closeOnContentClick | Click image to exit preview | `boolean` | `false` |
+| onChange | Emitted when swiper changes | `(value:number) => void` | `-` |
 | onClose | Emitted when closing ImagePreview | `() => void` | `-` |
