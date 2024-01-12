@@ -1,3 +1,14 @@
+# v2.3.6
+`2024-01-12`
+
+* :sparkles: feat(space): update demos and docs of justify and align (#1856) @Alex.huxiyang
+* :sparkles: feat(tag): image text (#1851) @oasis
+* :sparkles: feat: doc文档优化 (#1850) @Alex.huxiyang
+* :bug: fix(swiper): fix props of saving image at taro, fix parameter of onChange, update taro version to 3.6.22 (#1847) @xiaoyatong
+* :bug: fix: fix some components display bad with the white screen at taro when is development (#1852) @xiaoyatong
+* 🔨 chore(deps): update icons to v1.0.2 (#1853) @oasis
+
+
 # v2.3.5
 `2024-01-05`
 
