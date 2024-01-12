@@ -118,7 +118,7 @@ export default App;
 
 ```tsx
 import React from 'react';
-import { Space, Button } from '@nutui/nutui-react';
+import { Space, Button } from '@nutui/nutui-react-taro';
 
 const App = () => {
   return (
@@ -139,7 +139,7 @@ export default App;
 
 ```tsx
 import React from 'react';
-import { Space, Button } from '@nutui/nutui-react';
+import { Space, Button } from '@nutui/nutui-react-taro';
 
 const App = () => {
   return (
