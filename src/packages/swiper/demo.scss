@@ -41,35 +41,35 @@
     }
   }
 }
-//
-//.vertical-center {
-//  .nut-swiper {
-//    height: 150px;
-//  }
-//
-//  .nut-swiper-indicator-vertical {
-//    .nut-indicator-dot {
-//      width: 6px;
-//      height: 6px;
-//      border-radius: 50%;
-//
-//      &.nut-indicator-active {
-//        height: 18px;
-//        border-radius: 5px;
-//        background-color: #426543;
-//      }
-//    }
-//  }
-//
-//  .nut-swiper-item {
-//    height: 300px;
-//
-//    img {
-//      width: 100%;
-//      height: 100%;
-//    }
-//  }
-//}
+
+.vertical-center {
+  .nut-swiper {
+    height: 150px;
+  }
+
+  .nut-swiper-indicator-vertical {
+    .nut-indicator-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+
+      &.nut-indicator-active {
+        height: 18px;
+        border-radius: 5px;
+        background-color: #426543;
+      }
+    }
+  }
+
+  .nut-swiper-item {
+    height: 300px;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
 
 .swiper-demo-size {
   margin: 0 auto;

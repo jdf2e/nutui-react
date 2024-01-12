@@ -271,4 +271,4 @@ export const Focus = forwardRef((props: Partial<SwiperFocusProps>, ref) => {
 })
 
 Focus.defaultProps = defaultProps
-Focus.displayName = 'NutSwiperStack'
+Focus.displayName = 'NutSwipeFocus'
