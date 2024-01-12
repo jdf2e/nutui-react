@@ -4,7 +4,7 @@
 
 Maintain the same width in the arrangement of elements.
 
-##  Install
+## Install
 
 ```tsx
 import { Space } from '@nutui/nutui-react';
@@ -33,7 +33,9 @@ import { Space, Button } from '@nutui/nutui-react';
 export default App;
 
 ```
+
 :::
+
 ### Wrap
 
 :::demo
@@ -57,7 +59,9 @@ const App = () => {
 export default App;
 
 ```
+
 :::
+
 ### Direction
 
 :::demo
@@ -78,7 +82,9 @@ const App = () => {
 export default App;
 
 ```
+
 :::
+
 ### Gap
 
 :::demo
@@ -105,7 +111,51 @@ const App = () => {
 export default App;
 
 ```
+
+### MainAxis alignment
+
+:::demo
+
+```tsx
+import React from 'react';
+import { Space, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <Space justify="center" wrap>
+      <Button style={{ height: '30px' }}>button1</Button>
+      <Button style={{ height: '60px' }}>button2</Button>
+      <Button style={{ height: '90px' }}>button3</Button>
+    </Space>    
+  );
+};
+export default App;
+
+```
+
+### CrossAxis alignment
+
+:::demo
+
+```tsx
+import React from 'react';
+import { Space, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <Space align="end" wrap>
+      <Button style={{ height: '30px' }}>button1</Button>
+      <Button style={{ height: '60px' }}>button2</Button>
+      <Button style={{ height: '90px' }}>button3</Button>
+    </Space>  
+  );
+};
+export default App;
+
+```
+
 :::
+
 ## Space
 
 ### Props

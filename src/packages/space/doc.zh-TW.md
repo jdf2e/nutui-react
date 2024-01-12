@@ -33,7 +33,9 @@ import { Space, Button } from '@nutui/nutui-react';
 export default App;
 
 ```
+
 :::
+
 ### 換行
 
 :::demo
@@ -57,7 +59,9 @@ const App = () => {
 export default App;
 
 ```
+
 :::
+
 ### 垂直
 
 :::demo
@@ -78,7 +82,9 @@ const App = () => {
 export default App;
 
 ```
+
 :::
+
 ### 間距大小
 
 :::demo
@@ -105,7 +111,51 @@ const App = () => {
 export default App;
 
 ```
+
+### 主軸對齊方式
+
+:::demo
+
+```tsx
+import React from 'react';
+import { Space, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <Space justify="center" wrap>
+      <Button style={{ height: '30px' }}>按钮1</Button>
+      <Button style={{ height: '60px' }}>按钮2</Button>
+      <Button style={{ height: '90px' }}>按钮3</Button>
+    </Space>    
+  );
+};
+export default App;
+
+```
+
+### 交叉軸對齊方式
+
+:::demo
+
+```tsx
+import React from 'react';
+import { Space, Button } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <Space align="end" wrap>
+      <Button style={{ height: '30px' }}>按钮1</Button>
+      <Button style={{ height: '60px' }}>按钮2</Button>
+      <Button style={{ height: '90px' }}>按钮3</Button>
+    </Space>  
+  );
+};
+export default App;
+
+```
+
 :::
+
 ## Space
 
 ### Props

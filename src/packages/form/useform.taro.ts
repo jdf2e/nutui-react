@@ -104,9 +104,41 @@ class FormStore {
     }
   }
 
+  validateEntities = async (entity: FieldEntity, errs: any[]) => {
+    const { name, rules = [] } = entity.props
+    const descriptor: any = {}
+    if (rules.length) {
+      // 多条校验规则
+      if (rules.length > 1) {
+        descriptor[name] = []
+        rules.forEach((v: any) => {
+          descriptor[name].push(v)
+        })
+      } else {
+        descriptor[name] = rules[0]
+      }
+    }
+    const validator = new Schema(descriptor)
+    // 此处合并无值message 没有意义？
+    // validator.messages()
+    try {
+      await validator.validate({ [name]: this.store?.[name] })
+    } catch ({ errors }) {
+      if (errors) {
+        errs.push(...(errors as any[]))
+        this.errors[name] = errors
+      }
+    } finally {
+      if (!errs || errs.length === 0) {
+        this.errors[name] = []
+      }
+    }
+
+    entity.onStoreChange('validate')
+  }
+
   validateFields = async (nameList?: NamePath[]) => {
     let filterEntities = []
-    const errs = []
     this.errors.length = 0
     if (!nameList || nameList.length === 0) {
       filterEntities = this.fieldEntities
@@ -115,37 +147,10 @@ class FormStore {
         nameList.includes(name)
       )
     }
-    for (const entity of filterEntities) {
-      const { name, rules = [] } = entity.props
-      const descriptor: any = {}
-      if (rules.length) {
-        // 多条校验规则
-        if (rules.length > 1) {
-          descriptor[name] = []
-          rules.forEach((v: any) => {
-            descriptor[name].push(v)
-          })
-        } else {
-          descriptor[name] = rules[0]
-        }
-      }
-      const validator = new Schema(descriptor)
-      // 此处合并无值message 没有意义？
-      // validator.messages()
-      try {
-        await validator.validate({ [name]: this.store?.[name] })
-      } catch ({ errors }) {
-        if (errors) {
-          errs.push(...(errors as any[]))
-          this.errors[name] = errors
-        }
-      } finally {
-        if (!errs || errs.length === 0) {
-          this.errors[name] = []
-        }
-      }
-      entity.onStoreChange('validate')
-    }
+    const errs: any[] = []
+    filterEntities.forEach((entity) => {
+      this.validateEntities(entity, errs)
+    })
     return errs
   }
 
