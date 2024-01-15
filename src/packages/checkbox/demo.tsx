@@ -60,7 +60,7 @@ const CheckboxDemo = () => {
       cancelSelection: '取消全选',
       reverse: '反选',
       options: '配置 options 渲染复选按钮',
-      max: 'checkboxGroup使用，限制最大可选数（2个）',
+      max: 'checkboxGroup使用，限制最大可选数（3个）, 至少选择数（1个）',
       threeState: '全选/半选/取消',
     },
     'zh-TW': {
@@ -87,7 +87,7 @@ const CheckboxDemo = () => {
       cancelSelection: '取消全選',
       reverse: '反選',
       options: '配置 options 渲染複選按鈕',
-      max: 'checkboxGroup使用，限制最大可选数（2个）',
+      max: 'checkboxGroup使用，限制最大可选数（2个）, 至少选择数（1个）',
       threeState: '全选/半选/取消',
     },
     'en-US': {
@@ -114,7 +114,7 @@ const CheckboxDemo = () => {
       reverse: 'reverse',
       cancelSelection: 'Cancel All Selection',
       options: 'Render radios by configuring options',
-      max: 'Used by checkboxGroup, limit the maximum number of options (2)',
+      max: 'Used by checkboxGroup, limit the maximum number of options (2), minimum number of options (1)',
       threeState: 'Select All/Half/Cancel',
     },
   })
@@ -441,7 +441,7 @@ const CheckboxDemo = () => {
         </Cell>
         <h2>{translated.max}</h2>
         <Cell>
-          <Checkbox.Group defaultValue={checkboxgroup3} max={2}>
+          <Checkbox.Group defaultValue={checkboxgroup3} max={3} min={1}>
             <Checkbox value="1">{translated.options1}</Checkbox>
             <Checkbox value="2">{translated.options1}</Checkbox>
             <Checkbox value="3">{translated.options1}</Checkbox>

@@ -45,6 +45,8 @@ test('should fireEvent correctly', () => {
       data-testid="group"
       className="test"
       defaultValue={['1']}
+      max={3}
+      min={1}
       onChange={handleChange}
     >
       <Checkbox value="1">组合复选框</Checkbox>

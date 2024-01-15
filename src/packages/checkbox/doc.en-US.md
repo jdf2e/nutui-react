@@ -377,7 +377,7 @@ export default CheckBoxDemo;
 
 :::
 
-## Used by checkboxGroup, limit the maximum number of options (2)
+## Used by checkboxGroup, limit the maximum number of options (2), minimum number of options (1)
 
 :::demo
 
@@ -391,7 +391,8 @@ const CheckBoxDemo = () => {
   return (<>
     <Checkbox.Group
       defaultValue={checkboxgroup2}
-      max={2}
+      max={3}
+      min={1}
       onChange={(value) => {
         Toast.show(value)
       }}
@@ -544,6 +545,7 @@ export default CheckboxGroupOptions;
 | defaultValue | Identifier of the initially selected item | `string` \| `number` | `-` |
 | disabled | Whether to disable selection, will be used for all checkboxes under it | `boolean` | `false` |
 | max | limit the maximum number of options | `number` | `-` |
+| min | Limit the number of choices to at least | `number` | `-` |
 | labelPosition | The position of the text | `left` \| `right` | `right` |
 | direction | Use horizontal and vertical directions Optional values horizontal、vertical | `string` | `vertical` |
 | options | Configure options to render check buttons | `Array<{ label: string value: string disabled?: boolean }>` | `-` |

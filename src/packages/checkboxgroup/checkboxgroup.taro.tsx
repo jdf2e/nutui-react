@@ -13,6 +13,7 @@ export interface CheckboxGroupProps {
   value?: string[]
   defaultValue?: string[]
   max: number | undefined
+  min?: number | undefined
   labelPosition: CheckboxLabelPosition
   direction: CheckboxDirection
   options: RadioGroupOptionType[]
@@ -42,6 +43,7 @@ export const CheckboxGroup = React.forwardRef(
       value,
       defaultValue,
       max,
+      min,
       labelPosition,
       direction,
       options,
@@ -93,7 +95,7 @@ export const CheckboxGroup = React.forwardRef(
           />
         )
       })
-    }, [options, max])
+    }, [options, max, min])
 
     return (
       <Context.Provider
@@ -108,6 +110,7 @@ export const CheckboxGroup = React.forwardRef(
           },
           uncheck: (value: string) => {
             const reduced = _value.filter((item) => item !== value)
+            if (min !== undefined && reduced.length < min) return
             setValue(reduced)
           },
         }}
