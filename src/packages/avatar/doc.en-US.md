@@ -20,7 +20,7 @@ Support three sizes：small、normal、large
 
 ```tsx
 import React from "react";
-import { Avatar } from '@nutui/nutui-react';
+import { Avatar, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   return (
@@ -36,7 +36,18 @@ const App = () => {
       <Avatar
         size="small"
         src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-      />  
+      />
+      <Cell>
+        <Avatar
+          size="normal"
+          style={{ marginRight: 0 }}
+          src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+        />
+        <div style={{ marginLeft: '10px' }}>
+          <div style={{ fontSize: '16px' }}>Title</div>
+          <div style={{ fontSize: '12px' }}>Description</div>
+        </div>
+      </Cell>
     </>
   )
 }

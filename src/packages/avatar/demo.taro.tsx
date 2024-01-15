@@ -81,6 +81,17 @@ const AvatarDemo = () => {
             src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
           />
         </Cell>
+        <Cell>
+          <Avatar
+            size="normal"
+            style={{ marginRight: 0 }}
+            src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+          />
+          <div style={{ marginLeft: '10px' }}>
+            <div style={{ fontSize: '16px' }}>Title</div>
+            <div style={{ fontSize: '12px' }}>Description</div>
+          </div>
+        </Cell>
         <h2>{translated['3928b17e']}</h2>
         <Cell>
           <Avatar icon={<User />} shape="square" />
