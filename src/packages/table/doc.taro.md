@@ -933,14 +933,7 @@ const App = () => {
       title: '年龄',
       key: 'age',
       fixed: 'right',
-      width: 100,
-      render: () => {
-        return (
-          <Button type="primary" size="mini">
-            操作
-          </Button>
-        )
-      },
+      width: 60,
     },
   ])
 
