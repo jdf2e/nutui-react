@@ -22,6 +22,8 @@ interface T extends Button {
   wrap: string
   direction: string
   spaceGap: string
+  mainAxisAlign: string
+  crossAxisAlign: string
 }
 
 const SpaceDemo = () => {
@@ -37,6 +39,8 @@ const SpaceDemo = () => {
       button4: '按钮4',
       button5: '按钮5',
       button6: '按钮6',
+      mainAxisAlign: '主轴对齐方式',
+      crossAxisAlign: '交叉轴对齐方式',
     },
     'zh-TW': {
       basic: '基本用法',
@@ -49,6 +53,8 @@ const SpaceDemo = () => {
       button4: '按钮4',
       button5: '按钮5',
       button6: '按钮6',
+      mainAxisAlign: '主軸對齊方式',
+      crossAxisAlign: '交叉軸對齊方式',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -61,6 +67,8 @@ const SpaceDemo = () => {
       button4: 'button4',
       button5: 'button5',
       button6: 'button6',
+      mainAxisAlign: 'MainAxis Alignment',
+      crossAxisAlign: 'CrossAxis Alignment',
     },
   })
 
@@ -113,22 +121,48 @@ const SpaceDemo = () => {
           </ConfigProvider>
         </Cell>
 
-        <h2>主轴对齐方式</h2>
+        <h2>{translated.mainAxisAlign}</h2>
 
         <Cell style={{ display: 'block' }}>
-          <Space justify="center" wrap>
-            <Button style={{ height: '30px' }}>{translated.button1}</Button>
-            <Button style={{ height: '60px' }}>{translated.button2}</Button>
-            <Button style={{ height: '90px' }}>{translated.button3}</Button>
+          <Space justify="start" wrap>
+            <>
+              <Button>{translated.button1}</Button>
+            </>
+            <>
+              <Space direction="vertical">
+                <Button block>{translated.button2}</Button>
+                <Button block>{translated.button2}</Button>
+              </Space>
+            </>
+            <>
+              <Space direction="vertical">
+                <Button block>{translated.button3}</Button>
+                <Button block>{translated.button3}</Button>
+                <Button block>{translated.button3}</Button>
+              </Space>
+            </>
           </Space>
         </Cell>
 
-        <h2>交叉轴对齐方式</h2>
+        <h2>{translated.crossAxisAlign}</h2>
         <Cell>
           <Space align="end" wrap>
-            <Button style={{ height: '30px' }}>{translated.button1}</Button>
-            <Button style={{ height: '60px' }}>{translated.button2}</Button>
-            <Button style={{ height: '90px' }}>{translated.button3}</Button>
+            <>
+              <Button block>{translated.button1}</Button>
+            </>
+            <>
+              <Space direction="vertical">
+                <Button block>{translated.button2}</Button>
+                <Button block>{translated.button2}</Button>
+              </Space>
+            </>
+            <>
+              <Space direction="vertical">
+                <Button block>{translated.button3}</Button>
+                <Button block>{translated.button3}</Button>
+                <Button block>{translated.button3}</Button>
+              </Space>
+            </>
           </Space>
         </Cell>
       </div>

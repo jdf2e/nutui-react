@@ -122,11 +122,24 @@ import { Space, Button } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Space justify="center" wrap>
-      <Button style={{ height: '30px' }}>button1</Button>
-      <Button style={{ height: '60px' }}>button2</Button>
-      <Button style={{ height: '90px' }}>button3</Button>
-    </Space>    
+    <Space justify="start" wrap>
+      <>
+        <Button>button1</Button>
+      </>
+      <>
+        <Space direction="vertical">
+          <Button block>button2</Button>
+          <Button block>button2</Button>
+        </Space>
+      </>
+      <>
+        <Space direction="vertical">
+          <Button block>button3</Button>
+          <Button block>button3</Button>
+          <Button block>button3</Button>
+        </Space>
+      </>
+    </Space>   
   );
 };
 export default App;
@@ -144,10 +157,23 @@ import { Space, Button } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Space align="end" wrap>
-      <Button style={{ height: '30px' }}>button1</Button>
-      <Button style={{ height: '60px' }}>button2</Button>
-      <Button style={{ height: '90px' }}>button3</Button>
-    </Space>  
+      <>
+        <Button block>button1</Button>
+      </>
+      <>
+        <Space direction="vertical">
+          <Button block>button2</Button>
+          <Button block>button2</Button>
+        </Space>
+      </>
+      <>
+        <Space direction="vertical">
+          <Button block>button3</Button>
+          <Button block>button3</Button>
+          <Button block>button3</Button>
+        </Space>
+      </>
+    </Space> 
   );
 };
 export default App;
