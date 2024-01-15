@@ -459,19 +459,46 @@ const ButtonDemo = () => {
         <h2>{translated['781b07fd']}</h2>
 
         <Cell style={{ flexWrap: 'wrap' }}>
-          <Button color="#7232dd" style={{ margin: 8 }}>
+          <Button
+            style={{
+              margin: 8,
+              '--nutui-button-default-border-color': 'blue',
+              '--nutui-button-default-color': '#fff',
+              '--nutui-button-default-background-color': 'blue',
+            }}
+          >
             {translated['1076d771']}
           </Button>
-          <Button fill="outline" color="#7232dd" style={{ margin: 8 }}>
+          <Button
+            fill="outline"
+            style={{
+              margin: 8,
+              '--nutui-button-default-border-color': '#7232dd',
+              '--nutui-button-default-color': '#7232dd',
+            }}
+          >
             {translated['1076d771']}
           </Button>
-          <Button color="rgba(10,101,208,0.75)" style={{ margin: 8 }}>
+          <Button
+            style={{
+              margin: 8,
+              '--nutui-button-default-border-color': 'transparent',
+              '--nutui-button-default-color': '#fff',
+              '--nutui-button-default-background-color':
+                'rgba(10,101,208,0.75)',
+            }}
+          >
             {translated['1076d771']}
           </Button>
           <Button
             type="primary"
-            color="linear-gradient(to right, #ff6034, #ee0a24)"
-            style={{ margin: 8 }}
+            style={{
+              margin: 8,
+              '--nutui-button-default-border-color': 'transparent',
+              '--nutui-button-default-color': '#fff',
+              '--nutui-button-default-background-color':
+                'linear-gradient(to right, #ff6034, #ee0a24)',
+            }}
           >
             {translated['6ab47cd2']}
           </Button>
