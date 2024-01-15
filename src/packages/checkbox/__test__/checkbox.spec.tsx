@@ -40,7 +40,7 @@ test('should fireEvent correctly', () => {
   const handleChange = jest.fn((value) => {
     value
   })
-  const { getByTestId } = render(
+  const { getByTestId, container } = render(
     <CheckboxGroup
       data-testid="group"
       className="test"
@@ -49,7 +49,9 @@ test('should fireEvent correctly', () => {
       min={1}
       onChange={handleChange}
     >
-      <Checkbox value="1">组合复选框</Checkbox>
+      <Checkbox data-testid="checkbox1" value="1">
+        组合复选框
+      </Checkbox>
       <Checkbox value="2">组合复选框</Checkbox>
       <Checkbox data-testid="checkbox" value="3">
         组合复选框
@@ -64,6 +66,11 @@ test('should fireEvent correctly', () => {
   expect(handleChange).toBeCalledWith(['1', '3'])
 
   expect(getByTestId('group')).toHaveClass('test')
+
+  fireEvent.click(getByTestId('checkbox'))
+  fireEvent.click(getByTestId('checkbox1'))
+  const icons = container.querySelectorAll('.nut-checkbox-icon-checked')
+  expect(icons.length).toBe(1)
 })
 
 test('Render checkboxs by configuring options', () => {
