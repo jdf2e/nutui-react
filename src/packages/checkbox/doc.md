@@ -35,13 +35,35 @@ const CheckBoxDemo = () => {
       <Checkbox
         style={{ marginRight: '8px' }}
         shape='button'
-        label='复选框'
+        label={
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <div>复选框</div>
+            <div style={{ color: 'gray' }}>描述信息</div>
+          </div>
+        }
         defaultChecked
       />
       <Checkbox
         style={{ marginRight: '8px' }}
         shape='button'
-        label='复选框'
+        label={
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <div>复选框</div>
+            <div style={{ color: 'gray' }}>描述信息</div>
+          </div>
+        }
         activeIcon={
           <Checklist className="nut-checkbox-button-icon-checked" />
         }
@@ -51,7 +73,18 @@ const CheckBoxDemo = () => {
         style={{ marginRight: '8px' }}
         shape='button'
         className='test'
-        label='复选框'
+        label={
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <div>复选框</div>
+            <div style={{ color: 'gray' }}>描述信息</div>
+          </div>
+        }
         defaultChecked={false}
       />
     </Cell>

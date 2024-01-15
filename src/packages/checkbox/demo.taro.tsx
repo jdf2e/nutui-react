@@ -24,6 +24,7 @@ interface T {
   reverse: string
   selected: string
   options1: string
+  description: string
   Disabled: string
   selectAndCancel: string
   selectAll: string
@@ -53,6 +54,7 @@ const CheckboxDemo = () => {
       cancel: '取消',
       selected: '选中',
       options1: '选项',
+      description: '描述信息',
       Disabled: '禁用',
       selectAndCancel: '全选和取消',
       selectAll: '全选',
@@ -80,6 +82,7 @@ const CheckboxDemo = () => {
       cancel: '取消',
       selected: '您選取了x',
       options1: '選項',
+      description: '描述信息',
       Disabled: '禁用',
       selectAndCancel: '全選和取消',
       selectAll: '全選',
@@ -107,6 +110,7 @@ const CheckboxDemo = () => {
       cancel: 'Cancel',
       selected: 'You selected x',
       options1: 'Options',
+      description: 'Description',
       Disabled: 'Disabled',
       selectAndCancel: 'All Select and Cancel',
       selectAll: 'Select All',
@@ -164,7 +168,18 @@ const CheckboxDemo = () => {
             style={{ marginRight: '8px' }}
             shape="button"
             className="test"
-            label={translated.checkbox}
+            label={
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <div>{translated.checkbox}</div>
+                <div style={{ color: 'gray' }}>{translated.description}</div>
+              </div>
+            }
             defaultChecked={!checked}
           />
           <Checkbox
@@ -174,14 +189,36 @@ const CheckboxDemo = () => {
               <Checklist className="nut-checkbox-button-icon-checked" />
             }
             className="test"
-            label={translated.checkbox}
+            label={
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <div>{translated.checkbox}</div>
+                <div style={{ color: 'gray' }}>{translated.description}</div>
+              </div>
+            }
             defaultChecked={checked}
           />
           <Checkbox
             shape="button"
             className="test"
             disabled
-            label={translated.checkbox}
+            label={
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <div>{translated.checkbox}</div>
+                <div>{translated.description}</div>
+              </div>
+            }
             defaultChecked={checked}
           />
         </Cell>

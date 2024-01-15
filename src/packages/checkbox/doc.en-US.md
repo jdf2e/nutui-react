@@ -35,13 +35,35 @@ const CheckBoxDemo = () => {
       <Checkbox
         style={{ marginRight: '8px' }}
         shape='button'
-        label='Option'
+        label={
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <div>Option</div>
+            <div style={{ color: 'gray' }}>Description</div>
+          </div>
+        }
         defaultChecked
       />
       <Checkbox
         style={{ marginRight: '8px' }}
         shape='button'
-        label='Option'
+        label={
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <div>Option</div>
+            <div style={{ color: 'gray' }}>Description</div>
+          </div>
+        }
         activeIcon={
           <Checklist className="nut-checkbox-button-icon-checked" />
         }
@@ -51,7 +73,18 @@ const CheckBoxDemo = () => {
         style={{ marginRight: '8px' }}
         shape='button'
         className='test'
-        label='Option'
+        label={
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <div>Option</div>
+            <div style={{ color: 'gray' }}>Description</div>
+          </div>
+        }
         defaultChecked={false}
       />
     </Cell>

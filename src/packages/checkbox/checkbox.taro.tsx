@@ -1,5 +1,6 @@
 import React, {
   FunctionComponent,
+  ReactNode,
   useContext,
   useEffect,
   useState,
@@ -19,12 +20,12 @@ export interface CheckboxProps extends BasicComponent {
   defaultChecked: boolean
   shape: CheckboxShape
   labelPosition: 'left' | 'right'
-  icon: React.ReactNode
-  activeIcon: React.ReactNode
-  indeterminateIcon: React.ReactNode
+  icon: ReactNode
+  activeIcon: ReactNode
+  indeterminateIcon: ReactNode
   value: string | number
   indeterminate: boolean
-  label: string | number
+  label: ReactNode
   onChange: (value: boolean) => void
 }
 
