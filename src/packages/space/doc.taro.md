@@ -123,23 +123,17 @@ import { Space, Button } from '@nutui/nutui-react-taro';
 const App = () => {
   return (
     <Space justify="start" wrap>
-      <>
-        <Button>按钮1</Button>
-      </>
-      <>
-        <Space direction="vertical">
-          <Button block>按钮2</Button>
-          <Button block>按钮2</Button>
-        </Space>
-      </>
-      <>
-        <Space direction="vertical">
-          <Button block>按钮3</Button>
-          <Button block>按钮3</Button>
-          <Button block>按钮3</Button>
-        </Space>
-      </>
-    </Space>   
+      <Button>按钮1</Button>
+      <div>
+        <Button block>按钮2</Button>
+        <Button block>按钮2</Button>
+      </div>
+      <div>
+        <Button block>按钮3</Button>
+        <Button block>按钮3</Button>
+        <Button block>按钮3</Button>
+      </div>
+    </Space> 
   );
 };
 export default App;
@@ -157,23 +151,17 @@ import { Space, Button } from '@nutui/nutui-react-taro';
 const App = () => {
   return (
     <Space align="end" wrap>
-      <>
-        <Button block>按钮1</Button>
-      </>
-      <>
-        <Space direction="vertical">
-          <Button block>按钮2</Button>
-          <Button block>按钮2</Button>
-        </Space>
-      </>
-      <>
-        <Space direction="vertical">
-          <Button block>按钮3</Button>
-          <Button block>按钮3</Button>
-          <Button block>按钮3</Button>
-        </Space>
-      </>
-    </Space> 
+      <Button>按钮1</Button>
+      <div>
+        <Button block>按钮2</Button>
+        <Button block>按钮2</Button>
+      </div>
+      <div>
+        <Button block>按钮3</Button>
+        <Button block>按钮3</Button>
+        <Button block>按钮3</Button>
+      </div>
+    </Space>
   );
 };
 export default App;

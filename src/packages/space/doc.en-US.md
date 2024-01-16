@@ -112,6 +112,8 @@ export default App;
 
 ```
 
+:::
+
 ### MainAxis alignment
 
 :::demo
@@ -123,28 +125,24 @@ import { Space, Button } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Space justify="start" wrap>
-      <>
-        <Button>button1</Button>
-      </>
-      <>
-        <Space direction="vertical">
-          <Button block>button2</Button>
-          <Button block>button2</Button>
-        </Space>
-      </>
-      <>
-        <Space direction="vertical">
-          <Button block>button3</Button>
-          <Button block>button3</Button>
-          <Button block>button3</Button>
-        </Space>
-      </>
-    </Space>   
+      <Button>button1</Button>
+      <div>
+        <Button block>button2</Button>
+        <Button block>button2</Button>
+      </div>
+      <div>
+        <Button block>button3</Button>
+        <Button block>button3</Button>
+        <Button block>button3</Button>
+      </div>
+    </Space> 
   );
 };
 export default App;
 
 ```
+
+:::
 
 ### CrossAxis alignment
 
@@ -157,23 +155,17 @@ import { Space, Button } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Space align="end" wrap>
-      <>
-        <Button block>button1</Button>
-      </>
-      <>
-        <Space direction="vertical">
-          <Button block>button2</Button>
-          <Button block>button2</Button>
-        </Space>
-      </>
-      <>
-        <Space direction="vertical">
-          <Button block>button3</Button>
-          <Button block>button3</Button>
-          <Button block>button3</Button>
-        </Space>
-      </>
-    </Space> 
+      <Button>button1</Button>
+      <div>
+        <Button block>button2</Button>
+        <Button block>button2</Button>
+      </div>
+      <div>
+        <Button block>button3</Button>
+        <Button block>button3</Button>
+        <Button block>button3</Button>
+      </div>
+    </Space>
   );
 };
 export default App;

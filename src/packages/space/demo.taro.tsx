@@ -79,30 +79,30 @@ const SpaceDemo = () => {
         <h2>{translated.basic}</h2>
         <Cell>
           <Space>
-            <Button>按钮1</Button>
-            <Button>按钮2</Button>
-            <Button>按钮3</Button>
+            <Button>{translated.button1}</Button>
+            <Button>{translated.button2}</Button>
+            <Button>{translated.button3}</Button>
           </Space>
         </Cell>
 
         <h2>{translated.wrap}</h2>
         <Cell>
           <Space wrap>
-            <Button>按钮1</Button>
-            <Button>按钮2</Button>
-            <Button>按钮3</Button>
-            <Button>按钮4</Button>
-            <Button>按钮5</Button>
-            <Button>按钮6</Button>
+            <Button>{translated.button1}</Button>
+            <Button>{translated.button2}</Button>
+            <Button>{translated.button3}</Button>
+            <Button>{translated.button4}</Button>
+            <Button>{translated.button5}</Button>
+            <Button>{translated.button6}</Button>
           </Space>
         </Cell>
 
         <h2>{translated.direction}</h2>
         <Cell>
           <Space direction="vertical">
-            <Button>按钮1</Button>
-            <Button>按钮2</Button>
-            <Button>按钮3</Button>
+            <Button>{translated.button1}</Button>
+            <Button>{translated.button2}</Button>
+            <Button>{translated.button3}</Button>
           </Space>
         </Cell>
 
@@ -114,55 +114,42 @@ const SpaceDemo = () => {
             }}
           >
             <Space>
-              <Button>按钮1</Button>
-              <Button>按钮2</Button>
-              <Button>按钮3</Button>
+              <Button>{translated.button1}</Button>
+              <Button>{translated.button2}</Button>
+              <Button>{translated.button3}</Button>
             </Space>
           </ConfigProvider>
         </Cell>
 
         <h2>{translated.mainAxisAlign}</h2>
-
         <Cell style={{ display: 'block' }}>
           <Space justify="start" wrap>
-            <>
-              <Button>{translated.button1}</Button>
-            </>
-            <>
-              <Space direction="vertical">
-                <Button block>{translated.button2}</Button>
-                <Button block>{translated.button2}</Button>
-              </Space>
-            </>
-            <>
-              <Space direction="vertical">
-                <Button block>{translated.button3}</Button>
-                <Button block>{translated.button3}</Button>
-                <Button block>{translated.button3}</Button>
-              </Space>
-            </>
+            <Button>{translated.button1}</Button>
+            <div>
+              <Button block>{translated.button2}</Button>
+              <Button block>{translated.button2}</Button>
+            </div>
+            <div>
+              <Button block>{translated.button3}</Button>
+              <Button block>{translated.button3}</Button>
+              <Button block>{translated.button3}</Button>
+            </div>
           </Space>
         </Cell>
 
         <h2>{translated.crossAxisAlign}</h2>
         <Cell>
           <Space align="end" wrap>
-            <>
-              <Button block>{translated.button1}</Button>
-            </>
-            <>
-              <Space direction="vertical">
-                <Button block>{translated.button2}</Button>
-                <Button block>{translated.button2}</Button>
-              </Space>
-            </>
-            <>
-              <Space direction="vertical">
-                <Button block>{translated.button3}</Button>
-                <Button block>{translated.button3}</Button>
-                <Button block>{translated.button3}</Button>
-              </Space>
-            </>
+            <Button>{translated.button1}</Button>
+            <div>
+              <Button block>{translated.button2}</Button>
+              <Button block>{translated.button2}</Button>
+            </div>
+            <div>
+              <Button block>{translated.button3}</Button>
+              <Button block>{translated.button3}</Button>
+              <Button block>{translated.button3}</Button>
+            </div>
           </Space>
         </Cell>
       </div>
