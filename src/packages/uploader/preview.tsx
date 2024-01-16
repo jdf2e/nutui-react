@@ -30,7 +30,7 @@ export const Preview: React.FunctionComponent<any> = ({
               className={`nut-uploader-preview ${previewType}`}
               key={item.uid}
             >
-              {previewType === 'picture' && deletable && (
+              {previewType === 'picture' && !children && deletable && (
                 <Failure
                   color="rgba(0,0,0,0.6)"
                   className="close"

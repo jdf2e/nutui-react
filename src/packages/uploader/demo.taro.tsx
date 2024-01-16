@@ -25,7 +25,6 @@ interface T {
   uploadProgressAction: string
   '84aa6bce': string
   uploadListDefault: string
-  uploadListShow: string
   uploadDefaultProgress: string
   a4afedb5: string
   '37c65f47': string
@@ -46,7 +45,7 @@ interface T {
 const UploaderDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      '6114cef1': '文件文件文件文件1.png',
+      '6114cef1': '文件文件文件文件1文件文件文件文件1文件文件文件文件1.png',
       '844759c9': '上传成功',
       df9128ec: '文件2.png',
       '219481a6': '上传失败',
@@ -58,7 +57,6 @@ const UploaderDemo = () => {
       uploadProgressAction: 'progress事件触发',
       '84aa6bce': '基础用法',
       uploadListDefault: '基础用法-上传列表展示',
-      uploadListShow: '自定义上传按钮',
       uploadDefaultProgress: '自定义上传使用默认进度条',
       a4afedb5: '上传状态',
       '37c65f47': '自定义上传样式',
@@ -88,7 +86,6 @@ const UploaderDemo = () => {
       uploadProgressAction: 'progress事件觸發',
       '84aa6bce': '基础用法',
       uploadListDefault: '基础用法-上傳列表展示',
-      uploadListShow: '自定義上傳按钮',
       uploadDefaultProgress: '自定義上傳使用默認進度條',
       a4afedb5: '上傳狀態',
       '37c65f47': '自定義上傳樣式',
@@ -118,7 +115,6 @@ const UploaderDemo = () => {
       uploadProgressAction: 'The progress event is triggered',
       '84aa6bce': 'Basic usage',
       uploadListDefault: 'Basic usage - upload list dispaly',
-      uploadListShow: 'Custom Upload Area',
       uploadDefaultProgress: 'Custom upload uses default progress bar',
       a4afedb5: 'Upload status',
       '37c65f47': 'Customize the upload style',
@@ -290,7 +286,7 @@ const UploaderDemo = () => {
           uploadIcon={<Dongdong />}
         />
 
-        <h2>{translated.uploadListShow}</h2>
+        <h2>{translated.uploadListDefault}</h2>
         <Uploader
           url={uploadUrl}
           defaultValue={defaultFileList}
@@ -298,13 +294,6 @@ const UploaderDemo = () => {
           multiple
           previewType="list"
         >
-          <Button type="success" size="small">
-            {translated.bb5caa9c}
-          </Button>
-        </Uploader>
-
-        <h2>{translated['37c65f47']}</h2>
-        <Uploader url={uploadUrl}>
           <Button type="success" size="small">
             {translated.bb5caa9c}
           </Button>
@@ -335,7 +324,7 @@ const UploaderDemo = () => {
         />
 
         <h2>{translated['0e5eaea3']}</h2>
-        <Uploader url={uploadUrl} maxCount="5" multiple />
+        <Uploader url={uploadUrl} multiple maxCount="5" />
 
         <h2>{translated.b7454181}</h2>
         <Uploader
