@@ -179,6 +179,21 @@ const App = () => {
       >
         如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
       </Dialog>
+      <Cell
+        title="顶部带关闭按钮"
+        onClick={() => {
+          setVisible7(true)
+        }}
+      />
+      <Dialog
+        className="test-dialog"
+        title="顶部带关闭按钮"
+        visible={visible8}
+        onConfirm={() => setVisible8(false)}
+        onCancel={() => setVisible8(false)}
+      >
+        如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
+      </Dialog>
     </>
   )
 }
@@ -214,6 +229,9 @@ export default App;
 | onClose | 关闭回调，任何情况关闭弹窗都会触发 | `() => void` | `-` |
 | onClick | 点击自身回调 | `() => void` | `-` |
 | onOverlayClick | 点击蒙层触发 | `() => void` | `-` |
+| closeable | 是否显示关闭按钮 | `boolean` | `false` |
+| closeIconPosition | 关闭按钮位置 | `top-left` \| `top-right` | `top-right` |
+| closeIcon | 自定义关闭按钮 | `ReactNode` | `close` |
 
 对于**指令式**创建出来的 Dialog，**并不会感知父组件的重渲染和其中 state 的更新**，因此下面这种写法是错误的：
 
@@ -268,3 +286,10 @@ export default function App() {
 | \--nutui-dialog-footer-cancel-margin-right | 对话框取消按钮的margin-right | `12px` |
 | \--nutui-dialog-footer-ok-max-width | 对话框确认按钮的最大宽度 | `128px` |
 | \--nutui-dialog-vertical-footer-ok-margin-top | 对话框底部按钮纵向排布时的margin值 | `5px` |
+| \--nutui-dialog-close-width | 对话框关闭按钮的宽度 | `18px` |
+| \--nutui-dialog-close-height | 对话框关闭按钮的高度 | `18px` |
+| \--nutui-dialog-close-color | 对话框关闭按钮的颜色 | `#8c8c8c` |
+| \--nutui-dialog-close-top | 对话框关闭按钮的top值 | `16px` |
+| \--nutui-dialog-close-left | 对话框关闭按钮的left值 | `16px` |
+| \--nutui-dialog-close-right | 对话框关闭按钮的right值 | `16px` |
+

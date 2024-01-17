@@ -1,6 +1,7 @@
 import React, { ForwardRefRenderFunction, forwardRef } from 'react'
 import type { MouseEvent } from 'react'
 import classNames from 'classnames'
+import { Close } from '@nutui/icons-react'
 import Button from '@/packages/button'
 import confirm from './confirm'
 import { DialogWrap } from './dialogwrap'
@@ -25,6 +26,9 @@ const defaultProps = {
   disableConfirmButton: false,
   footerDirection: 'horizontal',
   lockScroll: true,
+  closeable: false,
+  closeIconPosition: 'top-right',
+  closeIcon: null,
   beforeCancel: () => true,
   beforeClose: () => true,
 } as DialogProps
@@ -44,6 +48,9 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
     closeOnOverlayClick,
     confirmText,
     cancelText,
+    closeable,
+    closeIconPosition,
+    closeIcon,
     onClose,
     onCancel,
     onConfirm,
@@ -99,6 +106,26 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
     )
   }
 
+  const renderCloseIcon = () => {
+    if (!closeable) return null
+    const handleCancel = () => {
+      if (!beforeCancel?.()) return
+      if (!beforeClose?.()) return
+      onClose?.()
+      onCancel?.()
+    }
+    console.log(closeIconPosition, closeIcon, 'closeIcon')
+    const closeClasses = classNames({
+      [`${classPrefix}-close`]: true,
+      [`${classPrefix}-close-${closeIconPosition}`]: true,
+    })
+    return (
+      <div className={closeClasses} onClick={handleCancel}>
+        {React.isValidElement(closeIcon) ? closeIcon : <Close />}
+      </div>
+    )
+  }
+
   return (
     <div style={{ display: visible ? 'block' : 'none' }}>
       <DialogWrap
@@ -106,6 +133,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
         visible={visible}
         lockScroll={lockScroll}
         footer={renderFooter()}
+        close={renderCloseIcon()}
         onClose={onClose}
         onCancel={onCancel}
       />

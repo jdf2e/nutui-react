@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Heart } from '@nutui/icons-react'
 import { Dialog } from './dialog'
 import Cell from '../cell'
 import { useTranslate } from '@/sites/assets/locale'
@@ -21,6 +22,8 @@ interface T {
   confirmText: string
   cancelText: string
   header: string
+  closeable: string
+  customClose: string
 }
 
 const DialogDemo = () => {
@@ -42,6 +45,8 @@ const DialogDemo = () => {
       confirmText: '确定',
       cancelText: '取消',
       header: '顶部带插图',
+      closeable: '顶部带关闭按钮',
+      customClose: '自定义顶部关闭按钮',
     },
     'en-US': {
       funUse: 'Function use',
@@ -61,6 +66,8 @@ const DialogDemo = () => {
       confirmText: 'confirm',
       cancelText: 'cancel',
       header: 'Top with illustration',
+      closeable: 'Top with close button',
+      customClose: 'Customize the top close button',
     },
   })
 
@@ -71,6 +78,9 @@ const DialogDemo = () => {
   const [visible5, setVisible5] = useState(false)
   const [visible6, setVisible6] = useState(false)
   const [visible7, setVisible7] = useState(false)
+  const [visible8, setVisible8] = useState(false)
+  const [visible9, setVisible9] = useState(false)
+  const [visible10, setVisible10] = useState(false)
 
   return (
     <>
@@ -261,6 +271,45 @@ const DialogDemo = () => {
           }
           onConfirm={() => setVisible7(false)}
           onCancel={() => setVisible7(false)}
+        >
+          {translated.content}
+        </Dialog>
+        <Cell
+          title={translated.closeable}
+          onClick={() => {
+            setVisible8(true)
+          }}
+        />
+        <Dialog
+          className="test-dialog"
+          title={translated.closeable}
+          visible={visible8}
+          closeable
+          onConfirm={() => setVisible8(false)}
+          onCancel={() => setVisible8(false)}
+        >
+          {translated.content}
+        </Dialog>
+        <Cell
+          title={translated.customClose}
+          onClick={() => {
+            setVisible9(true)
+          }}
+        />
+        <Dialog
+          className="test-dialog"
+          title={translated.customClose}
+          visible={visible9}
+          closeable
+          closeIcon={<Heart width="16px" height="16px" />}
+          closeIconPosition="top-left"
+          onConfirm={() => setVisible9(false)}
+          onCancel={() => setVisible9(false)}
+          style={{
+            '--nutui-dialog-close-top': '10px',
+            '--nutui-dialog-close-left': '10px',
+            '--nutui-dialog-close-color': 'red',
+          }}
         >
           {translated.content}
         </Dialog>
