@@ -2,7 +2,7 @@
 
 ## 介紹
 
-用於展示基礎錶格
+用於展示基礎表格
 
 ## 安裝
 
@@ -53,7 +53,7 @@ const App = () => {
       },
     },
     {
-      title: '學歴',
+      title: '學歷',
       key: 'record',
     },
   ])
@@ -111,7 +111,7 @@ const App = () => {
       key: 'sex',
     },
     {
-      title: '學歴',
+      title: '學歷',
       key: 'record',
     },
   ])
@@ -179,7 +179,7 @@ const App = () => {
       },
     },
     {
-      title: '學歴',
+      title: '學歷',
       key: 'record',
     },
   ])
@@ -247,7 +247,7 @@ const App = () => {
       },
     },
     {
-      title: '學歴',
+      title: '學歷',
       key: 'record',
     },
   ])
@@ -281,7 +281,7 @@ export default App;
 
 :::
 
-### 隱藏錶頭
+### 隱藏表頭
 
 :::demo
 
@@ -315,7 +315,7 @@ const App = () => {
       },
     },
     {
-      title: '學歴',
+      title: '學歷',
       key: 'record',
     },
   ])
@@ -383,7 +383,7 @@ const App = () => {
       },
     },
     {
-      title: '學歴',
+      title: '學歷',
       key: 'record',
     },
   ])
@@ -427,7 +427,7 @@ const App = () => {
       key: 'sex',
     },
     {
-      title: '學歴',
+      title: '學歷',
       key: 'record',
     },
     {
@@ -531,7 +531,7 @@ const App = () => {
       },
     },
     {
-      title: '學歴',
+      title: '學歷',
       key: 'record',
     },
   ])
@@ -589,7 +589,7 @@ const App = () => {
       key: 'sex',
     },
     {
-      title: '學歴',
+      title: '學歷',
       key: 'record',
     },
     {
@@ -660,7 +660,7 @@ const App = () => {
       key: 'sex',
     },
     {
-      title: '學歴',
+      title: '學歷',
       key: 'record',
     },
     {
@@ -689,10 +689,7 @@ export default App;
 
 :::
 
-
-:::
-
-### 固定錶頭
+### 固定表頭
 
 :::demo
 
@@ -705,7 +702,7 @@ const App = () => {
     {
       name: 'Tom',
       sex: '男',
-      record: '小学',
+      record: '小學',
       birthday: '2010-01-01',
       age: 10,
     },
@@ -733,7 +730,7 @@ const App = () => {
     {
       name: 'Frank',
       sex: '男',
-      record: '幼儿园',
+      record: '幼兒園',
       birthday: '2020-01-01',
       age: 3,
     },
@@ -746,11 +743,11 @@ const App = () => {
       align: 'center',
     },
     {
-      title: '性别',
+      title: '性別',
       key: 'sex',
     },
     {
-      title: '学历',
+      title: '學歷',
       key: 'record',
     },
     {
@@ -758,7 +755,7 @@ const App = () => {
       key: 'birthday',
     },
     {
-      title: '年龄',
+      title: '年齡',
       key: 'age',
     },
   ])
@@ -786,7 +783,7 @@ const App = () => {
     {
       name: 'Tom',
       sex: '男',
-      record: '小学',
+      record: '小學',
       birthday: '2010-01-01',
       age: 10,
     },
@@ -814,7 +811,7 @@ const App = () => {
     {
       name: 'Frank',
       sex: '男',
-      record: '幼儿园',
+      record: '幼兒園',
       birthday: '2020-01-01',
       age: 3,
     },
@@ -831,12 +828,12 @@ const App = () => {
       width: 100,
     },
     {
-      title: '性别',
+      title: '性別',
       key: 'sex',
       width: 60,
     },
     {
-      title: '学历',
+      title: '學歷',
       key: 'record',
       width: 100,
     },
@@ -846,9 +843,9 @@ const App = () => {
       width: 100,
     },
     {
-      title: '年龄',
+      title: '年齡',
       key: 'age',
-      width: 100,
+      width: 60,
     },
   ])
 
@@ -872,7 +869,7 @@ const App = () => {
     {
       name: 'Tom',
       sex: '男',
-      record: '小学',
+      record: '小學',
       birthday: '2010-01-01',
       age: 10,
     },
@@ -900,7 +897,7 @@ const App = () => {
     {
       name: 'Frank',
       sex: '男',
-      record: '幼儿园',
+      record: '幼兒園',
       birthday: '2020-01-01',
       age: 3,
     },
@@ -916,12 +913,12 @@ const App = () => {
       width: 100,
     },
     {
-      title: '性别',
+      title: '性別',
       key: 'sex',
       width: 60,
     },
     {
-      title: '学历',
+      title: '學歷',
       key: 'record',
       width: 100,
     },
@@ -931,17 +928,10 @@ const App = () => {
       width: 100,
     },
     {
-      title: '年龄',
+      title: '年齡',
       key: 'age',
       fixed: 'right',
-      width: 100,
-      render: () => {
-        return (
-          <Button type="primary" size="mini">
-            操作
-          </Button>
-        )
-      },
+      width: 60
     },
   ])
 
@@ -959,11 +949,11 @@ export default App;
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | bordered | 是否顯示邊框 | `boolean` | `true` |
-| columns | 錶頭數據 | `TableColumnProps[]` | `[]` |
-| data | 錶格數據 | `Object[]` | `[]` |
+| columns | 表頭數據 | `TableColumnProps[]` | `[]` |
+| data | 表格數據 | `Object[]` | `[]` |
 | summary | 是否顯示簡介 | `ReactNode` | `-` |
 | striped | 條紋是否明暗交替 | `boolean` | `false` |
-| showHeader | 是否顯示錶頭 | `boolean` | `true` |
+| showHeader | 是否顯示表頭 | `boolean` | `true` |
 | noData | 自定義無數據 | `ReactNode` | `-` |
 | onSort | 點擊排序按鈕觸發 | `item: TableColumnProps, data: Array<any>` | `-` |
 
@@ -972,16 +962,15 @@ export default App;
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | key | 列的唯一標識 | `string` | `-` |
-| title | 錶頭標題 | `string` | `-` |
+| title | 表頭標題 | `string` | `-` |
 | align | 列的對齊方式 | `left` \| `center` \| `right` | `left` |
-| sorter | 排序，可選值有 true,function, default, 其中 default錶示點擊之後可能會依賴接口, function可以返回具體的排序函數, default錶示採用默認的排序算法 | `boolean` \| `Function` \| `string` | `-` |
+| sorter | 排序，可選值有 true,function, default, 其中 default表示點擊之後可能會依賴接口, function可以返回具體的排序函數, default表示采用默認的排序算法 | `boolean` \| `Function` \| `string` | `-` |
 | render | 自定義渲染列數據，優先級高 | `Function(record)` | `-` |
 | sorterIcon | 排序 icon | `ReactNode` | `<ArrowDown />` |
 | width | 列寬度 | `number` | `auto` |
 | fixed | 固定位置 | `left` \| `right`  | `-` |
 
-
-## 主題定制
+## 主題定製
 
 ### 樣式變量
 
@@ -989,9 +978,9 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-table-border-color | 錶格的邊框色值 | `#ececec` |
-| \--nutui-table-cols-padding | 錶格列的padding值 | `10px` |
-| \--nutui-table-tr-even-background-color | 錶格偶數行的背景色 | `$color-background` |
-| \--nutui-table-tr-odd-background-color | 錶格奇數行的背景色 | `$white` |
-| \--nutui-table-sticky-left-shadow | 錶格左側固定陰影 | `4px 0 8px 0 rgba(0, 0, 0, 0.1)` |
-| \--nutui-table-sticky-right-shadow | 錶格右側固定陰影 | `-4px 0 8px 0 rgba(0, 0, 0, 0.1)` |
+| \--nutui-table-border-color | 表格的邊框色值 | `#ececec` |
+| \--nutui-table-cols-padding | 表格列的padding值 | `10px` |
+| \--nutui-table-tr-even-background-color | 表格偶數行的背景色 | `$color-background` |
+| \--nutui-table-tr-odd-background-color | 表格奇數行的背景色 | `$white` |
+| \--nutui-table-sticky-left-shadow | 表格左側固定陰影 | `4px 0 8px 0 rgba(0, 0, 0, 0.1)` |
+| \--nutui-table-sticky-right-shadow | 表格右側固定陰影 | `-4px 0 8px 0 rgba(0, 0, 0, 0.1)` |

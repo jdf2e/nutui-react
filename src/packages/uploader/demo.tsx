@@ -26,7 +26,6 @@ interface T {
   uploadProgressAction: string
   '84aa6bce': string
   uploadListDefault: string
-  uploadListShow: string
   uploadDefaultProgress: string
   a4afedb5: string
   bb5caa9c: string
@@ -45,7 +44,7 @@ interface T {
 const UploaderDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      '6114cef1': '文件文件文件文件1.png',
+      '6114cef1': '文件文件文件文件1文件文件文件文件1文件文件文件文件1.png',
       '844759c9': '上传成功',
       df9128ec: '文件2.png',
       '219481a6': '上传失败',
@@ -57,7 +56,6 @@ const UploaderDemo = () => {
       uploadProgressAction: 'progress事件触发',
       '84aa6bce': '基础用法',
       uploadListDefault: '基础用法-上传列表展示',
-      uploadListShow: '基础用法-上传列表展示',
       uploadDefaultProgress: '自定义上传使用默认进度条',
       a4afedb5: '上传状态',
       bb5caa9c: '上传文件',
@@ -85,7 +83,6 @@ const UploaderDemo = () => {
       uploadProgressAction: 'progress事件觸發',
       '84aa6bce': '基础用法',
       uploadListDefault: '基础用法-上傳列表展示',
-      uploadListShow: '自定義上傳按钮',
       uploadDefaultProgress: '自定義上傳使用默認進度條',
       a4afedb5: '上傳狀態',
       bb5caa9c: '上傳檔',
@@ -113,7 +110,6 @@ const UploaderDemo = () => {
       uploadProgressAction: 'The progress event is triggered',
       '84aa6bce': 'Basic usage',
       uploadListDefault: 'Basic usage - upload list dispaly',
-      uploadListShow: 'Custom Upload Area',
       uploadDefaultProgress: 'Custom upload uses default progress bar',
       a4afedb5: 'Upload status',
       bb5caa9c: 'Upload the file',
@@ -295,7 +291,7 @@ const UploaderDemo = () => {
           uploadIcon={<Dongdong />}
         />
 
-        <h2>{translated.uploadListShow}</h2>
+        <h2>{translated.uploadListDefault}</h2>
         <Uploader
           url={uploadUrl}
           defaultValue={defaultFileList}

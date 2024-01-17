@@ -154,7 +154,14 @@ export const Table: FunctionComponent<
 
   return (
     <div className={cls} {...rest}>
-      <div className={classNames(`${classPrefix}-wrapper`)} style={style}>
+      <div
+        className={classNames(
+          `${classPrefix}-wrapper ${
+            isSticky ? `${classPrefix}-wrapper-sticky` : ''
+          }`
+        )}
+        style={style}
+      >
         <div
           className={classNames(`${classPrefix}-main`, {
             [`${classPrefix}-main-striped`]: striped,
