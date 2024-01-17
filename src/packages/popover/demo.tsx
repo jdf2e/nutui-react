@@ -17,6 +17,7 @@ import './demo.scss'
 interface T {
   [props: string]: string
 }
+
 interface List {
   key?: string
   name: string
@@ -231,7 +232,21 @@ const PopoverDemo = () => {
   const clickCustomHandle = () => {
     setCustomTarget(!customTarget)
   }
-
+  const [visiblePopover, setVisiblePopover] = useState(false)
+  const list = [
+    {
+      key: 'key1',
+      name: 'option1',
+    },
+    {
+      key: 'key2',
+      name: 'option2',
+    },
+    {
+      key: 'key3',
+      name: 'option3',
+    },
+  ]
   return (
     <>
       <div className="demo">
@@ -255,6 +270,32 @@ const PopoverDemo = () => {
             {translated.title}
           </Button>
         </Popover>
+        <h2>{translated.title}</h2>
+
+        <div
+          style={{
+            height: '200px',
+            overflowY: 'scroll',
+          }}
+        >
+          <div style={{ height: '100px' }} />
+          <Popover
+            visible={visiblePopover}
+            list={list}
+            location="top"
+            style={{ marginRight: '30px' }}
+            onClick={() => {
+              visiblePopover
+                ? setVisiblePopover(false)
+                : setVisiblePopover(true)
+            }}
+          >
+            <Button id="test" type="primary" shape="square">
+              置于可滚动容器中
+            </Button>
+          </Popover>
+          <div style={{ height: '100px' }} />
+        </div>
 
         <h2>{translated.title1}</h2>
         <Popover
