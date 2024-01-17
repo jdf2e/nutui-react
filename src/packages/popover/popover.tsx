@@ -116,7 +116,6 @@ export const Popover: FunctionComponent<
 
   useEffect(() => {
     setShowPopup(visible)
-    console.log(visible)
     if (visible) {
       setTimeout(() => {
         getContentWidth()
@@ -208,7 +207,6 @@ export const Popover: FunctionComponent<
       cross += +offset[1]
       parallel += +offset[0]
     }
-    console.log('rootPosition', direction, rootPosition)
     if (width) {
       if (['bottom', 'top'].includes(direction)) {
         const h =
@@ -242,7 +240,6 @@ export const Popover: FunctionComponent<
         }
       }
     }
-    console.log(styles)
     return styles
   }
 

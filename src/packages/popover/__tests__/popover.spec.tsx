@@ -44,7 +44,7 @@ test('render popover content', async () => {
       </Button>
     </Popover>
   )
-  const content = container.querySelectorAll('.nut-popover-content')[0]
+  const content = document.querySelectorAll('.nut-popover-content')[0]
   expect(content.className).toContain(
     'nut-popup-default nut-popover-content nut-popover-content-bottom'
   )
@@ -58,7 +58,7 @@ test('render popover position', async () => {
       </Button>
     </Popover>
   )
-  const content = container.querySelectorAll('.nut-popover-content')[0]
+  const content = document.querySelectorAll('.nut-popover-content')[0]
   expect(content.className).toContain(
     'nut-popup-default nut-popover-content nut-popover-content-bottom-start'
   )
@@ -72,7 +72,7 @@ test('render popover position2', async () => {
       </Button>
     </Popover>
   )
-  const content = container.querySelectorAll(
+  const content = document.querySelectorAll(
     '.nut-popover-arrow'
   )[0] as HTMLElement
   expect(content).toHaveAttribute('style', 'left: 36px;')
@@ -86,7 +86,7 @@ test('render popover position22', async () => {
       </Button>
     </Popover>
   )
-  const content = container.querySelectorAll(
+  const content = document.querySelectorAll(
     '.nut-popover-arrow'
   )[0] as HTMLElement
   expect(content).toHaveAttribute('style', 'left: calc(50% + 20px);')
@@ -100,7 +100,7 @@ test('render popover position3', async () => {
       </Button>
     </Popover>
   )
-  const content = container.querySelectorAll(
+  const content = document.querySelectorAll(
     '.nut-popover-arrow'
   )[0] as HTMLElement
   expect(content).toHaveAttribute('style', 'top: -4px;')
@@ -114,7 +114,7 @@ test('render popover position33', async () => {
       </Button>
     </Popover>
   )
-  const content = container.querySelectorAll(
+  const content = document.querySelectorAll(
     '.nut-popover-arrow'
   )[0] as HTMLElement
   expect(content).toHaveAttribute('style', 'top: calc(50% - 20px);')
@@ -129,7 +129,7 @@ test('should emit onchoose event when clicking the action', async () => {
       </Button>
     </Popover>
   )
-  const contentItem = container.querySelectorAll('.nut-popover-menu-item')[0]
+  const contentItem = document.querySelectorAll('.nut-popover-menu-item')[0]
   fireEvent.click(contentItem)
   await waitFor(() => expect(choose.mock.calls[0][0].name).toEqual('option1'))
   await waitFor(() => expect(choose.mock.calls[0][1]).toBe(0))
@@ -144,7 +144,7 @@ test('should not emit select event when the action is disabled', async () => {
       </Button>
     </Popover>
   )
-  const contentItem = container.querySelectorAll('.nut-popover-menu-item')[0]
+  const contentItem = document.querySelectorAll('.nut-popover-menu-item')[0]
   fireEvent.click(contentItem)
 
   await waitFor(() => expect(choose).not.toBeCalled())
