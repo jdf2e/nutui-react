@@ -207,7 +207,9 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
                 >
                   {activeType === 'line' && (
                     <div
-                      className={`${classPrefix}-titles-item-line`}
+                      className={classNames(`${classPrefix}-titles-item-line`, {
+                        [`${classPrefix}-titles-item-line-${direction}`]: true,
+                      })}
                       style={tabsActiveStyle}
                     />
                   )}
