@@ -281,7 +281,13 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
                   >
                     {activeType === 'line' && (
                       <View
-                        className={`${classPrefix}-titles-item-line`}
+                        className={classNames(
+                          `${classPrefix}-titles-item-line`,
+                          {
+                            [`${classPrefix}-titles-item-line-${direction}`]:
+                              true,
+                          }
+                        )}
                         style={tabsActiveStyle}
                       />
                     )}
