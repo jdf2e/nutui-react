@@ -118,9 +118,11 @@
 
       .nut-uploader-preview-img-file-name {
         display: flex;
+        align-items: center;
         -webkit-line-clamp: 1;
         padding: 2px;
         height: 24px;
+        @include text-ellipsis();
       }
 
       .nut-progress {
@@ -201,12 +203,8 @@
             color: #1890ff !important;
           }
 
-          .nut-icon-link {
-            &::before {
-              margin-left: -45%;
-              margin-top: -45%;
-              transform: none;
-            }
+          .nut-icon-Link {
+            flex-shrink: 0;
           }
 
           @include moreline-ellipsis();

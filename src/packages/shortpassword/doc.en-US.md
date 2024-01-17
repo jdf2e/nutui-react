@@ -42,6 +42,7 @@ const App = () => {
           setValue('')
         }}
         onChange={(value) => setValue(value)}
+        onComplete={() => setVisible(false)}
       />
       <NumberKeyboard
         visible={visible}
@@ -89,6 +90,7 @@ const App = () => {
           setValue('')
         }}
         onChange={(value) => setValue(value)}
+        onComplete={() => setVisible(false)}
       />
       <NumberKeyboard
         visible={visible}
@@ -145,6 +147,7 @@ const App = () => {
         onChange={(value) => setValue(value)}
         onConfirm={() => setVisible3(false)}
         onCancel={() => setVisible3(false)}
+        onComplete={() => setVisible(false)}
       />
       <NumberKeyboard
         visible={visible}
@@ -191,6 +194,7 @@ const App = () => {
           setValue('')
         }}
         onChange={(value) => setValue(value)}
+        onComplete={() => setVisible(false)}
         length={4}
       />
       <NumberKeyboard
@@ -242,6 +246,7 @@ const App = () => {
         }}
         onChange={(value) => setValue(value)}
         onTips={() => onTips()}
+        onComplete={() => setVisible(false)}
       />
       <NumberKeyboard
         visible={visible}
@@ -288,6 +293,7 @@ const App = () => {
           setValue('')
         }}
         onChange={(value) => setValue(value)}
+        onComplete={() => setVisible(false)}
         autoFocus
       />
       <NumberKeyboard

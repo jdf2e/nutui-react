@@ -42,6 +42,7 @@ const App = () => {
           setValue('')
         }}
         onChange={(value) => setValue(value)}
+        onComplete={() => setVisible(false)}
       />
       <NumberKeyboard
         visible={visible}
@@ -89,6 +90,7 @@ const App = () => {
           setValue('')
         }}
         onChange={(value) => setValue(value)}
+        onComplete={() => setVisible(false)}
       />
       <NumberKeyboard
         visible={visible}
@@ -145,6 +147,7 @@ const App = () => {
         onChange={(value) => setValue(value)}
         onConfirm={() => setVisible3(false)}
         onCancel={() => setVisible3(false)}
+        onComplete={() => setVisible(false)}
       />
       <NumberKeyboard
         visible={visible}
@@ -191,6 +194,7 @@ const App = () => {
           setValue('')
         }}
         onChange={(value) => setValue(value)}
+        onComplete={() => setVisible(false)}
         length={4}
       />
       <NumberKeyboard
@@ -241,6 +245,7 @@ const App = () => {
           setValue('')
         }}
         onChange={(value) => setValue(value)}
+        onComplete={() => setVisible(false)}
         onTips={() => onTips()}
       />
       <NumberKeyboard
@@ -288,6 +293,7 @@ const App = () => {
           setValue('')
         }}
         onChange={(value) => setValue(value)}
+        onComplete={() => setVisible(false)}
         autoFocus
       />
       <NumberKeyboard
@@ -329,7 +335,7 @@ export default App;
 | onComplete | 輸入完成的回調 | `(value) => void` | `-` |
 | onFocus | 輸入框聚焦 | `() => void` | `-` |
 
-## 主題定制
+## 主題定製
 
 ### 樣式變量
 
