@@ -17,6 +17,9 @@ interface T {
   e981579e: string
   f645fc65: string
   '43f00872': string
+  f645fc66: string
+  f645fc67: string
+  f645fc68: string
 }
 
 const AvatarDemo = () => {
@@ -31,6 +34,9 @@ const AvatarDemo = () => {
       e981579e: '头像组合展现',
       f645fc65: '组合头像可控制层级方向',
       '43f00872': '点击头像触发事件',
+      f645fc66: '列表展示',
+      f645fc67: '标题',
+      f645fc68: '描述信息',
     },
     'zh-TW': {
       b040e71e: '觸發點擊頭像',
@@ -42,6 +48,9 @@ const AvatarDemo = () => {
       e981579e: '頭像組合展現',
       f645fc65: '組合頭像可控制層級方向',
       '43f00872': '點擊頭像觸發事件',
+      f645fc66: '列表展示',
+      f645fc67: '標題',
+      f645fc68: '描述信息',
     },
     'en-US': {
       b040e71e: 'Trigger click on avatar',
@@ -54,6 +63,9 @@ const AvatarDemo = () => {
       e981579e: 'Avatar combination display',
       f645fc65: 'Combining avatars to control hierarchy direction',
       '43f00872': 'Click on the avatar to trigger the event',
+      f645fc66: 'list',
+      f645fc67: 'Title',
+      f645fc68: 'Description',
     },
   })
 
@@ -78,17 +90,7 @@ const AvatarDemo = () => {
             src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
           />
         </Cell>
-        <Cell>
-          <Avatar
-            size="normal"
-            style={{ marginRight: 0 }}
-            src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-          />
-          <div style={{ marginLeft: '10px' }}>
-            <div style={{ fontSize: '16px' }}>Title</div>
-            <div style={{ fontSize: '12px' }}>Description</div>
-          </div>
-        </Cell>
+
         <h2>{translated['3928b17e']}</h2>
         <Cell>
           <Avatar icon={<User />} shape="square" />
@@ -167,6 +169,18 @@ const AvatarDemo = () => {
         <h2>{translated['43f00872']}</h2>
         <Cell>
           <Avatar icon={<User />} onClick={activeAvatar} />
+        </Cell>
+        <h2>{translated.f645fc66}</h2>
+        <Cell>
+          <Avatar
+            size="normal"
+            style={{ marginRight: 0 }}
+            src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+          />
+          <div style={{ marginLeft: '10px' }}>
+            <div style={{ fontSize: '16px' }}>{translated.f645fc67}</div>
+            <div style={{ fontSize: '12px' }}>{translated.f645fc68}</div>
+          </div>
         </Cell>
       </div>
     </>
