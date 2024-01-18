@@ -121,7 +121,7 @@ const ButtonDemo = () => {
   return (
     <>
       <div className="demo">
-        <h2>{translated.ce5c5446}=</h2>
+        <h2>{translated.ce5c5446}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
           <Button
             className="aa"
