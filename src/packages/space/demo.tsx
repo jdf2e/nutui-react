@@ -121,12 +121,18 @@ const SpaceDemo = () => {
           <Space justify="start" wrap>
             <Button>{translated.button1}</Button>
             <div>
-              <Button block>{translated.button2}</Button>
+              <Button block style={{ marginBottom: 5 }}>
+                {translated.button2}
+              </Button>
               <Button block>{translated.button2}</Button>
             </div>
             <div>
-              <Button block>{translated.button3}</Button>
-              <Button block>{translated.button3}</Button>
+              <Button block style={{ marginBottom: 5 }}>
+                {translated.button3}
+              </Button>
+              <Button block style={{ marginBottom: 5 }}>
+                {translated.button3}
+              </Button>
               <Button block>{translated.button3}</Button>
             </div>
           </Space>
@@ -137,12 +143,18 @@ const SpaceDemo = () => {
           <Space align="end" wrap>
             <Button>{translated.button1}</Button>
             <div>
-              <Button block>{translated.button2}</Button>
+              <Button block style={{ marginBottom: 5 }}>
+                {translated.button2}
+              </Button>
               <Button block>{translated.button2}</Button>
             </div>
             <div>
-              <Button block>{translated.button3}</Button>
-              <Button block>{translated.button3}</Button>
+              <Button block style={{ marginBottom: 5 }}>
+                {translated.button3}
+              </Button>
+              <Button block style={{ marginBottom: 5 }}>
+                {translated.button3}
+              </Button>
               <Button block>{translated.button3}</Button>
             </div>
           </Space>

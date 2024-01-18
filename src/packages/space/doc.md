@@ -127,12 +127,12 @@ const App = () => {
     <Space justify="start" wrap>
       <Button>按钮1</Button>
       <div>
-        <Button block>按钮2</Button>
+        <Button block style={{ marginBottom: 5 }}>按钮2</Button>
         <Button block>按钮2</Button>
       </div>
       <div>
-        <Button block>按钮3</Button>
-        <Button block>按钮3</Button>
+        <Button block style={{ marginBottom: 5 }}>按钮3</Button>
+        <Button block style={{ marginBottom: 5 }}>按钮3</Button>
         <Button block>按钮3</Button>
       </div>
     </Space>
@@ -157,12 +157,12 @@ const App = () => {
     <Space align="end" wrap>
       <Button>按钮1</Button>
       <div>
-        <Button block>按钮2</Button>
+        <Button block style={{ marginBottom: 5 }}>按钮2</Button>
         <Button block>按钮2</Button>
       </div>
       <div>
-        <Button block>按钮3</Button>
-        <Button block>按钮3</Button>
+        <Button block style={{ marginBottom: 5 }}>按钮3</Button>
+        <Button block style={{ marginBottom: 5 }}>按钮3</Button>
         <Button block>按钮3</Button>
       </div>
     </Space> 
@@ -178,12 +178,12 @@ export default App;
 
 ### Props
 
-| 属性 | 说明                       | 类型                                                                  | 默认值                            |
-| --- |--------------------------|---------------------------------------------------------------------|--------------------------------|
-| direction | 间距方向                     | `vertical \|   horizontal`                                         | `horizontal` |
-| align | 交叉轴对齐方式                  | `start \| end \|center \| baseline`                                 | `-`                            |
-| justify | 主轴对齐方式                   | `start  \| end \| center \| between \| around \| evenly \| stretch` | `-`                            |
-| wrap | 是否自动换行，仅在 horizontal 时有效 | `boolean`                                                   | `false`                            |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| direction | 间距方向 | `'vertical'｜ 'horizontal'` | `'horizontal'` |
+| align | 交叉轴对齐方式 | `'start'｜'end'｜'center'｜'baseline'` | `-` |
+| justify | 主轴对齐方式 | `'start' ｜ 'end' ｜ 'center' ｜ 'between' ｜ 'around' ｜ 'evenly' ｜ 'stretch'` | `-` |
+| wrap | 是否自动换行，仅在 horizontal 时有效 | `boolean` | `false` |
 
 ## 主题定制
 

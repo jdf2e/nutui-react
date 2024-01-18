@@ -127,12 +127,12 @@ const App = () => {
     <Space justify="start" wrap>
       <Button>button1</Button>
       <div>
-        <Button block>button2</Button>
+        <Button block style={{ marginBottom: 5 }}>button2</Button>
         <Button block>button2</Button>
       </div>
       <div>
-        <Button block>button3</Button>
-        <Button block>button3</Button>
+        <Button block style={{ marginBottom: 5 }}>button3</Button>
+        <Button block style={{ marginBottom: 5 }}>button3</Button>
         <Button block>button3</Button>
       </div>
     </Space> 
@@ -157,12 +157,12 @@ const App = () => {
     <Space align="end" wrap>
       <Button>button1</Button>
       <div>
-        <Button block>button2</Button>
+        <Button block style={{ marginBottom: 5 }}>button2</Button>
         <Button block>button2</Button>
       </div>
       <div>
-        <Button block>button3</Button>
-        <Button block>button3</Button>
+        <Button block style={{ marginBottom: 5 }}>button3</Button>
+        <Button block style={{ marginBottom: 5 }}>button3</Button>
         <Button block>button3</Button>
       </div>
     </Space>
@@ -178,12 +178,12 @@ export default App;
 
 ### Props
 
-| Property | Description                  | Type                                                               | Default                                                          |
-| --- |------------------------------|--------------------------------------------------------------------|------------------------------------------------------------------|
-| direction | space direction              | `vertical \| horizontal`                                           | `horizontal`                                                   |
-| align | space align                  | `start \| end \|center \| baseline`                                | `-`                                                              |
-| justify | space justify                | `start \| end \| center \| between \| around \| evenly \| stretch` | `-` |
-| wrap | space wrap，Only valid when horizontal | `boolean`                                                  | `false`                                                              |
+| Property | Description | Type | Default |
+| --- | --- | --- | --- |
+| direction | space direction | `vertical \| horizontal` | `horizontal` |
+| align | space align | `start \| end \|center \| baseline` | `-` |
+| justify | space justify | `start \| end \| center \| between \| around \| evenly \| stretch` | `-` |
+| wrap | space wrap，Only valid when horizontal | `boolean` | `false` |
 
 ## Theming
 
