@@ -118,19 +118,45 @@ const SpaceDemo = () => {
         <h2>{translated.mainAxisAlign}</h2>
 
         <Cell style={{ display: 'block' }}>
-          <Space justify="center" wrap>
-            <Button style={{ height: '30px' }}>{translated.button1}</Button>
-            <Button style={{ height: '60px' }}>{translated.button2}</Button>
-            <Button style={{ height: '90px' }}>{translated.button3}</Button>
+          <Space justify="start" wrap>
+            <Button>{translated.button1}</Button>
+            <div>
+              <Button block style={{ marginBottom: 5 }}>
+                {translated.button2}
+              </Button>
+              <Button block>{translated.button2}</Button>
+            </div>
+            <div>
+              <Button block style={{ marginBottom: 5 }}>
+                {translated.button3}
+              </Button>
+              <Button block style={{ marginBottom: 5 }}>
+                {translated.button3}
+              </Button>
+              <Button block>{translated.button3}</Button>
+            </div>
           </Space>
         </Cell>
 
         <h2>{translated.crossAxisAlign}</h2>
         <Cell>
           <Space align="end" wrap>
-            <Button style={{ height: '30px' }}>{translated.button1}</Button>
-            <Button style={{ height: '60px' }}>{translated.button2}</Button>
-            <Button style={{ height: '90px' }}>{translated.button3}</Button>
+            <Button>{translated.button1}</Button>
+            <div>
+              <Button block style={{ marginBottom: 5 }}>
+                {translated.button2}
+              </Button>
+              <Button block>{translated.button2}</Button>
+            </div>
+            <div>
+              <Button block style={{ marginBottom: 5 }}>
+                {translated.button3}
+              </Button>
+              <Button block style={{ marginBottom: 5 }}>
+                {translated.button3}
+              </Button>
+              <Button block>{translated.button3}</Button>
+            </div>
           </Space>
         </Cell>
       </div>

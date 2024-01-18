@@ -112,6 +112,8 @@ export default App;
 
 ```
 
+:::
+
 ### 主軸對齊方式
 
 :::demo
@@ -122,16 +124,25 @@ import { Space, Button } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Space justify="center" wrap>
-      <Button style={{ height: '30px' }}>按钮1</Button>
-      <Button style={{ height: '60px' }}>按钮2</Button>
-      <Button style={{ height: '90px' }}>按钮3</Button>
-    </Space>    
+    <Space justify="start" wrap>
+      <Button>按钮1</Button>
+      <div>
+        <Button block style={{ marginBottom: 5 }}>按钮2</Button>
+        <Button block>按钮2</Button>
+      </div>
+      <div>
+        <Button block style={{ marginBottom: 5 }}>按钮3</Button>
+        <Button block style={{ marginBottom: 5 }}>按钮3</Button>
+        <Button block>按钮3</Button>
+      </div>
+    </Space>   
   );
 };
 export default App;
 
 ```
+
+:::
 
 ### 交叉軸對齊方式
 
@@ -144,10 +155,17 @@ import { Space, Button } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Space align="end" wrap>
-      <Button style={{ height: '30px' }}>按钮1</Button>
-      <Button style={{ height: '60px' }}>按钮2</Button>
-      <Button style={{ height: '90px' }}>按钮3</Button>
-    </Space>  
+      <Button>按钮1</Button>
+      <div>
+        <Button block style={{ marginBottom: 5 }}>按钮2</Button>
+        <Button block>按钮2</Button>
+      </div>
+      <div>
+        <Button block style={{ marginBottom: 5 }}>按钮3</Button>
+        <Button block style={{ marginBottom: 5 }}>按钮3</Button>
+        <Button block>按钮3</Button>
+      </div>
+    </Space> 
   );
 };
 export default App;
