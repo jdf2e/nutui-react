@@ -283,6 +283,7 @@ const PopoverDemo = () => {
             visible={visiblePopover}
             list={list}
             location="top"
+            closeOnOutsideClick={false}
             style={{ marginRight: '30px' }}
             onClick={() => {
               visiblePopover

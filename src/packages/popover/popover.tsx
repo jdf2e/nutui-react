@@ -3,6 +3,7 @@ import React, {
   FunctionComponent,
   ReactPortal,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from 'react'
@@ -119,7 +120,7 @@ export const Popover: FunctionComponent<
     if (visible) {
       setTimeout(() => {
         getContentWidth()
-      }, 10)
+      })
     }
   }, [visible])
 
@@ -144,30 +145,29 @@ export const Popover: FunctionComponent<
     closeOnOutsideClick
   )
 
-  const scrollableParents = getAllScrollableParents(
-    (element || popoverRef.current) as Element
-  )
-  const update = () => {
+  const scrollableParents = useMemo(() => {
+    return getAllScrollableParents((element || popoverRef.current) as Element)
+  }, [element, popoverRef.current])
+  const update = (e: any) => {
+    console.log(e.target.scrollTop)
     getContentWidth()
   }
 
   useEffect(() => {
     scrollableParents.forEach((parent) =>
-      parent.addEventListener('scroll', update, false)
+      parent.addEventListener('scroll', update, { passive: true })
     )
     return () => {
       scrollableParents.forEach((parent) =>
         parent.removeEventListener('scroll', update)
       )
     }
-  })
-
+  }, [scrollableParents])
+  const cElement = useMemo(() => {
+    if (targetId) return document.querySelector(`#${targetId}`) as Element
+  }, [targetId])
   const getContentWidth = () => {
-    const rect = getRect(
-      targetId
-        ? (document.querySelector(`#${targetId}`) as Element)
-        : (popoverRef.current as Element)
-    )
+    const rect = getRect(targetId ? cElement : (popoverRef.current as Element))
     setRootPosition({
       width: rect.width,
       height: rect.height,
