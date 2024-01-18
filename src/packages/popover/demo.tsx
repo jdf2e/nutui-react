@@ -358,9 +358,7 @@ const PopoverDemo = () => {
                 )
               })}
             </div>
-          ) : (
-            ''
-          )}
+          ) : null}
         </Popover>
 
         <h2>{translated.title3}</h2>

@@ -105,8 +105,6 @@ export const Popover: FunctionComponent<
   const popoverRef = useRef<HTMLDivElement>(null)
   const popoverContentRef = useRef<HTMLDivElement>(null)
   const [showPopup, setShowPopup] = useState(false)
-  const [elWidth, setElWidth] = useState(0)
-  const [elHeight, setElHeight] = useState(0)
   const [rootPosition, setRootPosition] = useState<{
     width: number
     height: number
@@ -120,19 +118,35 @@ export const Popover: FunctionComponent<
     if (visible) {
       setTimeout(() => {
         getContentWidth()
-      })
+      }, 10)
+    }
+  }, [visible, location])
+
+  const update = useRef((e: any) => {
+    getContentWidth()
+  })
+  useEffect(() => {
+    if (visible) {
+      scrollableParents.forEach((parent) =>
+        parent.addEventListener('scroll', update.current, { passive: true })
+      )
+    } else {
+      scrollableParents.forEach((parent) =>
+        parent.removeEventListener('scroll', update.current)
+      )
     }
   }, [visible])
 
   let element: Element | null = null
   let targetSet = []
   if (canUseDom && targetId) {
+    console.log(targetId)
     element = document.querySelector(`#${targetId}`) as Element
-    targetSet = [popoverContentRef.current, element]
+    console.log(element?.getBoundingClientRect().top)
+    targetSet = [element, popoverContentRef.current]
   } else {
     targetSet = [popoverRef.current, popoverContentRef.current]
   }
-
   useClickAway(
     () => {
       props.onClick?.()
@@ -148,26 +162,13 @@ export const Popover: FunctionComponent<
   const scrollableParents = useMemo(() => {
     return getAllScrollableParents((element || popoverRef.current) as Element)
   }, [element, popoverRef.current])
-  const update = (e: any) => {
-    console.log(e.target.scrollTop)
-    getContentWidth()
-  }
 
-  useEffect(() => {
-    scrollableParents.forEach((parent) =>
-      parent.addEventListener('scroll', update, { passive: true })
-    )
-    return () => {
-      scrollableParents.forEach((parent) =>
-        parent.removeEventListener('scroll', update)
-      )
-    }
-  }, [scrollableParents])
-  const cElement = useMemo(() => {
-    if (targetId) return document.querySelector(`#${targetId}`) as Element
-  }, [targetId])
   const getContentWidth = () => {
-    const rect = getRect(targetId ? cElement : (popoverRef.current as Element))
+    const rect = getRect(
+      targetId
+        ? (document.querySelector(`#${targetId}`) as Element)
+        : (popoverRef.current as Element)
+    )
     setRootPosition({
       width: rect.width,
       height: rect.height,
