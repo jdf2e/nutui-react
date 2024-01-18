@@ -22,7 +22,7 @@ export interface BasicDialogProps extends BasicComponent {
   closeOnOverlayClick?: boolean
   footerDirection?: string
   lockScroll?: boolean
-  closeIconPosition?: string
+  closeIconPosition?: 'top-right' | 'top-left'
   closeIcon?: boolean | ReactNode
   beforeClose?: () => boolean
   beforeCancel?: () => boolean
