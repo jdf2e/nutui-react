@@ -211,7 +211,7 @@ const App = () => {
         rightIcon={<Star />}
         style={marginStyle}
       >
-        禁用状态
+        禁用狀態
       </Button>
       <Button
         disabled
@@ -221,7 +221,7 @@ const App = () => {
         rightIcon={<Star />}
         style={marginStyle}
       >
-        禁用状态
+        禁用狀態
       </Button>
       <Button
         disabled
@@ -231,7 +231,7 @@ const App = () => {
         rightIcon={<Star />}
         style={marginStyle}
       >
-        禁用状态
+        禁用狀態
       </Button>
       <Button
         disabled
@@ -240,7 +240,7 @@ const App = () => {
         rightIcon={<Star />}
         style={marginStyle}
       >
-        禁用状态
+        禁用狀態
       </Button>
       <Button
         disabled
@@ -254,7 +254,7 @@ const App = () => {
           color: `var(--nutui-gray-5)`,
         }}
       >
-        禁用状态
+        禁用狀態
       </Button>
       <Button
         disabled
@@ -268,7 +268,7 @@ const App = () => {
           color: `var(--nutui-gray-5)`,
         }}
       >
-        禁用状态
+        禁用狀態
       </Button>
       <Button
         disabled
@@ -276,7 +276,7 @@ const App = () => {
         rightIcon={<Star />}
         style={marginStyle}
       >
-        禁用状态
+        禁用狀態
       </Button>
       <Button
         disabled
@@ -307,7 +307,7 @@ const App = () => {
         rightIcon={<Star width={20} height={20} />}
         style={marginStyle}
       >
-        禁用状态
+        禁用狀態
       </Button>
     </>
   );
