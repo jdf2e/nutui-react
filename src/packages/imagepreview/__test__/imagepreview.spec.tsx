@@ -113,3 +113,21 @@ test('video surported in H5 env', async () => {
   const nutVideoPlayer = container.querySelector('.nut-video-player')
   expect(nutVideoPlayer).toBeInTheDocument()
 })
+
+test('closeIcon = true', async () => {
+  const { container } = render(
+    <ImagePreview images={images} videos={videos} visible closeIcon />
+  )
+
+  const closeIcon = container.querySelector('.nut-imagepreview-close')
+  expect(closeIcon).toBeInTheDocument()
+})
+
+test('custom closeIcon', async () => {
+  const { container } = render(
+    <ImagePreview images={images} videos={videos} visible closeIcon="close" />
+  )
+
+  const closeIcon = container.querySelector('.nut-imagepreview-close')
+  expect(closeIcon?.innerHTML).toContain('close')
+})
