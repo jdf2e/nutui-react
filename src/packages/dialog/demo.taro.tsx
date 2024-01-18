@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
+import { ArrowCornerLeft } from '@nutui/icons-react-taro'
 import { Dialog, Cell, Image } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
@@ -20,6 +21,8 @@ interface T {
   confirmText: string
   cancelText: string
   header: string
+  closeable: string
+  customClose: string
 }
 
 const DialogDemo = () => {
@@ -40,6 +43,8 @@ const DialogDemo = () => {
       confirmText: '确定',
       cancelText: '取消',
       header: '顶部带插图',
+      closeable: '顶部带关闭按钮',
+      customClose: '自定义顶部关闭按钮',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -58,6 +63,8 @@ const DialogDemo = () => {
       confirmText: 'confirm',
       cancelText: 'cancel',
       header: 'Top with illustration',
+      closeable: 'Top with close button',
+      customClose: 'Customize the top close button',
     },
   })
 
@@ -69,6 +76,9 @@ const DialogDemo = () => {
   const [visible6, setVisible6] = useState(false)
   const [visible7, setVisible7] = useState(false)
   const [visible8, setVisible8] = useState(false)
+  const [visible9, setVisible9] = useState(false)
+  const [visible10, setVisible10] = useState(false)
+
   return (
     <>
       <Header />
@@ -188,6 +198,45 @@ const DialogDemo = () => {
           }
           onConfirm={() => setVisible8(false)}
           onCancel={() => setVisible8(false)}
+        >
+          {translated.content}
+        </Dialog>
+        <Cell
+          title={translated.closeable}
+          onClick={() => {
+            setVisible9(true)
+          }}
+        />
+        <Dialog
+          className="test-dialog"
+          title={translated.closeable}
+          visible={visible9}
+          closeable
+          onConfirm={() => setVisible9(false)}
+          onCancel={() => setVisible9(false)}
+        >
+          {translated.content}
+        </Dialog>
+        <Cell
+          title={translated.customClose}
+          onClick={() => {
+            setVisible10(true)
+          }}
+        />
+        <Dialog
+          className="test-dialog"
+          title={translated.customClose}
+          visible={visible10}
+          closeable
+          closeIcon={<ArrowCornerLeft width="16px" height="16px" />}
+          closeIconPosition="top-left"
+          onConfirm={() => setVisible10(false)}
+          onCancel={() => setVisible10(false)}
+          style={{
+            '--nutui-dialog-close-top': '10px',
+            '--nutui-dialog-close-left': '10px',
+            '--nutui-dialog-close-color': 'red',
+          }}
         >
           {translated.content}
         </Dialog>

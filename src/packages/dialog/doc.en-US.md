@@ -94,11 +94,15 @@ export default App;
 ```tsx
 import React, {useState} from "react";
 import { Cell,Dialog,Image } from '@nutui/nutui-react';
+import { ArrowCornerLeft } from '@nutui/icons-react'
 
 const App = () => {
   const [visible1, setVisible1] = useState(false);
   const [visible2, setVisible2] = useState(false);
   const [visible3, setVisible3] = useState(false);
+  const [visible7, setVisible7] = useState(false);
+  const [visible8, setVisible8] = useState(false);
+  const [visible9, setVisible9] = useState(false);
   return (
     <>
       <Cell title="Basic bullet" onClick={() => setVisible1(true)} />
@@ -153,6 +157,45 @@ const App = () => {
       >
         If you need to embed the component or other custom content in the pop -up window, you can use the Module Call method.
       </Dialog>
+      <Cell
+          title="Top with close button"
+          onClick={() => {
+            setVisible8(true)
+          }}
+        />
+        <Dialog
+          className="test-dialog"
+          title="Top with close button"
+          visible={visible8}
+          closeable
+          onConfirm={() => setVisible8(false)}
+          onCancel={() => setVisible8(false)}
+        >
+          {translated.content}
+        </Dialog>
+        <Cell
+          title="Customize the top close button"
+          onClick={() => {
+            setVisible9(true)
+          }}
+        />
+        <Dialog
+          className="test-dialog"
+          title="Customize the top close button"
+          visible={visible9}
+          closeable
+          closeIcon={<ArrowCornerLeft width="16px" height="16px" />}
+          closeIconPosition="top-left"
+          onConfirm={() => setVisible9(false)}
+          onCancel={() => setVisible9(false)}
+          style={{
+            '--nutui-dialog-close-top': '10px',
+            '--nutui-dialog-close-left': '10px',
+            '--nutui-dialog-close-color': 'red',
+          }}
+        >
+          {translated.content}
+        </Dialog>
     </>
   )
 }
@@ -242,3 +285,9 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-dialog-footer-cancel-margin-right | dialog footer cancel button's margin right | `12px` |
 | \--nutui-dialog-footer-ok-max-width | dialog footer confirm button's max width | `128px` |
 | \--nutui-dialog-vertical-footer-ok-margin-top | dialog vertical footer confirm button margin top | `5px` |
+| \--nutui-dialog-close-width | dialog close the width of the button | `18px` |
+| \--nutui-dialog-close-height | dialog close the coloe of the button | `18px` |
+| \--nutui-dialog-close-color | dialog close button color | `#8c8c8c` |
+| \--nutui-dialog-close-top | dialog Closes the top value of the button | `16px` |
+| \--nutui-dialog-close-left | dialog Closes the left value of the button | `16px` |
+| \--nutui-dialog-close-right | dialog Closes the right value of the button | `16px` |

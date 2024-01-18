@@ -3,6 +3,7 @@ import type { MouseEvent } from 'react'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 import { View } from '@tarojs/components'
+import { Close } from '@nutui/icons-react-taro'
 import Button from '@/packages/button/index.taro'
 import { BasicDialogProps } from './config'
 import { Content } from './content.taro'
@@ -32,6 +33,9 @@ const defaultProps = {
   disableConfirmButton: false,
   footerDirection: 'horizontal',
   lockScroll: true,
+  closeable: false,
+  closeIconPosition: 'top-right',
+  closeIcon: null,
   beforeCancel: () => true,
   beforeClose: () => true,
   onOverlayClick: () => true,
@@ -65,6 +69,9 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
       confirmText,
       cancelText,
       overlay,
+      closeable,
+      closeIconPosition,
+      closeIcon,
       onClose,
       onCancel,
       onConfirm,
@@ -101,6 +108,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
       onClose?.()
       onConfirm?.(e)
     }
+
     return (
       footer || (
         <>
@@ -129,6 +137,27 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
       )
     )
   }
+
+  const renderCloseIcon = () => {
+    if (!closeable) return null
+    const handleCancel = () => {
+      if (!beforeCancel?.()) return
+      if (!beforeClose?.()) return
+      onClose?.()
+      onCancel?.()
+    }
+    console.log(closeIconPosition, closeIcon, 'closeIcon')
+    const closeClasses = classNames({
+      [`${classPrefix}-close`]: true,
+      [`${classPrefix}-close-${closeIconPosition}`]: true,
+    })
+    return (
+      <div className={closeClasses} onClick={handleCancel}>
+        {React.isValidElement(closeIcon) ? closeIcon : <Close />}
+      </div>
+    )
+  }
+
   const onHandleClickOverlay = (e: any) => {
     if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
       const closed = onOverlayClick && onOverlayClick()
@@ -166,6 +195,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
             style={style}
             title={title}
             header={header}
+            close={renderCloseIcon()}
             footer={renderFooter()}
             footerDirection={footerDirection}
             visible={visible}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Heart } from '@nutui/icons-react'
+import { ArrowCornerLeft } from '@nutui/icons-react'
 import { Dialog } from './dialog'
 import Cell from '../cell'
 import { useTranslate } from '@/sites/assets/locale'
@@ -80,7 +80,6 @@ const DialogDemo = () => {
   const [visible7, setVisible7] = useState(false)
   const [visible8, setVisible8] = useState(false)
   const [visible9, setVisible9] = useState(false)
-  const [visible10, setVisible10] = useState(false)
 
   return (
     <>
@@ -301,7 +300,7 @@ const DialogDemo = () => {
           title={translated.customClose}
           visible={visible9}
           closeable
-          closeIcon={<Heart width="16px" height="16px" />}
+          closeIcon={<ArrowCornerLeft width="16px" height="16px" />}
           closeIconPosition="top-left"
           onConfirm={() => setVisible9(false)}
           onCancel={() => setVisible9(false)}

@@ -97,11 +97,15 @@ export default App;
 ```tsx
 import React, {useState} from "react";
 import { Cell,Dialog,Image } from '@nutui/nutui-react';
+import { ArrowCornerLeft } from '@nutui/icons-react'
 
 const App = () => {
   const [visible1, setVisible1] = useState(false);
   const [visible2, setVisible2] = useState(false);
   const [visible3, setVisible3] = useState(false);
+  const [visible7, setVisible7] = useState(false);
+  const [visible8, setVisible8] = useState(false);
+  const [visible9, setVisible9] = useState(false);
   return (
     <>
       <Cell title="基础弹框" onClick={() => setVisible1(true)} />
@@ -180,20 +184,44 @@ const App = () => {
         如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
       </Dialog>
       <Cell
-        title="顶部带关闭按钮"
-        onClick={() => {
-          setVisible7(true)
-        }}
-      />
-      <Dialog
-        className="test-dialog"
-        title="顶部带关闭按钮"
-        visible={visible8}
-        onConfirm={() => setVisible8(false)}
-        onCancel={() => setVisible8(false)}
-      >
-        如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
-      </Dialog>
+          title="顶部带关闭按钮"
+          onClick={() => {
+            setVisible8(true)
+          }}
+        />
+        <Dialog
+          className="test-dialog"
+          title="顶部带关闭按钮"
+          visible={visible8}
+          closeable
+          onConfirm={() => setVisible8(false)}
+          onCancel={() => setVisible8(false)}
+        >
+          {translated.content}
+        </Dialog>
+        <Cell
+          title="自定义顶部关闭按钮"
+          onClick={() => {
+            setVisible9(true)
+          }}
+        />
+        <Dialog
+          className="test-dialog"
+          title="自定义顶部关闭按钮"
+          visible={visible9}
+          closeable
+          closeIcon={<ArrowCornerLeft width="16px" height="16px" />}
+          closeIconPosition="top-left"
+          onConfirm={() => setVisible9(false)}
+          onCancel={() => setVisible9(false)}
+          style={{
+            '--nutui-dialog-close-top': '10px',
+            '--nutui-dialog-close-left': '10px',
+            '--nutui-dialog-close-color': 'red',
+          }}
+        >
+          {translated.content}
+        </Dialog>
     </>
   )
 }
