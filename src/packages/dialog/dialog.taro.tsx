@@ -146,7 +146,6 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
       onClose?.()
       onCancel?.()
     }
-    console.log(closeIconPosition, closeIcon, 'closeIcon')
     const closeClasses = classNames({
       [`${classPrefix}-close`]: true,
       [`${classPrefix}-close-${closeIconPosition}`]: true,

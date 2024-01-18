@@ -114,7 +114,6 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
       onClose?.()
       onCancel?.()
     }
-    console.log(closeIconPosition, closeIcon, 'closeIcon')
     const closeClasses = classNames({
       [`${classPrefix}-close`]: true,
       [`${classPrefix}-close-${closeIconPosition}`]: true,
