@@ -223,9 +223,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
                   )}
                   <div
                     className={classNames(
-                      {
-                        ellipsis: true,
-                      },
+                      `${classPrefix}-ellipsis`,
                       `${classPrefix}-titles-item-text`
                     )}
                   >
