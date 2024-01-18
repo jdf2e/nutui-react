@@ -382,7 +382,7 @@ export default App;
 
 ### Button size
 
-Support 'large', 'normal', 'small' three sizes, the default is 'normal'.
+Support 'large', 'normal', 'small', 'mini' four sizes, the default is 'normal'.
 
 :::demo
 

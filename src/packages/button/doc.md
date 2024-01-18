@@ -382,7 +382,7 @@ export default App;
 
 ### 按钮尺寸
 
-支持 `large`、`normal`、`small` 三种尺寸，默认为 `normal`。
+支持 `large`、`normal`、`small`、`mini` 四种尺寸，默认为 `normal`。
 
 :::demo
 
