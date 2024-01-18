@@ -107,7 +107,6 @@ const CellDemo = () => {
   return (
     <>
       <div className="demo">
-        {/* 基础用法 */}
         <h2>{translated.basic}</h2>
         <Cell title={translated.title} extra={translated.extra} />
         <Cell
@@ -122,12 +121,10 @@ const CellDemo = () => {
           ) => testClick(event)}
         />
         <Cell title={translated.title3} radius="0" />
-        {/* 自定义内容 */}
         <h2>{translated.content}</h2>
         <Cell>
           <div>{translated.content}</div>
         </Cell>
-        {/* 自定义标题区域 */}
         <h2>{translated.title6}</h2>
         <Cell
           title={
@@ -143,11 +140,9 @@ const CellDemo = () => {
           }
           extra={translated.extra}
         />
-        {/* 自定义右侧区域 */}
         <Cell.Group title={translated.customRight}>
           <Cell title="Switch" extra={<Switch defaultChecked />} />
         </Cell.Group>
-        {/* 垂直居中 */}
         <h2>{translated.title5}</h2>
         <Cell
           align="center"
@@ -155,7 +150,6 @@ const CellDemo = () => {
           description={translated.title1}
           extra={translated.extra}
         />
-        {/* 链接 | 分组用法 */}
         <Cell.Group
           title={translated.title4}
           description={translated.description}
