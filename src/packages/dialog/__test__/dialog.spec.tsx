@@ -95,7 +95,7 @@ test('dialog closeable equals true', async () => {
   expect(closeBtn).toBeInTheDocument()
 })
 
-test('dialog closeIcon position adjustment', async () => {
+test('dialog close icon  position adjustment', async () => {
   const onClose = jest.fn()
   const onCancel = jest.fn()
   const { container } = render(
