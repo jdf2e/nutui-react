@@ -7,7 +7,7 @@ import React, {
   ReactNode,
 } from 'react'
 import classNames from 'classnames'
-import { MaskClose } from '@nutui/icons-react'
+import { Close } from '@nutui/icons-react'
 import Popup from '@/packages/popup'
 import Image from '@/packages/image'
 import Video from '@/packages/video'
@@ -313,7 +313,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
           className={`${classPrefix}-close ${closeIconPosition}`}
           onClick={onCloseInner}
         >
-          {closeIcon === true ? <MaskClose /> : closeIcon}
+          {closeIcon === true ? <Close /> : closeIcon}
         </div>
       ) : null}
     </Popup>

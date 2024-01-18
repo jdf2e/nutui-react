@@ -9,7 +9,7 @@ import React, {
 import Taro from '@tarojs/taro'
 import { Video as TaroVideo } from '@tarojs/components'
 import classNames from 'classnames'
-import { MaskClose } from '@nutui/icons-react-taro'
+import { Close } from '@nutui/icons-react-taro'
 import Popup from '@/packages/popup/index.taro'
 import Image from '@/packages/image/index.taro'
 import Swiper from '@/packages/swiper/index.taro'
@@ -336,7 +336,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
           className={`${classPrefix}-close ${closeIconPosition}`}
           onClick={onCloseInner}
         >
-          {closeIcon === true ? <MaskClose /> : closeIcon}
+          {closeIcon === true ? <Close /> : closeIcon}
         </div>
       ) : null}
     </Popup>
