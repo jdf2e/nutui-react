@@ -45,6 +45,7 @@ export interface ImagePreviewProps extends BasicComponent {
   indicator: boolean
   indicatorColor: string
   closeIcon: boolean | ReactNode
+  closeIconPosition: 'top-right' | 'top-left' | 'bottom'
   onChange: (value: number) => void
   onClose: () => void
 }
@@ -60,6 +61,7 @@ const defaultProps = {
   indicator: false,
   indicatorColor: '#fff',
   closeIcon: false,
+  closeIconPosition: 'top-right',
   onChange: (value: number) => {},
   onClose: () => {},
 } as ImagePreviewProps
@@ -78,6 +80,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     autoPlay,
     closeOnContentClick,
     closeIcon,
+    closeIconPosition,
     onClose,
   } = props
   const classPrefix = 'nut-imagepreview'
@@ -306,7 +309,10 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
         {active}/{(images ? images.length : 0) + (videos ? videos.length : 0)}
       </div>
       {closeIcon !== false ? (
-        <div className={`${classPrefix}-close`} onClick={onCloseInner}>
+        <div
+          className={`${classPrefix}-close ${closeIconPosition}`}
+          onClick={onCloseInner}
+        >
           {closeIcon === true ? <MaskClose /> : closeIcon}
         </div>
       ) : null}

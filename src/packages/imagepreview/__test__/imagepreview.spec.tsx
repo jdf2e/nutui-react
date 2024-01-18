@@ -121,6 +121,7 @@ test('closeIcon = true', async () => {
 
   const closeIcon = container.querySelector('.nut-imagepreview-close')
   expect(closeIcon).toBeInTheDocument()
+  expect(closeIcon?.classList).toContain('top-right')
 })
 
 test('custom closeIcon', async () => {
@@ -130,4 +131,19 @@ test('custom closeIcon', async () => {
 
   const closeIcon = container.querySelector('.nut-imagepreview-close')
   expect(closeIcon?.innerHTML).toContain('close')
+})
+
+test('closeIconPosition', async () => {
+  const { container } = render(
+    <ImagePreview
+      images={images}
+      videos={videos}
+      visible
+      closeIcon
+      closeIconPosition="bottom"
+    />
+  )
+
+  const closeIcon = container.querySelector('.nut-imagepreview-close')
+  expect(closeIcon?.classList).toContain('bottom')
 })

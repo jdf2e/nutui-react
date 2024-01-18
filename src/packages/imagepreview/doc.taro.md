@@ -364,7 +364,13 @@ const App = () => {
 
   return (
     <>
-      <ImagePreview images={images} visible={showPreview6} onClose={hideFn6} closeIcon />
+      <ImagePreview
+        images={images}
+        visible={showPreview6}
+        onClose={hideFn6}
+        closeIcon
+        closeIconPosition="bottom"
+      />
       <Cell title="关闭按钮"  onClick={showFn6} />
     </>
   );
@@ -391,5 +397,6 @@ export default App;
 | showMenuByLongpress | 开启长按图片显示识别小程序码菜单 | `boolean` | `false` |
 | closeOnContentClick | 点击图片可以退出预览 | `boolean` | `false` |
 | closeIcon | 关闭按钮 | `boolean` \| `ReactNode` | `false` |
+| closeIconPosition | 关闭按钮位置 | `top-right` \| `top-left` \| `bottom` | `top-right` |
 | onChange | 切换时触发 | `(value:number) => void` | `-` |
 | onClose | 点击遮罩关闭图片预览时触发 | `() => void` | `-` |

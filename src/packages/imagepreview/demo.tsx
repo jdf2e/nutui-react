@@ -226,6 +226,7 @@ const ImagePreviewDemo = () => {
           images={images}
           visible={showPreview6}
           closeIcon
+          closeIconPosition="bottom"
           onClose={hideFn6}
         />
         <Cell title={translated.closeIcon} onClick={showFn6} />

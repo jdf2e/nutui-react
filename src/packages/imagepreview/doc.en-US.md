@@ -364,7 +364,13 @@ const App = () => {
 
   return (
     <>
-      <ImagePreview images={images} visible={showPreview6} onClose={hideFn6} closeIcon />
+      <ImagePreview
+        images={images}
+        visible={showPreview6}
+        onClose={hideFn6}
+        closeIcon
+        closeIconPosition="bottom"
+      />
       <Cell title="Close Icon"  onClick={showFn6} />
     </>
   );
@@ -390,5 +396,6 @@ export default App;
 | indicatorColor | Pagination color | `string` | `#fff` |
 | closeOnContentClick | Click image to exit preview | `boolean` | `false` |
 | closeIcon | Close Icon | `boolean` \| `ReactNode` | `false` |
+| closeIconPosition | Close Icon Position | `top-right` \| `top-left` \| `bottom` | `top-right` |
 | onChange | Emitted when swiper changes | `(value:number) => void` | `-` |
 | onClose | Emitted when closing ImagePreview | `() => void` | `-` |

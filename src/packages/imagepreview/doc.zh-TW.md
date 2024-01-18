@@ -364,7 +364,13 @@ const App = () => {
 
   return (
     <>
-      <ImagePreview images={images} visible={showPreview6} onClose={hideFn6} closeIcon />
+      <ImagePreview
+        images={images}
+        visible={showPreview6}
+        onClose={hideFn6}
+        closeIcon
+        closeIconPosition="bottom"
+      />
       <Cell title="關閉按鈕"  onClick={showFn6} />
     </>
   );
@@ -390,5 +396,6 @@ export default App;
 | indicatorColor | 分頁指示器選中的顏色 | `string` | `#fff` |
 | closeOnContentClick | 點擊圖片可以退出預覽 | `boolean` | `false` |
 | closeIcon | 關閉按鈕 | `boolean` \| `ReactNode` | `false` |
+| closeIconPosition | 關閉按鈕位置 | `top-right` \| `top-left` \| `bottom` | `top-right` |
 | onChange | 切換時觸發 | `(value:number) => void` | `-` |
 | onClose | 點擊遮罩關閉圖片預覽時觸發 | `() => void` | `-` |
