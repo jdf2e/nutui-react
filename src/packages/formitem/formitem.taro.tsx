@@ -4,7 +4,7 @@ import { Context } from '../form/context'
 import Cell from '@/packages/cell/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { isForwardRefComponent } from '@/utils/is-forward-ref-component'
-import { SECRET } from '@/packages/form/useform'
+import { SECRET } from '@/packages/form/useform.taro'
 
 type TextAlign =
   | 'start'

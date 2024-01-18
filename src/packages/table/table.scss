@@ -8,9 +8,14 @@
     flex-direction: column;
     font-size: $font-size-base;
     color: $color-title;
-    overflow: auto;
+    overflow-y: auto;
+    overflow-x: hidden;
     position: relative;
     border: 1px solid $table-border-color;
+
+    &-sticky {
+      overflow-x: auto;
+    }
   }
 
   &-main {
@@ -61,6 +66,7 @@
         &-th {
           display: table-cell;
           padding: $table-cols-padding;
+          table-layout: fixed;
           background: inherit;
           position: sticky;
           top: 0;
@@ -77,6 +83,7 @@
         &-td {
           display: table-cell;
           padding: $table-cols-padding;
+          table-layout: fixed;
           background: inherit;
 
           &:last-child {
@@ -149,6 +156,10 @@
   &-fixed-right {
     position: sticky;
     z-index: 2;
+    &.h5-div {
+      // 临时方案，小程序下，width包含了padding值。
+      padding: $table-cols-padding 0;
+    }
   }
   &-fixed-left-last {
     border-right: none;

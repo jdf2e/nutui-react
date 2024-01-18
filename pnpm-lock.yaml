@@ -16,11 +16,11 @@ importers:
         specifier: ^7.21.0
         version: 7.23.5
       '@nutui/icons-react':
-        specifier: ^1.0.1
-        version: 1.0.1
+        specifier: ^1.0.2
+        version: 1.0.2
       '@nutui/icons-react-taro':
-        specifier: ^1.0.1
-        version: 1.0.1
+        specifier: ^1.0.2
+        version: 1.0.2
       '@nutui/touch-emulator':
         specifier: ^1.0.0
         version: 1.0.0
@@ -253,6 +253,9 @@ importers:
       postcss-modules:
         specifier: ^6.0.0
         version: 6.0.0(postcss@8.4.32)
+      postcss-rtlcss:
+        specifier: ^5.1.0
+        version: 5.1.0(postcss@8.4.32)
       prettier:
         specifier: ^3.0.0
         version: 3.1.0
@@ -2791,12 +2794,12 @@ packages:
       fastq: 1.15.0
     dev: true
 
-  /@nutui/icons-react-taro@1.0.1:
-    resolution: {integrity: sha512-9eJqzv/a4JjyEm5Q64k4FAG9B4UmvQ9DGwtcC2apKTrJDCDJ+3XzEvTKIwYjCyatgW7FRwYwOA0wTmHhXxSzYw==}
+  /@nutui/icons-react-taro@1.0.2:
+    resolution: {integrity: sha512-qn5rBdsPleejZ+5u/gTUoi9vPY32UCTnpxuArha1ZL7LS+kk/5E1ECKLDv0Sh5q87PaCpYfe9wMyGENREnHBgw==}
     dev: false
 
-  /@nutui/icons-react@1.0.1:
-    resolution: {integrity: sha512-i7Y4Z8/n/nij4da8/GfHgMYaro8+4N/27cxlE6hMtUErzYbf/iBQbgzeqbF/9l6pSWi2cH22PMWBJY2NT/YBAw==}
+  /@nutui/icons-react@1.0.2:
+    resolution: {integrity: sha512-hyjErskjGGqe5ROrb9z5yauBvHYUQQOLQnPDPqvwN210YR8ARwcBpnW+kUvCw/3ONZuS8Vgh+3CA+SM1qip5/Q==}
     dev: false
 
   /@nutui/touch-emulator@1.0.0:
@@ -14686,6 +14689,16 @@ packages:
     resolution: {integrity: sha512-HvExULSwLqHLgUy1rl3ANIqCsvMS0WHss2UOsXhXnQaZ9VCc2oBvIpXrl00IUFT5ZDITME0o6oiXeiHr2SAIfw==}
     dev: true
 
+  /postcss-rtlcss@5.1.0(postcss@8.4.32):
+    resolution: {integrity: sha512-FjZ8HPwr6dWR1Jzzz+TZqkEhkfLiR7sKgsHTDqrYGd51KtZdaDpdJ5aqHmqWoXZsSyJgBIkwZPt5JoEPvkX3Nw==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      postcss: ^8.4.21
+    dependencies:
+      postcss: 8.4.32
+      rtlcss: 4.1.1
+    dev: true
+
   /postcss-safe-parser@7.0.0(postcss@8.4.32):
     resolution: {integrity: sha512-ovehqRNVCpuFzbXoTb4qLtyzK3xn3t/CUBxOs8LsnQjQrShaB4lKiHoVqY8ANaC0hBMHq5QVWk77rwGklFUDrg==}
     engines: {node: '>=18.0'}
@@ -15784,6 +15797,17 @@ packages:
 
   /rrweb-cssom@0.6.0:
     resolution: {integrity: sha512-APM0Gt1KoXBz0iIkkdB/kfvGOwC4UuJFeG/c+yV7wSc7q96cG/kJ0HiYCnzivD9SB53cLV1MlHFNfOuPaadYSw==}
+    dev: true
+
+  /rtlcss@4.1.1:
+    resolution: {integrity: sha512-/oVHgBtnPNcggP2aVXQjSy6N1mMAfHg4GSag0QtZBlD5bdDgAHwr4pydqJGd+SUCu9260+Pjqbjwtvu7EMH1KQ==}
+    engines: {node: '>=12.0.0'}
+    hasBin: true
+    dependencies:
+      escalade: 3.1.1
+      picocolors: 1.0.0
+      postcss: 8.4.32
+      strip-json-comments: 3.1.1
     dev: true
 
   /run-applescript@5.0.0:

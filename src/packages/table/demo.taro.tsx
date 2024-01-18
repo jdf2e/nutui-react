@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import { Star, TriangleDown } from '@nutui/icons-react-taro'
-import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Toast, Table } from '@/packages/nutui.react.taro'
+import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import { TableColumnProps } from './types'
 
@@ -64,7 +64,7 @@ const TableDemo = () => {
     },
   })
 
-  const [columns1, setColumns1] = useState<Array<TableColumnProps>>([
+  const [columns1] = useState<Array<TableColumnProps>>([
     {
       title: 'ID',
       key: 'id',
@@ -92,7 +92,7 @@ const TableDemo = () => {
       key: 'record',
     },
   ])
-  const [columns2, setColumns2] = useState<Array<TableColumnProps>>([
+  const [columns2] = useState<Array<TableColumnProps>>([
     {
       title: '姓名',
       key: 'name',
@@ -108,7 +108,7 @@ const TableDemo = () => {
     },
   ])
 
-  const [columns4, setColumns4] = useState<Array<TableColumnProps>>([
+  const [columns4] = useState<Array<TableColumnProps>>([
     {
       title: '姓名',
       key: 'name',
@@ -128,7 +128,7 @@ const TableDemo = () => {
     },
   ])
 
-  const [columns5, setColumns5] = useState<Array<TableColumnProps>>([
+  const [columns5] = useState<Array<TableColumnProps>>([
     {
       title: '姓名',
       key: 'name',
@@ -152,7 +152,7 @@ const TableDemo = () => {
     },
   ])
 
-  const [columns6, setColumns6] = useState<Array<TableColumnProps>>([
+  const [columns6] = useState<Array<TableColumnProps>>([
     {
       title: '姓名',
       key: 'name',
@@ -176,9 +176,7 @@ const TableDemo = () => {
     },
   ])
 
-  const [columnsStickRight, setColumnsStickRight] = useState<
-    Array<TableColumnProps>
-  >([
+  const [columnsStickRight] = useState<Array<TableColumnProps>>([
     {
       title: '姓名',
       key: 'name',
@@ -204,24 +202,16 @@ const TableDemo = () => {
       title: '年龄',
       key: 'age',
       fixed: 'right',
-      width: 100,
-      render: () => {
-        return (
-          <Button type="primary" size="mini">
-            操作
-          </Button>
-        )
-      },
+      width: 60,
     },
   ])
 
-  const [columnsStickLeft, setColumnsStickLeft] = useState<
-    Array<TableColumnProps>
-  >([
+  const [columnsStickLeft] = useState<Array<TableColumnProps>>([
     {
       title: '姓名',
       key: 'name',
       align: 'center',
+      fixed: 'left',
       width: 100,
     },
     {
@@ -242,11 +232,11 @@ const TableDemo = () => {
     {
       title: '年龄',
       key: 'age',
-      width: 100,
+      width: 60,
     },
   ])
 
-  const [data1, setData1] = useState([
+  const [data1] = useState([
     {
       name: 'Tom',
       sex: '男',
@@ -275,7 +265,6 @@ const TableDemo = () => {
         return (
           <Button
             onClick={() => {
-              // Toast.show('hello')
               toastShow('hello')
             }}
             size="small"

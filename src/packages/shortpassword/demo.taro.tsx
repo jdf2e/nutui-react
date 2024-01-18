@@ -83,7 +83,12 @@ const ShortPasswordDemo = () => {
             setVisible1(false)
             setValue('')
           }}
-          onChange={(value) => setValue(value)}
+          onChange={(value) => {
+            setValue(value)
+          }}
+          onComplete={() => {
+            setVisible(false)
+          }}
         />
 
         <h2>{translated.displayPlain}</h2>
@@ -101,6 +106,7 @@ const ShortPasswordDemo = () => {
             setValue('')
           }}
           onChange={(value) => setValue(value)}
+          onComplete={() => setVisible(false)}
         />
 
         <h2>{translated.displayButton}</h2>
@@ -142,6 +148,7 @@ const ShortPasswordDemo = () => {
             setValue0('')
           }}
           onChange={(value) => setValue0(value)}
+          onComplete={() => setVisible0(false)}
           length={4}
         />
         <NumberKeyboard
@@ -165,6 +172,7 @@ const ShortPasswordDemo = () => {
             setValue('')
           }}
           onChange={(value) => setValue(value)}
+          onComplete={() => setVisible(false)}
           onTips={() => onTips()}
         />
 
@@ -179,6 +187,7 @@ const ShortPasswordDemo = () => {
             setValue('')
           }}
           onChange={(value) => setValue(value)}
+          onComplete={() => setVisible(false)}
           autoFocus
         />
       </div>
