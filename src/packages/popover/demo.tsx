@@ -233,6 +233,7 @@ const PopoverDemo = () => {
     setCustomTarget(!customTarget)
   }
   const [visiblePopover, setVisiblePopover] = useState(false)
+  const [visiblePopover1, setVisiblePopover1] = useState(false)
   const list = [
     {
       key: 'key1',
@@ -250,6 +251,36 @@ const PopoverDemo = () => {
   return (
     <>
       <div className="demo">
+        <div
+          style={{
+            position: 'fixed',
+            bottom: 0,
+            zIndex: 1,
+          }}
+        >
+          <Popover
+            visible={visiblePopover}
+            list={list}
+            location="top"
+            style={{ marginRight: '30px' }}
+            closeOnOutsideClick={false}
+            onClick={() => {
+              visiblePopover
+                ? setVisiblePopover(false)
+                : setVisiblePopover(true)
+            }}
+            onOpen={() => {
+              console.log('打开菜单时触发')
+            }}
+            onClose={() => {
+              console.log('关闭菜单时触发')
+            }}
+          >
+            <Button type="primary" shape="square">
+              Popover基础用法
+            </Button>
+          </Popover>
+        </div>
         <h2>{translated.title}</h2>
         <Popover
           visible={basic}
@@ -276,19 +307,20 @@ const PopoverDemo = () => {
           style={{
             height: '200px',
             overflowY: 'scroll',
+            position: 'relative',
           }}
         >
           <div style={{ height: '100px' }} />
           <Popover
-            visible={visiblePopover}
+            visible={visiblePopover1}
             list={list}
             location="top"
             closeOnOutsideClick={false}
             style={{ marginRight: '30px' }}
             onClick={() => {
               visiblePopover
-                ? setVisiblePopover(false)
-                : setVisiblePopover(true)
+                ? setVisiblePopover1(false)
+                : setVisiblePopover1(true)
             }}
           >
             <Button id="test" type="primary" shape="square">
@@ -434,6 +466,7 @@ const PopoverDemo = () => {
             {translated.contentColor}
           </Button>
         </Popover>
+        <div style={{ height: '100px' }} />
       </div>
     </>
   )

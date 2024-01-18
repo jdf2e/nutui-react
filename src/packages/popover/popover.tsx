@@ -118,7 +118,7 @@ export const Popover: FunctionComponent<
     if (visible) {
       setTimeout(() => {
         getContentWidth()
-      }, 10)
+      }, 0)
     }
   }, [visible, location])
 
@@ -127,9 +127,9 @@ export const Popover: FunctionComponent<
   })
   useEffect(() => {
     if (visible) {
-      scrollableParents.forEach((parent) =>
+      scrollableParents.forEach((parent) => {
         parent.addEventListener('scroll', update.current, { passive: true })
-      )
+      })
     } else {
       scrollableParents.forEach((parent) =>
         parent.removeEventListener('scroll', update.current)
@@ -140,9 +140,7 @@ export const Popover: FunctionComponent<
   let element: Element | null = null
   let targetSet = []
   if (canUseDom && targetId) {
-    console.log(targetId)
     element = document.querySelector(`#${targetId}`) as Element
-    console.log(element?.getBoundingClientRect().top)
     targetSet = [element, popoverContentRef.current]
   } else {
     targetSet = [popoverRef.current, popoverContentRef.current]
@@ -169,6 +167,7 @@ export const Popover: FunctionComponent<
         ? (document.querySelector(`#${targetId}`) as Element)
         : (popoverRef.current as Element)
     )
+    console.log(rect.top, document.documentElement.scrollTop)
     setRootPosition({
       width: rect.width,
       height: rect.height,
@@ -196,7 +195,6 @@ export const Popover: FunctionComponent<
   const getRootPosition = () => {
     const styles: CSSProperties = {}
     if (!rootPosition) return {}
-
     const contentWidth = popoverContentRef.current?.clientWidth as number
     const contentHeight = popoverContentRef.current?.clientHeight as number
     const { width, height, left, top, right } = rootPosition

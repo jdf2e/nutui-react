@@ -48,7 +48,12 @@ export function getAllScrollableParents(
 
   if (isScrollable) {
     // 如果当前元素具有滚动条，则将其添加到数组中
-    scrollableParents.push(element)
+    if (element.nodeName === 'HTML') {
+      // @ts-ignore
+      scrollableParents.push(document)
+    } else {
+      scrollableParents.push(element)
+    }
   }
 
   // 递归检查父元素
