@@ -244,8 +244,8 @@ export default function App() {
     return Dialog.confirm({
       content: (
           <Input
-            placeholder="请输入验证码"
-            value={captcha} // App 中 captcha 的更新是不会传递到 Dialog 中的
+            placeholder="Please enter the verification code"
+            value={captcha} // Updates to captcha in the App are not passed to the Dialog
             onChange={(v) => {
               setCaptcha(v)
             }}
