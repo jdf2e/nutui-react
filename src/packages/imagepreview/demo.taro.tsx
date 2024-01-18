@@ -73,6 +73,7 @@ const ImagePreviewDemo = () => {
       withPagination: 'With Pagination',
       withVideos: 'With Videos',
       thumb: 'Click image to switch',
+      closeIcon: 'Close Icon',
     },
   })
 
