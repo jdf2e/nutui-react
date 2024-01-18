@@ -96,6 +96,8 @@ test('dialog closeable equals true', async () => {
 })
 
 test('dialog closeIcon position adjustment', async () => {
+  const onClose = jest.fn()
+  const onCancel = jest.fn()
   const { container } = render(
     <Dialog
       visible
@@ -103,9 +105,16 @@ test('dialog closeIcon position adjustment', async () => {
       confirmText="确定文案自定义"
       closeable
       closeIconPosition="top-left"
+      onClose={onClose}
+      onCancel={onCancel}
     />
   )
 
-  const closeBtn = container.querySelector('.nut-dialog-close-top-left')
+  const closeBtn = container.querySelector(
+    '.nut-dialog-close-top-left'
+  ) as HTMLElement
   expect(closeBtn).toBeInTheDocument()
+  fireEvent.click(closeBtn)
+  expect(onClose).toBeCalled()
+  expect(onCancel).toBeCalled()
 })

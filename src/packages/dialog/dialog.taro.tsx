@@ -151,9 +151,9 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
       [`${classPrefix}-close-${closeIconPosition}`]: true,
     })
     return (
-      <div className={closeClasses} onClick={handleCancel}>
+      <View className={closeClasses} onClick={handleCancel}>
         {React.isValidElement(closeIcon) ? closeIcon : <Close />}
-      </div>
+      </View>
     )
   }
 
