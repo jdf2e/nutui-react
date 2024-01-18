@@ -167,7 +167,7 @@ const App = () => {
           className="test-dialog"
           title="Top with close button"
           visible={visible8}
-          closeable
+          closeIcon
           onConfirm={() => setVisible8(false)}
           onCancel={() => setVisible8(false)}
         >
@@ -183,7 +183,6 @@ const App = () => {
           className="test-dialog"
           title="Customize the top close button"
           visible={visible9}
-          closeable
           closeIcon={<ArrowCornerLeft width="16px" height="16px" />}
           closeIconPosition="top-left"
           onConfirm={() => setVisible9(false)}
@@ -231,6 +230,8 @@ export default App;
 | onClose | Turn off the callback, and the pop -up window will be triggered in any case | `() => void` | `-` |
 | onClick | Click yourself to call back | `() => void` | `-` |
 | onOverlayClick | Click Overlay | `() => void` | `-` |
+| closeIconPosition | Close button position | `top-left` \| `top-right` | `top-right` |
+| closeIcon | Close button | `boolean \| ReactNode` | `false` |
 
 It should be noted that for the Dialog created by instructive, ** will not perceive the re-rendering of the parent component and the update of the state in it**, so the following writing is completely wrong:
 

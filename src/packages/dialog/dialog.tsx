@@ -26,9 +26,8 @@ const defaultProps = {
   disableConfirmButton: false,
   footerDirection: 'horizontal',
   lockScroll: true,
-  closeable: false,
   closeIconPosition: 'top-right',
-  closeIcon: null,
+  closeIcon: false,
   beforeCancel: () => true,
   beforeClose: () => true,
 } as DialogProps
@@ -48,7 +47,6 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
     closeOnOverlayClick,
     confirmText,
     cancelText,
-    closeable,
     closeIconPosition,
     closeIcon,
     onClose,
@@ -107,7 +105,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
   }
 
   const renderCloseIcon = () => {
-    if (!closeable) return null
+    if (!closeIcon) return null
     const handleCancel = () => {
       if (!beforeCancel?.()) return
       if (!beforeClose?.()) return

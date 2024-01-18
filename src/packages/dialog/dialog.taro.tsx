@@ -33,9 +33,8 @@ const defaultProps = {
   disableConfirmButton: false,
   footerDirection: 'horizontal',
   lockScroll: true,
-  closeable: false,
   closeIconPosition: 'top-right',
-  closeIcon: null,
+  closeIcon: false,
   beforeCancel: () => true,
   beforeClose: () => true,
   onOverlayClick: () => true,
@@ -69,7 +68,6 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
       confirmText,
       cancelText,
       overlay,
-      closeable,
       closeIconPosition,
       closeIcon,
       onClose,
@@ -139,7 +137,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
   }
 
   const renderCloseIcon = () => {
-    if (!closeable) return null
+    if (!closeIcon) return null
     const handleCancel = () => {
       if (!beforeCancel?.()) return
       if (!beforeClose?.()) return

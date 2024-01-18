@@ -179,7 +179,7 @@ const App = () => {
           className="test-dialog"
           title="顶部带关闭按钮"
           visible={visible8}
-          closeable
+          closeIcon
           onConfirm={() => setVisible8(false)}
           onCancel={() => setVisible8(false)}
         >
@@ -195,7 +195,6 @@ const App = () => {
           className="test-dialog"
           title="自定义顶部关闭按钮"
           visible={visible9}
-          closeable
           closeIcon={<ArrowCornerLeft width="16px" height="16px" />}
           closeIconPosition="top-left"
           onConfirm={() => setVisible9(false)}
@@ -243,6 +242,8 @@ export default App;
 | onClose | 关闭回调，任何情况关闭弹窗都会触发 | `() => void` | `-` |
 | onClick | 点击自身回调 | `() => void` | `-` |
 | onOverlayClick | 点击蒙层触发 | `() => void` | `-` |
+| closeIconPosition | 关闭按钮位置 | `top-left` \| `top-right` | `top-right` |
+| closeIcon | 关闭按钮 | `boolean \| ReactNode` | `false` |
 
 ### Methods
 | 方法名 | 说明 | 类型 |

@@ -21,7 +21,7 @@ interface T {
   confirmText: string
   cancelText: string
   header: string
-  closeable: string
+  closeIcon: string
   customClose: string
 }
 
@@ -43,7 +43,7 @@ const DialogDemo = () => {
       confirmText: '确定',
       cancelText: '取消',
       header: '顶部带插图',
-      closeable: '顶部带关闭按钮',
+      closeIcon: '顶部带关闭按钮',
       customClose: '自定义顶部关闭按钮',
     },
     'en-US': {
@@ -63,7 +63,7 @@ const DialogDemo = () => {
       confirmText: 'confirm',
       cancelText: 'cancel',
       header: 'Top with illustration',
-      closeable: 'Top with close button',
+      closeIcon: 'Top with close button',
       customClose: 'Customize the top close button',
     },
   })
@@ -202,16 +202,16 @@ const DialogDemo = () => {
           {translated.content}
         </Dialog>
         <Cell
-          title={translated.closeable}
+          title={translated.closeIcon}
           onClick={() => {
             setVisible9(true)
           }}
         />
         <Dialog
           className="test-dialog"
-          title={translated.closeable}
+          title={translated.closeIcon}
           visible={visible9}
-          closeable
+          closeIcon
           onConfirm={() => setVisible9(false)}
           onCancel={() => setVisible9(false)}
         >
@@ -227,7 +227,6 @@ const DialogDemo = () => {
           className="test-dialog"
           title={translated.customClose}
           visible={visible10}
-          closeable
           closeIcon={<ArrowCornerLeft width="16px" height="16px" />}
           closeIconPosition="top-left"
           onConfirm={() => setVisible10(false)}

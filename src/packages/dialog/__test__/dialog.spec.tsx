@@ -81,13 +81,13 @@ test('dialog cancelText confirmText', async () => {
   expect(footerCancelEle).toHaveTextContent('取消文案自定义')
 })
 
-test('dialog closeable equals true', async () => {
+test('dialog closeIcon equals true', async () => {
   const { container } = render(
     <Dialog
       visible
       cancelText="取消文案自定义"
       confirmText="确定文案自定义"
-      closeable
+      closeIcon
     />
   )
 
@@ -103,7 +103,7 @@ test('dialog close icon  position adjustment', async () => {
       visible
       cancelText="取消文案自定义"
       confirmText="确定文案自定义"
-      closeable
+      closeIcon
       closeIconPosition="top-left"
       onClose={onClose}
       onCancel={onCancel}
