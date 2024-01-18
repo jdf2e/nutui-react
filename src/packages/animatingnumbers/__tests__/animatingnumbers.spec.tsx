@@ -40,7 +40,7 @@ test('test aysnc value and  duration props', async () => {
     value = `${Math.floor(Math.random() * 999999)}.${Math.floor(
       Math.random() * 89 + 10
     )}`
-    rerender(<AnimatingNumbers.CountUp value={value} duration={0} />)
+    rerender(<AnimatingNumbers.CountUp value={value} duration={0} length={6} />)
     jest.runAllTimers()
     await waitFor(() => {
       const listNumbers2 = container.querySelectorAll('.nut-countup-number')
