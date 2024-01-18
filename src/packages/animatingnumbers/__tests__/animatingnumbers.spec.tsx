@@ -36,16 +36,19 @@ test('test aysnc value and  duration props', async () => {
     )
   })
 
-  value = `${Math.floor(Math.random() * 999999)}.${Math.floor(
-    Math.random() * 89 + 10
-  )}`
-  rerender(<AnimatingNumbers.CountUp value={value} duration={0} />)
-  await waitFor(() => {
-    const listNumbers2 = container.querySelectorAll('.nut-countup-number')
-    const lastlen = value.length - 1
-    const lastNumber = Number(value.slice(lastlen))
-    const percentage = lastNumber === 0 ? 50 : 5 * lastNumber
-    const style = `transition: transform 0s ease-in-out; transform: translate(${0}, -${percentage}%); webkit-transform: translate(0, -${percentage}%);`
-    expect(listNumbers2[7]).toHaveAttribute('style', style)
-  })
+  for (let i = 0; i < 5; i++) {
+    value = `${Math.floor(Math.random() * 999999)}.${Math.floor(
+      Math.random() * 89 + 10
+    )}`
+    rerender(<AnimatingNumbers.CountUp value={value} duration={0} />)
+    jest.runAllTimers()
+    await waitFor(() => {
+      const listNumbers2 = container.querySelectorAll('.nut-countup-number')
+      const lastlen = value.length - 1
+      const lastNumber = Number(value.slice(lastlen))
+      const percentage = lastNumber === 0 ? 50 : 5 * lastNumber
+      const style = `transition: transform 0s ease-in-out; transform: translate(${0}, -${percentage}%); webkit-transform: translate(0, -${percentage}%);`
+      expect(listNumbers2[7]).toHaveAttribute('style', style)
+    })
+  }
 })
