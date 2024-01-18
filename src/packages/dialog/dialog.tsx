@@ -7,14 +7,14 @@ import confirm from './confirm'
 import { DialogWrap } from './dialogwrap'
 import { useConfig } from '@/packages/configprovider'
 import {
-  BasicDialogProps,
+  DialogBasicProps,
   DialogReturnProps,
   DialogComponent,
-  ConfirmProps,
+  DialogConfirmProps,
 } from './config'
 import { ComponentDefaults } from '@/utils/typings'
 
-export type DialogProps = BasicDialogProps
+export type DialogProps = DialogBasicProps
 const defaultProps = {
   ...ComponentDefaults,
   confirmText: '',
@@ -140,11 +140,11 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
 
 export const Dialog: DialogComponent = forwardRef(BaseDialog) as DialogComponent
 
-Dialog.confirm = (props: ConfirmProps): DialogReturnProps => {
+Dialog.confirm = (props: DialogConfirmProps): DialogReturnProps => {
   return confirm(props)
 }
 ;['alert'].forEach((type) => {
-  ;(Dialog as any)[type] = (props: ConfirmProps) => {
+  ;(Dialog as any)[type] = (props: DialogConfirmProps) => {
     return confirm({
       ...props,
       isNotice: false,

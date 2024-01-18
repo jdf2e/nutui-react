@@ -7,7 +7,9 @@ export type DialogConfigType = {
   simple?: boolean
 }
 
-export interface BasicDialogProps extends BasicComponent {
+export type DialogCloseIconPositionType = 'top-right' | 'top-left'
+
+export interface DialogBasicProps extends BasicComponent {
   visible?: boolean
   title?: ReactNode
   content?: ReactNode
@@ -22,7 +24,7 @@ export interface BasicDialogProps extends BasicComponent {
   closeOnOverlayClick?: boolean
   footerDirection?: string
   lockScroll?: boolean
-  closeIconPosition?: 'top-right' | 'top-left'
+  closeIconPosition?: DialogCloseIconPositionType
   closeIcon?: boolean | ReactNode
   beforeClose?: () => boolean
   beforeCancel?: () => boolean
@@ -34,11 +36,11 @@ export interface BasicDialogProps extends BasicComponent {
 }
 
 export type DialogReturnProps = {
-  update: (newConfig: ConfirmProps) => void
+  update: (newConfig: DialogConfirmProps) => void
   close: () => void
 }
 
-export interface ConfirmProps extends BasicDialogProps {
+export interface DialogConfirmProps extends DialogBasicProps {
   content?: ReactNode
   icon?: ReactNode | null
   isNotice?: boolean
@@ -46,9 +48,9 @@ export interface ConfirmProps extends BasicDialogProps {
 }
 
 export interface DialogComponent
-  extends ForwardRefExoticComponent<PropsWithChildren<BasicDialogProps>> {
-  confirm: (props: ConfirmProps) => DialogReturnProps
-  alert: (props: ConfirmProps) => DialogReturnProps
+  extends ForwardRefExoticComponent<PropsWithChildren<DialogBasicProps>> {
+  confirm: (props: DialogConfirmProps) => DialogReturnProps
+  alert: (props: DialogConfirmProps) => DialogReturnProps
   config: (config: DialogConfigType) => void
   destroyAll: () => void
 }

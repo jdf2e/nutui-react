@@ -5,7 +5,7 @@ import { CSSTransition } from 'react-transition-group'
 import { View } from '@tarojs/components'
 import { Close } from '@nutui/icons-react-taro'
 import Button from '@/packages/button/index.taro'
-import { BasicDialogProps } from './config'
+import { DialogBasicProps } from './config'
 import { Content } from './content.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import Overlay from '@/packages/overlay/index.taro'
@@ -18,7 +18,7 @@ import {
 import { BasicComponent } from '@/utils/typings'
 import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
 
-export type DialogProps = BasicDialogProps & BasicComponent
+export type DialogProps = DialogBasicProps & BasicComponent
 const defaultProps = {
   title: '',
   content: '',
