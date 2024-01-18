@@ -99,7 +99,7 @@ const ButtonDemo = () => {
       '8dab2f66': 'Danger Button',
       cfbdc781: 'Warning button',
       c3a3a1d2: 'Success Button',
-      e51e4582: 'Fill',
+      e51e4582: 'Fill Button',
       '7db1a8b2': 'Disabled State',
       a52bef0c: 'Load State',
       d04fcbda: 'Loading',
@@ -117,54 +117,43 @@ const ButtonDemo = () => {
     },
   })
 
+  const marginStyle = { margin: 8 }
   const [loading, setLoading] = useState(false)
   return (
     <>
       <div className="demo">
         <h2>{translated.ce5c5446}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
-          <Button
-            className="aa"
-            style={{ margin: 8 }}
-            type="primary"
-            shape="round"
-          >
+          <Button style={marginStyle} type="primary">
             {translated.c38a08ef}
           </Button>
-          <Button
-            className="aa"
-            style={{ margin: 8 }}
-            type="info"
-            shape="round"
-          >
+          <Button style={marginStyle} type="info">
             {translated.b840c88f}
           </Button>
-          <Button shape="round" style={{ margin: 8 }}>
-            {translated.a74a1fd4}
-          </Button>
-          <Button type="danger" style={{ margin: 8 }} shape="round">
+          <Button style={marginStyle}>{translated.a74a1fd4}</Button>
+          <Button type="danger" style={marginStyle}>
             {translated['8dab2f66']}
           </Button>
-          <Button type="warning" style={{ margin: 8 }}>
+          <Button type="warning" style={marginStyle}>
             {translated.cfbdc781}
           </Button>
-          <Button type="success" style={{ margin: 8 }}>
+          <Button type="success" style={marginStyle}>
             {translated.c3a3a1d2}
           </Button>
         </Cell>
 
         <h2>{translated.e51e4582}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
-          <Button fill="solid" style={{ margin: 8 }}>
+          <Button fill="solid" style={marginStyle}>
             Solid
           </Button>
-          <Button type="primary" fill="outline" style={{ margin: 8 }}>
+          <Button type="primary" fill="outline" style={marginStyle}>
             Outline
           </Button>
-          <Button type="primary" fill="dashed" style={{ margin: 8 }}>
+          <Button type="primary" fill="dashed" style={marginStyle}>
             Dashed
           </Button>
-          <Button fill="none" style={{ margin: 8 }}>
+          <Button fill="none" style={marginStyle}>
             None
           </Button>
         </Cell>
@@ -175,7 +164,7 @@ const ButtonDemo = () => {
             type="primary"
             icon={<Star />}
             rightIcon={<Star />}
-            style={{ margin: 8 }}
+            style={marginStyle}
           >
             {translated['60a53514']}
           </Button>
@@ -184,7 +173,7 @@ const ButtonDemo = () => {
             fill="outline"
             icon={<Star />}
             rightIcon={<Star />}
-            style={{ margin: 8 }}
+            style={marginStyle}
           >
             {translated['60a53514']}
           </Button>
@@ -193,7 +182,7 @@ const ButtonDemo = () => {
             fill="dashed"
             icon={<Star />}
             rightIcon={<Star />}
-            style={{ margin: 8 }}
+            style={marginStyle}
           >
             {translated['60a53514']}
           </Button>
@@ -239,9 +228,7 @@ const ButtonDemo = () => {
             type="default"
             icon={<Star />}
             rightIcon={<Star />}
-            style={{
-              margin: 8,
-            }}
+            style={marginStyle}
           >
             {translated['60a53514']}
           </Button>
@@ -250,27 +237,26 @@ const ButtonDemo = () => {
             fill="outline"
             type="primary"
             icon={<Plus width="20" />}
-            style={{ margin: 8 }}
+            style={marginStyle}
           />
           <Button
             fill="outline"
             type="primary"
             icon={<Plus width="20" />}
-            style={{ margin: 8 }}
+            style={marginStyle}
           />
           <Button
             type="primary"
             fill="dashed"
             icon={<Plus width="20" />}
-            style={{ margin: 8 }}
+            style={marginStyle}
           />
           <Button
-            shape="round"
             type="primary"
             size="large"
             icon={<Star width={20} height={20} />}
             rightIcon={<Star width={20} height={20} />}
-            style={{ margin: 8 }}
+            style={marginStyle}
           >
             {translated['60a53514']}
           </Button>
@@ -283,7 +269,7 @@ const ButtonDemo = () => {
             type="primary"
             icon={<Star />}
             rightIcon={<Star />}
-            style={{ margin: 8 }}
+            style={marginStyle}
           >
             {translated['7db1a8b2']}
           </Button>
@@ -293,7 +279,7 @@ const ButtonDemo = () => {
             fill="outline"
             icon={<Star />}
             rightIcon={<Star />}
-            style={{ margin: 8 }}
+            style={marginStyle}
           >
             {translated['7db1a8b2']}
           </Button>
@@ -303,7 +289,7 @@ const ButtonDemo = () => {
             fill="dashed"
             icon={<Star />}
             rightIcon={<Star />}
-            style={{ margin: 8 }}
+            style={marginStyle}
           >
             {translated['60a53514']}
           </Button>
@@ -312,7 +298,7 @@ const ButtonDemo = () => {
             fill="solid"
             icon={<Star />}
             rightIcon={<Star />}
-            style={{ margin: 8 }}
+            style={marginStyle}
           >
             {translated['7db1a8b2']}
           </Button>
@@ -348,9 +334,7 @@ const ButtonDemo = () => {
             disabled
             icon={<Star />}
             rightIcon={<Star />}
-            style={{
-              margin: 8,
-            }}
+            style={marginStyle}
           >
             {translated['7db1a8b2']}
           </Button>
@@ -360,55 +344,44 @@ const ButtonDemo = () => {
             fill="outline"
             type="primary"
             icon={<Plus width="20" />}
-            style={{ margin: 8 }}
+            style={marginStyle}
           />
           <Button
             disabled
             type="primary"
             icon={<Plus width="20" />}
-            style={{ margin: 8 }}
+            style={marginStyle}
           />
           <Button
             disabled
             type="primary"
             fill="dashed"
             icon={<Plus width="20" />}
-            style={{ margin: 8 }}
+            style={marginStyle}
           />
           <Button
             disabled
-            shape="round"
             type="primary"
             size="large"
             icon={<Star width={20} height={20} />}
             rightIcon={<Star width={20} height={20} />}
-            style={{ margin: 8 }}
+            style={marginStyle}
           >
             {translated['7db1a8b2']}
           </Button>
         </Cell>
         <h2>{translated.ce5c5447}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
-          <Button
-            className="aa"
-            style={{ margin: 8 }}
-            type="primary"
-            shape="square"
-          >
+          <Button style={marginStyle} type="primary" shape="square">
             {translated.b840c881}
           </Button>
-          <Button
-            className="aa"
-            style={{ margin: 8 }}
-            type="primary"
-            shape="round"
-          >
+          <Button style={marginStyle} type="primary">
             {translated.b840c882}
           </Button>
         </Cell>
         <h2>{translated.a52bef0c}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
-          <Button loading type="warning" style={{ margin: 8 }}>
+          <Button loading type="warning" style={marginStyle}>
             {translated.d04fcbda}
           </Button>
           <Button
@@ -420,7 +393,7 @@ const ButtonDemo = () => {
               }, 1500)
               setLoading(!loading)
             }}
-            style={{ margin: 8 }}
+            style={marginStyle}
           >
             Click me!
           </Button>
@@ -431,14 +404,14 @@ const ButtonDemo = () => {
           <Button size="large" type="primary">
             {translated.b8a453e3}
           </Button>
-          <Button type="primary" style={{ margin: 8 }}>
+          <Button type="primary" style={marginStyle}>
             {translated['248be9e1']}
           </Button>
-          <Button style={{ margin: 8 }}>{translated['248be9e1']}</Button>
-          <Button size="small" style={{ margin: 8 }} type="primary">
+          <Button style={marginStyle}>{translated['248be9e1']}</Button>
+          <Button size="small" style={marginStyle} type="primary">
             {translated.ea3d02f2}
           </Button>
-          <Button size="mini" style={{ margin: 8 }} type="primary">
+          <Button size="mini" style={marginStyle} type="primary">
             {translated.ea379d01}
           </Button>
         </Cell>
@@ -452,19 +425,19 @@ const ButtonDemo = () => {
         <h2>{translated['781b07fd']}</h2>
 
         <Cell style={{ flexWrap: 'wrap' }}>
-          <Button color="blue" style={{ margin: 8 }}>
+          <Button color="blue" style={marginStyle}>
             {translated['1076d771']}
           </Button>
-          <Button fill="outline" color="#7232dd" style={{ margin: 8 }}>
+          <Button fill="outline" color="#7232dd" style={marginStyle}>
             {translated['1076d771']}
           </Button>
-          <Button color="rgba(10,101,208,0.75)" style={{ margin: 8 }}>
+          <Button color="rgba(10,101,208,0.75)" style={marginStyle}>
             {translated['1076d771']}
           </Button>
           <Button
             type="primary"
             color="linear-gradient(to right, #ff6034, #ee0a24)"
-            style={{ margin: 8 }}
+            style={marginStyle}
           >
             {translated['6ab47cd2']}
           </Button>

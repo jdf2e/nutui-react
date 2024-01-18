@@ -16,19 +16,19 @@ export type ButtonShape = 'square' | 'round'
 export type ButtonFill = 'solid' | 'outline' | 'dashed' | 'none'
 
 export interface ButtonProps extends BasicComponent {
-  color: string
-  shape: ButtonShape
-  type: ButtonType
-  size: ButtonSize
-  fill: ButtonFill
-  block: boolean
-  loading: boolean
-  disabled: boolean
-  icon: React.ReactNode
-  rightIcon: React.ReactNode
+  color: string //
+  shape: ButtonShape //
+  type: ButtonType //
+  size: ButtonSize //
+  fill: ButtonFill //
+  block: boolean //
+  loading: boolean //
+  disabled: boolean //
+  icon: React.ReactNode //
+  rightIcon: React.ReactNode //
   id: string
   nativeType: 'submit' | 'reset' | 'button'
-  onClick: (e: MouseEvent<HTMLButtonElement>) => void
+  onClick: (e: MouseEvent<HTMLButtonElement>) => void //
 }
 
 const prefixCls = 'nut-button'
