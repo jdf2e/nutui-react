@@ -23,7 +23,7 @@ import { TextArea } from '@nutui/nutui-react';
 const App = () => {
   return (
     <TextArea
-      defeaultValue="基礎用法"
+      defaultValue="基礎用法"
       className="text-1"
       style={{ fontSize: '12px' }}
       onChange={(value) => console.log('change', value)}
