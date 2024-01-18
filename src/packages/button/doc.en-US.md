@@ -411,7 +411,7 @@ export default App;
 
 :::
 
-### Block
+### Block-level elements
 
 Buttons are inline block-level elements by default, and the 'block' attribute allows you to set the element type of the button to a block-level element, which is commonly used to implement banner buttons.
 
