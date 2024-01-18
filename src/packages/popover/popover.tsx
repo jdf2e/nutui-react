@@ -167,7 +167,6 @@ export const Popover: FunctionComponent<
         ? (document.querySelector(`#${targetId}`) as Element)
         : (popoverRef.current as Element)
     )
-    console.log(rect.top, document.documentElement.scrollTop)
     setRootPosition({
       width: rect.width,
       height: rect.height,
