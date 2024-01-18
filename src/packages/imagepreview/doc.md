@@ -329,6 +329,51 @@ export default App;
 
 :::
 
+### 关闭按钮
+
+:::demo
+
+```tsx
+import React, { useState } from 'react';
+import { ImagePreview, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  const images = [
+    {
+      src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/18629/34/3378/144318/5c263f64Ef0e2bff0/0d650e0aa2e852ee.jpg'
+    },
+    {
+      src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/26597/30/4870/174583/5c35c5d2Ed55eedc6/50e27870c25e7a82.png'
+    },
+    {
+      src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/9542/17/12873/201687/5c3c4362Ea9eb757d/60026b40a9d60d85.jpg'
+    },
+    {
+      src: '//m.360buyimg.com/mobilecms/s750x366_jfs/t1/30042/36/427/82951/5c3bfdabE3faf2f66/9adca782661c988c.jpg'
+    }
+  ];
+  const [showPreview6, setShowPreview6] = useState(false);
+
+  const showFn6 = () => {
+    setShowPreview6(true)
+  }
+
+  const hideFn6 = () => {
+    setShowPreview6(false)
+  }
+
+  return (
+    <>
+      <ImagePreview images={images} visible={showPreview6} onClose={hideFn6} closeIcon />
+      <Cell title="关闭按钮"  onClick={showFn6} />
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
 ## ImagePreview
 
 ### Props
@@ -344,5 +389,6 @@ export default App;
 | indicator | 分页指示器是否展示 | `boolean` | `false` |
 | indicatorColor | 分页指示器选中的颜色 | `string` | `#fff` |
 | closeOnContentClick | 点击图片可以退出预览 | `boolean` | `false` |
+| closeIcon | 关闭按钮 | `boolean` \| `ReactNode` | `false` |
 | onChange | 切换时触发 | `(value:number) => void` | `-` |
 | onClose | 点击遮罩关闭图片预览时触发 | `() => void` | `-` |
