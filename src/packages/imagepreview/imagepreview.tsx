@@ -23,6 +23,8 @@ interface Store {
   originScale: number
 }
 
+export type ImagePreviewCloseIconPosition = 'top-right' | 'top-left' | 'bottom'
+
 export interface ImagePreviewProps extends BasicComponent {
   images: Array<{
     src: string
@@ -45,7 +47,7 @@ export interface ImagePreviewProps extends BasicComponent {
   indicator: boolean
   indicatorColor: string
   closeIcon: boolean | ReactNode
-  closeIconPosition: 'top-right' | 'top-left' | 'bottom'
+  closeIconPosition: ImagePreviewCloseIconPosition
   onChange: (value: number) => void
   onClose: () => void
 }
