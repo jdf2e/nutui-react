@@ -53,7 +53,7 @@ const CircleProgressDemo = () => {
     },
   })
 
-  const [percent, setPercent] = useState(30)
+  const [percent, setPercent] = useState(20)
 
   const setReduceVal = () => {
     if (percent - 20 <= 0) {
