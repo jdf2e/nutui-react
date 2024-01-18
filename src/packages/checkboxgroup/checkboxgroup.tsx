@@ -4,27 +4,32 @@ import { RadioGroupOptionType } from '@/packages/radiogroup/types'
 import { Checkbox } from '../checkbox/checkbox'
 import Context from './context'
 import { usePropsValue } from '@/utils/use-props-value'
-
-export type CheckboxLabelPosition = 'left' | 'right'
-export type CheckboxDirection = 'horizontal' | 'vertical'
+import {
+  CheckboxDirection,
+  CheckboxLabelPosition,
+  CheckboxLimit,
+} from '@/packages/checkboxgroup/types'
 
 export interface CheckboxGroupProps {
   disabled?: boolean
   value?: string[]
   defaultValue?: string[]
   max: number | undefined
-  min?: number | undefined
+  min: number | undefined
   labelPosition: CheckboxLabelPosition
   direction: CheckboxDirection
   options: RadioGroupOptionType[]
   onChange: (value: string[]) => void
+  onLimit: (type: CheckboxLimit) => void
 }
 
 const defaultProps = {
   max: undefined,
+  min: undefined,
   labelPosition: 'right',
   direction: 'vertical',
   onChange: (value: string[]) => {},
+  onLimit: (type: 'max' | 'min') => {},
   options: [],
 } as CheckboxGroupProps
 
@@ -35,8 +40,8 @@ export const CheckboxGroup = React.forwardRef(
       Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>,
     ref
   ) => {
-    const { children } = { ...defaultProps, ...props }
     const {
+      children,
       className,
       disabled,
       onChange,
@@ -44,11 +49,12 @@ export const CheckboxGroup = React.forwardRef(
       defaultValue,
       max,
       min,
+      onLimit,
       labelPosition,
       direction,
       options,
       ...rest
-    } = props
+    } = { ...defaultProps, ...props }
 
     useImperativeHandle<any, any>(ref, () => ({
       toggle(state: boolean) {
@@ -103,6 +109,7 @@ export const CheckboxGroup = React.forwardRef(
           labelPosition: labelPosition || 'right',
           disabled,
           max,
+          onLimit,
           value: _value,
           check: (value: string) => {
             const combined: string[] = [..._value, value]
@@ -110,7 +117,9 @@ export const CheckboxGroup = React.forwardRef(
           },
           uncheck: (value: string) => {
             const reduced = _value.filter((item) => item !== value)
-            if (min !== undefined && reduced.length < min) return
+            if (min !== undefined && reduced.length < min) {
+              return onLimit?.('min')
+            }
             setValue(reduced)
           },
         }}

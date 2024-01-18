@@ -11,6 +11,7 @@ import CheckboxGroup from '@/packages/checkboxgroup/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Context from '../checkboxgroup/context'
 import { usePropsValue } from '@/utils/use-props-value'
+import { CheckboxLabelPosition } from '@/packages/checkboxgroup/types'
 
 export type CheckboxShape = 'button' | 'round'
 
@@ -19,7 +20,7 @@ export interface CheckboxProps extends BasicComponent {
   disabled: boolean
   defaultChecked: boolean
   shape: CheckboxShape
-  labelPosition: 'left' | 'right'
+  labelPosition: CheckboxLabelPosition
   icon: ReactNode
   activeIcon: ReactNode
   indeterminateIcon: ReactNode
@@ -164,7 +165,9 @@ export const Checkbox: FunctionComponent<
     const latestChecked = !innerChecked
     // 判断是不是有 context 和 max，有的话需要判断是不是超过最大限制
     if (ctx && ctx.max !== undefined) {
-      if (latestChecked && ctx.value.length >= ctx.max) return
+      if (latestChecked && ctx.value.length >= ctx.max) {
+        return ctx.onLimit?.('max')
+      }
     }
     setChecked(latestChecked)
   }
