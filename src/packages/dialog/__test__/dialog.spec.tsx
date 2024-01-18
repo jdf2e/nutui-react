@@ -80,3 +80,32 @@ test('dialog cancelText confirmText', async () => {
   expect(footerOkEle).toHaveTextContent('确定文案自定义')
   expect(footerCancelEle).toHaveTextContent('取消文案自定义')
 })
+
+test('dialog closeable equals true', async () => {
+  const { container } = render(
+    <Dialog
+      visible
+      cancelText="取消文案自定义"
+      confirmText="确定文案自定义"
+      closeable
+    />
+  )
+
+  const closeBtn = container.querySelector('.nut-dialog-close')
+  expect(closeBtn).toBeInTheDocument()
+})
+
+test('dialog closeIcon position adjustment', async () => {
+  const { container } = render(
+    <Dialog
+      visible
+      cancelText="取消文案自定义"
+      confirmText="确定文案自定义"
+      closeable
+      closeIconPosition="top-left"
+    />
+  )
+
+  const closeBtn = container.querySelector('.nut-dialog-close-top-left')
+  expect(closeBtn).toBeInTheDocument()
+})
