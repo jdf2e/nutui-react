@@ -4,8 +4,10 @@ import React, {
   useState,
   useRef,
   TouchEvent,
+  ReactNode,
 } from 'react'
 import classNames from 'classnames'
+import { MaskClose } from '@nutui/icons-react'
 import Popup from '@/packages/popup'
 import Image from '@/packages/image'
 import Video from '@/packages/video'
@@ -42,6 +44,7 @@ export interface ImagePreviewProps extends BasicComponent {
   closeOnContentClick: boolean
   indicator: boolean
   indicatorColor: string
+  closeIcon: boolean | ReactNode
   onChange: (value: number) => void
   onClose: () => void
 }
@@ -56,6 +59,7 @@ const defaultProps = {
   closeOnContentClick: false,
   indicator: false,
   indicatorColor: '#fff',
+  closeIcon: false,
   onChange: (value: number) => {},
   onClose: () => {},
 } as ImagePreviewProps
@@ -73,9 +77,9 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     indicator,
     autoPlay,
     closeOnContentClick,
+    closeIcon,
     onClose,
   } = props
-
   const classPrefix = 'nut-imagepreview'
   const ref = useRef(null)
   const [innerNo, setInnerNo] = usePropsValue<number>({
@@ -301,6 +305,11 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
       <div className={`${classPrefix}-index`}>
         {active}/{(images ? images.length : 0) + (videos ? videos.length : 0)}
       </div>
+      {closeIcon !== false ? (
+        <div className={`${classPrefix}-close`} onClick={onCloseInner}>
+          {closeIcon === true ? <MaskClose /> : closeIcon}
+        </div>
+      ) : null}
     </Popup>
   )
 }

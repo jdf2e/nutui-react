@@ -30,6 +30,16 @@
     }
   }
 
+  &-close {
+    position: fixed;
+    display: flex;
+    z-index: 2002;
+    top: 50px;
+    right: 20px;
+    background: transparent;
+    color: $white;
+  }
+
   &-pop {
     height: 100%;
     background: transparent !important;

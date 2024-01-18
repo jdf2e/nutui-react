@@ -12,6 +12,7 @@ interface T {
   withPagination: string
   withVideos: string
   thumb: string
+  closeIcon: string
 }
 
 const images = [
@@ -62,6 +63,7 @@ const ImagePreviewDemo = () => {
       withPagination: '设置轮播指示器及颜色',
       withVideos: '视频、图片预览',
       thumb: '点击缩略图切换',
+      closeIcon: '关闭按钮',
     },
     'en-US': {
       basic: 'Basic usage',
@@ -80,6 +82,7 @@ const ImagePreviewDemo = () => {
   const [showPreview3, setShowPreview3] = useState(false)
   const [showPreview4, setShowPreview4] = useState(false)
   const [showPreview5, setShowPreview5] = useState(false)
+  const [showPreview6, setShowPreview6] = useState(false)
 
   const [init1, setInit1] = useState<any>(1)
   const [init2, setInit2] = useState<any>(2)
@@ -106,6 +109,9 @@ const ImagePreviewDemo = () => {
   const showFn5 = () => {
     setShowPreview5(true)
   }
+  const showFn6 = () => {
+    setShowPreview6(true)
+  }
 
   const hideFn0 = () => {
     setShowPreview0(false)
@@ -129,6 +135,10 @@ const ImagePreviewDemo = () => {
   const hideFn5 = () => {
     setShowPreview5(false)
   }
+  const hideFn6 = () => {
+    setShowPreview6(false)
+  }
+
   return (
     <>
       <Header />
@@ -218,6 +228,16 @@ const ImagePreviewDemo = () => {
           onClose={hideFn4}
         />
         <Cell title={translated.withVideos} onClick={showFn4} />
+
+        <h2>{translated.closeIcon}</h2>
+        <ImagePreview
+          autoPlay={false}
+          images={images}
+          visible={showPreview6}
+          closeIcon
+          onClose={hideFn6}
+        />
+        <Cell title={translated.closeIcon} onClick={showFn6} />
       </div>
     </>
   )

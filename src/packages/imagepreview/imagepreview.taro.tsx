@@ -4,10 +4,12 @@ import React, {
   useState,
   useRef,
   TouchEvent,
+  ReactNode,
 } from 'react'
 import Taro from '@tarojs/taro'
 import { Video as TaroVideo } from '@tarojs/components'
 import classNames from 'classnames'
+import { MaskClose } from '@nutui/icons-react-taro'
 import Popup from '@/packages/popup/index.taro'
 import Image from '@/packages/image/index.taro'
 import Swiper from '@/packages/swiper/index.taro'
@@ -44,6 +46,7 @@ export interface ImagePreviewProps extends BasicComponent {
   closeOnContentClick: boolean
   indicator: boolean
   indicatorColor: string
+  closeIcon: boolean | ReactNode
   showMenuByLongpress: boolean
   onChange: (value: number) => void
   onClose: () => void
@@ -59,6 +62,7 @@ const defaultProps = {
   closeOnContentClick: false,
   indicator: false,
   indicatorColor: '#fff',
+  closeIcon: false,
   showMenuByLongpress: false,
   onChange: (value: number) => {},
   onClose: () => {},
@@ -77,6 +81,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     indicator,
     autoPlay,
     closeOnContentClick,
+    closeIcon,
     showMenuByLongpress,
     onClose,
   } = props
@@ -323,6 +328,11 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
       <div className={`${classPrefix}-index`}>
         {active}/{(images ? images.length : 0) + (videos ? videos.length : 0)}
       </div>
+      {closeIcon !== false ? (
+        <div className={`${classPrefix}-close`} onClick={onCloseInner}>
+          {closeIcon === true ? <MaskClose /> : closeIcon}
+        </div>
+      ) : null}
     </Popup>
   )
 }
