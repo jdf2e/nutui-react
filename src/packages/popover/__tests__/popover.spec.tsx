@@ -121,15 +121,18 @@ test('render popover position33', async () => {
 })
 
 test('render position fixed ', async () => {
-  const { container } = render(
+  const close = jest.fn()
+  const click = jest.fn()
+  const { container, getByTestId } = render(
     <div
       style={{
-        position: 'fixed',
-        bottom: 10,
-        right: -10,
-        zIndex: 1000,
+        height: '200px',
+        overflowY: 'scroll',
+        position: 'relative',
       }}
+      data-testid="aa"
     >
+      <div style={{ height: '100px' }} />
       <Popover
         className="demo-popover"
         visible
@@ -137,6 +140,8 @@ test('render position fixed ', async () => {
         location="top"
         offset={[12, 20]}
         style={{ marginRight: '30px' }}
+        onClick={click}
+        onClose={close}
       >
         <Button data-testid="a" type="primary" shape="square">
           position: fixed
@@ -144,11 +149,17 @@ test('render position fixed ', async () => {
       </Popover>
     </div>
   )
-  const content = document.querySelectorAll(
-    '.nut-popover-arrow'
-  )[0] as HTMLElement
-  fireEvent.click(document.documentElement)
-  expect(content).toBeTruthy()
+  const item = document.querySelectorAll('.nut-popover-menu-item-name')
+  fireEvent.click(item[0])
+  expect(click).toBeCalled()
+  expect(close).toBeCalled()
+  fireEvent.click(getByTestId('a'))
+  await waitFor(() => {
+    fireEvent.scroll(getByTestId('aa'), { target: { scrollTop: 10 } })
+
+    const item1 = document.querySelectorAll('.nut-popover-menu-item-name')
+    expect(item1.length).toBe(3)
+  })
 })
 
 test('should emit onchoose event when clicking the action', async () => {
