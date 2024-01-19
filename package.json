@@ -49,6 +49,7 @@
     "generate:themes": "node scripts/generate-themes.js",
     "generate:themes-dev": "node scripts/generate-themes-dev.js",
     "checked": "npm run generate:file && tsc --project ./tsconfig.h5.json",
+    "changelog": "node ./scripts/generate-changelog.js",
     "dev": "vite --open --force",
     "dev:rtl": "VITE_RTL=rtl vite --open --force",
     "dev:jmapp": "VITE_APP_PROJECT_ID=jmapp vite --open --force",
