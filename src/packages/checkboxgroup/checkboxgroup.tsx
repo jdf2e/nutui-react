@@ -113,6 +113,11 @@ export const CheckboxGroup = React.forwardRef(
           value: _value,
           check: (value: string) => {
             const combined: string[] = [..._value, value]
+            if (max !== undefined) {
+              if (combined.length > max) {
+                return onLimit?.('max')
+              }
+            }
             setValue(combined)
           },
           uncheck: (value: string) => {

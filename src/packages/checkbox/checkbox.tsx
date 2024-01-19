@@ -166,12 +166,7 @@ export const Checkbox: FunctionComponent<
     if (disabled) return
     // 先转换状态
     const latestChecked = !innerChecked
-    // 判断是不是有 context 和 max，有的话需要判断是不是超过最大限制
-    if (ctx && ctx.max !== undefined) {
-      if (latestChecked && ctx.value.length >= ctx.max) {
-        return ctx.onLimit?.('max')
-      }
-    }
+
     setChecked(latestChecked)
   }
 

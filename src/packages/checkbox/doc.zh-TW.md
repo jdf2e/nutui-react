@@ -428,9 +428,9 @@ const CheckBoxDemo = () => {
       defaultValue={checkboxgroup2}
       max={3}
       min={1}
-      onChange={(value) => {
-        Toast.show(value)
-      }}
+      onLimit={(type) =>
+        Toast.show(type === 'max' ? '最多選擇3項' : '至少選擇1項')
+      }
     >
       <Checkbox value="1">
         组合复选框

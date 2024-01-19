@@ -496,9 +496,9 @@ const CheckboxDemo = () => {
             defaultValue={checkboxgroup3}
             max={3}
             min={1}
-            onChange={(value) => {
+            onLimit={(type) => {
               Taro.showToast({
-                title: value.toString(),
+                title: type === 'max' ? '最多选择3项' : '至少选择1项',
                 icon: 'none',
               })
             }}

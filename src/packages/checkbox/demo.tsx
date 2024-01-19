@@ -478,7 +478,14 @@ const CheckboxDemo = () => {
         </Cell>
         <h2>{translated.max}</h2>
         <Cell>
-          <Checkbox.Group defaultValue={checkboxgroup3} max={3} min={1}>
+          <Checkbox.Group
+            defaultValue={checkboxgroup3}
+            max={3}
+            min={1}
+            onLimit={(type) =>
+              Toast.show(type === 'max' ? '最多选择3项' : '至少选择1项')
+            }
+          >
             <Checkbox value="1">{translated.options1}</Checkbox>
             <Checkbox value="2">{translated.options1}</Checkbox>
             <Checkbox value="3">{translated.options1}</Checkbox>

@@ -426,9 +426,9 @@ const CheckBoxDemo = () => {
       defaultValue={checkboxgroup2}
       max={3}
       min={1}
-      onChange={(value) => {
-        Toast.show(value)
-      }}
+      onLimit={(type) =>
+        Toast.show(type === 'max' ? 'Choose up to 3 items' : 'Select at least 1 item')
+      }
     >
       <Checkbox value="1">
         Option 1
