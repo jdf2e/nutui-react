@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { CSSProperties, useState } from 'react'
 import { HeartFill } from '@nutui/icons-react'
 import { Rate } from './rate'
 import Cell from '@/packages/cell'
@@ -50,41 +50,46 @@ const RateDemo = () => {
   const onChange = (val: number) => {
     alert(val)
   }
+  const cellStyle: CSSProperties = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
   return (
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
-        <Cell>
+        <Cell style={cellStyle}>
           <Rate defaultValue={3} />
         </Cell>
 
         <h2>{translated.control}</h2>
-        <Cell>
+        <Cell style={cellStyle}>
           <Rate value={score} onChange={(value) => setScore(value)} />
         </Cell>
 
         <h2>{translated.halfStar}</h2>
-        <Cell>
+        <Cell style={cellStyle}>
           <Rate allowHalf defaultValue={3.5} />
         </Cell>
 
         <h2>{translated.customIcon}</h2>
-        <Cell>
+        <Cell style={cellStyle}>
           <Rate checkedIcon={<HeartFill />} defaultValue={3} />
         </Cell>
 
         <h2>{translated.customQuantity}</h2>
-        <Cell>
+        <Cell style={cellStyle}>
           <Rate count={6} defaultValue={3} />
         </Cell>
 
         <h2>{translated.minimumNumber}</h2>
-        <Cell>
+        <Cell style={cellStyle}>
           <Rate defaultValue={2} min={3} onChange={(num) => console.log(num)} />
         </Cell>
 
         <h2>{translated.customColor}</h2>
-        <Cell>
+        <Cell style={cellStyle}>
           <Rate
             defaultValue={3}
             checkedIcon={<HeartFill color="rgb(255, 200, 0)" />}
@@ -92,22 +97,22 @@ const RateDemo = () => {
         </Cell>
 
         <h2>{translated.disabled}</h2>
-        <Cell>
+        <Cell style={cellStyle}>
           <Rate disabled defaultValue={3} />
         </Cell>
 
         <h2>{translated.readOnly}</h2>
-        <Cell>
+        <Cell style={cellStyle}>
           <Rate defaultValue={3} readOnly />
         </Cell>
 
         <h2>{translated.event}</h2>
-        <Cell>
+        <Cell style={cellStyle}>
           <Rate defaultValue={3} onChange={onChange} />
         </Cell>
 
         <h2>{translated.touchable}</h2>
-        <Cell>
+        <Cell style={cellStyle}>
           <Rate defaultValue={3} allowHalf touchable />
         </Cell>
       </div>

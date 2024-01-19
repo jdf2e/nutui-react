@@ -8,6 +8,7 @@ import React, {
 import classNames from 'classnames'
 import { StarFill } from '@nutui/icons-react-taro'
 import { useReady } from '@tarojs/taro'
+import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
@@ -147,7 +148,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     updateRects()
   })
 
-  const onTouchStart = (e: React.TouchEvent<HTMLElement>) => {
+  const onTouchStart = (e: any) => {
     if (!touchable || readOnly || disabled) {
       return
     }
@@ -158,7 +159,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     updateRects()
   }
 
-  const onTouchMove = (e: React.TouchEvent<HTMLElement>) => {
+  const onTouchMove = (e: any) => {
     if (!touchable || readOnly || disabled) {
       return
     }
@@ -173,7 +174,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
   }
 
   return (
-    <div
+    <View
       className={classNames(
         classPrefix,
         {
@@ -182,6 +183,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
         },
         className
       )}
+      catchMove
       style={style}
       onTouchStart={onTouchStart}
       onTouchMove={onTouchMove}
@@ -216,7 +218,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
           </div>
         )
       })}
-    </div>
+    </View>
   )
 }
 

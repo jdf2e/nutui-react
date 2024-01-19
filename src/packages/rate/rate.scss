@@ -1,5 +1,6 @@
 .nut-rate {
   display: flex;
+  touch-action: pan-x;
 
   &.disabled {
     .nut-rate-item-icon {

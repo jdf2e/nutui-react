@@ -140,7 +140,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     }
   }
 
-  const onTouchStart = (e: React.TouchEvent<HTMLElement>) => {
+  const onTouchStart = (e: TouchEvent) => {
     if (!touchable || readOnly || disabled) {
       return
     }
@@ -151,7 +151,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     updateRects()
   }
 
-  const onTouchMove = (e: React.TouchEvent<HTMLElement>) => {
+  const onTouchMove = (e: TouchEvent) => {
     if (!touchable || readOnly || disabled) {
       return
     }
@@ -165,6 +165,23 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     }
   }
 
+  const rateRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    const element = rateRef.current
+    if (element) {
+      element.addEventListener('touchstart', onTouchStart, { passive: false })
+      element.addEventListener('touchmove', onTouchMove, { passive: false })
+    }
+
+    return () => {
+      if (element) {
+        element.removeEventListener('touchstart', onTouchStart)
+        element.removeEventListener('touchmove', onTouchMove)
+      }
+    }
+  }, [])
+
   return (
     <div
       className={classNames(
@@ -175,9 +192,8 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
         },
         className
       )}
+      ref={rateRef}
       style={style}
-      onTouchStart={onTouchStart}
-      onTouchMove={onTouchMove}
     >
       {countArray.map((n, index) => {
         return (
