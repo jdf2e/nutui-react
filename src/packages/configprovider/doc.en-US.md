@@ -37,33 +37,65 @@ The ConfigProvider component provides the ability to override CSS variables, and
 
 > "ConfigProvider" component is not a virtual component, it generates a "div" tag.
 
+##### Textarea default
+
 :::demo
 
 ```tsx
 import React from 'react';
-import {
-  ConfigProvider,
-  Cell,
-  Button,
-  Rate
-} from "@nutui/nutui-react";
+import { ConfigProvider, TextArea } from "@nutui/nutui-react";
 
-const darkTheme = {
-  nutuiColorPrimary: 'green',
-  nutuiColorPrimaryStop1: 'green',
-  nutuiColorPrimaryStop2: 'green',
-}
 const App = () => {
   return (
-    <ConfigProvider theme={darkTheme}>
+    <ConfigProvider>
+      <TextArea disabled showCount maxLength={20} />
+    </ConfigProvider>
+  )
+}
+
+export default App;
+```
+
+:::
+
+##### Textarea en-US
+
+:::demo
+
+```tsx
+import React from 'react';
+import { ConfigProvider, TextArea } from "@nutui/nutui-react";
+
+const App = () => {
+  return (
+    <ConfigProvider locale={enUS}>
+      <TextArea disabled showCount maxLength={20} />
+    </ConfigProvider>
+  )
+}
+
+export default App;
+```
+
+:::
+
+##### Default Theme
+
+:::demo
+
+```tsx
+import React from 'react';
+import { ConfigProvider, TextArea, Cell, Rate, Button } from "@nutui/nutui-react";
+
+const App = () => {
+  return (
+    <ConfigProvider>
       <Cell.Group>
         <Cell>
           <Rate defaultValue={3} />
         </Cell>
         <Cell>
-          <Button type="primary" size="large">
-            Submit
-          </Button>
+          <Button type="primary" size="large">Submit</Button>
         </Cell>
       </Cell.Group>
     </ConfigProvider>
@@ -72,6 +104,41 @@ const App = () => {
 
 export default App;
 ```
+
+:::
+
+##### Custom Theme
+
+:::demo
+
+```tsx
+import React from 'react';
+import { ConfigProvider, Cell, Rate, Button } from "@nutui/nutui-react";
+
+const App = () => {
+  const darkTheme = {
+    nutuiColorPrimary: 'green',
+    nutuiColorPrimaryStop1: 'green',
+    nutuiColorPrimaryStop2: 'green',
+  }
+  return (
+    <ConfigProvider theme={darkTheme}>
+      <Cell.Group>
+        <Cell>
+          <Rate defaultValue={3} />
+        </Cell>
+        <Cell>
+          <Button type="primary" size="large">Submit</Button>
+        </Cell>
+      </Cell.Group>
+    </ConfigProvider>
+  )
+}
+
+export default App;
+```
+
+:::
 
 #### CSS variables
 
@@ -111,11 +178,11 @@ page {
 
 NutUI-React provides a ConfigProvider component for global configuration of internationalized copywriting. The following languages are currently supported:
 
-*   Chinese Simplified | zh-CN
-*   Chinese Traditional (Taiwan) | zh-TW
-*   Uyghur | zh-UG
-*   English (American) | en-US
-*   Indonesian | id-ID
+* Chinese Simplified | zh-CN
+* Chinese Traditional (Taiwan) | zh-TW
+* Uyghur | zh-UG
+* English (American) | en-US
+* Indonesian | id-ID
 
 :::demo
 

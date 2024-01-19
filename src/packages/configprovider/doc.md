@@ -36,34 +36,66 @@ NutUI-React 可以通过 [CSS 变量](https://developer.mozilla.org/zh-CN/docs/W
 ConfigProvider 组件提供了覆盖 CSS 变量的能力，你需要在根节点包裹一个 ConfigProvider 组件，并通过 theme 属性来配置一些主题变量。
 
 > ConfigProvider 组件不是一个虚拟组件，它会生成一个 div 标签。
+>
+##### Textarea 默认
 
 :::demo
 
 ```tsx
 import React from 'react';
-import {
-  ConfigProvider,
-  Cell,
-  Button,
-  Rate
-} from "@nutui/nutui-react";
+import { ConfigProvider, TextArea } from "@nutui/nutui-react";
 
-const darkTheme = {
-  nutuiColorPrimary: 'green',
-  nutuiColorPrimaryStop1: 'green',
-  nutuiColorPrimaryStop2: 'green',
-}
 const App = () => {
   return (
-    <ConfigProvider theme={darkTheme}>
+    <ConfigProvider>
+      <TextArea disabled showCount maxLength={20} />
+    </ConfigProvider>
+  )
+}
+
+export default App;
+```
+
+:::
+
+##### Textarea 英文
+
+:::demo
+
+```tsx
+import React from 'react';
+import { ConfigProvider, TextArea } from "@nutui/nutui-react";
+
+const App = () => {
+  return (
+    <ConfigProvider locale={enUS}>
+      <TextArea disabled showCount maxLength={20} />
+    </ConfigProvider>
+  )
+}
+
+export default App;
+```
+
+:::
+
+##### 默认主题
+
+:::demo
+
+```tsx
+import React from 'react';
+import { ConfigProvider, TextArea, Cell, Rate, Button } from "@nutui/nutui-react";
+
+const App = () => {
+  return (
+    <ConfigProvider>
       <Cell.Group>
         <Cell>
           <Rate defaultValue={3} />
         </Cell>
         <Cell>
-          <Button type="primary" size="large">
-            提交
-          </Button>
+          <Button type="primary" size="large">提交</Button>
         </Cell>
       </Cell.Group>
     </ConfigProvider>
@@ -72,6 +104,41 @@ const App = () => {
 
 export default App;
 ```
+
+:::
+
+##### 定制主题
+
+:::demo
+
+```tsx
+import React from 'react';
+import { ConfigProvider, Cell, Rate, Button } from "@nutui/nutui-react";
+
+const App = () => {
+  const darkTheme = {
+    nutuiColorPrimary: 'green',
+    nutuiColorPrimaryStop1: 'green',
+    nutuiColorPrimaryStop2: 'green',
+  }
+  return (
+    <ConfigProvider theme={darkTheme}>
+      <Cell.Group>
+        <Cell>
+          <Rate defaultValue={3} />
+        </Cell>
+        <Cell>
+          <Button type="primary" size="large">提交</Button>
+        </Cell>
+      </Cell.Group>
+    </ConfigProvider>
+  )
+}
+
+export default App;
+```
+
+:::
 
 #### CSS 变量
 
@@ -111,11 +178,11 @@ page {
 
 NutUI-React 提供了 ConfigProvider 组件用于全局配置国际化文案。目前支持以下语言:
 
-*   简体中文 | zh-CN
-*   繁体中文（中国台湾） | zh-TW
-*   维吾尔语 ｜ zh-UG
-*   英语（美式） | en-US
-*   印尼语 ｜ id-ID
+* 简体中文 | zh-CN
+* 繁体中文（中国台湾） | zh-TW
+* 维吾尔语 ｜ zh-UG
+* 英语（美式） | en-US
+* 印尼语 ｜ id-ID
 
 :::demo
 

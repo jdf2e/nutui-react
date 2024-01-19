@@ -37,33 +37,65 @@ ConfigProvider 元件提供了覆蓋 CSS 變數的能力，你需要在根節點
 
 > ConfigProvider 組件不是一個虛擬組件，它會生成一個 div 標簽。
 
+##### Textarea 默認
+
 :::demo
 
 ```tsx
 import React from 'react';
-import {
-  ConfigProvider,
-  Cell,
-  Button,
-  Rate
-} from "@nutui/nutui-react";
+import { ConfigProvider, TextArea } from "@nutui/nutui-react";
 
-const darkTheme = {
-  nutuiColorPrimary: 'green',
-  nutuiColorPrimaryStop1: 'green',
-  nutuiColorPrimaryStop2: 'green',
-}
 const App = () => {
   return (
-    <ConfigProvider theme={darkTheme}>
+    <ConfigProvider>
+      <TextArea disabled showCount maxLength={20} />
+    </ConfigProvider>
+  )
+}
+
+export default App;
+```
+
+:::
+
+##### Textarea 英文
+
+:::demo
+
+```tsx
+import React from 'react';
+import { ConfigProvider, TextArea } from "@nutui/nutui-react";
+
+const App = () => {
+  return (
+    <ConfigProvider locale={enUS}>
+      <TextArea disabled showCount maxLength={20} />
+    </ConfigProvider>
+  )
+}
+
+export default App;
+```
+
+:::
+
+##### 默認主題
+
+:::demo
+
+```tsx
+import React from 'react';
+import { ConfigProvider, TextArea, Cell, Rate, Button } from "@nutui/nutui-react";
+
+const App = () => {
+  return (
+    <ConfigProvider>
       <Cell.Group>
         <Cell>
           <Rate defaultValue={3} />
         </Cell>
         <Cell>
-          <Button type="primary" size="large">
-            提交
-          </Button>
+          <Button type="primary" size="large">提交</Button>
         </Cell>
       </Cell.Group>
     </ConfigProvider>
@@ -72,6 +104,41 @@ const App = () => {
 
 export default App;
 ```
+
+:::
+
+##### 定製主題
+
+:::demo
+
+```tsx
+import React from 'react';
+import { ConfigProvider, Cell, Rate, Button } from "@nutui/nutui-react";
+
+const App = () => {
+  const darkTheme = {
+    nutuiColorPrimary: 'green',
+    nutuiColorPrimaryStop1: 'green',
+    nutuiColorPrimaryStop2: 'green',
+  }
+  return (
+    <ConfigProvider theme={darkTheme}>
+      <Cell.Group>
+        <Cell>
+          <Rate defaultValue={3} />
+        </Cell>
+        <Cell>
+          <Button type="primary" size="large">提交</Button>
+        </Cell>
+      </Cell.Group>
+    </ConfigProvider>
+  )
+}
+
+export default App;
+```
+
+:::
 
 #### CSS 變數
 
