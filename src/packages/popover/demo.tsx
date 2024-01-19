@@ -49,6 +49,7 @@ const PopoverDemo = () => {
       contentColor: '自定义颜色',
       showMoreDirection: '点击查看更多方向',
       scroll: '置于可滚动容器中',
+      fixed: '容器设置 position: fixed',
     },
     'en-US': {
       title: 'Basic Usage',
@@ -63,6 +64,7 @@ const PopoverDemo = () => {
       contentColor: 'Custom Color',
       showMoreDirection: 'click show more direction',
       scroll: 'In scrollable contain',
+      fixed: 'position: fixed',
     },
     'zh-TW': {
       title: '基礎用法',
@@ -77,6 +79,7 @@ const PopoverDemo = () => {
       contentColor: '自定義顏色',
       showMoreDirection: '點擊查看更多方向',
       scroll: '置於可滾動容器中',
+      fixed: '容器設置 position: fixed',
     },
   })
   const selfContentStyle = {
