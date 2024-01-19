@@ -211,6 +211,25 @@ export default App;
 
 ```
 
+### 滑動選擇
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Rate } from '@nutui/nutui-react';
+
+const App = () => {
+  return ( 
+    <>   
+      <Rate defaultValue={3} allowHalf touchable />
+    </>
+  );
+};  
+export default App;
+
+```
+
 ## Rate
 
 ### Props
@@ -226,6 +245,7 @@ export default App;
 | allowHalf | 是否半星 | `boolean` | `false` |
 | readOnly | 是否只讀 | `boolean` | `false` |
 | disabled | 是否禁用 | `boolean` | `false` |
+| touchable | 是否允許滑動選擇 ｜ `boolean` | `false` |
 | onChange | 当前 star 数修改时触发 | `(value: number) => void` | `-` |
 
 ## 主題定制
