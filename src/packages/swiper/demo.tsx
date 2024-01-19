@@ -102,7 +102,12 @@ const SwiperDemo = () => {
           {list.map((item, index) => {
             return (
               <Swiper.Item key={item}>
-                <img src={item} onClick={() => console.log(index)} alt="" />
+                <img
+                  draggable={false}
+                  src={item}
+                  onClick={() => console.log(index)}
+                  alt=""
+                />
               </Swiper.Item>
             )
           })}
@@ -121,6 +126,7 @@ const SwiperDemo = () => {
             <Swiper.Item key={item}>
               <img
                 src={item}
+                draggable={false}
                 width="100%"
                 height="100%"
                 onClick={() => console.log(index)}
@@ -142,7 +148,7 @@ const SwiperDemo = () => {
           {list1.map((item) => {
             return (
               <Swiper.Item key={item}>
-                <img src={item} alt="" />
+                <img draggable={false} src={item} alt="" />
               </Swiper.Item>
             )
           })}
@@ -164,7 +170,7 @@ const SwiperDemo = () => {
           {list2.map((item) => {
             return (
               <Swiper.Item key={item}>
-                <img src={item} alt="" />
+                <img draggable={false} src={item} alt="" />
               </Swiper.Item>
             )
           })}
@@ -177,7 +183,7 @@ const SwiperDemo = () => {
           {list.map((item) => {
             return (
               <Swiper.Item key={item}>
-                <img src={item} alt="" />
+                <img draggable={false} src={item} alt="" />
               </Swiper.Item>
             )
           })}
@@ -195,7 +201,7 @@ const SwiperDemo = () => {
           {list.map((item) => {
             return (
               <Swiper.Item key={item}>
-                <img src={item} alt="" />
+                <img draggable={false} src={item} alt="" />
               </Swiper.Item>
             )
           })}
@@ -214,7 +220,7 @@ const SwiperDemo = () => {
           {list.map((item) => {
             return (
               <Swiper.Item key={item}>
-                <img src={item} alt="" />
+                <img draggable={false} src={item} alt="" />
               </Swiper.Item>
             )
           })}
@@ -241,7 +247,7 @@ const SwiperDemo = () => {
           {list.map((item) => {
             return (
               <Swiper.Item key={item}>
-                <img src={item} alt="" />
+                <img draggable={false} src={item} alt="" />
               </Swiper.Item>
             )
           })}
@@ -260,7 +266,7 @@ const SwiperDemo = () => {
           {list.map((item) => {
             return (
               <Swiper.Item key={item}>
-                <img src={item} alt="" />
+                <img draggable={false} src={item} alt="" />
               </Swiper.Item>
             )
           })}
@@ -280,7 +286,7 @@ const SwiperDemo = () => {
           {list.map((item) => {
             return (
               <Swiper.Item key={item}>
-                <img src={item} alt="" />
+                <img draggable={false} src={item} alt="" />
               </Swiper.Item>
             )
           })}
