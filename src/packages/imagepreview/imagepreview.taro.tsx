@@ -4,10 +4,12 @@ import React, {
   useState,
   useRef,
   TouchEvent,
+  ReactNode,
 } from 'react'
 import Taro from '@tarojs/taro'
 import { Video as TaroVideo } from '@tarojs/components'
 import classNames from 'classnames'
+import { Close } from '@nutui/icons-react-taro'
 import Popup from '@/packages/popup/index.taro'
 import Image from '@/packages/image/index.taro'
 import Swiper from '@/packages/swiper/index.taro'
@@ -22,6 +24,8 @@ interface Store {
   oriDistance: number
   originScale: number
 }
+
+export type ImagePreviewCloseIconPosition = 'top-right' | 'top-left' | 'bottom'
 
 export interface ImagePreviewProps extends BasicComponent {
   images: Array<{
@@ -44,6 +48,8 @@ export interface ImagePreviewProps extends BasicComponent {
   closeOnContentClick: boolean
   indicator: boolean
   indicatorColor: string
+  closeIcon: boolean | ReactNode
+  closeIconPosition: ImagePreviewCloseIconPosition
   showMenuByLongpress: boolean
   onChange: (value: number) => void
   onClose: () => void
@@ -59,6 +65,8 @@ const defaultProps = {
   closeOnContentClick: false,
   indicator: false,
   indicatorColor: '#fff',
+  closeIcon: false,
+  closeIconPosition: 'top-right',
   showMenuByLongpress: false,
   onChange: (value: number) => {},
   onClose: () => {},
@@ -77,6 +85,8 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     indicator,
     autoPlay,
     closeOnContentClick,
+    closeIcon,
+    closeIconPosition,
     showMenuByLongpress,
     onClose,
   } = props
@@ -323,6 +333,14 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
       <div className={`${classPrefix}-index`}>
         {active}/{(images ? images.length : 0) + (videos ? videos.length : 0)}
       </div>
+      {closeIcon !== false ? (
+        <div
+          className={`${classPrefix}-close ${closeIconPosition}`}
+          onClick={onCloseInner}
+        >
+          {closeIcon === true ? <Close /> : closeIcon}
+        </div>
+      ) : null}
     </Popup>
   )
 }
