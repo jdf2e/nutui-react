@@ -441,7 +441,8 @@ const PopoverDemo = () => {
         <div
           style={{
             position: 'fixed',
-            bottom: 0,
+            bottom: 10,
+            right: -10,
             zIndex: 1000,
           }}
         >
