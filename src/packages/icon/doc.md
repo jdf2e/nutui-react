@@ -22,13 +22,6 @@ import { Add } from '@nutui/icons-react';
 <Add color='red' />
 ```
 
-<icon-demo />
-
-```
-其中组件库内部使用 Svg 为
-Loading,Location,Check,Close,ArrowLeft,Service,Top,ArrowRight,CheckNormal,Checked,CheckDisabled,ArrowDown,JoySmile,Image,ImageError,Failure,MaskClose,Minus,Plus,ArrowUp2,ArrowDown2,Notice,CheckChecked,Star,Tips,Loading,TriangleUp,TriangleDown,Photograph,Del,Link,Download
-```
-
 ## Icon
 
 ### Props
