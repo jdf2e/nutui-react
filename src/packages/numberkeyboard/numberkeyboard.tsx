@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useMemo, useState } from 'react'
+import React, { FunctionComponent, ReactNode, useMemo, useState } from 'react'
 import classNames from 'classnames'
 import { ArrowDown } from '@nutui/icons-react'
 import Popup from '@/packages/popup'
@@ -8,6 +8,7 @@ import { ComponentDefaults } from '@/utils/typings'
 
 export interface NumberKeyboardProps extends PopupProps {
   visible: boolean
+  rightActions: ReactNode
   confirmText?: string
   type: 'default' | 'rightColumn'
   custom: Array<string>
@@ -20,6 +21,7 @@ export interface NumberKeyboardProps extends PopupProps {
 const defaultProps = {
   ...ComponentDefaults,
   visible: false,
+  rightActions: '',
   type: 'default',
   custom: [],
   random: false,
@@ -33,6 +35,7 @@ export const NumberKeyboard: FunctionComponent<
   const { locale } = useConfig()
   const {
     title,
+    rightActions,
     confirmText,
     visible,
     type,
@@ -158,7 +161,7 @@ export const NumberKeyboard: FunctionComponent<
                 className={`${classPrefix}-header-close`}
                 onClick={onConfirm}
               >
-                {locale.done}
+                {rightActions || locale.done}
               </span>
             )}
           </div>

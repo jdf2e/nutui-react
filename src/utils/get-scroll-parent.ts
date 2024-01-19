@@ -32,3 +32,30 @@ export function getScrollParent(
   }
   return root
 }
+
+export function getAllScrollableParents(
+  element: Element | null,
+  scrollableParents: Element[] = []
+): Element[] {
+  if (!element) {
+    return scrollableParents
+  }
+
+  // 检查元素是否具有滚动条
+  const isScrollable =
+    element.scrollHeight > element.clientHeight ||
+    element.scrollWidth > element.clientWidth
+
+  if (isScrollable) {
+    // 如果当前元素具有滚动条，则将其添加到数组中
+    if (element.nodeName === 'HTML') {
+      // @ts-ignore
+      scrollableParents.push(document)
+    } else {
+      scrollableParents.push(element)
+    }
+  }
+
+  // 递归检查父元素
+  return getAllScrollableParents(element.parentElement, scrollableParents)
+}
