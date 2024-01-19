@@ -48,6 +48,7 @@ const PopoverDemo = () => {
       content: '自定义内容',
       contentColor: '自定义颜色',
       showMoreDirection: '点击查看更多方向',
+      scroll: '置于可滚动容器中',
     },
     'en-US': {
       title: 'Basic Usage',
@@ -61,6 +62,7 @@ const PopoverDemo = () => {
       content: 'Custom Content',
       contentColor: 'Custom Color',
       showMoreDirection: 'click show more direction',
+      scroll: 'In scrollable contain',
     },
     'zh-TW': {
       title: '基礎用法',
@@ -74,6 +76,7 @@ const PopoverDemo = () => {
       content: '自定義內容',
       contentColor: '自定義顏色',
       showMoreDirection: '點擊查看更多方向',
+      scroll: '置於可滾動容器中',
     },
   })
   const selfContentStyle = {
@@ -251,36 +254,6 @@ const PopoverDemo = () => {
   return (
     <>
       <div className="demo">
-        <div
-          style={{
-            position: 'fixed',
-            bottom: 0,
-            zIndex: 1,
-          }}
-        >
-          <Popover
-            visible={visiblePopover}
-            list={list}
-            location="top"
-            style={{ marginRight: '30px' }}
-            closeOnOutsideClick={false}
-            onClick={() => {
-              visiblePopover
-                ? setVisiblePopover(false)
-                : setVisiblePopover(true)
-            }}
-            onOpen={() => {
-              console.log('打开菜单时触发')
-            }}
-            onClose={() => {
-              console.log('关闭菜单时触发')
-            }}
-          >
-            <Button type="primary" shape="square">
-              Popover基础用法
-            </Button>
-          </Popover>
-        </div>
         <h2>{translated.title}</h2>
         <Popover
           visible={basic}
@@ -290,45 +263,11 @@ const PopoverDemo = () => {
           onClick={() => {
             basic ? setBasic(false) : setBasic(true)
           }}
-          onOpen={() => {
-            console.log('打开菜单时触发')
-          }}
-          onClose={() => {
-            console.log('关闭菜单时触发')
-          }}
         >
           <Button type="primary" shape="square">
             {translated.title}
           </Button>
         </Popover>
-        <h2>{translated.title}</h2>
-
-        <div
-          style={{
-            height: '200px',
-            overflowY: 'scroll',
-            position: 'relative',
-          }}
-        >
-          <div style={{ height: '100px' }} />
-          <Popover
-            visible={visiblePopover1}
-            list={list}
-            location="top"
-            closeOnOutsideClick={false}
-            style={{ marginRight: '30px' }}
-            onClick={() => {
-              visiblePopover
-                ? setVisiblePopover1(false)
-                : setVisiblePopover1(true)
-            }}
-          >
-            <Button id="test" type="primary" shape="square">
-              置于可滚动容器中
-            </Button>
-          </Popover>
-          <div style={{ height: '100px' }} />
-        </div>
 
         <h2>{translated.title1}</h2>
         <Popover
@@ -466,6 +405,60 @@ const PopoverDemo = () => {
             {translated.contentColor}
           </Button>
         </Popover>
+
+        <h2>{translated.scroll}</h2>
+        <div
+          style={{
+            height: '200px',
+            overflowY: 'scroll',
+            position: 'relative',
+          }}
+        >
+          <div style={{ height: '100px' }} />
+          <Popover
+            visible={visiblePopover1}
+            list={list}
+            location="top"
+            closeOnOutsideClick={false}
+            style={{ marginRight: '30px' }}
+            onClick={() => {
+              visiblePopover
+                ? setVisiblePopover1(false)
+                : setVisiblePopover1(true)
+            }}
+          >
+            <Button id="test" type="primary" shape="square">
+              {translated.scroll}
+            </Button>
+          </Popover>
+          <div style={{ height: '100px' }} />
+        </div>
+
+        <h2>{translated.fixed}</h2>
+        <div
+          style={{
+            position: 'fixed',
+            bottom: 0,
+            zIndex: 1,
+          }}
+        >
+          <Popover
+            visible={visiblePopover}
+            list={list}
+            location="top"
+            style={{ marginRight: '30px' }}
+            closeOnOutsideClick={false}
+            onClick={() => {
+              visiblePopover
+                ? setVisiblePopover(false)
+                : setVisiblePopover(true)
+            }}
+          >
+            <Button type="primary" shape="square">
+              position: fixed
+            </Button>
+          </Popover>
+        </div>
         <div style={{ height: '100px' }} />
       </div>
     </>
