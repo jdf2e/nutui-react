@@ -110,7 +110,6 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       // eslint-disable-next-line react/button-has-type
       <button
         {...rest}
-        // type={Taro.getEnv() === 'WEB''reset'}
         ref={ref}
         className={classNames(
           prefixCls,

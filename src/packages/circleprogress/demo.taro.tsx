@@ -53,20 +53,20 @@ const CircleProgressDemo = () => {
     },
   })
 
-  const [percent, setPercent] = useState(30)
+  const [percent, setPercent] = useState(20)
 
   const setReduceVal = () => {
-    if (percent - 10 <= 0) {
+    if (percent - 20 <= 0) {
       setPercent(0)
       return
     }
-    setPercent(percent - 10)
+    setPercent(percent - 20)
   }
   const setAddVal = () => {
     if (percent >= 100) {
       return
     }
-    setPercent(percent + 10)
+    setPercent(percent + 20)
   }
 
   const gradientColor = {
