@@ -14,7 +14,7 @@ import { ConfigProvider } from '@nutui/nutui-react';
 
 ### 主題定製
 
-NutUI-React 可以通過 \[CSS 變數\]（https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using\_CSS\_custom\_properties） 來組織樣式，通過覆蓋這些 CSS 變數，可以實現定製主題、動態切換主題等效果。
+NutUI-React 可以通過 \[CSS 變數\]（<https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using\_CSS\_custom\_properties）> 來組織樣式，通過覆蓋這些 CSS 變數，可以實現定製主題、動態切換主題等效果。
 
 #### 通過 CSS 覆蓋
 
@@ -172,17 +172,15 @@ page {
 
 ```
 
-:::
-
 ### 國際化
 
 NutUI-React 提供了 ConfigProvider 元件用於全域配置國際化文案。 目前支援以下語言：
 
-*   簡體中文 | zh-CN
-*   繁體中文（中國臺灣） | zh-TW
-*   維吾爾文 | zh-UG
-*   英語（美式） | en-US
-*   印尼語 | id-ID
+* 簡體中文 | zh-CN
+* 繁體中文（中國臺灣） | zh-TW
+* 維吾爾文 | zh-UG
+* 英語（美式） | en-US
+* 印尼語 | id-ID
 
 :::demo
 

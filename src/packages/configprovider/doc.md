@@ -172,8 +172,6 @@ page {
 
 ```
 
-:::
-
 ### 国际化
 
 NutUI-React 提供了 ConfigProvider 组件用于全局配置国际化文案。目前支持以下语言:

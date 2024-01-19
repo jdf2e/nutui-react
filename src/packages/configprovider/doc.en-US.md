@@ -172,8 +172,6 @@ page {
 
 ```
 
-:::
-
 ### Internationalization
 
 NutUI-React provides a ConfigProvider component for global configuration of internationalized copywriting. The following languages are currently supported:
