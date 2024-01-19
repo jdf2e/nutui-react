@@ -23,14 +23,15 @@ import React from "react";
 import { Button } from '@nutui/nutui-react';
 
 const App = () => {
+  const marginStyle = { margin: 8 }
   return (
     <>
-      <Button type="primary">主要按鈕</Button>
-      <Button type="info">信息按鈕</Button>
-      <Button type="default">默認按鈕</Button>
-      <Button type="danger">危險按鈕</Button>
-      <Button type="warning">警告按鈕</Button>
-      <Button type="success">成功按鈕</Button>
+      <Button type="primary" style={marginStyle}>主要按鈕</Button>
+      <Button type="info" style={marginStyle}>信息按鈕</Button>
+      <Button type="default" style={marginStyle}>默认按鈕</Button>
+      <Button type="danger" style={marginStyle}>危险按鈕</Button>
+      <Button type="warning" style={marginStyle}>警告按鈕</Button>
+      <Button type="success" style={marginStyle}>成功按鈕</Button>
     </>
   );
 };
@@ -50,11 +51,13 @@ import React from "react";
 import { Button } from '@nutui/nutui-react';
 
 const App = () => {
+  const marginStyle = { margin: 8 }
   return (
     <>
-      <Button fill="solid">Solid</Button>
-      <Button type="primary" fill="outline">Outline</Button>
-      <Button fill="none">None</Button>
+      <Button fill="solid" style={marginStyle}>Solid</Button>
+      <Button type="primary" fill="outline" style={marginStyle}>Outline</Button>
+      <Button type="primary" fill="dashed" style={marginStyle}>Dashed</Button>
+      <Button fill="none" style={marginStyle}>None</Button>
     </>
   );
 };
@@ -75,13 +78,14 @@ import { Button } from '@nutui/nutui-react';
 import { Star, Plus } from '@nutui/icons-react'
 
 const App = () => {
+  const marginStyle = { margin: 8 }
   return (
     <>
       <Button
         type="primary"
         icon={<Star />}
         rightIcon={<Star />}
-        style={{ margin: 8 }}
+        style={marginStyle}
       >
         操作按鈕
       </Button>
@@ -90,7 +94,16 @@ const App = () => {
         fill="outline"
         icon={<Star />}
         rightIcon={<Star />}
-        style={{ margin: 8 }}
+        style={marginStyle}
+      >
+        操作按鈕
+      </Button>
+      <Button
+        type="primary"
+        fill="dashed"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={marginStyle}
       >
         操作按鈕
       </Button>
@@ -136,9 +149,7 @@ const App = () => {
         type="default"
         icon={<Star />}
         rightIcon={<Star />}
-        style={{
-          margin: 8,
-        }}
+        style={marginStyle}
       >
         操作按鈕
       </Button>
@@ -147,15 +158,26 @@ const App = () => {
         fill="outline"
         type="primary"
         icon={<Plus width="20" />}
-        style={{ margin: 8 }}
+        style={marginStyle}
       />
       <Button
-        shape="round"
+        fill="outline"
+        type="primary"
+        icon={<Plus width="20" />}
+        style={marginStyle}
+      />
+      <Button
+        type="primary"
+        fill="dashed"
+        icon={<Plus width="20" />}
+        style={marginStyle}
+      />
+      <Button
         type="primary"
         size="large"
         icon={<Star width={20} height={20} />}
         rightIcon={<Star width={20} height={20} />}
-        style={{ margin: 8 }}
+        style={marginStyle}
       >
         操作按鈕
       </Button>
@@ -179,6 +201,7 @@ import { Button } from '@nutui/nutui-react';
 import { Star, Plus } from '@nutui/icons-react'
 
 const App = () => {
+  const marginStyle = { margin: 8 }
   return (
     <>
       <Button
@@ -186,9 +209,9 @@ const App = () => {
         type="primary"
         icon={<Star />}
         rightIcon={<Star />}
-        style={{ margin: 8 }}
+        style={marginStyle}
       >
-        操作按鈕
+        禁用狀態
       </Button>
       <Button
         disabled
@@ -196,18 +219,28 @@ const App = () => {
         fill="outline"
         icon={<Star />}
         rightIcon={<Star />}
-        style={{ margin: 8 }}
+        style={marginStyle}
       >
-        操作按鈕
+        禁用狀態
+      </Button>
+      <Button
+        disabled
+        type="primary"
+        fill="dashed"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={marginStyle}
+      >
+        禁用狀態
       </Button>
       <Button
         disabled
         fill="solid"
         icon={<Star />}
         rightIcon={<Star />}
-        style={{ margin: 8 }}
+        style={marginStyle}
       >
-        操作按鈕
+        禁用狀態
       </Button>
       <Button
         disabled
@@ -221,7 +254,7 @@ const App = () => {
           color: `var(--nutui-gray-5)`,
         }}
       >
-        操作按鈕
+        禁用狀態
       </Button>
       <Button
         disabled
@@ -235,40 +268,46 @@ const App = () => {
           color: `var(--nutui-gray-5)`,
         }}
       >
-        操作按鈕
+        禁用狀態
       </Button>
       <Button
         disabled
         icon={<Star />}
         rightIcon={<Star />}
-        style={{
-          margin: 8,
-        }}
+        style={marginStyle}
       >
-        操作按鈕
+        禁用狀態
       </Button>
       <Button
+        disabled
         shape="square"
         fill="outline"
         type="primary"
         icon={<Plus width="20" />}
-        style={{ margin: 8 }}
+        style={marginStyle}
       />
       <Button
         disabled
         type="primary"
         icon={<Plus width="20" />}
-        style={{ margin: 8 }}
+        style={marginStyle}
       />
       <Button
-        shape="round"
+        disabled
+        type="primary"
+        fill="dashed"
+        icon={<Plus width="20" />}
+        style={marginStyle}
+      />
+      <Button
+        disabled
         type="primary"
         size="large"
         icon={<Star width={20} height={20} />}
         rightIcon={<Star width={20} height={20} />}
-        style={{ margin: 8 }}
+        style={marginStyle}
       >
-        操作按鈕
+        禁用狀態
       </Button>
     </>
   );
@@ -289,9 +328,13 @@ import React from "react";
 import { Button } from '@nutui/nutui-react';
 
 const App = () => {
+  const marginStyle = { margin: 8 }
   return (
     <>
-      <Button shape="square" type="primary">方形按鈕</Button>
+      <Button style={marginStyle} type="primary" shape="square">
+        方形按鈕
+      </Button>
+      <Button style={marginStyle} type="primary">圆形按鈕</Button>
     </>
   );
 };
@@ -310,19 +353,22 @@ import { Button } from '@nutui/nutui-react';
 
 const App = () => {
   const [loading, setLoading] = useState(false)
+  const marginStyle = { margin: 8 }
   return (
     <>
-      <Button loading type="warning">加載中...</Button>
+      <Button loading type="warning" style={marginStyle}>
+        載入中
+      </Button>
       <Button
         loading={loading}
         type="success"
         onClick={() => {
           setTimeout(() => {
             setLoading(false)
-          }, 1500);
+          }, 1500)
           setLoading(!loading)
         }}
-        style={{ margin: 8 }}
+        style={marginStyle}
       >
         Click me!
       </Button>
@@ -333,7 +379,6 @@ export default App;
 ```
 
 :::
-
 
 ### 按鈕尺寸
 
@@ -346,12 +391,18 @@ import React from "react";
 import { Button } from '@nutui/nutui-react';
 
 const App = () => {
+  const marginStyle = { margin: 8 }
   return (
     <>
       <Button size="large" type="primary">大號按鈕</Button>
-      <Button type="primary">普通按鈕</Button>
-      <Button size="small" type="primary">小型按鈕</Button>
-      <Button size="mini" type="primary">迷你按鈕</Button>
+      <Button type="primary" style={marginStyle}>普通按鈕</Button>
+      <Button style={marginStyle}>普通按鈕</Button>
+      <Button size="small" style={marginStyle} type="primary">
+        小型按鈕
+      </Button>
+      <Button size="mini" style={marginStyle} type="primary">
+        迷你按鈕
+      </Button>
     </>
   );
 };
@@ -373,7 +424,7 @@ import { Button } from '@nutui/nutui-react';
 const App = () => {
   return (
     <>
-      <Button block type="primary">塊級元素</Button>
+      <Button block type="primary">块级元素</Button>
     </>
   );
 };
@@ -393,12 +444,50 @@ import React from "react";
 import { Button } from '@nutui/nutui-react';
 
 const App = () => {
+  const marginStyle = { margin: 8 }
   return (
     <>
-      <Button color="#7232dd">單色按鈕</Button>
-      <Button color="#7232dd" fill="outline">單色按鈕</Button>
-      <Button color="rgba(10,101,208,0.75)">單色按鈕</Button>
-      <Button color="linear-gradient(to right, #ff6034, #ee0a24)">
+      <Button
+        style={{
+          margin: 8,
+          '--nutui-button-default-border-color': 'blue',
+          '--nutui-button-default-color': '#fff',
+          '--nutui-button-default-background-color': 'blue',
+        }}
+      >
+        單色按鈕
+      </Button>
+      <Button
+        fill="outline"
+        style={{
+          margin: 8,
+          '--nutui-button-default-border-color': '#7232dd',
+          '--nutui-button-default-color': '#7232dd',
+        }}
+      >
+        單色按鈕
+      </Button>
+      <Button
+        style={{
+          margin: 8,
+          '--nutui-button-default-border-color': 'transparent',
+          '--nutui-button-default-color': '#fff',
+          '--nutui-button-default-background-color':
+            'rgba(10,101,208,0.75)',
+        }}
+      >
+        單色按鈕
+      </Button>
+      <Button
+        type="primary"
+        style={{
+          margin: 8,
+          '--nutui-button-default-border-color': 'transparent',
+          '--nutui-button-default-color': '#fff',
+          '--nutui-button-default-background-color':
+            'linear-gradient(to right, #ff6034, #ee0a24)',
+        }}
+      >
         漸變色按鈕
       </Button>
     </>
@@ -416,14 +505,16 @@ export default App;
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | type | 按鈕的樣式 | `default` \| `primary` \| `warning` \| `danger` \| `success` \| `info` | `default` |
-| size | 按鈕的尺寸 | `normal` \| `large` \| `small` | `normal` |
+| size | 按鈕的尺寸 | `normal` \| `large` \| `small` \| `mini` | `normal` |
 | shape | 按鈕的形狀 | `square` \| `round` | `round` |
-| color | 按鈕顏色，支持傳入 linear-gradient 漸變色 | `string` | `-` |
+| color | 按鈕顏色，支援傳入 linear-gradient 漸層色, outline 和 dashed 模式下設定的是 color，其他情況設定的是background，建議使用CSS變數實現的顏色配置 | `string` | `-` |
 | fill | 填充模式 | `solid` \| `outline` \| `dashed` \| `none` | `solid` |
 | disabled | 是否禁用按鈕 | `boolean` | `false` |
 | block | 是否為塊級元素 | `boolean` | `false` |
 | icon | 按鈕圖標 | `ReactNode` | `-` |
+| rightIcon | 右侧按鈕图标 | `ReactNode` | `-` |
 | loading | 按鈕loading狀態 | `boolean` | `false` |
+| nativeType | 按鈕原始类型 | `submit` \| `reset` \| `button` | `button` |
 | onClick | 點擊按鈕時觸發 | `(e: MouseEvent<HTMLButtonElement>) => void` | `-` |
 
 ## 主題定製

@@ -3,8 +3,9 @@ import type { MouseEvent } from 'react'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
 import { View } from '@tarojs/components'
+import { Close } from '@nutui/icons-react-taro'
 import Button from '@/packages/button/index.taro'
-import { BasicDialogProps } from './config'
+import { DialogBasicProps } from './config'
 import { Content } from './content.taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import Overlay from '@/packages/overlay/index.taro'
@@ -17,7 +18,7 @@ import {
 import { BasicComponent } from '@/utils/typings'
 import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
 
-export type DialogProps = BasicDialogProps & BasicComponent
+export type DialogProps = DialogBasicProps & BasicComponent
 const defaultProps = {
   title: '',
   content: '',
@@ -32,6 +33,8 @@ const defaultProps = {
   disableConfirmButton: false,
   footerDirection: 'horizontal',
   lockScroll: true,
+  closeIconPosition: 'top-right',
+  closeIcon: false,
   beforeCancel: () => true,
   beforeClose: () => true,
   onOverlayClick: () => true,
@@ -65,6 +68,8 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
       confirmText,
       cancelText,
       overlay,
+      closeIconPosition,
+      closeIcon,
       onClose,
       onCancel,
       onConfirm,
@@ -101,6 +106,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
       onClose?.()
       onConfirm?.(e)
     }
+
     return (
       footer || (
         <>
@@ -129,6 +135,26 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
       )
     )
   }
+
+  const renderCloseIcon = () => {
+    if (!closeIcon) return null
+    const handleCancel = () => {
+      if (!beforeCancel?.()) return
+      if (!beforeClose?.()) return
+      onClose?.()
+      onCancel?.()
+    }
+    const closeClasses = classNames({
+      [`${classPrefix}-close`]: true,
+      [`${classPrefix}-close-${closeIconPosition}`]: true,
+    })
+    return (
+      <View className={closeClasses} onClick={handleCancel}>
+        {React.isValidElement(closeIcon) ? closeIcon : <Close />}
+      </View>
+    )
+  }
+
   const onHandleClickOverlay = (e: any) => {
     if (closeOnOverlayClick && visible && e.target === e.currentTarget) {
       const closed = onOverlayClick && onOverlayClick()
@@ -166,6 +192,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
             style={style}
             title={title}
             header={header}
+            close={renderCloseIcon()}
             footer={renderFooter()}
             footerDirection={footerDirection}
             visible={visible}

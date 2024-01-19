@@ -125,7 +125,6 @@ const CellDemo = () => {
         <Cell>
           <div>{translated.content}</div>
         </Cell>
-
         <h2>{translated.title6}</h2>
         <Cell
           title={
@@ -146,6 +145,7 @@ const CellDemo = () => {
         </Cell.Group>
         <h2>{translated.title5}</h2>
         <Cell
+          align="center"
           title={translated.title}
           description={translated.title1}
           extra={translated.extra}
@@ -170,6 +170,11 @@ const CellDemo = () => {
               </>
             }
             align="center"
+            onClick={(
+              event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+            ) => {
+              onJumpclick(event, 'https://jd.com')
+            }}
           />
         </Cell.Group>
 
