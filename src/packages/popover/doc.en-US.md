@@ -488,6 +488,126 @@ export default App
 
 :::
 
+### In scrollable container
+
+:::demo
+
+```tsx
+import React, { useState, useRef } from 'react'
+import { Popover, Button } from '@nutui/nutui-react'
+
+const App = () => {
+  const [visible, setVisible] = useState(false)
+  const itemList = [
+    {
+      key: 'key1',
+      name: 'option1',
+    },
+    {
+      key: 'key2',
+      name: 'option2',
+    },
+    {
+      key: 'key3',
+      name: 'option3',
+    },
+  ]
+  return (
+    <>
+      <div
+        style={{
+          height: '200px',
+          overflowY: 'scroll',
+          position: 'relative',
+        }}
+      >
+        <div style={{ height: '100px' }} />
+        <Popover
+          visible={visible}
+          list={itemList}
+          location='top'
+          closeOnOutsideClick={false}
+          style={{ marginRight: '30px' }}
+          onClick={() => {
+            visble
+              ? setVisible(false)
+              : setVisible(true)
+          }}
+        >
+          <Button id='test' type='primary' shape='square'>
+            In scrollable container
+          </Button>
+        </Popover>
+        <div style={{ height: '100px' }} />
+      </div>
+    </>
+  )
+}
+
+export default App
+```
+
+:::
+
+### Container setting position: fixed
+
+:::demo
+
+```tsx
+import React, { useState, useRef } from 'react'
+import { Popover, Button } from '@nutui/nutui-react'
+
+const App = () => {
+  const [visible, setVisible] = useState(false)
+  const list = [
+    {
+      key: 'key1',
+      name: 'option1',
+    },
+    {
+      key: 'key2',
+      name: 'option2',
+    },
+    {
+      key: 'key3',
+      name: 'option3',
+    },
+  ]
+  return (
+    <>
+      <div
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          zIndex: 1,
+        }}
+      >
+        <Popover
+          visible={visible}
+          list={list}
+          location="top"
+          style={{ marginRight: '30px' }}
+          closeOnOutsideClick={false}
+          onClick={() => {
+            visible
+              ? setVisible(false)
+              : setVisible(true)
+          }}
+        >
+          <Button type="primary" shape="square">
+            position: fixed
+          </Button>
+        </Popover>
+      </div>
+    </>
+  )
+}
+
+export default App
+```
+
+:::
+
 ## Popover
 
 ### Props
