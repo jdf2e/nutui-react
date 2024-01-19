@@ -447,19 +447,48 @@ const App = () => {
   const marginStyle = { margin: 8 }
   return (
     <>
-      <Button color="blue" style={marginStyle}>单色按钮</Button>
-      <Button fill="outline" color="#7232dd" style={marginStyle}>
+      <Button
+        style={{
+          margin: 8,
+          '--nutui-button-default-border-color': 'blue',
+          '--nutui-button-default-color': '#fff',
+          '--nutui-button-default-background-color': 'blue',
+        }}
+      >
         单色按钮
       </Button>
-      <Button color="rgba(10,101,208,0.75)" style={marginStyle}>
+      <Button
+        fill="outline"
+        style={{
+          margin: 8,
+          '--nutui-button-default-border-color': '#7232dd',
+          '--nutui-button-default-color': '#7232dd',
+        }}
+      >
+        单色按钮
+      </Button>
+      <Button
+        style={{
+          margin: 8,
+          '--nutui-button-default-border-color': 'transparent',
+          '--nutui-button-default-color': '#fff',
+          '--nutui-button-default-background-color':
+            'rgba(10,101,208,0.75)',
+        }}
+      >
         单色按钮
       </Button>
       <Button
         type="primary"
-        color="linear-gradient(to right, #ff6034, #ee0a24)"
-        style={marginStyle}
+        style={{
+          margin: 8,
+          '--nutui-button-default-border-color': 'transparent',
+          '--nutui-button-default-color': '#fff',
+          '--nutui-button-default-background-color':
+            'linear-gradient(to right, #ff6034, #ee0a24)',
+        }}
       >
-        渐变按钮
+        渐变色按钮
       </Button>
     </>
   );
@@ -478,7 +507,7 @@ export default App;
 | type | 按钮的样式 | `default` \| `primary` \| `warning` \| `danger` \| `success` \| `info` | `default` |
 | size | 按钮的尺寸 | `normal` \| `large` \| `small` \| `mini` | `normal` |
 | shape | 按钮的形状 | `square` \| `round` | `round` |
-| color | 按钮颜色，支持传入 linear-gradient 渐变色 | `string` | `-` |
+| color | 按钮颜色，支持传入 linear-gradient 渐变色, outline 和 dashed 模式下设置的是 color，其他情况设置的是background，建议使用CSS变量实现的颜色配置 | `string` | `-` |
 | fill | 填充模式 | `solid` \| `outline` \| `dashed` \| `none` | `solid` |
 | disabled | 是否禁用按钮 | `boolean` | `false` |
 | block | 是否为块级元素 | `boolean` | `false` |

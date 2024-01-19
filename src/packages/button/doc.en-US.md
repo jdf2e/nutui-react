@@ -447,19 +447,48 @@ const App = () => {
   const marginStyle = { margin: 8 }
   return (
     <>
-      <Button color="blue" style={marginStyle}>Monochrome button</Button>
-      <Button fill="outline" color="#7232dd" style={marginStyle}>
-        Monochrome button
+      <Button
+        style={{
+          margin: 8,
+          '--nutui-button-default-border-color': 'blue',
+          '--nutui-button-default-color': '#fff',
+          '--nutui-button-default-background-color': 'blue',
+        }}
+      >
+        Monochrome
       </Button>
-      <Button color="rgba(10,101,208,0.75)" style={marginStyle}>
-        Monochrome button
+      <Button
+        fill="outline"
+        style={{
+          margin: 8,
+          '--nutui-button-default-border-color': '#7232dd',
+          '--nutui-button-default-color': '#7232dd',
+        }}
+      >
+        Monochrome
+      </Button>
+      <Button
+        style={{
+          margin: 8,
+          '--nutui-button-default-border-color': 'transparent',
+          '--nutui-button-default-color': '#fff',
+          '--nutui-button-default-background-color':
+            'rgba(10,101,208,0.75)',
+        }}
+      >
+        Monochrome
       </Button>
       <Button
         type="primary"
-        color="linear-gradient(to right, #ff6034, #ee0a24)"
-        style={marginStyle}
+        style={{
+          margin: 8,
+          '--nutui-button-default-border-color': 'transparent',
+          '--nutui-button-default-color': '#fff',
+          '--nutui-button-default-background-color':
+            'linear-gradient(to right, #ff6034, #ee0a24)',
+        }}
       >
-        Gradient Button
+        Gradient
       </Button>
     </>
   );
@@ -476,9 +505,9 @@ export default App;
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | type | button style | `default` \| `primary` \| `warning` \| `danger` \| `success` \| `info` | `default` |
-| size | button size | `large` \| `small` \| `mini` \| `normal` |
-| shape | button shape | `square` \| `round` | `round` |
-| color | button color | `string` | `-` |
+| size | button size | `normal` \| `large` \| `small` | `normal` |
+| shape | button shape | `square` \| `round` | `round` | 
+| color | Button color, supports linear-gradient gradient color. In outline and dashed modes, color is set. In other cases, background is set. It is recommended to use color configuration implemented by CSS variables. | `string` | `-` |
 | fill | fill pattern | `solid` \| `outline`  \| `dashed` \| `none` | `solid` |
 | disabled | disable the button | `boolean` | `false` |
 | block | block element | `boolean` | `false` |

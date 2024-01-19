@@ -1,19 +1,20 @@
 import React, { ForwardRefRenderFunction, forwardRef } from 'react'
 import type { MouseEvent } from 'react'
 import classNames from 'classnames'
+import { Close } from '@nutui/icons-react'
 import Button from '@/packages/button'
 import confirm from './confirm'
 import { DialogWrap } from './dialogwrap'
 import { useConfig } from '@/packages/configprovider'
 import {
-  BasicDialogProps,
+  DialogBasicProps,
   DialogReturnProps,
   DialogComponent,
-  ConfirmProps,
+  DialogConfirmProps,
 } from './config'
 import { ComponentDefaults } from '@/utils/typings'
 
-export type DialogProps = BasicDialogProps
+export type DialogProps = DialogBasicProps
 const defaultProps = {
   ...ComponentDefaults,
   confirmText: '',
@@ -25,6 +26,8 @@ const defaultProps = {
   disableConfirmButton: false,
   footerDirection: 'horizontal',
   lockScroll: true,
+  closeIconPosition: 'top-right',
+  closeIcon: false,
   beforeCancel: () => true,
   beforeClose: () => true,
 } as DialogProps
@@ -44,6 +47,8 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
     closeOnOverlayClick,
     confirmText,
     cancelText,
+    closeIconPosition,
+    closeIcon,
     onClose,
     onCancel,
     onConfirm,
@@ -99,6 +104,25 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
     )
   }
 
+  const renderCloseIcon = () => {
+    if (!closeIcon) return null
+    const handleCancel = () => {
+      if (!beforeCancel?.()) return
+      if (!beforeClose?.()) return
+      onClose?.()
+      onCancel?.()
+    }
+    const closeClasses = classNames({
+      [`${classPrefix}-close`]: true,
+      [`${classPrefix}-close-${closeIconPosition}`]: true,
+    })
+    return (
+      <div className={closeClasses} onClick={handleCancel}>
+        {React.isValidElement(closeIcon) ? closeIcon : <Close />}
+      </div>
+    )
+  }
+
   return (
     <div style={{ display: visible ? 'block' : 'none' }}>
       <DialogWrap
@@ -106,6 +130,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
         visible={visible}
         lockScroll={lockScroll}
         footer={renderFooter()}
+        close={renderCloseIcon()}
         onClose={onClose}
         onCancel={onCancel}
       />
@@ -115,11 +140,11 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
 
 export const Dialog: DialogComponent = forwardRef(BaseDialog) as DialogComponent
 
-Dialog.confirm = (props: ConfirmProps): DialogReturnProps => {
+Dialog.confirm = (props: DialogConfirmProps): DialogReturnProps => {
   return confirm(props)
 }
 ;['alert'].forEach((type) => {
-  ;(Dialog as any)[type] = (props: ConfirmProps) => {
+  ;(Dialog as any)[type] = (props: DialogConfirmProps) => {
     return confirm({
       ...props,
       isNotice: false,

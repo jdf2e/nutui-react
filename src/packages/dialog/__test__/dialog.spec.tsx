@@ -80,3 +80,41 @@ test('dialog cancelText confirmText', async () => {
   expect(footerOkEle).toHaveTextContent('确定文案自定义')
   expect(footerCancelEle).toHaveTextContent('取消文案自定义')
 })
+
+test('dialog closeIcon equals true', async () => {
+  const { container } = render(
+    <Dialog
+      visible
+      cancelText="取消文案自定义"
+      confirmText="确定文案自定义"
+      closeIcon
+    />
+  )
+
+  const closeBtn = container.querySelector('.nut-dialog-close')
+  expect(closeBtn).toBeInTheDocument()
+})
+
+test('dialog close icon  position adjustment', async () => {
+  const onClose = jest.fn()
+  const onCancel = jest.fn()
+  const { container } = render(
+    <Dialog
+      visible
+      cancelText="取消文案自定义"
+      confirmText="确定文案自定义"
+      closeIcon
+      closeIconPosition="top-left"
+      onClose={onClose}
+      onCancel={onCancel}
+    />
+  )
+
+  const closeBtn = container.querySelector(
+    '.nut-dialog-close-top-left'
+  ) as HTMLElement
+  expect(closeBtn).toBeInTheDocument()
+  fireEvent.click(closeBtn)
+  expect(onClose).toBeCalled()
+  expect(onCancel).toBeCalled()
+})

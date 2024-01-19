@@ -34,6 +34,31 @@
     animation-duration: 0.3s;
   }
 
+  &-close {
+    position: absolute !important;
+    z-index: 1;
+    cursor: pointer;
+    width: $dialog-close-width;
+    height: $dialog-close-height;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: $dialog-close-top;
+    color: $dialog-close-color;
+
+    &-top-right {
+      right: $dialog-close-right;
+    }
+
+    &-top-left {
+      left: $dialog-close-left;
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
+  }
+
   &-header {
     display: block;
     text-align: center;
