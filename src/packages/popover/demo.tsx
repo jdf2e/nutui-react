@@ -271,6 +271,7 @@ const PopoverDemo = () => {
 
         <h2>{translated.title1}</h2>
         <Popover
+          className="demo-popover"
           visible={showIcon}
           location="bottom-start"
           onClick={() => {
@@ -374,6 +375,7 @@ const PopoverDemo = () => {
 
         <h2>{translated.title4}</h2>
         <Popover
+          className="demo-popover"
           visible={customTarget}
           targetId="popid"
           list={iconItemList}
@@ -416,6 +418,7 @@ const PopoverDemo = () => {
         >
           <div style={{ height: '100px' }} />
           <Popover
+            className="demo-popover"
             visible={visiblePopover1}
             list={list}
             location="top"
@@ -439,10 +442,11 @@ const PopoverDemo = () => {
           style={{
             position: 'fixed',
             bottom: 0,
-            zIndex: 1,
+            zIndex: 1000,
           }}
         >
           <Popover
+            className="demo-popover"
             visible={visiblePopover}
             list={list}
             location="top"
