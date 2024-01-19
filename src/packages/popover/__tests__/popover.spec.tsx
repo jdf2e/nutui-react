@@ -120,6 +120,37 @@ test('render popover position33', async () => {
   expect(content).toHaveAttribute('style', 'top: calc(50% - 20px);')
 })
 
+test('render position fixed ', async () => {
+  const { container } = render(
+    <div
+      style={{
+        position: 'fixed',
+        bottom: 10,
+        right: -10,
+        zIndex: 1000,
+      }}
+    >
+      <Popover
+        className="demo-popover"
+        visible
+        list={itemList}
+        location="top"
+        offset={[12, 20]}
+        style={{ marginRight: '30px' }}
+      >
+        <Button data-testid="a" type="primary" shape="square">
+          position: fixed
+        </Button>
+      </Popover>
+    </div>
+  )
+  const content = document.querySelectorAll(
+    '.nut-popover-arrow'
+  )[0] as HTMLElement
+  fireEvent.click(document.documentElement)
+  expect(content).toBeTruthy()
+})
+
 test('should emit onchoose event when clicking the action', async () => {
   const choose = jest.fn()
   const { container } = render(
