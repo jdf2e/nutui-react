@@ -113,6 +113,7 @@ const NumberKeyboardDemo = () => {
         <NumberKeyboard
           visible={visible4}
           title={translated.title}
+          rightActions={<span>Done</span>}
           custom={['.']}
           onChange={onChange}
           onDelete={onDelete}
