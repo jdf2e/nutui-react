@@ -12,6 +12,7 @@ interface DialogWrapProps extends OverlayProps {
   overlayStyle: React.CSSProperties
   overlayClassName: string
   footer: React.ReactNode
+  close: React.ReactNode
   onCancel: () => void
   onClose: () => void
   onOverlayClick: (e: MouseEvent) => boolean | void

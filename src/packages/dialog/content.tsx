@@ -6,14 +6,23 @@ interface ContentProps {
   title: ReactNode
   header: ReactNode
   footer: ReactNode
+  close: ReactNode
   footerDirection: string
 }
 
 export const Content: FunctionComponent<
   Partial<ContentProps> & HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { visible, title, header, footer, footerDirection, onClick, children } =
-    props
+  const {
+    visible,
+    title,
+    header,
+    footer,
+    close,
+    footerDirection,
+    onClick,
+    children,
+  } = props
 
   const classPrefix = 'nut-dialog'
 
@@ -43,6 +52,7 @@ export const Content: FunctionComponent<
       style={props.style}
       onClick={(e) => handleClick(e)}
     >
+      {close}
       {header}
       <div
         className={classPrefix}
