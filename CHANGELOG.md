@@ -1,3 +1,27 @@
+# v2.3.7
+`2024-01-19`
+
+* :sparkles: feat(checkbox): 增加至少选择项数量的设置功能 (#1859) @oasis
+* :sparkles: feat(dialog): 增加关闭按钮 (#1872) @songsong
+* :sparkles: feat(imagepreview): 新增 closeIcon & closeIconPosition (#1873) @Eiinu
+* :sparkles: feat(numberkeyboard): add title right actions (#1881) @xiaoyatong
+* :sparkles: feat: support debugging RTL in the H5 development environment (#1865) @oasis
+* :bug: fix(space): 主/交叉轴的 demo 与国际化改进 (#1867) @Alex.huxiyang
+* :bug: fix(animatingnumbers): 修复单元测试问题 (#1878) @Eiinu
+* :bug: fix(button): demo和doc一致化、文档代码优化、属性补充 (#1875) @Alex.huxiyang
+* :bug: fix(cell): doc、demo一致化改进 (#1877) @Alex.huxiyang
+* :bug: fix(popover): 置于滚动容器中，popover 需要跟随滚动，修复选中项的样式 (#1869) @oasis
+* :bug: fix(table): fixed sticky css (#1866) @xiaoyatong
+* :bug: fix(tabs): 纵向图标未对齐问题 (#1868) @songsong
+* :bug: fix(Textarea): 文档demo中props拼写错误修改 (#1874) @songsong
+* :bug: fix(uploader): fix the styles when custom progress (#1863) @xiaoyatong
+* :bug: fix: 增加 CSS 变量配置颜色的例子，完善 color 属性的使用场景描述 (#1857) @oasis
+* 📖 docs(avatar): add list display mode (#1862) @oasis
+* 📖 docs(icon): 更新文档 (#1879) @Eiinu
+* 📖 docs(shortpassword): 增加onComplete的demo及文档 (#1860) @xiaoyatong
+* 🛠 refactor(circleprogress): optimize animation duration (#1861) @oasis
+
+
 # v2.3.6
 `2024-01-12`
 
