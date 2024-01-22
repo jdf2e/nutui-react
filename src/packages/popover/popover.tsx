@@ -1,17 +1,21 @@
 import React, {
   CSSProperties,
   FunctionComponent,
+  ReactPortal,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from 'react'
 import classNames from 'classnames'
+import { createPortal } from 'react-dom'
 import Popup from '@/packages/popup'
 import { PopupProps } from '@/packages/popup/popup'
 import { getRect } from '@/utils/use-client-rect'
 import { ComponentDefaults } from '@/utils/typings'
 import useClickAway from '@/utils/use-click-away'
 import { canUseDom } from '@/utils/can-use-dom'
+import { getAllScrollableParents } from '@/utils/get-scroll-parent'
 
 export type PopoverLocation =
   | 'bottom'
@@ -101,8 +105,6 @@ export const Popover: FunctionComponent<
   const popoverRef = useRef<HTMLDivElement>(null)
   const popoverContentRef = useRef<HTMLDivElement>(null)
   const [showPopup, setShowPopup] = useState(false)
-  const [elWidth, setElWidth] = useState(0)
-  const [elHeight, setElHeight] = useState(0)
   const [rootPosition, setRootPosition] = useState<{
     width: number
     height: number
@@ -113,26 +115,40 @@ export const Popover: FunctionComponent<
 
   useEffect(() => {
     setShowPopup(visible)
-
     if (visible) {
       setTimeout(() => {
         getContentWidth()
       }, 0)
     }
-  }, [visible])
-  let element
-  if (canUseDom) {
-    element = targetId && document.querySelector(`#${targetId}`)
-  }
-  const targetSet = [
-    targetId ? element : popoverRef.current,
-    popoverContentRef.current,
-  ]
+  }, [visible, location])
 
+  const update = useRef((e: any) => {
+    getContentWidth()
+  })
+  useEffect(() => {
+    if (visible) {
+      scrollableParents.forEach((parent) => {
+        parent.addEventListener('scroll', update.current, { passive: true })
+      })
+    } else {
+      scrollableParents.forEach((parent) =>
+        parent.removeEventListener('scroll', update.current)
+      )
+    }
+  }, [visible])
+
+  let element: Element | null = null
+  let targetSet = []
+  if (canUseDom && targetId) {
+    element = document.querySelector(`#${targetId}`) as Element
+    targetSet = [element, popoverContentRef.current]
+  } else {
+    targetSet = [popoverRef.current, popoverContentRef.current]
+  }
   useClickAway(
     () => {
-      props.onClick && props.onClick()
-      onClose && onClose()
+      props.onClick?.()
+      onClose?.()
     },
     targetSet as Element[],
     'touchstart',
@@ -141,37 +157,25 @@ export const Popover: FunctionComponent<
     closeOnOutsideClick
   )
 
+  const scrollableParents = useMemo(() => {
+    return getAllScrollableParents((element || popoverRef.current) as Element)
+  }, [element, popoverRef.current])
+
   const getContentWidth = () => {
-    let rect = getRect(popoverRef.current as Element)
-    const scrollDis = document.documentElement.scrollTop || window.scrollY
-    if (targetId) {
-      setTimeout(() => {
-        rect = getRect(document.querySelector(`#${targetId}`) as Element)
-        setRootPosition({
-          width: rect.width,
-          height: rect.height,
-          left: rect.left,
-          top: rect.top + scrollDis,
-          right: rect.right,
-        })
-        if (popoverContentRef.current) {
-          setElWidth(popoverContentRef.current.clientWidth)
-          setElHeight(popoverContentRef.current.clientHeight)
-        }
-      }, 0)
-    } else {
-      setRootPosition({
-        width: rect.width,
-        height: rect.height,
-        left: rect.left,
-        top: rect.top + scrollDis,
-        right: rect.right,
-      })
-      if (popoverContentRef.current) {
-        setElWidth(popoverContentRef.current.clientWidth)
-        setElHeight(popoverContentRef.current.clientHeight)
-      }
-    }
+    const rect = getRect(
+      targetId
+        ? (document.querySelector(`#${targetId}`) as Element)
+        : (popoverRef.current as Element)
+    )
+    setRootPosition({
+      width: rect.width,
+      height: rect.height,
+      left: rect.left,
+      top:
+        rect.top +
+        Math.max(document.documentElement.scrollTop, document.body.scrollTop),
+      right: rect.right,
+    })
   }
 
   const classes = classNames(
@@ -183,17 +187,15 @@ export const Popover: FunctionComponent<
 
   const popoverArrow = () => {
     const prefixCls = 'nut-popover-arrow'
-    const loca = location
-    const direction = loca.split('-')[0]
-    return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}-${loca}`
+    const direction = location.split('-')[0]
+    return `${prefixCls} ${prefixCls}-${direction} ${prefixCls}-${location}`
   }
 
   const getRootPosition = () => {
     const styles: CSSProperties = {}
     if (!rootPosition) return {}
-
-    const contentWidth = elWidth
-    const contentHeight = elHeight
+    const contentWidth = popoverContentRef.current?.clientWidth as number
+    const contentHeight = popoverContentRef.current?.clientHeight as number
     const { width, height, left, top, right } = rootPosition
     const direction = location.split('-')[0]
     const skew = location.split('-')[1]
@@ -203,7 +205,6 @@ export const Popover: FunctionComponent<
       cross += +offset[1]
       parallel += +offset[0]
     }
-
     if (width) {
       if (['bottom', 'top'].includes(direction)) {
         const h =
@@ -240,7 +241,7 @@ export const Popover: FunctionComponent<
     return styles
   }
 
-  const popoverArrowStyle = () => {
+  const arrowStyle = () => {
     const styles: CSSProperties = {}
     const direction = location.split('-')[0]
     const skew = location.split('-')[1]
@@ -276,11 +277,11 @@ export const Popover: FunctionComponent<
 
   const handleSelect = (item: List, index: number) => {
     if (!item.disabled) {
-      onSelect && onSelect(item, index)
+      onSelect?.(item, index)
     }
     if (closeOnActionClick) {
-      props.onClick && props.onClick()
-      onClose && onClose()
+      props.onClick?.()
+      onClose?.()
     }
   }
   return (
@@ -290,11 +291,11 @@ export const Popover: FunctionComponent<
           className="nut-popover-wrapper"
           ref={popoverRef}
           onClick={() => {
-            props.onClick && props.onClick()
+            props.onClick?.()
             if (!visible) {
-              onOpen && onOpen()
+              onOpen?.()
             } else {
-              onClose && onClose()
+              onClose?.()
             }
           }}
           style={style}
@@ -302,52 +303,63 @@ export const Popover: FunctionComponent<
           {Array.isArray(children) ? children[0] : children}
         </div>
       )}
-      <div className={classes} style={getRootPosition()}>
-        <Popup
-          className={`nut-popover-content nut-popover-content-${location}`}
-          visible={showPopup}
-          overlay={overlay}
-          position="default"
-          {...rest}
-        >
-          <div className="nut-popover-content-group" ref={popoverContentRef}>
-            {showArrow && (
-              <div className={popoverArrow()} style={popoverArrowStyle()} />
-            )}
-            {Array.isArray(children) ? children[1] : ''}
-            {list.map((item, index) => {
-              return (
-                <div
-                  className={classNames(
-                    {
-                      'nut-popover-menu-item': true,
-                      'nut-popover-menu-disabled': item.disabled,
-                    },
-                    item.className
-                  )}
-                  key={item.key || index}
-                  onClick={() => handleSelect(item, index)}
-                >
-                  {item.icon ? (
-                    <div className="nut-popover-menu-item-icon">
-                      {item.icon}
-                    </div>
-                  ) : null}
-                  <div className="nut-popover-menu-item-name">{item.name}</div>
-                  {item.action && item.action.icon ? (
+      {
+        createPortal(
+          <div className={classes} style={getRootPosition()}>
+            <Popup
+              className={`nut-popover-content nut-popover-content-${location}`}
+              visible={showPopup}
+              overlay={overlay}
+              position="default"
+              lockScroll={false}
+              {...rest}
+            >
+              <div
+                className="nut-popover-content-group"
+                ref={popoverContentRef}
+              >
+                {showArrow && (
+                  <div className={popoverArrow()} style={arrowStyle()} />
+                )}
+                {Array.isArray(children) ? children[1] : null}
+                {list.map((item, index) => {
+                  return (
                     <div
-                      className="nut-popover-menu-item-action-icon"
-                      onClick={(e) => item.action?.onClick?.(e)}
+                      className={classNames(
+                        {
+                          'nut-popover-menu-item': true,
+                          'nut-popover-menu-disabled': item.disabled,
+                        },
+                        item.className
+                      )}
+                      key={item.key || index}
+                      onClick={() => handleSelect(item, index)}
                     >
-                      {item.action.icon}
+                      {item.icon ? (
+                        <div className="nut-popover-menu-item-icon">
+                          {item.icon}
+                        </div>
+                      ) : null}
+                      <div className="nut-popover-menu-item-name">
+                        {item.name}
+                      </div>
+                      {item.action && item.action.icon ? (
+                        <div
+                          className="nut-popover-menu-item-action-icon"
+                          onClick={(e) => item.action?.onClick?.(e)}
+                        >
+                          {item.action.icon}
+                        </div>
+                      ) : null}
                     </div>
-                  ) : null}
-                </div>
-              )
-            })}
-          </div>
-        </Popup>
-      </div>
+                  )
+                })}
+              </div>
+            </Popup>
+          </div>,
+          document.body
+        ) as ReactPortal
+      }
     </>
   )
 }

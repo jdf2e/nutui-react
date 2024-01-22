@@ -54,10 +54,8 @@ test('base render', () => {
   const { container } = render(
     <Tour visible list={steps} type="tile" location="bottom-end" />
   )
-  expect(container.querySelector('.nut-popover')).toBeTruthy()
-  expect(
-    container.querySelector('.nut-popover-content-bottom-end')
-  ).toBeTruthy()
+  expect(document.querySelector('.nut-popover')).toBeTruthy()
+  expect(document.querySelector('.nut-popover-content-bottom-end')).toBeTruthy()
 })
 
 test('custom style', () => {
@@ -102,7 +100,7 @@ test('custom offset', () => {
       offset={[8, 8]}
     />
   )
-  const tourArrow = container.querySelectorAll('.nut-popover-arrow')[0]
+  const tourArrow = document.querySelectorAll('.nut-popover-arrow')[0]
   expect(tourArrow).toHaveStyle({ right: '52px' })
 })
 
@@ -127,7 +125,7 @@ test('slot render', () => {
       </div>
     </Tour>
   )
-  const tourArrow = container.querySelectorAll('.nut-popover-content-group')[0]
+  const tourArrow = document.querySelectorAll('.nut-popover-content-group')[0]
   expect(tourArrow).toHaveTextContent('nutui 4.x 即将发布，敬请期待')
 })
 
@@ -139,14 +137,14 @@ test('steps render', async () => {
   const { container } = render(
     <Tour visible list={steps4} location="bottom-end" />
   )
-  const btn = container.querySelectorAll(
+  const btn = document.querySelectorAll(
     '.nut-tour-content-bottom-operate-btn'
   )[0]
   expect(btn).toBeTruthy()
   fireEvent.click(btn)
 
   await waitFor(() => {
-    const btn2 = container.querySelectorAll(
+    const btn2 = document.querySelectorAll(
       '.nut-tour-content-bottom-operate-btn'
     )
     expect(btn2.length).toBe(2)

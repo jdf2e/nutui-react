@@ -57,6 +57,7 @@ export default App;
 ```tsx
 import React, {useState} from "react";
 import { Cell,Dialog,Image } from '@nutui/nutui-react-taro';
+import { ArrowCornerLeft } from '@nutui/icons-react-taro'
 
 const App = () => {
   const [visible1, setVisible1] = useState(false)
@@ -66,7 +67,8 @@ const App = () => {
   const [visible5, setVisible5] = useState(false)
   const [visible6, setVisible6] = useState(false)
   const [visible7, setVisible7] = useState(false);
-
+  const [visible8, setVisible8] = useState(false);
+  const [visible9, setVisible9] = useState(false);
   return (
     <>
       <Cell title="基础弹框" onClick={() => setVisible1(true)} />
@@ -167,6 +169,44 @@ const App = () => {
       >
         如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
       </Dialog>
+      <Cell
+          title="顶部带关闭按钮"
+          onClick={() => {
+            setVisible8(true)
+          }}
+        />
+        <Dialog
+          className="test-dialog"
+          title="顶部带关闭按钮"
+          visible={visible8}
+          closeIcon
+          onConfirm={() => setVisible8(false)}
+          onCancel={() => setVisible8(false)}
+        >
+          {translated.content}
+        </Dialog>
+        <Cell
+          title="自定义顶部关闭按钮"
+          onClick={() => {
+            setVisible9(true)
+          }}
+        />
+        <Dialog
+          className="test-dialog"
+          title="自定义顶部关闭按钮"
+          visible={visible9}
+          closeIcon={<ArrowCornerLeft width="16px" height="16px" />}
+          closeIconPosition="top-left"
+          onConfirm={() => setVisible9(false)}
+          onCancel={() => setVisible9(false)}
+          style={{
+            '--nutui-dialog-close-top': '10px',
+            '--nutui-dialog-close-left': '10px',
+            '--nutui-dialog-close-color': 'red',
+          }}
+        >
+          {translated.content}
+        </Dialog>
     </>
   )
 }
@@ -202,6 +242,8 @@ export default App;
 | onClose | 关闭回调，任何情况关闭弹窗都会触发 | `() => void` | `-` |
 | onClick | 点击自身回调 | `() => void` | `-` |
 | onOverlayClick | 点击蒙层触发 | `() => void` | `-` |
+| closeIconPosition | 关闭按钮位置 | `top-left` \| `top-right` | `top-right` |
+| closeIcon | 关闭按钮 | `boolean \| ReactNode` | `false` |
 
 ### Methods
 | 方法名 | 说明 | 类型 |
@@ -235,3 +277,10 @@ DialogOptions 是 DialogProps 的子集，包含如下属性：title, content, f
 | \--nutui-dialog-footer-cancel-margin-right | 对话框取消按钮的margin-right | `12px` |
 | \--nutui-dialog-footer-ok-max-width | 对话框确认按钮的最大宽度 | `128px` |
 | \--nutui-dialog-vertical-footer-ok-margin-top | 对话框底部按钮纵向排布时的margin值 | `5px` |
+| \--nutui-dialog-close-width | 对话框关闭按钮的宽度 | `18px` |
+| \--nutui-dialog-close-height | 对话框关闭按钮的高度 | `18px` |
+| \--nutui-dialog-close-color | 对话框关闭按钮的颜色 | `#8c8c8c` |
+| \--nutui-dialog-close-top | 对话框关闭按钮的top值 | `16px` |
+| \--nutui-dialog-close-left | 对话框关闭按钮的left值 | `16px` |
+| \--nutui-dialog-close-right | 对话框关闭按钮的right值 | `16px` |
+

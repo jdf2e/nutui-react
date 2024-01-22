@@ -1,14 +1,16 @@
 import React from 'react'
 import { Dialog } from './dialog'
-import { destroyList, ConfirmProps, DialogReturnProps } from './config'
+import { destroyList, DialogConfirmProps, DialogReturnProps } from './config'
 import { render as reactRender, unmount } from '@/utils/render'
 
-function ConfirmDialog(props: ConfirmProps) {
+function ConfirmDialog(props: DialogConfirmProps) {
   return <Dialog {...props}>{props.content}</Dialog>
 }
 
 // 如果是消息提示型弹出框，那么只有确认按钮
-export const normalizeConfig = (config: ConfirmProps): ConfirmProps => {
+export const normalizeConfig = (
+  config: DialogConfirmProps
+): DialogConfirmProps => {
   if (config.isNotice) {
     let { icon } = config
     if (!icon && icon !== null) {
@@ -26,18 +28,18 @@ export const normalizeConfig = (config: ConfirmProps): ConfirmProps => {
 }
 
 const confirm = (
-  config: ConfirmProps,
-  renderFunc?: (props: ConfirmProps) => void
+  config: DialogConfirmProps,
+  renderFunc?: (props: DialogConfirmProps) => void
 ): DialogReturnProps => {
   const div = document.createElement('div')
   document.body.appendChild(div)
 
-  let dialogConfig: ConfirmProps = {
+  let dialogConfig: DialogConfirmProps = {
     ...config,
     visible: false,
   }
 
-  const render = (props: ConfirmProps, callback?: () => any) => {
+  const render = (props: DialogConfirmProps, callback?: () => any) => {
     reactRender(<ConfirmDialog {...props} onCancel={() => onCancel()} />, div)
     callback && callback()
   }
@@ -95,7 +97,7 @@ const confirm = (
     })
   }
 
-  const update = (newConfig: ConfirmProps) => {
+  const update = (newConfig: DialogConfirmProps) => {
     dialogConfig = {
       ...dialogConfig,
       title: config.title, // 避免 newConfig 未传递 title 时，icon 出现多个的问题

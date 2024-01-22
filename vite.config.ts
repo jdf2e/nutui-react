@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react'
 import path from 'path'
 import atImport from 'postcss-import'
+import rtl from 'postcss-rtlcss'
 
 const projectID = process.env.VITE_APP_PROJECT_ID
 
@@ -28,9 +29,12 @@ export default defineConfig({
         // dont need include file extend .scss
         additionalData: fileStr,
       },
-      postcss: {
-        plugins: [atImport({ path: path.join(__dirname, 'src`') })],
-      },
+    },
+    postcss: {
+      plugins: [
+        atImport({ path: path.join(__dirname, 'src') }),
+        process.env.VITE_RTL === 'rtl' ? rtl() : () => {},
+      ],
     },
   },
   plugins: [reactRefresh()],

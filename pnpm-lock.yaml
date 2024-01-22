@@ -248,11 +248,14 @@ importers:
         specifier: ^8.4.21
         version: 8.4.32
       postcss-import:
-        specifier: ^15.0.0
-        version: 15.1.0(postcss@8.4.32)
+        specifier: ^16.0.0
+        version: 16.0.0(postcss@8.4.32)
       postcss-modules:
         specifier: ^6.0.0
         version: 6.0.0(postcss@8.4.32)
+      postcss-rtlcss:
+        specifier: ^5.1.0
+        version: 5.1.0(postcss@8.4.32)
       prettier:
         specifier: ^3.0.0
         version: 3.1.0
@@ -14390,9 +14393,9 @@ packages:
       resolve: 1.22.8
     dev: true
 
-  /postcss-import@15.1.0(postcss@8.4.32):
-    resolution: {integrity: sha512-hpr+J05B2FVYUAXHeK1YyI267J/dDDhMU6B6civm8hSY1jYJnBXxzKDKDswzJmtLHryrjhnDjqqp/49t8FALew==}
-    engines: {node: '>=14.0.0'}
+  /postcss-import@16.0.0(postcss@8.4.32):
+    resolution: {integrity: sha512-e77lhVvrD1I2y7dYmBv0k9ULTdArgEYZt97T4w6sFIU5uxIHvDFQlKgUUyY7v7Barj0Yf/zm5A4OquZN7jKm5Q==}
+    engines: {node: '>=18.0.0'}
     peerDependencies:
       postcss: ^8.0.0
     dependencies:
@@ -14684,6 +14687,16 @@ packages:
 
   /postcss-resolve-nested-selector@0.1.1:
     resolution: {integrity: sha512-HvExULSwLqHLgUy1rl3ANIqCsvMS0WHss2UOsXhXnQaZ9VCc2oBvIpXrl00IUFT5ZDITME0o6oiXeiHr2SAIfw==}
+    dev: true
+
+  /postcss-rtlcss@5.1.0(postcss@8.4.32):
+    resolution: {integrity: sha512-FjZ8HPwr6dWR1Jzzz+TZqkEhkfLiR7sKgsHTDqrYGd51KtZdaDpdJ5aqHmqWoXZsSyJgBIkwZPt5JoEPvkX3Nw==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      postcss: ^8.4.21
+    dependencies:
+      postcss: 8.4.32
+      rtlcss: 4.1.1
     dev: true
 
   /postcss-safe-parser@7.0.0(postcss@8.4.32):
@@ -15784,6 +15797,17 @@ packages:
 
   /rrweb-cssom@0.6.0:
     resolution: {integrity: sha512-APM0Gt1KoXBz0iIkkdB/kfvGOwC4UuJFeG/c+yV7wSc7q96cG/kJ0HiYCnzivD9SB53cLV1MlHFNfOuPaadYSw==}
+    dev: true
+
+  /rtlcss@4.1.1:
+    resolution: {integrity: sha512-/oVHgBtnPNcggP2aVXQjSy6N1mMAfHg4GSag0QtZBlD5bdDgAHwr4pydqJGd+SUCu9260+Pjqbjwtvu7EMH1KQ==}
+    engines: {node: '>=12.0.0'}
+    hasBin: true
+    dependencies:
+      escalade: 3.1.1
+      picocolors: 1.0.0
+      postcss: 8.4.32
+      strip-json-comments: 3.1.1
     dev: true
 
   /run-applescript@5.0.0:

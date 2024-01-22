@@ -3,7 +3,9 @@
 
   &-hover {
     stroke: $circleprogress-primary-color;
-    transition: stroke-dasharray 0.6s ease 0s, stroke 0.6s ease 0s;
+    transition:
+      stroke-dasharray 0.2s ease-in-out 0s,
+      stroke 0.2s ease 0s;
   }
 
   &-path {
