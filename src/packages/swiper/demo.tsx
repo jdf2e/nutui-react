@@ -110,21 +110,23 @@ const SwiperDemo = () => {
       </div>
       <h2>{translated.asyc}</h2>
       <div className="demo-box" style={{ height: 150 }}>
-        <Swiper
-          height={height}
-          autoPlay="2000"
-          defaultValue={initPage2}
-          onChange={onChange}
-          indicator
-        >
-          {list1.map((item) => {
-            return (
-              <Swiper.Item key={item}>
-                <img src={item} alt="" />
-              </Swiper.Item>
-            )
-          })}
-        </Swiper>
+        {list1.length ? (
+          <Swiper
+            height={height}
+            autoPlay="2000"
+            defaultValue={initPage2}
+            onChange={onChange}
+            indicator
+          >
+            {list1.map((item) => {
+              return (
+                <Swiper.Item key={item}>
+                  <img src={item} alt="" />
+                </Swiper.Item>
+              )
+            })}
+          </Swiper>
+        ) : null}
       </div>
       <h2>{translated.dynamicDel}</h2>
       <div className="demo-box" style={{ height: 150 }}>

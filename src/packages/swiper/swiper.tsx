@@ -412,11 +412,6 @@ export const Swiper = React.forwardRef<
   }, [ready])
 
   useEffect(() => {
-    stopAutoPlay()
-    startPlay()
-  }, [children])
-
-  useEffect(() => {
     const events = [
       { name: 'touchstart', e: onTouchStart },
       { name: 'touchmove', e: onTouchMove },
