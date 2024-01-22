@@ -281,6 +281,7 @@ export const Swiper = React.forwardRef<
   })
   const getStyle = (moveOffset = offset) => {
     const target = innerRef.current
+    if (!target) return
     let _offset = 0
     if (!center) {
       _offset = moveOffset
