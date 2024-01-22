@@ -18,7 +18,7 @@ const ImageDemo = () => {
       lazyload: '图片懒加载',
       default: '默认',
       custom: '自定义',
-      imageText: 'image + text 模式',
+      imageText: 'Image + text 模式',
       text: '雪纺衫女2021年春季新款洋气轻熟上衣',
     },
     'en-US': {
@@ -37,8 +37,6 @@ const ImageDemo = () => {
   })
   const src =
     'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
-  const errorSrc =
-    'https://storage.3601buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
   return (
     <>
       <Header />
@@ -176,7 +174,7 @@ const ImageDemo = () => {
             )
           })}
         </Cell>
-        <h2>{translated.lazyload}11</h2>
+        <h2>{translated.lazyload}</h2>
         <ScrollView style={{ height: '350px' }} scrollY>
           {[
             ...new Array(3).fill(src),

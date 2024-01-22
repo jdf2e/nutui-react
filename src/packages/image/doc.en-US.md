@@ -23,10 +23,14 @@ import React from "react";
 import { Image } from '@nutui/nutui-react';
 
 const App = () => {
-  const src =
-    '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
+  const src = 'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
   return <>
-    <Image src={src} width="100%" />
+    <Image
+      src={src}
+      onClick={() => {
+        console.log('click image')
+      }}
+    />
   </>
 }
 export default App;
@@ -43,18 +47,27 @@ The `fit` attribute is used to set the image filling mode, which is equivalent t
 
 ```tsx
 import React from "react";
-import { Image } from '@nutui/nutui-react';
+import { Image, Row, Col } from '@nutui/nutui-react';
 
 const App = () => {
-  const src =
-    '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
+  const fits = ['contain', 'cover', 'fill', 'none', 'scale-down']
+  const src = 'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
+  const imageText = {
+    marginTop: 5,
+    textAlign: 'center',
+    color: '#999'
+  }
   return <>
-    <Image
-      src={src}
-      width="100"
-      height="100"
-      fit="contain"
-    />
+    <Row gutter={10} type="flex" wrap="wrap">
+      {fits.map((i) => {
+        return (
+          <Col span="8" key={i}>
+            <Image src={src} width="80" height="80" fit={i} />
+            <div style={imageText}>{i}</div>
+          </Col>
+        )
+      })}
+    </Row>
   </>
 }
 export default App;
@@ -70,19 +83,50 @@ The position property can be used to set the position of the picture, which is e
 
 ```tsx
 import React from "react";
-import { Image } from '@nutui/nutui-react';
+import { Image, Row, Col } from '@nutui/nutui-react';
 
 const App = () => {
-  const src =
-    '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
+  const position1 = ['left', 'center', 'right']
+  const position2 = ['top', 'center', 'bottom']
+  const src = 'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
+  const imageText = {
+    marginTop: 5,
+    textAlign: 'center',
+    color: '#999'
+  }
   return <>
-    <Image
-      src={src}
-      width="100"
-      height="100"
-      fit="contain"
-      position="left"
-    />
+    <Row gutter={10} type="flex" wrap="wrap">
+      {position2.map((i) => {
+        return (
+          <Col span="8" key={i}>
+            <Image
+              src={src}
+              width="80"
+              height="80"
+              fit="contain"
+              position={i}
+            />
+            <div style={imageText}>contain</div>
+            <div style={imageText}>{i}</div>
+          </Col>
+        )
+      })}
+      {position1.map((i) => {
+        return (
+          <Col span="8" key={i}>
+            <Image
+              src={src}
+              width="80"
+              height="80"
+              fit="cover"
+              position={i}
+            />
+            <div style={imageText}>cover</div>
+            <div style={imageText}>{i}</div>
+          </Col>
+        )
+      })}
+    </Row>
   </>
 }
 export default App;
@@ -98,18 +142,48 @@ The round attribute allows you to set the image to be round. Note that if the im
 
 ```tsx
 import React from "react";
-import { Image } from '@nutui/nutui-react';
+import { Image, Row, Col } from '@nutui/nutui-react';
 
 const App = () => {
-  const src =
-    '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
+  const src = 'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
+  const imageText = {
+    marginTop: 5,
+    textAlign: 'center',
+    color: '#999'
+  }
   return <>
-    <Image
-      src={src}
-      width="100"
-      height="100"
-      radius="50%"
-    />
+    <Row gutter={10}>
+      <Col span="8">
+        <Image
+          src={src}
+          width="100"
+          height="100"
+          fit="contain"
+          radius="50%"
+        />
+        <div style={imageText}>contain</div>
+      </Col>
+      <Col span="8">
+        <Image
+          src={src}
+          width="100"
+          height="100"
+          fit="cover"
+          radius="50%"
+        />
+        <div style={imageText}>cover</div>
+      </Col>
+      <Col span="8">
+        <Image
+          src={src}
+          width="100"
+          height="100"
+          fit="cover"
+          radius="10"
+        />
+        <div style={imageText}>cover</div>
+      </Col>
+    </Row>
   </>
 }
 export default App;
@@ -125,18 +199,34 @@ The Image component provides a default loading prompt and supports custom conten
 
 ```tsx
 import React from "react";
-import { Image } from '@nutui/nutui-react';
+import { Image, Row, Col } from '@nutui/nutui-react';
 import { Loading } from '@nutui/icons-react';
 
 const App = () => {
-  const src =
-    '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
+  const src = 'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
+  const imageText = {
+    marginTop: 5,
+    textAlign: 'center',
+    color: '#999'
+  }
   return <>
-    <Image
-      width="100"
-      height="100"
-      loading={<Loading className="nut-icon-loading" />}
-    />
+    <Row gutter={10}>
+      <Col span="8">
+        <Image
+          width="100"
+          height="100"
+          lazy
+          onLoad={() => {
+            console.log('image onload')
+          }}
+        />
+        <div style={imageText}>Default</div>
+      </Col>
+      <Col span="8">
+        <Image width="100" height="100" lazy loading={<Loading />} />
+        <div style={imageText}>Custom</div>
+      </Col>
+    </Row>
   </>
 }
 export default App;
@@ -152,17 +242,38 @@ The Image component provides a default loading failure warning and supports cust
 
 ```tsx
 import React from "react";
-import { Image } from '@nutui/nutui-react';
+import { Image, Row, Col } from '@nutui/nutui-react';
 import { Failure } from '@nutui/icons-react';
 
 const App = () => {
+  const imageText = {
+    marginTop: 5,
+    textAlign: 'center',
+    color: '#999'
+  }
   return <>
-    <Image
-      src="https://x"
-      width="100"
-      height="100"
-      error={<Failure />}
-    />
+    <Row gutter={10}>
+      <Col span="8">
+        <Image
+          src="https://x"
+          width="100"
+          height="100"
+          onError={() => {
+            console.log('image error')
+          }}
+        />
+        <div style={imageText}>Default</div>
+      </Col>
+      <Col span="8">
+        <Image
+          src="https://x"
+          width="100"
+          height="100"
+          error={<Failure />}
+        />
+        <div style={imageText}>Custom</div>
+      </Col>
+    </Row>
   </>
 }
 export default App;
@@ -170,8 +281,7 @@ export default App;
 
 :::
 
-
-### Image + text Mode
+### Image + text
 
 `Image` and text
 
@@ -206,8 +316,7 @@ export default App;
 
 :::
 
-
-### Image LazyLoad
+### LazyLoad
 
 The Image component provides lazy loading of images, which can be realized by configuring `isLazy`, which is not enabled by default.
 
@@ -223,13 +332,13 @@ const App = () => {
   const imageData = [1, 2, 3, 4, 5, 6]
   const placeholderImg = 'https://img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png'
   const style = `
-  .lazy-box{
-    width:100%
-  }
-  .lazy-box .nut-image{
-    margin-bottom: 10px;
-  }
-`
+    .lazy-box{
+      width:100%
+    }
+    .lazy-box .nut-image{
+      margin-bottom: 10px;
+    }
+  `
   return <>
     <style>{style}</style>
     <Cell>

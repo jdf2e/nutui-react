@@ -18,7 +18,7 @@ const ImageDemo = () => {
       lazyload: '图片懒加载',
       default: '默认',
       custom: '自定义',
-      imageText: 'image + text 模式',
+      imageText: 'Image + text 模式',
       text: '雪纺衫女2021年春季新款洋气轻熟上衣',
     },
     'en-US': {
