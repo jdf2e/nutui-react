@@ -91,7 +91,6 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
       // 左右两边的padding
       centerWidth -= 14 * 4
     }
-    console.log('test', leftRectWidth, rightRectWidth, bodyWidth)
     setContentWidth(centerWidth.toFixed(2))
     return () => {
       cleanLeftObserver()
@@ -125,6 +124,7 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
       <View
         className={`${classPrefix}-title`}
         style={{
+          minWidth: contentRealWidth,
           maxWidth: contentRealWidth,
           width: contentRealWidth,
         }}

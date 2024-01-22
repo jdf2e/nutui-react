@@ -120,11 +120,11 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
     const contentRealWidth = `${contentWidth}${
       /%$/i.test(contentWidth) ? '' : 'px'
     }`
-    console.log(contentRealWidth)
     return (
       <div
         className={`${classPrefix}-title`}
         style={{
+          minWidth: contentRealWidth,
           maxWidth: contentRealWidth,
           width: contentRealWidth,
         }}
