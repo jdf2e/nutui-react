@@ -31,7 +31,7 @@ const ImageDemo = () => {
       lazyload: 'Lazyload',
       default: 'Default',
       custom: 'Custom',
-      imageText: 'image + text ',
+      imageText: 'Image + text ',
       text: 'Chiffon, 2021, spring, the new easy-to-wear blouse',
     },
   })
