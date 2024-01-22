@@ -128,6 +128,8 @@ export default App;
 
 ### Show Keyboard With Title
 
+You can use `rightActions` when you want to set the right actions on the title bar.The vuale of it is `Done`.
+
 :::demo
 
 ```tsx
@@ -253,10 +255,11 @@ export default App;
 | --- | --- | --- | --- |
 | visible | Whether to show keyboard | `boolean` | `false` |
 | title | Keyboard title | `ReactNode` | `-` |
+| rightActions | Right actions at title bar | `ReactNode` | `-` |
 | type | Keyboard type, default/rightColumn | `'default' \| 'rightColumn'` | `default` |
 | random | Whether to shuffle the order of keys | `boolean` | `false` |
 | custom | Content of bottom left key, Array form supports adding up to two | `string[]` | `-` |
-| confirmText | Custom done button text,Such as "pay", "next", "submit" | `string` | `done` |
+| confirmText | Custom done button text, Such as "pay", "next", "submit", used by `rightColumn` | `string` | `done` |
 | onChange | Emitted when a key is pressed | `(value: string) => void` | `-` |
 | onDelete | Emitted when the delete key is pressed | `-` | `-` |
 | onClose | Emitted when the close button or non-keyboard area is clicked is clicked | `-` | `-` |
