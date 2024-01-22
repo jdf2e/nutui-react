@@ -1,7 +1,9 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
 
+import { ITouchEvent, View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import useNodeBoundingRect from './hooks/useNodeBoundingRect'
 
 export interface NavBarProps extends BasicComponent {
   left: React.ReactNode
@@ -12,7 +14,7 @@ export interface NavBarProps extends BasicComponent {
   safeAreaInsetTop: boolean
   placeholder: boolean
   zIndex: number | string
-  onBackClick: (e: React.MouseEvent<HTMLElement>) => void
+  onBackClick: (e: ITouchEvent) => void
   children?: React.ReactNode
 }
 
@@ -58,37 +60,95 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
     }
   }
 
+  const [leftRect, leftActions, cleanLeftObserver] = useNodeBoundingRect()
+  const [rightRect, rightActions, cleanRightObserver] = useNodeBoundingRect()
+  const [wrapperRect, wrapperActions, cleanWrapperObserver] =
+    useNodeBoundingRect()
+  const [contentWidth, setContentWidth] = useState('50%')
+
+  useEffect(() => {
+    if (!(back || left || right)) {
+      setContentWidth('100%')
+      return
+    }
+    if (!(leftRect || rightRect)) return
+    const leftRectWidth = leftRect?.width || 0
+    const rightRectWidth = rightRect?.width || 0
+    const bodyWidth = wrapperRect?.width || 0
+    let centerWidth = bodyWidth / 2
+    if (titleAlign === 'left') {
+      centerWidth = bodyWidth - leftRectWidth - rightRectWidth
+    } else {
+      if (leftRect && rightRect) {
+        centerWidth =
+          bodyWidth -
+          (leftRectWidth > rightRectWidth
+            ? leftRectWidth * 2
+            : rightRectWidth * 2)
+      } else {
+        centerWidth = bodyWidth - leftRectWidth * 2 - rightRectWidth * 2
+      }
+      // 左右两边的padding
+      centerWidth -= 14 * 4
+    }
+    console.log('test', leftRectWidth, rightRectWidth, bodyWidth)
+    setContentWidth(centerWidth.toFixed(2))
+    return () => {
+      cleanLeftObserver()
+      cleanRightObserver()
+      cleanWrapperObserver()
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [leftRect, rightRect])
+
   const renderLeft = () => {
-    return (
-      <div className={`${classPrefix}-left`}>
+    return back || left ? (
+      <View className={`${classPrefix}-left`} ref={(el) => leftActions(el)}>
         {back && (
-          <div
+          <View
             className={`${classPrefix}-left-back`}
             onClick={(e) => onBackClick(e)}
           >
             {back}
-          </div>
+          </View>
         )}
         {left}
-      </div>
-    )
+      </View>
+    ) : null
   }
 
   const renderContent = () => {
-    return <div className={`${classPrefix}-title`}>{children}</div>
+    const contentRealWidth = `${contentWidth}${
+      /%$/i.test(contentWidth) ? '' : 'px'
+    }`
+    return (
+      <View
+        className={`${classPrefix}-title`}
+        style={{
+          maxWidth: contentRealWidth,
+          width: contentRealWidth,
+        }}
+      >
+        {children}
+      </View>
+    )
   }
 
   const renderRight = () => {
-    return <div className={`${classPrefix}-right`}>{right}</div>
+    return (
+      <View className={`${classPrefix}-right`} ref={(el) => rightActions(el)}>
+        {right}
+      </View>
+    )
   }
 
   const renderWrapper = () => {
     return (
-      <div className={cls} style={styles()}>
+      <View className={cls} style={styles()} ref={(el) => wrapperActions(el)}>
         {renderLeft()}
         {renderContent()}
         {renderRight()}
-      </div>
+      </View>
     )
   }
 
@@ -103,7 +163,7 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   return (
     <>
       {fixed && placeholder ? (
-        <div className={`${classPrefix}-placeholder`}>{renderWrapper()}</div>
+        <View className={`${classPrefix}-placeholder`}>{renderWrapper()}</View>
       ) : (
         renderWrapper()
       )}
