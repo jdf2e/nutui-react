@@ -14,15 +14,39 @@ npm i --save @nutui/icons-react-taro
 
 ## 代码演示
 
-### 方式一： 按需使用
+### 方式一： Svg按需使用
 
 按需加载组件使用方式，可选项见 @nutui/icons-react-taro/dist/types/index.d.ts
 
-```html
-import { Add } from '@nutui/icons-react-taro';
+:::demo
 
-<Add color='red' />
+```tsx
+import React from "react";
+import { Add, Dongdong, UserAdd } from '@nutui/icons-react-taro'
+
+const App = () => {
+  return <>
+    <Add color="red" />
+    <UserAdd />
+    <Dongdong />
+  </>
+}
+
 ```
+
+:::
+
+## Icon
+
+### Props
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| name | 图标名称或图片链接 | `string` | `-` |
+| color | 图标颜色 | `string` | `-` |
+| width | 图标大小，如 `20px` `2em` `2rem` | `string` \| `object` | `-` |
+| height | 图标大小，如 `20px` `2em` `2rem` | `string` \| `object` | `-` |
+| onClick | 点击图标时触发 | `event: Event` | `-` |
 
 ## 方式二： IconFont 全量使用
 
@@ -43,8 +67,32 @@ import { IconFont } from '@nutui/icons-react-taro'
 const App = () => {
   return <>
     <IconFont name="dongdong" />
-    <IconFont name="JD"/>
-    <IconFont size="40"  name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"/>
+    <IconFont name="add" />
+    <IconFont name="minus" />
+  </>
+}
+export default App;
+
+```
+
+:::
+
+### 图片链接
+
+`Icon` 的 `name` 属性支持传入图标名称或图片链接。
+
+:::demo
+
+```tsx
+import React from "react";
+import { IconFont } from '@nutui/icons-react-taro'
+
+const App = () => {
+  return <>
+    <IconFont
+      size="40"
+      name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
+    />
   </>
 }
 export default App;
@@ -67,7 +115,7 @@ const App = () => {
   return <>
     <IconFont name="dongdong" color="#fa2c19" />
     <IconFont name="dongdong" color="#64b578" />
-    <IconFont name="JD" color="#fa2c19" />
+    <IconFont name="dongdong" color="#ffd700" />
   </>
 }
 
@@ -88,9 +136,9 @@ import { IconFont } from '@nutui/icons-react-taro'
 
 const App = () => {
   return <>
-    <IconFont name="dongdong" />
-    <IconFont name="dongdong" size="24" />
     <IconFont name="dongdong" size="16" />
+    <IconFont name="dongdong" size="20" />
+    <IconFont name="dongdong" size="24" />
   </>
 }
 
