@@ -69,7 +69,7 @@ export const Ellipsis: FunctionComponent<
   const [contentCopy, setContentCopy] = useState(content)
   const lineH = useRef(0) // 当行的最大高度
   const originHeight = useRef(0) // 原始高度
-  const refRandomId = Math.random().toString(36).slice(-8)
+  const refRandomId = useRef(Math.random().toString(36).slice(-8))
   const widthRef: any = useRef('auto')
 
   let widthBase = [14, 10, 7, 8.4, 10] // 中、英(大)、英(小)、数字、其他字符的基础宽度
@@ -86,6 +86,7 @@ export const Ellipsis: FunctionComponent<
   )
 
   const init = () => {
+    console.log('init setExceeded false')
     setExceeded(false)
     setExpanded(false)
     setContentCopy(content)
@@ -97,10 +98,7 @@ export const Ellipsis: FunctionComponent<
 
   useReady(() => init())
 
-  useEffect(
-    () => init(),
-    [content, lineH.current, maxHeight.current, originHeight.current]
-  )
+  useEffect(() => init(), [content])
 
   // 获取省略号宽度
   const getSymbolInfo = async () => {
@@ -118,12 +116,10 @@ export const Ellipsis: FunctionComponent<
   }
 
   const getReference = async () => {
-    const element = root.current
-
     const query = createSelectorQuery()
-    query.select(`#${(element as any).id}`) &&
+    query.select(`#root${refRandomId.current}`) &&
       query
-        .select(`#${(element as any).id}`)
+        .select(`#root${refRandomId.current}`)
         .fields(
           {
             computedStyle: [
@@ -168,9 +164,13 @@ export const Ellipsis: FunctionComponent<
 
   // 计算省略号的位置
   const calcEllipse = async () => {
+    console.log('calcEllipse')
     const refe = await getRectByTaro(rootContain.current)
 
+    console.log('refe', refe, maxHeight.current)
+
     if (refe.height <= maxHeight.current) {
+      console.log('calcEllipse setExceeded false')
       setExceeded(false)
     } else {
       const rowNum = Math.floor(
@@ -242,6 +242,7 @@ export const Ellipsis: FunctionComponent<
 
     const direc = direction === 'middle' && type ? type : direction
 
+    console.log('tailorContent setExceeded true')
     setExceeded(true)
 
     let widthPart = -1
@@ -308,13 +309,16 @@ export const Ellipsis: FunctionComponent<
   const handleClick = () => {
     onClick && onClick()
   }
+
+  console.log(exceeded, expanded)
+  console.log(ellipsis.current?.leading, ellipsis.current?.tailing)
   return (
     <>
       <div
         className={classes}
         onClick={handleClick}
         ref={root}
-        id={`root${refRandomId}`}
+        id={`root${refRandomId.current}`}
         {...rest}
       >
         <div>
@@ -387,7 +391,7 @@ export const Ellipsis: FunctionComponent<
       <div
         className="nut-ellipsis-copy"
         ref={rootContain}
-        id={`rootContain${refRandomId}`}
+        id={`rootContain${refRandomId.current}`}
         style={{ width: `${widthRef}` }}
       >
         <div>{contentCopy}</div>
@@ -395,7 +399,7 @@ export const Ellipsis: FunctionComponent<
       <div
         className="nut-ellipsis-copy"
         ref={symbolContain}
-        id={`symbolContain${refRandomId}`}
+        id={`symbolContain${refRandomId.current}`}
         style={{ display: 'inline' }}
       >
         {symbolText()}
