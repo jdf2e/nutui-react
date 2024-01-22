@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useState, useRef, useEffect } from 'react'
-import { useReady, nextTick, createSelectorQuery } from '@tarojs/taro'
+import { nextTick, createSelectorQuery } from '@tarojs/taro'
 import classNames from 'classnames'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -72,8 +72,8 @@ export const Ellipsis: FunctionComponent<
   const refRandomId = useRef(Math.random().toString(36).slice(-8))
   const widthRef: any = useRef('auto')
 
-  let widthBase = [14, 10, 7, 8.4, 10] // 中、英(大)、英(小)、数字、其他字符的基础宽度
-  let symbolTextWidth: any = widthBase[0] * 0.7921
+  const widthBase = useRef([14, 10, 7, 8.4, 10]) // 中、英(大)、英(小)、数字、其他字符的基础宽度
+  const symbolTextWidth = useRef(widthBase.current[0] * 0.7921)
   const chineseReg = /^[\u4e00-\u9fa5]+$/ // 汉字
   const digitReg = /^[0-9]+$/ // 数字
   const letterUpperReg = /^[A-Z]+$/ // 字母
@@ -85,27 +85,20 @@ export const Ellipsis: FunctionComponent<
     className
   )
 
-  const init = () => {
-    console.log('init setExceeded false')
-    setExceeded(false)
-    setExpanded(false)
+  useEffect(() => {
+    getSymbolInfo()
     setContentCopy(content)
     nextTick(() => {
-      getSymbolInfo()
       getReference()
     })
-  }
-
-  useReady(() => init())
-
-  useEffect(() => init(), [content])
+  }, [content])
 
   // 获取省略号宽度
   const getSymbolInfo = async () => {
     const refe = await getRectByTaro(symbolContain?.current)
-    symbolTextWidth = refe.width
+    symbolTextWidth.current = refe.width
       ? Math.ceil(refe.width)
-      : Math.ceil(widthBase[0] * 0.7921)
+      : Math.ceil(widthBase.current[0] * 0.7921)
   }
 
   const symbolText = () => {
@@ -148,7 +141,7 @@ export const Ellipsis: FunctionComponent<
 
             // 设置基础字符
             const bsize = pxToNumber(res.fontSize)
-            widthBase = [
+            widthBase.current = [
               bsize,
               bsize * 0.72,
               bsize * 0.53,
@@ -164,13 +157,8 @@ export const Ellipsis: FunctionComponent<
 
   // 计算省略号的位置
   const calcEllipse = async () => {
-    console.log('calcEllipse')
     const refe = await getRectByTaro(rootContain.current)
-
-    console.log('refe', refe, maxHeight.current)
-
     if (refe.height <= maxHeight.current) {
-      console.log('calcEllipse setExceeded false')
       setExceeded(false)
     } else {
       const rowNum = Math.floor(
@@ -238,11 +226,8 @@ export const Ellipsis: FunctionComponent<
   }
   // 计算省略号
   const tailorContent = (left: number, right: number, type = '') => {
-    const threeDotWidth = symbolTextWidth
-
+    const threeDotWidth = symbolTextWidth.current
     const direc = direction === 'middle' && type ? type : direction
-
-    console.log('tailorContent setExceeded true')
     setExceeded(true)
 
     let widthPart = -1
@@ -267,15 +252,15 @@ export const Ellipsis: FunctionComponent<
     while (widthPart < contentPartWidth) {
       const zi = content[marking]
       if (chineseReg.test(zi)) {
-        widthPart = Number(widthPart + widthBase[0])
+        widthPart = Number(widthPart + widthBase.current[0])
       } else if (letterUpperReg.test(zi)) {
-        widthPart = Number(widthPart + widthBase[1])
+        widthPart = Number(widthPart + widthBase.current[1])
       } else if (letterLowerReg.test(zi)) {
-        widthPart = Number(widthPart + widthBase[2])
+        widthPart = Number(widthPart + widthBase.current[2])
       } else if (digitReg.test(zi)) {
-        widthPart = Number(widthPart + widthBase[3])
+        widthPart = Number(widthPart + widthBase.current[3])
       } else {
-        widthPart = Number(widthPart + widthBase[4])
+        widthPart = Number(widthPart + widthBase.current[4])
       }
       cutoff = marking
 
@@ -310,8 +295,6 @@ export const Ellipsis: FunctionComponent<
     onClick && onClick()
   }
 
-  console.log(exceeded, expanded)
-  console.log(ellipsis.current?.leading, ellipsis.current?.tailing)
   return (
     <>
       <div
