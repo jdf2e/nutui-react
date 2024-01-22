@@ -128,29 +128,6 @@ const SwiperDemo = () => {
           </Swiper>
         ) : null}
       </div>
-      <h2>{translated.dynamicDel}</h2>
-      <div className="demo-box" style={{ height: 150 }}>
-        <Swiper
-          height={height}
-          style={{
-            '--nutui-indicator-color': '#426543',
-            '--nutui-indicator-dot-color': '#426ddd',
-          }}
-          autoPlay="2000"
-          defaultValue={initPage3}
-          onChange={onChange}
-          indicator
-        >
-          {list2.map((item) => {
-            return (
-              <Swiper.Item key={item}>
-                <img src={item} alt="" />
-              </Swiper.Item>
-            )
-          })}
-        </Swiper>
-      </div>
-
       <h2>{translated.size}</h2>
       <div className="demo-box" style={{ height: 150 }}>
         <Swiper defaultValue={initPage4} width="300" height={height}>
