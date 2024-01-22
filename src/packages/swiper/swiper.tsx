@@ -13,6 +13,7 @@ import Indicator from '@/packages/indicator/index'
 import { BasicComponent } from '@/utils/typings'
 import { useTouch } from '@/utils/use-touch'
 import requestAniFrame from '@/utils/raf'
+import { getRefValue, useStateRef } from '@/utils/use-state-ref'
 
 export type SwiperRef = {
   to: (index: number) => void
@@ -89,7 +90,7 @@ export const Swiper = React.forwardRef<
   const isVertical = direction === 'vertical'
   const [rect, setRect] = useState(null as any | null)
   // eslint-disable-next-line prefer-const
-  let [active, setActive] = useState(0)
+  let [active, setActive, activeRef] = useStateRef(0)
   const [width, setWidth] = useState(0)
   const [height, setHeight] = useState(0)
   const [offset, setOffset] = useState(0)
@@ -140,10 +141,12 @@ export const Swiper = React.forwardRef<
   // 重置首尾位置信息
   const resetPosition = () => {
     swiperRef.current.moving = true
+    const active = getRefValue(activeRef)
     if (active <= -1) {
       move({ pace: swiperItemCount })
     }
     if (active >= swiperItemCount) {
+      console.log('xxx lt count', active)
       move({ pace: -swiperItemCount })
     }
   }
@@ -152,10 +155,12 @@ export const Swiper = React.forwardRef<
     resetPosition()
     touch.reset()
     requestAniFrame(() => {
-      swiperRef.current.moving = false
-      move({
-        pace: -1,
-        isEmit: true,
+      requestAniFrame(() => {
+        swiperRef.current.moving = false
+        move({
+          pace: -1,
+          isEmit: true,
+        })
       })
     })
   }
@@ -164,10 +169,12 @@ export const Swiper = React.forwardRef<
     resetPosition()
     touch.reset()
     requestAniFrame(() => {
-      swiperRef.current.moving = false
-      move({
-        pace: 1,
-        isEmit: true,
+      requestAniFrame(() => {
+        swiperRef.current.moving = false
+        move({
+          pace: 1,
+          isEmit: true,
+        })
       })
     })
   }
@@ -176,16 +183,18 @@ export const Swiper = React.forwardRef<
     resetPosition()
     touch.reset()
     requestAniFrame(() => {
-      swiperRef.current.moving = false
-      let targetIndex
-      if (props.loop && swiperItemCount === index) {
-        targetIndex = active === 0 ? 0 : index
-      } else {
-        targetIndex = index % swiperItemCount
-      }
-      move({
-        pace: targetIndex - active,
-        isEmit: true,
+      requestAniFrame(() => {
+        swiperRef.current.moving = false
+        let targetIndex
+        if (props.loop && swiperItemCount === index) {
+          targetIndex = active === 0 ? 0 : index
+        } else {
+          targetIndex = index % swiperItemCount
+        }
+        move({
+          pace: targetIndex - active,
+          isEmit: true,
+        })
       })
     })
   }
