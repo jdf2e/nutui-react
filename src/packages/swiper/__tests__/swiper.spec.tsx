@@ -1,8 +1,8 @@
-import React from 'react'
-import { render, waitFor } from '@testing-library/react'
+import React, { useRef } from 'react'
+import { fireEvent, render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { act } from 'react-dom/test-utils'
-import Swiper from '../index'
+import Swiper, { SwiperRef } from '../index'
 import { triggerDrag } from '@/utils/test/event'
 
 function sleep(delay = 0): Promise<void> {
@@ -24,26 +24,57 @@ test('should render width and height', () => {
     width: 375,
   }
   const { height, defaultValue, width } = state
-  const onChange = (e: number) => {}
+  const onChange = jest.fn()
 
-  const { container } = render(
-    <Swiper
-      height={height}
-      width={width}
-      autoPlay="2000"
-      defaultValue={defaultValue}
-      onChange={onChange}
-      indicator
-    >
-      {list.map((item) => {
-        return (
-          <Swiper.Item key={item}>
-            <img src={item} alt="" />
-          </Swiper.Item>
-        )
-      })}
-    </Swiper>
-  )
+  const Wraper = () => {
+    const ref = useRef<SwiperRef>(null)
+    return (
+      <>
+        <div
+          data-testid="prev"
+          onClick={() => {
+            ref.current?.prev()
+          }}
+        >
+          prev
+        </div>
+        <div
+          data-testid="next"
+          onClick={() => {
+            ref.current?.next()
+          }}
+        >
+          next
+        </div>
+        <div
+          data-testid="to"
+          onClick={() => {
+            ref.current?.to(1)
+          }}
+        >
+          to
+        </div>
+        <Swiper
+          height={height}
+          width={width}
+          autoPlay="2000"
+          defaultValue={defaultValue}
+          onChange={onChange}
+          ref={ref}
+          indicator
+        >
+          {list.map((item) => {
+            return (
+              <Swiper.Item key={item}>
+                <img src={item} alt="" />
+              </Swiper.Item>
+            )
+          })}
+        </Swiper>
+      </>
+    )
+  }
+  const { container, getByTestId } = render(<Wraper />)
   const swiper = container.querySelectorAll('.nut-swiper-inner')[0]
   const item = container.querySelectorAll('.nut-swiper-item')[0]
   expect(swiper).toHaveStyle({
@@ -52,6 +83,10 @@ test('should render width and height', () => {
   expect(item).toHaveStyle({
     width: '375px',
   })
+
+  fireEvent.click(getByTestId('next'))
+  fireEvent.click(getByTestId('prev'))
+  fireEvent.click(getByTestId('to'))
 })
 test('should render initpage', () => {
   const list = [
