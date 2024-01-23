@@ -41,7 +41,7 @@ const OverlayDemo = () => {
       '84aa6bce': 'Basic usage',
       '2a9e4928': 'Show mask layer',
       duration: 'Set animation time',
-      lockscroll: 'Donot lock background scrolling',
+      lockscroll: 'Donot Lock background scrolling',
       abbf9359: 'Custom mask style',
       ec0d7acf: 'nested content',
       ce1e18a2: 'here is the text',
