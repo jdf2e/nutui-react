@@ -12,22 +12,27 @@ npm i --save @nutui/icons-react
 
 ## Demo
 
-### Method 1: Svg is used on demand
+### Method 1: Svg import on demand
 
 How to load components on demand, see @nutui/icons-react/dist/types/index.d.ts for options
 
-```html
-import { Add } from '@nutui/icons-react';
+:::demo
 
-<Add color='red' />
+```tsx
+import React from "react";
+import { Add, Dongdong, UserAdd } from '@nutui/icons-react'
+
+const App = () => {
+  return <>
+    <Add color="red" />
+    <UserAdd />
+    <Dongdong />
+  </>
+}
+
 ```
 
-<icon-demo />
-
-```
-where the component library internally uses Svg as:
-Loading,Location,Check,Close,ArrowLeft,Service,Top,ArrowRight,CheckNormal,Checked,CheckDisabled,ArrowDown,JoySmile,Image,ImageError,MaskClose,Minus,Plus,ArrowUp2,ArrowDown2,Notice,CheckChecked,Star,Tips,Loading,TriangleUp,TriangleDown,Photograph,Failure,Del,Link,Download
-```
+:::
 
 ## SVG Icon
 
@@ -47,7 +52,7 @@ Loading,Location,Check,Close,ArrowLeft,Service,Top,ArrowRight,CheckNormal,Checke
 import { IconFont } from '@nutui/icons-react'
 ```
 
-### Basic
+### Basic Usage
 
 The `name` attribute of `Icon` supports passing in the icon name or image link.
 
@@ -60,8 +65,8 @@ import { IconFont } from '@nutui/icons-react'
 const App = () => {
   return <>
     <IconFont name="dongdong" />
-    <IconFont name="JD"/>
-    <IconFont size="40"  name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"/>
+    <IconFont name="add" />
+    <IconFont name="minus" />
   </>
 }
 export default App;
@@ -70,7 +75,31 @@ export default App;
 
 :::
 
-### Icon color
+### Image link
+
+The `name` attribute of `Icon` supports passing in the icon name or image link.
+
+:::demo
+
+```tsx
+import React from "react";
+import { IconFont } from '@nutui/icons-react'
+
+const App = () => {
+  return <>
+    <IconFont
+      size="40"
+      name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
+    />
+  </>
+}
+export default App;
+
+```
+
+:::
+
+### IconFont color
 
 The `color` property of `Icon` is used to set the color of the icon.
 
@@ -84,7 +113,7 @@ const App = () => {
   return <>
     <IconFont name="dongdong" color="#fa2c19" />
     <IconFont name="dongdong" color="#64b578" />
-    <IconFont name="JD" color="#fa2c19" />
+    <IconFont name="dongdong" color="#ffd700" />
   </>
 }
 
@@ -93,7 +122,7 @@ export default App;
 
 :::
 
-### Icon size
+### IconFont size
 
 The `size` attribute of `Icon` is used to set the size of the icon, and the default unit is `px`.
 
@@ -105,9 +134,9 @@ import { IconFont } from '@nutui/icons-react'
 
 const App = () => {
   return <>
-    <IconFont name="dongdong" />
-    <IconFont name="dongdong" size="24" />
     <IconFont name="dongdong" size="16" />
+    <IconFont name="dongdong" size="20" />
+    <IconFont name="dongdong" size="24" />
   </>
 }
 
@@ -122,7 +151,7 @@ If you need to use more icons based on the existing Icon, you can import the fon
 
 > Solution 1 Introduce [iconfont](https://www.iconfont.cn/) Recommend this solution
 
-Step 1: First generate your custom Icon file in [iconfont](https://www.iconfont.cn/), download and store it in the local project \[detailed instructions\](https://www.iconfont.cn/help /detail?spm=a313x.7781069.1998910419.d8d11a391&helptype=code)
+Step 1: First generate your custom Icon file in [iconfont](https://www.iconfont.cn/), download and store it in the local project \[detailed instructions\](<https://www.iconfont.cn/help> /detail?spm=a313x.7781069.1998910419.d8d11a391&helptype=code)
 
 ```bash
 /assets/font/demo.css

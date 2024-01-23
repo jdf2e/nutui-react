@@ -148,58 +148,6 @@ export default App;
 
 :::
 
-### 動態加載
-
-支持動態增加/刪除圖片
-
-:::demo
-
-```tsx
-import React, { useState, useEffect } from 'react'
-import { Swiper } from '@nutui/nutui-react';
-
-const App = () => {
-  const [defaultValue1, setdefaultValue1] = useState(0)
-  const [height, setHeight] = useState(150)
-  const [list, setList] = useState([
-    'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-    'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
-    'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-    'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
-  ])
-  useEffect(() => {
-    setTimeout(() => {
-      list.splice(1, 1)
-      setList(list.splice(1, 1))
-    }, 3000)
-  }, [])
-  return (
-    <div className="demo-box" style={{ height: 150 }}>
-      <Swiper
-        height={height}
-        style={{
-            '--nutui-indicator-color': '#426543',
-            '--nutui-indicator-dot-color': '#426ddd',
-          }}
-        autoPlay="3000"
-        defaultValue={defaultValue1}
-        indicator
-      >
-        {list.map((item) => {
-          return (
-            <Swiper.Item key={item}>
-              <img src={item} alt="" />
-            </Swiper.Item>
-          )
-        })}
-      </Swiper>
-    </div>
-  )
-}
-export default App;
-```
-
-:::
 
 ### 自定義大小
 

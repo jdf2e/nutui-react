@@ -129,7 +129,7 @@ import { Cell } from '@nutui/nutui-react'
 
 const App = () => {
   return (
-    <Cell align="center" title="Title" description="Description" extra="Desc" />
+    <Cell align="center" title="Title" description="Description" extra="extra" />
   )
 }
 export default App

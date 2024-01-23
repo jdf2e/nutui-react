@@ -30,6 +30,30 @@
     }
   }
 
+  &-close {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2002;
+    background: transparent;
+    color: $white;
+    &.top-right {
+      top: 50px;
+      right: 20px;
+    }
+    &.top-left {
+      top: 50px;
+      left: 20px;
+    }
+    &.bottom {
+      bottom: 50px;
+      left: 0;
+      right: 0;
+      text-align: center;
+    }
+  }
+
   &-pop {
     height: 100%;
     background: transparent !important;

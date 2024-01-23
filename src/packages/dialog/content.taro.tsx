@@ -8,6 +8,7 @@ interface ContentProps extends BasicComponent {
   title: ReactNode
   header: ReactNode
   footer: ReactNode
+  close: ReactNode
   footerDirection: string
   onClick: (event: ITouchEvent) => void
 }
@@ -16,10 +17,19 @@ export const Content: FunctionComponent<
   Partial<ContentProps> &
     Omit<HTMLAttributes<HTMLDivElement>, 'onClick' | 'title'>
 > = (props) => {
-  const { visible, title, header, footer, footerDirection, onClick, children } =
-    props
+  const {
+    visible,
+    title,
+    header,
+    footer,
+    close,
+    footerDirection,
+    onClick,
+    children,
+  } = props
 
   const classPrefix = 'nut-dialog'
+
   const renderHeader = () => {
     return title ? <div className={`${classPrefix}-header`}>{title}</div> : null
   }
@@ -46,6 +56,7 @@ export const Content: FunctionComponent<
       style={props.style}
       onClick={(e) => handleClick(e)}
     >
+      {close}
       {header}
       <div
         className={classPrefix}

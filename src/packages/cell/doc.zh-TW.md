@@ -80,7 +80,7 @@ const App = () => {
       title={
         <div style={{ display: 'inline-flex', alignItems: 'center' }}>
           <User />
-          我是標題<span style={{ marginLeft: '5px' }}>{translated.title}</span>
+          <span style={{ marginLeft: '5px' }}>我是標題</span>
         </div>
       }
       description={
