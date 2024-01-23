@@ -879,7 +879,7 @@
           "desc": "原生audio实现的音频播放器",
           "sort": 21,
           "show": true,
-          "taro": false,
+          "taro": true,
           "author": "libin"
         },
         {

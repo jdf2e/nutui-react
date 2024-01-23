@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
+import { useTranslate } from '@/sites/assets/locale/taro'
 import { Cell, Audio } from '@/packages/nutui.react.taro'
 import '@/packages/audio/demo.scss'
 import Header from '@/sites/components/header'
@@ -20,6 +21,21 @@ const formatseconds = (value: string) => {
 }
 
 const AudioDemo = () => {
+  const [translated] = useTranslate<T>({
+    'zh-CN': {
+      basic: '基础用法',
+      progress: '进度条模式',
+      none: '自定义模式',
+      control: '控件模式',
+    },
+    'en-US': {
+      basic: 'Basic',
+      progress: 'Progress Mode',
+      none: 'Custom Mode',
+      control: 'Control Mode',
+    },
+  })
+
   const [duration, setDuration] = useState('0')
   const [voiceIcon, setVoiceIcon] = useState('play-circle-fill')
   return (
@@ -28,47 +44,36 @@ const AudioDemo = () => {
       <div
         className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} audio-demo`}
       >
-        <div>
-          <h2>1.Taro原生的Audio组件,1.6.0版本开始，该组件不再维护</h2>
-          <h2>
-            2.本组件基于Taro.createInnerAudioContext做了封装,由于api的限制,相比于NuiUI-React
-            Audio组件,部分属性和事件发生了改动:
-            <h2>(1) 属性移除:muted | preload | type = controls </h2>
-            <h2>(2) 事件移除:onMute</h2>
-            <h2>(3) 事件新增:onPlay</h2>
-          </h2>
-        </div>
-
-        <h2>type=icon</h2>
+        <h2>{translated.basic}</h2>
         <Cell>
           <Audio
-            autoplay={false}
-            url="https://storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+            autoPlay={false}
+            src="https://storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
             type="icon"
             loop={false}
-            onPlayEnd={() => console.log('ended!')}
+            onEnd={() => console.log('ended!')}
           />
         </Cell>
-        <h2>type=progress</h2>
+        <h2>{translated.progress}</h2>
         <Cell>
           <Audio
-            autoplay={false}
+            autoPlay={false}
             style={{ fontSize: '20px' }}
-            url="https://storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+            src="https://storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
             type="progress"
             onForward={() => console.log('forward')}
             onPause={(ctx: any) => {
               console.log('progress audio paused', ctx)
             }}
-            onPlayEnd={() => console.log('progress audio ended!')}
+            onEnd={() => console.log('progress audio ended!')}
           />
         </Cell>
-        <h2>type=none</h2>
+        <h2>{translated.none}</h2>
         <Cell>
           <Audio
             className="custom-voice-audio"
-            autoplay={false}
-            url="https://storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
+            autoPlay={false}
+            src="https://storage.360buyimg.com/jdcdkh/SMB/VCG231024564.wav"
             type="none"
             onPlay={(ctx: any) => {
               setDuration(formatseconds(`${ctx.duration}`))
