@@ -35,13 +35,35 @@ const CheckBoxDemo = () => {
       <Checkbox
         style={{ marginRight: '8px' }}
         shape='button'
-        label='复选框'
+        label={
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <div>复选框</div>
+            <div style={{ color: 'gray' }}>描述信息</div>
+          </div>
+        }
         defaultChecked
       />
       <Checkbox
         style={{ marginRight: '8px' }}
         shape='button'
-        label='复选框'
+        label={
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <div>复选框</div>
+            <div style={{ color: 'gray' }}>描述信息</div>
+          </div>
+        }
         activeIcon={
           <Checklist className="nut-checkbox-button-icon-checked" />
         }
@@ -51,7 +73,18 @@ const CheckBoxDemo = () => {
         style={{ marginRight: '8px' }}
         shape='button'
         className='test'
-        label='复选框'
+        label={
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <div>复选框</div>
+            <div style={{ color: 'gray' }}>描述信息</div>
+          </div>
+        }
         defaultChecked={false}
       />
     </Cell>
@@ -379,7 +412,7 @@ export default CheckBoxDemo;
 
 :::
 
-## checkboxGroup使用，限制最大可选数（2个）
+## checkboxGroup使用，限制最大可选数（3个）, 至少选择数（1个）
 
 :::demo
 
@@ -393,7 +426,8 @@ const CheckBoxDemo = () => {
   return (<>
     <Checkbox.Group
       defaultValue={checkboxgroup2}
-      max={2}
+      max={3}
+      min={1}
       onChange={(value) => {
         Toast.show(value)
       }}
@@ -527,7 +561,7 @@ export default CheckboxGroupOptions;
 | checked | 是否选中 | `boolean` | `false` |
 | defaultChecked | 初始是否选中 | `boolean` | `false` |
 | disabled | 是否禁用选择 | `boolean` | `false` |
-| labelPosition | 文本所在的位置| `left` \| `right` | `string` | `right` |
+| labelPosition | 文本所在的位置 | `left` \| `right` | `right` |
 | icon | 选中前| `ReactNode` | `'CheckNormal'` |
 | activeIcon | 选中后 | `ReactNode` | `'Checked'` |
 | indeterminateIcon | 半选状态| `ReactNode` | `'CheckDisabled'` |
@@ -546,12 +580,13 @@ export default CheckboxGroupOptions;
 | defaultValue | 初始选中项的标识符 | `string` \| `number` | `-` |
 | disabled | 是否禁用选择,将用于其下的全部复选框 | `boolean` | `false` |
 | max | 限制最大可选数 | `number` |  `-` |
-| labelPosition | 文本所在的位置| `left` \| `right` | `string` | `right` |
+| min | 限制至少选择数 | `number` |  `-` |
+| labelPosition | 文本所在的位置 | `left` \| `right` | `right` |
 | direction | 使用横纵方向 可选值 horizontal、vertical | `string` | `vertical` |
-| options | 配置 options 渲染复选按钮 | `Array<{ label: string value: string disabled?: boolean }>`  | `-` |
+| options | 配置 options 渲染复选按钮 | `Array<{ label: string value: string disabled?: boolean }>` | `-` |
 | onChange | 值变化时触发 | `(value: string[]) => void` | `-` |
 
-### Checkbox.Group Ref
+### Ref
 
 | 方法名 | 说明 | 参数 |
 | --- | --- | --- |

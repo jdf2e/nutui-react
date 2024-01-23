@@ -80,7 +80,7 @@ const App = () => {
       title={
         <div style={{ display: 'inline-flex', alignItems: 'center' }}>
           <User />
-          我是标题<span style={{ marginLeft: '5px' }}>{translated.title}</span>
+          <span style={{ marginLeft: '5px' }}>我是标题</span>
         </div>
       }
       description={
@@ -185,7 +185,7 @@ const App = () => {
           align="center"
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => onJumpclick(event, '/pages/index/index')}
+          ) => { onJumpclick(event, '/pages/index/index') }}
         />
       </Cell.Group>
 

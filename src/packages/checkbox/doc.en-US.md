@@ -35,13 +35,35 @@ const CheckBoxDemo = () => {
       <Checkbox
         style={{ marginRight: '8px' }}
         shape='button'
-        label='Option'
+        label={
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <div>Option</div>
+            <div style={{ color: 'gray' }}>Description</div>
+          </div>
+        }
         defaultChecked
       />
       <Checkbox
         style={{ marginRight: '8px' }}
         shape='button'
-        label='Option'
+        label={
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <div>Option</div>
+            <div style={{ color: 'gray' }}>Description</div>
+          </div>
+        }
         activeIcon={
           <Checklist className="nut-checkbox-button-icon-checked" />
         }
@@ -51,7 +73,18 @@ const CheckBoxDemo = () => {
         style={{ marginRight: '8px' }}
         shape='button'
         className='test'
-        label='Option'
+        label={
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
+          >
+            <div>Option</div>
+            <div style={{ color: 'gray' }}>Description</div>
+          </div>
+        }
         defaultChecked={false}
       />
     </Cell>
@@ -377,7 +410,7 @@ export default CheckBoxDemo;
 
 :::
 
-## Used by checkboxGroup, limit the maximum number of options (2)
+## Used by checkboxGroup, limit the maximum number of options (2), minimum number of options (1)
 
 :::demo
 
@@ -391,10 +424,11 @@ const CheckBoxDemo = () => {
   return (<>
     <Checkbox.Group
       defaultValue={checkboxgroup2}
-      max={2}
-      onChange={(value) => {
-        Toast.show(value)
-      }}
+      max={3}
+      min={1}
+      onLimit={(type) =>
+        Toast.show(type === 'max' ? 'Choose up to 3 items' : 'Select at least 1 item')
+      }
     >
       <Checkbox value="1">
         Option 1
@@ -544,6 +578,7 @@ export default CheckboxGroupOptions;
 | defaultValue | Identifier of the initially selected item | `string` \| `number` | `-` |
 | disabled | Whether to disable selection, will be used for all checkboxes under it | `boolean` | `false` |
 | max | limit the maximum number of options | `number` | `-` |
+| min | Limit the number of choices to at least | `number` | `-` |
 | labelPosition | The position of the text | `left` \| `right` | `right` |
 | direction | Use horizontal and vertical directions Optional values horizontal、vertical | `string` | `vertical` |
 | options | Configure options to render check buttons | `Array<{ label: string value: string disabled?: boolean }>` | `-` |

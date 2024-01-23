@@ -25,6 +25,7 @@ interface T {
   reverse: string
   selected: string
   options1: string
+  description: string
   Disabled: string
   selectAndCancel: string
   selectAll: string
@@ -54,13 +55,14 @@ const CheckboxDemo = () => {
       cancel: '取消',
       selected: '选中',
       options1: '选项',
+      description: '描述信息',
       Disabled: '禁用',
       selectAndCancel: '全选和取消',
       selectAll: '全选',
       cancelSelection: '取消全选',
       reverse: '反选',
       options: '配置 options 渲染复选按钮',
-      max: 'checkboxGroup使用，限制最大可选数（2个）',
+      max: 'checkboxGroup使用，限制最大可选数（3个）, 至少选择数（1个）',
       threeState: '全选/半选/取消',
     },
     'zh-TW': {
@@ -81,13 +83,14 @@ const CheckboxDemo = () => {
       cancel: '取消',
       selected: '您選取了x',
       options1: '選項',
+      description: '描述信息',
       Disabled: '禁用',
       selectAndCancel: '全選和取消',
       selectAll: '全選',
       cancelSelection: '取消全選',
       reverse: '反選',
       options: '配置 options 渲染複選按鈕',
-      max: 'checkboxGroup使用，限制最大可选数（2个）',
+      max: 'checkboxGroup使用，限制最大可选数（2个）, 至少选择数（1个）',
       threeState: '全选/半选/取消',
     },
     'en-US': {
@@ -108,13 +111,14 @@ const CheckboxDemo = () => {
       cancel: 'Cancel',
       selected: 'You selected x',
       options1: 'Options',
+      description: 'Description',
       Disabled: 'Disabled',
       selectAndCancel: 'All Select and Cancel',
       selectAll: 'Select All',
       reverse: 'reverse',
       cancelSelection: 'Cancel All Selection',
       options: 'Render radios by configuring options',
-      max: 'Used by checkboxGroup, limit the maximum number of options (2)',
+      max: 'Used by checkboxGroup, limit the maximum number of options (2), minimum number of options (1)',
       threeState: 'Select All/Half/Cancel',
     },
   })
@@ -164,7 +168,18 @@ const CheckboxDemo = () => {
             style={{ marginRight: '8px' }}
             shape="button"
             className="test"
-            label={translated.checkbox}
+            label={
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <div>{translated.checkbox}</div>
+                <div style={{ color: 'gray' }}>{translated.description}</div>
+              </div>
+            }
             defaultChecked={!checked}
           />
           <Checkbox
@@ -174,14 +189,36 @@ const CheckboxDemo = () => {
               <Checklist className="nut-checkbox-button-icon-checked" />
             }
             className="test"
-            label={translated.checkbox}
+            label={
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <div>{translated.checkbox}</div>
+                <div style={{ color: 'gray' }}>{translated.description}</div>
+              </div>
+            }
             defaultChecked={checked}
           />
           <Checkbox
             shape="button"
             className="test"
             disabled
-            label={translated.checkbox}
+            label={
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                }}
+              >
+                <div>{translated.checkbox}</div>
+                <div>{translated.description}</div>
+              </div>
+            }
             defaultChecked={checked}
           />
         </Cell>
@@ -441,7 +478,14 @@ const CheckboxDemo = () => {
         </Cell>
         <h2>{translated.max}</h2>
         <Cell>
-          <Checkbox.Group defaultValue={checkboxgroup3} max={2}>
+          <Checkbox.Group
+            defaultValue={checkboxgroup3}
+            max={3}
+            min={1}
+            onLimit={(type) =>
+              Toast.show(type === 'max' ? '最多选择3项' : '至少选择1项')
+            }
+          >
             <Checkbox value="1">{translated.options1}</Checkbox>
             <Checkbox value="2">{translated.options1}</Checkbox>
             <Checkbox value="3">{translated.options1}</Checkbox>
