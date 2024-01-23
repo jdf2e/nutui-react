@@ -157,10 +157,15 @@ const NavBarDemo = () => {
               onChange={(paneKey) => {
                 setTab1value(paneKey)
               }}
+              style={{
+                '--nutui-tabs-titles-padding': 0,
+                '--nutui-tabs-titles-gap': 0,
+              }}
             >
               <TabPane title="Tab 1"> Tab 1 </TabPane>
               <TabPane title="Tab 2"> Tab 2 </TabPane>
               <TabPane title="Tab 3"> Tab 3 </TabPane>
+              <TabPane title="Tab 4"> Tab 4 </TabPane>
             </Tabs>
           </div>
         </NavBar>
@@ -200,7 +205,7 @@ const NavBarDemo = () => {
           back={<ArrowLeft size={14} />}
           onBackClick={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
         >
-          <div className="title">
+          <div className="title title-left">
             <span
               onClick={(e) => Taro.showToast({ title: translated.cfbdc781 })}
             >

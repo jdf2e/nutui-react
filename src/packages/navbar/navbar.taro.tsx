@@ -1,9 +1,10 @@
-import React, { FunctionComponent, useEffect, useState } from 'react'
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 
 import { ITouchEvent, View } from '@tarojs/components'
+import Taro from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import useNodeBoundingRect from './hooks/useNodeBoundingRect'
+import { getRectByTaro } from '@/utils/get-rect-by-taro'
 
 export interface NavBarProps extends BasicComponent {
   left: React.ReactNode
@@ -60,49 +61,53 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
     }
   }
 
-  const [leftRect, leftActions, cleanLeftObserver] = useNodeBoundingRect()
-  const [rightRect, rightActions, cleanRightObserver] = useNodeBoundingRect()
-  const [wrapperRect, wrapperActions, cleanWrapperObserver] =
-    useNodeBoundingRect()
+  const leftRef = useRef<any>(null)
+  const rightRef = useRef<any>(null)
+  const wrapperRef = useRef<any>(null)
   const [contentWidth, setContentWidth] = useState('50%')
+
+  const getNodeWidth = async (node: Element | null) => {
+    if (node) {
+      const refe = await getRectByTaro(node)
+      return refe.width
+    }
+    return 0
+  }
 
   useEffect(() => {
     if (!(back || left || right)) {
       setContentWidth('100%')
-      return
     }
-    if (!(leftRect || rightRect)) return
-    const leftRectWidth = leftRect?.width || 0
-    const rightRectWidth = rightRect?.width || 0
-    const bodyWidth = wrapperRect?.width || 0
-    let centerWidth = bodyWidth / 2
-    if (titleAlign === 'left') {
-      centerWidth = bodyWidth - leftRectWidth - rightRectWidth
-    } else {
-      if (leftRect && rightRect) {
+
+    const init = async () => {
+      const leftRectWidth = await getNodeWidth(leftRef?.current)
+      const rightRectWidth = await getNodeWidth(rightRef?.current)
+      const wrapperWidth = await getNodeWidth(wrapperRef?.current)
+      let centerWidth = wrapperWidth / 2
+
+      if (titleAlign === 'left') {
         centerWidth =
-          bodyWidth -
+          wrapperWidth -
+          leftRectWidth -
+          rightRectWidth -
+          (Taro.getEnv() === 'WEB' ? 0 : 14)
+      } else if (leftRectWidth && rightRectWidth) {
+        centerWidth =
+          wrapperWidth -
           (leftRectWidth > rightRectWidth
             ? leftRectWidth * 2
             : rightRectWidth * 2)
       } else {
-        centerWidth = bodyWidth - leftRectWidth * 2 - rightRectWidth * 2
+        centerWidth = wrapperWidth - leftRectWidth * 2 - rightRectWidth * 2
       }
-      // 左右两边的padding
-      centerWidth -= 14 * 4
+      setContentWidth(centerWidth.toFixed(2))
     }
-    setContentWidth(centerWidth.toFixed(2))
-    return () => {
-      cleanLeftObserver()
-      cleanRightObserver()
-      cleanWrapperObserver()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [leftRect, rightRect])
+    init()
+  }, [left, right, back])
 
   const renderLeft = () => {
     return back || left ? (
-      <View className={`${classPrefix}-left`} ref={(el) => leftActions(el)}>
+      <View className={`${classPrefix}-left`} ref={leftRef}>
         {back && (
           <View
             className={`${classPrefix}-left-back`}
@@ -136,7 +141,7 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
 
   const renderRight = () => {
     return (
-      <View className={`${classPrefix}-right`} ref={(el) => rightActions(el)}>
+      <View className={`${classPrefix}-right`} ref={rightRef}>
         {right}
       </View>
     )
@@ -144,7 +149,7 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
 
   const renderWrapper = () => {
     return (
-      <View className={cls} style={styles()} ref={(el) => wrapperActions(el)}>
+      <View className={cls} style={styles()} ref={wrapperRef}>
         {renderLeft()}
         {renderContent()}
         {renderRight()}
