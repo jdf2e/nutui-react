@@ -11,7 +11,9 @@ const components = config.nav.reduce(
 )
 console.log(components.length)
 
-const plugins = [rtl({ mode: 'override' })]
+const plugins = [
+  rtl({ mode: 'override', rtlPrefix: [`[dir="rtl"]`, `.nut-rtl`] }),
+]
 
 components.forEach((component) => {
   const componentName = component.name.toLowerCase()
@@ -28,7 +30,7 @@ components.forEach((component) => {
   )
   const css = fs.readFileSync(readFrom, 'utf8')
   postcss(plugins)
-    .process(css, {syntax: scss,})
+    .process(css, { syntax: scss })
     .then((result) => {
       fs.writeFile(writeTo, result.css, () => {})
     })

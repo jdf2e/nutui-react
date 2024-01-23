@@ -10,8 +10,11 @@ import type { NutCSSVariables } from './types'
 
 export interface ConfigProviderProps extends BasicComponent {
   locale: BaseLang
+  direction: Direction
   theme?: Record<string | NutCSSVariables, string>
 }
+
+export type Direction = 'ltr' | 'rtl' | undefined
 
 const classPrefix = 'nut-configprovider'
 
@@ -20,6 +23,7 @@ export const defaultConfigRef: {
 } = {
   current: {
     locale: zhCN,
+    direction: 'ltr',
   },
 }
 
@@ -49,7 +53,7 @@ function convertThemeVarsToCSSVars(themeVars: Record<string, string | number>) {
 export const ConfigProvider: FunctionComponent<
   Partial<ConfigProviderProps & BasicComponent>
 > = (props) => {
-  const { style, className, children, ...config } = props
+  const { style, className, children, direction, ...config } = props
 
   const mergedConfig = useMemo(
     () => {
@@ -74,10 +78,11 @@ export const ConfigProvider: FunctionComponent<
   return (
     <ConfigContext.Provider value={mergedConfig}>
       <div
-        className={classNames(classPrefix, className)}
+        className={classNames(classPrefix, className, `nut-${direction}`)}
         style={{
           ...cssVarStyle,
           ...style,
+          direction,
         }}
       >
         {children}
