@@ -74,15 +74,3 @@
     }
   }
 }
-
-[dir='rtl'] .nut-switch {
-  &-label {
-    &.open {
-      transform: translateX(18px);
-    }
-
-    &.close {
-      transform: translateX(-14px);
-    }
-  }
-}

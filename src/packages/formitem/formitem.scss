@@ -75,17 +75,3 @@
     }
   }
 }
-
-[dir='rtl'] .nut-form-item {
-  &-label {
-    margin-right: 0;
-    margin-left: $form-item-label-margin-right;
-
-    .required {
-      &::before {
-        margin-right: 0;
-        margin-left: $form-item-required-margin-right;
-      }
-    }
-  }
-}

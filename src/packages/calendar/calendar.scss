@@ -224,28 +224,6 @@
   }
 }
 
-[dir='rtl'] .nut-calendar {
-  &-day {
-    float: right;
-
-    &-active {
-      &.active-start {
-        border-top-left-radius: 0;
-        border-top-right-radius: $calendar-day-active-border-radius;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: $calendar-day-active-border-radius;
-      }
-
-      &.active-end {
-        border-top-right-radius: 0;
-        border-top-left-radius: $calendar-day-active-border-radius;
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: $calendar-day-active-border-radius;
-      }
-    }
-  }
-}
-
 .nut-calendar-popup .nut-popup-title-right {
   top: 7px !important;
 }

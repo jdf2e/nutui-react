@@ -70,10 +70,3 @@
     visibility: hidden;
   }
 }
-
-[dir='rtl'] .nut-cascader {
-  .nut-icon-checklist {
-    margin-left: 0;
-    margin-right: $cascader-icon-checklist-marginLeft;
-  }
-}

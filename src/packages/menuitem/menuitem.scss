@@ -48,15 +48,6 @@
   }
 }
 
-[dir='rtl'] .nut-menu-container {
-  &-item {
-    .nut-icon {
-      margin-right: 0;
-      margin-left: $menu-item-icon-margin;
-    }
-  }
-}
-
 .overlay-fade-enter-active.nut-menu-container-overlay {
   top: auto;
   z-index: $menu-container-z-index;

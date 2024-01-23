@@ -13,12 +13,3 @@
     }
   }
 }
-
-[dir='rtl'] .nut-avatar-group {
-  .nut-avatar {
-    &:not(:first-of-type) {
-      margin-left: 0;
-      margin-right: -8px;
-    }
-  }
-}

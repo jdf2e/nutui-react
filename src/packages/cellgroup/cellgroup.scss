@@ -56,14 +56,3 @@
     }
   }
 }
-
-[dir='rtl'] .nut-cell-group {
-  &-wrap-divider {
-    .nut-cell {
-      &-divider {
-        left: $cell-divider-right;
-        right: $cell-divider-left;
-      }
-    }
-  }
-}
