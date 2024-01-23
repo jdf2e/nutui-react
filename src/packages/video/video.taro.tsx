@@ -1,9 +1,13 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
-import { Video as VideoTaro, BaseEventOrig } from '@tarojs/components'
-import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import {
+  Video as VideoTaro,
+  VideoProps as VideoPropsTaro,
+  BaseEventOrig,
+  View,
+} from '@tarojs/components'
 
-export interface VideoProps extends BasicComponent {
+export interface VideoProps extends Omit<VideoPropsTaro, 'src'> {
   source: {
     type: string
     src: string
@@ -22,7 +26,6 @@ export interface VideoProps extends BasicComponent {
 }
 
 const defaultProps = {
-  ...ComponentDefaults,
   source: {
     type: {},
     src: '',
@@ -38,15 +41,13 @@ const defaultProps = {
 } as VideoProps
 
 const classPrefix = `nut-video`
-export const Video: FunctionComponent<
-  Partial<VideoProps> &
-    Omit<React.HTMLAttributes<HTMLDivElement>, 'onPause' | 'onPlay'>
-> = (props) => {
+export const Video: FunctionComponent<Partial<VideoProps>> = (props) => {
   const {
     children,
     source,
     options,
     className,
+    style,
     onPlay,
     onPause,
     onPlayEnd,
@@ -58,7 +59,7 @@ export const Video: FunctionComponent<
   const classes = classNames(classPrefix, className)
 
   return (
-    <div className={classes} {...restProps}>
+    <View className={classes} style={style}>
       <VideoTaro
         className="nut-video-player"
         muted={options.muted}
@@ -70,8 +71,9 @@ export const Video: FunctionComponent<
         onPlay={onPlay}
         onPause={onPause}
         onEnded={onPlayEnd}
+        {...restProps}
       />
-    </div>
+    </View>
   )
 }
 
