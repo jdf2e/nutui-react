@@ -41,6 +41,22 @@
     overflow: hidden;
   }
 }
+
+[dir='rtl'] .nut-avatar,
+.nut-rtl .nut-avatar {
+  .avatar-img {
+    left: auto;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+
+  .icon {
+    left: auto;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+}
+
 .nut-avatar-large {
   width: $avatar-large-width;
   height: $avatar-large-height;

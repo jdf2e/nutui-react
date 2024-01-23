@@ -57,3 +57,10 @@
     transform: rotate(180deg);
   }
 }
+
+[dir='rtl'] .nut-menu-title,
+.nut-rtl .nut-menu-title {
+  &.active .nut-menu-title-icon {
+    transform: rotate(-180deg);
+  }
+}

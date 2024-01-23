@@ -130,6 +130,14 @@
   }
 }
 
+[dir='rtl'] .nut-step,
+.nut-rtl .nut-step {
+  &-line {
+    left: auto;
+    right: calc(50% + (100% - $steps-base-line-width) / 2);
+  }
+}
+
 .nut-steps-dot {
   .nut-step-head {
     margin: $steps-dot-head-margin;
@@ -182,6 +190,20 @@
   }
 }
 
+[dir='rtl'] .nut-steps-dot,
+.nut-rtl .nut-steps-dot {
+  .nut-step-process {
+    .nut-step-icon {
+      &:before {
+        left: auto;
+        right: 50%;
+        margin-left: 0;
+        margin-right: -7px;
+      }
+    }
+  }
+}
+
 .nut-steps-horizontal {
   &.nut-steps-dot {
     .nut-step-line {
@@ -220,5 +242,19 @@
     display: inline-block;
     padding-left: 6%;
     text-align: left;
+  }
+}
+
+[dir='rtl'] .nut-steps-vertical,
+.nut-rtl .nut-steps-vertical {
+  .nut-step-line {
+    left: auto;
+    right: calc(50% - 1px);
+  }
+
+  .nut-step-main {
+    padding-left: 0;
+    padding-right: 6%;
+    text-align: right;
   }
 }

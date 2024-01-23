@@ -86,3 +86,18 @@
     }
   }
 }
+
+[dir='rtl'] .nut-space,
+.nut-rtl .nut-space {
+  &-horizontal {
+    > .nut-space-item {
+      margin-right: 0;
+      margin-left: $space-gap;
+
+      &:last-child {
+        margin-right: 0;
+        margin-left: 0;
+      }
+    }
+  }
+}

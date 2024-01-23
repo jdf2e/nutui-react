@@ -91,3 +91,12 @@
     background: $notify-warning-background-color;
   }
 }
+
+[dir='rtl'] .nut-notify,
+.nut-rtl .nut-notify {
+  &-popup-top,
+  &-popup-bottom {
+    left: auto;
+    right: 0;
+  }
+}

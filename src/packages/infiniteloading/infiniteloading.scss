@@ -48,3 +48,15 @@
     }
   }
 }
+
+[dir='rtl'] .nut-infiniteloading,
+.nut-rtl .nut-infiniteloading {
+  .nut-infinite-bottom {
+    &-tips {
+      &-icons {
+        margin-right: 0;
+        margin-left: 8px;
+      }
+    }
+  }
+}

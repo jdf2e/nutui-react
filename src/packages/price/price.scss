@@ -54,3 +54,11 @@
     }
   }
 }
+
+[dir='rtl'] .nut-price,
+.nut-rtl .nut-price {
+  &-symbol {
+    padding-right: 0;
+    padding-left: $price-symbol-padding-right;
+  }
+}

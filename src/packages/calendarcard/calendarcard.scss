@@ -103,3 +103,37 @@
     }
   }
 }
+
+[dir='rtl'] .nut-calendarcard,
+.nut-rtl .nut-calendarcard {
+  &-header {
+    &-left,
+    &-right {
+      .left {
+        margin-left: 0;
+        margin-right: 8px;
+      }
+
+      .right {
+        margin-right: 0;
+        margin-left: 8px;
+      }
+    }
+  }
+
+  &-day {
+    &.start {
+      border-top-left-radius: 0;
+      border-top-right-radius: $calendar-day-active-border-radius;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: $calendar-day-active-border-radius;
+    }
+
+    &.end {
+      border-top-right-radius: 0;
+      border-top-left-radius: $calendar-day-active-border-radius;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: $calendar-day-active-border-radius;
+    }
+  }
+}

@@ -85,3 +85,26 @@
     }
   }
 }
+
+[dir='rtl'] .nut-imagepreview,
+.nut-rtl .nut-imagepreview {
+  &-index {
+    .arrow {
+      left: auto;
+      right: 15px;
+      transform: rotateZ(-180deg);
+    }
+  }
+
+  &-close {
+    &.top-right {
+      right: auto;
+      left: 20px;
+    }
+
+    &.top-left {
+      left: auto;
+      right: 20px;
+    }
+  }
+}

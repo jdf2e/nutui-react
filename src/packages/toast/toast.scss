@@ -123,6 +123,18 @@
   }
 }
 
+[dir='rtl'] .nut-toast,
+.nut-rtl .nut-toast {
+  left: auto;
+  right: 0;
+
+  &-inner {
+    left: auto;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+}
+
 .toast-fade-enter-active {
   transition: opacity 0.3s;
 }

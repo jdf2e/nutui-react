@@ -66,3 +66,24 @@
     }
   }
 }
+
+[dir='rtl'] .nut-skeleton,
+.nut-rtl .nut-skeleton {
+  &-content {
+    .avatar {
+      margin-right: 0;
+      margin-left: 20px;
+    }
+  }
+
+  &-animation {
+    left: auto;
+    right: 0;
+    background: linear-gradient(
+      -90deg,
+      hsla(0, 0%, 100%, 0),
+      hsla(0, 0%, 100%, 0.5) 50%,
+      hsla(0, 0%, 100%, 0) 80%
+    );
+  }
+}

@@ -304,3 +304,30 @@
     animation-iteration-count: infinite;
   }
 }
+
+[dir='rtl'] .nut-animate,
+.nut-rtl .nut-animate {
+  .nut-animate-twinkle {
+    &::after,
+    &::before {
+      border-radius: calc(60 / 2) * 1px;
+      right: auto;
+      left: 50%;
+      margin-right: 0;
+      margin-left: calc(-60 / 2) * 1px;
+    }
+  }
+
+  .nut-animate-flicker {
+    &::after {
+      left: auto;
+      right: 0;
+      background-image: linear-gradient(
+        -106deg,
+        rgba(232, 224, 255, 0) 24%,
+        #e8e0ff 91%
+      );
+      transform: skewX(20deg);
+    }
+  }
+}
