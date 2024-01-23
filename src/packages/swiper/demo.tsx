@@ -149,7 +149,7 @@ const SwiperDemo = () => {
             {list1.map((item) => {
               return (
                 <Swiper.Item key={item}>
-                  <img src={item} alt="" />
+                  <img draggable={false} src={item} alt="" />
                 </Swiper.Item>
               )
             })}
