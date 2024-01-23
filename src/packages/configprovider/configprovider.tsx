@@ -10,7 +10,7 @@ import type { NutCSSVariables } from './types'
 
 export interface ConfigProviderProps extends BasicComponent {
   locale: BaseLang
-  direction: Direction
+  direction?: Direction
   theme?: Record<string | NutCSSVariables, string>
 }
 
