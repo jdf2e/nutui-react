@@ -36,9 +36,12 @@ const App = () => {
       <Overlay
         visible={visible}
         onClick={onClose}
-        style={{'--nutui-overlay-zIndex': 2020,}}
+        style={{ '--nutui-overlay-zIndex': 2020 }}
         afterShow={() => {
           console.log('afterShow')
+        }}
+        afterClose={() => {
+          console.log('afterClose')
         }}
       />
     </>
@@ -49,7 +52,7 @@ export default App;
 
 :::
 
-### 遮罩样式
+### 自定义遮罩样式
 
 :::demo
 
@@ -68,13 +71,13 @@ const App = () => {
   return (
     <>
       <Button type="primary" onClick={handleToggleShow}>
-        遮罩样式
+        自定义遮罩样式
       </Button>
       <Overlay
         visible={visible}
         onClick={onClose}
         style={{
-          backgroundColor: 'rgba(0, 0, 0, .2)',
+          backgroundColor: 'rgba(0, 0, 0, .4)',
           '--nutui-overlay-zIndex': 2000,
         }}
       />
@@ -165,38 +168,39 @@ export default App;
 import React, { useState } from "react";
 import { Button, Overlay } from '@nutui/nutui-react';
 
-const WrapperStyle = {
-  display: 'flex',
-  height: '100%',
-  alignItems: 'center',
-  justifyContent: 'center'
-}
-const ContentStyle = {
-  display: 'flex',
-  width: '150px',
-  height: '150px',
-  background: '#fff',
-  borderRadius: '8px',
-  alignItems: 'center',
-  justifyContent: 'center',
-  color: 'red'
-}
+
 const App = () => {
   const [visible, setVisible] = useState(false)
-  const handleToggleShow2 = () => {
+  const handleToggleShow = () => {
     setVisible(true)
   }
   const onClose = () => {
     setVisible(false)
   }
+  const wrapperStyle = {
+    display: 'flex',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+  const contentStyle = {
+    display: 'flex',
+    width: '150px',
+    height: '150px',
+    background: '#fff',
+    borderRadius: '8px',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'red'
+  }
   return (
     <>
-      <Button type="success" onClick={handleToggleShow2}>
+      <Button type="success" onClick={handleToggleShow}>
         嵌套内容
       </Button>
       <Overlay visible={visible} onClick={onClose}>
-        <div className="wrapper" style={WrapperStyle}>
-          <div className="content" style={ContentStyle}>这里是正文</div>
+        <div style={wrapperStyle}>
+          <div style={contentStyle}>这里是正文</div>
         </div>
       </Overlay>
     </>
@@ -223,14 +227,30 @@ const App = () => {
   const onClose = () => {
     setVisible(false)
   }
+  const wrapperStyle = {
+    display: 'flex',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+  const contentStyle = {
+    display: 'flex',
+    width: '150px',
+    height: '150px',
+    background: '#fff',
+    borderRadius: '8px',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'red'
+  }
   return (
     <>
       <Button type="primary" onClick={handleToggleShow}>
         点击遮罩不关闭
       </Button>
       <Overlay visible={visible} closeOnOverlayClick={false}>
-        <div className="wrapper">
-          <div className="content" onClick={onClose}>这里是正文</div>
+        <div style={wrapperStyle}>
+          <div style={contentStyle} onClick={onClose}>这里是正文</div>
         </div>
       </Overlay>
     </>
@@ -250,6 +270,7 @@ export default App;
 | visible | 当前组件是否显示 | `boolean` | `false` |
 | duration | 动画时长，单位毫秒 | `number` | `300` |
 | lockScroll | 背景是否锁定 | `boolean` | `true` |
+| zIndex | 设置组件页面层级   | `number` | `1000` |
 | closeOnOverlayClick | 是否点击遮罩关闭 | `boolean` | `true` |
 | onClick | 点击时触发 | `event: Event` | `-` |
 | afterClose | 完全关闭后触发 | `() => void` | `-` |

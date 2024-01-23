@@ -37,49 +37,6 @@ ConfigProvider 组件提供了覆盖 CSS 变量的能力，你需要在根节点
 
 > ConfigProvider 组件不是一个虚拟组件，它会生成一个 div 标签。
 >
-##### Textarea 默认
-
-:::demo
-
-```tsx
-import React from 'react';
-import { ConfigProvider, TextArea } from "@nutui/nutui-react";
-
-const App = () => {
-  return (
-    <ConfigProvider>
-      <TextArea disabled showCount maxLength={20} />
-    </ConfigProvider>
-  )
-}
-
-export default App;
-```
-
-:::
-
-##### Textarea 英文
-
-:::demo
-
-```tsx
-import React from 'react';
-import { ConfigProvider, TextArea } from "@nutui/nutui-react";
-
-const App = () => {
-  return (
-    <ConfigProvider locale={enUS}>
-      <TextArea disabled showCount maxLength={20} />
-    </ConfigProvider>
-  )
-}
-
-export default App;
-```
-
-:::
-
-##### 默认主题
 
 :::demo
 
@@ -88,50 +45,40 @@ import React from 'react';
 import { ConfigProvider, TextArea, Cell, Rate, Button } from "@nutui/nutui-react";
 
 const App = () => {
-  return (
-    <ConfigProvider>
-      <Cell.Group>
-        <Cell>
-          <Rate defaultValue={3} />
-        </Cell>
-        <Cell>
-          <Button type="primary" size="large">提交</Button>
-        </Cell>
-      </Cell.Group>
-    </ConfigProvider>
-  )
-}
-
-export default App;
-```
-
-:::
-
-##### 定制主题
-
-:::demo
-
-```tsx
-import React from 'react';
-import { ConfigProvider, Cell, Rate, Button } from "@nutui/nutui-react";
-
-const App = () => {
   const darkTheme = {
     nutuiColorPrimary: 'green',
     nutuiColorPrimaryStop1: 'green',
     nutuiColorPrimaryStop2: 'green',
   }
   return (
-    <ConfigProvider theme={darkTheme}>
-      <Cell.Group>
-        <Cell>
-          <Rate defaultValue={3} />
-        </Cell>
-        <Cell>
-          <Button type="primary" size="large">提交</Button>
-        </Cell>
-      </Cell.Group>
-    </ConfigProvider>
+    <>
+      <h2>默认主题</h2>
+        <ConfigProvider>
+          <Cell.Group>
+            <Cell>
+              <Rate defaultValue={3} />
+            </Cell>
+            <Cell>
+              <Button type="primary" size="large">
+                提交
+              </Button>
+            </Cell>
+          </Cell.Group>
+        </ConfigProvider>
+        <h2>定制主题</h2>
+        <ConfigProvider theme={darkTheme}>
+          <Cell.Group>
+            <Cell>
+              <Rate defaultValue={3} />
+            </Cell>
+            <Cell>
+              <Button type="primary" size="large">
+                提交
+              </Button>
+            </Cell>
+          </Cell.Group>
+        </ConfigProvider>
+    </>
   )
 }
 
@@ -186,14 +133,21 @@ NutUI-React 提供了 ConfigProvider 组件用于全局配置国际化文案。�
 
 ```tsx
 import React from 'react';
-import { ConfigProvider, Textarea } from "@nutui/nutui-react";
+import { ConfigProvider, TextArea } from "@nutui/nutui-react";
 import en from "@nutui/nutui-react/dist/locales/en-US";
 
 const App = () => {
   return (
-    <ConfigProvider locale={en}>
-      <Textarea />
-    </ConfigProvider>
+    <>
+      <h2>Textarea默认</h2>
+      <ConfigProvider>
+        <TextArea disabled showCount maxLength={20} />
+      </ConfigProvider>
+      <h2>Textarea英文</h2>
+      <ConfigProvider locale={enUS}>
+        <TextArea disabled showCount maxLength={20} />
+      </ConfigProvider>
+    </>
   )
 }
 
