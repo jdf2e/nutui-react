@@ -31,17 +31,14 @@ const App = () => {
   return (
     <>
       <Button type="primary" onClick={handleToggleShow}>
-        Show mask Layer
+        Displays the mask layer
       </Button>
       <Overlay
         visible={visible}
         onClick={onClose}
-        style={{ '--nutui-overlay-zIndex': 2020 }}
+        style={{'--nutui-overlay-zIndex': 2000,}}
         afterShow={() => {
           console.log('afterShow')
-        }}
-        afterClose={() => {
-          console.log('afterClose')
         }}
       />
     </>
@@ -52,7 +49,7 @@ export default App;
 
 :::
 
-### Custom mask style
+### Mask style
 
 :::demo
 
@@ -71,13 +68,13 @@ const App = () => {
   return (
     <>
       <Button type="primary" onClick={handleToggleShow}>
-        Custom mask style
+        Mask style
       </Button>
       <Overlay
         visible={visible}
         onClick={onClose}
         style={{
-          backgroundColor: 'rgba(0, 0, 0, .4)',
+          backgroundColor: 'rgba(0, 0, 0, .2)',
           '--nutui-overlay-zIndex': 2000,
         }}
       />
@@ -168,7 +165,22 @@ export default App;
 import React, { useState } from "react";
 import { Button, Overlay } from '@nutui/nutui-react';
 
-
+const WrapperStyle = {
+  display: 'flex',
+  height: '100%',
+  alignItems: 'center',
+  justifyContent: 'center'
+}
+const ContentStyle = {
+  display: 'flex',
+  width: '150px',
+  height: '150px',
+  background: '#fff',
+  borderRadius: '8px',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: 'red'
+}
 const App = () => {
   const [visible, setVisible] = useState(false)
   const handleToggleShow = () => {
@@ -177,31 +189,14 @@ const App = () => {
   const onClose = () => {
     setVisible(false)
   }
-
-  const wrapperStyle = {
-    display: 'flex',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-  const contentStyle = {
-    display: 'flex',
-    width: '150px',
-    height: '150px',
-    background: '#fff',
-    borderRadius: '8px',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: 'red'
-  }
   return (
     <>
       <Button type="success" onClick={handleToggleShow}>
         Nested content
       </Button>
       <Overlay visible={visible} onClick={onClose}>
-        <div style={wrapperStyle}>
-          <div style={contentStyle}>Here is the text</div>
+        <div className="wrapper" style={WrapperStyle}>
+          <div className="content" style={ContentStyle}>Here is the main text</div>
         </div>
       </Overlay>
     </>
@@ -228,30 +223,14 @@ const App = () => {
   const onClose = () => {
     setVisible(false)
   }
-  const wrapperStyle = {
-    display: 'flex',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
-  const contentStyle = {
-    display: 'flex',
-    width: '150px',
-    height: '150px',
-    background: '#fff',
-    borderRadius: '8px',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: 'red'
-  }
   return (
     <>
       <Button type="primary" onClick={handleToggleShow}>
         Click the mask not to close
       </Button>
       <Overlay visible={visible} closeOnOverlayClick={false}>
-        <div style={wrapperStyle}>
-          <div style={contentStyle} onClick={onClose}>Here is the text</div>
+        <div className="wrapper">
+          <div className="content" onClick={onClose}>here is the text</div>
         </div>
       </Overlay>
     </>
@@ -271,7 +250,6 @@ export default App;
 | visible | Whether the current component is displayed | `boolean` | `false` |
 | duration | Animation duration, in ms | `number` | `300` |
 | lockScroll | Whether the background is locked | `boolean` | `true` |
-| zIndex | Set component page level   | `number` | `1000` |
 | closeOnOverlayClick | Tap Mask off | `boolean` | `true` |
 | onClick | Triggered when the button is clicked | `event: Event` | `-` |
 | afterClose | Triggered after complete shutdown | `() => void` | `-` |
