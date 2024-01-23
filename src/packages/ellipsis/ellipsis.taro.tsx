@@ -86,9 +86,9 @@ export const Ellipsis: FunctionComponent<
   )
 
   useEffect(() => {
-    getSymbolInfo()
     setContentCopy(content)
     nextTick(() => {
+      getSymbolInfo()
       getReference()
     })
   }, [content])
