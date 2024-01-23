@@ -109,7 +109,8 @@ const IconDemo = () => {
         <h2>{translated['84aa6bce']}</h2>
         <Cell>
           <IconFont name="dongdong" />
-          <IconFont name="JD" />
+          <IconFont name="add" />
+          <IconFont name="minus" />
         </Cell>
         <h2>{translated.dab8a74f}</h2>
         <Cell>
@@ -122,7 +123,7 @@ const IconDemo = () => {
         <Cell>
           <IconFont name="dongdong" color="#fa2c19" />
           <IconFont name="dongdong" color="#64b578" />
-          <IconFont name="JD" color="#fa2c19" />
+          <IconFont name="dongdong" color="#ffd700" />
         </Cell>
         <h2>{translated['7aeb5407']}</h2>
         <Cell style={{ alignItems: 'center' }}>
