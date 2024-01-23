@@ -327,3 +327,21 @@
     border-radius: $button-square-border-radius;
   }
 }
+
+[dir='rtl'] .nut-button {
+  &-text {
+    margin-left: 0;
+    margin-right: $button-text-icon-margin;
+
+    &.right {
+      margin-right: 0;
+      margin-left: $button-text-icon-margin;
+    }
+  }
+
+  &::before {
+    left: auto;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+}

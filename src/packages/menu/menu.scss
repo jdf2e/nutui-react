@@ -3,6 +3,7 @@
 
 .nut-menu {
   position: relative;
+
   &.scroll-fixed {
     position: fixed;
     top: $menu-scroll-fixed-top;
@@ -22,6 +23,7 @@
     z-index: $menu-bar-opened-z-index;
   }
 }
+
 .nut-menu-title {
   flex: 1;
   text-align: center;
@@ -53,5 +55,11 @@
 
   &.active .nut-menu-title-icon {
     transform: rotate(180deg);
+  }
+}
+
+[dir='rtl'] .nut-menu-title {
+  &.active .nut-menu-title-icon {
+    transform: rotate(-180deg);
   }
 }

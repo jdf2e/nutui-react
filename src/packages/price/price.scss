@@ -2,6 +2,7 @@
   font-size: $font-size-large;
   display: inline;
   color: $color-primary;
+
   &-line {
     div {
       text-decoration: line-through;
@@ -9,37 +10,54 @@
       color: $price-line-color !important;
     }
   }
+
   &-symbol,
   &-integer,
   &-decimal {
     display: inline-block;
   }
+
   &-symbol {
     font-size: $price-symbol-medium-size;
     padding-right: $price-symbol-padding-right;
+
     &-large {
       font-size: $price-symbol-big-size;
     }
+
     &-small {
       font-size: $price-symbol-small-size;
     }
   }
+
   &-integer {
     font-size: $price-integer-medium-size;
+
     &-large {
       font-size: $price-integer-big-size;
     }
+
     &-small {
       font-size: $price-integer-small-size;
     }
   }
+
   &-decimal {
     font-size: $price-decimal-medium-size;
+
     &-large {
       font-size: $price-decimal-big-size;
     }
+
     &-small {
       font-size: $price-decimal-small-size;
     }
+  }
+}
+
+[dir='rtl'] .nut-price {
+  &-symbol {
+    padding-right: 0;
+    padding-left: $price-symbol-padding-right;
   }
 }

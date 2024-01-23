@@ -77,6 +77,7 @@
 
   &-left {
     left: 0;
+
     &-back {
       display: flex;
       align-items: center;
@@ -87,8 +88,10 @@
 
   &-right {
     right: 0;
+
     .nut-icon {
       margin-left: 12px;
+
       &:first-child {
         margin-left: 0;
       }
@@ -101,21 +104,76 @@
     .nut-navbar-left {
       position: static;
       padding: 0;
+
       .nut-icon {
         margin-left: 12px;
+
         &:first-child {
           margin-left: 0;
         }
       }
     }
+
     .nut-navbar-left-back {
       margin-right: 0;
     }
+
     .nut-navbar-title {
       margin: 0;
       flex: 1;
       justify-content: flex-start;
       padding: 0 8px;
+    }
+  }
+}
+
+[dir='rtl'] .nut-navbar {
+  &-fixed {
+    left: auto;
+    right: 0;
+  }
+
+  &-left {
+    left: auto;
+    right: 0;
+
+    &-back {
+      margin-right: 0;
+      margin-left: 10px;
+    }
+  }
+
+  &-right {
+    right: auto;
+    left: 0;
+
+    .nut-icon {
+      margin-left: 0;
+      margin-right: 12px;
+
+      &:first-child {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  }
+
+  &-title-align-left {
+    .nut-navbar-left {
+      .nut-icon {
+        margin-left: 0;
+        margin-right: 12px;
+
+        &:first-child {
+          margin-left: 0;
+          margin-right: 0;
+        }
+      }
+    }
+
+    .nut-navbar-left-back {
+      margin-right: 0;
+      margin-left: 0;
     }
   }
 }

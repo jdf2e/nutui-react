@@ -1,5 +1,6 @@
 @import '../avatargroup/avatargroup.scss';
 @import '../image/image.scss';
+
 .nut-avatar {
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -8,6 +9,7 @@
   position: relative;
   flex: 0 0 auto; // 防止被压缩
   text-align: center;
+
   .avatar-img {
     position: absolute;
     width: 100%;
@@ -17,6 +19,7 @@
     transform: translate(-50%, -50%);
     flex-shrink: 0;
   }
+
   .icon {
     background-size: 100% 100%;
     position: absolute;
@@ -24,10 +27,12 @@
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
   .nut-icon-img {
     width: 100%;
     height: 100%;
   }
+
   .text {
     display: inline-block;
     width: 100%;
@@ -36,25 +41,44 @@
     overflow: hidden;
   }
 }
+
+[dir='rtl'] .nut-avatar {
+  .avatar-img {
+    left: auto;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+
+  .icon {
+    left: auto;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+}
+
 .nut-avatar-large {
   width: $avatar-large-width;
   height: $avatar-large-height;
   line-height: $avatar-large-height;
 }
+
 .nut-avatar-small {
   width: $avatar-small-width;
   height: $avatar-small-height;
   line-height: $avatar-small-height;
 }
+
 .nut-avatar-normal {
   width: $avatar-normal-width;
   height: $avatar-normal-height;
   line-height: $avatar-normal-height;
 }
+
 .nut-avatar-round {
   border-radius: 50%;
   overflow: hidden;
 }
+
 .nut-avatar-square {
   border-radius: $avatar-square;
 }

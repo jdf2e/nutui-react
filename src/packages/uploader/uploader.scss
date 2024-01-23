@@ -213,3 +213,38 @@
     }
   }
 }
+
+[dir='rtl'] .nut-uploader {
+  &-input {
+    left: auto;
+    right: 0;
+  }
+
+  &-preview {
+    margin-right: 0;
+    margin-left: $uploader-preview-margin-right;
+
+    &-progress {
+      left: auto;
+      right: 0;
+    }
+
+    &.list {
+      margin-right: 0;
+      margin-left: 0px;
+    }
+
+    .close {
+      right: auto;
+      left: $uploader-preview-close-right;
+      transform: translate(-50%, -50%);
+    }
+
+    &-img {
+      .tips {
+        left: auto;
+        right: 0;
+      }
+    }
+  }
+}

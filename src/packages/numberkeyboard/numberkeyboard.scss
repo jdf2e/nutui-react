@@ -100,3 +100,29 @@
     }
   }
 }
+
+[dir='rtl'] .nut-numberkeyboard {
+  &-header {
+    &-close {
+      right: auto;
+      left: 0;
+    }
+  }
+
+  &-body {
+    padding: 6px 6px 0 0;
+
+    &-wrapper {
+      padding: 0 0 6px 6px;
+    }
+  }
+
+  &-sidebar {
+    .nut-numberkeyboard-body-wrapper {
+      .key {
+        left: 6px;
+        right: 0;
+      }
+    }
+  }
+}

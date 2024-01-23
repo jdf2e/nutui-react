@@ -58,3 +58,24 @@
     width: auto;
   }
 }
+
+[dir='rtl'] .nut-divider {
+  &-center,
+  &-left,
+  &-right {
+    &::before {
+      margin-right: 0;
+      margin-left: $divider-spacing;
+    }
+
+    &::after {
+      margin-left: 0;
+      margin-right: $divider-spacing;
+    }
+  }
+
+  &-vertical {
+    border-left: none;
+    border-right: 1px solid $divider-border-color;
+  }
+}

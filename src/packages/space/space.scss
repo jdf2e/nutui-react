@@ -7,8 +7,10 @@
 
   &-vertical {
     flex-direction: column;
+
     > .nut-space-item {
       margin-bottom: $space-gap;
+
       &:last-child {
         margin-bottom: 0;
       }
@@ -17,15 +19,19 @@
 
   &-horizontal {
     flex-direction: row;
+
     > .nut-space-item {
       margin-right: $space-gap;
+
       &:last-child {
         margin-right: 0;
       }
     }
+
     &.nut-space-wrap {
       flex-wrap: wrap;
       margin-bottom: calc(#{$space-gap} * -1);
+
       > .nut-space-item {
         padding-bottom: $space-gap;
       }
@@ -36,12 +42,15 @@
     &-center {
       align-items: center;
     }
+
     &-start {
       align-items: flex-start;
     }
+
     &-end {
       align-items: flex-end;
     }
+
     &-baseline {
       align-items: baseline;
     }
@@ -51,23 +60,43 @@
     &-center {
       justify-content: center;
     }
+
     &-start {
       justify-content: flex-start;
     }
+
     &-end {
       justify-content: flex-end;
     }
+
     &-between {
       justify-content: space-between;
     }
+
     &-around {
       justify-content: space-around;
     }
+
     &-evenly {
       justify-content: space-evenly;
     }
+
     &-stretch {
       justify-content: stretch;
+    }
+  }
+}
+
+[dir='rtl'] .nut-space {
+  &-horizontal {
+    > .nut-space-item {
+      margin-right: 0;
+      margin-left: $space-gap;
+
+      &:last-child {
+        margin-right: 0;
+        margin-left: 0;
+      }
     }
   }
 }

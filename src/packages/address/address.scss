@@ -51,3 +51,14 @@
     }
   }
 }
+
+[dir='rtl'] .nut-address {
+  &-exist {
+    &-item {
+      &-info {
+        margin-left: 0;
+        margin-right: 9px;
+      }
+    }
+  }
+}

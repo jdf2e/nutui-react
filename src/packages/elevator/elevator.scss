@@ -110,3 +110,22 @@
     }
   }
 }
+
+[dir='rtl'] .nut-elevator {
+  &-list {
+    &-fixed {
+      left: auto;
+      right: 0;
+    }
+  }
+
+  &-code-current {
+    right: auto;
+    left: $elevator-list-item-code-current-right;
+  }
+
+  &-bars {
+    right: auto;
+    left: $elevator-bars-right;
+  }
+}

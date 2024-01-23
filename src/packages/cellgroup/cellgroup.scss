@@ -27,6 +27,7 @@
     overflow: hidden;
     background-color: $cell-group-background-color;
     margin: 10px 0;
+
     .nut-cell {
       margin: 0;
       box-shadow: none;
@@ -46,10 +47,22 @@
         transform: scaleY(0.5);
         border-top: $cell-divider-border-bottom;
       }
+
       &:last-child {
         .nut-cell-divider {
           border-top: 0 !important;
         }
+      }
+    }
+  }
+}
+
+[dir='rtl'] .nut-cell-group {
+  &-wrap-divider {
+    .nut-cell {
+      &-divider {
+        left: $cell-divider-right;
+        right: $cell-divider-left;
       }
     }
   }

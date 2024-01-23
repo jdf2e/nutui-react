@@ -52,6 +52,7 @@
   white-space: pre-wrap;
   word-wrap: break-word;
   height: $notify-height;
+
   &-popup-top,
   &-popup-bottom {
     position: fixed;
@@ -88,5 +89,13 @@
 
   &-warning {
     background: $notify-warning-background-color;
+  }
+}
+
+[dir='rtl'] .nut-notify {
+  &-popup-top,
+  &-popup-bottom {
+    left: auto;
+    right: 0;
   }
 }

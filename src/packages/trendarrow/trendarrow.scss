@@ -21,3 +21,15 @@
     vertical-align: middle;
   }
 }
+
+[dir='rtl'] .nut-trendarrow {
+  &-icon-before {
+    margin-right: 0;
+    margin-left: $trendarrow-icon-margin;
+  }
+
+  &-icon-after {
+    margin-left: 0;
+    margin-right: $trendarrow-icon-margin;
+  }
+}

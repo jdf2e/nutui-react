@@ -53,6 +53,7 @@
     &-head,
     &-body {
       background: inherit;
+
       &-tr {
         display: table-row;
         background: inherit;
@@ -70,6 +71,7 @@
           background: inherit;
           position: sticky;
           top: 0;
+
           &.nut-table-fixed-left,
           &.nut-table-fixed-right {
             z-index: 4;
@@ -156,11 +158,13 @@
   &-fixed-right {
     position: sticky;
     z-index: 2;
+
     &.h5-div {
       // 临时方案，小程序下，width包含了padding值。
       padding: $table-cols-padding 0;
     }
   }
+
   &-fixed-left-last {
     border-right: none;
   }
@@ -175,5 +179,57 @@
     padding: $table-cols-padding;
     position: relative;
     z-index: 5;
+  }
+}
+
+[dir='rtl'] .nut-table {
+  &-main {
+    &-head,
+    &-body {
+      &-tr {
+        &-th {
+          &:last-child {
+            border-right: none;
+            border-left: none;
+          }
+        }
+
+        &-td {
+          &:last-child {
+            border-right: none;
+            border-left: none;
+          }
+        }
+
+        &-border {
+          border-right: none;
+          border-left: 1px solid $table-border-color;
+        }
+
+        &-alignleft,
+        &-align {
+          text-align: right;
+        }
+
+        &-alignright {
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  &-sticky-left {
+    left: auto;
+    right: 1px;
+  }
+
+  &-sticky-right {
+    right: auto;
+    left: 1px;
+  }
+
+  &-fixed-left-last {
+    border-right: none;
+    border-left: none;
   }
 }

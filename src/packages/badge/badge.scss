@@ -58,3 +58,10 @@
     padding: 0;
   }
 }
+
+[dir='rtl'] .nut-badge {
+  &-icon {
+    right: auto;
+    left: -15%;
+  }
+}

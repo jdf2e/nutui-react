@@ -51,3 +51,19 @@
     left: -999999px;
   }
 }
+
+[dir='rtl'] .nut-textarea {
+  &-limit {
+    right: auto;
+    left: 15px;
+  }
+
+  &-textarea {
+    text-align: right;
+  }
+
+  .cpoyText {
+    left: auto;
+    right: -999999px;
+  }
+}

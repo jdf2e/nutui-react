@@ -10,3 +10,10 @@
     border-left-width: 1px;
   }
 }
+
+[dir='rtl'] .nut-grid {
+  &-border {
+    border-left-width: medium;
+    border-right-width: 1px;
+  }
+}

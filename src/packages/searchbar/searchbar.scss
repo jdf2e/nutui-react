@@ -36,6 +36,7 @@
   &-left,
   &-right {
     display: flex;
+
     &.nut-icon {
       width: 20px;
       height: 20px;
@@ -44,10 +45,12 @@
 
   &-left {
     margin-right: $searchbar-gap;
+
     & > div,
     & > span,
     & > svg {
       margin-right: $searchbar-gap;
+
       &:last-child {
         margin-right: 0;
       }
@@ -113,5 +116,63 @@
 
   &-disabled {
     cursor: not-allowed;
+  }
+}
+
+[dir='rtl'] .nut-searchbar {
+  &-left {
+    margin-right: 0;
+    margin-left: $searchbar-gap;
+
+    & > div,
+    & > span,
+    & > svg {
+      margin-right: 0;
+      margin-left: $searchbar-gap;
+
+      &:last-child {
+        margin-right: 0;
+        margin-left: 0;
+      }
+    }
+  }
+
+  &-right {
+    margin-left: 0;
+    margin-right: $searchbar-gap;
+
+    & > div,
+    & > span,
+    & > svg {
+      margin-left: 0;
+      margin-right: $searchbar-gap;
+
+      &:first-child {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  }
+
+  &-left > text,
+  &-left > view {
+    margin-right: 0;
+    margin-left: $searchbar-gap;
+
+    &:last-child {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+
+  &-right > text,
+  &-right > view {
+    margin-left: 0;
+    margin-right: $searchbar-gap;
+
+    &:first-child {
+      margin-left: 0;
+      margin-right: 0;
+    }
   }
 }

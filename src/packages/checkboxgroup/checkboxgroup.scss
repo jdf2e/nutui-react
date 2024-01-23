@@ -41,3 +41,28 @@
     }
   }
 }
+
+[dir='rtl'] .nut-checkboxgroup {
+  .nut-checkbox {
+    &-label {
+      margin-right: 0;
+      margin-left: 5px;
+    }
+  }
+
+  &-vertical {
+    .nut-checkbox {
+      &-label {
+        margin-right: 0;
+        margin-left: 5px;
+      }
+    }
+  }
+
+  &-horizontal {
+    .nut-checkbox {
+      margin-right: 0;
+      margin-left: 20px;
+    }
+  }
+}

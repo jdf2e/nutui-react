@@ -65,6 +65,7 @@
     color: $color-primary-text;
     background-color: $pagination-lite-background-color;
     border-radius: $pagination-lite-radius;
+
     &-active,
     &-default {
       display: flex;
@@ -73,10 +74,25 @@
       width: $pagination-lite-height;
       height: $pagination-lite-height;
     }
+
     &-active {
       border-radius: $pagination-lite-radius;
       font-size: $font-size-small;
       background-color: $pagination-lite-active-background-color;
     }
+  }
+}
+
+[dir='rtl'] .nut-pagination {
+  &-prev,
+  &-item {
+    border-right: none;
+    border-left: none;
+  }
+
+  .simple-border {
+    border-right: none;
+    border-left: $pagination-item-border-width solid
+      $pagination-item-border-color;
   }
 }

@@ -306,3 +306,66 @@
     overflow: hidden !important;
   }
 }
+
+[dir='rtl'] .nut-popup {
+  &-title {
+    &-left {
+      left: auto;
+      right: $popup-title-padding;
+    }
+
+    &-right {
+      right: auto;
+      left: $popup-title-padding;
+
+      &-top-left {
+        left: auto;
+        right: $popup-title-padding;
+      }
+
+      &-bottom-left {
+        left: auto;
+        right: $popup-title-padding;
+      }
+
+      &-bottom-right {
+        right: auto;
+        left: $popup-title-padding;
+      }
+    }
+  }
+
+  &-center {
+    left: auto;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+
+  &-bottom {
+    left: auto;
+    right: 0;
+  }
+
+  &-right {
+    right: auto;
+    left: 0;
+
+    &.nut-popup-round {
+      border-radius: 0 $popup-border-radius $popup-border-radius 0;
+    }
+  }
+
+  &-left {
+    left: auto;
+    right: 0;
+
+    &.nut-popup-round {
+      border-radius: $popup-border-radius 0 0 $popup-border-radius;
+    }
+  }
+
+  &-top {
+    left: auto;
+    right: 0;
+  }
+}

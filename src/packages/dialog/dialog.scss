@@ -122,3 +122,31 @@
     }
   }
 }
+
+[dir='rtl'] .nut-dialog {
+  &-outer {
+    left: auto;
+    right: 50%;
+    -webkit-transform: translate(50%, -50%);
+    transform: translate(50%, -50%);
+  }
+
+  &-close {
+    &-top-right {
+      right: auto;
+      left: $dialog-close-right;
+    }
+
+    &-top-left {
+      left: auto;
+      right: $dialog-close-left;
+    }
+  }
+
+  &-footer {
+    &-cancel.nut-dialog-footer-cancel {
+      margin-right: 0;
+      margin-left: $dialog-footer-cancel-margin-right;
+    }
+  }
+}

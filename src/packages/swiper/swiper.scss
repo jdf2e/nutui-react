@@ -40,3 +40,16 @@
     z-index: 1;
   }
 }
+
+[dir='rtl'] .nut-swiper {
+  &-indicator {
+    left: auto;
+    right: 50%;
+    transform: translateX(50%);
+  }
+
+  &-indicator-vertical {
+    left: auto;
+    right: 12px;
+  }
+}

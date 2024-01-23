@@ -88,3 +88,15 @@
     }
   }
 }
+
+[dir='rtl'] .nut-audio {
+  &-icon {
+    .nut-audio-icon-stop {
+      &::after {
+        left: auto;
+        right: 50%;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}

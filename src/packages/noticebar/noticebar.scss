@@ -147,3 +147,24 @@
     }
   }
 }
+
+[dir='rtl'] .nut-noticebar {
+  .nut-noticebar-box {
+    &-left-icon {
+      margin-right: 0;
+      margin-left: $noticebar-icon-gap;
+    }
+
+    &-right-icon {
+      margin-left: 0;
+      margin-right: $noticebar-icon-gap;
+    }
+  }
+
+  .nut-noticebar-vertical {
+    .nut-noticebar-box-right-icon {
+      margin-left: 0;
+      margin-right: $noticebar-icon-gap;
+    }
+  }
+}

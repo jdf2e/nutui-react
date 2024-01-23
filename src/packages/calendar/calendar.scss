@@ -184,6 +184,7 @@
 
     &-disabled {
       color: $calendar-disable-color !important;
+
       .nut-calendar-day-info-curr {
         display: none;
       }
@@ -219,6 +220,28 @@
       color: $color-primary-text;
       text-align: center;
       line-height: 44px;
+    }
+  }
+}
+
+[dir='rtl'] .nut-calendar {
+  &-day {
+    float: right;
+
+    &-active {
+      &.active-start {
+        border-top-left-radius: 0;
+        border-top-right-radius: $calendar-day-active-border-radius;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: $calendar-day-active-border-radius;
+      }
+
+      &.active-end {
+        border-top-right-radius: 0;
+        border-top-left-radius: $calendar-day-active-border-radius;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: $calendar-day-active-border-radius;
+      }
     }
   }
 }

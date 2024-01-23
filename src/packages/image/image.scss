@@ -41,3 +41,15 @@
     background-size: 100% 100%;
   }
 }
+
+[dir='rtl'] .nut-image {
+  .nut-img-loading {
+    left: auto;
+    right: 0;
+  }
+
+  .nut-img-error {
+    left: auto;
+    right: 0;
+  }
+}

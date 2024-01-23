@@ -87,11 +87,13 @@
       border-color: $steps-process-icon-bg-color;
       color: $steps-process-icon-color;
     }
+
     .nut-step-title {
       color: $steps-process-title-color;
       font-size: $steps-process-title-font-size;
       font-weight: $steps-process-title-font-weight;
     }
+
     .nut-step-description {
       color: $steps-process-description-color;
     }
@@ -101,6 +103,7 @@
     .nut-step-title {
       color: $steps-wait-title-color;
     }
+
     .nut-step-description {
       color: $steps-wait-description-color;
     }
@@ -120,9 +123,17 @@
     .nut-step-title {
       color: $steps-finish-title-color;
     }
+
     .nut-step-description {
       color: $steps-finish-description-color;
     }
+  }
+}
+
+[dir='rtl'] .nut-step {
+  &-line {
+    left: auto;
+    right: calc(50% + (100% - $steps-base-line-width) / 2);
   }
 }
 
@@ -130,9 +141,11 @@
   .nut-step-head {
     margin: $steps-dot-head-margin;
   }
+
   .nut-step-line {
     top: 7px;
   }
+
   .nut-step-icon {
     width: $steps-dot-icon-width;
     height: $steps-dot-icon-height;
@@ -140,17 +153,20 @@
     border-radius: 50%;
     box-sizing: content-box;
   }
+
   .nut-step-wait {
     .nut-step-icon {
       background-color: $steps-dot-wait-icon-bg-color;
     }
   }
+
   .nut-step-finish {
     .nut-step-icon {
       background-color: $steps-dot-finish-icon-bg-color;
       border-color: $steps-dot-finish-icon-border-color;
     }
   }
+
   .nut-step-process {
     .nut-step-icon {
       position: relative;
@@ -168,6 +184,19 @@
         background-color: $steps-process-icon-before-bg-color;
         border-radius: 50%;
         opacity: 0.23;
+      }
+    }
+  }
+}
+
+[dir='rtl'] .nut-steps-dot {
+  .nut-step-process {
+    .nut-step-icon {
+      &:before {
+        left: auto;
+        right: 50%;
+        margin-left: 0;
+        margin-right: -7px;
       }
     }
   }
@@ -211,5 +240,18 @@
     display: inline-block;
     padding-left: 6%;
     text-align: left;
+  }
+}
+
+[dir='rtl'] .nut-steps-vertical {
+  .nut-step-line {
+    left: auto;
+    right: calc(50% - 1px);
+  }
+
+  .nut-step-main {
+    padding-left: 0;
+    padding-right: 6%;
+    text-align: right;
   }
 }

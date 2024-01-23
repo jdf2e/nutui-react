@@ -3,12 +3,30 @@
   box-sizing: border-box;
   word-break: break-all;
   margin-bottom: $col-default-margin-bottom;
+
   &-gutter {
     &:last-child {
       padding-right: 0 !important;
     }
+
     &:first-child {
       padding-left: 0 !important;
+    }
+  }
+}
+
+[dir='rtl'] .nut-col {
+  float: right;
+
+  &-gutter {
+    &:last-child {
+      padding-right: 0 !important;
+      padding-left: 0 !important;
+    }
+
+    &:first-child {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
     }
   }
 }
@@ -16,6 +34,11 @@
 @for $i from 1 through 24 {
   .nut-col-offset-#{$i} {
     margin-left: calc((100 / 24) * #{$i} * 1%);
+  }
+
+  [dir='rtl'] .nut-col-offset-#{$i} {
+    margin-left: 0;
+    margin-right: calc((100 / 24) * #{$i} * 1%);
   }
 
   .nut-col-#{$i} {

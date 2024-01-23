@@ -56,3 +56,32 @@
     }
   }
 }
+
+[dir='rtl'] .nut-rate {
+  &-item {
+    margin-right: 0;
+    margin-left: $rate-item-margin;
+
+    &:last-child {
+      margin-right: 0;
+      margin-left: 0;
+    }
+
+    &-half {
+      left: auto;
+      right: 0;
+    }
+
+    &-icon {
+      &.nut-rate-item-icon.nut-rate-item-icon-half {
+        left: auto;
+        right: 0;
+      }
+
+      &.nut-rate-item-icon::before {
+        left: auto;
+        right: auto;
+      }
+    }
+  }
+}

@@ -15,6 +15,7 @@
       position: fixed;
     }
   }
+
   &-item {
     display: flex;
     align-items: center;
@@ -33,6 +34,7 @@
       margin-right: $menu-item-icon-margin;
     }
   }
+
   &-wrap,
   &-wrap-up {
     position: absolute;
@@ -43,6 +45,15 @@
 
   &-wrap-up {
     bottom: $menu-bar-line-height;
+  }
+}
+
+[dir='rtl'] .nut-menu-container {
+  &-item {
+    .nut-icon {
+      margin-right: 0;
+      margin-left: $menu-item-icon-margin;
+    }
   }
 }
 

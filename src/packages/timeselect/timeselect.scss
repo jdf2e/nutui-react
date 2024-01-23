@@ -35,3 +35,7 @@
     font-weight: $font-weight-bold;
   }
 }
+
+[dir='rtl'] .nut-timepannel {
+  text-align: right;
+}

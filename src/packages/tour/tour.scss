@@ -83,3 +83,25 @@
     background: transparent;
   }
 }
+
+[dir='rtl'] .nut-tour {
+  &-content {
+    &-top {
+      text-align: left;
+    }
+
+    &-bottom {
+      &-operate {
+        &-btn {
+          margin-left: 0;
+          margin-right: $tour-content-bottom-btn-margin-left;
+        }
+      }
+    }
+  }
+
+  &-masked {
+    left: auto;
+    right: 0;
+  }
+}

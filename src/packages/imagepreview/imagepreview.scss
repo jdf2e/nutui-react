@@ -38,14 +38,17 @@
     z-index: 2002;
     background: transparent;
     color: $white;
+
     &.top-right {
       top: 50px;
       right: 20px;
     }
+
     &.top-left {
       top: 50px;
       left: 20px;
     }
+
     &.bottom {
       bottom: 50px;
       left: 0;
@@ -79,6 +82,28 @@
           object-fit: contain;
         }
       }
+    }
+  }
+}
+
+[dir='rtl'] .nut-imagepreview {
+  &-index {
+    .arrow {
+      left: auto;
+      right: 15px;
+      transform: rotateZ(-180deg);
+    }
+  }
+
+  &-close {
+    &.top-right {
+      right: auto;
+      left: 20px;
+    }
+
+    &.top-left {
+      left: auto;
+      right: 20px;
     }
   }
 }

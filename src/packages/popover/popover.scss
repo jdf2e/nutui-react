@@ -169,6 +169,7 @@
 
     &-top-start {
       left: 0;
+
       .nut-popover-arrow-top-start {
         left: 16px;
         transform: translateX(0%);
@@ -218,6 +219,103 @@
   }
 }
 
+[dir='rtl'] .nut-popover {
+  &-arrow {
+    &-left {
+      right: auto;
+      left: 0px;
+      border-left-color: currentcolor;
+      border-right-color: $popover-border-color;
+      border-right-width: medium;
+      border-left-width: 0;
+      margin-right: 0;
+      margin-left: -8px;
+    }
+
+    &-right {
+      left: auto;
+      right: 0px;
+      border-right-color: currentcolor;
+      border-left-color: $popover-border-color;
+      border-left-width: medium;
+      border-right-width: 0;
+      margin-left: 0;
+      margin-right: -8px;
+    }
+  }
+
+  .nut-popover-content {
+    .nut-popover-menu-item {
+      &-name {
+        margin-left: 0;
+        margin-right: 4px;
+      }
+
+      &-action-icon {
+        right: auto;
+        left: $popover-menu-item-padding;
+      }
+    }
+
+    &-top {
+      .nut-popover-arrow-top {
+        left: auto;
+        right: 50%;
+        transform: translateX(50%);
+      }
+    }
+
+    &-top-end {
+      right: auto;
+      left: 0;
+
+      .nut-popover-arrow-top-end {
+        right: auto;
+        left: 16px;
+      }
+    }
+
+    &-top-start {
+      left: auto;
+      right: 0;
+
+      .nut-popover-arrow-top-start {
+        left: auto;
+        right: 16px;
+      }
+    }
+
+    &-bottom {
+      .nut-popover-arrow-bottom {
+        left: auto;
+        right: 50%;
+        transform: translateX(50%);
+      }
+    }
+
+    &-bottom-end {
+      right: auto;
+
+      left: 0;
+
+      .nut-popover-arrow-bottom-end {
+        right: auto;
+        left: 16px;
+      }
+    }
+
+    &-bottom-start {
+      left: auto;
+      right: 0;
+
+      .nut-popover-arrow-bottom-start {
+        left: auto;
+        right: 16px;
+      }
+    }
+  }
+}
+
 .nut-popover-enter-from,
 .nut-popover-leave-active {
   transform: scale(0.8);
@@ -240,6 +338,11 @@
   left: 0;
   background: transparent;
   z-index: 999;
+}
+
+[dir='rtl'] .nut-popover-content-bg {
+  left: auto;
+  right: 0;
 }
 
 .nut-popover-wrapper {

@@ -17,6 +17,7 @@
   text-align: center;
   pointer-events: none;
   z-index: 1300;
+
   &-overlay-default {
     --nutui-overlay-bg-color: rgba(0, 0, 0, 0);
     --nutui-overlay-zIndex: 1300;
@@ -49,10 +50,12 @@
     border-radius: $toast-inner-border-radius;
     color: $toast-font-color;
     transform: translate(-50%, -50%);
+
     &.normal {
       word-break: normal;
       word-wrap: normal;
     }
+
     &.break-word {
       word-break: normal;
       word-wrap: break-word;
@@ -117,6 +120,17 @@
         height: 24px;
       }
     }
+  }
+}
+
+[dir='rtl'] .nut-toast {
+  left: auto;
+  right: 0;
+
+  &-inner {
+    left: auto;
+    right: 50%;
+    transform: translate(50%, -50%);
   }
 }
 

@@ -33,6 +33,7 @@
         height: $skeleton-line-height;
         background: $skeleton-background;
       }
+
       .nut-skeleton-block:last-child {
         width: 70%;
       }
@@ -52,7 +53,6 @@
       hsla(0, 0%, 100%, 0.5) 50%,
       hsla(0, 0%, 100%, 0) 80%
     );
-    background-repeat: no-repeat;
     animation: nut-skeleton 2s ease-in-out 0s infinite;
   }
 
@@ -64,5 +64,31 @@
     to {
       background-position-x: calc(500px + 100%);
     }
+  }
+}
+
+[dir='rtl'] .nut-skeleton {
+  &-content {
+    .avatar {
+      margin-right: 0;
+      margin-left: 20px;
+    }
+  }
+
+  &-animation {
+    left: auto;
+    right: 0;
+    background: linear-gradient(
+      -90deg,
+      hsla(0, 0%, 100%, 0),
+      hsla(0, 0%, 100%, 0.5) 50%,
+      hsla(0, 0%, 100%, 0) 80%
+    );
+  }
+}
+
+[dir] .nut-skeleton {
+  &-animation {
+    background-repeat: no-repeat;
   }
 }

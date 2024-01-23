@@ -15,6 +15,11 @@
   }
 }
 
+[dir='rtl'] .nut-overlay {
+  left: auto;
+  right: 0;
+}
+
 .nut-overflow-hidden {
   overflow: hidden !important;
 

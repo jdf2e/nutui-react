@@ -34,3 +34,17 @@
     transform: translate3d(101%, 0, 0);
   }
 }
+
+[dir='rtl'] .nut-swipe {
+  &-left {
+    left: auto;
+    right: 0;
+    transform: translate3d(100%, 0, 0);
+  }
+
+  &-right {
+    right: auto;
+    left: 0;
+    transform: translate3d(-101%, 0, 0);
+  }
+}

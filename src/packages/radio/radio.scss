@@ -12,6 +12,7 @@
 
   &.nut-radio-reverse {
     flex-direction: row-reverse;
+
     .nut-radio-label {
       margin-right: $radio-label-margin-left;
       margin-left: 0;
@@ -76,5 +77,24 @@
     background: $color-text-disabled;
     color: $white;
     border: 1px solid $color-text-disabled;
+  }
+}
+
+[dir='rtl'] .nut-radio {
+  &:last-child {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  &.nut-radio-reverse {
+    .nut-radio-label {
+      margin-left: $radio-label-margin-left;
+      margin-right: 0;
+    }
+  }
+
+  &-label {
+    margin-left: 0;
+    margin-right: $radio-label-margin-left;
   }
 }

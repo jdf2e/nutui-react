@@ -1,5 +1,6 @@
 .nut-collapse-item {
   position: relative;
+
   &::after {
     position: absolute;
     box-sizing: border-box;
@@ -12,6 +13,7 @@
     -webkit-transform: scaleY(0.5);
     transform: scaleY(0.5);
   }
+
   &:last-child::after {
     display: none;
   }
@@ -101,5 +103,17 @@
       color: $collapse-wrapper-content-color;
       padding: $collapse-wrapper-content-padding;
     }
+  }
+}
+
+[dir='rtl'] .nut-collapse-item {
+  &-icon-box {
+    padding-right: 0;
+    padding-left: 40px;
+  }
+
+  &-icon {
+    left: auto;
+    right: 5px;
   }
 }
