@@ -19,6 +19,7 @@ const RateDemo = () => {
       readOnly: '只读状态',
       event: '绑定事件',
       touchable: '滑动选择',
+      touchend: '滑动事件',
     },
     'zh-TW': {
       basic: '基礎用法',
@@ -32,6 +33,7 @@ const RateDemo = () => {
       readOnly: '只讀狀態',
       event: '綁定事件',
       touchable: '滑動選擇',
+      touchend: '滑動事件',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -45,6 +47,7 @@ const RateDemo = () => {
       readOnly: 'Readonly',
       event: 'Event',
       touchable: 'Touch to Select',
+      touchend: 'Touch Event',
     },
   })
   const [score, setScore] = useState(2)
@@ -116,6 +119,17 @@ const RateDemo = () => {
         <h2>{translated.touchable}</h2>
         <Cell style={cellStyle}>
           <Rate defaultValue={3} allowHalf touchable />
+        </Cell>
+
+        <h2>{translated.touchend}</h2>
+        <Cell style={cellStyle}>
+          <Rate
+            defaultValue={3}
+            touchable
+            onTouchEnd={(e, v) => {
+              console.log(e, v)
+            }}
+          />
         </Cell>
       </div>
     </>

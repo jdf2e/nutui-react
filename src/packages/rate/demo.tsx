@@ -3,6 +3,7 @@ import { HeartFill } from '@nutui/icons-react'
 import { Rate } from './rate'
 import Cell from '@/packages/cell'
 import { useTranslate } from '@/sites/assets/locale'
+import Toast from '../toast'
 
 const RateDemo = () => {
   const [translated] = useTranslate({
@@ -18,6 +19,7 @@ const RateDemo = () => {
       readOnly: '只读状态',
       event: '绑定事件',
       touchable: '滑动选择',
+      touchevent: '滑动事件',
     },
     'zh-TW': {
       basic: '基礎用法',
@@ -31,6 +33,7 @@ const RateDemo = () => {
       readOnly: '只讀狀態',
       event: '綁定事件',
       touchable: '滑動選擇',
+      touchevent: '滑動事件',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -44,11 +47,14 @@ const RateDemo = () => {
       readOnly: 'Readonly',
       event: 'Event',
       touchable: 'Touch to Select',
+      touchevent: 'Touch Event',
     },
   })
   const [score, setScore] = useState(2)
   const onChange = (val: number) => {
-    alert(val)
+    Toast.show({
+      content: val,
+    })
   }
   const cellStyle: CSSProperties = {
     display: 'flex',
@@ -114,6 +120,17 @@ const RateDemo = () => {
         <h2>{translated.touchable}</h2>
         <Cell style={cellStyle}>
           <Rate defaultValue={3} allowHalf touchable />
+        </Cell>
+
+        <h2>{translated.touchevent}</h2>
+        <Cell style={cellStyle}>
+          <Rate
+            defaultValue={3}
+            touchable
+            ontouchevent={(e, v) => {
+              console.log(e, v)
+            }}
+          />
         </Cell>
       </div>
     </>

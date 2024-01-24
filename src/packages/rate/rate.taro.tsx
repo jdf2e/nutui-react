@@ -26,6 +26,9 @@ export interface RateProps extends BasicComponent {
   allowHalf: boolean
   touchable: boolean
   onChange: (value: number) => void
+  onTouchStart: (e: TouchEvent) => void
+  onTouchMove: (e: TouchEvent, value: number) => void
+  onTouchEnd: (e: TouchEvent, value: number) => void
 }
 
 const defaultProps = {
@@ -54,6 +57,9 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     allowHalf,
     touchable,
     onChange,
+    onTouchStart,
+    onTouchMove,
+    onTouchEnd,
   } = {
     ...defaultProps,
     ...props,
@@ -148,7 +154,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     updateRects()
   })
 
-  const onTouchStart = (e: any) => {
+  const handleTouchStart = (e: any) => {
     if (!touchable || readOnly || disabled) {
       return
     }
@@ -157,9 +163,10 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     }
     e.stopPropagation()
     updateRects()
+    onTouchStart && onTouchStart(e)
   }
 
-  const onTouchMove = (e: any) => {
+  const handleTouchMove = (e: any) => {
     if (!touchable || readOnly || disabled) {
       return
     }
@@ -170,6 +177,22 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     const val = getScoreByPosition(e.touches[0].clientX)
     if (val !== undefined) {
       setScore(Math.max(min, val))
+      onTouchMove && onTouchMove(e, Math.max(min, val))
+    }
+  }
+
+  const handleTouchEnd = (e: any) => {
+    if (!touchable || readOnly || disabled) {
+      return
+    }
+    if (e.cancelable) {
+      e.preventDefault()
+    }
+    e.stopPropagation()
+    const val = getScoreByPosition(e.changedTouches[0].clientX)
+    if (val !== undefined) {
+      setScore(Math.max(min, val))
+      onTouchEnd && onTouchEnd(e, Math.max(min, val))
     }
   }
 
@@ -185,8 +208,10 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
       )}
       catchMove
       style={style}
-      onTouchStart={onTouchStart}
-      onTouchMove={onTouchMove}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      onTouchCancel={handleTouchEnd}
     >
       {countArray.map((n, index) => {
         return (

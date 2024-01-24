@@ -24,6 +24,9 @@ export interface RateProps extends BasicComponent {
   allowHalf: boolean
   touchable: boolean
   onChange: (value: number) => void
+  onTouchStart: (e: TouchEvent) => void
+  onTouchMove: (e: TouchEvent, value: number) => void
+  onTouchEnd: (e: TouchEvent, value: number) => void
 }
 
 const defaultProps = {
@@ -52,6 +55,9 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     allowHalf,
     touchable,
     onChange,
+    onTouchStart,
+    onTouchMove,
+    onTouchEnd,
   } = {
     ...defaultProps,
     ...props,
@@ -140,7 +146,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     }
   }
 
-  const onTouchStart = (e: TouchEvent) => {
+  const handleTouchStart = (e: TouchEvent) => {
     if (!touchable || readOnly || disabled) {
       return
     }
@@ -149,9 +155,10 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     }
     e.stopPropagation()
     updateRects()
+    onTouchStart && onTouchStart(e)
   }
 
-  const onTouchMove = (e: TouchEvent) => {
+  const handleTouchMove = (e: TouchEvent) => {
     if (!touchable || readOnly || disabled) {
       return
     }
@@ -162,6 +169,22 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     const val = getScoreByPosition(e.touches[0].clientX)
     if (val !== undefined) {
       setScore(Math.max(min, val))
+      onTouchMove && onTouchMove(e, Math.max(min, val))
+    }
+  }
+
+  const handleTouchEnd = (e: TouchEvent) => {
+    if (!touchable || readOnly || disabled) {
+      return
+    }
+    if (e.cancelable) {
+      e.preventDefault()
+    }
+    e.stopPropagation()
+    const val = getScoreByPosition(e.changedTouches[0].clientX)
+    if (val !== undefined) {
+      setScore(Math.max(min, val))
+      onTouchEnd && onTouchEnd(e, Math.max(min, val))
     }
   }
 
@@ -170,14 +193,18 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
   useEffect(() => {
     const element = rateRef.current
     if (element) {
-      element.addEventListener('touchstart', onTouchStart, { passive: false })
-      element.addEventListener('touchmove', onTouchMove, { passive: false })
+      element.addEventListener('touchstart', handleTouchStart, {
+        passive: false,
+      })
+      element.addEventListener('touchmove', handleTouchMove, { passive: false })
+      element.addEventListener('touchend', handleTouchEnd, { passive: false })
     }
 
     return () => {
       if (element) {
-        element.removeEventListener('touchstart', onTouchStart)
-        element.removeEventListener('touchmove', onTouchMove)
+        element.removeEventListener('touchstart', handleTouchStart)
+        element.removeEventListener('touchmove', handleTouchMove)
+        element.removeEventListener('touchend', handleTouchEnd)
       }
     }
   }, [])

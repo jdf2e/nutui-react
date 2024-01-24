@@ -203,7 +203,7 @@ import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
   const onChange = (val: any) => {
-    alert(val)
+    console.log(val)
   }
   return ( 
     <>   
@@ -234,6 +234,28 @@ export default App;
 
 ```
 
+### 滑动事件
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Rate } from '@nutui/nutui-react';
+
+const App = () => {
+  const handleTouchEnd = (event, val) => {
+    console.log(event, val)
+  }
+  return ( 
+    <>   
+      <Rate defaultValue={3} touchable onTouchEnd={handleTouchEnd}/>
+    </>
+  );
+};  
+export default App;
+
+```
+
 ## Rate
 
 ### Props
@@ -251,6 +273,9 @@ export default App;
 | disabled | 是否禁用 | `boolean` | `false` |
 | touchable | 是否允许滑动选择 ｜ `boolean` | `false` |
 | onChange | 当前 star 数修改时触发 | `(value: number) => void` | `-` |
+| onTouchStart | TouchStart 事件 | `(event: TouchEvent) => void` | `-` |
+| onTouchMove | TouchMove 事件 | `(event: TouchEvent, value: number) => void` | `-` |
+| onTouchEnd | TouchEnd 事件 | `(event: TouchEvent, value: number) => void` | `-` |
 
 ## 主题定制
 
