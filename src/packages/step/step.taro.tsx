@@ -1,5 +1,6 @@
 import React, { FunctionComponent, ReactNode, useContext } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { DataContext } from '@/packages/steps/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -57,18 +58,20 @@ export const Step: FunctionComponent<
   }
   return (
     <div className={classes} {...restProps} onClick={handleClickStep}>
-      <div className="nut-step-head">
-        <div className="nut-step-line" />
-        <div className={renderIconClass()}>
+      <View className="nut-step-head">
+        <View className="nut-step-line" />
+        <View className={renderIconClass()}>
           {icon || (!dot && <span className="nut-step-inner">{value}</span>)}
-        </div>
-      </div>
-      <div className="nut-step-main">
-        <span className="nut-step-title">{title}</span>
-        {description && (
-          <span className="nut-step-description">{description}</span>
-        )}
-      </div>
+        </View>
+      </View>
+      {(title || description) && (
+        <View className="nut-step-main">
+          <span className="nut-step-title">{title}</span>
+          {description && (
+            <span className="nut-step-description">{description}</span>
+          )}
+        </View>
+      )}
     </div>
   )
 }

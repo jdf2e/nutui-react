@@ -46,14 +46,9 @@ export const Steps: FunctionComponent<
   )
   return (
     <DataContext.Provider value={parentSteps}>
-      {React.createElement(
-        'div',
-        {
-          className: classes,
-          ...restProps,
-        },
-        children
-      )}
+      <div className={classes} {...restProps}>
+        {children}
+      </div>
     </DataContext.Provider>
   )
 }
