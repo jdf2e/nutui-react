@@ -143,7 +143,25 @@ const App = () => {
       <Swiper
         defaultValue={0}
         onChange={onChange3}
-        pageContent={<div className="page"> {current + 1}/4 </div>}
+        indicator={
+          <div
+            style={{
+              position: 'absolute',
+              bottom: '0',
+              right: '0',
+              width: '46px',
+              height: '22px',
+              background: 'rgba(0, 0, 0, 0.33)',
+              borderRadius: '22px',
+              textAlign: 'center',
+              color: '#fff',
+              fontSize: '14px',
+              zIndex: '1',
+            }}
+          >
+            {current + 1}/4
+          </div>
+        }
       >
         <Swiper.Item >
           <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
