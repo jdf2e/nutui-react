@@ -256,6 +256,7 @@ export default RadioGroupOptions;
 | value | identifier of the currently selected item | `string`  \|  `number` | `-` |
 | labelPosition | The position of the text | `left` \| `right` | `right` |
 | disabled | Whether to disable | `boolean` | `false` |
+| shape | shape | `button` \| `round` |`-` |
 | direction | use landscape orientation | `horizontal` \| `vertical` | `vertical` |
 | options | Configure options to render radio buttons | `Array<{ label: string value: string disabled?: boolean }>`  | `-` |
 | onChange | Triggered when the value changes | `(value: string \| number) => void` | `-` |

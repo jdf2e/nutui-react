@@ -5,9 +5,7 @@ import RadioContext from '../radiogroup/context'
 import RadioGroup from '@/packages/radiogroup'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
-
-export type RadioShape = 'button' | 'round'
-export type RadioPosition = 'right' | 'left'
+import { RadioPosition, RadioShape } from '@/packages/radio/types'
 
 export interface RadioProps extends BasicComponent {
   disabled: boolean
@@ -134,16 +132,18 @@ export const Radio: FunctionComponent<
       <CheckNormal className={classNames(color())} />
     )
   }
-  const renderRadioItem = () => {
-    if (shape === 'button') {
-      return renderButton()
-    }
-    return (
+  const renderByShape = (shape: RadioShape) => {
+    return shape === 'button' ? (
+      renderButton()
+    ) : (
       <>
         {renderIcon()}
         {renderLabel()}
       </>
     )
+  }
+  const renderRadioItem = () => {
+    return renderByShape(context && context.shape ? context.shape : shape)
   }
   const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
     if (disabled || checkedStatement) return

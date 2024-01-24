@@ -256,6 +256,7 @@ export default RadioGroupOptions;
 | value | 當前選中項的標識符 | `string`  \|  `number` | `-` |
 | labelPosition | 文本所在的位置 | `left` \| `right` | `right` |
 | disabled | 是否禁用 | `boolean` | `false` |
+| shape | 形状 | `button` \| `round` |`-` |
 | direction | 使用橫縱方嚮 | `horizontal` \| `vertical` | `vertical` |
 | options | 配置 options 渲染單選按鈕 | `Array<{ label: string value: string disabled?: boolean }>`  | `-` |
 | onChange | 值變化時觸發 | `(value: string \| number) => void` | `-` |
