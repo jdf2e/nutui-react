@@ -225,7 +225,6 @@ export default App
 ```tsx
 import React from 'react'
 import { Grid, Image } from '@nutui/nutui-react'
-import { Image as ImageIcon } from '@nutui/icons-react'
 
 const App = () => {
   const imgSrc = "https://m.360buyimg.com/babel/jfs/t1/36973/29/11270/120042/5cf1fe3cEac2b5898/10c2722d0cc0bfa7.png"
