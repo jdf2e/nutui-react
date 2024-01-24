@@ -21,7 +21,7 @@ const formatseconds = (value: string) => {
 }
 
 const AudioDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
       progress: '进度条模式',
