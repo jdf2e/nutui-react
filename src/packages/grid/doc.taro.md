@@ -202,13 +202,13 @@ const App = () => {
   return (
     <Grid columns="3">
       <Grid.Item text="文字">
-        <Image size={10}  />
+        <Image size={16}  />
       </Grid.Item>
       <Grid.Item text="文字">
         <Image color="red" />
       </Grid.Item>
       <Grid.Item text="文字">
-        <Image size={20}  color="#478EF2" />
+        <Image size={30}  color="#478EF2" />
       </Grid.Item>
     </Grid>
   )
@@ -224,32 +224,58 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Grid, Avatar } from '@nutui/nutui-react-taro'
+import { Grid, Image } from '@nutui/nutui-react-taro'
 import { Image as ImageIcon} from '@nutui/icons-react-taro'
 
 const App = () => {
+  const imgSrc = 'https://m.360buyimg.com/babel/jfs/t1/36973/29/11270/120042/5cf1fe3cEac2b5898/10c2722d0cc0bfa7.png'
   return (
-    <Grid>
-      <Grid.Item text={<span>More</span>}><ImageIcon /></Grid.Item>
+   <Grid columns={3} square>
       <Grid.Item>
-        <Avatar
-          className="demo-avatar"
-          icon={<ImageIcon color="#fff"/>}
-          background="#FA2C19"
-        />
+        <Image src={imgSrc} width="100%" height="100%" />
       </Grid.Item>
       <Grid.Item>
-      <Avatar
-        size="large"
-        icon={
-          <img
-            width="100%"
-            height="100%"
-            alt="头像"
-            src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
-          />
-        }
-      />
+        <Image src={imgSrc} width="100%" height="100%" />
+      </Grid.Item>
+      <Grid.Item>
+        <Image src={imgSrc} width="100%" height="100%" />
+      </Grid.Item>
+    </Grid>
+  )
+}
+export default App
+```
+
+:::
+
+### 点击子项事件
+
+:::demo
+
+```tsx
+import React from 'react'
+import { Grid } from '@nutui/nutui-react-taro'
+import { Image as ImageIcon} from '@nutui/icons-react-taro'
+import Taro from '@tarojs/taro'
+
+const App = () => {
+  const imgSrc = 'https://m.360buyimg.com/babel/jfs/t1/36973/29/11270/120042/5cf1fe3cEac2b5898/10c2722d0cc0bfa7.png'
+  const onClick = (item: any, index: number) => {
+    Taro.showToast({ title: `clicked ${item.text}, index ${index}` })
+  }
+  return (
+    <Grid direction="horizontal" onClick={onClick}>
+      <Grid.Item text="文字">
+        <ImageIcon />
+      </Grid.Item>
+      <Grid.Item text="文字">
+        <ImageIcon />
+      </Grid.Item>
+      <Grid.Item text="文字">
+        <ImageIcon />
+      </Grid.Item>
+      <Grid.Item text="文字">
+        <ImageIcon />
       </Grid.Item>
     </Grid>
   )

@@ -232,25 +232,13 @@ const App = () => {
   return (
     <Grid columns={3} square>
       <Grid.Item>
-        <Image
-          src={imgSrc}
-          width="100%"
-          height="100%"
-        />
+        <Image src={imgSrc} width="100%" height="100%" />
       </Grid.Item>
       <Grid.Item>
-        <Image
-          src={imgSrc}
-          width="100%"
-          height="100%"
-        />
+        <Image src={imgSrc} width="100%" height="100%" />
       </Grid.Item>
       <Grid.Item>
-        <Image
-          src={imgSrc}
-          width="100%"
-          height="100%"
-        />
+        <Image src={imgSrc} width="100%" height="100%" />
       </Grid.Item>
     </Grid>
   )
@@ -266,7 +254,7 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Grid } from '@nutui/nutui-react'
+import { Grid, Toast } from '@nutui/nutui-react'
 import { Image as ImageIcon } from '@nutui/icons-react'
 
 const App = () => {

@@ -62,9 +62,10 @@ const GridDemo = () => {
   })
 
   const onClick = (item: any, index: number) => {
-    Taro.showToast({ title: `点击了${item.text}，第${index}个` })
+    Taro.showToast({ title: `clicked ${item.text}, index ${index}` })
   }
-
+  const imgSrc =
+    'https://m.360buyimg.com/babel/jfs/t1/36973/29/11270/120042/5cf1fe3cEac2b5898/10c2722d0cc0bfa7.png'
   return (
     <>
       <Header />
@@ -227,25 +228,13 @@ const GridDemo = () => {
         <h2>{translated.customContent}</h2>
         <Grid columns={3} square>
           <Grid.Item>
-            <Image
-              src="https://m.360buyimg.com/babel/jfs/t1/36973/29/11270/120042/5cf1fe3cEac2b5898/10c2722d0cc0bfa7.png"
-              width="100%"
-              height="100%"
-            />
+            <Image src={imgSrc} width="100%" height="100%" />
           </Grid.Item>
           <Grid.Item>
-            <Image
-              src="https://m.360buyimg.com/babel/jfs/t1/36973/29/11270/120042/5cf1fe3cEac2b5898/10c2722d0cc0bfa7.png"
-              width="100%"
-              height="100%"
-            />
+            <Image src={imgSrc} width="100%" height="100%" />
           </Grid.Item>
           <Grid.Item>
-            <Image
-              src="https://m.360buyimg.com/babel/jfs/t1/36973/29/11270/120042/5cf1fe3cEac2b5898/10c2722d0cc0bfa7.png"
-              width="100%"
-              height="100%"
-            />
+            <Image src={imgSrc} width="100%" height="100%" />
           </Grid.Item>
         </Grid>
 
