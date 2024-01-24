@@ -45,19 +45,7 @@ const SwiperDemo = () => {
     },
   })
   const swiperRef = React.useRef<any>(null)
-  const [height] = useState<any>(150)
-  const [initPage1] = useState<any>(0)
-  const [initPage2] = useState<any>(0)
-  const [initPage3] = useState<any>(0)
-  const [initPage4] = useState<any>(0)
-  const [initPage5] = useState<any>(0)
-  const [initPage6] = useState<any>(0)
-  const [initPage7] = useState<any>(0)
-  const [initPage8] = useState<any>(0)
-  const [initPage9] = useState<any>(0)
-  const [current, setCurrent] = useState(1)
-  const [current2, setCurrent2] = useState(1)
-  const [list1, setList1] = useState<string[]>([])
+
   const [list2, setList2] = useState<string[]>([
     'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
     'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
@@ -71,34 +59,12 @@ const SwiperDemo = () => {
     'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
     'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
   ]
-  const onChange = (e: number) => {}
-  const handlePrev = () => {
-    swiperRef.current.prev()
-  }
-  const handleNext = () => {
-    swiperRef.current.next()
-  }
 
-  useEffect(() => {
-    setTimeout(() => {
-      const arr: any = list.slice()
-      setList1(arr)
-      const arr2 = list2.slice()
-      arr2.splice(1, 1)
-      setList2(arr2)
-    }, 3000)
-  }, [])
   return (
     <div className="demo padding">
       <h2>{translated.basic}</h2>
       <div className="demo-box" style={{ height: 150 }}>
-        <Swiper
-          height={height}
-          autoPlay="2000"
-          defaultValue={initPage1}
-          onChange={onChange}
-          indicator
-        >
+        <Swiper>
           {list.map((item, index) => {
             return (
               <Swiper.Item key={item}>
@@ -106,170 +72,6 @@ const SwiperDemo = () => {
               </Swiper.Item>
             )
           })}
-        </Swiper>
-      </div>
-      <h2>{translated.asyc}</h2>
-      <div className="demo-box" style={{ height: 150 }}>
-        {list1.length ? (
-          <Swiper
-            height={height}
-            autoPlay="2000"
-            defaultValue={initPage2}
-            onChange={onChange}
-            indicator
-          >
-            {list1.map((item) => {
-              return (
-                <Swiper.Item key={item}>
-                  <img src={item} alt="" />
-                </Swiper.Item>
-              )
-            })}
-          </Swiper>
-        ) : null}
-      </div>
-      <h2>{translated.size}</h2>
-      <div className="demo-box" style={{ height: 150 }}>
-        <Swiper defaultValue={initPage4} width="300" height={height}>
-          {list.map((item) => {
-            return (
-              <Swiper.Item key={item}>
-                <img src={item} alt="" />
-              </Swiper.Item>
-            )
-          })}
-        </Swiper>
-      </div>
-      <h2>{translated.indicator}</h2>
-      <div className="demo-box" style={{ height: 150 }}>
-        <Swiper
-          loop
-          height={height}
-          defaultValue={initPage5}
-          onChange={(e) => setCurrent(e + 1)}
-          indicator={<div className="page"> {current}/4 </div>}
-        >
-          {list.map((item) => {
-            return (
-              <Swiper.Item key={item}>
-                <img src={item} alt="" />
-              </Swiper.Item>
-            )
-          })}
-        </Swiper>
-      </div>
-      <h2>{translated.btns}</h2>
-      <div className="demo-box" style={{ height: 150 }}>
-        <Swiper
-          ref={swiperRef}
-          height={height}
-          loop
-          defaultValue={initPage6}
-          onChange={(e) => setCurrent2(e + 1)}
-          indicator={<div className="page"> {current2}/4 </div>}
-        >
-          {list.map((item) => {
-            return (
-              <Swiper.Item key={item}>
-                <img src={item} alt="" />
-              </Swiper.Item>
-            )
-          })}
-        </Swiper>
-        <div className="nut-swiper-btns">
-          <span className="nut-swiper-btns-left" onClick={(e) => handlePrev()}>
-            <ArrowLeft />
-          </span>
-          <span className="nut-swiper-btns-left" onClick={(e) => handleNext()}>
-            <ArrowRight />
-          </span>
-        </div>
-      </div>
-      <h2>{translated.vertical}</h2>
-      <div className="demo-box vertical-center">
-        <Swiper
-          loop
-          defaultValue={initPage7}
-          direction="vertical"
-          autoPlay="3000"
-          height={height}
-          indicator
-        >
-          {list.map((item) => {
-            return (
-              <Swiper.Item key={item}>
-                <img src={item} alt="" />
-              </Swiper.Item>
-            )
-          })}
-        </Swiper>
-      </div>
-      <h2>{translated.horizontalCenter}</h2>
-      <div className="demo-box " style={{ height: 150 }}>
-        <Swiper
-          defaultValue={initPage8}
-          autoPlay="0"
-          height={height}
-          indicator
-          width="280"
-          center
-        >
-          {list.map((item) => {
-            return (
-              <Swiper.Item key={item}>
-                <img src={item} alt="" />
-              </Swiper.Item>
-            )
-          })}
-        </Swiper>
-      </div>
-      <h2>{translated.verticalCenter}</h2>
-      <div className="demo-box vertical-center">
-        <Swiper
-          defaultValue={initPage9}
-          direction="vertical"
-          autoPlay="0"
-          height="220"
-          indicator
-          center
-          style={{ height: '280px' }}
-        >
-          {list.map((item) => {
-            return (
-              <Swiper.Item key={item}>
-                <img src={item} alt="" />
-              </Swiper.Item>
-            )
-          })}
-        </Swiper>
-      </div>
-      <h2>{translated.multiItems}</h2>
-      <div style={{ height: 150 }}>
-        <Swiper loop autoPlay="2000">
-          <Swiper.Item>
-            <div style={{ display: 'flex' }}>
-              <div style={{ flex: '1', border: '1 red' }}>Item1</div>
-              <div style={{ flex: '1', border: '1 red' }}>Item2</div>
-              <div style={{ flex: '1', border: '1 red' }}>Item3</div>
-              <div style={{ flex: '1', border: '1 red' }}>Item4</div>
-            </div>
-          </Swiper.Item>
-          <Swiper.Item>
-            <div style={{ display: 'flex' }}>
-              <div style={{ flex: '1', border: '1 red' }}>Item5</div>
-              <div style={{ flex: '1', border: '1 red' }}>Item6</div>
-              <div style={{ flex: '1', border: '1 red' }}>Item7</div>
-              <div style={{ flex: '1', border: '1 red' }}>Item8</div>
-            </div>
-          </Swiper.Item>
-          <Swiper.Item>
-            <div style={{ display: 'flex' }}>
-              <div style={{ flex: '1', border: '1 red' }}>Item9</div>
-              <div style={{ flex: '1', border: '1 red' }}>Item10</div>
-              <div style={{ flex: '1', border: '1 red' }}>Item11</div>
-              <div style={{ flex: '1', border: '1 red' }}>Item12</div>
-            </div>
-          </Swiper.Item>
         </Swiper>
       </div>
     </div>
