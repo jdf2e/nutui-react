@@ -127,7 +127,7 @@ const RateDemo = () => {
           <Rate
             defaultValue={3}
             touchable
-            ontouchevent={(e, v) => {
+            onTouchEnd={(e, v) => {
               console.log(e, v)
             }}
           />
