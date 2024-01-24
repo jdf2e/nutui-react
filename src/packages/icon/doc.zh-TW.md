@@ -16,23 +16,18 @@ npm i --save @nutui/icons-react
 
 按需加載組件使用方式，可選項見 @nutui/icons-react/dist/types/index.d.ts
 
-:::demo
+```html
+import { Add } from '@nutui/icons-react';
 
-```tsx
-import React from "react";
-import { Add, Dongdong, UserAdd } from '@nutui/icons-react'
-
-const App = () => {
-  return <>
-    <Add color="red" />
-    <UserAdd />
-    <Dongdong />
-  </>
-}
-
+<Add color='red' />
 ```
 
-:::
+<icon-demo />
+
+```
+其中組件庫內部使用 Svg 為
+Loading,Location,Check,Close,ArrowLeft,Service,Top,ArrowRight,CheckNormal,Checked,CheckDisabled,ArrowDown,JoySmile,Image,ImageError,Failure,MaskClose,Minus,Plus,ArrowUp2,ArrowDown2,Notice,CheckChecked,Star,Tips,Loading,TriangleUp,TriangleDown,Photograph,Del,Link,Download
+```
 
 ## Icon
 
@@ -65,32 +60,8 @@ import { IconFont } from '@nutui/icons-react'
 const App = () => {
   return <>
     <IconFont name="dongdong" />
-    <IconFont name="add" />
-    <IconFont name="minus" />
-  </>
-}
-export default App;
-
-```
-
-:::
-
-### 圖片鏈接
-
-`Icon` 的 `name` 屬性支持傳入圖標名稱或圖片鏈接。
-
-:::demo
-
-```tsx
-import React from "react";
-import { IconFont } from '@nutui/icons-react'
-
-const App = () => {
-  return <>
-    <IconFont
-      size="40"
-      name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
-    />
+    <IconFont name="JD"/>
+    <IconFont size="40"  name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"/>
   </>
 }
 export default App;
@@ -113,7 +84,7 @@ const App = () => {
   return <>
     <IconFont name="dongdong" color="#fa2c19" />
     <IconFont name="dongdong" color="#64b578" />
-    <IconFont name="dongdong" color="#ffd700" />
+    <IconFont name="JD" color="#fa2c19" />
   </>
 }
 
@@ -134,9 +105,9 @@ import { IconFont } from '@nutui/icons-react'
 
 const App = () => {
   return <>
-    <IconFont name="dongdong" size="16" />
-    <IconFont name="dongdong" size="20" />
+    <IconFont name="dongdong" />
     <IconFont name="dongdong" size="24" />
+    <IconFont name="dongdong" size="16" />
   </>
 }
 
