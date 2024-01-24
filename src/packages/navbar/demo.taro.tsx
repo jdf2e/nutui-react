@@ -151,7 +151,7 @@ const NavBarDemo = () => {
           }
           onBackClick={(e) => Taro.showToast({ title: translated.a74a1fd4 })}
         >
-          <div>
+          <div style={{ width: '100%' }}>
             <Tabs
               value={tab1value}
               onChange={(paneKey) => {

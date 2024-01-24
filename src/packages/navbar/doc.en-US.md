@@ -138,17 +138,19 @@ const App = () => {
           }
           onBackClick={(e) => Toast.show("back")}
         >
-            <Tabs value={tab1value} onChange={({ paneKey }) => { setTab1value(paneKey) }}
-              style={{
-                '--nutui-tabs-titles-padding': 0,
-                '--nutui-tabs-titles-gap': 0,
-              }}
-            >
-              <TabPane title="Tab 1"> Tab 1 </TabPane>
-              <TabPane title="Tab 2"> Tab 2 </TabPane>
-              <TabPane title="Tab 3"> Tab 3 </TabPane>
-              <TabPane title="Tab 4"> Tab 4 </TabPane>
-            </Tabs>
+            <div style={{ width: '100%' }}>
+              <Tabs value={tab1value} onChange={({ paneKey }) => { setTab1value(paneKey) }}
+                style={{
+                  '--nutui-tabs-titles-padding': 0,
+                  '--nutui-tabs-titles-gap': 0,
+                }}
+              >
+                <TabPane title="Tab 1"> Tab 1 </TabPane>
+                <TabPane title="Tab 2"> Tab 2 </TabPane>
+                <TabPane title="Tab 3"> Tab 3 </TabPane>
+                <TabPane title="Tab 4"> Tab 4 </TabPane>
+              </Tabs>
+            </div>
       </NavBar>
   );
 };  
