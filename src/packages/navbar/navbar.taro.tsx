@@ -2,7 +2,6 @@ import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
 
 import { ITouchEvent, View } from '@tarojs/components'
-import Taro from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 
@@ -75,6 +74,9 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   }
 
   useEffect(() => {
+    if (titleAlign === 'left') {
+      return
+    }
     if (!(back || left || right)) {
       setContentWidth('100%')
     }
@@ -85,13 +87,7 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
       const wrapperWidth = await getNodeWidth(wrapperRef?.current)
       let centerWidth = wrapperWidth / 2
 
-      if (titleAlign === 'left') {
-        centerWidth =
-          wrapperWidth -
-          leftRectWidth -
-          rightRectWidth -
-          (Taro.getEnv() === 'WEB' ? 0 : 14)
-      } else if (leftRectWidth && rightRectWidth) {
+      if (leftRectWidth && rightRectWidth) {
         centerWidth =
           wrapperWidth -
           (leftRectWidth > rightRectWidth
@@ -122,18 +118,19 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   }
 
   const renderContent = () => {
-    const contentRealWidth = `${contentWidth}${
-      /%$/i.test(contentWidth) ? '' : 'px'
-    }`
+    let titleStyle = {}
+    if (titleAlign === 'center') {
+      const contentRealWidth = `${contentWidth}${
+        /%$/i.test(contentWidth) ? '' : 'px'
+      }`
+      titleStyle = {
+        minWidth: contentRealWidth,
+        width: contentRealWidth,
+      }
+    }
+
     return (
-      <View
-        className={`${classPrefix}-title`}
-        style={{
-          minWidth: contentRealWidth,
-          maxWidth: contentRealWidth,
-          width: contentRealWidth,
-        }}
-      >
+      <View className={`${classPrefix}-title`} style={titleStyle}>
         {children}
       </View>
     )
