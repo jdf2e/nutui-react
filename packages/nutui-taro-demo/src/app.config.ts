@@ -85,6 +85,7 @@ const subPackages = [
     "pages": [
       "pages/animate/index",
       "pages/animatingnumbers/index",
+      "pages/audio/index",
       "pages/avatar/index",
       "pages/circleprogress/index",
       "pages/collapse/index",

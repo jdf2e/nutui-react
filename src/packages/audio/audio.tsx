@@ -41,6 +41,7 @@ const defaultProps = {
 export const Audio: FunctionComponent<
   Partial<AudioProps> & React.HTMLAttributes<HTMLElement>
 > = (props) => {
+  const classPrefix = 'nut-audio'
   const { locale } = useConfig()
   const {
     className,
@@ -69,7 +70,7 @@ export const Audio: FunctionComponent<
   const [isCanPlay, setIsCanPlay] = useState(false)
   const [currentDuration, setCurrentDuration] = useState('00:00:00')
 
-  const AudioRef = useRef<HTMLAudioElement>(null)
+  const audioRef = useRef<HTMLAudioElement>(null)
   const statusRef = useRef({
     currentTime: 0,
     currentDuration: '00:00:00',
@@ -80,7 +81,7 @@ export const Audio: FunctionComponent<
     playing: props.autoPlay,
     handPlaying: false,
   })
-  const classPrefix = 'nut-audio'
+
   const handleEnded = (e: SyntheticEvent<HTMLAudioElement>) => {
     if (props.loop) {
       console.warn(locale.audio.tips || 'onPlayEnd事件在loop=false时才会触发')
@@ -90,8 +91,8 @@ export const Audio: FunctionComponent<
   }
 
   function watch() {
-    if (AudioRef && AudioRef.current) {
-      const current = AudioRef.current
+    if (audioRef && audioRef.current) {
+      const current = audioRef.current
       current.addEventListener('play', () => {
         setPlaying(true)
       })
@@ -101,49 +102,44 @@ export const Audio: FunctionComponent<
     watch()
   }, [])
 
-  useEffect(() => {}, [currentDuration])
-  const handleStatusChange = () => {
-    setPlaying(!playing)
-    if (playing) {
-      AudioRef && AudioRef.current && AudioRef.current.pause()
-    } else {
-      AudioRef && AudioRef.current && AudioRef.current.play()
-    }
+  const onTimeupdate = (e: SyntheticEvent<HTMLAudioElement>) => {
+    const time = parseInt(String((e.target as HTMLAudioElement).currentTime))
+    const formated = formatSeconds(`${time}`)
+    statusRef.current.currentDuration = formated
+    setPercent((time / statusRef.current.second) * 100)
+    setCurrentDuration(formated)
+    statusRef.current.currentTime = time
   }
-  const renderIcon = () => {
-    return (
-      <div className={`${classPrefix}-icon`}>
-        <div
-          className={classNames(
-            `${classPrefix}-icon-box`,
-            playing ? `${classPrefix}-icon-play` : `${classPrefix}-icon-stop`
-          )}
-          onClick={handleStatusChange}
-        >
-          <Service className={playing ? 'nut-icon-loading' : ''} />
-        </div>
-      </div>
-    )
+
+  const handleCanplay = (e: SyntheticEvent<HTMLAudioElement>) => {
+    setIsCanPlay(true)
+    if (props.autoPlay && !playing) {
+      audioRef.current?.play()
+    }
+    if (audioRef.current) {
+      statusRef.current.second = audioRef.current.duration || 0
+      props.onCanPlay && props.onCanPlay(e)
+    }
   }
 
   const handleBack = () => {
-    if (statusRef.current.currentTime > 0 && AudioRef.current) {
+    if (statusRef.current.currentTime > 0 && audioRef.current) {
       statusRef.current.currentTime--
-      AudioRef.current.currentTime = statusRef.current.currentTime
-      props.onBack && props.onBack(AudioRef.current)
+      audioRef.current.currentTime = statusRef.current.currentTime
+      props.onBack && props.onBack(audioRef.current)
     }
   }
   const handleForward = () => {
-    if (AudioRef.current) {
+    if (audioRef.current) {
       statusRef.current.currentTime++
-      AudioRef.current.currentTime = statusRef.current.currentTime
-      props.onForward && props.onForward(AudioRef.current)
+      audioRef.current.currentTime = statusRef.current.currentTime
+      props.onForward && props.onForward(audioRef.current)
     }
   }
   const handleMute = () => {
-    if (AudioRef.current) {
-      AudioRef.current.muted = !AudioRef.current.muted
-      props.onMute && props.onMute(AudioRef.current)
+    if (audioRef.current) {
+      audioRef.current.muted = !audioRef.current.muted
+      props.onMute && props.onMute(audioRef.current)
     }
   }
   const handlePause = (e: SyntheticEvent<HTMLAudioElement>) => {
@@ -165,7 +161,33 @@ export const Audio: FunctionComponent<
     result += `0${seconds.toString()}`.slice(-2)
     return result
   }
-  const renderProgerss = () => {
+
+  // useEffect(() => {}, [currentDuration])
+  const handleStatusChange = () => {
+    setPlaying(!playing)
+    if (playing) {
+      audioRef?.current?.pause()
+    } else {
+      audioRef?.current?.play()
+    }
+  }
+  const renderIcon = () => {
+    return (
+      <div className={`${classPrefix}-icon`}>
+        <div
+          className={classNames(
+            `${classPrefix}-icon-box`,
+            playing ? `${classPrefix}-icon-play` : `${classPrefix}-icon-stop`
+          )}
+          onClick={handleStatusChange}
+        >
+          <Service className={playing ? 'nut-icon-loading' : ''} />
+        </div>
+      </div>
+    )
+  }
+
+  const renderProgress = () => {
     return (
       <>
         <div className={`${classPrefix}-progress`}>
@@ -177,12 +199,10 @@ export const Audio: FunctionComponent<
               currentDescription={null}
               maxDescription={null}
               minDescription={null}
-              inactive-color="#cccccc"
-              active-color="#fa2c19"
             />
           </div>
           <div className="time">
-            {AudioRef.current
+            {audioRef.current
               ? formatSeconds(`${statusRef.current.second}`)
               : '00:00:00'}
           </div>
@@ -214,9 +234,7 @@ export const Audio: FunctionComponent<
             {locale.audio.forward || '快进'}
           </Button>
           <Button
-            type={
-              AudioRef.current && AudioRef.current.muted ? 'default' : 'primary'
-            }
+            type={audioRef?.current?.muted ? 'default' : 'primary'}
             size="small"
             onClick={handleMute}
           >
@@ -242,7 +260,7 @@ export const Audio: FunctionComponent<
       case 'icon':
         return renderIcon()
       case 'progress':
-        return renderProgerss()
+        return renderProgress()
       case 'none':
         return renderNone()
       default:
@@ -250,31 +268,13 @@ export const Audio: FunctionComponent<
     }
   }
 
-  const handleCanplay = (e: SyntheticEvent<HTMLAudioElement>) => {
-    setIsCanPlay(true)
-    if (props.autoPlay && !playing) {
-      AudioRef && AudioRef.current && AudioRef.current.play()
-    }
-    if (AudioRef.current) {
-      statusRef.current.second = AudioRef.current.duration || 0
-      props.onCanPlay && props.onCanPlay(e)
-    }
-  }
-  const onTimeupdate = (e: SyntheticEvent<HTMLAudioElement>) => {
-    const time = parseInt(String((e.target as HTMLAudioElement).currentTime))
-    const formated = formatSeconds(`${time}`)
-    statusRef.current.currentDuration = formated
-    setPercent((time / statusRef.current.second) * 100)
-    setCurrentDuration(formated)
-    statusRef.current.currentTime = time
-  }
   return (
     <div className={classNames(classPrefix, className)} style={style} {...rest}>
       {renderAudio()}
       <audio
         className="audioMain"
         controls={type === 'controls'}
-        ref={AudioRef}
+        ref={audioRef}
         src={src}
         muted={muted}
         preload={preload}
