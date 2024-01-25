@@ -269,8 +269,6 @@ export default App;
 | disabled | Disable or not | `boolean` | `false` |
 | touchable | Enable touch to select ｜ `boolean` | `false` |
 | onChange | Event triggered when the current score is modified | `(value: number) => void` | `-` |
-| onTouchStart | TouchStart Event | `(event: TouchEvent) => void` | `-` |
-| onTouchMove | TouchMove Event | `(event: TouchEvent, value: number) => void` | `-` |
 | onTouchEnd | TouchEnd Event | `(event: TouchEvent, value: number) => void` | `-` |
 
 ## Theme

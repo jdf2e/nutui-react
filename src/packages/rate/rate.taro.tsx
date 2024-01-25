@@ -26,8 +26,6 @@ export interface RateProps extends BasicComponent {
   allowHalf: boolean
   touchable: boolean
   onChange: (value: number) => void
-  onTouchStart: (e: TouchEvent) => void
-  onTouchMove: (e: TouchEvent, value: number) => void
   onTouchEnd: (e: TouchEvent, value: number) => void
 }
 
@@ -57,8 +55,6 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     allowHalf,
     touchable,
     onChange,
-    onTouchStart,
-    onTouchMove,
     onTouchEnd,
   } = {
     ...defaultProps,
@@ -163,7 +159,6 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     }
     e.stopPropagation()
     updateRects()
-    onTouchStart && onTouchStart(e)
   }
 
   const handleTouchMove = (e: any) => {
@@ -177,7 +172,6 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     const val = getScoreByPosition(e.touches[0].clientX)
     if (val !== undefined) {
       setScore(Math.max(min, val))
-      onTouchMove && onTouchMove(e, Math.max(min, val))
     }
   }
 
