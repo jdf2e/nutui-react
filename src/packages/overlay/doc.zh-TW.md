@@ -36,9 +36,12 @@ const App = () => {
       <Overlay
         visible={visible}
         onClick={onClose}
-        style={{'--nutui-overlay-zIndex': 2020,}}
+        style={{ '--nutui-overlay-zIndex': 2020 }}
         afterShow={() => {
           console.log('afterShow')
+        }}
+        afterClose={() => {
+          console.log('afterClose')
         }}
       />
     </>
@@ -49,7 +52,7 @@ export default App;
 
 :::
 
-### 遮罩樣式
+### 自定義遮罩樣式
 
 :::demo
 
@@ -68,7 +71,7 @@ const App = () => {
   return (
     <>
       <Button type="primary" onClick={handleToggleShow}>
-        遮罩樣式
+        自定義遮罩樣式
       </Button>
       <Overlay
         visible={visible}
@@ -165,24 +168,24 @@ export default App;
 import React, { useState } from "react";
 import { Button, Overlay } from '@nutui/nutui-react';
 
-const WrapperStyle = {
-  display: 'flex',
-  height: '100%',
-  alignItems: 'center',
-  justifyContent: 'center'
-}
-const ContentStyle = {
-  display: 'flex',
-  width: '150px',
-  height: '150px',
-  background: '#fff',
-  borderRadius: '8px',
-  alignItems: 'center',
-  justifyContent: 'center',
-  color: 'red'
-}
 const App = () => {
   const [visible, setVisible] = useState(false)
+  const wrapperStyle = {
+    display: 'flex',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+  const contentStyle = {
+    display: 'flex',
+    width: '150px',
+    height: '150px',
+    background: '#fff',
+    borderRadius: '8px',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'red'
+  }
   const handleToggleShow2 = () => {
     setVisible(true)
   }
@@ -195,8 +198,8 @@ const App = () => {
         嵌套內容
       </Button>
       <Overlay visible={visible} onClick={onClose}>
-        <div className="wrapper" style={WrapperStyle}>
-          <div className="content" style={ContentStyle}>這裏是正文</div>
+        <div style={wrapperStyle}>
+          <div style={contentStyle}>這裏是正文</div>
         </div>
       </Overlay>
     </>
@@ -217,6 +220,22 @@ import { Button, Overlay } from '@nutui/nutui-react';
 
 const App = () => {
   const [visible, setVisible] = useState(false)
+  const wrapperStyle = {
+    display: 'flex',
+    height: '100%',
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
+  const contentStyle = {
+    display: 'flex',
+    width: '150px',
+    height: '150px',
+    background: '#fff',
+    borderRadius: '8px',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'red'
+  }
   const handleToggleShow = () => {
     setVisible(true)
   }
@@ -229,8 +248,8 @@ const App = () => {
         點擊遮罩不關閉
       </Button>
       <Overlay visible={visible} closeOnOverlayClick={false}>
-        <div className="wrapper">
-          <div className="content" onClick={onClose}>這裏是正文</div>
+        <div style={wrapperStyle}>
+          <div style={contentStyle} onClick={onClose}>這裏是正文</div>
         </div>
       </Overlay>
     </>
@@ -250,6 +269,7 @@ export default App;
 | visible | 當前組件是否顯示 | `boolean` | `false` |
 | duration | 動畫時長，單位毫秒 | `number` | `300` |
 | lockScroll | 背景是否鎖定 | `boolean` | `true` |
+| zIndex | 設置組件頁面層級 | `number` | `1000` |
 | closeOnOverlayClick | 是否點擊遮罩關閉 | `boolean` | `true` |
 | onClick | 點擊時觸發 | `event: Event` | `-` |
 | afterClose | 完全關閉後觸發 | `() => void` | `-` |
