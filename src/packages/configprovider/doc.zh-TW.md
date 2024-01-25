@@ -14,7 +14,7 @@ import { ConfigProvider } from '@nutui/nutui-react';
 
 ### 主題定製
 
-NutUI-React 可以通過 \[CSS 變數\]（https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using\_CSS\_custom\_properties） 來組織樣式，通過覆蓋這些 CSS 變數，可以實現定製主題、動態切換主題等效果。
+NutUI-React 可以通過 \[CSS 變數\]（<https://developer.mozilla.org/zh-CN/docs/Web/CSS/Using\_CSS\_custom\_properties）> 來組織樣式，通過覆蓋這些 CSS 變數，可以實現定製主題、動態切換主題等效果。
 
 #### 通過 CSS 覆蓋
 
@@ -41,37 +41,50 @@ ConfigProvider 元件提供了覆蓋 CSS 變數的能力，你需要在根節點
 
 ```tsx
 import React from 'react';
-import {
-  ConfigProvider,
-  Cell,
-  Button,
-  Rate
-} from "@nutui/nutui-react";
+import { ConfigProvider, TextArea, Cell, Rate, Button } from "@nutui/nutui-react";
 
-const darkTheme = {
-  nutuiColorPrimary: 'green',
-  nutuiColorPrimaryStop1: 'green',
-  nutuiColorPrimaryStop2: 'green',
-}
 const App = () => {
+  const darkTheme = {
+    nutuiColorPrimary: 'green',
+    nutuiColorPrimaryStop1: 'green',
+    nutuiColorPrimaryStop2: 'green',
+  }
   return (
-    <ConfigProvider theme={darkTheme}>
-      <Cell.Group>
-        <Cell>
-          <Rate defaultValue={3} />
-        </Cell>
-        <Cell>
-          <Button type="primary" size="large">
-            提交
-          </Button>
-        </Cell>
-      </Cell.Group>
-    </ConfigProvider>
+    <>
+      <h2>默認主題</h2>
+        <ConfigProvider>
+          <Cell.Group>
+            <Cell>
+              <Rate defaultValue={3} />
+            </Cell>
+            <Cell>
+              <Button type="primary" size="large">
+                提交
+              </Button>
+            </Cell>
+          </Cell.Group>
+        </ConfigProvider>
+        <h2>定制主题</h2>
+        <ConfigProvider theme={darkTheme}>
+          <Cell.Group>
+            <Cell>
+              <Rate defaultValue={3} />
+            </Cell>
+            <Cell>
+              <Button type="primary" size="large">
+                提交
+              </Button>
+            </Cell>
+          </Cell.Group>
+        </ConfigProvider>
+    </>
   )
 }
 
 export default App;
 ```
+
+:::
 
 #### CSS 變數
 
@@ -105,30 +118,35 @@ page {
 
 ```
 
-:::
-
 ### 國際化
 
 NutUI-React 提供了 ConfigProvider 元件用於全域配置國際化文案。 目前支援以下語言：
 
-*   簡體中文 | zh-CN
-*   繁體中文（中國臺灣） | zh-TW
-*   維吾爾文 | zh-UG
-*   英語（美式） | en-US
-*   印尼語 | id-ID
+* 簡體中文 | zh-CN
+* 繁體中文（中國臺灣） | zh-TW
+* 維吾爾文 | zh-UG
+* 英語（美式） | en-US
+* 印尼語 | id-ID
 
 :::demo
 
 ```tsx
 import React from 'react';
-import { ConfigProvider, Textarea } from "@nutui/nutui-react";
+import { ConfigProvider, TextArea } from "@nutui/nutui-react";
 import en from "@nutui/nutui-react/dist/locales/en-US";
 
 const App = () => {
   return (
-    <ConfigProvider locale={en}>
-      <Textarea />
-    </ConfigProvider>
+    <>
+      <h2>Textarea默認</h2>
+      <ConfigProvider>
+        <TextArea disabled showCount maxLength={20} />
+      </ConfigProvider>
+      <h2>Textarea英文</h2>
+      <ConfigProvider locale={enUS}>
+        <TextArea disabled showCount maxLength={20} />
+      </ConfigProvider>
+    </>
   )
 }
 
