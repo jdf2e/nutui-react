@@ -41,37 +41,50 @@ The ConfigProvider component provides the ability to override CSS variables, and
 
 ```tsx
 import React from 'react';
-import {
-  ConfigProvider,
-  Cell,
-  Button,
-  Rate
-} from "@nutui/nutui-react";
+import { ConfigProvider, TextArea, Cell, Rate, Button } from "@nutui/nutui-react";
 
-const darkTheme = {
-  nutuiColorPrimary: 'green',
-  nutuiColorPrimaryStop1: 'green',
-  nutuiColorPrimaryStop2: 'green',
-}
 const App = () => {
+  const darkTheme = {
+    nutuiColorPrimary: 'green',
+    nutuiColorPrimaryStop1: 'green',
+    nutuiColorPrimaryStop2: 'green',
+  }
   return (
-    <ConfigProvider theme={darkTheme}>
-      <Cell.Group>
-        <Cell>
-          <Rate defaultValue={3} />
-        </Cell>
-        <Cell>
-          <Button type="primary" size="large">
-            Submit
-          </Button>
-        </Cell>
-      </Cell.Group>
-    </ConfigProvider>
+    <>
+      <h2>Default Theme</h2>
+        <ConfigProvider>
+          <Cell.Group>
+            <Cell>
+              <Rate defaultValue={3} />
+            </Cell>
+            <Cell>
+              <Button type="primary" size="large">
+                Submit
+              </Button>
+            </Cell>
+          </Cell.Group>
+        </ConfigProvider>
+        <h2>Custom Theme</h2>
+        <ConfigProvider theme={darkTheme}>
+          <Cell.Group>
+            <Cell>
+              <Rate defaultValue={3} />
+            </Cell>
+            <Cell>
+              <Button type="primary" size="large">
+                Submit
+              </Button>
+            </Cell>
+          </Cell.Group>
+        </ConfigProvider>
+    </>
   )
 }
 
 export default App;
 ```
+
+:::
 
 #### CSS variables
 
@@ -105,30 +118,35 @@ page {
 
 ```
 
-:::
-
 ### Internationalization
 
 NutUI-React provides a ConfigProvider component for global configuration of internationalized copywriting. The following languages are currently supported:
 
-*   Chinese Simplified | zh-CN
-*   Chinese Traditional (Taiwan) | zh-TW
-*   Uyghur | zh-UG
-*   English (American) | en-US
-*   Indonesian | id-ID
+* Chinese Simplified | zh-CN
+* Chinese Traditional (Taiwan) | zh-TW
+* Uyghur | zh-UG
+* English (American) | en-US
+* Indonesian | id-ID
 
 :::demo
 
 ```tsx
 import React from 'react';
-import { ConfigProvider, Textarea } from "@nutui/nutui-react";
+import { ConfigProvider, TextArea } from "@nutui/nutui-react";
 import en from "@nutui/nutui-react/dist/locales/en-US";
 
 const App = () => {
   return (
-    <ConfigProvider locale={en}>
-      <Textarea />
-    </ConfigProvider>
+    <>
+      <h2>Textarea default</h2>
+      <ConfigProvider>
+        <TextArea disabled showCount maxLength={20} />
+      </ConfigProvider>
+      <h2>Textarea en-US</h2>
+      <ConfigProvider locale={enUS}>
+        <TextArea disabled showCount maxLength={20} />
+      </ConfigProvider>
+    </>
   )
 }
 

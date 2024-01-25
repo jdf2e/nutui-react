@@ -1,18 +1,21 @@
 import React, { useCallback } from 'react'
 import classNames from 'classnames'
-import { RadioGroupOptionType } from './types'
+import {
+  RadioGroupDirection,
+  RadioGroupOptionType,
+  RadioGroupPosition,
+  RadioGroupShape,
+} from './types'
 import RadioContext from './context'
 import Radio from '@/packages/radio/index.taro'
 import { usePropsValue } from '@/utils/use-props-value'
 
-type Position = 'left' | 'right'
-type Direction = 'horizontal' | 'vertical'
-
 export interface RadioGroupProps {
   value?: string | number
   defaultValue?: string | number
-  labelPosition: Position
-  direction: Direction
+  labelPosition: RadioGroupPosition
+  direction: RadioGroupDirection
+  shape?: RadioGroupShape
   disabled?: boolean
   options: RadioGroupOptionType[]
   onChange: (value: string | number) => void
@@ -39,6 +42,7 @@ export const RadioGroup = React.forwardRef(
       value,
       defaultValue,
       onChange,
+      shape,
       labelPosition,
       direction,
       options,
@@ -75,6 +79,7 @@ export const RadioGroup = React.forwardRef(
         value={{
           labelPosition: labelPosition || 'right',
           disabled,
+          shape,
           value: val2State,
           check: (value: string | number) => {
             setVal2State(value)

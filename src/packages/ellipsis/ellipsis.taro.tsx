@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useState, useRef, useEffect } from 'react'
 import { nextTick, createSelectorQuery } from '@tarojs/taro'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -71,7 +72,6 @@ export const Ellipsis: FunctionComponent<
   const originHeight = useRef(0) // 原始高度
   const refRandomId = useRef(Math.random().toString(36).slice(-8))
   const widthRef: any = useRef('auto')
-
   const widthBase = useRef([14, 10, 7, 8.4, 10]) // 中、英(大)、英(小)、数字、其他字符的基础宽度
   const symbolTextWidth = useRef(widthBase.current[0] * 0.7921)
   const chineseReg = /^[\u4e00-\u9fa5]+$/ // 汉字
@@ -134,9 +134,7 @@ export const Ellipsis: FunctionComponent<
                 pxToNumber(res.paddingTop) +
                 pxToNumber(res.paddingBottom)
             )
-
             originHeight.current = pxToNumber(res.height)
-
             widthRef.current = res.width
 
             // 设置基础字符
@@ -148,7 +146,6 @@ export const Ellipsis: FunctionComponent<
               bsize * 0.4,
               bsize * 0.75,
             ]
-
             calcEllipse()
           }
         )
@@ -182,7 +179,6 @@ export const Ellipsis: FunctionComponent<
         ellipsis.current.leading = tailorContent(0, end)
       } else {
         const start = content.length - rowNum * (Number(rows) + 0.5) - 5
-
         ellipsis.current.tailing = tailorContent(start, content.length)
       }
 
@@ -209,7 +205,6 @@ export const Ellipsis: FunctionComponent<
           ellipsis.current?.tailing.length
         )
       }
-
       assignContent()
       setTimeout(() => {
         verifyEllipsis()
@@ -263,7 +258,6 @@ export const Ellipsis: FunctionComponent<
         widthPart = Number(widthPart + widthBase.current[4])
       }
       cutoff = marking
-
       direc === 'end' ? marking++ : marking--
     }
 
@@ -304,9 +298,23 @@ export const Ellipsis: FunctionComponent<
         id={`root${refRandomId.current}`}
         {...rest}
       >
-        <div>
+        <View>
           {!exceeded ? (
-            <div
+            <View
+              className="nut-ellipsis-wordbreak"
+              style={{
+                width: `${
+                  !Number.isNaN(Number(width)) ? `${width}px` : 'auto'
+                }`,
+                height: '20px',
+                overflow: 'hidden',
+              }}
+            >
+              {content}
+            </View>
+          ) : null}
+          {exceeded && !expanded ? (
+            <View
               className="nut-ellipsis-wordbreak"
               style={{
                 width: `${
@@ -314,40 +322,26 @@ export const Ellipsis: FunctionComponent<
                 }`,
               }}
             >
-              {content}
-            </div>
-          ) : null}
-          {exceeded && !expanded ? (
-            <>
-              <div
-                className="nut-ellipsis-wordbreak"
-                style={{
-                  width: `${
-                    !Number.isNaN(Number(width)) ? `${width}px` : 'auto'
-                  }`,
-                }}
-              >
-                {ellipsis.current?.leading}
-                {ellipsis.current?.leading && symbol}
-                {expandText ? (
-                  <span
-                    className="nut-ellipsis-text"
-                    onClick={(e) => {
-                      e.stopPropagation()
-                      clickHandle(1)
-                    }}
-                  >
-                    {expandText}
-                  </span>
-                ) : null}
-                {ellipsis.current?.tailing && symbol}
-                {ellipsis.current?.tailing}
-              </div>
-            </>
+              {ellipsis.current?.leading}
+              {ellipsis.current?.leading && symbol}
+              {expandText ? (
+                <span
+                  className="nut-ellipsis-text"
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    clickHandle(1)
+                  }}
+                >
+                  {expandText}
+                </span>
+              ) : null}
+              {ellipsis.current?.tailing && symbol}
+              {ellipsis.current?.tailing}
+            </View>
           ) : null}
           {exceeded && expanded ? (
             <>
-              <div
+              <View
                 style={{
                   width: `${
                     !Number.isNaN(Number(width)) ? `${width}px` : 'auto'
@@ -355,7 +349,7 @@ export const Ellipsis: FunctionComponent<
                 }}
               >
                 {content}
-              </div>
+              </View>
               {expandText ? (
                 <span
                   className="nut-ellipsis-text"
@@ -369,24 +363,24 @@ export const Ellipsis: FunctionComponent<
               ) : null}
             </>
           ) : null}
-        </div>
+        </View>
       </div>
-      <div
+      <View
         className="nut-ellipsis-copy"
         ref={rootContain}
         id={`rootContain${refRandomId.current}`}
         style={{ width: `${widthRef}` }}
       >
-        <div>{contentCopy}</div>
-      </div>
-      <div
+        <View>{contentCopy}</View>
+      </View>
+      <View
         className="nut-ellipsis-copy"
         ref={symbolContain}
         id={`symbolContain${refRandomId.current}`}
         style={{ display: 'inline' }}
       >
         {symbolText()}
-      </div>
+      </View>
     </>
   )
 }

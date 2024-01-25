@@ -488,7 +488,7 @@ const App = () => {
             'linear-gradient(to right, #ff6034, #ee0a24)',
         }}
       >
-        漸變色按鈕
+        漸變按鈕
       </Button>
     </>
   );
