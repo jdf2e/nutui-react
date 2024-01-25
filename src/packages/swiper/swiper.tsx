@@ -5,6 +5,11 @@ import classNames from 'classnames'
 import { BasicComponent } from '@/utils/typings'
 import Indicator from '@/packages/indicator'
 
+export interface FocusEffect {
+  name: 'focus'
+  scale: number
+}
+
 export interface SwiperProps extends BasicComponent {
   direction: 'horizontal' | 'vertical'
   indicator: any
@@ -13,7 +18,8 @@ export interface SwiperProps extends BasicComponent {
   autoplay: boolean
   defaultValue: number
   touchable: boolean
-  onChange: any
+  effect: FocusEffect
+  onChange: (index: number) => void
 }
 
 export const Swiper = (props: SwiperProps) => {
@@ -23,6 +29,7 @@ export const Swiper = (props: SwiperProps) => {
     direction = 'horizontal',
     indicator = true,
     loop = false,
+    effect,
   } = props
   const isVertical = direction === 'vertical'
   const count = useMemo(() => {
@@ -36,18 +43,28 @@ export const Swiper = (props: SwiperProps) => {
   const [springs, api] = useSpring(() => ({
     x: 0,
     y: 0,
+    s: 0,
+    reset: () => {
+      console.log('reset')
+    },
     config: { tension: 200, friction: 30 },
   }))
   const [current, setCurrent] = useState(0)
 
   const to = (index: number, immediate = false) => {
-    const targetIndex = bound(index, 0, count - 1)
+    let targetIndex = bound(index, 0, count - 1)
+    if (loop) {
+      const cycleIndex = index % count
+      targetIndex = cycleIndex < 0 ? cycleIndex + count : cycleIndex
+    }
+    setCurrent(targetIndex)
+
     api.start({
       // 这里需要统一成百分比
-      [isVertical ? 'y' : 'x']: -targetIndex * 100,
+      [isVertical ? 'y' : 'x']: -index * 100,
+      s: 1,
       immediate,
     })
-    setCurrent(targetIndex)
   }
 
   const getSlideSize = () => {
@@ -82,12 +99,13 @@ export const Swiper = (props: SwiperProps) => {
         const index = Math.round(
           (offset + velocity * 2000 * swipeDirection) / slideSize
         )
+        // console.log(index, maxIndex, maxIndex)
         to(bound(index, minIndex, maxIndex))
       } else {
         // 实时移动，换算百分比
-        console.log('offset', offset)
         api.start({
           [isVertical ? 'y' : 'x']: -((offset / slideSize) * 100),
+          s: offset / slideSize,
           immediate: true,
         })
       }
@@ -102,6 +120,7 @@ export const Swiper = (props: SwiperProps) => {
         return [-x, -y]
       },
       bounds: () => {
+        if (loop) return {}
         const slideSize = getSlideSize()
         if (isVertical) {
           return { top: 0, bottom: (count - 1) * slideSize }
@@ -111,6 +130,15 @@ export const Swiper = (props: SwiperProps) => {
       rubberband: true,
     }
   )
+
+  const effectStyle = (index: number) => {
+    if (effect) {
+      if (effect.name === 'focus') {
+        return current === index ? 1 : effect.scale
+      }
+    }
+    return 1
+  }
 
   const renderIndicator = () => {
     if (React.isValidElement(indicator)) return indicator
@@ -126,8 +154,24 @@ export const Swiper = (props: SwiperProps) => {
       </div>
     )
   }
+
+  const getPerSlidePosition = (
+    index: number,
+    position: number,
+    loop: boolean
+  ) => {
+    const currentPosition = index * 100 + position
+    if (loop) {
+      const cycle = count * 100
+      const shift = cycle / 2
+      const nextPosition = (currentPosition + shift) % cycle
+      const shiftedPosition =
+        (nextPosition < 0 ? nextPosition + cycle : nextPosition) - shift
+      return `${shiftedPosition}%`
+    }
+    return `${currentPosition}%`
+  }
   const renderSlides = () => {
-    // if (loop)
     return (
       <div
         className={classNames('nut-swiper-inner', {
@@ -141,10 +185,11 @@ export const Swiper = (props: SwiperProps) => {
               style={{
                 [isVertical ? 'y' : 'x']: springs[isVertical ? 'y' : 'x'].to(
                   (position) => {
-                    return `${index * 100 + position}%`
+                    return getPerSlidePosition(index, position, loop)
                   }
                 ),
                 [isVertical ? 'top' : 'left']: `-${index * 100}%`,
+                scale: effectStyle(index),
               }}
             >
               {child}
@@ -153,24 +198,6 @@ export const Swiper = (props: SwiperProps) => {
         })}
       </div>
     )
-    // return (
-    //   <animated.div
-    //     className={classNames('nut-swiper-inner', {
-    //       'nut-swiper-inner-vertical': direction === 'vertical',
-    //     })}
-    //     style={{
-    //       [isVertical ? 'y' : 'x']: springs[isVertical ? 'y' : 'x'].to(
-    //         (position) => {
-    //           return `${position}%`
-    //         }
-    //       ),
-    //     }}
-    //   >
-    //     {React.Children.map(children, (child, index) => {
-    //       return <div className="nut-swiper-slide">{child}</div>
-    //     })}
-    //   </animated.div>
-    // )
   }
   return (
     <div className="nut-swiper" {...bind()}>
