@@ -67,7 +67,7 @@ const GridDemo = () => {
       customContent: 'Custom Content',
       event: 'Grid Item Click',
       clicked: (text, index) => {
-        return `clicked ${text}，index ${index}`
+        return `clicked ${text}, index ${index}`
       },
     },
   })

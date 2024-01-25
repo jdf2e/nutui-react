@@ -258,7 +258,7 @@ import { Image as ImageIcon } from '@nutui/icons-react'
 
 const App = () => {
   const onClick = (item: any, index: number) => {
-    Toast.show(`clicked ${item.text}, index ${index}`)
+    Toast.show(`点击了${item.text}，第${index}个`)
   }
   return (
     <Grid direction="horizontal" onClick={onClick}>

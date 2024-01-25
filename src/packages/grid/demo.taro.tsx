@@ -17,6 +17,7 @@ interface T {
   iconStyle: string
   customContent: string
   event: string
+  clicked: (text: string, index: number) => string
 }
 const GridDemo = () => {
   const [translated] = useTranslate<T>({
@@ -32,6 +33,9 @@ const GridDemo = () => {
       iconStyle: '图标颜色/大小',
       customContent: '自定义内容',
       event: '点击子项事件',
+      clicked: (text, index) => {
+        return `点击了${text}，第${index}个`
+      },
     },
     'zh-TW': {
       basic: '基础用法',
@@ -45,6 +49,9 @@ const GridDemo = () => {
       iconStyle: '圖標顏色/大小',
       customContent: '自定義內容',
       event: '點擊子項事件',
+      clicked: (text, index) => {
+        return `点击了${text}，第${index}个`
+      },
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -58,11 +65,14 @@ const GridDemo = () => {
       iconStyle: 'Icon Style',
       customContent: 'Custom Content',
       event: 'Grid Item Click',
+      clicked: (text, index) => {
+        return `clicked ${text}, index ${index}`
+      },
     },
   })
 
   const onClick = (item: any, index: number) => {
-    Taro.showToast({ title: `clicked ${item.text}, index ${index}` })
+    Taro.showToast({ title: translated.clicked(item.text, index) })
   }
   const imgSrc =
     'https://m.360buyimg.com/babel/jfs/t1/36973/29/11270/120042/5cf1fe3cEac2b5898/10c2722d0cc0bfa7.png'
