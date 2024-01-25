@@ -74,3 +74,54 @@ test('allowHalf test', () => {
     )
   }
 })
+
+test('touchable', () => {
+  const state = {
+    count: 5,
+    defaultValue: 3,
+  }
+
+  const RateParent: React.FunctionComponent<any> = () => {
+    const [score, setScore] = useState(state.defaultValue)
+
+    const handleChange: (num: number) => void = (num: number) => {
+      setScore(num)
+    }
+    return (
+      <>
+        <Rate
+          touchable
+          allowHalf
+          count={state.count}
+          defaultValue={state.defaultValue}
+          onChange={handleChange}
+        />
+        <div className="score">{score}</div>
+      </>
+    )
+  }
+
+  const { container } = render(<RateParent />)
+  const valueEl = container.querySelector('.score')
+  const track = container.querySelector('.nut-rate')
+
+  expect(valueEl?.innerHTML).toBe('3')
+
+  if (track) {
+    fireEvent.touchStart(track, {
+      touches: [{ clientX: 0 }],
+    })
+    fireEvent.touchMove(track, {
+      touches: [{ clientX: 0 }],
+    })
+    expect(valueEl?.innerHTML).toBe('0')
+
+    fireEvent.touchStart(track, {
+      touches: [{ clientX: 0 }],
+    })
+    fireEvent.touchMove(track, {
+      touches: [{ clientX: 200 }],
+    })
+    expect(valueEl?.innerHTML).toBe('5')
+  }
+})

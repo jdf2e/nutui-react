@@ -1,13 +1,18 @@
 import React, {
   FunctionComponent,
-  useEffect,
-  useState,
   ReactElement,
+  useEffect,
+  useRef,
+  useState,
 } from 'react'
 import classNames from 'classnames'
 import { StarFill } from '@nutui/icons-react-taro'
+import { useReady } from '@tarojs/taro'
+import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
+import { getRectByTaro } from '@/utils/get-rect-by-taro'
+import useRefs from '@/utils/use-refs'
 
 export interface RateProps extends BasicComponent {
   count: number
@@ -19,7 +24,9 @@ export interface RateProps extends BasicComponent {
   disabled: boolean
   readOnly: boolean
   allowHalf: boolean
+  touchable: boolean
   onChange: (value: number) => void
+  onTouchEnd: (e: TouchEvent, value: number) => void
 }
 
 const defaultProps = {
@@ -31,6 +38,7 @@ const defaultProps = {
   disabled: false,
   readOnly: false,
   allowHalf: false,
+  touchable: false,
 } as RateProps
 export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
   const {
@@ -45,7 +53,9 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     disabled,
     readOnly,
     allowHalf,
+    touchable,
     onChange,
+    onTouchEnd,
   } = {
     ...defaultProps,
     ...props,
@@ -54,6 +64,15 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
   const classPrefix = 'nut-rate'
 
   const [countArray, setCountArray] = useState([1, 2, 3, 4, 5])
+
+  const [refs, setRefs] = useRefs()
+
+  const rateRects = useRef<
+    {
+      left: number
+      width: number
+    }[]
+  >([])
 
   const [score, setScore] = usePropsValue<number>({
     value,
@@ -102,8 +121,77 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     setScore(value)
   }
 
+  const getScoreByPosition = (x: number) => {
+    if (rateRects.current?.length) {
+      for (let index = rateRects.current.length - 1; index >= 0; index--) {
+        const item = rateRects.current[index]
+        if (item && x > item.left) {
+          return allowHalf
+            ? index + (x > item.left + item.width / 2 ? 1 : 0.5)
+            : index + 1
+        }
+      }
+      return 0
+    }
+  }
+
+  const updateRects = () => {
+    for (let index = 0; index < refs.length; index++) {
+      const item = refs[index]
+      if (item) {
+        getRectByTaro(item).then((res) => {
+          rateRects.current[index] = res
+        })
+      }
+    }
+  }
+
+  useReady(() => {
+    updateRects()
+  })
+
+  const handleTouchStart = (e: any) => {
+    if (!touchable || readOnly || disabled) {
+      return
+    }
+    if (e.cancelable) {
+      e.preventDefault()
+    }
+    e.stopPropagation()
+    updateRects()
+  }
+
+  const handleTouchMove = (e: any) => {
+    if (!touchable || readOnly || disabled) {
+      return
+    }
+    if (e.cancelable) {
+      e.preventDefault()
+    }
+    e.stopPropagation()
+    const val = getScoreByPosition(e.touches[0].clientX)
+    if (val !== undefined) {
+      setScore(Math.max(min, val))
+    }
+  }
+
+  const handleTouchEnd = (e: any) => {
+    if (!touchable || readOnly || disabled) {
+      return
+    }
+    if (e.cancelable) {
+      e.preventDefault()
+    }
+    e.stopPropagation()
+    const val = getScoreByPosition(e.changedTouches[0].clientX)
+    if (val !== undefined) {
+      setScore(Math.max(min, val))
+      onTouchEnd && onTouchEnd(e, Math.max(min, val))
+    }
+  }
+
   return (
-    <div
+    <View
       className={classNames(
         classPrefix,
         {
@@ -112,13 +200,19 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
         },
         className
       )}
+      catchMove
       style={style}
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      onTouchCancel={handleTouchEnd}
     >
-      {countArray.map((n) => {
+      {countArray.map((n, index) => {
         return (
           <div
             className={`${classPrefix}-item`}
             key={n}
+            ref={setRefs(index)}
             onClick={(event) => onClick(event, n)}
           >
             <div
@@ -143,7 +237,7 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
           </div>
         )
       })}
-    </div>
+    </View>
   )
 }
 
