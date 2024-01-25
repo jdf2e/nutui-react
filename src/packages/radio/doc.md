@@ -231,6 +231,25 @@ export default RadioGroupOptions;
 
 :::
 
+## 设置形状
+
+:::demo
+
+```tsx
+import React, { useState } from 'react'
+import { Radio } from '@nutui/nutui-react'
+
+const RadioGroupOptions = () => {
+  return <Radio.Group defaultValue={1} shape='button'>
+    <Radio value={1}>设置形状</Radio>
+    <Radio value={2}>设置形状</Radio>
+  </Radio.Group>
+}
+export default RadioGroupOptions
+```
+
+:::
+
 ## Radio
 
 ### Props
@@ -256,6 +275,7 @@ export default RadioGroupOptions;
 | value | 当前选中项的标识符 | `string`  \|  `number` | `-` |
 | labelPosition | 文本所在的位置 | `left` \| `right` | `right` |
 | disabled | 是否禁用 | `boolean` | `false` |
+| shape | 形状 | `button` \| `round` |`-` |
 | direction | 使用横纵方向 | `horizontal` \| `vertical` | `vertical` |
 | options | 配置 options 渲染单选按钮 | `Array<{ label: string value: string disabled?: boolean }>`  | `-` |
 | onChange | 值变化时触发 | `(value: string \| number) => void` | `-` |

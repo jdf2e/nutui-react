@@ -13,6 +13,7 @@ interface T {
   '70ffa5d8': string
   '70ffa5d9': string
   '0f261484': string
+  '0f261485': string
   '6b1f669d': string
   disableOne: string
   disableAll: string
@@ -29,6 +30,7 @@ const RadioDemo = () => {
       '70ffa5d8': '自定义图标',
       '70ffa5d9': '自定义图标，通过Group实现列表形式',
       '0f261484': '触发事件',
+      '0f261485': '设置形状',
       '6b1f669d': '当前选中值',
       disableOne: 'Group 模式下禁用某一项',
       disableAll: 'Group 模式下禁用全部选项',
@@ -42,6 +44,7 @@ const RadioDemo = () => {
       '70ffa5d8': '自定義圖示',
       '70ffa5d9': '自定義圖標，通過Group實現列表形式',
       '0f261484': '觸發事件',
+      '0f261485': '设置形状',
       '6b1f669d': '當前選中值',
       disableOne: 'Group 模式下禁用某一项',
       disableAll: 'Group 模式下禁用全部选项',
@@ -55,6 +58,7 @@ const RadioDemo = () => {
       '70ffa5d8': 'Custom Icon',
       '70ffa5d9': 'Custom Icon, render list in Group mode',
       '0f261484': 'Trigger Event',
+      '0f261485': 'Set shape',
       '6b1f669d': 'Currently selected',
       disableOne: 'Disable an item in Group mode',
       disableAll: 'Disable all options in Group mode',
@@ -251,6 +255,15 @@ const RadioDemo = () => {
             onChange={handleChange}
           />
         </Cell>
+        <h2>{translated['0f261485']}</h2>
+        <Cell.Group>
+          <Cell>
+            <Radio.Group defaultValue={1} shape="button">
+              <Radio value={1}>{translated['0f261485']}</Radio>
+              <Radio value={2}>{translated['0f261485']}</Radio>
+            </Radio.Group>
+          </Cell>
+        </Cell.Group>
       </div>
     </>
   )
