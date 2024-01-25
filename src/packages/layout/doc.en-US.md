@@ -71,7 +71,7 @@ export default App;
 
 :::demo
 
-### column interval
+### Column interval
 
 ```tsx
 import React from "react";
