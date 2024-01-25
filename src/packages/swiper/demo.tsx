@@ -59,16 +59,73 @@ const SwiperDemo = () => {
     'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
     'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
   ]
-
+  const color = ['#97DAE6', '#CCE697', '#D297E5', '#E6BB97']
   return (
     <div className="demo padding">
       <h2>{translated.basic}</h2>
+      <div className="demo-box" style={{ height: 150 }}>
+        <Swiper loop>
+          {list.map((item, index) => {
+            return (
+              <Swiper.Item key={item}>
+                <div
+                  style={{
+                    background: color[index],
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: '100%',
+                    height: '100%',
+                  }}
+                >
+                  {color[index]}
+                </div>
+              </Swiper.Item>
+            )
+          })}
+        </Swiper>
+      </div>
+      <br />
       <div className="demo-box" style={{ height: 150 }}>
         <Swiper>
           {list.map((item, index) => {
             return (
               <Swiper.Item key={item}>
-                <img src={item} onClick={() => console.log(index)} alt="" />
+                <div
+                  style={{
+                    background: color[index],
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: '100%',
+                    height: '100%',
+                  }}
+                >
+                  {color[index]}
+                </div>
+              </Swiper.Item>
+            )
+          })}
+        </Swiper>
+      </div>
+      <br />
+      <div className="demo-box" style={{ height: 150 }}>
+        <Swiper direction="vertical">
+          {list.map((item, index) => {
+            return (
+              <Swiper.Item key={item}>
+                <div
+                  style={{
+                    background: color[index],
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: '100%',
+                    height: '100%',
+                  }}
+                >
+                  {color[index]}
+                </div>
               </Swiper.Item>
             )
           })}
