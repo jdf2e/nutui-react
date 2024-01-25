@@ -231,6 +231,25 @@ export default RadioGroupOptions;
 
 :::
 
+## 设置形状
+
+:::demo
+
+```tsx
+import React, { useState } from 'react'
+import { Radio } from '@nutui/nutui-react'
+
+const RadioGroupOptions = () => {
+  return <Radio.Group defaultValue={1} shape='button'>
+    <Radio value={1}>设置形状</Radio>
+    <Radio value={2}>设置形状</Radio>
+  </Radio.Group>
+}
+export default RadioGroupOptions
+```
+
+:::
+
 ## Radio
 
 ### Props

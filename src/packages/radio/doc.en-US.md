@@ -231,6 +231,25 @@ export default RadioGroupOptions;
 
 :::
 
+## Set shape
+
+:::demo
+
+```tsx
+import React, { useState } from 'react'
+import { Radio } from '@nutui/nutui-react'
+
+const RadioGroupOptions = () => {
+  return <Radio.Group defaultValue={1} shape='button'>
+    <Radio value={1}>Set shape</Radio>
+    <Radio value={2}>Set shape</Radio>
+  </Radio.Group>
+}
+export default RadioGroupOptions
+```
+
+:::
+
 ## Radio
 
 ### Props
