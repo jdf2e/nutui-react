@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import Taro, { useReady } from '@tarojs/taro'
 import classNames from 'classnames'
-import { Canvas, View } from '@tarojs/components'
+import { Canvas } from '@tarojs/components'
 import { Button } from '@/packages/button/button.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useTouch } from '@/utils/use-touch'
@@ -305,7 +305,6 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     } = state
     const { cropperCanvasContext } = canvasAll
     const ctx = cropperCanvasContext
-    console.log('ctx', ctx)
     if (!ctx) return
     // 绘制背景
     ctx.clearRect(0, 0, displayWidth, displayHeight)
@@ -372,8 +371,6 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     copyDrawImg.x = -copyDrawImg.width / 2
     copyDrawImg.y = -copyDrawImg.height / 2
 
-    console.log('draoImge', copyDrawImg)
-
     setDrawImg(copyDrawImg)
 
     const scale =
@@ -409,7 +406,6 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
       src: file.path,
     }).then((res: Taro.getImageInfo.SuccessCallbackResult) => {
       setVisible(true)
-      console.log('image change', res)
       setDrawImgInfo(res)
     })
   }
@@ -641,7 +637,6 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     const { cropperWidth, displayHeight } = state
     const { canvasId } = canvasAll
     // 将编辑后的canvas内容转成图片
-    console.log('confirm', Taro.canvasToTempFilePath)
     Taro.canvasToTempFilePath({
       canvasId,
       x: props.space,
@@ -650,12 +645,6 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
       height: cropperWidth,
       destWidth: cropperWidth * systemInfo.pixelRatio,
       destHeight: cropperWidth * systemInfo.pixelRatio,
-      fail: async (res) => {
-        console.log('fail.', res)
-      },
-      complete: async (res) => {
-        console.log('complete.', res)
-      },
       success: async (res: Taro.canvasToTempFilePath.SuccessCallbackResult) => {
         const filePath = res.tempFilePath
         onConfirm && onConfirm(filePath)
@@ -668,7 +657,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     const actions = [cancel, reset, rotate, confirm]
     return (
       <>
-        <View className={`${classPrefix}-popup-toolbar-flex`}>
+        <div className={`${classPrefix}-popup-toolbar-flex`}>
           {actions.map((action, index) => (
             <div
               key={index}
@@ -678,7 +667,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
               {toolbar[index]}
             </div>
           ))}
-        </View>
+        </div>
       </>
     )
   }
@@ -687,7 +676,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     const { canvasId } = canvasAll
     return (
       <>
-        <View
+        <div
           className={`${classPrefix}-popup`}
           style={{ display: visible ? 'block' : 'none' }}
         >
@@ -704,12 +693,12 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
             onTouchMove={onTouchMove}
             onTouchEnd={onTouchEnd}
           >
-            <View className="highlight" style={highlightStyle} />
+            <div className="highlight" style={highlightStyle} />
           </div>
-          <View className={toolbarPositionCls}>
+          <div className={toolbarPositionCls}>
             <ToolBar />
-          </View>
-        </View>
+          </div>
+        </div>
       </>
     )
   }
@@ -723,7 +712,6 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
         </div>
       </div>
       {CropperPopup()}
-      <div style={{ zIndex: 9999 }}>333333</div>
     </>
   )
 }

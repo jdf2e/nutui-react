@@ -81,9 +81,7 @@ export const WaterMark: FunctionComponent<
 
   const init = () => {
     let ratio = 1
-    console.log('ratio')
     getSystemInfo().then((res) => {
-      console.log('res', res)
       ratio = res.pixelRatio
       const canvasWidth = `${(gapX + width) * ratio}`
       const canvasHeight = `${(gapY + height) * ratio}`
@@ -97,8 +95,6 @@ export const WaterMark: FunctionComponent<
         canvas.setAttribute('width', `${canvasWidth}px`)
         canvas.setAttribute('height', `${canvasHeight}px`)
       } else {
-        console.log(1)
-        console.log('ratio createOffscreenCanvas', createOffscreenCanvas)
         canvas = createOffscreenCanvas({
           type: '2d',
           width: Number(canvasWidth),
@@ -146,7 +142,6 @@ export const WaterMark: FunctionComponent<
           setBase64Url(canvas.toDataURL())
         }
       } else {
-        console.log('ddd', ctx)
         throw new Error(locale.watermark.errorCanvasTips)
       }
     })
