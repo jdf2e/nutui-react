@@ -17,85 +17,92 @@ import { Sticky } from '@nutui/nutui-react';
 :::demo
 
 ```tsx
-import React, { useEffect, useRef, useState } from 'react'
-import {Button,Cell, Sticky } from '@nutui/nutui-react'
+import React from 'react'
+import { Button, Sticky } from '@nutui/nutui-react'
 
 const App = () => {
   const handleChange = (val: boolean) => {
     console.log('吸頂狀態發生了改變,當前fixed為', val)
   }
-return(
-    <>
-        <h2>基礎用法</h2>
-        <Cell style={{ height: '300px' }}>
-          <Sticky threshold={57} onChange={handleChange}>
-            <Button type="primary">吸頂</Button>
-          </Sticky>
-        </Cell>
-        <h2>吸頂距離</h2>
-        <Cell  style={{ height: '300px' }}>
-          <Sticky threshold={120}>
-            <Button type="primary">距離頂部120px</Button>
-          </Sticky>
-        </Cell>
-        <h2>吸底距離</h2>
-        <Cell style={{ height: '64px' }}>
-          <Sticky threshold={0} position="bottom">
-            <Button type="primary">距離底部0px</Button>
-          </Sticky>
-        </Cell>
-    </>
-)
-   
+  return(
+      <>
+        <Sticky threshold={57} onChange={(val: boolean) => handleChange(val)}>
+          <Button type="primary">吸頂</Button>
+        </Sticky>
+      </>
+  )
 }
 export default App;
 ```
 
 :::
 
-### 指定容器內
+### 吸頂距離
 
 :::demo
 
 ```tsx
-import React, { useEffect, useRef, useState } from 'react'
-import {Button,Cell, Sticky } from '@nutui/nutui-react'
+import React from 'react'
+import { Button, Sticky } from '@nutui/nutui-react'
+
+const App = () => {
+  return(
+      <>
+        <Sticky threshold={120}>
+          <Button type="primary">距离顶部120px</Button>
+        </Sticky>
+      </>
+  )
+}
+export default App;
+```
+
+:::
+
+### 指定容器內吸頂
+
+:::demo
+
+```tsx
+import React, { useRef } from 'react'
+import { Button, Sticky } from '@nutui/nutui-react'
 
 const App = () => {
   const containerTopRef = useRef(null)
-  const containerRef = useRef(null)
-
    return(
     <>
-        <h2>指定容器內吸頂</h2>
-        <Cell>
-          <div
-            className="sticky-container"
-            ref={containerTopRef}
-            style={{ height: '300px' }}
-          >
-            <Sticky container={containerTopRef} threshold={57}>
-              <Button type="info">
-                指定容器內吸頂
-              </Button>
-            </Sticky>
-          </div>
-        </Cell>
-        <h2>指定容器吸底</h2>
-        <Cell>
-          <div
-            className="sticky-container"
-            ref={containerRef}
-            style={{ height: '300px' }}
-          >
-            <Sticky position="bottom" container={containerRef} threshold={0}>
-              <Button  type="info">
-                指定容器吸底
-              </Button>
-            </Sticky>
-          </div>
-        </Cell>
-      
+      <div
+        ref={containerTopRef}
+        style={{ height: '600px' }}
+      >
+        <Sticky container={containerTopRef} threshold={57}>
+          <Button type="info" style={{ marginLeft: '100px' }}>
+            指定容器內吸頂
+          </Button>
+        </Sticky>
+      </div>
+    </>
+   )
+}
+export default App;
+```
+
+:::
+
+### 吸底距離
+
+:::demo
+
+```tsx
+import React from 'react'
+import { Button, Sticky } from '@nutui/nutui-react'
+
+const App = () => {
+   return(
+    <>
+      <Sticky threshold={0} position="bottom">
+        <Button type="primary">距离底部0px</Button>
+      </Sticky>
     </>
    )
 }

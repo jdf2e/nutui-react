@@ -4,7 +4,7 @@
 
 效果同 css 中的 position: sticky,对低端浏览器可使用其做兼容
 
-> 支持吸顶、吸底、容器内吸顶效果，也可以使用官方sticky组件 https://developers.weixin.qq.com/miniprogram/dev/platform-capabilities/extended/component-plus/sticky.html
+> 支持吸顶、吸底、容器内吸顶效果，也可以使用官方sticky组件 <https://developers.weixin.qq.com/miniprogram/dev/platform-capabilities/extended/component-plus/sticky.html>
 
 ## 安装
 
@@ -19,68 +19,96 @@ import { Sticky } from '@nutui/nutui-react-taro'
 :::demo
 
 ```tsx
-import React, { useEffect, useRef, useState } from 'react'
-import { Button, Cell, Sticky } from '@nutui/nutui-react-taro'
+import React from 'react'
+import { Button, Sticky } from '@nutui/nutui-react-taro'
 
 const App = () => {
   const handleChange = (val: boolean) => {
     console.log('吸顶状态发生了改变,当前fixed为', val)
   }
-  return (
-    <>
-      <h2>基础用法</h2>
-      <Cell style={{ height: '300px' }}>
-          <Sticky threshold={57} onChange={handleChange}>
+  return(
+      <>
+        <Sticky threshold={60} onChange={(val: boolean) => handleChange(val)}>
           <Button type="primary">吸顶</Button>
         </Sticky>
-      </Cell>
-      <h2>吸顶距离</h2>
-      <Cell style={{ height: '300px' }}>
-          <Sticky threshold={120}>
-          <Button type="primary">距离顶部120px</Button>
-        </Sticky>
-      </Cell>
-      <h2>吸底距离</h2>
-      <Cell style={{ height: '64px' }}>
-          <Sticky threshold={0} position="bottom">
-          <Button type="primary">距离底部0px</Button>
-        </Sticky>
-      </Cell>
-    </>
+      </>
   )
 }
-export default App
+export default App;
 ```
 
 :::
 
-### 指定容器内
+### 吸顶距离
 
 :::demo
 
 ```tsx
-import React, { useEffect, useRef, useState } from 'react'
-import { Button, Cell, Sticky } from '@nutui/nutui-react-taro'
+import React from 'react'
+import { Button, Sticky } from '@nutui/nutui-react-taro'
 
 const App = () => {
-  return (
-    <>
-      <h2>指定容器内吸顶</h2>
-      <Cell>
-        <div
-          className="sticky-container"
-          ref={containerTopRef}
-          style={{ height: '300px' }}
-        >
-            <Sticky container={containerTopRef} threshold={57}>
-            <Button type="info">指定容器内吸顶</Button>
-          </Sticky>
-        </div>
-      </Cell>
-    </>
+  return(
+      <>
+        <Sticky threshold={120}>
+          <Button type="primary">距离顶部120px</Button>
+        </Sticky>
+      </>
   )
 }
-export default App
+export default App;
+```
+
+:::
+
+### 指定容器内吸顶
+
+:::demo
+
+```tsx
+import React, { useRef } from 'react'
+import { Button, Sticky } from '@nutui/nutui-react-taro'
+
+const App = () => {
+  const containerTopRef = useRef(null)
+   return(
+    <>
+      <div
+        ref={containerTopRef}
+        style={{ height: '600px' }}
+      >
+        <Sticky container={containerTopRef} threshold={60}>
+          <Button type="info" style={{ marginLeft: '100px' }}>
+            指定容器内吸顶
+          </Button>
+        </Sticky>
+      </div>
+    </>
+   )
+}
+export default App;
+```
+
+:::
+
+### 吸底距离
+
+:::demo
+
+```tsx
+import React from 'react'
+import { Button, Sticky } from '@nutui/nutui-react-taro'
+
+const App = () => {
+   return(
+    <>
+      <Sticky threshold={0} position="bottom">
+        <Button type="primary">距离底部0px</Button>
+      </Sticky>
+    </>
+   )
+}
+export default App;
 ```
 
 :::
