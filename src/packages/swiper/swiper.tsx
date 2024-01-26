@@ -50,9 +50,7 @@ export const Swiper = (props: SwiperProps) => {
     x: 0,
     y: 0,
     s: 0,
-    reset: () => {
-      console.log('reset')
-    },
+    reset: () => {},
     config: { tension: 200, friction: 30 },
   }))
   const timeoutRef = useRef<number | null>(null)
@@ -62,7 +60,6 @@ export const Swiper = (props: SwiperProps) => {
   const swiperDirection = useRef(1)
   const [focusScales, setFocusScales] = useRefState<number[]>([])
   useEffect(() => {
-    console.log('effect', effect)
     setFocusScales(
       Array.from({ length: count })
         .fill(1)
@@ -77,24 +74,20 @@ export const Swiper = (props: SwiperProps) => {
   // 自动播放
   const runTimeSwiper = () => {
     timeoutRef.current = window.setTimeout(() => {
-      console.log('timer running')
       next()
       runTimeSwiper()
     }, duration)
   }
   useEffect(() => {
     if (!autoplay || dragging) return
-    console.log('effect')
     runTimeSwiper()
 
     return () => {
-      console.log('clear timer')
       if (timeoutRef.current) window.clearTimeout(timeoutRef.current)
     }
   }, [autoplay, duration, dragging, count])
 
   const to = (index: number, immediate = false) => {
-    console.log('to index', index)
     let targetIndex = bound(index, 0, count - 1)
     if (loop) {
       const cycleIndex = index % count
@@ -150,7 +143,6 @@ export const Swiper = (props: SwiperProps) => {
       const offset = state.offset[axis]
 
       setDragging(!!state.dragging)
-      // console.log('delta', state.distance)
 
       const distance = state.distance[axis]
       swiperDirection.current = state.direction[axis]
@@ -164,7 +156,6 @@ export const Swiper = (props: SwiperProps) => {
         const index = Math.round(
           (offset + velocity * 2000 * swipeDirection) / slideSize
         )
-        // console.log(index, maxIndex, maxIndex)
         to(bound(index, minIndex, maxIndex))
       } else {
         // 实时移动，换算百分比
@@ -205,15 +196,7 @@ export const Swiper = (props: SwiperProps) => {
           if (!scales) return 1
           const scale = scales[index]
           const currentRefValue = getRefValue(current)
-          // if (index === 1) {
-          //   console.log('index', index)
-          //   console.log('ss', ss)
-          //   console.log('current', currentRefValue)
-          //   console.log('scale', scale)
-          // }
-
           if (dragging === false) ss = 0
-
           const ps = ss * scale
           if (index === currentRefValue) {
             return Math.max(scale - ps, effect.scale)
