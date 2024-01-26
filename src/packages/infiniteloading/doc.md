@@ -42,6 +42,7 @@ const App = () => {
 
   useEffect(() => {
     init()
+    
   }, [])
 
   const loadMore = async () => {
