@@ -15,16 +15,22 @@ interface T {
 const BackTopDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      title: '基础用法',
+      title: 'click事件',
       clg: '触发返回顶部',
       content: '我是测试数据',
       backText: '顶部',
     },
     'en-US': {
-      title: 'Basic Usage',
+      title: 'Click event',
       clg: 'backtop',
       content: 'test data',
       backText: 'Top',
+    },
+    'zh-TW': {
+      title: 'click事件',
+      clg: '觸發返回頂部',
+      content: '我是測試數據',
+      backText: '頂部',
     },
   })
   const demoStyle = {
