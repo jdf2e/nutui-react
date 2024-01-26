@@ -42,11 +42,10 @@ const App = () => {
 
   useEffect(() => {
     init()
-    
   }, [])
 
   const loadMore = async () => {
-    await sleep(2000)
+    await sleep(300)
     const curLen = defaultList.length
     for (let i = curLen; i < curLen + 10; i++) {
       defaultList.push(`${i}`)
