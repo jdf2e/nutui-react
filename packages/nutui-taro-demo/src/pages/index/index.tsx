@@ -7,6 +7,7 @@ import Schema from 'async-validator'
 //
 const navs = pkg.nav
 // console.log(navs)
+
 try {
   console.log('xxx', Schema)
 } catch (e) {}
@@ -51,7 +52,7 @@ const Index = () => {
         <div className="index-components">
           {navs.map((nav) => (
             <ol key={nav.name}>
-              <li>{nav.name}</li>
+              {nav.enName === 'dentry1' ? null : <li>{nav.name}</li>}
               <ul>
                 {nav.packages.map((com) =>
                   com.show && com.taro ? (
