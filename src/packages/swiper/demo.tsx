@@ -6,6 +6,7 @@ import { useTranslate } from '../../sites/assets/locale'
 
 interface T {
   basic: string
+  focus: string
   asyc: string
   dynamicDel: string
   size: string
@@ -21,7 +22,8 @@ const SwiperDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
       basic: '基础用法',
-      asyc: '异步加载(3s)',
+      focus: '焦点轮播',
+      asyc: '异步加载(300ms)',
       dynamicDel: '动态加载',
       size: '自定义大小',
       indicator: '自定义指示器',
@@ -33,7 +35,8 @@ const SwiperDemo = () => {
     },
     'en-US': {
       basic: 'Basic Usage',
-      asyc: 'Asynchronous loading(3s)',
+      focus: 'Focus',
+      asyc: 'Asynchronous loading(300ms)',
       dynamicDel: 'Dynamic loading',
       size: 'Custom size',
       indicator: 'Custom indicator',
@@ -46,12 +49,22 @@ const SwiperDemo = () => {
   })
   const swiperRef = React.useRef<any>(null)
 
-  const [list2, setList2] = useState<string[]>([
-    'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-    'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
-    'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-    'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
-  ])
+  const [asyncList, setAsyncList] = useState<string[]>([])
+  useEffect(() => {
+    setTimeout(() => {
+      setAsyncList([
+        'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+        'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+        'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+        'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
+      ])
+    }, 300)
+  }, [])
+
+  const [current, setCurrent] = useState(1)
+  const onChange = (index: number) => {
+    setCurrent(index + 1)
+  }
 
   const list = [
     'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
@@ -64,7 +77,7 @@ const SwiperDemo = () => {
     <div className="demo padding">
       <h2>{translated.basic}</h2>
       <div className="demo-box" style={{ height: 150 }}>
-        <Swiper loop>
+        <Swiper loop slideSize={300}>
           {list.map((item, index) => {
             return (
               <Swiper.Item key={item}>
@@ -85,9 +98,14 @@ const SwiperDemo = () => {
           })}
         </Swiper>
       </div>
-      <br />
+      <h2>{translated.focus}</h2>
       <div className="demo-box" style={{ height: 150 }}>
-        <Swiper loop effect={{ name: 'focus', scale: 0.8 }}>
+        <Swiper
+          autoplay
+          loop
+          slideSize={300}
+          effect={{ name: 'focus', scale: 0.95 }}
+        >
           {list.map((item, index) => {
             return (
               <Swiper.Item key={item}>
@@ -108,7 +126,7 @@ const SwiperDemo = () => {
           })}
         </Swiper>
       </div>
-      <br />
+      <h2>{translated.vertical}</h2>
       <div className="demo-box" style={{ height: 150 }}>
         <Swiper loop direction="vertical">
           {list.map((item, index) => {
@@ -131,9 +149,34 @@ const SwiperDemo = () => {
           })}
         </Swiper>
       </div>
-      <br />
+      <h2>{translated.asyc}</h2>
       <div className="demo-box" style={{ height: 150 }}>
-        <Swiper>
+        {setAsyncList.length ? (
+          <Swiper>
+            {asyncList.map((item, index) => {
+              return (
+                <Swiper.Item key={item}>
+                  <div
+                    style={{
+                      background: color[index],
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      width: '100%',
+                      height: '100%',
+                    }}
+                  >
+                    {color[index]}
+                  </div>
+                </Swiper.Item>
+              )
+            })}
+          </Swiper>
+        ) : null}
+      </div>
+      <h2>{translated.size}</h2>
+      <div className="demo-box" style={{ height: 150 }}>
+        <Swiper slideSize={250}>
           {list.map((item, index) => {
             return (
               <Swiper.Item key={item}>
@@ -154,9 +197,12 @@ const SwiperDemo = () => {
           })}
         </Swiper>
       </div>
-      <br />
+      <h2>{translated.indicator}</h2>
       <div className="demo-box" style={{ height: 150 }}>
-        <Swiper direction="vertical">
+        <Swiper
+          onChange={onChange}
+          indicator={<div className="page"> {current}/4 </div>}
+        >
           {list.map((item, index) => {
             return (
               <Swiper.Item key={item}>
