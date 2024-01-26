@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { ScrollView, View } from '@tarojs/components'
 import classNames from 'classnames'
 import { JoySmile } from '@nutui/icons-react-taro'
-import Taro, { nextTick } from '@tarojs/taro'
+import { nextTick, createSelectorQuery } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import TabPane from '@/packages/tabpane/index.taro'
 import { usePropsValue } from '@/utils/use-props-value'
@@ -130,7 +130,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   }
   const getRect = (selector: string) => {
     return new Promise((resolve) => {
-      Taro.createSelectorQuery()
+      createSelectorQuery()
         .select(selector)
         .boundingClientRect()
         .exec((rect = []) => {
@@ -140,7 +140,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   }
   const getAllRect = (selector: string) => {
     return new Promise((resolve) => {
-      Taro.createSelectorQuery()
+      createSelectorQuery()
         .selectAll(selector)
         .boundingClientRect()
         .exec((rect = []) => {

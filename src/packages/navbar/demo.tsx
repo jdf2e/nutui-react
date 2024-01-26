@@ -134,16 +134,21 @@ const NavBarDemo = () => {
           }
           onBackClick={(e) => Toast.show(translated.a74a1fd4)}
         >
-          <div>
+          <div style={{ width: '100%' }}>
             <Tabs
               value={tab1value}
               onChange={(paneKey) => {
                 setTab1value(paneKey)
               }}
+              style={{
+                '--nutui-tabs-titles-padding': 0,
+                '--nutui-tabs-titles-gap': 0,
+              }}
             >
               <TabPane title="Tab 1"> Tab 1 </TabPane>
               <TabPane title="Tab 2"> Tab 2 </TabPane>
               <TabPane title="Tab 3"> Tab 3 </TabPane>
+              <TabPane title="Tab 4"> Tab 4 </TabPane>
             </Tabs>
           </div>
         </NavBar>
@@ -187,7 +192,7 @@ const NavBarDemo = () => {
           back={<ArrowLeft />}
           onBackClick={(e) => Toast.show(translated.a74a1fd4)}
         >
-          <div className="title">
+          <div className="title title-left">
             <span onClick={(e) => Toast.show(translated.b840c88f)}>
               {translated.e51e4582}
             </span>

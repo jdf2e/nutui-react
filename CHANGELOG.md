@@ -1,3 +1,26 @@
+# v2.3.8
+`2024-01-26`
+
+* 🔨 chore: 修复dev环境下demo分包体超过2M问题 (#1905) @xiaoyatong
+* 📖 docs(configprovider): 文档可读性优化 (#1882) @Alex.huxiyang
+* 📖 docs(grid): 文档可读性优化 (#1903) @Alex.huxiyang
+* 📖 docs(swiper): customize pagination controls (#1892) @oasis
+* :sparkles: feat(navbar): title区域自适应宽度 (#1891) @songsong
+* :sparkles: feat(rate): 新增 touchable 属性支持滑动选择 (#1880) @Eiinu
+* :sparkles: feat(video): support passing through attributes for Taro Video (#1890) @xiaoyatong
+* :sparkles: feat: radiogroup add shape props (#1898) @oasis
+* :bug: fix(ellipsis): 修复小程序文本省略问题 (#1888) @Eiinu
+* :bug: fix(ellipsis): 在 taro 小程序下尽量展示的平滑舒适 (#1902) @xiaoyatong
+* :bug: fix(image): 文档可读性优化 (#1887) @Alex.huxiyang
+* :bug: fix(overlay): 文档可读性优化 (#1894) @Alex.huxiyang
+* :bug: fix(rate): 修复 rate 高度问题 (#1883) @Eiinu
+* :bug: fix(steps): 小程序的真机情况下出现的换行的情况 (#1899) @xiaoyatong
+* :bug: fix(swiper): 轮播跳帧 (#1886) @oasis
+* :bug: fix(tabs): 解决组件嵌套tabs，横向滚动位置计算偏差问题 (#1884) @songsong
+* :bug: fix: doc、demo调整&优化 @huxiyang3
+* :bug: fix: taro.createSelectorQuery not function (#1907) @oasis
+
+
 # v2.3.7
 `2024-01-19`
 
