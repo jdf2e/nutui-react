@@ -62,7 +62,7 @@ export const TextArea: FunctionComponent<
   const compositionRef = useRef(false)
 
   const format = (value: string) => {
-    if (maxLength !== undefined && value.length > maxLength) {
+    if (maxLength !== -1 && value.length > maxLength) {
       return value.substring(0, maxLength)
     }
     return value
