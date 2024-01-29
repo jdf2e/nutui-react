@@ -170,7 +170,7 @@ const CountDownDemo = () => {
         <h2>{translated.basic}</h2>
         <Cell>
           <CountDown
-            endTime={stateRef.current.endTime}
+            endTime={1706543999999}
             onUpdate={onUpdate}
             onEnd={onEnd}
           />
@@ -182,7 +182,8 @@ const CountDownDemo = () => {
         <h2>{translated.format}</h2>
         <Cell>
           <CountDown
-            endTime={stateRef.current.endTime}
+            // endTime={stateRef.current.endTime}
+            endTime={Date.now() + 60 * 1000 * 60 * 24}
             format={`DD ${translated.day} HH ${translated.hour} mm ${translated.minute} ss ${translated.second}`}
           />
         </Cell>

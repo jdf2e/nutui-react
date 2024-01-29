@@ -2,11 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react'
 import Taro from '@tarojs/taro'
 import { Loading, More } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import {
-  InfiniteLoading,
-  Cell,
-  InfiniteLoadingStatusType,
-} from '@/packages/nutui.react.taro'
+import { InfiniteLoading, Cell } from '@/packages/nutui.react.taro'
 import '@/packages/infiniteloading/demo.scss'
 import Header from '@/sites/components/header'
 import { sleep } from '@/utils/sleep'
@@ -41,7 +37,7 @@ const InfiniteLoadingDemo = () => {
   })
 
   const [defaultList, setDefaultList] = useState<string[]>([])
-  const [status, setStatus] = useState<InfiniteLoadingStatusType>('load')
+  const [status, setStatus] = useState('load')
   const [reverse] = useState(false)
 
   useEffect(() => {
