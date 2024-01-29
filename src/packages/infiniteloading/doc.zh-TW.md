@@ -441,6 +441,7 @@ export default App
 | capture | 是否使用捕捉模式 true 捕捉 false 冒泡 | `boolean` | `false` |
 | target | 取得監聽的目標元素 | `string` | `-` |
 | status | 目前狀態 | `load` \| `loadMore` \| `networkException` \| `overtimeException` | `load` |
+| reverse | 反白 | `boolean` | `false` |
 | loadMoreText | “沒有更多數據”展示文案 | `string` | `哎呀，這裡是底部了啦` |
 | pullRefresh | 是否開啟下拉刷新 | `boolean` | `false` |
 | pullingText | 下拉刷新提示文案 | `ReactNode` | `鬆手刷新` |

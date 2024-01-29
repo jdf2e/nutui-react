@@ -440,6 +440,7 @@ export default App
 | capture | Whether to use capture mode | `boolean` | `false` |
 | target | Get the target element to monitor | `string` | `-` |
 | status | Current state | `load` \| `loadMore` \| `networkException` \|  `overtimeException` | `load` |
+| reverse | Reverse white | `boolean` | `false` |
 | loadMoreText | “No more” text | `string` | `Oops, here's the bottom` |
 | pullRefresh | Enable pull refresh | `boolean` | `false` |
 | pullingText | Pull refresh text | `ReactNode` | `Let go and refresh` |
