@@ -12,7 +12,6 @@ import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
 import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
 import { View, ITouchEvent } from '@tarojs/components'
-
 import {
   OverlayProps,
   defaultOverlayProps,
@@ -248,7 +247,8 @@ export const Popup: FunctionComponent<
     return (
       <CSSTransition
         classNames={transitionName}
-        unmountOnExit
+        mountOnEnter
+        unmountOnExit={destroyOnClose}
         timeout={duration}
         in={innerVisible}
         onEntered={onHandleOpened}
