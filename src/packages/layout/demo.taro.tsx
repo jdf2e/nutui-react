@@ -25,7 +25,7 @@ const LayoutDemo = () => {
     },
     'en-US': {
       title1: 'Basic layout',
-      title2: 'column interval',
+      title2: 'Column interval',
       title3: 'Flex layout',
     },
     'id-ID': {
