@@ -26,13 +26,13 @@ const App = () => {
       line-height: var(--nutui-row-content-line-height, 40px);
       color: var(--nutui-row-content-color, #fff);
       text-align: center;
-      border-radius: $row-content-border-radius;
-      background: $row-content-background-color;
+      border-radius: var(--nutui-row-content-border-radius, 6px);
+      background: var(--nutui-row-content-background-color,var(--row-content-bg-color, #ff8881));
       font-size: 14px;
     }
 
     .layout-flex-content-light {
-      background: $row-content-light-background-color;
+      background: var(--row-content-light-bg-color,#ffc7c4);
     }
   `
   return (
@@ -106,13 +106,19 @@ const App = () => {
       line-height: var(--nutui-row-content-line-height, 40px);
       color: var(--nutui-row-content-color, #fff);
       text-align: center;
-      border-radius: $row-content-border-radius;
-      background: $row-content-background-color;
+      border-radius: var(--nutui-row-content-border-radius, 6px);
+      background: var(
+  --nutui-row-content-background-color,
+  var(--row-content-bg-color, #ff8881)
+);
       font-size: 14px;
     }
 
     .layout-flex-content-light {
-      background: $row-content-light-background-color;
+      background: var(
+  --row-content-light-bg-color,
+  #ffc7c4
+);
     }
   `
   return (
@@ -153,13 +159,19 @@ const App = () => {
       line-height: var(--nutui-row-content-line-height, 40px);
       color: var(--nutui-row-content-color, #fff);
       text-align: center;
-      border-radius: $row-content-border-radius;
-      background: $row-content-background-color;
+      border-radius: var(--nutui-row-content-border-radius, 6px);
+      background: var(
+  --nutui-row-content-background-color,
+  var(--row-content-bg-color, #ff8881)
+);
       font-size: 14px;
     }
 
     .layout-flex-content-light {
-      background: $row-content-light-background-color;
+      background: var(
+  --row-content-light-bg-color,
+  #ffc7c4
+);
     }
   `
   return (
