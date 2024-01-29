@@ -6,6 +6,7 @@ import { InfiniteLoading, Cell } from '@/packages/nutui.react.taro'
 import '@/packages/infiniteloading/demo.scss'
 import Header from '@/sites/components/header'
 import { sleep } from '@/utils/sleep'
+import { InfiniteLoadingStatusType } from './infiniteloading.taro'
 
 interface T {
   '83913e71': string
@@ -37,7 +38,7 @@ const InfiniteLoadingDemo = () => {
   })
 
   const [defaultList, setDefaultList] = useState<string[]>([])
-  const [status, setStatus] = useState('load')
+  const [status, setStatus] = useState<InfiniteLoadingStatusType>('load')
   const [reverse] = useState(false)
 
   useEffect(() => {
