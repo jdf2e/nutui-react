@@ -151,10 +151,10 @@ test('infiniteloading base 02', async () => {
   await waitFor(() => expect(done).toHaveBeenCalled())
 })
 
-test('hasMore false', () => {
+test('status loadmore', () => {
   const done = jest.fn()
   const { container: container1, rerender } = render(
-    <InfiniteLoading loadMoreText="没有更多" hasMore={false} onScroll={done}>
+    <InfiniteLoading loadMoreText="没有更多" status="loadMore" onScroll={done}>
       {Array.from<string>({ length: 100 })
         .fill('NutUI')
         .map((item: string, index) => {
@@ -170,10 +170,10 @@ test('hasMore false', () => {
   trigger(track1, 'scroll', 0, 100)
 })
 
-test('hasMore', () => {
+test('status load', () => {
   const done = jest.fn()
   const { container } = render(
-    <InfiniteLoading loadMoreText="没有更多" hasMore onScroll={done}>
+    <InfiniteLoading loadMoreText="没有更多" status="load" onScroll={done}>
       {Array.from<string>({ length: 100 })
         .fill('NutUI')
         .map((item: string, index) => {
@@ -193,6 +193,25 @@ test('hasMore', () => {
   waitFor(() => {
     expect(done).toBeCalled()
   })
+})
+
+test('status networkException', () => {
+  const done = jest.fn()
+  const { container } = render(
+    <InfiniteLoading status="networkException">
+      {Array.from<string>({ length: 100 })
+        .fill('NutUI')
+        .map((item: string, index) => {
+          return (
+            <li className="infiniteLi" key={index}>
+              {item}
+            </li>
+          )
+        })}
+    </InfiniteLoading>
+  )
+  const tipsDom = container.querySelector('.nut-infiniteloading-bottom-tips')
+  expect(tipsDom?.innerHTML).toBe('网络不太顺畅，点我再试试')
 })
 
 test('pull base 01', async () => {
