@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { act, render, waitFor } from '@testing-library/react'
+import { act, fireEvent, render, waitFor } from '@testing-library/react'
 import { trigger, triggerDrag } from '@/utils/test/event'
 import '@testing-library/jest-dom'
 
@@ -196,9 +196,9 @@ test('status load', () => {
 })
 
 test('status networkException', () => {
-  const done = jest.fn()
+  const refreshLoadMore = jest.fn()
   const { container } = render(
-    <InfiniteLoading status="networkException">
+    <InfiniteLoading status="networkException" onLoadMore={refreshLoadMore}>
       {Array.from<string>({ length: 100 })
         .fill('NutUI')
         .map((item: string, index) => {
@@ -212,6 +212,10 @@ test('status networkException', () => {
   )
   const tipsDom = container.querySelector('.nut-infiniteloading-bottom-tips')
   expect(tipsDom?.innerHTML).toBe('网络不太顺畅，点我再试试')
+  if (tipsDom) {
+    fireEvent.click(tipsDom as Element)
+    expect(refreshLoadMore).toHaveBeenCalled()
+  }
 })
 
 test('pull base 01', async () => {
