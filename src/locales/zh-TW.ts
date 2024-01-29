@@ -20,6 +20,8 @@ const zhCN: BaseLang = {
     pullRefreshText: '松開刷新',
     loadText: '加載中',
     loadMoreText: '沒有更多了',
+    networkExceptionText: '網絡不太順暢，點我再試試',
+    overtimeExceptionText: '當前訪問人數過多，請刷新試試',
   },
   pagination: {
     prev: '上一頁',

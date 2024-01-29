@@ -3,23 +3,23 @@
 exports[`infiniteloading base 01 1`] = `
 <div>
   <div
-    class="nut-infiniteloading"
+    class="nut-infiniteloading nut-infiniteloading"
   >
     <div
-      class="nut-infinite-top"
+      class="nut-infiniteloading-top"
       style="height: 0px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
     >
       <div
-        class="nut-infinite-top-tips"
+        class="nut-infiniteloading-top-tips"
       >
         松开刷新
       </div>
     </div>
     <div
-      class="nut-infinite-container"
+      class="nut-infiniteloading-container"
     />
     <div
-      class="nut-infinite-bottom"
+      class="nut-infiniteloading-bottom"
     />
   </div>
 </div>
@@ -28,20 +28,20 @@ exports[`infiniteloading base 01 1`] = `
 exports[`infiniteloading base 02 1`] = `
 <div>
   <div
-    class="nut-infiniteloading"
+    class="nut-infiniteloading nut-infiniteloading"
   >
     <div
-      class="nut-infinite-top"
+      class="nut-infiniteloading-top"
       style="height: 0px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
     >
       <div
-        class="nut-infinite-top-tips"
+        class="nut-infiniteloading-top-tips"
       >
         松开刷新
       </div>
     </div>
     <div
-      class="nut-infinite-container"
+      class="nut-infiniteloading-container"
     >
       <li
         class="infiniteLi"
@@ -95,7 +95,7 @@ exports[`infiniteloading base 02 1`] = `
       </li>
     </div>
     <div
-      class="nut-infinite-bottom"
+      class="nut-infiniteloading-bottom"
     />
   </div>
 </div>
@@ -104,23 +104,23 @@ exports[`infiniteloading base 02 1`] = `
 exports[`pull base 01 1`] = `
 <div>
   <div
-    class="nut-infiniteloading"
+    class="nut-infiniteloading nut-infiniteloading"
   >
     <div
-      class="nut-infinite-top"
+      class="nut-infiniteloading-top"
       style="height: 10px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
     >
       <div
-        class="nut-infinite-top-tips"
+        class="nut-infiniteloading-top-tips"
       >
         下拉刷新
       </div>
     </div>
     <div
-      class="nut-infinite-container"
+      class="nut-infiniteloading-container"
     />
     <div
-      class="nut-infinite-bottom"
+      class="nut-infiniteloading-bottom"
     />
   </div>
 </div>
@@ -129,23 +129,23 @@ exports[`pull base 01 1`] = `
 exports[`pull base 01 2`] = `
 <div>
   <div
-    class="nut-infiniteloading"
+    class="nut-infiniteloading nut-infiniteloading"
   >
     <div
-      class="nut-infinite-top"
+      class="nut-infiniteloading-top"
       style="height: 10px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
     >
       <div
-        class="nut-infinite-top-tips"
+        class="nut-infiniteloading-top-tips"
       >
         下拉刷新
       </div>
     </div>
     <div
-      class="nut-infinite-container"
+      class="nut-infiniteloading-container"
     />
     <div
-      class="nut-infinite-bottom"
+      class="nut-infiniteloading-bottom"
     />
   </div>
 </div>
@@ -154,23 +154,23 @@ exports[`pull base 01 2`] = `
 exports[`pull base 03 1`] = `
 <div>
   <div
-    class="nut-infiniteloading"
+    class="nut-infiniteloading nut-infiniteloading"
   >
     <div
-      class="nut-infinite-top"
+      class="nut-infiniteloading-top"
       style="height: 0px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
     >
       <div
-        class="nut-infinite-top-tips"
+        class="nut-infiniteloading-top-tips"
       >
         下拉刷新
       </div>
     </div>
     <div
-      class="nut-infinite-container"
+      class="nut-infiniteloading-container"
     />
     <div
-      class="nut-infinite-bottom"
+      class="nut-infiniteloading-bottom"
     />
   </div>
 </div>
@@ -179,23 +179,23 @@ exports[`pull base 03 1`] = `
 exports[`pull base 03 2`] = `
 <div>
   <div
-    class="nut-infiniteloading"
+    class="nut-infiniteloading nut-infiniteloading"
   >
     <div
-      class="nut-infinite-top"
+      class="nut-infiniteloading-top"
       style="height: 0px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
     >
       <div
-        class="nut-infinite-top-tips"
+        class="nut-infiniteloading-top-tips"
       >
         下拉刷新
       </div>
     </div>
     <div
-      class="nut-infinite-container"
+      class="nut-infiniteloading-container"
     />
     <div
-      class="nut-infinite-bottom"
+      class="nut-infiniteloading-bottom"
     />
   </div>
 </div>
@@ -204,23 +204,23 @@ exports[`pull base 03 2`] = `
 exports[`pull base 1`] = `
 <div>
   <div
-    class="nut-infiniteloading"
+    class="nut-infiniteloading nut-infiniteloading"
   >
     <div
-      class="nut-infinite-top"
+      class="nut-infiniteloading-top"
       style="height: 10px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
     >
       <div
-        class="nut-infinite-top-tips"
+        class="nut-infiniteloading-top-tips"
       >
         松开刷新
       </div>
     </div>
     <div
-      class="nut-infinite-container"
+      class="nut-infiniteloading-container"
     />
     <div
-      class="nut-infinite-bottom"
+      class="nut-infiniteloading-bottom"
     />
   </div>
 </div>
@@ -229,23 +229,23 @@ exports[`pull base 1`] = `
 exports[`pull base 2`] = `
 <div>
   <div
-    class="nut-infiniteloading"
+    class="nut-infiniteloading nut-infiniteloading"
   >
     <div
-      class="nut-infinite-top"
+      class="nut-infiniteloading-top"
       style="height: 10px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
     >
       <div
-        class="nut-infinite-top-tips"
+        class="nut-infiniteloading-top-tips"
       >
         松开刷新
       </div>
     </div>
     <div
-      class="nut-infinite-container"
+      class="nut-infiniteloading-container"
     />
     <div
-      class="nut-infinite-bottom"
+      class="nut-infiniteloading-bottom"
     />
   </div>
 </div>

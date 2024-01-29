@@ -20,6 +20,9 @@ const enUS: BaseLang = {
     pullRefreshText: 'Pull Refresh',
     loadText: 'Loading',
     loadMoreText: "Oops, here's the bottom",
+    networkExceptionText: 'The Internet is not good. Click to try again',
+    overtimeExceptionText:
+      'The current number of visitors is too large, please refresh',
   },
   pagination: {
     prev: 'Previous',

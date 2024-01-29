@@ -6,20 +6,29 @@ import React, {
   ReactNode,
 } from 'react'
 import classNames from 'classnames'
-import { ScrollView } from '@tarojs/components'
+import { ScrollView, View } from '@tarojs/components'
 import { createSelectorQuery } from '@tarojs/taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
+export type InfiniteLoadingStatusType =
+  | 'load'
+  | 'loadMore'
+  | 'networkException'
+  | 'overtimeException'
 export interface InfiniteLoadingProps extends BasicComponent {
   hasMore: boolean
   threshold: number
   target: string
+  status: InfiniteLoadingStatusType
+  reverse: boolean
   pullRefresh: boolean
   pullingText: ReactNode
   loadingText: ReactNode
   loadMoreText: ReactNode
+  networkExceptionText: ReactNode
+  overtimeExceptionText: ReactNode
   onRefresh: () => Promise<void>
   onLoadMore: () => Promise<void>
   onScroll: (param: number) => void
@@ -29,6 +38,8 @@ const defaultProps = {
   ...ComponentDefaults,
   hasMore: true,
   threshold: 40,
+  status: 'load',
+  reverse: false,
   target: '',
   pullRefresh: false,
 } as InfiniteLoadingProps
@@ -44,10 +55,14 @@ export const InfiniteLoading: FunctionComponent<
     hasMore,
     threshold,
     target,
+    status,
+    reverse,
     pullRefresh,
     pullingText,
     loadingText,
     loadMoreText,
+    networkExceptionText,
+    overtimeExceptionText,
     className,
     onRefresh,
     onLoadMore,
@@ -66,7 +81,11 @@ export const InfiniteLoading: FunctionComponent<
   const refreshMaxH = useRef(0)
   const distance = useRef(0)
 
-  const classes = classNames(classPrefix, className)
+  const classes = classNames(
+    classPrefix,
+    className,
+    `${reverse ? `${classPrefix}-reverse` : ''}`
+  )
 
   useEffect(() => {
     refreshMaxH.current = threshold
@@ -156,7 +175,13 @@ export const InfiniteLoading: FunctionComponent<
       refreshDone()
     }
   }
-
+  const refresh = async () => {
+    if (status === 'networkException') {
+      setIsInfiniting(true)
+      await onLoadMore?.()
+      setIsInfiniting(false)
+    }
+  }
   return (
     <ScrollView
       className={classes}
@@ -170,25 +195,32 @@ export const InfiniteLoading: FunctionComponent<
       onTouchMove={touchMove}
       onTouchEnd={touchEnd}
     >
-      <div className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
-        <div className="nut-infinite-top-tips">
+      <View
+        className={`${classPrefix}-top`}
+        ref={refreshTop}
+        style={getStyle()}
+      >
+        <View className={`${classPrefix}-top-tips`}>
           {pullingText || locale.infiniteloading.pullRefreshText}
-        </div>
-      </div>
-      <div className="nut-infinite-container">{children}</div>
-      <div className="nut-infinite-bottom">
+        </View>
+      </View>
+      <View className={`${classPrefix}-container`}>{children}</View>
+      <View className={`${classPrefix}-bottom`}>
         {isInfiniting ? (
-          <div className="nut-infinite-bottom-tips">
+          <View className={`${classPrefix}-bottom-tips`}>
             {loadingText || locale.infiniteloading.loadText}
-          </div>
+          </View>
         ) : (
-          !hasMore && (
-            <div className="nut-infinite-bottom-tips">
-              {loadMoreText || locale.infiniteloading.loadMoreText}
-            </div>
-          )
+          <>
+            {status !== 'load' && (
+              <View className={`${classPrefix}-bottom-tips`} onClick={refresh}>
+                {props?.[`${status}Text`] ||
+                  locale.infiniteloading[`${status}Text`]}
+              </View>
+            )}
+          </>
         )}
-      </div>
+      </View>
     </ScrollView>
   )
 }

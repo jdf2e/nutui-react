@@ -20,6 +20,10 @@ const idID: BaseLang = {
     pullRefreshText: 'Lepaskan untuk memperbarui',
     loadText: 'Memuat',
     loadMoreText: 'Oops, sudah sampai bawah',
+    networkExceptionText:
+      'Jaringanna teu lancar. Klik kuring pikeun nyobaan deui',
+    overtimeExceptionText:
+      'Aya seueur teuing sémah ayeuna, mangga cobian nyegerkeun',
   },
   pagination: {
     prev: 'Sebelumnya',

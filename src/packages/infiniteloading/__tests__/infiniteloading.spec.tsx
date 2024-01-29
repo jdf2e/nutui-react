@@ -3,7 +3,7 @@ import { act, render, waitFor } from '@testing-library/react'
 import { trigger, triggerDrag } from '@/utils/test/event'
 import '@testing-library/jest-dom'
 
-import { InfiniteLoading } from '../infiniteloading'
+import { InfiniteLoading, InfiniteLoadingStatusType } from '../infiniteloading'
 import { sleep } from '@/utils/sleep'
 
 test('pull base', () => {
@@ -59,11 +59,8 @@ test('infiniteloading base', () => {
 test('infiniteloading base 01', async () => {
   const App = () => {
     const [refreshList, setRefreshList] = React.useState<string[]>([])
-    const [refreshHasMore, setRefreshHasMore] = React.useState(true)
-
-    React.useEffect(() => {
-      init()
-    }, [])
+    const [refreshStatus, setRefreshStatus] =
+      React.useState<InfiniteLoadingStatusType>('load')
 
     const init = () => {
       for (let i = 0; i < 10; i++) {
@@ -72,6 +69,10 @@ test('infiniteloading base 01', async () => {
       setRefreshList([...refreshList])
     }
 
+    React.useEffect(() => {
+      init()
+    }, [])
+
     const refreshLoadMore = async () => {
       await sleep(10)
       const curLen = refreshList.length
@@ -79,7 +80,7 @@ test('infiniteloading base 01', async () => {
         refreshList.push(`${i}`)
       }
       if (refreshList.length >= 300) {
-        setRefreshHasMore(false)
+        setRefreshStatus('loadMore')
       } else {
         setRefreshList([...refreshList])
       }
@@ -88,7 +89,7 @@ test('infiniteloading base 01', async () => {
       <InfiniteLoading
         loadMoreText="没有更多"
         onLoadMore={refreshLoadMore}
-        hasMore={refreshHasMore}
+        status={refreshStatus}
       />
     )
   }
@@ -100,11 +101,8 @@ test('infiniteloading base 02', async () => {
   const done = jest.fn()
   const App = () => {
     const [refreshList, setRefreshList] = React.useState<string[]>([])
-    const [refreshHasMore, setRefreshHasMore] = React.useState(true)
-
-    React.useEffect(() => {
-      init()
-    }, [])
+    const [refreshStatus, setRefreshStatus] =
+      React.useState<InfiniteLoadingStatusType>('load')
 
     const init = () => {
       for (let i = 0; i < 10; i++) {
@@ -113,6 +111,10 @@ test('infiniteloading base 02', async () => {
       setRefreshList([...refreshList])
     }
 
+    React.useEffect(() => {
+      init()
+    }, [])
+
     const refreshLoadMore = async () => {
       await sleep(100)
       const curLen = refreshList.length
@@ -120,7 +122,7 @@ test('infiniteloading base 02', async () => {
         refreshList.push(`${i}`)
       }
       if (refreshList.length >= 30) {
-        setRefreshHasMore(false)
+        setRefreshStatus('loadMore')
       } else {
         setRefreshList([...refreshList])
       }
@@ -129,7 +131,7 @@ test('infiniteloading base 02', async () => {
       <InfiniteLoading
         loadMoreText="没有更多"
         onLoadMore={refreshLoadMore}
-        hasMore={refreshHasMore}
+        status={refreshStatus}
         onScroll={done}
       >
         {refreshList.map((item, index) => {

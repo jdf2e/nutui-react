@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import { Jd, Loading, More } from '@nutui/icons-react'
+import React, { useState, useEffect, useMemo } from 'react'
+import { Jd } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
-import { InfiniteLoading } from './infiniteloading'
+import { InfiniteLoading, InfiniteLoadingStatusType } from './infiniteloading'
 import Cell from '@/packages/cell'
 import Toast from '@/packages/toast'
 import './demo.scss'
@@ -48,10 +48,14 @@ const InfiniteloadingDemo = () => {
   const [customList, setCustomList] = useState<string[]>([])
   const [refreshList, setRefreshList] = useState<string[]>([])
   const [windowList, setWindowList] = useState<string[]>([])
-  const [hasMore, setHasMore] = useState(true)
-  const [customHasMore, setCustomHasMore] = useState(true)
-  const [refreshHasMore, setRefreshHasMore] = useState(true)
-  const [windownHasMore, setWindowHasMore] = useState(true)
+  const [status, setStatus] = useState<InfiniteLoadingStatusType>('load')
+  const [customStatus, setCustomStatus] =
+    useState<InfiniteLoadingStatusType>('load')
+  const [refreshStatus, setRefreshStatus] =
+    useState<InfiniteLoadingStatusType>('load')
+  const [windownStatus, setWindowStatus] =
+    useState<InfiniteLoadingStatusType>('load')
+  const [reverse] = useState(false)
 
   useEffect(() => {
     init()
@@ -59,17 +63,17 @@ const InfiniteloadingDemo = () => {
 
   const loadMore = async () => {
     await sleep(2000)
-    // setTimeout(() => {
     const curLen = defaultList.length
-    for (let i = curLen; i < curLen + 10; i++) {
-      defaultList.push(`${i}`)
-    }
-    if (defaultList.length >= 30) {
-      setHasMore(false)
+    const defaultCacheList = [...defaultList]
+    if (defaultCacheList.length >= 30) {
+      setStatus('loadMore')
     } else {
-      setDefaultList([...defaultList])
+      // setStatus('networkException')
+      for (let i = curLen; i < curLen + 10; i++) {
+        defaultCacheList.push(`${i}`)
+      }
+      setDefaultList(defaultCacheList)
     }
-    // }, 500)
   }
 
   const refreshLoadMore = async () => {
@@ -79,7 +83,7 @@ const InfiniteloadingDemo = () => {
       refreshList.push(`${i}`)
     }
     if (refreshList.length >= 30) {
-      setRefreshHasMore(false)
+      setRefreshStatus('loadMore')
     } else {
       setRefreshList([...refreshList])
     }
@@ -92,7 +96,7 @@ const InfiniteloadingDemo = () => {
       customList.push(`${i}`)
     }
     if (customList.length >= 30) {
-      setCustomHasMore(false)
+      setCustomStatus('loadMore')
     } else {
       setCustomList([...customList])
     }
@@ -105,7 +109,7 @@ const InfiniteloadingDemo = () => {
       windowList.push(`${i}`)
     }
     if (windowList.length >= 300) {
-      setWindowHasMore(false)
+      setWindowStatus('loadMore')
     } else {
       setWindowList([...windowList])
     }
@@ -128,6 +132,49 @@ const InfiniteloadingDemo = () => {
     setRefreshList([...refreshList])
     setRefreshList([...windowList])
   }
+  const fillColor: string = useMemo(() => {
+    return reverse ? '#FFFFFF' : '#8C8C8C'
+  }, [reverse])
+
+  const joySvg = useMemo(() => {
+    return (
+      <i className="nut-infiniteloading-bottom-tips-icons">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <g clipPath="url(#clip0_252_47)">
+            <path
+              d="M23.1507 10.6435C21.8958 9.29889 21.6209 7.28491 20.8022 6.60353C19.9835 5.92216 18.7824 7.00753 18.3402 7.6467C15.896 5.92216 11.9879 6.00054 11.9879 6.00054C11.9879 6.00054 8.09759 5.92216 5.6475 7.6467C5.20528 7.00753 4.01012 5.92216 3.19143 6.60353C2.37274 7.28491 2.10383 9.29889 0.848906 10.6435C-0.0892994 11.6566 -0.166985 11.952 0.215468 12.754C0.591945 13.556 2.93447 14.2193 4.58977 12.6334C4.81088 13.4595 6.67534 18 11.9938 18C17.3123 18 19.1887 13.4595 19.4039 12.6334C21.0592 14.2193 23.4077 13.556 23.7901 12.754C24.1666 11.952 24.0889 11.6566 23.1507 10.6435Z"
+              fill={fillColor}
+            />
+          </g>
+        </svg>
+      </i>
+    )
+  }, [fillColor])
+
+  const networkExceptionSvg = useMemo(() => {
+    return (
+      <i className="nut-infiniteloading-bottom-tips-icons">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+          <g clipPath="url(#clip0_252_861)">
+            <path
+              d="M0.148233 2.88529C-0.049411 3.07978 -0.049411 3.39511 0.148233 3.5896C0.345877 3.78409 0.666322 3.78409 0.863966 3.5896C3.70061 0.798205 8.29971 0.798205 11.1364 3.5896C11.334 3.78409 11.6544 3.78409 11.8521 3.5896C12.0497 3.39511 12.0497 3.07978 11.8521 2.88529C8.62016 -0.295095 3.38016 -0.295095 0.148233 2.88529Z"
+              fill={fillColor}
+            />
+            <path
+              d="M1.98956 5.68688C1.79273 5.4932 1.79273 5.17917 1.98956 4.98548C4.20459 2.80578 7.79587 2.80578 10.0109 4.98548C10.2077 5.17917 10.2077 5.4932 10.0109 5.68688C9.81408 5.88057 9.49496 5.88057 9.29813 5.68688C7.47675 3.89455 4.52371 3.89455 2.70233 5.68688C2.5055 5.88057 2.18638 5.88057 1.98956 5.68688Z"
+              fill={fillColor}
+            />
+            <path
+              fillRule="evenodd"
+              clipRule="evenodd"
+              d="M6.00025 11.5003C7.39532 11.5003 8.52625 10.3874 8.52625 9.01454C8.52625 7.64172 7.39532 6.52882 6.00025 6.52882C4.60517 6.52882 3.47424 7.64172 3.47424 9.01454C3.47424 10.3874 4.60517 11.5003 6.00025 11.5003ZM7.36134 9.65244L6.71311 9.01455L7.36137 8.37663L6.65997 7.66386L6.00025 8.31306L5.34054 7.66386L4.63914 8.37663L5.28739 9.01455L4.63917 9.65244L5.34056 10.3652L6.00025 9.71604L6.65994 10.3652L7.36134 9.65244Z"
+              fill={fillColor}
+            />
+          </g>
+        </svg>
+      </i>
+    )
+  }, [fillColor])
 
   return (
     <>
@@ -137,18 +184,25 @@ const InfiniteloadingDemo = () => {
           <ul className="infiniteUl" id="scroll">
             <InfiniteLoading
               target="scroll"
-              hasMore={hasMore}
+              status={status}
               onLoadMore={loadMore}
+              reverse={reverse}
               loadingText={
                 <>
-                  <Loading className="nut-infinite-bottom-tips-icons" />
+                  {joySvg}
                   加载中
                 </>
               }
               loadMoreText={
                 <>
-                  <More className="nut-infinite-bottom-tips-icons" />
+                  {joySvg}
                   没有更多了
+                </>
+              }
+              networkExceptionText={
+                <>
+                  {networkExceptionSvg}
+                  网络不太顺畅，点我再试试
                 </>
               }
             >
@@ -169,7 +223,7 @@ const InfiniteloadingDemo = () => {
             <InfiniteLoading
               pullingText={
                 <>
-                  <i className="nut-infinite-top-tips-icons">
+                  <i className="nut-infiniteloading-top-tips-icons">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="36"
@@ -189,7 +243,7 @@ const InfiniteloadingDemo = () => {
               loadingText={<Jd />}
               target="refreshScroll"
               pullRefresh
-              hasMore={refreshHasMore}
+              status={refreshStatus}
               onLoadMore={refreshLoadMore}
               onRefresh={refresh}
             >
@@ -211,7 +265,7 @@ const InfiniteloadingDemo = () => {
               target="customScroll"
               loadingText="loading"
               loadMoreText={translated['1254a90a']}
-              hasMore={customHasMore}
+              status={customStatus}
               onLoadMore={customLoadMore}
             >
               {customList.map((item, index) => {
@@ -231,7 +285,7 @@ const InfiniteloadingDemo = () => {
             <InfiniteLoading
               loadingText="loading"
               loadMoreText={translated['1254a90a']}
-              hasMore={windownHasMore}
+              status={windownStatus}
               onLoadMore={windowLoadMore}
             >
               {windowList.map((item, index) => {

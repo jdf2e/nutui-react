@@ -1,8 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import Taro from '@tarojs/taro'
 import { Loading, More } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { InfiniteLoading, Cell } from '@/packages/nutui.react.taro'
+import {
+  InfiniteLoading,
+  Cell,
+  InfiniteLoadingStatusType,
+} from '@/packages/nutui.react.taro'
 import '@/packages/infiniteloading/demo.scss'
 import Header from '@/sites/components/header'
 import { sleep } from '@/utils/sleep'
@@ -37,7 +41,8 @@ const InfiniteLoadingDemo = () => {
   })
 
   const [defaultList, setDefaultList] = useState<string[]>([])
-  const [hasMore, setHasMore] = useState(true)
+  const [status, setStatus] = useState<InfiniteLoadingStatusType>('load')
+  const [reverse] = useState(false)
 
   useEffect(() => {
     init()
@@ -46,13 +51,14 @@ const InfiniteLoadingDemo = () => {
   const loadMore = async () => {
     await sleep(2000)
     const curLen = defaultList.length
-    for (let i = curLen; i < curLen + 10; i++) {
-      defaultList.push(`${i}`)
-    }
-    if (defaultList.length >= 100) {
-      setHasMore(false)
+    const defaultCacheList = [...defaultList]
+    if (defaultCacheList.length >= 100) {
+      setStatus('loadMore')
     } else {
-      setDefaultList([...defaultList])
+      for (let i = curLen; i < curLen + 10; i++) {
+        defaultCacheList.push(`${i}`)
+      }
+      setDefaultList(defaultCacheList)
     }
   }
 
@@ -72,6 +78,10 @@ const InfiniteLoadingDemo = () => {
     setDefaultList([...defaultList])
   }
 
+  const fillColor: string = useMemo(() => {
+    return reverse ? '#FFFFFF' : '#8C8C8C'
+  }, [reverse])
+
   return (
     <>
       <Header />
@@ -88,24 +98,34 @@ const InfiniteLoadingDemo = () => {
             <InfiniteLoading
               pullRefresh
               target="scrollDemo"
-              hasMore={hasMore}
+              status={status}
               onLoadMore={loadMore}
+              reverse={reverse}
               onRefresh={refresh}
               pullingText={
                 <>
-                  <Loading className="nut-infinite-top-tips-icons" />
+                  <Loading
+                    className="nut-infiniteloading-top-tips-icons"
+                    color={fillColor}
+                  />
                   松开刷新
                 </>
               }
               loadingText={
                 <>
-                  <Loading className="nut-infinite-bottom-tips-icons" />
+                  <Loading
+                    className="nut-infiniteloading-bottom-tips-icons"
+                    color={fillColor}
+                  />
                   加载中
                 </>
               }
               loadMoreText={
                 <>
-                  <More className="nut-infinite-bottom-tips-icons" />
+                  <More
+                    className="nut-infiniteloading-bottom-tips-icons"
+                    color={fillColor}
+                  />
                   没有更多了
                 </>
               }

@@ -9,15 +9,24 @@ import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
+export type InfiniteLoadingStatusType =
+  | 'load'
+  | 'loadMore'
+  | 'networkException'
+  | 'overtimeException'
 export interface InfiniteLoadingProps extends BasicComponent {
   hasMore: boolean
   threshold: number
   target: string
   capture: boolean
+  status: InfiniteLoadingStatusType
+  reverse: boolean
   pullRefresh: boolean
   pullingText: ReactNode
   loadingText: ReactNode
   loadMoreText: ReactNode
+  networkExceptionText: ReactNode
+  overtimeExceptionText: ReactNode
   onRefresh: () => Promise<void>
   onLoadMore: () => Promise<void>
   onScroll: (param: number) => void
@@ -31,6 +40,8 @@ const defaultProps = {
   ...ComponentDefaults,
   hasMore: true,
   threshold: 200,
+  status: 'load',
+  reverse: false,
   target: '',
   capture: false,
   pullRefresh: false,
@@ -48,10 +59,14 @@ export const InfiniteLoading: FunctionComponent<
     threshold,
     target,
     capture,
+    status,
+    reverse,
     pullRefresh,
     pullingText,
     loadingText,
     loadMoreText,
+    networkExceptionText,
+    overtimeExceptionText,
     className,
     onRefresh,
     onLoadMore,
@@ -71,7 +86,11 @@ export const InfiniteLoading: FunctionComponent<
   const y = useRef(0)
   const distance = useRef(0)
 
-  const classes = classNames(classPrefix, className)
+  const classes = classNames(
+    classPrefix,
+    className,
+    `${classPrefix}${reverse ? '-reverse' : ''}`
+  )
 
   useEffect(() => {
     if (target && document.getElementById(target)) {
@@ -209,6 +228,14 @@ export const InfiniteLoading: FunctionComponent<
     return offsetDistance <= threshold && direction === 'down'
   }
 
+  const refresh = async () => {
+    if (status === 'networkException') {
+      setIsInfiniting(true)
+      await onLoadMore?.()
+      setIsInfiniting(false)
+    }
+  }
+
   return (
     <div
       className={classes}
@@ -217,23 +244,26 @@ export const InfiniteLoading: FunctionComponent<
       onTouchEnd={touchEnd}
       {...restProps}
     >
-      <div className="nut-infinite-top" ref={refreshTop} style={getStyle()}>
-        <div className="nut-infinite-top-tips">
+      <div className={`${classPrefix}-top`} ref={refreshTop} style={getStyle()}>
+        <div className={`${classPrefix}-top-tips`}>
           {pullingText || locale.infiniteloading.pullRefreshText}
         </div>
       </div>
-      <div className="nut-infinite-container">{children}</div>
-      <div className="nut-infinite-bottom">
+      <div className={`${classPrefix}-container`}>{children}</div>
+      <div className={`${classPrefix}-bottom`}>
         {isInfiniting ? (
-          <div className="nut-infinite-bottom-tips">
+          <div className={`${classPrefix}-bottom-tips`}>
             {loadingText || locale.infiniteloading.loadText}
           </div>
         ) : (
-          !hasMore && (
-            <div className="nut-infinite-bottom-tips">
-              {loadMoreText || locale.infiniteloading.loadMoreText}
-            </div>
-          )
+          <>
+            {status !== 'load' && (
+              <div className={`${classPrefix}-bottom-tips`} onClick={refresh}>
+                {props?.[`${status}Text`] ||
+                  locale.infiniteloading[`${status}Text`]}
+              </div>
+            )}
+          </>
         )}
       </div>
     </div>

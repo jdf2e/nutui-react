@@ -20,6 +20,8 @@ const zhUG: BaseLang = {
     pullRefreshText: 'قويۇپ بېرىڭ',
     loadText: 'سەل ساقلاڭ',
     loadMoreText: 'ۋاي تۈگىدى',
+    networkExceptionText: 'تور راۋان ئەمەس. مېنى چېكىپ قايتا سىناڭ',
+    overtimeExceptionText: 'ھازىر زىيارەتچىلەر بەك كۆپ ، يېڭىلاپ بېقىڭ',
   },
   pagination: {
     prev: 'ئالدىنقى',

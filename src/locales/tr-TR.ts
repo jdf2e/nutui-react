@@ -20,6 +20,9 @@ const trTR: BaseLang = {
     pullRefreshText: 'yenile',
     loadText: 'yükleniyor...',
     loadMoreText: 'Oops, işte şimdi ayfanın sonuna geldiniz',
+    networkExceptionText: 'Ağ düzgün değil. Tekrar denemek için beni tıklayın',
+    overtimeExceptionText:
+      'Şu anda çok fazla ziyaretçi var, lütfen yenilemeyi deneyin',
   },
   pagination: {
     prev: 'Önceki',

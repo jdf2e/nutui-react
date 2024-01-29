@@ -18,6 +18,8 @@ export interface BaseLang {
     pullRefreshText: string
     loadText: string
     loadMoreText: string
+    networkExceptionText: string
+    overtimeExceptionText: string
   }
   pagination: {
     prev: string
