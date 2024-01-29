@@ -167,9 +167,8 @@ export const Input = forwardRef(
       forceUpdate()
     }
 
-    const handleFocus = (event: Event) => {
-      const val: any = (event.target as any).value
-      onFocus && onFocus(val)
+    const handleFocus = () => {
+      onFocus?.(value)
       setActive(true)
     }
 
@@ -177,12 +176,9 @@ export const Input = forwardRef(
       updateValue(value, 'onChange')
     }
 
-    const handleBlur = (event: Event) => {
-      const val: any = (event.target as any).value
-      updateValue(val, 'onBlur')
-      setTimeout(() => {
-        setActive(false)
-      }, 50)
+    const handleBlur = () => {
+      updateValue(value, 'onBlur')
+      setActive(false)
     }
     const inputType = (type: any) => {
       if (getEnv() === ENV_TYPE.WEB) {
@@ -220,12 +216,8 @@ export const Input = forwardRef(
           value={value}
           focus={autoFocus}
           confirmType={confirmType}
-          onBlur={(e: any) => {
-            handleBlur(e)
-          }}
-          onFocus={(e: any) => {
-            handleFocus(e)
-          }}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
           onInput={(e: any) => {
             handleInput(e.currentTarget.value)
           }}
@@ -241,10 +233,8 @@ export const Input = forwardRef(
           onClick={(e) => {
             e.stopPropagation()
             if (!disabled) {
-              setTimeout(() => {
-                setValue('')
-                onClear && onClear('')
-              }, 50)
+              setValue('')
+              onClear?.('')
             }
           }}
         >
