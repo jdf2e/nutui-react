@@ -51,6 +51,7 @@ const NavBarDemo = () => {
     },
   })
   const [tab1value, setTab1value] = useState<string | number>('0')
+  const [tab2value, setTab2value] = useState<string | number>('0')
   return (
     <>
       <Header />
@@ -272,9 +273,9 @@ const NavBarDemo = () => {
               className="navbar-tabs"
               align="left"
               activeType="simple"
-              value={tab1value}
+              value={tab2value}
               onChange={(paneKey) => {
-                setTab1value(paneKey)
+                setTab2value(paneKey)
               }}
             >
               <TabPane title="Tab 1"> Tab 1 </TabPane>
