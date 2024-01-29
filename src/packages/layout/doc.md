@@ -23,8 +23,8 @@ import { Row, Col } from '@nutui/nutui-react';
 const App = () => {
   const style = `
     .layout-flex-content {
-      line-height: $row-content-line-height;
-      color: $row-content-color;
+      line-height: var(--nutui-row-content-line-height, 40px);
+      color: var(--nutui-row-content-color, #fff);
       text-align: center;
       border-radius: $row-content-border-radius;
       background: $row-content-background-color;
@@ -103,8 +103,8 @@ import { Layout, Row, Col } from '@nutui/nutui-react';
 const App = () => {
   const style = `
     .layout-flex-content {
-      line-height: $row-content-line-height;
-      color: $row-content-color;
+      line-height: var(--nutui-row-content-line-height, 40px);
+      color: var(--nutui-row-content-color, #fff);
       text-align: center;
       border-radius: $row-content-border-radius;
       background: $row-content-background-color;
@@ -150,8 +150,8 @@ import { Layout, Row, Col } from '@nutui/nutui-react';
 const App = () => {
   const style = `
     .layout-flex-content {
-      line-height: $row-content-line-height;
-      color: $row-content-color;
+      line-height: var(--nutui-row-content-line-height, 40px);
+      color: var(--nutui-row-content-color, #fff);
       text-align: center;
       border-radius: $row-content-border-radius;
       background: $row-content-background-color;
