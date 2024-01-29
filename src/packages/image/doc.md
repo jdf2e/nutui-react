@@ -325,7 +325,14 @@ const App = () => {
   const src =
     '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
   const imageData = [1, 2, 3, 4, 5, 6]
-  const placeholderImg = 'https://img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png'
+  const placeholderImg = (
+    <img
+      alt=""
+      width="100%"
+      height="150px"
+      src="https://img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png"
+    />
+  )
   const style = `
     .lazy-box{
       width:100%
