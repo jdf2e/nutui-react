@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro'
+import Taro, { createSelectorQuery } from '@tarojs/taro'
 
 export const getTaroRectById = (id: string) => {
   return new Promise((resolve, reject) => {
@@ -9,7 +9,7 @@ export const getTaroRectById = (id: string) => {
       }
       reject()
     } else {
-      const query = Taro.createSelectorQuery()
+      const query = createSelectorQuery()
       query
         .select(`#${id}`)
         .boundingClientRect()

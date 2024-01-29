@@ -5,7 +5,7 @@ import React, {
   useCallback,
   FunctionComponent,
 } from 'react'
-import Taro, { useReady } from '@tarojs/taro'
+import Taro, { useReady, createSelectorQuery } from '@tarojs/taro'
 import classNames from 'classnames'
 import { Canvas } from '@tarojs/components'
 import { Button } from '@/packages/button/button.taro'
@@ -141,7 +141,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
   useReady(() => {
     if (showAlipayCanvas2D) {
       const { canvasId } = canvasAll
-      Taro.createSelectorQuery()
+      createSelectorQuery()
         .select(`#${canvasId}`)
         .node(({ node: canvas }) => {
           canvas.width = state.displayWidth
