@@ -156,7 +156,7 @@ export const Popover: FunctionComponent<
 
   const getRectTaro = async (targetId: any): Promise<any> => {
     return new Promise((resolve) => {
-      const query = Taro.createSelectorQuery()
+      const query = createSelectorQuery()
       query.select(`#${targetId}`) &&
         query.select(`#${targetId}`).boundingClientRect()
       query.exec((res: any) => {

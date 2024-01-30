@@ -116,24 +116,47 @@ export default App;
 
 :::
 
-### click 事件
+### click事件
 
 :::demo
 
 ```tsx
 import React from "react";
 import { BackTop, Cell } from '@nutui/nutui-react';
+import { Top } from '@nutui/icons-react';
 
 const App = () => {
   const handleClick = () => {
     console.log('觸發返回頂部')
   }
   return (
-    <div id="target" style={{ height: '1000px', overflowY: 'auto' }}>
+    <div
+      style={{ height: '100vh', overflowY: 'auto' }}
+      id="target"
+    >
       {new Array(24).fill(0).map((_, index) => {
         return <Cell key={index}>我是測試數據{index}</Cell>
       })}
-      <BackTop threshold={100} bottom={50} onClick={handleClick} />
+      <BackTop
+        threshold={200}
+        style={{
+          bottom: '50px',
+          right: '20px',
+        }}
+        onClick={handleClick}
+        target="target"
+      >
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Top width={12} height={12} />
+          <div style={{ fontSize: '12px' }}>頂部</div>
+        </div>
+      </BackTop>
     </div>
   );
 };
@@ -150,7 +173,7 @@ export default App;
 | --- | --- | --- | --- |
 | target | 獲取監聽的目標元素 | `string` | `-` |
 | threshold | 頁面垂直滾動多高後出現 | `number` | `200` |
-| zIndex | 設置組件頁面層級 | `number` | `10` |
+| zIndex | 設置組件頁面層級 | `number` | `900` |
 | duration | 設置動畫持續時間，為 0 時表示無動畫 | `number` | `1000` |
 | onClick | 按鈕點擊時觸發事件 | `(event: MouseEvent) => void` | `-` |
 

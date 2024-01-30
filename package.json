@@ -1,6 +1,6 @@
 {
-  "name": "@nutui/nutui-react-taro",
-  "version": "2.3.7",
+  "name": "@nutui/nutui-react",
+  "version": "2.3.8",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/esm/nutui-react.es.js",
@@ -159,7 +159,7 @@
     "eslint-plugin-unused-imports": "^3.0.0",
     "fs-extra": "^11.0.0",
     "glob": "^10.0.0",
-    "husky": "^8.0.0",
+    "husky": "^9.0.0",
     "inquirer": "^9.0.0",
     "jest": "^29.0.0",
     "jest-canvas-mock": "^2.5.0",

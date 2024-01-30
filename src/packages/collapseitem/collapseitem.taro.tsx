@@ -8,7 +8,7 @@ import React, {
   useMemo,
 } from 'react'
 import classNames from 'classnames'
-import Taro from '@tarojs/taro'
+import { createSelectorQuery } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import CollapseContext from '../collapse/context'
 
@@ -85,7 +85,7 @@ export const CollapseItem: FunctionComponent<
 
   const getRect = (selector: string) => {
     return new Promise((resolve) => {
-      Taro.createSelectorQuery()
+      createSelectorQuery()
         .select(selector)
         .boundingClientRect()
         .exec((rect = []) => {
