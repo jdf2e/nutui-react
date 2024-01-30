@@ -10,9 +10,9 @@ Provides navigation capabilities.
 import { NavBar } from '@nutui/nutui-react';
 ```
 
-## code example
+## Code Example
 
-### Basic usage
+### Basic Usage
 
 :::demo
 
