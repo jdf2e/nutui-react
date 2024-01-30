@@ -17,114 +17,157 @@ import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
 :::demo
 
 ```tsx
-import  React,{useState} from "react";
-import {Cell, SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
+import React, { useState } from 'react'
+import { Cell, SideNavBar, SubSideNavBar, SideNavBarItem, Toast } from '@nutui/nutui-react'
 
 const App = () => {
-    const [navBarState, setNavBarState] = useState({
+  type Position = 'left' | 'right'
+  type NavBarState = {
+    visible: boolean
+    position: Position
+  }
+  const [navBarState, setNavBarState] = useState<NavBarState>({
     visible: false,
     position: 'left',
   })
-  const changeNarBar = (visible, position= navBarState.position) => {
+  const [showThird, setShowThird] = useState(false)
+  const changeNarBar = (visible: boolean, position: Position = navBarState.position) => {
     setNavBarState({
       visible,
       position,
     })
+    setShowThird(false)
   }
- 
-  return ( 
-    <>   
-    <Cell
-          title="左側彈出"
-          onClick={() => {
-            changeNarBar(true, 'left')
-          }}
-        />
-        <Cell
-          title="右側彈出"
-          onClick={() => {
-            changeNarBar(true, 'right')
-          }}
-        />
-        <SideNavBar
-          title="首頁"
-          visible={navBarState.visible}
-          position={navBarState.position}
-          onClose={() => {
-            changeNarBar(false)
-          }}
-        >
-          <SubSideNavBar title="一級標題" value="1-0" >
-            <SideNavBarItem title="一級內容1" value="1-01" />
-            <SideNavBarItem title="一級內容2" value="1-02" />
-            <SubSideNavBar title="二級標題" value="2-0">
-              <SideNavBarItem title="二級内容1" value="2-01" />
-              <SideNavBarItem title="二級内容2" value="2-02" />
-            </SubSideNavBar>
+  const clickItem = (data: any) => {
+    const { title, value } = data
+    showThird && Toast.show(`title=${title},value=${value}`)
+  }
+  const clickTitle = (data: any) => {
+    const { title, value, isShow } = data
+    showThird && Toast.show(`title=${title},value=${value},isShow=${isShow}`)
+  }
+  return (
+    <>
+      <Cell
+        title='左側彈出'
+        onClick={() => {
+          changeNarBar(true, 'left')
+        }}
+      />
+      <Cell
+        title='右側彈出'
+        onClick={() => {
+          changeNarBar(true, 'right')
+        }}
+      />
+      <SideNavBar
+        title='首頁'
+        visible={navBarState.visible}
+        position={navBarState.position}
+        onClose={() => {
+          changeNarBar(false)
+        }}>
+        <SubSideNavBar title='一級標題' value='1-0' onClick={clickTitle}>
+          <SideNavBarItem title='一級內容1' value='1-01' onClick={clickItem} />
+          <SideNavBarItem title='一級內容2' value='1-02' />
+          <SubSideNavBar title='二級標題' value='2-0'>
+            <SideNavBarItem title='二級內容1' value='2-01' />
+            <SideNavBarItem title='二級內容2' value='2-02' />
+            {showThird ? (
+              <SubSideNavBar title='三級標題' value='3-0'>
+                <SideNavBarItem title='三級內容1' value='3-01' />
+                <SideNavBarItem title='三級內容2' value='3-02' />
+              </SubSideNavBar>
+            ) : null}
           </SubSideNavBar>
-        </SideNavBar>
+        </SubSideNavBar>
+        <SubSideNavBar open={false} title='一級標題-2' value='1-1'>
+          <SideNavBarItem title='一級內容2-1' value='1-11' />
+          <SideNavBarItem title='一級內容2-2' value='1-12' />
+        </SubSideNavBar>
+      </SideNavBar>
     </>
-  );
-};  
-export default App;
+  )
+}
+export default App
 
 ```
 
 :::
 
-### 嵌套及回調
+### 導航嵌套（建議最多三層）
 
 :::demo
 
 ```tsx
-import  React,{useState} from "react";
-import {Cell,SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
+import React, { useState } from 'react'
+import { Cell, SideNavBar, SubSideNavBar, SideNavBarItem, Toast } from '@nutui/nutui-react'
 
 const App = () => {
-  const [visible, setVisible] = useState(false)
-  const changeNarBar = (visible) => {
-   setVisible(visible)
+  type Position = 'left' | 'right'
+  type NavBarState = {
+    visible: boolean
+    position: Position
   }
-  const clickItem = ({ title, value }) => {
-    Toast.show(`title=${title},value=${value}`)
+  const [navBarState, setNavBarState] = useState<NavBarState>({
+    visible: false,
+    position: 'left',
+  })
+  const [showThird, setShowThird] = useState(false)
+  const changeNarBar = (visible: boolean, position: Position = navBarState.position) => {
+    setNavBarState({
+      visible,
+      position,
+    })
+    setShowThird(false)
   }
-  const clickTitle = ({ title, value, isShow }) => {
-    Toast.show(`title=${title},value=${value},isShow=${isShow}`)
+  const clickItem = (data: any) => {
+    const { title, value } = data
+    showThird && Toast.show(`title=${title},value=${value}`)
   }
-  return ( 
-    <>  
+  const clickTitle = (data: any) => {
+    const { title, value, isShow } = data
+    showThird && Toast.show(`title=${title},value=${value},isShow=${isShow}`)
+  }
+  return (
+    <>
       <Cell
-          title="顯示"
-          onClick={() => {
-            changeNarBar(true)
-          }}
-        /> 
-    <SideNavBar
-          title="首頁"
-          visible={visible}
-          position='left'
-          onClose={() => {
-            changeNarBar(false)
-          }}
-        >
-          <SubSideNavBar title="一級標題" value="1-0" onClick={clickTitle}>
-            <SideNavBarItem title="一級內容1" value="1-01" onClick={clickItem} />
-            <SideNavBarItem title="一級內容2" value="1-02" />
-            <SubSideNavBar title="二級標題" value="2-0">
-              <SideNavBarItem title="二級内容1" value="2-01" />
-              <SideNavBarItem title="二級内容2" value="2-02" />
-                <SubSideNavBar title="三級標題" value="3-0">
-                  <SideNavBarItem title="三級内容1" value="3-01" />
-                  <SideNavBarItem title="三級内容2" value="3-02" />
-                </SubSideNavBar>
-            </SubSideNavBar>
+        title='顯示'
+        onClick={() => {
+          changeNarBar(true, 'right')
+          setShowThird(true)
+        }}
+      />
+      <SideNavBar
+        title='首頁'
+        visible={navBarState.visible}
+        position={navBarState.position}
+        onClose={() => {
+          changeNarBar(false)
+        }}>
+        <SubSideNavBar title='一級標題' value='1-0' onClick={clickTitle}>
+          <SideNavBarItem title='一級內容1' value='1-01' onClick={clickItem} />
+          <SideNavBarItem title='一級內容2' value='1-02' />
+          <SubSideNavBar title='二級標題' value='2-0'>
+            <SideNavBarItem title='二級內容1' value='2-01' />
+            <SideNavBarItem title='二級內容2' value='2-02' />
+            {showThird ? (
+              <SubSideNavBar title='三級標題' value='3-0'>
+                <SideNavBarItem title='三級內容1' value='3-01' />
+                <SideNavBarItem title='三級內容2' value='3-02' />
+              </SubSideNavBar>
+            ) : null}
           </SubSideNavBar>
-        </SideNavBar>
+        </SubSideNavBar>
+        <SubSideNavBar open={false} title='一級標題-2' value='1-1'>
+          <SideNavBarItem title='一級內容2-1' value='1-11' />
+          <SideNavBarItem title='一級內容2-2' value='1-12' />
+        </SubSideNavBar>
+      </SideNavBar>
     </>
-  );
-};  
-export default App;
-
+  )
+}
+export default App
 ```
 
 :::
@@ -151,7 +194,7 @@ export default App;
 | value | 導航唯一標識 | `string`  \|  `number` | `-` |
 | title | 整體標題 | `string` | `-` |
 | open | 導航是否默認展開 | `boolean` | `true` |
-| onClick | 導航點擊 | `data: {title: string, value: string \| number, isShow: boolean}` | `-` |
+| onClick | 導航點擊 | `({title: string, value: string \| number, isShow: boolean}) => void` | `-` |
 
 ## SideNavBarItem
 
@@ -161,7 +204,7 @@ export default App;
 | --- | --- | --- | --- |
 | value | 導航唯一標識 | `string`  \|  `number` | `-` |
 | title | 整體標題 | `string` | `-` |
-| onClick | 導航點擊 | `data: {title: string, value: string \| number}` | `-` |
+| onClick | 導航點擊 | `({title: string, value: string \| number}) => void` | `-` |
 
 ## 主題定制
 

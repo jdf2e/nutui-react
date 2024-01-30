@@ -17,8 +17,8 @@ import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react-taro
 :::demo
 
 ```tsx
-import  React,{useState} from "react";
-import {Cell, SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react-taro';
+import  React, {useState} from "react";
+import { Cell, SideNavBar, SubSideNavBar, SideNavBarItem } from '@nutui/nutui-react-taro';
 
 const App = () => {
     const [navBarState, setNavBarState] = useState({
@@ -34,35 +34,44 @@ const App = () => {
  
   return ( 
     <>   
-    <Cell
-          title="左侧弹出"
-          onClick={() => {
-            changeNarBar(true, 'left')
-          }}
-        />
-        <Cell
-          title="右侧弹出"
-          onClick={() => {
-            changeNarBar(true, 'right')
-          }}
-        />
-        <SideNavBar
-          title="首页"
-          visible={navBarState.visible}
-          position={navBarState.position}
-          onClose={() => {
-            changeNarBar(false)
-          }}
-        >
-          <SubSideNavBar title="一级标题" key="1-0" >
-            <SideNavBarItem title="一级内容1" key="1-01" />
-            <SideNavBarItem title="一级内容2" key="1-02" />
-            <SubSideNavBar title="二级标题" key="2-0">
-              <SideNavBarItem title="二级内容1" key="2-01" />
-              <SideNavBarItem title="二级内容2" key="2-02" />
-            </SubSideNavBar>
+      <Cell
+        title='左侧弹出'
+        onClick={() => {
+          changeNarBar(true, 'left')
+        }}
+      />
+      <Cell
+        title='右侧弹出'
+        onClick={() => {
+          changeNarBar(true, 'right')
+        }}
+      />
+      <SideNavBar
+        title='首页'
+        visible={navBarState.visible}
+        position={navBarState.position}
+        onClose={() => {
+          changeNarBar(false)
+        }}>
+        <SubSideNavBar title='一级标题' value='1-0'>
+          <SideNavBarItem title='一级内容1' value='1-01' />
+          <SideNavBarItem title='一级内容2' value='1-02' />
+          <SubSideNavBar title='二级标题' value='2-0'>
+            <SideNavBarItem title='二级内容1' value='2-01' />
+            <SideNavBarItem title='二级内容2' value='2-02' />
+            {showThird ? (
+              <SubSideNavBar title='三级标题' value='3-0'>
+                <SideNavBarItem title='三级内容1' value='3-01' />
+                <SideNavBarItem title='三级内容2' value='3-02' />
+              </SubSideNavBar>
+            ) : null}
           </SubSideNavBar>
-        </SideNavBar>
+        </SubSideNavBar>
+        <SubSideNavBar open={false} title='一级标题-2' value='1-1'>
+          <SideNavBarItem title='一级内容2-1' value='1-11' />
+          <SideNavBarItem title='一级内容2-2' value='1-12' />
+        </SubSideNavBar>
+      </SideNavBar>
     </>
   );
 };  
@@ -78,48 +87,64 @@ export default App;
 
 ```tsx
 import  React,{useState} from "react";
-import {Cell,SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react-taro';
+import { Cell, SideNavBar, SubSideNavBar, SideNavBarItem } from '@nutui/nutui-react-taro';
 
 const App = () => {
-  const [visible, setVisible] = useState(false)
-  const changeNarBar = (visible) => {
-   setVisible(visible)
+  type Position = 'left' | 'right'
+  type NavBarState = {
+    visible: boolean
+    position: Position
   }
-  const clickItem = ({ title, key }) => {
-    Toast.show(`title=${title},key=${key}`)
-  }
-  const clickTitle = ({ title, key, isShow }) => {
-    Toast.show(`title=${title},key=${key},isShow=${isShow}`)
+  const [navBarState, setNavBarState] = useState<NavBarState>({
+    visible: false,
+    position: 'left',
+  })
+  const [showThird, setShowThird] = useState(false)
+  const changeNarBar = (
+    visible: boolean,
+    position: Position = navBarState.position
+  ) => {
+    setNavBarState({
+      visible,
+      position,
+    })
+    setShowThird(false)
   }
   return ( 
     <>  
       <Cell
-          title="显示"
-          onClick={() => {
-            changeNarBar(true)
-          }}
-        /> 
-    <SideNavBar
-          title="首页"
-          visible={visible}
-          position='left'
-          onClose={() => {
-            changeNarBar(false)
-          }}
-        >
-          <SubSideNavBar title="一级标题" key="1-0" onClick={clickTitle}>
-            <SideNavBarItem title="一级内容1" key="1-01" onClick={clickItem} />
-            <SideNavBarItem title="一级内容2" key="1-02" />
-            <SubSideNavBar title="二级标题" key="2-0">
-              <SideNavBarItem title="二级内容1" key="2-01" />
-              <SideNavBarItem title="二级内容2" key="2-02" />
-                <SubSideNavBar title="三级标题" key="3-0">
-                  <SideNavBarItem title="三级内容1" key="3-01" />
-                  <SideNavBarItem title="三级内容2" key="3-02" />
-                </SubSideNavBar>
-            </SubSideNavBar>
+        title='显示'
+        onClick={() => {
+          changeNarBar(true, 'right')
+          setShowThird(true)
+        }}
+      />
+      <SideNavBar
+        title='首页'
+        visible={navBarState.visible}
+        position={navBarState.position}
+        onClose={() => {
+          changeNarBar(false)
+        }}>
+        <SubSideNavBar title='一级标题' value='1-0'>
+          <SideNavBarItem title='一级内容1' value='1-01' />
+          <SideNavBarItem title='一级内容2' value='1-02' />
+          <SubSideNavBar title='二级标题' value='2-0'>
+            <SideNavBarItem title='二级内容1' value='2-01' />
+            <SideNavBarItem title='二级内容2' value='2-02' />
+            {showThird ? (
+              <SubSideNavBar title='三级标题' value='3-0'>
+                <SideNavBarItem title='三级内容1' value='3-01' />
+                <SideNavBarItem title='三级内容2' value='3-02' />
+              </SubSideNavBar>
+            ) : null}
           </SubSideNavBar>
-        </SideNavBar>
+        </SubSideNavBar>
+        <SubSideNavBar open={false} title='一级标题-2' value='1-1'>
+          <SideNavBarItem title='一级内容2-1' value='1-11' />
+          <SideNavBarItem title='一级内容2-2' value='1-12' />
+        </SubSideNavBar>
+      </SideNavBar>
     </>
   );
 };  
@@ -151,7 +176,7 @@ export default App;
 | key | 导航唯一标识 | `string`  \|  `number` | `-` |
 | title | 整体标题 | `string` | `-` |
 | open | 导航是否默认展开 | `boolean` | `true` |
-| onClick | 导航点击 | `data: {title: string, key: string \| number, isShow: boolean}` | `-` |
+| onClick | 导航点击 | `({title: string, value: string \| number, isShow: boolean}) => void` | `-` |
 
 ## SideNavBarItem
 
@@ -161,7 +186,7 @@ export default App;
 | --- | --- | --- | --- |
 | key | 导航唯一标识 | `string`  \|  `number` | `-` |
 | title | 整体标题 | `string` | `-` |
-| onClick | 导航点击 | `data: {title: string, key: string \| number}` | `-` |
+| onClick | 导航点击 | `({title: string, value: string \| number}) => void` | `-` |
 
 ## 主题定制
 
