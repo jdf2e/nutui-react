@@ -58,7 +58,7 @@ const App = () => {
       <NavBar
         back={
           <>
-            <ArrowLeft />return
+            <ArrowLeft />Back
           </>
         }
         right={
@@ -66,9 +66,9 @@ const App = () => {
             <Share />
           </span>
         }
-        onBackClick={(e) => Toast.show("return")}
+        onBackClick={(e) => Toast.show("Back")}
       >
-        order details
+        Order Details
       </NavBar>
       <NavBar
         right={
@@ -76,41 +76,41 @@ const App = () => {
             <Share />
           </span>
         }
-        onBackClick={(e) => Toast.show("return")}
+        onBackClick={(e) => Toast.show("Back")}
       >
-        order details
+        Order Details
       </NavBar>
       <NavBar
         right={
-          <span onClick={(e) => Toast.show("empty")}>
-            empty
+          <span onClick={(e) => Toast.show("Empty")}>
+            Empty
           </span>
         }
         left={<Close />}
         back={<ArrowLeft />}
-        onBackClick={(e) => Toast.show("return")}
+        onBackClick={(e) => Toast.show("Back")}
       >
         <div className="title">
-          <span onClick={(e) => Toast.show("title ")}>
-            Browsing history
+          <span onClick={(e) => Toast.show("Title")}>
+            Browsing History
           </span>
-          <span className="desc">Browsing history</span>
+          <span className="desc">Browsing History</span>
         </div>
       </NavBar>
       <NavBar
         back={<ArrowLeft />}
         right={
           <>
-            <span onClick={(e) => Toast.show("edit")}>
-              edit
+            <span onClick={(e) => Toast.show("Edit")}>
+              Edit
             </span>
             <More onClick={(e) => Toast.show('icon')} />
           </>
         }
-        onBackClick={(e) => Toast.show("return")}
+        onBackClick={(e) => Toast.show("Back")}
       >
-        <span onClick={(e) => Toast.show("title ")}>
-          shopping cart
+        <span onClick={(e) => Toast.show("Title")}>
+          Shopping Cart
         </span>
         <i
           style={{ marginLeft: '5px' }}
@@ -124,13 +124,13 @@ const App = () => {
         back={<ArrowLeft />}
         right={
           <>
-            <span onClick={(e) => Toast.show("edit")}>
-              edit
+            <span onClick={(e) => Toast.show("Edit")}>
+              Edit
             </span>
             <More onClick={(e) => Toast.show('icon')} />
           </>
         }
-        onBackClick={(e) => Toast.show("return")}
+        onBackClick={(e) => Toast.show("Back")}
       >
         <div style={{ width: '100%' }}>
           <Tabs
@@ -154,7 +154,7 @@ const App = () => {
         titleAlign="left"
         back={
           <>
-            <ArrowLeft />return
+            <ArrowLeft />Back
           </>
         }
         right={
@@ -162,9 +162,9 @@ const App = () => {
             <Share />
           </span>
         }
-        onBackClick={(e) => Toast.show("return")}
+        onBackClick={(e) => Toast.show("Back")}
       >
-        order details
+        Order Details
       </NavBar>
       <NavBar
         titleAlign="left"
@@ -173,27 +173,27 @@ const App = () => {
             <Share />
           </span>
         }
-        onBackClick={(e) => Toast.show("return")}
+        onBackClick={(e) => Toast.show("Back")}
       >
-        order details
+        Order Details
       </NavBar>
 
       <NavBar
         titleAlign="left"
         right={
-          <span onClick={(e) => Toast.show("empty")}>
-            empty
+          <span onClick={(e) => Toast.show("Empty")}>
+            Empty
           </span>
         }
         left={<Close />}
         back={<ArrowLeft />}
-        onBackClick={(e) => Toast.show("return")}
+        onBackClick={(e) => Toast.show("Back")}
       >
         <div className="title title-left">
-          <span onClick={(e) => Toast.show("title ")}>
-            Browsing history
+          <span onClick={(e) => Toast.show("Title")}>
+            Browsing History
           </span>
-          <span className="desc">Browsing history</span>
+          <span className="desc">Browsing History</span>
         </div>
       </NavBar>
       <NavBar
@@ -201,16 +201,16 @@ const App = () => {
         back={<ArrowLeft />}
         right={
           <>
-            <span onClick={(e) => Toast.show("edit")}>
-              edit
+            <span onClick={(e) => Toast.show("Edit")}>
+              Edit
             </span>
             <More onClick={(e) => Toast.show('icon')} />
           </>
         }
-        onBackClick={(e) => Toast.show("return")}
+        onBackClick={(e) => Toast.show("Back")}
       >
-        <span onClick={(e) => Toast.show("title ")}>
-          shopping cart
+        <span onClick={(e) => Toast.show("Title")}>
+          Shopping Cart
         </span>
         <i
           style={{ marginLeft: '5px' }}
@@ -225,13 +225,13 @@ const App = () => {
         back={<ArrowLeft />}
         right={
           <>
-            <span onClick={(e) => Toast.show("edit")}>
-              edit
+            <span onClick={(e) => Toast.show("Edit")}>
+              Edit
             </span>
             <More onClick={(e) => Toast.show('icon')} />
           </>
         }
-        onBackClick={(e) => Toast.show("return")}
+        onBackClick={(e) => Toast.show("Back")}
       >
         <div>
           <Tabs
