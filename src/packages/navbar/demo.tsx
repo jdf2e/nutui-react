@@ -41,17 +41,18 @@ const NavBarDemo = () => {
       e51e4582: '瀏覽記錄',
     },
     'en-US': {
-      ce5c5446: 'Basic usage',
-      c38a08ef: 'order details',
-      b840c88f: 'title',
-      a74a1fd4: 'return',
-      '8dab2f66': 'edit',
-      cfbdc781: 'empty',
-      c3a3a1d2: 'shopping cart',
-      e51e4582: 'Browsing history',
+      ce5c5446: 'Basic Usage',
+      c38a08ef: 'Order Details',
+      b840c88f: 'Title',
+      a74a1fd4: 'Back',
+      '8dab2f66': 'Edit',
+      cfbdc781: 'Empty',
+      c3a3a1d2: 'Shopping Cart',
+      e51e4582: 'Browsing History',
     },
   })
   const [tab1value, setTab1value] = useState<string | number>('0')
+  const [tab2value, setTab2value] = useState<string | number>('0')
   return (
     <>
       <div className="demo">
@@ -134,16 +135,21 @@ const NavBarDemo = () => {
           }
           onBackClick={(e) => Toast.show(translated.a74a1fd4)}
         >
-          <div>
+          <div style={{ width: '100%' }}>
             <Tabs
               value={tab1value}
               onChange={(paneKey) => {
                 setTab1value(paneKey)
               }}
+              style={{
+                '--nutui-tabs-titles-padding': 0,
+                '--nutui-tabs-titles-gap': 0,
+              }}
             >
               <TabPane title="Tab 1"> Tab 1 </TabPane>
               <TabPane title="Tab 2"> Tab 2 </TabPane>
               <TabPane title="Tab 3"> Tab 3 </TabPane>
+              <TabPane title="Tab 4"> Tab 4 </TabPane>
             </Tabs>
           </div>
         </NavBar>
@@ -187,7 +193,7 @@ const NavBarDemo = () => {
           back={<ArrowLeft />}
           onBackClick={(e) => Toast.show(translated.a74a1fd4)}
         >
-          <div className="title">
+          <div className="title title-left">
             <span onClick={(e) => Toast.show(translated.b840c88f)}>
               {translated.e51e4582}
             </span>
@@ -236,9 +242,9 @@ const NavBarDemo = () => {
               className="navbar-tabs"
               align="left"
               activeType="simple"
-              value={tab1value}
+              value={tab2value}
               onChange={(paneKey) => {
-                setTab1value(paneKey)
+                setTab2value(paneKey)
               }}
             >
               <TabPane title="Tab1"> Tab1 </TabPane>

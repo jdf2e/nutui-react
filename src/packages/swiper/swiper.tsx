@@ -152,10 +152,12 @@ export const Swiper = React.forwardRef<
     resetPosition()
     touch.reset()
     requestAniFrame(() => {
-      swiperRef.current.moving = false
-      move({
-        pace: -1,
-        isEmit: true,
+      requestAniFrame(() => {
+        swiperRef.current.moving = false
+        move({
+          pace: -1,
+          isEmit: true,
+        })
       })
     })
   }
@@ -164,10 +166,12 @@ export const Swiper = React.forwardRef<
     resetPosition()
     touch.reset()
     requestAniFrame(() => {
-      swiperRef.current.moving = false
-      move({
-        pace: 1,
-        isEmit: true,
+      requestAniFrame(() => {
+        swiperRef.current.moving = false
+        move({
+          pace: 1,
+          isEmit: true,
+        })
       })
     })
   }
@@ -176,16 +180,18 @@ export const Swiper = React.forwardRef<
     resetPosition()
     touch.reset()
     requestAniFrame(() => {
-      swiperRef.current.moving = false
-      let targetIndex
-      if (props.loop && swiperItemCount === index) {
-        targetIndex = active === 0 ? 0 : index
-      } else {
-        targetIndex = index % swiperItemCount
-      }
-      move({
-        pace: targetIndex - active,
-        isEmit: true,
+      requestAniFrame(() => {
+        swiperRef.current.moving = false
+        let targetIndex
+        if (props.loop && swiperItemCount === index) {
+          targetIndex = active === 0 ? 0 : index
+        } else {
+          targetIndex = index % swiperItemCount
+        }
+        move({
+          pace: targetIndex - active,
+          isEmit: true,
+        })
       })
     })
   }
@@ -275,6 +281,7 @@ export const Swiper = React.forwardRef<
   })
   const getStyle = (moveOffset = offset) => {
     const target = innerRef.current
+    if (!target) return
     let _offset = 0
     if (!center) {
       _offset = moveOffset
@@ -404,11 +411,6 @@ export const Swiper = React.forwardRef<
     }
     return () => setReady(false)
   }, [ready])
-
-  useEffect(() => {
-    stopAutoPlay()
-    startPlay()
-  }, [children])
 
   useEffect(() => {
     const events = [

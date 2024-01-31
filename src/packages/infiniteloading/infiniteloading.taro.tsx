@@ -151,6 +151,7 @@ export const InfiniteLoading: FunctionComponent<
     if (distance.current < refreshMaxH.current) {
       distance.current = 0
       setTopDisScoll(0)
+      isTouching.current = false
     } else {
       await onRefresh?.()
       refreshDone()

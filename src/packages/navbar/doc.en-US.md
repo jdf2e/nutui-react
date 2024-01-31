@@ -10,177 +10,246 @@ Provides navigation capabilities.
 import { NavBar } from '@nutui/nutui-react';
 ```
 
-## code example
+## Code Example
 
-### Basic usage
-
-:::demo
-
-```tsx
-import  React from "react";
-import { NavBar, Toast } from '@nutui/nutui-react';
-import { ArrowLeft, Share, Close } from '@nutui/icons-react'
-
-const App = () => {
-  return ( 
-    <NavBar
-        back={
-        <>
-            <ArrowLeft color="#979797" />
-            back
-        </>
-        }
-        left={<Close width={12} />}
-        right={
-        <span onClick={(e) =>  Toast.show('icon')}>
-            <Share />
-        </span>
-        }
-        onBackClick={(e) => Toast.show("back")}
-    >
-        <span onClick={(e) => Toast.show("title")}>
-        order details
-        </span>
-    </NavBar>
-  );
-};  
-export default App;
-
-```
-
-:::
-
-:::demo
-
-```tsx
-import  React from "react";
-import { NavBar, Toast } from '@nutui/nutui-react';
-import { ArrowLeft } from '@nutui/icons-react'
-
-const App = () => {
-  return ( 
-    <NavBar
-        right={
-        <span onClick={(e) => Toast.show('清空')}>
-            clear
-        </span>
-        }
-        back={<ArrowLeft color="#979797" />}
-        onBackClick={(e) => Toast.show("back")}
-    >
-        <span onClick={(e) => Toast.show("title")}>
-        Browsing history
-        </span>
-    </NavBar>
-  );
-};  
-export default App;
-
-```
-
-:::
-
-:::demo
-
-```tsx
-import  React from "react";
-import { NavBar, Toast } from '@nutui/nutui-react';
-import { Cart, ArrowLeft, More} from '@nutui/icons-react'
-
-const App = () => {
-  return ( 
-    <NavBar
-        back={<ArrowLeft color="#979797" />}
-        right={
-        <>
-            <span style={{ marginRight: '5px' }} onClick={(e) => Toast.show('edit')}>
-            edit
-            </span>
-            <More onClick={(e) => Toast.show('icon')} />
-        </>
-        }
-        onBackClick={(e) => Toast.show("back")}
-    >
-        <span onClick={(e) => Toast.show("title")}>
-        cart
-        </span>
-        <i style={{ marginLeft: '5px' }} onClick={(e) => Toast.show('icon')}>
-            <Cart />
-        </i>
-    </NavBar>
-  );
-};  
-export default App;
-
-```
-
-:::
+### Basic Usage
 
 :::demo
 
 ```tsx
 import  React, { useState } from "react";
-import { NavBar, Tabs, TabPane, Toast } from '@nutui/nutui-react';
-import { ArrowLeft,More } from '@nutui/icons-react'
+import { NavBar, Toast, Tabs, TabPane } from '@nutui/nutui-react';
+import { Share, More, Cart, ArrowLeft, Close } from '@nutui/icons-react'
 
 const App = () => {
-  const [tab1value, setTab1value] = useState('0')
+  const [tab1value, setTab1value] = useState<string | number>('0')
+  const [tab2value, setTab2value] = useState<string | number>('0')
+  const style = `
+    .flex-center {
+      display: inline-flex;
+      align-items: center;
+    }
+    .title {
+      display: flex;
+      flex-direction: column;
+      .desc {
+        font-weight: 400;
+        font-size: 12px;
+        color: var(--nutui-gray-8);
+      }
+      .title-left {
+        text-align: left;
+      }
+    }
+    .navbar-tabs .nut-tabs-titles {
+      padding: 0;
+      .nut-tabs-titles-item {
+        margin: 0;
+        font-size: 16px;
+      }
+      .nut-tabs-titles-item-active {
+        font-size: 20px;
+      }
+    }
+  `
   return ( 
-    <NavBar
-         back={<ArrowLeft color="#979797" />}
-          right={
-            <>
-              <span style={{ marginRight: '5px' }} onClick={(e) => Toast.show("edit")}>
-                edit
-              </span>
-              <More onClick={(e) => Toast.show('icon')} />
-            </>
-          }
-          onBackClick={(e) => Toast.show("back")}
-        >
-            <Tabs value={tab1value} onChange={({ paneKey }) => { setTab1value(paneKey) }}>
-              <TabPane title="Tab 1"> Tab 1 </TabPane>
-              <TabPane title="Tab 2"> Tab 2 </TabPane>
-              <TabPane title="Tab 3"> Tab 3 </TabPane>
-            </Tabs>
+    <>
+      <style>{style}</style>
+      <NavBar
+        back={
+          <>
+            <ArrowLeft />Back
+          </>
+        }
+        right={
+          <span className="flex-center" onClick={(e) => Toast.show('icon')}>
+            <Share />
+          </span>
+        }
+        onBackClick={(e) => Toast.show("Back")}
+      >
+        Order Details
       </NavBar>
-  );
-};  
-export default App;
-
-```
-
-:::
-
-:::demo
-
-```tsx
-import  React from "react";
-import { NavBar, Toast } from '@nutui/nutui-react';
-import { ArrowLeft, Share, Close } from '@nutui/icons-react'
-
-const App = () => {
-  return ( 
-    <NavBar
+      <NavBar
+        right={
+          <span className="flex-center" onClick={(e) => Toast.show('icon')}>
+            <Share />
+          </span>
+        }
+        onBackClick={(e) => Toast.show("Back")}
+      >
+        Order Details
+      </NavBar>
+      <NavBar
+        right={
+          <span onClick={(e) => Toast.show("Empty")}>
+            Empty
+          </span>
+        }
+        left={<Close />}
+        back={<ArrowLeft />}
+        onBackClick={(e) => Toast.show("Back")}
+      >
+        <div className="title">
+          <span onClick={(e) => Toast.show("Title")}>
+            Browsing History
+          </span>
+          <span className="desc">Browsing History</span>
+        </div>
+      </NavBar>
+      <NavBar
+        back={<ArrowLeft />}
+        right={
+          <>
+            <span onClick={(e) => Toast.show("Edit")}>
+              Edit
+            </span>
+            <More onClick={(e) => Toast.show('icon')} />
+          </>
+        }
+        onBackClick={(e) => Toast.show("Back")}
+      >
+        <span onClick={(e) => Toast.show("Title")}>
+          Shopping Cart
+        </span>
+        <i
+          style={{ marginLeft: '5px' }}
+          className="flex-center"
+          onClick={(e) => Toast.show('icon')}
+        >
+          <Cart />
+        </i>
+      </NavBar>
+      <NavBar
+        back={<ArrowLeft />}
+        right={
+          <>
+            <span onClick={(e) => Toast.show("Edit")}>
+              Edit
+            </span>
+            <More onClick={(e) => Toast.show('icon')} />
+          </>
+        }
+        onBackClick={(e) => Toast.show("Back")}
+      >
+        <div style={{ width: '100%' }}>
+          <Tabs
+            value={tab1value}
+            onChange={(paneKey) => {
+              setTab1value(paneKey)
+            }}
+            style={{
+              '--nutui-tabs-titles-padding': 0,
+              '--nutui-tabs-titles-gap': 0,
+            }}
+          >
+            <TabPane title="Tab 1"> Tab 1 </TabPane>
+            <TabPane title="Tab 2"> Tab 2 </TabPane>
+            <TabPane title="Tab 3"> Tab 3 </TabPane>
+            <TabPane title="Tab 4"> Tab 4 </TabPane>
+          </Tabs>
+        </div>
+      </NavBar>
+      <NavBar
         titleAlign="left"
         back={
-        <>
-            <ArrowLeft color="#979797" />
-            back
-        </>
+          <>
+            <ArrowLeft />Back
+          </>
         }
-        left={<Close width={12} />}
         right={
-        <span onClick={(e) =>  Toast.show('icon')}>
+          <span className="flex-center" onClick={(e) => Toast.show('icon')}>
             <Share />
-        </span>
+          </span>
         }
-        onBackClick={(e) => Toast.show("back")}
-    >
-        <span onClick={(e) => Toast.show("title")}>
-        order details
+        onBackClick={(e) => Toast.show("Back")}
+      >
+        Order Details
+      </NavBar>
+      <NavBar
+        titleAlign="left"
+        right={
+          <span className="flex-center" onClick={(e) => Toast.show('icon')}>
+            <Share />
+          </span>
+        }
+        onBackClick={(e) => Toast.show("Back")}
+      >
+        Order Details
+      </NavBar>
+
+      <NavBar
+        titleAlign="left"
+        right={
+          <span onClick={(e) => Toast.show("Empty")}>
+            Empty
+          </span>
+        }
+        left={<Close />}
+        back={<ArrowLeft />}
+        onBackClick={(e) => Toast.show("Back")}
+      >
+        <div className="title title-left">
+          <span onClick={(e) => Toast.show("Title")}>
+            Browsing History
+          </span>
+          <span className="desc">Browsing History</span>
+        </div>
+      </NavBar>
+      <NavBar
+        titleAlign="left"
+        back={<ArrowLeft />}
+        right={
+          <>
+            <span onClick={(e) => Toast.show("Edit")}>
+              Edit
+            </span>
+            <More onClick={(e) => Toast.show('icon')} />
+          </>
+        }
+        onBackClick={(e) => Toast.show("Back")}
+      >
+        <span onClick={(e) => Toast.show("Title")}>
+          Shopping Cart
         </span>
-    </NavBar>
+        <i
+          style={{ marginLeft: '5px' }}
+          className="flex-center"
+          onClick={(e) => Toast.show('icon')}
+        >
+          <Cart />
+        </i>
+      </NavBar>
+      <NavBar
+        titleAlign="left"
+        back={<ArrowLeft />}
+        right={
+          <>
+            <span onClick={(e) => Toast.show("Edit")}>
+              Edit
+            </span>
+            <More onClick={(e) => Toast.show('icon')} />
+          </>
+        }
+        onBackClick={(e) => Toast.show("Back")}
+      >
+        <div>
+          <Tabs
+            className="navbar-tabs"
+            align="left"
+            activeType="simple"
+            value={tab2value}
+            onChange={(paneKey) => {
+              setTab2value(paneKey)
+            }}
+          >
+            <TabPane title="Tab1"> Tab1 </TabPane>
+            <TabPane title="Tab2"> Tab2 </TabPane>
+            <TabPane title="Tab3"> Tab3 </TabPane>
+          </Tabs>
+        </div>
+      </NavBar>
+    </>
   );
 };  
 export default App;

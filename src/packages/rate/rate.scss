@@ -1,5 +1,6 @@
 .nut-rate {
   display: flex;
+  touch-action: pan-x;
 
   &.disabled {
     .nut-rate-item-icon {
@@ -30,9 +31,14 @@
       left: 0;
       top: 0;
       overflow: hidden;
+
+      .nut-icon {
+        flex-shrink: 0;
+      }
     }
 
     &-icon {
+      display: flex;
       color: $rate-icon-color;
       cursor: pointer;
 

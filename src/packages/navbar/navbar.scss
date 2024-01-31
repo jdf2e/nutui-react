@@ -113,12 +113,18 @@
         }
       }
     }
-
+    .nut-navbar-right {
+      position: static;
+      display: inline-flex;
+      white-space: nowrap;
+      padding-left: 0;
+    }
     .nut-navbar-left-back {
       margin-right: 0;
     }
 
     .nut-navbar-title {
+      min-width: 0;
       margin: 0;
       flex: 1;
       justify-content: flex-start;

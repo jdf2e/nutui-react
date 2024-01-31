@@ -231,6 +231,25 @@ export default RadioGroupOptions;
 
 :::
 
+## Set shape
+
+:::demo
+
+```tsx
+import React, { useState } from 'react'
+import { Radio } from '@nutui/nutui-react'
+
+const RadioGroupOptions = () => {
+  return <Radio.Group defaultValue={1} shape='button'>
+    <Radio value={1}>Set shape</Radio>
+    <Radio value={2}>Set shape</Radio>
+  </Radio.Group>
+}
+export default RadioGroupOptions
+```
+
+:::
+
 ## Radio
 
 ### Props
@@ -256,6 +275,7 @@ export default RadioGroupOptions;
 | value | identifier of the currently selected item | `string`  \|  `number` | `-` |
 | labelPosition | The position of the text | `left` \| `right` | `right` |
 | disabled | Whether to disable | `boolean` | `false` |
+| shape | shape | `button` \| `round` |`-` |
 | direction | use landscape orientation | `horizontal` \| `vertical` | `vertical` |
 | options | Configure options to render radio buttons | `Array<{ label: string value: string disabled?: boolean }>`  | `-` |
 | onChange | Triggered when the value changes | `(value: string \| number) => void` | `-` |

@@ -39,14 +39,6 @@ const ConfigProviderDemo = () => {
   return (
     <>
       <div className="demo">
-        <h2>{translated.title1}</h2>
-        <ConfigProvider>
-          <TextArea disabled showCount maxLength={20} />
-        </ConfigProvider>
-        <h2>{translated.title2}</h2>
-        <ConfigProvider locale={enUS}>
-          <TextArea disabled showCount maxLength={20} />
-        </ConfigProvider>
         <h2>{translated.defaultTheme}</h2>
         <ConfigProvider>
           <Cell.Group>
@@ -72,6 +64,14 @@ const ConfigProviderDemo = () => {
               </Button>
             </Cell>
           </Cell.Group>
+        </ConfigProvider>
+        <h2>{translated.title1}</h2>
+        <ConfigProvider>
+          <TextArea disabled showCount maxLength={20} />
+        </ConfigProvider>
+        <h2>{translated.title2}</h2>
+        <ConfigProvider locale={enUS}>
+          <TextArea disabled showCount maxLength={20} />
         </ConfigProvider>
 
         <h2>RTL</h2>

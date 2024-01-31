@@ -116,24 +116,47 @@ export default App;
 
 :::
 
-### Click
+### Click event
 
 :::demo
 
 ```tsx
 import React from "react";
 import { BackTop, Cell } from '@nutui/nutui-react';
+import { Top } from '@nutui/icons-react';
 
 const App = () => {
   const handleClick = () => {
-    console.log('click backtop')
+    console.log('backtop')
   }
   return (
-    <div id="target" style={{ height: '1000px', overflowY: 'auto' }}>
+    <div
+      style={{ height: '100vh', overflowY: 'auto' }}
+      id="target"
+    >
       {new Array(24).fill(0).map((_, index) => {
-        return <Cell key={index}>text data{index}</Cell>
+        return <Cell key={index}>test data{index}</Cell>
       })}
-      <BackTop threshold={100} bottom={50} onClick={handleClick} />
+      <BackTop
+        threshold={200}
+        style={{
+          bottom: '50px',
+          right: '20px',
+        }}
+        onClick={handleClick}
+        target="target"
+      >
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Top width={12} height={12} />
+          <div style={{ fontSize: '12px' }}>Top</div>
+        </div>
+      </BackTop>
     </div>
   );
 };
@@ -150,7 +173,7 @@ export default App;
 | --- | --- | --- | --- |
 | target | The listening element | `string` | `-` |
 | threshold | How high to scroll the page vertically | `number` | `200` |
-| zIndex | Set the component z-index | `number` | `10` |
+| zIndex | Set the component z-index | `number` | `900` |
 | duration | Set animation duration | `number` | `1000` |
 | onClick | Emitted when component is clicked | `(event: MouseEvent<HTMLDivElement>) => void` | `-` |
 

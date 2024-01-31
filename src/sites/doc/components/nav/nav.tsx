@@ -25,7 +25,10 @@ const Nav = () => {
         {cNav.map((cn: any) => {
           return (
             <Fragment key={cn.name}>
-              <li>{lang === 'zh-CN' ? cn.name : cn.enName}</li>
+              {cn.enName === 'dentry1' ? null : (
+                <li>{lang === 'zh-CN' ? cn.name : cn.enName}</li>
+              )}
+
               <ul>
                 {cn.packages.map((cp: any) => {
                   if (!cp.show) return null
@@ -33,8 +36,8 @@ const Nav = () => {
                     <NavLink
                       key={Math.random()}
                       className={({ isActive, isPending }) =>
-                      isPending ? "" : isActive ? "selected" : ""
-                    }
+                        isPending ? '' : isActive ? 'selected' : ''
+                      }
                       to={`${lang ? `/${lang}` : ''}/component/${cp.name}`}
                     >
                       <li>

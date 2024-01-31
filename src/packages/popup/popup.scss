@@ -300,6 +300,14 @@
       animation-name: popup-slide-left-exit;
       animation-duration: $popup-animation-duration;
     }
+
+    &-center-exit-done,
+    &-left-exit-done,
+    &-right-exit-done,
+    &-top-exit-done,
+    &-bottom-exit-done {
+      display: none;
+    }
   }
 
   .nut-overflow-hidden {

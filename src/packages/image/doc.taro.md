@@ -14,7 +14,7 @@ import { Image } from '@nutui/nutui-react-taro';
 
 ### 基础用法
 
-基础用法与原生 img 标签一致，可以设置 src、width、height、alt 等原生属性。
+借助 Taro Image 标签实现，可以透传使用 Taro Image 的属性。
 
 :::demo
 
@@ -24,9 +24,9 @@ import { Image } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const src =
-    '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
+    'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
   return <>
-    <Image src={src} width="100%" />
+    <Image src={src} height={200} />
   </>
 }
 export default App;
@@ -42,33 +42,45 @@ export default App;
 
 ```tsx
 import React from "react";
-import { Image } from '@nutui/nutui-react-taro';
+import { Image, Row, Col } from '@nutui/nutui-react-taro';
 
 const App = () => {
   const src =
-    '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
+    'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
   return <>
-    <Image
-      src={src}
-      mode="scaleToFill"
-      width="100"
-      height="100"
-      radius="50%"
-    />
-    <Image
-      src={src}
-      mode="scaleToFill"
-      width="80"
-      height="80"
-      radius="50%"
-    />
-    <Image
-      src={src}
-      mode="scaleToFill"
-      width="80"
-      height="80"
-      radius="10px"
-    />
+    <Row gutter={10}>
+      <Col span="8">
+        <Image
+          src={src}
+          mode="aspectFit"
+          width="80"
+          height="80"
+          radius="50%"
+        />
+      </Col>
+    </Row>
+    <Row gutter={10}>
+      <Col span="8">
+        <Image
+          src={src}
+          mode="scaleToFill"
+          width="80"
+          height="80"
+          radius="50%"
+        />
+      </Col>
+    </Row>
+    <Row gutter={10}>
+      <Col span="8">
+        <Image
+          src={src}
+          mode="scaleToFill"
+          width="80"
+          height="80"
+          radius="10px"
+        />
+      </Col>
+    </Row>
   </>
 }
 export default App;
@@ -76,7 +88,7 @@ export default App;
 
 :::
 
-### 加载中图片
+### 加载中提示
 
 `Image` 组件提供了默认的加载中提示，支持通过 `loading` 自定义内容。
 
@@ -84,22 +96,28 @@ export default App;
 
 ```tsx
 import React from "react";
-import { Image } from '@nutui/nutui-react-taro';
+import { Image, Row, Col } from '@nutui/nutui-react-taro';
 import { Loading } from '@nutui/icons-react-taro';
+import {  View } from '@tarojs/components'
 
 const App = () => {
   const src =
-    '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
+    'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
   return <>
-    <Image
-      width="100"
-      height="100"
-    />
-    <Image
-      width="80"
-      height="80"
-      loading={<Loading className="nut-icon-loading" />}
-    />
+    <Row gutter={10}>
+      <Col span="8">
+        <Image width="80" height="80" />
+        <View style={{ textAlign: 'left' }}>默认</View>
+      </Col>
+      <Col span="8">
+        <Image
+          width="80"
+          height="80"
+          loading={<Loading className="nut-icon-loading" />}
+        />
+        <View style={{ textAlign: 'left' }}>自定义</View>
+      </Col>
+    </Row>
   </>
 }
 export default App;
@@ -115,26 +133,33 @@ export default App;
 
 ```tsx
 import React from "react";
-import { Image } from '@nutui/nutui-react-taro';
+import { Image, Row, Col } from '@nutui/nutui-react-taro';
 import { Failure } from '@nutui/icons-react-taro';
+import {  View } from '@tarojs/components'
 
 const App = () => {
   return <>
-    <Image src="https://x" width="80" height="80" />
-    <Image
-      src="https://x"
-      width="100"
-      height="100"
-      error={<Failure />}
-    />
+    <Row gutter={10}>
+      <Col span="8">
+        <Image src="https://x" width="80" height="80" />
+        <View style={{ textAlign: 'left' }}>默认</View>
+      </Col>
+      <Col span="8">
+        <Image
+          src="https://x"
+          width="80"
+          height="80"
+          error={<Failure />}
+        />
+        <View style={{ textAlign: 'left' }}>自定义</View>
+      </Col>
+    </Row>
   </>
 }
 export default App;
 ```
 
 :::
-
-
 
 ### Image + text 模式
 
@@ -170,7 +195,6 @@ export default App;
 ```
 
 :::
-
 
 ### 填充模式
 
@@ -242,8 +266,7 @@ export default App;
 
 :::
 
-
-### 图片位置
+### 图片懒加载
 
 :::demo
 
@@ -284,6 +307,5 @@ export default App
 | loading | 是否展示加载中图片 | `boolean \| ReactNode` | `true` |
 | onLoad | 图片加载完后触发 | `() => void` | `-` |
 | onError | 图片加载失败后触发 | `() => void` | `-` |
-
 
 ### 直接使用 Taro 现有 Image 组件开发 [参考文档](https://taro-docs.jd.com/docs/components/media/image)

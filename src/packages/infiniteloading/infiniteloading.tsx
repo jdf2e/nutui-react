@@ -160,6 +160,7 @@ export const InfiniteLoading: FunctionComponent<
     if (distance.current < refreshMaxH.current) {
       distance.current = 0
       getRefreshTop().style.height = `${distance.current}px`
+      isTouching.current = false
     } else {
       await onRefresh?.()
       refreshDone()

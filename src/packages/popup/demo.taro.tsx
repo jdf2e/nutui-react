@@ -6,29 +6,8 @@ import { useTranslate } from '@/sites/assets/locale/taro'
 import { Cell, Popup } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 
-interface T {
-  ce5c5446: string
-  c38a08ef: string
-  b840c88f: string
-  a74a1fd4: string
-  '8dab2f66': string
-  cfbdc781: string
-  cfbdc782: string
-  c3a3a1d2: string
-  e51e4582: string
-  '7db1a8b2': string
-  '7db1a8b3': string
-  '7db1a8b4': string
-  '7db1a8b5': string
-  a52bef0c: string
-  d04fcbda: string
-  '0aaad620': string
-  ea3d02f2: string
-  c9e6df49: string
-}
-
 const PopupDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       ce5c5446: '基础类型',
       c38a08ef: '展示弹出层',
@@ -101,7 +80,6 @@ const PopupDemo = () => {
   const [showIconPosition, setShowIconPosition] = useState(false)
   const [showIconDefine, setShowIconDefine] = useState(false)
   const [showBottomRound, setShowBottomRound] = useState(false)
-  const [showMountNode, setShowMountNode] = useState(false)
   const [showMutiple, setShowMutiple] = useState(false)
   const [showMutipleInner, setShowMutipleInner] = useState(false)
   const [showOverlayStop, setShowOverlayStop] = useState(false)
@@ -129,7 +107,9 @@ const PopupDemo = () => {
             {Array.from({ length: 20 })
               .fill('')
               .map((v, i) => (
-                <View key={i}>{translated.b840c88f}</View>
+                <Cell key={i}>
+                  <View>{translated.b840c88f}</View>
+                </Cell>
               ))}
           </View>
         </Popup>
@@ -168,7 +148,9 @@ const PopupDemo = () => {
               .fill('')
               .map((v, i) => (
                 <View key={i}>
-                  {translated.cfbdc781}-{i}
+                  <Cell>
+                    {translated.cfbdc781}-{i}
+                  </Cell>
                 </View>
               ))}
           </ScrollView>
