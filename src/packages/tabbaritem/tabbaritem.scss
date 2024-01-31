@@ -40,8 +40,10 @@
 
   &-active {
     color: $tabbar-active-color;
+
     .nut-tabbar-item-icon-box {
       color: inherit;
+
       .nut-icon {
         color: inherit;
       }
