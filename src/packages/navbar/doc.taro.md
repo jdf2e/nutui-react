@@ -17,182 +17,272 @@ import { NavBar } from '@nutui/nutui-react-taro';
 :::demo
 
 ```tsx
-import  React from "react";
-import { NavBar } from '@nutui/nutui-react-taro';
-import { ArrowLeft, Share, Close  } from '@nutui/icons-react-taro'
-import Taro from '@tarojs/taro'
-
-const App = () => {
-  return ( 
-    <NavBar
-        back={
-        <>
-            <ArrowLeft color="#979797" />
-            返回
-        </>
-        }
-        left={<Close size={12} />}
-        right={
-        <span onClick={(e) => Taro.showToast({ title: 'icon' })}>
-            <Share />
-        </span>
-        }
-        onBackClick={(e) => Taro.showToast({ title: '返回' })}
-    >
-        <span onClick={(e) => Taro.showToast({ title: '标题' })}>
-        订单详情
-        </span>
-    </NavBar>
-  );
-};  
-export default App;
-
-```
-
-:::
-
-:::demo
-
-```tsx
-import  React from "react";
-import { NavBar } from '@nutui/nutui-react-taro';
-import { ArrowLeft } from '@nutui/icons-react-taro'
-import Taro from '@tarojs/taro'
-
-const App = () => {
-  return ( 
-    <NavBar
-        right={
-        <span onClick={(e) => Taro.showToast({ title: '清空' })}>
-            清空
-        </span>
-        }
-        back={<ArrowLeft color="#979797" />}
-        onBackClick={(e) => Taro.showToast({ title: '返回' })}
-    >
-        <span onClick={(e) => Taro.showToast({ title: '标题' })}>
-        浏览记录
-        </span>
-    </NavBar>
-  );
-};  
-export default App;
-
-```
-
-:::
-
-:::demo
-
-```tsx
-import  React from "react";
-import { NavBar } from '@nutui/nutui-react-taro';
-import { Cart, ArrowLeft, More } from '@nutui/icons-react-taro'
-import Taro from '@tarojs/taro'
-
-const App = () => {
-  return ( 
-    <NavBar
-        back={<ArrowLeft color="#979797" />}
-        right={
-        <>
-            <span style={{ marginRight: '5px' }} onClick={(e) => Taro.showToast({ title: '编辑' })}>
-            编辑
-            </span>
-            <More onClick={(e) => Taro.showToast({ title: 'icon' })} />
-        </>
-        }
-        onBackClick={(e) => Taro.showToast({ title: '返回' })}
-    >
-        <span onClick={(e) => Taro.showToast({ title: '标题' })}>
-        购物车
-        </span>
-        <i style={{ marginLeft: '5px' }} onClick={(e) => Taro.showToast({ title: 'icon' })}>
-            <Cart />
-        </i>
-    </NavBar>
-  );
-};  
-export default App;
-
-```
-
-:::
-
-:::demo
-
-```tsx
 import  React, { useState } from "react";
-import { NavBar, Tabs, TabPane } from '@nutui/nutui-react-taro';
-import { ArrowLeft,More } from '@nutui/icons-react-taro'
+import { NavBar, Toast, Tabs, TabPane } from '@nutui/nutui-react-taro';
+import { Share, More, Cart, ArrowLeft, Close } from '@nutui/icons-react-taro'
 import Taro from '@tarojs/taro'
-import { View } from '@tarojs/components'
 
 const App = () => {
-  const [tab1value, setTab1value] = useState('0')
-  return (   
-      <NavBar
-         back={<ArrowLeft color="#979797" />}
-          right={
-            <>
-              <span style={{ marginRight: '5px' }} onClick={(e) => Taro.showToast({ title: '编辑' })}>
-                编辑
-              </span>
-              <More onClick={(e) => Taro.showToast({ title: 'icon' })} />
-            </>
-          }
-          onBackClick={(e) => Taro.showToast({ title: '返回' })}
-        >
-          <View style={{ width: '100%' }}>
-            <Tabs value={tab1value} onChange={({ paneKey }) => { setTab1value(paneKey) }}
-              style={{
-                '--nutui-tabs-titles-padding': 0,
-                '--nutui-tabs-titles-gap': 0,
-              }}
-            >
-              <TabPane title="Tab 1"> Tab 1 </TabPane>
-              <TabPane title="Tab 2"> Tab 2 </TabPane>
-              <TabPane title="Tab 3"> Tab 3 </TabPane>
-              <TabPane title="Tab 4"> Tab 4 </TabPane>
-            </Tabs>
-          </View>
-      </NavBar>
-  );
-};  
-export default App;
-
-```
-
-:::
-
-:::demo
-
-```tsx
-import  React from "react";
-import { NavBar, Toast } from '@nutui/nutui-react';
-import { ArrowLeft, Share, Close } from '@nutui/icons-react'
-
-const App = () => {
+   const [tab1value, setTab1value] = useState<string | number>('0')
+  const [tab2value, setTab2value] = useState<string | number>('0')
+  const style = `
+    .flex-center {
+      display: inline-flex;
+      align-items: center;
+    }
+    .title {
+      display: flex;
+      flex-direction: column;
+      .desc {
+        font-weight: 400;
+        font-size: 12px;
+        color: var(--nutui-gray-8);
+      }
+      .title-left {
+        text-align: left;
+      }
+    }
+    .navbar-tabs .nut-tabs-titles {
+      padding: 0;
+      .nut-tabs-titles-item {
+        margin: 0;
+        font-size: 16px;
+      }
+      .nut-tabs-titles-item-active {
+        font-size: 20px;
+      }
+    }
+  `
   return ( 
-    <NavBar
+    <>
+      <style>{style}</style>
+      <NavBar
         back={
-        <>
-            <ArrowLeft color="#979797" />
-            返回
-        </>
+          <>
+            <ArrowLeft size={14} />返回
+          </>
         }
-        left={<Close size={12} />}
         right={
-        <span onClick={(e) =>  Toast.show('icon')}>
-            <Share />
-        </span>
+          <span
+            className="flex-center"
+            onClick={(e) => Taro.showToast({ title: 'icon' })}
+          >
+            <Share size={14} />
+          </span>
         }
-        onBackClick={(e) =>  Toast.show("返回")}
-    >
-        <span onClick={(e) =>  Toast.show("标题")}>
-        订单详情
+        onBackClick={(e) => Taro.showToast({ title: '返回' })}
+      >
+        <span onClick={(e) => Taro.showToast({ title: '标题' })}>
+          订单详情
         </span>
-    </NavBar>
+      </NavBar>
+
+      <NavBar
+        right={
+          <span
+            onClick={(e) => Taro.showToast({ title: '清空' })}
+          >
+            清空
+          </span>
+        }
+        left={<Close size={14} />}
+        back={<ArrowLeft size={14} />}
+        onBackClick={(e) => Taro.showToast({ title: '返回' })}
+      >
+        <div className="title">
+          <span
+            onClick={(e) => Taro.showToast({ title: '清空' })}
+          >
+            浏览记录
+          </span>
+          <span className="desc">浏览记录</span>
+        </div>
+      </NavBar>
+      <NavBar
+        back={<ArrowLeft size={14} />}
+        right={
+          <>
+            <span
+              style={{ marginRight: '5px' }}
+              onClick={(e) =>
+                Taro.showToast({ title: '编辑' })
+              }
+            >
+              编辑
+            </span>
+            <More
+              size={20}
+              onClick={(e) => Taro.showToast({ title: 'icon' })}
+            />
+          </>
+        }
+        onBackClick={(e) => Taro.showToast({ title: '返回' })}
+      >
+        <span onClick={(e) => Taro.showToast({ title: '标题' })}>
+          购物车
+        </span>
+        <i
+          style={{ marginLeft: '5px' }}
+          className="flex-center"
+          onClick={(e) => Taro.showToast({ title: 'icon' })}
+        >
+          <Cart size={14} />
+        </i>
+      </NavBar>
+
+      <NavBar
+        back={<ArrowLeft size={14} />}
+        right={
+          <>
+            <span
+              style={{ marginRight: '5px' }}
+              onClick={(e) =>
+                Taro.showToast({ title: '编辑' })
+              }
+            >
+              编辑
+            </span>
+            <More
+              size={20}
+              onClick={(e) => Taro.showToast({ title: 'icon' })}
+            />
+          </>
+        }
+        onBackClick={(e) => Taro.showToast({ title: '返回' })}
+      >
+        <div style={{ width: '100%' }}>
+          <Tabs
+            value={tab1value}
+            onChange={(paneKey) => {
+              setTab1value(paneKey)
+            }}
+            style={{
+              '--nutui-tabs-titles-padding': 0,
+              '--nutui-tabs-titles-gap': 0,
+            }}
+          >
+            <TabPane title="Tab 1"> Tab 1 </TabPane>
+            <TabPane title="Tab 2"> Tab 2 </TabPane>
+            <TabPane title="Tab 3"> Tab 3 </TabPane>
+            <TabPane title="Tab 4"> Tab 4 </TabPane>
+          </Tabs>
+        </div>
+      </NavBar>
+      <NavBar
+        titleAlign="left"
+        back={
+          <>
+            <ArrowLeft size={14} />
+            返回
+          </>
+        }
+        right={
+          <span
+            className="flex-center"
+            onClick={(e) => Taro.showToast({ title: 'icon' })}
+          >
+            <Share size={14} />
+          </span>
+        }
+        onBackClick={(e) => Taro.showToast({ title: '返回' })}
+      >
+        <span onClick={(e) => Taro.showToast({ title: '标题' })}>
+          订单详情
+        </span>
+      </NavBar>
+
+      <NavBar
+        titleAlign="left"
+        right={
+          <span
+            onClick={(e) => Taro.showToast({ title: '清空' })}
+          >
+            清空
+          </span>
+        }
+        left={<Close size={14} />}
+        back={<ArrowLeft size={14} />}
+        onBackClick={(e) => Taro.showToast({ title: '返回' })}
+      >
+        <div className="title title-left">
+          <span
+            onClick={(e) => Taro.showToast({ title: '清空' })}
+          >
+            浏览记录
+          </span>
+          <span className="desc">浏览记录</span>
+        </div>
+      </NavBar>
+      <NavBar
+        titleAlign="left"
+        back={<ArrowLeft size={14} />}
+        right={
+          <>
+            <span
+              style={{ marginRight: '5px' }}
+              onClick={(e) =>
+                Taro.showToast({ title: '编辑' })
+              }
+            >
+              编辑
+            </span>
+            <More
+              size={20}
+              onClick={(e) => Taro.showToast({ title: 'icon' })}
+            />
+          </>
+        }
+        onBackClick={(e) => Taro.showToast({ title: '返回' })}
+      >
+        <span onClick={(e) => Taro.showToast({ title: '标题' })}>
+          购物车
+        </span>
+        <i
+          style={{ marginLeft: '5px' }}
+          className="flex-center"
+          onClick={(e) => Taro.showToast({ title: 'icon' })}
+        >
+          <Cart size={14} />
+        </i>
+      </NavBar>
+      <NavBar
+        titleAlign="left"
+        back={<ArrowLeft size={14} />}
+        right={
+          <>
+            <span
+              style={{ marginRight: '5px' }}
+              onClick={(e) =>
+                Taro.showToast({ title: '编辑' })
+              }
+            >
+              编辑
+            </span>
+            <More
+              size={20}
+              onClick={(e) => Taro.showToast({ title: 'icon' })}
+            />
+          </>
+        }
+        onBackClick={(e) => Taro.showToast({ title: '返回' })}
+      >
+        <div>
+          <Tabs
+            className="navbar-tabs"
+            align="left"
+            activeType="simple"
+            value={tab2value}
+            onChange={(paneKey) => {
+              setTab2value(paneKey)
+            }}
+          >
+            <TabPane title="Tab 1"> Tab 1 </TabPane>
+            <TabPane title="Tab 2"> Tab 2 </TabPane>
+            <TabPane title="Tab 3"> Tab 3 </TabPane>
+          </Tabs>
+        </div>
+      </NavBar>
+    </>
   );
 };  
 export default App;
