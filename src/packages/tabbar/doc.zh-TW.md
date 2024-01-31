@@ -23,11 +23,11 @@ import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
 
 const App = () => (
   <Tabbar defaultValue={0}>
-    <Tabbar.Item title='首頁' icon={<Home width={18} height={18} />} value={9} />
-    <Tabbar.Item title='分類' icon={<Category width={18} height={18} />} dot />
-    <Tabbar.Item title='發現' icon={<Find width={18} height={18} />} />
-    <Tabbar.Item title='購物車' icon={<Cart width={18} height={18} />} />
-    <Tabbar.Item title='我的' icon={<User width={18} height={18} />} />
+    <Tabbar.Item title="首頁" icon={<Home width={18} height={18} />} value={9} />
+    <Tabbar.Item title="分類" icon={<Category width={18} height={18} />} dot />
+    <Tabbar.Item title="發現" icon={<Find width={18} height={18} />} />
+    <Tabbar.Item title="購物車" icon={<Cart width={18} height={18} />} />
+    <Tabbar.Item title="我的" icon={<User width={18} height={18} />} />
   </Tabbar>
 )
 
