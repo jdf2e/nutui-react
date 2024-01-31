@@ -102,7 +102,7 @@ importers:
         version: 3.6.22(@types/react@18.2.42)(postcss@8.4.32)(react@18.2.0)
       '@tarojs/plugin-platform-weapp':
         specifier: 3.6.22
-        version: 3.6.22(@types/react@18.2.42)(postcss@8.4.32)
+        version: 3.6.22(@types/react@18.2.42)(postcss@8.4.32)(react@18.2.0)
       '@tarojs/react':
         specifier: 3.6.22
         version: 3.6.22(react@18.2.0)
@@ -256,6 +256,9 @@ importers:
       postcss-rtlcss:
         specifier: ^5.1.0
         version: 5.1.0(postcss@8.4.32)
+      postcss-scss:
+        specifier: ^4.0.9
+        version: 4.0.9(postcss@8.4.32)
       prettier:
         specifier: ^3.0.0
         version: 3.1.0
@@ -403,7 +406,7 @@ importers:
         version: 3.6.22(@types/react@18.2.42)(postcss@8.4.32)
       '@tarojs/plugin-platform-weapp':
         specifier: 3.6.22
-        version: 3.6.22(@types/react@18.2.42)(postcss@8.4.32)
+        version: 3.6.22(@types/react@18.2.42)(postcss@8.4.32)(react@18.2.0)
       '@tarojs/react':
         specifier: 3.6.22
         version: 3.6.22(react@18.2.0)
@@ -3944,7 +3947,7 @@ packages:
   /@tarojs/plugin-platform-qq@3.6.22(@types/react@18.2.42)(postcss@8.4.32):
     resolution: {integrity: sha512-XMVvO2k3qEmNgY7lKFvwm2+JPW6m8FqvGp6n27tAlUFYEgnSH7ejyvNauKYDKbv1XZpQHPvbJE2ijq5Zdj5WKQ==}
     dependencies:
-      '@tarojs/plugin-platform-weapp': 3.6.22(@types/react@18.2.42)(postcss@8.4.32)
+      '@tarojs/plugin-platform-weapp': 3.6.22(@types/react@18.2.42)(postcss@8.4.32)(react@18.2.0)
       '@tarojs/service': 3.6.22(@types/react@18.2.42)(postcss@8.4.32)
       '@tarojs/shared': 3.6.22
     transitivePeerDependencies:
@@ -3989,7 +3992,7 @@ packages:
       - supports-color
       - vue
 
-  /@tarojs/plugin-platform-weapp@3.6.22(@types/react@18.2.42)(postcss@8.4.32):
+  /@tarojs/plugin-platform-weapp@3.6.22(@types/react@18.2.42)(postcss@8.4.32)(react@18.2.0):
     resolution: {integrity: sha512-WjVfVYj63o8ATEL+rL0hkJlexDIp8jE3Ijv4BQIceQvHoBg2VkPtOE3ctZcb9FnfcEHkPOIV8+wK5iqkyBQhaw==}
     dependencies:
       '@tarojs/components': 3.6.22(@types/react@18.2.42)(postcss@8.4.32)(react@18.2.0)
@@ -4002,6 +4005,7 @@ packages:
       - '@types/webpack'
       - '@types/webpack-dev-server'
       - postcss
+      - react
       - supports-color
       - vue
 
@@ -4180,7 +4184,7 @@ packages:
       '@tarojs/plugin-platform-qq': 3.6.22(@types/react@18.2.42)(postcss@8.4.32)
       '@tarojs/plugin-platform-swan': 3.6.22(@types/react@18.2.42)(postcss@8.4.32)
       '@tarojs/plugin-platform-tt': 3.6.22(@types/react@18.2.42)(postcss@8.4.32)
-      '@tarojs/plugin-platform-weapp': 3.6.22(@types/react@18.2.42)(postcss@8.4.32)
+      '@tarojs/plugin-platform-weapp': 3.6.22(@types/react@18.2.42)(postcss@8.4.32)(react@18.2.0)
       '@tarojs/runner-utils': 3.6.22
       '@tarojs/runtime': 3.6.22
       '@tarojs/shared': 3.6.22
@@ -14704,6 +14708,15 @@ packages:
     engines: {node: '>=18.0'}
     peerDependencies:
       postcss: ^8.4.31
+    dependencies:
+      postcss: 8.4.32
+    dev: true
+
+  /postcss-scss@4.0.9(postcss@8.4.32):
+    resolution: {integrity: sha512-AjKOeiwAitL/MXxQW2DliT28EKukvvbEWx3LBmJIRN8KfBGZbRTxNYW0kSqi1COiTZ57nZ9NW06S6ux//N1c9A==}
+    engines: {node: '>=12.0'}
+    peerDependencies:
+      postcss: ^8.4.29
     dependencies:
       postcss: 8.4.32
     dev: true

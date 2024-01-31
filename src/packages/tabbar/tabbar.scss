@@ -39,3 +39,16 @@
     padding-bottom: env(safe-area-inset-bottom);
   }
 }
+
+[dir='rtl'] .nut-tabbar,
+.nut-rtl .nut-tabbar {
+  &:last-child {
+    border-right: none;
+    border-left: 0;
+  }
+
+  &-fixed {
+    left: auto;
+    right: 0px;
+  }
+}
