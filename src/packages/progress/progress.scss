@@ -72,3 +72,10 @@
     }
   }
 }
+
+[dir='rtl'] .nut-progress,
+.nut-rtl .nut-progress {
+  &-text {
+    transform: translate(50%);
+  }
+}

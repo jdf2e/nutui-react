@@ -92,3 +92,40 @@
     }
   }
 }
+
+[dir='rtl'] .nut-grid-item,
+.nut-rtl .nut-grid-item {
+  $block: &;
+
+  &-content {
+    &-border {
+      border-right-width: medium;
+      border-left-width: 1px;
+    }
+
+    &-surround {
+      border-left-width: medium;
+      border-right-width: 1px;
+    }
+
+    &-horizontal {
+      #{$block}-text {
+        margin: 0 $grid-item-text-margin 0 0;
+      }
+    }
+
+    &-horizontal#{&}-reverse {
+      #{$block}-text {
+        margin: 0 0 0 $grid-item-text-margin;
+      }
+    }
+
+    &-clickable {
+      &::before {
+        left: auto;
+        right: 50%;
+        transform: translate(50%, -50%);
+      }
+    }
+  }
+}

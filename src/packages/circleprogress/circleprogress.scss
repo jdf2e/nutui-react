@@ -24,3 +24,11 @@
     font-size: $circleprogress-text-size;
   }
 }
+
+[dir='rtl'] .nut-circleprogress,
+.nut-rtl .nut-circleprogress {
+  &-text {
+    left: auto;
+    right: 0;
+  }
+}

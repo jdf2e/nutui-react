@@ -52,3 +52,18 @@
     }
   }
 }
+
+[dir='rtl'] .nut-indicator,
+.nut-rtl .nut-indicator {
+  &-dot {
+    &:first-child {
+      margin-left: 0;
+      margin-right: 0px;
+    }
+
+    &:last-child {
+      margin-right: 0;
+      margin-left: 0px;
+    }
+  }
+}
