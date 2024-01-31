@@ -22,16 +22,16 @@ import { Tabbar } from '@nutui/nutui-react';
 import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
 
 const App = () => (
-  <Tabbar onSwitch={(value) => {console.log(value)}}>
-    <Tabbar.Item title="首頁" icon={<Home width={18} height={18} />} value={9} />
-    <Tabbar.Item title="分類" icon={<Category width={18} height={18} dot />} />
-    <Tabbar.Item title="發現" icon={<Find width={18} height={18} />} />
-    <Tabbar.Item title="購物車" icon={<Cart width={18} height={18} />} />
-    <Tabbar.Item title="我的" icon={<User width={18} height={18} />} />
+  <Tabbar defaultValue={0}>
+    <Tabbar.Item title='首頁' icon={<Home width={18} height={18} />} value={9} />
+    <Tabbar.Item title='分類' icon={<Category width={18} height={18} />} dot />
+    <Tabbar.Item title='發現' icon={<Find width={18} height={18} />} />
+    <Tabbar.Item title='購物車' icon={<Cart width={18} height={18} />} />
+    <Tabbar.Item title='我的' icon={<User width={18} height={18} />} />
   </Tabbar>
 )
 
-export default App;
+export default App
 ```
 
 :::
@@ -48,22 +48,24 @@ import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
 const App = () => {
   const [activeIndex, setActiveIndex] = useState(2)
   
-  return <Tabbar
-    defaultValue={0}
-    value={activeIndex}
-    onSwitch={(value) => {
-      setActiveIndex(value)
-    }}
-  >
-    <Tabbar.Item title="首頁" icon={<Home width={20} height={20} />} />
-    <Tabbar.Item title="分類" icon={<Category width={20} height={20} />} />
-    <Tabbar.Item title="發現" icon={<Find width={20} height={20} />} />
-    <Tabbar.Item title="購物車" icon={<Cart width={20} height={20} />} />
-    <Tabbar.Item title="我的" icon={<User width={20} height={20} />} />
-  </Tabbar>
+  return (
+    <Tabbar
+      defaultValue={0}
+      value={activeIndex}
+      onSwitch={(value) => {
+        setActiveIndex(value)
+      }}
+    >
+      <Tabbar.Item title="首頁" icon={<Home width={20} height={20} />} />
+      <Tabbar.Item title="分類" icon={<Category width={20} height={20} />} />
+      <Tabbar.Item title="發現" icon={<Find width={20} height={20} />} />
+      <Tabbar.Item title="購物車" icon={<Cart width={20} height={20} />} />
+      <Tabbar.Item title="我的" icon={<User width={20} height={20} />} />
+    </Tabbar>
+  )
 }
 
-export default App;
+export default App
 ```
 
 :::
@@ -83,13 +85,14 @@ const App = () => (
       console.log(value)
     }}
   >
-    <Tabbar.Item title="首頁" icon={<Home width={12} height={12} />} />
-    <Tabbar.Item title="分類" icon={<Category width={12} height={12} />} />
+    <Tabbar.Item icon={<Home width={24} height={24} />} />
+    <Tabbar.Item icon={<Category width={24} height={24} />} />
     <Tabbar.Item icon={<Find width={24} height={24} />} />
-    <Tabbar.Item title="購物車" icon={<Cart width={12} height={12} />} />
-    <Tabbar.Item title="我的" icon={<User width={12} height={12} />} />
+    <Tabbar.Item icon={<Cart width={24} height={24} />} />
+    <Tabbar.Item icon={<User width={24} height={24} />} />
   </Tabbar>
 )
+export default App
 ```
 
 :::
@@ -115,6 +118,7 @@ const App = () => (
     <Tabbar.Item title="我的" />
   </Tabbar>
 )
+export default App
 ```
 
 :::
@@ -134,11 +138,11 @@ const App = () => (
     <Tabbar.Item title="分類" icon={<Category />} />
     <Tabbar.Item title="發現" icon={<Find />} />
     <Tabbar.Item title="購物車" icon={<Cart />} value={110} />
-    <Tabbar.Item title="我的" icon={<User />} />
+    <Tabbar.Item title="我的" icon={<User width={20} height={20} />} />
   </Tabbar>
 )
 
-export default App;
+export default App
 ```
 
 :::
@@ -162,7 +166,7 @@ const App = () => (
   </Tabbar>
 )
 
-export default App;
+export default App
 ```
 
 :::
@@ -187,7 +191,7 @@ const App = () => (
   </Tabbar>
 )
 
-export default App;
+export default App
 ```
 
 :::
@@ -209,7 +213,7 @@ const App = () => (
   </Tabbar>
 )
 
-export default App;
+export default App
 ```
 
 :::
@@ -233,7 +237,7 @@ const App = () => (
   </Tabbar>
 )
 
-export default App;
+export default App
 ```
 
 :::
