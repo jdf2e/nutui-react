@@ -143,6 +143,9 @@
   &-left {
     left: auto;
     right: 0;
+    .nut-icon-ArrowLeft {
+      transform: rotate(180deg);
+    }
 
     &-back {
       margin-right: 0;
@@ -154,7 +157,7 @@
     right: auto;
     left: 0;
 
-    .nut-icon {
+    .nut-icon-ArrowLeft {
       margin-left: 0;
       margin-right: 12px;
 
@@ -167,7 +170,7 @@
 
   &-title-align-left {
     .nut-navbar-left {
-      .nut-icon {
+      .nut-icon-ArrowLeft {
         margin-left: 0;
         margin-right: 12px;
 

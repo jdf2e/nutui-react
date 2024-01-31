@@ -342,6 +342,10 @@
         left: $popup-title-padding;
       }
     }
+
+    .nut-icon-ArrowLeft {
+      transform: rotate(180deg);
+    }
   }
 
   &-center {

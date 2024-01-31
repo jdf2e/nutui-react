@@ -125,6 +125,8 @@
 
       .nut-icon {
         transform: rotate(180deg);
+        margin-right: 0px;
+        margin-left: 5px;
       }
     }
 
@@ -160,8 +162,9 @@
     border-radius: 0px 45px 45px 0px;
 
     .nut-icon {
-      margin-right: 0;
+      margin-right: 0px;
       margin-left: 5px;
+      transform: rotate(180deg);
     }
   }
 
@@ -195,7 +198,9 @@
       border-radius: 45px 0 0 45px;
 
       .nut-icon {
-        transform: rotate(-180deg);
+        transform: rotate(0deg);
+        margin-right: 5px;
+        margin-left: 0px;
       }
     }
 
