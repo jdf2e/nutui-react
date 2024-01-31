@@ -111,7 +111,6 @@ export const Popover: FunctionComponent<
   const [elWidth, setElWidth] = useState(0)
   const [elHeight, setElHeight] = useState(0)
   const [rootPosition, setRootPosition] = useState<RootPosition>()
-
   useEffect(() => {
     setShowPopup(visible)
 
