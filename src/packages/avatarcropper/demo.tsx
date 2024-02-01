@@ -36,7 +36,7 @@ const AvatarCropperDemo = () => {
   }
   return (
     <>
-      <div className="demo full avatar-demo">
+      <div className="demo full">
         <h2>{translated.c0a1c0a1}</h2>
         <Cell>
           <AvatarCropper onConfirm={cutImage}>

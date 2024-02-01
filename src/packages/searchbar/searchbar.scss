@@ -130,6 +130,9 @@
     & > svg {
       margin-right: 0;
       margin-left: $searchbar-gap;
+      &.nut-icon {
+        transform: rotate(180deg);
+      }
 
       &:last-child {
         margin-right: 0;

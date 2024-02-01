@@ -68,3 +68,18 @@
     }
   }
 }
+
+[dir='rtl'] .index,
+.nut-rtl .index {
+  &-header {
+    > img {
+      margin-right: 0;
+      margin-left: 18px;
+    }
+  }
+  &-components {
+    .nut-icon {
+      transform: rotate(180deg);
+    }
+  }
+}

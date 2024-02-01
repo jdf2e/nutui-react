@@ -43,11 +43,7 @@ const AvatarCropperDemo = () => {
   return (
     <>
       <Header />
-      <div
-        className={`demo ${
-          Taro.getEnv() === 'WEB' ? 'web' : ''
-        } full avatar-demo`}
-      >
+      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} full`}>
         <h2>{translated.c0a1c0a1}</h2>
         <Cell>
           <AvatarCropper onConfirm={cutImage}>

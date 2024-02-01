@@ -11,3 +11,13 @@
 .demo-avatar {
   color: #fff;
 }
+
+[dir='rtl'] .avatar-demo,
+.nut-rtl .avatar-demo {
+  .nut-cell {
+    & > div {
+      margin-right: 0px;
+      margin-left: 30px;
+    }
+  }
+}
