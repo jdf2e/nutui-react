@@ -26,3 +26,10 @@
   flex: 1;
   min-width: 0;
 }
+
+[dir='rtl'] .nut-cell,
+.nut-rtl .nut-cell {
+  .nut-icon-ArrowRight {
+    transform: rotate(180deg);
+  }
+}
