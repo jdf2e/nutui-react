@@ -155,8 +155,9 @@ export const Input = forwardRef(
       }
     }
 
-    const handleFocus = () => {
-      onFocus?.(value)
+    const handleFocus = (event: Event) => {
+      const val: any = (event.target as any).value
+      onFocus && onFocus(val)
       setActive(true)
     }
 
@@ -164,9 +165,12 @@ export const Input = forwardRef(
       updateValue(value, 'onChange')
     }
 
-    const handleBlur = () => {
-      updateValue(value, 'onBlur')
-      setActive(false)
+    const handleBlur = (event: Event) => {
+      const val: any = (event.target as any).value
+      updateValue(val, 'onBlur')
+      setTimeout(() => {
+        setActive(false)
+      }, 200)
     }
 
     const inputType = (type: string) => {
@@ -201,11 +205,11 @@ export const Input = forwardRef(
           value={value}
           autoFocus={autoFocus}
           enterKeyHint={confirmType}
-          onBlur={() => {
-            handleBlur()
+          onBlur={(e: any) => {
+            handleBlur(e)
           }}
-          onFocus={() => {
-            handleFocus()
+          onFocus={(e: any) => {
+            handleFocus(e)
           }}
           onChange={(e: any) => {
             handleInput(e.currentTarget.value)
