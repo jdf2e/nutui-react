@@ -12,7 +12,31 @@ import { Tabbar } from '@nutui/nutui-react';
 
 ## Demo
 
-### Basic usage
+### Basic Usage
+
+:::demo
+
+```tsx
+import React from "react";
+import { Tabbar } from '@nutui/nutui-react';
+import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
+
+const App = () => (
+  <Tabbar defaultValue={0}>
+    <Tabbar.Item title='Home' icon={<Home width={18} height={18} />} value={9} />
+    <Tabbar.Item title='Category' icon={<Category width={18} height={18} />} dot />
+    <Tabbar.Item title='Find' icon={<Find width={18} height={18} />} />
+    <Tabbar.Item title='Cart' icon={<Cart width={18} height={18} />} />
+    <Tabbar.Item title='Mine' icon={<User width={18} height={18} />} />
+  </Tabbar>
+)
+
+export default App
+```
+
+:::
+
+### Custom DefaultValue
 
 :::demo
 
@@ -23,47 +47,25 @@ import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
 
 const App = () => {
   const [activeIndex, setActiveIndex] = useState(2)
-
-  return <Tabbar
-    defaultValue={0}
-    value={activeIndex}
-    onSwitch={(value) => {
-      setActiveIndex(value)
-    }}
-  >
-    <Tabbar.Item title="Home" icon={<Home width={18} height={18} />} value={9} />
-    <Tabbar.Item title="Category" icon={<Category width={18} height={18} />} dot />
-    <Tabbar.Item title="Find" icon={<Find width={18} height={18} />} />
-    <Tabbar.Item title="Cart" icon={<Cart width={18} height={18} />} />
-    <Tabbar.Item title="Mine" icon={<User width={18} height={18} />} />
-  </Tabbar>
+  
+  return (
+    <Tabbar
+      defaultValue={0}
+      value={activeIndex}
+      onSwitch={(value) => {
+        setActiveIndex(value)
+      }}
+    >
+      <Tabbar.Item title="Home" icon={<Home width={20} height={20} />} />
+      <Tabbar.Item title="Category" icon={<Category width={20} height={20} />} />
+      <Tabbar.Item title="Find" icon={<Find width={20} height={20} />} />
+      <Tabbar.Item title="Cart" icon={<Cart width={20} height={20} />} />
+      <Tabbar.Item title="Mine" icon={<User width={20} height={20} />} />
+    </Tabbar>
+  )
 }
 
-export default App;
-```
-
-:::
-
-### custom check
-
-:::demo
-
-```tsx
-import React from "react";
-import { Tabbar } from '@nutui/nutui-react';
-import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
-
-const App = () => (
-  <Tabbar defaultValue={2}>
-    <Tabbar.Item title="Home" icon={<Home width={20} height={20} />} />
-    <Tabbar.Item title="Category" icon={<Category width={20} height={20} />} />
-    <Tabbar.Item title="Find" icon={<Find width={20} height={20} />} />
-    <Tabbar.Item title="Cart" icon={<Cart width={20} height={20} />} />
-    <Tabbar.Item title="Mine" icon={<User width={20} height={20} />} />
-  </Tabbar>
-);
-
-export default App;
+export default App
 ```
 
 :::
@@ -83,25 +85,14 @@ const App = () => (
       console.log(value)
     }}
   >
-    <Tabbar.Item
-      title="Home"
-      icon={<Home width={12} height={12} />}
-    />
-    <Tabbar.Item
-      title="Category"
-      icon={<Category width={12} height={12} />}
-    />
+    <Tabbar.Item icon={<Home width={24} height={24} />} />
+    <Tabbar.Item icon={<Category width={24} height={24} />} />
     <Tabbar.Item icon={<Find width={24} height={24} />} />
-    <Tabbar.Item
-      title="Cart"
-      icon={<Cart width={12} height={12} />}
-    />
-    <Tabbar.Item
-      title="Mine"
-      icon={<User width={12} height={12} />}
-    />
+    <Tabbar.Item icon={<Cart width={24} height={24} />} />
+    <Tabbar.Item icon={<User width={24} height={24} />} />
   </Tabbar>
 )
+export default App
 ```
 
 :::
@@ -127,6 +118,7 @@ const App = () => (
     <Tabbar.Item title="Mine" />
   </Tabbar>
 )
+export default App
 ```
 
 :::
@@ -146,16 +138,16 @@ const App = () => (
     <Tabbar.Item title="Category" icon={<Category />} />
     <Tabbar.Item title="Find" icon={<Find />} />
     <Tabbar.Item title="Cart" icon={<Cart />} value={110} />
-    <Tabbar.Item title="Mine" icon={<User />} />
+    <Tabbar.Item title="Mine" icon={<User width={20} height={20} />} />
   </Tabbar>
-);
+)
 
-export default App;
+export default App
 ```
 
 :::
 
-### Red dot
+### Dot
 
 :::demo
 
@@ -174,12 +166,12 @@ const App = () => (
   </Tabbar>
 )
 
-export default App;
+export default App
 ```
 
 :::
 
-### custom color
+### Custom Color
 
 :::demo
 
@@ -187,6 +179,7 @@ export default App;
 import React from "react";
 import { Tabbar } from '@nutui/nutui-react';
 import { Cart, Category, Find, Home, User } from '@nutui/icons-react';
+
 
 const App = () => (
   <Tabbar inactiveColor="#7d7e80" activeColor="#1989fa">
@@ -196,14 +189,14 @@ const App = () => (
     <Tabbar.Item title="Cart" icon={<Cart width={20} height={20} />} />
     <Tabbar.Item title="Mine" icon={<User width={20} height={20} />} />
   </Tabbar>
-);
+)
 
-export default App;
+export default App
 ```
 
 :::
 
-### Tabbar with customizable number of icons
+### Tabbar With Custom Number Of Icons
 
 :::demo
 
@@ -218,14 +211,14 @@ const App = () => (
     <Tabbar.Item title="Category" icon={<Category width={20} height={20} />} />
     <Tabbar.Item title="Find" icon={<Find width={20} height={20} />} />
   </Tabbar>
-);
+)
 
-export default App;
+export default App
 ```
 
 :::
 
-### Fixed bottom
+### Fixed Bottom
 
 :::demo
 
@@ -242,9 +235,9 @@ const App = () => (
     <Tabbar.Item title="Cart" icon={<Cart width={20} height={20} />} />
     <Tabbar.Item title="Mine" icon={<User width={20} height={20} />} />
   </Tabbar>
-);
+)
 
-export default App;
+export default App
 ```
 
 :::
