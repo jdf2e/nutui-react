@@ -110,7 +110,7 @@ const IndicatorDemo = () => {
             current={2}
             direction="vertical"
             style={{
-              marginLeft: '50px',
+              marginInlineStart: '50px',
             }}
           />
         </Cell>

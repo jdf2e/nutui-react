@@ -165,7 +165,7 @@ const CheckboxDemo = () => {
         </Cell>
         <Cell className="nut-cell">
           <Checkbox
-            style={{ marginRight: '8px' }}
+            style={{ marginInlineEnd: '8px' }}
             shape="button"
             className="test"
             label={
@@ -183,7 +183,7 @@ const CheckboxDemo = () => {
             defaultChecked={!checked}
           />
           <Checkbox
-            style={{ marginRight: '8px' }}
+            style={{ marginInlineEnd: '8px' }}
             shape="button"
             activeIcon={
               <Checklist className="nut-checkbox-button-icon-checked" />
@@ -469,7 +469,7 @@ const CheckboxDemo = () => {
             onClick={() => {
               ;(checkboxgroup2Ref.current as any).toggle(true)
             }}
-            style={{ margin: '0 20px 0 0' }}
+            style={{ marginInlineEnd: '20px' }}
           >
             {translated.selectAll}
           </Button>
@@ -477,7 +477,7 @@ const CheckboxDemo = () => {
             onClick={() => {
               ;(checkboxgroup2Ref.current as any).toggle(false)
             }}
-            style={{ margin: '0 20px 0 0' }}
+            style={{ marginInlineEnd: '20px' }}
           >
             {translated.cancel}
           </Button>

@@ -97,7 +97,7 @@ const StickyDemo = () => {
               container={containerTopRef}
               threshold={getEnv() === 'WEB' ? 60 : 0}
             >
-              <Button style={{ marginLeft: '100px' }} type="primary">
+              <Button style={{ marginInlineStart: '100px' }} type="primary">
                 {button3}
               </Button>
             </Sticky>
