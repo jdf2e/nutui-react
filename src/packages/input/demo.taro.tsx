@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import { Tips, Close, Eye, Marshalling } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Input, Button } from '@/packages/nutui.react.taro'
+import { Input, Button, Cell } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 
 const InputDemo = () => {
@@ -28,6 +28,8 @@ const InputDemo = () => {
       readOnly: '输入框只读',
       disabled: '输入框禁用',
       clear: '显示清除图标',
+      clearControlled: '受控下的清除',
+      clearButton: '点我清除',
       codeplaceholder: '请输入短信验证码',
       sendCode: '获取验证码',
       border: '边框',
@@ -61,6 +63,8 @@ const InputDemo = () => {
       readOnly: 'Input box is read-only',
       disabled: 'Input box disabled',
       clear: 'Show clear icon',
+      clearControlled: 'Clearing in Controlled Mode',
+      clearButton: 'Click to Clear',
       codeplaceholder: 'Please enter the SMS verification code',
       sendCode: 'Get code',
       border: 'border',
@@ -78,7 +82,7 @@ const InputDemo = () => {
   const [val, setVal] = useState('NutUI React')
   const [inputType, setInputType] = useState('password')
   const [currentLength, setCurrentLength] = useState(0)
-
+  const [keyword, setKeyword] = useState('')
   return (
     <>
       <Header />
@@ -117,6 +121,26 @@ const InputDemo = () => {
           clearIcon={<Close size={14} />}
           placeholder={translated.clear}
         />
+        <h2>{translated.clearControlled}</h2>
+        <Cell
+          title={
+            <Input
+              placeholder={translated.clearControlled}
+              value={keyword}
+              onChange={setKeyword}
+            />
+          }
+          extra={
+            <Button
+              onClick={() => {
+                setKeyword('')
+              }}
+            >
+              {translated.clearButton}
+            </Button>
+          }
+        />
+
         <h2>{translated.wordCount}</h2>
         <div
           style={{

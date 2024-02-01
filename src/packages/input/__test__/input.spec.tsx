@@ -4,7 +4,8 @@ import '@testing-library/jest-dom'
 import Input from '@/packages/input'
 
 test('input props test', () => {
-  const { container } = render(
+  const blur = jest.fn()
+  const { container, rerender } = render(
     <Input name="text" placeholder="请输入文字" defaultValue="初始文本" />
   )
   expect(container.querySelector('.nut-input-native')).toHaveAttribute(
@@ -23,7 +24,44 @@ test('input props test', () => {
     'type',
     'text'
   )
-  expect(container).toMatchSnapshot()
+  rerender(
+    <Input type="number" placeholder="1" defaultValue="1" onBlur={blur} />
+  )
+  expect(container.querySelector('.nut-input-native')).toHaveAttribute(
+    'type',
+    'tel'
+  )
+  const telInput = container.querySelector('.nut-input-native') as HTMLElement
+  fireEvent.focus(telInput)
+  fireEvent.blur(telInput)
+  expect(blur).toBeCalled()
+
+  rerender(
+    <Input type="digit" placeholder="1" defaultValue="1.01" onBlur={blur} />
+  )
+  expect(container.querySelector('.nut-input-native')).toHaveAttribute(
+    'type',
+    'text'
+  )
+  const digitInput = container.querySelector('.nut-input-native') as HTMLElement
+  fireEvent.focus(digitInput)
+  fireEvent.blur(digitInput)
+  expect(blur).toBeCalled()
+  rerender(
+    <Input
+      name="text"
+      formatTrigger="onBlur"
+      placeholder="1"
+      defaultValue="1"
+      onBlur={blur}
+    />
+  )
+  const triggerInput = container.querySelector(
+    '.nut-input-native'
+  ) as HTMLElement
+  fireEvent.focus(triggerInput)
+  fireEvent.blur(triggerInput)
+  expect(blur).toBeCalled()
 })
 
 test('password test', () => {
