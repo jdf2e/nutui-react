@@ -248,7 +248,8 @@ export const Popup: FunctionComponent<
       <CSSTransition
         nodeRef={nodeRef}
         classNames={transitionName}
-        unmountOnExit
+        mountOnEnter
+        unmountOnExit={destroyOnClose}
         timeout={duration}
         in={innerVisible}
         onEntered={onHandleOpened}

@@ -226,9 +226,9 @@ describe('Address', () => {
     await waitFor(
       async () => {
         await sleep(1000)
-        expect(screen.container.querySelector('.nut-popup-title-title')).toBe(
-          null
-        )
+        expect(
+          screen.container.querySelector('.nut-popup-title-title')?.innerHTML
+        ).toBe('选择地址')
       },
       {
         timeout: 2000,

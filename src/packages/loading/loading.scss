@@ -3,14 +3,17 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
+
   &.nut-loading-vertical {
     flex-direction: column;
   }
+
   .nut-loading-icon-box {
     display: inline-block;
     font-size: 0;
     line-height: 0;
     animation: nut-loading-rotation 1s infinite linear;
+
     .nut-loading-icon {
       color: $loading-icon-color;
       width: $loading-icon-size;
@@ -18,16 +21,19 @@
       font-size: $loading-icon-size;
     }
   }
+
   .nut-loading-text {
     padding: 8px;
     color: $loading-color;
     font-size: $loading-font-size;
   }
 }
+
 @keyframes nut-loading-rotation {
   0% {
     -webkit-transform: rotate(0deg);
   }
+
   100% {
     -webkit-transform: rotate(360deg);
   }
