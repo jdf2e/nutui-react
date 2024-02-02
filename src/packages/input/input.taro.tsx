@@ -13,7 +13,7 @@ import {
   Input as TaroInput,
 } from '@tarojs/components'
 import { MaskClose } from '@nutui/icons-react-taro'
-import { getEnv, ENV_TYPE } from '@tarojs/taro'
+import Taro, { getEnv, ENV_TYPE } from '@tarojs/taro'
 import { formatNumber } from './util'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -167,8 +167,13 @@ export const Input = forwardRef(
       forceUpdate()
     }
 
-    const handleFocus = () => {
-      onFocus?.(value)
+    const handleFocus = (event: any) => {
+      if (Taro.getEnv() === 'WEB') {
+        const val: any = (event.target as any).value
+        onFocus && onFocus(val)
+      } else {
+        onFocus?.(value)
+      }
       setActive(true)
     }
 
@@ -176,9 +181,17 @@ export const Input = forwardRef(
       updateValue(value, 'onChange')
     }
 
-    const handleBlur = () => {
-      updateValue(value, 'onBlur')
-      setActive(false)
+    const handleBlur = (event: any) => {
+      if (Taro.getEnv() === 'WEB') {
+        const val: any = (event.target as any).value
+        updateValue(val, 'onBlur')
+        setTimeout(() => {
+          setActive(false)
+        }, 50)
+      } else {
+        updateValue(value, 'onBlur')
+        setActive(false)
+      }
     }
     const inputType = (type: any) => {
       if (getEnv() === ENV_TYPE.WEB) {
