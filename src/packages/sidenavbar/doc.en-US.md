@@ -17,112 +17,152 @@ import { SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
 :::demo
 
 ```tsx
-import  React,{useState} from "react";
-import {Cell, SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
+import React, { useState } from 'react'
+import { Cell, SideNavBar, SubSideNavBar, SideNavBarItem, Toast } from '@nutui/nutui-react'
 
 const App = () => {
-    const [navBarState, setNavBarState] = useState({
+  type Position = 'left' | 'right'
+  type NavBarState = {
+    visible: boolean
+    position: Position
+  }
+  const [navBarState, setNavBarState] = useState<NavBarState>({
     visible: false,
     position: 'left',
   })
-  const changeNarBar = (visible, position= navBarState.position) => {
+  const [showThird, setShowThird] = useState(false)
+  const changeNarBar = (visible: boolean, position: Position = navBarState.position) => {
     setNavBarState({
       visible,
       position,
     })
+    setShowThird(false)
   }
- 
-  return ( 
-    <>   
-    <Cell
-          title="left"
-          
-          onClick={() => {
-            changeNarBar(true, 'left')
-          }}
-        />
-        <Cell
-          title="right"
-          
-          onClick={() => {
-            changeNarBar(true, 'right')
-          }}
-        />
-        <SideNavBar
-          title="首页"
-          visible={navBarState.visible}
-          position={navBarState.position}
-          onClose={() => {
-            changeNarBar(false)
-          }}
-        >
-          <SubSideNavBar title="Level 1 title" value="1-0" >
-            <SideNavBarItem title="Level 1 content-1" value="1-01" />
-            <SideNavBarItem title="Level 1 content-2" value="1-02" />
-            <SubSideNavBar title="Level 2 title" value="2-0">
-              <SideNavBarItem title="Level 2 content-1" value="2-01" />
-              <SideNavBarItem title="Level 2 content-2" value="2-02" />
-            </SubSideNavBar>
+  const clickItem = (data: any) => {
+    const { title, value } = data
+    showThird && Toast.show(`title=${title},value=${value}`)
+  }
+  const clickTitle = (data: any) => {
+    const { title, value, isShow } = data
+    showThird && Toast.show(`title=${title},value=${value},isShow=${isShow}`)
+  }
+  return (
+    <>
+      <Cell
+        title='Left Pop Up'
+        onClick={() => {
+          changeNarBar(true, 'left')
+        }}
+      />
+      <Cell
+        title='Right Pop Up'
+        onClick={() => {
+          changeNarBar(true, 'right')
+        }}
+      />
+      <SideNavBar
+        title='Front Page'
+        visible={navBarState.visible}
+        position={navBarState.position}
+        onClose={() => {
+          changeNarBar(false)
+        }}>
+        <SubSideNavBar title='Level One Title' value='1-0' onClick={clickTitle}>
+          <SideNavBarItem title='Level One Content1' value='1-01' onClick={clickItem} />
+          <SideNavBarItem title='Level One Content2' value='1-02' />
+          <SubSideNavBar title='Level Two Title' value='2-0'>
+            <SideNavBarItem title='Level Two Content1' value='2-01' />
+            <SideNavBarItem title='Level Two Content2' value='2-02' />
+            {showThird ? (
+              <SubSideNavBar title='Level Three Title' value='3-0'>
+                <SideNavBarItem title='Level Three Content1' value='3-01' />
+                <SideNavBarItem title='Level Three Content2' value='3-02' />
+              </SubSideNavBar>
+            ) : null}
           </SubSideNavBar>
-        </SideNavBar>
+        </SubSideNavBar>
+        <SubSideNavBar open={false} title='Level One Title-2' value='1-1'>
+          <SideNavBarItem title='Level One Content2-1' value='1-11' />
+          <SideNavBarItem title='Level One Content2-2' value='1-12' />
+        </SubSideNavBar>
+      </SideNavBar>
     </>
-  );
-};  
-export default App;
+  )
+}
+export default App
 
 ```
 
 :::
 
-### Nesting (up to three layers recommended)
+### Navigation Nesting (Up To Three Levels Recommended)
 
 :::demo
 
 ```tsx
-import  React,{useState} from "react";
-import {Cell,SideNavBar,SubSideNavBar,SideNavBarItem } from '@nutui/nutui-react';
+import React, { useState } from 'react'
+import { Cell, SideNavBar, SubSideNavBar, SideNavBarItem, Toast } from '@nutui/nutui-react'
 
 const App = () => {
-  const [visible, setVisible] = useState(false)
-  const changeNarBar = (visible) => {
-   setVisible(visible)
+  type Position = 'left' | 'right'
+  type NavBarState = {
+    visible: boolean
+    position: Position
   }
-  const clickItem = ({ title, value }) => {
-    Toast.show(`title=${title},value=${value}`)
+  const [navBarState, setNavBarState] = useState<NavBarState>({
+    visible: false,
+    position: 'left',
+  })
+  const [showThird, setShowThird] = useState(false)
+  const changeNarBar = (visible: boolean, position: Position = navBarState.position) => {
+    setNavBarState({
+      visible,
+      position,
+    })
+    setShowThird(false)
   }
-  const clickTitle = ({ title, value, isShow }) => {
-    Toast.show(`title=${title},value=${value},isShow=${isShow}`)
+  const clickItem = (data: any) => {
+    const { title, value } = data
+    showThird && Toast.show(`title=${title},value=${value}`)
+  }
+  const clickTitle = (data: any) => {
+    const { title, value, isShow } = data
+    showThird && Toast.show(`title=${title},value=${value},isShow=${isShow}`)
   }
   return ( 
     <>  
       <Cell
-          title="show"
-          
-          onClick={() => {
-            changeNarBar(true)
-          }}
-        /> 
-    <SideNavBar
-          title="首页"
-          visible={visible}
-          position='left'
-          onClose={() => {
-            changeNarBar(false)
-          }}
-        >
-          <SubSideNavBar title="Level 1 title" value="1-0" onClick={clickTitle}>
-            <SideNavBarItem title="Level 1 content-1" value="1-01" onClick={clickItem} />
-            <SideNavBarItem title="Level 1 content-2" value="1-02" />
-            <SubSideNavBar title="Level 2 title" value="2-0">
-              <SideNavBarItem title="Level 2 content-1" value="2-01" />
-              <SideNavBarItem title="Level 2 content-2" value="2-02" />
-                <SubSideNavBar title="Level 3 title" value="3-0">
-                  <SideNavBarItem title="Level 3 content-1" value="3-01" />
-                  <SideNavBarItem title="Level 3 content-2" value="3-02" />
-                </SubSideNavBar>
-            </SubSideNavBar>
+        title="Show"
+        onClick={() => {
+          changeNarBar(true)
+        }}
+      /> 
+      <SideNavBar
+        title='Front Page'
+        visible={navBarState.visible}
+        position={navBarState.position}
+        onClose={() => {
+          changeNarBar(false)
+        }}>
+        <SubSideNavBar title='Level One Title' value='1-0' onClick={clickTitle}>
+          <SideNavBarItem title='Level One Content1' value='1-01' onClick={clickItem} />
+          <SideNavBarItem title='Level One Content2' value='1-02' />
+          <SubSideNavBar title='Level Two Title' value='2-0'>
+            <SideNavBarItem title='Level Two Content1' value='2-01' />
+            <SideNavBarItem title='Level Two Content2' value='2-02' />
+            {showThird ? (
+              <SubSideNavBar title='Level Three Title' value='3-0'>
+                <SideNavBarItem title='Level Three Content1' value='3-01' />
+                <SideNavBarItem title='Level Three Content2' value='3-02' />
+              </SubSideNavBar>
+            ) : null}
           </SubSideNavBar>
-        </SideNavBar>
+        </SubSideNavBar>
+        <SubSideNavBar open={false} title='Level OneTitle-2' value='1-1'>
+          <SideNavBarItem title='Level One Content2-1' value='1-11' />
+          <SideNavBarItem title='Level One Content2-2' value='1-12' />
+        </SubSideNavBar>
+      </SideNavBar>
     </>
   );
 };  
@@ -154,7 +194,7 @@ export default App;
 | value | unique identifier for navigation | `string`  \|  `number` | `-` |
 | title | overall title | `string` | `-` |
 | open | whether the navigation is expanded by default | `boolean` | `true` |
-| onClick | Navigation click | `data: {title: string, value: string \| number, isShow: boolean}` | `-` |
+| onClick | Navigation click | `({title: string, value: string \| number, isShow: boolean}) => void` | `-` |
 
 ## SideNavBarItem
 
@@ -164,7 +204,7 @@ export default App;
 | --- | --- | --- | --- |
 | value | unique identifier for navigation | `string`  \|  `number` | `-` |
 | title | overall title | `string` | `-` |
-| onClick | Navigation click | `data: {title: string, value: string \| number}` | `-` |
+| onClick | Navigation click | `({title: string, value: string \| number}) => void` | `-` |
 
 ## Theming
 
