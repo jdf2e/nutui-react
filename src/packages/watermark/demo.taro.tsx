@@ -51,7 +51,7 @@ const WaterMarkDemo = () => {
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated['84aa6bce']}</h2>
         <Cell>
-          <Button onClick={showTextMark} style={{ marginRight: '10px' }}>
+          <Button onClick={showTextMark} style={{ marginInlineEnd: '10px' }}>
             {translated.ddd76b7f}
           </Button>
           <Button onClick={showImageMark}>{translated['6de1e02a']}</Button>
