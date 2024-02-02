@@ -50,7 +50,7 @@
     }
 
     to {
-      transform: translateX(var(--move-distance));
+      -webkit-transform: translateX(var(--move-distance));
     }
   }
 }
