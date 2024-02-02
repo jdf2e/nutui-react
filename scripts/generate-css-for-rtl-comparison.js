@@ -40,8 +40,7 @@ function postcssRemoveRtl() {
 
 components.forEach((component) => {
   const componentName = component.name.toLowerCase()
-  // if (componentName === 'icon') return
-  if (componentName !== 'address') return
+  if (componentName === 'icon') return
 
   let content = fs
     .readFileSync(
