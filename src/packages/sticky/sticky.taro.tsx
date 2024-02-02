@@ -141,7 +141,7 @@ export const Sticky: FunctionComponent<Partial<StickyProps>> = (props) => {
   }, [])
 
   usePageScroll((res: PageScrollObject) => {
-    if (getEnv() === 'WEAPP') {
+    if (getEnv() !== 'WEB') {
       handleScroll(res.scrollTop)
     }
   })
