@@ -271,7 +271,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
                     onClick={(e) => {
                       tabChange(item, index)
                     }}
-                    className={classNames(`${classPrefix}-titles-item taro`, {
+                    className={classNames(`${classPrefix}-titles-item`, {
                       [`nut-tabs-titles-item-active`]:
                         !item.disabled && String(item.value) === String(value),
                       [`nut-tabs-titles-item-disabled`]: item.disabled,
