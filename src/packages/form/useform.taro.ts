@@ -3,6 +3,7 @@ import Schema from 'async-validator'
 import { Store, Callbacks, FormInstance, FieldEntity, NamePath } from './types'
 
 export const SECRET = 'NUT_FORM_INTERNAL'
+type UpdateItem = { entity: FieldEntity; condition: any }
 
 /**
  * 用于存储表单的数据
@@ -10,6 +11,8 @@ export const SECRET = 'NUT_FORM_INTERNAL'
 class FormStore {
   // 初始化数据
   private initialValues: Store = {}
+
+  private updateList: UpdateItem[] = []
 
   // 存放表单中所有的数据 eg. {password: "ddd",username: "123"}
   private store: Store = {}
@@ -95,6 +98,15 @@ class FormStore {
         }
       })
     })
+    this.updateList.forEach((item: UpdateItem) => {
+      let shouldUpdate = item.condition
+      if (typeof item.condition === 'function') {
+        shouldUpdate = item.condition()
+      }
+      if (shouldUpdate) {
+        item.entity.onStoreChange('update')
+      }
+    })
   }
 
   setCallback = (callback: Callbacks) => {
@@ -171,6 +183,17 @@ class FormStore {
     })
   }
 
+  // 监听事件
+  registerUpdate = (field: FieldEntity, shouldUpdate: any) => {
+    this.updateList.push({
+      entity: field,
+      condition: shouldUpdate,
+    })
+    return () => {
+      this.updateList = this.updateList.filter((i) => i.entity !== field)
+    }
+  }
+
   dispatch = ({ name }: { name: string }) => {
     this.validateFields([name])
   }
@@ -184,6 +207,7 @@ class FormStore {
         dispatch: this.dispatch,
         store: this.store,
         fieldEntities: this.fieldEntities,
+        registerUpdate: this.registerUpdate,
       }
     }
   }

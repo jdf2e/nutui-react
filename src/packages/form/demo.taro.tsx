@@ -18,63 +18,8 @@ import {
   Toast,
   Cell,
 } from '@/packages/nutui.react.taro'
-import { FormItemRuleWithoutValidator } from './types'
+import { FormInstance, FormItemRuleWithoutValidator } from './types'
 import Header from '@/sites/components/header'
-
-interface T {
-  basic: string
-  title1: string
-  title10: string
-  title2: string
-  title3: string
-  title4: string
-  title5: string
-  name: string
-  nameTip: string
-  nameTip1: string
-  age: string
-  ageTip: string
-  ageTip1: string
-  ageTip2: string
-  ageTip3: string
-  tel: string
-  telTip: string
-  telTip1: string
-  telTip2: string
-  address: string
-  addressTip: string
-  addressTip1: string
-  addressTip2: string
-  remarks: string
-  remarksTip: string
-  add: string
-  remove: string
-  submit: string
-  reset: string
-  switch: string
-  checkbox: string
-  gender: string
-  rate: string
-  inputnumber: string
-  range: string
-  uploader: string
-  success: string
-  uploading: string
-  asyncValidator: string
-  number: string
-  tag: string
-  tagTip: string
-  male: string
-  female: string
-  input: string
-  checkboxGroup: string
-  option: string
-  radio: string
-  radioGroup: string
-  radioOption: string
-  picker: string
-  select: string
-}
 
 const FormDemo = () => {
   const [translated] = useTranslate({
@@ -84,6 +29,7 @@ const FormDemo = () => {
       title10: '顶部对齐',
       title2: '表单校验',
       title3: '带有初始值表单校验',
+      relatedDisplay: '关联展示',
       title4: 'Form.useForm 对表单数据域进行交互。',
       title5: '表单类型',
       name: '字段A',
@@ -140,6 +86,7 @@ const FormDemo = () => {
       title10: 'Top Align',
       title2: 'Validate Form',
       title3: 'InitialValue Validate Type',
+      relatedDisplay: 'Related Display',
       title4: 'Interact with form data fields via Form.useForm',
       title5: 'Form Type',
       name: 'Filed A',
@@ -428,6 +375,42 @@ const FormDemo = () => {
             rules={[{ required: true, message: translated.addressTip }]}
           >
             <Input placeholder={translated.addressTip} type="text" />
+          </Form.Item>
+        </Form>
+
+        <h2>{translated.relatedDisplay}</h2>
+        <Form divider labelPosition="right">
+          <Form.Item
+            label={translated.name}
+            name="username"
+            rules={[
+              { max: 5, message: translated.nameErr },
+              { required: true, message: translated.nameTip1 },
+            ]}
+          >
+            <Input
+              className="nut-input-text"
+              placeholder={translated.nameTip}
+              type="text"
+            />
+          </Form.Item>
+          <Form.Item
+            label={translated.address}
+            name="address"
+            shouldUpdate
+            noStyle
+            rules={[
+              { max: 15, message: translated.addressErr },
+              { required: true, message: translated.addressTip },
+            ]}
+          >
+            {({ getFieldValue }: FormInstance) => {
+              const value = getFieldValue('username')
+              if (!value) return null
+              return (
+                <TextArea placeholder={translated.addressTip} maxLength={100} />
+              )
+            }}
           </Form.Item>
         </Form>
 

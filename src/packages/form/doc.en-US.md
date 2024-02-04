@@ -161,7 +161,44 @@ export default App;
 ```
 
 :::
+### Related Display
 
+:::demo
+
+```tsx
+import React from "react";
+import { Form, Input, TextArea } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Form divider labelPosition="right">
+        <Form.Item label="Field A" name="username">
+          <Input placeholder="Entry Field A" type="text" />
+        </Form.Item>
+        <Form.Item
+          label="Field D"
+          name="address"
+          shouldUpdate
+          noStyle
+        >
+          {({ getFieldValue }: FormInstance) => {
+            const value = getFieldValue('username')
+            if (!value) return null
+            return (
+              <TextArea placeholder="Entry Field D" maxLength={100} />
+            )
+          }}
+        </Form.Item>
+      </Form>
+    </>
+  )
+}
+
+export default App;
+```
+
+:::
 ### with initial value form validation
 
 :::demo
@@ -453,6 +490,8 @@ export default App;
 | form | Form control instance created by Form.useForm(), if not provided, it will be created automatically | `FormInstance` | `-` |
 | footer | The bottom area of the form, where confirmation and reset buttons are usually placed | `ReactNode` | `null` |
 | initialValues | form initial values | `any` | `-` |
+| noStyle | Do not use styles, only use field management | `boolean` | `false` |
+| shouldUpdate | Update logic | `boolean` | `false` |
 | name | form name | `any` | `-` |
 | labelPosition | The position of the form item label | `top` \| `left` \| `right` | `right` |
 | starPosition | The red star position of the required form item label |  `left` \| `right` | `left` |

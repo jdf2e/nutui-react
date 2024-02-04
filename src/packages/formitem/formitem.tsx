@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { BaseFormField } from './types'
 import { Context } from '../form/context'
 import Cell from '@/packages/cell'
@@ -15,7 +15,11 @@ type TextAlign =
   | 'justify'
   | 'match-parent'
 
-export interface FormItemProps extends BasicComponent, BaseFormField {
+type ShouldUpdate = (prevValue: any, curValue: any) => boolean
+
+export interface FormItemProps
+  extends Omit<BasicComponent, 'children'>,
+    BaseFormField {
   required: boolean
   initialValue: any
   trigger: string
@@ -27,6 +31,9 @@ export interface FormItemProps extends BasicComponent, BaseFormField {
   ) => void
   errorMessageAlign: TextAlign
   validateTrigger: string | string[]
+  shouldUpdate: boolean
+  noStyle: boolean
+  children: ReactNode | ((obj: any) => React.ReactNode)
 }
 
 const defaultProps = {
@@ -37,6 +44,8 @@ const defaultProps = {
   rules: [{ required: false, message: '' }],
   errorMessageAlign: 'left',
   validateTrigger: 'onChange',
+  shouldUpdate: false,
+  noStyle: false,
 } as FormItemProps
 
 export class FormItem extends React.Component<
@@ -53,6 +62,8 @@ export class FormItem extends React.Component<
 
   private componentRef: React.RefObject<any>
 
+  private eventOff: any
+
   constructor(props: FormItemProps) {
     super(props)
     this.componentRef = React.createRef()
@@ -63,13 +74,18 @@ export class FormItem extends React.Component<
 
   componentDidMount() {
     // 注册组件实例到FormStore
-    const { registerField } = this.context.getInternal(SECRET)
+    const { registerField, registerUpdate } = this.context.getInternal(SECRET)
     this.cancelRegister = registerField(this)
+    // 这里需要增加事件监听，因为此实现属于依赖触发
+    this.eventOff = registerUpdate(this, this.props.shouldUpdate)
   }
 
   componentWillUnmount() {
     if (this.cancelRegister) {
       this.cancelRegister()
+    }
+    if (this.eventOff) {
+      this.eventOff()
     }
   }
 
@@ -153,6 +169,7 @@ export class FormItem extends React.Component<
       this.context.errors[this.props.name as string] = []
       this.refresh()
     } else {
+      console.log('forceupdate', this.props.name)
       this.forceUpdate()
     }
   }
@@ -216,13 +233,20 @@ export class FormItem extends React.Component<
   render() {
     const { children } = this.props
     const child = Array.isArray(children) ? children[0] : children
-    const returnChildNode = React.cloneElement(
-      child,
-      this.getControlled(child as React.ReactElement)
-    )
+    let returnChildNode
+    if (!this.props.shouldUpdate) {
+      returnChildNode = React.cloneElement(
+        child,
+        this.getControlled(child as React.ReactElement)
+      )
+    } else {
+      returnChildNode = child(this.context)
+    }
     return (
       <React.Fragment key={this.state.resetCount}>
-        {this.renderLayout(returnChildNode)}
+        {this.props.noStyle
+          ? returnChildNode
+          : this.renderLayout(returnChildNode)}
       </React.Fragment>
     )
   }
