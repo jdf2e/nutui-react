@@ -320,6 +320,7 @@ export const Popover: FunctionComponent<
           position="default"
           overlay={overlay}
           visible={showPopup}
+          destroyOnClose
           {...rest}
         >
           <div className="nut-popover-content-group" ref={popoverContentRef}>

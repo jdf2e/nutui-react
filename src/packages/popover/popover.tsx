@@ -114,6 +114,7 @@ export const Popover: FunctionComponent<
   }>()
 
   useEffect(() => {
+    console.log('useEffect', visible)
     setShowPopup(visible)
     if (visible) {
       setTimeout(() => {
@@ -292,11 +293,11 @@ export const Popover: FunctionComponent<
           ref={popoverRef}
           onClick={() => {
             props.onClick?.()
-            if (!visible) {
-              onOpen?.()
-            } else {
-              onClose?.()
-            }
+            // if (!visible) {
+            //   onOpen?.()
+            // } else {
+            //   onClose?.()
+            // }
           }}
           style={style}
         >
@@ -312,6 +313,7 @@ export const Popover: FunctionComponent<
               overlay={overlay}
               position="default"
               lockScroll={false}
+              destroyOnClose
               {...rest}
             >
               <div
