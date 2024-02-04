@@ -29,10 +29,16 @@
 
   &-left {
     justify-content: flex-start;
+    .nut-tabs-titles-item {
+      padding: 0 10px;
+    }
   }
 
   &-right {
     justify-content: flex-end;
+    .nut-tabs-titles-item {
+      padding: 0 10px;
+    }
   }
 
   &-scrollable {
@@ -46,18 +52,14 @@
     align-items: center;
     justify-content: center;
     flex: 1 0 auto;
-    padding: 0 10px;
     margin: 0 $tabs-titles-gap;
+    height: $tabs-titles-height;
+    line-height: $tabs-titles-height;
     min-width: $tabs-titles-item-min-width;
     font-size: $tabs-titles-font-size;
     color: $tabs-titles-item-color;
     text-overflow: ellipsis;
     white-space: nowrap;
-
-    &.taro {
-      height: 44px;
-      line-height: 44px;
-    }
 
     &-left,
     &-right {
@@ -121,6 +123,10 @@
     &:first-child {
       margin-left: 0;
     }
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 
   &-simple {
@@ -148,10 +154,7 @@
   &-button {
     .nut-tabs-titles-item {
       &-active {
-        &.taro {
-          height: 28px;
-        }
-
+        height: 28px;
         margin: 8px 9px;
         background: $color-default-light;
         color: $color-text;
@@ -262,6 +265,7 @@
 
   .nut-tabs-titles-item {
     height: $tabs-vertical-titles-item-height;
+    margin: 0;
     flex: none;
 
     &-smile {
@@ -300,10 +304,6 @@
         height: 20px;
         transform: rotate(320deg);
       }
-    }
-
-    &:first-child {
-      margin: 0 $tabs-titles-gap;
     }
   }
 
