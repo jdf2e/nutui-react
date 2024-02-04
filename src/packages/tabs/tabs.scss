@@ -29,10 +29,16 @@
 
   &-left {
     justify-content: flex-start;
+    .nut-tabs-titles-item {
+      padding: 0 10px;
+    }
   }
 
   &-right {
     justify-content: flex-end;
+    .nut-tabs-titles-item {
+      padding: 0 10px;
+    }
   }
 
   &-scrollable {
@@ -46,7 +52,6 @@
     align-items: center;
     justify-content: center;
     flex: 1 0 auto;
-    padding: 0 10px;
     margin: 0 $tabs-titles-gap;
     min-width: $tabs-titles-item-min-width;
     font-size: $tabs-titles-font-size;
@@ -120,6 +125,10 @@
 
     &:first-child {
       margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
     }
   }
 
