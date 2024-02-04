@@ -66,7 +66,6 @@ export default App;
 
 :::
 
-
 ### 基础用法-简约模式
 
 :::demo
@@ -91,8 +90,8 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ### 基础用法-卡片模式
 
@@ -118,10 +117,10 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
-
-### 基础用法-按钮/胶囊模式
+### 基础用法-按钮模式
 
 :::demo
 
@@ -145,9 +144,10 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
-### 基础用法-Title 左对齐
+### 基础用法-分割线模式
 
 :::demo
 
@@ -159,15 +159,139 @@ const App = () => {
   const [tab1value, setTab1value] = useState('0');
   return (
     <>
-      <Tabs value={tab1value}
-            onChange={(value) => {
-              setTab1value(value)
-            }}
-            align="left">
+      <Tabs value={tab1value} onChange={(value) => {
+        setTab1value(value)
+      }} activeType="divider">
         <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### Title左对齐
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs
+          value={tab1value}
+          align="left"
+          onChange={(value) => {
+            setTab1value(value)
+          }}
+        >
+          <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+        </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### 左对齐-卡片模式
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs
+        value={tab1value}
+        activeType="card"
+        align="left"
+        onChange={(value) => {
+          setTab1value(value)
+        }}>
+        <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### 左对齐-按钮模式
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs
+          value={tab1value}
+          activeType="button"
+          align="left"
+          onChange={(value) => {
+            setTab1value(value)
+          }}
+        >
+          <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+        </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### 左对齐-分割线模式
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs
+          value={tab1value}
+          activeType="divider"
+          align="left"
+          onChange={(value) => {
+            setTab1value(value)
+          }}
+        >
+          <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+        </Tabs>
     </>
   );
 };
@@ -215,6 +339,7 @@ const App = () => {
   const [tab2value, setTab2value] = useState('0');
   const swiperRef = useRef(null)
   const [tabIndex, setTabIndex] = useState(0)
+  const style = { backgroundColor: '#fff', padding: '10px' }
   return (
     <>
       <Tabs
@@ -237,19 +362,13 @@ const App = () => {
         }}
       >
         <Swiper.Item>
-          <div style={{ backgroundColor: '#fff', padding: '10px' }}>
-            Tab 1
-          </div>
+          <div style={{style}}>Tab 1</div>
         </Swiper.Item>
         <Swiper.Item>
-          <div style={{ backgroundColor: '#fff', padding: '10px' }}>
-            Tab 2
-          </div>
+          <div style={{style}}>Tab 2</div>
         </Swiper.Item>
         <Swiper.Item>
-          <div style={{ backgroundColor: '#fff', padding: '10px' }}>
-            Tab 3
-          </div>
+          <div style={{style}}>Tab 3</div>
         </Swiper.Item>
       </Swiper>
     </>
@@ -274,33 +393,39 @@ const App = () => {
   const [tab2value, setTab2value] = useState('0');
   return (
     <>
-      <Tabs value={tab2value}
-            tabStyle={{ position: 'sticky', top: '0px', zIndex: 11 }}
-            onChange={(value) => {
-              setTab2value(value)
-            }}>
-        <Tabs.TabPane title="Tab 1">
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-        </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 2">
-          <p>Tab 2</p>
-          <p>Tab 2</p>
-          <p>Tab 2</p>
-          <p>Tab 2</p>
-          <p>Tab 2</p>
-          <p>Tab 2</p>
-          <p>Tab 2</p>
-          <p>Tab 2</p>
-        </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
-      </Tabs>
+      <Tabs
+          value={tab2value}
+          style={{ position: 'relative', zIndex: 11 }}
+          tabStyle={{ position: 'sticky', top: '0px', zIndex: 11 }}
+          onChange={(value) => {
+            setTab2value(value)
+          }}
+        >
+          <Tabs.TabPane title="Tab 1" value="0">
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+            <p>Tab 1</p>
+          </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2" value="1">
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+            <p>Tab 2</p>
+          </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3" value="2">
+            Tab 3
+          </Tabs.TabPane>
+        </Tabs>
     </>
   );
 };
@@ -403,6 +528,38 @@ const App = () => {
 export default App;
 ```
 
+### 数量多,滚动操作2
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab4value, setTab4value] = useState('0');
+  return (
+    <>
+      <Tabs
+          value={tab4value}
+          style={{ height: '300px' }}
+          onChange={(value) => {
+            setTab4value(value)
+          }}
+          direction="vertical"
+        >
+          {list4.map((item) => (
+            <Tabs.TabPane key={item} title={`Tab ${item}`}>
+              Tab {item}
+            </Tabs.TabPane>
+          ))}
+        </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
 :::
 
 ### 左右布局
@@ -418,12 +575,19 @@ const App = () => {
   const list5 = Array.from(new Array(2).keys());
   return (
     <>
-      <Tabs style={{ height: '300px' }} value={tab5value}
-            onChange={(value) => {
-              setTab5value(value)
-            }} direction="vertical">
-        {list5.map(item => <Tabs.TabPane key={item}
-            title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
+      <Tabs 
+      style={{ height: '300px' }} 
+      value={tab5value}
+      onChange={(value) => {
+        setTab5value(value)
+      }} 
+      direction="vertical">
+      {list5.map(item => 
+        <Tabs.TabPane 
+          key={item}
+          title={`Tab ${item}`}
+          > Tab {item} 
+        </Tabs.TabPane>)}
       </Tabs>
     </>
   );
@@ -450,8 +614,11 @@ const App = () => {
             onChange={(value) => {
               setTab6value(value)
             }} activeType="smile" direction="vertical">
-        {list5.map(item => <Tabs.TabPane key={item}
-                                         title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
+        {list5.map(item => 
+          <Tabs.TabPane 
+            key={item}
+            title={`Tab ${item}`}> Tab {item} 
+          </Tabs.TabPane>)}
       </Tabs>
     </>
   );
@@ -497,7 +664,27 @@ const App = () => {
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
+    </>
+  );
+};
+export default App;
+```
 
+:::
+
+### 嵌套布局2
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab8value, setTab8value] = useState('0')
+  const [tab9value, setTab9value] = useState('0')
+  return (
+    <>
       <Tabs
         value={tab8value}
         onChange={(value) => {
@@ -529,7 +716,7 @@ export default App;
 
 :::
 
-### 标签栏字体尺寸 large normal small
+### Title 字体尺寸：20px 12px
 
 :::demo
 
@@ -541,20 +728,28 @@ const App = () => {
   const [tab1value, setTab1value] = useState('0');
   return (
     <>
-      <Tabs value={tab1value} onChange={(value) => {
-        setTab1value(paneKey)
-      }} style={{ '--nutui-tabs-titles-font-size': '20px' }}>
+      <Tabs
+        value={tab11value}
+        onChange={(value) => {
+          setTab11value(value)
+        }}
+        style={{ '--nutui-tabs-titles-font-size': '20px' }}
+      >
         <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
-      <Tabs value={tab1value} onChange={(value) => {
-        setTab1value(paneKey)
-      }} style={{ '--nutui-tabs-titles-font-size': '12px' }}>
+      <Tabs
+        value={tab12value}
+        onChange={(value) => {
+          setTab12value(value)
+        }}
+        style={{ '--nutui-tabs-titles-font-size': '12px' }}
+      >
         <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
-      </Tabs>
+        </Tabs>
     </>
   );
 };

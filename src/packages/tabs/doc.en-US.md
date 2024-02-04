@@ -27,9 +27,9 @@ const App = () => {
       <Tabs value={tab1value} onChange={(value) => {
         setTab1value(value)
       }}>
-        <Tabs.TabPane  title="Tab 1"> Tab 1 </Tabs.TabPane>
-        <Tabs.TabPane  title="Tab 2"> Tab 2 </Tabs.TabPane>
-        <Tabs.TabPane  title="Tab 3"> Tab 3 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
     </>
   );
@@ -39,7 +39,7 @@ export default App;
 
 :::
 
-### Basic Usage - Smile Curve
+### Basic Usage-Smile Curve
 
 :::demo
 
@@ -54,9 +54,9 @@ const App = () => {
       <Tabs value={tab1value} onChange={(value) => {
         setTab1value(value)
       }} activeType="smile">
-        <Tabs.TabPane  title="Tab 1"> Tab 1 </Tabs.TabPane>
-        <Tabs.TabPane  title="Tab 2"> Tab 2 </Tabs.TabPane>
-        <Tabs.TabPane  title="Tab 3"> Tab 3 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
     </>
   );
@@ -66,7 +66,7 @@ export default App;
 
 :::
 
-### Basic Usage - Simple Mode
+### Basic Usage-Simple Mode
 
 :::demo
 
@@ -90,10 +90,10 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
-
-### Basic Usage - Card Mode
+### Basic Usage-Card Mode
 
 :::demo
 
@@ -117,10 +117,10 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
-
-### Basic Usage - Button Mode
+### Basic Usage-Button Mode
 
 :::demo
 
@@ -144,9 +144,10 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
-### Basic Usage - Title Left Align
+### Basic Usage-Divider Mode
 
 :::demo
 
@@ -158,14 +159,12 @@ const App = () => {
   const [tab1value, setTab1value] = useState('0');
   return (
     <>
-      <Tabs value={tab1value}
-            onChange={(value) => {
-              setTab1value(value)
-            }}
-            align="left">
-        <Tabs.TabPane  title="Tab 1"> Tab 1 </Tabs.TabPane>
-        <Tabs.TabPane  title="Tab 2"> Tab 2 </Tabs.TabPane>
-        <Tabs.TabPane  title="Tab 3"> Tab 3 </Tabs.TabPane>
+      <Tabs value={tab1value} onChange={(value) => {
+        setTab1value(value)
+      }} activeType="divider">
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
     </>
   );
@@ -175,7 +174,134 @@ export default App;
 
 :::
 
-### Matched via value
+### Title Left Align
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs
+          value={tab1value}
+          align="left"
+          onChange={(value) => {
+            setTab1value(value)
+          }}
+        >
+          <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+        </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### Title Left Align-Card Mode
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs
+        value={tab1value}
+        activeType="card"
+        align="left"
+        onChange={(value) => {
+          setTab1value(value)
+        }}
+      >
+        <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### Title Left Align-Button Mode
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs
+          value={tab1value}
+          activeType="button"
+          align="left"
+          onChange={(value) => {
+            setTab1value(value)
+          }}
+        >
+          <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
+          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+        </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### Title Left Align-Divider Mode
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs
+        value={tab1value}
+        activeType="divider"
+        align="left"
+        onChange={(value) => {
+          setTab1value(value)
+        }}
+      >
+        <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### Match By Value
 
 :::demo
 
@@ -202,7 +328,7 @@ export default App;
 
 :::
 
-### With Swiper
+### Slide To Switch
 
 :::demo
 
@@ -214,6 +340,7 @@ const App = () => {
   const [tab2value, setTab2value] = useState('0');
   const swiperRef = useRef(null)
   const [tabIndex, setTabIndex] = useState(0)
+  const style = { backgroundColor: '#fff', padding: '10px' }
   return (
     <>
       <Tabs
@@ -236,19 +363,13 @@ const App = () => {
         }}
       >
         <Swiper.Item>
-          <div style={{ backgroundColor: '#fff', padding: '10px' }}>
-            Tab 1
-          </div>
+          <div style={{style}}>Tab 1</div>
         </Swiper.Item>
         <Swiper.Item>
-          <div style={{ backgroundColor: '#fff', padding: '10px' }}>
-            Tab 2
-          </div>
+          <div style={{style}}>Tab 2</div>
         </Swiper.Item>
         <Swiper.Item>
-          <div style={{ backgroundColor: '#fff', padding: '10px' }}>
-            Tab 3
-          </div>
+          <div style={{style}}>Tab 3</div>
         </Swiper.Item>
       </Swiper>
     </>
@@ -261,7 +382,7 @@ export default App;
 
 ### CSS Sticky
 
-通过设置tab的style 例如：`tabStyle={{ position: 'sticky', top: '0px', zIndex: 11 }}` ，来实现Css的粘性布局，注意：在微信小程序里组件外层元素不能存在 overflow 为 `hidden`、`auto`、`scroll`的设置。
+By setting the style of the tab, for example: tabStyle={{ position: 'sticky', top: '0px', zIndex: 11 }} , realize the sticky layout of CSS. Note: In the WeChat applet, the outer elements of the component cannot have overflow. Settings for hidden, auto, and scroll.
 
 :::demo
 
@@ -273,12 +394,16 @@ const App = () => {
   const [tab2value, setTab2value] = useState('0');
   return (
     <>
-      <Tabs value={tab2value}
-            tabStyle={{ position: 'sticky', top: '0px', zIndex: 11 }}
-            onChange={(value) => {
-              setTab2value(value)
-      }}>
-        <Tabs.TabPane title="Tab 1">
+      <Tabs
+        value={tab2value}
+        style={{ position: 'relative', zIndex: 11 }}
+        tabStyle={{ position: 'sticky', top: '0px', zIndex: 11 }}
+        onChange={(value) => {
+          setTab2value(value)
+        }}
+      >
+        <Tabs.TabPane title="Tab 1" value="0">
+          <p>Tab 1</p>
           <p>Tab 1</p>
           <p>Tab 1</p>
           <p>Tab 1</p>
@@ -288,7 +413,7 @@ const App = () => {
           <p>Tab 1</p>
           <p>Tab 1</p>
         </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 2">
+        <Tabs.TabPane title="Tab 2" value="1">
           <p>Tab 2</p>
           <p>Tab 2</p>
           <p>Tab 2</p>
@@ -298,7 +423,9 @@ const App = () => {
           <p>Tab 2</p>
           <p>Tab 2</p>
         </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3" value="2">
+          Tab 3
+        </Tabs.TabPane>
       </Tabs>
     </>
   );
@@ -308,9 +435,9 @@ export default App;
 
 :::
 
-### Tabpane height auto
+### Tabpane Auto Height
 
-Automatic height. When set to `true`, `nut-tabs` and `nut-tabs-content` will change with the height of the current `nut-tabpane`.
+When autoHeight is set to true, nut-tabs and nut-tabs__content will change with the current height of nut-tabpane.
 
 :::demo
 
@@ -326,10 +453,10 @@ const App = () => {
         setTab2value(value)
       }}>
         <Tabs.TabPane title="Tab 1">
-            <p>Tab 1</p>
-            <p>Tab 1</p>
-            <p>Tab 1</p>
-            <p>Tab 1</p>
+          <p>Tab 1</p>
+          <p>Tab 1</p>
+          <p>Tab 1</p>
+          <p>Tab 1</p>
         </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
@@ -342,12 +469,12 @@ export default App;
 
 :::
 
-### Data is rendered asynchronously for 3s
+### Data Is Rendered Asynchronously For 3s
 
 :::demo
 
 ```tsx
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Tabs } from '@nutui/nutui-react';
 
 const App = () => {
@@ -365,7 +492,7 @@ const App = () => {
         setTab3value(value)
       }}>
         {list3.map(item => <Tabs.TabPane key={item}
-          title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
+            title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
       </Tabs>
     </>
   );
@@ -375,7 +502,7 @@ export default App;
 
 :::
 
-### A large number of scrolling operations
+### A Large Number Of Scrolling Operations
 
 :::demo
 
@@ -390,12 +517,44 @@ const App = () => {
       <Tabs value={tab4value} onChange={(value) => {
         setTab4value(value)
       }}>
-        <Tabs.TabPane title="Low-level sale">Low-level sale</Tabs.TabPane>
-        <Tabs.TabPane title="Shangxinri">Shangxinri</Tabs.TabPane>
-        <Tabs.TabPane title="Ten billion subsidies">Ten billion subsidies</Tabs.TabPane>
-        <Tabs.TabPane title="Today's great value">Today&lsquo;s great value</Tabs.TabPane>
-        <Tabs.TabPane title="So good and so cheap">So good and so cheap</Tabs.TabPane>
+        <Tabs.TabPane title="Low-end Sale">Low-end Sale</Tabs.TabPane>
+        <Tabs.TabPane title="New Day">New Day</Tabs.TabPane>
+        <Tabs.TabPane title="Ten Billion Subsidies">Ten Billion Subsidies</Tabs.TabPane>
+        <Tabs.TabPane title="uper Value Today">uper Value Today</Tabs.TabPane>
+        <Tabs.TabPane title="So Good And So Cheap">So Good And So Cheap</Tabs.TabPane>
       </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+### A Large Number Of Scrolling Operations 2
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab4value, setTab4value] = useState('0');
+  return (
+    <>
+      <Tabs
+          value={tab4value}
+          style={{ height: '300px' }}
+          onChange={(value) => {
+            setTab4value(value)
+          }}
+          direction="vertical"
+        >
+          {list4.map((item) => (
+            <Tabs.TabPane key={item} title={`Tab ${item}`}>
+              Tab {item}
+            </Tabs.TabPane>
+          ))}
+        </Tabs>
     </>
   );
 };
@@ -404,7 +563,7 @@ export default App;
 
 :::
 
-### Left and right layout
+### Left And Right Layout
 
 :::demo
 
@@ -417,12 +576,19 @@ const App = () => {
   const list5 = Array.from(new Array(2).keys());
   return (
     <>
-      <Tabs style={{ height: '300px' }} value={tab5value}
-            onChange={(value) => {
-              setTab5value(value)
-            }} direction="vertical">
-        {list5.map(item => <Tabs.TabPane key={item}
-          title={`Tab ${  item}`}> Tab {item} </Tabs.TabPane>)}
+      <Tabs 
+      style={{ height: '300px' }} 
+      value={tab5value}
+      onChange={(value) => {
+        setTab5value(value)
+      }} 
+      direction="vertical">
+      {list5.map(item => 
+        <Tabs.TabPane 
+          key={item}
+          title={`Tab ${item}`}
+          > Tab {item} 
+        </Tabs.TabPane>)}
       </Tabs>
     </>
   );
@@ -432,7 +598,7 @@ export default App;
 
 :::
 
-### Left and Right Layout - Smile Curve
+### Left And Right Layout-Smile Curve
 
 :::demo
 
@@ -449,8 +615,11 @@ const App = () => {
             onChange={(value) => {
               setTab6value(value)
             }} activeType="smile" direction="vertical">
-        {list5.map(item => <Tabs.TabPane key={item}
-          title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
+        {list5.map(item => 
+          <Tabs.TabPane 
+            key={item}
+            title={`Tab ${item}`}> Tab {item} 
+          </Tabs.TabPane>)}
       </Tabs>
     </>
   );
@@ -460,8 +629,7 @@ export default App;
 
 :::
 
-
-### Tabs in Tabs
+### Tabs In Tabs
 
 :::demo
 
@@ -497,7 +665,27 @@ const App = () => {
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
+    </>
+  );
+};
+export default App;
+```
 
+:::
+
+### Tabs In Tabs 2
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react';
+
+const App = () => {
+  const [tab8value, setTab8value] = useState('0')
+  const [tab9value, setTab9value] = useState('0')
+  return (
+    <>
       <Tabs
         value={tab8value}
         onChange={(value) => {
@@ -529,7 +717,7 @@ export default App;
 
 :::
 
-### tab bar font size large normal small
+### Title FontSize: 20px 12px
 
 :::demo
 
@@ -541,20 +729,28 @@ const App = () => {
   const [tab1value, setTab1value] = useState('0');
   return (
     <>
-      <Tabs value={tab1value} onChange={(value) => {
-        setTab1value(paneKey)
-      }} style={{ '--nutui-tabs-titles-font-size': '20px' }}>
+      <Tabs
+        value={tab11value}
+        onChange={(value) => {
+          setTab11value(value)
+        }}
+        style={{ '--nutui-tabs-titles-font-size': '20px' }}
+      >
         <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
-      <Tabs value={tab1value} onChange={(value) => {
-        setTab1value(paneKey)
-      }} style={{ '--nutui-tabs-titles-font-size': '12px' }}>
+      <Tabs
+        value={tab12value}
+        onChange={(value) => {
+          setTab12value(value)
+        }}
+        style={{ '--nutui-tabs-titles-font-size': '12px' }}
+      >
         <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
-      </Tabs>
+        </Tabs>
     </>
   );
 };
@@ -563,29 +759,29 @@ export default App;
 
 :::
 
-### custom tab bar
+### Custom Tab Bar
 
 :::demo
 
 ```tsx
 import React, { useState } from "react";
-import { Tabs } from '@nutui/nutui-react';  
+import { Tabs } from '@nutui/nutui-react';
 import { Star } from '@nutui/icons-react';
 
 const App = () => {
   const [tab7value, setTab7value] = useState('c1');
   const list6 = [
     {
-      title: 'custom 1',
+      title: 'Custom 1',
       paneKey: 'c1',
       icon: <Star />,
     },
     {
-      title: 'custom 2',
+      title: 'Custom 2',
       paneKey: 'c2',
     },
     {
-      title: 'custom 3',
+      title: 'Custom 3',
       paneKey: 'c3'
     }
   ]
@@ -679,6 +875,3 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tabs-vertical-tab-line-color | vertical line color | `linear-gradient(180deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |
 | \--nutui-tabs-vertical-tab-line-width | Vertical title line width | `3px` |
 | \--nutui-tabs-vertical-tab-line-height | The height of the vertical title line | `12px` |
-
-
-
