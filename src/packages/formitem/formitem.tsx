@@ -169,7 +169,6 @@ export class FormItem extends React.Component<
       this.context.errors[this.props.name as string] = []
       this.refresh()
     } else {
-      console.log('forceupdate', this.props.name)
       this.forceUpdate()
     }
   }
