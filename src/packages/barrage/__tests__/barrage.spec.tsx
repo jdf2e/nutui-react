@@ -33,8 +33,14 @@ test('should danmu list props', async () => {
 
   await waitFor(
     () => {
+      const el = container.querySelectorAll('.barrage-item')[0]
+      const wrapper = container.querySelectorAll('.nut-barrage')[0]
+
+      const elScrollDuration = Math.ceil(
+        (el.clientWidth / wrapper.clientWidth) * 300
+      )
       expect(container.querySelectorAll('.barrage-item')[0]).toHaveStyle({
-        animationDuration: '300ms',
+        animationDuration: `${300 + elScrollDuration}ms`,
       })
     },
     { timeout: 4000 }
