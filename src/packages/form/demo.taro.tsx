@@ -366,7 +366,7 @@ const FormDemo = () => {
             name="tel"
             rules={[{ max: 13, message: translated.telTip }]}
           >
-            <Input placeholder={translated.telTip2} type="number" />
+            <Input placeholder={translated.telTip} type="number" />
           </Form.Item>
           <Form.Item
             label={translated.address}

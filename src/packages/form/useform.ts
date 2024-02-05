@@ -100,8 +100,6 @@ class FormStore {
     })
     this.updateList.forEach((item: UpdateItem) => {
       let shouldUpdate = item.condition
-      console.log('xxx', item.entity.props.name)
-      console.log('should update', shouldUpdate)
       if (typeof item.condition === 'function') {
         shouldUpdate = item.condition()
       }
