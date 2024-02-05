@@ -313,7 +313,6 @@ export const Popover: FunctionComponent<
               overlay={overlay}
               position="default"
               lockScroll={false}
-              destroyOnClose
               {...rest}
             >
               <div
