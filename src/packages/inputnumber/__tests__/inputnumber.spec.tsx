@@ -96,7 +96,7 @@ test('should not trigger click when disabled props to be true', () => {
 
   const iconPlus = container.querySelectorAll('.nut-icon-Plus')[0]
   fireEvent.click(iconPlus)
-  expect(container.querySelector('input')?.value).toBe('2')
+  expect(container.querySelector('input')?.value).toBe('1')
 
   const iconMinus = container.querySelectorAll('.nut-icon-Minus')[0]
   fireEvent.click(iconMinus)
