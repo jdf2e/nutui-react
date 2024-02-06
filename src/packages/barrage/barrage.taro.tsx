@@ -79,10 +79,6 @@ const InternalBarrage: ForwardRefRenderFunction<
     const init = async () => {
       if (barrageBody.current) {
         barrageCWidth.current = await getNodeWidth(barrageBody.current)
-        console.log(
-          'barrageCWidth.current',
-          await getNodeWidth(barrageBody.current)
-        )
       }
     }
 
@@ -120,7 +116,7 @@ const InternalBarrage: ForwardRefRenderFunction<
     }
 
     const _index = loop ? index.current % list.length : index.current
-    const el = document.createElement(`div`)
+    const el = document.createElement(`View`)
 
     let currentIndex = _index % rows
     if (
