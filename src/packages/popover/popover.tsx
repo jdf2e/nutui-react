@@ -114,7 +114,6 @@ export const Popover: FunctionComponent<
   }>()
 
   useEffect(() => {
-    console.log('useEffect', visible)
     setShowPopup(visible)
     if (visible) {
       setTimeout(() => {
