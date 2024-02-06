@@ -293,11 +293,11 @@ export const Popover: FunctionComponent<
           ref={popoverRef}
           onClick={() => {
             props.onClick?.()
-            // if (!visible) {
-            //   onOpen?.()
-            // } else {
-            //   onClose?.()
-            // }
+            if (!visible) {
+              onOpen?.()
+            } else {
+              onClose?.()
+            }
           }}
           style={style}
         >
