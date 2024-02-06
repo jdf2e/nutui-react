@@ -157,7 +157,46 @@ export default App;
 ```
 
 :::
+### 关联展示
 
+:::demo
+
+```tsx
+import React from "react";
+import { Form, Input, TextArea } from '@nutui/nutui-react';
+
+
+const App = () => {
+
+  return (
+    <>
+      <Form divider labelPosition="right">
+        <Form.Item label="字段A" name="username">
+          <Input placeholder="请输入字段A" type="text" />
+        </Form.Item>
+        <Form.Item
+          label="字段D"
+          name="address"
+          shouldUpdate
+          noStyle
+        >
+          {({ getFieldValue }: FormInstance) => {
+            const value = getFieldValue('username')
+            if (!value) return null
+            return (
+              <TextArea placeholder="字段D" maxLength={100} />
+            )
+          }}
+        </Form.Item>
+      </Form>
+    </>
+  )
+}
+
+export default App;
+```
+
+:::
 ### 带有初始值表单校验
 
 :::demo
@@ -463,6 +502,8 @@ export default App;
 | label | 标签名 | `ReactNode` | `-` |
 | errorMessageAlign | 错误提示文案对齐方式 | `center` \| `right` \| `left` | `left` |
 | initialValue | 设置子元素默认值 | `any` | `-` |
+| noStyle | 不使用样式，只使用字段管理 | `boolean` | `false` |
+| shouldUpdate | 更新逻辑 | `boolean` | `false` |
 | trigger | 设置收集字段值变更的时机 | `string` | `-` |
 | valuePropName | 子节点的值的属性，如 Checkbox 的是 'checked' | `string` | `-` |
 | getValueFromEvent | 设置如何将 event 的值转换成字段值 | `(...args: any) => any` | `-` |

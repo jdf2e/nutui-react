@@ -157,8 +157,45 @@ export default App;
 ```
 
 :::
+### 關聯展示
 
-### 帶有初始值錶單校驗
+:::demo
+
+```tsx
+import React from "react";
+import { Form, Input, TextArea } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Form divider labelPosition="right">
+        <Form.Item label="字段A" name="username">
+          <Input placeholder="请输入字段A" type="text" />
+        </Form.Item>
+        <Form.Item
+          label="字段D"
+          name="address"
+          shouldUpdate
+          noStyle
+        >
+          {({ getFieldValue }: FormInstance) => {
+            const value = getFieldValue('username')
+            if (!value) return null
+            return (
+              <TextArea placeholder="字段D" maxLength={100} />
+            )
+          }}
+        </Form.Item>
+      </Form>
+    </>
+  )
+}
+
+export default App;
+```
+
+:::
+### 帶有初始值表單校驗
 
 :::demo
 
@@ -463,6 +500,8 @@ export default App;
 | name | 在使用錶單校驗功能的情況下，該屬性是必填的 | `string` | `-` |
 | errorMessageAlign | 錯誤提示文案對齊方式 | `center` \| `right` \| `left` | `left` |
 | initialValue | 設置子元素默認值 | `any` | `-` |
+| noStyle | 不使用样式，只使用字段管理 | `boolean` | `false` |
+| shouldUpdate | 更新逻辑 | `boolean` | `false` |
 | trigger | 設置收集字段值變更的時機 | `string` | `-` |
 | valuePropName | 子節點的值的屬性，如 Checkbox 的是 'checked' | `string` | `-` |
 | getValueFromEvent | 設置如何將 event 的值轉換成字段值 | `(...args: any) => any` | `-` |
