@@ -1,3 +1,16 @@
+# v2.3.10
+`2024-02-06`
+
+* :sparkles: feat(form): support renderProps (#1937) @oasis-cloud
+* :sparkles: feat(shortpassword): support ref for form (#1930) @oasis-cloud
+* :sparkles: feat: 生成用于 rtl 校对的 css 文件 (#1927) @oasis-cloud
+* :bug: fix(barrage): 解决新增弹幕重叠问题+不同宽度弹幕滚动速度不一致问题+重构taro版本 (#1942) @songsong
+* :bug: fix(popover): can not be closed (#1931) @oasis-cloud
+* :bug: fix(sticky): 适配 taro (#1928) @xiaoyatong
+* :bug: fix(tabs): 修订左对齐样式 (#1929) @xiaoyatong
+* 📖 docs(tabs): 文档可读性优化 (#1935) @Alex.huxiyang
+
+
 # v2.3.9
 `2024-02-02`
 
