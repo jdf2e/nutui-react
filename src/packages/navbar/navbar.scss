@@ -90,26 +90,26 @@
     right: 0;
 
     .nut-icon {
-      margin-left: 12px;
+      margin-inline-start: 12px;
 
       &:first-child {
-        margin-left: 0;
+        margin-inline-start: 0;
       }
     }
   }
 
   &-title-align-left {
-    padding: 0 14px;
+    padding-inline-start: 14px;
 
     .nut-navbar-left {
       position: static;
       padding: 0;
 
       .nut-icon {
-        margin-left: 12px;
+        margin-inline-start: 12px;
 
         &:first-child {
-          margin-left: 0;
+          margin-inline-start: 0;
         }
       }
     }
@@ -117,10 +117,10 @@
       position: static;
       display: inline-flex;
       white-space: nowrap;
-      padding-left: 0;
+      padding-inline-start: 0;
     }
     .nut-navbar-left-back {
-      margin-right: 0;
+      margin-inline-end: 0;
     }
 
     .nut-navbar-title {

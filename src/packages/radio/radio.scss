@@ -7,20 +7,20 @@
 
   &:last-child {
     margin-bottom: 0 !important;
-    margin-right: 0 !important;
+    margin-inline-end: 0 !important;
   }
 
   &.nut-radio-reverse {
     flex-direction: row-reverse;
 
     .nut-radio-label {
-      margin-right: $radio-label-margin-left;
-      margin-left: 0;
+      margin-inline-end: $radio-label-margin-left;
+      margin-inline-start: 0;
     }
   }
 
   &-label {
-    margin-left: $radio-label-margin-left;
+    margin-inline-start: $radio-label-margin-left;
     font-size: $radio-label-font-size;
     color: $radio-label-color;
 
@@ -77,25 +77,5 @@
     background: $color-text-disabled;
     color: $white;
     border: 1px solid $color-text-disabled;
-  }
-}
-
-[dir='rtl'] .nut-radio,
-.nut-rtl .nut-radio {
-  &:last-child {
-    margin-right: 0 !important;
-    margin-left: 0 !important;
-  }
-
-  &.nut-radio-reverse {
-    .nut-radio-label {
-      margin-left: $radio-label-margin-left;
-      margin-right: 0;
-    }
-  }
-
-  &-label {
-    margin-left: 0;
-    margin-right: $radio-label-margin-left;
   }
 }

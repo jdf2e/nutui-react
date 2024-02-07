@@ -1,6 +1,7 @@
 .nut-radiogroup {
   .nut-radio {
-    margin: $radiogroup-radio-margin;
+    margin-inline-end: $radiogroup-radio-margin;
+    margin-bottom: $radiogroup-radio-margin-bottom;
 
     &-label {
       margin: $radiogroup-radio-label-margin;

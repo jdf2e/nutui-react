@@ -20,7 +20,7 @@
   }
 
   &-label {
-    margin-left: $checkbox-label-margin-left;
+    margin-inline-start: $checkbox-label-margin-left;
     font-size: $checkbox-label-font-size;
     color: $checkbox-label-color;
 
@@ -45,8 +45,8 @@
     flex-direction: row-reverse;
 
     .nut-checkbox-label {
-      margin-right: $checkbox-label-margin-left;
-      margin-left: 0;
+      margin-inline-end: $checkbox-label-margin-left;
+      margin-inline-start: 0;
     }
   }
 
@@ -123,18 +123,6 @@
 
 [dir='rtl'] .nut-checkbox,
 .nut-rtl .nut-checkbox {
-  &-label {
-    margin-left: 0;
-    margin-right: $checkbox-label-margin-left;
-  }
-
-  &-reverse {
-    .nut-checkbox-label {
-      margin-left: $checkbox-label-margin-left;
-      margin-right: 0;
-    }
-  }
-
   &-button {
     &-icon {
       right: auto;

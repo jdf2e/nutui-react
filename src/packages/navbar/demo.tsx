@@ -116,7 +116,7 @@ const NavBarDemo = () => {
             {translated.c3a3a1d2}
           </span>
           <i
-            style={{ marginLeft: '5px' }}
+            style={{ marginInlineStart: '5px' }}
             className="flex-center"
             onClick={(e) => Toast.show('icon')}
           >
@@ -217,7 +217,7 @@ const NavBarDemo = () => {
             {translated.c3a3a1d2}
           </span>
           <i
-            style={{ marginLeft: '5px' }}
+            style={{ marginInlineStart: '5px' }}
             className="flex-center"
             onClick={(e) => Toast.show('icon')}
           >

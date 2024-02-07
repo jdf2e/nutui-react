@@ -155,7 +155,8 @@
     .nut-tabs-titles-item {
       &-active {
         height: 28px;
-        margin: 8px 9px;
+        margin-top: 8px;
+        margin-bottom: 8px;
         background: $color-default-light;
         color: $color-text;
         border-radius: $tabs-tab-button-border-radius;
@@ -206,6 +207,11 @@
     }
 
     &:first-child {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    &:last-child {
       margin-left: 0;
       margin-right: 0;
     }

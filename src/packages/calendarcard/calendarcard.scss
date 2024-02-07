@@ -21,11 +21,11 @@
       line-height: 1;
 
       .left {
-        margin-left: 8px;
+        margin-inline-start: 8px;
       }
 
       .right {
-        margin-right: 8px;
+        margin-inline-end: 8px;
       }
     }
   }
@@ -109,16 +109,6 @@
   &-header {
     &-left,
     &-right {
-      .left {
-        margin-left: 0;
-        margin-right: 8px;
-      }
-
-      .right {
-        margin-right: 0;
-        margin-left: 8px;
-      }
-
       .nut-icon-ArrowLeft,
       .nut-icon-ArrowRight,
       svg {

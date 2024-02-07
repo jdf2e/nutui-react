@@ -24,36 +24,12 @@
   &-horizontal {
     .nut-checkbox {
       display: inline-flex;
-      margin-right: 20px;
+      margin-inline-end: 20px;
 
       &-button-active {
         border: $radio-button-active-border;
         background-color: $color-primary-light;
       }
-    }
-  }
-}
-
-[dir='rtl'] .nut-checkboxgroup,
-.nut-rtl .nut-checkboxgroup {
-  .nut-checkbox {
-    &-label {
-      margin-right: 5px;
-    }
-  }
-
-  &-vertical {
-    .nut-checkbox {
-      &-label {
-        margin-right: 5px;
-      }
-    }
-  }
-
-  &-horizontal {
-    .nut-checkbox {
-      margin-right: 0;
-      margin-left: 20px;
     }
   }
 }
