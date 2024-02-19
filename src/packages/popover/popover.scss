@@ -29,7 +29,7 @@
       right: 0px;
       border-left-color: $popover-border-color;
       border-right-width: 0;
-      margin-right: -8px;
+      margin-inline-end: -8px;
 
       &.nut-popover-arrow-left {
         top: 50%;
@@ -51,7 +51,7 @@
       left: 0px;
       border-right-color: $popover-border-color;
       border-left-width: 0;
-      margin-left: -8px;
+      margin-inline-start: -8px;
 
       &.nut-popover-arrow-right {
         top: 50%;
@@ -127,7 +127,7 @@
       &-name {
         width: 100%;
         word-break: keep-all;
-        margin-left: 4px;
+        margin-inline-start: 4px;
       }
 
       &-action-icon {
@@ -229,8 +229,6 @@
       border-right-color: $popover-border-color;
       border-right-width: medium;
       border-left-width: 0;
-      margin-right: 0;
-      margin-left: -8px;
     }
 
     &-right {
@@ -240,18 +238,11 @@
       border-left-color: $popover-border-color;
       border-left-width: medium;
       border-right-width: 0;
-      margin-left: 0;
-      margin-right: -8px;
     }
   }
 
   .nut-popover-content {
     .nut-popover-menu-item {
-      &-name {
-        margin-left: 0;
-        margin-right: 4px;
-      }
-
       &-action-icon {
         right: auto;
         left: $popover-menu-item-padding;

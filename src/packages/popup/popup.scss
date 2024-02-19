@@ -360,24 +360,6 @@
     right: 0;
   }
 
-  &-right {
-    right: auto;
-    left: 0;
-
-    &.nut-popup-round {
-      border-radius: 0 $popup-border-radius $popup-border-radius 0;
-    }
-  }
-
-  &-left {
-    left: auto;
-    right: 0;
-
-    &.nut-popup-round {
-      border-radius: $popup-border-radius 0 0 $popup-border-radius;
-    }
-  }
-
   &-top {
     left: auto;
     right: 0;

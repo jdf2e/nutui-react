@@ -74,7 +74,6 @@ const DragDemo = () => {
             top: isTaroWeb ? '197px' : '140px',
             left: '8px',
           }}
-          className="weapp-drag1"
         >
           <Button type="primary"> {translated.directionX}</Button>
         </Drag>
@@ -84,7 +83,6 @@ const DragDemo = () => {
             top: isTaroWeb ? '197px' : '140px',
             right: '50px',
           }}
-          className="weapp-drag2"
         >
           <Button type="primary"> {translated.directionY}</Button>
         </Drag>
@@ -98,7 +96,6 @@ const DragDemo = () => {
             top: isTaroWeb ? '277px' : '220px',
             left: '8px',
           }}
-          className="weapp-drag3"
         >
           <Button type="primary">{translated.attractText}</Button>
         </Drag>
@@ -127,7 +124,6 @@ const DragDemo = () => {
             top: isTaroWeb ? '417px' : '360px',
             left: '50px',
           }}
-          className="weapp-drag4"
         >
           <Button type="primary">{translated.limitBoundaries}</Button>
         </Drag>
