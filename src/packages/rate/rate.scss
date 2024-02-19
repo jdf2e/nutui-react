@@ -18,10 +18,10 @@
     display: flex;
     flex-shrink: 0;
     position: relative;
-    margin-right: $rate-item-margin;
+    margin-inline-end: $rate-item-margin;
 
     &:last-child {
-      margin-right: 0;
+      margin-inline-end: 0;
     }
 
     &-half {
@@ -66,14 +66,6 @@
 [dir='rtl'] .nut-rate,
 .nut-rtl .nut-rate {
   &-item {
-    margin-right: 0;
-    margin-left: $rate-item-margin;
-
-    &:last-child {
-      margin-right: 0;
-      margin-left: 0;
-    }
-
     &-half {
       left: auto;
       right: 0;

@@ -81,12 +81,32 @@
   &-label {
     margin-right: 0;
     margin-left: $form-item-label-margin-right;
+    text-align: var(--nutui-form-item-label-text-align, right);
 
     .required {
       &::before {
         margin-right: 0;
         margin-left: $form-item-required-margin-right;
       }
+    }
+  }
+  &-body {
+    &-slots {
+      text-align: var(--nutui-form-item-body-slots-text-align, right);
+
+      .nut-input-text {
+        text-align: var(--nutui-form-item-body-input-text-align, right);
+      }
+
+      .nut-textarea {
+        .nut-textarea-textarea {
+          text-align: var(--nutui-form-item-body-input-text-align, right);
+        }
+      }
+    }
+
+    &-tips {
+      text-align: var(--nutui-form-item-tip-text-align, right);
     }
   }
 }

@@ -4,7 +4,7 @@
   word-break: break-all;
   margin-bottom: $col-default-margin-bottom;
 
-  &-gutter {
+  &.nut-col-gutter {
     &:last-child {
       padding-right: 0 !important;
     }
@@ -19,14 +19,12 @@
 .nut-rtl .nut-col {
   float: right;
 
-  &-gutter {
+  &.nut-col-gutter {
     &:last-child {
-      padding-right: 0 !important;
       padding-left: 0 !important;
     }
 
     &:first-child {
-      padding-left: 0 !important;
       padding-right: 0 !important;
     }
   }
