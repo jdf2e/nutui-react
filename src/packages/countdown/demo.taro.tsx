@@ -219,20 +219,22 @@ const CountDownDemo = () => {
         </Cell>
 
         <h2>{translated.controlTime}</h2>
-        <Cell>
+        <Cell
+          align="center"
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+          }}
+        >
           <CountDown
             endTime={stateRef.current.endTime}
             paused={paused}
             onPaused={onpaused}
             onRestart={onrestart}
           />
-          <div style={{ position: 'absolute', right: '10px', top: '9px' }}>
-            <div onClick={() => toggle()}>
-              <Button type="primary" size="small">
-                {paused ? translated.start : translated.stop}
-              </Button>
-            </div>
-          </div>
+          <Button type="primary" size="small" onClick={() => toggle()}>
+            {paused ? translated.start : translated.stop}
+          </Button>
         </Cell>
 
         <h2>{translated.customStyle}</h2>

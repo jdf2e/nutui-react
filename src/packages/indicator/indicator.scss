@@ -14,11 +14,11 @@
     margin: 0 $indicator-dot-margin;
 
     &:first-child {
-      margin-left: 0px;
+      margin-inline-start: 0px;
     }
 
     &:last-child {
-      margin-right: 0px;
+      margin-inline-end: 0px;
     }
   }
 
@@ -49,21 +49,6 @@
     .nut-indicator-active {
       width: $indicator-dot-size;
       height: $indicator-dot-active-size;
-    }
-  }
-}
-
-[dir='rtl'] .nut-indicator,
-.nut-rtl .nut-indicator {
-  &-dot {
-    &:first-child {
-      margin-left: 0;
-      margin-right: 0px;
-    }
-
-    &:last-child {
-      margin-right: 0;
-      margin-left: 0px;
     }
   }
 }
