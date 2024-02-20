@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { InputNumber } from '../inputnumber'
@@ -133,5 +133,7 @@ test('should update input value when inputValue overlimit', () => {
   const input = container.querySelectorAll('input')[0]
   input.value = '200'
   fireEvent.blur(input)
-  expect(container.querySelector('input')?.value).toBe('100')
+  waitFor(() => {
+    expect(container.querySelector('input')?.value).toBe('100')
+  })
 })

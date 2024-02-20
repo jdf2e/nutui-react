@@ -1,15 +1,21 @@
-import React, { useEffect, useRef, FunctionComponent, useState } from 'react'
+import React, {
+  useEffect,
+  useRef,
+  FunctionComponent,
+  useState,
+  ChangeEvent,
+} from 'react'
 import { Minus, Plus } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface InputNumberProps extends BasicComponent {
-  value: number
-  defaultValue: number
+  value: number | string
+  defaultValue: number | string
   allowEmpty: boolean
-  min: number
-  max: number
+  min: number | string
+  max: number | string
   disabled: boolean
   readOnly: boolean
   step: number
@@ -18,10 +24,13 @@ export interface InputNumberProps extends BasicComponent {
   formatter?: (value?: number) => string
   onPlus: (e: React.MouseEvent) => void
   onMinus: (e: React.MouseEvent) => void
-  onOverlimit: () => void
+  onOverlimit: (e: React.MouseEvent) => void
   onBlur: (e: React.FocusEvent<HTMLInputElement>) => void
   onFocus: (e: React.FocusEvent<HTMLInputElement>) => void
-  onChange: (param: number) => void
+  onChange: (
+    param: number,
+    e: React.MouseEvent | ChangeEvent<HTMLInputElement>
+  ) => void
 }
 
 const defaultProps = {
@@ -29,6 +38,8 @@ const defaultProps = {
   disabled: false,
   readOnly: false,
   allowEmpty: false,
+  min: 1,
+  max: 9999,
   step: 1,
   digits: 0,
   async: false,
@@ -76,11 +87,15 @@ export const InputNumber: FunctionComponent<
     }
   }, [focused])
 
-  const [shadowValue, setShadowValue] = usePropsValue({
-    value,
-    defaultValue,
+  const [shadowValue, setShadowValue] = usePropsValue<number | null | string>({
+    value: typeof value === 'string' ? parseFloat(value) : value,
+    defaultValue:
+      typeof defaultValue === 'string'
+        ? parseFloat(defaultValue)
+        : defaultValue,
     onChange: (value) => {},
   })
+
   const bound = (value: number, min: number, max: number) => {
     let res = value
     if (min !== undefined) {
@@ -91,9 +106,11 @@ export const InputNumber: FunctionComponent<
     }
     return res
   }
-  const format = (value: number): string => {
+  const format = (value: number | null | string): string => {
+    if (value === null) return ''
     // 如果超过 min 或 max, 需要纠正
-    const fixedValue = bound(value, min, max)
+    if (typeof value === 'string') value = parseFloat(value)
+    const fixedValue = bound(value, Number(min), Number(max))
     if (formatter) {
       return formatter(fixedValue)
     }
@@ -102,10 +119,13 @@ export const InputNumber: FunctionComponent<
     }
     return fixedValue.toString()
   }
-  const [formattedValue, setFormattedValue] = usePropsValue({
-    value: value && format(shadowValue),
-    defaultValue: defaultValue && format(shadowValue),
-  })
+  const [inputValue, setInputValue] = useState(format(shadowValue))
+
+  useEffect(() => {
+    if (!focused) {
+      setInputValue(format(shadowValue))
+    }
+  }, [focused, shadowValue])
 
   const calcNextValue = (current: any, step: any, symbol: number) => {
     const dig = digits + 1
@@ -113,59 +133,61 @@ export const InputNumber: FunctionComponent<
       (parseFloat(current || '0') * dig + parseFloat(step) * dig * symbol) / dig
     )
   }
-  const update = (negative: boolean) => {
+  const update = (negative: boolean, e: React.MouseEvent) => {
     if (step !== undefined) {
-      const nextValue = bound(
-        calcNextValue(shadowValue, step, negative ? -1 : 1),
-        min,
-        max
+      const shouldOverBoundary = calcNextValue(
+        shadowValue,
+        step,
+        negative ? -1 : 1
       )
+      const nextValue = bound(shouldOverBoundary, Number(min), Number(max))
       setShadowValue(nextValue)
-      setFormattedValue(format(nextValue))
-      if (nextValue === (negative ? min : max)) {
-        onOverlimit?.()
+      if (negative ? shouldOverBoundary < min : shouldOverBoundary > max) {
+        onOverlimit?.(e)
       } else {
-        onChange?.(nextValue)
+        onChange?.(nextValue, e)
       }
     }
   }
   const handleReduce = (e: React.MouseEvent) => {
     if (disabled) return
     onMinus?.(e)
-    update(true)
+    update(true, e)
   }
   const handlePlus = (e: React.MouseEvent) => {
     if (disabled) return
     onPlus?.(e)
-    update(false)
+    update(false, e)
+  }
+
+  const parseValue = (text: string) => {
+    if (text === '') return null
+    if (text === '-') return null
+    return text
   }
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // 设置 input 值， 在 blur 时格式化
-    setFormattedValue(e.target.value)
-    setShadowValue(e.target.value as any)
-    onChange && onChange(e.target.value as any)
-  }
-  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
-    // 失去焦点，同步数据，格式化
-    setFocused(false)
-
-    let finalV: any = e.target.value
-    if (e.target.value === '') {
-      if (!allowEmpty) {
-        finalV = defaultValue
+    setInputValue(e.target.value)
+    const valueStr = parseValue(e.target.value)
+    if (valueStr === null) {
+      if (allowEmpty) {
+        setShadowValue(null)
+      } else {
+        setShadowValue(defaultValue)
       }
+    } else {
+      setShadowValue(valueStr as any)
     }
-
-    setShadowValue(finalV)
-    setFormattedValue(format(finalV))
-    onBlur && onBlur(e)
+    onChange && onChange(parseFloat(valueStr || '0').toFixed(digits) as any, e)
   }
   const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
-    // 设置文本框为原始数据
-    setFormattedValue(shadowValue as any)
-    // 选中文本
     setFocused(true)
+    setInputValue(shadowValue ? shadowValue.toString() : '')
     onFocus && onFocus(e)
+  }
+  const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    setFocused(false)
+    onBlur && onBlur(e)
   }
 
   return (
@@ -186,7 +208,7 @@ export const InputNumber: FunctionComponent<
           inputMode="decimal"
           disabled={disabled}
           readOnly={readOnly}
-          value={formattedValue}
+          value={inputValue}
           onInput={handleInputChange}
           onBlur={handleBlur}
           onFocus={handleFocus}
