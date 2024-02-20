@@ -3,7 +3,6 @@ import reactRefresh from '@vitejs/plugin-react'
 import path from 'path'
 import commonjs from '@rollup/plugin-commonjs'
 import typescript from '@rollup/plugin-typescript'
-import { getBabelOutputPlugin } from '@rollup/plugin-babel'
 import config from './src/config.json'
 
 const entries: any = {
@@ -62,19 +61,7 @@ export default defineConfig({
         entryFileNames: '[name].js',
         chunkFileNames: '[name].js',
       },
-      plugins: [
-        commonjs(),
-        typescript(),
-        getBabelOutputPlugin({
-          presets: ['@babel/preset-env'],
-          plugins: [
-            '@babel/plugin-transform-runtime',
-            '@babel/plugin-proposal-class-properties',
-            '@babel/plugin-proposal-object-rest-spread',
-            '@babel/plugin-syntax-dynamic-import',
-          ],
-        }),
-      ],
+      plugins: [commonjs(), typescript()],
     },
   },
 })
