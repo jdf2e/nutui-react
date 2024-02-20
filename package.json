@@ -99,7 +99,6 @@
     "@mdx-js/rollup": "^3.0.1",
     "@nutui/icons-react": "^1.0.2",
     "@nutui/icons-react-taro": "^1.0.2",
-    "@nutui/nutui-react": "workspace:^",
     "@nutui/touch-emulator": "^1.0.0",
     "@react-spring/web": "~9.6.1",
     "@use-gesture/react": "10.2.20",

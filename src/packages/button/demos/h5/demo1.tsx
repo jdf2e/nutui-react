@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button } from '../../button'
-// import { Button } from '../../button.taro'
 
 const Demo1 = () => {
   const marginStyle = { margin: 8 }
