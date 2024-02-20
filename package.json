@@ -94,13 +94,18 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.21.0",
+    "@mdx-js/mdx": "^3.0.1",
+    "@mdx-js/react": "^3.0.1",
+    "@mdx-js/rollup": "^3.0.1",
     "@nutui/icons-react": "^1.0.2",
     "@nutui/icons-react-taro": "^1.0.2",
+    "@nutui/nutui-react": "workspace:^",
     "@nutui/touch-emulator": "^1.0.0",
     "@react-spring/web": "~9.6.1",
     "@use-gesture/react": "10.2.20",
     "async-validator": "^4.2.5",
     "classnames": "^2.3.2",
+    "highlight.js": "^11.9.0",
     "lodash.isequal": "^4.5.0",
     "lodash.kebabcase": "^4.1.1",
     "react-transition-group": "^4.4.5"

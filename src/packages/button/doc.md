@@ -18,25 +18,7 @@ import { Button } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React from "react";
-import { Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const marginStyle = { margin: 8 }
-  return (
-    <>
-      <Button type="primary" style={marginStyle}>主要按钮</Button>
-      <Button type="info" style={marginStyle}>信息按钮</Button>
-      <Button type="default" style={marginStyle}>默认按钮</Button>
-      <Button type="danger" style={marginStyle}>危险按钮</Button>
-      <Button type="warning" style={marginStyle}>警告按钮</Button>
-      <Button type="success" style={marginStyle}>成功按钮</Button>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 

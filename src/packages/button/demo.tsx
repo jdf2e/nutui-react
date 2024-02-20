@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { Star, Plus } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
-import { Button } from './button'
 import Cell from '../cell'
+import Demo1 from './demos/h5/demo1'
+import { Button } from './button'
 
 interface T {
   ce5c5446: string
@@ -124,22 +125,7 @@ const ButtonDemo = () => {
       <div className="demo">
         <h2>{translated.ce5c5446}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
-          <Button style={marginStyle} type="primary">
-            {translated.c38a08ef}
-          </Button>
-          <Button style={marginStyle} type="info">
-            {translated.b840c88f}
-          </Button>
-          <Button style={marginStyle}>{translated.a74a1fd4}</Button>
-          <Button type="danger" style={marginStyle}>
-            {translated['8dab2f66']}
-          </Button>
-          <Button type="warning" style={marginStyle}>
-            {translated.cfbdc781}
-          </Button>
-          <Button type="success" style={marginStyle}>
-            {translated.c3a3a1d2}
-          </Button>
+          <Demo1 />
         </Cell>
 
         <h2>{translated.e51e4582}</h2>

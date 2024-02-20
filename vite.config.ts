@@ -13,28 +13,38 @@ if (projectID) {
 }
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  server: {
-    host: '0.0.0.0',
-  },
-  base: '/react/',
-  resolve: {
-    alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
-  },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        // example : additionalData: `@import "./src/design/styles/variables";`
-        // dont need include file extend .scss
-        additionalData: fileStr,
+export default defineConfig(async () => {
+  const mdx = await import('@mdx-js/rollup')
+  const remarkGfm = await import('remark-gfm')
+  const remarkDirective = await import('remark-directive')
+  return {
+    base: '/react/',
+    resolve: {
+      alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          // example : additionalData: `@import "./src/design/styles/variables";`
+          // dont need include file extend .scss
+          additionalData: fileStr,
+        },
+        postcss: {
+          plugins: [atImport({ path: path.join(__dirname, 'src`') })],
+        },
       },
     },
-    postcss: {
-      plugins: [
-        atImport({ path: path.join(__dirname, 'src') }),
-        // process.env.VITE_RTL === 'rtl' ? rtl() : () => {},
-      ],
-    },
-  },
-  plugins: [reactRefresh()],
+    plugins: [
+      {
+        enforce: 'pre',
+        ...mdx.default({
+          providerImportSource: '@mdx-js/react',
+          mdExtensions: [],
+          mdxExtensions: ['.md'],
+          remarkPlugins: [remarkGfm.default, remarkDirective.default],
+        }),
+      },
+      reactRefresh(),
+    ],
+  }
 })
