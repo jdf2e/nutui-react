@@ -18,7 +18,7 @@ jobs:
       - run: npm i fs-extra --force
       - run: node scripts/copy-migrate-from-v1.js
       - name : Sync
-        uses : JamesIves/github-pages-deploy-action@4.1.7
+        uses : JamesIves/github-pages-deploy-action@v4.5.0
         with :
           branch : new-site # action 应该部署到的分支 。
           folder : site_docs_migrate #操作应该部署的文件夹 。
