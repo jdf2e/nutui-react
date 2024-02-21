@@ -19,11 +19,12 @@ const CodeBlock: FunctionComponent = (props: { src?: string }) => {
   // /src/packages/button/demos/index.tsx
   let originCode = ''
 
-    originCode = modules[`${ctx.path}/demos/${props.src}`]
-      .replace(regex2, replacement2)
-      .replace(regex, replacement)
-  console.log(originCode)
-  const highlightedCode = hljs.highlightAuto(originCode).value
+  originCode = modules[`${ctx.path}/demos/${props.src}`]
+    .replace(regex2, replacement2)
+    .replace(regex, replacement)
+  const highlightedCode = hljs.highlightAuto(originCode, ['jsx']).value
+  console.log(highlightedCode)
+
   return (
     <DemoBlock text={originCode} scss="">
       <pre>

@@ -17,9 +17,7 @@ import { Button } from '@nutui/nutui-react';
 按钮支持 `default`、`primary`、`info`、`warning`、`danger`、`success` 六种类型，默认为 `default`。
 
 :::demo
-
 <CodeBlock src='h5/demo1.tsx'></CodeBlock>
-
 :::
 
 ### 填充模式
@@ -27,25 +25,7 @@ import { Button } from '@nutui/nutui-react';
 按钮支持 `solid`、 `outline`、 `dashed`、`none`四种类型，默认为 `solid`。
 
 :::demo
-
-```tsx
-import React from "react";
-import { Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const marginStyle = { margin: 8 }
-  return (
-    <>
-      <Button fill="solid" style={marginStyle}>Solid</Button>
-      <Button type="primary" fill="outline" style={marginStyle}>Outline</Button>
-      <Button type="primary" fill="dashed" style={marginStyle}>Dashed</Button>
-      <Button fill="none" style={marginStyle}>None</Button>
-    </>
-  );
-};
-export default App;
-```
-
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 :::
 
 ### 图标按钮
@@ -53,122 +33,7 @@ export default App;
 通过 `icon` 属性来设置按钮图标，并提供`rightIcon`属性使图标在右侧显示。
 
 :::demo
-
-```tsx
-import React from "react";
-import { Button } from '@nutui/nutui-react';
-import { Star, Plus } from '@nutui/icons-react'
-
-const App = () => {
-  const marginStyle = { margin: 8 }
-  return (
-    <>
-      <Button
-            type="primary"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={marginStyle}
-          >
-            操作按钮
-          </Button>
-          <Button
-            type="primary"
-            fill="outline"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={marginStyle}
-          >
-            操作按钮
-          </Button>
-          <Button
-            type="primary"
-            fill="dashed"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={marginStyle}
-          >
-            操作按钮
-          </Button>
-          <Button
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={{
-              margin: 8,
-              backgroundColor: `var(--nutui-color-primary-light)`,
-              borderColor: `var(--nutui-color-primary)`,
-              color: `var(--nutui-color-primary)`,
-            }}
-          >
-            操作按钮
-          </Button>
-          <Button
-            type="default"
-            fill="none"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={{
-              margin: 8,
-              backgroundColor: `var(--nutui-gray-3)`,
-              color: `var(--nutui-gray-7)`,
-            }}
-          >
-            操作按钮
-          </Button>
-          <Button
-            type="default"
-            fill="none"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={{
-              margin: 8,
-              backgroundColor: `var(--nutui-gray-1)`,
-              color: `var(--nutui-gray-7)`,
-            }}
-          >
-            操作按钮
-          </Button>
-          <Button
-            type="default"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={marginStyle}
-          >
-            操作按钮
-          </Button>
-          <Button
-            shape="square"
-            fill="outline"
-            type="primary"
-            icon={<Plus width="20" />}
-            style={marginStyle}
-          />
-          <Button
-            fill="outline"
-            type="primary"
-            icon={<Plus width="20" />}
-            style={marginStyle}
-          />
-          <Button
-            type="primary"
-            fill="dashed"
-            icon={<Plus width="20" />}
-            style={marginStyle}
-          />
-          <Button
-            type="primary"
-            size="large"
-            icon={<Star width={20} height={20} />}
-            rightIcon={<Star width={20} height={20} />}
-            style={marginStyle}
-          >
-            操作按钮
-          </Button>
-    </>
-  );
-};
-export default App;
-```
-
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 :::
 
 ### 禁用状态
@@ -177,125 +42,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Button } from '@nutui/nutui-react';
-import { Star, Plus } from '@nutui/icons-react'
-
-const App = () => {
-  const marginStyle = { margin: 8 }
-  return (
-    <>
-      <Button
-        disabled
-        type="primary"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={marginStyle}
-      >
-        禁用状态
-      </Button>
-      <Button
-        disabled
-        type="primary"
-        fill="outline"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={marginStyle}
-      >
-        禁用状态
-      </Button>
-      <Button
-        disabled
-        type="primary"
-        fill="dashed"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={marginStyle}
-      >
-        禁用状态
-      </Button>
-      <Button
-        disabled
-        fill="solid"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={marginStyle}
-      >
-        禁用状态
-      </Button>
-      <Button
-        disabled
-        type="default"
-        fill="none"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={{
-          margin: 8,
-          backgroundColor: `var(--nutui-gray-3)`,
-          color: `var(--nutui-gray-5)`,
-        }}
-      >
-        禁用状态
-      </Button>
-      <Button
-        disabled
-        type="default"
-        fill="none"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={{
-          margin: 8,
-          backgroundColor: `var(--nutui-gray-1)`,
-          color: `var(--nutui-gray-5)`,
-        }}
-      >
-        禁用状态
-      </Button>
-      <Button
-        disabled
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={marginStyle}
-      >
-        禁用状态
-      </Button>
-      <Button
-        disabled
-        shape="square"
-        fill="outline"
-        type="primary"
-        icon={<Plus width="20" />}
-        style={marginStyle}
-      />
-      <Button
-        disabled
-        type="primary"
-        icon={<Plus width="20" />}
-        style={marginStyle}
-      />
-      <Button
-        disabled
-        type="primary"
-        fill="dashed"
-        icon={<Plus width="20" />}
-        style={marginStyle}
-      />
-      <Button
-        disabled
-        type="primary"
-        size="large"
-        icon={<Star width={20} height={20} />}
-        rightIcon={<Star width={20} height={20} />}
-        style={marginStyle}
-      >
-        禁用状态
-      </Button>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
