@@ -4,7 +4,7 @@
   &.error {
     &.line {
       &::before {
-        border-bottom: 1px solid $form-item-error-line-color;
+        border-block-end: 1px solid $form-item-error-line-color;
         transform: scaleX(1);
         transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
       }
@@ -15,7 +15,7 @@
     font-size: $form-item-label-font-size;
     font-weight: normal;
     width: $form-item-label-width;
-    margin-right: $form-item-label-margin-right;
+    margin-inline-end: $form-item-label-margin-right;
     flex: none !important;
     display: inline-block !important;
     word-wrap: break-word;
@@ -25,7 +25,7 @@
       &::before {
         content: '*';
         color: $form-item-required-color;
-        margin-right: $form-item-required-margin-right;
+        margin-inline-end: $form-item-required-margin-right;
       }
     }
   }
@@ -72,41 +72,6 @@
       text-align: $form-item-tip-text-align;
       font-size: $form-item-tip-font-size;
       color: $form-item-error-message-color;
-    }
-  }
-}
-
-[dir='rtl'] .nut-form-item,
-.nut-rtl .nut-form-item {
-  &-label {
-    margin-right: 0;
-    margin-left: $form-item-label-margin-right;
-    text-align: var(--nutui-form-item-label-text-align, right);
-
-    .required {
-      &::before {
-        margin-right: 0;
-        margin-left: $form-item-required-margin-right;
-      }
-    }
-  }
-  &-body {
-    &-slots {
-      text-align: var(--nutui-form-item-body-slots-text-align, right);
-
-      .nut-input-text {
-        text-align: var(--nutui-form-item-body-input-text-align, right);
-      }
-
-      .nut-textarea {
-        .nut-textarea-textarea {
-          text-align: var(--nutui-form-item-body-input-text-align, right);
-        }
-      }
-    }
-
-    &-tips {
-      text-align: var(--nutui-form-item-tip-text-align, right);
     }
   }
 }

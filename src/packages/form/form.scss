@@ -3,43 +3,24 @@
 @import '../formitem/formitem.scss';
 
 .form-layout-right .nut-form-item-label {
-  text-align: right;
+  text-align: end;
   font-size: 14px;
-  padding-right: 24px;
+  padding-inline-end: 24px;
   white-space: nowrap;
-}
-
-[dir='rtl'] .form-layout-right .nut-form-item-label,
-.nut-rtl .form-layout-right .nut-form-item-label {
-  text-align: left;
-  padding-right: 0;
-  padding-left: 24px;
 }
 
 .form-layout-left .nut-form-item-label {
   position: relative;
-  text-align: left;
+  text-align: start;
   font-size: 14px;
-  padding-left: 12px;
+  padding-inline-start: 12px;
   white-space: nowrap;
 
   .required {
     display: block;
     line-height: 1.5;
     position: absolute;
-    left: 0.1em;
-  }
-}
-
-[dir='rtl'] .form-layout-left .nut-form-item-label,
-.nut-rtl .form-layout-left .nut-form-item-label {
-  text-align: right;
-  padding-left: 0;
-  padding-right: 12px;
-
-  .required {
-    left: auto;
-    right: 0.1em;
+    inset-inline-start: 0.1em;
   }
 }
 
@@ -50,25 +31,13 @@
 }
 
 .form-layout-top .nut-form-item-label {
-  padding-bottom: 4px;
+  padding-block-end: 4px;
   display: block;
   font-size: 14px;
-  padding-right: 24px;
-}
-
-[dir='rtl'] .form-layout-top .nut-form-item-label,
-.nut-rtl .form-layout-top .nut-form-item-label {
-  padding-right: 0;
-  padding-left: 24px;
+  padding-inline-end: 24px;
 }
 
 .form-layout-top .nut-form-item-body {
-  margin-left: 0;
+  margin-inline-start: 0;
   width: 100%;
-}
-
-[dir='rtl'] .form-layout-top .nut-form-item-body,
-.nut-rtl .form-layout-top .nut-form-item-body {
-  margin-left: 0;
-  margin-right: 0;
 }

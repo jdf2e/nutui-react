@@ -4,8 +4,8 @@
 
   &-edit-text {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset-block-start: 0;
+    inset-inline-start: 0;
     width: 100%;
     height: 100%;
     background-color: rgba($color: #000000, $alpha: 0.3);
@@ -18,8 +18,8 @@
 
   &-input {
     position: absolute;
-    top: 0;
-    left: 0;
+    inset-block-start: 0;
+    inset-inline-start: 0;
     width: 100%;
     height: 100%;
     opacity: 0; // 隐藏原生上传按钮
@@ -29,8 +29,8 @@
 
   &-popup {
     position: fixed;
-    top: 0;
-    left: 0;
+    inset-block-start: 0;
+    inset-inline-start: 0;
     width: 100%;
     height: 100%;
     background: var(--nut-overlay-bg-color, rgba(0, 0, 0, 0.7));
@@ -39,8 +39,8 @@
     &-canvas,
     &-cut-canvas {
       position: absolute;
-      bottom: 0;
-      left: 0;
+      inset-block-end: 0;
+      inset-inline-start: 0;
       width: 100%;
       height: 100%;
       z-index: 1;
@@ -52,14 +52,14 @@
 
     &-toolbar {
       position: absolute;
-      bottom: 0;
-      left: 0;
+      inset-block-end: 0;
+      inset-inline-start: 0;
       width: 100%;
       z-index: 2;
 
       &.top {
-        top: 0;
-        bottom: inherit;
+        inset-block-start: 0;
+        inset-block-end: inherit;
       }
 
       &-flex {
@@ -83,8 +83,8 @@
 
     &-highlight {
       position: absolute;
-      left: 0;
-      top: 0;
+      inset-inline-start: 0;
+      inset-block-start: 0;
       width: 100%;
       height: 100%;
       z-index: 1;
@@ -92,8 +92,8 @@
 
       .highlight {
         position: absolute;
-        left: 50%;
-        top: 50%;
+        inset-inline-start: 50%;
+        inset-block-start: 50%;
         transform: translate(-50%, -50%);
         background-color: transparent;
         box-shadow: 0 0 1000px 1000px rgba(0, 0, 0, 0.6);
@@ -110,38 +110,9 @@
 
 [dir='rtl'] .nut-avatar-cropper,
 .nut-rtl .nut-avatar-cropper {
-  &-edit-text {
-    left: auto;
-    right: 0;
-  }
-
-  &-input {
-    left: auto;
-    right: 0;
-  }
-
   &-popup {
-    left: auto;
-    right: 0;
-
-    &-canvas,
-    &-cut-canvas {
-      left: auto;
-      right: 0;
-    }
-
-    &-toolbar {
-      left: auto;
-      right: 0;
-    }
-
     &-highlight {
-      left: auto;
-      right: 0;
-
       .highlight {
-        left: auto;
-        right: 50%;
         transform: translate(50%, -50%);
       }
     }

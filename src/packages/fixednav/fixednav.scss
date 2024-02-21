@@ -5,7 +5,7 @@
   z-index: $fixednav-index;
   display: inline-block;
   height: 50px;
-  right: 0;
+  inset-inline-end: 0;
 
   &.active {
     .nut-icon {
@@ -26,7 +26,7 @@
   &-btn {
     box-sizing: border-box;
     position: absolute;
-    right: 0;
+    inset-inline-end: 0;
 
     z-index: $fixednav-index;
     width: 70px;
@@ -47,7 +47,7 @@
     }
 
     .nut-icon {
-      margin-right: 5px;
+      margin-inline-end: 5px;
       transition: all 0.3s;
       transform: rotate(0deg);
       transition: all 0.3s;
@@ -56,7 +56,7 @@
 
   &-list {
     position: absolute;
-    right: 0;
+    inset-inline-end: 0;
     transform: translateX(100%);
     transition: all 0.5s;
 
@@ -70,8 +70,8 @@
     box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.2);
 
     padding: {
-      left: 20px;
-      right: 80px;
+      inline-start: 20px;
+      inline-end: 80px;
     }
 
     &-item {
@@ -98,7 +98,7 @@
 
       .b {
         position: absolute;
-        right: 0;
+        inset-inline-end: 0;
         top: 1px;
         height: 14px;
         line-height: 14px;
@@ -114,30 +114,30 @@
   }
 
   &.left {
-    right: auto;
-    left: 0;
+    inset-inline-end: auto;
+    inset-inline-start: 0;
 
     .nut-fixednav-btn {
       flex-direction: row-reverse;
-      right: auto;
-      left: 0;
+      inset-inline-end: auto;
+      inset-inline-start: 0;
       border-radius: 0 45px 45px 0;
 
       .nut-icon {
         transform: rotate(180deg);
-        margin-right: 0px;
-        margin-left: 5px;
+        margin-inline-end: 0px;
+        margin-inline-start: 5px;
       }
     }
 
     .nut-fixednav-list {
       transform: translateX(-100%);
-      right: auto;
+      inset-inline-end: auto;
       border-radius: 0px 25px 25px 0px;
 
       padding: {
-        left: 80px;
-        right: 20px;
+        inline-start: 80px;
+        inline-end: 20px;
       }
 
       margin: 0;
@@ -147,9 +147,6 @@
 
 [dir='rtl'] .nut-fixednav,
 .nut-rtl .nut-fixednav {
-  right: auto;
-  left: 0;
-
   &.active {
     .nut-icon {
       transform: rotate(-180deg);
@@ -157,63 +154,30 @@
   }
 
   &-btn {
-    right: auto;
-    left: 0;
     border-radius: 0px 45px 45px 0px;
-
     .nut-icon {
-      margin-right: 0px;
-      margin-left: 5px;
       transform: rotate(180deg);
     }
   }
 
   &-list {
-    right: auto;
-    left: 0;
     transform: translateX(-100%);
     border-radius: 0px 25px 25px 0px;
     box-shadow: -2px 2px 8px 0px rgba(0, 0, 0, 0.2);
-
-    padding: {
-      right: 20px;
-      left: 80px;
-    }
-
-    &-item {
-      .b {
-        right: auto;
-        left: 0;
-      }
-    }
   }
 
   &.left {
-    left: auto;
-    right: 0;
-
     .nut-fixednav-btn {
-      left: auto;
-      right: 0;
       border-radius: 45px 0 0 45px;
 
       .nut-icon {
         transform: rotate(0deg);
-        margin-right: 5px;
-        margin-left: 0px;
       }
     }
 
     .nut-fixednav-list {
       transform: translateX(100%);
-      right: auto;
-      left: auto;
       border-radius: 25px 0px 0px 25px;
-
-      padding: {
-        right: 80px;
-        left: 20px;
-      }
     }
   }
 }

@@ -4,7 +4,7 @@
 .nut-address {
   &-elevator {
     display: flex;
-    margin-top: 20px;
+    margin-block-start: 20px;
   }
 
   &-exist {
@@ -17,7 +17,7 @@
     &-item {
       display: flex;
       align-items: center;
-      margin-bottom: 20px;
+      margin-block-end: 20px;
       font-size: $font-size-small;
       line-height: $font-size-base;
       color: $color-title;
@@ -27,7 +27,7 @@
       }
 
       &-info {
-        margin-left: 9px;
+        margin-inline-start: 9px;
       }
     }
   }
@@ -36,7 +36,7 @@
     width: 100%;
     height: 54px;
     padding: 6px 0px 0;
-    border-top: 1px solid $color-border;
+    border-block-start: 1px solid $color-border;
 
     &-btn {
       width: 90%;
@@ -48,18 +48,6 @@
       border-radius: 21px;
       font-size: 15px;
       color: $color-primary-text;
-    }
-  }
-}
-
-[dir='rtl'] .nut-address,
-.nut-rtl .nut-address {
-  &-exist {
-    &-item {
-      &-info {
-        margin-left: 0;
-        margin-right: 9px;
-      }
     }
   }
 }

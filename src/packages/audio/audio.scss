@@ -22,8 +22,8 @@
 
       &::after {
         position: absolute;
-        left: 50%;
-        top: 50%;
+        inset-inline-start: 50%;
+        inset-block-start: 50%;
         transform: translateX(-50%);
         content: '';
         height: 2px;
@@ -89,8 +89,6 @@
   &-icon {
     .nut-audio-icon-stop {
       &::after {
-        left: auto;
-        right: 50%;
         transform: rotate(-45deg);
         transform-origin: 20px -18px;
       }

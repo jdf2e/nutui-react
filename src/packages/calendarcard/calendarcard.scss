@@ -46,7 +46,7 @@
     width: $calendar-day-width;
     height: 48px;
     cursor: pointer;
-    margin-bottom: 4px;
+    margin-block-end: 4px;
     text-align: center;
 
     &.header {
@@ -71,14 +71,14 @@
 
     &.start {
       border-radius: 0px;
-      border-top-left-radius: $calendar-day-active-border-radius;
-      border-bottom-left-radius: $calendar-day-active-border-radius;
+      border-start-start-radius: $calendar-day-active-border-radius;
+      border-end-start-radius: $calendar-day-active-border-radius;
     }
 
     &.end {
       border-radius: 0px;
-      border-top-right-radius: $calendar-day-active-border-radius;
-      border-bottom-right-radius: $calendar-day-active-border-radius;
+      border-start-end-radius: $calendar-day-active-border-radius;
+      border-end-end-radius: $calendar-day-active-border-radius;
     }
 
     &.mid {
@@ -114,22 +114,6 @@
       svg {
         transform: rotate(180deg);
       }
-    }
-  }
-
-  &-day {
-    &.start {
-      border-top-left-radius: 0;
-      border-top-right-radius: $calendar-day-active-border-radius;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: $calendar-day-active-border-radius;
-    }
-
-    &.end {
-      border-top-right-radius: 0;
-      border-top-left-radius: $calendar-day-active-border-radius;
-      border-bottom-right-radius: 0;
-      border-bottom-left-radius: $calendar-day-active-border-radius;
     }
   }
 }

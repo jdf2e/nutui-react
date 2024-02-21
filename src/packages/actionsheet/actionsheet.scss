@@ -52,8 +52,8 @@
   }
 
   &-cancel {
-    margin-top: 5px;
-    border-top: 1px solid $actionsheet-border-color;
+    margin-block-start: 5px;
+    border-block-start: 1px solid $actionsheet-border-color;
     border-radius: $actionsheet-border-radius;
   }
 }

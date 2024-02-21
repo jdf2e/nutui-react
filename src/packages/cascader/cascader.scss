@@ -26,7 +26,7 @@
   &-pane {
     display: block;
     width: 100%;
-    padding-top: $cascader-pane-paddingTop;
+    padding-block-start: $cascader-pane-paddingTop;
     height: $cascader-pane-height;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
@@ -39,7 +39,7 @@
     // height: $cascader-item-height;
     padding: $cascader-item-padding;
     margin: $cascader-item-margin;
-    border-bottom: $cascader-item-border-bottom;
+    border-block-end: $cascader-item-border-bottom;
     font-size: $cascader-item-font-size;
     color: $cascader-item-color;
     cursor: pointer;
@@ -66,15 +66,7 @@
   }
 
   .nut-icon-checklist {
-    margin-left: $cascader-icon-checklist-marginLeft;
+    margin-inline-start: $cascader-icon-checklist-marginLeft;
     visibility: hidden;
-  }
-}
-
-[dir='rtl'] .nut-cascader,
-.nut-rtl .nut-cascader {
-  .nut-icon-checklist {
-    margin-left: 0;
-    margin-right: $cascader-icon-checklist-marginLeft;
   }
 }

@@ -76,14 +76,14 @@
 
     &-icon {
       position: absolute;
-      right: 0;
-      bottom: 0;
+      inset-inline-end: 0;
+      inset-block-end: 0;
       width: 0;
       height: 0;
-      border-top: 10px solid transparent;
-      border-left: 10px solid transparent;
-      border-bottom: 10px solid $color-primary;
-      border-right: 10px solid $color-primary;
+      border-block-start: 10px solid transparent;
+      border-inline-start: 10px solid transparent;
+      border-block-end: 10px solid $color-primary;
+      border-inline-end: 10px solid $color-primary;
       display: flex;
       align-items: flex-end;
       justify-content: flex-end;
@@ -93,8 +93,8 @@
         height: 12px;
         position: absolute;
         color: $white;
-        top: 50%;
-        left: 50%;
+        inset-block-start: 50%;
+        inset-inline-start: 50%;
         transform: translate(-3px, -3px);
       }
 
@@ -108,7 +108,7 @@
         &:before {
           top: auto;
           bottom: -22px;
-          margin-left: 6px;
+          margin-inline-start: 6px;
         }
       }
     }
@@ -125,22 +125,8 @@
 .nut-rtl .nut-checkbox {
   &-button {
     &-icon {
-      right: auto;
-      left: 0;
-      border-right: 10px solid transparent;
-      border-left: 10px solid $color-primary;
-
       &-checked {
-        left: auto;
-        right: 50%;
         transform: translate(3px, -3px);
-      }
-
-      .nut-icon {
-        &:before {
-          margin-left: 0;
-          margin-right: 6px;
-        }
       }
     }
   }

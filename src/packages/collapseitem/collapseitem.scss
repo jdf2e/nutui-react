@@ -6,10 +6,9 @@
     box-sizing: border-box;
     content: ' ';
     pointer-events: none;
-    right: 16px;
-    bottom: 0;
-    left: 16px;
-    border-bottom: $collapse-item-border-bottom;
+    inset-inline: 16px;
+    inset-block-end: 0;
+    border-block-end: $collapse-item-border-bottom;
     -webkit-transform: scaleY(0.5);
     transform: scaleY(0.5);
   }
@@ -34,10 +33,9 @@
       box-sizing: border-box;
       content: ' ';
       pointer-events: none;
-      right: 16px;
-      bottom: 0;
-      left: 16px;
-      border-bottom: $collapse-item-header-border-bottom;
+      inset-inline: 16px;
+      inset-block-end: 0;
+      border-block-end: $collapse-item-header-border-bottom;
       -webkit-transform: scaleY(0.5);
       transform: scaleY(0.5);
     }
@@ -62,7 +60,7 @@
 
   &-icon-box {
     display: flex;
-    padding-right: 40px;
+    padding-inline-end: 40px;
     position: relative;
     color: $color-text;
   }
@@ -71,8 +69,8 @@
     display: flex;
     align-items: center;
     position: absolute;
-    top: 50%;
-    left: 5px;
+    inset-block-start: 50%;
+    inset-inline-start: 5px;
     transform: translateY(-50%);
     transform-origin: center;
     transition: transform 0.3s;
@@ -103,18 +101,5 @@
       color: $collapse-wrapper-content-color;
       padding: $collapse-wrapper-content-padding;
     }
-  }
-}
-
-[dir='rtl'] .nut-collapse-item,
-.nut-rtl .nut-collapse-item {
-  &-icon-box {
-    padding-right: 0;
-    padding-left: 40px;
-  }
-
-  &-icon {
-    left: auto;
-    right: 5px;
   }
 }
