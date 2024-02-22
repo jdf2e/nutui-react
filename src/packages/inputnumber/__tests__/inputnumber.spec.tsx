@@ -137,3 +137,23 @@ test('should update input value when inputValue overlimit', () => {
     expect(container.querySelector('input')?.value).toBe('100')
   })
 })
+
+test('allowEmpty', () => {
+  const change = jest.fn()
+  const blur = jest.fn()
+  const { container } = render(
+    <InputNumber
+      defaultValue="2"
+      onChange={change}
+      onBlur={blur}
+      formatter={(v) => String(v)}
+    />
+  )
+  const input = container.querySelectorAll('input')[0]
+  input.value = ''
+  fireEvent.focus(input)
+  fireEvent.blur(input)
+  waitFor(() => {
+    expect(container.querySelector('input')?.value).toBe('')
+  })
+})
