@@ -17,7 +17,7 @@
 
   &-limit {
     position: absolute;
-    inset-inline-end: 15px;
+    right: 15px;
     bottom: 12px;
     font-size: $textarea-font;
     color: $textarea-limit-color;
@@ -48,6 +48,18 @@
   .cpoyText {
     position: absolute;
     top: -999999px;
-    inset-inline-start: -999999px;
+    left: -999999px;
+  }
+}
+
+[dir='rtl'] .nut-textarea,
+.nut-rtl .nut-textarea {
+  &-limit {
+    right: auto;
+    left: 15px;
+  }
+  .cpoyText {
+    left: auto;
+    right: -999999px;
   }
 }

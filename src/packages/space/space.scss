@@ -21,10 +21,10 @@
     flex-direction: row;
 
     > .nut-space-item {
-      margin-inline-end: $space-gap;
+      margin-right: $space-gap;
 
       &:last-child {
-        margin-inline-end: 0;
+        margin-right: 0;
       }
     }
 
@@ -83,6 +83,20 @@
 
     &-stretch {
       justify-content: stretch;
+    }
+  }
+}
+[dir='rtl'] .nut-space,
+.nut-rtl .nut-space {
+  &-horizontal {
+    > .nut-space-item {
+      margin-right: 0;
+      margin-left: $space-gap;
+
+      &:last-child {
+        margin-right: 0;
+        margin-left: 0;
+      }
     }
   }
 }

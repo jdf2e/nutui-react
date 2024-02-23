@@ -1,13 +1,13 @@
 .nut-horizontal-items {
-  float: inline-start;
+  float: left;
 
   li {
     display: block;
-    float: inline-start;
+    float: left;
     color: $color-title;
     background: $color-background-overlay;
     padding: 10px;
-    margin-inline-end: 20px;
+    margin-right: 20px;
   }
 
   &:after {
@@ -65,21 +65,32 @@
 
   &-phantom {
     position: absolute;
-    inset-inline-start: 0;
+    left: 0;
     top: 0;
-    inset-inline-end: 0;
+    right: 0;
     z-index: -1;
   }
 
   &-container {
     position: absolute;
-    inset-inline-start: 0;
-    inset-inline-end: 0;
+    left: 0;
+    right: 0;
     top: 0;
   }
 
   &-item {
     overflow: hidden;
     margin: $list-item-margin;
+  }
+}
+
+[dir='rtl'] .nut-horizontal-items,
+.nut-rtl .nut-horizontal-items {
+  float: right;
+
+  li {
+    float: right;
+    margin-right: 0;
+    margin-left: 20px;
   }
 }
