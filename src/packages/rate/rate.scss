@@ -66,6 +66,13 @@
 [dir='rtl'] .nut-rate,
 .nut-rtl .nut-rate {
   &-item {
+    margin-right: 0;
+    margin-left: $rate-item-margin;
+
+    &:last-child {
+      margin-right: 0;
+      margin-left: 0;
+    }
     &-half {
       left: auto;
       right: 0;

@@ -41,7 +41,7 @@ export default function useTableSticky(columns: Array<TableColumnProps>) {
       const curr = rightColumns[i]
       const next = rightColumns[i + 1] || {}
       _columnStyleMap[curr.key] = {
-        insetInlineEnd: _stickyRightWidth || 0,
+        right: _stickyRightWidth || 0,
         width: curr.width || 'auto',
       }
       _columnClassMap[curr.key] = {
