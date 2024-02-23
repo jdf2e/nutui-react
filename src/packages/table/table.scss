@@ -58,7 +58,7 @@
 
         &:last-child {
           .nut-table-main-body-tr-td {
-            border-block-end: none;
+            border-bottom: none;
           }
         }
 
@@ -100,7 +100,7 @@
 
         &-border {
           border-inline-end: 1px solid $table-border-color;
-          border-block-end: 1px solid $table-border-color;
+          border-bottom: 1px solid $table-border-color;
         }
 
         &-alignleft,

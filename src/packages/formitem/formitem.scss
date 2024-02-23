@@ -4,7 +4,7 @@
   &.error {
     &.line {
       &::before {
-        border-block-end: 1px solid $form-item-error-line-color;
+        border-bottom: 1px solid $form-item-error-line-color;
         transform: scaleX(1);
         transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
       }

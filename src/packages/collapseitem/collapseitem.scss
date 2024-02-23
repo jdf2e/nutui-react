@@ -8,7 +8,7 @@
     pointer-events: none;
     inset-inline: 16px;
     inset-block-end: 0;
-    border-block-end: $collapse-item-border-bottom;
+    border-bottom: $collapse-item-border-bottom;
     -webkit-transform: scaleY(0.5);
     transform: scaleY(0.5);
   }
@@ -35,7 +35,7 @@
       pointer-events: none;
       inset-inline: 16px;
       inset-block-end: 0;
-      border-block-end: $collapse-item-header-border-bottom;
+      border-bottom: $collapse-item-header-border-bottom;
       -webkit-transform: scaleY(0.5);
       transform: scaleY(0.5);
     }

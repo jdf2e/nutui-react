@@ -14,13 +14,13 @@
     &-top {
       bottom: 0;
       border-top-color: $popover-border-color;
-      border-block-end-width: 0;
+      border-bottom-width: 0;
       margin-bottom: -8px;
     }
 
     &-bottom {
       inset-block-start: 0px;
-      border-block-end-color: $popover-border-color;
+      border-bottom-color: $popover-border-color;
       border-top-width: 0;
       margin-top: -8px;
     }
@@ -94,11 +94,11 @@
       align-items: center;
       justify-content: center;
       padding: $popover-menu-item-padding;
-      border-block-end: 1px solid $popover-divider-color;
+      border-bottom: 1px solid $popover-divider-color;
 
       &:last-child {
         margin-bottom: 0px;
-        border-block-end: none;
+        border-bottom: none;
       }
 
       &:hover {
