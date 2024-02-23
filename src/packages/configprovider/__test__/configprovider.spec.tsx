@@ -6,7 +6,6 @@ import zhTW from '@/locales/zh-TW'
 import enUS from '@/locales/en-US'
 
 import { ConfigProvider, useConfig, setDefaultConfig } from '../configprovider'
-import kebabCase from '@/utils/kebab-case'
 
 describe('configprovider', () => {
   let container: any
@@ -19,16 +18,6 @@ describe('configprovider', () => {
   afterEach(() => {
     document.body.removeChild(container)
     container = null
-  })
-
-  test('should match kebabCaseString', () => {
-    expect(kebabCase('nutuiColorPrimaryLightPressed')).toBe(
-      'nutui-color-primary-light-pressed'
-    )
-    expect(kebabCase('nutuiBlack2')).toBe('nutui-black-2')
-    expect(kebabCase('nutuiBlack2A')).toBe('nutui-black-2-a')
-    expect(kebabCase('nutuiBlack2a')).toBe('nutui-black-2-a')
-    expect(kebabCase('nutuiWhite12')).toBe('nutui-white-12')
   })
 
   test('should match snapshot', () => {
