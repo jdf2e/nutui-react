@@ -17,7 +17,9 @@ import { Button } from '@nutui/nutui-react';
 按钮支持 `default`、`primary`、`info`、`warning`、`danger`、`success` 六种类型，默认为 `default`。
 
 :::demo
+
 <CodeBlock src='h5/demo1.tsx'></CodeBlock>
+
 :::
 
 ### 填充模式
@@ -25,7 +27,9 @@ import { Button } from '@nutui/nutui-react';
 按钮支持 `solid`、 `outline`、 `dashed`、`none`四种类型，默认为 `solid`。
 
 :::demo
+
 <CodeBlock src='h5/demo2.tsx'></CodeBlock>
+
 :::
 
 ### 图标按钮
@@ -33,7 +37,9 @@ import { Button } from '@nutui/nutui-react';
 通过 `icon` 属性来设置按钮图标，并提供`rightIcon`属性使图标在右侧显示。
 
 :::demo
+
 <CodeBlock src='h5/demo3.tsx'></CodeBlock>
+
 :::
 
 ### 禁用状态

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button } from '../../button'
+import { Button } from '@nutui/nutui-react'
 
 const Demo1 = () => {
   const marginStyle = { margin: 8 }

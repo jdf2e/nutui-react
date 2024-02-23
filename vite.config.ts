@@ -20,7 +20,17 @@ export default defineConfig(async () => {
   return {
     base: '/react/',
     resolve: {
-      alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
+      alias: [
+        { find: '@', replacement: resolve(__dirname, './src') },
+        {
+          find: '@nutui/nutui-react',
+          replacement: resolve(__dirname, './src/packages/nutui.react.ts'),
+        },
+        {
+          find: '@nutui/nutui-react-taro',
+          replacement: resolve(__dirname, './src/packages/nutui.react.taro.ts'),
+        },
+      ],
     },
     css: {
       preprocessorOptions: {

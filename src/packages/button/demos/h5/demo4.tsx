@@ -1,6 +1,6 @@
 import React from 'react'
 import { Star, Plus } from '@nutui/icons-react'
-import { Button } from '../../button'
+import { Button } from '@nutui/nutui-react'
 
 const Demo4 = () => {
   const marginStyle = { margin: 8 }

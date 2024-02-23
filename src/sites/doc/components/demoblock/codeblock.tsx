@@ -10,17 +10,11 @@ const modules = import.meta.glob('@/packages/**/demos/*/*.tsx', {
 })
 // console.log('modules', modules)
 const CodeBlock: FunctionComponent = (props: { src?: string }) => {
-  const regex = /import { ([^}]+) } from '(\.\.\/)+([^']+)'/g
-  const regex2 = /import { ([^}]+) } from '(\.\.\/)+([^']+).taro'/g
-  const replacement = "import { $1 } from '@nutui/nutui-react'"
-  const replacement2 = "import { $1 } from '@nutui/nutui-react-taro'"
-  const ctx = useContext(APPContext)
-  // /src/packages/button/demos/index.tsx
-  let originCode = ''
 
-  originCode = modules[`${ctx.path}/demos/${props.src}`]
-    .replace(regex2, replacement2)
-    .replace(regex, replacement)
+  const ctx = useContext(APPContext)
+
+  const originCode = modules[`${ctx.path}/demos/${props.src}`]
+
   const highlightedCode = hljs.highlightAuto(originCode, ['jsx']).value
 
   return (
