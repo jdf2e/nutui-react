@@ -9,7 +9,7 @@
     position: relative;
     display: flex;
     justify-content: center;
-    margin-block-end: $steps-base-icon-margin-bottom;
+    margin-bottom: $steps-base-icon-margin-bottom;
   }
 
   // 计算方法：left = calc(50% + (100% - $steps-base-line-width) / 2)
@@ -65,7 +65,7 @@
 
   &-title {
     display: block;
-    margin-block-end: $steps-base-title-margin-bottom;
+    margin-bottom: $steps-base-title-margin-bottom;
     font-size: $steps-base-title-font-size;
     color: $steps-base-title-color;
   }

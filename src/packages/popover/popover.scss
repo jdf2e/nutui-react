@@ -15,7 +15,7 @@
       bottom: 0;
       border-top-color: $popover-border-color;
       border-block-end-width: 0;
-      margin-block-end: -8px;
+      margin-bottom: -8px;
     }
 
     &-bottom {
@@ -97,7 +97,7 @@
       border-block-end: 1px solid $popover-divider-color;
 
       &:last-child {
-        margin-block-end: 0px;
+        margin-bottom: 0px;
         border-block-end: none;
       }
 

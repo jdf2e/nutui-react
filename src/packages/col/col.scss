@@ -2,7 +2,7 @@
   float: inline-start;
   box-sizing: border-box;
   word-break: break-all;
-  margin-block-end: $col-default-margin-bottom;
+  margin-bottom: $col-default-margin-bottom;
 
   &.nut-col-gutter {
     &:last-child {

@@ -9,10 +9,10 @@
     flex-direction: column;
 
     > .nut-space-item {
-      margin-block-end: $space-gap;
+      margin-bottom: $space-gap;
 
       &:last-child {
-        margin-block-end: 0;
+        margin-bottom: 0;
       }
     }
   }
@@ -30,10 +30,10 @@
 
     &.nut-space-wrap {
       flex-wrap: wrap;
-      margin-block-end: calc(#{$space-gap} * -1);
+      margin-bottom: calc(#{$space-gap} * -1);
 
       > .nut-space-item {
-        padding-block-end: $space-gap;
+        padding-bottom: $space-gap;
       }
     }
   }

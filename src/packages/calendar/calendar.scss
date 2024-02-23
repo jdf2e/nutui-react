@@ -125,7 +125,7 @@
     width: $calendar-day-width;
     height: $calendar-day-height;
     font-weight: $calendar-day-font-weight;
-    margin-block-end: 4px;
+    margin-bottom: 4px;
 
     &:nth-child(7n + 0),
     &:nth-child(7n + 1) {
