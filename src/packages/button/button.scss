@@ -22,17 +22,17 @@
   background: $button-default-background-color;
 
   &-text {
-    margin-inline-start: $button-text-icon-margin;
+    margin-left: $button-text-icon-margin;
 
     &.right {
-      margin-inline-end: $button-text-icon-margin;
+      margin-right: $button-text-icon-margin;
     }
   }
 
   &::before {
     position: absolute;
     top: 50%;
-    inset-inline-start: 50%;
+    left: 50%;
     width: 100%;
     height: 100%;
     background-color: $color-mask;
@@ -330,7 +330,17 @@
 
 [dir='rtl'] .nut-button,
 .nut-rtl .nut-button {
+  &-text {
+    margin-left: 0;
+    margin-right: $button-text-icon-margin;
+
+    &.right {
+      margin-left: $button-text-icon-margin;
+    }
+  }
   &::before {
+    left: auto;
+    right: 50%;
     transform: translate(50%, -50%);
   }
 }

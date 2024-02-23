@@ -21,11 +21,11 @@
       line-height: 1;
 
       .left {
-        margin-inline-start: 8px;
+        margin-left: 8px;
       }
 
       .right {
-        margin-inline-end: 8px;
+        margin-right: 8px;
       }
     }
   }
@@ -71,14 +71,14 @@
 
     &.start {
       border-radius: 0px;
-      border-start-start-radius: $calendar-day-active-border-radius;
-      border-end-start-radius: $calendar-day-active-border-radius;
+      border-top-left-radius: $calendar-day-active-border-radius;
+      border-bottom-left-radius: $calendar-day-active-border-radius;
     }
 
     &.end {
       border-radius: 0px;
-      border-start-end-radius: $calendar-day-active-border-radius;
-      border-end-end-radius: $calendar-day-active-border-radius;
+      border-top-right-radius: $calendar-day-active-border-radius;
+      border-bottom-right-radius: $calendar-day-active-border-radius;
     }
 
     &.mid {
@@ -109,11 +109,36 @@
   &-header {
     &-left,
     &-right {
+      .left {
+        margin-left: 0;
+        margin-right: 8px;
+      }
+
+      .right {
+        margin-right: 0;
+        margin-left: 8px;
+      }
+
       .nut-icon-ArrowLeft,
       .nut-icon-ArrowRight,
       svg {
         transform: rotate(180deg);
       }
+    }
+  }
+  &-day {
+    &.start {
+      border-top-left-radius: 0;
+      border-top-right-radius: $calendar-day-active-border-radius;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: $calendar-day-active-border-radius;
+    }
+
+    &.end {
+      border-top-right-radius: 0;
+      border-top-left-radius: $calendar-day-active-border-radius;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: $calendar-day-active-border-radius;
     }
   }
 }
