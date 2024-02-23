@@ -32,7 +32,7 @@
 
   &-prev,
   &-item {
-    border-inline-end: none;
+    border-right: none;
   }
 
   &-prev,
@@ -41,7 +41,7 @@
   }
 
   .simple-border {
-    border-inline-end: $pagination-item-border-width solid
+    border-right: $pagination-item-border-width solid
       $pagination-item-border-color;
   }
 

@@ -27,8 +27,8 @@
 
     &-left {
       right: 0px;
-      border-inline-start-color: $popover-border-color;
-      border-inline-end-width: 0;
+      border-left-color: $popover-border-color;
+      border-right-width: 0;
       margin-right: -8px;
 
       &.nut-popover-arrow-left {
@@ -49,8 +49,8 @@
 
     &-right {
       left: 0px;
-      border-inline-end-color: $popover-border-color;
-      border-inline-start-width: 0;
+      border-right-color: $popover-border-color;
+      border-left-width: 0;
       margin-left: -8px;
 
       &.nut-popover-arrow-right {

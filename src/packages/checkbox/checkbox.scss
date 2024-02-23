@@ -81,9 +81,9 @@
       width: 0;
       height: 0;
       border-top: 10px solid transparent;
-      border-inline-start: 10px solid transparent;
+      border-left: 10px solid transparent;
       border-bottom: 10px solid $color-primary;
-      border-inline-end: 10px solid $color-primary;
+      border-right: 10px solid $color-primary;
       display: flex;
       align-items: flex-end;
       justify-content: flex-end;

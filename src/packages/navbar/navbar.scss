@@ -99,7 +99,7 @@
   }
 
   &-title-align-left {
-    padding-inline-start: 14px;
+    padding-left: 14px;
 
     .nut-navbar-left {
       position: static;
@@ -117,7 +117,7 @@
       position: static;
       display: inline-flex;
       white-space: nowrap;
-      padding-inline-start: 0;
+      padding-left: 0;
     }
     .nut-navbar-left-back {
       margin-right: 0;

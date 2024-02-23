@@ -54,7 +54,7 @@
     display: inline-block;
     width: auto;
     height: $divider-vertical-height;
-    border-inline-start: 1px solid $divider-border-color;
+    border-left: 1px solid $divider-border-color;
     margin: $divider-vertical-margin;
   }
 }

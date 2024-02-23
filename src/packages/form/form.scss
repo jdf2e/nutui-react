@@ -5,7 +5,7 @@
 .form-layout-right .nut-form-item-label {
   text-align: end;
   font-size: 14px;
-  padding-inline-end: 24px;
+  padding-right: 24px;
   white-space: nowrap;
 }
 
@@ -13,7 +13,7 @@
   position: relative;
   text-align: start;
   font-size: 14px;
-  padding-inline-start: 12px;
+  padding-left: 12px;
   white-space: nowrap;
 
   .required {
@@ -34,7 +34,7 @@
   padding-bottom: 4px;
   display: block;
   font-size: 14px;
-  padding-inline-end: 24px;
+  padding-right: 24px;
 }
 
 .form-layout-top .nut-form-item-body {

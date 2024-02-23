@@ -1,16 +1,16 @@
 .nut-col {
-  float: inline-start;
+  float: left;
   box-sizing: border-box;
   word-break: break-all;
   margin-bottom: $col-default-margin-bottom;
 
   &.nut-col-gutter {
     &:last-child {
-      padding-inline-end: 0 !important;
+      padding-right: 0 !important;
     }
 
     &:first-child {
-      padding-inline-start: 0 !important;
+      padding-left: 0 !important;
     }
   }
 }

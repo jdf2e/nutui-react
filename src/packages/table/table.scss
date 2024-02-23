@@ -76,7 +76,7 @@
           }
 
           &:last-child {
-            border-inline-end: none;
+            border-right: none;
           }
         }
 
@@ -87,7 +87,7 @@
           background: inherit;
 
           &:last-child {
-            border-inline-end: none;
+            border-right: none;
           }
 
           &-nodata {
@@ -99,7 +99,7 @@
         }
 
         &-border {
-          border-inline-end: 1px solid $table-border-color;
+          border-right: 1px solid $table-border-color;
           border-bottom: 1px solid $table-border-color;
         }
 
@@ -164,7 +164,7 @@
   }
 
   &-fixed-left-last {
-    border-inline-end: none;
+    border-right: none;
   }
 
   &-summary {

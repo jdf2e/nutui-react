@@ -70,8 +70,8 @@
     box-shadow: 2px 2px 8px 0px rgba(0, 0, 0, 0.2);
 
     padding: {
-      inline-start: 20px;
-      inline-end: 80px;
+      left: 20px;
+      right: 80px;
     }
 
     &-item {
@@ -136,8 +136,8 @@
       border-radius: 0px 25px 25px 0px;
 
       padding: {
-        inline-start: 80px;
-        inline-end: 20px;
+        left: 80px;
+        right: 20px;
       }
 
       margin: 0;
