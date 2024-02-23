@@ -183,14 +183,14 @@ export const Range: FunctionComponent<
     }
     return {
       width: calcMainAxis(),
-      left: calcOffset(),
+      insetInlineStart: calcOffset(),
       transition: dragStatus ? 'none' : undefined,
     }
   }
 
   const marksStyle = (mark: any) => {
     let style: any = {
-      left: `${((mark - min) / scope()) * 100}%`,
+      insetInlineStart: `${((mark - min) / scope()) * 100}%`,
     }
     if (vertical) {
       style = {

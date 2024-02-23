@@ -6,7 +6,7 @@
 
   &.scroll-fixed {
     position: fixed;
-    top: $menu-scroll-fixed-top;
+    inset-block-start: $menu-scroll-fixed-top;
     z-index: $menu-scroll-fixed-z-index;
     width: 100%;
   }
@@ -55,12 +55,5 @@
 
   &.active .nut-menu-title-icon {
     transform: rotate(180deg);
-  }
-}
-
-[dir='rtl'] .nut-menu-title,
-.nut-rtl .nut-menu-title {
-  &.active .nut-menu-title-icon {
-    transform: rotate(-180deg);
   }
 }

@@ -9,10 +9,10 @@
     flex-direction: column;
 
     > .nut-space-item {
-      margin-bottom: $space-gap;
+      margin-block-end: $space-gap;
 
       &:last-child {
-        margin-bottom: 0;
+        margin-block-end: 0;
       }
     }
   }
@@ -21,19 +21,19 @@
     flex-direction: row;
 
     > .nut-space-item {
-      margin-right: $space-gap;
+      margin-inline-end: $space-gap;
 
       &:last-child {
-        margin-right: 0;
+        margin-inline-end: 0;
       }
     }
 
     &.nut-space-wrap {
       flex-wrap: wrap;
-      margin-bottom: calc(#{$space-gap} * -1);
+      margin-block-end: calc(#{$space-gap} * -1);
 
       > .nut-space-item {
-        padding-bottom: $space-gap;
+        padding-block-end: $space-gap;
       }
     }
   }
@@ -83,21 +83,6 @@
 
     &-stretch {
       justify-content: stretch;
-    }
-  }
-}
-
-[dir='rtl'] .nut-space,
-.nut-rtl .nut-space {
-  &-horizontal {
-    > .nut-space-item {
-      margin-right: 0;
-      margin-left: $space-gap;
-
-      &:last-child {
-        margin-right: 0;
-        margin-left: 0;
-      }
     }
   }
 }

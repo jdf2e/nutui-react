@@ -9,15 +9,15 @@
     position: relative;
     display: flex;
     justify-content: center;
-    margin-bottom: $steps-base-icon-margin-bottom;
+    margin-block-end: $steps-base-icon-margin-bottom;
   }
 
   // 计算方法：left = calc(50% + (100% - $steps-base-line-width) / 2)
   // 如 width=70%时，left=65%; width=100%,left=50%;
   &-line {
     position: absolute;
-    top: calc($steps-base-icon-height / 2);
-    left: calc(50% + (100% - $steps-base-line-width) / 2);
+    inset-block-start: calc($steps-base-icon-height / 2);
+    inset-inline-start: calc(50% + (100% - $steps-base-line-width) / 2);
     height: $steps-base-line-height;
     width: $steps-base-line-width;
     background: $steps-base-line-background;
@@ -65,7 +65,7 @@
 
   &-title {
     display: block;
-    margin-bottom: $steps-base-title-margin-bottom;
+    margin-block-end: $steps-base-title-margin-bottom;
     font-size: $steps-base-title-font-size;
     color: $steps-base-title-color;
   }
@@ -131,21 +131,13 @@
   }
 }
 
-[dir='rtl'] .nut-step,
-.nut-rtl .nut-step {
-  &-line {
-    left: auto;
-    right: calc(50% + (100% - $steps-base-line-width) / 2);
-  }
-}
-
 .nut-steps-dot {
   .nut-step-head {
     margin: $steps-dot-head-margin;
   }
 
   .nut-step-line {
-    top: 7px;
+    inset-block-start: 7px;
   }
 
   .nut-step-icon {
@@ -177,10 +169,10 @@
         content: '';
         display: inline-block;
         position: absolute;
-        left: 50%;
-        top: 50%;
-        margin-left: -7px;
-        margin-top: -7px;
+        inset-inline-start: 50%;
+        inset-block-start: 50%;
+        margin-inline-start: -7px;
+        margin-block-start: -7px;
         width: 14px;
         height: 14px;
         background-color: $steps-process-icon-before-bg-color;
@@ -191,25 +183,11 @@
   }
 }
 
-[dir='rtl'] .nut-steps-dot,
-.nut-rtl .nut-steps-dot {
-  .nut-step-process {
-    .nut-step-icon {
-      &:before {
-        left: auto;
-        right: 50%;
-        margin-left: 0;
-        margin-right: -7px;
-      }
-    }
-  }
-}
-
 .nut-steps-horizontal {
   &.nut-steps-dot {
     .nut-step-line {
-      top: 50%;
-      bottom: -50%;
+      inset-block-start: 50%;
+      inset-block-end: -50%;
     }
   }
 }
@@ -226,36 +204,24 @@
     width: 1px;
     height: $steps-base-line-width;
     background: $steps-base-line-background;
-    top: calc(
+    inset-block-start: calc(
       $steps-base-icon-height +
         (100% - $steps-base-line-width - $steps-base-icon-margin-bottom) / 2
     );
-    left: calc(50% - 1px);
+    inset-inline-start: calc(50% - 1px);
   }
 
   &.nut-steps-dot {
     .nut-step-line {
-      top: calc($steps-dot-icon-height + (100% - $steps-base-line-width) / 2);
+      inset-block-start: calc(
+        $steps-dot-icon-height + (100% - $steps-base-line-width) / 2
+      );
     }
   }
 
   .nut-step-main {
     display: inline-block;
-    padding-left: 6%;
-    text-align: left;
-  }
-}
-
-[dir='rtl'] .nut-steps-vertical,
-.nut-rtl .nut-steps-vertical {
-  .nut-step-line {
-    left: auto;
-    right: calc(50% - 1px);
-  }
-
-  .nut-step-main {
-    padding-left: 0;
-    padding-right: 6%;
-    text-align: right;
+    padding-inline-start: 6%;
+    text-align: start;
   }
 }

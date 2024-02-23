@@ -13,31 +13,31 @@
 
     &-top {
       bottom: 0;
-      border-top-color: $popover-border-color;
-      border-bottom-width: 0;
-      margin-bottom: -8px;
+      border-block-start-color: $popover-border-color;
+      border-block-end-width: 0;
+      margin-block-end: -8px;
     }
 
     &-bottom {
-      top: 0px;
-      border-bottom-color: $popover-border-color;
-      border-top-width: 0;
-      margin-top: -8px;
+      inset-block-start: 0px;
+      border-block-end-color: $popover-border-color;
+      border-block-start-width: 0;
+      margin-block-start: -8px;
     }
 
     &-left {
-      right: 0px;
-      border-left-color: $popover-border-color;
-      border-right-width: 0;
+      inset-inline-end: 0px;
+      border-inline-start-color: $popover-border-color;
+      border-inline-end-width: 0;
       margin-inline-end: -8px;
 
       &.nut-popover-arrow-left {
-        top: 50%;
+        inset-block-start: 50%;
         transform: translateY(-50%);
       }
 
       &.nut-popover-arrow-left-start {
-        top: 16px;
+        inset-block-start: 16px;
         transform: translateY(0%);
       }
 
@@ -48,18 +48,18 @@
     }
 
     &-right {
-      left: 0px;
-      border-right-color: $popover-border-color;
-      border-left-width: 0;
+      inset-inline-start: 0px;
+      border-inline-end-color: $popover-border-color;
+      border-inline-start-width: 0;
       margin-inline-start: -8px;
 
       &.nut-popover-arrow-right {
-        top: 50%;
+        inset-block-start: 50%;
         transform: translateY(-50%);
       }
 
       &.nut-popover-arrow-right-start {
-        top: 16px;
+        inset-block-start: 16px;
         transform: translateY(0%);
       }
 
@@ -94,11 +94,11 @@
       align-items: center;
       justify-content: center;
       padding: $popover-menu-item-padding;
-      border-bottom: 1px solid $popover-divider-color;
+      border-block-end: 1px solid $popover-divider-color;
 
       &:last-child {
-        margin-bottom: 0px;
-        border-bottom: none;
+        margin-block-end: 0px;
+        border-block-end: none;
       }
 
       &:hover {
@@ -132,7 +132,7 @@
 
       &-action-icon {
         position: absolute;
-        right: $popover-menu-item-padding;
+        inset-inline-end: $popover-menu-item-padding;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -154,155 +154,83 @@
 
     &-top {
       .nut-popover-arrow-top {
-        left: 50%;
+        inset-inline-start: 50%;
         transform: translateX(-50%);
       }
     }
 
     &-top-end {
       .nut-popover-arrow-top-end {
-        right: 16px;
+        inset-inline-end: 16px;
         transform: translateX(0%);
       }
-      right: 0;
+      inset-inline-end: 0;
     }
 
     &-top-start {
-      left: 0;
+      inset-inline-start: 0;
 
       .nut-popover-arrow-top-start {
-        left: 16px;
+        inset-inline-start: 16px;
         transform: translateX(0%);
       }
     }
 
     &-bottom {
       .nut-popover-arrow-bottom {
-        left: 50%;
+        inset-inline-start: 50%;
         transform: translateX(-50%);
       }
     }
 
     &-bottom-end {
       .nut-popover-arrow-bottom-end {
-        right: 16px;
+        inset-inline-end: 16px;
         transform: translateX(0%);
       }
 
-      right: 0;
+      inset-inline-end: 0;
     }
 
     &-bottom-start {
-      left: 0;
+      inset-inline-start: 0;
 
       .nut-popover-arrow-bottom-start {
-        left: 16px;
+        inset-inline-start: 16px;
         transform: translateX(0%);
       }
     }
 
     &-left-end {
-      bottom: 0;
+      inset-block-end: 0;
     }
 
     &-left-start {
-      top: 0;
+      inset-block-start: 0;
     }
 
     &-right-end {
-      bottom: 0;
+      inset-block-end: 0;
     }
 
     &-right-start {
-      top: 0;
+      inset-block-start: 0;
     }
   }
 }
 
 [dir='rtl'] .nut-popover,
 .nut-rtl .nut-popover {
-  &-arrow {
-    &-left {
-      right: auto;
-      left: 0px;
-      border-left-color: currentcolor;
-      border-right-color: $popover-border-color;
-      border-right-width: medium;
-      border-left-width: 0;
-    }
-
-    &-right {
-      left: auto;
-      right: 0px;
-      border-right-color: currentcolor;
-      border-left-color: $popover-border-color;
-      border-left-width: medium;
-      border-right-width: 0;
-    }
-  }
-
   .nut-popover-content {
-    .nut-popover-menu-item {
-      &-action-icon {
-        right: auto;
-        left: $popover-menu-item-padding;
-      }
-    }
-
     &-top {
       .nut-popover-arrow-top {
-        left: auto;
-        right: 50%;
         transform: translateX(50%);
-      }
-    }
-
-    &-top-end {
-      right: auto;
-      left: 0;
-
-      .nut-popover-arrow-top-end {
-        right: auto;
-        left: 16px;
-      }
-    }
-
-    &-top-start {
-      left: auto;
-      right: 0;
-
-      .nut-popover-arrow-top-start {
-        left: auto;
-        right: 16px;
       }
     }
 
     &-bottom {
       .nut-popover-arrow-bottom {
-        left: auto;
-        right: 50%;
         transform: translateX(50%);
-      }
-    }
-
-    &-bottom-end {
-      right: auto;
-
-      left: 0;
-
-      .nut-popover-arrow-bottom-end {
-        right: auto;
-        left: 16px;
-      }
-    }
-
-    &-bottom-start {
-      left: auto;
-      right: 0;
-
-      .nut-popover-arrow-bottom-start {
-        left: auto;
-        right: 16px;
       }
     }
   }
@@ -326,16 +254,10 @@
   position: fixed;
   height: 100%;
   width: 100%;
-  top: 0;
-  left: 0;
+  inset-block-start: 0;
+  inset-inline-start: 0;
   background: transparent;
   z-index: 999;
-}
-
-[dir='rtl'] .nut-popover-content-bg,
-.nut-rtl .nut-popover-content-bg {
-  left: auto;
-  right: 0;
 }
 
 .nut-popover-wrapper {
@@ -345,5 +267,5 @@
 // Taro
 .nut-popover-content-copy {
   position: absolute;
-  top: -99999px;
+  inset-block-start: -99999px;
 }

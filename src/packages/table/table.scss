@@ -20,8 +20,6 @@
 
   &-main {
     display: table;
-    // width: 100%;
-    // border-collapse: collapse;
     overflow-x: auto;
     color: $color-title;
     background-color: $color-background-overlay;
@@ -60,7 +58,7 @@
 
         &:last-child {
           .nut-table-main-body-tr-td {
-            border-bottom: none;
+            border-block-end: none;
           }
         }
 
@@ -70,7 +68,7 @@
           table-layout: fixed;
           background: inherit;
           position: sticky;
-          top: 0;
+          inset-block-start: 0;
 
           &.nut-table-fixed-left,
           &.nut-table-fixed-right {
@@ -78,7 +76,7 @@
           }
 
           &:last-child {
-            border-right: none;
+            border-inline-end: none;
           }
         }
 
@@ -89,7 +87,7 @@
           background: inherit;
 
           &:last-child {
-            border-right: none;
+            border-inline-end: none;
           }
 
           &-nodata {
@@ -101,13 +99,13 @@
         }
 
         &-border {
-          border-right: 1px solid $table-border-color;
-          border-bottom: 1px solid $table-border-color;
+          border-inline-end: 1px solid $table-border-color;
+          border-block-end: 1px solid $table-border-color;
         }
 
         &-alignleft,
         &-align {
-          text-align: left;
+          text-align: start;
         }
 
         &-aligncenter {
@@ -115,7 +113,7 @@
         }
 
         &-alignright {
-          text-align: right;
+          text-align: end;
         }
       }
     }
@@ -132,9 +130,9 @@
   &-sticky-left,
   &-sticky-right {
     position: absolute;
-    top: 0px;
+    inset-block-start: 0px;
     width: 8px;
-    bottom: -1px;
+    inset-block-end: -1px;
     overflow-x: hidden;
     overflow-y: hidden;
     box-shadow: none;
@@ -145,12 +143,12 @@
   }
 
   &-sticky-left {
-    left: 1px;
+    inset-inline-start: 1px;
     box-shadow: $table-sticky-left-shadow;
   }
 
   &-sticky-right {
-    right: 1px;
+    inset-inline-end: 1px;
     box-shadow: $table-sticky-right-shadow;
   }
 
@@ -166,7 +164,7 @@
   }
 
   &-fixed-left-last {
-    border-right: none;
+    border-inline-end: none;
   }
 
   &-summary {
@@ -184,53 +182,11 @@
 
 [dir='rtl'] .nut-table,
 .nut-rtl .nut-table {
-  &-main {
-    &-head,
-    &-body {
-      &-tr {
-        &-th {
-          &:last-child {
-            border-right: none;
-            border-left: none;
-          }
-        }
-
-        &-td {
-          &:last-child {
-            border-right: none;
-            border-left: none;
-          }
-        }
-
-        &-border {
-          border-right: none;
-          border-left: 1px solid $table-border-color;
-        }
-
-        &-alignleft,
-        &-align {
-          text-align: right;
-        }
-
-        &-alignright {
-          text-align: left;
-        }
-      }
-    }
-  }
-
   &-sticky-left {
-    left: auto;
-    right: 1px;
+    box-shadow: $table-sticky-right-shadow;
   }
 
   &-sticky-right {
-    right: auto;
-    left: 1px;
-  }
-
-  &-fixed-left-last {
-    border-right: none;
-    border-left: none;
+    box-shadow: $table-sticky-left-shadow;
   }
 }

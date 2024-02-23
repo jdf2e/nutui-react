@@ -1,13 +1,13 @@
 .nut-horizontal-items {
-  float: left;
+  float: inline-start;
 
   li {
     display: block;
-    float: left;
+    float: inline-start;
     color: $color-title;
     background: $color-background-overlay;
     padding: 10px;
-    margin-right: 20px;
+    margin-inline-end: 20px;
   }
 
   &:after {
@@ -18,17 +18,6 @@
   }
 }
 
-[dir='rtl'] .nut-horizontal-items,
-.nut-rtl .nut-horizontal-items {
-  float: right;
-
-  li {
-    float: right;
-    margin-right: 0;
-    margin-left: 20px;
-  }
-}
-
 .nut-vertical-items {
   li {
     display: block;
@@ -36,7 +25,7 @@
     background: $color-background-overlay;
     border-radius: 7px;
     box-shadow: 0 1px 6px 0 rgba(237, 238, 241, 1);
-    margin-top: 20px;
+    margin-block-start: 20px;
     padding: 14px 15px;
     font-size: 13px;
     line-height: 18px;
@@ -76,17 +65,17 @@
 
   &-phantom {
     position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
+    inset-inline-start: 0;
+    inset-block-start: 0;
+    inset-inline-end: 0;
     z-index: -1;
   }
 
   &-container {
-    left: 0;
-    right: 0;
-    top: 0;
     position: absolute;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
+    inset-block-start: 0;
   }
 
   &-item {

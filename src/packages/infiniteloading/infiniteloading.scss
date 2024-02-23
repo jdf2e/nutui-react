@@ -22,7 +22,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-bottom: 4px;
+        margin-block-end: 4px;
       }
     }
   }
@@ -32,7 +32,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    padding-top: 6px;
+    padding-block-start: 6px;
     font-size: $font-size-small;
     color: $infiniteloading-color;
     text-align: center;
@@ -43,19 +43,7 @@
       align-items: center;
 
       &-icons {
-        margin-right: 8px;
-      }
-    }
-  }
-}
-
-[dir='rtl'] .nut-infiniteloading,
-.nut-rtl .nut-infiniteloading {
-  .nut-infinite-bottom {
-    &-tips {
-      &-icons {
-        margin-right: 0;
-        margin-left: 8px;
+        margin-inline-end: 8px;
       }
     }
   }

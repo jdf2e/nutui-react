@@ -25,7 +25,7 @@
 
     .arrow {
       position: absolute;
-      left: 15px;
+      inset-inline-start: 15px;
       transform: rotateZ(180deg);
     }
   }
@@ -41,18 +41,18 @@
 
     &.top-right {
       top: 50px;
-      right: 20px;
+      inset-inline-end: 20px;
     }
 
     &.top-left {
       top: 50px;
-      left: 20px;
+      inset-inline-start: 20px;
     }
 
     &.bottom {
       bottom: 50px;
-      left: 0;
-      right: 0;
+      inset-inline-start: 0;
+      inset-inline-end: 0;
       text-align: center;
     }
   }
@@ -90,21 +90,7 @@
 .nut-rtl .nut-imagepreview {
   &-index {
     .arrow {
-      left: auto;
-      right: 15px;
       transform: rotateZ(-180deg);
-    }
-  }
-
-  &-close {
-    &.top-right {
-      right: auto;
-      left: 20px;
-    }
-
-    &.top-left {
-      left: auto;
-      right: 20px;
     }
   }
 }

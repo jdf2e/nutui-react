@@ -46,16 +46,17 @@ export const BackTop: FunctionComponent<
     })
   }
 
-  const styles = style
-    ? {
-        zIndex,
-        ...style,
-      }
-    : {
-        right: '10px',
-        bottom: '20px',
-        zIndex,
-      }
+  const styles =
+    Object.keys(style || {}).length !== 0
+      ? {
+          zIndex,
+          ...style,
+        }
+      : {
+          insetInlineEnd: '10px',
+          bottom: '20px',
+          zIndex,
+        }
 
   return (
     <div

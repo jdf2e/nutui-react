@@ -13,10 +13,10 @@
     .nut-progress-active:before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      inset-block-start: 0;
+      inset-inline-start: 0;
+      inset-inline-end: 0;
+      inset-block-end: 0;
       border-radius: $progress-border-radius;
       animation: progressActive 2s ease-in-out infinite;
     }
@@ -36,8 +36,8 @@
     display: flex;
     align-items: center;
     position: absolute;
-    top: $progress-text-position-top;
-    bottom: $progress-text-position-bottom;
+    inset-block-start: $progress-text-position-top;
+    inset-block-end: $progress-text-position-bottom;
     transition: all 0.4s;
     transform: translate(-50%);
 

@@ -82,7 +82,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-right: 10px;
+      margin-inline-end: 10px;
     }
   }
 
@@ -144,46 +144,12 @@
     left: auto;
     right: 0;
     .nut-icon-ArrowLeft {
-      transform: rotate(180deg);
-    }
-
-    &-back {
-      margin-right: 0;
-      margin-left: 10px;
+      transform: rotateY(180deg);
     }
   }
 
   &-right {
     right: auto;
     left: 0;
-
-    .nut-icon-ArrowLeft {
-      margin-left: 0;
-      margin-right: 12px;
-
-      &:first-child {
-        margin-left: 0;
-        margin-right: 0;
-      }
-    }
-  }
-
-  &-title-align-left {
-    .nut-navbar-left {
-      .nut-icon-ArrowLeft {
-        margin-left: 0;
-        margin-right: 12px;
-
-        &:first-child {
-          margin-left: 0;
-          margin-right: 0;
-        }
-      }
-    }
-
-    .nut-navbar-left-back {
-      margin-right: 0;
-      margin-left: 0;
-    }
   }
 }

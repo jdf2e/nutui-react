@@ -5,11 +5,11 @@
   font-size: $trendarrow-font-size;
 
   &-icon-before {
-    margin-right: $trendarrow-icon-margin;
+    margin-inline-end: $trendarrow-icon-margin;
   }
 
   &-icon-after {
-    margin-left: $trendarrow-icon-margin;
+    margin-inline-start: $trendarrow-icon-margin;
   }
 
   &-rate {
@@ -19,18 +19,5 @@
 
   .nut-icon {
     vertical-align: middle;
-  }
-}
-
-[dir='rtl'] .nut-trendarrow,
-.nut-rtl .nut-trendarrow {
-  &-icon-before {
-    margin-right: 0;
-    margin-left: $trendarrow-icon-margin;
-  }
-
-  &-icon-after {
-    margin-left: 0;
-    margin-right: $trendarrow-icon-margin;
   }
 }

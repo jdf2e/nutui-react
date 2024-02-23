@@ -23,16 +23,16 @@
   &-indicator {
     display: flex;
     position: absolute;
-    left: 50%;
-    bottom: $swiper-indicator-bottom;
+    inset-inline-start: 50%;
+    inset-block-end: $swiper-indicator-bottom;
     transform: translateX(-50%);
     z-index: 1;
   }
 
   &-indicator-vertical {
-    top: 50%;
-    left: 12px;
-    bottom: auto;
+    inset-block-start: 50%;
+    inset-inline-start: 12px;
+    inset-block-end: auto;
     flex-direction: column;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -44,13 +44,6 @@
 [dir='rtl'] .nut-swiper,
 .nut-rtl .nut-swiper {
   &-indicator {
-    left: auto;
-    right: 50%;
     transform: translateX(50%);
-  }
-
-  &-indicator-vertical {
-    left: auto;
-    right: 12px;
   }
 }

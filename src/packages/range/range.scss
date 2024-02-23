@@ -24,10 +24,8 @@
 
     &::before {
       position: absolute;
-      top: -8px;
-      right: 0;
-      bottom: -8px;
-      left: 0;
+      inset-block: -8px;
+      inset-inline: 0;
       content: '';
     }
 
@@ -55,8 +53,8 @@
       &-wrapper-right {
         touch-action: none;
         position: absolute;
-        top: 50%;
-        right: 0;
+        inset-block-start: 50%;
+        inset-inline-end: 0;
         transform: translate3d(50%, -50%, 0);
         cursor: grab;
         outline: none;
@@ -64,8 +62,8 @@
 
       &-wrapper-left {
         position: absolute;
-        top: 50%;
-        left: 0;
+        inset-block-start: 50%;
+        inset-inline-start: 0;
         transform: translate3d(-50%, -50%, 0);
         cursor: grab;
         outline: none;
@@ -100,9 +98,9 @@
       position: absolute;
       width: 100%;
       overflow: visible;
-      top: 50%;
+      inset-block-start: 50%;
       font-size: 12px;
-      padding-top: 14px;
+      padding-block-start: 14px;
     }
 
     &-mark-text {
@@ -118,10 +116,10 @@
 
     &-tick {
       position: absolute;
-      top: -20px;
+      inset-block-start: -20px;
       width: 11px;
       height: 11px;
-      left: 0px;
+      inset-inline-start: 0px;
       border-radius: 50%;
       background: $range-inactive-color;
 
@@ -146,15 +144,15 @@
           position: absolute;
           top: initial;
           bottom: 0px;
-          left: 50%;
-          right: initial;
+          inset-inline-start: 50%;
+          inset-inline-end: initial;
           transform: translate3d(-50%, 50%, 0);
         }
 
         &-wrapper-left {
           top: 0px;
-          left: 50%;
-          right: initial;
+          inset-inline-start: 50%;
+          inset-inline-end: initial;
           transform: translate3d(-50%, -50%, 0);
         }
       }
@@ -170,7 +168,7 @@
       &-mark {
         position: absolute;
         width: 100%;
-        right: 50%;
+        inset-inline-end: 50%;
         overflow: visible;
         font-size: 12px;
         height: 100%;
@@ -194,7 +192,7 @@
       &-tick {
         position: absolute;
         top: 0px;
-        left: 30px;
+        inset-inline-start: 30px;
         width: 11px;
         height: 11px;
         border-radius: 50%;
@@ -213,25 +211,16 @@
   &-button {
     &-wrapper,
     &-wrapper-right {
-      right: auto;
-      left: 0;
       transform: translate3d(-50%, -50%, 0);
     }
 
     &-wrapper-left {
-      left: auto;
-      right: 0;
       transform: translate3d(50%, -50%, 0);
     }
   }
 
   &-mark-text {
     transform: translateX(10px);
-  }
-
-  &-tick {
-    left: auto;
-    right: 0px;
   }
 }
 
@@ -242,14 +231,10 @@
       &-button {
         &-wrapper,
         &-wrapper-right {
-          right: 50%;
-          left: initial;
           transform: translate3d(50%, 50%, 0);
         }
 
         &-wrapper-left {
-          right: 50%;
-          left: initial;
           transform: translate3d(50%, -50%, 0);
         }
       }
@@ -258,18 +243,8 @@
         transform: translate3d(-100%, 0, 0);
       }
 
-      .nut-range-mark {
-        right: auto;
-        left: 50%;
-      }
-
       &-mark-text {
         transform: translateY(-11px);
-      }
-
-      &-tick {
-        left: auto;
-        right: 30px;
       }
     }
   }

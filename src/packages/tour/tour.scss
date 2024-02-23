@@ -24,7 +24,7 @@
 
     &-top {
       display: block;
-      text-align: right;
+      text-align: end;
 
       &-close {
         --nut-icon-width: 10px;
@@ -39,7 +39,7 @@
     }
 
     &-bottom {
-      margin-top: $tour-content-bottom-margin-top;
+      margin-block-start: $tour-content-bottom-margin-top;
       display: flex;
       justify-content: space-between;
 
@@ -50,7 +50,7 @@
         &-btn {
           display: inline-block;
           border: 1px solid $color-text-disabled;
-          margin-left: $tour-content-bottom-btn-margin-left;
+          margin-inline-start: $tour-content-bottom-btn-margin-left;
           padding: $tour-content-bottom-btn-padding;
           font-size: $tour-content-bottom-btn-font-size;
           border-radius: $tour-content-bottom-btn-border-radius;
@@ -78,31 +78,8 @@
     width: 100vh;
     height: 100vh;
     z-index: 1000;
-    top: 0;
-    left: 0;
+    inset-block-start: 0;
+    inset-inline-start: 0;
     background: transparent;
-  }
-}
-
-[dir='rtl'] .nut-tour,
-.nut-rtl .nut-tour {
-  &-content {
-    &-top {
-      text-align: left;
-    }
-
-    &-bottom {
-      &-operate {
-        &-btn {
-          margin-left: 0;
-          margin-right: $tour-content-bottom-btn-margin-left;
-        }
-      }
-    }
-  }
-
-  &-masked {
-    left: auto;
-    right: 0;
   }
 }

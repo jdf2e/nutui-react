@@ -78,7 +78,7 @@
       height: 0;
       content: ' ';
       bottom: $tabs-tab-line-bottom;
-      left: 50%;
+      inset-inline-start: 50%;
       transform: translate(-50%, 0);
       border-radius: $tabs-tab-line-border-radius;
       opacity: $tabs-tab-line-opacity;
@@ -121,11 +121,11 @@
     }
 
     &:first-child {
-      margin-left: 0;
+      margin-inline-start: 0;
     }
 
     &:last-child {
-      margin-right: 0;
+      margin-inline-end: 0;
     }
   }
 
@@ -179,7 +179,7 @@
       &::after {
         content: '';
         position: absolute;
-        right: 0;
+        inset-inline-end: 0;
         top: 50%;
         height: 50%;
         width: 1px;
@@ -201,28 +201,7 @@
   &-item {
     &-smile,
     &-line {
-      left: auto;
-      right: 50%;
       transform: translate(50%, 0);
-    }
-
-    &:first-child {
-      margin-left: 0;
-      margin-right: 0;
-    }
-
-    &:last-child {
-      margin-left: 0;
-      margin-right: 0;
-    }
-  }
-
-  &-divider {
-    .nut-tabs-titles-item {
-      &::after {
-        right: auto;
-        left: 0;
-      }
     }
   }
 }
@@ -259,7 +238,7 @@
 
     &-line {
       .nut-tabs-titles-item {
-        padding-left: 14px;
+        padding-inline-start: 14px;
       }
     }
   }
@@ -294,18 +273,17 @@
 
     &-active {
       background-color: $tabs-titles-item-active-background-color;
-
       .nut-tabs-titles-item-line {
-        left: 10px;
+        inset-inline-start: 10px;
         width: $tabs-vertical-tab-line-width;
         height: $tabs-vertical-tab-line-height;
         background: $tabs-vertical-tab-line-color;
       }
 
       .nut-tabs-titles-item-smile {
-        right: -12px;
+        inset-inline-end: -12px;
         bottom: -2%;
-        left: auto;
+        inset-inline-start: auto;
         width: 40px;
         height: 20px;
         transform: rotate(320deg);
@@ -336,13 +314,13 @@
       background-color: initial;
 
       .nut-tabs-titles-item-line {
-        left: 50%;
+        inset-inline-start: 50%;
         transform: translate(-50%, 0);
       }
 
       .nut-tabs-titles-item-smile {
-        left: 50%;
-        right: auto;
+        inset-inline-start: 50%;
+        inset-inline-end: auto;
         bottom: -3px;
         transform: translate(-50%, 0) rotate(0deg);
       }
@@ -394,25 +372,9 @@
 
 [dir='rtl'] .nut-tabs-vertical,
 .nut-rtl .nut-tabs-vertical {
-  .nut-tabs-titles {
-    &-line {
-      .nut-tabs-titles-item {
-        padding-left: 0;
-        padding-right: 14px;
-      }
-    }
-  }
-
   .nut-tabs-titles-item {
     &-active {
-      .nut-tabs-titles-item-line {
-        left: auto;
-        right: 10px;
-      }
-
       .nut-tabs-titles-item-smile {
-        left: -12px;
-        right: auto;
         transform: rotate(-320deg);
       }
     }
@@ -421,14 +383,10 @@
   .nut-tabs-horizontal {
     .nut-tabs-titles-item-active {
       .nut-tabs-titles-item-line {
-        left: auto;
-        right: 50%;
         transform: translate(50%, 0);
       }
 
       .nut-tabs-titles-item-smile {
-        right: 50%;
-        left: auto;
         transform: translate(50%, 0) rotate(0deg);
       }
     }

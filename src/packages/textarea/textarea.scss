@@ -17,7 +17,7 @@
 
   &-limit {
     position: absolute;
-    right: 15px;
+    inset-inline-end: 15px;
     bottom: 12px;
     font-size: $textarea-font;
     color: $textarea-limit-color;
@@ -34,7 +34,7 @@
     font-size: $textarea-font;
     color: $textarea-text-color;
     caret-color: $textarea-text-curror-color;
-    text-align: left;
+    text-align: start;
     background-color: transparent;
     border: 0;
     resize: none;
@@ -48,23 +48,6 @@
   .cpoyText {
     position: absolute;
     top: -999999px;
-    left: -999999px;
-  }
-}
-
-[dir='rtl'] .nut-textarea,
-.nut-rtl .nut-textarea {
-  &-limit {
-    right: auto;
-    left: 15px;
-  }
-
-  &-textarea {
-    text-align: right;
-  }
-
-  .cpoyText {
-    left: auto;
-    right: -999999px;
+    inset-inline-start: -999999px;
   }
 }

@@ -11,7 +11,7 @@
 
   .nut-icon {
     vertical-align: middle;
-    margin-left: 4px;
+    margin-inline-start: 4px;
   }
 
   @mixin plain {
@@ -68,13 +68,5 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-  }
-}
-
-[dir='rtl'] .nut-tag,
-.nut-rtl .nut-tag {
-  .nut-icon {
-    margin-left: 0;
-    margin-right: 4px;
   }
 }
