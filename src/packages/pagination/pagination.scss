@@ -86,9 +86,19 @@
 [dir='rtl'] .nut-pagination,
 .nut-rtl .nut-pagination {
   &-prev,
+  &-item {
+    border-right: none;
+    border-left: none;
+  }
+  &-prev,
   &-next {
     .nut-icon {
       transform: rotate(180deg);
     }
+  }
+  .simple-border {
+    border-right: none;
+    border-left: $pagination-item-border-width solid
+      $pagination-item-border-color;
   }
 }
