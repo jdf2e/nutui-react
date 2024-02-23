@@ -95,7 +95,6 @@ export const InputNumber: FunctionComponent<
         : defaultValue,
     onChange: (value) => {},
   })
-
   const bound = (value: number, min: number, max: number) => {
     let res = value
     if (min !== undefined) {
@@ -122,11 +121,18 @@ export const InputNumber: FunctionComponent<
   const [inputValue, setInputValue] = useState(format(shadowValue))
 
   useEffect(() => {
-    if (!focused) {
+    if (!focused && !async) {
       setShadowValue(bound(Number(shadowValue), Number(min), Number(max)))
       setInputValue(format(shadowValue))
     }
   }, [focused, shadowValue])
+
+  useEffect(() => {
+    if (async) {
+      setShadowValue(bound(Number(value), Number(min), Number(max)))
+      setInputValue(format(value))
+    }
+  }, [value])
 
   const calcNextValue = (current: any, step: any, symbol: number) => {
     const dig = digits + 1
@@ -179,16 +185,26 @@ export const InputNumber: FunctionComponent<
     } else {
       setShadowValue(valueStr as any)
     }
-    onChange && onChange(parseFloat(valueStr || '0').toFixed(digits) as any, e)
+    if (!async) {
+      onChange?.(parseFloat(valueStr || '0').toFixed(digits) as any, e)
+    }
   }
   const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
     setFocused(true)
-    setInputValue(shadowValue ? shadowValue.toString() : '')
+    setInputValue(
+      shadowValue !== undefined && shadowValue !== null
+        ? bound(Number(shadowValue), Number(min), Number(max)).toString()
+        : ''
+    )
     onFocus && onFocus(e)
   }
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     setFocused(false)
     onBlur && onBlur(e)
+    if (async) {
+      const valueStr = parseValue(e.target.value)
+      onChange?.(parseFloat(valueStr || '0').toFixed(digits) as any, e)
+    }
   }
 
   return (
