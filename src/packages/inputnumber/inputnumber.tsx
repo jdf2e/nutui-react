@@ -123,6 +123,7 @@ export const InputNumber: FunctionComponent<
 
   useEffect(() => {
     if (!focused) {
+      setShadowValue(bound(Number(shadowValue), Number(min), Number(max)))
       setInputValue(format(shadowValue))
     }
   }, [focused, shadowValue])
@@ -182,6 +183,7 @@ export const InputNumber: FunctionComponent<
   }
   const handleFocus = (e: React.FocusEvent<HTMLInputElement>) => {
     setFocused(true)
+    console.log(shadowValue)
     setInputValue(shadowValue ? shadowValue.toString() : '')
     onFocus && onFocus(e)
   }

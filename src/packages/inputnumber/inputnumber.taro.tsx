@@ -123,6 +123,7 @@ export const InputNumber: FunctionComponent<
 
   useEffect(() => {
     if (!focused) {
+      setShadowValue(bound(Number(shadowValue), Number(min), Number(max)))
       setInputValue(format(shadowValue))
     }
   }, [focused, shadowValue])
