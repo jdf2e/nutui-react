@@ -21,14 +21,14 @@ export interface InputNumberProps extends BasicComponent {
   step: number
   digits: number
   async: boolean
-  formatter?: (value?: number) => string
+  formatter?: (value?: string | number) => string
   onPlus: (e: React.MouseEvent) => void
   onMinus: (e: React.MouseEvent) => void
   onOverlimit: (e: React.MouseEvent) => void
   onBlur: (e: React.FocusEvent<HTMLInputElement>) => void
   onFocus: (e: React.FocusEvent<HTMLInputElement>) => void
   onChange: (
-    param: number,
+    param: string | number,
     e: React.MouseEvent | ChangeEvent<HTMLInputElement>
   ) => void
 }
