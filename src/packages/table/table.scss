@@ -182,11 +182,54 @@
 
 [dir='rtl'] .nut-table,
 .nut-rtl .nut-table {
+  &-main {
+    &-head,
+    &-body {
+      &-tr {
+        &-th {
+          &:last-child {
+            border-right: none;
+            border-left: none;
+          }
+        }
+
+        &-td {
+          &:last-child {
+            border-right: none;
+            border-left: none;
+          }
+        }
+
+        &-border {
+          border-right: none;
+          border-left: 1px solid $table-border-color;
+        }
+
+        &-alignleft,
+        &-align {
+          text-align: right;
+        }
+
+        &-alignright {
+          text-align: left;
+        }
+      }
+    }
+  }
+
   &-sticky-left {
+    left: auto;
+    right: 1px;
     box-shadow: $table-sticky-right-shadow;
   }
 
   &-sticky-right {
+    right: auto;
+    left: 1px;
     box-shadow: $table-sticky-left-shadow;
+  }
+  &-fixed-left-last {
+    border-right: none;
+    border-left: none;
   }
 }

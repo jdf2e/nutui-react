@@ -146,10 +146,42 @@
     .nut-icon-ArrowLeft {
       transform: rotateY(180deg);
     }
+    &-back {
+      margin-right: 0;
+      margin-left: 10px;
+    }
   }
 
   &-right {
     right: auto;
     left: 0;
+    .nut-icon-ArrowLeft {
+      margin-left: 0;
+      margin-right: 12px;
+
+      &:first-child {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  }
+
+  &-title-align-left {
+    .nut-navbar-left {
+      .nut-icon-ArrowLeft {
+        margin-left: 0;
+        margin-right: 12px;
+
+        &:first-child {
+          margin-left: 0;
+          margin-right: 0;
+        }
+      }
+    }
+
+    .nut-navbar-left-back {
+      margin-right: 0;
+      margin-left: 0;
+    }
   }
 }
