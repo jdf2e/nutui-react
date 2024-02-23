@@ -165,7 +165,7 @@ export const InternalShortPassword: ForwardRefRenderFunction<
           <div className={`${classPrefix}-message-forget`} onClick={onTips}>
             {tips || (
               <>
-                <Tips width={11} height={11} style={{ marginRight: '3px' }} />
+                <Tips width={11} height={11} />
                 {locale.shortpassword.tips}
               </>
             )}

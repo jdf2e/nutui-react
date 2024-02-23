@@ -155,7 +155,8 @@
     .nut-tabs-titles-item {
       &-active {
         height: 28px;
-        margin: 8px 9px;
+        margin-top: 8px;
+        margin-bottom: 8px;
         background: $color-default-light;
         color: $color-text;
         border-radius: $tabs-tab-button-border-radius;
@@ -204,13 +205,11 @@
       right: 50%;
       transform: translate(50%, 0);
     }
-
     &:first-child {
       margin-left: 0;
       margin-right: 0;
     }
   }
-
   &-divider {
     .nut-tabs-titles-item {
       &::after {
@@ -288,7 +287,6 @@
 
     &-active {
       background-color: $tabs-titles-item-active-background-color;
-
       .nut-tabs-titles-item-line {
         left: 10px;
         width: $tabs-vertical-tab-line-width;

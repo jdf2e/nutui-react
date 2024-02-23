@@ -166,7 +166,7 @@ const ActionSheetDemo = () => {
               {translated['84aa6bce']}
             </label>
           </span>
-          <div style={{ marginLeft: '10px' }}>{val1}</div>
+          <div style={{ marginInlineStart: '10px', color: '#999' }}>{val1}</div>
         </Cell>
         <Cell onClick={() => setIsVisible2(!isVisible2)}>
           <span>
@@ -174,7 +174,7 @@ const ActionSheetDemo = () => {
               {translated['595d7bb3']}
             </label>
           </span>
-          <div style={{ marginLeft: '10px' }}>{val2}</div>
+          <div style={{ marginInlineStart: '10px', color: '#999' }}>{val2}</div>
         </Cell>
         <Cell onClick={() => setIsVisible3(!isVisible3)}>
           <span>
@@ -182,7 +182,7 @@ const ActionSheetDemo = () => {
               {translated['0a1a6656']}
             </label>
           </span>
-          <div style={{ marginLeft: '10px' }}>{val3}</div>
+          <div style={{ marginInlineStart: '10px', color: '#999' }}>{val3}</div>
         </Cell>
         <h2>{translated.c3a08064}</h2>
         <Cell onClick={() => setIsVisible4(!isVisible4)}>

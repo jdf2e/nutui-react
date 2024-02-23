@@ -106,7 +106,7 @@ const SkeletonDemo = () => {
           <div className="content" style={{ width: '100%' }}>
             <Switch onChange={(value, event) => changeStatus(value, event)} />
             <Skeleton title animated avatar rows={3} visible={checked}>
-              <div className="container">
+              <div className="nut-skeleton-content">
                 <Avatar
                   size="50"
                   icon={

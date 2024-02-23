@@ -52,10 +52,10 @@
     position: relative;
     top: $divider-vertical-top;
     display: inline-block;
+    width: auto;
     height: $divider-vertical-height;
     border-left: 1px solid $divider-border-color;
     margin: $divider-vertical-margin;
-    width: auto;
   }
 }
 

@@ -256,7 +256,7 @@ const UploaderDemo = () => {
             url={uploadUrl}
             onStart={onStart}
             style={{
-              marginRight: '10px',
+              marginInlineEnd: '10px',
               marginBottom: '10px',
             }}
           />
@@ -264,7 +264,7 @@ const UploaderDemo = () => {
             url={uploadUrl}
             uploadLabel="商品主图"
             onStart={onStart}
-            style={{ marginRight: '10px' }}
+            style={{ marginInlineEnd: '10px' }}
           />
           <Uploader
             url={uploadUrl}
@@ -356,7 +356,7 @@ const UploaderDemo = () => {
             type="success"
             size="small"
             onClick={submitUpload}
-            style={{ marginRight: '10px' }}
+            style={{ marginInlineEnd: '10px' }}
           >
             {translated.fcf01d1a}
           </Button>

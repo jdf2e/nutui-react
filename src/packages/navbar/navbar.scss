@@ -99,7 +99,7 @@
   }
 
   &-title-align-left {
-    padding: 0 14px;
+    padding-left: 14px;
 
     .nut-navbar-left {
       position: static;
@@ -144,9 +144,8 @@
     left: auto;
     right: 0;
     .nut-icon-ArrowLeft {
-      transform: rotate(180deg);
+      transform: rotateY(180deg);
     }
-
     &-back {
       margin-right: 0;
       margin-left: 10px;
@@ -156,8 +155,7 @@
   &-right {
     right: auto;
     left: 0;
-
-    .nut-icon-ArrowLeft {
+    .nut-icon {
       margin-left: 0;
       margin-right: 12px;
 

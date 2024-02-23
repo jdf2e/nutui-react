@@ -24,7 +24,7 @@
 
     &-top {
       display: block;
-      text-align: right;
+      text-align: end;
 
       &-close {
         --nut-icon-width: 10px;
@@ -87,10 +87,6 @@
 [dir='rtl'] .nut-tour,
 .nut-rtl .nut-tour {
   &-content {
-    &-top {
-      text-align: left;
-    }
-
     &-bottom {
       &-operate {
         &-btn {
