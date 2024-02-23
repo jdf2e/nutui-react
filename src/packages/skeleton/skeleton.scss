@@ -69,6 +69,12 @@
 
 [dir='rtl'] .nut-skeleton,
 .nut-rtl .nut-skeleton {
+  &-content {
+    .nut-avatar {
+      margin-right: 0;
+      margin-left: 20px;
+    }
+  }
   &-animation {
     left: auto;
     right: 0;

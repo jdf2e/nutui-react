@@ -6,7 +6,8 @@
     box-sizing: border-box;
     content: ' ';
     pointer-events: none;
-    inset-inline: 16px;
+    right: 16px;
+    left: 16px;
     bottom: 0;
     border-bottom: $collapse-item-border-bottom;
     -webkit-transform: scaleY(0.5);
@@ -33,7 +34,8 @@
       box-sizing: border-box;
       content: ' ';
       pointer-events: none;
-      inset-inline: 16px;
+      right: 16px;
+      left: 16px;
       bottom: 0;
       border-bottom: $collapse-item-header-border-bottom;
       -webkit-transform: scaleY(0.5);
@@ -101,5 +103,17 @@
       color: $collapse-wrapper-content-color;
       padding: $collapse-wrapper-content-padding;
     }
+  }
+}
+[dir='rtl'] .nut-collapse-item,
+.nut-rtl .nut-collapse-item {
+  &-icon-box {
+    padding-right: 0;
+    padding-left: 40px;
+  }
+
+  &-icon {
+    left: auto;
+    right: 5px;
   }
 }
