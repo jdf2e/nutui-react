@@ -20,7 +20,7 @@
 
   &-symbol {
     font-size: $price-symbol-medium-size;
-    padding-inline-end: $price-symbol-padding-right;
+    padding-right: $price-symbol-padding-right;
 
     &-large {
       font-size: $price-symbol-big-size;
@@ -53,5 +53,13 @@
     &-small {
       font-size: $price-decimal-small-size;
     }
+  }
+}
+
+[dir='rtl'] .nut-price,
+.nut-rtl .nut-price {
+  &-symbol {
+    padding-right: 0;
+    padding-left: $price-symbol-padding-right;
   }
 }

@@ -83,7 +83,7 @@ export const Progress: FunctionComponent<
           {showText && (
             <div
               className={`${classPrefix}-text`}
-              style={{ insetInlineStart: `${displayPercent}%` }}
+              style={{ left: `${displayPercent}%` }}
             >
               {children || (
                 <div

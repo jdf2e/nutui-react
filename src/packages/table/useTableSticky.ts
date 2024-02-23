@@ -20,7 +20,7 @@ export default function useTableSticky(columns: Array<TableColumnProps>) {
     leftColumns.forEach((curr, index) => {
       const pre = leftColumns[index - 1] || {}
       _columnStyleMap[curr.key] = {
-        insetInlineStart: _stickyLeftWidth || 0,
+        left: _stickyLeftWidth || 0,
         width: curr.width || 'auto',
       }
       _columnClassMap[curr.key] = {
