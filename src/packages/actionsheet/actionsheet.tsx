@@ -56,6 +56,7 @@ export const ActionSheet: FunctionComponent<
 
   return (
     <Popup
+      {...rest}
       round
       visible={visible}
       position="bottom"
@@ -66,7 +67,7 @@ export const ActionSheet: FunctionComponent<
         onCancel && onCancel()
       }}
     >
-      <div className={`${className}`} style={style} {...rest}>
+      <div className={`${className}`} style={style}>
         {options.length ? (
           <div className={`${classPrefix}-list`}>
             {options.map((item, index) => {
