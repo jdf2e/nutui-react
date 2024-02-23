@@ -206,28 +206,6 @@
   }
 }
 
-[dir='rtl'] .nut-range,
-.nut-rtl .nut-range {
-  &-button {
-    &-wrapper,
-    &-wrapper-right {
-      right: 50%;
-      left: initial;
-      transform: translate3d(-50%, -50%, 0);
-    }
-
-    &-wrapper-left {
-      right: 50%;
-      left: initial;
-      transform: translate3d(50%, -50%, 0);
-    }
-  }
-
-  &-mark-text {
-    transform: translateX(10px);
-  }
-}
-
 [dir='rtl'] .nut-range-container,
 .nut-rtl .nut-range-container {
   &-vertical {
@@ -235,10 +213,14 @@
       &-button {
         &-wrapper,
         &-wrapper-right {
+          right: 50%;
+          left: initial;
           transform: translate3d(50%, 50%, 0);
         }
 
         &-wrapper-left {
+          right: 50%;
+          left: initial;
           transform: translate3d(50%, -50%, 0);
         }
       }
@@ -263,5 +245,31 @@
         transform: translateY(-11px);
       }
     }
+  }
+}
+
+[dir='rtl'] .nut-range,
+.nut-rtl .nut-range {
+  &-button {
+    &-wrapper,
+    &-wrapper-right {
+      left: 0;
+      right: initial;
+      transform: translate3d(-50%, -50%, 0);
+    }
+    &-wrapper-left {
+      right: 0;
+      left: initial;
+      transform: translate3d(50%, -50%, 0);
+    }
+  }
+
+  &-tick {
+    right: 0px;
+    left: initial;
+  }
+
+  &-mark-text {
+    transform: translateX(10px);
   }
 }

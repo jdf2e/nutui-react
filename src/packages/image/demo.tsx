@@ -131,7 +131,7 @@ const ImageDemo = () => {
 
         <h2>{translated.circle}</h2>
         <Cell>
-          <Row gutter={10}>
+          <Row>
             <Col span="8">
               <Image
                 src={src}
