@@ -50,7 +50,7 @@
 
   &-vertical {
     position: relative;
-    inset-block-start: $divider-vertical-top;
+    top: $divider-vertical-top;
     display: inline-block;
     width: auto;
     height: $divider-vertical-height;

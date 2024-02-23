@@ -4,7 +4,7 @@
 
   &-edit-text {
     position: absolute;
-    inset-block-start: 0;
+    top: 0;
     inset-inline-start: 0;
     width: 100%;
     height: 100%;
@@ -18,7 +18,7 @@
 
   &-input {
     position: absolute;
-    inset-block-start: 0;
+    top: 0;
     inset-inline-start: 0;
     width: 100%;
     height: 100%;
@@ -29,7 +29,7 @@
 
   &-popup {
     position: fixed;
-    inset-block-start: 0;
+    top: 0;
     inset-inline-start: 0;
     width: 100%;
     height: 100%;
@@ -39,7 +39,7 @@
     &-canvas,
     &-cut-canvas {
       position: absolute;
-      inset-block-end: 0;
+      bottom: 0;
       inset-inline-start: 0;
       width: 100%;
       height: 100%;
@@ -52,14 +52,14 @@
 
     &-toolbar {
       position: absolute;
-      inset-block-end: 0;
+      bottom: 0;
       inset-inline-start: 0;
       width: 100%;
       z-index: 2;
 
       &.top {
-        inset-block-start: 0;
-        inset-block-end: inherit;
+        top: 0;
+        bottom: inherit;
       }
 
       &-flex {
@@ -84,7 +84,7 @@
     &-highlight {
       position: absolute;
       inset-inline-start: 0;
-      inset-block-start: 0;
+      top: 0;
       width: 100%;
       height: 100%;
       z-index: 1;
@@ -93,7 +93,7 @@
       .highlight {
         position: absolute;
         inset-inline-start: 50%;
-        inset-block-start: 50%;
+        top: 50%;
         transform: translate(-50%, -50%);
         background-color: transparent;
         box-shadow: 0 0 1000px 1000px rgba(0, 0, 0, 0.6);

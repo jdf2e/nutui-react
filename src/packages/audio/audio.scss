@@ -23,7 +23,7 @@
       &::after {
         position: absolute;
         inset-inline-start: 50%;
-        inset-block-start: 50%;
+        top: 50%;
         transform: translateX(-50%);
         content: '';
         height: 2px;

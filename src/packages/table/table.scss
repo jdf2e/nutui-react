@@ -68,7 +68,7 @@
           table-layout: fixed;
           background: inherit;
           position: sticky;
-          inset-block-start: 0;
+          top: 0;
 
           &.nut-table-fixed-left,
           &.nut-table-fixed-right {
@@ -130,9 +130,9 @@
   &-sticky-left,
   &-sticky-right {
     position: absolute;
-    inset-block-start: 0px;
+    top: 0px;
     width: 8px;
-    inset-block-end: -1px;
+    bottom: -1px;
     overflow-x: hidden;
     overflow-y: hidden;
     box-shadow: none;

@@ -53,7 +53,7 @@
       &-wrapper-right {
         touch-action: none;
         position: absolute;
-        inset-block-start: 50%;
+        top: 50%;
         inset-inline-end: 0;
         transform: translate3d(50%, -50%, 0);
         cursor: grab;
@@ -62,7 +62,7 @@
 
       &-wrapper-left {
         position: absolute;
-        inset-block-start: 50%;
+        top: 50%;
         inset-inline-start: 0;
         transform: translate3d(-50%, -50%, 0);
         cursor: grab;
@@ -98,7 +98,7 @@
       position: absolute;
       width: 100%;
       overflow: visible;
-      inset-block-start: 50%;
+      top: 50%;
       font-size: 12px;
       padding-top: 14px;
     }
@@ -116,7 +116,7 @@
 
     &-tick {
       position: absolute;
-      inset-block-start: -20px;
+      top: -20px;
       width: 11px;
       height: 11px;
       inset-inline-start: 0px;

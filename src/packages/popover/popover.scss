@@ -19,7 +19,7 @@
     }
 
     &-bottom {
-      inset-block-start: 0px;
+      top: 0px;
       border-bottom-color: $popover-border-color;
       border-top-width: 0;
       margin-top: -8px;
@@ -32,12 +32,12 @@
       margin-inline-end: -8px;
 
       &.nut-popover-arrow-left {
-        inset-block-start: 50%;
+        top: 50%;
         transform: translateY(-50%);
       }
 
       &.nut-popover-arrow-left-start {
-        inset-block-start: 16px;
+        top: 16px;
         transform: translateY(0%);
       }
 
@@ -54,12 +54,12 @@
       margin-inline-start: -8px;
 
       &.nut-popover-arrow-right {
-        inset-block-start: 50%;
+        top: 50%;
         transform: translateY(-50%);
       }
 
       &.nut-popover-arrow-right-start {
-        inset-block-start: 16px;
+        top: 16px;
         transform: translateY(0%);
       }
 
@@ -202,19 +202,19 @@
     }
 
     &-left-end {
-      inset-block-end: 0;
+      bottom: 0;
     }
 
     &-left-start {
-      inset-block-start: 0;
+      top: 0;
     }
 
     &-right-end {
-      inset-block-end: 0;
+      bottom: 0;
     }
 
     &-right-start {
-      inset-block-start: 0;
+      top: 0;
     }
   }
 }
@@ -254,7 +254,7 @@
   position: fixed;
   height: 100%;
   width: 100%;
-  inset-block-start: 0;
+  top: 0;
   inset-inline-start: 0;
   background: transparent;
   z-index: 999;
@@ -267,5 +267,5 @@
 // Taro
 .nut-popover-content-copy {
   position: absolute;
-  inset-block-start: -99999px;
+  top: -99999px;
 }

@@ -16,7 +16,7 @@
   // 如 width=70%时，left=65%; width=100%,left=50%;
   &-line {
     position: absolute;
-    inset-block-start: calc($steps-base-icon-height / 2);
+    top: calc($steps-base-icon-height / 2);
     inset-inline-start: calc(50% + (100% - $steps-base-line-width) / 2);
     height: $steps-base-line-height;
     width: $steps-base-line-width;
@@ -137,7 +137,7 @@
   }
 
   .nut-step-line {
-    inset-block-start: 7px;
+    top: 7px;
   }
 
   .nut-step-icon {
@@ -170,7 +170,7 @@
         display: inline-block;
         position: absolute;
         inset-inline-start: 50%;
-        inset-block-start: 50%;
+        top: 50%;
         margin-inline-start: -7px;
         margin-top: -7px;
         width: 14px;
@@ -186,8 +186,8 @@
 .nut-steps-horizontal {
   &.nut-steps-dot {
     .nut-step-line {
-      inset-block-start: 50%;
-      inset-block-end: -50%;
+      top: 50%;
+      bottom: -50%;
     }
   }
 }
@@ -204,7 +204,7 @@
     width: 1px;
     height: $steps-base-line-width;
     background: $steps-base-line-background;
-    inset-block-start: calc(
+    top: calc(
       $steps-base-icon-height +
         (100% - $steps-base-line-width - $steps-base-icon-margin-bottom) / 2
     );
@@ -213,9 +213,7 @@
 
   &.nut-steps-dot {
     .nut-step-line {
-      inset-block-start: calc(
-        $steps-dot-icon-height + (100% - $steps-base-line-width) / 2
-      );
+      top: calc($steps-dot-icon-height + (100% - $steps-base-line-width) / 2);
     }
   }
 

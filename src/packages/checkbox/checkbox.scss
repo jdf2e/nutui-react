@@ -77,7 +77,7 @@
     &-icon {
       position: absolute;
       inset-inline-end: 0;
-      inset-block-end: 0;
+      bottom: 0;
       width: 0;
       height: 0;
       border-top: 10px solid transparent;
@@ -93,7 +93,7 @@
         height: 12px;
         position: absolute;
         color: $white;
-        inset-block-start: 50%;
+        top: 50%;
         inset-inline-start: 50%;
         transform: translate(-3px, -3px);
       }

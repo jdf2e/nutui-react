@@ -44,25 +44,25 @@
   }
 
   &-wrap-up {
-    inset-block-end: $menu-bar-line-height;
+    bottom: $menu-bar-line-height;
   }
 }
 
 .overlay-fade-enter-active.nut-menu-container-overlay {
-  inset-block-start: auto;
+  top: auto;
   z-index: $menu-container-z-index;
 }
 
 .nut-menu-placeholder-element {
   position: fixed;
-  inset-block-start: -$menu-bar-line-height;
+  top: -$menu-bar-line-height;
   inset-inline-start: 0;
   inset-inline-end: 0;
   z-index: $menu-bar-opened-z-index;
   background-color: transparent;
 
   &.up {
-    inset-block-end: -$menu-bar-line-height;
+    bottom: -$menu-bar-line-height;
   }
 }
 

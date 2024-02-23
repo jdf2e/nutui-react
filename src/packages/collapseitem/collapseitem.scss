@@ -7,7 +7,7 @@
     content: ' ';
     pointer-events: none;
     inset-inline: 16px;
-    inset-block-end: 0;
+    bottom: 0;
     border-bottom: $collapse-item-border-bottom;
     -webkit-transform: scaleY(0.5);
     transform: scaleY(0.5);
@@ -34,7 +34,7 @@
       content: ' ';
       pointer-events: none;
       inset-inline: 16px;
-      inset-block-end: 0;
+      bottom: 0;
       border-bottom: $collapse-item-header-border-bottom;
       -webkit-transform: scaleY(0.5);
       transform: scaleY(0.5);
@@ -69,7 +69,7 @@
     display: flex;
     align-items: center;
     position: absolute;
-    inset-block-start: 50%;
+    top: 50%;
     inset-inline-start: 5px;
     transform: translateY(-50%);
     transform-origin: center;

@@ -6,7 +6,7 @@
 
   &.scroll-fixed {
     position: fixed;
-    inset-block-start: $menu-scroll-fixed-top;
+    top: $menu-scroll-fixed-top;
     z-index: $menu-scroll-fixed-z-index;
     width: 100%;
   }

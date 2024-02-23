@@ -24,15 +24,15 @@
     display: flex;
     position: absolute;
     inset-inline-start: 50%;
-    inset-block-end: $swiper-indicator-bottom;
+    bottom: $swiper-indicator-bottom;
     transform: translateX(-50%);
     z-index: 1;
   }
 
   &-indicator-vertical {
-    inset-block-start: 50%;
+    top: 50%;
     inset-inline-start: 12px;
-    inset-block-end: auto;
+    bottom: auto;
     flex-direction: column;
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
