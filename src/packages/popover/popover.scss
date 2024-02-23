@@ -26,10 +26,10 @@
     }
 
     &-left {
-      inset-inline-end: 0px;
+      right: 0px;
       border-inline-start-color: $popover-border-color;
       border-inline-end-width: 0;
-      margin-inline-end: -8px;
+      margin-right: -8px;
 
       &.nut-popover-arrow-left {
         top: 50%;
@@ -48,10 +48,10 @@
     }
 
     &-right {
-      inset-inline-start: 0px;
+      left: 0px;
       border-inline-end-color: $popover-border-color;
       border-inline-start-width: 0;
-      margin-inline-start: -8px;
+      margin-left: -8px;
 
       &.nut-popover-arrow-right {
         top: 50%;
@@ -127,12 +127,12 @@
       &-name {
         width: 100%;
         word-break: keep-all;
-        margin-inline-start: 4px;
+        margin-left: 4px;
       }
 
       &-action-icon {
         position: absolute;
-        inset-inline-end: $popover-menu-item-padding;
+        right: $popover-menu-item-padding;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -154,49 +154,49 @@
 
     &-top {
       .nut-popover-arrow-top {
-        inset-inline-start: 50%;
+        left: 50%;
         transform: translateX(-50%);
       }
     }
 
     &-top-end {
       .nut-popover-arrow-top-end {
-        inset-inline-end: 16px;
+        right: 16px;
         transform: translateX(0%);
       }
-      inset-inline-end: 0;
+      right: 0;
     }
 
     &-top-start {
-      inset-inline-start: 0;
+      left: 0;
 
       .nut-popover-arrow-top-start {
-        inset-inline-start: 16px;
+        left: 16px;
         transform: translateX(0%);
       }
     }
 
     &-bottom {
       .nut-popover-arrow-bottom {
-        inset-inline-start: 50%;
+        left: 50%;
         transform: translateX(-50%);
       }
     }
 
     &-bottom-end {
       .nut-popover-arrow-bottom-end {
-        inset-inline-end: 16px;
+        right: 16px;
         transform: translateX(0%);
       }
 
-      inset-inline-end: 0;
+      right: 0;
     }
 
     &-bottom-start {
-      inset-inline-start: 0;
+      left: 0;
 
       .nut-popover-arrow-bottom-start {
-        inset-inline-start: 16px;
+        left: 16px;
         transform: translateX(0%);
       }
     }
@@ -255,7 +255,7 @@
   height: 100%;
   width: 100%;
   top: 0;
-  inset-inline-start: 0;
+  left: 0;
   background: transparent;
   z-index: 999;
 }

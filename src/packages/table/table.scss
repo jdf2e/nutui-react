@@ -143,12 +143,12 @@
   }
 
   &-sticky-left {
-    inset-inline-start: 1px;
+    left: 1px;
     box-shadow: $table-sticky-left-shadow;
   }
 
   &-sticky-right {
-    inset-inline-end: 1px;
+    right: 1px;
     box-shadow: $table-sticky-right-shadow;
   }
 

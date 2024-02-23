@@ -44,48 +44,48 @@
   }
 
   &-left {
-    margin-inline-end: $searchbar-gap;
+    margin-right: $searchbar-gap;
 
     & > div,
     & > span,
     & > svg {
-      margin-inline-end: $searchbar-gap;
+      margin-right: $searchbar-gap;
 
       &:last-child {
-        margin-inline-end: 0;
+        margin-right: 0;
       }
     }
   }
 
   &-right {
-    margin-inline-start: $searchbar-gap;
+    margin-left: $searchbar-gap;
 
     & > div,
     & > span,
     & > svg {
-      margin-inline-start: $searchbar-gap;
+      margin-left: $searchbar-gap;
 
       &:first-child {
-        margin-inline-start: 0;
+        margin-left: 0;
       }
     }
   }
 
   &-left > text,
   &-left > view {
-    margin-inline-end: $searchbar-gap;
+    margin-right: $searchbar-gap;
 
     &:last-child {
-      margin-inline-end: 0;
+      margin-right: 0;
     }
   }
 
   &-right > text,
   &-right > view {
-    margin-inline-start: $searchbar-gap;
+    margin-left: $searchbar-gap;
 
     &:first-child {
-      margin-inline-start: 0;
+      margin-left: 0;
     }
   }
 

@@ -54,7 +54,7 @@
         touch-action: none;
         position: absolute;
         top: 50%;
-        inset-inline-end: 0;
+        right: 0;
         transform: translate3d(50%, -50%, 0);
         cursor: grab;
         outline: none;
@@ -63,7 +63,7 @@
       &-wrapper-left {
         position: absolute;
         top: 50%;
-        inset-inline-start: 0;
+        left: 0;
         transform: translate3d(-50%, -50%, 0);
         cursor: grab;
         outline: none;
@@ -119,7 +119,7 @@
       top: -20px;
       width: 11px;
       height: 11px;
-      inset-inline-start: 0px;
+      left: 0px;
       border-radius: 50%;
       background: $range-inactive-color;
 
@@ -144,15 +144,15 @@
           position: absolute;
           top: initial;
           bottom: 0px;
-          inset-inline-start: 50%;
-          inset-inline-end: initial;
+          left: 50%;
+          right: initial;
           transform: translate3d(-50%, 50%, 0);
         }
 
         &-wrapper-left {
           top: 0px;
-          inset-inline-start: 50%;
-          inset-inline-end: initial;
+          left: 50%;
+          right: initial;
           transform: translate3d(-50%, -50%, 0);
         }
       }
@@ -168,7 +168,7 @@
       &-mark {
         position: absolute;
         width: 100%;
-        inset-inline-end: 50%;
+        right: 50%;
         overflow: visible;
         font-size: 12px;
         height: 100%;
@@ -192,7 +192,7 @@
       &-tick {
         position: absolute;
         top: 0px;
-        inset-inline-start: 30px;
+        left: 30px;
         width: 11px;
         height: 11px;
         border-radius: 50%;

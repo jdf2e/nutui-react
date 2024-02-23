@@ -31,7 +31,7 @@
     .nut-icon {
       display: inline-flex;
       align-items: center;
-      margin-inline-end: $menu-item-icon-margin;
+      margin-right: $menu-item-icon-margin;
     }
   }
 
@@ -56,8 +56,8 @@
 .nut-menu-placeholder-element {
   position: fixed;
   top: -$menu-bar-line-height;
-  inset-inline-start: 0;
-  inset-inline-end: 0;
+  left: 0;
+  right: 0;
   z-index: $menu-bar-opened-z-index;
   background-color: transparent;
 

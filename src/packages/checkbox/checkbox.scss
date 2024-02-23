@@ -20,7 +20,7 @@
   }
 
   &-label {
-    margin-inline-start: $checkbox-label-margin-left;
+    margin-left: $checkbox-label-margin-left;
     font-size: $checkbox-label-font-size;
     color: $checkbox-label-color;
 
@@ -45,8 +45,8 @@
     flex-direction: row-reverse;
 
     .nut-checkbox-label {
-      margin-inline-end: $checkbox-label-margin-left;
-      margin-inline-start: 0;
+      margin-right: $checkbox-label-margin-left;
+      margin-left: 0;
     }
   }
 
@@ -76,7 +76,7 @@
 
     &-icon {
       position: absolute;
-      inset-inline-end: 0;
+      right: 0;
       bottom: 0;
       width: 0;
       height: 0;
@@ -94,7 +94,7 @@
         position: absolute;
         color: $white;
         top: 50%;
-        inset-inline-start: 50%;
+        left: 50%;
         transform: translate(-3px, -3px);
       }
 
@@ -108,7 +108,7 @@
         &:before {
           top: auto;
           bottom: -22px;
-          margin-inline-start: 6px;
+          margin-left: 6px;
         }
       }
     }

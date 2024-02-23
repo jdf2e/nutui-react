@@ -21,11 +21,11 @@
   &-left,
   &-right {
     &::before {
-      margin-inline-end: $divider-spacing;
+      margin-right: $divider-spacing;
     }
 
     &::after {
-      margin-inline-start: $divider-spacing;
+      margin-left: $divider-spacing;
     }
   }
 

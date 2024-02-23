@@ -82,7 +82,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-inline-end: 10px;
+      margin-right: 10px;
     }
   }
 
@@ -90,10 +90,10 @@
     right: 0;
 
     .nut-icon {
-      margin-inline-start: 12px;
+      margin-left: 12px;
 
       &:first-child {
-        margin-inline-start: 0;
+        margin-left: 0;
       }
     }
   }
@@ -106,10 +106,10 @@
       padding: 0;
 
       .nut-icon {
-        margin-inline-start: 12px;
+        margin-left: 12px;
 
         &:first-child {
-          margin-inline-start: 0;
+          margin-left: 0;
         }
       }
     }
@@ -120,7 +120,7 @@
       padding-inline-start: 0;
     }
     .nut-navbar-left-back {
-      margin-inline-end: 0;
+      margin-right: 0;
     }
 
     .nut-navbar-title {

@@ -15,7 +15,7 @@
     font-size: $form-item-label-font-size;
     font-weight: normal;
     width: $form-item-label-width;
-    margin-inline-end: $form-item-label-margin-right;
+    margin-right: $form-item-label-margin-right;
     flex: none !important;
     display: inline-block !important;
     word-wrap: break-word;
@@ -25,7 +25,7 @@
       &::before {
         content: '*';
         color: $form-item-required-color;
-        margin-inline-end: $form-item-required-margin-right;
+        margin-right: $form-item-required-margin-right;
       }
     }
   }

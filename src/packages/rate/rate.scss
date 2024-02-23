@@ -18,10 +18,10 @@
     display: flex;
     flex-shrink: 0;
     position: relative;
-    margin-inline-end: $rate-item-margin;
+    margin-right: $rate-item-margin;
 
     &:last-child {
-      margin-inline-end: 0;
+      margin-right: 0;
     }
 
     &-half {

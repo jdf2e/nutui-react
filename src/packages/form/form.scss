@@ -20,7 +20,7 @@
     display: block;
     line-height: 1.5;
     position: absolute;
-    inset-inline-start: 0.1em;
+    left: 0.1em;
   }
 }
 
@@ -38,6 +38,6 @@
 }
 
 .form-layout-top .nut-form-item-body {
-  margin-inline-start: 0;
+  margin-left: 0;
   width: 100%;
 }

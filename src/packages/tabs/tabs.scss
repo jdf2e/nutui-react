@@ -78,7 +78,7 @@
       height: 0;
       content: ' ';
       bottom: $tabs-tab-line-bottom;
-      inset-inline-start: 50%;
+      left: 50%;
       transform: translate(-50%, 0);
       border-radius: $tabs-tab-line-border-radius;
       opacity: $tabs-tab-line-opacity;
@@ -121,11 +121,11 @@
     }
 
     &:first-child {
-      margin-inline-start: 0;
+      margin-left: 0;
     }
 
     &:last-child {
-      margin-inline-end: 0;
+      margin-right: 0;
     }
   }
 
@@ -179,7 +179,7 @@
       &::after {
         content: '';
         position: absolute;
-        inset-inline-end: 0;
+        right: 0;
         top: 50%;
         height: 50%;
         width: 1px;
@@ -274,16 +274,16 @@
     &-active {
       background-color: $tabs-titles-item-active-background-color;
       .nut-tabs-titles-item-line {
-        inset-inline-start: 10px;
+        left: 10px;
         width: $tabs-vertical-tab-line-width;
         height: $tabs-vertical-tab-line-height;
         background: $tabs-vertical-tab-line-color;
       }
 
       .nut-tabs-titles-item-smile {
-        inset-inline-end: -12px;
+        right: -12px;
         bottom: -2%;
-        inset-inline-start: auto;
+        left: auto;
         width: 40px;
         height: 20px;
         transform: rotate(320deg);
@@ -314,13 +314,13 @@
       background-color: initial;
 
       .nut-tabs-titles-item-line {
-        inset-inline-start: 50%;
+        left: 50%;
         transform: translate(-50%, 0);
       }
 
       .nut-tabs-titles-item-smile {
-        inset-inline-start: 50%;
-        inset-inline-end: auto;
+        left: 50%;
+        right: auto;
         bottom: -3px;
         transform: translate(-50%, 0) rotate(0deg);
       }
