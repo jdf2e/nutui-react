@@ -66,7 +66,14 @@
   }
 
   .nut-icon-checklist {
-    margin-inline-start: $cascader-icon-checklist-marginLeft;
+    margin-left: $cascader-icon-checklist-marginLeft;
     visibility: hidden;
+  }
+}
+[dir='rtl'] .nut-cascader,
+.nut-rtl .nut-cascader {
+  .nut-icon-checklist {
+    margin-left: 0;
+    margin-right: $cascader-icon-checklist-marginLeft;
   }
 }

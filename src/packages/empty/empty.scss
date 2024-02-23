@@ -58,7 +58,17 @@
     }
 
     .nut-button.nut-empty-actions-left {
-      margin-inline-end: 16px;
+      margin-right: 16px;
+    }
+  }
+}
+
+[dir='rtl'] .nut-empty,
+.nut-rtl .nut-empty {
+  &-actions {
+    .nut-button.nut-empty-actions-left {
+      margin-right: 0;
+      margin-left: 16px;
     }
   }
 }

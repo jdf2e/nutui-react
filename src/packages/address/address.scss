@@ -27,7 +27,7 @@
       }
 
       &-info {
-        margin-inline-start: 9px;
+        margin-left: 9px;
       }
     }
   }
@@ -48,6 +48,18 @@
       border-radius: 21px;
       font-size: 15px;
       color: $color-primary-text;
+    }
+  }
+}
+
+[dir='rtl'] .nut-address,
+.nut-rtl .nut-address {
+  &-exist {
+    &-item {
+      &-info {
+        margin-left: 0;
+        margin-right: 9px;
+      }
     }
   }
 }

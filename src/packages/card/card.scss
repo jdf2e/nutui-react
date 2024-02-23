@@ -53,7 +53,7 @@
 
       &-origin {
         &.nut-price {
-          margin-inline-start: 2px;
+          margin-left: 2px;
           color: #d2a448;
 
           .nut-price-big,
@@ -73,7 +73,7 @@
 
       .nut-tag {
         padding: 0 2px;
-        margin-inline-end: 5px;
+        margin-right: 5px;
         font-size: $font-size-xs;
       }
     }
@@ -88,6 +88,27 @@
         color: $color-text;
         font-size: 12px;
         padding-top: 4px;
+      }
+    }
+  }
+}
+
+[dir='rtl'] .nut-card,
+.nut-rtl .nut-card {
+  &-right {
+    &-price {
+      &-origin {
+        &.nut-price {
+          margin-left: 0;
+          margin-right: 2px;
+        }
+      }
+    }
+
+    &-other {
+      .nut-tag {
+        margin-right: 0;
+        margin-left: 5px;
       }
     }
   }
