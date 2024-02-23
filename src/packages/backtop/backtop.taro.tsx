@@ -53,7 +53,7 @@ export const BackTop: FunctionComponent<
           ...style,
         }
       : {
-          insetInlineEnd: '10px',
+          right: '10px',
           bottom: '20px',
           zIndex,
         }
