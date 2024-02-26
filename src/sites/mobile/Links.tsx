@@ -1,5 +1,6 @@
 import React from 'react'
 import './Links.scss'
+import '../assets/styles/reset.scss'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from '@nutui/icons-react'
 import pkg from '../../config.json'
