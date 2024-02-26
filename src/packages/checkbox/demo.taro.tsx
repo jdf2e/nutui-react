@@ -215,7 +215,7 @@ const CheckboxDemo = () => {
               <Checkbox value="1" label={optionsDemo1[0].label} />
             </span>
             <Checkbox value="2" label={optionsDemo1[1].label} />
-            <Checkbox value="3" label={optionsDemo1[2].label} />
+            <Checkbox value="3" disabled label={optionsDemo1[2].label} />
           </Checkbox.Group>
         </Cell>
         <Cell className="nut-cell">
