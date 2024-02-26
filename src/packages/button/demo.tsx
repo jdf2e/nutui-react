@@ -1,11 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useTranslate } from '../../sites/assets/locale'
 import Cell from '../cell'
 import Demo1 from './demos/h5/demo1'
 import Demo2 from './demos/h5/demo2'
 import Demo3 from './demos/h5/demo3'
 import Demo4 from './demos/h5/demo4'
-import { Button } from './button'
+import Demo5 from './demos/h5/demo5'
+import Demo6 from './demos/h5/demo6'
+import Demo7 from './demos/h5/demo7'
+import Demo8 from './demos/h5/demo8'
+import Demo9 from './demos/h5/demo9'
 
 interface T {
   ce5c5446: string
@@ -120,8 +124,6 @@ const ButtonDemo = () => {
     },
   })
 
-  const marginStyle = { margin: 8 }
-  const [loading, setLoading] = useState(false)
   return (
     <>
       <div className="demo">
@@ -146,102 +148,26 @@ const ButtonDemo = () => {
         </Cell>
         <h2>{translated.ce5c5447}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
-          <Button style={marginStyle} type="primary" shape="square">
-            {translated.b840c881}
-          </Button>
-          <Button style={marginStyle} type="primary">
-            {translated.b840c882}
-          </Button>
+          <Demo5 />
         </Cell>
         <h2>{translated.a52bef0c}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
-          <Button loading type="warning" style={marginStyle}>
-            {translated.d04fcbda}
-          </Button>
-          <Button
-            loading={loading}
-            type="success"
-            onClick={() => {
-              setTimeout(() => {
-                setLoading(false)
-              }, 1500)
-              setLoading(!loading)
-            }}
-            style={marginStyle}
-          >
-            Click me!
-          </Button>
+          <Demo6 />
         </Cell>
 
         <h2>{translated['0aaad620']}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
-          <Button size="large" type="primary">
-            {translated.b8a453e3}
-          </Button>
-          <Button type="primary" style={marginStyle}>
-            {translated['248be9e1']}
-          </Button>
-          <Button style={marginStyle}>{translated['248be9e1']}</Button>
-          <Button size="small" style={marginStyle} type="primary">
-            {translated.ea3d02f2}
-          </Button>
-          <Button size="mini" style={marginStyle} type="primary">
-            {translated.ea379d01}
-          </Button>
+          <Demo7 />
         </Cell>
         <h2>{translated.c9e6df49}</h2>
         <Cell>
-          <Button block type="primary">
-            {translated.c9e6df49}
-          </Button>
+          <Demo8 />
         </Cell>
 
         <h2>{translated['781b07fd']}</h2>
 
         <Cell style={{ flexWrap: 'wrap' }}>
-          <Button
-            style={{
-              margin: 8,
-              '--nutui-button-default-border-color': 'blue',
-              '--nutui-button-default-color': '#fff',
-              '--nutui-button-default-background-color': 'blue',
-            }}
-          >
-            {translated['1076d771']}
-          </Button>
-          <Button
-            fill="outline"
-            style={{
-              margin: 8,
-              '--nutui-button-default-border-color': '#7232dd',
-              '--nutui-button-default-color': '#7232dd',
-            }}
-          >
-            {translated['1076d771']}
-          </Button>
-          <Button
-            style={{
-              margin: 8,
-              '--nutui-button-default-border-color': 'transparent',
-              '--nutui-button-default-color': '#fff',
-              '--nutui-button-default-background-color':
-                'rgba(10,101,208,0.75)',
-            }}
-          >
-            {translated['1076d771']}
-          </Button>
-          <Button
-            type="primary"
-            style={{
-              margin: 8,
-              '--nutui-button-default-border-color': 'transparent',
-              '--nutui-button-default-color': '#fff',
-              '--nutui-button-default-background-color':
-                'linear-gradient(to right, #ff6034, #ee0a24)',
-            }}
-          >
-            {translated['6ab47cd2']}
-          </Button>
+          <Demo9 />
         </Cell>
       </div>
     </>

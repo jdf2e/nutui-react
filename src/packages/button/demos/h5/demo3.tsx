@@ -12,7 +12,7 @@ const Demo3 = () => {
         rightIcon={<Star />}
         style={marginStyle}
       >
-        操作按钮
+        Button
       </Button>
       <Button
         type="primary"
@@ -21,7 +21,7 @@ const Demo3 = () => {
         rightIcon={<Star />}
         style={marginStyle}
       >
-        操作按钮
+        Button
       </Button>
       <Button
         type="primary"
@@ -30,7 +30,7 @@ const Demo3 = () => {
         rightIcon={<Star />}
         style={marginStyle}
       >
-        操作按钮
+        Button
       </Button>
       <Button
         icon={<Star />}
@@ -42,7 +42,7 @@ const Demo3 = () => {
           color: `var(--nutui-color-primary)`,
         }}
       >
-        操作按钮
+        Button
       </Button>
       <Button
         type="default"
@@ -55,7 +55,7 @@ const Demo3 = () => {
           color: `var(--nutui-gray-7)`,
         }}
       >
-        操作按钮
+        Button
       </Button>
       <Button
         type="default"
@@ -68,7 +68,7 @@ const Demo3 = () => {
           color: `var(--nutui-gray-7)`,
         }}
       >
-        操作按钮
+        Button
       </Button>
       <Button
         type="default"
@@ -76,7 +76,7 @@ const Demo3 = () => {
         rightIcon={<Star />}
         style={marginStyle}
       >
-        操作按钮
+        Button
       </Button>
       <Button
         shape="square"
@@ -104,7 +104,7 @@ const Demo3 = () => {
         rightIcon={<Star width={20} height={20} />}
         style={marginStyle}
       >
-        操作按钮
+        Button
       </Button>
     </>
   )

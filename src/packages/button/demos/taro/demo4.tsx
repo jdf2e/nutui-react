@@ -1,51 +1,50 @@
 import React from 'react'
-import { Star, Plus } from '@nutui/icons-react'
-import { Button } from '@nutui/nutui-react'
+import { Button } from '@nutui/nutui-react-taro'
+import { Star, Plus } from '@nutui/icons-react-taro'
 
 const Demo4 = () => {
   const marginStyle = { margin: 8 }
   return (
     <>
       <Button
-        disabled
         type="primary"
-        icon={<Star />}
+        icon={<Star size={20} />}
         rightIcon={<Star />}
         style={marginStyle}
       >
-        Disabled
+        Button
       </Button>
       <Button
-        disabled
         type="primary"
         fill="outline"
         icon={<Star />}
         rightIcon={<Star />}
         style={marginStyle}
       >
-        Disabled
+        Button
       </Button>
       <Button
-        disabled
         type="primary"
         fill="dashed"
         icon={<Star />}
         rightIcon={<Star />}
         style={marginStyle}
       >
-        Disabled
+        Button
       </Button>
       <Button
-        disabled
-        fill="solid"
         icon={<Star />}
         rightIcon={<Star />}
-        style={marginStyle}
+        style={{
+          margin: 8,
+          backgroundColor: `var(--nutui-color-primary-light)`,
+          borderColor: `var(--nutui-color-primary)`,
+          color: `var(--nutui-color-primary)`,
+        }}
       >
-        Disabled
+        Button
       </Button>
       <Button
-        disabled
         type="default"
         fill="none"
         icon={<Star />}
@@ -53,13 +52,12 @@ const Demo4 = () => {
         style={{
           margin: 8,
           backgroundColor: `var(--nutui-gray-3)`,
-          color: `var(--nutui-gray-5)`,
+          color: `var(--nutui-gray-7)`,
         }}
       >
-        Disabled
+        Button
       </Button>
       <Button
-        disabled
         type="default"
         fill="none"
         icon={<Star />}
@@ -67,44 +65,49 @@ const Demo4 = () => {
         style={{
           margin: 8,
           backgroundColor: `var(--nutui-gray-1)`,
-          color: `var(--nutui-gray-5)`,
+          color: `var(--nutui-gray-7)`,
         }}
       >
-        Disabled
-      </Button>
-      <Button disabled icon={<Star />} rightIcon={<Star />} style={marginStyle}>
-        Disabled
+        Button
       </Button>
       <Button
-        disabled
+        type="default"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={{
+          margin: 8,
+        }}
+      >
+        Button
+      </Button>
+      <Button
         shape="square"
         fill="outline"
         type="primary"
-        icon={<Plus width="20" />}
+        icon={<Plus />}
         style={marginStyle}
       />
       <Button
-        disabled
+        fill="outline"
         type="primary"
-        icon={<Plus width="20" />}
+        icon={<Plus />}
         style={marginStyle}
       />
       <Button
-        disabled
         type="primary"
         fill="dashed"
-        icon={<Plus width="20" />}
+        icon={<Plus />}
         style={marginStyle}
       />
       <Button
-        disabled
+        shape="round"
         type="primary"
         size="large"
-        icon={<Star width={20} height={20} />}
-        rightIcon={<Star width={20} height={20} />}
+        icon={<Star />}
+        rightIcon={<Star />}
         style={marginStyle}
       >
-        Disabled
+        Button
       </Button>
     </>
   )
