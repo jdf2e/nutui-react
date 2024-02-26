@@ -188,7 +188,19 @@ export const Checkbox: FunctionComponent<
     )
   }
 
+  const renderListItem = () => {
+    return (
+      <div className="nut-checkbox-list-item">
+        {renderLabel()}
+        {renderIcon()}
+      </div>
+    )
+  }
+
   const renderCheckboxItem = () => {
+    if (ctx?.list) {
+      return <>{renderListItem()}</>
+    }
     if (shape === 'button') {
       return renderButton()
     }

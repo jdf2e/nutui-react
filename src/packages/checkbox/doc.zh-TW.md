@@ -552,6 +552,26 @@ export default CheckboxGroupOptions;
 
 :::
 
+## 列表
+
+:::demo
+
+```tsx
+import React, { useState } from 'react';
+import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+
+const CheckboxGroupList = () => {
+  return <Checkbox.Group defaultValue={['1']} labelPosition="left" list>
+    <Checkbox value="1" label="选项1" />
+    <Checkbox value="2" label="选项2" />
+    <Checkbox value="3" label="选项3" />
+  </Checkbox.Group>
+}
+export default CheckboxGroupList;
+```
+
+:::
+
 ## Checkbox
 
 ### props
@@ -561,7 +581,7 @@ export default CheckboxGroupOptions;
 | checked | 是否选中 | `boolean` | `false` |
 | defaultChecked | 初始是否选中 | `boolean` | `false` |
 | disabled | 是否禁用选择 | `boolean` | `false` |
-| labelPosition | 文本所在的位置| `left` \| `right` | `string` | `right` |
+| labelPosition | 文本所在的位置 | `left` \| `right` | `right` |
 | icon | 选中前| `ReactNode` | `'CheckNormal'` |
 | activeIcon | 选中后 | `ReactNode` | `'Checked'` |
 | indeterminateIcon | 半选状态| `ReactNode` | `'CheckDisabled'` |
@@ -581,17 +601,17 @@ export default CheckboxGroupOptions;
 | disabled | 是否禁用选择,将用于其下的全部复选框 | `boolean` | `false` |
 | max | 限制最大可选数 | `number` |  `-` |
 | min | 限制至少选择数 | `number` |  `-` |
-| labelPosition | 文本所在的位置| `left` \| `right` | `string` | `right` |
+| labelPosition | 文本所在的位置 | `left` \| `right` | `right` |
 | direction | 使用横纵方向 可选值 horizontal、vertical | `string` | `vertical` |
-| options | 配置 options 渲染复选按钮 | `Array<{ label: string value: string disabled?: boolean }>`  | `-` |
+| options | 配置 options 渲染复选按钮 | `Array<{ label: string value: string disabled?: boolean }>` | `-` |
 | onChange | 值变化时触发 | `(value: string[]) => void` | `-` |
 
-### Checkbox.Group Ref
+### Ref
 
 | 方法名 | 说明 | 参数 |
 | --- | --- | --- |
 | toggle | 全选/取消 | 传 `true`,表示全选，传 `false`,表示取消全选 |
-| reverse | 反选 | `-` |
+| reverse | 反选 |  `-` |
 
 ## 主题定制
 
@@ -611,3 +631,7 @@ export default CheckboxGroupOptions;
 | \--nutui-checkbox-button-active-border | shape為button選中態的邊框 | `1px solid $color-primary` |
 | \--nutui-checkbox-button-padding | shape為button的內邊距 | `5px 18px` |
 | \--nutui-checkbox-button-border-radius | shape為button的圓角 | `15px` |
+| \--nutui-checkbox-list-background-colors | 列表背景色 | `15px` |
+| \--nutui-checkbox-list-item-border | 列表项的边框 | `15px` |
+| \--nutui-checkbox-list-padding | 列表的padding | `15px` |
+| \--nutui-checkbox-list-item-padding | 列表项的padding | `15px` |

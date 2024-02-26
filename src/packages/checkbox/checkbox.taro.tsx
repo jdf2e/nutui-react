@@ -136,6 +136,9 @@ export const Checkbox: FunctionComponent<
       if (innerChecked && !innerIndeterminate) {
         return `${cls}${classPrefix}-icon-checked ${classPrefix}-icon-disabled`
       }
+      if (innerChecked && innerIndeterminate) {
+        return `${cls}${classPrefix}-icon-indeterminate ${classPrefix}-icon-disabled`
+      }
       return `${cls}${classPrefix}-icon-disabled`
     }
     if (innerChecked) {
@@ -185,7 +188,19 @@ export const Checkbox: FunctionComponent<
     )
   }
 
+  const renderListItem = () => {
+    return (
+      <div className="nut-checkbox-list-item">
+        {renderLabel()}
+        {renderIcon()}
+      </div>
+    )
+  }
+
   const renderCheckboxItem = () => {
+    if (ctx?.list) {
+      return <>{renderListItem()}</>
+    }
     if (shape === 'button') {
       return renderButton()
     }
