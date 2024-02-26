@@ -149,7 +149,6 @@
 .nut-rtl .nut-fixednav {
   right: auto;
   left: 0;
-
   &.active {
     .nut-icon {
       transform: rotate(-180deg);
@@ -160,7 +159,6 @@
     right: auto;
     left: 0;
     border-radius: 0px 45px 45px 0px;
-
     .nut-icon {
       margin-right: 0px;
       margin-left: 5px;

@@ -70,16 +70,16 @@ const BadgeDemo = () => {
         <h2>{translated['8ab98966']}</h2>
         <Cell.Group>
           <Cell>
-            <Badge style={{ marginRight: '40px' }} value={8}>
+            <Badge style={{ marginInlineEnd: '40px' }} value={8}>
               <Avatar icon={<User />} shape="square" />
             </Badge>
-            <Badge style={{ marginRight: '40px' }} value={76}>
+            <Badge style={{ marginInlineEnd: '40px' }} value={76}>
               <Avatar icon={<User />} shape="square" />
             </Badge>
-            <Badge style={{ marginRight: '40px' }} value="NEW">
+            <Badge style={{ marginInlineEnd: '40px' }} value="NEW">
               <Avatar icon={<User />} shape="square" />
             </Badge>
-            <Badge style={{ marginRight: '40px' }} dot top="2" right="4">
+            <Badge style={{ marginInlineEnd: '40px' }} dot top="2" right="4">
               <Avatar icon={<User />} shape="square" />
             </Badge>
           </Cell>
@@ -88,13 +88,13 @@ const BadgeDemo = () => {
         <h2>{translated['1e7a2282']}</h2>
         <Cell.Group>
           <Cell>
-            <Badge style={{ marginRight: '40px' }} value={200} max={9}>
+            <Badge style={{ marginInlineEnd: '40px' }} value={200} max={9}>
               <Avatar icon={<User />} shape="square" />
             </Badge>
-            <Badge style={{ marginRight: '40px' }} value={200} max={20}>
+            <Badge style={{ marginInlineEnd: '40px' }} value={200} max={20}>
               <Avatar icon={<User />} shape="square" />
             </Badge>
-            <Badge style={{ marginRight: '40px' }} value={200} max={99}>
+            <Badge style={{ marginInlineEnd: '40px' }} value={200} max={99}>
               <Avatar icon={<User />} shape="square" />
             </Badge>
           </Cell>
@@ -104,28 +104,28 @@ const BadgeDemo = () => {
         <Cell.Group>
           <Cell>
             <Badge
-              style={{ marginRight: '40px' }}
+              style={{ marginInlineEnd: '40px' }}
               value={8}
               color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
             >
               <Avatar icon={<User />} shape="square" />
             </Badge>
             <Badge
-              style={{ marginRight: '40px' }}
+              style={{ marginInlineEnd: '40px' }}
               value={76}
               color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
             >
               <Avatar icon={<User />} shape="square" />
             </Badge>
             <Badge
-              style={{ marginRight: '40px' }}
+              style={{ marginInlineEnd: '40px' }}
               value="NEW"
               color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
             >
               <Avatar icon={<User />} shape="square" />
             </Badge>
             <Badge
-              style={{ marginRight: '40px' }}
+              style={{ marginInlineEnd: '40px' }}
               dot
               top="2"
               right="4"
@@ -140,19 +140,19 @@ const BadgeDemo = () => {
         <Cell.Group>
           <Cell>
             <Badge
-              style={{ marginRight: '40px' }}
+              style={{ marginInlineEnd: '40px' }}
               value={<Checklist color="#fff" />}
             >
               <Avatar icon={<User />} shape="square" />
             </Badge>
             <Badge
-              style={{ marginRight: '40px' }}
+              style={{ marginInlineEnd: '40px' }}
               value={<LinkIcon color="#fff" />}
             >
               <Avatar icon={<User />} shape="square" />
             </Badge>
             <Badge
-              style={{ marginRight: '40px' }}
+              style={{ marginInlineEnd: '40px' }}
               value={<Download color="#fff" />}
             >
               <Avatar icon={<User />} shape="square" />
@@ -164,13 +164,13 @@ const BadgeDemo = () => {
         <Cell.Group>
           <Cell>
             <ConfigProvider theme={customTheme}>
-              <Badge style={{ marginRight: '40px' }} value="NEW">
+              <Badge style={{ marginInlineEnd: '40px' }} value="NEW">
                 <Avatar icon={<User />} shape="square" />
               </Badge>
             </ConfigProvider>
 
             <ConfigProvider theme={customTheme2}>
-              <Badge style={{ marginRight: '40px' }} dot top="2" right="8">
+              <Badge style={{ marginInlineEnd: '40px' }} dot top="2" right="8">
                 <Avatar icon={<User />} shape="square" />
               </Badge>
             </ConfigProvider>
@@ -180,18 +180,23 @@ const BadgeDemo = () => {
         <h2>{translated['915d7b01']}</h2>
         <Cell.Group>
           <Cell>
-            <Badge style={{ marginRight: '40px' }} value={8} top="5" right="5">
+            <Badge
+              style={{ marginInlineEnd: '40px' }}
+              value={8}
+              top="5"
+              right="5"
+            >
               <Avatar icon={<User />} shape="square" />
             </Badge>
             <Badge
-              style={{ marginRight: '40px' }}
+              style={{ marginInlineEnd: '40px' }}
               value={76}
               top="10"
               right="10"
             >
               <Avatar icon={<User />} shape="square" />
             </Badge>
-            <Badge style={{ marginRight: '40px' }} value="NEW">
+            <Badge style={{ marginInlineEnd: '40px' }} value="NEW">
               <Avatar icon={<User />} shape="square" />
             </Badge>
           </Cell>
@@ -200,9 +205,9 @@ const BadgeDemo = () => {
         <h2>{translated.f1089312}</h2>
         <Cell.Group>
           <Cell style={{ height: '80px' }}>
-            <Badge style={{ marginRight: '40px' }} value={8} />
-            <Badge style={{ marginRight: '40px' }} value={76} />
-            <Badge style={{ marginRight: '40px' }} value="NEW" />
+            <Badge style={{ marginInlineEnd: '40px' }} value={8} />
+            <Badge style={{ marginInlineEnd: '40px' }} value={76} />
+            <Badge style={{ marginInlineEnd: '40px' }} value="NEW" />
           </Cell>
         </Cell.Group>
       </div>

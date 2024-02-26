@@ -10,7 +10,7 @@
   &-content {
     display: flex;
 
-    .avatar {
+    .nut-avatar {
       margin-right: 20px;
       background: $skeleton-background !important;
     }
@@ -70,12 +70,11 @@
 [dir='rtl'] .nut-skeleton,
 .nut-rtl .nut-skeleton {
   &-content {
-    .avatar {
+    .nut-avatar {
       margin-right: 0;
       margin-left: 20px;
     }
   }
-
   &-animation {
     left: auto;
     right: 0;
@@ -85,5 +84,16 @@
       hsla(0, 0%, 100%, 0.5) 50%,
       hsla(0, 0%, 100%, 0) 80%
     );
+    animation: nut-skeleton-rtl 2s ease-in-out 0s infinite;
+  }
+
+  @keyframes nut-skeleton-rtl {
+    0% {
+      background-position-x: calc(500px + 100%);
+    }
+
+    to {
+      background-position-x: -500px;
+    }
   }
 }

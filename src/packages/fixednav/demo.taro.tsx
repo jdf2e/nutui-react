@@ -176,7 +176,10 @@ const FixedNavDemo = () => {
           </ul>
         </FixedNav>
         {/* <!-- 配合 Drag 支持拖拽 ，小程序暂不支持 --> */}
-        <Drag direction="y" style={{ right: '0px', bottom: '240px' }}>
+        <Drag
+          direction="y"
+          style={{ insetInlineEnd: '0px', insetBlockEnd: '240px' }}
+        >
           <FixedNav
             list={list}
             inactiveText={translated.title6}

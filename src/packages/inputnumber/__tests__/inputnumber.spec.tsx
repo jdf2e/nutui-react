@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 
 import { InputNumber } from '../inputnumber'
@@ -26,7 +26,7 @@ test('should add step 2 when trigger click plus button', () => {
   fireEvent.click(iconPlus)
   expect(overlimit).not.toBeCalled()
   expect(add).toBeCalled()
-  expect(change.mock.calls[0][0]).toBe('3')
+  expect(change.mock.calls[0][0]).toBe(3)
 })
 
 test('should minis step 2 when trigger click minis button', () => {
@@ -46,7 +46,7 @@ test('should minis step 2 when trigger click minis button', () => {
   fireEvent.click(iconMinus)
   expect(overlimit).not.toBeCalled()
   expect(reduce).toBeCalled()
-  expect(change.mock.calls[0][0]).toBe('1')
+  expect(change.mock.calls[0][0]).toBe(1)
 })
 
 test('should render max props', () => {
@@ -56,8 +56,8 @@ test('should render max props', () => {
   const { container } = render(
     <InputNumber
       defaultValue={100}
-      min="2"
-      max="100"
+      min={2}
+      max={100}
       onOverlimit={overlimit}
       onPlus={add}
       onChange={change}
@@ -77,8 +77,8 @@ test('should render min props', () => {
   const { container } = render(
     <InputNumber
       defaultValue={2}
-      min="2"
-      max="100"
+      min={2}
+      max={100}
       onOverlimit={overlimit}
       onMinus={reduce}
       onChange={change}
@@ -117,7 +117,7 @@ test('should not focus input when readOnly props to be true', () => {
 
 test('should render decimal when step props to be 0.2', () => {
   const { container } = render(
-    <InputNumber step="0.2" digits="1" defaultValue={2} />
+    <InputNumber step={0.2} digits={1} defaultValue={2} />
   )
   const iconPlus = container.querySelectorAll('.nut-icon-Plus')[0]
   fireEvent.click(iconPlus)
@@ -128,10 +128,32 @@ test('should update input value when inputValue overlimit', () => {
   const change = jest.fn()
   const blur = jest.fn()
   const { container } = render(
-    <InputNumber defaultValue={2} max="100" onChange={change} onBlur={blur} />
+    <InputNumber defaultValue={2} max={100} onChange={change} onBlur={blur} />
   )
   const input = container.querySelectorAll('input')[0]
   input.value = '200'
   fireEvent.blur(input)
-  expect(container.querySelector('input')?.value).toBe('100')
+  waitFor(() => {
+    expect(container.querySelector('input')?.value).toBe('100')
+  })
+})
+
+test('allowEmpty', () => {
+  const change = jest.fn()
+  const blur = jest.fn()
+  const { container } = render(
+    <InputNumber
+      defaultValue="2"
+      onChange={change}
+      onBlur={blur}
+      formatter={(v) => String(v)}
+    />
+  )
+  const input = container.querySelectorAll('input')[0]
+  input.value = ''
+  fireEvent.focus(input)
+  fireEvent.blur(input)
+  waitFor(() => {
+    expect(container.querySelector('input')?.value).toBe('')
+  })
 })

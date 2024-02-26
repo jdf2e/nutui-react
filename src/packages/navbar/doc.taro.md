@@ -39,7 +39,7 @@ const App = () => {
         color: var(--nutui-gray-8);
       }
       .title-left {
-        text-align: left;
+        text-align: start;
       }
     }
     .navbar-tabs .nut-tabs-titles {

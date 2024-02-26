@@ -262,7 +262,7 @@ const PopoverDemo = () => {
           visible={basic}
           list={itemList}
           location="bottom-start"
-          style={{ marginRight: '30px' }}
+          style={{ marginInlineEnd: '30px' }}
           onClick={() => {
             basic ? setBasic(false) : setBasic(true)
           }}
@@ -281,7 +281,7 @@ const PopoverDemo = () => {
             showIcon ? setShowIcon(false) : setShowIcon(true)
           }}
           list={iconItemList}
-          style={{ marginRight: '30px' }}
+          style={{ marginInlineEnd: '30px' }}
         >
           <Button type="primary" shape="square">
             {translated.showIcon}
@@ -426,7 +426,7 @@ const PopoverDemo = () => {
             list={list}
             location="top"
             closeOnOutsideClick={false}
-            style={{ marginRight: '30px' }}
+            style={{ marginInlineEnd: '30px' }}
             onClick={() => {
               visiblePopover
                 ? setVisiblePopover1(false)
@@ -454,7 +454,7 @@ const PopoverDemo = () => {
             visible={visiblePopover}
             list={list}
             location="top"
-            style={{ marginRight: '30px' }}
+            style={{ marginInlineEnd: '30px' }}
             closeOnOutsideClick={false}
             onClick={() => {
               visiblePopover

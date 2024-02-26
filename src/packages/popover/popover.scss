@@ -244,7 +244,6 @@
       margin-right: -8px;
     }
   }
-
   .nut-popover-content {
     .nut-popover-menu-item {
       &-name {
@@ -257,7 +256,6 @@
         left: $popover-menu-item-padding;
       }
     }
-
     &-top {
       .nut-popover-arrow-top {
         left: auto;
@@ -265,7 +263,6 @@
         transform: translateX(50%);
       }
     }
-
     &-top-end {
       right: auto;
       left: 0;
@@ -293,7 +290,6 @@
         transform: translateX(50%);
       }
     }
-
     &-bottom-end {
       right: auto;
 

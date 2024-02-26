@@ -52,17 +52,16 @@
     }
   }
 }
-
 [dir='rtl'] .nut-indicator,
 .nut-rtl .nut-indicator {
   &-dot {
     &:first-child {
-      margin-left: 0;
+      margin-left: $indicator-dot-margin;
       margin-right: 0px;
     }
 
     &:last-child {
-      margin-right: 0;
+      margin-right: $indicator-dot-margin;
       margin-left: 0px;
     }
   }

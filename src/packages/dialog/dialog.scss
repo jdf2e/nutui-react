@@ -150,4 +150,8 @@
       margin-left: $dialog-footer-cancel-margin-right;
     }
   }
+
+  &-content {
+    text-align: var(--nutui-dialog-content-text-align, right);
+  }
 }

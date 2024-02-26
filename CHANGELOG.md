@@ -1,3 +1,12 @@
+# v2.3.11
+`2024-02-23`
+
+* :sparkles: feat(inputnumber): support allow empty (#1943) @oasis
+* :bug: fix(actionsheet): 关闭弹窗后内容显示在页面，优化 popup 相关属性传递 (#1954) @LING_ZI_QING
+* :bug: fix(rtl): css 样式变量部分 (#1944) @xiaoyatong
+* :bug: fix(form): validateFields support promise (#1955) @oasis
+
+
 # v2.3.10
 `2024-02-06`
 

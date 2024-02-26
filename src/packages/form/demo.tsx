@@ -291,7 +291,7 @@ const FormDemo = () => {
               <Button nativeType="submit" type="primary">
                 {translated.submit}
               </Button>
-              <Button nativeType="reset" style={{ marginLeft: '20px' }}>
+              <Button nativeType="reset" style={{ marginInlineStart: '20px' }}>
                 {translated.reset}
               </Button>
             </div>
@@ -386,7 +386,7 @@ const FormDemo = () => {
               <Button nativeType="submit" type="primary">
                 {translated.submit}
               </Button>
-              <Button nativeType="reset" style={{ marginLeft: '20px' }}>
+              <Button nativeType="reset" style={{ marginInlineStart: '20px' }}>
                 {translated.reset}
               </Button>
             </div>
@@ -457,7 +457,7 @@ const FormDemo = () => {
               <Button nativeType="submit" type="primary">
                 {translated.submit}
               </Button>
-              <Button nativeType="reset" style={{ marginLeft: '20px' }}>
+              <Button nativeType="reset" style={{ marginInlineStart: '20px' }}>
                 {translated.reset}
               </Button>
             </div>
