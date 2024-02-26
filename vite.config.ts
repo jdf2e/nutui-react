@@ -42,6 +42,7 @@ export default defineConfig({
     reactRefresh(),
     {
       name: 'test',
+      apply: 'serve',
       async load(id) {
         if (id.endsWith('.scss')) {
           // 移除 @import 语句
