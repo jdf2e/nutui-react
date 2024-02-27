@@ -50,6 +50,11 @@ function convertThemeVarsToCSSVars(themeVars: Record<string, string | number>) {
   return cssVars
 }
 
+export const useRtl = () => {
+  const { direction } = useConfig()
+  return direction === 'rtl'
+}
+
 export const ConfigProvider: FunctionComponent<
   Partial<ConfigProviderProps & BasicComponent>
 > = (props) => {
@@ -60,9 +65,10 @@ export const ConfigProvider: FunctionComponent<
       return {
         ...getDefaultConfig(),
         ...config,
+        direction,
       }
     },
-    [config],
+    [config, direction],
     (prev, next) =>
       prev.some((prevTheme, index) => {
         const nextTheme = next[index]
