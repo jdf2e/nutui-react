@@ -12,11 +12,11 @@ const defaultProps = {
 
 export const SwiperItem = (props: SwiperItemProps) => {
   const classPrefix = 'nut-swiper-item'
-  const { className, style, children, onClick } = { ...defaultProps, ...props }
+  const { className, style, children } = { ...defaultProps, ...props }
   const classes = classNames(classPrefix, className)
 
   return (
-    <div className={classes} onClick={onClick} style={style}>
+    <div className={classes} onClick={props.onClick} style={style}>
       {children}
     </div>
   )
