@@ -36,7 +36,7 @@ const CellDemo = () => {
       title: '我是标题',
       title1: '我是描述',
       title2: '点击测试',
-      title3: '圆角设置 0',
+      title3: '圆角设置为0',
       title4: '链接 | 分组用法',
       title5: '垂直居中',
       title6: '自定义标题区域',
@@ -55,7 +55,7 @@ const CellDemo = () => {
       title: '我是標題',
       title1: '我是描述',
       title2: '點擊測試',
-      title3: '圓角設置 0',
+      title3: '圓角設置為0',
       title4: '鏈接 | 分組用法',
       title5: '垂直居中',
       title6: '自定義標題區域',
@@ -130,7 +130,13 @@ const CellDemo = () => {
           title={
             <div style={{ display: 'inline-flex', alignItems: 'center' }}>
               <User />
-              <span style={{ marginLeft: '5px' }}>{translated.title}</span>
+              <span
+                style={{
+                  marginInlineStart: '5px',
+                }}
+              >
+                {translated.title}
+              </span>
             </div>
           }
           description={
@@ -165,8 +171,12 @@ const CellDemo = () => {
             title={translated.urlJump}
             extra={
               <>
-                <span style={{ marginRight: '5px' }}>https://jd.com</span>
-                <ArrowRight />
+                <span>https://jd.com</span>
+                <ArrowRight
+                  style={{
+                    marginInlineStart: '5px',
+                  }}
+                />
               </>
             }
             align="center"
@@ -187,7 +197,7 @@ const CellDemo = () => {
                   style={{
                     color: '#8C8C8C',
                     fontSize: '10px',
-                    marginLeft: '5px',
+                    marginInlineStart: '5px',
                     lineHeight: 1.5,
                   }}
                 >
@@ -201,7 +211,9 @@ const CellDemo = () => {
                 <ArrowRight
                   width={12}
                   height={12}
-                  style={{ marginLeft: '5px' }}
+                  style={{
+                    marginInlineStart: '5px',
+                  }}
                 />
               </div>
             }
@@ -229,7 +241,14 @@ const CellDemo = () => {
           <Cell
             title={
               <div style={{ display: 'flex', alignItems: 'center' }}>
-                <User style={{ marginRight: '5px' }} /> {translated.title}
+                <User />
+                <span
+                  style={{
+                    marginInlineStart: '5px',
+                  }}
+                >
+                  {translated.title}
+                </span>
               </div>
             }
             extra={<ArrowRight />}

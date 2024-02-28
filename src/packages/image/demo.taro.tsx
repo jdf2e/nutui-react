@@ -18,7 +18,7 @@ const ImageDemo = () => {
       lazyload: '图片懒加载',
       default: '默认',
       custom: '自定义',
-      imageText: 'image + text 模式',
+      imageText: 'Image + text 模式',
       text: '雪纺衫女2021年春季新款洋气轻熟上衣',
     },
     'en-US': {
@@ -31,14 +31,12 @@ const ImageDemo = () => {
       lazyload: 'Lazyload',
       default: 'Default',
       custom: 'Custom',
-      imageText: 'image + text ',
+      imageText: 'Image + text ',
       text: 'Chiffon, 2021, spring, the new easy-to-wear blouse',
     },
   })
   const src =
     'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
-  const errorSrc =
-    'https://storage.3601buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
   return (
     <>
       <Header />
@@ -125,7 +123,7 @@ const ImageDemo = () => {
             src="http://m.360buyimg.com/babel/s181x181_jfs/t1/210178/19/10205/31538/619bbcd9E5071aed5/8e1b7eb632aeed49.png"
             width="30"
             height="30"
-            style={{ marginRight: '10px' }}
+            style={{ marginInlineEnd: '10px' }}
             onError={() => {
               console.log('image error')
             }}
@@ -176,7 +174,7 @@ const ImageDemo = () => {
             )
           })}
         </Cell>
-        <h2>{translated.lazyload}11</h2>
+        <h2>{translated.lazyload}</h2>
         <ScrollView style={{ height: '350px' }} scrollY>
           {[
             ...new Array(3).fill(src),

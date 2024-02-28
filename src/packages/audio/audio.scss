@@ -15,11 +15,6 @@
       background: $white;
       border-radius: 50%;
       box-shadow: 0 0 8px $color-text-disabled;
-
-      .nut-icon-am-rotate {
-        transform: rotate((360));
-        animation-timing-function: ease-in-out;
-      }
     }
 
     .nut-audio-icon-stop {
@@ -85,6 +80,20 @@
     .nut-voice {
       border: 1px solid $color-title;
       align-items: center;
+    }
+  }
+}
+
+[dir='rtl'] .nut-audio,
+.nut-rtl .nut-audio {
+  &-icon {
+    .nut-audio-icon-stop {
+      &::after {
+        left: auto;
+        right: 50%;
+        transform: rotate(-45deg);
+        transform-origin: 20px -18px;
+      }
     }
   }
 }

@@ -26,6 +26,12 @@ const BackTopDemo = () => {
       content: 'test data',
       backText: 'Top',
     },
+    'zh-TW': {
+      title: '基礎用法',
+      clg: '觸發返回頂部',
+      content: '我是測試數據',
+      backText: '頂部',
+    },
   })
   const demoStyle = {
     height: 'auto',
@@ -52,7 +58,7 @@ const BackTopDemo = () => {
           threshold={200}
           style={{
             bottom: '50px',
-            right: '20px',
+            insetInlineEnd: '20px',
           }}
           onClick={handleClick}
         >

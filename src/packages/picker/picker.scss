@@ -159,3 +159,12 @@
     height: 1px;
   }
 }
+
+[dir='rtl'] .nut-picker-mask,
+.nut-rtl .nut-picker-mask {
+  background-image: var(
+    --picker-mask-background,
+    linear-gradient(-180deg, var(--nutui-white-12), var(--nutui-white-7)),
+    linear-gradient(0deg, var(--nutui-white-12), var(--nutui-white-7))
+  );
+}

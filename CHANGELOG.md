@@ -1,3 +1,68 @@
+# v2.3.11
+`2024-02-23`
+
+* :sparkles: feat(inputnumber): support allow empty (#1943) @oasis
+* :bug: fix(actionsheet): 关闭弹窗后内容显示在页面，优化 popup 相关属性传递 (#1954) @LING_ZI_QING
+* :bug: fix(rtl): css 样式变量部分 (#1944) @xiaoyatong
+* :bug: fix(form): validateFields support promise (#1955) @oasis
+
+
+# v2.3.10
+`2024-02-06`
+
+* :sparkles: feat(form): support renderProps (#1937) @oasis-cloud
+* :sparkles: feat(shortpassword): support ref for form (#1930) @oasis-cloud
+* :sparkles: feat: 生成用于 rtl 校对的 css 文件 (#1927) @oasis-cloud
+* :bug: fix(barrage): 解决新增弹幕重叠问题+不同宽度弹幕滚动速度不一致问题+重构taro版本 (#1942) @songsong
+* :bug: fix(popover): can not be closed (#1931) @oasis-cloud
+* :bug: fix(sticky): 适配 taro (#1928) @xiaoyatong
+* :bug: fix(tabs): 修订左对齐样式 (#1929) @xiaoyatong
+* 📖 docs(tabs): 文档可读性优化 (#1935) @Alex.huxiyang
+
+
+# v2.3.9
+`2024-02-02`
+
+* :sparkles: feat: generate stylesheets containing RTL-related styles (#1889) @oasis-cloud
+* :bug: fix(infiniteloading): infiniteloading 点击后再滑动，操作出现异常 (#1919) @JQ
+* :bug: fix(input): controlled mode, content clearing does not work (#1912) @oasis-cloud
+* :bug: fix(popup): support destroyOnClose (#1914) @oasis-cloud
+* :bug: fix(rtl): 修复文本 margin (#1926) @xiaoyatong
+* :bug: fix(textarea): 修复maxlength=-1时无法输入字符的情况 (#1910) @xiaoyatong
+* :bug: fix(input): 受控模式下在 H5 无法清空内容 (#1925) @oasis-cloud
+* :bug: fix(rtl): 左右方向箭头的处理 (#1922) @xiaoyatong
+* 📖 docs(backtop): 文档可读性优化 (#1909) @Alex.huxiyang
+* 📖 docs(image): correct the error attribute (#1916) @oasis-cloud
+* 📖 docs(layout): 文档可读性优化 (#1904) @Alex.huxiyang
+* 📖 docs(navbar): 文档可读性优化 (#1915) @Alex.huxiyang
+* 📖 docs(sidenavbar): 文档可读性优化 (#1920) @Alex.huxiyang
+* 📖 docs(sticky): 文档可读性优化 (#1906) @Alex.huxiyang
+* 📖 docs(tabbar): 文档可读性优化 (#1921) @Alex.huxiyang
+
+
+# v2.3.8
+`2024-01-26`
+
+* 🔨 chore: 修复dev环境下demo分包体超过2M问题 (#1905) @xiaoyatong
+* 📖 docs(configprovider): 文档可读性优化 (#1882) @Alex.huxiyang
+* 📖 docs(grid): 文档可读性优化 (#1903) @Alex.huxiyang
+* 📖 docs(swiper): customize pagination controls (#1892) @oasis-cloud
+* :sparkles: feat(navbar): title区域自适应宽度 (#1891) @songsong
+* :sparkles: feat(rate): 新增 touchable 属性支持滑动选择 (#1880) @Eiinu
+* :sparkles: feat(video): support passing through attributes for Taro Video (#1890) @xiaoyatong
+* :sparkles: feat: radiogroup add shape props (#1898) @oasis-cloud
+* :bug: fix(ellipsis): 修复小程序文本省略问题 (#1888) @Eiinu
+* :bug: fix(ellipsis): 在 taro 小程序下尽量展示的平滑舒适 (#1902) @xiaoyatong
+* :bug: fix(image): 文档可读性优化 (#1887) @Alex.huxiyang
+* :bug: fix(overlay): 文档可读性优化 (#1894) @Alex.huxiyang
+* :bug: fix(rate): 修复 rate 高度问题 (#1883) @Eiinu
+* :bug: fix(steps): 小程序的真机情况下出现的换行的情况 (#1899) @xiaoyatong
+* :bug: fix(swiper): 轮播跳帧 (#1886) @oasis-cloud
+* :bug: fix(tabs): 解决组件嵌套tabs，横向滚动位置计算偏差问题 (#1884) @songsong
+* :bug: fix: doc、demo调整&优化 @huxiyang3
+* :bug: fix: taro.createSelectorQuery not function (#1907) @oasis-cloud
+
+
 # v2.3.7
 `2024-01-19`
 

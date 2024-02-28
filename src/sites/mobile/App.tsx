@@ -128,7 +128,7 @@ const WithNavRouter = ({ C }: any) => {
             onClick={() => handleSwitchDarkModel()}
           />
           <img
-            className={'dark-model'}
+            className={'translate-icon'}
             src="https://img14.360buyimg.com/imagetools/jfs/t1/135168/8/21387/6193/625fa81aEe07cc347/55ad5bc2580c53a6.png"
             alt=""
             onClick={() => handleSwitchLocale()}

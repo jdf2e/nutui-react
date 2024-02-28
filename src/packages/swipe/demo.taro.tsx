@@ -197,7 +197,7 @@ const SwipeDemo = () => {
         </Swipe>
         <div style={{ display: 'flex' }}>
           <Button
-            style={{ marginRight: '10px' }}
+            style={{ marginInlineEnd: '10px' }}
             type="primary"
             size="small"
             onClick={() => (openRef.current as any)?.open()}

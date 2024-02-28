@@ -18,7 +18,7 @@ const ImageDemo = () => {
       lazyload: '图片懒加载',
       default: '默认',
       custom: '自定义',
-      imageText: 'image + text 模式',
+      imageText: 'Image + text 模式',
       text: '雪纺衫女2021年春季新款洋气轻熟上衣',
     },
     'en-US': {
@@ -131,7 +131,7 @@ const ImageDemo = () => {
 
         <h2>{translated.circle}</h2>
         <Cell>
-          <Row gutter={10}>
+          <Row>
             <Col span="8">
               <Image
                 src={src}
@@ -217,7 +217,7 @@ const ImageDemo = () => {
             src="http://m.360buyimg.com/babel/s181x181_jfs/t1/210178/19/10205/31538/619bbcd9E5071aed5/8e1b7eb632aeed49.png"
             width="30"
             height="30"
-            style={{ marginRight: '10px' }}
+            style={{ marginInlineEnd: '10px' }}
             onError={() => {
               console.log('image error')
             }}

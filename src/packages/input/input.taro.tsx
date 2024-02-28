@@ -13,7 +13,7 @@ import {
   Input as TaroInput,
 } from '@tarojs/components'
 import { MaskClose } from '@nutui/icons-react-taro'
-import { getEnv, ENV_TYPE } from '@tarojs/taro'
+import Taro, { getEnv, ENV_TYPE } from '@tarojs/taro'
 import { formatNumber } from './util'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -167,9 +167,13 @@ export const Input = forwardRef(
       forceUpdate()
     }
 
-    const handleFocus = (event: Event) => {
-      const val: any = (event.target as any).value
-      onFocus && onFocus(val)
+    const handleFocus = (event: any) => {
+      if (Taro.getEnv() === 'WEB') {
+        const val: any = (event.target as any).value
+        onFocus && onFocus(val)
+      } else {
+        onFocus?.(value)
+      }
       setActive(true)
     }
 
@@ -177,12 +181,17 @@ export const Input = forwardRef(
       updateValue(value, 'onChange')
     }
 
-    const handleBlur = (event: Event) => {
-      const val: any = (event.target as any).value
-      updateValue(val, 'onBlur')
-      setTimeout(() => {
+    const handleBlur = (event: any) => {
+      if (Taro.getEnv() === 'WEB') {
+        const val: any = (event.target as any).value
+        updateValue(val, 'onBlur')
+        setTimeout(() => {
+          setActive(false)
+        }, 50)
+      } else {
+        updateValue(value, 'onBlur')
         setActive(false)
-      }, 50)
+      }
     }
     const inputType = (type: any) => {
       if (getEnv() === ENV_TYPE.WEB) {
@@ -211,7 +220,12 @@ export const Input = forwardRef(
           name={name}
           className="nut-input-native"
           ref={inputRef}
-          style={{ textAlign: align }}
+          style={{
+            textAlign: `${
+              // eslint-disable-next-line no-nested-ternary
+              align === 'right' ? 'end' : align === 'left' ? 'start' : 'center'
+            }`,
+          }}
           type={inputType(type) as any}
           password={type === 'password'}
           maxlength={maxLength}
@@ -220,12 +234,8 @@ export const Input = forwardRef(
           value={value}
           focus={autoFocus}
           confirmType={confirmType}
-          onBlur={(e: any) => {
-            handleBlur(e)
-          }}
-          onFocus={(e: any) => {
-            handleFocus(e)
-          }}
+          onBlur={handleBlur}
+          onFocus={handleFocus}
           onInput={(e: any) => {
             handleInput(e.currentTarget.value)
           }}
@@ -241,10 +251,8 @@ export const Input = forwardRef(
           onClick={(e) => {
             e.stopPropagation()
             if (!disabled) {
-              setTimeout(() => {
-                setValue('')
-                onClear && onClear('')
-              }, 50)
+              setValue('')
+              onClear?.('')
             }
           }}
         >

@@ -52,7 +52,13 @@ export interface PopoverProps extends PopupProps {
   onClose: () => void
   onSelect: (item: List, index: number) => void
 }
-
+export interface RootPosition {
+  width: number
+  height: number
+  left: number
+  top: number
+  right: number
+}
 const defaultProps = {
   ...ComponentDefaults,
   list: [],
@@ -104,14 +110,7 @@ export const Popover: FunctionComponent<
   const [showPopup, setShowPopup] = useState(false)
   const [elWidth, setElWidth] = useState(0)
   const [elHeight, setElHeight] = useState(0)
-  const [rootPosition, setRootPosition] = useState<{
-    width: number
-    height: number
-    left: number
-    top: number
-    right: number
-  }>()
-
+  const [rootPosition, setRootPosition] = useState<RootPosition>()
   useEffect(() => {
     setShowPopup(visible)
 
@@ -156,7 +155,7 @@ export const Popover: FunctionComponent<
 
   const getRectTaro = async (targetId: any): Promise<any> => {
     return new Promise((resolve) => {
-      const query = Taro.createSelectorQuery()
+      const query = createSelectorQuery()
       query.select(`#${targetId}`) &&
         query.select(`#${targetId}`).boundingClientRect()
       query.exec((res: any) => {

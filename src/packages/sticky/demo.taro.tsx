@@ -42,13 +42,13 @@ const StickyDemo = () => {
     },
     'en-US': {
       basic: 'Basic usage ',
-      title1: 'Distance suction a distance ',
-      title2: 'The specified container roof ',
-      title3: 'Suction bottom distance ',
-      button1: 'Suck the distance ',
-      button2: 'From the distance 120 px ',
-      button3: 'The specified container roof ',
-      button4: 'At the bottom of the distance to 0 px ',
+      title1: 'Ceiling distance',
+      title2: 'Ceiling in specified container',
+      title3: 'Bottom suction distance',
+      button1: 'Ceiling effect',
+      button2: '120px from top',
+      button3: 'Ceiling in specified container',
+      button4: '0px from bottom',
       changeTips: 'The ceiling status has changed, and the current fixed is',
     },
   })
@@ -97,7 +97,7 @@ const StickyDemo = () => {
               container={containerTopRef}
               threshold={getEnv() === 'WEB' ? 60 : 0}
             >
-              <Button style={{ marginLeft: '100px' }} type="primary">
+              <Button style={{ marginInlineStart: '100px' }} type="primary">
                 {button3}
               </Button>
             </Sticky>

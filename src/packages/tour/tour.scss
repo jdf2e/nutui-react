@@ -24,7 +24,7 @@
 
     &-top {
       display: block;
-      text-align: right;
+      text-align: end;
 
       &-close {
         --nut-icon-width: 10px;
@@ -81,5 +81,24 @@
     top: 0;
     left: 0;
     background: transparent;
+  }
+}
+
+[dir='rtl'] .nut-tour,
+.nut-rtl .nut-tour {
+  &-content {
+    &-bottom {
+      &-operate {
+        &-btn {
+          margin-left: 0;
+          margin-right: $tour-content-bottom-btn-margin-left;
+        }
+      }
+    }
+  }
+
+  &-masked {
+    left: auto;
+    right: 0;
   }
 }

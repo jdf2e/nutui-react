@@ -56,6 +56,7 @@ export const ActionSheet: FunctionComponent<
 
   return (
     <Popup
+      {...rest}
       round
       visible={visible}
       position="bottom"

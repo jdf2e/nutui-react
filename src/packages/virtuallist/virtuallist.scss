@@ -72,14 +72,25 @@
   }
 
   &-container {
+    position: absolute;
     left: 0;
     right: 0;
     top: 0;
-    position: absolute;
   }
 
   &-item {
     overflow: hidden;
     margin: $list-item-margin;
+  }
+}
+
+[dir='rtl'] .nut-horizontal-items,
+.nut-rtl .nut-horizontal-items {
+  float: right;
+
+  li {
+    float: right;
+    margin-right: 0;
+    margin-left: 20px;
   }
 }

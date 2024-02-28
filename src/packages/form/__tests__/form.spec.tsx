@@ -2,9 +2,13 @@ import * as React from 'react'
 import { render, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { useEffect } from 'react'
-import Form from '@/packages/form'
+import Form, { FormInstance } from '@/packages/form'
 import Input from '@/packages/input'
 
+beforeAll(() => {
+  // @ts-ignore
+  global.IS_REACT_ACT_ENVIRONMENT = false
+})
 test('form set initialValues', () => {
   const { container } = render(
     <Form initialValues={{ username: 'NutUI-React' }}>
@@ -168,5 +172,39 @@ test('form validator onFinishFailed', async () => {
         message: 'validator fail',
       },
     ])
+  })
+})
+
+test('no-style and render function', async () => {
+  const ref = React.createRef<FormInstance>()
+  const { container } = render(
+    <Form ref={ref} divider labelPosition="right">
+      <Form.Item label="字段A" name="username">
+        <Input
+          className="test-userName"
+          placeholder="请输入字段A"
+          type="text"
+        />
+      </Form.Item>
+      <Form.Item label="字段D" name="address" shouldUpdate>
+        {({ getFieldValue }) => {
+          const value = getFieldValue('username')
+          console.log('字段D value', value)
+          if (!value) return null
+          return (
+            <Input
+              className="related-input"
+              placeholder="字段D"
+              maxLength={100}
+            />
+          )
+        }}
+      </Form.Item>
+    </Form>
+  )
+  ref.current?.setFieldsValue({ username: 'test' })
+  waitFor(() => {
+    const relatedInput = container.querySelector('.related-input')
+    expect(relatedInput).toBeTruthy()
   })
 })

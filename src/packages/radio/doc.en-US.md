@@ -231,6 +231,25 @@ export default RadioGroupOptions;
 
 :::
 
+## Set shape
+
+:::demo
+
+```tsx
+import React, { useState } from 'react'
+import { Radio } from '@nutui/nutui-react'
+
+const RadioGroupOptions = () => {
+  return <Radio.Group defaultValue={1} shape='button'>
+    <Radio value={1}>Set shape</Radio>
+    <Radio value={2}>Set shape</Radio>
+  </Radio.Group>
+}
+export default RadioGroupOptions
+```
+
+:::
+
 ## Radio
 
 ### Props
@@ -256,6 +275,7 @@ export default RadioGroupOptions;
 | value | identifier of the currently selected item | `string`  \|  `number` | `-` |
 | labelPosition | The position of the text | `left` \| `right` | `right` |
 | disabled | Whether to disable | `boolean` | `false` |
+| shape | shape | `button` \| `round` |`-` |
 | direction | use landscape orientation | `horizontal` \| `vertical` | `vertical` |
 | options | Configure options to render radio buttons | `Array<{ label: string value: string disabled?: boolean }>`  | `-` |
 | onChange | Triggered when the value changes | `(value: string \| number) => void` | `-` |
@@ -278,5 +298,6 @@ The component provides the following CSS Variables, which can be used for custom
 | \--nutui-radio-button-active-border | The shape is the border of the active button | `1px solid $color-primary` |
 | \--nutui-radio-button-padding | The shape is the padding of the button | `5px 18px` |
 | \--nutui-radio-button-border-radius | The shape is the rounded corner of the button | `15px` |
-| \--nutui-radiogroup-radio-margin | Margin of each radio in Group mode | `0 20px 5px 0` |
+| \--nutui-radiogroup-radio-margin | Margin Right of each radio in Group mode  | `20px` |
+| \--nutui-radiogroup-radio-margin-bottom | Margin Bottom of each radio in Group mode  | `5px` |
 | \--nutui-radiogroup-radio-label-margin | Label margin in each radio in Group mode | `0 5px 0 5px` |

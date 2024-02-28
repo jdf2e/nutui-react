@@ -52,9 +52,31 @@
     position: relative;
     top: $divider-vertical-top;
     display: inline-block;
+    width: auto;
     height: $divider-vertical-height;
     border-left: 1px solid $divider-border-color;
     margin: $divider-vertical-margin;
-    width: auto;
+  }
+}
+
+[dir='rtl'] .nut-divider,
+.nut-rtl .nut-divider {
+  &-center,
+  &-left,
+  &-right {
+    &::before {
+      margin-right: 0;
+      margin-left: $divider-spacing;
+    }
+
+    &::after {
+      margin-left: 0;
+      margin-right: $divider-spacing;
+    }
+  }
+
+  &-vertical {
+    border-left: none;
+    border-right: 1px solid $divider-border-color;
   }
 }

@@ -4,28 +4,8 @@ import { useTranslate } from '../../sites/assets/locale'
 import Cell from '@/packages/cell'
 import Popup from '@/packages/popup'
 
-interface T {
-  ce5c5446: string
-  c38a08ef: string
-  b840c88f: string
-  a74a1fd4: string
-  '8dab2f66': string
-  cfbdc781: string
-  c3a3a1d2: string
-  e51e4582: string
-  '7db1a8b2': string
-  '7db1a8b3': string
-  '7db1a8b4': string
-  '7db1a8b5': string
-  a52bef0c: string
-  d04fcbda: string
-  '0aaad620': string
-  ea3d02f2: string
-  c9e6df49: string
-}
-
 const PopupDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       ce5c5446: '基础类型',
       c38a08ef: '展示弹出层',
@@ -117,9 +97,7 @@ const PopupDemo = () => {
           onClose={() => {
             setShowBasic(false)
           }}
-        >
-          {translated.b840c88f}
-        </Popup>
+        />
 
         <h2>{translated.a74a1fd4}</h2>
         <Cell

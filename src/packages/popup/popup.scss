@@ -300,9 +300,70 @@
       animation-name: popup-slide-left-exit;
       animation-duration: $popup-animation-duration;
     }
+
+    &-default-exit-done,
+    &-center-exit-done,
+    &-left-exit-done,
+    &-right-exit-done,
+    &-top-exit-done,
+    &-bottom-exit-done {
+      &.nut-popup {
+        display: none;
+      }
+    }
   }
 
   .nut-overflow-hidden {
     overflow: hidden !important;
+  }
+}
+
+[dir='rtl'] .nut-popup,
+.nut-rtl .nut-popup {
+  &-title {
+    &-left {
+      left: auto;
+      right: $popup-title-padding;
+    }
+
+    &-right {
+      right: auto;
+      left: $popup-title-padding;
+
+      &-top-left {
+        left: auto;
+        right: $popup-title-padding;
+      }
+
+      &-bottom-left {
+        left: auto;
+        right: $popup-title-padding;
+      }
+
+      &-bottom-right {
+        right: auto;
+        left: $popup-title-padding;
+      }
+    }
+
+    .nut-icon-ArrowLeft {
+      transform: rotate(180deg);
+    }
+  }
+
+  &-center {
+    left: auto;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+
+  &-bottom {
+    left: auto;
+    right: 0;
+  }
+
+  &-top {
+    left: auto;
+    right: 0;
   }
 }

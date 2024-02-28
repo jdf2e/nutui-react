@@ -202,13 +202,13 @@ const App = () => {
   return (
     <Grid columns="3">
       <Grid.Item text="text">
-        <Image width={10} height={10} />
+        <Image width={15} height={15} />
       </Grid.Item>
       <Grid.Item text="text">
         <Image color="red" />
       </Grid.Item>
       <Grid.Item text="text">
-        <Image width={20} height={20} color="#478EF2" />
+        <Image width={30} height={30} color="#478EF2" />
       </Grid.Item>
     </Grid>
   )
@@ -224,31 +224,55 @@ export default App
 
 ```tsx
 import React from 'react'
-import { Grid, Avatar, Image } from '@nutui/nutui-react'
+import { Grid, Image } from '@nutui/nutui-react'
+
+const App = () => {
+  const imgSrc = "https://m.360buyimg.com/babel/jfs/t1/36973/29/11270/120042/5cf1fe3cEac2b5898/10c2722d0cc0bfa7.png"
+  return (
+    <Grid columns={3} square>
+      <Grid.Item>
+        <Image src={imgSrc} width="100%" height="100%" />
+      </Grid.Item>
+      <Grid.Item>
+        <Image src={imgSrc} width="100%" height="100%" />
+      </Grid.Item>
+      <Grid.Item>
+        <Image src={imgSrc} width="100%" height="100%" />
+      </Grid.Item>
+    </Grid>
+  )
+}
+export default App
+```
+
+:::
+
+### Grid Item Click
+
+:::demo
+
+```tsx
+import React from 'react'
+import { Grid, Toast } from '@nutui/nutui-react'
 import { Image as ImageIcon } from '@nutui/icons-react'
 
 const App = () => {
+  const onClick = (item: any, index: number) => {
+    Toast.show(`clicked ${item.text}, index ${index}`)
+  }
   return (
-    <Grid>
-      <Grid.Item text={<span>More</span>}>
-        <Image
-          src="https://m.360buyimg.com/babel/jfs/t1/36973/29/11270/120042/5cf1fe3cEac2b5898/10c2722d0cc0bfa7.png"
-          width="100%"
-          height="100%"
-        />
+    <Grid direction="horizontal" onClick={onClick}>
+      <Grid.Item text="text">
+        <ImageIcon />
       </Grid.Item>
-      <Grid.Item>
-        <Avatar
-          className="demo-avatar"
-          icon={<ImageIcon color="#fff" />}
-          background="#FA2C19"
-        />
+      <Grid.Item text="text">
+        <ImageIcon />
       </Grid.Item>
-      <Grid.Item>
-        <Avatar
-          size="large"
-          icon={<Image src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png" />}
-        />
+      <Grid.Item text="text">
+        <ImageIcon />
+      </Grid.Item>
+      <Grid.Item text="text">
+        <ImageIcon />
       </Grid.Item>
     </Grid>
   )

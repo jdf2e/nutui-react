@@ -201,10 +201,51 @@ import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
   const onChange = (val: any) => {
-    alert(val)
+    console.log(val)
   }
   return (
     <Rate defaultValue={3} onChange={onChange} />
+  );
+};  
+export default App;
+
+```
+
+### Touch to Select
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Rate } from '@nutui/nutui-react';
+
+const App = () => {
+  return ( 
+    <>   
+      <Rate defaultValue={3} allowHalf touchable />
+    </>
+  );
+};  
+export default App;
+
+```
+
+### Touch Event
+
+:::demo
+
+```tsx
+import  React from "react";
+import { Rate } from '@nutui/nutui-react';
+
+const App = () => {
+  const handleTouchEnd = (event, val) => {
+    console.log(event, val)
+  }
+  return ( 
+    <>   
+      <Rate defaultValue={3} touchable onTouchEnd={handleTouchEnd}/>
+    </>
   );
 };  
 export default App;
@@ -226,7 +267,9 @@ export default App;
 | allowHalf | Half star or not | `boolean` | `false` |
 | readOnly | Read only | `boolean` | `false` |
 | disabled | Disable or not | `boolean` | `false` |
+| touchable | Enable touch to select ｜ `boolean` | `false` |
 | onChange | Event triggered when the current score is modified | `(value: number) => void` | `-` |
+| onTouchEnd | TouchEnd Event | `(event: TouchEvent, value: number) => void` | `-` |
 
 ## Theme
 

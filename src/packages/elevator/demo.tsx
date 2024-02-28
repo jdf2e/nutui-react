@@ -523,7 +523,9 @@ const ElevatorDemo = () => {
                 return (
                   <>
                     <Fabulous width={12} height={12} />
-                    <span style={{ marginLeft: '15px' }}>{value?.name}</span>
+                    <span style={{ marginInlineStart: '15px' }}>
+                      {value?.name}
+                    </span>
                   </>
                 )
               }}

@@ -115,3 +115,24 @@ body {
 .nut-theme-dark .demo {
   background: #000 !important;
 }
+
+[dir='rtl'] #app,
+.nut-rtl #app {
+  #nav {
+    .back {
+      right: 0;
+    }
+    .translate {
+      left: 0;
+      right: auto;
+    }
+    .nut-icon {
+      transform: rotate(180deg);
+    }
+    .dark-model {
+      transform: rotate(-270deg);
+      margin-right: 0;
+      margin-left: 10px;
+    }
+  }
+}

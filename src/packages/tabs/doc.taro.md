@@ -66,7 +66,6 @@ export default App;
 
 :::
 
-
 ### 基础用法-简约模式
 
 :::demo
@@ -91,8 +90,8 @@ const App = () => {
 };
 export default App;
 ```
-:::
 
+:::
 
 ### 基础用法-卡片模式
 
@@ -118,10 +117,10 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
-
-### 基础用法-按钮/胶囊模式
+### 基础用法-按钮模式
 
 :::demo
 
@@ -145,9 +144,37 @@ const App = () => {
 };
 export default App;
 ```
+
 :::
 
-### 基础用法-Title 左对齐
+### 基础用法-分割线模式
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs value={tab1value} onChange={(value) => {
+        setTab1value(value)
+      }} activeType="divider">
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### Title 左对齐
 
 :::demo
 
@@ -160,10 +187,100 @@ const App = () => {
   return (
     <>
       <Tabs value={tab1value}
-            onChange={(value) => {
-              setTab1value(value)
-            }}
-            align="left">
+        onChange={(value) => {
+          setTab1value(value)
+        }}
+        align="left">
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### 左对齐-卡片模式
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs value={tab1value}
+        activeType="card"
+        onChange={(value) => {
+          setTab1value(value)
+        }}
+        align="left">
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### 左对齐-按钮模式
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs value={tab1value}
+        activeType="button"
+        onChange={(value) => {
+          setTab1value(value)
+        }}
+        align="left">
+        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
+        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
+### 左对齐-分割线模式
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  const [tab1value, setTab1value] = useState('0');
+  return (
+    <>
+      <Tabs value={tab1value}
+        activeType="divider"
+        onChange={(value) => {
+          setTab1value(value)
+        }}
+        align="left">
         <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
@@ -405,6 +522,40 @@ export default App;
 
 :::
 
+### 数量多,滚动操作 2
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  const [tab4value, setTab4value] = useState('0');
+  return (
+    <>
+      <Tabs
+        value={tab4value}
+        style={{ height: '300px' }}
+        onChange={(value) => {
+          setTab4value(value)
+        }}
+        direction="vertical"
+      >
+        {list4.map((item) => (
+          <Tabs.TabPane key={item} title={`Tab ${item}`}>
+            Tab {item}
+          </Tabs.TabPane>
+        ))}
+      </Tabs>
+    </>
+  );
+};
+export default App;
+```
+
+:::
+
 ### 左右布局
 
 :::demo
@@ -423,7 +574,7 @@ const App = () => {
               setTab5value(value)
             }} direction="vertical">
         {list5.map(item => <Tabs.TabPane key={item}
-                                         title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
+        title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
       </Tabs>
     </>
   );
@@ -497,7 +648,27 @@ const App = () => {
         <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
         <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
       </Tabs>
+    </>
+  );
+};
+export default App;
+```
 
+:::
+
+### 嵌套布局 2
+
+:::demo
+
+```tsx
+import React, { useState } from "react";
+import { Tabs } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  const [tab8value, setTab8value] = useState('0')
+  const [tab9value, setTab9value] = useState('0')
+  return (
+    <>
       <Tabs
         value={tab8value}
         onChange={(value) => {
@@ -529,7 +700,7 @@ export default App;
 
 :::
 
-### 标签栏字体尺寸 large normal small
+### Title 字体尺寸: 20px 12px
 
 :::demo
 
@@ -603,9 +774,7 @@ const App = () => {
             <span className="nut-tabs-titles-item-line" />
           </div>
         ))
-      }
-
-      }>
+      }}>
         {list6.map(item => (
           <Tabs.TabPane key={item.paneKey} value={item.paneKey}>
             {item.title}

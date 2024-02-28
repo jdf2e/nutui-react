@@ -9,12 +9,10 @@ interface T {
   title1: string
   title2: string
   title3: string
-  title4: string
   button1: string
   button2: string
   button3: string
   button4: string
-  button5: string
   changeTips: string
 }
 const StickyDemo = () => {
@@ -24,39 +22,33 @@ const StickyDemo = () => {
       basic: '基础用法',
       title1: '吸顶距离',
       title2: '指定容器内吸顶',
-      title3: '指定容器吸底',
-      title4: '吸底距离',
+      title3: '吸底距离',
       button1: '吸顶',
       button2: '距离顶部120px',
       button3: '指定容器内吸顶',
-      button4: '指定容器吸底',
-      button5: '距离底部0px',
+      button4: '距离底部0px',
       changeTips: '吸顶状态发生了改变,当前fixed为',
     },
     'zh-TW': {
       basic: '基础用法',
       title1: '吸頂距離',
       title2: '指定容器內吸頂',
-      title3: '指定容器吸底',
-      title4: '吸底距離',
+      title3: '吸底距離',
       button1: '吸頂',
       button2: '距離頂部120px',
       button3: '指定容器內吸頂',
-      button4: '指定容器吸底',
-      button5: '距離底部0px',
+      button4: '距離底部0px',
       changeTips: '吸頂狀態發生了改變,當前fixed為',
     },
     'en-US': {
       basic: 'Basic usage ',
-      title1: 'Distance suction a distance ',
-      title2: 'The specified container roof ',
-      title3: 'Specify the container bottom ',
-      title4: 'Suction bottom distance ',
-      button1: 'Suck the distance ',
-      button2: 'From the distance 120 px ',
-      button3: 'The specified container roof ',
-      button4: 'Specify the container bottom ',
-      button5: 'At the bottom of the distance to 0 px ',
+      title1: 'Ceiling distance',
+      title2: 'Ceiling in specified container',
+      title3: 'Bottom suction distance',
+      button1: 'Ceiling effect',
+      button2: '120px from top',
+      button3: 'Ceiling in specified container',
+      button4: '0px from bottom',
       changeTips: 'The ceiling status has changed, and the current fixed is',
     },
   })
@@ -65,11 +57,10 @@ const StickyDemo = () => {
     title1,
     title2,
     title3,
-    title4,
     button1,
     button2,
     button3,
-    button5,
+    button4,
     changeTips,
   } = translated
   const handleChange = (val: boolean) => {
@@ -99,16 +90,16 @@ const StickyDemo = () => {
             style={{ height: '600px' }}
           >
             <Sticky container={containerTopRef} threshold={57}>
-              <Button type="info" style={{ marginLeft: '100px' }}>
+              <Button type="info" style={{ marginInlineStart: '100px' }}>
                 {button3}
               </Button>
             </Sticky>
           </div>
         </Cell>
-        <h2>{title4}</h2>
+        <h2>{title3}</h2>
         <Cell style={{ height: '64px' }}>
           <Sticky threshold={0} position="bottom">
-            <Button type="primary">{button5}</Button>
+            <Button type="primary">{button4}</Button>
           </Sticky>
         </Cell>
       </div>

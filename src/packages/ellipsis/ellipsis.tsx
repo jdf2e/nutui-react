@@ -57,7 +57,6 @@ export const Ellipsis: FunctionComponent<
   const [expanded, setExpanded] = useState(false)
   const ellipsis = useRef<EllipsisValue>()
   const root = useRef<HTMLDivElement>(null)
-
   const classes = classNames(classPrefix, className)
 
   useIsomorphicLayoutEffect(() => {
@@ -75,7 +74,6 @@ export const Ellipsis: FunctionComponent<
     styleNames.forEach((name) => {
       container.style.setProperty(name, originStyle.getPropertyValue(name))
     })
-
     container.style.position = 'fixed'
     container.style.left = '999999px'
     container.style.top = '999999px'
@@ -91,13 +89,11 @@ export const Ellipsis: FunctionComponent<
     const lineH = pxToNumber(
       originStyle.lineHeight === 'normal' ? lineHeight : originStyle.lineHeight
     )
-
     maxHeight = Math.floor(
       lineH * (Number(rows) + 0.5) +
         pxToNumber(originStyle.paddingTop) +
         pxToNumber(originStyle.paddingBottom)
     )
-
     container.innerText = content
     document.body.appendChild(container)
     calcEllipse()
@@ -111,14 +107,11 @@ export const Ellipsis: FunctionComponent<
     } else {
       setExceeded(true)
       const end = content.length
-
       const middle = Math.floor((0 + end) / 2)
-
       const ellipsised =
         direction === 'middle'
           ? tailorMiddle([0, middle], [middle, end])
           : tailor(0, end)
-
       ellipsis.current = ellipsised
     }
   }
@@ -129,7 +122,6 @@ export const Ellipsis: FunctionComponent<
   ) => {
     const actionText = expanded ? collapseText : expandText
     const end = content.length
-
     if (right - left <= 1) {
       if (direction === 'end') {
         return {
@@ -146,7 +138,6 @@ export const Ellipsis: FunctionComponent<
     } else {
       container.innerText = actionText + symbol + content.slice(middle, end)
     }
-
     if (container.offsetHeight <= maxHeight) {
       if (direction === 'end') {
         return tailor(middle, right)

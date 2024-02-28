@@ -74,3 +74,18 @@
     }
   }
 }
+
+[dir='rtl'] .nut-sidenavbar,
+.nut-rtl .nut-sidenavbar {
+  .arrow-icon {
+    right: auto;
+    left: 16px;
+  }
+
+  .nut-subsidenavbar-border-bt {
+    &:after {
+      left: auto;
+      right: 0;
+    }
+  }
+}

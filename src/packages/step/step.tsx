@@ -63,12 +63,14 @@ export const Step: FunctionComponent<
           {icon || (!dot && <span className="nut-step-inner">{value}</span>)}
         </div>
       </div>
-      <div className="nut-step-main">
-        <span className="nut-step-title">{title}</span>
-        {description && (
-          <span className="nut-step-description">{description}</span>
-        )}
-      </div>
+      {(title || description) && (
+        <div className="nut-step-main">
+          <span className="nut-step-title">{title}</span>
+          {description && (
+            <span className="nut-step-description">{description}</span>
+          )}
+        </div>
+      )}
     </div>
   )
 }

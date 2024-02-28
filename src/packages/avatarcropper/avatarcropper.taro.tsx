@@ -5,7 +5,7 @@ import React, {
   useCallback,
   FunctionComponent,
 } from 'react'
-import Taro, { useReady } from '@tarojs/taro'
+import Taro, { useReady, createSelectorQuery } from '@tarojs/taro'
 import classNames from 'classnames'
 import { Canvas } from '@tarojs/components'
 import { Button } from '@/packages/button/button.taro'
@@ -17,6 +17,7 @@ export type AvatarCropperToolbarPosition = 'top' | 'bottom'
 export type AvatarCropperSizeType = 'original' | 'compressed'
 export type AvatarCropperSourceType = 'album' | 'camera'
 export type AvatarCropperShape = 'square' | 'round'
+
 export interface AvatarCropperProps extends BasicComponent {
   maxZoom: number
   space: number
@@ -74,6 +75,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     ...defaultProps,
     ...props,
   }
+
   interface DrawImage {
     src: string | HTMLImageElement
     x: number
@@ -81,6 +83,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     width: number
     height: number
   }
+
   interface CanvasAll {
     canvasId: string
     cropperCanvas: any | null
@@ -141,7 +144,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
   useReady(() => {
     if (showAlipayCanvas2D) {
       const { canvasId } = canvasAll
-      Taro.createSelectorQuery()
+      createSelectorQuery()
         .select(`#${canvasId}`)
         .node(({ node: canvas }) => {
           canvas.width = state.displayWidth
@@ -400,6 +403,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     tempFilePath?: string
     path: string
   }
+
   // 选择图片后回调
   const imageChange = async (file: TFileType) => {
     Taro.getImageInfo({
@@ -557,7 +561,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
   }
 
   // 关闭
-  const cancel = (isEmit: boolean = true) => {
+  const cancel = (isEmit = true) => {
     setVisible(false)
     resetScale()
     isEmit && onCancel && onCancel()
