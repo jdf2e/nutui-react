@@ -308,6 +308,7 @@ const TabsDemo = () => {
           <Tabs.TabPane title="Tab 3" />
         </Tabs>
         <Swiper
+          style={{ height: 'auto' }}
           defaultValue={0}
           loop={false}
           ref={swiperRef}

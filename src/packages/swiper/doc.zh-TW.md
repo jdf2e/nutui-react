@@ -27,27 +27,56 @@ const list = [
   'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
 ]
 const App = () => {
-  const [defaultValue1, setdefaultValue1] = useState(0)
-  const [height, setHeight] = useState<any>(150)
   return (
     <div className="demo-box" style={{ height: 150 }}>
       <Swiper
-        height={height}
-        style={{
-            '--nutui-indicator-color': '#426543',
-            '--nutui-indicator-dot-color': '#426ddd',
-          }}
-        autoPlay="3000"
-        defaultValue={defaultValue1}
+        autoPlay
+        loop
+        slideSize={300}
         indicator
+        style={{
+          '--nutui-indicator-color': '#426543',
+          '--nutui-indicator-dot-color': '#426ddd',
+        }}
       >
         {list.map((item, index) => {
-            return (
-              <Swiper.Item key={item}>
-                <img src={item} onClick={() => console.log(index)} alt="" />
-              </Swiper.Item>
-            )
-          })}
+          return (
+            <Swiper.Item key={item}>
+              <img src={list[index]} alt={list[index]} draggable={false} />
+            </Swiper.Item>
+          )
+        })}
+      </Swiper>
+    </div>
+  )
+}
+export default App;
+```
+
+:::
+:::demo
+
+```tsx
+import React, { useState } from 'react'
+import { Swiper } from '@nutui/nutui-react';
+
+const list = [
+  'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+  'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+  'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+]
+const App = () => {
+  return (
+    <div className="demo-box" style={{ height: 150 }}>
+      <Swiper loop slideSize={300} effect={{ name: 'focus', scale: 0.9 }}>
+        {list.map((item, index) => {
+          return (
+            <Swiper.Item key={item}>
+              <img src={list[index]} alt={list[index]} draggable={false} />
+            </Swiper.Item>
+          )
+        })}
       </Swiper>
     </div>
   )
@@ -66,39 +95,30 @@ import React, { useState, useEffect } from 'react'
 import { Swiper } from '@nutui/nutui-react';
 
 const App = () => {
-  const [defaultValue1, setdefaultValue1] = useState(0)
-  const [height, setHeight] = useState<any>(150)
-  const [list, setList] = useState<string[]>([])
+  const [asyncList, setAsyncList] = useState<string[]>([])
   useEffect(() => {
     setTimeout(() => {
-      setList([
+      setAsyncList([
         'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
         'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
         'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-        'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+        'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
       ])
-    }, 3000)
+    }, 300)
   }, [])
   return (
     <div className="demo-box" style={{ height: 150 }}>
-      <Swiper
-        height={height}
-        style={{
-            '--nutui-indicator-color': '#426543',
-            '--nutui-indicator-dot-color': '#426ddd',
-          }}
-        autoPlay="3000"
-        defaultValue={defaultValue1}
-        indicator
-      >
-        {list.map((item) => {
-          return (
-            <Swiper.Item key={item}>
-              <img src={item} alt="" />
-            </Swiper.Item>
-          )
-        })}
-      </Swiper>
+      {setAsyncList.length ? (
+        <Swiper>
+          {asyncList.map((item, index) => {
+            return (
+              <Swiper.Item key={item}>
+                <img src={list[index]} alt={list[index]} draggable={false} />
+              </Swiper.Item>
+            )
+          })}
+        </Swiper>
+      ) : null}
     </div>
   )
 }
@@ -118,27 +138,23 @@ export default App;
 import React, { useState } from 'react'
 import { Swiper } from '@nutui/nutui-react';
 
+const list = [
+  'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+  'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+  'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+]
 const App = () => {
-  const [defaultValue2, setdefaultValue2] = useState(0)
   return (
     <div className="demo-box" style={{ height: 150 }}>
-      <Swiper
-        width={300}
-        height={150}
-        defaultValue={defaultValue2}
-      >
-        <Swiper.Item >
-          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-        </Swiper.Item>
-        <Swiper.Item >
-          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-        </Swiper.Item>
-        <Swiper.Item >
-          <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-        </Swiper.Item>
-        <Swiper.Item >
-          <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-        </Swiper.Item>
+      <Swiper slideSize={250}>
+        {list.map((item, index) => {
+          return (
+            <Swiper.Item key={item}>
+              <img src={list[index]} alt={list[index]} draggable={false} />
+            </Swiper.Item>
+          )
+        })}
       </Swiper>
     </div>
   )
@@ -158,33 +174,30 @@ export default App;
 import React, { useState } from 'react'
 import { Swiper } from '@nutui/nutui-react';
 
+const list = [
+  'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+  'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+  'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+]
 const App = () => {
-  const [defaultValue3, setdefaultValue3] = useState(0)
   const [current, setCurrent] = useState(1)
-  const onChange3 = (e) => {
+  const onChange = (e) => {
     setCurrent(e + 1)
   }
   return (
     <div className="demo-box" style={{ height: 150 }}>
       <Swiper
-        loop
-        height={150}
-        defaultValue={defaultValue3}
-        onChange={onChange3}
+        onChange={onChange}
         indicator={<div className="page"> {current}/4 </div>}
       >
-        <Swiper.Item >
-          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-        </Swiper.Item>
-        <Swiper.Item >
-          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-        </Swiper.Item>
-        <Swiper.Item >
-          <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-        </Swiper.Item>
-        <Swiper.Item >
-          <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-        </Swiper.Item>
+        {list.map((item, index) => {
+          return (
+            <Swiper.Item key={item}>
+              <img src={list[index]} alt={list[index]} draggable={false} />
+            </Swiper.Item>
+          )
+        })}
       </Swiper>
     </div>
   )
@@ -204,6 +217,12 @@ export default App;
 import React, { useState, useRef } from 'react'
 import { Swiper, Icon } from '@nutui/nutui-react';
 
+const list = [
+  'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+  'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+  'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+]
 const App = () => {
   const swiperRef = React.useRef<any>(null)
   const [defaultValue6, setdefaultValue6] = useState(0)
@@ -257,12 +276,11 @@ const App = () => {
   return (
     <div className="demo-box" style={{ height: '150px', position: 'relative' }}>
       <Swiper
-        height={150}
         ref={swiperRef}
-        loop
         defaultValue={defaultValue6}
         onChange={(e) => setCurrent2(e + 1)}
-        indicator={<div style={ pageStyle } > {current2}/4 </div>}
+        loop
+        indicator={<div style={pageStyle}> {current2}/4 </div>}
       >
         {list.map((item) => {
           return (
@@ -298,34 +316,23 @@ export default App;
 import React, { useState } from 'react'
 import { Swiper } from '@nutui/nutui-react';
 
+const list = [
+  'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
+  'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
+  'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
+  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
+]
 const App = () => {
-  const [defaultValue4, setdefaultValue4] = useState(0)
-  const [current, setCurrent] = useState(1)
-  const onChange3 = (e) => {
-    setCurrent(e + 1)
-  }
   return (
     <div className="demo-box vertical-center" style={{ height: '150px' }}>
-      <Swiper
-        loop
-        defaultValue={defaultValue4}
-        direction="vertical"
-        autoPlay="3000"
-        height="150"
-        indicator
-      >
-        <Swiper.Item >
-          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-        </Swiper.Item>
-        <Swiper.Item >
-          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-        </Swiper.Item>
-        <Swiper.Item >
-          <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-        </Swiper.Item>
-        <Swiper.Item >
-          <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-        </Swiper.Item>
+      <Swiper loop direction="vertical">
+        {list.map((item, index) => {
+          return (
+            <Swiper.Item key={item}>
+              <img src={list[index]} alt={list[index]} draggable={false} />
+            </Swiper.Item>
+          )
+        })}
       </Swiper>
     </div>
   )
@@ -337,7 +344,6 @@ export default App;
 
 ### 水平居中展示
 
-`center` 代錶可居中，同時必須傳 `width`
 
 :::demo
 
@@ -355,22 +361,15 @@ const App = () => {
   ]
   return (
    <div className="demo-box " style={{ height: '150px' }}>
-      <Swiper
-        defaultValue={defaultValue8}
-        autoPlay="0"
-        height="150"
-        indicator
-        width="280"
-        center
-      >
-        {list.map((item) => {
-          return (
-            <Swiper.Item key={item}>
-              <img src={item} alt="" />
-            </Swiper.Item>
-          )
-        })}
-      </Swiper>
+     <Swiper loop style={{ '--swiper-offset': '6%' }} slideSize={300}>
+       {list.map((item, index) => {
+         return (
+           <Swiper.Item key={item}>
+             <img src={list[index]} alt={list[index]} draggable={false} />
+           </Swiper.Item>
+         )
+       })}
+     </Swiper>
     </div>
   )
 }
@@ -381,7 +380,6 @@ export default App;
 
 ### 垂直居中展示
 
-`center` 代錶可居中，同時必須傳 `height`
 
 :::demo
 
@@ -399,23 +397,20 @@ const App = () => {
   ]
   return (
    <div className="demo-box vertical-center" style={{ height: '150px' }}>
-      <Swiper
-        defaultValue={defaultValue9}
-        direction="vertical"
-        autoPlay="0"
-        height="220"
-        indicator
-        center
-        style={{ height: '280px' }}
-      >
-        {list.map((item) => {
-          return (
-            <Swiper.Item key={item}>
-              <img src={item} alt="" />
-            </Swiper.Item>
-          )
-        })}
-      </Swiper>
+     <Swiper
+       loop
+       direction="vertical"
+       style={{ '--swiper-offset': '13%' }}
+       slideSize={120}
+     >
+       {list.map((item, index) => {
+         return (
+           <Swiper.Item key={item}>
+             <img src={list[index]} alt={list[index]} draggable={false} />
+           </Swiper.Item>
+         )
+       })}
+     </Swiper>
     </div>
   )
 }
@@ -430,28 +425,23 @@ export default App;
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| width | 輪播卡片的寬度 | `number` \| `string` | `-` |
-| height | 輪播卡片的高度 | `number` \| `string` | `-` |
-| direction | 輪播方嚮 | `horizontal` \| `vertical` | `horizontal` |
-| indicator | 分頁指示器是否展示，可傳入自定義的 HTML 結構 | `ReactNode` | `false` |
+| slideSize | 輪播卡的尺寸 | `number` \| `string` | `-` |
+| direction | 輪播方向 | `horizontal` \| `vertical` | `horizo​​ntal` |
+| indicator | 分頁指示器是否展示，可傳入自訂的 HTML 結構 | `ReactNode` | `false` |
 | loop | 是否循環輪播 | `boolean` | `true` |
 | duration | 動畫時長（單位是ms） | `number` \| `string` | `500` |
-| autoPlay | 自動輪播時長，0錶示不會自動輪播 | `number` \| `string` | `0` |
+| autoPlay | 自動輪播時長，0表示不會自動輪播 | `number` \| `string` | `0` |
 | defaultValue | 初始化索引值 | `number` \| `string` | `0` |
-| touchable | 是否可觸摸滑動 | `boolean` | `true` |
-| preventDefault | 滑動過程中是否禁用默認事件 | `boolean` | `true` |
-| stopPropagation | 滑動過程中是否禁止冒泡 | `boolean` | `true` |
-| center | 是否居中展示，必須傳對應的`width` 和 `height` | `boolean` | `false` |
-| onChange | 卡片切換後的回調 | `(current: number) => void` | `-` |
+| touchable | 是否可觸碰滑動 | `boolean` | `true` |
+| onChange | 卡片切換後的回呼 | `(current: number) => void` | `-` |### Ref
 
 ### Ref
 
 | 屬性 | 說明 | 類型 |
 | --- | --- | --- |
-| prev | 切換到上一頁 | `()=>void` |
-| next | 切換到下一頁 | `()=>void` |
-| to | 切換到指定輪播 | `(index: number)=>void` |
-| resize | 外層元素大小或組件顯示狀態變化時，可以調用此方法來觸發重繪 | `()=>void` |
+| prev | 切换到上一页 | `()=>void` |
+| next | 切换到下一页 | `()=>void` |
+| to | 切换到指定轮播 | `(index: number)=>void` |
 
 ## 主題定制
 
@@ -459,6 +449,7 @@ export default App;
 
 組件提供了下列 CSS 變量，可用於自定義樣式，使用方法請參考 [ConfigProvider 組件](#/zh-CN/component/configprovider)。
 
-| 名稱 | 說明 | 默認值 |
-| --- | --- | --- |
+| 名称 | 说明 | 默认值    |
+| --- | --- |--------|
 | \--nutui-swiper-pagination-bottom | 分頁器距離底部的距離 | `12px` |
+| \--swiper-offset | 輪播容器的偏移 | `0` |

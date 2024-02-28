@@ -22,8 +22,8 @@ export interface SwiperProps extends BasicComponent {
   direction: 'horizontal' | 'vertical'
   indicator: ReactNode
   loop: boolean
-  duration: number
-  autoPlay: boolean
+  duration: number | string
+  autoPlay: boolean | number
   defaultValue: number
   touchable: boolean
   effect: FocusEffect | undefined
@@ -84,10 +84,13 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<SwiperProps>>(
 
     // 自动播放
     const runTimeSwiper = () => {
+      const durationNumber =
+        typeof duration === 'string' ? parseInt(duration) : duration
+      const d = typeof autoPlay === 'number' ? autoPlay : durationNumber
       timeoutRef.current = window.setTimeout(() => {
         next()
         runTimeSwiper()
-      }, duration)
+      }, d)
     }
     useEffect(() => {
       if (!autoPlay || dragging) return
@@ -113,7 +116,7 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<SwiperProps>>(
 
       api.start({
         // 这里需要统一成百分比
-        [isVertical ? 'y' : 'x']: -targetIndex * 100,
+        [isVertical ? 'y' : 'x']: (loop ? -index : -targetIndex) * 100,
         s: 0,
         immediate,
       })
@@ -138,7 +141,6 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<SwiperProps>>(
         if (isVertical) return stageRef.current.offsetHeight
         return stageRef.current.offsetWidth
       }
-      // 考虑怎么转换为百分比
       return 0
     }
     const bound = (v: number, min: number, max: number) => {
@@ -199,8 +201,12 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<SwiperProps>>(
           }
           return { left: 0, right: (count - 1) * slideSize }
         },
+        preventDefault: true,
         rubberband: true,
         axis: isVertical ? 'y' : 'x',
+        pointer: {
+          touch: true,
+        },
       }
     )
 
@@ -212,6 +218,7 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<SwiperProps>>(
           className={classNames({
             [`${classPrefix}-indicator`]: true,
             [`${classPrefix}-indicator-vertical`]: isVertical,
+            [`${classPrefix}-indicator-horizontal`]: !isVertical,
           })}
         >
           <Indicator
@@ -254,6 +261,7 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<SwiperProps>>(
           ref={stageRef}
           className={classNames('nut-swiper-inner', {
             'nut-swiper-inner-vertical': isVertical,
+            'nut-swiper-inner-horizontal': !isVertical,
           })}
           style={{
             ...(props.slideSize

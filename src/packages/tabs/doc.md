@@ -229,7 +229,8 @@ const App = () => {
         <Tabs.TabPane title="Tab 3" />
       </Tabs>
       <Swiper
-        initPage={0}
+        style={{ height: 'auto' }}
+        defaultValue={0}
         loop={false}
         ref={swiperRef}
         onChange={(page) => {
