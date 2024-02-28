@@ -23,6 +23,7 @@ const getPerSlidePosition = (
       (nextPosition < 0 ? nextPosition + cycle : nextPosition) - shift
     return `${shiftedPosition}%`
   }
+
   return `${currentPosition}%`
 }
 export const defaultEffect = (args: DefaultEffect) => {

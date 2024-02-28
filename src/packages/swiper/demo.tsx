@@ -90,7 +90,7 @@ const SwiperDemo = () => {
                     height: '100%',
                   }}
                 >
-                  {color[index]}
+                  {index}
                 </div>
               </Swiper.Item>
             )
@@ -113,7 +113,7 @@ const SwiperDemo = () => {
                     height: '100%',
                   }}
                 >
-                  {color[index]}
+                  {index}
                 </div>
               </Swiper.Item>
             )
@@ -136,7 +136,7 @@ const SwiperDemo = () => {
                     height: '100%',
                   }}
                 >
-                  {color[index]}
+                  {index}
                 </div>
               </Swiper.Item>
             )
@@ -160,7 +160,7 @@ const SwiperDemo = () => {
                       height: '100%',
                     }}
                   >
-                    {color[index]}
+                    {index}
                   </div>
                 </Swiper.Item>
               )
@@ -184,7 +184,7 @@ const SwiperDemo = () => {
                     height: '100%',
                   }}
                 >
-                  {color[index]}
+                  {index}
                 </div>
               </Swiper.Item>
             )
@@ -210,7 +210,7 @@ const SwiperDemo = () => {
                     height: '100%',
                   }}
                 >
-                  {color[index]}
+                  {index}
                 </div>
               </Swiper.Item>
             )

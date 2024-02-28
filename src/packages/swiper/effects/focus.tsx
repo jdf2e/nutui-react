@@ -84,7 +84,7 @@ export const focusEffect = (args: DefaultEffect) => {
 }
 
 export const useList = (
-  effect: FocusEffect,
+  effect: FocusEffect | undefined,
   count: number,
   current: React.MutableRefObject<number>
 ): [React.MutableRefObject<number[]>, (p: number[]) => void] => {

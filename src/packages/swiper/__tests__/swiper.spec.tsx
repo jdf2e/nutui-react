@@ -18,12 +18,7 @@ test('should render width and height', () => {
     'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
     'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
   ]
-  const state: any = {
-    height: 150,
-    defaultValue: 0,
-    width: 375,
-  }
-  const { height, defaultValue, width } = state
+
   const onChange = jest.fn()
 
   const Wraper = () => {
@@ -55,10 +50,9 @@ test('should render width and height', () => {
           to
         </div>
         <Swiper
-          height={height}
-          width={width}
-          autoPlay="2000"
-          defaultValue={defaultValue}
+          style={{ width: '375px', height: '150px' }}
+          autoPlay
+          defaultValue={0}
           onChange={onChange}
           ref={ref}
           indicator
@@ -75,12 +69,9 @@ test('should render width and height', () => {
     )
   }
   const { container, getByTestId } = render(<Wraper />)
-  const swiper = container.querySelectorAll('.nut-swiper-inner')[0]
-  const item = container.querySelectorAll('.nut-swiper-item')[0]
+  const swiper = container.querySelectorAll('.nut-swiper')[0]
   expect(swiper).toHaveStyle({
     height: '150px',
-  })
-  expect(item).toHaveStyle({
     width: '375px',
   })
 
@@ -95,23 +86,10 @@ test('should render initpage', () => {
     'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
     'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
   ]
-  const state: any = {
-    height: 150,
-    defaultValue: 1,
-    width: 375,
-  }
-  const { height, defaultValue, width } = state
   const onChange = (e: number) => {}
 
   const { container } = render(
-    <Swiper
-      height={height}
-      width={width}
-      defaultValue={defaultValue}
-      onChange={onChange}
-      loop
-      indicator
-    >
+    <Swiper defaultValue={1} onChange={onChange} loop indicator>
       {list.map((item) => {
         return (
           <Swiper.Item key={item}>
@@ -121,9 +99,9 @@ test('should render initpage', () => {
       })}
     </Swiper>
   )
-  const swiper = container.querySelectorAll('.nut-swiper-inner')[0]
+  const swiper = container.querySelectorAll('.nut-swiper-slide')[0]
   expect(swiper).toHaveStyle({
-    transform: 'translate3D(-375px,0,0)',
+    transform: 'translate3d(-100%,0,0)',
   })
 })
 test('should render direction', () => {
@@ -133,22 +111,14 @@ test('should render direction', () => {
     'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
     'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
   ]
-  const state: any = {
-    height: 150,
-    defaultValue: 1,
-    width: 375,
-    direction: 'vertical',
-  }
-  const { height, defaultValue, width, direction } = state
+
   const onChange = (e: number) => {}
 
   const { container } = render(
     <Swiper
-      height={height}
-      width={width}
       loop
-      direction={direction}
-      defaultValue={defaultValue}
+      direction="vertical"
+      defaultValue={1}
       onChange={onChange}
       indicator
     >
@@ -161,9 +131,9 @@ test('should render direction', () => {
       })}
     </Swiper>
   )
-  const swiper = container.querySelectorAll('.nut-swiper-inner')[0]
+  const swiper = container.querySelectorAll('.nut-swiper-slide')[0]
   expect(swiper).toHaveStyle({
-    transform: 'translate3D(0,-150px,0)',
+    transform: 'translate3d(0,-100%,0)',
   })
 })
 test('should render indicator', () => {
@@ -173,22 +143,16 @@ test('should render indicator', () => {
     'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
     'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
   ]
-  const state: any = {
-    height: 150,
-    defaultValue: 1,
-    width: 375,
-  }
-  const { height, defaultValue, width } = state
   const onChange = (e: number) => {}
 
   const { container } = render(
     <Swiper
-      height={height}
-      width={width}
-      defaultValue={defaultValue}
+      slideSize={300}
+      defaultValue={1}
       onChange={onChange}
       indicator
       style={{
+        width: '375px',
         '--nutui-indicator-color': '#426543',
         '--nutui-indicator-dot-color': '#426ddd',
       }}
@@ -212,21 +176,14 @@ test('should render loop and auto-play', async () => {
     'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
     'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
   ]
-  const state: any = {
-    height: 150,
-    defaultValue: 0,
-    width: 375,
-    direction: 'vertical',
-  }
-  const { height, defaultValue, width, direction } = state
   const onChange = (e: number) => {}
   const { container } = render(
     <Swiper
-      height={height}
-      width={width}
-      defaultValue={defaultValue}
+      style={{ width: '375px' }}
+      slideSize={300}
+      defaultValue={0}
       onChange={onChange}
-      autoPlay="100"
+      autoPlay
     >
       {list.map((item) => {
         return (
@@ -237,15 +194,16 @@ test('should render loop and auto-play', async () => {
       })}
     </Swiper>
   )
-  const swiper = container.querySelectorAll('.nut-swiper-inner')[0]
+  const swiper = container.querySelectorAll('.nut-swiper-slide')[0]
   await waitFor(() => {
     expect(swiper).toHaveStyle({
-      transform: 'translate3D(-375px,0,0)',
+      transform: 'none',
     })
   })
 })
 test('should not allow to drag when touchable is false', () => {
   const onChange = jest.fn()
+  const clickFn = jest.fn()
 
   const list = [
     'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
@@ -253,35 +211,35 @@ test('should not allow to drag when touchable is false', () => {
     'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
     'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
   ]
-  const state: any = {
-    height: 150,
-    defaultValue: 0,
-    width: 375,
-    direction: 'vertical',
-  }
-  const { height, defaultValue, width } = state
+
   const { container } = render(
     <Swiper
-      height={height}
-      width={width}
-      defaultValue={defaultValue}
+      style={{ width: '375px' }}
+      slideSize={300}
+      defaultValue={0}
       onChange={onChange}
       touchable={false}
     >
       {list.map((item) => {
         return (
           <Swiper.Item key={item}>
-            <img src={item} alt="" />
+            <img onClick={clickFn} src={item} alt="" />
           </Swiper.Item>
         )
       })}
     </Swiper>
   )
-  const swiper = container.querySelectorAll('.nut-swiper-inner')[0]
+  const swiper = container.querySelectorAll('.nut-swiper')[0]
+  const swiperItem = container.querySelector('.nut-swiper-slide')
   triggerDrag(swiper, 220, 0)
-  expect(swiper).toHaveStyle({
-    transform: 'translate3D(0px,0,0)',
+  expect(swiperItem).toHaveStyle({
+    transform: 'none',
   })
+  const img = container.querySelector('img')
+  if (img) {
+    fireEvent.click(img)
+    expect(clickFn).toBeCalled()
+  }
 })
 test('should not allow to drag when loop is false', async () => {
   const list = [
@@ -290,22 +248,15 @@ test('should not allow to drag when loop is false', async () => {
     'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
     'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
   ]
-  const state: any = {
-    height: 150,
-    defaultValue: 3,
-    width: 375,
-    direction: 'vertical',
-  }
-  const { height, defaultValue, width } = state
   let _container: any
   act(() => {
     const { container } = render(
       <Swiper
-        height={height}
-        width={width}
-        defaultValue={defaultValue}
+        style={{ width: '375px' }}
+        slideSize={300}
+        defaultValue={3}
         loop={false}
-        autoPlay="100"
+        autoPlay
         data-testid="swiper_container"
       >
         {list.map((item) => {
@@ -321,14 +272,14 @@ test('should not allow to drag when loop is false', async () => {
   })
   await waitFor(
     async () => {
-      await sleep(2000)
-      const swiper = _container.querySelectorAll('.nut-swiper-inner')[0]
+      await sleep(3000)
+      const swiper = _container.querySelectorAll('.nut-swiper-slide')[0]
       expect(swiper).toHaveStyle({
-        transform: 'translate3D(-1125px,0,0)',
+        transform: 'translate3d(-300%,0,0)',
       })
     },
     {
-      timeout: 3000,
+      timeout: 4000,
     }
   )
 })
