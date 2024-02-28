@@ -45,7 +45,7 @@ export default App;
 
 :::
 
-### Size 为 small 时，可用于半屏
+### Size 為 small 時，可用於半屏
 
 :::demo
 
@@ -154,8 +154,11 @@ export default App;
 | --- | --- | --- | --- |
 | image | 圖片,支持傳入圖片 URL | `ReactNode` | `-` |
 | imageSize | 圖片大小，number 類型單位為 px | `number` \| `string` | `-` |
+| title | 圖片下方的標題 | `ReactNode` | `-` |
 | description | 圖片下方的描述文字 | `ReactNode` | `-` |
+| size | 組件整體大小，適配於全屏或半屏 | `small` \| `base` | `base` |
 | status | 默認圖片錯誤類型 | `empty` \| `error` \| `network` | `empty` |
+| actions | 可用於處理操作的一組數據 | `Array` | `[]` |
 
 ## 主題定制
 
@@ -165,11 +168,11 @@ export default App;
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-empty-padding | Empty组件图片的padding值 | `32px 40px` |
-| \--nutui-empty-image-size | Empty组件图片的尺寸大小 | `160px` |
-| \--nutui-empty-image-small-size | size 为 small 时，Empty组件图片的尺寸大小 | `120px` |
-| \--nutui-empty-title-margin-top | Empty组件图片标题margin-top的值 | `0px` |
-| \--nutui-empty-title-margin-top | Empty组件图片标题margin-top的值 | `8px` |
-| \--nutui-empty-title-line-height | Empty组件图片标题行高 | `$font-size-base` |
-| \--nutui-empty-description-margin-top | Empty组件图片描述margin-top的值 | `4px` |
-| \--nutui-empty-description-line-height | Empty组件图片描述行高 | `1.2` |
+| \--nutui-empty-padding | Empty組件圖片的padding值 | `32px 40px` |
+| \--nutui-empty-image-size | Empty組件圖片的尺寸大小 | `160px` |
+| \--nutui-empty-image-small-size | size 為 small 時，Empty組件圖片的尺寸大小 | `120px` |
+| \--nutui-empty-title-margin-top | Empty組件圖片標題margin-top的值 | `0px` |
+| \--nutui-empty-title-margin-top | Empty組件圖片標題margin-top的值 | `8px` |
+| \--nutui-empty-title-line-height | Empty組件圖片標題行高 | `$font-size-base` |
+| \--nutui-empty-description-margin-top | Empty組件圖片描述margin-top的值 | `4px` |
+| \--nutui-empty-description-line-height | Empty組件圖片描述行高 | `1.2` |

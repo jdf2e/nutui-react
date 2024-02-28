@@ -232,6 +232,8 @@ export default App;
 | hideConfirmButton | 是否隐藏确定按钮 | `boolean` | `false` |
 | hideCancelButton | 是否隐藏取消按钮 | `boolean` | `false` |
 | disableConfirmButton | 禁用确定按钮 | `boolean` | `false` |
+| closeIcon | 关闭按钮 | `boolean` \| `ReactNode` | `false` |
+| closeIconPosition | 关闭按钮位置 | `top-left` \| `top-right` | `top-right` |
 | closeOnOverlayClick | 点击蒙层是否关闭对话框 | `boolean` | `true` |
 | footerDirection | 使用横纵方向 可选值 horizontal、vertical | `string` | `horizontal` |
 | lockScroll | 背景是否锁定 | `boolean` | `false` |
@@ -242,8 +244,6 @@ export default App;
 | onClose | 关闭回调，任何情况关闭弹窗都会触发 | `() => void` | `-` |
 | onClick | 点击自身回调 | `() => void` | `-` |
 | onOverlayClick | 点击蒙层触发 | `() => void` | `-` |
-| closeIconPosition | 关闭按钮位置 | `top-left` \| `top-right` | `top-right` |
-| closeIcon | 关闭按钮 | `boolean \| ReactNode` | `false` |
 
 ### Methods
 | 方法名 | 说明 | 类型 |

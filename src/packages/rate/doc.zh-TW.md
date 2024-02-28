@@ -269,7 +269,7 @@ export default App;
 | disabled | 是否禁用 | `boolean` | `false` |
 | touchable | 是否允許滑動選擇 ｜ `boolean` | `false` |
 | onChange | 当前 star 数修改时触发 | `(value: number) => void` | `-` |
-| onTouchEnd | TouchEnd 事件 | `(event: TouchEvent, value: number) => void` | `-` |
+| onTouchEnd |  touch 滑動結束時觸發 | `(event: TouchEvent, value: number) => void` | `-` |
 
 ## 主題定制
 
