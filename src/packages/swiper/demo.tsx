@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { ArrowLeft, ArrowRight } from '@nutui/icons-react'
 import Swiper from '@/packages/swiper'
 import '@/packages/swiper/demo.scss'
 import { useTranslate } from '../../sites/assets/locale'
@@ -100,12 +99,7 @@ const SwiperDemo = () => {
       </div>
       <h2>{translated.focus}</h2>
       <div className="demo-box" style={{ height: 150 }}>
-        <Swiper
-          autoplay
-          loop
-          slideSize={300}
-          effect={{ name: 'focus', scale: 0.95 }}
-        >
+        <Swiper loop slideSize={300} effect={{ name: 'focus', scale: 0.9 }}>
           {list.map((item, index) => {
             return (
               <Swiper.Item key={item}>

@@ -1,10 +1,16 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react'
 import { useDrag } from '@use-gesture/react'
-import { useSpring, animated } from '@react-spring/web'
+import { useSpring } from '@react-spring/web'
 import classNames from 'classnames'
 import { BasicComponent } from '@/utils/typings'
 import Indicator from '@/packages/indicator'
 import { getRefValue, useRefState } from '@/utils/use-ref-state'
+import { defaultEffect } from '@/packages/swiper/effects/default'
+import {
+  focusEffect,
+  updateTransform,
+  useList,
+} from '@/packages/swiper/effects/focus'
 
 export interface FocusEffect {
   name: 'focus'
@@ -58,18 +64,8 @@ export const Swiper = (props: SwiperProps) => {
   const [current, setCurrent] = useRefState(defaultValue)
 
   const swiperDirection = useRef(1)
-  const [focusScales, setFocusScales] = useRefState<number[]>([])
-  useEffect(() => {
-    setFocusScales(
-      Array.from({ length: count })
-        .fill(1)
-        .map((scale: any, index) =>
-          index !== getRefValue(current)
-            ? scale * (effect ? effect.scale : 1)
-            : scale
-        )
-    )
-  }, [count])
+
+  const [transforms, setTransforms] = useList(effect, count, current)
 
   // 自动播放
   const runTimeSwiper = () => {
@@ -96,11 +92,9 @@ export const Swiper = (props: SwiperProps) => {
     setCurrent(targetIndex)
     props.onChange?.(targetIndex)
 
-    setFocusScales(
-      getRefValue(focusScales).map((s, index) =>
-        targetIndex === index ? 1 : effect ? effect.scale : 1
-      )
-    )
+    if (effect) {
+      updateTransform(transforms, setTransforms, effect, targetIndex)
+    }
 
     api.start({
       // 这里需要统一成百分比
@@ -188,29 +182,6 @@ export const Swiper = (props: SwiperProps) => {
     }
   )
 
-  const effectStyle = (index: number) => {
-    if (effect) {
-      if (effect.name === 'focus') {
-        return springs.s.to((ss) => {
-          const scales = getRefValue(focusScales)
-          if (!scales) return 1
-          const scale = scales[index]
-          const currentRefValue = getRefValue(current)
-          if (dragging === false) ss = 0
-          const ps = ss * scale
-          if (index === currentRefValue) {
-            return Math.max(scale - ps, effect.scale)
-          }
-          if (index === currentRefValue + swiperDirection.current) {
-            return Math.min(scale + ps, 1)
-          }
-          return scale
-        })
-      }
-    }
-    return 1
-  }
-
   const renderIndicator = () => {
     if (React.isValidElement(indicator)) return indicator
     if (!indicator) return null
@@ -230,22 +201,31 @@ export const Swiper = (props: SwiperProps) => {
     )
   }
 
-  const getPerSlidePosition = (
-    index: number,
-    position: number,
-    loop: boolean
-  ) => {
-    const currentPosition = index * 100 + position
-    if (loop) {
-      const cycle = count * 100
-      const shift = cycle / 2
-      const nextPosition = (currentPosition + shift) % cycle
-      const shiftedPosition =
-        (nextPosition < 0 ? nextPosition + cycle : nextPosition) - shift
-      return `${shiftedPosition}%`
+  const renderEffect = () => {
+    if (!effect)
+      return defaultEffect({
+        children,
+        getSpringsAxis,
+        loop,
+        count,
+        isVertical,
+      })
+    if (effect && effect.name === 'focus') {
+      return focusEffect({
+        children,
+        springs,
+        loop,
+        count,
+        isVertical,
+        effect,
+        current,
+        swiperDirection,
+        dragging,
+        transforms,
+      })
     }
-    return `${currentPosition}%`
   }
+
   const renderSlides = () => {
     return (
       <div
@@ -259,22 +239,7 @@ export const Swiper = (props: SwiperProps) => {
             : {}),
         }}
       >
-        {React.Children.map(children, (child, index) => {
-          return (
-            <animated.div
-              className="nut-swiper-slide"
-              style={{
-                [isVertical ? 'y' : 'x']: getSpringsAxis().to((position) => {
-                  return getPerSlidePosition(index, position, loop)
-                }),
-                [isVertical ? 'top' : 'left']: `-${index * 100}%`,
-                scale: effectStyle(index),
-              }}
-            >
-              {child}
-            </animated.div>
-          )
-        })}
+        {renderEffect()}
       </div>
     )
   }
