@@ -22,6 +22,31 @@ test('form set initialValues', () => {
   )
 })
 
+test('form validateTrigger', () => {
+  const { container } = render(
+    <Form>
+      <Form.Item
+        label="字段A"
+        name="username"
+        required
+        validateTrigger="onBlur"
+        rules={[{ required: true, message: '请输入字段A' }]}
+      >
+        <Input placeholder="请输入字段A" type="text" />
+      </Form.Item>
+    </Form>
+  )
+  const input = container.querySelector('.nut-input-native')
+  if (input) {
+    fireEvent.focus(input)
+    fireEvent.blur(input)
+    waitFor(() => {
+      const errorMessage = container.querySelector('.nut-form-item-body-tips')
+      expect(errorMessage).toBeTruthy()
+    })
+  }
+})
+
 test('useForm', () => {
   const App = () => {
     const [form] = Form.useForm()
