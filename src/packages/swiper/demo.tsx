@@ -140,7 +140,12 @@ const SwiperDemo = () => {
       </div>
       <h2>{translated.focus}</h2>
       <div className="demo-box" style={{ height: 150 }}>
-        <Swiper loop slideSize={300} effect={{ name: 'focus', scale: 0.9 }}>
+        <Swiper
+          loop
+          slideSize={300}
+          effect={{ name: 'focus', scale: 0.9 }}
+          indicator
+        >
           {list.map((item, index) => {
             return (
               <Swiper.Item key={item}>
@@ -153,7 +158,7 @@ const SwiperDemo = () => {
       <h2>{translated.asyc}</h2>
       <div className="demo-box" style={{ height: 150 }}>
         {setAsyncList.length ? (
-          <Swiper>
+          <Swiper indicator>
             {asyncList.map((item, index) => {
               return (
                 <Swiper.Item key={item}>
@@ -166,7 +171,7 @@ const SwiperDemo = () => {
       </div>
       <h2>{translated.size}</h2>
       <div className="demo-box" style={{ height: 150 }}>
-        <Swiper slideSize={250}>
+        <Swiper slideSize={250} indicator>
           {list.map((item, index) => {
             return (
               <Swiper.Item key={item}>
@@ -219,7 +224,7 @@ const SwiperDemo = () => {
       </div>
       <h2>{translated.vertical}</h2>
       <div className="demo-box" style={{ height: 150 }}>
-        <Swiper loop direction="vertical">
+        <Swiper loop direction="vertical" indicator>
           {list.map((item, index) => {
             return (
               <Swiper.Item key={item}>
@@ -231,7 +236,12 @@ const SwiperDemo = () => {
       </div>
       <h2>{translated.horizontalCenter}</h2>
       <div className="demo-box" style={{ height: 150 }}>
-        <Swiper loop style={{ '--swiper-offset': '6%' }} slideSize={300}>
+        <Swiper
+          loop
+          style={{ '--swiper-offset': '6%' }}
+          slideSize={300}
+          indicator
+        >
           {list.map((item, index) => {
             return (
               <Swiper.Item key={item}>
@@ -248,6 +258,7 @@ const SwiperDemo = () => {
           direction="vertical"
           style={{ '--swiper-offset': '13%' }}
           slideSize={120}
+          indicator
         >
           {list.map((item, index) => {
             return (
