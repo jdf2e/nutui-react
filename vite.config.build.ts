@@ -21,17 +21,7 @@ if (projectID) {
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
-    alias: [
-      { find: '@', replacement: resolve(__dirname, './src') },
-      {
-        find: '@nutui/nutui-react',
-        replacement: resolve(__dirname, './src/packages/nutui.react.ts'),
-      },
-      {
-        find: '@nutui/nutui-react-taro',
-        replacement: resolve(__dirname, './src/packages/nutui.react.taro.ts'),
-      },
-    ],
+    alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
   },
   plugins: [
     dts({
