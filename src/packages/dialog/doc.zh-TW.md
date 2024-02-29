@@ -50,7 +50,7 @@ const App = () => {
           });
         }} 
       />
-      <Cell title="底部按鈕 垂直佈局 使用" onClick={() => {
+      <Cell title="底部按鈕 垂直布局 使用" onClick={() => {
           Dialog.alert({
             title: '提示',
             content: '支持函數調用和組件調用兩種方式。',
@@ -90,7 +90,7 @@ export default App;
 
 :::
 
-### 標簽式使用
+### 標籤式使用
 
 :::demo
 
@@ -110,16 +110,16 @@ const App = () => {
     <>
       <Cell title="基礎彈框" onClick={() => setVisible1(true)} />
       <Dialog 
-        title="標簽式使用"
+        title="標籤式使用"
         visible={visible1}
         onConfirm={() => setVisible1(false)}
         onCancel={() => setVisible1(false)}
       >
         如果需要在彈窗內嵌入組件或其他自定義內容，可以使用組件調用的方式。
       </Dialog>
-      <Cell title="底部按鈕 垂直佈局 使用" onClick={() => setVisible2(true)} />
+      <Cell title="底部按鈕 垂直布局 使用" onClick={() => setVisible2(true)} />
       <Dialog 
-        title="標簽式使用"
+        title="標籤式使用"
         visible={visible2}
         footerDirection='vertical'
         onConfirm={() => setVisible2(false)}
@@ -246,8 +246,10 @@ export default App;
 | hideConfirmButton | 是否隱藏確定按鈕 | `boolean` | `false` |
 | hideCancelButton | 是否隱藏取消按鈕 | `boolean` | `false` |
 | disableConfirmButton | 禁用確定按鈕 | `boolean` | `false` |
+| closeIcon | 關閉按鈕 | `boolean` \| `ReactNode` | `false` |
+| closeIconPosition | 關閉按鈕位置 | `top-left` \| `top-right` | `top-right` |
 | closeOnOverlayClick | 點擊蒙層是否關閉對話框 | `boolean` | `true` |
-| footerDirection | 使用橫縱方嚮 可選值 horizontal、vertical | `string` | `horizontal` |
+| footerDirection | 使用橫縱方向 可選值 horizontal、vertical | `string` | `horizontal` |
 | lockScroll | 背景是否鎖定 | `boolean` | `true` |
 | beforeCancel | 取消前回調，點擊取消時觸發 | `() => boolean` | `-` |
 | beforeClose | 關閉前回調 | `() => boolean` | `-` |
@@ -256,10 +258,8 @@ export default App;
 | onClose | 關閉回調，任何情況關閉彈窗都會觸發 | `() => void` | `-` |
 | onClick | 點擊自身回調 | `() => void` | `-` |
 | onOverlayClick | 點擊蒙層觸發 | `() => void` | `-` |
-| closeIconPosition | 關閉按鈕位置 | `top-left` \| `top-right` | `top-right` |
-| closeIcon | 關閉按鈕 | `boolean` \| `ReactNode` | `false` |
 
-對於**指令式**創建出來的 Dialog，**併不會感知父組件的重渲染和其中 state 的更新**，因此下面這種寫法是錯誤的：
+對於**指令式**創建出來的 Dialog，**並不會感知父組件的重渲染和其中 state 的更新**，因此下面這種寫法是錯誤的：
 
 ```tsx
 import React from 'react'
@@ -288,7 +288,7 @@ export default function App() {
 }
 ```
 
-## 主題定制
+## 主題定製
 
 ### 樣式變量
 
@@ -307,11 +307,11 @@ export default function App() {
 | \--nutui-dialog-content-text-align | 對話框內容文本對齊方式 | `left` |
 | \--nutui-dialog-header-font-size | 對話框標題字體大小 | `$font-size-large` |
 | \--nutui-dialog-header-font-weight | 對話框標題字重 | `normal` |
-| \--nutui-dialog-footer-justify-content | 對話框底部按鈕排佈 | `space-around` |
+| \--nutui-dialog-footer-justify-content | 對話框底部按鈕排布 | `space-around` |
 | \--nutui-dialog-footer-button-min-width | 對話框底部按鈕最小寬度 | `117px` |
 | \--nutui-dialog-footer-cancel-margin-right | 對話框取消按鈕的margin-right | `12px` |
 | \--nutui-dialog-footer-ok-max-width | 對話框確認按鈕的最大寬度 | `128px` |
-| \--nutui-dialog-vertical-footer-ok-margin-top | 對話框底部按鈕縱嚮排佈時的margin值 | `5px` |
+| \--nutui-dialog-vertical-footer-ok-margin-top | 對話框底部按鈕縱向排布時的margin值 | `5px` |
 | \--nutui-dialog-close-width | 對話框關閉按鈕的寬度 | `18px` |
 | \--nutui-dialog-close-height | 對話框關閉按鈕的高度 | `18px` |
 | \--nutui-dialog-close-color | 對話框關閉按鈕的顏色 | `#8c8c8c` |

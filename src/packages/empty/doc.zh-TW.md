@@ -2,7 +2,7 @@
 
 ## 介紹
 
-空狀態時的佔位提示
+空狀態時的占位提示
 
 ## 安裝
 
@@ -160,7 +160,7 @@ export default App;
 | status | 默認圖片錯誤類型 | `empty` \| `error` \| `network` | `empty` |
 | actions | 可用於處理操作的一組數據 | `Array` | `[]` |
 
-## 主題定制
+## 主題定製
 
 ### 樣式變量
 

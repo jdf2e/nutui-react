@@ -79,7 +79,7 @@ import { Rate } from '@nutui/nutui-react';
 import { HeartFill } from '@nutui/icons-react';
 
 const App = () => {
-  return (
+  return ( 
     <Rate
       checkedIcon={<HeartFill />}
       defaultValue={3}
@@ -102,7 +102,7 @@ import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Rate count="6" defaultValue={3} />
+    <Rate count={6} defaultValue={3} />
   );
 };  
 export default App;
@@ -121,7 +121,7 @@ import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
   return (
-    <Rate count={5} defaultValue={2} min={3}/>
+    <Rate count={5} defaultValue={2} min={3} />
   );
 };  
 export default App;
@@ -162,8 +162,10 @@ import  React from "react";
 import { Rate } from '@nutui/nutui-react';
 
 const App = () => {
-  return (
+  return ( 
+    <>   
     <Rate disabled defaultValue={3} />
+    </>
   );
 };  
 export default App;
@@ -203,8 +205,10 @@ const App = () => {
   const onChange = (val: any) => {
     console.log(val)
   }
-  return (
+  return ( 
+    <>   
     <Rate defaultValue={3} onChange={onChange} />
+    </>
   );
 };  
 export default App;
@@ -256,7 +260,7 @@ export default App;
 
 ### Props
 
-| 属性 | 說明 | 類型 | 默認值 |
+| 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | defaultValue | 非受控的 star 默認值 | `number` | `0` |
 | value | 受控的 star 數值 | `number` | `0` |
@@ -268,10 +272,10 @@ export default App;
 | readOnly | 是否只讀 | `boolean` | `false` |
 | disabled | 是否禁用 | `boolean` | `false` |
 | touchable | 是否允許滑動選擇 ｜ `boolean` | `false` |
-| onChange | 当前 star 数修改时触发 | `(value: number) => void` | `-` |
-| onTouchEnd |  touch 滑動結束時觸發 | `(event: TouchEvent, value: number) => void` | `-` |
+| onChange | 當前 star 數修改時觸發 | `(value: number) => void` | `-` |
+| onTouchEnd | touch 滑動結束時觸發 | `(event: TouchEvent, value: number) => void` | `-` |
 
-## 主題定制
+## 主題定製
 
 ### 樣式變量
 
