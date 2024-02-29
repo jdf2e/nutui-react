@@ -147,8 +147,8 @@ const App = () => {
   }
 
   const customTheme2 = {
-    nutuiInputnumberButtonWidth: '30px',
-    nutuiInputnumberButtonHeight: '30px',
+    nutuiInputnumberButtonWidth: '24px',
+    nutuiInputnumberButtonHeight: '24px',
     nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
     nutuiInputnumberInputBackgroundColor: '#fff',
     nutuiInputnumberInputMargin: '0 2px',
@@ -296,12 +296,11 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-inputnumber-input-font-size | The font size of the input in the number input box | `14px` |
 | \--nutui-inputnumber-input-border | The border value of the input in the number input box | `0` |
 | \--nutui-inputnumber-input-border-radius | The rounded corners of the input in the number input box | `6px` |
-| \--nutui-inputnumber-input-margin | The rounded corners of the input in the number input box | `0 6px` |
-
-| \--nutui-inputnumber-button-width | The width of the left and right buttons of the number input box | `16px` |
+| \--nutui-inputnumber-input-margin | The rounded corners of the input in the number input box | `0` |
+| \--nutui-inputnumber-button-width | The width of the left and right buttons of the number input box | `14px` |
 | \--nutui-inputnumber-button-height | The height of the left and right buttons of the number input box | `16px` |
 | \--nutui-inputnumber-button-border-radius | The rounded corners of the left and right buttons of the number input box | `30px` |
-| \--nutui-inputnumber-button-background-color | The background color of the left and right buttons of the number input box | `$white` |
+| \--nutui-inputnumber-button-background-color | The background color of the left and right buttons of the number input box | `transparent` |
 | \--nutui-inputnumber-icon-color | The color of the icon in the number input box | `$color-text` |
 | \--nutui-inputnumber-icon-size | The size of the icon in the number input box | `8px` |
 | \--nutui-inputnumber-disabled-color | The color of the disabled status of inputnumber | `$color-text-disabled` |

@@ -597,14 +597,11 @@ $inputnumber-input-border-radius: var(
   --nutui-inputnumber-input-border-radius,
   6px
 ) !default;
-$inputnumber-input-margin: var(
-  --nutui-inputnumber-input-margin,
-  0 6px
-) !default;
-$inputnumber-button-width: var(--nutui-inputnumber-button-width, 16px) !default;
+$inputnumber-input-margin: var(--nutui-inputnumber-input-margin, 0) !default;
+$inputnumber-button-width: var(--nutui-inputnumber-button-width, 14px) !default;
 $inputnumber-button-height: var(
   --nutui-inputnumber-button-height,
-  16px
+  24px
 ) !default;
 $inputnumber-button-border-radius: var(
   --nutui-inputnumber-button-border-radius,
@@ -612,7 +609,7 @@ $inputnumber-button-border-radius: var(
 ) !default;
 $inputnumber-button-background-color: var(
   --nutui-inputnumber-button-background-color,
-  $color-background
+  transparent
 ) !default;
 $inputnumber-icon-color: var(
   --nutui-inputnumber-icon-color,

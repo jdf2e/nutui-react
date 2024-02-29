@@ -147,8 +147,8 @@ const App = () => {
   }
 
   const customTheme2 = {
-    nutuiInputnumberButtonWidth: '30px',
-    nutuiInputnumberButtonHeight: '30px',
+    nutuiInputnumberButtonWidth: '24px',
+    nutuiInputnumberButtonHeight: '24px',
     nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
     nutuiInputnumberInputBackgroundColor: '#fff',
     nutuiInputnumberInputMargin: '0 2px',
@@ -296,12 +296,11 @@ export default App;
 | \--nutui-inputnumber-input-font-size | 數字輸入框中input的字號大小 | `14px` |
 | \--nutui-inputnumber-input-border | 數字輸入框中input的border值 | `0` |
 | \--nutui-inputnumber-input-border-radius | 數字輸入框中input的圓角 | `6px` |
-| \--nutui-inputnumber-input-margin | 數字輸入框中input的margin值 | `0 6px` |
-
-| \--nutui-inputnumber-button-width | 數字輸入框左右按鈕的寬度 | `16px` |
+| \--nutui-inputnumber-input-margin | 數字輸入框中input的margin值 | `0` |
+| \--nutui-inputnumber-button-width | 數字輸入框左右按鈕的寬度 | `14px` |
 | \--nutui-inputnumber-button-height | 數字輸入框左右按鈕的高度 | `16px` |
 | \--nutui-inputnumber-button-border-radius | 數字輸入框左右按鈕的圓角 | `30px` |
-| \--nutui-inputnumber-button-background-color | 數字輸入框左右按鈕的背景色 | `$white` |
+| \--nutui-inputnumber-button-background-color | 數字輸入框左右按鈕的背景色 | `transparent` |
 | \--nutui-inputnumber-icon-color | 數字輸入框中icon的顏色 | `$color-text` |
 | \--nutui-inputnumber-icon-size | 數字輸入框中icon的大小 | `8px` |
 | \--nutui-inputnumber-disabled-color | 數字輸入框禁用色 | `$color-text-disabled` |
