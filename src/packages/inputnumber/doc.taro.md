@@ -277,6 +277,7 @@ export default App;
 | value | 当前值，受控值 | `string`  \|  `number` | `-` |
 | min | 最小值限制 | `string`  \|  `number` | `1` |
 | max | 最大值限制 | `string`  \|  `number` | `9999` |
+| type | input 的类型 | `digit`  \|  `number` | `digit` |
 | step | 步长 | `string`  \|  `number` | `1` |
 | digits | 设置保留的小数位 | `string`  \|  `number` | `0` |
 | disabled | 禁用所有功能 | `boolean` | `false` |
@@ -306,7 +307,6 @@ export default App;
 | \--nutui-inputnumber-input-border | 数字输入框中input的border值 | `0` |
 | \--nutui-inputnumber-input-border-radius | 数字输入框中input的圆角 | `6px` |
 | \--nutui-inputnumber-input-margin | 数字输入框中input的margin值 | `0 6px` |
-
 | \--nutui-inputnumber-button-width | 数字输入框左右按钮的宽度 | `16px` |
 | \--nutui-inputnumber-button-height | 数字输入框左右按钮的高度 | `16px` |
 | \--nutui-inputnumber-button-border-radius | 数字输入框左右按钮的圆角 | `30px` |
