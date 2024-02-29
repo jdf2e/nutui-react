@@ -177,7 +177,8 @@ export const Elevator: FunctionComponent<
       calculateHeight()
     }
     const target = e.target as Element
-    const { scrollTop } = target
+    let { scrollTop } = target
+    scrollTop = Math.ceil(scrollTop)
     state.current.scrollY = scrollTop
     setScrollY(scrollTop)
     for (let i = 0; i < listHeight.length - 1; i++) {
