@@ -226,7 +226,7 @@ export const InputNumber: FunctionComponent<
           className="nut-number-input"
           type={type}
           ref={inputRef}
-          inputMode="decimal"
+          inputMode={type === 'digit' ? 'decimal' : 'numeric'}
           disabled={disabled}
           readOnly={readOnly}
           value={inputValue}
