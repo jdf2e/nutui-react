@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import { Minus, Plus } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
+import { InputProps } from '@tarojs/components'
 import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -16,6 +17,7 @@ export interface InputNumberProps extends BasicComponent {
   allowEmpty: boolean
   min: number | string
   max: number | string
+  type?: Extract<InputProps['type'], 'number' | 'digit'>
   disabled: boolean
   readOnly: boolean
   step: number
@@ -40,6 +42,7 @@ const defaultProps = {
   allowEmpty: false,
   min: 1,
   max: 9999,
+  type: 'digit',
   step: 1,
   digits: 0,
   async: false,
@@ -55,6 +58,7 @@ export const InputNumber: FunctionComponent<
     disabled,
     min,
     max,
+    type,
     readOnly,
     value,
     defaultValue,
@@ -220,9 +224,9 @@ export const InputNumber: FunctionComponent<
       <>
         <input
           className="nut-number-input"
-          type="digit"
+          type={type}
           ref={inputRef}
-          inputMode="decimal"
+          inputMode={type === 'digit' ? 'decimal' : 'numeric'}
           disabled={disabled}
           readOnly={readOnly}
           value={inputValue}
