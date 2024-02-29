@@ -142,7 +142,7 @@ export const Elevator: FunctionComponent<
       const delta =
         (touchState.current.y2 - touchState.current.y1) / spaceHeight || 0
       // delta 是一个浮点数, 需要四舍五入一下, 否则页面会找不到最终计算后的index
-      const cacheIndex = state.current.anchorIndex + Math.ceil(delta)
+      const cacheIndex = state.current.anchorIndex + Math.round(delta)
       setCodeIndex(cacheIndex)
       scrollTo(cacheIndex)
       resetScrollState()
