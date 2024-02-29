@@ -224,6 +224,10 @@
   }
 }
 
+.nut-calendar-popup .nut-popup-title-right {
+  top: 7px !important;
+}
+
 [dir='rtl'] .nut-calendar,
 .nut-rtl .nut-calendar {
   &-day {
@@ -245,8 +249,4 @@
       }
     }
   }
-}
-
-.nut-calendar-popup .nut-popup-title-right {
-  top: 7px !important;
 }

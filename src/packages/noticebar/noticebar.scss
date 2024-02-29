@@ -160,6 +160,26 @@
       margin-left: 0;
       margin-right: $noticebar-icon-gap;
     }
+
+    .play {
+      animation: nut-notice-bar-play-rtl linear both running;
+    }
+
+    .play-infinite {
+      animation: nut-notice-bar-play-infinite-rtl linear infinite both running;
+    }
+
+    @keyframes nut-notice-bar-play-rtl {
+      to {
+        transform: translate3d(100%, 0, 0);
+      }
+    }
+
+    @keyframes nut-notice-bar-play-infinite-rtl {
+      to {
+        transform: translate3d(100%, 0, 0);
+      }
+    }
   }
 
   .nut-noticebar-vertical {

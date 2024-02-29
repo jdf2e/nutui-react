@@ -141,13 +141,11 @@
       left: 0;
       border-right: 10px solid transparent;
       border-left: 10px solid $color-primary;
-
       &-checked {
         left: auto;
         right: 50%;
         transform: translate(3px, -3px);
       }
-
       .nut-icon {
         &:before {
           margin-left: 0;

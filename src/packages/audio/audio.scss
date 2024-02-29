@@ -15,11 +15,6 @@
       background: $white;
       border-radius: 50%;
       box-shadow: 0 0 8px $color-text-disabled;
-
-      .nut-icon-am-rotate {
-        transform: rotate((360));
-        animation-timing-function: ease-in-out;
-      }
     }
 
     .nut-audio-icon-stop {

@@ -1,7 +1,5 @@
 .nut-checkboxgroup {
   .nut-checkbox {
-    margin-bottom: 5px;
-
     &-button {
       background-color: $color-background;
     }
@@ -9,6 +7,7 @@
 
   &-vertical {
     .nut-checkbox {
+      margin-bottom: 5px;
       &.nut-checkbox-reverse {
         width: 100%;
         justify-content: space-between;
@@ -33,7 +32,6 @@
     }
   }
 }
-
 [dir='rtl'] .nut-checkboxgroup,
 .nut-rtl .nut-checkboxgroup {
   .nut-checkbox {
