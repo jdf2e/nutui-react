@@ -33,6 +33,33 @@ export default App
 
 :::
 
+### 居中布局，不支持滾動
+
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { NoticeBar } from '@nutui/nutui-react';
+import { ArrowRight } from '@nutui/icons-react'
+
+const App = () => {
+    const text = 'NutUI-React 是京東風格的 React 移動端組件庫，開發和服務於移動 Web 界面的企業級產品。'
+    const textShort = 'NutUI-React 是移動端組件庫'
+    return (
+      <>
+        <NoticeBar content={text} align="center" wrap rightIcon={<ArrowRight width="12px" height="12px"  />} />
+        <br />
+        <NoticeBar content={text} align="center" rightIcon={<ArrowRight width="12px" height="12px"  />} />
+        <br />
+        <NoticeBar content={textShort} align="center" rightIcon={<ArrowRight width="12px" height="12px"  />} />
+      </>
+    )
+}
+export default App
+```
+
+:::
+
 ### 自定義主題
 
 :::demo
@@ -298,6 +325,7 @@ export default App
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
+| align | 布局方式 | `left` \| `center` | `left` |
 | direction | 滾動的方嚮，可選 horizontal、vertical | `string` | `horizontal` |
 | content | 提示的信息 | `string` | `-` |
 | closeable | 是否啟用關閉模式 | `boolean` | `false` |

@@ -1,6 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { Failure, Fabulous } from '@nutui/icons-react-taro'
+import { Failure, Fabulous, ArrowRight } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { NoticeBar } from '@/packages/nutui.react.taro'
 import '@/packages/noticebar/demo.scss'
@@ -11,6 +11,7 @@ const NoticeBarDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础使用',
+      align: '居中布局，不支持滚动',
       customTheme: '自定义主题',
       scrollable: '滚动播放',
       mode: '关闭模式',
@@ -31,6 +32,7 @@ const NoticeBarDemo = () => {
     },
     'en-US': {
       basic: 'Basic Usage',
+      align: 'The layout is centered and does not support scrolling',
       customTheme: 'custom theme',
       scrollable: 'Scrollable',
       mode: 'Mode',
@@ -65,7 +67,25 @@ const NoticeBarDemo = () => {
       >
         <h2>{translated.basic}</h2>
         <NoticeBar content={translated.text} />
-
+        <h2>{translated.align}</h2>
+        <NoticeBar
+          content={translated.text}
+          align="center"
+          wrap
+          rightIcon={<ArrowRight size="12" />}
+        />
+        <br style={{ display: 'block', height: '10px' }} />
+        <NoticeBar
+          content={translated.text}
+          align="center"
+          rightIcon={<ArrowRight size="12" />}
+        />
+        <br style={{ display: 'block', height: '10px' }} />
+        <NoticeBar
+          content={translated.textShort}
+          align="center"
+          rightIcon={<ArrowRight size="12" />}
+        />
         <h2>{translated.customTheme}</h2>
         <ConfigProvider
           theme={{

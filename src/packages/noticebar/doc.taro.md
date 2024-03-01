@@ -33,6 +33,34 @@ export default App
 
 :::
 
+
+### 居中布局，不支持滚动
+
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { NoticeBar } from '@nutui/nutui-react-taro';
+import { ArrowRight } from '@nutui/icons-react-taro'
+
+const App = () => {
+    const text = 'NutUI-React 是京东风格的 React 移动端组件库，开发和服务于移动 Web 界面的企业级产品。'
+    const textShort = 'NutUI-React 是移动端组件库'
+    return (
+      <>
+        <NoticeBar content={text} align="center" wrap rightIcon={<ArrowRight  size="12" />} />
+        <br />
+        <NoticeBar content={text} align="center" rightIcon={<ArrowRight  size="12" />} />
+        <br />
+        <NoticeBar content={textShort} align="center" rightIcon={<ArrowRight  size="12"  />} />
+      </>
+    )
+}
+export default App
+```
+
+:::
+
 ### 自定义主题
 
 :::demo
@@ -286,6 +314,7 @@ export default App
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
+| align | 布局方式 | `left` \| `center` | `left` |
 | direction | 滚动的方向，可选 horizontal、vertical | `string` | `horizontal` |
 | content | 提示的信息 | `string` | `-` |
 | closeable | 是否启用关闭模式 | `boolean` | `false` |

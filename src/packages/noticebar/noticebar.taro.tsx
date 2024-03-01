@@ -7,12 +7,15 @@ import React, {
   useMemo,
   ReactNode,
 } from 'react'
+import { View } from '@tarojs/components'
 import { Close, Notice } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
+export type NoticeBarAlign = 'left' | 'center'
 export interface NoticeBarProps extends BasicComponent {
+  align: NoticeBarAlign
   direction: string
   list: any
   duration: number
@@ -34,6 +37,7 @@ export interface NoticeBarProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
+  align: 'left',
   direction: 'horizontal',
   list: [],
   duration: 1000,
@@ -55,6 +59,7 @@ export const NoticeBar: FunctionComponent<
     children,
     className,
     style,
+    align,
     direction,
     list,
     duration,
@@ -169,7 +174,8 @@ export const NoticeBar: FunctionComponent<
       const contentRes = await getRectByTaro(contentRef.current)
       const wrapW = warpRes.width
       const offsetW = contentRes.width
-      const canScroll = scrollable == null ? offsetW > wrapW : scrollable
+      const canScroll =
+        align === 'left' && scrollable == null ? offsetW > wrapW : scrollable
       SetIsCanScroll(canScroll)
       if (canScroll) {
         SetWrapWidth(wrapW)
@@ -232,7 +238,7 @@ export const NoticeBar: FunctionComponent<
   }
 
   const isEllipsis = () => {
-    if (isCanScroll == null) {
+    if (isCanScroll == null && align === 'left') {
       return wrap
     }
     return !isCanScroll && !wrap
@@ -422,23 +428,27 @@ export const NoticeBar: FunctionComponent<
   }
 
   const noticebarClass = classNames({
-    'nut-noticebar-box': true,
-    [`nut-noticebar-box-wrapable`]: wrap,
+    [`${classPrefix}-box`]: true,
+    [`${classPrefix}-box-wrapable`]: wrap,
+    [`${classPrefix}-box-${align}`]: true,
   })
+
+  const cls = classNames(classPrefix, className)
+
   useEffect(() => {
     return () => {
       stopAutoPlay()
     }
   }, [])
   return (
-    <div className={`${classPrefix} ${className || ''}`} style={style}>
+    <View className={cls} style={style}>
       {showNoticeBar && direction === 'horizontal' ? (
-        <div className={noticebarClass} style={barStyle} onClick={handleClick}>
+        <View className={noticebarClass} style={barStyle} onClick={handleClick}>
           {leftIcon ? (
-            <div className="nut-noticebar-box-left-icon">{leftIcon}</div>
+            <View className="nut-noticebar-box-left-icon">{leftIcon}</View>
           ) : null}
-          <div ref={wrapRef} className="nut-noticebar-box-wrap">
-            <div
+          <View ref={wrapRef} className="nut-noticebar-box-wrap">
+            <View
               ref={contentRef}
               className={`nut-noticebar-box-wrap-content ${animationClass} ${
                 isEllipsis() ? 'nut-ellipsis' : ''
@@ -448,30 +458,33 @@ export const NoticeBar: FunctionComponent<
             >
               {children}
               {content}
-            </div>
-          </div>
+            </View>
+          </View>
           {closeable || rightIcon ? (
-            <div className="nut-noticebar-box-right-icon" onClick={onClickIcon}>
+            <View
+              className="nut-noticebar-box-right-icon"
+              onClick={onClickIcon}
+            >
               {rightIcon || <Close size={12} />}
-            </div>
+            </View>
           ) : null}
-        </div>
+        </View>
       ) : null}
       {showNoticeBar && scrollList.current.length > 0 && isVertical ? (
-        <div
+        <View
           className="nut-noticebar-vertical"
           style={barStyle}
           ref={container}
           onClick={handleClick}
         >
           {leftIcon ? (
-            <div className="nut-noticebar-box-left-icon">{leftIcon}</div>
+            <View className="nut-noticebar-box-left-icon">{leftIcon}</View>
           ) : null}
           {children ? (
-            <div className="nut-noticebar-box-wrap" ref={innerRef}>
+            <View className="nut-noticebar-box-wrap" ref={innerRef}>
               {scrollList.current.map((item: string, index: number) => {
                 return (
-                  <div
+                  <View
                     style={itemStyle(index)}
                     key={index}
                     onClick={(e) => {
@@ -479,19 +492,19 @@ export const NoticeBar: FunctionComponent<
                     }}
                   >
                     {item}
-                  </div>
+                  </View>
                 )
               })}
-            </div>
+            </View>
           ) : (
-            <div
+            <View
               className="nut-noticebar-box-horseLamp-list"
               style={horseLampStyle}
             >
               {scrollList.current.map((item: string, index: number) => {
                 return (
                   // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
-                  <div
+                  <View
                     className="nut-noticebar-box-horseLamp-list-item"
                     style={{ height }}
                     key={index}
@@ -500,22 +513,22 @@ export const NoticeBar: FunctionComponent<
                     }}
                   >
                     {item}
-                  </div>
+                  </View>
                 )
               })}
-            </div>
+            </View>
           )}
-          <div
+          <View
             className="nut-noticebar-box-right-icon"
             onClick={(e) => {
               handleClickIcon(e)
             }}
           >
             {rightIcon || (closeable ? <Close size={12} /> : null)}
-          </div>
-        </div>
+          </View>
+        </View>
       ) : null}
-    </div>
+    </View>
   )
 }
 

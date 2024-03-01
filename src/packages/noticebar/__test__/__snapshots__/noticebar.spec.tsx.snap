@@ -3,10 +3,10 @@
 exports[`noticebar base test 1`] = `
 <div>
   <div
-    class="nut-noticebar "
+    class="nut-noticebar"
   >
     <div
-      class="nut-noticebar-box"
+      class="nut-noticebar-box nut-noticebar-box-left"
     >
       <div
         class="nut-noticebar-box-left-icon"
@@ -44,10 +44,10 @@ exports[`noticebar base test 1`] = `
 exports[`scrollable test 1`] = `
 <div>
   <div
-    class="nut-noticebar "
+    class="nut-noticebar"
   >
     <div
-      class="nut-noticebar-box"
+      class="nut-noticebar-box nut-noticebar-box-left"
     >
       <div
         class="nut-noticebar-box-left-icon"
