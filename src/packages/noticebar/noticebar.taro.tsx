@@ -7,7 +7,7 @@ import React, {
   useMemo,
   ReactNode,
 } from 'react'
-import { View } from '@tarojs/components'
+import { ITouchEvent, View } from '@tarojs/components'
 import { Close, Notice } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
@@ -187,12 +187,12 @@ export const NoticeBar: FunctionComponent<
       }
     }, 0)
   }
-  const handleClick = (event: MouseEvent) => {
+  const handleClick = (event: ITouchEvent) => {
     click && click(event)
     onClick && onClick(event)
   }
 
-  const onClickIcon = (event: MouseEvent) => {
+  const onClickIcon = (event: ITouchEvent) => {
     event.stopPropagation()
     SetShowNoticeBar(!closeable)
     close && close(event)
@@ -360,7 +360,7 @@ export const NoticeBar: FunctionComponent<
       })
     })
   }
-  const handleItemClick = (event: MouseEvent, value: any) => {
+  const handleItemClick = (event: ITouchEvent, value: any) => {
     onItemClick && onItemClick(event, value)
   }
 
