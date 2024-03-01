@@ -581,6 +581,7 @@ export default CheckboxGroupList;
 | checked | 是否选中 | `boolean` | `false` |
 | defaultChecked | 初始是否选中 | `boolean` | `false` |
 | disabled | 是否禁用选择 | `boolean` | `false` |
+| list | 列表模式 | `boolean` | `false` |
 | labelPosition | 文本所在的位置 | `left` \| `right` | `right` |
 | icon | 选中前| `ReactNode` | `'CheckNormal'` |
 | activeIcon | 选中后 | `ReactNode` | `'Checked'` |

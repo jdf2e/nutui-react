@@ -190,7 +190,7 @@ export const Checkbox: FunctionComponent<
 
   const renderListItem = () => {
     return (
-      <div className="nut-checkbox-list-item">
+      <div className={`${classPrefix}-list-item`}>
         {renderLabel()}
         {renderIcon()}
       </div>

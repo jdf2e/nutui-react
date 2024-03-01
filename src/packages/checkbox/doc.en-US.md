@@ -579,6 +579,7 @@ export default CheckboxGroupList;
 | checked | whether checked | `boolean` | `false` |
 | defaultChecked | Initially checked or not | `boolean` | `false` |
 | disabled | Whether to disable selection | `boolean` | `false` |
+| list | List model | `boolean` | `false` |
 | labelPosition | The position of the text  | `left` \| `right` | `right` |
 | icon | before selection | `ReactNode` | `'CheckNormal'` |
 | activeIcon |  after selection | `ReactNode` | `'Checked'` |
