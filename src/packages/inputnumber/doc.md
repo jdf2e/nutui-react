@@ -297,7 +297,6 @@ export default App;
 | \--nutui-inputnumber-input-border | 数字输入框中input的border值 | `0` |
 | \--nutui-inputnumber-input-border-radius | 数字输入框中input的圆角 | `6px` |
 | \--nutui-inputnumber-input-margin | 数字输入框中input的margin值 | `0 6px` |
-
 | \--nutui-inputnumber-button-width | 数字输入框左右按钮的宽度 | `16px` |
 | \--nutui-inputnumber-button-height | 数字输入框左右按钮的高度 | `16px` |
 | \--nutui-inputnumber-button-border-radius | 数字输入框左右按钮的圆角 | `30px` |

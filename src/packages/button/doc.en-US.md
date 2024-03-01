@@ -18,25 +18,7 @@ The button supports six types: 'default', 'primary', 'info', 'warning', 'danger'
 
 :::demo
 
-```tsx
-import React from "react";
-import { Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const marginStyle = { margin: 8 }
-  return (
-    <>
-      <Button type="primary" style={marginStyle}>primary</Button>
-      <Button type="info" style={marginStyle}>info</Button>
-      <Button type="default" style={marginStyle}>default</Button>
-      <Button type="danger" style={marginStyle}>danger</Button>
-      <Button type="warning" style={marginStyle}>warning</Button>
-      <Button type="success" style={marginStyle}>success</Button>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -46,23 +28,7 @@ The button supports four types: 'solid', 'outline', 'dashed', 'none', which defa
 
 :::demo
 
-```tsx
-import React from "react";
-import { Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const marginStyle = { margin: 8 }
-  return (
-    <>
-      <Button fill="solid" style={marginStyle}>Solid</Button>
-      <Button type="primary" fill="outline" style={marginStyle}>Outline</Button>
-      <Button type="primary" fill="dashed" style={marginStyle}>Dashed</Button>
-      <Button fill="none" style={marginStyle}>None</Button>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -72,120 +38,7 @@ Set the button icon through the 'icon' property, and provide the 'rightIcon' pro
 
 :::demo
 
-```tsx
-import React from "react";
-import { Button } from '@nutui/nutui-react';
-import { Star, Plus } from '@nutui/icons-react'
-
-const App = () => {
-  const marginStyle = { margin: 8 }
-  return (
-    <>
-      <Button
-        type="primary"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={marginStyle}
-      >
-        Operation Button
-      </Button>
-      <Button
-        type="primary"
-        fill="outline"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={marginStyle}
-      >
-        Operation Button
-      </Button>
-      <Button
-        type="primary"
-        fill="dashed"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={marginStyle}
-      >
-        Operation Button
-      </Button>
-      <Button
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={{
-          margin: 8,
-          backgroundColor: `var(--nutui-color-primary-light)`,
-          borderColor: `var(--nutui-color-primary)`,
-          color: `var(--nutui-color-primary)`,
-        }}
-      >
-        Operation Button
-      </Button>
-      <Button
-        type="default"
-        fill="none"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={{
-          margin: 8,
-          backgroundColor: `var(--nutui-gray-3)`,
-          color: `var(--nutui-gray-7)`,
-        }}
-      >
-        Operation Button
-      </Button>
-      <Button
-        type="default"
-        fill="none"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={{
-          margin: 8,
-          backgroundColor: `var(--nutui-gray-1)`,
-          color: `var(--nutui-gray-7)`,
-        }}
-      >
-        Operation Button
-      </Button>
-      <Button
-        type="default"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={marginStyle}
-      >
-        Operation Button
-      </Button>
-      <Button
-        shape="square"
-        fill="outline"
-        type="primary"
-        icon={<Plus width="20" />}
-        style={marginStyle}
-      />
-      <Button
-        fill="outline"
-        type="primary"
-        icon={<Plus width="20" />}
-        style={marginStyle}
-      />
-      <Button
-        type="primary"
-        fill="dashed"
-        icon={<Plus width="20" />}
-        style={marginStyle}
-      />
-      <Button
-        type="primary"
-        size="large"
-        icon={<Star width={20} height={20} />}
-        rightIcon={<Star width={20} height={20} />}
-        style={marginStyle}
-      >
-        Operation Button
-      </Button>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -195,125 +48,7 @@ Disable the button through the 'disabled' attribute, which is not clickable.
 
 :::demo
 
-```tsx
-import React from "react";
-import { Button } from '@nutui/nutui-react';
-import { Star, Plus } from '@nutui/icons-react'
-
-const App = () => {
-  const marginStyle = { margin: 8 }
-  return (
-    <>
-      <Button
-        disabled
-        type="primary"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={marginStyle}
-      >
-        Disabled State
-      </Button>
-      <Button
-        disabled
-        type="primary"
-        fill="outline"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={marginStyle}
-      >
-        Disabled State
-      </Button>
-      <Button
-        disabled
-        type="primary"
-        fill="dashed"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={marginStyle}
-      >
-        Disabled State
-      </Button>
-      <Button
-        disabled
-        fill="solid"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={marginStyle}
-      >
-        Disabled State
-      </Button>
-      <Button
-        disabled
-        type="default"
-        fill="none"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={{
-          margin: 8,
-          backgroundColor: `var(--nutui-gray-3)`,
-          color: `var(--nutui-gray-5)`,
-        }}
-      >
-        Disabled State
-      </Button>
-      <Button
-        disabled
-        type="default"
-        fill="none"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={{
-          margin: 8,
-          backgroundColor: `var(--nutui-gray-1)`,
-          color: `var(--nutui-gray-5)`,
-        }}
-      >
-        Disabled State
-      </Button>
-      <Button
-        disabled
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={marginStyle}
-      >
-        Disabled State
-      </Button>
-      <Button
-        disabled
-        shape="square"
-        fill="outline"
-        type="primary"
-        icon={<Plus width="20" />}
-        style={marginStyle}
-      />
-      <Button
-        disabled
-        type="primary"
-        icon={<Plus width="20" />}
-        style={marginStyle}
-      />
-      <Button
-        disabled
-        type="primary"
-        fill="dashed"
-        icon={<Plus width="20" />}
-        style={marginStyle}
-      />
-      <Button
-        disabled
-        type="primary"
-        size="large"
-        icon={<Star width={20} height={20} />}
-        rightIcon={<Star width={20} height={20} />}
-        style={marginStyle}
-      >
-        Disabled State
-      </Button>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -323,23 +58,7 @@ Set the button shape through the 'shape' property, support circular, square butt
 
 :::demo
 
-```tsx
-import React from "react";
-import { Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const marginStyle = { margin: 8 }
-  return (
-    <>
-      <Button style={marginStyle} type="primary" shape="square">
-        square
-      </Button>
-      <Button style={marginStyle} type="primary">round</Button>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -347,36 +66,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const [loading, setLoading] = useState(false)
-  const marginStyle = { margin: 8 }
-  return (
-    <>
-      <Button loading type="warning" style={marginStyle}>
-        Loading
-      </Button>
-      <Button
-        loading={loading}
-        type="success"
-        onClick={() => {
-          setTimeout(() => {
-            setLoading(false)
-          }, 1500)
-          setLoading(!loading)
-        }}
-        style={marginStyle}
-      >
-        Click me!
-      </Button>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -386,28 +76,7 @@ Support 'large', 'normal', 'small', 'mini' four sizes, the default is 'normal'.
 
 :::demo
 
-```tsx
-import React from "react";
-import { Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const marginStyle = { margin: 8 }
-  return (
-    <>
-      <Button size="large" type="primary">Large Button</Button>
-      <Button type="primary" style={marginStyle}>Normal Button</Button>
-      <Button style={marginStyle}>Normal Button</Button>
-      <Button size="small" style={marginStyle} type="primary">
-        Small Button
-      </Button>
-      <Button size="mini" style={marginStyle} type="primary">
-        Mini Button
-      </Button>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -417,19 +86,7 @@ Buttons are inline block-level elements by default, and the 'block' attribute al
 
 :::demo
 
-```tsx
-import React from "react";
-import { Button } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Button block type="primary">Block-level elements</Button>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -439,62 +96,7 @@ The color property allows you to customize the color of the button.
 
 :::demo
 
-```tsx
-import React from "react";
-import { Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const marginStyle = { margin: 8 }
-  return (
-    <>
-      <Button
-        style={{
-          margin: 8,
-          '--nutui-button-default-border-color': 'blue',
-          '--nutui-button-default-color': '#fff',
-          '--nutui-button-default-background-color': 'blue',
-        }}
-      >
-        Monochrome
-      </Button>
-      <Button
-        fill="outline"
-        style={{
-          margin: 8,
-          '--nutui-button-default-border-color': '#7232dd',
-          '--nutui-button-default-color': '#7232dd',
-        }}
-      >
-        Monochrome
-      </Button>
-      <Button
-        style={{
-          margin: 8,
-          '--nutui-button-default-border-color': 'transparent',
-          '--nutui-button-default-color': '#fff',
-          '--nutui-button-default-background-color':
-            'rgba(10,101,208,0.75)',
-        }}
-      >
-        Monochrome
-      </Button>
-      <Button
-        type="primary"
-        style={{
-          margin: 8,
-          '--nutui-button-default-border-color': 'transparent',
-          '--nutui-button-default-color': '#fff',
-          '--nutui-button-default-background-color':
-            'linear-gradient(to right, #ff6034, #ee0a24)',
-        }}
-      >
-        Gradient
-      </Button>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
 :::
 

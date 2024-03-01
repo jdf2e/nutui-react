@@ -14,47 +14,64 @@ if (projectID) {
 }
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  server: {
-    host: '0.0.0.0',
-  },
-  base: '/react/',
-  define: {
-    __PROJECTID__: JSON.stringify(`${projectID}` ? `-${projectID}` : ''),
-  },
-  resolve: {
-    alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
-  },
-
-  css: {
-    preprocessorOptions: {
-      scss: {
-        // example : additionalData: `@import "./src/design/styles/variables";`
-        // dont need include file extend .scss
-        additionalData: fileStr,
+export default defineConfig(async () => {
+  const mdx = await import('@mdx-js/rollup')
+  const remarkGfm = await import('remark-gfm')
+  const remarkDirective = await import('remark-directive')
+  return {
+    base: '/react/',
+    resolve: {
+      alias: [
+        { find: '@', replacement: resolve(__dirname, './src') },
+        {
+          find: '@nutui/nutui-react',
+          replacement: resolve(__dirname, './src/packages/nutui.react.ts'),
+        },
+        {
+          find: '@nutui/nutui-react-taro',
+          replacement: resolve(__dirname, './src/packages/nutui.react.taro.ts'),
+        },
+      ],
+    },
+    css: {
+      preprocessorOptions: {
+        scss: {
+          // example : additionalData: `@import "./src/design/styles/variables";`
+          // dont need include file extend .scss
+          additionalData: fileStr,
+        },
+        postcss: {
+          plugins: [atImport({ path: path.join(__dirname, 'src`') })],
+        },
       },
     },
-    postcss: {
-      plugins: [atImport({ path: path.join(__dirname, 'src') })],
-    },
-  },
-  plugins: [
-    reactRefresh(),
-    {
-      name: 'test',
-      apply: 'serve',
-      async load(id) {
-        if (id.endsWith('.scss')) {
-          // 移除 @import 语句
-          const filePath = resolve(process.cwd(), id)
-          const scssCode = await readFileSync(filePath, 'utf-8')
-          const modifiedCode = scssCode.replace(
-            /@import\s+['"][^'"]+['"];/g,
-            ''
-          )
-          return modifiedCode
-        }
+    plugins: [
+      {
+        enforce: 'pre',
+        ...mdx.default({
+          providerImportSource: '@mdx-js/react',
+          mdExtensions: [],
+          mdxExtensions: ['.md'],
+          remarkPlugins: [remarkGfm.default, remarkDirective.default],
+        }),
       },
-    },
-  ],
+      {
+        name: 'test',
+        apply: 'serve',
+        async load(id) {
+          if (id.endsWith('.scss')) {
+            // 移除 @import 语句
+            const filePath = resolve(process.cwd(), id)
+            const scssCode = await readFileSync(filePath, 'utf-8')
+            const modifiedCode = scssCode.replace(
+              /@import\s+['"][^'"]+['"];/g,
+              ''
+            )
+            return modifiedCode
+          }
+        },
+      },
+      reactRefresh(),
+    ],
+  }
 })

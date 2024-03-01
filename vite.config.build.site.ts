@@ -16,7 +16,17 @@ export default defineConfig({
   mode: 'production',
   base: `/h5/react/${projectID === 'jmapp' ? 'jm' : '2x'}`,
   resolve: {
-    alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
+    alias: [
+      { find: '@', replacement: resolve(__dirname, './src') },
+      {
+        find: '@nutui/nutui-react',
+        replacement: resolve(__dirname, './src/packages/nutui.react.ts'),
+      },
+      {
+        find: '@nutui/nutui-react-taro',
+        replacement: resolve(__dirname, './src/packages/nutui.react.taro.ts'),
+      },
+    ],
   },
   css: {
     preprocessorOptions: {

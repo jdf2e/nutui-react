@@ -90,23 +90,27 @@ export default App;
 
 :::
 
-### 標簽式使用
+### 標籤式使用
 
 :::demo
 
 ```tsx
 import React, {useState} from "react";
 import { Cell,Dialog,Image } from '@nutui/nutui-react';
+import { ArrowCornerLeft } from '@nutui/icons-react'
 
 const App = () => {
   const [visible1, setVisible1] = useState(false);
   const [visible2, setVisible2] = useState(false);
   const [visible3, setVisible3] = useState(false);
+  const [visible7, setVisible7] = useState(false);
+  const [visible8, setVisible8] = useState(false);
+  const [visible9, setVisible9] = useState(false);
   return (
     <>
       <Cell title="基礎彈框" onClick={() => setVisible1(true)} />
       <Dialog 
-        title="標簽式使用"
+        title="標籤式使用"
         visible={visible1}
         onConfirm={() => setVisible1(false)}
         onCancel={() => setVisible1(false)}
@@ -115,7 +119,7 @@ const App = () => {
       </Dialog>
       <Cell title="底部按鈕 垂直布局 使用" onClick={() => setVisible2(true)} />
       <Dialog 
-        title="標簽式使用"
+        title="標籤式使用"
         visible={visible2}
         footerDirection='vertical'
         onConfirm={() => setVisible2(false)}
@@ -179,6 +183,44 @@ const App = () => {
       >
         如果需要在彈窗內嵌入組件或其他自定義內容，可以使用組件調用的方式。
       </Dialog>
+      <Cell
+          title="頂部帶關閉按鈕"
+          onClick={() => {
+            setVisible8(true)
+          }}
+        />
+        <Dialog
+          className="test-dialog"
+          title="頂部帶關閉按鈕"
+          visible={visible8}
+          closeIcon
+          onConfirm={() => setVisible8(false)}
+          onCancel={() => setVisible8(false)}
+        >
+          {translated.content}
+        </Dialog>
+        <Cell
+          title="自定義頂部關閉按鈕"
+          onClick={() => {
+            setVisible9(true)
+          }}
+        />
+        <Dialog
+          className="test-dialog"
+          title="自定義頂部關閉按鈕"
+          visible={visible9}
+          closeIcon={<ArrowCornerLeft width="16px" height="16px" />}
+          closeIconPosition="top-left"
+          onConfirm={() => setVisible9(false)}
+          onCancel={() => setVisible9(false)}
+          style={{
+            '--nutui-dialog-close-top': '10px',
+            '--nutui-dialog-close-left': '10px',
+            '--nutui-dialog-close-color': 'red',
+          }}
+        >
+          {translated.content}
+        </Dialog>
     </>
   )
 }
@@ -204,6 +246,8 @@ export default App;
 | hideConfirmButton | 是否隱藏確定按鈕 | `boolean` | `false` |
 | hideCancelButton | 是否隱藏取消按鈕 | `boolean` | `false` |
 | disableConfirmButton | 禁用確定按鈕 | `boolean` | `false` |
+| closeIcon | 關閉按鈕 | `boolean` \| `ReactNode` | `false` |
+| closeIconPosition | 關閉按鈕位置 | `top-left` \| `top-right` | `top-right` |
 | closeOnOverlayClick | 點擊蒙層是否關閉對話框 | `boolean` | `true` |
 | footerDirection | 使用橫縱方向 可選值 horizontal、vertical | `string` | `horizontal` |
 | lockScroll | 背景是否鎖定 | `boolean` | `true` |
@@ -261,10 +305,17 @@ export default function App() {
 | \--nutui-dialog-content-max-height | 對話框內容最大高度 | `268px` |
 | \--nutui-dialog-content-line-height | 對話框內容行高 | `20px` |
 | \--nutui-dialog-content-text-align | 對話框內容文本對齊方式 | `left` |
-| \--nutui-dialog-header-font-size | 對話框標題字体大小 | `$font-size-large` |
+| \--nutui-dialog-header-font-size | 對話框標題字體大小 | `$font-size-large` |
 | \--nutui-dialog-header-font-weight | 對話框標題字重 | `normal` |
 | \--nutui-dialog-footer-justify-content | 對話框底部按鈕排布 | `space-around` |
 | \--nutui-dialog-footer-button-min-width | 對話框底部按鈕最小寬度 | `117px` |
 | \--nutui-dialog-footer-cancel-margin-right | 對話框取消按鈕的margin-right | `12px` |
 | \--nutui-dialog-footer-ok-max-width | 對話框確認按鈕的最大寬度 | `128px` |
 | \--nutui-dialog-vertical-footer-ok-margin-top | 對話框底部按鈕縱向排布時的margin值 | `5px` |
+| \--nutui-dialog-close-width | 對話框關閉按鈕的寬度 | `18px` |
+| \--nutui-dialog-close-height | 對話框關閉按鈕的高度 | `18px` |
+| \--nutui-dialog-close-color | 對話框關閉按鈕的顏色 | `#8c8c8c` |
+| \--nutui-dialog-close-top | 對話框關閉按鈕的top值 | `16px` |
+| \--nutui-dialog-close-left | 對話框關閉按鈕的left值 | `16px` |
+| \--nutui-dialog-close-right | 對話框關閉按鈕的right值 | `16px` |
+
