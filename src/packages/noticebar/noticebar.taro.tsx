@@ -3,7 +3,6 @@ import React, {
   useEffect,
   useRef,
   FunctionComponent,
-  MouseEvent,
   useMemo,
   ReactNode,
 } from 'react'
@@ -230,7 +229,7 @@ export const NoticeBar: FunctionComponent<
   }
 
   // 点击滚动单元
-  const handleClickIcon = (event: MouseEvent) => {
+  const handleClickIcon = (event: ITouchEvent) => {
     event.stopPropagation()
     SetShowNoticeBar(!closeable)
     close && close(event)
