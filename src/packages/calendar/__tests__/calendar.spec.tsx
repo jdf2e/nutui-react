@@ -98,7 +98,7 @@ test('should render slot correctly', async () => {
   }
 
   const renderDayBottom = (date: Day) => {
-    return <span>{date.day <= 10 ? '上旬' : '下旬'}</span>
+    return <span>{Number(date.day) <= 10 ? '上旬' : '下旬'}</span>
   }
 
   const { container } = render(

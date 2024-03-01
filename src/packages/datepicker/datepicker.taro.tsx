@@ -307,7 +307,7 @@ export const DatePicker: FunctionComponent<
         cmin++
       }
 
-      if (cmin <= val) {
+      if (cmin <= Number(val)) {
         index++
       }
     }
