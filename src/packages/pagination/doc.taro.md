@@ -140,7 +140,7 @@ export default App;
 
 ### 自定义按钮
 
-通过itemRender传入自定义方法，入参数为page:{ number:页数, text:"文本", active:"选中状态" } 
+通过itemRender传入自定义方法，入参数为`page: { number:页数, text:"文本", active:"选中状态" }`
 
 :::demo
 

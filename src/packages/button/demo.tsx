@@ -1,8 +1,15 @@
-import React, { useState } from 'react'
-import { Star, Plus } from '@nutui/icons-react'
+import React from 'react'
 import { useTranslate } from '../../sites/assets/locale'
-import { Button } from './button'
 import Cell from '../cell'
+import Demo1 from './demos/h5/demo1'
+import Demo2 from './demos/h5/demo2'
+import Demo3 from './demos/h5/demo3'
+import Demo4 from './demos/h5/demo4'
+import Demo5 from './demos/h5/demo5'
+import Demo6 from './demos/h5/demo6'
+import Demo7 from './demos/h5/demo7'
+import Demo8 from './demos/h5/demo8'
+import Demo9 from './demos/h5/demo9'
 
 interface T {
   ce5c5446: string
@@ -117,357 +124,50 @@ const ButtonDemo = () => {
     },
   })
 
-  const marginStyle = { margin: 8 }
-  const [loading, setLoading] = useState(false)
   return (
     <>
       <div className="demo">
         <h2>{translated.ce5c5446}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
-          <Button style={marginStyle} type="primary">
-            {translated.c38a08ef}
-          </Button>
-          <Button style={marginStyle} type="info">
-            {translated.b840c88f}
-          </Button>
-          <Button style={marginStyle}>{translated.a74a1fd4}</Button>
-          <Button type="danger" style={marginStyle}>
-            {translated['8dab2f66']}
-          </Button>
-          <Button type="warning" style={marginStyle}>
-            {translated.cfbdc781}
-          </Button>
-          <Button type="success" style={marginStyle}>
-            {translated.c3a3a1d2}
-          </Button>
+          <Demo1 />
         </Cell>
 
         <h2>{translated.e51e4582}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
-          <Button fill="solid" style={marginStyle}>
-            Solid
-          </Button>
-          <Button type="primary" fill="outline" style={marginStyle}>
-            Outline
-          </Button>
-          <Button type="primary" fill="dashed" style={marginStyle}>
-            Dashed
-          </Button>
-          <Button fill="none" style={marginStyle}>
-            None
-          </Button>
+          <Demo2 />
         </Cell>
 
         <h2>{translated['0aaad622']}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
-          <Button
-            type="primary"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={marginStyle}
-          >
-            {translated['60a53514']}
-          </Button>
-          <Button
-            type="primary"
-            fill="outline"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={marginStyle}
-          >
-            {translated['60a53514']}
-          </Button>
-          <Button
-            type="primary"
-            fill="dashed"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={marginStyle}
-          >
-            {translated['60a53514']}
-          </Button>
-          <Button
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={{
-              margin: 8,
-              backgroundColor: `var(--nutui-color-primary-light)`,
-              borderColor: `var(--nutui-color-primary)`,
-              color: `var(--nutui-color-primary)`,
-            }}
-          >
-            {translated['60a53514']}
-          </Button>
-          <Button
-            type="default"
-            fill="none"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={{
-              margin: 8,
-              backgroundColor: `var(--nutui-gray-3)`,
-              color: `var(--nutui-gray-7)`,
-            }}
-          >
-            {translated['60a53514']}
-          </Button>
-          <Button
-            type="default"
-            fill="none"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={{
-              margin: 8,
-              backgroundColor: `var(--nutui-gray-1)`,
-              color: `var(--nutui-gray-7)`,
-            }}
-          >
-            {translated['60a53514']}
-          </Button>
-          <Button
-            type="default"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={marginStyle}
-          >
-            {translated['60a53514']}
-          </Button>
-          <Button
-            shape="square"
-            fill="outline"
-            type="primary"
-            icon={<Plus width="20" />}
-            style={marginStyle}
-          />
-          <Button
-            fill="outline"
-            type="primary"
-            icon={<Plus width="20" />}
-            style={marginStyle}
-          />
-          <Button
-            type="primary"
-            fill="dashed"
-            icon={<Plus width="20" />}
-            style={marginStyle}
-          />
-          <Button
-            type="primary"
-            size="large"
-            icon={<Star width={20} height={20} />}
-            rightIcon={<Star width={20} height={20} />}
-            style={marginStyle}
-          >
-            {translated['60a53514']}
-          </Button>
+          <Demo3 />
         </Cell>
 
         <h2>{translated['7db1a8b2']}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
-          <Button
-            disabled
-            type="primary"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={marginStyle}
-          >
-            {translated['7db1a8b2']}
-          </Button>
-          <Button
-            disabled
-            type="primary"
-            fill="outline"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={marginStyle}
-          >
-            {translated['7db1a8b2']}
-          </Button>
-          <Button
-            disabled
-            type="primary"
-            fill="dashed"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={marginStyle}
-          >
-            {translated['60a53514']}
-          </Button>
-          <Button
-            disabled
-            fill="solid"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={marginStyle}
-          >
-            {translated['7db1a8b2']}
-          </Button>
-          <Button
-            disabled
-            type="default"
-            fill="none"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={{
-              margin: 8,
-              backgroundColor: `var(--nutui-gray-3)`,
-              color: `var(--nutui-gray-5)`,
-            }}
-          >
-            {translated['7db1a8b2']}
-          </Button>
-          <Button
-            disabled
-            type="default"
-            fill="none"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={{
-              margin: 8,
-              backgroundColor: `var(--nutui-gray-1)`,
-              color: `var(--nutui-gray-5)`,
-            }}
-          >
-            {translated['7db1a8b2']}
-          </Button>
-          <Button
-            disabled
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={marginStyle}
-          >
-            {translated['7db1a8b2']}
-          </Button>
-          <Button
-            disabled
-            shape="square"
-            fill="outline"
-            type="primary"
-            icon={<Plus width="20" />}
-            style={marginStyle}
-          />
-          <Button
-            disabled
-            type="primary"
-            icon={<Plus width="20" />}
-            style={marginStyle}
-          />
-          <Button
-            disabled
-            type="primary"
-            fill="dashed"
-            icon={<Plus width="20" />}
-            style={marginStyle}
-          />
-          <Button
-            disabled
-            type="primary"
-            size="large"
-            icon={<Star width={20} height={20} />}
-            rightIcon={<Star width={20} height={20} />}
-            style={marginStyle}
-          >
-            {translated['7db1a8b2']}
-          </Button>
+          <Demo4 />
         </Cell>
         <h2>{translated.ce5c5447}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
-          <Button style={marginStyle} type="primary" shape="square">
-            {translated.b840c881}
-          </Button>
-          <Button style={marginStyle} type="primary">
-            {translated.b840c882}
-          </Button>
+          <Demo5 />
         </Cell>
         <h2>{translated.a52bef0c}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
-          <Button loading type="warning" style={marginStyle}>
-            {translated.d04fcbda}
-          </Button>
-          <Button
-            loading={loading}
-            type="success"
-            onClick={() => {
-              setTimeout(() => {
-                setLoading(false)
-              }, 1500)
-              setLoading(!loading)
-            }}
-            style={marginStyle}
-          >
-            Click me!
-          </Button>
+          <Demo6 />
         </Cell>
 
         <h2>{translated['0aaad620']}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
-          <Button size="large" type="primary">
-            {translated.b8a453e3}
-          </Button>
-          <Button type="primary" style={marginStyle}>
-            {translated['248be9e1']}
-          </Button>
-          <Button style={marginStyle}>{translated['248be9e1']}</Button>
-          <Button size="small" style={marginStyle} type="primary">
-            {translated.ea3d02f2}
-          </Button>
-          <Button size="mini" style={marginStyle} type="primary">
-            {translated.ea379d01}
-          </Button>
+          <Demo7 />
         </Cell>
         <h2>{translated.c9e6df49}</h2>
         <Cell>
-          <Button block type="primary">
-            {translated.c9e6df49}
-          </Button>
+          <Demo8 />
         </Cell>
 
         <h2>{translated['781b07fd']}</h2>
 
         <Cell style={{ flexWrap: 'wrap' }}>
-          <Button
-            style={{
-              margin: 8,
-              '--nutui-button-default-border-color': 'blue',
-              '--nutui-button-default-color': '#fff',
-              '--nutui-button-default-background-color': 'blue',
-            }}
-          >
-            {translated['1076d771']}
-          </Button>
-          <Button
-            fill="outline"
-            style={{
-              margin: 8,
-              '--nutui-button-default-border-color': '#7232dd',
-              '--nutui-button-default-color': '#7232dd',
-            }}
-          >
-            {translated['1076d771']}
-          </Button>
-          <Button
-            style={{
-              margin: 8,
-              '--nutui-button-default-border-color': 'transparent',
-              '--nutui-button-default-color': '#fff',
-              '--nutui-button-default-background-color':
-                'rgba(10,101,208,0.75)',
-            }}
-          >
-            {translated['1076d771']}
-          </Button>
-          <Button
-            type="primary"
-            style={{
-              margin: 8,
-              '--nutui-button-default-border-color': 'transparent',
-              '--nutui-button-default-color': '#fff',
-              '--nutui-button-default-background-color':
-                'linear-gradient(to right, #ff6034, #ee0a24)',
-            }}
-          >
-            {translated['6ab47cd2']}
-          </Button>
+          <Demo9 />
         </Cell>
       </div>
     </>
