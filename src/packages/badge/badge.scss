@@ -65,4 +65,11 @@
     right: auto;
     left: -15%;
   }
+
+  &-content {
+    transform: var(
+      --nutui-badge-content-transform,
+      translateY(-50%) translateX(-100%)
+    );
+  }
 }

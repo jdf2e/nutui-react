@@ -298,5 +298,6 @@ export default RadioGroupOptions
 | \--nutui-radio-button-active-border | shape为button选中态的边框 | `1px solid $color-primary` |
 | \--nutui-radio-button-padding | shape为button的内边距 | `5px 18px` |
 | \--nutui-radio-button-border-radius | shape为button的圆角 | `15px` |
-| \--nutui-radiogroup-radio-margin | Group模式下每个 radio 的外边距 | `0 20px 5px 0` |
+| \--nutui-radiogroup-radio-margin | Group模式下每个 radio 的右侧边距 | `20px` |
+| \--nutui-radiogroup-radio-margin-bottom | Group模式下每个 radio 的底部边距 | `5px` |
 | \--nutui-radiogroup-radio-label-margin | Group模式下每个 radio 中的 label 外边距 | `0 5px 0 5px` |

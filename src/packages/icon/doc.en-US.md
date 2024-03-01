@@ -151,7 +151,7 @@ If you need to use more icons based on the existing Icon, you can import the fon
 
 > Solution 1 Introduce [iconfont](https://www.iconfont.cn/) Recommend this solution
 
-Step 1: First generate your custom Icon file in [iconfont](https://www.iconfont.cn/), download and store it in the local project \[detailed instructions\](<https://www.iconfont.cn/help> /detail?spm=a313x.7781069.1998910419.d8d11a391&helptype=code)
+Step 1: First generate your custom Icon file in [iconfont](https://www.iconfont.cn/), download and store it in the local project \[detailed instructions\](https://www.iconfont.cn/help/detail?spm=a313x.7781069.1998910419.d8d11a391&helptype=code)
 
 ```bash
 /assets/font/demo.css

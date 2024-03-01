@@ -73,7 +73,6 @@ export default App;
 
 :::
 
-
 ### Lite Mode
 
 Pagination can be switched to lite mode with lite mode attribute, and you can use when it's swiper and so on.
@@ -105,10 +104,9 @@ export default App;
 
 :::
 
-
 ### Show ellipses
 
-The ellipses button will display after with force-ellipses attribute, click it can jump quickly 
+The ellipses button will display after with force-ellipses attribute, click it can jump quickly
 
 :::demo
 
@@ -139,8 +137,7 @@ export default App;
 
 ### Custom Button
 
-Pass in a custom method through itemRender, parameters: { number: "page number", text: "page text", active: "active page" } 
-
+Pass in a custom method through itemRender, parameters: `{ number: "page number", text: "page text", active: "active page" }`
 
 :::demo
 

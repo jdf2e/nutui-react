@@ -14,7 +14,7 @@
       color: $color-text-help;
     }
     &.title-left {
-      text-align: left;
+      text-align: end;
     }
   }
 
@@ -30,5 +30,12 @@
         }
       }
     }
+  }
+}
+
+[dir='rtl'] .nut-navbar,
+.nut-rtl .nut-navbar {
+  .nut-icon-Share {
+    transform: rotateY(180deg);
   }
 }

@@ -58,7 +58,7 @@ const BackTopDemo = () => {
           threshold={200}
           style={{
             bottom: '50px',
-            right: '20px',
+            insetInlineEnd: '20px',
           }}
           onClick={handleClick}
         >

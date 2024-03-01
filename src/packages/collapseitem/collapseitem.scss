@@ -7,8 +7,8 @@
     content: ' ';
     pointer-events: none;
     right: 16px;
-    bottom: 0;
     left: 16px;
+    bottom: 0;
     border-bottom: $collapse-item-border-bottom;
     -webkit-transform: scaleY(0.5);
     transform: scaleY(0.5);
@@ -35,8 +35,8 @@
       content: ' ';
       pointer-events: none;
       right: 16px;
-      bottom: 0;
       left: 16px;
+      bottom: 0;
       border-bottom: $collapse-item-header-border-bottom;
       -webkit-transform: scaleY(0.5);
       transform: scaleY(0.5);
@@ -105,7 +105,6 @@
     }
   }
 }
-
 [dir='rtl'] .nut-collapse-item,
 .nut-rtl .nut-collapse-item {
   &-icon-box {

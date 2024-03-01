@@ -220,7 +220,12 @@ export const Input = forwardRef(
           name={name}
           className="nut-input-native"
           ref={inputRef}
-          style={{ textAlign: align }}
+          style={{
+            textAlign: `${
+              // eslint-disable-next-line no-nested-ternary
+              align === 'right' ? 'end' : align === 'left' ? 'start' : 'center'
+            }`,
+          }}
           type={inputType(type) as any}
           password={type === 'password'}
           maxlength={maxLength}

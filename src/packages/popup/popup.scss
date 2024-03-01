@@ -307,7 +307,9 @@
     &-right-exit-done,
     &-top-exit-done,
     &-bottom-exit-done {
-      display: none;
+      &.nut-popup {
+        display: none;
+      }
     }
   }
 
@@ -358,24 +360,6 @@
   &-bottom {
     left: auto;
     right: 0;
-  }
-
-  &-right {
-    right: auto;
-    left: 0;
-
-    &.nut-popup-round {
-      border-radius: 0 $popup-border-radius $popup-border-radius 0;
-    }
-  }
-
-  &-left {
-    left: auto;
-    right: 0;
-
-    &.nut-popup-round {
-      border-radius: $popup-border-radius 0 0 $popup-border-radius;
-    }
   }
 
   &-top {

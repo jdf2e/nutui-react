@@ -160,9 +160,11 @@ class FormStore {
       )
     }
     const errs: any[] = []
-    filterEntities.forEach((entity) => {
-      this.validateEntities(entity, errs)
-    })
+    await Promise.all(
+      filterEntities.map(async (entity) => {
+        await this.validateEntities(entity, errs)
+      })
+    )
     return errs
   }
 

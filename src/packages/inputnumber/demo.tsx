@@ -94,8 +94,7 @@ const InputNumberDemo = () => {
   })
 
   const [inputValue, setInputValue] = useState(-1)
-  const overlimit = (e: MouseEvent) => {
-    console.log(e)
+  const overlimit = () => {
     Toast.show({ content: translated['6333c786'], icon: 'warn' })
   }
   const onChange = (value: string | number) => {
@@ -110,20 +109,20 @@ const InputNumberDemo = () => {
       <div className="demo">
         <h2>{translated['84aa6bce']}</h2>
         <Cell>
-          <InputNumber defaultValue={1} />
+          <InputNumber defaultValue={1} allowEmpty />
         </Cell>
 
         <h2>{translated['55cc5fb7']}</h2>
         <Cell>
-          <InputNumber defaultValue={0} min={0} step="5" />
+          <InputNumber defaultValue={0} min={0} step={5} />
         </Cell>
 
         <h2>{translated['9636103a']}</h2>
         <Cell>
           <InputNumber
             defaultValue={10}
-            min="10"
-            max="20"
+            min={10}
+            max={20}
             onOverlimit={overlimit}
           />
         </Cell>
@@ -154,12 +153,12 @@ const InputNumberDemo = () => {
 
         <h2>{translated['3a42134b']}</h2>
         <Cell>
-          <InputNumber defaultValue={5.5} step="0.1" digits="1" readOnly />
+          <InputNumber defaultValue={5.5} step={0.1} digits={1} readOnly />
         </Cell>
 
         <h2>{translated['65bafb1d']}</h2>
         <Cell>
-          <InputNumber value={inputValue} min="-6" onChange={onChange} async />
+          <InputNumber value={inputValue} min={-6} onChange={onChange} async />
         </Cell>
 
         <h2>支持formatter</h2>
@@ -167,7 +166,7 @@ const InputNumberDemo = () => {
           <ConfigProvider theme={customTheme3}>
             <InputNumber
               className="format-width"
-              defaultValue="1000"
+              defaultValue={1000}
               min={10}
               max={15020}
               formatter={(value) =>
@@ -180,7 +179,7 @@ const InputNumberDemo = () => {
           <ConfigProvider theme={customTheme3}>
             <InputNumber
               className="format-width"
-              defaultValue="100"
+              defaultValue={100}
               min={0}
               max={100}
               formatter={(value) => `${value}%`}

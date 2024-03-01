@@ -154,8 +154,11 @@ export default App;
 | --- | --- | --- | --- |
 | image | 图片,支持传入图片 URL | `ReactNode` | `-` |
 | imageSize | 图片大小，number 类型单位为 px | `number` \| `string` | `-` |
+| title | 图片下方的标题 | `ReactNode` | `-` |
 | description | 图片下方的描述文字 | `ReactNode` | `-` |
+| size | 组件整体大小，适配于全屏或半屏 | `small` \| `base` | `base` |
 | status | 默认图片错误类型 | `empty` \| `error` \| `network` | `empty` |
+| actions | 可用于处理操作的一组数据 | `Array` | `[]` |
 
 ## 主题定制
 

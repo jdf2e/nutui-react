@@ -220,6 +220,8 @@ export default App;
 | hideConfirmButton | Whether to hide the OK button | `boolean` | `false` |
 | hideCancelButton | Whether to hide the cancel button | `boolean` | `false` |
 | disableConfirmButton | Disable the OK button | `boolean` | `false` |
+| closeIcon | Close button | `boolean` \| `ReactNode` | `false` |
+| closeIconPosition | Close button position | `top-left` \| `top-right` | `top-right` |
 | closeOnOverlayClick | Click on whether to close the dialog box | `boolean` | `true` |
 | footerDirection | Use horizontal and vertical direction value selection horizontal、vertical | `string` | `horizontal` |
 | lockScroll | Whether the background is locked | `boolean` | `true` |
@@ -230,8 +232,6 @@ export default App;
 | onClose | Turn off the callback, and the pop -up window will be triggered in any case | `() => void` | `-` |
 | onClick | Click yourself to call back | `() => void` | `-` |
 | onOverlayClick | Click Overlay | `() => void` | `-` |
-| closeIconPosition | Close button position | `top-left` \| `top-right` | `top-right` |
-| closeIcon | Close button | `boolean \| ReactNode` | `false` |
 
 It should be noted that for the Dialog created by instructive, ** will not perceive the re-rendering of the parent component and the update of the state in it**, so the following writing is completely wrong:
 

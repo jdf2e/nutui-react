@@ -59,15 +59,34 @@
 .nut-rtl .nut-barrage {
   left: auto;
   right: 0;
-
   .barrage-item {
-    right: auto;
-    left: 0;
     transform: translateX(-100%);
     background: linear-gradient(
       to left,
       var(--nutui-black-3),
       var(--nutui-black-1)
     );
+
+    &.move {
+      animation-name: moving-rtl;
+    }
+  }
+  @keyframes moving-rtl {
+    from {
+      transform: translateX(var(--move-distance));
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
+
+  @-webkit-keyframes moving-rtl {
+    from {
+      transform: translateX(var(--move-distance));
+    }
+
+    to {
+      transform: translateX(100%);
+    }
   }
 }

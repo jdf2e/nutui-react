@@ -284,16 +284,12 @@ export const Range: FunctionComponent<
     if (dragStatus === 'start') {
       onStart && onStart()
     }
-
     touch.move(event)
-
     setDragStatus('draging')
-
     const rect = getRect(root.current)
     let delta = touch.deltaX.current
     let total = rect.width
     let diff = (delta / total) * scope()
-
     if (vertical) {
       delta = touch.deltaY.current
       total = rect.height
