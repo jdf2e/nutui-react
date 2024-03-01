@@ -20,6 +20,9 @@ export default defineConfig(async () => {
   const remarkDirective = await import('remark-directive')
   return {
     base: '/react/',
+    define: {
+      __PROJECTID__: JSON.stringify(`${projectID}` ? `-${projectID}` : ''),
+    },
     resolve: {
       alias: [
         { find: '@', replacement: resolve(__dirname, './src') },
@@ -64,7 +67,7 @@ export default defineConfig(async () => {
             const filePath = resolve(process.cwd(), id)
             const scssCode = await readFileSync(filePath, 'utf-8')
             const modifiedCode = scssCode.replace(
-              /@import\s+['"][^'"]+['"];/g,
+              /@import\s+['"](\.\.?\/)[^'"]+['"];/g,
               ''
             )
             return modifiedCode
