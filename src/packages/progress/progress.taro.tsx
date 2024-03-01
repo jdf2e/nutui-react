@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useEffect, useState } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { useRtl } from '../configprovider/index.taro'
 
 export interface ProgressProps extends BasicComponent {
   percent: number
@@ -23,6 +24,7 @@ const defaultProps = {
 export const Progress: FunctionComponent<
   Partial<ProgressProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
+  const rtl = useRtl()
   const {
     className,
     style,
@@ -83,7 +85,11 @@ export const Progress: FunctionComponent<
           {showText && (
             <div
               className={`${classPrefix}-text`}
-              style={{ left: `${displayPercent}%` }}
+              style={
+                rtl
+                  ? { right: `${displayPercent}%` }
+                  : { left: `${displayPercent}%` }
+              }
             >
               {children || (
                 <div
