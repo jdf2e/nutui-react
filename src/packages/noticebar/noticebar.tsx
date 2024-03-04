@@ -11,8 +11,10 @@ import { Close, Notice } from '@nutui/icons-react'
 import classNames from 'classnames'
 import { getRect } from '@/utils/use-client-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { NoticeBarAlign } from './types'
 
 export interface NoticeBarProps extends BasicComponent {
+  align: NoticeBarAlign
   direction: string
   list: any
   duration: number
@@ -34,6 +36,7 @@ export interface NoticeBarProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
+  align: 'left',
   direction: 'horizontal',
   list: [],
   duration: 1000,
@@ -55,6 +58,7 @@ export const NoticeBar: FunctionComponent<
     children,
     className,
     style,
+    align,
     direction,
     list,
     duration,
@@ -167,7 +171,8 @@ export const NoticeBar: FunctionComponent<
       }
       const wrapW = getRect(wrapRef.current).width
       const offsetW = getRect(contentRef.current).width
-      const canScroll = scrollable == null ? offsetW > wrapW : scrollable
+      const canScroll =
+        align === 'left' && scrollable == null ? offsetW > wrapW : scrollable
       SetIsCanScroll(canScroll)
       if (canScroll) {
         SetWrapWidth(wrapW)
@@ -230,7 +235,7 @@ export const NoticeBar: FunctionComponent<
   }
 
   const isEllipsis = () => {
-    if (isCanScroll == null) {
+    if (isCanScroll == null && align === 'left') {
       return wrap
     }
     return !isCanScroll && !wrap
@@ -417,16 +422,20 @@ export const NoticeBar: FunctionComponent<
   }
 
   const noticebarClass = classNames({
-    'nut-noticebar-box': true,
-    [`nut-noticebar-box-wrapable`]: wrap,
+    [`${classPrefix}-box`]: true,
+    [`${classPrefix}-box-wrapable`]: wrap,
+    [`${classPrefix}-box-${align}`]: true,
   })
+
+  const cls = classNames(classPrefix, className)
+
   useEffect(() => {
     return () => {
       stopAutoPlay()
     }
   }, [])
   return (
-    <div className={`${classPrefix} ${className || ''}`} style={style}>
+    <div className={cls} style={style}>
       {showNoticeBar && direction === 'horizontal' ? (
         <div className={noticebarClass} style={barStyle} onClick={handleClick}>
           {leftIcon ? (
