@@ -15,6 +15,9 @@ if (projectID) {
 export default defineConfig({
   mode: 'production',
   base: `/h5/react/${projectID === 'jmapp' ? 'jm' : '2x'}`,
+  define: {
+    __PROJECTID__: JSON.stringify(`${projectID}` ? `-${projectID}` : ''),
+  },
   resolve: {
     alias: [
       { find: '@', replacement: resolve(__dirname, './src') },
