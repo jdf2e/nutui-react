@@ -230,8 +230,6 @@ export default App;
 | onClose | Turn off the callback, and the pop -up window will be triggered in any case | `() => void` | `-` |
 | onClick | Click yourself to call back | `() => void` | `-` |
 | onOverlayClick | Click Overlay | `() => void` | `-` |
-| closeIconPosition | Close button position | `top-left` \| `top-right` | `top-right` |
-| closeIcon | Close button | `boolean \| ReactNode` | `false` |
 
 It should be noted that for the Dialog created by instructive, ** will not perceive the re-rendering of the parent component and the update of the state in it**, so the following writing is completely wrong:
 
