@@ -256,7 +256,7 @@ export default App;
 | onClose | 关闭回调，任何情况关闭弹窗都会触发 | `() => void` | `-` |
 | onClick | 点击自身回调 | `() => void` | `-` |
 | onOverlayClick | 点击蒙层触发 | `() => void` | `-` |
-| closeIconPosition | 关闭按钮位置 | `top-left` \| `top-right` | `top-right` |
+| closeIconPosition | 关闭按钮位置 | `top-left` \| `top-right` \| `bottom` | `top-right` |
 | closeIcon | 关闭按钮 | `boolean \| ReactNode` | `false` |
 
 对于**指令式**创建出来的 Dialog，**并不会感知父组件的重渲染和其中 state 的更新**，因此下面这种写法是错误的：

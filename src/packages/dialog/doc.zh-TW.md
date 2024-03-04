@@ -245,7 +245,7 @@ export default App;
 | hideCancelButton | 是否隱藏取消按鈕 | `boolean` | `false` |
 | disableConfirmButton | 禁用確定按鈕 | `boolean` | `false` |
 | closeIcon | 關閉按鈕 | `boolean` \| `ReactNode` | `false` |
-| closeIconPosition | 關閉按鈕位置 | `top-left` \| `top-right` | `top-right` |
+| closeIconPosition | 關閉按鈕位置 | `top-left` \| `top-right` \| `bottom` | `top-right` |
 | closeOnOverlayClick | 點擊蒙層是否關閉對話框 | `boolean` | `true` |
 | footerDirection | 使用橫縱方向 可選值 horizontal、vertical | `string` | `horizontal` |
 | lockScroll | 背景是否鎖定 | `boolean` | `true` |

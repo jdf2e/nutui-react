@@ -226,7 +226,7 @@ const DialogDemo = () => {
         <Dialog
           className="test-dialog"
           title={translated.customClose}
-          visible={visible9}
+          visible={visible10}
           closeIcon={<Close width="24px" height="24px" />}
           closeIconPosition="bottom"
           onConfirm={() => setVisible10(false)}

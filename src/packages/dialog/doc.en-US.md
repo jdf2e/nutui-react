@@ -219,7 +219,7 @@ export default App;
 | hideCancelButton | Whether to hide the cancel button | `boolean` | `false` |
 | disableConfirmButton | Disable the OK button | `boolean` | `false` |
 | closeIcon | Close button | `boolean` \| `ReactNode` | `false` |
-| closeIconPosition | Close button position | `top-left` \| `top-right` | `top-right` |
+| closeIconPosition | Close button position | `top-left` \| `top-right` \| `bottom` | `top-right` |
 | closeOnOverlayClick | Click on whether to close the dialog box | `boolean` | `true` |
 | footerDirection | Use horizontal and vertical direction value selection horizontal、vertical | `string` | `horizontal` |
 | lockScroll | Whether the background is locked | `boolean` | `true` |
