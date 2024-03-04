@@ -140,5 +140,8 @@ test('align center test', () => {
 
   const { container } = render(<NoticeBar content={text} align="center" />)
   expect(container.querySelector('.nut-noticebar-box-center')).toBeTruthy
-  expect(container.querySelector('.nut-ellipsis')).toBeTruthy
+  expect(
+    container.querySelector('.nut-noticebar-box-wrap-content')
+  ).toHaveClass('nut-ellipsis')
+  expect(container).toMatchSnapshot()
 })
