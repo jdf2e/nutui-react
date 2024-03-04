@@ -12,19 +12,6 @@
     color: $noticebar-color;
     border-radius: $noticebar-border-radius;
 
-    &-center {
-      justify-content: center;
-
-      .nut-noticebar-box-wrap {
-        flex: initial;
-
-        .nut-noticebar-box-wrap-content {
-          position: relative;
-          display: initial;
-        }
-      }
-    }
-
     &-wrapable,
     &-center {
       height: auto;
@@ -41,6 +28,19 @@
           position: relative;
           white-space: normal;
           word-wrap: break-word;
+        }
+      }
+    }
+
+    &-center {
+      justify-content: center;
+
+      .nut-noticebar-box-wrap {
+        flex: initial;
+
+        .nut-noticebar-box-wrap-content {
+          position: relative;
+          display: initial;
         }
       }
     }

@@ -11,8 +11,8 @@ import { Close, Notice } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { NoticeBarAlign } from './types'
 
-export type NoticeBarAlign = 'left' | 'center'
 export interface NoticeBarProps extends BasicComponent {
   align: NoticeBarAlign
   direction: string

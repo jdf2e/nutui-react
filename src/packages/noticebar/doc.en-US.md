@@ -315,7 +315,7 @@ export default App
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| align | Layout mode | `left` \| `center` | `left` |
+| align | Layout mode. When the value is center, scrolling is not supported | `left` \| `center` | `left` |
 | direction | Rolling direction | `string` | `horizontal` |
 | content | Notice text content | `string` | `-` |
 | closeable | Whether to enable the off mode | `boolean` | `false` |

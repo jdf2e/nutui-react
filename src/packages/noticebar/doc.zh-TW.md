@@ -325,7 +325,7 @@ export default App
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| align | 布局方式 | `left` \| `center` | `left` |
+| align | 布局方式, 值為`center`時，不支持滾動 | `left` \| `center` | `left` |
 | direction | 滾動的方嚮，可選 horizontal、vertical | `string` | `horizontal` |
 | content | 提示的信息 | `string` | `-` |
 | closeable | 是否啟用關閉模式 | `boolean` | `false` |

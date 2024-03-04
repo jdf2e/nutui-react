@@ -133,3 +133,11 @@ test('vertical test', () => {
   )
   expect(container.querySelector('.custom-item')).toBeTruthy
 })
+
+test('align center test', () => {
+  const text =
+    'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
+
+  const { container } = render(<NoticeBar content={text} align="center" />)
+  expect(container.querySelector('.nut-noticebar-box-center')).toBeTruthy
+})

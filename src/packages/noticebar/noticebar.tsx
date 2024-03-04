@@ -11,8 +11,8 @@ import { Close, Notice } from '@nutui/icons-react'
 import classNames from 'classnames'
 import { getRect } from '@/utils/use-client-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { NoticeBarAlign } from './types'
 
-export type NoticeBarAlign = 'left' | 'center'
 export interface NoticeBarProps extends BasicComponent {
   align: NoticeBarAlign
   direction: string
