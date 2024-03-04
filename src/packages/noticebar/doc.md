@@ -31,6 +31,8 @@ const App = () => {
 export default App
 ```
 
+:::
+
 ### 居中布局，不支持滚动
 
 :::demo
