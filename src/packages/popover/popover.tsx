@@ -20,7 +20,7 @@ import { PopoverTheme, PopoverLocation, List } from './types'
 
 export interface PopoverProps extends PopupProps {
   list: List[]
-  theme: PopoverTheme
+  theme: PopoverTheme | string
   location: PopoverLocation | string
   visible: boolean
   offset: string[] | number[]
