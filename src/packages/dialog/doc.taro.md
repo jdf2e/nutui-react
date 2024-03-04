@@ -57,7 +57,7 @@ export default App;
 ```tsx
 import React, {useState} from "react";
 import { Cell,Dialog,Image } from '@nutui/nutui-react-taro';
-import { ArrowCornerLeft } from '@nutui/icons-react-taro'
+import { Close } from '@nutui/icons-react-taro'
 
 const App = () => {
   const [visible1, setVisible1] = useState(false)
@@ -186,23 +186,21 @@ const App = () => {
           {translated.content}
         </Dialog>
         <Cell
-          title="自定义顶部关闭按钮"
+          title="自定义底部关闭按钮"
           onClick={() => {
             setVisible9(true)
           }}
         />
         <Dialog
           className="test-dialog"
-          title="自定义顶部关闭按钮"
+          title="自定义底部关闭按钮"
           visible={visible9}
-          closeIcon={<ArrowCornerLeft width="16px" height="16px" />}
-          closeIconPosition="top-left"
+          closeIcon={<Close width="24px" height="24px" />}
+          closeIconPosition="bottom"
           onConfirm={() => setVisible9(false)}
           onCancel={() => setVisible9(false)}
           style={{
-            '--nutui-dialog-close-top': '10px',
-            '--nutui-dialog-close-left': '10px',
-            '--nutui-dialog-close-color': 'red',
+            '--nutui-dialog-close-color': '#FFFFFF',
           }}
         >
           {translated.content}
@@ -244,6 +242,8 @@ export default App;
 | onClose | 关闭回调，任何情况关闭弹窗都会触发 | `() => void` | `-` |
 | onClick | 点击自身回调 | `() => void` | `-` |
 | onOverlayClick | 点击蒙层触发 | `() => void` | `-` |
+| closeIconPosition | 关闭按钮位置 | `top-left` \| `top-right` | `top-right` |
+| closeIcon | 关闭按钮 | `boolean \| ReactNode` | `false` |
 
 ### Methods
 | 方法名 | 说明 | 类型 |

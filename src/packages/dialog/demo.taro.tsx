@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { ArrowCornerLeft } from '@nutui/icons-react-taro'
+import { Close } from '@nutui/icons-react-taro'
 import { Dialog, Cell, Image } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
@@ -44,7 +44,7 @@ const DialogDemo = () => {
       cancelText: '取消',
       header: '顶部带插图',
       closeIcon: '顶部带关闭按钮',
-      customClose: '自定义顶部关闭按钮',
+      customClose: '自定义底部关闭按钮',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -64,7 +64,7 @@ const DialogDemo = () => {
       cancelText: 'cancel',
       header: 'Top with illustration',
       closeIcon: 'Top with close button',
-      customClose: 'Customize the top close button',
+      customClose: 'Customize the bottom close button',
     },
   })
 
@@ -226,15 +226,13 @@ const DialogDemo = () => {
         <Dialog
           className="test-dialog"
           title={translated.customClose}
-          visible={visible10}
-          closeIcon={<ArrowCornerLeft width="16px" height="16px" />}
-          closeIconPosition="top-left"
+          visible={visible9}
+          closeIcon={<Close width="24px" height="24px" />}
+          closeIconPosition="bottom"
           onConfirm={() => setVisible10(false)}
           onCancel={() => setVisible10(false)}
           style={{
-            '--nutui-dialog-close-top': '10px',
-            '--nutui-dialog-close-left': '10px',
-            '--nutui-dialog-close-color': 'red',
+            '--nutui-dialog-close-color': '#FFFFFF',
           }}
         >
           {translated.content}

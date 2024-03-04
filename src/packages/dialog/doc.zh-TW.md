@@ -97,7 +97,7 @@ export default App;
 ```tsx
 import React, {useState} from "react";
 import { Cell,Dialog,Image } from '@nutui/nutui-react';
-import { ArrowCornerLeft } from '@nutui/icons-react'
+import { Close } from '@nutui/icons-react'
 
 const App = () => {
   const [visible1, setVisible1] = useState(false);
@@ -200,23 +200,21 @@ const App = () => {
           {translated.content}
         </Dialog>
         <Cell
-          title="自定義頂部關閉按鈕"
+          title="自定義底部關閉按鈕"
           onClick={() => {
             setVisible9(true)
           }}
         />
         <Dialog
           className="test-dialog"
-          title="自定義頂部關閉按鈕"
+          title="自定義底部關閉按鈕"
           visible={visible9}
-          closeIcon={<ArrowCornerLeft width="16px" height="16px" />}
-          closeIconPosition="top-left"
+          closeIcon={<Close width="24px" height="24px" />}
+          closeIconPosition="bottom"
           onConfirm={() => setVisible9(false)}
           onCancel={() => setVisible9(false)}
           style={{
-            '--nutui-dialog-close-top': '10px',
-            '--nutui-dialog-close-left': '10px',
-            '--nutui-dialog-close-color': 'red',
+            '--nutui-dialog-close-color': '#FFFFFF',
           }}
         >
           {translated.content}
