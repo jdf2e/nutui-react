@@ -123,8 +123,8 @@ export class FormItem extends React.Component<
     if (validateTrigger) {
       validateTriggers =
         typeof validateTrigger === 'string'
-          ? [...validateTriggers, validateTrigger]
-          : [...validateTriggers, ...validateTrigger]
+          ? [validateTrigger]
+          : [...validateTrigger]
       validateTriggers.forEach((trigger) => {
         const originTrigger = controlled[trigger]
         controlled[trigger] = (...args: any) => {
@@ -216,14 +216,15 @@ export class FormItem extends React.Component<
         ) : null}
         <div className="nut-cell-value nut-form-item-body">
           <div className="nut-form-item-body-slots">{childNode}</div>
-          {item && item.length > 0 && (
-            <div
-              className="nut-form-item-body-tips"
-              style={{ textAlign: errorMessageAlign }}
-            >
-              {item[0].message}
-            </div>
-          )}
+          <div
+            className="nut-form-item-body-tips"
+            style={{
+              textAlign: errorMessageAlign,
+              display: item?.length ? 'initial' : 'none',
+            }}
+          >
+            {item?.[0]?.message}
+          </div>
         </div>
       </Cell>
     )

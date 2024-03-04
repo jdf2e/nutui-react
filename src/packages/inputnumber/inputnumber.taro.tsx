@@ -97,6 +97,7 @@ export const InputNumber: FunctionComponent<
       typeof defaultValue === 'string'
         ? parseFloat(defaultValue)
         : defaultValue,
+    finalValue: 0,
     onChange: (value) => {},
   })
   const bound = (value: number, min: number, max: number) => {
