@@ -238,6 +238,28 @@ const App = () => {
             </div>
           </>
         </Dialog>
+        <Dialog
+          className="test-dialog"
+          title="确认按钮loading效果"
+          visible={visible10}
+          onConfirm={async () => {
+            const wait = () => {
+              return new Promise((resolve) => {
+                setTimeout(() => {
+                  resolve(0)
+                }, 3000)
+              })
+            }
+            await wait()
+            setVisible10(false)
+          }}
+          onCancel={() => setVisible10(false)}
+          style={{
+            '--nutui-dialog-close-color': '#FFFFFF',
+          }}
+        >
+          {translated.content}
+        </Dialog>
     </>
   )
 }
