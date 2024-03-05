@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import { createSelectorQuery } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { useRtl } from '../configprovider/index.taro'
 
 export interface CountUpProps extends BasicComponent {
   length: number
@@ -37,20 +38,33 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
     ...defaultProps,
     ...props,
   }
+  const rtl = useRtl()
   const classPrefix = 'nut-countup'
   const countupRef = useRef<HTMLDivElement>(null)
   const timerRef = useRef(0)
   const numbers = Array.from({ length: 10 }, (v, i) => i)
 
+  const thousandsConvert = (value: string) => {
+    return thousands ? value.replace(/(\d)(?=(?:\d{3})+$)/g, '$1,') : value
+  }
+
+  const rtlReverse = (value: string) => {
+    if (!value) return ''
+    return rtl ? value.split('').reverse().join('') : value
+  }
+
   const getShowNumber = () => {
     const splitArr = value.split('.')
-    const intNumber =
+    const intNumber = rtlReverse(
       length && splitArr[0].length < length
         ? (Array(length).join('0') + splitArr[0]).slice(-length)
         : splitArr[0]
-    const currNumber = `${
-      thousands ? intNumber.replace(/(\d)(?=(?:\d{3})+$)/g, '$1,') : intNumber
-    }${splitArr[1] ? '.' : ''}${splitArr[1] || ''}`
+    )
+    const hasDecimal = splitArr[1] ? '.' : ''
+    const decimalNumber = rtlReverse(splitArr[1])
+    const currNumber = rtl
+      ? `${decimalNumber}${hasDecimal}${thousandsConvert(intNumber)}`
+      : `${thousandsConvert(intNumber)}${hasDecimal}${decimalNumber}`
     return currNumber.split('')
   }
 
