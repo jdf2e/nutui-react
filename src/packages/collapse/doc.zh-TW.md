@@ -325,7 +325,7 @@ const App = () => {
 
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
-| \--nutui-collapse-item-padding | 內邊距 | `13px 36px 13px 26px` |
+| \--nutui-collapse-item-padding | 內邊距 | `13px 26px` |
 | \--nutui-collapse-item-font-size | 字體大小 | `$font-size-base` |
 | \--nutui-collapse-item-line-height | 行高 | `24px` |
 | \--nutui-collapse-item-color | 字體顏色 | `#666666` |
