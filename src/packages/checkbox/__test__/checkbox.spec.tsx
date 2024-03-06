@@ -140,3 +140,54 @@ test('Render checkboxs by configure disabled and indeterminate', () => {
     container.querySelector('.nut-checkbox-icon-indeterminate')
   ).toHaveClass('nut-checkbox-icon-disabled')
 })
+
+test('list model should fireEvent correctly', () => {
+  const handleChange = jest.fn((value) => {
+    value
+  })
+  const limit = jest.fn()
+  const { getByTestId, container } = render(
+    <CheckboxGroup
+      data-testid="group"
+      className="test"
+      defaultValue={['1']}
+      max={3}
+      min={1}
+      list
+      onLimit={limit}
+      onChange={handleChange}
+    >
+      <Checkbox data-testid="checkbox1" value="1">
+        组合复选框
+      </Checkbox>
+      <Checkbox data-testid="checkbox2" value="2">
+        组合复选框
+      </Checkbox>
+      <Checkbox data-testid="checkbox3" value="3">
+        组合复选框
+      </Checkbox>
+      <Checkbox data-testid="checkbox4" value="4">
+        组合复选框
+      </Checkbox>
+    </CheckboxGroup>
+  )
+
+  fireEvent.click(getByTestId('checkbox3'))
+
+  expect(handleChange).toBeCalled()
+  expect(handleChange).toBeCalledWith(['1', '3'])
+
+  expect(getByTestId('group')).toHaveClass('test')
+
+  fireEvent.click(getByTestId('checkbox3'))
+  fireEvent.click(getByTestId('checkbox1'))
+  const icons = container.querySelectorAll('.nut-checkbox-icon-checked')
+  expect(icons.length).toBe(1)
+  expect(limit).toBeCalledWith('min')
+
+  fireEvent.click(getByTestId('checkbox1'))
+  fireEvent.click(getByTestId('checkbox2'))
+  fireEvent.click(getByTestId('checkbox3'))
+  fireEvent.click(getByTestId('checkbox4'))
+  expect(limit).toBeCalledWith('max')
+})

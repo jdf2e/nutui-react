@@ -1302,6 +1302,19 @@ $checkbox-button-disabled-active-color: var(
   --nutui-checkbox-button-disabled-active-color,
   $white
 ) !default;
+$checkbox-list-background-color: var(
+  --nutui-checkbox-list-background-color,
+  $white
+) !default;
+$checkbox-list-item-border: var(
+  --nutui-checkbox-list-item-border,
+  1px solid $color-border
+) !default;
+$checkbox-list-padding: var(--nutui-checkbox-list-padding, 0 0 0 12px) !default;
+$checkbox-list-item-padding: var(
+  --nutui-checkbox-list-item-padding,
+  12px 12px 12px 0
+) !default;
 
 //radio（✅）
 $radio-icon-font-size: var(

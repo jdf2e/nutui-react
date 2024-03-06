@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import { Checked, CheckDisabled, CheckNormal } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import CheckboxGroup from '@/packages/checkboxgroup/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import Context from '../checkboxgroup/context'
@@ -136,6 +137,9 @@ export const Checkbox: FunctionComponent<
       if (innerChecked && !innerIndeterminate) {
         return `${cls}${classPrefix}-icon-checked ${classPrefix}-icon-disabled`
       }
+      if (innerChecked && innerIndeterminate) {
+        return `${cls}${classPrefix}-icon-indeterminate ${classPrefix}-icon-disabled`
+      }
       return `${cls}${classPrefix}-icon-disabled`
     }
     if (innerChecked) {
@@ -169,7 +173,7 @@ export const Checkbox: FunctionComponent<
 
   const renderButton = () => {
     return (
-      <div
+      <View
         className={classNames(`${classPrefix}-button`, {
           [`${classPrefix}-button-active`]: innerChecked,
           [`${classPrefix}-button-disabled`]: disabled,
@@ -177,15 +181,27 @@ export const Checkbox: FunctionComponent<
       >
         {children || label}
         {innerChecked && activeIcon ? (
-          <div className={classNames(`${classPrefix}-button-icon`)}>
+          <View className={classNames(`${classPrefix}-button-icon`)}>
             {activeIcon}
-          </div>
+          </View>
         ) : null}
-      </div>
+      </View>
+    )
+  }
+
+  const renderListItem = () => {
+    return (
+      <View className="nut-checkbox-list-item">
+        {renderLabel()}
+        {renderIcon()}
+      </View>
     )
   }
 
   const renderCheckboxItem = () => {
+    if (ctx?.list) {
+      return <>{renderListItem()}</>
+    }
     if (shape === 'button') {
       return renderButton()
     }
@@ -198,7 +214,7 @@ export const Checkbox: FunctionComponent<
   }
 
   return (
-    <div
+    <View
       className={classNames(
         classPrefix,
         {
@@ -210,7 +226,7 @@ export const Checkbox: FunctionComponent<
       onClick={handleClick}
     >
       {renderCheckboxItem()}
-    </div>
+    </View>
   )
 }
 
