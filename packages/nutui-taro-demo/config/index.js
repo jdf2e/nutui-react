@@ -22,7 +22,18 @@ const config = {
   outputRoot: `dist/${
     process.env.TARO_ENV === 'h5' ? 'demo' : process.env.TARO_ENV
   }`,
-  plugins: ['@tarojs/plugin-html'],
+  plugins: ['@tarojs/plugin-html', '@tarojs/plugin-platform-harmony-ets'],
+  // harmony 相关配置
+  harmony: {
+    // 将编译方式设置为使用 Vite 编译
+    compiler: 'vite',
+    // 【必填】鸿蒙主应用的绝对路径，例如：
+    projectPath: path.resolve(process.cwd(), '../My_application'),
+    // 【可选】HAP 的名称，默认为 'entry'
+    hapName: 'entry',
+    // 【可选】modules 的入口名称，默认为 'default'
+    name: 'default',
+  },
   compiler: 'webpack5',
   alias: {
     '@/packages': path.resolve(__dirname, '../../../src/packages'),
