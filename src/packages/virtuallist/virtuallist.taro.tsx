@@ -3,6 +3,7 @@ import React, {
   ReactNode,
   useCallback,
   useEffect,
+  useMemo,
   useRef,
   useState,
 } from 'react'
@@ -13,7 +14,7 @@ import { Data, PositionType } from './types'
 import { initPositinoCache, updateItemSize } from './utils'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-const clientHeight = getSystemInfoSync().windowHeight - 5 || 667
+const defaultContainerHeight = getSystemInfoSync().windowHeight - 5 || 667
 
 export interface VirtualListProps extends BasicComponent {
   list: Array<Data>
@@ -30,7 +31,7 @@ export interface VirtualListProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   list: [] as Array<Data>,
-  containerHeight: clientHeight,
+  containerHeight: defaultContainerHeight,
   itemHeight: 66,
   margin: 10,
   itemEqual: true,
@@ -78,6 +79,11 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
   ])
 
   const [offSetSize, setOffSetSize] = useState<number>(containerHeight || 0)
+
+  const clientHeight = useMemo(
+    () => getSystemInfoSync().windowHeight - 5 || 667,
+    []
+  )
 
   //   初始计算可视区域展示数量
   useEffect(() => {
