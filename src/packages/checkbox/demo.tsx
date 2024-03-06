@@ -514,11 +514,13 @@ const CheckboxDemo = () => {
           />
         </Cell>
         <h2>{translated.list}</h2>
-        <Checkbox.Group defaultValue={['1']} labelPosition="left" list>
-          <Checkbox value="1" label={optionsDemo1[0].label} />
-          <Checkbox value="2" label={optionsDemo1[1].label} />
-          <Checkbox value="3" label={optionsDemo1[2].label} />
-        </Checkbox.Group>
+        <Cell>
+          <Checkbox.Group defaultValue={['1']} list>
+            <Checkbox value="1" label={optionsDemo1[0].label} />
+            <Checkbox value="2" label={optionsDemo1[1].label} />
+            <Checkbox value="3" label={optionsDemo1[2].label} />
+          </Checkbox.Group>
+        </Cell>
       </div>
     </>
   )
