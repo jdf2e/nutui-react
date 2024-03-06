@@ -12,6 +12,7 @@ import classNames from 'classnames'
 import { getRect } from '@/utils/use-client-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { NoticeBarAlign } from './types'
+import { useRtl } from '@/packages/configprovider'
 
 export interface NoticeBarProps extends BasicComponent {
   align: NoticeBarAlign
@@ -54,6 +55,7 @@ export const NoticeBar: FunctionComponent<
   Partial<NoticeBarProps> &
     Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
+  const rtl = useRtl()
   const {
     children,
     className,
@@ -244,7 +246,7 @@ export const NoticeBar: FunctionComponent<
   const contentStyle = {
     animationDelay: `${firstRound ? delay : 0}s`,
     animationDuration: `${animationDuration}s`,
-    transform: `translateX(${firstRound ? 0 : `${wrapWidth}px`})`,
+    transform: `translateX(${firstRound ? 0 : `${rtl ? -wrapWidth : wrapWidth}px`})`,
   }
 
   const barStyle = {
