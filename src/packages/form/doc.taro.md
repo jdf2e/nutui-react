@@ -340,6 +340,37 @@ export default App;
 
 :::
 
+### 校验触发时机
+
+:::demo
+
+```tsx
+import React from "react";
+import { Form, Input } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  return (
+    <>
+      <Form>
+        <Form.Item
+          label="字段A"
+          name="username"
+          required
+          validateTrigger="onBlur"
+          rules={[{ required: true, message: "请输入字段A" }]}
+        >
+          <Input placeholder="请输入字段A" type="text" />
+        </Form.Item>
+      </Form>
+    </>
+  )
+}
+
+export default App;
+```
+
+:::
+
 ### 表单类型
 
 :::demo

@@ -2,6 +2,7 @@ import React, { CSSProperties, FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { useRtl } from '@/packages/configprovider/index.taro'
 
 export interface BadgeProps extends BasicComponent {
   value: ReactNode
@@ -21,6 +22,7 @@ const defaultProps = {
   color: '',
 } as BadgeProps
 export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
+  const rtl = useRtl()
   const { className, style, value, max, children, dot, top, right, color } = {
     ...defaultProps,
     ...props,
@@ -60,7 +62,8 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
   const getStyle = () => {
     const style: CSSProperties = {}
     style.top = `${Number(top) || parseFloat(String(top)) || 0}px`
-    style.right = `${Number(right) || parseFloat(String(right)) || 0}px`
+    const dir = rtl ? 'left' : 'right'
+    style[dir] = `${Number(right) || parseFloat(String(right)) || 0}px`
     style.background = color
     return style
   }

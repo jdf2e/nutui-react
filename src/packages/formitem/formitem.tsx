@@ -123,8 +123,8 @@ export class FormItem extends React.Component<
     if (validateTrigger) {
       validateTriggers =
         typeof validateTrigger === 'string'
-          ? [...validateTriggers, validateTrigger]
-          : [...validateTriggers, ...validateTrigger]
+          ? [validateTrigger]
+          : [...validateTrigger]
       validateTriggers.forEach((trigger) => {
         const originTrigger = controlled[trigger]
         controlled[trigger] = (...args: any) => {

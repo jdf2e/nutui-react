@@ -339,7 +339,38 @@ export default App;
 
 :::
 
-### form type
+### Validate Trigger 
+
+:::demo
+
+```tsx
+import React from "react";
+import { Form, Input } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Form>
+        <Form.Item
+          label="Field A"
+          name="username"
+          required
+          validateTrigger="onBlur"
+          rules={[{ required: true, message: "Place Input Field A" }]}
+        >
+          <Input placeholder="Place Input Field A" type="text" />
+        </Form.Item>
+      </Form>
+    </>
+  )
+}
+
+export default App;
+```
+
+:::
+
+### Form Type
 
 :::demo
 
