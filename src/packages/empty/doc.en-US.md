@@ -105,6 +105,8 @@ export default App;
 
 ### Custom image
 
+> If you are inner user in JD, you can get the image links from us for default types.
+
 :::demo
 
 ```tsx

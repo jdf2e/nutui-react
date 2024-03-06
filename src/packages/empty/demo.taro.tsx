@@ -78,6 +78,14 @@ const EmptyDemo = () => {
     },
   })
   const [tabvalue, setTabvalue] = useState<string | number>('0')
+  const defaultStatus = {
+    empty:
+      'https://storage.360buyimg.com/imgtools/30186cfda0-0d3eee40-c0ac-11ee-9382-9125782aa3b8.png',
+    error:
+      'https://storage.360buyimg.com/imgtools/f3278d0ebb-0ce360c0-c0ac-11ee-8375-193101bb1a46.png',
+    network:
+      'https://storage.360buyimg.com/imgtools/43c30f7e29-0d483d10-c0ac-11ee-bec4-eb4d2a09a51d.png',
+  }
 
   return (
     <>
@@ -87,6 +95,7 @@ const EmptyDemo = () => {
         <Empty
           title={translated.cfbdc782}
           description={translated.cfbdc781}
+          image={<img src={defaultStatus.empty} alt="" />}
           actions={[
             { text: translated.cfbdc784 },
             { text: translated.cfbdc784 },
@@ -94,6 +103,7 @@ const EmptyDemo = () => {
         />
         <Empty
           description={translated.cfbdc781}
+          image={<img src={defaultStatus.empty} alt="" />}
           actions={[{ text: translated.cfbdc784 }]}
           style={{ marginTop: '10px' }}
         />
@@ -102,9 +112,17 @@ const EmptyDemo = () => {
           style={{ marginTop: '10px' }}
         />
         <h2>{translated.c38a08ee}</h2>
-        <Empty description={translated.cfbdc781} size="small" />
+        <Empty
+          description={translated.cfbdc781}
+          size="small"
+          image={<img src={defaultStatus.empty} alt="" />}
+        />
         <h2>{translated.c38a08ef}</h2>
-        <Empty description={translated.cfbdc781} imageSize={80} />
+        <Empty
+          description={translated.cfbdc781}
+          imageSize={80}
+          image={<img src={defaultStatus.empty} alt="" />}
+        />
         <h2>{translated.b840c88f}</h2>
         <Tabs
           value={tabvalue}
@@ -113,13 +131,25 @@ const EmptyDemo = () => {
           }}
         >
           <TabPane title={translated.c3a3a1d2} value="0">
-            <Empty status="empty" title={translated.c3a3a1d2} />
+            <Empty
+              status="empty"
+              title={translated.c3a3a1d2}
+              image={<img src={defaultStatus.empty} alt="" />}
+            />
           </TabPane>
           <TabPane title={translated.e51e4582} value="1">
-            <Empty status="error" title={translated.e51e4582} />
+            <Empty
+              status="error"
+              title={translated.e51e4582}
+              image={<img src={defaultStatus.error} alt="" />}
+            />
           </TabPane>
           <TabPane title={translated.adb1a8b2} value="2">
-            <Empty status="network" title={translated.adb1a8b2} />
+            <Empty
+              status="network"
+              title={translated.adb1a8b2}
+              image={<img src={defaultStatus.network} alt="" />}
+            />
           </TabPane>
         </Tabs>
         <h2>{translated.a74a1fd4}</h2>
@@ -137,6 +167,7 @@ const EmptyDemo = () => {
         <Empty
           status="error"
           description={translated.d04fcbda}
+          image={<img src={defaultStatus.empty} alt="" />}
           style={{ marginBottom: '20px' }}
         >
           <div style={{ marginTop: '10px' }}>
