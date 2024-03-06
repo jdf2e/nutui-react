@@ -39,7 +39,7 @@ const EmptyDemo = () => {
       c3a3a1d2: '无内容',
       e51e4582: '加载失败/错误',
       adb1a8b2: '无网络',
-      a52bef0c: '无优惠券',
+      a52bef0c: '店铺为空',
       d04fcbda: '加载失败',
       b8a453e3: '重试',
     },
@@ -56,7 +56,7 @@ const EmptyDemo = () => {
       c3a3a1d2: '無內容',
       e51e4582: '加載失敗/錯誤',
       adb1a8b2: '無網絡',
-      a52bef0c: '無優惠券',
+      a52bef0c: '店鋪爲空',
       d04fcbda: '加載失敗',
       b8a453e3: '重試',
     },
@@ -73,7 +73,7 @@ const EmptyDemo = () => {
       c3a3a1d2: 'No Content',
       e51e4582: 'Load Failed',
       adb1a8b2: 'No Network',
-      a52bef0c: 'No Coupon',
+      a52bef0c: 'Store is closed',
       d04fcbda: 'Failed to load',
       b8a453e3: 'Retry',
     },
@@ -127,7 +127,7 @@ const EmptyDemo = () => {
           description={translated.a52bef0c}
           image={
             <img
-              src="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png"
+              src="https://storage.360buyimg.com/imgtools/44f3cc10c4-0cf9a7e0-c0ac-11ee-8375-193101bb1a46.png"
               alt=""
             />
           }

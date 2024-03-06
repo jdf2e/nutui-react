@@ -114,8 +114,8 @@ import { Empty } from '@nutui/nutui-react';
 const App = () => {
   return (
     <Empty
-      description="No Coupon" 
-      image={<img src="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png" alt=""/>}
+      description="Store is closed" 
+      image={<img src="https://storage.360buyimg.com/imgtools/44f3cc10c4-0cf9a7e0-c0ac-11ee-8375-193101bb1a46.png" alt=""/>}
      />
   );
 };
