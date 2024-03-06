@@ -2,7 +2,10 @@ import React, { FunctionComponent, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { ArrowDown } from '@nutui/icons-react-taro'
 import { BasicTableProps, TableColumnProps } from './types'
-import { useConfig } from '@/packages/configprovider/configprovider.taro'
+import {
+  useConfig,
+  useRtl,
+} from '@/packages/configprovider/configprovider.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 import useTableSticky from './useTableSticky'
@@ -23,6 +26,7 @@ export const Table: FunctionComponent<
   Partial<TableProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
   const { locale } = useConfig()
+  const rtl = useRtl()
   defaultProps.noData = locale.noData
 
   const {
@@ -54,7 +58,7 @@ export const Table: FunctionComponent<
     stickyRightWidth,
     getStickyClass,
     getStickyStyle,
-  } = useTableSticky(columns)
+  } = useTableSticky(columns, rtl)
 
   useEffect(() => {
     setValue(data)
