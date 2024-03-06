@@ -12,17 +12,35 @@
     color: $noticebar-color;
     border-radius: $noticebar-border-radius;
 
-    &-wrapable {
+    &-wrapable,
+    &-center {
       height: auto;
       padding: $noticebar-wrap-padding;
 
       .nut-noticebar-box-wrap {
         height: auto;
+      }
+    }
 
+    &-wrapable {
+      .nut-noticebar-box-wrap {
         .nut-noticebar-box-wrap-content {
           position: relative;
           white-space: normal;
           word-wrap: break-word;
+        }
+      }
+    }
+
+    &-center {
+      justify-content: center;
+
+      .nut-noticebar-box-wrap {
+        flex: initial;
+
+        .nut-noticebar-box-wrap-content {
+          position: relative;
+          display: initial;
         }
       }
     }

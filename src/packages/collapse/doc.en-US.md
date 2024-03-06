@@ -324,7 +324,7 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-collapse-item-padding | padding | `13px 36px 13px 26px` |
+| \--nutui-collapse-item-padding | padding | `13px 26px` |
 | \--nutui-collapse-item-font-size | fontSize | `$font-size-base` |
 | \--nutui-collapse-item-line-height | lineHeight | `24px` |
 | \--nutui-collapse-item-color | font color | `#666666` |

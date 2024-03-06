@@ -1739,10 +1739,7 @@ $collapse-item-header-border-bottom: var(
   --nutui-collapse-item-header-border-bottom,
   1px solid $color-border
 ) !default;
-$collapse-item-padding: var(
-  --nutui-collapse-item-padding,
-  13px 0px 13px 26px
-) !default;
+$collapse-item-padding: var(--nutui-collapse-item-padding, 13px 26px) !default;
 $collapse-item-color: var(--nutui-collapse-item-color, $color-title) !default;
 $collapse-item-disabled-color: var(
   --nutui-collapse-item-disabled-color,

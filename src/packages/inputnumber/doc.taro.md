@@ -277,6 +277,7 @@ export default App;
 | value | 当前值，受控值 | `string`  \|  `number` | `-` |
 | min | 最小值限制 | `string`  \|  `number` | `1` |
 | max | 最大值限制 | `string`  \|  `number` | `9999` |
+| type | input 的类型 | `digit`  \|  `number` | `digit` |
 | step | 步长 | `string`  \|  `number` | `1` |
 | digits | 设置保留的小数位 | `string`  \|  `number` | `0` |
 | disabled | 禁用所有功能 | `boolean` | `false` |

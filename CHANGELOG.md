@@ -1,3 +1,21 @@
+# v2.3.12
+`2024-03-01`
+
+* :sparkles: feat(inputnumber): taro 环境下增加 number类型的键盘 (#1965) @LING_ZI_QING
+* :sparkles: feat(rtl): support progress & range (#1961) @Eiinu
+* :bug: fix(elevator): 修复增加页码的逻辑 (#1960) @oasis-cloud
+* :bug: fix(elevator): 解决部分安卓手机右侧导航高亮偏差问题 (#1966) @songsong
+* :bug: fix(form): after setting validateTrigger, `trigger` should be excluded (#1963) @oasis-cloud
+* :bug: fix(form): 组件更新时，标签结构变化，会导致失去焦点 (#1973) @oasis-cloud
+* :bug: fix(inputnumber): provide finalValue (#1959) @oasis-cloud
+* 📖 docs: 修复文档 (#1964) @xiaoyatong
+* 🛠 refactor(docs): 文档支持通过标签使用已有的 demo 代码 (#1950) @Alex.huxiyang
+* 🛠 refactor: adjust build target to ES6, reduce size of configprovider (#1949) @oasis-cloud
+* 🔨 chore(ci): update workflows (#1970) @Eiinu
+* 🔨 chore(dev): development mode, remove duplicate CSS stylesheets (#1958) @oasis-cloud
+* 🔨 chore: remove CSS logic conflicting with MDX (#1971) @oasis-cloud
+
+
 # v2.3.11
 `2024-02-23`
 

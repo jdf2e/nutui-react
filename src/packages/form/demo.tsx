@@ -75,6 +75,7 @@ const FormDemo = () => {
       radioOption: '选项',
       picker: '选择器',
       select: '请选择',
+      validateTrigger: '校验触发时机',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -133,6 +134,7 @@ const FormDemo = () => {
       radioOption: 'radio',
       picker: 'Picker',
       select: 'Please select',
+      validateTrigger: 'Validate Trigger',
     },
   })
 
@@ -428,6 +430,19 @@ const FormDemo = () => {
               <Radio value="male">{translated.male}</Radio>
               <Radio value="female">{translated.female}</Radio>
             </Radio.Group>
+          </Form.Item>
+        </Form>
+
+        <h2>{translated.validateTrigger}</h2>
+        <Form>
+          <Form.Item
+            label={translated.name}
+            name="username"
+            required
+            validateTrigger="onBlur"
+            rules={[{ required: true, message: translated.nameTip }]}
+          >
+            <Input placeholder={translated.nameTip1} type="text" />
           </Form.Item>
         </Form>
 

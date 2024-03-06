@@ -154,8 +154,11 @@ export default App;
 | --- | --- | --- | --- |
 | image | Image type, supports incoming image URLs | `ReactNode` | `-` |
 | imageSize | Image size, the unit of number type is px | `number` \| `string` | `-` |
-| description | Description text below the image | `ReactNode` | `-` |
+| title | Title below the image | `ReactNode` | `-` |
+| description | Description below the image | `ReactNode` | `-` |
+| size | Size of component,used by full screen or half screen | `small` \| `base` | `base` |
 | status | The Default error type | `empty` \| `error` \| `network` | `empty` |
+| actions | Actions of operation | `Array` | `[]` |
 
 ## Theming
 

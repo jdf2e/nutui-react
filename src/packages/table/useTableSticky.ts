@@ -1,7 +1,10 @@
 import { useCallback, useEffect, useState } from 'react'
 import { TableColumnProps } from './types'
 
-export default function useTableSticky(columns: Array<TableColumnProps>) {
+export default function useTableSticky(
+  columns: Array<TableColumnProps>,
+  rtl: boolean = false
+) {
   const [isSticky, setIsSticky] = useState(false)
   const [stickyColumnStyleMap, setStickyColumnStyleMap] = useState<any>({})
   const [stickyColumnClassMap, setStickyColumnClassMap] = useState<any>({})
@@ -18,9 +21,9 @@ export default function useTableSticky(columns: Array<TableColumnProps>) {
 
     // 左侧固定列
     leftColumns.forEach((curr, index) => {
-      const pre = leftColumns[index - 1] || {}
+      const dir = rtl ? 'right' : 'left'
       _columnStyleMap[curr.key] = {
-        left: _stickyLeftWidth || 0,
+        [dir]: _stickyLeftWidth || 0,
         width: curr.width || 'auto',
       }
       _columnClassMap[curr.key] = {
@@ -39,9 +42,9 @@ export default function useTableSticky(columns: Array<TableColumnProps>) {
     // 右侧列
     for (let i = rightColumns.length - 1; i >= 0; i--) {
       const curr = rightColumns[i]
-      const next = rightColumns[i + 1] || {}
+      const dir = rtl ? 'left' : 'right'
       _columnStyleMap[curr.key] = {
-        right: _stickyRightWidth || 0,
+        [dir]: _stickyRightWidth || 0,
         width: curr.width || 'auto',
       }
       _columnClassMap[curr.key] = {
