@@ -62,7 +62,7 @@
 
   &-icon-box {
     display: flex;
-    padding-right: 14px;
+    width: 24px;
     position: relative;
     color: $color-text;
   }
@@ -107,11 +107,6 @@
 }
 [dir='rtl'] .nut-collapse-item,
 .nut-rtl .nut-collapse-item {
-  &-icon-box {
-    padding-right: 0;
-    padding-left: 14px;
-  }
-
   &-icon {
     left: auto;
     right: 5px;
