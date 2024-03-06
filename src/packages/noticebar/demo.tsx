@@ -1,5 +1,5 @@
 import React from 'react'
-import { Failure, Fabulous } from '@nutui/icons-react'
+import { Failure, Fabulous, ArrowRight } from '@nutui/icons-react'
 import Image from '@/packages/image'
 import { NoticeBar } from './noticebar'
 import { useTranslate } from '../../sites/assets/locale'
@@ -10,6 +10,7 @@ const NoticeBarDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础使用',
+      align: '居中布局，不支持滚动',
       customTheme: '自定义主题',
       scrollable: '滚动播放',
       mode: '关闭模式',
@@ -30,6 +31,7 @@ const NoticeBarDemo = () => {
     },
     'en-US': {
       basic: 'Basic Usage',
+      align: 'The layout is centered and does not support scrolling',
       customTheme: 'custom theme',
       scrollable: 'Scrollable',
       mode: 'Mode',
@@ -60,7 +62,25 @@ const NoticeBarDemo = () => {
       <div className="demo" style={{ paddingBottom: '30px' }}>
         <h2>{translated.basic}</h2>
         <NoticeBar content={translated.text} leftIcon={null} />
-
+        <h2>{translated.align}</h2>
+        <NoticeBar
+          content={translated.text}
+          align="center"
+          wrap
+          rightIcon={<ArrowRight width="12px" height="12px" />}
+        />
+        <br />
+        <NoticeBar
+          content={translated.text}
+          align="center"
+          rightIcon={<ArrowRight width="12px" height="12px" />}
+        />
+        <br />
+        <NoticeBar
+          content={translated.textShort}
+          align="center"
+          rightIcon={<ArrowRight width="12px" height="12px" />}
+        />
         <h2>{translated.customTheme}</h2>
         <ConfigProvider
           theme={{

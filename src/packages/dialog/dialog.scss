@@ -19,7 +19,6 @@
   &-outer {
     position: fixed;
     max-height: 100%;
-    overflow-y: auto;
     background-color: $white;
     transition:
       transform 0.2s,
@@ -54,6 +53,13 @@
       left: $dialog-close-left;
     }
 
+    &-bottom {
+      top: initial;
+      bottom: -56px;
+      left: 50%;
+      transform: translate(-50%);
+    }
+
     &:active {
       opacity: 0.7;
     }
@@ -79,6 +85,7 @@
     word-break: break-all;
     white-space: pre-wrap;
     text-align: $dialog-content-text-align;
+    overflow-y: auto;
   }
 
   &-footer {

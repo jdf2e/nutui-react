@@ -94,7 +94,7 @@ export default App;
 ```tsx
 import React, {useState} from "react";
 import { Cell,Dialog,Image } from '@nutui/nutui-react';
-import { ArrowCornerLeft } from '@nutui/icons-react'
+import { Close } from '@nutui/icons-react'
 
 const App = () => {
   const [visible1, setVisible1] = useState(false);
@@ -174,23 +174,21 @@ const App = () => {
           {translated.content}
         </Dialog>
         <Cell
-          title="Customize the top close button"
+          title="Customize the bottom close button"
           onClick={() => {
             setVisible9(true)
           }}
         />
         <Dialog
           className="test-dialog"
-          title="Customize the top close button"
+          title="Customize the bottom close button"
           visible={visible9}
-          closeIcon={<ArrowCornerLeft width="16px" height="16px" />}
-          closeIconPosition="top-left"
+          closeIcon={<Close width="24px" height="24px" />}
+          closeIconPosition="bottom"
           onConfirm={() => setVisible9(false)}
           onCancel={() => setVisible9(false)}
           style={{
-            '--nutui-dialog-close-top': '10px',
-            '--nutui-dialog-close-left': '10px',
-            '--nutui-dialog-close-color': 'red',
+            '--nutui-dialog-close-color': '#FFFFFF',
           }}
         >
           {translated.content}
@@ -220,6 +218,8 @@ export default App;
 | hideConfirmButton | Whether to hide the OK button | `boolean` | `false` |
 | hideCancelButton | Whether to hide the cancel button | `boolean` | `false` |
 | disableConfirmButton | Disable the OK button | `boolean` | `false` |
+| closeIcon | Close button | `boolean` \| `ReactNode` | `false` |
+| closeIconPosition | Close button position | `top-left` \| `top-right` \| `bottom` | `top-right` |
 | closeOnOverlayClick | Click on whether to close the dialog box | `boolean` | `true` |
 | footerDirection | Use horizontal and vertical direction value selection horizontal、vertical | `string` | `horizontal` |
 | lockScroll | Whether the background is locked | `boolean` | `true` |
@@ -230,8 +230,6 @@ export default App;
 | onClose | Turn off the callback, and the pop -up window will be triggered in any case | `() => void` | `-` |
 | onClick | Click yourself to call back | `() => void` | `-` |
 | onOverlayClick | Click Overlay | `() => void` | `-` |
-| closeIconPosition | Close button position | `top-left` \| `top-right` | `top-right` |
-| closeIcon | Close button | `boolean \| ReactNode` | `false` |
 
 It should be noted that for the Dialog created by instructive, ** will not perceive the re-rendering of the parent component and the update of the state in it**, so the following writing is completely wrong:
 

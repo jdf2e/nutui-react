@@ -18,25 +18,7 @@ import { Button } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React from "react";
-import { Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const marginStyle = { margin: 8 }
-  return (
-    <>
-      <Button type="primary" style={marginStyle}>主要按钮</Button>
-      <Button type="info" style={marginStyle}>信息按钮</Button>
-      <Button type="default" style={marginStyle}>默认按钮</Button>
-      <Button type="danger" style={marginStyle}>危险按钮</Button>
-      <Button type="warning" style={marginStyle}>警告按钮</Button>
-      <Button type="success" style={marginStyle}>成功按钮</Button>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -46,23 +28,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const marginStyle = { margin: 8 }
-  return (
-    <>
-      <Button fill="solid" style={marginStyle}>Solid</Button>
-      <Button type="primary" fill="outline" style={marginStyle}>Outline</Button>
-      <Button type="primary" fill="dashed" style={marginStyle}>Dashed</Button>
-      <Button fill="none" style={marginStyle}>None</Button>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -72,120 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Button } from '@nutui/nutui-react';
-import { Star, Plus } from '@nutui/icons-react'
-
-const App = () => {
-  const marginStyle = { margin: 8 }
-  return (
-    <>
-      <Button
-            type="primary"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={marginStyle}
-          >
-            操作按钮
-          </Button>
-          <Button
-            type="primary"
-            fill="outline"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={marginStyle}
-          >
-            操作按钮
-          </Button>
-          <Button
-            type="primary"
-            fill="dashed"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={marginStyle}
-          >
-            操作按钮
-          </Button>
-          <Button
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={{
-              margin: 8,
-              backgroundColor: `var(--nutui-color-primary-light)`,
-              borderColor: `var(--nutui-color-primary)`,
-              color: `var(--nutui-color-primary)`,
-            }}
-          >
-            操作按钮
-          </Button>
-          <Button
-            type="default"
-            fill="none"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={{
-              margin: 8,
-              backgroundColor: `var(--nutui-gray-3)`,
-              color: `var(--nutui-gray-7)`,
-            }}
-          >
-            操作按钮
-          </Button>
-          <Button
-            type="default"
-            fill="none"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={{
-              margin: 8,
-              backgroundColor: `var(--nutui-gray-1)`,
-              color: `var(--nutui-gray-7)`,
-            }}
-          >
-            操作按钮
-          </Button>
-          <Button
-            type="default"
-            icon={<Star />}
-            rightIcon={<Star />}
-            style={marginStyle}
-          >
-            操作按钮
-          </Button>
-          <Button
-            shape="square"
-            fill="outline"
-            type="primary"
-            icon={<Plus width="20" />}
-            style={marginStyle}
-          />
-          <Button
-            fill="outline"
-            type="primary"
-            icon={<Plus width="20" />}
-            style={marginStyle}
-          />
-          <Button
-            type="primary"
-            fill="dashed"
-            icon={<Plus width="20" />}
-            style={marginStyle}
-          />
-          <Button
-            type="primary"
-            size="large"
-            icon={<Star width={20} height={20} />}
-            rightIcon={<Star width={20} height={20} />}
-            style={marginStyle}
-          >
-            操作按钮
-          </Button>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -195,125 +48,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Button } from '@nutui/nutui-react';
-import { Star, Plus } from '@nutui/icons-react'
-
-const App = () => {
-  const marginStyle = { margin: 8 }
-  return (
-    <>
-      <Button
-        disabled
-        type="primary"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={marginStyle}
-      >
-        禁用状态
-      </Button>
-      <Button
-        disabled
-        type="primary"
-        fill="outline"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={marginStyle}
-      >
-        禁用状态
-      </Button>
-      <Button
-        disabled
-        type="primary"
-        fill="dashed"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={marginStyle}
-      >
-        禁用状态
-      </Button>
-      <Button
-        disabled
-        fill="solid"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={marginStyle}
-      >
-        禁用状态
-      </Button>
-      <Button
-        disabled
-        type="default"
-        fill="none"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={{
-          margin: 8,
-          backgroundColor: `var(--nutui-gray-3)`,
-          color: `var(--nutui-gray-5)`,
-        }}
-      >
-        禁用状态
-      </Button>
-      <Button
-        disabled
-        type="default"
-        fill="none"
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={{
-          margin: 8,
-          backgroundColor: `var(--nutui-gray-1)`,
-          color: `var(--nutui-gray-5)`,
-        }}
-      >
-        禁用状态
-      </Button>
-      <Button
-        disabled
-        icon={<Star />}
-        rightIcon={<Star />}
-        style={marginStyle}
-      >
-        禁用状态
-      </Button>
-      <Button
-        disabled
-        shape="square"
-        fill="outline"
-        type="primary"
-        icon={<Plus width="20" />}
-        style={marginStyle}
-      />
-      <Button
-        disabled
-        type="primary"
-        icon={<Plus width="20" />}
-        style={marginStyle}
-      />
-      <Button
-        disabled
-        type="primary"
-        fill="dashed"
-        icon={<Plus width="20" />}
-        style={marginStyle}
-      />
-      <Button
-        disabled
-        type="primary"
-        size="large"
-        icon={<Star width={20} height={20} />}
-        rightIcon={<Star width={20} height={20} />}
-        style={marginStyle}
-      >
-        禁用状态
-      </Button>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -323,23 +58,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const marginStyle = { margin: 8 }
-  return (
-    <>
-      <Button style={marginStyle} type="primary" shape="square">
-        方形按钮
-      </Button>
-      <Button style={marginStyle} type="primary">圆形按钮</Button>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -347,37 +66,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const [loading, setLoading] = useState(false)
-  const marginStyle = { margin: 8 }
-  return (
-    <>
-      <Button loading type="warning" style={marginStyle}>
-        加载中
-      </Button>
-      <Button
-        loading={loading}
-        type="success"
-        onClick={() => {
-          setTimeout(() => {
-            setLoading(false)
-          }, 1500)
-          setLoading(!loading)
-        }}
-        style={marginStyle}
-      >
-        Click me!
-      </Button>
-    </>
-  );
-};
-export default App;
-```
-
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 :::
 
 ### 按钮尺寸
@@ -386,28 +75,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const marginStyle = { margin: 8 }
-  return (
-    <>
-      <Button size="large" type="primary">大号按钮</Button>
-      <Button type="primary" style={marginStyle}>普通按钮</Button>
-      <Button style={marginStyle}>普通按钮</Button>
-      <Button size="small" style={marginStyle} type="primary">
-        小型按钮
-      </Button>
-      <Button size="mini" style={marginStyle} type="primary">
-        迷你按钮
-      </Button>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -417,19 +85,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Button } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Button block type="primary">块级元素</Button>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -439,62 +95,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const marginStyle = { margin: 8 }
-  return (
-    <>
-      <Button
-        style={{
-          margin: 8,
-          '--nutui-button-default-border-color': 'blue',
-          '--nutui-button-default-color': '#fff',
-          '--nutui-button-default-background-color': 'blue',
-        }}
-      >
-        单色按钮
-      </Button>
-      <Button
-        fill="outline"
-        style={{
-          margin: 8,
-          '--nutui-button-default-border-color': '#7232dd',
-          '--nutui-button-default-color': '#7232dd',
-        }}
-      >
-        单色按钮
-      </Button>
-      <Button
-        style={{
-          margin: 8,
-          '--nutui-button-default-border-color': 'transparent',
-          '--nutui-button-default-color': '#fff',
-          '--nutui-button-default-background-color':
-            'rgba(10,101,208,0.75)',
-        }}
-      >
-        单色按钮
-      </Button>
-      <Button
-        type="primary"
-        style={{
-          margin: 8,
-          '--nutui-button-default-border-color': 'transparent',
-          '--nutui-button-default-color': '#fff',
-          '--nutui-button-default-background-color':
-            'linear-gradient(to right, #ff6034, #ee0a24)',
-        }}
-      >
-        渐变按钮
-      </Button>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
 :::
 

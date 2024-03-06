@@ -7,7 +7,7 @@ export type DialogConfigType = {
   simple?: boolean
 }
 
-export type DialogCloseIconPositionType = 'top-right' | 'top-left'
+export type DialogCloseIconPosition = 'top-right' | 'top-left' | 'bottom'
 
 export interface DialogBasicProps extends BasicComponent {
   visible?: boolean
@@ -24,7 +24,7 @@ export interface DialogBasicProps extends BasicComponent {
   closeOnOverlayClick?: boolean
   footerDirection?: string
   lockScroll?: boolean
-  closeIconPosition?: DialogCloseIconPositionType
+  closeIconPosition?: DialogCloseIconPosition
   closeIcon?: boolean | ReactNode
   beforeClose?: () => boolean
   beforeCancel?: () => boolean

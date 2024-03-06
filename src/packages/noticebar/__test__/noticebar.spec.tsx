@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import NoticeBar from '@/packages/noticebar'
 
@@ -45,7 +45,7 @@ test('closeable & rightIcon test', () => {
     <NoticeBar
       content={text}
       closeable
-      onClick={handleClick}
+      onClose={handleClick}
       rightIcon="circle-close"
     />
   )
@@ -132,4 +132,29 @@ test('vertical test', () => {
     </NoticeBar>
   )
   expect(container.querySelector('.custom-item')).toBeTruthy
+})
+
+test('align center test', () => {
+  const text =
+    'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
+
+  const { container } = render(<NoticeBar content={text} align="center" />)
+  expect(container.querySelector('.nut-noticebar-box-center')).toBeTruthy
+  expect(
+    container.querySelector('.nut-noticebar-box-wrap-content')
+  ).toHaveClass('nut-ellipsis')
+  expect(container).toMatchSnapshot()
+})
+
+test('event test', async () => {
+  const text =
+    'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
+  const handleClick = jest.fn()
+  const { container } = render(
+    <NoticeBar content={text} onClick={handleClick} />
+  )
+
+  const box = container.querySelectorAll('.nut-noticebar-box')[0]
+  fireEvent.click(box)
+  await waitFor(() => expect(handleClick).toBeCalled())
 })

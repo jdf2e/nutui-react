@@ -2,7 +2,7 @@
   "compilerOptions": {
     "baseUrl": ".",
     "rootDir": ".",
-    "target": "ESNext",
+    "target": "ES6",
     "types": [
       "vite/client",
       "jest",
@@ -29,6 +29,12 @@
     "paths": {
       "@/*": [
         "src/*"
+      ],
+      "@nutui/nutui-react": [
+        "src/packages/nutui.react.ts"
+      ],
+      "@nutui/nutui-react-taro": [
+        "src/packages/nutui.react.taro.ts"
       ]
     }
   },

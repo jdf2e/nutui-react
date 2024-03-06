@@ -39,7 +39,7 @@ test('should render actions correctly', () => {
 test('should render custom image correctly', () => {
   const { getByTestId } = render(
     <Empty
-      description="无优惠券"
+      description="店铺为空"
       image={
         <img
           src="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png"

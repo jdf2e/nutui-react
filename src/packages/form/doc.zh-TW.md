@@ -332,7 +332,38 @@ export default App;
 
 :::
 
-### 錶單類型
+### 校驗觸發時機
+
+:::demo
+
+```tsx
+import React from "react";
+import { Form, Input } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <>
+      <Form>
+        <Form.Item
+          label="欄位A"
+          name="username"
+          required
+          validateTrigger="onBlur"
+          rules={[{ required: true, message: "請輸入欄位A" }]}
+        >
+          <Input placeholder="請輸入欄位A" type="text" />
+        </Form.Item>
+      </Form>
+    </>
+  )
+}
+
+export default App;
+```
+
+:::
+
+### 表單類型
 
 :::demo
 
