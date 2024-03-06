@@ -249,7 +249,7 @@ export default App;
 | --- | --- | --- | --- |
 | value | value to show, eg number、charctor and custom content | `ReactNode` | `-` |
 | max | when value is number, it's the max size | `number` | `99` |
-| dot | Is dotted | `boolean` | `false` |
+| dot | Is dotted, When `value` is a custom content, dot does not take effect | `boolean` | `false` |
 | top | Up and down offset, support unit setting, can be set to: "0" or 0, etc. | `string` \| `number` | `"0"` |
 | right | Left and right offset, support unit setting, can be set to: "5" or 5, etc. | `string` \| `number` | `"5"` |
 | color | background color,the default value is the theme primary color | `string` | `-` |
