@@ -29,7 +29,7 @@ export interface DialogBasicProps extends BasicComponent {
   beforeClose?: () => boolean
   beforeCancel?: () => boolean
   onClose?: () => void
-  onConfirm?: (e?: MouseEvent<HTMLButtonElement>) => Promise<void> | void
+  onConfirm?: (e?: MouseEvent<HTMLButtonElement>) => PromiseLike<any> | void
   onCancel?: () => void
   onClick?: () => void
   onOverlayClick?: () => void
