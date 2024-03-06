@@ -2,7 +2,7 @@ import { Dialog } from './dialog'
 
 export type {
   DialogConfigType,
-  DialogCloseIconPositionType,
+  DialogCloseIconPosition,
   DialogBasicProps,
   DialogConfirmProps,
   DialogReturnProps,

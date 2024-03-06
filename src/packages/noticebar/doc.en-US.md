@@ -33,6 +33,31 @@ export default App
 
 :::
 
+### The layout is centered and does not support scrolling
+
+:::demo
+
+```tsx
+import  React, {useState} from "react";
+import { NoticeBar } from '@nutui/nutui-react';
+import { ArrowRight } from '@nutui/icons-react'
+
+const App = () => {
+    const text = 'Nutui is a Jingdong style mobile terminal component library. It uses Vue language to write applications that can be used on H5 and applet platforms to help R & D personnel improve development efficiency and development experience.'
+    const textShort = 'Nutui is a mobile terminal component library.'
+    return (
+      <>
+        <NoticeBar content={text} align="center" wrap rightIcon={<ArrowRight width="12px" height="12px"  />} />
+        <br />
+        <NoticeBar content={text} align="center" rightIcon={<ArrowRight width="12px" height="12px"  />} />
+        <br />
+        <NoticeBar content={textShort} align="center" rightIcon={<ArrowRight width="12px" height="12px"  />} />
+      </>
+    )
+}
+export default App
+```
+
 :::
 
 ### Custom Theme
@@ -290,6 +315,7 @@ export default App
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
+| align | Layout mode. When the value is center, scrolling is not supported | `left` \| `center` | `left` |
 | direction | Rolling direction | `string` | `horizontal` |
 | content | Notice text content | `string` | `-` |
 | closeable | Whether to enable the off mode | `boolean` | `false` |

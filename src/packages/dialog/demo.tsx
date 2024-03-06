@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { ArrowCornerLeft } from '@nutui/icons-react'
+import { Close } from '@nutui/icons-react'
 import { Dialog } from './dialog'
 import Cell from '../cell'
 import { useTranslate } from '@/sites/assets/locale'
@@ -46,7 +46,7 @@ const DialogDemo = () => {
       cancelText: '取消',
       header: '顶部带插图',
       closeIcon: '顶部带关闭按钮',
-      customClose: '自定义顶部关闭按钮',
+      customClose: '自定义底部关闭按钮',
     },
     'en-US': {
       funUse: 'Function use',
@@ -67,7 +67,7 @@ const DialogDemo = () => {
       cancelText: 'cancel',
       header: 'Top with illustration',
       closeIcon: 'Top with close button',
-      customClose: 'Customize the top close button',
+      customClose: 'Customize the bottom close button',
     },
   })
 
@@ -299,14 +299,12 @@ const DialogDemo = () => {
           className="test-dialog"
           title={translated.customClose}
           visible={visible9}
-          closeIcon={<ArrowCornerLeft width="16px" height="16px" />}
-          closeIconPosition="top-left"
+          closeIcon={<Close width="24px" height="24px" />}
+          closeIconPosition="bottom"
           onConfirm={() => setVisible9(false)}
           onCancel={() => setVisible9(false)}
           style={{
-            '--nutui-dialog-close-top': '10px',
-            '--nutui-dialog-close-left': '10px',
-            '--nutui-dialog-close-color': 'red',
+            '--nutui-dialog-close-color': '#FFFFFF',
           }}
         >
           {translated.content}

@@ -97,7 +97,7 @@ export default App;
 ```tsx
 import React, {useState} from "react";
 import { Cell,Dialog,Image } from '@nutui/nutui-react';
-import { ArrowCornerLeft } from '@nutui/icons-react'
+import { Close } from '@nutui/icons-react'
 
 const App = () => {
   const [visible1, setVisible1] = useState(false);
@@ -200,23 +200,21 @@ const App = () => {
           {translated.content}
         </Dialog>
         <Cell
-          title="自定义顶部关闭按钮"
+          title="自定义底部关闭按钮"
           onClick={() => {
             setVisible9(true)
           }}
         />
         <Dialog
           className="test-dialog"
-          title="自定义顶部关闭按钮"
+          title="自定义底部关闭按钮"
           visible={visible9}
-          closeIcon={<ArrowCornerLeft width="16px" height="16px" />}
-          closeIconPosition="top-left"
+          closeIcon={<Close width="24px" height="24px" />}
+          closeIconPosition="bottom"
           onConfirm={() => setVisible9(false)}
           onCancel={() => setVisible9(false)}
           style={{
-            '--nutui-dialog-close-top': '10px',
-            '--nutui-dialog-close-left': '10px',
-            '--nutui-dialog-close-color': 'red',
+            '--nutui-dialog-close-color': '#FFFFFF',
           }}
         >
           {translated.content}
@@ -247,7 +245,7 @@ export default App;
 | hideCancelButton | 是否隐藏取消按钮 | `boolean` | `false` |
 | disableConfirmButton | 禁用确定按钮 | `boolean` | `false` |
 | closeIcon | 关闭按钮 | `boolean` \| `ReactNode` | `false` |
-| closeIconPosition | 关闭按钮位置 | `top-left` \| `top-right` | `top-right` |
+| closeIconPosition | 关闭按钮位置 | `top-left` \| `top-right` \| `bottom` | `top-right` |
 | closeOnOverlayClick | 点击蒙层是否关闭对话框 | `boolean` | `true` |
 | footerDirection | 使用横纵方向 可选值 horizontal、vertical | `string` | `horizontal` |
 | lockScroll | 背景是否锁定 | `boolean` | `true` |
