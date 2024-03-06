@@ -67,13 +67,14 @@ export default defineConfig(async () => {
             const filePath = resolve(process.cwd(), id)
             const scssCode = await readFileSync(filePath, 'utf-8')
             const modifiedCode = scssCode.replace(
-              /@import\s+['"](\.\.?\/)[^'"]+['"];/g,
+              /@import\s+['"](\.{2}?\/)[^'"]+['"];/g,
               ''
             )
             return modifiedCode
           }
         },
       },
+
       reactRefresh(),
     ],
   }
