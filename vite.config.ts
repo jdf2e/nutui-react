@@ -19,6 +19,9 @@ export default defineConfig(async () => {
   const remarkGfm = await import('remark-gfm')
   const remarkDirective = await import('remark-directive')
   return {
+    server: {
+      host: '0.0.0.0',
+    },
     base: '/react/',
     define: {
       __PROJECTID__: JSON.stringify(`${projectID}` ? `-${projectID}` : ''),
