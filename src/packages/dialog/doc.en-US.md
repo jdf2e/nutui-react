@@ -103,6 +103,7 @@ const App = () => {
   const [visible7, setVisible7] = useState(false);
   const [visible8, setVisible8] = useState(false);
   const [visible9, setVisible9] = useState(false);
+  const [visible10, setVisible10] = useState(false);
   return (
     <>
       <Cell title="Basic bullet" onClick={() => setVisible1(true)} />
@@ -171,7 +172,7 @@ const App = () => {
           onConfirm={() => setVisible8(false)}
           onCancel={() => setVisible8(false)}
         >
-          {translated.content}
+          Function call and template call are supported.
         </Dialog>
         <Cell
           title="Customize the bottom close button"
@@ -191,7 +192,38 @@ const App = () => {
             '--nutui-dialog-close-color': '#FFFFFF',
           }}
         >
-          {translated.content}
+          Function call and template call are supported.
+        </Dialog>
+        <Cell
+          title="Customize the content area"
+          onClick={() => {
+            setVisible10(true)
+          }}
+        />
+        <Dialog
+          className="test-dialog"
+          title="Customize the content area"
+          visible={visible10}
+          onConfirm={() => setVisible10(false)}
+          onCancel={() => setVisible10(false)}
+        >
+          <>
+            <div>Text content text content text content text content text content text content text content text content text content.</div>
+            <div
+              style={{
+                height: '96px',
+                borderRadius: '8px',
+                marginTop: '13px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: '#F8F8F8',
+                color: '#BFBFBF',
+              }}
+            >
+              Customize the content area
+            </div>
+          </>
         </Dialog>
     </>
   )
