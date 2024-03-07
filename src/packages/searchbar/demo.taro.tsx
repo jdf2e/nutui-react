@@ -188,7 +188,7 @@ const SearchBarDemo = () => {
       <Toast
         type="text"
         visible={show}
-        msg="search callback"
+        content="search callback"
         onClose={() => {
           SetShow(false)
         }}
