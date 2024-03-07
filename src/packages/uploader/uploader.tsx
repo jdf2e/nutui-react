@@ -390,7 +390,7 @@ const InternalUploader: ForwardRefRenderFunction<
               上传文件
             </Button>
           )}
-          {maxCount > fileList.length && (
+          {Number(maxCount) > fileList.length && (
             <input
               className="nut-uploader-input"
               type="file"
@@ -417,29 +417,31 @@ const InternalUploader: ForwardRefRenderFunction<
         }}
       />
 
-      {maxCount > fileList.length && previewType === 'picture' && !children && (
-        <div
-          className={classNames('nut-uploader-upload', previewType, {
-            'nut-uploader-upload-disabled': disabled,
-          })}
-        >
-          <div className="nut-uploader-icon">
-            {uploadIcon}
-            <span className="nut-uploader-icon-tip">{uploadLabel}</span>
-          </div>
+      {Number(maxCount) > fileList.length &&
+        previewType === 'picture' &&
+        !children && (
+          <div
+            className={classNames('nut-uploader-upload', previewType, {
+              'nut-uploader-upload-disabled': disabled,
+            })}
+          >
+            <div className="nut-uploader-icon">
+              {uploadIcon}
+              <span className="nut-uploader-icon-tip">{uploadLabel}</span>
+            </div>
 
-          <input
-            className="nut-uploader-input"
-            type="file"
-            capture={capture}
-            name={name}
-            accept={accept}
-            disabled={disabled}
-            multiple={multiple}
-            onChange={fileChange}
-          />
-        </div>
-      )}
+            <input
+              className="nut-uploader-input"
+              type="file"
+              capture={capture}
+              name={name}
+              accept={accept}
+              disabled={disabled}
+              multiple={multiple}
+              onChange={fileChange}
+            />
+          </div>
+        )}
     </div>
   )
 }
