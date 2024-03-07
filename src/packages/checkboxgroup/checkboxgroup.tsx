@@ -14,6 +14,7 @@ export interface CheckboxGroupProps {
   disabled?: boolean
   value?: string[]
   defaultValue?: string[]
+  list: boolean
   max: number | undefined
   min: number | undefined
   labelPosition: CheckboxLabelPosition
@@ -26,6 +27,7 @@ export interface CheckboxGroupProps {
 const defaultProps = {
   max: undefined,
   min: undefined,
+  list: false,
   labelPosition: 'right',
   direction: 'vertical',
   onChange: (value: string[]) => {},
@@ -44,6 +46,7 @@ export const CheckboxGroup = React.forwardRef(
       children,
       className,
       disabled,
+      list,
       onChange,
       value,
       defaultValue,
@@ -109,6 +112,7 @@ export const CheckboxGroup = React.forwardRef(
           labelPosition: labelPosition || 'right',
           disabled,
           max,
+          list,
           onLimit,
           value: _value,
           check: (value: string) => {
@@ -134,6 +138,7 @@ export const CheckboxGroup = React.forwardRef(
             classPrefix,
             {
               [`nut-checkboxgroup-${props.direction}`]: props.direction,
+              [`nut-checkboxgroup-list`]: list,
             },
             className
           )}

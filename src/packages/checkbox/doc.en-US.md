@@ -550,6 +550,26 @@ export default CheckboxGroupOptions;
 
 :::
 
+## List
+
+:::demo
+
+```tsx
+import React, { useState } from 'react';
+import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+
+const CheckboxGroupList = () => {
+  return <Checkbox.Group defaultValue={['1']} labelPosition="left" list>
+    <Checkbox value="1" label="Option1" />
+    <Checkbox value="2" label="Option2" />
+    <Checkbox value="3" label="Option3" />
+  </Checkbox.Group>
+}
+export default CheckboxGroupList;
+```
+
+:::
+
 ## Checkbox
 
 ### props
@@ -559,6 +579,7 @@ export default CheckboxGroupOptions;
 | checked | whether checked | `boolean` | `false` |
 | defaultChecked | Initially checked or not | `boolean` | `false` |
 | disabled | Whether to disable selection | `boolean` | `false` |
+| list | List model | `boolean` | `false` |
 | labelPosition | The position of the text  | `left` \| `right` | `right` |
 | icon | before selection | `ReactNode` | `'CheckNormal'` |
 | activeIcon |  after selection | `ReactNode` | `'Checked'` |
@@ -605,6 +626,11 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-checkbox-button-font-size | shape is the font size of the button | `12px` |
 | \--nutui-checkbox-button-color | button font color | `$color-text` |
 | \--nutui-checkbox-button-background | shape is the background color of the button | `$color-background` |
+| \--nutui-checkbox-label-button-border-color | shape is the border color of the button | `$color-primary` |
 | \--nutui-checkbox-button-active-border | The shape is the border of the active button | `1px solid $color-primary` |
 | \--nutui-checkbox-button-padding | The shape is the padding of the button | `5px 18px` |
 | \--nutui-checkbox-button-border-radius | The shape is the rounded corner of the button | `15px` |
+| \--nutui-checkbox-list-background-colors | List background color | `15px` |
+| \--nutui-checkbox-list-item-border | List item border | `15px` |
+| \--nutui-checkbox-list-padding | list padding | `15px` |
+| \--nutui-checkbox-list-item-padding | padding of list items | `15px` |
