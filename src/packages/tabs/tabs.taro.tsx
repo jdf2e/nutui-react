@@ -183,7 +183,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
 
     animate()
   }
-  const scrollIntoView = () => {
+  const scrollIntoView = (index: number) => {
     raf(() => {
       Promise.all([
         getRect(`#nut-tabs-titles-${name || uuid} .nut-tabs-list`),
@@ -192,14 +192,14 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         navRectRef.current = navRect
         titleRectRef.current = titleRects
         // @ts-ignore
-        const titleRect: RectItem = titleRectRef.current[value]
+        const titleRect: RectItem = titleRectRef.current[index]
         if (!titleRect) return
 
         let to = 0
         if (props.direction === 'vertical') {
           const DEFAULT_PADDING = 11
           const top = titleRects
-            .slice(0, value)
+            .slice(0, index)
             .reduce(
               (prev: number, curr: RectItem) => prev + curr.height,
               DEFAULT_PADDING
@@ -208,7 +208,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         } else {
           const DEFAULT_PADDING = 20
           const left = titleRects
-            .slice(0, value)
+            .slice(0, index)
             .reduce(
               (prev: number, curr: RectItem) => prev + curr.width,
               DEFAULT_PADDING
@@ -233,7 +233,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
           : `translate3d( 0,-${index * 100}%, 0)`,
       transitionDuration: `${duration}ms`,
     })
-    scrollIntoView()
+    scrollIntoView(index)
   }, [value])
 
   const tabChange = (item: TabsTitle, index: number) => {
