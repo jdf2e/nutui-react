@@ -16,32 +16,7 @@ import { Cell } from '@nutui/nutui-react-taro'
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Cell } from '@nutui/nutui-react-taro'
-
-const App = () => {
-  const testClick = (
-    event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-  ) => {
-    console.log('点击事件')
-  }
-  return (
-    <>
-      <Cell title="我是标题" extra="描述文字" />
-      <Cell title="我是标题" description="我是描述" extra="描述文字" />
-      <Cell
-        title="点击测试"
-        onClick={(
-          event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => testClick(event)}
-      />
-      <Cell title="圆角设置0" radius={0} />
-    </>
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -49,19 +24,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Cell } from '@nutui/nutui-react-taro'
-
-const App = () => {
-  return (
-    <Cell>
-      <div>自定义内容</div>
-    </Cell>
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -69,31 +32,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Cell } from '@nutui/nutui-react-taro'
-import { User } from '@nutui/icons-react-taro'
-
-const App = () => {
-  return (
-    <Cell
-      title={
-        <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-          <User />
-          <span style={{ marginLeft: '5px' }}>我是标题</span>
-        </div>
-      }
-      description={
-        <span>
-          我是描述<b style={{ color: 'red' }}>1</b>
-        </span>
-      }
-      extra="描述文字"
-    />
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 

@@ -2,9 +2,13 @@ import React from 'react'
 import { User, ArrowRight } from '@nutui/icons-react-taro'
 import Taro, { redirectTo, navigateTo } from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Switch, Cell, Button } from '@/packages/nutui.react.taro'
+import { Cell, Button } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 import '@/packages/cell/demo.scss'
+import Demo1 from './demos/taro/demo1'
+import Demo2 from './demos/taro/demo2'
+import Demo3 from './demos/taro/demo3'
+import Demo4 from './demos/taro/demo4'
 
 interface T {
   basic: string
@@ -108,47 +112,13 @@ const CellDemo = () => {
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
-        <Cell title={translated.title} extra={translated.extra} />
-        <Cell
-          title={translated.title}
-          description={translated.title1}
-          extra={translated.extra}
-        />
-        <Cell
-          title={translated.title2}
-          onClick={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => testClick(event)}
-        />
-        <Cell title={translated.title3} radius="0" />
+        <Demo1 />
         <h2>{translated.content}</h2>
-        <Cell>
-          <div>{translated.content}</div>
-        </Cell>
+        <Demo2 />
         <h2>{translated.title6}</h2>
-        <Cell
-          title={
-            <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-              <User />
-              <span
-                style={{
-                  marginInlineStart: '5px',
-                }}
-              >
-                {translated.title}
-              </span>
-            </div>
-          }
-          description={
-            <span>
-              {translated.title1} <b style={{ color: 'red' }}>1</b>
-            </span>
-          }
-          extra={translated.extra}
-        />
-        <Cell.Group title={translated.customRight}>
-          <Cell title="Switch" extra={<Switch defaultChecked />} />
-        </Cell.Group>
+        <Demo3 />
+        <h2>{translated.customRight}</h2>
+        <Demo4 />
         <h2>{translated.title5}</h2>
         <Cell
           align="center"
