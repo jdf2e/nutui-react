@@ -58,7 +58,7 @@ const classPrefix = 'nut-toast'
 
 // export default class Notification extends React.PureComponent<NotificationProps> {
 export const Toast: FunctionComponent<
-  Partial<ToastProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<ToastProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'content'>
 > & {
   show: typeof show
   hide: typeof hide
