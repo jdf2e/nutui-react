@@ -219,7 +219,7 @@ const FormDemo = () => {
     <>
       <Header />
       <Toast
-        msg={state.msg}
+        content={state.msg}
         visible={showToast}
         type={state.type}
         onClose={() => {

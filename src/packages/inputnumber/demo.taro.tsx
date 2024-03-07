@@ -201,7 +201,7 @@ const InputNumberDemo = () => {
         <Toast
           type={toastType}
           visible={show}
-          msg={toastMsg}
+          content={toastMsg}
           onClose={() => {
             SetShow(false)
           }}

@@ -264,7 +264,7 @@ const RangeDemo = () => {
         <Toast
           type="text"
           visible={show}
-          msg={msg}
+          content={msg}
           onClose={() => {
             setShow(false)
           }}
