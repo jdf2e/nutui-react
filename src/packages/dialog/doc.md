@@ -106,6 +106,7 @@ const App = () => {
   const [visible7, setVisible7] = useState(false);
   const [visible8, setVisible8] = useState(false);
   const [visible9, setVisible9] = useState(false);
+  const [visible10, setVisible10] = useState(false);
   return (
     <>
       <Cell title="基础弹框" onClick={() => setVisible1(true)} />
@@ -197,7 +198,7 @@ const App = () => {
           onConfirm={() => setVisible8(false)}
           onCancel={() => setVisible8(false)}
         >
-          {translated.content}
+          支持函数调用和组件调用两种方式。
         </Dialog>
         <Cell
           title="自定义底部关闭按钮"
@@ -217,7 +218,38 @@ const App = () => {
             '--nutui-dialog-close-color': '#FFFFFF',
           }}
         >
-          {translated.content}
+          支持函数调用和组件调用两种方式。
+        </Dialog>
+        <Cell
+          title="自定义内容区域"
+          onClick={() => {
+            setVisible10(true)
+          }}
+        />
+        <Dialog
+          className="test-dialog"
+          title="自定义内容区域"
+          visible={visible10}
+          onConfirm={() => setVisible10(false)}
+          onCancel={() => setVisible10(false)}
+        >
+          <>
+            <div>文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容</div>
+            <div
+              style={{
+                height: '96px',
+                borderRadius: '8px',
+                marginTop: '13px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: '#F8F8F8',
+                color: '#BFBFBF',
+              }}
+            >
+              自定义内容区域
+            </div>
+          </>
         </Dialog>
     </>
   )

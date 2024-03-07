@@ -24,6 +24,8 @@ interface T {
   header: string
   closeIcon: string
   customClose: string
+  customContent: string
+  customContentText: string
 }
 
 const DialogDemo = () => {
@@ -47,6 +49,9 @@ const DialogDemo = () => {
       header: '顶部带插图',
       closeIcon: '顶部带关闭按钮',
       customClose: '自定义底部关闭按钮',
+      customContent: '自定义内容区域',
+      customContentText:
+        '文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容.',
     },
     'en-US': {
       funUse: 'Function use',
@@ -68,6 +73,9 @@ const DialogDemo = () => {
       header: 'Top with illustration',
       closeIcon: 'Top with close button',
       customClose: 'Customize the bottom close button',
+      customContent: 'Customize the content area',
+      customContentText:
+        'Text content text content text content text content text content text content text content text content text content.',
     },
   })
 
@@ -80,6 +88,7 @@ const DialogDemo = () => {
   const [visible7, setVisible7] = useState(false)
   const [visible8, setVisible8] = useState(false)
   const [visible9, setVisible9] = useState(false)
+  const [visible10, setVisible10] = useState(false)
 
   return (
     <>
@@ -308,6 +317,37 @@ const DialogDemo = () => {
           }}
         >
           {translated.content}
+        </Dialog>
+        <Cell
+          title={translated.customContent}
+          onClick={() => {
+            setVisible10(true)
+          }}
+        />
+        <Dialog
+          className="test-dialog"
+          title={translated.customContent}
+          visible={visible10}
+          onConfirm={() => setVisible10(false)}
+          onCancel={() => setVisible10(false)}
+        >
+          <>
+            <div>{translated.customContentText}</div>
+            <div
+              style={{
+                height: '96px',
+                borderRadius: '8px',
+                marginTop: '13px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: '#F8F8F8',
+                color: '#BFBFBF',
+              }}
+            >
+              {translated.customContent}
+            </div>
+          </>
         </Dialog>
       </div>
     </>
