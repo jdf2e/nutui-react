@@ -22,7 +22,7 @@ export interface ToastProps extends BasicComponent {
   contentStyle?: React.CSSProperties
   icon: string | React.ReactNode
   iconSize: string
-  msg: string | React.ReactNode
+  content: string | React.ReactNode
   duration: number
   position?: ToastPositionType
   type: string
@@ -40,7 +40,7 @@ const defaultProps = {
   id: '',
   icon: null,
   iconSize: '20',
-  msg: '',
+  content: '',
   duration: 2, // 时长,duration为0则一直展示
   position: 'center',
   type: 'text',
@@ -70,7 +70,7 @@ export const Toast: FunctionComponent<
       contentStyle,
       icon,
       iconSize,
-      msg,
+      content,
       duration,
       type,
       title,
@@ -193,7 +193,7 @@ export const Toast: FunctionComponent<
               {title ? (
                 <div className={`${classPrefix}-title`}>{title}</div>
               ) : null}
-              <span className={`${classPrefix}-text`}>{msg}</span>
+              <span className={`${classPrefix}-text`}>{content}</span>
             </div>
           </div>
         </Overlay>

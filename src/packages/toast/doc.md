@@ -10,7 +10,7 @@
 import { Toast } from '@nutui/nutui-react';
 ```
 
-## 代码演示
+## 基础用法
 
 ### 文字提示
 
@@ -28,7 +28,6 @@ const App = () => {
         <>
         <Cell
           title="Text文字提示"
-          
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => textToast('网络失败，请稍后再试~')}
@@ -60,7 +59,6 @@ const App = () => {
         <>
         <Cell
           title="Toast 标题提示"
-          
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => titleToast('Toast 标题提示')}
@@ -92,7 +90,6 @@ const App = () => {
         <>
         <Cell
           title="Success 成功提示"
-          
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => successToast('成功提示')}
@@ -124,7 +121,6 @@ const App = () => {
         <>
         <Cell
           title="Error 失败提示"
-          
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
           ) => errorToast('失败提示')}
@@ -156,7 +152,6 @@ const App = () => {
         <>
             <Cell
               title=" Warning 警告提示"
-
               onClick={(
                   event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
               ) => warningToast('警告提示')}
@@ -188,7 +183,6 @@ const App = () => {
         <>
             <Cell
               title=" Loading 加载提示"
-
               onClick={(
                   event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
               ) => loadingToast('加载中')}
@@ -228,14 +222,12 @@ const App = () => {
         <>
             <Cell
               title="设置展示时长为10秒提示"
-
               onClick={(
                   event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
               ) => duringToast('设置展示时长为10秒')}
             />
             <Cell
               title="Toast 不消失"
-
               onClick={(
                   event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
               ) => permanentToast('Toast 不消失') }
@@ -362,19 +354,18 @@ export default App
 
 ## Toast
 
-
 ### Props
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| content | Toast文本内容 | `React.ReactNode` | `-` |
-| duration | 展示时长（秒）<br>值为 0 时，toast 不会自动消失 | `number` | `2` |
-| position | toast展示位置 | `top` \| `center` \| `bottom` | `center` |
+| content | 消息文本内容 | `React.ReactNode` | `-` |
+| duration | 展示时长（秒），值为 0 时，toast 不会自动消失 | `number` | `2` |
 | title | 标题 | `string` | `-` |
-| icon | 自定义图标 | `success` \| `fail` \| `loading` \| `warn` \| `React.ReactNode` | `-` |
-| size | 文案尺寸，三选一 | `small` \| `base` \| `large`  | `base` |
+| position | toast展示位置 | `top` \| `center` \| `bottom` | `center` |
 | contentClassName | 自定义内容区类名 | `string` | `-` |
 | contentStyle | 自定义内容区样式 | `React.CSSProperties` | `-` |
+| icon | 自定义图标 | `success` \| `fail` \| `loading` \| `warn` \| `React.ReactNode` | `-` |
+| size | 文案尺寸，三选一 | `small` \| `base` \| `large` | `base` |
 | closeOnOverlayClick | 是否在点击遮罩层后关闭提示 | `boolean` | `false` |
 | lockScroll | 背景是否锁定 | `boolean` | `false` |
 | wordBreak | 换行截断方式 | `normal \| break-all \| break-word ` | `break-all` |
@@ -407,7 +398,7 @@ Toast.config({className: 'demo', contentClassName:'content-demo'})
 | \--nutui-toast-title-font-size | `toast`标题文字大小 | `16px` |
 | \--nutui-toast-text-font-size | `toast`内容文字大小 | `14px` |
 | \--nutui-toast-font-color | `toast`文字颜色 | `#fff` |
-| \--nutui-toast-inner-top           | `toast`内容区自定义高度    | `50%`              |
+| \--nutui-toast-inner-top | `toast`内容区自定义高度    | `50%` |
 | \--nutui-toast-inner-padding | `toast`内容区padding值 | `24px 30px` |
 | \--nutui-toast-inner-bg-color | `toast`内容区背景色 | `$color-mask` |
 | \--nutui-toast-inner-border-radius | `toast`内容区圆角值 | `12px` |
