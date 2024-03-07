@@ -14,8 +14,6 @@ import { Data, PositionType } from './types'
 import { initPositinoCache, updateItemSize } from './utils'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-const defaultContainerHeight = getSystemInfoSync().windowHeight - 5 || 667
-
 export interface VirtualListProps extends BasicComponent {
   list: Array<Data>
   containerHeight: number
@@ -31,7 +29,6 @@ export interface VirtualListProps extends BasicComponent {
 const defaultProps = {
   ...ComponentDefaults,
   list: [] as Array<Data>,
-  containerHeight: defaultContainerHeight,
   itemHeight: 66,
   margin: 10,
   itemEqual: true,
@@ -51,12 +48,22 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
     key,
     onScroll,
     className,
-    containerHeight,
+    containerHeight: origContainerHeight,
     ...rest
   } = {
     ...defaultProps,
     ...props,
   }
+
+  const clientHeight = useMemo(
+    () => getSystemInfoSync().windowHeight - 5 || 667,
+    []
+  )
+
+  const containerHeight = useMemo(
+    () => origContainerHeight ?? clientHeight,
+    [origContainerHeight, clientHeight]
+  )
 
   const [startOffset, setStartOffset] = useState(0)
   const start = useRef(0)
@@ -79,11 +86,6 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
   ])
 
   const [offSetSize, setOffSetSize] = useState<number>(containerHeight || 0)
-
-  const clientHeight = useMemo(
-    () => getSystemInfoSync().windowHeight - 5 || 667,
-    []
-  )
 
   //   初始计算可视区域展示数量
   useEffect(() => {
