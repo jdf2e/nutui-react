@@ -1,10 +1,15 @@
 .nut-ellipsis {
   display: flex;
 
+  &-rows {
+    display: initial;
+  }
+
   .nut-ellipsis-text {
     cursor: pointer;
     color: $ellipsis-expand-collapse-color;
     display: inline;
+    white-space: nowrap;
   }
 
   .nut-ellipsis-wordbreak {
