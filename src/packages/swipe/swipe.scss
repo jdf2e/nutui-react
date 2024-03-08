@@ -5,6 +5,7 @@
   background-color: $white;
 
   &-wrapper {
+    height: inherit;
     transition-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1);
     transition-property: transform;
 
@@ -14,6 +15,7 @@
 
     .nut-cell {
       margin: 0;
+      height: 100%;
     }
   }
 

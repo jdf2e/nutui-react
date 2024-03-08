@@ -36,8 +36,8 @@ const customTheme = {
 }
 
 const customTheme2 = {
-  nutuiInputnumberButtonWidth: '30px',
-  nutuiInputnumberButtonHeight: '30px',
+  nutuiInputnumberButtonWidth: '24px',
+  nutuiInputnumberButtonHeight: '24px',
   nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
   nutuiInputnumberInputBackgroundColor: '#fff',
   nutuiInputnumberInputMargin: '0 2px',
@@ -173,7 +173,7 @@ const InputNumberDemo = () => {
           <InputNumber value={inputValue} min={-6} onChange={onChange} async />
         </Cell>
 
-        <h2>支持formatter</h2>
+        <h2>Formatter</h2>
         <Cell>
           <ConfigProvider theme={customTheme3}>
             <InputNumber
@@ -201,7 +201,7 @@ const InputNumberDemo = () => {
         <Toast
           type={toastType}
           visible={show}
-          msg={toastMsg}
+          content={toastMsg}
           onClose={() => {
             SetShow(false)
           }}

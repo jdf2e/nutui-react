@@ -4,6 +4,7 @@ import { CheckboxLimit, CheckboxLabelPosition } from './types'
 const CheckboxGroupContext = createContext<{
   labelPosition: CheckboxLabelPosition
   disabled: boolean | undefined
+  list: boolean
   value: string[]
   max: number | undefined
   check: (value: string) => void

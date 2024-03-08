@@ -24,6 +24,9 @@ interface T {
   header: string
   closeIcon: string
   customClose: string
+  customContent: string
+  customContentText: string
+  confirmLoading: string
 }
 
 const DialogDemo = () => {
@@ -47,6 +50,10 @@ const DialogDemo = () => {
       header: '顶部带插图',
       closeIcon: '顶部带关闭按钮',
       customClose: '自定义底部关闭按钮',
+      customContent: '自定义内容区域',
+      customContentText:
+        '文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容.',
+      confirmLoading: '确认按钮loading效果',
     },
     'en-US': {
       funUse: 'Function use',
@@ -68,6 +75,10 @@ const DialogDemo = () => {
       header: 'Top with illustration',
       closeIcon: 'Top with close button',
       customClose: 'Customize the bottom close button',
+      customContent: 'Customize the content area',
+      customContentText:
+        'Text content text content text content text content text content text content text content text content text content.',
+      confirmLoading: 'Confirm button loading effect',
     },
   })
 
@@ -80,6 +91,8 @@ const DialogDemo = () => {
   const [visible7, setVisible7] = useState(false)
   const [visible8, setVisible8] = useState(false)
   const [visible9, setVisible9] = useState(false)
+  const [visible10, setVisible10] = useState(false)
+  const [visible11, setVisible11] = useState(false)
 
   return (
     <>
@@ -303,6 +316,65 @@ const DialogDemo = () => {
           closeIconPosition="bottom"
           onConfirm={() => setVisible9(false)}
           onCancel={() => setVisible9(false)}
+          style={{
+            '--nutui-dialog-close-color': '#FFFFFF',
+          }}
+        >
+          {translated.content}
+        </Dialog>
+        <Cell
+          title={translated.customContent}
+          onClick={() => {
+            setVisible10(true)
+          }}
+        />
+        <Dialog
+          className="test-dialog"
+          title={translated.customContent}
+          visible={visible10}
+          onConfirm={() => setVisible10(false)}
+          onCancel={() => setVisible10(false)}
+        >
+          <>
+            <div>{translated.customContentText}</div>
+            <div
+              style={{
+                height: '96px',
+                borderRadius: '8px',
+                marginTop: '13px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: '#F8F8F8',
+                color: '#BFBFBF',
+              }}
+            >
+              {translated.customContent}
+            </div>
+          </>
+        </Dialog>
+        <Cell
+          title={translated.confirmLoading}
+          onClick={() => {
+            setVisible11(true)
+          }}
+        />
+        <Dialog
+          className="test-dialog"
+          title={translated.confirmLoading}
+          visible={visible11}
+          onConfirm={async () => {
+            const wait = () => {
+              return new Promise((resolve) => {
+                setTimeout(() => {
+                  resolve(0)
+                }, 3000)
+              })
+            }
+            await wait()
+            setVisible11(false)
+          }}
+          onCancel={() => setVisible11(false)}
           style={{
             '--nutui-dialog-close-color': '#FFFFFF',
           }}

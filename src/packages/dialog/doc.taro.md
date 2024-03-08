@@ -69,6 +69,8 @@ const App = () => {
   const [visible7, setVisible7] = useState(false);
   const [visible8, setVisible8] = useState(false);
   const [visible9, setVisible9] = useState(false);
+  const [visible10, setVisible10] = useState(false);
+  const [visible11, setVisible11] = useState(false);
   return (
     <>
       <Cell title="基础弹框" onClick={() => setVisible1(true)} />
@@ -154,51 +156,104 @@ const App = () => {
       <Cell
         title="顶部带插图"
         onClick={() => {
-          setVisible7(true)
+          setVisible8(true)
         }}
       />
       <Dialog
         className="test-dialog"
         title="顶部带插图"
-        visible={visible7}
+        visible={visible8}
         header={
           <Image src="https://img13.360buyimg.com/imagetools/jfs/t1/219330/27/30033/11784/6544af3fF5c0fd98f/64c41bb05ef09189.png" />
         }
-        onConfirm={() => setVisible7(false)}
-        onCancel={() => setVisible7(false)}
+        onConfirm={() => setVisible8(false)}
+        onCancel={() => setVisible8(false)}
       >
         如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
       </Dialog>
       <Cell
           title="顶部带关闭按钮"
           onClick={() => {
-            setVisible8(true)
-          }}
-        />
-        <Dialog
-          className="test-dialog"
-          title="顶部带关闭按钮"
-          visible={visible8}
-          closeIcon
-          onConfirm={() => setVisible8(false)}
-          onCancel={() => setVisible8(false)}
-        >
-          {translated.content}
-        </Dialog>
-        <Cell
-          title="自定义底部关闭按钮"
-          onClick={() => {
             setVisible9(true)
           }}
         />
         <Dialog
           className="test-dialog"
-          title="自定义底部关闭按钮"
+          title="顶部带关闭按钮"
           visible={visible9}
-          closeIcon={<Close width="24px" height="24px" />}
-          closeIconPosition="bottom"
+          closeIcon
           onConfirm={() => setVisible9(false)}
           onCancel={() => setVisible9(false)}
+        >
+          支持函数调用和组件调用两种方式。
+        </Dialog>
+        <Cell
+          title="自定义底部关闭按钮"
+          onClick={() => {
+            setVisible10(true)
+          }}
+        />
+        <Dialog
+          className="test-dialog"
+          title="自定义底部关闭按钮"
+          visible={visible10}
+          closeIcon={<Close width="24px" height="24px" />}
+          closeIconPosition="bottom"
+          onConfirm={() => setVisible10(false)}
+          onCancel={() => setVisible10(false)}
+          style={{
+            '--nutui-dialog-close-color': '#FFFFFF',
+          }}
+        >
+          支持函数调用和组件调用两种方式。
+        </Dialog>
+        <Cell
+          title="自定义内容区域"
+          onClick={() => {
+            setVisible11(true)
+          }}
+        />
+        <Dialog
+          className="test-dialog"
+          title="自定义内容区域"
+          visible={visible11}
+          onConfirm={() => setVisible11(false)}
+          onCancel={() => setVisible11(false)}
+        >
+          <>
+            <div>文字内容文字内容文字内容文字内容文字内容文字内容文字内容文字内容</div>
+            <div
+              style={{
+                height: '96px',
+                borderRadius: '8px',
+                marginTop: '13px',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: '#F8F8F8',
+                color: '#BFBFBF',
+              }}
+            >
+              自定义内容区域
+            </div>
+          </>
+        </Dialog>
+        <Dialog
+          className="test-dialog"
+          title="确认按钮loading效果"
+          visible={visible10}
+          onConfirm={async () => {
+            const wait = () => {
+              return new Promise((resolve) => {
+                setTimeout(() => {
+                  resolve(0)
+                }, 3000)
+              })
+            }
+            await wait()
+            setVisible10(false)
+          }}
+          onCancel={() => setVisible10(false)}
           style={{
             '--nutui-dialog-close-color': '#FFFFFF',
           }}

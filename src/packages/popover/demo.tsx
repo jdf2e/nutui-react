@@ -42,6 +42,7 @@ const PopoverDemo = () => {
       title2: '自定义内容',
       title3: '位置自定义',
       title4: '自定义目标元素',
+      light: '明亮风格',
       dark: '暗黑风格',
       showIcon: '展示图标',
       disableAction: '禁用选项',
@@ -57,6 +58,7 @@ const PopoverDemo = () => {
       title2: 'Custom Content',
       title3: 'Custom Location',
       title4: 'Custom Target Element',
+      light: 'Light',
       dark: 'Dark',
       showIcon: 'Show Icon',
       disableAction: 'Disabled',
@@ -72,6 +74,7 @@ const PopoverDemo = () => {
       title2: '自定義內容',
       title3: '位置自定義',
       title4: '自定義目標元素',
+      light: '明朗風格',
       dark: '暗黑風格',
       showIcon: '展示圖標',
       disableAction: '禁用選項',
@@ -214,6 +217,7 @@ const PopoverDemo = () => {
     { text: 'left-end', value: 'left-end' },
   ]
   const [basic, setBasic] = useState(false)
+  const [dark, setDark] = useState(false)
   const [showIcon, setShowIcon] = useState(false)
   const [disableAction, setDisableAction] = useState(false)
   const [customized, setCustomized] = useState(false)
@@ -268,7 +272,22 @@ const PopoverDemo = () => {
           }}
         >
           <Button type="primary" shape="square">
-            {translated.title}
+            {translated.light}
+          </Button>
+        </Popover>
+
+        <Popover
+          visible={dark}
+          list={itemList}
+          theme="dark"
+          location="bottom-start"
+          style={{ marginInlineEnd: '30px' }}
+          onClick={() => {
+            dark ? setDark(false) : setDark(true)
+          }}
+        >
+          <Button type="primary" shape="square">
+            {translated.dark}
           </Button>
         </Popover>
 

@@ -105,6 +105,8 @@ export default App;
 
 ### 自定义图片
 
+> 如果您是京东站内相关项目的开发，我们特意为您提供了一系列的缺省状态的图片链接，您可通过内部群获取。
+
 :::demo
 
 ```tsx
@@ -114,8 +116,8 @@ import { Empty } from '@nutui/nutui-react-taro';
 const App = () => {
   return (
     <Empty
-      description="无优惠券" 
-      image={<img src="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png" alt=""/>}
+      description="店铺为空" 
+      image={<img src="https://storage.360buyimg.com/imgtools/44f3cc10c4-0cf9a7e0-c0ac-11ee-8375-193101bb1a46.png" alt=""/>}
      />
   );
 };

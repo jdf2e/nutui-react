@@ -116,7 +116,7 @@ const IconDemo = () => {
       <style>{style}</style>
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <Toast
-          msg={state.msg}
+          content={state.msg}
           visible={state.visible}
           type={state.type}
           duration={state.duration}

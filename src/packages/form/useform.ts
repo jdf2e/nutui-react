@@ -146,7 +146,7 @@ class FormStore {
       // validator.messages()
       try {
         await validator.validate({ [name]: this.store?.[name] })
-      } catch ({ errors }) {
+      } catch ({ errors }: any) {
         if (errors) {
           errs.push(...(errors as any[]))
           this.errors[name] = errors
