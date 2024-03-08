@@ -9,6 +9,7 @@ import { usePropsValue } from '@/utils/use-props-value'
 import { useForceUpdate } from '@/utils/use-force-update'
 import raf from '@/utils/raf'
 import useUuid from '@/utils/use-uuid'
+import { useRtl } from '../configprovider/configprovider.taro'
 
 export type TabsTitle = {
   title: string
@@ -48,6 +49,7 @@ const classPrefix = 'nut-tabs'
 export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   TabPane: typeof TabPane
 } = (props) => {
+  const rtl = useRtl()
   const {
     activeColor,
     tabStyle,
@@ -225,11 +227,14 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   }
 
   useEffect(() => {
-    const index = titles.current.findIndex((t) => t.value === value)
+    let index = titles.current.findIndex(
+      (t) => Number(t.value) === Number(value)
+    )
+    index = index < 0 ? 0 : index
     setContentStyle({
       transform:
         direction === 'horizontal'
-          ? `translate3d(-${index * 100}%, 0, 0)`
+          ? `translate3d(${rtl ? '' : '-'}${index * 100}%, 0, 0)`
           : `translate3d( 0,-${index * 100}%, 0)`,
       transitionDuration: `${duration}ms`,
     })
