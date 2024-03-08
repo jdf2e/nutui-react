@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Dialog } from '../dialog'
 
@@ -117,4 +117,25 @@ test('dialog close icon  position adjustment', async () => {
   fireEvent.click(closeBtn)
   expect(onClose).toBeCalled()
   expect(onCancel).toBeCalled()
+})
+
+test('should display loading when onConfirm returns a promise', async () => {
+  const mockOnConfirm = jest.fn(
+    () =>
+      new Promise((resolve) => {
+        setTimeout(resolve, 1000)
+      })
+  )
+  const { container } = render(<Dialog visible onConfirm={mockOnConfirm} />)
+
+  const footerOkEle = container.querySelector('.nut-dialog-footer-ok')!
+  fireEvent.click(footerOkEle)
+
+  expect(footerOkEle).toHaveClass('nut-button-loading')
+
+  await waitFor(() => {
+    expect(footerOkEle).not.toHaveClass('nut-button-loading')
+  })
+
+  expect(mockOnConfirm).toHaveBeenCalled()
 })
