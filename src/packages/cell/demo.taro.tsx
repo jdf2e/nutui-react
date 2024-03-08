@@ -1,14 +1,15 @@
 import React from 'react'
-import { User, ArrowRight } from '@nutui/icons-react-taro'
 import Taro, { redirectTo, navigateTo } from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Cell, Button } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 import '@/packages/cell/demo.scss'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
+import Demo5 from './demos/taro/demo5'
+import Demo6 from './demos/taro/demo6'
+import Demo7 from './demos/taro/demo7'
 
 interface T {
   basic: string
@@ -120,135 +121,11 @@ const CellDemo = () => {
         <h2>{translated.customRight}</h2>
         <Demo4 />
         <h2>{translated.title5}</h2>
-        <Cell
-          align="center"
-          title={translated.title}
-          description={translated.title1}
-          extra={translated.extra}
-        />
-        <Cell.Group
-          title={translated.title4}
-          description={translated.description}
-        >
-          <Cell
-            className="nutui-cell-clickable"
-            title={translated.link}
-            align="center"
-            extra={<ArrowRight />}
-          />
-          <Cell
-            className="nutui-cell-clickable"
-            title={translated.urlJump}
-            extra={
-              <>
-                <span>/pages/index/index</span>
-                <ArrowRight
-                  style={{
-                    marginInlineStart: '5px',
-                  }}
-                />
-              </>
-            }
-            align="center"
-            onClick={(
-              event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-            ) => onJumpclick(event, '/pages/index/index')}
-          />
-        </Cell.Group>
-
-        <Cell.Group>
-          <Cell
-            title={
-              <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-                <span style={{ fontWeight: '500' }}>{translated.title}</span>
-                <span
-                  style={{
-                    color: '#8C8C8C',
-                    fontSize: '10px',
-                    marginInlineStart: '5px',
-                    lineHeight: 1.5,
-                  }}
-                >
-                  {translated.title1}
-                </span>
-              </div>
-            }
-            extra={
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                More
-                <ArrowRight
-                  size={12}
-                  style={{
-                    marginInlineStart: '5px',
-                  }}
-                />
-              </div>
-            }
-          />
-          <Cell>
-            <div style={{ minHeight: '50px' }}>{translated.content}</div>
-          </Cell>
-          <Cell
-            align="center"
-            title={
-              <div
-                style={{
-                  color: '#8C8C8C',
-                  fontSize: '12px',
-                }}
-              >
-                {translated.title1}
-              </div>
-            }
-            extra={<Button type="primary">Action</Button>}
-          />
-        </Cell.Group>
-
-        <Cell.Group>
-          <Cell
-            title={
-              <div style={{ display: 'flex', alignItems: 'center' }}>
-                <User />
-                <span
-                  style={{
-                    marginInlineStart: '5px',
-                  }}
-                >
-                  {translated.title}
-                </span>
-              </div>
-            }
-            extra={<ArrowRight />}
-          />
-          <Cell>
-            <div style={{ minHeight: '50px' }}>{translated.content}</div>
-          </Cell>
-          <Cell align="center" extra={<Button type="primary">Action</Button>} />
-        </Cell.Group>
-
-        <Cell.Group>
-          <Cell
-            title={
-              <div
-                style={{ display: 'flex', alignItems: 'center', color: 'blue' }}
-              >
-                {translated.title}
-              </div>
-            }
-          />
-          <Cell>
-            <div style={{ color: '#26bf26' }}>{translated.content}</div>
-          </Cell>
-        </Cell.Group>
-
-        <Cell.Group
-          divider={false}
-          title={translated.title7}
-          description={translated.description1}
-        >
-          <Cell title={translated.title} extra={translated.extra} />
-          <Cell title={translated.title} extra={translated.extra} />
-        </Cell.Group>
+        <Demo5 />
+        <h2>{translated.title4}</h2>
+        <Demo6 />
+        <h2>{translated.title7}</h2>
+        <Demo7 />
       </div>
     </>
   )
