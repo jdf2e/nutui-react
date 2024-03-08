@@ -1,6 +1,5 @@
 import React from 'react'
 import { useTranslate } from '../../sites/assets/locale'
-import './demo.scss'
 import Demo1 from './demos/h5/demo1'
 import Demo2 from './demos/h5/demo2'
 import Demo3 from './demos/h5/demo3'
