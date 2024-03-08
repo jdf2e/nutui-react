@@ -1,5 +1,5 @@
 import React from 'react'
-import Taro, { redirectTo, navigateTo } from '@tarojs/taro'
+import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import '@/packages/cell/demo.scss'
@@ -91,22 +91,6 @@ const CellDemo = () => {
       clickEventToast: 'Click Test',
     },
   })
-
-  const testClick = (
-    event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-  ) => {
-    Taro.showToast({ title: translated.clickEventToast })
-  }
-
-  const onJumpclick = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    link: string
-  ) => {
-    const replace = false
-    if (link) {
-      replace ? redirectTo({ url: link }) : navigateTo({ url: link })
-    }
-  }
 
   return (
     <>
