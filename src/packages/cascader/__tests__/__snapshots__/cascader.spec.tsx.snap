@@ -38,7 +38,7 @@ exports[`Cascader change tab 1`] = `
         >
           <div
             class="nut-tabs-content"
-            style="transform: translate3d(--100%, 0, 0); transition-duration: 300ms;"
+            style="transform: translate3d(-0%, 0, 0); transition-duration: 300ms;"
           >
             <div
               class="nut-tabpane active"
@@ -121,7 +121,7 @@ exports[`Cascader change tab 2`] = `
         >
           <div
             class="nut-tabs-content"
-            style="transform: translate3d(--100%, 0, 0); transition-duration: 300ms;"
+            style="transform: translate3d(-0%, 0, 0); transition-duration: 300ms;"
           >
             <div
               class="nut-tabpane active"
