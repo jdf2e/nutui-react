@@ -14,7 +14,7 @@ if (projectID) {
 // https://vitejs.dev/config/
 export default defineConfig({
   mode: 'production',
-  base: `/h5/react/${projectID === 'jmapp' ? 'jm' : '2x'}`,
+  base: `/h5/react/${projectID === 'jmapp' ? 'jdesign' : '2x'}`,
   define: {
     __PROJECTID__: JSON.stringify(`${projectID}` ? `-${projectID}` : ''),
   },
@@ -59,7 +59,7 @@ export default defineConfig({
   plugins: [reactRefresh()],
   build: {
     target: 'es2015',
-    outDir: `./dist/${projectID === 'jmapp' ? 'jm' : '2x'}/`,
+    outDir: `./dist/${projectID === 'jmapp' ? 'jdesign' : '2x'}/`,
     cssCodeSplit: true,
     rollupOptions: {
       input: {
