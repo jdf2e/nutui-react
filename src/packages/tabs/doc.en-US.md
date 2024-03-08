@@ -382,7 +382,7 @@ export default App;
 
 ### CSS Sticky
 
-By setting the style of the tab, for example: tabStyle={{ position: 'sticky', top: '0px', zIndex: 11 }} , realize the sticky layout of CSS. Note: In the WeChat applet, the outer elements of the component cannot have overflow. Settings for hidden, auto, and scroll.
+By setting the style of the tab, for example: `tabStyle={{ position: 'sticky', top: '0px', zIndex: 11 }}` , realize the sticky layout of CSS. Note: In the WeChat applet, the outer elements of the component cannot have overflow. Settings for hidden, auto, and scroll.
 
 :::demo
 
