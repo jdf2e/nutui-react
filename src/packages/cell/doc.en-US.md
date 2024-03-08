@@ -16,32 +16,7 @@ import { Cell } from '@nutui/nutui-react'
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Cell, Toast } from '@nutui/nutui-react'
-
-const App = () => {
-  const testClick = (
-    event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-  ) => {
-    Toast.show('Click Test')
-  }
-  return (
-    <>
-      <Cell title="Title" extra="extra" />
-      <Cell title="Title" description="Description" extra="extra" />
-      <Cell
-        title="Click Test"
-        onClick={(
-          event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => testClick(event)}
-      />
-      <Cell title="Round Radius 0" radius={0} />
-    </>
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -49,19 +24,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <Cell>
-      <div>Customize Content</div>
-    </Cell>
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -69,31 +32,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Cell } from '@nutui/nutui-react'
-import { User } from '@nutui/icons-react'
-
-const App = () => {
-  return (
-    <Cell
-      title={
-        <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-          <User />
-          Title<span style={{ marginLeft: '5px' }}>Description</span>
-        </div>
-      }
-      description={
-        <span>
-          Description<b style={{ color: 'red' }}>1</b>
-        </span>
-      }
-      extra="extra"
-    />
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -101,19 +40,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Cell, Switch } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <Cell.Group title="Customize the right arrow area">
-      <Cell title="Switch" extra={<Switch defaultChecked />} />
-    </Cell.Group>
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -123,17 +50,7 @@ You can align the left and right contents of the cell vertically through the 'ce
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <Cell align="center" title="Title" description="Description" extra="extra" />
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -141,126 +58,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Cell, Button } from '@nutui/nutui-react'
-import { ArrowRight, User } from '@nutui/icons-react'
-
-const App = () => {
-  const onJumpclick = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    url: string
-  ) => {
-    const replace = false
-    if (url) {
-      replace ? window.location.replace(url) : (window.location.href = url)
-    }
-  }
-  return (
-    <>
-      <Cell.Group
-        title="Link | Cell.Group Usage"
-        extra="Usage nut-cell-group support title extra"
-      >
-        <Cell
-          lassName="nutui-cell-clickable"
-          title="Link Usage"
-          align="center"
-          extra={<ArrowRight />}
-        />
-        <Cell
-          className="nutui-cell-clickable"
-          title="URL Jump"
-          extra={
-            <>
-              <span style={{ marginRight: '5px' }}>https://jd.com</span>
-              <ArrowRight />
-            </>
-          }
-          align="center"
-          onClick={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => onJumpclick(event, 'https://jd.com')}
-        />
-      </Cell.Group>
-
-      <Cell.Group>
-        <Cell
-          title={
-            <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-              <span style={{ fontWeight: '500' }}>Title</span>
-              <span
-                style={{
-                  color: '#8C8C8C',
-                  fontSize: '10px',
-                  marginLeft: '5px',
-                  lineHeight: 1.5,
-                }}
-              >
-                Description
-              </span>
-            </div>
-          }
-          extra={
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              More
-              <ArrowRight width={12} height={12} style={{ marginLeft: '5px' }} />
-            </div>
-          }
-        />
-        <Cell>
-          <div style={{ minHeight: '50px' }}>Content</div>
-        </Cell>
-        <Cell
-          align="center"
-          title={
-            <div
-              style={{
-                color: '#8C8C8C',
-                fontSize: '12px',
-              }}
-            >
-              Description
-            </div>
-          }
-          extra={<Button type="primary">Action</Button>}
-        />
-      </Cell.Group>
-
-      <Cell.Group>
-        <Cell
-          title={
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <User style={{ marginRight: '5px' }} /> Title
-            </div>
-          }
-          extra={<ArrowRight />}
-        />
-        <Cell>
-          <div style={{ minHeight: '50px' }}>Content</div>
-        </Cell>
-        <Cell align="center" extra={<Button type="primary">Action</Button>} />
-      </Cell.Group>
-
-      <Cell.Group>
-        <Cell
-          title={
-            <div
-              style={{ display: 'flex', alignItems: 'center', color: 'blue' }}
-            >
-              Title
-            </div>
-          }
-        />
-        <Cell>
-          <div style={{ color: '#26bf26' }}>Content</div>
-        </Cell>
-      </Cell.Group>
-    </>
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -270,24 +68,7 @@ The 'divider' property allows you to keep the lower edge from being displayed be
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <Cell.Group
-      divider={false}
-      title="Grouping usage"
-      description="The bottom edge is not displayed between cells"
-    >
-      <Cell title="Title" extra="extra" />
-      <Cell title="Title" extra="extra" />
-    </Cell.Group>
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
