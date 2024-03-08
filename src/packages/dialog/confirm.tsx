@@ -51,7 +51,7 @@ const confirm = (
     const ret = _onConfirm?.()
     if (ret && ret.then) {
       renderFunction(dialogConfig)
-      ret.then(
+      return ret.then(
         () => {
           onCancel(true)
         },
