@@ -25,6 +25,10 @@ const config = {
   plugins: ['@tarojs/plugin-html'],
   compiler: 'webpack5',
   alias: {
+    '@nutui/nutui-react-taro/dist/locales/en-US.ts': path.resolve(
+      __dirname,
+      '../../../src/locales/en-US.ts'
+    ),
     '@/packages': path.resolve(__dirname, '../../../src/packages'),
     '@/sites': path.resolve(__dirname, '../../../src/sites'),
     '@/locales': path.resolve(__dirname, '../../../src/locales'),

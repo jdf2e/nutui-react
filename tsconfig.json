@@ -27,6 +27,12 @@
       "dom"
     ],
     "paths": {
+      "@nutui/nutui-react/dist/locale/enUS": [
+        "src/locales/en-US.ts"
+      ],
+      "@nutui/nutui-react-taro/dist/locales/en-US.ts": [
+        "src/locales/en-US.ts"
+      ],
       "@/*": [
         "src/*"
       ],
@@ -35,7 +41,8 @@
       ],
       "@nutui/nutui-react-taro": [
         "src/packages/nutui.react.taro.ts"
-      ]
+      ],
+
     }
   },
   "include": [

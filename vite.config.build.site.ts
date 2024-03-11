@@ -22,6 +22,10 @@ export default defineConfig({
     alias: [
       { find: '@', replacement: resolve(__dirname, './src') },
       {
+        find: '@nutui/nutui-react-taro/dist/locales/en-US.ts',
+        replacement: resolve(__dirname, './src/locales/en-US.ts'),
+      },
+      {
         find: '@nutui/nutui-react',
         replacement: resolve(__dirname, './src/packages/nutui.react.ts'),
       },

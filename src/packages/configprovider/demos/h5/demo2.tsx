@@ -1,6 +1,6 @@
 import React from 'react'
 import { ConfigProvider, TextArea } from '@nutui/nutui-react'
-import enUS from '@nutui/nutui-react/dist/locales/en-US'
+import enUS from '@nutui/nutui-react/dist/locale/enUS'
 
 const Demo2 = () => {
   return (
