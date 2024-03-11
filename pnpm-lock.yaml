@@ -114,7 +114,7 @@ importers:
         version: 3.6.22(@types/react@18.2.57)(postcss@8.4.35)(react@18.2.0)
       '@tarojs/plugin-platform-weapp':
         specifier: 3.6.22
-        version: 3.6.22(@types/react@18.2.57)(postcss@8.4.35)(react@18.2.0)
+        version: 3.6.22(@types/react@18.2.57)(postcss@8.4.35)
       '@tarojs/react':
         specifier: 3.6.22
         version: 3.6.22(react@18.2.0)
@@ -418,7 +418,7 @@ importers:
         version: 3.6.22(@types/react@18.2.57)(postcss@8.4.35)
       '@tarojs/plugin-platform-weapp':
         specifier: 3.6.22
-        version: 3.6.22(@types/react@18.2.57)(postcss@8.4.35)(react@18.2.0)
+        version: 3.6.22(@types/react@18.2.57)(postcss@8.4.35)
       '@tarojs/react':
         specifier: 3.6.22
         version: 3.6.22(react@18.2.0)
@@ -4016,7 +4016,7 @@ packages:
   /@tarojs/plugin-platform-qq@3.6.22(@types/react@18.2.57)(postcss@8.4.35):
     resolution: {integrity: sha512-XMVvO2k3qEmNgY7lKFvwm2+JPW6m8FqvGp6n27tAlUFYEgnSH7ejyvNauKYDKbv1XZpQHPvbJE2ijq5Zdj5WKQ==}
     dependencies:
-      '@tarojs/plugin-platform-weapp': 3.6.22(@types/react@18.2.57)(postcss@8.4.35)(react@18.2.0)
+      '@tarojs/plugin-platform-weapp': 3.6.22(@types/react@18.2.57)(postcss@8.4.35)
       '@tarojs/service': 3.6.22(@types/react@18.2.57)(postcss@8.4.35)
       '@tarojs/shared': 3.6.22
     transitivePeerDependencies:
@@ -4061,7 +4061,7 @@ packages:
       - supports-color
       - vue
 
-  /@tarojs/plugin-platform-weapp@3.6.22(@types/react@18.2.57)(postcss@8.4.35)(react@18.2.0):
+  /@tarojs/plugin-platform-weapp@3.6.22(@types/react@18.2.57)(postcss@8.4.35):
     resolution: {integrity: sha512-WjVfVYj63o8ATEL+rL0hkJlexDIp8jE3Ijv4BQIceQvHoBg2VkPtOE3ctZcb9FnfcEHkPOIV8+wK5iqkyBQhaw==}
     dependencies:
       '@tarojs/components': 3.6.22(@types/react@18.2.57)(postcss@8.4.35)(react@18.2.0)
@@ -4074,7 +4074,6 @@ packages:
       - '@types/webpack'
       - '@types/webpack-dev-server'
       - postcss
-      - react
       - supports-color
       - vue
 
@@ -4249,7 +4248,7 @@ packages:
       '@tarojs/plugin-platform-qq': 3.6.22(@types/react@18.2.57)(postcss@8.4.35)
       '@tarojs/plugin-platform-swan': 3.6.22(@types/react@18.2.57)(postcss@8.4.35)
       '@tarojs/plugin-platform-tt': 3.6.22(@types/react@18.2.57)(postcss@8.4.35)
-      '@tarojs/plugin-platform-weapp': 3.6.22(@types/react@18.2.57)(postcss@8.4.35)(react@18.2.0)
+      '@tarojs/plugin-platform-weapp': 3.6.22(@types/react@18.2.57)(postcss@8.4.35)
       '@tarojs/runner-utils': 3.6.22
       '@tarojs/runtime': 3.6.22
       '@tarojs/shared': 3.6.22
