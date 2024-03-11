@@ -33,8 +33,8 @@ export default defineConfig(async () => {
           replacement: resolve(__dirname, './src/locales/en-US.ts'),
         },
         {
-          find: '@nutui/nutui-react-taro/dist',
-          replacement: resolve(__dirname, './src'),
+          find: '@nutui/nutui-react-taro/dist/locales/en-US.ts',
+          replacement: resolve(__dirname, './src/locales/en-US.ts'),
         },
         { find: '@', replacement: resolve(__dirname, './src') },
         {
