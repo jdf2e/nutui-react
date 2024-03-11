@@ -229,7 +229,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
 
   useEffect(() => {
     let index = titles.current.findIndex(
-      (t) => Number(t.value) === Number(value)
+      (t) => String(t.value) === String(value)
     )
     index = index < 0 ? 0 : index
     setContentStyle({
