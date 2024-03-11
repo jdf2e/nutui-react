@@ -216,6 +216,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
               DEFAULT_PADDING
             )
           to = left - (navRectRef.current.width - titleRect.width) / 2
+          to = rtl ? -to : to
         }
         nextTick(() => {
           scrollWithAnimation.current = true
