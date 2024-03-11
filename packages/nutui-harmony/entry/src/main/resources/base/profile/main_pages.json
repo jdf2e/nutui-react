@@ -1,0 +1,10 @@
+{
+  "src": [
+    "pages/index/index",
+    "base/pages/button/index"
+  ],
+  "window": {
+    "designWidth": 375,
+    "autoDesignWidth": false
+  }
+}
