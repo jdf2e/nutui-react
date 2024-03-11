@@ -1,3 +1,33 @@
+# v2.4.0
+`2024-03-08`
+
+* :sparkles: feat(inputnumber): update UI (#1989) @oasis-cloud
+* :sparkles: feat(checkbox): list model (#1957) @oasis-cloud
+* :sparkles: feat(dialog): added custom content area demo (#1995) @songsong
+* :sparkles: feat(dialog): support bottom close button (#1978) @songsong
+* :sparkles: feat(dialog): support confirm button loading effect (#1983) @bbf
+* :sparkles: feat(empty): 图片变更 (#1988) @xiaoyatong
+* :sparkles: feat(noticebar): supports the center layout (#1972) @songsong
+* :sparkles: feat(popover): 增加 light 和 dark 模式的区分 (#1977) @xiaoyatong
+* :sparkles: feat(swipe): 增加自定义高度的demo (#1996) @xiaoyatong
+* :sparkles: feat(rtl): badge (#1986) @Eiinu
+* :sparkles: feat(rtl): collapse (#1981) @Eiinu
+* :sparkles: feat(rtl): noticebar (#1984) @Eiinu
+* :sparkles: feat(rtl): table (#1982) @Eiinu
+* :sparkles: feat(animatingNumbers): support rtl (#1985) @songsong
+* :bug: fix(badge): the text set by value unwrap (#1992) @songsong
+* :bug: fix(cell): unify the demos of Cell (#1998) @Alex.huxiyang
+* :bug: fix(toast): add deprecated prop msg (#1999) @Eiinu
+* :bug: fix(toast): 变更 taro下的属性 msg 为 content，增加 taro 下 demo (#1994) @xiaoyatong
+* :bug: fix(virtuallist): 修复 vitrual list 组件 Taro 下获取窗口高度不正确的问题 (#1993) @CDog34
+* :bug: fix: dts 插件升级导致构建产物路径错误 (#1979) @oasis-cloud
+* :bug: fix: tabs 小程序滚动操作问题 (#1969) @feiyang1020
+* 🔨 chore(deps): bump typescript v5 (#1975) @Eiinu
+* 🔨 chore(deps): update commitlint monorepo to v19 (#1976) @renovate[bot]
+* 🔨 chore: 构建 demo 要定义 __PROJECTID__ (#1974) @oasis-cloud
+* 📖 docs(tabs): fix typo (#1997) @Eiinu
+
+
 # v2.3.12
 `2024-03-01`
 
