@@ -175,7 +175,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     function animate() {
       if (direction === 'horizontal') {
         setScrollLeft(to)
-        console.log('to==>', to)
       } else {
         setScrollTop(to)
       }
