@@ -40,6 +40,11 @@ The ConfigProvider component provides the ability to override CSS variables, and
 :::demo
 
 <CodeBlock src='h5/demo1.tsx'></CodeBlock>
+
+:::
+
+:::demo
+
 <CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
@@ -89,6 +94,11 @@ NutUI-React provides a ConfigProvider component for global configuration of inte
 :::demo
 
 <CodeBlock src='h5/demo3.tsx'></CodeBlock>
+
+:::
+
+:::demo
+
 <CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
