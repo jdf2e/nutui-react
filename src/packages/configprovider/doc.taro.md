@@ -40,6 +40,7 @@ ConfigProvider 组件提供了覆盖 CSS 变量的能力，你需要在根节点
 :::demo
 
 <CodeBlock src='taro/demo1.tsx'></CodeBlock>
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -87,7 +88,8 @@ NutUI-React 提供了 ConfigProvider 组件用于全局配置国际化文案。�
 
 :::demo
 
-<CodeBlock src='taro/demo2.tsx'></CodeBlock>
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -95,7 +97,7 @@ NutUI-React 提供了 ConfigProvider 组件用于全局配置国际化文案。�
 
 :::demo
 
-<CodeBlock src='taro/demo3.tsx'></CodeBlock>
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 

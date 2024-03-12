@@ -1,14 +1,15 @@
 import React from 'react'
 import { ConfigProvider, TextArea } from '@nutui/nutui-react'
+import enUS from '@nutui/nutui-react/dist/locale/enUS'
 
-const Demo3 = () => {
+const Demo4 = () => {
   return (
     <>
-      <ConfigProvider>
+      <ConfigProvider locale={enUS}>
         <TextArea disabled showCount maxLength={20} />
       </ConfigProvider>
     </>
   )
 }
 
-export default Demo3
+export default Demo4

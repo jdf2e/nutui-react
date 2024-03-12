@@ -1,17 +1,25 @@
 import React from 'react'
-import { ConfigProvider, TextArea } from '@nutui/nutui-react'
-import enUS from '@nutui/nutui-react/dist/locale/enUS'
+import { ConfigProvider, Cell, Rate, Button } from '@nutui/nutui-react'
 
 const Demo2 = () => {
+  const darkTheme = {
+    nutuiColorPrimary: 'green',
+    nutuiColorPrimaryStop1: 'green',
+    nutuiColorPrimaryStop2: 'green',
+  }
   return (
     <>
-      <h2>Textarea默认</h2>
-      <ConfigProvider>
-        <TextArea disabled showCount maxLength={20} />
-      </ConfigProvider>
-      <h2>Textarea英文</h2>
-      <ConfigProvider locale={enUS}>
-        <TextArea disabled showCount maxLength={20} />
+      <ConfigProvider theme={darkTheme}>
+        <Cell.Group>
+          <Cell>
+            <Rate defaultValue={3} />
+          </Cell>
+          <Cell>
+            <Button type="primary" size="large">
+              提交
+            </Button>
+          </Cell>
+        </Cell.Group>
       </ConfigProvider>
     </>
   )
