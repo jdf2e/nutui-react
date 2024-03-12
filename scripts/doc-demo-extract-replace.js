@@ -5,24 +5,25 @@ const extractH5Demos = () => {
   const markdownFilePath = path.join(__dirname, 'doc.md')
   let markdownContent = fs.readFileSync(markdownFilePath, 'utf-8')
   const outputDirectory = path.join(__dirname, 'demos/h5')
-  const tsxRegex = /```tsx([\s\S]*?)```/g
+  const tsxRegex = /:::demo\r\n\r\n```tsx\r\n([\s\S]*?)```\r\n\r\n:::/g
   let match
   if (!fs.existsSync(outputDirectory)) {
     fs.mkdirSync(outputDirectory, { recursive: true })
   }
 
-  let counter = 0
+  let counter = 1
   while ((match = tsxRegex.exec(markdownContent)) !== null) {
-    if (counter > 0) {
-      let codeContent = match[1]
-      codeContent = codeContent.replace(/const App/g, `const Demo${counter}`)
-      codeContent = codeContent.replace(
-        /export default App/g,
-        `export default Demo${counter}`
-      )
-      const fileName = `/demos/h5/demo${counter}.tsx`
-      fs.writeFileSync(path.join(__dirname, fileName), codeContent.trim())
-    }
+    let codeContent = match[1]
+    codeContent = codeContent.replace(
+      /const \w+ = \(\) => \{/,
+      `const Demo${counter} = () => {`
+    )
+    codeContent = codeContent.replace(
+      /export default \w+/,
+      `export default Demo${counter}`
+    )
+    const fileName = `/demos/h5/demo${counter}.tsx`
+    fs.writeFileSync(path.join(__dirname, fileName), codeContent.trim())
 
     counter++
   }
@@ -33,24 +34,26 @@ const extractTaroDemos = () => {
   const markdownFilePath = path.join(__dirname, 'doc.taro.md')
   let markdownContent = fs.readFileSync(markdownFilePath, 'utf-8')
   const outputDirectory = path.join(__dirname, 'demos/taro')
-  const tsxRegex = /```tsx([\s\S]*?)```/g
+  const tsxRegex = /:::demo\r\n\r\n```tsx\r\n([\s\S]*?)```\r\n\r\n:::/g
   let match
   if (!fs.existsSync(outputDirectory)) {
     fs.mkdirSync(outputDirectory, { recursive: true })
   }
 
-  let counter = 0
+  let counter = 1
   while ((match = tsxRegex.exec(markdownContent)) !== null) {
-    if (counter > 0) {
-      let codeContent = match[1]
-      codeContent = codeContent.replace(/const App/g, `const Demo${counter}`)
-      codeContent = codeContent.replace(
-        /export default App/g,
-        `export default Demo${counter}`
-      )
-      const fileName = `/demos/taro/demo${counter}.tsx`
-      fs.writeFileSync(path.join(__dirname, fileName), codeContent.trim())
-    }
+    let codeContent = match[1]
+    codeContent = codeContent.replace(
+      /const \w+ = \(\) => \{/,
+      `const Demo${counter} = () => {`
+    )
+    codeContent = codeContent.replace(
+      /export default \w+/,
+      `export default Demo${counter}`
+    )
+    const fileName = `/demos/taro/demo${counter}.tsx`
+    fs.writeFileSync(path.join(__dirname, fileName), codeContent.trim())
+
     counter++
   }
   fs.writeFileSync(markdownFilePath, markdownContent)
@@ -67,14 +70,18 @@ const replaceAllDocs = () => {
   filePaths.forEach((path, index) => {
     let markdownContent = fs.readFileSync(path, 'utf-8')
 
-    const tsxRegex = /```tsx[\s\S]*?```/g
+    const tsxRegex = /:::demo\r\n\r\n```tsx\r\n([\s\S]*?)```\r\n\r\n:::/g
     const arr = markdownContent.match(tsxRegex)
-    for (let i = 1; i < arr.length; i++) {
+    for (let i = 0; i < arr.length; i++) {
       markdownContent = markdownContent.replace(
         arr[i],
         index === 2
-          ? `<CodeBlock src='taro/demo${i}.tsx'></CodeBlock>`
-          : `<CodeBlock src='h5/demo${i}.tsx'></CodeBlock>`
+          ? `:::demo\r\n\r\n<CodeBlock src='taro/demo${
+              i + 1
+            }.tsx'></CodeBlock>\r\n\r\n:::`
+          : `:::demo\r\n\r\n<CodeBlock src='h5/demo${
+              i + 1
+            }.tsx'></CodeBlock>\r\n\r\n:::`
       )
     }
     fs.writeFileSync(path, markdownContent)
