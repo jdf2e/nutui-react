@@ -15,21 +15,18 @@ const ConfigProviderDemo = () => {
       title2: 'Textarea 英文',
       defaultTheme: '默认主题',
       customTheme: '定制主题',
-      submit: '提交',
     },
     'zh-TW': {
       title1: '默認用法',
       title2: 'Textarea 英文',
       defaultTheme: '默認主題',
       customTheme: '定制主題',
-      submit: '提交',
     },
     'en-US': {
       title1: 'Textarea default',
       title2: 'Textarea en-US',
       customTheme: 'Custom Theme',
       defaultTheme: 'Default Theme',
-      submit: 'Submit',
     },
   })
   return (
