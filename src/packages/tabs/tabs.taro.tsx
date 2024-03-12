@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { ScrollView, View } from '@tarojs/components'
 import classNames from 'classnames'
 import { JoySmile } from '@nutui/icons-react-taro'
-import { nextTick, createSelectorQuery } from '@tarojs/taro'
+import Taro, { nextTick, createSelectorQuery } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import TabPane from '@/packages/tabpane/index.taro'
 import { usePropsValue } from '@/utils/use-props-value'
@@ -175,6 +175,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     function animate() {
       if (direction === 'horizontal') {
         setScrollLeft(to)
+        console.log('to==>', to)
       } else {
         setScrollTop(to)
       }
@@ -259,7 +260,9 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         scrollLeft={scrollLeft}
         scrollTop={scrollTop}
         showScrollbar={false}
-        scrollWithAnimation={scrollWithAnimation.current}
+        scrollWithAnimation={
+          rtl && Taro.getEnv() !== 'WEB' ? false : scrollWithAnimation.current
+        }
         id={`nut-tabs-titles-${name || uuid}`}
         className={classesTitle}
         style={{ ...tabStyle }}
