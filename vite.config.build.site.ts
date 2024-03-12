@@ -5,19 +5,16 @@ import atImport from 'postcss-import'
 import config from './package.json'
 
 const { resolve } = path
-let fileStr = `@import "@/styles/variables.scss";\n`
+let fileStr = `@import "@/styles/variables.scss";@import '@/styles/theme-default.scss';\n`
 const projectID = process.env.VITE_APP_PROJECT_ID
 if (projectID) {
-  fileStr = `@import '@/styles/variables-${projectID}.scss';\n`
+  fileStr = `@import '@/styles/variables-${projectID}.scss';@import '@/styles/theme-${projectID}.scss';\n`
 }
 
 // https://vitejs.dev/config/
 export default defineConfig({
   mode: 'production',
   base: `/h5/react/${projectID === 'jmapp' ? 'jdesign' : '2x'}`,
-  define: {
-    __PROJECTID__: JSON.stringify(`${projectID}` ? `-${projectID}` : ''),
-  },
   resolve: {
     alias: [
       {

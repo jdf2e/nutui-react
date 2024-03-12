@@ -31,7 +31,7 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
   const classes = classNames(classPrefix, className)
 
   function content() {
-    if (dot || typeof value === 'object') return null
+    if (dot || typeof value === 'object' || value === 0) return null
     if (typeof value === 'number' && typeof max === 'number') {
       return max < value ? `${max}+` : `${value}`
     }
