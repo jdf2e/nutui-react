@@ -2,13 +2,14 @@ import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { ScrollView, View } from '@tarojs/components'
 import classNames from 'classnames'
 import { JoySmile } from '@nutui/icons-react-taro'
-import { nextTick, createSelectorQuery } from '@tarojs/taro'
+import Taro, { nextTick, createSelectorQuery } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import TabPane from '@/packages/tabpane/index.taro'
 import { usePropsValue } from '@/utils/use-props-value'
 import { useForceUpdate } from '@/utils/use-force-update'
 import raf from '@/utils/raf'
 import useUuid from '@/utils/use-uuid'
+import { useRtl } from '../configprovider/configprovider.taro'
 
 export type TabsTitle = {
   title: string
@@ -48,6 +49,7 @@ const classPrefix = 'nut-tabs'
 export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   TabPane: typeof TabPane
 } = (props) => {
+  const rtl = useRtl()
   const {
     activeColor,
     tabStyle,
@@ -214,6 +216,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
               DEFAULT_PADDING
             )
           to = left - (navRectRef.current.width - titleRect.width) / 2
+          to = rtl ? -to : to
         }
         nextTick(() => {
           scrollWithAnimation.current = true
@@ -225,11 +228,14 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   }
 
   useEffect(() => {
-    const index = titles.current.findIndex((t) => t.value === value)
+    let index = titles.current.findIndex(
+      (t) => String(t.value) === String(value)
+    )
+    index = index < 0 ? 0 : index
     setContentStyle({
       transform:
         direction === 'horizontal'
-          ? `translate3d(-${index * 100}%, 0, 0)`
+          ? `translate3d(${rtl ? '' : '-'}${index * 100}%, 0, 0)`
           : `translate3d( 0,-${index * 100}%, 0)`,
       transitionDuration: `${duration}ms`,
     })
@@ -253,7 +259,9 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         scrollLeft={scrollLeft}
         scrollTop={scrollTop}
         showScrollbar={false}
-        scrollWithAnimation={scrollWithAnimation.current}
+        scrollWithAnimation={
+          rtl && Taro.getEnv() !== 'WEB' ? false : scrollWithAnimation.current
+        }
         id={`nut-tabs-titles-${name || uuid}`}
         className={classesTitle}
         style={{ ...tabStyle }}
