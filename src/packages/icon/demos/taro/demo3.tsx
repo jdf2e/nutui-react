@@ -1,5 +1,5 @@
 import React from 'react'
-import { IconFont } from '@nutui/icons-react'
+import { IconFont } from '@nutui/icons-react-taro'
 
 const Demo3 = () => {
   return (

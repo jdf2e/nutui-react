@@ -1,5 +1,5 @@
 import React from 'react'
-import { Add, Dongdong, UserAdd } from '@nutui/icons-react'
+import { Add, Dongdong, UserAdd } from '@nutui/icons-react-taro'
 
 const Demo1 = () => {
   return (
