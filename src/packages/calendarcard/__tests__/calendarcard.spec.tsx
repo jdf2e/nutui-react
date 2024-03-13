@@ -91,7 +91,12 @@ test('test type range', async () => {
   const currentDays = container.querySelectorAll(
     '.nut-calendarcard-day.current'
   )
-  fireEvent.click(currentDays[1]) // 0102
+  fireEvent.click(currentDays[24]) // 0125
+  const startAndEnd = container.querySelectorAll(
+    '.nut-calendarcard-day.start.end'
+  )
+  expect(startAndEnd.length).toBe(1)
+
   fireEvent.click(currentDays[3]) // 0104
   fireEvent.click(currentDays[8]) // 0109
   const start = container.querySelector(
