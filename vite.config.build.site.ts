@@ -17,7 +17,15 @@ export default defineConfig({
   base: `/h5/react/${projectID === 'jmapp' ? 'jdesign' : '2x'}`,
   resolve: {
     alias: [
+      {
+        find: '@nutui/nutui-react/dist/locale/enUS',
+        replacement: resolve(__dirname, './src/locales/en-US.ts'),
+      },
       { find: '@', replacement: resolve(__dirname, './src') },
+      {
+        find: '@nutui/nutui-react-taro/dist/locales/en-US.ts',
+        replacement: resolve(__dirname, './src/locales/en-US.ts'),
+      },
       {
         find: '@nutui/nutui-react',
         replacement: resolve(__dirname, './src/packages/nutui.react.ts'),

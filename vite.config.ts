@@ -25,6 +25,14 @@ export default defineConfig(async (): Promise<UserConfig> => {
     base: '/react/',
     resolve: {
       alias: [
+        {
+          find: '@nutui/nutui-react/dist/locale/enUS',
+          replacement: resolve(__dirname, './src/locales/en-US.ts'),
+        },
+        {
+          find: '@nutui/nutui-react-taro/dist/locales/en-US.ts',
+          replacement: resolve(__dirname, './src/locales/en-US.ts'),
+        },
         { find: '@', replacement: resolve(__dirname, './src') },
         {
           find: '@nutui/nutui-react',
