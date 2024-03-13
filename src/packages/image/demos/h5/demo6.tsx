@@ -3,7 +3,7 @@ import { Image, Row, Col } from '@nutui/nutui-react'
 import { Failure } from '@nutui/icons-react'
 
 const Demo6 = () => {
-  const imageText = {
+  const imageText: React.CSSProperties = {
     marginTop: 5,
     textAlign: 'center',
     color: '#999',

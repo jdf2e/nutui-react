@@ -4,7 +4,7 @@ import { Image, Row, Col } from '@nutui/nutui-react'
 const Demo4 = () => {
   const src =
     'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
-  const imageText = {
+  const imageText: React.CSSProperties = {
     marginTop: 5,
     textAlign: 'center',
     color: '#999',
