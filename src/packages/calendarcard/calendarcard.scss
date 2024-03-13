@@ -61,32 +61,34 @@
       line-height: 12px;
     }
 
-    &.active,
-    &.start,
-    &.end {
+    &.weekend {
+      color: $calendar-choose-color;
+    }
+
+    &.active {
       background-color: $calendar-active-background-color;
-      color: $color-primary-text !important;
+      color: $color-primary-text;
       border-radius: $calendar-day-active-border-radius;
     }
 
+    &.start,
+    &.end {
+      background-color: $calendar-active-background-color;
+      color: $color-primary-text;
+    }
+
     &.start {
-      border-radius: 0px;
       border-top-left-radius: $calendar-day-active-border-radius;
       border-bottom-left-radius: $calendar-day-active-border-radius;
     }
 
     &.end {
-      border-radius: 0px;
       border-top-right-radius: $calendar-day-active-border-radius;
       border-bottom-right-radius: $calendar-day-active-border-radius;
     }
 
     &.mid {
       background-color: $calendar-choose-background-color;
-      color: $calendar-choose-color;
-    }
-
-    &.weekend {
       color: $calendar-choose-color;
     }
 
@@ -127,17 +129,17 @@
     }
   }
   &-day {
+    &.start,
+    &.end {
+      border-radius: 0;
+    }
     &.start {
-      border-top-left-radius: 0;
       border-top-right-radius: $calendar-day-active-border-radius;
-      border-bottom-left-radius: 0;
       border-bottom-right-radius: $calendar-day-active-border-radius;
     }
 
     &.end {
-      border-top-right-radius: 0;
       border-top-left-radius: $calendar-day-active-border-radius;
-      border-bottom-right-radius: 0;
       border-bottom-left-radius: $calendar-day-active-border-radius;
     }
   }
