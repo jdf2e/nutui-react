@@ -1,4 +1,5 @@
 const path = require('path')
+const injectScss = require('../plugins/inject-scss')
 
 let fileStr = `src/styles/variables.scss`
 let themeStr = `src/styles/theme-default.scss`
@@ -22,11 +23,11 @@ const config = {
   outputRoot: `dist/${
     process.env.TARO_ENV === 'h5' ? 'demo' : process.env.TARO_ENV
   }`,
-  plugins: ['@tarojs/plugin-html', '@tarojs/plugin-platform-harmony-ets'],
+  plugins: [path.resolve(__dirname, '../plugins/inject-scss.js'), '@tarojs/plugin-html', '@tarojs/plugin-platform-harmony-ets'],
   // harmony 相关配置
   harmony: {
     // 将编译方式设置为使用 Vite 编译
-    compiler: 'vite',
+    compiler: { type: 'vite', vitePlugins: [injectScss()] },
     // 【必填】鸿蒙主应用的绝对路径，例如：
     projectPath: path.resolve(process.cwd(), '../nutui-harmony'),
     // 【可选】HAP 的名称，默认为 'entry'
@@ -42,7 +43,7 @@ const config = {
     '@/utils': path.resolve(__dirname, '../../../src/utils'),
     '@nutui/nutui-react-taro': path.resolve(
       __dirname,
-      '../../../src/packages/nutui.react.taro.ts'
+      '../../../src/packages/nutui.react.taro.ts',
     ),
   },
   sass: {
@@ -115,7 +116,7 @@ const config = {
   isWatch: true,
 }
 
-module.exports = function (merge) {
+module.exports = function(merge) {
   if (process.env.NODE_ENV === 'development') {
     return merge({}, config, require('./dev'))
   }
