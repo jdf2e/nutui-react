@@ -197,8 +197,8 @@ importers:
         specifier: ^6.8.0
         version: 6.8.0(eslint@8.56.0)
       eslint-plugin-markdown:
-        specifier: ^3.0.1
-        version: 3.0.1(eslint@8.56.0)
+        specifier: ^4.0.1
+        version: 4.0.1(eslint@8.56.0)
       eslint-plugin-prettier:
         specifier: ^5.1.3
         version: 5.1.3(eslint-config-prettier@9.1.0)(eslint@8.56.0)(prettier@3.2.5)
@@ -9144,11 +9144,11 @@ packages:
       object.fromentries: 2.0.7
     dev: true
 
-  /eslint-plugin-markdown@3.0.1(eslint@8.56.0):
-    resolution: {integrity: sha512-8rqoc148DWdGdmYF6WSQFT3uQ6PO7zXYgeBpHAOAakX/zpq+NvFYbDA/H7PYzHajwtmaOzAwfxyl++x0g1/N9A==}
-    engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+  /eslint-plugin-markdown@4.0.1(eslint@8.56.0):
+    resolution: {integrity: sha512-5/MnGvYU0i8MbHH5cg8S+Vl3DL+bqRNYshk1xUO86DilNBaxtTkhH+5FD0/yO03AmlI6+lfNFdk2yOw72EPzpA==}
+    engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
-      eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+      eslint: '>=8'
     dependencies:
       eslint: 8.56.0
       mdast-util-from-markdown: 0.8.5
@@ -13936,8 +13936,8 @@ packages:
     resolution: {integrity: sha512-OJB2uVAfhycX4teG/zEVpoThushQqLOx946XACDpVc6OQydiJWjn7djVzvNCbv0VOA7sbHGPQp/RkXD9vMCDEw==}
     dev: true
 
-  /miniprogram-compiler@0.2.2:
-    resolution: {integrity: sha512-fiJXv/15jCcRAU8YKcO7S7fkPKLa5ZBgpLN+d6B3r3KMktM5tAkDEQ+zm6aTfNoHurYOHcRyPyGf26gqQXlFXg==}
+  /miniprogram-compiler@0.2.3:
+    resolution: {integrity: sha512-/MfFiXTBUwYxnrTbj1hgwk1+qGkMCTL1zi8IReOq/0SPVkUxpx19E89w+ohYCELFXkMfVbD+6ejrHh3Y1u5sVg==}
     dependencies:
       glob: 7.2.3
       unescape-js: 1.1.4
@@ -13953,7 +13953,7 @@ packages:
       csso: 3.5.1
       j-component: 1.4.9
       less: 3.13.1
-      miniprogram-compiler: 0.2.2
+      miniprogram-compiler: 0.2.3
       postcss: 7.0.39
       pretty-format: 26.6.2
     dev: true
