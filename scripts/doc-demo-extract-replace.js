@@ -93,7 +93,10 @@ const replaceAllDocs = (i) => {
     for (let i = 0; i < arr.length; i++) {
       markdownContent = markdownContent.replace(
         arr[i],
-	@@ -100,14 +100,14 @@ const replaceAllDocs = (i) => {
+        index === 2
+          ? `:::demo\r\n\r\n<CodeBlock src='taro/demo${
+              i + 1
+            }.tsx'></CodeBlock>\r\n\r\n:::`
           : `:::demo\r\n\r\n<CodeBlock src='h5/demo${
               i + 1
             }.tsx'></CodeBlock>\r\n\r\n:::`
