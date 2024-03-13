@@ -1,25 +1,15 @@
 import React from 'react'
 import '@nutui/icons-react/dist/style_iconfont.css'
-import {
-  Add,
-  IconFontConfig,
-  IconFont,
-  Dongdong,
-  UserAdd,
-} from '@nutui/icons-react'
+import { IconFontConfig, IconFont } from '@nutui/icons-react'
 import { useTranslate } from '../../sites/assets/locale'
 import Cell from '../cell'
 import Toast from '../toast'
 import { camelCase } from '@/utils/camel-case'
-
-interface T {
-  '84aa6bce': string
-  dab8a74f: string
-  svg: string
-  '52c15454': string
-  '7aeb5407': string
-  f2e6c6d6: string
-}
+import Demo1 from './demos/h5/demo1'
+import Demo2 from './demos/h5/demo2'
+import Demo3 from './demos/h5/demo3'
+import Demo4 from './demos/h5/demo4'
+import Demo5 from './demos/h5/demo5'
 
 const generateCopyText = (name: string) => {
   return `<${camelCase(name, { pascalCase: true })} />`
@@ -67,9 +57,8 @@ ul li span .nutui-iconfont {
   margin: 16px 0 16px;
 }
 `
-
 const IconDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       '84aa6bce': '基础用法',
       svg: 'SVG 按需使用',
@@ -88,10 +77,10 @@ const IconDemo = () => {
     },
     'en-US': {
       '84aa6bce': 'Basic Usage',
-      svg: 'SVG import on demand',
-      dab8a74f: 'Image link',
-      '52c15454': 'IconFont color',
-      '7aeb5407': 'IconFont size',
+      svg: 'SVG Import On Demand',
+      dab8a74f: 'Image Link',
+      '52c15454': 'IconFont Color',
+      '7aeb5407': 'IconFont Size',
       f2e6c6d6: 'Base IconFont',
     },
   })
@@ -102,34 +91,23 @@ const IconDemo = () => {
       <div className="demo">
         <h2>{translated.svg}</h2>
         <Cell>
-          <Add color="red" />
-          <UserAdd />
-          <Dongdong />
+          <Demo1 />
         </Cell>
         <h2>{translated['84aa6bce']}</h2>
         <Cell>
-          <IconFont name="dongdong" />
-          <IconFont name="add" />
-          <IconFont name="minus" />
+          <Demo2 />
         </Cell>
         <h2>{translated.dab8a74f}</h2>
         <Cell>
-          <IconFont
-            size="40"
-            name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
-          />
+          <Demo3 />
         </Cell>
         <h2>{translated['52c15454']}</h2>
         <Cell>
-          <IconFont name="dongdong" color="#fa2c19" />
-          <IconFont name="dongdong" color="#64b578" />
-          <IconFont name="dongdong" color="#ffd700" />
+          <Demo4 />
         </Cell>
         <h2>{translated['7aeb5407']}</h2>
         <Cell style={{ alignItems: 'center' }}>
-          <IconFont name="dongdong" size="16" />
-          <IconFont name="dongdong" size="20" />
-          <IconFont name="dongdong" size="24" />
+          <Demo5 />
         </Cell>
         {(IconFontConfig as any).data.map((item: any) => {
           return (
