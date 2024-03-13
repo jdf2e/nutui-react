@@ -75,6 +75,14 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
     setShowPopup(showPopup)
   }, [showPopup])
   useEffect(() => {
+    setValue(value)
+    options?.map((option) => {
+      if (option.value === value) {
+        setTitle(option.text)
+      }
+    })
+  }, [value])
+  useEffect(() => {
     getParentOffset()
   }, [_showPopup])
 
