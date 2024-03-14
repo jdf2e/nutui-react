@@ -130,7 +130,7 @@ export const Swiper = React.forwardRef<
   }
   // 定时轮播
   const startPlay = () => {
-    if (mergedProps.autoPlay <= 0 || swiperItemCount <= 1) return
+    if (Number(mergedProps.autoPlay) <= 0 || swiperItemCount <= 1) return
     stopAutoPlay()
     swiperRef.current.autoplayTimer = setTimeout(() => {
       next()

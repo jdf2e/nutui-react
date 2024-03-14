@@ -150,7 +150,11 @@ export const InputNumber: FunctionComponent<
       )
       const nextValue = bound(shouldOverBoundary, Number(min), Number(max))
       setShadowValue(nextValue)
-      if (negative ? shouldOverBoundary < min : shouldOverBoundary > max) {
+      if (
+        negative
+          ? shouldOverBoundary < Number(min)
+          : shouldOverBoundary > Number(max)
+      ) {
         onOverlimit?.(e)
       } else {
         onChange?.(nextValue, e)

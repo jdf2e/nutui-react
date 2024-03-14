@@ -16,32 +16,7 @@ import { Cell } from '@nutui/nutui-react-taro'
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Cell } from '@nutui/nutui-react-taro'
-
-const App = () => {
-  const testClick = (
-    event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-  ) => {
-    console.log('点击事件')
-  }
-  return (
-    <>
-      <Cell title="我是标题" extra="描述文字" />
-      <Cell title="我是标题" description="我是描述" extra="描述文字" />
-      <Cell
-        title="点击测试"
-        onClick={(
-          event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => testClick(event)}
-      />
-      <Cell title="圆角设置0" radius={0} />
-    </>
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -49,19 +24,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Cell } from '@nutui/nutui-react-taro'
-
-const App = () => {
-  return (
-    <Cell>
-      <div>自定义内容</div>
-    </Cell>
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -69,31 +32,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Cell } from '@nutui/nutui-react-taro'
-import { User } from '@nutui/icons-react-taro'
-
-const App = () => {
-  return (
-    <Cell
-      title={
-        <div style={{ display: 'inline-flex', alignItems: 'center' }}>
-          <User />
-          <span style={{ marginLeft: '5px' }}>我是标题</span>
-        </div>
-      }
-      description={
-        <span>
-          我是描述<b style={{ color: 'red' }}>1</b>
-        </span>
-      }
-      extra="描述文字"
-    />
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -101,19 +40,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Cell, Switch } from '@nutui/nutui-react-taro'
-
-const App = () => {
-  return (
-    <Cell.Group title="自定义右侧箭头区域">
-      <Cell title="Switch" extra={<Switch defaultChecked />} />
-    </Cell.Group>
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -123,149 +50,16 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Cell } from '@nutui/nutui-react-taro'
-
-const App = () => {
-  return (
-    <Cell
-      align="center"
-      title="我是标题"
-      description="我是描述"
-      extra="描述文字"
-    />
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
 ### 链接 | 分组用法
 
+使用 `nut-cell-group` 支持 `title`和`extra`
 :::demo
 
-```tsx
-import React from 'react'
-import { Cell, Button } from '@nutui/nutui-react-taro'
-import { ArrowRight, User } from '@nutui/icons-react-taro'
-
-const App = () => {
-  const onJumpclick = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    link: string
-  ) => {
-    const replace = false
-    if (link) {
-      replace ? redirectTo({ url: link }) : navigateTo({ url: link })
-    }
-  }
-  return (
-    <>
-      <Cell.Group
-        title="链接 | 分组用法"
-        description="使用 nut-cell-group 支持 title extra"
-      >
-        <Cell
-          className="nutui-cell-clickable"
-          title="链接"
-          align="center"
-          extra={<ArrowRight />}
-        />
-        <Cell
-          className="nutui-cell-clickable"
-          title="URL 跳转"
-          extra={
-            <>
-              <span style={{ marginRight: '5px' }}>/pages/index/index</span>
-              <ArrowRight />
-            </>
-          }
-          align="center"
-          onClick={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => { onJumpclick(event, '/pages/index/index') }}
-        />
-      </Cell.Group>
-
-      <Cell.Group>
-        <Cell
-          title={
-            <div style={{ display: 'flex', alignItems: 'flex-end' }}>
-              <span style={{ fontWeight: '500' }}>我是标题</span>
-              <span
-                style={{
-                  color: '#8C8C8C',
-                  fontSize: '10px',
-                  marginLeft: '5px',
-                  lineHeight: 1.5,
-                }}
-              >
-                我是描述
-              </span>
-            </div>
-          }
-          extra={
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              More
-              <ArrowRight size={12} style={{ marginLeft: '5px' }} />
-            </div>
-          }
-        />
-        <Cell>
-          <div style={{ minHeight: '50px' }}>自定义内容</div>
-        </Cell>
-        <Cell
-          align="center"
-          title={
-            <div
-              style={{
-                color: '#8C8C8C',
-                fontSize: '12px',
-              }}
-            >
-              我是描述
-            </div>
-          }
-          extra={<Button type="primary">Action</Button>}
-        />
-      </Cell.Group>
-
-      <Cell.Group>
-        <Cell
-          title={
-            <div style={{ display: 'flex', alignItems: 'center' }}>
-              <User style={{ marginRight: '5px' }} /> 我是标题
-            </div>
-          }
-          extra={<ArrowRight />}
-        />
-        <Cell>
-          <div style={{ minHeight: '50px' }}>自定义内容</div>
-        </Cell>
-        <Cell align="center" extra={<Button type="primary">Action</Button>} />
-      </Cell.Group>
-
-      <Cell.Group>
-        <Cell
-          title={
-            <div
-              style={{ display: 'flex', alignItems: 'center', color: 'blue' }}
-            >
-              我是标题
-            </div>
-          }
-        />
-        <Cell>
-          <div style={{ color: '#26bf26' }}>自定义内容</div>
-        </Cell>
-      </Cell.Group>
-    </>
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -275,24 +69,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Cell } from '@nutui/nutui-react-taro'
-
-const App = () => {
-  return (
-    <Cell.Group
-      divider={false}
-      title="分组用法"
-      description="单元格之间不显示下边线"
-    >
-      <Cell title="我是标题" extra="描述文字" />
-      <Cell title="我是标题" extra="描述文字" />
-    </Cell.Group>
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo7.tsx'></CodeBlock>
 
 :::
 

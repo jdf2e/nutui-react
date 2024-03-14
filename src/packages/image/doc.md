@@ -18,23 +18,7 @@ import { Image } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React from "react";
-import { Image } from '@nutui/nutui-react';
-
-const App = () => {
-  const src = 'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
-  return <>
-    <Image
-      src={src}
-      onClick={() => {
-        console.log('click image')
-      }}
-    />
-  </>
-}
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -44,33 +28,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Image, Row, Col } from '@nutui/nutui-react';
-
-const App = () => {
-  const fits = ['contain', 'cover', 'fill', 'none', 'scale-down']
-  const src = 'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
-  const imageText = {
-    marginTop: 5,
-    textAlign: 'center',
-    color: '#999'
-  }
-  return <>
-    <Row gutter={10} type="flex" wrap="wrap">
-      {fits.map((i) => {
-        return (
-          <Col span="8" key={i}>
-            <Image src={src} width="80" height="80" fit={i} />
-            <div style={imageText}>{i}</div>
-          </Col>
-        )
-      })}
-    </Row>
-  </>
-}
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -80,56 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Image, Row, Col } from '@nutui/nutui-react';
-
-const App = () => {
-  const position1 = ['left', 'center', 'right']
-  const position2 = ['top', 'center', 'bottom']
-  const src = 'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
-  const imageText = {
-    marginTop: 5,
-    textAlign: 'center',
-    color: '#999'
-  }
-  return <>
-    <Row gutter={10} type="flex" wrap="wrap">
-      {position2.map((i) => {
-        return (
-          <Col span="8" key={i}>
-            <Image
-              src={src}
-              width="80"
-              height="80"
-              fit="contain"
-              position={i}
-            />
-            <div style={imageText}>contain</div>
-            <div style={imageText}>{i}</div>
-          </Col>
-        )
-      })}
-      {position1.map((i) => {
-        return (
-          <Col span="8" key={i}>
-            <Image
-              src={src}
-              width="80"
-              height="80"
-              fit="cover"
-              position={i}
-            />
-            <div style={imageText}>cover</div>
-            <div style={imageText}>{i}</div>
-          </Col>
-        )
-      })}
-    </Row>
-  </>
-}
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -139,54 +48,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Image, Row, Col } from '@nutui/nutui-react';
-
-const App = () => {
-  const src = 'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
-  const imageText = {
-    marginTop: 5,
-    textAlign: 'center',
-    color: '#999'
-  }
-  return <>
-    <Row gutter={10}>
-      <Col span="8">
-        <Image
-          src={src}
-          width="100"
-          height="100"
-          fit="contain"
-          radius="50%"
-        />
-        <div style={imageText}>contain</div>
-      </Col>
-      <Col span="8">
-        <Image
-          src={src}
-          width="100"
-          height="100"
-          fit="cover"
-          radius="50%"
-        />
-        <div style={imageText}>cover</div>
-      </Col>
-      <Col span="8">
-        <Image
-          src={src}
-          width="100"
-          height="100"
-          fit="cover"
-          radius="10"
-        />
-        <div style={imageText}>cover</div>
-      </Col>
-    </Row>
-  </>
-}
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -196,40 +58,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Image, Row, Col } from '@nutui/nutui-react';
-import { Loading } from '@nutui/icons-react';
-
-const App = () => {
-  const src = 'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
-  const imageText = {
-    marginTop: 5,
-    textAlign: 'center',
-    color: '#999'
-  }
-  return <>
-    <Row gutter={10}>
-      <Col span="8">
-        <Image
-          width="100"
-          height="100"
-          lazy
-          onLoad={() => {
-            console.log('image onload')
-          }}
-        />
-        <div style={imageText}>默认</div>
-      </Col>
-      <Col span="8">
-        <Image width="100" height="100" lazy loading={<Loading />} />
-        <div style={imageText}>自定义</div>
-      </Col>
-    </Row>
-  </>
-}
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -239,44 +68,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Image, Row, Col } from '@nutui/nutui-react';
-import { Failure } from '@nutui/icons-react';
-
-const App = () => {
-  const imageText = {
-    marginTop: 5,
-    textAlign: 'center',
-    color: '#999'
-  }
-  return <>
-    <Row gutter={10}>
-      <Col span="8">
-        <Image
-          src="https://x"
-          width="100"
-          height="100"
-          onError={() => {
-            console.log('image error')
-          }}
-        />
-        <div style={imageText}>默认</div>
-      </Col>
-      <Col span="8">
-        <Image
-          src="https://x"
-          width="100"
-          height="100"
-          error={<Failure />}
-        />
-        <div style={imageText}>自定义</div>
-      </Col>
-    </Row>
-  </>
-}
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -286,28 +78,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Image } from '@nutui/nutui-react';
-
-const App = () => {
-  return <>
-    <Image
-      src="http://m.360buyimg.com/babel/s181x181_jfs/t1/210178/19/10205/31538/619bbcd9E5071aed5/8e1b7eb632aeed49.png"
-      width="30"
-      height="30"
-      style={{ marginRight: '10px' }}
-      onError={() => {
-        console.log('image error')
-      }}
-    />
-    <div style={{ width: '220px'}}>
-      雪纺衫女2021年春季新款洋气轻熟上衣
-    </div>
-  </>
-}
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -317,52 +88,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Image,Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const src =
-    '//img10.360buyimg.com/ling/jfs/t1/181258/24/10385/53029/60d04978Ef21f2d42/92baeb21f907cd24.jpg'
-  const imageData = [1, 2, 3, 4, 5, 6]
-  const placeholderImg = (
-    <img
-      alt=""
-      width="100%"
-      height="150px"
-      src="https://img12.360buyimg.com/imagetools/jfs/t1/180776/26/8319/4587/60c094a8E1ef2ec9d/940780b87700b1d3.png"
-    />
-  )
-  const style = `
-    .lazy-box{
-      width:100%
-    }
-    .lazy-box .nut-image{
-      margin-bottom: 10px;
-    }
-  `
-  return <>
-    <style>{style}</style>
-    <Cell>
-      <div className="lazy-box">
-        {imageData.map((item) => {
-          return (
-            <Image
-              key={item}
-              height="150"
-              src={src}
-              lazy
-              loading={placeholderImg}
-              error={placeholderImg}
-            />
-          )
-        })}
-      </div>
-    </Cell>
-  </>
-}
-export default App;
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 

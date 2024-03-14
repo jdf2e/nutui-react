@@ -16,27 +16,7 @@ import { Grid } from '@nutui/nutui-react-taro'
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Grid } from '@nutui/nutui-react-taro'
-import { Image } from '@nutui/icons-react-taro'
-
-const App = () => {
-  return (
-    <Grid>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-    </Grid>
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -44,25 +24,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Grid } from '@nutui/nutui-react-taro'
-import { Image } from '@nutui/icons-react-taro'
-
-const App = () => {
-  return (
-    <Grid columns={3}>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-    </Grid>
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -70,22 +32,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Grid } from '@nutui/nutui-react-taro'
-import { Image } from '@nutui/icons-react-taro'
-
-const App = () => {
-  return (
-    <Grid columns={3} square>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-    </Grid>
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -93,27 +40,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Grid } from '@nutui/nutui-react-taro'
-import { Image } from '@nutui/icons-react-taro'
-
-const App = () => {
-  return (
-    <Grid gap={3}>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-    </Grid>
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -121,23 +48,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Grid } from '@nutui/nutui-react-taro'
-import { Image } from '@nutui/icons-react-taro'
-
-const App = () => {
-  return (
-    <Grid reverse>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-    </Grid>
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -145,23 +56,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Grid } from '@nutui/nutui-react-taro'
-import { Image } from '@nutui/icons-react-taro'
-
-const App = () => {
-  return (
-    <Grid direction="horizontal">
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-    </Grid>
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -169,23 +64,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Grid } from '@nutui/nutui-react-taro'
-import { Image } from '@nutui/icons-react-taro'
-
-const App = () => {
-  return (
-    <Grid reverse direction="horizontal">
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-      <Grid.Item text="文字"><Image /></Grid.Item>
-    </Grid>
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -193,28 +72,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Grid } from '@nutui/nutui-react-taro'
-import { Image } from '@nutui/icons-react-taro'
-
-const App = () => {
-  return (
-    <Grid columns="3">
-      <Grid.Item text="文字">
-        <Image size={16}  />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <Image color="red" />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <Image size={30}  color="#478EF2" />
-      </Grid.Item>
-    </Grid>
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -222,28 +80,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Grid, Image } from '@nutui/nutui-react-taro'
-
-const App = () => {
-  const imgSrc = 'https://m.360buyimg.com/babel/jfs/t1/36973/29/11270/120042/5cf1fe3cEac2b5898/10c2722d0cc0bfa7.png'
-  return (
-   <Grid columns={3} square>
-      <Grid.Item>
-        <Image src={imgSrc} width="100%" height="100%" />
-      </Grid.Item>
-      <Grid.Item>
-        <Image src={imgSrc} width="100%" height="100%" />
-      </Grid.Item>
-      <Grid.Item>
-        <Image src={imgSrc} width="100%" height="100%" />
-      </Grid.Item>
-    </Grid>
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo9.tsx'></CodeBlock>
 
 :::
 
@@ -251,36 +88,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Grid } from '@nutui/nutui-react-taro'
-import { Image as ImageIcon} from '@nutui/icons-react-taro'
-import Taro from '@tarojs/taro'
-
-const App = () => {
-  const imgSrc = 'https://m.360buyimg.com/babel/jfs/t1/36973/29/11270/120042/5cf1fe3cEac2b5898/10c2722d0cc0bfa7.png'
-  const onClick = (item: any, index: number) => {
-    Taro.showToast({ title: `点击了${item.text}，第${index}个` })
-  }
-  return (
-    <Grid direction="horizontal" onClick={onClick}>
-      <Grid.Item text="文字">
-        <ImageIcon />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <ImageIcon />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <ImageIcon />
-      </Grid.Item>
-      <Grid.Item text="文字">
-        <ImageIcon />
-      </Grid.Item>
-    </Grid>
-  )
-}
-export default App
-```
+<CodeBlock src='taro/demo10.tsx'></CodeBlock>
 
 :::
 

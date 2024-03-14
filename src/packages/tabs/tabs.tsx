@@ -6,6 +6,7 @@ import TabPane from '@/packages/tabpane'
 import raf from '@/utils/raf'
 import { usePropsValue } from '@/utils/use-props-value'
 import { useForceUpdate } from '@/utils/use-force-update'
+import { useRtl } from '../configprovider'
 
 export type TabsTitle = {
   title: string
@@ -44,6 +45,7 @@ const classPrefix = 'nut-tabs'
 export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   TabPane: typeof TabPane
 } = (props) => {
+  const rtl = useRtl()
   const {
     activeColor,
     tabStyle,
@@ -164,11 +166,12 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   }
   useEffect(() => {
     // eslint-disable-next-line eqeqeq
-    const index = titles.current.findIndex((t) => t.value == value)
+    let index = titles.current.findIndex((t) => t.value == value)
+    index = index < 0 ? 0 : index
     setContentStyle({
       transform:
         direction === 'horizontal'
-          ? `translate3d(-${index * 100}%, 0, 0)`
+          ? `translate3d(${rtl ? '' : '-'}${index * 100}%, 0, 0)`
           : `translate3d( 0,-${index * 100}%, 0)`,
       transitionDuration: `${duration}ms`,
     })
@@ -184,7 +187,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     }
     setValue(item.value)
   }
-
   return (
     <div className={classes} {...rest}>
       <div className={classesTitle} style={{ ...tabStyle }} ref={navRef}>
