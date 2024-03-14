@@ -128,11 +128,11 @@
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "15.2.3",
     "@rollup/plugin-typescript": "^11.1.6",
-    "@tarojs/components": "4.0.0-beta.20",
-    "@tarojs/plugin-platform-alipay": "4.0.0-beta.20",
-    "@tarojs/plugin-platform-weapp": "4.0.0-beta.20",
-    "@tarojs/react": "4.0.0-beta.20",
-    "@tarojs/taro": "4.0.0-beta.20",
+    "@tarojs/components": "4.0.0-beta.21",
+    "@tarojs/plugin-platform-alipay": "4.0.0-beta.21",
+    "@tarojs/plugin-platform-weapp": "4.0.0-beta.21",
+    "@tarojs/react": "4.0.0-beta.21",
+    "@tarojs/taro": "4.0.0-beta.21",
     "@testing-library/jest-dom": "^6.4.2",
     "@testing-library/react": "^14.2.1",
     "@types/jest": "^29.5.12",
@@ -200,6 +200,7 @@
     "rollup-plugin-delete": "^2.0.0",
     "rollup-plugin-dts": "^6.1.0",
     "sass": "^1.71.1",
+    "stylelint-taro": "4.0.0-beta.21",
     "shelljs": "^0.8.5",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
@@ -216,6 +217,7 @@
   },
   "resolutions": {
     "@types/react": "^18.2.57",
-    "@types/react-dom": "^18.2.19"
+    "@types/react-dom": "^18.2.19",
+    "@tarojs/parse-css-to-stylesheet": "0.0.38"
   }
 }

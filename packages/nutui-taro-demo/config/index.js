@@ -23,7 +23,11 @@ const config = {
   outputRoot: `dist/${
     process.env.TARO_ENV === 'h5' ? 'demo' : process.env.TARO_ENV
   }`,
-  plugins: [path.resolve(__dirname, '../plugins/inject-scss.js'), '@tarojs/plugin-html', '@tarojs/plugin-platform-harmony-ets'],
+  plugins: [
+    path.resolve(__dirname, '../plugins/inject-scss.js'),
+    '@tarojs/plugin-html',
+    '@tarojs/plugin-platform-harmony-ets',
+  ],
   // harmony 相关配置
   harmony: {
     // 将编译方式设置为使用 Vite 编译
@@ -34,6 +38,7 @@ const config = {
     hapName: 'entry',
     // 【可选】modules 的入口名称，默认为 'default'
     name: 'default',
+    useNesting: true,
   },
   compiler: 'webpack5',
   alias: {
@@ -43,7 +48,7 @@ const config = {
     '@/utils': path.resolve(__dirname, '../../../src/utils'),
     '@nutui/nutui-react-taro': path.resolve(
       __dirname,
-      '../../../src/packages/nutui.react.taro.ts',
+      '../../../src/packages/nutui.react.taro.ts'
     ),
   },
   sass: {
@@ -116,7 +121,7 @@ const config = {
   isWatch: true,
 }
 
-module.exports = function(merge) {
+module.exports = function (merge) {
   if (process.env.NODE_ENV === 'development') {
     return merge({}, config, require('./dev'))
   }
