@@ -18,19 +18,7 @@ Initialize a default value
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { InputNumber } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <InputNumber defaultValue={1} />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -40,19 +28,7 @@ Set step `step` 5
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { InputNumber } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <InputNumber defaultValue={0} min={0} step="5" />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -62,23 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { InputNumber, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const overlimit = (e: MouseEvent) => {
-    console.log(e)
-    Toast.warn('Exceeded limit event triggered')
-  }
-  return (
-    <>
-      <InputNumber defaultValue={10} min="10" max="20" onOverlimit={overlimit} />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -88,19 +48,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { InputNumber } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <InputNumber defaultValue={0} disabled />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -110,19 +58,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { InputNumber } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <InputNumber defaultValue={1} readOnly />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -132,41 +68,7 @@ The buttons can be styled using the `ConfigProvider` component.
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { InputNumber, ConfigProvider } from '@nutui/nutui-react';
-
-const App = () => {
-  const customTheme = {
-    nutuiInputnumberButtonWidth: '30px',
-    nutuiInputnumberButtonHeight: '30px',
-    nutuiInputnumberButtonBorderRadius: '2px',
-    nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
-    nutuiInputnumberInputHeight: '30px',
-    nutuiInputnumberInputMargin: '0 2px',
-  }
-
-  const customTheme2 = {
-    nutuiInputnumberButtonWidth: '24px',
-    nutuiInputnumberButtonHeight: '24px',
-    nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
-    nutuiInputnumberInputBackgroundColor: '#fff',
-    nutuiInputnumberInputMargin: '0 2px',
-  }
-
-  return (
-    <>
-      <ConfigProvider theme={customTheme}>
-        <InputNumber defaultValue={1} />
-      </ConfigProvider>
-      <ConfigProvider theme={customTheme2}>
-        <InputNumber defaultValue={1} />
-      </ConfigProvider>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -176,19 +78,7 @@ Set step size `step` 0.1 `decimal-places` keep 1 decimal place
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { InputNumber } from '@nutui/nutui-react';
-
-const App = () => {
-  creturn (
-    <>
-      <InputNumber defaultValue={5.5} step="0.1" digits="1" readOnly />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -198,27 +88,7 @@ Asynchronous modification through `change` event and `model-value`
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { InputNumber, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const [inputValue, setInputValue] = useState(0)
-  const onChange = (value: string | number) => {
-    Toast.loading(translated['0137871a'])
-    setTimeout(() => {
-      setInputValue(Number(value))
-      Toast.hide()
-    }, 2000)
-  }
-  return (
-    <>
-      <InputNumber value={inputValue} min="-6" onChange={onChange} async />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -226,34 +96,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { InputNumber } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <InputNumber
-        style={{"--nutui-inputnumber-input-width": "60px"}}
-        modelValue="1000"
-        min={10}
-        max={15020}
-        formatter={(value) =>
-          `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-        }
-      />
-      <InputNumber
-        style={{"--nutui-inputnumber-input-width": "60px"}}
-        modelValue="100"
-        min={0}
-        max={100}
-        formatter={(value) => `${value}%`}
-      />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
 :::
 
