@@ -12,7 +12,7 @@ const extractH5Demos = (i) => {
     __dirname,
     `../src/packages/${args[i]}/demos/h5`
   );
-  const tsxRegex = /:::demo\r\n\r\n```tsx\r\n([\s\S]*?)```\r\n\r\n:::/g;
+  const tsxRegex = /:::demo\r?\n\r?\n```tsx\r?\n([\s\S]*?)```\r?\n\r?\n:::/g;
   let match;
   if (!fs.existsSync(outputDirectory)) {
     fs.mkdirSync(outputDirectory, { recursive: true });
@@ -49,7 +49,7 @@ const extractTaroDemos = (i) => {
     __dirname,
     `../src/packages/${args[i]}/demos/taro`
   );
-  const tsxRegex = /:::demo\r\n\r\n```tsx\r\n([\s\S]*?)```\r\n\r\n:::/g;
+  const tsxRegex = /:::demo\r?\n\r?\n```tsx\r?\n([\s\S]*?)```\r?\n\r?\n:::/g;
   let match;
   if (!fs.existsSync(outputDirectory)) {
     fs.mkdirSync(outputDirectory, { recursive: true });
@@ -88,7 +88,7 @@ const replaceAllDocs = (i) => {
   filePaths.forEach((path, index) => {
     let markdownContent = fs.readFileSync(path, "utf-8");
 
-    const tsxRegex = /:::demo\r\n\r\n```tsx\r\n([\s\S]*?)```\r\n\r\n:::/g;
+    const tsxRegex = /:::demo\r?\n\r?\n```tsx\r?\n([\s\S]*?)```\r?\n\r?\n:::/g;
     const arr = markdownContent.match(tsxRegex);
     for (let i = 0; i < arr.length; i++) {
       markdownContent = markdownContent.replace(
