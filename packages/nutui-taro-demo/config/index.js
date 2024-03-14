@@ -25,8 +25,7 @@ const config = {
   }`,
   plugins: [
     path.resolve(__dirname, '../plugins/inject-scss.js'),
-    '@tarojs/plugin-html',
-    '@tarojs/plugin-platform-harmony-ets',
+    process.env.TARO_ENV === 'harmony' ? '@tarojs/plugin-platform-harmony-ets' : '@tarojs/plugin-html',
   ],
   // harmony 相关配置
   harmony: {
@@ -48,7 +47,7 @@ const config = {
     '@/utils': path.resolve(__dirname, '../../../src/utils'),
     '@nutui/nutui-react-taro': path.resolve(
       __dirname,
-      '../../../src/packages/nutui.react.taro.ts'
+      '../../../src/packages/nutui.react.taro.ts',
     ),
   },
   sass: {
@@ -121,7 +120,7 @@ const config = {
   isWatch: true,
 }
 
-module.exports = function (merge) {
+module.exports = function(merge) {
   if (process.env.NODE_ENV === 'development') {
     return merge({}, config, require('./dev'))
   }
