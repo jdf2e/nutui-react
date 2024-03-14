@@ -65,7 +65,7 @@
     "build:site": "npm run checked && vite build --config vite.config.build.site.ts",
     "build:site:jmapp": "npm run checked && VITE_APP_PROJECT_ID=jmapp vite build --config vite.config.build.site.ts",
     "build:taro:site": "npm run checked:taro && npm run generate:file:taro:pages && pnpm --dir ./packages/nutui-taro-demo build:h5",
-    "build:taro:site:jmapp": "npm run checked:taro && VITE_APP_PROJECT_ID=jmapp npm run generate:file:taro:pages && pnpm --dir ./packages/nutui-taro-demo build:h5",
+    "build:taro:site:jmapp": "npm run checked:taro && VITE_APP_PROJECT_ID=jmapp npm run generate:file:taro:pages && VITE_APP_PROJECT_ID=jmapp pnpm --dir ./packages/nutui-taro-demo build:h5",
     "build:theme:site": "npm run checked && vite build --config vite.config.theme.ts && npm run generate:themes-dev",
     "lint": "eslint ./src/packages",
     "lint:fix": "eslint --fix ./src/packages",

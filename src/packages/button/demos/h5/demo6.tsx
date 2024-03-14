@@ -9,6 +9,9 @@ const Demo6 = () => {
       <Button loading type="warning" style={marginStyle}>
         Loading
       </Button>
+      <Button loading disabled type="warning" style={marginStyle}>
+        Loading
+      </Button>
       <Button
         loading={loading}
         type="success"
