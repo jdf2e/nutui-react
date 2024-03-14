@@ -11,36 +11,8 @@ import Demo7 from './demos/h5/demo7'
 import Demo8 from './demos/h5/demo8'
 import Demo9 from './demos/h5/demo9'
 
-interface T {
-  ce5c5446: string
-  ce5c5447: string
-  c38a08ef: string
-  b840c88f: string
-  b840c881: string
-  b840c882: string
-  a74a1fd4: string
-  '8dab2f66': string
-  cfbdc781: string
-  c3a3a1d2: string
-  e51e4582: string
-  '7db1a8b2': string
-  a52bef0c: string
-  d04fcbda: string
-  '0aaad622': string
-  '0aaad620': string
-  '60a53514': string
-  b8a453e3: string
-  '248be9e1': string
-  ea3d02f2: string
-  ea379d01: string
-  c9e6df49: string
-  '781b07fd': string
-  '1076d771': string
-  '6ab47cd2': string
-}
-
 const ButtonDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       ce5c5446: '按钮类型',
       ce5c5447: '按钮形状',
@@ -131,17 +103,14 @@ const ButtonDemo = () => {
         <Cell style={{ flexWrap: 'wrap' }}>
           <Demo1 />
         </Cell>
-
         <h2>{translated.e51e4582}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
           <Demo2 />
         </Cell>
-
         <h2>{translated['0aaad622']}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
           <Demo3 />
         </Cell>
-
         <h2>{translated['7db1a8b2']}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
           <Demo4 />
@@ -154,7 +123,6 @@ const ButtonDemo = () => {
         <Cell style={{ flexWrap: 'wrap' }}>
           <Demo6 />
         </Cell>
-
         <h2>{translated['0aaad620']}</h2>
         <Cell style={{ flexWrap: 'wrap' }}>
           <Demo7 />
@@ -163,9 +131,7 @@ const ButtonDemo = () => {
         <Cell>
           <Demo8 />
         </Cell>
-
         <h2>{translated['781b07fd']}</h2>
-
         <Cell style={{ flexWrap: 'wrap' }}>
           <Demo9 />
         </Cell>
