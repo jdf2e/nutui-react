@@ -3,7 +3,7 @@
 exports[`infiniteloading base 01 1`] = `
 <div>
   <div
-    class="nut-infiniteloading"
+    class="nut-infiniteloading nut-infiniteloading-default"
   >
     <div
       class="nut-infinite-top"
@@ -28,7 +28,7 @@ exports[`infiniteloading base 01 1`] = `
 exports[`infiniteloading base 02 1`] = `
 <div>
   <div
-    class="nut-infiniteloading"
+    class="nut-infiniteloading nut-infiniteloading-default"
   >
     <div
       class="nut-infinite-top"
@@ -104,7 +104,7 @@ exports[`infiniteloading base 02 1`] = `
 exports[`pull base 01 1`] = `
 <div>
   <div
-    class="nut-infiniteloading"
+    class="nut-infiniteloading nut-infiniteloading-default"
   >
     <div
       class="nut-infinite-top"
@@ -129,7 +129,7 @@ exports[`pull base 01 1`] = `
 exports[`pull base 01 2`] = `
 <div>
   <div
-    class="nut-infiniteloading"
+    class="nut-infiniteloading nut-infiniteloading-default"
   >
     <div
       class="nut-infinite-top"
@@ -154,7 +154,7 @@ exports[`pull base 01 2`] = `
 exports[`pull base 03 1`] = `
 <div>
   <div
-    class="nut-infiniteloading"
+    class="nut-infiniteloading nut-infiniteloading-default"
   >
     <div
       class="nut-infinite-top"
@@ -179,7 +179,7 @@ exports[`pull base 03 1`] = `
 exports[`pull base 03 2`] = `
 <div>
   <div
-    class="nut-infiniteloading"
+    class="nut-infiniteloading nut-infiniteloading-default"
   >
     <div
       class="nut-infinite-top"
@@ -204,7 +204,7 @@ exports[`pull base 03 2`] = `
 exports[`pull base 1`] = `
 <div>
   <div
-    class="nut-infiniteloading"
+    class="nut-infiniteloading nut-infiniteloading-default"
   >
     <div
       class="nut-infinite-top"
@@ -229,7 +229,7 @@ exports[`pull base 1`] = `
 exports[`pull base 2`] = `
 <div>
   <div
-    class="nut-infiniteloading"
+    class="nut-infiniteloading nut-infiniteloading-default"
   >
     <div
       class="nut-infinite-top"

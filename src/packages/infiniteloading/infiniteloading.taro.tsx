@@ -11,8 +11,10 @@ import { createSelectorQuery } from '@tarojs/taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { InfiniteLoadingType } from './types'
 
 export interface InfiniteLoadingProps extends BasicComponent {
+  type: InfiniteLoadingType
   hasMore: boolean
   threshold: number
   target: string
@@ -27,6 +29,7 @@ export interface InfiniteLoadingProps extends BasicComponent {
 
 const defaultProps = {
   ...ComponentDefaults,
+  type: 'default',
   hasMore: true,
   threshold: 40,
   target: '',
@@ -41,6 +44,7 @@ export const InfiniteLoading: FunctionComponent<
   const { locale } = useConfig()
   const {
     children,
+    type,
     hasMore,
     threshold,
     target,
@@ -66,7 +70,7 @@ export const InfiniteLoading: FunctionComponent<
   const refreshMaxH = useRef(0)
   const distance = useRef(0)
 
-  const classes = classNames(classPrefix, className)
+  const classes = classNames(classPrefix, className, `${classPrefix}-${type}`)
 
   useEffect(() => {
     refreshMaxH.current = threshold
