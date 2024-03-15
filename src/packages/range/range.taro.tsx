@@ -293,6 +293,7 @@ export const Range: FunctionComponent<
     setDragStatus('draging')
 
     const rect = await getRectByTaro(root.current)
+    if (!rect) return
     let delta = touch.deltaX.current
     let total = rect.width
     let diff = (delta / total) * scope()
