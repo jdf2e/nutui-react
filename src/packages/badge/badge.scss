@@ -59,6 +59,14 @@
     border-radius: $badge-dot-width;
     padding: 0;
   }
+
+  &-outline {
+    .nut-badge-content {
+      background: $color-primary-text;
+      border: 1px solid $color-primary;
+      color: $color-primary;
+    }
+  }
 }
 
 [dir='rtl'] .nut-badge,
