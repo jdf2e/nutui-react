@@ -49,9 +49,13 @@ const SwitchDemo = () => {
         <Demo1 title={translated.basic} />
         <Demo2 title={translated.asyncControl} text={translated.async} />
         <Demo3 title={translated.disabled} />
-        <Demo4 title='onChange' text={translated.eventTip} />
+        <Demo4 title="onChange" text={translated.eventTip} />
         <Demo5 title={translated.customColor} />
-        <Demo6 title={translated.supportText} activeText={translated.open} inactiveText={translated.close} />
+        <Demo6
+          title={translated.supportText}
+          activeText={translated.open}
+          inactiveText={translated.close}
+        />
       </div>
     </>
   )
