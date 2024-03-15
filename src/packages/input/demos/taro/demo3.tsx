@@ -8,7 +8,7 @@ const Demo3 = () => {
       <Input
         value={val}
         onChange={(val) => setVal(val)}
-        placeholder={translated.text}
+        placeholder="请输入文本"
       />
     </>
   )

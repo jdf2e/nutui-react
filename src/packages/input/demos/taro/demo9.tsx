@@ -1,10 +1,33 @@
-import React from 'react'
-import { Input, Toast } from '@nutui/nutui-react-taro'
+import React, { useState } from 'react'
+import { Input } from '@nutui/nutui-react-taro'
+import { Eye, Marshalling } from '@nutui/icons-react-taro'
 
 const Demo9 = () => {
+  const [inputType, setInputType] = useState('password')
   return (
     <>
-      <Input placeholder="事件" onClick={() => Toast.show('onClick')} />
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          background: '#fff',
+          padding: '0 10px',
+        }}
+      >
+        <Input type={inputType} placeholder="请输入密码" />
+        <div
+          className="right"
+          onClick={() =>
+            setInputType(inputType === 'text' ? 'password' : 'text')
+          }
+        >
+          {inputType === 'text' ? (
+            <Eye color="var(--nutui-gray-7)" />
+          ) : (
+            <Marshalling color="var(--nutui-gray-7)" />
+          )}
+        </div>
+      </div>
     </>
   )
 }

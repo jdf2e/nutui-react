@@ -69,7 +69,7 @@ import { Input } from '@nutui/nutui-react-taro';
 
 :::
 
-### 格式化输入内容
+### 字数统计
 
 :::demo
 
@@ -77,7 +77,7 @@ import { Input } from '@nutui/nutui-react-taro';
 
 :::
 
-### 事件
+### 带密码可见
 
 :::demo
 
@@ -85,7 +85,7 @@ import { Input } from '@nutui/nutui-react-taro';
 
 :::
 
-### 布局
+### 格式化输入内容
 
 :::demo
 
@@ -93,11 +93,35 @@ import { Input } from '@nutui/nutui-react-taro';
 
 :::
 
-### 边框
+### 对齐方式
 
 :::demo
 
 <CodeBlock src='taro/demo11.tsx'></CodeBlock>
+
+:::
+
+### 事件
+
+:::demo
+
+<CodeBlock src='taro/demo12.tsx'></CodeBlock>
+
+:::
+
+### 布局
+
+:::demo
+
+<CodeBlock src='taro/demo13.tsx'></CodeBlock>
+
+:::
+
+### 边框
+
+:::demo
+
+<CodeBlock src='taro/demo14.tsx'></CodeBlock>
 
 :::
 

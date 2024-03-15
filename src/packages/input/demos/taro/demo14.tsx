@@ -4,8 +4,10 @@ import { Input } from '@nutui/nutui-react-taro'
 const Demo11 = () => {
   return (
     <>
-      <Input align="left" placeholder="文本内容对齐" />
-      <Input align="right" placeholder="文本内容对齐" />
+      <Input
+        style={{ '--nutui-input-border-bottom-width': '1px' }}
+        placeholder="边框"
+      />
     </>
   )
 }

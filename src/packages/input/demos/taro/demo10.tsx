@@ -1,29 +1,16 @@
 import React from 'react'
-import { Input, Button } from '@nutui/nutui-react-taro'
-import { Tips } from '@nutui/icons-react-taro'
+import { Input } from '@nutui/nutui-react-taro'
 
 const Demo10 = () => {
+  const formatter = (value: string) => value.replace(/\d/g, '')
   return (
     <>
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          background: '#fff',
-          padding: '0 10px',
-        }}
-      >
-        <Tips />
-        <Input placeholder="请输入短信验证码" />
-        <div
-          className="right"
-          style={{ display: 'flex', alignItems: 'center' }}
-        >
-          <Button type="primary" size="small">
-            获取验证码
-          </Button>
-        </div>
-      </div>
+      <Input formatter={formatter} placeholder="在输入时执行格式化" />
+      <Input
+        formatter={formatter}
+        formatTrigger="onBlur"
+        placeholder="在失焦时执行格式化"
+      />
     </>
   )
 }

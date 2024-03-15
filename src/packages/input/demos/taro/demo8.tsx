@@ -1,16 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Input } from '@nutui/nutui-react-taro'
 
 const Demo8 = () => {
-  const formatter = (value: string) => value.replace(/\d/g, '')
+  const [currentLength, setCurrentLength] = useState(0)
   return (
     <>
-      <Input formatter={formatter} placeholder="在输入时执行格式化" />
-      <Input
-        formatter={formatter}
-        formatTrigger="onBlur"
-        placeholder="在失焦时执行格式化"
-      />
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          background: '#fff',
+          padding: '0 10px',
+        }}
+      >
+        <Input
+          type="text"
+          maxLength={20}
+          onChange={(val) => setCurrentLength(val.length)}
+        />
+        <div className="right" style={{ fontSize: '12px' }}>
+          {currentLength} / 20
+        </div>
+      </div>
     </>
   )
 }
