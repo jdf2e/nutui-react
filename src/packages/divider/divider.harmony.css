@@ -1,0 +1,123 @@
+.nut-divider {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #595959;
+  margin: 16px 0;
+  border: 0 solid rgba(0, 0, 0, 0.06);
+  width: 100%;
+}
+.nut-divider::before {
+  content: "";
+  border-style: inherit;
+  border-color: inherit;
+  border-width: 2px 0 0;
+  height: 2px;
+  flex: 1;
+}
+.nut-divider::after {
+  content: "";
+  border-style: inherit;
+  border-color: inherit;
+  border-width: 2px 0 0;
+  height: 2px;
+  flex: 1;
+}
+.nut-divider-center::before {
+  margin-right: 8px;
+}
+.nut-divider-left::before {
+  margin-right: 8px;
+}
+.nut-divider-right::before {
+  margin-right: 8px;
+}
+.nut-divider-center::after {
+  margin-left: 8px;
+}
+.nut-divider-left::after {
+  margin-left: 8px;
+}
+.nut-divider-right::after {
+  margin-left: 8px;
+}
+.nut-divider-left::before {
+  max-width: 10%;
+}
+.nut-divider-right::after {
+  max-width: 10%;
+}
+.nut-divider-hairline::before, .nut-divider-hairline::after {
+  transform: scaleY(0.5);
+}
+.nut-divider-vertical {
+  position: relative;
+  top: 2px;
+  display: inline-block;
+  width: auto;
+  height: 12px;
+  border-left: 1px solid rgba(0, 0, 0, 0.06);
+  margin: 0 8px;
+}
+
+[dir=rtl] .nut-divider-center::before {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+[dir=rtl] .nut-divider-left::before {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+[dir=rtl] .nut-divider-right::before {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+.nut-rtl .nut-divider-center::before {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+.nut-rtl .nut-divider-left::before {
+  margin-right: 0;
+  margin-left: 8px;
+}
+
+.nut-rtl .nut-divider-right::before {
+  margin-right: 0;
+  margin-left: 8px;
+}
+[dir=rtl] .nut-divider-center::after {
+  margin-left: 0;
+  margin-right: 8px;
+}
+[dir=rtl] .nut-divider-left::after {
+  margin-left: 0;
+  margin-right: 8px;
+}
+[dir=rtl] .nut-divider-right::after {
+  margin-left: 0;
+  margin-right: 8px;
+}
+.nut-rtl .nut-divider-center::after {
+  margin-left: 0;
+  margin-right: 8px;
+}
+.nut-rtl .nut-divider-left::after {
+  margin-left: 0;
+  margin-right: 8px;
+}
+.nut-rtl .nut-divider-right::after {
+  margin-left: 0;
+  margin-right: 8px;
+}
+[dir=rtl] .nut-divider-vertical {
+  border-left: none;
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
+}
+.nut-rtl .nut-divider-vertical {
+  border-left: none;
+  border-right: 1px solid rgba(0, 0, 0, 0.06);
+}

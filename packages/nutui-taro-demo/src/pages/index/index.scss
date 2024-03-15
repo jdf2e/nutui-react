@@ -28,7 +28,7 @@ body {
   padding: 0 0 0 0 !important;
 }
 
-.demo-full h2 {
+.demo-full .h2 {
   padding-left: 17px;
 }
 
@@ -137,8 +137,8 @@ body {
   color: rgb(51, 51, 51);
 }
 
-[dir='rtl'] .index-header > img,
-.nut-rtl .index-header > img {
+[dir='rtl'] .index-header > .img,
+.nut-rtl .index-header > .img {
   margin-right: 0;
   margin-left: 18px;
 }

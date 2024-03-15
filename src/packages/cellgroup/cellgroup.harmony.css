@@ -1,0 +1,56 @@
+.nut-cell-group {
+  display: block;
+}
+.nut-cell-group-title {
+  display: inherit;
+  padding: 0 10px;
+  color: #1a1a1a;
+  font-size: 14px;
+  line-height: 20px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+.nut-cell-group-description {
+  display: inherit;
+  padding: 0 10px;
+  color: #595959;
+  font-size: 12px;
+  line-height: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.nut-cell-group-wrap {
+  display: inherit;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #ffffff;
+  margin: 10px 0;
+}
+.nut-cell-group-wrap .nut-cell {
+  margin: 0;
+  box-shadow: none;
+  border-radius: 0;
+}
+.nut-cell-group-wrap-divider .nut-cell-divider {
+  position: absolute;
+  box-sizing: border-box;
+  pointer-events: none;
+  right: 16px;
+  bottom: 0;
+  left: 16px;
+  transform: scaleY(0.5);
+  border-top: 2px solid rgba(0, 0, 0, 0.06);
+}
+.nut-cell-group-wrap-divider .nut-cell:last-child .nut-cell-divider {
+  border-top: 0 !important;
+}
+
+[dir=rtl] .nut-cell-group-wrap-divider .nut-cell-divider {
+  left: 16px;
+  right: 16px;
+}
+
+.nut-rtl .nut-cell-group-wrap-divider .nut-cell-divider {
+  left: 16px;
+  right: 16px;
+}

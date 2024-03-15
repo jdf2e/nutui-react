@@ -27,18 +27,6 @@ const config = {
     path.resolve(__dirname, '../plugins/inject-scss.js'),
     process.env.TARO_ENV === 'harmony' ? '@tarojs/plugin-platform-harmony-ets' : '@tarojs/plugin-html',
   ],
-  // harmony 相关配置
-  harmony: {
-    // 将编译方式设置为使用 Vite 编译
-    compiler: { type: 'vite', vitePlugins: [injectScss()] },
-    // 【必填】鸿蒙主应用的绝对路径，例如：
-    projectPath: path.resolve(process.cwd(), '../nutui-harmony'),
-    // 【可选】HAP 的名称，默认为 'entry'
-    hapName: 'entry',
-    // 【可选】modules 的入口名称，默认为 'default'
-    name: 'default',
-    useNesting: true,
-  },
   compiler: 'webpack5',
   alias: {
     '@/packages': path.resolve(__dirname, '../../../src/packages'),
@@ -62,6 +50,38 @@ const config = {
     options: {},
   },
   framework: 'react',
+  // harmony 相关配置
+  harmony: {
+    // 将编译方式设置为使用 Vite 编译
+    compiler: { type: 'vite', vitePlugins: [injectScss()] },
+    // 【必填】鸿蒙主应用的绝对路径，例如：
+    projectPath: path.resolve(process.cwd(), '../nutui-harmony'),
+    // 【可选】HAP 的名称，默认为 'entry'
+    hapName: 'entry',
+    // 【可选】modules 的入口名称，默认为 'default'
+    name: 'default',
+    useNesting: true,
+    postcss: {
+      pxtransform: {
+        enable: true,
+        // 包含 `nut-` 的类名选择器中的 px 单位不会被解析
+        config: { selectorBlackList: ['nut-', 'demo', 'index', 'page'] },
+      },
+      url: {
+        enable: true,
+        config: {
+          limit: 1024, // 设定转换尺寸上限
+        },
+      },
+      cssModules: {
+        enable: false, // 默认为 false，如需使用 css modules 功能，则设为 true
+        config: {
+          namingPattern: 'module', // 转换模式，取值为 global/module
+          generateScopedName: '[name]__[local]___[hash:base64:5]',
+        },
+      },
+    },
+  },
   mini: {
     postcss: {
       pxtransform: {
