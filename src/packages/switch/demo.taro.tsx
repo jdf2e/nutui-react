@@ -1,8 +1,11 @@
-import React, { useState } from 'react'
-import Taro from '@tarojs/taro'
-import { Switch, Cell } from '@/packages/nutui.react.taro'
-import Header from '@/sites/components/header'
-import { useTranslate } from '@/sites/assets/locale/taro'
+import React from 'react'
+import { useTranslate } from '@/sites/assets/locale'
+import Demo1 from './demos/taro/demo1'
+import Demo2 from './demos/taro/demo2'
+import Demo3 from './demos/taro/demo3'
+import Demo4 from './demos/taro/demo4'
+import Demo5 from './demos/taro/demo5'
+import Demo6 from './demos/taro/demo6'
 
 const SwitchDemo = () => {
   const [translated] = useTranslate({
@@ -40,64 +43,15 @@ const SwitchDemo = () => {
       async: 'Triggered asynchronously after 2 seconds',
     },
   })
-  const [checkedAsync, setCheckedAsync] = useState(true)
-  const onChange = (
-    value: boolean,
-    event: React.MouseEvent<Element, MouseEvent>
-  ) => {
-    Taro.showToast({ title: `${translated.eventTip}${value}` })
-  }
-  const onChangeAsync = (value: boolean, event: any) => {
-    Taro.showToast({ title: `${translated.async} ${value}` })
-    setTimeout(() => {
-      setCheckedAsync(value)
-    }, 2000)
-  }
   return (
     <>
-      <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.basic}</h2>
-        <Cell>
-          <Switch defaultChecked />
-        </Cell>
-        <h2>{translated.asyncControl}</h2>
-        <Cell>
-          <Switch
-            checked={checkedAsync}
-            onChange={(value, event) => onChangeAsync(value, event)}
-          />
-        </Cell>
-        <h2>{translated.disabled}</h2>
-        <Cell>
-          <Switch defaultChecked disabled />
-        </Cell>
-        <h2>onChange</h2>
-        <Cell>
-          <Switch
-            defaultChecked
-            onChange={(value, event) => onChange(value, event)}
-          />
-        </Cell>
-
-        <h2>{translated.customColor}</h2>
-        <Cell>
-          <Switch
-            defaultChecked
-            style={{
-              '--nutui-switch-open-background-color': 'blue',
-              '--nutui-switch-close-line-background-color': '#ebebeb',
-            }}
-          />
-        </Cell>
-        <h2>{translated.supportText}</h2>
-        <Cell>
-          <Switch
-            defaultChecked
-            activeText={translated.open}
-            inactiveText={translated.close}
-          />
-        </Cell>
+      <div className="demo">
+        <Demo1 title={translated.basic} />
+        <Demo2 title={translated.asyncControl} text={translated.async} />
+        <Demo3 title={translated.disabled} />
+        <Demo4 title='onChange' text={translated.eventTip} />
+        <Demo5 title={translated.customColor} />
+        <Demo6 title={translated.supportText} activeText={translated.open} inactiveText={translated.close} />
       </div>
     </>
   )
