@@ -43,7 +43,9 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     ...props,
   }
   const classPrefix = 'nut-badge'
-  const classes = classNames(classPrefix, className, `${classPrefix}-${fill}`)
+  const classes = classNames(classPrefix, className, {
+    [`${classPrefix}-${fill}`]: fill === 'outline',
+  })
 
   function content() {
     if (dot || typeof value === 'object' || value === 0) return null
