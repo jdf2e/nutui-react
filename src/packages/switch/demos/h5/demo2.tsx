@@ -4,7 +4,7 @@ import { Switch, Toast } from '@nutui/nutui-react'
 const Demo2 = () => {
   const [checkedAsync, setCheckedAsync] = useState(true)
 
-  const onChangeAsync = (value: boolean, event: Event) => {
+  const onChangeAsync = (value: boolean, event: any) => {
     Toast.show(`2秒后异步触发 ${value}`)
     setTimeout(() => {
       setCheckedAsync(value)
