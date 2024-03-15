@@ -68,3 +68,4 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-pulltorefresh-icon-width | Swipe to icon width  | `36px` |
 | \--nutui-pulltorefresh-icon-height | Swipe to icon height   | `26px` |
+| \--nutui-pulltorefresh-color-primary | When background is deep | `$color-primay` |

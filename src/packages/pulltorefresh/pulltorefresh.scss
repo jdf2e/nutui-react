@@ -24,7 +24,7 @@
   }
 
   &-primary {
-    background-color: $color-primary;
+    background: $pulltorefresh-color-primary;
     .nut-pulltorefresh-content {
       color: $color-text-dark;
     }

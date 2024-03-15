@@ -59,7 +59,6 @@ export default App
 | threshold | 触发刷新需要下拉多少距离，单位为 px | `number` | `60` |
 | onRefresh | 触发刷新时的处理函数 | `() => Promise<any>` | `-` |
 
-
 ## 主题定制
 
 ### 样式变量
@@ -70,3 +69,4 @@ export default App
 | --- | --- | --- |
 | \--nutui-pulltorefresh-icon-width | 下拉时icon宽度 | `36px` |
 | \--nutui-pulltorefresh-icon-height | 下拉时icon高度 | `26px` |
+| \--nutui-pulltorefresh-color-primary | 深色背景模式 | `$color-primay` |
