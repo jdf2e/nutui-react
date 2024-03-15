@@ -17,19 +17,7 @@ import { Input } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Input } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Input placeholder="请输入文本" />
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -37,19 +25,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Input } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-       <Input defaultValue="NutUI React" placeholder="请输入文本" />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -57,24 +33,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Input } from '@nutui/nutui-react';
-
-const App = () => {
-    const [val, setVal] = useState('NutUI React')
-  return (
-    <>
-      <Input
-        value={val}
-        onChange={(val) => setVal(val)}
-        placeholder={translated.text}
-      /> 
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -82,22 +41,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Input } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Input type="text" placeholder="请输入文本" />
-      <Input type="password" placeholder="请输入密码" />
-      <Input type="digit" placeholder="请输入数字" />
-      <Input type="number" placeholder="请输入整数" />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -105,20 +49,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Input } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-       <Input readOnly placeholder="readOnly" />
-       <Input disabled placeholder="disabled" />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -126,21 +57,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Input } from '@nutui/nutui-react';
-import { Close } from '@nutui/icons-react'
-
-const App = () => {
-  return (
-    <>
-       <Input clearable placeholder="clear Icon" />
-       <Input clearable clearIcon={<Close />} placeholder="clear Icon" />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -148,25 +65,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Input } from '@nutui/nutui-react';
-
-const App = () => {
-  const formatter = (value: string) => value.replace(/\d/g, '')
-  return (
-    <>
-       <Input formatter={formatter} placeholder="Perform formatting on input" />
-       <Input
-         formatter={formatter}
-         formatTrigger="onBlur"
-         placeholder="Perform formatting when out of focus"
-       />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -174,22 +73,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Input, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-       <Input
-         placeholder="trigger onClick"
-         onClick={() => Toast.show('onClick')}
-       />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -197,35 +81,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Input, Button } from '@nutui/nutui-react';
-import { Tips } from '@nutui/icons-react'
-
-const App = () => {
-  return (
-    <>
-       <div
-         style={{
-           display: 'flex',
-           alignItems: 'center',
-           background: '#fff',
-           padding: '0 10px',
-         }}
-       >
-         <Tips />
-         <Input placeholder="Please enter the SMS verification code" />
-         <div className="right">
-           <Button type="primary" size="small">
-             Get code
-           </Button>
-         </div>
-       </div>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
 :::
 
@@ -233,19 +89,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Input } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-       <Input style={{'--nutui-input-border-bottom-width': '1px'}} placeholder="with border" />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
 
 :::
 
