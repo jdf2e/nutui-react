@@ -257,6 +257,13 @@ $button-default-font-weight: var(
   $font-weight
 ) !default;
 
+$button-xlarge-height: var(--nutui-button-xlarge-height, 48px) !default;
+$button-xlarge-padding: var(--nutui-button-xlarge-padding, 0px 32px) !default;
+$button-xlarge-font-size: var(
+  --nutui-button-xlarge-font-size,
+  $font-size-xl
+) !default;
+
 $button-large-width: var(--nutui-button-large-width, auto) !default;
 $button-large-height: var(--nutui-button-large-height, 44px) !default;
 $button-large-padding: var(

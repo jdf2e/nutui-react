@@ -16,23 +16,7 @@ import { Space } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-
-import React from 'react';
-import { Space, Button } from '@nutui/nutui-react';
-
- const App = () => {
-  return (
-    <Space>
-      <Button>button1</Button>
-      <Button>button2</Button>
-      <Button>button3</Button>
-    </Space>
-  );
-};
-export default App;
-
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -40,25 +24,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from 'react';
-import { Space, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Space wrap>
-      <Button>button1</Button>
-      <Button>button2</Button>
-      <Button>button3</Button>
-      <Button>button4</Button>
-      <Button>button5</Button>
-      <Button>button6</Button>
-    </Space>
-  );
-};
-export default App;
-
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -66,22 +32,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from 'react';
-import { Space, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Space direction="vertical">
-      <Button>button1</Button>
-      <Button>button2</Button>
-      <Button>button3</Button>
-    </Space>
-  );
-};
-export default App;
-
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -89,28 +40,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from 'react';
-import { Space, Button,ConfigProvider } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <ConfigProvider
-      theme={{
-        nutuiSpaceGap: '20px',
-      }}
-    >
-      <Space direction="vertical">
-        <Button>button1</Button>
-        <Button>button2</Button>
-        <Button>button3</Button>
-      </Space>
-    </ConfigProvider>
-  );
-};
-export default App;
-
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -118,29 +48,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from 'react';
-import { Space, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Space justify="start" wrap>
-      <Button>button1</Button>
-      <div>
-        <Button block style={{ marginBottom: 5 }}>button2</Button>
-        <Button block>button2</Button>
-      </div>
-      <div>
-        <Button block style={{ marginBottom: 5 }}>button3</Button>
-        <Button block style={{ marginBottom: 5 }}>button3</Button>
-        <Button block>button3</Button>
-      </div>
-    </Space> 
-  );
-};
-export default App;
-
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -148,29 +56,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from 'react';
-import { Space, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Space align="end" wrap>
-      <Button>button1</Button>
-      <div>
-        <Button block style={{ marginBottom: 5 }}>button2</Button>
-        <Button block>button2</Button>
-      </div>
-      <div>
-        <Button block style={{ marginBottom: 5 }}>button3</Button>
-        <Button block style={{ marginBottom: 5 }}>button3</Button>
-        <Button block>button3</Button>
-      </div>
-    </Space>
-  );
-};
-export default App;
-
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 

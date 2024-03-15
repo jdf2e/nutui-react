@@ -78,11 +78,11 @@ export const Swipe = forwardRef<
     const getWidth = async () => {
       if (leftWrapper.current) {
         const leftRect = await getRectByTaro(leftWrapper.current)
-        setActionWidth((v) => ({ ...v, left: leftRect.width }))
+        leftRect && setActionWidth((v) => ({ ...v, left: leftRect.width }))
       }
       if (rightWrapper.current) {
         const rightRect = await getRectByTaro(rightWrapper.current)
-        setActionWidth((v) => ({ ...v, right: rightRect.width }))
+        rightRect && setActionWidth((v) => ({ ...v, right: rightRect.width }))
       }
     }
     nextTick(() => getWidth())
@@ -114,11 +114,11 @@ export const Swipe = forwardRef<
   const onTouchStart = async (event: BaseEventOrig<HTMLDivElement>) => {
     if (leftWrapper.current) {
       const leftRect = await getRectByTaro(leftWrapper.current)
-      setActionWidth((v) => ({ ...v, left: leftRect.width }))
+      leftRect && setActionWidth((v) => ({ ...v, left: leftRect.width }))
     }
     if (rightWrapper.current) {
       const rightRect = await getRectByTaro(rightWrapper.current)
-      setActionWidth((v) => ({ ...v, right: rightRect?.width }))
+      rightRect && setActionWidth((v) => ({ ...v, right: rightRect.width }))
     }
     if (!props.disabled) {
       startOffset.current = state.offset
