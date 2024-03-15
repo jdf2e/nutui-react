@@ -1,10 +1,3 @@
-/*
- * @Author: yeyu98
- * @Date: 2024-03-15 12:26:16
- * @LastEditors: yeyu98
- * @LastEditTime: 2024-03-15 12:43:31
- * @Description:
- */
 import React, { useState } from 'react'
 import { Input } from '@nutui/nutui-react'
 import { Eye, Marshalling } from '@nutui/icons-react'

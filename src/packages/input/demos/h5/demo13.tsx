@@ -1,10 +1,3 @@
-/*
- * @Author: yeyu98
- * @Date: 2024-03-15 12:45:23
- * @LastEditors: yeyu98
- * @LastEditTime: 2024-03-15 12:49:04
- * @Description:
- */
 import React from 'react'
 import { Input, Button } from '@nutui/nutui-react'
 import { Tips } from '@nutui/icons-react'

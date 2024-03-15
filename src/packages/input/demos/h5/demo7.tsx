@@ -1,10 +1,3 @@
-/*
- * @Author: yeyu98
- * @Date: 2024-03-15 12:26:16
- * @LastEditors: yeyu98
- * @LastEditTime: 2024-03-15 12:41:56
- * @Description:
- */
 import React from 'react'
 import { Input } from '@nutui/nutui-react'
 import Form from '@/packages/form'
