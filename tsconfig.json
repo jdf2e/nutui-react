@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./",
     "rootDir": ".",
     "target": "ES6",
     "types": [
@@ -8,16 +8,15 @@
       "jest",
       "node"
     ],
+    "outDir": "./dist",
     "allowJs": false,
-    "declaration": true,
-    "declarationDir": "./dist/esm/types",
-    "emitDeclarationOnly": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
+    "preserveSymlinks": true,
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -41,8 +40,7 @@
       ],
       "@nutui/nutui-react-taro": [
         "src/packages/nutui.react.taro.ts"
-      ],
-
+      ]
     }
   },
   "include": [
