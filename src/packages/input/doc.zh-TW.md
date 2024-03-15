@@ -61,7 +61,7 @@ import { Input } from '@nutui/nutui-react';
 
 :::
 
-### 格式化输入内容
+### 受控下的清除
 
 :::demo
 
@@ -69,7 +69,7 @@ import { Input } from '@nutui/nutui-react';
 
 :::
 
-### 事件
+### 字数统计
 
 :::demo
 
@@ -77,7 +77,7 @@ import { Input } from '@nutui/nutui-react';
 
 :::
 
-### 布局
+### 带密码可见
 
 :::demo
 
@@ -85,11 +85,43 @@ import { Input } from '@nutui/nutui-react';
 
 :::
 
-### 边框
+### 格式化输入内容
 
 :::demo
 
 <CodeBlock src='h5/demo10.tsx'></CodeBlock>
+
+:::
+
+### 对齐方式
+
+:::demo
+
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
+
+:::
+
+### 事件
+
+:::demo
+
+<CodeBlock src='h5/demo12.tsx'></CodeBlock>
+
+:::
+
+### 布局
+
+:::demo
+
+<CodeBlock src='h5/demo13.tsx'></CodeBlock>
+
+:::
+
+### 边框
+
+:::demo
+
+<CodeBlock src='h5/demo14.tsx'></CodeBlock>
 
 :::
 

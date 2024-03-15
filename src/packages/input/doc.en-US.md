@@ -45,7 +45,7 @@ import { Input } from '@nutui/nutui-react';
 
 :::
 
-### Disabled and readonly
+### Disabled and read-only
 
 :::demo
 
@@ -53,7 +53,7 @@ import { Input } from '@nutui/nutui-react';
 
 :::
 
-### Clear
+### Show clear icon
 
 :::demo
 
@@ -61,7 +61,7 @@ import { Input } from '@nutui/nutui-react';
 
 :::
 
-### Formatter
+### With Form
 
 :::demo
 
@@ -69,7 +69,7 @@ import { Input } from '@nutui/nutui-react';
 
 :::
 
-### Event
+### Word count
 
 :::demo
 
@@ -77,7 +77,7 @@ import { Input } from '@nutui/nutui-react';
 
 :::
 
-### Layout
+### Visible with password
 
 :::demo
 
@@ -85,11 +85,43 @@ import { Input } from '@nutui/nutui-react';
 
 :::
 
-### Border
+### Formatter
 
 :::demo
 
 <CodeBlock src='h5/demo10.tsx'></CodeBlock>
+
+:::
+
+### Alignment
+
+:::demo
+
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
+
+:::
+
+### Event
+
+:::demo
+
+<CodeBlock src='h5/demo12.tsx'></CodeBlock>
+
+:::
+
+### Layout
+
+:::demo
+
+<CodeBlock src='h5/demo13.tsx'></CodeBlock>
+
+:::
+
+### Border
+
+:::demo
+
+<CodeBlock src='h5/demo14.tsx'></CodeBlock>
 
 :::
 
