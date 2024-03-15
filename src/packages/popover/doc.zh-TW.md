@@ -111,7 +111,7 @@ const App = () => {
       name: 'option3',
     },
   ]
-  const chooseHandle = (item: List, index: number) => {
+  const chooseHandle = (item: PopoverList, index: number) => {
     console.log('選擇')
   }
   return (
@@ -619,7 +619,7 @@ export default App
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| list | 選項列表 | `List[]` | `[]` |
+| list | 選項列表 | `PopoverList[]` | `[]` |
 | visible | 是否展示氣泡彈出層 | `boolean` | `false` |
 | location | 彈出位置，裏面具體的參數值可以參考上面的位置自定義例子 | `string` | `bottom` |
 | offset | 出現位置的偏移量 | `string[]` \| `number[]` | `[0, 12]` |
@@ -629,7 +629,7 @@ export default App
 | closeOnOutsideClick | 是否在點擊外部元素後關閉菜單 | `boolean` | `true` |
 | targetId | 自定義目標元素 id | `string` | `-` |
 | onClick | 點擊切換 popover 展示狀態 | `() => void` | `() => {}` |
-| onSelect | 點擊選項時觸發 | `(item: List, index: number) => void` | `(item, index) => {}` |
+| onSelect | 點擊選項時觸發 | `(item: PopoverList, index: number) => void` | `(item, index) => {}` |
 | onOpen | 點擊菜單時觸發 | `() => void` | `() => {}` |
 | onClose | 關閉菜單時觸發 | `() => void` | `() => {}` |
 
@@ -637,9 +637,9 @@ export default App
 此外，還支持Popup組件的overlayStyle、overlayClassName、overlay、closeOnOverlayClick屬性。    
 ```
 
-### List 數據結構
+### PopoverList 數據結構
 
-List 屬性是一個由對象構成的數組，數組中的每個對象配置一列，對象可以包含以下值：
+PopoverList 屬性是一個由對象構成的數組，數組中的每個對象配置一列，對象可以包含以下值：
 
 | 鍵名 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |

@@ -335,7 +335,7 @@ export default App;
 | --- | --- | --- | --- |
 | visible | 是否展示引导弹出层 | `boolean` | `false` |
 | type | 引导类型 | `step` \| `tile` | `step` |
-| list | 引导步骤内容 | `ListOptions[]` | `-` |
+| list | 引导步骤内容 | `TourList[]` | `-` |
 | offset | 镂空遮罩相对于目标元素的偏移量 | `number[]` | `[8, 10]` |
 | location | 弹出层位置,同 Popopver 的[location 属性](https://nutui.jd.com/h5/react/2x/#/zh-CN/component/popover) | `string` | `bottom` |
 | next | 下一步按钮文案 | `ReactNode` | `''` |
@@ -350,7 +350,7 @@ export default App;
 | onClose | 气泡层关闭时触发 | `(e: MouseEvent<HTMLDivElement>) => void` | `-` |
 | onChange | 切换步骤时触发 | `(value: number) => void` | `-` |
 
-### ListOptions
+### TourList
 
 
 | 属性 | 说明 | 类型 | 默认值 |

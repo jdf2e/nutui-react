@@ -10,13 +10,10 @@ import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { canUseDom } from '@/utils/can-use-dom'
 
-export interface FileType {
-  jpg: string
-  png: string
-}
+export type SignatureType = 'jpg' | 'png'
 
 export interface SignatureProps extends BasicComponent {
-  type: keyof FileType
+  type: SignatureType
   lineWidth: number
   strokeStyle: string
   unsupported: ReactNode
