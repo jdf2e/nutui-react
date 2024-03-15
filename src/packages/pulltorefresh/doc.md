@@ -20,6 +20,14 @@ import { PullToRefresh } from '@nutui/nutui-react';
 
 :::
 
+### 深色背景-反白模式:type='primary'
+
+:::demo
+
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
+
+:::
+
 ## PullToRefresh
 
 ### Props

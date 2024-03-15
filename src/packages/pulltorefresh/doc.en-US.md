@@ -20,6 +20,13 @@ import { PullToRefresh } from '@nutui/nutui-react';
 
 :::
 
+### type="primary"
+
+:::demo
+
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
+
+:::
 ## PullToRefresh
 
 ### Props

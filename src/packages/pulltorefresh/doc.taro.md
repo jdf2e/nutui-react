@@ -22,11 +22,20 @@ import { PullToRefresh } from '@nutui/nutui-react-taro'
 
 > 在 PullToRefresh 组件内部采用 Selector API 获得父滚动元素的 scrollTop 值会带来下拉卡顿的性能问题。因此需要在 PullRefresh 组件外部判断 scrollTop 值，在页面中使用 usePageScroll() 钩子获得 scrollTop 值，在 ScrollView 组件内监听 onScroll 事件获得 scrollTop 值。
 
-### 基础用法
+### ScrollView
 
 :::demo
 
 <CodeBlock src='taro/demo2.tsx'></CodeBlock>
+
+:::
+
+
+### 深色背景-反白模式:type='primary'
+
+:::demo
+
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
