@@ -1,8 +1,16 @@
-import React from 'react'
-import { Input, Button } from '@nutui/nutui-react'
-import { Tips } from '@nutui/icons-react'
+/*
+ * @Author: yeyu98
+ * @Date: 2024-03-15 12:26:16
+ * @LastEditors: yeyu98
+ * @LastEditTime: 2024-03-15 12:43:31
+ * @Description:
+ */
+import React, { useState } from 'react'
+import { Input } from '@nutui/nutui-react'
+import { Eye, Marshalling } from '@nutui/icons-react'
 
 const Demo9 = () => {
+  const [inputType, setInputType] = useState('password')
   return (
     <>
       <div
@@ -13,12 +21,18 @@ const Demo9 = () => {
           padding: '0 10px',
         }}
       >
-        <Tips />
-        <Input placeholder="请输入短信验证码" />
-        <div className="right">
-          <Button type="primary" size="small">
-            获取验证码
-          </Button>
+        <Input type={inputType} placeholder="请输入密码" />
+        <div
+          className="right"
+          onClick={() =>
+            setInputType(inputType === 'text' ? 'password' : 'text')
+          }
+        >
+          {inputType === 'text' ? (
+            <Eye color="var(--nutui-gray-7)" />
+          ) : (
+            <Marshalling color="var(--nutui-gray-7)" />
+          )}
         </div>
       </div>
     </>
