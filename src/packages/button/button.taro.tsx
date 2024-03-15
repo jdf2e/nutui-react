@@ -18,7 +18,7 @@ export type ButtonType =
   | 'success'
   | 'warning'
   | 'danger'
-export type ButtonSize = 'large' | 'normal' | 'small' | 'mini'
+export type ButtonSize = 'xlarge' | 'large' | 'normal' | 'small' | 'mini'
 export type ButtonShape = 'square' | 'round'
 export type ButtonFill = 'solid' | 'outline' | 'dashed' | 'none'
 
