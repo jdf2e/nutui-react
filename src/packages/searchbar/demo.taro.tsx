@@ -1,35 +1,19 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import {
-  ArrowLeft,
-  Photograph,
-  ArrowDown,
-  More,
-  Close,
-} from '@nutui/icons-react-taro'
-import {
-  ConfigProvider,
-  SearchBar,
-  Toast,
-  Popover,
-} from '@/packages/nutui.react.taro'
+import { Toast } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 
-type TSearchDemo = {
-  basePlaceholder: string
-  text: string
-  test: string
-  title1: string
-  title2: string
-  title3: string
-  title4: string
-  title5: string
-  title6: string
-  title7: string
-}
+import Demo1 from './demos/taro/demo1'
+import Demo2 from './demos/taro/demo2'
+import Demo3 from './demos/taro/demo3'
+import Demo4 from './demos/taro/demo4'
+import Demo5 from './demos/taro/demo5'
+import Demo6 from './demos/taro/demo6'
+import Demo7 from './demos/taro/demo7'
+
 const SearchBarDemo = () => {
-  const [translated] = useTranslate<TSearchDemo>({
+  const [translated] = useTranslate({
     'zh-CN': {
       basePlaceholder: '上京东，购好物',
       text: '文本',
@@ -100,90 +84,19 @@ const SearchBarDemo = () => {
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.title1}</h2>
-        <SearchBar backable placeholder={translated.basePlaceholder} />
+        <Demo1 />
         <h2>{translated.title2}</h2>
-        <SearchBar shape="round" maxLength={5} />
+        <Demo2 />
         <h2>{translated.title3}</h2>
-        <ConfigProvider
-          theme={{
-            nutuiSearchbarBackground: 'var(--nutui-color-primary)',
-            nutuiSearchbarInputBackground: '#eee',
-            nutuiSearchbarInputTextAlign: 'right',
-          }}
-        >
-          <SearchBar onSearch={() => toastShow()} />
-        </ConfigProvider>
+        <Demo3 />
         <h2>{translated.title4}</h2>
-        <SearchBar
-          left={translated.text}
-          right={translated.test}
-          onSearch={() => toastShow()}
-        />
+        <Demo4 />
         <h2>{translated.title5}</h2>
-        <SearchBar
-          left={
-            <>
-              <ArrowLeft size={20} />
-              <Close size={20} />
-            </>
-          }
-          right={
-            <>
-              <span>{translated.test}</span>
-              <More size={20} />
-            </>
-          }
-          rightIn={
-            <Photograph
-              size={16}
-              onClick={() => {
-                console.log('Photograph right in')
-              }}
-            />
-          }
-        />
-
+        <Demo5 />
         <h2>{translated.title7}</h2>
-        <SearchBar
-          leftIn={
-            <Popover
-              visible={lightTheme}
-              onClick={() => {
-                lightTheme ? setLightTheme(false) : setLightTheme(true)
-              }}
-              list={itemList}
-            >
-              <div
-                style={{
-                  fontSize: '12px',
-                  width: '50px',
-                  display: 'flex',
-                  alignItems: 'center',
-                }}
-              >
-                更多
-                <ArrowDown size={12} style={{ marginLeft: '5px' }} />
-              </div>
-            </Popover>
-          }
-        />
+        <Demo6 />
         <h2>{translated.title6}</h2>
-        <SearchBar
-          onChange={(val: string, e: React.ChangeEvent<HTMLInputElement>) =>
-            change(val, e)
-          }
-          maxLength={10}
-        />
-        <div
-          style={{
-            height: '40px',
-            lineHeight: '40px',
-            color: '#666',
-            fontSize: '14px',
-          }}
-        >
-          {value}
-        </div>
+        <Demo7 />
       </div>
       <Toast
         type="text"
