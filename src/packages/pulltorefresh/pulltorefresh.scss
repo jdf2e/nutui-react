@@ -22,6 +22,19 @@
       }
     }
   }
+
+  &-primary {
+    background-color: $color-primary;
+    .nut-pulltorefresh-content {
+      color: $color-text-dark;
+    }
+
+    .nut-pulltorefresh-head {
+      &-content {
+        color: $color-text-dark;
+      }
+    }
+  }
 }
 
 [dir='rtl'] .nut-pulltorefresh,
