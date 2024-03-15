@@ -5,10 +5,7 @@ import Taro from '@tarojs/taro'
 const Demo2 = () => {
   const [checkedAsync, setCheckedAsync] = useState(true)
 
-  const onChangeAsync = (
-    value: boolean,
-    event: React.MouseEvent<Element, MouseEvent>
-  ) => {
+  const onChangeAsync = (value: boolean, event: any) => {
     Taro.showToast({ title: `2秒后异步触发 ${value}` })
     setTimeout(() => {
       setCheckedAsync(value)
