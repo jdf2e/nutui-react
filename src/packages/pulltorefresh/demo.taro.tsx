@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Taro from '@tarojs/taro'
-import { ScrollView } from '@tarojs/components'
-import { PullToRefresh, Cell, Toast } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
+import Demo1 from './demos/taro/demo1'
+import Demo2 from './demos/taro/demo2'
+import Demo3 from './demos/taro/demo3'
 
 const PullToRefreshDemo = () => {
   const [translated] = useTranslate({
@@ -23,110 +24,18 @@ const PullToRefreshDemo = () => {
       primary: 'reverse',
     },
   })
-  const [list] = useState([1, 2, 3, 4, 5, 6, 7])
-  const [show, SetShow] = useState(false)
-  const [toastMsg, SetToastMsg] = useState('')
-  const toastShow = (msg: any) => {
-    SetToastMsg(msg)
-    SetShow(true)
-  }
-  const [scrollTop, setScrollTop] = useState(0)
   return (
     <>
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
-        <PullToRefresh
-          style={{
-            backgroundColor: `var(--nutui-gray-3)`,
-            color: 'var(--nutui-gray-7)',
-          }}
-          onRefresh={() =>
-            new Promise((resolve) => {
-              toastShow('😊')
-              resolve('done')
-            })
-          }
-        >
-          {list.map((item) => (
-            <div
-              style={{
-                textAlign: 'center',
-                height: '50px',
-                lineHeight: '50px',
-              }}
-              key={item}
-            >
-              {item}
-            </div>
-          ))}
-        </PullToRefresh>
-        <Toast
-          type="text"
-          visible={show}
-          content={toastMsg}
-          onClose={() => {
-            SetShow(false)
-          }}
-        />
+        <Demo1 />
 
         <h2>{translated.scrollView}</h2>
-        <ScrollView
-          style={{ height: '150px' }}
-          scrollY
-          onScrollEnd={(e) => {
-            // scrollTop > 0, PullToRefresh 不触发 touchmove 事件。
-            if (e.detail?.scrollTop) {
-              setScrollTop(e.detail?.scrollTop)
-            }
-          }}
-        >
-          <PullToRefresh
-            scrollTop={scrollTop}
-            onRefresh={() =>
-              new Promise((resolve) => {
-                toastShow('😊')
-                resolve('done')
-              })
-            }
-          >
-            {list.map((item) => (
-              <Cell key={item}>{item}</Cell>
-            ))}
-          </PullToRefresh>
-        </ScrollView>
+        <Demo2 />
 
         <h2>{translated.primary}</h2>
-        <PullToRefresh
-          type="primary"
-          onRefresh={() =>
-            new Promise((resolve) => {
-              toastShow('😊')
-              resolve('done')
-            })
-          }
-        >
-          {list.map((item) => (
-            <div
-              style={{
-                textAlign: 'center',
-                height: '50px',
-                lineHeight: '50px',
-              }}
-              key={item}
-            >
-              {item}
-            </div>
-          ))}
-        </PullToRefresh>
-        <Toast
-          type="text"
-          visible={show}
-          content={toastMsg}
-          onClose={() => {
-            SetShow(false)
-          }}
-        />
+        <Demo3 />
       </div>
     </>
   )

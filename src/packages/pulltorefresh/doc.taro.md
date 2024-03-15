@@ -16,28 +16,7 @@ import { PullToRefresh } from '@nutui/nutui-react-taro'
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { PullToRefresh, Cell } from '@nutui/nutui-react-taro'
-
-const App = () => {
-  const [list] = useState([1, 2, 3, 4, 5, 6, 7])
-  return (
-    <>
-      <div className="demo">
-        <h2>基础用法</h2>
-        <PullToRefresh>
-          {list.map((item) => (
-            <Cell key={item}>{item}</Cell>
-          ))}
-        </PullToRefresh>
-      </div>
-    </>
-  )
-}
-
-export default App
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -47,48 +26,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { ScrollView } from '@tarojs/components'
-import { PullToRefresh, Cell } from '@nutui/nutui-react-taro'
-
-const App = () => {
-  const [list] = useState([1, 2, 3, 4, 5, 6, 7])
-  return (
-    <>
-      <div className="demo">
-        <h2>ScrollView</h2>
-        <ScrollView
-          style={{ height: '150px' }}
-          scrollY
-          onScrollEnd={(e) => {
-            // scrollTop > 0, PullToRefresh 不触发 touchmove 事件。
-            if (e.detail?.scrollTop) {
-              setScrollTop(e.detail?.scrollTop)
-            }
-          }}
-        >
-          <PullToRefresh
-            scrollTop={scrollTop}
-            onRefresh={() =>
-              new Promise((resolve) => {
-                toastShow('😊')
-                resolve('done')
-              })
-            }
-          >
-            {list.map((item) => (
-              <Cell key={item}>{item}</Cell>
-            ))}
-          </PullToRefresh>
-        </ScrollView>
-      </div>
-    </>
-  )
-}
-
-export default App
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 

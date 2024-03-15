@@ -16,27 +16,7 @@ import { PullToRefresh } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React, {useState}  from "react";
-import { PullToRefresh, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  const [list] = useState([1, 2, 3, 4, 5, 6, 7])
-  return (
-    <>
-      <div className="demo">
-        <PullToRefresh>
-          {list.map((item) => (
-            <Cell key={item}>{item}</Cell>
-          ))}
-        </PullToRefresh>
-      </div>
-    </>
-  )
-}
-
-export default App
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 

@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
-import { PullToRefresh } from './pulltorefresh'
-import Toast from '@/packages/toast'
+import React from 'react'
 import { useTranslate } from '@/sites/assets/locale'
+
+import Demo1 from './demos/h5/demo1'
+import Demo2 from './demos/h5/demo2'
 
 const PullToRefreshDemo = () => {
   const [translated] = useTranslate({
@@ -18,59 +19,15 @@ const PullToRefreshDemo = () => {
       primary: 'reverse',
     },
   })
-  const [list] = useState([1, 2, 3, 4, 5, 6, 7])
 
   return (
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
-        <PullToRefresh
-          onRefresh={() =>
-            new Promise((resolve) => {
-              Toast.show('😊')
-              resolve('done')
-            })
-          }
-        >
-          {list.map((item) => (
-            <div
-              style={{
-                textAlign: 'center',
-                height: '50px',
-                lineHeight: '50px',
-              }}
-              key={item}
-            >
-              {item}
-            </div>
-          ))}
-        </PullToRefresh>
+        <Demo1 />
 
         <h2>{translated.primary}</h2>
-        <div>
-          <PullToRefresh
-            type="primary"
-            onRefresh={() =>
-              new Promise((resolve) => {
-                Toast.show('😊')
-                resolve('done')
-              })
-            }
-          >
-            {list.map((item) => (
-              <div
-                style={{
-                  textAlign: 'center',
-                  height: '50px',
-                  lineHeight: '50px',
-                }}
-                key={item}
-              >
-                {item}
-              </div>
-            ))}
-          </PullToRefresh>
-        </div>
+        <Demo2 />
       </div>
     </>
   )
