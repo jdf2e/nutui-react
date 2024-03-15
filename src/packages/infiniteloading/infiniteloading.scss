@@ -47,6 +47,13 @@
       }
     }
   }
+  &-primary {
+    background-color: $color-primary;
+    .nut-infinite-bottom,
+    .nut-infinite-top {
+      color: $color-text-dark;
+    }
+  }
 }
 
 [dir='rtl'] .nut-infiniteloading,
