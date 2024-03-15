@@ -72,7 +72,7 @@ Set the button shape through the 'shape' property, support circular, square butt
 
 ### Button size
 
-Support 'large', 'normal', 'small', 'mini' four sizes, the default is 'normal'.
+Support 'xlarge', 'large', 'normal', 'small', 'mini' sizes, the default is 'normal'.
 
 :::demo
 
@@ -107,7 +107,7 @@ The color property allows you to customize the color of the button.
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
 | type | button style | `default` \| `primary` \| `warning` \| `danger` \| `success` \| `info` | `default` |
-| size | button size | `normal` \| `large` \| `small` | `normal` |
+| size | button size | `normal` \| `xlarge` \| `large` \| `small` | `normal` |
 | shape | button shape | `square` \| `round` | `round` | 
 | color | Button color, supports linear-gradient gradient color. In outline and dashed modes, color is set. In other cases, background is set. It is recommended to use color configuration implemented by CSS variables. | `string` | `-` |
 | fill | fill pattern | `solid` \| `outline`  \| `dashed` \| `none` | `solid` |
