@@ -21,7 +21,15 @@ if (projectID) {
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
-    alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
+    alias: [
+      { find: '@', replacement: resolve(__dirname, './src') },
+      {
+        find: '@nutui/icons-react',
+        replacement: projectID
+          ? `@nutui/${projectID}-icons-react`
+          : '@nutui/icons-react',
+      },
+    ],
   },
   plugins: [
     dts({

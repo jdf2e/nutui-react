@@ -25,6 +25,7 @@ const config = {
   plugins: ['@tarojs/plugin-html'],
   compiler: 'webpack5',
   alias: {
+    '@nutui/icons-react-taro': projectID  ? `@nutui/${projectID}-icons-react-taro` : '@nutui/icons-react-taro',
     '@nutui/nutui-react-taro/dist/locales/en-US.ts': path.resolve(
       __dirname,
       '../../../src/locales/en-US.ts'
@@ -36,7 +37,7 @@ const config = {
     '@nutui/nutui-react-taro': path.resolve(
       __dirname,
       '../../../src/packages/nutui.react.taro.ts'
-    ),
+    )
   },
   sass: {
     resource: [

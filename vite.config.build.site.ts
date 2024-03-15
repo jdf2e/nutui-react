@@ -14,7 +14,7 @@ if (projectID) {
 // https://vitejs.dev/config/
 export default defineConfig({
   mode: 'production',
-  base: `/h5/react/${projectID === 'jmapp' ? 'jdesign' : '2x'}`,
+  base: `/h5/react/${projectID === 'jdesign' ? 'jdesign' : '2x'}`,
   resolve: {
     alias: [
       {
@@ -33,6 +33,18 @@ export default defineConfig({
       {
         find: '@nutui/nutui-react-taro',
         replacement: resolve(__dirname, './src/packages/nutui.react.taro.ts'),
+      },
+      {
+        find: '@nutui/icons-react',
+        replacement: projectID
+          ? `@nutui/${projectID}-icons-react`
+          : '@nutui/icons-react',
+      },
+      {
+        find: '@nutui/icons-react-taro',
+        replacement: projectID
+          ? `@nutui/${projectID}-icons-react-taro`
+          : '@nutui/icons-react-taro',
       },
     ],
   },
@@ -64,7 +76,7 @@ export default defineConfig({
   plugins: [reactRefresh()],
   build: {
     target: 'es2015',
-    outDir: `./dist/${projectID === 'jmapp' ? 'jdesign' : '2x'}/`,
+    outDir: `./dist/${projectID === 'jdesign' ? 'jdesign' : '2x'}/`,
     cssCodeSplit: true,
     rollupOptions: {
       input: {

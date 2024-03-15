@@ -22,7 +22,15 @@ if (projectID) {
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
-    alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
+    alias: [
+      { find: '@', replacement: resolve(__dirname, './src') },
+      {
+        find: '@nutui/icons-react-taro',
+        replacement: projectID
+          ? `@nutui/${projectID}-icons-react-taro`
+          : '@nutui/icons-react-taro',
+      },
+    ],
   },
   plugins: [
     dts({

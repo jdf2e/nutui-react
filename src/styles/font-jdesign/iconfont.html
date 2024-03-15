@@ -1,0 +1,2048 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+    <meta charset="utf-8"/>
+    <title>RelayIcon Demo</title>
+    <link rel="shortcut icon" href="http://relay.jd.com/favicon.ico" type="image/x-icon"/>
+    <link rel="stylesheet" href="https://g.alicdn.com/thx/cube/1.3.2/cube.min.css">
+    <link rel="stylesheet" href="iconfont.css">
+    <style type="text/css">
+      /* tabs */
+      .nav-tabs {
+        position: relative;
+      }
+
+      .nav-tabs .nav-more {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        height: 42px;
+        line-height: 42px;
+        color: #666;
+      }
+
+      #tabs {
+        border-bottom: 1px solid #eee;
+      }
+
+      #tabs li {
+        cursor: pointer;
+        width: 100px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        font-size: 16px;
+        border-bottom: 2px solid transparent;
+        position: relative;
+        z-index: 1;
+        margin-bottom: -1px;
+        color: #666;
+      }
+
+
+      #tabs .active {
+        border-bottom-color: #f00;
+        color: #222;
+      }
+
+      .tab-container .content {
+        display: none;
+      }
+
+      /* 页面布局 */
+      .main {
+        padding: 30px 100px;
+        width: 960px;
+        margin: 0 auto;
+      }
+
+      .main .logo {
+        color: #333;
+        text-align: left;
+        margin-bottom: 30px;
+        line-height: 1;
+        height: 42px;
+        overflow: hidden;
+        *zoom: 1;
+      }
+
+      .main .logo a {
+        font-size: 40px;
+        color: #333;
+      }
+
+      .helps {
+        margin-top: 40px;
+      }
+
+      .helps pre {
+        padding: 20px;
+        margin: 10px 0;
+        border: solid 1px #e7e1cd;
+        background-color: #fffdef;
+        overflow: auto;
+      }
+
+      .icon_lists {
+        width: 100% !important;
+        overflow: hidden;
+        *zoom: 1;
+      }
+
+      .icon_lists li {
+        width: 100px;
+        margin-bottom: 10px;
+        margin-right: 20px;
+        text-align: center;
+        list-style: none !important;
+        cursor: default;
+      }
+
+      .icon_lists li .code-name {
+        line-height: 1.2;
+      }
+
+      .icon_lists .icon {
+        display: block;
+        height: 100px;
+        line-height: 100px;
+        font-size: 42px;
+        margin: 10px auto;
+        color: #333;
+        -webkit-transition: font-size 0.25s linear, width 0.25s linear;
+        -moz-transition: font-size 0.25s linear, width 0.25s linear;
+        transition: font-size 0.25s linear, width 0.25s linear;
+      }
+
+      .icon_lists .icon:hover {
+        font-size: 100px;
+      }
+
+      .icon_lists .svg-icon {
+        /* 通过设置 font-size 来改变图标大小 */
+        width: 1em;
+        /* 图标和文字相邻时，垂直对齐 */
+        vertical-align: -0.15em;
+        /* 通过设置 color 来改变 SVG 的颜色/fill */
+        fill: currentColor;
+        /* path 和 stroke 溢出 viewBox 部分在 IE 下会显示
+            normalize.css 中也包含这行 */
+        overflow: hidden;
+      }
+
+      .icon_lists li .name,
+      .icon_lists li .code-name {
+        color: #666;
+      }
+
+      /* markdown 样式 */
+      .markdown {
+        color: #666;
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .highlight {
+        line-height: 1.5;
+      }
+
+      .markdown img {
+        vertical-align: middle;
+        max-width: 100%;
+      }
+
+      .markdown h1 {
+        color: #404040;
+        font-weight: 500;
+        line-height: 40px;
+        margin-bottom: 24px;
+      }
+
+      .markdown h2,
+      .markdown h3,
+      .markdown h4,
+      .markdown h5,
+      .markdown h6 {
+        color: #404040;
+        margin: 1.6em 0 0.6em 0;
+        font-weight: 500;
+        clear: both;
+      }
+
+      .markdown h1 {
+        font-size: 28px;
+      }
+
+      .markdown h2 {
+        font-size: 22px;
+      }
+
+      .markdown h3 {
+        font-size: 16px;
+      }
+
+      .markdown h4 {
+        font-size: 14px;
+      }
+
+      .markdown h5 {
+        font-size: 12px;
+      }
+
+      .markdown h6 {
+        font-size: 12px;
+      }
+
+      .markdown hr {
+        height: 1px;
+        border: 0;
+        background: #e9e9e9;
+        margin: 16px 0;
+        clear: both;
+      }
+
+      .markdown p {
+        margin: 1em 0;
+      }
+
+      .markdown>p,
+      .markdown>blockquote,
+      .markdown>.highlight,
+      .markdown>ol,
+      .markdown>ul {
+        width: 80%;
+      }
+
+      .markdown ul>li {
+        list-style: circle;
+      }
+
+      .markdown>ul li,
+      .markdown blockquote ul>li {
+        margin-left: 20px;
+        padding-left: 4px;
+      }
+
+      .markdown>ul li p,
+      .markdown>ol li p {
+        margin: 0.6em 0;
+      }
+
+      .markdown ol>li {
+        list-style: decimal;
+      }
+
+      .markdown>ol li,
+      .markdown blockquote ol>li {
+        margin-left: 20px;
+        padding-left: 4px;
+      }
+
+      .markdown code {
+        margin: 0 3px;
+        padding: 0 5px;
+        background: #eee;
+        border-radius: 3px;
+      }
+
+      .markdown strong,
+      .markdown b {
+        font-weight: 600;
+      }
+
+      .markdown>table {
+        border-collapse: collapse;
+        border-spacing: 0px;
+        empty-cells: show;
+        border: 1px solid #e9e9e9;
+        width: 95%;
+        margin-bottom: 24px;
+      }
+
+      .markdown>table th {
+        white-space: nowrap;
+        color: #333;
+        font-weight: 600;
+      }
+
+      .markdown>table th,
+      .markdown>table td {
+        border: 1px solid #e9e9e9;
+        padding: 8px 16px;
+        text-align: left;
+      }
+
+      .markdown>table th {
+        background: #F7F7F7;
+      }
+
+      .markdown blockquote {
+        font-size: 90%;
+        color: #999;
+        border-left: 4px solid #e9e9e9;
+        padding-left: 0.8em;
+        margin: 1em 0;
+      }
+
+      .markdown blockquote p {
+        margin: 0;
+      }
+
+      .markdown .anchor {
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        margin-left: 8px;
+      }
+
+      .markdown .waiting {
+        color: #ccc;
+      }
+
+      .markdown h1:hover .anchor,
+      .markdown h2:hover .anchor,
+      .markdown h3:hover .anchor,
+      .markdown h4:hover .anchor,
+      .markdown h5:hover .anchor,
+      .markdown h6:hover .anchor {
+        opacity: 1;
+        display: inline-block;
+      }
+
+      .markdown>br,
+      .markdown>p>br {
+        clear: both;
+      }
+
+
+      .hljs {
+        display: block;
+        background: white;
+        padding: 0.5em;
+        color: #333333;
+        overflow-x: auto;
+      }
+
+      .hljs-comment,
+      .hljs-meta {
+        color: #969896;
+      }
+
+      .hljs-string,
+      .hljs-variable,
+      .hljs-template-variable,
+      .hljs-strong,
+      .hljs-emphasis,
+      .hljs-quote {
+        color: #df5000;
+      }
+
+      .hljs-keyword,
+      .hljs-selector-tag,
+      .hljs-type {
+        color: #a71d5d;
+      }
+
+      .hljs-literal,
+      .hljs-symbol,
+      .hljs-bullet,
+      .hljs-attribute {
+        color: #0086b3;
+      }
+
+      .hljs-section,
+      .hljs-name {
+        color: #63a35c;
+      }
+
+      .hljs-tag {
+        color: #333333;
+      }
+
+      .hljs-title,
+      .hljs-attr,
+      .hljs-selector-id,
+      .hljs-selector-class,
+      .hljs-selector-attr,
+      .hljs-selector-pseudo {
+        color: #795da3;
+      }
+
+      .hljs-addition {
+        color: #55a532;
+        background-color: #eaffea;
+      }
+
+      .hljs-deletion {
+        color: #bd2c00;
+        background-color: #ffecec;
+      }
+
+      .hljs-link {
+        text-decoration: underline;
+      }
+
+      /* 代码高亮 */
+      /* PrismJS 1.15.0
+      https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+      /**
+      * prism.js default theme for JavaScript, CSS and HTML
+      * Based on dabblet (http://dabblet.com)
+      * @author Lea Verou
+      */
+      code[class*="language-"],
+      pre[class*="language-"] {
+        color: black;
+        background: none;
+        text-shadow: 0 1px white;
+        font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+        text-align: left;
+        white-space: pre;
+        word-spacing: normal;
+        word-break: normal;
+        word-wrap: normal;
+        line-height: 1.5;
+
+        -moz-tab-size: 4;
+        -o-tab-size: 4;
+        tab-size: 4;
+
+        -webkit-hyphens: none;
+        -moz-hyphens: none;
+        -ms-hyphens: none;
+        hyphens: none;
+      }
+
+      pre[class*="language-"]::-moz-selection,
+      pre[class*="language-"] ::-moz-selection,
+      code[class*="language-"]::-moz-selection,
+      code[class*="language-"] ::-moz-selection {
+        text-shadow: none;
+        background: #b3d4fc;
+      }
+
+      pre[class*="language-"]::selection,
+      pre[class*="language-"] ::selection,
+      code[class*="language-"]::selection,
+      code[class*="language-"] ::selection {
+        text-shadow: none;
+        background: #b3d4fc;
+      }
+
+      @media print {
+
+        code[class*="language-"],
+        pre[class*="language-"] {
+          text-shadow: none;
+        }
+      }
+
+      /* Code blocks */
+      pre[class*="language-"] {
+        padding: 1em;
+        margin: .5em 0;
+        overflow: auto;
+      }
+
+      :not(pre)>code[class*="language-"],
+      pre[class*="language-"] {
+        background: #f5f2f0;
+      }
+
+      /* Inline code */
+      :not(pre)>code[class*="language-"] {
+        padding: .1em;
+        border-radius: .3em;
+        white-space: normal;
+      }
+
+      .token.comment,
+      .token.prolog,
+      .token.doctype,
+      .token.cdata {
+        color: slategray;
+      }
+
+      .token.punctuation {
+        color: #999;
+      }
+
+      .namespace {
+        opacity: .7;
+      }
+
+      .token.property,
+      .token.tag,
+      .token.boolean,
+      .token.number,
+      .token.constant,
+      .token.symbol,
+      .token.deleted {
+        color: #905;
+      }
+
+      .token.selector,
+      .token.attr-name,
+      .token.string,
+      .token.char,
+      .token.builtin,
+      .token.inserted {
+        color: #690;
+      }
+
+      .token.operator,
+      .token.entity,
+      .token.url,
+      .language-css .token.string,
+      .style .token.string {
+        color: #9a6e3a;
+        background: hsla(0, 0%, 100%, .5);
+      }
+
+      .token.atrule,
+      .token.attr-value,
+      .token.keyword {
+        color: #07a;
+      }
+
+      .token.function,
+      .token.class-name {
+        color: #DD4A68;
+      }
+
+      .token.regex,
+      .token.important,
+      .token.variable {
+        color: #e90;
+      }
+
+      .token.important,
+      .token.bold {
+        font-weight: bold;
+      }
+
+      .token.italic {
+        font-style: italic;
+      }
+
+      .token.entity {
+        cursor: help;
+      }
+    </style>
+    <!-- jQuery -->
+    <script src="http://wq.360buyimg.com/data/ppms/others/quarkicon.jquery.v1.9.1.js"></script>
+    <!-- 代码高亮 -->
+    <script src="http://wq.360buyimg.com/data/ppms/others/quarkicon.prismjs.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <h1 class="logo"><a href="https://relay.jd.com/web/team" title="RELAAAY" target="_blank">RelayIcon</a></h1>
+      <div class="nav-tabs">
+        <ul id="tabs" class="dib-box">
+          <li class="dib active"><span>Unicode</span></li>
+          <li class="dib"><span>Font class</span></li>
+          <li class="dib"><span>Symbol</span></li>
+        </ul>
+
+        <a href="https://relay.jd.com" target="_blank" class="nav-more">去RELAY</a>
+
+      </div>
+      <div class="tab-container">
+        <div class="content unicode" style="display: block;">
+            <ul class="icon_lists dib-box">
+              
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xee5f;</span>
+                  <div class="name">retweet</div>
+                  <div class="code-name">&amp;#xee5f;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xf444;</span>
+                  <div class="name">check-checked</div>
+                  <div class="code-name">&amp;#xf444;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe89d;</span>
+                  <div class="name">arrow-down</div>
+                  <div class="code-name">&amp;#xe89d;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xee3a;</span>
+                  <div class="name">check-disabled</div>
+                  <div class="code-name">&amp;#xee3a;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xf43c;</span>
+                  <div class="name">arrow-left</div>
+                  <div class="code-name">&amp;#xf43c;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe57d;</span>
+                  <div class="name">loading1</div>
+                  <div class="code-name">&amp;#xe57d;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xf349;</span>
+                  <div class="name">notice</div>
+                  <div class="code-name">&amp;#xf349;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe6fc;</span>
+                  <div class="name">service</div>
+                  <div class="code-name">&amp;#xe6fc;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xeba5;</span>
+                  <div class="name">arrow-up</div>
+                  <div class="code-name">&amp;#xeba5;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xf416;</span>
+                  <div class="name">user</div>
+                  <div class="code-name">&amp;#xf416;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe146;</span>
+                  <div class="name">loading</div>
+                  <div class="code-name">&amp;#xe146;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe679;</span>
+                  <div class="name">find</div>
+                  <div class="code-name">&amp;#xe679;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe55d;</span>
+                  <div class="name">image</div>
+                  <div class="code-name">&amp;#xe55d;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xf505;</span>
+                  <div class="name">play-circle-fill</div>
+                  <div class="code-name">&amp;#xf505;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xf392;</span>
+                  <div class="name">arrow-right</div>
+                  <div class="code-name">&amp;#xf392;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe132;</span>
+                  <div class="name">cart</div>
+                  <div class="code-name">&amp;#xe132;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xec80;</span>
+                  <div class="name">jd</div>
+                  <div class="code-name">&amp;#xec80;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe449;</span>
+                  <div class="name">dongdong</div>
+                  <div class="code-name">&amp;#xe449;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe50b;</span>
+                  <div class="name">check</div>
+                  <div class="code-name">&amp;#xe50b;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xed21;</span>
+                  <div class="name">photograph</div>
+                  <div class="code-name">&amp;#xed21;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xeb6f;</span>
+                  <div class="name">people</div>
+                  <div class="code-name">&amp;#xeb6f;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xf11a;</span>
+                  <div class="name">image-error</div>
+                  <div class="code-name">&amp;#xf11a;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe535;</span>
+                  <div class="name">minus</div>
+                  <div class="code-name">&amp;#xe535;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe503;</span>
+                  <div class="name">checked</div>
+                  <div class="code-name">&amp;#xe503;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xef3b;</span>
+                  <div class="name">check-normal</div>
+                  <div class="code-name">&amp;#xef3b;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xf501;</span>
+                  <div class="name">checklist</div>
+                  <div class="code-name">&amp;#xf501;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xeae9;</span>
+                  <div class="name">plus</div>
+                  <div class="code-name">&amp;#xeae9;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe7c1;</span>
+                  <div class="name">mask-close</div>
+                  <div class="code-name">&amp;#xe7c1;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xeb99;</span>
+                  <div class="name">triangle-down</div>
+                  <div class="code-name">&amp;#xeb99;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xf24c;</span>
+                  <div class="name">fabulous</div>
+                  <div class="code-name">&amp;#xf24c;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xec50;</span>
+                  <div class="name">close</div>
+                  <div class="code-name">&amp;#xec50;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xebf5;</span>
+                  <div class="name">failure</div>
+                  <div class="code-name">&amp;#xebf5;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe1f9;</span>
+                  <div class="name">user-add</div>
+                  <div class="code-name">&amp;#xe1f9;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xeed2;</span>
+                  <div class="name">joy-smile</div>
+                  <div class="code-name">&amp;#xeed2;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe1f6;</span>
+                  <div class="name">share</div>
+                  <div class="code-name">&amp;#xe1f6;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe39f;</span>
+                  <div class="name">del</div>
+                  <div class="code-name">&amp;#xe39f;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xebea;</span>
+                  <div class="name">category</div>
+                  <div class="code-name">&amp;#xebea;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe4b7;</span>
+                  <div class="name">star-fill</div>
+                  <div class="code-name">&amp;#xe4b7;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe458;</span>
+                  <div class="name">location</div>
+                  <div class="code-name">&amp;#xe458;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe0c9;</span>
+                  <div class="name">refresh</div>
+                  <div class="code-name">&amp;#xe0c9;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xf0e2;</span>
+                  <div class="name">link</div>
+                  <div class="code-name">&amp;#xf0e2;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe23e;</span>
+                  <div class="name">add</div>
+                  <div class="code-name">&amp;#xe23e;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe881;</span>
+                  <div class="name">heart</div>
+                  <div class="code-name">&amp;#xe881;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe4a7;</span>
+                  <div class="name">heart-fill</div>
+                  <div class="code-name">&amp;#xe4a7;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xf05e;</span>
+                  <div class="name">tips</div>
+                  <div class="code-name">&amp;#xf05e;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xee74;</span>
+                  <div class="name">double-arrow-up</div>
+                  <div class="code-name">&amp;#xee74;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe9f8;</span>
+                  <div class="name">home</div>
+                  <div class="code-name">&amp;#xe9f8;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe72b;</span>
+                  <div class="name">search</div>
+                  <div class="code-name">&amp;#xe72b;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe529;</span>
+                  <div class="name">top</div>
+                  <div class="code-name">&amp;#xe529;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe1f8;</span>
+                  <div class="name">download</div>
+                  <div class="code-name">&amp;#xe1f8;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe089;</span>
+                  <div class="name">star</div>
+                  <div class="code-name">&amp;#xe089;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xed1e;</span>
+                  <div class="name">apps</div>
+                  <div class="code-name">&amp;#xed1e;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xf415;</span>
+                  <div class="name">eye</div>
+                  <div class="code-name">&amp;#xf415;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xea81;</span>
+                  <div class="name">warning</div>
+                  <div class="code-name">&amp;#xea81;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xee2b;</span>
+                  <div class="name">success</div>
+                  <div class="code-name">&amp;#xee2b;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe5f0;</span>
+                  <div class="name">more</div>
+                  <div class="code-name">&amp;#xe5f0;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe4e4;</span>
+                  <div class="name">poweroff-circle-fill</div>
+                  <div class="code-name">&amp;#xe4e4;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xe293;</span>
+                  <div class="name">triangle-up</div>
+                  <div class="code-name">&amp;#xe293;</div>
+                </li>
+                
+                <li class="dib">
+                <span class="icon nutui-iconfont">&#xeadf;</span>
+                  <div class="name">marshalling</div>
+                  <div class="code-name">&amp;#xeadf;</div>
+                </li>
+                
+            </ul>
+            <div class="article markdown">
+            <h2 id="unicode-">Unicode 引用</h2>
+            <hr>
+
+            <p>Unicode 是字体在网页端最原始的应用方式，特点是：</p>
+            <ul>
+              <li>兼容性最好，支持 IE6+，及所有现代浏览器。</li>
+              <li>支持按字体的方式去动态调整图标大小，颜色等等。</li>
+              <li>但是因为是字体，所以不支持多色。只能使用平台里单色的图标，就算项目里有多色图标也会自动去色。</li>
+            </ul>
+            <blockquote>
+              <p>注意：新版 RelayIcon 支持多色图标，这些多色图标在 Unicode 模式下将不能使用，如果有需求建议使用 symbol 的引用方式</p>
+            </blockquote>
+            <p>Unicode 使用步骤如下：</p>
+            <h3 id="-font-face">第一步：拷贝项目下面生成的 <code>@font-face</code></h3>
+  <pre><code class="language-css"
+  >@font-face {
+    font-family: 'font_family';
+    src: url('relayicon.eot');
+    src: url('relayicon.eot?#iefix') format('embedded-opentype'),
+        url('relayicon.woff2') format('woff2'),
+        url('relayicon.woff') format('woff'),
+        url('relayicon.ttf') format('truetype'),
+        url('relayicon.svg#font_family') format('svg');
+  }
+  </code></pre>
+            <h3 id="-iconfont-">第二步：定义使用 relayicon 的样式</h3>
+  <pre><code class="language-css"
+  >.font_family {
+    font-family: "font_family" !important;
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  </code></pre>
+            <h3 id="-">第三步：挑选相应图标并获取字体编码，应用于页面</h3>
+  <pre>
+  <code class="language-html"
+  >&lt;span class="font_family"&gt;&amp;#x33;&lt;/span&gt;
+  </code></pre>
+            <blockquote>
+              <p>"font_family" 是你项目下的 font-family。可以通过编辑项目查看，默认是 "relayicon"。</p>
+            </blockquote>
+            </div>
+        </div>
+        <div class="content font-class">
+          <ul class="icon_lists dib-box">
+          
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-retweet"></span>
+              <div class="name">
+                retweet
+              </div>
+              <div class="code-name">.nut-icon-retweet
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-check-checked"></span>
+              <div class="name">
+                check-checked
+              </div>
+              <div class="code-name">.nut-icon-check-checked
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-arrow-down"></span>
+              <div class="name">
+                arrow-down
+              </div>
+              <div class="code-name">.nut-icon-arrow-down
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-check-disabled"></span>
+              <div class="name">
+                check-disabled
+              </div>
+              <div class="code-name">.nut-icon-check-disabled
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-arrow-left"></span>
+              <div class="name">
+                arrow-left
+              </div>
+              <div class="code-name">.nut-icon-arrow-left
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-loading1"></span>
+              <div class="name">
+                loading1
+              </div>
+              <div class="code-name">.nut-icon-loading1
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-notice"></span>
+              <div class="name">
+                notice
+              </div>
+              <div class="code-name">.nut-icon-notice
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-service"></span>
+              <div class="name">
+                service
+              </div>
+              <div class="code-name">.nut-icon-service
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-arrow-up"></span>
+              <div class="name">
+                arrow-up
+              </div>
+              <div class="code-name">.nut-icon-arrow-up
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-user"></span>
+              <div class="name">
+                user
+              </div>
+              <div class="code-name">.nut-icon-user
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-loading"></span>
+              <div class="name">
+                loading
+              </div>
+              <div class="code-name">.nut-icon-loading
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-find"></span>
+              <div class="name">
+                find
+              </div>
+              <div class="code-name">.nut-icon-find
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-image"></span>
+              <div class="name">
+                image
+              </div>
+              <div class="code-name">.nut-icon-image
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-play-circle-fill"></span>
+              <div class="name">
+                play-circle-fill
+              </div>
+              <div class="code-name">.nut-icon-play-circle-fill
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-arrow-right"></span>
+              <div class="name">
+                arrow-right
+              </div>
+              <div class="code-name">.nut-icon-arrow-right
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-cart"></span>
+              <div class="name">
+                cart
+              </div>
+              <div class="code-name">.nut-icon-cart
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-jd"></span>
+              <div class="name">
+                jd
+              </div>
+              <div class="code-name">.nut-icon-jd
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-dongdong"></span>
+              <div class="name">
+                dongdong
+              </div>
+              <div class="code-name">.nut-icon-dongdong
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-check"></span>
+              <div class="name">
+                check
+              </div>
+              <div class="code-name">.nut-icon-check
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-photograph"></span>
+              <div class="name">
+                photograph
+              </div>
+              <div class="code-name">.nut-icon-photograph
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-people"></span>
+              <div class="name">
+                people
+              </div>
+              <div class="code-name">.nut-icon-people
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-image-error"></span>
+              <div class="name">
+                image-error
+              </div>
+              <div class="code-name">.nut-icon-image-error
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-minus"></span>
+              <div class="name">
+                minus
+              </div>
+              <div class="code-name">.nut-icon-minus
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-checked"></span>
+              <div class="name">
+                checked
+              </div>
+              <div class="code-name">.nut-icon-checked
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-check-normal"></span>
+              <div class="name">
+                check-normal
+              </div>
+              <div class="code-name">.nut-icon-check-normal
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-checklist"></span>
+              <div class="name">
+                checklist
+              </div>
+              <div class="code-name">.nut-icon-checklist
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-plus"></span>
+              <div class="name">
+                plus
+              </div>
+              <div class="code-name">.nut-icon-plus
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-mask-close"></span>
+              <div class="name">
+                mask-close
+              </div>
+              <div class="code-name">.nut-icon-mask-close
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-triangle-down"></span>
+              <div class="name">
+                triangle-down
+              </div>
+              <div class="code-name">.nut-icon-triangle-down
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-fabulous"></span>
+              <div class="name">
+                fabulous
+              </div>
+              <div class="code-name">.nut-icon-fabulous
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-close"></span>
+              <div class="name">
+                close
+              </div>
+              <div class="code-name">.nut-icon-close
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-failure"></span>
+              <div class="name">
+                failure
+              </div>
+              <div class="code-name">.nut-icon-failure
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-user-add"></span>
+              <div class="name">
+                user-add
+              </div>
+              <div class="code-name">.nut-icon-user-add
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-joy-smile"></span>
+              <div class="name">
+                joy-smile
+              </div>
+              <div class="code-name">.nut-icon-joy-smile
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-share"></span>
+              <div class="name">
+                share
+              </div>
+              <div class="code-name">.nut-icon-share
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-del"></span>
+              <div class="name">
+                del
+              </div>
+              <div class="code-name">.nut-icon-del
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-category"></span>
+              <div class="name">
+                category
+              </div>
+              <div class="code-name">.nut-icon-category
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-star-fill"></span>
+              <div class="name">
+                star-fill
+              </div>
+              <div class="code-name">.nut-icon-star-fill
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-location"></span>
+              <div class="name">
+                location
+              </div>
+              <div class="code-name">.nut-icon-location
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-refresh"></span>
+              <div class="name">
+                refresh
+              </div>
+              <div class="code-name">.nut-icon-refresh
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-link"></span>
+              <div class="name">
+                link
+              </div>
+              <div class="code-name">.nut-icon-link
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-add"></span>
+              <div class="name">
+                add
+              </div>
+              <div class="code-name">.nut-icon-add
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-heart"></span>
+              <div class="name">
+                heart
+              </div>
+              <div class="code-name">.nut-icon-heart
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-heart-fill"></span>
+              <div class="name">
+                heart-fill
+              </div>
+              <div class="code-name">.nut-icon-heart-fill
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-tips"></span>
+              <div class="name">
+                tips
+              </div>
+              <div class="code-name">.nut-icon-tips
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-double-arrow-up"></span>
+              <div class="name">
+                double-arrow-up
+              </div>
+              <div class="code-name">.nut-icon-double-arrow-up
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-home"></span>
+              <div class="name">
+                home
+              </div>
+              <div class="code-name">.nut-icon-home
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-search"></span>
+              <div class="name">
+                search
+              </div>
+              <div class="code-name">.nut-icon-search
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-top"></span>
+              <div class="name">
+                top
+              </div>
+              <div class="code-name">.nut-icon-top
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-download"></span>
+              <div class="name">
+                download
+              </div>
+              <div class="code-name">.nut-icon-download
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-star"></span>
+              <div class="name">
+                star
+              </div>
+              <div class="code-name">.nut-icon-star
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-apps"></span>
+              <div class="name">
+                apps
+              </div>
+              <div class="code-name">.nut-icon-apps
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-eye"></span>
+              <div class="name">
+                eye
+              </div>
+              <div class="code-name">.nut-icon-eye
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-warning"></span>
+              <div class="name">
+                warning
+              </div>
+              <div class="code-name">.nut-icon-warning
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-success"></span>
+              <div class="name">
+                success
+              </div>
+              <div class="code-name">.nut-icon-success
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-more"></span>
+              <div class="name">
+                more
+              </div>
+              <div class="code-name">.nut-icon-more
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-poweroff-circle-fill"></span>
+              <div class="name">
+                poweroff-circle-fill
+              </div>
+              <div class="code-name">.nut-icon-poweroff-circle-fill
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-triangle-up"></span>
+              <div class="name">
+                triangle-up
+              </div>
+              <div class="code-name">.nut-icon-triangle-up
+              </div>
+            </li>
+            
+            <li class="dib">
+              <span class="icon nutui-iconfont nut-icon-marshalling"></span>
+              <div class="name">
+                marshalling
+              </div>
+              <div class="code-name">.nut-icon-marshalling
+              </div>
+            </li>
+            
+          </ul>
+          <div class="article markdown">
+          <h2 id="font-class-">font-class 引用</h2>
+          <hr>
+
+          <p>font-class 是 Unicode 使用方式的一种变种，主要是解决 Unicode 书写不直观，语意不明确的问题。</p>
+          <p>与 Unicode 使用方式相比，具有如下特点：</p>
+          <ul>
+            <li>兼容性良好，支持 IE8+，及所有现代浏览器。</li>
+            <li>相比于 Unicode 语意明确，书写更直观。可以很容易分辨这个 icon 是什么。</li>
+            <li>因为使用 class 来定义图标，所以当要替换图标时，只需要修改 class 里面的 Unicode 引用。</li>
+            <li>不过因为本质上还是使用的字体，所以多色图标还是不支持的。</li>
+          </ul>
+          <p>使用步骤如下：</p>
+          <h3 id="-fontclass-">第一步：引入项目下面生成的 fontclass 代码：</h3>
+  <pre><code class="language-html">&lt;link rel="stylesheet" href="./relayicon.css"&gt;
+  </code></pre>
+          <h3 id="-">第二步：挑选相应图标并获取类名，应用于页面：</h3>
+  <pre><code class="language-html">&lt;span class="font_family icon-xxx"&gt;&lt;/span&gt;
+  </code></pre>
+          <blockquote>
+            <p>"
+              font_family" 是你项目下的 font-family。可以通过编辑项目查看，默认是 "relayicon"。</p>
+          </blockquote>
+        </div>
+        </div>
+        <div class="content symbol">
+            <ul class="icon_lists dib-box">
+              
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-retweet"></use>
+                  </svg>
+                  <div class="name">retweet</div>
+                  <div class="code-name">#nut-icon-retweet</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-check-checked"></use>
+                  </svg>
+                  <div class="name">check-checked</div>
+                  <div class="code-name">#nut-icon-check-checked</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-arrow-down"></use>
+                  </svg>
+                  <div class="name">arrow-down</div>
+                  <div class="code-name">#nut-icon-arrow-down</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-check-disabled"></use>
+                  </svg>
+                  <div class="name">check-disabled</div>
+                  <div class="code-name">#nut-icon-check-disabled</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-arrow-left"></use>
+                  </svg>
+                  <div class="name">arrow-left</div>
+                  <div class="code-name">#nut-icon-arrow-left</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-loading1"></use>
+                  </svg>
+                  <div class="name">loading1</div>
+                  <div class="code-name">#nut-icon-loading1</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-notice"></use>
+                  </svg>
+                  <div class="name">notice</div>
+                  <div class="code-name">#nut-icon-notice</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-service"></use>
+                  </svg>
+                  <div class="name">service</div>
+                  <div class="code-name">#nut-icon-service</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-arrow-up"></use>
+                  </svg>
+                  <div class="name">arrow-up</div>
+                  <div class="code-name">#nut-icon-arrow-up</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-user"></use>
+                  </svg>
+                  <div class="name">user</div>
+                  <div class="code-name">#nut-icon-user</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-loading"></use>
+                  </svg>
+                  <div class="name">loading</div>
+                  <div class="code-name">#nut-icon-loading</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-find"></use>
+                  </svg>
+                  <div class="name">find</div>
+                  <div class="code-name">#nut-icon-find</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-image"></use>
+                  </svg>
+                  <div class="name">image</div>
+                  <div class="code-name">#nut-icon-image</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-play-circle-fill"></use>
+                  </svg>
+                  <div class="name">play-circle-fill</div>
+                  <div class="code-name">#nut-icon-play-circle-fill</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-arrow-right"></use>
+                  </svg>
+                  <div class="name">arrow-right</div>
+                  <div class="code-name">#nut-icon-arrow-right</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-cart"></use>
+                  </svg>
+                  <div class="name">cart</div>
+                  <div class="code-name">#nut-icon-cart</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-jd"></use>
+                  </svg>
+                  <div class="name">jd</div>
+                  <div class="code-name">#nut-icon-jd</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-dongdong"></use>
+                  </svg>
+                  <div class="name">dongdong</div>
+                  <div class="code-name">#nut-icon-dongdong</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-check"></use>
+                  </svg>
+                  <div class="name">check</div>
+                  <div class="code-name">#nut-icon-check</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-photograph"></use>
+                  </svg>
+                  <div class="name">photograph</div>
+                  <div class="code-name">#nut-icon-photograph</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-people"></use>
+                  </svg>
+                  <div class="name">people</div>
+                  <div class="code-name">#nut-icon-people</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-image-error"></use>
+                  </svg>
+                  <div class="name">image-error</div>
+                  <div class="code-name">#nut-icon-image-error</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-minus"></use>
+                  </svg>
+                  <div class="name">minus</div>
+                  <div class="code-name">#nut-icon-minus</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-checked"></use>
+                  </svg>
+                  <div class="name">checked</div>
+                  <div class="code-name">#nut-icon-checked</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-check-normal"></use>
+                  </svg>
+                  <div class="name">check-normal</div>
+                  <div class="code-name">#nut-icon-check-normal</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-checklist"></use>
+                  </svg>
+                  <div class="name">checklist</div>
+                  <div class="code-name">#nut-icon-checklist</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-plus"></use>
+                  </svg>
+                  <div class="name">plus</div>
+                  <div class="code-name">#nut-icon-plus</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-mask-close"></use>
+                  </svg>
+                  <div class="name">mask-close</div>
+                  <div class="code-name">#nut-icon-mask-close</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-triangle-down"></use>
+                  </svg>
+                  <div class="name">triangle-down</div>
+                  <div class="code-name">#nut-icon-triangle-down</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-fabulous"></use>
+                  </svg>
+                  <div class="name">fabulous</div>
+                  <div class="code-name">#nut-icon-fabulous</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-close"></use>
+                  </svg>
+                  <div class="name">close</div>
+                  <div class="code-name">#nut-icon-close</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-failure"></use>
+                  </svg>
+                  <div class="name">failure</div>
+                  <div class="code-name">#nut-icon-failure</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-user-add"></use>
+                  </svg>
+                  <div class="name">user-add</div>
+                  <div class="code-name">#nut-icon-user-add</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-joy-smile"></use>
+                  </svg>
+                  <div class="name">joy-smile</div>
+                  <div class="code-name">#nut-icon-joy-smile</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-share"></use>
+                  </svg>
+                  <div class="name">share</div>
+                  <div class="code-name">#nut-icon-share</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-del"></use>
+                  </svg>
+                  <div class="name">del</div>
+                  <div class="code-name">#nut-icon-del</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-category"></use>
+                  </svg>
+                  <div class="name">category</div>
+                  <div class="code-name">#nut-icon-category</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-star-fill"></use>
+                  </svg>
+                  <div class="name">star-fill</div>
+                  <div class="code-name">#nut-icon-star-fill</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-location"></use>
+                  </svg>
+                  <div class="name">location</div>
+                  <div class="code-name">#nut-icon-location</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-refresh"></use>
+                  </svg>
+                  <div class="name">refresh</div>
+                  <div class="code-name">#nut-icon-refresh</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-link"></use>
+                  </svg>
+                  <div class="name">link</div>
+                  <div class="code-name">#nut-icon-link</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-add"></use>
+                  </svg>
+                  <div class="name">add</div>
+                  <div class="code-name">#nut-icon-add</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-heart"></use>
+                  </svg>
+                  <div class="name">heart</div>
+                  <div class="code-name">#nut-icon-heart</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-heart-fill"></use>
+                  </svg>
+                  <div class="name">heart-fill</div>
+                  <div class="code-name">#nut-icon-heart-fill</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-tips"></use>
+                  </svg>
+                  <div class="name">tips</div>
+                  <div class="code-name">#nut-icon-tips</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-double-arrow-up"></use>
+                  </svg>
+                  <div class="name">double-arrow-up</div>
+                  <div class="code-name">#nut-icon-double-arrow-up</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-home"></use>
+                  </svg>
+                  <div class="name">home</div>
+                  <div class="code-name">#nut-icon-home</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-search"></use>
+                  </svg>
+                  <div class="name">search</div>
+                  <div class="code-name">#nut-icon-search</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-top"></use>
+                  </svg>
+                  <div class="name">top</div>
+                  <div class="code-name">#nut-icon-top</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-download"></use>
+                  </svg>
+                  <div class="name">download</div>
+                  <div class="code-name">#nut-icon-download</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-star"></use>
+                  </svg>
+                  <div class="name">star</div>
+                  <div class="code-name">#nut-icon-star</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-apps"></use>
+                  </svg>
+                  <div class="name">apps</div>
+                  <div class="code-name">#nut-icon-apps</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-eye"></use>
+                  </svg>
+                  <div class="name">eye</div>
+                  <div class="code-name">#nut-icon-eye</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-warning"></use>
+                  </svg>
+                  <div class="name">warning</div>
+                  <div class="code-name">#nut-icon-warning</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-success"></use>
+                  </svg>
+                  <div class="name">success</div>
+                  <div class="code-name">#nut-icon-success</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-more"></use>
+                  </svg>
+                  <div class="name">more</div>
+                  <div class="code-name">#nut-icon-more</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-poweroff-circle-fill"></use>
+                  </svg>
+                  <div class="name">poweroff-circle-fill</div>
+                  <div class="code-name">#nut-icon-poweroff-circle-fill</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-triangle-up"></use>
+                  </svg>
+                  <div class="name">triangle-up</div>
+                  <div class="code-name">#nut-icon-triangle-up</div>
+                </li>
+                
+                <li class="dib">
+                  <svg class="icon svg-icon" aria-hidden="true">
+                    <use xlink:href="#nut-icon-marshalling"></use>
+                  </svg>
+                  <div class="name">marshalling</div>
+                  <div class="code-name">#nut-icon-marshalling</div>
+                </li>
+                
+            </ul>
+            <div class="article markdown">
+            <h2 id="symbol-">Symbol 引用</h2>
+            <hr>
+
+            <p>这是一种全新的使用方式，应该说这才是未来的主流，也是平台目前推荐的用法。相关介绍可以参考这篇<a href="https://aotu.io/notes/2016/07/09/SVG-Symbol-component-practice/">文章</a>
+              这种用法其实是做了一个 SVG 的集合，与另外两种相比具有如下特点：</p>
+            <ul>
+              <li>支持多色图标了，不再受单色限制。</li>
+              <li>通过一些技巧，支持像字体那样，通过 <code>font-size</code>, <code>color</code> 来调整样式。</li>
+              <li>兼容性较差，支持 IE9+，及现代浏览器。</li>
+              <li>浏览器渲染 SVG 的性能一般，还不如 png。</li>
+            </ul>
+            <p>使用步骤如下：</p>
+            <h3 id="-symbol-">第一步：引入项目下面生成的 symbol 代码：</h3>
+  <pre><code class="language-html">&lt;script src="./relayicon.js"&gt;&lt;/script&gt;
+  </code></pre>
+            <h3 id="-css-">第二步：加入通用 CSS 代码（引入一次就行）：</h3>
+  <pre><code class="language-html">&lt;style&gt;
+  .icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: -0.15em;
+    fill: currentColor;
+    overflow: hidden;
+  }
+  &lt;/style&gt;
+  </code></pre>
+            <h3 id="-">第三步：挑选相应图标并获取类名，应用于页面：</h3>
+  <pre><code class="language-html">&lt;svg class="icon" aria-hidden="true"&gt;
+    &lt;use xlink:href="#icon-xxx"&gt;&lt;/use&gt;
+  &lt;/svg&gt;
+  </code></pre>
+            </div>
+        </div>
+
+      </div>
+    </div>
+    <script>
+    $(document).ready(function () {
+        $('.tab-container .content:first').show()
+
+        $('#tabs li').click(function (e) {
+          var tabContent = $('.tab-container .content')
+          var index = $(this).index()
+
+          if ($(this).hasClass('active')) {
+            return
+          } else {
+            $('#tabs li').removeClass('active')
+            $(this).addClass('active')
+
+            tabContent.hide().eq(index).fadeIn()
+          }
+        })
+      })
+    </script>
+    <script src="iconfont.js"></script>
+  </body>
+  </html>

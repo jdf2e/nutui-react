@@ -10,7 +10,7 @@ const { resolve } = path
 
 let fileStr = `@import "@/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";@import '@/styles/theme-default.scss';\n`
 if (projectID) {
-  fileStr = `@import '@/styles/variables-${projectID}.scss';\n@import "@/sites/assets/styles/variables.scss";\n@import '@/styles/font-${projectID}/iconfont.css';\n@import '@/styles/theme-${projectID}.scss';\n`
+  fileStr = `@import '@/styles/variables-${projectID}.scss';\n@import "@/sites/assets/styles/variables.scss";\n@import '@/styles/theme-${projectID}.scss';\n`
 }
 
 // https://vitejs.dev/config/
@@ -41,6 +41,18 @@ export default defineConfig(async (): Promise<UserConfig> => {
         {
           find: '@nutui/nutui-react-taro',
           replacement: resolve(__dirname, './src/packages/nutui.react.taro.ts'),
+        },
+        {
+          find: '@nutui/icons-react',
+          replacement: projectID
+            ? `@nutui/${projectID}-icons-react`
+            : '@nutui/icons-react',
+        },
+        {
+          find: '@nutui/icons-react-taro',
+          replacement: projectID
+            ? `@nutui/${projectID}-icons-react-taro`
+            : '@nutui/icons-react-taro',
         },
       ],
     },
