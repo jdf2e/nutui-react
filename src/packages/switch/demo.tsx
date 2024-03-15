@@ -1,5 +1,6 @@
 import React from 'react'
 import { useTranslate } from '@/sites/assets/locale'
+import Cell from '../cell'
 import Demo1 from './demos/h5/demo1'
 import Demo2 from './demos/h5/demo2'
 import Demo3 from './demos/h5/demo3'
@@ -15,10 +16,7 @@ const SwitchDemo = () => {
       asyncControl: '受控',
       customColor: '自定义颜色',
       supportText: '支持文字',
-      open: '开',
-      close: '关',
       eventTip: '触发了 onChange 事件，开关状态：',
-      async: '2秒后异步触发',
     },
     'zh-TW': {
       basic: '非受控',
@@ -26,10 +24,7 @@ const SwitchDemo = () => {
       asyncControl: '受控',
       customColor: '自定義顏色',
       supportText: '支持文字',
-      open: '開',
-      close: '關',
       eventTip: '觸發了 onChange 事件，開關狀態：',
-      async: '2秒後異步觸發',
     },
     'en-US': {
       basic: 'Uncontrolled',
@@ -37,21 +32,36 @@ const SwitchDemo = () => {
       asyncControl: 'controlled',
       customColor: 'Custom Color',
       supportText: 'Support Text',
-      open: 'Open',
-      close: 'cClose',
       eventTip: 'Emit onChange event, current state:',
-      async: 'Triggered asynchronously after 2 seconds',
     },
   })
   return (
     <>
       <div className="demo">
-        <Demo1 title={translated.basic} />
-        <Demo2 title={translated.asyncControl} text={translated.async} />
-        <Demo3 title={translated.disabled} />
-        <Demo4 title='onChange' text={translated.eventTip} />
-        <Demo5 title={translated.customColor} />
-        <Demo6 title={translated.supportText} activeText={translated.open} inactiveText={translated.close} />
+        <h2>{translated.basic}</h2>
+        <Cell>
+          <Demo1 />
+        </Cell>
+        <h2>{translated.asyncControl}</h2>
+        <Cell>
+          <Demo2 />
+        </Cell>
+        <h2>{translated.disabled}</h2>
+        <Cell>
+          <Demo3 />
+        </Cell>
+        <h2>{translated.eventTip}</h2>
+        <Cell>
+          <Demo4 />
+        </Cell>
+        <h2>{translated.customColor}</h2>
+        <Cell>
+          <Demo5 />
+        </Cell>
+        <h2>{translated.supportText}</h2>
+        <Cell>
+          <Demo6 />
+        </Cell>
       </div>
     </>
   )

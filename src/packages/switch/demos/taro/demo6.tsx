@@ -1,18 +1,11 @@
 import React from 'react'
-import { Cell, Switch } from '@nutui/nutui-react-taro'
+import { Switch } from '@nutui/nutui-react-taro'
 
-const Demo3 = (props: { title: string,activeText:string,inactiveText:string }) => {
-    return (
-        <>
-            <h2>{props.title}</h2>
-            <Cell>
-                <Switch
-                    defaultChecked
-                    activeText={props.activeText}
-                    inactiveText={props.inactiveText}
-                />
-            </Cell>
-        </>
-    )
+const Demo6 = () => {
+  return (
+    <>
+      <Switch defaultChecked activeText="开" inactiveText="关" />
+    </>
+  )
 }
-export default Demo3
+export default Demo6

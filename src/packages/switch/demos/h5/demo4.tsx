@@ -1,25 +1,17 @@
-import React, { useState } from 'react'
-import { Cell, Switch } from '@nutui/nutui-react'
-import Toast from '../../../toast'
+import React from 'react'
+import { Switch, Toast } from '@nutui/nutui-react'
 
-const Demo4 = (props: { text: string, title: string }) => {
-    const onChange = (
-        value: boolean,
-        event: React.MouseEvent<Element, MouseEvent>
-    ) => {
-        Toast.show(`${props.text}${value}`)
-    }
-    return (
-        <>
-            <h2>{props.title}</h2>
-            <Cell>
-                <Switch
-                    defaultChecked
-                    onChange={(value, event) => onChange(value, event)}
-                />
-            </Cell>
-        </>
-    )
-
+const Demo4 = () => {
+  const onChange = (value: boolean, event: Event) => {
+    Toast.show(`触发了onChange事件，开关状态：${value}`)
+  }
+  return (
+    <>
+      <Switch
+        defaultChecked
+        onChange={(value, event) => onChange(value, event)}
+      />
+    </>
+  )
 }
 export default Demo4
