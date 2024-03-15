@@ -4,6 +4,8 @@ import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider'
 
+export type BadgeFill = 'solid' | 'outline'
+
 export interface BadgeProps extends BasicComponent {
   value: ReactNode
   dot: boolean
@@ -11,6 +13,7 @@ export interface BadgeProps extends BasicComponent {
   top: string | number
   right: string | number
   color: string
+  fill: BadgeFill
 }
 const defaultProps = {
   ...ComponentDefaults,
@@ -20,15 +23,27 @@ const defaultProps = {
   top: '4',
   right: '8',
   color: '',
+  fill: 'solid',
 } as BadgeProps
 export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
   const rtl = useRtl()
-  const { className, style, value, max, children, dot, top, right, color } = {
+  const {
+    className,
+    style,
+    value,
+    max,
+    children,
+    dot,
+    top,
+    right,
+    color,
+    fill,
+  } = {
     ...defaultProps,
     ...props,
   }
   const classPrefix = 'nut-badge'
-  const classes = classNames(classPrefix, className)
+  const classes = classNames(classPrefix, className, `${classPrefix}-${fill}`)
 
   function content() {
     if (dot || typeof value === 'object' || value === 0) return null
@@ -64,7 +79,19 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     style.top = `${Number(top) || parseFloat(String(top)) || 0}px`
     const dir = rtl ? 'left' : 'right'
     style[dir] = `${Number(right) || parseFloat(String(right)) || 0}px`
-    style.background = color
+
+    if (color) {
+      if (fill === 'outline') {
+        style.color = color
+        style.background = '#fff'
+        if (!color?.includes('gradient')) {
+          style.border = `1px solid ${color}`
+        }
+      } else {
+        style.color = '#fff'
+        style.background = color
+      }
+    }
     return style
   }
   return (
