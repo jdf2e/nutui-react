@@ -120,7 +120,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
             [`${prefixCls}-${size}`]: size,
             [`${prefixCls}-${shape}`]: shape,
             [`${prefixCls}-block`]: block,
-            [`${prefixCls}-disabled`]: disabled,
+            [`${prefixCls}-disabled`]: disabled || loading,
             [`${prefixCls}-loading`]: loading,
           },
           className
