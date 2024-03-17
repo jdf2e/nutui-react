@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import { Tabs } from '@nutui/nutui-react'
 
 const Demo21 = () => {
-  const [tab8value, setTab8value] = useState('0')
-  const [tab9value, setTab9value] = useState('0')
+  const [tab8value, setTab8value] = useState<number | string>('0')
+  const [tab9value, setTab9value] = useState<number | string>('0')
   return (
     <>
       <Tabs
         value={tab8value}
         onChange={(value) => {
-          setTab8value(paneKey)
+          setTab8value(value)
         }}
         autoHeight
       >
@@ -17,7 +17,7 @@ const Demo21 = () => {
           <Tabs
             value={tab9value}
             onChange={(value) => {
-              setTab9value(paneKey)
+              setTab9value(value)
             }}
             direction="vertical"
           >
