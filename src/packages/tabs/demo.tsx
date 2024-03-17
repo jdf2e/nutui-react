@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
-import { Star } from '@nutui/icons-react'
+import React from 'react'
 import { useTranslate } from '../../sites/assets/locale'
 import Demo1 from './demos/h5/demo1'
 import Demo2 from './demos/h5/demo2'
@@ -33,29 +32,21 @@ interface T {
   titleButton: string
   titleDivider: string
   title2: string
+  title14: string
+  title10: string
+  title9: string
   title3: string
   title4: string
   title5: string
   title6: string
   title12: string
   title13: string
-  title14: string
   title7: string
   title8: string
-  title9: string
-  title10: string
   title11: string
   titleLeftCard: string
   titleLeftButton: string
   titleLeftDivider: string
-  custom1: string
-  custom2: string
-  custom3: string
-  pane1: string
-  pane2: string
-  pane3: string
-  pane4: string
-  pane5: string
 }
 
 const TabsDemo = () => {
@@ -83,14 +74,6 @@ const TabsDemo = () => {
       titleLeftCard: '左对齐-卡片模式',
       titleLeftButton: '左对齐-按钮模式',
       titleLeftDivider: '左对齐-分割线模式',
-      custom1: '自定义 1',
-      custom2: '自定义 2',
-      custom3: '自定义 3',
-      pane1: '低阶特卖',
-      pane2: '上新日',
-      pane3: '百亿补贴',
-      pane4: '今日聚超值',
-      pane5: '真好真便宜',
     },
     'en-US': {
       basic: 'Basic Usage',
@@ -115,64 +98,8 @@ const TabsDemo = () => {
       titleLeftCard: 'Title Left Align - Card Mode',
       titleLeftButton: 'Title Left Align - Button Mode',
       titleLeftDivider: 'Title Left Align - Divider Mode',
-      custom1: 'Custom 1',
-      custom2: 'Custom 2',
-      custom3: 'Custom 3',
-      pane1: 'Low-end Sale',
-      pane2: 'New Day',
-      pane3: 'Ten Billion Subsidies',
-      pane4: 'Super Value Today',
-      pane5: 'So Good And So Cheap',
     },
   })
-
-  const [tab1value, setTab1value] = useState<string | number>('0')
-  const [tab11value, setTab11value] = useState<string | number>('0')
-  const [tab111value, setTab111value] = useState<string | number>('0')
-  const [tab12value, setTab12value] = useState<string | number>('0')
-  const [tab2value, setTab2value] = useState<string | number>('0')
-  const [tab3value, setTab3value] = useState<string | number>('0')
-  const [tab4value, setTab4value] = useState<string | number>('0')
-  const [tab5value, setTab5value] = useState<string | number>('0')
-  const [tab51value, setTab51value] = useState<string | number>('0')
-  const [tab6value, setTab6value] = useState<string | number>('0')
-  const [tab61value, setTab61value] = useState<string | number>('0')
-  const [tab7value, setTab7value] = useState<string | number>('c1')
-  const [tab8value, setTab8value] = useState<string | number>('0')
-  const [tab81value, setTab81value] = useState<string | number>('0')
-  const [tab82value, setTab82value] = useState<string | number>('0')
-  const [tab9value, setTab9value] = useState<string | number>('0')
-  const [tab91value, setTab91value] = useState<string | number>('0')
-  const [tab92value, setTab92value] = useState<string | number>('0')
-  const [tab93value, setTab93value] = useState<string | number>('0')
-  const [list8, setList8] = useState<any>([])
-  const list4 = Array.from(new Array(10).keys())
-  const list5 = Array.from(new Array(2).keys())
-  const list6 = [
-    {
-      title: translated.custom1,
-      value: 'c1',
-      icon: <Star style={{ marginRight: '4px' }} />,
-    },
-    {
-      title: translated.custom2,
-      value: 'c2',
-    },
-    {
-      title: translated.custom3,
-      value: 'c3',
-    },
-  ]
-
-  useEffect(() => {
-    setTimeout(() => {
-      setTab8value(2)
-      setList8(Array.from(new Array(3).keys()))
-    }, 3000)
-  }, [])
-
-  const swiperRef = useRef<any>(null)
-  const [tabIndex, setTabIndex] = useState<string | number>(0)
 
   return (
     <>
