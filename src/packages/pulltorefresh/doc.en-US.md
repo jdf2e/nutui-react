@@ -16,30 +16,17 @@ import { PullToRefresh } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React, {useState}  from "react";
-import { PullToRefresh, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  const [list] = useState([1, 2, 3, 4, 5, 6, 7])
-  return (
-    <>
-      <div className="demo">
-        <PullToRefresh>
-          {list.map((item) => (
-            <Cell key={item}>{item}</Cell>
-          ))}
-        </PullToRefresh>
-      </div>
-    </>
-  )
-}
-
-export default App
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
+### type="primary"
+
+:::demo
+
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
+
+:::
 ## PullToRefresh
 
 ### Props
@@ -68,3 +55,4 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-pulltorefresh-icon-width | Swipe to icon width  | `36px` |
 | \--nutui-pulltorefresh-icon-height | Swipe to icon height   | `26px` |
+| \--nutui-pulltorefresh-color-primary | When background is deep | `$color-primay` |

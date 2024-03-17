@@ -80,28 +80,33 @@ const Demo4 = () => {
         shape="square"
         fill="outline"
         type="primary"
-        icon={<Plus width="20" />}
+        icon={<Plus />}
         style={marginStyle}
       />
-      <Button
-        disabled
-        type="primary"
-        icon={<Plus width="20" />}
-        style={marginStyle}
-      />
+      <Button disabled type="primary" icon={<Plus />} style={marginStyle} />
       <Button
         disabled
         type="primary"
         fill="dashed"
-        icon={<Plus width="20" />}
+        icon={<Plus />}
         style={marginStyle}
       />
       <Button
         disabled
         type="primary"
         size="large"
-        icon={<Star width={20} height={20} />}
-        rightIcon={<Star width={20} height={20} />}
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={marginStyle}
+      >
+        Disabled
+      </Button>
+      <Button
+        disabled
+        type="primary"
+        size="xlarge"
+        icon={<Star />}
+        rightIcon={<Star />}
         style={marginStyle}
       >
         Disabled

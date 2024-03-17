@@ -14,6 +14,7 @@ interface T {
   '9ed40460': string
   '1254a90a': string
   '1254a90n': string
+  '1254a90d': string
 }
 
 const InfiniteloadingDemo = () => {
@@ -25,6 +26,7 @@ const InfiniteloadingDemo = () => {
       '9ed40460': '自定义加载文案',
       '1254a90a': '没有啦~',
       '1254a90n': '基于window滚动',
+      '1254a90d': 'primary主题',
     },
     'zh-TW': {
       '83913e71': '刷新成功',
@@ -33,14 +35,16 @@ const InfiniteloadingDemo = () => {
       '9ed40460': '自定義加載文案',
       '1254a90a': '沒有啦~',
       '1254a90n': '基於window滾動',
+      '1254a90d': 'primary主題',
     },
     'en-US': {
       '83913e71': 'Refresh successfully',
       '84aa6bce': 'Basic usage',
       eb4236fe: 'Pull down to refresh',
       '9ed40460': 'custom loading text',
-      '1254a90a': 'nope~',
+      '1254a90a': 'none~',
       '1254a90n': 'window scroll',
+      '1254a90d': 'primary theme',
     },
   })
 
@@ -48,10 +52,12 @@ const InfiniteloadingDemo = () => {
   const [customList, setCustomList] = useState<string[]>([])
   const [refreshList, setRefreshList] = useState<string[]>([])
   const [windowList, setWindowList] = useState<string[]>([])
+  const [primaryList, setPrimaryList] = useState<string[]>([])
   const [hasMore, setHasMore] = useState(true)
   const [customHasMore, setCustomHasMore] = useState(true)
   const [refreshHasMore, setRefreshHasMore] = useState(true)
   const [windownHasMore, setWindowHasMore] = useState(true)
+  const [primaryHasMore, setPrimaryHasMore] = useState(true)
 
   useEffect(() => {
     init()
@@ -111,6 +117,19 @@ const InfiniteloadingDemo = () => {
     }
   }
 
+  const primaryLoadMore = async () => {
+    await sleep(2000)
+    const curLen = primaryList.length
+    for (let i = curLen; i < curLen + 10; i++) {
+      primaryList.push(`${i}`)
+    }
+    if (primaryList.length >= 30) {
+      setPrimaryHasMore(false)
+    } else {
+      setPrimaryList([...primaryList])
+    }
+  }
+
   const refresh = async () => {
     await sleep(1000)
     Toast.show(translated['83913e71'])
@@ -122,11 +141,13 @@ const InfiniteloadingDemo = () => {
       customList.push(`${i}`)
       refreshList.push(`${i}`)
       windowList.push(`${i}`)
+      primaryList.push(`${i}`)
     }
     setDefaultList([...defaultList])
     setCustomList([...customList])
     setRefreshList([...refreshList])
-    setRefreshList([...windowList])
+    setWindowList([...windowList])
+    setPrimaryList([...primaryList])
   }
 
   return (
@@ -215,6 +236,38 @@ const InfiniteloadingDemo = () => {
               onLoadMore={customLoadMore}
             >
               {customList.map((item, index) => {
+                return (
+                  <li className="infiniteLi" key={index}>
+                    {item}
+                  </li>
+                )
+              })}
+            </InfiniteLoading>
+          </ul>
+        </Cell>
+
+        <h2>{translated['1254a90d']}</h2>
+        <Cell>
+          <ul className="infiniteUl3" id="primaryScroll">
+            <InfiniteLoading
+              target="primaryScroll"
+              type="primary"
+              loadingText={
+                <>
+                  <Loading className="nut-infinite-bottom-tips-icons" />
+                  loading
+                </>
+              }
+              loadMoreText={
+                <>
+                  <More className="nut-infinite-bottom-tips-icons" />
+                  {translated['1254a90a']}
+                </>
+              }
+              hasMore={primaryHasMore}
+              onLoadMore={primaryLoadMore}
+            >
+              {primaryList.map((item, index) => {
                 return (
                   <li className="infiniteLi" key={index}>
                     {item}

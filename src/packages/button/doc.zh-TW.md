@@ -72,7 +72,7 @@ import { Button } from '@nutui/nutui-react';
 
 ### 按鈕尺寸
 
-支持 `large`、`normal`、`small` 三種尺寸，默認為 `normal`。
+支持 'xlarge'、 `large`、`normal`、`small`、`mini` 尺寸，默認為 `normal`。
 
 :::demo
 
@@ -107,7 +107,7 @@ import { Button } from '@nutui/nutui-react';
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | type | 按鈕的樣式 | `default` \| `primary` \| `warning` \| `danger` \| `success` \| `info` | `default` |
-| size | 按鈕的尺寸 | `normal` \| `large` \| `small` \| `mini` | `normal` |
+| size | 按鈕的尺寸 | `normal` \| `xlarge` \| `large` \| `small` \| `mini` | `normal` |
 | shape | 按鈕的形狀 | `square` \| `round` | `round` |
 | color | 按鈕顏色，支援傳入 linear-gradient 漸層色, outline 和 dashed 模式下設定的是 color，其他情況設定的是background，建議使用CSS變數實現的顏色配置 | `string` | `-` |
 | fill | 填充模式 | `solid` \| `outline` \| `dashed` \| `none` | `solid` |

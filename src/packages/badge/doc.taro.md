@@ -241,6 +241,44 @@ export default App;
 
 :::
 
+### 填充模式
+
+:::demo
+
+```tsx
+import React from "react";
+import { User } from '@nutui/icons-react-taro';
+import { Avatar, Badge, Cell } from '@nutui/nutui-react-taro';
+
+const App = () => {
+  return (
+    <Cell>
+      <Badge style={{ marginInlineEnd: '40px' }} value={8} color="green">
+        <Avatar icon={<User />} shape="square" />
+      </Badge>
+      <Badge
+        style={{ marginInlineEnd: '40px' }}
+        value={76}
+        fill="outline"
+      >
+        <Avatar icon={<User />} shape="square" />
+      </Badge>
+      <Badge
+        style={{ marginInlineEnd: '40px' }}
+        value="NEW"
+        color="blue"
+        fill="outline"
+      >
+        <Avatar icon={<User />} shape="square" />
+      </Badge>
+    </Cell>
+  )
+}
+export default App;
+```
+
+:::
+
 ## Badge
 
 ### Props
@@ -252,7 +290,8 @@ export default App;
 | dot | 是否为小点，当`value`值为自定义内容时，dot不生效 | `boolean` | `false` |
 | top | 上下偏移量，支持单位设置，可设置为："0"或0 等 | `string` \| `number` | `"0"` |
 | right | 左右偏移量，支持单位设置，可设置为："5"或5 等 | `string` \| `number` | `"5"` |
-| color | 徽标背景颜色 | `string` | `#fa2c19` |
+| color | 徽标背景颜色 | `string` | `-` |
+| fill | 填充模式 | `solid` \| `outline` | `solid` |
 
 ## 主题定制
 
