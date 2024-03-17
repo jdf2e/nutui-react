@@ -1,5 +1,5 @@
+import React from 'react'
 import Taro from '@tarojs/taro'
-import React, { useState } from 'react'
 import { Cell } from '@/packages/nutui.react.taro'
 import '@/packages/skeleton/demo.scss'
 import { useTranslate } from '@/sites/assets/locale/taro'
@@ -18,7 +18,6 @@ const SkeletonDemo = () => {
       ea3bc18a: '传入多行',
       '02a53df5': '显示头像',
       '0a001122': '标题段落圆角风格',
-      a4ed11b5: '图片组合',
       '07d62d5c': '显示子组件',
       '652c6725':
         '一套京东风格的轻量级移动端React组件库，提供丰富的基础组件和业务组件，帮助开发者快速搭建移动应用。',
@@ -29,7 +28,6 @@ const SkeletonDemo = () => {
       ea3bc18a: '傳入多行',
       '02a53df5': '顯示頭像',
       '0a001122': '標題段落圓角風格',
-      a4ed11b5: '图片组合',
       '07d62d5c': '圖片組合',
       '652c6725':
         '一套京東風格的輕量級移動端React組件庫，提供豐富的基礎組件和業務組件，幫助開發者快速搭建移動應用。',
@@ -40,21 +38,12 @@ const SkeletonDemo = () => {
       ea3bc18a: 'Pass in multiple lines',
       '02a53df5': 'show avatar',
       '0a001122': 'Heading Paragraph Rounded Corner Style',
-      a4ed11b5: 'picture combination',
       '07d62d5c': 'show subcomponents',
       '652c6725':
         'A set of JD-style lightweight mobile React component library, providing rich basic components and business components to help developers quickly build mobile applications.',
     },
   })
 
-  const [checked, setChecked] = useState(false)
-  const changeStatus = (
-    value: boolean,
-    event: React.MouseEvent<Element, MouseEvent>
-  ) => {
-    console.log(`${translated['3b02fdee']}${value}`)
-    setChecked(value)
-  }
   return (
     <>
       <Header />
@@ -81,7 +70,7 @@ const SkeletonDemo = () => {
 
         <h2>{translated['07d62d5c']}</h2>
         <Cell>
-          <Demo5 />
+          <Demo5 description={translated['652c6725']} />
         </Cell>
       </div>
     </>
