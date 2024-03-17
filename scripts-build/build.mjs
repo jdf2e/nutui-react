@@ -2,6 +2,7 @@ import { createRequire } from 'module'
 import { readFile, access, writeFile, mkdir } from 'fs/promises'
 import { copy } from 'fs-extra'
 import { fileURLToPath } from 'url'
+import {minimatch} from 'minimatch'
 import path, { dirname, join, basename, extname, resolve } from 'path'
 import { glob } from 'glob'
 import swc from '@swc/core'
@@ -175,19 +176,24 @@ async function buildCSS(p) {
   })
   const variables = await readFile(join(__dirname, '../src/styles/variables.scss'))
   for (const file of cssFiles) {
-    if (file.indexOf('address') === -1) continue
+    if (file.indexOf('animatingnumbers') === -1) continue
     const button = await readFile(join(__dirname, '../', file))
+    const base = path.basename(file)
+    const loadPath = join(__dirname, '../src/packages', base.replace('.scss', ''))
     const code = sass.compileString(variables + '\n' + button, {
-      loadPaths: ['src/packages'],
-      findFileUrl(url) {
-        // Load paths only support relative URLs.
-        if (/^[a-z]+:/i.test(url)) return null;
-        return new URL(url, pathToFileURL("my-path"));
-      }
+      loadPaths: [loadPath],
     })
-    console.log(code)
+    console.log(code.css)
+    // 写文件
+    // dest(, code.css)
   }
-  console.log(cssFiles)
+}
+
+async function newGlob (pattern, ignore) {
+  // const result = await glob.sync(pattern, {ignore})
+  const regex = minimatch.makeRe('src/packages/**/*.scss')
+  console.log(regex)
+  console.log('src/packages/a/b/c/d.scss'.match(regex))
 }
 
 
@@ -200,5 +206,5 @@ async function buildCSS(p) {
 // copyStyles()
 
 buildCSS()
-
+// newGlob()
 // buildDeclaration()
