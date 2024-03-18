@@ -323,8 +323,8 @@ describe('Cascader', () => {
   })
 
   it('select', async () => {
-    const change = jest.fn()
-    const pathChange = jest.fn()
+    const change = vi.fn()
+    const pathChange = vi.fn()
     const { container } = render(
       <Cascader
         visible
@@ -345,7 +345,7 @@ describe('Cascader', () => {
   })
 
   it('select with lazy', async () => {
-    const lazyFunc = jest.fn()
+    const lazyFunc = vi.fn()
     const { container } = render(
       <Cascader
         lazy
@@ -365,8 +365,8 @@ describe('Cascader', () => {
   })
 
   it('change tab', async () => {
-    const change = jest.fn()
-    const pathChange = jest.fn()
+    const change = vi.fn()
+    const pathChange = vi.fn()
     const { container } = render(
       <Cascader
         visible
@@ -387,8 +387,8 @@ describe('Cascader', () => {
   })
 
   it('ref', async () => {
-    const change = jest.fn()
-    const pathChange = jest.fn()
+    const change = vi.fn()
+    const pathChange = vi.fn()
     const ref = React.createRef<any>()
     const { container } = render(
       <>

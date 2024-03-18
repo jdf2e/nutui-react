@@ -21,7 +21,7 @@ test('activeColor && inactiveColor &&  activeText && checked && onChange && inac
     className,
     style,
   } = state
-  const testFn = jest.fn()
+  const testFn = vi.fn()
   const { container } = render(
     <Switch
       className={className}

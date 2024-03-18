@@ -25,7 +25,7 @@ test('test props', () => {
     { text: '新款商品', value: 1 },
     { text: '活动商品', value: 2 },
   ]
-  const testClick = jest.fn((val) => undefined)
+  const testClick = vi.fn((val) => undefined)
 
   const { container, getByText } = render(
     <Menu lockScroll={false}>

@@ -69,7 +69,7 @@ test('alt props', () => {
 })
 
 test('should emit active-avatarror event', () => {
-  const activeAvatar = jest.fn()
+  const activeAvatar = vi.fn()
   const { getByTestId } = render(
     <Avatar data-testid="avatar-click" onClick={activeAvatar} />
   )

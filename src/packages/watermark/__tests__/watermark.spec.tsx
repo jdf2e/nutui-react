@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import 'jest-canvas-mock'
+import 'vitest-canvas-mock'
 
 import { WaterMark } from '../watermark'
 

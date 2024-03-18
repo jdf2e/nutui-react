@@ -252,7 +252,7 @@ test('render async', async () => {
 })
 
 test('sorter', async () => {
-  const fn = jest.fn()
+  const fn = vi.fn()
   const TableDemo = () => {
     return (
       <>

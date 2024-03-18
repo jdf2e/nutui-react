@@ -138,7 +138,7 @@ test('prop title extra', () => {
 })
 
 test('event onChange & prop disabled', () => {
-  const handleChange = jest.fn()
+  const handleChange = vi.fn()
   const { getByTestId } = render(
     <>
       <Collapse defaultActiveName={['1']} onChange={handleChange}>
@@ -175,7 +175,7 @@ test('event onChange & prop disabled', () => {
 })
 
 test('event onChange & prop accordion', () => {
-  const handleChange = jest.fn()
+  const handleChange = vi.fn()
   const { getByTestId } = render(
     <>
       <Collapse defaultActiveName="1" accordion onChange={handleChange}>

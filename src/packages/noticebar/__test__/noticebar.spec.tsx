@@ -40,7 +40,7 @@ test('scrollable test', () => {
 test('closeable & rightIcon test', () => {
   const text =
     'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
-  const handleClick = jest.fn()
+  const handleClick = vi.fn()
   const { container } = render(
     <NoticeBar
       content={text}
@@ -149,7 +149,7 @@ test('align center test', () => {
 test('event test', async () => {
   const text =
     'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
-  const handleClick = jest.fn()
+  const handleClick = vi.fn()
   const { container } = render(
     <NoticeBar content={text} onClick={handleClick} />
   )

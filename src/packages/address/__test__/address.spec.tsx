@@ -143,7 +143,7 @@ test('Address: show exist', async () => {
 })
 
 test('Address: choose exist item', async () => {
-  const onSelect = jest.fn()
+  const onSelect = vi.fn()
   const { container } = render(
     <Address
       visible

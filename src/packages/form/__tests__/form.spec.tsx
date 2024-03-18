@@ -115,7 +115,7 @@ test('form set required', () => {
 })
 
 test('form set change value', async () => {
-  const handleSubmit = jest.fn()
+  const handleSubmit = vi.fn()
   const { container } = render(
     <Form initialValues={{ username: 'NutUI-React' }} onFinish={handleSubmit}>
       <Form.Item name="username" required label="UserName">
@@ -138,7 +138,7 @@ test('form set change value', async () => {
 })
 
 test('form onFinishFailed', async () => {
-  const handleFailed = jest.fn()
+  const handleFailed = vi.fn()
   const { container } = render(
     <Form
       initialValues={{ username: 'NutUI-React' }}
@@ -179,7 +179,7 @@ test('form onFinishFailed', async () => {
 })
 
 test('form validator onFinishFailed', async () => {
-  const handleFailed = jest.fn()
+  const handleFailed = vi.fn()
   const { container } = render(
     <Form
       initialValues={{ username: 'NutUI-React' }}

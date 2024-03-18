@@ -6,6 +6,7 @@ import AvatarCropper from '../index'
 import { simulateTouchMove, simulateTouchZoom } from '@/utils/test/event'
 import { sleep } from '@/utils/sleep'
 import Button from '@/packages/button'
+import 'vitest-canvas-mock'
 
 const mockFile = new File([new ArrayBuffer(10000)], 'test.jpg', {
   type: 'image/jpg',
@@ -35,8 +36,8 @@ test('should render base cutAvatar and type', async () => {
 })
 
 test('layout toolbar slot', () => {
-  const handleCancel = jest.fn()
-  const handleConfirm = jest.fn()
+  const handleCancel = vi.fn()
+  const handleConfirm = vi.fn()
   const { container } = render(
     <AvatarCropper
       toolbar={[
@@ -80,8 +81,8 @@ test('layout toolbar slot', () => {
 })
 
 test('AvatarCropper: Select the image to open the crop window', async () => {
-  const handleCancel = jest.fn()
-  const handleConfirm = jest.fn()
+  const handleCancel = vi.fn()
+  const handleConfirm = vi.fn()
   const { container } = render(
     <AvatarCropper
       maxZoom={2}
@@ -103,7 +104,7 @@ test('AvatarCropper: Select the image to open the crop window', async () => {
   const smallFile = new File([new ArrayBuffer(100)], 'small.jpg')
 
   Object.defineProperty(input, 'files', {
-    get: jest.fn().mockReturnValue([mockFile, smallFile]),
+    get: vi.fn().mockReturnValue([mockFile, smallFile]),
   })
 
   expect(container.querySelector('.nut-avatar-cropper-popup')).toHaveStyle({

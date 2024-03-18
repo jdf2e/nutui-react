@@ -7,7 +7,7 @@ import { InfiniteLoading } from '../infiniteloading'
 import { sleep } from '@/utils/sleep'
 
 test('pull base', () => {
-  const refresh = jest.fn()
+  const refresh = vi.fn()
   const { container } = render(
     <InfiniteLoading pullRefresh loadMoreText="没有更多" onRefresh={refresh} />
   )
@@ -28,7 +28,7 @@ test('pull base', () => {
 })
 
 test('pull base 03', () => {
-  const refresh = jest.fn()
+  const refresh = vi.fn()
   const { container } = render(
     <InfiniteLoading pullRefresh pullingText="下拉刷新" onRefresh={refresh} />
   )
@@ -97,7 +97,7 @@ test('infiniteloading base 01', async () => {
 })
 
 test('infiniteloading base 02', async () => {
-  const done = jest.fn()
+  const done = vi.fn()
   const App = () => {
     const [refreshList, setRefreshList] = React.useState<string[]>([])
     const [refreshHasMore, setRefreshHasMore] = React.useState(true)
@@ -150,7 +150,7 @@ test('infiniteloading base 02', async () => {
 })
 
 test('hasMore false', () => {
-  const done = jest.fn()
+  const done = vi.fn()
   const { container: container1, rerender } = render(
     <InfiniteLoading loadMoreText="没有更多" hasMore={false} onScroll={done}>
       {Array.from<string>({ length: 100 })
@@ -169,7 +169,7 @@ test('hasMore false', () => {
 })
 
 test('hasMore', () => {
-  const done = jest.fn()
+  const done = vi.fn()
   const { container } = render(
     <InfiniteLoading loadMoreText="没有更多" hasMore onScroll={done}>
       {Array.from<string>({ length: 100 })

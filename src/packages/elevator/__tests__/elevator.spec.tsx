@@ -69,7 +69,7 @@ test('should render list data when list props not empty', () => {
 })
 
 test('should list item highlight when onItemClick trigger click', () => {
-  const testClick = jest.fn()
+  const testClick = vi.fn()
   const { container } = render(
     <Elevator
       list={list}
@@ -91,7 +91,7 @@ test('should list item highlight when onItemClick trigger click', () => {
 })
 
 test('onIndexClick trigger click', () => {
-  const testClick = jest.fn()
+  const testClick = vi.fn()
   const { container } = render(
     <Elevator
       list={list}
@@ -111,7 +111,7 @@ test('onIndexClick trigger click', () => {
 })
 
 test('index is sticky', () => {
-  const testClick = jest.fn()
+  const testClick = vi.fn()
   const { container } = render(
     <Elevator
       list={list}

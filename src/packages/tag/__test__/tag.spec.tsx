@@ -73,7 +73,7 @@ test('closeable && onClose  test', () => {
   const state = {
     closeable: true,
   }
-  const handleClose = jest.fn()
+  const handleClose = vi.fn()
   const { container } = render(
     <>
       <h1 className="text">0</h1>
@@ -90,7 +90,7 @@ test('closeable && onClose  test', () => {
 })
 
 test('emit click event', () => {
-  const testClick = jest.fn()
+  const testClick = vi.fn()
   function tree() {
     return render(
       <Tag data-testid="tag-click" onClick={() => testClick()} className="test">
