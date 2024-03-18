@@ -1,35 +1,14 @@
 import React from 'react'
 import '@nutui/icons-react/dist/style_iconfont.css'
-import { IconFontConfig, IconFont } from '@nutui/icons-react'
+import { Cell } from '@nutui/nutui-react'
 import { useTranslate } from '../../sites/assets/locale'
-import Cell from '../cell'
-import Toast from '../toast'
-import { camelCase } from '@/utils/camel-case'
 import Demo1 from './demos/h5/demo1'
 import Demo2 from './demos/h5/demo2'
 import Demo3 from './demos/h5/demo3'
 import Demo4 from './demos/h5/demo4'
 import Demo5 from './demos/h5/demo5'
-
-const generateCopyText = (name: string) => {
-  return `<${camelCase(name, { pascalCase: true })} />`
-}
-const generateAMCopyText = (icon: any) => {
-  return `<${camelCase(icon.name, {
-    pascalCase: true,
-  })} className="${`nut-icon-${icon['animation-name']}  nut-icon-${icon['animation-time']}`}" />`
-}
-const copyTag = (text: string) => {
-  const input = document.createElement('input')
-  document.body.appendChild(input)
-  input.setAttribute('value', text)
-  input.select()
-  if (document.execCommand('copy')) {
-    document.execCommand('copy')
-    Toast.show(`Copy: ${text}`)
-  }
-  document.body.removeChild(input)
-}
+import Demo6 from './demos/h5/demo6'
+import Demo7 from './demos/h5/demo7'
 
 const style = `
 .nut-cell > .nutui-iconfont, .nut-icon {
@@ -50,11 +29,13 @@ ul li {
     align-items: center;
     justify-content: center;
 }
-ul li  .nut-icon {
-  margin-right: 0;
-}
-ul li span .nutui-iconfont {
-  margin: 16px 0 16px;
+
+[dir='rtl'] .nut-icon,
+.nut-rtl .nut-icon,[dir='rtl'] .nut-iconfont,
+.nut-rtl .nut-iconfont {
+  transform: rotateY(180deg);
+  margin-right: 0px;
+  margin-left: 10px;
 }
 `
 const IconDemo = () => {
@@ -109,49 +90,8 @@ const IconDemo = () => {
         <Cell style={{ alignItems: 'center' }}>
           <Demo5 />
         </Cell>
-        {(IconFontConfig as any).data.map((item: any) => {
-          return (
-            <Cell.Group key={item.name} title={item.name}>
-              <Cell>
-                <ul>
-                  {item.icons.map((icon: any) => {
-                    return (
-                      <li
-                        key={Math.random()}
-                        onClick={() => copyTag(generateCopyText(icon))}
-                      >
-                        <IconFont name={icon} />
-                      </li>
-                    )
-                  })}
-                </ul>
-              </Cell>
-            </Cell.Group>
-          )
-        })}
-        {(IconFontConfig as any).style.map((item: any) => {
-          return (
-            <Cell.Group key={item.name} title={item.name}>
-              <Cell>
-                <ul>
-                  {item.icons.map((icon: any) => {
-                    return (
-                      <li
-                        key={icon.name}
-                        onClick={() => copyTag(generateAMCopyText(icon))}
-                      >
-                        <IconFont
-                          name={icon.name}
-                          className={`nut-icon-${icon['animation-name']}  nut-icon-${icon['animation-time']}`}
-                        />
-                      </li>
-                    )
-                  })}
-                </ul>
-              </Cell>
-            </Cell.Group>
-          )
-        })}
+        <Demo6 />
+        <Demo7 />
       </div>
     </>
   )
