@@ -37,17 +37,14 @@ test('plain test', () => {
 })
 
 test('color & plain test', () => {
-  const state = {
-    color: 'rgb(250, 104, 93)',
-  }
   const { container } = render(
-    <Tag background={state.color} plain>
+    <Tag background="green" plain>
       TEST
     </Tag>
   )
-  expect(container.querySelector('.nut-tag-plain')).toHaveAttribute(
+  expect(container.querySelector('.nut-tag')).toHaveAttribute(
     'style',
-    'color: rgb(250, 104, 93); border-color: rgb(250, 104, 93);'
+    'color: green; border-color: green;'
   )
 })
 

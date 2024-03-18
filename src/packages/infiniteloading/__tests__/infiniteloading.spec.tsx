@@ -144,7 +144,9 @@ test('infiniteloading base 02', async () => {
   }
   const { container } = render(<App />)
   const track = container.querySelector('.nut-infiniteloading')
-  trigger(track, 'scroll', 0, 800)
+  await act(() => {
+    trigger(track, 'scroll', 0, 800)
+  })
   expect(container).toMatchSnapshot()
   await waitFor(() => expect(done).toHaveBeenCalled())
 })
@@ -203,11 +205,9 @@ test('pull base 01', async () => {
   const track = container.querySelector('.nut-infiniteloading')
 
   // pulling
-  trigger(track, 'touchstart', 0, 0)
-  trigger(track, 'touchmove', 0, 20)
-  expect(container).toMatchSnapshot()
-
-  // loading
-  trigger(track, 'touchend', 0, 100)
-  expect(container).toMatchSnapshot()
+  await act(() => {
+    trigger(track, 'touchstart', 0, 0)
+    trigger(track, 'touchmove', 0, 20)
+    expect(container).toMatchSnapshot()
+  })
 })

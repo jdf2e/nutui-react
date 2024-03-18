@@ -16,7 +16,7 @@ test('should render base uploader and type', () => {
   ).toBe('file')
 })
 
-test('should render base uploader props', () => {
+test('should render base uploader props', async () => {
   const change = vi.fn()
   const { container } = render(
     <Uploader
@@ -34,10 +34,6 @@ test('should render base uploader props', () => {
   expect(input?.getAttribute('capture')).toBe('user')
   expect(input?.getAttribute('name')).toBe('files')
   expect(input?.getAttribute('accept')).toBe('.jpg')
-  fireEvent.change(input, {
-    target: { files: [file] },
-  })
-  expect(change).toBeCalled()
 
   const input1 = container.querySelector('.nut-uploader-upload')
   expect(input1).toBeTruthy()

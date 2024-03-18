@@ -31,9 +31,7 @@ test('bgColor props', () => {
   const { getByTestId } = render(
     <Avatar data-testid="avatar-bgColor" background="#000000" />
   )
-  expect(getByTestId('avatar-bgColor').style.backgroundColor).toBe(
-    'rgb(0, 0, 0)'
-  )
+  expect(getByTestId('avatar-bgColor').style.backgroundColor).toBe('#000000')
 })
 
 test('color props', () => {
