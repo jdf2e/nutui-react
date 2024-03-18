@@ -9,9 +9,6 @@
       "node"
     ],
     "allowJs": false,
-    "declaration": true,
-    "declarationDir": "./dist/esm/types",
-    "emitDeclarationOnly": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
