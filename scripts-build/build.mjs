@@ -14,11 +14,6 @@ import { dirname, join, basename, extname, resolve, relative } from 'path'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 
-//
-function fileName(path) {
-  return basename(path).replace(extname(path), '')
-}
-
 // 写文件
 async function dest(file, content) {
   const dir = dirname(file)
@@ -114,7 +109,7 @@ async function buildCJS(p) {
 
 async function buildDeclaration() {
   const configPath = join(__dirname, '../tsconfig.h5.json')
-  const dist = join(__dirname, '../dist/es')
+  const dist = join(__dirname, '../dist/types')
   await execSync(
     `tsc --project ${configPath} --emitDeclarationOnly --declaration --declarationDir ${dist}`
   )
@@ -187,7 +182,6 @@ async function buildCSS(p) {
     const code = sass.compileString(variables + '\n' + button, {
       loadPaths: [loadPath],
     })
-    // const cssPath = relative('src/packages', loadPath)
     const cssPath = relative('src', loadPath)
     // 写 css 文件
     dest(join('dist/es', cssPath, 'style/style.css'), code.css)
@@ -254,29 +248,29 @@ async function buildCSS(p) {
   }
 }
 
-console.log('clean dist')
-await deleteAsync('dist')
-console.log('clean: ✅')
-
-console.log('build ES Module')
-await buildES()
-console.log('build ES Module: ✅')
-
-console.log('build CommonJS')
-await buildCJS()
-console.log('build CommonJS: ✅')
-
-console.log('build UMD')
-await buildUMD()
-console.log('build UMD: ✅')
-
-console.log('Copy Styles')
-copyStyles()
-console.log('Copy Styles: ✅')
-
-console.log('Build CSS')
-await buildCSS()
-console.log('Build CSS: ✅')
+// console.log('clean dist')
+// await deleteAsync('dist')
+// console.log('clean: ✅')
+//
+// console.log('build ES Module')
+// await buildES()
+// console.log('build ES Module: ✅')
+//
+// console.log('build CommonJS')
+// await buildCJS()
+// console.log('build CommonJS: ✅')
+//
+// console.log('build UMD')
+// await buildUMD()
+// console.log('build UMD: ✅')
+//
+// console.log('Copy Styles')
+// copyStyles()
+// console.log('Copy Styles: ✅')
+//
+// console.log('Build CSS')
+// await buildCSS()
+// console.log('Build CSS: ✅')
 
 console.log('Build Declaration')
 await buildDeclaration()
