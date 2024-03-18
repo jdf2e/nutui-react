@@ -1523,6 +1523,7 @@ $badge-content-transform: var(
 ) !default;
 $badge-z-index: var(--nutui-badge-z-index, 1) !default;
 $badge-dot-width: var(--nutui-badge-dot-width, 7px) !default;
+$badge-dot-border: var(--nutui-badge-dot-border, 0px solid $color-primary-text);
 
 //popover（✅）
 $popover-border-radius: var(--nutui-popover-border-radius, 8px) !default;

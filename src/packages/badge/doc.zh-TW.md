@@ -314,3 +314,4 @@ export default App;
 | \--nutui-badge-content-transform | badge 內容位置 | `translateY(-50%) translateX(100%)` |
 | \--nutui-badge-z-index | badge 自定義icon時的z-index | `1` |
 | \--nutui-badge-dot-width | badge 為圓點時的寬度、高度、圓角 | `7px` |
+| \--nutui-badge-dot-border | badge 為圓點時的邊框 | `0px solid $color-primary-text` |
