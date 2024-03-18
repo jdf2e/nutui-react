@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "./",
+    "baseUrl": ".",
     "rootDir": ".",
     "target": "ES6",
     "types": [
@@ -8,7 +8,6 @@
       "jest",
       "node"
     ],
-    "outDir": "./dist",
     "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -16,7 +15,6 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
-    "preserveSymlinks": true,
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,

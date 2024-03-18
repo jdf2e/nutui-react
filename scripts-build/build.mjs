@@ -1,4 +1,5 @@
 import { createRequire } from 'module'
+import { execSync } from 'child_process'
 import { readFile, access, writeFile, mkdir } from 'fs/promises'
 import { copy } from 'fs-extra'
 import { deleteAsync } from 'del'
@@ -11,7 +12,6 @@ import * as sass from 'sass'
 import postcss, { rule } from 'postcss'
 import scss from 'postcss-scss'
 
-const DIST = 'dist'
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
 const require = createRequire(import.meta.url)
@@ -68,42 +68,27 @@ async function buildES(p) {
   )
 
   for (const path of h5_TS_Files) {
-    const button = await readFile(join(__dirname, '../', path))
-    const aliasCode = button
-      .toString()
-      .replaceAll('@/locales', '../locales')
-      .replaceAll('@/utils', '../utils')
-      .replaceAll('@/packages', '..')
-
-    const code = await swc.transform(aliasCode, {
+    const code = await swc.transformFileSync(join(__dirname, '../', path), {
       jsc: {
+        baseUrl: join(__dirname, '../'),
         target: 'es5',
         parser: {
           syntax: 'typescript',
           tsx: true,
         },
+        paths: {
+          '@/packages/*': ['src/packages/*'],
+          '@/utils/*': ['src/utils/*'],
+          '@/locales/*': ['src/locales/*'],
+        },
         externalHelpers: true,
       },
     })
+    const relativePath = relative(__dirname, path)
+    const ext = extname(relativePath)
+    const writePath = relativePath.replace(ext, '.js')
 
-    let replace2js = join(
-      DIST,
-      'es',
-      path
-        .replace('.tsx', '.js')
-        .replace('.ts', '.js')
-        .replace('src/packages', '')
-    )
-    if (path.indexOf('utils/') > -1 || path.indexOf('locales/') > -1) {
-      console.log('xxxxx', __dirname, relative(__dirname, path))
-      replace2js = join(
-        DIST,
-        'es',
-        path.replace('.tsx', '.js').replace('.ts', '.js').replace('src/', '')
-      )
-    }
-
-    await dest(replace2js, code.code)
+    await dest(join('dist/es', writePath.replace('../src/', '')), code.code)
   }
 }
 
@@ -113,10 +98,7 @@ async function buildCJS(p) {
   const taro_TS_Files = await glob(['src/packages/**/*.taro.js'])
 
   for (const path of h5_TS_Files) {
-    const button = await readFile(join(__dirname, '../', path))
-    const aliasCode = button.toString()
-
-    const code = await swc.transform(aliasCode, {
+    const code = await swc.transformFileSync(join(__dirname, '../', path), {
       jsc: {
         target: 'es5',
         parser: {
@@ -130,81 +112,17 @@ async function buildCJS(p) {
       },
     })
 
-    const replace2js = path.replace('es/', 'cjs/')
-    await dest(replace2js, code.code)
+    await dest(path.replace('es/', 'cjs/'), code.code)
   }
 }
 
 async function buildDeclaration() {
-  const h5_TS_Files = await glob(
-    [
-      'src/packages/**/*.{ts,tsx}',
-      'src/utils/**/*.{ts,tsx}',
-      'src/locales/*.ts',
-    ],
-    {
-      ignore: [
-        'src/packages/**/*.taro.{ts,tsx}',
-        'src/packages/**/demo.{ts,tsx}',
-        'src/packages/**/*.spec.tsx',
-        'src/packages/**/demos/**/*',
-      ],
-    }
+  const configPath = join(__dirname, '../tsconfig.h5.json')
+  const dist = join(__dirname, '../dist/es')
+  const res = await execSync(
+    `tsc --project ${configPath} --emitDeclarationOnly --declaration --declarationDir ${dist}`
   )
-  const taro_TS_Files = await glob(
-    [
-      'src/packages/**/*.taro.{ts,tsx}',
-      'src/utils/**/*.{ts,tsx}',
-      'src/locales/*.ts',
-    ],
-    {
-      ignore: [
-        'src/packages/**/*.taro.{ts,tsx}',
-        'src/packages/**/demo.{ts,tsx}',
-        'src/packages/**/*.spec.tsx',
-        'src/packages/**/demos/**/*',
-      ],
-    }
-  )
-  for (const path of h5_TS_Files) {
-    if (path.indexOf('button') == -1) continue
-    const button = await readFile(join(__dirname, '../', path))
-    const aliasCode = button
-      .toString()
-      .replaceAll('@/locales', '../locales')
-      .replaceAll('@/utils', '../utils')
-      .replaceAll('@/packages', '..')
 
-    const code = ts.transpile(aliasCode, {
-      ...tsConfig.compilerOptions,
-      module: 'ES6',
-      declaration: true,
-      emitDeclarationOnly: true,
-    })
-
-    let replace2js = join(
-      DIST,
-      'es',
-      path
-        .replace('.tsx', '.d.ts')
-        .replace('.ts', '.d.ts')
-        .replace('src/packages', '')
-    )
-    if (path.indexOf('utils/') > -1 || path.indexOf('locales/') > -1) {
-      replace2js = join(
-        DIST,
-        'es',
-        path
-          .replace('.tsx', '.d.ts')
-          .replace('.ts', '.d.ts')
-          .replace('src/', '')
-      )
-    }
-
-    // await dest(replace2js, code)
-    //
-    // await dest(replace2js.replace('es/', 'cjs/'), code)
-  }
 }
 
 // 构建 UMD
@@ -216,7 +134,7 @@ async function buildUMD(p) {
   await vite.build({
     silent: true,
     resolve: {
-      alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
+      alias: [{ find: '@', replacement: resolve(__dirname, '../src') }],
     },
     build: {
       minify: false,
@@ -238,7 +156,7 @@ async function buildUMD(p) {
         ],
       },
       lib: {
-        entry: 'dist/es/nutui.react.build.js',
+        entry: join(__dirname, '../dist/es/packages/nutui.react.build.js'),
       },
     },
   })
@@ -274,13 +192,14 @@ async function buildCSS(p) {
     const code = sass.compileString(variables + '\n' + button, {
       loadPaths: [loadPath],
     })
-    const cssPath = relative('src/packages', loadPath)
+    // const cssPath = relative('src/packages', loadPath)
+    const cssPath = relative('src', loadPath)
     // 写 css 文件
-    dest(join(DIST, 'es', cssPath, 'style/style.css'), code.css)
-    dest(join(DIST, 'es', cssPath, 'style/css.js'), `import './style.css'`)
+    dest(join('dist/es', cssPath, 'style/style.css'), code.css)
+    dest(join('dist/es', cssPath, 'style/css.js'), `import './style.css'`)
 
-    dest(join(DIST, 'cjs', cssPath, 'style/style.css'), code.css)
-    dest(join(DIST, 'cjs', cssPath, 'style/css.js'), `import './style.css'`)
+    dest(join('dist/cjs', cssPath, 'style/style.css'), code.css)
+    dest(join('dist/cjs', cssPath, 'style/css.js'), `import './style.css'`)
 
     // 删除 import
     // 写入 style.scss
@@ -300,8 +219,8 @@ async function buildCSS(p) {
     ])
       .process(button, { from: loadPath, syntax: scss })
       .then((result) => {
-        dest(join(DIST, 'es', cssPath, `style/${base}`), result.css)
-        dest(join(DIST, 'cjs', cssPath, `style/${base}`), result.css)
+        dest(join('dist/es', cssPath, `style/${base}`), result.css)
+        dest(join('dist/cjs', cssPath, `style/${base}`), result.css)
       })
 
     // build js 引入 scss
@@ -317,7 +236,7 @@ async function buildCSS(p) {
       rule = rule.replaceAll("'", '')
       if (rule.indexOf('../styles/') > -1) {
         const ext = extname(rule)
-        jsContent.push(`import '../${rule}${ext ? '' : '.scss'}';`)
+        jsContent.push(`import '../../${rule}${ext ? '' : '.scss'}';`)
       } else if (rule.startsWith('./')) {
         const base = basename(rule)
         const ext = extname(base)
@@ -333,34 +252,37 @@ async function buildCSS(p) {
     jsContent.push(`import './${base}';`)
 
     await dest(
-      join(DIST, 'cjs', cssPath, `style/index.js`),
+      join('dist/cjs', cssPath, `style/index.js`),
       jsContent.join('\n')
     )
+    await dest(join('dist/es', cssPath, `style/index.js`), jsContent.join('\n'))
   }
 }
 
-console.log('clean dist')
-await deleteAsync(DIST)
-console.log('clean: OK!')
-
-console.log('build ES Module')
-await buildES()
-console.log('build ES Module: OK!')
-
-console.log('build CommonJS')
-await buildCJS()
-console.log('build CommonJS: OK!')
-
-console.log('build UMD')
+// console.log('clean dist')
+// await deleteAsync('dist')
+// console.log('clean: ✅')
+//
+// console.log('build ES Module')
+// await buildES()
+// console.log('build ES Module: ✅')
+//
+// console.log('build CommonJS')
+// await buildCJS()
+// console.log('build CommonJS: ✅')
+//
+// console.log('build UMD')
 // await buildUMD()
-console.log('build UMD: OK!')
+// console.log('build UMD: ✅')
+//
+// console.log('Copy Styles')
+// copyStyles()
+// console.log('Copy Styles: ✅')
+//
+// console.log('Build CSS')
+// await buildCSS()
+// console.log('Build CSS: ✅')
 
-console.log('Copy Styles')
-copyStyles()
-console.log('Copy Styles: OK!')
-
-console.log('Build CSS')
-await buildCSS()
-console.log('Build CSS: OK!')
-
-// buildDeclaration()
+console.log('Build Declaration')
+await buildDeclaration()
+console.log('Build Declaration: ✅')
