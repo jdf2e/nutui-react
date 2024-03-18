@@ -80,7 +80,7 @@ import { Button } from '@nutui/nutui-react-taro';
 
 ### 按钮尺寸
 
-支持 `large`、`normal`、`small`、`mini` 四种尺寸，默认为 `normal`。
+支持 `xlarge` 、 `large`、`normal`、`small`、`mini` 尺寸，默认为 `normal`。
 
 :::demo
 
@@ -115,7 +115,7 @@ import { Button } from '@nutui/nutui-react-taro';
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | type | 按钮的样式 | `default` \| `primary` \| `warning` \| `danger` \| `success` \| `info` | `default` |
-| size | 按钮的尺寸 | `normal` \| `large` \| `small` \| `mini` | `normal` |
+| size | 按钮的尺寸 | `normal` \|`xlarge` \|  `large` \| `small` \| `mini` | `normal` |
 | shape | 按钮的形状 | `square` \| `round` | `round` |
 | color | 按钮颜色，支持传入 linear-gradient 渐变色, outline 和 dashed 模式下设置的是 color，其他情况设置的是background，建议使用CSS变量实现的颜色配置 | `string` | `-` |
 | fill | 填充模式 | `solid` \| `outline`  \| `dashed` \| `none` | `solid` |

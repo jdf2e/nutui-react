@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
-import Switch from '@/packages/switch'
-import Cell from '@/packages/cell'
+import React from 'react'
 import { useTranslate } from '@/sites/assets/locale'
-import Toast from '../toast'
+import Cell from '../cell'
+import Demo1 from './demos/h5/demo1'
+import Demo2 from './demos/h5/demo2'
+import Demo3 from './demos/h5/demo3'
+import Demo4 from './demos/h5/demo4'
+import Demo5 from './demos/h5/demo5'
+import Demo6 from './demos/h5/demo6'
 
 const SwitchDemo = () => {
   const [translated] = useTranslate({
@@ -12,10 +16,7 @@ const SwitchDemo = () => {
       asyncControl: '受控',
       customColor: '自定义颜色',
       supportText: '支持文字',
-      open: '开',
-      close: '关',
       eventTip: '触发了 onChange 事件，开关状态：',
-      async: '2秒后异步触发',
     },
     'zh-TW': {
       basic: '非受控',
@@ -23,10 +24,7 @@ const SwitchDemo = () => {
       asyncControl: '受控',
       customColor: '自定義顏色',
       supportText: '支持文字',
-      open: '開',
-      close: '關',
       eventTip: '觸發了 onChange 事件，開關狀態：',
-      async: '2秒後異步觸發',
     },
     'en-US': {
       basic: 'Uncontrolled',
@@ -34,68 +32,35 @@ const SwitchDemo = () => {
       asyncControl: 'controlled',
       customColor: 'Custom Color',
       supportText: 'Support Text',
-      open: 'Open',
-      close: 'cClose',
       eventTip: 'Emit onChange event, current state:',
-      async: 'Triggered asynchronously after 2 seconds',
     },
   })
-  const [checkedAsync, setCheckedAsync] = useState(true)
-  const onChange = (
-    value: boolean,
-    event: React.MouseEvent<Element, MouseEvent>
-  ) => {
-    Toast.show(`${translated.eventTip}${value}`)
-  }
-  const onChangeAsync = (value: boolean, event: any) => {
-    Toast.show(`${translated.async} ${value}`)
-    setTimeout(() => {
-      setCheckedAsync(value)
-    }, 2000)
-  }
   return (
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
         <Cell>
-          <Switch defaultChecked />
+          <Demo1 />
         </Cell>
         <h2>{translated.asyncControl}</h2>
         <Cell>
-          <Switch
-            checked={checkedAsync}
-            onChange={(value, event) => onChangeAsync(value, event)}
-          />
+          <Demo2 />
         </Cell>
         <h2>{translated.disabled}</h2>
         <Cell>
-          <Switch defaultChecked disabled />
+          <Demo3 />
         </Cell>
-        <h2>onChange</h2>
+        <h2>{translated.eventTip}</h2>
         <Cell>
-          <Switch
-            defaultChecked
-            onChange={(value, event) => onChange(value, event)}
-          />
+          <Demo4 />
         </Cell>
-
         <h2>{translated.customColor}</h2>
         <Cell>
-          <Switch
-            defaultChecked
-            style={{
-              '--nutui-switch-open-background-color': 'blue',
-              '--nutui-switch-close-line-background-color': '#ebebeb',
-            }}
-          />
+          <Demo5 />
         </Cell>
         <h2>{translated.supportText}</h2>
         <Cell>
-          <Switch
-            defaultChecked
-            activeText={translated.open}
-            inactiveText={translated.close}
-          />
+          <Demo6 />
         </Cell>
       </div>
     </>
