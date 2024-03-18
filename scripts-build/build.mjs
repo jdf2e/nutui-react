@@ -10,6 +10,8 @@ import { fileURLToPath } from 'url'
 import { execSync } from 'child_process'
 import { readFile, access, writeFile, mkdir } from 'fs/promises'
 import { dirname, join, basename, extname, resolve, relative } from 'path'
+import j from 'jscodeshift'
+import { readFileSync } from 'fs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -108,11 +110,63 @@ async function buildCJS(p) {
 }
 
 async function buildDeclaration() {
-  const configPath = join(__dirname, '../tsconfig.h5.json')
-  const dist = join(__dirname, '../dist/types')
-  await execSync(
-    `tsc --project ${configPath} --emitDeclarationOnly --declaration --declarationDir ${dist}`
-  )
+  // const configPath = join(__dirname, '../tsconfig.h5.json')
+  // const dist = join(__dirname, '../dist/types')
+  // await execSync(
+  //   `tsc --project ${configPath} --emitDeclarationOnly --declaration --declarationDir ${dist}`
+  // )
+  const transform = (file, api) => {
+    const j = api.jscodeshift.withParser('ts')
+    return j(file.source)
+      .find(j.ImportDeclaration, {
+        // source: {
+        //   type: 'Literal',
+        // },
+      })
+      .forEach((path) => {
+        const importAlias =
+          path.node.source.value?.indexOf('@/') > -1
+            ? path.node.source.value
+            : ''
+        if (!importAlias) return
+        const dir = join(__dirname, importAlias.replace('@/', '../src/'))
+        console.log(file.path)
+        const ext = extname(dir)
+        console.log(ext ? dir : dir + '.d.ts')
+
+        console.log(
+          join(__dirname, relative(file.path, ext ? dir : dir + '.d.ts'))
+        )
+
+        console.log(
+          relative(
+            '/src/packages/actionsheet/actionsheet.d.ts',
+            '/src/packages/popup/index.d.ts'
+          )
+        )
+      })
+      .toSource()
+  }
+
+  // const files = await glob(['dist/types/src/**/*.d.ts'])
+  const files = await glob([
+    'dist/types/src/packages/actionsheet/actionsheet.d.ts',
+  ])
+  files.forEach((file) => {
+    if (file.indexOf('actionsheet') === -1) {
+      return
+    }
+    console.log(file)
+    const result = transform(
+      {
+        source: readFileSync(join(__dirname, '../', file), {
+          encoding: 'utf8',
+        }),
+        path: join(__dirname, '../', file).replace('/dist/types', ''),
+      },
+      { jscodeshift: j }
+    )
+  })
 }
 
 // 构建 UMD
@@ -248,6 +302,7 @@ async function buildCSS(p) {
   }
 }
 
+//
 // console.log('clean dist')
 // await deleteAsync('dist')
 // console.log('clean: ✅')
