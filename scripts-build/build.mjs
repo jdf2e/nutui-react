@@ -1,22 +1,18 @@
-import { createRequire } from 'module'
-import { execSync } from 'child_process'
-import { readFile, access, writeFile, mkdir } from 'fs/promises'
-import { copy } from 'fs-extra'
-import { deleteAsync } from 'del'
-import { fileURLToPath } from 'url'
-import path, { dirname, join, basename, extname, resolve, relative } from 'path'
 import { glob } from 'glob'
 import swc from '@swc/core'
 import * as vite from 'vite'
 import * as sass from 'sass'
-import postcss, { rule } from 'postcss'
+import postcss from 'postcss'
 import scss from 'postcss-scss'
+import { copy } from 'fs-extra'
+import { deleteAsync } from 'del'
+import { fileURLToPath } from 'url'
+import { execSync } from 'child_process'
+import { readFile, access, writeFile, mkdir } from 'fs/promises'
+import { dirname, join, basename, extname, resolve, relative } from 'path'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
-const require = createRequire(import.meta.url)
-const tsConfig = require('../tsconfig.json')
-const ts = require('typescript')
 
 //
 function fileName(path) {
@@ -119,10 +115,9 @@ async function buildCJS(p) {
 async function buildDeclaration() {
   const configPath = join(__dirname, '../tsconfig.h5.json')
   const dist = join(__dirname, '../dist/es')
-  const res = await execSync(
+  await execSync(
     `tsc --project ${configPath} --emitDeclarationOnly --declaration --declarationDir ${dist}`
   )
-
 }
 
 // 构建 UMD
@@ -132,7 +127,7 @@ async function buildUMD(p) {
     'react-dom': 'ReactDOM',
   }
   await vite.build({
-    silent: true,
+    logLevel: 'error',
     resolve: {
       alias: [{ find: '@', replacement: resolve(__dirname, '../src') }],
     },
@@ -165,8 +160,8 @@ async function buildUMD(p) {
 // 拷贝styles
 async function copyStyles(p) {
   copy(
-    path.resolve(__dirname, '../src/styles'),
-    path.resolve(__dirname, '../dist/styles')
+    resolve(__dirname, '../src/styles'),
+    resolve(__dirname, '../dist/styles')
   )
 }
 
@@ -183,7 +178,7 @@ async function buildCSS(p) {
       encoding: 'utf8',
     })
     // countup 是特例
-    const base = path.basename(file)
+    const base = basename(file)
     const loadPath = join(
       __dirname,
       '../src/packages',
@@ -259,29 +254,29 @@ async function buildCSS(p) {
   }
 }
 
-// console.log('clean dist')
-// await deleteAsync('dist')
-// console.log('clean: ✅')
-//
-// console.log('build ES Module')
-// await buildES()
-// console.log('build ES Module: ✅')
-//
-// console.log('build CommonJS')
-// await buildCJS()
-// console.log('build CommonJS: ✅')
-//
-// console.log('build UMD')
-// await buildUMD()
-// console.log('build UMD: ✅')
-//
-// console.log('Copy Styles')
-// copyStyles()
-// console.log('Copy Styles: ✅')
-//
-// console.log('Build CSS')
-// await buildCSS()
-// console.log('Build CSS: ✅')
+console.log('clean dist')
+await deleteAsync('dist')
+console.log('clean: ✅')
+
+console.log('build ES Module')
+await buildES()
+console.log('build ES Module: ✅')
+
+console.log('build CommonJS')
+await buildCJS()
+console.log('build CommonJS: ✅')
+
+console.log('build UMD')
+await buildUMD()
+console.log('build UMD: ✅')
+
+console.log('Copy Styles')
+copyStyles()
+console.log('Copy Styles: ✅')
+
+console.log('Build CSS')
+await buildCSS()
+console.log('Build CSS: ✅')
 
 console.log('Build Declaration')
 await buildDeclaration()
