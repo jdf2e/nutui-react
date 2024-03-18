@@ -29,7 +29,7 @@ const Demo1 = () => {
   const change = (value: boolean) => {
     setVisible(value)
   }
-  const selected = (item: any, event: MouseEvent) => {
+  const selected = (item: any, event: any) => {
     console.log(item, event)
   }
   return (
