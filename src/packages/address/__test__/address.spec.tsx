@@ -180,12 +180,6 @@ test('Address: exist defaultIcon & selectIcon', async () => {
   expect(items[1].innerHTML).toContain('<div class="select">456</div>')
 })
 
-function sleep(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay)
-  })
-}
-
 describe('Address', () => {
   interface WrapperProps {
     visible: boolean
@@ -211,28 +205,16 @@ describe('Address', () => {
     const screen = render(<Wrapper visible={false} />)
 
     fireEvent.click(screen.getByText('Open'))
-    await waitFor(
-      async () => {
-        await sleep(1000)
-        const title = screen.container.querySelector('.nut-popup-title-title')
-        expect(title?.innerHTML).toBe('选择地址')
-      },
-      {
-        timeout: 2000,
-      }
-    )
+    await waitFor(() => {
+      const title = screen.container.querySelector('.nut-popup-title-title')
+      expect(title?.innerHTML).toBe('选择地址')
+    })
 
     fireEvent.click(screen.getByText('Close'))
-    await waitFor(
-      async () => {
-        await sleep(1000)
-        expect(
-          screen.container.querySelector('.nut-popup-title-title')?.innerHTML
-        ).toBe('选择地址')
-      },
-      {
-        timeout: 2000,
-      }
-    )
+    await waitFor(() => {
+      expect(
+        screen.container.querySelector('.nut-popup-title-title')?.innerHTML
+      ).toBe('选择地址')
+    })
   })
 })
