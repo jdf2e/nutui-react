@@ -6,7 +6,6 @@ type Props = {
   log: string
 }
 const Demo5 = (props: Props) => {
-  console.log(props)
   const [checked, setChecked] = useState(false)
   const changeStatus = (
     value: boolean,

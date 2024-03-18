@@ -70,7 +70,10 @@ const SkeletonDemo = () => {
 
         <h2>{translated['07d62d5c']}</h2>
         <Cell>
-          <Demo5 description={translated['652c6725']} />
+          <Demo5
+            description={translated['652c6725']}
+            log={translated['3b02fdee']}
+          />
         </Cell>
       </div>
     </>
