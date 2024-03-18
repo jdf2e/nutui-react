@@ -7,7 +7,10 @@ const Demo4 = () => {
   const change = (value: boolean) => {
     setVisible(value)
   }
-  const selected = (item: any, event: any) => {
+  const selected = (
+    item: any,
+    event: React.MouseEvent<Element, MouseEvent>
+  ) => {
     console.log(item, event)
   }
   return (
