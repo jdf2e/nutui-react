@@ -154,6 +154,7 @@
     "autoprefixer": "^10.4.17",
     "axios": "^1.6.7",
     "babel-plugin-react-scoped-css": "^1.1.1",
+    "del": "^7.1.0",
     "eslint": "^8.56.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.1.0",
