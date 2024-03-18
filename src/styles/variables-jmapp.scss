@@ -1104,6 +1104,10 @@ $pulltorefresh-icon-height: var(
   --nutui-pulltorefresh-icon-height,
   26px
 ) !default;
+$pulltorefresh-color-primary: var(
+  --nutui-pulltorefresh-color-primary,
+  $color-primary
+) !default;
 
 //infiniteloading（✅）
 $infiniteloading-color: var(

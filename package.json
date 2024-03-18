@@ -1,6 +1,6 @@
 {
-  "name": "@nutui/nutui-react-taro",
-  "version": "2.4.0",
+  "name": "@nutui/nutui-react",
+  "version": "2.4.1",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/esm/nutui-react.es.js",
@@ -94,9 +94,6 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.23.9",
-    "@mdx-js/mdx": "^3.0.1",
-    "@mdx-js/react": "^3.0.1",
-    "@mdx-js/rollup": "^3.0.1",
     "@nutui/icons-react": "^1.0.2",
     "@nutui/icons-react-taro": "^1.0.2",
     "@nutui/touch-emulator": "^1.0.0",
@@ -104,7 +101,6 @@
     "@use-gesture/react": "10.2.20",
     "async-validator": "^4.2.5",
     "classnames": "^2.5.1",
-    "highlight.js": "^11.9.0",
     "lodash.isequal": "^4.5.0",
     "lodash.kebabcase": "^4.1.1",
     "react-transition-group": "^4.4.5"
@@ -171,6 +167,10 @@
     "jscodeshift": "^0.15.1",
     "lint-staged": "^15.2.2",
     "lzutf8": "0.6.3",
+    "@mdx-js/mdx": "^3.0.1",
+    "@mdx-js/react": "^3.0.1",
+    "@mdx-js/rollup": "^3.0.1",
+    "highlight.js": "^11.9.0",
     "map-stream": "0.0.7",
     "markdown-it": "^14.0.0",
     "marked": "^12.0.0",

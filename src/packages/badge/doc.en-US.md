@@ -241,6 +241,44 @@ export default App;
 
 :::
 
+### Fill Mode
+
+:::demo
+
+```tsx
+import React from "react";
+import { User } from '@nutui/icons-react';
+import { Avatar, Badge, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <Cell>
+      <Badge style={{ marginInlineEnd: '40px' }} value={8} color="green">
+        <Avatar icon={<User />} shape="square" />
+      </Badge>
+      <Badge
+        style={{ marginInlineEnd: '40px' }}
+        value={76}
+        fill="outline"
+      >
+        <Avatar icon={<User />} shape="square" />
+      </Badge>
+      <Badge
+        style={{ marginInlineEnd: '40px' }}
+        value="NEW"
+        color="blue"
+        fill="outline"
+      >
+        <Avatar icon={<User />} shape="square" />
+      </Badge>
+    </Cell>
+  )
+}
+export default App;
+```
+
+:::
+
 ## Badge
 
 ### Props
@@ -253,6 +291,7 @@ export default App;
 | top | Up and down offset, support unit setting, can be set to: "0" or 0, etc. | `string` \| `number` | `"0"` |
 | right | Left and right offset, support unit setting, can be set to: "5" or 5, etc. | `string` \| `number` | `"5"` |
 | color | background color,the default value is the theme primary color | `string` | `-` |
+| fill | Fill Mode | `solid` \| `outline` | `solid` |
 
 ## Theming
 

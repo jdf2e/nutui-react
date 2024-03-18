@@ -241,6 +241,44 @@ export default App;
 
 :::
 
+### 填充模式
+
+:::demo
+
+```tsx
+import React from "react";
+import { User } from '@nutui/icons-react';
+import { Avatar, Badge, Cell } from '@nutui/nutui-react';
+
+const App = () => {
+  return (
+    <Cell>
+      <Badge style={{ marginInlineEnd: '40px' }} value={8} color="green">
+        <Avatar icon={<User />} shape="square" />
+      </Badge>
+      <Badge
+        style={{ marginInlineEnd: '40px' }}
+        value={76}
+        fill="outline"
+      >
+        <Avatar icon={<User />} shape="square" />
+      </Badge>
+      <Badge
+        style={{ marginInlineEnd: '40px' }}
+        value="NEW"
+        color="blue"
+        fill="outline"
+      >
+        <Avatar icon={<User />} shape="square" />
+      </Badge>
+    </Cell>
+  )
+}
+export default App;
+```
+
+:::
+
 ## Badge
 
 ### Props
@@ -253,6 +291,7 @@ export default App;
 | top | 上下偏移量，支持單位設置，可設置為："0"或0 等 | `string` \| `number` | `"0"` |
 | right | 左右偏移量，支持單位設置，可設置為："5"或5 等 | `string` \| `number` | `"5"` |
 | color | 徽標背景顏色,默認值為當前主題色 | `string` | `-` |
+| fill | 填充模式 | `solid` \| `outline` | `solid` |
 
 ## 主題定制
 
