@@ -18,17 +18,7 @@ import { SearchBar } from '@nutui/nutui-react-taro';
 
 :::demo
 
-```tsx
-import React from "react";
-import { SearchBar } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return <>
-    <SearchBar backable placeholder="上京东，购好物" />
-  </>
-}
-export default App;
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -38,17 +28,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { SearchBar } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return <>
-    <SearchBar shape="round" maxLength={5} />
-  </>
-}
-export default App;
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -58,25 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { SearchBar, ConfigProvider } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return <>
-    <ConfigProvider
-      theme={{
-        nutuiSearchbarBackground: 'var(--nutui-color-primary)',
-        nutuiSearchbarInputBackground: '#eee',
-        nutuiSearchbarInputTextAlign: 'right',
-      }}
-    >
-      <SearchBar onSearch={(value) => Toast.text(value)} />
-    </ConfigProvider>
-  </>
-}
-export default App;
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -86,18 +48,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { SearchBar } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return <>
-    <SearchBar left="文本" right="测试" />  
-  </>
-}
-export default App;
-
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -107,51 +58,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { SearchBar } from '@nutui/nutui-react-taro';
-import {   ArrowLeft,
-  Photograph,
-  ArrowDown,
-  More,
-  Close,
-  Star
-} from '@nutui/icons-react-taro'
-
-const App = () => {
-  return <>
-    <SearchBar
-      left={
-        <>
-          <ArrowLeft size={20} />
-          <Close size={20} />
-        </>
-      }
-      right={
-        <>
-          <Star
-            size={20}
-            style={{
-              color: 'var(--nutui-color-primary)',
-            }}
-          />
-          <More size={20} />
-        </>
-      }
-      rightIn={
-        <Photograph
-          size={16}
-          onClick={() => {
-            console.log('Photograph right in')
-          }}
-        />
-      }
-    />
-  </>
-}
-export default App;
-
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -161,34 +68,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { SearchBar, PopOver } from '@nutui/nutui-react-taro';
-import {  ArrowDown } from '@nutui/icons-react-taro'
-
-const App = () => {
-  return <>
-    <SearchBar
-      leftIn={
-        <PopOver
-          visible={lightTheme}
-          onClick={() => {
-            lightTheme ? setLightTheme(false) : setLightTheme(true)
-          }}
-          list={itemList}
-        >
-          <div style={{ fontSize: '12px', width: '50px', display: 'flex' }}>
-            更多
-            <ArrowDown size={8}/>
-          </div>
-        </PopOver>
-      }
-    />
-  </>
-}
-export default App;
-
-```
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -198,25 +78,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { SearchBar } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [value, setValue] = useState('')
-  const change = (val: string, e: Event) => {
-    setValue(val)
-  }
-  return <>
-    <SearchBar
-      onChange={(val: string, e: Event) => change(val, e)}
-      maxLength={10}
-    />
-    value：{value}
-  </>
-}
-export default App;
-```
+<CodeBlock src='taro/demo7.tsx'></CodeBlock>
 
 :::
 
