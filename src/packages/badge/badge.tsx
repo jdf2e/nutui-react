@@ -1,6 +1,5 @@
 import React, { CSSProperties, FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider'
 
