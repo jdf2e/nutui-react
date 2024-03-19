@@ -1,9 +1,18 @@
-import React, { CSSProperties, useState } from 'react'
-import { HeartFill } from '@nutui/icons-react'
-import { Rate } from './rate'
+import React, { CSSProperties } from 'react'
 import Cell from '@/packages/cell'
 import { useTranslate } from '@/sites/assets/locale'
-import Toast from '../toast'
+import Demo1 from './demos/h5/demo1'
+import Demo2 from './demos/h5/demo2'
+import Demo3 from './demos/h5/demo3'
+import Demo4 from './demos/h5/demo4'
+import Demo5 from './demos/h5/demo5'
+import Demo6 from './demos/h5/demo6'
+import Demo7 from './demos/h5/demo7'
+import Demo8 from './demos/h5/demo8'
+import Demo9 from './demos/h5/demo9'
+import Demo10 from './demos/h5/demo10'
+import Demo11 from './demos/h5/demo11'
+import Demo12 from './demos/h5/demo12'
 
 const RateDemo = () => {
   const [translated] = useTranslate({
@@ -50,12 +59,6 @@ const RateDemo = () => {
       touchevent: 'Touch Event',
     },
   })
-  const [score, setScore] = useState(2)
-  const onChange = (val: number) => {
-    Toast.show({
-      content: val,
-    })
-  }
   const cellStyle: CSSProperties = {
     display: 'flex',
     justifyContent: 'center',
@@ -66,71 +69,62 @@ const RateDemo = () => {
       <div className="demo">
         <h2>{translated.basic}</h2>
         <Cell style={cellStyle}>
-          <Rate defaultValue={3} />
+          <Demo1 />
         </Cell>
 
         <h2>{translated.control}</h2>
         <Cell style={cellStyle}>
-          <Rate value={score} onChange={(value) => setScore(value)} />
+          <Demo2 />
         </Cell>
 
         <h2>{translated.halfStar}</h2>
         <Cell style={cellStyle}>
-          <Rate allowHalf defaultValue={3.5} />
+          <Demo3 />
         </Cell>
 
         <h2>{translated.customIcon}</h2>
         <Cell style={cellStyle}>
-          <Rate checkedIcon={<HeartFill />} defaultValue={3} />
+          <Demo4 />
         </Cell>
 
         <h2>{translated.customQuantity}</h2>
         <Cell style={cellStyle}>
-          <Rate count={6} defaultValue={3} />
+          <Demo5 />
         </Cell>
 
         <h2>{translated.minimumNumber}</h2>
         <Cell style={cellStyle}>
-          <Rate defaultValue={2} min={3} onChange={(num) => console.log(num)} />
+          <Demo6 />
         </Cell>
 
         <h2>{translated.customColor}</h2>
         <Cell style={cellStyle}>
-          <Rate
-            defaultValue={3}
-            checkedIcon={<HeartFill color="rgb(255, 200, 0)" />}
-          />
+          <Demo7 />
         </Cell>
 
         <h2>{translated.disabled}</h2>
         <Cell style={cellStyle}>
-          <Rate disabled defaultValue={3} />
+          <Demo8 />
         </Cell>
 
         <h2>{translated.readOnly}</h2>
         <Cell style={cellStyle}>
-          <Rate defaultValue={3} readOnly />
+          <Demo9 />
         </Cell>
 
         <h2>{translated.event}</h2>
         <Cell style={cellStyle}>
-          <Rate defaultValue={3} onChange={onChange} />
+          <Demo10 />
         </Cell>
 
         <h2>{translated.touchable}</h2>
         <Cell style={cellStyle}>
-          <Rate defaultValue={3} allowHalf touchable />
+          <Demo11 />
         </Cell>
 
         <h2>{translated.touchevent}</h2>
         <Cell style={cellStyle}>
-          <Rate
-            defaultValue={3}
-            touchable
-            onTouchEnd={(e, v) => {
-              console.log(e, v)
-            }}
-          />
+          <Demo12 />
         </Cell>
       </div>
     </>
