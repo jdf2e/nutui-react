@@ -1,17 +1,13 @@
 import { Avatar, Image, Skeleton, Switch } from '@nutui/nutui-react'
 import React, { useState } from 'react'
 
-type Props = {
-  description: string
-  log: string
-}
-const Demo5 = (props: Props) => {
+const Demo5 = () => {
   const [checked, setChecked] = useState(false)
   const changeStatus = (
     value: boolean,
     event: React.MouseEvent<Element, MouseEvent>
   ) => {
-    console.log(`${props.log}：${value}`)
+    console.log(`触发了change事件，开关状态：${value}`)
     setChecked(value)
   }
   return (
@@ -30,7 +26,9 @@ const Demo5 = (props: Props) => {
           />
           <div className="right-content">
             <span className="title">NutUI-React</span>
-            <div className="description">{props.description}</div>
+            <div className="description">
+              一套京东风格的轻量级移动端React组件库，提供丰富的基础组件和业务组件，帮助开发者快速搭建移动应用。
+            </div>
           </div>
         </div>
       </Skeleton>
