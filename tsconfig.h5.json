@@ -1,13 +1,16 @@
 {
   "extends": "./tsconfig.json",
   "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx"
+    "./src/packages",
+    "./src/utils",
+    "./src/locales",
+    "./src/vite-env.d.ts"
   ],
   "exclude": [
-    "./node_modules/**",
-    "src/sites/**",
-    "src/**/*.taro.tsx"
+    "./node_modules",
+    "**/demo.tsx",
+    "**/demo.taro.tsx",
+    "**/*.spec.tsx",
+    "**/demos"
   ]
 }

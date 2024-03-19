@@ -32,23 +32,24 @@ async function dest(file, content) {
 
 // 构建 ES
 async function buildES(p) {
-  const soruceFiels = await glob(
+  const sourceFiles = await glob(
     [
-      'src/packages/**/*.{ts,tsx}',
+      'src/packages/**/*.taro.{ts,tsx}',
+      'src/packages/**/types.ts',
       'src/utils/**/*.{ts,tsx}',
       'src/locales/*.ts',
     ],
     {
       ignore: [
-        'src/packages/**/*.taro.{ts,tsx}',
         'src/packages/**/demo.{ts,tsx}',
+        'src/packages/**/demo.taro.{ts,tsx}',
         'src/packages/**/*.spec.tsx',
         'src/packages/**/demos/**/*',
       ],
     }
   )
 
-  for (const path of soruceFiels) {
+  for (const path of sourceFiles) {
     const code = await swc.transformFileSync(join(__dirname, '../', path), {
       jsc: {
         baseUrl: join(__dirname, '../'),
@@ -67,9 +68,33 @@ async function buildES(p) {
     })
     const relativePath = relative(__dirname, path)
     const ext = extname(relativePath)
-    const writePath = relativePath.replace(ext, '.js')
+    const writePath = relativePath.replace(ext, '.js').replace('.taro', '')
 
     await dest(join('dist/es', writePath.replace('../src/', '')), code.code)
+
+    const transform = (file, api) => {
+      const j = api.jscodeshift.withParser('ts')
+      return j(file.source)
+        .find(j.ImportDeclaration)
+        .forEach((path) => {
+
+          path.node.source.value = path.node.source.value?.replace('.taro')
+        })
+        .toSource()
+    }
+    const files = await glob(['dist/es/packages/**/.js'])
+    for (const file of files) {
+      console.log(file)
+      const result = transform(
+        {
+          source: readFileSync(join(__dirname, '../', file), {
+            encoding: 'utf8',
+          }),
+        },
+        { jscodeshift: j }
+      )
+      await dest(file, result)
+    }
   }
 }
 
@@ -279,22 +304,22 @@ console.log('build ES Module')
 await buildES()
 console.log('build ES Module: ✅')
 
-console.log('build CommonJS')
-await buildCJS()
-console.log('build CommonJS: ✅')
-
-console.log('build UMD')
-await buildUMD()
-console.log('build UMD: ✅')
-
-console.log('Copy Styles')
-copyStyles()
-console.log('Copy Styles: ✅')
-
-console.log('Build CSS')
-await buildCSS()
-console.log('Build CSS: ✅')
-
-console.log('Build Declaration')
-await buildDeclaration()
-console.log('Build Declaration: ✅')
+// console.log('build CommonJS')
+// await buildCJS()
+// console.log('build CommonJS: ✅')
+//
+// console.log('build UMD')
+// await buildUMD()
+// console.log('build UMD: ✅')
+//
+// console.log('Copy Styles')
+// copyStyles()
+// console.log('Copy Styles: ✅')
+//
+// console.log('Build CSS')
+// await buildCSS()
+// console.log('Build CSS: ✅')
+//
+// console.log('Build Declaration')
+// await buildDeclaration()
+// console.log('Build Declaration: ✅')
