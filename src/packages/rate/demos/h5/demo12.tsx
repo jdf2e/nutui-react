@@ -2,7 +2,7 @@ import React from 'react'
 import { Rate } from '@nutui/nutui-react'
 
 const Demo12 = () => {
-  const handleTouchEnd = (event, val) => {
+  const handleTouchEnd = (event: any, val: any) => {
     console.log(event, val)
   }
   return (
