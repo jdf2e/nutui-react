@@ -1,6 +1,15 @@
 import React, { useState } from 'react'
-import { Table } from '@nutui/nutui-react'
+import { Table } from '@nutui/nutui-react-taro'
 
+interface TableColumnProps {
+  key: string
+  title?: string
+  align?: string
+  sorter?: ((a: any, b: any) => number) | boolean | string
+  render?: (rowData: any, rowIndex: number) => string | React.ReactNode
+  fixed?: 'left' | 'right'
+  width?: number
+}
 const Demo12 = () => {
   const [data6, setData6] = useState([
     {

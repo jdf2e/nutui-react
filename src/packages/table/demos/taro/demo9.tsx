@@ -1,6 +1,16 @@
 import React, { useState } from 'react'
 import { Table } from '@nutui/nutui-react-taro'
+import Taro from '@tarojs/taro'
 
+interface TableColumnProps {
+  key: string
+  title?: string
+  align?: string
+  sorter?: ((a: any, b: any) => number) | boolean | string
+  render?: (rowData: any, rowIndex: number) => string | React.ReactNode
+  fixed?: 'left' | 'right'
+  width?: number
+}
 const Demo9 = () => {
   const [data5, setData5] = useState([
     {
@@ -48,7 +58,7 @@ const Demo9 = () => {
   ])
 
   const handleSorter = (item: TableColumnProps, data: Array<any>) => {
-    Toast.show(`${JSON.stringify(item)}`)
+    Taro.showToast({ title: `${JSON.stringify(item)}` })
   }
 
   return (

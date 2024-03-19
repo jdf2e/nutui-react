@@ -1,7 +1,18 @@
 import React, { useState } from 'react'
-import { Table } from '@nutui/nutui-react'
+import { Table } from '@nutui/nutui-react-taro'
+
+interface TableColumnProps {
+  key: string
+  title?: string
+  align?: string
+  sorter?: ((a: any, b: any) => number) | boolean | string
+  render?: (rowData: any, rowIndex: number) => string | React.ReactNode
+  fixed?: 'left' | 'right'
+  width?: number
+}
 
 const Demo11 = () => {
+  const summaryContent = '这是总结栏'
   const [data6, setData6] = useState([
     {
       name: 'Tom',
@@ -69,7 +80,7 @@ const Demo11 = () => {
       columns={columns6}
       data={data6}
       style={{ height: 150 }}
-      summary={translated.summary}
+      summary={summaryContent}
     />
   )
 }

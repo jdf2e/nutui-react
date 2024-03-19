@@ -72,7 +72,7 @@ const Demo11 = () => {
       key: 'age',
     },
   ])
-  const summaryContent = '这是总结烂'
+  const summaryContent = '这是总结栏'
   return (
     <Table
       columns={columns6}

@@ -1,7 +1,17 @@
 import React, { useState } from 'react'
 import { Table } from '@nutui/nutui-react-taro'
 import { TriangleDown } from '@nutui/icons-react-taro'
+import Taro from '@tarojs/taro'
 
+interface TableColumnProps {
+  key: string
+  title?: string
+  align?: string
+  sorter?: ((a: any, b: any) => number) | boolean | string
+  render?: (rowData: any, rowIndex: number) => string | React.ReactNode
+  fixed?: 'left' | 'right'
+  width?: number
+}
 const Demo10 = () => {
   const [data5, setData5] = useState([
     {
@@ -49,7 +59,7 @@ const Demo10 = () => {
   ])
 
   const handleSorter = (item: TableColumnProps, data: Array<any>) => {
-    Toast.show(`${JSON.stringify(item)}`)
+    Taro.showToast({ title: `${JSON.stringify(item)}` })
   }
 
   return (

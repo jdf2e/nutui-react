@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Table } from '@nutui/nutui-react'
+import { Table } from '@nutui/nutui-react-taro'
 
 const Demo8 = () => {
-  const [data1, setData1] = useState([
+  const [data1, setData1] = useState<Array<any>>([
     {
       name: 'Tom',
       sex: '男',
@@ -19,7 +19,7 @@ const Demo8 = () => {
       record: '高中',
     },
   ])
-  const [data3, setData3] = useState([])
+  const [data3, setData3] = useState<Array<any>>([])
   const [columns1, setColumns1] = useState([
     {
       title: '姓名',

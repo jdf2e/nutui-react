@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Table, Button } from '@nutui/nutui-react-taro'
 import { Star } from '@nutui/icons-react-taro'
+import Taro from '@tarojs/taro'
 
 const Demo7 = () => {
   const [columns4, setColumns4] = useState([
@@ -31,7 +32,7 @@ const Demo7 = () => {
       render: () => {
         return (
           <Button
-            onClick={() => Toast.show('hello')}
+            onClick={() => Taro.showToast({ title: 'hello' })}
             size="small"
             type="primary"
           >
