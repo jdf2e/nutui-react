@@ -59,6 +59,11 @@
     align-items: center;
     justify-content: center;
     background: initial;
+    .nut-icon {
+      font-size: $button-default-font-size;
+      width: $button-default-font-size;
+      height: $button-default-font-size;
+    }
   }
 
   &-loading,
@@ -105,22 +110,54 @@
     padding: $button-normal-padding;
   }
 
+  &-xlarge {
+    height: $button-xlarge-height;
+    padding: $button-xlarge-padding;
+    font-size: $button-xlarge-font-size;
+    font-weight: $button-large-font-weight;
+
+    .nut-icon {
+      font-size: $button-xlarge-font-size;
+      width: $button-xlarge-font-size;
+      height: $button-xlarge-font-size;
+    }
+  }
+
   &-large {
     height: $button-large-height;
     padding: $button-large-padding;
     font-size: $button-large-font-size;
+    font-weight: $button-large-font-weight;
+
+    .nut-icon {
+      font-size: $button-large-font-size;
+      width: $button-large-font-size;
+      height: $button-large-font-size;
+    }
   }
 
   &-small {
     height: $button-small-height;
     padding: $button-small-padding;
     font-size: $button-small-font-size;
+
+    .nut-icon {
+      font-size: $button-small-font-size;
+      width: $button-small-font-size;
+      height: $button-small-font-size;
+    }
   }
 
   &-mini {
     height: $button-mini-height;
     padding: $button-mini-padding;
     font-size: $button-mini-font-size;
+
+    .nut-icon {
+      font-size: $button-mini-font-size;
+      width: $button-mini-font-size;
+      height: $button-mini-font-size;
+    }
   }
 
   &-primary {
@@ -308,7 +345,6 @@
 
   &-disabled {
     cursor: not-allowed;
-    font-weight: 400;
     color: #ffffff;
     background: $button-default-disabled;
     border-color: $button-default-disabled;
@@ -321,15 +357,16 @@
 
   &-round {
     border-radius: $button-border-radius;
-  
+
+    &.nut-button-xlarge,
     &.nut-button-large {
       border-radius: $button-large-border-radius;
     }
-  
+
     &.nut-button-small {
       border-radius: $button-small-border-radius;
     }
-  
+
     &.nut-button-mini {
       border-radius: $button-mini-border-radius;
     }

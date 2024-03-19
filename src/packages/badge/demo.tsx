@@ -14,6 +14,7 @@ interface T {
   '1c730248': string
   '915d7b01': string
   f1089312: string
+  a8237653: string
 }
 
 const customTheme = {
@@ -35,6 +36,7 @@ const BadgeDemo = () => {
       '1c730248': '自定义徽标样式',
       '915d7b01': '自定义位置',
       f1089312: '独立展示',
+      a8237653: '填充模式',
     },
     'zh-TW': {
       '8ab98966': '默认用法',
@@ -44,6 +46,7 @@ const BadgeDemo = () => {
       '1c730248': '自定义徽标样式',
       '915d7b01': '自定义位置',
       f1089312: '独立展示',
+      a8237653: '填充模式',
     },
     'en-US': {
       '8ab98966': 'Basic usage',
@@ -53,6 +56,7 @@ const BadgeDemo = () => {
       '1c730248': 'Custom CSS',
       '915d7b01': 'Custom Position',
       f1089312: 'Display Alone',
+      a8237653: 'Fill Mode',
     },
   })
 
@@ -200,6 +204,30 @@ const BadgeDemo = () => {
             <Badge style={{ marginInlineEnd: '40px' }} value={8} />
             <Badge style={{ marginInlineEnd: '40px' }} value={76} />
             <Badge style={{ marginInlineEnd: '40px' }} value="NEW" />
+          </Cell>
+        </Cell.Group>
+
+        <h2>{translated.a8237653}</h2>
+        <Cell.Group>
+          <Cell>
+            <Badge style={{ marginInlineEnd: '40px' }} value={8} color="green">
+              <Avatar icon={<User />} shape="square" />
+            </Badge>
+            <Badge
+              style={{ marginInlineEnd: '40px' }}
+              value={76}
+              fill="outline"
+            >
+              <Avatar icon={<User />} shape="square" />
+            </Badge>
+            <Badge
+              style={{ marginInlineEnd: '40px' }}
+              value="NEW"
+              color="blue"
+              fill="outline"
+            >
+              <Avatar icon={<User />} shape="square" />
+            </Badge>
           </Cell>
         </Cell.Group>
       </div>
