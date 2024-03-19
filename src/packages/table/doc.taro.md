@@ -16,70 +16,7 @@ import { Table } from '@nutui/nutui-react-taro';
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Table } from '@nutui/nutui-react-taro';
-
-interface TableColumnProps {
-  key?: string
-  title?: string
-  align?: string
-  sorter?: ((a: any, b: any) => number) | boolean | string
-  render?: (rowData?: any, rowIndex?: number) => string | React.ReactNode
-}
-
-const App = () => {
-  const [columns1, setColumns1] = useState<Array<TableColumnProps>>([
-    {
-      title: 'ID',
-      key: 'id',
-      render: (record: any, index) => {
-        return index + 1
-      }
-    },
-    {
-      title: '姓名',
-      key: 'name',
-    },
-    {
-      title: '性别',
-      key: 'sex',
-      render: (record: any) => {
-        return (
-          <span style={{ color: record.sex === '女' ? 'blue' : 'green' }}>
-            {record.sex}
-          </span>
-        )
-      },
-    },
-    {
-      title: '学历',
-      key: 'record',
-    },
-  ])
-
-  const [data1, setData1] = useState([
-    {
-      name: 'Tom',
-      sex: '男',
-      record: '小学',
-    },
-    {
-      name: 'Lucy',
-      sex: '女',
-      record: '本科',
-    },
-    {
-      name: 'Jack',
-      sex: '男',
-      record: '高中',
-    },
-  ])
-
-  return <Table columns={columns1} data={data1} />;
-};
-export default App;
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -87,61 +24,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Table } from '@nutui/nutui-react-taro';
-
-interface TableColumnProps {
-  key?: string
-  title?: string
-  align?: string
-  sorter?: ((a: any, b: any) => number) | boolean | string
-  render?: (rowData?: any, rowIndex?: number) => string | React.ReactNode
-}
-
-const App = () => {
-  const [columns2, setColumns2] = useState<Array<TableColumnProps>>([
-    {
-      title: '姓名',
-      key: 'name',
-      align: 'center',
-    },
-    {
-      title: '性别',
-      key: 'sex',
-    },
-    {
-      title: '学历',
-      key: 'record',
-    },
-  ])
-
-  const [data1, setData1] = useState([
-    {
-      name: 'Tom',
-      sex: '男',
-      record: '小学',
-    },
-    {
-      name: 'Lucy',
-      sex: '女',
-      record: '本科',
-    },
-    {
-      name: 'Jack',
-      sex: '男',
-      record: '高中',
-    },
-  ])
-
-  return <Table
-        columns={columns2}
-        data={data1}
-        bordered={false}
-    />;
-};
-export default App;
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -149,67 +32,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Table } from '@nutui/nutui-react-taro';
-
-interface TableColumnProps {
-  key?: string
-  title?: string
-  align?: string
-  sorter?: ((a: any, b: any) => number) | boolean | string
-  render?: (rowData?: any, rowIndex?: number) => string | React.ReactNode
-}
-
-const App = () => {
-  const [columns1, setColumns1] = useState<Array<TableColumnProps>>([
-    {
-      title: '姓名',
-      key: 'name',
-    },
-    {
-      title: '性别',
-      key: 'sex',
-      render: (record: any) => {
-        return (
-          <span style={{ color: record.sex === '女' ? 'blue' : 'green' }}>
-            {record.sex}
-          </span>
-        )
-      },
-    },
-    {
-      title: '学历',
-      key: 'record',
-    },
-  ])
-
-  const [data1, setData1] = useState([
-    {
-      name: 'Tom',
-      sex: '男',
-      record: '小学',
-    },
-    {
-      name: 'Lucy',
-      sex: '女',
-      record: '本科',
-    },
-    {
-      name: 'Jack',
-      sex: '男',
-      record: '高中',
-    },
-  ])
-
-  return <Table
-    columns={columns1}
-    data={data1}
-    summary="这是总结栏"
-/>;
-};
-export default App;
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -217,67 +40,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Table } from '@nutui/nutui-react-taro';
-
-interface TableColumnProps {
-  key?: string
-  title?: string
-  align?: string
-  sorter?: ((a: any, b: any) => number) | boolean | string
-  render?: (rowData?: any, rowIndex?: number) => string | React.ReactNode
-}
-
-const App = () => {
-  const [columns1, setColumns1] = useState<Array<TableColumnProps>>([
-    {
-      title: '姓名',
-      key: 'name',
-    },
-    {
-      title: '性别',
-      key: 'sex',
-      render: (record: any) => {
-        return (
-          <span style={{ color: record.sex === '女' ? 'blue' : 'green' }}>
-            {record.sex}
-          </span>
-        )
-      },
-    },
-    {
-      title: '学历',
-      key: 'record',
-    },
-  ])
-
-  const [data1, setData1] = useState([
-    {
-      name: 'Tom',
-      sex: '男',
-      record: '小学',
-    },
-    {
-      name: 'Lucy',
-      sex: '女',
-      record: '本科',
-    },
-    {
-      name: 'Jack',
-      sex: '男',
-      record: '高中',
-    },
-  ])
-
-  return <Table
-        columns={columns1}
-        data={data1}
-        striped
-    />;
-};
-export default App;
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -285,67 +48,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Table } from '@nutui/nutui-react-taro';
-
-interface TableColumnProps {
-  key?: string
-  title?: string
-  align?: string
-  sorter?: ((a: any, b: any) => number) | boolean | string
-  render?: (rowData?: any, rowIndex?: number) => string | React.ReactNode
-}
-
-const App = () => {
-  const [columns1, setColumns1] = useState<Array<TableColumnProps>>([
-    {
-      title: '姓名',
-      key: 'name',
-    },
-    {
-      title: '性别',
-      key: 'sex',
-      render: (record: any) => {
-        return (
-          <span style={{ color: record.sex === '女' ? 'blue' : 'green' }}>
-            {record.sex}
-          </span>
-        )
-      },
-    },
-    {
-      title: '学历',
-      key: 'record',
-    },
-  ])
-
-  const [data1, setData1] = useState([
-    {
-      name: 'Tom',
-      sex: '男',
-      record: '小学',
-    },
-    {
-      name: 'Lucy',
-      sex: '女',
-      record: '本科',
-    },
-    {
-      name: 'Jack',
-      sex: '男',
-      record: '高中',
-    },
-  ])
-
-  return <Table
-        columns={columns1}
-        data={data1}
-        showHeader={false}
-    />;
-};
-export default App;
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -353,56 +56,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Table } from '@nutui/nutui-react-taro';
-
-interface TableColumnProps {
-  key?: string
-  title?: string
-  align?: string
-  sorter?: ((a: any, b: any) => number) | boolean | string
-  render?: (rowData?: any, rowIndex?: number) => string | React.ReactNode
-}
-
-const App = () => {
-  const [columns1, setColumns1] = useState<Array<TableColumnProps>>([
-    {
-      title: '姓名',
-      key: 'name',
-    },
-    {
-      title: '性别',
-      key: 'sex',
-      render: (record: any) => {
-        return (
-          <span style={{ color: record.sex === '女' ? 'blue' : 'green' }}>
-            {record.sex}
-          </span>
-        )
-      },
-    },
-    {
-      title: '学历',
-      key: 'record',
-    },
-  ])
-
-  const [data2, setData2] = useState([])
-
-  return (
-    <>
-        <Table columns={columns1} data={data2} />
-        <Table
-          columns={columns1}
-          data={data2}
-          noData="这里是自定义展示"
-        />
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -410,79 +64,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Table, Button } from '@nutui/nutui-react-taro';
-import { Star } from '@nutui/icons-react-taro'
-
-const App = () => {
-  const [columns4, setColumns4] = useState([
-    {
-      title: '姓名',
-      key: 'name',
-      align: 'center',
-    },
-    {
-      title: '性别',
-      key: 'sex',
-    },
-    {
-      title: '学历',
-      key: 'record',
-    },
-    {
-      title: '操作',
-      key: 'render',
-    },
-  ])
-
-  const [data4, setData4] = useState([
-    {
-      name: 'Tom',
-      sex: '男',
-      record: '小学',
-      render: () => {
-        return (
-          <Button
-            onClick={() => Toast.show('hello')}
-            size="small"
-            type="primary"
-          >
-            <div>Hello</div>
-          </Button>
-        )
-      },
-    },
-    {
-      name: 'Lucy',
-      sex: '女',
-      record: '本科',
-      render: () => {
-        return <Star size="14px" />
-      },
-    },
-    {
-      name: 'Jack',
-      sex: '男',
-      record: '高中',
-      render: () => {
-        return (
-          <Button
-            type="success"
-            size="small"
-            onClick={() => window.open('https://www.jd.com')}
-          >
-            <div>跳转到京东</div>
-          </Button>
-        )
-      },
-    },
-  ])
-
-  return <Table columns={columns4} data={data4} />;
-};
-export default App;
-```
+<CodeBlock src='taro/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -490,59 +72,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Table, Button } from '@nutui/nutui-react';
-import { Star } from '@nutui/icons-react'
-
-const App = () => {
-  const [data1, setData1] = useState([
-    {
-      name: 'Tom',
-      sex: '男',
-      record: '小学',
-    },
-    {
-      name: 'Lucy',
-      sex: '女',
-      record: '本科',
-    },
-    {
-      name: 'Jack',
-      sex: '男',
-      record: '高中',
-    },
-  ])
-  const [data3, setData3] = useState([]);
-  const [columns1, setColumns1] = useState([
-    {
-      title: '姓名',
-      key: 'name',
-    },
-    {
-      title: '性别',
-      key: 'sex',
-      render: (record: any) => {
-        return (
-          <span style={{ color: record.sex === '女' ? 'blue' : 'green' }}>
-            {record.sex}
-          </span>
-        )
-      },
-    },
-    {
-      title: '学历',
-      key: 'record',
-    },
-  ])
-  setTimeout(() => {
-    setData3(data1)
-  }, 5000)
-
-  return <Table columns={columns1} data={data3} style={{ background: '#fff' }} />;
-};
-export default App;
-```
+<CodeBlock src='taro/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -550,69 +80,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Table, Button } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [data5, setData5] = useState([
-    {
-      name: 'Tom',
-      sex: '男',
-      record: '小学',
-      age: 10,
-    },
-    {
-      name: 'Lucy',
-      sex: '女',
-      record: '本科',
-      age: 30,
-    },
-    {
-      name: 'Jack',
-      sex: '男',
-      record: '高中',
-      age: 4,
-    },
-  ])
-
-   const [columns5, setColumns5] = useState<Array<TableColumnProps>>([
-    {
-      title: '姓名',
-      key: 'name',
-      align: 'center',
-      sorter: true,
-    },
-    {
-      title: '性别',
-      key: 'sex',
-    },
-    {
-      title: '学历',
-      key: 'record',
-    },
-    {
-      title: '年龄',
-      key: 'age',
-      sorter: (row1: any, row2: any) => {
-        return row1.age - row2.age
-      },
-    },
-  ])
-  
-  const handleSorter = (item: TableColumnProps, data: Array<any>) => {
-    Toast.show(`${JSON.stringify(item)}`)
-  }
-
-  return <Table
-          columns={columns5}
-          data={data5}
-          onSort={handleSorter}
-          style={{ background: '#fff' }}
-        />;
-};
-export default App;
-```
+<CodeBlock src='taro/demo9.tsx'></CodeBlock>
 
 :::
 
@@ -620,74 +88,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Table, Button } from '@nutui/nutui-react-taro';
-import { TriangleDown } from '@nutui/icons-react-taro'
-
-const App = () => {
-  const [data5, setData5] = useState([
-    {
-      name: 'Tom',
-      sex: '男',
-      record: '小学',
-      age: 10,
-    },
-    {
-      name: 'Lucy',
-      sex: '女',
-      record: '本科',
-      age: 30,
-    },
-    {
-      name: 'Jack',
-      sex: '男',
-      record: '高中',
-      age: 4,
-    },
-  ])
-
-   const [columns5, setColumns5] = useState<Array<TableColumnProps>>([
-    {
-      title: '姓名',
-      key: 'name',
-      align: 'center',
-      sorter: true,
-    },
-    {
-      title: '性别',
-      key: 'sex',
-    },
-    {
-      title: '学历',
-      key: 'record',
-    },
-    {
-      title: '年龄',
-      key: 'age',
-      sorter: (row1: any, row2: any) => {
-        return row1.age - row2.age
-      },
-    },
-  ])
-  
-  const handleSorter = (item: TableColumnProps, data: Array<any>) => {
-    Toast.show(`${JSON.stringify(item)}`)
-  }
-
-  return <Table
-          columns={columns5}
-          data={data5}
-          onSort={handleSorter}
-          style={{ background: '#fff' }}
-          sorterIcon={<TriangleDown size={12}  />}
-        />;
-};
-export default App;
-```
-
-:::
-
+<CodeBlock src='taro/demo10.tsx'></CodeBlock>
 
 :::
 
@@ -695,166 +96,15 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Table, Button } from '@nutui/nutui-react';
+<CodeBlock src='taro/demo11.tsx'></CodeBlock>
 
-const App = () => {
-  const [data6, setData6] = useState([
-    {
-      name: 'Tom',
-      sex: '男',
-      record: '小学',
-      birthday: '2010-01-01',
-      age: 10,
-    },
-    {
-      name: 'Lucy',
-      sex: '女',
-      record: '本科',
-      birthday: '2000-01-01',
-      age: 30,
-    },
-    {
-      name: 'Jack',
-      sex: '男',
-      record: '高中',
-      birthday: '2020-01-01',
-      age: 4,
-    },
-    {
-      name: 'Sara',
-      sex: '女',
-      record: '高中',
-      birthday: '2020-01-01',
-      age: 6,
-    },
-    {
-      name: 'Frank',
-      sex: '男',
-      record: '幼儿园',
-      birthday: '2020-01-01',
-      age: 3,
-    },
-  ])
-
-   const [columns6, setColumns6] = useState<Array<TableColumnProps>>([
-    {
-      title: '姓名',
-      key: 'name',
-      align: 'center',
-    },
-    {
-      title: '性别',
-      key: 'sex',
-    },
-    {
-      title: '学历',
-      key: 'record',
-    },
-    {
-      title: '生日',
-      key: 'birthday',
-    },
-    {
-      title: '年龄',
-      key: 'age',
-    },
-  ])
-
-  return <Table
-        columns={columns6}
-        data={data6}
-        style={{ height: 150 }}
-        summary={translated.summary}
-      />;
-};
-export default App;
-```
+:::
 
 ### 固定左侧列
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Table, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const [data6, setData6] = useState([
-    {
-      name: 'Tom',
-      sex: '男',
-      record: '小学',
-      birthday: '2010-01-01',
-      age: 10,
-    },
-    {
-      name: 'Lucy',
-      sex: '女',
-      record: '本科',
-      birthday: '2000-01-01',
-      age: 30,
-    },
-    {
-      name: 'Jack',
-      sex: '男',
-      record: '高中',
-      birthday: '2020-01-01',
-      age: 4,
-    },
-    {
-      name: 'Sara',
-      sex: '女',
-      record: '高中',
-      birthday: '2020-01-01',
-      age: 6,
-    },
-    {
-      name: 'Frank',
-      sex: '男',
-      record: '幼儿园',
-      birthday: '2020-01-01',
-      age: 3,
-    },
-  ])
-
-   const [columnsStickLeft, setColumnsStickLeft] = useState<
-    Array<TableColumnProps>
-  >([
-    {
-      title: '姓名',
-      key: 'name',
-      align: 'center',
-      fixed: 'left',
-      width: 100,
-    },
-    {
-      title: '性别',
-      key: 'sex',
-      width: 60,
-    },
-    {
-      title: '学历',
-      key: 'record',
-      width: 100,
-    },
-    {
-      title: '生日',
-      key: 'birthday',
-      width: 100,
-    },
-    {
-      title: '年龄',
-      key: 'age',
-      width: 100,
-    },
-  ])
-
-  return <Table columns={columnsStickLeft} data={data6} />;
-};
-export default App;
-```
+<CodeBlock src='taro/demo12.tsx'></CodeBlock>
 
 :::
 
@@ -862,85 +112,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Table, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const [data6, setData6] = useState([
-    {
-      name: 'Tom',
-      sex: '男',
-      record: '小学',
-      birthday: '2010-01-01',
-      age: 10,
-    },
-    {
-      name: 'Lucy',
-      sex: '女',
-      record: '本科',
-      birthday: '2000-01-01',
-      age: 30,
-    },
-    {
-      name: 'Jack',
-      sex: '男',
-      record: '高中',
-      birthday: '2020-01-01',
-      age: 4,
-    },
-    {
-      name: 'Sara',
-      sex: '女',
-      record: '高中',
-      birthday: '2020-01-01',
-      age: 6,
-    },
-    {
-      name: 'Frank',
-      sex: '男',
-      record: '幼儿园',
-      birthday: '2020-01-01',
-      age: 3,
-    },
-  ])
-
-   const [columnsStickRight, setColumnsStickRight] = useState<
-    Array<TableColumnProps>
-  >([
-    {
-      title: '姓名',
-      key: 'name',
-      align: 'center',
-      width: 100,
-    },
-    {
-      title: '性别',
-      key: 'sex',
-      width: 60,
-    },
-    {
-      title: '学历',
-      key: 'record',
-      width: 100,
-    },
-    {
-      title: '生日',
-      key: 'birthday',
-      width: 100,
-    },
-    {
-      title: '年龄',
-      key: 'age',
-      fixed: 'right',
-      width: 60,
-    },
-  ])
-
-  return <Table columns={columnsStickRight} data={data6} />;
-};
-export default App;
-```
+<CodeBlock src='taro/demo13.tsx'></CodeBlock>
 
 :::
 
