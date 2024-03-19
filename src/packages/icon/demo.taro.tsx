@@ -1,36 +1,16 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
 import '@nutui/icons-react-taro/dist/style_iconfont.css'
-import { IconFontConfig, IconFont } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Cell, Toast } from '@/packages/nutui.react.taro'
-import '@/packages/icon/demo.scss'
 import Header from '@/sites/components/header'
-import { camelCase } from '@/utils/camel-case'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
-
-const generateCopyText = (name: string) => {
-  return `<${camelCase(name, { pascalCase: true })} />`
-}
-const generateAMCopyText = (icon: any) => {
-  return `<${camelCase(icon.name, {
-    pascalCase: true,
-  })} className="${`nut-icon-${icon['animation-name']}  nut-icon-${icon['animation-time']}`}" />`
-}
-const copyTag = (text: string) => {
-  const input = document.createElement('input')
-  document.body.appendChild(input)
-  input.setAttribute('value', text)
-  input.select()
-  if (document.execCommand('copy')) {
-    document.execCommand('copy')
-  }
-  document.body.removeChild(input)
-}
+import Demo6 from './demos/taro/demo6'
+import Demo7 from './demos/taro/demo7'
 
 const style = `
 .nut-cell > .nutui-iconfont, .nut-icon {
@@ -57,6 +37,9 @@ ul li  .nut-icon {
 ul li span .nutui-iconfont {
   margin: 16px 0 16px;
 }
+
+
+
 `
 
 const IconDemo = () => {
@@ -139,63 +122,8 @@ const IconDemo = () => {
         <Cell style={{ alignItems: 'center' }}>
           <Demo5 />
         </Cell>
-        {(IconFontConfig as any).data.map((item: any) => {
-          return (
-            <Cell.Group key={item.name} title={item.name}>
-              <Cell>
-                <ul>
-                  {item.icons.map((icon: any) => {
-                    return (
-                      <li
-                        key={Math.random()}
-                        onClick={() => {
-                          copyTag(generateCopyText(icon))
-                          setState({
-                            ...state,
-                            visible: true,
-                            msg: generateCopyText(icon),
-                          })
-                        }}
-                      >
-                        <IconFont name={icon} />
-                      </li>
-                    )
-                  })}
-                </ul>
-              </Cell>
-            </Cell.Group>
-          )
-        })}
-        {(IconFontConfig as any).style.map((item: any) => {
-          return (
-            <Cell.Group key={item.name} title={item.name}>
-              <Cell>
-                <ul>
-                  {item.icons.map((icon: any) => {
-                    return (
-                      <li
-                        key={icon.name}
-                        onClick={() => {
-                          copyTag(generateAMCopyText(icon))
-                          setState({
-                            ...state,
-                            visible: true,
-                            msg: generateCopyText(icon),
-                          })
-                        }}
-                      >
-                        <IconFont
-                          name={icon.name}
-                          className={`nut-icon-${icon['animation-name']}  nut-icon-${icon['animation-time']}`}
-                        />
-                      </li>
-                    )
-                  })}
-                </ul>
-              </Cell>
-            </Cell.Group>
-          )
-        })}
+        <Demo6 />
+        <Demo7 />
       </div>
     </>
   )
