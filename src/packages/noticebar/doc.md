@@ -16,20 +16,7 @@ import { NoticeBar } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react';
-
-const App = () => {
-    const text = 'NutUI-React 是京东风格的 React 移动端组件库，开发和服务于移动 Web 界面的企业级产品。'
-    return (
-      <>
-        <NoticeBar content={text} />
-      </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -37,26 +24,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react';
-import { ArrowRight } from '@nutui/icons-react'
-
-const App = () => {
-    const text = 'NutUI-React 是京东风格的 React 移动端组件库，开发和服务于移动 Web 界面的企业级产品。'
-    const textShort = 'NutUI-React 是移动端组件库'
-    return (
-      <>
-        <NoticeBar content={text} align="center" wrap rightIcon={<ArrowRight width="12px" height="12px"  />} />
-        <br />
-        <NoticeBar content={text} align="center" rightIcon={<ArrowRight width="12px" height="12px"  />} />
-        <br />
-        <NoticeBar content={textShort} align="center" rightIcon={<ArrowRight width="12px" height="12px"  />} />
-      </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -64,25 +32,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar, ConfigProvider } from '@nutui/nutui-react';
-
-const App = () => {
-    const text = 'NutUI-React 是京东风格的 React 移动端组件库，开发和服务于移动 Web 界面的企业级产品。'
-    return (
-      <ConfigProvider
-          theme={{
-            nutuiNoticebarBackground: '#EDF4FF',
-            nutuiNoticebarColor: '#3768FA',
-          }}
-        >
-          <NoticeBar content={translated.text} />
-        </ConfigProvider>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -92,26 +42,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react';
-
-const App = () => {
-    return (
-      <>
-        <NoticeBar
-            content="NutUI 是京东风格的移动端组件库"
-            scrollable
-        />
-
-        <NoticeBar 
-            content="NutUI-React 是京东风格的 React 移动端组件库，开发和服务于移动 Web 界面的企业级产品。" scrollable={false} 
-        />
-      </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -119,33 +50,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar, Image } from '@nutui/nutui-react';
-import { Failure } from '@nutui/icons-react';
-
-const App = () => {
-    const hello = () => {
-        console.log('hello world')
-    }
-    return (
-      <>
-       <NoticeBar closeable onClick={hello}>
-          NutUI-React 是京东风格的 React 移动端组件库，开发和服务于移动 Web 界面的企业级产品。
-        </NoticeBar>
-        <br />
-        <NoticeBar closeable rightIcon={<Failure />} onClick={hello}>
-          NutUI-React 是京东风格的 React 移动端组件库，开发和服务于移动 Web 界面的企业级产品。
-        </NoticeBar>
-        <br />
-        <NoticeBar leftIcon={<Image src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png" />}>
-          <a href="https://www.jd.com">京东商城</a>
-        </NoticeBar>
-      </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -155,19 +60,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react';
-
-const App = () => {
-    const text = 'NutUI-React 是京东风格的 React 移动端组件库，开发和服务于移动 Web 界面的企业级产品。'
-    
-    return (
-      <NoticeBar content={text} wrap />
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -175,37 +68,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react';
-
-const App = () => {
-    const horseLamp1 = [
-        'NoticeBar 公告栏',
-        'Cascader 级联选择',
-        'DatePicker 日期选择器',
-        'CheckBox 复选按钮',
-      ]
-    const go = (item: any) => {
-        console.log(item)
-    }
-    return (
-      <div className="interstroll-list">
-          <NoticeBar
-            direction="vertical"
-            list={horseLamp1}
-            speed={10}
-            duration={1000}
-            onClick={(e) => {
-              go(e.target.innerHtml)
-            }}
-            closeable
-          />
-        </div>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -213,33 +76,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar, Image } from '@nutui/nutui-react';
-
-const App = () => {
-     const horseLamp2 = ['NoticeBar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮'];
-    return (
-      <>
-        <NoticeBar
-            direction="vertical"
-            list={horseLamp2}
-            speed={10}
-            duration={2000}
-            leftIcon={<Image src="https://img13.360buyimg.com/imagetools/jfs/t1/72082/2/3006/1197/5d130c8dE1c71bcd6/e48a3b60804c9775.png" />}
-            onClick={(e) => {
-              console.log('listClick', e.target)
-            }}
-            onItemClick={(e, val) => {
-              console.log('dom', e.target)
-              console.log('value', val)
-            }}
-        />
-      </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -247,38 +84,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react';
-
-const App = () => {
-    const  horseLamp3 = ['NoticeBar 公告栏', 'Cascader 级联选择', 'DatePicker 日期选择器', 'CheckBox 复选按钮']
-
-    return (
-      <>
-        <NoticeBar direction="vertical" height={50} speed={10} duration={1000} 
-        closeable
-        onClose={() => {console.log('close')}}>
-        {horseLamp3.map((item, index) => {
-            return (
-            <div
-                className="custom-item"
-                style={{ height: '50px', lineHeight: '50px' }}
-                key={index}
-                onClick={() => {
-                    console.log('custom-inner', item)
-                }}
-            >
-                {item}
-            </div>
-            )
-        })}
-        </NoticeBar>
-        </>
-    )
-};
-export default App
-```
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
 :::
 
@@ -286,36 +92,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { NoticeBar } from '@nutui/nutui-react';
-import { Fabulous } from '@nutui/icons-react';
-
-const App = () => {
-     const horseLamp1 = [
-        'NoticeBar 公告栏',
-        'Cascader 级联选择',
-        'DatePicker 日期选择器',
-        'CheckBox 复选按钮',
-      ]
-    return (
-      <>
-        <NoticeBar
-            className="custom"
-            direction="vertical"
-            list={horseLamp1}
-            speed={10}
-            duration={1000}
-            onItemClick={(e, v) => {
-              console.log('onclick-custom', v)
-            }}
-            rightIcon={<Fabulous width={16} height={16} color="#f0250f" />}
-        />
-        </>
-    )
-};
-export default App
-```
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
 
 :::
 
@@ -331,6 +108,7 @@ export default App
 | closeable | 是否启用关闭模式 | `boolean` | `false` |
 | leftIcon | 左边的 icon，closeable 模式下默认为空 | `ReactNode` | `-` |
 | rightIcon | 右边的 icon，在 closeable 模式下默认为 `<Close />` | `ReactNode` | `-` |
+| right | 区别于rightIcon，为右边自定义区域，仅用于 direction='horizontal' 模式 | `ReactNode` | `-` |
 | delay | 延时多少秒 | `string` \| `number` | `1` |
 | scrollable | 是否可以滚动 | `boolean` | `true` |
 | speed | 滚动速率 (px/s) | `number` | `50` |
