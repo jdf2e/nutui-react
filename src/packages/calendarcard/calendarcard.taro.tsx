@@ -109,9 +109,6 @@ export const CalendarCard = React.forwardRef<
       ? (valueToRange(defaultValue) as CalendarCardDay[])
       : undefined,
     finalValue: [],
-    onChange: (val: CalendarCardDay[]) => {
-      setInnerValue(val)
-    },
   })
 
   const change = (v: CalendarCardDay[]) => {
