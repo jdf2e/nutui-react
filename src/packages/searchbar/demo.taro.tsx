@@ -14,9 +14,6 @@ import Demo7 from './demos/taro/demo7'
 const SearchBarDemo = () => {
   const [translated] = useTranslate({
     'zh-CN': {
-      basePlaceholder: '上京东，购好物',
-      text: '文本',
-      test: '测试',
       title1: '基础用法',
       title2: '搜索框形状及最大长度',
       title3: '搜索框内外背景设置',
@@ -26,9 +23,6 @@ const SearchBarDemo = () => {
       title7: '自定义设置',
     },
     'zh-TW': {
-      basePlaceholder: '上京東，購好物',
-      text: '文字',
-      test: '測試',
       title1: '基礎用法',
       title2: '蒐索框形狀及最大長度',
       title3: '蒐索框內外背景設定',
@@ -38,21 +32,15 @@ const SearchBarDemo = () => {
       title7: '自定義設定',
     },
     'en-US': {
-      basePlaceholder: 'Go to jd.com and buy good things',
-      text: 'text',
-      test: 'test',
-      title1: 'basic usage',
-      title2: 'search box shape and maximum length',
-      title3: 'background settings inside and outside the search box',
-      title4: 'search box text settings',
-      title5: 'custom icon settings',
-      title6: 'data change monitoring',
-      title7: 'custom settings',
+      title1: 'Basic Usage',
+      title2: 'Search Box Shape And Maximum Length',
+      title3: 'Background Settings Inside And Outside The Search Box',
+      title4: 'Search Box Text Settings',
+      title5: 'Custom Icon Settings',
+      title6: 'Data Change Monitoring',
+      title7: 'Custom Settings',
     },
     'id-ID': {
-      basePlaceholder: 'pergi ke jd.com, membeli barang baik',
-      text: 'teks',
-      test: 'tes',
       title1: 'penggunaan dasar',
       title2: 'bentuk kotak pencarian dan panjang maksimum',
       title3: 'pengaturan latar belakang di dalam dan diluar kotak pencarian',
