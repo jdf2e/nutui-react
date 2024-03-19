@@ -2,13 +2,13 @@ import React, { useState } from 'react'
 import { Tabs } from '@nutui/nutui-react-taro'
 
 const Demo22 = () => {
-  const [tab1value, setTab1value] = useState('0')
+  const [tab1value, setTab1value] = useState<string | number>('0')
   return (
     <>
       <Tabs
         value={tab1value}
         onChange={(value) => {
-          setTab1value(paneKey)
+          setTab1value(value)
         }}
         style={{ '--nutui-tabs-titles-font-size': '20px' }}
       >
@@ -19,7 +19,7 @@ const Demo22 = () => {
       <Tabs
         value={tab1value}
         onChange={(value) => {
-          setTab1value(paneKey)
+          setTab1value(value)
         }}
         style={{ '--nutui-tabs-titles-font-size': '12px' }}
       >

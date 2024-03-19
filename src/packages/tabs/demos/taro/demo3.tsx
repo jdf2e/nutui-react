@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Tabs } from '@nutui/nutui-react-taro'
 
 const Demo3 = () => {
-  const [tab1value, setTab1value] = useState('0')
+  const [tab1value, setTab1value] = useState<string | number>('0')
   return (
     <>
       <Tabs

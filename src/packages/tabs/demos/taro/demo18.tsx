@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Tabs } from '@nutui/nutui-react-taro'
 
 const Demo18 = () => {
-  const [tab5value, setTab5value] = useState('0')
+  const [tab5value, setTab5value] = useState<string | number>('0')
   const list5 = Array.from(new Array(2).keys())
   return (
     <>
@@ -16,8 +16,7 @@ const Demo18 = () => {
       >
         {list5.map((item) => (
           <Tabs.TabPane key={item} title={`Tab ${item}`}>
-            {' '}
-            Tab {item}{' '}
+            Tab {item}
           </Tabs.TabPane>
         ))}
       </Tabs>

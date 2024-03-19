@@ -1,10 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { Tabs, Swiper } from '@nutui/nutui-react-taro'
 
 const Demo12 = () => {
-  const [tab2value, setTab2value] = useState('0')
-  const swiperRef = useRef(null)
-  const [tabIndex, setTabIndex] = useState(0)
+  const swiperRef = useRef<React.ElementRef<typeof Swiper> | null>(null)
+  const [tabIndex, setTabIndex] = useState<string | number>(0)
   return (
     <>
       <Tabs
@@ -19,9 +18,10 @@ const Demo12 = () => {
         <Tabs.TabPane title="Tab 3" />
       </Tabs>
       <Swiper
-        initPage={0}
+        defaultValue={0}
         loop={false}
         ref={swiperRef}
+        height={41}
         onChange={(page) => {
           setTabIndex(page)
         }}
