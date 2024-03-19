@@ -16,27 +16,7 @@ import { Toast } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Toast, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const textToast = (msg: string) => {
-      Toast.show(msg);
-    }
-    return (
-        <>
-        <Cell
-          title="Text文字提示"
-          onClick={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => textToast('网络失败，请稍后再试~')}
-        />
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -44,30 +24,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Toast, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const titleToast = (msg: string) => {
-      Toast.show({
-      	content: msg,
-        title: '标题提示'
-      })
-    }
-    return (
-        <>
-        <Cell
-          title="Toast 标题提示"
-          onClick={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => titleToast('Toast 标题提示')}
-        />
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -75,30 +32,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Toast, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const successToast = (msg: string) => {
-      Toast.show({
-        content: msg,
-        icon: 'success'
-      });
-    }
-    return (
-        <>
-        <Cell
-          title="Success 成功提示"
-          onClick={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => successToast('成功提示')}
-        />
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -106,30 +40,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Toast, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const errorToast = (msg: string) => {
-      Toast.show({
-        content: msg,
-        icon: 'fail'
-      });
-    }
-    return (
-        <>
-        <Cell
-          title="Error 失败提示"
-          onClick={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => errorToast('失败提示')}
-        />
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -137,30 +48,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Toast, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const warningToast = (msg: string) => {
-      Toast.show({
-        content: msg,
-        icon: 'warn'
-      });
-    }
-    return (
-        <>
-            <Cell
-              title=" Warning 警告提示"
-              onClick={(
-                  event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-              ) => warningToast('警告提示')}
-            />
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -168,30 +56,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Toast, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const loadingToast = (msg: string) => {
-      Toast.show({
-        content: msg,
-        icon: 'loading'
-      });
-    }
-    return (
-        <>
-            <Cell
-              title=" Loading 加载提示"
-              onClick={(
-                  event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-              ) => loadingToast('加载中')}
-            />
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -199,52 +64,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Toast, Cell, Button } from '@nutui/nutui-react';
-
-const App = () => {
-    const duringToast = (msg: string) => {
-      Toast.show({
-        content: msg,
-        duration: 10
-      });
-    }
-    
-    const permanentToast = (msg: string) => {
-      Toast.show({
-        content: msg,
-        duration: 0
-      });
-    }
-    
-    return (
-        <>
-            <Cell
-              title="设置展示时长为10秒提示"
-              onClick={(
-                  event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-              ) => duringToast('设置展示时长为10秒')}
-            />
-            <Cell
-              title="Toast 不消失"
-              onClick={(
-                  event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-              ) => permanentToast('Toast 不消失') }
-            />
-            <Button
-              style={{ margin: 8 }}
-              type="primary"
-              shape="round"
-              onClick={() => {
-                  Toast.clear()
-              }}
-            >隐藏Toast</Button>
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -252,32 +72,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Toast, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const toastBottom = (msg: string) => {
-      Toast.show({
-        content: msg,
-        icon: 'loading',
-        style: {
-          '--nutui-toast-inner-top': '90%'
-        }
-      });
-    }
-    return (
-        <Cell
-        title='Toast 自定义底部高度'
-        
-        onClick={(
-            event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => toastBottom('自定义距离')}
-        />
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -285,37 +80,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Toast, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-    const iconToast = (msg: string) => {
-      Toast.show({
-        content: msg,
-        style: {
-          '--nutui-overlay-bg-color': 'rgba(0, 0, 0, 0)'
-        },
-        closeOnOverlayClick: true,
-        onClose: () => {
-          console.log('closeToast')
-        },
-      });
-    }
-    return (
-        <>
-            <Cell
-            title="Loading状态非透明遮罩"
-            
-            onClick={(
-                event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-            ) => iconToast('加载状态非透明遮罩')}
-            />
-        </>
-    )
-}
-export default App
-```
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
 :::
 
@@ -323,32 +88,7 @@ export default App
 
 :::demo
 
-```tsx
-import  React, {useState} from "react";
-import { Toast, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const showToast = (mode) => {
-    Toast.show({
-      content: `Let's try ABCDEFGHIJKLMN here.`,
-      wordBreak: mode
-    });
-  }
-  return (
-    <Cell.Group>
-      <Cell
-        title="换行时截断单词"
-        onClick={() => showToast('break-all')}
-      />
-      <Cell
-        title="换行时不截断单词"
-        onClick={() => showToast('break-word')}
-      />
-    </Cell.Group>
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
 
 :::
 
