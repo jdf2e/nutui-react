@@ -41,11 +41,11 @@ export default defineConfig({
       afterBuild: () => {
         fse
           .readFile(
-            './dist/types/packages/nutui.taro.react.build.d.ts',
+            './dist/types/packages/nutui.react.build.taro.d.ts',
             'utf-8'
           )
           .then((data: string) => {
-            fse.remove('./dist/types/packages/nutui.taro.react.build.d.ts')
+            fse.remove('./dist/types/packages/nutui.react.build.taro.d.ts')
             const types: string[] = []
             componentsConfig.nav.forEach((item: any) => {
               item.packages.forEach((element: any) => {
@@ -98,7 +98,7 @@ export default defineConfig({
       ],
     },
     lib: {
-      entry: 'src/packages/nutui.taro.react.build.ts',
+      entry: 'src/packages/nutui.react.build.taro.ts',
     },
   },
 })

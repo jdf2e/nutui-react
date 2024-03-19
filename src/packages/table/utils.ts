@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react'
 import { TableColumnProps } from './types'
 
-export default function useTableSticky(
+export function useTableSticky(
   columns: Array<TableColumnProps>,
   rtl: boolean = false
 ) {

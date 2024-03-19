@@ -6,7 +6,11 @@
     "src/**/*.tsx"
   ],
   "exclude": [
-    "./node_modules/**",
-    "src/sites/**"
+    "./node_modules",
+    "src/sites",
+    "**/demo.tsx",
+    "**/demo.taro.tsx",
+    "**/*.spec.tsx",
+    "**/demos"
   ]
 }

@@ -14,12 +14,11 @@ config.nav.map((item) => {
   item.packages.forEach((element) => {
     let { name, show, type, taro, exportEmpty, exclude } = element
     if (exclude) return
-    // if (show ) {
+
     importStr += `import ${name} from '@/packages/${name.toLowerCase()}/index.taro'\n`
     importScssStr += `import '@/packages/${name.toLowerCase()}/${name.toLowerCase()}.scss'\n`
     packages.push(name)
-    // }
-    // if (show) {
+
     glob
       .sync(
         path.join(__dirname, `../../src/packages/${name.toLowerCase()}/`) +
@@ -45,7 +44,7 @@ let fileStrBuild = `${importStr}
 export { ${packages.join(',')} };`
 
 fs.outputFile(
-  path.resolve(__dirname, '../../src/packages/nutui.taro.react.build.ts'),
+  path.resolve(__dirname, '../../src/packages/nutui.react.build.taro.ts'),
   fileStrBuild,
   'utf8',
   (error) => {
@@ -69,7 +68,7 @@ let taroScssfileStr = `
 ${importScssStr}
 export default { "NutUI":"NutUI-Taro" };`
 fs.outputFile(
-  path.resolve(__dirname, '../../src/packages/nutui.react.taro.scss.ts'),
+  path.resolve(__dirname, '../../src/packages/nutui.react.scss.taro.ts'),
   taroScssfileStr,
   'utf8',
   (error) => {

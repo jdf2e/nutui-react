@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import type { MouseEvent } from 'react'
 import classNames from 'classnames'
-import { DataContext } from './UserContext'
+import { DataContext } from './context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type RowEventType = 'row' | 'col'

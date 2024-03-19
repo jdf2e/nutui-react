@@ -14,7 +14,7 @@ import {
 } from '@tarojs/components'
 import { MaskClose } from '@nutui/icons-react-taro'
 import Taro, { getEnv, ENV_TYPE } from '@tarojs/taro'
-import { formatNumber } from './util'
+import { formatNumber } from './utils'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'

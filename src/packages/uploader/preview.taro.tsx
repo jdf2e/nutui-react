@@ -7,8 +7,8 @@ import {
 } from '@nutui/icons-react-taro'
 import { Image } from '@tarojs/components'
 import Progress from '@/packages/progress/index.taro'
-import { FileItem } from '@/packages/uploader/file-item'
-import { ERROR } from '@/packages/uploader/upload'
+import { FileItem } from '@/packages/uploader/file-item.taro'
+import { ERROR } from '@/packages/uploader/utils'
 
 export const Preview: React.FunctionComponent<any> = ({
   fileList,

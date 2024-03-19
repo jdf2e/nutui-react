@@ -8,7 +8,7 @@ import config from './src/config.json'
 const entries: any = {
   'nutui-react.es': path.join(
     __dirname,
-    `./src/packages/nutui.taro.react.build.ts`
+    `./src/packages/nutui.react.build.taro.ts`
   ),
 }
 const outputEntries: any = {}

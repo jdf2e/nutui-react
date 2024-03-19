@@ -8,7 +8,7 @@ import {
 } from '@/packages/configprovider/configprovider.taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
-import useTableSticky from './useTableSticky'
+import { useTableSticky } from './utils'
 
 export type TableProps = BasicTableProps
 
