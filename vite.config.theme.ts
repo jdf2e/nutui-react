@@ -1,10 +1,9 @@
 import { defineConfig } from 'vite'
+import { join, resolve } from 'path'
 import reactRefresh from '@vitejs/plugin-react'
 import autoprefixer from 'autoprefixer'
-import path from 'path'
 import atImport from 'postcss-import'
 
-const { resolve } = path
 let fileStr = `@import "@/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";`
 const projectID = process.env.VITE_APP_PROJECT_ID
 if (projectID) {
@@ -44,7 +43,7 @@ export default defineConfig({
       },
       postcss: {
         plugins: [
-          atImport({ path: path.join(__dirname, 'src`') }),
+          atImport({ path: join(__dirname, 'src`') }),
           autoprefixer({
             overrideBrowserslist: [
               '> 0.5%',

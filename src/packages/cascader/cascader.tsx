@@ -11,7 +11,7 @@ import classNames from 'classnames'
 import { Loading, Checklist } from '@nutui/icons-react'
 import { Popup, PopupProps } from '@/packages/popup/popup'
 import { Tabs } from '@/packages/tabs/tabs'
-import { convertListToOptions } from './helper'
+import Tree, { convertListToOptions } from './utils'
 import {
   CascaderPane,
   CascaderOption,
@@ -19,7 +19,6 @@ import {
   CascaderOptionKey,
   CascaderFormat,
 } from './types'
-import Tree from './tree'
 import { ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 

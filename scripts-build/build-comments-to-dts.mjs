@@ -1,22 +1,27 @@
 /**
  * 向生成的组件类型文件中注入注释
  */
-const fse = require('fs-extra')
-const path = require('path')
-const j = require('jscodeshift')
-const TARO = process.env.TARO
+import * as path from 'path'
+import fse from 'fs-extra'
+import j from 'jscodeshift'
+import markdownit from 'markdown-it'
+import { fileURLToPath } from 'url'
+import { dirname } from 'path'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 /**
  * 通过 cofnig.json 获取所有组件的数据
  */
 function readAllComponents() {
-  const config = require('../src/config.json')
+  const config = JSON.parse(fse.readFileSync(path.join(__dirname, '../src/config.json')).toString())
   const components = config.nav.reduce(function (accumulator, currentValue) {
-    currentValue.packages.forEach((package) => {
-      if (package.exclude || package.version !== '2.0.0') {
+    currentValue.packages.forEach((pkg) => {
+      if (pkg.exclude || pkg.version !== '2.0.0') {
         return
       }
-      accumulator.push(package)
+      accumulator.push(pkg)
     })
     return accumulator
   }, [])
@@ -38,7 +43,7 @@ function readComponentDocument(docFile) {
  * @returns {{}} 返回 markdownIt 的 token. 当文档中存在父子组件，都会提取出来
  */
 function extractPropsTable(doc) {
-  const MarkdownIt = require('markdown-it')()
+  const MarkdownIt = markdownit()
   let sources = MarkdownIt.parse(doc, {})
   const tables = {}
   sources.forEach((token, index) => {
@@ -138,12 +143,7 @@ function getDtsPath(key) {
   } else {
     name = key.toLowerCase().replace('.', '')
   }
-  const file = path.join(
-    __dirname,
-    '../dist/types/packages',
-    name,
-    name + (TARO ? '.taro.d.ts' : '.d.ts')
-  )
+  const file = path.join(__dirname, '../dist/es/packages', name, name + '.d.ts')
   return file
 }
 
@@ -162,7 +162,7 @@ function getComponentName(key) {
  *    step b: 提取文档中的 Props 相关的表格，并转换为 JSON 数据
  *    step c: 添加注释
  */
-function codeShift() {
+export function codeShift(env) {
   const components = readAllComponents()
   components.forEach((component) => {
     const { name } = component
@@ -170,7 +170,7 @@ function codeShift() {
       __dirname,
       '../src/packages',
       name.toLowerCase(),
-      TARO ? 'doc.taro.md' : 'doc.md'
+      env === 'Taro' ? 'doc.taro.md' : 'doc.md'
     )
     if (fse.pathExistsSync(componentDocumentPath)) {
       const tables = extractPropsTable(
@@ -190,5 +190,3 @@ function codeShift() {
     }
   })
 }
-
-codeShift()

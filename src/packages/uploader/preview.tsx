@@ -2,7 +2,7 @@ import React from 'react'
 import { Del, Failure, Link as LinkIcon, Loading } from '@nutui/icons-react'
 import Progress from '@/packages/progress'
 import { FileItem } from '@/packages/uploader/file-item'
-import { ERROR } from '@/packages/uploader/upload'
+import { ERROR } from '@/packages/uploader/utils'
 
 export const Preview: React.FunctionComponent<any> = ({
   fileList,

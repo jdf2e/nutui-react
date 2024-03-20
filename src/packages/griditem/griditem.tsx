@@ -6,7 +6,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
-import GridContext from '../grid/grid.context'
+import GridContext from '../grid/context'
 import { BasicComponent } from '@/utils/typings'
 import { pxCheck } from '@/utils/px-check'
 
