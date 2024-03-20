@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { PullToRefresh, Toast } from '@nutui/nutui-react-taro'
+import { More } from '@nutui/icons-react-taro'
 
 const Demo1 = () => {
   const [list] = useState([1, 2, 3, 4, 5, 6, 7])
@@ -22,6 +23,20 @@ const Demo1 = () => {
             resolve('done')
           })
         }
+        renderIcon={(status) => {
+          return (
+            <>
+              {(status === 'pulling' || status === 'complete') && (
+                <img
+                  alt=""
+                  style={{ height: '26px', width: '36px' }}
+                  src="https://img13.360buyimg.com/imagetools/jfs/t1/219180/19/37902/438/65fa8cbbF5278d022/5eabe69b64bba791.png"
+                />
+              )}
+              {(status === 'canRelease' || status === 'refreshing') && <More />}
+            </>
+          )
+        }}
       >
         {list.map((item) => (
           <div
