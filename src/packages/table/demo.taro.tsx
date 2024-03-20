@@ -54,7 +54,7 @@ const TableDemo = () => {
   })
 
   const [show, setShow] = useState(false)
-  const [toastMsg, setToastMsg] = useState('')
+  const [toastMsg] = useState('')
 
   return (
     <>
