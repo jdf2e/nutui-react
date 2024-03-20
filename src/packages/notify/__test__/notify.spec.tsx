@@ -5,7 +5,7 @@ import { render, waitFor, fireEvent } from '@testing-library/react'
 import Cell from '@/packages/cell'
 import Notify from '@/packages/notify'
 
-const onClickNotify = jest.fn((type, message, options?) => {
+const onClickNotify = vi.fn((type, message, options?) => {
   switch (type) {
     case 'text':
       Notify.text(message, options)

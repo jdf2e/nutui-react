@@ -1,6 +1,6 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`Cascader change tab 1`] = `
+exports[`Cascader > change tab 1`] = `
 <div>
   <div
     class="nut-overlay"
@@ -83,7 +83,7 @@ exports[`Cascader change tab 1`] = `
 </div>
 `;
 
-exports[`Cascader change tab 2`] = `
+exports[`Cascader > change tab 2`] = `
 <div>
   <div
     class="nut-overlay"
@@ -166,15 +166,15 @@ exports[`Cascader change tab 2`] = `
 </div>
 `;
 
-exports[`Cascader options 1`] = `<div />`;
+exports[`Cascader > options 1`] = `<div />`;
 
-exports[`Cascader options with format 1`] = `<div />`;
+exports[`Cascader > options with format 1`] = `<div />`;
 
-exports[`Cascader options with valueKey/textKey/childrenKey 1`] = `<div />`;
+exports[`Cascader > options with valueKey/textKey/childrenKey 1`] = `<div />`;
 
-exports[`Cascader value 1`] = `<div />`;
+exports[`Cascader > value 1`] = `<div />`;
 
-exports[`Cascader visible true 1`] = `
+exports[`Cascader > visible true 1`] = `
 <div>
   <div
     class="nut-overlay"
@@ -363,7 +363,7 @@ exports[`Cascader visible true 1`] = `
 </div>
 `;
 
-exports[`Cascader visible true 2`] = `
+exports[`Cascader > visible true 2`] = `
 <div
   class="active nut-cascader-item"
 >

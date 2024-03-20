@@ -14,165 +14,51 @@ import { Pagination } from '@nutui/nutui-react';
 
 ### 基礎用法
 
-通過 value 來綁定當前頁碼時，組件為受控狀態，分頁顯示取決於傳入的 value ，一般搭配 onChange 使用。 不需要受控時，可通過 defaultValue 指定當前頁碼 
+通過 value 來綁定當前頁碼時，組件為受控狀態，分頁顯示取決於傳入的 value ，一般搭配 onChange 使用。 不需要受控時，可通過 defaultValue 指定當前頁碼
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination } from '@nutui/nutui-react';
-
-const App = () => {
-  const [currentPage1, setCurrentPage1] = useState(1)
-  const pageChange1 = (v: number) => {
-    const c = v
-    setCurrentPage1(c)
-  }
-  return (
-    <Pagination
-      value={currentPage1}
-      total={25}
-      pageSize={5}
-      onChange={pageChange1}
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
 ### 簡單模式
 
-將 mode 設置為 "simple" 來切換到簡單模式，此時分頁器不會展示具體的頁碼按鈕。 
-
+將 mode 設置為 "simple" 來切換到簡單模式，此時分頁器不會展示具體的頁碼按鈕。
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination } from '@nutui/nutui-react';
-
-const App = () => {
-  const [currentPage2, setCurrentPage2] = useState(1)
-  const pageChange2 = (v: number) => {
-    const c = v
-    setCurrentPage2(c)
-  }
-  return (
-    <Pagination
-      value={currentPage2}
-      total={12}
-      pageSize={1}
-      mode="simple" 
-      onChange={pageChange2} 
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
-
 
 ### 極簡模式
 
 將 mode 設置為 "lite" 來切換到極簡模式，可用於主圖切換。
 
-
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination } from '@nutui/nutui-react';
-
-const App = () => {
-  const [currentPage2, setCurrentPage2] = useState(1)
-  const pageChange2 = (v: number) => {
-    const c = v
-    setCurrentPage2(c)
-  }
-  return (
-    <Pagination
-      value={currentPage2}
-      total={12}
-      pageSize={1}
-      mode="lite" 
-      onChange={pageChange2} 
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
-
 ### 顯示省略號
 
-設置 force-ellipses 後會展示省略號按鈕，點擊後可以快速跳轉。 
+設置 force-ellipses 後會展示省略號按鈕，點擊後可以快速跳轉。
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination } from '@nutui/nutui-react';
-
-const App = () => {
-  const [currentPage3, setCurrentPage3] = useState(1)
-  const pageChange3 = (v: number) => {
-    const c = v
-    setCurrentPage3(c)
-  }
-  return (
-    <Pagination
-      value={currentPage3}
-      total={125}
-      itemSize={2}
-      ellipse
-      onChange={pageChange3}
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
 ### 自定義按鈕
 
-通過itemRender傳入自定義方法，入參數為page:{ number:頁數, text:"文本", active:"選中狀態" } 
+通過itemRender傳入自定義方法，入參數為page:{ number:頁數, text:"文本", active:"選中狀態" }
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination} from '@nutui/nutui-react'; 
-import { ArrowLeft, ArrowRight } from '@nutui/icons-react';
-
-const App = () => {
-  const [currentPage4, setCurrentPage4] = useState(1)
-  const pageChange4 = (v: number) => {
-    const c = v
-    setCurrentPage4(c)
-  }
-  const itemRender = (page: any) => {
-    return <div>{page.number === 3 ? 'hot' : page.text}</div>
-  }
-  return (
-    <Pagination
-      value={currentPage4}
-      total={500}
-      itemSize={5}
-      onChange={pageChange4}
-      itemRender={itemRender} 
-      prev={<ArrowLeft />}
-      next={<ArrowRight />}
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -180,26 +66,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination } from '@nutui/nutui-react'; 
-
-const App = () => {
-  const pageChange5 = (v: number) => {
-    console.log(v)
-  }
-  return (
-    <Pagination
-      defaultValue={15}
-      total={500}
-      pageSize={10}
-      itemSize={3}
-      onChange={pageChange5}
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
