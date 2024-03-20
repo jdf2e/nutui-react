@@ -14,7 +14,10 @@ const Demo13 = () => {
         }}
       >
         <Tips />
-        <Input placeholder="请输入短信验证码" />
+        <Input
+          placeholder="请输入短信验证码"
+          style={{ '--nutui-input-padding': '10px' }}
+        />
         <div
           className="right"
           style={{ display: 'flex', alignItems: 'center' }}

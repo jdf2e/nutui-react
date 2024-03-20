@@ -5,6 +5,7 @@ const Demo7 = () => {
   const [keyword, setKeyword] = useState('')
   return (
     <Cell
+      style={{ alignItems: 'center' }}
       title={
         <Input
           placeholder="受控下的清除"
@@ -14,6 +15,8 @@ const Demo7 = () => {
       }
       extra={
         <Button
+          type="primary"
+          size="small"
           onClick={() => {
             setKeyword('')
           }}
