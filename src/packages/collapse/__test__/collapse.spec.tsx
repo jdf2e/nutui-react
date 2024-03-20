@@ -1,7 +1,7 @@
 import * as React from 'react'
 // import * as renderer from 'react-test-renderer'
 
-import { render, fireEvent } from '@testing-library/react'
+import { act, fireEvent, render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { ArrowDown, ArrowRight } from '@nutui/icons-react'
 import { Collapse } from '../collapse'
@@ -47,7 +47,7 @@ test('prop icon iconSize iconColor', () => {
   ).toHaveClass('nut-icon-ArrowDown')
 })
 
-test('prop activeName', () => {
+test('prop activeName', async () => {
   const { container } = render(
     <>
       <Collapse activeName={['1', '2']} expandIcon={<ArrowDown />}>
@@ -64,45 +64,40 @@ test('prop activeName', () => {
     </>
   )
 
-  setTimeout(() => {
-    expect(container.querySelector('.nut-collapse-item-content')).toHaveStyle(
-      'height: 66px'
-    )
-  }, 100)
+  expect(
+    container.querySelectorAll('.nut-collapse-item-content')[2]
+  ).toHaveStyle('height:0px')
 })
 
-test('prop rotate', () => {
-  const { getByTestId, container } = render(
+test('prop rotate', async () => {
+  const { container } = render(
     <>
-      <Collapse
-        activeName={['1']}
-        accordion
-        expandIcon={<ArrowRight />}
-        rotate={180}
-      >
-        <CollapseItem
-          title="标题1"
-          name="1"
-          expandIcon={<ArrowDown />}
-          data-testid="collapse-one"
-        >
+      <Collapse activeName={['1', '2']} expandIcon={<ArrowDown />} rotate={90}>
+        <CollapseItem title="标题1" name="1">
           京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
         </CollapseItem>
-        <CollapseItem title="标题2" name="2" expandIcon={<ArrowDown />}>
+        <CollapseItem title="标题2" name="2">
           京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
         </CollapseItem>
-        <CollapseItem title="标题3" name="3" expandIcon={<ArrowDown />}>
+        <CollapseItem title="标题3" name="3" disabled>
           京东“厂直优品计划”首推“政府优品馆”
         </CollapseItem>
       </Collapse>
     </>
   )
-  fireEvent.click(getByTestId('collapse-one'))
-  setTimeout(() => {
-    expect(
-      getByTestId('collapse-one').querySelector('.nut-collapse-item-icon')
-    ).toHaveStyle('transform: translateY(-50%) rotate(180deg);')
-  }, 100)
+  await waitFor(() => {
+    const items = container.querySelectorAll('.nut-collapse-item-header')
+    expect(items.length).toBe(3)
+    expect(items[0].querySelector('.nut-collapse-item-icon')).toHaveStyle(
+      'transform: translateY(-50%) rotate(90deg);'
+    )
+    expect(items[1].querySelector('.nut-collapse-item-icon')).toHaveStyle(
+      'transform: translateY(-50%) rotate(90deg);'
+    )
+    expect(items[2].querySelector('.nut-collapse-item-icon')).toHaveStyle(
+      'transform: translateY(-50%);'
+    )
+  })
 })
 
 test('prop title extra', () => {
@@ -137,8 +132,8 @@ test('prop title extra', () => {
   )
 })
 
-test('event onChange & prop disabled', () => {
-  const handleChange = jest.fn()
+test('event onChange & prop disabled', async () => {
+  const handleChange = vi.fn()
   const { getByTestId } = render(
     <>
       <Collapse defaultActiveName={['1']} onChange={handleChange}>
@@ -157,25 +152,22 @@ test('event onChange & prop disabled', () => {
   const item1 = getByTestId('item1').querySelector('.nut-collapse-item-title')
   const item2 = getByTestId('item2').querySelector('.nut-collapse-item-title')
   const item3 = getByTestId('item3').querySelector('.nut-collapse-item-title')
-  fireEvent.click(item3 as Element)
-  expect(handleChange).not.toBeCalled()
-  fireEvent.click(item2 as Element)
-  expect(handleChange).toBeCalledWith(['1', '2'], '2', true)
-  setTimeout(() => {
+  await act(() => {
+    fireEvent.click(item3 as Element)
+    expect(handleChange).not.toBeCalled()
+  })
+  await act(() => {
+    fireEvent.click(item2 as Element)
+    expect(handleChange).toBeCalledWith(['1', '2'], '2', true)
+  })
+  await act(async () => {
     fireEvent.click(item1 as Element)
-    expect(handleChange).toBeCalledWith(
-      ['1', '2'],
-      '2',
-      true,
-      ['2'],
-      '1',
-      false
-    )
-  }, 0)
+    expect(handleChange).toBeCalledWith(['2'], '1', false)
+  })
 })
 
-test('event onChange & prop accordion', () => {
-  const handleChange = jest.fn()
+test('event onChange & prop accordion', async () => {
+  const handleChange = vi.fn()
   const { getByTestId } = render(
     <>
       <Collapse defaultActiveName="1" accordion onChange={handleChange}>
@@ -193,12 +185,16 @@ test('event onChange & prop accordion', () => {
   )
   const item2 = getByTestId('item2').querySelector('.nut-collapse-item-title')
   const item3 = getByTestId('item3').querySelector('.nut-collapse-item-title')
-  fireEvent.click(item3 as Element)
-  expect(handleChange).not.toBeCalled()
-  fireEvent.click(item2 as Element)
-  expect(handleChange).toBeCalledWith('2', '2', true)
-  setTimeout(() => {
+  await act(() => {
+    fireEvent.click(item3 as Element)
+    expect(handleChange).not.toBeCalled()
+  })
+  await act(() => {
     fireEvent.click(item2 as Element)
-    expect(handleChange).toBeCalledWith('2', '2', true, '', '2', false)
-  }, 0)
+    expect(handleChange).toBeCalledWith('2', '2', true)
+  })
+  await act(() => {
+    fireEvent.click(item2 as Element)
+    expect(handleChange).toBeCalledWith('', '2', false)
+  })
 })

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, fireEvent } from '@testing-library/react'
+import { render, fireEvent, act, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Elevator } from '../elevator'
 
@@ -68,8 +68,8 @@ test('should render list data when list props not empty', () => {
   )
 })
 
-test('should list item highlight when onItemClick trigger click', () => {
-  const testClick = jest.fn()
+test('should list item highlight when onItemClick trigger click', async () => {
+  const testClick = vi.fn()
   const { container } = render(
     <Elevator
       list={list}
@@ -79,19 +79,21 @@ test('should list item highlight when onItemClick trigger click', () => {
   )
 
   const listItem = container.querySelectorAll('.nut-elevator-list-item-name')[0]
-  fireEvent.click(listItem) // 模拟点击
+  await act(() => {
+    fireEvent.click(listItem) // 模拟点击
+  })
   expect(testClick).toBeCalled() // 断言 是否已经被点击
-  setTimeout(() => {
+  waitFor(() => {
     expect(
       container.querySelector('.nut-elevator-list-item-name-highcolor')
         ?.innerHTML
     ).toBe('安徽')
-  }, 100)
+  })
   expect(testClick).toBeCalledWith('A', { id: 1, name: '安徽' }) // 点击传参测试
 })
 
 test('onIndexClick trigger click', () => {
-  const testClick = jest.fn()
+  const testClick = vi.fn()
   const { container } = render(
     <Elevator
       list={list}
@@ -111,7 +113,7 @@ test('onIndexClick trigger click', () => {
 })
 
 test('index is sticky', () => {
-  const testClick = jest.fn()
+  const testClick = vi.fn()
   const { container } = render(
     <Elevator
       list={list}

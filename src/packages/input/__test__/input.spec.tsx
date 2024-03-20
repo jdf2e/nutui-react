@@ -4,7 +4,7 @@ import '@testing-library/jest-dom'
 import Input from '@/packages/input'
 
 test('input props test', () => {
-  const blur = jest.fn()
+  const blur = vi.fn()
   const { container, rerender } = render(
     <Input name="text" placeholder="请输入文字" defaultValue="初始文本" />
   )
@@ -101,7 +101,7 @@ test('textarea test', () => {
 })
 
 test('clearable and clear event test', () => {
-  const handleClear = jest.fn()
+  const handleClear = vi.fn()
   const { container } = render(
     <Input defaultValue="清除文本" clearable onClear={handleClear} />
   )
@@ -130,10 +130,10 @@ test('disabled test', () => {
 })
 
 test('clearable and clear event test', () => {
-  const handleChange = jest.fn()
-  const handleFocus = jest.fn()
-  const handleBlur = jest.fn()
-  const handleClick = jest.fn()
+  const handleChange = vi.fn()
+  const handleFocus = vi.fn()
+  const handleBlur = vi.fn()
+  const handleClick = vi.fn()
   const { container } = render(
     <Input
       defaultValue="文本"

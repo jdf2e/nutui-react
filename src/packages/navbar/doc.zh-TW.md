@@ -12,249 +12,27 @@ import { NavBar } from '@nutui/nutui-react';
 
 ## 代碼演示
 
-### 基础用法
+### 基礎用法
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { NavBar, Toast, Tabs, TabPane } from '@nutui/nutui-react';
-import { Share, More, Cart, ArrowLeft, Close } from '@nutui/icons-react'
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
-const App = () => {
-  const [tab1value, setTab1value] = useState<string | number>('0')
-  const [tab2value, setTab2value] = useState<string | number>('0')
-  const style = `
-    .flex-center {
-      display: inline-flex;
-      align-items: center;
-    }
-    .title {
-      display: flex;
-      flex-direction: column;
-      .desc {
-        font-weight: 400;
-        font-size: 12px;
-        color: var(--nutui-gray-8);
-      }
-      .title-left {
-        text-align: start;
-      }
-    }
-    .navbar-tabs .nut-tabs-titles {
-      padding: 0;
-      .nut-tabs-titles-item {
-        margin: 0;
-        font-size: 16px;
-      }
-      .nut-tabs-titles-item-active {
-        font-size: 20px;
-      }
-    }
-  `
-  return ( 
-    <>
-      <style>{style}</style>
-      <NavBar
-        back={
-          <>
-            <ArrowLeft />返回
-          </>
-        }
-        right={
-          <span className="flex-center" onClick={(e) => Toast.show('icon')}>
-            <Share />
-          </span>
-        }
-        onBackClick={(e) => Toast.show("返回")}
-      >
-        訂單詳情
-      </NavBar>
-      <NavBar
-        right={
-          <span className="flex-center" onClick={(e) => Toast.show('icon')}>
-            <Share />
-          </span>
-        }
-        onBackClick={(e) => Toast.show("返回")}
-      >
-        訂單詳情
-      </NavBar>
-      <NavBar
-        right={
-          <span onClick={(e) => Toast.show("清空")}>
-            清空
-          </span>
-        }
-        left={<Close />}
-        back={<ArrowLeft />}
-        onBackClick={(e) => Toast.show("返回")}
-      >
-        <div className="title">
-          <span onClick={(e) => Toast.show("標題")}>
-            瀏覽記錄
-          </span>
-          <span className="desc">瀏覽記錄</span>
-        </div>
-      </NavBar>
-      <NavBar
-        back={<ArrowLeft />}
-        right={
-          <>
-            <span onClick={(e) => Toast.show("編輯")}>
-              編輯
-            </span>
-            <More onClick={(e) => Toast.show('icon')} />
-          </>
-        }
-        onBackClick={(e) => Toast.show("返回")}
-      >
-        <span onClick={(e) => Toast.show("標題")}>
-          購物車
-        </span>
-        <i
-          style={{ marginLeft: '5px' }}
-          className="flex-center"
-          onClick={(e) => Toast.show('icon')}
-        >
-          <Cart />
-        </i>
-      </NavBar>
-      <NavBar
-        back={<ArrowLeft />}
-        right={
-          <>
-            <span onClick={(e) => Toast.show("編輯")}>
-              編輯
-            </span>
-            <More onClick={(e) => Toast.show('icon')} />
-          </>
-        }
-        onBackClick={(e) => Toast.show("返回")}
-      >
-        <div style={{ width: '100%' }}>
-          <Tabs
-            value={tab1value}
-            onChange={(paneKey) => {
-              setTab1value(paneKey)
-            }}
-            style={{
-              '--nutui-tabs-titles-padding': 0,
-              '--nutui-tabs-titles-gap': 0,
-            }}
-          >
-            <TabPane title="Tab 1"> Tab 1 </TabPane>
-            <TabPane title="Tab 2"> Tab 2 </TabPane>
-            <TabPane title="Tab 3"> Tab 3 </TabPane>
-            <TabPane title="Tab 4"> Tab 4 </TabPane>
-          </Tabs>
-        </div>
-      </NavBar>
-      <NavBar
-        titleAlign="left"
-        back={
-          <>
-            <ArrowLeft />返回
-          </>
-        }
-        right={
-          <span className="flex-center" onClick={(e) => Toast.show('icon')}>
-            <Share />
-          </span>
-        }
-        onBackClick={(e) => Toast.show("返回")}
-      >
-        訂單詳情
-      </NavBar>
-      <NavBar
-        titleAlign="left"
-        right={
-          <span className="flex-center" onClick={(e) => Toast.show('icon')}>
-            <Share />
-          </span>
-        }
-        onBackClick={(e) => Toast.show("返回")}
-      >
-        訂單詳情
-      </NavBar>
+:::
 
-      <NavBar
-        titleAlign="left"
-        right={
-          <span onClick={(e) => Toast.show("清空")}>
-            清空
-          </span>
-        }
-        left={<Close />}
-        back={<ArrowLeft />}
-        onBackClick={(e) => Toast.show("返回")}
-      >
-        <div className="title title-left">
-          <span onClick={(e) => Toast.show("標題")}>
-            瀏覽記錄
-          </span>
-          <span className="desc">瀏覽記錄</span>
-        </div>
-      </NavBar>
-      <NavBar
-        titleAlign="left"
-        back={<ArrowLeft />}
-        right={
-          <>
-            <span onClick={(e) => Toast.show("編輯")}>
-              編輯
-            </span>
-            <More onClick={(e) => Toast.show('icon')} />
-          </>
-        }
-        onBackClick={(e) => Toast.show("返回")}
-      >
-        <span onClick={(e) => Toast.show("標題")}>
-          購物車
-        </span>
-        <i
-          style={{ marginLeft: '5px' }}
-          className="flex-center"
-          onClick={(e) => Toast.show('icon')}
-        >
-          <Cart />
-        </i>
-      </NavBar>
-      <NavBar
-        titleAlign="left"
-        back={<ArrowLeft />}
-        right={
-          <>
-            <span onClick={(e) => Toast.show("編輯")}>
-              編輯
-            </span>
-            <More onClick={(e) => Toast.show('icon')} />
-          </>
-        }
-        onBackClick={(e) => Toast.show("返回")}
-      >
-        <div>
-          <Tabs
-            className="navbar-tabs"
-            align="left"
-            activeType="simple"
-            value={tab2value}
-            onChange={(paneKey) => {
-              setTab2value(paneKey)
-            }}
-          >
-            <TabPane title="Tab1"> Tab1 </TabPane>
-            <TabPane title="Tab2"> Tab2 </TabPane>
-            <TabPane title="Tab3"> Tab3 </TabPane>
-          </Tabs>
-        </div>
-      </NavBar>
-    </>
-  );
-};  
-export default App;
+### 標題位置
 
-```
+:::demo
+
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
+
+:::
+
+### 多tab切換導航
+
+:::demo
+
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 

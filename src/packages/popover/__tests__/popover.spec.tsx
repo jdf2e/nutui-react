@@ -121,8 +121,8 @@ test('render popover position33', async () => {
 })
 
 test('render position fixed ', async () => {
-  const close = jest.fn()
-  const click = jest.fn()
+  const close = vi.fn()
+  const click = vi.fn()
   const { container, getByTestId } = render(
     <div
       style={{
@@ -163,7 +163,7 @@ test('render position fixed ', async () => {
 })
 
 test('should emit onchoose event when clicking the action', async () => {
-  const choose = jest.fn()
+  const choose = vi.fn()
   const { container } = render(
     <Popover visible list={itemList} onSelect={choose}>
       <Button type="primary" shape="square">
@@ -178,7 +178,7 @@ test('should emit onchoose event when clicking the action', async () => {
 })
 
 test('should not emit select event when the action is disabled', async () => {
-  const choose = jest.fn()
+  const choose = vi.fn()
   const { container } = render(
     <Popover visible list={itemListDisabled} onSelect={choose}>
       <Button type="primary" shape="square">

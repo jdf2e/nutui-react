@@ -5,7 +5,7 @@ import '@testing-library/jest-dom'
 
 import Sidenavbar from '@/packages/sidenavbar'
 
-const changeNarBar = jest.fn()
+const changeNarBar = vi.fn()
 
 test('default props', () => {
   const { container } = render(

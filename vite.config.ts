@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import { defineConfig, UserConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react'
 import path from 'path'
@@ -85,5 +86,15 @@ export default defineConfig(async (): Promise<UserConfig> => {
 
       reactRefresh(),
     ],
+    test: {
+      globals: true,
+      environment: 'happy-dom',
+      coverage: {
+        all: false,
+        provider: 'v8',
+      },
+      include: ['src/packages/**/*.(test|spec).(ts|tsx)'],
+      reporters: ['default', 'html'],
+    },
   }
 })
