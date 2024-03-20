@@ -130,6 +130,7 @@ import { Table } from '@nutui/nutui-react';
 | showHeader | Whether to show the header | `boolean` | `true` |
 | noData | Customize when no data | `ReactNode` | `-` |
 | onSort | Triggered when the sort button is clicked | `item: TableColumnProps, data: Array<any>` | `-` |
+| sorterIcon | Sorting icon | `ReactNode` | `<ArrowDown />` |
 
 ### TableColumnProps
 
@@ -140,7 +141,6 @@ import { Table } from '@nutui/nutui-react';
 | align | Alignment of the column | `left` \| `center` \| `right` | `left` |
 | sorter | Sorting, optional values are true, function, default, where default indicates that it may rely on an interface after clicking, function can return a specific sorting function, default indicates using the default sorting algorithm | `boolean` \| `Function` \| `string` | `-` |
 | render | Custom rendering of column data, priority is high | `Function(record)` | `-` |
-| sorterIcon | Sorting icon | `ReactNode` | `<ArrowDown />` |
 | width | Column width | `number` | `auto` |
 | fixed | Fixed position | `left` \| `right`  | `-` |
 

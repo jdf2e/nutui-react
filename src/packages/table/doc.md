@@ -130,6 +130,7 @@ import { Table } from '@nutui/nutui-react';
 | showHeader | 是否显示表头 | `boolean` | `true` |
 | noData | 自定义无数据 | `ReactNode` | `-` |
 | onSort | 点击排序按钮触发 | `item: TableColumnProps, data: Array<any>` | `-` |
+| sorterIcon | 排序 icon | `ReactNode` | `<ArrowDown />` |
 
 ### TableColumnProps
 
@@ -140,7 +141,6 @@ import { Table } from '@nutui/nutui-react';
 | align | 列的对齐方式 | `left` \| `center` \| `right` | `left` |
 | sorter | 排序，可选值有 true,function, default, 其中 default表示点击之后可能会依赖接口, function可以返回具体的排序函数, default表示采用默认的排序算法 | `boolean` \| `Function` \| `string` | `-` |
 | render | 自定义渲染列数据，优先级高 | `Function(record)` | `-` |
-| sorterIcon | 排序 icon | `ReactNode` | `<ArrowDown />` |
 | width | 列宽度 | `number` | `auto` |
 | fixed | 固定位置 | `left` \| `right`  | `-` |
 
