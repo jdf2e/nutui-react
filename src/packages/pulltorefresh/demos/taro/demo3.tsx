@@ -19,6 +19,26 @@ const Demo1 = () => {
             resolve('done')
           })
         }
+        renderIcon={(status) => {
+          return (
+            <>
+              {(status === 'pulling' || status === 'complete') && (
+                <img
+                  alt=""
+                  style={{ height: '26px', width: '36px' }}
+                  src="https://img12.360buyimg.com/imagetools/jfs/t1/232373/2/15010/432/65fab02fF99afdb71/0457cdfa268f92df.png"
+                />
+              )}
+              {(status === 'canRelease' || status === 'refreshing') && (
+                <img
+                  alt=""
+                  style={{ height: '26px', width: '36px' }}
+                  src="https://img14.360buyimg.com/imagetools/jfs/t1/186707/25/42738/223/65fab272F0965554b/eae33de2f17909b8.png"
+                />
+              )}
+            </>
+          )
+        }}
       >
         {list.map((item) => (
           <div
