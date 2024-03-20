@@ -7,7 +7,6 @@ settings:
 overrides:
   '@types/react': ^18.2.57
   '@types/react-dom': ^18.2.19
-  '@tarojs/parse-css-to-stylesheet': 0.0.38
 
 importers:
 
@@ -4122,8 +4121,8 @@ packages:
       - '@swc/helpers'
       - supports-color
 
-  /@tarojs/parse-css-to-stylesheet-android-arm-eabi@0.0.38:
-    resolution: {integrity: sha512-nJDcVZCMtgVbv+9JtXfu9QwuMDCE+bvUYdGm7I/Epnxh2F5Dr+p5nGzJVUXiwafYOxTZRECz8Xjj+w7R7EwBmw==}
+  /@tarojs/parse-css-to-stylesheet-android-arm-eabi@0.0.39:
+    resolution: {integrity: sha512-LUm3DwhgFMWH2AKeHP/8tz+0nCHnYu+q2WMwRnSBtI/MSkLODpTFUxwxasHqa1+qSWKYL7FGqq/wsIO+L2pIpg==}
     engines: {node: '>= 10'}
     cpu: [arm]
     os: [android]
@@ -4131,8 +4130,8 @@ packages:
     dev: true
     optional: true
 
-  /@tarojs/parse-css-to-stylesheet-android-arm64@0.0.38:
-    resolution: {integrity: sha512-x9+qQb/0yoIHR6VoOQcs0izFd/kiizEZDBrLe/m9DUc/wKxuQtx2V/zkMzeOE4NFHr9gawa5Xxe8q0Xla95Ivw==}
+  /@tarojs/parse-css-to-stylesheet-android-arm64@0.0.39:
+    resolution: {integrity: sha512-fUNgFXHf1FUci9EfsbnAcbWM4THWjTXkiz8ZxFNd6HJJwCF0f5ADLyL6L3LBUBfiPFeE3LMhEMmp/LW5lFeY6Q==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [android]
@@ -4140,8 +4139,8 @@ packages:
     dev: true
     optional: true
 
-  /@tarojs/parse-css-to-stylesheet-darwin-arm64@0.0.38:
-    resolution: {integrity: sha512-9RG4KsJr/MQM+HEvutJzBkRdb4cLonQwmXAd+reG/L4Cxc1SUkTBeHiXatxZtR16kmhGWQ8+JtRlMg+yyxEi+g==}
+  /@tarojs/parse-css-to-stylesheet-darwin-arm64@0.0.39:
+    resolution: {integrity: sha512-TB8Nzjr4okuVxL2SxWR+W8cbWW9biA1QA8nXFI5GVdl/kR1PzVxCFnUEuyPXXrd1Hmp3CZPPe/Be8soRHA3b2g==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [darwin]
@@ -4149,16 +4148,16 @@ packages:
     dev: true
     optional: true
 
-  /@tarojs/parse-css-to-stylesheet-darwin-universal@0.0.38:
-    resolution: {integrity: sha512-p2UFhRW90BpnXhbvF5mIOGlRvnc68Sx4+fm5LYpbVP9+zxPjGAZ/Zf6O6SDhvVSPjR8gDNS/mgbV5LvAXRC3Og==}
+  /@tarojs/parse-css-to-stylesheet-darwin-universal@0.0.39:
+    resolution: {integrity: sha512-JMciGEkZnx681A27CLN4aPGwbR+DEeKMD8cokUf0R/e0rPeCUxwRC50bUOv/1V1QRAw7t434PTBYITW74tw9Fg==}
     engines: {node: '>= 10'}
     os: [darwin]
     requiresBuild: true
     dev: true
     optional: true
 
-  /@tarojs/parse-css-to-stylesheet-darwin-x64@0.0.38:
-    resolution: {integrity: sha512-f3heYFz7RN7SChCfU3/f/ev33AecGz/WgCIdCKRNPdScTCN3//MDCpBNmn+Pm4sfAGEcbS3/vrBBPxmY+xxyyw==}
+  /@tarojs/parse-css-to-stylesheet-darwin-x64@0.0.39:
+    resolution: {integrity: sha512-oTAZOrkvJM1qJ41SgWlhgVUASRl1oU8MEJmvGNvDnCOwLXhnIeMjpK9xvbGY5ZDnaA/8UgzX9Uzx/TNAFbU9eQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [darwin]
@@ -4166,8 +4165,8 @@ packages:
     dev: true
     optional: true
 
-  /@tarojs/parse-css-to-stylesheet-linux-arm-gnueabihf@0.0.38:
-    resolution: {integrity: sha512-d2nB1T+F+YO8NDsLvRsvLoQryg98lkfqIT7shuRCu/1dGEJRIPrQ4ywLh5ZSRv1mD1uAzxG+xXYtUTsSvg18Ig==}
+  /@tarojs/parse-css-to-stylesheet-linux-arm-gnueabihf@0.0.39:
+    resolution: {integrity: sha512-2l6Y+dkyPgUIOpI7ioOzK7AfaXsHJP/5/bucy2KYfcIaGsZHyaXl31f5mFtLPyJk3GowJjvnt7Rne+nMp7DOcg==}
     engines: {node: '>= 10'}
     cpu: [arm]
     os: [linux]
@@ -4175,8 +4174,8 @@ packages:
     dev: true
     optional: true
 
-  /@tarojs/parse-css-to-stylesheet-linux-arm64-gnu@0.0.38:
-    resolution: {integrity: sha512-RKFxOT1qsPhI50Cd4BGpHl7j0Dr+0ROQ7t4gjUNj27dYrQc2ewqwvEuEditejEi8RYZR4mECavP+xHq+4sO8ug==}
+  /@tarojs/parse-css-to-stylesheet-linux-arm64-gnu@0.0.39:
+    resolution: {integrity: sha512-1WYG9nfp70hLaQeZOyhPb4DXU2eFDcM0LvHD4rVJ81sMn81r5vG3qLZpPsJrEqs1Az/QyCtcHRAl6L0NQizIHQ==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -4184,8 +4183,8 @@ packages:
     dev: true
     optional: true
 
-  /@tarojs/parse-css-to-stylesheet-linux-arm64-musl@0.0.38:
-    resolution: {integrity: sha512-8GzgaJlPmT/r89A8pwcLGKI6HCsT7DodEq78HcAA8SEI8eqJLbK2F1Eq4p11+GEtZu5WlaStgpyW9iEtU621+Q==}
+  /@tarojs/parse-css-to-stylesheet-linux-arm64-musl@0.0.39:
+    resolution: {integrity: sha512-Dn8R8qo9qPIU6jSGQrx5zBydhXWWT6OIRcsMXUYSXwpF6Uf62rSVjBATyr/H7xdbWvY8PgVHDkTKeM+mJYcFgA==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [linux]
@@ -4193,8 +4192,8 @@ packages:
     dev: true
     optional: true
 
-  /@tarojs/parse-css-to-stylesheet-linux-x64-gnu@0.0.38:
-    resolution: {integrity: sha512-uyqbbnY5rSd0gV4fbSo+ITKGXzCSKtWxPRFKLjZHlHzfD2SXjBUSfVsexB8cDB3ba8Jbnxn3MZrkvL6NcUXp7g==}
+  /@tarojs/parse-css-to-stylesheet-linux-x64-gnu@0.0.39:
+    resolution: {integrity: sha512-2gE/UiojK/F+0VD4psNS/V/MZ6j2kB01UH4s3I4gtmwyTcpO0XTKhxKhuabeMi+n64o/sNWTXk3n2SK9RYRVaQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -4202,8 +4201,8 @@ packages:
     dev: true
     optional: true
 
-  /@tarojs/parse-css-to-stylesheet-linux-x64-musl@0.0.38:
-    resolution: {integrity: sha512-rH6kR4hCGj7+qx1pOZums9kCxBEOBHI1UDyHVkQLSDMblLJrqB8fwYDFubYqM+QIXGkokeUgbtlAcoy0AA4dmA==}
+  /@tarojs/parse-css-to-stylesheet-linux-x64-musl@0.0.39:
+    resolution: {integrity: sha512-V8Guf0tR1ukFQRhV+2AKmRBOWdbifqVIZsIq4BQM7MX38FAfbGKio6JWNiidh2sip/6maxLruzyGxkwnE8YacA==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [linux]
@@ -4211,8 +4210,8 @@ packages:
     dev: true
     optional: true
 
-  /@tarojs/parse-css-to-stylesheet-win32-arm64-msvc@0.0.38:
-    resolution: {integrity: sha512-lvHQz/IjIaF7R9APCWTKmfBWL+rbT+VCyoUM/4H8fP8whbNjX/ppZf+ejLIAy7U3nEGJMOWywGaPKGnebphxWA==}
+  /@tarojs/parse-css-to-stylesheet-win32-arm64-msvc@0.0.39:
+    resolution: {integrity: sha512-kLvb1CW2Obp6bv2eIBQvNOnkFJyMU87nEEvIiJ3CSED/AH9lq55kqwVcfUo6ul0LMC8Bmr4NpEAlxhaDuRc59Q==}
     engines: {node: '>= 10'}
     cpu: [arm64]
     os: [win32]
@@ -4220,8 +4219,8 @@ packages:
     dev: true
     optional: true
 
-  /@tarojs/parse-css-to-stylesheet-win32-ia32-msvc@0.0.38:
-    resolution: {integrity: sha512-Zh9KdBaaCUD7pfTSYFTsKCFwwsPXTN7ukv9IPm569diOd+UJG+SmvYMPMQKRkOMSQq9dRWJOOb2gpwApbAdkUQ==}
+  /@tarojs/parse-css-to-stylesheet-win32-ia32-msvc@0.0.39:
+    resolution: {integrity: sha512-y0pGqgB3VpUMJ/kqxvwvT1u6igTA1wWPVLgrxceRO4EiG3ParIDXTDlA1Bgf82eGzDoRnWk0GhSk/ER05CE2tg==}
     engines: {node: '>= 10'}
     cpu: [ia32]
     os: [win32]
@@ -4229,8 +4228,8 @@ packages:
     dev: true
     optional: true
 
-  /@tarojs/parse-css-to-stylesheet-win32-x64-msvc@0.0.38:
-    resolution: {integrity: sha512-Jsq5nD9Nx+NxUxXGInHmULDW9sGWYDM94XgY6LuwCCIGBZVxavKAznnNtYayqMC6CNh/oIkE6q/GLCF2e3jXHw==}
+  /@tarojs/parse-css-to-stylesheet-win32-x64-msvc@0.0.39:
+    resolution: {integrity: sha512-3hC7iG6zlVRWcRd9963D/AZuSXVkkt8KjSZy3LaxdjoI0w1XcgHGrBVvuIgsKqzl8ms6OGHlykFTbpNVlqboPQ==}
     engines: {node: '>= 10'}
     cpu: [x64]
     os: [win32]
@@ -4238,23 +4237,23 @@ packages:
     dev: true
     optional: true
 
-  /@tarojs/parse-css-to-stylesheet@0.0.38:
-    resolution: {integrity: sha512-0sYYHVZRoJbuLs7pVQdDMHmDyOQt0QeNbe928t70adSsFzqGocg1mUStWyGQmgrOjY18+6x3fXMSRrEmT1VEog==}
+  /@tarojs/parse-css-to-stylesheet@0.0.39:
+    resolution: {integrity: sha512-xS7B3oskQ8PItlljeutbyUl9bUzt47TwzO17rReNs3hTO1V1Fucbf8zXU2NUG7dESlLFECImoaalqf8fgHI8Cw==}
     engines: {node: '>= 10'}
     optionalDependencies:
-      '@tarojs/parse-css-to-stylesheet-android-arm-eabi': 0.0.38
-      '@tarojs/parse-css-to-stylesheet-android-arm64': 0.0.38
-      '@tarojs/parse-css-to-stylesheet-darwin-arm64': 0.0.38
-      '@tarojs/parse-css-to-stylesheet-darwin-universal': 0.0.38
-      '@tarojs/parse-css-to-stylesheet-darwin-x64': 0.0.38
-      '@tarojs/parse-css-to-stylesheet-linux-arm-gnueabihf': 0.0.38
-      '@tarojs/parse-css-to-stylesheet-linux-arm64-gnu': 0.0.38
-      '@tarojs/parse-css-to-stylesheet-linux-arm64-musl': 0.0.38
-      '@tarojs/parse-css-to-stylesheet-linux-x64-gnu': 0.0.38
-      '@tarojs/parse-css-to-stylesheet-linux-x64-musl': 0.0.38
-      '@tarojs/parse-css-to-stylesheet-win32-arm64-msvc': 0.0.38
-      '@tarojs/parse-css-to-stylesheet-win32-ia32-msvc': 0.0.38
-      '@tarojs/parse-css-to-stylesheet-win32-x64-msvc': 0.0.38
+      '@tarojs/parse-css-to-stylesheet-android-arm-eabi': 0.0.39
+      '@tarojs/parse-css-to-stylesheet-android-arm64': 0.0.39
+      '@tarojs/parse-css-to-stylesheet-darwin-arm64': 0.0.39
+      '@tarojs/parse-css-to-stylesheet-darwin-universal': 0.0.39
+      '@tarojs/parse-css-to-stylesheet-darwin-x64': 0.0.39
+      '@tarojs/parse-css-to-stylesheet-linux-arm-gnueabihf': 0.0.39
+      '@tarojs/parse-css-to-stylesheet-linux-arm64-gnu': 0.0.39
+      '@tarojs/parse-css-to-stylesheet-linux-arm64-musl': 0.0.39
+      '@tarojs/parse-css-to-stylesheet-linux-x64-gnu': 0.0.39
+      '@tarojs/parse-css-to-stylesheet-linux-x64-musl': 0.0.39
+      '@tarojs/parse-css-to-stylesheet-win32-arm64-msvc': 0.0.39
+      '@tarojs/parse-css-to-stylesheet-win32-ia32-msvc': 0.0.39
+      '@tarojs/parse-css-to-stylesheet-win32-x64-msvc': 0.0.39
     dev: true
 
   /@tarojs/plugin-doctor-darwin-arm64@0.0.11:
@@ -4884,7 +4883,7 @@ packages:
       '@rollup/plugin-inject': 5.0.5(rollup@3.29.4)
       '@rollup/pluginutils': 5.1.0(rollup@3.29.4)
       '@tarojs/helper': 4.0.0-beta.22
-      '@tarojs/parse-css-to-stylesheet': 0.0.38
+      '@tarojs/parse-css-to-stylesheet': 0.0.39
       '@tarojs/runner-utils': 4.0.0-beta.22(@tarojs/runtime@4.0.0-beta.22)(@tarojs/shared@4.0.0-beta.22)(@types/react@18.2.64)(postcss@8.4.35)(rollup@3.29.4)
       '@tarojs/shared': 4.0.0-beta.22
       '@tarojs/taro': 4.0.0-beta.22(@tarojs/helper@4.0.0-beta.22)(@tarojs/runtime@4.0.0-beta.22)(@tarojs/shared@4.0.0-beta.22)(@types/react@18.2.64)(postcss@8.4.35)(rollup@3.29.4)

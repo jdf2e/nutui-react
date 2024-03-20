@@ -217,7 +217,6 @@
   },
   "resolutions": {
     "@types/react": "^18.2.57",
-    "@types/react-dom": "^18.2.19",
-    "@tarojs/parse-css-to-stylesheet": "0.0.38"
+    "@types/react-dom": "^18.2.19"
   }
 }
