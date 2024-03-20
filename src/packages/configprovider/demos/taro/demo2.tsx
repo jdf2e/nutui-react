@@ -15,7 +15,7 @@ const Demo2 = () => {
             <Rate defaultValue={3} />
           </Cell>
           <Cell>
-            <Button type="primary" size="large">
+            <Button type="primary" block>
               提交
             </Button>
           </Cell>
