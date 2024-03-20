@@ -1,6 +1,6 @@
 import React from 'react'
-import { TrendArrow, Cell } from '@nutui/nutui-react'
-import { Success, Failure } from '@nutui/icons-react'
+import { TrendArrow, Cell } from '@nutui/nutui-react-taro'
+import { Success, Failure } from '@nutui/icons-react-taro'
 
 const Demo8 = () => {
   return (
