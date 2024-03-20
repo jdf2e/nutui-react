@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import { PullToRefresh, Toast } from '@nutui/nutui-react'
-import { More } from '@nutui/icons-react'
 
 const Demo1 = () => {
   const [list] = useState([1, 2, 3, 4, 5, 6, 7])
@@ -24,7 +23,13 @@ const Demo1 = () => {
                   />
                 </svg>
               )}
-              {(status === 'canRelease' || status === 'refreshing') && <More />}
+              {(status === 'canRelease' || status === 'refreshing') && (
+                <svg width="36" height="26" viewBox="0 0 36 26" fill="none">
+                  <circle cx="18" cy="13" r="3" fill="#818181" />
+                  <circle cx="33" cy="13" r="3" fill="#818181" />
+                  <circle cx="3" cy="13" r="3" fill="#818181" />
+                </svg>
+              )}
             </>
           )
         }}
