@@ -106,7 +106,7 @@ test('base Tabpane autoHeight Props', () => {
 })
 
 test('base children isnot valid element', () => {
-  const handleClick = jest.fn(() => {})
+  const handleClick = vi.fn(() => {})
   const { container } = render(
     <Tabs value="0" onClick={handleClick}>
       333
@@ -117,7 +117,7 @@ test('base children isnot valid element', () => {
 })
 
 test('base click', () => {
-  const handleClick = jest.fn(() => {})
+  const handleClick = vi.fn(() => {})
   const { container } = render(
     <Tabs value="0" onClick={handleClick}>
       <TabPane title="Tab 1" value="0">
@@ -142,7 +142,7 @@ test('base click', () => {
 })
 
 test('click tab when have many tabs', async () => {
-  const handleClick = jest.fn(() => {})
+  const handleClick = vi.fn(() => {})
   const { container } = render(
     <Tabs value="0" onClick={handleClick} direction="vertical">
       <TabPane title="Tab 1" value="0">

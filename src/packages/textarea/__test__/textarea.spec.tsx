@@ -34,7 +34,7 @@ test('textarea disabled test', () => {
 })
 
 test('textarea onChange event test', () => {
-  const handleChange = jest.fn()
+  const handleChange = vi.fn()
   const TextareaDemo = () => {
     const [value, setValue] = useState('文字')
     return (
@@ -61,8 +61,8 @@ test('textarea onChange event test', () => {
 })
 
 test('textarea onFocus event test', () => {
-  const handleFocus = jest.fn()
-  const handleBlur = jest.fn()
+  const handleFocus = vi.fn()
+  const handleBlur = vi.fn()
   const TextareaDemo = () => {
     return (
       <TextArea

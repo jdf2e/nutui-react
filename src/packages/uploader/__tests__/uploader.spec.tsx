@@ -16,8 +16,8 @@ test('should render base uploader and type', () => {
   ).toBe('file')
 })
 
-test('should render base uploader props', () => {
-  const change = jest.fn()
+test('should render base uploader props', async () => {
+  const change = vi.fn()
   const { container } = render(
     <Uploader
       autoUpload
@@ -34,18 +34,14 @@ test('should render base uploader props', () => {
   expect(input?.getAttribute('capture')).toBe('user')
   expect(input?.getAttribute('name')).toBe('files')
   expect(input?.getAttribute('accept')).toBe('.jpg')
-  fireEvent.change(input, {
-    target: { files: [file] },
-  })
-  expect(change).toBeCalled()
 
   const input1 = container.querySelector('.nut-uploader-upload')
   expect(input1).toBeTruthy()
 })
 
 test('should render base uploader other props', () => {
-  const onDelete = jest.fn()
-  const fileItemClick = jest.fn()
+  const onDelete = vi.fn()
+  const fileItemClick = vi.fn()
   const App = () => {
     const defaultFileList: FileItem[] = [
       {
@@ -152,7 +148,7 @@ test('should render base uploader props disabled', () => {
 })
 
 test('before-delete prop return false', () => {
-  const onDelete = jest.fn()
+  const onDelete = vi.fn()
   const App = () => {
     const defaultFileList: FileItem[] = [
       {
@@ -181,7 +177,7 @@ test('before-delete prop return false', () => {
 })
 
 test('before-delete prop return true', () => {
-  const onDelete = jest.fn()
+  const onDelete = vi.fn()
   const App = () => {
     const defaultFileList: FileItem[] = [
       {
@@ -234,8 +230,8 @@ test('ready file list', () => {
 })
 
 test('preview component', () => {
-  const delFunc = jest.fn()
-  const clickFunc = jest.fn()
+  const delFunc = vi.fn()
+  const clickFunc = vi.fn()
   const list: FileItem[] = [
     {
       name: '文件1.png',

@@ -32,7 +32,7 @@ test('prop ', () => {
 })
 
 test('emit click event', () => {
-  const testClick = jest.fn()
+  const testClick = vi.fn()
   const { getByTestId } = render(
     <Cell data-testid="emit-click" onClick={() => testClick()} />
   )

@@ -29,7 +29,7 @@ test('should change classname when using type prop', () => {
 })
 
 test('trigger animate with loop', async () => {
-  const handleClick = jest.fn()
+  const handleClick = vi.fn()
   for (let i = 0; i < testType.length; i++) {
     const typeProp = testType[i] as AnimateType
     const { container } = render(
@@ -50,7 +50,7 @@ test('trigger animate with loop', async () => {
 })
 
 test('trigger animate', async () => {
-  const handleClick = jest.fn()
+  const handleClick = vi.fn()
   for (let i = 0; i < testType.length; i++) {
     const typeProp = testType[i] as AnimateType
     const { container } = render(
