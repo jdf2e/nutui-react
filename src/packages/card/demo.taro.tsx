@@ -9,14 +9,8 @@ import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 
-interface T {
-  basic: string
-  customProduct: string
-  customShop: string
-  customFooter: string
-}
 const CardDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
       customProduct: '自定义商品标签',

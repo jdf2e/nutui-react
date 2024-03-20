@@ -7,15 +7,8 @@ import Demo3 from './demos/h5/demo3'
 import Demo4 from './demos/h5/demo4'
 import Demo5 from './demos/h5/demo5'
 
-interface T {
-  basic: string
-  customProduct: string
-  customShop: string
-  customPriceIcon: string
-  customFooter: string
-}
 const CardDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
       customProduct: '自定义商品标签',

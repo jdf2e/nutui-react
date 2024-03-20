@@ -22,9 +22,7 @@ const Demo4 = () => {
       delivery={state.delivery}
       shopName={state.shopName}
       tag={<div> 自定义店铺介绍 </div>}
-    >
-      {' '}
-    </Card>
+    />
   )
 }
 export default Demo4
