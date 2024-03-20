@@ -20,6 +20,30 @@ import { InfiniteLoading } from '@nutui/nutui-react-taro'
 
 :::
 
+### 下拉刷新
+
+:::demo
+
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
+
+:::
+
+### 自定义加载文案
+
+:::demo
+
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
+
+:::
+
+### primary主题
+
+:::demo
+
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
+
+:::
+
 ## InfiniteLoading
 
 ### Props
