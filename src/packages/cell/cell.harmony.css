@@ -1,0 +1,33 @@
+.nut-cell {
+  position: relative;
+  display: flex;
+  width: 100%;
+  line-height: 20px;
+  padding: 13px 16px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0px 1px 7px 0px rgb(237, 238, 241);
+  font-size: 14px;
+  color: #1a1a1a;
+  margin: 10px 0;
+  box-sizing: border-box;
+}
+.nut-cell-left {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.nut-cell-description {
+  font-size: 12px;
+  color: #595959;
+}
+.nut-cell-extra {
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  word-break: break-all;
+  font-size: 14px;
+  color: #595959;
+}

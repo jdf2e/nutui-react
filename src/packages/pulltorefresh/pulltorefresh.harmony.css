@@ -1,0 +1,27 @@
+.nut-pulltorefresh-head {
+  overflow: hidden;
+  position: relative;
+  font-size: 12px;
+}
+.nut-pulltorefresh-head-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.nut-pulltorefresh-head-content-icons {
+  width: 36px;
+  height: 26px;
+  margin-bottom: 4px;
+}
+
+[dir=rtl] .nut-pulltorefresh-head-content,
+.nut-rtl .nut-pulltorefresh-head-content {
+  left: auto;
+  right: 0;
+}
