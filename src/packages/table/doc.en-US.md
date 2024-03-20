@@ -1,10 +1,10 @@
-# Table Component
+# Table
 
-## Introduction
+## Intro
 
 Used for displaying basic tables.
 
-## Installation
+## Install
 
 ```tsx
 import { Table } from '@nutui/nutui-react';
