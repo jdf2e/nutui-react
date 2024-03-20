@@ -5,9 +5,6 @@ const Demo8 = () => {
   const marginStyle = { margin: 8 }
   return (
     <>
-      <Button size="large" type="primary">
-        Large
-      </Button>
       <Button type="primary" style={marginStyle}>
         Normal
       </Button>
@@ -17,6 +14,12 @@ const Demo8 = () => {
       </Button>
       <Button size="mini" style={marginStyle} type="primary">
         Mini
+      </Button>
+      <Button size="large" type="primary" style={marginStyle}>
+        Large
+      </Button>
+      <Button size="xlarge" type="primary" style={marginStyle}>
+        XLarge
       </Button>
     </>
   )

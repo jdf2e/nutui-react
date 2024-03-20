@@ -10,7 +10,6 @@ const modules = import.meta.glob('@/packages/**/demos/*/*.tsx', {
 })
 // console.log('modules', modules)
 const CodeBlock: FunctionComponent = (props: { src?: string }) => {
-
   const ctx = useContext(APPContext)
 
   const originCode = modules[`${ctx.path}/demos/${props.src}`]

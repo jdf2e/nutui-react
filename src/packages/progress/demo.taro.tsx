@@ -166,7 +166,7 @@ const ProgressDemo = () => {
         <Toast
           type="text"
           visible={show}
-          msg={toastMsg}
+          content={toastMsg}
           onClose={() => {
             SetShow(false)
           }}

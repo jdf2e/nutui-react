@@ -39,50 +39,13 @@ The ConfigProvider component provides the ability to override CSS variables, and
 
 :::demo
 
-```tsx
-import React from 'react';
-import { ConfigProvider, TextArea, Cell, Rate, Button } from "@nutui/nutui-react";
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
-const App = () => {
-  const darkTheme = {
-    nutuiColorPrimary: 'green',
-    nutuiColorPrimaryStop1: 'green',
-    nutuiColorPrimaryStop2: 'green',
-  }
-  return (
-    <>
-      <h2>Default Theme</h2>
-        <ConfigProvider>
-          <Cell.Group>
-            <Cell>
-              <Rate defaultValue={3} />
-            </Cell>
-            <Cell>
-              <Button type="primary" size="large">
-                Submit
-              </Button>
-            </Cell>
-          </Cell.Group>
-        </ConfigProvider>
-        <h2>Custom Theme</h2>
-        <ConfigProvider theme={darkTheme}>
-          <Cell.Group>
-            <Cell>
-              <Rate defaultValue={3} />
-            </Cell>
-            <Cell>
-              <Button type="primary" size="large">
-                Submit
-              </Button>
-            </Cell>
-          </Cell.Group>
-        </ConfigProvider>
-    </>
-  )
-}
+:::
 
-export default App;
-```
+:::demo
+
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -130,28 +93,21 @@ NutUI-React provides a ConfigProvider component for global configuration of inte
 
 :::demo
 
-```tsx
-import React from 'react';
-import { ConfigProvider, TextArea } from "@nutui/nutui-react";
-import en from "@nutui/nutui-react/dist/locales/en-US";
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
-const App = () => {
-  return (
-    <>
-      <h2>Textarea default</h2>
-      <ConfigProvider>
-        <TextArea disabled showCount maxLength={20} />
-      </ConfigProvider>
-      <h2>Textarea en-US</h2>
-      <ConfigProvider locale={enUS}>
-        <TextArea disabled showCount maxLength={20} />
-      </ConfigProvider>
-    </>
-  )
-}
+:::
 
-export default App;
-```
+:::demo
+
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
+
+:::
+
+### RTL
+
+:::demo
+
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 

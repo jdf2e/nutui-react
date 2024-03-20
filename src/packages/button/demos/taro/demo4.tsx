@@ -8,7 +8,7 @@ const Demo4 = () => {
     <>
       <Button
         type="primary"
-        icon={<Star size={20} />}
+        icon={<Star />}
         rightIcon={<Star />}
         style={marginStyle}
       >
@@ -103,6 +103,16 @@ const Demo4 = () => {
         shape="round"
         type="primary"
         size="large"
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={marginStyle}
+      >
+        Button
+      </Button>
+      <Button
+        shape="round"
+        type="primary"
+        size="xlarge"
         icon={<Star />}
         rightIcon={<Star />}
         style={marginStyle}

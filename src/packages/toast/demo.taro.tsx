@@ -71,7 +71,7 @@ const ToastDemo = () => {
     },
   })
   const [state, SetState] = useState({
-    msg: 'toast',
+    content: 'toast',
     type: 'text',
     duration: 2,
     closeOnOverlayClick: false,
@@ -85,14 +85,14 @@ const ToastDemo = () => {
 
   const openToast = (
     type: string,
-    msg: string,
+    content: string,
     duration?: number,
     icon?: string | React.ReactNode,
     closeOnOverlayClick?: boolean,
     wordBreak: ToastWordBreakType = 'break-all'
   ) => {
     const changeState = Object.assign(state, {
-      msg,
+      content,
       type,
       duration,
       icon,
@@ -107,7 +107,7 @@ const ToastDemo = () => {
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <Toast
-          msg={state.msg}
+          content={state.content}
           visible={showToast}
           type={state.type}
           duration={state.duration}
@@ -133,11 +133,11 @@ const ToastDemo = () => {
           onClick={() => {
             Toast.show('test', {
               title: translated.toastFunction,
+              content: translated.toastText,
               type: 'fail',
               duration: 2,
               position: 'center',
               icon: <Jd />,
-              size: 'large',
               lockScroll: true,
               onClose: () => {
                 console.log('close')

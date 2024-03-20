@@ -174,6 +174,7 @@ export default App
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
+| type | 主题类型 | `default`\| `primary` | `default` |
 | hasMore | 是否还有更多数据 | `boolean` | `true` |
 | threshold | 距离底部多远加载 | `number` | `200` |
 | target | 获取监听的目标元素 | `string` | `-` |

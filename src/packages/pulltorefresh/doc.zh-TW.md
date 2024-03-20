@@ -16,31 +16,16 @@ import { PullToRefresh } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React, {useState} from "react";
-import { PullToRefresh, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  const [list] = useState([1, 2, 3, 4, 5, 6, 7])
-  return (
-    <>
-      <div className="demo">
-        <h2>基礎用法</h2>
-        <PullToRefresh>
-          {list.map((item) => (
-            <Cell key={item}>{item}</Cell>
-          ))}
-        </PullToRefresh>
-      </div>
-    </>
-  )
-}
-
-export default App
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
+### 深色背景-反白模式:type='primary'
 
+:::demo
+
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
+
+:::
 ## PullToRefresh
 
 ### Props
@@ -70,3 +55,4 @@ export default App
 | --- | --- | --- |
 | \--nutui-pulltorefresh-icon-width | 下拉時icon寬度 | `36px` |
 | \--nutui-pulltorefresh-icon-height | 下拉時icon高度 | `26px` |
+| \--nutui-pulltorefresh-color-primary | 深色背景模式 | `$color-primay` |

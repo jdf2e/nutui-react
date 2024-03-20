@@ -1,51 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useTranslate } from '../../sites/assets/locale'
-import { InputNumber } from './inputnumber'
 import Cell from '@/packages/cell'
-import Toast from '@/packages/toast'
-
-import ConfigProvider from '@/packages/configprovider'
-
-interface T {
-  '6333c786': string
-  '0137871a': string
-  '84aa6bce': string
-  '55cc5fb7': string
-  '9636103a': string
-  '181965e2': string
-  e7b2ce1f: string
-  e7b2ce1g: string
-  e7b2ce1y: string
-  '3a42134b': string
-  '65bafb1d': string
-  '7e2394ae': string
-  '7e2394be': string
-}
-
-const customTheme = {
-  nutuiInputnumberButtonWidth: '30px',
-  nutuiInputnumberButtonHeight: '30px',
-  nutuiInputnumberButtonBorderRadius: '2px',
-  nutuiInputnumberInputBackgroundColor: '#fff',
-  nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
-  nutuiInputnumberInputHeight: '30px',
-  nutuiInputnumberInputMargin: '0 2px',
-}
-
-const customTheme2 = {
-  nutuiInputnumberButtonWidth: '30px',
-  nutuiInputnumberButtonHeight: '30px',
-  nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
-  nutuiInputnumberInputBackgroundColor: '#fff',
-  nutuiInputnumberInputMargin: '0 2px',
-}
-
-const customTheme3 = {
-  nutuiInputnumberInputWidth: '60px',
-}
+import Demo1 from './demos/h5/demo1'
+import Demo2 from './demos/h5/demo2'
+import Demo3 from './demos/h5/demo3'
+import Demo4 from './demos/h5/demo4'
+import Demo5 from './demos/h5/demo5'
+import Demo6 from './demos/h5/demo6'
+import Demo7 from './demos/h5/demo7'
+import Demo8 from './demos/h5/demo8'
+import Demo9 from './demos/h5/demo9'
 
 const InputNumberDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       '6333c786': '超出限制事件触发',
       '0137871a': '异步演示2秒后更改',
@@ -54,8 +21,7 @@ const InputNumberDemo = () => {
       '9636103a': '限制输入范围',
       '181965e2': '禁用操作',
       e7b2ce1f: '只读禁用输入框',
-      e7b2ce1g: '自定义按钮样式1',
-      e7b2ce1y: '自定义按钮样式2',
+      e7b2ce1g: '自定义按钮样式',
       '3a42134b': '支持小数点',
       '65bafb1d': '支持异步修改',
       '7e2394ae': '自定义按钮大小',
@@ -69,8 +35,7 @@ const InputNumberDemo = () => {
       '9636103a': '限制輸入範圍',
       '181965e2': '禁用操作',
       e7b2ce1f: '只讀禁用輸入框',
-      e7b2ce1g: '自定義按钮样式1',
-      e7b2ce1y: '自定義按钮样式2',
+      e7b2ce1g: '自定義按钮样式',
       '3a42134b': '支持小數點',
       '65bafb1d': '支持異步修改',
       '7e2394ae': '自定義按鈕大小',
@@ -84,8 +49,7 @@ const InputNumberDemo = () => {
       '9636103a': 'Limit input range',
       '181965e2': 'Disable operation',
       e7b2ce1f: 'read-only disabled input box',
-      e7b2ce1g: 'Custom Button CSS1',
-      e7b2ce1y: 'Custom Button CSS2',
+      e7b2ce1g: 'Custom Button CSS',
       '3a42134b': 'support decimal point',
       '65bafb1d': 'Support for asynchronous modification',
       '7e2394ae': 'custom button size',
@@ -93,99 +57,49 @@ const InputNumberDemo = () => {
     },
   })
 
-  const [inputValue, setInputValue] = useState(-1)
-  const overlimit = () => {
-    Toast.show({ content: translated['6333c786'], icon: 'warn' })
-  }
-  const onChange = (value: string | number) => {
-    Toast.show({ icon: 'loading', content: translated['0137871a'] })
-    setTimeout(() => {
-      setInputValue(Number(value))
-      Toast.clear()
-    }, 2000)
-  }
   return (
     <>
       <div className="demo">
         <h2>{translated['84aa6bce']}</h2>
         <Cell>
-          <InputNumber defaultValue={1} allowEmpty />
+          <Demo1 />
         </Cell>
 
         <h2>{translated['55cc5fb7']}</h2>
         <Cell>
-          <InputNumber defaultValue={0} min={0} step={5} />
+          <Demo2 />
         </Cell>
 
         <h2>{translated['9636103a']}</h2>
         <Cell>
-          <InputNumber
-            defaultValue={10}
-            min={10}
-            max={20}
-            onOverlimit={overlimit}
-          />
+          <Demo3 />
         </Cell>
 
         <h2>{translated['181965e2']}</h2>
         <Cell>
-          <InputNumber defaultValue={0} disabled />
+          <Demo4 />
         </Cell>
 
         <h2>{translated.e7b2ce1f}</h2>
         <Cell>
-          <InputNumber defaultValue={1} readOnly />
+          <Demo5 />
         </Cell>
 
         <h2>{translated.e7b2ce1g}</h2>
-        <Cell>
-          <ConfigProvider theme={customTheme}>
-            <InputNumber defaultValue={1} />
-          </ConfigProvider>
-        </Cell>
-
-        <h2>{translated.e7b2ce1y}</h2>
-        <Cell>
-          <ConfigProvider theme={customTheme2}>
-            <InputNumber defaultValue={1} />
-          </ConfigProvider>
-        </Cell>
+        <Demo6 />
 
         <h2>{translated['3a42134b']}</h2>
         <Cell>
-          <InputNumber defaultValue={5.5} step={0.1} digits={1} readOnly />
+          <Demo7 />
         </Cell>
 
         <h2>{translated['65bafb1d']}</h2>
         <Cell>
-          <InputNumber value={inputValue} min={-6} onChange={onChange} async />
+          <Demo8 />
         </Cell>
 
-        <h2>支持formatter</h2>
-        <Cell>
-          <ConfigProvider theme={customTheme3}>
-            <InputNumber
-              className="format-width"
-              defaultValue={1000}
-              min={10}
-              max={15020}
-              formatter={(value) =>
-                `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-              }
-            />
-          </ConfigProvider>
-        </Cell>
-        <Cell>
-          <ConfigProvider theme={customTheme3}>
-            <InputNumber
-              className="format-width"
-              defaultValue={100}
-              min={0}
-              max={100}
-              formatter={(value) => `${value}%`}
-            />
-          </ConfigProvider>
-        </Cell>
+        <h2>Formatter</h2>
+        <Demo9 />
       </div>
     </>
   )

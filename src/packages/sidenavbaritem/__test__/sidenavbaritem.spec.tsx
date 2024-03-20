@@ -16,7 +16,7 @@ test('should match snapshot', () => {
   expect(asFragment()).toMatchSnapshot()
 })
 test('should emit click event', async () => {
-  const click = jest.fn()
+  const click = vi.fn()
   const { getByTestId } = render(
     <>
       <SideNavBarItem

@@ -80,7 +80,7 @@ import { Button } from '@nutui/nutui-react-taro';
 
 ### 按钮尺寸
 
-支持 `large`、`normal`、`small`、`mini` 四种尺寸，默认为 `normal`。
+支持 `xlarge` 、 `large`、`normal`、`small`、`mini` 尺寸，默认为 `normal`。
 
 :::demo
 
@@ -115,7 +115,7 @@ import { Button } from '@nutui/nutui-react-taro';
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | type | 按钮的样式 | `default` \| `primary` \| `warning` \| `danger` \| `success` \| `info` | `default` |
-| size | 按钮的尺寸 | `normal` \| `large` \| `small` \| `mini` | `normal` |
+| size | 按钮的尺寸 | `normal` \|`xlarge` \|  `large` \| `small` \| `mini` | `normal` |
 | shape | 按钮的形状 | `square` \| `round` | `round` |
 | color | 按钮颜色，支持传入 linear-gradient 渐变色, outline 和 dashed 模式下设置的是 color，其他情况设置的是background，建议使用CSS变量实现的颜色配置 | `string` | `-` |
 | fill | 填充模式 | `solid` \| `outline`  \| `dashed` \| `none` | `solid` |
@@ -147,16 +147,20 @@ import { Button } from '@nutui/nutui-react-taro';
 | \--nutui-button-default-background-color | type 为 default 的按钮的背景色 | `$white` |
 | \--nutui-button-default-border-color | type 为 default 的按钮的边框色 | `$color-text` |
 | \--nutui-button-default-disabled | type 为 default 的按钮的禁用色 | `$color-text-disabled` |
+| \--nutui-button-default-disabled-color | type 为 default 的按钮的禁用文本色 | `$color-text-help` |
 | \--nutui-button-default-padding | type 为 default 的按钮的内边距 | `0 16px` |
 | \--nutui-button-default-font-size | type 为 default 的按钮的字号 | `$font-size-base` |
 | \--nutui-button-default-font-weight | type 为 default 的按钮的字重 | `$font-weight` |
 | \--nutui-button-large-height | size 为 large 的按钮的高度 | `40px` |
 | \--nutui-button-large-font-size | size 为 large 的按钮的字号 | `$font-size-base` |
+| \--nutui-button-large-border-radius | size 为 large 的按钮的圆角 | `24px` |
 | \--nutui-button-small-padding | size 为 small 的按钮的内边距 | `0 12px` |
 | \--nutui-button-small-height | size 为 small 的按钮的高度 | `28px` |
 | \--nutui-button-small-font-size | size 为 small 的按钮的字号 | `$font-size-small` |
+| \--nutui-button-small-border-radius | size 为 small 的按钮的圆角 | `24px` |
 | \--nutui-button-mini-padding | size 为 mini 的按钮的内边距 | `0 12px` |
 | \--nutui-button-mini-height | size 为 mini 的按钮的高度 | `24px` |
 | \--nutui-button-mini-font-size | size 为 mini 的按钮的字号 | `$font-size-small` |
+| \--nutui-button-mini-border-radius | size 为 mini 的按钮的圆角 | `24px` |
 | \--nutui-button-text-icon-margin | 带 icon按钮的文本的边距 | `4px` |
 

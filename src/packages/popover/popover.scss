@@ -219,6 +219,27 @@
   }
 }
 
+.nut-popover-dark {
+  background: $popover-text-color;
+  color: $popover-content-background-color;
+
+  .nut-popover-arrow {
+    border-bottom-color: $popover-text-color;
+  }
+
+  .nut-popover-content {
+    background: $popover-text-color !important;
+    color: $popover-content-background-color !important;
+    .nut-popover-menu-item {
+      border-bottom-color: $popover-content-background-color;
+      &:hover {
+        color: $popover-content-background-color;
+        background-color: $popover-text-color;
+      }
+    }
+  }
+}
+
 [dir='rtl'] .nut-popover,
 .nut-rtl .nut-popover {
   &-arrow {

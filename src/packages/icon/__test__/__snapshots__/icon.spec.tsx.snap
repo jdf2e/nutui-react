@@ -1,10 +1,10 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`should icon snapshot match 1`] = `
 <DocumentFragment>
   <i
     class="nutui-iconfont nut-icon nut-icon-JD test"
-    style="color: rgb(250, 44, 25); font-size: 24px; width: 24px; height: 24px;"
+    style="color: #fa2c19; font-size: 24px; width: 24px; height: 24px;"
   />
 </DocumentFragment>
 `;

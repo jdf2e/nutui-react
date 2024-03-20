@@ -326,6 +326,100 @@ export default App
 
 :::
 
+### primary主题
+
+:::demo
+
+```tsx
+import React, { useState, useEffect } from 'react'
+import { Cell, InfiniteLoading } from '@nutui/nutui-react'
+import { Loading, More } from '@nutui/icons-react'
+
+const sleep = (time: number): Promise<unknown> =>
+  new Promise((resolve) => {setTimeout(resolve, time)})
+const InfiniteUlStyle = {
+  height: '300px',
+  width: '100%',
+  padding: '0',
+  overflowY: 'auto',
+  overflowX: 'hidden',
+}
+
+const InfiniteLiStyle = {
+  marginTop: '10px 10px 0',
+  fontSize: '14px',
+  color: 'rgba(100, 100, 100, 1)',
+  textAlign: 'center',
+  backgroundColor: "#FFF"
+}
+const App = () => {
+  const [customList, setCustomList] = useState<string[]>([])
+  const [customHasMore, setCustomHasMore] = useState(true)
+
+  useEffect(() => {
+    init()
+  }, [])
+
+  const init = () => {
+    for (let i = 0; i < 10; i++) {
+      customList.push(`${i}`)
+    }
+    setCustomList([...customList])
+  }
+
+  const customLoadMore = async () => {
+    await sleep(2000)
+    const curLen = customList.length
+    for (let i = curLen; i < curLen + 10; i++) {
+      customList.push(`${i}`)
+    }
+    if (customList.length >= 30) {
+      setCustomHasMore(false)
+    } else {
+      setCustomList([...customList])
+    }
+  }
+
+  return (
+    <>
+      <h2>primary主题</h2>
+      <Cell>
+        <ul id="primaryScroll" style={InfiniteUlStyle}>
+          <InfiniteLoading
+            target="primaryScroll"
+            type="primary"
+            loadingText={
+                <>
+                  <Loading className="nut-infinite-bottom-tips-icons" />
+                  loading
+                </>
+              }
+              loadMoreText={
+                <>
+                  <More className="nut-infinite-bottom-tips-icons" />
+                  没有啦~
+                </>
+              }
+            hasMore={customHasMore}
+            onLoadMore={customLoadMore}
+          >
+            {customList.map((item, index) => {
+              return (
+                <li key={index} style={InfiniteLiStyle}>
+                  {item}
+                </li>
+              )
+            })}
+          </InfiniteLoading>
+        </ul>
+      </Cell>
+    </>
+  )
+}
+export default App
+```
+
+:::
 
 ### 基于window滚动
 
@@ -413,6 +507,7 @@ export default App
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
+| type | 主题类型 | `default`\| `primary` | `default` |
 | hasMore | 是否还有更多数据 | `boolean` | `true` |
 | threshold | 距离底部多远加载 | `number` | `200` |
 | capture | 是否使用捕获模式 true 捕获 false 冒泡 | `boolean` | `false` |

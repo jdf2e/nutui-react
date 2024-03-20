@@ -18,7 +18,7 @@ describe('Countdown', () => {
     container = null
   })
   test('endTime props', async () => {
-    const testClick = jest.fn()
+    const testClick = vi.fn()
     render(<CountDown endTime={Date.now() + 1 * 1000} onEnd={testClick} />)
     expect(testClick).not.toBeCalled()
     await act(async () => {
@@ -44,7 +44,7 @@ describe('Countdown', () => {
   })
 
   test('paused props', async () => {
-    const testClick = jest.fn()
+    const testClick = vi.fn()
     let paused = false
     const toggle = () => {
       testClick()

@@ -20,19 +20,7 @@ npm i --save @nutui/icons-react-taro
 
 :::demo
 
-```tsx
-import React from "react";
-import { Add, Dongdong, UserAdd } from '@nutui/icons-react-taro'
-
-const App = () => {
-  return <>
-    <Add color="red" />
-    <UserAdd />
-    <Dongdong />
-  </>
-}
-
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -60,20 +48,7 @@ import { IconFont } from '@nutui/icons-react-taro'
 
 :::demo
 
-```tsx
-import React from "react";
-import { IconFont } from '@nutui/icons-react-taro'
-
-const App = () => {
-  return <>
-    <IconFont name="dongdong" />
-    <IconFont name="add" />
-    <IconFont name="minus" />
-  </>
-}
-export default App;
-
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -83,21 +58,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { IconFont } from '@nutui/icons-react-taro'
-
-const App = () => {
-  return <>
-    <IconFont
-      size="40"
-      name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
-    />
-  </>
-}
-export default App;
-
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -107,20 +68,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { IconFont } from '@nutui/icons-react-taro'
-
-const App = () => {
-  return <>
-    <IconFont name="dongdong" color="#fa2c19" />
-    <IconFont name="dongdong" color="#64b578" />
-    <IconFont name="dongdong" color="#ffd700" />
-  </>
-}
-
-export default App;
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -130,20 +78,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { IconFont } from '@nutui/icons-react-taro'
-
-const App = () => {
-  return <>
-    <IconFont name="dongdong" size="16" />
-    <IconFont name="dongdong" size="20" />
-    <IconFont name="dongdong" size="24" />
-  </>
-}
-
-export default App;
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
