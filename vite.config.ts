@@ -91,7 +91,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
       environment: 'happy-dom',
       coverage: {
         all: false,
-        provider: 'istanbul',
+        provider: 'v8',
       },
       include: ['src/packages/**/*.(test|spec).(ts|tsx)'],
       reporters: ['default', 'html'],
