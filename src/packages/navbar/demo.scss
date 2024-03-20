@@ -3,7 +3,9 @@
     display: inline-flex;
     align-items: center;
   }
-
+  .nut-navbar {
+    z-index: 9 !important;
+  }
   .nut-navbar-title .title {
     display: flex;
     flex-direction: column;
