@@ -3,6 +3,7 @@ node_modules
 .idea
 .eslintcache
 /dist
+/dist-demo
 /libs
 /jd/upload.js
 yarn.lock
