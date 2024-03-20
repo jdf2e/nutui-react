@@ -13,6 +13,8 @@ import { dirname, join, basename, extname, resolve, relative } from 'path'
 import j from 'jscodeshift'
 import { readFileSync } from 'fs'
 import { relativeFilePath } from './relative-path.mjs'
+import { codeShift } from './build-comments-to-dts.mjs'
+import { generate } from './build-theme-typings.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -356,6 +358,8 @@ console.log('clean dist')
 await deleteAsync('dist')
 console.log('clean: ✅')
 
+await generate()
+
 console.log('build ES Module')
 await buildES()
 console.log('build ES Module: ✅')
@@ -392,3 +396,5 @@ await deleteAsync([
   'dist/es/packages/nutui.react.scss.d.ts',
   'dist/es/packages/nutui.react.scss.js',
 ])
+
+codeShift('Taro')

@@ -10,14 +10,12 @@ import { dirname } from 'path'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
-const TARO = process.env.TARO
 
 /**
  * 通过 cofnig.json 获取所有组件的数据
  */
 function readAllComponents() {
   const config = JSON.parse(fse.readFileSync(path.join(__dirname, '../src/config.json')).toString())
-  console.log(config)
   const components = config.nav.reduce(function (accumulator, currentValue) {
     currentValue.packages.forEach((pkg) => {
       if (pkg.exclude || pkg.version !== '2.0.0') {
@@ -164,7 +162,7 @@ function getComponentName(key) {
  *    step b: 提取文档中的 Props 相关的表格，并转换为 JSON 数据
  *    step c: 添加注释
  */
-function codeShift() {
+export function codeShift(env) {
   const components = readAllComponents()
   components.forEach((component) => {
     const { name } = component
@@ -172,7 +170,7 @@ function codeShift() {
       __dirname,
       '../src/packages',
       name.toLowerCase(),
-      TARO ? 'doc.taro.md' : 'doc.md'
+      env === 'Taro' ? 'doc.taro.md' : 'doc.md'
     )
     if (fse.pathExistsSync(componentDocumentPath)) {
       const tables = extractPropsTable(
@@ -192,5 +190,3 @@ function codeShift() {
     }
   })
 }
-
-codeShift()

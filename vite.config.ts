@@ -1,13 +1,13 @@
 /// <reference types="vitest" />
 import { defineConfig, UserConfig } from 'vite'
 import reactRefresh from '@vitejs/plugin-react'
-import path from 'path'
+import { resolve, join } from 'path'
+// @ts-ignore
 import atImport from 'postcss-import'
 import { readFileSync } from 'node:fs'
+import config from './package.json'
 
 const projectID = process.env.VITE_APP_PROJECT_ID || ''
-
-const { resolve } = path
 
 let fileStr = `@import "@/styles/variables.scss";@import "@/sites/assets/styles/variables.scss";@import '@/styles/theme-default.scss';\n`
 if (projectID) {
@@ -53,7 +53,7 @@ export default defineConfig(async (): Promise<UserConfig> => {
           additionalData: fileStr,
         },
         postcss: {
-          plugins: [atImport({ path: path.join(__dirname, 'src`') })],
+          plugins: [atImport({ path: join(__dirname, 'src`') })],
         },
       },
     },
@@ -95,6 +95,21 @@ export default defineConfig(async (): Promise<UserConfig> => {
       },
       include: ['src/packages/**/*.(test|spec).(ts|tsx)'],
       reporters: ['default', 'html'],
+    },
+    build: {
+      target: 'es2015',
+      outDir: `./dist-demo/${projectID === 'jmapp' ? 'jdesign' : '2x'}/`,
+      cssCodeSplit: true,
+      rollupOptions: {
+        input: {
+          mobile: resolve(__dirname, 'demo.html'),
+        },
+        output: {
+          entryFileNames: `demo-${config.version}/[name].js`,
+          chunkFileNames: `demo-${config.version}/[name].js`,
+          assetFileNames: `demo-${config.version}/[name].[ext]`,
+        },
+      },
     },
   }
 })

@@ -1,7 +1,8 @@
-const glob = require('glob')
-const path = require('path')
-const fse = require('fs-extra')
-const prettier = require('prettier')
+import { glob } from 'glob'
+import * as path from 'path'
+import fse from 'fs-extra'
+import prettier from 'prettier'
+
 const projectID = process.env.VITE_APP_PROJECT_ID
 
 const UPPERCASE = /[\p{Lu}]/u
@@ -10,12 +11,12 @@ const LEADING_CAPITAL = /^[\p{Lu}](?![\p{Lu}])/gu
 const IDENTIFIER = /([\p{Alpha}\p{N}_]|$)/u
 const SEPARATORS = /[_.\- ]+/
 
-const LEADING_SEPARATORS = new RegExp('^' + SEPARATORS.source)
+const LEADING_SEPARATORS = new RegExp(`^${SEPARATORS.source}`)
 const SEPARATORS_AND_IDENTIFIER = new RegExp(
   SEPARATORS.source + IDENTIFIER.source,
   'gu'
 )
-const NUMBERS_AND_IDENTIFIER = new RegExp('\\d+' + IDENTIFIER.source, 'gu')
+const NUMBERS_AND_IDENTIFIER = new RegExp(`\\d+${IDENTIFIER.source}`, 'gu')
 
 const preserveCamelCase = (
   string,
@@ -33,7 +34,7 @@ const preserveCamelCase = (
     isLastLastCharPreserved = index > 2 ? string[index - 3] === '-' : true
 
     if (isLastCharLower && UPPERCASE.test(character)) {
-      string = string.slice(0, index) + '-' + string.slice(index)
+      string = `${string.slice(0, index)}-${string.slice(index)}`
       isLastCharLower = false
       isLastLastCharUpper = isLastCharUpper
       isLastCharUpper = true
@@ -44,7 +45,7 @@ const preserveCamelCase = (
       LOWERCASE.test(character) &&
       (!isLastLastCharPreserved || preserveConsecutiveUppercase)
     ) {
-      string = string.slice(0, index - 1) + '-' + string.slice(index - 1)
+      string = `${string.slice(0, index - 1)}-${string.slice(index - 1)}`
       isLastLastCharUpper = isLastCharUpper
       isLastCharUpper = false
       isLastCharLower = true
@@ -144,46 +145,48 @@ function camelCase(input, options) {
   return postProcess(input, toUpperCase)
 }
 
-function generate() {
+export async function generate() {
   const files = [
     !projectID
       ? './src/styles/variables.scss'
       : `./src/styles/variables-${projectID}.scss`,
     ...glob.sync('./src/packages/**/*.scss', {
       ignore: './src/**/demo.scss',
-      dotRelative: true
+      dotRelative: true,
     }),
   ]
-  Promise.all(
+  const data = await Promise.all(
     files.map(function (file) {
       return fse.readFile(path.join(process.cwd(), file)).then((data) => {
         if (!data) return []
         return matchCssVarFromText(data.toString())
       })
     })
-  ).then((data) => {
-    const result = data.reduce((pre, curr) => {
-      return [...pre, ...curr]
-    }, [])
-    const unique = Array.from(new Set(result))
+  )
+  const result = data.reduce((pre, curr) => {
+    return [...pre, ...curr]
+  }, [])
+  const unique = Array.from(new Set(result))
 
-    const formatStrFunc = async () => {
-      const str = await prettier.format(`export type NutCSSVariables = ${unique.join('|')}`, {
+  const formatStrFunc = async () => {
+    const str = await prettier.format(
+      `export type NutCSSVariables = ${unique.join('|')}`,
+      {
         trailingComma: 'es5',
         semi: false,
         singleQuote: true,
         endOfLine: 'auto',
         parser: 'typescript',
-      })
+      }
+    )
 
-      fse.writeFile(
-        path.join(process.cwd(), './src/packages/configprovider/types.ts'),
-        str
-      )
-    }
+    fse.writeFile(
+      path.join(process.cwd(), './src/packages/configprovider/types.ts'),
+      str
+    )
+  }
 
-    formatStrFunc()
-  })
+  formatStrFunc()
 }
 
 function matchCssVarFromText(text) {
@@ -193,5 +196,3 @@ function matchCssVarFromText(text) {
   const variables = matched.map((cssVar) => `'${camelCase(cssVar)}'`)
   return variables
 }
-
-generate()

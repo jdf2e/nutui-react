@@ -13,6 +13,8 @@ import { dirname, join, basename, extname, resolve, relative } from 'path'
 import j from 'jscodeshift'
 import { readFileSync } from 'fs'
 import { relativeFilePath } from './relative-path.mjs'
+import { codeShift } from './build-comments-to-dts.mjs'
+import { generate } from './build-theme-typings.mjs'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -135,6 +137,7 @@ async function buildDeclaration() {
     await dest(join('dist/es', file.replace('dist/types/src', '')), result)
     await dest(join('dist/cjs', file.replace('dist/types/src', '')), result)
   }
+  deleteAsync('dist/types')
 }
 
 // 构建 UMD
@@ -306,18 +309,21 @@ async function exportProps() {
       if (show || exportEmpty) {
         const lowerName = name.toLowerCase()
         if (lowerName === 'icon') return
-        types.push(
-          `export * from './${lowerName}/index'`
-        )
+        types.push(`export * from './${lowerName}/index'`)
       }
     })
   })
-  await appendFile(join(__dirname, '../dist/es/packages/nutui.react.build.d.ts'), types.join('\n'))
+  await appendFile(
+    join(__dirname, '../dist/es/packages/nutui.react.build.d.ts'),
+    types.join('\n')
+  )
 }
 
 console.log('clean dist')
 await deleteAsync('dist')
 console.log('clean: ✅')
+
+await generate()
 
 console.log('build ES Module')
 await buildES()
@@ -355,3 +361,5 @@ await deleteAsync([
   'dist/es/packages/nutui.react.scss.d.ts',
   'dist/es/packages/nutui.react.scss.js',
 ])
+
+codeShift()
