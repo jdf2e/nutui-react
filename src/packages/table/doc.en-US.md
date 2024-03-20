@@ -10,7 +10,7 @@ Used for displaying basic tables.
 import { Table } from '@nutui/nutui-react';
 ```
 
-## Code Demonstration
+## Demo
 
 ### Basic Usage
 
