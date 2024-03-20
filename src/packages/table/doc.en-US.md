@@ -20,7 +20,7 @@ import { Table } from '@nutui/nutui-react';
 
 :::
 
-### Whether to Show Borders, Text Alignment
+### Whether To Display Border And Align Text
 
 :::demo
 
@@ -28,7 +28,7 @@ import { Table } from '@nutui/nutui-react';
 
 :::
 
-### Display Summary Row
+### Show Summary Bar
 
 :::demo
 
@@ -36,7 +36,7 @@ import { Table } from '@nutui/nutui-react';
 
 :::
 
-### Striped, Alternating Light and Dark
+### Stripes, Alternating Light And Shade
 
 :::demo
 
@@ -68,7 +68,7 @@ import { Table } from '@nutui/nutui-react';
 
 :::
 
-### Supports Asynchronous Rendering (See Effect After 5s)
+### Supports Asynchronous Rendering(See the effect after 5s)
 
 :::demo
 
@@ -92,7 +92,7 @@ import { Table } from '@nutui/nutui-react';
 
 :::
 
-### Fixed Table Header
+### Sticky Header
 
 :::demo
 
@@ -100,7 +100,7 @@ import { Table } from '@nutui/nutui-react';
 
 :::
 
-### Fixed Left Column
+### Sticky Left Column
 
 :::demo
 
@@ -108,7 +108,7 @@ import { Table } from '@nutui/nutui-react';
 
 :::
 
-### Fixed Right Column
+### Sticky Rright Column
 
 :::demo
 
