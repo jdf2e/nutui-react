@@ -25,7 +25,7 @@ test('should classname test', async () => {
 })
 
 test('should onclick called', () => {
-  const handleClick = jest.fn(() => {})
+  const handleClick = vi.fn(() => {})
   const { getByTestId } = render(
     <Icon
       data-testid="test"

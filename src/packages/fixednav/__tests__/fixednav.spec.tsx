@@ -53,7 +53,7 @@ test('should be displayed after setting the un-active-text', () => {
 })
 
 test('should be displayed after setting the un-active-text', () => {
-  const activeFixedNav = jest.fn()
+  const activeFixedNav = vi.fn()
   const { container } = render(
     <FixedNav
       list={list}

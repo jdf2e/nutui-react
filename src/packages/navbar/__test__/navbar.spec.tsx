@@ -55,7 +55,7 @@ test('should render placeholder element when using placeholder prop', () => {
 })
 
 test('should emit click-back event when clicking back text', () => {
-  const onBackClick = jest.fn()
+  const onBackClick = vi.fn()
   const { container } = render(
     <NavBar back="返回" onBackClick={onBackClick}>
       订单详情

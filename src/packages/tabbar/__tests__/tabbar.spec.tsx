@@ -84,7 +84,7 @@ test('should match active tabbar by click', async () => {
 })
 
 test('should show sure emitted when click', async () => {
-  const onSwitch = jest.fn()
+  const onSwitch = vi.fn()
   const { container } = render(
     <>
       <Tabbar inactiveColor="grey" activeColor="blue" onSwitch={onSwitch}>
@@ -106,7 +106,7 @@ test('should show sure emitted when click', async () => {
 })
 
 test('should only render title', async () => {
-  const onSwitch = jest.fn()
+  const onSwitch = vi.fn()
   const { container } = render(
     <>
       <Tabbar inactiveColor="grey" activeColor="blue" onSwitch={onSwitch}>

@@ -60,13 +60,13 @@ test('should shuffle key order when using random-key prop', async () => {
   expect(keys.every((v, k) => keys[k] === clickKeys[k])).toEqual(false)
 })
 test('should emit delete event after clicking delete key', () => {
-  const onDelete = jest.fn()
+  const onDelete = vi.fn()
   const { container } = render(<NumberKeyboard visible onDelete={onDelete} />)
   clickKey(container.querySelectorAll('.key')[11])
   expect(onDelete).toBeTruthy()
 })
 test('should emit close event after clicking collapse key', () => {
-  const onClose = jest.fn()
+  const onClose = vi.fn()
   const { container } = render(<NumberKeyboard visible onClose={onClose} />)
   clickKey(container.querySelectorAll('.key')[9])
   expect(onClose).toBeTruthy()
