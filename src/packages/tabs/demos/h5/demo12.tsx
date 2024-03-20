@@ -10,7 +10,7 @@ const Demo12 = () => {
       <Tabs
         value={tabIndex}
         onChange={(page) => {
-          swiperRef.current?.to(page)
+          swiperRef.current?.to(page as number)
           setTabIndex(page)
         }}
       >
