@@ -8,8 +8,13 @@ const Demo1 = () => {
   )
   return (
     <Cell>
-      <Button onClick={() => setFlag(false)}>Text WaterMark</Button>
-      <Button onClick={() => setFlag(true)}>Image WaterMark</Button>
+      <Button
+        style={{ marginInlineEnd: '10px' }}
+        onClick={() => setFlag(false)}
+      >
+        Text
+      </Button>
+      <Button onClick={() => setFlag(true)}>Image</Button>
       {!flag && <WaterMark zIndex={200} content="NutUI-WaterMark" />}
       {flag && (
         <WaterMark
