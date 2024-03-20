@@ -26,6 +26,10 @@ const extractH5Demos = (i) => {
       `const Demo${counter} = () => {`
     );
     codeContent = codeContent.replace(
+      /const \w+ = \(\) => \(/,
+      `const Demo${counter} = () => (`
+    )
+    codeContent = codeContent.replace(
       /export default \w+/,
       `export default Demo${counter}`
     );
@@ -62,6 +66,10 @@ const extractTaroDemos = (i) => {
       /const \w+ = \(\) => \{/,
       `const Demo${counter} = () => {`
     );
+    codeContent = codeContent.replace(
+      /const \w+ = \(\) => \(/,
+      `const Demo${counter} = () => (`
+    )
     codeContent = codeContent.replace(
       /export default \w+/,
       `export default Demo${counter}`

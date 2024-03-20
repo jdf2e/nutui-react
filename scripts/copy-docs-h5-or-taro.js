@@ -15,7 +15,8 @@ const copyFile = (from, to, package) => {
       const regex = /<CodeBlock src='(.*?)'><\/CodeBlock>/g
       let match = ''
       while ((match = regex.exec(content))) {
-        const temp = readTsxFile(package, match[1]) // 读取src中的文件
+        let temp = readTsxFile(package, match[1]) // 读取src中的文件
+        temp = temp.trim()
         content = content.replace(
           `<CodeBlock src='${match[1]}'></CodeBlock>`,
           '```tsx\n' + temp + '\n```'
