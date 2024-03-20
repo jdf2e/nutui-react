@@ -5,7 +5,7 @@
     "target": "ES6",
     "types": [
       "vite/client",
-      "jest",
+      "vitest/globals",
       "node"
     ],
     "allowJs": false,

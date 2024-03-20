@@ -37,7 +37,7 @@ test('renders with gutter', () => {
 })
 
 test('renders with flex', () => {
-  const { container } = render(
+  const { getByTestId } = render(
     <div data-testid="layout">
       <Row type="flex" wrap="nowrap">
         <Col span="6">
@@ -52,5 +52,7 @@ test('renders with flex', () => {
       </Row>
     </div>
   )
-  expect(container.querySelector('.nut-row')).toHaveClass('nut-row-flex-nowrap')
+  expect(getByTestId('layout').querySelector('.nut-row')).toHaveClass(
+    'nut-row-flex-nowrap'
+  )
 })

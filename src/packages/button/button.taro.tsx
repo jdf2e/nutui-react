@@ -18,7 +18,7 @@ export type ButtonType =
   | 'success'
   | 'warning'
   | 'danger'
-export type ButtonSize = 'large' | 'normal' | 'small' | 'mini'
+export type ButtonSize = 'xlarge' | 'large' | 'normal' | 'small' | 'mini'
 export type ButtonShape = 'square' | 'round'
 export type ButtonFill = 'solid' | 'outline' | 'dashed' | 'none'
 
@@ -120,7 +120,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
             [`${prefixCls}-${size}`]: size,
             [`${prefixCls}-${shape}`]: shape,
             [`${prefixCls}-block`]: block,
-            [`${prefixCls}-disabled`]: disabled,
+            [`${prefixCls}-disabled`]: disabled || loading,
             [`${prefixCls}-loading`]: loading,
           },
           className

@@ -4,17 +4,17 @@ import '@testing-library/jest-dom'
 import { Audio } from '../audio'
 
 test('className && style && type = progress  && onPause  && onFastBack && onForward test ', () => {
-  const playeEnd = jest.fn()
-  const pause = jest.fn()
-  const canPlay = jest.fn()
-  const mute = jest.fn()
-  const fastBack = jest.fn()
-  const forward = jest.fn()
+  const playeEnd = vi.fn()
+  const pause = vi.fn()
+  const canPlay = vi.fn()
+  const mute = vi.fn()
+  const fastBack = vi.fn()
+  const forward = vi.fn()
   const TestComponent = () => {
     return (
       <>
         <Audio
-          className="audio-jest"
+          className="audio-vi"
           style={{ fontSize: '20px' }}
           type="progress"
           autoPlay
@@ -31,7 +31,7 @@ test('className && style && type = progress  && onPause  && onFastBack && onForw
   }
   const { getByText, container } = render(<TestComponent />)
   expect(container.querySelector('.nut-audio')).toHaveClass(
-    'nut-audio audio-jest'
+    'nut-audio audio-vi'
   )
   expect(container.querySelector('.nut-audio')).toHaveStyle('font-size: 20px;')
   const backButton = getByText('快退')
