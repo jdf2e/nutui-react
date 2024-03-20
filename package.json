@@ -1,13 +1,14 @@
 {
-  "name": "@nutui/nutui-react",
-  "version": "2.4.1",
+  "name": "@test/nutui-react-taro",
+  "version": "3.0.0-alpha.0",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
-  "module": "dist/esm/nutui-react.es.js",
-  "typings": "dist/types/index.d.ts",
+  "module": "dist/es/packages/nutui.react.build.js",
+  "typings": "dist/es/packages/nutui.react.build.d.ts",
   "sideEffects": [
     "*.scss",
-    "dist/esm/**/style/*",
+    "dist/es/**/style/*",
+    "dist/cjs/**/style/*",
     "dist/style.css",
     "dist/styles/font/*",
     "dist/styles/font-jmapp/*"

@@ -8,7 +8,7 @@ import { copy } from 'fs-extra'
 import { deleteAsync } from 'del'
 import { fileURLToPath } from 'url'
 import { execSync } from 'child_process'
-import { readFile, access, writeFile, mkdir } from 'fs/promises'
+import { readFile, access, writeFile, mkdir, appendFile } from 'fs/promises'
 import { dirname, join, basename, extname, resolve, relative } from 'path'
 import j from 'jscodeshift'
 import { readFileSync } from 'fs'
@@ -62,6 +62,7 @@ async function buildES(p) {
         paths: {
           '@/packages/*': ['src/packages/*'],
           '@/utils/*': ['src/utils/*'],
+          '@/utils': ['src/utils'],
           '@/locales/*': ['src/locales/*'],
         },
         externalHelpers: true,
@@ -289,8 +290,15 @@ async function buildCSS(p) {
         postcssPlugin: 'remove-atrule',
         AtRule(root) {
           if (root.name === 'import') {
-            atRules.push(root.params)
-            root.remove()
+            if (root.params.indexOf("'../../styles") > -1) {
+              atRules.push(root.params)
+              root.params = root.params.replace('../../', '../../../../')
+              return
+            }
+            if (root.params.indexOf('styles') === -1) {
+              atRules.push(root.params)
+              root.remove()
+            }
           }
         },
       },
@@ -324,6 +332,26 @@ async function buildCSS(p) {
   }
 }
 
+async function exportProps() {
+  const types = []
+  const a = await readFile(join(__dirname, '../src/config.json'))
+  const componentsConfig = JSON.parse(a.toString())
+  componentsConfig.nav.forEach((item) => {
+    item.packages.forEach((element) => {
+      const { name, show, exportEmpty } = element
+      if (show || exportEmpty) {
+        const lowerName = name.toLowerCase()
+        if (lowerName === 'icon') return
+        types.push(`export * from './${lowerName}/index'`)
+      }
+    })
+  })
+  await appendFile(
+    join(__dirname, '../dist/es/packages/nutui.react.build.d.ts'),
+    types.join('\n')
+  )
+}
+
 console.log('clean dist')
 await deleteAsync('dist')
 console.log('clean: ✅')
@@ -345,7 +373,7 @@ await buildCSS()
 console.log('Build CSS: ✅')
 
 console.log('Copy Styles')
-copyStyles()
+await copyStyles()
 console.log('Copy Styles: ✅')
 
 console.log('Build All CSS')
@@ -355,3 +383,12 @@ console.log('Build All CSS: ✅')
 console.log('Build Declaration')
 await buildDeclaration()
 console.log('Build Declaration: ✅')
+
+await exportProps()
+
+await deleteAsync([
+  'dist/es/packages/nutui.react.js',
+  'dist/es/packages/nutui.react.d.ts',
+  'dist/es/packages/nutui.react.scss.d.ts',
+  'dist/es/packages/nutui.react.scss.js',
+])
