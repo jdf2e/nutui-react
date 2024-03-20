@@ -12,19 +12,15 @@ const Demo2 = () => {
         content={text}
         align="center"
         wrap
-        rightIcon={<ArrowRight width="12px" height="12px" />}
+        rightIcon={<ArrowRight />}
       />
       <br />
-      <NoticeBar
-        content={text}
-        align="center"
-        rightIcon={<ArrowRight width="12px" height="12px" />}
-      />
+      <NoticeBar content={text} align="center" rightIcon={<ArrowRight />} />
       <br />
       <NoticeBar
         content={textShort}
         align="center"
-        rightIcon={<ArrowRight width="12px" height="12px" />}
+        rightIcon={<ArrowRight />}
       />
     </>
   )
