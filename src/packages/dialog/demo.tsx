@@ -9,22 +9,12 @@ import Demo6 from './demos/h5/demo6'
 import Demo7 from './demos/h5/demo7'
 import Demo8 from './demos/h5/demo8'
 
-interface T {
-  funUse: string
-  title1: string
-  title2: string
-  title3: string
-  title4: string
-  title5: string
-  title6: string
-  title7: string
-}
-
 const DialogDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       funUse: '函数式调用',
-      title1: '标签式使用',
+      title1: '以下为标签式使用:',
+      title10: '基础用法',
       title2: 'footer区域定制',
       title3: '点击取消时，拦截',
       title4: '确认按钮loading效果',
@@ -35,6 +25,7 @@ const DialogDemo = () => {
     'en-US': {
       funUse: 'Function use',
       title1: 'Labeled use',
+      title10: 'Basic use',
       title2: 'Customize footer area',
       title3: 'Intercept when cancel is clicked',
       title4: 'Confirm button loading effect',
@@ -50,6 +41,7 @@ const DialogDemo = () => {
         <h2>{translated.funUse}</h2>
         <Demo1 />
         <h2>{translated.title1}</h2>
+        <h2>{translated.title10}</h2>
         <Demo2 />
         <h2>{translated.title2}</h2>
         <Demo3 />
