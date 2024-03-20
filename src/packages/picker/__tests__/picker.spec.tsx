@@ -94,7 +94,7 @@ test('renderLabel works', async () => {
 })
 
 test('simple list-data confirm  event', async () => {
-  const confirm = jest.fn()
+  const confirm = vi.fn()
   const { container } = render(
     <Picker
       visible
@@ -108,7 +108,7 @@ test('simple list-data confirm  event', async () => {
 })
 
 test('simple list-data close event', async () => {
-  const cancel = jest.fn()
+  const cancel = vi.fn()
   const { container } = render(
     <Picker visible options={simpleColumns} onClose={cancel} />
   )
@@ -118,7 +118,7 @@ test('simple list-data close event', async () => {
 })
 
 test('simple list-data default checked item', async () => {
-  const confirm = jest.fn()
+  const confirm = vi.fn()
   const { container } = render(
     <Picker
       visible
@@ -133,7 +133,7 @@ test('simple list-data default checked item', async () => {
 })
 
 test('multiple list-data render', async () => {
-  const confirm = jest.fn()
+  const confirm = vi.fn()
   const { container } = render(
     <Picker
       visible
@@ -149,7 +149,7 @@ test('multiple list-data render', async () => {
 })
 
 test('multistageColumns list-data render', async () => {
-  const confirm = jest.fn()
+  const confirm = vi.fn()
   const { container } = render(
     <Picker
       visible
@@ -165,7 +165,7 @@ test('multistageColumns list-data render', async () => {
 })
 
 test('async list-data render', async () => {
-  const confirm = jest.fn()
+  const confirm = vi.fn()
   const PenderContent = () => {
     const [asyncColumns, setasyncColumns] = useState<PickerOption[] | []>([])
 
