@@ -22,7 +22,8 @@ import { Dialog } from '@nutui/nutui-react'
 
 :::
 
-### 標籤式使用
+## 以下為標籤式使用
+### 基礎用法
 
 :::demo
 

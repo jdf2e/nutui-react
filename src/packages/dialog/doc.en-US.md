@@ -22,7 +22,8 @@ import { Dialog } from '@nutui/nutui-react'
 
 :::
 
-### Labeled use
+## Labeled use
+### Basic use
 
 :::demo
 

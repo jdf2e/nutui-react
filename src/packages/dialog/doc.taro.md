@@ -22,7 +22,8 @@ import { Dialog } from '@nutui/nutui-react-taro'
 
 :::
 
-### 标签式使用
+## 以下为标签式使用
+### 基础用法 
 
 :::demo
 
