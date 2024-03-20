@@ -37,7 +37,7 @@ describe('props', () => {
 })
 
 test('renders only visible items', async () => {
-  const handleScroll = jest.fn(() => {})
+  const handleScroll = vi.fn(() => {})
   const boxHeight = 500
   const itemHeight = 66
   const overscan = 2

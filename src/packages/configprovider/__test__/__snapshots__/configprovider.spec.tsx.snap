@@ -1,5 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`configprovider > should match snapshot 1`] = `
+<div>
+  <div
+    class="nut-configprovider aa"
+    style="margin: 8px;"
+  >
+    测试
+  </div>
+</div>
+`;
+
 exports[`configprovider should match snapshot 1`] = `
 <div>
   <div

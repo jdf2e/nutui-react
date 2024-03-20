@@ -6,7 +6,7 @@ import { render, fireEvent } from '@testing-library/react'
 import BackTop from '@/packages/backtop'
 
 test('backtop props test', () => {
-  const handleClick = jest.fn()
+  const handleClick = vi.fn()
   const { container } = render(
     <BackTop
       target="target"
@@ -27,7 +27,7 @@ test('backtop props test', () => {
 })
 
 test('backtop custom test', () => {
-  const handleClick = jest.fn()
+  const handleClick = vi.fn()
   const { container } = render(
     <BackTop
       className="custom-class"

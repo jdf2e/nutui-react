@@ -1,4 +1,26 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Drag > should render default slot correctly 1`] = `
+<span
+  class="custom-inner"
+  style="border-radius: 25px; padding: 0px 18px; font-size: 14px; color: #fff; display: inline-block; line-height: 36px;"
+>
+  自定义内容
+</span>
+`;
+
+exports[`Drag > touch move 1`] = `
+<div
+  style="transform: none;"
+>
+  <span
+    class="custom-inner"
+    style="border-radius: 25px; padding: 0px 18px; font-size: 14px; color: #fff; display: inline-block; line-height: 36px;"
+  >
+    按钮
+  </span>
+</div>
+`;
 
 exports[`Drag should render default slot correctly 1`] = `
 <span

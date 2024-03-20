@@ -26,7 +26,7 @@ test('Ellipsis Props Rows', () => {
   expect(container).toMatchSnapshot()
 })
 
-jest.useFakeTimers()
+vi.useFakeTimers()
 test('Ellipsis Memory Leak', () => {
   const App = () => {
     const [count, setCount] = useState(0)
@@ -42,7 +42,7 @@ test('Ellipsis Memory Leak', () => {
   }
   const { baseElement } = render(<App />)
   const elementCount = baseElement.children.length
-  jest.advanceTimersByTime(2000)
+  vi.advanceTimersByTime(2000)
   const newElementCount = baseElement.children.length
   expect(newElementCount).toBe(elementCount)
 })

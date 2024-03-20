@@ -96,7 +96,7 @@ test('event click test', async () => {
 })
 
 test('event click-title-right icon test', () => {
-  const onCloseIconClick = jest.fn().mockReturnValueOnce(true)
+  const onCloseIconClick = vi.fn().mockReturnValueOnce(true)
   const { container } = render(
     <Popup visible closeable onCloseIconClick={() => onCloseIconClick()} />
   )
@@ -110,7 +110,7 @@ test('event click-title-right icon test', () => {
 })
 
 test('event click-title-right icon and keep overlay test ', () => {
-  const onCloseIconClick = jest.fn()
+  const onCloseIconClick = vi.fn()
   const { container } = render(
     <Popup visible closeable onCloseIconClick={onCloseIconClick} />
   )
@@ -125,14 +125,14 @@ test('event click-title-right icon and keep overlay test ', () => {
 })
 
 test('should emit open event when prop visible is set to true', () => {
-  const onOpen = jest.fn()
+  const onOpen = vi.fn()
   const { rerender } = render(<Popup visible={false} onOpen={onOpen} />)
   rerender(<Popup visible onOpen={onOpen} />)
   expect(onOpen).toBeCalled()
 })
 
 test('event click-overlay test', async () => {
-  const onOverlayClick = jest.fn()
+  const onOverlayClick = vi.fn()
   const { container } = render(
     <Popup visible onOverlayClick={onOverlayClick} />
   )

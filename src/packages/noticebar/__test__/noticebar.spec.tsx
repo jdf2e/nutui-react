@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, fireEvent, waitFor } from '@testing-library/react'
+import { render, fireEvent, waitFor, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Fabulous } from '@nutui/icons-react'
 import NoticeBar from '@/packages/noticebar'
@@ -53,7 +53,7 @@ test('closeable & right test', () => {
 test('closeable & rightIcon test', async () => {
   const text =
     'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
-  const handleClick = jest.fn()
+  const handleClick = vi.fn()
   const { container } = render(
     <NoticeBar
       content={text}
@@ -62,18 +62,20 @@ test('closeable & rightIcon test', async () => {
       rightIcon={<Fabulous />}
     />
   )
-  await waitFor(() => {
-    expect(container.querySelector('.nut-noticebar-box-right-icon')).toBeTruthy
-    expect(
-      container.querySelector('.nut-noticebar-box-right-icon .nut-icon')
-    ).toHaveClass('nut-icon-Fabulous')
-    const closeIcon = container.querySelector('.nut-icon-Fabulous') || container
+
+  const icon = container.querySelector('.nut-noticebar-box-right-icon')
+  expect(icon).toBeTruthy
+  expect(
+    container.querySelector('.nut-noticebar-box-right-icon .nut-icon')
+  ).toHaveClass('nut-icon-Fabulous')
+  const closeIcon = container.querySelector('.nut-icon-Fabulous') || container
+  await act(() => {
     fireEvent.click(closeIcon)
     expect(handleClick).toBeCalled()
   })
 })
 
-test('customer leftIcon test', async () => {
+test('customer leftIcon test', () => {
   const { container } = render(
     <NoticeBar
       leftIcon={
@@ -83,14 +85,12 @@ test('customer leftIcon test', async () => {
       <a href="https://www.jd.com">京东商城</a>
     </NoticeBar>
   )
-  await waitFor(() => {
-    expect(container.querySelector('.nut-noticebar-box-left-icon')).toBeTruthy
-    expect(container.querySelector('.nut-noticebar-box-left-icon .nut-image'))
-      .toBeTruthy
-    expect(
-      container.querySelector('.nut-noticebar-box-wrap-content')?.innerHTML
-    ).toBe('<a href="https://www.jd.com">京东商城</a>')
-  })
+  expect(container.querySelector('.nut-noticebar-box-left-icon')).toBeTruthy
+  expect(container.querySelector('.nut-noticebar-box-left-icon .nut-image'))
+    .toBeTruthy
+  expect(
+    container.querySelector('.nut-noticebar-box-wrap-content')?.innerHTML
+  ).toBe('<a href="https://www.jd.com">京东商城</a>')
 })
 
 test('wrap test', () => {
@@ -165,10 +165,10 @@ test('vertical test move', async () => {
       closeable
     />
   )
-  await waitFor(() => {
+  await act(() => {
     expect(
       container.querySelector('.nut-noticebar-box-horseLamp-list')
-    ).toHaveAttribute('style', 'margin-top: -30px;')
+    ).toHaveAttribute('style', 'transition: all 0.8s; margin-top: -30px;')
   })
 })
 
@@ -186,14 +186,16 @@ test('align center test', () => {
 test('event test', async () => {
   const text =
     'NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。'
-  const handleClick = jest.fn()
+  const handleClick = vi.fn()
   const { container } = render(
     <NoticeBar content={text} onClick={handleClick} />
   )
 
   const box = container.querySelectorAll('.nut-noticebar-box')[0]
-  fireEvent.click(box)
-  await waitFor(() => expect(handleClick).toBeCalled())
+  await act(() => {
+    fireEvent.click(box)
+    expect(handleClick).toBeCalled()
+  })
 })
 
 test('vertical event test', async () => {
@@ -203,7 +205,7 @@ test('vertical event test', async () => {
     'DatePicker 日期选择器',
     'CheckBox 复选按钮',
   ]
-  const handleClick = jest.fn()
+  const handleClick = vi.fn()
   const { container } = render(
     <NoticeBar
       direction="vertical"
