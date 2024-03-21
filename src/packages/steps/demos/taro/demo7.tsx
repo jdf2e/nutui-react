@@ -1,6 +1,6 @@
 import React from 'react'
 import { Steps, Step } from '@nutui/nutui-react-taro'
-import { Service, People, Checklist } from '@nutui/icons-react'
+import { Service, People, Checklist } from '@nutui/icons-react-taro'
 
 const Demo7 = () => {
   return (

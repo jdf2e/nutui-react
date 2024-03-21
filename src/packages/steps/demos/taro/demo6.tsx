@@ -1,6 +1,6 @@
 import React from 'react'
 import { Steps, Step, ConfigProvider } from '@nutui/nutui-react-taro'
-import { People } from '@nutui/icons-react'
+import { People } from '@nutui/icons-react-taro'
 
 const customTheme = {
   nutuiStepsDotHeadMargin: '0 0 12px 0',
