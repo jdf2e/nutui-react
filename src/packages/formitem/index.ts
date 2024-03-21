@@ -1,8 +1,4 @@
 import { FormItem } from './formitem'
 
-export type {
-  FormItemRuleWithoutValidator,
-  FormItemRule,
-  FormInstance,
-} from './types'
+export type { FormItemRule } from './types'
 export default FormItem
