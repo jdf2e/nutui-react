@@ -225,7 +225,7 @@ $padding-xs: var(--nutui-padding-xs, $spacing-xl) !default;
 $button-transition: all 0.15s ease-in-out;
 $button-square-border-radius: var(
   --nutui-button-square-border-radius,
-  $radius-s
+  0px
 ) !default;
 $button-border-radius: var(--nutui-button-border-radius, $radius-s) !default;
 $button-border-width: var(--nutui-button-border-width, 1px) !default;
