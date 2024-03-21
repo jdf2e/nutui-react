@@ -1,10 +1,6 @@
 import React, { useRef } from 'react'
 import { Cell, Button, Barrage } from '@nutui/nutui-react-taro'
 
-interface barrageRefState {
-  add: (word: string) => void
-}
-
 const Demo1 = () => {
   const barrageList = [
     '画美不看画美不看画美不看画美不看',
@@ -14,7 +10,7 @@ const Demo1 = () => {
     '累觉不爱',
     '爷青结',
   ]
-  const barrageRef = useRef<barrageRefState>(null)
+  const barrageRef = useRef<any>(null)
   const addBarrage = () => {
     const n = Math.random()
     if (barrageRef.current) {

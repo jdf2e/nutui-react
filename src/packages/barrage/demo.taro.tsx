@@ -6,11 +6,8 @@ import Header from '@/sites/components/header'
 
 import Demo1 from './demos/taro/demo1'
 
-interface T {
-  '84aa6bce': string
-}
 const BarrageDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       '84aa6bce': '基础用法',
     },

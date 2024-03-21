@@ -4,11 +4,8 @@ import './demo.scss?module'
 
 import Demo1 from './demos/h5/demo1'
 
-interface T {
-  '84aa6bce': string
-}
 const BarrageDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       '84aa6bce': '基础用法',
     },
