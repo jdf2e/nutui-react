@@ -9,8 +9,8 @@ $color-primary-light: var(--nutui-color-primary-light) !default;
 $color-primary-light-pressed: var(--nutui-color-primary-light-pressed) !default;
 $color-primary-gradient-1: linear-gradient(
   135deg,
-  --nutui-color-primary-stop-1 0%,
-  --nutui-color-primary-stop-2 100%
+  $color-primary-stop-1 0%,
+  $color-primary-stop-2 100%
 ) !default;
 
 // 默认
