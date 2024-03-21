@@ -56,3 +56,15 @@ test('should match custom icon', () => {
   const { asFragment } = render(<Badge value={<Checklist />} />)
   expect(asFragment()).toMatchSnapshot()
 })
+
+test('should match custom color when fill = outline', () => {
+  const { container } = render(
+    <Badge value={200} color="orange" fill="outline" />
+  )
+  const badgeContent = container.querySelectorAll('.nut-badge-content')[0]
+  expect(badgeContent).toHaveStyle({
+    border: '1px solid orange',
+    color: 'orange',
+    background: '#fff',
+  })
+})

@@ -80,7 +80,11 @@ const Demo6 = () => {
               我是描述
             </div>
           }
-          extra={<Button type="primary">Action</Button>}
+          extra={
+            <Button type="primary" size="small">
+              Action
+            </Button>
+          }
         />
       </Cell.Group>
 
@@ -96,7 +100,14 @@ const Demo6 = () => {
         <Cell>
           <div style={{ minHeight: '50px' }}>自定义内容</div>
         </Cell>
-        <Cell align="center" extra={<Button type="primary">Action</Button>} />
+        <Cell
+          align="center"
+          extra={
+            <Button type="primary" size="small">
+              Action
+            </Button>
+          }
+        />
       </Cell.Group>
 
       <Cell.Group>

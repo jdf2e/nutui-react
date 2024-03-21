@@ -18,19 +18,7 @@ import { Divider } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Divider } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Divider />
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -40,19 +28,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Divider } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Divider>文本</Divider>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -62,20 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Divider } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Divider contentPosition="left">文本</Divider>
-      <Divider contentPosition="right">文本</Divider>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -83,19 +46,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Divider } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Divider style={{ borderStyle: 'dashed'}}>文本</Divider>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -105,19 +56,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Divider } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Divider style={{ color: '#1989fa', borderColor: '#1989fa', padding: '0 16px', borderStyle: 'dashed' }}>文本</Divider>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -125,25 +64,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Divider } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <div>
-          文本
-          <Divider direction="vertical" />
-          <a href="#" style={{ color: '#1989fa' }}>链接</a>
-          <Divider direction="vertical" />
-          <a href="#" style={{ color: '#1989fa' }}>链接</a>
-      </div>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 

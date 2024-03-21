@@ -3,9 +3,6 @@ import * as ReactDOM from 'react-dom/client'
 import App from './App'
 import '@nutui/touch-emulator' // 适配 h5 示例桌面端预览
 import { isMobile } from '@/sites/assets/util'
-
-import(`../../styles/font${__PROJECTID__}/iconfont.css`)
-import(`../../styles/theme${__PROJECTID__ || '-default'}.scss`)
 import('../../packages/nutui.react.scss')
 
 const rootElement = document.querySelector('#app')

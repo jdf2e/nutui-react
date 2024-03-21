@@ -16,32 +16,7 @@ import { Empty } from '@nutui/nutui-react'
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Empty } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Empty
-        title="title"
-        description="No Data"
-        actions={[
-          { text: "Button" },
-          { text: "Button" },
-        ]}
-      />
-      <Empty
-        description="No Data"
-        actions={[{ text: "Button" }]}
-        style={{ marginTop: '10px' }}
-      />
-      <Empty description="No Data" />
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -49,17 +24,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Empty } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Empty description="No Data" size="small" />
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -67,17 +32,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Empty } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Empty description="No Data" imageSize={100} />
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -85,21 +40,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Empty } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <div className="show">
-      <Empty status="empty" description="No Content" />
-      <Empty status="error" description="Load Failed" />
-      <Empty status="network" description="No Network" />
-    </div>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -109,20 +50,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Empty } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Empty
-      description="Store is closed" 
-      image={<img src="https://storage.360buyimg.com/imgtools/44f3cc10c4-0cf9a7e0-c0ac-11ee-8375-193101bb1a46.png" alt=""/>}
-     />
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -130,21 +58,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Empty, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Empty status="error" description="Failed to load">
-      <div style={{marginTop: "10px"}}>
-        <Button icon="refresh" type="primary" size="small">重试</Button>
-      </div>
-    </Empty>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 

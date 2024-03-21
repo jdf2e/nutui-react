@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { compressText, copyCodeHtml, decompressText } from './basedUtil'
+import { compressText, copyCodeHtml } from './basedUtil'
+
 interface A {
   text: string
   scss: string
@@ -35,22 +36,23 @@ ReactDOM.render(
   return (
     <>
       {props.children}
-      <div className="online-code nutui-react--demo-button">
-        <div className="online-part">
-          <a className="list" target="_blank" href={onlineUrl} rel="noreferrer">
-            <img
-              className="online-icon"
-              src="https://img12.360buyimg.com/imagetools/jfs/t1/214225/34/8715/7002/61c31bf1E69324ee9/7a452063eba88be4.png"
-            />
-            <div className="online-tips">在线调试</div>
-          </a>
-          <div className="list" onClick={copyCode}>
-            <img
-              className="online-icon"
-              src="https://img10.360buyimg.com/imagetools/jfs/t1/142615/10/25537/3671/61c31e6eE3ba7fb90/d1953e2b47e40e86.png"
-            />
-            <div className="online-tips">复制代码</div>
-          </div>
+
+      <div className="online-part">
+        <a className="list" target="_blank" href={onlineUrl} rel="noreferrer">
+          <img
+            alt=""
+            className="online-icon"
+            src="https://img12.360buyimg.com/imagetools/jfs/t1/214225/34/8715/7002/61c31bf1E69324ee9/7a452063eba88be4.png"
+          />
+          <div className="online-tips">在线调试</div>
+        </a>
+        <div className="list" onClick={copyCode}>
+          <img
+            alt=""
+            className="online-icon"
+            src="https://img10.360buyimg.com/imagetools/jfs/t1/142615/10/25537/3671/61c31e6eE3ba7fb90/d1953e2b47e40e86.png"
+          />
+          <div className="online-tips">复制代码</div>
         </div>
       </div>
     </>

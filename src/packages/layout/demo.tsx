@@ -1,17 +1,12 @@
 import React from 'react'
-import Row from '@/packages/row'
-import Col from '@/packages/col'
 import { useTranslate } from '../../sites/assets/locale'
 import './demo.scss'
-
-type TLayoutDemo = {
-  title1: string
-  title2: string
-  title3: string
-}
+import Demo1 from './demos/h5/demo1'
+import Demo2 from './demos/h5/demo2'
+import Demo3 from './demos/h5/demo3'
 
 const LayoutDemo = () => {
-  const [translated] = useTranslate<TLayoutDemo>({
+  const [translated] = useTranslate({
     'zh-CN': {
       title1: '基础布局',
       title2: '分栏间隔',
@@ -38,136 +33,15 @@ const LayoutDemo = () => {
       <div className="demo full">
         <h2>{translated.title1}</h2>
         <div className="layout-box-item">
-          <Row>
-            <Col span="24">
-              <div className="layout-flex-content">span:24</div>
-            </Col>
-          </Row>
-          <Row>
-            <Col span="12">
-              <div className="layout-flex-content">span:12</div>
-            </Col>
-            <Col span="12">
-              <div className="layout-flex-content layout-flex-content-light">
-                span:12
-              </div>
-            </Col>
-          </Row>
-          <Row>
-            <Col span="8">
-              <div className="layout-flex-content">span:8</div>
-            </Col>
-            <Col span="8">
-              <div className="layout-flex-content layout-flex-content-light">
-                span:8
-              </div>
-            </Col>
-            <Col span="8">
-              <div className="layout-flex-content">span:8</div>
-            </Col>
-          </Row>
-          <Row>
-            <Col span="6">
-              <div className="layout-flex-content">span:6</div>
-            </Col>
-            <Col span="6">
-              <div className="layout-flex-content layout-flex-content-light">
-                span:6
-              </div>
-            </Col>
-            <Col span="6">
-              <div className="layout-flex-content">span:6</div>
-            </Col>
-            <Col span="6">
-              <div className="layout-flex-content layout-flex-content-light">
-                span:6
-              </div>
-            </Col>
-          </Row>
+          <Demo1 />
         </div>
         <h2>{translated.title2}</h2>
         <div className="layout-box-item">
-          <Row gutter="10">
-            <Col span="8">
-              <div className="layout-flex-content">span:8</div>
-            </Col>
-            <Col span="8">
-              <div className="layout-flex-content layout-flex-content-light">
-                span:8
-              </div>
-            </Col>
-            <Col span="8">
-              <div className="layout-flex-content">span:8</div>
-            </Col>
-          </Row>
+          <Demo2 />
         </div>
         <h2>{translated.title3}</h2>
         <div className="layout-box-item">
-          <Row type="flex" wrap="nowrap">
-            <Col span="6">
-              <div className="layout-flex-content">span:6</div>
-            </Col>
-            <Col span="6">
-              <div className="layout-flex-content layout-flex-content-light">
-                span:6
-              </div>
-            </Col>
-            <Col span="6">
-              <div className="layout-flex-content">span:6</div>
-            </Col>
-          </Row>
-          <Row type="flex" justify="center">
-            <Col span="6">
-              <div className="layout-flex-content">span:6</div>
-            </Col>
-            <Col span="6">
-              <div className="layout-flex-content layout-flex-content-light">
-                span:6
-              </div>
-            </Col>
-            <Col span="6">
-              <div className="layout-flex-content">span:6</div>
-            </Col>
-          </Row>
-          <Row type="flex" justify="end">
-            <Col span="6">
-              <div className="layout-flex-content">span:6</div>
-            </Col>
-            <Col span="6">
-              <div className="layout-flex-content layout-flex-content-light">
-                span:6
-              </div>
-            </Col>
-            <Col span="6">
-              <div className="layout-flex-content">span:6</div>
-            </Col>
-          </Row>
-          <Row type="flex" justify="space-between">
-            <Col span="6">
-              <div className="layout-flex-content">span:6</div>
-            </Col>
-            <Col span="6">
-              <div className="layout-flex-content layout-flex-content-light">
-                span:6
-              </div>
-            </Col>
-            <Col span="6">
-              <div className="layout-flex-content">span:6</div>
-            </Col>
-          </Row>
-          <Row type="flex" justify="space-around">
-            <Col span="6">
-              <div className="layout-flex-content">span:6</div>
-            </Col>
-            <Col span="6">
-              <div className="layout-flex-content layout-flex-content-light">
-                span:6
-              </div>
-            </Col>
-            <Col span="6">
-              <div className="layout-flex-content">span:6</div>
-            </Col>
-          </Row>
+          <Demo3 />
         </div>
       </div>
     </>

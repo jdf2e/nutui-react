@@ -18,244 +18,64 @@ import { Dialog } from '@nutui/nutui-react'
 
 :::demo
 
-```tsx
-import React from "react";
-import { Cell,Dialog } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Cell title="基礎彈框" onClick={() => {
-          Dialog.alert({
-            className: 'dialog-func',
-            title: '基礎彈框',
-            content: '支持函數調用和組件調用兩種方式。',
-          });
-        }} />
-      <Cell title="無標題彈框、不鎖背景滾動" onClick={() => {
-          Dialog.alert({
-            content: '無標題彈框',
-            confirmText: '確認',
-            cancelText: '取消',
-            lockScroll: false
-          });
-        }} 
-      />
-      <Cell title="提示彈框" onClick={() => {
-          Dialog.alert({
-              title: '提示',
-              content: '支持函數調用和組件調用兩種方式。',
-              hideCancelButton: true,
-              confirmText: '確認'
-          });
-        }} 
-      />
-      <Cell title="底部按鈕 垂直布局 使用" onClick={() => {
-          Dialog.alert({
-            title: '提示',
-            content: '支持函數調用和組件調用兩種方式。',
-            footerDirection: 'vertical',
-            confirmText: '確認',
-            cancelText: '取消',
-          });
-        }} 
-      />
-      <Cell title="打開彈框 3s 後調用關閉方法" onClick={() => {
-          const dialog = Dialog.confirm({
-            content: '打開彈框 3s 後調用關閉方法',
-            confirmText: '確認',
-            cancelText: '取消',
-          });
-          setTimeout(() => {
-            dialog.close()
-          }, 3000);
-        }} 
-      />
-      <Cell title="打開彈框 3s 後調用關閉方法" onClick={() => {
-          const dialog = Dialog.confirm({
-            content: '打開彈框 3s 後調用關閉方法',
-          });
-          setTimeout(() => {
-            dialog.update({
-              content: '打開彈框 3s 後調用關閉方法 我是更新',
-            })
-          }, 3000);
-        }} 
-      />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
-### 標籤式使用
+## 以下為標籤式使用
+### 基礎用法
 
 :::demo
 
-```tsx
-import React, {useState} from "react";
-import { Cell,Dialog,Image } from '@nutui/nutui-react';
-import { Close } from '@nutui/icons-react'
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
-const App = () => {
-  const [visible1, setVisible1] = useState(false);
-  const [visible2, setVisible2] = useState(false);
-  const [visible3, setVisible3] = useState(false);
-  const [visible7, setVisible7] = useState(false);
-  const [visible8, setVisible8] = useState(false);
-  const [visible9, setVisible9] = useState(false);
-  const [visible10, setVisible10] = useState(false);
-  return (
-    <>
-      <Cell title="基礎彈框" onClick={() => setVisible1(true)} />
-      <Dialog 
-        title="標籤式使用"
-        visible={visible1}
-        onConfirm={() => setVisible1(false)}
-        onCancel={() => setVisible1(false)}
-      >
-        如果需要在彈窗內嵌入組件或其他自定義內容，可以使用組件調用的方式。
-      </Dialog>
-      <Cell title="底部按鈕 垂直布局 使用" onClick={() => setVisible2(true)} />
-      <Dialog 
-        title="標籤式使用"
-        visible={visible2}
-        footerDirection='vertical'
-        onConfirm={() => setVisible2(false)}
-        onCancel={() => setVisible2(false)}
-      >
-        如果需要在彈窗內嵌入組件或其他自定義內容，可以使用組件調用的方式。
-      </Dialog>
-      <Cell title="底部 Footer 為 Button 時，點擊遮罩不關閉" onClick={() => setVisible2(true)} />
-      <Dialog 
-        title="底部 Footer 為 Button 時，點擊遮罩不關閉"
-        visible={visible2}
-        lockScroll={false}
-        footerDirection='vertical'
-        closeOnOverlayClick={false}
-        onConfirm={() => setVisible2(false)}
-        onCancel={() => setVisible2(false)}
-      >
-        如果需要在彈窗內嵌入組件或其他自定義內容，可以使用組件調用的方式。
-      </Dialog>
-      <Cell title="無底部 Footer 區域" onClick={() => setVisible2(true)} />
-      <Dialog 
-        title="無底部 Footer 區域"
-        visible={visible2}
-        footer={null}
-        onClose={() => {
-          setVisible2(false)
-        }}
-      >
-        如果需要在彈窗內嵌入組件或其他自定義內容，可以使用組件調用的方式。
-      </Dialog>
-      <Cell title="點擊取消時，攔截" onClick={() => setVisible3(true)} />
-      <Dialog 
-        title="點擊取消時，攔截"
-        visible={visible3}
-        closeOnOverlayClick={false}
-        beforeCancel={() => {
-          console.log('stop close')
-          return false
-        }}
-        onClose={() => {
-          setVisible3(false)
-        }}
-      >
-        如果需要在彈窗內嵌入組件或其他自定義內容，可以使用組件調用的方式。
-      </Dialog>
-      <Cell
-        title="頂部帶插圖"
-        onClick={() => {
-          setVisible7(true)
-        }}
-      />
-      <Dialog
-        className="test-dialog"
-        title="頂部帶插圖"
-        visible={visible7}
-        header={
-          <Image src="https://img13.360buyimg.com/imagetools/jfs/t1/219330/27/30033/11784/6544af3fF5c0fd98f/64c41bb05ef09189.png" />
-        }
-        onConfirm={() => setVisible7(false)}
-        onCancel={() => setVisible7(false)}
-      >
-        如果需要在彈窗內嵌入組件或其他自定義內容，可以使用組件調用的方式。
-      </Dialog>
-      <Cell
-          title="頂部帶關閉按鈕"
-          onClick={() => {
-            setVisible8(true)
-          }}
-        />
-        <Dialog
-          className="test-dialog"
-          title="頂部帶關閉按鈕"
-          visible={visible8}
-          closeIcon
-          onConfirm={() => setVisible8(false)}
-          onCancel={() => setVisible8(false)}
-        >
-          支持函數調用和組件調用兩種方式。
-        </Dialog>
-        <Cell
-          title="自定義底部關閉按鈕"
-          onClick={() => {
-            setVisible9(true)
-          }}
-        />
-        <Dialog
-          className="test-dialog"
-          title="自定義底部關閉按鈕"
-          visible={visible9}
-          closeIcon={<Close width="24px" height="24px" />}
-          closeIconPosition="bottom"
-          onConfirm={() => setVisible9(false)}
-          onCancel={() => setVisible9(false)}
-          style={{
-            '--nutui-dialog-close-color': '#FFFFFF',
-          }}
-        >
-          支持函數調用和組件調用兩種方式。
-        </Dialog>
-        <Cell
-          title="自定義內容區域"
-          onClick={() => {
-            setVisible10(true)
-          }}
-        />
-        <Dialog
-          className="test-dialog"
-          title="自定義內容區域"
-          visible={visible10}
-          onConfirm={() => setVisible10(false)}
-          onCancel={() => setVisible10(false)}
-        >
-          <>
-            <div>文字內容文字內容文字內容文字內容文字內容文字內容文字內容文字內容</div>
-            <div
-              style={{
-                height: '96px',
-                borderRadius: '8px',
-                marginTop: '13px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                backgroundColor: '#F8F8F8',
-                color: '#BFBFBF',
-              }}
-            >
-              自定義內容區域
-            </div>
-          </>
-        </Dialog>
-    </>
-  )
-}
-export default App;
-```
+:::
+
+### footer區域定製
+
+:::demo
+
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
+
+:::
+
+### 點擊取消時，攔截
+
+:::demo
+
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
+
+:::
+
+### 確認按鈕loading效果
+
+:::demo
+
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
+
+:::
+
+### 帶關閉按鈕
+
+:::demo
+
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
+
+:::
+
+### 自定義內容區域
+
+:::demo
+
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
+
+:::
+
+### 頂部帶插圖
+
+:::demo
+
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 

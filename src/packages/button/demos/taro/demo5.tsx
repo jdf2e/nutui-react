@@ -100,7 +100,7 @@ const Demo5 = () => {
         disabled
         type="primary"
         fill="dashed"
-        icon={<Plus size="20" />}
+        icon={<Plus />}
         style={marginStyle}
       />
       <Button
@@ -108,8 +108,19 @@ const Demo5 = () => {
         shape="round"
         type="primary"
         size="large"
-        icon={<Star size={20} />}
-        rightIcon={<Star size={20} />}
+        icon={<Star />}
+        rightIcon={<Star />}
+        style={marginStyle}
+      >
+        Disabled
+      </Button>
+      <Button
+        disabled
+        shape="round"
+        type="primary"
+        size="xlarge"
+        icon={<Star />}
+        rightIcon={<Star />}
         style={marginStyle}
       >
         Disabled

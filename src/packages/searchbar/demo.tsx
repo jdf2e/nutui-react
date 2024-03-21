@@ -1,35 +1,17 @@
-import React, { useState } from 'react'
-import {
-  ArrowLeft,
-  Photograph,
-  ArrowDown,
-  More,
-  Close,
-} from '@nutui/icons-react'
-import { SearchBar } from './searchbar'
-import Toast from '../toast'
+import React from 'react'
 import { useTranslate } from '../../sites/assets/locale'
-import ConfigProvider from '../configprovider'
-import PopOver from '../popover'
 
-type TSearchDemo = {
-  basePlaceholder: string
-  text: string
-  test: string
-  title1: string
-  title2: string
-  title3: string
-  title4: string
-  title5: string
-  title6: string
-  title7: string
-}
+import Demo1 from './demos/h5/demo1'
+import Demo2 from './demos/h5/demo2'
+import Demo3 from './demos/h5/demo3'
+import Demo4 from './demos/h5/demo4'
+import Demo5 from './demos/h5/demo5'
+import Demo6 from './demos/h5/demo6'
+import Demo7 from './demos/h5/demo7'
+
 const SearchBarDemo = () => {
-  const [translated] = useTranslate<TSearchDemo>({
+  const [translated] = useTranslate({
     'zh-CN': {
-      basePlaceholder: '上京东，购好物',
-      text: '文本',
-      test: '测试',
       title1: '基础用法',
       title2: '搜索框形状及最大长度',
       title3: '搜索框内外背景设置',
@@ -39,9 +21,6 @@ const SearchBarDemo = () => {
       title7: '自定义设置',
     },
     'zh-TW': {
-      basePlaceholder: '上京東，購好物',
-      text: '文字',
-      test: '測試',
       title1: '基礎用法',
       title2: '蒐索框形狀及最大長度',
       title3: '蒐索框內外背景設定',
@@ -51,21 +30,15 @@ const SearchBarDemo = () => {
       title7: '自定義設定',
     },
     'en-US': {
-      basePlaceholder: 'Go to jd.com and buy good things',
-      text: 'text',
-      test: 'test',
-      title1: 'basic usage',
-      title2: 'search box shape and maximum length',
-      title3: 'background settings inside and outside the search box',
-      title4: 'search box text settings',
-      title5: 'custom icon settings',
-      title6: 'data change monitoring',
-      title7: 'custom settings',
+      title1: 'Basic Usage',
+      title2: 'Search Box Shape And Maximum Length',
+      title3: 'Background Settings Inside And Outside The Search Box',
+      title4: 'Search Box Text Settings',
+      title5: 'Custom Icon Settings',
+      title6: 'Data Change Monitoring',
+      title7: 'Custom Settings',
     },
     'id-ID': {
-      basePlaceholder: 'pergi ke jd.com, membeli barang baik',
-      text: 'teks',
-      test: 'tes',
       title1: 'penggunaan dasar',
       title2: 'bentuk kotak pencarian dan panjang maksimum',
       title3: 'pengaturan latar belakang di dalam dan diluar kotak pencarian',
@@ -75,98 +48,24 @@ const SearchBarDemo = () => {
       title7: 'pengaturan suai',
     },
   })
-  const itemList = [
-    { name: 'option1' },
-    { name: 'option2' },
-    { name: 'option3' },
-  ]
-  const [lightTheme, setLightTheme] = useState(false)
 
-  const [value, setValue] = useState('')
-  const change = (val: string, e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(val)
-  }
   return (
     <>
       <div className="demo">
         <h2>{translated.title1}</h2>
-        <SearchBar backable placeholder={translated.basePlaceholder} />
+        <Demo1 />
         <h2>{translated.title2}</h2>
-        <SearchBar shape="round" maxLength={5} />
+        <Demo2 />
         <h2>{translated.title3}</h2>
-        <ConfigProvider
-          theme={{
-            nutuiSearchbarBackground: 'var(--nutui-color-primary)',
-            nutuiSearchbarInputBackground: '#eee',
-            nutuiSearchbarInputTextAlign: 'right',
-          }}
-        >
-          <SearchBar onSearch={(value) => Toast.show(value)} />
-        </ConfigProvider>
+        <Demo3 />
         <h2>{translated.title4}</h2>
-        <SearchBar
-          left={translated.text}
-          right={translated.test}
-          onSearch={(value) => Toast.show(value)}
-        />
+        <Demo4 />
         <h2>{translated.title5}</h2>
-        <SearchBar
-          left={
-            <>
-              <ArrowLeft width={16} height={16} />
-              <Close width={16} height={16} />
-            </>
-          }
-          right={
-            <>
-              <span>{translated.test}</span>
-              <More width={16} height={16} />
-            </>
-          }
-          rightIn={
-            <Photograph
-              width={16}
-              height={16}
-              onClick={() => {
-                console.log('Photograph right in')
-              }}
-            />
-          }
-        />
+        <Demo5 />
         <h2>{translated.title7}</h2>
-        <SearchBar
-          leftIn={
-            <PopOver
-              visible={lightTheme}
-              onClick={() => {
-                lightTheme ? setLightTheme(false) : setLightTheme(true)
-              }}
-              list={itemList}
-            >
-              <div style={{ fontSize: '12px', width: '50px', display: 'flex' }}>
-                更多
-                <ArrowDown />
-              </div>
-            </PopOver>
-          }
-        />
+        <Demo6 />
         <h2>{translated.title6}</h2>
-        <SearchBar
-          onChange={(val: string, e: React.ChangeEvent<HTMLInputElement>) =>
-            change(val, e)
-          }
-          maxLength={10}
-        />
-        <div
-          style={{
-            height: '40px',
-            lineHeight: '40px',
-            color: '#666',
-            fontSize: '14px',
-          }}
-        >
-          {value}
-        </div>
+        <Demo7 />
       </div>
     </>
   )

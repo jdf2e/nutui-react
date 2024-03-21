@@ -5,7 +5,7 @@ import { DatePicker } from '../datepicker'
 
 const currentYear = new Date().getFullYear()
 test('Show Chinese', async () => {
-  const confirm = jest.fn()
+  const confirm = vi.fn()
   const { container } = render(
     <DatePicker
       title="日期选择"
@@ -27,7 +27,7 @@ test('Show Chinese', async () => {
 })
 
 test('Min date & Max date', async () => {
-  const confirm = jest.fn()
+  const confirm = vi.fn()
   const { container, rerender } = render(
     <DatePicker
       title="日期选择"
@@ -132,7 +132,7 @@ test('Min date & Max date', async () => {
 })
 
 test('should pick defaultValue', async () => {
-  const confirm = jest.fn()
+  const confirm = vi.fn()
   const { container } = render(
     <DatePicker
       title="日期选择"
@@ -154,7 +154,7 @@ test('should pick defaultValue', async () => {
 })
 
 test('Increment step setting', async () => {
-  const confirm = jest.fn()
+  const confirm = vi.fn()
   const { container } = render(
     <DatePicker
       title="日期选择"
@@ -172,7 +172,7 @@ test('Increment step setting', async () => {
 })
 
 test('Filter Time', async () => {
-  const filter = jest.fn((type, options) => {
+  const filter = vi.fn((type, options) => {
     if (type === 'hour') {
       return options.filter((option: any) => Number(option.value) % 6 === 0)
     }

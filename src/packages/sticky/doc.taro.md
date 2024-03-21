@@ -18,24 +18,7 @@ import { Sticky } from '@nutui/nutui-react-taro'
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Button, Sticky } from '@nutui/nutui-react-taro'
-
-const App = () => {
-  const handleChange = (val: boolean) => {
-    console.log('吸顶状态发生了改变,当前fixed为', val)
-  }
-  return(
-      <>
-        <Sticky threshold={60} onChange={(val: boolean) => handleChange(val)}>
-          <Button type="primary">吸顶</Button>
-        </Sticky>
-      </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -43,21 +26,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Button, Sticky } from '@nutui/nutui-react-taro'
-
-const App = () => {
-  return(
-      <>
-        <Sticky threshold={120}>
-          <Button type="primary">距离顶部120px</Button>
-        </Sticky>
-      </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -65,29 +34,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useRef } from 'react'
-import { Button, Sticky } from '@nutui/nutui-react-taro'
-
-const App = () => {
-  const containerTopRef = useRef(null)
-   return(
-    <>
-      <div
-        ref={containerTopRef}
-        style={{ height: '600px' }}
-      >
-        <Sticky container={containerTopRef} threshold={60}>
-          <Button type="info" style={{ marginLeft: '100px' }}>
-            指定容器内吸顶
-          </Button>
-        </Sticky>
-      </div>
-    </>
-   )
-}
-export default App;
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -95,21 +42,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Button, Sticky } from '@nutui/nutui-react-taro'
-
-const App = () => {
-   return(
-    <>
-      <Sticky threshold={0} position="bottom">
-        <Button type="primary">距离底部0px</Button>
-      </Sticky>
-    </>
-   )
-}
-export default App;
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 

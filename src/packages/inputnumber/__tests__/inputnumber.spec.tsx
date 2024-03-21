@@ -10,9 +10,9 @@ test('should render modelValue', () => {
 })
 
 test('should add step 2 when trigger click plus button', () => {
-  const overlimit = jest.fn()
-  const add = jest.fn()
-  const change = jest.fn()
+  const overlimit = vi.fn()
+  const add = vi.fn()
+  const change = vi.fn()
   const { container } = render(
     <InputNumber
       defaultValue={1}
@@ -30,9 +30,9 @@ test('should add step 2 when trigger click plus button', () => {
 })
 
 test('should minis step 2 when trigger click minis button', () => {
-  const overlimit = jest.fn()
-  const reduce = jest.fn()
-  const change = jest.fn()
+  const overlimit = vi.fn()
+  const reduce = vi.fn()
+  const change = vi.fn()
   const { container } = render(
     <InputNumber
       defaultValue={3}
@@ -50,9 +50,9 @@ test('should minis step 2 when trigger click minis button', () => {
 })
 
 test('should render max props', () => {
-  const overlimit = jest.fn()
-  const add = jest.fn()
-  const change = jest.fn()
+  const overlimit = vi.fn()
+  const add = vi.fn()
+  const change = vi.fn()
   const { container } = render(
     <InputNumber
       defaultValue={100}
@@ -71,9 +71,9 @@ test('should render max props', () => {
 })
 
 test('should render min props', () => {
-  const overlimit = jest.fn()
-  const reduce = jest.fn()
-  const change = jest.fn()
+  const overlimit = vi.fn()
+  const reduce = vi.fn()
+  const change = vi.fn()
   const { container } = render(
     <InputNumber
       defaultValue={2}
@@ -105,7 +105,7 @@ test('should not trigger click when disabled props to be true', () => {
 })
 
 test('should not focus input when readOnly props to be true', () => {
-  const focus = jest.fn()
+  const focus = vi.fn()
   const { container } = render(
     <InputNumber readOnly defaultValue={2} onFocus={focus} />
   )
@@ -125,8 +125,8 @@ test('should render decimal when step props to be 0.2', () => {
 })
 
 test('should update input value when inputValue overlimit', () => {
-  const change = jest.fn()
-  const blur = jest.fn()
+  const change = vi.fn()
+  const blur = vi.fn()
   const { container } = render(
     <InputNumber defaultValue={2} max={100} onChange={change} onBlur={blur} />
   )
@@ -139,8 +139,8 @@ test('should update input value when inputValue overlimit', () => {
 })
 
 test('allowEmpty', () => {
-  const change = jest.fn()
-  const blur = jest.fn()
+  const change = vi.fn()
+  const blur = vi.fn()
   const { container } = render(
     <InputNumber
       defaultValue="2"
