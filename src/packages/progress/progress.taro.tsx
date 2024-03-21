@@ -1,5 +1,6 @@
-import React, { FunctionComponent, useEffect, useState, useRef } from 'react'
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
+import Taro, { PageInstance } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '../configprovider/index.taro'
 
@@ -50,6 +51,7 @@ export const Progress: FunctionComponent<
   const classesInner = classNames({
     [`${classPrefix}-inner`]: true,
     [`${classPrefix}-active`]: animated,
+    [`${classPrefix}-lazy`]: lazy,
   })
 
   const stylesOuter: React.CSSProperties = {
@@ -69,44 +71,75 @@ export const Progress: FunctionComponent<
   }, [percent])
 
   const [intersecting, setIntersecting] = useState(false)
-
   const progressRef = useRef(null)
-  const observer: any = useRef(null)
-  const initObserver = () => {
-    const options = {
-      threshold: [0],
-      rootMargin: '0px',
-    }
-    observer.current = new IntersectionObserver((entires, self) => {
-      entires.forEach((item) => {
-        if (item.isIntersecting) {
-          setIntersecting(true)
-        } else {
-          setIntersecting(false)
-        }
-      })
-    }, options)
-    observer.current.observe(progressRef.current)
-  }
-
+  const webObserver: any = useRef(null)
   const resetObserver = () => {
-    observer.current.disconnect && observer.current.disconnect()
+    webObserver.current.disconnect && webObserver.current.disconnect()
   }
-
   useEffect(() => {
     if (lazy) {
       setTimeout(() => {
         if (intersecting) {
           setDispalyPercent(percent)
         } else {
-          setDispalyPercent(0)
+          setDispalyPercent(0.01)
         }
       }, delay)
     }
   }, [intersecting])
 
   useEffect(() => {
-    lazy && initObserver()
+    if (Taro.getEnv() === 'WEB') {
+      if (lazy) {
+        const options = {
+          threshold: [0],
+          rootMargin: '0px',
+        }
+        webObserver.current = new IntersectionObserver((entires, self) => {
+          entires.forEach((item) => {
+            if (item.isIntersecting) {
+              setIntersecting(true)
+            } else {
+              setIntersecting(false)
+            }
+          })
+        }, options)
+        webObserver.current.observe(progressRef.current)
+      }
+      let timer: any = null
+      if (delay) {
+        setDispalyPercent(0)
+        timer = setTimeout(() => {
+          setDispalyPercent(percent)
+        }, delay)
+      }
+
+      return () => {
+        lazy && resetObserver()
+        timer && clearTimeout(timer)
+      }
+    }
+    let observer: any = null
+    if (lazy) {
+      const options = {
+        thresholds: [0],
+        observeAll: true,
+      }
+
+      observer = Taro.createIntersectionObserver(
+        Taro.getCurrentInstance().page as PageInstance,
+        options
+      )
+      observer
+        .relativeToViewport({ top: 0 })
+        .observe('.nut-progress-lazy', (res: any) => {
+          if (res.intersectionRatio > 0) {
+            setIntersecting(true)
+          } else {
+            setIntersecting(false)
+          }
+        })
+    }
     let timer: any = null
     if (delay) {
       setDispalyPercent(0)
@@ -116,7 +149,7 @@ export const Progress: FunctionComponent<
     }
 
     return () => {
-      lazy && resetObserver()
+      observer && observer.disconnect()
       timer && clearTimeout(timer)
     }
   }, [])
