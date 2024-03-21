@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Progress, Cell, Button } from '@nutui/nutui-react-taro'
+import Taro from '@tarojs/taro'
 
 const Demo7 = () => {
   const [value, setValue] = useState(0)
@@ -15,7 +16,7 @@ const Demo7 = () => {
           style={{ margin: 8 }}
           onClick={() => {
             if (value <= 0) {
-              console.log('进度已为0')
+              Taro.showToast({ title: '进度已为0' })
             }
             setValue(Math.max(0, value - 10))
           }}
@@ -27,7 +28,7 @@ const Demo7 = () => {
           style={{ margin: 8 }}
           onClick={() => {
             if (value >= 100) {
-              console.log('进度已为100%')
+              Taro.showToast({ title: '进度已为100%' })
             }
             setValue(Math.min(100, value + 10))
           }}
