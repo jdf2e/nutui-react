@@ -24,33 +24,8 @@ import Demo21 from './demos/h5/demo21'
 import Demo22 from './demos/h5/demo22'
 import Demo23 from './demos/h5/demo23'
 
-interface T {
-  basic: string
-  title1: string
-  titleLite: string
-  titleCard: string
-  titleButton: string
-  titleDivider: string
-  title2: string
-  title14: string
-  title10: string
-  title9: string
-  title3: string
-  title4: string
-  title5: string
-  title6: string
-  title12: string
-  title13: string
-  title7: string
-  title8: string
-  title11: string
-  titleLeftCard: string
-  titleLeftButton: string
-  titleLeftDivider: string
-}
-
 const TabsDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
       title1: '基础用法-微笑曲线',
@@ -142,16 +117,12 @@ const TabsDemo = () => {
         <Demo18 />
         <h2>{translated.title6}</h2>
         <Demo19 />
-
         <h2>{translated.title12}</h2>
         <Demo20 />
-
         <h2>{translated.title13}</h2>
         <Demo21 />
-
         <h2>{translated.title7}</h2>
         <Demo22 />
-
         <h2>{translated.title8}</h2>
         <Demo23 />
       </div>

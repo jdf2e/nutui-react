@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Tabs } from '@nutui/nutui-react-taro'
-import { Star } from '@nutui/icons-react'
+import { Star } from '@nutui/icons-react-taro'
 
 const Demo23 = () => {
   const [tab7value, setTab7value] = useState('c1')
