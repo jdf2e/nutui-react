@@ -1,10 +1,6 @@
 import React, { useRef } from 'react'
 import { Signature, Button } from '@nutui/nutui-react-taro'
 
-interface signatureRefState {
-  confirm: () => void
-  clear: () => void
-}
 const Demo2 = () => {
   const confirm = (dataurl: string) => {
     console.log('图片地址', dataurl)
@@ -12,7 +8,7 @@ const Demo2 = () => {
   const clear = () => {
     console.log('清除事件')
   }
-  const signatureRef1 = useRef<signatureRefState>(null)
+  const signatureRef1 = useRef<any>(null)
   return (
     <>
       <Signature

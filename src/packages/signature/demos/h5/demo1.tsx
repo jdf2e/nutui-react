@@ -1,10 +1,6 @@
 import React, { useRef } from 'react'
 import { Signature, Button } from '@nutui/nutui-react'
 
-interface signatureRefState {
-  confirm: () => void
-  clear: () => void
-}
 const Demo1 = () => {
   const confirm = (canvas: HTMLCanvasElement, data: string) => {
     const img = document.createElement('img')
@@ -18,8 +14,7 @@ const Demo1 = () => {
       img.remove()
     }
   }
-  const signatureRef = useRef<signatureRefState>(null)
-  const demoStyles: React.CSSProperties = { margin: '1em 0' }
+  const signatureRef = useRef<any>(null)
   return (
     <>
       <Signature onConfirm={confirm} onClear={clear} ref={signatureRef} />
@@ -44,7 +39,7 @@ const Demo1 = () => {
           确认
         </Button>
       </div>
-      <p className="demo-tips demo1" style={demoStyles}>
+      <p className="demo-tips demo1" style={{ margin: '1em 0' }}>
         Tips: 点击确认按钮,下方显示签名图片
       </p>
     </>
