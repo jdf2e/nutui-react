@@ -22,11 +22,9 @@ const Demo1 = () => {
       <Cell className="barrage-demo-wrap">
         <Barrage className="barrage-demo" ref={barrageRef} list={barrageList} />
       </Cell>
-      <div className="test" style={{ textAlign: 'center' }}>
-        <Button type="primary" onClick={addBarrage}>
-          随机添加
-        </Button>
-      </div>
+      <Button type="primary" onClick={addBarrage}>
+        随机添加
+      </Button>
     </>
   )
 }
