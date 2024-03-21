@@ -1,6 +1,7 @@
 import React from 'react'
 import { Failure } from '@nutui/icons-react-taro'
 import { Cell, Tag } from '@nutui/nutui-react-taro'
+import Taro from '@tarojs/taro'
 
 const Demo2 = () => {
   return (
@@ -26,7 +27,11 @@ const Demo2 = () => {
         <Cell
           title="closeable"
           extra={
-            <Tag closeable onClose={() => alert('Tag closed')} type="primary">
+            <Tag
+              closeable
+              onClose={() => Taro.showToast({ title: 'Tag closed' })}
+              type="primary"
+            >
               标签
             </Tag>
           }
@@ -36,8 +41,8 @@ const Demo2 = () => {
           extra={
             <Tag
               closeable
-              closeIcon={<Failure width={8} height={8} />}
-              onClose={() => alert('Tag closed')}
+              closeIcon={<Failure size={8} />}
+              onClose={() => Taro.showToast({ title: 'Tag closed' })}
               type="primary"
             >
               标签
