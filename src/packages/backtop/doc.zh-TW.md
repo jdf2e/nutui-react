@@ -16,22 +16,7 @@ import { BackTop } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React from "react";
-import { BackTop, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <div id="target" style={{height: '100vh'}}>
-      {new Array(24).fill(0).map((_, index) => {
-        return <Cell key={index}>我是測試數據{index}</Cell>
-      })}
-      <BackTop target="target" />
-    </div>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -39,22 +24,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { BackTop, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <div id="target" style={{height: '100vh'}}>
-      {new Array(24).fill(0).map((_, index) => {
-        return <Cell key={index}>我是測試數據{index}</Cell>
-      })}
-      <BackTop target="target" threshold={200} bottom={50} />
-    </div>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -62,34 +32,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Top } from '@nutui/icons-react';
-import { BackTop, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <div id="target" style={{height: '100vh'}}>
-      {new Array(24).fill(0).map((_, index) => {
-        return <Cell key={index}>我是測試數據{index}</Cell>
-      })}
-      <BackTop threshold={100} bottom={110}>
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Top width={12} height={12} />
-          <div style={{ fontSize: '12px' }}>頂部</div>
-        </div>
-      </BackTop>
-    </div>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -97,22 +40,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { BackTop, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <div id="target" style={{ height: '800px', overflowY: 'auto' }}>
-      {new Array(24).fill(0).map((_, index) => {
-        return <Cell key={index}>我是測試數據{index}</Cell>
-      })}
-      <BackTop target="target" threshold={100} bottom={50} />
-    </div>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -120,48 +48,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { BackTop, Cell } from '@nutui/nutui-react';
-import { Top } from '@nutui/icons-react';
-
-const App = () => {
-  const handleClick = () => {
-    console.log('觸發返回頂部')
-  }
-  return (
-    <div
-      style={{ height: '100vh', overflowY: 'auto' }}
-      id="target"
-    >
-      {new Array(24).fill(0).map((_, index) => {
-        return <Cell key={index}>我是測試數據{index}</Cell>
-      })}
-      <BackTop
-        threshold={200}
-        style={{
-          bottom: '50px',
-          right: '20px',
-        }}
-        onClick={handleClick}
-        target="target"
-      >
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Top width={12} height={12} />
-          <div style={{ fontSize: '12px' }}>頂部</div>
-        </div>
-      </BackTop>
-    </div>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 

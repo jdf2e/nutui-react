@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`should render description correctly 1`] = `
 <div>
@@ -11,7 +11,7 @@ exports[`should render description correctly 1`] = `
       <img
         alt="empty"
         class="img"
-        src="https://static-ftcms.jd.com/p/files/61a9e3183985005b3958672b.png"
+        src="https://storage.360buyimg.com/imgtools/30186cfda0-0d3eee40-c0ac-11ee-9382-9125782aa3b8.png"
       />
     </div>
     <div

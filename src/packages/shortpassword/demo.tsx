@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
-import { Star } from '@nutui/icons-react'
-import Cell from '../cell'
-import Toast from '../toast'
-import { ShortPassword } from './shortpassword'
-import NumberKeyboard from '../numberkeyboard/index'
+import React from 'react'
 import { useTranslate } from '@/sites/assets/locale'
+import Demo1 from './demos/h5/demo1'
+import Demo2 from './demos/h5/demo2'
+import Demo3 from './demos/h5/demo3'
+import Demo4 from './demos/h5/demo4'
+import Demo5 from './demos/h5/demo5'
+import Demo6 from './demos/h5/demo6'
 
 const ShortPasswordDemo = () => {
   const [translated] = useTranslate({
@@ -33,149 +34,20 @@ const ShortPasswordDemo = () => {
       autoFocus: 'AutoFocus',
     },
   })
-  const [visible1, setVisible1] = useState(false)
-  const [visible2, setVisible2] = useState(false)
-  const [visible3, setVisible3] = useState(false)
-  const [visible4, setVisible4] = useState(false)
-  const [visible5, setVisible5] = useState(false)
-  const [visible6, setVisible6] = useState(false)
-  const [value, setValue] = useState<string>('')
-  const [value0, setValue0] = useState<string>('')
-  const onTips = () => {
-    Toast.show(translated.forgetPassword)
-  }
-  // NumberKeyboard
-  const [visible, setVisible] = useState(false)
-  const onChange = (v: string) => {
-    setValue((value) => value + v)
-  }
-  const onDelete = () => {
-    setValue((value) => value.slice(0, -1))
-  }
-  const [visible0, setVisible0] = useState(false)
-  const onChange0 = (v: string) => {
-    setValue0((value) => value + v)
-  }
-  const onDelete0 = () => {
-    setValue0((value) => value.slice(0, -1))
-  }
   return (
     <div className="demo">
-      <NumberKeyboard
-        visible={visible}
-        onClose={() => setVisible(false)}
-        onChange={onChange}
-        onDelete={onDelete}
-      />
-
       <h2>{translated.basic}</h2>
-      <Cell title={translated.basic} onClick={() => setVisible1(true)} />
-      <ShortPassword
-        visible={visible1}
-        value={value}
-        onFocus={() => setVisible(true)}
-        onClose={() => {
-          setVisible1(false)
-          setValue('')
-        }}
-        onChange={(value) => setValue(value)}
-        onComplete={() => setVisible(false)}
-      />
-
+      <Demo1 />
       <h2>{translated.displayPlain}</h2>
-      <Cell title={translated.displayPlain} onClick={() => setVisible2(true)} />
-      <ShortPassword
-        visible={visible2}
-        value={value}
-        plain
-        onFocus={() => setVisible(true)}
-        onClose={() => {
-          setVisible2(false)
-          setValue('')
-        }}
-        onChange={(value) => setValue(value)}
-        onComplete={() => setVisible(false)}
-      />
-
+      <Demo2 />
       <h2>{translated.displayButton}</h2>
-      <Cell
-        title={translated.displayButton}
-        onClick={() => setVisible3(true)}
-      />
-      <ShortPassword
-        visible={visible3}
-        value={value}
-        tips={
-          <>
-            <Star width={11} height={11} />
-            自定义提示语
-          </>
-        }
-        hideFooter={false}
-        onFocus={() => setVisible(true)}
-        onClose={() => {
-          setVisible3(false)
-          setValue('')
-        }}
-        onChange={(value) => setValue(value)}
-        onConfirm={() => setVisible3(false)}
-        onCancel={() => setVisible3(false)}
-        onComplete={() => setVisible(false)}
-      />
-
+      <Demo3 />
       <h2>{translated.customLength}</h2>
-      <Cell title={translated.customLength} onClick={() => setVisible4(true)} />
-      <ShortPassword
-        visible={visible4}
-        value={value0}
-        onFocus={() => setVisible0(true)}
-        onClose={() => {
-          setVisible4(false)
-          setValue0('')
-        }}
-        onChange={(value) => setValue0(value)}
-        onComplete={() => setVisible0(false)}
-        length={4}
-      />
-      <NumberKeyboard
-        visible={visible0}
-        onClose={() => setVisible0(false)}
-        onChange={onChange0}
-        onDelete={onDelete0}
-      />
-
+      <Demo4 />
       <h2>{translated.forgetPassword}</h2>
-      <Cell
-        title={translated.forgetPassword}
-        onClick={() => setVisible5(true)}
-      />
-      <ShortPassword
-        visible={visible5}
-        value={value}
-        onFocus={() => setVisible(true)}
-        onClose={() => {
-          setVisible5(false)
-          setValue('')
-        }}
-        onChange={(value) => setValue(value)}
-        onComplete={() => setVisible(false)}
-        onTips={() => onTips()}
-      />
-
-      <h2>自动聚焦</h2>
-      <Cell title="自动聚焦" onClick={() => setVisible6(true)} />
-      <ShortPassword
-        visible={visible6}
-        value={value}
-        onFocus={() => setVisible(true)}
-        onClose={() => {
-          setVisible6(false)
-          setValue('')
-        }}
-        onChange={(value) => setValue(value)}
-        onComplete={() => setVisible(false)}
-        autoFocus
-      />
+      <Demo5 />
+      <h2>{translated.autoFocus}</h2>
+      <Demo6 />
     </div>
   )
 }

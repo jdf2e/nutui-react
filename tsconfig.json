@@ -5,13 +5,10 @@
     "target": "ES6",
     "types": [
       "vite/client",
-      "jest",
+      "vitest/globals",
       "node"
     ],
     "allowJs": false,
-    "declaration": true,
-    "declarationDir": "./dist/esm/types",
-    "emitDeclarationOnly": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
