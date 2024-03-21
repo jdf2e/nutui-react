@@ -50,7 +50,7 @@ const Demo7 = () => {
           )
         })}
       </Collapse>
-      <Space style={{ marginTop: '10px' }}>
+      <Space style={{ margin: '10px' }}>
         <Button type="primary" size="small" onClick={() => changeNewData()}>
           改变数据
         </Button>
