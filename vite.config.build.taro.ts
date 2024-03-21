@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
+import fse from 'fs-extra'
 import path from 'path'
 import config from './package.json'
 
@@ -35,6 +36,20 @@ export default defineConfig({
       ],
       beforeWriteFile(filePath, content) {
         return { filePath: filePath.replace('src/', ''), content }
+      },
+      afterBuild: () => {
+        fse
+          .readFile(
+            './dist/types/packages/nutui.taro.react.build.d.ts',
+            'utf-8'
+          )
+          .then((data: string) => {
+            fse.remove('./dist/types/packages/nutui.taro.react.build.d.ts')
+            fse.outputFile(
+              './dist/types/index.d.ts',
+              `${data.replace(/\.\.\//g, './')}`
+            )
+          })
       },
     }),
   ],
