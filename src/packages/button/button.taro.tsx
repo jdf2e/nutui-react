@@ -79,18 +79,15 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
     const getStyle = useCallback(() => {
       const style: CSSProperties = {}
       if (props.color) {
-        if (
-          props.fill &&
-          (props.fill === 'outline' || props.fill === 'dashed')
-        ) {
+        if (props.fill === 'outline' || props.fill === 'dashed') {
           style.color = color
-          style.background = '#fff'
           if (!color?.includes('gradient')) {
             style.borderColor = color
           }
         } else {
           style.color = '#fff'
           style.background = color
+          style.borderColor = 'transparent'
         }
       }
       return style

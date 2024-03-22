@@ -64,7 +64,7 @@ const SwipeDemo = () => {
       closeLeft: '点击右侧按钮关闭',
       tips: '提示',
       cart: '加入购物车',
-      leftDel: '左滑删除',
+      leftDel: '左滑',
       disabled: '禁用滑动',
       chooseTips: '确定选择吗？',
       deleteTips: '确定删除吗？',
@@ -93,7 +93,7 @@ const SwipeDemo = () => {
       closeLeft: '點擊右側按鈕關閉',
       tips: '提示',
       cart: '加入購物車',
-      leftDel: '左滑刪除',
+      leftDel: '左滑',
       disabled: '禁用滑動',
       chooseTips: '確定選擇嗎？ ',
       deleteTips: '確定刪除嗎？ ',
@@ -122,7 +122,7 @@ const SwipeDemo = () => {
       closeLeft: 'Click the right button to close',
       tips: 'tips',
       cart: 'add to shopping cart',
-      leftDel: 'left slide delete',
+      leftDel: 'left slide',
       disabled: 'Disable sliding',
       chooseTips: 'are you sure to choose?',
       deleteTips: 'are you sure to delete?',
@@ -216,7 +216,7 @@ const SwipeDemo = () => {
             </div>
           }
         >
-          <Cell title={translated.leftDel} radius={0} />
+          <Cell title={`${translated.leftDel}+Icon`} radius={0} />
         </Swipe>
         <br />
 

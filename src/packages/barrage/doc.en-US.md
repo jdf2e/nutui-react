@@ -16,52 +16,7 @@ import { Barrage } from '@nutui/nutui-react'
 
 :::demo
 
-```tsx
-import React, { useRef } from 'react'
-import { Cell, Button, Barrage } from '@nutui/nutui-react'
-
-const barrageStyle = {
-  padding: '20px 0',
-  height: '150px',
-  boxSizing: 'border-box',
-}
-const App = () => {
-  const barrageList = [
-    'beautiful painting',
-    'Unconsciously',
-    'Super Plus enjoy',
-    'male silent female tears',
-    'Tired of not loving',
-    'cool-',
-  ]
-  const barrageRef = useRef(null)
-  const addBarrage = () => {
-    const n = Math.random()
-    if (barrageRef.current) {
-      barrageRef.current.add(`random——${String(n).substr(2, 10)}`)
-    }
-  }
-  return (
-    <div className="demo">
-      <h2>Basic usage</h2>
-      <Cell className="barrage-demo-wrap" style={barrageStyle}>
-        <Barrage
-          className="barrage-demo"
-          ref={barrageRef}
-          list={barrageList}
-          style={barrageStyle}
-        />
-      </Cell>
-      <div className="test" style={{ textAlign: 'center' }}>
-        <Button type="danger" onClick={addBarrage}>
-          add randomly
-        </Button>
-      </div>
-    </div>
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 

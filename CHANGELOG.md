@@ -1,3 +1,37 @@
+# v2.4.2
+`2024-03-20`
+
+* 🔨 chore(row): 优化 className (#2054) @Eiinu
+* :sparkles: feat(backtop): rtl (#2051) @xiaoyatong
+* :sparkles: feat(NoticeBar): 增加right 属性,支持更多可自定义内容 @xiaoyatong
+* :bug: fix(address): demo拆解与规范 (#2068) @Alex.huxiyang
+* :bug: fix(avatar): demo规范与调整 (#2071) @Alex.huxiyang
+* :bug: fix(badge): demo拆解与规范 (#2060) @sd
+* :bug: fix(calendarcard): 修复受控模式 (#2063) @Eiinu
+* :bug: fix(Card): demo拆解与规范 (#2072) @joyfully-W
+* :bug: fix(dialog): demo拆解与规范 (#2069) @songsong
+* :bug: fix(fixedNav): demo拆解与规范 (#2048) @Alex.huxiyang
+* :bug: fix(icon): 处理 rtl 部分 (#2050) @xiaoyatong
+* :bug: fix(indicator): demo拆解与规范 (#2090) @Eiinu
+* :bug: fix(infiniteLoading): demo拆解与规范+增加joy logo的demo (#2081) @songsong
+* :bug: fix(input): demo拆解与规范 (#2035) @yeyu1998
+* :bug: fix(navbar): demo拆解与规范 (#2055) @Alex.huxiyang
+* :bug: fix(pagination): demo拆解与规范 (#2079) @Alex.huxiyang
+* :bug: fix(price): demo拆解与规范 (#2082) @Alex.huxiyang
+* :bug: fix(pulltorefresh): demo中下拉图标修改为joy logo (#2084) @songsong
+* :bug: fix(rate): demo拆解与规范 (#2045) @sandra
+* :bug: fix(SearchBar): demo拆解与规范 (#2064) @joyfully-W
+* :bug: fix(sideNavBar): demo拆解与规范 (#2058) @Alex.huxiyang
+* :bug: fix(skeleton): demo拆解与规范 (#2047) @sd
+* :bug: fix(sticky): demo拆解与规范 (#2024) @Alex.huxiyang
+* :bug: fix(swiper): rtl (#2061) @xiaoyatong
+* :bug: fix(tabbar): demo拆解与规范&脚本增强 (#2059) @Alex.huxiyang
+* :bug: fix(trendarrow): demo拆解与规范 (#2075) @ber
+* :bug: fix(watermark): demo拆解与规范 (#2083) @Eiinu
+* :bug: fix: update copy-docs-h5-or-taro.js (#2080) @Eiinu
+* test: migrate jest to vitest (#2057) @Eiinu
+
+
 # v2.4.1
 `2024-03-15`
 
