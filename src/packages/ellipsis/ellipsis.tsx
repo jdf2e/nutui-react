@@ -2,6 +2,7 @@ import React, { FunctionComponent, useState, useRef } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useIsomorphicLayoutEffect } from '@/utils/use-isomprphic-layout-effect'
+import { useRtl } from '../configprovider'
 
 export type EllipsisDirection = 'start' | 'end' | 'middle'
 type EllipsisValue = {
@@ -51,6 +52,7 @@ export const Ellipsis: FunctionComponent<
     onChange,
     ...rest
   } = { ...defaultProps, ...props }
+  const rtl = useRtl()
   let container: any = null
   let maxHeight = 0 // 当行的最大高度
   const [exceeded, setExceeded] = useState(false)
@@ -58,7 +60,7 @@ export const Ellipsis: FunctionComponent<
   const ellipsis = useRef<EllipsisValue>()
   const root = useRef<HTMLDivElement>(null)
   const classes = classNames({
-    [`${classPrefix}-rows`]: Number(rows) > 1,
+    [`${classPrefix}-rtl`]: rtl,
   })
   const cls = classNames(classPrefix, classes, className)
 
@@ -215,7 +217,7 @@ export const Ellipsis: FunctionComponent<
     <div className={cls} onClick={handleClick} ref={root} {...rest}>
       {!exceeded ? content : null}
       {exceeded && !expanded ? (
-        <>
+        <span>
           {ellipsis.current?.leading}
           {expandText ? (
             <span
@@ -229,10 +231,10 @@ export const Ellipsis: FunctionComponent<
             </span>
           ) : null}
           {ellipsis.current?.tailing}
-        </>
+        </span>
       ) : null}
       {exceeded && expanded ? (
-        <>
+        <span>
           {content}
           {expandText ? (
             <span
@@ -245,7 +247,7 @@ export const Ellipsis: FunctionComponent<
               {collapseText}
             </span>
           ) : null}
-        </>
+        </span>
       ) : null}
     </div>
   )
