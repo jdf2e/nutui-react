@@ -1,6 +1,6 @@
 import React, { useCallback, useImperativeHandle } from 'react'
 import classNames from 'classnames'
-import { RadioGroupOptionType } from '@/packages/radiogroup/types'
+import { RadioGroupOption } from '@/packages/radiogroup/types'
 import { Checkbox } from '../checkbox/checkbox'
 import Context from './context'
 import { usePropsValue } from '@/utils/use-props-value'
@@ -19,7 +19,7 @@ export interface CheckboxGroupProps {
   min: number | undefined
   labelPosition: CheckboxLabelPosition
   direction: CheckboxDirection
-  options: RadioGroupOptionType[]
+  options: RadioGroupOption[]
   onChange: (value: string[]) => void
   onLimit: (type: CheckboxLimit) => void
 }
