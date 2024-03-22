@@ -48,7 +48,6 @@ export const Progress: FunctionComponent<
   }
 
   const classPrefix = 'nut-progress'
-  const [selector, setSelector] = useState('')
   const classesInner = classNames({
     [`${classPrefix}-inner`]: true,
     [`${classPrefix}-active`]: animated,
@@ -87,6 +86,7 @@ export const Progress: FunctionComponent<
   const progressRef = useRef(null)
   const webObserver: any = useRef(null)
   const uuid = useUuid()
+  const selector = `${classPrefix}-lazy-${uuid}`
   const resetObserver = (env: string, observer: any = null) => {
     if (env === 'WEB') {
       webObserver.current.disconnect && webObserver.current.disconnect()
@@ -112,11 +112,7 @@ export const Progress: FunctionComponent<
         webObserver.current = new IntersectionObserver(
           (entires, self) => {
             entires.forEach((item) => {
-              if (item.isIntersecting) {
-                setIntersecting(true)
-              } else {
-                setIntersecting(false)
-              }
+              setIntersecting(item.isIntersecting)
             })
           },
           {
@@ -128,8 +124,7 @@ export const Progress: FunctionComponent<
       }
       handlePercent()
     }
-    const temp = `${classPrefix}-lazy-${uuid}`
-    setSelector(temp)
+
     let observer: any = null
     if (lazy) {
       observer = Taro.createIntersectionObserver(
@@ -141,12 +136,8 @@ export const Progress: FunctionComponent<
       )
       observer
         .relativeToViewport({ top: 0 })
-        .observe(`#${temp}`, (res: any) => {
-          if (res.intersectionRatio > 0) {
-            setIntersecting(true)
-          } else {
-            setIntersecting(false)
-          }
+        .observe(`#${selector}`, (res: any) => {
+          setIntersecting(res.intersectionRatio > 0)
         })
     }
     handlePercent()
