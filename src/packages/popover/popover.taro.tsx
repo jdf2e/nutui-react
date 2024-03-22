@@ -13,6 +13,7 @@ import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { getRect } from '@/utils/use-client-rect'
 import { PopoverTheme, PopoverLocation, PopoverList } from './types'
+import { useRtl } from '@/packages/configprovider/index.taro'
 
 export interface PopoverProps extends PopupProps {
   list: PopoverList[]
@@ -61,6 +62,7 @@ const classPrefix = `nut-popover`
 export const Popover: FunctionComponent<
   Partial<PopoverProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'>
 > = (props) => {
+  const rtl = useRtl()
   const {
     children,
     list,
@@ -123,9 +125,9 @@ export const Popover: FunctionComponent<
         setRootPosition({
           width: rect.width,
           height: rect.height,
-          left: rect.left,
+          left: rtl ? rect.right : rect.left,
           top: rect.top + distance,
-          right: rect.right,
+          right: rtl ? rect.left : rect.right,
         })
       })
       .exec()
