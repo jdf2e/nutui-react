@@ -126,11 +126,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
     })
     return (
       <div className={closeClasses} onClick={handleCancel}>
-        {React.isValidElement(closeIcon) ? (
-          closeIcon
-        ) : (
-          <Close height={24} width={24} />
-        )}
+        {React.isValidElement(closeIcon) ? closeIcon : <Close />}
       </div>
     )
   }

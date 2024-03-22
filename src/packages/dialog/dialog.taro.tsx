@@ -158,7 +158,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
     })
     return (
       <View className={closeClasses} onClick={handleCancel}>
-        {React.isValidElement(closeIcon) ? closeIcon : <Close size={24} />}
+        {React.isValidElement(closeIcon) ? closeIcon : <Close />}
       </View>
     )
   }
