@@ -100,7 +100,7 @@ const App = () => {
         </div>
       }
     >
-      <Cell title={translated.leftDel} radius={0} />
+      <Cell title={`${translated.leftDel}+Icon`} radius={0} />
     </Swipe>
   </>
 }
