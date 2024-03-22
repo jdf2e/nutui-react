@@ -1,70 +1,37 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Taro from '@tarojs/taro'
-import {
-  AnimatingNumbers,
-  Cell,
-  ConfigProvider,
-} from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
+import Demo1 from './demos/taro/demo1'
+import Demo2 from './demos/taro/demo2'
 
-interface T {
-  basic: string
-  custom: string
-}
 const AnimatingNumbersDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
-      basic: '基础用法',
-      custom: '自定义样式，动态修改数据（需要指定最大位数）',
+      basic: 'AnimatingNumbers.CountUp - 基础用法',
+      custom:
+        'AnimatingNumbers.CountUp - 自定义样式，动态修改数据（需要指定最大位数）',
     },
     'zh-TW': {
-      basic: '基础用法',
-      custom: '自定義樣式，動態修改數據（需要指定最大位數）',
+      basic: 'AnimatingNumbers.CountUp - 基础用法',
+      custom:
+        'AnimatingNumbers.CountUp - 自定義樣式，動態修改數據（需要指定最大位數）',
     },
     'en-US': {
-      basic: 'Basic Usage',
+      basic: 'AnimatingNumbers.CountUp - Basic Usage',
       custom:
-        'Custom styles to dynamically modify data (maximum number of bits required)',
+        'AnimatingNumbers.CountUp - Custom styles to dynamically modify data (maximum number of bits required)',
     },
   })
-  const customTheme = {
-    nutuiCountupWidth: '24px',
-    nutuiCountupBgColor: `var(--nutui-color-primary)`,
-    nutuiCountupColor: `#fff`,
-    nutuiCountupLrMargin: `1px`,
-  }
-  const [value, setEndNumer] = useState('1570.99')
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setEndNumer(
-        `${Math.floor(Math.random() * 999999)}.${Math.floor(
-          Math.random() * 89 + 10
-        )}`
-      )
-    }, 30000)
-    return () => {
-      clearInterval(timer)
-    }
-  }, [])
+
   return (
     <>
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>CountUp-{translated.basic}</h2>
-        <Cell title={<AnimatingNumbers.CountUp value="678.94" />} />
-        <h2>CountUp-{translated.custom}</h2>
-        <Cell
-          title={
-            <ConfigProvider theme={customTheme}>
-              <AnimatingNumbers.CountUp
-                value={value}
-                duration={1.2}
-                length={6}
-              />
-            </ConfigProvider>
-          }
-        />
+        <h2>{translated.basic}</h2>
+        <Demo1 />
+        <h2>{translated.custom}</h2>
+        <Demo2 />
       </div>
     </>
   )

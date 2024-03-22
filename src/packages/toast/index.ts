@@ -2,9 +2,9 @@ import Toast from './toast'
 
 export type {
   ToastProps,
-  ToastIconType,
-  ToastPositionType,
-  ToastWordBreakType,
+  ToastIcon,
+  ToastPosition,
+  ToastWordBreak,
 } from './toast'
 
 export default Toast

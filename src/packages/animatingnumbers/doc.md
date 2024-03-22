@@ -12,56 +12,19 @@ import { AnimatingNumbers } from '@nutui/nutui-react'
 
 ## 代码演示
 
-### 基础用法
+### AnimatingNumbers.CountUp - 基础用法
 
 :::demo
 
-```tsx
-import React from 'react'
-import { AnimatingNumbers, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-    return  <Cell title={<AnimatingNumbers.CountUp value="678.94" />} />
-}
-export default App
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
-### 自定义样式，动态修改数据（需要指定最大位数）
+### AnimatingNumbers.CountUp - 自定义样式，动态修改数据（需要指定最大位数）
 
 :::demo
 
-```tsx
-import React, { useEffect, useState } from 'react'
-import { AnimatingNumbers, Cell } from '@nutui/nutui-react'
-
-const App = () => {
-  const [value, setEndNumer] = useState('1570.99')
-  useEffect(() => {
-    setInterval(() => {
-      setEndNumer(
-        `${Math.floor(Math.random() * 999999)}.${Math.floor(
-          Math.random() * 89 + 10
-        )}`
-      )
-    }, 30000)
-  }, [])
-  return (
-    <Cell
-        title={
-        <AnimatingNumbers.CountUp
-            value={value}
-            duration={1.2}
-            length={6}
-            className="custom-coutup"
-        />
-        }
-    />
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 

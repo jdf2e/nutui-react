@@ -3,7 +3,7 @@ import Taro from '@tarojs/taro'
 import { Jd } from '@nutui/icons-react-taro'
 import { Cell, Toast } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import { ToastWordBreakType } from './toast.taro'
+import { ToastWordBreak } from './toast.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 
 interface T {
@@ -79,7 +79,7 @@ const ToastDemo = () => {
     bottom: '',
     icon: '',
     center: true,
-    wordBreak: 'break-all' as ToastWordBreakType,
+    wordBreak: 'break-all' as ToastWordBreak,
   })
   const [showToast, SetShowToast] = useState(false)
 
@@ -89,7 +89,7 @@ const ToastDemo = () => {
     duration?: number,
     icon?: string | React.ReactNode,
     closeOnOverlayClick?: boolean,
-    wordBreak: ToastWordBreakType = 'break-all'
+    wordBreak: ToastWordBreak = 'break-all'
   ) => {
     const changeState = Object.assign(state, {
       content,
