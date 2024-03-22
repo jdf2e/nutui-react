@@ -1,0 +1,112 @@
+{
+  "name": "nutui-icon",
+  "data": [
+    {
+      "name": "V12 Icon",
+      "nameEn": "V12 Icon",
+      "icons": [
+        "plus",
+        "star",
+        "notice",
+        "find",
+        "search",
+        "tips",
+        "heart",
+        "home",
+        "eye",
+        "mask-close",
+        "more",
+        "fabulous",
+        "check-disabled",
+        "success",
+        "dongdong",
+        "minus",
+        "failure",
+        "check",
+        "link",
+        "user-add",
+        "apps",
+        "category",
+        "cart",
+        "heart-fill",
+        "people",
+        "download",
+        "refresh",
+        "checked",
+        "triangle-up",
+        "image-error",
+        "star-fill",
+        "service",
+        "close",
+        "arrow-right",
+        "loading1",
+        "check-checked",
+        "warning",
+        "joy-smile",
+        "del",
+        "arrow-up",
+        "add",
+        "play-circle-fill",
+        "top",
+        "user",
+        "share",
+        "retweet",
+        "location",
+        "loading",
+        "triangle-down",
+        "arrow-down",
+        "marshalling",
+        "arrow-left",
+        "check-normal",
+        "jd",
+        "photograph",
+        "checklist",
+        "poweroff-circle-fill",
+        "double-arrow-up"
+      ]
+    }
+  ],
+  "style": [
+    {
+      "name": "通用动态样式",
+      "nameEn": "Universal Dynamic Style",
+      "icons": [
+        {
+          "name": "double-arrow-up",
+          "animation-name": "am-jump",
+          "animation-time": "am-infinite"
+        },
+        {
+          "name": "star",
+          "animation-name": "am-blink",
+          "animation-time": "am-infinite"
+        },
+        {
+          "name": "refresh",
+          "animation-name": "am-rotate",
+          "animation-time": "am-infinite"
+        },
+        {
+          "name": "heart-fill",
+          "animation-name": "am-breathe",
+          "animation-time": "am-infinite"
+        },
+        {
+          "name": "microphone",
+          "animation-name": "am-flash",
+          "animation-time": "am-infinite"
+        },
+        {
+          "name": "download",
+          "animation-name": "am-bounce",
+          "animation-time": "am-infinite"
+        },
+        {
+          "name": "message",
+          "animation-name": "am-shake",
+          "animation-time": "am-infinite"
+        }
+      ]
+    }
+  ]
+}
