@@ -8,7 +8,7 @@ import { getTaroRectById } from '@/utils/use-taro-rect'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useConfig } from '@/packages/configprovider'
 
-export interface ListOptions {
+export interface TourList {
   target: Element | string
   content?: string
   location?: string
@@ -26,7 +26,7 @@ export interface TourProps extends BasicComponent {
   maskWidth: number | string
   maskHeight: number | string
   offset: number[]
-  list: ListOptions[]
+  list: TourList[]
   title: ReactNode
   next: ReactNode
   prev: ReactNode

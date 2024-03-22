@@ -16,6 +16,7 @@ config.nav.map((item) => {
     if (exclude) return
     // if (show ) {
     importStr += `import ${name} from '@/packages/${name.toLowerCase()}/index.taro'\n`
+    importStr += `export * from '@/packages/${name.toLowerCase()}/index.taro'\n`
     importScssStr += `import '@/packages/${name.toLowerCase()}/${name.toLowerCase()}.scss'\n`
     packages.push(name)
     // }
