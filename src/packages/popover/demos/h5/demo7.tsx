@@ -33,7 +33,7 @@ const Demo7 = () => {
           list={itemList}
           location="top"
           closeOnOutsideClick={false}
-          style={{ marginRight: '30px' }}
+          style={{ marginInlineEnd: '30px' }}
           onClick={() => {
             visible ? setVisible(false) : setVisible(true)
           }}

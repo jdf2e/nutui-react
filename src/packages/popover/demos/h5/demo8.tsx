@@ -23,7 +23,7 @@ const Demo8 = () => {
         style={{
           position: 'fixed',
           bottom: 10,
-          right: -10,
+          insetInlineEnd: -10,
           zIndex: 1000,
         }}
       >
@@ -32,7 +32,7 @@ const Demo8 = () => {
           visible={visible}
           list={list}
           location="top"
-          style={{ marginRight: '30px' }}
+          style={{ marginInlineEnd: '30px' }}
           closeOnOutsideClick={false}
           onClick={() => {
             visible ? setVisible(false) : setVisible(true)
