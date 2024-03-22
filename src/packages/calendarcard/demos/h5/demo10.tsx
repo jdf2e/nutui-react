@@ -1,9 +1,15 @@
 import React, { useState } from 'react'
-import { Cell, Popup, Button, CalendarCard } from '@nutui/nutui-react'
+import {
+  Cell,
+  Popup,
+  Button,
+  CalendarCard,
+  type CalendarCardValue,
+} from '@nutui/nutui-react'
 
 const Demo10 = () => {
   const [visible, setVisible] = useState(false)
-  const [date, setDate] = useState(null)
+  const [date, setDate] = useState<Date | null>(null)
   return (
     <>
       <Cell
@@ -18,7 +24,10 @@ const Demo10 = () => {
         closeable
         onClose={() => setVisible(false)}
       >
-        <CalendarCard value={date} onChange={(d) => setDate(d)} />
+        <CalendarCard
+          value={date}
+          onChange={(d: CalendarCardValue) => setDate(d as Date)}
+        />
         <div style={{ padding: '10px' }}>
           <Button block type="danger" onClick={() => setVisible(false)}>
             确定

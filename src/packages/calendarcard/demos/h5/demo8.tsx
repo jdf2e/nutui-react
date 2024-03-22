@@ -1,8 +1,8 @@
 import React from 'react'
-import { CalendarCard } from '@nutui/nutui-react'
+import { CalendarCard, type CalendarCardValue } from '@nutui/nutui-react'
 
 const Demo8 = () => {
-  const onChange = (val) => {
+  const onChange = (val: CalendarCardValue) => {
     console.log(val)
   }
   return (

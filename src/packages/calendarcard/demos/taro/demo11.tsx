@@ -1,8 +1,13 @@
 import React, { useRef } from 'react'
-import { Space, Button, CalendarCard } from '@nutui/nutui-react-taro'
+import {
+  Space,
+  Button,
+  CalendarCard,
+  type CalendarCardRef,
+} from '@nutui/nutui-react-taro'
 
 const Demo11 = () => {
-  const CalendarCardRef = useRef(null)
+  const CalendarCardRef = useRef<CalendarCardRef>(null)
   return (
     <>
       <Space>
