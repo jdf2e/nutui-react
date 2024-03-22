@@ -11,7 +11,7 @@ import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
-import '@/packages/icon/demo.scss'
+// import '@/packages/icon/demo.scss'
 
 const IconDemo = () => {
   const [translated] = useTranslate({
