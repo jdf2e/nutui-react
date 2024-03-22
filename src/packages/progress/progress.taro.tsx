@@ -47,8 +47,6 @@ export const Progress: FunctionComponent<
   }
 
   const classPrefix = 'nut-progress'
-  const timestamp = lazy && Date.now().toString(36) // 将时间戳转换为36进制字符串
-  const randomString = lazy && Math.random().toString(36).substring(2, 15)
   const [selector, setSelector] = useState('')
   const classesInner = classNames({
     [`${classPrefix}-inner`]: true,
