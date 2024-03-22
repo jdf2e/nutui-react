@@ -33,7 +33,7 @@ const defaultProps = {
   disableConfirmButton: false,
   footerDirection: 'horizontal',
   lockScroll: true,
-  closeIconPosition: 'top-right',
+  closeIconPosition: 'bottom',
   closeIcon: false,
   beforeCancel: () => true,
   beforeClose: () => true,
@@ -158,7 +158,7 @@ export const BaseDialog: FunctionComponent<Partial<DialogProps>> & {
     })
     return (
       <View className={closeClasses} onClick={handleCancel}>
-        {React.isValidElement(closeIcon) ? closeIcon : <Close />}
+        {React.isValidElement(closeIcon) ? closeIcon : <Close size={24} />}
       </View>
     )
   }

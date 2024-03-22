@@ -26,7 +26,7 @@ const defaultProps = {
   disableConfirmButton: false,
   footerDirection: 'horizontal',
   lockScroll: true,
-  closeIconPosition: 'top-right',
+  closeIconPosition: 'bottom',
   closeIcon: false,
   beforeCancel: () => true,
   beforeClose: () => true,
@@ -126,7 +126,11 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
     })
     return (
       <div className={closeClasses} onClick={handleCancel}>
-        {React.isValidElement(closeIcon) ? closeIcon : <Close />}
+        {React.isValidElement(closeIcon) ? (
+          closeIcon
+        ) : (
+          <Close height={24} width={24} />
+        )}
       </div>
     )
   }
