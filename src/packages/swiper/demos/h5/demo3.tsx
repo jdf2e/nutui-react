@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Swiper } from '@nutui/nutui-react'
 
 const Demo3 = () => {
@@ -8,15 +8,18 @@ const Demo3 = () => {
     'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
     'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
   ]
-  const [height] = useState<any>(150)
-  const [defaultValue2, setdefaultValue2] = useState(0)
   return (
     <div className="demo-box" style={{ height: 150 }}>
-      <Swiper defaultValue={defaultValue2} width="300" height={height}>
+      <Swiper defaultValue={0} width="300" height={150}>
         {list.map((item) => {
           return (
             <Swiper.Item key={item}>
-              <img src={item} alt="" />
+              <img
+                src={item}
+                alt=""
+                style={{ width: '100%', height: '100%' }}
+                draggable={false}
+              />
             </Swiper.Item>
           )
         })}

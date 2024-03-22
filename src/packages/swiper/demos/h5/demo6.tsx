@@ -1,29 +1,32 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Swiper } from '@nutui/nutui-react'
 
 const Demo6 = () => {
-  const [defaultValue4, setdefaultValue4] = useState(0)
   const list = [
     'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
     'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
     'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
     'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
   ]
-  const [height] = useState<any>(150)
   return (
     <div className="demo-box vertical-center">
       <Swiper
         loop
-        defaultValue={defaultValue4}
+        defaultValue={0}
         direction="vertical"
         autoPlay="3000"
-        height={height}
         indicator
+        style={{ height: '150px' }}
       >
         {list.map((item) => {
           return (
             <Swiper.Item key={item}>
-              <img src={item} alt="" />
+              <img
+                src={item}
+                alt=""
+                draggable={false}
+                style={{ width: '100%', height: '100%' }}
+              />
             </Swiper.Item>
           )
         })}

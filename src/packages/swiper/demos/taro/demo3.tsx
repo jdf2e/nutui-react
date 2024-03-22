@@ -10,11 +10,11 @@ const Demo3 = () => {
   ]
   return (
     <Swiper
-      className="swiper-demo-size"
       width={300}
       height={150}
       defaultValue={0}
       indicator
+      style={{ margin: '0 auto' }}
     >
       {list.map((item) => (
         <Swiper.Item key={item}>

@@ -12,8 +12,26 @@ const Demo5 = () => {
     'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
     'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
   ]
+  const btnsStyle = {
+    width: '100%',
+    position: 'absolute',
+    top: '50%',
+    transform: 'translateY(-15px)',
+    zIndex: 1,
+    display: 'flex',
+    justifyContent: 'space-between',
+    height: '0px',
+  }
+  const spanStyle = {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '20px',
+    height: '30px',
+    backgroundColor: 'rgba(0, 0, 0, 0.2)',
+  }
   return (
-    <div className="demo-box" style={{ height: 150 }}>
+    <div className="demo-box" style={{ height: 150, position: 'relative' }}>
       <Swiper
         ref={swiperRef}
         defaultValue={0}
@@ -29,22 +47,21 @@ const Demo5 = () => {
         {list.map((item) => {
           return (
             <Swiper.Item key={item}>
-              <img src={item} alt="" />
+              <img
+                src={item}
+                alt=""
+                style={{ width: '100%', height: '100%' }}
+                draggable={false}
+              />
             </Swiper.Item>
           )
         })}
       </Swiper>
-      <div className="nut-swiper-btns">
-        <span
-          className="nut-swiper-btns-left"
-          onClick={(e) => swiperRef.current?.prev()}
-        >
+      <div style={btnsStyle as any}>
+        <span style={spanStyle} onClick={(e) => swiperRef.current?.prev()}>
           <ArrowLeft />
         </span>
-        <span
-          className="nut-swiper-btns-left"
-          onClick={(e) => swiperRef.current?.next()}
-        >
+        <span style={spanStyle} onClick={(e) => swiperRef.current?.next()}>
           <ArrowRight />
         </span>
       </div>

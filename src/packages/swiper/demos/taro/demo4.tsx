@@ -13,7 +13,6 @@ const Demo4 = () => {
     <Swiper
       defaultValue={0}
       onChange={(e) => {
-        console.log('e.detail.current', e.detail.current)
         setCurrent(e.detail.current)
       }}
       indicator={

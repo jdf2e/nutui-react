@@ -51,7 +51,7 @@ const Demo5 = () => {
     'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
   ]
   return (
-    <div className="demo-box" style={{ height: 150 }}>
+    <div className="demo-box" style={{ height: 150, position: 'relative' }}>
       <Swiper
         ref={swiperRef}
         height={height}
@@ -63,16 +63,21 @@ const Demo5 = () => {
         {list.map((item) => {
           return (
             <Swiper.Item key={item}>
-              <img src={item} alt="" />
+              <img
+                src={item}
+                alt=""
+                style={{ width: '100%', height: '100%' }}
+                draggable={false}
+              />
             </Swiper.Item>
           )
         })}
       </Swiper>
-      <div className="nut-swiper-btns">
-        <span className="nut-swiper-btns-left" onClick={(e) => handlePrev()}>
+      <div style={btnsStyle as any}>
+        <span style={spanStyle} onClick={(e) => handlePrev()}>
           <ArrowLeft />
         </span>
-        <span className="nut-swiper-btns-left" onClick={(e) => handleNext()}>
+        <span style={spanStyle} onClick={(e) => handleNext()}>
           <ArrowRight />
         </span>
       </div>
