@@ -71,8 +71,8 @@ export const CustomRender: FunctionComponent<
           onClose={() => {
             onClose?.()
           }}
-          onChange={(val, path) => {
-            onChange?.(val, path)
+          onChange={(val, params) => {
+            onChange?.(val, params)
           }}
           onPathChange={onPathChange}
           {...rest}
