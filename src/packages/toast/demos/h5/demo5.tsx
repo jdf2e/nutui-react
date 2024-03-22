@@ -11,7 +11,7 @@ const Demo5 = () => {
   return (
     <>
       <Cell
-        title=" Warning 警告提示"
+        title="警告提示"
         onClick={(
           event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
         ) => warningToast('警告提示')}

@@ -11,7 +11,7 @@ const Demo3 = () => {
   return (
     <>
       <Cell
-        title="Success 成功提示"
+        title="成功提示"
         onClick={(
           event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
         ) => successToast('成功提示')}

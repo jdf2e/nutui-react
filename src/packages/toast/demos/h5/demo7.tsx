@@ -19,10 +19,10 @@ const Demo7 = () => {
   return (
     <>
       <Cell
-        title="设置展示时长为10秒提示"
+        title="展示时长为10秒"
         onClick={(
           event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => duringToast('设置展示时长为10秒')}
+        ) => duringToast('展示时长为10秒')}
       />
       <Cell
         title="Toast 不消失"

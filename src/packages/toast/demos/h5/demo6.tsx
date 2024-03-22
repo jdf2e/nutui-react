@@ -11,10 +11,10 @@ const Demo6 = () => {
   return (
     <>
       <Cell
-        title=" Loading 加载提示"
+        title="加载提示"
         onClick={(
           event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => loadingToast('加载中')}
+        ) => loadingToast('加载提示')}
       />
     </>
   )

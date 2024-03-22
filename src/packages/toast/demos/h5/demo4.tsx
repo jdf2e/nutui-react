@@ -11,7 +11,7 @@ const Demo4 = () => {
   return (
     <>
       <Cell
-        title="Error 失败提示"
+        title="失败提示"
         onClick={(
           event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
         ) => errorToast('失败提示')}

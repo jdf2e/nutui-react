@@ -17,10 +17,10 @@ const Demo9 = () => {
   return (
     <>
       <Cell
-        title="Loading状态非透明遮罩"
+        title="加载状态透明遮罩"
         onClick={(
           event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => iconToast('加载状态非透明遮罩')}
+        ) => iconToast('加载状态透明遮罩')}
       />
     </>
   )

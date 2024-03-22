@@ -8,7 +8,7 @@ const Demo1 = () => {
   return (
     <>
       <Cell
-        title="Text文字提示"
+        title="文字提示"
         onClick={(
           event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
         ) => textToast('网络失败，请稍后再试~')}

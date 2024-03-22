@@ -13,10 +13,10 @@ const Demo8 = () => {
   }
   return (
     <Cell
-      title="Toast 自定义底部高度"
+      title="自定义底部高度"
       onClick={(
         event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-      ) => toastBottom('自定义距离')}
+      ) => toastBottom('自定义底部高度')}
     />
   )
 }

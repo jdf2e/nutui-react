@@ -60,7 +60,7 @@ import { Toast } from '@nutui/nutui-react';
 
 :::
 
-### 展示时长设置
+## 展示时长设置
 
 :::demo
 
@@ -68,7 +68,7 @@ import { Toast } from '@nutui/nutui-react';
 
 :::
 
-### Toast自定义底部高度
+## Toast自定义底部高度
 
 :::demo
 
@@ -76,7 +76,7 @@ import { Toast } from '@nutui/nutui-react';
 
 :::
 
-### 加载Loading带透明罩
+## 加载Loading带透明罩
 
 :::demo
 
@@ -84,7 +84,7 @@ import { Toast } from '@nutui/nutui-react';
 
 :::
 
-### 换行截断方式
+## 换行截断方式
 
 :::demo
 

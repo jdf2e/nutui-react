@@ -2,69 +2,12 @@ import React from 'react'
 import Toast from './index'
 import Cell from '@/packages/cell'
 import Button from '@/packages/button'
-import { useTranslate } from '../../sites/assets/locale'
-
-interface T {
-  basic: string
-  toastText: string
-  toastTitle: string
-  toastSuccess: string
-  toastError: string
-  toastLoading: string
-  toastWarning: string
-  toastAll: string
-  toastBottom: string
-  toastTransparent: string
-  toastDuration: string
-  toastDurationText: string
-  toastHide: string
-  toastCustomIcon: string
-  toastWordBreak: string
-  toastWordBreak1: string
-  toastWordBreak2: string
-}
+import i18n from '@/packages/toast/i18n'
+import { ToastWordBreakType } from '@/packages/toast'
 
 const ToastDemo = () => {
-  const [translated] = useTranslate<T>({
-    'zh-CN': {
-      basic: '基础用法',
-      toastText: '文字提示',
-      toastTitle: '标题展示',
-      toastSuccess: '成功提示',
-      toastError: '错误提示',
-      toastWarning: '警告提示',
-      toastLoading: '加载提示',
-      toastAll: 'Toast 不消失',
-      toastBottom: '自定义底部高度',
-      toastTransparent: '加载状态透明遮罩',
-      toastDuration: '设置展示时长',
-      toastDurationText: '展示时长为10秒',
-      toastHide: '隐藏Toast',
-      toastCustomIcon: '自定义Icon',
-      toastWordBreak: '换行截断方式',
-      toastWordBreak1: '换行时截断单词',
-      toastWordBreak2: '换行时不截断单词',
-    },
-    'en-US': {
-      basic: 'Basic Usage',
-      toastText: 'Text Message',
-      toastTitle: 'Title',
-      toastSuccess: 'Success',
-      toastError: 'Error',
-      toastWarning: 'Warning',
-      toastLoading: 'Loading',
-      toastAll: 'Not Disappear',
-      toastBottom: 'Custom Bottom Height',
-      toastTransparent: 'Loading Transparent Cover',
-      toastDuration: 'Set Display Duration',
-      toastDurationText: 'Show for 10 seconds',
-      toastHide: 'Hide Toast',
-      toastCustomIcon: 'Custom Icon',
-      toastWordBreak: 'Word Break',
-      toastWordBreak1: 'Break All',
-      toastWordBreak2: 'Break Word',
-    },
-  })
+  const { translated } = i18n()
+
   const textToast = (msg: string) => {
     Toast.show(msg)
   }
@@ -78,7 +21,6 @@ const ToastDemo = () => {
     Toast.show({
       content: msg,
       icon: 'success',
-      title: `${translated.toastTitle}`,
     })
   }
   const errorToast = (msg: string) => {
@@ -127,6 +69,13 @@ const ToastDemo = () => {
     })
   }
 
+  const showToast = (mode: ToastWordBreakType) => {
+    Toast.show({
+      content: `Let's try ABCDEFGHIJKLMN here.`,
+      wordBreak: mode,
+    })
+  }
+
   return (
     <>
       <div className="demo" style={{ paddingBottom: '20px' }}>
@@ -135,7 +84,7 @@ const ToastDemo = () => {
           title={translated.toastText}
           onClick={(
             event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-          ) => textToast(`${translated.toastText}`)}
+          ) => textToast(`${translated.toastTextMsg}`)}
         />
         <Cell
           title={translated.toastTitle}
@@ -215,22 +164,11 @@ const ToastDemo = () => {
         <Cell.Group>
           <Cell
             title={translated.toastWordBreak1}
-            onClick={() => {
-              Toast.show({
-                content: `Let's try ABCDEFGHIJKLMN here.`,
-                wordBreak: 'break-all',
-              })
-            }}
+            onClick={() => showToast('break-all')}
           />
           <Cell
             title={translated.toastWordBreak2}
-            onClick={() => {
-              Toast.show({
-                content: `Let's try ABCDEFGHIJKLMN here.`,
-                wordBreak: 'break-word',
-                duration: 3,
-              })
-            }}
+            onClick={() => showToast('break-word')}
           />
         </Cell.Group>
       </div>

@@ -62,7 +62,7 @@ import { Toast } from '@nutui/nutui-react';
 
 :::
 
-#### Set Display Duration
+### Set Display Duration
 
 :::demo
 
@@ -70,7 +70,7 @@ import { Toast } from '@nutui/nutui-react';
 
 :::
 
-#### Custom Bottom Height
+### Custom Bottom Height
 
 :::demo
 
@@ -78,7 +78,7 @@ import { Toast } from '@nutui/nutui-react';
 
 :::
 
-#### Loading with non-transparent cover
+### Loading with non-transparent cover
 
 :::demo
 

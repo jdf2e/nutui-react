@@ -11,10 +11,10 @@ const Demo2 = () => {
   return (
     <>
       <Cell
-        title="Toast 标题提示"
+        title="标题提示"
         onClick={(
           event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => titleToast('Toast 标题提示')}
+        ) => titleToast('标题提示')}
       />
     </>
   )
