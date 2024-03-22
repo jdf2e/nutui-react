@@ -10,7 +10,7 @@ const Demo7 = () => {
   const generateAMCopyText = (icon: any) => {
     return `<${camelCase(icon.name, {
       pascalCase: true,
-    })} className="${`nut-icon-${icon['animation-name']}  nut-icon-${icon['animation-time']}`}" />`
+    })} className='${`nut-icon-${icon['animation-name']}  nut-icon-${icon['animation-time']}`}' />`
   }
   const copyTag = (text: string) => {
     const input = document.createElement('input')
@@ -41,7 +41,14 @@ const Demo7 = () => {
         return (
           <Cell.Group key={item.name} title={item.name}>
             <Cell>
-              <ul>
+              <ul
+                style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  padding: '0',
+                  width: '100%',
+                }}
+              >
                 {item.icons.map((icon: any) => {
                   return (
                     <li
@@ -53,6 +60,15 @@ const Demo7 = () => {
                           visible: true,
                           msg: generateCopyText(icon),
                         })
+                      }}
+                      style={{
+                        maxWidth: '25%',
+                        height: '60px',
+                        display: 'flex',
+                        flex: '0 0 25%',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
                       }}
                     >
                       <IconFont
