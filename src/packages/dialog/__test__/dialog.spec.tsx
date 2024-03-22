@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, fireEvent, waitFor } from '@testing-library/react'
+import { render, fireEvent, waitFor, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Dialog } from '../dialog'
 
@@ -120,6 +120,7 @@ test('dialog close icon  position adjustment', async () => {
 })
 
 test('should display loading when onConfirm returns a promise', async () => {
+  vi.useFakeTimers()
   const mockOnConfirm = vi.fn(
     () =>
       new Promise((resolve) => {
@@ -129,11 +130,17 @@ test('should display loading when onConfirm returns a promise', async () => {
   const { container } = render(<Dialog visible onConfirm={mockOnConfirm} />)
 
   const footerOkEle = container.querySelector('.nut-dialog-footer-ok')!
-  fireEvent.click(footerOkEle)
+  await act(() => {
+    fireEvent.click(footerOkEle)
+  })
 
   expect(footerOkEle).toHaveClass('nut-button-loading')
 
-  await waitFor(() => {
+  await act(() => {
+    vi.runAllTimers()
+  })
+
+  waitFor(() => {
     expect(footerOkEle).not.toHaveClass('nut-button-loading')
   })
 
