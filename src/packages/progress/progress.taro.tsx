@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import Taro, { PageInstance } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '../configprovider/index.taro'
+import useUuid from '@/utils/use-uuid'
 
 export interface ProgressProps extends BasicComponent {
   percent: number
@@ -51,7 +52,6 @@ export const Progress: FunctionComponent<
   const classesInner = classNames({
     [`${classPrefix}-inner`]: true,
     [`${classPrefix}-active`]: animated,
-    [selector]: lazy,
   })
 
   const stylesOuter: React.CSSProperties = {
@@ -65,7 +65,20 @@ export const Progress: FunctionComponent<
     width: `${displayPercent}%`,
     background: color,
   }
+  const handlePercent = () => {
+    let timer: any = null
+    if (delay) {
+      setDispalyPercent(0)
+      timer = setTimeout(() => {
+        setDispalyPercent(percent)
+      }, delay)
+    }
 
+    return () => {
+      lazy && resetObserver(Taro.getEnv())
+      timer && clearTimeout(timer)
+    }
+  }
   useEffect(() => {
     setDispalyPercent(percent)
   }, [percent])
@@ -73,9 +86,13 @@ export const Progress: FunctionComponent<
   const [intersecting, setIntersecting] = useState(false)
   const progressRef = useRef(null)
   const webObserver: any = useRef(null)
-
-  const resetObserver = () => {
-    webObserver.current.disconnect && webObserver.current.disconnect()
+  const uuid = useUuid()
+  const resetObserver = (env: string, observer: any = null) => {
+    if (env === 'WEB') {
+      webObserver.current.disconnect && webObserver.current.disconnect()
+    } else {
+      observer && observer.disconnect()
+    }
   }
   useEffect(() => {
     if (lazy) {
@@ -92,50 +109,39 @@ export const Progress: FunctionComponent<
   useEffect(() => {
     if (Taro.getEnv() === 'WEB') {
       if (lazy) {
-        const options = {
-          threshold: [0],
-          rootMargin: '0px',
-        }
-        webObserver.current = new IntersectionObserver((entires, self) => {
-          entires.forEach((item) => {
-            if (item.isIntersecting) {
-              setIntersecting(true)
-            } else {
-              setIntersecting(false)
-            }
-          })
-        }, options)
+        webObserver.current = new IntersectionObserver(
+          (entires, self) => {
+            entires.forEach((item) => {
+              if (item.isIntersecting) {
+                setIntersecting(true)
+              } else {
+                setIntersecting(false)
+              }
+            })
+          },
+          {
+            threshold: [0],
+            rootMargin: '0px',
+          }
+        )
         webObserver.current.observe(progressRef.current)
       }
-      let timer: any = null
-      if (delay) {
-        setDispalyPercent(0)
-        timer = setTimeout(() => {
-          setDispalyPercent(percent)
-        }, delay)
-      }
-
-      return () => {
-        lazy && resetObserver()
-        timer && clearTimeout(timer)
-      }
+      handlePercent()
     }
-    const temp = `${classPrefix}-lazy-${Date.now().toString(36)}${Math.random().toString(36).substring(2, 15)}`
+    const temp = `${classPrefix}-lazy-${uuid}`
     setSelector(temp)
     let observer: any = null
     if (lazy) {
-      const options = {
-        thresholds: [0],
-        observeAll: true,
-      }
-
       observer = Taro.createIntersectionObserver(
         Taro.getCurrentInstance().page as PageInstance,
-        options
+        {
+          thresholds: [0],
+          observeAll: true,
+        }
       )
       observer
         .relativeToViewport({ top: 0 })
-        .observe(`.${temp}`, (res: any) => {
+        .observe(`#${temp}`, (res: any) => {
           if (res.intersectionRatio > 0) {
             setIntersecting(true)
           } else {
@@ -143,23 +149,13 @@ export const Progress: FunctionComponent<
           }
         })
     }
-    let timer: any = null
-    if (delay) {
-      setDispalyPercent(0)
-      timer = setTimeout(() => {
-        setDispalyPercent(percent)
-      }, delay)
-    }
-
-    return () => {
-      observer && observer.disconnect()
-      timer && clearTimeout(timer)
-    }
+    handlePercent()
   }, [])
 
   return (
     <div
       ref={progressRef}
+      id={selector}
       className={classNames(classPrefix, className)}
       style={style}
       {...rest}
