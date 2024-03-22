@@ -13,7 +13,7 @@ export type PopoverLocation =
   | 'right-start'
   | 'right-end'
 
-export interface List {
+export interface PopoverList {
   key?: string
   name: string
   icon?: React.ReactNode

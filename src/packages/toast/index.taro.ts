@@ -2,9 +2,10 @@ import { Toast } from './toast.taro'
 
 export type {
   ToastProps,
-  ToastPositionType,
+  ToastPosition,
   ToastOptions,
-  ToastWordBreakType,
+  ToastSize,
+  ToastWordBreak,
 } from './toast.taro'
 
 export default Toast

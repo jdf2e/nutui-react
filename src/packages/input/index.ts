@@ -2,8 +2,8 @@ import { Input } from './input'
 
 export type {
   InputType,
-  InputAlignType,
+  InputAlign,
   InputProps,
-  ConfirmTextType,
+  InputConfirmType,
 } from './input'
 export default Input

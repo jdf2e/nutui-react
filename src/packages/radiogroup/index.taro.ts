@@ -1,7 +1,7 @@
 import { RadioGroup } from './radiogroup.taro'
 
 export type {
-  RadioGroupOptionType,
+  RadioGroupOption,
   RadioGroupPosition,
   RadioGroupDirection,
   RadioGroupShape,
