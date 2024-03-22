@@ -33,7 +33,7 @@ const defaultProps = {
   disableConfirmButton: false,
   footerDirection: 'horizontal',
   lockScroll: true,
-  closeIconPosition: 'top-right',
+  closeIconPosition: 'bottom',
   closeIcon: false,
   beforeCancel: () => true,
   beforeClose: () => true,

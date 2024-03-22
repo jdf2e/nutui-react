@@ -36,7 +36,7 @@ import { Popover } from '@nutui/nutui-react'
 
 :::
 
-### Placement
+### Custom Location: multi datas
 
 Use the location property to control where the bubble pops up. optional value
 
@@ -58,6 +58,27 @@ bottom-end    # Bottom right
 :::demo
 
 <CodeBlock src='h5/demo4.tsx'></CodeBlock>
+
+:::
+
+### Custom Location: one data
+
+Use the location property to control where the bubble pops up. optional value
+
+```
+top           # Top middle
+left          # Left middle
+right         # Right middle
+bottom        # Bottom middle
+top-start     # Top left
+top-end       # Top right
+bottom-start  # Bottom left
+bottom-end    # Bottom right
+```
+
+:::demo
+
+<CodeBlock src='h5/demo4-1.tsx'></CodeBlock>
 
 :::
 

@@ -28,7 +28,9 @@ import { NoticeBar } from '@nutui/nutui-react';
 
 :::
 
-### Custom Theme
+### Scrollable
+
+Scrolling is automatically enabled when the content length of the notification bar overflows, which can be controlled through the scrollable property.
 
 :::demo
 
@@ -36,21 +38,11 @@ import { NoticeBar } from '@nutui/nutui-react';
 
 :::
 
-### Scrollable
-
-Scrolling is automatically enabled when the content length of the notification bar overflows, which can be controlled through the scrollable property.
+### Close Mode
 
 :::demo
 
 <CodeBlock src='h5/demo4.tsx'></CodeBlock>
-
-:::
-
-### Mode
-
-:::demo
-
-<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -60,11 +52,20 @@ When text is long, you can enable multi-line display by setting the wrap propert
 
 :::demo
 
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
+
+:::
+### Custom right content
+
+Add Right mode to set more custom content.
+
+:::demo
+
 <CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
-### Vertical Scroll
+### Custom Theme
 
 :::demo
 
@@ -72,7 +73,8 @@ When text is long, you can enable multi-line display by setting the wrap propert
 
 :::
 
-### Vertical Scroll Custom Left Icon
+
+### Vertical Scroll
 
 :::demo
 
@@ -80,7 +82,7 @@ When text is long, you can enable multi-line display by setting the wrap propert
 
 :::
 
-### Vertical Scroll Custom Style
+### Vertical Scroll Custom Left Icon
 
 :::demo
 
@@ -88,11 +90,19 @@ When text is long, you can enable multi-line display by setting the wrap propert
 
 :::
 
-### Vertical Scroll Custom Right Icon
+### Vertical Scroll Custom Style
 
 :::demo
 
 <CodeBlock src='h5/demo10.tsx'></CodeBlock>
+
+:::
+
+### Vertical Scroll Custom Right Icon
+
+:::demo
+
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
 
 :::
 
