@@ -12,14 +12,13 @@ const Demo1 = () => {
         }}
       />
       <Popup
+        zIndex={2000}
         visible={showBasic}
         style={{ padding: '30px 50px' }}
         onClose={() => {
           setShowBasic(false)
         }}
-      >
-        正文
-      </Popup>
+      />
     </>
   )
 }

@@ -38,7 +38,7 @@ import { Popup } from '@nutui/nutui-react';
 
 :::
 
-### Rounded popup
+### Stop close
 
 :::demo
 
@@ -46,7 +46,7 @@ import { Popup } from '@nutui/nutui-react';
 
 :::
 
-### Mount the specified node
+### Rounded popup
 
 :::demo
 
@@ -54,11 +54,19 @@ import { Popup } from '@nutui/nutui-react';
 
 :::
 
-### multi-layer stacking
+### Mount the specified node
 
 :::demo
 
 <CodeBlock src='h5/demo6.tsx'></CodeBlock>
+
+:::
+
+### multi-layer stacking
+
+:::demo
+
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 

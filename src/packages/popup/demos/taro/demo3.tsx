@@ -30,7 +30,8 @@ const Demo3 = () => {
       <Popup
         closeable
         visible={showIcon}
-        style={{ height: '20%' }}
+        left="返回"
+        title="我是标题"
         position="bottom"
         onClose={() => {
           setShowIcon(false)
@@ -39,7 +40,6 @@ const Demo3 = () => {
       <Popup
         closeable
         visible={showIconPosition}
-        style={{ height: '20%' }}
         closeIconPosition="top-left"
         position="bottom"
         onClose={() => {
@@ -47,10 +47,10 @@ const Demo3 = () => {
         }}
       />
       <Popup
-        visible={showIconDefine}
-        style={{ height: '20%' }}
         closeable
-        closeIcon={<Heart />}
+        closeIcon={<Heart size="15px" />}
+        visible={showIconDefine}
+        style={{ height: '100%' }}
         position="bottom"
         onClose={() => {
           setShowIconDefine(false)

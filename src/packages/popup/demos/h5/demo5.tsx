@@ -1,28 +1,27 @@
 import React, { useState } from 'react'
 import { Popup, Cell } from '@nutui/nutui-react'
 
-const Demo5 = () => {
-  const [showMountNode, setShowMountNode] = useState(false)
+const Demo4 = () => {
+  const [showBottomRound, setShowBottomRound] = useState(false)
 
   return (
     <>
       <Cell
-        title="指定节点挂载"
+        title="圆角弹框"
         onClick={() => {
-          setShowMountNode(true)
+          setShowBottomRound(true)
         }}
       />
       <Popup
-        visible={showMountNode}
-        style={{ padding: '30px 50px' }}
-        portal={document.body}
+        visible={showBottomRound}
+        style={{ height: '20%' }}
+        position="top"
+        round
         onClose={() => {
-          setShowMountNode(false)
+          setShowBottomRound(false)
         }}
-      >
-        body
-      </Popup>
+      />
     </>
   )
 }
-export default Demo5
+export default Demo4

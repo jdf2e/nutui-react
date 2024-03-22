@@ -35,7 +35,7 @@ const Demo2 = () => {
       />
       <Popup
         visible={showTop}
-        style={{ height: '20%' }}
+        destroyOnClose
         position="top"
         onClose={() => {
           setShowTop(false)
@@ -50,7 +50,7 @@ const Demo2 = () => {
       />
       <Popup
         visible={showLeft}
-        style={{ width: '20%', height: '100%' }}
+        style={{ width: '40%', height: '100%' }}
         position="left"
         onClose={() => {
           setShowLeft(false)
@@ -58,7 +58,7 @@ const Demo2 = () => {
       />
       <Popup
         visible={showRight}
-        style={{ width: '20%', height: '100%' }}
+        style={{ width: '40%', height: '100%' }}
         position="right"
         onClose={() => {
           setShowRight(false)

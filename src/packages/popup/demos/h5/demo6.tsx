@@ -1,49 +1,28 @@
 import React, { useState } from 'react'
 import { Popup, Cell } from '@nutui/nutui-react'
 
-const Demo6 = () => {
-  const [showMutiple, setShowMutiple] = useState(false)
-  const [showMutipleInner, setShowMutipleInner] = useState(false)
+const Demo5 = () => {
+  const [showMountNode, setShowMountNode] = useState(false)
 
   return (
     <>
       <Cell
-        title="多层堆叠"
+        title="指定节点挂载"
         onClick={() => {
-          setShowMutiple(true)
+          setShowMountNode(true)
         }}
       />
       <Popup
-        visible={showMutiple}
+        visible={showMountNode}
         style={{ padding: '30px 50px' }}
+        portal={document.body}
         onClose={() => {
-          setShowMutiple(false)
+          setShowMountNode(false)
         }}
       >
-        <span
-          onClick={() => {
-            setShowMutipleInner(true)
-          }}
-        >
-          Click It
-        </span>
-      </Popup>
-      <Popup
-        visible={showMutipleInner}
-        style={{ padding: '30px 50px' }}
-        onClose={() => {
-          setShowMutipleInner(false)
-        }}
-      >
-        <span
-          onClick={() => {
-            setShowMutipleInner(false)
-          }}
-        >
-          close
-        </span>
+        body
       </Popup>
     </>
   )
 }
-export default Demo6
+export default Demo5

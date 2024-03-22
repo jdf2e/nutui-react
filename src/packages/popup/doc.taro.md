@@ -38,7 +38,7 @@ import { Popup } from '@nutui/nutui-react-taro';
 
 :::
 
-### 圆角弹框
+### 阻塞关闭
 
 :::demo
 
@@ -46,7 +46,7 @@ import { Popup } from '@nutui/nutui-react-taro';
 
 :::
 
-### 指定节点挂载
+### 圆角弹框
 
 :::demo
 
@@ -54,11 +54,19 @@ import { Popup } from '@nutui/nutui-react-taro';
 
 :::
 
-### 多层堆叠
+<!-- ### 指定节点挂载
 
 :::demo
 
 <CodeBlock src='taro/demo6.tsx'></CodeBlock>
+
+::: -->
+
+### 多层堆叠
+
+:::demo
+
+<CodeBlock src='taro/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -72,21 +80,13 @@ import { Popup } from '@nutui/nutui-react-taro';
 
 使用 Taro 提供的 catchMove 可以阻止 Popup 的内容区域的滚动穿透问题，但会导致其本身无法滑动。
 
-```html
-<Popup lockscroll>
-  <View>在该内容区域溢出时，无法滑动</View>
-</Popup>
-```
-
 如果需要内容支持溢出滚动，则需要包裹一层 ScrollView 组件。
 
-```html
-<Popup lockscroll>
-  <ScrollView>
-    在该内容溢出时，则可以正常滑动
-  </ScrollView>
-</Popup>
-```
+:::demo
+
+<CodeBlock src='taro/demo8.tsx'></CodeBlock>
+
+:::
 
 ## Popup
 

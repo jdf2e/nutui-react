@@ -1,24 +1,47 @@
 import React, { useState } from 'react'
+import { Failure } from '@nutui/icons-react'
 import { Popup, Cell } from '@nutui/nutui-react'
 
 const Demo4 = () => {
-  const [showBottomRound, setShowBottomRound] = useState(false)
+  const [showOverlayStop, setShowOverlayStop] = useState(false)
+  const [showCloseIconStop, setShowCloseIconStop] = useState(false)
 
   return (
     <>
       <Cell
-        title="圆角弹框"
+        title="阻塞点击 Overlay 关闭"
         onClick={() => {
-          setShowBottomRound(true)
+          setShowOverlayStop(true)
         }}
       />
       <Popup
-        visible={showBottomRound}
-        style={{ height: '20%' }}
-        position="top"
-        round
+        visible={showOverlayStop}
+        style={{ padding: '30px 50px' }}
         onClose={() => {
-          setShowBottomRound(false)
+          setShowOverlayStop(false)
+        }}
+        onOverlayClick={() => {
+          console.log('onOverlayClick')
+          return false
+        }}
+      >
+        正文
+      </Popup>
+      <Cell
+        title="阻塞点击 close icon 关闭"
+        onClick={() => {
+          setShowCloseIconStop(true)
+        }}
+      />
+      <Popup
+        closeable
+        closeIcon={<Failure width="12px" height="12px" />}
+        visible={showCloseIconStop}
+        closeOnOverlayClick={false}
+        style={{ height: '40%' }}
+        position="bottom"
+        onCloseIconClick={() => {
+          console.log('onCloseIconClick')
         }}
       />
     </>

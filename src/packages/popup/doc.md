@@ -38,7 +38,7 @@ import { Popup } from '@nutui/nutui-react';
 
 :::
 
-### 圆角弹框
+### 阻塞关闭
 
 :::demo
 
@@ -46,7 +46,7 @@ import { Popup } from '@nutui/nutui-react';
 
 :::
 
-### 指定节点挂载
+### 圆角弹框
 
 :::demo
 
@@ -54,11 +54,19 @@ import { Popup } from '@nutui/nutui-react';
 
 :::
 
-### 多层堆叠
+### 指定节点挂载
 
 :::demo
 
 <CodeBlock src='h5/demo6.tsx'></CodeBlock>
+
+:::
+
+### 多层堆叠
+
+:::demo
+
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 

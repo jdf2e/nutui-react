@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Popup, Cell } from '@nutui/nutui-react-taro'
+import { ScrollView, View } from '@tarojs/components'
 
 const Demo2 = () => {
   const [showTop, setShowTop] = useState(false)
@@ -35,7 +36,7 @@ const Demo2 = () => {
       />
       <Popup
         visible={showTop}
-        style={{ height: '20%' }}
+        destroyOnClose
         position="top"
         onClose={() => {
           setShowTop(false)
@@ -43,12 +44,22 @@ const Demo2 = () => {
       />
       <Popup
         visible={showBottom}
-        style={{ height: '20%' }}
         position="bottom"
         onClose={() => {
           setShowBottom(false)
         }}
-      />
+        lockScroll
+      >
+        <ScrollView scrollY style={{ height: '200px' }}>
+          {Array.from({ length: 200 })
+            .fill('')
+            .map((_, i) => (
+              <View key={i}>
+                <Cell>底部弹出-{i}</Cell>
+              </View>
+            ))}
+        </ScrollView>
+      </Popup>
       <Popup
         visible={showLeft}
         style={{ width: '20%', height: '100%' }}
