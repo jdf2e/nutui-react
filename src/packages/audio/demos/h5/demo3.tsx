@@ -28,7 +28,16 @@ const Demo3 = () => {
           setDuration(e?.target?.duration.toFixed(0) || 0)
         }}
       >
-        <div className="nut-voice">
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            width: '100px',
+            padding: '8px',
+            border: '1px solid var(--nutui-gray-7)',
+            borderRadius: '18px',
+          }}
+        >
           {voiceIcon}
           <div>{duration}&quot;</div>
         </div>
