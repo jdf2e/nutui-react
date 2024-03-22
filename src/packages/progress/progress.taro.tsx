@@ -47,11 +47,13 @@ export const Progress: FunctionComponent<
   }
 
   const classPrefix = 'nut-progress'
-
+  const timestamp = lazy && Date.now().toString(36) // 将时间戳转换为36进制字符串
+  const randomString = lazy && Math.random().toString(36).substring(2, 15)
+  const [selector, setSelector] = useState('')
   const classesInner = classNames({
     [`${classPrefix}-inner`]: true,
     [`${classPrefix}-active`]: animated,
-    [`${classPrefix}-lazy`]: lazy,
+    [selector]: lazy,
   })
 
   const stylesOuter: React.CSSProperties = {
@@ -73,6 +75,7 @@ export const Progress: FunctionComponent<
   const [intersecting, setIntersecting] = useState(false)
   const progressRef = useRef(null)
   const webObserver: any = useRef(null)
+
   const resetObserver = () => {
     webObserver.current.disconnect && webObserver.current.disconnect()
   }
@@ -119,6 +122,8 @@ export const Progress: FunctionComponent<
         timer && clearTimeout(timer)
       }
     }
+    const temp = `${classPrefix}-lazy-${Date.now().toString(36)}${Math.random().toString(36).substring(2, 15)}`
+    setSelector(temp)
     let observer: any = null
     if (lazy) {
       const options = {
@@ -132,7 +137,7 @@ export const Progress: FunctionComponent<
       )
       observer
         .relativeToViewport({ top: 0 })
-        .observe('.nut-progress-lazy', (res: any) => {
+        .observe(`.${temp}`, (res: any) => {
           if (res.intersectionRatio > 0) {
             setIntersecting(true)
           } else {
