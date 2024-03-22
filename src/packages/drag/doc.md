@@ -16,19 +16,7 @@ import { Drag } from '@nutui/nutui-react'
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Drag } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Drag>
-        <div className="touch-dom">触摸移动</div>
-    </Drag>
- );
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -36,24 +24,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Drag, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-    <Drag direction="x" style={{ top: '200px', left: '8px' }}>
-        <Button type="primary">只能X轴拖拽</Button>
-      </Drag>
-      <Drag direction="y" style={{ top: '200px', right: '50px' }}>
-        <Button type="primary">只能Y轴拖拽</Button>
-      </Drag>
-    </>
- );
-};
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -61,19 +32,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Drag } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Drag direction="x" attract>
-      <div className="touch-dom">按钮</div>
-    </Drag>
- );
-};
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -81,41 +40,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Drag,Button } from '@nutui/nutui-react';
-
-const App = () => {
-    const right = () => {
-    return document.documentElement.clientWidth - 300 - 9
-    }
-    const bottom = () => {
-        return document.documentElement.clientHeight - 202
-    }
-    return (
-    <>
-    <div
-        className="drag-boundary"
-        style={{
-          position: 'absolute',
-          top: '0px',
-          left: '8px',
-          width: '300px',
-          height: '200px',
-          border: '1px solid red',
-        }}
-       />
-      <Drag
-        boundary={{ top: 1, left: 9, bottom: bottom(), right: right() }}
-        style={{ top: '40px', left: '50px' }}
-      >
-        <Button type="primary">限制拖拽边界</Button>
-      </Drag>
-    </>
-   );
-};
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
