@@ -17,6 +17,7 @@ import useClickAway from '@/utils/use-click-away'
 import { canUseDom } from '@/utils/can-use-dom'
 import { getAllScrollableParents } from '@/utils/get-scroll-parent'
 import { PopoverTheme, PopoverLocation, PopoverList } from './types'
+import { useRtl } from '@/packages/configprovider'
 
 export interface PopoverProps extends PopupProps {
   list: PopoverList[]
@@ -58,6 +59,7 @@ const classPrefix = `nut-popover`
 export const Popover: FunctionComponent<
   Partial<PopoverProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'>
 > = (props) => {
+  const rtl = useRtl()
   const {
     children,
     list,
@@ -151,11 +153,11 @@ export const Popover: FunctionComponent<
     setRootPosition({
       width: rect.width,
       height: rect.height,
-      left: rect.left,
+      left: rtl ? rect.right : rect.left,
       top:
         rect.top +
         Math.max(document.documentElement.scrollTop, document.body.scrollTop),
-      right: rect.right,
+      right: rtl ? rect.left : rect.right,
     })
   }
 
