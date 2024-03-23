@@ -29,13 +29,6 @@ import { NoticeBar } from '@nutui/nutui-react-taro';
 
 :::
 
-### 自定义主题
-
-:::demo
-
-<CodeBlock src='taro/demo3.tsx'></CodeBlock>
-
-:::
 
 ### 滚动播放
 
@@ -43,15 +36,15 @@ import { NoticeBar } from '@nutui/nutui-react-taro';
 
 :::demo
 
-<CodeBlock src='taro/demo4.tsx'></CodeBlock>
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
-### 通告栏模式--关闭模式
+### 关闭模式
 
 :::demo
 
-<CodeBlock src='taro/demo5.tsx'></CodeBlock>
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -61,11 +54,22 @@ import { NoticeBar } from '@nutui/nutui-react-taro';
 
 :::demo
 
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
+
+:::
+
+
+### 自定义右侧内容
+
+增加自定义右侧区域，区分rightIcon，更灵活配置。
+
+:::demo
+
 <CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 
-### 纵向滚动
+### 自定义主题
 
 :::demo
 
@@ -73,7 +77,8 @@ import { NoticeBar } from '@nutui/nutui-react-taro';
 
 :::
 
-### 复杂滚动动画
+
+### 垂直滚动
 
 :::demo
 
@@ -81,7 +86,7 @@ import { NoticeBar } from '@nutui/nutui-react-taro';
 
 :::
 
-### 自定义滚动内容
+### 纵向模式：自定义左侧图标
 
 :::demo
 
@@ -89,11 +94,19 @@ import { NoticeBar } from '@nutui/nutui-react-taro';
 
 :::
 
-### 纵向自定义右侧图标
+### 纵向模式：自定义滚动内容
 
 :::demo
 
 <CodeBlock src='taro/demo10.tsx'></CodeBlock>
+
+:::
+
+### 纵向模式：自定义右侧图标
+
+:::demo
+
+<CodeBlock src='taro/demo11.tsx'></CodeBlock>
 
 :::
 

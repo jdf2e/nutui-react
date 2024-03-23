@@ -4,7 +4,7 @@ import { useTranslate } from '@/sites/assets/locale/taro'
 import { ActionSheet, Cell } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 
-export type ItemType<T> = { [key: string]: T }
+export type ActionSheetOption<T> = { [key: string]: T }
 interface Item {
   name: string
   description?: string
@@ -97,7 +97,7 @@ const ActionSheetDemo = () => {
   const [val1, setVal1] = useState('')
   const [val2, setVal2] = useState('')
   const [val3, setVal3] = useState('')
-  const optionsOne: ItemType<string>[] = [
+  const optionsOne: ActionSheetOption<string>[] = [
     {
       name: translated['0f87770f'],
     },
@@ -108,7 +108,7 @@ const ActionSheetDemo = () => {
       name: translated.b6102b61,
     },
   ]
-  const optionsTwo: ItemType<string>[] = [
+  const optionsTwo: ActionSheetOption<string>[] = [
     {
       name: translated['0f87770f'],
     },
@@ -120,7 +120,7 @@ const ActionSheetDemo = () => {
       description: translated.acc5939e,
     },
   ]
-  const optionsThree: ItemType<string | boolean>[] = [
+  const optionsThree: ActionSheetOption<string | boolean>[] = [
     {
       name: translated['85dae65b'],
       danger: true,
@@ -130,7 +130,7 @@ const ActionSheetDemo = () => {
       disabled: true,
     },
   ]
-  const optionsFour: ItemType<string | boolean>[] = [
+  const optionsFour: ActionSheetOption<string | boolean>[] = [
     {
       title: translated['0f87770f'],
     },
@@ -145,7 +145,7 @@ const ActionSheetDemo = () => {
   const optionKey = {
     name: 'title',
   }
-  const chooseItem = (item: ItemType<string>) => {
+  const chooseItem = (item: ActionSheetOption<string>) => {
     setVal1(item.name)
     setIsVisible1(false)
   }

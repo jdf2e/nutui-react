@@ -1,9 +1,15 @@
 import { useRef } from 'react'
 import Schema from 'async-validator'
-import { Store, Callbacks, FormInstance, FieldEntity, NamePath } from './types'
+import {
+  Store,
+  Callbacks,
+  FormInstance,
+  FormFieldEntity,
+  NamePath,
+} from './types'
 
 export const SECRET = 'NUT_FORM_INTERNAL'
-type UpdateItem = { entity: FieldEntity; condition: any }
+type UpdateItem = { entity: FormFieldEntity; condition: any }
 
 /**
  * 用于存储表单的数据
@@ -18,7 +24,7 @@ class FormStore {
   private store: Store = {}
 
   // 所有的组件实例
-  private fieldEntities: FieldEntity[] = []
+  private fieldEntities: FormFieldEntity[] = []
 
   // 校验成功或失败的回调，onFinish、onFinishFailed
   private callbacks: Callbacks = {}
@@ -90,7 +96,7 @@ class FormStore {
       ...this.store,
       ...newStore,
     }
-    this.fieldEntities.forEach((entity: FieldEntity) => {
+    this.fieldEntities.forEach((entity: FormFieldEntity) => {
       const { name } = entity.props
       Object.keys(newStore).forEach((key) => {
         if (key === name) {
@@ -173,13 +179,13 @@ class FormStore {
   resetFields = () => {
     this.errors.length = 0
     this.store = this.initialValues
-    this.fieldEntities.forEach((entity: FieldEntity) => {
+    this.fieldEntities.forEach((entity: FormFieldEntity) => {
       entity.onStoreChange('reset')
     })
   }
 
   // 监听事件
-  registerUpdate = (field: FieldEntity, shouldUpdate: any) => {
+  registerUpdate = (field: FormFieldEntity, shouldUpdate: any) => {
     this.updateList.push({
       entity: field,
       condition: shouldUpdate,

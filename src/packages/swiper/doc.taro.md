@@ -16,34 +16,7 @@ import { Swiper } from '@nutui/nutui-react-taro';
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Swiper } from '@nutui/nutui-react-taro';
-
-const list = [
-  'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-  'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
-  'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-  'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
-]
-const App = () => {
-  return (
-    <Swiper
-      defaultValue={0}
-      indicator
-    >
-      {list.map((item, index) => {
-        return (
-          <Swiper.Item key={item}>
-            <img width="100%" height="100%" src={item} onClick={() => console.log(index)} alt="" />
-          </Swiper.Item>
-        )
-      })}
-    </Swiper>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -51,76 +24,17 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState, useEffect } from 'react'
-import { Swiper } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [initPage1, setInitPage1] = useState(0)
-  const [height, setHeight] = useState<any>(150)
-  const [list, setList] = useState<string[]>([])
-  useEffect(() => {
-    setTimeout(() => {
-      setList([
-        'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-        'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
-        'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-        'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
-      ])
-    }, 3000)
-  }, [])
-  return (
-    <div className="demo-box" style={{ height: 150 }}>
-      <Swiper
-        defaultValue={initPage1}
-        indicator
-      >
-        {list.map((item) => {
-          return (
-            <Swiper.Item key={item}>
-              <img width="100%" height="100%" src={item} alt="" />
-            </Swiper.Item>
-          )
-        })}
-      </Swiper>
-    </div>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
 ### 自定义大小
 
-`width` 自定义轮播大小 
+`width` 自定义轮播大小
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Swiper } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Swiper width={300} height={150} defaultValue={0}>
-      <Swiper.Item >
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-      </Swiper.Item>
-      <Swiper.Item >
-        <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-      </Swiper.Item>
-      <Swiper.Item >
-        <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-      </Swiper.Item>
-      <Swiper.Item >
-        <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-      </Swiper.Item>
-    </Swiper>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -130,56 +44,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Swiper } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [current, setCurrent] = useState(0)
-  const onChange3 = (e) => {
-    setCurrent(e.detail.current)
-  }
-  return (
-      <Swiper
-        defaultValue={0}
-        onChange={onChange3}
-        indicator={
-          <div
-            style={{
-              position: 'absolute',
-              bottom: '0',
-              right: '0',
-              width: '46px',
-              height: '22px',
-              background: 'rgba(0, 0, 0, 0.33)',
-              borderRadius: '22px',
-              textAlign: 'center',
-              color: '#fff',
-              fontSize: '14px',
-              zIndex: '1',
-            }}
-          >
-            {current + 1}/4
-          </div>
-        }
-      >
-        <Swiper.Item >
-          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-        </Swiper.Item>
-        <Swiper.Item >
-          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-        </Swiper.Item>
-        <Swiper.Item >
-          <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-        </Swiper.Item>
-        <Swiper.Item >
-          <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-        </Swiper.Item>
-      </Swiper>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -189,88 +54,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState, useRef } from 'react'
-import { Swiper, Icon } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const swiperRef = React.useRef<any>(null)
-  const [current2, setCurrent2] = useState(0)
-  
-  const onChange3 = (e) => {
-    setCurrent(e + 1)
-  }
-  const handlePrev = () => {
-    swiperRef.current.prev()
-  }
-  const handleNext = () => {
-    swiperRef.current.next()
-  }
-  const pageStyle = {
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
-    width: '46px',
-    height: '22px',
-    background: 'rgba(0, 0, 0, 0.33)',
-    borderRadius: '22px',
-    textAlign: 'center',
-    color: '#fff',
-    fontSize: '14px',
-  }
-  const btnsStyle = {
-    width: '100%',
-    position: 'absolute',
-    top: '50%',
-    transform: 'translateY(-15px)',
-    zIndex: 1,
-    display: 'flex',
-    justifyContent: 'space-between',
-    height: '0px',
-  }
-  const spanStyle = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '20px',
-    height: '30px',
-    backgroundColor: 'rgba(0, 0, 0, 0.2)',
-  }
-  const list = [
-    'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-    'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
-    'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-    'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
-  ]
-  return (
-    <div className="demo-box" style={{ height: '150px', position: 'relative' }}>
-      <Swiper
-        ref={swiperRef}
-        defaultValue={initPage6}
-        onChange={(e) => setCurrent2(e.detail.current)}
-        indicator={<div style={ pageStyle } >{current2}/4</div>}
-      >
-        {list.map((item) => {
-          return (
-            <Swiper.Item key={item}>
-              <img src={item} alt="" />
-            </Swiper.Item>
-          )
-        })}
-      </Swiper>
-      <div style={btnsStyle}>
-        <span style={spanStyle} onClick={(e) => handlePrev()}>
-          <Icon name="left" />
-        </span>
-        <span style={spanStyle} onClick={(e) => handleNext()}>
-          <Icon name="right" />
-        </span>
-      </div>
-    </div>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -280,35 +64,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Swiper } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <div className="demo-box vertical-center" style={{ height: '150px' }}>
-      <Swiper
-        defaultValue={0}
-        direction="vertical"
-      >
-        <Swiper.Item >
-          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg" alt="" />
-        </Swiper.Item>
-        <Swiper.Item >
-          <img src="https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg" alt="" />
-        </Swiper.Item>
-        <Swiper.Item >
-          <img src="https://storage.360buyimg.com/jdc-article/welcomenutui.jpg" alt="" />
-        </Swiper.Item>
-        <Swiper.Item >
-          <img src="https://storage.360buyimg.com/jdc-article/fristfabu.jpg" alt="" />
-        </Swiper.Item>
-      </Swiper>
-    </div>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -318,32 +74,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Swiper } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [initPage8, setInitPage8] = useState(0)
-  const list = [
-    'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-    'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
-    'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-    'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
-  ]
-  return (
-    <Swiper defaultValue={0} loop previousMargin="20px" nextMargin="20px">
-      {list.map((item) => {
-        return (
-          <Swiper.Item key={item}>
-            <img src={item} alt="" />
-          </Swiper.Item>
-        )
-      })}
-    </Swiper>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -351,37 +82,17 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Swiper } from '@nutui/nutui-react-taro';
+<CodeBlock src='taro/demo8.tsx'></CodeBlock>
 
-const App = () => {
-  const list = [
-    'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-    'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
-    'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-    'https://storage.360buyimg.com/jdc-article/fristfabu.jpg'
-  ]
-  return (
-    <Swiper
-        height={220}
-        defaultValue={0}
-        direction="vertical"
-        previousMargin="20px"
-        nextMargin="20px"
-      >
-      {list.map((item) => {
-        return (
-          <Swiper.Item key={item}>
-            <img src={item} alt="" />
-          </Swiper.Item>
-        )
-      })}
-    </Swiper>
-  )
-}
-export default App;
-```
+:::
+
+### 一屏多个数据时
+
+`center` 代表可居中，同时必须传 `height`
+
+:::demo
+
+<CodeBlock src='taro/demo9.tsx'></CodeBlock>
 
 :::
 

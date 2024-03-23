@@ -7,7 +7,7 @@
 ## 安装
 
 ```tsx
-import { OverLay } from '@nutui/nutui-react-taro';
+import { Overlay } from '@nutui/nutui-react-taro';
 ```
 
 ## 代码演示
