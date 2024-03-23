@@ -20,19 +20,11 @@ import { NoticeBar } from '@nutui/nutui-react';
 
 :::
 
-### 居中布局，不支持滾動
+### 居中佈局，不支持滾動
 
 :::demo
 
 <CodeBlock src='h5/demo2.tsx'></CodeBlock>
-
-:::
-
-### 自定義主題
-
-:::demo
-
-<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -42,15 +34,15 @@ import { NoticeBar } from '@nutui/nutui-react';
 
 :::demo
 
-<CodeBlock src='h5/demo4.tsx'></CodeBlock>
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
-### 通告欄模式--關閉模式
+### 關閉模式
 
 :::demo
 
-<CodeBlock src='h5/demo5.tsx'></CodeBlock>
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -60,11 +52,21 @@ import { NoticeBar } from '@nutui/nutui-react';
 
 :::demo
 
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
+
+:::
+
+### 自定義右側內容
+
+增加自定義右側區域，區分rightIcon，更靈活配置。
+
+:::demo
+
 <CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
-### 縱嚮滾動
+### 自定義主題
 
 :::demo
 
@@ -72,7 +74,8 @@ import { NoticeBar } from '@nutui/nutui-react';
 
 :::
 
-### 自定義左側圖標
+
+### 垂直滾動
 
 :::demo
 
@@ -80,7 +83,7 @@ import { NoticeBar } from '@nutui/nutui-react';
 
 :::
 
-### 自定義滾動內容
+### 縱嚮模式：自定義左側圖標
 
 :::demo
 
@@ -88,11 +91,19 @@ import { NoticeBar } from '@nutui/nutui-react';
 
 :::
 
-### 縱嚮自定義右側圖標
+### 縱嚮模式：自定義滾動內容
 
 :::demo
 
 <CodeBlock src='h5/demo10.tsx'></CodeBlock>
+
+:::
+
+### 縱嚮模式：自定義右側圖標
+
+:::demo
+
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
 
 :::
 
@@ -102,7 +113,7 @@ import { NoticeBar } from '@nutui/nutui-react';
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| align | 布局方式, 值為`center`時，不支持滾動 | `left` \| `center` | `left` |
+| align | 佈局方式, 值為`center`時，不支持滾動 | `left` \| `center` | `left` |
 | direction | 滾動的方嚮，可選 horizontal、vertical | `string` | `horizontal` |
 | content | 提示的信息 | `string` | `-` |
 | closeable | 是否啟用關閉模式 | `boolean` | `false` |
@@ -141,7 +152,7 @@ import { NoticeBar } from '@nutui/nutui-react';
 | \--nutui-noticebar-font-size | 字號 | `$font-size-small` |
 | \--nutui-noticebar-line-height | 行高 | `24px` |
 | \--nutui-noticebar-box-padding | padding值 | `0 16px` |
-| \--nutui-noticebar-border-radius | 圆角 | `0` |
+| \--nutui-noticebar-border-radius | 圓角 | `0` |
 | \--nutui-noticebar-wrap-padding | 多行展示的padding值 | `8px 16px` |
 | \--nutui-noticebar-icon-gap | icon、text間距 | `4px` |
 | \--nutui-noticebar-left-icon-width | 左側icon的寬度和高度的設定 | `16px` |

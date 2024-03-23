@@ -218,7 +218,7 @@ const App = () => {
     setDate3([...dateArr])
   }
 
-  const disableDate = (date: Day) => {
+  const disableDate = (date: CalendarDay) => {
     return date.day === 25
   }
 
@@ -258,7 +258,7 @@ const App = () => {
   }
   const [date42, setDate42] = useState<string[]>([])
   const [isVisible42, setIsVisible42] = useState(false)
-  const disableDate = (date: Day) => {
+  const disableDate = (date: CalendarDay) => {
     return date.day === 25 || date.day === 20 || date.day === 22
   }
   const [show1, setShow1] = useState(false)
@@ -422,7 +422,7 @@ export default App;
 import  React, { useState } from "react";
 import { Cell, Calendar } from '@nutui/nutui-react';
 
-interface Day {
+interface CalendarDay {
   day: string | number;
   type: string;
 }
@@ -443,13 +443,13 @@ const App = () => {
     setDate3([...[param[0][3], param[1][3]]])
   }
 
-  const renderDay = (date: Day) => {
+  const renderDay = (date: CalendarDay) => {
     return (
       <span>{ date.day <= 9 ? `0${  date.day}` : date.day }</span>
     )
   }
 
-  const renderDayBottom = (date: Day) => {
+  const renderDayBottom = (date: CalendarDay) => {
     return (
       <span className="info" style={{ fontSize: '12px', lineHeight: '14px' }}>{
           date ? (date.day <= 10 ? '' : date.day <= 20 ? 'mid' : '') : ''
@@ -682,17 +682,17 @@ export default App;
 | showSubTitle | 是否展示日期標題 | `boolean` | `true` |
 | scrollAnimation | 是否啟動滾動動畫 | `boolean` | `true` |
 | firstDayOfWeek | 設置周起始日 | `0-6` | `0` |
-| disableDate | 設置不可選日期 | `(date: Day) => boolean` | `-` |
+| disableDate | 設置不可選日期 | `(date: CalendarDay) => boolean` | `-` |
 | renderHeaderButtons | 自定義日歴標題下部，可用以添加自定義操作 | `() => string` \| `JSX.Element` | `-` |
-| renderDay | 日期信息 | `(date: Day) => string` \| `JSX.Element` | `-` |
-| renderDayTop | 日期頂部信息 | `(date: Day) => string` \| `JSX.Element` | `-` |
-| renderDayBottom | 日期底部信息 | `(date: Day) => string` \| `JSX.Element` | `-` |
+| renderDay | 日期信息 | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
+| renderDayTop | 日期頂部信息 | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
+| renderDayBottom | 日期底部信息 | `(date: CalendarDay) => string` \| `JSX.Element` | `-` |
 | onDayClick | 點擊/選擇後觸發 | `(data: string) => {}` | `-` |
 | onPageChange | 年月子標題到達頂部時觸發 | `(param: string) => {}` | `-` |
 | onConfirm | 選擇之後或是點擊確認按鈕觸發 | `(param: string) => {}` | `-` |
 | onClose | 關閉時觸發 | `() => {}` | `-` |
 
-### Day
+### CalendarDay
 
 | 屬性 | 類型 |
 | --- | --- |
