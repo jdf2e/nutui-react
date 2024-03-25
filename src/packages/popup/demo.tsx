@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
-import { Failure, Heart } from '@nutui/icons-react'
+import React from 'react'
 import { useTranslate } from '../../sites/assets/locale'
-import Cell from '@/packages/cell'
-import Popup from '@/packages/popup'
+
+import Demo1 from './demos/h5/demo1'
+import Demo2 from './demos/h5/demo2'
+import Demo3 from './demos/h5/demo3'
+import Demo4 from './demos/h5/demo4'
+import Demo5 from './demos/h5/demo5'
+import Demo6 from './demos/h5/demo6'
+import Demo7 from './demos/h5/demo7'
 
 const PopupDemo = () => {
   const [translated] = useTranslate({
@@ -65,260 +70,29 @@ const PopupDemo = () => {
     },
   })
 
-  const [showBasic, setShowBasic] = useState(false)
-  const [showTop, setShowTop] = useState(false)
-  const [showBottom, setShowBottom] = useState(false)
-  const [showLeft, setShowLeft] = useState(false)
-  const [showRight, setShowRight] = useState(false)
-  const [showIcon, setShowIcon] = useState(false)
-  const [showIconPosition, setShowIconPosition] = useState(false)
-  const [showIconDefine, setShowIconDefine] = useState(false)
-  const [showBottomRound, setShowBottomRound] = useState(false)
-  const [showMountNode, setShowMountNode] = useState(false)
-  const [showMutiple, setShowMutiple] = useState(false)
-  const [showMutipleInner, setShowMutipleInner] = useState(false)
-  const [showOverlayStop, setShowOverlayStop] = useState(false)
-  const [showCloseIconStop, setShowCloseIconStop] = useState(false)
-
   return (
     <>
       <div className="demo">
         <h2>{translated.ce5c5446}</h2>
-        <Cell
-          title={translated.c38a08ef}
-          onClick={() => {
-            setShowBasic(true)
-          }}
-        />
-        <Popup
-          visible={showBasic}
-          zIndex={2000}
-          style={{ padding: '30px 50px' }}
-          onClose={() => {
-            setShowBasic(false)
-          }}
-        />
+        <Demo1 />
 
         <h2>{translated.a74a1fd4}</h2>
-        <Cell
-          title={translated['8dab2f66']}
-          onClick={() => {
-            setShowTop(true)
-          }}
-        />
-        <Popup
-          visible={showTop}
-          destroyOnClose
-          position="top"
-          onClose={() => {
-            setShowTop(false)
-          }}
-        />
-        <Cell
-          title={translated.cfbdc781}
-          onClick={() => {
-            setShowBottom(true)
-          }}
-        />
-        <Popup
-          visible={showBottom}
-          position="bottom"
-          onClose={() => {
-            setShowBottom(false)
-          }}
-        />
-        <Cell
-          title={translated.c3a3a1d2}
-          onClick={() => {
-            setShowLeft(true)
-          }}
-        />
-        <Popup
-          visible={showLeft}
-          style={{ width: '40%', height: '100%' }}
-          position="left"
-          onClose={() => {
-            setShowLeft(false)
-          }}
-        />
-        <Cell
-          title={translated.e51e4582}
-          onClick={() => {
-            setShowRight(true)
-          }}
-        />
-        <Popup
-          visible={showRight}
-          style={{ width: '40%', height: '100%' }}
-          position="right"
-          onClose={() => {
-            setShowRight(false)
-          }}
-        />
+        <Demo2 />
 
         <h2>{translated['7db1a8b2']}</h2>
-        <Cell
-          title={translated['7db1a8b2']}
-          onClick={() => {
-            setShowIcon(true)
-          }}
-        />
-        <Popup
-          closeable
-          visible={showIcon}
-          left="返回"
-          title="我是标题"
-          position="bottom"
-          onClose={() => {
-            setShowIcon(false)
-          }}
-        />
-        <Cell
-          title={translated.a52bef0c}
-          onClick={() => {
-            setShowIconPosition(true)
-          }}
-        />
-        <Popup
-          closeable
-          visible={showIconPosition}
-          closeIconPosition="top-left"
-          position="bottom"
-          onClose={() => {
-            setShowIconPosition(false)
-          }}
-        />
-        <Cell
-          title={translated.d04fcbda}
-          onClick={() => {
-            setShowIconDefine(true)
-          }}
-        />
-        <Popup
-          closeable
-          closeIcon={<Heart width="15px" height="15px" />}
-          visible={showIconDefine}
-          style={{ height: '100%' }}
-          position="bottom"
-          onClose={() => {
-            setShowIconDefine(false)
-          }}
-        />
+        <Demo3 />
 
         <h2>{translated[`7db1a8b3`]}</h2>
-        <Cell
-          title={translated[`7db1a8b4`]}
-          onClick={() => {
-            setShowOverlayStop(true)
-          }}
-        />
-        <Popup
-          visible={showOverlayStop}
-          style={{ padding: '30px 50px' }}
-          onClose={() => {
-            setShowOverlayStop(false)
-          }}
-          onOverlayClick={() => {
-            console.log('onOverlayClick')
-            return false
-          }}
-        >
-          {translated.b840c88f}
-        </Popup>
-        <Cell
-          title={translated[`7db1a8b5`]}
-          onClick={() => {
-            setShowCloseIconStop(true)
-          }}
-        />
-        <Popup
-          closeable
-          closeIcon={<Failure width="12px" height="12px" />}
-          visible={showCloseIconStop}
-          closeOnOverlayClick={false}
-          style={{ height: '40%' }}
-          position="bottom"
-          onClose={() => {
-            setShowIcon(false)
-          }}
-          onCloseIconClick={() => {
-            console.log('onCloseIconClick')
-          }}
-        />
+        <Demo4 />
 
         <h2>{translated['0aaad620']}</h2>
-        <Cell
-          title={translated['0aaad620']}
-          onClick={() => {
-            setShowBottomRound(true)
-          }}
-        />
-        <Popup
-          visible={showBottomRound}
-          style={{ height: '20%' }}
-          position="top"
-          round
-          onClose={() => {
-            setShowBottomRound(false)
-          }}
-        />
+        <Demo5 />
 
         <h2>{translated.ea3d02f2}</h2>
-        <Cell
-          title={translated.ea3d02f2}
-          onClick={() => {
-            setShowMountNode(true)
-          }}
-        />
-        <Popup
-          visible={showMountNode}
-          style={{ padding: '30px 50px' }}
-          portal={document.body}
-          onClose={() => {
-            setShowMountNode(false)
-          }}
-        >
-          body
-        </Popup>
+        <Demo6 />
 
         <h2>{translated.c9e6df49}</h2>
-        <Cell
-          title={translated.c9e6df49}
-          onClick={() => {
-            setShowMutiple(true)
-          }}
-        />
-        <Popup
-          visible={showMutiple}
-          style={{ padding: '30px 50px' }}
-          onClose={() => {
-            setShowMutiple(false)
-          }}
-        >
-          <span
-            onClick={() => {
-              setShowMutipleInner(true)
-            }}
-          >
-            Click It
-          </span>
-        </Popup>
-        <Popup
-          visible={showMutipleInner}
-          style={{ padding: '30px 50px' }}
-          overlayStyle={{ backgroundColor: 'transparent' }}
-          onClose={() => {
-            setShowMutipleInner(false)
-          }}
-        >
-          <span
-            onClick={() => {
-              setShowMutipleInner(false)
-            }}
-          >
-            close
-          </span>
-        </Popup>
+        <Demo7 />
       </div>
     </>
   )

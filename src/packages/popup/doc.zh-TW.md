@@ -18,22 +18,7 @@ import { Popup } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Popup, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [showBasic, setShowBasic] = useState(false);
-  return (
-    <>
-        <Cell title="展示彈出層"  onClick={() => { setShowBasic(true) }}/>
-        <Popup visible={ showBasic } style={{ padding: '30px 50px' }} onClose={ () => { setShowBasic(false) } }>正文</Popup>
-    </>
-  );
-};
-export default App;
-
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -41,64 +26,23 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Popup, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [showTop, setShowTop] = useState(false);
-  const [showBottom, setShowBottom] = useState(false);
-  const [showLeft, setShowLeft] = useState(false);
-  const [showRight, setShowRight] = useState(false);
-
-  return (
-    <>
-        <Cell title="頂部彈出"  onClick={() => { setShowTop(true) }}/>
-        <Cell title="底部彈出"  onClick={() => { setShowBottom(true) }}/>
-        <Cell title="左側彈出"  onClick={() => { setShowLeft(true) }}/>
-        <Cell title="右側彈出"  onClick={() => { setShowRight(true) }}/>
-        <Popup visible={ showTop } style={{ height: '20%' }} position="top" onClose={ () => { setShowTop(false) } } />
-        <Popup visible={ showBottom } style={{ height: '20%' }} position="bottom" onClose={ () => { setShowBottom(false) } } />
-        <Popup visible={ showLeft } style={{ width: '20%', height: '100%' }} position="left" onClose={ () => { setShowLeft(false) } } />
-        <Popup visible={ showRight } style={{ width: '20%', height: '100%' }} position="right" onClose={ () => { setShowRight(false) } } />
-    </>
-  );
-};
-export default App;
-
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
-### 圖標
+### 關閉圖標
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Popup, Cell } from '@nutui/nutui-react';
-import { Heart } from '@nutui/icons-react';
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
-const App = () => {
-  const [showIcon, setShowIcon] = useState(false);
-  const [showIconPosition, setShowIconPosition] = useState(false);
-  const [showIconDefine, setShowIconDefine] = useState(false);
+:::
 
-  return (
-    <>
-        <Cell title="關閉圖標"  onClick={() => { setShowIcon(true) }}/>
-        <Cell title="圖標位置"  onClick={() => { setShowIconPosition(true) }}/>
-        <Cell title="自定義圖標"  onClick={() => { setShowIconDefine(true) }}/>
-        <Popup closeable visible={ showIcon } style={{ height: '20%' }} position="bottom" onClose={ () => { setShowIcon(false) } } />
-        <Popup closeable visible={ showIconPosition } style={{ height: '20%' }} closeIconPosition="top-left" position="bottom" onClose={ () => { setShowIconPosition(false) } } />
-      <Popup visible={ showIconDefine } style={{ height: '20%' }} closeable closeIcon={<Heart />} position="bottom" onClose={ () => { setShowIconDefine(false) } } />
-    </>
-  );
-};
-export default App;
+### 阻塞關閉
 
+:::demo
 
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -106,22 +50,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Popup, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [showBottomRound, setShowBottomRound] = useState(false);
-
-  return (
-    <>
-        <Cell title="圓角彈框"  onClick={() => { setShowBottomRound(true) }}/>
-        <Popup closeable visible={ showBottomRound } style={{ height: '20%' }} position="bottom" round onClose={ () => { setShowBottomRound(false) } } />
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -129,24 +58,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Popup, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [showMountNode, setShowMountNode] = useState(false);
-
-  return (
-    <>
-        <Cell title="指定節點掛載"  onClick={() => { setShowMountNode(true) }}/>
-        <Popup visible={showMountNode} style={{ padding: '30px 50px' }} portal={ document.body } onClose={() => { setShowMountNode(false) }}>
-          body
-        </Popup>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -154,40 +66,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Popup, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const [showMutiple, setShowMutiple] = useState(false)
-  const [showMutipleInner, setShowMutipleInner] = useState(false)
-
-  return (
-    <>
-        <Cell title="多層堆疊"  onClick={() => { setShowMutiple(true) }}/>
-        <Popup
-          visible={showMutiple}
-          style={{ padding: '30px 50px' }}
-          onClose={() => {
-            setShowMutiple(false)
-          }}
-        >
-          <span onClick={ () => { setShowMutipleInner(true) } }>Click It</span>
-        </Popup>
-        <Popup
-          visible={showMutipleInner}
-          style={{ padding: '30px 50px' }}
-          onClose={() => {
-            setShowMutipleInner(false)
-          }}
-        >
-          <span onClick={ () => { setShowMutipleInner(false) } }>close</span>
-        </Popup>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
