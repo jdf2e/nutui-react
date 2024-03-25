@@ -19,7 +19,7 @@ test('should render width and height', () => {
     'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
   ]
 
-  const onChange = jest.fn()
+  const onChange = vi.fn()
 
   const Wraper = () => {
     const ref = useRef<SwiperRef>(null)
@@ -202,8 +202,8 @@ test('should render loop and auto-play', async () => {
   })
 })
 test('should not allow to drag when touchable is false', () => {
-  const onChange = jest.fn()
-  const clickFn = jest.fn()
+  const onChange = vi.fn()
+  const clickFn = vi.fn()
 
   const list = [
     'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',

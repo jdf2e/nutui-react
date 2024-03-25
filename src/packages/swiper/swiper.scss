@@ -5,6 +5,7 @@
   height: 100%;
   overflow: hidden;
   touch-action: none;
+  position: relative;
 
   &-indicator {
     display: flex;

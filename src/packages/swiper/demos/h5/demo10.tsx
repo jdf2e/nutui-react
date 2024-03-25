@@ -1,20 +1,20 @@
 import React from 'react'
 import { Swiper } from '@nutui/nutui-react'
 
-const Demo8 = () => {
+const Demo10 = () => {
   const list = [
     'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
     'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
     'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
     'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
   ]
+
   return (
     <div className="demo-box" style={{ height: 150 }}>
       <Swiper
         loop
-        direction="vertical"
-        style={{ '--swiper-offset': '13%' }}
-        slideSize={120}
+        slideSize={300}
+        effect={{ name: 'focus', scale: 0.9 }}
         indicator
       >
         {list.map((item, index) => {
@@ -33,4 +33,4 @@ const Demo8 = () => {
     </div>
   )
 }
-export default Demo8
+export default Demo10

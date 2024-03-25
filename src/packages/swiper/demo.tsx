@@ -1,8 +1,16 @@
-import React, { useState, useEffect, type CSSProperties } from 'react'
-import { ArrowLeft, ArrowRight } from '@nutui/icons-react'
-import Swiper from '@/packages/swiper'
+import React from 'react'
 import '@/packages/swiper/demo.scss'
 import { useTranslate } from '../../sites/assets/locale'
+import Demo1 from './demos/h5/demo1'
+import Demo2 from './demos/h5/demo2'
+import Demo3 from './demos/h5/demo3'
+import Demo4 from './demos/h5/demo4'
+import Demo5 from './demos/h5/demo5'
+import Demo6 from './demos/h5/demo6'
+import Demo7 from './demos/h5/demo7'
+import Demo8 from './demos/h5/demo8'
+import Demo9 from './demos/h5/demo9'
+import Demo10 from './demos/h5/demo10'
 
 interface T {
   basic: string
@@ -47,228 +55,28 @@ const SwiperDemo = () => {
       multiItems: 'many datas in a frame',
     },
   })
-  const swiperRef = React.useRef<any>(null)
-
-  const [asyncList, setAsyncList] = useState<string[]>([])
-  useEffect(() => {
-    setTimeout(() => {
-      setAsyncList([
-        'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-        'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
-        'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-        'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
-      ])
-    }, 300)
-  }, [])
-
-  const [current, setCurrent] = useState(1)
-  const onChange = (index: number) => {
-    setCurrent(index + 1)
-  }
-
-  const list = [
-    'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
-    'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
-    'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
-    'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
-  ]
-
-  const [defaultValue6, setdefaultValue6] = useState(0)
-  const [current2, setCurrent2] = useState(1)
-
-  const onChange3 = (e: number) => {
-    setCurrent(e + 1)
-  }
-  const handlePrev = () => {
-    swiperRef.current.prev()
-  }
-  const handleNext = () => {
-    swiperRef.current.next()
-  }
-  const pageStyle: CSSProperties = {
-    position: 'absolute',
-    bottom: 0,
-    right: 0,
-    width: '46px',
-    height: '22px',
-    background: 'rgba(0, 0, 0, 0.33)',
-    borderRadius: '22px',
-    textAlign: 'center',
-    color: '#fff',
-    fontSize: '14px',
-  }
-  const btnsStyle: CSSProperties = {
-    width: '100%',
-    position: 'absolute',
-    top: '50%',
-    transform: 'translateY(-15px)',
-    zIndex: 1,
-    display: 'flex',
-    justifyContent: 'space-between',
-    height: '0px',
-  }
-  const spanStyle: CSSProperties = {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '20px',
-    height: '30px',
-    backgroundColor: 'rgba(0, 0, 0, 0.2)',
-  }
   return (
     <div className="demo padding">
       <h2>{translated.basic}</h2>
-      <div className="demo-box" style={{ height: 150 }}>
-        <Swiper
-          autoPlay
-          loop
-          slideSize={300}
-          indicator
-          style={{
-            '--nutui-indicator-color': '#426543',
-            '--nutui-indicator-dot-color': '#426ddd',
-          }}
-        >
-          {list.map((item, index) => {
-            return (
-              <Swiper.Item key={item}>
-                <img src={list[index]} alt={list[index]} draggable={false} />
-              </Swiper.Item>
-            )
-          })}
-        </Swiper>
-      </div>
+      <Demo1 />
       <h2>{translated.focus}</h2>
-      <div className="demo-box" style={{ height: 150 }}>
-        <Swiper
-          loop
-          slideSize={300}
-          effect={{ name: 'focus', scale: 0.9 }}
-          indicator
-        >
-          {list.map((item, index) => {
-            return (
-              <Swiper.Item key={item}>
-                <img src={list[index]} alt={list[index]} draggable={false} />
-              </Swiper.Item>
-            )
-          })}
-        </Swiper>
-      </div>
+      <Demo10 />
       <h2>{translated.asyc}</h2>
-      <div className="demo-box" style={{ height: 150 }}>
-        {setAsyncList.length ? (
-          <Swiper indicator>
-            {asyncList.map((item, index) => {
-              return (
-                <Swiper.Item key={item}>
-                  <img src={list[index]} alt={list[index]} draggable={false} />
-                </Swiper.Item>
-              )
-            })}
-          </Swiper>
-        ) : null}
-      </div>
+      <Demo2 />
       <h2>{translated.size}</h2>
-      <div className="demo-box" style={{ height: 150 }}>
-        <Swiper slideSize={250} indicator>
-          {list.map((item, index) => {
-            return (
-              <Swiper.Item key={item}>
-                <img src={list[index]} alt={list[index]} draggable={false} />
-              </Swiper.Item>
-            )
-          })}
-        </Swiper>
-      </div>
+      <Demo3 />
       <h2>{translated.indicator}</h2>
-      <div className="demo-box" style={{ height: 150 }}>
-        <Swiper
-          onChange={onChange}
-          indicator={<div className="page"> {current}/4 </div>}
-        >
-          {list.map((item, index) => {
-            return (
-              <Swiper.Item key={item}>
-                <img src={list[index]} alt={list[index]} draggable={false} />
-              </Swiper.Item>
-            )
-          })}
-        </Swiper>
-      </div>
+      <Demo4 />
       <h2>{translated.btns}</h2>
-      <div className="demo-box" style={{ height: 150, position: 'relative' }}>
-        <Swiper
-          ref={swiperRef}
-          defaultValue={defaultValue6}
-          onChange={(e) => setCurrent2(e + 1)}
-          loop
-          indicator={<div style={pageStyle}> {current2}/4 </div>}
-        >
-          {list.map((item, index) => {
-            return (
-              <Swiper.Item key={item}>
-                <img src={list[index]} alt={list[index]} draggable={false} />
-              </Swiper.Item>
-            )
-          })}
-        </Swiper>
-        <div style={btnsStyle}>
-          <span style={spanStyle} onClick={(e) => handlePrev()}>
-            <ArrowLeft />
-          </span>
-          <span style={spanStyle} onClick={(e) => handleNext()}>
-            <ArrowRight />
-          </span>
-        </div>
-      </div>
+      <Demo5 />
       <h2>{translated.vertical}</h2>
-      <div className="demo-box" style={{ height: 150 }}>
-        <Swiper loop direction="vertical" indicator>
-          {list.map((item, index) => {
-            return (
-              <Swiper.Item key={item}>
-                <img src={list[index]} alt={list[index]} draggable={false} />
-              </Swiper.Item>
-            )
-          })}
-        </Swiper>
-      </div>
+      <Demo6 />
       <h2>{translated.horizontalCenter}</h2>
-      <div className="demo-box" style={{ height: 150 }}>
-        <Swiper
-          loop
-          style={{ '--swiper-offset': '6%' }}
-          slideSize={300}
-          indicator
-        >
-          {list.map((item, index) => {
-            return (
-              <Swiper.Item key={item}>
-                <img src={list[index]} alt={list[index]} draggable={false} />
-              </Swiper.Item>
-            )
-          })}
-        </Swiper>
-      </div>
+      <Demo7 />
       <h2>{translated.verticalCenter}</h2>
-      <div className="demo-box" style={{ height: 150 }}>
-        <Swiper
-          loop
-          direction="vertical"
-          style={{ '--swiper-offset': '13%' }}
-          slideSize={120}
-          indicator
-        >
-          {list.map((item, index) => {
-            return (
-              <Swiper.Item key={item}>
-                <img src={list[index]} alt={list[index]} draggable={false} />
-              </Swiper.Item>
-            )
-          })}
-        </Swiper>
-      </div>
+      <Demo8 />
+      <h2>{translated.multiItems}</h2>
+      <Demo9 />
     </div>
   )
 }
