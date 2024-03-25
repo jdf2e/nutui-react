@@ -2,6 +2,7 @@ import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import Input from '@/packages/input'
+import ConfigProvider from '@/packages/configprovider'
 
 test('input props test', () => {
   const blur = vi.fn()
@@ -129,11 +130,36 @@ test('disabled test', () => {
   )
 })
 
+test('rtl test', () => {
+  const { container } = render(
+    <ConfigProvider direction="rtl">
+      <Input placeholder="文本" />
+    </ConfigProvider>
+  )
+  expect(container.querySelector('.nut-input-native')).toHaveAttribute(
+    'style',
+    'text-align: right;'
+  )
+})
+
+test('rtl test2', () => {
+  const { container } = render(
+    <ConfigProvider direction="rtl">
+      <Input placeholder="文本" align="right" />
+    </ConfigProvider>
+  )
+  expect(container.querySelector('.nut-input-native')).toHaveAttribute(
+    'style',
+    'text-align: left;'
+  )
+})
+
 test('clearable and clear event test', () => {
   const handleChange = vi.fn()
   const handleFocus = vi.fn()
   const handleBlur = vi.fn()
   const handleClick = vi.fn()
+  const handleClear = vi.fn()
   const { container } = render(
     <Input
       defaultValue="文本"
@@ -142,6 +168,7 @@ test('clearable and clear event test', () => {
       onFocus={handleFocus}
       onBlur={handleBlur}
       onClick={handleClick}
+      onClear={handleClear}
     />
   )
   const inputEl = container.querySelector('.nut-input-native') as Element
@@ -155,6 +182,17 @@ test('clearable and clear event test', () => {
     expect(container.querySelector('.nut-input-native')).toHaveAttribute(
       'value',
       '文字改变'
+    )
+    expect(inputEl.querySelector('.nut-input span')).toHaveAttribute(
+      'style',
+      'display: flex; align-items: center;'
+    )
+    const clearBtn = inputEl.querySelector('.nut-input-clear') as Element
+    fireEvent.click(clearBtn)
+    expect(handleClear).toBeCalled()
+    expect(container.querySelector('.nut-input-native')).toHaveAttribute(
+      'value',
+      ''
     )
     fireEvent.blur(inputEl)
     expect(handleBlur).toBeCalled()

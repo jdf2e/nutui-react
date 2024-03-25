@@ -241,7 +241,6 @@ export const Input = forwardRef(
             onClick={() => {
               if (!disabled) {
                 setValue('')
-                // inputRef.current?.focus()
                 onClear && onClear('')
               }
             }}
