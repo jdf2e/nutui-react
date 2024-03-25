@@ -1,8 +1,6 @@
 .nut-ellipsis {
   display: flex;
-  &-rtl {
-    word-break: break-all;
-  }
+  direction: rtl;
 
   .nut-ellipsis-text {
     cursor: pointer;
