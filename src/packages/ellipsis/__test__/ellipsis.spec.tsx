@@ -46,3 +46,15 @@ test('Ellipsis Memory Leak', () => {
   const newElementCount = baseElement.children.length
   expect(newElementCount).toBe(elementCount)
 })
+
+test('Ellipsis Props expand and collapse', () => {
+  const { container } = render(
+    <Ellipsis
+      content={content}
+      direction="start"
+      expandText="展开"
+      collapseText="收起"
+    />
+  )
+  expect(container).toMatchSnapshot()
+})
