@@ -4,29 +4,29 @@ import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 let messageInstance: any = null
 
-export type ToastPositionType = 'top' | 'bottom' | 'center'
-export type ToastIconType =
+export type ToastPosition = 'top' | 'bottom' | 'center'
+export type ToastIcon =
   | 'success'
   | 'fail'
   | 'loading'
   | 'warn'
   | React.ReactNode
-export type ToastWordBreakType = 'normal' | 'break-all' | 'break-word'
+export type ToastWordBreak = 'normal' | 'break-all' | 'break-word'
 
 export interface ToastProps extends BasicComponent {
   id?: string
   duration?: number
-  position?: ToastPositionType
+  position?: ToastPosition
   title?: string
   closeOnOverlayClick?: boolean
   lockScroll?: boolean
   size?: string | number
-  icon?: ToastIconType
+  icon?: ToastIcon
   content?: React.ReactNode
   onClose?: () => void
   contentClassName?: string
   contentStyle?: React.CSSProperties
-  wordBreak?: ToastWordBreakType
+  wordBreak?: ToastWordBreak
 }
 
 let options: ToastProps = {

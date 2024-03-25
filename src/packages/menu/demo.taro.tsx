@@ -6,10 +6,6 @@ import { Menu, Button } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 
 const MenuDemo = () => {
-  const style = `
-  .nut-overflow-hidden .demo.full{
-    overflow: hidden !important;
-  }`
   const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
@@ -108,8 +104,7 @@ const MenuDemo = () => {
   return (
     <>
       <Header />
-      <style>{style}</style>
-      <div className={`demo demo-full ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <div className={`demo full ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
         <Menu
           onClose={(i: number) => console.log('onClose', i)}

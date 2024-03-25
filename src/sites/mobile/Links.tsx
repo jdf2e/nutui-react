@@ -13,8 +13,8 @@ const Links = () => {
   return (
     <>
       {navs.map((nav) => (
-        <ol key={nav.name}>
-          <li>{nav.name}</li>
+        <ol key={nav.enName}>
+          {nav.enName !== 'dentry1' ? <li>{nav.name}</li> : null}
           <ul>
             {nav.packages.map((com) =>
               com.show ? (

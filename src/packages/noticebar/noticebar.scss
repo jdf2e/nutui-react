@@ -59,6 +59,11 @@
       justify-content: center;
       width: $noticebar-right-icon-width;
       margin-left: $noticebar-icon-gap;
+
+      .nut-icon {
+        width: 12px;
+        height: 12px;
+      }
     }
 
     &-wrap {

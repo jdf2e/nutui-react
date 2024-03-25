@@ -54,7 +54,7 @@ function Index() {
         </div>
         <div className="index-components">
           {navs.map((nav) => (
-            <ol key={nav.name} className="ol">
+            <ol key={nav.enName} className="ol">
               {nav.enName === 'dentry1' ? null : (
                 <li className="li">{nav.name}</li>
               )}
