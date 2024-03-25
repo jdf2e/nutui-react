@@ -47,7 +47,7 @@ test('Ellipsis Memory Leak', () => {
   expect(newElementCount).toBe(elementCount)
 })
 
-test('Ellipsis Props expand and collapse', async () => {
+test('Ellipsis click text', async () => {
   const testClick = vi.fn()
   const { container } = render(
     <Ellipsis
@@ -64,4 +64,27 @@ test('Ellipsis Props expand and collapse', async () => {
     fireEvent.click(dom)
   })
   expect(testClick).toBeCalled()
+})
+
+test('Ellipsis Props expand and collapse', async () => {
+  const testClick = vi.fn()
+  const { container } = render(
+    <Ellipsis
+      content={content}
+      direction="start"
+      expandText="展开"
+      collapseText="收起"
+      onClick={testClick}
+    />
+  )
+  expect(container).toMatchSnapshot()
+  const dom = container.querySelectorAll('.nut-ellipsis-text')[0] as HTMLElement
+  if (dom) {
+    expect(dom).toHaveTextContent('展开')
+    await act(() => {
+      fireEvent.click(dom)
+    })
+    expect(testClick).toBeCalled()
+    expect(dom).toHaveTextContent('收起')
+  }
 })
