@@ -22,7 +22,13 @@ function injectScss() {
         const code = await readFileSync(filePath, 'utf-8')
         // 因为构建了 *.harmony.css 文件，所以需要将 import scss 改为 import css
         // const modifiedCode = `import "./${components[find]}.scss"\n` + code
-        const modifiedCode = `import "./${components[find]}.harmony.css"\n` + code
+
+        // const modifiedCode = `import "./${components[find]}.harmony.css"\n` + code
+
+        const modifiedCode = `
+        import '../../styles/theme-default.scss'\n
+        import '../../styles/variables.scss'\n
+        import "./${components[find]}.scss"\n` + code
         return modifiedCode
       }
     },

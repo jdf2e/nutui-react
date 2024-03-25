@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import { Cell } from '@/packages/nutui.react.taro'
@@ -56,7 +57,7 @@ const ButtonDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>设置 open-type </h2>
         <Cell style={{ flexWrap: 'wrap' }}>
           <Demo1 />
@@ -97,7 +98,7 @@ const ButtonDemo = () => {
         <Cell style={{ flexWrap: 'wrap' }}>
           <Demo10 />
         </Cell>
-      </div>
+      </ScrollView>
     </>
   )
 }
