@@ -59,10 +59,10 @@ export const Ellipsis: FunctionComponent<
   const [expanded, setExpanded] = useState(false)
   const ellipsis = useRef<EllipsisValue>()
   const root = useRef<HTMLDivElement>(null)
-  const classes = classNames({
+  const rtlClasses = classNames({
     [`${classPrefix}-rtl`]: rtl,
   })
-  const cls = classNames(classPrefix, classes, className)
+  const classes = classNames(classPrefix, rtlClasses, className)
 
   useIsomorphicLayoutEffect(() => {
     if (content) {
@@ -214,7 +214,7 @@ export const Ellipsis: FunctionComponent<
     onClick && onClick()
   }
   return (
-    <div className={cls} onClick={handleClick} ref={root} {...rest}>
+    <div className={classes} onClick={handleClick} ref={root} {...rest}>
       {!exceeded ? content : null}
       {exceeded && !expanded ? (
         <span>

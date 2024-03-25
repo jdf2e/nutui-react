@@ -82,14 +82,14 @@ export const Ellipsis: FunctionComponent<
   const letterLowerReg = /^[a-z]+$/ // 字母
 
   const rtl = useRtl()
-  const classes = classNames({
+  const rtlClasses = classNames({
     [`${classPrefix}-rtl`]: rtl,
   })
 
-  const cls = classNames(
+  const classes = classNames(
     classPrefix,
     width ? `${classPrefix}-width` : '',
-    classes,
+    rtlClasses,
     className
   )
 
@@ -309,7 +309,7 @@ export const Ellipsis: FunctionComponent<
   return (
     <>
       <div
-        className={cls}
+        className={classes}
         onClick={handleClick}
         ref={root}
         id={`root${refRandomId.current}`}
