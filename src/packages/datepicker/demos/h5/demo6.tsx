@@ -10,8 +10,12 @@ interface PickerOption {
 }
 
 const Demo6 = () => {
+  const defaultValue = new Date()
+  const defaultDescription = `${defaultValue.getFullYear()}-${
+    defaultValue.getMonth() + 1
+  }-${defaultValue.getDate()}`
   const [show5, setShow5] = useState(false)
-  const [desc5, setDesc5] = useState('2020年 05月 10日 10:10')
+  const [desc5, setDesc5] = useState(`${defaultDescription} 10:10`)
 
   const confirm5 = (values: (string | number)[], options: PickerOption[]) => {
     const date = options
@@ -58,8 +62,9 @@ const Demo6 = () => {
         title="时间选择"
         type="datetime"
         startDate={new Date(2023, 0, 1)}
-        endDate={new Date(2024, 10, 1)}
+        endDate={new Date(2026, 10, 1)}
         visible={show5}
+        defaultValue={new Date(desc5)}
         formatter={formatter}
         onClose={() => setShow5(false)}
         onConfirm={(options, values) => confirm5(values, options)}

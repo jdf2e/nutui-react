@@ -12,8 +12,12 @@ interface PickerOption {
 const Demo8 = () => {
   const startDate = new Date(2020, 0, 1)
   const endDate = new Date(2025, 10, 1)
+  const defaultValue = new Date()
+  const defaultDescription = `${defaultValue.getFullYear()}-${
+    defaultValue.getMonth() + 1
+  }-${defaultValue.getDate()}`
   const [show7, setShow7] = useState(false)
-  const [desc7, setDesc7] = useState('2022年05月10日 00时')
+  const [desc7, setDesc7] = useState(`${defaultDescription} 00`)
 
   const confirm7 = (values: (string | number)[], options: PickerOption[]) => {
     setDesc7(options.map((option) => option.text).join(' '))
@@ -56,6 +60,7 @@ const Demo8 = () => {
         startDate={startDate}
         endDate={endDate}
         visible={show7}
+        defaultValue={new Date(`${defaultDescription}`)}
         formatter={formatter1}
         minuteStep={5}
         filter={filter}

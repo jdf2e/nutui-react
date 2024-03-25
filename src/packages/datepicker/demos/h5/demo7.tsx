@@ -10,6 +10,10 @@ interface PickerOption {
 }
 
 const Demo7 = () => {
+  const defaultValue = new Date()
+  const defaultDescription = `${defaultValue.getFullYear()}-${
+    defaultValue.getMonth() + 1
+  }-${defaultValue.getDate()}`
   const startDate = new Date(2020, 0, 1)
   const endDate = new Date(2025, 10, 1)
   const [show6, setShow6] = useState(false)
@@ -31,6 +35,7 @@ const Demo7 = () => {
         startDate={startDate}
         endDate={endDate}
         visible={show6}
+        defaultValue={new Date(`${defaultDescription} ${desc6}`)}
         minuteStep={5}
         onClose={() => setShow6(false)}
         onConfirm={(options, values) => confirm6(values, options)}

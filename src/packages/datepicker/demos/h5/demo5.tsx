@@ -25,7 +25,7 @@ const Demo5 = () => {
   return (
     <>
       <Cell
-        title="时间选择"
+        title="选择时分"
         description={desc8}
         onClick={() => setShow8(true)}
       />
