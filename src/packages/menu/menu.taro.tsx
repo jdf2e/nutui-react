@@ -4,8 +4,11 @@ import { ArrowDown, ArrowUp } from '@nutui/icons-react-taro'
 import { OptionItem, MenuItem } from '@/packages/menuitem/menuitem.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export type TriggerType = 'NORMAL' | 'REF'
-export type CallBackFunction = (index: number, from?: TriggerType) => void
+export type MenuTriggerType = 'NORMAL' | 'REF'
+export type MenuCallBackFunction = (
+  index: number,
+  from?: MenuTriggerType
+) => void
 
 export interface MenuProps extends BasicComponent {
   activeColor: string
@@ -15,8 +18,8 @@ export interface MenuProps extends BasicComponent {
   lockScroll: boolean
   icon: React.ReactNode
   children: React.ReactNode
-  onOpen: CallBackFunction
-  onClose: CallBackFunction
+  onOpen: MenuCallBackFunction
+  onClose: MenuCallBackFunction
 }
 
 const defaultProps = {
@@ -73,7 +76,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
 
   const [showMenuItem, setShowMenuItem] = useState<boolean[]>([])
   const [menuItemTitle, setMenuItemTitle] = useState<string[]>([])
-  const toggleMenuItem: CallBackFunction = (index, from = 'NORMAL') => {
+  const toggleMenuItem: MenuCallBackFunction = (index, from = 'NORMAL') => {
     showMenuItem[index] = !showMenuItem[index]
     if (showMenuItem[index]) {
       onOpen && onOpen(index, from)
@@ -85,7 +88,7 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
     )
     setShowMenuItem([...temp])
   }
-  const hideMenuItem: CallBackFunction = (index, from = 'NORMAL') => {
+  const hideMenuItem: MenuCallBackFunction = (index, from = 'NORMAL') => {
     showMenuItem[index] = false
     setShowMenuItem([...showMenuItem])
     onClose && onClose(index, from)

@@ -1,15 +1,10 @@
 import React, { useEffect, useRef, useState } from 'react'
-import './demo.scss'
 import { ArrowDown, Star } from '@nutui/icons-react'
 import Button from '../button'
 import { Menu } from './menu'
 import { useTranslate } from '../../sites/assets/locale'
 
 const MenuDemo = () => {
-  const style = `
-  .nut-overflow-hidden .demo.full{
-    overflow: hidden !important;
-  }`
   const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
@@ -107,7 +102,6 @@ const MenuDemo = () => {
 
   return (
     <>
-      <style>{style}</style>
       <div className="demo full">
         <h2>{translated.basic}</h2>
         <Menu

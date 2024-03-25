@@ -5,7 +5,7 @@
     "target": "ES6",
     "types": [
       "vite/client",
-      "jest",
+      "vitest/globals",
       "node"
     ],
     "allowJs": false,
@@ -49,6 +49,7 @@
   ],
   "exclude": [
     "./node_modules/**",
-    "src/sites/**"
+    "src/sites/**",
+    "src/**/demos/**"
   ]
 }

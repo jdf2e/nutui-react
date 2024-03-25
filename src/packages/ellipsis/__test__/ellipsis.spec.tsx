@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { act, render } from '@testing-library/react'
+import { act, fireEvent, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { useEffect, useState } from 'react'
 import Ellipsis from '@/packages/ellipsis'
@@ -26,7 +26,7 @@ test('Ellipsis Props Rows', () => {
   expect(container).toMatchSnapshot()
 })
 
-jest.useFakeTimers()
+vi.useFakeTimers()
 test('Ellipsis Memory Leak', () => {
   const App = () => {
     const [count, setCount] = useState(0)
@@ -42,7 +42,49 @@ test('Ellipsis Memory Leak', () => {
   }
   const { baseElement } = render(<App />)
   const elementCount = baseElement.children.length
-  jest.advanceTimersByTime(2000)
+  vi.advanceTimersByTime(2000)
   const newElementCount = baseElement.children.length
   expect(newElementCount).toBe(elementCount)
+})
+
+test('Ellipsis click text', async () => {
+  const testClick = vi.fn()
+  const { container } = render(
+    <Ellipsis
+      content={content}
+      direction="start"
+      expandText="展开"
+      collapseText="收起"
+      onClick={() => testClick()}
+    />
+  )
+  expect(container).toMatchSnapshot()
+  const dom = container.querySelector('.nut-ellipsis') as HTMLElement
+  await act(() => {
+    fireEvent.click(dom)
+  })
+  expect(testClick).toBeCalled()
+})
+
+test('Ellipsis Props expand and collapse', async () => {
+  const testClick = vi.fn()
+  const { container } = render(
+    <Ellipsis
+      content={content}
+      direction="start"
+      expandText="展开"
+      collapseText="收起"
+      onChange={() => testClick()}
+    />
+  )
+  expect(container).toMatchSnapshot()
+  const dom = container.querySelectorAll('.nut-ellipsis-text')[0] as HTMLElement
+  if (dom) {
+    expect(dom).toHaveTextContent('展开')
+    await act(() => {
+      fireEvent.click(dom)
+    })
+    expect(testClick).toBeCalled()
+    expect(dom).toHaveTextContent('收起')
+  }
 })

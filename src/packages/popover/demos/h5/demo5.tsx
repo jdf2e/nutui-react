@@ -8,19 +8,17 @@ const Demo5 = () => {
     {
       key: 'key1',
       name: 'option1',
-      icon: (
-        <Home color="rgba(250, 44, 25, 1)" style={{ marginRight: '8px' }} />
-      ),
+      icon: <Home color="rgba(250, 44, 25, 1)" />,
     },
     {
       key: 'key2',
       name: 'option2',
-      icon: <Cart style={{ marginRight: '8px' }} />,
+      icon: <Cart />,
     },
     {
       key: 'key3',
       name: 'option3',
-      icon: <Location style={{ marginRight: '8px' }} />,
+      icon: <Location />,
     },
   ]
 

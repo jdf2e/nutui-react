@@ -44,6 +44,11 @@
     align-items: center;
     top: $dialog-close-top;
     color: $dialog-close-color;
+    .nut-icon {
+      font-size: 24px;
+      height: 24px;
+      width: 24px;
+    }
 
     &-top-right {
       right: $dialog-close-right;

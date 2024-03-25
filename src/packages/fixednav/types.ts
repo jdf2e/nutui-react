@@ -1,6 +1,6 @@
 import { Key, ReactNode } from 'react'
 
-export type FixedNavDirection = 'right' | 'left'
+export type FixedNavType = 'right' | 'left'
 export type FixedNavPosition = {
   top?: string
   bottom?: string

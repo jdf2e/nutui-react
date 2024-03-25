@@ -4,7 +4,7 @@
   .nut-ellipsis-text {
     cursor: pointer;
     color: $ellipsis-expand-collapse-color;
-    display: inline;
+    display: inline-block;
   }
 
   .nut-ellipsis-wordbreak {

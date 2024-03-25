@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import classNames from 'classnames'
 import {
   RadioGroupDirection,
-  RadioGroupOptionType,
+  RadioGroupOption,
   RadioGroupPosition,
   RadioGroupShape,
 } from './types'
@@ -17,7 +17,7 @@ export interface RadioGroupProps {
   direction: RadioGroupDirection
   shape?: RadioGroupShape
   disabled?: boolean
-  options: RadioGroupOptionType[]
+  options: RadioGroupOption[]
   onChange: (value: string | number) => void
 }
 

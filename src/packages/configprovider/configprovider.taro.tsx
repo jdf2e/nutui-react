@@ -10,11 +10,11 @@ import type { NutCSSVariables } from './types'
 
 export interface ConfigProviderProps extends BasicComponent {
   locale: BaseLang
-  direction?: Direction
+  direction?: ConfigProviderDirection
   theme?: Record<string | NutCSSVariables, string>
 }
 
-export type Direction = 'ltr' | 'rtl' | undefined
+export type ConfigProviderDirection = 'ltr' | 'rtl' | undefined
 
 const classPrefix = 'nut-configprovider'
 

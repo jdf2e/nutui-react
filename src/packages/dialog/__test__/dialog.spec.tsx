@@ -1,10 +1,10 @@
 import * as React from 'react'
-import { render, fireEvent, waitFor } from '@testing-library/react'
+import { render, fireEvent, waitFor, act } from '@testing-library/react'
 import '@testing-library/jest-dom'
 import { Dialog } from '../dialog'
 
 test('show dialog base info display ', async () => {
-  const onClose = jest.fn()
+  const onClose = vi.fn()
   const { container } = render(
     <Dialog title="title" data-testid="test" visible onClose={onClose}>
       <div>content</div>
@@ -96,8 +96,8 @@ test('dialog closeIcon equals true', async () => {
 })
 
 test('dialog close icon  position adjustment', async () => {
-  const onClose = jest.fn()
-  const onCancel = jest.fn()
+  const onClose = vi.fn()
+  const onCancel = vi.fn()
   const { container } = render(
     <Dialog
       visible
@@ -120,7 +120,8 @@ test('dialog close icon  position adjustment', async () => {
 })
 
 test('should display loading when onConfirm returns a promise', async () => {
-  const mockOnConfirm = jest.fn(
+  vi.useFakeTimers()
+  const mockOnConfirm = vi.fn(
     () =>
       new Promise((resolve) => {
         setTimeout(resolve, 1000)
@@ -129,11 +130,17 @@ test('should display loading when onConfirm returns a promise', async () => {
   const { container } = render(<Dialog visible onConfirm={mockOnConfirm} />)
 
   const footerOkEle = container.querySelector('.nut-dialog-footer-ok')!
-  fireEvent.click(footerOkEle)
+  await act(() => {
+    fireEvent.click(footerOkEle)
+  })
 
   expect(footerOkEle).toHaveClass('nut-button-loading')
 
-  await waitFor(() => {
+  await act(() => {
+    vi.runAllTimers()
+  })
+
+  waitFor(() => {
     expect(footerOkEle).not.toHaveClass('nut-button-loading')
   })
 

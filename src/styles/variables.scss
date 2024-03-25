@@ -1276,7 +1276,7 @@ $dialog-vertical-footer-ok-margin-top: var(
   --nutui-dialog-vertical-footer-ok-margin-top,
   5px
 ) !default;
-$dialog-close-color: var(--nutui-dialog-close-color, #8c8c8c) !default;
+$dialog-close-color: var(--nutui-dialog-close-color, #ffffff) !default;
 $dialog-close-width: var(--nutui-dialog-close-width, 18px) !default;
 $dialog-close-height: var(--nutui-dialog-close-height, 18px) !default;
 $dialog-close-top: var(--nutui-dialog-close-top, 16px) !default;
@@ -1948,7 +1948,7 @@ $form-item-label-margin-right: var(
 ) !default;
 $form-item-label-text-align: var(
   --nutui-form-item-label-text-align,
-  start
+  left
 ) !default;
 $form-item-required-margin-right: var(
   --nutui-form-item-required-margin-right,
@@ -1960,20 +1960,17 @@ $form-item-body-font-size: var(
 ) !default;
 $form-item-body-slots-text-align: var(
   --nutui-form-item-body-slots-text-align,
-  start
+  left
 ) !default;
 $form-item-body-input-text-align: var(
   --nutui-form-item-body-input-text-align,
-  start
+  left
 ) !default;
 $form-item-tip-font-size: var(
   --nutui-form-item-tip-font-size,
   $font-size-xs
 ) !default;
-$form-item-tip-text-align: var(
-  --nutui-form-item-tip-text-align,
-  start
-) !default;
+$form-item-tip-text-align: var(--nutui-form-item-tip-text-align, left) !default;
 
 // skeleton（✅）
 $skeleton-background: var(

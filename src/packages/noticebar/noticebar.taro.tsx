@@ -25,6 +25,7 @@ export interface NoticeBarProps extends BasicComponent {
   wrap: boolean
   leftIcon: ReactNode
   rightIcon: ReactNode
+  right: ReactNode
   delay: string | number
   scrollable: boolean | null
   speed: number
@@ -47,6 +48,7 @@ const defaultProps = {
   wrap: false,
   leftIcon: <Notice size={16} />,
   rightIcon: null,
+  right: null,
   delay: 1,
   scrollable: null,
   speed: 50,
@@ -70,6 +72,7 @@ export const NoticeBar: FunctionComponent<
     wrap,
     leftIcon,
     rightIcon,
+    right,
     delay,
     scrollable,
     speed,
@@ -461,6 +464,9 @@ export const NoticeBar: FunctionComponent<
               {content}
             </View>
           </View>
+          {right ? (
+            <View className="nut-noticebar-box-right">{right}</View>
+          ) : null}
           {closeable || rightIcon ? (
             <View
               className="nut-noticebar-box-right-icon"

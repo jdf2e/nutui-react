@@ -167,12 +167,6 @@ const data3 = [
   },
 ]
 
-function sleep(delay = 0): Promise<void> {
-  return new Promise((resolve) => {
-    setTimeout(resolve, delay)
-  })
-}
-
 test('render bordered props', () => {
   const { container } = render(<Table columns={columns} data={data} />)
   const headBorder = container.querySelector('.nut-table-main-head-tr-border')
@@ -246,13 +240,12 @@ test('render async', async () => {
 
   const { container, getByTestId } = render(<TableDemo />)
   expect(container.querySelectorAll('.nut-table-main-body-tr').length).toBe(0)
-  await sleep(2000)
   fireEvent.click(getByTestId('test'))
   expect(container.querySelectorAll('.nut-table-main-body-tr').length).toBe(3)
 })
 
 test('sorter', async () => {
-  const fn = jest.fn()
+  const fn = vi.fn()
   const TableDemo = () => {
     return (
       <>

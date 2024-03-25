@@ -11,9 +11,9 @@ import {
 } from '@/utils/use-custom-event'
 import { usePropsValue } from '@/utils/use-props-value'
 
-export type ToastPositionType = 'top' | 'bottom' | 'center'
+export type ToastPosition = 'top' | 'bottom' | 'center'
 export type ToastSize = 'small' | 'base' | 'large'
-export type ToastWordBreakType = 'normal' | 'break-all' | 'break-word'
+export type ToastWordBreak = 'normal' | 'break-all' | 'break-word'
 
 export interface ToastProps extends BasicComponent {
   id?: string
@@ -24,14 +24,14 @@ export interface ToastProps extends BasicComponent {
   iconSize: string
   content: React.ReactNode
   duration: number
-  position?: ToastPositionType
+  position?: ToastPosition
   type: string
   title: string
   closeOnOverlayClick: boolean
   lockScroll: boolean
   size: ToastSize
   visible: boolean
-  wordBreak?: ToastWordBreakType
+  wordBreak?: ToastWordBreak
   onClose: () => void
   /**
    * @deprecated Please use `content` prop instead.
