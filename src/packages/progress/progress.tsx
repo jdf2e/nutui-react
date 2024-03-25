@@ -79,11 +79,7 @@ export const Progress: FunctionComponent<
     }
     observer.current = new IntersectionObserver((entires, self) => {
       entires.forEach((item) => {
-        if (item.isIntersecting) {
-          setIntersecting(true)
-        } else {
-          setIntersecting(false)
-        }
+        setIntersecting(item.isIntersecting)
       })
     }, options)
     observer.current.observe(progressRef.current)
