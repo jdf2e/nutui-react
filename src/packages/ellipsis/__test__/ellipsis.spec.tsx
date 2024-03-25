@@ -55,7 +55,7 @@ test('Ellipsis click text', async () => {
       direction="start"
       expandText="展开"
       collapseText="收起"
-      onClick={testClick}
+      onClick={() => testClick()}
     />
   )
   expect(container).toMatchSnapshot()
@@ -74,7 +74,7 @@ test('Ellipsis Props expand and collapse', async () => {
       direction="start"
       expandText="展开"
       collapseText="收起"
-      onClick={testClick}
+      onChange={() => testClick()}
     />
   )
   expect(container).toMatchSnapshot()
