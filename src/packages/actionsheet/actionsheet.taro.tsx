@@ -2,16 +2,16 @@ import React, { FunctionComponent, ReactNode } from 'react'
 import Popup, { PopupProps } from '@/packages/popup/index.taro'
 import { ComponentDefaults } from '@/utils/typings'
 
-export type ItemType<T> = { [key: string]: T }
+export type ActionSheetOption<T> = { [key: string]: T }
 
 export interface ActionSheetProps extends PopupProps {
   visible: boolean
   description: ReactNode
-  options: ItemType<string | boolean>[]
-  optionKey: ItemType<string>
+  options: ActionSheetOption<string | boolean>[]
+  optionKey: ActionSheetOption<string>
   cancelText: ReactNode
   onCancel: () => void
-  onSelect: (item: ItemType<string | boolean>, index: number) => void
+  onSelect: (item: ActionSheetOption<string | boolean>, index: number) => void
 }
 const defaultProps = {
   ...ComponentDefaults,
@@ -48,7 +48,10 @@ export const ActionSheet: FunctionComponent<
     onCancel && onCancel()
   }
 
-  const chooseItem = (item: ItemType<string | boolean>, index: number) => {
+  const chooseItem = (
+    item: ActionSheetOption<string | boolean>,
+    index: number
+  ) => {
     if (!item.disabled) {
       onSelect && onSelect(item, index)
     }

@@ -12,10 +12,10 @@ import { PopupProps } from '@/packages/popup/popup.taro'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { ComponentDefaults } from '@/utils/typings'
 import { getRect } from '@/utils/use-client-rect'
-import { PopoverTheme, PopoverLocation, List } from './types'
+import { PopoverTheme, PopoverLocation, PopoverList } from './types'
 
 export interface PopoverProps extends PopupProps {
-  list: List[]
+  list: PopoverList[]
   theme: PopoverTheme | string
   location: PopoverLocation | string
   visible: boolean
@@ -29,7 +29,7 @@ export interface PopoverProps extends PopupProps {
   onClick: () => void
   onOpen: () => void
   onClose: () => void
-  onSelect: (item: List, index: number) => void
+  onSelect: (item: PopoverList, index: number) => void
 }
 export interface RootPosition {
   width: number
@@ -267,7 +267,7 @@ export const Popover: FunctionComponent<
     return styles
   }
 
-  const handleSelect = (item: List, index: number) => {
+  const handleSelect = (item: PopoverList, index: number) => {
     if (!item.disabled) {
       onSelect && onSelect(item, index)
     }

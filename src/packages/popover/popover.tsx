@@ -16,10 +16,10 @@ import { ComponentDefaults } from '@/utils/typings'
 import useClickAway from '@/utils/use-click-away'
 import { canUseDom } from '@/utils/can-use-dom'
 import { getAllScrollableParents } from '@/utils/get-scroll-parent'
-import { PopoverTheme, PopoverLocation, List } from './types'
+import { PopoverTheme, PopoverLocation, PopoverList } from './types'
 
 export interface PopoverProps extends PopupProps {
-  list: List[]
+  list: PopoverList[]
   theme: PopoverTheme | string
   location: PopoverLocation | string
   visible: boolean
@@ -33,7 +33,7 @@ export interface PopoverProps extends PopupProps {
   onClick: () => void
   onOpen: () => void
   onClose: () => void
-  onSelect: (item: List, index: number) => void
+  onSelect: (item: PopoverList, index: number) => void
 }
 
 const defaultProps = {
@@ -257,7 +257,7 @@ export const Popover: FunctionComponent<
     return styles
   }
 
-  const handleSelect = (item: List, index: number) => {
+  const handleSelect = (item: PopoverList, index: number) => {
     if (!item.disabled) {
       onSelect?.(item, index)
     }

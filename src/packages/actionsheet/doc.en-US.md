@@ -28,7 +28,7 @@ interface Item {
 const App = () => {
   const [val1, setVal1] = useState('')
   const [isVisible1, setIsVisible1] = useState(false)
-  const optionsOne: ItemType<string>[] = [
+  const optionsOne: ActionSheetOption<string>[] = [
     {
       name: 'Permission settings',
     },
@@ -77,7 +77,7 @@ import { ActionSheet,Cell } from '@nutui/nutui-react';
 const App = () => {
   const [isVisible2, setIsVisible2] = useState(false)
   const [val2, setVal2] = useState('')
-  const optionsOne: ItemType<string>[] = [
+  const optionsOne: ActionSheetOption<string>[] = [
     {
       name: 'Permission settings',
     },
@@ -126,7 +126,7 @@ import { ActionSheet,Cell } from '@nutui/nutui-react';
 const App = () => {
   const [isVisible3, setIsVisible3] = useState(false)
   const [val3, setVal3] = useState('')
-  const optionsTwo: ItemType<string>[] = [
+  const optionsTwo: ActionSheetOption<string>[] = [
     {
       name: 'Permission settings',
     },
@@ -176,7 +176,7 @@ import { ActionSheet,Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const [isVisible4, setIsVisible4] = useState(false)
-  const optionsThree: ItemType<string | boolean>[] = [
+  const optionsThree: ActionSheetOption<string | boolean>[] = [
     {
       name: 'Shading Options',
       danger: true
@@ -258,7 +258,7 @@ import { ActionSheet, Cell } from '@nutui/nutui-react';
 
 const App = () => {
   const [isVisible6, setIsVisible6] = useState(false)
-  const optionsFour: ItemType<string | boolean>[] = [
+  const optionsFour: ActionSheetOption<string | boolean>[] = [
     {
       title: 'Shading Option',
       danger: true

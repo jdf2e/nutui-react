@@ -1,9 +1,9 @@
 import React from 'react'
 import { render, waitFor, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { ActionSheet, ItemType } from '../actionsheet'
+import { ActionSheet, ActionSheetOption } from '../actionsheet'
 
-const menulist: ItemType<string | boolean>[] = [
+const menulist: ActionSheetOption<string | boolean>[] = [
   {
     name: '选项一',
     description: '选项一的描述信息',
