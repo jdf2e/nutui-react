@@ -52,7 +52,7 @@ import { Progress } from '@nutui/nutui-react';
 
 :::
 
-### 設置狀態顯示
+### 狀態顯示
 
 :::demo
 
