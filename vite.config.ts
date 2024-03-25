@@ -5,7 +5,6 @@ import { resolve, join } from 'path'
 // @ts-ignore
 import atImport from 'postcss-import'
 import { readFileSync } from 'node:fs'
-import config from './package.json'
 
 const projectID = process.env.VITE_APP_PROJECT_ID || ''
 
@@ -95,21 +94,6 @@ export default defineConfig(async (): Promise<UserConfig> => {
       },
       include: ['src/packages/**/*.(test|spec).(ts|tsx)'],
       reporters: ['default', 'html'],
-    },
-    build: {
-      target: 'es2015',
-      outDir: `./dist-demo/${projectID === 'jmapp' ? 'jdesign' : '2x'}/`,
-      cssCodeSplit: true,
-      rollupOptions: {
-        input: {
-          mobile: resolve(__dirname, 'demo.html'),
-        },
-        output: {
-          entryFileNames: `demo-${config.version}/[name].js`,
-          chunkFileNames: `demo-${config.version}/[name].js`,
-          assetFileNames: `demo-${config.version}/[name].[ext]`,
-        },
-      },
     },
   }
 })

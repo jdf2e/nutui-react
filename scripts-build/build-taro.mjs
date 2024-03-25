@@ -31,6 +31,34 @@ async function dest(file, content) {
   await writeFile(file, content)
 }
 
+const transform = (file, api) => {
+  const j = api.jscodeshift.withParser('ts')
+  const ast = j(file.source)
+  const imports = ast.find(j.ImportDeclaration)
+  const exps = ast.find(j.ExportAllDeclaration)
+
+  function reNameAlias(path) {
+    const alias =
+      path.node.source.value?.indexOf('@/') > -1
+        ? path.node.source.value
+        : ''
+    if (!alias) {
+      path.node.source.value = path.node.source.value.replace('.taro', '')
+      return
+    }
+    const dir = join(__dirname, alias.replace('@/', '../src/'))
+    path.node.source.value = relativeFilePath(file.path, dir)?.replace(
+      '.taro',
+      '',
+    )
+  }
+
+  imports.forEach(reNameAlias)
+  exps.forEach(reNameAlias)
+
+  return ast.toSource()
+}
+
 // 构建 ES
 async function buildES(p) {
   const sourceFiles = await glob(
@@ -49,7 +77,7 @@ async function buildES(p) {
         'src/packages/**/*.spec.tsx',
         'src/packages/**/demos/**/*',
       ],
-    }
+    },
   )
 
   for (const path of sourceFiles) {
@@ -76,15 +104,7 @@ async function buildES(p) {
 
     await dest(join('dist/es', writePath.replace('../src/', '')), code.code)
   }
-  const transform = (file, api) => {
-    const j = api.jscodeshift.withParser('ts')
-    return j(file.source)
-      .find(j.ImportDeclaration)
-      .forEach((path) => {
-        path.node.source.value = path.node.source.value?.replace('.taro', '')
-      })
-      .toSource()
-  }
+
   const files = await glob(['dist/es/packages/**/*.js'])
   for (const file of files) {
     const result = transform(
@@ -93,7 +113,7 @@ async function buildES(p) {
           encoding: 'utf8',
         }),
       },
-      { jscodeshift: j }
+      { jscodeshift: j },
     )
     await dest(file, result)
   }
@@ -126,26 +146,8 @@ async function buildDeclaration() {
   const configPath = join(__dirname, '../tsconfig.taro.json')
   const dist = join(__dirname, '../dist/types')
   await execSync(
-    `tsc --project ${configPath} --emitDeclarationOnly --declaration --declarationDir ${dist}`
+    `tsc --project ${configPath} --emitDeclarationOnly --declaration --declarationDir ${dist}`,
   )
-  const transform = (file, api) => {
-    const j = api.jscodeshift.withParser('ts')
-    return j(file.source)
-      .find(j.ImportDeclaration)
-      .forEach((path) => {
-        const importAlias =
-          path.node.source.value?.indexOf('@/') > -1
-            ? path.node.source.value
-            : ''
-        if (!importAlias) return
-        const dir = join(__dirname, importAlias.replace('@/', '../src/'))
-        path.node.source.value = relativeFilePath(file.path, dir)?.replace(
-          '.taro',
-          ''
-        )
-      })
-      .toSource()
-  }
 
   const files = await glob([
     'dist/types/src/packages/**/*.taro.d.ts',
@@ -164,7 +166,7 @@ async function buildDeclaration() {
         }),
         path: join(__dirname, '../', file).replace('/dist/types', ''),
       },
-      { jscodeshift: j }
+      { jscodeshift: j },
     )
     const to = file.replace('dist/types/src', '').replace('.taro', '')
     await dest(join('dist/es', to), result)
@@ -229,7 +231,7 @@ async function buildAllCSS() {
 async function copyStyles() {
   await copy(
     resolve(__dirname, '../src/styles'),
-    resolve(__dirname, '../dist/styles')
+    resolve(__dirname, '../dist/styles'),
   )
 
   const content = [
@@ -245,7 +247,7 @@ async function copyStyles() {
   const scssFiles = await glob(['dist/es/packages/**/*.scss'])
   scssFiles.forEach((file) => {
     content.push(
-      `@import '${relativeFilePath('/dist/styles/themes/default.scss', '/' + file)}';`
+      `@import '${relativeFilePath('/dist/styles/themes/default.scss', '/' + file)}';`,
     )
   })
   dest('dist/styles/themes/default.scss', content.join('\n'))
@@ -257,7 +259,7 @@ async function buildCSS(p) {
     ignore: ['src/packages/**/demo.scss'],
   })
   const variables = await readFile(
-    join(__dirname, '../src/styles/variables.scss')
+    join(__dirname, '../src/styles/variables.scss'),
   )
   for (const file of cssFiles) {
     const button = await readFile(join(__dirname, '../', file), {
@@ -268,7 +270,7 @@ async function buildCSS(p) {
     const loadPath = join(
       __dirname,
       '../src/packages',
-      base.replace('.scss', '')
+      base.replace('.scss', ''),
     )
     const code = sass.compileString(variables + '\n' + button, {
       loadPaths: [loadPath],
@@ -281,7 +283,7 @@ async function buildCSS(p) {
     await dest(join('dist/cjs', cssPath, 'style/style.css'), code.css)
     await dest(
       join('dist/cjs', cssPath, 'style/css.js'),
-      `import './style.css'`
+      `import './style.css'`,
     )
 
     // 删除 import
@@ -292,7 +294,7 @@ async function buildCSS(p) {
         postcssPlugin: 'remove-atrule',
         AtRule(root) {
           if (root.name === 'import') {
-            if (root.params.indexOf("'../../styles") > -1) {
+            if (root.params.indexOf('\'../../styles') > -1) {
               atRules.push(root.params)
               root.params = root.params.replace('../../', '../../../../')
               return
@@ -313,7 +315,7 @@ async function buildCSS(p) {
 
     const jsContent = []
     atRules.forEach((rule) => {
-      rule = rule.replaceAll("'", '')
+      rule = rule.replaceAll('\'', '')
       if (rule.indexOf('../styles/') > -1) {
         const ext = extname(rule)
         jsContent.push(`import '../../${rule}${ext ? '' : '.scss'}';`)
@@ -328,30 +330,10 @@ async function buildCSS(p) {
 
     await dest(
       join('dist/cjs', cssPath, `style/index.js`),
-      jsContent.join('\n')
+      jsContent.join('\n'),
     )
     await dest(join('dist/es', cssPath, `style/index.js`), jsContent.join('\n'))
   }
-}
-
-async function exportProps() {
-  const types = []
-  const a = await readFile(join(__dirname, '../src/config.json'))
-  const componentsConfig = JSON.parse(a.toString())
-  componentsConfig.nav.forEach((item) => {
-    item.packages.forEach((element) => {
-      const { name, show, exportEmpty } = element
-      if (show || exportEmpty) {
-        const lowerName = name.toLowerCase()
-        if (lowerName === 'icon') return
-        types.push(`export * from './${lowerName}/index'`)
-      }
-    })
-  })
-  await appendFile(
-    join(__dirname, '../dist/es/packages/nutui.react.build.d.ts'),
-    types.join('\n')
-  )
 }
 
 console.log('clean dist')
@@ -387,8 +369,6 @@ console.log('Build All CSS: ✅')
 console.log('Build Declaration')
 await buildDeclaration()
 console.log('Build Declaration: ✅')
-
-await exportProps()
 
 await deleteAsync([
   'dist/es/packages/nutui.react.js',
