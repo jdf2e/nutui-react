@@ -1,5 +1,17 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
+exports[`Ellipsis Memory Leak 1`] = `
+<body>
+  <div>
+    <div
+      class="nut-ellipsis"
+    >
+      0
+    </div>
+  </div>
+</body>
+`;
+
 exports[`Ellipsis Props Direction Middle 1`] = `
 <div>
   <div
