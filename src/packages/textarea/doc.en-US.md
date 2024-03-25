@@ -16,24 +16,7 @@ import { TextArea } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React from "react";
-import { TextArea } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <TextArea
-      defaultValue="Basic Usage"
-      className="text-1"
-      style={{ fontSize: '12px' }}
-      onChange={(value) => console.log('change', value)}
-      onBlur={() => console.log('blur')}
-      onFocus={() => console.log('focus')}
-    />
-  )
-};
-export default App
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -41,21 +24,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, {useState} from "react";
-import { TextArea } from '@nutui/nutui-react';
-
-const App = () => {
-  const [value, setValue] = useState('');
-  return (
-    <TextArea
-      value={value}
-      onChange={(value) => setValue(value)}
-    />
-  )
-};
-export default App
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -63,17 +32,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from "react";
-import { TextArea } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <TextArea showCount maxLength={20} />
-  )
-};
-export default App
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -81,17 +40,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from "react";
-import { TextArea } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <TextArea rows={1} autoSize />
-  )
-};
-export default App
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -99,44 +48,23 @@ export default App
 
 :::demo
 
-```tsx
-import React from "react";
-import { ConfigProvider, TextArea } from '@nutui/nutui-react';
-
-const App = () => {
-  const customTheme = {
-    nutuiTextareaTextCurrorColor: `red`,
-    nutuiTextareaLimitColor: `red`,
-  }
-  return (
-    <ConfigProvider theme={customTheme}>
-      <TextArea showCount maxLength={20} />
-    </ConfigProvider>
-  )
-};
-export default App
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
-### read-only，disabled
+### read-only
 
 :::demo
 
-```tsx
-import React from "react";
-import { TextArea } from '@nutui/nutui-react';
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
-const App = () => {
-  return (
-    <>
-      <TextArea readOnly defaultValue="textarea readOnly" />
-      <TextArea disabled defaultValue="textarea disabled" showCount maxLength={20} />
-    </>
-  )
-};
-export default App
-```
+:::
+
+### disabled
+
+:::demo
+
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -144,22 +72,7 @@ export default App
 
 :::demo
 
-```tsx
-import React from "react";
-import { TextArea } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <TextArea
-      defaultValue="TextAlign"
-      style={{
-        textAlign: "right",
-      }}
-    />
-  )
-};
-export default App
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
