@@ -16,35 +16,7 @@ import { SafeArea } from '@nutui/nutui-react-taro';
 
 :::demo
 
-```tsx
-import React from 'react'
-import { SafeArea } from '@nutui/nutui-react-taro'
-
-function generateRandomTextArray(count) {
-  const characters = 'abcdefghijklmnopqrstuvwxyz'
-  const textArray = []
-  for (let j = 0; j < count; j++) {
-    const randomLength = Math.floor(Math.random() * 5) + 4
-    let randomText = ''
-    for (let i = 0; i < randomLength; i++) {
-      const randomIndex = Math.floor(Math.random() * characters.length)
-      randomText += characters.charAt(randomIndex)
-    }
-    textArray.push(randomText)
-  }
-  return textArray
-}
-const App = () => {
-  return (
-    <>
-      <div>{generateRandomTextArray(900).join(' ')}</div>
-      <SafeArea position="bottom" />
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 

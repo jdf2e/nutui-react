@@ -38,6 +38,76 @@ export default App;
 
 :::
 
+
+### 卡片場景
+:::demo
+
+```tsx
+
+import React from "react";
+import { Swipe, Cell, Button } from '@nutui/nutui-react';
+import { Del } from '@nutui/icons-react'
+
+const divNode = (text: string, style: any) => {
+  return (
+    <div
+      style={{
+        width: '60px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        ...style,
+      }}
+    >
+      <Del style={{ marginBottom: '8px' }}/>
+      <>{text}</>
+    </div>
+  )
+}
+
+const App = () => {
+  return <>
+    <Swipe
+      style={{ height: '104px' }}
+      rightAction={
+        <div
+          style={{
+            height: 'inherit',
+            width: '240px',
+            display: 'flex',
+            fontSize: '12px',
+          }}
+        >
+          <>
+            {divNode('設置常買', {
+              background: '#F8F8F8',
+              color: '#1A1A1A',
+            })}
+            {divNode('移入收藏', {
+              background: '#ffcc00',
+              color: '#FFF',
+            })}
+            {divNode('看相似', {
+              background: '#FF860D',
+              color: '#FFF',
+            })}
+            {divNode('刪除', {
+              background: '#FA2C19',
+              color: '#FFF',
+            })}
+          </>
+        </div>
+      }
+    >
+      <Cell title={`${translated.leftDel}+Icon`} radius={0} />
+    </Swipe>
+  </>
+}
+export default App;
+
+```
+
 ### 通過實例方法控製
 
 :::demo

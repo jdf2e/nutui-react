@@ -1,9 +1,9 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
 exports[`infiniteloading base 01 1`] = `
 <div>
   <div
-    class="nut-infiniteloading"
+    class="nut-infiniteloading nut-infiniteloading-default"
   >
     <div
       class="nut-infinite-top"
@@ -28,7 +28,7 @@ exports[`infiniteloading base 01 1`] = `
 exports[`infiniteloading base 02 1`] = `
 <div>
   <div
-    class="nut-infiniteloading"
+    class="nut-infiniteloading nut-infiniteloading-default"
   >
     <div
       class="nut-infinite-top"
@@ -96,7 +96,13 @@ exports[`infiniteloading base 02 1`] = `
     </div>
     <div
       class="nut-infinite-bottom"
-    />
+    >
+      <div
+        class="nut-infinite-bottom-tips"
+      >
+        加载中
+      </div>
+    </div>
   </div>
 </div>
 `;
@@ -104,32 +110,7 @@ exports[`infiniteloading base 02 1`] = `
 exports[`pull base 01 1`] = `
 <div>
   <div
-    class="nut-infiniteloading"
-  >
-    <div
-      class="nut-infinite-top"
-      style="height: 10px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
-    >
-      <div
-        class="nut-infinite-top-tips"
-      >
-        下拉刷新
-      </div>
-    </div>
-    <div
-      class="nut-infinite-container"
-    />
-    <div
-      class="nut-infinite-bottom"
-    />
-  </div>
-</div>
-`;
-
-exports[`pull base 01 2`] = `
-<div>
-  <div
-    class="nut-infiniteloading"
+    class="nut-infiniteloading nut-infiniteloading-default"
   >
     <div
       class="nut-infinite-top"
@@ -154,7 +135,7 @@ exports[`pull base 01 2`] = `
 exports[`pull base 03 1`] = `
 <div>
   <div
-    class="nut-infiniteloading"
+    class="nut-infiniteloading nut-infiniteloading-default"
   >
     <div
       class="nut-infinite-top"
@@ -179,7 +160,7 @@ exports[`pull base 03 1`] = `
 exports[`pull base 03 2`] = `
 <div>
   <div
-    class="nut-infiniteloading"
+    class="nut-infiniteloading nut-infiniteloading-default"
   >
     <div
       class="nut-infinite-top"
@@ -204,7 +185,7 @@ exports[`pull base 03 2`] = `
 exports[`pull base 1`] = `
 <div>
   <div
-    class="nut-infiniteloading"
+    class="nut-infiniteloading nut-infiniteloading-default"
   >
     <div
       class="nut-infinite-top"
@@ -229,7 +210,7 @@ exports[`pull base 1`] = `
 exports[`pull base 2`] = `
 <div>
   <div
-    class="nut-infiniteloading"
+    class="nut-infiniteloading nut-infiniteloading-default"
   >
     <div
       class="nut-infinite-top"

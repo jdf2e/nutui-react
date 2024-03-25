@@ -60,6 +60,7 @@ export const Ellipsis: FunctionComponent<
   const maxHeight = useRef(0) // 当行的最大高度
   const [exceeded, setExceeded] = useState(false)
   const [expanded, setExpanded] = useState(false)
+  const [cacled, setCacled] = useState(false)
   const ellipsis = useRef<EllipsisValue>({
     leading: '',
     tailing: '',
@@ -71,7 +72,7 @@ export const Ellipsis: FunctionComponent<
   const lineH = useRef(0) // 当行的最大高度
   const originHeight = useRef(0) // 原始高度
   const refRandomId = useRef(Math.random().toString(36).slice(-8))
-  const widthRef: any = useRef('auto')
+  const widthRef = useRef('auto')
   const widthBase = useRef([14, 10, 7, 8.4, 10]) // 中、英(大)、英(小)、数字、其他字符的基础宽度
   const symbolTextWidth = useRef(widthBase.current[0] * 0.7921)
   const chineseReg = /^[\u4e00-\u9fa5]+$/ // 汉字
@@ -91,6 +92,10 @@ export const Ellipsis: FunctionComponent<
       getSymbolInfo()
       getReference()
     })
+
+    return () => {
+      setCacled(false)
+    }
   }, [content])
 
   // 获取省略号宽度
@@ -146,6 +151,10 @@ export const Ellipsis: FunctionComponent<
               bsize * 0.4,
               bsize * 0.75,
             ]
+
+            if (rootContain.current) {
+              rootContain.current.style.fontSize = `${bsize}px`
+            }
             calcEllipse()
           }
         )
@@ -157,6 +166,7 @@ export const Ellipsis: FunctionComponent<
     const refe = await getRectByTaro(rootContain.current)
     if (refe.height <= maxHeight.current) {
       setExceeded(false)
+      setCacled(true)
     } else {
       const rowNum = Math.floor(
         content.length / (originHeight.current / lineH.current - 1)
@@ -306,7 +316,8 @@ export const Ellipsis: FunctionComponent<
                 width: `${
                   !Number.isNaN(Number(width)) ? `${width}px` : 'auto'
                 }`,
-                height: '20px',
+                minHeight: '20px',
+                height: cacled ? 'auto' : '20px',
                 overflow: 'hidden',
               }}
             >
@@ -369,7 +380,7 @@ export const Ellipsis: FunctionComponent<
         className="nut-ellipsis-copy"
         ref={rootContain}
         id={`rootContain${refRandomId.current}`}
-        style={{ width: `${widthRef}` }}
+        style={{ width: `${widthRef.current}` }}
       >
         <View>{contentCopy}</View>
       </View>

@@ -1,5 +1,6 @@
 import React from 'react'
 import './Links.scss'
+import '../assets/styles/reset.scss'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from '@nutui/icons-react'
 import pkg from '../../config.json'
@@ -12,8 +13,8 @@ const Links = () => {
   return (
     <>
       {navs.map((nav) => (
-        <ol key={nav.name}>
-          <li>{nav.name}</li>
+        <ol key={nav.enName}>
+          {nav.enName !== 'dentry1' ? <li>{nav.name}</li> : null}
           <ul>
             {nav.packages.map((com) =>
               com.show ? (

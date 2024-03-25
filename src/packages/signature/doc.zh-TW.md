@@ -16,35 +16,7 @@ import { Signature } from '@nutui/nutui-react'
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Signature} from '@nutui/nutui-react';
-
-const App = () => {
-    const confirm = (canvas: HTMLCanvasElement, data: string) => {
-      const img = document.createElement('img')
-      img.src = data
-      const demo = document.querySelector('.demo') as HTMLElement
-      demo.appendChild(img)
-    }
-    const clear = () => {
-      const img = document.querySelector('.demo img')
-      if (img) {
-        img.remove()
-      }
-    }
-    const demoStyles: React.CSSProperties = { margin: '1em 0' }
-    return (
-    <>
-        <Signature onConfirm={confirm} onClear={clear} />
-        <p className="demo-tips demo" style={demoStyles}>
-            Tips: 點擊確認按鈕,下方顯示簽名圖片
-        </p>
-    </>
-    );
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -52,40 +24,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Signature} from '@nutui/nutui-react';
-
-const App = () => {
-    const confirm = (canvas: HTMLCanvasElement, data: string) => {
-    const img = document.createElement('img')
-    img.src = data
-    const demo = document.querySelector('.demo') as HTMLElement
-    demo.appendChild(img)
-    }
-    const clear = () => {
-    const img = document.querySelector('.demo img')
-    if (img) {
-        img.remove()
-    }
-    }
-    const demoStyles: React.CSSProperties = { margin: '1em 0' }
-    return (
-    <>
-        <Signature
-            lineWidth={4}
-            strokeStyle="green"
-            onConfirm={confirm}
-            onClear={clear}
-         />
-        <p className="demo-tips demo" style={demoStyles}>
-            Tips: 點擊確認按鈕,下方顯示簽名圖片
-        </p>
-    </>
-    );
-};
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 

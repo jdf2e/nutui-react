@@ -93,6 +93,7 @@ export const InputNumber: FunctionComponent<
       typeof defaultValue === 'string'
         ? parseFloat(defaultValue)
         : defaultValue,
+    finalValue: 0,
     onChange: (value) => {},
   })
   const bound = (value: number, min: number, max: number) => {
@@ -149,7 +150,11 @@ export const InputNumber: FunctionComponent<
       )
       const nextValue = bound(shouldOverBoundary, Number(min), Number(max))
       setShadowValue(nextValue)
-      if (negative ? shouldOverBoundary < min : shouldOverBoundary > max) {
+      if (
+        negative
+          ? shouldOverBoundary < Number(min)
+          : shouldOverBoundary > Number(max)
+      ) {
         onOverlimit?.(e)
       } else {
         onChange?.(nextValue, e)

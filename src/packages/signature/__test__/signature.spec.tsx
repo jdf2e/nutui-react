@@ -1,12 +1,12 @@
 import * as React from 'react'
 import { render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import 'jest-canvas-mock'
+import 'vitest-canvas-mock'
 
 import { Signature } from '../signature'
 
 test('props test', () => {
-  const testClick = jest.fn()
+  const testClick = vi.fn()
   const { container } = render(
     <Signature
       className="test-signature"

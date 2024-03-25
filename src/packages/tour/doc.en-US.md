@@ -335,7 +335,7 @@ export default App;
 | --- | --- | --- | --- |
 | visible | Whether to display the boot eject layer | `boolean` | `false` |
 | type | Tour type | `step` \| `tile` | `step` |
-| list | Boot Step Content | `ListOptions[]` | `-` |
+| list | Boot Step Content | `TourList[]` | `-` |
 | offset | The offset of the hollow mask relative to the target element | `number[]` | `[8, 10]` |
 | location | Location of popover[location ](https://nutui.jd.com/h5/react/2x/#/zh-CN/component/popover) | `string` | `bottom` |
 | next | Next step text | `ReactNode` | `''` |
@@ -350,7 +350,7 @@ export default App;
 | onClose | Emit when popover close | `(e: MouseEvent<HTMLDivElement>) => void` | `-` |
 | onChange | Emit when step change | `(value: number) => void` | `-` |
 
-### ListOptions
+### TourList
 
 
 | Property | Description | Type | Default |

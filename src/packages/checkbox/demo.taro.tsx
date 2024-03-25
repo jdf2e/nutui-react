@@ -5,37 +5,8 @@ import { useTranslate } from '@/sites/assets/locale/taro'
 import { Button, Cell, Checkbox } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 
-interface T {
-  uncontrolled: string
-  controlled: string
-  basic: string
-  checkbox: string
-  disbaled: string
-  DisabledState: string
-  selective: string
-  disabledState: string
-  disabledSelectiveState: string
-  customSize: string
-  customIcon: string
-  triggerEvent: string
-  uncheckedx: string
-  checked: string
-  cancel: string
-  reverse: string
-  selected: string
-  options1: string
-  description: string
-  Disabled: string
-  selectAndCancel: string
-  selectAll: string
-  cancelSelection: string
-  options: string
-  max: string
-  threeState: string
-}
-
 const CheckboxDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       uncontrolled: '非受控',
       controlled: '受控',
@@ -63,6 +34,7 @@ const CheckboxDemo = () => {
       options: '配置 options 渲染复选按钮',
       max: 'checkboxGroup使用，限制最大可选数（3个）, 至少选择数（1个）',
       threeState: '全选/半选/取消',
+      list: '列表',
     },
     'zh-TW': {
       uncontrolled: '非受控',
@@ -91,6 +63,7 @@ const CheckboxDemo = () => {
       options: '配置 options 渲染複選按鈕',
       max: 'checkboxGroup使用，限制最大可选数（2个）, 至少选择数（1个）',
       threeState: '全选/半选/取消',
+      list: '列表',
     },
     'en-US': {
       uncontrolled: 'uncontrolled',
@@ -119,6 +92,7 @@ const CheckboxDemo = () => {
       options: 'Render radios by configuring options',
       max: 'Used by checkboxGroup, limit the maximum number of options (2), minimum number of options (1)',
       threeState: 'Select All/Half/Cancel',
+      list: 'List model',
     },
   })
 
@@ -241,7 +215,7 @@ const CheckboxDemo = () => {
               <Checkbox value="1" label={optionsDemo1[0].label} />
             </span>
             <Checkbox value="2" label={optionsDemo1[1].label} />
-            <Checkbox value="3" label={optionsDemo1[2].label} />
+            <Checkbox value="3" disabled label={optionsDemo1[2].label} />
           </Checkbox.Group>
         </Cell>
         <Cell className="nut-cell">
@@ -556,6 +530,12 @@ const CheckboxDemo = () => {
             defaultValue={checkboxgroup5}
           />
         </Cell>
+        <h2>{translated.list}</h2>
+        <Checkbox.Group defaultValue={['1']} labelPosition="left" list>
+          <Checkbox value="1" label={optionsDemo1[0].label} />
+          <Checkbox value="2" label={optionsDemo1[1].label} />
+          <Checkbox value="3" label={optionsDemo1[2].label} />
+        </Checkbox.Group>
       </div>
     </>
   )

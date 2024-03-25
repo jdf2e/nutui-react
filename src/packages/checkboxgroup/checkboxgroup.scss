@@ -8,6 +8,7 @@
   &-vertical {
     .nut-checkbox {
       margin-bottom: 5px;
+
       &.nut-checkbox-reverse {
         width: 100%;
         justify-content: space-between;
@@ -31,7 +32,31 @@
       }
     }
   }
+
+  &-list {
+    width: 100%;
+    border-bottom: $checkbox-list-item-border;
+    border-top: $checkbox-list-item-border;
+    padding: $checkbox-list-padding;
+    background: $checkbox-list-background-color;
+
+    .nut-checkbox {
+      margin-bottom: 5px;
+
+      &:first-child {
+        .nut-checkbox-list-item {
+          border-top: none;
+        }
+      }
+
+      &.nut-checkbox-reverse {
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+  }
 }
+
 [dir='rtl'] .nut-checkboxgroup,
 .nut-rtl .nut-checkboxgroup {
   .nut-checkbox {

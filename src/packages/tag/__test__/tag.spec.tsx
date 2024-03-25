@@ -37,17 +37,14 @@ test('plain test', () => {
 })
 
 test('color & plain test', () => {
-  const state = {
-    color: 'rgb(250, 104, 93)',
-  }
   const { container } = render(
-    <Tag background={state.color} plain>
+    <Tag background="green" plain>
       TEST
     </Tag>
   )
-  expect(container.querySelector('.nut-tag-plain')).toHaveAttribute(
+  expect(container.querySelector('.nut-tag')).toHaveAttribute(
     'style',
-    'color: rgb(250, 104, 93); border-color: rgb(250, 104, 93);'
+    'color: green; border-color: green;'
   )
 })
 
@@ -73,7 +70,7 @@ test('closeable && onClose  test', () => {
   const state = {
     closeable: true,
   }
-  const handleClose = jest.fn()
+  const handleClose = vi.fn()
   const { container } = render(
     <>
       <h1 className="text">0</h1>
@@ -90,7 +87,7 @@ test('closeable && onClose  test', () => {
 })
 
 test('emit click event', () => {
-  const testClick = jest.fn()
+  const testClick = vi.fn()
   function tree() {
     return render(
       <Tag data-testid="tag-click" onClick={() => testClick()} className="test">

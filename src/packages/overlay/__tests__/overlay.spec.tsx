@@ -23,7 +23,7 @@ test('should change z-index when using z-index prop', () => {
 })
 
 test('prop close-on-click-overlay test', () => {
-  const onClose = jest.fn()
+  const onClose = vi.fn()
   const { getByTestId } = render(
     <Overlay
       data-testid="overlay-closeFalsy"
@@ -37,7 +37,7 @@ test('prop close-on-click-overlay test', () => {
 })
 
 test('event click test', () => {
-  const onClose = jest.fn()
+  const onClose = vi.fn()
   const { getByTestId } = render(
     <Overlay
       data-testid="overlay-click"

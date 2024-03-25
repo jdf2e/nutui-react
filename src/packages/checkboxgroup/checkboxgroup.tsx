@@ -1,6 +1,6 @@
 import React, { useCallback, useImperativeHandle } from 'react'
 import classNames from 'classnames'
-import { RadioGroupOptionType } from '@/packages/radiogroup/types'
+import { RadioGroupOption } from '@/packages/radiogroup/types'
 import { Checkbox } from '../checkbox/checkbox'
 import Context from './context'
 import { usePropsValue } from '@/utils/use-props-value'
@@ -14,11 +14,12 @@ export interface CheckboxGroupProps {
   disabled?: boolean
   value?: string[]
   defaultValue?: string[]
+  list: boolean
   max: number | undefined
   min: number | undefined
   labelPosition: CheckboxLabelPosition
   direction: CheckboxDirection
-  options: RadioGroupOptionType[]
+  options: RadioGroupOption[]
   onChange: (value: string[]) => void
   onLimit: (type: CheckboxLimit) => void
 }
@@ -26,6 +27,7 @@ export interface CheckboxGroupProps {
 const defaultProps = {
   max: undefined,
   min: undefined,
+  list: false,
   labelPosition: 'right',
   direction: 'vertical',
   onChange: (value: string[]) => {},
@@ -44,6 +46,7 @@ export const CheckboxGroup = React.forwardRef(
       children,
       className,
       disabled,
+      list,
       onChange,
       value,
       defaultValue,
@@ -109,6 +112,7 @@ export const CheckboxGroup = React.forwardRef(
           labelPosition: labelPosition || 'right',
           disabled,
           max,
+          list,
           onLimit,
           value: _value,
           check: (value: string) => {
@@ -134,6 +138,7 @@ export const CheckboxGroup = React.forwardRef(
             classPrefix,
             {
               [`nut-checkboxgroup-${props.direction}`]: props.direction,
+              [`nut-checkboxgroup-list`]: list,
             },
             className
           )}

@@ -4,7 +4,7 @@
 
 模态对话框，在浮层中显示，引导用户进行相关操作，常用于消息提示、消息确认，或在当前页面内完成特定的交互操作。
 
-弹出框组件支持组件调用。
+弹出框组件支持函数调用和组件调用两种方式。
 
 ## 安装
 
@@ -14,204 +14,68 @@ import { Dialog } from '@nutui/nutui-react-taro'
 
 ## 代码演示
 
-### 函数调用
+### 函数式调用
+
 :::demo
 
-```tsx
-import React, {useState} from "react";
-import { Cell,Dialog } from '@nutui/nutui-react-taro';
-
-const App = () => {
-
-  return (
-    <>
-      <Dialog id="test" />
-      <Cell
-        title="函数调用"
-        onClick={() =>
-          Dialog.open('test', {
-            title: '函数调用',
-            content: '可通过 Dialog.open 打开对话框',
-            onConfirm: () => {
-              Dialog.close('test')
-            },
-            onCancel: () => {
-              Dialog.close('test')
-            },
-          })
-        }
-      />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
-
-### 组件调用
+## 以下为标签式使用
+### 基础用法 
 
 :::demo
 
-```tsx
-import React, {useState} from "react";
-import { Cell,Dialog,Image } from '@nutui/nutui-react-taro';
-import { ArrowCornerLeft } from '@nutui/icons-react-taro'
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
-const App = () => {
-  const [visible1, setVisible1] = useState(false)
-  const [visible2, setVisible2] = useState(false)
-  const [visible3, setVisible3] = useState(false)
-  const [visible4, setVisible4] = useState(false)
-  const [visible5, setVisible5] = useState(false)
-  const [visible6, setVisible6] = useState(false)
-  const [visible7, setVisible7] = useState(false);
-  const [visible8, setVisible8] = useState(false);
-  const [visible9, setVisible9] = useState(false);
-  return (
-    <>
-      <Cell title="基础弹框" onClick={() => setVisible1(true)} />
-      <Dialog 
-        title="组件调用"
-        visible={visible1}
-        onConfirm={() => setVisible1(false)}
-        onCancel={() => setVisible1(false)}
-      >
-        如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
-      </Dialog>
+:::
 
-      <Cell title="无标题弹框、不锁背景滚动" onClick={() => setVisible2(true)} />
-      <Dialog 
-        visible={visible2}
-        lockScroll={false}
-        onConfirm={() => setVisible2(false)}
-        onCancel={() => setVisible2(false)}
-      >
-        如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
-      </Dialog>
+### footer区域定制
 
-      <Cell title="提示弹框" onClick={() => setVisible3(true)} />
-      <Dialog 
-        title="组件调用"
-        visible={visible3}
-        confirmText='确认'
-        hideCancelButton
-        onConfirm={() => setVisible3(false)}
-      >
-        如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
-      </Dialog>
+:::demo
 
-      <Cell title="底部按钮 垂直布局调用" onClick={() => setVisible4(true)} />
-      <Dialog 
-        title="组件调用"
-        visible={visible4}
-        footerDirection='vertical'
-        onConfirm={() => setVisible4(false)}
-        onCancel={() => setVisible4(false)}
-      >
-        如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
-      </Dialog>
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
-      <Cell title="底部 Footer 为 Button 时，点击遮罩不关闭" onClick={() => setVisible5(true)} />
-      <Dialog 
-        title="组件调用"
-        visible={visible5}
-        footerDirection='vertical'
-        closeOnOverlayClick={false}
-        onConfirm={() => setVisible5(false)}
-        onCancel={() => setVissetVisible5ible2(false)}
-      >
-        如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
-      </Dialog>
+:::
 
-      <Cell title="无底部 Footer 区域" onClick={() => setVisible6(true)} />
-      <Dialog 
-        title="组件调用"
-        visible={visible6}
-        footer={null}
-        onClose={() => {
-          setVisible6(false)
-        }}
-      >
-        如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
-      </Dialog>
-      <Cell title="点击取消时，拦截" onClick={() => setVisible7(true)} />
-      <Dialog 
-        title="点击取消时，拦截"
-        visible={visible7}
-        closeOnOverlayClick={false}
-        beforeCancel={() => {
-          console.log('stop close')
-          return false
-        }}
-        onClose={() => {
-          setVisible7(false)
-        }}
-      >
-        如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
-      </Dialog>
-      <Cell
-        title="顶部带插图"
-        onClick={() => {
-          setVisible7(true)
-        }}
-      />
-      <Dialog
-        className="test-dialog"
-        title="顶部带插图"
-        visible={visible7}
-        header={
-          <Image src="https://img13.360buyimg.com/imagetools/jfs/t1/219330/27/30033/11784/6544af3fF5c0fd98f/64c41bb05ef09189.png" />
-        }
-        onConfirm={() => setVisible7(false)}
-        onCancel={() => setVisible7(false)}
-      >
-        如果需要在弹窗内嵌入组件或其他自定义内容，可以使用组件调用的方式。
-      </Dialog>
-      <Cell
-          title="顶部带关闭按钮"
-          onClick={() => {
-            setVisible8(true)
-          }}
-        />
-        <Dialog
-          className="test-dialog"
-          title="顶部带关闭按钮"
-          visible={visible8}
-          closeIcon
-          onConfirm={() => setVisible8(false)}
-          onCancel={() => setVisible8(false)}
-        >
-          {translated.content}
-        </Dialog>
-        <Cell
-          title="自定义顶部关闭按钮"
-          onClick={() => {
-            setVisible9(true)
-          }}
-        />
-        <Dialog
-          className="test-dialog"
-          title="自定义顶部关闭按钮"
-          visible={visible9}
-          closeIcon={<ArrowCornerLeft width="16px" height="16px" />}
-          closeIconPosition="top-left"
-          onConfirm={() => setVisible9(false)}
-          onCancel={() => setVisible9(false)}
-          style={{
-            '--nutui-dialog-close-top': '10px',
-            '--nutui-dialog-close-left': '10px',
-            '--nutui-dialog-close-color': 'red',
-          }}
-        >
-          {translated.content}
-        </Dialog>
-    </>
-  )
-}
-export default App;
-```
+### 点击取消时，拦截
+
+:::demo
+
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
+
+:::
+
+### 确认按钮loading效果
+
+:::demo
+
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
+
+:::
+
+### 带关闭按钮
+
+:::demo
+
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
+
+:::
+
+### 自定义内容区域
+
+:::demo
+
+<CodeBlock src='taro/demo7.tsx'></CodeBlock>
+
+:::
+
+### 顶部带插图
+
+:::demo
+
+<CodeBlock src='taro/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -232,6 +96,8 @@ export default App;
 | hideConfirmButton | 是否隐藏确定按钮 | `boolean` | `false` |
 | hideCancelButton | 是否隐藏取消按钮 | `boolean` | `false` |
 | disableConfirmButton | 禁用确定按钮 | `boolean` | `false` |
+| closeIcon | 关闭按钮 | `boolean` \| `ReactNode` | `false` |
+| closeIconPosition | 关闭按钮位置 | `top-left` \| `top-right` \| `bottom` | `top-right` |
 | closeOnOverlayClick | 点击蒙层是否关闭对话框 | `boolean` | `true` |
 | footerDirection | 使用横纵方向 可选值 horizontal、vertical | `string` | `horizontal` |
 | lockScroll | 背景是否锁定 | `boolean` | `false` |
@@ -242,8 +108,6 @@ export default App;
 | onClose | 关闭回调，任何情况关闭弹窗都会触发 | `() => void` | `-` |
 | onClick | 点击自身回调 | `() => void` | `-` |
 | onOverlayClick | 点击蒙层触发 | `() => void` | `-` |
-| closeIconPosition | 关闭按钮位置 | `top-left` \| `top-right` | `top-right` |
-| closeIcon | 关闭按钮 | `boolean \| ReactNode` | `false` |
 
 ### Methods
 | 方法名 | 说明 | 类型 |

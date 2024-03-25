@@ -18,27 +18,7 @@ When the current page number is bound by `value`, the component is in a controll
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination } from '@nutui/nutui-react';
-
-const App = () => {
-  const [currentPage1, setCurrentPage1] = useState(1)
-  const pageChange1 = (v: number) => {
-    const c = v
-    setCurrentPage1(c)
-  }
-  return (
-    <Pagination
-      value={currentPage1}
-      total={25}
-      pageSize={5}
-      onChange={pageChange1}
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -48,31 +28,9 @@ Pagination can be switched to simple mode with simple mode attribute, and pagina
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination } from '@nutui/nutui-react';
-
-const App = () => {
-  const [currentPage2, setCurrentPage2] = useState(1)
-  const pageChange2 = (v: number) => {
-    const c = v
-    setCurrentPage2(c)
-  }
-  return (
-    <Pagination
-      value={currentPage2} 
-      total={12}
-      pageSize={1}
-      mode="simple" 
-      onChange={pageChange2} 
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
-
 
 ### Lite Mode
 
@@ -80,98 +38,27 @@ Pagination can be switched to lite mode with lite mode attribute, and you can us
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination } from '@nutui/nutui-react';
-
-const App = () => {
-  const [currentPage2, setCurrentPage2] = useState(1)
-  const pageChange2 = (v: number) => {
-    const c = v
-    setCurrentPage2(c)
-  }
-  return (
-    <Pagination
-      value={currentPage2}
-      total={12}
-      pageSize={1}
-      mode="lite" 
-      onChange={pageChange2} 
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
-
 ### Show ellipses
 
-The ellipses button will display after with force-ellipses attribute, click it can jump quickly 
+The ellipses button will display after with force-ellipses attribute, click it can jump quickly
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination } from '@nutui/nutui-react';
-
-const App = () => {
-  const [currentPage3, setCurrentPage3] = useState(1)
-  const pageChange3 = (v: number) => {
-    const c = v
-    setCurrentPage3(c)
-  }
-  return (
-    <Pagination
-      value={currentPage3}
-      total={125}
-      itemSize={2}
-      ellipse
-      onChange={pageChange3}
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
 ### Custom Button
 
-Pass in a custom method through itemRender, parameters: { number: "page number", text: "page text", active: "active page" } 
-
+Pass in a custom method through itemRender, parameters: `{ number: "page number", text: "page text", active: "active page" }`
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination} from '@nutui/nutui-react'; 
-import { ArrowLeft, ArrowRight } from '@nutui/icons-react';
-
-const App = () => {
-  const [currentPage4, setCurrentPage4] = useState(1)
-  const pageChange4 = (v: number) => {
-    const c = v
-    setCurrentPage4(c)
-  }
-  const itemRender = (page: any) => {
-    return <div>{page.number === 3 ? 'hot' : page.text}</div>
-  }
-  return (
-    <Pagination
-      value={currentPage4}
-      total={500}
-      itemSize={5}
-      onChange={pageChange4}
-      itemRender={itemRender} 
-      prev={<ArrowLeft />}
-      next={<ArrowRight />}
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -179,26 +66,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination } from '@nutui/nutui-react'; 
-
-const App = () => {
-  const pageChange5 = (v: number) => {
-    console.log(v)
-  }
-  return (
-    <Pagination
-      defaultValue={15}
-      total={500}
-      pageSize={10}
-      itemSize={3}
-      onChange={pageChange5}
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 

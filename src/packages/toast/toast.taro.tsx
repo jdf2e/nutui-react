@@ -11,28 +11,32 @@ import {
 } from '@/utils/use-custom-event'
 import { usePropsValue } from '@/utils/use-props-value'
 
-export type ToastPositionType = 'top' | 'bottom' | 'center'
+export type ToastPosition = 'top' | 'bottom' | 'center'
 export type ToastSize = 'small' | 'base' | 'large'
-export type ToastWordBreakType = 'normal' | 'break-all' | 'break-word'
+export type ToastWordBreak = 'normal' | 'break-all' | 'break-word'
 
 export interface ToastProps extends BasicComponent {
   id?: string
   maskClassName?: string
   contentClassName?: string
   contentStyle?: React.CSSProperties
-  icon: string | React.ReactNode
+  icon: React.ReactNode
   iconSize: string
-  msg: string | React.ReactNode
+  content: React.ReactNode
   duration: number
-  position?: ToastPositionType
+  position?: ToastPosition
   type: string
   title: string
   closeOnOverlayClick: boolean
   lockScroll: boolean
   size: ToastSize
   visible: boolean
-  wordBreak?: ToastWordBreakType
+  wordBreak?: ToastWordBreak
   onClose: () => void
+  /**
+   * @deprecated Please use `content` prop instead.
+   */
+  msg: React.ReactNode
 }
 
 const defaultProps = {
@@ -40,6 +44,7 @@ const defaultProps = {
   id: '',
   icon: null,
   iconSize: '20',
+  content: '',
   msg: '',
   duration: 2, // 时长,duration为0则一直展示
   position: 'center',
@@ -58,7 +63,7 @@ const classPrefix = 'nut-toast'
 
 // export default class Notification extends React.PureComponent<NotificationProps> {
 export const Toast: FunctionComponent<
-  Partial<ToastProps> & React.HTMLAttributes<HTMLDivElement>
+  Partial<ToastProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'content'>
 > & {
   show: typeof show
   hide: typeof hide
@@ -70,6 +75,7 @@ export const Toast: FunctionComponent<
       contentStyle,
       icon,
       iconSize,
+      content,
       msg,
       duration,
       type,
@@ -193,7 +199,7 @@ export const Toast: FunctionComponent<
               {title ? (
                 <div className={`${classPrefix}-title`}>{title}</div>
               ) : null}
-              <span className={`${classPrefix}-text`}>{msg}</span>
+              <span className={`${classPrefix}-text`}>{content || msg}</span>
             </div>
           </div>
         </Overlay>

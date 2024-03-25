@@ -1,9 +1,9 @@
 import React from 'react'
 import { render, waitFor, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { ActionSheet, ItemType } from '../actionsheet'
+import { ActionSheet, ActionSheetOption } from '../actionsheet'
 
-const menulist: ItemType<string | boolean>[] = [
+const menulist: ActionSheetOption<string | boolean>[] = [
   {
     name: '选项一',
     description: '选项一的描述信息',
@@ -67,7 +67,7 @@ test('props test has value ', async () => {
 })
 
 test('props test choose item and show value', async () => {
-  const choose = jest.fn()
+  const choose = vi.fn()
   const { container } = render(
     <ActionSheet
       visible
@@ -86,7 +86,7 @@ test('props test choose item and show value', async () => {
 })
 
 test('props test disabled item has disabled classes', async () => {
-  const choose = jest.fn()
+  const choose = vi.fn()
   const { container } = render(
     <ActionSheet
       visible
@@ -105,7 +105,7 @@ test('props test disabled item has disabled classes', async () => {
 })
 
 test('props test click disabled item and not call fn', async () => {
-  const choose = jest.fn()
+  const choose = vi.fn()
   const { container } = render(
     <ActionSheet
       visible

@@ -16,32 +16,7 @@ import { Empty } from '@nutui/nutui-react'
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Empty } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Empty
-        title="title"
-        description="No Data"
-        actions={[
-          { text: "Button" },
-          { text: "Button" },
-        ]}
-      />
-      <Empty
-        description="No Data"
-        actions={[{ text: "Button" }]}
-        style={{ marginTop: '10px' }}
-      />
-      <Empty description="No Data" />
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -49,17 +24,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Empty } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Empty description="No Data" size="small" />
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -67,17 +32,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Empty } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Empty description="No Data" imageSize={100} />
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -85,42 +40,17 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Empty } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <div className="show">
-      <Empty status="empty" description="No Content" />
-      <Empty status="error" description="Load Failed" />
-      <Empty status="network" description="No Network" />
-    </div>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
 ### Custom image
 
+> If you are inner user in JD, you can get the image links from us for default types.
+
 :::demo
 
-```tsx
-import  React from "react";
-import { Empty } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Empty
-      description="No Coupon" 
-      image={<img src="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png" alt=""/>}
-     />
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -128,21 +58,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Empty, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Empty status="error" description="Failed to load">
-      <div style={{marginTop: "10px"}}>
-        <Button icon="refresh" type="primary" size="small">重试</Button>
-      </div>
-    </Empty>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -154,8 +70,11 @@ export default App;
 | --- | --- | --- | --- |
 | image | Image type, supports incoming image URLs | `ReactNode` | `-` |
 | imageSize | Image size, the unit of number type is px | `number` \| `string` | `-` |
-| description | Description text below the image | `ReactNode` | `-` |
+| title | Title below the image | `ReactNode` | `-` |
+| description | Description below the image | `ReactNode` | `-` |
+| size | Size of component,used by full screen or half screen | `small` \| `base` | `base` |
 | status | The Default error type | `empty` \| `error` \| `network` | `empty` |
+| actions | Actions of operation | `Array` | `[]` |
 
 ## Theming
 

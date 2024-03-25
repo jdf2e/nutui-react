@@ -4,6 +4,7 @@ import { Top } from '@nutui/icons-react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import requestAniFrame from '@/utils/raf'
+import { useRtl } from '@/packages/configprovider'
 
 declare const window: any
 
@@ -26,6 +27,7 @@ const defaultProps = {
 export const BackTop: FunctionComponent<
   Partial<BackTopProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
 > = (props) => {
+  const rtl = useRtl()
   const {
     children,
     target,
@@ -121,7 +123,7 @@ export const BackTop: FunctionComponent<
           ...style,
         }
       : {
-          right: '10px',
+          [rtl ? 'left' : 'right']: '10px',
           bottom: '20px',
           zIndex,
         }

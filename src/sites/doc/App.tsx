@@ -1,36 +1,17 @@
 import React, { useEffect, useMemo, useState } from 'react'
 import { HashRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { MDXProvider } from '@mdx-js/react'
 import './App.scss'
 import { nav } from '@/config.json'
-import remarkGfm from 'remark-gfm'
-import { scssRaws } from './docs'
-import { visit } from 'unist-util-visit'
-import ReactMarkdown from 'react-markdown'
+import APPContext from './context'
 import Nav from '@/sites/doc/components/nav'
-import remarkDirective from 'remark-directive'
 import Header from '@/sites/doc/components/header'
-import Demoblock from '@/sites/doc/components/demoblock'
 import DemoPreview from '@/sites/doc/components/demo-preview'
 import Issue from '@/sites/doc/components/issue'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import routers from './router'
+import loadable from '@loadable/component'
+import CodeBlock from './components/demoblock/codeblock'
 
-function myRemarkPlugin() {
-  return (tree: any) => {
-    visit(tree, (node) => {
-      if (node.type === 'containerDirective') {
-        if (node.name !== 'demo') return
-
-        const data = node.data || (node.data = {})
-
-        data.hName = 'div'
-        data.hProperties = {
-          class: 'nutui-react--demo-wrapper',
-        }
-      }
-    })
-  }
-}
 
 const Title = () => {
   let location = useLocation()
@@ -61,7 +42,9 @@ const Title = () => {
     </div>
   )
 }
-
+const components = {
+  CodeBlock,
+}
 const App = () => {
   const taros = useMemo(() => {
     const docs = {} as any
@@ -133,88 +116,56 @@ const App = () => {
           <div className="doc-content-document isComponent">
             <Routes>
               {routers.map((ru, k) => {
+                const path = ru.component.name?.substring(
+                  0,
+                  ru.component.name.lastIndexOf('/')
+                )
+
+                const C = useMemo(() => loadable(ru.component), [ru.component])
+
                 return (
                   <Route
-                    key={Math.random()}
+                    key={k}
                     path={ru.path}
                     element={
-                      <>
-                        {taros.docs[ru.name.replace('-taro', '')] ? (
-                          <div className="doc-content-tabs ">
-                            <div
-                              className={`tab-item ${
-                                docname === 'react' ? 'cur' : ''
-                              }`}
-                              onClick={() => switchDoc('react')}
-                            >
-                              React
+                      <APPContext.Provider value={{ path }}>
+                        <MDXProvider components={components}>
+                          {taros.docs[ru.name.replace('-taro', '')] ? (
+                            <div className="doc-content-tabs ">
+                              <div
+                                className={`tab-item ${
+                                  docname === 'react' ? 'cur' : ''
+                                }`}
+                                onClick={() => switchDoc('react')}
+                              >
+                                React
+                              </div>
+                              <div
+                                className={`tab-item ${
+                                  docname === 'taro' ? 'cur' : ''
+                                }`}
+                                onClick={() => switchDoc('taro')}
+                              >
+                                Taro
+                              </div>
                             </div>
+                          ) : (
                             <div
-                              className={`tab-item ${
-                                docname === 'taro' ? 'cur' : ''
-                              }`}
-                              onClick={() => switchDoc('taro')}
+                              className="doc-content-tabs single"
+                              style={{
+                                display: `${
+                                  taros.support[ru.name.replace('-taro', '')]
+                                    ? 'inherit'
+                                    : 'none'
+                                }`,
+                              }}
                             >
-                              Taro
+                              <div className="tab-item cur">React / Taro</div>
                             </div>
-                          </div>
-                        ) : (
-                          <div
-                            className="doc-content-tabs single"
-                            style={{
-                              display: `${
-                                taros.support[ru.name.replace('-taro', '')]
-                                  ? 'inherit'
-                                  : 'none'
-                              }`,
-                            }}
-                          >
-                            <div className="tab-item cur">React / Taro</div>
-                          </div>
-                        )}
-
-                        <ReactMarkdown
-                          children={ru.component}
-                          remarkPlugins={[
-                            remarkGfm,
-                            remarkDirective,
-                            myRemarkPlugin,
-                          ]}
-                          components={{
-                            code({
-                              node,
-                              inline,
-                              className,
-                              children,
-                              ...props
-                            }) {
-                              const match = /language-([^(scss)]\w+)/.exec(
-                                className || ''
-                              )
-                              return !inline && match ? (
-                                <Demoblock
-                                  text={String(children).replace(/\n$/, '')}
-                                  scss={(scssRaws as any)[ru.name + 'Scss']}
-                                >
-                                  <SyntaxHighlighter
-                                    children={String(children).replace(
-                                      /\n$/,
-                                      ''
-                                    )}
-                                    language={match[1]}
-                                    PreTag="div"
-                                    {...props}
-                                  />
-                                </Demoblock>
-                              ) : (
-                                <code className={className} {...props}>
-                                  {children}
-                                </code>
-                              )
-                            },
-                          }}
-                        />
-                      </>
+                          )}
+                          <C />
+                        </MDXProvider>
+                      </APPContext.Provider>
                     }
                   ></Route>
                 )

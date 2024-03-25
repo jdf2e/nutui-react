@@ -3,7 +3,7 @@ import Taro from '@tarojs/taro'
 import { Jd } from '@nutui/icons-react-taro'
 import { Cell, Toast } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
-import { ToastWordBreakType } from './toast.taro'
+import { ToastWordBreak } from './toast.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 
 interface T {
@@ -71,7 +71,7 @@ const ToastDemo = () => {
     },
   })
   const [state, SetState] = useState({
-    msg: 'toast',
+    content: 'toast',
     type: 'text',
     duration: 2,
     closeOnOverlayClick: false,
@@ -79,20 +79,20 @@ const ToastDemo = () => {
     bottom: '',
     icon: '',
     center: true,
-    wordBreak: 'break-all' as ToastWordBreakType,
+    wordBreak: 'break-all' as ToastWordBreak,
   })
   const [showToast, SetShowToast] = useState(false)
 
   const openToast = (
     type: string,
-    msg: string,
+    content: string,
     duration?: number,
     icon?: string | React.ReactNode,
     closeOnOverlayClick?: boolean,
-    wordBreak: ToastWordBreakType = 'break-all'
+    wordBreak: ToastWordBreak = 'break-all'
   ) => {
     const changeState = Object.assign(state, {
-      msg,
+      content,
       type,
       duration,
       icon,
@@ -107,7 +107,7 @@ const ToastDemo = () => {
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <Toast
-          msg={state.msg}
+          content={state.content}
           visible={showToast}
           type={state.type}
           duration={state.duration}
@@ -133,11 +133,11 @@ const ToastDemo = () => {
           onClick={() => {
             Toast.show('test', {
               title: translated.toastFunction,
+              content: translated.toastText,
               type: 'fail',
               duration: 2,
               position: 'center',
               icon: <Jd />,
-              size: 'large',
               lockScroll: true,
               onClose: () => {
                 console.log('close')

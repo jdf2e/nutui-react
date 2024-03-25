@@ -19,7 +19,7 @@ test('should render image props correctly', () => {
   const { container } = render(<Empty status="empty" />)
   expect(container.querySelector('.img')).toHaveAttribute(
     'src',
-    'https://static-ftcms.jd.com/p/files/61a9e3183985005b3958672b.png'
+    'https://storage.360buyimg.com/imgtools/30186cfda0-0d3eee40-c0ac-11ee-9382-9125782aa3b8.png'
   )
 })
 test('should render actions correctly', () => {
@@ -39,7 +39,7 @@ test('should render actions correctly', () => {
 test('should render custom image correctly', () => {
   const { getByTestId } = render(
     <Empty
-      description="无优惠券"
+      description="店铺为空"
       image={
         <img
           src="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png"

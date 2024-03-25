@@ -98,7 +98,7 @@ test('should render slot correctly', async () => {
   }
 
   const renderDayBottom = (date: Day) => {
-    return <span>{date.day <= 10 ? '上旬' : '下旬'}</span>
+    return <span>{Number(date.day) <= 10 ? '上旬' : '下旬'}</span>
   }
 
   const { container } = render(
@@ -122,7 +122,7 @@ test('should render slot correctly', async () => {
 })
 
 test('select event when click item', () => {
-  const onDayClick = jest.fn()
+  const onDayClick = vi.fn()
   const { container } = render(
     <Calendar
       visible
@@ -140,7 +140,7 @@ test('select event when click item', () => {
 })
 
 test('choose event when click item', async () => {
-  const onConfirm = jest.fn()
+  const onConfirm = vi.fn()
   const { container } = render(
     <Calendar
       visible

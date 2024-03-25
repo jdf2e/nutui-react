@@ -119,6 +119,23 @@
     color: $white;
     border: 1px solid $color-text-disabled;
   }
+
+  &-list-item {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: $checkbox-list-item-padding;
+    border-top: $checkbox-list-item-border;
+
+    .nut-checkbox-label {
+      flex: auto;
+    }
+
+    .nut-icon {
+      flex: none;
+    }
+  }
 }
 
 [dir='rtl'] .nut-checkbox,
@@ -141,11 +158,13 @@
       left: 0;
       border-right: 10px solid transparent;
       border-left: 10px solid $color-primary;
+
       &-checked {
         left: auto;
         right: 50%;
         transform: translate(3px, -3px);
       }
+
       .nut-icon {
         &:before {
           margin-left: 0;

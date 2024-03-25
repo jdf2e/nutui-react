@@ -14,9 +14,27 @@ if (projectID) {
 // https://vitejs.dev/config/
 export default defineConfig({
   mode: 'production',
-  base: `/h5/react/${projectID === 'jmapp' ? 'jm' : '2x'}`,
+  base: `/h5/react/${projectID === 'jmapp' ? 'jdesign' : '2x'}`,
   resolve: {
-    alias: [{ find: '@', replacement: resolve(__dirname, './src') }],
+    alias: [
+      {
+        find: '@nutui/nutui-react/dist/locale/enUS',
+        replacement: resolve(__dirname, './src/locales/en-US.ts'),
+      },
+      { find: '@', replacement: resolve(__dirname, './src') },
+      {
+        find: '@nutui/nutui-react-taro/dist/locales/en-US.ts',
+        replacement: resolve(__dirname, './src/locales/en-US.ts'),
+      },
+      {
+        find: '@nutui/nutui-react',
+        replacement: resolve(__dirname, './src/packages/nutui.react.ts'),
+      },
+      {
+        find: '@nutui/nutui-react-taro',
+        replacement: resolve(__dirname, './src/packages/nutui.react.taro.ts'),
+      },
+    ],
   },
   css: {
     preprocessorOptions: {
@@ -46,7 +64,7 @@ export default defineConfig({
   plugins: [reactRefresh()],
   build: {
     target: 'es2015',
-    outDir: `./dist/${projectID === 'jmapp' ? 'jm' : '2x'}/`,
+    outDir: `./dist/${projectID === 'jmapp' ? 'jdesign' : '2x'}/`,
     cssCodeSplit: true,
     rollupOptions: {
       input: {

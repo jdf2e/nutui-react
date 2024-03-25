@@ -18,19 +18,7 @@ import { InputNumber } from '@nutui/nutui-react-taro';
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { InputNumber } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <InputNumber defaultValue={1} />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -40,19 +28,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { InputNumber } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <InputNumber defaultValue={0} min={0} step="5" />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -62,28 +38,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { InputNumber, Toast } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const overlimit = (e: MouseEvent) => {
-    console.log(e)
-    Toast.warn('超出限制事件触发')
-  }
-  return (
-    <>
-      <InputNumber
-        defaultValue={10}
-        min="10"
-        max="20"
-        onOverlimit={overlimit}
-      />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -93,19 +48,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { InputNumber } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <InputNumber defaultValue={0} disabled />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -115,19 +58,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { InputNumber } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <InputNumber defaultValue={1} readOnly />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -137,45 +68,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { InputNumber, ConfigProvider } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [inputState, setInputState] = useState({
-    val: 1,
-  })
-
-  const customTheme = {
-    nutuiInputnumberButtonWidth: '30px',
-    nutuiInputnumberButtonHeight: '30px',
-    nutuiInputnumberButtonBorderRadius: '2px',
-    nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
-    nutuiInputnumberInputHeight: '30px',
-    nutuiInputnumberInputMargin: '0 2px',
-  }
-
-  const customTheme2 = {
-    nutuiInputnumberButtonWidth: '30px',
-    nutuiInputnumberButtonHeight: '30px',
-    nutuiInputnumberButtonBackgroundColor: `#f4f4f4`,
-    nutuiInputnumberInputBackgroundColor: '#fff',
-    nutuiInputnumberInputMargin: '0 2px',
-  }
-
-  return (
-    <>
-      <ConfigProvider theme={customTheme}>
-        <InputNumber defaultValue={1} />
-      </ConfigProvider>
-      <ConfigProvider theme={customTheme2}>
-        <InputNumber defaultValue={1} />
-      </ConfigProvider>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -185,19 +78,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { InputNumber } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <InputNumber defaultValue={5.5} step="0.1" digits="1" readOnly />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -207,27 +88,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { InputNumber, Toast } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [inputValue, setInputValue] = useState(0)
-  const onChange = (value: string | number) => {
-    Toast.loading('异步演示 2 秒后更改')
-    setTimeout(() => {
-      setInputValue(Number(value))
-      Toast.hide()
-    }, 2000)
-  }
-  return (
-    <>
-      <InputNumber value={inputValue} min="-6" onChange={onChange} async />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -235,34 +96,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { InputNumber } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <InputNumber
-        style={{"--nutui-inputnumber-input-width": "60px"}}
-        modelValue="1000"
-        min={10}
-        max={15020}
-        formatter={(value) =>
-          `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')
-        }
-      />
-      <InputNumber
-        style={{"--nutui-inputnumber-input-width": "60px"}}
-        modelValue="100"
-        min={0}
-        max={100}
-        formatter={(value) => `${value}%`}
-      />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo9.tsx'></CodeBlock>
 
 :::
 
@@ -277,6 +111,7 @@ export default App;
 | value | 当前值，受控值 | `string`  \|  `number` | `-` |
 | min | 最小值限制 | `string`  \|  `number` | `1` |
 | max | 最大值限制 | `string`  \|  `number` | `9999` |
+| type | input 的类型 | `digit`  \|  `number` | `digit` |
 | step | 步长 | `string`  \|  `number` | `1` |
 | digits | 设置保留的小数位 | `string`  \|  `number` | `0` |
 | disabled | 禁用所有功能 | `boolean` | `false` |
@@ -305,12 +140,11 @@ export default App;
 | \--nutui-inputnumber-input-font-size | 数字输入框中input的字号大小 | `14px` |
 | \--nutui-inputnumber-input-border | 数字输入框中input的border值 | `0` |
 | \--nutui-inputnumber-input-border-radius | 数字输入框中input的圆角 | `6px` |
-| \--nutui-inputnumber-input-margin | 数字输入框中input的margin值 | `0 6px` |
-
-| \--nutui-inputnumber-button-width | 数字输入框左右按钮的宽度 | `16px` |
+| \--nutui-inputnumber-input-margin | 数字输入框中input的margin值 | `0` |
+| \--nutui-inputnumber-button-width | 数字输入框左右按钮的宽度 | `14px` |
 | \--nutui-inputnumber-button-height | 数字输入框左右按钮的高度 | `16px` |
 | \--nutui-inputnumber-button-border-radius | 数字输入框左右按钮的圆角 | `30px` |
-| \--nutui-inputnumber-button-background-color | 数字输入框左右按钮的背景色 | `$white` |
+| \--nutui-inputnumber-button-background-color | 数字输入框左右按钮的背景色 | `transparent` |
 | \--nutui-inputnumber-icon-color | 数字输入框中icon的颜色 | `$color-text` |
 | \--nutui-inputnumber-icon-size | 数字输入框中icon的大小 | `8px` |
 | \--nutui-inputnumber-disabled-color | 数字输入框禁用色 | `$color-text-disabled` |

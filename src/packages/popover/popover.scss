@@ -101,11 +101,11 @@
         border-bottom: none;
       }
 
-      &:hover {
-        cursor: pointer;
-        color: $popover-hover-text-color;
-        background-color: $popover-hover-background-color;
-      }
+      // &:hover:not(:only-child) {
+      //   cursor: pointer;
+      //   color: $popover-hover-text-color;
+      //   background-color: $popover-hover-background-color;
+      // }
 
       &:hover:nth-of-type(2) {
         border-radius: 8px 8px 0px 0px;
@@ -122,17 +122,20 @@
         width: 12px;
         height: 12px;
         font-size: 12px;
+        .nut-icon {
+          width: 12px;
+          height: 12px;
+          font-size: 12px;
+        }
       }
 
       &-name {
         width: 100%;
         word-break: keep-all;
-        margin-left: 4px;
+        margin: 0 6px 0 4px;
       }
 
       &-action-icon {
-        position: absolute;
-        right: $popover-menu-item-padding;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -215,6 +218,27 @@
 
     &-right-start {
       top: 0;
+    }
+  }
+}
+
+.nut-popover-dark {
+  background: $popover-text-color;
+  color: $popover-content-background-color;
+
+  .nut-popover-arrow {
+    border-bottom-color: $popover-text-color;
+  }
+
+  .nut-popover-content {
+    background: $popover-text-color !important;
+    color: $popover-content-background-color !important;
+    .nut-popover-menu-item {
+      border-bottom-color: $popover-content-background-color;
+      &:hover {
+        color: $popover-content-background-color;
+        background-color: $popover-text-color;
+      }
     }
   }
 }

@@ -1,4 +1,4 @@
-import React, { ForwardRefRenderFunction, forwardRef } from 'react'
+import React, { ForwardRefRenderFunction, forwardRef, useState } from 'react'
 import type { MouseEvent } from 'react'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react'
@@ -26,7 +26,7 @@ const defaultProps = {
   disableConfirmButton: false,
   footerDirection: 'horizontal',
   lockScroll: true,
-  closeIconPosition: 'top-right',
+  closeIconPosition: 'bottom',
   closeIcon: false,
   beforeCancel: () => true,
   beforeClose: () => true,
@@ -57,6 +57,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
     ...restProps
   } = props
   const classPrefix = 'nut-dialog'
+  const [loading, setLoading] = useState(false)
 
   const renderFooter = () => {
     if (footer === null) return ''
@@ -69,10 +70,16 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
       onCancel?.()
     }
 
-    const handleOk = (e: MouseEvent<HTMLButtonElement>) => {
+    const handleOk = async (e: MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation()
-      onClose?.()
-      onConfirm?.(e)
+      setLoading(true)
+      try {
+        await onConfirm?.(e)
+        setLoading(false)
+        onClose?.()
+      } catch {
+        setLoading(false)
+      }
     }
 
     return (
@@ -95,6 +102,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
               })}
               disabled={disableConfirmButton}
               onClick={(e) => handleOk(e)}
+              loading={loading}
             >
               {confirmText || locale.confirm}
             </Button>

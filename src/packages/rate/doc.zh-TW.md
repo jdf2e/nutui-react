@@ -16,18 +16,7 @@ import { Rate } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Rate defaultValue={3} />
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -35,18 +24,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Rate } from '@nutui/nutui-react';
-
-const App = () => {
-  const [state, setState] = useState(2);
-  return (
-    <Rate value={score} onChange={(value) => setScore(value)} />
-  );
-};  
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -54,18 +32,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Rate allowHalf defaultValue={3.5} />
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -73,22 +40,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react';
-import { HeartFill } from '@nutui/icons-react';
-
-const App = () => {
-  return (
-    <Rate
-      checkedIcon={<HeartFill />}
-      defaultValue={3}
-    />
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -96,18 +48,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Rate count="6" defaultValue={3} />
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -115,18 +56,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Rate count={5} defaultValue={2} min={3}/>
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -134,22 +64,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react';
-import { HeartFill } from '@nutui/icons-react';
-
-const App = () => {
-  return (
-    <Rate
-      defaultValue={3}
-      checkedIcon={<HeartFill color="rgb(255, 200, 0)" />}
-    />
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -157,18 +72,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Rate disabled defaultValue={3} />
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -176,18 +80,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <Rate defaultValue={3} readOnly />
-  );
-};  
-export default App;
-
-```
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
 :::
 
@@ -195,68 +88,31 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react';
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
 
-const App = () => {
-  const onChange = (val: any) => {
-    console.log(val)
-  }
-  return (
-    <Rate defaultValue={3} onChange={onChange} />
-  );
-};  
-export default App;
-
-```
+:::
 
 ### 滑動選擇
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react';
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
 
-const App = () => {
-  return ( 
-    <>   
-      <Rate defaultValue={3} allowHalf touchable />
-    </>
-  );
-};  
-export default App;
-
-```
+:::
 
 ### 滑動事件
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Rate } from '@nutui/nutui-react';
+<CodeBlock src='h5/demo12.tsx'></CodeBlock>
 
-const App = () => {
-  const handleTouchEnd = (event, val) => {
-    console.log(event, val)
-  }
-  return ( 
-    <>   
-      <Rate defaultValue={3} touchable onTouchEnd={handleTouchEnd}/>
-    </>
-  );
-};  
-export default App;
-
-```
+:::
 
 ## Rate
 
 ### Props
 
-| 属性 | 說明 | 類型 | 默認值 |
+| 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
 | defaultValue | 非受控的 star 默認值 | `number` | `0` |
 | value | 受控的 star 數值 | `number` | `0` |
@@ -268,10 +124,10 @@ export default App;
 | readOnly | 是否只讀 | `boolean` | `false` |
 | disabled | 是否禁用 | `boolean` | `false` |
 | touchable | 是否允許滑動選擇 ｜ `boolean` | `false` |
-| onChange | 当前 star 数修改时触发 | `(value: number) => void` | `-` |
-| onTouchEnd | TouchEnd 事件 | `(event: TouchEvent, value: number) => void` | `-` |
+| onChange | 當前 star 數修改時觸發 | `(value: number) => void` | `-` |
+| onTouchEnd | touch 滑動結束時觸發 | `(event: TouchEvent, value: number) => void` | `-` |
 
-## 主題定制
+## 主題定製
 
 ### 樣式變量
 

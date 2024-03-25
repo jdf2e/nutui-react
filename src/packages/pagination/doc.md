@@ -14,63 +14,21 @@ import { Pagination } from '@nutui/nutui-react';
 
 ### 基础用法
 
-通过 value 来绑定当前页码时，组件为受控状态，分页显示取决于传入的 value ，一般搭配 onChange 使用。 不需要受控时，可通过 defaultValue 指定当前页码 
+通过 value 来绑定当前页码时，组件为受控状态，分页显示取决于传入的 value ，一般搭配 onChange 使用。 不需要受控时，可通过 defaultValue 指定当前页码
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination } from '@nutui/nutui-react';
-
-const App = () => {
-  const [currentPage1, setCurrentPage1] = useState(1)
-  const pageChange1 = (v: number) => {
-    const c = v
-    setCurrentPage1(c)
-  }
-  return (
-    <Pagination
-      value={currentPage1}
-      total={25}
-      pageSize={5}
-      onChange={pageChange1}
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
 ### 简单模式
 
-将 mode 设置为 "simple" 来切换到简单模式，此时分页器不会展示具体的页码按钮。 
-
+将 mode 设置为 "simple" 来切换到简单模式，此时分页器不会展示具体的页码按钮。
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination } from '@nutui/nutui-react';
-
-const App = () => {
-  const [currentPage2, setCurrentPage2] = useState(1)
-  const pageChange2 = (v: number) => {
-    const c = v
-    setCurrentPage2(c)
-  }
-  return (
-    <Pagination
-      value={currentPage2}
-      total={12}
-      pageSize={1}
-      mode="simple" 
-      onChange={pageChange2} 
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -78,99 +36,29 @@ export default App;
 
 将 mode 设置为 "lite" 来切换到极简模式，可用于主图切换。
 
-
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination } from '@nutui/nutui-react';
-
-const App = () => {
-  const [currentPage2, setCurrentPage2] = useState(1)
-  const pageChange2 = (v: number) => {
-    const c = v
-    setCurrentPage2(c)
-  }
-  return (
-    <Pagination
-      value={currentPage2}
-      total={12}
-      pageSize={1}
-      mode="lite" 
-      onChange={pageChange2} 
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
 ### 显示省略号
 
-设置 force-ellipses 后会展示省略号按钮，点击后可以快速跳转。 
+设置 force-ellipses 后会展示省略号按钮，点击后可以快速跳转。
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination } from '@nutui/nutui-react';
-
-const App = () => {
-  const [currentPage3, setCurrentPage3] = useState(1)
-  const pageChange3 = (v: number) => {
-    const c = v
-    setCurrentPage3(c)
-  }
-  return (
-    <Pagination
-      value={currentPage3}
-      total={125}
-      itemSize={2}
-      ellipse
-      onChange={pageChange3}
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
 ### 自定义按钮
 
-通过itemRender传入自定义方法，入参数为page:{ number:页数, text:"文本", active:"选中状态" } 
+通过itemRender传入自定义方法，入参数为`page:{ number:页数, text:"文本", active:"选中状态" }`
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination} from '@nutui/nutui-react'; 
-import { ArrowLeft, ArrowRight } from '@nutui/icons-react';
-
-const App = () => {
-  const [currentPage4, setCurrentPage4] = useState(1)
-  const pageChange4 = (v: number) => {
-    const c = v
-    setCurrentPage4(c)
-  }
-  const itemRender = (page: any) => {
-    return <div>{page.number === 3 ? 'hot' : page.text}</div>
-  }
-  return (
-    <Pagination
-      value={currentPage4}
-      total={500}
-      itemSize={5}
-      onChange={pageChange4}
-      itemRender={itemRender} 
-      prev={<ArrowLeft />}
-      next={<ArrowRight />}
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -178,26 +66,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Pagination } from '@nutui/nutui-react'; 
-
-const App = () => {
-  const pageChange5 = (v: number) => {
-    console.log(v)
-  }
-  return (
-    <Pagination
-      defaultValue={15}
-      total={500}
-      pageSize={10}
-      itemSize={3}
-      onChange={pageChange5}
-    />
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 

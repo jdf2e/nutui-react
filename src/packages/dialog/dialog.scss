@@ -19,7 +19,6 @@
   &-outer {
     position: fixed;
     max-height: 100%;
-    overflow-y: auto;
     background-color: $white;
     transition:
       transform 0.2s,
@@ -45,6 +44,11 @@
     align-items: center;
     top: $dialog-close-top;
     color: $dialog-close-color;
+    .nut-icon {
+      font-size: 24px;
+      height: 24px;
+      width: 24px;
+    }
 
     &-top-right {
       right: $dialog-close-right;
@@ -52,6 +56,13 @@
 
     &-top-left {
       left: $dialog-close-left;
+    }
+
+    &-bottom {
+      top: initial;
+      bottom: -56px;
+      left: 50%;
+      transform: translate(-50%);
     }
 
     &:active {
@@ -79,6 +90,7 @@
     word-break: break-all;
     white-space: pre-wrap;
     text-align: $dialog-content-text-align;
+    overflow-y: auto;
   }
 
   &-footer {

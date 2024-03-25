@@ -8,7 +8,6 @@
 
 ```tsx
 import { Tag } from '@nutui/nutui-react';
-
 ```
 
 ## 代碼演示
@@ -17,23 +16,7 @@ import { Tag } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React from "react";
-import { Tag } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Tag type="primary">標簽</Tag>
-      <Tag type="info">標簽</Tag>
-      <Tag type="success">標簽</Tag>
-      <Tag type="danger">標簽</Tag>
-      <Tag type="warning">標簽</Tag>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -41,29 +24,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from 'react'
-import { Failure } from '@nutui/icons-react'
-import { Tag } from '@nutui/nutui-react'
-
-const App = () => {
-  return (
-    <>
-      <Tag plain>標簽</Tag>
-      <Tag round type='primary'>標簽</Tag>
-      <Tag mark type='primary'>標簽</Tag>
-      <Tag closeable
-           onClose={() => alert('Tag closed')} 
-           type='primary'>標簽</Tag>
-      <Tag closeable
-           closeIcon={<Failure width={8} height={8} />}
-           onClose={() => alert('Tag closed')}
-           type='primary'>標簽</Tag>
-    </>
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -71,21 +32,15 @@ export default App
 
 :::demo
 
-```tsx
-import React from "react";
-import { Tag } from '@nutui/nutui-react';
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
-const App = () => {
-  return (
-    <>
-      <Tag background="#FA685D">標簽</Tag>
-      <Tag background="#E9E9E9" color="#999999">標簽</Tag>
-      <Tag background="#FA2400" plain>標簽</Tag>
-    </>
-  )
-}
-export default App;
-```
+:::
+
+### 圖文
+
+:::demo
+
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 

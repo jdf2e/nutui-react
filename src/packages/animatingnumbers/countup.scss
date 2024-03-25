@@ -3,6 +3,7 @@
     display: inline-flex;
     height: $countup-height;
     overflow: hidden;
+    direction: ltr;
   }
 
   &-listitem {

@@ -552,6 +552,26 @@ export default CheckboxGroupOptions;
 
 :::
 
+## 列表
+
+:::demo
+
+```tsx
+import React, { useState } from 'react';
+import { Checkbox, CheckboxGroup } from '@nutui/nutui-react';
+
+const CheckboxGroupList = () => {
+  return <Checkbox.Group defaultValue={['1']} labelPosition="left" list>
+    <Checkbox value="1" label="选项1" />
+    <Checkbox value="2" label="选项2" />
+    <Checkbox value="3" label="选项3" />
+  </Checkbox.Group>
+}
+export default CheckboxGroupList;
+```
+
+:::
+
 ## Checkbox
 
 ### props
@@ -561,6 +581,7 @@ export default CheckboxGroupOptions;
 | checked | 是否选中 | `boolean` | `false` |
 | defaultChecked | 初始是否选中 | `boolean` | `false` |
 | disabled | 是否禁用选择 | `boolean` | `false` |
+| list | 列表模式 | `boolean` | `false` |
 | labelPosition | 文本所在的位置 | `left` \| `right` | `right` |
 | icon | 选中前| `ReactNode` | `'CheckNormal'` |
 | activeIcon | 选中后 | `ReactNode` | `'Checked'` |
@@ -611,3 +632,7 @@ export default CheckboxGroupOptions;
 | \--nutui-checkbox-button-active-border | shape为button选中态的边框 | `1px solid $color-primary` |
 | \--nutui-checkbox-button-padding | shape为button的内边距 | `5px 18px` |
 | \--nutui-checkbox-button-border-radius | shape为button的圆角 | `15px` |
+| \--nutui-checkbox-list-background-colors | 列表背景色 | `15px` |
+| \--nutui-checkbox-list-item-border | 列表项的边框 | `15px` |
+| \--nutui-checkbox-list-padding | 列表的padding | `15px` |
+| \--nutui-checkbox-list-item-padding | 列表项的padding | `15px` |

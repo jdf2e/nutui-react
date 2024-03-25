@@ -16,79 +16,7 @@ import { InfiniteLoading } from '@nutui/nutui-react'
 
 :::demo
 
-```tsx
-import React, { useState, useEffect } from 'react'
-import { Cell, InfiniteLoading } from '@nutui/nutui-react'
-
-const sleep = (time: number): Promise<unknown> =>
-  new Promise((resolve) => {setTimeout(resolve, time)})
-const InfiniteUlStyle = {
-  height: '300px',
-  width: '100%',
-  padding: '0',
-  overflowY: 'auto',
-  overflowX: 'hidden',
-}
-
-const InfiniteLiStyle = {
-  marginTop: '10px',
-  fontSize: '14px',
-  color: 'rgba(100, 100, 100, 1)',
-  textAlign: 'center',
-}
-const App = () => {
-  const [defaultList, setDefaultList] = useState<string[]>([])
-  const [hasMore, setHasMore] = useState(true)
-
-  useEffect(() => {
-    init()
-  }, [])
-
-  const loadMore = async () => {
-    await sleep(2000)
-    const curLen = defaultList.length
-    for (let i = curLen; i < curLen + 10; i++) {
-      defaultList.push(`${i}`)
-    }
-    if (defaultList.length >= 30) {
-      setHasMore(false)
-    } else {
-      setDefaultList([...defaultList])
-    }
-  }
-
-  const init = () => {
-    for (let i = 0; i < 10; i++) {
-      defaultList.push(`${i}`)
-    }
-    setDefaultList([...defaultList])
-  }
-
-  return (
-    <>
-      <h2>基礎用法</h2>
-      <Cell>
-        <ul id="scroll" style={InfiniteUlStyle}>
-          <InfiniteLoading
-            target="scroll"
-            hasMore={hasMore}
-            onLoadMore={loadMore}
-          >
-            {defaultList.map((item, index) => {
-              return (
-                <li key={index} style={InfiniteLiStyle}>
-                  {item}
-                </li>
-              )
-            })}
-          </InfiniteLoading>
-        </ul>
-      </Cell>
-    </>
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -96,94 +24,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, { useState, useEffect } from 'react'
-import { Cell, InfiniteLoading } from '@nutui/nutui-react'
-import { Jd } from '@nutui/icons-react'
-
-const sleep = (time: number): Promise<unknown> =>
-  new Promise((resolve) => {setTimeout(resolve, time)})
-const InfiniteUlStyle = {
-  height: '300px',
-  width: '100%',
-  padding: '0',
-  overflowY: 'auto',
-  overflowX: 'hidden',
-}
-
-const InfiniteLiStyle = {
-  marginTop: '10px',
-  fontSize: '14px',
-  color: 'rgba(100, 100, 100, 1)',
-  textAlign: 'center',
-}
-const App = () => {
-  const [refreshList, setRefreshList] = useState<string[]>([])
-  const [refreshHasMore, setRefreshHasMore] = useState(true)
-
-  useEffect(() => {
-    init()
-  }, [])
-
-  const init = () => {
-    for (let i = 0; i < 10; i++) {
-      refreshList.push(`${i}`)
-    }
-    setRefreshList([...refreshList])
-  }
-
-  const refreshLoadMore = async () => {
-    await sleep(2000)
-    const curLen = refreshList.length
-    for (let i = curLen; i < curLen + 10; i++) {
-      refreshList.push(`${i}`)
-    }
-    if (refreshList.length >= 30) {
-      setRefreshHasMore(false)
-    } else {
-      setRefreshList([...refreshList])
-    }
-  }
-
-  const refresh = async () => {
-    await sleep(1000)
-    Toast.show('刷新成功')
-  }
-
-  return (
-    <>
-      <h2>下拉刷新</h2>
-      <Cell>
-        <ul id="refreshScroll" style={InfiniteUlStyle}>
-          <InfiniteLoading
-            pullingText={
-              <>
-                <Jd />
-                <span style={{ fontSize: '10px' }}>鬆開刷新</span>
-              </>
-            }
-            loadingText={<Jd />}
-            target="refreshScroll"
-            pullRefresh
-            hasMore={refreshHasMore}
-            onLoadMore={refreshLoadMore}
-            onRefresh={refresh}
-          >
-            {refreshList.map((item, index) => {
-              return (
-                <li className="infiniteLi" key={index} style={InfiniteLiStyle}>
-                  {item}
-                </li>
-              )
-            })}
-          </InfiniteLoading>
-        </ul>
-      </Cell>
-    </>
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -191,162 +32,23 @@ export default App
 
 :::demo
 
-```tsx
-import React, { useState, useEffect } from 'react'
-import { Cell, InfiniteLoading } from '@nutui/nutui-react'
-
-const sleep = (time: number): Promise<unknown> =>
-  new Promise((resolve) => {setTimeout(resolve, time)})
-const InfiniteUlStyle = {
-  height: '300px',
-  width: '100%',
-  padding: '0',
-  overflowY: 'auto',
-  overflowX: 'hidden',
-}
-
-const InfiniteLiStyle = {
-  marginTop: '10px',
-  fontSize: '14px',
-  color: 'rgba(100, 100, 100, 1)',
-  textAlign: 'center',
-}
-const App = () => {
-  const [customList, setCustomList] = useState<string[]>([])
-  const [customHasMore, setCustomHasMore] = useState(true)
-
-  useEffect(() => {
-    init()
-  }, [])
-
-  const init = () => {
-    for (let i = 0; i < 10; i++) {
-      customList.push(`${i}`)
-    }
-    setCustomList([...customList])
-  }
-
-  const customLoadMore = async () => {
-    await sleep(2000)
-    const curLen = customList.length
-    for (let i = curLen; i < curLen + 10; i++) {
-      customList.push(`${i}`)
-    }
-    if (customList.length >= 30) {
-      setCustomHasMore(false)
-    } else {
-      setCustomList([...customList])
-    }
-  }
-
-  return (
-    <>
-      <h2>自定義加載文案</h2>
-      <Cell>
-        <ul id="customScroll" style={InfiniteUlStyle}>
-          <InfiniteLoading
-            target="customScroll"
-            loadingText="loading"
-            loadMoreText="沒有啦～"
-            hasMore={customHasMore}
-            onLoadMore={customLoadMore}
-          >
-            {customList.map((item, index) => {
-              return (
-                <li key={index} style={InfiniteLiStyle}>
-                  {item}
-                </li>
-              )
-            })}
-          </InfiniteLoading>
-        </ul>
-      </Cell>
-    </>
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
+### primary主题
+
+:::demo
+
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
+
+:::
 
 ### 基於window滾動
 
 :::demo
 
-```tsx
-import React, { useState, useEffect } from 'react'
-import { Cell, InfiniteLoading } from '@nutui/nutui-react'
-
-const sleep = (time: number): Promise<unknown> =>
-  new Promise((resolve) => {setTimeout(resolve, time)})
-const InfiniteUlStyle = {
-  width: '100%',
-  padding: '0',
-  overflowY: 'auto',
-  overflowX: 'hidden',
-}
-
-const InfiniteLiStyle = {
-  marginTop: '10px',
-  fontSize: '14px',
-  color: 'rgba(100, 100, 100, 1)',
-  textAlign: 'center',
-}
-const App = () => {
-  const [customList, setCustomList] = useState<string[]>([])
-  const [customHasMore, setCustomHasMore] = useState(true)
-
-  useEffect(() => {
-    init()
-  }, [])
-
-  const init = () => {
-    for (let i = 0; i < 10; i++) {
-      customList.push(`${i}`)
-    }
-    setCustomList([...customList])
-  }
-
-  const customLoadMore = async () => {
-    await sleep(2000)
-    const curLen = customList.length
-    for (let i = curLen; i < curLen + 10; i++) {
-      customList.push(`${i}`)
-    }
-    if (customList.length >= 30) {
-      setCustomHasMore(false)
-    } else {
-      setCustomList([...customList])
-    }
-  }
-
-  return (
-    <>
-      <h2>基於window滾動</h2>
-      <Cell>
-        <ul id="customScroll" style={InfiniteUlStyle}>
-          <InfiniteLoading
-            loadingText="loading"
-            loadMoreText="沒有啦～"
-            hasMore={customHasMore}
-            onLoadMore={customLoadMore}
-          >
-            {customList.map((item, index) => {
-              return (
-                <li key={index} style={InfiniteLiStyle}>
-                  {item}
-                </li>
-              )
-            })}
-          </InfiniteLoading>
-        </ul>
-      </Cell>
-    </>
-  )
-}
-export default App
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -356,6 +58,7 @@ export default App
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
+| type | 主題類型 | `default`\| `primary` | `default` |
 | hasMore | 是否還有更多數據 | `boolean` | `true` |
 | threshold | 距離底部多遠加載 | `number` | `200` |
 | capture | 是否使用捕獲模式 true 捕獲 false 冒泡 | `boolean` | `false` |

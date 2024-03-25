@@ -22,6 +22,52 @@ test('form set initialValues', () => {
   )
 })
 
+test('form validateTrigger', async () => {
+  const { container, rerender } = render(
+    <Form>
+      <Form.Item
+        label="字段A"
+        name="username"
+        required
+        validateTrigger="onBlur"
+        rules={[{ required: true, message: '请输入字段A' }]}
+      >
+        <Input placeholder="请输入字段A" type="text" />
+      </Form.Item>
+    </Form>
+  )
+  const input = container.querySelector('.nut-input-native')
+  if (input) {
+    fireEvent.focus(input)
+    fireEvent.blur(input)
+    await waitFor(() => {
+      const errorMessage = container.querySelector('.nut-form-item-body-tips')
+      expect(errorMessage).toBeTruthy()
+    })
+  }
+  rerender(
+    <Form initialValues={{ username: 'NutUI-React' }}>
+      <Form.Item
+        label="字段A"
+        name="username"
+        required
+        validateTrigger={['onBlur']}
+        rules={[{ required: true, message: '请输入字段A' }]}
+      >
+        <Input placeholder="请输入字段A" type="text" />
+      </Form.Item>
+    </Form>
+  )
+  if (input) {
+    fireEvent.focus(input)
+    fireEvent.blur(input)
+    await waitFor(() => {
+      const errorMessage = container.querySelector('.nut-form-item-body-tips')
+      expect(errorMessage).toBeTruthy()
+    })
+  }
+})
+
 test('useForm', () => {
   const App = () => {
     const [form] = Form.useForm()
@@ -69,7 +115,7 @@ test('form set required', () => {
 })
 
 test('form set change value', async () => {
-  const handleSubmit = jest.fn()
+  const handleSubmit = vi.fn()
   const { container } = render(
     <Form initialValues={{ username: 'NutUI-React' }} onFinish={handleSubmit}>
       <Form.Item name="username" required label="UserName">
@@ -92,7 +138,7 @@ test('form set change value', async () => {
 })
 
 test('form onFinishFailed', async () => {
-  const handleFailed = jest.fn()
+  const handleFailed = vi.fn()
   const { container } = render(
     <Form
       initialValues={{ username: 'NutUI-React' }}
@@ -133,7 +179,7 @@ test('form onFinishFailed', async () => {
 })
 
 test('form validator onFinishFailed', async () => {
-  const handleFailed = jest.fn()
+  const handleFailed = vi.fn()
   const { container } = render(
     <Form
       initialValues={{ username: 'NutUI-React' }}

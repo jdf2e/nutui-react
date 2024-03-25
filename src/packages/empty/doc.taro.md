@@ -16,32 +16,7 @@ import { Empty } from '@nutui/nutui-react-taro'
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Empty } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <>
-      <Empty
-        title="标题"
-        description="无数据"
-        actions={[
-          { text: "操作按钮" },
-          { text: "操作按钮" },
-        ]}
-      />
-      <Empty
-        description="无数据"
-        actions={[{ text: "操作按钮" }]}
-        style={{ marginTop: '10px' }}
-      />
-      <Empty description="无数据" />
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -49,17 +24,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Empty } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Empty description="无数据" size="small" />
-  );
-};
-export default App;
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -67,17 +32,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Empty } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Empty description="无数据" imageSize={100} />
-  );
-};
-export default App;
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -85,42 +40,17 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Empty } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <div className="show">
-      <Empty status="empty" description="无内容" />
-      <Empty status="error" description="加载失败/错误" />
-      <Empty status="network" description="无网络" />
-    </div>
-  );
-};
-export default App;
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
 ### 自定义图片
 
+> 如果您是京东站内相关项目的开发，我们特意为您提供了一系列的缺省状态的图片链接，您可通过内部群获取。
+
 :::demo
 
-```tsx
-import  React from "react";
-import { Empty } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Empty
-      description="无优惠券" 
-      image={<img src="https://static-ftcms.jd.com/p/files/61a9e3313985005b3958672e.png" alt=""/>}
-     />
-  );
-};
-export default App;
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -128,21 +58,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Empty, Button } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Empty status="error" description="加载失败">
-      <div style={{marginTop: "10px"}}>
-        <Button icon="refresh" type="primary" size="small">重试</Button>
-      </div>
-    </Empty>
-  );
-};
-export default App;
-```
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -154,8 +70,11 @@ export default App;
 | --- | --- | --- | --- |
 | image | 图片,支持传入图片 URL | `ReactNode` | `-` |
 | imageSize | 图片大小，number 类型单位为 px | `number` \| `string` | `-` |
+| title | 图片下方的标题 | `ReactNode` | `-` |
 | description | 图片下方的描述文字 | `ReactNode` | `-` |
+| size | 组件整体大小，适配于全屏或半屏 | `small` \| `base` | `base` |
 | status | 默认图片错误类型 | `empty` \| `error` \| `network` | `empty` |
+| actions | 可用于处理操作的一组数据 | `Array` | `[]` |
 
 ## 主题定制
 

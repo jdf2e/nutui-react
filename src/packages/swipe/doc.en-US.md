@@ -38,6 +38,76 @@ export default App;
 
 :::
 
+
+### Card Mode
+:::demo
+
+```tsx
+
+import React from "react";
+import { Swipe, Cell, Button } from '@nutui/nutui-react';
+import { Del } from '@nutui/icons-react'
+
+const divNode = (text: string, style: any) => {
+  return (
+    <div
+      style={{
+        width: '60px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        ...style,
+      }}
+    >
+      <Del style={{ marginBottom: '8px' }}/>
+      <>{text}</>
+    </div>
+  )
+}
+
+const App = () => {
+  return <>
+    <Swipe
+      style={{ height: '104px' }}
+      rightAction={
+        <div
+          style={{
+            height: 'inherit',
+            width: '240px',
+            display: 'flex',
+            fontSize: '12px',
+          }}
+        >
+          <>
+            {divNode('AlwaysBuy', {
+              background: '#F8F8F8',
+              color: '#1A1A1A',
+            })}
+            {divNode('Collected', {
+              background: '#ffcc00',
+              color: '#FFF',
+            })}
+            {divNode('Liked', {
+              background: '#FF860D',
+              color: '#FFF',
+            })}
+            {divNode('Delete', {
+              background: '#FA2C19',
+              color: '#FFF',
+            })}
+          </>
+        </div>
+      }
+    >
+      <Cell title={`${translated.leftDel}+Icon`} radius={0} />
+    </Swipe>
+  </>
+}
+export default App;
+
+```
+
 ### Control via instance method
 
 :::demo

@@ -8,8 +8,10 @@ import React, {
 import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { InfiniteLoadingType } from './types'
 
 export interface InfiniteLoadingProps extends BasicComponent {
+  type: InfiniteLoadingType
   hasMore: boolean
   threshold: number
   target: string
@@ -29,6 +31,7 @@ declare let window: Window & { webkitRequestAnimationFrame: any } & {
 
 const defaultProps = {
   ...ComponentDefaults,
+  type: 'default',
   hasMore: true,
   threshold: 200,
   target: '',
@@ -44,6 +47,7 @@ export const InfiniteLoading: FunctionComponent<
   const { locale } = useConfig()
   const {
     children,
+    type,
     hasMore,
     threshold,
     target,
@@ -71,7 +75,7 @@ export const InfiniteLoading: FunctionComponent<
   const y = useRef(0)
   const distance = useRef(0)
 
-  const classes = classNames(classPrefix, className)
+  const classes = classNames(classPrefix, className, `${classPrefix}-${type}`)
 
   useEffect(() => {
     if (target && document.getElementById(target)) {

@@ -2,16 +2,13 @@
   "compilerOptions": {
     "baseUrl": ".",
     "rootDir": ".",
-    "target": "ESNext",
+    "target": "ES6",
     "types": [
       "vite/client",
-      "jest",
+      "vitest/globals",
       "node"
     ],
     "allowJs": false,
-    "declaration": true,
-    "declarationDir": "./dist/esm/types",
-    "emitDeclarationOnly": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -27,9 +24,22 @@
       "dom"
     ],
     "paths": {
+      "@nutui/nutui-react/dist/locale/enUS": [
+        "src/locales/en-US.ts"
+      ],
+      "@nutui/nutui-react-taro/dist/locales/en-US.ts": [
+        "src/locales/en-US.ts"
+      ],
       "@/*": [
         "src/*"
-      ]
+      ],
+      "@nutui/nutui-react": [
+        "src/packages/nutui.react.ts"
+      ],
+      "@nutui/nutui-react-taro": [
+        "src/packages/nutui.react.taro.ts"
+      ],
+
     }
   },
   "include": [
@@ -39,6 +49,7 @@
   ],
   "exclude": [
     "./node_modules/**",
-    "src/sites/**"
+    "src/sites/**",
+    "src/**/demos/**"
   ]
 }

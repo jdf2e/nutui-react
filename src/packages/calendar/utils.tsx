@@ -1,5 +1,5 @@
 import { Utils } from '@/utils/date'
-import { Day, MonthInfo } from './types'
+import { CalendarDay, CalendarMonthInfo } from './types'
 
 export const splitDate = (date: string) => {
   const split = date.indexOf('-') !== -1 ? '-' : '/'
@@ -15,12 +15,12 @@ export const isMultiple = (day: string, days: string[]) => {
   return false
 }
 
-export const isCurrDay = (month: MonthInfo, day: string | number) => {
+export const isCurrDay = (month: CalendarMonthInfo, day: string | number) => {
   const date = `${month.curData[0]}/${month.curData[1]}/${day}`
   return Utils.isEqual(date, Utils.date2Str(new Date(), '/'))
 }
 
-export const getCurrDate = (day: Day, month: MonthInfo) => {
+export const getCurrDate = (day: CalendarDay, month: CalendarMonthInfo) => {
   return `${month.curData[0]}/${month.curData[1]}/${Utils.getNumTwoBit(
     +day.day
   )}`

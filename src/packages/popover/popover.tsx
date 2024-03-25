@@ -16,32 +16,11 @@ import { ComponentDefaults } from '@/utils/typings'
 import useClickAway from '@/utils/use-click-away'
 import { canUseDom } from '@/utils/can-use-dom'
 import { getAllScrollableParents } from '@/utils/get-scroll-parent'
-
-export type PopoverLocation =
-  | 'bottom'
-  | 'top'
-  | 'left'
-  | 'right'
-  | 'top-start'
-  | 'top-end'
-  | 'bottom-start'
-  | 'bottom-end'
-  | 'left-start'
-  | 'left-end'
-  | 'right-start'
-  | 'right-end'
-
-export interface List {
-  key?: string
-  name: string
-  icon?: React.ReactNode
-  disabled?: boolean
-  className?: string
-  action?: { icon?: React.ReactNode; onClick?: (e: any) => void }
-}
+import { PopoverTheme, PopoverLocation, PopoverList } from './types'
 
 export interface PopoverProps extends PopupProps {
-  list: List[]
+  list: PopoverList[]
+  theme: PopoverTheme | string
   location: PopoverLocation | string
   visible: boolean
   offset: string[] | number[]
@@ -54,12 +33,13 @@ export interface PopoverProps extends PopupProps {
   onClick: () => void
   onOpen: () => void
   onClose: () => void
-  onSelect: (item: List, index: number) => void
+  onSelect: (item: PopoverList, index: number) => void
 }
 
 const defaultProps = {
   ...ComponentDefaults,
   list: [],
+  theme: 'light',
   location: 'bottom',
   visible: false,
   offset: [0, 12],
@@ -81,6 +61,7 @@ export const Popover: FunctionComponent<
   const {
     children,
     list,
+    theme,
     location,
     visible,
     offset,
@@ -181,6 +162,7 @@ export const Popover: FunctionComponent<
   const classes = classNames(
     {
       [`${classPrefix}`]: true,
+      [`${classPrefix}-${theme}`]: theme === 'dark',
     },
     className
   )
@@ -275,7 +257,7 @@ export const Popover: FunctionComponent<
     return styles
   }
 
-  const handleSelect = (item: List, index: number) => {
+  const handleSelect = (item: PopoverList, index: number) => {
     if (!item.disabled) {
       onSelect?.(item, index)
     }

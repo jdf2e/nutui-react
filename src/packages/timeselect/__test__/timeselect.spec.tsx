@@ -35,8 +35,8 @@ test('timeselect props test', async () => {
 })
 
 test('timeselect event test', async () => {
-  const handleDateChange = jest.fn()
-  const handleTimeChange = jest.fn()
+  const handleDateChange = vi.fn()
+  const handleTimeChange = vi.fn()
   const App = () => {
     return (
       <TimeSelect
