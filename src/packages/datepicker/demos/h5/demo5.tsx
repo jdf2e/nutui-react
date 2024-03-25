@@ -30,7 +30,7 @@ const Demo5 = () => {
         onClick={() => setShow8(true)}
       />
       <DatePicker
-        title="选择时分"
+        title="时间选择"
         type="hour-minutes"
         defaultValue={new Date(`${defaultDescription} ${desc8}`)}
         startDate={startDate}

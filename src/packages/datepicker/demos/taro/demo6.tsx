@@ -1,11 +1,21 @@
 import React, { useState } from 'react'
 import { DatePicker, Cell } from '@nutui/nutui-react-taro'
 
+interface PickerOption {
+  text: string | number
+  value: string | number
+  disabled?: boolean
+  children?: PickerOption[]
+  className?: string | number
+}
+
 const Demo6 = () => {
-  const startDate = new Date(2020, 0, 1)
-  const endDate = new Date(2025, 10, 1)
+  const defaultValue = new Date()
+  const defaultDescription = `${defaultValue.getFullYear()}-${
+    defaultValue.getMonth() + 1
+  }-${defaultValue.getDate()}`
   const [show5, setShow5] = useState(false)
-  const [desc5, setDesc5] = useState('2020年 05月 10日 10:10')
+  const [desc5, setDesc5] = useState(`${defaultDescription} 10:10`)
 
   const confirm5 = (values: (string | number)[], options: PickerOption[]) => {
     const date = options
@@ -44,16 +54,17 @@ const Demo6 = () => {
   return (
     <>
       <Cell
-        title="时间选择"
+        title="选择时分秒"
         description={desc5}
         onClick={() => setShow5(true)}
       />
       <DatePicker
         title="时间选择"
         type="datetime"
-        startDate={new Date(2022, 0, 1)}
-        endDate={new Date(2022, 10, 1)}
+        startDate={new Date(2023, 0, 1)}
+        endDate={new Date(2026, 10, 1)}
         visible={show5}
+        defaultValue={new Date(desc5)}
         formatter={formatter}
         onClose={() => setShow5(false)}
         onConfirm={(options, values) => confirm5(values, options)}

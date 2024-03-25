@@ -10,8 +10,12 @@ interface PickerOption {
 }
 
 const Demo2 = () => {
+  const defaultValue = new Date()
   const [show2, setShow2] = useState(false)
-  const [desc2, setDesc2] = useState('')
+  const [desc2, setDesc2] = useState(
+    `${defaultValue.getMonth() + 1}-${defaultValue.getDate()}`
+  )
+
   const confirm2 = (values: (string | number)[], options: PickerOption[]) => {
     setDesc2(options.map((option) => option.text).join('-'))
   }

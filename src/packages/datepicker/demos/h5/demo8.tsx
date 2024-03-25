@@ -50,7 +50,7 @@ const Demo8 = () => {
   return (
     <>
       <Cell
-        title="时间选择"
+        title="选择时分秒"
         description={desc7}
         onClick={() => setShow7(true)}
       />
