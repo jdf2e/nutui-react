@@ -30,7 +30,7 @@ import { Popup } from '@nutui/nutui-react';
 
 :::
 
-### 图标
+### 关闭图标
 
 :::demo
 
