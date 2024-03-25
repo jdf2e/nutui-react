@@ -1,8 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useTranslate } from '@/sites/assets/locale'
-import Cell from '../cell'
-import Toast from '../toast'
-import { NumberKeyboard } from './numberkeyboard'
+
+import Demo1 from './demos/h5/demo1'
+import Demo2 from './demos/h5/demo2'
+import Demo3 from './demos/h5/demo3'
+import Demo4 from './demos/h5/demo4'
+import Demo5 from './demos/h5/demo5'
+import Demo6 from './demos/h5/demo6'
 
 const NumberKeyboardDemo = () => {
   const [translated] = useTranslate({
@@ -37,110 +41,21 @@ const NumberKeyboardDemo = () => {
       popup: 'Use Popup Props',
     },
   })
-  const [visible1, setVisible1] = useState(false)
-  const [visible2, setVisible2] = useState(false)
-  const [visible3, setVisible3] = useState(false)
-  const [visible4, setVisible4] = useState(false)
-  const [visible5, setVisible5] = useState(false)
-  const [visible6, setVisible6] = useState(false)
-  const onChange = (number: string) => {
-    Toast.show(`输入：${number}`)
-  }
-  const onDelete = () => {
-    Toast.show('删除')
-  }
+
   return (
     <div className="demo">
       <h2>{translated.basic}</h2>
-      <Cell
-        title={translated.basic}
-        onClick={() => {
-          setVisible1(true)
-        }}
-      />
-      <NumberKeyboard
-        visible={visible1}
-        onChange={onChange}
-        onDelete={onDelete}
-        onClose={() => setVisible1(false)}
-      />
+      <Demo1 />
       <h2>{translated.sidebar}</h2>
-      <Cell
-        title={translated.sidebar}
-        onClick={() => {
-          setVisible2(true)
-        }}
-      />
-      <NumberKeyboard
-        visible={visible2}
-        type="rightColumn"
-        custom={['.', 'x']}
-        onChange={onChange}
-        onDelete={onDelete}
-        onClose={() => setVisible2(false)}
-      />
+      <Demo2 />
       <h2>{translated.randomKeyOrder}</h2>
-      <Cell
-        title={translated.randomKeyOrder}
-        onClick={() => {
-          setVisible3(true)
-        }}
-      />
-      <NumberKeyboard
-        visible={visible3}
-        random
-        onChange={onChange}
-        onDelete={onDelete}
-        onClose={() => setVisible3(false)}
-      />
+      <Demo3 />
       <h2>{translated.withTitle}</h2>
-      <Cell
-        title={translated.withTitle}
-        onClick={() => {
-          setVisible4(true)
-        }}
-      />
-      <NumberKeyboard
-        visible={visible4}
-        title={translated.title}
-        rightActions={<span>Done</span>}
-        custom={['.']}
-        onChange={onChange}
-        onDelete={onDelete}
-        onClose={() => setVisible4(false)}
-      />
+      <Demo4 />
       <h2>{translated.idNumberKeyboard}</h2>
-      <Cell
-        title={translated.idNumberKeyboard}
-        onClick={() => {
-          setVisible5(true)
-        }}
-      />
-      <NumberKeyboard
-        visible={visible5}
-        custom={['X']}
-        onChange={onChange}
-        onDelete={onDelete}
-        onClose={() => setVisible5(false)}
-      />
+      <Demo5 />
       <h2>{translated.popup}</h2>
-      <Cell
-        title={translated.popup}
-        onClick={() => {
-          setVisible6(true)
-        }}
-      />
-      <NumberKeyboard
-        visible={visible6}
-        onChange={onChange}
-        onDelete={onDelete}
-        onClose={() => setVisible6(false)}
-        duration={1}
-        overlayClassName="number-keyboard-overlay"
-        onOpen={() => {
-          Toast.show('onOpen')
-        }}
-      />
+      <Demo6 />
     </div>
   )
 }

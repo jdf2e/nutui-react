@@ -36,7 +36,7 @@ import { Popover } from '@nutui/nutui-react'
 
 :::
 
-### 位置自定義
+### 位置自定義：多條資料
 
 通過 location 屬性來控製氣泡的彈出位置。可選值
 
@@ -45,11 +45,6 @@ top           # 頂部中間位置
 left          # 左側中間位置
 right         # 右側中間位置
 bottom        # 底部中間位置
-```
-
-自起新增
-
-```
 top-start     # 頂部左側位置
 top-end       # 頂部右側位置
 left-start    # 左側上方位置
@@ -63,6 +58,27 @@ bottom-end    # 底部右側位置
 :::demo
 
 <CodeBlock src='h5/demo4.tsx'></CodeBlock>
+
+:::
+
+### 位置自定義：單一資料
+
+通過 location 屬性來控製氣泡的彈出位置。可選值
+
+```
+top           # 頂部中間位置
+left          # 左側中間位置
+right         # 右側中間位置
+bottom        # 底部中間位置
+top-start     # 頂部左側位置
+top-end       # 頂部右側位置
+bottom-start  # 底部左側位置
+bottom-end    # 底部右側位置
+```
+
+:::demo
+
+<CodeBlock src='h5/demo4-1.tsx'></CodeBlock>
 
 :::
 
@@ -104,7 +120,7 @@ bottom-end    # 底部右側位置
 
 | 屬性 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |
-| list | 選項列表 | `List[]` | `[]` |
+| list | 選項列表 | `PopoverList[]` | `[]` |
 | visible | 是否展示氣泡彈出層 | `boolean` | `false` |
 | location | 彈出位置，裏面具體的參數值可以參考上面的位置自定義例子 | `string` | `bottom` |
 | offset | 出現位置的偏移量 | `string[]` \| `number[]` | `[0, 12]` |
@@ -114,7 +130,7 @@ bottom-end    # 底部右側位置
 | closeOnOutsideClick | 是否在點擊外部元素後關閉菜單 | `boolean` | `true` |
 | targetId | 自定義目標元素 id | `string` | `-` |
 | onClick | 點擊切換 popover 展示狀態 | `() => void` | `() => {}` |
-| onSelect | 點擊選項時觸發 | `(item: List, index: number) => void` | `(item, index) => {}` |
+| onSelect | 點擊選項時觸發 | `(item: PopoverList, index: number) => void` | `(item, index) => {}` |
 | onOpen | 點擊菜單時觸發 | `() => void` | `() => {}` |
 | onClose | 關閉菜單時觸發 | `() => void` | `() => {}` |
 
@@ -122,9 +138,9 @@ bottom-end    # 底部右側位置
 此外，還支持Popup組件的overlayStyle、overlayClassName、overlay、closeOnOverlayClick屬性。    
 ```
 
-### List 數據結構
+### PopoverList 數據結構
 
-List 屬性是一個由對象構成的數組，數組中的每個對象配置一列，對象可以包含以下值：
+PopoverList 屬性是一個由對象構成的數組，數組中的每個對象配置一列，對象可以包含以下值：
 
 | 鍵名 | 說明 | 類型 | 默認值 |
 | --- | --- | --- | --- |

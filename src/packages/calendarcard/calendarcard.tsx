@@ -10,7 +10,12 @@ import {
   getPrevMonthDays,
 } from './utils'
 import { useConfig } from '@/packages/configprovider/configprovider'
-import { CalendarCardDay, CalendarCardMonth, CalendarCardValue } from './types'
+import type {
+  CalendarCardDay,
+  CalendarCardMonth,
+  CalendarCardRef,
+  CalendarCardValue,
+} from './types'
 import { usePropsValue } from '@/utils/use-props-value'
 
 export interface CalendarCardProps extends BasicComponent {
@@ -33,11 +38,6 @@ const defaultProps = {
   ...ComponentDefaults,
   type: 'single',
   firstDayOfWeek: 0,
-}
-
-type CalendarCardRef = {
-  jump: (step: number) => void
-  jumpTo: (year: number, month: number) => void
 }
 
 const prefixCls = 'nut-calendarcard'

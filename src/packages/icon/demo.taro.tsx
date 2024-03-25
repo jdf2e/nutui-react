@@ -11,36 +11,7 @@ import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
-
-const style = `
-.nut-cell > .nutui-iconfont, .nut-icon {
-  margin-right: 10px;
-}
-ul {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 0;
-  width: 100%;
-}
-ul li {
-    flex: 0 0 25%;
-    max-width: 25%;
-    height: 60px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-ul li  .nut-icon {
-  margin-right: 0;
-}
-ul li span .nutui-iconfont {
-  margin: 16px 0 16px;
-}
-
-
-
-`
+// import '@/packages/icon/demo.scss'
 
 const IconDemo = () => {
   const [translated] = useTranslate({
@@ -86,7 +57,6 @@ const IconDemo = () => {
   return (
     <>
       <Header />
-      <style>{style}</style>
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <Toast
           content={state.msg}

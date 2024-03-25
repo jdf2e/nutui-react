@@ -16,36 +16,7 @@ import { NumberKeyboard } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, NumberKeyboard, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const onChange = (number: string) => {
-    Toast.show(`enter:${number}`)
-  }
-  const onDelete = () => {
-    Toast.show('delete')
-  }
-  return (
-    <>
-      <Cell
-        title="Default Keyboard"
-        onClick={() => setVisible(true)}
-      />
-      <NumberKeyboard
-        visible={visible}
-        onChange={onChange}
-        onDelete={onDelete}
-        onClose={() => setVisible(false)}
-      />
-    </>
-  )
-}
-export default App;
-
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -53,38 +24,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, NumberKeyboard, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const onChange = (number: string) => {
-    Toast.show(`enter:${number}`)
-  }
-  const onDelete = () => {
-    Toast.show('delete')
-  }
-  return (
-    <>
-      <Cell
-        title="Keyboard With Sidebar"
-        onClick={() => setVisible(true)}
-      />
-      <NumberKeyboard
-        visible={visible}
-        type="rightColumn"
-        custom={['.', 'x']}
-        onChange={onChange}
-        onDelete={onDelete}
-        onClose={() => setVisible(false)}
-      />
-    </>
-  )
-}
-export default App;
-
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -92,37 +32,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, NumberKeyboard, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const onChange = (number: string) => {
-    Toast.show(`enter:${number}`)
-  }
-  const onDelete = () => {
-    Toast.show('delete')
-  }
-  return (
-    <>
-      <Cell
-        title=" Random Key Order"
-        onClick={() => setVisible(true)}
-      />
-      <NumberKeyboard
-        visible={visible}
-        random
-        onChange={onChange}
-        onDelete={onDelete}
-        onClose={() => setVisible(false)}
-      />
-    </>
-  )
-}
-export default App;
-
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -132,38 +42,7 @@ You can use `rightActions` when you want to set the right actions on the title b
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, NumberKeyboard, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const onChange = (number: string) => {
-    Toast.show(`enter:${number}`)
-  }
-  const onDelete = () => {
-    Toast.show('delete')
-  }
-  return (
-    <>
-      <Cell
-        title="Show Keyboard With Title"
-        onClick={() => setVisible(true)}
-      />
-      <NumberKeyboard
-        visible={visible}
-        title="title"
-        custom={['.']}
-        onChange={onChange}
-        onDelete={onDelete}
-        onClose={() => setVisible(false)}
-      />
-    </>
-  )
-}
-export default App;
-
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -171,37 +50,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, NumberKeyboard, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const onChange = (number: string) => {
-    Toast.show(`enter:${number}`)
-  }
-  const onDelete = () => {
-    Toast.show('delete')
-  }
-  return (
-    <>
-      <Cell
-        title="Show IdNumber Keyboard"
-        onClick={() => setVisible(true)}
-      />
-      <NumberKeyboard
-        visible={visible}
-        custom={['X']}
-        onChange={onChange}
-        onDelete={onDelete}
-        onClose={() => setVisible(false)}
-      />
-    </>
-  )
-}
-export default App;
-
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -209,41 +58,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Cell, NumberKeyboard, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const onChange = (number: string) => {
-    Toast.show(`enter:${number}`)
-  }
-  const onDelete = () => {
-    Toast.show('delete')
-  }
-  return (
-    <>
-      <Cell
-        title="Show IdNumber Keyboard"
-        onClick={() => setVisible(true)}
-      />
-      <NumberKeyboard
-        visible={visible}
-        onChange={onChange}
-        onDelete={onDelete}
-        onClose={() => setVisible(false)}
-        duration={1}
-        overlayClassName="number-keyboard-overlay"
-        onOpen={() => {
-          Toast.show('onOpen')
-        }}
-      />
-    </>
-  )
-}
-export default App;
-
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
