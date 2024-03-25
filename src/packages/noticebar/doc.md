@@ -28,7 +28,9 @@ import { NoticeBar } from '@nutui/nutui-react';
 
 :::
 
-### 自定义主题
+### 滚动播放
+
+通知栏的内容长度溢出时会自动开启滚动播放，可通过 scrollable 属性可以控制该行为
 
 :::demo
 
@@ -36,21 +38,11 @@ import { NoticeBar } from '@nutui/nutui-react';
 
 :::
 
-### 滚动播放
-
-通知栏的内容长度溢出时会自动开启滚动播放，可通过 scrollable 属性可以控制该行为
+### 关闭模式
 
 :::demo
 
 <CodeBlock src='h5/demo4.tsx'></CodeBlock>
-
-:::
-
-### 通告栏模式--关闭模式
-
-:::demo
-
-<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -60,11 +52,21 @@ import { NoticeBar } from '@nutui/nutui-react';
 
 :::demo
 
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
+
+:::
+
+### 自定义右侧内容
+
+增加自定义右侧区域，区分rightIcon，更灵活配置。
+
+:::demo
+
 <CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
-### 纵向滚动
+### 自定义主题
 
 :::demo
 
@@ -72,7 +74,8 @@ import { NoticeBar } from '@nutui/nutui-react';
 
 :::
 
-### 自定义左侧图标
+
+### 垂直滚动
 
 :::demo
 
@@ -80,7 +83,7 @@ import { NoticeBar } from '@nutui/nutui-react';
 
 :::
 
-### 自定义滚动内容
+### 纵向模式：自定义左侧图标
 
 :::demo
 
@@ -88,11 +91,19 @@ import { NoticeBar } from '@nutui/nutui-react';
 
 :::
 
-### 纵向自定义右侧图标
+### 纵向模式：自定义滚动内容
 
 :::demo
 
 <CodeBlock src='h5/demo10.tsx'></CodeBlock>
+
+:::
+
+### 纵向模式：自定义右侧图标
+
+:::demo
+
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
 
 :::
 
