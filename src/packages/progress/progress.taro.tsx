@@ -105,26 +105,26 @@ export const Progress: FunctionComponent<
       }, delay)
     }
   }, [intersecting])
-
-  useEffect(() => {
-    if (Taro.getEnv() === 'WEB') {
-      if (lazy) {
-        webObserver.current = new IntersectionObserver(
-          (entires, self) => {
-            entires.forEach((item) => {
-              setIntersecting(item.isIntersecting)
-            })
-          },
-          {
-            threshold: [0],
-            rootMargin: '0px',
-          }
-        )
-        webObserver.current.observe(progressRef.current)
-      }
-      handlePercent()
+  const handleWebObserver = () => {
+    /// web环境
+    if (lazy) {
+      webObserver.current = new IntersectionObserver(
+        (entires, self) => {
+          entires.forEach((item) => {
+            setIntersecting(item.isIntersecting)
+          })
+        },
+        {
+          threshold: [0],
+          rootMargin: '0px',
+        }
+      )
+      webObserver.current.observe(progressRef.current)
     }
-
+    handlePercent()
+  }
+  const handleOtherObserver = () => {
+    // 非web环境
     let observer: any = null
     if (lazy) {
       observer = Taro.createIntersectionObserver(
@@ -141,6 +141,14 @@ export const Progress: FunctionComponent<
         })
     }
     handlePercent()
+  }
+
+  useEffect(() => {
+    if (Taro.getEnv() === 'WEB') {
+      handleWebObserver()
+    } else {
+      handleOtherObserver()
+    }
   }, [])
 
   return (
