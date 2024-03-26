@@ -1,7 +1,13 @@
-import React, { useState } from 'react'
-import { TextArea } from './textarea'
+import React from 'react'
 import { useTranslate } from '../../sites/assets/locale'
-import ConfigProvider from '@/packages/configprovider'
+import Demo1 from './demos/h5/demo1'
+import Demo2 from './demos/h5/demo2'
+import Demo3 from './demos/h5/demo3'
+import Demo4 from './demos/h5/demo4'
+import Demo5 from './demos/h5/demo5'
+import Demo6 from './demos/h5/demo6'
+import Demo7 from './demos/h5/demo7'
+import Demo8 from './demos/h5/demo8'
 
 interface T {
   basic: string
@@ -60,65 +66,25 @@ const TextAreaDemo = () => {
     },
   })
 
-  const [value, setValue] = useState(translated.controlled)
-
-  const customTheme = {
-    nutuiTextareaTextCurrorColor: `red`,
-    nutuiTextareaLimitColor: `red`,
-  }
-
   return (
     <>
       <div className="demo" style={{ paddingBottom: '20px' }}>
         <h2>{translated.basic}</h2>
-        <TextArea
-          defaultValue={translated.basic}
-          className="text-1"
-          style={{ fontSize: '12px' }}
-          onChange={(value) => {
-            console.log('change', value)
-          }}
-          onBlur={() => {
-            console.log('blur')
-          }}
-          onFocus={() => {
-            console.log('focus')
-          }}
-        />
+        <Demo1 />
         <h2>{translated.controlled}</h2>
-        <TextArea
-          value={value}
-          onChange={(value) => {
-            setValue(value)
-          }}
-        />
+        <Demo2 />
         <h2>{translated.numbers}</h2>
-        <TextArea showCount maxLength={20} />
+        <Demo3 />
         <h2>{translated.autoHeight}</h2>
-        <TextArea rows={1} autoSize />
+        <Demo4 />
         <h2>{translated.we2312222}</h2>
-        <ConfigProvider theme={customTheme}>
-          <TextArea showCount maxLength={20} />
-        </ConfigProvider>
+        <Demo5 />
         <h2>{translated.readOnly}</h2>
-        <TextArea
-          readOnly
-          defaultValue={`textarea${translated.readOnlyState}`}
-        />
+        <Demo6 />
         <h2>{translated.disabled}</h2>
-        <TextArea
-          disabled
-          defaultValue={`textarea${translated.disabledState}`}
-          showCount
-          maxLength={20}
-        />
+        <Demo7 />
         <h2>{translated.textAlign}</h2>
-        <TextArea
-          defaultValue={translated.alignRight}
-          style={{
-            textAlign: 'right',
-          }}
-        />
+        <Demo8 />
       </div>
     </>
   )
