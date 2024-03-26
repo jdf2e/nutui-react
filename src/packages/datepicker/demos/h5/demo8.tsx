@@ -8,11 +8,11 @@ const Demo8 = () => {
   const defaultDescription = `${defaultValue.getFullYear()}-${
     defaultValue.getMonth() + 1
   }-${defaultValue.getDate()}`
-  const [show7, setShow7] = useState(false)
-  const [desc7, setDesc7] = useState(`${defaultDescription} 00`)
+  const [show, setShow] = useState(false)
+  const [desc, setDesc] = useState(`${defaultDescription} 00`)
 
-  const confirm7 = (values: (string | number)[], options: PickerOption[]) => {
-    setDesc7(options.map((option) => option.text).join(' '))
+  const confirm = (values: (string | number)[], options: PickerOption[]) => {
+    setDesc(options.map((option) => option.text).join(' '))
   }
   const filter = (type: string, options: PickerOption[]) => {
     if (type === 'hour') {
@@ -43,21 +43,21 @@ const Demo8 = () => {
     <>
       <Cell
         title="选择时分秒"
-        description={desc7}
-        onClick={() => setShow7(true)}
+        description={desc}
+        onClick={() => setShow(true)}
       />
       <DatePicker
         title="时间选择"
         type="datehour"
         startDate={startDate}
         endDate={endDate}
-        visible={show7}
+        visible={show}
         defaultValue={new Date(`${defaultDescription}`)}
         formatter={formatter1}
         minuteStep={5}
         filter={filter}
-        onClose={() => setShow7(false)}
-        onConfirm={(options, values) => confirm7(values, options)}
+        onClose={() => setShow(false)}
+        onConfirm={(options, values) => confirm(values, options)}
       />
     </>
   )

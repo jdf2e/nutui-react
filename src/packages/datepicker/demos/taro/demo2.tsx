@@ -3,19 +3,19 @@ import { DatePicker, Cell, type PickerOption } from '@nutui/nutui-react-taro'
 
 const Demo2 = () => {
   const defaultValue = new Date()
-  const [show2, setShow2] = useState(false)
-  const [desc2, setDesc2] = useState(
+  const [show, setShow] = useState(false)
+  const [desc, setDesc] = useState(
     `${defaultValue.getMonth() + 1}-${defaultValue.getDate()}`
   )
-  const confirm2 = (values: (string | number)[], options: PickerOption[]) => {
-    setDesc2(options.map((option) => option.text).join('-'))
+  const confirm = (values: (string | number)[], options: PickerOption[]) => {
+    setDesc(options.map((option) => option.text).join('-'))
   }
   return (
     <>
       <Cell
         title="限制开始结束时间"
-        description={desc2}
-        onClick={() => setShow2(true)}
+        description={desc}
+        onClick={() => setShow(true)}
       />
       <DatePicker
         title="选择日期"
@@ -23,9 +23,9 @@ const Demo2 = () => {
         endDate={new Date(2025, 7, 1)}
         defaultValue={new Date()}
         type="month-day"
-        visible={show2}
-        onClose={() => setShow2(false)}
-        onConfirm={(options, values) => confirm2(values, options)}
+        visible={show}
+        onClose={() => setShow(false)}
+        onConfirm={(options, values) => confirm(values, options)}
       />
     </>
   )

@@ -8,28 +8,28 @@ const Demo4 = () => {
   }-${defaultValue.getDate()}`
   const startDate = new Date(2020, 0, 1)
   const endDate = new Date(2025, 10, 1)
-  const [show4, setShow4] = useState(false)
-  const [desc4, setDesc4] = useState('10:10:00')
-  const confirm4 = (values: (string | number)[], options: PickerOption[]) => {
-    setDesc4(options.map((option) => option.text).join(':'))
+  const [show, setShow] = useState(false)
+  const [desc, setDesc] = useState('10:10:00')
+  const confirm = (values: (string | number)[], options: PickerOption[]) => {
+    setDesc(options.map((option) => option.text).join(':'))
   }
 
   return (
     <>
       <Cell
         title="选择时分秒"
-        description={desc4}
-        onClick={() => setShow4(true)}
+        description={desc}
+        onClick={() => setShow(true)}
       />
       <DatePicker
         title="时间选择"
         type="time"
-        defaultValue={new Date(`${defaultDescription} ${desc4}`)}
+        defaultValue={new Date(`${defaultDescription} ${desc}`)}
         startDate={startDate}
         endDate={endDate}
-        visible={show4}
-        onClose={() => setShow4(false)}
-        onConfirm={(options, values) => confirm4(values, options)}
+        visible={show}
+        onClose={() => setShow(false)}
+        onConfirm={(options, values) => confirm(values, options)}
       />
     </>
   )

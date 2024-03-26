@@ -6,16 +6,16 @@ const Demo1 = () => {
   const defaultDescription = `${defaultValue.getFullYear()}-${
     defaultValue.getMonth() + 1
   }-${defaultValue.getDate()}`
-  const [show1, setShow1] = useState(false)
+  const [show, setShow1] = useState(false)
   const [desc1, setDesc1] = useState(defaultDescription)
 
   const [value, setValue] = useState('2023/01/01')
-  const [show10, setShow10] = useState(false)
-  const [desc10, setDesc10] = useState('')
+  const [show2, setShow2] = useState(false)
+  const [desc2, setDesc2] = useState('')
   const confirm1 = (values: (string | number)[], options: PickerOption[]) => {
     setDesc1(options.map((option) => option.text).join(' '))
   }
-  const confirm10 = (options: PickerOption[], values: (string | number)[]) => {
+  const confirm2 = (options: PickerOption[], values: (string | number)[]) => {
     const v = options
       .map((option) => option.text)
       .join()
@@ -23,7 +23,7 @@ const Demo1 = () => {
       .replace('月', '-')
       .replace('日', '')
     setValue(v)
-    setDesc10(options.map((option) => option.text).join(' '))
+    setDesc2(options.map((option) => option.text).join(' '))
   }
   return (
     <>
@@ -34,7 +34,7 @@ const Demo1 = () => {
       />
       <DatePicker
         title="日期选择"
-        visible={show1}
+        visible={show}
         pickerProps={{
           popupProps: { zIndex: 1220 },
         }}
@@ -49,17 +49,17 @@ const Demo1 = () => {
       />
       <Cell
         title="显示中文-受控"
-        description={desc10}
-        onClick={() => setShow10(true)}
+        description={desc2}
+        onClick={() => setShow2(true)}
       />
       <DatePicker
         title="日期选择"
-        visible={show10}
+        visible={show2}
         value={new Date(value)}
         showChinese
-        onClose={() => setShow10(false)}
+        onClose={() => setShow2(false)}
         threeDimensional={false}
-        onConfirm={(options, values) => confirm10(options, values)}
+        onConfirm={(options, values) => confirm2(options, values)}
       />
     </>
   )
