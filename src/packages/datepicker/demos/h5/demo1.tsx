@@ -1,13 +1,6 @@
 import React, { useState } from 'react'
-import { DatePicker, Cell } from '@nutui/nutui-react'
+import { DatePicker, Cell, type PickerOption } from '@nutui/nutui-react'
 
-interface PickerOption {
-  text: string | number
-  value: string | number
-  disabled?: boolean
-  children?: PickerOption[]
-  className?: string | number
-}
 const Demo1 = () => {
   const defaultValue = new Date()
   const defaultDescription = `${defaultValue.getFullYear()}-${

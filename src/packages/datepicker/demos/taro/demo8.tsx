@@ -1,13 +1,5 @@
 import React, { useState } from 'react'
-import { DatePicker, Cell } from '@nutui/nutui-react-taro'
-
-interface PickerOption {
-  text: string | number
-  value: string | number
-  disabled?: boolean
-  children?: PickerOption[]
-  className?: string | number
-}
+import { DatePicker, Cell, type PickerOption } from '@nutui/nutui-react-taro'
 
 const Demo8 = () => {
   const startDate = new Date(2020, 0, 1)
