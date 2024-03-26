@@ -208,7 +208,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
             )
           to = top - (navRectRef.current.height - titleRect.height) / 2
         } else {
-          const DEFAULT_PADDING = 20
+          const DEFAULT_PADDING = 0
           const left = titleRects
             .slice(0, index)
             .reduce(
