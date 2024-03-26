@@ -199,22 +199,14 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
 
         let to = 0
         if (props.direction === 'vertical') {
-          const DEFAULT_PADDING = 11
           const top = titleRects
             .slice(0, index)
-            .reduce(
-              (prev: number, curr: RectItem) => prev + curr.height,
-              DEFAULT_PADDING
-            )
+            .reduce((prev: number, curr: RectItem) => prev + curr.height, 0)
           to = top - (navRectRef.current.height - titleRect.height) / 2
         } else {
-          const DEFAULT_PADDING = 0
           const left = titleRects
             .slice(0, index)
-            .reduce(
-              (prev: number, curr: RectItem) => prev + curr.width,
-              DEFAULT_PADDING
-            )
+            .reduce((prev: number, curr: RectItem) => prev + curr.width, 0)
           to = left - (navRectRef.current.width - titleRect.width) / 2
           to = rtl ? -to : to
         }
