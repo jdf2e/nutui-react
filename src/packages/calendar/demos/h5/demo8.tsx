@@ -2,19 +2,19 @@ import React, { useState } from 'react'
 import { Cell, Calendar } from '@nutui/nutui-react'
 
 const Demo8 = () => {
-  const [date5, setDate5] = useState<string[]>(['2023-03-23', '2023-11-26'])
-  const [isVisible5, setIsVisible5] = useState(false)
+  const [date, setDate] = useState<string[]>(['2023-03-23', '2023-11-26'])
+  const [isVisible, setIsVisible] = useState(false)
 
-  const openSwitch5 = () => {
-    setIsVisible5(true)
+  const openSwitch = () => {
+    setIsVisible(true)
   }
 
-  const closeSwitch5 = () => {
-    setIsVisible5(false)
+  const closeSwitch = () => {
+    setIsVisible(false)
   }
 
-  const setChooseValue5 = (param: string) => {
-    setDate5([...[param[0][3], param[1][3]]])
+  const setChooseValue = (param: string) => {
+    setDate([...[param[0][3], param[1][3]]])
   }
 
   const select = (param: string) => {
@@ -25,18 +25,18 @@ const Demo8 = () => {
     <>
       <Cell
         title="选择日期区间"
-        description={date5 ? `${date5[0]}至${date5[1]}` : '请选择'}
-        onClick={openSwitch5}
+        description={date ? `${date[0]}至${date[1]}` : '请选择'}
+        onClick={openSwitch}
       />
       <Calendar
-        visible={isVisible5}
-        defaultValue={date5}
+        visible={isVisible}
+        defaultValue={date}
         type="range"
         autoBackfill
         startDate="2022-12-22"
         endDate="2024-01-08"
-        onClose={closeSwitch5}
-        onConfirm={setChooseValue5}
+        onClose={closeSwitch}
+        onConfirm={setChooseValue}
         onDayClick={select}
       />
     </>

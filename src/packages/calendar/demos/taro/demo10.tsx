@@ -3,22 +3,22 @@ import { Cell, Calendar } from '@nutui/nutui-react-taro'
 import { Utils } from '@/utils/date'
 
 const Demo10 = () => {
-  const [date7, setDate7] = useState<string[]>(['2023-07-10', '2023-07-19'])
+  const [date, setDate] = useState<string[]>(['2023-07-10', '2023-07-19'])
 
-  const [isVisible7, setIsVisible7] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
 
   const calendarRef = useRef<any>(null)
 
-  const openSwitch7 = () => {
-    setIsVisible7(true)
+  const openSwitch = () => {
+    setIsVisible(true)
   }
 
-  const closeSwitch7 = () => {
-    setIsVisible7(false)
+  const closeSwitch = () => {
+    setIsVisible(false)
   }
 
-  const setChooseValue7 = (param: string) => {
-    setDate7([...[param[0][3], param[1][3]]])
+  const setChooseValue = (param: string) => {
+    setDate([...[param[0][3], param[1][3]]])
   }
 
   const goDate = () => {
@@ -29,7 +29,7 @@ const Demo10 = () => {
 
   const clickBtn = () => {
     const date = [Utils.date2Str(new Date()), Utils.getDay(6)]
-    setDate7(date)
+    setDate(date)
     if (calendarRef.current) {
       calendarRef.current.scrollToDate(date[0])
     }
@@ -42,7 +42,7 @@ const Demo10 = () => {
     month = month < 10 ? `0${month}` : `${month}`
     const yearMonth = `${year}-${month}`
     const currMonthDays = Utils.getMonthDays(`${year}`, `${month}`)
-    setDate7([`${yearMonth}-01`, `${yearMonth}-${currMonthDays}`])
+    setDate([`${yearMonth}-01`, `${yearMonth}-${currMonthDays}`])
     if (calendarRef.current) {
       calendarRef.current.scrollToDate(`${yearMonth}-01`)
     }
@@ -77,19 +77,19 @@ const Demo10 = () => {
     <>
       <Cell
         title="自定义按钮"
-        description={date7 ? `${date7[0]}至${date7[1]}` : '请选择'}
-        onClick={openSwitch7}
+        description={date ? `${date[0]}至${date[1]}` : '请选择'}
+        onClick={openSwitch}
       />
       <Calendar
         ref={calendarRef}
-        visible={isVisible7}
-        defaultValue={date7}
+        visible={isVisible}
+        defaultValue={date}
         type="range"
         startDate="2022-12-22"
         endDate="2024-12-31"
         renderHeaderButtons={renderHeaderButtons}
-        onClose={closeSwitch7}
-        onConfirm={setChooseValue7}
+        onClose={closeSwitch}
+        onConfirm={setChooseValue}
       />
     </>
   )

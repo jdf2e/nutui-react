@@ -1,26 +1,22 @@
 import React, { useState } from 'react'
 import { Cell, Calendar } from '@nutui/nutui-react-taro'
-
-interface Day {
-  day: string | number
-  type: string
-}
+import type { Day } from '@/packages/calendar/types'
 
 const Demo5 = () => {
-  const [date41, setDate41] = useState<string[]>([])
-  const [isVisible41, setIsVisible41] = useState(false)
+  const [date, setDate] = useState<string[]>([])
+  const [isVisible, setIsVisible] = useState(false)
 
-  const openSwitch41 = () => {
-    setIsVisible41(true)
+  const openSwitch = () => {
+    setIsVisible(true)
   }
 
-  const closeSwitch41 = () => {
-    setIsVisible41(false)
+  const closeSwitch = () => {
+    setIsVisible(false)
   }
 
-  const setChooseValue41 = (chooseData: any) => {
+  const setChooseValue = (chooseData: any) => {
     const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
-    setDate41([...dateArr])
+    setDate([...dateArr])
   }
 
   const disableDate = (date: Day) => {
@@ -31,22 +27,20 @@ const Demo5 = () => {
     <>
       <Cell
         title="日期不可选"
-        description={
-          date41 && date41.length ? `${date41[0]}至${date41[1]}` : '请选择'
-        }
-        onClick={openSwitch41}
+        description={date && date.length ? `${date[0]}至${date[1]}` : '请选择'}
+        onClick={openSwitch}
       />
 
       <Calendar
-        visible={isVisible41}
-        defaultValue={date41}
+        visible={isVisible}
+        defaultValue={date}
         type="week"
         startDate="2023-01-01"
         endDate="2024-09-10"
         disableDate={disableDate}
         firstDayOfWeek={1}
-        onClose={closeSwitch41}
-        onConfirm={setChooseValue41}
+        onClose={closeSwitch}
+        onConfirm={setChooseValue}
       />
     </>
   )

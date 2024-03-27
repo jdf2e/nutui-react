@@ -1,27 +1,23 @@
 import React, { useState } from 'react'
 import { Cell, Calendar } from '@nutui/nutui-react'
 import { padZero } from '@/utils/pad-zero'
-
-interface Day {
-  day: string | number
-  type: string
-}
+import { Day } from '@/packages/calendar/types'
 
 const Demo9 = () => {
-  const [date6, setDate6] = useState<string[]>(['2023-06-12', '2023-06-16'])
+  const [date, setDate] = useState<string[]>(['2023-06-12', '2023-06-16'])
 
-  const [isVisible6, setIsVisible6] = useState(false)
+  const [isVisible, setIsVisible] = useState(false)
 
-  const openSwitch6 = () => {
-    setIsVisible6(true)
+  const openSwitch = () => {
+    setIsVisible(true)
   }
 
-  const closeSwitch6 = () => {
-    setIsVisible6(false)
+  const closeSwitch = () => {
+    setIsVisible(false)
   }
 
-  const setChooseValue6 = (param: string) => {
-    setDate6([...[param[0][3], param[1][3]]])
+  const setChooseValue = (param: string) => {
+    setDate([...[param[0][3], param[1][3]]])
   }
 
   const renderDay = (date: Day) => {
@@ -48,12 +44,12 @@ const Demo9 = () => {
     <>
       <Cell
         title="自定义时间文案"
-        description={date6 ? `${date6[0]}至${date6[1]}` : '请选择'}
-        onClick={openSwitch6}
+        description={date ? `${date[0]}至${date[1]}` : '请选择'}
+        onClick={openSwitch}
       />
       <Calendar
-        visible={isVisible6}
-        defaultValue={date6}
+        visible={isVisible}
+        defaultValue={date}
         type="range"
         startDate="2023-2-22"
         endDate="2024-01-08"
@@ -64,8 +60,8 @@ const Demo9 = () => {
         renderDayTop={renderDayTop}
         renderDayBottom={renderDayBottom}
         showToday
-        onClose={closeSwitch6}
-        onConfirm={setChooseValue6}
+        onClose={closeSwitch}
+        onConfirm={setChooseValue}
       />
     </>
   )

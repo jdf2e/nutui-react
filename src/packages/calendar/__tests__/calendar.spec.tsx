@@ -1,13 +1,9 @@
 import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
+import { Day } from '@/packages/calendar/types'
 
 import { Calendar } from '../calendar'
-
-interface Day {
-  day: string | number
-  type: string
-}
 
 test('show-title prop', async () => {
   const { container, rerender } = render(

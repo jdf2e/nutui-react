@@ -1,21 +1,17 @@
 import React, { useRef, useState } from 'react'
 import { Cell, Calendar, DatePicker } from '@nutui/nutui-react-taro'
 import { padZero } from '@/utils/pad-zero'
-
-interface Day {
-  day: string | number
-  type: string
-}
+import { Day } from '@/packages/calendar/types'
 
 const Demo6 = () => {
-  const [date42, setDate42] = useState<string[]>([])
-  const [isVisible42, setIsVisible42] = useState(false)
+  const [date, setDate] = useState<string[]>([])
+  const [isVisible, setIsVisible] = useState(false)
 
   const disableDate = (date: Day) => {
     return date.day === 25 || date.day === 20 || date.day === 22
   }
 
-  const [show1, setShow1] = useState(false)
+  const [show, setShow] = useState(false)
   const [dpAbled, setDatePickerAbled] = useState([false, false])
   const [desc1, setDesc1] = useState('10:00:00')
   const [desc2, setDesc2] = useState('20:00:00')
@@ -23,16 +19,16 @@ const Demo6 = () => {
   // const padZero = (d: number | string) => {
   //   return d <= 9 ? `0${d}` : d
   // }
-  const setChooseValue42 = (chooseData: any) => {
+  const setChooseValue = (chooseData: any) => {
     console.log(
-      'setChooseValue42',
+      'setChooseValue',
       [...[chooseData[0][3], chooseData[1][3]]],
       chooseData
     )
     const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
-    setDate42([...dateArr])
+    setDate([...dateArr])
   }
-  const confirm1 = (values: (string | number)[], options: any[]) => {
+  const confirm = (values: (string | number)[], options: any[]) => {
     if (desc.current === 1) {
       setDesc1(
         options.map((option) => padZero(parseInt(option.text))).join(':')
@@ -47,17 +43,17 @@ const Demo6 = () => {
   const showDatePicker = (e: any, index: number) => {
     if (dpAbled[index - 1]) {
       e.stopPropagation()
-      setShow1(true)
+      setShow(true)
       desc.current = index
     }
   }
 
-  const openSwitch42 = () => {
-    setIsVisible42(true)
+  const openSwitch = () => {
+    setIsVisible(true)
   }
 
-  const closeSwitch42 = () => {
-    setIsVisible42(false)
+  const closeSwitch = () => {
+    setIsVisible(false)
   }
 
   return (
@@ -66,23 +62,19 @@ const Demo6 = () => {
         title="日期区间"
         description={
           <div className="desc-box">
-            <div className="desc" onClick={openSwitch42}>
-              {date42 && date42.length
-                ? `${date42[0]} ${desc1}`
-                : '请选择起始时间'}
+            <div className="desc" onClick={openSwitch}>
+              {date && date.length ? `${date[0]} ${desc1}` : '请选择起始时间'}
             </div>
             <div className="desc1">-</div>
-            <div className="desc" onClick={openSwitch42}>
-              {date42 && date42.length
-                ? `${date42[1]} ${desc2}`
-                : '请选择截止时间'}
+            <div className="desc" onClick={openSwitch}>
+              {date && date.length ? `${date[1]} ${desc2}` : '请选择截止时间'}
             </div>
           </div>
         }
       />
       <Calendar
-        visible={isVisible42}
-        defaultValue={date42}
+        visible={isVisible}
+        defaultValue={date}
         type="range"
         startDate="2023-01-01"
         endDate="2024-09-10"
@@ -97,8 +89,8 @@ const Demo6 = () => {
           }
           setDatePickerAbled(d)
         }}
-        onClose={closeSwitch42}
-        onConfirm={setChooseValue42}
+        onClose={closeSwitch}
+        onConfirm={setChooseValue}
       >
         <div className="nut-calendar-btns">
           <div
@@ -122,10 +114,10 @@ const Demo6 = () => {
         <DatePicker
           title="时间选择"
           type="time"
-          visible={show1}
+          visible={show}
           showChinese
-          onClose={() => setShow1(false)}
-          onConfirm={(options, values) => confirm1(values, options)}
+          onClose={() => setShow(false)}
+          onConfirm={(options, values) => confirm(values, options)}
         />
       </Calendar>
     </>
