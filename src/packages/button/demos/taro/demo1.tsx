@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from '@nutui/nutui-react-taro'
 
 const Demo1 = () => {
-  const marginStyle = { margin: 8 }
+  const marginStyle = { margin: '8px' }
   return (
     <>
       <Button openType="share" style={marginStyle}>

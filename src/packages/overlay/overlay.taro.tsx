@@ -2,6 +2,7 @@ import React, { useState, FunctionComponent, useEffect } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import { EnterHandler, ExitHandler } from 'react-transition-group/Transition'
 import classNames from 'classnames'
+import Taro from '@tarojs/taro'
 import { View, ITouchEvent } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
@@ -84,28 +85,48 @@ export const Overlay: FunctionComponent<
     afterClose && afterClose()
   }
 
+  function renderHarmony() {
+    return innerVisible ? (
+      <View
+        ref={nodeRef}
+        className={classes}
+        style={styles}
+        {...(rest as any)}
+        catchMove={lockScroll}
+        onClick={handleClick}
+      >
+        {children}
+      </View>
+    ) : null
+  }
+
   return (
     <>
-      <CSSTransition
-        nodeRef={nodeRef}
-        classNames={`${classPrefix}-slide`}
-        unmountOnExit
-        timeout={duration}
-        in={innerVisible}
-        onEntered={onHandleOpened}
-        onExited={onHandleClosed}
-      >
-        <View
-          ref={nodeRef}
-          className={classes}
-          style={styles}
-          {...(rest as any)}
-          catchMove={lockScroll}
-          onClick={handleClick}
+      {Taro.getEnv() !== Taro.ENV_TYPE.HARMONY &&
+      Taro.getEnv() !== Taro.ENV_TYPE.HARMONYHYBRID ? (
+        <CSSTransition
+          nodeRef={nodeRef}
+          classNames={`${classPrefix}-slide`}
+          unmountOnExit
+          timeout={duration}
+          in={innerVisible}
+          onEntered={onHandleOpened}
+          onExited={onHandleClosed}
         >
-          {children}
-        </View>
-      </CSSTransition>
+          <View
+            ref={nodeRef}
+            className={classes}
+            style={styles}
+            {...(rest as any)}
+            catchMove={lockScroll}
+            onClick={handleClick}
+          >
+            {children}
+          </View>
+        </CSSTransition>
+      ) : (
+        renderHarmony()
+      )}
     </>
   )
 }

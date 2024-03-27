@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Overlay } from '@nutui/nutui-react-taro'
+import { Button, Cell, Overlay } from '@nutui/nutui-react-taro'
 
 const Demo3 = () => {
   const [visible, setVisible] = useState(false)
@@ -11,9 +11,12 @@ const Demo3 = () => {
   }
   return (
     <>
-      <Button type="primary" onClick={handleToggleShow}>
-        设置动画时间
-      </Button>
+      <Cell>
+        <Button type="primary" onClick={handleToggleShow}>
+          设置动画时间
+        </Button>
+      </Cell>
+
       <Overlay
         visible={visible}
         onClick={onClose}

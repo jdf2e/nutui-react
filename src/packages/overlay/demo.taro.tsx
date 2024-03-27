@@ -38,37 +38,56 @@ const OverlayDemo = () => {
       closeClickLay: 'Click the mask not to close',
     },
   })
+
   return (
     <>
       <Header />
-      <div
-        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} demo-overlay`}
-      >
-        <h2>{translated['84aa6bce']}</h2>
-        <Cell>
+      {Taro.getEnv() !== Taro.ENV_TYPE.HARMONY &&
+      Taro.getEnv() !== Taro.ENV_TYPE.HARMONYHYBRID ? (
+        <div
+          className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} demo-overlay`}
+        >
+          <h2>{translated['84aa6bce']}</h2>
+          <Cell>
+            <Demo1 />
+          </Cell>
+          <h2>{translated.abbf9359}</h2>
+          <Cell>
+            <Demo2 />
+          </Cell>
+          <h2>{translated.duration}</h2>
+          <Cell>
+            <Demo3 />
+          </Cell>
+          <h2>{translated.lockscroll}</h2>
+          <Cell>
+            <Demo4 />
+          </Cell>
+          <h2>{translated.ec0d7acf}</h2>
+          <Cell>
+            <Demo5 />
+          </Cell>
+          <h2>{translated.closeClickLay}</h2>
+          <Cell>
+            <Demo6 />
+          </Cell>
+        </div>
+      ) : (
+        <>
+          <h2>{translated['84aa6bce']}</h2>
           <Demo1 />
-        </Cell>
-        <h2>{translated.abbf9359}</h2>
-        <Cell>
+          <h2>{translated.abbf9359}</h2>
           <Demo2 />
-        </Cell>
-        <h2>{translated.duration}</h2>
-        <Cell>
+          <h2>{translated.duration}</h2>
           <Demo3 />
-        </Cell>
-        <h2>{translated.lockscroll}</h2>
-        <Cell>
+          <h2>{translated.lockscroll}</h2>
           <Demo4 />
-        </Cell>
-        <h2>{translated.ec0d7acf}</h2>
-        <Cell>
+          <h2>{translated.ec0d7acf}</h2>
           <Demo5 />
-        </Cell>
-        <h2>{translated.closeClickLay}</h2>
-        <Cell>
+          <h2>{translated.closeClickLay}</h2>
           <Demo6 />
-        </Cell>
-      </div>
+        </>
+      )}
     </>
   )
 }

@@ -1,7 +1,8 @@
 .nut-button {
   position: relative;
   display: flex;
-  display: inline-block;
+  flex-direction: row;
+  width: auto;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -31,7 +32,6 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   border: inherit;
@@ -48,12 +48,15 @@
   opacity: 0.1;
 }
 .nut-button-wrap {
-  height: 100%;
-  width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: initial;
+  background: unset;
+}
+.nut-button-children {
+  display: flex;
+  flex-direction: row;
 }
 .nut-button-loading::before, .nut-button-disabled::before {
   display: none;
