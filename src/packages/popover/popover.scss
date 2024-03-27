@@ -245,29 +245,6 @@
 
 [dir='rtl'] .nut-popover,
 .nut-rtl .nut-popover {
-  &-arrow {
-    &-left {
-      right: auto;
-      left: 0px;
-      border-left-color: currentcolor;
-      border-right-color: $popover-border-color;
-      border-right-width: medium;
-      border-left-width: 0;
-      margin-right: 0;
-      margin-left: -8px;
-    }
-
-    &-right {
-      left: auto;
-      right: 0px;
-      border-right-color: currentcolor;
-      border-left-color: $popover-border-color;
-      border-left-width: medium;
-      border-right-width: 0;
-      margin-left: 0;
-      margin-right: -8px;
-    }
-  }
   .nut-popover-content {
     .nut-popover-menu-item {
       &-name {
