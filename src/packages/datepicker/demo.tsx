@@ -9,12 +9,8 @@ import Demo6 from './demos/h5/demo6'
 import Demo7 from './demos/h5/demo7'
 import Demo8 from './demos/h5/demo8'
 
-interface T {
-  [props: string]: string
-}
-
 const DatePickerDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       basic: '选择日期',
       mmdd: '选择月日',
