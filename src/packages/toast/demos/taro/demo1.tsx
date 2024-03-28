@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
-import { Cell, Toast } from '@/packages/nutui.react.taro'
+import { Cell, Toast } from '@nutui/nutui-react-taro'
 
 const Demo1 = () => {
-  const [state, SetState] = useState({
+  const [state, setState] = useState({
     content: 'toast',
     type: 'text',
     duration: 2,
     icon: '',
     title: '',
   })
-  const [showToast, SetShowToast] = useState(false)
+  const [showToast, setShowToast] = useState(false)
 
   const openToast = (
     type: string,
@@ -25,7 +25,7 @@ const Demo1 = () => {
       icon,
       title,
     })
-    SetState(changeState)
+    setState(changeState)
   }
   return (
     <>
@@ -37,20 +37,19 @@ const Demo1 = () => {
         title={state.title}
         visible={showToast}
         onClose={() => {
-          SetShowToast(false)
+          setShowToast(false)
         }}
       />
       <Cell
         title="Text文字提示"
-        onClick={(
-          event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => openToast('text', '网络失败，请稍后再试~')}
+        onClick={() => {
+          openToast('text', '网络失败，请稍后再试~')
+          setShowToast(true)
+        }}
       />
       <Cell
         title="Toast 标题提示"
-        onClick={(
-          event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => {
+        onClick={() => {
           openToast(
             'text',
             '网络失败，请稍后再试~',
@@ -58,69 +57,35 @@ const Demo1 = () => {
             undefined,
             '标题提示'
           )
-          SetShowToast(true)
+          setShowToast(true)
         }}
       />
       <Cell
         title="Success 成功提示"
-        onClick={(
-          event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => {
+        onClick={() => {
           openToast('success', '成功提示')
-          SetShowToast(true)
+          setShowToast(true)
         }}
       />
       <Cell
         title="Error 失败提示"
-        onClick={(
-          event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => {
+        onClick={() => {
           openToast('fail', '失败提示')
-          SetShowToast(true)
+          setShowToast(true)
         }}
       />
       <Cell
         title=" Warning 警告提示"
-        onClick={(
-          event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => {
+        onClick={() => {
           openToast('warn', '警告提示')
-          SetShowToast(true)
+          setShowToast(true)
         }}
       />
       <Cell
         title=" Loading 加载提示"
-        onClick={(
-          event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => {
+        onClick={() => {
           openToast('loading', '加载中')
-          SetShowToast(true)
-        }}
-      />
-      <Cell
-        title="设置展示时长为10秒提示"
-        onClick={(
-          event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => {
-          openToast('text', '设置展示时长为10秒', 10)
-          SetShowToast(true)
-        }}
-      />
-      <Cell
-        title="关闭正在显示的toast"
-        onClick={(
-          event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => {
-          SetShowToast(false)
-        }}
-      />
-      <Cell
-        title="传入icon组件中的'JD'图标"
-        onClick={(
-          event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => {
-          openToast('text', '设置icon为JD', 2, 'JD')
-          SetShowToast(true)
+          setShowToast(true)
         }}
       />
     </>

@@ -22,11 +22,35 @@ import { Toast } from '@nutui/nutui-react-taro';
 
 :::
 
-### 换行截断方式
+### 函数调用
 
 :::demo
 
 <CodeBlock src='taro/demo2.tsx'></CodeBlock>
+
+:::
+
+### 设置展示时长
+
+:::demo
+
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
+
+:::
+
+### 自定义 Icon
+
+:::demo
+
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
+
+:::
+
+### 换行截断方式
+
+:::demo
+
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 

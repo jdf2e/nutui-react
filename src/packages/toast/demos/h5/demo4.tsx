@@ -2,19 +2,25 @@ import React from 'react'
 import { Toast, Cell } from '@nutui/nutui-react'
 
 const Demo4 = () => {
-  const errorToast = (msg: string) => {
+  const iconToast = (msg: string) => {
     Toast.show({
       content: msg,
-      icon: 'fail',
+      style: {
+        '--nutui-overlay-bg-color': 'rgba(0, 0, 0, 0.7)',
+      },
+      closeOnOverlayClick: true,
+      onClose: () => {
+        console.log('closeToast')
+      },
     })
   }
   return (
     <>
       <Cell
-        title="失败提示"
+        title="加载状态透明遮罩"
         onClick={(
           event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => errorToast('失败提示')}
+        ) => iconToast('加载状态透明遮罩')}
       />
     </>
   )

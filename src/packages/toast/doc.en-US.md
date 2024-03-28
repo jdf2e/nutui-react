@@ -22,7 +22,7 @@ import { Toast } from '@nutui/nutui-react';
 
 :::
 
-#### Title
+### Set Display Duration
 
 :::demo
 
@@ -30,7 +30,7 @@ import { Toast } from '@nutui/nutui-react';
 
 :::
 
-#### Success
+### Custom Bottom Height
 
 :::demo
 
@@ -38,7 +38,7 @@ import { Toast } from '@nutui/nutui-react';
 
 :::
 
-#### Fail
+### Loading with non-transparent cover
 
 :::demo
 
@@ -46,51 +46,11 @@ import { Toast } from '@nutui/nutui-react';
 
 :::
 
-#### Warn
-
-:::demo
-
-<CodeBlock src='h5/demo5.tsx'></CodeBlock>
-
-:::
-
-#### Loading
-
-:::demo
-
-<CodeBlock src='h5/demo6.tsx'></CodeBlock>
-
-:::
-
-### Set Display Duration
-
-:::demo
-
-<CodeBlock src='h5/demo7.tsx'></CodeBlock>
-
-:::
-
-### Custom Bottom Height
-
-:::demo
-
-<CodeBlock src='h5/demo8.tsx'></CodeBlock>
-
-:::
-
-### Loading with non-transparent cover
-
-:::demo
-
-<CodeBlock src='h5/demo9.tsx'></CodeBlock>
-
-:::
-
 ### Word Break
 
 :::demo
 
-<CodeBlock src='h5/demo10.tsx'></CodeBlock>
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 

@@ -1,22 +1,18 @@
 import React from 'react'
-import { Toast, Cell } from '@nutui/nutui-react'
+import { Toast, Cell, type ToastWordBreakType } from '@nutui/nutui-react'
 
 const Demo5 = () => {
-  const warningToast = (msg: string) => {
+  const showToast = (mode: ToastWordBreakType) => {
     Toast.show({
-      content: msg,
-      icon: 'warn',
+      content: `Let's try ABCDEFGHIJKLMN here.`,
+      wordBreak: mode,
     })
   }
   return (
-    <>
-      <Cell
-        title="警告提示"
-        onClick={(
-          event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => warningToast('警告提示')}
-      />
-    </>
+    <Cell.Group>
+      <Cell title="换行时截断单词" onClick={() => showToast('break-all')} />
+      <Cell title="换行时不截断单词" onClick={() => showToast('break-word')} />
+    </Cell.Group>
   )
 }
 export default Demo5

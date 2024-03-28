@@ -1,21 +1,45 @@
 import React from 'react'
-import { Toast, Cell } from '@nutui/nutui-react'
+import { Toast, Cell, Button } from '@nutui/nutui-react'
 
 const Demo2 = () => {
-  const titleToast = (msg: string) => {
+  const duringToast = (msg: string) => {
     Toast.show({
       content: msg,
-      title: '标题提示',
+      duration: 10,
     })
   }
+
+  const permanentToast = (msg: string) => {
+    Toast.show({
+      content: msg,
+      duration: 0,
+    })
+  }
+
   return (
     <>
       <Cell
-        title="标题提示"
+        title="展示时长为10秒"
         onClick={(
           event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => titleToast('标题提示')}
+        ) => duringToast('展示时长为10秒')}
       />
+      <Cell
+        title="Toast 不消失"
+        onClick={(
+          event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+        ) => permanentToast('Toast 不消失')}
+      />
+      <Button
+        style={{ margin: 8 }}
+        type="primary"
+        shape="round"
+        onClick={() => {
+          Toast.clear()
+        }}
+      >
+        隐藏Toast
+      </Button>
     </>
   )
 }

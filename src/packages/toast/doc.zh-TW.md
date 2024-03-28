@@ -20,7 +20,7 @@ import { Toast } from '@nutui/nutui-react';
 
 :::
 
-### 標題提示
+## 展示時長設置
 
 :::demo
 
@@ -28,7 +28,7 @@ import { Toast } from '@nutui/nutui-react';
 
 :::
 
-### 成功提示
+## Toast自定義底部高度
 
 :::demo
 
@@ -36,7 +36,7 @@ import { Toast } from '@nutui/nutui-react';
 
 :::
 
-### 失敗提示
+## 加載Loading帶透明罩
 
 :::demo
 
@@ -44,51 +44,11 @@ import { Toast } from '@nutui/nutui-react';
 
 :::
 
-### 警告提示
-
-:::demo
-
-<CodeBlock src='h5/demo5.tsx'></CodeBlock>
-
-:::
-
-### 加載提示
-
-:::demo
-
-<CodeBlock src='h5/demo6.tsx'></CodeBlock>
-
-:::
-
-## 展示時長設置
-
-:::demo
-
-<CodeBlock src='h5/demo7.tsx'></CodeBlock>
-
-:::
-
-## Toast自定義底部高度
-
-:::demo
-
-<CodeBlock src='h5/demo8.tsx'></CodeBlock>
-
-:::
-
-## 加載Loading帶透明罩
-
-:::demo
-
-<CodeBlock src='h5/demo9.tsx'></CodeBlock>
-
-:::
-
 ## 換行截斷方式
 
 :::demo
 
-<CodeBlock src='h5/demo10.tsx'></CodeBlock>
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 

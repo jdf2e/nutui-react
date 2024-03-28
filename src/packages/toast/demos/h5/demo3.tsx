@@ -2,21 +2,22 @@ import React from 'react'
 import { Toast, Cell } from '@nutui/nutui-react'
 
 const Demo3 = () => {
-  const successToast = (msg: string) => {
+  const toastBottom = (msg: string) => {
     Toast.show({
       content: msg,
-      icon: 'success',
+      icon: 'loading',
+      style: {
+        '--nutui-toast-inner-top': '90%',
+      },
     })
   }
   return (
-    <>
-      <Cell
-        title="成功提示"
-        onClick={(
-          event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
-        ) => successToast('成功提示')}
-      />
-    </>
+    <Cell
+      title="自定义底部高度"
+      onClick={(
+        event: React.MouseEvent<HTMLDivElement, globalThis.MouseEvent>
+      ) => toastBottom('自定义底部高度')}
+    />
   )
 }
 export default Demo3

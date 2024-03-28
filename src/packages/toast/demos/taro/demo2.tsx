@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Cell, Toast } from '@/packages/nutui.react.taro'
-import { ToastWordBreakType } from '@/packages/toast/toast.taro'
+import { Jd } from '@nutui/icons-react-taro'
+import { Cell, Toast, type ToastWordBreakType } from '@nutui/nutui-react-taro'
 
-const Demo2 = () => {
+const Demo5 = () => {
   const [state, setState] = useState<{
     content: string
     wordBreak: ToastWordBreakType
@@ -13,29 +13,24 @@ const Demo2 = () => {
   const [show, setShow] = useState(false)
   return (
     <>
-      <Toast
-        content={state.content}
-        visible={show}
-        type="text"
-        onClose={() => {
-          setShow(false)
+      <Cell
+        title="函数调用"
+        onClick={() => {
+          Toast.show('test', {
+            title: '函数调用',
+            content: '函数调用',
+            type: 'fail',
+            duration: 2,
+            position: 'center',
+            icon: <Jd />,
+            lockScroll: true,
+            onClose: () => {
+              console.log('close')
+            },
+          })
         }}
-        wordBreak={state.wordBreak}
       />
-      <Cell.Group>
-        <Cell title="换行时截断单词" onClick={() => setShow(true)} />
-        <Cell
-          title="换行时不截断单词"
-          onClick={() => {
-            setState({
-              content: `Let's try ABCDEFGHIJKLMN here.`,
-              wordBreak: 'break-word',
-            })
-            setShow(true)
-          }}
-        />
-      </Cell.Group>
     </>
   )
 }
-export default Demo2
+export default Demo5
