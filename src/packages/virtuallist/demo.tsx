@@ -1,11 +1,22 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Radio from '@/packages/radio'
 import Cell from '@/packages/cell'
 import { useTranslate } from '../../sites/assets/locale'
-import VirtualList from './index'
 
-const ListDemo = () => {
-  const [translated] = useTranslate<any>({
+import Demo1 from './demos/h5/demo1'
+import Demo2 from './demos/h5/demo2'
+import Demo3 from './demos/h5/demo3'
+import Demo4 from './demos/h5/demo4'
+
+const style = `
+.nut-virtualList-box::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+}
+`
+
+const VirtualListDemo = () => {
+  const [translated] = useTranslate({
     'zh-CN': {
       text1: '垂直等高',
       text2: '垂直不等高',
@@ -25,133 +36,44 @@ const ListDemo = () => {
       text4: 'Horizontal unequal width',
     },
   })
-  const [list, setsourceData] = useState<any>([])
-  const [pageNo, setPageNo] = useState(1)
-  const [radioVal, setRadioVal] = useState('1')
-  const [isLoading, setIsLoading] = useState(false)
-  const handleChange = (v: any) => {
-    setRadioVal(v)
-    setPageNo(1)
+  const [val, setVal] = useState(1)
+  const handleChange = (v: string | number) => {
+    setVal(v as number)
   }
-  const getData = useCallback(() => {
-    const datas: any = []
-    const pageSize = 10
-    for (let i = (pageNo - 1) * pageSize; i < pageNo * pageSize; i++) {
-      const num = i > 9 ? i : `0${i}`
-      datas.push(` list${num}`)
-    }
-    if (pageNo === 1) {
-      setsourceData(() => {
-        return datas
-      })
-    } else {
-      setsourceData((list: any) => {
-        return [...list, ...datas]
-      })
-    }
-  }, [pageNo])
-  const itemRender = (data: any) => {
-    return <p>{data}</p>
-  }
-
-  const itemVariable = (data: any, dataIndex: number, index: number) => {
-    return (
-      <p className={dataIndex % 2 === 0 ? '' : 'nut-virtualList-demo-item'}>
-        {data}
-      </p>
-    )
-  }
-  const onScroll = () => {
-    if (pageNo > 50 || isLoading) return
-    setIsLoading(true)
-    setTimeout(() => {
-      setPageNo(pageNo + 1)
-      setIsLoading(false)
-    }, 30)
-  }
-  useEffect(() => {
-    getData()
-  }, [getData])
   const showNode = () => {
-    switch (radioVal) {
-      case '1':
-        return (
-          <VirtualList
-            itemHeight={66}
-            className="heigh1"
-            list={list}
-            itemRender={itemRender}
-            onScroll={onScroll}
-          />
-        )
-      case '2':
-        return (
-          <VirtualList
-            list={list}
-            itemRender={itemVariable}
-            itemHeight={128}
-            containerHeight={500}
-            itemEqual={false}
-            onScroll={onScroll}
-          />
-        )
-      case '3':
-        return (
-          <VirtualList
-            list={list}
-            itemRender={itemRender}
-            itemHeight={124}
-            containerHeight={341}
-            onScroll={onScroll}
-            direction="horizontal"
-          />
-        )
-      case '4':
-        return (
-          <VirtualList
-            list={list}
-            itemHeight={300}
-            itemRender={itemVariable}
-            direction="horizontal"
-            itemEqual={false}
-            onScroll={onScroll}
-          />
-        )
+    switch (val) {
+      case 1:
+        return <Demo1 />
+      case 2:
+        return <Demo2 />
+      case 3:
+        return <Demo3 />
       default:
-        return (
-          <VirtualList
-            itemHeight={66}
-            className="heigh1"
-            list={list}
-            itemRender={itemRender}
-            onScroll={onScroll}
-          />
-        )
+        return <Demo4 />
     }
   }
   return (
     <>
+      <style>{style}</style>
       <div className="demo">
         <Cell.Group>
           <Cell>
             <Radio.Group
-              value={radioVal}
+              value={val}
               onChange={handleChange}
               direction="horizontal"
             >
-              <Radio value="1">{translated.text1}</Radio>
-              <Radio value="2">{translated.text2}</Radio>
-              <Radio value="3">{translated.text3}</Radio>
-              <Radio value="4">{translated.text4}</Radio>
+              <Radio value={1}>{translated.text1}</Radio>
+              <Radio value={2}>{translated.text2}</Radio>
+              <Radio value={3}>{translated.text3}</Radio>
+              <Radio value={4}>{translated.text4}</Radio>
             </Radio.Group>
           </Cell>
         </Cell.Group>
-        <div key={radioVal} className="nut-virtualList-demo-box hideScrollbar">
-          {showNode()}
-        </div>
+        <div>{showNode()}</div>
       </div>
     </>
   )
 }
 
-export default ListDemo
+export default VirtualListDemo

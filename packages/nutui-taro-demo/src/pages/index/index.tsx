@@ -51,7 +51,7 @@ const Index = () => {
         </div>
         <div className="index-components">
           {navs.map((nav) => (
-            <ol key={nav.name}>
+            <ol key={nav.enName}>
               {nav.enName === 'dentry1' ? null : <li>{nav.name}</li>}
               <ul>
                 {nav.packages.map((com) =>

@@ -7,7 +7,7 @@
 ## 安装
 
 ```tsx
-import { OverLay } from '@nutui/nutui-react';
+import { Overlay } from '@nutui/nutui-react';
 ```
 
 ## 代码演示

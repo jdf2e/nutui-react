@@ -6,10 +6,8 @@ import { useForm } from '@/packages/form/useform'
 
 export type {
   FormItemRuleWithoutValidator,
-  StoreValue,
-  NamePath,
   FormInstance,
-  FieldEntity,
+  FormFieldEntity,
 } from './types'
 
 type CompoundedComponent = React.ForwardRefExoticComponent<

@@ -1,6 +1,5 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { Toast } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Demo1 from './demos/taro/demo1'
