@@ -10,13 +10,13 @@ const Demo3 = () => {
   ]
   return (
     <div className="demo-box" style={{ height: 150 }}>
-      <Swiper defaultValue={0} width="300" height={150}>
-        {list.map((item) => {
+      <Swiper slideSize={250} indicator>
+        {list.map((item, index) => {
           return (
             <Swiper.Item key={item}>
               <img
-                src={item}
-                alt=""
+                src={list[index]}
+                alt={list[index]}
                 style={{ width: '100%', height: '100%' }}
                 draggable={false}
               />

@@ -226,6 +226,7 @@ export const Image: FunctionComponent<
           loading="lazy"
           onLoad={handleLoad}
           onError={handleError}
+          draggable={props.draggable}
         />
       ) : (
         <img
@@ -236,6 +237,7 @@ export const Image: FunctionComponent<
           alt={alt}
           onLoad={handleLoad}
           onError={handleError}
+          draggable={props.draggable}
         />
       )}
       {renderLoading()}

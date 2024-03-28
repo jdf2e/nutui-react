@@ -22,7 +22,7 @@ const Demo12 = () => {
         defaultValue={0}
         loop={false}
         ref={swiperRef}
-        height={41}
+        style={{ height: '41px' }}
         onChange={(page) => {
           setTabIndex(page)
         }}

@@ -1,12 +1,10 @@
-import React, { useState } from 'react'
+import React, { CSSProperties, useState } from 'react'
 import { Swiper } from '@nutui/nutui-react'
 import { ArrowLeft, ArrowRight } from '@nutui/icons-react'
 
 const Demo5 = () => {
   const swiperRef = React.useRef<any>(null)
-  const [defaultValue6, setdefaultValue6] = useState(0)
   const [current2, setCurrent2] = useState(1)
-  const [height] = useState<any>(150)
 
   const handlePrev = () => {
     swiperRef.current.prev()
@@ -14,7 +12,7 @@ const Demo5 = () => {
   const handleNext = () => {
     swiperRef.current.next()
   }
-  const pageStyle = {
+  const pageStyle: CSSProperties = {
     position: 'absolute',
     bottom: 0,
     right: 0,
@@ -54,18 +52,17 @@ const Demo5 = () => {
     <div className="demo-box" style={{ height: 150, position: 'relative' }}>
       <Swiper
         ref={swiperRef}
-        height={height}
-        loop
-        defaultValue={defaultValue6}
+        defaultValue={0}
         onChange={(e) => setCurrent2(e + 1)}
-        indicator={<div className="page"> {current2}/4 </div>}
+        loop
+        indicator={<div style={pageStyle}> {current2}/4 </div>}
       >
-        {list.map((item) => {
+        {list.map((item, index) => {
           return (
             <Swiper.Item key={item}>
               <img
-                src={item}
-                alt=""
+                src={list[index]}
+                alt={list[index]}
                 style={{ width: '100%', height: '100%' }}
                 draggable={false}
               />
