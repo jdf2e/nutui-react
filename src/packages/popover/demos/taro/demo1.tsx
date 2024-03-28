@@ -24,7 +24,7 @@ const Demo1 = () => {
         visible={basic}
         list={itemList}
         location="bottom-start"
-        style={{ marginRight: '30px' }}
+        style={{ marginInlineEnd: '30px' }}
         onClick={() => {
           basic ? setBasic(false) : setBasic(true)
         }}

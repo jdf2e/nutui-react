@@ -17,6 +17,7 @@ import useClickAway from '@/utils/use-click-away'
 import { canUseDom } from '@/utils/can-use-dom'
 import { getAllScrollableParents } from '@/utils/get-scroll-parent'
 import { PopoverTheme, PopoverLocation, PopoverList } from './types'
+import { useRtl } from '@/packages/configprovider'
 
 export interface PopoverProps extends PopupProps {
   list: PopoverList[]
@@ -58,6 +59,7 @@ const classPrefix = `nut-popover`
 export const Popover: FunctionComponent<
   Partial<PopoverProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onSelect'>
 > = (props) => {
+  const rtl = useRtl()
   const {
     children,
     list,
@@ -148,14 +150,15 @@ export const Popover: FunctionComponent<
         ? (document.querySelector(`#${targetId}`) as Element)
         : (popoverRef.current as Element)
     )
+
     setRootPosition({
       width: rect.width,
       height: rect.height,
-      left: rect.left,
+      left: rtl ? rect.right : rect.left,
       top:
         rect.top +
         Math.max(document.documentElement.scrollTop, document.body.scrollTop),
-      right: rect.right,
+      right: rtl ? rect.left : rect.right,
     })
   }
 
@@ -184,17 +187,20 @@ export const Popover: FunctionComponent<
     let cross = 0
     let parallel = 0
     if (Array.isArray(offset) && offset.length === 2) {
+      const rtloffset = rtl ? -offset[0] : offset[0]
       cross += +offset[1]
-      parallel += +offset[0]
+      parallel += +rtloffset
     }
     if (width) {
+      const dir = rtl ? 'right' : 'left'
       if (['bottom', 'top'].includes(direction)) {
         const h =
           direction === 'bottom' ? height + cross : -(contentHeight + cross)
         styles.top = `${top + h}px`
 
         if (!skew) {
-          styles.left = `${-(contentWidth - width) / 2 + left + parallel}px`
+          styles[dir] =
+            `${-(contentWidth - width) / 2 + rootPosition[dir] + parallel}px`
         }
         if (skew === 'start') {
           styles.left = `${left + parallel}px`
@@ -230,15 +236,17 @@ export const Popover: FunctionComponent<
     const base = 16
 
     if (props.arrowOffset !== 0) {
+      const dir = rtl ? 'right' : 'left'
+      const dir2 = rtl ? 'left' : 'right'
       if (['bottom', 'top'].includes(direction)) {
         if (!skew) {
-          styles.left = `calc(50% + ${arrowOffset}px)`
+          styles[dir] = `calc(50% + ${arrowOffset}px)`
         }
         if (skew === 'start') {
-          styles.left = `${base + arrowOffset}px`
+          styles[dir] = `${base + arrowOffset}px`
         }
         if (skew === 'end') {
-          styles.right = `${base - arrowOffset}px`
+          styles[dir2] = `${base - arrowOffset}px`
         }
       }
 
