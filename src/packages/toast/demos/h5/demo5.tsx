@@ -1,8 +1,8 @@
 import React from 'react'
-import { Toast, Cell, type ToastWordBreakType } from '@nutui/nutui-react'
+import { Toast, Cell, type ToastWordBreak } from '@nutui/nutui-react'
 
 const Demo5 = () => {
-  const showToast = (mode: ToastWordBreakType) => {
+  const showToast = (mode: ToastWordBreak) => {
     Toast.show({
       content: `Let's try ABCDEFGHIJKLMN here.`,
       wordBreak: mode,

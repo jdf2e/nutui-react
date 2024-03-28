@@ -1,16 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Jd } from '@nutui/icons-react-taro'
-import { Cell, Toast, type ToastWordBreakType } from '@nutui/nutui-react-taro'
+import { Cell, Toast } from '@nutui/nutui-react-taro'
 
 const Demo5 = () => {
-  const [state, setState] = useState<{
-    content: string
-    wordBreak: ToastWordBreakType
-  }>({
-    content: `Let's try ABCDEFGHIJKLMN here.`,
-    wordBreak: 'break-all',
-  })
-  const [show, setShow] = useState(false)
   return (
     <>
       <Cell

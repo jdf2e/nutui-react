@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
-import { Cell, Toast, ToastWordBreakType } from '@nutui/nutui-react-taro'
+import { Cell, Toast, ToastWordBreak } from '@nutui/nutui-react-taro'
 
 const Demo5 = () => {
   const [state, setState] = useState<{
     content: string
-    wordBreak: ToastWordBreakType
+    wordBreak: ToastWordBreak
   }>({
     content: `Let's try ABCDEFGHIJKLMN here.`,
     wordBreak: 'break-all',
