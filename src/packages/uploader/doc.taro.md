@@ -14,351 +14,107 @@ import { Uploader } from '@nutui/nutui-react-taro';
 
 ### 基础用法
 
-```tsx
-import React, { useState } from "react";
-import { Uploader } from '@nutui/nutui-react-taro';
-import { Dongdong } from '@nutui/icons-react-taro';
+:::demo
 
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const onStart = () => {
-    console.log('start 触发')
-  }
-  return (
-    <>
-      <h2>基础用法</h2>
-      <Uploader
-        url={uploadUrl}
-        onStart={onStart}
-        style={{ marginRight: '10px' }}
-      />
-      <Uploader
-        url={uploadUrl}
-        uploadLabel="商品主图"
-        onStart={onStart}
-        style={{ marginRight: '10px' }}
-      />
-      <Uploader url={uploadUrl} uploadIcon={<Dongdong />} onStart={onStart} />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
+
+:::
+
+### 基础用法
+
+:::demo
+
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
+
+:::
 
 ### 上传状态
 
-```tsx
-import React, { useState } from "react";
-import { Uploader } from '@nutui/nutui-react-taro';
-import { Dongdong, Loading, Star } from '@nutui/icons-react-taro';
+:::demo
 
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const defaultFileList = [
-    {
-      name: '文件文件文件1.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'success',
-      message: '上传成功',
-      type: 'image',
-      uid: '123',
-    },
-    {
-      name: '文件1.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'success',
-      message: '上传成功',
-      type: 'image',
-      uid: '123',
-    },
-    {
-      name: '文件4.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'error',
-      message: '上传失败',
-      type: 'image',
-      uid: '124',
-      failIcon: <Star style={{ color: 'white' }}/>,
-    },
-    {
-      name: '文件4.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'uploading',
-      message: '上传中',
-      type: 'image',
-      uid: '125',
-    },
-    {
-      name: '文件4.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'uploading',
-      message: '上传中',
-      type: 'image',
-      uid: '126',
-      loadingIcon: <Loading className="nut-icon-Loading" color="#fff" />,
-    },
-    {
-      name: '文件4.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'uploading',
-      message: '上传中',
-      type: 'image',
-      uid: '127',
-      loadingIcon: null,
-    },
-  ]
-  const onDelete = (file, fileList) => {
-    console.log(translated.ca3903f3, file, fileList)
-  }
-  return (
-    <>
-      <h2>上传状态</h2>
-      <Uploader
-        url={uploadUrl}
-        defaultValue={defaultFileList}
-        onDelete={onDelete}
-        uploadIcon={<Dongdong />}
-      />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
+
+:::
+
+### 基础用法-上传列表展示
+
+:::demo
+
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
+
+:::
 
 ### 自定义上传使用默认进度条
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button, Progress } from '@nutui/nutui-react-taro';
+:::demo
 
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const [progressPercent, setProgressPercent] = useState(0)
-  const onProgress = ({ event, options, percentage }: any) => {
-    setProgressPercent(percentage)
-  }
-  return (
-    <>
-      <h2>自定义上传使用默认进度条</h2>
-      <Uploader url={uploadUrl} onProgress={onProgress}>
-        <Button type="success" size="small">
-          上传文件
-        </Button>
-      </Uploader>
-      <br />
-      <Progress
-        percentage={progressPercent}
-        strokeColor="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
-        status
-      />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
+
+:::
 
 ### 直接调起摄像头（移动端生效）
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react-taro';
+:::demo
 
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  return (
-    <>
-      <h2>直接调起摄像头（移动端生效）</h2>
-      <Uploader url={uploadUrl} sourceType={['camera']}/>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
+
+:::
 
 ### 使用前摄像头拍摄3s视频并上传(仅支持微信小程序)
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react-taro';
+:::demo
 
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  return (
-    <>
-      <h2>使用前摄像头拍摄3s视频并上传(仅支持微信小程序)</h2>
-      <Uploader url={uploadUrl} maxDuration={3} sourceType={['camera']} camera="front" />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo7.tsx'></CodeBlock>
+
+:::
 
 ### 限制上传数量5个
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react-taro';
+:::demo
 
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  return (
-    <>
-      <h2>限制上传数量5个</h2>
-      <Uploader url={uploadUrl} maxCount="5" />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo8.tsx'></CodeBlock>
 
-### 限制上传大小（每个文件最大不超过 50kb）
+:::
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react-taro';
+### 限制上传大小（每个文件最大不超过50kb）
 
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const onOversize = (files: File[]) => {
-    console.log('oversize 触发 文件大小不能超过 50kb', files)
-  }
-  return (
-    <>
-      <h2>限制上传大小（每个文件最大不超过 50kb）</h2>
-      <Uploader url={uploadUrl} maxFileSize={1024 * 50} oversize={onOversize} />
-    </>
-  )
-}
-export default App;
-```
+:::demo
 
-### 自定义 FormData headers
+<CodeBlock src='taro/demo9.tsx'></CodeBlock>
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react-taro';
+:::
 
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const formData = {
-    custom: 'test',
-  }
-  return (
-    <>
-      <h2>自定义 FormData headers</h2>
-      <Uploader
-        url={uploadUrl}
-        data={formData}
-        headers={formData}
-       />
-    </>
-  )
-}
-export default App;
-```
+### 自定义数据 FormData、headers
 
-### 自定义 xhr 上传方式(before-xhr-upload)
+:::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react-taro';
+<CodeBlock src='taro/demo10.tsx'></CodeBlock>
 
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const beforeXhrUpload = (taroUploadFile: any, options: any) => {
-    const uploadTask = taroUploadFile({
-      url: options.url,
-      filePath: options.taroFilePath,
-      fileType: options.fileType,
-      header: {
-        'Content-Type': 'multipart/form-data',
-        ...options.headers,
-      }, 
-      formData: options.formData,
-      name: options.name,
-      success(response: { errMsg: any; statusCode: number; data: string }) {
-        if (options.xhrState === response.statusCode) {
-          options.onSuccess?.(response, options)
-        } else {
-          options.onFailure?.(response, options)
-        }
-      },
-      fail(e: any) {
-        options.onFailure?.(e, options)
-      },
-    })
-    options.onStart?.(options)
-    uploadTask.progress(
-      (res: {
-        progress: any
-        totalBytesSent: any
-        totalBytesExpectedToSend: any
-      }) => {
-        options.onProgress?.(res, options)
-      }
-    )
-  }
-  return (
-    <>
-      <h2>自定义 xhr 上传方式(before-xhr-upload)</h2>
-      <Uploader
-        url={uploadUrl}
-        method="put"
-        beforeXhrUpload={beforeXhrUpload}
-       />
-    </>
-  )
-}
-export default App;
-```
+:::
 
-### 手动上传
+### 自定义 Taro.uploadFile 上传方式(before-xhr-upload)
 
-```tsx
-import React, { useState, useRef } from "react";
-import { Uploader, Button } from '@nutui/nutui-react-taro';
+:::demo
 
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const uploadRef = useRef(null)
-  const submitUpload = () => {
-    uploadRef.current.submit()
-  }
-  const clearUpload = () => {
-    uploadRef.current.clear()
-  };
-  return (
-    <>
-      <h2>手动上传</h2>
-      <Uploader url={uploadUrl} maxCount="5" autoUpload={false} ref={uploadRef} />
-      <Button type="success" size="small" onClick={submitUpload}>
-        执行上传
-      </Button>
-      <Button type="danger" size="small" onClick={clearUpload}>
-        手动清空上传
-      </Button>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo11.tsx'></CodeBlock>
+
+:::
+
+### 选中文件后，通过按钮手动执行上传
+
+:::demo
+
+<CodeBlock src='taro/demo12.tsx'></CodeBlock>
+
+:::
 
 ### 禁用状态
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react-taro';
+:::demo
 
-const App = () => {
-  return (
-    <>
-      <h2>禁用状态</h2>
-      <Uploader disabled />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo13.tsx'></CodeBlock>
+
+:::
 
 ## Uploader
 

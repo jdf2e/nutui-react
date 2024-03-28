@@ -239,7 +239,6 @@ import { Tabs } from '@nutui/nutui-react-taro';
 | --- | --- | --- |
 | \--nutui-tabs-titles-height | 水平方向标题的高度 | `44px` |
 | \--nutui-tabs-titles-background-color | Tab 标题的背景色 | `$color-background` |
-| \--nutui-tabs-titles-padding | Tab 标题的内边距 | `0 16px` |
 | \--nutui-tabs-title-gap | Tab 标题的左右 margin | `0px` |
 | \--nutui-tabs-titles-font-size | Tab 标题的字号 | `$font-size-base` |
 | \--nutui-tabs-titles-item-min-width | 水平方向标题的最小宽度 | `50px` |

@@ -65,10 +65,10 @@ git clone https://github.com/jdf2e/nutui-react.git
 cd nutui-react
 
 # Install dependencies
-npm install
+pnpm install
 
 # Start development
-npm run dev
+pnpm run dev
 
 # visit in browser: http：http://localhost:3000 (you don't have to open it manually if you've run it in the browser again)
 ```
@@ -81,15 +81,15 @@ git clone https://github.com/jdf2e/nutui-react.git
 cd nutui-react
 
 # Install dependencies
-npm install
+pnpm install
 
 # Start development
 # dir：src/sites/mobile-taro/dist/weapp
-npm run dev:taro:weapp
+pnpm run dev:taro:weapp
 
 # OR run as jd mini-program
 # dir：src/sites/mobile-taro/dist/jd
-npm run dev:taro:jd
+pnpm run dev:taro:jd
 ```
 
 ## Build Versions

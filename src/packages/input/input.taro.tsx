@@ -15,7 +15,7 @@ import {
 import { MaskClose } from '@nutui/icons-react-taro'
 import Taro, { getEnv, ENV_TYPE } from '@tarojs/taro'
 import { formatNumber } from './util'
-import { useConfig } from '@/packages/configprovider/index.taro'
+import { useConfig, useRtl } from '@/packages/configprovider/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 
@@ -74,6 +74,7 @@ export const Input = forwardRef(
       >,
     ref
   ) => {
+    const rtl = useRtl()
     const { locale } = useConfig()
     const {
       type,
@@ -221,10 +222,16 @@ export const Input = forwardRef(
           className="nut-input-native"
           ref={inputRef}
           style={{
-            textAlign: `${
-              // eslint-disable-next-line no-nested-ternary
-              align === 'right' ? 'end' : align === 'left' ? 'start' : 'center'
-            }`,
+            // eslint-disable-next-line no-nested-ternary
+            textAlign: rtl
+              ? // eslint-disable-next-line no-nested-ternary
+                align === 'right'
+                ? // eslint-disable-next-line no-nested-ternary
+                  'left'
+                : align === 'left'
+                  ? 'right'
+                  : 'center'
+              : align,
           }}
           type={inputType(type) as any}
           password={type === 'password'}

@@ -12,40 +12,19 @@ import { Uploader } from '@nutui/nutui-react';
 
 ## Demo
 
-### Basic Usage
+### Basic usage
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader } from '@nutui/nutui-react';
-import { Dongdong } from '@nutui/icons-react';
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const onStart = () => {
-    console.log('start ！！')
-  }
-  return (
-    <>
-      <h2>Basic Usage</h2>
-      <Uploader
-        url={uploadUrl}
-        onStart={onStart}
-        style={{ marginRight: '10px' }}
-      />
-      <Uploader
-        url={uploadUrl}
-        uploadLabel="Main goods"
-        onStart={onStart}
-        style={{ marginRight: '10px' }}
-      />
-      <Uploader url={uploadUrl} uploadIcon={<Dongdong />} onStart={onStart} />
-    </>
-  )
-}
-export default App;
-```
+:::
+
+### Basic usage
+
+:::demo
+
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -53,82 +32,15 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader } from '@nutui/nutui-react';
-import { Dongdong, Loading } from '@nutui/icons-react';
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const defaultFileList = [
-    {
-      name: 'filefilefile1.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'success',
-      message: 'Uploaded successfully',
-      type: 'image',
-      uid: '122',
-    },
-    {
-      name: 'file.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'success',
-      message: 'Uploaded successfully',
-      type: 'image',
-      uid: '122',
-    },
-    {
-      name: 'file4.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'error',
-      message: 'upload failed',
-      type: 'image',
-      uid: '124',
-    },
-    {
-      name: 'file5.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'uploading',
-      message: 'uploading...',
-      type: 'image',
-      uid: '125',
-    },
-    {
-      name: 'file6.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'uploading',
-      message: 'uploading...',
-      type: 'image',
-      uid: '126',
-      loadingIcon: <Loading className="nut-icon-Loading" color="#fff" />,
-    },
-    {
-      name: 'file7.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'uploading',
-      message: 'uploading...',
-      type: 'image',
-      uid: '127',
-      loadingIcon: null,
-    },
-  ]
-  const onDelete = (file, fileList) => {
-    console.log(translated.ca3903f3, file, fileList)
-  }
-  return (
-    <>
-      <h2>upload status</h2>
-      <Uploader
-        url={uploadUrl}
-        defaultValue={defaultFileList}
-        onDelete={onDelete}
-        uploadIcon={<Dongdong />}
-      />
-    </>
-  )
-}
-export default App;
-```
+:::
+
+### Basic usage - upload list dispaly
+
+:::demo
+
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -136,35 +48,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button, Progress } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const [progressPercent, setProgressPercent] = useState(0)
-  const onProgress = ({ event, options, percentage }: any) => {
-    setProgressPercent(percentage)
-  }
-  return (
-    <>
-      <h2>Custom upload uses default progress bar</h2>
-      <Uploader url={uploadUrl} onProgress={onProgress}>
-        <Button type="success" size="small">
-          upload files
-        </Button>
-      </Uploader>
-      <br />
-      <Progress
-        percentage={progressPercent}
-        strokeColor="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
-        status
-      />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -172,21 +56,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  return (
-    <>
-      <h2>Direct camera up (mobile)</h2>
-      <Uploader capture url={uploadUrl} />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -194,21 +64,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  return (
-    <>
-      <h2>Limit the number of uploads to 5</h2>
-      <Uploader url={uploadUrl} multiple maxCount="5" />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -216,59 +72,15 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const onOversize = (files: File[]) => {
-    console.log('Oversize triggers the file size cannot exceed 50kb', files)
-  }
-  return (
-    <>
-      <h2>Limit upload size (maximum 50kb per file)</h2>
-      <Uploader url={uploadUrl} multiple maxFileSize={1024 * 50} oversize={onOversize} />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
-### Image compression (handled in beforeupload hook)
+### Image compression (handled in a foreupload hook)
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const beforeUpload = async (files: File[]) => {
-    const canvas = document.createElement('canvas')
-    const context = canvas.getContext('2d') as CanvasRenderingContext2D
-    const base64 = await fileToDataURL(files[0])
-    const img = await dataURLToImage(base64)
-    canvas.width = img.width
-    canvas.height = img.height
-    context.clearRect(0, 0, img.width, img.height)
-    context.drawImage(img, 0, 0, img.width, img.height)
-    const blob = (await canvastoFile(canvas, 'image/jpeg', 0.5)) as Blob
-    const f = await new File([blob], files[0].name, { type: files[0].type })
-    return [f]
-  }
-  return (
-    <>
-      <h2>Image compression (handled in beforeupload hook)</h2>
-      <Uploader url={uploadUrl} multiple beforeUpload={beforeUpload} />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
 :::
 
@@ -276,29 +88,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const formData = {
-    custom: 'test',
-  }
-  return (
-    <>
-      <h2>Custom data FormData, headers</h2>
-      <Uploader
-        url={uploadUrl}
-        data={formData}
-        headers={formData}
-        withCredentials
-       />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
 
 :::
 
@@ -306,68 +96,15 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const beforeXhrUpload = (xhr: XMLHttpRequest, options: any) => {
-    if (options.method.toLowerCase() === 'put') {
-      xhr.send(options.sourceFile);
-    } else {
-      xhr.send(options.formData);
-    }
-  };
-  return (
-    <>
-      <h2>Custom xhr upload method (before-xhr-upload)</h2>
-      <Uploader
-        url={uploadUrl}
-        method="put"
-        beforeXhrUpload={beforeXhrUpload}
-       />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
 
 :::
 
-### Manual upload
+### After selecting Chinese, manually perform the upload via the button
 
 :::demo
 
-```tsx
-import React, { useState, useRef } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const uploadRef = useRef(null)
-  const submitUpload = () => {
-    uploadRef.current.submit()
-  }
-  const clearUpload = () => {
-    uploadRef.current.clear()
-  };
-  return (
-    <>
-      <h2>Manual upload</h2>
-      <Uploader url={uploadUrl} maxCount="5" autoUpload={false} ref={uploadRef} />
-      <br />
-      <Button type="success" size="small" onClick={submitUpload}>
-        perform upload
-      </Button>
-      <Button type="danger" size="small" onClick={clearUpload}>
-        Clear upload manually
-      </Button>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo12.tsx'></CodeBlock>
 
 :::
 
@@ -375,20 +112,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <h2>Disabled state</h2>
-      <Uploader disabled />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo13.tsx'></CodeBlock>
 
 :::
 
