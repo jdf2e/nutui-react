@@ -16,23 +16,8 @@ import Demo11 from './demos/h5/demo11'
 import Demo12 from './demos/h5/demo12'
 import Demo13 from './demos/h5/demo13'
 
-interface T {
-  basic: string
-  uploadListDefault: string
-  uploadDefaultProgress: string
-  uploadStatus: string
-  camera: string
-  limitedQuantity: string
-  limitSize: string
-  compress: string
-  custom: string
-  uploadXhrCustom: string
-  manualExecution: string
-  disabled: string
-}
-
 const UploaderDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
       uploadListDefault: '基础用法-上传列表展示',
@@ -80,7 +65,7 @@ const UploaderDemo = () => {
 
   return (
     <>
-      <div className="demo bg-w demo-uploader">
+      <div className="demo bg-w">
         <h2>{translated.basic}</h2>
         <Demo1 />
         <h2>{translated.basic}</h2>

@@ -20,23 +20,8 @@ import Demo11 from './demos/taro/demo11'
 import Demo12 from './demos/taro/demo12'
 import Demo13 from './demos/taro/demo13'
 
-interface T {
-  basic: string
-  uploadListDefault: string
-  uploadDefaultProgress: string
-  uploadStatus: string
-  camera: string
-  limitedQuantity: string
-  limitSize: string
-  videoUploader: string
-  custom: string
-  uploadXhrCustom: string
-  manualExecution: string
-  disabled: string
-}
-
 const UploaderDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       basic: '基础用法',
       uploadListDefault: '基础用法-上传列表展示',
