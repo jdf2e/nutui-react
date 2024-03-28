@@ -16,36 +16,15 @@ import { Uploader } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader } from '@nutui/nutui-react';
-import { Dongdong } from '@nutui/icons-react';
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const onStart = () => {
-    console.log('start 触发')
-  }
-  return (
-    <>
-      <h2>基础用法</h2>
-      <Uploader
-        url={uploadUrl}
-        onStart={onStart}
-        style={{ marginRight: '10px' }}
-      />
-      <Uploader
-        url={uploadUrl}
-        uploadLabel="商品主图"
-        onStart={onStart}
-        style={{ marginRight: '10px' }}
-      />
-      <Uploader url={uploadUrl} uploadIcon={<Dongdong />} onStart={onStart} />
-    </>
-  )
-}
-export default App;
-```
+:::
+
+### 基础用法
+
+:::demo
+
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -53,83 +32,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader } from '@nutui/nutui-react';
-import { Dongdong, Loading, Star } from '@nutui/icons-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const defaultFileList = [
-    {
-      name: '文件文件文件1.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'success',
-      message: '上传成功',
-      type: 'image',
-      uid: '122',
-    },
-    {
-      name: '文件1.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'success',
-      message: '上传成功',
-      type: 'image',
-      uid: '123',
-    },
-    {
-      name: '文件4.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'error',
-      message: '上传失败',
-      type: 'image',
-      uid: '124',
-      failIcon: <Star style={{ color: 'white' }}/>,
-    },
-    {
-      name: '文件5.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'uploading',
-      message: '上传中',
-      type: 'image',
-      uid: '125',
-    },
-    {
-      name: '文件6.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'uploading',
-      message: '上传中',
-      type: 'image',
-      uid: '126',
-      loadingIcon: <Loading className="nut-icon-Loading" color="#fff" />,
-    },
-    {
-      name: '文件7.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'uploading',
-      message: '上传中',
-      type: 'image',
-      uid: '127',
-      loadingIcon: null,
-    },
-  ]
-  const onDelete = (file, fileList) => {
-    console.log(translated.ca3903f3, file, fileList)
-  }
-  return (
-    <>
-      <h2>上传状态</h2>
-      <Uploader
-        url={uploadUrl}
-        defaultValue={defaultFileList}
-        onDelete={onDelete}
-        uploadIcon={<Dongdong />}
-      />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -137,86 +40,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Loading, Star } from '@nutui/icons-react';
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-
-  const defaultFileList = [
-    {
-      name: '文件文件文件1.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'success',
-      message: '上传成功',
-      type: 'image',
-      uid: '122',
-    },
-    {
-      name: '文件1.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'success',
-      message: '上传成功',
-      type: 'image',
-      uid: '123',
-    },
-    {
-      name: '文件4.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'error',
-      message: '上传失败',
-      type: 'image',
-      uid: '124',
-      failIcon: <Star style-={{ color: 'white' }}/>,
-    },
-    {
-      name: '文件5.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'uploading',
-      message: '上传中',
-      type: 'image',
-      uid: '125',
-    },
-    {
-      name: '文件6.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'uploading',
-      message: '上传中',
-      type: 'image',
-      uid: '126',
-      loadingIcon: <Loading className="nut-icon-Loading" color="#fff" />,
-    },
-    {
-      name: '文件7.png',
-      url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-      status: 'uploading',
-      message: '上传中',
-      type: 'image',
-      uid: '127',
-      loadingIcon: null,
-    },
-  ]
-  return (
-    <>
-      <h2>基础用法-上传列表展示</h2>
-      <Uploader
-        url={uploadUrl}
-        defaultValue={defaultFileList}
-        maxCount="10"
-        multiple
-        previewType="list"
-      >
-        <Button type="success" size="small">
-          {translated.bb5caa9c}
-        </Button>
-      </Uploader>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -224,35 +48,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button, Progress } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const [progressPercent, setProgressPercent] = useState(0)
-  const onProgress = ({ event, options, percentage }: any) => {
-    setProgressPercent(percentage)
-  }
-  return (
-    <>
-      <h2>自定义上传使用默认进度条</h2>
-      <Uploader url={uploadUrl} onProgress={onProgress}>
-        <Button type="success" size="small">
-          上传文件
-        </Button>
-      </Uploader>
-      <br />
-      <Progress
-        percentage={progressPercent}
-        strokeColor="linear-gradient(270deg, rgba(18,126,255,1) 0%,rgba(32,147,255,1) 32.815625%,rgba(13,242,204,1) 100%)"
-        status
-      />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -260,21 +56,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  return (
-    <>
-      <h2>直接调起摄像头（移动端生效）</h2>
-      <Uploader capture url={uploadUrl} />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -282,46 +64,15 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  return (
-    <>
-      <h2>限制上传数量5个</h2>
-      <Uploader url={uploadUrl} multiple maxCount="5" />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
-### 限制上传大小（每个文件最大不超过 50kb）
+### 限制上传大小（每个文件最大不超过50kb）
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const onOversize = (files: File[]) => {
-    console.log('oversize 触发 文件大小不能超过 50kb', files)
-  }
-  return (
-    <>
-      <h2>限制上传大小（每个文件最大不超过 50kb）</h2>
-      <Uploader url={uploadUrl} multiple maxFileSize={1024 * 50} oversize={onOversize} />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -329,64 +80,15 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const beforeUpload = async (files: File[]) => {
-    const canvas = document.createElement('canvas')
-    const context = canvas.getContext('2d') as CanvasRenderingContext2D
-    const base64 = await fileToDataURL(files[0])
-    const img = await dataURLToImage(base64)
-    canvas.width = img.width
-    canvas.height = img.height
-    context.clearRect(0, 0, img.width, img.height)
-    context.drawImage(img, 0, 0, img.width, img.height)
-    const blob = (await canvastoFile(canvas, 'image/jpeg', 0.5)) as Blob
-    const f = await new File([blob], files[0].name, { type: files[0].type })
-    return [f]
-  }
-  return (
-    <>
-      <h2>图片压缩（在beforeupload钩子中处理）</h2>
-      <Uploader url={uploadUrl} multiple beforeUpload={beforeUpload} />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
 :::
 
-### 自定义数据 FormData headers
+### 自定义数据 FormData、headers
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const formData = {
-    custom: 'test',
-  }
-  return (
-    <>
-      <h2>自定义 FormData headers</h2>
-      <Uploader
-        url={uploadUrl}
-        data={formData}
-        headers={formData}
-        withCredentials
-       />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
 
 :::
 
@@ -394,68 +96,15 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const beforeXhrUpload = (xhr: XMLHttpRequest, options: any) => {
-    if (options.method.toLowerCase() === 'put') {
-      xhr.send(options.sourceFile);
-    } else {
-      xhr.send(options.formData);
-    }
-  };
-  return (
-    <>
-      <h2>自定义 xhr 上传方式(before-xhr-upload)</h2>
-      <Uploader
-        url={uploadUrl}
-        method="put"
-        beforeXhrUpload={beforeXhrUpload}
-       />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
 
 :::
 
-### 手动上传
+### 选中文件后，通过按钮手动执行上传
 
 :::demo
 
-```tsx
-import React, { useState, useRef } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const uploadRef = useRef(null)
-  const submitUpload = () => {
-    uploadRef.current.submit()
-  }
-  const clearUpload = () => {
-    uploadRef.current.clear()
-  };
-  return (
-    <>
-      <h2>手动上传</h2>
-      <Uploader url={uploadUrl} maxCount="5" autoUpload={false} ref={uploadRef} />
-      <br />
-      <Button type="success" size="small" onClick={submitUpload}>
-        执行上传
-      </Button>
-      <Button type="danger" size="small" onClick={clearUpload}>
-        手动清空上传
-      </Button>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo12.tsx'></CodeBlock>
 
 :::
 
@@ -463,20 +112,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Uploader, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <h2>禁用状态</h2>
-      <Uploader disabled />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo13.tsx'></CodeBlock>
 
 :::
 

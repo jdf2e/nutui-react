@@ -2,6 +2,7 @@ import React, { FunctionComponent, useState, useRef } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useIsomorphicLayoutEffect } from '@/utils/use-isomprphic-layout-effect'
+import { useRtl } from '../configprovider'
 
 export type EllipsisDirection = 'start' | 'end' | 'middle'
 type EllipsisValue = {
@@ -51,13 +52,17 @@ export const Ellipsis: FunctionComponent<
     onChange,
     ...rest
   } = { ...defaultProps, ...props }
+  const rtl = useRtl()
   let container: any = null
   let maxHeight = 0 // 当行的最大高度
   const [exceeded, setExceeded] = useState(false)
   const [expanded, setExpanded] = useState(false)
   const ellipsis = useRef<EllipsisValue>()
   const root = useRef<HTMLDivElement>(null)
-  const classes = classNames(classPrefix, className)
+  const rtlClasses = classNames({
+    [`${classPrefix}-rtl`]: rtl,
+  })
+  const classes = classNames(classPrefix, rtlClasses, className)
 
   useIsomorphicLayoutEffect(() => {
     if (content) {
@@ -210,42 +215,40 @@ export const Ellipsis: FunctionComponent<
   }
   return (
     <div className={classes} onClick={handleClick} ref={root} {...rest}>
-      <div>
-        {!exceeded ? content : null}
-        {exceeded && !expanded ? (
-          <>
-            {ellipsis.current?.leading}
-            {expandText ? (
-              <span
-                className="nut-ellipsis-text"
-                onClick={(e) => {
-                  e.stopPropagation()
-                  clickHandle(1)
-                }}
-              >
-                {expandText}
-              </span>
-            ) : null}
-            {ellipsis.current?.tailing}
-          </>
-        ) : null}
-        {exceeded && expanded ? (
-          <>
-            {content}
-            {expandText ? (
-              <span
-                className="nut-ellipsis-text"
-                onClick={(e) => {
-                  e.stopPropagation()
-                  clickHandle(2)
-                }}
-              >
-                {collapseText}
-              </span>
-            ) : null}
-          </>
-        ) : null}
-      </div>
+      {!exceeded ? content : null}
+      {exceeded && !expanded ? (
+        <span>
+          {ellipsis.current?.leading}
+          {expandText ? (
+            <span
+              className="nut-ellipsis-text"
+              onClick={(e) => {
+                e.stopPropagation()
+                clickHandle(1)
+              }}
+            >
+              {expandText}
+            </span>
+          ) : null}
+          {ellipsis.current?.tailing}
+        </span>
+      ) : null}
+      {exceeded && expanded ? (
+        <span>
+          {content}
+          {expandText ? (
+            <span
+              className="nut-ellipsis-text"
+              onClick={(e) => {
+                e.stopPropagation()
+                clickHandle(2)
+              }}
+            >
+              {collapseText}
+            </span>
+          ) : null}
+        </span>
+      ) : null}
     </div>
   )
 }

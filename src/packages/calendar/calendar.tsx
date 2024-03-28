@@ -3,12 +3,8 @@ import Popup from '@/packages/popup'
 import CalendarItem from '@/packages/calendaritem'
 import { Utils } from '@/utils/date'
 import { useConfig } from '@/packages/configprovider'
-import type { CalendarDay, CalendarType } from './types'
+import type { CalendarDay, CalendarType, CalendarRef } from './types'
 import { ComponentDefaults } from '@/utils/typings'
-
-type CalendarRef = {
-  scrollToDate: (date: string) => void
-}
 
 export interface CalendarProps {
   type?: CalendarType
