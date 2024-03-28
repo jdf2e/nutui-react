@@ -186,8 +186,9 @@ export const Popover: FunctionComponent<
     let cross = 0
     let parallel = 0
     if (Array.isArray(offset) && offset.length === 2) {
+      const rtloffset = rtl ? -offset[0] : offset[0]
       cross += +offset[1]
-      parallel += +offset[0]
+      parallel += +rtloffset
     }
     if (width) {
       if (['bottom', 'top'].includes(direction)) {
@@ -232,15 +233,18 @@ export const Popover: FunctionComponent<
     const base = 16
 
     if (props.arrowOffset !== 0) {
+      const dir = rtl ? 'right' : 'left'
+      const dir2 = rtl ? 'left' : 'right'
+
       if (['bottom', 'top'].includes(direction)) {
         if (!skew) {
-          styles.left = `calc(50% + ${arrowOffset}px)`
+          styles[dir] = `calc(50% + ${arrowOffset}px)`
         }
         if (skew === 'start') {
-          styles.left = `${base + arrowOffset}px`
+          styles[dir] = `${base + arrowOffset}px`
         }
         if (skew === 'end') {
-          styles.right = `${base - arrowOffset}px`
+          styles[dir2] = `${base - arrowOffset}px`
         }
       }
 
