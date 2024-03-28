@@ -215,6 +215,14 @@ export const DatePicker: FunctionComponent<
     }
   }
 
+  const compareDateChange = (currentDate: number, newDate: Date | null) => {
+    const isEqual = new Date(currentDate)?.getTime() === newDate?.getTime()
+    newDate &&
+      isDate(newDate) &&
+      !isEqual &&
+      setSelectedDate(formatValue(newDate as Date))
+  }
+
   const handlePickerChange = (
     selectedOptions: PickerOption[],
     selectedValue: (number | string)[],
@@ -266,12 +274,24 @@ export const DatePicker: FunctionComponent<
       } else if (rangeType === 'datehour') {
         date = new Date(year, month, day, Number(formatDate[3]))
       }
+      compareDateChange(selectedDate, date)
+    } else {
+      // 'hour-minutes' 'time'
+      const [hour, minute, seconds] = selectedValue
+      const currentDate = new Date(selectedDate)
+      const year = currentDate.getFullYear()
+      const month = currentDate.getMonth()
+      const day = currentDate.getDate()
 
-      const isEqual = new Date(selectedDate)?.getTime() === date?.getTime()
-      date &&
-        isDate(date) &&
-        !isEqual &&
-        setSelectedDate(formatValue(date as Date))
+      const date = new Date(
+        year,
+        month,
+        day,
+        Number(hour),
+        Number(minute),
+        rangeType === 'time' ? Number(seconds) : 0
+      )
+      compareDateChange(selectedDate, date)
     }
     props.onChange && props.onChange(selectedOptions, selectedValue, index)
   }
