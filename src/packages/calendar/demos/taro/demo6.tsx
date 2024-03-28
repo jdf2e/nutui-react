@@ -1,13 +1,24 @@
 import React, { useRef, useState } from 'react'
-import { Cell, Calendar, DatePicker } from '@nutui/nutui-react-taro'
-import { padZero } from '@/utils/pad-zero'
-import { Day } from '@/packages/calendar/types'
+import {
+  Cell,
+  Calendar,
+  DatePicker,
+  CalendarDay,
+} from '@nutui/nutui-react-taro'
+
+const padZero = (num: number | string, targetLength = 2) => {
+  let str = `${num}`
+  while (str.length < targetLength) {
+    str = `0${str}`
+  }
+  return str
+}
 
 const Demo6 = () => {
   const [date, setDate] = useState<string[]>([])
   const [isVisible, setIsVisible] = useState(false)
 
-  const disableDate = (date: Day) => {
+  const disableDate = (date: CalendarDay) => {
     return date.day === 25 || date.day === 20 || date.day === 22
   }
 
@@ -16,15 +27,8 @@ const Demo6 = () => {
   const [desc1, setDesc1] = useState('10:00:00')
   const [desc2, setDesc2] = useState('20:00:00')
   const desc = useRef(0)
-  // const padZero = (d: number | string) => {
-  //   return d <= 9 ? `0${d}` : d
-  // }
+
   const setChooseValue = (chooseData: any) => {
-    console.log(
-      'setChooseValue',
-      [...[chooseData[0][3], chooseData[1][3]]],
-      chooseData
-    )
     const dateArr = [...[chooseData[0][3], chooseData[1][3]]]
     setDate([...dateArr])
   }

@@ -18,8 +18,3 @@ export type CalendarType = 'single' | 'range' | 'multiple' | 'week'
 export type CalendarRef = {
   scrollToDate: (date: string) => void
 }
-
-export interface Day {
-  day: string | number
-  type: string
-}

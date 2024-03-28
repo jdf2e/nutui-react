@@ -1,7 +1,13 @@
 import React, { useState } from 'react'
-import { Cell, Calendar } from '@nutui/nutui-react-taro'
-import { padZero } from '@/utils/pad-zero'
-import { Day } from '@/packages/calendar/types'
+import { Cell, Calendar, CalendarDay } from '@nutui/nutui-react-taro'
+
+const padZero = (num: number | string, targetLength = 2) => {
+  let str = `${num}`
+  while (str.length < targetLength) {
+    str = `0${str}`
+  }
+  return str
+}
 
 const Demo9 = () => {
   const [date, setDate] = useState<string[]>(['2023-06-12', '2023-06-16'])
@@ -20,11 +26,11 @@ const Demo9 = () => {
     setDate([...[param[0][3], param[1][3]]])
   }
 
-  const renderDay = (date: Day) => {
+  const renderDay = (date: CalendarDay) => {
     return <>{padZero(date.day)}</>
   }
 
-  const renderDayTop = (date: Day) => {
+  const renderDayTop = (date: CalendarDay) => {
     let currDate = ''
     if (date && date.day === 10) {
       currDate = '☺'
@@ -32,7 +38,7 @@ const Demo9 = () => {
     return <span className="info">{currDate}</span>
   }
 
-  const renderDayBottom = (date: Day) => {
+  const renderDayBottom = (date: CalendarDay) => {
     let currDate = ''
     if (date && date.day === 10) {
       currDate = '纪念日'

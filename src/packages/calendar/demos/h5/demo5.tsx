@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { Cell, Calendar } from '@nutui/nutui-react'
-import type { Day } from '@/packages/calendar/types'
+import { Cell, Calendar, CalendarDay } from '@nutui/nutui-react'
 
 const Demo5 = () => {
   const [date, setDate] = useState<string[]>([])
@@ -19,7 +18,7 @@ const Demo5 = () => {
     setDate([...dateArr])
   }
 
-  const disableDate = (date: Day) => {
+  const disableDate = (date: CalendarDay) => {
     return date.day === 25 || date.day === 20 || date.day === 22
   }
 
@@ -45,4 +44,5 @@ const Demo5 = () => {
     </>
   )
 }
+
 export default Demo5
