@@ -77,7 +77,7 @@ const Demo2 = () => {
           disableAction ? setDisableAction(false) : setDisableAction(true)
         }}
         list={itemListDisabled}
-        location="right"
+        // location="right"
         onSelect={chooseHandle}
       >
         <Button type="primary" shape="square">

@@ -150,6 +150,7 @@ export const Popover: FunctionComponent<
         ? (document.querySelector(`#${targetId}`) as Element)
         : (popoverRef.current as Element)
     )
+
     setRootPosition({
       width: rect.width,
       height: rect.height,
@@ -191,13 +192,15 @@ export const Popover: FunctionComponent<
       parallel += +rtloffset
     }
     if (width) {
+      const dir = rtl ? 'right' : 'left'
       if (['bottom', 'top'].includes(direction)) {
         const h =
           direction === 'bottom' ? height + cross : -(contentHeight + cross)
         styles.top = `${top + h}px`
 
         if (!skew) {
-          styles.left = `${-(contentWidth - width) / 2 + left + parallel}px`
+          styles[dir] =
+            `${-(contentWidth - width) / 2 + rootPosition[dir] + parallel}px`
         }
         if (skew === 'start') {
           styles.left = `${left + parallel}px`
@@ -235,7 +238,6 @@ export const Popover: FunctionComponent<
     if (props.arrowOffset !== 0) {
       const dir = rtl ? 'right' : 'left'
       const dir2 = rtl ? 'left' : 'right'
-
       if (['bottom', 'top'].includes(direction)) {
         if (!skew) {
           styles[dir] = `calc(50% + ${arrowOffset}px)`

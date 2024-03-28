@@ -96,7 +96,6 @@ export const Popover: FunctionComponent<
   const [rootPosition, setRootPosition] = useState<RootPosition>()
   useEffect(() => {
     setShowPopup(visible)
-
     if (visible) {
       setTimeout(() => {
         getContentWidth()
@@ -190,17 +189,20 @@ export const Popover: FunctionComponent<
     let cross = 0
     let parallel = 0
     if (Array.isArray(offset) && offset.length === 2) {
+      const rtloffset = rtl ? -offset[0] : offset[0]
       cross += +offset[1]
-      parallel += +offset[0]
+      parallel += +rtloffset
     }
     if (width) {
+      const dir = rtl ? 'right' : 'left'
       if (['bottom', 'top'].includes(direction)) {
         const h =
           direction === 'bottom' ? height + cross : -(contentHeight + cross)
         styles.top = `${top + h}px`
 
         if (!skew) {
-          styles.left = `${-(contentWidth - width) / 2 + left + parallel}px`
+          styles[dir] =
+            `${-(contentWidth - width) / 2 + rootPosition[dir] + parallel}px`
         }
         if (skew === 'start') {
           styles.left = `${left + parallel}px`
@@ -242,15 +244,17 @@ export const Popover: FunctionComponent<
     const base = 16
 
     if (props.arrowOffset !== 0) {
+      const dir = rtl ? 'right' : 'left'
+      const dir2 = rtl ? 'left' : 'right'
       if (['bottom', 'top'].includes(direction)) {
         if (!skew) {
-          styles.left = `calc(50% + ${arrowOffset}px)`
+          styles[dir] = `calc(50% + ${arrowOffset}px)`
         }
         if (skew === 'start') {
-          styles.left = `${base + arrowOffset}px`
+          styles[dir] = `${base + arrowOffset}px`
         }
         if (skew === 'end') {
-          styles.right = `${base - arrowOffset}px`
+          styles[dir2] = `${base - arrowOffset}px`
         }
       }
 
@@ -271,11 +275,11 @@ export const Popover: FunctionComponent<
 
   const handleSelect = (item: PopoverList, index: number) => {
     if (!item.disabled) {
-      onSelect && onSelect(item, index)
+      onSelect?.(item, index)
     }
     if (closeOnActionClick) {
-      props.onClick && props.onClick()
-      onClose && onClose()
+      props.onClick?.()
+      onClose?.()
     }
   }
   return (
