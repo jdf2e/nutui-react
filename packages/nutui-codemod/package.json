@@ -28,7 +28,7 @@
   "dependencies": {
     "chalk": "^5.3.0",
     "is-git-clean": "^1.1.0",
-    "jscodeshift": "^0.15.1"
+    "jscodeshift": "^0.15.2"
   },
   "devDependencies": {
     "jest": "^29.7.0",
