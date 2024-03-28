@@ -4,7 +4,7 @@ import { Star } from '@nutui/icons-react-taro'
 
 const Demo4 = () => {
   const uploadUrl = 'https://my-json-server.typicode.com/linrufeng/demo/posts'
-  const defaultFileList = [
+  const defaultFileList: any = [
     {
       name: '文件文件文件文件1文件文件文件文件1文件文件文件文件1.png',
       url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
