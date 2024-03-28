@@ -9,7 +9,6 @@
   display: flex;
   box-sizing: border-box;
   height: $tabs-titles-height;
-  padding: $tabs-titles-padding;
   user-select: none;
   overflow: hidden;
   background: $tabs-titles-background-color;
@@ -30,14 +29,14 @@
   &-left {
     justify-content: flex-start;
     .nut-tabs-titles-item {
-      padding: 0 10px;
+      padding: 0 22px;
     }
   }
 
   &-right {
     justify-content: flex-end;
     .nut-tabs-titles-item {
-      padding: 0 10px;
+      padding: 0 22px;
     }
   }
 
@@ -52,7 +51,7 @@
     align-items: center;
     justify-content: center;
     flex: 1 0 auto;
-    margin: 0 $tabs-titles-gap;
+    padding: 0 $tabs-titles-gap;
     height: $tabs-titles-height;
     line-height: $tabs-titles-height;
     min-width: $tabs-titles-item-min-width;
@@ -119,14 +118,6 @@
     &-disabled {
       color: $color-text-disabled;
     }
-
-    &:first-child {
-      margin-left: 0;
-    }
-
-    &:last-child {
-      margin-right: 0;
-    }
   }
 
   &-simple {
@@ -141,7 +132,7 @@
     background-color: $color-default-light;
 
     .nut-tabs-titles-item {
-      margin: 0;
+      padding: 0;
 
       &-active {
         font-weight: $font-weight-bold;
@@ -153,10 +144,18 @@
 
   &-button {
     .nut-tabs-titles-item {
-      &-active {
+      padding: 0 10px;
+      .nut-tabs-titles-item-text {
+        flex: 1;
         height: 28px;
-        margin-top: 8px;
-        margin-bottom: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 8px;
+      }
+    }
+    .nut-tabs-titles-item-active {
+      .nut-tabs-titles-item-text {
         background: $color-default-light;
         color: $color-text;
         border-radius: $tabs-tab-button-border-radius;
@@ -173,7 +172,7 @@
     border-bottom: 1px solid $color-border;
 
     .nut-tabs-titles-item {
-      margin: 0;
+      padding: 0;
       position: relative;
 
       &::after {
@@ -204,10 +203,6 @@
       left: auto;
       right: 50%;
       transform: translate(50%, 0);
-    }
-    &:first-child {
-      margin-left: 0;
-      margin-right: 0;
     }
   }
   &-divider {
