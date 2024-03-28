@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import { Day } from '@/packages/calendar/types'
+import { CalendarDay } from '@/packages/calendar/types'
 
 import { Calendar } from '../calendar'
 
@@ -89,11 +89,11 @@ test('should render slot correctly', async () => {
     return <div className="d_div"> 最近七天</div>
   }
 
-  const renderDay = (date: Day) => {
+  const renderDay = (date: CalendarDay) => {
     return <span>custom{date.day}</span>
   }
 
-  const renderDayBottom = (date: Day) => {
+  const renderDayBottom = (date: CalendarDay) => {
     return <span>{Number(date.day) <= 10 ? '上旬' : '下旬'}</span>
   }
 
