@@ -299,61 +299,61 @@ async function buildCSS(p) {
   }
 }
 
-async function exportProps() {
-  const types = []
-  const a = await readFile(join(__dirname, '../src/config.json'))
-  const componentsConfig = JSON.parse(a.toString())
-  componentsConfig.nav.forEach((item) => {
-    item.packages.forEach((element) => {
-      const { name, show, exportEmpty } = element
-      if (show || exportEmpty) {
-        const lowerName = name.toLowerCase()
-        if (lowerName === 'icon') return
-        types.push(`export * from './${lowerName}/index'`)
-      }
-    })
-  })
-  await appendFile(
-    join(__dirname, '../dist/es/packages/nutui.react.build.d.ts'),
-    types.join('\n')
-  )
-}
+// async function exportProps() {
+//   const types = []
+//   const a = await readFile(join(__dirname, '../src/config.json'))
+//   const componentsConfig = JSON.parse(a.toString())
+//   componentsConfig.nav.forEach((item) => {
+//     item.packages.forEach((element) => {
+//       const { name, show, exportEmpty } = element
+//       if (show || exportEmpty) {
+//         const lowerName = name.toLowerCase()
+//         if (lowerName === 'icon') return
+//         types.push(`export * from './${lowerName}/index'`)
+//       }
+//     })
+//   })
+//   await appendFile(
+//     join(__dirname, '../dist/es/packages/nutui.react.build.d.ts'),
+//     types.join('\n')
+//   )
+// }
 
-console.log('clean dist')
+console.time('clean dist')
 await deleteAsync('dist')
-console.log('clean: ✅')
+console.timeEnd('clean dist')
 
 await generate()
 
-console.log('build ES Module')
+console.time('build ES Module')
 await buildES()
-console.log('build ES Module: ✅')
+console.timeEnd('build ES Module')
 
-console.log('build CommonJS')
+console.time('build CommonJS')
 await buildCJS()
-console.log('build CommonJS: ✅')
+console.timeEnd('build CommonJS')
 
-console.log('build UMD')
+console.time('build UMD')
 await buildUMD()
-console.log('build UMD: ✅')
+console.timeEnd('build UMD')
 
-console.log('Build CSS')
+console.time('Build CSS')
 await buildCSS()
-console.log('Build CSS: ✅')
+console.timeEnd('Build CSS')
 
-console.log('Copy Styles')
+console.time('Copy Styles')
 await copyStyles()
-console.log('Copy Styles: ✅')
+console.timeEnd('Copy Styles')
 
-console.log('Build All CSS')
+console.time('Build All CSS')
 await buildAllCSS()
-console.log('Build All CSS: ✅')
+console.timeEnd('Build All CSS')
 
-console.log('Build Declaration')
+console.time('Build Declaration')
 await buildDeclaration()
-console.log('Build Declaration: ✅')
+console.timeEnd('Build Declaration')
 
-await exportProps()
+// await exportProps()
 
 await deleteAsync([
   'dist/es/packages/nutui.react.js',
@@ -362,4 +362,6 @@ await deleteAsync([
   'dist/es/packages/nutui.react.scss.js',
 ])
 
+console.time('Build JSDoc')
 codeShift()
+console.timeEnd('Build JSDoc')
