@@ -547,7 +547,6 @@ export type NutCSSVariables =
   | 'nutuiBlack5'
   | 'nutuiTabsTitlesHeight'
   | 'nutuiTabsTitlesBackgroundColor'
-  | 'nutuiTabsTitlesPadding'
   | 'nutuiTabsTitlesGap'
   | 'nutuiTabsTitlesFontSize'
   | 'nutuiTabsTitlesItemMinWidth'
