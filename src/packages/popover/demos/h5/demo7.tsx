@@ -31,9 +31,9 @@ const Demo7 = () => {
           className="demo-popover"
           visible={visible}
           list={itemList}
-          location="top"
+          location="top-start"
           closeOnOutsideClick={false}
-          style={{ marginRight: '30px' }}
+          style={{ marginInlineEnd: '30px' }}
           onClick={() => {
             visible ? setVisible(false) : setVisible(true)
           }}
