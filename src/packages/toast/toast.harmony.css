@@ -6,6 +6,12 @@
     -webkit-transform: rotate(360deg);
   }
 }
+
+.nut-toast-overlay-default {
+  background: rgba(0, 0, 0, 0);
+  z-index: 1300;
+}
+
 .nut-toast {
   display: flex;
   position: absolute;
@@ -15,22 +21,24 @@
   width: 100%;
   align-items: center;
   justify-content: center;
-  background: #00ff00;
   z-index: 1300;
 }
+
+
 .nut-toast-small .nut-toast-inner {
   font-size: 12px;
 }
+
 .nut-toast-large .nut-toast-inner {
   font-size: 16px;
 }
+
 .nut-toast-inner {
-  /*display: flex;*/
-  /*position: absolute;*/
-  /*left: 50%;*/
-  /*top: 50%;*/
-  /*min-width: 30%;*/
-  /*max-width: 95.7%;*/
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  min-width: 30%;
+  max-width: 95.7%;
   font-size: 14px;
   text-align: center;
   padding: 16px 24px;
@@ -38,37 +46,44 @@
   background: #fffdef;
   border-radius: 16px;
   color: #ffffff;
-  /*margin-left: -50%;*/
-  /*margin-top: -50%;*/
-  /*transform: translate(-50%, -50%);*/
+  transform: translate(-50%, -50%);
 }
+
 .nut-toast-inner.normal {
   word-break: normal;
   word-wrap: normal;
 }
+
 .nut-toast-inner.break-word {
   word-break: normal;
   word-wrap: break-word;
 }
+
 .nut-toast-center {
   top: 50%;
 }
+
 .nut-toast-bottom {
   top: 80%;
 }
+
 .nut-toast-top {
   top: 20%;
 }
+
 .nut-toast-text:empty {
   margin-bottom: -8px;
 }
+
 .nut-toast-title {
   font-size: 16px;
   font-weight: 500;
 }
+
 .nut-toast-title:empty {
   margin-bottom: -8px;
 }
+
 .nut-toast-has-icon .nut-toast-icon-wrapper {
   width: 100%;
   display: flex;
@@ -76,19 +91,23 @@
   justify-content: center;
   margin-bottom: 8px;
 }
+
 .nut-toast-has-icon .nut-toast-icon-wrapper .nut-icon {
   width: 24px;
   height: 24px;
 }
+
 .nut-toast-loading .nut-toast-inner {
   display: inline-flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
 .nut-toast-loading .nut-toast-icon-wrapper {
   animation: rotation 2s linear infinite;
 }
+
 .nut-toast-loading .nut-toast-icon-wrapper .nut-icon {
   width: 24px;
   height: 24px;
@@ -99,6 +118,7 @@
   left: auto;
   right: 0;
 }
+
 [dir=rtl] .nut-toast-inner,
 .nut-rtl .nut-toast-inner {
   left: auto;
