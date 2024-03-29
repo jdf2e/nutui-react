@@ -20,11 +20,9 @@ const Demo41 = () => {
     { text: 'top', value: 'top' },
     { text: 'top-start', value: 'top-start' },
     { text: 'top-end', value: 'top-end' },
-    { text: 'right', value: 'right' },
     { text: 'bottom', value: 'bottom' },
     { text: 'bottom-start', value: 'bottom-start' },
     { text: 'bottom-end', value: 'bottom-end' },
-    { text: 'left', value: 'left' },
   ]
   const positionList = [
     {

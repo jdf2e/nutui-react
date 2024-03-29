@@ -1,3 +1,29 @@
+# v2.5.1
+`2024-03-29`
+
+
+*🏡 chore(deps): update dependency @types/testing-library__jest-dom to v6 (#2127) @renovate[bot]
+* 📖 docs(readme): change npm to pnpm in the document (#2131) @JedediahXu
+* :sparkles: feat(popover): rtl (#2121) @xiaoyatong
+* :sparkles: feat(ellipsis): rtl (#2128) @irisSong
+* :sparkles: feat(Form): rtl (#2120) @xiaoyatong
+* :sparkles: feat(progress): Taro新增lazy属性 (#2108) @Alex-huxiyang
+* :bug: fix(datepicker): 修复 datepicker 类型为hour-minutes/time时选中值无法回显的问题 (#2141) @yeyu98
+* :bug: fix(Toast): demo拆解与规范 (#2073) @OrdinarySF
+* :bug: fix(calendar): demo拆解与规范 (#2137) @mikasayw
+* :bug: fix(DatePicker): demo拆解与规范 (#2133) @yeyu98
+* :bug: fix(uploader): demo拆解与规范 (#2140) @irisSong
+* :bug: fix(tabs): 修复 tab 过多时滚动定位不准确的问题 (#2135) @eiinu
+* :bug: fix(range): demo拆解与规范 (#2139) @ShuchenEason
+* :bug: fix(imagepreview): demo拆解与规范 (#2134) @Alex-huxiyang
+* :bug: fix(textarea): demo拆解与规范 (#2132) @Amylee9712
+* :bug: fix(tour): demo拆解与规范 (#2130) @Alex-huxiyang
+* :bug: fix(actionsheet): demo拆解与规范 (#2124) @ZissyW
+* :bug: fix(icon): update taro demo (#2129) @eiinu
+* :bug: fix(popup): demo拆解与规范 (#2122) @ZissyW
+* :bug: fix(numberkeyboard): demo拆解与规范 (#2123) @ZissyW
+
+
 # v2.5.0
 `2024-03-22`
 

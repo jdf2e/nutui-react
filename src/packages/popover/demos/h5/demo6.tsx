@@ -23,7 +23,7 @@ const Demo6 = () => {
         className="custom-color"
         visible={customColor}
         list={itemList}
-        location="right-start"
+        location="top-start"
         onClick={() => {
           customColor ? setCustomColor(false) : setCustomColor(true)
         }}

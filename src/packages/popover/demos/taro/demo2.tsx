@@ -65,7 +65,7 @@ const Demo2 = () => {
           showIcon ? setShowIcon(false) : setShowIcon(true)
         }}
         list={iconItemList}
-        style={{ marginRight: '30px' }}
+        style={{ marginInlineEnd: '30px' }}
       >
         <Button type="primary" shape="square">
           展示图标
