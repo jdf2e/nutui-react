@@ -24,7 +24,6 @@ const Demo3 = () => {
               setTab1value(paneKey)
             }}
             style={{
-              '--nutui-tabs-titles-padding': 0,
               '--nutui-tabs-titles-gap': 0,
             }}
           >

@@ -88,8 +88,8 @@
     "*.{ts,tsx,js,md}": "eslint"
   },
   "dependencies": {
-    "@nutui/icons-react": "^1.0.2",
-    "@nutui/icons-react-taro": "^1.0.2",
+    "@nutui/icons-react": "^1.0.4",
+    "@nutui/icons-react-taro": "^1.0.4",
     "@nutui/touch-emulator": "^1.0.0",
     "@react-spring/web": "~9.6.1",
     "@swc/helpers": "^0.5.7",
