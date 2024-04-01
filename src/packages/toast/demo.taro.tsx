@@ -31,10 +31,20 @@ const ToastDemo = () => {
     },
   })
 
+  function demoClass() {
+    if (Taro.getEnv() === 'WEB') {
+      return 'web'
+    }
+    if (Taro.getEnv() === 'HARMONY') {
+      return 'full'
+    }
+    return ''
+  }
+
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <div className={`demo ${demoClass()}`}>
         <h2>{translated.basic}</h2>
         <Demo1 />
         <h2>{translated.toastFunction}</h2>
