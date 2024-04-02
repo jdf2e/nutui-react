@@ -16,62 +16,7 @@ import { Form } from '@nutui/nutui-react'
 
 :::demo
 
-```tsx
-import React from "react";
-import { Form, Button, InputNumber, Input, TextArea } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Form
-        labelPosition="right"
-        footer={
-          <>
-            <Button nativeType="submit" block type="primary">
-              Submit
-            </Button>
-          </>
-        }
-      >
-        <Form.Item
-          required
-          label="Field A"
-          name="username"
-          rules={[
-            { max: 5, message: 'Field A cannot exceed 5 characters' },
-            { required: true, message: 'Please enter Field A' },
-          ]}
-        >
-          <Input
-            className="nut-input-text"
-            placeholder="Please type in Field A"
-            type="text"
-          />
-        </Form.Item>
-        <Form.Item
-          label="Field D"
-          name="address"
-          rules={[
-            { max: 15, message: 'Field D should not exceed 15 characters' },
-            { required: true, message: 'Please enter Field D' },
-          ]}
-        >
-          <TextArea placeholder="please enter Field D" maxLength={100} />
-        </Form.Item>
-        <Form.Item
-          label="count"
-          name="num"
-          getValueFromEvent={(...args) => args[0]}
-        >
-          <InputNumber />
-        </Form.Item>
-      </Form>
-    </>
-  )
-}
-
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -79,201 +24,21 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Form, Button, Input, TextArea } from '@nutui/nutui-react';
-
-
-const App = () => {
-  const submitFailed = (error: any) => {
-    Toast.show({ content: JSON.stringify(error), icon: 'fail' })
-  }
-
-  const submitSucceed = (values: any) => {
-    Toast.show({ content: JSON.stringify(values), icon: 'success' })
-  }
-  return (
-    <>
-      <Form
-        divider
-        labelPosition="left"
-        onFinish={(values) => submitSucceed(values)}
-        onFinishFailed={(values, errors) => submitFailed(errors)}
-        footer={
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              width: '100%',
-            }}
-          >
-            <Button nativeType="submit" type="primary">
-              submit
-            </Button>
-            <Button nativeType="reset" style={{ marginLeft: '20px' }}>
-              reset
-            </Button>
-          </div>
-        }
-      >
-        <Form.Item
-          label="Field A"
-          name="username"
-          rules={[{ required: true, message: "Please type in Field A" }]}
-        >
-          <Input placeholder="Please type in Field A" type="text" />
-        </Form.Item>
-        <Form.Item
-          label="Field B"
-          name="Field B"
-          rules={[
-            { required: true, message: "Please enter Field B" },
-            { validator: customValidator, message: "number must be entered" },
-            {
-              validator: valueRangeValidator,
-              message: "0-200 range must be entered"
-            },
-          ]}
-        >
-          <Input placeholder="Please enter Field B，0-200 range must be entered"
-                 type="text" />
-        </Form.Item>
-        <Form.Item
-          label="Field C"
-          name="tel"
-          rules={[{ max: 13, message: "Please type Field C" }]}
-        >
-          <Input placeholder="Field C format is incorrect" type="number" />
-        </Form.Item>
-        <Form.Item
-          label="Field D"
-          name="address"
-          rules={[{ required: true, message: "please enter Field D" }]}
-        >
-          <Input placeholder="please enter Field D" type="text" />
-        </Form.Item>
-      </Form>
-    </>
-  )
-}
-
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 ### Related Display
 
 :::demo
 
-```tsx
-import React from "react";
-import { Form, Input, TextArea } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Form divider labelPosition="right">
-        <Form.Item label="Field A" name="username">
-          <Input placeholder="Entry Field A" type="text" />
-        </Form.Item>
-        <Form.Item
-          label="Field D"
-          name="address"
-          shouldUpdate
-          noStyle
-        >
-          {({ getFieldValue }: FormInstance) => {
-            const value = getFieldValue('username')
-            if (!value) return null
-            return (
-              <TextArea placeholder="Entry Field D" maxLength={100} />
-            )
-          }}
-        </Form.Item>
-      </Form>
-    </>
-  )
-}
-
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 ### with initial value form validation
 
 :::demo
 
-```tsx
-import React from "react";
-import { Form, Input, Cell, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const submitFailed = (error: any) => {
-    Toast.show({ content: JSON.stringify(error), icon: 'fail' })
-  }
-
-  const submitSucceed = (values: any) => {
-    Toast.show({ content: JSON.stringify(values), icon: 'success' })
-  }
-  // 函数校验
-  const customValidator = (rule: FormItemRuleWithoutValidator, value: string) => {
-    return /^\d+$/.test(value)
-  }
-
-  const valueRangeValidator = (rule: FormItemRuleWithoutValidator, value: string) => {
-    return /^(\d{1,2}|1\d{2}|200)$/.test(value)
-  }
-  return (
-    <>
-      <Form
-        initialValues={{ username: 'LiSi', age: 20 }}
-        onFinish={(values) => submitSucceed(values)}
-        onFinishFailed={(values, errors) => submitFailed(errors)}
-        footer={
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              width: '100%',
-            }}
-          >
-            <Button nativeType="submit" type="primary">
-              submit
-            </Button>
-            <Button nativeType="reset" style={{ marginLeft: '20px' }}>
-              reset
-            </Button>
-          </div>
-        }
-      >
-        <Form.Item
-          label="Field A"
-          name="username"
-          rules={[{ required: true, message: "Please type in Field A" }]}
-          initialValue="ZhangSan"
-        >
-          <Input placeholder="Please type in Field A" type="text" />
-        </Form.Item>
-        <Form.Item label="Field B" name="age" initialValue={18} rules={[
-          { required: true, message: "Please enter Field B" },
-          { validator: customValidator, message: "number must be entered" },
-          {
-            validator: valueRangeValidator,
-            message: "0-200 range must be entered"
-          },
-        ]}>
-          <Input
-            placeholder="Please enter Field B，0-200 range must be entered"
-            type="number"
-          />
-        </Form.Item>
-      </Form>
-    </>
-  )
-}
-
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -281,61 +46,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Form, Input, Radio, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const submitFailed = (error: any) => {
-    Toast.show({ content: JSON.stringify(error), icon: 'fail' })
-  }
-
-  const submitSucceed = (values: any) => {
-    Toast.show({ content: JSON.stringify(values), icon: 'success' })
-  }
-
-  const [form] = Form.useForm()
-  const onMenuChange = (value: string | number | boolean) => {
-    switch (value) {
-      case 'male':
-        form.setFieldsValue({ note: '👨' })
-        break
-      case 'female':
-        form.setFieldsValue({ note: '👩' })
-        break
-      default:
-    }
-  }
-  return (
-    <>
-      <Form
-        form={form}
-        onFinish={(values) => submitSucceed(values)}
-        onFinishFailed={(values, errors) => submitFailed(errors)}
-      >
-        <Form.Item
-          label="Field A"
-          name="username"
-          rules={[{ required: true, message: "Please type in Field A" }]}
-        >
-          <Input placeholder="Please type in Field A" type="text" />
-        </Form.Item>
-        <Form.Item label="tag" name="note">
-          <Input placeholder="Please enter a label" type="string" />
-        </Form.Item>
-        <Form.Item label="Field E" name="gender">
-          <Radio.Group onChange={onMenuChange}>
-            <Radio value="male">A</Radio>
-            <Radio value="female">B</Radio>
-          </Radio.Group>
-        </Form.Item>
-      </Form>
-    </>
-  )
-}
-
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -343,30 +54,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Form, Input } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Form>
-        <Form.Item
-          label="Field A"
-          name="username"
-          required
-          validateTrigger="onBlur"
-          rules={[{ required: true, message: "Place Input Field A" }]}
-        >
-          <Input placeholder="Place Input Field A" type="text" />
-        </Form.Item>
-      </Form>
-    </>
-  )
-}
-
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -374,141 +62,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import {
-  Form,
-  Input,
-  Cell,
-  Switch,
-  Checkbox,
-  Radio,
-  Picker,
-  Uploader,
-  Button,
-  Rate,
-  Range,
-  Toast
-} from '@nutui/nutui-react';
-import { ArrowRight } from '@nutui/icons-react';
-
-const App = () => {
-  const submitFailed = (error: any) => {
-    Toast.show({ content: JSON.stringify(error), icon: 'fail' })
-  }
-
-  const submitSucceed = (values: any) => {
-    Toast.show({ content: JSON.stringify(values), icon: 'success' })
-  }
-  return (
-    <>
-      <Form
-        style={{ '--nutui-form-item-label-width': '120px' }}
-        footer={
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              width: '100%',
-            }}
-          >
-            <Button nativeType="submit" type="primary">
-              submit
-            </Button>
-            <Button nativeType="reset" style={{ marginLeft: '20px' }}>
-              reset
-            </Button>
-          </div>
-        }
-        onFinish={(values) => submitSucceed(values)}
-        onFinishFailed={(values, errors) => submitFailed(errors)}
-      >
-        <Form.Item label="Input" name="form_input">
-          <Input placeholder="placeholder" />
-        </Form.Item>
-        <Form.Item label="Switch" name="switch">
-          <Switch />
-        </Form.Item>
-        <Form.Item label="Checkbox" name="checkbox">
-          <Checkbox labelPosition="right" label="Option 1" />
-        </Form.Item>
-        <Form.Item label="Check Group" name="checkbox_group">
-          <Checkbox.Group>
-            <Checkbox labelPosition="right" label="Option 1" value={1} />
-            <Checkbox labelPosition="right" label="Option 2" value={2} />
-          </Checkbox.Group>
-        </Form.Item>
-        <Form.Item label="Radio" name="radio">
-          <Radio value="1">Radio 1</Radio>
-        </Form.Item>
-        <Form.Item label="Radio Group" name="radio_group">
-          <Radio.Group>
-            <Radio value="1">Radio 1</Radio>
-            <Radio value="2">Radio 2</Radio>
-          </Radio.Group>
-        </Form.Item>
-        <Form.Item label="Rate" name="rate">
-          <Rate defaultValue={0} />
-        </Form.Item>
-        <Form.Item label="Range" name="range">
-          <Range max={10} min={-10} />
-        </Form.Item>
-        <Form.Item
-          label="Picker"
-          name="picker"
-          trigger="onConfirm"
-          getValueFromEvent={(...args) => args[1]}
-          onClick={(event, ref: any) => {
-            ref.open()
-          }}
-        >
-          <Picker options={[pickerOptions]}>
-            {(value: any) => {
-              return (
-                <Cell
-                  style={{
-                    padding: 0,
-                    '--nutui-cell-divider-border-bottom': '0',
-                  }}
-                  className="nutui-cell--clickable"
-                  title={
-                    value.length
-                      ? pickerOptions.filter((po) => po.value === value[0])[0]
-                        ?.text
-                      : 'Please select'
-                  }
-                  extra={<ArrowRight />}
-                  align="center"
-                />
-              )
-            }}
-          </Picker>
-        </Form.Item>
-        <Form.Item
-          label="Uploader"
-          name="files"
-          initialValue={[
-            {
-              name: 'file1.png',
-              url: 'https://m.360buyimg.com/babel/jfs/t1/164410/22/25162/93384/616eac6cE6c711350/0cac53c1b82e1b05.gif',
-              status: 'success',
-              message: 'uploaded successfully',
-              type: 'image',
-              uid: '122',
-            },
-          ]}
-        >
-          <Uploader
-            url="https://my-json-server.typicode.com/linrufeng/demo/posts" />
-        </Form.Item>
-      </Form>
-    </>
-  )
-}
-
-
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
