@@ -167,6 +167,7 @@ const SwipeDemo = () => {
     return (
       <div
         style={{
+          height: '104px',
           width: '60px',
           display: 'flex',
           flexDirection: 'column',
@@ -197,14 +198,14 @@ const SwipeDemo = () => {
 
         <h2>{translated.title9}</h2>
         <Swipe
-          style={{ height: '104px' }}
           rightAction={
             <div
               style={{
-                height: 'inherit',
                 width: '240px',
                 display: 'flex',
+                flexDirection: 'row',
                 fontSize: '12px',
+                background: 'red',
               }}
             >
               <>
@@ -234,11 +235,9 @@ const SwipeDemo = () => {
         <br style={{ display: 'block', height: '10px' }} />
 
         <Swipe
-          style={{ height: '104px' }}
           rightAction={
             <div
               style={{
-                height: 'inherit',
                 width: '240px',
                 display: 'flex',
                 fontSize: '12px',
@@ -281,7 +280,11 @@ const SwipeDemo = () => {
             </div>
           }
         >
-          <Cell title={translated.leftDel} radius={0} />
+          <Cell
+            title={translated.leftDel}
+            radius={0}
+            style={{ background: 'red' }}
+          />
         </Swipe>
 
         <h2>{translated.title8}</h2>
