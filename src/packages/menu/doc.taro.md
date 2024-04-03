@@ -16,38 +16,7 @@ import { Menu } from '@nutui/nutui-react-taro';
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Menu } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [options] = useState([
-    { text: '全部商品', value: 0 },
-    { text: '新款商品', value: 1 },
-    { text: '活动商品', value: 2 },
-  ])
-  const [options1] = useState([
-    { text: '默认排序', value: 'a' },
-    { text: '好评排序', value: 'b' },
-    { text: '销量排序', value: 'c' },
-  ])
-  return (
-    <>
-      <div className="demo full">
-        <Menu
-          onClose={(i: number) => console.log('onClose', i)}
-          onOpen={(i: number) => console.log('onOpen', i)}
-        >
-          <Menu.Item options={options} value={0} />
-          <Menu.Item options={options1} value="a" />
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -55,37 +24,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Menu } from '@nutui/nutui-react';
-
-const App = () => {
-  const [options] = useState([
-    { text: '全部商品', value: 0 },
-    { text: '新款商品', value: 1 },
-    { text: '活动商品', value: 2 },
-  ])
-  const [options1] = useState([
-    { text: '默认排序', value: 'a' },
-    { text: '好评排序', value: 'b' },
-    { text: '销量排序', value: 'c' },
-  ])
-  const [stateOne, setStateOne] = useState(0)
-  const [stateTwo, setStateTwo] = useState('a')
-  return (
-    <>
-      <div className="demo full">
-        <Menu>
-          <Menu.Item options={options} value={stateOne} onChange={(v) => setStateOne(v.value)} />
-          <Menu.Item options={options1} value={stateTwo} onChange={(v) => setStateTwo(v.value)} />
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 ### 自定义菜单内容
@@ -94,39 +33,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, { useRef, useState } from 'react'
-import { Menu, Button } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [options] = useState([
-    { text: '全部商品', value: 0 },
-    { text: '新款商品', value: 1 },
-    { text: '活动商品', value: 2 },
-  ])
-  const [options1] = useState([
-    { text: '默认排序', value: 'a' },
-    { text: '好评排序', value: 'b' },
-    { text: '销量排序', value: 'c' },
-  ])
-  const itemRef = useRef(null)
-  return (
-    <>
-      <div className="demo full">
-        <Menu>
-          <Menu.Item options={options} value={0} />
-          <Menu.Item title="筛选" ref={itemRef}>
-            <div>自定义内容</div>
-            <Button onClick={() => itemRef.current.toggle(false)}>确认</Button>
-          </Menu.Item>
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -134,30 +41,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Menu } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [options] = useState([
-    { text: '全部商品', value: 0 },
-    { text: '新款商品', value: 1 },
-    { text: '活动商品', value: 2 },
-  ])
-
-  return (
-    <>
-      <div className="demo full">
-        <Menu>
-          <Menu.Item options={options} value={0} columns={2} />
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -165,35 +49,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Menu } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [options] = useState([
-    { text: '全部商品', value: 0 },
-    { text: '新款商品', value: 1 },
-    { text: '活动商品', value: 2 },
-  ])
-  const [options1] = useState([
-    { text: '默认排序', value: 'a' },
-    { text: '好评排序', value: 'b' },
-    { text: '销量排序', value: 'c' },
-  ])
-  return (
-    <>
-      <div className="demo full">
-        <Menu activeColor="green">
-          <Menu.Item options={options} value={0} />
-          <Menu.Item options={options1} value="a" />
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -201,36 +57,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Menu } from '@nutui/nutui-react-taro';
-import { TriangleDown, Success } from '@nutui/icons-react'
-
-const App = () => {
-  const [options] = useState([
-    { text: '全部商品', value: 0 },
-    { text: '新款商品', value: 1 },
-    { text: '活动商品', value: 2 },
-  ])
-  const [options1] = useState([
-    { text: '默认排序', value: 'a' },
-    { text: '好评排序', value: 'b' },
-    { text: '销量排序', value: 'c' },
-  ])
-  return (
-    <>
-      <div className="demo full">
-        <Menu icon={<TriangleDown />}>
-          <Menu.Item options={options} value={0} icon={<Success />} />
-          <Menu.Item options={options1} value="a" />
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -238,35 +65,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Menu } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [options] = useState([
-    { text: '全部商品', value: 0 },
-    { text: '新款商品', value: 1 },
-    { text: '活动商品', value: 2 },
-  ])
-  const [options1] = useState([
-    { text: '默认排序', value: 'a' },
-    { text: '好评排序', value: 'b' },
-    { text: '销量排序', value: 'c' },
-  ])
-  return (
-    <>
-      <div className="demo full">
-        <Menu>
-          <Menu.Item options={options} value={0} direction="up" />
-          <Menu.Item options={options1} value="a" direction="up" />
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='taro/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -274,35 +73,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Menu } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [options] = useState([
-    { text: '全部商品', value: 0 },
-    { text: '新款商品', value: 1 },
-    { text: '活动商品', value: 2 },
-  ])
-  const [options1] = useState([
-    { text: '默认排序', value: 'a' },
-    { text: '好评排序', value: 'b' },
-    { text: '销量排序', value: 'c' },
-  ])
-  return (
-    <>
-      <div className="demo full">
-        <Menu>
-          <Menu.Item options={options} value={0} disabled />
-          <Menu.Item options={options1} value="a" disabled />
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='taro/demo8.tsx'></CodeBlock>
 
 :::
 
