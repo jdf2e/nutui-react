@@ -5,6 +5,8 @@ const Demo4 = () => {
   const [showNotify, setShowNotify] = useState(false)
   const [states, setStates] = useState({
     message: '',
+    type: 'danger',
+    duration: 2000,
     position: 'top',
   })
   const changeNotify = (
@@ -26,6 +28,7 @@ const Demo4 = () => {
       <Notify
         visible={showNotify}
         position={states.position as any}
+        duration={states.duration}
         onClose={() => {
           setShowNotify(false)
         }}
@@ -35,7 +38,7 @@ const Demo4 = () => {
       <Cell
         title="自定义时长"
         onClick={() => {
-          changeNotify('自定义时长', 'base', 100000)
+          changeNotify('自定义时长', 'base', 10000)
           setShowNotify(true)
         }}
       />
