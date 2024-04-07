@@ -1,9 +1,18 @@
-import React, { useState } from 'react'
-import { Checklist } from '@nutui/icons-react'
+import React from 'react'
 import { useTranslate } from '../../sites/assets/locale'
-import Radio from '@/packages/radio'
 import Cell from '@/packages/cell'
-import Toast from '@/packages/toast'
+import Demo1 from './demos/h5/demo1'
+import Demo2 from './demos/h5/demo2'
+import Demo3 from './demos/h5/demo3'
+import Demo4 from './demos/h5/demo4'
+import Demo5 from './demos/h5/demo5'
+import Demo6 from './demos/h5/demo6'
+import Demo7 from './demos/h5/demo7'
+import Demo8 from './demos/h5/demo8'
+import Demo9 from './demos/h5/demo9'
+import Demo10 from './demos/h5/demo10'
+import Demo11 from './demos/h5/demo11'
+import Demo12 from './demos/h5/demo12'
 
 interface T {
   '74fc5d8a': string
@@ -37,17 +46,17 @@ const RadioDemo = () => {
       options: '配置 options 渲染单选按钮',
     },
     'zh-TW': {
-      '74fc5d8a': '基础用法',
+      '74fc5d8a': '基礎用法',
       bb7486f4: '選項',
       c1bae1ec: '水準使用',
       '8a2e2847': '自定義尺寸',
-      '70ffa5d8': '自定義圖示',
+      '70ffa5d8': '自定義圖標',
       '70ffa5d9': '自定義圖標，通過Group實現列表形式',
       '0f261484': '觸發事件',
-      '0f261485': '设置形状',
+      '0f261485': '設置形狀',
       '6b1f669d': '當前選中值',
-      disableOne: 'Group 模式下禁用某一项',
-      disableAll: 'Group 模式下禁用全部选项',
+      disableOne: 'Group 模式下禁用某一項',
+      disableAll: 'Group 模式下禁用全部選項',
       options: '配置 options 渲染單選按鈕',
     },
     'en-US': {
@@ -65,197 +74,54 @@ const RadioDemo = () => {
       options: 'Render radios by configuring options',
     },
   })
-  const [checkedValue] = useState(1)
-  const [radioVal, setRadioVal] = useState<string | number>('1')
-  const [optionsDemo1] = useState([
-    {
-      label: '选项1',
-      value: '1',
-    },
-    {
-      label: '选项2',
-      value: '2',
-      disabled: true,
-    },
-    {
-      label: '选项3',
-      value: '3',
-    },
-  ])
-  const handleChange = (v: string | number) => {
-    setRadioVal(v)
-  }
+
   return (
     <>
       <div className="demo">
         <h2>{translated['74fc5d8a']}</h2>
-        <Cell.Group>
-          <Cell>
-            <Radio defaultChecked>{translated.bb7486f4}1</Radio>
-          </Cell>
-          <Cell>
-            <Radio defaultChecked labelPosition="left">
-              {translated.bb7486f4}1
-            </Radio>
-          </Cell>
-          <Cell>
-            <Radio defaultChecked disabled>
-              {translated.bb7486f4}1
-            </Radio>
-          </Cell>
-        </Cell.Group>
+        <Demo1 />
         <h2>{translated.disableOne}</h2>
         <Cell>
-          <Radio.Group defaultValue="1">
-            <Radio value="1" disabled>
-              {translated.bb7486f4}1
-            </Radio>
-            <Radio value="2">{translated.bb7486f4}2</Radio>
-            <Radio value="3">{translated.bb7486f4}3</Radio>
-          </Radio.Group>
+          <Demo2 />
         </Cell>
         <h2>{translated.disableAll}</h2>
         <Cell>
-          <Radio.Group disabled defaultValue="1">
-            <Radio value="1">{translated.bb7486f4}1</Radio>
-            <Radio value="2">{translated.bb7486f4}2</Radio>
-            <Radio value="3">{translated.bb7486f4}3</Radio>
-          </Radio.Group>
+          <Demo3 />
         </Cell>
         <h2>{translated.disableOne}</h2>
         <Cell>
-          <Radio.Group defaultValue="1">
-            <Radio shape="button" disabled value="1">
-              {translated.bb7486f4}1
-            </Radio>
-            <Radio shape="button" value="2">
-              {translated.bb7486f4}2
-            </Radio>
-            <Radio shape="button" value="3">
-              {translated.bb7486f4}3
-            </Radio>
-          </Radio.Group>
+          <Demo4 />
         </Cell>
         <h2>{translated.disableAll}</h2>
         <Cell>
-          <Radio.Group disabled defaultValue="1">
-            <Radio shape="button" value="1">
-              {translated.bb7486f4}1
-            </Radio>
-            <Radio shape="button" value="2">
-              {translated.bb7486f4}2
-            </Radio>
-            <Radio shape="button" value="3">
-              {translated.bb7486f4}3
-            </Radio>
-          </Radio.Group>
+          <Demo5 />
         </Cell>
         <h2>{translated.c1bae1ec}</h2>
-        <Cell>
-          <Radio.Group defaultValue="1" direction="horizontal">
-            <Radio value="1">{translated.bb7486f4}1</Radio>
-            <Radio disabled value="2">
-              {translated.bb7486f4}2
-            </Radio>
-            <Radio value="3">{translated.bb7486f4}3</Radio>
-          </Radio.Group>
-        </Cell>
-        <Cell>
-          <Radio.Group
-            defaultValue="1"
-            labelPosition="left"
-            direction="horizontal"
-          >
-            <Radio value="1">{translated.bb7486f4}1</Radio>
-            <Radio disabled value="2">
-              {translated.bb7486f4}2
-            </Radio>
-            <Radio value="3">{translated.bb7486f4}3</Radio>
-          </Radio.Group>
-        </Cell>
-        <Cell>
-          <Radio.Group defaultValue="1" direction="horizontal">
-            <Radio shape="button" value="1">
-              {translated.bb7486f4}1
-            </Radio>
-            <Radio shape="button" disabled value="2">
-              {translated.bb7486f4}2
-            </Radio>
-            <Radio shape="button" value="3">
-              {translated.bb7486f4}3
-            </Radio>
-          </Radio.Group>
-        </Cell>
+        <Demo6 />
         <h2>{translated['8a2e2847']}</h2>
         <Cell>
-          <Radio
-            style={{
-              '--nut-icon-width': '12px',
-              '--nut-icon-height': '12px',
-            }}
-          >
-            {translated['8a2e2847']}
-          </Radio>
+          <Demo7 />
         </Cell>
         <h2>{translated['70ffa5d8']}</h2>
         <Cell>
-          <Radio
-            icon={<Checklist />}
-            activeIcon={<Checklist style={{ color: 'red' }} />}
-          >
-            {translated['70ffa5d8']}
-          </Radio>
+          <Demo8 />
         </Cell>
         <h2>{translated['70ffa5d9']}</h2>
         <Cell>
-          <Radio.Group
-            defaultValue="1"
-            labelPosition="left"
-            style={{ width: '100%' }}
-          >
-            <Radio
-              icon={<Checklist />}
-              activeIcon={<Checklist style={{ color: 'red' }} />}
-              value="1"
-            >
-              {translated['70ffa5d8']}
-            </Radio>
-            <Radio
-              icon={<Checklist />}
-              activeIcon={<Checklist style={{ color: 'red' }} />}
-              value="2"
-            >
-              {translated['70ffa5d8']}
-            </Radio>
-          </Radio.Group>
+          <Demo9 />
         </Cell>
         <h2>{translated['0f261484']}</h2>
-        <Cell.Group>
-          <Cell>
-            <Radio.Group
-              defaultValue={checkedValue}
-              onChange={(value) => Toast.show(`${value}`)}
-            >
-              <Radio value={1}>{translated['0f261484']}</Radio>
-              <Radio value={2}>{translated['0f261484']}</Radio>
-            </Radio.Group>
-          </Cell>
-        </Cell.Group>
+        <Cell>
+          <Demo10 />
+        </Cell>
         <h2>{translated.options}</h2>
         <Cell>
-          <Radio.Group
-            options={optionsDemo1}
-            value={radioVal}
-            onChange={handleChange}
-          />
+          <Demo11 />
         </Cell>
         <h2>{translated['0f261485']}</h2>
         <Cell.Group>
           <Cell>
-            <Radio.Group defaultValue={1} shape="button">
-              <Radio value={1}>{translated['0f261485']}</Radio>
-              <Radio value={2}>{translated['0f261485']}</Radio>
-            </Radio.Group>
+            <Demo12 />
           </Cell>
         </Cell.Group>
       </div>
