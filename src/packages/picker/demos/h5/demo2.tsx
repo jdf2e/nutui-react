@@ -11,7 +11,7 @@ interface PickerOption {
 const Demo2 = () => {
   const [visible, setVisible] = useState(false)
   const [baseDefault, setbaseDefault] = useState('')
-  const [defaultValue, setDefaultValue] = useState([2])
+  const [defaultValue] = useState([2])
 
   const listData1 = [
     [
@@ -44,6 +44,7 @@ const Demo2 = () => {
         onClick={() => setVisible(!visible)}
       />
       <Picker
+        title="请选择城市"
         visible={visible}
         options={listData1}
         defaultValue={defaultValue}

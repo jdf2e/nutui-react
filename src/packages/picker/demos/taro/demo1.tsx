@@ -1,6 +1,14 @@
 import React, { useState } from 'react'
 import { Picker, Cell } from '@nutui/nutui-react-taro'
 
+interface PickerOption {
+  text: string | number
+  value: string | number
+  disabled?: boolean
+  children?: PickerOption[]
+  className?: string | number
+}
+
 const Demo1 = () => {
   const [visible, setVisible] = useState(false)
   const [baseDesc, setBaseDesc] = useState('')
@@ -26,7 +34,7 @@ const Demo1 = () => {
   ) => {
     let description = ''
     options.forEach((option: any) => {
-      description += option.text
+      description += ` ${option.text}`
     })
     setBaseDesc(description)
   }
@@ -38,6 +46,7 @@ const Demo1 = () => {
         onClick={() => setVisible(!visible)}
       />
       <Picker
+        title="请选择城市"
         visible={visible}
         options={listData1}
         onConfirm={(list, values) => confirmPicker(list, values)}

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Picker, Cell } from '@nutui/nutui-react'
+import { Picker, Cell, ConfigProvider } from '@nutui/nutui-react-taro'
 
 interface PickerOption {
   text: string | number
@@ -8,11 +8,9 @@ interface PickerOption {
   children?: PickerOption[]
   className?: string | number
 }
-
-const Demo1 = () => {
-  const [visible, setVisible] = useState(false)
-  const [baseDesc, setBaseDesc] = useState('')
-  const listData1 = [
+const Demo8 = () => {
+  const [isVisible, setIsVisible] = useState(false)
+  const options = [
     [
       { value: 1, text: '南京市' },
       { value: 2, text: '无锡市' },
@@ -25,35 +23,49 @@ const Demo1 = () => {
       { value: 12, text: '乌鲁木齐市' },
     ],
   ]
-  const changePicker = (list: any[], option: any, columnIndex: number) => {
-    console.log(columnIndex, option)
-  }
+
+  const [baseDesc, setBaseDesc] = useState('')
+
   const confirmPicker = (
     options: PickerOption[],
     values: (string | number)[]
   ) => {
+    console.log('demo 确定', options, values)
     let description = ''
     options.forEach((option: any) => {
       description += ` ${option.text}`
     })
     setBaseDesc(description)
+    setIsVisible(false)
   }
+
   return (
     <>
       <Cell
         title="请选择城市"
         description={baseDesc}
-        onClick={() => setVisible(!visible)}
+        onClick={() => setIsVisible(!isVisible)}
       />
-      <Picker
-        title="请选择城市"
-        visible={visible}
-        options={listData1}
-        onConfirm={(list, values) => confirmPicker(list, values)}
-        onClose={() => setVisible(false)}
-        onChange={changePicker}
-      />
+      <ConfigProvider
+        theme={{
+          nutuiPickerItemHeight: '48px',
+          nutuiPickerItemActiveLineBorder:
+            '1px dashed var(--nutui-color-primary)',
+          nutuiPickerItemTextColor: 'var(--nutui-color-primary)',
+        }}
+      >
+        <Picker
+          title="请选择城市"
+          visible={isVisible}
+          options={options}
+          onConfirm={(list, values) => confirmPicker(list, values)}
+          onClose={() => {
+            setIsVisible(false)
+            console.log('onclose')
+          }}
+        />
+      </ConfigProvider>
     </>
   )
 }
-export default Demo1
+export default Demo8

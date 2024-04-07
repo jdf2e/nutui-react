@@ -28,11 +28,19 @@ import { Picker } from '@nutui/nutui-react';
 
 :::
 
-### 多列用法
+### 受控
 
 :::demo
 
 <CodeBlock src='h5/demo3.tsx'></CodeBlock>
+
+:::
+
+### 多列樣式
+
+:::demo
+
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -42,7 +50,7 @@ import { Picker } from '@nutui/nutui-react';
 
 :::demo
 
-<CodeBlock src='h5/demo4.tsx'></CodeBlock>
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -50,15 +58,23 @@ import { Picker } from '@nutui/nutui-react';
 
 :::demo
 
-<CodeBlock src='h5/demo5.tsx'></CodeBlock>
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
-### 動態獲取
+### 異步獲取
 
 :::demo
 
-<CodeBlock src='h5/demo6.tsx'></CodeBlock>
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
+
+:::
+
+### 自定義主題
+
+:::demo
+
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 

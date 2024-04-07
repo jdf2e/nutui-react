@@ -1,59 +1,61 @@
 import React, { useState } from 'react'
 import { Picker, Cell } from '@nutui/nutui-react-taro'
 
+interface PickerOption {
+  text: string | number
+  value: string | number
+  disabled?: boolean
+  children?: PickerOption[]
+  className?: string | number
+}
 const Demo5 = () => {
-  const [visible, setIsVisible] = useState(false)
-  const [cityCustmer, setCityCustmer] = useState('')
-  const [custmerCityData, setCustmerCityData] = useState([
-    {
-      value: 1,
-      text: '北京市',
-      children: [
-        { value: 1, text: '朝阳区' },
-        { value: 2, text: '海淀区' },
-        { value: 3, text: '大兴区' },
-        { value: 4, text: '东城区' },
-        { value: 5, text: '西城区' },
-        { value: 6, text: '丰台区' },
-      ],
-    },
-    {
-      value: 2,
-      text: '上海市',
-      children: [
-        { value: 1, text: '黄浦区' },
-        { value: 2, text: '长宁区' },
-        { value: 3, text: '普陀区' },
-        { value: 4, text: '杨浦区' },
-        { value: 5, text: '浦东新区' },
-      ],
-    },
-  ])
-  const setChooseValueCustmer = (
-    values: (string | number)[],
-    chooseData: PickerOption[]
-  ) => {
-    const str = chooseData.map((item) => item.text).join('-')
-    setCityCustmer(str)
-  }
+  const [tileDesc, settileDesc] = useState('')
+  const [isVisible, setIsVisible] = useState(false)
 
+  const listData1 = [
+    [
+      { value: 1, text: '南京市' },
+      { value: 2, text: '无锡市' },
+      { value: 3, text: '海北藏族自治区' },
+      { value: 4, text: '北京市' },
+      { value: 5, text: '连云港市' },
+      { value: 8, text: '大庆市' },
+      { value: 9, text: '绥化市' },
+      { value: 10, text: '潍坊市' },
+      { value: 12, text: '乌鲁木齐市' },
+    ],
+  ]
+
+  const confirmPicker = (
+    options: PickerOption[],
+    values: (string | number)[]
+  ) => {
+    let description = ''
+    options.forEach((option: any) => {
+      description += ` ${option.text}`
+    })
+    settileDesc(description)
+    setIsVisible(false)
+  }
+  const changePicker = (options: any[], values: any, columnIndex: number) => {
+    console.log('picker onChange', columnIndex, values, options)
+  }
   return (
     <>
       <Cell
-        title="多级联动"
-        description={cityCustmer}
-        onClick={() => setIsVisible(!visible)}
+        title="请选择城市"
+        description={tileDesc}
+        onClick={() => setIsVisible(!isVisible)}
       />
       <Picker
-        visible={visible}
-        options={custmerCityData}
+        visible={isVisible}
+        options={listData1}
+        onConfirm={(list, values) => confirmPicker(list, values)}
+        defaultValue={[2]}
+        threeDimensional={false}
+        duration={1000}
         onClose={() => setIsVisible(false)}
-        onConfirm={(list, values) => setChooseValueCustmer(list, values)}
-        onChange={(
-          options: PickerOption[],
-          value: (string | number)[],
-          columnIndex: number
-        ) => console.log(asyncData, '选择用户', columnIndex, value, options)}
+        onChange={changePicker}
       />
     </>
   )

@@ -28,7 +28,7 @@ import { Picker } from '@nutui/nutui-react';
 
 :::
 
-### Multiple Columns
+### Controlled
 
 :::demo
 
@@ -36,7 +36,7 @@ import { Picker } from '@nutui/nutui-react';
 
 :::
 
-### Tile
+### Multiple Columns
 
 :::demo
 
@@ -44,7 +44,9 @@ import { Picker } from '@nutui/nutui-react';
 
 :::
 
-### Cascade
+### Tile
+
+Cancel the 3D display effect by setting `threeDimensional`, and control the duration of fast scrolling by setting `duration`.
 
 :::demo
 
@@ -52,7 +54,7 @@ import { Picker } from '@nutui/nutui-react';
 
 :::
 
-### Async
+### Cascade
 
 :::demo
 
@@ -60,6 +62,21 @@ import { Picker } from '@nutui/nutui-react';
 
 :::
 
+### Async
+
+:::demo
+
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
+
+:::
+
+### Custom Theme
+
+:::demo
+
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
+
+:::
 ## Picker
 
 ### Props
