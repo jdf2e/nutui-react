@@ -50,13 +50,7 @@ const Demo1 = () => {
       <Cell
         title="Toast 标题提示"
         onClick={() => {
-          openToast(
-            'text',
-            '网络失败，请稍后再试~',
-            undefined,
-            undefined,
-            '标题提示'
-          )
+          openToast('text', '网络失败，请稍后再试~', 0, undefined, '标题提示')
           setShowToast(true)
         }}
       />
