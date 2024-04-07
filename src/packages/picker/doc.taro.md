@@ -16,51 +16,7 @@ import { Picker } from '@nutui/nutui-react-taro';
 
 :::demo
 
-```tsx
-import  React, { useState  } from "react";
-import { Picker,Cell } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const [baseDesc, setBaseDesc] = useState('')
-  const listData1 = [
-    [
-      { value: 1, text: '南京市',},
-      { value: 2, text: '无锡市',},
-      { value: 3, text: '海北藏族自治区',},
-      { value: 4, text: '北京市',},
-      { value: 5, text: '连云港市',},
-      { value: 8, text: '大庆市',},
-      { value: 9, text: '绥化市',},
-      { value: 10,text: '潍坊市',},
-      { value: 12,text: '乌鲁木齐市'},
-    ],
-  ]
-  const changePicker = (list: any[], option: any, columnIndex: number) => {
-    console.log(columnIndex, option)
-  }
-  const confirmPicker = (options: PickerOption[], values: (string | number)[]) => {
-    let description = ''
-    options.forEach((option: any) => {
-      description += option.text
-    })
-    setBaseDesc(description)
-  }
-  return ( 
-    <>   
-      <Cell title="请选择城市" description={baseDesc} onClick={() => setVisible(!visible)}/>
-      <Picker
-        visible={visible}
-        options={listData1}
-        onConfirm={(list, values) => confirmPicker(list, values)}
-        onClose={() => setVisible(false)}
-        onChange={changePicker}
-       />
-    </>
-  );
-};  
-export default App;
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -68,49 +24,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState  } from "react";
-import { Picker, Cell } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [visible, setVisible] = useState(false)
-  const [baseDefault, setbaseDefault] = useState('')
-  const [defaultValue, setDefaultValue] = useState([2])
-  const listData1 = [
-    [
-      { value: 1, text: '南京市',},
-      { value: 2, text: '无锡市',},
-      { value: 3, text: '海北藏族自治区',},
-      { value: 4, text: '北京市',},
-      { value: 5, text: '连云港市',},
-      { value: 8, text: '大庆市',},
-      { value: 9, text: '绥化市',},
-      { value: 10,text: '潍坊市',},
-      { value: 12,text: '乌鲁木齐市'},
-    ],
-  ]
-  const confirmPicker = (options: PickerOption[], values: (string | number)[]) => {
-    let description = ''
-    options.forEach((option: any) => {
-      description += option.text
-    })
-    setbaseDefault(description)
-  }
-  return ( 
-    <>   
-      <Cell title="请选择城市" description={baseDefault} onClick={() => setVisible(!visible)}/>
-      <Picker
-        visible={visible}
-        options={listData1}
-        defaultValue={defaultValue}
-        onConfirm={(list, values) => confirmPicker(list, values)}
-        onClose={() => setVisible(false)}
-       />
-    </>
-  );
-};  
-export default App;
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -118,51 +32,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState  } from "react";
-import { Picker,Cell } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [isVisible2, setIsVisible2] = useState(false)
-  const [mutilDesc, setMutilDesc] = useState('')
-  const listData2 = [
-    // 第一列
-    [
-      { text: '周一', value: 'Monday' },
-      { text: '周二', value: 'Tuesday' },
-      { text: '周三', value: 'Wednesday' },
-      { text: '周四', value: 'Thursday' },
-      { text: '周五', value: 'Friday' },
-    ],
-    // 第二列
-    [
-      { text: '上午', value: 'Morning' },
-      { text: '下午', value: 'Afternoon' },
-      { text: '晚上', value: 'Evening' },
-    ],
-  ]
-  const confirmPicker = (options: PickerOption[], values: (string | number)[]) => {
-    let description = ''
-    options.forEach((option: any) => {
-      description += option.text
-    })
-    setbaseDefault(description)
-  }
-  return ( 
-    <>   
-    <Cell title="多列用法" description={mutilDesc} onClick={() => setIsVisible2(!isVisible2)} />
-    <Picker
-      visible={isVisible2}
-      options={listData2}
-      onClose={() => setIsVisible2(false)}
-      defaultValue={['Wednesday']}
-      onConfirm={(list, values) => confirmPicker(list, values)}
-     />
-    </>
-  );
-};  
-export default App;
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -172,49 +42,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState  } from "react";
-import { Picker,Cell } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [visible, setIsVisible] = useState(false)
-  const [tileDesc, settileDesc] = useState('')
-  const options = [
-    [
-      { value: 1, text: '南京市',},
-      { value: 2, text: '无锡市',},
-      { value: 3, text: '海北藏族自治区',},
-      { value: 4, text: '北京市',},
-      { value: 5, text: '连云港市',},
-      { value: 8, text: '大庆市',},
-      { value: 9, text: '绥化市',},
-      { value: 10,text: '潍坊市',},
-      { value: 12,text: '乌鲁木齐市'},
-    ],
-  ]
-  const confirmPicker = (options: PickerOption[], values: (string | number)[]) => {
-    let description = ''
-    options.forEach((option: any) => {
-      description += option.text
-    })
-    settileDesc(description)
-  }
-  return ( 
-    <>   
-      <Cell title="请选择城市" description={settileDesc} onClick={() => setIsVisible(!visible)}/>
-      <Picker
-        visible={visible}
-        options={options}
-        threeDimensional={false}
-        duration={1000}
-        onConfirm={(list, values) => confirmPicker(list, values)}
-        onClose={() => setIsVisible(false)}
-       />
-    </>
-  );
-};  
-export default App;
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -222,70 +50,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState  } from "react";
-import { Picker,Cell } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [visible, setIsVisible] = useState(false)
-  const [cityCustmer, setCityCustmer] = useState('')
-  const [custmerCityData, setCustmerCityData] = useState([
-    {
-      value: 1,
-      text: '北京市',
-      children: [
-        { value: 1, text: '朝阳区',},
-        { value: 2, text: '海淀区',},
-        { value: 3, text: '大兴区',},
-        { value: 4, text: '东城区',},
-        { value: 5, text: '西城区',},
-        { value: 6, text: '丰台区',},
-      ],
-    },
-    {
-      value: 2,
-      text: '上海市',
-      children: [
-        { value: 1, text: '黄浦区',},
-        { value: 2, text: '长宁区',},
-        { value: 3, text: '普陀区',},
-        { value: 4, text: '杨浦区',},
-        { value: 5, text: '浦东新区',},
-      ],
-    },
-  ])
-  const setChooseValueCustmer = (values: (string | number)[],chooseData: PickerOption[]) => {
-    const str = chooseData.map((item) => item.text).join('-')
-    setCityCustmer(str)
-  }
- 
-  return ( 
-    <>   
-      <Cell title="多级联动" description={cityCustmer} onClick={() => setIsVisible(!visible)}/>
-      <Picker
-        visible={visible}
-        options={custmerCityData}
-        onClose={() => setIsVisible(false)}
-        onConfirm={(list, values) => setChooseValueCustmer(list, values)}
-          onChange={(
-            options: PickerOption[],
-            value: (string | number)[],
-            columnIndex: number
-          ) =>
-            console.log(
-              asyncData,
-              '选择用户',
-              columnIndex,
-              value,
-              options
-            )
-          }
-       />
-    </>
-  );
-};  
-export default App;
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -293,85 +58,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState  } from "react";
-import { Picker,Cell } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [visible, setIsVisible] = useState(false)
-  const [asyncDesc, setasyncDesc] = useState('')
-  const [asyncData, setCustmerCityData] = useState([
-    {
-      value: 1,
-      text: '北京市',
-      children: [
-        { value: 1, text: '朝阳区',},
-        { value: 2, text: '海淀区',},
-        { value: 3, text: '大兴区',},
-        { value: 4, text: '东城区',},
-        { value: 5, text: '西城区',},
-        { value: 6, text: '丰台区',},
-      ],
-    },
-    {
-      value: 2,
-      text: '上海市',
-      children: [],
-    },
-  ])
-  const setAsyncConfirm = (
-    options: PickerOption[],
-    values: (string | number)[]
-  ) => {
-    const str = options.map((item) => item.text).join('-')
-    setasyncDesc(str)
-  }
-  const updateChooseValueCustmer = (
-    options: PickerOption[],
-    values: (string | number)[],
-    columnIndex: number
-  ) => {
-    if (columnIndex === 0 && values[0] === 2) {
-      setTimeout(() => {
-        if(asyncData[1].children.length === 0){
-          asyncData[1].children = [
-            { value: 1, text: '黄浦区',},
-            { value: 2, text: '长宁区',},
-            { value: 3, text: '普陀区',},
-            { value: 4, text: '杨浦区',},
-            { value: 5, text: '浦东新区',}]
-            
-            setAsyncData([...asyncData])
-        }
-      }, 100)
-    }
-  }
- 
-  return ( 
-    <>   
-      <Cell title="请选择城市" description={asyncDesc} onClick={() => setIsVisible(!visible)}/>
-      <Picker
-        visible={visible}
-        options={asyncData}
-        onClose={() => setIsVisible(false)}
-        onConfirm={(list, values) => setAsyncConfirm(list, values)}
-          onChange={(
-            selectedOptions: PickerOption[],
-            selectedValue: (string | number)[],
-            columnIndex: number
-          ) =>
-            updateChooseValueCustmer(
-              selectedOptions,
-              selectedValue,
-              columnIndex
-            )
-          }
-       />
-    </>
-  );
-};  
-export default App;
-```
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 

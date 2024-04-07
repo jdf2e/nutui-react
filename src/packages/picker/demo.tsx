@@ -4,6 +4,11 @@ import { Internation } from './doc.en'
 import Picker from './picker'
 import Cell from '@/packages/cell'
 import ConfigProvider from '@/packages/configprovider'
+import Demo1 from './demos/h5/demo1'
+import Demo2 from './demos/h5/demo2'
+import Demo3 from './demos/h5/demo3'
+import Demo4 from './demos/h5/demo4'
+import Demo5 from './demos/h5/demo5'
 
 interface T {
   [props: string]: string
@@ -296,84 +301,18 @@ const PickerDemo = () => {
     <>
       <div className="demo">
         <h2>{translated.basic}</h2>
-        <Cell
-          title={translated.chooseCity}
-          description={baseDesc}
-          onClick={() => setIsVisible7(true)}
-        />
-        <Picker
-          title={translated.chooseCity}
-          visible={isVisible7}
-          options={listData1}
-          onConfirm={(list, values) => confirmPicker('base', list, values)}
-          onClose={() => {
-            setIsVisible7(false)
-            console.log('onClose')
-          }}
-        />
+        <Demo1 />
 
         <h2>{translated.defaultSelected}</h2>
-        <Cell
-          title={translated.chooseCity}
-          description={baseDefault}
-          onClick={() => setIsVisible4(!isVisible4)}
-        />
-        <Picker
-          visible={isVisible4}
-          options={listData1}
-          defaultValue={defaultValue}
-          onConfirm={(list, values) => confirmPicker('default', list, values)}
-          onClose={() => setIsVisible4(false)}
-        />
+        <Demo2 />
 
         <h2>{translated.controlled}</h2>
-        <Cell
-          title={translated.chooseCity}
-          description={baseDesc}
-          onClick={() => setIsVisible1(!isVisible1)}
-        />
-        <Picker
-          title={translated.chooseCity}
-          visible={isVisible1}
-          value={val}
-          options={listData1}
-          onConfirm={(list, values) => {
-            confirmPicker('base', list, values)
-            setVal(values)
-          }}
-          onClose={() => {
-            setIsVisible1(false)
-          }}
-        />
+        <Demo3 />
 
         <h2>{translated.multipleColumns}</h2>
-        <Cell
-          title={translated.multipleColumns}
-          description={mutilDesc}
-          onClick={() => setIsVisible2(!isVisible2)}
-        />
-        <Picker
-          visible={isVisible2}
-          options={listData2}
-          onClose={() => setIsVisible2(false)}
-          defaultValue={['Wednesday']}
-          onConfirm={(list, values) => confirmPicker('mutil', list, values)}
-        />
+        <Demo4 />
         <h2>{translated.tileDesc}</h2>
-        <Cell
-          title={translated.chooseCity}
-          description={tileDesc}
-          onClick={() => setIsVisible6(!isVisible6)}
-        />
-        <Picker
-          visible={isVisible6}
-          options={listData1}
-          onConfirm={(list, values) => confirmPicker('tile', list, values)}
-          defaultValue={defaultValue}
-          threeDimensional={false}
-          duration={1000}
-          onClose={() => setIsVisible6(false)}
-        />
+        <Demo5 />
 
         <h2>{translated.cascade}</h2>
         <Cell
