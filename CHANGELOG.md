@@ -1,3 +1,15 @@
+# v2.5.2
+`2024-04-03`
+
+
+* 🏡 chore(form): demo拆解与规范 (#2148) @oasis-cloud
+* 🏡 chore(countdown): demo拆解与规范 (#2147) @Alex.huxiyang
+* 🏡 chore(cascader): demo拆解与规范 (#2144) @Alex.huxiyang
+* 🏡 chore(checkbox): demo拆解与规范 (#2146) @Alex.huxiyang
+* :bug: fix(calendarcard):  直接抛出ondayclick (#2150) @oasis-cloud
+* :bug: fix(radio): 样式变量修复(issue) (#2149) @Alex.huxiyang
+
+
 # v2.5.1
 `2024-03-29`
 
