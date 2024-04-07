@@ -15,18 +15,19 @@
 }
 
 .nut-swipe-wrapper .nut-button {
-  height: 100%;
+  align-self: stretch;
 }
 
 .nut-swipe-wrapper .nut-cell {
   margin: 0;
-  height: 100%;
+  align-self: stretch;
 }
 
 .nut-swipe-left, .nut-swipe-right {
-  position: absolute;
-  top: 0;
-  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-self: stretch;
+  align-items: stretch;
 }
 
 .nut-swipe-left {

@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
-import Taro from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import Taro, { pxTransform } from '@tarojs/taro'
+import { View, Text } from '@tarojs/components'
 import { Del } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import {
@@ -167,17 +167,26 @@ const SwipeDemo = () => {
     return (
       <div
         style={{
-          height: '104px',
-          width: '60px',
+          width: pxTransform(60),
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
+          fontSize: pxTransform(14),
+          alignSelf: 'stretch',
           alignItems: 'center',
           ...style,
         }}
       >
         {hasIcon ? <Del style={{ marginBottom: '8px' }} /> : null}
-        <>{text}</>
+        <Text
+          style={{
+            width: pxTransform(60),
+            textAlign: 'center',
+            fontSize: pxTransform(14),
+          }}
+        >
+          {text}
+        </Text>
       </div>
     )
   }
@@ -188,24 +197,36 @@ const SwipeDemo = () => {
         <h2>{translated.title1}</h2>
         <Swipe
           rightAction={
-            <Button type="primary" shape="square">
+            <Button
+              type="primary"
+              shape="square"
+              style={{ alignSelf: 'stretch' }}
+            >
               {translated.del}
             </Button>
           }
         >
-          <Cell title={translated.leftDel} radius={0} />
+          <Cell
+            title={translated.leftDel}
+            radius={0}
+            style={{ margin: 0, alignSelf: 'stretch' }}
+          />
         </Swipe>
 
         <h2>{translated.title9}</h2>
         <Swipe
+          style={{
+            height: pxTransform(104),
+          }}
           rightAction={
             <div
               style={{
-                width: '240px',
+                width: pxTransform(240),
                 display: 'flex',
                 flexDirection: 'row',
-                fontSize: '12px',
-                background: 'red',
+                fontSize: pxTransform(12),
+                alignSelf: 'stretch',
+                alignItems: 'stretch',
               }}
             >
               <>
@@ -235,6 +256,9 @@ const SwipeDemo = () => {
         <br style={{ display: 'block', height: '10px' }} />
 
         <Swipe
+          style={{
+            height: '104px',
+          }}
           rightAction={
             <div
               style={{
@@ -280,11 +304,7 @@ const SwipeDemo = () => {
             </div>
           }
         >
-          <Cell
-            title={translated.leftDel}
-            radius={0}
-            style={{ background: 'red' }}
-          />
+          <Cell title={translated.leftDel} radius={0} />
         </Swipe>
 
         <h2>{translated.title8}</h2>

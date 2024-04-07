@@ -21,9 +21,11 @@
 
   &-left,
   &-right {
+    display: flex;
     position: absolute;
     top: 0;
     height: 100%;
+    align-items: stretch;
   }
 
   &-left {

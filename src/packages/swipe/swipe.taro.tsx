@@ -292,7 +292,6 @@ export const Swipe = forwardRef<
       onTouchEnd={(e) => onTouchEnd(e)}
       style={style}
     >
-      {state.offset}
       <div className={`${classPrefix}-wrapper`} style={wrapperStyle}>
         {renderActionContent('left')}
         {children}
