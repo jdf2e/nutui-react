@@ -9,52 +9,64 @@
   background-position: center center;
   flex: 0 0 auto;
 }
+
 .nut-switch-button {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
+  border-radius: 20px;
   background: #ffffff;
   transition: transform 0.3s;
   box-shadow: none;
 }
+
 .nut-switch-base {
   width: 40px;
   height: 24px;
   line-height: 24px;
 }
+
 .nut-switch-base .nut-switch-button {
   height: 20px;
   width: 20px;
   transform: translateX(14%);
 }
+
 .nut-switch-base.nut-switch-open .nut-switch-button {
   transform: translateX(90%);
 }
+
 .nut-switch-base.nut-switch-open.nut-switch-disabled {
   background-color: #fd9d94;
 }
+
 .nut-switch-base.nut-switch-close .nut-switch-close-line {
   width: 12px;
   height: 2px;
 }
+
 .nut-switch-base.nut-switch-close.nut-switch-disabled {
-  background-color: undefined;
+  background-color: rgba(0, 0, 0, 0.06);
 }
+
 .nut-switch-close {
   background-color: #bfbfbf;
 }
+
 .nut-switch-close-line {
   background: #fff;
   border-radius: 2px;
 }
+
 .nut-switch-label {
   color: #ffffff;
   font-size: 12px;
 }
+
 .nut-switch-label.open {
   transform: translateX(-18px);
 }
+
 .nut-switch-label.close {
   transform: translateX(14px);
 }
@@ -66,16 +78,20 @@
 .nut-rtl .nut-switch-base .nut-switch-button {
   transform: translateX(-14%);
 }
+
 [dir=rtl] .nut-switch-base.nut-switch-open .nut-switch-button {
   transform: translateX(-90%);
 }
+
 .nut-rtl .nut-switch-base.nut-switch-open .nut-switch-button {
   transform: translateX(-90%);
 }
+
 [dir=rtl] .nut-switch-label.open,
 .nut-rtl .nut-switch-label.open {
   transform: translateX(18px);
 }
+
 [dir=rtl] .nut-switch-label.close,
 .nut-rtl .nut-switch-label.close {
   transform: translateX(-14px);
