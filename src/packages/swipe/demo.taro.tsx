@@ -168,6 +168,7 @@ const SwipeDemo = () => {
       <div
         style={{
           width: pxTransform(60),
+          height: pxTransform(104),
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
@@ -222,6 +223,7 @@ const SwipeDemo = () => {
             <div
               style={{
                 width: pxTransform(240),
+                height: pxTransform(104),
                 display: 'flex',
                 flexDirection: 'row',
                 fontSize: pxTransform(12),
@@ -257,14 +259,18 @@ const SwipeDemo = () => {
 
         <Swipe
           style={{
-            height: '104px',
+            height: pxTransform(104),
           }}
           rightAction={
             <div
               style={{
-                width: '240px',
+                width: pxTransform(240),
+                height: pxTransform(104),
                 display: 'flex',
-                fontSize: '12px',
+                flexDirection: 'row',
+                fontSize: pxTransform(12),
+                alignSelf: 'stretch',
+                alignItems: 'stretch',
               }}
             >
               <>
@@ -304,14 +310,22 @@ const SwipeDemo = () => {
             </div>
           }
         >
-          <Cell title={translated.leftDel} radius={0} />
+          <Cell
+            title={translated.leftDel}
+            radius={0}
+            style={{ margin: 0, alignSelf: 'stretch' }}
+          />
         </Swipe>
 
         <h2>{translated.title8}</h2>
         <View catchMove={shouldCatchMove}>
           <Swipe
             rightAction={
-              <Button type="primary" shape="square">
+              <Button
+                type="primary"
+                shape="square"
+                style={{ alignSelf: 'stretch' }}
+              >
                 {translated.del}
               </Button>
             }
@@ -322,7 +336,11 @@ const SwipeDemo = () => {
               setShouldCatchMove(true)
             }}
           >
-            <Cell title={translated.leftDel} radius={0} />
+            <Cell
+              title={translated.leftDel}
+              radius={0}
+              style={{ margin: 0, alignSelf: 'stretch' }}
+            />
           </Swipe>
         </View>
 
@@ -330,17 +348,25 @@ const SwipeDemo = () => {
         <Swipe
           ref={openRef}
           rightAction={
-            <Button shape="square" type="primary">
+            <Button
+              shape="square"
+              type="primary"
+              style={{ alignSelf: 'stretch' }}
+            >
               {translated.del}
             </Button>
           }
           style={{ marginBottom: '10px' }}
         >
-          <Cell title={translated.openOrClose} radius={0} />
+          <Cell
+            title={translated.openOrClose}
+            radius={0}
+            style={{ margin: 0, alignSelf: 'stretch' }}
+          />
         </Swipe>
         <div style={{ display: 'flex' }}>
           <Button
-            style={{ marginInlineEnd: '10px' }}
+            style={{ marginInlineEnd: '10px', alignSelf: 'stretch' }}
             type="primary"
             size="small"
             onClick={() => (openRef.current as any)?.open()}
@@ -349,6 +375,7 @@ const SwipeDemo = () => {
           </Button>
           <Button
             size="small"
+            style={{ alignSelf: 'stretch' }}
             onClick={() => (openRef.current as any)?.close()}
           >
             {translated.close}
@@ -358,7 +385,11 @@ const SwipeDemo = () => {
         <Swipe
           ref={closeRef}
           rightAction={
-            <Button shape="square" type="primary">
+            <Button
+              shape="square"
+              type="primary"
+              style={{ alignSelf: 'stretch' }}
+            >
               {translated.del}
             </Button>
           }
@@ -366,32 +397,56 @@ const SwipeDemo = () => {
             ;(closeRef.current as any)?.close()
           }}
         >
-          <Cell title={translated.closeLeft} radius={0} />
+          <Cell
+            title={translated.closeLeft}
+            radius={0}
+            style={{ margin: 0, alignSelf: 'stretch' }}
+          />
         </Swipe>
         <h2>{translated.title2}</h2>
         <Swipe
           rightAction={
-            <Button shape="square" type="primary">
+            <Button
+              shape="square"
+              type="primary"
+              style={{ alignSelf: 'stretch' }}
+            >
               {translated.del}
             </Button>
           }
           disabled
         >
-          <Cell title={translated.disabled} radius={0} />
+          <Cell
+            title={translated.disabled}
+            radius={0}
+            style={{ margin: 0, alignSelf: 'stretch' }}
+          />
         </Swipe>
         <h2>{translated.title3}</h2>
         <Swipe
           leftAction={
-            <Button shape="square" type="primary">
+            <Button
+              shape="square"
+              type="primary"
+              style={{ alignSelf: 'stretch' }}
+            >
               {translated.choose}
             </Button>
           }
           rightAction={
             <>
-              <Button shape="square" type="primary">
+              <Button
+                shape="square"
+                type="primary"
+                style={{ alignSelf: 'stretch' }}
+              >
                 {translated.del}
               </Button>
-              <Button shape="square" type="primary">
+              <Button
+                shape="square"
+                type="primary"
+                style={{ alignSelf: 'stretch' }}
+              >
                 {translated.collect}
               </Button>
             </>
@@ -403,39 +458,62 @@ const SwipeDemo = () => {
           }}
           onClose={handleClose}
         >
-          <Cell title={translated.event} />
+          <Cell
+            title={translated.event}
+            style={{ margin: 0, alignSelf: 'stretch' }}
+          />
         </Swipe>
         <h2>{translated.title4}</h2>
         <Swipe
           ref={refDom}
           beforeClose={beforeClose}
           leftAction={
-            <Button shape="square" type="success">
+            <Button
+              shape="square"
+              type="success"
+              style={{ alignSelf: 'stretch' }}
+            >
               {translated.choose}
             </Button>
           }
           rightAction={
             <>
-              <Button shape="square" type="danger">
+              <Button
+                shape="square"
+                type="danger"
+                style={{ alignSelf: 'stretch' }}
+              >
                 {translated.del}
               </Button>
             </>
           }
         >
-          <Cell title={translated.event} />
+          <Cell
+            title={translated.event}
+            style={{ background: '#f0f0f0', margin: 0, alignSelf: 'stretch' }}
+          />
         </Swipe>
         <h2>{translated.title5}</h2>
         <Swipe
           rightAction={
             <>
-              <Button shape="square" type="primary">
+              <Button
+                shape="square"
+                type="primary"
+                style={{ alignSelf: 'stretch' }}
+              >
                 {translated.cart}
               </Button>
             </>
           }
           style={{ marginBottom: '30px' }}
         >
-          <Cell>
+          <Cell
+            style={{
+              margin: 0,
+              alignSelf: 'stretch',
+            }}
+          >
             <div
               style={{
                 display: 'flex',

@@ -10,6 +10,8 @@
 .nut-swipe-wrapper {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
+  background: green;
   transition-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1);
   transition-property: transform;
 }
@@ -31,8 +33,9 @@
 }
 
 .nut-swipe-left {
+  position: absolute;
   left: 0;
-  transform: translate3d(-100%, 0, 0);
+  transform: translate(-100%, 0);
 }
 
 .nut-swipe-right {
