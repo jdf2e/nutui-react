@@ -148,7 +148,7 @@ import { Input } from '@nutui/nutui-react';
 | formatTrigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | `string` | `-` |
 | onChange | 输入框内容变化时触发 | `(value: string) => void` | `-` |
 | onBlur | 失去焦点后触发 | `(value: string) => void` | `-` |
-| onFocus | 获得焦点后触发 | `(value: string) => void` | `-` |
+| onFocus | 获得焦点后触发 | `(value: string, height?: number) => void` | `-` |
 | onClear | 点击清空按钮时触发 | `(value: string) => void` | `-` |
 | onClick | 点击 input 容器触发 | `(value: MouseEvent<HTMLDivElement>) => void` | `-` |
 
