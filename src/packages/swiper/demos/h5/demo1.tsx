@@ -10,7 +10,7 @@ const list = [
 const Demo1 = () => {
   return (
     <div className="demo-box" style={{ height: 150 }}>
-      <Swiper autoPlay loop slideSize={350} indicator>
+      <Swiper autoPlay loop indicator>
         {list.map((item, index) => {
           return (
             <Swiper.Item key={item}>

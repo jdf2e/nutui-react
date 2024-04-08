@@ -10,11 +10,16 @@ const Demo7 = () => {
   ]
   return (
     <div className="demo-box" style={{ height: 150 }}>
+      <style>
+        {`.demo7 .nut-swiper-inner {
+        width: 90%;
+      }`}
+      </style>
       <Swiper
         loop
-        style={{ '--swiper-offset': '6%' }}
-        slideSize={300}
+        style={{ '--swiper-offset': '5%' }}
         indicator
+        className="demo7"
       >
         {list.map((item, index) => {
           return (
