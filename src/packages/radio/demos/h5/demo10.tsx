@@ -7,7 +7,7 @@ const Demo10 = () => {
     <>
       <Radio.Group
         defaultValue={checkedValue}
-        onChange={(value) => Toast.show(value)}
+        onChange={(value) => Toast.show(value.toString())}
       >
         <Radio value={1}>触发事件</Radio>
         <Radio value={2}>触发事件</Radio>

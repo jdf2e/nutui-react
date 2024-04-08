@@ -18,9 +18,8 @@ const Demo11 = () => {
       value: '3',
     },
   ])
-  const handleChange = (v) => {
-    console.log(v)
-    setRadioVal(v)
+  const handleChange = (v: string | number) => {
+    setRadioVal(v.toString())
   }
   return (
     <Radio.Group
