@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import { Cell } from '@/packages/nutui.react.taro'
@@ -16,23 +16,8 @@ import Demo10 from './demos/taro/demo10'
 import Demo11 from './demos/taro/demo11'
 import Demo12 from './demos/taro/demo12'
 
-interface T {
-  '74fc5d8a': string
-  bb7486f4: string
-  c1bae1ec: string
-  '8a2e2847': string
-  '70ffa5d8': string
-  '70ffa5d9': string
-  '0f261484': string
-  '0f261485': string
-  '6b1f669d': string
-  disableOne: string
-  disableAll: string
-  options: string
-}
-
 const RadioDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       '74fc5d8a': '基础用法',
       bb7486f4: '选项',
@@ -76,26 +61,7 @@ const RadioDemo = () => {
       options: 'Render radios by configuring options',
     },
   })
-  const [checkedValue] = useState(1)
-  const [radioVal, setRadioVal] = useState<string | number>('1')
-  const [optionsDemo1] = useState([
-    {
-      label: '选项1',
-      value: '1',
-    },
-    {
-      label: '选项2',
-      value: '2',
-      disabled: true,
-    },
-    {
-      label: '选项3',
-      value: '3',
-    },
-  ])
-  const handleChange = (v: string | number) => {
-    setRadioVal(v)
-  }
+
   return (
     <>
       <Header />

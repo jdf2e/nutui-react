@@ -14,23 +14,8 @@ import Demo10 from './demos/h5/demo10'
 import Demo11 from './demos/h5/demo11'
 import Demo12 from './demos/h5/demo12'
 
-interface T {
-  '74fc5d8a': string
-  bb7486f4: string
-  c1bae1ec: string
-  '8a2e2847': string
-  '70ffa5d8': string
-  '70ffa5d9': string
-  '0f261484': string
-  '0f261485': string
-  '6b1f669d': string
-  disableOne: string
-  disableAll: string
-  options: string
-}
-
 const RadioDemo = () => {
-  const [translated] = useTranslate<T>({
+  const [translated] = useTranslate({
     'zh-CN': {
       '74fc5d8a': '基础用法',
       bb7486f4: '选项',
