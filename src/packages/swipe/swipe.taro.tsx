@@ -13,6 +13,7 @@ import { BaseEventOrig } from '@tarojs/components/types/common'
 import { useTouch } from '@/utils/use-touch'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { pxTransform } from '../../../packages/nutui-harmony/entry/src/main/ets/npm/@tarojs/taro'
 
 export type SwipeSide = 'left' | 'right'
 
@@ -284,21 +285,46 @@ export const Swipe = forwardRef<
   }, [])
 
   return (
-    <View
-      ref={root}
-      className={classNames(classPrefix, className)}
-      onTouchStart={(e) => onTouchStart(e)}
-      onTouchMove={(e) => onTouchMove(e)}
-      onTouchEnd={(e) => onTouchEnd(e)}
-      style={style}
-    >
-      <div className={`${classPrefix}-wrapper`} style={wrapperStyle}>
-        {renderActionContent('left')}
-        {children}
-        {renderActionContent('right')}
-      </div>
+    <View style={{display: 'flex', flexDirection: 'row', position: 'relative', overflow: 'hidden'}}>
+      <View style = {{
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        position: 'relative',
+      }}>
+        <View style = {{
+          display: 'flex',
+          flexDirection: 'row',
+          alignSelf: 'stretch',
+          position: 'absolute',
+          left: 0,
+        }}>
+          <View>Test</View>
+        </View>
+        <View style = {{
+          padding: pxTransform(20),
+          fontSize: pxTransform(14)
+        }}>Content</View>
+      </View>
     </View>
   )
+
+  // return (
+  //   <View
+  //     ref={root}
+  //     className={classNames(classPrefix, className)}
+  //     onTouchStart={(e) => onTouchStart(e)}
+  //     onTouchMove={(e) => onTouchMove(e)}
+  //     onTouchEnd={(e) => onTouchEnd(e)}
+  //     style={style}
+  //   >
+  //     <div className={`${classPrefix}-wrapper`} style={wrapperStyle}>
+  //       {renderActionContent('left')}
+  //       {children}
+  //       {renderActionContent('right')}
+  //     </div>
+  //   </View>
+  // )
 })
 
 Swipe.defaultProps = defaultProps
