@@ -66,10 +66,35 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<SwiperProps>>(
       })
       return c
     }, [children])
+    const getSlideSize = () => {
+      if (props.slideSize) return props.slideSize
+      if (stageRef.current) {
+        if (isVertical) return stageRef.current.offsetHeight
+        return stageRef.current.offsetWidth
+      }
+      return 0
+    }
+    const getSwiperSize = () => {
+      if (swiperRef.current) {
+        if (isVertical) return swiperRef.current.offsetHeight
+        return swiperRef.current.offsetWidth
+      }
+      return 0
+    }
+    const bound = (v: number, min: number, max: number) => {
+      if (min !== undefined) {
+        v = Math.max(v, min)
+      }
+      if (max !== undefined) {
+        v = Math.min(v, max)
+      }
+      return v
+    }
     const timeoutRef = useRef<number | null>(null)
     const [dragging, setDragging] = useState(false)
     const [current, setCurrent] = useRefState(defaultValue)
     const stageRef = useRef<HTMLDivElement>(null)
+    const swiperRef = useRef<HTMLDivElement>(null)
     const [springs, api] = useSpring(() => ({
       x: !isVertical ? current.current * 100 * -1 : 0,
       y: isVertical ? current.current * 100 * -1 : 0,
@@ -77,6 +102,12 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<SwiperProps>>(
       reset: () => {},
       config: { tension: 200, friction: 30 },
     }))
+    useEffect(() => {
+      api.start({
+        [isVertical ? 'y' : 'x']: boundIndex(current.current) * -1 * 100,
+        immediate: true,
+      })
+    }, [swiperRef.current])
 
     const swiperDirection = useRef(1)
 
@@ -101,6 +132,18 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<SwiperProps>>(
       }
     }, [autoPlay, duration, dragging, count])
 
+    function boundIndex(current: number) {
+      const min = 0
+      const max = count - 1
+      if (current === max && !loop && props.slideSize) {
+        const slideSize = props.slideSize
+        const swiperSize = getSwiperSize()
+        const ratio = (swiperSize - slideSize) / slideSize
+        return bound(current, min, max - ratio)
+      }
+      return current
+    }
+
     const to = (index: number, immediate = false) => {
       let targetIndex = bound(index, 0, count - 1)
       if (loop) {
@@ -116,7 +159,8 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<SwiperProps>>(
 
       api.start({
         // 这里需要统一成百分比
-        [isVertical ? 'y' : 'x']: (loop ? -index : -targetIndex) * 100,
+        [isVertical ? 'y' : 'x']:
+          (loop ? -index : boundIndex(targetIndex) * -1) * 100,
         s: 0,
         immediate,
       })
@@ -135,23 +179,7 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<SwiperProps>>(
       next,
       prev,
     }))
-    const getSlideSize = () => {
-      if (props.slideSize) return props.slideSize
-      if (stageRef.current) {
-        if (isVertical) return stageRef.current.offsetHeight
-        return stageRef.current.offsetWidth
-      }
-      return 0
-    }
-    const bound = (v: number, min: number, max: number) => {
-      if (min !== undefined) {
-        v = Math.max(v, min)
-      }
-      if (max !== undefined) {
-        v = Math.min(v, max)
-      }
-      return v
-    }
+
     const bind = useDrag(
       (state) => {
         const axis = Number(isVertical)
@@ -196,6 +224,7 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<SwiperProps>>(
         bounds: () => {
           if (loop) return {}
           const slideSize = getSlideSize()
+          const swiperSize = getSwiperSize()
           if (isVertical) {
             return { top: 0, bottom: (count - 1) * slideSize }
           }
@@ -277,6 +306,7 @@ export const Swiper = React.forwardRef<SwiperRef, Partial<SwiperProps>>(
       <div
         className={classNames('nut-swiper', className)}
         style={style}
+        ref={swiperRef}
         {...bind()}
       >
         {renderSlides()}
