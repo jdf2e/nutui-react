@@ -28,7 +28,7 @@ const Demo4 = () => {
       />
       <Drag
         boundary={{ top: 361, left: 9, bottom: bottom(), right: right() }}
-        // style={{ top: '400px', left: '50px' }}
+        style={{ top: '400px', left: '50px' }}
       >
         <Button type="primary">boundary</Button>
       </Drag>

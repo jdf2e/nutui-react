@@ -27,12 +27,6 @@ const DragDemo = () => {
       limitBoundaries: 'Limit Boundaries',
     },
   })
-  const right = () => {
-    return document.documentElement.clientWidth - 300 - 9
-  }
-  const bottom = () => {
-    return document.documentElement.clientHeight - 559
-  }
 
   return (
     <div className="demo full">
