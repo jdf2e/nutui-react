@@ -10,14 +10,13 @@ const list = [
 const Demo1 = () => {
   return (
     <div className="demo-box" style={{ height: 150 }}>
-      <Swiper height={150} autoPlay="2000" defaultValue={0} indicator>
+      <Swiper autoPlay loop indicator>
         {list.map((item, index) => {
           return (
             <Swiper.Item key={item}>
               <img
-                src={item}
-                onClick={() => console.log(index)}
-                alt=""
+                src={list[index]}
+                alt={list[index]}
                 style={{ width: '100%', height: '100%' }}
                 draggable={false}
               />

@@ -4,7 +4,7 @@ import { Swiper } from '@nutui/nutui-react'
 const Demo9 = () => {
   return (
     <div style={{ height: 150 }}>
-      <Swiper loop autoPlay="2000">
+      <Swiper loop>
         <Swiper.Item>
           <div style={{ display: 'flex' }}>
             <div style={{ flex: '1', border: '1 red' }}>Item1</div>
