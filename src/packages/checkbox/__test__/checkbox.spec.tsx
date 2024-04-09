@@ -12,7 +12,7 @@ test('should match snapshot', () => {
 })
 
 test('should props correctly', () => {
-  const handleChange = jest.fn(() => {})
+  const handleChange = vi.fn(() => {})
   const { container, queryByText, getByTestId } = render(
     <Checkbox
       data-testid="checkbox"
@@ -37,10 +37,10 @@ test('should props correctly', () => {
 })
 
 test('should fireEvent correctly', () => {
-  const handleChange = jest.fn((value) => {
+  const handleChange = vi.fn((value) => {
     value
   })
-  const limit = jest.fn()
+  const limit = vi.fn()
   const { getByTestId, container } = render(
     <CheckboxGroup
       data-testid="group"
@@ -142,10 +142,10 @@ test('Render checkboxs by configure disabled and indeterminate', () => {
 })
 
 test('list model should fireEvent correctly', () => {
-  const handleChange = jest.fn((value) => {
+  const handleChange = vi.fn((value) => {
     value
   })
-  const limit = jest.fn()
+  const limit = vi.fn()
   const { getByTestId, container } = render(
     <CheckboxGroup
       data-testid="group"

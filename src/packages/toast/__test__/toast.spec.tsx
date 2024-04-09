@@ -7,7 +7,7 @@ import { Jd } from '@nutui/icons-react'
 import Toast from '@/packages/toast'
 import Cell from '@/packages/cell'
 
-const onClickToast = jest.fn((type, msg, options?) => {
+const onClickToast = vi.fn((type, msg, options?) => {
   switch (type) {
     case 'text':
       Toast.show({ content: msg, ...options })

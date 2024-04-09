@@ -19,6 +19,7 @@ config.nav.map((item) => {
     if (exclude) return
     if (show || exportEmpty) {
       importStr += `import ${name} from '@/packages/${name.toLowerCase()}';\n`
+      importStr += `export * from '@/packages/${name.toLowerCase()}';\n`
       importScssStr += `import '@/packages/${name.toLowerCase()}/${name.toLowerCase()}.scss';\n`
 
       packages.push(name)

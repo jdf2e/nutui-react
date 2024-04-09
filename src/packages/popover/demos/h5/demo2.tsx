@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Popover, Button } from '@nutui/nutui-react'
-import { Home, Cart, Location } from '@nutui/icons-react'
+import { Home, Cart, Location, Checklist } from '@nutui/icons-react'
 
 interface List {
   key?: string
@@ -9,7 +9,6 @@ interface List {
   disabled?: boolean
   className?: string
 }
-
 const Demo2 = () => {
   const [showIcon, setShowIcon] = useState(false)
   const [disableAction, setDisableAction] = useState(false)
@@ -17,9 +16,9 @@ const Demo2 = () => {
     {
       key: 'key1',
       name: 'option1',
-      icon: <Home color="rgba(250, 44, 25, 1)" />,
+      icon: <Home />,
       action: {
-        icon: <Home />,
+        icon: <Checklist color="rgba(250, 44, 25, 1)" />,
         onClick: (e: any) => {
           console.log('onclick 1')
           e.stopPropagation()
@@ -66,7 +65,7 @@ const Demo2 = () => {
           showIcon ? setShowIcon(false) : setShowIcon(true)
         }}
         list={iconItemList}
-        style={{ marginRight: '30px' }}
+        style={{ marginInlineEnd: '30px' }}
       >
         <Button type="primary" shape="square">
           展示图标
@@ -78,7 +77,7 @@ const Demo2 = () => {
           disableAction ? setDisableAction(false) : setDisableAction(true)
         }}
         list={itemListDisabled}
-        location="right"
+        // location="right"
         onSelect={chooseHandle}
       >
         <Button type="primary" shape="square">

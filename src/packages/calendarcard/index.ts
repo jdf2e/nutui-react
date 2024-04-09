@@ -4,5 +4,6 @@ export type {
   CalendarCardDay,
   CalendarCardMonth,
   CalendarCardValue,
+  CalendarCardRef,
 } from './types'
 export default CalendarCard

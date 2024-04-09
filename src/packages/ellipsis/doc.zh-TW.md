@@ -16,21 +16,7 @@ import { Ellipsis } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Ellipsis, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const content =
-    'NutUI3.0上線後我們研發團隊也在不斷的優化、測試、使用、叠代 Vue3 的相關組件，但是在跨端小程序的開發過程中，發現沒有合適的組件庫可以支持多端開發。為了填補這一空白，同時為了優化開發者體驗，讓 NutUI 能夠為更多的開發者帶來便利，我們決定在 NutUI 中增加小程序多端適配的能力。'
-  return (
-    <Cell>
-    <Ellipsis content={content} direction="start"/>
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -38,21 +24,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Ellipsis, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const content =
-    'NutUI3.0上線後我們研發團隊也在不斷的優化、測試、使用、叠代 Vue3 的相關組件，但是在跨端小程序的開發過程中，發現沒有合適的組件庫可以支持多端開發。為了填補這一空白，同時為了優化開發者體驗，讓 NutUI 能夠為更多的開發者帶來便利，我們決定在 NutUI 中增加小程序多端適配的能力。'
-  return (
-    <Cell>
-    <Ellipsis content={content} direction="end"/>
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -60,21 +32,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Ellipsis, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const content =
-    'NutUI3.0上線後我們研發團隊也在不斷的優化、測試、使用、叠代 Vue3 的相關組件，但是在跨端小程序的開發過程中，發現沒有合適的組件庫可以支持多端開發。為了填補這一空白，同時為了優化開發者體驗，讓 NutUI 能夠為更多的開發者帶來便利，我們決定在 NutUI 中增加小程序多端適配的能力。'
-  return (
-    <Cell>
-    <Ellipsis content={content} direction="middle"/>
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -82,21 +40,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Ellipsis, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const content =
-    'NutUI3.0上線後我們研發團隊也在不斷的優化、測試、使用、叠代 Vue3 的相關組件，但是在跨端小程序的開發過程中，發現沒有合適的組件庫可以支持多端開發。為了填補這一空白，同時為了優化開發者體驗，讓 NutUI 能夠為更多的開發者帶來便利，我們決定在 NutUI 中增加小程序多端適配的能力。'
-  return (
-    <Cell>
-    <Ellipsis content={content} direction="start" rows="3"/>
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -104,26 +48,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React from "react";
-import { Ellipsis, Cell } from '@nutui/nutui-react';
-
-const App = () => {
-  const content =
-    'NutUI3.0上線後我們研發團隊也在不斷的優化、測試、使用、叠代 Vue3 的相關組件，但是在跨端小程序的開發過程中，發現沒有合適的組件庫可以支持多端開發。為了填補這一空白，同時為了優化開發者體驗，讓 NutUI 能夠為更多的開發者帶來便利，我們決定在 NutUI 中增加小程序多端適配的能力。'
-  return (
-    <Cell>
-        <Ellipsis
-        content={content}
-        direction="start"
-        expandText="展開"
-        collapseText="收起"
-        />
-    </Cell>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 

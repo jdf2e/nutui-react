@@ -129,11 +129,13 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   const getParentOffset = () => {
     setTimeout(() => {
       const p = parent.menuRef.current
-      const rect = p.getBoundingClientRect()
-      setPosition({
-        height: rect.height,
-        top: rect.top,
-      })
+      if (p) {
+        const rect = p.getBoundingClientRect()
+        setPosition({
+          height: rect.height,
+          top: rect.top,
+        })
+      }
     })
   }
 

@@ -36,7 +36,7 @@ import { Popover } from '@nutui/nutui-react'
 
 :::
 
-### Placement
+### Custom Location: multi datas
 
 Use the location property to control where the bubble pops up. optional value
 
@@ -58,6 +58,27 @@ bottom-end    # Bottom right
 :::demo
 
 <CodeBlock src='h5/demo4.tsx'></CodeBlock>
+
+:::
+
+### Custom Location: one data
+
+Use the location property to control where the bubble pops up. optional value
+
+```
+top           # Top middle
+left          # Left middle
+right         # Right middle
+bottom        # Bottom middle
+top-start     # Top left
+top-end       # Top right
+bottom-start  # Bottom left
+bottom-end    # Bottom right
+```
+
+:::demo
+
+<CodeBlock src='h5/demo4-1.tsx'></CodeBlock>
 
 :::
 
@@ -99,7 +120,7 @@ bottom-end    # Bottom right
 
 | Property | Description | Type | Default |
 | --- | --- | --- | --- |
-| list | list of options | `List[]` | `[]` |
+| list | list of options | `PopoverList[]` | `[]` |
 | visible | whether to show | `boolean` | `false` |
 | location | The pop-up position, the specific parameter values ​​inside can refer to the above position customization example | `string` | `bottom` |
 | offset | the offset of the occurrence position | `string[]` \| `number[]` | `[0, 12]` |
@@ -109,15 +130,15 @@ bottom-end    # Bottom right
 | closeOnOutsideClick | Whether to close when clicking outside | `boolean` | `true` |
 | targetId | Custom target id | `string` | `-` |
 | onClick | Click to toggle the popover display state | `() => void` | `() => {}` |
-| onSelect | Fired when an option is clicked | `(item: List, index: number) => void` | `(item, index) => {}` |
+| onSelect | Fired when an option is clicked | `(item: PopoverList, index: number) => void` | `(item, index) => {}` |
 | onOpen | Triggered when the menu is clicked | `() => void` | `() => {}` |
 | onClose | Fired when the menu is closed | `() => void` | `() => {}` |
 
 In addition, the `overlayStyle` `overlayClassName` `overlay` `closeOnOverlayClick` properties of the [Popup](#/zh-CN/component/popup) component are also supported.
 
-### List data structure
+### PopoverList
 
-The List property is an array of objects, each object in the array is configured with a column, and the object can contain the following values:
+The PopoverList property is an array of objects, each object in the array is configured with a column, and the object can contain the following values:
 
 | Key | Description | Type | Default |
 | --- | --- | --- | --- |

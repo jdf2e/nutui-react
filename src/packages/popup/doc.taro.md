@@ -18,22 +18,7 @@ import { Popup } from '@nutui/nutui-react-taro';
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Popup, Cell } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [showBasic, setShowBasic] = useState(false);
-  return (
-    <>
-        <Cell title="展示弹出层"  onClick={() => { setShowBasic(true) }}/>
-        <Popup visible={ showBasic } style={{ padding: '30px 50px' }} onClose={ () => { setShowBasic(false) } }>正文</Popup>
-    </>
-  );
-};
-export default App;
-
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -41,64 +26,23 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Popup, Cell } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [showTop, setShowTop] = useState(false);
-  const [showBottom, setShowBottom] = useState(false);
-  const [showLeft, setShowLeft] = useState(false);
-  const [showRight, setShowRight] = useState(false);
-
-  return (
-    <>
-        <Cell title="顶部弹出"  onClick={() => { setShowTop(true) }}/>
-        <Cell title="底部弹出"  onClick={() => { setShowBottom(true) }}/>
-        <Cell title="左侧弹出"  onClick={() => { setShowLeft(true) }}/>
-        <Cell title="右侧弹出"  onClick={() => { setShowRight(true) }}/>
-        <Popup visible={ showTop } style={{ height: '20%' }} position="top" onClose={ () => { setShowTop(false) } } />
-        <Popup visible={ showBottom } style={{ height: '20%' }} position="bottom" onClose={ () => { setShowBottom(false) } } />
-        <Popup visible={ showLeft } style={{ width: '20%', height: '100%' }} position="left" onClose={ () => { setShowLeft(false) } } />
-        <Popup visible={ showRight } style={{ width: '20%', height: '100%' }} position="right" onClose={ () => { setShowRight(false) } } />
-    </>
-  );
-};
-export default App;
-
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
-### 图标
+### 关闭图标
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Popup, Cell } from '@nutui/nutui-react-taro';
-import { Heart } from '@nutui/icons-react-taro';
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
-const App = () => {
-  const [showIcon, setShowIcon] = useState(false);
-  const [showIconPosition, setShowIconPosition] = useState(false);
-  const [showIconDefine, setShowIconDefine] = useState(false);
+:::
 
-  return (
-    <>
-        <Cell title="关闭图标"  onClick={() => { setShowIcon(true) }}/>
-        <Cell title="图标位置"  onClick={() => { setShowIconPosition(true) }}/>
-        <Cell title="自定义图标"  onClick={() => { setShowIconDefine(true) }}/>
-        <Popup closeable visible={ showIcon } style={{ height: '20%' }} position="bottom" onClose={ () => { setShowIcon(false) } } />
-        <Popup closeable visible={ showIconPosition } style={{ height: '20%' }} closeIconPosition="top-left" position="bottom" onClose={ () => { setShowIconPosition(false) } } />
-      <Popup visible={ showIconDefine } style={{ height: '20%' }} closeable closeIcon={<Heart />} position="bottom" onClose={ () => { setShowIconDefine(false) } } />
-    </>
-  );
-};
-export default App;
+### 阻塞关闭
 
+:::demo
 
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -106,88 +50,23 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Popup, Cell } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [showBottomRound, setShowBottomRound] = useState(false);
-
-  return (
-    <>
-        <Cell title="圆角弹框"  onClick={() => { setShowBottomRound(true) }}/>
-        <Popup closeable visible={ showBottomRound } style={{ height: '20%' }} position="bottom" round onClose={ () => { setShowBottomRound(false) } } />
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
-### 指定节点挂载
+<!-- ### 指定节点挂载
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Popup, Cell } from '@nutui/nutui-react-taro';
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
-const App = () => {
-  const [showMountNode, setShowMountNode] = useState(false);
-
-  return (
-    <>
-        <Cell title="指定节点挂载"  onClick={() => { setShowMountNode(true) }}/>
-        <Popup visible={showMountNode} style={{ padding: '30px 50px' }} portal={ document.body } onClose={() => { setShowMountNode(false) }}>
-          body
-        </Popup>
-    </>
-  );
-};
-export default App;
-```
-
-:::
+::: -->
 
 ### 多层堆叠
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Popup, Cell } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  const [showMutiple, setShowMutiple] = useState(false)
-  const [showMutipleInner, setShowMutipleInner] = useState(false)
-
-  return (
-    <>
-        <Cell title="多层堆叠"  onClick={() => { setShowMutiple(true) }}/>
-        <Popup
-          visible={showMutiple}
-          style={{ padding: '30px 50px' }}
-          onClose={() => {
-            setShowMutiple(false)
-          }}
-        >
-          <span onClick={ () => { setShowMutipleInner(true) } }>Click It</span>
-        </Popup>
-        <Popup
-          visible={showMutipleInner}
-          style={{ padding: '30px 50px' }}
-          onClose={() => {
-            setShowMutipleInner(false)
-          }}
-        >
-          <span onClick={ () => { setShowMutipleInner(false) } }>close</span>
-        </Popup>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='taro/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -201,21 +80,13 @@ export default App;
 
 使用 Taro 提供的 catchMove 可以阻止 Popup 的内容区域的滚动穿透问题，但会导致其本身无法滑动。
 
-```html
-<Popup lockscroll>
-  <View>在该内容区域溢出时，无法滑动</View>
-</Popup>
-```
-
 如果需要内容支持溢出滚动，则需要包裹一层 ScrollView 组件。
 
-```html
-<Popup lockscroll>
-  <ScrollView>
-    在该内容溢出时，则可以正常滑动
-  </ScrollView>
-</Popup>
-```
+:::demo
+
+<CodeBlock src='taro/demo8.tsx'></CodeBlock>
+
+:::
 
 ## Popup
 

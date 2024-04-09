@@ -16,38 +16,7 @@ import { Menu } from '@nutui/nutui-react'
 
 :::demo
 
-```tsx
-import React, {useState } from 'react'
-import { Menu } from '@nutui/nutui-react';
-
-const App = () => {
-  const [options] = useState([
-    { text: 'All Products', value: 0 },
-    { text: 'New Products', value: 1 },
-    { text: 'Activity Products', value: 2 }
-  ])
-  const [options1] = useState([
-    { text: 'Default Sort', value: 'a' },
-    { text: 'Praise Sort', value: 'b' },
-    { text: 'Sales Volume Sort', value: 'c' }
-  ])
-  return (
-    <>
-      <div className="demo full">
-        <Menu
-          onClose={(i: number) => console.log('onClose', i)}
-          onOpen={(i: number) => console.log('onOpen', i)}
-        >
-          <Menu.Item options={options} value={0} />
-          <Menu.Item options={options1} value="a" />
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -55,37 +24,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Menu } from '@nutui/nutui-react';
-
-const App = () => {
-  const [options] = useState([
-    { text: 'All Products', value: 0 },
-    { text: 'New Products', value: 1 },
-    { text: 'Activity Products', value: 2 }
-  ])
-  const [options1] = useState([
-    { text: 'Default Sort', value: 'a' },
-    { text: 'Praise Sort', value: 'b' },
-    { text: 'Sales Volume Sort', value: 'c' }
-  ])
-  const [stateOne, setStateOne] = useState(0)
-  const [stateTwo, setStateTwo] = useState('a')
-  return (
-    <>
-      <div className="demo full">
-        <Menu>
-          <Menu.Item options={options} value={stateOne} onChange={(v) => setStateOne(v.value)} />
-          <Menu.Item options={options1} value={stateTwo} onChange={(v) => setStateTwo(v.value)} />
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -95,35 +34,7 @@ Popup can be closed with toggle method in menu instance.
 
 :::demo
 
-```tsx
-import React, { useRef, useState } from 'react'
-import { Menu, Button } from '@nutui/nutui-react';
-
-const App = () => {
-  const [options] = useState([
-    { text: 'All Products', value: 0 },
-    { text: 'New Products', value: 1 },
-    { text: 'Activity Products', value: 2 }
-  ])
-  const itemRef = useRef(null)
-  
-  return (
-    <>
-      <div className="demo full">
-        <Menu>
-          <Menu.Item options={options} value={0} />
-          <Menu.Item title="Filter" ref={itemRef}>
-            <div>Custom content</div>
-            <Button onClick={() => itemRef.current.toggle(false)}>Confirm</Button>
-          </Menu.Item>
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -131,45 +42,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Menu } from '@nutui/nutui-react';
-
-const App = () => {
-  const [options] = useState([
-    { text: 'All Products', value: 0 },
-    { text: 'Product1', value: 1 },
-    { text: 'Product2', value: 2 },
-    { text: 'Product3', value: 3 },
-    { text: 'Product4', value: 4 },
-    { text: 'Product5', value: 5 },
-    { text: 'Product6', value: 6 },
-    { text: 'Product7', value: 7 },
-    { text: 'Product8', value: 8 },
-    { text: 'Product9', value: 9 },
-    { text: 'Product10', value: 10 },
-    { text: 'Product11', value: 11 },
-    { text: 'Product12', value: 12 },
-    { text: 'Product13', value: 13 },
-    { text: 'Product14', value: 14 },
-    { text: 'Product15', value: 15 },
-    { text: 'Product16', value: 16 },
-    { text: 'Product17', value: 17 }
-  ])
-  
-  return (
-    <>
-      <div className="demo full">
-        <Menu>
-          <Menu.Item options={options} value={0} columns={2} />
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -177,35 +50,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Menu } from '@nutui/nutui-react';
-
-const App = () => {
-  const [options] = useState([
-    { text: 'All Products', value: 0 },
-    { text: 'New Products', value: 1 },
-    { text: 'Activity Products', value: 2 }
-  ])
-  const [options1] = useState([
-    { text: 'Default Sort', value: 'a' },
-    { text: 'Praise Sort', value: 'b' },
-    { text: 'Sales Volume Sort', value: 'c' }
-  ])
-  return (
-    <>
-      <div className="demo full">
-        <Menu activeColor="green">
-          <Menu.Item options={options} value={0} />
-          <Menu.Item options={options1} value="a" />
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -213,36 +58,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Menu } from '@nutui/nutui-react';
-import { TriangleDown, Success } from '@nutui/icons-react'
-
-const App = () => {
-  const [options] = useState([
-    { text: 'All Products', value: 0 },
-    { text: 'New Products', value: 1 },
-    { text: 'Activity Products', value: 2 }
-  ])
-  const [options1] = useState([
-    { text: 'Default Sort', value: 'a' },
-    { text: 'Praise Sort', value: 'b' },
-    { text: 'Sales Volume Sort', value: 'c' }
-  ])
-  return (
-    <>
-      <div className="demo full">
-        <Menu icon={<TriangleDown />}>
-          <Menu.Item options={options} value={0} icon={<Success />} />
-          <Menu.Item options={options1} value="a" />
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -250,35 +66,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Menu } from '@nutui/nutui-react';
-
-const App = () => {
-  const [options] = useState([
-    { text: 'All Products', value: 0 },
-    { text: 'New Products', value: 1 },
-    { text: 'Activity Products', value: 2 }
-  ])
-  const [options1] = useState([
-    { text: 'Default Sort', value: 'a' },
-    { text: 'Praise Sort', value: 'b' },
-    { text: 'Sales Volume Sort', value: 'c' }
-  ])
-  return (
-    <>
-      <div className="demo full">
-        <Menu>
-          <Menu.Item options={options} value={0} direction="up" />
-          <Menu.Item options={options1} value="a" direction="up" />
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -286,35 +74,7 @@ export default App
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Menu } from '@nutui/nutui-react';
-
-const App = () => {
-  const [options] = useState([
-    { text: 'All Products', value: 0 },
-    { text: 'New Products', value: 1 },
-    { text: 'Activity Products', value: 2 }
-  ])
-  const [options1] = useState([
-    { text: 'Default Sort', value: 'a' },
-    { text: 'Praise Sort', value: 'b' },
-    { text: 'Sales Volume Sort', value: 'c' }
-  ])
-  return (
-    <>
-      <div className="demo full">
-        <Menu>
-          <Menu.Item options={options} value={0} disabled />
-          <Menu.Item options={options1} value="a" disabled />
-        </Menu>
-      </div>
-    </>
-  )
-}
-export default App
-
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 

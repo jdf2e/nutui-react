@@ -1,5 +1,6 @@
 import React, {
   Children,
+  CSSProperties,
   forwardRef,
   ReactNode,
   useEffect,
@@ -27,6 +28,7 @@ export interface SwiperProps extends Omit<TaroSwiperProps, 'ref'> {
   loop: boolean
   defaultValue: number
   onChange: (e: any) => void
+  style: CSSProperties
 }
 
 const defaultProps = {
@@ -35,6 +37,7 @@ const defaultProps = {
   autoPlay: false,
   loop: false,
   defaultValue: 0,
+  style: {},
 } as SwiperProps
 
 const classPrefix = 'nut-swiper'
@@ -51,6 +54,7 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
     direction,
     defaultValue,
     onChange,
+    style,
     ...rest
   } = {
     ...defaultProps,
@@ -111,6 +115,7 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
     <View
       className={classNames(classPrefix, className)}
       style={{
+        ...style,
         width: !width ? '100%' : pxCheck(width),
         height: !height ? '150px' : pxCheck(height),
       }}

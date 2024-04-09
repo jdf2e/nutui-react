@@ -1,4 +1,4 @@
 import { Image } from './image'
 
-export type { ImageProps } from './image'
+export type { ImageFit, ImagePosition, ImageProps } from './image'
 export default Image
