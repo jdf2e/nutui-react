@@ -256,7 +256,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
       onCloseInner()
     }
   }
-
+  const duration = typeof autoPlay === 'string' ? parseInt(autoPlay) : autoPlay
   return (
     <Popup
       visible={showPop}
@@ -271,41 +271,44 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
         onClick={closeOnImg}
         onTouchStart={onTouchStart as any}
       >
-        <Swiper
-          autoPlay={autoPlay}
-          className={`${classPrefix}-swiper`}
-          loop
-          preventDefault={false}
-          style={{
-            display: showPop ? 'block' : 'none',
-            '--nutui-indicator-color': indicatorColor,
-          }}
-          direction="horizontal"
-          onChange={(page) => slideChangeEnd(page)}
-          defaultValue={innerNo && (innerNo > maxNo ? maxNo - 1 : innerNo - 1)}
-          indicator={indicator}
-        >
-          {(videos && videos.length > 0
-            ? videos.map((item, index) => {
-                return (
-                  <SwiperItem key={index}>
-                    <Video source={item.source} options={item.options} />
-                  </SwiperItem>
-                )
-              })
-            : []
-          ).concat(
-            images && images.length > 0
-              ? images.map((item, index) => {
+        {showPop ? (
+          <Swiper
+            autoPlay={!!duration}
+            duration={duration}
+            className={`${classPrefix}-swiper`}
+            loop
+            style={{
+              '--nutui-indicator-color': indicatorColor,
+            }}
+            direction="horizontal"
+            onChange={(page) => slideChangeEnd(page)}
+            defaultValue={
+              innerNo && (innerNo > maxNo ? maxNo - 1 : innerNo - 1)
+            }
+            indicator={indicator}
+          >
+            {(videos && videos.length > 0
+              ? videos.map((item, index) => {
                   return (
                     <SwiperItem key={index}>
-                      <Image src={item.src} />
+                      <Video source={item.source} options={item.options} />
                     </SwiperItem>
                   )
                 })
               : []
-          )}
-        </Swiper>
+            ).concat(
+              images && images.length > 0
+                ? images.map((item, index) => {
+                    return (
+                      <SwiperItem key={index}>
+                        <Image src={item.src} draggable={false} />
+                      </SwiperItem>
+                    )
+                  })
+                : []
+            )}
+          </Swiper>
+        ) : null}
       </div>
       <div className={`${classPrefix}-index`}>
         {active}/{(images ? images.length : 0) + (videos ? videos.length : 0)}

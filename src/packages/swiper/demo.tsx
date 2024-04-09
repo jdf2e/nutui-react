@@ -10,12 +10,29 @@ import Demo6 from './demos/h5/demo6'
 import Demo7 from './demos/h5/demo7'
 import Demo8 from './demos/h5/demo8'
 import Demo9 from './demos/h5/demo9'
+import Demo10 from './demos/h5/demo10'
+
+interface T {
+  basic: string
+  focus: string
+  asyc: string
+  dynamicDel: string
+  size: string
+  indicator: string
+  btns: string
+  vertical: string
+  horizontalCenter: string
+  verticalCenter: string
+  multiItems: string
+}
 
 const SwiperDemo = () => {
-  const [translated] = useTranslate({
+  const [translated] = useTranslate<T>({
     'zh-CN': {
       basic: '基础用法',
-      asyc: '异步加载(3s)',
+      focus: '焦点轮播',
+      asyc: '异步加载(300ms)',
+      dynamicDel: '动态加载',
       size: '自定义大小',
       indicator: '自定义指示器',
       btns: '手动切换',
@@ -26,21 +43,24 @@ const SwiperDemo = () => {
     },
     'en-US': {
       basic: 'Basic Usage',
-      asyc: 'Asynchronous loading(3s)',
+      focus: 'Focus',
+      asyc: 'Asynchronous loading(300ms)',
+      dynamicDel: 'Dynamic loading',
       size: 'Custom size',
       indicator: 'Custom indicator',
       btns: 'Manual switching',
       vertical: 'Vertical direction',
       horizontalCenter: 'Horizontal center display',
       verticalCenter: 'Vertical center display',
-      multiItems: 'Many datas in a frame',
+      multiItems: 'many datas in a frame',
     },
   })
-
   return (
     <div className="demo padding">
       <h2>{translated.basic}</h2>
       <Demo1 />
+      <h2>{translated.focus}</h2>
+      <Demo10 />
       <h2>{translated.asyc}</h2>
       <Demo2 />
       <h2>{translated.size}</h2>
