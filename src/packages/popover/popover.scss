@@ -101,11 +101,11 @@
         border-bottom: none;
       }
 
-      &:hover {
-        cursor: pointer;
-        color: $popover-hover-text-color;
-        background-color: $popover-hover-background-color;
-      }
+      // &:hover:not(:only-child) {
+      //   cursor: pointer;
+      //   color: $popover-hover-text-color;
+      //   background-color: $popover-hover-background-color;
+      // }
 
       &:hover:nth-of-type(2) {
         border-radius: 8px 8px 0px 0px;
@@ -122,17 +122,20 @@
         width: 12px;
         height: 12px;
         font-size: 12px;
+        .nut-icon {
+          width: 12px;
+          height: 12px;
+          font-size: 12px;
+        }
       }
 
       &-name {
         width: 100%;
         word-break: keep-all;
-        margin-left: 4px;
+        margin: 0 6px 0 4px;
       }
 
       &-action-icon {
-        position: absolute;
-        right: $popover-menu-item-padding;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -242,29 +245,6 @@
 
 [dir='rtl'] .nut-popover,
 .nut-rtl .nut-popover {
-  &-arrow {
-    &-left {
-      right: auto;
-      left: 0px;
-      border-left-color: currentcolor;
-      border-right-color: $popover-border-color;
-      border-right-width: medium;
-      border-left-width: 0;
-      margin-right: 0;
-      margin-left: -8px;
-    }
-
-    &-right {
-      left: auto;
-      right: 0px;
-      border-right-color: currentcolor;
-      border-left-color: $popover-border-color;
-      border-left-width: medium;
-      border-right-width: 0;
-      margin-left: 0;
-      margin-right: -8px;
-    }
-  }
   .nut-popover-content {
     .nut-popover-menu-item {
       &-name {

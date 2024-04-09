@@ -1,8 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Taro from '@tarojs/taro'
-import { useTranslate } from '@/sites/assets/locale/taro'
-import { TextArea, ConfigProvider } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
+import { useTranslate } from '@/sites/assets/locale/taro'
+import Demo1 from './demos/taro/demo1'
+import Demo2 from './demos/taro/demo2'
+import Demo3 from './demos/taro/demo3'
+import Demo4 from './demos/taro/demo4'
+import Demo5 from './demos/taro/demo5'
+import Demo6 from './demos/taro/demo6'
+import Demo7 from './demos/taro/demo7'
+import Demo8 from './demos/taro/demo8'
 
 interface T {
   basic: string
@@ -60,67 +67,26 @@ const TextAreaDemo = () => {
       alignRight: 'TextAlign Right',
     },
   })
-
-  const [value, setValue] = useState(translated.controlled)
-
-  const customTheme = {
-    nutuiTextareaTextCurrorColor: `red`,
-    nutuiTextareaLimitColor: `red`,
-  }
-
   return (
     <>
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.basic}</h2>
-        <TextArea
-          defaultValue={translated.basic}
-          className="text-1"
-          style={{ fontSize: '12px' }}
-          onChange={(value) => {
-            console.log('change', value)
-          }}
-          onBlur={() => {
-            console.log('blur')
-          }}
-          onFocus={() => {
-            console.log('focus')
-          }}
-        />
+        <Demo1 />
         <h2>{translated.controlled}</h2>
-        <TextArea
-          value={value}
-          onChange={(value) => {
-            setValue(value)
-          }}
-        />
+        <Demo2 />
         <h2>{translated.numbers}</h2>
-        <TextArea showCount maxLength={20} />
+        <Demo3 />
         <h2>{translated.autoHeight}</h2>
-        <TextArea rows={1} autoSize />
+        <Demo4 />
         <h2>{translated.we2312222}</h2>
-        <ConfigProvider theme={customTheme}>
-          <TextArea showCount maxLength={20} />
-        </ConfigProvider>
+        <Demo5 />
         <h2>{translated.readOnly}</h2>
-        <TextArea
-          readOnly
-          defaultValue={`textarea${translated.readOnlyState}`}
-        />
+        <Demo6 />
         <h2>{translated.disabled}</h2>
-        <TextArea
-          disabled
-          defaultValue={`textarea${translated.disabledState}`}
-          showCount
-          maxLength={20}
-        />
+        <Demo7 />
         <h2>{translated.textAlign}</h2>
-        <TextArea
-          defaultValue={translated.alignRight}
-          style={{
-            textAlign: 'right',
-          }}
-        />
+        <Demo8 />
       </div>
     </>
   )

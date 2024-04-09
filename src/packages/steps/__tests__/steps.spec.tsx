@@ -126,7 +126,7 @@ test('should props value changes when trigger click', () => {
 })
 
 test('should emited click when step trigger', () => {
-  const handleClickStep = jest.fn()
+  const handleClickStep = vi.fn()
   const { getByText } = render(
     <Steps value={1} onStepClick={handleClickStep}>
       <Step

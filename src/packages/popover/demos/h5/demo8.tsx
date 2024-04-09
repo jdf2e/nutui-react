@@ -23,7 +23,7 @@ const Demo8 = () => {
         style={{
           position: 'fixed',
           bottom: 10,
-          right: -10,
+          insetInlineEnd: -10,
           zIndex: 1000,
         }}
       >
@@ -31,8 +31,8 @@ const Demo8 = () => {
           className="demo-popover"
           visible={visible}
           list={list}
-          location="top"
-          style={{ marginRight: '30px' }}
+          location="top-start"
+          style={{ marginInlineEnd: '30px' }}
           closeOnOutsideClick={false}
           onClick={() => {
             visible ? setVisible(false) : setVisible(true)

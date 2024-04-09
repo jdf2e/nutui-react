@@ -17,19 +17,7 @@ import { Input } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Input } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Input placeholder="请输入文本" />
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -37,19 +25,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Input } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-       <Input defaultValue="NutUI React" placeholder="请输入文本" />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -57,24 +33,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Input } from '@nutui/nutui-react';
-
-const App = () => {
-    const [val, setVal] = useState('NutUI React')
-  return (
-    <>
-      <Input
-        value={val}
-        onChange={(val) => setVal(val)}
-        placeholder={translated.text}
-      /> 
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -82,22 +41,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Input } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-      <Input type="text" placeholder="请输入文本" />
-      <Input type="password" placeholder="请输入密码" />
-      <Input type="digit" placeholder="请输入数字" />
-      <Input type="number" placeholder="请输入整数" />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -105,20 +49,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Input } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-       <Input readOnly placeholder="输入框只读" />
-       <Input disabled placeholder="输入框禁用" />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -126,21 +57,31 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Input } from '@nutui/nutui-react';
-import { Close } from '@nutui/icons-react'
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
-const App = () => {
-  return (
-    <>
-       <Input clearable placeholder="显示清除图标" />
-       <Input clearable clearIcon={<Close />} placeholder="显示清除图标" />
-    </>
-  )
-}
-export default App;
-```
+:::
+
+### 受控下的清除
+
+:::demo
+
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
+
+:::
+
+### 字数统计
+
+:::demo
+
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
+
+:::
+
+### 带密码可见
+
+:::demo
+
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
 :::
 
@@ -148,25 +89,15 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Input } from '@nutui/nutui-react';
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
 
-const App = () => {
-  const formatter = (value: string) => value.replace(/\d/g, '')
-  return (
-    <>
-       <Input formatter={formatter} placeholder="在输入时执行格式化" />
-       <Input
-         formatter={formatter}
-         formatTrigger="onBlur"
-         placeholder="在失焦时执行格式化"
-       />
-    </>
-  )
-}
-export default App;
-```
+:::
+
+### 对齐方式
+
+:::demo
+
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
 
 :::
 
@@ -174,22 +105,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Input, Toast } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-       <Input
-         placeholder="事件"
-         onClick={() => Toast.show('onClick')}
-       />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo12.tsx'></CodeBlock>
 
 :::
 
@@ -197,35 +113,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Input, Button } from '@nutui/nutui-react';
-import { Tips } from '@nutui/icons-react'
-
-const App = () => {
-  return (
-    <>
-       <div
-         style={{
-           display: 'flex',
-           alignItems: 'center',
-           background: '#fff',
-           padding: '0 10px',
-         }}
-       >
-         <Tips />
-         <Input placeholder="请输入短信验证码" />
-         <div className="right">
-           <Button type="primary" size="small">
-             获取验证码
-           </Button>
-         </div>
-       </div>
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo13.tsx'></CodeBlock>
 
 :::
 
@@ -233,19 +121,7 @@ export default App;
 
 :::demo
 
-```tsx
-import  React, { useState } from "react";
-import { Input } from '@nutui/nutui-react';
-
-const App = () => {
-  return (
-    <>
-       <Input style={{'--nutui-input-border-bottom-width': '1px'}} placeholder="边框" />
-    </>
-  )
-}
-export default App;
-```
+<CodeBlock src='h5/demo14.tsx'></CodeBlock>
 
 :::
 
@@ -272,7 +148,7 @@ export default App;
 | formatTrigger | 格式化函数触发的时机，可选值为 `onChange`、`onBlur` | `string` | `-` |
 | onChange | 输入框内容变化时触发 | `(value: string) => void` | `-` |
 | onBlur | 失去焦点后触发 | `(value: string) => void` | `-` |
-| onFocus | 获得焦点后触发 | `(value: string) => void` | `-` |
+| onFocus | 获得焦点后触发 | `(value: string, height?: number) => void` | `-` |
 | onClear | 点击清空按钮时触发 | `(value: string) => void` | `-` |
 | onClick | 点击 input 容器触发 | `(value: MouseEvent<HTMLDivElement>) => void` | `-` |
 

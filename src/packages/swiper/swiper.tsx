@@ -13,6 +13,7 @@ import Indicator from '@/packages/indicator/index'
 import { BasicComponent } from '@/utils/typings'
 import { useTouch } from '@/utils/use-touch'
 import requestAniFrame from '@/utils/raf'
+import { useRtl } from '@/packages/configprovider'
 
 export type SwiperRef = {
   to: (index: number) => void
@@ -59,6 +60,7 @@ export const Swiper = React.forwardRef<
   SwiperRef,
   Partial<SwiperProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange'>
 >((props, ref) => {
+  const rtl = useRtl()
   const mergedProps = { ...defaultProps, ...props }
   const {
     children,
@@ -304,7 +306,7 @@ export const Swiper = React.forwardRef<
       isVertical ? width : height
     }px`
     target.style.transform = `translate3D${
-      !isVertical ? `(${_offset}px,0,0)` : `(0,${_offset}px,0)`
+      !isVertical ? `(${rtl ? -_offset : _offset}px,0,0)` : `(0,${_offset}px,0)`
     }`
   }
 
@@ -369,7 +371,9 @@ export const Swiper = React.forwardRef<
     const offset = childOffset[index]
     if (offset) {
       style.transform = `translate3D${
-        direction === 'horizontal' ? `(${offset}px,0,0)` : `(0,${offset}px,0)`
+        direction === 'horizontal'
+          ? `(${rtl ? -offset : offset}px,0,0)`
+          : `(0,${offset}px,0)`
       }`
     }
     return style

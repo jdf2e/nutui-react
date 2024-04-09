@@ -1,100 +1,59 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Ellipsis, Cell } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 
+import Demo1 from './demos/taro/demo1'
+import Demo2 from './demos/taro/demo2'
+import Demo3 from './demos/taro/demo3'
+import Demo4 from './demos/taro/demo4'
+import Demo5 from './demos/taro/demo5'
+import Demo6 from './demos/taro/demo6'
+
 interface T {
-  basic: string
   header: string
   end: string
   middle: string
   rows: string
   expandCollapse: string
-  expand: string
-  collapse: string
   width: string
 }
 const EllipsisDemo = () => {
   const [translated] = useTranslate<T>({
     'zh-CN': {
-      basic: '基础用法',
       header: '头部省略',
       end: '尾部省略',
       middle: '中间省略',
       rows: '多行省略',
       expandCollapse: '展开收起',
-      expand: '展开',
-      collapse: '收起',
       width: '宽度',
     },
     'en-US': {
-      basic: 'Basic Usage',
       header: 'Leading',
       end: 'Tailing',
       middle: 'Middle',
       rows: 'Multi-line',
       expandCollapse: 'Expand & Collapse',
-      expand: 'expand',
-      collapse: 'collapse',
       width: 'width',
     },
   })
-  const content =
-    'NutUI 上线后我们研发团队也在不断的优化、测试、使用、迭代的相关组件，但是在跨端小程序的开发过程中，发现没有合适的组件库可以支持多端开发。为了填补这一空白，同时为了优化开发者体验，让 NutUI 能够为更多的开发者带来便利，我们决定在 NutUI 中增加小程序多端适配的能力。'
 
   return (
     <>
       <Header />
       <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <h2>{translated.header}</h2>
-        <Cell>
-          <Ellipsis content={content} direction="start" />
-        </Cell>
+        <Demo1 />
         <h2>{translated.end}</h2>
-        <Cell>
-          <Ellipsis content={content} direction="end" />
-        </Cell>
+        <Demo2 />
         <h2>{translated.middle}</h2>
-        <Cell>
-          <Ellipsis content={content} direction="middle" />
-        </Cell>
+        <Demo3 />
         <h2>{translated.rows}</h2>
-        <Cell>
-          <Ellipsis content={content} direction="start" rows="3" />
-        </Cell>
+        <Demo4 />
         <h2>{translated.expandCollapse}</h2>
-        <Cell>
-          <Ellipsis
-            content={content}
-            onClick={() => Taro.showToast({ title: 'Clicked!' })}
-            onChange={(type) => Taro.showToast({ title: type })}
-            direction="start"
-            expandText={translated.expand}
-            collapseText={translated.collapse}
-          />
-        </Cell>
-        <Cell>
-          <Ellipsis
-            content={content}
-            direction="middle"
-            expandText={translated.expand}
-            collapseText={translated.collapse}
-          />
-        </Cell>
-        <Cell>
-          <Ellipsis
-            content={content}
-            direction="end"
-            rows="3"
-            expandText={translated.expand}
-            collapseText={translated.collapse}
-          />
-        </Cell>
+        <Demo5 />
         <h2>{translated.width}</h2>
-        <Cell>
-          <Ellipsis content={content} direction="start" width={100} />
-        </Cell>
+        <Demo6 />
       </div>
     </>
   )

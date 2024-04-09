@@ -16,26 +16,7 @@ import { Tabs } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabs } from '@nutui/nutui-react';
-
-const App = () => {
-  const [tab1value, setTab1value] = useState('0');
-  return (
-    <>
-      <Tabs value={tab1value} onChange={(value) => {
-        setTab1value(value)
-      }}>
-        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
-      </Tabs>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -43,26 +24,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabs } from '@nutui/nutui-react';
-
-const App = () => {
-  const [tab1value, setTab1value] = useState('0');
-  return (
-    <>
-      <Tabs value={tab1value} onChange={(value) => {
-        setTab1value(value)
-      }} activeType="smile">
-        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
-      </Tabs>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -70,26 +32,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabs } from '@nutui/nutui-react';
-
-const App = () => {
-  const [tab1value, setTab1value] = useState('0');
-  return (
-    <>
-      <Tabs value={tab1value} onChange={(value) => {
-        setTab1value(value)
-      }} activeType="simple">
-        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
-      </Tabs>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -97,26 +40,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabs } from '@nutui/nutui-react';
-
-const App = () => {
-  const [tab1value, setTab1value] = useState('0');
-  return (
-    <>
-      <Tabs value={tab1value} onChange={(value) => {
-        setTab1value(value)
-      }} activeType="card">
-        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
-      </Tabs>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -124,26 +48,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabs } from '@nutui/nutui-react';
-
-const App = () => {
-  const [tab1value, setTab1value] = useState('0');
-  return (
-    <>
-      <Tabs value={tab1value} onChange={(value) => {
-        setTab1value(value)
-      }} activeType="button">
-        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
-      </Tabs>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -151,26 +56,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabs } from '@nutui/nutui-react';
-
-const App = () => {
-  const [tab1value, setTab1value] = useState('0');
-  return (
-    <>
-      <Tabs value={tab1value} onChange={(value) => {
-        setTab1value(value)
-      }} activeType="divider">
-        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
-      </Tabs>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -178,30 +64,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabs } from '@nutui/nutui-react';
-
-const App = () => {
-  const [tab1value, setTab1value] = useState('0');
-  return (
-    <>
-      <Tabs
-          value={tab1value}
-          align="left"
-          onChange={(value) => {
-            setTab1value(value)
-          }}
-        >
-          <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
-          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
-          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
-        </Tabs>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -209,31 +72,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabs } from '@nutui/nutui-react';
-
-const App = () => {
-  const [tab1value, setTab1value] = useState('0');
-  return (
-    <>
-      <Tabs
-          value={tab1value}
-          activeType="card"
-          align="left"
-          onChange={(value) => {
-            setTab1value(value)
-          }}
-        >
-          <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
-          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
-          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
-        </Tabs>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
@@ -241,31 +80,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabs } from '@nutui/nutui-react';
-
-const App = () => {
-  const [tab1value, setTab1value] = useState('0');
-  return (
-    <>
-      <Tabs
-          value={tab1value}
-          activeType="button"
-          align="left"
-          onChange={(value) => {
-            setTab1value(value)
-          }}
-        >
-          <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
-          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
-          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
-        </Tabs>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
 :::
 
@@ -273,31 +88,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabs } from '@nutui/nutui-react';
-
-const App = () => {
-  const [tab1value, setTab1value] = useState('0');
-  return (
-    <>
-      <Tabs
-          value={tab1value}
-          activeType="divider"
-          align="left"
-          onChange={(value) => {
-            setTab1value(value)
-          }}
-        >
-          <Tabs.TabPane title="Tab 1"> Tab 1</Tabs.TabPane>
-          <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
-          <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
-        </Tabs>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
 
 :::
 
@@ -305,26 +96,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabs } from '@nutui/nutui-react';
-
-const App = () => {
-  const [tab2value, setTab2value] = useState('0');
-  return (
-    <>
-      <Tabs value={tab2value} onChange={(value) => {
-        setTab2value(value)
-      }}>
-        <Tabs.TabPane title="Tab 1" value="0"> Tab 1 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 2" value="1" disabled> Tab 2 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 3" value="2"> Tab 3 </Tabs.TabPane>
-      </Tabs>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
 
 :::
 
@@ -332,51 +104,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabs, Swiper } from '@nutui/nutui-react';
-
-const App = () => {
-  const [tab2value, setTab2value] = useState('0');
-  const swiperRef = useRef(null)
-  const [tabIndex, setTabIndex] = useState(0)
-  const style = { backgroundColor: '#fff', padding: '10px' }
-  return (
-    <>
-      <Tabs
-        value={tabIndex}
-        onChange={(page) => {
-          swiperRef.current?.to(page)
-          setTabIndex(page)
-        }}
-      >
-        <Tabs.TabPane title="Tab 1" />
-        <Tabs.TabPane title="Tab 2" />
-        <Tabs.TabPane title="Tab 3" />
-      </Tabs>
-      <Swiper
-        initPage={0}
-        loop={false}
-        ref={swiperRef}
-        onChange={(page) => {
-          setTabIndex(page)
-        }}
-      >
-        <Swiper.Item>
-          <div style={{style}}>Tab 1</div>
-        </Swiper.Item>
-        <Swiper.Item>
-          <div style={{style}}>Tab 2</div>
-        </Swiper.Item>
-        <Swiper.Item>
-          <div style={{style}}>Tab 3</div>
-        </Swiper.Item>
-      </Swiper>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo12.tsx'></CodeBlock>
 
 :::
 
@@ -386,52 +114,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabs } from '@nutui/nutui-react';
-
-const App = () => {
-  const [tab2value, setTab2value] = useState('0');
-  return (
-    <>
-      <Tabs
-          value={tab2value}
-          style={{ position: 'relative', zIndex: 11 }}
-          tabStyle={{ position: 'sticky', top: '0px', zIndex: 11 }}
-          onChange={(value) => {
-            setTab2value(value)
-          }}
-        >
-          <Tabs.TabPane title="Tab 1" value="0">
-            <p>Tab 1</p>
-            <p>Tab 1</p>
-            <p>Tab 1</p>
-            <p>Tab 1</p>
-            <p>Tab 1</p>
-            <p>Tab 1</p>
-            <p>Tab 1</p>
-            <p>Tab 1</p>
-            <p>Tab 1</p>
-          </Tabs.TabPane>
-          <Tabs.TabPane title="Tab 2" value="1">
-            <p>Tab 2</p>
-            <p>Tab 2</p>
-            <p>Tab 2</p>
-            <p>Tab 2</p>
-            <p>Tab 2</p>
-            <p>Tab 2</p>
-            <p>Tab 2</p>
-            <p>Tab 2</p>
-          </Tabs.TabPane>
-          <Tabs.TabPane title="Tab 3" value="2">
-            Tab 3
-          </Tabs.TabPane>
-        </Tabs>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo13.tsx'></CodeBlock>
 
 :::
 
@@ -441,31 +124,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabs } from '@nutui/nutui-react';
-
-const App = () => {
-  const [tab2value, setTab2value] = useState('0');
-  return (
-    <>
-      <Tabs value={tab2value} autoHeight onChange={(value) => {
-        setTab2value(value)
-      }}>
-        <Tabs.TabPane title="Tab 1">
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-          <p>Tab 1</p>
-        </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
-      </Tabs>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo14.tsx'></CodeBlock>
 
 :::
 
@@ -473,32 +132,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState, useEffect } from "react";
-import { Tabs } from '@nutui/nutui-react';
-
-const App = () => {
-  const [tab3value, setTab3value] = useState(0);
-  const [list3, setList3] = useState();
-  useEffect(() => {
-    setTimeout(() => {
-      setTab3value(2);
-      setList3(Array.from(new Array(3).keys()))
-    }, 3000)
-  }, [])
-  return (
-    <>
-      <Tabs value={tab3value} onChange={(value) => {
-        setTab3value(value)
-      }}>
-        {list3.map(item => <Tabs.TabPane key={item}
-            title={`Tab ${item}`}> Tab {item} </Tabs.TabPane>)}
-      </Tabs>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo15.tsx'></CodeBlock>
 
 :::
 
@@ -506,60 +140,15 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabs } from '@nutui/nutui-react';
+<CodeBlock src='h5/demo16.tsx'></CodeBlock>
 
-const App = () => {
-  const [tab4value, setTab4value] = useState('0');
-  return (
-    <>
-      <Tabs value={tab4value} onChange={(value) => {
-        setTab4value(value)
-      }}>
-        <Tabs.TabPane title="低階特賣">低階特賣</Tabs.TabPane>
-        <Tabs.TabPane title="上新日">上新日</Tabs.TabPane>
-        <Tabs.TabPane title="百億補貼">百億補貼</Tabs.TabPane>
-        <Tabs.TabPane title="今日聚超值">今日聚超值</Tabs.TabPane>
-        <Tabs.TabPane title="真好真便宜">真好真便宜</Tabs.TabPane>
-      </Tabs>
-    </>
-  );
-};
-export default App;
-```
+:::
 
 ### 數量多,滾動操作2
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabs } from '@nutui/nutui-react';
-
-const App = () => {
-  const [tab4value, setTab4value] = useState('0');
-  return (
-    <>
-      <Tabs
-          value={tab4value}
-          style={{ height: '300px' }}
-          onChange={(value) => {
-            setTab4value(value)
-          }}
-          direction="vertical"
-        >
-          {list4.map((item) => (
-            <Tabs.TabPane key={item} title={`Tab ${item}`}>
-              Tab {item}
-            </Tabs.TabPane>
-          ))}
-        </Tabs>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo17.tsx'></CodeBlock>
 
 :::
 
@@ -567,34 +156,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabs } from '@nutui/nutui-react';
-
-const App = () => {
-  const [tab5value, setTab5value] = useState('0');
-  const list5 = Array.from(new Array(2).keys());
-  return (
-    <>
-      <Tabs 
-      style={{ height: '300px' }} 
-      value={tab5value}
-      onChange={(value) => {
-        setTab5value(value)
-      }} 
-      direction="vertical">
-      {list5.map(item => 
-        <Tabs.TabPane 
-          key={item}
-          title={`Tab ${item}`}
-          > Tab {item} 
-        </Tabs.TabPane>)}
-      </Tabs>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo18.tsx'></CodeBlock>
 
 :::
 
@@ -602,30 +164,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabs } from '@nutui/nutui-react';
-
-const App = () => {
-  const [tab6value, setTab6value] = useState('0');
-  const list5 = Array.from(new Array(2).keys());
-  return (
-    <>
-      <Tabs style={{ height: '300px' }} value={tab6value}
-            onChange={(value) => {
-              setTab6value(value)
-            }} activeType="smile" direction="vertical">
-        {list5.map(item => 
-          <Tabs.TabPane 
-            key={item}
-            title={`Tab ${item}`}> Tab {item} 
-          </Tabs.TabPane>)}
-      </Tabs>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo19.tsx'></CodeBlock>
 
 :::
 
@@ -633,43 +172,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabs } from '@nutui/nutui-react';
-
-const App = () => {
-  const [tab8value, setTab8value] = useState('0')
-  const [tab9value, setTab9value] = useState('0')
-  return (
-    <>
-      <Tabs
-        value={tab8value}
-        onChange={(value) => {
-          setTab8value(value)
-        }}
-        direction="vertical"
-      >
-        <Tabs.TabPane title="Tab 1">
-          <Tabs
-            value={tab9value}
-            onChange={(value) => {
-              setTab9value(value)
-            }}
-            direction="horizontal"
-          >
-            <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
-            <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
-            <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
-          </Tabs>
-        </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
-      </Tabs>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo20.tsx'></CodeBlock>
 
 :::
 
@@ -677,43 +180,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabs } from '@nutui/nutui-react';
-
-const App = () => {
-  const [tab8value, setTab8value] = useState('0')
-  const [tab9value, setTab9value] = useState('0')
-  return (
-    <>
-      <Tabs
-        value={tab8value}
-        onChange={(value) => {
-          setTab8value(paneKey)
-        }}
-        autoHeight
-      >
-        <Tabs.TabPane title="Tab 1">
-          <Tabs
-            value={tab9value}
-            onChange={(value) => {
-              setTab9value(paneKey)
-            }}
-            direction="vertical"
-          >
-            <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
-            <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
-            <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
-          </Tabs>
-        </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
-      </Tabs>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo21.tsx'></CodeBlock>
 
 :::
 
@@ -721,41 +188,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabs } from '@nutui/nutui-react';
-
-const App = () => {
-  const [tab1value, setTab1value] = useState('0');
-  return (
-    <>
-      <Tabs
-        value={tab11value}
-        onChange={(value) => {
-          setTab11value(value)
-        }}
-        style={{ '--nutui-tabs-titles-font-size': '20px' }}
-      >
-        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
-      </Tabs>
-      <Tabs
-        value={tab12value}
-        onChange={(value) => {
-          setTab12value(value)
-        }}
-        style={{ '--nutui-tabs-titles-font-size': '12px' }}
-      >
-        <Tabs.TabPane title="Tab 1"> Tab 1 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 2"> Tab 2 </Tabs.TabPane>
-        <Tabs.TabPane title="Tab 3"> Tab 3 </Tabs.TabPane>
-        </Tabs>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo22.tsx'></CodeBlock>
 
 :::
 
@@ -763,56 +196,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React, { useState } from "react";
-import { Tabs } from '@nutui/nutui-react';
-import { Star } from '@nutui/icons-react';
-
-const App = () => {
-  const [tab7value, setTab7value] = useState('c1');
-  const list6 = [
-    {
-      title: '自定義 1',
-      paneKey: 'c1',
-      icon: <Star />,
-    },
-    {
-      title: '自定義 2',
-      paneKey: 'c2',
-    },
-    {
-      title: '自定義 3',
-      paneKey: 'c3'
-    }
-  ]
-  return (
-    <>
-      <Tabs value={tab7value} title={() => {
-        return list6.map(item => (
-          <div
-            onClick={() => setTab7value(item.paneKey)}
-            className={`nut-tabs-titles-item ${tab7value === item.paneKey ? 'nut-tabs-titles-item-active' : ''}`}
-            key={item.paneKey}
-          >
-            {item.icon || null}
-            <span className="nut-tabs-titles-item-text">{item.title}</span>
-            <span className="nut-tabs-titles-item-line" />
-          </div>
-        ))
-      }
-
-      }>
-        {list6.map(item => (
-          <Tabs.TabPane key={item.paneKey} value={item.paneKey}>
-            {item.title}
-          </Tabs.TabPane>
-        ))}
-      </Tabs>
-    </>
-  );
-};
-export default App;
-```
+<CodeBlock src='h5/demo23.tsx'></CodeBlock>
 
 :::
 
@@ -855,7 +239,6 @@ export default App;
 | --- | --- | --- |
 | \--nutui-tabs-titles-height | 水平方向標題的高度 | `44px` |
 | \--nutui-tabs-titles-background-color | Tab 標題的背景色 | `$color-background` |
-| \--nutui-tabs-titles-padding | Tab 標題的內邊距 | `0 16px` |
 | \--nutui-tabs-title-gap | Tab 標題的左右 margin | `0px` |
 | \--nutui-tabs-titles-font-size | Tab 標題的字號 | `$font-size-base` |
 | \--nutui-tabs-titles-item-min-width | 水平方向標題的最小寬度 | `50px` |

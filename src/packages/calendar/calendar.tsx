@@ -3,15 +3,11 @@ import Popup from '@/packages/popup'
 import CalendarItem from '@/packages/calendaritem'
 import { Utils } from '@/utils/date'
 import { useConfig } from '@/packages/configprovider'
-import { Day, SelectedType } from './types'
+import type { CalendarDay, CalendarType, CalendarRef } from './types'
 import { ComponentDefaults } from '@/utils/typings'
 
-type CalendarRef = {
-  scrollToDate: (date: string) => void
-}
-
 export interface CalendarProps {
-  type?: SelectedType
+  type?: CalendarType
   autoBackfill?: boolean
   popup?: boolean
   visible?: boolean
@@ -27,11 +23,11 @@ export interface CalendarProps {
   showSubTitle?: boolean
   scrollAnimation?: boolean
   firstDayOfWeek: number
-  disableDate: (date: Day) => boolean
+  disableDate: (date: CalendarDay) => boolean
   renderHeaderButtons?: () => string | JSX.Element
-  renderDay?: (date: Day) => string | JSX.Element
-  renderDayTop?: (date: Day) => string | JSX.Element
-  renderDayBottom?: (date: Day) => string | JSX.Element
+  renderDay?: (date: CalendarDay) => string | JSX.Element
+  renderDayTop?: (date: CalendarDay) => string | JSX.Element
+  renderDayBottom?: (date: CalendarDay) => string | JSX.Element
   onClose?: () => void
   onConfirm?: (param: string) => void
   onDayClick?: (data: string) => void
@@ -56,7 +52,7 @@ const defaultProps = {
   showSubTitle: true,
   scrollAnimation: true,
   firstDayOfWeek: 0,
-  disableDate: (date: Day) => false,
+  disableDate: (date: CalendarDay) => false,
   renderHeaderButtons: undefined,
   renderDay: undefined,
   renderDayTop: undefined,

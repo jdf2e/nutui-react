@@ -3,7 +3,6 @@ import dts from 'vite-plugin-dts'
 import fse from 'fs-extra'
 import path from 'path'
 import config from './package.json'
-import componentsConfig from './src/config.json'
 
 const banner = `/*!
 * ${config.name} v${config.version} ${new Date()}
@@ -42,22 +41,9 @@ export default defineConfig({
           .readFile('./dist/types/packages/nutui.react.build.d.ts', 'utf-8')
           .then((data: string) => {
             fse.remove('./dist/types/packages/nutui.react.build.d.ts')
-            const types: string[] = []
-            componentsConfig.nav.forEach((item: any) => {
-              item.packages.forEach((element: any) => {
-                const { name, show, exportEmpty } = element
-                if (show || exportEmpty) {
-                  const lowerName = name.toLowerCase()
-                  if (lowerName === 'icon') return
-                  types.push(
-                    `export { ${name}Props } from './packages/${lowerName}/${lowerName}'`
-                  )
-                }
-              })
-            })
             fse.outputFile(
               './dist/types/index.d.ts',
-              `${types.join('\n')}\n${data.replace(/\.\.\//g, './')}`
+              `${data.replace(/\.\.\//g, './')}`
             )
           })
       },

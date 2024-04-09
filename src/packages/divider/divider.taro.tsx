@@ -3,11 +3,11 @@ import classNames from 'classnames'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
-export type ContentPositionType = 'left' | 'center' | 'right'
-export type DirectionType = 'horizontal' | 'vertical'
+export type DividerContentPosition = 'left' | 'center' | 'right'
+export type DividerDirection = 'horizontal' | 'vertical'
 export interface DividerProps extends BasicComponent {
-  contentPosition: ContentPositionType
-  direction?: DirectionType
+  contentPosition: DividerContentPosition
+  direction?: DividerDirection
 }
 const defaultProps = {
   ...ComponentDefaults,

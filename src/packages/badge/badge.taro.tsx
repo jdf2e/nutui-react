@@ -1,11 +1,9 @@
 import React, { CSSProperties, FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
 
 export type BadgeFill = 'solid' | 'outline'
-
 export interface BadgeProps extends BasicComponent {
   value: ReactNode
   dot: boolean

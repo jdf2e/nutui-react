@@ -16,31 +16,7 @@ import { Badge } from '@nutui/nutui-react-taro';
 
 :::demo
 
-```tsx
-import React from "react";
-import { Badge, Avatar , Cell} from '@nutui/nutui-react-taro';
-import { User } from '@nutui/icons-react-taro';
-
-const App = () => {
-  return (
-    <Cell>
-      <Badge value={8}>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value={76}>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value="NEW">
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge dot>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-    </Cell>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo1.tsx'></CodeBlock>
 
 :::
 
@@ -48,28 +24,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Badge, Avatar, Cell } from '@nutui/nutui-react-taro';
-import { User } from '@nutui/icons-react-taro';
-
-const App = () => {
-  return (
-    <Cell>
-      <Badge value={200} max={9}>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value={200} max={20}>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value={200} max={99}>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-    </Cell>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo2.tsx'></CodeBlock>
 
 :::
 
@@ -77,43 +32,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Badge, Avatar, Cell } from '@nutui/nutui-react-taro';
-import { User } from '@nutui/icons-react-taro';
-
-const App = () => {
-  return (
-    <Cell>
-      <Badge
-        value={8}
-        color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
-      >
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge
-        value={76}
-        color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
-      >
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge
-        value="NEW"
-        color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
-      >
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge
-        dot
-        color="linear-gradient(315deg, rgba(73,143,242,1) 0%,rgba(73,101,242,1) 100%)"
-      >
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-    </Cell>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo3.tsx'></CodeBlock>
 
 :::
 
@@ -121,31 +40,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Badge, Avatar, Cell } from '@nutui/nutui-react-taro';
-import { User, Checklist, Link as LinkIcon, Download } from '@nutui/icons-react-taro';
-
-const App = () => {
-  return (
-    <Cell>
-      <Badge
-        value={<Checklist color="#fff"  />}
-        className="test"
-      >
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value={<LinkIcon color="#fff"  />}>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value={<Download color="#fff"  />}>
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-    </Cell>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo4.tsx'></CodeBlock>
 
 :::
 
@@ -153,40 +48,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Badge, Avatar, ConfigProvider,Cell } from '@nutui/nutui-react-taro';
-import { User } from '@nutui/icons-react-taro';
-
-const customTheme = {
-  nutuiBadgeBorderRadius: '12px 12px 12px 0',
-}
-
-const customTheme2 = {
-  nutuiBadgeDotWidth: '14px',
-  nutuiBadgeDotHeight: '14px',
-  nutuiBadgeBorder: '2px solid #fff',
-}
-
-const App = () => {
-  return (
-    <Cell>
-      <ConfigProvider theme={customTheme}>
-        <Badge value="NEW">
-          <Avatar icon={<User />} shape="square" />
-        </Badge>
-      </ConfigProvider>
-
-      <ConfigProvider theme={customTheme2}>
-        <Badge dot top="2" right="8">
-          <Avatar icon={<User />} shape="square" />
-        </Badge>
-      </ConfigProvider>
-    </Cell>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -194,28 +56,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Badge, Avatar,Cell } from '@nutui/nutui-react-taro';
-import { User } from '@nutui/icons-react-taro';
-
-const App = () => {
-  return (
-    <Cell>
-      <Badge value={8} top="5" right="5">
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value={76} top="10" right="10">
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge value="NEW">
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-    </Cell>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo6.tsx'></CodeBlock>
 
 :::
 
@@ -223,21 +64,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { Badge, Cell } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Cell style={{height: '100px'}}>
-      <Badge value={8}> </Badge>
-      <Badge value={76}> </Badge>
-      <Badge value="NEW"> </Badge>
-    </Cell>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo7.tsx'></CodeBlock>
 
 :::
 
@@ -245,37 +72,7 @@ export default App;
 
 :::demo
 
-```tsx
-import React from "react";
-import { User } from '@nutui/icons-react-taro';
-import { Avatar, Badge, Cell } from '@nutui/nutui-react-taro';
-
-const App = () => {
-  return (
-    <Cell>
-      <Badge style={{ marginInlineEnd: '40px' }} value={8} color="green">
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge
-        style={{ marginInlineEnd: '40px' }}
-        value={76}
-        fill="outline"
-      >
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-      <Badge
-        style={{ marginInlineEnd: '40px' }}
-        value="NEW"
-        color="blue"
-        fill="outline"
-      >
-        <Avatar icon={<User />} shape="square" />
-      </Badge>
-    </Cell>
-  )
-}
-export default App;
-```
+<CodeBlock src='taro/demo8.tsx'></CodeBlock>
 
 :::
 
