@@ -4,6 +4,7 @@ import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { useRtl } from '../configprovider/index.taro'
 
 export type EllipsisDirection = 'start' | 'end' | 'middle'
 
@@ -80,9 +81,15 @@ export const Ellipsis: FunctionComponent<
   const letterUpperReg = /^[A-Z]+$/ // 字母
   const letterLowerReg = /^[a-z]+$/ // 字母
 
+  const rtl = useRtl()
+  const rtlClasses = classNames({
+    [`${classPrefix}-rtl`]: rtl,
+  })
+
   const classes = classNames(
     classPrefix,
     width ? `${classPrefix}-width` : '',
+    rtlClasses,
     className
   )
 
@@ -360,18 +367,18 @@ export const Ellipsis: FunctionComponent<
                 }}
               >
                 {content}
+                {expandText ? (
+                  <span
+                    className="nut-ellipsis-text"
+                    onClick={(e) => {
+                      e.stopPropagation()
+                      clickHandle(2)
+                    }}
+                  >
+                    {collapseText}
+                  </span>
+                ) : null}
               </View>
-              {expandText ? (
-                <span
-                  className="nut-ellipsis-text"
-                  onClick={(e) => {
-                    e.stopPropagation()
-                    clickHandle(2)
-                  }}
-                >
-                  {collapseText}
-                </span>
-              ) : null}
             </>
           ) : null}
         </View>

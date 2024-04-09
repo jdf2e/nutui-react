@@ -36,7 +36,7 @@ import { Popover } from '@nutui/nutui-react'
 
 :::
 
-### 位置自定义
+### 位置自定义：多条数据
 
 通过 location 属性来控制气泡的弹出位置。可选值
 
@@ -45,11 +45,6 @@ top           # 顶部中间位置
 left          # 左侧中间位置
 right         # 右侧中间位置
 bottom        # 底部中间位置
-```
-
-自起新增
-
-```
 top-start     # 顶部左侧位置
 top-end       # 顶部右侧位置
 left-start    # 左侧上方位置
@@ -63,6 +58,27 @@ bottom-end    # 底部右侧位置
 :::demo
 
 <CodeBlock src='h5/demo4.tsx'></CodeBlock>
+
+:::
+
+### 位置自定义：单条数据
+
+通过 location 属性来控制气泡的弹出位置。可选值
+
+```
+top           # 顶部中间位置
+left          # 左侧中间位置
+right         # 右侧中间位置
+bottom        # 底部中间位置
+top-start     # 顶部左侧位置
+top-end       # 顶部右侧位置
+bottom-start  # 底部左侧位置
+bottom-end    # 底部右侧位置
+```
+
+:::demo
+
+<CodeBlock src='h5/demo4-1.tsx'></CodeBlock>
 
 :::
 

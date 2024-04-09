@@ -1,6 +1,6 @@
 {
-  "name": "@nutui/nutui-react-taro",
-  "version": "2.4.2",
+  "name": "@nutui/nutui-react",
+  "version": "2.5.2",
   "style": "dist/style.css",
   "main": "dist/nutui.react.umd.js",
   "module": "dist/esm/nutui-react.es.js",
@@ -95,8 +95,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.23.9",
-    "@nutui/icons-react": "^1.0.2",
-    "@nutui/icons-react-taro": "^1.0.2",
+    "@nutui/icons-react": "^1.0.4",
+    "@nutui/icons-react-taro": "^1.0.4",
     "@nutui/touch-emulator": "^1.0.0",
     "@react-spring/web": "~9.6.1",
     "@use-gesture/react": "10.2.20",
@@ -140,7 +140,7 @@
     "@types/react-syntax-highlighter": "^15.5.11",
     "@types/react-test-renderer": "^18.0.7",
     "@types/react-transition-group": "^4.4.10",
-    "@types/testing-library__jest-dom": "^5.14.9",
+    "@types/testing-library__jest-dom": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^7.0.2",
     "@typescript-eslint/parser": "^7.0.2",
     "@vitejs/plugin-react": "^4.2.1",

@@ -62,7 +62,7 @@ test('test onChange & onDayClick & onPageChange', async () => {
 
   const nextDays = container.querySelectorAll('.nut-calendarcard-day.next')
   fireEvent.click(nextDays[0])
-  expect(onDayClick).toHaveBeenCalledTimes(3)
+  expect(onDayClick).toHaveBeenCalledTimes(4)
   expect(onPageChange).toHaveBeenCalledTimes(1)
 })
 
@@ -160,9 +160,9 @@ test('test disableDay', async () => {
     '.nut-calendarcard-day.current'
   )
   fireEvent.click(currentDays[22]) // 0123 disabled
-  expect(onDayClick).toHaveBeenCalledTimes(0)
-  fireEvent.click(currentDays[25]) // 0126
   expect(onDayClick).toHaveBeenCalledTimes(1)
+  fireEvent.click(currentDays[25]) // 0126
+  expect(onDayClick).toHaveBeenCalledTimes(2)
 })
 
 test('test ref methods', async () => {

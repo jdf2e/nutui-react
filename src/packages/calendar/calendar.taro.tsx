@@ -3,12 +3,8 @@ import Popup from '@/packages/popup/index.taro'
 import CalendarItem from '@/packages/calendaritem/index.taro'
 import { Utils } from '@/utils/date'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
-import type { CalendarDay, CalendarType } from './types'
+import type { CalendarDay, CalendarType, CalendarRef } from './types'
 import { ComponentDefaults } from '@/utils/typings'
-
-type CalendarRef = {
-  scrollToDate: (date: string) => void
-}
 
 export interface CalendarProps {
   type?: CalendarType

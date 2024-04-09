@@ -1,35 +1,117 @@
+# v2.5.2
+`2024-04-03`
+
+
+* 🏡 chore(form): demo拆解与规范 (#2148) @oasis-cloud
+* 🏡 chore(countdown): demo拆解与规范 (#2147) @Alex.huxiyang
+* 🏡 chore(cascader): demo拆解与规范 (#2144) @Alex.huxiyang
+* 🏡 chore(checkbox): demo拆解与规范 (#2146) @Alex.huxiyang
+* :bug: fix(calendarcard):  直接抛出ondayclick (#2150) @oasis-cloud
+* :bug: fix(radio): 样式变量修复(issue) (#2149) @Alex.huxiyang
+
+
+# v2.5.1
+`2024-03-29`
+
+
+*🏡 chore(deps): update dependency @types/testing-library__jest-dom to v6 (#2127) @renovate[bot]
+* 📖 docs(readme): change npm to pnpm in the document (#2131) @JedediahXu
+* :sparkles: feat(popover): rtl (#2121) @xiaoyatong
+* :sparkles: feat(ellipsis): rtl (#2128) @irisSong
+* :sparkles: feat(Form): rtl (#2120) @xiaoyatong
+* :sparkles: feat(progress): Taro新增lazy属性 (#2108) @Alex-huxiyang
+* :bug: fix(datepicker): 修复 datepicker 类型为hour-minutes/time时选中值无法回显的问题 (#2141) @yeyu98
+* :bug: fix(Toast): demo拆解与规范 (#2073) @OrdinarySF
+* :bug: fix(calendar): demo拆解与规范 (#2137) @mikasayw
+* :bug: fix(DatePicker): demo拆解与规范 (#2133) @yeyu98
+* :bug: fix(uploader): demo拆解与规范 (#2140) @irisSong
+* :bug: fix(tabs): 修复 tab 过多时滚动定位不准确的问题 (#2135) @eiinu
+* :bug: fix(range): demo拆解与规范 (#2139) @ShuchenEason
+* :bug: fix(imagepreview): demo拆解与规范 (#2134) @Alex-huxiyang
+* :bug: fix(textarea): demo拆解与规范 (#2132) @Amylee9712
+* :bug: fix(tour): demo拆解与规范 (#2130) @Alex-huxiyang
+* :bug: fix(actionsheet): demo拆解与规范 (#2124) @ZissyW
+* :bug: fix(icon): update taro demo (#2129) @eiinu
+* :bug: fix(popup): demo拆解与规范 (#2122) @ZissyW
+* :bug: fix(numberkeyboard): demo拆解与规范 (#2123) @ZissyW
+
+
+# v2.5.0
+`2024-03-22`
+
+
+
+* :sparkles: feat(Popover): 新增单条数据的demo展示 (#2117) @xiaoyatong
+* :sparkles: feat(progress): 支持taro的lazy属性 & demo拆解与规范 (#2086) @Alex-huxiyang
+* :bug: fix(dialog): 关闭按钮默认在底部，24px白色图标 (#2118) @irisSong
+* :bug: fix(noticebar): fix docs (#2119) @xiaoyatong
+* :bug: fix(virtuallist): demo拆解与规范 (#2116) @eiinu
+* :bug: fix: 修复address组件onChange参数透传问题 (#2110) @DreamSeeker321
+* :bug: fix(Icon): 小程序下展示异常问题修复 (#2114) @xiaoyatong
+* :bug: fix(swiper): demo拆解与规范 (#2115) @Alex-huxiyang
+* :bug: fix(audio): demo拆解与规范 (#2111) @Alex-huxiyang
+* :bug: fix(animatingnumbers): demo拆解与规范 (#2109) @Alex-huxiyang
+* :bug: fix(video): demo拆解与规范 (#2104) @eiinu
+* :bug: fix(avatarcropper): demo拆解与规范 (#2103) @eiinu
+* :bug: fix(steps): demo拆解与规范 (#2105) @eiinu
+* :bug: fix: 修复 demo 目录报错 (#2107) @eiinu
+* :bug: fix(swipe): 修改demo文案 (#2106) @xiaoyatong
+* :bug: fix(shortpassword): demo拆解与规范 (#2102) @Alex-huxiyang
+* :bug: fix(circleprogress): demo拆解与规范 (#2091) @Alex-huxiyang
+* :bug: fix: vitest (#2101) @xiaoyatong
+* :bug: fix(table): demo拆解与规范 (#2074) @Alex-huxiyang
+* :bug: fix(timeselect): demo拆解与规范 (#2087) @Alex-huxiyang
+* :bug: fix(tabs): demo拆解与规范 (#2066) @yeyu98
+* :bug: fix(signature): demo拆解与规范 (#2099) @Alex-huxiyang
+* :bug: fix(tag): taro 下自定义icon无法展示 (#2088) @eiinu
+* :bug: fix(animate): demo拆解与规范 (#2085) @eiinu
+* :bug: fix(collapse): demo拆解与规范 (#2094) @eiinu
+* :bug: fix(barrage): 简化demo (#2100) @xiaoyatong
+* :bug: fix(barrage): demo拆解与规范 (#2098) @joyfully-W
+* :bug: fix: taro-demo full class (#2095) @eiinu
+* :bug: fix(Ellipsis): 修复小程序环境下给Ellipsis设置字号后工作不正常的问题 (#2078) @FPG-Alan
+* :bug: fix: test (#2096) @xiaoyatong
+* :bug: fix: 代码块修改为等宽字体 (#2092) @eiinu
+* 🚦 Revert "feat(progress): 支持taro的lazy属性 & demo拆解与规范 (#2086)" @oasis-cloud
+* 🏡 chore(calendarcard): demo 拆解与规范 (#2026) @eiinu
+* 🏡 chore: 优化组件类型导出 (#2036) @eiinu
+* 🏡 chore(deps): update dependency happy-dom to v14 (#2097) @renovate[bot]
+* 🏡 chore: update changelog @oasis-cloud
+* 📖 docs(overlay): fix typo @eiinu
+
+
 # v2.4.2
 `2024-03-20`
 
-* 🔨 chore(row): 优化 className (#2054) @Eiinu
+* 🔨 chore(row): 优化 className (#2054) @eiinu
 * :sparkles: feat(backtop): rtl (#2051) @xiaoyatong
 * :sparkles: feat(NoticeBar): 增加right 属性,支持更多可自定义内容 @xiaoyatong
-* :bug: fix(address): demo拆解与规范 (#2068) @Alex.huxiyang
-* :bug: fix(avatar): demo规范与调整 (#2071) @Alex.huxiyang
+* :bug: fix(address): demo拆解与规范 (#2068) @Alex-huxiyang
+* :bug: fix(avatar): demo规范与调整 (#2071) @Alex-huxiyang
 * :bug: fix(badge): demo拆解与规范 (#2060) @sd
-* :bug: fix(calendarcard): 修复受控模式 (#2063) @Eiinu
+* :bug: fix(calendarcard): 修复受控模式 (#2063) @eiinu
 * :bug: fix(Card): demo拆解与规范 (#2072) @joyfully-W
-* :bug: fix(dialog): demo拆解与规范 (#2069) @songsong
-* :bug: fix(fixedNav): demo拆解与规范 (#2048) @Alex.huxiyang
+* :bug: fix(dialog): demo拆解与规范 (#2069) @irisSong
+* :bug: fix(fixedNav): demo拆解与规范 (#2048) @Alex-huxiyang
 * :bug: fix(icon): 处理 rtl 部分 (#2050) @xiaoyatong
-* :bug: fix(indicator): demo拆解与规范 (#2090) @Eiinu
-* :bug: fix(infiniteLoading): demo拆解与规范+增加joy logo的demo (#2081) @songsong
+* :bug: fix(indicator): demo拆解与规范 (#2090) @eiinu
+* :bug: fix(infiniteLoading): demo拆解与规范+增加joy logo的demo (#2081) @irisSong
 * :bug: fix(input): demo拆解与规范 (#2035) @yeyu1998
-* :bug: fix(navbar): demo拆解与规范 (#2055) @Alex.huxiyang
-* :bug: fix(pagination): demo拆解与规范 (#2079) @Alex.huxiyang
-* :bug: fix(price): demo拆解与规范 (#2082) @Alex.huxiyang
-* :bug: fix(pulltorefresh): demo中下拉图标修改为joy logo (#2084) @songsong
+* :bug: fix(navbar): demo拆解与规范 (#2055) @Alex-huxiyang
+* :bug: fix(pagination): demo拆解与规范 (#2079) @Alex-huxiyang
+* :bug: fix(price): demo拆解与规范 (#2082) @Alex-huxiyang
+* :bug: fix(pulltorefresh): demo中下拉图标修改为joy logo (#2084) @irisSong
 * :bug: fix(rate): demo拆解与规范 (#2045) @sandra
 * :bug: fix(SearchBar): demo拆解与规范 (#2064) @joyfully-W
-* :bug: fix(sideNavBar): demo拆解与规范 (#2058) @Alex.huxiyang
+* :bug: fix(sideNavBar): demo拆解与规范 (#2058) @Alex-huxiyang
 * :bug: fix(skeleton): demo拆解与规范 (#2047) @sd
-* :bug: fix(sticky): demo拆解与规范 (#2024) @Alex.huxiyang
+* :bug: fix(sticky): demo拆解与规范 (#2024) @Alex-huxiyang
 * :bug: fix(swiper): rtl (#2061) @xiaoyatong
-* :bug: fix(tabbar): demo拆解与规范&脚本增强 (#2059) @Alex.huxiyang
+* :bug: fix(tabbar): demo拆解与规范&脚本增强 (#2059) @Alex-huxiyang
 * :bug: fix(trendarrow): demo拆解与规范 (#2075) @ber
-* :bug: fix(watermark): demo拆解与规范 (#2083) @Eiinu
-* :bug: fix: update copy-docs-h5-or-taro.js (#2080) @Eiinu
-* test: migrate jest to vitest (#2057) @Eiinu
+* :bug: fix(watermark): demo拆解与规范 (#2083) @eiinu
+* :bug: fix: update copy-docs-h5-or-taro.js (#2080) @eiinu
+* test: migrate jest to vitest (#2057) @eiinu
 
 
 # v2.4.1

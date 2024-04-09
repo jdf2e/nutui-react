@@ -63,11 +63,11 @@ git clone https://github.com/jdf2e/nutui-react.git
 cd nutui-react
 
 # 安装依赖
-npm install
+pnpm install
 
 # 进入开发模式
 # 浏览器访问：http://localhost:3000（如果已启动前台程序，则不需打开此地址）
-npm run dev
+pnpm run dev
 
 ```
 ### 本地运行小程序
@@ -79,15 +79,15 @@ git clone https://github.com/jdf2e/nutui-react.git
 cd nutui-react
 
 # 安装依赖
-npm install
+pnpm install
 
 # 进入小程序开发模式
 # 访问：src/sites/mobile-taro/dist/weapp
-npm run dev:taro:weapp
+pnpm run dev:taro:weapp
 
 # 其他小程序类似，如京东小程序
 # 访问：src/sites/mobile-taro/dist/jd
-npm run dev:taro:jd
+pnpm run dev:taro:jd
 ```
 
 ## 构建版本
