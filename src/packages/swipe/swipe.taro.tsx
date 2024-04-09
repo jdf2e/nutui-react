@@ -285,26 +285,23 @@ export const Swipe = forwardRef<
   }, [])
 
   return (
-    <View style={{display: 'flex', flexDirection: 'row', position: 'relative', overflow: 'hidden'}}>
-      <View style = {{
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'flex-start',
-        position: 'relative',
-      }}>
-        <View style = {{
-          display: 'flex',
-          flexDirection: 'row',
-          alignSelf: 'stretch',
-          position: 'absolute',
-          left: 0,
-        }}>
-          <View>Test</View>
+    <View
+     className="test-swipe"
+    >
+      <View
+        className="test-swipe-wrap"
+      >
+        <View
+          className="test-swipe-left"
+        >
+          <View className="test-swipe-left-c">Test</View>
         </View>
-        <View style = {{
-          padding: pxTransform(20),
-          fontSize: pxTransform(14)
-        }}>Content</View>
+
+        <View
+          className="test-swipe-content"
+        >
+          Content
+        </View>
       </View>
     </View>
   )
