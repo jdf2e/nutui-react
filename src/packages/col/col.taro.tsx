@@ -5,8 +5,8 @@ import React, {
   CSSProperties,
   useContext,
 } from 'react'
-import type { MouseEvent } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { DataContext } from '@/packages/row/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -16,7 +16,7 @@ export interface ColProps extends BasicComponent {
   span: string | number
   offset: string | number
   gutter: string | number
-  onClick: (e: MouseEvent<HTMLDivElement>, type: ColEventType) => void
+  onClick: (e: any, type: ColEventType) => void
 }
 
 const defaultProps = {
@@ -26,9 +26,7 @@ const defaultProps = {
   gutter: '0',
 } as ColProps
 
-export const Col: FunctionComponent<
-  Partial<ColProps> & Omit<React.HTMLAttributes<HTMLDivElement>, 'onClick'>
-> = (props) => {
+export const Col: FunctionComponent<Partial<ColProps>> = (props) => {
   const { className, style, span, offset, children, onClick } = {
     ...defaultProps,
     ...props,
@@ -57,7 +55,7 @@ export const Col: FunctionComponent<
   }, [span, offset, gutter])
 
   return (
-    <div
+    <View
       className={classNames(colName, className)}
       style={{ ...style, ...colStyle }}
       onClick={(e) => {
@@ -65,7 +63,7 @@ export const Col: FunctionComponent<
       }}
     >
       {children}
-    </div>
+    </View>
   )
 }
 

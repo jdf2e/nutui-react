@@ -1,66 +1,93 @@
-import React from 'react'
+import React, { CSSProperties } from 'react'
 import { Row, Col } from '@nutui/nutui-react-taro'
+import { pxTransform } from '@tarojs/taro'
 
 const Demo1 = () => {
-  const style = `
-    .layout-flex-content {
-      line-height: var(--nutui-row-content-line-height, 40px);
-      color: var(--nutui-row-content-color, #fff);
-      text-align: center;
-      border-radius: var(--nutui-row-content-border-radius, 6px);
-      background: var(--nutui-row-content-background-color,var(--row-content-bg-color, #ff8881));
-      font-size: 14px;
-    }
+  const flexContent: CSSProperties = {
+    lineHeight: pxTransform(40),
+    color: '#fff',
+    textAlign: 'center',
+    borderRadius: '6px',
+    background: '#ff8881',
+    fontSize: pxTransform(14),
+  }
+  const flexContentLight: CSSProperties = {
+    lineHeight: pxTransform(40),
+    color: '#fff',
+    textAlign: 'center',
+    borderRadius: '6px',
+    background: '#ffc7c4',
+    fontSize: pxTransform(14),
+  }
 
-    .layout-flex-content-light {
-      background: var(--row-content-light-bg-color,#ffc7c4);
-    }
-  `
   return (
     <>
-      <style>{style}</style>
       <Row>
         <Col span="24">
-          <div className="layout-flex-content">span:24</div>
+          <div className="layout-flex-content" style={flexContent}>
+            span:24
+          </div>
         </Col>
       </Row>
       <Row>
         <Col span="12">
-          <div className="layout-flex-content">span:12</div>
+          <div className="layout-flex-content" style={flexContent}>
+            span:12
+          </div>
         </Col>
         <Col span="12">
-          <div className="layout-flex-content layout-flex-content-light">
+          <div
+            className="layout-flex-content layout-flex-content-light"
+            style={flexContentLight}
+          >
             span:12
           </div>
         </Col>
       </Row>
       <Row>
         <Col span="8">
-          <div className="layout-flex-content">span:8</div>
-        </Col>
-        <Col span="8">
-          <div className="layout-flex-content layout-flex-content-light">
+          <div className="layout-flex-content" style={flexContent}>
             span:8
           </div>
         </Col>
         <Col span="8">
-          <div className="layout-flex-content">span:8</div>
+          <div
+            className="layout-flex-content layout-flex-content-light"
+            style={flexContentLight}
+          >
+            span:8
+          </div>
+        </Col>
+        <Col span="8">
+          <div className="layout-flex-content" style={flexContent}>
+            span:8
+          </div>
         </Col>
       </Row>
       <Row>
         <Col span="6">
-          <div className="layout-flex-content">span:6</div>
-        </Col>
-        <Col span="6">
-          <div className="layout-flex-content layout-flex-content-light">
+          <div className="layout-flex-content" style={flexContent}>
             span:6
           </div>
         </Col>
         <Col span="6">
-          <div className="layout-flex-content">span:6</div>
+          <div
+            className="layout-flex-content layout-flex-content-light"
+            style={flexContentLight}
+          >
+            span:6
+          </div>
         </Col>
         <Col span="6">
-          <div className="layout-flex-content layout-flex-content-light">
+          <div className="layout-flex-content" style={flexContent}>
+            span:6
+          </div>
+        </Col>
+        <Col span="6">
+          <div
+            className="layout-flex-content layout-flex-content-light"
+            style={flexContentLight}
+          >
             span:6
           </div>
         </Col>

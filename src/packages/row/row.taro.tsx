@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import type { MouseEvent } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { DataContext } from './context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -62,17 +63,15 @@ export const Row: FunctionComponent<
 
   return (
     <DataContext.Provider value={parentRow}>
-      {React.createElement(
-        'div',
-        {
-          className: classNames(getClasses(), className),
-          style,
-          onClick: (e: MouseEvent<HTMLDivElement>) => {
-            onClick && onClick(e, 'row')
-          },
-        },
-        children
-      )}
+      <View
+        className={classNames(getClasses(), className)}
+        style={style}
+        onClick={(e) => {
+          onClick?.(e as any, 'row')
+        }}
+      >
+        {children}
+      </View>
     </DataContext.Provider>
   )
 }
