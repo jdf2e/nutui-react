@@ -45,8 +45,9 @@ export const Row: FunctionComponent<
   }
   const getClass = (prefix: string, type: string) => {
     const classType = type ? `nut-row-${prefix}-${type}` : ''
-    const className = prefix ? classType : `nut-row-${type}`
-    return className
+    if (prefix) return classType
+    if (type) return `nut-row-${type}`
+    return ''
   }
   const getClasses = () => {
     return classNames(

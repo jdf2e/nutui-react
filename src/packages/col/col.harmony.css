@@ -1,12 +1,13 @@
 .nut-col {
-  float: left;
   box-sizing: border-box;
   word-break: break-all;
   margin-bottom: 15px;
 }
+
 .nut-col.nut-col-gutter:last-child {
   padding-right: 0 !important;
 }
+
 .nut-col.nut-col-gutter:first-child {
   padding-left: 0 !important;
 }
@@ -15,11 +16,13 @@
 .nut-rtl .nut-col {
   float: right;
 }
+
 [dir=rtl] .nut-col.nut-col-gutter:last-child,
 .nut-rtl .nut-col.nut-col-gutter:last-child {
   padding-right: 0 !important;
   padding-left: 0 !important;
 }
+
 [dir=rtl] .nut-col.nut-col-gutter:first-child,
 .nut-rtl .nut-col.nut-col-gutter:first-child {
   padding-left: 0 !important;
