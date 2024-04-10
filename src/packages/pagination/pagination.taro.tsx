@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useMemo, ReactNode } from 'react'
-import classNames from 'classnames'
+// import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -47,6 +48,7 @@ export const Pagination: FunctionComponent<
     itemRender,
     defaultValue,
     className,
+    style,
     ...rest
   } = {
     ...defaultProps,
@@ -105,66 +107,70 @@ export const Pagination: FunctionComponent<
   }
 
   return (
-    <div className={classNames(classPrefix, className)} {...rest}>
-      {(mode === 'multi' || mode === 'simple') && (
-        <>
-          <div
-            className={classNames(
-              `${classPrefix}-prev`,
-              mode === 'multi' ? '' : 'simple-border',
-              currentPage === 1 ? 'disabled' : ''
-            )}
-            onClick={(e) => handleSelectPage(currentPage - 1)}
-          >
-            {prev || locale.pagination.prev}
-          </div>
-          {mode === 'multi' && (
-            <div className={`${classPrefix}-contain`}>
-              {pages.map((item: any, index: number) => {
-                return (
-                  <div
-                    key={`${index}pagination`}
-                    className={classNames(`${classPrefix}-item`, {
-                      active: item.number === currentPage,
-                    })}
-                    onClick={(e) => {
-                      item.number !== currentPage &&
-                        handleSelectPage(item.number)
-                    }}
-                  >
-                    {itemRender ? itemRender(item) : item.text}
-                  </div>
-                )
-              })}
-            </div>
-          )}
-          {mode === 'simple' && (
-            <div className={`${classPrefix}-contain`}>
-              <div className={`${classPrefix}-simple`}>
-                {currentPage}/{pageCount}
-              </div>
-            </div>
-          )}
-          <div
-            className={classNames(
-              `${classPrefix}-next`,
-              currentPage >= pageCount ? 'disabled' : ''
-            )}
-            onClick={(e) => handleSelectPage(currentPage + 1)}
-          >
-            {next || locale.pagination.next}
-          </div>
-        </>
-      )}
-      {mode === 'lite' && (
-        <>
-          <div className={`${classPrefix}-lite`}>
-            <div className={`${classPrefix}-lite-active`}>{2}</div>
-            <div className={`${classPrefix}-lite-default`}>{8}</div>
-          </div>
-        </>
-      )}
-    </div>
+    <View className="test-border">Test</View>
+
+    // <View className={classNames(classPrefix, className)} style={style}>
+    //
+    //
+    //   {(mode === 'multi' || mode === 'simple') && (
+    //     <>
+    //       <View
+    //         className={classNames(
+    //           `${classPrefix}-prev`,
+    //           mode === 'multi' ? '' : 'simple-border',
+    //           currentPage === 1 ? 'disabled' : ''
+    //         )}
+    //         onClick={(e) => handleSelectPage(currentPage - 1)}
+    //       >
+    //         {prev || locale.pagination.prev}
+    //       </View>
+    //       {mode === 'multi' && (
+    //         <View className={`${classPrefix}-contain`}>
+    //           {pages.map((item: any, index: number) => {
+    //             return (
+    //               <View
+    //                 key={`${index}pagination`}
+    //                 className={classNames(`${classPrefix}-item`, {
+    //                   active: item.number === currentPage,
+    //                 })}
+    //                 onClick={(e) => {
+    //                   item.number !== currentPage &&
+    //                     handleSelectPage(item.number)
+    //                 }}
+    //               >
+    //                 {itemRender ? itemRender(item) : item.text}
+    //               </View>
+    //             )
+    //           })}
+    //         </View>
+    //       )}
+    //       {mode === 'simple' && (
+    //         <View className={`${classPrefix}-contain`}>
+    //           <View className={`${classPrefix}-simple`}>
+    //             {currentPage}/{pageCount}
+    //           </View>
+    //         </View>
+    //       )}
+    //       <View
+    //         className={classNames(
+    //           `${classPrefix}-next`,
+    //           currentPage >= pageCount ? 'disabled' : ''
+    //         )}
+    //         onClick={(e) => handleSelectPage(currentPage + 1)}
+    //       >
+    //         {next || locale.pagination.next}
+    //       </View>
+    //     </>
+    //   )}
+    //   {mode === 'lite' && (
+    //     <>
+    //       <View className={`${classPrefix}-lite`}>
+    //         <View className={`${classPrefix}-lite-active`}>{2}</View>
+    //         <View className={`${classPrefix}-lite-default`}>{8}</View>
+    //       </View>
+    //     </>
+    //   )}
+    // </View>
   )
 }
 

@@ -1,17 +1,34 @@
 .nut-pagination {
-  display: flex;
-  font-size: 14px;
-  color: #fa2c19;
+  /*display: flex;*/
+  /*font-size: 14px;*/
+  /*color: #fa2c19;*/
 }
+
+.test-border {
+  height: 39px;
+  min-width: 39px;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+  border: 3px solid #ff0000;
+  background: #00bc14;
+  padding: 0 12px;
+}
+
 .nut-pagination-contain {
   display: flex;
 }
+
 .nut-pagination-simple {
   height: 39px;
   width: 124px;
   line-height: 39px;
   text-align: center;
 }
+
 .nut-pagination-prev {
   height: 39px;
   min-width: 39px;
@@ -22,9 +39,11 @@
   justify-content: center;
   background: #ffffff;
   border-radius: 2px;
-  border: 1px solid rgba(0, 0, 0, 0.06);
+  /*border: 1px solid rgba(0, 0, 0, 0.06);*/
+  border: 3px solid #000000;
   cursor: pointer;
 }
+
 .nut-pagination-item {
   height: 39px;
   min-width: 39px;
@@ -38,6 +57,7 @@
   border: 1px solid rgba(0, 0, 0, 0.06);
   cursor: pointer;
 }
+
 .nut-pagination-next {
   height: 39px;
   min-width: 39px;
@@ -51,37 +71,46 @@
   border: 1px solid rgba(0, 0, 0, 0.06);
   cursor: pointer;
 }
+
 .nut-pagination-prev, .nut-pagination-item {
   border-right: none;
 }
+
 .nut-pagination-prev {
   padding: 0 12px;
 }
+
 .nut-pagination-next {
   padding: 0 12px;
 }
+
 .nut-pagination .simple-border {
   border-right: 1px solid rgba(0, 0, 0, 0.06);
 }
+
 .nut-pagination .active {
   color: #ffffff;
   border: none;
   background: linear-gradient(135deg, #f53d4d 0%, #fa2c19 100%);
 }
+
 .nut-pagination .disabled {
   color: #bfbfbf;
-  background-color: #f7f8fa;
+  /*background-color: #f7f8fa;*/
+  background: #82b1ff;
   cursor: not-allowed;
 }
+
 .nut-pagination-lite {
   width: 40px;
   height: 20px;
   display: flex;
   font-size: 10px;
   color: #ffffff;
-  background-color: undefined;
+  background-color: rgba(0, 0, 0, .4);
   border-radius: 12px;
 }
+
 .nut-pagination-lite-active {
   display: flex;
   align-items: center;
@@ -89,6 +118,7 @@
   width: 20px;
   height: 20px;
 }
+
 .nut-pagination-lite-default {
   display: flex;
   align-items: center;
@@ -96,10 +126,11 @@
   width: 20px;
   height: 20px;
 }
+
 .nut-pagination-lite-active {
   border-radius: 12px;
   font-size: 12px;
-  background-color: undefined;
+  background-color: rgba(0, 0, 0, .2);
 }
 
 [dir=rtl] .nut-pagination-prev, [dir=rtl] .nut-pagination-item,
@@ -108,15 +139,18 @@
   border-right: none;
   border-left: none;
 }
+
 [dir=rtl] .nut-pagination-prev .nut-icon, [dir=rtl] .nut-pagination-next .nut-icon,
 .nut-rtl .nut-pagination-prev .nut-icon,
 .nut-rtl .nut-pagination-next .nut-icon {
   transform: rotate(180deg);
 }
+
 [dir=rtl] .nut-pagination .simple-border {
   border-right: none;
   border-left: 1px solid rgba(0, 0, 0, 0.06);
 }
+
 .nut-rtl .nut-pagination .simple-border {
   border-right: none;
   border-left: 1px solid rgba(0, 0, 0, 0.06);
