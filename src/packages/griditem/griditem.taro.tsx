@@ -5,6 +5,7 @@ import React, {
   useContext,
 } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import GridContext from '../grid/context'
 import { BasicComponent } from '@/utils/typings'
@@ -60,7 +61,8 @@ export const GridItem: FunctionComponent<
 
   const rootStyle = () => {
     const styles: CSSProperties = {
-      flexBasis: `${100 / +columns}%`,
+      width: `${100 / +columns}%`,
+      overflow: 'hidden',
       ...style,
     }
 
@@ -106,17 +108,15 @@ export const GridItem: FunctionComponent<
   }
 
   return (
-    <div
-      className={classes}
-      style={rootStyle()}
-      {...rest}
-      onClick={handleClick}
-    >
-      <div className={contentClass()}>
-        {children && <>{children}</>}
-        {text && <div className={`${classPrefix}-text`}>{text}</div>}
-      </div>
-    </div>
+    <>
+      <View className={classes} style={rootStyle()} onClick={handleClick}>
+        <View className={contentClass()}>
+          {children && <>{children}</>}
+          {text && <View className={`${classPrefix}-text`}>{text}</View>}
+        </View>
+      </View>
+      {square ? <View style={{ paddingTop: '33.3333%', width: 0 }} /> : null}
+    </>
   )
 }
 
