@@ -109,6 +109,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
   // 高亮框样式
   const highlightStyle = useMemo(() => {
     const width = `${drawImage.swidth / devicePixelRatio}px`
+    console.log(drawImage.swidth, devicePixelRatio)
     const height = width
     return {
       width,

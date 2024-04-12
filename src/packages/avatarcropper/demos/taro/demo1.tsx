@@ -7,7 +7,6 @@ const Demo1 = () => {
   )
   const cutImage = (data: any) => {
     setImageUrl(data)
-    console.log(1)
   }
   return (
     <>

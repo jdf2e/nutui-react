@@ -124,8 +124,8 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
     moveY: 0,
     displayWidth: systemInfo.windowWidth * pixelRatio,
     displayHeight: systemInfo.windowHeight * pixelRatio,
-    cropperWidth: systemInfo.windowWidth * pixelRatio - space * pixelRatio * 2,
-    cropperHeight: systemInfo.windowWidth * pixelRatio - space * pixelRatio * 2,
+    cropperWidth: systemInfo.screenWidth * pixelRatio - space * pixelRatio * 2,
+    cropperHeight: systemInfo.screenWidth * pixelRatio - space * pixelRatio * 2,
   })
   const defDrawImage: DrawImage = {
     src: '', // 规定要使用的图像
@@ -168,6 +168,7 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
   // 高亮框样式
   const highlightStyle = useMemo(() => {
     const width = `${state.cropperWidth / pixelRatio}px`
+    console.log(state.cropperWidth, pixelRatio)
     const height = width
     return {
       width,
