@@ -145,7 +145,7 @@ export const Pagination: FunctionComponent<
           {mode === 'simple' && (
             <View className={`${classPrefix}-contain`}>
               <View className={`${classPrefix}-simple`}>
-                {currentPage}/{pageCount}
+                {`${currentPage}/${pageCount}`}
               </View>
             </View>
           )}
@@ -163,8 +163,8 @@ export const Pagination: FunctionComponent<
       {mode === 'lite' && (
         <>
           <View className={`${classPrefix}-lite`}>
-            <View className={`${classPrefix}-lite-active`}>{2}</View>
-            <View className={`${classPrefix}-lite-default`}>{8}</View>
+            <View className={`${classPrefix}-lite-active`}>{currentPage}</View>
+            <View className={`${classPrefix}-lite-default`}>{pageCount}</View>
           </View>
         </>
       )}
