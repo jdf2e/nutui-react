@@ -1,22 +1,22 @@
 .nut-pagination {
-  /*display: flex;*/
-  /*font-size: 14px;*/
-  /*color: #fa2c19;*/
+  display: flex;
+  font-size: 14px;
+  color: #fa2c19;
 }
 
-.test-border {
-  height: 39px;
-  min-width: 39px;
-  flex-shrink: 0;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 2px;
-  border: 3px solid #ff0000;
-  background: #00bc14;
-  padding: 0 12px;
-}
+/*.test-border {*/
+/*  height: 39px;*/
+/*  min-width: 39px;*/
+/*  flex-shrink: 0;*/
+/*  box-sizing: border-box;*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: center;*/
+/*  border-radius: 2px;*/
+/*  border: 3px solid #ff0000;*/
+/*  background: #00bc14;*/
+/*  padding: 0 12px;*/
+/*}*/
 
 .nut-pagination-contain {
   display: flex;
@@ -39,8 +39,7 @@
   justify-content: center;
   background: #ffffff;
   border-radius: 2px;
-  /*border: 1px solid rgba(0, 0, 0, 0.06);*/
-  border: 3px solid #000000;
+  border: 1px solid rgba(0, 0, 0, 0.06);
   cursor: pointer;
 }
 
@@ -73,7 +72,7 @@
 }
 
 .nut-pagination-prev, .nut-pagination-item {
-  border-right: none;
+  border-right: 0px;
 }
 
 .nut-pagination-prev {
@@ -90,14 +89,13 @@
 
 .nut-pagination .active {
   color: #ffffff;
-  border: none;
+  border-width: 0px;
   background: linear-gradient(135deg, #f53d4d 0%, #fa2c19 100%);
 }
 
 .nut-pagination .disabled {
   color: #bfbfbf;
-  /*background-color: #f7f8fa;*/
-  background: #82b1ff;
+  background-color: #f7f8fa;
   cursor: not-allowed;
 }
 
@@ -105,9 +103,8 @@
   width: 40px;
   height: 20px;
   display: flex;
-  font-size: 10px;
-  color: #ffffff;
-  background-color: rgba(0, 0, 0, .4);
+
+  background-color: rgba(0, 0, 0, 0.4);
   border-radius: 12px;
 }
 
@@ -115,6 +112,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #ffffff;
   width: 20px;
   height: 20px;
 }
@@ -123,6 +121,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 10px;
+  color: #ffffff;
   width: 20px;
   height: 20px;
 }
@@ -136,8 +136,8 @@
 [dir=rtl] .nut-pagination-prev, [dir=rtl] .nut-pagination-item,
 .nut-rtl .nut-pagination-prev,
 .nut-rtl .nut-pagination-item {
-  border-right: none;
-  border-left: none;
+  border-right: 0px;
+  border-left: 0px;
 }
 
 [dir=rtl] .nut-pagination-prev .nut-icon, [dir=rtl] .nut-pagination-next .nut-icon,
@@ -147,11 +147,11 @@
 }
 
 [dir=rtl] .nut-pagination .simple-border {
-  border-right: none;
+  border-right: 0px;
   border-left: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .nut-rtl .nut-pagination .simple-border {
-  border-right: none;
+  border-right: 0px;
   border-left: 1px solid rgba(0, 0, 0, 0.06);
 }

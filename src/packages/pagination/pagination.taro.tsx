@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useMemo, ReactNode } from 'react'
-// import classNames from 'classnames'
+import classNames from 'classnames'
 import { View } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { usePropsValue } from '@/utils/use-props-value'
@@ -107,70 +107,68 @@ export const Pagination: FunctionComponent<
   }
 
   return (
-    <View className="test-border">Test</View>
+    // <View className="test-border">Test</View>
 
-    // <View className={classNames(classPrefix, className)} style={style}>
-    //
-    //
-    //   {(mode === 'multi' || mode === 'simple') && (
-    //     <>
-    //       <View
-    //         className={classNames(
-    //           `${classPrefix}-prev`,
-    //           mode === 'multi' ? '' : 'simple-border',
-    //           currentPage === 1 ? 'disabled' : ''
-    //         )}
-    //         onClick={(e) => handleSelectPage(currentPage - 1)}
-    //       >
-    //         {prev || locale.pagination.prev}
-    //       </View>
-    //       {mode === 'multi' && (
-    //         <View className={`${classPrefix}-contain`}>
-    //           {pages.map((item: any, index: number) => {
-    //             return (
-    //               <View
-    //                 key={`${index}pagination`}
-    //                 className={classNames(`${classPrefix}-item`, {
-    //                   active: item.number === currentPage,
-    //                 })}
-    //                 onClick={(e) => {
-    //                   item.number !== currentPage &&
-    //                     handleSelectPage(item.number)
-    //                 }}
-    //               >
-    //                 {itemRender ? itemRender(item) : item.text}
-    //               </View>
-    //             )
-    //           })}
-    //         </View>
-    //       )}
-    //       {mode === 'simple' && (
-    //         <View className={`${classPrefix}-contain`}>
-    //           <View className={`${classPrefix}-simple`}>
-    //             {currentPage}/{pageCount}
-    //           </View>
-    //         </View>
-    //       )}
-    //       <View
-    //         className={classNames(
-    //           `${classPrefix}-next`,
-    //           currentPage >= pageCount ? 'disabled' : ''
-    //         )}
-    //         onClick={(e) => handleSelectPage(currentPage + 1)}
-    //       >
-    //         {next || locale.pagination.next}
-    //       </View>
-    //     </>
-    //   )}
-    //   {mode === 'lite' && (
-    //     <>
-    //       <View className={`${classPrefix}-lite`}>
-    //         <View className={`${classPrefix}-lite-active`}>{2}</View>
-    //         <View className={`${classPrefix}-lite-default`}>{8}</View>
-    //       </View>
-    //     </>
-    //   )}
-    // </View>
+    <View className={classNames(classPrefix, className)} style={style}>
+      {(mode === 'multi' || mode === 'simple') && (
+        <>
+          <View
+            className={classNames(
+              `${classPrefix}-prev`,
+              mode === 'multi' ? '' : 'simple-border',
+              currentPage === 1 ? 'disabled' : ''
+            )}
+            onClick={(e) => handleSelectPage(currentPage - 1)}
+          >
+            {prev || locale.pagination.prev}
+          </View>
+          {mode === 'multi' && (
+            <View className={`${classPrefix}-contain`}>
+              {pages.map((item: any, index: number) => {
+                return (
+                  <View
+                    key={`${index}pagination`}
+                    className={classNames(`${classPrefix}-item`, {
+                      active: item.number === currentPage,
+                    })}
+                    onClick={(e) => {
+                      item.number !== currentPage &&
+                        handleSelectPage(item.number)
+                    }}
+                  >
+                    {itemRender ? itemRender(item) : item.text}
+                  </View>
+                )
+              })}
+            </View>
+          )}
+          {mode === 'simple' && (
+            <View className={`${classPrefix}-contain`}>
+              <View className={`${classPrefix}-simple`}>
+                {currentPage}/{pageCount}
+              </View>
+            </View>
+          )}
+          <View
+            className={classNames(
+              `${classPrefix}-next`,
+              currentPage >= pageCount ? 'disabled' : ''
+            )}
+            onClick={(e) => handleSelectPage(currentPage + 1)}
+          >
+            {next || locale.pagination.next}
+          </View>
+        </>
+      )}
+      {mode === 'lite' && (
+        <>
+          <View className={`${classPrefix}-lite`}>
+            <View className={`${classPrefix}-lite-active`}>{2}</View>
+            <View className={`${classPrefix}-lite-default`}>{8}</View>
+          </View>
+        </>
+      )}
+    </View>
   )
 }
 
