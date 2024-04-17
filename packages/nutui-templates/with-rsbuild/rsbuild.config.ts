@@ -21,8 +21,8 @@ export default defineConfig({
           return options;
         });
     },
-    rspack: (config, { appendPlugins, rspack }) => {
-      appendPlugins(new rspack.ProgressPlugin({ prefix: "🐹 Rspack" }));
+    rspack: (config, { prependPlugins, rspack }) => {
+      prependPlugins(new rspack.ProgressPlugin({ prefix: "🐹 Rsbuild" }));
       return config;
     },
   },
