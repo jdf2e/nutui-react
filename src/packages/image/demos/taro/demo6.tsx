@@ -1,5 +1,6 @@
 import React from 'react'
-import { Cell, Col, Image } from '@nutui/nutui-react-taro'
+import { Cell, Image, Row, Col } from '@nutui/nutui-react-taro'
+import { pxTransform } from '@tarojs/taro'
 
 const Demo6 = () => {
   const src =
@@ -7,19 +8,50 @@ const Demo6 = () => {
   return (
     <>
       <Cell style={{ flexWrap: 'wrap' }}>
-        {[
-          'scaleToFill',
-          'aspectFit',
-          'aspectFill',
-          'widthFix',
-          'heightFix',
-        ].map((mode) => {
-          return (
-            <Col span="8" key={mode}>
-              <Image src={src} mode={mode as any} width="80" height="80" />
-            </Col>
-          )
-        })}
+        <Row gutter={5}>
+          <Col span={8}>
+            <Image
+              src={src}
+              mode="scaleToFill"
+              width={pxTransform(80)}
+              height={pxTransform(80)}
+            />
+          </Col>
+          <Col span={8}>
+            <Image
+              src={src}
+              mode="aspectFit"
+              width={pxTransform(80)}
+              height={pxTransform(80)}
+            />
+          </Col>
+          <Col span={8}>
+            <Image
+              src={src}
+              mode="aspectFill"
+              width={pxTransform(80)}
+              height={pxTransform(80)}
+            />
+          </Col>
+        </Row>
+        <Row gutter={5}>
+          <Col span={8}>
+            <Image
+              src={src}
+              mode="widthFix"
+              width={pxTransform(80)}
+              height={pxTransform(80)}
+            />
+          </Col>
+          <Col span={8}>
+            <Image
+              src={src}
+              mode="heightFix"
+              width={pxTransform(80)}
+              height={pxTransform(80)}
+            />
+          </Col>
+        </Row>
       </Cell>
     </>
   )

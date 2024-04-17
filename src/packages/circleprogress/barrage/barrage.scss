@@ -1,0 +1,92 @@
+.nut-barrage {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+  background-color: $color-background;
+  color: $color-title;
+
+  .barrage-item {
+    display: block;
+    position: absolute;
+    right: 0;
+    padding: 4px 16px;
+    border-radius: 16px;
+    font-size: $font-size-small;
+    text-align: center;
+    white-space: pre;
+    transform: translateX(100%);
+    background: linear-gradient(
+      to right,
+      var(--nutui-black-3),
+      var(--nutui-black-1)
+    );
+    box-sizing: border-box;
+
+    &.move {
+      will-change: transform;
+      animation-name: moving;
+      animation-timing-function: linear;
+      animation-play-state: running;
+    }
+  }
+
+  @keyframes moving {
+    from {
+      transform: translateX(100%);
+    }
+
+    to {
+      transform: translateX(var(--move-distance));
+    }
+  }
+
+  @-webkit-keyframes moving {
+    from {
+      -webkit-transform: translateX(100%);
+    }
+
+    to {
+      -webkit-transform: translateX(var(--move-distance));
+    }
+  }
+}
+
+[dir='rtl'] .nut-barrage,
+.nut-rtl .nut-barrage {
+  left: auto;
+  right: 0;
+  .barrage-item {
+    transform: translateX(-100%);
+    background: linear-gradient(
+      to left,
+      var(--nutui-black-3),
+      var(--nutui-black-1)
+    );
+
+    &.move {
+      animation-name: moving-rtl;
+    }
+  }
+  @keyframes moving-rtl {
+    from {
+      transform: translateX(var(--move-distance));
+    }
+    to {
+      transform: translateX(100%);
+    }
+  }
+
+  @-webkit-keyframes moving-rtl {
+    from {
+      transform: translateX(var(--move-distance));
+    }
+
+    to {
+      transform: translateX(100%);
+    }
+  }
+}

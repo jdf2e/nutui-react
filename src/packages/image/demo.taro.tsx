@@ -5,12 +5,7 @@ import { Cell } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
-import Demo3 from './demos/taro/demo3'
-import Demo4 from './demos/taro/demo4'
-import Demo5 from './demos/taro/demo5'
-import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
-import Demo8 from './demos/taro/demo8'
 
 const ImageDemo = () => {
   const [translated] = useTranslate({
@@ -47,28 +42,14 @@ const ImageDemo = () => {
         <Cell>
           <Demo2 />
         </Cell>
-        <h2>{translated.loading}</h2>
-        <Cell>
-          <Demo3 />
-        </Cell>
-        <h2>{translated.error}</h2>
-        <Cell>
-          <Demo4 />
-        </Cell>
-        <h2>{translated.imageText}</h2>
+        {/* <h2>{translated.imageText}</h2>
         <Cell>
           <Demo5 />
         </Cell>
         <h2>{translated.fill}</h2>
-        <Cell style={{ flexWrap: 'wrap' }}>
-          <Demo6 />
-        </Cell>
+        <Demo6 /> */}
         <h2>{translated.position}</h2>
-        <Cell style={{ flexWrap: 'wrap' }}>
-          <Demo7 />
-        </Cell>
-        <h2>{translated.lazyload}</h2>
-        <Demo8 />
+        <Demo7 />
       </div>
     </>
   )
