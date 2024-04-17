@@ -143,7 +143,7 @@ import { Uploader } from '@nutui/nutui-react';
 | uploadIcon | 上傳區域<a href="#/zh-CN/icon">圖標名稱</a> | `React.ReactNode` | `-` |
 | uploadLabel | 上傳區域圖片下方文字 | `React.ReactNode` | `-` |
 | xhrState | 接口響應的成功狀態（status）值 | `number` | `200` |
-| withCredentials | 支持發送 cookie 憑證信息 | `Boolean` | `false` |
+| withCredentials | 支持發送 cookie 憑證信息 | `Boolean` | `true` |
 | multiple | 是否支持文件多選 | `boolean` | `false` |
 | disabled | 是否禁用文件上傳 | `boolean` | `false` |
 | timeout | 超時時間，單位為毫秒 | `number` \| `string`  | `1000 * 30` |

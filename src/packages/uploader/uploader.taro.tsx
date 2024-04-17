@@ -91,6 +91,7 @@ export interface UploaderProps extends BasicComponent {
   previewUrl?: string
   maxDuration: number
   style: React.CSSProperties
+  withCredentials: boolean
   onStart?: (option: UploadOptions) => void
   onDelete?: (file: FileItem, files: FileItem[]) => void
   onSuccess?: (param: {
@@ -145,6 +146,7 @@ const defaultProps = {
   preview: true,
   deletable: true,
   maxDuration: 10,
+  withCredentials: true,
   beforeDelete: (file: FileItem, files: FileItem[]) => {
     return true
   },
@@ -196,6 +198,7 @@ const InternalUploader: ForwardRefRenderFunction<
     onOversize,
     beforeXhrUpload,
     beforeDelete,
+    withCredentials,
     ...restProps
   } = { ...defaultProps, ...props }
   const [fileList, setFileList] = usePropsValue({
@@ -301,6 +304,7 @@ const InternalUploader: ForwardRefRenderFunction<
     uploadOption.headers = headers
     uploadOption.taroFilePath = fileItem.path
     uploadOption.beforeXhrUpload = beforeXhrUpload
+    uploadOption.withCredentials = withCredentials
 
     uploadOption.onStart = (option: UploadOptions) => {
       clearUploadQueue(index)

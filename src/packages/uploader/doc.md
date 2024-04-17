@@ -137,13 +137,13 @@ import { Uploader } from '@nutui/nutui-react';
 | maxCount | 文件上传数量限制 | `number` \| `string`  | `1` |
 | fit | 图片填充模式 | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` | `cover` |
 | clearInput | 是否需要清空`input`内容，设为`true`支持重复选择上传同一个文件 | `boolean` | `true` |
-| accept | 允许上传的文件类型，[详细说明]("https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B") | `string` | `*` |
+| accept | 允许上传的文件类型，[详细说明](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file)，设置为 `image/*` 支持唤起摄像头&相册 | `string` | `*` |
 | headers | 设置上传的请求头部 | `object` | `{}` |
 | data | 附加上传的信息 formData | `object` | `{}` |
 | uploadIcon | 上传区域<a href="#/zh-CN/icon">图标名称</a> | `React.ReactNode` | `-` |
 | uploadLabel | 上传区域图片下方文字 | `React.ReactNode` | `-` |
 | xhrState | 接口响应的成功状态（status）值 | `number` | `200` |
-| withCredentials | 支持发送 cookie 凭证信息 | `Boolean` | `false` |
+| withCredentials | 支持发送 cookie 凭证信息 | `Boolean` | `true` |
 | multiple | 是否支持文件多选 | `boolean` | `false` |
 | disabled | 是否禁用文件上传 | `boolean` | `false` |
 | timeout | 超时时间，单位为毫秒 | `number` \| `string`  | `1000 * 30` |

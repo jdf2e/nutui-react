@@ -17,7 +17,7 @@ export class UploadOptions {
 
   headers = {}
 
-  withCredentials = false
+  withCredentials = true
 
   onStart?: any
 
@@ -103,6 +103,7 @@ export class UploaderTaro extends Upload {
         }, //
         formData: options.formData,
         name: options.name,
+        withCredentials: options.withCredentials,
         success(response: { errMsg: any; statusCode: number; data: string }) {
           if (options.xhrState === response.statusCode) {
             options.onSuccess?.(response, options)

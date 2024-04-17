@@ -86,7 +86,7 @@ const defaultProps = {
   method: 'post',
   xhrState: 200,
   timeout: 1000 * 30,
-  withCredentials: false,
+  withCredentials: true,
   clearInput: true,
   preview: true,
   deletable: true,

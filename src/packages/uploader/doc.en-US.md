@@ -137,13 +137,13 @@ import { Uploader } from '@nutui/nutui-react';
 | maxCount | File upload limit | `number` \| `string` | `1` |
 | fit | image fill mode | `contain` \| `cover` \| `fill` \| `none` \| `scale-down` | `cover` |
 | clearInput | Whether to clear the `input` content, set to `true` to support repeated selection and upload of the same file | `boolean` | `true` |
-| accept | File types that can be accepted. See [Des](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file#%E9%99%90%E5%88%B6%E5%85%81%E8%AE%B8%E7%9A%84%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B) | `string` | `*` |
+| accept | File types that can be accepted. See [Des](https://developer.mozilla.org/zh-CN/docs/Web/HTML/Element/Input/file), set to `image/*` to support calling up camera & album | `string` | `*` |
 | headers | Set request headers | `object` | `{}` |
 | data | Uploading extra params or function which can return uploading extra params formData | `object` | `{}` |
 | uploadIcon | Upload area<a href="#/zh-CN/icon">icon name</a> | `React.ReactNode` | `-` |
 | uploadLabel | Upload area tip | `React.ReactNode` | `-` |
 | xhrState | The success status (status) value of the interface response | `number` | `200` |
-| withCredentials | Support for sending cookie credential information | `boolean` | `false` |
+| withCredentials | Support for sending cookie credential information | `boolean` | `true` |
 | multiple | Whether to support multiple file selection | `boolean` | `false` |
 | disabled | Whether to disable file upload | `boolean` | `false` |
 | timeout | timeout, in milliseconds | `number` \| `string` | `1000 * 30` |

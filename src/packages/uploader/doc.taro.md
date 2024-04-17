@@ -145,6 +145,7 @@ import { Uploader } from '@nutui/nutui-react-taro';
 | uploadIcon | 上传区域<a href="#/zh-CN/icon">图标名称</a> | `ReactNode` | `-` |
 | uploadLabel | 上传区域图片下方文字 | `string` | `&quot;&quot;` |
 | xhrState | 接口响应的成功状态（status）值 | `number` | `200` |
+| withCredentials | 支持發送 cookie 憑證信息 | `Boolean` | `true` |
 | disabled | 是否禁用文件上传 | `boolean` | `false` |
 | multiple | 是否支持文件多选 | `boolean` | `false` |
 | timeout | 超时时间，单位为毫秒 | `number` \| `string`   | `1000 * 30` |
