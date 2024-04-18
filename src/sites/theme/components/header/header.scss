@@ -163,10 +163,8 @@
     .header {
       &-logo {
         .logo-link {
-          background-image: url('../../assets/images/logo-header-white.png'); /* 设置背景图像 */
-          background-repeat: no-repeat; /* 背景图像不重复 */
-          background-position: center; /* 背景图像在容器中居中显示 */
-          background-size: 100%; /* 背景图像的尺寸调整为容器宽度的100%，高度会自动调整以保持图像的宽高比 */
+          background: url('../../assets/images/logo-header-white.png') no-repeat
+            center/100%;
         }
         .logo-border {
           background: $theme-red-border;
