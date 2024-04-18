@@ -16,8 +16,6 @@ const Demo2 = () => {
             radius="50%"
           />
         </Col>
-      </Row>
-      <Row gutter={10}>
         <Col span="8">
           <Image
             src={src}
@@ -27,8 +25,6 @@ const Demo2 = () => {
             radius="50%"
           />
         </Col>
-      </Row>
-      <Row gutter={10}>
         <Col span="8">
           <Image
             src={src}
