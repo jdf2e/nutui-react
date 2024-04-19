@@ -1,5 +1,6 @@
 import React from 'react'
-import { Cell, Col, Image } from '@nutui/nutui-react-taro'
+import { Cell, Image, Row, Col } from '@nutui/nutui-react-taro'
+import { pxTransform } from '@tarojs/taro'
 
 const Demo7 = () => {
   const src =
@@ -7,23 +8,84 @@ const Demo7 = () => {
   return (
     <>
       <Cell style={{ flexWrap: 'wrap' }}>
-        {[
-          'top',
-          'bottom',
-          'center',
-          'left',
-          'right',
-          'top left',
-          'top right',
-          'bottom left',
-          'bottom right',
-        ].map((mode) => {
-          return (
-            <Col span="8" key={mode}>
-              <Image src={src} mode={mode as any} width="80" height="80" />
-            </Col>
-          )
-        })}
+        <Row gutter={5}>
+          <Col span={8}>
+            <Image
+              src={src}
+              mode="top"
+              width={pxTransform(80)}
+              height={pxTransform(80)}
+            />
+          </Col>
+          <Col span={8}>
+            <Image
+              src={src}
+              mode="bottom"
+              width={pxTransform(80)}
+              height={pxTransform(80)}
+            />
+          </Col>
+          <Col span={8}>
+            <Image
+              src={src}
+              mode="center"
+              width={pxTransform(80)}
+              height={pxTransform(80)}
+            />
+          </Col>
+        </Row>
+        <Row gutter={5}>
+          <Col span={8}>
+            <Image
+              src={src}
+              mode="left"
+              width={pxTransform(80)}
+              height={pxTransform(80)}
+            />
+          </Col>
+          <Col span={8}>
+            <Image
+              src={src}
+              mode="right"
+              width={pxTransform(80)}
+              height={pxTransform(80)}
+            />
+          </Col>
+          <Col span={8}>
+            <Image
+              src={src}
+              mode="top left"
+              width={pxTransform(80)}
+              height={pxTransform(80)}
+            />
+          </Col>
+        </Row>
+        <Row gutter={5}>
+          <Col span={8}>
+            <Image
+              src={src}
+              mode="top right"
+              width={pxTransform(80)}
+              height={pxTransform(80)}
+            />
+          </Col>
+          <Col span={8}>
+            <Image
+              src={src}
+              mode="bottom left"
+              width={pxTransform(80)}
+              height={pxTransform(80)}
+            />
+          </Col>
+          <Col span={8}>
+            <Image
+              src={src}
+              mode="bottom right"
+              width={pxTransform(80)}
+              height={pxTransform(80)}
+            />
+          </Col>
+        </Row>
       </Cell>
     </>
   )

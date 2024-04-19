@@ -109,8 +109,8 @@
   font-size: 12px;
 }
 .nut-button-primary {
-  color: #ffffff;
-  background: linear-gradient(135deg, #f53d4d 0%, #fa2c19 100%);
+  color: red;
+  background: yellow;
   background-origin: border-box;
   border: 1px solid transparent;
 }

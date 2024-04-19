@@ -52,15 +52,6 @@
       },
       {
         "name": "ohos.permission.GET_BUNDLE_INFO"
-      },
-      {
-        "name": "ohos.permission.LOCATION"
-      },
-      {
-        "name": "ohos.permission.APPROXIMATELY_LOCATION"
-      },
-      {
-        "name": "ohos.permission.LOCATION_IN_BACKGROUND"
       }
     ]
   }
