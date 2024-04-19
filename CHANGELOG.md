@@ -1,3 +1,13 @@
+# v2.6.1
+`2024-04-19`
+
+
+* :bug: fix(image): standardize demos (#2177) @Alex-huxiyang
+* :bug: fix(cellgroup): 去掉 cellgroup 未单独使用的 style 属性 (#2176) @kurisu994
+* :bug: fix(site): png url error & key duplicate (#2178) @Alex-huxiyang
+* :bug: fix(swiper): 异步加载 indicator 不显示 (#2167) @Alex-huxiyang
+
+
 # v2.6.0
 `2024-04-12`
 
