@@ -24,7 +24,7 @@ const Nav = () => {
       <ol>
         {cNav.map((cn: any) => {
           return (
-            <Fragment key={cn.name}>
+            <Fragment key={cn.enName}>
               {cn.enName === 'dentry1' ? null : (
                 <li>{lang === 'zh-CN' ? cn.name : cn.enName}</li>
               )}
