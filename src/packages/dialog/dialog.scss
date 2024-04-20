@@ -12,10 +12,6 @@
   padding: $dialog-padding;
   box-sizing: border-box;
 
-  &-overlay {
-    --nutui-overlay-zIndex: 1200;
-  }
-
   &-outer {
     position: fixed;
     max-height: 100%;
