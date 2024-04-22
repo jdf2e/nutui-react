@@ -437,6 +437,7 @@ $cell-group-background-color: var(
   --nutui-cell-group-background-color,
   $color-background-overlay
 ) !default;
+$cell-group-wrap-margin: var(--nutui-cell-group-wrap-margin, 10px 0) !default;
 
 // divider（✅）
 $divider-margin: var(--nutui-divider-margin, 16px 0) !default;
