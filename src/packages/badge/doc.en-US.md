@@ -111,3 +111,4 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-badge-content-transform | badge content transform | `translateY(-50%) translateX(100%)` |
 | \--nutui-badge-z-index | when badge is icon, badge z-index | `1` |
 | \--nutui-badge-dot-width | when badge is dot, the dot width,height and border radius | `7px` |
+| \--nutui-badge-dot-border | when badge is dot, the dot border | `0px solid $color-primary-text` |
