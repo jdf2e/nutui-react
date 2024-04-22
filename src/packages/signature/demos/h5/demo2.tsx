@@ -2,9 +2,13 @@ import React, { useRef } from 'react'
 import { Signature, Button } from '@nutui/nutui-react'
 
 const Demo2 = () => {
-  const confirm = (canvas: HTMLCanvasElement, data: string) => {
+  const confirm = (canvas: HTMLCanvasElement, dataurl: string) => {
+    console.log(`图片地址 ${dataurl}`)
+    if (document.querySelector('.demo2 img')) {
+      return
+    }
     const img = document.createElement('img')
-    img.src = data
+    img.src = dataurl
     const demo = document.querySelector('.demo2') as HTMLElement
     demo.appendChild(img)
   }
