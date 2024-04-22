@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { BasicComponent } from '@/utils/typings'
 
 const prefixCls = 'nut-space'
@@ -37,16 +38,16 @@ export const Space: FunctionComponent<
     className
   )
   return (
-    <div className={cls} style={style}>
+    <View className={cls} style={style}>
       {React.Children.map(children, (child) => {
         return (
           child !== null &&
           child !== undefined && (
-            <div className={`${prefixCls}-item`}>{child}</div>
+            <View className={`${prefixCls}-item`}>{child}</View>
           )
         )
       })}
-    </div>
+    </View>
   )
 }
 
