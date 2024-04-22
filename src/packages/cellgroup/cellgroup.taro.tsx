@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactNode } from 'react'
-
+import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import CellGroupContext from '@/packages/cellgroup/context'
@@ -28,12 +28,12 @@ export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
     ...props,
   }
   return (
-    <div className={classNames(classPrefix, className)} {...rest}>
-      {title ? <div className={`${classPrefix}-title`}>{title}</div> : null}
+    <View className={classNames(classPrefix, className)} {...rest}>
+      {title ? <View className={`${classPrefix}-title`}>{title}</View> : null}
       {description ? (
-        <div className={`${classPrefix}-description`}>{description}</div>
+        <View className={`${classPrefix}-description`}>{description}</View>
       ) : null}
-      <div
+      <View
         className={`${classPrefix}-wrap ${
           divider ? `${classPrefix}-wrap-divider` : ''
         }`}
@@ -41,8 +41,8 @@ export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
         <CellGroupContext.Provider value={{ divider }}>
           {children}
         </CellGroupContext.Provider>
-      </div>
-    </div>
+      </View>
+    </View>
   )
 }
 
