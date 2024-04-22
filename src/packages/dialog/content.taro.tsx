@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode, HTMLAttributes } from 'react'
 import classNames from 'classnames'
-import { ITouchEvent } from '@tarojs/components'
+import { ITouchEvent, View } from '@tarojs/components'
 import { BasicComponent } from '@/utils/typings'
 
 interface ContentProps extends BasicComponent {
@@ -31,18 +31,20 @@ export const Content: FunctionComponent<
   const classPrefix = 'nut-dialog'
 
   const renderHeader = () => {
-    return title ? <div className={`${classPrefix}-header`}>{title}</div> : null
+    return title ? (
+      <View className={`${classPrefix}-header`}>{title}</View>
+    ) : null
   }
 
   const renderFooter = () => {
     return footer ? (
-      <div
+      <View
         className={classNames(`${classPrefix}-footer`, {
           [footerDirection as any]: footerDirection,
         })}
       >
         {footer}
-      </div>
+      </View>
     ) : null
   }
 
@@ -51,24 +53,24 @@ export const Content: FunctionComponent<
   }
 
   return (
-    <div
+    <View
       className={classNames(`${classPrefix}-outer`, props.className)}
       style={props.style}
       onClick={(e) => handleClick(e)}
     >
       {close}
       {header}
-      <div
+      <View
         className={classPrefix}
         style={{ display: visible ? 'flex' : 'none' }}
       >
         {renderHeader()}
-        <div className={`${classPrefix}-content`}>
+        <View className={`${classPrefix}-content`}>
           <>{children}</>
-        </div>
+        </View>
         {renderFooter()}
-      </div>
-    </div>
+      </View>
+    </View>
   )
 }
 

@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import '@/packages/layout/demo.scss'
 import Header from '@/sites/components/header'
@@ -33,20 +34,20 @@ const LayoutDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} full`}>
+      <View className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} full`}>
         <h2>{translated.title1}</h2>
-        <div className="box-item">
+        <View className="box-item">
           <Demo1 />
-        </div>
+        </View>
         <h2>{translated.title2}</h2>
-        <div className="box-item">
+        <View className="box-item">
           <Demo2 />
-        </div>
+        </View>
         <h2>{translated.title3}</h2>
-        <div className="box-item">
+        <View className="box-item">
           <Demo3 />
-        </div>
-      </div>
+        </View>
+      </View>
     </>
   )
 }

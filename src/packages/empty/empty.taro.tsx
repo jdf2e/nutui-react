@@ -1,5 +1,6 @@
 import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import type { EmptyAction } from './types'
@@ -52,7 +53,8 @@ export const Empty: FunctionComponent<
     size,
     status,
     actions,
-    ...rest
+    style,
+    // ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -91,22 +93,22 @@ export const Empty: FunctionComponent<
   const cls = classNames(classPrefix, classes, className)
 
   return (
-    <div className={cls} {...rest}>
-      <div className={`${classPrefix}-image`} style={imgStyle}>
+    <View className={cls} style={style}>
+      <View className={`${classPrefix}-image`} style={imgStyle}>
         {imageNode}
-      </div>
+      </View>
       {typeof title === 'string' && title ? (
-        <div className={`${classPrefix}-title`}>{title}</div>
+        <View className={`${classPrefix}-title`}>{title}</View>
       ) : (
         title
       )}
       {typeof description === 'string' ? (
-        <div className={`${classPrefix}-description`}>{description}</div>
+        <View className={`${classPrefix}-description`}>{description}</View>
       ) : (
         description
       )}
       {actions.length > 0 && (
-        <div className={`${classPrefix}-actions`}>
+        <View className={`${classPrefix}-actions`}>
           {actions.map((item, index) => {
             return (
               <Button
@@ -126,10 +128,10 @@ export const Empty: FunctionComponent<
               </Button>
             )
           })}
-        </div>
+        </View>
       )}
       {children}
-    </div>
+    </View>
   )
 }
 

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { CSSTransition } from 'react-transition-group'
+import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import {
   customEvents,
@@ -106,13 +107,13 @@ export const Notify: FunctionComponent<Partial<NotifyProps>> & {
         position={position}
         id={id}
       >
-        <div
+        <View
           className={`${classes} ${className}`}
           style={style}
           onClick={clickHandle}
         >
           {children}
-        </div>
+        </View>
       </CSSTransition>
     </>
   )
