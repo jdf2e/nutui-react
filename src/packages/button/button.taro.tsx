@@ -5,7 +5,6 @@ import { ButtonProps as MiniProgramButtonProps } from '@tarojs/components'
 import { Loading } from '@nutui/icons-react-taro'
 import { getEnv } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import './button.harmony.css'
 
 type OmitMiniProgramButtonProps = Omit<
   MiniProgramButtonProps,
