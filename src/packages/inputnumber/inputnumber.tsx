@@ -76,7 +76,7 @@ export const InputNumber: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const classes = classNames(classPrefix, {
+  const classes = classNames(classPrefix, className, {
     [`${classPrefix}-disabled`]: disabled,
   })
   const [focused, setFocused] = useState(false)
