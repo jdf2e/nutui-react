@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useRef } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { AvatarContext } from './context'
-
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface AvatarGroupProps extends BasicComponent {
@@ -40,9 +40,9 @@ export const AvatarGroup: FunctionComponent<
   }
   return (
     <AvatarContext.Provider value={parentAvatar}>
-      <div className={cls} style={style} ref={avatarGroupRef}>
+      <View className={cls} style={style} ref={avatarGroupRef}>
         {children}
-      </div>
+      </View>
     </AvatarContext.Provider>
   )
 }

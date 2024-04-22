@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import type { MouseEvent } from 'react'
 import classNames from 'classnames'
-import { View } from '@tarojs/components'
+import { View, ITouchEvent } from '@tarojs/components'
 import { DataContext } from './context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -13,7 +13,10 @@ export interface RowProps extends BasicComponent {
   align: string
   wrap: string
   gutter: string | number
-  onClick: (e: MouseEvent<HTMLDivElement>, type: RowEventType) => void
+  onClick: (
+    e: React.MouseEvent<Element, MouseEvent> | ITouchEvent,
+    type: RowEventType
+  ) => void
 }
 
 const classPrefix = 'nut-row'

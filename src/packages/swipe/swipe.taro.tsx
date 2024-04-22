@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import type { MouseEvent } from 'react'
 import classNames from 'classnames'
-import { View } from '@tarojs/components'
+import { View, ITouchEvent } from '@tarojs/components'
 import { nextTick, useReady } from '@tarojs/taro'
 import { BaseEventOrig } from '@tarojs/components/types/common'
 import { useTouch } from '@/utils/use-touch'
@@ -52,7 +52,7 @@ export interface SwipeProps extends BasicComponent {
     position: SwipeSide
   }) => void
   onActionClick?: (
-    event: MouseEvent<HTMLDivElement>,
+    event: React.MouseEvent<Element, MouseEvent> | ITouchEvent,
     position: SwipeSide
   ) => void
   onTouchStart?: (event: BaseEventOrig<HTMLDivElement>) => void
@@ -234,19 +234,19 @@ export const Swipe = forwardRef<
   const renderActionContent = (side: SwipeSide) => {
     if (props[`${side}Action`]) {
       return (
-        <div
+        <View
           ref={side === 'left' ? leftWrapper : rightWrapper}
           className={`${classPrefix}-${side}`}
           onClick={(e) => handleOperate(e, side)}
         >
           {props[`${side}Action`]}
-        </div>
+        </View>
       )
     }
     return null
   }
   const handleOperate = (
-    event: MouseEvent<HTMLDivElement>,
+    event: React.MouseEvent<Element, MouseEvent> | ITouchEvent,
     position: SwipeSide
   ) => {
     event.stopPropagation()
@@ -292,11 +292,11 @@ export const Swipe = forwardRef<
       onTouchEnd={(e) => onTouchEnd(e)}
       style={style}
     >
-      <div className={`${classPrefix}-wrapper`} style={wrapperStyle}>
+      <View className={`${classPrefix}-wrapper`} style={wrapperStyle}>
         {renderActionContent('left')}
         {children}
         {renderActionContent('right')}
-      </div>
+      </View>
     </View>
   )
 })
