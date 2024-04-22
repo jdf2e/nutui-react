@@ -1,12 +1,12 @@
 import React from 'react'
-import { Cell, Col, Image } from '@nutui/nutui-react-taro'
+import { Row, Col, Image } from '@nutui/nutui-react-taro'
 
 const Demo6 = () => {
   const src =
     'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
   return (
     <>
-      <Cell style={{ flexWrap: 'wrap' }}>
+      <Row gutter={10}>
         {[
           'scaleToFill',
           'aspectFit',
@@ -20,7 +20,7 @@ const Demo6 = () => {
             </Col>
           )
         })}
-      </Cell>
+      </Row>
     </>
   )
 }

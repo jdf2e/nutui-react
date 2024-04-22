@@ -1562,7 +1562,7 @@ $badge-border-radius: var(
   --nutui-badge-border-radius,
   calc($badge-height/2)
 ) !default;
-$badge-min-width: var(--nutui-badge-min-width, 10px) !default;
+$badge-min-width: var(--nutui-badge-min-width, 8px) !default;
 $badge-padding: var(--nutui-badge-padding, 0 4px) !default;
 $badge-icon-padding: var(--nutui-badge-icon-padding, 3px) !default;
 $badge-icon-size: var(--nutui-badge-icon-size, 12px) !default;
@@ -1571,7 +1571,8 @@ $badge-content-transform: var(
   translateY(-50%) translateX(100%)
 ) !default;
 $badge-z-index: var(--nutui-badge-z-index, 1) !default;
-$badge-dot-width: var(--nutui-badge-dot-width, 7px) !default;
+$badge-dot-width: var(--nutui-badge-dot-width, 8px) !default;
+$badge-dot-border: var(--nutui-badge-dot-border, none);
 
 //popover（✅）
 $popover-border-radius: var(--nutui-popover-border-radius, $radius-s) !default;

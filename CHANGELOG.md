@@ -1,13 +1,37 @@
+# v2.6.1
+`2024-04-19`
+
+
+* :bug: fix(image): standardize demos (#2177) @Alex-huxiyang
+* :bug: fix(cellgroup): 去掉 cellgroup 未单独使用的 style 属性 (#2176) @kurisu994
+* :bug: fix(site): png url error & key duplicate (#2178) @Alex-huxiyang
+* :bug: fix(swiper): 异步加载 indicator 不显示 (#2167) @Alex-huxiyang
+
+
+# v2.6.0
+`2024-04-12`
+
+* 🪵 refactor(swiper):  H5 下实现重构，增加 focus 模式 (#1962) @oasis-cloud
+* :sparkles: feat: input 的 onFocus 增加 height 键盘高度参数 (#2154) @alex.zeng
+* :bug: fix(drag): demo拆解与规范 (#2163) @eiinu
+* :bug: fix(form): 可定义 fontsize (#2162) @oasis-cloud
+* 🏡 chore(picker): demo拆解与规范 (#2157) @Alex-huxiyang
+* 🏡 chore(radio): demo拆解与规范 (#2158) @LuckyLucy
+* 🏡 chore(menu): demo拆解与规范 (#2153) @Alex-huxiyang
+* 🏡 chore(loading): demo拆解与规范 (#2155) @Alex-huxiyang
+* 🏡 chore(notify): demo拆解与规范 (#2151) @Alex-huxiyang
+
+
 # v2.5.2
 `2024-04-03`
 
 
 * 🏡 chore(form): demo拆解与规范 (#2148) @oasis-cloud
-* 🏡 chore(countdown): demo拆解与规范 (#2147) @Alex.huxiyang
-* 🏡 chore(cascader): demo拆解与规范 (#2144) @Alex.huxiyang
-* 🏡 chore(checkbox): demo拆解与规范 (#2146) @Alex.huxiyang
+* 🏡 chore(countdown): demo拆解与规范 (#2147) @Alex-huxiyang
+* 🏡 chore(cascader): demo拆解与规范 (#2144) @Alex-huxiyang
+* 🏡 chore(checkbox): demo拆解与规范 (#2146) @Alex-huxiyang
 * :bug: fix(calendarcard):  直接抛出ondayclick (#2150) @oasis-cloud
-* :bug: fix(radio): 样式变量修复(issue) (#2149) @Alex.huxiyang
+* :bug: fix(radio): 样式变量修复(issue) (#2149) @Alex-huxiyang
 
 
 # v2.5.1
