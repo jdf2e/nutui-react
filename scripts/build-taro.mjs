@@ -258,6 +258,7 @@ async function buildCSS(p) {
   const cssFiles = await glob(['src/packages/**/*.scss'], {
     ignore: ['src/packages/**/demo.scss'],
   })
+
   const variables = await readFile(
     join(__dirname, '../src/styles/variables.scss'),
   )
@@ -285,6 +286,12 @@ async function buildCSS(p) {
       join('dist/cjs', cssPath, 'style/css.js'),
       `import './style.css'`,
     )
+
+    // copy harmonycss
+    if(file.indexOf('countup') === -1) {
+      await copy(join(__dirname, '../', file.replace('scss', 'harmony.css')), join('dist/cjs', cssPath, 'style/style.harmony.css'))
+      await copy(join(__dirname, '../', file.replace('scss', 'harmony.css')), join('dist/es', cssPath, 'style/style.harmony.css'))
+    }
 
     // 删除 import
     // 写入 style.scss
@@ -334,6 +341,7 @@ async function buildCSS(p) {
     )
     await dest(join('dist/es', cssPath, `style/index.js`), jsContent.join('\n'))
   }
+
 }
 
 console.log('clean dist')
