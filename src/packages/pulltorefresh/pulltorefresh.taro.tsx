@@ -167,15 +167,15 @@ export const PullToRefresh: FunctionComponent<Partial<PullToRefreshProps>> = (
       onTouchEnd={handleTouchEnd}
     >
       <View style={springStyles} className={`${classPrefix}-head`}>
-        <div
+        <View
           className={`${classPrefix}-head-content`}
           style={{ height: headHeight }}
         >
-          <div>{renderStatusIcon()}</div>
-          <div>{renderStatusText()}</div>
-        </div>
+          <View>{renderStatusIcon()}</View>
+          <View>{renderStatusText()}</View>
+        </View>
       </View>
-      <div className={`${classPrefix}-content`}>{props.children}</div>
+      <View className={`${classPrefix}-content`}>{props.children}</View>
     </View>
   )
 }

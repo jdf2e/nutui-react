@@ -69,7 +69,7 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
     if (React.isValidElement(indicator)) return indicator
     if (indicator === true) {
       return (
-        <div
+        <View
           className={classNames({
             [`${classPrefix}-indicator`]: true,
             [`${classPrefix}-indicator-vertical`]: direction === 'vertical',
@@ -80,7 +80,7 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
             total={childrenCount.current}
             direction={direction}
           />
-        </div>
+        </View>
       )
     }
     return null

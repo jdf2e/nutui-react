@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useState } from 'react'
 import type { MouseEvent } from 'react'
 import { usePageScroll, pageScrollTo } from '@tarojs/taro'
+import { View, ITouchEvent } from '@tarojs/components'
 import { Top } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -10,7 +11,7 @@ export interface BackTopProps extends BasicComponent {
   threshold: number
   zIndex: number
   duration: number
-  onClick?: (event: MouseEvent<HTMLDivElement>) => void
+  onClick?: (event: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
 }
 
 const defaultProps = {
@@ -40,7 +41,7 @@ export const BackTop: FunctionComponent<
   })
 
   // 返回顶部点击事件
-  const goTop = (e: MouseEvent<HTMLDivElement>) => {
+  const goTop = (e: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => {
     onClick && onClick(e)
     pageScrollTo({
       scrollTop: 0,
@@ -61,7 +62,7 @@ export const BackTop: FunctionComponent<
         }
 
   return (
-    <div
+    <View
       className={classNames(
         classPrefix,
         {
@@ -75,7 +76,7 @@ export const BackTop: FunctionComponent<
       }}
     >
       {children || <Top size={19} className="nut-backtop-main" />}
-    </div>
+    </View>
   )
 }
 

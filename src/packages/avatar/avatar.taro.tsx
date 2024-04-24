@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import type { MouseEvent } from 'react'
 import Taro, { getEnv } from '@tarojs/taro'
+import { View, ITouchEvent } from '@tarojs/components'
 import classNames from 'classnames'
 import { User } from '@nutui/icons-react-taro'
 import Image from '@/packages/image/index.taro'
@@ -23,7 +24,7 @@ export interface AvatarProps extends BasicComponent {
   fit: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down'
   src: string
   alt: string
-  onClick: (e: MouseEvent<HTMLDivElement>) => void
+  onClick: (e: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
   onError: () => void
 }
 
@@ -59,7 +60,7 @@ export const Avatar: FunctionComponent<
     style,
     onClick,
     onError,
-    ...rest
+    // ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -149,7 +150,9 @@ export const Avatar: FunctionComponent<
     }
   }
 
-  const clickAvatar = (e: MouseEvent<HTMLDivElement>) => {
+  const clickAvatar = (
+    e: React.MouseEvent<Element, MouseEvent> | ITouchEvent
+  ) => {
     onClick && onClick(e)
   }
 
@@ -158,9 +161,9 @@ export const Avatar: FunctionComponent<
       {(showMax ||
         !parent?.propAvatarGroup?.max ||
         avatarIndex <= parent?.propAvatarGroup?.max) && (
-        <div
+        <View
           className={cls}
-          {...rest}
+          // {...rest}
           style={!showMax ? styles : maxStyles}
           onClick={clickAvatar}
           ref={avatarRef}
@@ -188,15 +191,15 @@ export const Avatar: FunctionComponent<
           )}
           {/* 折叠头像 */}
           {showMax && (
-            <div className="text">
+            <View className="text">
               {parent?.propAvatarGroup?.maxContent
                 ? parent?.propAvatarGroup?.maxContent
                 : `+ ${
                     avatarIndex - Number(parent?.propAvatarGroup?.max || 0)
                   }`}
-            </div>
+            </View>
           )}
-        </div>
+        </View>
       )}
     </>
   )

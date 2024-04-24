@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import { Minus, Plus } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
-import { InputProps } from '@tarojs/components'
+import { InputProps, View } from '@tarojs/components'
 import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -217,15 +217,15 @@ export const InputNumber: FunctionComponent<
   }
 
   return (
-    <div className={classes} style={style} {...restProps}>
-      <div className="nut-input-minus">
+    <View className={classes} style={style}>
+      <View className="nut-input-minus">
         <Minus
           className={classNames('nut-inputnumber-icon icon-minus', {
             [`${classPrefix}-icon-disabled`]: shadowValue === min || disabled,
           })}
           onClick={handleReduce}
         />
-      </div>
+      </View>
       <>
         <input
           className="nut-number-input"
@@ -240,15 +240,15 @@ export const InputNumber: FunctionComponent<
           onFocus={handleFocus}
         />
       </>
-      <div className="nut-input-add">
+      <View className="nut-input-add">
         <Plus
           className={classNames('nut-inputnumber-icon icon-plus', {
             [`${classPrefix}-icon-disabled`]: shadowValue === max || disabled,
           })}
           onClick={handlePlus}
         />
-      </div>
-    </div>
+      </View>
+    </View>
   )
 }
 

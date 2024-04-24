@@ -6,6 +6,7 @@ import React, {
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
+import { View } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { padZero } from '@/utils/pad-zero'
@@ -283,13 +284,13 @@ const InternalCountDown: ForwardRefRenderFunction<
   })()
 
   return (
-    <div
+    <View
       className={`${classPrefix} ${className}`}
       style={{ ...style }}
       {...rest}
     >
       {children || (
-        <div
+        <View
           className={`${classPrefix}-block`}
           // eslint-disable-next-line react/no-danger
           dangerouslySetInnerHTML={{
@@ -297,7 +298,7 @@ const InternalCountDown: ForwardRefRenderFunction<
           }}
         />
       )}
-    </div>
+    </View>
   )
 }
 
