@@ -36,7 +36,7 @@ import { Tag } from '@nutui/nutui-react-taro';
 
 :::
 
-### 自定义颜色
+### 图文
 
 :::demo
 
