@@ -63,9 +63,11 @@ export class Upload {
           }
         }
       }
-      xhr.withCredentials = options.withCredentials
       xhr.open(options.method, options.url, true)
       // headers
+      if (options.withCredentials && 'withCredentials' in xhr) {
+        xhr.withCredentials = true
+      }
       for (const [key, value] of Object.entries(options.headers)) {
         xhr.setRequestHeader(key, value as string)
       }
