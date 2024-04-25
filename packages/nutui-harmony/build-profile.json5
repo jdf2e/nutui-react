@@ -1,29 +1,6 @@
 {
   "app": {
-    "signingConfigs": [
-      {
-        "name": "default",
-        "type": "HarmonyOS",
-        "material": {
-          "certpath": "/Users/songchenglin1/.ohos/config/default_nutui-harmony_Nz4tmgCdubwABFnj6MhoirH4oKxmwcmXWJo6H9-XXKI=.cer",
-          "storePassword": "0000001B926C9279F1F7AD8B99B2779AB61386A5BE6C67DE34BE15BF8F687B5C03D41EB2931A950F7E18EC",
-          "keyAlias": "debugKey",
-          "keyPassword": "0000001BD79DD2AB085B156FDC004FC7601C7245AEF2C02445A786338CC44630C2D892570EC6D37A27A7B4",
-          "profile": "/Users/songchenglin1/.ohos/config/default_nutui-harmony_Nz4tmgCdubwABFnj6MhoirH4oKxmwcmXWJo6H9-XXKI=.p7b",
-          "signAlg": "SHA256withECDSA",
-          "storeFile": "/Users/songchenglin1/.ohos/config/default_nutui-harmony_Nz4tmgCdubwABFnj6MhoirH4oKxmwcmXWJo6H9-XXKI=.p12"
-        }
-      }
-    ],
-    "products": [
-      {
-        "name": "default",
-        "signingConfig": "default",
-        "compileSdkVersion": "4.1.0(11)",
-        "compatibleSdkVersion": "4.1.0(11)",
-        "runtimeOS": "HarmonyOS"
-      }
-    ],
+    "signingConfigs": [],
     "buildModeSet": [
       {
         "name": "debug"
