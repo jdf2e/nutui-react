@@ -26,7 +26,7 @@
     border-radius: $cell-border-radius;
     overflow: hidden;
     background-color: $cell-group-background-color;
-    margin: 10px 0;
+    margin: $cell-group-wrap-margin;
 
     .nut-cell {
       margin: 0;

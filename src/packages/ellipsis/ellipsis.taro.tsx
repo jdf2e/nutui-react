@@ -159,7 +159,7 @@ export const Ellipsis: FunctionComponent<
               bsize * 0.75,
             ]
 
-            if (rootContain.current) {
+            if (rootContain.current && rootContain.current.style) {
               rootContain.current.style.fontSize = `${bsize}px`
             }
             calcEllipse()
