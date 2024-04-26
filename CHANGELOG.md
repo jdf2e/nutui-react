@@ -1,3 +1,16 @@
+# v2.6.2
+`2024-04-26`
+
+* :bug: fix(datepicker): 修复受控方式下选项联动更新问题 (#2201) @eiinu
+* :bug: fix(signature): 调整清空时机并更新demo (#2190) @Alex-huxiyang
+* :bug: fix(ellipsis): 部分场景下的ref报错 (#2200) @Alex-huxiyang
+* :bug: fix(inputnumber): 修复设置`InputNumber`组件className不生效的问题 (#2188) @Kurisu
+:art: style: jmapp style 语义化 (#2052) @zhehu1
+:art: style(CellGroup): 给`CellGroup`组件新增外边距样式变量，使得使用者可以自由控制该外边距。 (#2189) @Kurisu
+:art: style(badge): jdesign badge 样式 (#2164) @zhehu1
+* 📖 docs(tag):修复demo描述错误 (#2204) @Jianhua
+
+
 # v2.6.1
 `2024-04-19`
 
