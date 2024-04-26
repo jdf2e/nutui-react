@@ -36,7 +36,7 @@ const Demo2 = () => {
         back={<ArrowLeft size={14} />}
         onBackClick={(e) => Taro.showToast({ title: '返回' })}
       >
-        <div className="title title-left">
+        <div className="title">
           <span onClick={(e) => Taro.showToast({ title: '清空' })}>
             浏览记录
           </span>
