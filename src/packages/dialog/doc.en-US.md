@@ -91,7 +91,9 @@ import { Dialog } from '@nutui/nutui-react'
 | content | The content of the dialog box is suitable for function calls | `ReactNode` | `-` |
 | footer | Customize the notes, but it will not be displayed in NULL | `ReactNode` | `-` |
 | confirmText | Confirm the button copywriting | `ReactNode` | `Sure` |
+| confirmButtonProps | Confirm button props | [`ButtonProps`](https://nutui.jd.com/h5/react/2x/#/zh-CN/component/button) | `-` |
 | cancelText | Cancellation of buttons | `ReactNode` | `Cancel` |
+| cancelButtonProps | Cancel button props | [`ButtonProps`](https://nutui.jd.com/h5/react/2x/#/zh-CN/component/button) | `-` |
 | overlay | Whether to show a overlay | `boolean` | `true` |
 | hideConfirmButton | Whether to hide the OK button | `boolean` | `false` |
 | hideCancelButton | Whether to hide the cancel button | `boolean` | `false` |

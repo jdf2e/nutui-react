@@ -1,6 +1,7 @@
 import { ReactNode, ForwardRefExoticComponent, PropsWithChildren } from 'react'
 import type { MouseEvent } from 'react'
 import { BasicComponent } from '@/utils/typings'
+import type { ButtonProps } from '@/packages/button'
 
 export type DialogConfigType = {
   prefixCls?: string
@@ -16,7 +17,9 @@ export interface DialogBasicProps extends BasicComponent {
   header?: ReactNode
   footer?: ReactNode
   confirmText?: ReactNode
+  confirmButtonProps?: Partial<ButtonProps>
   cancelText?: ReactNode
+  cancelButtonProps?: Partial<ButtonProps>
   overlay?: boolean
   hideConfirmButton?: boolean
   hideCancelButton?: boolean

@@ -320,10 +320,10 @@ export const CalendarCard = React.forwardRef<
   })
 
   const handleDayClick = (day: CalendarCardDay) => {
+    onDayClick?.(day)
     if (day.type === 'prev' || day.type === 'next' || isDisable(day)) {
       return
     }
-    onDayClick?.(day)
     switch (type) {
       case 'single': {
         if (innerValue[0] && isSameDay(innerValue[0], day)) {

@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react'
 import { Swiper } from '@nutui/nutui-react'
 
 const Demo2 = () => {
-  const [list, setList] = useState<string[]>([])
+  const [asyncList, setAsyncList] = useState<string[]>([])
   useEffect(() => {
     setTimeout(() => {
-      setList([
+      setAsyncList([
         'https://storage.360buyimg.com/jdc-article/NutUItaro34.jpg',
         'https://storage.360buyimg.com/jdc-article/NutUItaro2.jpg',
         'https://storage.360buyimg.com/jdc-article/welcomenutui.jpg',
@@ -15,14 +15,14 @@ const Demo2 = () => {
   }, [])
   return (
     <div className="demo-box" style={{ height: 150 }}>
-      {list.length ? (
-        <Swiper height={150} autoPlay="2000" defaultValue={0} indicator>
-          {list.map((item) => {
+      {setAsyncList.length ? (
+        <Swiper indicator>
+          {asyncList.map((item, index) => {
             return (
               <Swiper.Item key={item}>
                 <img
-                  src={item}
-                  alt=""
+                  src={asyncList[index]}
+                  alt={asyncList[index]}
                   style={{ width: '100%', height: '100%' }}
                   draggable={false}
                 />

@@ -9,22 +9,20 @@ const Demo8 = () => {
     'https://storage.360buyimg.com/jdc-article/fristfabu.jpg',
   ]
   return (
-    <div className="demo-box vertical-center">
+    <div className="demo-box" style={{ height: 150 }}>
       <Swiper
-        defaultValue={0}
+        loop
         direction="vertical"
-        autoPlay="0"
-        height="220"
+        style={{ '--swiper-offset': '13%' }}
+        slideSize={120}
         indicator
-        center
-        style={{ height: '280px' }}
       >
-        {list.map((item) => {
+        {list.map((item, index) => {
           return (
             <Swiper.Item key={item}>
               <img
-                src={item}
-                alt=""
+                src={list[index]}
+                alt={list[index]}
                 style={{ width: '100%', height: '100%' }}
                 draggable={false}
               />
