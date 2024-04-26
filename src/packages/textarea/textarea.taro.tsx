@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useRef } from 'react'
 import classNames from 'classnames'
 import Taro from '@tarojs/taro'
-import { Textarea, TextareaProps } from '@tarojs/components'
+import { Textarea, TextareaProps, View } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
@@ -93,7 +93,7 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
   }
 
   return (
-    <div
+    <View
       className={classNames(
         classPrefix,
         {
@@ -128,11 +128,11 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
         {...rest}
       />
       {showCount && (
-        <div className={`${classPrefix}-limit`}>
+        <View className={`${classPrefix}-limit`}>
           {inputValue.length}/{maxLength < 0 ? 0 : maxLength}
-        </div>
+        </View>
       )}
-    </div>
+    </View>
   )
 }
 

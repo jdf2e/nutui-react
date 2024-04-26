@@ -8,7 +8,7 @@ import React, {
 import classNames from 'classnames'
 import { StarFill } from '@nutui/icons-react-taro'
 import { useReady } from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import { View, ITouchEvent } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
@@ -102,7 +102,10 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
           ))
   }
 
-  const onClick = (e: React.MouseEvent, index: number) => {
+  const onClick = (
+    e: React.MouseEvent<Element, MouseEvent> | ITouchEvent,
+    index: number
+  ) => {
     e.preventDefault()
     e.stopPropagation()
     if (disabled || readOnly) return
@@ -114,7 +117,10 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     setScore(value)
   }
 
-  const onHalfClick = (event: React.MouseEvent<HTMLDivElement>, n: number) => {
+  const onHalfClick = (
+    event: React.MouseEvent<Element, MouseEvent> | ITouchEvent,
+    n: number
+  ) => {
     event.preventDefault()
     event.stopPropagation()
     const value = Math.max(min, n - 0.5)
@@ -209,21 +215,21 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
     >
       {countArray.map((n, index) => {
         return (
-          <div
+          <View
             className={`${classPrefix}-item`}
             key={n}
             ref={setRefs(index)}
             onClick={(event) => onClick(event, n)}
           >
-            <div
+            <View
               className={classNames(`${classPrefix}-item-icon`, {
                 [`${classPrefix}-item-icon-disabled`]: disabled || n > score,
               })}
             >
               {renderIcon(n)}
-            </div>
+            </View>
             {allowHalf && score > n - 1 && (
-              <div
+              <View
                 className={classNames(
                   `${classPrefix}-item-half`,
                   `${classPrefix}-item-icon`,
@@ -232,9 +238,9 @@ export const Rate: FunctionComponent<Partial<RateProps>> = (props) => {
                 onClick={(event) => onHalfClick(event, n)}
               >
                 {renderIcon(n)}
-              </div>
+              </View>
             )}
-          </div>
+          </View>
         )
       })}
     </View>

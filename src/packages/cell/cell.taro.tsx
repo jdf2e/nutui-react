@@ -1,5 +1,6 @@
 import React, { FunctionComponent, ReactNode, useContext } from 'react'
 import classNames from 'classnames'
+import { View, ITouchEvent } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { CellGroup } from '@/packages/cellgroup/cellgroup.taro'
 import CellGroupContext from '@/packages/cellgroup/context'
@@ -10,7 +11,7 @@ export interface CellProps extends BasicComponent {
   extra: ReactNode
   radius: string | number
   align: string
-  onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
+  onClick: (event: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
 }
 
 const defaultProps = {
@@ -20,7 +21,7 @@ const defaultProps = {
   extra: null,
   radius: '6px',
   align: 'flex-start',
-  onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
+  onClick: (event: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => {},
 } as CellProps
 
 const classPrefix = 'nut-cell'
@@ -39,13 +40,15 @@ export const Cell: FunctionComponent<
     align,
     className,
     style,
-    ...rest
+    // ...rest
   } = {
     ...defaultProps,
     ...props,
   }
 
-  const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleClick = (
+    event: React.MouseEvent<Element, MouseEvent> | ITouchEvent
+  ) => {
     onClick(event)
   }
 
@@ -62,38 +65,38 @@ export const Cell: FunctionComponent<
           flex: 1,
         }
   return (
-    <div
+    <View
       className={classNames(classPrefix, className)}
       onClick={(event) => handleClick(event)}
       style={baseStyle}
-      {...rest}
+      // {...rest}
     >
       {children || (
         <>
           {title || description ? (
-            <div className={`${classPrefix}-left`}>
+            <View className={`${classPrefix}-left`}>
               {title ? (
-                <div className={`${classPrefix}-title`}>{title}</div>
+                <View className={`${classPrefix}-title`}>{title}</View>
               ) : null}
               {description ? (
-                <div className={`${classPrefix}-description`}>
+                <View className={`${classPrefix}-description`}>
                   {description}
-                </div>
+                </View>
               ) : null}
-            </div>
+            </View>
           ) : null}
           {extra ? (
-            <div
+            <View
               className={`${classPrefix}-extra`}
               style={styles as React.CSSProperties}
             >
               {extra}
-            </div>
+            </View>
           ) : null}
         </>
       )}
-      {ctx?.divider ? <div className={`${classPrefix}-divider`} /> : null}
-    </div>
+      {ctx?.divider ? <View className={`${classPrefix}-divider`} /> : null}
+    </View>
   )
 }
 

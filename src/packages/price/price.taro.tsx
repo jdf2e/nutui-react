@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export interface PriceProps extends BasicComponent {
@@ -31,7 +32,7 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
     line,
     className,
     style,
-    ...rest
+    // ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -95,7 +96,7 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
 
   const renderSymbol = () => {
     return (
-      <div
+      <View
         className={`${classPrefix}-symbol ${classPrefix}-symbol-${size}`}
         dangerouslySetInnerHTML={showSymbol()}
       />
@@ -103,29 +104,29 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
   }
 
   return (
-    <div
+    <View
       className={`${classPrefix} ${
         line ? `${classPrefix}-line` : ''
       } ${className}`}
       style={style}
-      {...rest}
+      // {...rest}
     >
       {symbol && position === 'before' ? renderSymbol() : null}
-      <div className={`${classPrefix}-integer ${classPrefix}-integer-${size}`}>
+      <View className={`${classPrefix}-integer ${classPrefix}-integer-${size}`}>
         {formatThousands(price)}
-      </div>
+      </View>
       {digits !== 0 ? (
-        <div
+        <View
           className={`${classPrefix}-decimal ${classPrefix}-decimal-${size}`}
         >
           .
-        </div>
+        </View>
       ) : null}
-      <div className={`${classPrefix}-decimal ${classPrefix}-decimal-${size}`}>
+      <View className={`${classPrefix}-decimal ${classPrefix}-decimal-${size}`}>
         {formatDecimal(price)}
-      </div>
+      </View>
       {symbol && position === 'after' ? renderSymbol() : null}
-    </div>
+    </View>
   )
 }
 

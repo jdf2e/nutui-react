@@ -1,10 +1,11 @@
-import React, { FunctionComponent, MouseEventHandler, useContext } from 'react'
+import React, { FunctionComponent, useContext } from 'react'
 import {
   CheckChecked,
   CheckNormal,
   CheckDisabled,
 } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
+import { View, ITouchEvent } from '@tarojs/components'
 import RadioContext from '../radiogroup/context'
 import RadioGroup from '@/packages/radiogroup/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -55,7 +56,7 @@ export const Radio: FunctionComponent<
     ...props,
   }
   // eslint-disable-next-line prefer-const
-  let { labelPosition, disabled, ...rest } = others
+  let { labelPosition, disabled } = others
   // eslint-disable-next-line prefer-const
   let [checkedStatement, setCheckedStatement] = usePropsValue<boolean>({
     value: checked,
@@ -83,25 +84,25 @@ export const Radio: FunctionComponent<
 
   const renderLabel = () => {
     return (
-      <div
+      <View
         className={classNames(`${classPrefix}-label`, {
           [`${classPrefix}-label-disabled`]: disabled,
         })}
       >
         {children}
-      </div>
+      </View>
     )
   }
   const renderButton = () => {
     return (
-      <div
+      <View
         className={classNames(`${classPrefix}-button`, {
           [`${classPrefix}-button-active`]: checkedStatement,
           [`${classPrefix}-button-disabled`]: disabled,
         })}
       >
         {children}
-      </div>
+      </View>
     )
   }
   const color = () => {
@@ -149,13 +150,15 @@ export const Radio: FunctionComponent<
   const renderRadioItem = () => {
     return renderByShape(context && context.shape ? context.shape : shape)
   }
-  const handleClick: MouseEventHandler<HTMLDivElement> = (e) => {
+  const handleClick = (
+    e: React.MouseEvent<Element, MouseEvent> | ITouchEvent
+  ) => {
     if (disabled || checkedStatement) return
     setCheckedStatement(!checkedStatement)
   }
 
   return (
-    <div
+    <View
       className={classNames(
         classPrefix,
         {
@@ -165,10 +168,10 @@ export const Radio: FunctionComponent<
       )}
       style={style}
       onClick={handleClick}
-      {...rest}
+      // {...rest}
     >
       {renderRadioItem()}
-    </div>
+    </View>
   )
 }
 

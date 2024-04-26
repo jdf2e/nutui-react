@@ -1,5 +1,6 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 
 export interface IndicatorProps {
   total: number
@@ -15,7 +16,7 @@ const classPrefix = `nut-indicator`
 export const Indicator: FunctionComponent<
   Partial<IndicatorProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { total, current, children, className, direction, ...rest } = {
+  const { total, current, children, className, direction, style } = {
     ...defaultProps,
     ...props,
   }
@@ -28,22 +29,22 @@ export const Indicator: FunctionComponent<
       childs.push(
         item === current ? (
           children || (
-            <div
+            <View
               key={item}
               className={`${classPrefix}-dot ${classPrefix}-active`}
             />
           )
         ) : (
-          <div key={item} className={`${classPrefix}-dot`} />
+          <View key={item} className={`${classPrefix}-dot`} />
         )
       )
     }
     return childs
   }
   return (
-    <div className={classNames(classPrefix, classes, className)} {...rest}>
+    <View className={classNames(classPrefix, classes, className)} style={style}>
       {renderElement()}
-    </div>
+    </View>
   )
 }
 

@@ -5,7 +5,7 @@ import React, {
   ReactNode,
 } from 'react'
 import type { MouseEvent } from 'react'
-import { View } from '@tarojs/components'
+import { View, ITouchEvent } from '@tarojs/components'
 import { Close } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 
@@ -28,7 +28,7 @@ export interface TagProps extends BasicComponent {
   mark: boolean
   closeable: boolean
   closeIcon: ReactNode
-  onClick: (e: MouseEvent<HTMLDivElement>) => void
+  onClick: (e: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
   onClose: (e?: any) => void
 }
 
@@ -43,7 +43,7 @@ const defaultProps = {
   closeable: false,
   closeIcon: null,
   onClose: (e: any) => {},
-  onClick: (e: MouseEvent<HTMLDivElement>) => {},
+  onClick: (e: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => {},
 } as TagProps
 export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
   const {
@@ -76,7 +76,9 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     [`${className}`]: className,
   })
 
-  const handleClick = (e: MouseEvent<HTMLDivElement>) => {
+  const handleClick = (
+    e: React.MouseEvent<Element, MouseEvent> | ITouchEvent
+  ) => {
     onClick && onClick(e)
   }
   // 综合考虑 color、background、plain 组合使用时的效果
@@ -100,7 +102,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
     <>
       {closeable ? (
         visible && (
-          <div
+          <View
             className={classes}
             style={{ ...style, ...getStyle() }}
             onClick={(e) => handleClick(e)}
@@ -127,10 +129,10 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
                 }}
               />
             )}
-          </div>
+          </View>
         )
       ) : (
-        <div
+        <View
           className={classes}
           style={{ ...style, ...getStyle() }}
           onClick={(e) => handleClick(e)}
@@ -138,7 +140,7 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
           {children && (
             <span className={`${classPrefix}-text`}>{children}</span>
           )}
-        </div>
+        </View>
       )}
     </>
   )
