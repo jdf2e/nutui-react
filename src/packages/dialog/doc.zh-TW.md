@@ -91,9 +91,7 @@ import { Dialog } from '@nutui/nutui-react'
 | content | 對話框的內容，適用於函數式調用 | `ReactNode` | `-` |
 | footer | 自定義頁腳，傳入 null 則不顯示 | `ReactNode` | `-` |
 | confirmText | 確認按鈕文案 | `ReactNode` | `確定` |
-| confirmButtonProps | 確認按鈕 props | [`ButtonProps`](https://nutui.jd.com/h5/react/2x/#/zh-CN/component/button) | `-` |
 | cancelText | 取消按鈕文案 | `ReactNode` | `取消` |
-| cancelButtonProps | 取消按鈕 props | [`ButtonProps`](https://nutui.jd.com/h5/react/2x/#/zh-CN/component/button) | `-` |
 | overlay | 是否展示遮罩 | `boolean` | `true` |
 | hideConfirmButton | 是否隱藏確定按鈕 | `boolean` | `false` |
 | hideCancelButton | 是否隱藏取消按鈕 | `boolean` | `false` |
