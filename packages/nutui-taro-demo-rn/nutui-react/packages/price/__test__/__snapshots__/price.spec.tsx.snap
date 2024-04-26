@@ -1,0 +1,112 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`props digits test 1`] = `
+<div>
+  <div
+    class="nut-price  "
+  >
+    <div
+      class="nut-price-symbol nut-price-symbol-large"
+    >
+      ¥
+    </div>
+    <div
+      class="nut-price-integer nut-price-integer-large"
+    >
+      15213
+    </div>
+    <div
+      class="nut-price-decimal nut-price-decimal-large"
+    >
+      .
+    </div>
+    <div
+      class="nut-price-decimal nut-price-decimal-large"
+    >
+      122
+    </div>
+  </div>
+</div>
+`;
+
+exports[`props symbol test 1`] = `
+<div>
+  <div
+    class="nut-price  "
+  >
+    <div
+      class="nut-price-symbol nut-price-symbol-large"
+    >
+      $
+    </div>
+    <div
+      class="nut-price-integer nut-price-integer-large"
+    >
+      10010
+    </div>
+    <div
+      class="nut-price-decimal nut-price-decimal-large"
+    >
+      .
+    </div>
+    <div
+      class="nut-price-decimal nut-price-decimal-large"
+    >
+      00
+    </div>
+  </div>
+</div>
+`;
+
+exports[`props test 1`] = `
+<div>
+  <div
+    class="nut-price  "
+  >
+    <div
+      class="nut-price-integer nut-price-integer-large"
+    >
+      1,010
+    </div>
+    <div
+      class="nut-price-decimal nut-price-decimal-large"
+    >
+      .
+    </div>
+    <div
+      class="nut-price-decimal nut-price-decimal-large"
+    >
+      00
+    </div>
+  </div>
+</div>
+`;
+
+exports[`props thousands test 1`] = `
+<div>
+  <div
+    class="nut-price  "
+  >
+    <div
+      class="nut-price-symbol nut-price-symbol-large"
+    >
+      $
+    </div>
+    <div
+      class="nut-price-integer nut-price-integer-large"
+    >
+      10010
+    </div>
+    <div
+      class="nut-price-decimal nut-price-decimal-large"
+    >
+      .
+    </div>
+    <div
+      class="nut-price-decimal nut-price-decimal-large"
+    >
+      01
+    </div>
+  </div>
+</div>
+`;

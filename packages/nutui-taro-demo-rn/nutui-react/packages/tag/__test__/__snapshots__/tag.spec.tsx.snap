@@ -1,0 +1,15 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`type test 1`] = `
+<div>
+  <div
+    class="nut-tag nut-tag-primary"
+  >
+    <span
+      class="nut-tag-text"
+    >
+      TEST
+    </span>
+  </div>
+</div>
+`;

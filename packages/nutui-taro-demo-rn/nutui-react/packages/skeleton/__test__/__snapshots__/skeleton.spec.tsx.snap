@@ -1,0 +1,28 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should change avatar shape when using avatarShape prop 1`] = `
+<div
+  class="nut-avatar nut-avatar-normal nut-avatar-square nut-avatar avatar-square"
+  style="width: 50px; height: 50px; background-color: #eee; color: #666;"
+/>
+`;
+
+exports[`should change avatar size when using avatarSize prop 1`] = `
+<div>
+  <div
+    class="nut-skeleton"
+  >
+    <div
+      class="nut-skeleton-content"
+    >
+      <div
+        class="nut-avatar nut-avatar-normal nut-avatar-round nut-avatar avatar-round"
+        style="width: 20px; height: 20px; background-color: #eee; color: #666;"
+      />
+      <div
+        class="nut-skeleton-block"
+      />
+    </div>
+  </div>
+</div>
+`;

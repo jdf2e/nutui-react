@@ -1,0 +1,48 @@
+.nut-pulltorefresh {
+  &-head {
+    overflow: hidden;
+    position: relative;
+    font-size: 12px;
+
+    &-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      color: $color-title;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      &-icons {
+        width: $pulltorefresh-icon-width;
+        height: $pulltorefresh-icon-height;
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+  &-primary {
+    background: $pulltorefresh-color-primary;
+    .nut-pulltorefresh-content {
+      color: $color-text-dark;
+    }
+
+    .nut-pulltorefresh-head {
+      &-content {
+        color: $color-text-dark;
+      }
+    }
+  }
+}
+
+[dir='rtl'] .nut-pulltorefresh,
+.nut-rtl .nut-pulltorefresh {
+  &-head {
+    &-content {
+      left: auto;
+      right: 0;
+    }
+  }
+}

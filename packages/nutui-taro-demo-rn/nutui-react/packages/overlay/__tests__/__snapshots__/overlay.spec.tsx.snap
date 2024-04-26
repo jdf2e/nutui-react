@@ -1,0 +1,19 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`content test 1`] = `
+<div>
+  <div
+    class="nut-overlay"
+  >
+    <div
+      class="wrapper"
+    >
+      <div
+        class="content"
+      >
+        这里是正文
+      </div>
+    </div>
+  </div>
+</div>
+`;

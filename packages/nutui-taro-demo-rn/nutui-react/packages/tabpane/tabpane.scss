@@ -1,0 +1,15 @@
+.nut-tabpane {
+  width: 100%;
+  flex-shrink: 0;
+  display: block;
+  background-color: $color-background-overlay;
+  color: $color-title;
+  padding: 24px 20px;
+  box-sizing: border-box;
+  overflow: auto;
+
+  &.inactive {
+    overflow: visible;
+    height: 0;
+  }
+}

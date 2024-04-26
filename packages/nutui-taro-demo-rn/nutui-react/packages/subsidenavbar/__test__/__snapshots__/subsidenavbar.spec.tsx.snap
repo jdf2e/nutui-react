@@ -1,0 +1,30 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-subsidenavbar-list sidenavbar-hide"
+    level="1"
+  >
+    <div
+      class="nut-subsidenavbar-title nut-subsidenavbar-border-bt"
+      style="padding-left: 40px;"
+    >
+      一级标题 
+      <i
+        class="arrow-icon arrow-up"
+      />
+    </div>
+    <div
+      class="nut-subsidenavbar-content"
+    >
+      <div
+        class="nut-subsidenavbar-item nut-subsidenavbar-border-bt"
+        style="padding-left: 60px;"
+      >
+        一级内容1
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

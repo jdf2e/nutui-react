@@ -1,0 +1,136 @@
+@import '../popup/popup.scss';
+
+.nut-numberkeyboard {
+  width: 100%;
+  padding: $numberkeyboard-padding;
+  user-select: none;
+  background-color: $numberkeyboard-background-color;
+
+  &-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: content-box;
+    padding: $popup-title-padding;
+    color: $color-title;
+    font-size: $popup-title-font-size;
+
+    &-title {
+      color: $color-title;
+      display: inline-block;
+    }
+
+    &-close {
+      position: absolute;
+      display: block;
+      right: 0;
+      padding: $numberkeyboard-header-close-padding;
+      color: $numberkeyboard-header-close-color;
+      font-size: $numberkeyboard-header-close-font-size;
+      background-color: $numberkeyboard-header-close-background-color;
+      border: none;
+      cursor: pointer;
+    }
+  }
+
+  &-body {
+    display: flex;
+    padding: 6px 0 0 6px;
+
+    &-keys {
+      display: flex;
+      flex: 3;
+      flex-wrap: wrap;
+    }
+
+    &-wrapper {
+      position: relative;
+      flex: 1;
+      flex-basis: 33%;
+      box-sizing: border-box;
+      padding: 0 6px 6px 0;
+      background-color: $numberkeyboard-wrapper-background-color;
+
+      .key {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: $numberkeyboard-key-height;
+        font-size: $numberkeyboard-key-font-size;
+        line-height: $numberkeyboard-key-line-height;
+        background-color: $numberkeyboard-key-background-color;
+        color: $numberkeyboard-key-color;
+        border-radius: $numberkeyboard-key-border-radius;
+        border: $numberkeyboard-key-border;
+        font-weight: $font-weight-bold;
+        cursor: pointer;
+
+        &.active {
+          background-color: $numberkeyboard-key-active-background-color;
+        }
+      }
+    }
+  }
+
+  &-sidebar {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+
+    .nut-numberkeyboard-body-wrapper {
+      .key {
+        position: absolute;
+        top: 0;
+        right: 6px;
+        bottom: 6px;
+        left: 0;
+        height: auto;
+      }
+
+      .confirm {
+        font-size: $numberkeyboard-key-confirm-font-size;
+        color: $numberkeyboard-key-confirm-color;
+        background-color: $numberkeyboard-key-confirm-background-color;
+
+        &.active {
+          background-color: rgba(255, 0, 0, 0.7);
+        }
+      }
+    }
+  }
+}
+
+[dir='rtl'] .nut-popup,
+.nut-rtl .nut-popup {
+  .nut-numberkeyboard {
+    &-header {
+      &-close {
+        right: auto;
+        left: 0;
+      }
+    }
+
+    &-body {
+      padding: 6px 6px 0 0;
+      &-wrapper {
+        padding: 0 0 6px 6px;
+        .delete {
+          transform: rotate(-180deg);
+        }
+      }
+    }
+
+    &-sidebar {
+      .nut-numberkeyboard-body-wrapper {
+        .key {
+          left: 6px;
+          right: 0;
+          &.delete {
+            transform: rotate(-180deg);
+          }
+        }
+      }
+    }
+  }
+}

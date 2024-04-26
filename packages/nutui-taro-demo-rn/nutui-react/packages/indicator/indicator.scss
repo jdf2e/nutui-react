@@ -1,0 +1,68 @@
+.nut-indicator {
+  display: flex;
+  width: auto;
+  flex-wrap: nowrap;
+  align-items: center;
+
+  &-dot {
+    display: inline-block;
+    vertical-align: middle;
+    width: $indicator-dot-size;
+    height: $indicator-dot-size;
+    border-radius: 50%;
+    background-color: $indicator-dot-color;
+    margin: 0 $indicator-dot-margin;
+
+    &:first-child {
+      margin-left: 0px;
+    }
+
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+
+  &-active {
+    width: $indicator-dot-active-size;
+    border-radius: $indicator-border-radius;
+    background: $indicator-color;
+  }
+
+  &-vertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .nut-indicator-dot {
+      margin: $indicator-dot-margin 0;
+
+      &:first-child {
+        margin-top: 0px;
+      }
+
+      &:last-child {
+        margin-bottom: 0px;
+      }
+    }
+
+    .nut-indicator-active {
+      width: $indicator-dot-size;
+      height: $indicator-dot-active-size;
+    }
+  }
+}
+[dir='rtl'] .nut-indicator,
+.nut-rtl .nut-indicator {
+  &-dot {
+    &:first-child {
+      margin-left: $indicator-dot-margin;
+      margin-right: 0px;
+    }
+
+    &:last-child {
+      margin-right: $indicator-dot-margin;
+      margin-left: 0px;
+    }
+  }
+}

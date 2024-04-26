@@ -1,0 +1,69 @@
+.nut-infiniteloading {
+  display: block;
+  width: 100%;
+
+  .nut-infinite-top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    overflow: hidden;
+    font-size: $font-size-small;
+    color: $infiniteloading-color;
+
+    &-tips {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      &-icons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+  .nut-infinite-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding-top: 6px;
+    font-size: $font-size-small;
+    color: $infiniteloading-color;
+    text-align: center;
+
+    &-tips {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &-icons {
+        margin-right: 8px;
+      }
+    }
+  }
+  &-primary {
+    background-color: $color-primary;
+    .nut-infinite-bottom,
+    .nut-infinite-top {
+      color: $color-text-dark;
+    }
+  }
+}
+
+[dir='rtl'] .nut-infiniteloading,
+.nut-rtl .nut-infiniteloading {
+  .nut-infinite-bottom {
+    &-tips {
+      &-icons {
+        margin-right: 0;
+        margin-left: 8px;
+      }
+    }
+  }
+}

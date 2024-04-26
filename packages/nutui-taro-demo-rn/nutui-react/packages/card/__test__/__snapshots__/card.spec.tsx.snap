@@ -1,0 +1,535 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`description slot test 1`] = `
+<div>
+  <div
+    class="nut-card"
+  >
+    <div
+      class="nut-card-left"
+    >
+      <img
+        alt=""
+        src="//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg"
+      />
+    </div>
+    <div
+      class="nut-card-right"
+    >
+      <div
+        class="nut-card-right-title"
+      >
+        活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水
+      </div>
+      <div
+        class="search_prolist_attr"
+      >
+        <span
+          class="word"
+        >
+          鲜活
+        </span>
+        <span
+          class="word"
+        >
+          礼盒
+        </span>
+        <span
+          class="word"
+        >
+          国产
+        </span>
+      </div>
+      <div
+        class="nut-card-right-price"
+      >
+        <div
+          class="nut-price  "
+        >
+          <div
+            class="nut-price-symbol nut-price-symbol-normal"
+          >
+            ¥
+          </div>
+          <div
+            class="nut-price-integer nut-price-integer-normal"
+          >
+            388
+          </div>
+          <div
+            class="nut-price-decimal nut-price-decimal-normal"
+          >
+            .
+          </div>
+          <div
+            class="nut-price-decimal nut-price-decimal-normal"
+          >
+            00
+          </div>
+        </div>
+        <div
+          class="nut-price  nut-card-right-price-origin"
+        >
+          <div
+            class="nut-price-symbol nut-price-symbol-normal"
+          >
+            ¥
+          </div>
+          <div
+            class="nut-price-integer nut-price-integer-normal"
+          >
+            378
+          </div>
+          <div
+            class="nut-price-decimal nut-price-decimal-normal"
+          >
+            .
+          </div>
+          <div
+            class="nut-price-decimal nut-price-decimal-normal"
+          >
+            00
+          </div>
+        </div>
+      </div>
+      <div
+        class="nut-card-right-other"
+      >
+        <div
+          class="nut-tag nut-tag-danger"
+        >
+          <span
+            class="nut-tag-text"
+          >
+            自营
+          </span>
+        </div>
+        <div
+          class="nut-tag nut-tag-default nut-tag-plain"
+        >
+          <span
+            class="nut-tag-text"
+          >
+            厂商配送
+          </span>
+        </div>
+      </div>
+      <div
+        class="nut-card-right-shop"
+      >
+        <div
+          class="nut-card-right-shop-name"
+        >
+          阳澄湖大闸蟹自营店&gt;
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`extra slot test 1`] = `
+<div>
+  <div
+    class="nut-card"
+  >
+    <div
+      class="nut-card-left"
+    >
+      <img
+        alt=""
+        src="//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg"
+      />
+    </div>
+    <div
+      class="nut-card-right"
+    >
+      <div
+        class="nut-card-right-title"
+      >
+        活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水
+      </div>
+      <div
+        class="nut-card-right-price"
+      >
+        <div
+          class="nut-price  "
+        >
+          <div
+            class="nut-price-symbol nut-price-symbol-normal"
+          >
+            ¥
+          </div>
+          <div
+            class="nut-price-integer nut-price-integer-normal"
+          >
+            388
+          </div>
+          <div
+            class="nut-price-decimal nut-price-decimal-normal"
+          >
+            .
+          </div>
+          <div
+            class="nut-price-decimal nut-price-decimal-normal"
+          >
+            00
+          </div>
+        </div>
+        <div
+          class="nut-price  nut-card-right-price-origin"
+        >
+          <div
+            class="nut-price-symbol nut-price-symbol-normal"
+          >
+            ¥
+          </div>
+          <div
+            class="nut-price-integer nut-price-integer-normal"
+          >
+            378
+          </div>
+          <div
+            class="nut-price-decimal nut-price-decimal-normal"
+          >
+            .
+          </div>
+          <div
+            class="nut-price-decimal nut-price-decimal-normal"
+          >
+            00
+          </div>
+        </div>
+      </div>
+      <div
+        class="nut-card-right-other"
+      >
+        <div
+          class="nut-tag nut-tag-danger"
+        >
+          <span
+            class="nut-tag-text"
+          >
+            自营
+          </span>
+        </div>
+        <div
+          class="nut-tag nut-tag-default nut-tag-plain"
+        >
+          <span
+            class="nut-tag-text"
+          >
+            厂商配送
+          </span>
+        </div>
+      </div>
+      <div
+        class="nut-card-right-shop"
+      >
+        <div
+          class="nut-card-right-shop-name"
+        >
+          阳澄湖大闸蟹自营店&gt;
+        </div>
+        <div
+          style="font-size: 12px;"
+        >
+          自定义
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`priceTag slot test 1`] = `
+<div>
+  <div
+    class="nut-card"
+  >
+    <div
+      class="nut-card-left"
+    >
+      <img
+        alt=""
+        src="//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg"
+      />
+    </div>
+    <div
+      class="nut-card-right"
+    >
+      <div
+        class="nut-card-right-title"
+      >
+        活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水
+      </div>
+      <div
+        class="nut-card-right-price"
+      >
+        <div
+          class="nut-price  "
+        >
+          <div
+            class="nut-price-symbol nut-price-symbol-normal"
+          >
+            ¥
+          </div>
+          <div
+            class="nut-price-integer nut-price-integer-normal"
+          >
+            388
+          </div>
+          <div
+            class="nut-price-decimal nut-price-decimal-normal"
+          >
+            .
+          </div>
+          <div
+            class="nut-price-decimal nut-price-decimal-normal"
+          >
+            00
+          </div>
+        </div>
+        <img
+          alt=""
+          src="https://img11.360buyimg.com/jdphoto/s58x28_jfs/t9451/359/415622649/15318/b0943e5d/59a78495N3bd2a9f8.png"
+        />
+      </div>
+      <div
+        class="nut-card-right-other"
+      >
+        <div
+          class="nut-tag nut-tag-danger"
+        >
+          <span
+            class="nut-tag-text"
+          >
+            自营
+          </span>
+        </div>
+        <div
+          class="nut-tag nut-tag-default nut-tag-plain"
+        >
+          <span
+            class="nut-tag-text"
+          >
+            厂商配送
+          </span>
+        </div>
+      </div>
+      <div
+        class="nut-card-right-shop"
+      >
+        <div
+          class="nut-card-right-shop-name"
+        >
+          阳澄湖大闸蟹自营店&gt;
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`props test 1`] = `
+<div>
+  <div
+    class="nut-card"
+  >
+    <div
+      class="nut-card-left"
+    >
+      <img
+        alt=""
+        src="//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg"
+      />
+    </div>
+    <div
+      class="nut-card-right"
+    >
+      <div
+        class="nut-card-right-title"
+      >
+        活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水
+      </div>
+      <div
+        class="nut-card-right-price"
+      >
+        <div
+          class="nut-price  "
+        >
+          <div
+            class="nut-price-symbol nut-price-symbol-normal"
+          >
+            ¥
+          </div>
+          <div
+            class="nut-price-integer nut-price-integer-normal"
+          >
+            388
+          </div>
+          <div
+            class="nut-price-decimal nut-price-decimal-normal"
+          >
+            .
+          </div>
+          <div
+            class="nut-price-decimal nut-price-decimal-normal"
+          >
+            00
+          </div>
+        </div>
+        <div
+          class="nut-price  nut-card-right-price-origin"
+        >
+          <div
+            class="nut-price-symbol nut-price-symbol-normal"
+          >
+            ¥
+          </div>
+          <div
+            class="nut-price-integer nut-price-integer-normal"
+          >
+            378
+          </div>
+          <div
+            class="nut-price-decimal nut-price-decimal-normal"
+          >
+            .
+          </div>
+          <div
+            class="nut-price-decimal nut-price-decimal-normal"
+          >
+            00
+          </div>
+        </div>
+      </div>
+      <div
+        class="nut-card-right-other"
+      >
+        <div
+          class="nut-tag nut-tag-danger"
+        >
+          <span
+            class="nut-tag-text"
+          >
+            自营
+          </span>
+        </div>
+        <div
+          class="nut-tag nut-tag-default nut-tag-plain"
+        >
+          <span
+            class="nut-tag-text"
+          >
+            厂商配送
+          </span>
+        </div>
+      </div>
+      <div
+        class="nut-card-right-shop"
+      >
+        <div
+          class="nut-card-right-shop-name"
+        >
+          阳澄湖大闸蟹自营店&gt;
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`tag slot test 1`] = `
+<div>
+  <div
+    class="nut-card"
+  >
+    <div
+      class="nut-card-left"
+    >
+      <img
+        alt=""
+        src="//img10.360buyimg.com/n2/s240x240_jfs/t1/210890/22/4728/163829/6163a590Eb7c6f4b5/6390526d49791cb9.jpg!q70.jpg"
+      />
+    </div>
+    <div
+      class="nut-card-right"
+    >
+      <div
+        class="nut-card-right-title"
+      >
+        活蟹】湖塘煙雨 阳澄湖大闸蟹公4.5两 母3.5两 4对8只 鲜活生鲜螃蟹现货水产礼盒海鲜水
+      </div>
+      <div
+        class="nut-card-right-price"
+      >
+        <div
+          class="nut-price  "
+        >
+          <div
+            class="nut-price-symbol nut-price-symbol-normal"
+          >
+            ¥
+          </div>
+          <div
+            class="nut-price-integer nut-price-integer-normal"
+          >
+            388
+          </div>
+          <div
+            class="nut-price-decimal nut-price-decimal-normal"
+          >
+            .
+          </div>
+          <div
+            class="nut-price-decimal nut-price-decimal-normal"
+          >
+            00
+          </div>
+        </div>
+        <div
+          class="nut-price  nut-card-right-price-origin"
+        >
+          <div
+            class="nut-price-symbol nut-price-symbol-normal"
+          >
+            ¥
+          </div>
+          <div
+            class="nut-price-integer nut-price-integer-normal"
+          >
+            378
+          </div>
+          <div
+            class="nut-price-decimal nut-price-decimal-normal"
+          >
+            .
+          </div>
+          <div
+            class="nut-price-decimal nut-price-decimal-normal"
+          >
+            00
+          </div>
+        </div>
+      </div>
+      <div
+        class="nut-card-right-other"
+      >
+        <div>
+          这里是自定义区域
+        </div>
+      </div>
+      <div
+        class="nut-card-right-shop"
+      >
+        <div
+          class="nut-card-right-shop-name"
+        >
+          阳澄湖大闸蟹自营店&gt;
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

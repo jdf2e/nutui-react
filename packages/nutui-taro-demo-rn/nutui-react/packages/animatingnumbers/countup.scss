@@ -1,0 +1,42 @@
+.nut-countup {
+  &-list {
+    display: inline-flex;
+    height: $countup-height;
+    overflow: hidden;
+    direction: ltr;
+  }
+
+  &-listitem {
+    height: $countup-height;
+    overflow: hidden;
+    color: $color-title;
+    font-size: $countup-base-size;
+    font-weight: $font-weight-bold;
+
+    &-number {
+      margin: 0 $countup-lr-margin;
+      border-radius: $countup-border-radius;
+      color: $countup-color;
+      background-color: $countup-bg-color;
+    }
+  }
+
+  &-separator {
+    display: flex;
+    height: 80%;
+    align-items: flex-end;
+    color: $countup-bg-color;
+  }
+
+  &-number {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: $countup-width;
+
+    span {
+      height: $countup-height;
+      line-height: $countup-height;
+    }
+  }
+}

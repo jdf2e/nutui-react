@@ -1,0 +1,9 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`size prop 1`] = `
+<div>
+  <div
+    class="nut-avatar-group"
+  />
+</div>
+`;

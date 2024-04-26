@@ -1,0 +1,49 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-pagination"
+  >
+    <div
+      class="nut-pagination-prev disabled"
+    >
+      上一页
+    </div>
+    <div
+      class="nut-pagination-contain"
+    >
+      <div
+        class="nut-pagination-item active"
+      >
+        1
+      </div>
+      <div
+        class="nut-pagination-item"
+      >
+        2
+      </div>
+      <div
+        class="nut-pagination-item"
+      >
+        3
+      </div>
+      <div
+        class="nut-pagination-item"
+      >
+        4
+      </div>
+      <div
+        class="nut-pagination-item"
+      >
+        5
+      </div>
+    </div>
+    <div
+      class="nut-pagination-next"
+    >
+      下一页
+    </div>
+  </div>
+</DocumentFragment>
+`;

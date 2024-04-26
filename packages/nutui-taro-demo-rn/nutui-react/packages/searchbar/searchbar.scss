@@ -1,0 +1,183 @@
+.nut-searchbar {
+  display: flex;
+  align-items: center;
+  width: $searchbar-width;
+  padding: $searchbar-padding;
+  background: $searchbar-background;
+  color: $searchbar-color;
+  font-size: $searchbar-font-size;
+  box-sizing: border-box;
+  justify-content: center;
+
+  &-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: $searchbar-content-padding;
+    height: $searchbar-input-height;
+    background: $searchbar-content-background;
+    border-radius: $searchbar-content-border-radius;
+  }
+
+  &-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-clear,
+  &-rightin {
+    width: 16px;
+    height: 16px;
+    color: var(--nutui-black-5);
+  }
+
+  &-left,
+  &-right {
+    display: flex;
+
+    &.nut-icon {
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  &-left {
+    margin-right: $searchbar-gap;
+
+    & > div,
+    & > span,
+    & > svg {
+      margin-right: $searchbar-gap;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+  }
+
+  &-right {
+    margin-left: $searchbar-gap;
+
+    & > div,
+    & > span,
+    & > svg {
+      margin-left: $searchbar-gap;
+
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &-left > text,
+  &-left > view {
+    margin-right: $searchbar-gap;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &-right > text,
+  &-right > view {
+    margin-left: $searchbar-gap;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  &-input-box {
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+
+  &-input {
+    border: 0;
+    outline: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: $searchbar-input-height;
+    line-height: $searchbar-input-height;
+    padding: $searchbar-input-padding;
+    font-size: $searchbar-font-size;
+    color: $searchbar-input-text-color;
+    caret-color: $searchbar-input-curror-color;
+    background: transparent;
+    text-align: $searchbar-input-text-align;
+  }
+
+  &-round {
+    border-radius: $searchbar-content-round-border-radius;
+  }
+
+  &-disabled {
+    cursor: not-allowed;
+  }
+}
+
+[dir='rtl'] .nut-searchbar,
+.nut-rtl .nut-searchbar {
+  &-left {
+    margin-right: 0;
+    margin-left: $searchbar-gap;
+
+    & > div,
+    & > span,
+    & > svg {
+      margin-right: 0;
+      margin-left: $searchbar-gap;
+      &.nut-icon {
+        transform: rotate(180deg);
+      }
+      &:last-child {
+        margin-right: 0;
+        margin-left: 0;
+      }
+    }
+  }
+  &-right {
+    margin-left: 0;
+    margin-right: $searchbar-gap;
+
+    & > div,
+    & > span,
+    & > svg {
+      margin-left: 0;
+      margin-right: $searchbar-gap;
+
+      &:first-child {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+  }
+
+  &-left > text,
+  &-left > view {
+    margin-right: 0;
+    margin-left: $searchbar-gap;
+
+    &:last-child {
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+
+  &-right > text,
+  &-right > view {
+    margin-left: 0;
+    margin-right: $searchbar-gap;
+
+    &:first-child {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+  &-input {
+    text-align: var(--nutui-searchbar-input-text-align, right);
+  }
+}

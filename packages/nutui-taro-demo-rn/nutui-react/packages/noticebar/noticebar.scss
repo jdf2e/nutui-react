@@ -1,0 +1,214 @@
+.nut-noticebar {
+  width: 100%;
+
+  .nut-noticebar-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: $noticebar-height;
+    padding: $noticebar-box-padding;
+    font-size: $noticebar-font-size;
+    background: $noticebar-background;
+    color: $noticebar-color;
+    border-radius: $noticebar-border-radius;
+
+    &-wrapable,
+    &-center {
+      height: auto;
+      padding: $noticebar-wrap-padding;
+
+      .nut-noticebar-box-wrap {
+        height: auto;
+      }
+    }
+
+    &-wrapable {
+      .nut-noticebar-box-wrap {
+        .nut-noticebar-box-wrap-content {
+          position: relative;
+          white-space: normal;
+          word-wrap: break-word;
+        }
+      }
+    }
+
+    &-center {
+      justify-content: center;
+
+      .nut-noticebar-box-wrap {
+        flex: initial;
+
+        .nut-noticebar-box-wrap-content {
+          position: relative;
+          display: initial;
+        }
+      }
+    }
+
+    &-left-icon {
+      display: flex;
+      height: $noticebar-left-icon-width;
+      min-width: $noticebar-left-icon-width;
+      margin-right: $noticebar-icon-gap;
+      background-size: 100% 100%;
+    }
+
+    &-right-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: $noticebar-right-icon-width;
+      margin-left: $noticebar-icon-gap;
+
+      .nut-icon {
+        width: 12px;
+        height: 12px;
+      }
+    }
+
+    &-wrap {
+      display: flex;
+      flex: 1;
+      height: $noticebar-line-height;
+      line-height: $noticebar-line-height;
+      overflow: hidden;
+      position: relative;
+
+      .nut-noticebar-box-wrap-content {
+        position: absolute;
+        white-space: nowrap;
+
+        &.nut-ellipsis {
+          max-width: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+      }
+    }
+
+    .play {
+      animation: nut-notice-bar-play linear both running;
+    }
+
+    .play-infinite {
+      animation: nut-notice-bar-play-infinite linear infinite both running;
+    }
+
+    .play-vertical {
+      animation: nut-notice-bar-play-vertical linear infinite both running;
+    }
+  }
+
+  .nut-noticebar-vertical {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    height: $noticebar-height;
+    font-size: $noticebar-font-size;
+    overflow: hidden;
+    padding: $noticebar-box-padding;
+    background: $noticebar-background;
+    color: $noticebar-color;
+
+    .nut-noticebar-box-left-icon {
+      height: $noticebar-left-icon-width;
+      min-width: $noticebar-left-icon-width;
+      margin: $noticebar-icon-gap;
+      background-size: 100% 100%;
+      display: flex;
+      align-self: center;
+    }
+
+    .nut-noticebar-box-horseLamp-list {
+      margin: 0;
+      padding: 0;
+      display: block;
+      flex: 1;
+
+      &-item {
+        display: flex;
+        align-items: center;
+        height: $noticebar-height;
+        width: 100%;
+      }
+    }
+
+    .nut-noticebar-box-wrap {
+      display: flex;
+      height: 100%;
+      width: 100%;
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      flex-direction: column;
+    }
+
+    .nut-noticebar-box-right-icon {
+      align-self: center;
+      display: flex;
+      justify-content: center;
+      width: $noticebar-right-icon-width;
+      margin-left: $noticebar-icon-gap;
+    }
+  }
+
+  @keyframes nut-notice-bar-play {
+    to {
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+
+  @keyframes nut-notice-bar-play-infinite {
+    to {
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+
+  @keyframes nut-notice-bar-play-vertical {
+    to {
+      transform: translateY($noticebar-height);
+    }
+  }
+}
+
+[dir='rtl'] .nut-noticebar,
+.nut-rtl .nut-noticebar {
+  .nut-noticebar-box {
+    &-left-icon {
+      margin-right: 0;
+      margin-left: $noticebar-icon-gap;
+    }
+
+    &-right-icon {
+      margin-left: 0;
+      margin-right: $noticebar-icon-gap;
+    }
+
+    .play {
+      animation: nut-notice-bar-play-rtl linear both running;
+    }
+
+    .play-infinite {
+      animation: nut-notice-bar-play-infinite-rtl linear infinite both running;
+    }
+
+    @keyframes nut-notice-bar-play-rtl {
+      to {
+        transform: translate3d(100%, 0, 0);
+      }
+    }
+
+    @keyframes nut-notice-bar-play-infinite-rtl {
+      to {
+        transform: translate3d(100%, 0, 0);
+      }
+    }
+  }
+
+  .nut-noticebar-vertical {
+    .nut-noticebar-box-right-icon {
+      margin-left: 0;
+      margin-right: $noticebar-icon-gap;
+    }
+  }
+}

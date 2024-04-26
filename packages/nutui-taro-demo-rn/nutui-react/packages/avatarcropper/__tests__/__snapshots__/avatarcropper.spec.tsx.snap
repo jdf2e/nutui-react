@@ -1,0 +1,23 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`layout default slot 1`] = `
+<div
+  class="nut-avatar-cropper"
+>
+  <img
+    alt="avatar"
+    src="https://img12.360buyimg.com/imagetools/jfs/t1/196430/38/8105/14329/60c806a4Ed506298a/e6de9fb7b8490f38.png"
+  />
+  <input
+    accept="image/*"
+    aria-label="选择图片"
+    class="nut-avatar-cropper-input"
+    type="file"
+  />
+  <div
+    class="nut-avatar-cropper-edit-text"
+  >
+    编辑
+  </div>
+</div>
+`;

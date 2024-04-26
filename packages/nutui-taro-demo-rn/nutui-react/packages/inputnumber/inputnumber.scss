@@ -1,0 +1,68 @@
+.nut-inputnumber {
+  display: flex;
+  align-items: center;
+
+  .nut-input-minus,
+  .nut-input-add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $inputnumber-button-width;
+    height: $inputnumber-button-height;
+    background-color: $inputnumber-button-background-color;
+    border-radius: $inputnumber-button-border-radius;
+  }
+
+  &-disabled {
+    input {
+      color: $inputnumber-disabled-color !important;
+    }
+  }
+
+  &-icon {
+    color: $inputnumber-icon-color;
+    font-size: $inputnumber-icon-size;
+    cursor: pointer;
+
+    &-disabled {
+      color: $inputnumber-disabled-color;
+      cursor: not-allowed;
+    }
+  }
+
+  input,
+  .nut-number-input,
+  &-text-readonly {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $inputnumber-input-width;
+    height: $inputnumber-input-height;
+    text-align: center;
+    outline: none;
+    border: $inputnumber-input-border;
+    border-radius: $inputnumber-input-border-radius;
+    margin: $inputnumber-input-margin;
+    color: $inputnumber-input-font-color;
+    background-color: $inputnumber-input-background-color;
+  }
+
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button,
+  .nut-number-input::-webkit-outer-spin-button,
+  .nut-number-input::-webkit-inner-spin-button {
+    appearance: none;
+  }
+
+  .nut-icon-Minus,
+  .nut-icon-minus {
+    --nut-icon-width: 16px;
+    --nut-icon-height: 16px;
+  }
+
+  .nut-icon-Plus,
+  .nut-icon-plus {
+    --nut-icon-width: 16px;
+    --nut-icon-height: 16px;
+  }
+}

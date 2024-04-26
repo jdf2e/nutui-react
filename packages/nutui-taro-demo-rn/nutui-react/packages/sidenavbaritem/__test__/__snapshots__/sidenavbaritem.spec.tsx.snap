@@ -1,0 +1,12 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-subsidenavbar-item nut-subsidenavbar-border-bt"
+    data-testid="sideNavBarItem-click"
+  >
+    一级内容1
+  </div>
+</DocumentFragment>
+`;

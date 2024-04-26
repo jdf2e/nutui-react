@@ -1,0 +1,34 @@
+.nut-circleprogress {
+  position: relative;
+
+  &-hover {
+    stroke: $circleprogress-primary-color;
+    transition:
+      stroke-dasharray 0.2s ease-in-out 0s,
+      stroke 0.2s ease 0s;
+  }
+
+  &-path {
+    stroke: $circleprogress-path-color;
+  }
+
+  &-text {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: $circleprogress-text-color;
+    font-size: $circleprogress-text-size;
+  }
+}
+
+[dir='rtl'] .nut-circleprogress,
+.nut-rtl .nut-circleprogress {
+  &-text {
+    left: auto;
+    right: 0;
+  }
+}

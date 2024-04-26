@@ -1,0 +1,91 @@
+@import '../popup/popup.scss';
+
+.nut-sidenavbar {
+  color: #1d1d21;
+  font-size: 14px;
+  height: 100%;
+  overflow: auto;
+  display: block;
+  background-color: $sidenavbar-content-bg-color;
+
+  .arrow-icon {
+    position: absolute;
+    width: 0;
+    height: 0;
+    right: 16px;
+    top: 18px;
+    cursor: pointer;
+  }
+
+  .arrow-down {
+    border-top: 4px solid $color-text-help;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+  }
+
+  .arrow-up {
+    border-bottom: 4px solid $color-text-help;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+  }
+
+  &-title {
+    height: $sidenavbar-item-height;
+    padding: $sidenavbar-title-padding;
+    background: $sidenavbar-title-background;
+    color: $sidenavbar-title-color;
+    box-sizing: border-box;
+    transition: transform 0.5s;
+  }
+
+  &-content {
+    position: relative;
+    display: block;
+  }
+
+  &-list {
+    &.sidenavbar-show {
+      .nut-sidenavbar-content {
+        height: auto;
+        overflow: inherit;
+      }
+    }
+
+    &.sidenavbar-hide {
+      .nut-sidenavbar-content {
+        height: 0;
+        overflow: hidden;
+      }
+    }
+  }
+
+  .nut-subsidenavbar-border-bt {
+    position: relative;
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 1px;
+      background: #eeeff2;
+      transform: scale(1, 0.5);
+      left: 0;
+      bottom: 0;
+    }
+  }
+}
+
+[dir='rtl'] .nut-sidenavbar,
+.nut-rtl .nut-sidenavbar {
+  .arrow-icon {
+    right: auto;
+    left: 16px;
+  }
+
+  .nut-subsidenavbar-border-bt {
+    &:after {
+      left: auto;
+      right: 0;
+    }
+  }
+}

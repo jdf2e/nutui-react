@@ -1,0 +1,34 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-cell"
+    style="border-radius: 6px; align-items: flex-start;"
+  >
+    <div
+      class="nut-sticky"
+    >
+      <div
+        class="nut-sticky-box"
+        style="top: 0px; z-index: 900;"
+      >
+        <button
+          class="nut-button nut-button-primary nut-button-normal nut-button-round"
+          type="button"
+        >
+          <div
+            class="nut-button-wrap"
+          >
+            <div
+              class=""
+            >
+              吸顶
+            </div>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,257 @@
+.nut-step {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex: 1;
+  text-align: center;
+  font-size: 0;
+
+  &-head {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: $steps-base-icon-margin-bottom;
+  }
+
+  // 计算方法：left = calc(50% + (100% - $steps-base-line-width) / 2)
+  // 如 width=70%时，left=65%; width=100%,left=50%;
+  &-line {
+    position: absolute;
+    top: calc($steps-base-icon-height / 2);
+    left: calc(50% + (100% - $steps-base-line-width) / 2);
+    height: $steps-base-line-height;
+    width: $steps-base-line-width;
+    background: $steps-base-line-background;
+  }
+
+  &-icon {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: $steps-base-icon-width;
+    height: $steps-base-icon-height;
+    line-height: $steps-base-icon-line-height;
+    font-size: $steps-base-icon-font-size;
+    background-color: $steps-wait-icon-bg-color;
+    border-color: $steps-wait-icon-bg-color;
+    color: $steps-wait-icon-color;
+    z-index: 1;
+
+    .nut-icon {
+      width: 100%;
+      height: 100%;
+    }
+
+    &.is-text {
+      border-radius: 50%;
+      border-width: 1px;
+      border-style: solid;
+    }
+
+    &.is-icon {
+      border-radius: 50%;
+      border-width: 1px;
+      border-style: solid;
+    }
+  }
+
+  &-main {
+    padding: 0 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &-title {
+    display: block;
+    margin-bottom: $steps-base-title-margin-bottom;
+    font-size: $steps-base-title-font-size;
+    color: $steps-base-title-color;
+  }
+
+  &-description {
+    display: block;
+    font-size: $steps-base-description-font-size;
+    color: $steps-base-description-color;
+  }
+
+  &:last-child {
+    .nut-step-line {
+      display: none;
+    }
+  }
+
+  &.nut-step-process {
+    .nut-step-icon {
+      background-color: $steps-process-icon-bg-color;
+      border-color: $steps-process-icon-bg-color;
+      color: $steps-process-icon-color;
+    }
+
+    .nut-step-title {
+      color: $steps-process-title-color;
+      font-size: $steps-process-title-font-size;
+      font-weight: $steps-process-title-font-weight;
+    }
+
+    .nut-step-description {
+      color: $steps-process-description-color;
+    }
+  }
+
+  &.nut-step-wait {
+    .nut-step-title {
+      color: $steps-wait-title-color;
+    }
+
+    .nut-step-description {
+      color: $steps-wait-description-color;
+    }
+  }
+
+  &.nut-step-finish {
+    .nut-step-icon {
+      background-color: $steps-finish-icon-bg-color;
+      border-color: $steps-finish-icon-border-color;
+      color: $steps-finish-icon-color;
+    }
+
+    .nut-step-line {
+      background: $steps-finish-line-background;
+    }
+
+    .nut-step-title {
+      color: $steps-finish-title-color;
+    }
+
+    .nut-step-description {
+      color: $steps-finish-description-color;
+    }
+  }
+}
+
+.nut-steps-dot {
+  .nut-step-head {
+    margin: $steps-dot-head-margin;
+  }
+
+  .nut-step-line {
+    top: 7px;
+  }
+
+  .nut-step-icon {
+    width: $steps-dot-icon-width;
+    height: $steps-dot-icon-height;
+    border: $steps-dot-icon-border;
+    border-radius: 50%;
+    box-sizing: content-box;
+  }
+
+  .nut-step-wait {
+    .nut-step-icon {
+      background-color: $steps-dot-wait-icon-bg-color;
+    }
+  }
+
+  .nut-step-finish {
+    .nut-step-icon {
+      background-color: $steps-dot-finish-icon-bg-color;
+      border-color: $steps-dot-finish-icon-border-color;
+    }
+  }
+
+  .nut-step-process {
+    .nut-step-icon {
+      position: relative;
+
+      &:before {
+        content: '';
+        display: inline-block;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -7px;
+        margin-top: -7px;
+        width: 14px;
+        height: 14px;
+        background-color: $steps-process-icon-before-bg-color;
+        border-radius: 50%;
+        opacity: 0.23;
+      }
+    }
+  }
+}
+
+.nut-steps-horizontal {
+  &.nut-steps-dot {
+    .nut-step-line {
+      top: 50%;
+      bottom: -50%;
+    }
+  }
+}
+
+.nut-steps-vertical {
+  .nut-step {
+    display: flex;
+    height: 33.34%;
+  }
+
+  .nut-step-line {
+    position: absolute;
+    display: inline-block;
+    width: 1px;
+    height: $steps-base-line-width;
+    background: $steps-base-line-background;
+    top: calc(
+      $steps-base-icon-height +
+        (100% - $steps-base-line-width - $steps-base-icon-margin-bottom) / 2
+    );
+    left: calc(50% - 1px);
+  }
+
+  &.nut-steps-dot {
+    .nut-step-line {
+      top: calc($steps-dot-icon-height + (100% - $steps-base-line-width) / 2);
+    }
+  }
+
+  .nut-step-main {
+    display: inline-block;
+    padding-left: 6%;
+    text-align: start;
+  }
+}
+[dir='rtl'] .nut-step,
+.nut-rtl .nut-step {
+  &-line {
+    left: auto;
+    right: calc(50% + (100% - $steps-base-line-width) / 2);
+  }
+}
+[dir='rtl'] .nut-steps-dot,
+.nut-rtl .nut-steps-dot {
+  .nut-step-process {
+    .nut-step-icon {
+      &:before {
+        left: auto;
+        right: 50%;
+        margin-left: 0;
+        margin-right: -7px;
+      }
+    }
+  }
+}
+[dir='rtl'] .nut-steps-vertical,
+.nut-rtl .nut-steps-vertical {
+  .nut-step-line {
+    left: auto;
+    right: calc(50% - 1px);
+  }
+
+  .nut-step-main {
+    padding-left: 0;
+    padding-right: 6%;
+  }
+}

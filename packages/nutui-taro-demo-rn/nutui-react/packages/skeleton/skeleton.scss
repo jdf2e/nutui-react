@@ -1,0 +1,99 @@
+@import '../avatar/avatar.scss';
+
+.nut-skeleton {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  vertical-align: middle;
+  width: 100%;
+
+  &-content {
+    display: flex;
+
+    .nut-avatar {
+      margin-right: 20px;
+      background: $skeleton-background !important;
+    }
+
+    .nut-skeleton-block {
+      width: $skeleton-line-width;
+      height: $skeleton-line-height;
+      background: $skeleton-background;
+      margin-top: 10px;
+      border-radius: $skeleton-line-border-radius;
+    }
+
+    &-line {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .nut-skeleton-title {
+        width: 30%;
+        height: $skeleton-line-height;
+        background: $skeleton-background;
+      }
+
+      .nut-skeleton-block:last-child {
+        width: 70%;
+      }
+    }
+  }
+
+  &-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(
+      90deg,
+      hsla(0, 0%, 100%, 0),
+      hsla(0, 0%, 100%, 0.5) 50%,
+      hsla(0, 0%, 100%, 0) 80%
+    );
+    animation: nut-skeleton 2s ease-in-out 0s infinite;
+  }
+
+  @keyframes nut-skeleton {
+    0% {
+      background-position-x: -500px;
+    }
+
+    to {
+      background-position-x: calc(500px + 100%);
+    }
+  }
+}
+
+[dir='rtl'] .nut-skeleton,
+.nut-rtl .nut-skeleton {
+  &-content {
+    .nut-avatar {
+      margin-right: 0;
+      margin-left: 20px;
+    }
+  }
+  &-animation {
+    left: auto;
+    right: 0;
+    background: linear-gradient(
+      -90deg,
+      hsla(0, 0%, 100%, 0),
+      hsla(0, 0%, 100%, 0.5) 50%,
+      hsla(0, 0%, 100%, 0) 80%
+    );
+    animation: nut-skeleton-rtl 2s ease-in-out 0s infinite;
+  }
+
+  @keyframes nut-skeleton-rtl {
+    0% {
+      background-position-x: calc(500px + 100%);
+    }
+
+    to {
+      background-position-x: -500px;
+    }
+  }
+}

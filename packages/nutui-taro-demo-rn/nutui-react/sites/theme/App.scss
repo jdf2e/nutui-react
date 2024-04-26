@@ -1,0 +1,114 @@
+::selection {
+  background: $doc-default-color;
+  color: #fff;
+}
+
+$doc-title-height: 137px;
+
+#doc {
+  background: #fff;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.doc {
+  &-title {
+    width: 100%;
+    height: $doc-title-height;
+    z-index: 2;
+    &-position {
+      top: 0px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 40px;
+      // line-height: 56px;
+      border-bottom: 1px solid #eee;
+      background: #fff;
+      visibility: visible;
+      opacity: 1;
+      // transition: opacity 0.8s linear, visibility 0.8s linear;
+      transition: opacity 0.8s;
+      &.fixed {
+        width: calc(100% - 290px);
+        position: fixed;
+        padding: 24px 48px;
+        .title {
+          font-size: 24px;
+          font-weight: bold;
+        }
+      }
+      &.hidden {
+        visibility: hidden;
+        opacity: 0;
+      }
+      .title {
+        font-size: 40px;
+        font-weight: bold;
+      }
+    }
+  }
+  &-content {
+    margin-left: 290px;
+    display: flex;
+    flex-direction: column;
+
+    &-document {
+      min-height: 800px;
+      .markdown-body {
+        min-height: 600px;
+      }
+    }
+    &-tabs {
+      position: absolute;
+      right: 475px;
+      top: 48px;
+      display: flex;
+      height: 40px;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 1;
+      padding: 2px;
+      box-sizing: border-box;
+
+      border-radius: 2px;
+      background: #eee;
+      box-shadow: rgb(0 0 0 / 15%) 0px 2px 4px;
+      &.single {
+        padding: 0;
+
+        .tab-item {
+          line-height: 40px;
+          cursor: auto;
+        }
+      }
+      .tab-item {
+        position: relative;
+        padding: 0 10px;
+        line-height: 36px;
+        cursor: pointer;
+        font-size: 16px;
+        color: #323232;
+        text-align: center;
+        border-radius: 2px;
+        background: #eee;
+        &.cur {
+          font-weight: bold;
+          color: #323232;
+          background: #fff;
+        }
+      }
+    }
+  }
+}
+.nutui-react--demo-button {
+  display: none;
+}
+
+.nutui-react--demo-wrapper {
+  .nutui-react--demo-button {
+    display: block;
+  }
+}

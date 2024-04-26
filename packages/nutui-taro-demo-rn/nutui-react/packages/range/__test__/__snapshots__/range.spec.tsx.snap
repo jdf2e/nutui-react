@@ -1,0 +1,48 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`range props test 1`] = `
+<div>
+  <div
+    class="nut-range-container test-range"
+  >
+    <div
+      class="min"
+    >
+      0
+    </div>
+    <div
+      class="nut-range"
+    >
+      <div
+        class="nut-range-bar"
+        style="width: 40%; left: 0%; transition: none;"
+      >
+        <div
+          class="nut-range-button-wrapper"
+        >
+          <div
+            class="nut-range-button"
+          >
+            <div
+              class="number"
+            >
+              40
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="max"
+    >
+      100
+    </div>
+  </div>
+</div>
+`;
+
+exports[`range test 1`] = `
+"<div><div class="nut-range-container"><div class="min">0</div><div class="nut-range"><div class="nut-range-bar" style="width: 30%; left: 30%; transition: none;"><div class="nut-range-button-wrapper-left
+                  "><div class="nut-range-button"><div class="number">30</div></div></div><div class="
+                  nut-range-button-wrapper-right"><div class="nut-range-button"><div class="number">60</div></div></div></div></div><div class="max">100</div></div></div>"
+`;

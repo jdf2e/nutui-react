@@ -1,0 +1,30 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`video base info 1`] = `
+<div>
+  <div
+    class="nut-video"
+  >
+    <video
+      autoplay=""
+      class="nut-video-player"
+      controls=""
+      loop=""
+      playsinline="true"
+      poster="https://img12.360buyimg.com/ling/s345x208_jfs/t1/168105/33/8417/54825/603df06dEfcddc4cb/21f9f5d0a1b3dad4.jpg.webp"
+      src="xxx.mp4"
+      webkit-playsinline="true"
+      x5-video-player-fullscreen="false"
+      x5-video-player-type="h5-page"
+    >
+      <source
+        src="xxx.mp4"
+        type="video/mp4"
+      />
+      <track
+        kind="captions"
+      />
+    </video>
+  </div>
+</div>
+`;

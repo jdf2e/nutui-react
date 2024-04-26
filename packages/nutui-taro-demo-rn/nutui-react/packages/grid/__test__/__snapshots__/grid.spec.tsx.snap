@@ -1,0 +1,272 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`render with custom content 1`] = `
+<div>
+  <div
+    class="nut-grid nut-grid-border"
+  >
+    <div
+      class="nut-grid-item"
+      style="flex-basis: 25%;"
+    >
+      <div
+        class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-center nut-grid-item-content-horizontal"
+      >
+        <svg
+          aria-labelledby="Image"
+          class="nut-icon nut-icon-Image "
+          role="presentation"
+          viewBox="0 0 1024 1024"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M384 341.33a85.33 85.33 0 1 1-170.67 0 85.33 85.33 0 0 1 170.67 0"
+            fill="currentColor"
+            fill-opacity="0.9"
+          />
+          ,
+          <path
+            d="M0 170.67a128 128 0 0 1 128-128h768a128 128 0 0 1 128 128v682.66a128 128 0 0 1-128 128H128a128 128 0 0 1-128-128zM128 128a42.67 42.67 0 0 0-42.67 42.67v405.84a383.38 383.38 0 0 1 128-21.84c71.89 0 139.16 19.75 196.68 54.12C492.46 473.96 641.05 384 810.67 384c44.37 0 87.32 6.17 128 17.66V170.67A42.67 42.67 0 0 0 896 128zM85.33 668.74v184.59A42.67 42.67 0 0 0 128 896h380.97C488.28 751.25 363.8 640 213.33 640c-45.8 0-89.19 10.3-128 28.74M594.99 896H896a42.67 42.67 0 0 0 42.67-42.67V491.18a383.36 383.36 0 0 0-128-21.85c-141.91 0-265.81 76.97-332.31 191.45A382.98 382.98 0 0 1 594.99 896"
+            fill="currentColor"
+            fill-opacity="0.9"
+          />
+        </svg>
+        <div
+          class="nut-grid-item-text"
+        >
+          <span>
+            More
+          </span>
+        </div>
+      </div>
+    </div>
+    <div
+      class="nut-grid-item"
+      style="flex-basis: 25%;"
+    >
+      <div
+        class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-center nut-grid-item-content-horizontal"
+      >
+        <div
+          class="nut-grid-item-text"
+        >
+          <div
+            class="nut-avatar nut-avatar-normal nut-avatar-round demo-avatar"
+            style="background-color: #FA2C19; color: #666;"
+          >
+            <svg
+              aria-labelledby="Image"
+              class="nut-icon nut-icon-Image  icon"
+              color="#fff"
+              role="presentation"
+              viewBox="0 0 1024 1024"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M384 341.33a85.33 85.33 0 1 1-170.67 0 85.33 85.33 0 0 1 170.67 0"
+                fill="currentColor"
+                fill-opacity="0.9"
+              />
+              ,
+              <path
+                d="M0 170.67a128 128 0 0 1 128-128h768a128 128 0 0 1 128 128v682.66a128 128 0 0 1-128 128H128a128 128 0 0 1-128-128zM128 128a42.67 42.67 0 0 0-42.67 42.67v405.84a383.38 383.38 0 0 1 128-21.84c71.89 0 139.16 19.75 196.68 54.12C492.46 473.96 641.05 384 810.67 384c44.37 0 87.32 6.17 128 17.66V170.67A42.67 42.67 0 0 0 896 128zM85.33 668.74v184.59A42.67 42.67 0 0 0 128 896h380.97C488.28 751.25 363.8 640 213.33 640c-45.8 0-89.19 10.3-128 28.74M594.99 896H896a42.67 42.67 0 0 0 42.67-42.67V491.18a383.36 383.36 0 0 0-128-21.85c-141.91 0-265.81 76.97-332.31 191.45A382.98 382.98 0 0 1 594.99 896"
+                fill="currentColor"
+                fill-opacity="0.9"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="nut-grid-item"
+      style="flex-basis: 25%;"
+    >
+      <div
+        class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-center nut-grid-item-content-horizontal"
+      >
+        <div
+          class="nut-avatar nut-avatar-normal nut-avatar-round demo-avatar"
+          style="background-color: #FA2C19; color: #666;"
+        >
+          <svg
+            aria-labelledby="Image"
+            class="nut-icon nut-icon-Image  icon"
+            color="#fff"
+            role="presentation"
+            viewBox="0 0 1024 1024"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M384 341.33a85.33 85.33 0 1 1-170.67 0 85.33 85.33 0 0 1 170.67 0"
+              fill="currentColor"
+              fill-opacity="0.9"
+            />
+            ,
+            <path
+              d="M0 170.67a128 128 0 0 1 128-128h768a128 128 0 0 1 128 128v682.66a128 128 0 0 1-128 128H128a128 128 0 0 1-128-128zM128 128a42.67 42.67 0 0 0-42.67 42.67v405.84a383.38 383.38 0 0 1 128-21.84c71.89 0 139.16 19.75 196.68 54.12C492.46 473.96 641.05 384 810.67 384c44.37 0 87.32 6.17 128 17.66V170.67A42.67 42.67 0 0 0 896 128zM85.33 668.74v184.59A42.67 42.67 0 0 0 128 896h380.97C488.28 751.25 363.8 640 213.33 640c-45.8 0-89.19 10.3-128 28.74M594.99 896H896a42.67 42.67 0 0 0 42.67-42.67V491.18a383.36 383.36 0 0 0-128-21.85c-141.91 0-265.81 76.97-332.31 191.45A382.98 382.98 0 0 1 594.99 896"
+              fill="currentColor"
+              fill-opacity="0.9"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div
+      class="nut-grid-item"
+      style="flex-basis: 25%;"
+    >
+      <div
+        class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-center nut-grid-item-content-horizontal"
+      >
+        <div
+          class="nut-avatar nut-avatar-large nut-avatar-round"
+          style="background-color: #eee; color: #666;"
+        >
+          <div
+            class="nut-image  icon"
+          >
+            <img
+              alt=""
+              class="nut-img"
+              src="https://img12.360buyimg.com/imagetools/jfs/t1/143702/31/16654/116794/5fc6f541Edebf8a57/4138097748889987.png"
+              style="object-fit: fill; object-position: center;"
+            />
+            <div
+              class="nut-img-loading"
+            >
+              <svg
+                aria-labelledby="Image"
+                class="nut-icon nut-icon-Image "
+                role="presentation"
+                viewBox="0 0 1024 1024"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M384 341.33a85.33 85.33 0 1 1-170.67 0 85.33 85.33 0 0 1 170.67 0"
+                  fill="currentColor"
+                  fill-opacity="0.9"
+                />
+                ,
+                <path
+                  d="M0 170.67a128 128 0 0 1 128-128h768a128 128 0 0 1 128 128v682.66a128 128 0 0 1-128 128H128a128 128 0 0 1-128-128zM128 128a42.67 42.67 0 0 0-42.67 42.67v405.84a383.38 383.38 0 0 1 128-21.84c71.89 0 139.16 19.75 196.68 54.12C492.46 473.96 641.05 384 810.67 384c44.37 0 87.32 6.17 128 17.66V170.67A42.67 42.67 0 0 0 896 128zM85.33 668.74v184.59A42.67 42.67 0 0 0 128 896h380.97C488.28 751.25 363.8 640 213.33 640c-45.8 0-89.19 10.3-128 28.74M594.99 896H896a42.67 42.67 0 0 0 42.67-42.67V491.18a383.36 383.36 0 0 0-128-21.85c-141.91 0-265.81 76.97-332.31 191.45A382.98 382.98 0 0 1 594.99 896"
+                  fill="currentColor"
+                  fill-opacity="0.9"
+                />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`should match snapshot 1`] = `
+<div>
+  <div
+    class="nut-grid nut-grid-border"
+  >
+    <div
+      class="nut-grid-item"
+      style="flex-basis: 25%;"
+    >
+      <div
+        class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-center nut-grid-item-content-vertical"
+      >
+        <svg
+          aria-labelledby="Image"
+          class="nut-icon nut-icon-Image "
+          role="presentation"
+          viewBox="0 0 1024 1024"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M384 341.33a85.33 85.33 0 1 1-170.67 0 85.33 85.33 0 0 1 170.67 0"
+            fill="currentColor"
+            fill-opacity="0.9"
+          />
+          ,
+          <path
+            d="M0 170.67a128 128 0 0 1 128-128h768a128 128 0 0 1 128 128v682.66a128 128 0 0 1-128 128H128a128 128 0 0 1-128-128zM128 128a42.67 42.67 0 0 0-42.67 42.67v405.84a383.38 383.38 0 0 1 128-21.84c71.89 0 139.16 19.75 196.68 54.12C492.46 473.96 641.05 384 810.67 384c44.37 0 87.32 6.17 128 17.66V170.67A42.67 42.67 0 0 0 896 128zM85.33 668.74v184.59A42.67 42.67 0 0 0 128 896h380.97C488.28 751.25 363.8 640 213.33 640c-45.8 0-89.19 10.3-128 28.74M594.99 896H896a42.67 42.67 0 0 0 42.67-42.67V491.18a383.36 383.36 0 0 0-128-21.85c-141.91 0-265.81 76.97-332.31 191.45A382.98 382.98 0 0 1 594.99 896"
+            fill="currentColor"
+            fill-opacity="0.9"
+          />
+        </svg>
+        <div
+          class="nut-grid-item-text"
+        >
+          文本
+        </div>
+      </div>
+    </div>
+    <div
+      class="nut-grid-item"
+      style="flex-basis: 25%;"
+    >
+      <div
+        class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-center nut-grid-item-content-vertical"
+      >
+        <svg
+          aria-labelledby="Image"
+          class="nut-icon nut-icon-Image "
+          role="presentation"
+          viewBox="0 0 1024 1024"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M384 341.33a85.33 85.33 0 1 1-170.67 0 85.33 85.33 0 0 1 170.67 0"
+            fill="currentColor"
+            fill-opacity="0.9"
+          />
+          ,
+          <path
+            d="M0 170.67a128 128 0 0 1 128-128h768a128 128 0 0 1 128 128v682.66a128 128 0 0 1-128 128H128a128 128 0 0 1-128-128zM128 128a42.67 42.67 0 0 0-42.67 42.67v405.84a383.38 383.38 0 0 1 128-21.84c71.89 0 139.16 19.75 196.68 54.12C492.46 473.96 641.05 384 810.67 384c44.37 0 87.32 6.17 128 17.66V170.67A42.67 42.67 0 0 0 896 128zM85.33 668.74v184.59A42.67 42.67 0 0 0 128 896h380.97C488.28 751.25 363.8 640 213.33 640c-45.8 0-89.19 10.3-128 28.74M594.99 896H896a42.67 42.67 0 0 0 42.67-42.67V491.18a383.36 383.36 0 0 0-128-21.85c-141.91 0-265.81 76.97-332.31 191.45A382.98 382.98 0 0 1 594.99 896"
+            fill="currentColor"
+            fill-opacity="0.9"
+          />
+        </svg>
+        <div
+          class="nut-grid-item-text"
+        >
+          文本
+        </div>
+      </div>
+    </div>
+    <div
+      class="nut-grid-item"
+      style="flex-basis: 25%;"
+    >
+      <div
+        class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-center nut-grid-item-content-vertical"
+      >
+        <svg
+          aria-labelledby="Image"
+          class="nut-icon nut-icon-Image "
+          role="presentation"
+          viewBox="0 0 1024 1024"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M384 341.33a85.33 85.33 0 1 1-170.67 0 85.33 85.33 0 0 1 170.67 0"
+            fill="currentColor"
+            fill-opacity="0.9"
+          />
+          ,
+          <path
+            d="M0 170.67a128 128 0 0 1 128-128h768a128 128 0 0 1 128 128v682.66a128 128 0 0 1-128 128H128a128 128 0 0 1-128-128zM128 128a42.67 42.67 0 0 0-42.67 42.67v405.84a383.38 383.38 0 0 1 128-21.84c71.89 0 139.16 19.75 196.68 54.12C492.46 473.96 641.05 384 810.67 384c44.37 0 87.32 6.17 128 17.66V170.67A42.67 42.67 0 0 0 896 128zM85.33 668.74v184.59A42.67 42.67 0 0 0 128 896h380.97C488.28 751.25 363.8 640 213.33 640c-45.8 0-89.19 10.3-128 28.74M594.99 896H896a42.67 42.67 0 0 0 42.67-42.67V491.18a383.36 383.36 0 0 0-128-21.85c-141.91 0-265.81 76.97-332.31 191.45A382.98 382.98 0 0 1 594.99 896"
+            fill="currentColor"
+            fill-opacity="0.9"
+          />
+        </svg>
+        <div
+          class="nut-grid-item-text"
+        >
+          文本
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

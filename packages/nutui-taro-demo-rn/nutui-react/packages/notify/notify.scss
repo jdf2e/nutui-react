@@ -1,0 +1,102 @@
+/*入场动画开始*/
+.fade-enter {
+  opacity: 0;
+}
+
+/*入场动画过程*/
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+/*入场动画结束*/
+.fade-enter-done {
+  opacity: 1;
+}
+
+/*离场动画开始*/
+.fade-exit {
+  opacity: 1;
+}
+
+/*离场动画过程*/
+.fade-exit-active {
+  opacity: 0;
+  transition: opacity 1s;
+}
+
+/*离场动画结束*/
+.fade-exit-done {
+  opacity: 0;
+}
+
+/*页面第一次加载时的开始状态*/
+.fade-appear {
+  opacity: 0;
+}
+
+/*页面第一次加载时的动画过程*/
+.fade-appear-active {
+  opacity: 1;
+  transition: opacity 1s;
+}
+
+.nut-notify {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: $notify-padding;
+  color: $notify-text-color;
+  font-size: $notify-font-size;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  height: $notify-height;
+
+  &-popup-top,
+  &-popup-bottom {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    overflow-y: auto;
+    transition: transform 0.3s;
+    z-index: 9999;
+  }
+
+  &-popup-top {
+    top: 0;
+  }
+
+  &-popup-bottom {
+    bottom: 0;
+  }
+
+  &-base {
+    background: $notify-base-background-color;
+  }
+
+  &-primary {
+    background: $notify-primary-background-color;
+  }
+
+  &-success {
+    background: $notify-success-background-color;
+  }
+
+  &-danger {
+    background: $notify-danger-background-color;
+  }
+
+  &-warning {
+    background: $notify-warning-background-color;
+  }
+}
+
+[dir='rtl'] .nut-notify,
+.nut-rtl .nut-notify {
+  &-popup-top,
+  &-popup-bottom {
+    left: auto;
+    right: 0;
+  }
+}

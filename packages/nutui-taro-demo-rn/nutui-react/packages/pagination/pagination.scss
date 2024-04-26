@@ -1,0 +1,104 @@
+.nut-pagination {
+  display: flex;
+  font-size: $pagination-font-size;
+  color: $pagination-color;
+
+  &-contain {
+    display: flex;
+  }
+
+  &-simple {
+    height: 39px;
+    width: 124px;
+    line-height: 39px;
+    text-align: center;
+  }
+
+  &-prev,
+  &-item,
+  &-next {
+    height: 39px;
+    min-width: 39px;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $white;
+    border-radius: $pagination-item-border-radius;
+    border: $pagination-item-border-width solid $pagination-item-border-color;
+    cursor: pointer;
+  }
+
+  &-prev,
+  &-item {
+    border-right: none;
+  }
+
+  &-prev,
+  &-next {
+    padding: $pagination-prev-next-padding;
+  }
+
+  .simple-border {
+    border-right: $pagination-item-border-width solid
+      $pagination-item-border-color;
+  }
+
+  .active {
+    color: $white;
+    border: none;
+    background: $pagination-active-background-color;
+  }
+
+  .disabled {
+    color: $pagination-disable-color;
+    background-color: $pagination-disable-background-color;
+    cursor: not-allowed;
+  }
+
+  &-lite {
+    width: $pagination-lite-width;
+    height: $pagination-lite-height;
+    display: flex;
+    font-size: $font-size-xs;
+    color: $color-primary-text;
+    background-color: $pagination-lite-background-color;
+    border-radius: $pagination-lite-radius;
+
+    &-active,
+    &-default {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: $pagination-lite-height;
+      height: $pagination-lite-height;
+    }
+
+    &-active {
+      border-radius: $pagination-lite-radius;
+      font-size: $font-size-small;
+      background-color: $pagination-lite-active-background-color;
+    }
+  }
+}
+
+[dir='rtl'] .nut-pagination,
+.nut-rtl .nut-pagination {
+  &-prev,
+  &-item {
+    border-right: none;
+    border-left: none;
+  }
+  &-prev,
+  &-next {
+    .nut-icon {
+      transform: rotate(180deg);
+    }
+  }
+  .simple-border {
+    border-right: none;
+    border-left: $pagination-item-border-width solid
+      $pagination-item-border-color;
+  }
+}

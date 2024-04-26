@@ -1,0 +1,233 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`infiniteloading base 01 1`] = `
+<div>
+  <div
+    class="nut-infiniteloading nut-infiniteloading-default"
+  >
+    <div
+      class="nut-infinite-top"
+      style="height: 0px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
+    >
+      <div
+        class="nut-infinite-top-tips"
+      >
+        松开刷新
+      </div>
+    </div>
+    <div
+      class="nut-infinite-container"
+    />
+    <div
+      class="nut-infinite-bottom"
+    />
+  </div>
+</div>
+`;
+
+exports[`infiniteloading base 02 1`] = `
+<div>
+  <div
+    class="nut-infiniteloading nut-infiniteloading-default"
+  >
+    <div
+      class="nut-infinite-top"
+      style="height: 0px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
+    >
+      <div
+        class="nut-infinite-top-tips"
+      >
+        松开刷新
+      </div>
+    </div>
+    <div
+      class="nut-infinite-container"
+    >
+      <li
+        class="infiniteLi"
+      >
+        0
+      </li>
+      <li
+        class="infiniteLi"
+      >
+        1
+      </li>
+      <li
+        class="infiniteLi"
+      >
+        2
+      </li>
+      <li
+        class="infiniteLi"
+      >
+        3
+      </li>
+      <li
+        class="infiniteLi"
+      >
+        4
+      </li>
+      <li
+        class="infiniteLi"
+      >
+        5
+      </li>
+      <li
+        class="infiniteLi"
+      >
+        6
+      </li>
+      <li
+        class="infiniteLi"
+      >
+        7
+      </li>
+      <li
+        class="infiniteLi"
+      >
+        8
+      </li>
+      <li
+        class="infiniteLi"
+      >
+        9
+      </li>
+    </div>
+    <div
+      class="nut-infinite-bottom"
+    >
+      <div
+        class="nut-infinite-bottom-tips"
+      >
+        加载中
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`pull base 01 1`] = `
+<div>
+  <div
+    class="nut-infiniteloading nut-infiniteloading-default"
+  >
+    <div
+      class="nut-infinite-top"
+      style="height: 10px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
+    >
+      <div
+        class="nut-infinite-top-tips"
+      >
+        下拉刷新
+      </div>
+    </div>
+    <div
+      class="nut-infinite-container"
+    />
+    <div
+      class="nut-infinite-bottom"
+    />
+  </div>
+</div>
+`;
+
+exports[`pull base 03 1`] = `
+<div>
+  <div
+    class="nut-infiniteloading nut-infiniteloading-default"
+  >
+    <div
+      class="nut-infinite-top"
+      style="height: 0px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
+    >
+      <div
+        class="nut-infinite-top-tips"
+      >
+        下拉刷新
+      </div>
+    </div>
+    <div
+      class="nut-infinite-container"
+    />
+    <div
+      class="nut-infinite-bottom"
+    />
+  </div>
+</div>
+`;
+
+exports[`pull base 03 2`] = `
+<div>
+  <div
+    class="nut-infiniteloading nut-infiniteloading-default"
+  >
+    <div
+      class="nut-infinite-top"
+      style="height: 0px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
+    >
+      <div
+        class="nut-infinite-top-tips"
+      >
+        下拉刷新
+      </div>
+    </div>
+    <div
+      class="nut-infinite-container"
+    />
+    <div
+      class="nut-infinite-bottom"
+    />
+  </div>
+</div>
+`;
+
+exports[`pull base 1`] = `
+<div>
+  <div
+    class="nut-infiniteloading nut-infiniteloading-default"
+  >
+    <div
+      class="nut-infinite-top"
+      style="height: 10px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
+    >
+      <div
+        class="nut-infinite-top-tips"
+      >
+        松开刷新
+      </div>
+    </div>
+    <div
+      class="nut-infinite-container"
+    />
+    <div
+      class="nut-infinite-bottom"
+    />
+  </div>
+</div>
+`;
+
+exports[`pull base 2`] = `
+<div>
+  <div
+    class="nut-infiniteloading nut-infiniteloading-default"
+  >
+    <div
+      class="nut-infinite-top"
+      style="height: 10px; transition: height 0.2s cubic-bezier(0.25,0.1,0.25,1);"
+    >
+      <div
+        class="nut-infinite-top-tips"
+      >
+        松开刷新
+      </div>
+    </div>
+    <div
+      class="nut-infinite-container"
+    />
+    <div
+      class="nut-infinite-bottom"
+    />
+  </div>
+</div>
+`;

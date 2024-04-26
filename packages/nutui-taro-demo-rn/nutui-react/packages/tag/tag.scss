@@ -1,0 +1,79 @@
+.nut-tag {
+  padding: $tag-padding;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: $tag-font-size;
+  border-radius: $tag-border-radius;
+  height: $tag-height;
+  color: $tag-color;
+  border: $tag-border-width solid transparent;
+
+  .nut-icon {
+    vertical-align: middle;
+    margin-left: 4px;
+  }
+
+  @mixin plain {
+    &.nut-tag-plain {
+      color: $color-title;
+      background-color: #fff;
+      border: $tag-border-width solid $color-title;
+    }
+  }
+
+  &-default {
+    background: $tag-background-color;
+    @include plain;
+  }
+
+  &-primary {
+    background: $tag-primary-background-color;
+    @include plain;
+  }
+
+  &-info {
+    background: $tag-info-background-color;
+    @include plain;
+  }
+
+  &-success {
+    background: $tag-success-background-color;
+    @include plain;
+  }
+
+  &-danger {
+    background: $tag-danger-background-color;
+    @include plain;
+  }
+
+  &-warning {
+    background: $tag-warning-background-color;
+    @include plain;
+  }
+
+  &-round {
+    border-radius: $tag-round-border-radius;
+  }
+
+  &-mark {
+    border-radius: $tag-mark-border-radius;
+  }
+
+  &-close {
+    cursor: pointer;
+  }
+
+  &-custom-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+[dir='rtl'] .nut-tag,
+.nut-rtl .nut-tag {
+  .nut-icon {
+    margin-left: 0;
+    margin-right: 4px;
+  }
+}

@@ -1,0 +1,22 @@
+.layout-flex-content {
+  line-height: $row-content-line-height;
+  color: $row-content-color;
+  text-align: center;
+  border-radius: $row-content-border-radius;
+  background: $row-content-background-color;
+  font-size: 14px;
+}
+
+.layout-flex-content-light {
+  background: $row-content-light-background-color;
+}
+
+.layout-flex-content-height {
+  height: $row-content-height;
+}
+
+.layout-box-item {
+  background: #fff;
+  margin-bottom: 20px;
+  padding: 20px 0;
+}

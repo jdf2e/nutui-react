@@ -1,0 +1,13 @@
+.nut-subsidenavbar {
+  &-item {
+    height: $sidenavbar-item-height;
+    color: $sidenavbar-sub-item-color;
+    padding: $sidenavbar-sub-item-padding;
+    box-sizing: border-box;
+  }
+
+  &-list {
+    background-color: $sidenavbar-sub-list-background;
+    color: $sidenavbar-sub-list-color;
+  }
+}

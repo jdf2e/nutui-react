@@ -1,0 +1,21 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match snapshot 1`] = `
+<div>
+  <button
+    class="nut-button nut-button-primary nut-button-normal nut-button-round aa"
+    style="margin: 8px;"
+    type="button"
+  >
+    <div
+      class="nut-button-wrap"
+    >
+      <div
+        class=""
+      >
+        主要按钮
+      </div>
+    </div>
+  </button>
+</div>
+`;

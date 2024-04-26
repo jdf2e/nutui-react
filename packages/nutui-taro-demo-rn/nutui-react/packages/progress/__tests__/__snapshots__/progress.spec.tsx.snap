@@ -1,0 +1,18 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should render progress when use props 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-progress"
+  >
+    <div
+      class="nut-progress-outer"
+    >
+      <div
+        class="nut-progress-inner"
+        style="width: 100%;"
+      />
+    </div>
+  </div>
+</DocumentFragment>
+`;

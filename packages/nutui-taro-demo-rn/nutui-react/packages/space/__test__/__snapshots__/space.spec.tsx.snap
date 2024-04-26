@@ -1,0 +1,64 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match snapshot 1`] = `
+<div>
+  <div
+    class="nut-space nut-space-horizontal"
+  >
+    <div
+      class="nut-space-item"
+    >
+      <button
+        class="nut-button nut-button-default nut-button-normal nut-button-round"
+        type="button"
+      >
+        <div
+          class="nut-button-wrap"
+        >
+          <div
+            class=""
+          >
+            按钮1
+          </div>
+        </div>
+      </button>
+    </div>
+    <div
+      class="nut-space-item"
+    >
+      <button
+        class="nut-button nut-button-default nut-button-normal nut-button-round"
+        type="button"
+      >
+        <div
+          class="nut-button-wrap"
+        >
+          <div
+            class=""
+          >
+            按钮2
+          </div>
+        </div>
+      </button>
+    </div>
+    <div
+      class="nut-space-item"
+    >
+      <button
+        class="nut-button nut-button-default nut-button-normal nut-button-round"
+        type="button"
+      >
+        <div
+          class="nut-button-wrap"
+        >
+          <div
+            class=""
+          >
+            按钮3
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,369 @@
+@import '../overlay/overlay.scss';
+
+.nut-popup {
+  position: fixed;
+  min-height: 26%;
+  max-height: 100%;
+  overflow-y: auto;
+  background-color: $overlay-content-bg-color;
+  color: $color-title;
+  -webkit-overflow-scrolling: touch;
+  font-size: $font-size-base;
+
+  &-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    // height: $popup-title-height;
+    border-bottom: $popup-title-border-bottom;
+    padding: $popup-title-padding;
+    position: relative;
+
+    &-left {
+      position: absolute;
+      left: $popup-title-padding;
+    }
+
+    &-title {
+      font-weight: $font-weight-bold;
+      font-size: $popup-title-font-size;
+    }
+
+    &-description {
+      color: $color-text-help;
+      font-size: $popup-description-font-size;
+      font-weight: $font-weight;
+    }
+
+    &-right {
+      position: absolute !important;
+      z-index: 1;
+      cursor: pointer;
+      width: $popup-icon-size;
+      height: $popup-icon-size;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: $popup-title-padding;
+      right: $popup-title-padding;
+      color: $color-text-help;
+
+      &:active {
+        opacity: 0.7;
+      }
+
+      &-top-left {
+        top: $popup-title-padding;
+        left: $popup-title-padding;
+      }
+
+      &-bottom-left {
+        bottom: $popup-title-padding;
+        left: $popup-title-padding;
+      }
+
+      &-bottom-right {
+        right: $popup-title-padding;
+        bottom: $popup-title-padding;
+      }
+    }
+  }
+
+  &-center {
+    top: 50%;
+    left: 50%;
+    min-height: 10%;
+    transform: translate(-50%, -50%);
+
+    &.nut-popup-round {
+      border-radius: $popup-border-radius;
+    }
+  }
+
+  &-bottom,
+  &-top {
+    max-height: 83%;
+  }
+
+  &-bottom {
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    &.nut-popup-round {
+      border-radius: $popup-border-radius $popup-border-radius 0 0;
+    }
+  }
+
+  &-right {
+    top: 0;
+    right: 0;
+
+    &.nut-popup-round {
+      border-radius: $popup-border-radius 0 0 $popup-border-radius;
+    }
+  }
+
+  &-left {
+    top: 0;
+    left: 0;
+
+    &.nut-popup-round {
+      border-radius: 0 $popup-border-radius $popup-border-radius 0;
+    }
+  }
+
+  &-top {
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    &.nut-popup-round {
+      border-radius: 0 0 $popup-border-radius $popup-border-radius;
+    }
+  }
+
+  &-slide {
+    @keyframes popup-scale-fade-in {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    @keyframes popup-scale-fade-out {
+      from {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      to {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+    }
+
+    &-default-enter-active {
+      animation-fill-mode: both;
+      animation-name: popup-scale-fade-in;
+      animation-duration: $popup-animation-duration;
+    }
+
+    &-default-exit-active {
+      animation-fill-mode: both;
+      animation-name: popup-scale-fade-out;
+      animation-duration: $popup-animation-duration;
+    }
+
+    @keyframes popup-fade-in {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes popup-fade-out {
+      from {
+        opacity: 1;
+      }
+
+      to {
+        opacity: 0;
+      }
+    }
+
+    &-center-enter-active {
+      animation-fill-mode: both;
+      animation-name: popup-fade-in;
+      animation-duration: $popup-animation-duration;
+    }
+
+    &-center-exit-active {
+      animation-fill-mode: both;
+      animation-name: popup-fade-out;
+      animation-duration: $popup-animation-duration;
+    }
+
+    /* 从顶部滑出 */
+    @keyframes popup-slide-top-enter {
+      from {
+        transform: translate3d(0, -100%, 0);
+      }
+    }
+
+    @keyframes popup-slide-top-exit {
+      to {
+        transform: translate3d(0, -100%, 0);
+      }
+    }
+
+    &-top-enter-active,
+    &-top-appear-active {
+      transform: translate3d(0, 0%, 0);
+      animation-fill-mode: both;
+      animation-name: popup-slide-top-enter;
+      animation-duration: $popup-animation-duration;
+    }
+
+    &-top-exit-active {
+      animation-fill-mode: both;
+      animation-name: popup-slide-top-exit;
+      animation-duration: $popup-animation-duration;
+    }
+
+    /* 从右侧滑出 */
+    @keyframes popup-slide-right-enter {
+      from {
+        transform: translate3d(100%, 0, 0);
+      }
+    }
+
+    @keyframes popup-slide-right-exit {
+      to {
+        transform: translate3d(100%, 0, 0);
+      }
+    }
+
+    &-right-enter-active,
+    &-right-appear-active {
+      transform: translate3d(0, 0, 0);
+      animation-fill-mode: both;
+      animation-name: popup-slide-right-enter;
+      animation-duration: $popup-animation-duration;
+    }
+
+    &-right-exit {
+      animation-fill-mode: both;
+      animation-name: popup-slide-right-exit;
+      animation-duration: $popup-animation-duration;
+    }
+
+    /* 从底部滑出 */
+    @keyframes popup-slide-bottom-enter {
+      from {
+        transform: translate3d(0, 100%, 0);
+      }
+    }
+
+    @keyframes slide-bottom-exit {
+      to {
+        transform: translate3d(0, 100%, 0);
+      }
+    }
+
+    &-bottom-enter-active,
+    &-bottom-appear-active {
+      transform: translate(0, 0);
+      animation-fill-mode: both;
+      animation-name: popup-slide-bottom-enter;
+      animation-duration: $popup-animation-duration;
+    }
+
+    &-bottom-exit {
+      animation-fill-mode: both;
+      animation-name: slide-bottom-exit;
+      animation-duration: $popup-animation-duration;
+    }
+
+    /* 从左侧滑出 */
+    @keyframes popup-slide-left-enter {
+      from {
+        transform: translate3d(-100%, 0, 0);
+      }
+    }
+
+    @keyframes popup-slide-left-exit {
+      to {
+        transform: translate3d(-100%, 0, 0);
+      }
+    }
+
+    &-left-enter-active,
+    &-left-appear-active {
+      transform: translate(0, 0);
+      animation-fill-mode: both;
+      animation-name: popup-slide-left-enter;
+      animation-duration: $popup-animation-duration;
+    }
+
+    &-left-exit-active,
+    &-left-exit-done {
+      animation-fill-mode: both;
+      animation-name: popup-slide-left-exit;
+      animation-duration: $popup-animation-duration;
+    }
+
+    &-default-exit-done,
+    &-center-exit-done,
+    &-left-exit-done,
+    &-right-exit-done,
+    &-top-exit-done,
+    &-bottom-exit-done {
+      &.nut-popup {
+        display: none;
+      }
+    }
+  }
+
+  .nut-overflow-hidden {
+    overflow: hidden !important;
+  }
+}
+
+[dir='rtl'] .nut-popup,
+.nut-rtl .nut-popup {
+  &-title {
+    &-left {
+      left: auto;
+      right: $popup-title-padding;
+    }
+
+    &-right {
+      right: auto;
+      left: $popup-title-padding;
+
+      &-top-left {
+        left: auto;
+        right: $popup-title-padding;
+      }
+
+      &-bottom-left {
+        left: auto;
+        right: $popup-title-padding;
+      }
+
+      &-bottom-right {
+        right: auto;
+        left: $popup-title-padding;
+      }
+    }
+
+    .nut-icon-ArrowLeft {
+      transform: rotate(180deg);
+    }
+  }
+
+  &-center {
+    left: auto;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+
+  &-bottom {
+    left: auto;
+    right: 0;
+  }
+
+  &-top {
+    left: auto;
+    right: 0;
+  }
+}

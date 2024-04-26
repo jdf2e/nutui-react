@@ -1,0 +1,124 @@
+:root,
+page {
+  --nutui-brand-1: #ffeae8; // 梯度1
+  --nutui-brand-2: #fec3be; // 梯度2
+  --nutui-brand-3: #fd9d94; // 梯度3
+  --nutui-brand-4: #fc776b; // 梯度4
+  --nutui-brand-5: #fb5142; // 梯度5
+  --nutui-brand-6: #fa2c19; // 梯度6
+  --nutui-brand-7: #cf1f0f; // 梯度7
+  --nutui-brand-8: #a31508; // 梯度8
+  --nutui-brand-9: #780d03; // 梯度9
+  --nutui-brand-10: #4d0004; // 梯度10
+
+  --nutui-brand-stop-1: #f53d4d; // 渐变色起
+  --nutui-brand-stop-2: #fa2c19; // 渐变色止
+
+  --nutui-secondary-1: #14cc33; // 辅助色
+
+  --nutui-color-primary: var(--nutui-brand-6);
+  --nutui-color-primary-stop-1: var(--nutui-brand-stop-1);
+  --nutui-color-primary-stop-2: var(--nutui-brand-stop-2);
+  --nutui-color-primary-pressed: var(--nutui-brand-7);
+  --nutui-color-primary-disabled: var(--nutui-brand-3);
+  --nutui-color-primary-text: #ffffff;
+  --nutui-color-primary-light: var(--nutui-brand-1);
+  --nutui-color-primary-light-pressed: var(--nutui-brand-2);
+
+  --nutui-color-text-link: #396acc;
+
+  // 背景色
+  // 卡片背景色
+  --nutui-gray-1: #ffffff;
+  // 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
+  --nutui-gray-2: #f8f8f8;
+  // 页面基底色，用于卡片式页面的兜底，永远置于页面最底层。
+  --nutui-gray-3: #f6f6f6;
+  // 文字色
+  // 四级文字色，不可操作内容色，用于预置内容、无效内容、特殊不可点击按钮、组件边框线等。
+  --nutui-gray-4: #bfbfbf;
+  // 三级文字色（次要）
+  --nutui-gray-5: #8c8c8c;
+  // 二级文字色（常规），用于次级标题、属性标示、非主要信息引导等。
+  --nutui-gray-6: #595959;
+  // 一级文字色（重要）主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
+  --nutui-gray-7: #1a1a1a;
+
+  --nutui-black-1: rgba(0, 0, 0, 0);
+  // 蒙层色
+  // 容错蒙层
+  --nutui-black-2: rgba(0, 0, 0, 0.02);
+  // 线条色
+  // 间隔线/容错线，用于结构或信息分割
+  --nutui-black-3: rgba(0, 0, 0, 0.06);
+  --nutui-black-4: rgba(0, 0, 0, 0.1);
+  --nutui-black-5: rgba(0, 0, 0, 0.2);
+  --nutui-black-6: rgba(0, 0, 0, 0.3);
+  --nutui-black-7: rgba(0, 0, 0, 0.4);
+  --nutui-black-8: rgba(0, 0, 0, 0.5);
+  --nutui-black-9: rgba(0, 0, 0, 0.6);
+  // 蒙层色
+  // 全局蒙层，用于弹出层、弹窗、新功能引导出现的整页遮罩
+  --nutui-black-10: rgba(0, 0, 0, 0.7);
+  --nutui-black-11: rgba(0, 0, 0, 0.8);
+  --nutui-black-12: rgba(0, 0, 0, 0.9);
+  --nutui-black-13: rgba(0, 0, 0, 1);
+
+  --nutui-white-1: rgba(255, 255, 255, 0);
+  --nutui-white-2: rgba(255, 255, 255, 0.02);
+  --nutui-white-3: rgba(255, 255, 255, 0.06);
+  --nutui-white-4: rgba(255, 255, 255, 0.1);
+  --nutui-white-5: rgba(255, 255, 255, 0.2);
+  --nutui-white-6: rgba(255, 255, 255, 0.3);
+  --nutui-white-7: rgba(255, 255, 255, 0.4);
+  --nutui-white-8: rgba(255, 255, 255, 0.5);
+  --nutui-white-9: rgba(255, 255, 255, 0.6);
+  --nutui-white-10: rgba(255, 255, 255, 0.7);
+  --nutui-white-11: rgba(255, 255, 255, 0.8);
+  --nutui-white-12: rgba(255, 255, 255, 0.9);
+  --nutui-white-13: rgba(255, 255, 255, 1);
+
+  --nutui-color-info: #1988fa;
+  --nutui-color-text-disabled: var(--nutui-gray-4);
+
+  // 字体
+  --nutui-font-size-1: 10px;
+  --nutui-font-size-2: 12px;
+  --nutui-font-size-3: 14px;
+  --nutui-font-size-4: 16px;
+  --nutui-font-size-5: 18px;
+  --nutui-font-size-6: 20px;
+  --nutui-font-size-7: 22px;
+  --nutui-font-size-8: 24px;
+  --nutui-font-size-9: 26px;
+  --nutui-font-size-10: 28px;
+  // 字重
+  --nutui-font-weight: 400;
+  --nutui-font-weight-bold: 500;
+  // 行高
+  --nutui-line-height-base: 1.5;
+
+  // space
+  --nutui-spacing-1: 2px;
+  --nutui-spacing-2: 4px;
+  --nutui-spacing-3: 6px;
+  --nutui-spacing-4: 8px;
+  --nutui-spacing-5: 10px;
+  --nutui-spacing-6: 12px;
+  --nutui-spacing-7: 14px;
+  --nutui-spacing-8: 16px;
+  --nutui-spacing-9: 18px;
+  --nutui-spacing-10: 20px;
+
+  // radius
+  --nutui-radius-1: 0px;
+  --nutui-radius-2: 2px;
+  --nutui-radius-3: 4px;
+  --nutui-radius-4: 6px;
+  --nutui-radius-5: 8px;
+  --nutui-radius-6: 10px;
+  --nutui-radius-7: 12px;
+  --nutui-radius-8: 14px;
+  --nutui-radius-9: 16px;
+  --nutui-radius-10: 18px;
+}

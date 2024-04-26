@@ -1,0 +1,58 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`prop title description extra 1`] = `
+<div>
+  <div
+    class="nut-cell-group"
+  >
+    <div
+      class="nut-cell-group-title"
+    >
+      链接 | 分组用法
+    </div>
+    <div
+      class="nut-cell-group-wrap nut-cell-group-wrap-divider"
+    >
+      <div
+        class="nut-cell"
+        style="border-radius: 6px; align-items: flex-start;"
+      >
+        <div
+          class="nut-cell-left"
+        >
+          <div
+            class="nut-cell-title"
+          >
+            链接
+          </div>
+        </div>
+        <div
+          class="nut-cell-divider"
+        />
+      </div>
+      <div
+        class="nut-cell"
+        style="border-radius: 6px; align-items: flex-start;"
+      >
+        <div
+          class="nut-cell-left"
+        >
+          <div
+            class="nut-cell-title"
+          >
+            URL 跳转
+          </div>
+        </div>
+        <div
+          class="nut-cell-extra"
+        >
+          https://jd.com
+        </div>
+        <div
+          class="nut-cell-divider"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

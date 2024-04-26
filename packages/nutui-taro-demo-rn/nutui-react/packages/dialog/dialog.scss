@@ -1,0 +1,169 @@
+@import '../button/button.scss';
+@import '../overlay/overlay.scss';
+@import '../../styles/mixins/index';
+
+.nut-dialog {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: $dialog-width;
+  max-height: 67%;
+  min-height: $dialog-min-height;
+  padding: $dialog-padding;
+  box-sizing: border-box;
+
+  &-overlay {
+    --nutui-overlay-zIndex: 1200;
+  }
+
+  &-outer {
+    position: fixed;
+    max-height: 100%;
+    background-color: $white;
+    transition:
+      transform 0.2s,
+      -webkit-transform 0.2s;
+    -webkit-overflow-scrolling: touch;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-radius: $dialog-border-radius;
+    z-index: $dialog-z-index;
+    animation-duration: 0.3s;
+  }
+
+  &-close {
+    position: absolute !important;
+    z-index: 1;
+    cursor: pointer;
+    width: $dialog-close-width;
+    height: $dialog-close-height;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: $dialog-close-top;
+    color: $dialog-close-color;
+    .nut-icon {
+      font-size: 24px;
+      height: 24px;
+      width: 24px;
+    }
+
+    &-top-right {
+      right: $dialog-close-right;
+    }
+
+    &-top-left {
+      left: $dialog-close-left;
+    }
+
+    &-bottom {
+      top: initial;
+      bottom: -56px;
+      left: 50%;
+      transform: translate(-50%);
+    }
+
+    &:active {
+      opacity: 0.7;
+    }
+  }
+
+  &-header {
+    display: block;
+    text-align: center;
+    font-size: $dialog-header-font-size;
+    font-weight: $dialog-header-font-weight;
+    color: $color-title;
+    @include oneline-ellipsis();
+  }
+
+  &-content {
+    width: 100%;
+    margin: $dialog-content-margin;
+    max-height: $dialog-content-max-height;
+    line-height: $dialog-content-line-height;
+    font-size: $font-size-base;
+    color: $color-text;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: pre-wrap;
+    text-align: $dialog-content-text-align;
+    overflow-y: auto;
+  }
+
+  &-footer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+
+    &.vertical {
+      flex-direction: column;
+
+      .nut-button {
+        min-width: 100%;
+        margin: 0;
+
+        &.nut-dialog-footer-ok {
+          order: 1;
+        }
+
+        &.nut-dialog-footer-cancel {
+          border: 0;
+          color: $color-text;
+          order: 2;
+          display: flex;
+          align-items: flex-end;
+          margin-top: $dialog-vertical-footer-ok-margin-top;
+        }
+      }
+    }
+
+    .nut-button {
+      min-width: $dialog-footer-button-min-width;
+    }
+
+    &-cancel.nut-dialog-footer-cancel {
+      margin-right: $dialog-footer-cancel-margin-right;
+    }
+
+    &-ok {
+      max-width: $dialog-footer-ok-max-width;
+    }
+  }
+}
+
+[dir='rtl'] .nut-dialog,
+.nut-rtl .nut-dialog {
+  &-outer {
+    left: auto;
+    right: 50%;
+    -webkit-transform: translate(50%, -50%);
+    transform: translate(50%, -50%);
+  }
+
+  &-close {
+    &-top-right {
+      right: auto;
+      left: $dialog-close-right;
+    }
+
+    &-top-left {
+      left: auto;
+      right: $dialog-close-left;
+    }
+  }
+
+  &-footer {
+    &-cancel.nut-dialog-footer-cancel {
+      margin-right: 0;
+      margin-left: $dialog-footer-cancel-margin-right;
+    }
+  }
+
+  &-content {
+    text-align: var(--nutui-dialog-content-text-align, right);
+  }
+}

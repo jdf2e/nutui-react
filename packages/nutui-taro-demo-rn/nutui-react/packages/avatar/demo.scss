@@ -1,0 +1,13 @@
+.avatar-demo {
+  .nut-cell {
+    align-items: flex-end;
+    border-radius: 0;
+
+    & > div {
+      margin-inline-end: 30px;
+    }
+  }
+}
+.demo-avatar {
+  color: #fff;
+}
