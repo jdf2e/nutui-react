@@ -1,0 +1,100 @@
+@import '../radiogroup/radiogroup.scss';
+
+.nut-radio {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+
+  &:last-child {
+    margin-bottom: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  &.nut-radio-reverse {
+    flex-direction: row-reverse;
+
+    .nut-radio-label {
+      margin-right: $radio-label-margin-left;
+      margin-left: 0;
+    }
+  }
+
+  &-label {
+    margin-left: $radio-label-margin-left;
+    font-size: $radio-label-font-size;
+    color: $radio-label-color;
+
+    &-disabled {
+      color: $radio-label-disable-color;
+    }
+  }
+
+  &-icon {
+    color: $color-text-disabled;
+    transition-duration: 0.3s;
+    transition-property: color, border-color, background-color;
+    font-size: $radio-icon-font-size;
+  }
+
+  &-icon {
+    &-checked {
+      color: $color-primary;
+
+      &.nut-radio-icon-disabled {
+        color: $color-primary-disabled;
+      }
+    }
+
+    &-disabled {
+      color: $color-text-disabled;
+    }
+  }
+
+  &-button {
+    display: inline-flex;
+    align-items: center;
+    padding: $radio-button-padding;
+    font-size: $radio-button-font-size;
+    background: $radio-button-background;
+    border-radius: $radio-button-border-radius;
+    color: $radio-label-color;
+    box-sizing: border-box;
+    border: 1px solid $radio-button-background;
+
+    &-active {
+      background: $color-primary-light;
+      color: $color-primary;
+      border: $radio-button-active-border;
+    }
+
+    &-disabled {
+      color: $color-text-disabled;
+      border: 1px solid $radio-button-background;
+    }
+  }
+
+  .nut-radio-button-active.nut-radio-button-disabled {
+    background: $color-text-disabled;
+    color: $white;
+    border: 1px solid $color-text-disabled;
+  }
+}
+[dir='rtl'] .nut-radio,
+.nut-rtl .nut-radio {
+  &:last-child {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  &.nut-radio-reverse {
+    .nut-radio-label {
+      margin-left: $radio-label-margin-left;
+      margin-right: 0;
+    }
+  }
+
+  &-label {
+    margin-left: 0;
+    margin-right: $radio-label-margin-left;
+  }
+}

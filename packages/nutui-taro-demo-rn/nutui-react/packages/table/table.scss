@@ -1,0 +1,235 @@
+.nut-table {
+  overflow: hidden;
+  position: relative;
+
+  &-wrapper {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    font-size: $font-size-base;
+    color: $color-title;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+    border: 1px solid $table-border-color;
+
+    &-sticky {
+      overflow-x: auto;
+    }
+  }
+
+  &-main {
+    display: table;
+    overflow-x: auto;
+    color: $color-title;
+    background-color: $color-background-overlay;
+    table-layout: fixed;
+    width: max-content;
+    min-width: 100%;
+    position: relative;
+
+    &-striped {
+      .nut-table-main-head {
+        &-tr {
+          background-color: $table-tr-even-bg-color;
+        }
+      }
+
+      .nut-table-main-body {
+        &-tr:nth-child(odd) {
+          background-color: $table-tr-odd-bg-color;
+        }
+      }
+
+      .nut-table-main-body {
+        &-tr:nth-child(even) {
+          background-color: $table-tr-even-bg-color;
+        }
+      }
+    }
+
+    &-head,
+    &-body {
+      background: inherit;
+
+      &-tr {
+        display: table-row;
+        background: inherit;
+
+        &:last-child {
+          .nut-table-main-body-tr-td {
+            border-bottom: none;
+          }
+        }
+
+        &-th {
+          display: table-cell;
+          padding: $table-cols-padding;
+          table-layout: fixed;
+          background: inherit;
+          position: sticky;
+          top: 0;
+
+          &.nut-table-fixed-left,
+          &.nut-table-fixed-right {
+            z-index: 4;
+          }
+
+          &:last-child {
+            border-right: none;
+          }
+        }
+
+        &-td {
+          display: table-cell;
+          padding: $table-cols-padding;
+          table-layout: fixed;
+          background: inherit;
+
+          &:last-child {
+            border-right: none;
+          }
+
+          &-nodata {
+            display: flex;
+            height: 50px;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+
+        &-border {
+          border-right: 1px solid $table-border-color;
+          border-bottom: 1px solid $table-border-color;
+        }
+
+        &-alignleft,
+        &-align {
+          text-align: start;
+        }
+
+        &-aligncenter {
+          text-align: center;
+        }
+
+        &-alignright {
+          text-align: end;
+        }
+      }
+    }
+
+    &-head {
+      display: table-header-group;
+    }
+
+    &-body {
+      display: table-row-group;
+    }
+  }
+
+  &-sticky-left,
+  &-sticky-right {
+    position: absolute;
+    top: 0px;
+    width: 8px;
+    bottom: -1px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    box-shadow: none;
+    touch-action: none;
+    pointer-events: none;
+    z-index: 3;
+    background: transparent;
+  }
+
+  &-sticky-left {
+    left: 1px;
+    box-shadow: $table-sticky-left-shadow;
+  }
+
+  &-sticky-right {
+    right: 1px;
+    box-shadow: $table-sticky-right-shadow;
+  }
+
+  &-fixed-left,
+  &-fixed-right {
+    position: sticky;
+    z-index: 2;
+
+    &.h5-div {
+      // 临时方案，小程序下，width包含了padding值。
+      padding: $table-cols-padding 0;
+    }
+  }
+
+  &-fixed-left-last {
+    border-right: none;
+  }
+
+  &-summary {
+    color: $color-title;
+    background-color: $color-background-overlay;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 30px;
+    padding: $table-cols-padding;
+    position: relative;
+    z-index: 5;
+  }
+}
+
+[dir='rtl'] .nut-table,
+.nut-rtl .nut-table {
+  &-main {
+    &-head,
+    &-body {
+      &-tr {
+        &-th {
+          &:last-child {
+            border-right: none;
+            border-left: none;
+          }
+        }
+
+        &-td {
+          &:last-child {
+            border-right: none;
+            border-left: none;
+          }
+        }
+
+        &-border {
+          border-right: none;
+          border-left: 1px solid $table-border-color;
+        }
+
+        &-alignleft,
+        &-align {
+          text-align: right;
+        }
+
+        &-alignright {
+          text-align: left;
+        }
+      }
+    }
+  }
+
+  &-sticky-left {
+    left: auto;
+    right: 1px;
+    box-shadow: $table-sticky-right-shadow;
+  }
+
+  &-sticky-right {
+    right: auto;
+    left: 1px;
+    box-shadow: $table-sticky-left-shadow;
+  }
+  &-fixed-left-last {
+    border-right: none;
+    border-left: none;
+  }
+}

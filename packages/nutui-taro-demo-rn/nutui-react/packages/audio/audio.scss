@@ -1,0 +1,99 @@
+@import '../button/button.scss';
+@import '../range/range.scss';
+
+.nut-audio {
+  &-icon {
+    position: relative;
+    display: inline-block;
+
+    &-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 30px;
+      height: 30px;
+      background: $white;
+      border-radius: 50%;
+      box-shadow: 0 0 8px $color-text-disabled;
+    }
+
+    .nut-audio-icon-stop {
+      position: relative;
+
+      &::after {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%);
+        content: '';
+        height: 2px;
+        width: 30px;
+        background: $color-text-disabled;
+        transform: rotate(45deg);
+        transform-origin: 8px -18px;
+      }
+    }
+  }
+
+  &-progress {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 0px auto;
+    padding: 10px 0;
+
+    &-bar-wrapper {
+      flex: 1;
+      margin: 0 10px;
+    }
+
+    .time {
+      min-width: 50px;
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .nut-range-button {
+      width: 8px;
+      height: 8px;
+    }
+  }
+
+  .custom-button-group {
+    .nut-button-primary {
+      margin: 0 5px;
+    }
+  }
+
+  .custom-button-group-disable {
+    .nut-button-primary {
+      margin: 0 5px;
+      pointer-events: none;
+    }
+  }
+
+  .disable {
+    color: blue;
+  }
+
+  .nut-audio-none-container {
+    .nut-voice {
+      border: 1px solid $color-title;
+      align-items: center;
+    }
+  }
+}
+
+[dir='rtl'] .nut-audio,
+.nut-rtl .nut-audio {
+  &-icon {
+    .nut-audio-icon-stop {
+      &::after {
+        left: auto;
+        right: 50%;
+        transform: rotate(-45deg);
+        transform-origin: 20px -18px;
+      }
+    }
+  }
+}

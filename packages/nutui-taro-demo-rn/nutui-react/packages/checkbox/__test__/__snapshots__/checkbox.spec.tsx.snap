@@ -1,0 +1,28 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-checkbox nut-checkbox-reverse"
+  >
+    <svg
+      aria-labelledby="Checked"
+      class="nut-icon nut-icon-Checked nut-checkbox-icon nut-checkbox-icon-checked"
+      role="presentation"
+      viewBox="0 0 1024 1024"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M512 0C230.4 0 0 230.4 0 512s230.4 512 512 512 512-230.4 512-512S793.6 0 512 0m281.6 369.78c-14.22 11.38-193.42 130.84-321.42 321.42 0 0 0 2.84-2.85 2.84-8.53 5.69-48.35 36.98-88.17-8.53-39.82-51.2-62.58-99.56-142.23-142.22-2.84 0-2.84-2.85-2.84-2.85-8.53-11.38-39.82-56.89 19.91-56.88 45.51 0 91.02 11.38 162.13 73.95 5.69 5.69 14.22 5.69 17.07 0 34.13-39.82 173.51-190.58 332.8-238.93 0 0 19.91-2.85 31.29 14.22 5.69 11.38 11.38 22.76-5.69 36.98"
+        fill="currentColor"
+        fill-opacity="0.9"
+      />
+    </svg>
+    <span
+      class="nut-checkbox-label "
+    >
+      复选框
+    </span>
+  </div>
+</DocumentFragment>
+`;

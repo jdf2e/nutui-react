@@ -1,0 +1,83 @@
+.nut-tag {
+  padding: 0px 2px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  border-radius: 2px;
+  height: 14px;
+  color: #ffffff;
+  border: 1px solid transparent;
+}
+.nut-tag .nut-icon {
+  vertical-align: middle;
+  margin-left: 4px;
+}
+.nut-tag-default {
+  background: #1a1a1a;
+}
+.nut-tag-default.nut-tag-plain {
+  color: #1a1a1a;
+  background-color: #fff;
+  border: 1px solid #1a1a1a;
+}
+.nut-tag-primary {
+  background: linear-gradient(135deg, #f53d4d 0%, #fa2c19 100%);
+}
+.nut-tag-primary.nut-tag-plain {
+  color: #1a1a1a;
+  background-color: #fff;
+  border: 1px solid #1a1a1a;
+}
+.nut-tag-info {
+  background: #1988fa;
+}
+.nut-tag-info.nut-tag-plain {
+  color: #1a1a1a;
+  background-color: #fff;
+  border: 1px solid #1a1a1a;
+}
+.nut-tag-success {
+  background: #4fc08d;
+}
+.nut-tag-success.nut-tag-plain {
+  color: #1a1a1a;
+  background-color: #fff;
+  border: 1px solid #1a1a1a;
+}
+.nut-tag-danger {
+  background: #fa2c19;
+}
+.nut-tag-danger.nut-tag-plain {
+  color: #1a1a1a;
+  background-color: #fff;
+  border: 1px solid #1a1a1a;
+}
+.nut-tag-warning {
+  background: rgb(255, 158, 13);
+}
+.nut-tag-warning.nut-tag-plain {
+  color: #1a1a1a;
+  background-color: #fff;
+  border: 1px solid #1a1a1a;
+}
+.nut-tag-round {
+  border-radius: 8px;
+}
+.nut-tag-mark {
+  border-radius: 0 8px 8px 0;
+}
+.nut-tag-close {
+  cursor: pointer;
+}
+.nut-tag-custom-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+[dir=rtl] .nut-tag .nut-icon,
+.nut-rtl .nut-tag .nut-icon {
+  margin-left: 0;
+  margin-right: 4px;
+}

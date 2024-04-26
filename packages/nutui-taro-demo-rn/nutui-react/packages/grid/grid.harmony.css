@@ -1,0 +1,16 @@
+.nut-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.nut-grid-border {
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-left: 1px solid rgba(0, 0, 0, 0.06);
+
+}
+
+[dir=rtl] .nut-grid-border,
+.nut-rtl .nut-grid-border {
+  border-left-width: 0;
+  border-right-width: 1px;
+}

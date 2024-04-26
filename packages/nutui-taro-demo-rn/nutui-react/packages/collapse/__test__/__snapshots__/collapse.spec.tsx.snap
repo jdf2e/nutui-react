@@ -1,0 +1,152 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-collapse"
+  >
+    <div
+      class="nut-collapse-item"
+    >
+      <div
+        class="nut-collapse-item-header"
+      >
+        <div
+          class="nut-collapse-item-title"
+        >
+          标题1
+        </div>
+        <div
+          class="nut-collapse-item-extra"
+        />
+        <div
+          class="nut-collapse-item-icon-box"
+        >
+          <div
+            class="nut-collapse-item-icon"
+            style="transform: translateY(-50%) rotate(180deg);"
+          >
+            <svg
+              aria-labelledby="ArrowDown"
+              class="nut-icon nut-icon-ArrowDown "
+              role="presentation"
+              viewBox="0 0 1024 1024"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M158.17 289.83a42.67 42.67 0 1 0-60.34 60.34l384 384a42.67 42.67 0 0 0 60.36 0l384-384a42.67 42.67 0 1 0-60.36-60.34L512 643.67z"
+                fill="currentColor"
+                fill-opacity="0.9"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        class="nut-collapse-item-content"
+      >
+        <div
+          class="nut-collapse-item-content-text"
+        >
+          京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+        </div>
+      </div>
+    </div>
+    <div
+      class="nut-collapse-item"
+    >
+      <div
+        class="nut-collapse-item-header"
+      >
+        <div
+          class="nut-collapse-item-title"
+        >
+          标题2
+        </div>
+        <div
+          class="nut-collapse-item-extra"
+        />
+        <div
+          class="nut-collapse-item-icon-box"
+        >
+          <div
+            class="nut-collapse-item-icon"
+            style="transform: translateY(-50%) rotate(180deg);"
+          >
+            <svg
+              aria-labelledby="ArrowDown"
+              class="nut-icon nut-icon-ArrowDown "
+              role="presentation"
+              viewBox="0 0 1024 1024"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M158.17 289.83a42.67 42.67 0 1 0-60.34 60.34l384 384a42.67 42.67 0 0 0 60.36 0l384-384a42.67 42.67 0 1 0-60.36-60.34L512 643.67z"
+                fill="currentColor"
+                fill-opacity="0.9"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        class="nut-collapse-item-content"
+      >
+        <div
+          class="nut-collapse-item-content-text"
+        >
+          京东“厂直优品计划”首推“政府优品馆” 3年覆盖80%镇级政府
+        </div>
+      </div>
+    </div>
+    <div
+      class="nut-collapse-item"
+    >
+      <div
+        class="nut-collapse-item-header disabled"
+      >
+        <div
+          class="nut-collapse-item-title"
+        >
+          标题3
+        </div>
+        <div
+          class="nut-collapse-item-extra"
+        />
+        <div
+          class="nut-collapse-item-icon-box"
+        >
+          <div
+            class="nut-collapse-item-icon"
+            style="transform: translateY(-50%);"
+          >
+            <svg
+              aria-labelledby="ArrowDown"
+              class="nut-icon nut-icon-ArrowDown "
+              role="presentation"
+              viewBox="0 0 1024 1024"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M158.17 289.83a42.67 42.67 0 1 0-60.34 60.34l384 384a42.67 42.67 0 0 0 60.36 0l384-384a42.67 42.67 0 1 0-60.36-60.34L512 643.67z"
+                fill="currentColor"
+                fill-opacity="0.9"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div
+        class="nut-collapse-item-content"
+        style="height: 0px;"
+      >
+        <div
+          class="nut-collapse-item-content-text"
+        >
+          京东“厂直优品计划”首推“政府优品馆”
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

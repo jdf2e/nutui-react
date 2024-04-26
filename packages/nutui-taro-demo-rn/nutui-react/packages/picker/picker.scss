@@ -1,0 +1,170 @@
+@import '../popup/popup.scss';
+
+.nut-picker {
+  background-color: $color-background-overlay;
+  width: 100%;
+
+  &-control {
+    display: flex;
+    height: $popup-title-height;
+    font-size: $popup-title-font-size;
+    align-items: center;
+    justify-content: space-between;
+    padding: $popup-title-padding;
+  }
+
+  &-cancel-btn {
+    color: $picker-title-cancel-color;
+    font-size: $picker-title-cancel-font-size;
+  }
+
+  &-confirm-btn {
+    color: $picker-title-ok-color;
+    font-size: $picker-title-ok-font-size;
+  }
+
+  &-title {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: center;
+    color: $color-title;
+    font-size: $popup-title-font-size;
+    font-weight: $popup-title-font-weight;
+  }
+
+  &-panel {
+    display: flex;
+    position: relative;
+  }
+
+  &-indicator {
+    position: absolute;
+    top: 108px;
+    height: $picker-item-height;
+    width: 100%;
+    border: $picker-item-active-line-border;
+    border-left: 0;
+    border-right: 0;
+    color: $picker-item-text-color;
+    font-size: $picker-item-text-font-size;
+    z-index: 3;
+
+    &-taro {
+      height: $picker-item-height;
+      border: 0;
+
+      &::before,
+      &::after {
+        border: $picker-item-active-line-border;
+        border-left: 0;
+        border-right: 0;
+      }
+    }
+  }
+
+  &-list {
+    flex: 1;
+    position: relative;
+    height: $picker-list-height;
+    overflow: hidden;
+    text-align: center;
+  }
+
+  &-list-panel {
+    transform-style: preserve-3d;
+  }
+
+  &-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: $picker-mask-background;
+    background-position: top, bottom;
+    background-size: 100% 108px;
+    background-repeat: no-repeat;
+    transform: translateZ(0);
+    z-index: 3;
+  }
+
+  &-view-panel {
+    height: $picker-list-height;
+    flex-grow: 1;
+  }
+
+  &-content,
+  &-roller {
+    position: absolute;
+    top: 108px;
+    width: 100%;
+    height: $picker-item-height;
+  }
+
+  &-content {
+    background: #fff;
+    z-index: 2;
+    overflow: hidden;
+  }
+
+  &-item,
+  &-roller-item {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    height: $picker-item-height;
+    line-height: $picker-item-height;
+    color: $picker-item-text-color;
+    font-size: $picker-item-text-font-size;
+    text-align: center;
+  }
+
+  &-item {
+    font-size: 16px;
+    background: #fff;
+  }
+
+  &-roller {
+    z-index: 1;
+    transform-style: preserve-3d;
+  }
+
+  &-roller-item {
+    backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+  &-roller-item-title {
+    display: block;
+    width: 100%;
+    height: $picker-item-height;
+    line-height: $picker-item-height;
+    text-align: center;
+    color: $color-title;
+    font-size: $font-size-base;
+  }
+
+  &-roller-item-hidden {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &-placeholder {
+    height: 1px;
+  }
+}
+
+[dir='rtl'] .nut-picker-mask,
+.nut-rtl .nut-picker-mask {
+  background-image: var(
+    --picker-mask-background,
+    linear-gradient(-180deg, var(--nutui-white-12), var(--nutui-white-7)),
+    linear-gradient(0deg, var(--nutui-white-12), var(--nutui-white-7))
+  );
+}

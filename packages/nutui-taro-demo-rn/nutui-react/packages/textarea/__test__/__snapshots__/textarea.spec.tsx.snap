@@ -1,0 +1,25 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`textarea props test 1`] = `
+<div>
+  <div
+    class="nut-textarea"
+  >
+    <textarea
+      class="nut-textarea-textarea"
+      maxlength="20"
+      placeholder="请输入内容"
+      rows="2"
+    >
+      基础用法
+    </textarea>
+    <div
+      class="nut-textarea-limit"
+    >
+      4
+      /
+      20
+    </div>
+  </div>
+</div>
+`;

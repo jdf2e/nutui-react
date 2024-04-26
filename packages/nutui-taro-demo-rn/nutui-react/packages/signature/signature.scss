@@ -1,0 +1,23 @@
+.nut-signature {
+  .spcanvas_WEAPP {
+    width: 100%;
+    height: 100%;
+
+    Canvas {
+      width: 100%;
+    }
+  }
+
+  &-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: $signature-height;
+    border: $signature-border-width solid $signature-border-color;
+    background-color: $signature-background-color;
+  }
+
+  &-unsupport {
+    font-size: $signature-font-size;
+  }
+}

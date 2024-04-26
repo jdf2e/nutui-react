@@ -1,0 +1,124 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`align center test 1`] = `
+<div>
+  <div
+    class="nut-noticebar"
+  >
+    <div
+      class="nut-noticebar-box nut-noticebar-box-center"
+    >
+      <div
+        class="nut-noticebar-box-left-icon"
+      >
+        <svg
+          aria-labelledby="Notice"
+          class="nut-icon nut-icon-Notice "
+          role="presentation"
+          style="width: 16px; height: 16px;"
+          viewBox="0 0 1024 1024"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M128 384v213.33a128 128 0 0 0 0 256h768a128 128 0 0 0 0-256V384C896 171.93 724.07 0 512 0S128 171.93 128 384m0 298.67h42.67A42.67 42.67 0 0 0 213.33 640V384c0-164.95 133.72-298.67 298.67-298.67S810.67 219.05 810.67 384v256a42.67 42.67 0 0 0 42.66 42.67H896a42.67 42.67 0 1 1 0 85.33H128a42.67 42.67 0 1 1 0-85.33m256 256a42.67 42.67 0 1 0 0 85.33h256a42.67 42.67 0 1 0 0-85.33z"
+            fill="currentColor"
+            fill-opacity="0.9"
+          />
+        </svg>
+      </div>
+      <div
+        class="nut-noticebar-box-wrap"
+      >
+        <div
+          class="nut-noticebar-box-wrap-content  nut-ellipsis"
+          style="animation-delay: 1s; animation-duration: 0s; transform: translateX(0);"
+        >
+          NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`noticebar base test 1`] = `
+<div>
+  <div
+    class="nut-noticebar"
+  >
+    <div
+      class="nut-noticebar-box nut-noticebar-box-left"
+    >
+      <div
+        class="nut-noticebar-box-left-icon"
+      >
+        <svg
+          aria-labelledby="Notice"
+          class="nut-icon nut-icon-Notice "
+          role="presentation"
+          style="width: 16px; height: 16px;"
+          viewBox="0 0 1024 1024"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M128 384v213.33a128 128 0 0 0 0 256h768a128 128 0 0 0 0-256V384C896 171.93 724.07 0 512 0S128 171.93 128 384m0 298.67h42.67A42.67 42.67 0 0 0 213.33 640V384c0-164.95 133.72-298.67 298.67-298.67S810.67 219.05 810.67 384v256a42.67 42.67 0 0 0 42.66 42.67H896a42.67 42.67 0 1 1 0 85.33H128a42.67 42.67 0 1 1 0-85.33m256 256a42.67 42.67 0 1 0 0 85.33h256a42.67 42.67 0 1 0 0-85.33z"
+            fill="currentColor"
+            fill-opacity="0.9"
+          />
+        </svg>
+      </div>
+      <div
+        class="nut-noticebar-box-wrap"
+      >
+        <div
+          class="nut-noticebar-box-wrap-content  "
+          style="animation-delay: 1s; animation-duration: 0s; transform: translateX(0);"
+        >
+          NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`scrollable test 1`] = `
+<div>
+  <div
+    class="nut-noticebar"
+  >
+    <div
+      class="nut-noticebar-box nut-noticebar-box-left"
+    >
+      <div
+        class="nut-noticebar-box-left-icon"
+      >
+        <svg
+          aria-labelledby="Notice"
+          class="nut-icon nut-icon-Notice "
+          role="presentation"
+          style="width: 16px; height: 16px;"
+          viewBox="0 0 1024 1024"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M128 384v213.33a128 128 0 0 0 0 256h768a128 128 0 0 0 0-256V384C896 171.93 724.07 0 512 0S128 171.93 128 384m0 298.67h42.67A42.67 42.67 0 0 0 213.33 640V384c0-164.95 133.72-298.67 298.67-298.67S810.67 219.05 810.67 384v256a42.67 42.67 0 0 0 42.66 42.67H896a42.67 42.67 0 1 1 0 85.33H128a42.67 42.67 0 1 1 0-85.33m256 256a42.67 42.67 0 1 0 0 85.33h256a42.67 42.67 0 1 0 0-85.33z"
+            fill="currentColor"
+            fill-opacity="0.9"
+          />
+        </svg>
+      </div>
+      <div
+        class="nut-noticebar-box-wrap"
+      >
+        <div
+          class="nut-noticebar-box-wrap-content  nut-ellipsis"
+          style="animation-delay: 1s; animation-duration: 0s; transform: translateX(0);"
+        >
+          NutUI 是京东风格的移动端组件库，使用 Vue 语言来编写可以在 H5，小程序平台上的应用，帮助研发人员提升开发效率，改善开发体验。
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

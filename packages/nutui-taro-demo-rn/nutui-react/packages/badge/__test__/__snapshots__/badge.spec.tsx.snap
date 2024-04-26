@@ -1,0 +1,42 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should match custom icon 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-badge"
+  >
+    <div
+      class="nut-badge-icon"
+    >
+      <svg
+        aria-labelledby="Checklist"
+        class="nut-icon nut-icon-Checklist "
+        role="presentation"
+        viewBox="0 0 1024 1024"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M159.29 500.62c62.58 0 125.16 17.07 221.87 102.4 8.53 5.69 19.91 5.69 25.6 0 48.35-54.04 238.93-261.69 455.11-329.95 0 0 28.45-5.69 42.66 19.91 8.53 17.07 19.91 34.13-5.69 54.04-22.75 17.07-264.53 179.2-440.88 440.89l-2.85 2.85c-11.38 8.53-68.27 51.2-119.47-14.23-56.89-71.11-85.33-139.38-196.26-196.26-2.85 0-2.85-2.85-5.69-5.69-11.38-11.38-54.04-73.95 25.6-73.96"
+          fill="currentColor"
+          fill-opacity="0.9"
+        />
+      </svg>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`should match snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="nut-badge"
+  >
+    <div
+      class="nut-badge-content nut-badge-sup nut-badge-one"
+      style="top: 4px; right: 8px;"
+    >
+      8
+    </div>
+  </div>
+</DocumentFragment>
+`;

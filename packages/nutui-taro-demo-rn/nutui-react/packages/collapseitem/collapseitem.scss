@@ -1,0 +1,114 @@
+.nut-collapse-item {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    box-sizing: border-box;
+    content: ' ';
+    pointer-events: none;
+    right: 16px;
+    left: 16px;
+    bottom: 0;
+    border-bottom: $collapse-item-border-bottom;
+    -webkit-transform: scaleY(0.5);
+    transform: scaleY(0.5);
+  }
+
+  &:last-child::after {
+    display: none;
+  }
+
+  &-header {
+    position: relative;
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    padding: $collapse-item-padding;
+    font-size: $collapse-item-font-size;
+    line-height: $collapse-item-line-height;
+    background-color: $color-background-overlay;
+    box-sizing: border-box;
+
+    &::after {
+      position: absolute;
+      box-sizing: border-box;
+      content: ' ';
+      pointer-events: none;
+      right: 16px;
+      left: 16px;
+      bottom: 0;
+      border-bottom: $collapse-item-header-border-bottom;
+      -webkit-transform: scaleY(0.5);
+      transform: scaleY(0.5);
+    }
+  }
+
+  &-title {
+    color: $collapse-item-color;
+    display: flex;
+    align-items: center;
+  }
+
+  &-extra {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0px 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: $collapse-item-extra-color;
+  }
+
+  &-icon-box {
+    display: flex;
+    width: 24px;
+    position: relative;
+    color: $color-text;
+  }
+
+  &-icon {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    transform-origin: center;
+    transition: transform 0.3s;
+  }
+
+  &-header.disabled {
+    color: $collapse-item-disabled-color;
+
+    .nut-collapse-item-title {
+      color: $collapse-item-disabled-color;
+    }
+
+    .nut-collapse-item-icon {
+      color: $collapse-item-disabled-color;
+    }
+  }
+
+  &-content {
+    overflow: hidden;
+    display: block;
+    color: $collapse-wrapper-content-color;
+    font-size: $collapse-wrapper-content-font-size;
+    line-height: $collapse-wrapper-content-line-height;
+    background-color: $collapse-wrapper-content-background-color;
+    transition: all 0.3s linear;
+
+    &-text {
+      color: $collapse-wrapper-content-color;
+      padding: $collapse-wrapper-content-padding;
+    }
+  }
+}
+[dir='rtl'] .nut-collapse-item,
+.nut-rtl .nut-collapse-item {
+  &-icon {
+    left: auto;
+    right: 5px;
+  }
+}

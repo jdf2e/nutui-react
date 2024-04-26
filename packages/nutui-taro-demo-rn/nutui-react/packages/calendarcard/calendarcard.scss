@@ -1,0 +1,146 @@
+.nut-calendarcard {
+  background: $color-background-overlay;
+  border-radius: 12px;
+  overflow: hidden;
+  font-size: $calendar-base-font-size;
+  color: $color-title;
+
+  &-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: normal;
+
+    &-left,
+    &-right {
+      display: flex;
+      flex-direction: row;
+      cursor: pointer;
+      margin: 16px;
+      line-height: 1;
+
+      .left {
+        margin-left: 8px;
+      }
+
+      .right {
+        margin-right: 8px;
+      }
+    }
+  }
+
+  &-days {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  &-day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    width: $calendar-day-width;
+    height: 48px;
+    cursor: pointer;
+    margin-bottom: 4px;
+    text-align: center;
+
+    &.header {
+      cursor: auto;
+    }
+
+    &-top,
+    &-bottom {
+      width: 100%;
+      height: 12px;
+      font-size: 12px;
+      line-height: 12px;
+    }
+
+    &.weekend {
+      color: $calendar-choose-color;
+    }
+
+    &.active {
+      background-color: $calendar-active-background-color;
+      color: $color-primary-text;
+      border-radius: $calendar-day-active-border-radius;
+    }
+
+    &.start,
+    &.end {
+      background-color: $calendar-active-background-color;
+      color: $color-primary-text;
+    }
+
+    &.start {
+      border-top-left-radius: $calendar-day-active-border-radius;
+      border-bottom-left-radius: $calendar-day-active-border-radius;
+    }
+
+    &.end {
+      border-top-right-radius: $calendar-day-active-border-radius;
+      border-bottom-right-radius: $calendar-day-active-border-radius;
+    }
+
+    &.mid {
+      background-color: $calendar-choose-background-color;
+      color: $calendar-choose-color;
+    }
+
+    .nut-calendar-day-info {
+      color: $color-primary-text;
+    }
+
+    // 上个月、下个月
+    &.prev,
+    &.next,
+    &.disabled {
+      color: $calendar-disable-color;
+      cursor: not-allowed;
+    }
+  }
+}
+
+[dir='rtl'] .nut-calendarcard,
+.nut-rtl .nut-calendarcard {
+  &-header {
+    &-left,
+    &-right {
+      .left {
+        margin-left: 0;
+        margin-right: 8px;
+      }
+
+      .right {
+        margin-right: 0;
+        margin-left: 8px;
+      }
+
+      .nut-icon-ArrowLeft,
+      .nut-icon-ArrowRight,
+      svg {
+        transform: rotate(180deg);
+      }
+    }
+  }
+  &-day {
+    &.start,
+    &.end {
+      border-radius: 0;
+    }
+    &.start {
+      border-top-right-radius: $calendar-day-active-border-radius;
+      border-bottom-right-radius: $calendar-day-active-border-radius;
+    }
+
+    &.end {
+      border-top-left-radius: $calendar-day-active-border-radius;
+      border-bottom-left-radius: $calendar-day-active-border-radius;
+    }
+  }
+}

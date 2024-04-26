@@ -1,0 +1,395 @@
+.nut-button {
+  position: relative;
+  display: flex;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  height: $button-default-height;
+  font-size: $button-default-font-size;
+  font-weight: $button-default-font-weight;
+  text-align: center;
+  cursor: pointer;
+  transition: $button-transition;
+  -webkit-appearance: none;
+  user-select: none;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  color: $button-default-color;
+  background: $button-default-background-color;
+
+  &-text {
+    margin-left: $button-text-icon-margin;
+
+    &.right {
+      margin-right: $button-text-icon-margin;
+    }
+  }
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: $color-mask;
+    border: inherit;
+    border-color: $color-mask;
+    border-radius: inherit;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    content: ' ';
+  }
+
+  &::after {
+    border: none;
+  }
+
+  &:active::before {
+    opacity: 0.1;
+  }
+
+  &-wrap {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: initial;
+    .nut-icon {
+      font-size: $button-default-font-size;
+      width: $button-default-font-size;
+      height: $button-default-font-size;
+    }
+  }
+
+  &-loading,
+  &-disabled {
+    &::before {
+      display: none;
+    }
+  }
+
+  &.nut-button-icononly {
+    width: $button-default-height;
+    padding: 0;
+  }
+
+  &-default {
+    padding: $button-default-padding;
+    border: $button-border-width solid $button-default-border-color;
+
+    &.nut-button-disabled {
+      color: $button-default-disabled-color;
+      background: transparent;
+    }
+
+    &.nut-button-none {
+      background: transparent;
+
+      &.nut-button-disabled {
+        color: $button-default-disabled-color;
+      }
+    }
+
+    &.nut-button-outline,
+    &.nut-button-dashed {
+      background: transparent;
+
+      &.nut-button-disabled {
+        color: $button-default-disabled-color;
+        border-color: $button-default-disabled;
+      }
+    }
+  }
+
+  &-normal {
+    padding: $button-normal-padding;
+  }
+
+  &-xlarge {
+    height: $button-xlarge-height;
+    padding: $button-xlarge-padding;
+    font-size: $button-xlarge-font-size;
+    font-weight: $button-large-font-weight;
+
+    .nut-icon {
+      font-size: $button-xlarge-font-size;
+      width: $button-xlarge-font-size;
+      height: $button-xlarge-font-size;
+    }
+  }
+
+  &-large {
+    height: $button-large-height;
+    padding: $button-large-padding;
+    font-size: $button-large-font-size;
+    font-weight: $button-large-font-weight;
+
+    .nut-icon {
+      font-size: $button-large-font-size;
+      width: $button-large-font-size;
+      height: $button-large-font-size;
+    }
+  }
+
+  &-small {
+    height: $button-small-height;
+    padding: $button-small-padding;
+    font-size: $button-small-font-size;
+
+    .nut-icon {
+      font-size: $button-small-font-size;
+      width: $button-small-font-size;
+      height: $button-small-font-size;
+    }
+  }
+
+  &-mini {
+    height: $button-mini-height;
+    padding: $button-mini-padding;
+    font-size: $button-mini-font-size;
+
+    .nut-icon {
+      font-size: $button-mini-font-size;
+      width: $button-mini-font-size;
+      height: $button-mini-font-size;
+    }
+  }
+
+  &-primary {
+    color: $button-primary-color;
+    background: $button-primary-background-color;
+    background-origin: border-box;
+    border: $button-border-width solid transparent;
+
+    &.nut-button-disabled {
+      background: $button-primary-disabled;
+      border-color: $button-primary-disabled;
+    }
+
+    &.nut-button-none {
+      background: transparent;
+      color: $button-primary-border-color;
+
+      &.nut-button-disabled {
+        color: $button-primary-disabled;
+      }
+    }
+
+    &.nut-button-outline {
+      background: transparent;
+      color: $button-primary-border-color;
+      border: $button-border-width solid $button-primary-border-color;
+
+      &.nut-button-disabled {
+        color: $button-primary-disabled;
+        border-color: $button-primary-disabled;
+      }
+    }
+
+    &.nut-button-dashed {
+      background: transparent;
+      color: $button-primary-border-color;
+      border: $button-border-width dashed $button-primary-border-color;
+
+      &.nut-button-disabled {
+        color: $button-primary-disabled;
+        border-color: $button-primary-disabled;
+      }
+    }
+  }
+
+  &-success {
+    color: $button-success-color;
+    background: $button-success-background-color;
+    background-origin: border-box;
+    border: $button-border-width solid transparent;
+
+    &.nut-button-disabled {
+      background: $button-success-disabled;
+      border-color: $button-success-disabled;
+    }
+
+    &.nut-button-outline,
+    &.nut-button-dashed {
+      color: $button-success-border-color;
+      border-color: $button-success-border-color;
+      background: transparent;
+
+      &.nut-button-disabled {
+        color: $button-primary-disabled;
+        border-color: $button-primary-disabled;
+      }
+    }
+
+    &.nut-button-none {
+      color: $button-success-border-color;
+    }
+  }
+
+  &-info {
+    color: $button-info-color;
+    background: $button-info-background-color;
+    background-origin: border-box;
+    border: $button-border-width solid transparent;
+
+    &.nut-button-disabled {
+      background: $button-info-disabled;
+      border-color: $button-info-disabled;
+    }
+
+    &.nut-button-outline,
+    &.nut-button-dashed {
+      color: $button-info-border-color;
+      border-color: $button-info-border-color;
+      background: transparent;
+
+      &.nut-button-disabled {
+        color: $button-primary-disabled;
+        border-color: $button-primary-disabled;
+      }
+    }
+
+    &.nut-button-none {
+      color: $button-info-border-color;
+    }
+  }
+
+  &-danger {
+    color: $button-danger-color;
+    background: $button-danger-background-color;
+    background-origin: border-box;
+    border: $button-border-width solid transparent;
+
+    &.nut-button-disabled {
+      background: $button-danger-disabled;
+      border-color: $button-danger-disabled;
+    }
+
+    &.nut-button-outline,
+    &.nut-button-dashed {
+      color: $button-danger-border-color;
+      border-color: $button-danger-border-color;
+      background: transparent;
+
+      &.nut-button-disabled {
+        color: $button-danger-disabled;
+        border-color: $button-danger-disabled;
+      }
+    }
+
+    &.nut-button-none {
+      color: $button-danger-border-color;
+    }
+  }
+
+  &-warning {
+    color: $button-warning-color;
+    background: $button-warning-background-color;
+    background-origin: border-box;
+    border: $button-border-width solid transparent;
+
+    &.nut-button-disabled {
+      background: $button-warning-disabled;
+      border-color: $button-warning-disabled;
+    }
+
+    &.nut-button-outline,
+    &.nut-button-dashed {
+      color: $button-warning-border-color;
+      border-color: $button-warning-border-color;
+      background: transparent;
+
+      &.nut-button-disabled {
+        color: $button-warning-disabled;
+        border-color: $button-warning-disabled;
+      }
+    }
+
+    &.nut-button-none {
+      color: $button-warning-border-color;
+    }
+  }
+
+  &-block {
+    display: block;
+    width: 100%;
+  }
+
+  &-solid {
+    color: $button-primary-color;
+    background: $button-primary-background-color;
+    background-origin: border-box;
+    border: $button-border-width solid transparent;
+
+    &.nut-button-disabled {
+      color: $button-default-disabled-color;
+      background: $button-default-disabled;
+    }
+  }
+
+  &.nut-button-outline,
+  &.nut-button-dashed {
+    background: transparent;
+  }
+
+  &.nut-button-none {
+    background: transparent;
+    border-color: transparent;
+    background: transparent;
+  }
+
+  &-disabled {
+    cursor: not-allowed;
+    color: #ffffff;
+    background: $button-default-disabled;
+    border-color: $button-default-disabled;
+  }
+
+  &-loading {
+    cursor: default;
+    opacity: 0.9;
+  }
+
+  &-round {
+    border-radius: $button-border-radius;
+
+    &.nut-button-xlarge,
+    &.nut-button-large {
+      border-radius: $button-large-border-radius;
+    }
+
+    &.nut-button-small {
+      border-radius: $button-small-border-radius;
+    }
+
+    &.nut-button-mini {
+      border-radius: $button-mini-border-radius;
+    }
+  }
+
+  &-square {
+    border-radius: $button-square-border-radius;
+  }
+}
+
+[dir='rtl'] .nut-button,
+.nut-rtl .nut-button {
+  &-text {
+    margin-left: 0;
+    margin-right: $button-text-icon-margin;
+
+    &.right {
+      margin-left: $button-text-icon-margin;
+    }
+  }
+  &::before {
+    left: auto;
+    right: 50%;
+    transform: translate(50%, -50%);
+  }
+}

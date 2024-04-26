@@ -1,0 +1,24 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`should render description correctly 1`] = `
+<div>
+  <div
+    class="nut-empty"
+  >
+    <div
+      class="nut-empty-image"
+    >
+      <img
+        alt="empty"
+        class="img"
+        src="https://storage.360buyimg.com/imgtools/30186cfda0-0d3eee40-c0ac-11ee-9382-9125782aa3b8.png"
+      />
+    </div>
+    <div
+      class="nut-empty-description"
+    >
+      暂无数据
+    </div>
+  </div>
+</div>
+`;

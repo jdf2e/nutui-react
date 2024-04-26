@@ -1,0 +1,93 @@
+.nut-rate {
+  display: flex;
+  touch-action: pan-x;
+
+  &.disabled {
+    .nut-rate-item-icon {
+      cursor: not-allowed;
+    }
+  }
+
+  &.readonly {
+    .nut-rate-item-icon {
+      cursor: default;
+    }
+  }
+
+  &-item {
+    display: flex;
+    flex-shrink: 0;
+    position: relative;
+    margin-right: $rate-item-margin;
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &-half {
+      position: absolute;
+      height: 100%;
+      width: 50% !important;
+      left: 0;
+      top: 0;
+      overflow: hidden;
+
+      .nut-icon {
+        flex-shrink: 0;
+      }
+    }
+
+    &-icon {
+      display: flex;
+      color: $rate-icon-color;
+      cursor: pointer;
+
+      &-disabled {
+        color: $rate-icon-inactive-color;
+      }
+
+      &.nut-rate-item-icon.nut-rate-item-icon-half {
+        position: absolute;
+        left: 0;
+        top: 0;
+        overflow: hidden;
+      }
+
+      &.nut-rate-item-icon::before {
+        position: relative;
+        top: auto;
+        left: auto;
+        transform: none;
+      }
+    }
+  }
+}
+
+[dir='rtl'] .nut-rate,
+.nut-rtl .nut-rate {
+  &-item {
+    margin-right: 0;
+    margin-left: $rate-item-margin;
+
+    &:last-child {
+      margin-right: 0;
+      margin-left: 0;
+    }
+    &-half {
+      left: auto;
+      right: 0;
+    }
+
+    &-icon {
+      &.nut-rate-item-icon.nut-rate-item-icon-half {
+        left: auto;
+        right: 0;
+      }
+
+      &.nut-rate-item-icon::before {
+        left: auto;
+        right: auto;
+      }
+    }
+  }
+}

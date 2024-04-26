@@ -1,0 +1,35 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`backtop custom test 1`] = `
+<div>
+  <div
+    class="nut-backtop custom-class"
+    style="z-index: 900; bottom: 110px; right: 10px;"
+  >
+    <div
+      class="backtop-demo"
+      style="display: flex; flex-direction: column; align-items: center;"
+    >
+      <svg
+        aria-labelledby="Top"
+        class="nut-icon nut-icon-Top nut-backtop-main"
+        role="presentation"
+        style="width: 12px; height: 12px;"
+        viewBox="0 0 1024 1024"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M128 0a42.67 42.67 0 1 0 0 85.33h768A42.67 42.67 0 1 0 896 0zm391.21 173.42a10.88 10.88 0 0 0-14.42 0L3.61 619.67a10.71 10.71 0 0 0 7.21 18.67h241.34v257.11c0 71 58.05 128.55 129.64 128.55h260.4c71.59 0 129.64-57.56 129.64-128.55V638.34h241.34a10.71 10.71 0 0 0 7.21-18.67zM338.6 895.45V552.64H208.21L512 282.15l303.77 270.49H685.42v342.83c0 23.64-19.37 42.84-43.22 42.83H381.8c-23.85 0-43.2-19.2-43.2-42.85"
+          fill="currentColor"
+          fill-opacity="0.9"
+        />
+      </svg>
+      <div
+        style="font-size: 12px;"
+      >
+        顶部
+      </div>
+    </div>
+  </div>
+</div>
+`;

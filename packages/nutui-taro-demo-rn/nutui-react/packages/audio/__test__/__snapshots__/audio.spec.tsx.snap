@@ -1,0 +1,61 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`icon type test 1`] = `
+<div>
+  <div
+    class="nut-audio"
+  >
+    <div
+      class="nut-audio-icon"
+    >
+      <div
+        class="nut-audio-icon-box nut-audio-icon-stop"
+      >
+        <svg
+          aria-labelledby="Service"
+          class="nut-icon nut-icon-Service "
+          role="presentation"
+          viewBox="0 0 1024 1024"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M1024 657.72H905.85V531.69c0-228.43-177.23-413.54-393.85-413.54S118.15 303.26 118.15 531.69v126.03H0V531.69C0 236.3 228.43 0 512 0s512 236.31 512 531.69zM196.92 866.46C86.64 866.46 0 779.81 0 669.54s86.65-196.92 196.92-196.93 196.92 86.65 196.93 196.93-86.65 196.92-196.93 196.92m0-275.69c-43.32 0-78.77 35.45-78.77 78.77s35.45 78.77 78.77 78.77 78.77-35.45 78.77-78.77-35.45-78.77-78.77-78.77m630.16 275.69c-110.28 0-196.92-86.65-196.93-196.92s86.65-196.92 196.93-196.93S1024 559.26 1024 669.54s-86.65 196.92-196.92 196.92m0-275.69c-43.32 0-78.77 35.45-78.77 78.77s35.45 78.77 78.77 78.77 78.77-35.45 78.77-78.77-35.45-78.77-78.77-78.77m-149.66 429.29c-23.63 0-47.26-15.75-55.14-43.32-7.88-31.51 7.88-63.02 39.38-74.83 102.4-31.51 189.05-102.4 236.31-196.93 15.75-27.57 51.2-39.38 78.77-23.63s39.38 51.2 23.63 78.77c-63.02 122.09-177.23 216.61-307.2 256-3.94 3.94-11.81 3.94-15.75 3.94"
+            fill="currentColor"
+            fill-opacity="0.9"
+          />
+        </svg>
+      </div>
+    </div>
+    <audio
+      class="audioMain"
+      preload="auto"
+      src=""
+    >
+      <track
+        kind="captions"
+      />
+    </audio>
+  </div>
+</div>
+`;
+
+exports[`none type test 1`] = `
+<div>
+  <div
+    class="nut-audio"
+  >
+    <div
+      class="nut-audio-none-container"
+    />
+    <audio
+      class="audioMain"
+      preload="auto"
+      src=""
+    >
+      <track
+        kind="captions"
+      />
+    </audio>
+  </div>
+</div>
+`;

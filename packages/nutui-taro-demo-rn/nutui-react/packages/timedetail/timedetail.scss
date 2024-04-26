@@ -1,0 +1,30 @@
+.nut-timedetail {
+  display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  padding: 0 0 50px 12px;
+
+  &-item {
+    width: $timeselect-time-width;
+    height: $timeselect-time-height;
+    line-height: $timeselect-time-height;
+    text-align: center;
+    margin: $timeselect-time-margin;
+    background: $timeselect-time-background;
+    border-radius: 5px;
+    font-size: $font-size-base;
+    border: 1px solid transparent;
+
+    &.active {
+      background-color: $color-primary-light;
+      border: 1px solid $color-primary;
+      color: $color-primary;
+      font-weight: $font-weight-bold;
+    }
+  }
+}
+
+[dir='rtl'] .nut-timedetail,
+.nut-rtl .nut-timedetail {
+  padding: 0 12px 50px 0;
+}

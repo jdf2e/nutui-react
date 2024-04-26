@@ -1,0 +1,58 @@
+.nut-calendar {
+  .nut-calendar-btns {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0 20px;
+  }
+
+  .nut-calendar-date {
+    background-color: #f9f9f9;
+    font-size: 12px;
+
+    &.disabled {
+      color: $color-text-disabled;
+    }
+  }
+
+  .wrapper {
+    display: flex;
+    padding: 0 40px;
+  }
+
+  .d_div {
+    margin: 0px 5px;
+
+    .d_btn {
+      background: #fa3f19;
+      color: #fff;
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      display: inline-block;
+      height: 20px;
+    }
+  }
+
+  .info {
+    display: block;
+    font-size: 12px;
+    line-height: 16px;
+    color: #999;
+  }
+}
+
+.nut-cell-description {
+  .desc-box {
+    display: flex;
+  }
+
+  .desc {
+    padding: 10px;
+  }
+
+  .desc1 {
+    padding: 10px;
+  }
+}

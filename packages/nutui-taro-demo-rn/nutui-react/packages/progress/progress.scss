@@ -1,0 +1,81 @@
+.nut-progress {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+
+  &-outer {
+    flex: auto;
+    border-radius: $progress-border-radius;
+    height: $progress-height;
+    background: $progress-background;
+
+    .nut-progress-active:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: $progress-border-radius;
+      animation: progressActive 2s ease-in-out infinite;
+    }
+  }
+
+  &-inner {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.4s;
+    border-radius: $progress-border-radius;
+    background: $progress-color;
+  }
+
+  &-text {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: $progress-text-position-top;
+    bottom: $progress-text-position-bottom;
+    transition: all 0.4s;
+    transform: translate(-50%);
+
+    &-inner {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      width: 100%;
+      color: $progress-text-color;
+      padding: $progress-text-padding;
+      border-radius: $progress-text-border-radius;
+      font-size: $progress-text-font-size;
+      line-height: 1;
+      background: $progress-text-background;
+    }
+  }
+
+  @keyframes progressActive {
+    0% {
+      background: rgba(255, 255, 255, 0.1);
+      width: 0;
+    }
+
+    20% {
+      background: rgba(255, 255, 255, 0.5);
+      width: 0;
+    }
+
+    to {
+      background: rgba(255, 255, 255, 0);
+      width: 100%;
+    }
+  }
+}
+
+[dir='rtl'] .nut-progress,
+.nut-rtl .nut-progress {
+  &-text {
+    transform: translate(50%);
+  }
+}

@@ -1,0 +1,37 @@
+@import '../popup/popup.scss';
+@import '../timedetail/timedetail.scss';
+
+.nut-timeselect {
+  background-color: $color-background-overlay;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 50px);
+
+  &-content {
+    display: flex;
+    flex: 1;
+  }
+
+  &-content-left {
+    width: $timeselect-date-width;
+    min-width: $timeselect-date-width;
+    height: 100%;
+    overflow: auto;
+    background: $color-background-sunken;
+  }
+}
+
+.nut-timepannel {
+  padding: 0 16px;
+  height: $timeselect-date-height;
+  line-height: $timeselect-date-height;
+  text-align: start;
+  color: $color-text;
+  font-size: $font-size-base;
+
+  &.active {
+    background: $color-background-overlay;
+    color: $timeselect-date-active-color;
+    font-weight: $font-weight-bold;
+  }
+}

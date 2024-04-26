@@ -1,0 +1,43 @@
+.demo {
+  .flex-center {
+    display: inline-flex;
+    align-items: center;
+  }
+  .nut-navbar {
+    z-index: 9 !important;
+  }
+  .nut-navbar-title .title {
+    display: flex;
+    flex-direction: column;
+
+    .desc {
+      font-weight: 400;
+      font-size: 12px;
+      color: $color-text-help;
+    }
+    &.title-left {
+      text-align: end;
+    }
+  }
+
+  .navbar-tabs {
+    .nut-tabs-titles {
+      padding: 0;
+      .nut-tabs-titles-item {
+        margin: 0;
+        font-size: 16px;
+
+        &-active {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+[dir='rtl'] .nut-navbar,
+.nut-rtl .nut-navbar {
+  .nut-icon-Share {
+    transform: rotateY(180deg);
+  }
+}

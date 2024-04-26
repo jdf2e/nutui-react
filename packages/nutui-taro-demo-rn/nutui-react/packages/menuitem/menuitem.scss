@@ -1,0 +1,123 @@
+@import '../overlay/overlay.scss';
+
+.nut-menu-container {
+  &-content {
+    padding: $menu-content-padding;
+    max-height: $menu-content-max-height;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    background: $menu-content-background-color;
+
+    &_fixed {
+      width: 100%;
+      opacity: 0;
+      position: fixed;
+    }
+  }
+
+  &-item {
+    display: flex;
+    align-items: center;
+    color: $color-title;
+    font-size: $font-size-base;
+    padding: $menu-item-padding;
+
+    &.active {
+      font-weight: $menu-item-active-font-weight;
+      color: $menu-item-active-color;
+    }
+
+    .nut-icon {
+      display: inline-flex;
+      align-items: center;
+      margin-right: $menu-item-icon-margin;
+    }
+  }
+
+  &-wrap,
+  &-wrap-up {
+    position: absolute;
+    width: 100%;
+    z-index: $menu-container-z-index;
+    overflow: hidden;
+  }
+
+  &-wrap-up {
+    bottom: $menu-bar-line-height;
+  }
+}
+
+.overlay-fade-enter-active.nut-menu-container-overlay {
+  top: auto;
+  z-index: $menu-container-z-index;
+}
+
+.nut-menu-placeholder-element {
+  position: fixed;
+  top: -$menu-bar-line-height;
+  left: 0;
+  right: 0;
+  z-index: $menu-bar-opened-z-index;
+  background-color: transparent;
+
+  &.up {
+    bottom: -$menu-bar-line-height;
+  }
+}
+
+.nut-menu-container-down-enter {
+  opacity: 0;
+  transform: translate(0, -30px);
+}
+
+.nut-menu-container-down-enter-done {
+  opacity: 1;
+  transform: translate(0, 0);
+  transition: all 100ms;
+}
+
+.nut-menu-container-down-exit {
+  opacity: 1;
+  transition: all 100ms;
+}
+
+.nut-menu-container-down-exit-done {
+  opacity: 0;
+  transition: all 100ms;
+}
+
+.nut-menu-container-up-enter {
+  opacity: 0;
+  transform: translate(0, 30px);
+}
+
+.nut-menu-container-up-enter-done {
+  opacity: 1;
+  transform: translate(0, 0);
+  transition: all 100ms;
+}
+
+.nut-menu-container-up-exit {
+  opacity: 1;
+  transition: all 100ms;
+}
+
+.nut-menu-container-up-exit-done {
+  opacity: 0;
+  transition: all 100ms;
+}
+
+[dir='rtl'] .nut-menu-container,
+.nut-rtl .nut-menu-container {
+  &-item {
+    .nut-icon {
+      margin-right: 0;
+      margin-left: $menu-item-icon-margin;
+    }
+  }
+
+  .nut-icon {
+    transform: rotateY(180deg);
+  }
+}

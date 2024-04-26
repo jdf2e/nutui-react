@@ -1,0 +1,26 @@
+.nut-subsidenavbar {
+  &-title {
+    height: $sidenavbar-item-height;
+    padding: $sidenavbar-sub-title-padding;
+    box-sizing: border-box;
+    background-color: $sidenavbar-sub-title-background;
+    color: $sidenavbar-sub-title-color;
+    box-sizing: border-box;
+  }
+
+  &-list {
+    &.sidenavbar-show {
+      .nut-subsidenavbar-content {
+        height: auto;
+        overflow: inherit;
+      }
+    }
+
+    &.sidenavbar-hide {
+      .nut-subsidenavbar-content {
+        height: 0;
+        overflow: hidden;
+      }
+    }
+  }
+}

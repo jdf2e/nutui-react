@@ -1,0 +1,74 @@
+.nut-empty {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  padding: $empty-padding;
+  background-color: $color-background-overlay;
+
+  &-image {
+    width: $empty-image-size;
+    height: $empty-image-size;
+
+    .img {
+      width: 100%;
+      height: 100%;
+    }
+
+    // 兼容小程序标签和img-slot
+    img,
+    image {
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &-title {
+    margin-top: $empty-title-margin-top;
+    margin-bottom: $empty-title-margin-bottom;
+    color: $color-title;
+    font-size: $font-size-base;
+    line-height: $empty-title-line-height;
+  }
+
+  &-description {
+    margin-top: $empty-description-margin-top;
+    color: $color-text-help;
+    font-size: $font-size-small;
+    line-height: $empty-description-line-height;
+  }
+
+  &-small {
+    .nut-empty-image {
+      width: $empty-image-small-size;
+      height: $empty-image-small-size;
+    }
+  }
+
+  &-actions {
+    display: flex;
+    margin-top: 16px;
+
+    .nut-button.nut-empty-actions-left,
+    .nut-button.nut-empty-actions-right {
+      height: 28px;
+      padding: 0px 12px;
+      font-weight: 400;
+    }
+
+    .nut-button.nut-empty-actions-left {
+      margin-right: 16px;
+    }
+  }
+}
+
+[dir='rtl'] .nut-empty,
+.nut-rtl .nut-empty {
+  &-actions {
+    .nut-button.nut-empty-actions-left {
+      margin-right: 0;
+      margin-left: 16px;
+    }
+  }
+}
