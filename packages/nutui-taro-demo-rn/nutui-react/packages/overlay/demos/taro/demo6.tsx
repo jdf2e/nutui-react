@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Cell, Overlay } from '@nutui/nutui-react-taro'
+import { Cell, Overlay } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
 
 const Demo6 = () => {
@@ -12,10 +12,10 @@ const Demo6 = () => {
   }
   const contentStyle = {
     display: 'flex',
-    width: '150px',
-    height: '150px',
-    background: '#fff',
-    borderRadius: '8px',
+    width: 150,
+    height: 150,
+    backgroundColor: '#fff',
+    borderRadius: 8,
     alignItems: 'center',
     justifyContent: 'center',
     color: 'red',
@@ -29,9 +29,10 @@ const Demo6 = () => {
   return (
     <>
       <Cell>
-        <Button type='primary' onClick={handleToggleShow}>
+        {/* <Button type="primary" onClick={handleToggleShow}>
           点击遮罩不关闭
-        </Button>
+        </Button> */}
+        <View onClick={handleToggleShow}>点击遮罩不关闭</View>
       </Cell>
       <Overlay visible={visible} closeOnOverlayClick={false}>
         <View style={wrapperStyle}>

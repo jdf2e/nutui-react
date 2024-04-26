@@ -102,7 +102,8 @@ export const Overlay: FunctionComponent<
 
   return (
     <>
-      {Taro.getEnv() !== Taro.ENV_TYPE.HARMONY &&
+      {Taro.getEnv() !== 'RN' &&
+      Taro.getEnv() !== Taro.ENV_TYPE.HARMONY &&
       Taro.getEnv() !== Taro.ENV_TYPE.HARMONYHYBRID ? (
         <CSSTransition
           nodeRef={nodeRef}
