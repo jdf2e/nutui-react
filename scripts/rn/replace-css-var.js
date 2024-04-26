@@ -1,6 +1,3 @@
-/*
- * 通过 dist 目录下的 style/index.js 构建每个组件的 css 文件
- * */
 const path = require('path')
 const fs = require('fs')
 const postcss = require('postcss')

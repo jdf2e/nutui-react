@@ -1,5 +1,9 @@
 import React, { FunctionComponent } from 'react'
+import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { useRtl } from '@/packages/configprovider/index.taro'
+import classNames from 'classnames'
+import './price.harmony.css'
 
 export interface PriceProps extends BasicComponent {
   price: number | string
@@ -31,7 +35,6 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
     line,
     className,
     style,
-    ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -39,18 +42,16 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
 
   const classPrefix = 'nut-price'
 
+  const rtl = useRtl()
+
   const replaceSpecialChar = (url: string) => {
     url = url.replace(/&quot;/g, '"')
     url = url.replace(/&amp;/g, '&')
     url = url.replace(/&lt;/g, '<')
     url = url.replace(/&gt;/g, '>')
     url = url.replace(/&nbsp;/g, ' ')
-    url = url.replace(/&yen;/g, '￥')
+    url = url.replace(/&yen;/g, '¥')
     return url
-  }
-
-  const showSymbol = () => {
-    return { __html: symbol ? replaceSpecialChar(symbol) : '' }
   }
 
   const checkPoint = (price: string | number) => {
@@ -95,37 +96,48 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
 
   const renderSymbol = () => {
     return (
-      <div
-        className={`${classPrefix}-symbol ${classPrefix}-symbol-${size}`}
-        dangerouslySetInnerHTML={showSymbol()}
-      />
+      <View
+        className={classNames([
+            `${classPrefix}-symbol`,
+            `${classPrefix}-symbol-${size}`,{
+            [`${classPrefix}-line`]: line,
+             [`${classPrefix}-rtl`] : rtl}
+        ])}
+      >{symbol ? replaceSpecialChar(symbol) : ''}</View>
     )
   }
 
   return (
-    <div
+    <View
       className={`${classPrefix} ${
         line ? `${classPrefix}-line` : ''
       } ${className}`}
       style={style}
-      {...rest}
     >
       {symbol && position === 'before' ? renderSymbol() : null}
-      <div className={`${classPrefix}-integer ${classPrefix}-integer-${size}`}>
+      <View className={`${classPrefix}-integer ${classPrefix}-integer-${size} ${
+        line ? `${classPrefix}-line` : ''
+      }`}
+      >
         {formatThousands(price)}
-      </div>
+      </View>
       {digits !== 0 ? (
-        <div
-          className={`${classPrefix}-decimal ${classPrefix}-decimal-${size}`}
+        <View
+          className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
+            line ? `${classPrefix}-line` : ''
+          }`}
         >
           .
-        </div>
+        </View>
       ) : null}
-      <div className={`${classPrefix}-decimal ${classPrefix}-decimal-${size}`}>
+      <View className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
+        line ? `${classPrefix}-line` : ''
+      }`}
+      >
         {formatDecimal(price)}
-      </div>
+      </View>
       {symbol && position === 'after' ? renderSymbol() : null}
-    </div>
+    </View>
   )
 }
 

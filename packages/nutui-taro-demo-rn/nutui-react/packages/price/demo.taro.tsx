@@ -11,6 +11,8 @@ import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
+import '../../../styles/demo.scss'
+import { View } from '@tarojs/components'
 
 const PriceDemo = () => {
   const [translated] = useTranslate({
@@ -49,38 +51,38 @@ const PriceDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.title1}</h2>
+      <View className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className='h2'>{translated.title1}</View>
         <Demo1 />
-        <h2>{translated.title2}</h2>
+        <View className='h2'>{translated.title2}</View>
         <Cell>
           <Demo2 />
         </Cell>
-        <h2>{translated.title3}</h2>
+        <View className='h2'>{translated.title3}</View>
         <Cell>
           <Demo3 />
         </Cell>
-        <h2>{translated.title4}</h2>
+        <View className='h2'>{translated.title4}</View>
         <Cell>
           <Demo4 />
         </Cell>
-        <h2>{translated.title5}</h2>
+        <View className='h2'>{translated.title5}</View>
         <Cell>
           <Demo5 />
         </Cell>
-        <h2>{translated.title7}</h2>
+        <View className='h2'>{translated.title7}</View>
         <Cell>
           <Demo6 />
         </Cell>
-        <h2>{translated.title6}</h2>
+        <View className='h2'>{translated.title6}</View>
         <Cell>
           <Demo7 />
         </Cell>
-        <h2>{translated.title8}</h2>
+        <View className='h2'>{translated.title8}</View>
         <Cell>
           <Demo8 />
         </Cell>
-      </div>
+      </View>
     </>
   )
 }

@@ -1,5 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { useRtl } from '@/packages/configprovider/index'
+import classNames from 'classnames'
 
 export interface PriceProps extends BasicComponent {
   price: number | string
@@ -10,7 +12,6 @@ export interface PriceProps extends BasicComponent {
   size: string
   line: boolean
 }
-
 const defaultProps = {
   ...ComponentDefaults,
   price: 0,
@@ -40,9 +41,8 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
 
   const classPrefix = 'nut-price'
 
-  const showSymbol = () => {
-    return { __html: symbol || '' }
-  }
+  const rtl = useRtl()
+
 
   const checkPoint = (price: string | number) => {
     return String(price).indexOf('.') > 0
@@ -87,8 +87,13 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
   const renderSymbol = () => {
     return (
       <div
-        className={`${classPrefix}-symbol ${classPrefix}-symbol-${size}`}
-        dangerouslySetInnerHTML={showSymbol()}
+        className={classNames([
+        `${classPrefix}-symbol`,
+        `${classPrefix}-symbol-${size}`,{
+        [`${classPrefix}-line`]: line,
+         [`${classPrefix}-rtl`] : rtl}
+      ])}
+        dangerouslySetInnerHTML={{ __html: symbol || '' }}
       />
     )
   }
@@ -102,17 +107,25 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
       {...rest}
     >
       {symbol && position === 'before' ? renderSymbol() : null}
-      <div className={`${classPrefix}-integer ${classPrefix}-integer-${size}`}>
+      <div className={`${classPrefix}-integer ${classPrefix}-integer-${size} ${
+        line ? `${classPrefix}-line` : ''
+      }`}
+      >
         {formatThousands(price)}
       </div>
       {digits !== 0 ? (
         <div
-          className={`${classPrefix}-decimal ${classPrefix}-decimal-${size}`}
+          className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
+            line ? `${classPrefix}-line` : ''
+          }`}
         >
           .
         </div>
       ) : null}
-      <div className={`${classPrefix}-decimal ${classPrefix}-decimal-${size}`}>
+      <div className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
+        line ? `${classPrefix}-line` : ''
+      }`}
+      >
         {formatDecimal(price)}
       </div>
       {symbol && position === 'after' ? renderSymbol() : null}
