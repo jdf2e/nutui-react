@@ -111,7 +111,6 @@ const InternalSignature: ForwardRefRenderFunction<
           fileType: props.type,
           canvasId: `${canvasId}`,
           success: (res) => {
-            handleClearBtn()
             onConfirm && onConfirm(res.tempFilePath)
           },
           fail: (res) => {

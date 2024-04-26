@@ -5,7 +5,7 @@ import React, {
   ReactNode,
   useEffect,
   useImperativeHandle,
-  useRef,
+  useMemo,
   useState,
 } from 'react'
 import {
@@ -61,13 +61,19 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
     ...props,
   }
   const [current, setCurrent] = useState(defaultValue)
-  const childrenCount = useRef(Children.toArray(children).length)
+  const childrenCount = useMemo(() => {
+    let c = 0
+    React.Children.map(children, (child, index) => {
+      c += 1
+    })
+    return c
+  }, [children])
   useEffect(() => {
     setCurrent(defaultValue)
   }, [defaultValue])
   const renderIndicator = () => {
     if (React.isValidElement(indicator)) return indicator
-    if (indicator === true) {
+    if (indicator) {
       return (
         <View
           className={classNames({
@@ -77,7 +83,7 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
         >
           <Indicator
             current={current}
-            total={childrenCount.current}
+            total={childrenCount}
             direction={direction}
           />
         </View>
@@ -96,16 +102,16 @@ export const Swiper = forwardRef((props: Partial<SwiperProps>, ref) => {
     },
     next: () => {
       if (loop) {
-        setCurrent((current + 1) % childrenCount.current)
+        setCurrent((current + 1) % childrenCount)
       } else {
-        setCurrent(current + 1 >= childrenCount.current ? current : current + 1)
+        setCurrent(current + 1 >= childrenCount ? current : current + 1)
       }
     },
     prev: () => {
       if (loop) {
         let next = current - 1
-        next = next < 0 ? childrenCount.current + next : next
-        setCurrent(next % childrenCount.current)
+        next = next < 0 ? childrenCount + next : next
+        setCurrent(next % childrenCount)
       } else {
         setCurrent(current - 1 <= 0 ? 0 : current - 1)
       }

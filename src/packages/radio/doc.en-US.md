@@ -17,55 +17,39 @@ import { Radio } from '@nutui/nutui-react';
 
 :::demo
 
-```tsx
-import React, { useState } from 'react';
-import { Radio } from '@nutui/nutui-react';
+<CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
-const RadioGroupLast = () => {
-  const [radioVal] = useState('1')
-  return <>
-    <Radio defaultChecked>Option 1</Radio>
-    <Radio defaultChecked disabled>
-      Option 1
-    </Radio>
-    <Radio.Group defaultValue="1">
-      <Radio value="1" disabled>
-        Option1
-      </Radio>
-      <Radio value="2">Option2</Radio>
-      <Radio value="3">Option3</Radio>
-    </Radio.Group>
-    <Radio.Group disabled defaultValue="1">
-      <Radio value="1">Option1</Radio>
-      <Radio value="2">Option2</Radio>
-      <Radio value="3">Option3</Radio>
-    </Radio.Group>
-    <Radio.Group defaultValue="1">
-      <Radio shape="button" disabled value="1">
-        Option1
-      </Radio>
-      <Radio shape="button" value="2">
-        Option2
-      </Radio>
-      <Radio shape="button" value="3">
-        Option3
-      </Radio>
-    </Radio.Group>
-    <Radio.Group disabled defaultValue="1">
-      <Radio shape="button" value="1">
-        Option1
-      </Radio>
-      <Radio shape="button" value="2">
-        Option2
-      </Radio>
-      <Radio shape="button" value="3">
-        Option3
-      </Radio>
-    </Radio.Group>
-  </>
-}
-export default RadioGroupLast;
-```
+:::
+
+### Disable an item in Group mode
+
+:::demo
+
+<CodeBlock src='h5/demo2.tsx'></CodeBlock>
+
+:::
+
+### Disable all options in Group mode
+
+:::demo
+
+<CodeBlock src='h5/demo3.tsx'></CodeBlock>
+
+:::
+
+### Disable an item in Group mode
+
+:::demo
+
+<CodeBlock src='h5/demo4.tsx'></CodeBlock>
+
+:::
+
+### Disable all options in Group mode
+
+:::demo
+
+<CodeBlock src='h5/demo5.tsx'></CodeBlock>
 
 :::
 
@@ -73,124 +57,43 @@ export default RadioGroupLast;
 
 :::demo
 
-```tsx
-import React, { useState } from 'react';
-import { Radio } from '@nutui/nutui-react';
-
-const RadioGroupLast = () => {
-  const [radioVal] = useState('1')
-  return <>
-    <Radio.Group defaultValue="1" direction="horizontal">
-      <Radio value="1">Option 1</Radio>
-      <Radio disabled value="2">
-        Option 2
-      </Radio>
-      <Radio value="3">Option 3</Radio>
-    </Radio.Group>
-    <Radio.Group
-      defaultValue="1"
-      labelPosition="left"
-      direction="horizontal"
-    >
-      <Radio value="1">Option 1</Radio>
-      <Radio disabled value="2">
-        Option 2
-      </Radio>
-      <Radio value="3">Option 3</Radio>
-    </Radio.Group>
-    <Radio.Group defaultValue="1" direction="horizontal">
-      <Radio shape="button" value="1">
-        Option 1
-      </Radio>
-      <Radio shape="button" disabled value="2">
-        Option 2
-      </Radio>
-      <Radio shape="button" value="3">
-        Option 3
-      </Radio>
-    </Radio.Group>
-  </>
-}
-export default RadioGroupLast;
-```
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
 
 :::
 
-## Custom sizes
+## Custom size
 
 :::demo
 
-```tsx
-import React, { useState } from 'react';
-import { Radio } from '@nutui/nutui-react';
-
-const RadioGroupLast = () => {
-  const [radioVal] = useState('1')
-  return <>
-    <Radio
-      style={{
-        '--nut-icon-width': '12px',
-        '--nutui-icon-height': '12px',
-      }}
-    >
-      自定义尺寸
-    </Radio>
-  </>
-}
-export default RadioGroupLast;
-```
+<CodeBlock src='h5/demo7.tsx'></CodeBlock>
 
 :::
 
-## Customize the icon
+## Custom Icon
 
 It is recommended that 'icon' and 'activeIcon' be modified together
 
 :::demo
 
-```tsx
-import React, { useState } from 'react';
-import { Radio } from '@nutui/nutui-react';
-import { Checklist } from '@nutui/icons-react'
-
-const RadioGroupLast = () => {
-  const [radioVal] = useState('1')
-  return <>
-    <Radio
-      icon={<Checklist />}
-      activeIcon={<Checklist style={{ color: 'red' }} />}
-    >
-      Custom Icon
-    </Radio>
-  </>
-}
-export default RadioGroupLast;
-```
+<CodeBlock src='h5/demo8.tsx'></CodeBlock>
 
 :::
 
-## Trigger the change event
+## Custom Icon, render list in Group mode
+
+It is recommended that 'icon' and 'activeIcon' be modified together
 
 :::demo
 
-```tsx
-import React, { useState } from 'react';
-import { Radio } from '@nutui/nutui-react';
+<CodeBlock src='h5/demo9.tsx'></CodeBlock>
 
-const RadioGroupLast = () => {
-  const [checkedValue] = useState(1)
-  return <>
-    <Radio.Group
-      defaultValue={checkedValue}
-      onChange={(value) => Toast.show(value)}
-    >
-      <Radio value={1}>Trigger Event</Radio>
-      <Radio value={2}>Trigger Event</Radio>
-    </Radio.Group>
-  </>
-}
-export default RadioGroupLast;
-```
+:::
+
+## Trigger Event
+
+:::demo
+
+<CodeBlock src='h5/demo10.tsx'></CodeBlock>
 
 :::
 
@@ -198,36 +101,7 @@ export default RadioGroupLast;
 
 :::demo
 
-```tsx
-import React, { useState } from 'react';
-import { Radio } from '@nutui/nutui-react';
-
-const RadioGroupOptions = () => {
-  const [radioVal, setRadioVal] = useState('1')
-  const [optionsDemo1, setOptionsDemo1] = useState([
-    {
-      label: 'Option1',
-      value: '1',
-    },
-    {
-      label: 'Option2',
-      value: '2',
-      disabled: true,
-    },
-    {
-      label: 'Option3',
-      value: '3',
-    },
-  ])
-  const handleChange = (v) => {
-    console.log(v)
-    setRadioVal(v)
-  }
-  return <Radio.Group options={optionsDemo1} value={radioVal}
-                      onChange={handleChange} />
-}
-export default RadioGroupOptions;
-```
+<CodeBlock src='h5/demo11.tsx'></CodeBlock>
 
 :::
 
@@ -235,18 +109,7 @@ export default RadioGroupOptions;
 
 :::demo
 
-```tsx
-import React, { useState } from 'react'
-import { Radio } from '@nutui/nutui-react'
-
-const RadioGroupOptions = () => {
-  return <Radio.Group defaultValue={1} shape='button'>
-    <Radio value={1}>Set shape</Radio>
-    <Radio value={2}>Set shape</Radio>
-  </Radio.Group>
-}
-export default RadioGroupOptions
-```
+<CodeBlock src='h5/demo12.tsx'></CodeBlock>
 
 :::
 

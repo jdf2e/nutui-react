@@ -8,8 +8,10 @@
   right: 0;
 
   &.active {
-    .nut-icon {
-      transform: rotate(180deg);
+    .nut-fixednav-btn {
+      .nut-icon {
+        transform: rotate(180deg);
+      }
     }
 
     .nut-fixednav-list {

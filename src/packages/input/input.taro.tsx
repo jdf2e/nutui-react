@@ -41,7 +41,7 @@ export interface InputProps extends BasicComponent {
   formatter?: (value: string) => void
   onChange?: (value: string) => void
   onBlur?: (value: string) => void
-  onFocus?: (value: string) => void
+  onFocus?: (value: string, height?: number) => void
   onClear?: (value: string) => void
   onClick?: (e: ITouchEvent) => void
 }
@@ -173,7 +173,8 @@ export const Input = forwardRef(
         const val: any = (event.target as any).value
         onFocus && onFocus(val)
       } else {
-        onFocus?.(value)
+        const height = (event.detail || {}).height
+        onFocus?.(value, height)
       }
       setActive(true)
     }

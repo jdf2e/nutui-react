@@ -437,6 +437,7 @@ $cell-group-background-color: var(
   --nutui-cell-group-background-color,
   $color-background-overlay
 ) !default;
+$cell-group-wrap-margin: var(--nutui-cell-group-wrap-margin, 10px 0) !default;
 
 // divider（✅）
 $divider-margin: var(--nutui-divider-margin, 16px 0) !default;
@@ -1380,7 +1381,7 @@ $radio-button-disabled-active-color: var(
 ) !default;
 $radiogroup-radio-margin: var(--nutui-radiogroup-radio-margin, 20px) !default;
 $radiogroup-radio-margin-bottom: var(
-  --nutui-radiogroup-radio-margin,
+  --nutui-radiogroup-radio-margin-bottom,
   5px
 ) !default;
 $radiogroup-radio-label-margin: var(
@@ -1523,6 +1524,7 @@ $badge-content-transform: var(
 ) !default;
 $badge-z-index: var(--nutui-badge-z-index, 1) !default;
 $badge-dot-width: var(--nutui-badge-dot-width, 7px) !default;
+$badge-dot-border: var(--nutui-badge-dot-border, 0px solid $color-primary-text);
 
 //popover（✅）
 $popover-border-radius: var(--nutui-popover-border-radius, 8px) !default;

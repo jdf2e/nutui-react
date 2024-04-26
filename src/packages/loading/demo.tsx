@@ -1,90 +1,67 @@
-import React, { useState } from 'react'
-import { Star } from '@nutui/icons-react'
-import { Loading } from './loading'
-import Cell from '../cell'
-import Button from '../button'
-import Overlay from '../overlay'
-import ConfigProvider from '../configprovider'
+import React from 'react'
+import { useTranslate } from '../../sites/assets/locale'
+import Demo1 from './demos/h5/demo1'
+import Demo2 from './demos/h5/demo2'
+import Demo3 from './demos/h5/demo3'
+import Demo4 from './demos/h5/demo4'
+import Demo5 from './demos/h5/demo5'
+import Demo6 from './demos/h5/demo6'
+import Demo7 from './demos/h5/demo7'
+import Demo8 from './demos/h5/demo8'
 
 const LoadingDemo = () => {
-  const [visible, setVisible] = useState(false)
-
-  const WrapperStyle = {
-    display: 'flex',
-    height: '100%',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
-
-  function showOverlay() {
-    setVisible(true)
-    setTimeout(() => {
-      setVisible(false)
-    }, 2000)
-  }
-
+  const [translated] = useTranslate({
+    'zh-CN': {
+      title1: '基础用法',
+      title2: '自定义颜色',
+      title3: '自定义大小',
+      title4: '带文字',
+      title5: '带文字(竖向排列)',
+      title6: '自定义文字颜色和大小',
+      title7: '自定义图标',
+      title8: '与遮罩层结合',
+    },
+    'zh-TW': {
+      title1: '基礎用法',
+      title2: '自定義顏色',
+      title3: '自定義大小',
+      title4: '帶文字',
+      title5: '帶文字(豎向排列)',
+      title6: '自定義文字顏色和大小',
+      title7: '自定義圖標',
+      title8: '與遮罩層結合',
+    },
+    'en-US': {
+      title1: 'Basic Usage',
+      title2: 'Custom Color',
+      title3: 'Custom Size',
+      title4: 'With Text',
+      title5: 'With Text(Vertical)',
+      title6: 'Custom Text Color and Size',
+      title7: 'Custom Icon',
+      title8: 'With Overlay',
+    },
+  })
   return (
     <>
       <div className="demo">
-        <h2>基础用法</h2>
-        <Cell>
-          <Loading type="circular" />
-          <Loading type="spinner" />
-        </Cell>
-        <h2>自定义颜色</h2>
-        <Cell>
-          <ConfigProvider theme={{ nutuiLoadingIconColor: '#fa2c19' }}>
-            <Loading type="circular" />
-          </ConfigProvider>
-          <ConfigProvider theme={{ nutuiLoadingIconColor: '#396aca' }}>
-            <Loading type="spinner" />
-          </ConfigProvider>
-        </Cell>
-        <h2>自定义大小</h2>
-        <Cell>
-          <ConfigProvider theme={{ nutuiLoadingIconSize: '20px' }}>
-            <Loading type="circular" />
-          </ConfigProvider>
-          <ConfigProvider theme={{ nutuiLoadingIconSize: '28px' }}>
-            <Loading type="spinner" />
-          </ConfigProvider>
-        </Cell>
-        <h2>带文字</h2>
-        <Cell>
-          <Loading>加载中</Loading>
-        </Cell>
-        <h2>带文字(竖向排列)</h2>
-        <Cell>
-          <Loading direction="vertical">加载中</Loading>
-        </Cell>
-        <h2>自定义文字颜色和大小</h2>
-        <Cell>
-          <ConfigProvider theme={{ nutuiLoadingTextColor: '#396aca' }}>
-            <Loading>加载中</Loading>
-          </ConfigProvider>
-          <ConfigProvider theme={{ nutuiLoadingTextSize: '20px' }}>
-            <Loading>加载中</Loading>
-          </ConfigProvider>
-        </Cell>
-        <h2>自定义图标</h2>
-        <Cell>
-          <Loading
-            direction="vertical"
-            icon={<Star width="24" height="24" color="red" />}
-          />
-        </Cell>
-        <h2>与遮罩层结合</h2>
-        <Cell>
-          <Button type="success" onClick={() => showOverlay()}>
-            遮罩层loading(两秒后关闭)
-          </Button>
-        </Cell>
+        <h2>{translated.title1}</h2>
+        <Demo1 />
+        <h2>{translated.title2}</h2>
+        <Demo2 />
+        <h2>{translated.title3}</h2>
+        <Demo3 />
+        <h2>{translated.title4}</h2>
+        <Demo4 />
+        <h2>{translated.title5}</h2>
+        <Demo5 />
+        <h2>{translated.title6}</h2>
+        <Demo6 />
+        <h2>{translated.title7}</h2>
+        <Demo7 />
+        <h2>{translated.title8}</h2>
+        <Demo8 />
       </div>
-      <Overlay visible={visible}>
-        <div className="wrapper" style={WrapperStyle}>
-          <Loading direction="vertical">加载中</Loading>
-        </div>
-      </Overlay>
     </>
   )
 }

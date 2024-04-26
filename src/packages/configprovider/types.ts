@@ -454,6 +454,7 @@ export type NutCSSVariables =
   | 'nutuiRadioButtonActiveBorder'
   | 'nutuiRadioButtonDisabledActiveColor'
   | 'nutuiRadiogroupRadioMargin'
+  | 'nutuiRadiogroupRadioMarginBottom'
   | 'nutuiRadiogroupRadioLabelMargin'
   | 'nutuiSignatureBorderColor'
   | 'nutuiSignatureBorderWidth'
