@@ -19,7 +19,7 @@ const Demo6 = () => {
         closeIcon
         closeIconPosition="top-right"
         style={{
-          '--nutui-dialog-close-color': '#8c8c8c',
+          '--nutui-dialog-close-color': '#888B94',
         }}
         onConfirm={() => setVisible1(false)}
         onCancel={() => setVisible1(false)}

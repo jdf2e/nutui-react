@@ -14,52 +14,52 @@
   margin-left: 4px;
 }
 .nut-tag-default {
-  background: #1a1a1a;
+  background: #1A1A1A;
 }
 .nut-tag-default.nut-tag-plain {
-  color: #1a1a1a;
+  color: #1A1A1A;
   background-color: #fff;
-  border: 1px solid #1a1a1a;
+  border: 1px solid #1A1A1A;
 }
 .nut-tag-primary {
-  background: linear-gradient(135deg, #f53d4d 0%, #fa2c19 100%);
+  background: linear-gradient(135deg, #FF0F23 0%, #FF0F23 100%);
 }
 .nut-tag-primary.nut-tag-plain {
-  color: #1a1a1a;
+  color: #1A1A1A;
   background-color: #fff;
-  border: 1px solid #1a1a1a;
+  border: 1px solid #1A1A1A;
 }
 .nut-tag-info {
   background: #1988fa;
 }
 .nut-tag-info.nut-tag-plain {
-  color: #1a1a1a;
+  color: #1A1A1A;
   background-color: #fff;
-  border: 1px solid #1a1a1a;
+  border: 1px solid #1A1A1A;
 }
 .nut-tag-success {
   background: #4fc08d;
 }
 .nut-tag-success.nut-tag-plain {
-  color: #1a1a1a;
+  color: #1A1A1A;
   background-color: #fff;
-  border: 1px solid #1a1a1a;
+  border: 1px solid #1A1A1A;
 }
 .nut-tag-danger {
-  background: #fa2c19;
+  background: #FF0F23;
 }
 .nut-tag-danger.nut-tag-plain {
-  color: #1a1a1a;
+  color: #1A1A1A;
   background-color: #fff;
-  border: 1px solid #1a1a1a;
+  border: 1px solid #1A1A1A;
 }
 .nut-tag-warning {
   background: rgb(255, 158, 13);
 }
 .nut-tag-warning.nut-tag-plain {
-  color: #1a1a1a;
+  color: #1A1A1A;
   background-color: #fff;
-  border: 1px solid #1a1a1a;
+  border: 1px solid #1A1A1A;
 }
 .nut-tag-round {
   border-radius: 8px;

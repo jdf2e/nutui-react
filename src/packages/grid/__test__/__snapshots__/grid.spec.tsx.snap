@@ -52,7 +52,7 @@ exports[`render with custom content 1`] = `
         >
           <div
             class="nut-avatar nut-avatar-normal nut-avatar-round demo-avatar"
-            style="background-color: #FA2C19; color: #666;"
+            style="background-color: #FF0F23; color: #666;"
           >
             <svg
               aria-labelledby="Image"
@@ -87,7 +87,7 @@ exports[`render with custom content 1`] = `
       >
         <div
           class="nut-avatar nut-avatar-normal nut-avatar-round demo-avatar"
-          style="background-color: #FA2C19; color: #666;"
+          style="background-color: #FF0F23; color: #666;"
         >
           <svg
             aria-labelledby="Image"

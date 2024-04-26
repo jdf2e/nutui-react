@@ -156,7 +156,7 @@ The component provides the following CSS variables, which can be used to customi
 | Name | Description | Default |
 | --- | --- | --- |
 | \--nutui-calendar-active-background-color | calendar active background color | `$color-primary` |
-| \--nutui-calendar-choose-background-color | calendar choose background color | `rgba(#fa2c19, 0.09)` |
+| \--nutui-calendar-choose-background-color | calendar choose background color | `rgba(#FF0F23, 0.09)` |
 | \--nutui-calendar-choose-color | calendar choose color | `$color-primary` |
 | \--nutui-calendar-choose-disable-background-color | calendar choose but disable background color | `rgba(191, 191, 191, 0.09)` |
 | \--nutui-calendar-disable-color | calendar disable color | `#d1d0d0` |

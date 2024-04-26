@@ -198,7 +198,7 @@ export const Audio: FunctionComponent<
               maxDescription={null}
               minDescription={null}
               inactive-color="#cccccc"
-              active-color="#fa2c19"
+              active-color="#FF0F23"
             />
           </div>
           <div className="time">

@@ -2,7 +2,7 @@
   width: 100%;
   padding: 0 0 22px 0;
   user-select: none;
-  background-color: #f6f6f6;
+  background-color: #F7F8FC;
 }
 .nut-numberkeyboard-header {
   position: relative;
@@ -11,11 +11,11 @@
   justify-content: center;
   box-sizing: content-box;
   padding: 16px;
-  color: #1a1a1a;
+  color: #1A1A1A;
   font-size: 18px;
 }
 .nut-numberkeyboard-header-title {
-  color: #1a1a1a;
+  color: #1A1A1A;
   display: inline-block;
 }
 .nut-numberkeyboard-header-close {
@@ -23,7 +23,7 @@
   display: block;
   right: 0;
   padding: 0 16px;
-  color: #595959;
+  color: #505259;
   font-size: 14px;
   background-color: transparent;
   border: none;
@@ -44,7 +44,7 @@
   flex-basis: 33%;
   box-sizing: border-box;
   padding: 0 6px 6px 0;
-  background-color: #f8f8f8;
+  background-color: #F7F8FC;
 }
 .nut-numberkeyboard-body-wrapper .key {
   display: flex;
@@ -54,7 +54,7 @@
   font-size: 18px;
   line-height: 1.5;
   background-color: #fff;
-  color: #595959;
+  color: #505259;
   border-radius: 8px;
   border: none;
   font-weight: 500;
@@ -79,7 +79,7 @@
 .nut-numberkeyboard-sidebar .nut-numberkeyboard-body-wrapper .confirm {
   font-size: 16px;
   color: #fff;
-  background-color: #fa2c19;
+  background-color: #FF0F23;
 }
 .nut-numberkeyboard-sidebar .nut-numberkeyboard-body-wrapper .confirm.active {
   background-color: rgba(255, 0, 0, 0.7);

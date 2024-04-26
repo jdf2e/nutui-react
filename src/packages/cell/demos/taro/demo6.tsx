@@ -52,7 +52,7 @@ const Demo6 = () => {
               <View style={{ fontWeight: '500' }}>我是标题</View>
               <View
                 style={{
-                  color: '#8C8C8C',
+                  color: '#888B94',
                   fontSize: 10,
                   marginLeft: 5,
                   lineHeight: 1.5,
@@ -83,7 +83,7 @@ const Demo6 = () => {
           title={
             <div
               style={{
-                color: '#8C8C8C',
+                color: '#888B94',
                 fontSize: 12,
               }}
             >

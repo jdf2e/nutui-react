@@ -17,25 +17,25 @@
 .nut-radio-label {
   margin-left: 4px;
   font-size: 12px;
-  color: #1a1a1a;
+  color: #1A1A1A;
 }
 .nut-radio-label-disabled {
-  color: #bfbfbf;
+  color: #C2C4CC;
 }
 .nut-radio-icon {
-  color: #bfbfbf;
+  color: #C2C4CC;
   transition-duration: 0.3s;
   transition-property: color, border-color, background-color;
   font-size: 16px;
 }
 .nut-radio-icon-checked {
-  color: #fa2c19;
+  color: #FF0F23;
 }
 .nut-radio-icon-checked.nut-radio-icon-disabled {
-  color: #fd9d94;
+  color: #FFADBE;
 }
 .nut-radio-icon-disabled {
-  color: #bfbfbf;
+  color: #C2C4CC;
 }
 .nut-radio-button {
   display: inline-flex;
@@ -44,23 +44,23 @@
   font-size: 12px;
   background: rgba(250, 44, 25, 0.05);
   border-radius: 15px;
-  color: #1a1a1a;
+  color: #1A1A1A;
   box-sizing: border-box;
   border: 1px solid rgba(250, 44, 25, 0.05);
 }
 .nut-radio-button-active {
-  background: #ffeae8;
-  color: #fa2c19;
-  border: 1px solid #fa2c19;
+  background: #FFEBF1;
+  color: #FF0F23;
+  border: 1px solid #FF0F23;
 }
 .nut-radio-button-disabled {
-  color: #bfbfbf;
+  color: #C2C4CC;
   border: 1px solid rgba(250, 44, 25, 0.05);
 }
 .nut-radio .nut-radio-button-active.nut-radio-button-disabled {
-  background: #bfbfbf;
+  background: #C2C4CC;
   color: #ffffff;
-  border: 1px solid #bfbfbf;
+  border: 1px solid #C2C4CC;
 }
 
 [dir=rtl] .nut-radio:last-child,

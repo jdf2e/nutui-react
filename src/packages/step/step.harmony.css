@@ -17,7 +17,7 @@
   left: calc(50% + (100% - 70%) / 2);
   height: 1px;
   width: 70%;
-  background: #8c8c8c;
+  background: #888B94;
 }
 .nut-step-icon {
   position: relative;
@@ -28,8 +28,8 @@
   height: 25px;
   line-height: 25px;
   font-size: 12px;
-  background-color: #8c8c8c;
-  border-color: #8c8c8c;
+  background-color: #888B94;
+  border-color: #888B94;
   color: #ffffff;
   z-index: 1;
 }
@@ -58,48 +58,48 @@
   display: block;
   margin-bottom: 10px;
   font-size: 14px;
-  color: #1a1a1a;
+  color: #1A1A1A;
 }
 .nut-step-description {
   display: block;
   font-size: 12px;
-  color: #595959;
+  color: #505259;
 }
 .nut-step:last-child .nut-step-line {
   display: none;
 }
 .nut-step.nut-step-process .nut-step-icon {
-  background-color: #fa2c19;
-  border-color: #fa2c19;
+  background-color: #FF0F23;
+  border-color: #FF0F23;
   color: #ffffff;
 }
 .nut-step.nut-step-process .nut-step-title {
-  color: #fa2c19;
+  color: #FF0F23;
   font-size: 14px;
   font-weight: 500;
 }
 .nut-step.nut-step-process .nut-step-description {
-  color: #595959;
+  color: #505259;
 }
 .nut-step.nut-step-wait .nut-step-title {
-  color: #1a1a1a;
+  color: #1A1A1A;
 }
 .nut-step.nut-step-wait .nut-step-description {
-  color: #595959;
+  color: #505259;
 }
 .nut-step.nut-step-finish .nut-step-icon {
   background-color: #ffffff;
-  border-color: #fa2c19;
-  color: #fa2c19;
+  border-color: #FF0F23;
+  color: #FF0F23;
 }
 .nut-step.nut-step-finish .nut-step-line {
-  background: #fa2c19;
+  background: #FF0F23;
 }
 .nut-step.nut-step-finish .nut-step-title {
-  color: #fa2c19;
+  color: #FF0F23;
 }
 .nut-step.nut-step-finish .nut-step-description {
-  color: #595959;
+  color: #505259;
 }
 
 .nut-steps-dot .nut-step-head {
@@ -116,11 +116,11 @@
   box-sizing: content-box;
 }
 .nut-steps-dot .nut-step-wait .nut-step-icon {
-  background-color: #8c8c8c;
+  background-color: #888B94;
 }
 .nut-steps-dot .nut-step-finish .nut-step-icon {
   background-color: #ffffff;
-  border-color: #fa2c19;
+  border-color: #FF0F23;
 }
 .nut-steps-dot .nut-step-process .nut-step-icon {
   position: relative;
@@ -135,7 +135,7 @@
   margin-top: -7px;
   width: 14px;
   height: 14px;
-  background-color: #fa2c19;
+  background-color: #FF0F23;
   border-radius: 50%;
   opacity: 0.23;
 }
@@ -154,7 +154,7 @@
   display: inline-block;
   width: 1px;
   height: 70%;
-  background: #8c8c8c;
+  background: #888B94;
   top: calc(25px + (100% - 70% - 12px) / 2);
   left: calc(50% - 1px);
 }

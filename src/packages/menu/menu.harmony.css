@@ -23,7 +23,7 @@
   flex: 1;
   text-align: center;
   font-size: 14px;
-  color: #1a1a1a;
+  color: #1A1A1A;
   min-width: 0;
   display: flex;
   align-items: center;
@@ -41,10 +41,10 @@
   transition: all 0.2s linear;
 }
 .nut-menu-title.active {
-  color: #fa2c19;
+  color: #FF0F23;
 }
 .nut-menu-title.disabled {
-  color: #bfbfbf;
+  color: #C2C4CC;
 }
 .nut-menu-title.active .nut-menu-title-icon {
   transform: rotate(180deg);

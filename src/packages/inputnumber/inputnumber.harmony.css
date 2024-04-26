@@ -8,7 +8,7 @@
   align-items: center;
   width: 16px;
   height: 16px;
-  background-color: #f6f6f6;
+  background-color: #F7F8FC;
   border-radius: 16px;
 }
 .nut-inputnumber .nut-input-add {
@@ -17,19 +17,19 @@
   align-items: center;
   width: 16px;
   height: 16px;
-  background-color: #f6f6f6;
+  background-color: #F7F8FC;
   border-radius: 16px;
 }
 .nut-inputnumber-disabled input {
-  color: #bfbfbf !important;
+  color: #C2C4CC !important;
 }
 .nut-inputnumber-icon {
-  color: #595959;
+  color: #505259;
   font-size: 8px;
   cursor: pointer;
 }
 .nut-inputnumber-icon-disabled {
-  color: #bfbfbf;
+  color: #C2C4CC;
   cursor: not-allowed;
 }
 .nut-inputnumber input {
@@ -43,7 +43,7 @@
   border: 0;
   border-radius: 6px;
   margin: 0 6px;
-  color: #1a1a1a;
+  color: #1A1A1A;
   background-color: #ffffff;
 }
 .nut-inputnumber .nut-number-input {
@@ -57,7 +57,7 @@
   border: 0;
   border-radius: 6px;
   margin: 0 6px;
-  color: #1a1a1a;
+  color: #1A1A1A;
   background-color: #ffffff;
 }
 .nut-inputnumber-text-readonly {
@@ -71,7 +71,7 @@
   border: 0;
   border-radius: 6px;
   margin: 0 6px;
-  color: #1a1a1a;
+  color: #1A1A1A;
   background-color: #ffffff;
 }
 .nut-inputnumber input::-webkit-outer-spin-button,

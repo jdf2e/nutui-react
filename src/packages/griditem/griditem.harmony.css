@@ -2,11 +2,11 @@
   display: flex;
   position: relative;
   box-sizing: border-box;
-  color: #1a1a1a;
+  color: #1A1A1A;
 }
 
 .nut-grid-item-text {
-  color: #1a1a1a;
+  color: #1A1A1A;
   font-size: 12px;
   line-height: 1.5;
   word-break: break-all;

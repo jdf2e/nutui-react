@@ -6,7 +6,7 @@
   width: 40px;
   height: 24px;
   line-height: 24px;
-  background-color: #fa2c19;
+  background-color: #FF0F23;
   border-radius: 24px;
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -39,7 +39,7 @@
   transform: translateX(-2px);
 }
 .nut-switch-close {
-  background-color: #bfbfbf;
+  background-color: #C2C4CC;
 }
 .nut-switch-close-line {
   width: 12px;
@@ -48,7 +48,7 @@
   border-radius: 2px;
 }
 .nut-switch-disabled {
-  background-color: #fd9d94;
+  background-color: #FFADBE;
 }
 .nut-switch-disabled-close {
   background-color: rgba(0, 0, 0, 0.06);

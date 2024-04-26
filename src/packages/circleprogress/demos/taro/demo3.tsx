@@ -3,12 +3,12 @@ import { CircleProgress } from '@nutui/nutui-react-taro'
 
 const gradientColor = {
   '0%': '#ff404f',
-  '100%': '#fa2c19',
+  '100%': '#FF0F23',
 }
 const Demo3 = () => {
   return (
     <>
-      <CircleProgress percent={50} color="#fa2c19">
+      <CircleProgress percent={50} color="#FF0F23">
         50%
       </CircleProgress>
       <CircleProgress percent={100} color={gradientColor}>

@@ -8,7 +8,7 @@
   flex: auto;
   border-radius: 12px;
   height: 10px;
-  background: #f6f6f6;
+  background: #F7F8FC;
 }
 .nut-progress-outer .nut-progress-active:before {
   content: "";
@@ -27,7 +27,7 @@
   justify-content: center;
   transition: all 0.4s;
   border-radius: 12px;
-  background: linear-gradient(135deg, #f53d4d 0%, #fa2c19 100%);
+  background: linear-gradient(135deg, #FF0F23 0%, #FF0F23 100%);
 }
 .nut-progress-text {
   display: flex;
@@ -48,7 +48,7 @@
   border-radius: 5px;
   font-size: 9px;
   line-height: 1;
-  background: linear-gradient(135deg, #f53d4d 0%, #fa2c19 100%);
+  background: linear-gradient(135deg, #FF0F23 0%, #FF0F23 100%);
 }
 @keyframes progressActive {
   0% {

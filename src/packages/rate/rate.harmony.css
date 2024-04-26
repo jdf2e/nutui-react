@@ -30,11 +30,11 @@
 }
 .nut-rate-item-icon {
   display: flex;
-  color: #fa2c19;
+  color: #FF0F23;
   cursor: pointer;
 }
 .nut-rate-item-icon-disabled {
-  color: #bfbfbf;
+  color: #C2C4CC;
 }
 .nut-rate-item-icon.nut-rate-item-icon.nut-rate-item-icon-half {
   position: absolute;

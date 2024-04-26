@@ -10,7 +10,7 @@
   border-radius: 6px;
   box-shadow: 0px 1px 7px 0px rgb(237, 238, 241);
   font-size: 14px;
-  color: #1a1a1a;
+  color: #1A1A1A;
   margin: 10px 0;
   box-sizing: border-box;
 }
@@ -27,7 +27,7 @@
 
 .nut-cell-description {
   font-size: 12px;
-  color: #595959;
+  color: #505259;
 }
 
 .nut-cell-extra {
@@ -40,7 +40,7 @@
   min-width: 0;
   word-break: break-all;
   font-size: 14px;
-  color: #595959;
+  color: #505259;
 }
 
 /* TODO: RN适配 */

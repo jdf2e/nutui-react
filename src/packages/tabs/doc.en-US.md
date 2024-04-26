@@ -210,7 +210,7 @@ When autoHeight is set to true, nut-tabs and nut-tabs__content will change with 
 | --- | --- | --- | --- |
 | value | The value of the currently active tab panel | `number` \| `string` | `0` |
 | defaultValue | Initialize the value of the active tab | `number` \| `string` | `0` |
-| activeColor | Label selected color | `string` | `#1a1a1a` |
+| activeColor | Label selected color | `string` | `#1A1A1A` |
 | direction | Use horizontal and vertical directions | `horizontal` \| `vertical` | `horizontal` |
 | activeType | Select the bottom display style Optional values `line`、`smile`、`simple`、`card`、`button`、`divider` | `line` \| `smile` \| `simple`  \| `card` \| `button`\| `divider` | `line` |
 | duration | Switch animation duration, unit ms 0 means no animation | `number` \| `string` | `300` |
@@ -257,6 +257,6 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-tabs-tab-line-opacity | Opacity of horizontal tabs | `1` |
 | \--nutui-tabs-vertical-titles-width | Width of vertical titles | `100px` |
 | \--nutui-tabs-vertical-titles-item-height |  height of vertical titles | `40px` |
-| \--nutui-tabs-vertical-tab-line-color | vertical line color | `linear-gradient(180deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |
+| \--nutui-tabs-vertical-tab-line-color | vertical line color | `linear-gradient(180deg, $color-primary 0%, rgba(#FF0F23, 0.15) 100%)` |
 | \--nutui-tabs-vertical-tab-line-width | Vertical title line width | `3px` |
 | \--nutui-tabs-vertical-tab-line-height | The height of the vertical title line | `12px` |

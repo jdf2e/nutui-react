@@ -6,7 +6,7 @@
   flex: 1;
   text-align: center;
   text-decoration: none;
-  color: #1a1a1a;
+  color: #1A1A1A;
   height: 100%;
 }
 .nut-tabbar-item-icon-box {
@@ -33,7 +33,7 @@
   font-weight: 400;
 }
 .nut-tabbar-item-active {
-  color: #fa2c19;
+  color: #FF0F23;
 }
 .nut-tabbar-item-active .nut-tabbar-item-icon-box {
   color: inherit;
