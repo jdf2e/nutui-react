@@ -25,13 +25,13 @@
     background: $color-primary-text;
     transition: transform 0.3s;
     box-shadow: $switch-button-box-shadow;
-    &--open {
+    &-open {
       transform: $switch-inside-open-transform;
       &-rtl {
         transform: var(--nutui-switch-inside-open-transform, translateX(-18px));
       }
     }
-    &--close {
+    &-close {
       transform: $switch-inside-close-transform;
       &-rtl {
         transform: var(--nutui-switch-inside-close-transform, translateX(-2px));
@@ -51,7 +51,7 @@
 
   &-disabled {
     background-color: $switch-open-disabled-background-color;
-    &--close {
+    &-close {
       background-color: $switch-close-disabled-background-color;
     }
   }
@@ -60,14 +60,14 @@
     color: $color-primary-text;
     font-size: $font-size-small;
 
-    &--open {
+    &-open {
       transform: translateX(-18px);
       &-rtl {
         transform: translateX(18px);
       }
     }
 
-    &--close {
+    &-close {
       transform: translateX(18px);
       &-rtl {
         transform: translateX(-18px);

@@ -3,6 +3,7 @@ import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import CellGroup from '@/packages/cellgroup'
 import CellGroupContext from '@/packages/cellgroup/context'
+import { useRtl } from '@/packages/configprovider'
 
 export interface CellProps extends BasicComponent {
   title: ReactNode
@@ -10,6 +11,7 @@ export interface CellProps extends BasicComponent {
   extra: ReactNode
   radius: string | number
   align: string
+  isLast: boolean
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void
 }
 
@@ -20,6 +22,7 @@ const defaultProps = {
   extra: null,
   radius: '6px',
   align: 'flex-start',
+  isLast: false,
   onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {},
 } as CellProps
 
@@ -37,6 +40,7 @@ export const Cell: FunctionComponent<
     extra,
     radius,
     align,
+    isLast,
     className,
     style,
     ...rest
@@ -45,6 +49,7 @@ export const Cell: FunctionComponent<
     ...props,
   }
 
+  const rtl = useRtl()
   const handleClick = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     onClick(event)
   }
@@ -63,7 +68,13 @@ export const Cell: FunctionComponent<
         }
   return (
     <div
-      className={classNames(classPrefix, className)}
+      className={classNames([
+        classPrefix,
+        className,
+        {
+          [`${classPrefix}-group-item`]: ctx?.group,
+        },
+      ])}
       onClick={(event) => handleClick(event)}
       style={baseStyle}
       {...rest}
@@ -92,7 +103,16 @@ export const Cell: FunctionComponent<
           ) : null}
         </>
       )}
-      {ctx?.divider ? <div className={`${classPrefix}-divider`} /> : null}
+      {ctx?.divider && !isLast ? (
+        <div
+          className={classNames([
+            {
+              [`${classPrefix}-divider`]: true,
+              [`${classPrefix}-divider-rtl`]: rtl,
+            },
+          ])}
+        />
+      ) : null}
     </div>
   )
 }

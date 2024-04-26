@@ -9,3 +9,5 @@
 /.clang-format
 /.clang-tidy
 **/.test
+/dependencies
+/http-test

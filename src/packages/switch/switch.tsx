@@ -49,7 +49,7 @@ export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
       {
         [`${classPrefix}-close`]: !value,
         [`${classPrefix}-disabled`]: disabled,
-        [`${classPrefix}-disabled--close`]: disabled && !value,
+        [`${classPrefix}-disabled-close`]: disabled && !value,
       },
     ])
   }
@@ -71,12 +71,12 @@ export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
           [`${classPrefix}-button`],
           [
             value
-              ? `${classPrefix}-button--open`
-              : `${classPrefix}-button--close`,
+              ? `${classPrefix}-button-open`
+              : `${classPrefix}-button-close`,
           ],
           {
-            [`${classPrefix}-button--open-rtl`]: rtl && value,
-            [`${classPrefix}-button--close-rtl`]: rtl && !value,
+            [`${classPrefix}-button-open-rtl`]: rtl && value,
+            [`${classPrefix}-button-close-rtl`]: rtl && !value,
           },
         ])}
       >
@@ -89,12 +89,12 @@ export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
               [`${classPrefix}-label`],
               [
                 value
-                  ? `${classPrefix}-label--open`
-                  : `${classPrefix}-label--close`,
+                  ? `${classPrefix}-label-open`
+                  : `${classPrefix}-label-close`,
               ],
               {
-                [`${classPrefix}-label--open-rtl`]: rtl && value,
-                [`${classPrefix}-button--close-rtl`]: rtl && !value,
+                [`${classPrefix}-label-open-rtl`]: rtl && value,
+                [`${classPrefix}-button-close-rtl`]: rtl && !value,
               },
             ])}
           >
