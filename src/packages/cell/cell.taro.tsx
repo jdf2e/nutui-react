@@ -1,9 +1,11 @@
 import React, { FunctionComponent, ReactNode, useContext } from 'react'
 import classNames from 'classnames'
-import { View, ITouchEvent } from '@tarojs/components'
+import { ITouchEvent, View } from '@tarojs/components'
+import Taro from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { CellGroup } from '@/packages/cellgroup/cellgroup.taro'
 import CellGroupContext from '@/packages/cellgroup/context'
+import { useRtl } from '@/packages/configprovider/index.taro'
 
 export interface CellProps extends BasicComponent {
   title: ReactNode
@@ -11,7 +13,10 @@ export interface CellProps extends BasicComponent {
   extra: ReactNode
   radius: string | number
   align: string
-  onClick: (event: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => void
+  isLast: boolean
+  onClick: (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent> | ITouchEvent
+  ) => void
 }
 
 const defaultProps = {
@@ -21,7 +26,10 @@ const defaultProps = {
   extra: null,
   radius: '6px',
   align: 'flex-start',
-  onClick: (event: React.MouseEvent<Element, MouseEvent> | ITouchEvent) => {},
+  isLast: false,
+  onClick: (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent> | ITouchEvent
+  ) => {},
 } as CellProps
 
 const classPrefix = 'nut-cell'
@@ -38,23 +46,32 @@ export const Cell: FunctionComponent<
     extra,
     radius,
     align,
+    isLast,
     className,
     style,
-    // ...rest
   } = {
     ...defaultProps,
     ...props,
   }
 
+  const rtl = useRtl()
+
   const handleClick = (
-    event: React.MouseEvent<Element, MouseEvent> | ITouchEvent
+    event: React.MouseEvent<HTMLDivElement, MouseEvent> | ITouchEvent
   ) => {
     onClick(event)
   }
 
+  const borderRadius = Number.isNaN(Number(radius))
+    ? String(radius)
+    : `${radius}px`
+
   const baseStyle = {
     ...style,
-    borderRadius: Number.isNaN(Number(radius)) ? String(radius) : `${radius}px`,
+    borderRadius:
+      Taro.getEnv() === 'RN' || Taro.getEnv() === Taro.ENV_TYPE.HARMONYHYBRID
+        ? Number(String(radius).replace(/[^\d]/g, ''))
+        : borderRadius,
     alignItems: align,
   }
 
@@ -66,10 +83,15 @@ export const Cell: FunctionComponent<
         }
   return (
     <View
-      className={classNames(classPrefix, className)}
+      className={classNames([
+        classPrefix,
+        className,
+        {
+          [`${classPrefix}-group-item`]: ctx?.group,
+        },
+      ])}
       onClick={(event) => handleClick(event)}
       style={baseStyle}
-      // {...rest}
     >
       {children || (
         <>
@@ -95,7 +117,16 @@ export const Cell: FunctionComponent<
           ) : null}
         </>
       )}
-      {ctx?.divider ? <View className={`${classPrefix}-divider`} /> : null}
+      {ctx?.divider && !isLast ? (
+        <View
+          className={classNames([
+            {
+              [`${classPrefix}-divider`]: true,
+              [`${classPrefix}-divider-rtl`]: rtl,
+            },
+          ])}
+        />
+      ) : null}
     </View>
   )
 }

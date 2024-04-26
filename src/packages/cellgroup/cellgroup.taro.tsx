@@ -1,6 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react'
-import { View } from '@tarojs/components'
+
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import CellGroupContext from '@/packages/cellgroup/context'
 
@@ -33,13 +34,13 @@ export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
       {description ? (
         <View className={`${classPrefix}-description`}>{description}</View>
       ) : null}
-      <View
-        className={`${classPrefix}-wrap ${
-          divider ? `${classPrefix}-wrap-divider` : ''
-        }`}
-      >
-        <CellGroupContext.Provider value={{ divider }}>
-          {children}
+      <View className={`${classPrefix}-wrap`}>
+        <CellGroupContext.Provider value={{ divider, group: true }}>
+          {React.Children.map(children, (child, index) => {
+            return React.cloneElement(child, {
+              isLast: index === React.Children.count(children) - 1,
+            })
+          })}
         </CellGroupContext.Provider>
       </View>
     </View>
