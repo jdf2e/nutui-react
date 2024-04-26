@@ -32,28 +32,21 @@ const removeFile = async (url) => {
   })
 }
 
+const removeAllFile = async (url) => {
+    return new Promise((res, rej) => {
+        fse.emptyDir(folderPath)
+        .then(() => {
+          console.log('文件夹已清空');
+        })
+        .catch(err => {
+          console.error(err);
+        });
+    })
+  }
+
 const copy = async () => {
-  await removeFile(`${targetBaseUrl}/${args[0]}.taro.tsx`)
-  await removeFile(`${targetBaseUrl}/${args[0]}.harmony.css`)
-  await removeFile(`${targetBaseUrl}/${args[0]}.tsx`)
-  await removeFile(`${targetBaseUrl}/${args[0]}.scss`)
-
-  copyFile(
-    `${targetwrapUrl}/${args[0]}.taro.tsx`,
-    `${targetBaseUrl}/${args[0]}.taro.tsx`
-  )
-
-  copyFile(`${targetwrapUrl}/${args[0]}.tsx`, `${targetBaseUrl}/${args[0]}.tsx`)
-
-  copyFile(
-    `${targetwrapUrl}/${args[0]}.harmony.css`,
-    `${targetBaseUrl}/${args[0]}.harmony.css`
-  )
-
-  copyFile(
-    `${targetwrapUrl}/${args[0]}.scss`,
-    `${targetBaseUrl}/${args[0]}.scss`
-  )
+    await removeFile(`${targetBaseUrl}`);
+    copyFile(`${targetwrapUrl}`, `${targetBaseUrl}`)
 }
 
 copy()

@@ -8,7 +8,7 @@ const Demo3 = () => {
       title={
         <div style={{ display: 'inline-flex', alignItems: 'center' }}>
           <User />
-          <span style={{ marginLeft: '5px' }}>我是标题</span>
+          <span style={{ marginLeft: 5 }}>我是标题</span>
         </div>
       }
       description={

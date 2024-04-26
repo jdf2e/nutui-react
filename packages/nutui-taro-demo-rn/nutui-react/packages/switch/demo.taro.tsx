@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale//taro'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
@@ -7,7 +8,6 @@ import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import { Cell } from '../nutui.react.taro'
-import { View } from '@tarojs/components'
 import '../../../styles/demo.scss'
 
 const SwitchDemo = () => {
@@ -40,27 +40,27 @@ const SwitchDemo = () => {
   return (
     <>
       <View className="demo">
-        <View className="h2">{translated.basic}</View >
+        <View className="h2">{translated.basic}</View>
         <Cell>
           <Demo1 />
         </Cell>
-        <View className="h2">{translated.asyncControl}</View >
+        <View className="h2">{translated.asyncControl}</View>
         <Cell>
           <Demo2 />
         </Cell>
-        <View className="h2">{translated.disabled}</View >
+        <View className="h2">{translated.disabled}</View>
         <Cell>
           <Demo3 />
         </Cell>
-        <View className="h2">{translated.eventTip}</View >
+        <View className="h2">{translated.eventTip}</View>
         <Cell>
           <Demo4 />
         </Cell>
-        <View className="h2">{translated.customColor}</View >
+        <View className="h2">{translated.customColor}</View>
         <Cell>
           <Demo5 />
         </Cell>
-        <View className="h2">{translated.supportText}</View >
+        <View className="h2">{translated.supportText}</View>
         <Cell>
           <Demo6 />
         </Cell>

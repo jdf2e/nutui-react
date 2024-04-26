@@ -60,7 +60,7 @@ const CellDemo = () => {
         <View className="h2">{translated.title4}</View>
         <Demo6 />
         <View className="h2">{translated.title7}</View>
-        <Demo7 /> 
+        <Demo7 />
       </ScrollView>
     </>
   )

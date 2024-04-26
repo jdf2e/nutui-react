@@ -15,7 +15,7 @@ const Demo3 = () => {
         >
           {/* <User /> */}
           {/* <View style={{ marginLeft: 5 }}>我是标题</View> */}
-          <View >我是标题</View>
+          <View>我是标题</View>
         </View>
       }
       description={

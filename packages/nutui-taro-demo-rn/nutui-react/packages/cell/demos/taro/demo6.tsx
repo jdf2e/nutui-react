@@ -1,5 +1,5 @@
 import React from 'react'
-import { Cell, Button } from '@nutui/nutui-react-taro'
+import { Cell } from '@nutui/nutui-react-taro'
 // import { ArrowRight, User } from '@nutui/icons-react-taro'
 import { redirectTo, navigateTo } from '@tarojs/taro'
 import { ITouchEvent, View } from '@tarojs/components'
@@ -90,11 +90,7 @@ const Demo6 = () => {
               我是描述
             </View>
           }
-        //   extra={
-        //     <Button type="primary" size="small">
-        //       Action
-        //     </Button>
-        //   }
+          extra="Action按钮"
         />
       </Cell.Group>
 
@@ -116,14 +112,7 @@ const Demo6 = () => {
         <Cell>
           <View style={{ minHeight: 50 }}>自定义内容</View>
         </Cell>
-        <Cell
-          align="center"
-        //   extra={
-        //     <Button type="primary" size="small">
-        //       Action
-        //     </Button>
-        //   }
-        />
+        <Cell align="center" extra="Action按钮" />
       </Cell.Group>
 
       <Cell.Group>

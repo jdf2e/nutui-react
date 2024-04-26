@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale//taro'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
@@ -37,32 +38,32 @@ const SwitchDemo = () => {
   })
   return (
     <>
-      <div className="demo">
-        <h2>{translated.basic}</h2>
+      <View className="demo">
+        <View className="h2">{translated.basic}</View>
         <Cell>
           <Demo1 />
         </Cell>
-        <h2>{translated.asyncControl}</h2>
+        <View className="h2">{translated.asyncControl}</View>
         <Cell>
           <Demo2 />
         </Cell>
-        <h2>{translated.disabled}</h2>
+        <View className="h2">{translated.disabled}</View>
         <Cell>
           <Demo3 />
         </Cell>
-        <h2>{translated.eventTip}</h2>
+        <View className="h2">{translated.eventTip}</View>
         <Cell>
           <Demo4 />
         </Cell>
-        <h2>{translated.customColor}</h2>
+        <View className="h2">{translated.customColor}</View>
         <Cell>
           <Demo5 />
         </Cell>
-        <h2>{translated.supportText}</h2>
+        <View className="h2">{translated.supportText}</View>
         <Cell>
           <Demo6 />
         </Cell>
-      </div>
+      </View>
     </>
   )
 }

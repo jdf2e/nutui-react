@@ -16,7 +16,7 @@ const Demo3 = () => {
           我是描述<b style={{ color: 'red' }}>1</b>
         </span>
       }
-      extra='描述文字'
+      extra="描述文字"
     />
   )
 }
