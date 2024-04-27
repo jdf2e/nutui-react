@@ -52,10 +52,8 @@ export const Checkbox: FunctionComponent<
     ...props,
   }
   const {
-    icon,
     label,
     className,
-    activeIcon,
     checked,
     value,
     defaultChecked,
@@ -67,7 +65,7 @@ export const Checkbox: FunctionComponent<
     ...others
   } = props as any
   // eslint-disable-next-line prefer-const
-  let { labelPosition, ...rest } = others
+  let { icon, activeIcon, labelPosition, ...rest } = others
   const ctx = useContext(Context)
 
   let [innerChecked, setChecked] = usePropsValue<boolean>({
@@ -92,6 +90,8 @@ export const Checkbox: FunctionComponent<
     if (ctx.labelPosition !== undefined) {
       labelPosition = ctx.labelPosition
     }
+    icon = ctx.icon !== undefined ? ctx.icon : icon
+    activeIcon = ctx.activeIcon !== undefined ? ctx.activeIcon : activeIcon
     innerDisabled = ctx.disabled !== undefined ? ctx.disabled : innerDisabled
     innerChecked = ctx.value.includes(value)
     setChecked = (checked: boolean) => {
