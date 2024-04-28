@@ -258,3 +258,4 @@ import { Tabs } from '@nutui/nutui-react-taro';
 | \--nutui-tabs-vertical-tab-line-color | 垂直方向线条颜色 | `linear-gradient(180deg, $color-primary 0%, rgba(#fa2c19, 0.15) 100%)` |
 | \--nutui-tabs-vertical-tab-line-width | 垂直方向标题线条的宽度 | `3px` |
 | \--nutui-tabs-vertical-tab-line-height | 垂直方向标题线条的高度 | `12px` |
+| \--nutui-tabs-tabpane-padding | Tabpane 的内边距 | `24px 20px` |
