@@ -1,6 +1,5 @@
 import React from 'react'
 import { useTranslate } from '../../sites/assets/locale'
-import Cell from '@/packages/cell'
 import './demo.scss'
 import Demo1 from './demos/h5/demo1'
 import Demo2 from './demos/h5/demo2'
@@ -41,29 +40,17 @@ const OverlayDemo = () => {
     <>
       <div className="demo demo-overlay">
         <h2>{translated['84aa6bce']}</h2>
-        <Cell>
-          <Demo1 />
-        </Cell>
+        <Demo1 />
         <h2>{translated.abbf9359}</h2>
-        <Cell>
-          <Demo2 />
-        </Cell>
+        <Demo2 />
         <h2>{translated.duration}</h2>
-        <Cell>
-          <Demo3 />
-        </Cell>
+        <Demo3 />
         <h2>{translated.lockscroll}</h2>
-        <Cell>
-          <Demo4 />
-        </Cell>
+        <Demo4 />
         <h2>{translated.ec0d7acf}</h2>
-        <Cell>
-          <Demo5 />
-        </Cell>
+        <Demo5 />
         <h2>{translated.closeClickLay}</h2>
-        <Cell>
-          <Demo6 />
-        </Cell>
+        <Demo6 />
       </div>
     </>
   )
