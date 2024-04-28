@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
+import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index'
-import classNames from 'classnames'
 
 export interface PriceProps extends BasicComponent {
   price: number | string
@@ -42,7 +42,6 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
   const classPrefix = 'nut-price'
 
   const rtl = useRtl()
-
 
   const checkPoint = (price: string | number) => {
     return String(price).indexOf('.') > 0
@@ -88,11 +87,13 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
     return (
       <div
         className={classNames([
-        `${classPrefix}-symbol`,
-        `${classPrefix}-symbol-${size}`,{
-        [`${classPrefix}-line`]: line,
-         [`${classPrefix}-rtl`] : rtl}
-      ])}
+          `${classPrefix}-symbol`,
+          `${classPrefix}-symbol-${size}`,
+          {
+            [`${classPrefix}-line`]: line,
+            [`${classPrefix}-rtl`]: rtl,
+          },
+        ])}
         dangerouslySetInnerHTML={{ __html: symbol || '' }}
       />
     )
@@ -107,9 +108,10 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
       {...rest}
     >
       {symbol && position === 'before' ? renderSymbol() : null}
-      <div className={`${classPrefix}-integer ${classPrefix}-integer-${size} ${
-        line ? `${classPrefix}-line` : ''
-      }`}
+      <div
+        className={`${classPrefix}-integer ${classPrefix}-integer-${size} ${
+          line ? `${classPrefix}-line` : ''
+        }`}
       >
         {formatThousands(price)}
       </div>
@@ -122,9 +124,10 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
           .
         </div>
       ) : null}
-      <div className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
-        line ? `${classPrefix}-line` : ''
-      }`}
+      <div
+        className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
+          line ? `${classPrefix}-line` : ''
+        }`}
       >
         {formatDecimal(price)}
       </div>

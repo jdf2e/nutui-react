@@ -1,6 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import { ScrollView, View } from '@tarojs/components'
 import { Cell } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
@@ -50,7 +50,7 @@ const PriceDemo = () => {
   return (
     <>
       <Header />
-      <View className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <View className="h2">{translated.title1}</View>
         <Demo1 />
         <View className="h2">{translated.title2}</View>
@@ -81,7 +81,7 @@ const PriceDemo = () => {
         <Cell>
           <Demo8 />
         </Cell>
-      </View>
+      </ScrollView>
     </>
   )
 }

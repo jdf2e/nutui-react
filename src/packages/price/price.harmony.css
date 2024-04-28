@@ -4,7 +4,6 @@
   display: inline-flex;
   flex-direction: row;
   align-items: baseline;
-  color: #fa2c19;
 }
 .nut-price-symbol {
   display: inline-block;

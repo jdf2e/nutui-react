@@ -3,10 +3,11 @@ import { Price } from '@nutui/nutui-react'
 
 const Demo8 = () => {
   return (
-    <div style={{
+    <div
+      style={{
         display: 'inline-flex',
-        alignItems: 'baseline'
-    }}
+        alignItems: 'baseline',
+      }}
     >
       <Price price={1513.12} size='normal' thousands />
       <span>&nbsp;</span>

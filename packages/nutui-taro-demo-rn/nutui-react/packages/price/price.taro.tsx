@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import { View } from '@tarojs/components'
+import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
-import classNames from 'classnames'
 import './price.harmony.css'
 
 export interface PriceProps extends BasicComponent {
@@ -98,12 +98,16 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
     return (
       <View
         className={classNames([
-            `${classPrefix}-symbol`,
-            `${classPrefix}-symbol-${size}`,{
+          `${classPrefix}-symbol`,
+          `${classPrefix}-symbol-${size}`,
+          {
             [`${classPrefix}-line`]: line,
-             [`${classPrefix}-rtl`] : rtl}
+            [`${classPrefix}-rtl`]: rtl,
+          },
         ])}
-      >{symbol ? replaceSpecialChar(symbol) : ''}</View>
+      >
+        {symbol ? replaceSpecialChar(symbol) : ''}
+      </View>
     )
   }
 
@@ -115,9 +119,10 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
       style={style}
     >
       {symbol && position === 'before' ? renderSymbol() : null}
-      <View className={`${classPrefix}-integer ${classPrefix}-integer-${size} ${
-        line ? `${classPrefix}-line` : ''
-      }`}
+      <View
+        className={`${classPrefix}-integer ${classPrefix}-integer-${size} ${
+          line ? `${classPrefix}-line` : ''
+        }`}
       >
         {formatThousands(price)}
       </View>
@@ -130,9 +135,10 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
           .
         </View>
       ) : null}
-      <View className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
-        line ? `${classPrefix}-line` : ''
-      }`}
+      <View
+        className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
+          line ? `${classPrefix}-line` : ''
+        }`}
       >
         {formatDecimal(price)}
       </View>
