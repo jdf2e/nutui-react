@@ -41,7 +41,7 @@ const Demo2 = () => {
         back={<ArrowLeft />}
         onBackClick={(e) => Toast.show('返回')}
       >
-        <div className="title title-left">
+        <div className="title">
           <span onClick={(e) => Toast.show('标题')}>浏览记录</span>
           <span className="desc">浏览记录</span>
         </div>

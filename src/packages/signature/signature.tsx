@@ -144,7 +144,6 @@ const InternalSignature: ForwardRefRenderFunction<
       default:
         dataurl = canvas.toDataURL('image/png')
     }
-    handleClearBtn()
     onConfirm && onConfirm(canvas, dataurl as string)
   }
 
