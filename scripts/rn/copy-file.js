@@ -33,20 +33,21 @@ const removeFile = async (url) => {
 }
 
 const removeAllFile = async (url) => {
-    return new Promise((res, rej) => {
-        fse.emptyDir(folderPath)
-        .then(() => {
-          console.log('文件夹已清空');
-        })
-        .catch(err => {
-          console.error(err);
-        });
-    })
-  }
+  return new Promise((res, rej) => {
+    fse
+      .emptyDir(folderPath)
+      .then(() => {
+        console.log('文件夹已清空')
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  })
+}
 
 const copy = async () => {
-    await removeFile(`${targetBaseUrl}`);
-    copyFile(`${targetwrapUrl}`, `${targetBaseUrl}`)
+  await removeFile(`${targetBaseUrl}`)
+  copyFile(`${targetwrapUrl}`, `${targetBaseUrl}`)
 }
 
 copy()
@@ -54,14 +55,11 @@ if (argsPath[0] !== 'reverse' && argsPath[0]) {
   const componentBaseUrl = `${process.cwd()}/packages/nutui-taro-demo-rn/src/${argsPath[0]}/pages/${args[0]}`
   fse.writeFileSync(
     `${componentBaseUrl}/index.tsx`,
-    `import Demo from '@/packages/${args[0]}/demo.taro';
-     export default Demo;`
+    `import Demo from '@/packages/${args[0]}/demo.taro';\nexport default Demo;`
   )
   const componentName = args[0].charAt(0).toUpperCase() + args[0].slice(1)
   fse.writeFileSync(
     `${componentBaseUrl}/index.config.ts`,
-    `export default {
-        navigationBarTitleText: '${componentName}',
-     }`
+    `export default {\n  navigationBarTitleText: '${componentName}'\n}`
   )
 }

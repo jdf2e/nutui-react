@@ -1,7 +1,7 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import { Cell } from '@/packages/nutui.react.taro'
 import '@/packages/overlay/demo.scss'
 import Header from '@/sites/components/header'
 import Demo2 from './demos/taro/demo2'
@@ -10,7 +10,7 @@ import Demo1 from './demos/taro/demo1'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
-import { View } from '@tarojs/components'
+import "../../../styles/demo.scss"
 
 const OverlayDemo = () => {
   const [translated] = useTranslate({
@@ -44,48 +44,37 @@ const OverlayDemo = () => {
     <>
       <Header />
       {Taro.getEnv() !== Taro.ENV_TYPE.HARMONY &&
-      Taro.getEnv() !== Taro.ENV_TYPE.HARMONYHYBRID && Taro.getEnv() !== 'RN' ? (
+      Taro.getEnv() !== Taro.ENV_TYPE.HARMONYHYBRID &&
+      Taro.getEnv() !== 'RN' ? (
         <div
           className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} demo-overlay`}
         >
           <h2>{translated['84aa6bce']}</h2>
-          {/* <Cell>
-            <Demo1 />
-          </Cell>
+          <Demo1 />
           <h2>{translated.abbf9359}</h2>
-          <Cell>
-            <Demo2 />
-          </Cell>
+          <Demo2 />
           <h2>{translated.duration}</h2>
-          <Cell>
-            <Demo3 />
-          </Cell>
+          <Demo3 />
           <h2>{translated.lockscroll}</h2>
-          <Cell>
-            <Demo4 />
-          </Cell>
+          <Demo4 />
           <h2>{translated.ec0d7acf}</h2>
-          <Cell>
-            <Demo5 />
-          </Cell>
+          <Demo5 />
           <h2>{translated.closeClickLay}</h2>
-          <Cell>
-            <Demo6 />
-          </Cell> */}
+          <Demo6 />
         </div>
       ) : (
         <>
-          <View>{translated['84aa6bce']}</View>
+          <View className='h2'>{translated['84aa6bce']}</View>
           <Demo1 />
-          <View>{translated.abbf9359}</View>
+          <View className='h2'>{translated.abbf9359}</View>
           <Demo2 />
-          <View>{translated.duration}</View>
+          <View className='h2'>{translated.duration}</View>
           <Demo3 />
-          <View>{translated.lockscroll}</View>
+          <View className='h2'>{translated.lockscroll}</View>
           <Demo4 />
-          <View>{translated.ec0d7acf}</View>
+          <View className='h2'>{translated.ec0d7acf}</View>
           <Demo5 />
-          <View>{translated.closeClickLay}</View>
+          <View className='h2'>{translated.closeClickLay}</View>
           <Demo6 />
         </>
       )}

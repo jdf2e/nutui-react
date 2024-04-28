@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Overlay } from '@nutui/nutui-react'
+import { Button, Cell, Overlay } from '@nutui/nutui-react'
 
 const Demo6 = () => {
   const [visible, setVisible] = useState(false)
@@ -27,9 +27,11 @@ const Demo6 = () => {
   }
   return (
     <>
-      <Button type="primary" onClick={handleToggleShow}>
-        点击遮罩不关闭
-      </Button>
+      <Cell>
+        <Button type="primary" onClick={handleToggleShow}>
+          点击遮罩不关闭
+        </Button>
+      </Cell>
       <Overlay visible={visible} closeOnOverlayClick={false}>
         <div style={wrapperStyle}>
           <div style={contentStyle} onClick={onClose}>

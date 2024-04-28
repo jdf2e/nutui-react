@@ -6,7 +6,6 @@ import Taro from '@tarojs/taro'
 import { View, ITouchEvent } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useLockScrollTaro } from '@/utils/use-lock-scoll-taro'
-
 import './overlay.harmony.css'
 
 export interface OverlayProps extends BasicComponent {
@@ -104,8 +103,9 @@ export const Overlay: FunctionComponent<
 
   return (
     <>
-      {Taro.getEnv() !== Taro.ENV_TYPE.HARMONY &&
-      Taro.getEnv() !== Taro.ENV_TYPE.HARMONYHYBRID && Taro.getEnv() !== "RN"  ? (
+      {Taro.getEnv() !== 'RN' &&
+      Taro.getEnv() !== Taro.ENV_TYPE.HARMONY &&
+      Taro.getEnv() !== Taro.ENV_TYPE.HARMONYHYBRID ? (
         <CSSTransition
           nodeRef={nodeRef}
           classNames={`${classPrefix}-slide`}

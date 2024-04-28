@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Cell, Overlay } from '@nutui/nutui-react-taro'
+import { Cell, Overlay } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
 
 const Demo5 = () => {
@@ -14,9 +14,10 @@ const Demo5 = () => {
   return (
     <>
       <Cell>
-        <Button type='success' onClick={handleToggleShow}>
+        {/* <Button type='success' onClick={handleToggleShow}>
           嵌套内容
-        </Button>
+        </Button> */}
+        <View onClick={handleToggleShow}>嵌套内容</View>
       </Cell>
 
       <Overlay visible={visible} onClick={onClose}>
@@ -34,7 +35,7 @@ const Demo5 = () => {
               width: 200,
               height: 200,
               backgroundColor: '#fff',
-              borderRadius: '8px',
+              borderRadius: 8,
               alignItems: 'center',
               justifyContent: 'center',
             }}

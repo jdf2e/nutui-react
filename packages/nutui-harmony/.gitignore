@@ -11,3 +11,6 @@
 **/.test
 /dependencies
 /http-test
+/hvigor
+build-profile.json5
+oh-package-lock.json5
