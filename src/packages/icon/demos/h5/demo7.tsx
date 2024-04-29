@@ -6,7 +6,7 @@ import { camelCase } from '@/utils/camel-case'
 const generateAMCopyText = (icon: any) => {
   return `<${camelCase(icon.name, {
     pascalCase: true,
-  })} className="${`nut-icon-${icon['animation-name']}  nut-icon-${icon['animation-time']}`}" />`
+  })} className="${`nut-icon-${icon['animation-name']} nut-icon-${icon['animation-time']}`}" />`
 }
 
 const copyTag = (text: string) => {
@@ -37,7 +37,7 @@ const Demo7 = () => {
                     >
                       <IconFont
                         name={icon.name}
-                        className={`nut-icon-${icon['animation-name']}  nut-icon-${icon['animation-time']}`}
+                        className={`nut-icon-${icon['animation-name']} nut-icon-${icon['animation-time']}`}
                       />
                     </li>
                   )
