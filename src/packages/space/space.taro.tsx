@@ -1,7 +1,9 @@
 import React, { FunctionComponent } from 'react'
-import classNames from 'classnames'
 import { View } from '@tarojs/components'
+import classNames from 'classnames'
 import { BasicComponent } from '@/utils/typings'
+import { useRtl } from '@/packages/configprovider/index.taro'
+import './space.harmony.css'
 
 const prefixCls = 'nut-space'
 
@@ -29,21 +31,36 @@ export const Space: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const cls = classNames(
-    prefixCls,
-    wrap && `${prefixCls}-wrap`,
-    direction && `${prefixCls}-${direction}`,
-    align && `${prefixCls}-align-${align}`,
-    justify && `${prefixCls}-justify-${justify}`,
-    className
-  )
+  const rtl = useRtl()
+  const cls = classNames(prefixCls, {
+    [`${prefixCls}-wrap`]: wrap,
+    [`${prefixCls}-${direction}`]: direction,
+    [`${prefixCls}-align-${align}`]: align,
+    [`${prefixCls}-justify-${justify}`]: justify,
+    [`${className}`]: className,
+  })
+  const itemCls = classNames(`${prefixCls}-item`, {
+    [`${prefixCls}-wrap--item`]: wrap,
+    [`${prefixCls}-${direction}--item`]: direction,
+    [`${prefixCls}--item-rtl`]: rtl,
+  })
+  const childrenCount = React.Children.count(children)
+
   return (
     <View className={cls} style={style}>
-      {React.Children.map(children, (child) => {
+      {React.Children.map(children, (child, idx) => {
+        const isLast = idx === childrenCount - 1
         return (
           child !== null &&
           child !== undefined && (
-            <View className={`${prefixCls}-item`}>{child}</View>
+            <View
+              className={classNames(
+                itemCls,
+                isLast && `${prefixCls}-item--last`
+              )}
+            >
+              {child}
+            </View>
           )
         )
       })}
