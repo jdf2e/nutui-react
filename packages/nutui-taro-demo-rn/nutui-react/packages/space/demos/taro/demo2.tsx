@@ -1,5 +1,7 @@
 import React from 'react'
-import { Space, Button } from '@nutui/nutui-react-taro'
+// @TODO 暂时使用 taro components 按钮替代展示
+import { Button } from '@tarojs/components'
+import { Space } from '@nutui/nutui-react-taro'
 
 const Demo2 = () => {
   return (
