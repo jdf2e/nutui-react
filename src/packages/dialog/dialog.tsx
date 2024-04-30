@@ -46,9 +46,7 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
     disableConfirmButton,
     closeOnOverlayClick,
     confirmText,
-    confirmButtonProps,
     cancelText,
-    cancelButtonProps,
     closeIconPosition,
     closeIcon,
     onClose,
@@ -91,7 +89,6 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
             <Button
               type="default"
               className={`${classPrefix}-footer-cancel`}
-              {...cancelButtonProps}
               onClick={(e) => handleCancel(e)}
             >
               {cancelText || locale.cancel}
@@ -104,9 +101,8 @@ const BaseDialog: ForwardRefRenderFunction<unknown, Partial<DialogProps>> = (
                 disabled: disableConfirmButton,
               })}
               disabled={disableConfirmButton}
-              loading={loading}
-              {...confirmButtonProps}
               onClick={(e) => handleOk(e)}
+              loading={loading}
             >
               {confirmText || locale.confirm}
             </Button>
