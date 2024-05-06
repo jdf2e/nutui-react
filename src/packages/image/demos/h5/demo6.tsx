@@ -1,17 +1,18 @@
 import React from 'react'
-import { Image, Row, Col } from '@nutui/nutui-react'
+import { Image } from '@nutui/nutui-react'
 import { Failure } from '@nutui/icons-react'
 
 const Demo6 = () => {
   const imageText: React.CSSProperties = {
+    width: 100,
     marginTop: 5,
     textAlign: 'center',
     color: '#999',
   }
   return (
     <>
-      <Row gutter={10}>
-        <Col span="8">
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        <div style={{ width: 110 }}>
           <Image
             src="https://x"
             width="100"
@@ -21,12 +22,12 @@ const Demo6 = () => {
             }}
           />
           <div style={imageText}>默认</div>
-        </Col>
-        <Col span="8">
+        </div>
+        <div style={{ width: 110 }}>
           <Image src="https://x" width="100" height="100" error={<Failure />} />
           <div style={imageText}>自定义</div>
-        </Col>
-      </Row>
+        </div>
+      </div>
     </>
   )
 }
