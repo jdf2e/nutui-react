@@ -10,7 +10,6 @@ import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
-// import '../../../styles/demo.scss'
 
 const SpaceDemo = () => {
   const [translated] = useTranslate({

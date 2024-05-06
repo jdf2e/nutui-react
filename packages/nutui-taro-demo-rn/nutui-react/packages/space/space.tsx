@@ -1,5 +1,4 @@
 import React, { FunctionComponent } from 'react'
-import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import { BasicComponent } from '@/utils/typings'
 
@@ -38,16 +37,16 @@ export const Space: FunctionComponent<
     className
   )
   return (
-    <View className={cls} style={style}>
+    <div className={cls} style={style}>
       {React.Children.map(children, (child) => {
         return (
           child !== null &&
           child !== undefined && (
-            <View className={`${prefixCls}-item`}>{child}</View>
+            <div className={`${prefixCls}-item`}>{child}</div>
           )
         )
       })}
-    </View>
+    </div>
   )
 }
 

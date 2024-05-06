@@ -32,24 +32,18 @@ export const Space: FunctionComponent<
     ...props,
   }
   const rtl = useRtl()
-  const cls = classNames(
-    prefixCls,
-    {
-      [`${prefixCls}-wrap`]: wrap,
-      [`${prefixCls}-${direction}`]: direction,
-      [`${prefixCls}-align-${align}`]: align,
-      [`${prefixCls}-justify-${justify}`]: justify,
-      [`${className}`]: className,
-    }
-  )
-  const itemCls = classNames(
-    `${prefixCls}-item`,
-    {
-      [`${prefixCls}-wrap--item`]: wrap,
-      [`${prefixCls}-${direction}--item`]: direction,
-      [`${prefixCls}--item-rtl`]: rtl,
-    }
-  )
+  const cls = classNames(prefixCls, {
+    [`${prefixCls}-wrap`]: wrap,
+    [`${prefixCls}-${direction}`]: direction,
+    [`${prefixCls}-align-${align}`]: align,
+    [`${prefixCls}-justify-${justify}`]: justify,
+    [`${className}`]: className,
+  })
+  const itemCls = classNames(`${prefixCls}-item`, {
+    [`${prefixCls}-wrap-item`]: wrap,
+    [`${prefixCls}-${direction}-item`]: direction,
+    [`${prefixCls}-item-rtl`]: rtl,
+  })
   const childrenCount = React.Children.count(children)
 
   return (
@@ -60,8 +54,13 @@ export const Space: FunctionComponent<
           child !== null &&
           child !== undefined && (
             <View
-              className={classNames(itemCls, isLast && `${prefixCls}-item--last`)}
-            >{child}</View>
+              className={classNames(
+                itemCls,
+                isLast && `${prefixCls}-item--last`
+              )}
+            >
+              {child}
+            </View>
           )
         )
       })}

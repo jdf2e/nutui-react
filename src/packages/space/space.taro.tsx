@@ -40,9 +40,9 @@ export const Space: FunctionComponent<
     [`${className}`]: className,
   })
   const itemCls = classNames(`${prefixCls}-item`, {
-    [`${prefixCls}-wrap--item`]: wrap,
-    [`${prefixCls}-${direction}--item`]: direction,
-    [`${prefixCls}--item-rtl`]: rtl,
+    [`${prefixCls}-wrap-item`]: wrap,
+    [`${prefixCls}-${direction}-item`]: direction,
+    [`${prefixCls}-item-rtl`]: rtl,
   })
   const childrenCount = React.Children.count(children)
 
