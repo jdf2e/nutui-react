@@ -33,15 +33,15 @@ export const Space: FunctionComponent<
   }
   const rtl = useRtl()
   const cls = classNames(prefixCls, {
-    [`${prefixCls}-wrap`]: wrap,
     [`${prefixCls}-${direction}`]: direction,
+    [`${prefixCls}-${direction}-wrap`]: wrap,
     [`${prefixCls}-align-${align}`]: align,
     [`${prefixCls}-justify-${justify}`]: justify,
     [`${className}`]: className,
   })
   const itemCls = classNames(`${prefixCls}-item`, {
-    [`${prefixCls}-wrap-item`]: wrap,
     [`${prefixCls}-${direction}-item`]: direction,
+    [`${prefixCls}-${direction}-wrap-item`]: wrap,
     [`${prefixCls}-item-rtl`]: rtl,
   })
   const childrenCount = React.Children.count(children)
@@ -56,7 +56,7 @@ export const Space: FunctionComponent<
             <View
               className={classNames(
                 itemCls,
-                isLast && `${prefixCls}-item--last`
+                isLast && `${prefixCls}-${direction}-item--last`
               )}
             >
               {child}
