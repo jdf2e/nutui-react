@@ -15,13 +15,8 @@ const Demo1 = () => {
   const confirm1 = (values: (string | number)[], options: PickerOption[]) => {
     setDesc1(options.map((option) => option.text).join(' '))
   }
-  const confirm2 = (options: PickerOption[], values: (string | number)[]) => {
-    const v = options
-      .map((option) => option.text)
-      .join()
-      .replace('年', '-')
-      .replace('月', '-')
-      .replace('日', '')
+  const change = (options: PickerOption[], values: (string | number)[]) => {
+    const v = values.join('/')
     setValue(v)
     setDesc2(options.map((option) => option.text).join(' '))
   }
@@ -59,7 +54,7 @@ const Demo1 = () => {
         showChinese
         onClose={() => setShow2(false)}
         threeDimensional={false}
-        onConfirm={(options, values) => confirm2(options, values)}
+        onChange={(options, values) => change(options, values)}
       />
     </>
   )
