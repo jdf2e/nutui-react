@@ -36,18 +36,18 @@
 }
 .nut-tour-content-bottom-operate-btn {
   display: inline-block;
-  border: 1px solid #bfbfbf;
+  border: 1px solid #C2C4CC;
   margin-left: 4px;
   padding: 2px 4px;
   font-size: 12px;
   border-radius: 4px;
-  color: #595959;
+  color: #505259;
   cursor: pointer;
 }
 .nut-tour-content-bottom-operate-btn.active {
   color: #fff;
   border: 0;
-  background: #fa2c19;
+  background: #FF0F23;
 }
 .nut-tour-content-tile .nut-tour-content-inner {
   margin: 0;

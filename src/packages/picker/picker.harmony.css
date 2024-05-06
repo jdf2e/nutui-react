@@ -11,11 +11,11 @@
   padding: 16px;
 }
 .nut-picker-cancel-btn {
-  color: #595959;
+  color: #505259;
   font-size: 14px;
 }
 .nut-picker-confirm-btn {
-  color: #fa2c19;
+  color: #FF0F23;
   font-size: 14px;
 }
 .nut-picker-title {
@@ -24,7 +24,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   text-align: center;
-  color: #1a1a1a;
+  color: #1A1A1A;
   font-size: 18px;
   font-weight: 500;
 }
@@ -40,7 +40,7 @@
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-left: 0;
   border-right: 0;
-  color: #1a1a1a;
+  color: #1A1A1A;
   font-size: 14px;
   z-index: 3;
 }
@@ -108,7 +108,7 @@
   text-overflow: ellipsis;
   height: 36px;
   line-height: 36px;
-  color: #1a1a1a;
+  color: #1A1A1A;
   font-size: 14px;
   text-align: center;
 }
@@ -118,7 +118,7 @@
   text-overflow: ellipsis;
   height: 36px;
   line-height: 36px;
-  color: #1a1a1a;
+  color: #1A1A1A;
   font-size: 14px;
   text-align: center;
 }
@@ -144,7 +144,7 @@
   height: 36px;
   line-height: 36px;
   text-align: center;
-  color: #1a1a1a;
+  color: #1A1A1A;
   font-size: 14px;
 }
 .nut-picker-roller-item-hidden {

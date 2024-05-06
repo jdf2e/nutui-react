@@ -162,7 +162,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-popover-text-color | Text color of options area | `$color-title` |
 | \--nutui-popover-content-background-color | The background color of the options area | `$white` |
 | \--nutui-popover-hover-background-color | The background color of the finger click menu option | `#fff` |
-| \--nutui-popover-hover-text-color | Text color for finger click menu options | `#1a1a1a` |
+| \--nutui-popover-hover-text-color | Text color for finger click menu options | `#1A1A1A` |
 | \--nutui-popover-border-color| Arrow colors for top, bottom, left and right | `$white` |
 | \--nutui-popover-divider-color | The bottom border color of the options area | `$color-border` |
 | \--nutui-popover-disable-color | Option Disabled Colors | `$color-text-disabled` |

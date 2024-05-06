@@ -17,7 +17,7 @@
 }
 .nut-input .nut-input-native {
   width: 100%;
-  color: #1a1a1a;
+  color: #1A1A1A;
   flex: 1;
   background-color: transparent;
   padding: 0;
@@ -28,12 +28,12 @@
   background-color: transparent;
 }
 .nut-input-disabled {
-  color: #bfbfbf !important;
+  color: #C2C4CC !important;
 }
 .nut-input-disabled input:disabled {
   background: none;
-  color: #bfbfbf;
+  color: #C2C4CC;
   cursor: not-allowed;
   opacity: 1;
-  -webkit-text-fill-color: #bfbfbf;
+  -webkit-text-fill-color: #C2C4CC;
 }

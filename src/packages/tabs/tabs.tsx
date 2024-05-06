@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
+import React, { FunctionComponent, useEffect, useRef } from 'react'
 import classNames from 'classnames'
 import { JoySmile } from '@nutui/icons-react'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -71,7 +71,6 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     finalValue: 0,
     onChange,
   })
-  const [contentStyle, setContentStyle] = useState({})
   const titleItemsRef = useRef<HTMLDivElement[]>([])
   const navRef = useRef<HTMLDivElement>(null)
   const scrollDirection = (
@@ -164,17 +163,22 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     color: activeType === 'smile' ? activeColor : '',
     background: activeType === 'line' ? activeColor : '',
   }
-  useEffect(() => {
+  const getContentStyle = () => {
     // eslint-disable-next-line eqeqeq
     let index = titles.current.findIndex((t) => t.value == value)
     index = index < 0 ? 0 : index
-    setContentStyle({
+    return {
       transform:
         direction === 'horizontal'
           ? `translate3d(${rtl ? '' : '-'}${index * 100}%, 0, 0)`
           : `translate3d( 0,-${index * 100}%, 0)`,
       transitionDuration: `${duration}ms`,
-    })
+    }
+  }
+  useEffect(() => {
+    // eslint-disable-next-line eqeqeq
+    let index = titles.current.findIndex((t) => t.value == value)
+    index = index < 0 ? 0 : index
     setTimeout(() => {
       scrollIntoView(index)
     })
@@ -236,7 +240,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
             })}
       </div>
       <div className={`${classPrefix}-content-wrap`}>
-        <div className={`${classPrefix}-content`} style={contentStyle}>
+        <div className={`${classPrefix}-content`} style={getContentStyle()}>
           {React.Children.map(children, (child, idx) => {
             if (!React.isValidElement(child)) {
               return null

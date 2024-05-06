@@ -5,7 +5,7 @@
   flex: 1;
   font-size: 16px;
   background-color: #ffffff;
-  color: #1a1a1a;
+  color: #1A1A1A;
   overflow: hidden;
   height: 100%;
 }
@@ -27,7 +27,7 @@
   text-align: center;
 }
 .nut-calendar-title {
-  color: #1a1a1a;
+  color: #1A1A1A;
   font-size: 18px;
   font-weight: 500;
   line-height: 50px;
@@ -49,10 +49,10 @@
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.06);
 }
 .nut-calendar-week-item:first-of-type {
-  color: #fa2c19;
+  color: #FF0F23;
 }
 .nut-calendar-week-item:last-of-type {
-  color: #fa2c19;
+  color: #FF0F23;
 }
 .nut-calendar-content {
   flex: 1;
@@ -76,7 +76,7 @@
   left: 0;
   right: 0;
   font-size: 12px;
-  color: #595959;
+  color: #505259;
 }
 .nut-calendar-month {
   display: flex;
@@ -104,10 +104,10 @@
   margin-bottom: 4px;
 }
 .nut-calendar-day:nth-child(7n+0) {
-  color: #fa2c19;
+  color: #FF0F23;
 }
 .nut-calendar-day:nth-child(7n+1) {
-  color: #fa2c19;
+  color: #FF0F23;
 }
 .nut-calendar-day-info-curr {
   position: absolute;
@@ -134,7 +134,7 @@
   bottom: 5px;
 }
 .nut-calendar-day-active {
-  background-color: #fa2c19;
+  background-color: #FF0F23;
   color: #ffffff !important;
   border-radius: 4px;
 }
@@ -152,21 +152,21 @@
   color: #ffffff;
 }
 .nut-calendar-day-disabled {
-  color: #bfbfbf !important;
+  color: #C2C4CC !important;
 }
 .nut-calendar-day-disabled .nut-calendar-day-info-curr {
   display: none;
 }
 .nut-calendar-day-choose-disabled {
   background-color: rgba(191, 191, 191, 0.09);
-  color: #bfbfbf !important;
+  color: #C2C4CC !important;
 }
 .nut-calendar-day-choose-disabled .nut-calendar-day-info-curr {
   display: none;
 }
 .nut-calendar-day-choose {
-  background-color: #ffeae8;
-  color: #fa2c19;
+  background-color: #FFEBF1;
+  color: #FF0F23;
 }
 .nut-calendar-footer {
   display: flex;
@@ -178,7 +178,7 @@
   height: 44px;
   margin: 10px 18px;
   border-radius: 22px;
-  background: linear-gradient(135deg, #f53d4d 0%, #fa2c19 100%);
+  background: linear-gradient(135deg, #FF0F23 0%, #FF0F23 100%);
   color: #ffffff;
   text-align: center;
   line-height: 44px;

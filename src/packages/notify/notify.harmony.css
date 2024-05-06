@@ -70,7 +70,7 @@
   bottom: 0;
 }
 .nut-notify-base {
-  background: linear-gradient(135deg, #f53d4d 0%, #fa2c19 100%);
+  background: linear-gradient(135deg, #FF0F23 0%, #FF0F23 100%);
 }
 .nut-notify-primary {
   background: #1988fa;
@@ -79,7 +79,7 @@
   background: #00bc14;
 }
 .nut-notify-danger {
-  background: #fa2c19;
+  background: #FF0F23;
 }
 .nut-notify-warning {
   background: rgb(255, 158, 13);

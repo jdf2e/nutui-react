@@ -197,7 +197,7 @@ const SwipeDemo = () => {
             >
               <>
                 {divNode(translated.alwaysbuy, {
-                  background: '#F8F8F8',
+                  background: '#F7F8FC',
                   color: '#1A1A1A',
                 })}
                 {divNode(translated.collect, {
@@ -209,7 +209,7 @@ const SwipeDemo = () => {
                   color: '#FFF',
                 })}
                 {divNode(translated.del, {
-                  background: '#FA2C19',
+                  background: '#FF0F23',
                   color: '#FFF',
                 })}
               </>
@@ -235,7 +235,7 @@ const SwipeDemo = () => {
                 {divNode(
                   translated.alwaysbuy,
                   {
-                    background: '#F8F8F8',
+                    background: '#F7F8FC',
                     color: '#1A1A1A',
                   },
                   false
@@ -259,7 +259,7 @@ const SwipeDemo = () => {
                 {divNode(
                   translated.del,
                   {
-                    background: '#FA2C19',
+                    background: '#FF0F23',
                     color: '#FFF',
                   },
                   false

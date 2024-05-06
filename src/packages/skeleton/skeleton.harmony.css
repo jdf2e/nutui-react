@@ -10,12 +10,12 @@
 }
 .nut-skeleton-content .nut-avatar {
   margin-right: 20px;
-  background: #f6f6f6 !important;
+  background: #F7F8FC !important;
 }
 .nut-skeleton-content .nut-skeleton-block {
   width: 100%;
   height: 15px;
-  background: #f6f6f6;
+  background: #F7F8FC;
   margin-top: 10px;
   border-radius: 0;
 }
@@ -27,7 +27,7 @@
 .nut-skeleton-content-line .nut-skeleton-title {
   width: 30%;
   height: 15px;
-  background: #f6f6f6;
+  background: #F7F8FC;
 }
 .nut-skeleton-content-line .nut-skeleton-block:last-child {
   width: 70%;

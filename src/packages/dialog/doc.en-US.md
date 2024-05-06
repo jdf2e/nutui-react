@@ -91,9 +91,7 @@ import { Dialog } from '@nutui/nutui-react'
 | content | The content of the dialog box is suitable for function calls | `ReactNode` | `-` |
 | footer | Customize the notes, but it will not be displayed in NULL | `ReactNode` | `-` |
 | confirmText | Confirm the button copywriting | `ReactNode` | `Sure` |
-| confirmButtonProps | Confirm button props | [`ButtonProps`](https://nutui.jd.com/h5/react/2x/#/zh-CN/component/button) | `-` |
 | cancelText | Cancellation of buttons | `ReactNode` | `Cancel` |
-| cancelButtonProps | Cancel button props | [`ButtonProps`](https://nutui.jd.com/h5/react/2x/#/zh-CN/component/button) | `-` |
 | overlay | Whether to show a overlay | `boolean` | `true` |
 | hideConfirmButton | Whether to hide the OK button | `boolean` | `false` |
 | hideCancelButton | Whether to hide the cancel button | `boolean` | `false` |
@@ -166,7 +164,7 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-dialog-vertical-footer-ok-margin-top | dialog vertical footer confirm button margin top | `5px` |
 | \--nutui-dialog-close-width | dialog close the width of the button | `18px` |
 | \--nutui-dialog-close-height | dialog close the coloe of the button | `18px` |
-| \--nutui-dialog-close-color | dialog close button color | `#8c8c8c` |
+| \--nutui-dialog-close-color | dialog close button color | `#888B94` |
 | \--nutui-dialog-close-top | dialog Closes the top value of the button | `16px` |
 | \--nutui-dialog-close-left | dialog Closes the left value of the button | `16px` |
 | \--nutui-dialog-close-right | dialog Closes the right value of the button | `16px` |

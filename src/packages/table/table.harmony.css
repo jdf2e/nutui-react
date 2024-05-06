@@ -7,7 +7,7 @@
   width: 100%;
   flex-direction: column;
   font-size: 14px;
-  color: #1a1a1a;
+  color: #1A1A1A;
   overflow-y: auto;
   overflow-x: hidden;
   position: relative;
@@ -19,7 +19,7 @@
 .nut-table-main {
   display: table;
   overflow-x: auto;
-  color: #1a1a1a;
+  color: #1A1A1A;
   background-color: #ffffff;
   table-layout: fixed;
   width: max-content;
@@ -27,13 +27,13 @@
   position: relative;
 }
 .nut-table-main-striped .nut-table-main-head-tr {
-  background-color: #f6f6f6;
+  background-color: #F7F8FC;
 }
 .nut-table-main-striped .nut-table-main-body-tr:nth-child(odd) {
   background-color: #ffffff;
 }
 .nut-table-main-striped .nut-table-main-body-tr:nth-child(even) {
-  background-color: #f6f6f6;
+  background-color: #F7F8FC;
 }
 .nut-table-main-head, .nut-table-main-body {
   background: inherit;
@@ -146,7 +146,7 @@
   border-right: none;
 }
 .nut-table-summary {
-  color: #1a1a1a;
+  color: #1A1A1A;
   background-color: #ffffff;
   display: flex;
   align-items: center;

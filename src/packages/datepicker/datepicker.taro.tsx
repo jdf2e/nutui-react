@@ -215,14 +215,29 @@ export const DatePicker: FunctionComponent<
     }
   }
 
-  const compareDateChange = (currentDate: number, newDate: Date | null) => {
+  const compareDateChange = (
+    currentDate: number,
+    newDate: Date | null,
+    selectedOptions: PickerOption[],
+    index: number
+  ) => {
     const isEqual = new Date(currentDate)?.getTime() === newDate?.getTime()
-    newDate &&
-      isDate(newDate) &&
-      !isEqual &&
-      setSelectedDate(formatValue(newDate as Date))
+    if (newDate && isDate(newDate)) {
+      if (!isEqual) {
+        setSelectedDate(formatValue(newDate as Date))
+      }
+      props.onChange &&
+        props.onChange(
+          selectedOptions,
+          [
+            String(newDate.getFullYear()),
+            String(newDate.getMonth() + 1),
+            String(newDate.getDate()),
+          ],
+          index
+        )
+    }
   }
-
   const handlePickerChange = (
     selectedOptions: PickerOption[],
     selectedValue: (number | string)[],
@@ -275,7 +290,7 @@ export const DatePicker: FunctionComponent<
         date = new Date(year, month, day, Number(formatDate[3]))
       }
 
-      compareDateChange(selectedDate, date)
+      compareDateChange(selectedDate, date, selectedOptions, index)
     } else {
       // 'hour-minutes' 'time'
       const [hour, minute, seconds] = selectedValue
@@ -292,9 +307,8 @@ export const DatePicker: FunctionComponent<
         Number(minute),
         rangeType === 'time' ? Number(seconds) : 0
       )
-      compareDateChange(selectedDate, date)
+      compareDateChange(selectedDate, date, selectedOptions, index)
     }
-    props.onChange && props.onChange(selectedOptions, selectedValue, index)
   }
 
   const formatOption = (type: string, value: string | number) => {

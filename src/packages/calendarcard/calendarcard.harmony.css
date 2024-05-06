@@ -3,7 +3,7 @@
   border-radius: 12px;
   overflow: hidden;
   font-size: 16px;
-  color: #1a1a1a;
+  color: #1A1A1A;
 }
 .nut-calendarcard-header {
   display: flex;
@@ -53,17 +53,17 @@
   line-height: 12px;
 }
 .nut-calendarcard-day.active {
-  background-color: #fa2c19;
+  background-color: #FF0F23;
   color: #ffffff !important;
   border-radius: 4px;
 }
 .nut-calendarcard-day.start {
-  background-color: #fa2c19;
+  background-color: #FF0F23;
   color: #ffffff !important;
   border-radius: 4px;
 }
 .nut-calendarcard-day.end {
-  background-color: #fa2c19;
+  background-color: #FF0F23;
   color: #ffffff !important;
   border-radius: 4px;
 }
@@ -78,25 +78,25 @@
   border-bottom-right-radius: 4px;
 }
 .nut-calendarcard-day.mid {
-  background-color: #ffeae8;
-  color: #fa2c19;
+  background-color: #FFEBF1;
+  color: #FF0F23;
 }
 .nut-calendarcard-day.weekend {
-  color: #fa2c19;
+  color: #FF0F23;
 }
 .nut-calendarcard-day .nut-calendar-day-info {
   color: #ffffff;
 }
 .nut-calendarcard-day.prev {
-  color: #bfbfbf;
+  color: #C2C4CC;
   cursor: not-allowed;
 }
 .nut-calendarcard-day.next {
-  color: #bfbfbf;
+  color: #C2C4CC;
   cursor: not-allowed;
 }
 .nut-calendarcard-day.disabled {
-  color: #bfbfbf;
+  color: #C2C4CC;
   cursor: not-allowed;
 }
 

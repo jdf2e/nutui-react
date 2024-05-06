@@ -14,14 +14,14 @@
   animation: nut-loading-rotation 1s infinite linear;
 }
 .nut-loading .nut-loading-icon-box .nut-loading-icon {
-  color: #8c8c8c;
+  color: #888B94;
   width: 12px;
   height: 12px;
   font-size: 12px;
 }
 .nut-loading .nut-loading-text {
   padding: 8px;
-  color: #8c8c8c;
+  color: #888B94;
   font-size: 12px;
 }
 

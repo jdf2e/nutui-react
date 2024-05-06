@@ -5,10 +5,10 @@
   align-items: center;
   height: 44px;
   box-sizing: border-box;
-  background: #f6f6f6;
+  background: #F7F8FC;
   box-shadow: 0px;
   font-size: 14px;
-  color: #1a1a1a;
+  color: #1A1A1A;
   margin-bottom: 20px;
   overflow: hidden;
 }
@@ -35,13 +35,13 @@
   justify-content: center;
   font-size: 18px;
   font-weight: 500;
-  color: #1a1a1a;
+  color: #1A1A1A;
 }
 .nut-navbar-title .nut-tabs-titles {
   background: transparent;
 }
 .nut-navbar-title .nut-tabs-titles-item-text {
-  color: #1a1a1a;
+  color: #1A1A1A;
 }
 .nut-navbar-title .nut-tabpane {
   display: none;

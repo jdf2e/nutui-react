@@ -1,7 +1,7 @@
 .nut-pagination {
   display: flex;
   font-size: 14px;
-  color: #fa2c19;
+  color: #FF0F23;
 }
 
 /*.test-border {*/
@@ -28,7 +28,7 @@
   width: 124px;
   align-items: center;
   justify-content: center;
-  color: #fa2c19;
+  color: #FF0F23;
   font-size: 14px;
   text-align: center;
 }
@@ -42,7 +42,7 @@
   align-items: center;
   justify-content: center;
   font-size: 14px;
-  color: #fa2c19;
+  color: #FF0F23;
   background: #ffffff;
   border-radius: 2px;
   border: 1px solid rgba(0, 0, 0, 0.06);
@@ -74,7 +74,7 @@
   justify-content: center;
   background: #ffffff;
   font-size: 14px;
-  color: #fa2c19;
+  color: #FF0F23;
   border-radius: 2px;
   border: 1px solid rgba(0, 0, 0, 0.06);
   cursor: pointer;
@@ -99,11 +99,11 @@
 .nut-pagination .active {
   color: #ffffff;
   border-width: 0px;
-  background: linear-gradient(135deg, #f53d4d 0%, #fa2c19 100%);
+  background: linear-gradient(135deg, #FF0F23 0%, #FF0F23 100%);
 }
 
 .nut-pagination .disabled {
-  color: #bfbfbf;
+  color: #C2C4CC;
   background-color: #f7f8fa;
   cursor: not-allowed;
 }

@@ -40,7 +40,7 @@
   transform: scaleY(0.5);
 }
 .nut-collapse-item-title {
-  color: #1a1a1a;
+  color: #1A1A1A;
   display: flex;
   align-items: center;
 }
@@ -52,13 +52,13 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: #595959;
+  color: #505259;
 }
 .nut-collapse-item-icon-box {
   display: flex;
   width: 24px;
   position: relative;
-  color: #595959;
+  color: #505259;
 }
 .nut-collapse-item-icon {
   display: flex;
@@ -71,25 +71,25 @@
   transition: transform 0.3s;
 }
 .nut-collapse-item-header.disabled {
-  color: #bfbfbf;
+  color: #C2C4CC;
 }
 .nut-collapse-item-header.disabled .nut-collapse-item-title {
-  color: #bfbfbf;
+  color: #C2C4CC;
 }
 .nut-collapse-item-header.disabled .nut-collapse-item-icon {
-  color: #bfbfbf;
+  color: #C2C4CC;
 }
 .nut-collapse-item-content {
   overflow: hidden;
   display: block;
-  color: #595959;
+  color: #505259;
   font-size: 14px;
   line-height: 1.5;
   background-color: #ffffff;
   transition: all 0.3s linear;
 }
 .nut-collapse-item-content-text {
-  color: #595959;
+  color: #505259;
   padding: 12px 26px;
 }
 
