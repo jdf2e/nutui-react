@@ -5,7 +5,7 @@ import './index.scss'
 import { View, Image, ScrollView } from '@tarojs/components'
 
 const navs = pkg.nav
-console.log(navs)
+// console.log(navs)
 
 const Index = () => {
   const gotoNext = (name: string, enName: string) => {
