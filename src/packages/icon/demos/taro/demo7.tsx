@@ -1,16 +1,13 @@
 import React, { useState } from 'react'
 import { IconFontConfig, IconFont } from '@nutui/icons-react-taro'
-import { Cell } from '@/packages/nutui.react.taro'
+import { Cell, Toast } from '@/packages/nutui.react.taro'
 import { camelCase } from '@/utils/camel-case'
 
 const Demo7 = () => {
-  const generateCopyText = (name: string) => {
-    return `<${camelCase(name, { pascalCase: true })} />`
-  }
   const generateAMCopyText = (icon: any) => {
     return `<${camelCase(icon.name, {
       pascalCase: true,
-    })} className='${`nut-icon-${icon['animation-name']}  nut-icon-${icon['animation-time']}`}' />`
+    })} className='${`nut-icon-${icon['animation-name']} nut-icon-${icon['animation-time']}`}' />`
   }
   const copyTag = (text: string) => {
     const input = document.createElement('input')
@@ -23,20 +20,13 @@ const Demo7 = () => {
     document.body.removeChild(input)
   }
   const [state, setState] = useState({
-    msg: '',
-    type: 'text',
-    cover: false,
+    content: '',
     visible: false,
-    duration: 2,
-    closeOnOverlayClick: false,
-    title: '',
-    bottom: '',
-    icon: '',
-    center: true,
   })
 
   return (
     <>
+      <Toast visible={state.visible} content={state.content} type="text" />
       {(IconFontConfig as any).style.map((item: any) => {
         return (
           <Cell.Group key={item.name} title={item.name}>
@@ -58,7 +48,7 @@ const Demo7 = () => {
                         setState({
                           ...state,
                           visible: true,
-                          msg: generateCopyText(icon),
+                          content: generateAMCopyText(icon),
                         })
                       }}
                       style={{
@@ -73,7 +63,7 @@ const Demo7 = () => {
                     >
                       <IconFont
                         name={icon.name}
-                        className={`nut-icon-${icon['animation-name']}  nut-icon-${icon['animation-time']}`}
+                        className={`nut-icon-${icon['animation-name']} nut-icon-${icon['animation-time']}`}
                       />
                     </li>
                   )
