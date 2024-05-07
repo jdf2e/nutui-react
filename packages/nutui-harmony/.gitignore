@@ -14,3 +14,5 @@
 /hvigor
 build-profile.json5
 oh-package-lock.json5
+packages/nutui-harmony/build-profile.json5
+packages/nutui-harmony/hvigor/hvigor-wrapper.js
