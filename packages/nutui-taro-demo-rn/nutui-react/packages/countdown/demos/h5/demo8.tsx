@@ -34,13 +34,27 @@ const Demo8 = () => {
     <Cell>
       <span>
         <CountDown endTime={stateRef.current.endTime} onUpdate={onUpdate}>
-          <div style={{ display: 'flex', alignItems: 'center' }}>
-            <div style={partItemSymbolStyle}>{resetTime.d}天</div>
-            <div style={partItemStyle}>{resetTime.h}</div>
-            <span style={partItemSymbolStyle}>:</span>
-            <div style={partItemStyle}>{resetTime.m}</div>
-            <span style={partItemSymbolStyle}>:</span>
-            <div style={partItemStyle}>{resetTime.s}</div>
+          <div
+            style={{ display: 'flex', alignItems: 'center' }}
+          >
+            <div style={partItemSymbolStyle}>
+              {resetTime.d}天
+            </div>
+            <div style={partItemStyle}>
+              {resetTime.h}
+            </div>
+            <span style={partItemSymbolStyle}>
+              :
+            </span>
+            <div style={partItemStyle}>
+              {resetTime.m}
+            </div>
+            <span style={partItemSymbolStyle}>
+              :
+            </span>
+            <div style={partItemStyle}>
+              {resetTime.s}
+            </div>
           </div>
         </CountDown>
       </span>
