@@ -19,6 +19,20 @@ import { Uploader } from '@nutui/nutui-react';
 <CodeBlock src='h5/demo1.tsx'></CodeBlock>
 
 :::
+>
+> 在使用Uploader組件上傳文件時，可能會遇到響應文件信息中文亂碼的問題。這通常發生在客戶端與服務器端在處理文件編碼時不一致的情況下。為了避免這種問題，建議確保服務器端讀取文件的編碼格式與客戶端保持一致。
+
+```javascript
+// Server Demo
+app.post('/upload', upload.single('file'), (req, res) => {
+  const fileEncoding = req.headers['x-file-encoding'] || 'UTF-8';
+  const fileContent = iconv.decode(Buffer.from(JSON.stringify(req.file), 'binary'), fileEncoding);
+  res.json({ success: true, message: 'File uploaded successfully', data: JSON.parse(fileContent) });
+});
+// Client Demo
+<Uploader url={uploadUrl} headers={{'x-file-encoding': 'UTF-8'}} />
+
+```
 
 ### 基礎用法
 
