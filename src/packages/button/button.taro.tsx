@@ -1,8 +1,12 @@
 import React, { CSSProperties, useCallback } from 'react'
 import type { MouseEvent } from 'react'
 import classNames from 'classnames'
-import { ButtonProps as MiniProgramButtonProps } from '@tarojs/components'
-import { Loading } from '@nutui/icons-react-taro'
+import {
+  ButtonProps as MiniProgramButtonProps,
+  View,
+  Button as TaroButton,
+} from '@tarojs/components'
+// import { Loading } from '@nutui/icons-react-taro'
 import { getEnv } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -105,7 +109,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       // eslint-disable-next-line react/button-has-type
-      <button
+      <TaroButton
         {...rest}
         ref={ref}
         className={classNames(
@@ -125,21 +129,21 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         style={{ ...getStyle(), ...style }}
         onClick={(e) => handleClick(e)}
       >
-        <div className="nut-button-wrap">
-          {loading && <Loading className="nut-icon-loading" />}
+        <View className="nut-button-wrap">
+          {/* {loading && <Loading className='nut-icon-loading' />} */}
           {!loading && icon ? icon : null}
           {children && (
-            <div
+            <View
               className={`nut-button-children ${icon || loading ? 'nut-button-text' : ''}${
                 rightIcon ? ' nut-button-text right' : ''
               }`}
             >
               {children}
-            </div>
+            </View>
           )}
           {rightIcon || null}
-        </div>
-      </button>
+        </View>
+      </TaroButton>
     )
   }
 )
