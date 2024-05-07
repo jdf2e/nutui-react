@@ -1,3 +1,5 @@
+import Button from '@/packages/button/index.taro'
+export * from '@/packages/button/index.taro'
 import Cell from '@/packages/cell/index.taro'
 export * from '@/packages/cell/index.taro'
 import CellGroup from '@/packages/cellgroup/index.taro'
@@ -8,9 +10,10 @@ import Switch from '@/packages/switch/index.taro'
 export * from '@/packages/switch/index.taro'
 
 
+import '@/packages/button/button.harmony.css'
 import '@/packages/cell/cell.harmony.css'
 import '@/packages/cellgroup/cellgroup.harmony.css'
 import '@/packages/overlay/overlay.harmony.css'
 import '@/packages/switch/switch.harmony.css'
 
-export { Cell,CellGroup,Overlay,Switch };
+export { Button,Cell,CellGroup,Overlay,Switch };
