@@ -11,9 +11,7 @@ const Demo2 = () => {
     <>
       <ConfigProvider theme={darkTheme}>
         <Cell.Group>
-          <Cell>
-            <Rate defaultValue={3} />
-          </Cell>
+          <Cell>{/* <Rate defaultValue={3} /> */}</Cell>
           <Cell>
             <Button type="primary" block>
               提交

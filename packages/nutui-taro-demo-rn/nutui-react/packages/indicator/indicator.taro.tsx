@@ -1,7 +1,7 @@
+import "./indicator.harmony.css";
 import React, { FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
-import './indicator.harmony.css'
 
 export interface IndicatorProps {
   total: number

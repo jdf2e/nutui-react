@@ -34,7 +34,7 @@
     align-items: center;
     justify-content: center;
 
-    .nut-indicator-dot {
+    &-dot {
       margin: $indicator-dot-margin 0;
 
       &:first-child {
@@ -52,6 +52,7 @@
     }
   }
 }
+
 [dir='rtl'] .nut-indicator,
 .nut-rtl .nut-indicator {
   &-dot {

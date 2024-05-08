@@ -1,8 +1,9 @@
+import '../../../styles/demo.scss';
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-// import Header from '@/sites/components/header'
-import { View, ITouchEvent } from '@tarojs/components'
+import Header from '@/sites/components/header'
+import { View, ScrollView } from '@tarojs/components'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
@@ -32,20 +33,20 @@ const IndicatorDemo = () => {
 
   return (
     <>
-      {/* <Header /> */}
-      <View className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <View>{translated.basic}</View>
+      <Header />
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated.basic}</View>
         <Demo1 />
 
-        <View>{translated.customNode}</View>
+        <View className="h2">{translated.customNode}</View>
         <Demo2 />
 
-        <View>{translated.custom}</View>
-        {/* <Demo3 /> */}
+        <View className="h2">{translated.custom}</View>
+        <Demo3 />
 
-        <View>{translated.vertical}</View>
+        <View className="h2">{translated.vertical}</View>
         <Demo4 />
-      </View>
+      </ScrollView>
     </>
   )
 }

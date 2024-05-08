@@ -99,7 +99,7 @@
           "cName": "全局配置",
           "desc": "可以配置多语言等全局属性",
           "sort": 16,
-          "show": false,
+          "show": true,
           "exportEmpty": true,
           "taro": true,
           "author": "hanyuxinting"
@@ -604,7 +604,7 @@
           "cName": "评分",
           "desc": "用于快速的评级操作，或对评价进行展示。",
           "sort": 1,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "dsj"
         },
@@ -659,7 +659,7 @@
           "cName": "文本域",
           "desc": "文本框内输入或编辑文字，支持限制输入数量。",
           "sort": 2,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "VickyYe"
         },

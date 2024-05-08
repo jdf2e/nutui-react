@@ -1,7 +1,9 @@
+import '../../../styles/demo.scss';
 import React, { CSSProperties } from 'react'
 import Taro from '@tarojs/taro'
 import { Cell } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
+import { View, ScrollView } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
@@ -69,67 +71,68 @@ const RateDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.basic}</h2>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated.basic}</View>
         <Cell style={cellStyle}>
-          <Demo1 />
+          TODO：icon 问题需先解决
+          {/* <Demo1 /> */}
         </Cell>
-
-        <h2>{translated.control}</h2>
+        {/* 
+        <View className="h2">{translated.control}</View>
         <Cell style={cellStyle}>
           <Demo2 />
         </Cell>
 
-        <h2>{translated.halfStar}</h2>
+        <View className="h2">{translated.halfStar}</View>
         <Cell style={cellStyle}>
           <Demo3 />
         </Cell>
 
-        <h2>{translated.customIcon}</h2>
+        <View className="h2">{translated.customIcon}</View>
         <Cell style={cellStyle}>
           <Demo4 />
         </Cell>
 
-        <h2>{translated.customQuantity}</h2>
+        <View className="h2">{translated.customQuantity}</View>
         <Cell style={cellStyle}>
           <Demo5 />
         </Cell>
 
-        <h2>{translated.minimumNumber}</h2>
+        <View className="h2">{translated.minimumNumber}</View>
         <Cell style={cellStyle}>
           <Demo6 />
         </Cell>
 
-        <h2>{translated.customColor}</h2>
+        <View className="h2">{translated.customColor}</View>
         <Cell style={cellStyle}>
           <Demo7 />
         </Cell>
 
-        <h2>{translated.disabled}</h2>
+        <View className="h2">{translated.disabled}</View>
         <Cell style={cellStyle}>
           <Demo8 />
         </Cell>
 
-        <h2>{translated.readOnly}</h2>
+        <View className="h2">{translated.readOnly}</View>
         <Cell style={cellStyle}>
           <Demo9 />
         </Cell>
 
-        <h2>{translated.event}</h2>
+        <View className="h2">{translated.event}</View>
         <Cell style={cellStyle}>
           <Demo10 />
         </Cell>
 
-        <h2>{translated.touchable}</h2>
+        <View className="h2">{translated.touchable}</View>
         <Cell style={cellStyle}>
           <Demo11 />
         </Cell>
 
-        <h2>{translated.touchend}</h2>
+        <View className="h2">{translated.touchend}</View>
         <Cell style={cellStyle}>
           <Demo12 />
-        </Cell>
-      </div>
+        </Cell> */}
+      </ScrollView>
     </>
   )
 }

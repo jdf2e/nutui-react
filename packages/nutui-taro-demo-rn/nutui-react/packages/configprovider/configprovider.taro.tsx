@@ -1,7 +1,9 @@
+import "./configprovider.harmony.css";
 import React, { FunctionComponent, createContext, useContext } from 'react'
 import classNames from 'classnames'
 import kebabCase from 'lodash.kebabcase'
 import isequal from 'lodash.isequal'
+import { View } from '@tarojs/components'
 import useMemo from '@/utils/use-memo'
 import { BasicComponent } from '@/utils/typings'
 import { BaseLang } from '@/locales/base'
@@ -72,7 +74,6 @@ export const ConfigProvider: FunctionComponent<
     (prev, next) =>
       prev.some((prevTheme, index) => {
         const nextTheme = next[index]
-
         return !isequal(prevTheme, nextTheme)
       })
   ) as ConfigProviderProps
@@ -83,7 +84,7 @@ export const ConfigProvider: FunctionComponent<
 
   return (
     <ConfigContext.Provider value={mergedConfig}>
-      <div
+      <View
         className={classNames(classPrefix, className, `nut-${direction}`)}
         style={{
           ...cssVarStyle,
@@ -92,7 +93,7 @@ export const ConfigProvider: FunctionComponent<
         }}
       >
         {children}
-      </div>
+      </View>
     </ConfigContext.Provider>
   )
 }
