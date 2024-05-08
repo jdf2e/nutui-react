@@ -241,7 +241,8 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     setActive(page + 1)
     props.onChange?.(page + 1)
   }
-  const onCloseInner = () => {
+  const onCloseInner = (e: any) => {
+    e.stopPropagation()
     setShowPop(false)
     setActive(innerNo)
     scaleNow()
@@ -251,10 +252,10 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
       scale: 1,
     })
   }
-  const closeOnImg = () => {
+  const closeOnImg = (e: any) => {
     // 点击内容区域的图片是否可以关闭弹层（视频区域由于nut-video做了限制，无法关闭弹层）
     if (closeOnContentClick) {
-      onCloseInner()
+      onCloseInner(e)
     }
   }
 
