@@ -1,3 +1,4 @@
+import "./countdown.harmony.css";
 import React, {
   useState,
   useRef,
@@ -6,11 +7,11 @@ import React, {
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
+import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { padZero } from '@/utils/pad-zero'
-import Taro from '@tarojs/taro'
 
 export interface CountDownProps extends BasicComponent {
   paused: boolean
@@ -94,9 +95,13 @@ const InternalCountDown: ForwardRefRenderFunction<
       stateRef.current.handleEndTime = Date.now() + Number(remainingTime)
     } else {
       stateRef.current.handleEndTime = endTime
-      if(Taro.getEnv() !== 'RN') {
+      if (
+        !['RN', Taro.ENV_TYPE.HARMONYHYBRID, Taro.ENV_TYPE.HARMONY].includes(
+          Taro.getEnv()
+        )
+      ) {
         stateRef.current.diffTime = Date.now() - getTimeStamp(startTime) // 时间差
-      }   
+      }
     }
     if (!stateRef.current.counting) stateRef.current.counting = true
     tick()
@@ -296,11 +301,13 @@ const InternalCountDown: ForwardRefRenderFunction<
         <View
           className={`${classPrefix}-block`}
           // eslint-disable-next-line react/no-danger
-        // TODO:RN和鸿蒙暂时不支持dangerouslySetInnerHTML
-        //   dangerouslySetInnerHTML={{
-        //     __html: `${renderTime}`,
-        //   }}
-        >{renderTime}</View>
+          // TODO:RN和鸿蒙暂时不支持dangerouslySetInnerHTML
+          //   dangerouslySetInnerHTML={{
+          //     __html: `${renderTime}`,
+          //   }}
+        >
+          {renderTime}
+        </View>
       )}
     </View>
   )

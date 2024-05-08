@@ -19,8 +19,4 @@ import '@/packages/overlay/overlay.harmony.css'
 import '@/packages/switch/switch.harmony.css'
 import '@/packages/countdown/countdown.harmony.css'
 
-<<<<<<< HEAD
-export { Cell,CellGroup,Overlay,Switch,CountDown };
-=======
-export { Button,Cell,CellGroup,Overlay,Switch };
->>>>>>> dev-harmony
+export { Button,Cell,CellGroup,Overlay,Switch,CountDown };

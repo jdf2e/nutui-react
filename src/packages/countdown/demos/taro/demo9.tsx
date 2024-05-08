@@ -1,5 +1,12 @@
-import React, { CSSProperties, useRef } from 'react'
-import { Cell, CountDown } from '@nutui/nutui-react-taro'
+import React, { useRef } from 'react'
+import {
+  Cell,
+  CountDown,
+  Button,
+  Grid,
+  GridItem,
+} from '@nutui/nutui-react-taro'
+import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 
 interface countdownRefState {
@@ -22,19 +29,6 @@ const Demo9 = () => {
     countDownRef.current && countDownRef.current.reset()
   }
 
-  const buttonStyles: CSSProperties = {
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgb(232, 34, 14)',
-    color: '#fff',
-    borderRadius: 16,
-    fontSize: 14,
-    fontWeight: 700,
-    width: 64,
-    height: 32,
-  }
   return (
     <>
       <Cell>
@@ -45,46 +39,48 @@ const Demo9 = () => {
           ref={countDownRef}
         />
       </Cell>
-      <View
-        style={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-around',
-          paddingTop: '16px',
-          paddingBottom: 16,
-          marginBottom: 20,
-          backgroundColor: '#fff',
-          width: '100%',
-        }}
-      >
-        <View onClick={start} style={buttonStyles}>
-          开始
-        </View>
-        <View onClick={pause} style={buttonStyles}>
-          暂停
-        </View>
-        <View onClick={reset} style={buttonStyles}>
-          重置
-        </View>
-      </View>
       {/* TODO：gird未适配，适配后替换 */}
-      {/* <Grid columns='3' style={{ marginBottom: '5px' }}>
-        <GridItem>
-          <Button type='primary' onClick={start}>
+      {Taro.getEnv() === 'RN' ? (
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-around',
+            paddingTop: 16,
+            paddingBottom: 16,
+            marginBottom: 20,
+            backgroundColor: '#fff',
+          }}
+        >
+          <Button type="primary" onClick={start}>
             开始
           </Button>
-        </GridItem>
-        <GridItem>
-          <Button type='primary' onClick={pause}>
+          <Button type="primary" onClick={pause}>
             暂停
           </Button>
-        </GridItem>
-        <GridItem>
-          <Button type='primary' onClick={reset}>
+          <Button type="primary" onClick={reset}>
             重置
           </Button>
-        </GridItem>
-      </Grid> */}
+        </View>
+      ) : (
+        <Grid columns="3" style={{ marginBottom: '5px' }}>
+          <GridItem>
+            <Button type="primary" onClick={start}>
+              开始
+            </Button>
+          </GridItem>
+          <GridItem>
+            <Button type="primary" onClick={pause}>
+              暂停
+            </Button>
+          </GridItem>
+          <GridItem>
+            <Button type="primary" onClick={reset}>
+              重置
+            </Button>
+          </GridItem>
+        </Grid>
+      )}
     </>
   )
 }

@@ -5,7 +5,7 @@ import '../../demo.scss'
 
 const partItemStyle = {
   flexShrink: 0,
-  display: 'inline-flex',
+  display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   width: 20,
@@ -23,7 +23,6 @@ const partItemSymbolStyle = {
 }
 const Demo8 = () => {
   const onUpdate = (v: any) => {
-   
     setResetTime(v)
   }
   const [resetTime, setResetTime] = useState({
@@ -38,30 +37,24 @@ const Demo8 = () => {
 
   return (
     <Cell>
-        <CountDown endTime={stateRef.current.endTime} onUpdate={onUpdate}>
-          <View
-            style={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}
-          >
-            <View style={partItemSymbolStyle}>
-              <Text>{resetTime.d}天</Text>
-            </View>
-            <View style={partItemStyle}>
-              {resetTime.h}
-            </View>
-            <View style={partItemSymbolStyle}>
-              :
-            </View>
-            <View style={partItemStyle}>
-              {resetTime.m}
-            </View>
-            <View style={partItemSymbolStyle}>
-              :
-            </View>
-            <View style={partItemStyle}>
-              {resetTime.s}
-            </View>
+      <CountDown endTime={stateRef.current.endTime} onUpdate={onUpdate}>
+        <View
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+          }}
+        >
+          <View style={partItemSymbolStyle}>
+            <Text>{resetTime.d}天</Text>
           </View>
-        </CountDown>
+          <View style={partItemStyle}>{resetTime.h}</View>
+          <View style={partItemSymbolStyle}>:</View>
+          <View style={partItemStyle}>{resetTime.m}</View>
+          <View style={partItemSymbolStyle}>:</View>
+          <View style={partItemStyle}>{resetTime.s}</View>
+        </View>
+      </CountDown>
     </Cell>
   )
 }

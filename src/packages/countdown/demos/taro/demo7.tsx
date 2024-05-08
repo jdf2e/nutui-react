@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { Cell, CountDown } from '@nutui/nutui-react-taro'
-import { View } from '@tarojs/components'
+import { Cell, CountDown, Button } from '@nutui/nutui-react-taro'
 
 const Demo7 = () => {
   const stateRef = useRef({
@@ -31,27 +30,9 @@ const Demo7 = () => {
         onPaused={onpaused}
         onRestart={onrestart}
       />
-      {/* <Button type="primary" size="small" onClick={() => toggle()}>
+      <Button type="primary" size="small" onClick={() => toggle()}>
         {paused ? 'start' : 'stop'}
-      </Button> */}
-      <View
-        onClick={() => toggle()}
-        style={{
-          backgroundColor: 'rgb(232, 34, 14)',
-          color: '#fff',
-          borderRadius: 14,
-          fontSize: 12,
-          fontWeight: 700,
-          width: 50,
-          height: 28,
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'center',
-          alignItems: 'center',
-        }}
-      >
-        {paused ? 'start' : 'stop'}
-      </View>
+      </Button>
     </Cell>
   )
 }

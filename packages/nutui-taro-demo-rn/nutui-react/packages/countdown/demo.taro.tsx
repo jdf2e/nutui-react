@@ -1,6 +1,7 @@
+import '../../../styles/demo.scss';
 import React from 'react'
 import Taro from '@tarojs/taro'
-
+import { View, ScrollView } from '@tarojs/components'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import '@/packages/countdown/demo.scss'
@@ -13,8 +14,6 @@ import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
 import Demo9 from './demos/taro/demo9'
-import { View } from '@tarojs/components'
-import '../../../styles/demo.scss'
 
 const CountDownDemo = () => {
   const [translated] = useTranslate({
@@ -56,7 +55,7 @@ const CountDownDemo = () => {
   return (
     <>
       <Header />
-      <View
+      <ScrollView
         className={`demo demo-countdown ${
           Taro.getEnv() === 'WEB' ? 'web' : ''
         }`}
@@ -65,7 +64,7 @@ const CountDownDemo = () => {
         <Demo1 />
         <View className='h2'>{translated.remainingTime}</View>
         <Demo2 />
-         <View className='h2'>{translated.format}</View>
+        <View className='h2'>{translated.format}</View>
         <Demo3 />
         <View className='h2'>{translated.millisecond}</View>
         <Demo4 />
@@ -79,7 +78,7 @@ const CountDownDemo = () => {
         <Demo8 />
         <View className='h2'>{translated.handleControl}</View>
         <Demo9 />
-      </View>
+      </ScrollView>
     </>
   )
 }

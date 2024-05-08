@@ -5,22 +5,18 @@ import '../../demo.scss'
 
 const partItemStyle = {
   flexShrink: 0,
-  display: 'inline-flex',
+  display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
   width: 20,
   height: 25,
   backgroundColor: '#e8220e',
   color: '#fff',
-  fontSize: 14,
+  fontSize: '14px',
   borderRadius: 6,
   overflow: 'hidden',
 }
 const partItemSymbolStyle = {
-  display: 'flex',
-  flexDirection: 'row',
-  justifyContent: 'center',
-  alignItems: 'center',
   marginLeft: 5,
   marginRight: 5,
   whiteSpace: 'nowrap',
