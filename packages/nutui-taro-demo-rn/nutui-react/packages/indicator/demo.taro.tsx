@@ -41,7 +41,7 @@ const IndicatorDemo = () => {
         <Demo2 />
 
         <View>{translated.custom}</View>
-        <Demo3 />
+        {/* <Demo3 /> */}
 
         <View>{translated.vertical}</View>
         <Demo4 />

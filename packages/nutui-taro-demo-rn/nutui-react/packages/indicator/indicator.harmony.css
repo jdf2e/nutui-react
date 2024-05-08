@@ -37,25 +37,19 @@
   justify-content: center;
 }
 
-.nut-indicator-vertical .nut-indicator-dot {
-  display: inline-block;
-  vertical-align: middle;
-  width: 4px;
-  height: 4px;
-  border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.06);
-  margin: 0 2px;
+.nut-indicator-vertical-dot {
+  margin: 2px 0;
 }
 
-.nut-indicator-vertical .nut-indicator-dot:first-child {
+.nut-indicator-vertical-dot:first-child {
   margin-top: 0px;
 }
 
-.nut-indicator-vertical .nut-indicator-dot:last-child {
+.nut-indicator-vertical-dot:last-child {
   margin-bottom: 0px;
 }
 
-.nut-indicator-vertical .nut-indicator-active {
+.nut-indicator-vertical-active {
   width: 4px;
   height: 8px;
 }
