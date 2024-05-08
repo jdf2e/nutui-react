@@ -1,3 +1,4 @@
+import '../../../styles/demo.scss';
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
@@ -7,8 +8,8 @@ import { Cell } from '@/packages/nutui.react.taro'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
-import Demo4 from './demos/taro/demo4'
-import Demo5 from './demos/taro/demo5'
+// import Demo4 from './demos/taro/demo4'
+// import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
@@ -58,46 +59,46 @@ const ButtonDemo = () => {
     <>
       <Header />
       <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <View>设置 open-type </View>
+        <View className='h2'>设置 open-type </View>
         <Cell style={{ flexWrap: 'wrap' }}>
           <Demo1 />
         </Cell>
-        <View>{translated.ce5c5446}</View>
+        <View className='h2'>{translated.ce5c5446}</View>
         <Cell style={{ flexWrap: 'wrap' }}>
           <Demo2 />
         </Cell>
-        <View>{translated.e51e4582}</View>
+        <View className='h2'>{translated.e51e4582}</View>
         <Cell style={{ flexWrap: 'wrap' }}>
           <Demo3 />
         </Cell>
-        {/* <View>{translated['0aaad622']}</View>
+        {/* <View className='h2'>{translated['0aaad622']}</View>
         <Cell style={{ flexWrap: 'wrap' }}>
           <Demo4 />
-        </Cell>
-        <View>{translated['7db1a8b2']}</View>
+        </Cell> */}
+        {/* <View className='h2'>{translated['7db1a8b2']}</View>
         <Cell style={{ flexWrap: 'wrap' }}>
           <Demo5 />
         </Cell> */}
-        <View>{translated.ce5c5447}</View>
+        <View className='h2'>{translated.ce5c5447}</View>
         <Cell style={{ flexWrap: 'wrap' }}>
           <Demo6 />
         </Cell>
-        <View>{translated.a52bef0c}</View>
+        <View className='h2'>{translated.a52bef0c}</View>
         <Cell style={{ flexWrap: 'wrap' }}>
           <Demo7 />
         </Cell>
-        <View>{translated['0aaad620']}</View>
+        <View className='h2'>{translated['0aaad620']}</View>
         <Cell style={{ flexWrap: 'wrap' }}>
           <Demo8 />
         </Cell>
-        <View>{translated.c9e6df49}</View>
+        <View className='h2'>{translated.c9e6df49}</View>
         <Cell>
           <Demo9 />
         </Cell>
-        <View>{translated['781b07fd']}</View>
+        <View className='h2'>{translated['781b07fd']}</View>
         <Cell style={{ flexWrap: 'wrap' }}>
           <Demo10 />
-        </Cell> 
+        </Cell>
       </ScrollView>
     </>
   )

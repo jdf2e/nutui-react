@@ -1,3 +1,12 @@
+# v2.6.3
+`2024-04-30`
+
+
+* :bug: fix(tabs): 修复特殊场景下 value 设置未生效问题 (#2211) @eiinu
+:art: style(Tabs.Tabpane): 给Tabs.Tabpane新增内边距样式变量，使得使用者可以自由控制该内边距。 (#2210) @jianhuagao
+* 🏡 chore(icon): update demo (#2214) @eiinu
+
+
 # v2.6.2
 `2024-04-26`
 
@@ -8,7 +17,7 @@
 :art: style: jmapp style 语义化 (#2052) @zhehu1
 :art: style(CellGroup): 给`CellGroup`组件新增外边距样式变量，使得使用者可以自由控制该外边距。 (#2189) @Kurisu
 :art: style(badge): jdesign badge 样式 (#2164) @zhehu1
-* 📖 docs(tag):修复demo描述错误 (#2204) @Jianhua
+* 📖 docs(tag):修复demo描述错误 (#2204) @jianhuagao
 
 
 # v2.6.1

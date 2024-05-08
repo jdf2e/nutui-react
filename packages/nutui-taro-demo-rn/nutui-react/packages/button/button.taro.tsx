@@ -1,3 +1,4 @@
+import "./button.harmony.css";
 import React, { CSSProperties, useCallback } from 'react'
 import type { MouseEvent } from 'react'
 import classNames from 'classnames'
@@ -102,7 +103,6 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       ;(rest as any).type = rest.formType
     }
     return (
-        // <View>111</View>
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
       // eslint-disable-next-line react/button-has-type
@@ -127,7 +127,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
         onClick={(e) => handleClick(e)}
       >
         <View className='nut-button-wrap'>
-          {loading && <View className='nut-icon-loading' >111</View>}
+          {/* {loading && <Loading className='nut-icon-loading' />} */}
           {!loading && icon ? icon : null}
           {children && (
             <View

@@ -19,7 +19,7 @@
   user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  color: #1a1a1a;
+  color: #1A1A1A;
   background: transparent;
 }
 .nut-button-text {
@@ -52,8 +52,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* RN不支持unset */
-  /* background: unset; */ 
+  /* RN不支持 */
+  /* background: unset; */
 }
 .nut-button-children {
   display: flex;
@@ -68,28 +68,28 @@
 }
 .nut-button-default {
   padding: 0px 16px;
-  border: 1px solid #595959;
+  border: 1px solid #505259;
 }
 .nut-button-default.nut-button-disabled {
-  color: #8c8c8c;
+  color: #888B94;
   background: transparent;
 }
 .nut-button-default.nut-button-none {
   background: transparent;
 }
 .nut-button-default.nut-button-none.nut-button-disabled {
-  color: #8c8c8c;
+  color: #888B94;
 }
 .nut-button-default.nut-button-outline, .nut-button-default.nut-button-dashed {
   background: transparent;
 }
 .nut-button-default.nut-button-outline.nut-button-disabled {
-  color: #8c8c8c;
-  border-color: #bfbfbf;
+  color: #888B94;
+  border-color: #C2C4CC;
 }
 .nut-button-default.nut-button-dashed.nut-button-disabled {
-  color: #8c8c8c;
-  border-color: #bfbfbf;
+  color: #888B94;
+  border-color: #C2C4CC;
 }
 .nut-button-normal {
   padding: 0px 16px;
@@ -110,40 +110,39 @@
   font-size: 12px;
 }
 .nut-button-primary {
-  color: #ffffff;
-  /* RN不支持 */
-  /* background: linear-gradient(135deg, #f53d4d 0%, #fa2c19 100%); */
+  color: red;
+  background: yellow;
   background-origin: border-box;
   border: 1px solid transparent;
 }
 .nut-button-primary.nut-button-disabled {
-  background: #fd9d94;
-  border-color: #fd9d94;
+  background: #FFADBE;
+  border-color: #FFADBE;
 }
 .nut-button-primary.nut-button-none {
   background: transparent;
-  color: #fa2c19;
+  color: #FF0F23;
 }
 .nut-button-primary.nut-button-none.nut-button-disabled {
-  color: #fd9d94;
+  color: #FFADBE;
 }
 .nut-button-primary.nut-button-outline {
   background: transparent;
-  color: #fa2c19;
-  border: 1px solid #fa2c19;
+  color: #FF0F23;
+  border: 1px solid #FF0F23;
 }
 .nut-button-primary.nut-button-outline.nut-button-disabled {
-  color: #fd9d94;
-  border-color: #fd9d94;
+  color: #FFADBE;
+  border-color: #FFADBE;
 }
 .nut-button-primary.nut-button-dashed {
   background: transparent;
-  color: #fa2c19;
-  border: 1px dashed #fa2c19;
+  color: #FF0F23;
+  border: 1px dashed #FF0F23;
 }
 .nut-button-primary.nut-button-dashed.nut-button-disabled {
-  color: #fd9d94;
-  border-color: #fd9d94;
+  color: #FFADBE;
+  border-color: #FFADBE;
 }
 .nut-button-success {
   color: #ffffff;
@@ -166,19 +165,19 @@
   background: transparent;
 }
 .nut-button-success.nut-button-outline.nut-button-disabled {
-  color: #fd9d94;
-  border-color: #fd9d94;
+  color: #FFADBE;
+  border-color: #FFADBE;
 }
 .nut-button-success.nut-button-dashed.nut-button-disabled {
-  color: #fd9d94;
-  border-color: #fd9d94;
+  color: #FFADBE;
+  border-color: #FFADBE;
 }
 .nut-button-success.nut-button-none {
   color: #00bc14;
 }
 .nut-button-info {
   color: #ffffff;
-   /* RN不支持 */
+  /* RN不支持 */
   /* background: linear-gradient(315deg, rgb(73, 143, 242) 0%, rgb(73, 101, 242) 100%); */
   background-origin: border-box;
   border: 1px solid transparent;
@@ -198,46 +197,46 @@
   background: transparent;
 }
 .nut-button-info.nut-button-outline.nut-button-disabled {
-  color: #fd9d94;
-  border-color: #fd9d94;
+  color: #FFADBE;
+  border-color: #FFADBE;
 }
 .nut-button-info.nut-button-dashed.nut-button-disabled {
-  color: #fd9d94;
-  border-color: #fd9d94;
+  color: #FFADBE;
+  border-color: #FFADBE;
 }
 .nut-button-info.nut-button-none {
   color: #1988fa;
 }
 .nut-button-danger {
   color: #ffffff;
-  background: #fa2c19;
+  background: #FF0F23;
   background-origin: border-box;
   border: 1px solid transparent;
 }
 .nut-button-danger.nut-button-disabled {
-  background: #fd9d94;
-  border-color: #fd9d94;
+  background: #FFADBE;
+  border-color: #FFADBE;
 }
 .nut-button-danger.nut-button-outline {
-  color: #fa2c19;
-  border-color: #fa2c19;
+  color: #FF0F23;
+  border-color: #FF0F23;
   background: transparent;
 }
 .nut-button-danger.nut-button-dashed {
-  color: #fa2c19;
-  border-color: #fa2c19;
+  color: #FF0F23;
+  border-color: #FF0F23;
   background: transparent;
 }
 .nut-button-danger.nut-button-outline.nut-button-disabled {
-  color: #fd9d94;
-  border-color: #fd9d94;
+  color: #FFADBE;
+  border-color: #FFADBE;
 }
 .nut-button-danger.nut-button-dashed.nut-button-disabled {
-  color: #fd9d94;
-  border-color: #fd9d94;
+  color: #FFADBE;
+  border-color: #FFADBE;
 }
 .nut-button-danger.nut-button-none {
-  color: #fa2c19;
+  color: #FF0F23;
 }
 .nut-button-warning {
   color: #ffffff;
@@ -276,14 +275,14 @@
 }
 .nut-button-solid {
   color: #ffffff;
-   /* RN不支持 */
-  /* background: linear-gradient(135deg, #f53d4d 0%, #fa2c19 100%); */
+  /* RN不支持 */
+  /* background: linear-gradient(135deg, #FF0F23 0%, #FF0F23 100%); */
   background-origin: border-box;
   border: 1px solid transparent;
 }
 .nut-button-solid.nut-button-disabled {
   color: #ffffff;
-  background: #bfbfbf;
+  background: #C2C4CC;
 }
 .nut-button.nut-button-outline, .nut-button.nut-button-dashed {
   background: transparent;
@@ -297,8 +296,8 @@
   cursor: not-allowed;
   font-weight: 400;
   color: #ffffff;
-  background: #bfbfbf;
-  border-color: #bfbfbf;
+  background: #C2C4CC;
+  border-color: #C2C4CC;
 }
 .nut-button-loading {
   cursor: default;

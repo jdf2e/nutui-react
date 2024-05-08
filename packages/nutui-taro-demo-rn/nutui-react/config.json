@@ -65,7 +65,7 @@
           "cName": "按钮",
           "desc": "按钮",
           "sort": 1,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": ""
         },
