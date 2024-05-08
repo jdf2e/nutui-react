@@ -1,20 +1,17 @@
 .nut-price {
   direction: ltr;
   font-size: 16px;
-  display: inline-flex;
+  display: flex;
   flex-direction: row;
   align-items: baseline;
 }
 .nut-price-symbol {
-  display: inline-block;
   color: #fa2c19;
 }
 .nut-price-integer {
-  display: inline-block;
   color: #fa2c19;
 }
 .nut-price-decimal {
-  display: inline-block;
   color: #fa2c19;
 }
 .nut-price-symbol {

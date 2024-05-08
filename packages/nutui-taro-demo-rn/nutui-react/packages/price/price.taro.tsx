@@ -1,9 +1,9 @@
+import "./price.harmony.css";
 import React, { FunctionComponent } from 'react'
 import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
-import './price.harmony.css'
 
 export interface PriceProps extends BasicComponent {
   price: number | string

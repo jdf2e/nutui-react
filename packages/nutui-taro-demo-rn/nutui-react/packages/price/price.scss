@@ -1,14 +1,13 @@
 .nut-price {
   direction: ltr;
   font-size: $font-size-large;
-  display: inline-flex;
+  display: flex;
   flex-direction: row;
   align-items: baseline;
 
   &-symbol,
   &-integer,
   &-decimal {
-    display: inline-block;
     color: $color-primary;
   }
 

@@ -1,3 +1,4 @@
+import '../../../styles/demo.scss';
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
@@ -12,7 +13,6 @@ import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 import Demo7 from './demos/taro/demo7'
 import Demo8 from './demos/taro/demo8'
-import '../../../styles/demo.scss'
 
 const PriceDemo = () => {
   const [translated] = useTranslate({
