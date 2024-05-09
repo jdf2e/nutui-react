@@ -108,7 +108,7 @@ const InternalSignature: ForwardRefRenderFunction<
       .exec((res) => {
         canvasToTempFilePath({
           canvas: res[0].node,
-          fileType: props.type,
+          fileType: type,
           canvasId: `${canvasId}`,
           success: (res) => {
             onConfirm && onConfirm(res.tempFilePath)
@@ -223,5 +223,4 @@ const InternalSignature: ForwardRefRenderFunction<
 export const Signature = React.forwardRef<unknown, Partial<SignatureProps>>(
   InternalSignature
 )
-Signature.defaultProps = defaultProps
 Signature.displayName = 'NutSignature'
