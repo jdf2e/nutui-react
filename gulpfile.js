@@ -12,10 +12,16 @@ const argv = yargs.argv.environment
 const targetBaseUrl = `${process.cwd()}/packages/nutui-taro-demo-rn/nutui-react/packages/${argv}`
 
 gulp.task('watch', function () {
-  gulp.watch(
-    `src/packages/${argv}/*`,
-    gulp.series('sass', 'copy', 'modify', 'modifyDemo')
-  )
+  gulp.watch(`src/packages/**/demos/taro/*`, gulp.series('copyDemo'))
+  gulp.watch(`src/packages/${argv}/*.scss`, gulp.series('sass', 'copyCss'))
+  gulp.watch(`src/packages/${argv}/demo.taro.tsx`, gulp.series('copyTaroDemo'))
+  gulp.watch(`src/packages/${argv}/${argv}.taro.tsx`, gulp.series('copyTaro'))
+})
+
+gulp.task('copyDemo', function () {
+  return gulp
+    .src(`src/packages/${argv}/demos/taro/*`)
+    .pipe(gulp.dest(`${targetBaseUrl}/demos/taro/`))
 })
 
 gulp.task('sass', function () {
@@ -45,20 +51,22 @@ gulp.task('sass', function () {
     .pipe(gulp.dest(`src/packages/${argv}/`))
 })
 
-gulp.task('copy', function () {
-  return gulp.src(`src/packages/${argv}/*`).pipe(gulp.dest(`${targetBaseUrl}/`))
+gulp.task('copyCss', function () {
+  return gulp
+    .src([`src/packages/${argv}/*.scss`, `src/packages/${argv}/*.harmony.css`])
+    .pipe(gulp.dest(`${targetBaseUrl}/`))
 })
 
-gulp.task('modifyDemo', function () {
+gulp.task('copyTaroDemo', function () {
   return gulp
-    .src(`${targetBaseUrl}/demo.taro.tsx`)
+    .src(`src/packages/${argv}/demo.taro.tsx`)
     .pipe(insert.prepend(`import '../../../styles/demo.scss';\n`))
     .pipe(gulp.dest(`${targetBaseUrl}/`))
 })
 
-gulp.task('modify', function () {
+gulp.task('copyTaro', function () {
   return gulp
-    .src(`${targetBaseUrl}/${argv}.taro.tsx`)
+    .src(`src/packages/${argv}/${argv}.taro.tsx`)
     .pipe(insert.prepend(`import "./${argv}.harmony.css";\n`))
     .pipe(gulp.dest(`${targetBaseUrl}/`))
 })
