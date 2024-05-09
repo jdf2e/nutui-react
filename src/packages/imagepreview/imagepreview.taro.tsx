@@ -7,7 +7,7 @@ import React, {
   ReactNode,
 } from 'react'
 import Taro from '@tarojs/taro'
-import { Video as TaroVideo } from '@tarojs/components'
+import { ITouchEvent, Video as TaroVideo } from '@tarojs/components'
 import classNames from 'classnames'
 import { Close } from '@nutui/icons-react-taro'
 import Popup from '@/packages/popup/index.taro'
@@ -241,7 +241,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     setActive(page + 1)
     props.onChange?.(page + 1)
   }
-  const onCloseInner = (e: any) => {
+  const onCloseInner = (e: ITouchEvent | React.MouseEvent) => {
     e.stopPropagation()
     setShowPop(false)
     setActive(innerNo)
@@ -252,7 +252,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
       scale: 1,
     })
   }
-  const closeOnImg = (e: any) => {
+  const closeOnImg = (e: ITouchEvent | React.MouseEvent) => {
     // 点击内容区域的图片是否可以关闭弹层（视频区域由于nut-video做了限制，无法关闭弹层）
     if (closeOnContentClick) {
       onCloseInner(e)
