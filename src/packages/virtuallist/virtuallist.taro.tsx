@@ -153,7 +153,6 @@ export const VirtualList: FunctionComponent<Partial<VirtualListProps>> = (
     const endIndex = end()
     // list 变动说明触底
     if (endIndex > list.length - 1) {
-      console.log('onscroll')
       onScroll && onScroll()
     }
   }
