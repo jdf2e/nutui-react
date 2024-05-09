@@ -48,11 +48,7 @@
     display: flex;
     margin-top: 16px;
 
-    .nut-button.nut-empty-action {
-      width: auto;
-    }
-
-    .nut-button.nut-empty-action-left {
+    .nut-empty-action-left {
       margin-right: 16px;
     }
   }
@@ -61,7 +57,7 @@
 [dir='rtl'] .nut-empty,
 .nut-rtl .nut-empty {
   &-actions {
-    .nut-button.nut-empty-action-left {
+    .nut-empty-action-left {
       margin-right: 0;
       margin-left: 16px;
     }

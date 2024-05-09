@@ -1,4 +1,4 @@
-import "./empty.harmony.css";
+import './empty.harmony.css'
 import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react'
 import classNames from 'classnames'
 import { View, Image } from '@tarojs/components'
@@ -117,20 +117,23 @@ export const Empty: FunctionComponent<
         <View className={`${classPrefix}-actions`}>
           {actions.map((item, index) => {
             return (
-              <Button
+              <View
                 className={classNames(`${classPrefix}-action`, {
                   [`${classPrefix}-action-left`]:
                     actions.length > 1 && index === 0,
                 })}
-                type={`${
-                  actions.length > 1 && index === 0 ? 'default' : 'primary'
-                }`}
-                size="small"
-                fill="outline"
                 key={`action-${index}`}
               >
-                {item?.text}
-              </Button>
+                <Button
+                  type={
+                    actions.length > 1 && index === 0 ? 'default' : 'primary'
+                  }
+                  size="small"
+                  fill="outline"
+                >
+                  {item?.text}
+                </Button>
+              </View>
             )
           })}
         </View>

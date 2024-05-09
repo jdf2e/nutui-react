@@ -34,9 +34,6 @@
   flex-direction: row;
   margin-top: 16px;
 }
-.nut-empty-action {
-  width: auto;
-}
 .nut-empty-action-left {
   margin-right: 16px;
 }
