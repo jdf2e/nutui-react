@@ -50,5 +50,4 @@ export const Space: FunctionComponent<
   )
 }
 
-Space.defaultProps = defaultProps
 Space.displayName = 'NutSpace'

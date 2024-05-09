@@ -32,12 +32,13 @@ export const SideNavBar: FunctionComponent<Partial<SideNavBarProps>> = (
     children,
     className,
     onClose,
+    indent,
     ...rest
   } = {
     ...defaultProps,
     ...props,
   }
-  const indent = props.indent ? Number(props.indent) : 20
+  const innerIndent = indent ? Number(indent) : 20
   const [sidenavbarShow, setSidenavbarShow] = useState(true)
   const handleClick = () => {
     setSidenavbarShow(!sidenavbarShow)
@@ -59,7 +60,7 @@ export const SideNavBar: FunctionComponent<Partial<SideNavBarProps>> = (
           >
             <div
               className={`${classPrefix}-title ${classPrefix}-border-bt`}
-              style={{ paddingLeft: `${indent}px` }}
+              style={{ paddingLeft: `${innerIndent}px` }}
             >
               {title}
               <i
@@ -68,7 +69,7 @@ export const SideNavBar: FunctionComponent<Partial<SideNavBarProps>> = (
                 }`}
               />
             </div>
-            <OffsetContext.Provider value={indent}>
+            <OffsetContext.Provider value={innerIndent}>
               <div className={`${classPrefix}-content`}>{children}</div>
             </OffsetContext.Provider>
           </div>
@@ -78,5 +79,4 @@ export const SideNavBar: FunctionComponent<Partial<SideNavBarProps>> = (
   )
 }
 
-SideNavBar.defaultProps = defaultProps
 SideNavBar.displayName = 'NutSideNavBar'

@@ -83,6 +83,5 @@ export const Tabbar: FunctionComponent<Partial<TabbarProps>> & {
   )
 }
 
-Tabbar.defaultProps = defaultProps
 Tabbar.displayName = 'NutTabbar'
 Tabbar.Item = TabbarItem
