@@ -732,7 +732,7 @@
           "cName": "空状态",
           "desc": "空状态时的占位提示",
           "sort": 16,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "liukun"
         },

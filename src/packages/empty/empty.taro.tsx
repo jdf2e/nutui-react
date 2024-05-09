@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react'
 import classNames from 'classnames'
-import { View } from '@tarojs/components'
+import { View, Image } from '@tarojs/components'
+import Taro from '@tarojs/taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import type { EmptyAction } from './types'
@@ -65,36 +66,40 @@ export const Empty: FunctionComponent<
   const imageUrl = image || defaultStatus[status]
   const imageNode =
     typeof imageUrl === 'string' ? (
-      <img className="img" src={imageUrl} alt="empty" />
+      <Image
+        style={{
+          width: '100%',
+          height: '100%',
+        }}
+        src={imageUrl}
+      />
     ) : (
       imageUrl
     )
 
   useEffect(() => {
+    const isRN = Taro.getEnv() === Taro.ENV_TYPE.RN
     setImgStyle(() => {
       if (!imageSize) {
         return {}
       }
-      if (typeof imageSize === 'number') {
+      if (isRN || typeof imageSize !== 'number') {
         return {
-          width: `${imageSize}px`,
-          height: `${imageSize}px`,
+          width: imageSize,
+          height: imageSize,
         }
       }
       return {
-        width: imageSize,
-        height: imageSize,
+        width: `${imageSize}px`,
+        height: `${imageSize}px`,
       }
     })
   }, [imageSize])
-  const classes = classNames({
-    [`${classPrefix}-${size}`]: size !== 'base',
-  })
-  const cls = classNames(classPrefix, classes, className)
+  const cls = classNames(classPrefix, className)
 
   return (
     <View className={cls} style={style}>
-      <View className={`${classPrefix}-image`} style={imgStyle}>
+      <View className={`${classPrefix}-${size}`} style={imgStyle}>
         {imageNode}
       </View>
       {typeof title === 'string' && title ? (
@@ -112,9 +117,8 @@ export const Empty: FunctionComponent<
           {actions.map((item, index) => {
             return (
               <Button
-                className={classNames({
-                  [`${classPrefix}-actions-right`]: actions.length === 1,
-                  [`${classPrefix}-actions-left`]:
+                className={classNames(`${classPrefix}-action`, {
+                  [`${classPrefix}-action-left`]:
                     actions.length > 1 && index === 0,
                 })}
                 type={`${
@@ -135,5 +139,4 @@ export const Empty: FunctionComponent<
   )
 }
 
-Empty.defaultProps = defaultProps
 Empty.displayName = 'NutEmpty'

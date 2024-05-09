@@ -6,53 +6,43 @@
   justify-content: center;
   padding: 32px 40px;
   background-color: #ffffff;
+  width: 100%;
 }
-.nut-empty-image {
+.nut-empty-base {
   width: 160px;
   height: 160px;
 }
-.nut-empty-image .img {
-  width: 100%;
-  height: 100%;
-}
-.nut-empty-image img,
-.nut-empty-image image {
-  width: 100%;
-  height: 100%;
+.nut-empty-small {
+  width: 120px;
+  height: 120px;
 }
 .nut-empty-title {
   margin-top: 0px;
-  margin-bottom: 8px;
   color: #1a1a1a;
   font-size: 14px;
   line-height: 14px;
 }
 .nut-empty-description {
-  margin-top: 0px;
-  color: #8c8c8c;
+  margin-top: 10px;
+  color: #888b94;
   font-size: 12px;
-  line-height: 1.2;
-}
-.nut-empty-small .nut-empty-image {
-  width: 120px;
-  height: 120px;
+  line-height: 12px;
 }
 .nut-empty-actions {
   display: flex;
+  height: auto;
+  flex-direction: row;
   margin-top: 16px;
 }
-.nut-empty-actions .nut-button.nut-empty-actions-left,
-.nut-empty-actions .nut-button.nut-empty-actions-right {
-  height: 28px;
-  padding: 0px 12px;
-  font-weight: 400;
+.nut-empty-action {
+  width: auto;
 }
-.nut-empty-actions .nut-button.nut-empty-actions-left {
+.nut-empty-action-left {
   margin-right: 16px;
 }
 
-[dir=rtl] .nut-empty-actions .nut-button.nut-empty-actions-left,
-.nut-rtl .nut-empty-actions .nut-button.nut-empty-actions-left {
+[dir='rtl'] .nut-empty-action-left,
+.nut-rtl .nut-empty-action-left {
   margin-right: 0;
   margin-left: 16px;
 }
