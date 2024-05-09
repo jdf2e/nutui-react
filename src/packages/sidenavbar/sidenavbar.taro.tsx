@@ -38,7 +38,7 @@ export const SideNavBar: FunctionComponent<Partial<SideNavBarProps>> = (
     ...defaultProps,
     ...props,
   }
-  const innerIndent = props.indent ? Number(props.indent) : 20
+  const innerIndent = indent ? Number(indent) : 20
   const [sidenavbarShow, setSidenavbarShow] = useState(true)
   const handleClick = () => {
     setSidenavbarShow(!sidenavbarShow)
