@@ -52,7 +52,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: unset;
+  /* RN不支持 */
+  /* background: unset; */
 }
 .nut-button-children {
   display: flex;
@@ -176,7 +177,8 @@
 }
 .nut-button-info {
   color: #ffffff;
-  background: linear-gradient(315deg, rgb(73, 143, 242) 0%, rgb(73, 101, 242) 100%);
+  /* RN不支持 */
+  /* background: linear-gradient(315deg, rgb(73, 143, 242) 0%, rgb(73, 101, 242) 100%); */
   background-origin: border-box;
   border: 1px solid transparent;
 }
@@ -273,7 +275,8 @@
 }
 .nut-button-solid {
   color: #ffffff;
-  background: linear-gradient(135deg, #FF0F23 0%, #FF0F23 100%);
+  /* RN不支持 */
+  /* background: linear-gradient(135deg, #FF0F23 0%, #FF0F23 100%); */
   background-origin: border-box;
   border: 1px solid transparent;
 }
