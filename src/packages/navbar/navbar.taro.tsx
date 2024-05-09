@@ -173,5 +173,4 @@ export const NavBar: FunctionComponent<Partial<NavBarProps>> = (props) => {
   )
 }
 
-NavBar.defaultProps = defaultProps
 NavBar.displayName = 'NutNavBar'
