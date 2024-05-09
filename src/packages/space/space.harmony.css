@@ -10,7 +10,7 @@
 .nut-space-vertical-item {
   margin-bottom: 8px;
 }
-.nut-space-vertical-item--last {
+.nut-space-vertical-item-last {
   margin-bottom: 0;
 }
 .nut-space-horizontal {
@@ -19,7 +19,7 @@
 .nut-space-horizontal-item {
   margin-right: 8px;
 }
-.nut-space-horizontal-item--last {
+.nut-space-horizontal-item-last {
   margin-right: 0;
 }
 .nut-space-horizontal-wrap {
@@ -69,7 +69,7 @@
   margin-left: 8px;
 }
 
-.nut-space-horizontal-item-rtl.nut-space-item--last {
+.nut-space-horizontal-item-rtl.nut-space-item-last {
   margin-right: 0;
   margin-left: 0;
 }

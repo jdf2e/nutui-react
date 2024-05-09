@@ -56,7 +56,7 @@ export const Space: FunctionComponent<
             <View
               className={classNames(
                 itemCls,
-                isLast && `${prefixCls}-${direction}-item--last`
+                isLast && `${prefixCls}-${direction}-item-last`
               )}
             >
               {child}
