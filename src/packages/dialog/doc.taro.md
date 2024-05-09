@@ -100,7 +100,7 @@ import { Dialog } from '@nutui/nutui-react-taro'
 | closeIconPosition | 关闭按钮位置 | `top-left` \| `top-right` \| `bottom` | `top-right` |
 | closeOnOverlayClick | 点击蒙层是否关闭对话框 | `boolean` | `true` |
 | footerDirection | 使用横纵方向 可选值 horizontal、vertical | `string` | `horizontal` |
-| lockScroll | 背景是否锁定 | `boolean` | `false` |
+| lockScroll | 背景是否锁定 | `boolean` | `true` |
 | beforeCancel | 取消前回调，点击取消时触发 | `() => boolean` | `-` |
 | beforeClose | 关闭前回调 | `() => boolean` | `-` |
 | onConfirm | 确定按钮回调 | `(e?: MouseEvent) => Promise \| void` | `-` |

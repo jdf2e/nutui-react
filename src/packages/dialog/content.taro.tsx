@@ -1,6 +1,6 @@
 import React, { FunctionComponent, ReactNode, HTMLAttributes } from 'react'
 import classNames from 'classnames'
-import { ITouchEvent } from '@tarojs/components'
+import { ITouchEvent, ScrollView } from '@tarojs/components'
 import { BasicComponent } from '@/utils/typings'
 
 interface ContentProps extends BasicComponent {
@@ -63,9 +63,9 @@ export const Content: FunctionComponent<
         style={{ display: visible ? 'flex' : 'none' }}
       >
         {renderHeader()}
-        <div className={`${classPrefix}-content`}>
+        <ScrollView scrollY className={`${classPrefix}-content`}>
           <>{children}</>
-        </div>
+        </ScrollView>
         {renderFooter()}
       </div>
     </div>
