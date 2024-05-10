@@ -3,6 +3,12 @@ const path = require('path')
 
 const args = process.argv.slice(2)
 const argsPath = process.argv.slice(3)
+let adapted = require('../../packages/nutui-taro-demo-rn/scripts/taro/adapted.js')
+
+console.log(adapted)
+adapted.push(args[0])
+adapted = [...new Set(adapted)]
+
 const targetBaseUrl = `${process.cwd()}/packages/nutui-taro-demo-rn/nutui-react`
 const targetwrapUrl = `${process.cwd()}/src`
 
@@ -12,10 +18,6 @@ if (args.length) {
   fse.readFile(filePath, 'utf8', (err, data) => {
     if (err) throw err
     // eslint-disable-next-line global-require
-    let adapted = require('../../packages/nutui-taro-demo-rn/scripts/taro/adapted.js')
-    console.log(adapted)
-    adapted.push(args[0])
-    adapted = [...new Set(adapted)]
     fse.writeFile(
       filePath,
       `exports = module.exports = ${JSON.stringify(adapted)};`,
@@ -29,49 +31,36 @@ if (args.length) {
 }
 
 const copyFile = async (from, to, success, isSingle = false) => {
-  fse
-    .copy(from, to)
-    .then(() => {
-      console.log(`${success}!>`, to)
-      if (isSingle) {
+  fse.copy(from, to, function (err) {
+    if (err) {
+      console.error('An error occurred while copying the directory.', err)
+      return
+    }
+    console.log(`${success}!>`, to)
+    adapted
+      .filter(function (item) {
+        return item !== 'cellgroup'
+      })
+      .map((item) => {
         modify(
-          `${targetBaseUrl}/packages/${args[0]}/demo.taro.tsx`,
+          `${targetBaseUrl}/packages/${item}/demo.taro.tsx`,
           `import '../../../styles/demo.scss';\n`
         )
         modify(
-          `${targetBaseUrl}/packages/${args[0]}/${args[0]}.taro.tsx`,
-          `import "./${args[0]}.harmony.css";\n`
+          `${targetBaseUrl}/packages/${item}/${item}.taro.tsx`,
+          `import "./${item}.harmony.css";\n`
         )
-      }
-    })
-    .catch((err) => {
-      console.error(err)
-    })
+      })
+  })
 }
 
-// const removeFile = async (dir) => {
-//   return new Promise((res, rej) => {
-//     fse.readdirSync(dir).forEach((file) => {
-//       const currentPath = path.join(dir, file)
-//       if (fse.lstatSync(currentPath).isDirectory()) {
-//         // 递归删除子目录
-//         removeFile(currentPath)
-//       } else {
-//         // 删除文件
-//         fse.unlinkSync(currentPath)
-//       }
-//     })
-//   })
-// }
-
 const removeFile = async (url) => {
-  return new Promise((res, rej) => {
-    fse.remove(url, (err) => {
-      if (err) {
-        throw err
-      }
-      res(true)
-    })
+  fse.remove(url, (err) => {
+    if (err) {
+      throw err
+    }
+    console.log(`全部移除成功!>`, url)
+    copyFile(`${targetwrapUrl}`, `${targetBaseUrl}`, '全部拷贝完成')
   })
 }
 
@@ -89,23 +78,7 @@ const modify = (fileUrl, importStatement) => {
 }
 
 const copy = async () => {
-  await removeFile(`${targetBaseUrl}`).finally(() => {
-    console.log('1')
-    copyFile(`${targetwrapUrl}`, `${targetBaseUrl}`, '全部拷贝完成').finally(
-      () => {
-        console.log('2')
-        removeFile(`${targetBaseUrl}/packages/${args[0]}`).finally(() => {
-          console.log('3')
-          copyFile(
-            `${targetwrapUrl}/packages/${args[0]}`,
-            `${targetBaseUrl}/packages/${args[0]}`,
-            '单个拷贝完成',
-            true
-          )
-        })
-      }
-    )
-  })
+  await removeFile(`${targetBaseUrl}`)
 }
 
 copy()
