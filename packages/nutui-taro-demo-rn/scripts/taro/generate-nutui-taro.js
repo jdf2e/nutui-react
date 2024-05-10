@@ -9,12 +9,13 @@ let importScssStr = `\n`
 const packages = []
 const mds = []
 const raws = []
+const adapted = require('./adapted')
 
 config.nav.map((item) => {
   item.packages.forEach((element) => {
     let { name, show, type, taro, exportEmpty, exclude } = element
     if (exclude) return
-    if (!show) return // 不显示的不导出
+    if (!adapted.includes(name.toLowerCase())) return // 不显示的不导出
 
     importStr += `import ${name} from '@/packages/${name.toLowerCase()}/index.taro'\n`
     importStr += `export * from '@/packages/${name.toLowerCase()}/index.taro'\n`

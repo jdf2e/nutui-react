@@ -48,7 +48,7 @@
         "name": "https://github.com/jdf2e/nutui-react/releases",
         "cName": "更新日志",
         "eName": "Changelog",
-        "show": false,
+        "show": true,
         "isLink": true
       }
     ]
@@ -87,7 +87,7 @@
           "cName": "单元格",
           "desc": "列表项，可组成列表",
           "sort": 2,
-          "show": true,
+          "show": false,
           "taro": true,
           "exportEmpty": true,
           "author": "songsong"
@@ -99,7 +99,7 @@
           "cName": "全局配置",
           "desc": "可以配置多语言等全局属性",
           "sort": 16,
-          "show": false,
+          "show": true,
           "exportEmpty": true,
           "taro": true,
           "author": "hanyuxinting"
@@ -111,7 +111,7 @@
           "cName": "图标",
           "desc": "基于 IconFont 字体的图标集",
           "sort": 1,
-          "show": false,
+          "show": true,
           "taro": true,
           "exclude": true,
           "author": "oasis-cloud"
@@ -124,7 +124,7 @@
           "cName": "图片",
           "desc": "增强版的 img 标签，提供多种图片填充模式，支持图片加载中提示、加载失败提示。",
           "sort": 8,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "vickyYE"
         },
@@ -163,7 +163,7 @@
           "cName": "分割线",
           "desc": "用于将内容分隔为多个区域",
           "sort": 7,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "vickyYE"
         },
@@ -174,7 +174,7 @@
           "cName": "宫格",
           "desc": "宫格",
           "sort": 5,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangxiaolu"
         },
@@ -197,7 +197,7 @@
           "cName": "布局",
           "desc": "协助进行页面级整体布局。",
           "sort": 1,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yushuang24"
         },
@@ -219,7 +219,7 @@
           "cName": "间距",
           "desc": "元素之间的间距，保持相同的宽度",
           "sort": 8,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "ivan"
         },
@@ -230,7 +230,7 @@
           "cName": "粘性布局",
           "desc": "效果同 css 中的 position: sticky",
           "sort": 7,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "hx"
         },
@@ -241,7 +241,7 @@
           "cName": "安全区",
           "desc": "在全面屏下提供自适应的边距调整。",
           "sort": 9,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "oasis"
         }
@@ -259,7 +259,7 @@
           "desc": "提供较长的页面快捷返回顶部功能。",
           "sort": 2,
           "tarodoc": true,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "vickyYe"
         },
@@ -270,7 +270,7 @@
           "cName": "电梯楼层",
           "desc": "用于列表快速定位以及索引的显示",
           "sort": 4,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "songsong"
         },
@@ -281,7 +281,7 @@
           "cName": "悬浮导航",
           "desc": "悬浮收齐体验交互，用于快捷导航",
           "sort": 5,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "Ymm0008"
         },
@@ -292,7 +292,7 @@
           "cName": "头部导航",
           "desc": "提供导航功能。",
           "sort": 1,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "dsj"
         },
@@ -303,7 +303,7 @@
           "cName": "侧边栏导航",
           "desc": "用于内容选择和切换",
           "sort": 9,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "hx"
         },
@@ -336,7 +336,7 @@
           "cName": "标签栏",
           "desc": "底部导航常用场景",
           "sort": 2,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "dsj"
         },
@@ -370,7 +370,7 @@
           "cName": "选项卡切换",
           "desc": "常用于平级区域大块内容的的收纳和展现，支持内嵌标签形式和渲染循环数据形式",
           "sort": 12,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "oasis"
         }
@@ -387,7 +387,7 @@
           "cName": "地址",
           "desc": "地址组件",
           "sort": 3,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangxiaolu"
         },
@@ -398,7 +398,7 @@
           "cName": "日历",
           "desc": "日历，可平铺/弹窗展示",
           "sort": 10,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "szg2008"
         },
@@ -420,7 +420,7 @@
           "cName": "日历卡片",
           "desc": "日历卡片，支持多种选择类型",
           "sort": 10,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "eiinu"
         },
@@ -431,7 +431,7 @@
           "cName": "级联选择器",
           "desc": "级联选择，用于多层级数据的选择，典型场景为省市区选择。",
           "sort": 1,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "ailululu"
         },
@@ -442,7 +442,7 @@
           "cName": "复选按钮",
           "desc": "多选按钮用于选择。",
           "sort": 4,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "oasis"
         },
@@ -464,7 +464,7 @@
           "cName": "日期选择器",
           "desc": "时间选择器，支持日期、年月、时分等维度，通常与弹出层组件配合使用。",
           "sort": 15,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "dsj"
         },
@@ -475,7 +475,7 @@
           "cName": "表单",
           "desc": "用于数据录入、校验，支持输入框、单选框、复选框等类型。",
           "sort": 19,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "hanyuxinting"
         },
@@ -498,7 +498,7 @@
           "cName": "输入框",
           "desc": "单行输入框",
           "sort": 1,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "VickyYe"
         },
@@ -509,7 +509,7 @@
           "cName": "数字输入框",
           "desc": "通过点击按钮控制数字增减。",
           "sort": 3,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "swag~jun"
         }
@@ -526,7 +526,7 @@
           "cName": "菜单",
           "desc": "向下弹出的菜单列表",
           "sort": 13,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "oasis-cloud"
         },
@@ -549,7 +549,7 @@
           "cName": "数字键盘",
           "desc": "",
           "sort": 16,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "Drjingfubo"
         },
@@ -560,7 +560,7 @@
           "cName": "选择器",
           "desc": "提供多个选项集合供用户选择其中一项。",
           "sort": 10,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "dsj"
         },
@@ -571,7 +571,7 @@
           "cName": "单选按钮",
           "desc": "用于在一组备选项中进行单选",
           "sort": 6,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "oasis"
         },
@@ -593,7 +593,7 @@
           "cName": "区间选择器",
           "desc": "滑动输入条，用于在给定的范围内选择一个值。",
           "sort": 3,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "vickyYe"
         },
@@ -604,7 +604,7 @@
           "cName": "评分",
           "desc": "用于快速的评级操作，或对评价进行展示。",
           "sort": 1,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "dsj"
         },
@@ -615,7 +615,7 @@
           "cName": "搜索栏",
           "desc": "用于搜索场景的输入框组件",
           "sort": 16,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "Ymm0008"
         },
@@ -626,7 +626,7 @@
           "cName": "短密码",
           "desc": "短密码输入框",
           "sort": 10,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "Drjingfubo"
         },
@@ -637,7 +637,7 @@
           "cName": "签名",
           "desc": "基于Canvas的签名组件",
           "sort": 1,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "songsong"
         },
@@ -659,7 +659,7 @@
           "cName": "文本域",
           "desc": "文本框内输入或编辑文字，支持限制输入数量。",
           "sort": 2,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "VickyYe"
         },
@@ -671,7 +671,7 @@
           "cName": "上传",
           "desc": "用于将本地的图片或文件上传至服务器。",
           "sort": 1,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "swag~jun"
         }
@@ -688,7 +688,7 @@
           "cName": "动作面板",
           "desc": "从底部弹出的动作菜单面板。",
           "sort": 11,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "dsj"
         },
@@ -699,7 +699,7 @@
           "cName": "徽标",
           "desc": "在图标或文字右上角的红色圆点、数字或者文字，表示有新内容或者待处理的信息。",
           "sort": 4,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "lzz"
         },
@@ -710,7 +710,7 @@
           "cName": "对话框",
           "desc": "模态对话框",
           "sort": 12,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },
@@ -721,7 +721,7 @@
           "cName": "拖拽",
           "desc": "实现可拖拽的任意元素",
           "sort": 1,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "songsong"
         },
@@ -732,7 +732,7 @@
           "cName": "空状态",
           "desc": "空状态时的占位提示",
           "sort": 16,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "liukun"
         },
@@ -744,7 +744,7 @@
           "cName": "滚动加载",
           "desc": "列表滚动到底部自动加载更多数据。",
           "sort": 5,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "swag~jun"
         },
@@ -755,7 +755,7 @@
           "cName": "加载中",
           "desc": "加载图标，用于显示正在加载中的状态",
           "sort": 15,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "mike8625"
         },
@@ -766,7 +766,7 @@
           "cName": "公告栏",
           "desc": "用于循环播放展示一组消息通知。",
           "sort": 11,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "vickyYe"
         },
@@ -778,7 +778,7 @@
           "cName": "消息通知",
           "desc": "在页面顶部展示消息提示",
           "sort": 11,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "vickyYE"
         },
@@ -789,7 +789,7 @@
           "cName": "气泡弹出框",
           "desc": "气泡弹出框",
           "sort": 19,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "lzz"
         },
@@ -799,7 +799,7 @@
           "sort": 9,
           "cName": "弹出层",
           "type": "component",
-          "show": false,
+          "show": true,
           "taro": true,
           "desc": "弹出层容器，用于展示弹窗、信息提示等内容，支持多个弹出层叠加展示",
           "author": "szg2008"
@@ -811,7 +811,7 @@
           "cName": "下拉刷新",
           "desc": "",
           "sort": 10,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "oasis"
         },
@@ -822,7 +822,7 @@
           "cName": "骨架屏",
           "desc": "在页面上待加载区域填充灰色的占位图，本质上是界面加载过程中的过渡效果。",
           "sort": 15,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "swag~jun"
         },
@@ -833,7 +833,7 @@
           "cName": "滑动手势",
           "desc": "可以左右滑动来展示操作按钮的组件",
           "sort": 9,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "Ymm0008"
         },
@@ -845,7 +845,7 @@
           "cName": "吐司",
           "desc": "轻提示",
           "sort": 1,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "VickyYe"
         }
@@ -862,7 +862,7 @@
           "cName": "动画/动效",
           "desc": "给子元素添加动画效果",
           "sort": 27,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "swag~jun"
         },
@@ -873,7 +873,7 @@
           "cName": "数字动画",
           "desc": "带特效的数字",
           "sort": 7,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "songsong"
         },
@@ -884,7 +884,7 @@
           "cName": "音频播放器",
           "desc": "原生audio实现的音频播放器",
           "sort": 21,
-          "show": false,
+          "show": true,
           "taro": false,
           "author": "libin"
         },
@@ -895,7 +895,7 @@
           "cName": "头像",
           "desc": "用来代表用户或事物，支持图片、图标或字符展示。",
           "sort": 2,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "junjun"
         },
@@ -917,7 +917,7 @@
           "cName": "环形进度条",
           "desc": "展示操作或任务的当前进度。",
           "sort": 7,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "swag~jun"
         },
@@ -928,7 +928,7 @@
           "cName": "折叠面板",
           "desc": "折叠面板，可进行内容折叠展开操作，可以多面板配合使用。",
           "sort": 2,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "zhenyulei"
         },
@@ -961,7 +961,7 @@
           "cName": "文本省略",
           "desc": "展示空间不足时，隐去部分内容并用“…”替代。",
           "sort": 27,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "vickyYE"
         },
@@ -972,7 +972,7 @@
           "cName": "图片预览",
           "desc": "图片预览",
           "sort": 23,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },
@@ -983,7 +983,7 @@
           "cName": "指示器",
           "desc": "显示一个任务或流程的进度，常用于开通流程。",
           "sort": 16,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "liukun"
         },
@@ -994,7 +994,7 @@
           "cName": "分页",
           "desc": "当数据量较多时，采用分页的形式分隔长列表。",
           "sort": 6,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "lkjh3214"
         },
@@ -1005,7 +1005,7 @@
           "cName": "价格",
           "desc": "用来对商品价格数值的小数点前后部分应用不同样式，还支持人民币符号、千位分隔符、设置小数点位数等功能。",
           "sort": 4,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "songsong"
         },
@@ -1016,7 +1016,7 @@
           "cName": "进度条",
           "desc": "用来展示进度",
           "sort": 20,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "ailululu"
         },
@@ -1038,7 +1038,7 @@
           "cName": "步骤条",
           "desc": "拆分展示某项流程的步骤，引导用户按流程完成任务或向用户展示当前状态。",
           "sort": 7,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "swag~jun"
         },
@@ -1049,7 +1049,7 @@
           "cName": "轮播",
           "desc": "轮播组件",
           "sort": 14,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "liukun"
         },
@@ -1071,7 +1071,7 @@
           "cName": "表格",
           "desc": "表格",
           "sort": 21,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "yangjinjun3"
         },
@@ -1082,7 +1082,7 @@
           "cName": "标签",
           "desc": "用于标记和分类。",
           "sort": 4,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "lzz"
         },
@@ -1093,7 +1093,7 @@
           "cName": "引导",
           "desc": "用于引导用户了解产品功能的气泡组件。自 4.0 版本开始提供该组件。",
           "sort": 24,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "swag~jun"
         },
@@ -1105,7 +1105,7 @@
           "tarodoc": true,
           "desc": "原生video实现的视频播放器",
           "sort": 20,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "swag~jun"
         },
@@ -1117,7 +1117,7 @@
           "desc": "长列表渲染",
           "sort": 20,
           "tarodoc": true,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "hx"
         }
@@ -1134,7 +1134,7 @@
           "cName": "弹幕",
           "desc": "用于话语和词组的轮播展示，适用于视频中或其他类似需求中。",
           "sort": 2,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "swag~jun"
         },
@@ -1145,7 +1145,7 @@
           "cName": "商品卡片",
           "desc": "商品卡片，用于展示商品的图片、价格等信息",
           "sort": 6,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "songsong"
         },
@@ -1167,7 +1167,7 @@
           "cName": "配送时间",
           "desc": "用于配送时间选择",
           "sort": 20,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "zhaoqian16"
         },
@@ -1178,7 +1178,7 @@
           "cName": "趋势箭头",
           "desc": "带有箭头指示的百分比数字,用以展示指标趋势",
           "sort": 25,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "songsong"
         },
@@ -1189,7 +1189,7 @@
           "cName": "水印",
           "desc": "页面上添加特定的文字或图案，可用于防止信息盗用。",
           "sort": 25,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "swag~jun"
         },
@@ -1200,7 +1200,7 @@
           "cName": "头像裁剪",
           "desc": "仿微信头像裁剪功能",
           "sort": 26,
-          "show": false,
+          "show": true,
           "taro": true,
           "author": "Marvin"
         }
