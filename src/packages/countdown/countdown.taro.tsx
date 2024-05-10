@@ -95,9 +95,11 @@ const InternalCountDown: ForwardRefRenderFunction<
     } else {
       stateRef.current.handleEndTime = endTime
       if (
-        !['RN', Taro.ENV_TYPE.HARMONYHYBRID, Taro.ENV_TYPE.HARMONY].includes(
-          Taro.getEnv()
-        )
+        ![
+          Taro.ENV_TYPE.RN,
+          Taro.ENV_TYPE.HARMONYHYBRID,
+          Taro.ENV_TYPE.HARMONY,
+        ].includes(Taro.getEnv())
       ) {
         stateRef.current.diffTime = Date.now() - getTimeStamp(startTime) // 时间差
       }

@@ -40,7 +40,7 @@ const Demo9 = () => {
         />
       </Cell>
       {/* TODO：gird未适配，适配后替换 */}
-      {Taro.getEnv() === 'RN' ? (
+      {Taro.getEnv() === Taro.ENV_TYPE.RN ? (
         <View
           style={{
             display: 'flex',
