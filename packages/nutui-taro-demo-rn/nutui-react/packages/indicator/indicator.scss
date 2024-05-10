@@ -1,5 +1,6 @@
 .nut-indicator {
   display: flex;
+  flex-direction: row;
   width: auto;
   flex-wrap: nowrap;
   align-items: center;
@@ -46,7 +47,7 @@
       }
     }
 
-    .nut-indicator-active {
+    &-active {
       width: $indicator-dot-size;
       height: $indicator-dot-active-size;
     }

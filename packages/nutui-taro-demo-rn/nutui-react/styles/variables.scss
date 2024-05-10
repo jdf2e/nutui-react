@@ -1717,10 +1717,7 @@ $tabs-titles-item-smile-bottom: var(
 ) !default;
 
 // indicator（✅）
-$indicator-color: var(
-  --nutui-indicator-color,
-  $color-primary-gradient-1
-) !default;
+$indicator-color: var(--nutui-indicator-color, $color-primary) !default;
 $indicator-dot-color: var(--nutui-indicator-dot-color, $color-border) !default;
 $indicator-dot-size: var(--nutui-indicator-dot-size, 4px) !default;
 $indicator-dot-active-size: var(
