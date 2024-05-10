@@ -189,7 +189,7 @@ export const Input = forwardRef(
         updateValue(val, 'onBlur')
         setTimeout(() => {
           setActive(false)
-        }, 50)
+        }, 200)
       } else {
         updateValue(value, 'onBlur')
         setActive(false)
@@ -255,6 +255,7 @@ export const Input = forwardRef(
                 ? 'flex'
                 : 'none',
             alignItems: 'center',
+            cursor: 'pointer',
           }}
           onClick={(e) => {
             e.stopPropagation()
