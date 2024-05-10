@@ -184,16 +184,11 @@ export const Input = forwardRef(
     }
 
     const handleBlur = (event: any) => {
-      if (Taro.getEnv() === 'WEB') {
-        const val: any = (event.target as any).value
-        updateValue(val, 'onBlur')
-        setTimeout(() => {
-          setActive(false)
-        }, 200)
-      } else {
-        updateValue(value, 'onBlur')
+      const val = Taro.getEnv() === 'WEB' ? (event.target as any).value : value
+      updateValue(val, 'onBlur')
+      setTimeout(() => {
         setActive(false)
-      }
+      }, 200)
     }
     const inputType = (type: any) => {
       if (getEnv() === ENV_TYPE.WEB) {
