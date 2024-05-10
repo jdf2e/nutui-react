@@ -33,7 +33,7 @@
     "useMultiFrameRuntime": true
   },
   "compileType": "miniprogram",
-  "libVersion": "2.25.0",
+  "libVersion": "widelyUsed",
   "srcMiniprogramRoot": "dist/weapp/",
   "packOptions": {
     "ignore": [],
