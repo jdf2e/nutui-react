@@ -37,20 +37,18 @@ const copyFile = async (from, to, success, isSingle = false) => {
       return
     }
     console.log(`${success}!>`, to)
-    adapted
-      .filter(function (item) {
-        return item !== 'cellgroup'
-      })
-      .map((item) => {
+    adapted.map((item) => {
+      if (!['cellgroup'].includes(item)) {
         modify(
           `${targetBaseUrl}/packages/${item}/demo.taro.tsx`,
           `import '../../../styles/demo.scss';\n`
         )
-        modify(
-          `${targetBaseUrl}/packages/${item}/${item}.taro.tsx`,
-          `import "./${item}.harmony.css";\n`
-        )
-      })
+      }
+      modify(
+        `${targetBaseUrl}/packages/${item}/${item}.taro.tsx`,
+        `import "./${item}.harmony.css";\n`
+      )
+    })
   })
 }
 
