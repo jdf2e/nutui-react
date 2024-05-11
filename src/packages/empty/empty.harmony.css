@@ -1,36 +1,46 @@
 .nut-empty {
   box-sizing: border-box;
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
   padding: 32px 40px;
   background-color: #ffffff;
-  width: 100%;
 }
 .nut-empty-base {
   width: 160px;
   height: 160px;
 }
+.nut-empty-base img,
+.nut-empty-base image {
+  width: 100%;
+  height: 100%;
+}
 .nut-empty-small {
   width: 120px;
   height: 120px;
 }
+.nut-empty-small img,
+.nut-empty-small image {
+  width: 100%;
+  height: 100%;
+}
 .nut-empty-title {
   margin-top: 0px;
+  margin-bottom: 8px;
   color: #1a1a1a;
   font-size: 14px;
   line-height: 14px;
 }
 .nut-empty-description {
-  margin-top: 10px;
+  margin-top: 0px;
   color: #888b94;
   font-size: 12px;
-  line-height: 12px;
+  line-height: 1.2;
 }
 .nut-empty-actions {
   display: flex;
-  height: auto;
   flex-direction: row;
   margin-top: 16px;
 }
@@ -38,8 +48,8 @@
   margin-right: 16px;
 }
 
-[dir='rtl'] .nut-empty-action-left,
-.nut-rtl .nut-empty-action-left {
+[dir=rtl] .nut-empty-actions .nut-empty-action-left,
+.nut-rtl .nut-empty-actions .nut-empty-action-left {
   margin-right: 0;
   margin-left: 16px;
 }

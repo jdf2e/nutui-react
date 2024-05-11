@@ -1,5 +1,6 @@
 .nut-empty {
   box-sizing: border-box;
+  width: 100%;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -46,11 +47,12 @@
 
   &-actions {
     display: flex;
+    flex-direction: row;
     margin-top: 16px;
+  }
 
-    .nut-empty-action-left {
-      margin-right: 16px;
-    }
+  &-action-left {
+    margin-right: 16px;
   }
 }
 
