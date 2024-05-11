@@ -73,7 +73,6 @@ export const ConfigProvider: FunctionComponent<
     (prev, next) =>
       prev.some((prevTheme, index) => {
         const nextTheme = next[index]
-
         return !isequal(prevTheme, nextTheme)
       })
   ) as ConfigProviderProps

@@ -1,4 +1,6 @@
-# NutUI-React 支持 Taro 的调研
+# NutUI-React 支持 Taro
+
+更多运行信息：https://joyspace.jd.com/pages/4XGCfCnLsQ8FJB7JepCX
 
 yarn安装
 
