@@ -1,3 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`props test 1`] = `"<div class="nut-signature test-signature"><div class="nut-signature-inner"><canvas height="0" width="0"></canvas></div></div>"`;

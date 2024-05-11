@@ -4,6 +4,8 @@ import packageJson from '@/packages/../../package.json'
 import './index.scss'
 import { View, Image, ScrollView } from '@tarojs/components'
 
+import adapted from '../../../scripts/taro/adapted.js'
+
 const navs = pkg.nav
 // console.log(navs)
 
@@ -24,7 +26,7 @@ const Index = () => {
           src='https://img14.360buyimg.com/imagetools/jfs/t1/117879/25/28831/6279/6329723bE66715a2f/5f099b8feca9e8cc.png'
         />
         <View className='index_header_info'>
-          <View className='index_header_info_h1'>NutUI React1</View>
+          <View className='index_header_info_h1'>NutUI React</View>
           <View className='index_header_info_p'>
             京东风格的轻量级小程序组件库 React 版
           </View>
@@ -39,7 +41,7 @@ const Index = () => {
             )}
             <View className='index_components_sublist'>
               {nav.packages.map((com) =>
-                com.show && com.taro ? (
+                com.show && com.taro && adapted.includes(com.name.toLowerCase()) ? (
                   <View
                     key={com.name}
                     className='index_components_sublist_item'
