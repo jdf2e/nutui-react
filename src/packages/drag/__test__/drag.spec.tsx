@@ -19,7 +19,7 @@ describe('Drag', () => {
     color: '#fff',
     display: 'inline-block',
     lineHeight: '36px',
-    background: 'linear-gradient(135deg,#fa2c19 0,#fa6419 100%)',
+    background: 'linear-gradient(135deg,#FF0F23 0,#fa6419 100%)',
   }
 
   test('should render default slot correctly', () => {

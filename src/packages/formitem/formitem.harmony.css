@@ -2,7 +2,7 @@
   display: flex;
 }
 .nut-form-item.error.line::before {
-  border-bottom: 1px solid #fa2c19;
+  border-bottom: 1px solid #FF0F23;
   transform: scaleX(1);
   transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
 }
@@ -18,7 +18,7 @@
 }
 .nut-form-item-label .required::before {
   content: "*";
-  color: #fa2c19;
+  color: #FF0F23;
   margin-right: 4px;
 }
 .nut-form-item-body {
@@ -36,7 +36,7 @@
 .nut-form-item-body-slots .nut-input-text {
   font-size: 14px;
   text-align: start;
-  color: #1a1a1a;
+  color: #1A1A1A;
   width: 100%;
   outline: 0 none;
   border: 0;
@@ -56,7 +56,7 @@
 .nut-form-item-body-tips {
   text-align: start;
   font-size: 10px;
-  color: #fa2c19;
+  color: #FF0F23;
 }
 
 [dir=rtl] .nut-form-item-label {

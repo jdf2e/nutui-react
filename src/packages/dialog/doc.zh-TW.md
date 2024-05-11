@@ -91,9 +91,7 @@ import { Dialog } from '@nutui/nutui-react'
 | content | 對話框的內容，適用於函數式調用 | `ReactNode` | `-` |
 | footer | 自定義頁腳，傳入 null 則不顯示 | `ReactNode` | `-` |
 | confirmText | 確認按鈕文案 | `ReactNode` | `確定` |
-| confirmButtonProps | 確認按鈕 props | [`ButtonProps`](https://nutui.jd.com/h5/react/2x/#/zh-CN/component/button) | `-` |
 | cancelText | 取消按鈕文案 | `ReactNode` | `取消` |
-| cancelButtonProps | 取消按鈕 props | [`ButtonProps`](https://nutui.jd.com/h5/react/2x/#/zh-CN/component/button) | `-` |
 | overlay | 是否展示遮罩 | `boolean` | `true` |
 | hideConfirmButton | 是否隱藏確定按鈕 | `boolean` | `false` |
 | hideCancelButton | 是否隱藏取消按鈕 | `boolean` | `false` |
@@ -166,7 +164,7 @@ export default function App() {
 | \--nutui-dialog-vertical-footer-ok-margin-top | 對話框底部按鈕縱向排布時的margin值 | `5px` |
 | \--nutui-dialog-close-width | 對話框關閉按鈕的寬度 | `18px` |
 | \--nutui-dialog-close-height | 對話框關閉按鈕的高度 | `18px` |
-| \--nutui-dialog-close-color | 對話框關閉按鈕的顏色 | `#8c8c8c` |
+| \--nutui-dialog-close-color | 對話框關閉按鈕的顏色 | `#888B94` |
 | \--nutui-dialog-close-top | 對話框關閉按鈕的top值 | `16px` |
 | \--nutui-dialog-close-left | 對話框關閉按鈕的left值 | `16px` |
 | \--nutui-dialog-close-right | 對話框關閉按鈕的right值 | `16px` |

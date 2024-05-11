@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
-import { Button, Cell, Overlay } from '@nutui/nutui-react-taro'
+import { Cell, Overlay } from '@nutui/nutui-react-taro'
+import { View } from '@tarojs/components'
 
 const Demo5 = () => {
   const [visible, setVisible] = useState(false)
@@ -13,13 +14,14 @@ const Demo5 = () => {
   return (
     <>
       <Cell>
-        <Button type="success" onClick={handleToggleShow}>
+        {/* <Button type='success' onClick={handleToggleShow}>
           嵌套内容
-        </Button>
+        </Button> */}
+        <View onClick={handleToggleShow}>嵌套内容</View>
       </Cell>
 
       <Overlay visible={visible} onClick={onClose}>
-        <div
+        <View
           style={{
             display: 'flex',
             height: '100%',
@@ -27,20 +29,20 @@ const Demo5 = () => {
             justifyContent: 'center',
           }}
         >
-          <div
+          <View
             style={{
               display: 'flex',
-              width: '200px',
-              height: '200px',
-              background: '#fff',
-              borderRadius: '8px',
+              width: 200,
+              height: 200,
+              backgroundColor: '#fff',
+              borderRadius: 8,
               alignItems: 'center',
               justifyContent: 'center',
             }}
           >
             这里是正文
-          </div>
-        </div>
+          </View>
+        </View>
       </Overlay>
     </>
   )

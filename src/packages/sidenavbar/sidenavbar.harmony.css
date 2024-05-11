@@ -15,20 +15,20 @@
   cursor: pointer;
 }
 .nut-sidenavbar .arrow-down {
-  border-top: 4px solid #8c8c8c;
+  border-top: 4px solid #888B94;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
 }
 .nut-sidenavbar .arrow-up {
-  border-bottom: 4px solid #8c8c8c;
+  border-bottom: 4px solid #888B94;
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
 }
 .nut-sidenavbar-title {
   height: 40px;
   padding: 10px 8px 10px 20px;
-  background: #f6f6f6;
-  color: #1a1a1a;
+  background: #F7F8FC;
+  color: #1A1A1A;
   box-sizing: border-box;
   transition: transform 0.5s;
 }

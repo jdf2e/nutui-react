@@ -4,7 +4,7 @@
 .nut-horizontal-items li {
   display: block;
   float: left;
-  color: #1a1a1a;
+  color: #1A1A1A;
   background: #ffffff;
   padding: 10px;
   margin-right: 20px;
@@ -18,7 +18,7 @@
 
 .nut-vertical-items li {
   display: block;
-  color: #1a1a1a;
+  color: #1A1A1A;
   background: #ffffff;
   border-radius: 7px;
   box-shadow: 0 1px 6px 0 rgb(237, 238, 241);

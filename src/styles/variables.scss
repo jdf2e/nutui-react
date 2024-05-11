@@ -1,14 +1,14 @@
 // ----------------------------------------------------
 // 主色调
-$color-primary: var(--nutui-color-primary, #fa2c19) !default;
-$color-primary-stop-1: var(--nutui-color-primary-stop-1, #f53d4d) !default;
-$color-primary-stop-2: var(--nutui-color-primary-stop-2, #fa2c19) !default;
-$color-primary-pressed: var(--nutui-color-primary-pressed, #cf1f0f) !default;
-$color-primary-disabled: var(--nutui-color-primary-disabled, #fd9d94) !default;
-$color-primary-light: var(--nutui-color-primary-light, #ffeae8) !default;
+$color-primary: var(--nutui-color-primary, #ff0f23) !default;
+$color-primary-stop-1: var(--nutui-color-primary-stop-1, #ff475d) !default;
+$color-primary-stop-2: var(--nutui-color-primary-stop-2, #ff0f23) !default;
+$color-primary-pressed: var(--nutui-color-primary-pressed, #e53029) !default;
+$color-primary-disabled: var(--nutui-color-primary-disabled, #ffadbe) !default;
+$color-primary-light: var(--nutui-color-primary-light, #ffebf1) !default;
 $color-primary-light-pressed: var(
   --nutui-color-primary-light-pressed,
-  #fec3be
+  #ffebf1
 ) !default;
 $color-primary-gradient-1: linear-gradient(
   135deg,
@@ -27,27 +27,24 @@ $color-info: var(--nutui-color-info, #1988fa) !default;
 $color-info-pressed: var(--nutui-color-info-pressed, #496af2) !default;
 $color-info-disabled: var(--nutui-color-info-disabled, #89a6f8) !default;
 $color-info-light: var(--nutui-color-info-light) !default;
-$color-info-background: var(
-  --nutui-color-info-background,
-  linear-gradient(315deg, rgba(73, 143, 242, 1) 0%, rgba(73, 101, 242, 1) 100%)
-) !default;
+$color-info-background: var(--nutui-color-info-background, #0073ff) !default;
 
 // 成功
-$color-success: var(--nutui-color-success, #00bc14) !default;
+$color-success: var(--nutui-color-success, #2aa32a) !default;
 $color-success-pressed: var(--nutui-color-success-pressed) !default;
 $color-success-disabled: var(--nutui-color-success-disabled, #b2f0ae) !default;
-$color-success-light: var(--nutui-color-success-light) !default;
+$color-success-light: var(--nutui-color-success-light, #ebfbeb) !default;
 $color-success-background: var(--nutui-color-success-background) !default;
 
 // 警告
-$color-warning: var(--nutui-color-warning, rgba(255, 158, 13, 1)) !default;
+$color-warning: var(--nutui-color-warning, #c47600) !default;
 $color-warning-pressed: var(--nutui-color-warning-pressed) !default;
 $color-warning-disabled: var(--nutui-color-warning-disabled, #fdd3b9) !default;
 $color-warning-light: var(--nutui-color-warning-light) !default;
 $color-warning-background: var(--nutui-color-warning-background) !default;
 
 // 危险
-$color-danger: var(--nutui-color-danger, #fa2c19) !default;
+$color-danger: var(--nutui-color-danger, #ff0f23) !default;
 $color-danger-pressed: var(--nutui-color-danger-pressed) !default;
 $color-danger-disabled: var(
   --nutui-color-danger-disabled,
@@ -71,7 +68,7 @@ $color-surface-overlay: var(--nutui-black-8) !default; // 	Mask遮罩
 
 // 边框
 $color-border: var(--nutui-black-3, rgba(0, 0, 0, 0.06)) !default;
-$color-border-disabled: var(--nutui-gray-4, #bfbfbf) !default;
+$color-border-disabled: var(--nutui-gray-4, #c2c4cc) !default;
 
 // 文本
 $color-title: var(
@@ -80,15 +77,15 @@ $color-title: var(
 ) !default; // 一级文字色：主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
 $color-text: var(
   --nutui-gray-6,
-  #595959
+  #505259
 ) !default; // 常规，二级文字色: 次要文字色，用于次级标题、属性标示、非主要信息引导等。
 $color-text-help: var(
   --nutui-gray-5,
-  #8c8c8c
+  #888b94
 ) !default; // 辅助色，三级文字色：暂无用到。todo
 $color-text-disabled: var(
   --nutui-color-text-disabled,
-  #bfbfbf
+  #c2c4cc
 ) !default; // 特殊禁用色
 $color-text-dark: var(--nutui-white-12) !default; //	深色背景下的反向文本色
 $color-text-link: $color-primary !default; //链接文本色
@@ -125,11 +122,11 @@ $radius-xs: var(
   --nutui-radius-2
 ) !default; // 极小、小号的按钮、标签等组件的圆角样式
 $radius-s: var(
-  --nutui-radius-3
+  --nutui-radius-4
 ) !default; // 中号、大号按钮、输入框等表单组件的圆角样式
-$radius-base: var(--nutui-radius-4) !default; // 常规宫格排列的卡片圆角样式
+$radius-base: var(--nutui-radius-5) !default; // 常规宫格排列的卡片圆角样式
 $radius-l: var(
-  --nutui-radius-5
+  --nutui-radius-7
 ) !default; // 下拉菜单、popup 等组件的默认圆角样式
 $radius-xl: var(--nutui-radius-6) !default; // 一级页面模块容器使用的圆角样式
 $radius-circle: 50px !default; // 按钮、徽标等组件的胶囊形态圆角样式
@@ -141,11 +138,11 @@ $shadow-raised: 0 0 6 0 rgba(0, 0, 0, 0.1) !default;
 $shadow-overlay: 0 0 8 0 rgba(0, 0, 0, 0.2) !default;
 
 // 页面基底色，用于卡片式页面的兜底，永远置于页面最底层。
-$color-background: var(--nutui-gray-3, #f6f6f6) !default;
+$color-background: var(--nutui-gray-3, #f5f6fa) !default;
 // 卡片背景色
 $color-background-overlay: var(--nutui-gray-1, #ffffff) !default;
 // 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
-$color-background-sunken: var(--nutui-gray-2, #f8f8f8) !default;
+$color-background-sunken: var(--nutui-gray-2, #f7f8fc) !default;
 
 // 蒙层颜色
 // 页面全局蒙层
@@ -178,7 +175,7 @@ $font-size-xxxxl: var(--nutui-font-size-10, 28px) !default;
 // 与品牌色一起使用，默认为白色，不区分暗黑与明亮模式。
 $color-primary-text: var(--nutui-color-primary-text, #ffffff) !default;
 // 链接色 todo
-$color-text-link: var(--nutui-color-text-link, #396acc) !default;
+$color-text-link: var(--nutui-color-text-link, #0073ff) !default;
 $white: #ffffff !default;
 $black: $color-title !default;
 
@@ -199,10 +196,9 @@ $button-square-border-radius: var(
   --nutui-button-square-border-radius,
   0
 ) !default;
-$button-border-radius: var(--nutui-button-border-radius, 24px) !default;
+$button-border-radius: var(--nutui-button-border-radius, 8px) !default;
 $button-border-width: var(--nutui-button-border-width, 1px) !default;
-
-$button-normal-padding: var(--nutui-button-normal-padding, 0px 16px) !default;
+$button-normal-padding: var(--nutui-button-normal-padding, 0px 12px) !default;
 $button-default-height: var(--nutui-button-default-height, 32px) !default;
 $button-default-color: var(--nutui-button-default-color, $color-title) !default;
 $button-default-background-color: var(
@@ -221,7 +217,7 @@ $button-default-disabled-color: var(
   --nutui-button-default-disabled-color,
   $color-text-help
 ) !default;
-$button-default-padding: var(--nutui-button-default-padding, 0px 16px) !default;
+$button-default-padding: var(--nutui-button-default-padding, 0px 12px) !default;
 $button-default-font-size: var(
   --nutui-button-default-font-size,
   $font-size-base
@@ -232,17 +228,17 @@ $button-default-font-weight: var(
 ) !default;
 
 $button-xlarge-height: var(--nutui-button-xlarge-height, 48px) !default;
-$button-xlarge-padding: var(--nutui-button-xlarge-padding, 0px 32px) !default;
+$button-xlarge-padding: var(--nutui-button-xlarge-padding, 0px 24px) !default;
 $button-xlarge-font-size: var(
   --nutui-button-xlarge-font-size,
-  $font-size-xl
+  $font-size-xxl
 ) !default;
 
 $button-large-height: var(--nutui-button-large-height, 40px) !default;
-$button-large-padding: var(--nutui-button-large-padding, 0px 20px) !default;
+$button-large-padding: var(--nutui-button-large-padding, 0px 16px) !default;
 $button-large-font-size: var(
   --nutui-button-large-font-size,
-  $font-size-base
+  $font-size-large
 ) !default;
 $button-large-font-weight: var(
   --nutui-button-large-font-weight,
@@ -250,18 +246,18 @@ $button-large-font-weight: var(
 ) !default;
 $button-large-border-radius: var(
   --nutui-button-large-border-radius,
-  24px
+  12px
 ) !default;
 
 $button-small-font-size: var(
   --nutui-button-small-font-size,
   $font-size-small
 ) !default;
-$button-small-padding: var(--nutui-button-small-padding, 0px 12px) !default;
+$button-small-padding: var(--nutui-button-small-padding, 0px 8px) !default;
 $button-small-height: var(--nutui-button-small-height, 28px) !default;
 $button-small-border-radius: var(
   --nutui-button-small-border-radius,
-  24px
+  8px
 ) !default;
 
 $button-mini-padding: var(--nutui-button-mini-padding, 0px 8px) !default;
@@ -272,7 +268,7 @@ $button-mini-font-size: var(
 ) !default;
 $button-mini-border-radius: var(
   --nutui-button-mini-border-radius,
-  24px
+  6px
 ) !default;
 
 $button-primary-color: var(
@@ -1717,6 +1713,7 @@ $tabs-titles-item-smile-bottom: var(
   --nutui-tabs-titles-item-smile-bottom,
   -10%
 ) !default;
+$tabs-tabpane-padding: var(--nutui-tabs-tabpane-padding, 24px 20px) !default;
 
 // indicator（✅）
 $indicator-color: var(

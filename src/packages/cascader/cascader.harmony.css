@@ -33,7 +33,7 @@
   margin: 0px;
   border-bottom: 0px solid rgba(0, 0, 0, 0.06);
   font-size: 14px;
-  color: #1a1a1a;
+  color: #1A1A1A;
   cursor: pointer;
 }
 .nut-cascader-item.disabled {
@@ -41,7 +41,7 @@
   cursor: not-allowed;
 }
 .nut-cascader-item.active:not(.disabled) {
-  color: #fa2c19;
+  color: #FF0F23;
 }
 .nut-cascader-item.active .nut-cascader-item-icon-check {
   visibility: visible;

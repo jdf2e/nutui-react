@@ -10,15 +10,15 @@
   line-height: 50px;
   text-align: center;
   margin: 0 10px 10px 0;
-  background: #f6f6f6;
+  background: #F7F8FC;
   border-radius: 5px;
   font-size: 14px;
   border: 1px solid transparent;
 }
 .nut-timedetail-item.active {
-  background-color: #ffeae8;
-  border: 1px solid #fa2c19;
-  color: #fa2c19;
+  background-color: #FFEBF1;
+  border: 1px solid #FF0F23;
+  color: #FF0F23;
   font-weight: 500;
 }
 

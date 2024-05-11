@@ -1,5 +1,5 @@
 .nut-checkboxgroup .nut-checkbox-button {
-  background-color: #f6f6f6;
+  background-color: #F7F8FC;
 }
 .nut-checkboxgroup-vertical .nut-checkbox {
   margin-bottom: 5px;
@@ -9,16 +9,16 @@
   justify-content: space-between;
 }
 .nut-checkboxgroup-vertical .nut-checkbox-button-active {
-  border: 1px solid #fa2c19;
-  background-color: #ffeae8;
+  border: 1px solid #FF0F23;
+  background-color: #FFEBF1;
 }
 .nut-checkboxgroup-horizontal .nut-checkbox {
   display: inline-flex;
   margin-right: 20px;
 }
 .nut-checkboxgroup-horizontal .nut-checkbox-button-active {
-  border: 1px solid #fa2c19;
-  background-color: #ffeae8;
+  border: 1px solid #FF0F23;
+  background-color: #FFEBF1;
 }
 .nut-checkboxgroup-list {
   width: 100%;

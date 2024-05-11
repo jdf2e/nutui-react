@@ -9,7 +9,7 @@
   padding: 0 16px;
   user-select: none;
   overflow: hidden;
-  background: #f6f6f6;
+  background: #F7F8FC;
 }
 .nut-tabs-titles::-webkit-scrollbar {
   display: none;
@@ -49,7 +49,7 @@
   line-height: 44px;
   min-width: 50px;
   font-size: 14px;
-  color: #1a1a1a;
+  color: #1A1A1A;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
@@ -93,10 +93,10 @@
   font-size: 20px;
   width: 100%;
   height: 100%;
-  color: #fa2c19;
+  color: #FF0F23;
 }
 .nut-tabs-titles-item-active {
-  color: #fa2c19;
+  color: #FF0F23;
   font-weight: 500;
 }
 .nut-tabs-titles-item-active .nut-tabs-titles-item-line {
@@ -104,7 +104,7 @@
   content: " ";
   width: 12px;
   height: 2px;
-  background: #fa2c19;
+  background: #FF0F23;
 }
 .nut-tabs-titles-item-active .nut-tabs-titles-item-smile {
   overflow: unset;
@@ -112,7 +112,7 @@
   height: 20px;
 }
 .nut-tabs-titles-item-disabled {
-  color: #bfbfbf;
+  color: #C2C4CC;
 }
 .nut-tabs-titles-item:first-child {
   margin-left: 0;
@@ -121,7 +121,7 @@
   margin-right: 0;
 }
 .nut-tabs-titles-simple .nut-tabs-titles-item-active {
-  color: #1a1a1a;
+  color: #1A1A1A;
   font-size: 16px;
 }
 .nut-tabs-titles-card {
@@ -141,12 +141,12 @@
   margin-top: 8px;
   margin-bottom: 8px;
   background: undefined;
-  color: #595959;
+  color: #505259;
   border-radius: 50px;
   font-weight: 500;
-  background-color: #ffeae8;
-  color: #fa2c19;
-  border: 1px solid #fa2c19;
+  background-color: #FFEBF1;
+  color: #FF0F23;
+  border: 1px solid #FF0F23;
 }
 .nut-tabs-titles-divider {
   padding: 0;
@@ -250,7 +250,7 @@
   left: 10px;
   width: 3px;
   height: 12px;
-  background: linear-gradient(180deg, #f53d4d 0%, #ffeae8 100%);
+  background: linear-gradient(180deg, #FF0F23 0%, #FFEBF1 100%);
 }
 .nut-tabs-vertical .nut-tabs-titles-item-active .nut-tabs-titles-item-smile {
   right: -12px;
@@ -311,7 +311,7 @@
   flex: 1 0 auto;
 }
 .nut-tabs-vertical .nut-tabs-horizontal .nut-tabs-titles .nut-tabs-titles-item-active {
-  color: #fa2c19;
+  color: #FF0F23;
   font-weight: 500;
   font-size: 16px;
 }
@@ -319,7 +319,7 @@
   content: " ";
   width: 12px;
   height: 2px;
-  background: #fa2c19;
+  background: #FF0F23;
 }
 
 [dir=rtl] .nut-tabs-vertical .nut-tabs-titles-line .nut-tabs-titles-item,

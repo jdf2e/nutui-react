@@ -10,7 +10,7 @@
   height: 30px;
   background: #ffffff;
   border-radius: 50%;
-  box-shadow: 0 0 8px #bfbfbf;
+  box-shadow: 0 0 8px #C2C4CC;
 }
 .nut-audio-icon .nut-audio-icon-stop {
   position: relative;
@@ -23,7 +23,7 @@
   content: "";
   height: 2px;
   width: 30px;
-  background: #bfbfbf;
+  background: #C2C4CC;
   transform: rotate(45deg);
   transform-origin: 8px -18px;
 }
@@ -58,7 +58,7 @@
   color: blue;
 }
 .nut-audio .nut-audio-none-container .nut-voice {
-  border: 1px solid #1a1a1a;
+  border: 1px solid #1A1A1A;
   align-items: center;
 }
 

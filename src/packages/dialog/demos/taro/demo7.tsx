@@ -30,8 +30,8 @@ const Demo7 = () => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              backgroundColor: '#F8F8F8',
-              color: '#BFBFBF',
+              backgroundColor: '#F7F8FC',
+              color: '#C2C4CC',
             }}
           >
             自定义内容区域

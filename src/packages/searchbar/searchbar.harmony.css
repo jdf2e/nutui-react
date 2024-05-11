@@ -3,8 +3,8 @@
   align-items: center;
   width: 100%;
   padding: 6px 16px;
-  background: #f6f6f6;
-  color: #1a1a1a;
+  background: #F7F8FC;
+  color: #1A1A1A;
   font-size: 14px;
   box-sizing: border-box;
   justify-content: center;
@@ -103,8 +103,8 @@
   line-height: 32px;
   padding: 0 4px;
   font-size: 14px;
-  color: #1a1a1a;
-  caret-color: #1a1a1a;
+  color: #1A1A1A;
+  caret-color: #1A1A1A;
   background: transparent;
   text-align: left;
 }

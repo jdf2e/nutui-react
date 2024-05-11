@@ -10,7 +10,7 @@
   top: 0;
   overflow: hidden;
   font-size: 12px;
-  color: #1a1a1a;
+  color: #1A1A1A;
 }
 .nut-elevator-list-inner {
   height: 100%;
@@ -28,7 +28,7 @@
   height: 35px;
   line-height: 35px;
   font-size: 14px;
-  color: #1a1a1a;
+  color: #1A1A1A;
   padding: 0 20px;
   font-weight: 500;
   box-sizing: border-box;
@@ -43,7 +43,7 @@
   line-height: 30px;
 }
 .nut-elevator-list-item-name-highcolor {
-  color: #fa2c19;
+  color: #FF0F23;
 }
 .nut-elevator-list-fixed {
   width: 100%;
@@ -55,7 +55,7 @@
   height: 35px;
   line-height: 35px;
   font-size: 14px;
-  color: #fa2c19;
+  color: #FF0F23;
   font-weight: 500;
   background-color: #ffffff;
   box-sizing: border-box;
@@ -78,11 +78,11 @@
   position: absolute;
   right: 10px;
   top: 50%;
-  color: #8c8c8c;
+  color: #888B94;
   font-size: 12px;
   transform: translateY(-50%);
   padding: 15px 0;
-  background-color: #f6f6f6;
+  background-color: #F7F8FC;
   border-radius: 6px;
   text-align: center;
   z-index: 1;
@@ -94,7 +94,7 @@
 }
 .nut-elevator-bars-inner-item-active {
   font-weight: 500;
-  color: #fa2c19;
+  color: #FF0F23;
 }
 
 [dir=rtl] .nut-elevator-list-fixed,

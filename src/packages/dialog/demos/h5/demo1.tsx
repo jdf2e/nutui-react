@@ -37,18 +37,6 @@ const Demo1 = () => {
         }}
       />
       <Cell
-        title="自定义按钮属性"
-        onClick={() => {
-          Dialog.alert({
-            content: '无标题弹框',
-            confirmText: '确认',
-            confirmButtonProps: { type: 'success', shape: 'square' },
-            cancelText: '取消',
-            cancelButtonProps: { shape: 'square' },
-          })
-        }}
-      />
-      <Cell
         title="底部按钮 垂直布局 使用"
         onClick={() => {
           Dialog.alert({

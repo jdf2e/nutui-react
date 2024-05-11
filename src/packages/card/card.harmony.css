@@ -27,7 +27,7 @@
   word-break: break-all;
   line-height: 1.5;
   font-size: 14px;
-  color: #1a1a1a;
+  color: #1A1A1A;
 }
 .nut-card-right-price {
   display: flex;
@@ -71,7 +71,7 @@
 }
 .nut-card-right-shop-name {
   line-height: 1.5;
-  color: #595959;
+  color: #505259;
   font-size: 12px;
   padding-top: 4px;
 }

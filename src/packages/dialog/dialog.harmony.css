@@ -32,7 +32,7 @@
   justify-content: center;
   align-items: center;
   top: 16px;
-  color: #8c8c8c;
+  color: #888B94;
 }
 .nut-dialog-close-top-right {
   right: 16px;
@@ -54,7 +54,7 @@
   text-align: center;
   font-size: 16px;
   font-weight: normal;
-  color: #1a1a1a;
+  color: #1A1A1A;
   width: 100%;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -66,7 +66,7 @@
   max-height: 268px;
   line-height: 20px;
   font-size: 14px;
-  color: #595959;
+  color: #505259;
   word-wrap: break-word;
   word-break: break-all;
   white-space: pre-wrap;
@@ -91,7 +91,7 @@
 }
 .nut-dialog-footer.vertical .nut-button.nut-dialog-footer-cancel {
   border: 0;
-  color: #595959;
+  color: #505259;
   order: 2;
   display: flex;
   align-items: flex-end;

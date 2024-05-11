@@ -25,7 +25,7 @@
   text-align: center;
   line-height: 24px;
   font-size: 14px;
-  color: #1a1a1a;
+  color: #1A1A1A;
   background-color: #ffffff;
   cursor: pointer;
 }
@@ -35,32 +35,32 @@
   text-align: center;
   line-height: 24px;
   font-size: 14px;
-  color: #1a1a1a;
+  color: #1A1A1A;
   background-color: #ffffff;
   cursor: pointer;
 }
 .nut-actionsheet-cancel-description {
   display: block;
   font-size: 12px;
-  color: #595959;
+  color: #505259;
 }
 .nut-actionsheet-item-description {
   display: block;
   font-size: 12px;
-  color: #595959;
+  color: #505259;
 }
 .nut-actionsheet-cancel.danger {
-  color: #fa2c19;
+  color: #FF0F23;
 }
 .nut-actionsheet-item.danger {
-  color: #fa2c19;
+  color: #FF0F23;
 }
 .nut-actionsheet-cancel.disabled {
-  color: #bfbfbf !important;
+  color: #C2C4CC !important;
   cursor: not-allowed;
 }
 .nut-actionsheet-item.disabled {
-  color: #bfbfbf !important;
+  color: #C2C4CC !important;
   cursor: not-allowed;
 }
 .nut-actionsheet-cancel {

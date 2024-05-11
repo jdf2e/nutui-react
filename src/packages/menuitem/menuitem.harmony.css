@@ -14,13 +14,13 @@
 .nut-menu-container-item {
   display: flex;
   align-items: center;
-  color: #1a1a1a;
+  color: #1A1A1A;
   font-size: 14px;
   padding: 12px 0;
 }
 .nut-menu-container-item.active {
   font-weight: 500;
-  color: #fa2c19;
+  color: #FF0F23;
 }
 .nut-menu-container-item .nut-icon {
   display: inline-flex;

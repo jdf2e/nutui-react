@@ -15,7 +15,7 @@
   margin-bottom: 20px;
   font-size: 12px;
   line-height: 14px;
-  color: #1a1a1a;
+  color: #1A1A1A;
 }
 .nut-address-exist-item.active {
   font-weight: 500;
@@ -35,7 +35,7 @@
   line-height: 42px;
   margin: auto;
   text-align: center;
-  background: linear-gradient(135deg, #f53d4d 0%, #fa2c19 100%);
+  background: linear-gradient(135deg, #FF0F23 0%, #FF0F23 100%);
   border-radius: 21px;
   font-size: 15px;
   color: #ffffff;

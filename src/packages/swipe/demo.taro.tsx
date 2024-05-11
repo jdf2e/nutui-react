@@ -3,14 +3,7 @@ import Taro, { pxTransform } from '@tarojs/taro'
 import { View, Text } from '@tarojs/components'
 import { Del } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import {
-  Button,
-  Cell,
-  Toast,
-  Dialog,
-  InputNumber,
-  Swipe,
-} from '@/packages/nutui.react.taro'
+import { Button, Cell, Swipe } from '@/packages/nutui.react.taro'
 import Header from '@/sites/components/header'
 
 type TSwipeDemo = {
@@ -214,340 +207,340 @@ const SwipeDemo = () => {
           />
         </Swipe>
 
-        <View className="test-height"></View>
+        <View className="test-height" />
 
-        {/*<h2>{translated.title9}</h2>*/}
-        {/*<Swipe*/}
-        {/*  style={{*/}
-        {/*    height: pxTransform(104),*/}
-        {/*  }}*/}
-        {/*  rightAction={*/}
-        {/*    <div*/}
-        {/*      style={{*/}
-        {/*        width: pxTransform(240),*/}
-        {/*        height: pxTransform(104),*/}
-        {/*        display: 'flex',*/}
-        {/*        flexDirection: 'row',*/}
-        {/*        fontSize: pxTransform(12),*/}
-        {/*        alignSelf: 'stretch',*/}
-        {/*        alignItems: 'stretch',*/}
-        {/*      }}*/}
-        {/*    >*/}
-        {/*      <>*/}
-        {/*        {divNode(translated.alwaysbuy, {*/}
-        {/*          background: '#F8F8F8',*/}
-        {/*          color: '#1A1A1A',*/}
-        {/*        })}*/}
-        {/*        {divNode(translated.collect, {*/}
-        {/*          background: '#ffcc00',*/}
-        {/*          color: '#FFF',*/}
-        {/*        })}*/}
-        {/*        {divNode(translated.liked, {*/}
-        {/*          background: '#FF860D',*/}
-        {/*          color: '#FFF',*/}
-        {/*        })}*/}
-        {/*        {divNode(translated.del, {*/}
-        {/*          background: '#FA2C19',*/}
-        {/*          color: '#FFF',*/}
-        {/*        })}*/}
-        {/*      </>*/}
-        {/*    </div>*/}
-        {/*  }*/}
-        {/*>*/}
-        {/*  <Cell title={translated.leftDel} radius={0} />*/}
-        {/*</Swipe>*/}
+        {/* <h2>{translated.title9}</h2> */}
+        {/* <Swipe */}
+        {/*  style={{ */}
+        {/*    height: pxTransform(104), */}
+        {/*  }} */}
+        {/*  rightAction={ */}
+        {/*    <div */}
+        {/*      style={{ */}
+        {/*        width: pxTransform(240), */}
+        {/*        height: pxTransform(104), */}
+        {/*        display: 'flex', */}
+        {/*        flexDirection: 'row', */}
+        {/*        fontSize: pxTransform(12), */}
+        {/*        alignSelf: 'stretch', */}
+        {/*        alignItems: 'stretch', */}
+        {/*      }} */}
+        {/*    > */}
+        {/*      <> */}
+        {/*        {divNode(translated.alwaysbuy, { */}
+        {/*          background: '#F7F8FC', */}
+        {/*          color: '#1A1A1A', */}
+        {/*        })} */}
+        {/*        {divNode(translated.collect, { */}
+        {/*          background: '#ffcc00', */}
+        {/*          color: '#FFF', */}
+        {/*        })} */}
+        {/*        {divNode(translated.liked, { */}
+        {/*          background: '#FF860D', */}
+        {/*          color: '#FFF', */}
+        {/*        })} */}
+        {/*        {divNode(translated.del, { */}
+        {/*          background: '#FF0F23', */}
+        {/*          color: '#FFF', */}
+        {/*        })} */}
+        {/*      </> */}
+        {/*    </div> */}
+        {/*  } */}
+        {/* > */}
+        {/*  <Cell title={translated.leftDel} radius={0} /> */}
+        {/* </Swipe> */}
 
-        {/*<br style={{ display: 'block', height: '10px' }} />*/}
+        {/* <br style={{ display: 'block', height: '10px' }} /> */}
 
-        {/*<Swipe*/}
-        {/*  style={{*/}
-        {/*    height: pxTransform(104),*/}
-        {/*  }}*/}
-        {/*  rightAction={*/}
-        {/*    <div*/}
-        {/*      style={{*/}
-        {/*        width: pxTransform(240),*/}
-        {/*        height: pxTransform(104),*/}
-        {/*        display: 'flex',*/}
-        {/*        flexDirection: 'row',*/}
-        {/*        fontSize: pxTransform(12),*/}
-        {/*        alignSelf: 'stretch',*/}
-        {/*        alignItems: 'stretch',*/}
-        {/*      }}*/}
-        {/*    >*/}
-        {/*      <>*/}
-        {/*        {divNode(*/}
-        {/*          translated.alwaysbuy,*/}
-        {/*          {*/}
-        {/*            background: '#F8F8F8',*/}
-        {/*            color: '#1A1A1A',*/}
-        {/*          },*/}
-        {/*          false*/}
-        {/*        )}*/}
-        {/*        {divNode(*/}
-        {/*          translated.collect,*/}
-        {/*          {*/}
-        {/*            background: '#ffcc00',*/}
-        {/*            color: '#FFF',*/}
-        {/*          },*/}
-        {/*          false*/}
-        {/*        )}*/}
-        {/*        {divNode(*/}
-        {/*          translated.liked,*/}
-        {/*          {*/}
-        {/*            background: '#FF860D',*/}
-        {/*            color: '#FFF',*/}
-        {/*          },*/}
-        {/*          false*/}
-        {/*        )}*/}
-        {/*        {divNode(*/}
-        {/*          translated.del,*/}
-        {/*          {*/}
-        {/*            background: '#FA2C19',*/}
-        {/*            color: '#FFF',*/}
-        {/*          },*/}
-        {/*          false*/}
-        {/*        )}*/}
-        {/*      </>*/}
-        {/*    </div>*/}
-        {/*  }*/}
-        {/*>*/}
-        {/*  <Cell*/}
-        {/*    title={translated.leftDel}*/}
-        {/*    radius={0}*/}
-        {/*    style={{ margin: 0, alignSelf: 'stretch' }}*/}
-        {/*  />*/}
-        {/*</Swipe>*/}
+        {/* <Swipe */}
+        {/*  style={{ */}
+        {/*    height: pxTransform(104), */}
+        {/*  }} */}
+        {/*  rightAction={ */}
+        {/*    <div */}
+        {/*      style={{ */}
+        {/*        width: pxTransform(240), */}
+        {/*        height: pxTransform(104), */}
+        {/*        display: 'flex', */}
+        {/*        flexDirection: 'row', */}
+        {/*        fontSize: pxTransform(12), */}
+        {/*        alignSelf: 'stretch', */}
+        {/*        alignItems: 'stretch', */}
+        {/*      }} */}
+        {/*    > */}
+        {/*      <> */}
+        {/*        {divNode( */}
+        {/*          translated.alwaysbuy, */}
+        {/*          { */}
+        {/*            background: '#F7F8FC', */}
+        {/*            color: '#1A1A1A', */}
+        {/*          }, */}
+        {/*          false */}
+        {/*        )} */}
+        {/*        {divNode( */}
+        {/*          translated.collect, */}
+        {/*          { */}
+        {/*            background: '#ffcc00', */}
+        {/*            color: '#FFF', */}
+        {/*          }, */}
+        {/*          false */}
+        {/*        )} */}
+        {/*        {divNode( */}
+        {/*          translated.liked, */}
+        {/*          { */}
+        {/*            background: '#FF860D', */}
+        {/*            color: '#FFF', */}
+        {/*          }, */}
+        {/*          false */}
+        {/*        )} */}
+        {/*        {divNode( */}
+        {/*          translated.del, */}
+        {/*          { */}
+        {/*            background: '#FF0F23', */}
+        {/*            color: '#FFF', */}
+        {/*          }, */}
+        {/*          false */}
+        {/*        )} */}
+        {/*      </> */}
+        {/*    </div> */}
+        {/*  } */}
+        {/* > */}
+        {/*  <Cell */}
+        {/*    title={translated.leftDel} */}
+        {/*    radius={0} */}
+        {/*    style={{ margin: 0, alignSelf: 'stretch' }} */}
+        {/*  /> */}
+        {/* </Swipe> */}
 
-        {/*<h2>{translated.title8}</h2>*/}
-        {/*<View catchMove={shouldCatchMove}>*/}
-        {/*  <Swipe*/}
-        {/*    rightAction={*/}
-        {/*      <Button*/}
-        {/*        type="primary"*/}
-        {/*        shape="square"*/}
-        {/*        style={{ alignSelf: 'stretch' }}*/}
-        {/*      >*/}
-        {/*        {translated.del}*/}
-        {/*      </Button>*/}
-        {/*    }*/}
-        {/*    onTouchEnd={(e) => {*/}
-        {/*      setShouldCatchMove(false)*/}
-        {/*    }}*/}
-        {/*    onTouchMove={(e) => {*/}
-        {/*      setShouldCatchMove(true)*/}
-        {/*    }}*/}
-        {/*  >*/}
-        {/*    <Cell*/}
-        {/*      title={translated.leftDel}*/}
-        {/*      radius={0}*/}
-        {/*      style={{ margin: 0, alignSelf: 'stretch' }}*/}
-        {/*    />*/}
-        {/*  </Swipe>*/}
-        {/*</View>*/}
+        {/* <h2>{translated.title8}</h2> */}
+        {/* <View catchMove={shouldCatchMove}> */}
+        {/*  <Swipe */}
+        {/*    rightAction={ */}
+        {/*      <Button */}
+        {/*        type="primary" */}
+        {/*        shape="square" */}
+        {/*        style={{ alignSelf: 'stretch' }} */}
+        {/*      > */}
+        {/*        {translated.del} */}
+        {/*      </Button> */}
+        {/*    } */}
+        {/*    onTouchEnd={(e) => { */}
+        {/*      setShouldCatchMove(false) */}
+        {/*    }} */}
+        {/*    onTouchMove={(e) => { */}
+        {/*      setShouldCatchMove(true) */}
+        {/*    }} */}
+        {/*  > */}
+        {/*    <Cell */}
+        {/*      title={translated.leftDel} */}
+        {/*      radius={0} */}
+        {/*      style={{ margin: 0, alignSelf: 'stretch' }} */}
+        {/*    /> */}
+        {/*  </Swipe> */}
+        {/* </View> */}
 
-        {/*<h2>{translated.title6}</h2>*/}
-        {/*<Swipe*/}
-        {/*  ref={openRef}*/}
-        {/*  rightAction={*/}
-        {/*    <Button*/}
-        {/*      shape="square"*/}
-        {/*      type="primary"*/}
-        {/*      style={{ alignSelf: 'stretch' }}*/}
-        {/*    >*/}
-        {/*      {translated.del}*/}
-        {/*    </Button>*/}
-        {/*  }*/}
-        {/*  style={{ marginBottom: '10px' }}*/}
-        {/*>*/}
-        {/*  <Cell*/}
-        {/*    title={translated.openOrClose}*/}
-        {/*    radius={0}*/}
-        {/*    style={{ margin: 0, alignSelf: 'stretch' }}*/}
-        {/*  />*/}
-        {/*</Swipe>*/}
-        {/*<div style={{ display: 'flex' }}>*/}
-        {/*  <Button*/}
-        {/*    style={{ marginInlineEnd: '10px', alignSelf: 'stretch' }}*/}
-        {/*    type="primary"*/}
-        {/*    size="small"*/}
-        {/*    onClick={() => (openRef.current as any)?.open()}*/}
-        {/*  >*/}
-        {/*    {translated.open}*/}
-        {/*  </Button>*/}
-        {/*  <Button*/}
-        {/*    size="small"*/}
-        {/*    style={{ alignSelf: 'stretch' }}*/}
-        {/*    onClick={() => (openRef.current as any)?.close()}*/}
-        {/*  >*/}
-        {/*    {translated.close}*/}
-        {/*  </Button>*/}
-        {/*</div>*/}
-        {/*<h2>{translated.title7}</h2>*/}
-        {/*<Swipe*/}
-        {/*  ref={closeRef}*/}
-        {/*  rightAction={*/}
-        {/*    <Button*/}
-        {/*      shape="square"*/}
-        {/*      type="primary"*/}
-        {/*      style={{ alignSelf: 'stretch' }}*/}
-        {/*    >*/}
-        {/*      {translated.del}*/}
-        {/*    </Button>*/}
-        {/*  }*/}
-        {/*  onActionClick={() => {*/}
-        {/*    ;(closeRef.current as any)?.close()*/}
-        {/*  }}*/}
-        {/*>*/}
-        {/*  <Cell*/}
-        {/*    title={translated.closeLeft}*/}
-        {/*    radius={0}*/}
-        {/*    style={{ margin: 0, alignSelf: 'stretch' }}*/}
-        {/*  />*/}
-        {/*</Swipe>*/}
-        {/*<h2>{translated.title2}</h2>*/}
-        {/*<Swipe*/}
-        {/*  rightAction={*/}
-        {/*    <Button*/}
-        {/*      shape="square"*/}
-        {/*      type="primary"*/}
-        {/*      style={{ alignSelf: 'stretch' }}*/}
-        {/*    >*/}
-        {/*      {translated.del}*/}
-        {/*    </Button>*/}
-        {/*  }*/}
-        {/*  disabled*/}
-        {/*>*/}
-        {/*  <Cell*/}
-        {/*    title={translated.disabled}*/}
-        {/*    radius={0}*/}
-        {/*    style={{ margin: 0, alignSelf: 'stretch' }}*/}
-        {/*  />*/}
-        {/*</Swipe>*/}
-        {/*<h2>{translated.title3}</h2>*/}
-        {/*<Swipe*/}
-        {/*  leftAction={*/}
-        {/*    <Button*/}
-        {/*      shape="square"*/}
-        {/*      type="primary"*/}
-        {/*      style={{ alignSelf: 'stretch' }}*/}
-        {/*    >*/}
-        {/*      {translated.choose}*/}
-        {/*    </Button>*/}
-        {/*  }*/}
-        {/*  rightAction={*/}
-        {/*    <>*/}
-        {/*      <Button*/}
-        {/*        shape="square"*/}
-        {/*        type="primary"*/}
-        {/*        style={{ alignSelf: 'stretch' }}*/}
-        {/*      >*/}
-        {/*        {translated.del}*/}
-        {/*      </Button>*/}
-        {/*      <Button*/}
-        {/*        shape="square"*/}
-        {/*        type="primary"*/}
-        {/*        style={{ alignSelf: 'stretch' }}*/}
-        {/*      >*/}
-        {/*        {translated.collect}*/}
-        {/*      </Button>*/}
-        {/*    </>*/}
-        {/*  }*/}
-        {/*  onActionClick={handleChange}*/}
-        {/*  onOpen={({ name, position }) => {*/}
-        {/*    // Toast.show(translated.open)*/}
-        {/*    toastShow(translated.open)*/}
-        {/*  }}*/}
-        {/*  onClose={handleClose}*/}
-        {/*>*/}
-        {/*  <Cell*/}
-        {/*    title={translated.event}*/}
-        {/*    style={{ margin: 0, alignSelf: 'stretch' }}*/}
-        {/*  />*/}
-        {/*</Swipe>*/}
-        {/*<h2>{translated.title4}</h2>*/}
-        {/*<Swipe*/}
-        {/*  ref={refDom}*/}
-        {/*  beforeClose={beforeClose}*/}
-        {/*  leftAction={*/}
-        {/*    <Button*/}
-        {/*      shape="square"*/}
-        {/*      type="success"*/}
-        {/*      style={{ alignSelf: 'stretch' }}*/}
-        {/*    >*/}
-        {/*      {translated.choose}*/}
-        {/*    </Button>*/}
-        {/*  }*/}
-        {/*  rightAction={*/}
-        {/*    <>*/}
-        {/*      <Button*/}
-        {/*        shape="square"*/}
-        {/*        type="danger"*/}
-        {/*        style={{ alignSelf: 'stretch' }}*/}
-        {/*      >*/}
-        {/*        {translated.del}*/}
-        {/*      </Button>*/}
-        {/*    </>*/}
-        {/*  }*/}
-        {/*>*/}
-        {/*  <Cell*/}
-        {/*    title={translated.event}*/}
-        {/*    style={{ background: '#f0f0f0', margin: 0, alignSelf: 'stretch' }}*/}
-        {/*  />*/}
-        {/*</Swipe>*/}
-        {/*<h2>{translated.title5}</h2>*/}
-        {/*<Swipe*/}
-        {/*  rightAction={*/}
-        {/*    <>*/}
-        {/*      <Button*/}
-        {/*        shape="square"*/}
-        {/*        type="primary"*/}
-        {/*        style={{ alignSelf: 'stretch' }}*/}
-        {/*      >*/}
-        {/*        {translated.cart}*/}
-        {/*      </Button>*/}
-        {/*    </>*/}
-        {/*  }*/}
-        {/*  style={{ marginBottom: '30px' }}*/}
-        {/*>*/}
-        {/*  <Cell*/}
-        {/*    style={{*/}
-        {/*      margin: 0,*/}
-        {/*      alignSelf: 'stretch',*/}
-        {/*    }}*/}
-        {/*  >*/}
-        {/*    <div*/}
-        {/*      style={{*/}
-        {/*        display: 'flex',*/}
-        {/*        justifyContent: 'space-between',*/}
-        {/*        width: '100%',*/}
-        {/*      }}*/}
-        {/*    >*/}
-        {/*      <span>{translated.goods}</span>*/}
-        {/*      <InputNumber style={{ float: 'right' }} />*/}
-        {/*    </div>*/}
-        {/*  </Cell>*/}
-        {/*</Swipe>*/}
-        {/*<Toast*/}
-        {/*  type="text"*/}
-        {/*  visible={show}*/}
-        {/*  content={toastMsg}*/}
-        {/*  onClose={() => {*/}
-        {/*    SetShow(false)*/}
-        {/*  }}*/}
-        {/*/>*/}
-        {/*<Dialog*/}
-        {/*  visible={showDialog}*/}
-        {/*  title={translated.tips}*/}
-        {/*  onClose={() => {*/}
-        {/*    refDom.current && refDom.current.close()*/}
-        {/*    setShowDialog(false)*/}
-        {/*  }}*/}
-        {/*>*/}
-        {/*  {pRef.current === 'left'*/}
-        {/*    ? translated.chooseTips*/}
-        {/*    : translated.deleteTips}*/}
-        {/*</Dialog>*/}
+        {/* <h2>{translated.title6}</h2> */}
+        {/* <Swipe */}
+        {/*  ref={openRef} */}
+        {/*  rightAction={ */}
+        {/*    <Button */}
+        {/*      shape="square" */}
+        {/*      type="primary" */}
+        {/*      style={{ alignSelf: 'stretch' }} */}
+        {/*    > */}
+        {/*      {translated.del} */}
+        {/*    </Button> */}
+        {/*  } */}
+        {/*  style={{ marginBottom: '10px' }} */}
+        {/* > */}
+        {/*  <Cell */}
+        {/*    title={translated.openOrClose} */}
+        {/*    radius={0} */}
+        {/*    style={{ margin: 0, alignSelf: 'stretch' }} */}
+        {/*  /> */}
+        {/* </Swipe> */}
+        {/* <div style={{ display: 'flex' }}> */}
+        {/*  <Button */}
+        {/*    style={{ marginInlineEnd: '10px', alignSelf: 'stretch' }} */}
+        {/*    type="primary" */}
+        {/*    size="small" */}
+        {/*    onClick={() => (openRef.current as any)?.open()} */}
+        {/*  > */}
+        {/*    {translated.open} */}
+        {/*  </Button> */}
+        {/*  <Button */}
+        {/*    size="small" */}
+        {/*    style={{ alignSelf: 'stretch' }} */}
+        {/*    onClick={() => (openRef.current as any)?.close()} */}
+        {/*  > */}
+        {/*    {translated.close} */}
+        {/*  </Button> */}
+        {/* </div> */}
+        {/* <h2>{translated.title7}</h2> */}
+        {/* <Swipe */}
+        {/*  ref={closeRef} */}
+        {/*  rightAction={ */}
+        {/*    <Button */}
+        {/*      shape="square" */}
+        {/*      type="primary" */}
+        {/*      style={{ alignSelf: 'stretch' }} */}
+        {/*    > */}
+        {/*      {translated.del} */}
+        {/*    </Button> */}
+        {/*  } */}
+        {/*  onActionClick={() => { */}
+        {/*    ;(closeRef.current as any)?.close() */}
+        {/*  }} */}
+        {/* > */}
+        {/*  <Cell */}
+        {/*    title={translated.closeLeft} */}
+        {/*    radius={0} */}
+        {/*    style={{ margin: 0, alignSelf: 'stretch' }} */}
+        {/*  /> */}
+        {/* </Swipe> */}
+        {/* <h2>{translated.title2}</h2> */}
+        {/* <Swipe */}
+        {/*  rightAction={ */}
+        {/*    <Button */}
+        {/*      shape="square" */}
+        {/*      type="primary" */}
+        {/*      style={{ alignSelf: 'stretch' }} */}
+        {/*    > */}
+        {/*      {translated.del} */}
+        {/*    </Button> */}
+        {/*  } */}
+        {/*  disabled */}
+        {/* > */}
+        {/*  <Cell */}
+        {/*    title={translated.disabled} */}
+        {/*    radius={0} */}
+        {/*    style={{ margin: 0, alignSelf: 'stretch' }} */}
+        {/*  /> */}
+        {/* </Swipe> */}
+        {/* <h2>{translated.title3}</h2> */}
+        {/* <Swipe */}
+        {/*  leftAction={ */}
+        {/*    <Button */}
+        {/*      shape="square" */}
+        {/*      type="primary" */}
+        {/*      style={{ alignSelf: 'stretch' }} */}
+        {/*    > */}
+        {/*      {translated.choose} */}
+        {/*    </Button> */}
+        {/*  } */}
+        {/*  rightAction={ */}
+        {/*    <> */}
+        {/*      <Button */}
+        {/*        shape="square" */}
+        {/*        type="primary" */}
+        {/*        style={{ alignSelf: 'stretch' }} */}
+        {/*      > */}
+        {/*        {translated.del} */}
+        {/*      </Button> */}
+        {/*      <Button */}
+        {/*        shape="square" */}
+        {/*        type="primary" */}
+        {/*        style={{ alignSelf: 'stretch' }} */}
+        {/*      > */}
+        {/*        {translated.collect} */}
+        {/*      </Button> */}
+        {/*    </> */}
+        {/*  } */}
+        {/*  onActionClick={handleChange} */}
+        {/*  onOpen={({ name, position }) => { */}
+        {/*    // Toast.show(translated.open) */}
+        {/*    toastShow(translated.open) */}
+        {/*  }} */}
+        {/*  onClose={handleClose} */}
+        {/* > */}
+        {/*  <Cell */}
+        {/*    title={translated.event} */}
+        {/*    style={{ margin: 0, alignSelf: 'stretch' }} */}
+        {/*  /> */}
+        {/* </Swipe> */}
+        {/* <h2>{translated.title4}</h2> */}
+        {/* <Swipe */}
+        {/*  ref={refDom} */}
+        {/*  beforeClose={beforeClose} */}
+        {/*  leftAction={ */}
+        {/*    <Button */}
+        {/*      shape="square" */}
+        {/*      type="success" */}
+        {/*      style={{ alignSelf: 'stretch' }} */}
+        {/*    > */}
+        {/*      {translated.choose} */}
+        {/*    </Button> */}
+        {/*  } */}
+        {/*  rightAction={ */}
+        {/*    <> */}
+        {/*      <Button */}
+        {/*        shape="square" */}
+        {/*        type="danger" */}
+        {/*        style={{ alignSelf: 'stretch' }} */}
+        {/*      > */}
+        {/*        {translated.del} */}
+        {/*      </Button> */}
+        {/*    </> */}
+        {/*  } */}
+        {/* > */}
+        {/*  <Cell */}
+        {/*    title={translated.event} */}
+        {/*    style={{ background: '#f0f0f0', margin: 0, alignSelf: 'stretch' }} */}
+        {/*  /> */}
+        {/* </Swipe> */}
+        {/* <h2>{translated.title5}</h2> */}
+        {/* <Swipe */}
+        {/*  rightAction={ */}
+        {/*    <> */}
+        {/*      <Button */}
+        {/*        shape="square" */}
+        {/*        type="primary" */}
+        {/*        style={{ alignSelf: 'stretch' }} */}
+        {/*      > */}
+        {/*        {translated.cart} */}
+        {/*      </Button> */}
+        {/*    </> */}
+        {/*  } */}
+        {/*  style={{ marginBottom: '30px' }} */}
+        {/* > */}
+        {/*  <Cell */}
+        {/*    style={{ */}
+        {/*      margin: 0, */}
+        {/*      alignSelf: 'stretch', */}
+        {/*    }} */}
+        {/*  > */}
+        {/*    <div */}
+        {/*      style={{ */}
+        {/*        display: 'flex', */}
+        {/*        justifyContent: 'space-between', */}
+        {/*        width: '100%', */}
+        {/*      }} */}
+        {/*    > */}
+        {/*      <span>{translated.goods}</span> */}
+        {/*      <InputNumber style={{ float: 'right' }} /> */}
+        {/*    </div> */}
+        {/*  </Cell> */}
+        {/* </Swipe> */}
+        {/* <Toast */}
+        {/*  type="text" */}
+        {/*  visible={show} */}
+        {/*  content={toastMsg} */}
+        {/*  onClose={() => { */}
+        {/*    SetShow(false) */}
+        {/*  }} */}
+        {/* /> */}
+        {/* <Dialog */}
+        {/*  visible={showDialog} */}
+        {/*  title={translated.tips} */}
+        {/*  onClose={() => { */}
+        {/*    refDom.current && refDom.current.close() */}
+        {/*    setShowDialog(false) */}
+        {/*  }} */}
+        {/* > */}
+        {/*  {pRef.current === 'left' */}
+        {/*    ? translated.chooseTips */}
+        {/*    : translated.deleteTips} */}
+        {/* </Dialog> */}
       </div>
     </>
   )

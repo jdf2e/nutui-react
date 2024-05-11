@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #f53d4d 0%, #fa2c19 100%);
+  background: linear-gradient(135deg, #FF0F23 0%, #FF0F23 100%);
   top: -10%;
   right: -15%;
   padding: 3px;
@@ -27,7 +27,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #f53d4d 0%, #fa2c19 100%);
+  background: linear-gradient(135deg, #FF0F23 0%, #FF0F23 100%);
   color: #fff;
   padding: 0 4px;
   font-size: 10px;

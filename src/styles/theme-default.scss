@@ -1,18 +1,19 @@
 :root,
 page {
-  --nutui-brand-1: #ffeae8; // 梯度1
-  --nutui-brand-2: #fec3be; // 梯度2
-  --nutui-brand-3: #fd9d94; // 梯度3
-  --nutui-brand-4: #fc776b; // 梯度4
-  --nutui-brand-5: #fb5142; // 梯度5
-  --nutui-brand-6: #fa2c19; // 梯度6
-  --nutui-brand-7: #cf1f0f; // 梯度7
-  --nutui-brand-8: #a31508; // 梯度8
-  --nutui-brand-9: #780d03; // 梯度9
-  --nutui-brand-10: #4d0004; // 梯度10
+  --nutui-brand-1: #ffebf1; // 梯度1
+  --nutui-brand-2: #ffd6e1; // 梯度2
+  --nutui-brand-3: #ffadbe; // 梯度3
+  --nutui-brand-4: #ff8595; // 梯度4
+  --nutui-brand-5: #ff5c67; // 梯度5
+  --nutui-brand-6: #ff0f23; // 梯度6
+  --nutui-brand-7: #e53029; // 梯度7
+  --nutui-brand-8: #cc2c21; // 梯度8
+  --nutui-brand-9: #992412; // 梯度9
+  --nutui-brand-10: #661b08; // 梯度10
+  --nutui-brand-11: #330f02; // 梯度11
 
-  --nutui-brand-stop-1: #f53d4d; // 渐变色起
-  --nutui-brand-stop-2: #fa2c19; // 渐变色止
+  --nutui-brand-stop-1: #ff475d; // 渐变色起
+  --nutui-brand-stop-2: #ff0f23; // 渐变色止
 
   --nutui-secondary-1: #14cc33; // 辅助色
 
@@ -25,22 +26,22 @@ page {
   --nutui-color-primary-light: var(--nutui-brand-1);
   --nutui-color-primary-light-pressed: var(--nutui-brand-2);
 
-  --nutui-color-text-link: #396acc;
+  --nutui-color-text-link: #0073ff;
 
   // 背景色
   // 卡片背景色
   --nutui-gray-1: #ffffff;
   // 卡片内嵌背景色，用于卡片内部的信息包裹，感知较弱。
-  --nutui-gray-2: #f8f8f8;
+  --nutui-gray-2: #f7f8fc;
   // 页面基底色，用于卡片式页面的兜底，永远置于页面最底层。
-  --nutui-gray-3: #f6f6f6;
+  --nutui-gray-3: #f5f6fa;
   // 文字色
   // 四级文字色，不可操作内容色，用于预置内容、无效内容、特殊不可点击按钮、组件边框线等。
-  --nutui-gray-4: #bfbfbf;
+  --nutui-gray-4: #c2c4cc;
   // 三级文字色（次要）
-  --nutui-gray-5: #8c8c8c;
+  --nutui-gray-5: #888b94;
   // 二级文字色（常规），用于次级标题、属性标示、非主要信息引导等。
-  --nutui-gray-6: #595959;
+  --nutui-gray-6: #505259;
   // 一级文字色（重要）主要内容用色，常用语常规标题内容、细文浏览、常规按钮文字以及图表引导。
   --nutui-gray-7: #1a1a1a;
 
@@ -54,6 +55,8 @@ page {
   --nutui-black-4: rgba(0, 0, 0, 0.1);
   --nutui-black-5: rgba(0, 0, 0, 0.2);
   --nutui-black-6: rgba(0, 0, 0, 0.3);
+  // 蒙层色
+  // 局部蒙层，像图片上的小蒙层，无货、采购中等
   --nutui-black-7: rgba(0, 0, 0, 0.4);
   --nutui-black-8: rgba(0, 0, 0, 0.5);
   --nutui-black-9: rgba(0, 0, 0, 0.6);

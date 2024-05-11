@@ -64,7 +64,7 @@
   font-size: 12px;
   font-family: PingFangSC;
   font-weight: normal;
-  color: #1a1a1a;
+  color: #1A1A1A;
   box-shadow: 0 2px 12px rgba(50, 50, 51, 0.1215686275);
   max-height: initial;
   overflow-y: initial;
@@ -88,7 +88,7 @@
 }
 .nut-popover .nut-popover-content .nut-popover-menu-item:hover {
   cursor: pointer;
-  color: #1a1a1a;
+  color: #1A1A1A;
   background-color: #fff;
 }
 .nut-popover .nut-popover-content .nut-popover-menu-item:hover:nth-of-type(2) {
@@ -119,10 +119,10 @@
   width: 12px;
   height: 12px;
   font-size: 12px;
-  color: #595959;
+  color: #505259;
 }
 .nut-popover .nut-popover-content .nut-popover-menu-item.nut-popover-menu-disabled {
-  color: #bfbfbf;
+  color: #C2C4CC;
   cursor: not-allowed;
 }
 .nut-popover .nut-popover-content .nut-popover-menu-item.nut-popover-menu-taroitem {

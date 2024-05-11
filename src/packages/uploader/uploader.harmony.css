@@ -11,7 +11,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f6f6f6;
+  background: #F7F8FC;
   width: 100px;
   height: 100px;
   border: 0px;
@@ -22,14 +22,14 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #8c8c8c;
+  color: #888B94;
 }
 .nut-uploader-icon i {
-  color: #8c8c8c;
+  color: #888B94;
   margin-bottom: 6px;
 }
 .nut-uploader-icon .nut-icon {
-  color: #8c8c8c;
+  color: #888B94;
   margin-bottom: 6px;
 }
 .nut-uploader-icon-tip {
@@ -49,15 +49,15 @@
   cursor: not-allowed;
 }
 .nut-uploader-upload-disabled {
-  background: #f6f6f6;
-  color: #bfbfbf;
+  background: #F7F8FC;
+  color: #C2C4CC;
 }
 .nut-uploader-upload-disabled .nut-uploader-icon i {
-  color: #bfbfbf;
+  color: #C2C4CC;
   margin-bottom: 6px;
 }
 .nut-uploader-upload-disabled .nut-uploader-icon .nut-icon {
-  color: #bfbfbf;
+  color: #C2C4CC;
   margin-bottom: 6px;
 }
 .nut-uploader-preview {
@@ -84,7 +84,7 @@
   margin-bottom: 6px;
 }
 .nut-uploader-preview-progress-msg {
-  color: #8c8c8c;
+  color: #888B94;
   font-size: 12px;
 }
 .nut-uploader-preview.list {
@@ -102,7 +102,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 0 10px;
-  background-color: #f8f8f8;
+  background-color: #F7F8FC;
 }
 .nut-uploader-preview-list .nut-uploader-preview-img-file-name {
   display: flex;
@@ -138,7 +138,7 @@
   overflow: hidden;
 }
 .nut-uploader-preview-img i {
-  color: #1a1a1a;
+  color: #1A1A1A;
 }
 .nut-uploader-preview-img .tips {
   position: absolute;
@@ -178,7 +178,7 @@
   display: flex;
   width: 90%;
   font-size: 12px;
-  color: #595959;
+  color: #505259;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
