@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { View } from '@tarojs/components'
+import { Text } from '@tarojs/components'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
@@ -95,7 +95,7 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
 
   const renderSymbol = () => {
     return (
-      <View
+      <Text
         className={classNames([
           `${classPrefix}-symbol`,
           `${classPrefix}-symbol-${size}`,
@@ -106,43 +106,43 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
         ])}
       >
         {symbol ? replaceSpecialChar(symbol) : ''}
-      </View>
+      </Text>
     )
   }
 
   return (
-    <View
+    <Text
       className={`${classPrefix} ${
         line ? `${classPrefix}-line` : ''
       } ${className}`}
       style={style}
     >
       {symbol && position === 'before' ? renderSymbol() : null}
-      <View
+      <Text
         className={`${classPrefix}-integer ${classPrefix}-integer-${size} ${
           line ? `${classPrefix}-line` : ''
         }`}
       >
         {formatThousands(price)}
-      </View>
+      </Text>
       {digits !== 0 ? (
-        <View
+        <Text
           className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
             line ? `${classPrefix}-line` : ''
           }`}
         >
           .
-        </View>
+        </Text>
       ) : null}
-      <View
+      <Text
         className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
           line ? `${classPrefix}-line` : ''
         }`}
       >
         {formatDecimal(price)}
-      </View>
+      </Text>
       {symbol && position === 'after' ? renderSymbol() : null}
-    </View>
+    </Text>
   )
 }
 
