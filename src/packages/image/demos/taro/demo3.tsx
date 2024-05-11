@@ -13,11 +13,11 @@ const Demo3 = () => {
   return (
     <>
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-        <div style={{ width: 100 }}>
+        <div style={{ width: 98 }}>
           <Image width="80" height="80" />
           <View style={imageText}>默认</View>
         </div>
-        <div style={{ width: 100 }}>
+        <div style={{ width: 98 }}>
           <Image
             width="80"
             height="80"

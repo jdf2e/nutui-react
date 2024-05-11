@@ -7,7 +7,7 @@ const Demo2 = () => {
   return (
     <>
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-        <div style={{ width: 100 }}>
+        <div style={{ width: 98 }}>
           <Image
             src={src}
             mode="aspectFit"
@@ -16,7 +16,7 @@ const Demo2 = () => {
             radius="50%"
           />
         </div>
-        <div style={{ width: 100 }}>
+        <div style={{ width: 98 }}>
           <Image
             src={src}
             mode="scaleToFill"
@@ -25,7 +25,7 @@ const Demo2 = () => {
             radius="50%"
           />
         </div>
-        <div style={{ width: 100 }}>
+        <div style={{ width: 98 }}>
           <Image
             src={src}
             mode="scaleToFill"
