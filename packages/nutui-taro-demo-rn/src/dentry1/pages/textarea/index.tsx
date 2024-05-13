@@ -1,1 +1,2 @@
-export default <>button</>;
+import Demo from '@/packages/textarea/demo.taro'
+export default Demo
