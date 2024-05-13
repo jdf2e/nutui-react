@@ -37,20 +37,22 @@ const copyFile = async (from, to, success, isSingle = false) => {
       return
     }
     console.log(`${success}!>`, to)
-    adapted
-      .filter(function (item) {
-        return item !== 'cellgroup'
-      })
-      .map((item) => {
-        modify(
-          `${targetBaseUrl}/packages/${item}/demo.taro.tsx`,
-          `import '../../../styles/demo.scss';\n`
-        )
+    if (args[0]) {
+      adapted.map((item) => {
+        if (!['cellgroup'].includes(item)) {
+          modify(
+            `${targetBaseUrl}/packages/${item}/demo.taro.tsx`,
+            `import '../../../styles/demo.scss';\n`
+          )
+        }
         modify(
           `${targetBaseUrl}/packages/${item}/${item}.taro.tsx`,
           `import "./${item}.harmony.css";\n`
         )
       })
+    } else {
+      console.log('error!>请输入当前适配组件名字')
+    }
   })
 }
 
