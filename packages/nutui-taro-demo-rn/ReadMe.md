@@ -2,19 +2,16 @@
 
 更多运行信息：https://joyspace.jd.com/pages/4XGCfCnLsQ8FJB7JepCX
 
-yarn安装
+简易流程：
+```
+pnpm run rn:copy
 
-外层到内层，不写组件类别，可不反复修改demo入口文件
-`node ./scripts/rn/copy-file.js [组件名] [组件类别]`
+# 进入到rn文件夹下
+yarn
 
-内层到外层
-`node ./scripts/rn/copy-file.js [组件名] reverse`
+# 根目录下
+pnpm run dev:taro:rn
 
-外层scss文件转鸿蒙css
-`node ./scripts/rn/replace-css-var.js [组件名]`
-
-修改nutui-react下面对应组件文件适配
-
-运行`pnpm run dev:taro:rn`
+```
 
 属性支持参考 https://taro-mcube-docs-pro.local-pf.jd.com/docs/jdrn/react-native-remind
