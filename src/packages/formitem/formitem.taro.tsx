@@ -73,6 +73,10 @@ export class FormItem extends React.Component<
   }
 
   componentDidMount() {
+    const { setFieldsValue } = this.context
+    if (this.props.initialValue) {
+      setFieldsValue({ [this.props.name || '']: this.props.initialValue })
+    }
     // 注册组件实例到FormStore
     const { registerField, registerUpdate } = this.context.getInternal(SECRET)
     this.cancelRegister = registerField(this)
@@ -98,6 +102,7 @@ export class FormItem extends React.Component<
     if (children?.props?.defaultValue) {
       console.warn('通过 initialValue 设置初始值')
     }
+
     const fieldValue = getFieldValue(name)
     const controlled = {
       ...children.props,
