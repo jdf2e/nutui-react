@@ -25,6 +25,20 @@ gulp.task('watch', function () {
       gulp.series(`${argv}copyTaro`)
     )
   })
+  const watchTasks = []
+  // eslint-disable-next-line array-callback-return
+  argvs.map((argv) => {
+    watchTasks.push(...[`${argv}sass`, `${argv}copyCss`])
+  })
+  console.log(watchTasks.join(','), 'watchTasks')
+  gulp.watch(
+    [
+      `src/styles/variables.scss`,
+      'src/styles/mixins/text-ellipsis.scss',
+      'src/styles/theme-default.scss',
+    ],
+    gulp.series(watchTasks)
+  )
 })
 argvs.forEach((argv) => {
   const targetBaseUrl = `${process.cwd()}/packages/nutui-taro-demo-rn/nutui-react/packages/${argv}`

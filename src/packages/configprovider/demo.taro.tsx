@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { View } from '@tarojs/components'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
@@ -32,18 +33,18 @@ const ConfigProviderDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.defaultTheme}</h2>
+      <View className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated.defaultTheme}</View>
         <Demo1 />
-        <h2>{translated.customTheme}</h2>
+        <View className="h2">{translated.customTheme}</View>
         <Demo2 />
-        <h2>{translated.title1}</h2>
+        <View className="h2">{translated.title1}</View>
         <Demo3 />
-        <h2>{translated.title2}</h2>
+        <View className="h2">{translated.title2}</View>
         <Demo4 />
-        <h2>RTL</h2>
+        <View className="h2">RTL</View>
         <Demo5 />
-      </div>
+      </View>
     </>
   )
 }
