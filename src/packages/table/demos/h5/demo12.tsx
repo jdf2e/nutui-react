@@ -62,22 +62,18 @@ const Demo12 = () => {
     {
       title: '性别',
       key: 'gender',
-      width: 60,
     },
     {
       title: '学历',
       key: 'record',
-      width: 100,
     },
     {
       title: '生日',
       key: 'birthday',
-      width: 100,
     },
     {
       title: '年龄',
       key: 'age',
-      width: 60,
     },
   ])
 
