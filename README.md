@@ -52,8 +52,6 @@
 * 🍭 90%+ Unit Test Coverage
 * 📖 Provide Sketch Design Resources
 
-
-
 ## Running locally
 
 ### running with H5
@@ -99,7 +97,6 @@ pnpm run dev:taro:jd
 * es **nutui.es.js**
 
 * umd **nutui.umd.js**
-
 
 ##  Links
 
