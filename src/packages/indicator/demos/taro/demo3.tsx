@@ -1,6 +1,7 @@
 import React from 'react'
 import { Indicator, Cell, ConfigProvider } from '@nutui/nutui-react-taro'
 
+// todo 并没有生效
 const customTheme = {
   nutuiIndicatorColor: '#3768fa',
   nutuiIndicatorDotColor: '#ddd',
