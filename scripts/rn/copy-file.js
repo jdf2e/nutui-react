@@ -6,8 +6,13 @@ const argsPath = process.argv.slice(3)
 let adapted = require('../../packages/nutui-taro-demo-rn/scripts/taro/adapted.js')
 
 console.log(adapted)
-adapted.push(args[0])
-adapted = [...new Set(adapted)]
+if (args[0]) {
+  adapted.push(args[0])
+  adapted = [...new Set(adapted)]
+} else if (!args[0]) {
+  console.log('error!>请输入当前适配组件名字')
+}
+console.log(adapted)
 
 const targetBaseUrl = `${process.cwd()}/packages/nutui-taro-demo-rn/nutui-react`
 const targetwrapUrl = `${process.cwd()}/src`
@@ -37,17 +42,20 @@ const copyFile = async (from, to, success, isSingle = false) => {
       return
     }
     console.log(`${success}!>`, to)
+
     adapted.map((item) => {
       if (!['cellgroup'].includes(item)) {
-        modify(
-          `${targetBaseUrl}/packages/${item}/demo.taro.tsx`,
-          `import '../../../styles/demo.scss';\n`
-        )
+        if (item) {
+          modify(
+            `${targetBaseUrl}/packages/${item}/demo.taro.tsx`,
+            `import '../../../styles/demo.scss';\n`
+          )
+          modify(
+            `${targetBaseUrl}/packages/${item}/${item}.taro.tsx`,
+            `import "./${item}.harmony.css";\n`
+          )
+        }
       }
-      modify(
-        `${targetBaseUrl}/packages/${item}/${item}.taro.tsx`,
-        `import "./${item}.harmony.css";\n`
-      )
     })
   })
 }

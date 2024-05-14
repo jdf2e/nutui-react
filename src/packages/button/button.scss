@@ -2,6 +2,8 @@
   position: relative;
   display: flex;
   display: inline-block;
+  flex-direction: row;
+  width: auto;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -31,6 +33,11 @@
     }
   }
 
+  &-children {
+    display: flex;
+    flex-direction: row;
+  }
+
   &::before {
     position: absolute;
     top: 50%;
@@ -58,9 +65,11 @@
     height: 100%;
     width: 100%;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    background: initial;
+    // RN 不支持
+    // background: initial;
     .nut-icon {
       font-size: $button-default-font-size;
       width: $button-default-font-size;
@@ -164,7 +173,8 @@
 
   &-primary {
     color: $button-primary-color;
-    background: $button-primary-background-color;
+    // RN 不支持
+    background: #fa2c19; //$button-primary-background-color;
     background-origin: border-box;
     border: $button-border-width solid transparent;
 
@@ -324,7 +334,8 @@
 
   &-solid {
     color: $button-primary-color;
-    background: $button-primary-background-color;
+    // RN 不支持
+    background: #ff0f23; //$button-primary-background-color;
     background-origin: border-box;
     border: $button-border-width solid transparent;
 
