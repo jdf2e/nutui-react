@@ -237,7 +237,7 @@ export const Input = forwardRef(
         />
         {clearable && !readOnly && active && value.length > 0 ? (
           <span
-            style={{ display: 'flex', alignItems: 'center' }}
+            style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
             onClick={() => {
               if (!disabled) {
                 setValue('')
