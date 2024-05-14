@@ -16,7 +16,7 @@ const Demo2 = () => {
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
         {fits.map((i) => {
           return (
-            <div key={i} style={{ width: 100 }}>
+            <div key={i} style={{ width: 98 }}>
               <Image src={src} width="80" height="80" fit={i} />
               <div style={imageText}>{i}</div>
             </div>
