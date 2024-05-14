@@ -72,30 +72,27 @@
   }
 
   &-base {
-    background: $notify-base-background-color;
+    background-color: $notify-base-background-color;
   }
 
   &-primary {
-    background: $notify-primary-background-color;
+    background-color: $notify-primary-background-color;
   }
 
   &-success {
-    background: $notify-success-background-color;
+    background-color: $notify-success-background-color;
   }
 
   &-danger {
-    background: $notify-danger-background-color;
+    background-color: $notify-danger-background-color;
   }
 
   &-warning {
-    background: $notify-warning-background-color;
+    background-color: $notify-warning-background-color;
   }
-}
 
-[dir='rtl'] .nut-notify,
-.nut-rtl .nut-notify {
-  &-popup-top,
-  &-popup-bottom {
+  &-popup-top-rtl,
+  &-popup-bottom-rtl {
     left: auto;
     right: 0;
   }

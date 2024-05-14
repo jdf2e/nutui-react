@@ -70,24 +70,21 @@
   bottom: 0;
 }
 .nut-notify-base {
-  background: linear-gradient(135deg, #FF0F23 0%, #FF0F23 100%);
+  background-color: linear-gradient(135deg, #ff475d 0%, #ff0f23 100%);
 }
 .nut-notify-primary {
-  background: #1988fa;
+  background-color: #1988fa;
 }
 .nut-notify-success {
-  background: #00bc14;
+  background-color: #2aa32a;
 }
 .nut-notify-danger {
-  background: #FF0F23;
+  background-color: #ff0f23;
 }
 .nut-notify-warning {
-  background: rgb(255, 158, 13);
+  background-color: #c47600;
 }
-
-[dir=rtl] .nut-notify-popup-top, [dir=rtl] .nut-notify-popup-bottom,
-.nut-rtl .nut-notify-popup-top,
-.nut-rtl .nut-notify-popup-bottom {
+.nut-notify-popup-top-rtl, .nut-notify-popup-bottom-rtl {
   left: auto;
   right: 0;
 }
