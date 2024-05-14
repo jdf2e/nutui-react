@@ -27,7 +27,7 @@ export interface SwiperProps extends Omit<TaroSwiperProps, 'ref'> {
   autoPlay: boolean
   loop: boolean
   defaultValue: number
-  onChange: (e: any) => void
+  onChange: (data: { detail: { current: number } }) => void
   style: CSSProperties
 }
 
