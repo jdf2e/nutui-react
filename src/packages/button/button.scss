@@ -2,6 +2,8 @@
   position: relative;
   display: flex;
   display: inline-block;
+  flex-direction: row;
+  width: auto;
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
@@ -20,6 +22,8 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
   color: $button-default-color;
   background: $button-default-background-color;
+  // TODO:临时限制的宽度，后续适配同学会调整
+  width: 64px;
 
   &-text {
     margin-left: $button-text-icon-margin;
@@ -27,6 +31,11 @@
     &.right {
       margin-right: $button-text-icon-margin;
     }
+  }
+
+  &-children {
+    display: flex;
+    flex-direction: row;
   }
 
   &::before {
@@ -56,9 +65,11 @@
     height: 100%;
     width: 100%;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    background: initial;
+    // RN 不支持
+    // background: initial;
     .nut-icon {
       font-size: $button-default-font-size;
       width: $button-default-font-size;
@@ -162,7 +173,8 @@
 
   &-primary {
     color: $button-primary-color;
-    background: $button-primary-background-color;
+    // RN 不支持
+    background: #fa2c19; //$button-primary-background-color;
     background-origin: border-box;
     border: $button-border-width solid transparent;
 
@@ -322,7 +334,8 @@
 
   &-solid {
     color: $button-primary-color;
-    background: $button-primary-background-color;
+    // RN 不支持
+    background: #ff0f23; //$button-primary-background-color;
     background-origin: border-box;
     border: $button-border-width solid transparent;
 

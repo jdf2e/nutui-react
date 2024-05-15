@@ -3,17 +3,10 @@
   width: 100%;
   box-sizing: border-box;
   display: flex;
+  flex-direction: row;
   background: #ffffff;
   font-size: 14px;
   padding: 10px 25px;
-}
-.nut-textarea-disabled .nut-textarea-textarea {
-  cursor: not-allowed;
-  color: #C2C4CC !important;
-}
-.nut-textarea-disabled .nut-textarea-limit {
-  cursor: not-allowed;
-  color: #C2C4CC !important;
 }
 .nut-textarea-limit {
   position: absolute;
@@ -21,6 +14,10 @@
   bottom: 12px;
   font-size: 14px;
   color: #505259;
+}
+.nut-textarea-limit-disabled {
+  cursor: not-allowed;
+  color: #c2c4cc;
 }
 .nut-textarea-textarea {
   outline: none;
@@ -31,8 +28,8 @@
   margin: 0;
   padding: 0;
   font-size: 14px;
-  color: #1A1A1A;
-  caret-color: #1A1A1A;
+  color: #1a1a1a;
+  caret-color: #1a1a1a;
   text-align: start;
   background-color: transparent;
   border: 0;
@@ -41,6 +38,10 @@
 .nut-textarea-textarea .taro-textarea {
   background-color: transparent;
   resize: none;
+}
+.nut-textarea-textarea-disabled {
+  cursor: not-allowed;
+  color: #c2c4cc;
 }
 .nut-textarea .cpoyText {
   position: absolute;
