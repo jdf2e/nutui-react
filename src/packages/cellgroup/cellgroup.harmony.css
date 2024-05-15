@@ -4,7 +4,7 @@
 .nut-cell-group-title {
   display: inherit;
   padding: 0 10px;
-  color: #1A1A1A;
+  color: #1a1a1a;
   font-size: 14px;
   line-height: 20px;
   margin-top: 30px;
@@ -20,11 +20,8 @@
   margin-bottom: 10px;
 }
 .nut-cell-group-wrap {
-  display: inherit;
   border-radius: 6px;
   overflow: hidden;
   background-color: #ffffff;
-  margin: 10px 0;
+  margin-bottom: 10px;
 }
-
-
