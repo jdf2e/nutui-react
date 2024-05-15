@@ -8,10 +8,10 @@
   &-vertical {
     flex-direction: column;
 
-    > .nut-space-item {
+    &-item {
       margin-bottom: $space-gap;
 
-      &:last-child {
+      &-last {
         margin-bottom: 0;
       }
     }
@@ -20,19 +20,19 @@
   &-horizontal {
     flex-direction: row;
 
-    > .nut-space-item {
+    &-item {
       margin-right: $space-gap;
 
-      &:last-child {
+      &-last {
         margin-right: 0;
       }
     }
 
-    &.nut-space-wrap {
+    &-wrap {
       flex-wrap: wrap;
       margin-bottom: calc(#{$space-gap} * -1);
 
-      > .nut-space-item {
+      &-item {
         padding-bottom: $space-gap;
       }
     }

@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -37,23 +38,30 @@ const EmptyDemo = () => {
     },
   })
 
+  const isRN = Taro.getEnv() === Taro.ENV_TYPE.RN
+
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.ce5c5446}</h2>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated.ce5c5446}</View>
         <Demo1 />
-        <h2>{translated.c38a08ee}</h2>
+        <View className="h2">{translated.c38a08ee}</View>
         <Demo2 />
-        <h2>{translated.c38a08ef}</h2>
+        <View className="h2">{translated.c38a08ef}</View>
         <Demo3 />
-        <h2>{translated.b840c88f}</h2>
-        <Demo4 />
-        <h2>{translated.a74a1fd4}</h2>
+        {/* TODO: Tabs 适配 */}
+        {!isRN && (
+          <>
+            <View className="h2">{translated.b840c88f}</View>
+            <Demo4 />
+          </>
+        )}
+        <View className="h2">{translated.a74a1fd4}</View>
         <Demo5 />
-        <h2>{translated['8dab2f66']}</h2>
+        <View className="h2">{translated['8dab2f66']}</View>
         <Demo6 />
-      </div>
+      </ScrollView>
     </>
   )
 }
