@@ -68,8 +68,8 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-notify-padding | Inside margin of notify | `0 10px` |
 | \--nutui-notify-font-size | The font size of notify | `$font-size-base` |
 | \--nutui-notify-text-color | The text color of notify | `$white` |
-| \--nutui-notify-base-background-color | The background color of notify | `$color-primary-gradient-1` |
+| \--nutui-notify-base-background-color | The background color of notify | `$color-primary` |
 | \--nutui-notify-primary-background-color | The main notify background color | `$color-info` |
-| \--nutui-notify-success-background-color | Background color of successful notify | `linear-gradient(135deg,rgba(38, 191, 38, 1) 0%,rgba(39, 197, 48, 1) 45%,rgba(40, 207, 63, 1) 83%,rgba(41, 212, 70, 1) 100%)` |
+| \--nutui-notify-success-background-color | Background color of successful notify | `$color-success` |
 | \--nutui-notify-danger-background-color | Danger notify background color | `$color-primary` |
 | \--nutui-notify-warning-background-color | Warning notify background color | `$color-warning` |

@@ -70,19 +70,19 @@
   bottom: 0;
 }
 .nut-notify-base {
-  background-color: linear-gradient(135deg, #ff475d 0%, #ff0f23 100%);
+  background: #ff0f23;
 }
 .nut-notify-primary {
-  background-color: #1988fa;
+  background: #1988fa;
 }
 .nut-notify-success {
-  background-color: #2aa32a;
+  background: #2aa32a;
 }
 .nut-notify-danger {
-  background-color: #ff0f23;
+  background: #ff0f23;
 }
 .nut-notify-warning {
-  background-color: #c47600;
+  background: #c47600;
 }
 .nut-notify-popup-top-rtl, .nut-notify-popup-bottom-rtl {
   left: auto;

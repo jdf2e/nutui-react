@@ -72,23 +72,23 @@
   }
 
   &-base {
-    background-color: $notify-base-background-color;
+    background: $notify-base-background-color;
   }
 
   &-primary {
-    background-color: $notify-primary-background-color;
+    background: $notify-primary-background-color;
   }
 
   &-success {
-    background-color: $notify-success-background-color;
+    background: $notify-success-background-color;
   }
 
   &-danger {
-    background-color: $notify-danger-background-color;
+    background: $notify-danger-background-color;
   }
 
   &-warning {
-    background-color: $notify-warning-background-color;
+    background: $notify-warning-background-color;
   }
 
   &-popup-top-rtl,
