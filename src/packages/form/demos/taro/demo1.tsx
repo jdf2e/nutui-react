@@ -11,7 +11,6 @@ const Demo1 = () => {
   return (
     <>
       <Form
-        initialValues={{ address: '888' }}
         labelPosition="right"
         footer={
           <>
@@ -23,7 +22,6 @@ const Demo1 = () => {
       >
         <Form.Item
           required
-          initialValue="111"
           label="字段A"
           name="username"
           rules={[
@@ -38,7 +36,6 @@ const Demo1 = () => {
           />
         </Form.Item>
         <Form.Item
-          initialValue="222"
           label="字段D"
           name="address"
           rules={[
