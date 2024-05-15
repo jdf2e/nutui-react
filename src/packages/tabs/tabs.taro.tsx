@@ -64,6 +64,8 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     onChange,
     className,
     autoHeight,
+    value: outerValue,
+    defaultValue: outerDefaultValue,
     ...rest
   } = {
     ...defaultProps,
@@ -72,8 +74,8 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   const uuid = useUuid()
 
   const [value, setValue] = usePropsValue<string | number>({
-    value: props.value,
-    defaultValue: props.defaultValue,
+    value: outerValue,
+    defaultValue: outerDefaultValue,
     finalValue: 0,
     onChange,
   })
@@ -197,7 +199,7 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
         if (!titleRect) return
 
         let to = 0
-        if (props.direction === 'vertical') {
+        if (direction === 'vertical') {
           const top = titleRects
             .slice(0, index)
             .reduce((prev: number, curr: RectItem) => prev + curr.height, 0)
@@ -347,6 +349,5 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   )
 }
 
-Tabs.defaultProps = defaultProps
 Tabs.displayName = 'NutTabs'
 Tabs.TabPane = TabPane

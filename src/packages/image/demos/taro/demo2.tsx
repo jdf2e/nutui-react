@@ -1,13 +1,13 @@
 import React from 'react'
-import { Image, Row, Col } from '@nutui/nutui-react-taro'
+import { Image } from '@nutui/nutui-react-taro'
 
 const Demo2 = () => {
   const src =
     'https://storage.360buyimg.com/imgtools/e067cd5b69-07c864c0-dd02-11ed-8b2c-d7f58b17086a.png'
   return (
     <>
-      <Row gutter={10}>
-        <Col span="8">
+      <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+        <div style={{ width: 98 }}>
           <Image
             src={src}
             mode="aspectFit"
@@ -15,8 +15,8 @@ const Demo2 = () => {
             height="80"
             radius="50%"
           />
-        </Col>
-        <Col span="8">
+        </div>
+        <div style={{ width: 98 }}>
           <Image
             src={src}
             mode="scaleToFill"
@@ -24,8 +24,8 @@ const Demo2 = () => {
             height="80"
             radius="50%"
           />
-        </Col>
-        <Col span="8">
+        </div>
+        <div style={{ width: 98 }}>
           <Image
             src={src}
             mode="scaleToFill"
@@ -33,8 +33,8 @@ const Demo2 = () => {
             height="80"
             radius="10px"
           />
-        </Col>
-      </Row>
+        </div>
+      </div>
     </>
   )
 }

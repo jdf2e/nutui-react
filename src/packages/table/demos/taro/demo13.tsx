@@ -11,38 +11,38 @@ interface TableColumnProps {
   width?: number
 }
 const Demo13 = () => {
-  const [data6, setData6] = useState([
+  const [data] = useState([
     {
       name: 'Tom',
-      sex: '男',
+      gender: '男',
       record: '小学',
       birthday: '2010-01-01',
       age: 10,
     },
     {
       name: 'Lucy',
-      sex: '女',
+      gender: '女',
       record: '本科',
       birthday: '2000-01-01',
       age: 30,
     },
     {
       name: 'Jack',
-      sex: '男',
+      gender: '男',
       record: '高中',
       birthday: '2020-01-01',
       age: 4,
     },
     {
       name: 'Sara',
-      sex: '女',
+      gender: '女',
       record: '高中',
       birthday: '2020-01-01',
       age: 6,
     },
     {
       name: 'Frank',
-      sex: '男',
+      gender: '男',
       record: '幼儿园',
       birthday: '2020-01-01',
       age: 3,
@@ -56,22 +56,18 @@ const Demo13 = () => {
       title: '姓名',
       key: 'name',
       align: 'center',
-      width: 100,
     },
     {
       title: '性别',
-      key: 'sex',
-      width: 60,
+      key: 'gender',
     },
     {
       title: '学历',
       key: 'record',
-      width: 100,
     },
     {
       title: '生日',
       key: 'birthday',
-      width: 100,
     },
     {
       title: '年龄',
@@ -81,6 +77,6 @@ const Demo13 = () => {
     },
   ])
 
-  return <Table columns={columnsStickRight} data={data6} />
+  return <Table columns={columnsStickRight} data={data} />
 }
 export default Demo13
