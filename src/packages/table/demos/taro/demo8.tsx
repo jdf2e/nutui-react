@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Table } from '@nutui/nutui-react-taro'
 
 const Demo8 = () => {
-  const [data1, setData1] = useState<Array<any>>([
+  const [data1] = useState<Array<any>>([
     {
       name: 'Tom',
       sex: '男',
@@ -19,8 +19,8 @@ const Demo8 = () => {
       record: '高中',
     },
   ])
-  const [data3, setData3] = useState<Array<any>>([])
-  const [columns1, setColumns1] = useState([
+  const [data, setData] = useState<Array<any>>([])
+  const [columns] = useState([
     {
       title: '姓名',
       key: 'name',
@@ -42,11 +42,9 @@ const Demo8 = () => {
     },
   ])
   setTimeout(() => {
-    setData3(data1)
+    setData(data1)
   }, 5000)
 
-  return (
-    <Table columns={columns1} data={data3} style={{ background: '#fff' }} />
-  )
+  return <Table columns={columns} data={data} style={{ background: '#fff' }} />
 }
 export default Demo8

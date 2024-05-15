@@ -13,28 +13,28 @@ interface TableColumnProps {
   width?: number
 }
 const Demo10 = () => {
-  const [data5, setData5] = useState([
+  const [data] = useState([
     {
       name: 'Tom',
-      sex: '男',
+      gender: '男',
       record: '小学',
       age: 10,
     },
     {
       name: 'Lucy',
-      sex: '女',
+      gender: '女',
       record: '本科',
       age: 30,
     },
     {
       name: 'Jack',
-      sex: '男',
+      gender: '男',
       record: '高中',
       age: 4,
     },
   ])
 
-  const [columns5, setColumns5] = useState<Array<TableColumnProps>>([
+  const [columns] = useState<Array<TableColumnProps>>([
     {
       title: '姓名',
       key: 'name',
@@ -43,7 +43,7 @@ const Demo10 = () => {
     },
     {
       title: '性别',
-      key: 'sex',
+      key: 'gender',
     },
     {
       title: '学历',
@@ -64,8 +64,8 @@ const Demo10 = () => {
 
   return (
     <Table
-      columns={columns5}
-      data={data5}
+      columns={columns}
+      data={data}
       onSort={handleSorter}
       style={{ background: '#fff' }}
       sorterIcon={<TriangleDown size={12} />}
