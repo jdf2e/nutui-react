@@ -198,5 +198,4 @@ export const InfiniteLoading: FunctionComponent<
   )
 }
 
-InfiniteLoading.defaultProps = defaultProps
 InfiniteLoading.displayName = 'NutInfiniteLoading'

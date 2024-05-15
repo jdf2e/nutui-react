@@ -66,9 +66,10 @@ export const SearchBar: FunctionComponent<
 
   const { locale } = useConfig()
   const searchRef = useRef<HTMLInputElement>(null)
-  const [value, setValue] = useState(() => props.value)
 
   const {
+    value: outerValue,
+    style,
     placeholder,
     shape,
     className,
@@ -93,6 +94,8 @@ export const SearchBar: FunctionComponent<
     ...props,
   }
 
+  const [value, setValue] = useState(() => outerValue)
+
   const forceFocus = () => {
     const searchSelf: HTMLInputElement | null = searchRef.current
     searchSelf && searchSelf.focus()
@@ -113,8 +116,8 @@ export const SearchBar: FunctionComponent<
     onBlur && onBlur?.(value, event)
   }
   useEffect(() => {
-    setValue(props.value)
-  }, [props.value])
+    setValue(outerValue)
+  }, [outerValue])
   useEffect(() => {
     autoFocus && forceFocus()
   }, [autoFocus])
@@ -125,7 +128,7 @@ export const SearchBar: FunctionComponent<
           clearable ? `${classPrefix}-input-clear` : ''
         }`}
         ref={searchRef}
-        style={{ ...props.style }}
+        style={style}
         value={value || ''}
         placeholder={placeholder || locale.placeholder}
         disabled={disabled}
@@ -209,7 +212,7 @@ export const SearchBar: FunctionComponent<
       className={`${classPrefix} ${
         disabled ? `${classPrefix}-disabled` : ''
       }  ${className || ''}`}
-      style={{ ...props.style }}
+      style={style}
     >
       {renderLeft()}
       <div
@@ -227,5 +230,4 @@ export const SearchBar: FunctionComponent<
   )
 }
 
-SearchBar.defaultProps = defaultProps
 SearchBar.displayName = 'NutSearchBar'

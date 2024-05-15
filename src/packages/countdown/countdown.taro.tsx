@@ -305,5 +305,4 @@ export const CountDown = React.forwardRef<unknown, Partial<CountDownProps>>(
   InternalCountDown
 )
 
-CountDown.defaultProps = defaultProps
 CountDown.displayName = 'NutCountDown'
