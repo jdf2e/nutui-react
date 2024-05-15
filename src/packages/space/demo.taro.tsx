@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { Cell } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
@@ -41,32 +42,32 @@ const SpaceDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.basic}</h2>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated.basic}</View>
         <Cell>
           <Demo1 />
         </Cell>
-        <h2>{translated.wrap}</h2>
+        <View className="h2">{translated.wrap}</View>
         <Cell>
           <Demo2 />
         </Cell>
-        <h2>{translated.direction}</h2>
+        <View className="h2">{translated.direction}</View>
         <Cell>
           <Demo3 />
         </Cell>
-        <h2>{translated.spaceGap}</h2>
+        <View className="h2">{translated.spaceGap}</View>
         <Cell>
           <Demo4 />
         </Cell>
-        <h2>{translated.mainAxisAlign}</h2>
+        <View className="h2">{translated.mainAxisAlign}</View>
         <Cell style={{ display: 'block' }}>
           <Demo5 />
         </Cell>
-        <h2>{translated.crossAxisAlign}</h2>
+        <View className="h2">{translated.crossAxisAlign}</View>
         <Cell>
           <Demo6 />
         </Cell>
-      </div>
+      </ScrollView>
     </>
   )
 }
