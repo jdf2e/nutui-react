@@ -8,7 +8,7 @@ const Demo3 = () => {
       title={
         <View
           style={{
-            display: 'inline-flex',
+            display: 'flex',
             alignItems: 'center',
             flexDirection: 'row',
           }}
@@ -21,7 +21,7 @@ const Demo3 = () => {
       description={
         <View
           style={{
-            display: 'inline-flex',
+            display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
           }}
