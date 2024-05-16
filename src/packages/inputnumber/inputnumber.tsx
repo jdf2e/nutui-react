@@ -246,5 +246,4 @@ export const InputNumber: FunctionComponent<
   )
 }
 
-InputNumber.defaultProps = defaultProps
 InputNumber.displayName = 'NutInputNumber'

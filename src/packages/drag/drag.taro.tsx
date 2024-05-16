@@ -96,22 +96,22 @@ export const Drag: FunctionComponent<
       }
 
       const transform = `translate3d(${
-        props.direction !== 'y' ? translateX.current : 0
-      }px, ${props.direction !== 'x' ? translateY.current : 0}px, 0px)`
+        direction !== 'y' ? translateX.current : 0
+      }px, ${direction !== 'x' ? translateY.current : 0}px, 0px)`
 
       setCurrStyle({ transform })
     }
   }
 
   const touchEnd = (e: React.TouchEvent) => {
-    if (props.direction !== 'y' && props.attract && dragRef.current) {
+    if (direction !== 'y' && attract && dragRef.current) {
       if (translateX.current < middleLine.current) {
         translateX.current = boundaryState.left
       } else {
         translateX.current = boundaryState.right
       }
       const transform = `translate3d(${translateX.current}px, ${
-        props.direction !== 'x' ? translateY.current : 0
+        direction !== 'x' ? translateY.current : 0
       }px, 0px)`
       setCurrStyle({ transform })
     }
@@ -148,5 +148,4 @@ export const Drag: FunctionComponent<
   )
 }
 
-Drag.defaultProps = defaultProps
 Drag.displayName = 'NutDrag'

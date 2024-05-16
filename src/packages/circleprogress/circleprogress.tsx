@@ -75,10 +75,9 @@ export const CircleProgress: FunctionComponent<
   }
 
   const stop = () => {
-    if (!isObject(props.color)) {
+    if (!isObject(color)) {
       return
     }
-    const color = props.color as Color
     const colorArr = Object.keys(color).sort(
       (a, b) => parseFloat(a) - parseFloat(b)
     )
@@ -129,5 +128,4 @@ export const CircleProgress: FunctionComponent<
   )
 }
 
-CircleProgress.defaultProps = defaultProps
 CircleProgress.displayName = 'NutCircleProgress'

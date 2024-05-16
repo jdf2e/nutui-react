@@ -77,5 +77,4 @@ export const Video: FunctionComponent<Partial<VideoProps>> = (props) => {
   )
 }
 
-Video.defaultProps = defaultProps
 Video.displayName = 'NutVideo'

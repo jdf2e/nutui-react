@@ -71,8 +71,8 @@ export const Checkbox: FunctionComponent<
   const ctx = useContext(Context)
 
   let [innerChecked, setChecked] = usePropsValue<boolean>({
-    value: props.checked,
-    defaultValue: props.defaultChecked,
+    value: checked,
+    defaultValue: defaultChecked,
     finalValue: defaultChecked,
     onChange,
   })
@@ -230,6 +230,5 @@ export const Checkbox: FunctionComponent<
   )
 }
 
-Checkbox.defaultProps = defaultProps
 Checkbox.displayName = 'NutCheckBox'
 Checkbox.Group = CheckboxGroup

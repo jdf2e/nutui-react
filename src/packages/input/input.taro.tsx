@@ -105,8 +105,8 @@ export const Input = forwardRef(
       ...props,
     }
     const [value, setValue] = usePropsValue<string>({
-      value: props.value,
-      defaultValue: props.defaultValue,
+      value: _value,
+      defaultValue,
       finalValue: '',
       onChange,
     })
@@ -267,5 +267,4 @@ export const Input = forwardRef(
   }
 )
 
-Input.defaultProps = defaultProps
 Input.displayName = 'NutInput'

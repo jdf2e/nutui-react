@@ -265,5 +265,4 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   )
 })
 
-MenuItem.defaultProps = defaultProps
 MenuItem.displayName = 'NutMenuItem'

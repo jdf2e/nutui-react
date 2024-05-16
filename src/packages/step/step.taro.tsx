@@ -76,5 +76,4 @@ export const Step: FunctionComponent<
   )
 }
 
-Step.defaultProps = defaultProps
 Step.displayName = 'NutStep'

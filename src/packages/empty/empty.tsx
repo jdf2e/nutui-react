@@ -134,5 +134,4 @@ export const Empty: FunctionComponent<
   )
 }
 
-Empty.defaultProps = defaultProps
 Empty.displayName = 'NutEmpty'

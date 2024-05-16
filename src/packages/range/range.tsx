@@ -419,5 +419,4 @@ export const Range: FunctionComponent<
   )
 }
 
-Range.defaultProps = defaultProps
 Range.displayName = 'NutRange'

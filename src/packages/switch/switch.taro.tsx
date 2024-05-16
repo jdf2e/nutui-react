@@ -73,5 +73,4 @@ export const Switch: FunctionComponent<Partial<SwitchProps>> = (props) => {
   )
 }
 
-Switch.defaultProps = defaultProps
 Switch.displayName = 'NutSwitch'
