@@ -4,6 +4,7 @@ import { Tabs, Swiper } from '@nutui/nutui-react-taro'
 const Demo12 = () => {
   const swiperRef = useRef<React.ElementRef<typeof Swiper> | null>(null)
   const [tabIndex, setTabIndex] = useState<string | number>(0)
+  const contentStyle = { backgroundColor: '#fff', padding: '24px 10px' }
   return (
     <>
       <Tabs
@@ -21,19 +22,19 @@ const Demo12 = () => {
         defaultValue={0}
         loop={false}
         ref={swiperRef}
-        height={41}
-        onChange={(page) => {
-          setTabIndex(page)
+        height={100}
+        onChange={(e) => {
+          setTabIndex(e.detail.current)
         }}
       >
         <Swiper.Item>
-          <div style={{ backgroundColor: '#fff', padding: '10px' }}>Tab 1</div>
+          <div style={contentStyle}>Tab 1</div>
         </Swiper.Item>
         <Swiper.Item>
-          <div style={{ backgroundColor: '#fff', padding: '10px' }}>Tab 2</div>
+          <div style={contentStyle}>Tab 2</div>
         </Swiper.Item>
         <Swiper.Item>
-          <div style={{ backgroundColor: '#fff', padding: '10px' }}>Tab 3</div>
+          <div style={contentStyle}>Tab 3</div>
         </Swiper.Item>
       </Swiper>
     </>

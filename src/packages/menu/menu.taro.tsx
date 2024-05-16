@@ -183,6 +183,5 @@ export const Menu: FunctionComponent<Partial<MenuProps>> & {
   )
 }
 
-Menu.defaultProps = defaultProps
 Menu.displayName = 'NutMenu'
 Menu.Item = MenuItem

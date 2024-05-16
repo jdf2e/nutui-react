@@ -16,7 +16,7 @@ const Demo3 = () => {
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
         {positions.map((i) => {
           return (
-            <div key={i} style={{ width: 100 }}>
+            <div key={i} style={{ width: 98 }}>
               <Image
                 src={src}
                 width="80"

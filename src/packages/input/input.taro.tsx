@@ -105,8 +105,8 @@ export const Input = forwardRef(
       ...props,
     }
     const [value, setValue] = usePropsValue<string>({
-      value: props.value,
-      defaultValue: props.defaultValue,
+      value: _value,
+      defaultValue,
       finalValue: '',
       onChange,
     })
@@ -184,16 +184,11 @@ export const Input = forwardRef(
     }
 
     const handleBlur = (event: any) => {
-      if (Taro.getEnv() === 'WEB') {
-        const val: any = (event.target as any).value
-        updateValue(val, 'onBlur')
-        setTimeout(() => {
-          setActive(false)
-        }, 50)
-      } else {
-        updateValue(value, 'onBlur')
+      const val = Taro.getEnv() === 'WEB' ? (event.target as any).value : value
+      updateValue(val, 'onBlur')
+      setTimeout(() => {
         setActive(false)
-      }
+      }, 200)
     }
     const inputType = (type: any) => {
       if (getEnv() === ENV_TYPE.WEB) {
@@ -255,6 +250,7 @@ export const Input = forwardRef(
                 ? 'flex'
                 : 'none',
             alignItems: 'center',
+            cursor: 'pointer',
           }}
           onClick={(e) => {
             e.stopPropagation()
@@ -271,5 +267,4 @@ export const Input = forwardRef(
   }
 )
 
-Input.defaultProps = defaultProps
 Input.displayName = 'NutInput'

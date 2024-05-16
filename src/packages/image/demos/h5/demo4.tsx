@@ -13,15 +13,15 @@ const Demo4 = () => {
   return (
     <>
       <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-        <div style={{ width: 100 }}>
+        <div style={{ width: 98 }}>
           <Image src={src} width="80" height="80" fit="contain" radius="50%" />
           <div style={imageText}>contain</div>
         </div>
-        <div style={{ width: 100 }}>
+        <div style={{ width: 98 }}>
           <Image src={src} width="80" height="80" fit="cover" radius="50%" />
           <div style={imageText}>cover</div>
         </div>
-        <div style={{ width: 100 }}>
+        <div style={{ width: 98 }}>
           <Image src={src} width="80" height="80" fit="cover" radius="10" />
           <div style={imageText}>cover</div>
         </div>

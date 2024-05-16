@@ -75,6 +75,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   props
 ) => {
   const {
+    value,
     className,
     style,
     images,
@@ -89,15 +90,16 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     closeIconPosition,
     showMenuByLongpress,
     onClose,
-  } = props
+    onChange,
+  } = { ...defaultProps, ...props }
   const classPrefix = 'nut-imagepreview'
   const ref = useRef(null)
   const [innerNo, setInnerNo] = usePropsValue<number>({
-    value: props.value,
+    value,
     defaultValue,
     finalValue: defaultValue,
     onChange: (val: number) => {
-      props.onChange?.(val)
+      onChange?.(val)
     },
   })
 
@@ -239,7 +241,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
 
   const slideChangeEnd = (page: number) => {
     setActive(page + 1)
-    props.onChange?.(page + 1)
+    onChange?.(page + 1)
   }
   const onCloseInner = (e: ITouchEvent | React.MouseEvent) => {
     e.stopPropagation()
@@ -346,5 +348,4 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   )
 }
 
-ImagePreview.defaultProps = defaultProps
 ImagePreview.displayName = 'NutImagePreview'

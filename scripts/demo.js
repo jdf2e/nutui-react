@@ -56,7 +56,6 @@ export const ${name}: FunctionComponent<Partial<${name}Props> & React.HTMLAttrib
   return <div className="nut-${name.toLowerCase()}">${name}</div>
 }
 
-${name}.defaultProps = defaultProps
 ${name}.displayName = 'Nut${name}'
 `,
     doc: `#  ${name}组件

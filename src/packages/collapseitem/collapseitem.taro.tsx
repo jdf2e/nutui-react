@@ -180,5 +180,4 @@ export const CollapseItem: FunctionComponent<
   )
 }
 
-CollapseItem.defaultProps = defaultProps
 CollapseItem.displayName = 'NutCollapseItem'

@@ -91,14 +91,16 @@ export const Input = forwardRef(
       confirmType,
       defaultValue,
       value: _value,
+      onCompositionStart,
+      onCompositionEnd,
       ...rest
     } = {
       ...defaultProps,
       ...props,
     }
     const [value, setValue] = usePropsValue<string>({
-      value: props.value,
-      defaultValue: props.defaultValue,
+      value: _value,
+      defaultValue,
       finalValue: '',
       onChange,
     })
@@ -228,16 +230,16 @@ export const Input = forwardRef(
           }}
           onCompositionStart={(e) => {
             composingRef.current = true
-            props.onCompositionStart?.(e)
+            onCompositionStart?.(e)
           }}
           onCompositionEnd={(e) => {
             composingRef.current = false
-            props.onCompositionEnd?.(e)
+            onCompositionEnd?.(e)
           }}
         />
         {clearable && !readOnly && active && value.length > 0 ? (
           <span
-            style={{ display: 'flex', alignItems: 'center' }}
+            style={{ display: 'flex', alignItems: 'center', cursor: 'pointer' }}
             onClick={() => {
               if (!disabled) {
                 setValue('')
@@ -253,5 +255,4 @@ export const Input = forwardRef(
   }
 )
 
-Input.defaultProps = defaultProps
 Input.displayName = 'NutInput'
