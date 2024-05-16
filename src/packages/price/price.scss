@@ -1,21 +1,14 @@
 .nut-price {
   direction: ltr;
   font-size: $font-size-large;
-  display: inline;
-  color: $color-primary;
-
-  &-line {
-    div {
-      text-decoration: line-through;
-      font-size: $price-line-font-size !important;
-      color: $price-line-color !important;
-    }
-  }
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
 
   &-symbol,
   &-integer,
   &-decimal {
-    display: inline-block;
+    color: $color-primary;
   }
 
   &-symbol {
@@ -28,6 +21,11 @@
 
     &-small {
       font-size: $price-symbol-small-size;
+    }
+
+    &-rtl {
+      padding-right: 0;
+      padding-left: $price-symbol-padding-right;
     }
   }
 
@@ -54,12 +52,10 @@
       font-size: $price-decimal-small-size;
     }
   }
-}
 
-[dir='rtl'] .nut-price,
-.nut-rtl .nut-price {
-  &-symbol {
-    padding-right: 0;
-    padding-left: $price-symbol-padding-right;
+  &-line {
+    text-decoration: line-through $price-line-color;
+    font-size: $price-line-font-size;
+    color: $price-line-color;
   }
 }
