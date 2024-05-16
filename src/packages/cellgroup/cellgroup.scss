@@ -22,10 +22,9 @@
   }
 
   &-wrap {
-    display: inherit;
     border-radius: $cell-border-radius;
     overflow: hidden;
     background-color: $cell-group-background-color;
-    margin: $cell-group-wrap-margin;
+    margin-bottom: $cell-group-wrap-margin;
   }
 }

@@ -1,17 +1,18 @@
 import React from 'react'
+import { View } from '@tarojs/components'
 import { Space, Button } from '@nutui/nutui-react-taro'
 
 const Demo6 = () => {
   return (
     <Space align="end" wrap>
       <Button>按钮1</Button>
-      <div>
+      <View>
         <Button block style={{ marginBottom: 5 }}>
           按钮2
         </Button>
         <Button block>按钮2</Button>
-      </div>
-      <div>
+      </View>
+      <View>
         <Button block style={{ marginBottom: 5 }}>
           按钮3
         </Button>
@@ -19,7 +20,7 @@ const Demo6 = () => {
           按钮3
         </Button>
         <Button block>按钮3</Button>
-      </div>
+      </View>
     </Space>
   )
 }
