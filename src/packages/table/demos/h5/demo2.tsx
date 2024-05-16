@@ -12,7 +12,7 @@ interface TableColumnProps {
 }
 
 const Demo2 = () => {
-  const [columns2, setColumns2] = useState<Array<TableColumnProps>>([
+  const [columns] = useState<Array<TableColumnProps>>([
     {
       title: '姓名',
       key: 'name',
@@ -20,7 +20,7 @@ const Demo2 = () => {
     },
     {
       title: '性别',
-      key: 'sex',
+      key: 'gender',
     },
     {
       title: '学历',
@@ -28,24 +28,24 @@ const Demo2 = () => {
     },
   ])
 
-  const [data1, setData1] = useState([
+  const [data] = useState([
     {
       name: 'Tom',
-      sex: '男',
+      gender: '男',
       record: '小学',
     },
     {
       name: 'Lucy',
-      sex: '女',
+      gender: '女',
       record: '本科',
     },
     {
       name: 'Jack',
-      sex: '男',
+      gender: '男',
       record: '高中',
     },
   ])
 
-  return <Table columns={columns2} data={data1} bordered={false} />
+  return <Table columns={columns} data={data} bordered={false} />
 }
 export default Demo2

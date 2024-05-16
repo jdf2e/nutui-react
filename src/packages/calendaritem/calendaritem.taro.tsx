@@ -121,6 +121,7 @@ export const CalendarItem = React.forwardRef<
     renderDay,
     renderDayTop,
     renderDayBottom,
+    value,
     onConfirm,
     onUpdate,
     onDayClick,
@@ -172,7 +173,7 @@ export const CalendarItem = React.forwardRef<
   }
 
   const [currentDate, setCurrentDate] = usePropsValue<CalendarValue>({
-    value: props.value,
+    value,
     defaultValue: resetDefaultValue(),
     finalValue: [],
     onChange: (val) => {},
@@ -412,7 +413,7 @@ export const CalendarItem = React.forwardRef<
           monthsData[current.lastCurrent],
           true
         )
-      } else if (props.type === 'week') {
+      } else if (type === 'week') {
         chooseDay(
           { day: defaultData[2], type: 'curr' },
           monthsData[current.current],
@@ -890,5 +891,4 @@ export const CalendarItem = React.forwardRef<
   )
 })
 
-CalendarItem.defaultProps = defaultProps
 CalendarItem.displayName = 'NutCalendarItem'

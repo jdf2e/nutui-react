@@ -140,5 +140,4 @@ export const WaterMark: FunctionComponent<
   )
 }
 
-WaterMark.defaultProps = defaultProps
 WaterMark.displayName = 'NutWaterMark'

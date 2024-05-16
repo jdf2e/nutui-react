@@ -121,5 +121,4 @@ export const TrendArrow: FunctionComponent<
   )
 }
 
-TrendArrow.defaultProps = defaultProps
 TrendArrow.displayName = 'NutTrendArrow'

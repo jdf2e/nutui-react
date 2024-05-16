@@ -110,6 +110,5 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> & {
   )
 }
 
-Collapse.defaultProps = defaultProps
 Collapse.displayName = 'NutCollapse'
 Collapse.Item = CollapseItem

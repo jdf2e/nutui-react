@@ -85,7 +85,7 @@ export const Table: FunctionComponent<
 
   const cellClasses = (item: TableColumnProps) => {
     return {
-      [`${headerClassPrefix}-border`]: props.bordered,
+      [`${headerClassPrefix}-border`]: bordered,
       [`${headerClassPrefix}-align${item.align ? item.align : ''}`]: true,
     }
   }
@@ -195,5 +195,4 @@ export const Table: FunctionComponent<
   )
 }
 
-Table.defaultProps = defaultProps
 Table.displayName = 'NutTable'

@@ -49,5 +49,4 @@ export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
   )
 }
 
-CellGroup.defaultProps = defaultProps
 CellGroup.displayName = 'NutCellGroup'

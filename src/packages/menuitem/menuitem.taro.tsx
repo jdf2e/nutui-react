@@ -240,7 +240,7 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
                       {icon || (
                         <Check
                           color={activeColor}
-                          size={10}
+                          size={16}
                           className={getIconCName(item.value, value)}
                         />
                       )}
@@ -265,5 +265,4 @@ export const MenuItem = forwardRef((props: Partial<MenuItemProps>, ref) => {
   )
 })
 
-MenuItem.defaultProps = defaultProps
 MenuItem.displayName = 'NutMenuItem'
