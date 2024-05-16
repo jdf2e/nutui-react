@@ -872,7 +872,7 @@ $switch-open-disabled-background-color: var(
   var(--nutui-brand-2)
 ) !default;
 $switch-close-line-background-color: var(
-  --nutui-switch-close-line-background-color,
+  --nutui-switch-close-line-bg-color,
   #fff
 ) !default;
 $switch-width: var(--nutui-switch-width, 40px) !default;
@@ -891,7 +891,7 @@ $switch-inside-close-transform: var(
 ) !default;
 $switch-button-box-shadow: var(
   --nutui-switch-box-shadow,
-  0 0 transparent
+  $shadow-raised
 ) !default;
 
 // toast（✅）
