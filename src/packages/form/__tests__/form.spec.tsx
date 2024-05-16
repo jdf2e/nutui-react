@@ -22,6 +22,32 @@ test('form set initialValues', () => {
   )
 })
 
+test('formItem set initialValue', () => {
+  const { container } = render(
+    <Form>
+      <Form.Item name="username" initialValue="NutUI-React">
+        <Input />
+      </Form.Item>
+    </Form>
+  )
+  expect(container.querySelector('.nut-input-native')).toHaveValue(
+    'NutUI-React'
+  )
+})
+
+test('Both form and formItem set initialValue(s)', () => {
+  const { container } = render(
+    <Form initialValues={{ username: 'NutUI-React-Form' }}>
+      <Form.Item name="username" initialValue="NutUI-React-FormItem">
+        <Input />
+      </Form.Item>
+    </Form>
+  )
+  expect(container.querySelector('.nut-input-native')).toHaveValue(
+    'NutUI-React-Form'
+  )
+})
+
 test('form validateTrigger', async () => {
   const { container, rerender } = render(
     <Form>
