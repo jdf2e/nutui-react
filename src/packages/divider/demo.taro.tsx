@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { Cell } from '@/packages/nutui.react.taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
@@ -32,30 +33,30 @@ const DividerDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.basic}</h2>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated.basic}</View>
         <Cell>
           <Demo1 />
         </Cell>
-        <h2>{translated.withText}</h2>
+        <View className="h2">{translated.withText}</View>
         <Cell>
           <Demo2 />
         </Cell>
-        <h2>{translated.contentPosition}</h2>
+        <View className="h2">{translated.contentPosition}</View>
         <Demo3 />
-        <h2>{translated.dashed}</h2>
+        <View className="h2">{translated.dashed}</View>
         <Cell>
           <Demo4 />
         </Cell>
-        <h2>{translated.customStyle}</h2>
+        <View className="h2">{translated.customStyle}</View>
         <Cell>
           <Demo5 />
         </Cell>
-        <h2>{translated.verticalDivider}</h2>
+        <View className="h2">{translated.verticalDivider}</View>
         <Cell>
           <Demo6 />
         </Cell>
-      </div>
+      </ScrollView>
     </>
   )
 }

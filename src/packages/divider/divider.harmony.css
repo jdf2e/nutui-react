@@ -1,60 +1,60 @@
 .nut-divider {
   display: flex;
   align-items: center;
+  flex-direction: row;
   font-size: 14px;
   color: #505259;
   margin: 16px 0;
-  border: 0 solid rgba(0, 0, 0, 0.06);
   width: 100%;
 }
-.nut-divider::before {
-  content: "";
-  border-style: inherit;
-  border-color: inherit;
+.nut-divider-before {
+  display: flex;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.06);
   border-width: 2px 0 0;
   height: 2px;
   flex: 1;
 }
-.nut-divider::after {
-  content: "";
-  border-style: inherit;
-  border-color: inherit;
+.nut-divider-after {
+  display: flex;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.06);
   border-width: 2px 0 0;
   height: 2px;
   flex: 1;
 }
-.nut-divider-center::before {
+.nut-divider-center-before {
   margin-right: 8px;
 }
-.nut-divider-left::before {
+.nut-divider-left-before {
   margin-right: 8px;
 }
-.nut-divider-right::before {
+.nut-divider-right-before {
   margin-right: 8px;
 }
-.nut-divider-center::after {
+.nut-divider-center-after {
   margin-left: 8px;
 }
-.nut-divider-left::after {
+.nut-divider-left-after {
   margin-left: 8px;
 }
-.nut-divider-right::after {
+.nut-divider-right-after {
   margin-left: 8px;
 }
-.nut-divider-left::before {
+.nut-divider-left-before {
   max-width: 10%;
 }
-.nut-divider-right::after {
+.nut-divider-right-after {
   max-width: 10%;
 }
-.nut-divider-hairline::before, .nut-divider-hairline::after {
+.nut-divider-hairline-before, .nut-divider-hairline-after {
   transform: scaleY(0.5);
 }
 .nut-divider-vertical {
   position: relative;
   top: 2px;
-  display: inline-block;
-  width: auto;
+  display: flex;
+  min-width: 1px;
   height: 12px;
   border-left: 1px solid rgba(0, 0, 0, 0.06);
   margin: 0 8px;

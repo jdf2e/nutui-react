@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 
+import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
 export type DividerContentPosition = 'left' | 'center' | 'right'
@@ -37,9 +38,27 @@ export const Divider: FunctionComponent<
           [`${classPrefix}-vertical`]: direction === 'vertical',
         })
   return (
-    <div className={`${classes} ${className || ''}`} style={style} {...rest}>
+    <View className={`${classes} ${className || ''}`} style={style}>
+      {direction === 'horizontal' && (
+        <View
+          style={style}
+          className={`${classes
+            .split(' ')
+            .map((item) => `${item}-before`)
+            .join(' ')}`}
+        />
+      )}
       {children}
-    </div>
+      {direction === 'horizontal' && (
+        <View
+          style={style}
+          className={`${classes
+            .split(' ')
+            .map((item) => `${item}-after`)
+            .join(' ')}`}
+        />
+      )}
+    </View>
   )
 }
 

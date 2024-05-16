@@ -1,17 +1,17 @@
 .nut-divider {
   display: flex;
   align-items: center;
+  flex-direction: row;
   font-size: $divider-text-font-size;
   color: $divider-text-color;
   margin: $divider-margin;
-  border: 0 solid $divider-border-color;
   width: 100%;
 
-  &::before,
-  &::after {
-    content: '';
-    border-style: inherit;
-    border-color: inherit;
+  &-before,
+  &-after {
+    display: flex;
+    border-style: solid;
+    border-color: $divider-border-color;
     border-width: $divider-line-height 0 0;
     height: $divider-line-height;
     flex: 1;
@@ -20,30 +20,30 @@
   &-center,
   &-left,
   &-right {
-    &::before {
+    &-before {
       margin-right: $divider-spacing;
     }
 
-    &::after {
+    &-after {
       margin-left: $divider-spacing;
     }
   }
 
   &-left {
-    &::before {
+    &-before {
       max-width: $divider-side-width;
     }
   }
 
   &-right {
-    &::after {
+    &-after {
       max-width: $divider-side-width;
     }
   }
 
   &-hairline {
-    &::before,
-    &::after {
+    &-before,
+    &-after {
       transform: scaleY(0.5);
     }
   }
@@ -51,8 +51,8 @@
   &-vertical {
     position: relative;
     top: $divider-vertical-top;
-    display: inline-block;
-    width: auto;
+    display: flex;
+    min-width: 1px;
     height: $divider-vertical-height;
     border-left: 1px solid $divider-border-color;
     margin: $divider-vertical-margin;
