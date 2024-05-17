@@ -206,5 +206,4 @@ const InternalAddress: ForwardRefRenderFunction<
 
 export const Address = forwardRef(InternalAddress)
 
-Address.defaultProps = defaultProps
 Address.displayName = 'NutAddress'

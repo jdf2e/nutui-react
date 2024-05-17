@@ -60,49 +60,40 @@ export const Cell: FunctionComponent<
     alignItems: align,
   }
 
-  const styles =
-    title || description
-      ? {}
-      : {
-          flex: 1,
-        }
   return (
-    <div
-      className={classNames([
-        classPrefix,
-        className,
-        {
-          [`${classPrefix}-group-item`]: ctx?.group,
-        },
-      ])}
-      onClick={(event) => handleClick(event)}
-      style={baseStyle}
-      {...rest}
-    >
-      {children || (
-        <>
-          {title || description ? (
-            <div className={`${classPrefix}-left`}>
-              {title ? (
-                <div className={`${classPrefix}-title`}>{title}</div>
-              ) : null}
-              {description ? (
-                <div className={`${classPrefix}-description`}>
-                  {description}
-                </div>
-              ) : null}
-            </div>
-          ) : null}
-          {extra ? (
-            <div
-              className={`${classPrefix}-extra`}
-              style={styles as React.CSSProperties}
-            >
-              {extra}
-            </div>
-          ) : null}
-        </>
-      )}
+    <>
+      <div
+        className={classNames([
+          classPrefix,
+          className,
+          {
+            [`${classPrefix}-group-item`]: ctx?.group,
+          },
+        ])}
+        onClick={(event) => handleClick(event)}
+        style={baseStyle}
+        {...rest}
+      >
+        {children || (
+          <>
+            {title || description ? (
+              <div className={`${classPrefix}-left`}>
+                {title ? (
+                  <div className={`${classPrefix}-title`}>{title}</div>
+                ) : null}
+                {description ? (
+                  <div className={`${classPrefix}-description`}>
+                    {description}
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
+            {extra ? (
+              <div className={`${classPrefix}-extra`}>{extra}</div>
+            ) : null}
+          </>
+        )}
+      </div>
       {ctx?.divider && !isLast ? (
         <div
           className={classNames([
@@ -111,12 +102,13 @@ export const Cell: FunctionComponent<
               [`${classPrefix}-divider-rtl`]: rtl,
             },
           ])}
-        />
+        >
+          <div className={`${classPrefix}-divider-inner`} />
+        </div>
       ) : null}
-    </div>
+    </>
   )
 }
 
-Cell.defaultProps = defaultProps
 Cell.displayName = 'NutCell'
 Cell.Group = CellGroup

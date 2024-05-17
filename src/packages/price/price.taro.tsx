@@ -1,6 +1,8 @@
 import React, { FunctionComponent } from 'react'
-import { View } from '@tarojs/components'
+import { Text } from '@tarojs/components'
+import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { useRtl } from '@/packages/configprovider/index.taro'
 
 export interface PriceProps extends BasicComponent {
   price: number | string
@@ -32,7 +34,6 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
     line,
     className,
     style,
-    // ...rest
   } = {
     ...defaultProps,
     ...props,
@@ -40,18 +41,16 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
 
   const classPrefix = 'nut-price'
 
+  const rtl = useRtl()
+
   const replaceSpecialChar = (url: string) => {
     url = url.replace(/&quot;/g, '"')
     url = url.replace(/&amp;/g, '&')
     url = url.replace(/&lt;/g, '<')
     url = url.replace(/&gt;/g, '>')
     url = url.replace(/&nbsp;/g, ' ')
-    url = url.replace(/&yen;/g, '￥')
+    url = url.replace(/&yen;/g, '¥')
     return url
-  }
-
-  const showSymbol = () => {
-    return { __html: symbol ? replaceSpecialChar(symbol) : '' }
   }
 
   const checkPoint = (price: string | number) => {
@@ -96,39 +95,55 @@ export const Price: FunctionComponent<Partial<PriceProps>> = (props) => {
 
   const renderSymbol = () => {
     return (
-      <View
-        className={`${classPrefix}-symbol ${classPrefix}-symbol-${size}`}
-        dangerouslySetInnerHTML={showSymbol()}
-      />
+      <Text
+        className={classNames([
+          `${classPrefix}-symbol`,
+          `${classPrefix}-symbol-${size}`,
+          {
+            [`${classPrefix}-line`]: line,
+            [`${classPrefix}-rtl`]: rtl,
+          },
+        ])}
+      >
+        {symbol ? replaceSpecialChar(symbol) : ''}
+      </Text>
     )
   }
 
   return (
-    <View
+    <Text
       className={`${classPrefix} ${
         line ? `${classPrefix}-line` : ''
       } ${className}`}
       style={style}
-      // {...rest}
     >
       {symbol && position === 'before' ? renderSymbol() : null}
-      <View className={`${classPrefix}-integer ${classPrefix}-integer-${size}`}>
+      <Text
+        className={`${classPrefix}-integer ${classPrefix}-integer-${size} ${
+          line ? `${classPrefix}-line` : ''
+        }`}
+      >
         {formatThousands(price)}
-      </View>
+      </Text>
       {digits !== 0 ? (
-        <View
-          className={`${classPrefix}-decimal ${classPrefix}-decimal-${size}`}
+        <Text
+          className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
+            line ? `${classPrefix}-line` : ''
+          }`}
         >
           .
-        </View>
+        </Text>
       ) : null}
-      <View className={`${classPrefix}-decimal ${classPrefix}-decimal-${size}`}>
+      <Text
+        className={`${classPrefix}-decimal ${classPrefix}-decimal-${size} ${
+          line ? `${classPrefix}-line` : ''
+        }`}
+      >
         {formatDecimal(price)}
-      </View>
+      </Text>
       {symbol && position === 'after' ? renderSymbol() : null}
-    </View>
+    </Text>
   )
 }
 
-Price.defaultProps = defaultProps
 Price.displayName = 'NutPrice'

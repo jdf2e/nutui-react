@@ -10,5 +10,4 @@ export const Layout: FunctionComponent<
   return <View className="nut-layout">Layout</View>
 }
 
-Layout.defaultProps = defaultProps
 Layout.displayName = 'NutLayout'

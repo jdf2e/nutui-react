@@ -1,7 +1,6 @@
 .nut-cell {
   position: relative;
   display: flex;
-  /* TODO: RN适配 */
   flex-direction: row;
   width: 100%;
   line-height: 20px;
@@ -10,58 +9,49 @@
   border-radius: 6px;
   box-shadow: 0px 1px 7px 0px rgb(237, 238, 241);
   font-size: 14px;
-  color: #1A1A1A;
-  margin: 10px 0;
+  color: #1a1a1a;
+  margin-bottom: 10px;
   box-sizing: border-box;
 }
-
-.nut-cell-left {
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-}
-
-.nut-cell-title {
-  height: auto;
-}
-
-.nut-cell-description {
-  font-size: 12px;
-  color: #505259;
-}
-
-.nut-cell-extra {
-  display: inline-flex;
-  /* TODO: RN适配 */
-  flex-direction: row;
-  justify-content: flex-end;
-  align-items: center;
-  flex: 1;
-  min-width: 0;
-  word-break: break-all;
-  font-size: 14px;
-  color: #505259;
-}
-
-/* TODO: RN适配 */
 .nut-cell-group-item {
   border-radius: 0;
   box-shadow: 0 0 transparent;
   margin: 0;
 }
-/* TODO: RN适配 */
-.nut-cell-divider {
-  position: absolute;
-  box-sizing: border-box;
-  pointer-events: none;
-  right: 16px;
-  bottom: 0;
-  left: 16px;
-  transform: scaleY(0.5);
-  border-top: 2px solid rgba(0, 0, 0, 0.06);
+.nut-cell-left {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
-
+.nut-cell-description {
+  font-size: 12px;
+  color: #505259;
+}
+.nut-cell-extra {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+  flex-shrink: 0;
+  min-width: 0;
+  word-break: break-all;
+  font-size: 14px;
+  color: #505259;
+}
+.nut-cell-divider {
+  display: flex;
+  min-height: 1px;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+.nut-cell-divider-inner {
+  display: flex;
+  height: 1px;
+  width: 100%;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}
 .nut-cell-divider-rtl {
-  left: 16px;
-  right: 16px;
+  padding-left: 16px;
+  padding-right: 16px;
 }

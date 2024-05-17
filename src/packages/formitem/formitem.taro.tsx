@@ -206,7 +206,7 @@ export class FormItem extends React.Component<
         className={`nut-form-item ${className}`}
         style={style}
         onClick={(e) =>
-          this.props.onClick && this.props.onClick(e, this.componentRef)
+          this.props.onClick && this.props.onClick(e as any, this.componentRef)
         }
       >
         {label ? (

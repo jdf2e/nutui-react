@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode, useContext } from 'react'
 import classNames from 'classnames'
 import { ITouchEvent, View } from '@tarojs/components'
-import Taro from '@tarojs/taro'
+import Taro, { pxTransform } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { CellGroup } from '@/packages/cellgroup/cellgroup.taro'
 import CellGroupContext from '@/packages/cellgroup/context'
@@ -62,61 +62,52 @@ export const Cell: FunctionComponent<
     onClick(event)
   }
 
-  const borderRadius = Number.isNaN(Number(radius))
-    ? String(radius)
-    : `${radius}px`
+  const radiusNumber = Number(String(radius).replace(/[^\d]/g, ''))
 
   const baseStyle = {
     ...style,
-    borderRadius:
-      Taro.getEnv() === 'RN' || Taro.getEnv() === Taro.ENV_TYPE.HARMONYHYBRID
-        ? Number(String(radius).replace(/[^\d]/g, ''))
-        : borderRadius,
+    borderRadius: [Taro.ENV_TYPE.HARMONYHYBRID, Taro.ENV_TYPE.HARMONY].includes(
+      // @ts-ignore
+      Taro.getEnv()
+    )
+      ? pxTransform(radiusNumber)
+      : radiusNumber,
     alignItems: align,
   }
 
-  const styles =
-    title || description
-      ? {}
-      : {
-          flex: 1,
-        }
   return (
-    <View
-      className={classNames([
-        classPrefix,
-        className,
-        {
-          [`${classPrefix}-group-item`]: ctx?.group,
-        },
-      ])}
-      onClick={(event) => handleClick(event)}
-      style={baseStyle}
-    >
-      {children || (
-        <>
-          {title || description ? (
-            <View className={`${classPrefix}-left`}>
-              {title ? (
-                <View className={`${classPrefix}-title`}>{title}</View>
-              ) : null}
-              {description ? (
-                <View className={`${classPrefix}-description`}>
-                  {description}
-                </View>
-              ) : null}
-            </View>
-          ) : null}
-          {extra ? (
-            <View
-              className={`${classPrefix}-extra`}
-              style={styles as React.CSSProperties}
-            >
-              {extra}
-            </View>
-          ) : null}
-        </>
-      )}
+    <>
+      <View
+        className={classNames([
+          classPrefix,
+          className,
+          {
+            [`${classPrefix}-group-item`]: ctx?.group,
+          },
+        ])}
+        onClick={(event) => handleClick(event)}
+        style={baseStyle}
+      >
+        {children || (
+          <>
+            {title || description ? (
+              <View className={`${classPrefix}-left`}>
+                {title ? (
+                  <View className={`${classPrefix}-title`}>{title}</View>
+                ) : null}
+                {description ? (
+                  <View className={`${classPrefix}-description`}>
+                    {description}
+                  </View>
+                ) : null}
+              </View>
+            ) : null}
+            {extra ? (
+              <View className={`${classPrefix}-extra`}>{extra}</View>
+            ) : null}
+          </>
+        )}
+      </View>
       {ctx?.divider && !isLast ? (
         <View
           className={classNames([
@@ -125,12 +116,13 @@ export const Cell: FunctionComponent<
               [`${classPrefix}-divider-rtl`]: rtl,
             },
           ])}
-        />
+        >
+          <View className={`${classPrefix}-divider-inner`} />
+        </View>
       ) : null}
-    </View>
+    </>
   )
 }
 
-Cell.defaultProps = defaultProps
 Cell.displayName = 'NutCell'
 Cell.Group = CellGroup

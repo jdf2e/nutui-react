@@ -12,18 +12,18 @@ interface TableColumnProps {
 }
 
 const Demo3 = () => {
-  const [columns1, setColumns1] = useState<Array<TableColumnProps>>([
+  const [columns] = useState<Array<TableColumnProps>>([
     {
       title: '姓名',
       key: 'name',
     },
     {
       title: '性别',
-      key: 'sex',
+      key: 'gender',
       render: (record: any) => {
         return (
-          <span style={{ color: record.sex === '女' ? 'blue' : 'green' }}>
-            {record.sex}
+          <span style={{ color: record.gender === '女' ? 'blue' : 'green' }}>
+            {record.gender}
           </span>
         )
       },
@@ -34,24 +34,24 @@ const Demo3 = () => {
     },
   ])
 
-  const [data1, setData1] = useState([
+  const [data] = useState([
     {
       name: 'Tom',
-      sex: '男',
+      gender: '男',
       record: '小学',
     },
     {
       name: 'Lucy',
-      sex: '女',
+      gender: '女',
       record: '本科',
     },
     {
       name: 'Jack',
-      sex: '男',
+      gender: '男',
       record: '高中',
     },
   ])
 
-  return <Table columns={columns1} data={data1} summary="这是总结栏" />
+  return <Table columns={columns} data={data} summary="这是总结栏" />
 }
 export default Demo3
