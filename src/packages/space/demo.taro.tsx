@@ -7,7 +7,7 @@ import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
 import Demo3 from './demos/taro/demo3'
-import Demo4 from './demos/taro/demo4'
+// import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
 
@@ -56,9 +56,10 @@ const SpaceDemo = () => {
           <Demo3 />
         </Cell>
         <View className="h2">{translated.spaceGap}</View>
-        <Cell>
+        {/* @TODO ConfigProvider 暂不支持 */}
+        {/* <Cell>
           <Demo4 />
-        </Cell>
+        </Cell> */}
         <View className="h2">{translated.mainAxisAlign}</View>
         <Cell style={{ display: 'block' }}>
           <Demo5 />
