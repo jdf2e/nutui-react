@@ -1,3 +1,16 @@
+# v2.6.5
+`2024-05-17`
+
+
+*🏡 chore(image): 官网taro的demo显示与h5不一致 (#2244) @Alex.huxiyang
+* :bug: fix(circleprogress): update demo (#2260) @Eiinu
+* :bug: fix: 移除 defaultProps(2) (#2254) @Eiinu
+* :bug: fix: 关于checkbox&tabs的doc与demo修改 (#2253) @Alex.huxiyang
+* :bug: fix(table): 修复部分由于场景下width未生效导致的一些问题 (#2241) @Alex.huxiyang
+* :bug: fix(menu): 选项文字很多时右侧箭头展示异常 (#2252) @Alex.huxiyang
+* :bug: fix(input): 修复特殊场景下自动清除失效问题 (#2240) @Eiinu
+
+
 # v2.6.4
 `2024-05-10`
 
