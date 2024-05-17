@@ -80,7 +80,10 @@ export class FormItem extends React.Component<
       this.props.name &&
       !Object.keys(store).includes(this.props.name)
     ) {
-      setInitialValues({ [this.props.name]: this.props.initialValue })
+      setInitialValues(
+        { ...store, [this.props.name]: this.props.initialValue },
+        true
+      )
     }
     // 注册组件实例到FormStore
     const { registerField, registerUpdate } = this.context.getInternal(SECRET)
