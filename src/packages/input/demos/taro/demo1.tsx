@@ -9,7 +9,6 @@ const Demo1 = () => {
         onChange={(v) => {
           console.log('onChange', v)
         }}
-        autoFocus
       />
     </>
   )
