@@ -67,6 +67,7 @@ export const Cell: FunctionComponent<
   const baseStyle = {
     ...style,
     borderRadius: [Taro.ENV_TYPE.HARMONYHYBRID, Taro.ENV_TYPE.HARMONY].includes(
+      // @ts-ignore
       Taro.getEnv()
     )
       ? pxTransform(radiusNumber)
