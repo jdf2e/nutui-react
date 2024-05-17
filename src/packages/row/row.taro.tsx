@@ -74,7 +74,14 @@ export const Row: FunctionComponent<
           onClick?.(e as any, 'row')
         }}
       >
-        {children}
+        {React.Children.map(children, (child, index) => {
+          return child?.type?.displayName === 'NutCol'
+            ? React.cloneElement(child, {
+                isFirst: index === 0,
+                isLast: index === React.Children.count(children) - 1,
+              })
+            : child
+        })}
       </View>
     </DataContext.Provider>
   )

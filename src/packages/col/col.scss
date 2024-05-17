@@ -3,16 +3,6 @@
   box-sizing: border-box;
   word-break: break-all;
   margin-bottom: $col-default-margin-bottom;
-
-  &.nut-col-gutter {
-    &:last-child {
-      padding-right: 0 !important;
-    }
-
-    &:first-child {
-      padding-left: 0 !important;
-    }
-  }
 }
 
 [dir='rtl'] .nut-col,
@@ -32,18 +22,20 @@
   }
 }
 
+// RN 不支持 calc
+// dart-sass: math.div -> round & *
 @for $i from 1 through 24 {
   .nut-col-offset-#{$i} {
-    margin-left: calc((100 / 24) * #{$i} * 1%);
+    margin-left: percentage(round($i * 0.04166666666, 0.000000001));
   }
 
   [dir='rtl'] .nut-col-offset-#{$i},
   .nut-rtl .nut-col-offset-#{$i} {
     margin-left: 0;
-    margin-right: calc((100 / 24) * #{$i} * 1%);
+    margin-right: percentage(round($i * 0.04166666666, 0.000000001));
   }
 
   .nut-col-#{$i} {
-    width: calc((100 / 24) * #{$i} * 1%);
+    width: percentage(round($i * 0.04166666666, 0.000000001));
   }
 }
