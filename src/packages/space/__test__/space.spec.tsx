@@ -66,5 +66,7 @@ test('render with props wrap', () => {
     </Space>
   )
   const nutSpace = container.getElementsByClassName('nut-space')[0]
-  expect(nutSpace).toHaveClass(`${prefixCls}-wrap`)
+  expect(nutSpace).toHaveClass(
+    `nut-space nut-space-horizontal nut-space-horizontal-wrap`
+  )
 })
