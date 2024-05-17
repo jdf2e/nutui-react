@@ -3,17 +3,9 @@ import { SearchBar } from '../../searchbar'
 
 const Demo7 = () => {
   const [value, setValue] = useState('')
-  const change = (val: string, e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(val)
-  }
   return (
     <>
-      <SearchBar
-        onChange={(val: string, e: React.ChangeEvent<HTMLInputElement>) =>
-          change(val, e)
-        }
-        maxLength={10}
-      />
+      <SearchBar onChange={(val: string) => setValue(val)} maxLength={10} />
       <div
         style={{
           height: '40px',
