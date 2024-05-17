@@ -73,15 +73,14 @@ export class FormItem extends React.Component<
   }
 
   componentDidMount() {
-    const { setFieldsValue } = this.context
     // Form设置initialValues时的处理
-    const { store = {} } = this.context.getInternal(SECRET)
+    const { store = {}, setInitialValues } = this.context.getInternal(SECRET)
     if (
       this.props.initialValue &&
       this.props.name &&
       !Object.keys(store).includes(this.props.name)
     ) {
-      setFieldsValue({ [this.props.name]: this.props.initialValue })
+      setInitialValues({ [this.props.name]: this.props.initialValue })
     }
     // 注册组件实例到FormStore
     const { registerField, registerUpdate } = this.context.getInternal(SECRET)
