@@ -857,19 +857,19 @@ $avatar-normal-height: var(--nutui-avatar-normal-height, 40px) !default;
 //switch（✅）
 $switch-close-background-color: var(
   --nutui-switch-close-background-color,
-  var(--nutui-gray-4)
+  $color-default
 ) !default;
 $switch-open-background-color: var(
   --nutui-switch-open-background-color,
-  var(--nutui-color-primary)
+  $color-primary
 ) !default;
 $switch-close-disabled-background-color: var(
   --nutui-switch-close-disabled-background-color,
-  var(--nutui-gray-3)
+  $color-default-disabled
 ) !default;
 $switch-open-disabled-background-color: var(
   --nutui-switch-open-disabled-background-color,
-  var(--nutui-brand-2)
+  $color-primary-disabled
 ) !default;
 $switch-close-line-background-color: var(
   --nutui-switch-close-line-bg-color,
