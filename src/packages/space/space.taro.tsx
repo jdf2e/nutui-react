@@ -3,7 +3,6 @@ import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import { BasicComponent } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
-import './space.harmony.css'
 
 const prefixCls = 'nut-space'
 
