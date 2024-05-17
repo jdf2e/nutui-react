@@ -75,8 +75,10 @@ export const Row: FunctionComponent<
         }}
       >
         {React.Children.map(children, (child, index) => {
+          // @ts-ignore
           return child?.type?.displayName === 'NutCol'
-            ? React.cloneElement(child, {
+            ? // @ts-ignore
+              React.cloneElement(child, {
                 isFirst: index === 0,
                 isLast: index === React.Children.count(children) - 1,
               })
