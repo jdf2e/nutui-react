@@ -24,21 +24,36 @@
   flex: 1;
 }
 .nut-divider-center-before {
+
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  background-color: aqua;
   margin-right: 8px;
 }
 .nut-divider-left-before {
+
+  background-color: aqua;
   margin-right: 8px;
 }
 .nut-divider-right-before {
+ 
+  background-color: aqua;
   margin-right: 8px;
 }
 .nut-divider-center-after {
+
+  background-color: aqua;
   margin-left: 8px;
 }
 .nut-divider-left-after {
+  
+  background-color: aqua;
   margin-left: 8px;
 }
 .nut-divider-right-after {
+  
+  background-color: aqua;
   margin-left: 8px;
 }
 .nut-divider-left-before {
@@ -48,7 +63,7 @@
   max-width: 10%;
 }
 .nut-divider-hairline-before, .nut-divider-hairline-after {
-  transform: scaleY(0.5);
+  /* transform: scaleY(0.5); */
 }
 .nut-divider-vertical {
   position: relative;
@@ -56,7 +71,7 @@
   display: flex;
   min-width: 1px;
   height: 12px;
-  border-left: 1px solid rgba(0, 0, 0, 0.06);
+  border-left: 2px solid rgba(0, 0, 0, 0.06);
   margin: 0 8px;
 }
 

@@ -21,10 +21,14 @@
   &-left,
   &-right {
     &-before {
+      width: 100%;
+      background-color: aqua;
       margin-right: $divider-spacing;
     }
 
     &-after {
+      width: 100%;
+      background-color: aqua;
       margin-left: $divider-spacing;
     }
   }
