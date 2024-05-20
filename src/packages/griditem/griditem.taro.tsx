@@ -6,10 +6,10 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
+import { pxTransform } from '@tarojs/taro'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import GridContext from '../grid/context'
 import { BasicComponent } from '@/utils/typings'
-import { pxCheck } from '@/utils/px-check'
 
 type GridDirection = 'horizontal' | 'vertical'
 
@@ -69,9 +69,13 @@ export const GridItem: FunctionComponent<
     if (square) {
       styles.paddingTop = `${100 / +columns}%`
     } else if (gap) {
-      styles.paddingRight = pxCheck(gap)
+      styles.paddingRight = pxTransform(
+        typeof gap === 'number' ? gap : parseFloat(gap)
+      )
       if (index >= Number(columns)) {
-        styles.marginTop = pxCheck(gap)
+        styles.marginTop = pxTransform(
+          typeof gap === 'number' ? gap : parseFloat(gap)
+        )
       }
     }
 
@@ -84,8 +88,16 @@ export const GridItem: FunctionComponent<
       [`${classPrefix}-content-surround`]: gap,
       [`${classPrefix}-content-center`]: center,
       [`${classPrefix}-content-square`]: square,
-      [`${classPrefix}-content-reverse`]: reverse,
       [`${classPrefix}-content-${direction}`]: !!direction,
+    })
+  }
+
+  const textClass = () => {
+    return classNames(`${classPrefix}-text`, {
+      [`${classPrefix}-text-reverse`]: reverse && direction !== 'horizontal',
+      [`${classPrefix}-text-horizontal`]: direction === 'horizontal',
+      [`${classPrefix}-text-horizontal-reverse`]:
+        reverse && direction === 'horizontal',
     })
   }
 
@@ -111,11 +123,19 @@ export const GridItem: FunctionComponent<
     <>
       <View className={classes} style={rootStyle()} onClick={handleClick}>
         <View className={contentClass()}>
-          {children && <>{children}</>}
-          {text && <View className={`${classPrefix}-text`}>{text}</View>}
+          {reverse ? (
+            <>
+              {text && <View className={textClass()}>{text}</View>}
+              {children && <>{children}</>}
+            </>
+          ) : (
+            <>
+              {children && <>{children}</>}
+              {text && <View className={textClass()}>{text}</View>}
+            </>
+          )}
         </View>
       </View>
-      {square ? <View style={{ paddingTop: '33.3333%', width: 0 }} /> : null}
     </>
   )
 }
