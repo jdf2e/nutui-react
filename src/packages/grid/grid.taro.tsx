@@ -73,6 +73,7 @@ export const Grid: FunctionComponent<
   }
 
   return (
+    // @ts-ignore
     <View className={rootClass()} style={rootStyle()} {...rest}>
       <GridContext.Provider value={{ onClick }}>
         {childrenDom.map((item: any, idex: number) => {
