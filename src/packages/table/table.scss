@@ -1,7 +1,8 @@
 .nut-table {
   overflow: hidden;
   position: relative;
-
+  word-wrap: break-word;
+  word-break: break-all;
   &-wrapper {
     display: flex;
     width: 100%;

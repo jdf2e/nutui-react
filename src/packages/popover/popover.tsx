@@ -130,7 +130,7 @@ export const Popover: FunctionComponent<
   }
   useClickAway(
     () => {
-      props.onClick?.()
+      onClick?.()
       onClose?.()
     },
     targetSet as Element[],
@@ -235,7 +235,7 @@ export const Popover: FunctionComponent<
     const skew = location.split('-')[1]
     const base = 16
 
-    if (props.arrowOffset !== 0) {
+    if (arrowOffset !== 0) {
       const dir = rtl ? 'right' : 'left'
       const dir2 = rtl ? 'left' : 'right'
       if (['bottom', 'top'].includes(direction)) {
@@ -270,7 +270,7 @@ export const Popover: FunctionComponent<
       onSelect?.(item, index)
     }
     if (closeOnActionClick) {
-      props.onClick?.()
+      onClick?.()
       onClose?.()
     }
   }
@@ -281,7 +281,7 @@ export const Popover: FunctionComponent<
           className="nut-popover-wrapper"
           ref={popoverRef}
           onClick={() => {
-            props.onClick?.()
+            onClick?.()
             if (!visible) {
               onOpen?.()
             } else {
@@ -354,5 +354,4 @@ export const Popover: FunctionComponent<
   )
 }
 
-Popover.defaultProps = defaultProps
 Popover.displayName = 'NutPopover'

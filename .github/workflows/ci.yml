@@ -4,10 +4,12 @@ on:
   push:
     branches:
       - next
+      - dev-harmony
 
   pull_request:
     branches:
       - next
+      - dev-harmony
 
   workflow_dispatch:
 
@@ -15,71 +17,71 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Install pnpm
-      run: corepack enable
+      - name: Install pnpm
+        run: corepack enable
 
-    - uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        cache: 'pnpm'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'pnpm'
 
-    - name: Install dependencies
-      run: pnpm install
+      - name: Install dependencies
+        run: pnpm install
 
-    - name: Run linter
-      run: npm run lint
+      - name: Run linter
+        run: npm run lint
 
   test:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Install pnpm
-      run: corepack enable
+      - name: Install pnpm
+        run: corepack enable
 
-    - uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        cache: 'pnpm'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'pnpm'
 
-    - name: Install dependencies
-      run: pnpm install
-    
-    - name: Run test
-      run: npm run test
-    
-    - name: Upload coverage reports to Codecov
-      if: ${{ always() }}
-      uses: codecov/codecov-action@v4
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run test
+        run: npm run test
+
+      - name: Upload coverage reports to Codecov
+        if: ${{ always() }}
+        uses: codecov/codecov-action@v4
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Install pnpm
-      run: corepack enable
+      - name: Install pnpm
+        run: corepack enable
 
-    - uses: actions/setup-node@v4
-      with:
-        node-version: '18'
-        cache: 'pnpm'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'pnpm'
 
-    - name: Install dependencies
-      run: pnpm install
+      - name: Install dependencies
+        run: pnpm install
 
-    - name: Build NutUI-React
-      run: npm run build
+      - name: Build NutUI-React
+        run: npm run build
 
-    - name: Build NutUI-React-Taro
-      run: npm run build:taro
+      - name: Build NutUI-React-Taro
+        run: npm run build:taro
 
-    - name: Build NutUI-React Demo
-      run: npm run build:site
+      - name: Build NutUI-React Demo
+        run: npm run build:site
 
-    - name: Build NutUI-React Taro H5 Demo
-      run: npm run build:taro:site
+      - name: Build NutUI-React Taro H5 Demo
+        run: npm run build:taro:site

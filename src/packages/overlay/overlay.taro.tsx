@@ -51,7 +51,7 @@ export const Overlay: FunctionComponent<
 
   const [innerVisible, setInnerVisible] = useState(visible)
 
-  const nodeRef = useLockScrollTaro(!!props.lockScroll && innerVisible)
+  const nodeRef = useLockScrollTaro(!!lockScroll && innerVisible)
 
   useEffect(() => {
     if (visible) {
@@ -132,5 +132,4 @@ export const Overlay: FunctionComponent<
   )
 }
 
-Overlay.defaultProps = defaultOverlayProps
 Overlay.displayName = 'NutOverlay'

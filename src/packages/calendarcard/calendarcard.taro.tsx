@@ -468,5 +468,4 @@ export const CalendarCard = React.forwardRef<
   ) : null
 })
 
-CalendarCard.defaultProps = defaultProps as CalendarCardProps
 CalendarCard.displayName = 'NutCalendarCard'

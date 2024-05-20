@@ -99,6 +99,7 @@ const InternalCountDown: ForwardRefRenderFunction<
           Taro.ENV_TYPE.RN,
           Taro.ENV_TYPE.HARMONYHYBRID,
           Taro.ENV_TYPE.HARMONY,
+          // @ts-ignore
         ].includes(Taro.getEnv())
       ) {
         stateRef.current.diffTime = Date.now() - getTimeStamp(startTime) // 时间差
@@ -307,7 +308,7 @@ const InternalCountDown: ForwardRefRenderFunction<
           //     __html: `${renderTime}`,
           //   }}
         >
-          {renderTime}
+          {renderTime as any}
         </View>
       )}
     </View>
@@ -318,5 +319,4 @@ export const CountDown = React.forwardRef<unknown, Partial<CountDownProps>>(
   InternalCountDown
 )
 
-CountDown.defaultProps = defaultProps
 CountDown.displayName = 'NutCountDown'

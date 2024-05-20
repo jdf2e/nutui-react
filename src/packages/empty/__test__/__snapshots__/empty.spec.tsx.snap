@@ -6,12 +6,12 @@ exports[`should render description correctly 1`] = `
     class="nut-empty"
   >
     <div
-      class="nut-empty-image"
+      class="nut-empty-base"
     >
       <img
         alt="empty"
-        class="img"
         src="https://storage.360buyimg.com/imgtools/30186cfda0-0d3eee40-c0ac-11ee-9382-9125782aa3b8.png"
+        style="width: 100%; height: 100%;"
       />
     </div>
     <div

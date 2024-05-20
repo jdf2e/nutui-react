@@ -303,5 +303,4 @@ export const Popup: FunctionComponent<
   return <>{renderToContainer(portal as Teleport, renderNode())}</>
 }
 
-Popup.defaultProps = defaultProps
 Popup.displayName = 'NutPopup'

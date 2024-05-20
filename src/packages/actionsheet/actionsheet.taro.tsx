@@ -106,5 +106,4 @@ export const ActionSheet: FunctionComponent<
   )
 }
 
-ActionSheet.defaultProps = defaultProps
 ActionSheet.displayName = 'NutActionSheet'

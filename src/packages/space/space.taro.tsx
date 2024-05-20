@@ -3,7 +3,6 @@ import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import { BasicComponent } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
-import './space.harmony.css'
 
 const prefixCls = 'nut-space'
 
@@ -68,5 +67,4 @@ export const Space: FunctionComponent<
   )
 }
 
-Space.defaultProps = defaultProps
 Space.displayName = 'NutSpace'

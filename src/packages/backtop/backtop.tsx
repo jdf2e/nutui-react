@@ -147,5 +147,4 @@ export const BackTop: FunctionComponent<
   )
 }
 
-BackTop.defaultProps = defaultProps
 BackTop.displayName = 'NutBackTop'

@@ -8,7 +8,6 @@
 
 ```tsx
 import { Checkbox } from '@nutui/nutui-react';
-
 ```
 
 ## Demo
@@ -144,7 +143,6 @@ When the value changes, the change event will be fired
 | checked | whether checked | `boolean` | `false` |
 | defaultChecked | Initially checked or not | `boolean` | `false` |
 | disabled | Whether to disable selection | `boolean` | `false` |
-| list | List model | `boolean` | `false` |
 | labelPosition | The position of the text  | `left` \| `right` | `right` |
 | icon | before selection | `ReactNode` | `'CheckNormal'` |
 | activeIcon |  after selection | `ReactNode` | `'Checked'` |
@@ -168,6 +166,7 @@ When the value changes, the change event will be fired
 | labelPosition | The position of the text | `left` \| `right` | `right` |
 | direction | Use horizontal and vertical directions Optional values horizontal、vertical | `string` | `vertical` |
 | options | Configure options to render check buttons | `Array<{ label: string value: string disabled?: boolean }>` | `-` |
+| list | List model | `boolean` | `false` |
 | onChange | Triggered when the value changes | `(value: string[]) => void` | `-` |
 
 ### Ref

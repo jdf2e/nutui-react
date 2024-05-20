@@ -67,6 +67,7 @@ export const Cell: FunctionComponent<
   const baseStyle = {
     ...style,
     borderRadius: [Taro.ENV_TYPE.HARMONYHYBRID, Taro.ENV_TYPE.HARMONY].includes(
+      // @ts-ignore
       Taro.getEnv()
     )
       ? pxTransform(radiusNumber)
@@ -123,6 +124,5 @@ export const Cell: FunctionComponent<
   )
 }
 
-Cell.defaultProps = defaultProps
 Cell.displayName = 'NutCell'
 Cell.Group = CellGroup

@@ -47,5 +47,4 @@ export const AvatarGroup: FunctionComponent<
   )
 }
 
-AvatarGroup.defaultProps = defaultProps
 AvatarGroup.displayName = 'NutAvatarGroup'
