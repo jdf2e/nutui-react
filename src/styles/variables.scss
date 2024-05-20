@@ -4,7 +4,7 @@ $color-primary: var(--nutui-color-primary, #ff0f23) !default;
 $color-primary-stop-1: var(--nutui-color-primary-stop-1, #ff475d) !default;
 $color-primary-stop-2: var(--nutui-color-primary-stop-2, #ff0f23) !default;
 $color-primary-pressed: var(--nutui-color-primary-pressed, #e53029) !default;
-$color-primary-disabled: var(--nutui-color-primary-disabled, #c2c4cc) !default;
+$color-primary-disabled: var(--nutui-color-primary-disabled, #ffadbe) !default;
 $color-primary-light: var(--nutui-color-primary-light, #ffebf1) !default;
 $color-primary-light-pressed: var(
   --nutui-color-primary-light-pressed,
@@ -807,7 +807,7 @@ $avatar-normal-height: var(--nutui-avatar-normal-height, 40px) !default;
 //switch（✅）
 $switch-close-background-color: var(
   --nutui-switch-close-background-color,
-  $color-primary-disabled
+  $color-text-disabled
 ) !default;
 $switch-open-background-color: var(
   --nutui-switch-open-background-color,
@@ -819,7 +819,7 @@ $switch-close-disabled-background-color: var(
 ) !default;
 $switch-open-disabled-background-color: var(
   --nutui-switch-open-disabled-background-color,
-  var(--nutui-brand-2)
+  $color-primary-disabled
 ) !default;
 $switch-close-line-background-color: var(
   --nutui-switch-close-line-background-color,
