@@ -69,7 +69,7 @@ page {
 
   --nutui-white-1: rgba(255, 255, 255, 0);
   --nutui-white-2: rgba(255, 255, 255, 0.02);
-  --nutui-white-3: rgba(255, 255, 255, 0.06);
+  --nutui-white-3: rgba(255, 255, 255, 0.05);
   --nutui-white-4: rgba(255, 255, 255, 0.1);
   --nutui-white-5: rgba(255, 255, 255, 0.2);
   --nutui-white-6: rgba(255, 255, 255, 0.3);
@@ -99,6 +99,8 @@ page {
   // 字重
   --nutui-font-weight: 400;
   --nutui-font-weight-bold: 600;
+  // 行高
+  --nutui-line-height-base: 1.5;
   // 对齐方式
   --nutui-text-align: left;
 
