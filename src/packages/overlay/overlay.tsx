@@ -66,7 +66,7 @@ export const Overlay: FunctionComponent<
     }
   }, [visible])
 
-  useLockScroll(nodeRef, !!props.lockScroll && innerVisible)
+  useLockScroll(nodeRef, !!lockScroll && innerVisible)
 
   const classes = classNames(classPrefix, className)
 
@@ -117,5 +117,4 @@ export const Overlay: FunctionComponent<
   )
 }
 
-Overlay.defaultProps = defaultOverlayProps
 Overlay.displayName = 'NutOverlay'

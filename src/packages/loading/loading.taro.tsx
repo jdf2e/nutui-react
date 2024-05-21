@@ -55,5 +55,4 @@ export const Loading: FunctionComponent<
   )
 }
 
-Loading.defaultProps = defaultProps
 Loading.displayName = 'NutLoading'

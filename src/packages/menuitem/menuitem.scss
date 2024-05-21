@@ -32,6 +32,7 @@
       display: inline-flex;
       align-items: center;
       margin-right: $menu-item-icon-margin;
+      flex-shrink: 0;
     }
   }
 

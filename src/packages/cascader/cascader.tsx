@@ -106,6 +106,8 @@ const InternalCascader: ForwardRefRenderFunction<
     closeIconPosition,
     closeIcon,
     lazy,
+    title,
+    left,
     onLoad,
     onClose,
     onChange,
@@ -122,7 +124,7 @@ const InternalCascader: ForwardRefRenderFunction<
     finalValue: defaultValue,
   })
   const [innerVisible, setInnerVisible] = usePropsValue<boolean>({
-    value: props.visible,
+    value: visible,
     defaultValue: undefined,
     finalValue: false,
   })
@@ -478,8 +480,8 @@ const InternalCascader: ForwardRefRenderFunction<
           closeIcon={closeIcon}
           closeable={closeable}
           closeIconPosition={closeIconPosition}
-          title={popup && (props.title as ReactNode)}
-          left={props.left}
+          title={popup && (title as ReactNode)}
+          left={left}
           // todo 只关闭，不处理逻辑。和popup的逻辑不一致。关闭时需要增加是否要处理回调
           onOverlayClick={closePopup}
           onCloseIconClick={closePopup}
@@ -495,5 +497,4 @@ const InternalCascader: ForwardRefRenderFunction<
 
 export const Cascader = React.forwardRef(InternalCascader)
 
-Cascader.defaultProps = defaultProps
 Cascader.displayName = 'NutCascader'

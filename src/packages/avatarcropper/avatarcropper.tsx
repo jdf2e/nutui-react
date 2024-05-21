@@ -483,5 +483,4 @@ export const AvatarCropper: FunctionComponent<Partial<AvatarCropperProps>> = (
   )
 }
 
-AvatarCropper.defaultProps = defaultProps
 AvatarCropper.displayName = 'NutAvatarCropper'

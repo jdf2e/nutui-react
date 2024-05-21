@@ -180,5 +180,4 @@ export const TimeSelect: FunctionComponent<Partial<TimeSelectProps>> = (
   )
 }
 
-TimeSelect.defaultProps = defaultProps
 TimeSelect.displayName = 'NutTimeSelect'

@@ -137,5 +137,4 @@ export const FixedNav: FunctionComponent<
   )
 }
 
-FixedNav.defaultProps = defaultProps
 FixedNav.displayName = 'NutFixedNav'

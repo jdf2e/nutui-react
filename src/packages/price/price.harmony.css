@@ -1,16 +1,18 @@
 .nut-price {
   direction: ltr;
   font-size: 16px;
-  display: inline;
-  color: #FF0F23;
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
 }
-.nut-price-line div {
-  text-decoration: line-through;
-  font-size: 12px !important;
-  color: rgba(0, 0, 0, 0.06) !important;
+.nut-price-symbol {
+  color: #ff0f23;
 }
-.nut-price-symbol, .nut-price-integer, .nut-price-decimal {
-  display: inline-block;
+.nut-price-integer {
+  color: #ff0f23;
+}
+.nut-price-decimal {
+  color: #ff0f23;
 }
 .nut-price-symbol {
   font-size: 14px;
@@ -21,6 +23,10 @@
 }
 .nut-price-symbol-small {
   font-size: 10px;
+}
+.nut-price-symbol-rtl {
+  padding-right: 0;
+  padding-left: 1px;
 }
 .nut-price-integer {
   font-size: 16px;
@@ -40,13 +46,8 @@
 .nut-price-decimal-small {
   font-size: 10px;
 }
-
-[dir=rtl] .nut-price-symbol {
-  padding-right: 0;
-  padding-left: 1px;
-}
-
-.nut-rtl .nut-price-symbol {
-  padding-right: 0;
-  padding-left: 1px;
+.nut-price-line {
+  text-decoration: line-through rgba(0, 0, 0, 0.06);
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.06);
 }

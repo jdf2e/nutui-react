@@ -110,6 +110,5 @@ export const Cell: FunctionComponent<
   )
 }
 
-Cell.defaultProps = defaultProps
 Cell.displayName = 'NutCell'
 Cell.Group = CellGroup

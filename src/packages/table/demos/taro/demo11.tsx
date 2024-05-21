@@ -13,45 +13,45 @@ interface TableColumnProps {
 
 const Demo11 = () => {
   const summaryContent = '这是总结栏'
-  const [data6, setData6] = useState([
+  const [data] = useState([
     {
       name: 'Tom',
-      sex: '男',
+      gender: '男',
       record: '小学',
       birthday: '2010-01-01',
       age: 10,
     },
     {
       name: 'Lucy',
-      sex: '女',
+      gender: '女',
       record: '本科',
       birthday: '2000-01-01',
       age: 30,
     },
     {
       name: 'Jack',
-      sex: '男',
+      gender: '男',
       record: '高中',
       birthday: '2020-01-01',
       age: 4,
     },
     {
       name: 'Sara',
-      sex: '女',
+      gender: '女',
       record: '高中',
       birthday: '2020-01-01',
       age: 6,
     },
     {
       name: 'Frank',
-      sex: '男',
+      gender: '男',
       record: '幼儿园',
       birthday: '2020-01-01',
       age: 3,
     },
   ])
 
-  const [columns6, setColumns6] = useState<Array<TableColumnProps>>([
+  const [columns] = useState<Array<TableColumnProps>>([
     {
       title: '姓名',
       key: 'name',
@@ -59,7 +59,7 @@ const Demo11 = () => {
     },
     {
       title: '性别',
-      key: 'sex',
+      key: 'gender',
     },
     {
       title: '学历',
@@ -77,8 +77,8 @@ const Demo11 = () => {
 
   return (
     <Table
-      columns={columns6}
-      data={data6}
+      columns={columns}
+      data={data}
       style={{ height: 150 }}
       summary={summaryContent}
     />

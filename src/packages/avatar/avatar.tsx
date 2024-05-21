@@ -129,8 +129,8 @@ export const Avatar: FunctionComponent<
   }
 
   const errorEvent = () => {
-    if (props.onError) {
-      props.onError()
+    if (onError) {
+      onError()
     }
   }
 
@@ -188,6 +188,5 @@ export const Avatar: FunctionComponent<
   )
 }
 
-Avatar.defaultProps = defaultProps
 Avatar.displayName = 'NutAvatar'
 Avatar.Group = AvatarGroup

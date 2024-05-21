@@ -259,5 +259,4 @@ export const Tour: FunctionComponent<
   )
 }
 
-Tour.defaultProps = defaultProps
 Tour.displayName = 'NutTour'

@@ -71,6 +71,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   props
 ) => {
   const {
+    value,
     className,
     style,
     images,
@@ -84,15 +85,16 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     closeIcon,
     closeIconPosition,
     onClose,
-  } = props
+    onChange,
+  } = { ...defaultProps, ...props }
   const classPrefix = 'nut-imagepreview'
   const ref = useRef(null)
   const [innerNo, setInnerNo] = usePropsValue<number>({
-    value: props.value,
+    value,
     defaultValue,
     finalValue: defaultValue,
     onChange: (val: number) => {
-      props.onChange?.(val)
+      onChange?.(val)
     },
   })
 
@@ -236,10 +238,11 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
 
   const slideChangeEnd = (page: number) => {
     setActive(page + 1)
-    props.onChange?.(page + 1)
+    onChange?.(page + 1)
   }
 
-  const onCloseInner = () => {
+  const onCloseInner = (e: React.MouseEvent<Element, MouseEvent>) => {
+    e.stopPropagation()
     setShowPop(false)
     setActive(innerNo)
     scaleNow()
@@ -250,10 +253,10 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
     })
   }
 
-  const closeOnImg = () => {
+  const closeOnImg = (e: React.MouseEvent<Element, MouseEvent>) => {
     // 点击内容区域的图片是否可以关闭弹层（视频区域由于nut-video做了限制，无法关闭弹层）
     if (closeOnContentClick) {
-      onCloseInner()
+      onCloseInner(e)
     }
   }
   const duration = typeof autoPlay === 'string' ? parseInt(autoPlay) : autoPlay
@@ -325,5 +328,4 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   )
 }
 
-ImagePreview.defaultProps = defaultProps
 ImagePreview.displayName = 'NutImagePreview'
