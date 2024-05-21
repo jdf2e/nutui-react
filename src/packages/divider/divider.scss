@@ -6,6 +6,7 @@
   color: $divider-text-color;
   margin: $divider-margin;
   width: 100%;
+  border: 0;
 
   &-before,
   &-after {
@@ -21,34 +22,25 @@
   &-left,
   &-right {
     &-before {
-      width: 100%;
-      background-color: aqua;
       margin-right: $divider-spacing;
     }
 
     &-after {
-      width: 100%;
-      background-color: aqua;
       margin-left: $divider-spacing;
     }
   }
 
   &-left {
     &-before {
-      max-width: $divider-side-width;
+      width: $divider-side-width;
+      flex: none;
     }
   }
 
   &-right {
     &-after {
-      max-width: $divider-side-width;
-    }
-  }
-
-  &-hairline {
-    &-before,
-    &-after {
-      transform: scaleY(0.5);
+      width: $divider-side-width;
+      flex: none;
     }
   }
 
@@ -56,7 +48,7 @@
     position: relative;
     top: $divider-vertical-top;
     display: flex;
-    min-width: 1px;
+    width: 0px;
     height: $divider-vertical-height;
     border-left: 1px solid $divider-border-color;
     margin: $divider-vertical-margin;

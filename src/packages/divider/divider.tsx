@@ -36,9 +36,21 @@ export const Divider: FunctionComponent<
           [`${classPrefix}`]: true,
           [`${classPrefix}-vertical`]: direction === 'vertical',
         })
+  const getClassNames = (direction: string) => {
+    return `${classes
+      .split(' ')
+      .map((item) => `${item}-${direction}`)
+      .join(' ')}`
+  }
   return (
     <div className={`${classes} ${className || ''}`} style={style} {...rest}>
+      {direction === 'horizontal' && (
+        <div style={style} className={getClassNames('before')} />
+      )}
       {children}
+      {direction === 'horizontal' && (
+        <div style={style} className={getClassNames('after')} />
+      )}
     </div>
   )
 }
