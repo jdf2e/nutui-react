@@ -20,9 +20,7 @@ const config = {
     375: 2 / 1,
   },
   sourceRoot: 'src',
-  outputRoot: `dist/${
-    process.env.TARO_ENV === 'h5' ? 'demo' : process.env.TARO_ENV
-  }`,
+  outputRoot: `dist/${process.env.TARO_ENV === 'h5' ? 'demo' : process.env.TARO_ENV}`,
   plugins: [
     path.resolve(__dirname, '../plugins/inject-scss.js'),
     process.env.TARO_ENV === 'harmony' ? '@tarojs/plugin-platform-harmony-ets' : '@tarojs/plugin-html',
@@ -87,6 +85,9 @@ const config = {
     },
   },
   mini: {
+    compile: {
+      include: [path.resolve(__dirname, '../../../src')]
+    },
     postcss: {
       pxtransform: {
         enable: true,
@@ -109,6 +110,9 @@ const config = {
     },
   },
   h5: {
+    compile: {
+      include: [path.resolve(__dirname, '../../../src')]
+    },
     publicPath: '/',
     staticDirectory: 'static',
     postcss: {
@@ -144,7 +148,7 @@ const config = {
   isWatch: true,
 }
 
-module.exports = function(merge) {
+module.exports = function (merge) {
   if (process.env.NODE_ENV === 'development') {
     return merge({}, config, require('./dev'))
   }
