@@ -1,10 +1,14 @@
 import React from 'react'
-import { Cell } from '@nutui/nutui-react-taro'
+import { Button, Cell } from '@nutui/nutui-react-taro'
+import Taro, { pxTransform, redirectTo, navigateTo } from '@tarojs/taro'
 // import { ArrowRight, User } from '@nutui/icons-react-taro'
-import { redirectTo, navigateTo } from '@tarojs/taro'
-import { ITouchEvent, View } from '@tarojs/components'
+import { ITouchEvent, View, Text } from '@tarojs/components'
 
 const Demo6 = () => {
+  const isHarmony = [
+    Taro.ENV_TYPE.HARMONY,
+    Taro.ENV_TYPE.HARMONYHYBRID,
+  ].includes(Taro.getEnv())
   const onJumpclick = (
     event: ITouchEvent | React.MouseEvent<HTMLDivElement, MouseEvent>,
     link: string
@@ -28,7 +32,9 @@ const Demo6 = () => {
           title="URL 跳转"
           extra={
             <>
-              <View style={{ marginRight: 5 }}>/pages/index/index</View>
+              <View style={{ marginRight: isHarmony ? pxTransform(5) : 5 }}>
+                /pages/index/index
+              </View>
               {/* <ArrowRight /> */}
             </>
           }
@@ -45,17 +51,18 @@ const Demo6 = () => {
             <View
               style={{
                 display: 'flex',
-                alignItems: 'flex-end',
+                alignItems: 'baseline',
                 flexDirection: 'row',
               }}
             >
-              <View style={{ fontWeight: '500' }}>我是标题</View>
+              <View style={{ fontWeight: isHarmony ? pxTransform(500) : 500 }}>
+                我是标题
+              </View>
               <View
                 style={{
                   color: '#888B94',
-                  fontSize: 10,
-                  marginLeft: 5,
-                  lineHeight: 1.5,
+                  fontSize: isHarmony ? pxTransform(10) : 10,
+                  marginLeft: isHarmony ? pxTransform(5) : 5,
                 }}
               >
                 我是描述
@@ -65,7 +72,7 @@ const Demo6 = () => {
           extra={
             <View
               style={{
-                display: 'inline-flex',
+                display: 'flex',
                 alignItems: 'center',
                 flexDirection: 'row',
               }}
@@ -76,21 +83,27 @@ const Demo6 = () => {
           }
         />
         <Cell>
-          <View style={{ minHeight: 50 }}>自定义内容</View>
+          <View style={{ minHeight: isHarmony ? pxTransform(50) : 50 }}>
+            自定义内容
+          </View>
         </Cell>
         <Cell
           align="center"
           title={
-            <View
+            <Text
               style={{
                 color: '#888B94',
-                fontSize: 12,
+                fontSize: isHarmony ? pxTransform(12) : 12,
               }}
             >
               我是描述
-            </View>
+            </Text>
           }
-          extra="Action按钮"
+          extra={
+            <Button type="primary" size="small">
+              Action
+            </Button>
+          }
         />
       </Cell.Group>
 
@@ -110,9 +123,18 @@ const Demo6 = () => {
           //   extra={<ArrowRight />}
         />
         <Cell>
-          <View style={{ minHeight: 50 }}>自定义内容</View>
+          <View style={{ minHeight: isHarmony ? pxTransform(50) : 50 }}>
+            自定义内容
+          </View>
         </Cell>
-        <Cell align="center" extra="Action按钮" />
+        <Cell
+          align="center"
+          extra={
+            <Button type="primary" size="small">
+              Action
+            </Button>
+          }
+        />
       </Cell.Group>
 
       <Cell.Group>

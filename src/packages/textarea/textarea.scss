@@ -3,17 +3,10 @@
   width: 100%;
   box-sizing: border-box;
   display: flex;
+  flex-direction: row;
   background: $color-background-overlay;
   font-size: $textarea-font;
   padding: $textarea-padding;
-
-  &-disabled {
-    .nut-textarea-textarea,
-    .nut-textarea-limit {
-      cursor: not-allowed;
-      color: $textarea-disabled-color !important;
-    }
-  }
 
   &-limit {
     position: absolute;
@@ -21,6 +14,10 @@
     bottom: 12px;
     font-size: $textarea-font;
     color: $textarea-limit-color;
+    &-disabled {
+      cursor: not-allowed;
+      color: $textarea-disabled-color;
+    }
   }
 
   &-textarea {
@@ -42,6 +39,11 @@
     .taro-textarea {
       background-color: transparent;
       resize: none;
+    }
+
+    &-disabled {
+      cursor: not-allowed;
+      color: $textarea-disabled-color;
     }
   }
 

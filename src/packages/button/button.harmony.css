@@ -1,6 +1,7 @@
 .nut-button {
   position: relative;
   display: flex;
+  display: inline-block;
   flex-direction: row;
   width: auto;
   justify-content: center;
@@ -19,8 +20,9 @@
   user-select: none;
   touch-action: manipulation;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-  color: #1A1A1A;
+  color: #1a1a1a;
   background: transparent;
+  width: 80px;
 }
 .nut-button-text {
   margin-left: 4px;
@@ -28,10 +30,15 @@
 .nut-button-text.right {
   margin-right: 4px;
 }
+.nut-button-children {
+  display: flex;
+  flex-direction: row;
+}
 .nut-button::before {
   position: absolute;
   top: 50%;
   left: 50%;
+  width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
   border: inherit;
@@ -48,16 +55,17 @@
   opacity: 0.1;
 }
 .nut-button-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  /* RN不支持 */
-  /* background: unset; */
-}
-.nut-button-children {
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.nut-button-wrap .nut-icon {
+  font-size: 14px;
+  width: 14px;
+  height: 14px;
 }
 .nut-button-loading::before, .nut-button-disabled::before {
   display: none;
@@ -67,86 +75,113 @@
   padding: 0;
 }
 .nut-button-default {
-  padding: 0px 16px;
+  padding: 0px 12px;
   border: 1px solid #505259;
 }
 .nut-button-default.nut-button-disabled {
-  color: #888B94;
+  color: #888b94;
   background: transparent;
 }
 .nut-button-default.nut-button-none {
   background: transparent;
 }
 .nut-button-default.nut-button-none.nut-button-disabled {
-  color: #888B94;
+  color: #888b94;
 }
 .nut-button-default.nut-button-outline, .nut-button-default.nut-button-dashed {
   background: transparent;
 }
 .nut-button-default.nut-button-outline.nut-button-disabled {
-  color: #888B94;
-  border-color: #C2C4CC;
+  color: #888b94;
+  border-color: #c2c4cc;
 }
 .nut-button-default.nut-button-dashed.nut-button-disabled {
-  color: #888B94;
-  border-color: #C2C4CC;
+  color: #888b94;
+  border-color: #c2c4cc;
 }
 .nut-button-normal {
-  padding: 0px 16px;
+  padding: 0px 12px;
+}
+.nut-button-xlarge {
+  height: 48px;
+  padding: 0px 24px;
+  font-size: 20px;
+  font-weight: 500;
+}
+.nut-button-xlarge .nut-icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
 }
 .nut-button-large {
   height: 40px;
-  padding: 0px 32px;
-  font-size: 14px;
+  padding: 0px 16px;
+  font-size: 16px;
+  font-weight: 500;
+}
+.nut-button-large .nut-icon {
+  font-size: 16px;
+  width: 16px;
+  height: 16px;
 }
 .nut-button-small {
   height: 28px;
-  padding: 0px 12px;
+  padding: 0px 8px;
   font-size: 12px;
+}
+.nut-button-small .nut-icon {
+  font-size: 12px;
+  width: 12px;
+  height: 12px;
 }
 .nut-button-mini {
   height: 24px;
-  padding: 0px 12px;
+  padding: 0px 8px;
   font-size: 12px;
 }
+.nut-button-mini .nut-icon {
+  font-size: 12px;
+  width: 12px;
+  height: 12px;
+}
 .nut-button-primary {
-  color: red;
-  background: yellow;
+  color: #ffffff;
+  background: #fa2c19;
   background-origin: border-box;
   border: 1px solid transparent;
 }
 .nut-button-primary.nut-button-disabled {
-  background: #FFADBE;
-  border-color: #FFADBE;
+  background: #ffadbe;
+  border-color: #ffadbe;
 }
 .nut-button-primary.nut-button-none {
   background: transparent;
-  color: #FF0F23;
+  color: #ff0f23;
 }
 .nut-button-primary.nut-button-none.nut-button-disabled {
-  color: #FFADBE;
+  color: #ffadbe;
 }
 .nut-button-primary.nut-button-outline {
   background: transparent;
-  color: #FF0F23;
-  border: 1px solid #FF0F23;
+  color: #ff0f23;
+  border: 1px solid #ff0f23;
 }
 .nut-button-primary.nut-button-outline.nut-button-disabled {
-  color: #FFADBE;
-  border-color: #FFADBE;
+  color: #ffadbe;
+  border-color: #ffadbe;
 }
 .nut-button-primary.nut-button-dashed {
   background: transparent;
-  color: #FF0F23;
-  border: 1px dashed #FF0F23;
+  color: #ff0f23;
+  border: 1px dashed #ff0f23;
 }
 .nut-button-primary.nut-button-dashed.nut-button-disabled {
-  color: #FFADBE;
-  border-color: #FFADBE;
+  color: #ffadbe;
+  border-color: #ffadbe;
 }
 .nut-button-success {
   color: #ffffff;
-  background: #00bc14;
+  background: #2aa32a;
   background-origin: border-box;
   border: 1px solid transparent;
 }
@@ -155,30 +190,29 @@
   border-color: #b2f0ae;
 }
 .nut-button-success.nut-button-outline {
-  color: #00bc14;
-  border-color: #00bc14;
+  color: #2aa32a;
+  border-color: #2aa32a;
   background: transparent;
 }
 .nut-button-success.nut-button-dashed {
-  color: #00bc14;
-  border-color: #00bc14;
+  color: #2aa32a;
+  border-color: #2aa32a;
   background: transparent;
 }
 .nut-button-success.nut-button-outline.nut-button-disabled {
-  color: #FFADBE;
-  border-color: #FFADBE;
+  color: #ffadbe;
+  border-color: #ffadbe;
 }
 .nut-button-success.nut-button-dashed.nut-button-disabled {
-  color: #FFADBE;
-  border-color: #FFADBE;
+  color: #ffadbe;
+  border-color: #ffadbe;
 }
 .nut-button-success.nut-button-none {
-  color: #00bc14;
+  color: #2aa32a;
 }
 .nut-button-info {
   color: #ffffff;
-  /* RN不支持 */
-  /* background: linear-gradient(315deg, rgb(73, 143, 242) 0%, rgb(73, 101, 242) 100%); */
+  background: #0073ff;
   background-origin: border-box;
   border: 1px solid transparent;
 }
@@ -197,50 +231,50 @@
   background: transparent;
 }
 .nut-button-info.nut-button-outline.nut-button-disabled {
-  color: #FFADBE;
-  border-color: #FFADBE;
+  color: #ffadbe;
+  border-color: #ffadbe;
 }
 .nut-button-info.nut-button-dashed.nut-button-disabled {
-  color: #FFADBE;
-  border-color: #FFADBE;
+  color: #ffadbe;
+  border-color: #ffadbe;
 }
 .nut-button-info.nut-button-none {
   color: #1988fa;
 }
 .nut-button-danger {
   color: #ffffff;
-  background: #FF0F23;
+  background: #ff0f23;
   background-origin: border-box;
   border: 1px solid transparent;
 }
 .nut-button-danger.nut-button-disabled {
-  background: #FFADBE;
-  border-color: #FFADBE;
+  background: #ffadbe;
+  border-color: #ffadbe;
 }
 .nut-button-danger.nut-button-outline {
-  color: #FF0F23;
-  border-color: #FF0F23;
+  color: #ff0f23;
+  border-color: #ff0f23;
   background: transparent;
 }
 .nut-button-danger.nut-button-dashed {
-  color: #FF0F23;
-  border-color: #FF0F23;
+  color: #ff0f23;
+  border-color: #ff0f23;
   background: transparent;
 }
 .nut-button-danger.nut-button-outline.nut-button-disabled {
-  color: #FFADBE;
-  border-color: #FFADBE;
+  color: #ffadbe;
+  border-color: #ffadbe;
 }
 .nut-button-danger.nut-button-dashed.nut-button-disabled {
-  color: #FFADBE;
-  border-color: #FFADBE;
+  color: #ffadbe;
+  border-color: #ffadbe;
 }
 .nut-button-danger.nut-button-none {
-  color: #FF0F23;
+  color: #ff0f23;
 }
 .nut-button-warning {
   color: #ffffff;
-  background: rgb(255, 158, 13);
+  background: #c47600;
   background-origin: border-box;
   border: 1px solid transparent;
 }
@@ -249,13 +283,13 @@
   border-color: #fdd3b9;
 }
 .nut-button-warning.nut-button-outline {
-  color: rgb(255, 158, 13);
-  border-color: rgb(255, 158, 13);
+  color: #c47600;
+  border-color: #c47600;
   background: transparent;
 }
 .nut-button-warning.nut-button-dashed {
-  color: rgb(255, 158, 13);
-  border-color: rgb(255, 158, 13);
+  color: #c47600;
+  border-color: #c47600;
   background: transparent;
 }
 .nut-button-warning.nut-button-outline.nut-button-disabled {
@@ -267,7 +301,7 @@
   border-color: #fdd3b9;
 }
 .nut-button-warning.nut-button-none {
-  color: rgb(255, 158, 13);
+  color: #c47600;
 }
 .nut-button-block {
   display: block;
@@ -275,14 +309,13 @@
 }
 .nut-button-solid {
   color: #ffffff;
-  /* RN不支持 */
-  /* background: linear-gradient(135deg, #FF0F23 0%, #FF0F23 100%); */
+  background: #ff0f23;
   background-origin: border-box;
   border: 1px solid transparent;
 }
 .nut-button-solid.nut-button-disabled {
-  color: #ffffff;
-  background: #C2C4CC;
+  color: #888b94;
+  background: #c2c4cc;
 }
 .nut-button.nut-button-outline, .nut-button.nut-button-dashed {
   background: transparent;
@@ -294,17 +327,28 @@
 }
 .nut-button-disabled {
   cursor: not-allowed;
-  font-weight: 400;
   color: #ffffff;
-  background: #C2C4CC;
-  border-color: #C2C4CC;
+  background: #c2c4cc;
+  border-color: #c2c4cc;
 }
 .nut-button-loading {
   cursor: default;
   opacity: 0.9;
 }
 .nut-button-round {
-  border-radius: 24px;
+  border-radius: 8px;
+}
+.nut-button-round.nut-button-xlarge {
+  border-radius: 12px;
+}
+.nut-button-round.nut-button-large {
+  border-radius: 12px;
+}
+.nut-button-round.nut-button-small {
+  border-radius: 8px;
+}
+.nut-button-round.nut-button-mini {
+  border-radius: 6px;
 }
 .nut-button-square {
   border-radius: 0;

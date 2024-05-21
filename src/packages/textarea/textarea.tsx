@@ -122,7 +122,7 @@ export const TextArea: FunctionComponent<
     >
       <textarea
         ref={textareaRef}
-        className={`${classPrefix}-textarea`}
+        className={`${classPrefix}-textarea ${disabled ? `${classPrefix}-textarea-disabled` : ''}`}
         style={style}
         disabled={disabled}
         readOnly={readOnly}
@@ -142,7 +142,9 @@ export const TextArea: FunctionComponent<
         {...rest}
       />
       {showCount && (
-        <div className={`${classPrefix}-limit`}>
+        <div
+          className={`${classPrefix}-limit ${disabled ? `${classPrefix}-limit-disabled` : ''}`}
+        >
           {inputValue.length}/{maxLength < 0 ? 0 : maxLength}
         </div>
       )}
@@ -150,5 +152,4 @@ export const TextArea: FunctionComponent<
   )
 }
 
-TextArea.defaultProps = defaultProps
 TextArea.displayName = 'NutTextArea'

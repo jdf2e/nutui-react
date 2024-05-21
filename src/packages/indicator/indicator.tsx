@@ -24,6 +24,8 @@ export const Indicator: FunctionComponent<
   const classes = classNames({
     [`${classPrefix}-vertical`]: direction === 'vertical',
   })
+  const classPrefixV =
+    direction === 'vertical' ? `${classPrefix}-vertical` : classPrefix
   const renderElement = () => {
     const childs: ReactNode[] = []
     for (let item = 0; item < total; item++) {
@@ -32,11 +34,14 @@ export const Indicator: FunctionComponent<
           children || (
             <div
               key={item}
-              className={`${classPrefix}-dot ${classPrefix}-active`}
+              className={`${classPrefix}-dot ${classPrefix}-active ${classPrefixV}-dot ${classPrefixV}-active`}
             />
           )
         ) : (
-          <div key={item} className={`${classPrefix}-dot`} />
+          <div
+            key={item}
+            className={`${classPrefix}-dot ${classPrefixV}-dot`}
+          />
         )
       )
     }
@@ -49,5 +54,4 @@ export const Indicator: FunctionComponent<
   )
 }
 
-Indicator.defaultProps = defaultProps
 Indicator.displayName = 'NutIndicator'

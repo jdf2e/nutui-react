@@ -59,6 +59,8 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     onChange,
     className,
     autoHeight,
+    value: outerValue,
+    defaultValue: outerDefaultValue,
     ...rest
   } = {
     ...defaultProps,
@@ -66,8 +68,8 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   }
 
   const [value, setValue] = usePropsValue<string | number>({
-    value: props.value,
-    defaultValue: props.defaultValue,
+    value: outerValue,
+    defaultValue: outerDefaultValue,
     finalValue: 0,
     onChange,
   })
@@ -105,13 +107,13 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
     const title = titleItem[index]
 
     let to = 0
-    if (props.direction === 'vertical') {
+    if (direction === 'vertical') {
       const runTop = title.offsetTop - nav.offsetTop + 10
       to = runTop - (nav.offsetHeight - title.offsetHeight) / 2
     } else {
       to = title.offsetLeft - (nav.offsetWidth - title.offsetWidth) / 2
     }
-    scrollDirection(nav, to, immediate ? 0 : 0.3, props.direction)
+    scrollDirection(nav, to, immediate ? 0 : 0.3, direction)
   }
 
   const getTitles = () => {
@@ -268,6 +270,5 @@ export const Tabs: FunctionComponent<Partial<TabsProps>> & {
   )
 }
 
-Tabs.defaultProps = defaultProps
 Tabs.displayName = 'NutTabs'
 Tabs.TabPane = TabPane

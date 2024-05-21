@@ -115,7 +115,7 @@ import { Cell } from '@nutui/nutui-react-taro'
 | \--nutui-cell-line-height | 单元格行高 | `20px` |
 | \--nutui-cell-divider-left | 单元格分割线左边距 | `16px` |
 | \--nutui-cell-divider-right | 单元格分割线右边距 | `16px` |
-| \--nutui-cell-divider-border-bottom | 单元格分割线下边框 | `2px solid #f5f6f7` |
+| \--nutui-cell-divider-border-bottom | 单元格分割线下边框 | `1px solid #f5f6f7` |
 | \--nutui-cell-background-color | 单元格背景颜色 | `$white` |
 | \--nutui-cell-box-shadow | 单元格阴影 | `0px 1px 7px 0px rgba(237, 238, 241, 1)` |
 | \--nutui-cell-group-title-padding | 单元格分组的标题内边距 | `0 10px` |
@@ -127,4 +127,4 @@ import { Cell } from '@nutui/nutui-react-taro'
 | \--nutui-cell-group-description-font-size | 单元格分组的描述字体大小 | `$font-size-small` |
 | \--nutui-cell-group-description-line-height | 单元格分组的描述行高 | `16px` |
 | \--nutui-cell-group-background-color | 单元格分组的背景颜色 | `$white` |
-| \--nutui-cell-group-wrap-margin | 单元格分组容器的外边距 | `10px 0` |
+| \--nutui-cell-group-wrap-margin | 单元格分组容器的外边距 | `10px` |

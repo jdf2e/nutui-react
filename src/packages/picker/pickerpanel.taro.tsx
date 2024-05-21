@@ -211,7 +211,6 @@ const InternalPickerPanel: ForwardRefRenderFunction<
   const getReference = async () => {
     const refe = await getRectByTaro(listRef?.current)
     lineSpacing.current = refe.height ? refe.height : 36
-    modifyStatus(true)
   }
 
   const touchRollerStyle = () => {

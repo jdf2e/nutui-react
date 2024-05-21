@@ -1,3 +1,16 @@
+# v2.6.4
+`2024-05-10`
+
+
+* 🏡 chore: 修改默认的微信基础库版本 (#2235) @eiinu
+* 🏡 chore(image): demo代码风格优化 (#2220) @Alex-huxiyang
+* 📖 docs(uploader): 文件上传编码使用提示 (#2224) @Alex-huxiyang
+* :bug: fix(imagePreview): 阻止关闭预览事件对父结构的非必要影响 (#2227) @Alex-huxiyang
+* :bug: fix(picker): 修复连续多次打开 picker 时显示值错误 (#2222) @eiinu
+* :bug: fix(virtualList): 修复部分场景onScroll不触发 (#2221) @Alex-huxiyang
+* :bug: fix: 移除 defaultProps (#2230) @eiinu
+
+
 # v2.6.3
 `2024-04-30`
 

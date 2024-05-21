@@ -28,21 +28,34 @@ export const Space: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const cls = classNames(
-    prefixCls,
-    wrap && `${prefixCls}-wrap`,
-    direction && `${prefixCls}-${direction}`,
-    align && `${prefixCls}-align-${align}`,
-    justify && `${prefixCls}-justify-${justify}`,
-    className
-  )
+  const cls = classNames(prefixCls, {
+    [`${prefixCls}-${direction}`]: direction,
+    [`${prefixCls}-${direction}-wrap`]: wrap,
+    [`${prefixCls}-align-${align}`]: align,
+    [`${prefixCls}-justify-${justify}`]: justify,
+    [`${className}`]: className,
+  })
+  const itemCls = classNames(`${prefixCls}-item`, {
+    [`${prefixCls}-${direction}-item`]: direction,
+    [`${prefixCls}-${direction}-wrap-item`]: wrap,
+  })
+  const childrenCount = React.Children.count(children)
+
   return (
     <div className={cls} style={style}>
-      {React.Children.map(children, (child) => {
+      {React.Children.map(children, (child, idx) => {
+        const isLast = idx === childrenCount - 1
         return (
           child !== null &&
           child !== undefined && (
-            <div className={`${prefixCls}-item`}>{child}</div>
+            <div
+              className={classNames(
+                itemCls,
+                isLast && `${prefixCls}-${direction}-item-last`
+              )}
+            >
+              {child}
+            </div>
           )
         )
       })}
@@ -50,5 +63,4 @@ export const Space: FunctionComponent<
   )
 }
 
-Space.defaultProps = defaultProps
 Space.displayName = 'NutSpace'

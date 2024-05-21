@@ -6,6 +6,7 @@ import React, {
   ForwardRefRenderFunction,
   useImperativeHandle,
 } from 'react'
+import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -93,7 +94,16 @@ const InternalCountDown: ForwardRefRenderFunction<
       stateRef.current.handleEndTime = Date.now() + Number(remainingTime)
     } else {
       stateRef.current.handleEndTime = endTime
-      stateRef.current.diffTime = Date.now() - getTimeStamp(startTime) // 时间差
+      if (
+        ![
+          Taro.ENV_TYPE.RN,
+          Taro.ENV_TYPE.HARMONYHYBRID,
+          Taro.ENV_TYPE.HARMONY,
+          // @ts-ignore
+        ].includes(Taro.getEnv())
+      ) {
+        stateRef.current.diffTime = Date.now() - getTimeStamp(startTime) // 时间差
+      }
     }
     if (!stateRef.current.counting) stateRef.current.counting = true
     tick()
@@ -293,10 +303,13 @@ const InternalCountDown: ForwardRefRenderFunction<
         <View
           className={`${classPrefix}-block`}
           // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={{
-            __html: `${renderTime}`,
-          }}
-        />
+          // TODO:RN和鸿蒙暂时不支持dangerouslySetInnerHTML
+          //   dangerouslySetInnerHTML={{
+          //     __html: `${renderTime}`,
+          //   }}
+        >
+          {renderTime as any}
+        </View>
       )}
     </View>
   )
@@ -306,5 +319,4 @@ export const CountDown = React.forwardRef<unknown, Partial<CountDownProps>>(
   InternalCountDown
 )
 
-CountDown.defaultProps = defaultProps
 CountDown.displayName = 'NutCountDown'

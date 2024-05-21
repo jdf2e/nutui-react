@@ -18,3 +18,5 @@ export const SafeArea: FC<SafeAreaProps> = (props) => {
     />
   )
 }
+
+SafeArea.displayName = 'NutSafeArea'

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useRef } from 'react'
 import classNames from 'classnames'
 import Taro from '@tarojs/taro'
-import { Textarea, TextareaProps, View } from '@tarojs/components'
+import { Textarea, TextareaProps, View, Text } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { usePropsValue } from '@/utils/use-props-value'
@@ -114,7 +114,7 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
             compositionRef.current = false
           },
         }}
-        className={`${classPrefix}-textarea`}
+        className={`${classPrefix}-textarea ${disabled ? `${classPrefix}-textarea-disabled` : ''}`}
         style={Taro.getEnv() === 'WEB' ? undefined : style}
         disabled={Taro.getEnv() === 'WEB' ? disabled : disabled || readOnly}
         value={inputValue}
@@ -128,13 +128,14 @@ export const TextArea: FunctionComponent<Partial<TextAreaProps>> = (props) => {
         {...rest}
       />
       {showCount && (
-        <View className={`${classPrefix}-limit`}>
+        <Text
+          className={`${classPrefix}-limit ${disabled ? `${classPrefix}-limit-disabled` : ''}`}
+        >
           {inputValue.length}/{maxLength < 0 ? 0 : maxLength}
-        </View>
+        </Text>
       )}
     </View>
   )
 }
 
-TextArea.defaultProps = defaultProps
 TextArea.displayName = 'NutTextArea'

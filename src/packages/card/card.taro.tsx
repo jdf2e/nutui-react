@@ -89,5 +89,4 @@ export const Card: FunctionComponent<
   )
 }
 
-Card.defaultProps = defaultProps
 Card.displayName = 'NutCard'

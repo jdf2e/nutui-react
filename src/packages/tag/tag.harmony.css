@@ -1,6 +1,7 @@
 .nut-tag {
   padding: 0px 2px;
-  display: inline-flex;
+  display: flex;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
   font-size: 10px;
@@ -13,53 +14,30 @@
   vertical-align: middle;
   margin-left: 4px;
 }
-.nut-tag-default {
-  background: #1A1A1A;
+.nut-tag-text {
+  font-size: 10px;
+  color: #ffffff;
 }
-.nut-tag-default.nut-tag-plain {
-  color: #1A1A1A;
-  background-color: #fff;
-  border: 1px solid #1A1A1A;
+.nut-tag-text-plain {
+  color: #1a1a1a;
+}
+.nut-tag-default {
+  background: #1a1a1a;
 }
 .nut-tag-primary {
-  background: linear-gradient(135deg, #FF0F23 0%, #FF0F23 100%);
-}
-.nut-tag-primary.nut-tag-plain {
-  color: #1A1A1A;
-  background-color: #fff;
-  border: 1px solid #1A1A1A;
+  background: #fa2c19;
 }
 .nut-tag-info {
   background: #1988fa;
 }
-.nut-tag-info.nut-tag-plain {
-  color: #1A1A1A;
-  background-color: #fff;
-  border: 1px solid #1A1A1A;
-}
 .nut-tag-success {
   background: #4fc08d;
 }
-.nut-tag-success.nut-tag-plain {
-  color: #1A1A1A;
-  background-color: #fff;
-  border: 1px solid #1A1A1A;
-}
 .nut-tag-danger {
-  background: #FF0F23;
-}
-.nut-tag-danger.nut-tag-plain {
-  color: #1A1A1A;
-  background-color: #fff;
-  border: 1px solid #1A1A1A;
+  background: #ff0f23;
 }
 .nut-tag-warning {
-  background: rgb(255, 158, 13);
-}
-.nut-tag-warning.nut-tag-plain {
-  color: #1A1A1A;
-  background-color: #fff;
-  border: 1px solid #1A1A1A;
+  background: #c47600;
 }
 .nut-tag-round {
   border-radius: 8px;
@@ -74,6 +52,10 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+.nut-tag-plain {
+  background-color: #fff;
+  border: 1px solid #1a1a1a;
 }
 
 [dir=rtl] .nut-tag .nut-icon,

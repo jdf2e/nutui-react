@@ -99,36 +99,30 @@ $font-weight-bold: var(--nutui-font-weight-bold, 500) !default;
 $line-height-base: var(--nutui-line-height-base, 1.5) !default;
 
 // 间距 space
-$spacing-xxs: var(--nutui-spacing-1) !default; // 多用于文本与图标之间的间距
-$spacing-xs: var(--nutui-spacing-2) !default; // 多用于文本与图标之间的间距
-$spacing-s: var(--nutui-spacing-3) !default; // 二级卡片与屏幕两侧的间距
+$spacing-xxs: var(--nutui-spacing-2) !default; // 多用于文本与图标之间的间距
+$spacing-xs: var(--nutui-spacing-4) !default; // 多用于文本与图标之间的间距
+$spacing-s: var(--nutui-spacing-6) !default; // 二级卡片与屏幕两侧的间距
 $spacing-base: var(
-  --nutui-spacing-4
+  --nutui-spacing-8
 ) !default; // 楼层间距（二级卡片之间的上下间距）
 $spacing-l: var(
-  --nutui-spacing-5
+  --nutui-spacing-10
 ) !default; // 卡片布局容器中，同类信息组之间的上下间距（比如两行金刚位之间的间距）
 $spacing-xl: var(
-  --nutui-spacing-6
+  --nutui-spacing-12
 ) !default; // 卡片布局容器中，信息组之间的上下间距
-$spacing-xxl: var(--nutui-spacing-7) !default; // 卡片布局容器的内容左右间距，
-$spacing-xxxl: var(--nutui-spacing-8) !default; // 卡片布局容器的内容上下间距
+$spacing-xxl: var(--nutui-spacing-14) !default; // 卡片布局容器的内容左右间距，
+$spacing-xxxl: var(--nutui-spacing-16) !default; // 卡片布局容器的内容上下间距
 
 // 圆角 corners
-$radius-xxs: var(
-  --nutui-radius-1
-) !default; // 极小号按钮、标签、多选框等组件的圆角样式
-$radius-xs: var(
-  --nutui-radius-2
-) !default; // 极小、小号的按钮、标签等组件的圆角样式
-$radius-s: var(
-  --nutui-radius-4
-) !default; // 中号、大号按钮、输入框等表单组件的圆角样式
-$radius-base: var(--nutui-radius-5) !default; // 常规宫格排列的卡片圆角样式
-$radius-l: var(
-  --nutui-radius-7
-) !default; // 下拉菜单、popup 等组件的默认圆角样式
-$radius-xl: var(--nutui-radius-6) !default; // 一级页面模块容器使用的圆角样式
+$radius-xxs: var(--nutui-radius-3) !default; // 标签
+$radius-xs: var(--nutui-radius-4) !default; // 单行高度16的组件
+$radius-s: var(--nutui-radius-6) !default; // 单行高度20的组件
+$radius-base: var(--nutui-radius-8) !default; // 单行高度24、28、32、36的组件
+$radius-l: var(--nutui-radius-12) !default; // 单行高度40以上的组件
+$radius-xl: var(--nutui-radius-16) !default; // 导购场景或一行多卡片
+$radius-xxl: var(--nutui-radius-20) !default; // 平台型通栏卡片
+$radius-xxxl: var(--nutui-radius-24) !default; // 页面结构分割或弹出层容器
 $radius-circle: 50px !default; // 按钮、徽标等组件的胶囊形态圆角样式
 $radius-full: 50% !default; // 头像、图片等不限制尺寸规格，需要以圆形呈现
 
@@ -169,7 +163,7 @@ $font-size-large: var(--nutui-font-size-4, 16px) !default;
 $font-size-xl: var(--nutui-font-size-5, 18px) !default;
 $font-size-xxl: var(--nutui-font-size-6, 20px) !default;
 $font-size-xxxl: var(--nutui-font-size-8, 24px) !default;
-$font-size-xxxxl: var(--nutui-font-size-10, 28px) !default;
+$font-size-xxxxl: var(--nutui-font-size-11, 32px) !default;
 
 // todo
 // 与品牌色一起使用，默认为白色，不区分暗黑与明亮模式。
@@ -385,7 +379,7 @@ $cell-divider-right: var(--nutui-cell-divider-right, 16px) !default;
 $cell-divider-left: var(--nutui-cell-divider-left, 16px) !default;
 $cell-divider-border-bottom: var(
   --nutui-cell-divider-border-bottom,
-  2px solid $color-border
+  1px solid $color-border
 ) !default;
 $cell-background-color: var(
   --nutui-cell-background-color,
@@ -433,7 +427,7 @@ $cell-group-background-color: var(
   --nutui-cell-group-background-color,
   $color-background-overlay
 ) !default;
-$cell-group-wrap-margin: var(--nutui-cell-group-wrap-margin, 10px 0) !default;
+$cell-group-wrap-margin: var(--nutui-cell-group-wrap-margin, 10px) !default;
 
 // divider（✅）
 $divider-margin: var(--nutui-divider-margin, 16px 0) !default;
@@ -1716,10 +1710,7 @@ $tabs-titles-item-smile-bottom: var(
 $tabs-tabpane-padding: var(--nutui-tabs-tabpane-padding, 24px 20px) !default;
 
 // indicator（✅）
-$indicator-color: var(
-  --nutui-indicator-color,
-  $color-primary-gradient-1
-) !default;
+$indicator-color: var(--nutui-indicator-color, $color-primary) !default;
 $indicator-dot-color: var(--nutui-indicator-dot-color, $color-border) !default;
 $indicator-dot-size: var(--nutui-indicator-dot-size, 4px) !default;
 $indicator-dot-active-size: var(
