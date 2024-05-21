@@ -56,5 +56,4 @@ export const Animate: FunctionComponent<
   )
 }
 
-Animate.defaultProps = defaultProps
 Animate.displayName = 'NutAnimate'

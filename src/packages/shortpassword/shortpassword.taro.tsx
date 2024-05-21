@@ -52,7 +52,7 @@ export const InternalShortPassword: ForwardRefRenderFunction<
     title,
     description,
     tips,
-    visible: deleteVisible,
+    visible: outerVisible,
     value,
     error,
     hideFooter,
@@ -85,7 +85,7 @@ export const InternalShortPassword: ForwardRefRenderFunction<
   }
 
   const [visible, setVisible] = usePropsValue({
-    value: props.visible,
+    value: outerVisible,
     defaultValue: false,
     finalValue: false,
   })

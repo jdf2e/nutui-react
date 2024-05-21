@@ -8,7 +8,6 @@
 
 ```tsx
 import { Checkbox } from '@nutui/nutui-react-taro';
-
 ```
 
 ## 代码演示
@@ -146,7 +145,6 @@ import { Checkbox } from '@nutui/nutui-react-taro';
 | checked | 是否选中 | `boolean` | `false` |
 | defaultChecked | 初始是否选中 | `boolean` | `false` |
 | disabled | 是否禁用选择 | `boolean` | `false` |
-| list | 列表模式 | `boolean` | `false` |
 | labelPosition | 文本所在的位置 | `left` \| `right` | `right` |
 | icon | 选中前| `ReactNode` | `'CheckNormal'` |
 | activeIcon | 选中后 | `ReactNode` | `'Checked'` |
@@ -170,6 +168,7 @@ import { Checkbox } from '@nutui/nutui-react-taro';
 | labelPosition | 文本所在的位置 | `left` \| `right` | `right` |
 | direction | 使用横纵方向 可选值 horizontal、vertical | `string` | `vertical` |
 | options | 配置 options 渲染复选按钮 | `Array<{ label: string value: string disabled?: boolean }>` | `-` |
+| list | 列表模式 | `boolean` | `false` |
 | onChange | 值变化时触发 | `(value: string[]) => void` | `-` |
 
 ### Ref

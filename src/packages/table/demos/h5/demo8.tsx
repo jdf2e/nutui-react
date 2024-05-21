@@ -2,36 +2,36 @@ import React, { useState } from 'react'
 import { Table } from '@nutui/nutui-react'
 
 const Demo8 = () => {
-  const [data1] = useState<Array<any>>([
+  const data1 = useState<Array<any>>([
     {
       name: 'Tom',
-      sex: '男',
+      gender: '男',
       record: '小学',
     },
     {
       name: 'Lucy',
-      sex: '女',
+      gender: '女',
       record: '本科',
     },
     {
       name: 'Jack',
-      sex: '男',
+      gender: '男',
       record: '高中',
     },
   ])
-  const [data3, setData3] = useState<Array<any>>([])
-  const [columns1, setColumns1] = useState([
+  const [data, setData] = useState<Array<any>>([])
+  const [columns1] = useState([
     {
       title: '姓名',
       key: 'name',
     },
     {
       title: '性别',
-      key: 'sex',
+      key: 'gender',
       render: (record: any) => {
         return (
-          <span style={{ color: record.sex === '女' ? 'blue' : 'green' }}>
-            {record.sex}
+          <span style={{ color: record.gender === '女' ? 'blue' : 'green' }}>
+            {record.gender}
           </span>
         )
       },
@@ -42,11 +42,9 @@ const Demo8 = () => {
     },
   ])
   setTimeout(() => {
-    setData3(data1)
+    setData(data1)
   }, 5000)
 
-  return (
-    <Table columns={columns1} data={data3} style={{ background: '#fff' }} />
-  )
+  return <Table columns={columns1} data={data} style={{ background: '#fff' }} />
 }
 export default Demo8

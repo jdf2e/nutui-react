@@ -81,20 +81,29 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
   // 综合考虑 color、background、plain 组合使用时的效果
   const getStyle = (): CSSProperties => {
     const style: CSSProperties = {}
+    // 标签背景与边框颜色
+    if (plain) {
+      style.borderColor = background
+    } else if (background) {
+      style.backgroundColor = background
+    }
+    return style
+  }
+
+  const getTextStyle = () => {
+    const style: CSSProperties = {}
     // 标签内字体颜色
     if (color) {
       style.color = color
     } else if (background && plain) {
       style.color = background
     }
-    // 标签背景与边框颜色
-    if (plain) {
-      style.borderColor = background
-    } else if (background) {
-      style.background = background
-    }
     return style
   }
+
+  const textClasses = classNames(`${classPrefix}-text`, {
+    [`${classPrefix}-text-plain`]: plain,
+  })
   return (
     <>
       {closeable ? (
@@ -105,7 +114,9 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
             onClick={(e) => handleClick(e)}
           >
             {children && (
-              <span className={`${classPrefix}-text`}>{children}</span>
+              <span className={textClasses} style={getTextStyle()}>
+                {children}
+              </span>
             )}
             {React.isValidElement(closeIcon) ? (
               <i
@@ -136,7 +147,9 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
           onClick={(e) => handleClick(e)}
         >
           {children && (
-            <span className={`${classPrefix}-text`}>{children}</span>
+            <span className={textClasses} style={getTextStyle()}>
+              {children}
+            </span>
           )}
         </div>
       )}
@@ -144,5 +157,4 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
   )
 }
 
-Tag.defaultProps = defaultProps
 Tag.displayName = 'NutTag'

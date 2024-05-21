@@ -154,7 +154,7 @@ export const Popover: FunctionComponent<
 
   const clickAway = () => {
     if (closeOnOutsideClick) {
-      props.onClick && props.onClick()
+      onClick && onClick()
       onClose && onClose()
     }
   }
@@ -243,7 +243,7 @@ export const Popover: FunctionComponent<
     const skew = location.split('-')[1]
     const base = 16
 
-    if (props.arrowOffset !== 0) {
+    if (arrowOffset !== 0) {
       const dir = rtl ? 'right' : 'left'
       const dir2 = rtl ? 'left' : 'right'
       if (['bottom', 'top'].includes(direction)) {
@@ -278,7 +278,7 @@ export const Popover: FunctionComponent<
       onSelect?.(item, index)
     }
     if (closeOnActionClick) {
-      props.onClick?.()
+      onClick?.()
       onClose?.()
     }
   }
@@ -358,5 +358,4 @@ export const Popover: FunctionComponent<
   )
 }
 
-Popover.defaultProps = defaultProps
 Popover.displayName = 'NutPopover'
