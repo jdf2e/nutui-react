@@ -88,7 +88,10 @@ export const GridItem: FunctionComponent<
       [`${classPrefix}-content-surround`]: gap,
       [`${classPrefix}-content-center`]: center,
       [`${classPrefix}-content-square`]: square,
+      [`${classPrefix}-content-reverse`]: reverse && direction !== 'horizontal',
       [`${classPrefix}-content-${direction}`]: !!direction,
+      [`${classPrefix}-content-horizontal-reverse`]:
+        reverse && direction === 'horizontal',
     })
   }
 
@@ -123,17 +126,8 @@ export const GridItem: FunctionComponent<
     <>
       <View className={classes} style={rootStyle()} onClick={handleClick}>
         <View className={contentClass()}>
-          {reverse ? (
-            <>
-              {text && <View className={textClass()}>{text}</View>}
-              {children && <>{children}</>}
-            </>
-          ) : (
-            <>
-              {children && <>{children}</>}
-              {text && <View className={textClass()}>{text}</View>}
-            </>
-          )}
+          {children && <>{children}</>}
+          {text && <View className={textClass()}>{text}</View>}
         </View>
       </View>
     </>
