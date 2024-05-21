@@ -28,17 +28,23 @@ const NotifyDemo = () => {
     <>
       <Header />
       <ScrollView
-        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
-        style={{ paddingBottom: '30px' }}
+        style={
+          Taro.getEnv() === Taro.ENV_TYPE.RN ? { position: 'relative' } : {}
+        }
       >
-        <View className="h2">{translated.basic}</View>
-        <Demo1 />
-        <View className="h2">{translated.t1}</View>
-        <Demo2 />
-        <View className="h2">{translated.t2}</View>
-        <Demo3 />
-        <View className="h2">{translated.t3}</View>
-        <Demo4 />
+        <View
+          className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+          style={{ paddingBottom: '30px' }}
+        >
+          <View className="h2">{translated.basic}</View>
+          <Demo1 />
+          <View className="h2">{translated.t1}</View>
+          <Demo2 />
+          <View className="h2">{translated.t2}</View>
+          <Demo3 />
+          <View className="h2">{translated.t3}</View>
+          <Demo4 />
+        </View>
       </ScrollView>
     </>
   )

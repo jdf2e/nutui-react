@@ -58,7 +58,7 @@
 .nut-notify-popup-top, .nut-notify-popup-bottom {
   position: fixed;
   left: 0;
-  width: 100%;
+  right: 0;
   overflow-y: auto;
   transition: transform 0.3s;
   z-index: 9999;
