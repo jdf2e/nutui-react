@@ -4,10 +4,8 @@ import Taro, { pxTransform } from '@tarojs/taro'
 
 const Demo5 = () => {
   /* RN unsupported dashed / dotted border style */
-  const isRn = Taro.getEnv() === Taro.ENV_TYPE.RN
-  const isHarmony =
-    Taro.getEnv() === Taro.ENV_TYPE.HARMONY ||
-    Taro.getEnv() === Taro.ENV_TYPE.HARMONYHYBRID
+  const isRn = Taro.getEnv() === 'RN'
+  const isHarmony = ['HARMONY', 'HARMONYHYBRID'].includes(Taro.getEnv())
   return (
     <>
       <Divider
