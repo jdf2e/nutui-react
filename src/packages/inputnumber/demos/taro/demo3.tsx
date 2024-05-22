@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { InputNumber, Toast } from '@nutui/nutui-react-taro'
+import { InputNumber } from '@nutui/nutui-react-taro'
 
 const Demo3 = () => {
   const overlimit = () => {
@@ -23,14 +23,14 @@ const Demo3 = () => {
         max={20}
         onOverlimit={overlimit}
       />
-      <Toast
+      {/* <Toast
         type={toastType}
         visible={show}
         content={toastMsg}
         onClose={() => {
           SetShow(false)
         }}
-      />
+      /> */}
     </>
   )
 }

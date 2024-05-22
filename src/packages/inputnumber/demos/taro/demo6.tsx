@@ -1,5 +1,5 @@
 import React from 'react'
-import { Cell, InputNumber, ConfigProvider } from '@nutui/nutui-react-taro'
+import { Cell, InputNumber } from '@nutui/nutui-react-taro'
 
 const Demo6 = () => {
   const customTheme = {
@@ -22,14 +22,14 @@ const Demo6 = () => {
   return (
     <>
       <Cell>
-        <ConfigProvider theme={customTheme}>
-          <InputNumber defaultValue={1} />
-        </ConfigProvider>
+        {/* <ConfigProvider theme={customTheme}> */}
+        <InputNumber defaultValue={1} />
+        {/* </ConfigProvider> */}
       </Cell>
       <Cell>
-        <ConfigProvider theme={customTheme2}>
-          <InputNumber defaultValue={1} />
-        </ConfigProvider>
+        {/* <ConfigProvider theme={customTheme2}> */}
+        <InputNumber defaultValue={1} />
+        {/* </ConfigProvider> */}
       </Cell>
     </>
   )

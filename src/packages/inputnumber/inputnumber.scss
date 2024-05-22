@@ -1,9 +1,10 @@
 .nut-inputnumber {
   display: flex;
+  flex-direction: row;
   align-items: center;
 
-  .nut-input-minus,
-  .nut-input-add {
+  &-minus,
+  &-add {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,18 +12,16 @@
     height: $inputnumber-button-height;
     background-color: $inputnumber-button-background-color;
     border-radius: $inputnumber-button-border-radius;
-  }
-
-  &-disabled {
-    input {
-      color: $inputnumber-disabled-color !important;
-    }
+    background-color: #000000;
   }
 
   &-icon {
     color: $inputnumber-icon-color;
     font-size: $inputnumber-icon-size;
     cursor: pointer;
+    display: flex;
+    height: 100%;
+    width: 100%;
 
     &-disabled {
       color: $inputnumber-disabled-color;
@@ -31,7 +30,7 @@
   }
 
   input,
-  .nut-number-input,
+  &-input,
   &-text-readonly {
     display: flex;
     justify-content: center;
@@ -45,13 +44,9 @@
     margin: $inputnumber-input-margin;
     color: $inputnumber-input-font-color;
     background-color: $inputnumber-input-background-color;
-  }
-
-  input::-webkit-outer-spin-button,
-  input::-webkit-inner-spin-button,
-  .nut-number-input::-webkit-outer-spin-button,
-  .nut-number-input::-webkit-inner-spin-button {
-    appearance: none;
+    &-disabled {
+      color: $inputnumber-disabled-color !important;
+    }
   }
 
   .nut-icon-Minus,
@@ -65,4 +60,8 @@
     --nut-icon-width: 16px;
     --nut-icon-height: 16px;
   }
+}
+.nut-inputnumber-input::-webkit-outer-spin-button,
+.nut-inputnumber-input::-webkit-inner-spin-button {
+  appearance: none;
 }

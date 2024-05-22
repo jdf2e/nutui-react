@@ -5,9 +5,8 @@ import React, {
   useState,
   ChangeEvent,
 } from 'react'
-import { Minus, Plus } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
-import { InputProps, View } from '@tarojs/components'
+import { ITouchEvent, Input, InputProps, View } from '@tarojs/components'
 import { usePropsValue } from '@/utils/use-props-value'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -24,20 +23,20 @@ export interface InputNumberProps extends BasicComponent {
   digits: number
   async: boolean
   formatter?: (value?: string | number) => string
-  onPlus: (e: React.MouseEvent) => void
-  onMinus: (e: React.MouseEvent) => void
-  onOverlimit: (e: React.MouseEvent) => void
+  onPlus: (e: ITouchEvent) => void
+  onMinus: (e: ITouchEvent) => void
+  onOverlimit: (e: ITouchEvent) => void
   onBlur: (e: React.FocusEvent<HTMLInputElement>) => void
   onFocus: (e: React.FocusEvent<HTMLInputElement>) => void
   onChange: (
     param: string | number,
-    e: React.MouseEvent | ChangeEvent<HTMLInputElement>
+    e: ITouchEvent | ChangeEvent<HTMLInputElement>
   ) => void
 }
 
 const defaultProps = {
   ...ComponentDefaults,
-  disabled: false,
+  disabled: true,
   readOnly: false,
   allowEmpty: false,
   min: 1,
@@ -80,9 +79,7 @@ export const InputNumber: FunctionComponent<
     ...defaultProps,
     ...props,
   }
-  const classes = classNames(classPrefix, className, {
-    [`${classPrefix}-disabled`]: disabled,
-  })
+  const classes = classNames(classPrefix, className)
   const [focused, setFocused] = useState(false)
   const inputRef = useRef<HTMLInputElement>(null)
   useEffect(() => {
@@ -145,7 +142,8 @@ export const InputNumber: FunctionComponent<
       (parseFloat(current || '0') * dig + parseFloat(step) * dig * symbol) / dig
     )
   }
-  const update = (negative: boolean, e: React.MouseEvent) => {
+  const update = (negative: boolean, e: ITouchEvent) => {
+    console.log('e', e)
     if (step !== undefined) {
       const shouldOverBoundary = calcNextValue(
         shadowValue,
@@ -165,12 +163,12 @@ export const InputNumber: FunctionComponent<
       }
     }
   }
-  const handleReduce = (e: React.MouseEvent) => {
+  const handleReduce = (e: ITouchEvent) => {
     if (disabled) return
     onMinus?.(e)
     update(true, e)
   }
-  const handlePlus = (e: React.MouseEvent) => {
+  const handlePlus = (e: ITouchEvent) => {
     if (disabled) return
     onPlus?.(e)
     update(false, e)
@@ -218,17 +216,19 @@ export const InputNumber: FunctionComponent<
 
   return (
     <View className={classes} style={style}>
-      <View className="nut-input-minus">
-        <Minus
-          className={classNames('nut-inputnumber-icon icon-minus', {
+      <View className={`${classPrefix}-minus`}>
+        <View
+          className={classNames(`${classPrefix}-icon icon-minus`, {
             [`${classPrefix}-icon-disabled`]: shadowValue === min || disabled,
           })}
           onClick={handleReduce}
         />
       </View>
       <>
-        <input
-          className="nut-number-input"
+        <Input
+          className={classNames(`${classPrefix}-input`, {
+            [`${classPrefix}-input-disabled`]: disabled,
+          })}
           type={type}
           ref={inputRef}
           inputMode={type === 'digit' ? 'decimal' : 'numeric'}
@@ -240,9 +240,9 @@ export const InputNumber: FunctionComponent<
           onFocus={handleFocus}
         />
       </>
-      <View className="nut-input-add">
-        <Plus
-          className={classNames('nut-inputnumber-icon icon-plus', {
+      <View className={`${classPrefix}-add`}>
+        <View
+          className={classNames(`${classPrefix}-icon icon-plus`, {
             [`${classPrefix}-icon-disabled`]: shadowValue === max || disabled,
           })}
           onClick={handlePlus}
