@@ -37,8 +37,10 @@ export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
       <View className={`${classPrefix}-wrap`}>
         <CellGroupContext.Provider value={{ divider, group: true }}>
           {React.Children.map(children, (child, index) => {
+            // @ts-ignore
             return child?.type?.displayName === 'NutCell'
-              ? React.cloneElement(child, {
+              ? // @ts-ignore
+                React.cloneElement(child, {
                   isLast: index === React.Children.count(children) - 1,
                 })
               : child
@@ -49,5 +51,4 @@ export const CellGroup: FunctionComponent<Partial<CellGroupProps>> = (
   )
 }
 
-CellGroup.defaultProps = defaultProps
 CellGroup.displayName = 'NutCellGroup'

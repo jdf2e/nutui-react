@@ -6,7 +6,7 @@ exports[`should match snapshot 1`] = `
     class="nut-space nut-space-horizontal"
   >
     <div
-      class="nut-space-item"
+      class="nut-space-item nut-space-horizontal-item"
     >
       <button
         class="nut-button nut-button-default nut-button-normal nut-button-round"
@@ -24,7 +24,7 @@ exports[`should match snapshot 1`] = `
       </button>
     </div>
     <div
-      class="nut-space-item"
+      class="nut-space-item nut-space-horizontal-item"
     >
       <button
         class="nut-button nut-button-default nut-button-normal nut-button-round"
@@ -42,7 +42,7 @@ exports[`should match snapshot 1`] = `
       </button>
     </div>
     <div
-      class="nut-space-item"
+      class="nut-space-item nut-space-horizontal-item nut-space-horizontal-item-last"
     >
       <button
         class="nut-button nut-button-default nut-button-normal nut-button-round"

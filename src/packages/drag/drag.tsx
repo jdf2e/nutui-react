@@ -63,7 +63,7 @@ export const Drag: FunctionComponent<
     ({ down, last, offset: [x, y] }) => {
       api.start({ x, y, immediate: down })
       if (last) {
-        if (props.direction !== 'y' && props.attract) {
+        if (direction !== 'y' && attract) {
           if (x < middleLine.current) {
             api.start({ x: boundaryState.left, y, immediate: down })
           } else {
@@ -101,5 +101,4 @@ export const Drag: FunctionComponent<
   )
 }
 
-Drag.defaultProps = defaultProps
 Drag.displayName = 'NutDrag'

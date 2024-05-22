@@ -67,5 +67,4 @@ export const Col: FunctionComponent<Partial<ColProps>> = (props) => {
   )
 }
 
-Col.defaultProps = defaultProps
 Col.displayName = 'NutCol'

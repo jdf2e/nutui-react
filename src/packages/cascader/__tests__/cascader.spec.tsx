@@ -4,8 +4,7 @@ import '@testing-library/jest-dom'
 import { Cascader } from '../cascader'
 
 import { CascaderOption } from '../types'
-import Tree from '../a'
-import { formatTree, convertListToOptions } from '../utils'
+import Tree, { formatTree, convertListToOptions } from '../utils'
 
 const later = (t = 0) =>
   new Promise((r) => {

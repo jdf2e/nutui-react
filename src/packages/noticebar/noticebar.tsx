@@ -531,5 +531,4 @@ export const NoticeBar: FunctionComponent<
   )
 }
 
-NoticeBar.defaultProps = defaultProps
 NoticeBar.displayName = 'NutNoticeBar'

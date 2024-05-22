@@ -269,7 +269,7 @@ const InternalUploader: ForwardRefRenderFunction<
       })
     }
     const task = new Utils(uploadOption)
-    if (props.autoUpload) {
+    if (autoUpload) {
       task.upload()
     } else {
       uploadQueue.push(
@@ -313,7 +313,7 @@ const InternalUploader: ForwardRefRenderFunction<
   }
 
   const filterFiles = (files: File[]) => {
-    const maximum = (props.maxCount as number) * 1
+    const maximum = (maxCount as number) * 1
     const oversizes = new Array<File>()
     const filterFile = files.filter((file: File) => {
       if (file.size > maxFileSize) {
@@ -448,5 +448,4 @@ const InternalUploader: ForwardRefRenderFunction<
 
 export const Uploader = React.forwardRef(InternalUploader)
 
-Uploader.defaultProps = defaultProps
 Uploader.displayName = 'NutUploader'

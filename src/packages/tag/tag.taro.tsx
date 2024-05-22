@@ -5,8 +5,8 @@ import React, {
   ReactNode,
 } from 'react'
 import type { MouseEvent } from 'react'
-import { View, ITouchEvent } from '@tarojs/components'
-import { Close } from '@nutui/icons-react-taro'
+import { View, ITouchEvent, Text } from '@tarojs/components'
+// import { Close } from '@nutui/icons-react-taro'
 import classNames from 'classnames'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -84,20 +84,29 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
   // 综合考虑 color、background、plain 组合使用时的效果
   const getStyle = (): CSSProperties => {
     const style: CSSProperties = {}
+    // 标签背景与边框颜色
+    if (plain) {
+      style.borderColor = background
+    } else if (background) {
+      style.backgroundColor = background
+    }
+    return style
+  }
+
+  const getTextStyle = () => {
+    const style: CSSProperties = {}
     // 标签内字体颜色
     if (color) {
       style.color = color
     } else if (background && plain) {
       style.color = background
     }
-    // 标签背景与边框颜色
-    if (plain) {
-      style.borderColor = background
-    } else if (background) {
-      style.background = background
-    }
     return style
   }
+
+  const textClasses = classNames(`${classPrefix}-text`, {
+    [`${classPrefix}-text-plain`]: plain,
+  })
   return (
     <>
       {closeable ? (
@@ -108,9 +117,11 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
             onClick={(e) => handleClick(e)}
           >
             {children && (
-              <span className={`${classPrefix}-text`}>{children}</span>
+              <View className={textClasses} style={getTextStyle()}>
+                {children}
+              </View>
             )}
-            {React.isValidElement(closeIcon) ? (
+            {closeIcon ? (
               <View
                 className={`${classPrefix}-custom-icon`}
                 onClick={(e) => {
@@ -121,13 +132,22 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
                 {closeIcon}
               </View>
             ) : (
-              <Close
-                size={8}
+              // TODO: icon 适配
+              // <Close
+              //   size={8}
+              //   onClick={(e) => {
+              //     setVisible(false)
+              //     onClose && onClose(e)
+              //   }}
+              // />
+              <Text
                 onClick={(e) => {
                   setVisible(false)
                   onClose && onClose(e)
                 }}
-              />
+              >
+                X
+              </Text>
             )}
           </View>
         )
@@ -138,7 +158,9 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
           onClick={(e) => handleClick(e)}
         >
           {children && (
-            <span className={`${classPrefix}-text`}>{children}</span>
+            <View className={textClasses} style={getTextStyle()}>
+              {children}
+            </View>
           )}
         </View>
       )}
@@ -146,5 +168,4 @@ export const Tag: FunctionComponent<Partial<TagProps>> = (props) => {
   )
 }
 
-Tag.defaultProps = defaultProps
 Tag.displayName = 'NutTag'

@@ -4,7 +4,7 @@ import { Star } from '@nutui/icons-react-taro'
 import Taro from '@tarojs/taro'
 
 const Demo7 = () => {
-  const [columns4, setColumns4] = useState([
+  const [columns] = useState([
     {
       title: '姓名',
       key: 'name',
@@ -12,7 +12,7 @@ const Demo7 = () => {
     },
     {
       title: '性别',
-      key: 'sex',
+      key: 'gender',
     },
     {
       title: '学历',
@@ -24,10 +24,10 @@ const Demo7 = () => {
     },
   ])
 
-  const [data4, setData4] = useState([
+  const [data] = useState([
     {
       name: 'Tom',
-      sex: '男',
+      gender: '男',
       record: '小学',
       render: () => {
         return (
@@ -43,7 +43,7 @@ const Demo7 = () => {
     },
     {
       name: 'Lucy',
-      sex: '女',
+      gender: '女',
       record: '本科',
       render: () => {
         return <Star size="14px" />
@@ -51,7 +51,7 @@ const Demo7 = () => {
     },
     {
       name: 'Jack',
-      sex: '男',
+      gender: '男',
       record: '高中',
       render: () => {
         return (
@@ -67,6 +67,6 @@ const Demo7 = () => {
     },
   ])
 
-  return <Table columns={columns4} data={data4} />
+  return <Table columns={columns} data={data} />
 }
 export default Demo7

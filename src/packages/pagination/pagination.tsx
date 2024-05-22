@@ -168,5 +168,4 @@ export const Pagination: FunctionComponent<
   )
 }
 
-Pagination.defaultProps = defaultProps
 Pagination.displayName = 'NutPagination'
