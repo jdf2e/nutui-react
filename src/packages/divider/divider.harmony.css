@@ -50,9 +50,7 @@
   flex: none;
 }
 .nut-divider-vertical {
-  position: relative;
-  top: 2px;
-  display: flex;
+  display: inline-flex;
   width: 0px;
   height: 12px;
   border-left: 1px solid rgba(0, 0, 0, 0.06);

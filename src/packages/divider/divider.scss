@@ -6,12 +6,11 @@
   color: $divider-text-color;
   margin: $divider-margin;
   width: 100%;
-  border: 0;
 
   &-before,
   &-after {
     display: flex;
-    border-style: solid;
+    border-style: $divider-border-style;
     border-color: $divider-border-color;
     border-width: $divider-line-height 0 0;
     height: $divider-line-height;
@@ -45,9 +44,7 @@
   }
 
   &-vertical {
-    position: relative;
-    top: $divider-vertical-top;
-    display: flex;
+    display: inline-flex;
     width: 0px;
     height: $divider-vertical-height;
     border-left: 1px solid $divider-border-color;

@@ -46,11 +46,11 @@ export const Divider: FunctionComponent<
   return (
     <View className={`${classes} ${className || ''}`} style={style}>
       {direction === 'horizontal' && (
-        <View style={style} className={getClassNames('before')} />
+        <View className={getClassNames('before')} />
       )}
       {children}
       {direction === 'horizontal' && (
-        <View style={style} className={getClassNames('after')} />
+        <View className={getClassNames('after')} />
       )}
     </View>
   )

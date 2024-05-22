@@ -53,7 +53,7 @@ const DividerDemo = () => {
           <Demo5 />
         </Cell>
         <View className="h2">{translated.verticalDivider}</View>
-        <Cell>
+        <Cell align="center">
           <Demo6 />
         </Cell>
       </ScrollView>
