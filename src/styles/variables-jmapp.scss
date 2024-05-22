@@ -187,14 +187,14 @@ $font-family:
   sans-serif !default;
 
 // Font
-$font-size-xs: var(--nutui-font-size-1, 10px) !default;
-$font-size-small: var(--nutui-font-size-2, 12px) !default;
-$font-size-base: var(--nutui-font-size-3, 14px) !default;
-$font-size-large: var(--nutui-font-size-4, 16px) !default;
-$font-size-xl: var(--nutui-font-size-, 20px) !default;
-$font-size-xxl: var(--nutui-font-size-6, 24px) !default;
-$font-size-xxxl: var(--nutui-font-size-8, 28px) !default;
-$font-size-xxxxl: var(--nutui-font-size-11, 32px) !default;
+$font-size-xxs: $font-text-mini !default;
+$font-size-xs: $font-text-xs !default;
+$font-size-small: $font-text-small !default;
+$font-size-base: $font-text !default;
+$font-size-large: $font-text-large !default;
+$font-size-xl: $font-h2 !default;
+$font-size-xxl: var(--nutui-font-size-8) !default;
+$font-size-xxxl: var(--nutui-font-size-10) !default;
 
 $space-mini: $spacing-xs !default;
 $space-large: $spacing-l !default;
