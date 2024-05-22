@@ -50,26 +50,15 @@
     border-left: 1px solid $divider-border-color;
     margin: $divider-vertical-margin;
   }
-}
-
-[dir='rtl'] .nut-divider,
-.nut-rtl .nut-divider {
-  &-center,
-  &-left,
-  &-right {
-    &::before {
+  &-rtl {
+    &-before {
       margin-right: 0;
       margin-left: $divider-spacing;
     }
 
-    &::after {
+    &-after {
       margin-left: 0;
       margin-right: $divider-spacing;
     }
-  }
-
-  &-vertical {
-    border-left: none;
-    border-right: 1px solid $divider-border-color;
   }
 }

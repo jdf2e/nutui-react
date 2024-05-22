@@ -4,7 +4,9 @@ import { Divider } from '@nutui/nutui-react'
 const Demo4 = () => {
   return (
     <>
-      <Divider style={{ borderStyle: 'dashed' }}>文本</Divider>
+      <Divider style={{ '--nutui-divider-border-style': 'dashed' }}>
+        文本
+      </Divider>
     </>
   )
 }

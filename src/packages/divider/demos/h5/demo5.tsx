@@ -7,9 +7,9 @@ const Demo5 = () => {
       <Divider
         style={{
           color: '#1989fa',
-          borderColor: '#1989fa',
           padding: '0 16px',
-          borderStyle: 'dashed',
+          '--nutui-divider-border-color': '#1989fa',
+          '--nutui-divider-border-style': 'dashed',
         }}
       >
         文本

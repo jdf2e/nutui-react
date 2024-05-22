@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
+import { useRtl } from '../configprovider'
 
 export type DividerContentPosition = 'left' | 'center' | 'right'
 export type DividerDirection = 'horizontal' | 'vertical'
@@ -23,6 +24,7 @@ export const Divider: FunctionComponent<
     ...defaultProps,
     ...props,
   }
+  const rtl = useRtl()
   const classes =
     direction === 'horizontal'
       ? classNames({
@@ -30,7 +32,8 @@ export const Divider: FunctionComponent<
           [`${classPrefix}-center`]: children,
           [`${classPrefix}-left`]: contentPosition === 'left',
           [`${classPrefix}-right`]: contentPosition === 'right',
-          [`${classPrefix}-hairline`]: true,
+          [`${classPrefix}-rtl`]:
+            (['left', 'right'].includes(contentPosition) || children) && rtl,
         })
       : classNames({
           [`${classPrefix}`]: true,
