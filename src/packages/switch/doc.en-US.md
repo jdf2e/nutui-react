@@ -83,14 +83,14 @@ The component provides the following CSS variables, which can be used to customi
 | --- | --- | --- |
 | \--nutui-switch-close-background-color | Switch off state background color | `$color-text-disabled` |
 | \--nutui-switch-open-background-color | Switch on background color | `$color-primary` |
-| \--nutui-switch-close-disabled-background-color | Switch off state's disabled background color | `rgba(0, 0, 0, 0.06)` |
+| \--nutui-switch-close-disabled-background-color | Switch off state's disabled background color | `$color-background` |
 | \--nutui-switch-open-disabled-background-color | Switch on state's disabled background color | `$color-primary-disabled` |
-| \--nutui-switch-width | Switch width | `36px` |
-| \--nutui-switch-height | Switch height | `21px` |
-| \--nutui-switch-line-height | Switch line height | `21px` |
-| \--nutui-switch-border-radius | Switch border radius | `21px` |
-| \--nutui-switch-inside-width | Width of button inside switch | `13px` |
-| \--nutui-switch-inside-height | Switch internal button height | `13px` |
-| \--nutui-switch-inside-open-transform | Position of internal button in switch on state | `translateX(146%)` |
-| \--nutui-switch-inside-close-transform | Switch off state internal button position | `translateX(30%)` |
-| \--nutui-switch-close-line-bg-color | Switch off state inner button line color | `#f0f0f0` |
+| \--nutui-switch-width | Switch width | `40px` |
+| \--nutui-switch-height | Switch height | `24px` |
+| \--nutui-switch-line-height | Switch line height | `24px` |
+| \--nutui-switch-border-radius | Switch border radius | `8px` |
+| \--nutui-switch-inside-width | Width of button inside switch | `20px` |
+| \--nutui-switch-inside-height | Switch internal button height | `20px` |
+| \--nutui-switch-inside-open-transform | Position of internal button in switch on state | `translateX(18px)` |
+| \--nutui-switch-inside-close-transform | Switch off state internal button position | `translateX(2px)` |
+| \--nutui-switch-close-line-bg-color | Switch off state inner button line color | `#ffffff` |
