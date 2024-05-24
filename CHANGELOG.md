@@ -1,3 +1,15 @@
+# v2.6.6
+`2024-05-24`
+
+
+* 🏡 chore(tag): css样式变量修复 (#2279) @Alex-huxiyang
+* 🏡 chore(deps): update dependency eslint-plugin-markdown to v5 (#2218) @renovate[bot]
+* 📖 docs(uploader): update (#2265) @eiinu
+* :bug: fix(input): placeholder 无法设置空字符串 (#2282) @oasis-cloud
+* :bug: fix(imagepreview): 阻止冒泡，防止点击图片关闭 (#2281) @Alex-huxiyang
+* :bug: fix(FormItem): 修复initialValue属性初始化未被正确加入到Formstore中导致的问题 (#2247) @Alex-huxiyang
+
+
 # v2.6.5
 `2024-05-17`
 
