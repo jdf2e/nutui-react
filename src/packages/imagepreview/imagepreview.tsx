@@ -254,6 +254,7 @@ export const ImagePreview: FunctionComponent<Partial<ImagePreviewProps>> = (
   }
 
   const closeOnImg = (e: React.MouseEvent<Element, MouseEvent>) => {
+    e.stopPropagation()
     // 点击内容区域的图片是否可以关闭弹层（视频区域由于nut-video做了限制，无法关闭弹层）
     if (closeOnContentClick) {
       onCloseInner(e)
