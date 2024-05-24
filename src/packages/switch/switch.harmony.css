@@ -6,8 +6,8 @@
   width: 40px;
   height: 24px;
   line-height: 24px;
-  background-color: #FF0F23;
-  border-radius: 24px;
+  background-color: #ff0f23;
+  border-radius: 8px;
   background-size: 100% 100%;
   background-repeat: no-repeat;
   background-position: center center;
@@ -21,7 +21,7 @@
   height: 20px;
   width: 20px;
   transform: translateX(2px);
-  border-radius: 999vmax;
+  border-radius: 6px;
   background: #ffffff;
   transition: transform 0.3s;
   box-shadow: 0 0 transparent;
@@ -39,7 +39,7 @@
   transform: translateX(-2px);
 }
 .nut-switch-close {
-  background-color: #C2C4CC;
+  background-color: #c2c4cc;
 }
 .nut-switch-close-line {
   width: 12px;
@@ -48,10 +48,10 @@
   border-radius: 2px;
 }
 .nut-switch-disabled {
-  background-color: #FFADBE;
+  background-color: #ffadbe;
 }
 .nut-switch-disabled-close {
-  background-color: rgba(0, 0, 0, 0.06);
+  background-color: #f5f6fa;
 }
 .nut-switch-label {
   color: #ffffff;
