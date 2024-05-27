@@ -1,0 +1,39 @@
+.nut-resultpage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: $resultpage-width;
+  margin: 0 auto;
+  &-icon {
+    height: $resultpage-icon-size;
+    width: $resultpage-icon-size;
+    margin-bottom: $resultpage-icon-margin-bottom;
+    background-size: 100%;
+  }
+  &-title {
+    margin-bottom: $resultpage-title-margin-bottom;
+    font-size: $resultpage-title-font-size;
+    color: $resultpage-title-color;
+    font-weight: $font-weight-bold;
+  }
+  &-description {
+    line-height: $resultpage-description-line-height;
+    font-size: $resultpage-description-font-size;
+    color: $resultpage-description-color;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    word-break: break-all;
+  }
+  &-actions {
+    display: flex;
+    flex-direction: row;
+    margin-top: $resultpage-actions-margin-top;
+  }
+  &-action {
+    margin-left: 6px !important;
+    margin-right: 6px !important;
+    white-space: nowrap;
+  }
+}

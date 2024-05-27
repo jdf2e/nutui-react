@@ -159,7 +159,7 @@
     "happy-dom": "^13.9.0",
     "highlight.js": "^11.9.0",
     "husky": "^9.0.11",
-    "inquirer": "^9.2.15",
+    "inquirer": "^8.2.6",
     "jscodeshift": "^0.15.1",
     "lint-staged": "^15.2.2",
     "lzutf8": "0.6.3",
