@@ -17,7 +17,11 @@ export interface SignatureProps extends BasicComponent {
   lineWidth: number
   strokeStyle: string
   unsupported: ReactNode
-  onConfirm?: (canvas: HTMLCanvasElement, dataurl: string) => void
+  onConfirm?: (
+    canvas: HTMLCanvasElement,
+    dataurl: string,
+    hasSigatured?: boolean
+  ) => void
   onClear?: () => void
 }
 
@@ -58,6 +62,7 @@ const InternalSignature: ForwardRefRenderFunction<
     return !!(elem.getContext && elem.getContext('2d'))
   }
   const [isCanvasSupported, setIsCanvasSupported] = useState(false)
+  const [hasSigatured, setSigatured] = useState(false)
 
   const isSupportTouch = canUseDom ? 'ontouchstart' in window : false
   const events = isSupportTouch
@@ -79,6 +84,7 @@ const InternalSignature: ForwardRefRenderFunction<
 
   const startEventHandler = (event: any) => {
     event.preventDefault()
+    setSigatured(true)
     if (ctx.current && canvasRef.current) {
       ctx.current.beginPath()
       ctx.current.lineWidth = lineWidth as number
@@ -124,6 +130,7 @@ const InternalSignature: ForwardRefRenderFunction<
     }
   }
   const handleClearBtn = () => {
+    setSigatured(false)
     if (canvasRef.current && ctx.current) {
       canvasRef.current.addEventListener(events[2], endEventHandler, false)
       ctx.current.clearRect(0, 0, canvasWidth, canvasHeight)
@@ -133,7 +140,11 @@ const InternalSignature: ForwardRefRenderFunction<
   }
 
   const onSave = (canvas: HTMLCanvasElement) => {
-    let dataurl
+    let dataurl = ''
+    if (!hasSigatured) {
+      onConfirm && onConfirm(canvas, dataurl as string, hasSigatured)
+      return
+    }
     switch (type) {
       case 'png':
         dataurl = canvas.toDataURL('image/png')
@@ -144,7 +155,7 @@ const InternalSignature: ForwardRefRenderFunction<
       default:
         dataurl = canvas.toDataURL('image/png')
     }
-    onConfirm && onConfirm(canvas, dataurl as string)
+    onConfirm && onConfirm(canvas, dataurl as string, hasSigatured)
   }
 
   useImperativeHandle(ref, () => ({
