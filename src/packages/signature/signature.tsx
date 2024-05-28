@@ -62,7 +62,7 @@ const InternalSignature: ForwardRefRenderFunction<
     return !!(elem.getContext && elem.getContext('2d'))
   }
   const [isCanvasSupported, setIsCanvasSupported] = useState(false)
-  const signaturedRef = useRef<boolean>(false)
+  const isSignedRef = useRef(false)
 
   const isSupportTouch = canUseDom ? 'ontouchstart' in window : false
   const events = isSupportTouch
@@ -84,7 +84,7 @@ const InternalSignature: ForwardRefRenderFunction<
 
   const startEventHandler = (event: any) => {
     event.preventDefault()
-    signaturedRef.current = true
+    isSignedRef.current = true
     if (ctx.current && canvasRef.current) {
       ctx.current.beginPath()
       ctx.current.lineWidth = lineWidth as number
@@ -130,7 +130,7 @@ const InternalSignature: ForwardRefRenderFunction<
     }
   }
   const handleClearBtn = () => {
-    signaturedRef.current = false
+    isSignedRef.current = false
     if (canvasRef.current && ctx.current) {
       canvasRef.current.addEventListener(events[2], endEventHandler, false)
       ctx.current.clearRect(0, 0, canvasWidth, canvasHeight)
@@ -141,8 +141,8 @@ const InternalSignature: ForwardRefRenderFunction<
 
   const onSave = (canvas: HTMLCanvasElement) => {
     let dataurl = ''
-    if (!signaturedRef.current) {
-      onConfirm && onConfirm(canvas, dataurl as string, signaturedRef.current)
+    if (!isSignedRef.current) {
+      onConfirm && onConfirm(canvas, dataurl as string, isSignedRef.current)
       return
     }
     switch (type) {
@@ -155,7 +155,7 @@ const InternalSignature: ForwardRefRenderFunction<
       default:
         dataurl = canvas.toDataURL('image/png')
     }
-    onConfirm && onConfirm(canvas, dataurl as string, signaturedRef.current)
+    onConfirm && onConfirm(canvas, dataurl as string, isSignedRef.current)
   }
 
   useImperativeHandle(ref, () => ({
