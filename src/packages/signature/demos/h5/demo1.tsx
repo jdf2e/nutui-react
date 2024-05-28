@@ -5,10 +5,10 @@ const Demo1 = () => {
   const confirm = (
     canvas: HTMLCanvasElement,
     dataurl: string,
-    hasSignatured?: boolean
+    isSignatured?: boolean
   ) => {
-    console.log(`0 图片地址 ${dataurl}`, hasSignatured)
-    if (!hasSignatured) {
+    console.log(`0 图片地址 ${dataurl}`, isSignatured)
+    if (!isSignatured) {
       console.log('抱歉，没有签名哦~')
       return
     }

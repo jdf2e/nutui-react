@@ -20,7 +20,7 @@ export interface SignatureProps extends BasicComponent {
   onConfirm?: (
     canvas: HTMLCanvasElement,
     dataurl: string,
-    hasSignatured?: boolean
+    isSignatured?: boolean
   ) => void
   onClear?: () => void
 }
@@ -155,7 +155,7 @@ const InternalSignature: ForwardRefRenderFunction<
       default:
         dataurl = canvas.toDataURL('image/png')
     }
-    onConfirm && onConfirm(canvas, dataurl as string, hasSignatured)
+    onConfirm && onConfirm(canvas, dataurl as string, signaturedRef.current)
   }
 
   useImperativeHandle(ref, () => ({

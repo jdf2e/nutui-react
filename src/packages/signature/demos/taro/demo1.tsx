@@ -2,8 +2,8 @@ import React, { useRef } from 'react'
 import { Signature, Button } from '@nutui/nutui-react-taro'
 
 const Demo1 = () => {
-  const confirm = (dataurl: string, hasSignatured?: boolean) => {
-    if (hasSignatured) {
+  const confirm = (dataurl: string, isSignatured?: boolean) => {
+    if (isSignatured) {
       console.log('图片地址', dataurl)
     } else {
       console.log('抱歉，没有签名哦~')
