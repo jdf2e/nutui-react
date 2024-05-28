@@ -1,8 +1,8 @@
 .nut-resultpage {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 247px;
   margin: 0 auto;
 }
 .nut-resultpage-icon {
@@ -12,12 +12,15 @@
   background-size: 100%;
 }
 .nut-resultpage-title {
+  width: 247px;
   margin-bottom: 9px;
   font-size: 20px;
   color: #1a1a1a;
   font-weight: 600;
+  text-align: center;
 }
 .nut-resultpage-description {
+  width: 247px;
   line-height: 20px;
   font-size: 14px;
   color: #505259;
@@ -33,7 +36,9 @@
   margin-top: 21px;
 }
 .nut-resultpage-action {
-  margin-left: 6px !important;
-  margin-right: 6px !important;
+  margin-left: 6px;
+  margin-right: 6px;
+}
+.nut-resultpage-action-button {
   white-space: nowrap;
 }

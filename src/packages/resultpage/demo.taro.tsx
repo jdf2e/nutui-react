@@ -1,47 +1,49 @@
 import React from 'react'
 import { ScrollView, View } from '@tarojs/components'
-import { ResultPage } from '@/packages/nutui.react.taro'
+import { useTranslate } from '@/sites/assets/locale/taro'
+import Demo1 from './demos/taro/demo1'
+import Demo2 from './demos/taro/demo2'
+import Demo3 from './demos/taro/demo3'
+import Demo4 from './demos/taro/demo4'
+import Demo5 from './demos/taro/demo5'
 
 const ResultPageDemo = () => {
+  const [translated] = useTranslate({
+    'zh-CN': {
+      basic: '基础用法',
+      modifyStatus: '修改状态',
+      noTitle: '无标题',
+      singleButton: '单按钮',
+      noButton: '无按钮',
+    },
+    'zh-TW': {
+      basic: '基礎用法',
+      modifyStatus: '修改狀態',
+      noTitle: '無標題',
+      singleButton: '單按鈕',
+      noButton: '無按鈕',
+    },
+    'en-US': {
+      basic: 'Basic Usage',
+      modifyStatus: 'Modify Status',
+      noTitle: 'No Title',
+      singleButton: 'Single Button',
+      noButton: 'No Button',
+    },
+  })
   return (
     <>
-      <ScrollView className="demo" style={{ width: '100%' }}>
-        <View className="h2">成功反馈</View>
-        <ResultPage
-          title="成功反馈"
-          description="内容描述内容可折行，建议最多不超过两行建议最多不超过两行"
-          status="success"
-          primaryButtonText="主要按钮"
-          secondaryButtonText="次要按钮"
-        />
-        <View className="h2">失败反馈</View>
-        <ResultPage
-          title="失败反馈"
-          description="内容描述内容可折行，建议最多不超过两行建议最多不超过两行内容描述内容可折行，建议最多不超过两行建议最多不超过两行"
-          status="error"
-          primaryButtonText="主要按钮"
-          secondaryButtonText="次要按钮"
-        />
-        <View className="h2">无标题</View>
-        <ResultPage
-          description="内容描述内容可折行，建议最多不超过两行建议最多不超过两行内容描述内容可折行，建议最多不超过两行建议最多不超过两行"
-          status="warning"
-          primaryButtonText="主要按钮"
-          secondaryButtonText="次要按钮"
-        />
-        <View className="h2">单一按钮</View>
-        <ResultPage
-          title="信息补充"
-          description="内容描述内容可折行，建议最多不超过两行建议最多不超过两行内容描述内容可折行，建议最多不超过两行建议最多不超过两行"
-          status="info"
-          primaryButtonText="主要按钮"
-        />
-        <View className="h2">无按钮</View>
-        <ResultPage
-          title="二次确认"
-          description="内容描述内容可折行，建议最多不超过两行建议最多不超过两行内容描述内容可折行，建议最多不超过两行建议最多不超过两行"
-          status="waiting"
-        />
+      <ScrollView className="demo">
+        <View className="h2">{translated.basic}</View>
+        <Demo1 />
+        <View className="h2">{translated.modifyStatus}</View>
+        <Demo2 />
+        <View className="h2">{translated.noTitle}</View>
+        <Demo3 />
+        <View className="h2">{translated.singleButton}</View>
+        <Demo4 />
+        <View className="h2">{translated.noButton}</View>
+        <Demo5 />
       </ScrollView>
     </>
   )

@@ -1,34 +1,32 @@
 import React, { FunctionComponent, ReactNode, useState } from 'react'
 import classNames from 'classnames'
 import { View, Text, Image } from '@tarojs/components'
-import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { Button } from '@/packages/button/button.taro'
-import { ResultPageStatus, statusOptions } from './types'
+import {
+  ResultPageStatus,
+  ResultPageAction,
+  ResultPageStatusOptions,
+} from './types'
 
 export interface ResultPageProps extends BasicComponent {
   title: ReactNode
   description: ReactNode
   icon: ReactNode
   status: ResultPageStatus
-  primaryButtonText: ReactNode
-  secondaryButtonText: ReactNode
-  onPrimaryButtonClick?: () => void
-  onSecondaryButtonClick?: () => void
+  actions: ResultPageAction[]
 }
 const defaultProps = {
   ...ComponentDefaults,
   title: null,
   description: null,
-  icon: null,
+  icon: '',
   status: 'info',
-  primaryButtonText: null,
-  secondaryButtonText: null,
+  actions: [],
 } as ResultPageProps
 export const ResultPage: FunctionComponent<
   Partial<ResultPageProps> & React.HTMLAttributes<HTMLDivElement>
 > = (props) => {
-  const { locale } = useConfig()
   const {
     className,
     style,
@@ -36,9 +34,8 @@ export const ResultPage: FunctionComponent<
     description,
     icon,
     status,
-    primaryButtonText,
-    secondaryButtonText,
-    ...rest
+    actions,
+    children,
   } = {
     ...defaultProps,
     ...props,
@@ -47,7 +44,7 @@ export const ResultPage: FunctionComponent<
   const classPrefix = `nut-resultpage`
   const cls = classNames(classPrefix, className)
 
-  const defaultStatus: statusOptions = {
+  const defaultStatus: ResultPageStatusOptions = {
     success:
       'https://img11.360buyimg.com/imagetools/jfs/t1/233690/33/17768/1251/66543101F2589003b/f5dcaea8e29c23aa.png',
     error:
@@ -58,43 +55,41 @@ export const ResultPage: FunctionComponent<
     waiting:
       'https://img11.360buyimg.com/imagetools/jfs/t1/226266/21/17859/1428/66543101F2dc4c3f3/44e2ae2b51c6e0ed.png',
   }
-  const [imgStyle] = useState<any>(`${defaultStatus[status]}`)
+  const [iconSrc] = useState<any>(
+    `${typeof icon === 'string' && icon ? icon : defaultStatus[status]}`
+  )
   return (
     <View className={cls} style={style}>
-      <Image src={imgStyle} className={`${classPrefix}-icon`} />
-      {typeof title === 'string' ? (
+      {typeof icon === 'string' ? (
+        <Image src={iconSrc} className={`${classPrefix}-icon`} />
+      ) : null}
+      {typeof title === 'string' && title ? (
         <View className={`${classPrefix}-title`}>{title}</View>
       ) : (
         title
       )}
-      {typeof description === 'string' ? (
+      {typeof description === 'string' && description ? (
         <Text numberOfLines={2} className={`${classPrefix}-description`}>
           {description}
         </Text>
       ) : (
         description
       )}
-      {primaryButtonText || secondaryButtonText ? (
+      {actions.length > 0 && (
         <View className={`${classPrefix}-actions`}>
-          {secondaryButtonText && (
-            <Button
-              className={`${classPrefix}-action`}
-              onClick={props?.onSecondaryButtonClick}
-            >
-              {secondaryButtonText}
-            </Button>
-          )}
-          {primaryButtonText && (
-            <Button
-              type="primary"
-              className={`${classPrefix}-action`}
-              onClick={props?.onPrimaryButtonClick}
-            >
-              {primaryButtonText}
-            </Button>
-          )}
+          {actions.map((action, index) => {
+            const { text, ...rest } = action
+            return (
+              <View className={`${classPrefix}-action`} key={index}>
+                <Button {...rest} size="small">
+                  {action?.text}
+                </Button>
+              </View>
+            )
+          })}
         </View>
-      ) : null}
+      )}
+      {children}
     </View>
   )
 }
