@@ -1,3 +1,12 @@
+# v2.6.7
+`2024-05-28`
+
+
+* :sparkles: feat: 签名组件增加当没有签名或已清空的情况下的参数暴露 (#2288) @xiaoyatong
+* :bug: fix: ActionSheet 增加安全区处理 (#2286) @xiaoyatong
+* :bug: fix(actionsheet): 去掉无意义的 padding，popup 已不再暴露 (#2285) @xiaoyatong
+
+
 # v2.6.6
 `2024-05-24`
 
