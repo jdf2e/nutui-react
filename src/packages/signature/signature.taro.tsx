@@ -23,7 +23,7 @@ export interface SignatureProps extends BasicComponent {
   lineWidth: number
   strokeStyle: string
   unSupportTpl: string
-  onConfirm?: (dataurl: string) => void
+  onConfirm?: (dataurl: string, isSigned?: boolean) => void
   onClear?: () => void
 }
 const defaultProps = {
@@ -59,8 +59,10 @@ const InternalSignature: ForwardRefRenderFunction<
   const [canvasWidth, setCanvasWidth] = useState(0)
   const ctx = useRef<CanvasContext | null>(null)
   const [disalbeScroll] = useState('true')
+  const isSignedRef = useRef(false)
 
   const startEventHandler = (event: any) => {
+    isSignedRef.current = true
     if (ctx.current) {
       ctx.current.beginPath()
       ctx.current.lineWidth = lineWidth as number
@@ -80,8 +82,6 @@ const InternalSignature: ForwardRefRenderFunction<
         mouseY = evt.clientY - coverPos.top
       }
       nextTick(() => {
-        // ctx.current.lineCap = 'round'
-        // ctx.current.lineJoin = 'round'
         ctx.current?.lineTo(mouseX, mouseY)
         ctx.current?.stroke()
       })
@@ -91,6 +91,7 @@ const InternalSignature: ForwardRefRenderFunction<
   const endEventHandler = (event: any) => {}
 
   const handleClearBtn = () => {
+    isSignedRef.current = false
     if (ctx.current) {
       ctx.current.clearRect(0, 0, canvasWidth, canvasHeight)
       ctx.current.closePath()
@@ -99,6 +100,10 @@ const InternalSignature: ForwardRefRenderFunction<
   }
 
   const onSave = () => {
+    if (!isSignedRef.current) {
+      onConfirm && onConfirm('', isSignedRef.current)
+      return
+    }
     createSelectorQuery()
       .select(`#${canvasId}`)
       .fields({
@@ -111,7 +116,7 @@ const InternalSignature: ForwardRefRenderFunction<
           fileType: type,
           canvasId: `${canvasId}`,
           success: (res) => {
-            onConfirm && onConfirm(res.tempFilePath)
+            onConfirm && onConfirm(res.tempFilePath, isSignedRef.current)
           },
           fail: (res) => {
             console.warn('保存失败')
