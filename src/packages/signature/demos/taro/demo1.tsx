@@ -6,7 +6,7 @@ const Demo1 = () => {
     if (hasSignatured) {
       console.log('图片地址', dataurl)
     } else {
-      console.log('抱歉，没有签名哦')
+      console.log('抱歉，没有签名哦~')
     }
   }
   const clear = () => {

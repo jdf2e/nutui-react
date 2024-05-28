@@ -59,10 +59,10 @@ const InternalSignature: ForwardRefRenderFunction<
   const [canvasWidth, setCanvasWidth] = useState(0)
   const ctx = useRef<CanvasContext | null>(null)
   const [disalbeScroll] = useState('true')
-  const [hasSignatured, setSignatured] = useState(false)
+  const signaturedRef = useRef<boolean>(false)
 
   const startEventHandler = (event: any) => {
-    setSignatured(true)
+    signaturedRef.current = true
     if (ctx.current) {
       ctx.current.beginPath()
       ctx.current.lineWidth = lineWidth as number
@@ -91,7 +91,7 @@ const InternalSignature: ForwardRefRenderFunction<
   const endEventHandler = (event: any) => {}
 
   const handleClearBtn = () => {
-    setSignatured(false)
+    signaturedRef.current = false
     if (ctx.current) {
       ctx.current.clearRect(0, 0, canvasWidth, canvasHeight)
       ctx.current.closePath()
@@ -100,8 +100,8 @@ const InternalSignature: ForwardRefRenderFunction<
   }
 
   const onSave = () => {
-    if (!hasSignatured) {
-      onConfirm && onConfirm('', hasSignatured)
+    if (!signaturedRef.current) {
+      onConfirm && onConfirm('', signaturedRef.current)
       return
     }
     createSelectorQuery()
@@ -116,7 +116,7 @@ const InternalSignature: ForwardRefRenderFunction<
           fileType: type,
           canvasId: `${canvasId}`,
           success: (res) => {
-            onConfirm && onConfirm(res.tempFilePath, hasSignatured)
+            onConfirm && onConfirm(res.tempFilePath, signaturedRef.current)
           },
           fail: (res) => {
             console.warn('保存失败')
