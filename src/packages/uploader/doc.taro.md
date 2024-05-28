@@ -23,6 +23,8 @@ import { Uploader } from '@nutui/nutui-react-taro';
 > 在使用Uploader组件上传文件时，可能会遇到响应文件信息中文乱码的问题。这通常发生在客户端与服务器端在处理文件编码时不一致的情况下。为了避免这种问题，建议确保服务器端读取文件的编码格式与客户端保持一致。
 
 ```javascript
+import React from 'react'
+import { Uploader } from '@nutui/nutui-react'
 // Server Demo
 app.post('/upload', upload.single('file'), (req, res) => {
   const fileEncoding = req.headers['x-file-encoding'] || 'UTF-8';
