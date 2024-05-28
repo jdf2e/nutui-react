@@ -20,7 +20,7 @@ export interface SignatureProps extends BasicComponent {
   onConfirm?: (
     canvas: HTMLCanvasElement,
     dataurl: string,
-    isSignatured?: boolean
+    isSigned?: boolean
   ) => void
   onClear?: () => void
 }

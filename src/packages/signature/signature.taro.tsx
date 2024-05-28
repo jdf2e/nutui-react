@@ -23,7 +23,7 @@ export interface SignatureProps extends BasicComponent {
   lineWidth: number
   strokeStyle: string
   unSupportTpl: string
-  onConfirm?: (dataurl: string, isSignatured?: boolean) => void
+  onConfirm?: (dataurl: string, isSigned?: boolean) => void
   onClear?: () => void
 }
 const defaultProps = {
