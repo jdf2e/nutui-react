@@ -53,7 +53,7 @@ const GridDemo = () => {
 
   return (
     <>
-      <div className="demo" style={{ marginBottom: '100px' }}>
+      <div className="demo" style={{ paddingBottom: '100px' }}>
         <h2>{translated.basic}</h2>
         <Demo1 />
         <h2>{translated.columns}</h2>

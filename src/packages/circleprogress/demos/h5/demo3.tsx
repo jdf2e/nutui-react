@@ -8,7 +8,7 @@ const gradientColor = {
 const Demo3 = () => {
   return (
     <>
-      <CircleProgress percent={50} color="var(--nutui-color-info)">
+      <CircleProgress percent={50} color="#1988fa">
         50%
       </CircleProgress>
       <CircleProgress percent={100} color={gradientColor}>

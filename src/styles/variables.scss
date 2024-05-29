@@ -440,11 +440,10 @@ $divider-border-color: var(
   $color-border
 ) !default;
 $divider-text-color: var(--nutui-divider-text-color, $color-text) !default;
-$divider-line-height: var(--nutui-divider-line-height, 2px) !default;
+$divider-line-height: var(--nutui-divider-line-height, 1px) !default;
 $divider-spacing: var(--nutui-divider-spacing, 8px) !default;
 $divider-side-width: var(--nutui-divider-side-width, 10%) !default;
 $divider-vertical-height: var(--nutui-divider-vertical-height, 12px) !default;
-$divider-vertical-top: var(--nutui-divider-vertical-top, 2px) !default;
 $divider-vertical-margin: var(--nutui-divider-vertical-margin, 0 8px) !default;
 
 // icon（✅）
@@ -641,7 +640,6 @@ $actionsheet-background-color: var(
   --nutui-actionsheet-background-color,
   $color-background-overlay
 ) !default;
-$actionsheet-padding: var(--nutui-actionsheet-padding, 0 4px) !default;
 $actionsheet-border-color: var(
   --nutui-actionsheet-border-color,
   $color-border
@@ -809,7 +807,7 @@ $switch-open-background-color: var(
 ) !default;
 $switch-close-disabled-background-color: var(
   --nutui-switch-close-disabled-background-color,
-  var(--nutui-black-3)
+  $color-background
 ) !default;
 $switch-open-disabled-background-color: var(
   --nutui-switch-open-disabled-background-color,
@@ -822,18 +820,21 @@ $switch-close-line-background-color: var(
 $switch-width: var(--nutui-switch-width, 40px) !default;
 $switch-height: var(--nutui-switch-height, 24px) !default;
 $switch-line-height: var(--nutui-switch-line-height, 24px) !default;
-$switch-border-radius: var(--nutui-switch-border-radius, 24px) !default;
+$switch-border-radius: var(--nutui-switch-border-radius, 8px) !default;
 $switch-inside-width: var(--nutui-switch-inside-width, 20px) !default;
 $switch-inside-height: var(--nutui-switch-inside-height, 20px) !default;
 $switch-inside-open-transform: var(
   --nutui-switch-inside-open-transform,
-  translateX(90%)
+  translateX(18px)
 ) !default;
 $switch-inside-close-transform: var(
   --nutui-switch-inside-close-transform,
-  translateX(14%)
+  translateX(2px)
 ) !default;
-$switch-button-box-shadow: var(--nutui-switch-box-shadow, none) !default;
+$switch-button-box-shadow: var(
+  --nutui-switch-box-shadow,
+  0 0 transparent
+) !default;
 
 // toast（✅）
 $toast-inner-text-align: var(--nutui-toast-inner-text-align, center) !default;
@@ -1479,7 +1480,7 @@ $tag-success-background-color: var(
 ) !default;
 $tag-danger-background-color: var(
   --nutui-tag-danger-background-color,
-  $color-primary
+  $color-danger
 ) !default;
 $tag-warning-background-color: var(
   --nutui-tag-warning-background-color,

@@ -488,7 +488,6 @@ $divider-line-height: var(--nutui-divider-line-height, 2px) !default;
 $divider-spacing: var(--nutui-divider-spacing, $spacing-base) !default;
 $divider-side-width: var(--nutui-divider-side-width, 16px) !default;
 $divider-vertical-height: var(--nutui-divider-vertical-height, 12px) !default;
-$divider-vertical-top: var(--nutui-divider-vertical-top, 2px) !default;
 $divider-vertical-margin: var(--nutui-divider-vertical-margin, 0 8px) !default;
 
 // icon（✅）
@@ -697,7 +696,6 @@ $actionsheet-background-color: var(
   --nutui-actionsheet-background-color,
   $color-surface-1
 ) !default;
-$actionsheet-padding: var(--nutui-actionsheet-padding, 0 4px) !default;
 $actionsheet-border-color: var(--nutui-actionsheet-border-color, none) !default;
 $actionsheet-border-radius: var(
   --nutui-actionsheet-border-radius,
