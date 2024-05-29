@@ -1,12 +1,17 @@
 import React, { FunctionComponent, ReactNode, useState } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { Button } from '../button/button'
-import {
-  ResultPageStatus,
-  ResultPageAction,
-  ResultPageStatusOptions,
-} from './types'
+import { Button, ButtonFill, ButtonSize, ButtonType } from '../button/button'
+import { ResultPageStatus, ResultPageStatusOptions } from './types'
+
+export type ResultPageAction = {
+  text: React.ReactNode
+  type?: ButtonType
+  size?: ButtonSize
+  fill?: ButtonFill
+  disabled?: boolean
+  onClick?: () => () => void
+}
 
 export interface ResultPageProps extends BasicComponent {
   title: ReactNode

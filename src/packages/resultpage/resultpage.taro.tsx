@@ -2,13 +2,22 @@ import React, { FunctionComponent, ReactNode, useState } from 'react'
 import classNames from 'classnames'
 import { View, Text, Image } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { Button } from '@/packages/button/button.taro'
 import {
-  ResultPageStatus,
-  ResultPageAction,
-  ResultPageStatusOptions,
-} from './types'
+  Button,
+  ButtonFill,
+  ButtonSize,
+  ButtonType,
+} from '@/packages/button/button.taro'
+import { ResultPageStatus, ResultPageStatusOptions } from './types'
 
+export type ResultPageAction = {
+  text: React.ReactNode
+  type?: ButtonType
+  size?: ButtonSize
+  fill?: ButtonFill
+  disabled?: boolean
+  onClick?: () => () => void
+}
 export interface ResultPageProps extends BasicComponent {
   title: ReactNode
   description: ReactNode

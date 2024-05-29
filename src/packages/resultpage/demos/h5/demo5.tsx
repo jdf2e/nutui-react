@@ -6,7 +6,7 @@ const Demo1 = () => {
     <Cell>
       <ResultPage
         title="二次确认"
-        description="内容描述内容可折行，建议最多不超过两行建议最多不超过两行内容描述内容可折行，建议最多不超过两行建议最多不超过两行"
+        description="内容描述内容可折行，建议最多不超过两行建议最多不超过两行"
         status="waiting"
       />
     </Cell>
