@@ -22,6 +22,62 @@ test('form set initialValues', () => {
   )
 })
 
+test('formItem set initialValue', () => {
+  const { container } = render(
+    <Form>
+      <Form.Item name="username" initialValue="NutUI-React">
+        <Input />
+      </Form.Item>
+    </Form>
+  )
+  expect(container.querySelector('.nut-input-native')).toHaveValue(
+    'NutUI-React'
+  )
+})
+
+test('Both form and formItem set initialValue(s)', () => {
+  const { container } = render(
+    <Form initialValues={{ username: 'NutUI-React-Form' }}>
+      <Form.Item name="username" initialValue="NutUI-React-FormItem">
+        <Input />
+      </Form.Item>
+    </Form>
+  )
+  expect(container.querySelector('.nut-input-native')).toHaveValue(
+    'NutUI-React-Form'
+  )
+})
+test('Both form and formItem set initialValue(s) to submit', async () => {
+  const handleSubmit = vi.fn()
+  const { container } = render(
+    <Form
+      initialValues={{ username: 'NutUI-React-Form', age: 18 }}
+      onFinish={handleSubmit}
+    >
+      <Form.Item name="username" label="UserName" initialValue="NutUI-React">
+        <Input />
+      </Form.Item>
+      <Form.Item name="age" label="Age" initialValue="30">
+        <Input />
+      </Form.Item>
+      <Form.Item name="phone" label="Phone" initialValue="123456">
+        <Input />
+      </Form.Item>
+    </Form>
+  )
+  const form = container.querySelector('form') as Element
+  fireEvent.submit(form)
+  await waitFor(() => {
+    expect(handleSubmit).toBeCalled()
+    expect(handleSubmit).toBeCalledWith(
+      expect.objectContaining({
+        username: 'NutUI-React-Form',
+        age: 18,
+        phone: '123456',
+      })
+    )
+  })
+})
 test('form validateTrigger', async () => {
   const { container, rerender } = render(
     <Form>
