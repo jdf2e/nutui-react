@@ -13,8 +13,8 @@ const Demo5 = () => {
           color: '#1989fa',
           paddingLeft: isHarmony ? pxTransform(16) : 16,
           paddingRight: isHarmony ? pxTransform(16) : 16,
-          '--nutui-divider-border-color': '#1989fa',
-          '--nutui-divider-border-style': isRn ? 'solid' : 'dashed',
+          borderColor: '#1989fa',
+          borderStyle: isRn ? 'solid' : 'dashed',
         }}
       >
         文本

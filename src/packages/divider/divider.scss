@@ -6,11 +6,12 @@
   color: $divider-text-color;
   margin: $divider-margin;
   width: 100%;
+  border: 0 solid $divider-border-color;
 
   &-before,
   &-after {
     display: flex;
-    border-style: $divider-border-style;
+    border-style: solid;
     border-color: $divider-border-color;
     border-width: $divider-line-height 0 0;
     height: $divider-line-height;

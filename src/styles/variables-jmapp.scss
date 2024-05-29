@@ -483,7 +483,6 @@ $divider-border-color: var(
   --nutui-divider-border-color,
   $color-border
 ) !default;
-$divider-border-style: var(--nutui-divider-border-style, solid) !default;
 $divider-text-color: var(--nutui-divider-text-color, $color-text-help) !default;
 $divider-line-height: var(--nutui-divider-line-height, 2px) !default;
 $divider-spacing: var(--nutui-divider-spacing, $spacing-base) !default;

@@ -90,7 +90,6 @@ import { Divider } from '@nutui/nutui-react';
 | \--nutui-divider-text-font-size | 分割線整體內容的font-size大小 | `$font-size-base` |
 | \--nutui-divider-text-color | 分割線整體內容的顏色 | `$color-title` |
 | \--nutui-divider-line-height | 分割線的行高 | `1px` |
-| \--nutui-divider-border-style | 分割線整體內容的樣式 | `solid` |
 | \--nutui-divider-spacing | 左邊分割線與文案的間隔值 | `8px` |
 | \--nutui-divider-vertical-height | 垂直分割線的高度 | `12px` |
 | \--nutui-divider-vertical-margin | 垂直分割線的margin值 | `0 8px` |

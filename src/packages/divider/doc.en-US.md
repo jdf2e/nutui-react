@@ -90,7 +90,6 @@ The component provides the following CSS variables, which can be used to customi
 | \--nutui-divider-text-font-size | The font-size of the overall content of the dividing line | `$font-size-base` |
 | \--nutui-divider-text-color | The color of the overall content of the dividing line | `$color-title` |
 | \--nutui-divider-line-height | The row height of the dividing line | `1px` |
-| \--nutui-divider-border-style | Split the style of the overall content | `solid` |
 | \--nutui-divider-spacing | The spacing value between the dividing line of the text | `8px` |
 | \--nutui-divider-vertical-height | The height of the vertical split line | `12px` |
 | \--nutui-divider-vertical-margin | The margin value of the vertical split line | `0 8px` |

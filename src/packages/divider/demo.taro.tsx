@@ -44,10 +44,15 @@ const DividerDemo = () => {
         </Cell>
         <View className="h2">{translated.contentPosition}</View>
         <Demo3 />
-        <View className="h2">{translated.dashed}</View>
-        <Cell>
-          <Demo4 />
-        </Cell>
+        {/* RN unsupported dashed / dotted border style */}
+        {Taro.getEnv() !== 'RN' ? (
+          <>
+            <View className="h2">{translated.dashed}</View>
+            <Cell>
+              <Demo4 />
+            </Cell>
+          </>
+        ) : null}
         <View className="h2">{translated.customStyle}</View>
         <Cell>
           <Demo5 />

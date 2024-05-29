@@ -6,6 +6,7 @@
   color: #505259;
   margin: 16px 0;
   width: 100%;
+  border: 0 solid rgba(0, 0, 0, 0.06);
 }
 .nut-divider-before {
   display: flex;
