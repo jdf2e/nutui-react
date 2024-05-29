@@ -219,7 +219,6 @@ export type NutCSSVariables =
   | 'nutuiInputnumberIconSize'
   | 'nutuiInputnumberDisabledColor'
   | 'nutuiActionsheetBackgroundColor'
-  | 'nutuiActionsheetPadding'
   | 'nutuiActionsheetBorderColor'
   | 'nutuiActionsheetBorderRadius'
   | 'nutuiActionsheetItemTextAlign'
