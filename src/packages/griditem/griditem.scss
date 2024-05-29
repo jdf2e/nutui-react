@@ -1,23 +1,35 @@
 .nut-grid-item {
+  display: flex;
+  flex-direction: column;
   position: relative;
   box-sizing: border-box;
   color: $grid-item-text-color;
 
-  $block: &;
-
   &-text {
     color: $grid-item-text-color;
     font-size: $grid-item-text-font-size;
-    line-height: 1.5;
     word-break: break-all;
     margin: $grid-item-text-margin 0 0 0;
+
+    &-reverse {
+      margin: 0 0 $grid-item-text-margin 0;
+    }
+
+    &-horizontal {
+      margin: 0 0 0 $grid-item-text-margin;
+    }
+
+    &-horizontal-reverse {
+      margin: 0 $grid-item-text-margin 0 0;
+    }
   }
 
   &-content {
     display: flex;
-    flex-direction: column;
     box-sizing: border-box;
-    height: 100%;
+    flex: 1;
+    flex-direction: column;
+    width: 100%;
     padding: $grid-item-content-padding;
     background: $grid-item-content-bg-color;
     border: 0 solid $grid-border-color;
@@ -38,34 +50,19 @@
     }
 
     &-square {
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
+      margin-top: -100%;
     }
 
     &-reverse {
       flex-direction: column-reverse;
-
-      #{$block}-text {
-        margin: 0 0 $grid-item-text-margin;
-      }
     }
 
     &-horizontal {
       flex-direction: row;
-
-      #{$block}-text {
-        margin: 0 0 0 $grid-item-text-margin;
-      }
     }
 
-    &-horizontal#{&}-reverse {
+    &-horizontal-reverse {
       flex-direction: row-reverse;
-
-      #{$block}-text {
-        margin: 0 $grid-item-text-margin 0 0;
-      }
     }
 
     &-clickable {
@@ -96,8 +93,6 @@
 [dir='rtl'] .nut-grid,
 .nut-rtl .nut-grid {
   &-item {
-    $block: &;
-
     &-content {
       &-border {
         border-right-width: 0;

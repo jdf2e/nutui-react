@@ -82,8 +82,19 @@ export const GridItem: FunctionComponent<
       [`${classPrefix}-content-surround`]: gap,
       [`${classPrefix}-content-center`]: center,
       [`${classPrefix}-content-square`]: square,
-      [`${classPrefix}-content-reverse`]: reverse,
+      [`${classPrefix}-content-reverse`]: reverse && direction !== 'horizontal',
       [`${classPrefix}-content-${direction}`]: !!direction,
+      [`${classPrefix}-content-horizontal-reverse`]:
+        reverse && direction === 'horizontal',
+    })
+  }
+
+  const textClass = () => {
+    return classNames(`${classPrefix}-text`, {
+      [`${classPrefix}-text-reverse`]: reverse && direction !== 'horizontal',
+      [`${classPrefix}-text-horizontal`]: direction === 'horizontal',
+      [`${classPrefix}-text-horizontal-reverse`]:
+        reverse && direction === 'horizontal',
     })
   }
 
@@ -114,7 +125,7 @@ export const GridItem: FunctionComponent<
     >
       <div className={contentClass()}>
         {children && <>{children}</>}
-        {text && <div className={`${classPrefix}-text`}>{text}</div>}
+        {text && <div className={textClass()}>{text}</div>}
       </div>
     </div>
   )
