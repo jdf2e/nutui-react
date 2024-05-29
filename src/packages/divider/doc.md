@@ -89,8 +89,7 @@ import { Divider } from '@nutui/nutui-react';
 | \--nutui-divider-border-color | 分割线的边框色值 | `$color-border` |
 | \--nutui-divider-text-font-size | 分割线整体内容的font-size大小 | `$font-size-base` |
 | \--nutui-divider-text-color | 分割线整体内容的颜色 | `$color-title` |
-| \--nutui-divider-line-height | 分割线的行高 | `2px` |
+| \--nutui-divider-line-height | 分割线的行高 | `1px` |
 | \--nutui-divider-spacing | 左边分割线与文案的间隔值 | `8px` |
 | \--nutui-divider-vertical-height | 垂直分割线的高度 | `12px` |
-| \--nutui-divider-vertical-top | 垂直分割线的top值 | `2px` |
 | \--nutui-divider-vertical-margin | 垂直分割线的margin值 | `0 8px` |
