@@ -21,7 +21,7 @@
     height: $switch-inside-height;
     width: $switch-inside-width;
     transform: $switch-inside-close-transform;
-    border-radius: 999vmax;
+    border-radius: var(--nutui-radius-6);
     background: $color-primary-text;
     transition: transform 0.3s;
     box-shadow: $switch-button-box-shadow;

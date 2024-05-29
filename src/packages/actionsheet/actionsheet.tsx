@@ -102,6 +102,7 @@ export const ActionSheet: FunctionComponent<
           </div>
         )}
       </div>
+      <div className={`${classPrefix}-safe-area`} />
     </Popup>
   )
 }

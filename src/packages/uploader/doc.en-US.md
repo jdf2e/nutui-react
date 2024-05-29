@@ -23,6 +23,8 @@ import { Uploader } from '@nutui/nutui-react';
 > When using the Uploader component to upload files, you may encounter the problem of garbled Chinese characters in the response file information. This usually happens when the client and server are inconsistent in how they handle the encoding of the file. To avoid this problem, it is recommended to ensure that the encoding format of the file read by the server is consistent with that of the client.
 
 ```javascript
+import React from 'react'
+import { Uploader } from '@nutui/nutui-react'
 // Server Demo
 app.post('/upload', upload.single('file'), (req, res) => {
   const fileEncoding = req.headers['x-file-encoding'] || 'UTF-8';
