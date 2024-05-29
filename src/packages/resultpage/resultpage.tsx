@@ -80,7 +80,7 @@ export const ResultPage: FunctionComponent<
       ) : (
         description
       )}
-      {actions.length > 0 && (
+      {actions.length ? (
         <div className={`${classPrefix}-actions`}>
           {actions.map((action, index) => {
             const { text, ...rest } = action
@@ -91,7 +91,7 @@ export const ResultPage: FunctionComponent<
             )
           })}
         </div>
-      )}
+      ) : null}
       {children}
     </div>
   )
