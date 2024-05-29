@@ -52,6 +52,14 @@ import { Card, Price, Tag } from '@nutui/nutui-react'
 
 :::
 
+### 不顯示價格和店鋪
+
+:::demo
+
+<CodeBlock src='h5/demo6.tsx'></CodeBlock>
+
+:::
+
 ## Card
 
 ### Props
