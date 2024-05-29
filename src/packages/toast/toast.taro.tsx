@@ -1,7 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef } from 'react'
 import classNames from 'classnames'
-import { View } from '@tarojs/components'
-import { Failure, Loading, Success, Tips } from '@nutui/icons-react-taro'
+import { Text, View } from '@tarojs/components'
+// import { Failure, Loading, Success, Tips } from '@nutui/icons-react-taro'
 import Overlay from '@/packages/overlay/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import {
@@ -165,11 +165,17 @@ export const Toast: FunctionComponent<
       return icon
     }
     return {
-      success: <Success color="#ffffff" size={iconSize} />,
-      fail: <Failure color="#ffffff" size={iconSize} />,
-      warn: <Tips color="#ffffff" size={iconSize} />,
-      loading: <Loading color="#ffffff" size={iconSize} />,
+      success: <Text>success</Text>,
+      fail: <Text>fail</Text>,
+      warn: <Text>warn</Text>,
+      loading: <Text>loading</Text>,
     }[type]
+    // return {
+    //   success: <Success color="#ffffff" size={iconSize} />,
+    //   fail: <Failure color="#ffffff" size={iconSize} />,
+    //   warn: <Tips color="#ffffff" size={iconSize} />,
+    //   loading: <Loading color="#ffffff" size={iconSize} />,
+    // }[type]
   }
 
   const classes = classNames({
@@ -195,12 +201,14 @@ export const Toast: FunctionComponent<
               style={contentStyle}
             >
               {hasIcon() ? (
-                <p className={`${classPrefix}-icon-wrapper`}>{iconName()}</p>
+                <View className={`${classPrefix}-icon-wrapper`}>
+                  {iconName()}
+                </View>
               ) : null}
               {title ? (
                 <View className={`${classPrefix}-title`}>{title}</View>
               ) : null}
-              <span className={`${classPrefix}-text`}>{content || msg}</span>
+              <Text className={`${classPrefix}-text`}>{content || msg}</Text>
             </View>
           </View>
         </Overlay>
