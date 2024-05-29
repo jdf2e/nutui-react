@@ -45,7 +45,7 @@ const copyFile = async (from, to, success, isSingle = false) => {
 
     adapted.map((item) => {
       if (item) {
-        if (!['cellgroup'].includes(item)) {
+        if (!['cellgroup', 'row', 'col'].includes(item)) {
           modify(
             `${targetBaseUrl}/packages/${item}/demo.taro.tsx`,
             `import '../../../styles/demo.scss';\n`
@@ -91,13 +91,25 @@ copy()
 
 if (argsPath[0]) {
   const componentBaseUrl = `${process.cwd()}/packages/nutui-taro-demo-rn/src/${argsPath[0]}/pages/${args[0]}`
-  fse.writeFileSync(
-    `${componentBaseUrl}/index.tsx`,
-    `import Demo from '@/packages/${args[0]}/demo.taro';\nexport default Demo;`
-  )
-  const componentName = args[0].charAt(0).toUpperCase() + args[0].slice(1)
-  fse.writeFileSync(
-    `${componentBaseUrl}/index.config.ts`,
-    `export default {\n  navigationBarTitleText: '${componentName}'\n}`
-  )
+  // 判断文件夹是否存在
+fse.access(componentBaseUrl, fse.constants.F_OK, (err) => {
+    if (err) {
+      // 文件夹不存在，创建文件夹
+      fse.mkdir(componentBaseUrl, { recursive: true }, (err) => {
+        if (err) throw err;
+        console.log('文件夹创建成功！');
+        
+      });
+    } 
+    fse.writeFileSync(
+        `${componentBaseUrl}/index.tsx`,
+        `import Demo from '@/packages/${args[0]}/demo.taro';\nexport default Demo;`
+      )
+      const componentName = args[0].charAt(0).toUpperCase() + args[0].slice(1)
+      fse.writeFileSync(
+        `${componentBaseUrl}/index.config.ts`,
+        `export default {\n  navigationBarTitleText: '${componentName}'\n}`
+      )
+  });
+  
 }

@@ -6,6 +6,7 @@ import { View } from '@tarojs/components'
 const Demo1 = () => {
   const flexContent: CSSProperties = {
     display: 'flex',
+    flexDirection: 'row',
     width: '100%',
     height: pxTransform(40),
     alignItems: 'center',
@@ -13,12 +14,12 @@ const Demo1 = () => {
     color: '#fff',
     textAlign: 'center',
     borderRadius: pxTransform(6),
-    background: '#ff8881',
+    backgroundColor: '#ff8881',
     fontSize: pxTransform(14),
   }
   const flexContentLight: CSSProperties = {
     ...flexContent,
-    background: '#ffc7c4',
+    backgroundColor: '#ffc7c4',
   }
 
   return (
