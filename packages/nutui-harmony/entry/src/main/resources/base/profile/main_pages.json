@@ -56,6 +56,7 @@
     "feedback/pages/skeleton/index",
     "feedback/pages/swipe/index",
     "feedback/pages/toast/index",
+    "feedback/pages/resultpage/index",
     "exhibition/pages/animate/index",
     "exhibition/pages/animatingnumbers/index",
     "exhibition/pages/avatar/index",
