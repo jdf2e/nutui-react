@@ -44,12 +44,7 @@
   flex-direction: row;
   margin-top: 16px;
 }
-.nut-empty-action-left {
-  margin-right: 16px;
-}
-
-[dir=rtl] .nut-empty-actions .nut-empty-action-left,
-.nut-rtl .nut-empty-actions .nut-empty-action-left {
-  margin-right: 0;
-  margin-left: 16px;
+.nut-empty-action {
+  margin-left: 6px;
+  margin-right: 6px;
 }
