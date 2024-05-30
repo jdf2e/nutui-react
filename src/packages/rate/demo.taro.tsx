@@ -1,6 +1,6 @@
 import React, { CSSProperties } from 'react'
 import Taro from '@tarojs/taro'
-import { Cell } from '@/packages/nutui.react.taro'
+import { Cell } from '@nutui/nutui-react-taro'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Demo1 from './demos/taro/demo1'

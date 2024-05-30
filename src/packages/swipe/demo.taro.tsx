@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react'
 import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { Del } from '@nutui/icons-react-taro'
-import { useTranslate } from '@/sites/assets/locale/taro'
 import {
   Button,
   Cell,
@@ -10,7 +9,8 @@ import {
   Dialog,
   InputNumber,
   Swipe,
-} from '@/packages/nutui.react.taro'
+} from '@nutui/nutui-react-taro'
+import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 
 type TSwipeDemo = {
