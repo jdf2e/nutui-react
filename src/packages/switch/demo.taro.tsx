@@ -1,5 +1,6 @@
 import React from 'react'
 import { View } from '@tarojs/components'
+import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale//taro'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
@@ -7,7 +8,6 @@ import Demo3 from './demos/taro/demo3'
 import Demo4 from './demos/taro/demo4'
 import Demo5 from './demos/taro/demo5'
 import Demo6 from './demos/taro/demo6'
-import { Cell } from '../nutui.react.taro'
 
 const SwitchDemo = () => {
   const [translated] = useTranslate({
