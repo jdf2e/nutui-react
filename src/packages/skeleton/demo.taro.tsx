@@ -1,6 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { Cell } from '@/packages/nutui.react.taro'
+import { Cell } from '@nutui/nutui-react-taro'
 import '@/packages/skeleton/demo.scss'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
