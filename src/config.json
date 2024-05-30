@@ -737,6 +737,17 @@
           "author": "liukun"
         },
         {
+            "version": "2.0.0",
+            "name": "ResultPage",
+            "type": "component",
+            "cName": "结果反馈",
+            "desc": "以页面的形式向用户反馈操作结果",
+            "sort": 15,
+            "show": true,
+            "taro": true,
+            "author": "songsong"
+          },
+        {
           "version": "2.0.0",
           "name": "InfiniteLoading",
           "type": "component",
