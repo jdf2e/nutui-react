@@ -1,7 +1,8 @@
 import React, { FunctionComponent, useEffect, useRef } from 'react'
+import Taro from '@tarojs/taro'
 import classNames from 'classnames'
 import { Text, View } from '@tarojs/components'
-// import { Failure, Loading, Success, Tips } from '@nutui/icons-react-taro'
+import { Failure, Loading, Success, Tips } from '@nutui/icons-react-taro'
 import Overlay from '@/packages/overlay/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import {
@@ -11,6 +12,7 @@ import {
   useParams,
 } from '@/utils/use-custom-event'
 import { usePropsValue } from '@/utils/use-props-value'
+import { useRtl } from '@/packages/configprovider/index.taro'
 
 export type ToastPosition = 'top' | 'bottom' | 'center'
 export type ToastSize = 'small' | 'base' | 'large'
@@ -94,6 +96,7 @@ export const Toast: FunctionComponent<
     setParams,
   } = useParams({ ...defaultProps, ...props })
   const timer = useRef(-1)
+  const rtl = useRtl()
 
   const [innerVisible, setInnerVisible] = usePropsValue({
     value: visible,
@@ -103,7 +106,6 @@ export const Toast: FunctionComponent<
       !v && onClose?.()
     },
   })
-
   useEffect(() => {
     if (innerVisible) {
       autoClose()
@@ -123,7 +125,6 @@ export const Toast: FunctionComponent<
       }
     }
   )
-
   const clearTimer = () => {
     if (timer.current) {
       clearTimeout(timer.current)
@@ -164,24 +165,31 @@ export const Toast: FunctionComponent<
     if (icon) {
       return icon
     }
-    return {
-      success: <Text>success</Text>,
-      fail: <Text>fail</Text>,
-      warn: <Text>warn</Text>,
-      loading: <Text>loading</Text>,
-    }[type]
-    // return {
-    //   success: <Success color="#ffffff" size={iconSize} />,
-    //   fail: <Failure color="#ffffff" size={iconSize} />,
-    //   warn: <Tips color="#ffffff" size={iconSize} />,
-    //   loading: <Loading color="#ffffff" size={iconSize} />,
-    // }[type]
+
+    return Taro.getEnv() !== 'RN' && Taro.getEnv() !== 'HARMONY'
+      ? {
+          success: <Success color="#ffffff" size={iconSize} />,
+          fail: <Failure color="#ffffff" size={iconSize} />,
+          warn: <Tips color="#ffffff" size={iconSize} />,
+          loading: <Loading color="#ffffff" size={iconSize} />,
+        }[type]
+      : {
+          success: <Text>success</Text>,
+          fail: <Text>fail</Text>,
+          warn: <Text>warn</Text>,
+          loading: <Text>loading</Text>,
+        }[type]
   }
 
   const classes = classNames({
     'nut-toast-has-icon': icon,
     [`nut-toast-${size}`]: true,
+    'nut-toast-rtl': rtl,
   })
+  const styles =
+    Taro.getEnv() !== 'RN'
+      ? { left: '50%', transform: 'translate(-50%, -50%)' }
+      : null
   return (
     <>
       {innerVisible ? (
@@ -198,7 +206,7 @@ export const Toast: FunctionComponent<
           <View className={`${classPrefix} ${classes}`} id={id}>
             <View
               className={`${classPrefix}-inner ${classPrefix}-${position} ${contentClassName} ${wordBreak}`}
-              style={contentStyle}
+              style={{ ...styles, ...contentStyle }}
             >
               {hasIcon() ? (
                 <View className={`${classPrefix}-icon-wrapper`}>
@@ -208,7 +216,11 @@ export const Toast: FunctionComponent<
               {title ? (
                 <View className={`${classPrefix}-title`}>{title}</View>
               ) : null}
-              <Text className={`${classPrefix}-text`}>{content || msg}</Text>
+              <Text
+                className={`${classPrefix}-text  ${content ? '' : `${classPrefix}-text-empty`}`}
+              >
+                {content || msg}
+              </Text>
             </View>
           </View>
         </Overlay>

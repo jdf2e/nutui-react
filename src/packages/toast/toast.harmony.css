@@ -6,6 +6,11 @@
     -webkit-transform: rotate(360deg);
   }
 }
+.nut-overlay.nut-toast-overlay-default {
+  background: rgba(0, 0, 0, 0);
+  z-index: 1300;
+}
+
 .nut-toast {
   position: fixed;
   left: 0;
@@ -13,14 +18,11 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
   width: 100%;
   height: 100%;
   text-align: center;
   pointer-events: none;
-  z-index: 1300;
-}
-.nut-toast-overlay-default {
-  background: rgba(0, 0, 0, 0);
   z-index: 1300;
 }
 .nut-toast-small .nut-toast-inner {
@@ -52,7 +54,7 @@
   word-wrap: break-word;
 }
 .nut-toast-center {
-  top: 42%;
+  top: 48%;
 }
 .nut-toast-bottom {
   top: 80%;
@@ -63,16 +65,13 @@
 .nut-toast-text {
   color: #ffffff;
 }
-.nut-toast-text:empty {
+.nut-toast-text-empty {
   margin-bottom: -8px;
 }
 .nut-toast-title {
   color: #ffffff;
   font-size: 16px;
   font-weight: 500;
-}
-.nut-toast-title:empty {
-  margin-bottom: -8px;
 }
 .nut-toast-has-icon .nut-toast-icon-wrapper {
   width: 100%;
@@ -97,6 +96,14 @@
 .nut-toast-loading .nut-toast-icon-wrapper .nut-icon {
   width: 24px;
   height: 24px;
+}
+.nut-toast-rtl {
+  left: auto;
+  right: 0;
+}
+.nut-toast-rtl-inner {
+  left: auto;
+  right: 50%;
 }
 
 [dir=rtl] .nut-toast,

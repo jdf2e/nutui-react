@@ -151,13 +151,21 @@ export default class Notification extends React.PureComponent<
           <div className={`${classPrefix} ${classes}`} id={`toast-${id}`}>
             <div
               className={`${classPrefix}-inner ${classPrefix}-${position} ${contentClassName} ${wordBreak}`}
-              style={contentStyle}
+              style={{
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                ...contentStyle,
+              }}
             >
               {this.renderIcon()}
               {title ? (
                 <div className={`${classPrefix}-title`}>{title}</div>
               ) : null}
-              <span className={`${classPrefix}-text`}>{content}</span>
+              <span
+                className={`${classPrefix}-text ${content ? '' : `${classPrefix}-text-empty`}`}
+              >
+                {content}
+              </span>
             </div>
           </div>
         </Overlay>
