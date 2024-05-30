@@ -254,10 +254,10 @@ import { SwipeInstance } from '@/packages/Swipe'
 
 const App = () => {
   const refDom = useRef<SwipeInstance>(null)
-  const beforeClose = (postion: string) => {
+  const beforeClose = (position: string) => {
     Dialog.alert({
       title: '提示',
-      content: postion === 'left' ? '确定选择吗？' : '确定删除吗？',
+      content: position === 'left' ? '确定选择吗？' : '确定删除吗？',
       onConfirm: () => {
         refDom.current && refDom.current.close()
       },
