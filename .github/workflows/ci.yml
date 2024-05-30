@@ -16,8 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: Enable Corepack before setting up Node
-      run: corepack enable
+    - name: yarn
+      run: yarn set version latest --yarn-path
 
     - name: Install pnpm
       run: corepack enable
