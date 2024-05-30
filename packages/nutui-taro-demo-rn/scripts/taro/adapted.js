@@ -1,1 +1,22 @@
-exports = module.exports = ["cell", "cellgroup", "overlay", "button", "switch", "countdown", "empty","price","tag","layout","row","col","space", "grid", "griditem", "divider"];
+exports = module.exports = [
+  'cell',
+  'cellgroup',
+  'overlay',
+  'button',
+  'switch',
+  'countdown',
+  'empty',
+  'price',
+  'tag',
+  'layout',
+  'row',
+  'col',
+  'space',
+  'grid',
+  'griditem',
+  'divider',
+  'configprovider',
+  'textarea',
+  'rate',
+  'toast',
+]
