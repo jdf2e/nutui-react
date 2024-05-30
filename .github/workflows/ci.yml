@@ -37,7 +37,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Install pnpm
-      run: corepack enable
+      run: corepack enable pnpm
 
     - uses: actions/setup-node@v4
       with:
@@ -62,7 +62,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Install pnpm
-      run: corepack enable
+      run: corepack enable pnpm
 
     - uses: actions/setup-node@v4
       with:
