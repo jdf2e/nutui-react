@@ -16,11 +16,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: yarn
-      run: yarn set version latest --yarn-path
 
     - name: Install pnpm
-      run: corepack enable
+      run: corepack enable pnpm
 
     - uses: actions/setup-node@v4
       with:
