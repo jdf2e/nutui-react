@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { Cell, Audio } from '@/packages/nutui.react.taro'
+import { Cell, Audio } from '@nutui/nutui-react-taro'
 import Header from '@/sites/components/header'
 
 const formatseconds = (value: string) => {

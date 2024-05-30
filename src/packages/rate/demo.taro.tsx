@@ -1,7 +1,7 @@
 import React, { CSSProperties } from 'react'
 import Taro from '@tarojs/taro'
 import { View, ScrollView } from '@tarojs/components'
-import { Cell } from '@/packages/nutui.react.taro'
+import { Cell } from '@nutui/nutui-react-taro'
 import Header from '@/sites/components/header'
 import { useTranslate } from '@/sites/assets/locale/taro'
 // import Demo1 from './demos/taro/demo1'
@@ -76,7 +76,7 @@ const RateDemo = () => {
           TODO：icon 问题需先解决
           {/* <Demo1 /> */}
         </Cell>
-        {/* 
+        {/*
         <View className="h2">{translated.control}</View>
         <Cell style={cellStyle}>
           <Demo2 />

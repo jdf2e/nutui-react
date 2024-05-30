@@ -1,7 +1,7 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
-import '@/packages/trendarrow/demo.scss'
+import './demo.scss'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
 import Demo2 from './demos/taro/demo2'
