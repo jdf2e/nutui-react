@@ -1,5 +1,6 @@
 import React, { CSSProperties, FunctionComponent } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import GridContext from './context'
 import { GridItem, GridItemProps } from '../griditem/griditem.taro'
 import { pxCheck } from '@/utils/px-check'
@@ -72,7 +73,8 @@ export const Grid: FunctionComponent<
   }
 
   return (
-    <div className={rootClass()} style={rootStyle()} {...rest}>
+    // @ts-ignore
+    <View className={rootClass()} style={rootStyle()} {...rest}>
       <GridContext.Provider value={{ onClick }}>
         {childrenDom.map((item: any, idex: number) => {
           return React.cloneElement(item, {
@@ -86,7 +88,7 @@ export const Grid: FunctionComponent<
           })
         })}
       </GridContext.Provider>
-    </div>
+    </View>
   )
 }
 
