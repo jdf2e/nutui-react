@@ -4,8 +4,21 @@ import { View, Image } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import type { EmptyAction } from './types'
-import { Button } from '@/packages/button/button.taro'
+import {
+  Button,
+  ButtonFill,
+  ButtonSize,
+  ButtonType,
+} from '@/packages/button/button.taro'
+
+export interface EmptyAction {
+  text: React.ReactNode
+  type?: ButtonType
+  size?: ButtonSize
+  fill?: ButtonFill
+  disabled?: boolean
+  onClick?: () => () => void
+}
 
 type statusOptions = {
   [key: string]: string
@@ -112,31 +125,18 @@ export const Empty: FunctionComponent<
       ) : (
         description
       )}
-      {actions.length > 0 && (
+      {actions.length ? (
         <View className={`${classPrefix}-actions`}>
-          {actions.map((item, index) => {
+          {actions.map((action, index) => {
+            const { text, ...rest } = action
             return (
-              <View
-                className={classNames(`${classPrefix}-action`, {
-                  [`${classPrefix}-action-left`]:
-                    actions.length > 1 && index === 0,
-                })}
-                key={`action-${index}`}
-              >
-                <Button
-                  type={
-                    actions.length > 1 && index === 0 ? 'default' : 'primary'
-                  }
-                  size="small"
-                  fill="outline"
-                >
-                  {item?.text}
-                </Button>
+              <View className={`${classPrefix}-action`} key={index}>
+                <Button {...rest}>{action?.text}</Button>
               </View>
             )
           })}
         </View>
-      )}
+      ) : null}
       {children}
     </View>
   )

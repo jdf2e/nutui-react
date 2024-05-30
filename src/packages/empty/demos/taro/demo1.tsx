@@ -7,7 +7,7 @@ const Demo1 = () => {
       <Empty
         title="标题"
         description="无数据"
-        actions={[{ text: '操作按钮' }, { text: '操作按钮' }]}
+        actions={[{ text: '操作按钮' }, { text: '操作按钮', type: 'primary' }]}
       />
       <Empty
         description="无数据"
