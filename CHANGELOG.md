@@ -1,3 +1,17 @@
+# v2.6.8
+`2024-05-31`
+
+
+* :sparkles: feat(button): 新增 button 原始类型属性 (#2195) @Jiankian
+* :sparkles: feat(card): add card hide price and shop usage (#2292) @wick
+* :bug: fix(cascader): onPathChange is not a function (#2308) @oasis-cloud
+* :bug: fix: safearea for ac (#2293) @xiaoyatong
+* :bug: fix(InputNumber): 扩大点击区域 (#2302) @xiaoyatong
+* :bug: fix(picker): 函数调用之前检查 locale 是否已经定义 (#2259) @Alex-huxiyang
+* 🏡 chore(demo): 更新组件引用方式 (#2304) @oasis-cloud
+* 🏡 chore: fix typos (#2300) @Snoppy
+
+
 # v2.6.7
 `2024-05-28`
 
