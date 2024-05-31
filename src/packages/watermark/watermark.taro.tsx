@@ -1,5 +1,6 @@
 import React, { useState, useEffect, FunctionComponent } from 'react'
 import { getSystemInfo, createOffscreenCanvas } from '@tarojs/taro'
+import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -148,7 +149,7 @@ export const WaterMark: FunctionComponent<
   }
 
   return (
-    <div
+    <View
       className={cls}
       style={{
         zIndex,

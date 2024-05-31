@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -51,26 +52,28 @@ const TabbarDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.ce5c5446}</h2>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated.ce5c5446}</View>
         <Demo1 />
-        <h2>{translated.c38a08ef}</h2>
+        <View className="h2">{translated.c38a08ef}</View>
         <Demo2 />
-        <h2>{translated.ce5c5448}</h2>
+        <View className="h2">{translated.ce5c5448}</View>
         <Demo3 />
-        <h2>{translated.ce5c5440}</h2>
+        <View className="h2">{translated.ce5c5440}</View>
         <Demo4 />
-        <h2>{translated.b840c88f}</h2>
+        <View className="h2">{translated.b840c88f}</View>
         <Demo5 />
-        <h2>{translated.c9e6df49}</h2>
+        <View className="h2">{translated.c9e6df49}</View>
         <Demo6 />
-        <h2>{translated.a74a1fd4}</h2>
+        <View className="h2">{translated.a74a1fd4}</View>
         <Demo7 />
-        <h2>{translated['8dab2f66']}</h2>
+        <View className="h2">{translated['8dab2f66']}</View>
         <Demo8 />
-        <h2 style={{ marginBottom: '100px' }}>{translated.cfbdc781}</h2>
+        <View className="h2" style={{ marginBottom: '100px' }}>
+          {translated.cfbdc781}
+        </View>
         <Demo9 />
-      </div>
+      </ScrollView>
     </>
   )
 }

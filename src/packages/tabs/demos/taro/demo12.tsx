@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import { View } from '@tarojs/components'
 import { Tabs, Swiper } from '@nutui/nutui-react-taro'
 
 const Demo12 = () => {
@@ -28,13 +29,13 @@ const Demo12 = () => {
         }}
       >
         <Swiper.Item>
-          <div style={contentStyle}>Tab 1</div>
+          <View style={contentStyle}>Tab 1</View>
         </Swiper.Item>
         <Swiper.Item>
-          <div style={contentStyle}>Tab 2</div>
+          <View style={contentStyle}>Tab 2</View>
         </Swiper.Item>
         <Swiper.Item>
-          <div style={contentStyle}>Tab 3</div>
+          <View style={contentStyle}>Tab 3</View>
         </Swiper.Item>
       </Swiper>
     </>

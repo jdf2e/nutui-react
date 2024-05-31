@@ -1,5 +1,6 @@
 import React, { FunctionComponent, ReactNode, useCallback } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import CollapseItem from '../collapseitem/index.taro'
 import CollapseContext from './context'
@@ -103,9 +104,9 @@ export const Collapse: FunctionComponent<Partial<CollapseProps>> & {
         rotate,
       }}
     >
-      <div className={classNames(classPrefix, className)} style={style}>
+      <View className={classNames(classPrefix, className)} style={style}>
         {children}
-      </div>
+      </View>
     </CollapseContext.Provider>
   )
 }

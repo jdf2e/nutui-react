@@ -1,10 +1,11 @@
 import React from 'react'
+import { View } from '@tarojs/components'
 import { BackTop, Cell } from '@nutui/nutui-react-taro'
 import { Top } from '@nutui/icons-react-taro'
 
 const Demo1 = () => {
   return (
-    <div>
+    <View>
       {new Array(24).fill(0).map((_, index) => {
         return <Cell key={index}>我是测试数据{index}</Cell>
       })}
@@ -15,7 +16,7 @@ const Demo1 = () => {
           insetInlineEnd: '20px',
         }}
       >
-        <div
+        <View
           style={{
             display: 'flex',
             flexDirection: 'column',
@@ -23,10 +24,10 @@ const Demo1 = () => {
           }}
         >
           <Top size={12} />
-          <div style={{ fontSize: '12px' }}>顶部</div>
-        </div>
+          <View style={{ fontSize: '12px' }}>顶部</View>
+        </View>
       </BackTop>
-    </div>
+    </View>
   )
 }
 export default Demo1

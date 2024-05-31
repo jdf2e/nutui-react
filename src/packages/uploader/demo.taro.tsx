@@ -1,6 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 
@@ -69,34 +69,36 @@ const UploaderDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} bg-w`}>
-        <h2>{translated.basic}</h2>
+      <ScrollView
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''} bg-w`}
+      >
+        <View className="h2">{translated.basic}</View>
         <Demo1 />
-        <h2>{translated.basic}</h2>
+        <View className="h2">{translated.basic}</View>
         <Demo2 />
-        <h2>{translated.uploadStatus}</h2>
+        <View className="h2">{translated.uploadStatus}</View>
         <Demo3 />
-        <h2>{translated.uploadListDefault}</h2>
+        <View className="h2">{translated.uploadListDefault}</View>
         <Demo4 />
-        <h2>{translated.uploadDefaultProgress}</h2>
+        <View className="h2">{translated.uploadDefaultProgress}</View>
         <Demo5 />
-        <h2>{translated.camera}</h2>
+        <View className="h2">{translated.camera}</View>
         <Demo6 />
-        <h2>{translated.videoUploader}</h2>
+        <View className="h2">{translated.videoUploader}</View>
         <Demo7 />
-        <h2>{translated.limitedQuantity}</h2>
+        <View className="h2">{translated.limitedQuantity}</View>
         <Demo8 />
-        <h2>{translated.limitSize}</h2>
+        <View className="h2">{translated.limitSize}</View>
         <Demo9 />
-        <h2>{translated.custom}</h2>
+        <View className="h2">{translated.custom}</View>
         <Demo10 />
-        <h2>{translated.uploadXhrCustom}</h2>
+        <View className="h2">{translated.uploadXhrCustom}</View>
         <Demo11 />
-        <h2>{translated.manualExecution}</h2>
+        <View className="h2">{translated.manualExecution}</View>
         <Demo12 />
-        <h2>{translated.disabled}</h2>
+        <View className="h2">{translated.disabled}</View>
         <Demo13 />
-      </div>
+      </ScrollView>
     </>
   )
 }
