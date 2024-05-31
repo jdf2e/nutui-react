@@ -68,8 +68,8 @@ import { Notify } from '@nutui/nutui-react';
 | \--nutui-notify-padding | 消息通知的內邊距 | `0 10px` |
 | \--nutui-notify-font-size | 消息通知的字體大小 | `$font-size-base` |
 | \--nutui-notify-text-color | 消息通知的文本顏色 | `$white` |
-| \--nutui-notify-base-background-color | 消息通知的背景顏色 | `$color-primary-gradient-1` |
+| \--nutui-notify-base-background-color | 消息通知的背景顏色 | `$color-primary` |
 | \--nutui-notify-primary-background-color | 主要通知的背景顏色 | `$color-info` |
-| \--nutui-notify-success-background-color | 成功通知的背景顏色 | `linear-gradient(135deg,rgba(38, 191, 38, 1) 0%,rgba(39, 197, 48, 1) 45%,rgba(40, 207, 63, 1) 83%,rgba(41, 212, 70, 1) 100%)` |
+| \--nutui-notify-success-background-color | 成功通知的背景顏色 | `$color-success` |
 | \--nutui-notify-danger-background-color | 危險通知的背景顏色 | `$color-primary` |
 | \--nutui-notify-warning-background-color | 警告通知的背景顏色 | `$color-warning` |

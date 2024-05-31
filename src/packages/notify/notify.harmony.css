@@ -58,7 +58,7 @@
 .nut-notify-popup-top, .nut-notify-popup-bottom {
   position: fixed;
   left: 0;
-  width: 100%;
+  right: 0;
   overflow-y: auto;
   transition: transform 0.3s;
   z-index: 9999;
@@ -70,24 +70,17 @@
   bottom: 0;
 }
 .nut-notify-base {
-  background: linear-gradient(135deg, #FF0F23 0%, #FF0F23 100%);
+  background: #ff0f23;
 }
 .nut-notify-primary {
   background: #1988fa;
 }
 .nut-notify-success {
-  background: #00bc14;
+  background: #2aa32a;
 }
 .nut-notify-danger {
-  background: #FF0F23;
+  background: #ff0f23;
 }
 .nut-notify-warning {
-  background: rgb(255, 158, 13);
-}
-
-[dir=rtl] .nut-notify-popup-top, [dir=rtl] .nut-notify-popup-bottom,
-.nut-rtl .nut-notify-popup-top,
-.nut-rtl .nut-notify-popup-bottom {
-  left: auto;
-  right: 0;
+  background: #c47600;
 }
