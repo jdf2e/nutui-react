@@ -90,10 +90,4 @@
   &-warning {
     background: $notify-warning-background-color;
   }
-
-  &-popup-top-rtl,
-  &-popup-bottom-rtl {
-    left: auto;
-    right: 0;
-  }
 }

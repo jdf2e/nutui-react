@@ -84,7 +84,3 @@
 .nut-notify-warning {
   background: #c47600;
 }
-.nut-notify-popup-top-rtl, .nut-notify-popup-bottom-rtl {
-  left: auto;
-  right: 0;
-}
