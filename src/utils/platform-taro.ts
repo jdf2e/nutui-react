@@ -1,5 +1,5 @@
 import Taro from '@tarojs/taro'
 
-export const hommaryAndRn = () => {
+export const harmonyAndRn = () => {
   return ['RN', 'HARMONY', 'HARMONYHYBRID'].includes(Taro.getEnv())
 }

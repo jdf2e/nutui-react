@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Notify, Cell } from '@nutui/nutui-react-taro'
-import { hommaryAndRn } from '@/utils/platform-taro'
+import { harmonyAndRn } from '@/utils/platform-taro'
 
 const Demo4 = () => {
   const [showNotify, setShowNotify] = useState(false)
@@ -44,7 +44,7 @@ const Demo4 = () => {
         }}
       />
       {/* RN和HARMONY不支持bottom */}
-      {hommaryAndRn() ? null : (
+      {harmonyAndRn() ? null : (
         <Cell
           title="自定义位置"
           onClick={() => {
