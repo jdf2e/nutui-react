@@ -1,2 +1,1 @@
-import Demo from '@/packages/backtop/demo.taro'
-export default Demo
+export default <>button</>;

@@ -1,2 +1,1 @@
-import Demo from '@/packages/swiper/demo.taro'
-export default Demo
+export default <>button</>;

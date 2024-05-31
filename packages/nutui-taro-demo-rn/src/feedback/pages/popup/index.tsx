@@ -1,2 +1,1 @@
-import Demo from '@/packages/popup/demo.taro'
-export default Demo
+export default <>button</>;
