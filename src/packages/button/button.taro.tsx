@@ -35,6 +35,7 @@ export interface ButtonProps
   disabled: boolean
   icon: React.ReactNode
   rightIcon: React.ReactNode
+  nativeType: 'submit' | 'reset' | 'button'
   onClick: (e: MouseEvent<HTMLButtonElement>) => void
 }
 
@@ -70,6 +71,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       children,
       className,
       style,
+      nativeType,
       onClick,
       ...rest
     } = {
@@ -108,6 +110,7 @@ export const Button = React.forwardRef<HTMLButtonElement, Partial<ButtonProps>>(
       <button
         {...rest}
         ref={ref}
+        type={nativeType}
         className={classNames(
           prefixCls,
           `${prefixCls}-${type}`,
