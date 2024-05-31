@@ -296,7 +296,7 @@ const InternalPicker: ForwardRefRenderFunction<
             setInnerVisible(false)
           }}
         >
-          {locale.cancel}
+          {locale?.cancel}
         </span>
         <div className={`${classPrefix}-title`}>{title || ''}</div>
         <span
