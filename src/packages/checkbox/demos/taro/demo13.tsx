@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import { View } from '@tarojs/components'
 import { Checkbox, Cell } from '@nutui/nutui-react-taro'
 
 const Demo13 = () => {
@@ -9,7 +10,7 @@ const Demo13 = () => {
   return (
     <>
       <Cell>
-        <div style={{ width: '50%' }}>
+        <View style={{ width: '50%' }}>
           <Checkbox
             checked={checkbox1}
             indeterminate={indeterminate}
@@ -23,7 +24,7 @@ const Demo13 = () => {
           >
             全选
           </Checkbox>
-        </div>
+        </View>
 
         <Checkbox.Group
           ref={checkboxgroup2Ref}

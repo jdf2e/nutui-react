@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { View } from '@tarojs/components'
 import { Steps, Step, Button, ConfigProvider } from '@nutui/nutui-react-taro'
 
 const customTheme = {
@@ -28,11 +29,11 @@ const Demo4 = () => {
           <Step value={3} title="步骤三" description="步骤描述" />
         </Steps>
       </ConfigProvider>
-      <div style={{ marginTop: '10px', textAlign: 'center' }}>
+      <View style={{ marginTop: '10px', textAlign: 'center' }}>
         <Button type="danger" onClick={() => handleStep()}>
           下一步
         </Button>
-      </div>
+      </View>
     </>
   )
 }

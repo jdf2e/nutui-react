@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { Cell, Radio } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
@@ -37,7 +38,7 @@ const VirtualListDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <Cell.Group>
           <Cell>
             <Radio.Group
@@ -50,8 +51,8 @@ const VirtualListDemo = () => {
             </Radio.Group>
           </Cell>
         </Cell.Group>
-        <div style={{ height: '500px' }}>{showNode()}</div>
-      </div>
+        <View style={{ height: '500px' }}>{showNode()}</View>
+      </ScrollView>
     </>
   )
 }

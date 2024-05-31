@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { View } from '@tarojs/components'
 import { Steps, Step, Button } from '@nutui/nutui-react-taro'
 
 const Demo3 = () => {
@@ -14,11 +15,11 @@ const Demo3 = () => {
         <Step value={2} title="步骤二" description="步骤描述" />
         <Step value={3} title="步骤三" description="步骤描述" />
       </Steps>
-      <div style={{ marginTop: '10px', textAlign: 'center' }}>
+      <View style={{ marginTop: '10px', textAlign: 'center' }}>
         <Button type="danger" onClick={() => handleStep()}>
           下一步
         </Button>
-      </div>
+      </View>
     </>
   )
 }

@@ -1,9 +1,10 @@
 import React from 'react'
+import { View } from '@tarojs/components'
 import { Steps, Step } from '@nutui/nutui-react-taro'
 
 const Demo8 = () => {
   return (
-    <div style={{ height: '300px', padding: '15px 30px' }}>
+    <View style={{ height: '300px', padding: '15px 30px' }}>
       <Steps direction="vertical" value={2}>
         <Step
           value={1}
@@ -17,7 +18,7 @@ const Demo8 = () => {
           description="收货地址为：北京市经济技术开发区科创十一街18号院京东大厦"
         />
       </Steps>
-    </div>
+    </View>
   )
 }
 export default Demo8

@@ -5,6 +5,7 @@ import React, {
   useRef,
   useState,
 } from 'react'
+import { View } from '@tarojs/components'
 import { createSelectorQuery } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -109,7 +110,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
   }, [value])
 
   return (
-    <div className={`${classPrefix} ${className}`} ref={countupRef}>
+    <View className={`${classPrefix} ${className}`} ref={countupRef}>
       <ul className={`${classPrefix}-list`}>
         {numerArr.map((item: string, idx: number) => {
           return (
@@ -137,7 +138,7 @@ export const CountUp: FunctionComponent<Partial<CountUpProps>> = (props) => {
           )
         })}
       </ul>
-    </div>
+    </View>
   )
 }
 

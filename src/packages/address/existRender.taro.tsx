@@ -1,6 +1,6 @@
 import React, { FunctionComponent, MouseEventHandler, ReactNode } from 'react'
 import { Check, Location } from '@nutui/icons-react-taro'
-import { ScrollView } from '@tarojs/components'
+import { ScrollView, View } from '@tarojs/components'
 import { useConfig } from '@/packages/configprovider/configprovider.taro'
 import { AddressList } from './types'
 
@@ -89,21 +89,21 @@ export const ExistRender: FunctionComponent<
                     )}
                   </>
                 )}
-                <div className={`${classPrefix}-exist-item-info`}>
+                <View className={`${classPrefix}-exist-item-info`}>
                   {item.name && item.phone && (
                     <>
-                      <div>{item.name}</div>
-                      <div>{item.phone}</div>
+                      <View>{item.name}</View>
+                      <View>{item.phone}</View>
                     </>
                   )}
-                  <div>
+                  <View>
                     {item.provinceName +
                       item.cityName +
                       item.countyName +
                       item.townName +
                       item.addressDetail}
-                  </div>
-                </div>
+                  </View>
+                </View>
               </li>
             )
           })}
@@ -111,9 +111,9 @@ export const ExistRender: FunctionComponent<
       </ScrollView>
 
       {(custom || (custom && locale.address.chooseAnotherAddress)) && (
-        <div className={`${classPrefix}-footer`} onClick={onClick}>
-          <div className={`${classPrefix}-footer-btn`}>{custom}</div>
-        </div>
+        <View className={`${classPrefix}-footer`} onClick={onClick}>
+          <View className={`${classPrefix}-footer-btn`}>{custom}</View>
+        </View>
       )}
     </>
   )

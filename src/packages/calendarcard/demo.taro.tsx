@@ -1,6 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
-import { CustomWrapper } from '@tarojs/components'
+import { ScrollView, View, CustomWrapper } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 
@@ -68,62 +68,62 @@ const CalendarDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.single}</h2>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated.single}</View>
         <CustomWrapper>
           <Demo1 />
         </CustomWrapper>
 
-        <h2>{translated.multiple}</h2>
+        <View className="h2">{translated.multiple}</View>
         <CustomWrapper>
           <Demo2 />
         </CustomWrapper>
 
-        <h2>{translated.range}</h2>
+        <View className="h2">{translated.range}</View>
         <CustomWrapper>
           <Demo3 />
         </CustomWrapper>
 
-        <h2>{translated.week}</h2>
+        <View className="h2">{translated.week}</View>
         <CustomWrapper>
           <Demo4 />
         </CustomWrapper>
 
-        <h2>{translated.control}</h2>
+        <View className="h2">{translated.control}</View>
         <CustomWrapper>
           <Demo5 />
         </CustomWrapper>
 
-        <h2>{translated.renderDay}</h2>
+        <View className="h2">{translated.renderDay}</View>
         <CustomWrapper>
           <Demo6 />
         </CustomWrapper>
 
-        <h2>{translated.firstDay}</h2>
+        <View className="h2">{translated.firstDay}</View>
         <CustomWrapper>
           <Demo7 />
         </CustomWrapper>
 
-        <h2>{translated.customRange}</h2>
+        <View className="h2">{translated.customRange}</View>
         <CustomWrapper>
           <Demo8 />
         </CustomWrapper>
 
-        <h2>{translated.disable}</h2>
+        <View className="h2">{translated.disable}</View>
         <CustomWrapper>
           <Demo9 />
         </CustomWrapper>
 
-        <h2>{translated.popup}</h2>
+        <View className="h2">{translated.popup}</View>
         <CustomWrapper>
           <Demo10 />
         </CustomWrapper>
 
-        <h2>{translated.ref}</h2>
+        <View className="h2">{translated.ref}</View>
         <CustomWrapper>
           <Demo11 />
         </CustomWrapper>
-      </div>
+      </ScrollView>
     </>
   )
 }

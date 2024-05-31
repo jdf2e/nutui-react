@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { View } from '@tarojs/components'
 import { Pagination } from '@nutui/nutui-react-taro'
 import { ArrowLeft, ArrowRight } from '@nutui/icons-react-taro'
 
@@ -9,7 +10,7 @@ const Demo5 = () => {
     setCurrentPage4(c)
   }
   const itemRender = (page: any) => {
-    return <div>{page.number === 3 ? 'hot' : page.text}</div>
+    return <View>{page.number === 3 ? 'hot' : page.text}</View>
   }
   return (
     <Pagination
