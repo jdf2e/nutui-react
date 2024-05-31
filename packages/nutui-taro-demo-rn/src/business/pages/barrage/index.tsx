@@ -1,1 +1,2 @@
-export default <>button</>;
+import Demo from '@/packages/barrage/demo.taro'
+export default Demo

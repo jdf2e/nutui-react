@@ -1,1 +1,2 @@
-export default <>button</>;
+import Demo from '@/packages/infiniteloading/demo.taro'
+export default Demo

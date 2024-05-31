@@ -1,1 +1,2 @@
-export default <>button</>;
+import Demo from '@/packages/progress/demo.taro'
+export default Demo
