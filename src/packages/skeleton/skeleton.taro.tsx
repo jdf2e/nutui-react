@@ -93,7 +93,7 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
                 {repeatLines(rows).map((item, index) => {
                   return (
                     <View
-                      className={`${classPrefix}-content-block`}
+                      className={`${classPrefix}-content-block ${index === repeatLines(rows).length - 1 ? `${classPrefix}-content-block-last-child` : ''}`}
                       key={index}
                     />
                   )

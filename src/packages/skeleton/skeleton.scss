@@ -27,16 +27,19 @@
       width: 100%;
       display: flex;
       flex-direction: column;
-
-      .nut-skeleton-content-title {
-        width: 30%;
-        height: $skeleton-line-height;
-        background: $skeleton-background;
-      }
-
       .nut-skeleton-content-block:last-child {
         width: 70%;
       }
+    }
+
+    &-title {
+      width: 30%;
+      height: $skeleton-line-height;
+      background: $skeleton-background;
+    }
+
+    &-block-last-child {
+      width: 70%;
     }
   }
 

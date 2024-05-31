@@ -173,12 +173,15 @@
   display: flex;
   flex-direction: column;
 }
-.nut-skeleton-content-line .nut-skeleton-content-title {
+.nut-skeleton-content-line .nut-skeleton-content-block:last-child {
+  width: 70%;
+}
+.nut-skeleton-content-title {
   width: 30%;
   height: 15px;
   background: #f5f6fa;
 }
-.nut-skeleton-content-line .nut-skeleton-content-block:last-child {
+.nut-skeleton-content-block-last-child {
   width: 70%;
 }
 .nut-skeleton-animation {
