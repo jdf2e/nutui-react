@@ -13,7 +13,7 @@ const Demo5 = () => {
   }
   return (
     <View className="content" style={{ width: '100%' }}>
-      <Switch onChange={(value, event) => changeStatus(value, event)} />
+      <Switch onChange={(value, event: any) => changeStatus(value, event)} />
       <Skeleton title animated avatar rows={3} visible={checked}>
         <View className="nut-skeleton-content">
           <Avatar

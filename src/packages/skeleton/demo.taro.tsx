@@ -54,7 +54,7 @@ const SkeletonDemo = () => {
         </Cell>
         <View className="h2">{translated['0a001122']}</View>
         <Cell className="ske-cell-single">
-          <Demo4 />
+          {Taro.getEnv() !== 'RN' ? <Demo4 /> : null}
         </Cell>
         <View className="h2">{translated['07d62d5c']}</View>
         <Cell>
