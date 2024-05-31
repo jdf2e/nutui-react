@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import Avatar from '@/packages/avatar/index.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -46,6 +47,7 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
   const classes = classNames(classPrefix, className)
   const avatarClass = classNames({
     [`nut-avatar`]: true,
+    [`nut-skeleton-content-avatar`]: true,
     [`avatar-${avatarShape}`]: avatarShape,
   })
 
@@ -71,9 +73,9 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
       {visible ? (
         <>{children}</>
       ) : (
-        <div className={classes} {...rest}>
-          {animated && <div className={`${classPrefix}-animation`} />}
-          <div className={`${classPrefix}-content`}>
+        <View className={classes} {...rest}>
+          {animated && <View className={`${classPrefix}-animation`} />}
+          <View className={`${classPrefix}-content`}>
             {avatar && (
               <Avatar
                 className={avatarClass}
@@ -84,17 +86,22 @@ export const Skeleton: FunctionComponent<Partial<SkeletonProps>> = (props) => {
               />
             )}
             {rows === 1 ? (
-              <div className={`${classPrefix}-block`} />
+              <View className={`${classPrefix}-content-block`} />
             ) : (
-              <div className={`${classPrefix}-content-line`}>
-                {title && <div className={`${classPrefix}-title`} />}
+              <View className={`${classPrefix}-content-line`}>
+                {title && <View className={`${classPrefix}-content-title`} />}
                 {repeatLines(rows).map((item, index) => {
-                  return <div className={`${classPrefix}-block`} key={index} />
+                  return (
+                    <View
+                      className={`${classPrefix}-content-block`}
+                      key={index}
+                    />
+                  )
                 })}
-              </div>
+              </View>
             )}
-          </div>
-        </div>
+          </View>
+        </View>
       )}
     </>
   )
