@@ -107,8 +107,6 @@ export const Pagination: FunctionComponent<
   }
 
   return (
-    // <View className="test-border">Test</View>
-
     <View className={classNames(classPrefix, className)} style={style}>
       {(mode === 'multi' || mode === 'simple') && (
         <>
