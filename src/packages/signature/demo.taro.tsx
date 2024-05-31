@@ -1,4 +1,4 @@
-import '@/packages/signature/demo.scss'
+import './demo.scss'
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'

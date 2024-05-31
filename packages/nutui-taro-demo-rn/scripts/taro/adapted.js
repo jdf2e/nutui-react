@@ -1,1 +1,1 @@
-exports = module.exports = ["cell","cellgroup","overlay","button","switch","countdown","empty","price","tag","space","notify"];
+exports = module.exports = ["cell","cellgroup","overlay","button","switch","countdown","empty","price","tag","layout","row","col","space","grid","griditem","divider","resultpage","notify"];

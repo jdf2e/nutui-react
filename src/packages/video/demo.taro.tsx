@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -43,28 +44,30 @@ const VideoDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo full ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.basic}</h2>
+      <ScrollView
+        className={`demo full ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+      >
+        <View className="h2">{translated.basic}</View>
         <Demo1 />
 
-        <h2>{translated.autoPlay}</h2>
+        <View className="h2">{translated.autoPlay}</View>
         <Demo2 />
 
-        <h2>{translated.muted}</h2>
+        <View className="h2">{translated.muted}</View>
         <Demo3 />
 
-        <h2>{translated.cover}</h2>
+        <View className="h2">{translated.cover}</View>
         <Demo4 />
 
-        <h2>{translated.inline}</h2>
+        <View className="h2">{translated.inline}</View>
         <Demo5 />
 
-        <h2>{translated.background}</h2>
+        <View className="h2">{translated.background}</View>
         <Demo6 />
 
-        <h2>{translated.switch}</h2>
+        <View className="h2">{translated.switch}</View>
         <Demo7 />
-      </div>
+      </ScrollView>
     </>
   )
 }

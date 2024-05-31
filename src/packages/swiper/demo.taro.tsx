@@ -1,5 +1,5 @@
 import React from 'react'
-import '@/packages/swiper/demo.scss'
+import './demo.scss'
 import Taro from '@tarojs/taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'

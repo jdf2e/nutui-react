@@ -1,9 +1,10 @@
 import React from 'react'
+import { View } from '@tarojs/components'
 import { Steps, Step } from '@nutui/nutui-react-taro'
 
 const Demo9 = () => {
   return (
-    <div style={{ height: '300px', padding: '15px 30px' }}>
+    <View style={{ height: '300px', padding: '15px 30px' }}>
       <Steps direction="vertical" dot value={2}>
         <Step
           value={1}
@@ -22,7 +23,7 @@ const Demo9 = () => {
           }
         />
       </Steps>
-    </div>
+    </View>
   )
 }
 export default Demo9

@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { View } from '@tarojs/components'
 import { Range, Cell, Toast } from '@nutui/nutui-react-taro'
 
 const Demo11 = () => {
@@ -18,7 +19,7 @@ const Demo11 = () => {
         <Range
           value={value}
           button={
-            <div
+            <View
               style={{
                 width: '26px',
                 color: 'white',
@@ -30,7 +31,7 @@ const Demo11 = () => {
               }}
             >
               {value}
-            </div>
+            </View>
           }
           onChange={(val: any) => setValue(val)}
           onEnd={(val) => showToast(`${val}`)}

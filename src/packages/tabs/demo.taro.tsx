@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 
@@ -82,54 +83,56 @@ const TabsDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web  full' : ''}`}>
-        <h2>{translated.basic}</h2>
+      <ScrollView
+        className={`demo ${Taro.getEnv() === 'WEB' ? 'web  full' : ''}`}
+      >
+        <View className="h2">{translated.basic}</View>
         <Demo1 />
-        <h2>{translated.title1}</h2>
+        <View className="h2">{translated.title1}</View>
         <Demo2 />
-        <h2>{translated.titleLite}</h2>
+        <View className="h2">{translated.titleLite}</View>
         <Demo3 />
-        <h2>{translated.titleCard}</h2>
+        <View className="h2">{translated.titleCard}</View>
         <Demo4 />
-        <h2>{translated.titleButton}</h2>
+        <View className="h2">{translated.titleButton}</View>
         <Demo5 />
-        <h2>{translated.titleDivider}</h2>
+        <View className="h2">{translated.titleDivider}</View>
         <Demo6 />
-        <h2>{translated.title11}</h2>
+        <View className="h2">{translated.title11}</View>
         <Demo7 />
-        <h2>{translated.titleLeftCard}</h2>
+        <View className="h2">{translated.titleLeftCard}</View>
         <Demo8 />
-        <h2>{translated.titleLeftButton}</h2>
+        <View className="h2">{translated.titleLeftButton}</View>
         <Demo9 />
-        <h2>{translated.titleLeftDivider}</h2>
+        <View className="h2">{translated.titleLeftDivider}</View>
         <Demo10 />
-        <h2>{translated.title2}</h2>
+        <View className="h2">{translated.title2}</View>
         <Demo11 />
-        <h2>{translated.title14}</h2>
+        <View className="h2">{translated.title14}</View>
         <Demo12 />
-        <h2>{translated.title10}</h2>
+        <View className="h2">{translated.title10}</View>
         <Demo13 />
-        <h2>{translated.title9}</h2>
+        <View className="h2">{translated.title9}</View>
         <Demo14 />
-        <h2>{translated.title3}</h2>
+        <View className="h2">{translated.title3}</View>
         <Demo15 />
-        <h2>{translated.title4}</h2>
+        <View className="h2">{translated.title4}</View>
         <Demo16 />
-        <h2>{translated.title4} 2</h2>
+        <View className="h2">{translated.title4} 2</View>
         <Demo17 />
-        <h2>{translated.title5}</h2>
+        <View className="h2">{translated.title5}</View>
         <Demo18 />
-        <h2>{translated.title6}</h2>
+        <View className="h2">{translated.title6}</View>
         <Demo19 />
-        <h2>{translated.title12}</h2>
+        <View className="h2">{translated.title12}</View>
         <Demo20 />
-        <h2>{translated.title13}</h2>
+        <View className="h2">{translated.title13}</View>
         <Demo21 />
-        <h2>{translated.title7}</h2>
+        <View className="h2">{translated.title7}</View>
         <Demo22 />
-        <h2>{translated.title8}</h2>
+        <View className="h2">{translated.title8}</View>
         <Demo23 />
-      </div>
+      </ScrollView>
     </>
   )
 }

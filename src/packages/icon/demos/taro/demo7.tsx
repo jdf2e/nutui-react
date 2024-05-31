@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { IconFontConfig, IconFont } from '@nutui/icons-react-taro'
-import { Cell, Toast } from '@/packages/nutui.react.taro'
+import { Cell, Toast } from '@nutui/nutui-react-taro'
 import { camelCase } from '@/utils/camel-case'
 
 const Demo7 = () => {

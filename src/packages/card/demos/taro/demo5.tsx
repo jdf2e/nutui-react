@@ -1,4 +1,5 @@
 import React from 'react'
+import { View } from '@tarojs/components'
 import { Card } from '@nutui/nutui-react-taro'
 
 const Demo5 = () => {
@@ -22,7 +23,7 @@ const Demo5 = () => {
       shopDescription={state.shopDescription}
       delivery={state.delivery}
       shopName={state.shopName}
-      extra={<div style={{ fontSize: '12px' }}>自定义</div>}
+      extra={<View style={{ fontSize: '12px' }}>自定义</View>}
     />
   )
 }

@@ -1,5 +1,6 @@
 import React, { CSSProperties, FunctionComponent, ReactNode } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
 
@@ -95,15 +96,15 @@ export const Badge: FunctionComponent<Partial<BadgeProps>> = (props) => {
     return style
   }
   return (
-    <div className={classes} style={style}>
-      {isIcon() && <div className={`${classPrefix}-icon`}>{value}</div>}
+    <View className={classes} style={style}>
+      {isIcon() && <View className={`${classPrefix}-icon`}>{value}</View>}
       {children}
       {!isIcon() && (
-        <div className={contentClasses} style={getStyle()}>
+        <View className={contentClasses} style={getStyle()}>
           {content()}
-        </div>
+        </View>
       )}
-    </div>
+    </View>
   )
 }
 

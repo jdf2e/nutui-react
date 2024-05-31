@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { View } from '@tarojs/components'
 import { VirtualList } from '@nutui/nutui-react-taro'
 
 const Demo2 = () => {
@@ -30,14 +31,14 @@ const Demo2 = () => {
   }
   const itemVariable = (data: any, dataIndex: number, index: number) => {
     return (
-      <div
+      <View
         style={{
           height: `${dataIndex % 2 === 0 ? '100px' : '50px'}`,
           ...itemStyle,
         }}
       >
         {data}
-      </div>
+      </View>
     )
   }
   const onScroll = () => {
