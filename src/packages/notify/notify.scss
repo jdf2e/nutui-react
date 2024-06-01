@@ -57,7 +57,7 @@
   &-popup-bottom {
     position: fixed;
     left: 0;
-    width: 100%;
+    right: 0;
     overflow-y: auto;
     transition: transform 0.3s;
     z-index: 9999;
@@ -89,14 +89,5 @@
 
   &-warning {
     background: $notify-warning-background-color;
-  }
-}
-
-[dir='rtl'] .nut-notify,
-.nut-rtl .nut-notify {
-  &-popup-top,
-  &-popup-bottom {
-    left: auto;
-    right: 0;
   }
 }
