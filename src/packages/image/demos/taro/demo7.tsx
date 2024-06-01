@@ -1,7 +1,7 @@
 import React from 'react'
+import Taro, { pxTransform } from '@tarojs/taro'
 import { Image } from '@nutui/nutui-react-taro'
 import { View } from '@tarojs/components'
-import { pxTransform } from '@tarojs/taro'
 
 const Demo7 = () => {
   const src =
@@ -17,20 +17,27 @@ const Demo7 = () => {
     'bottom left',
     'bottom right',
   ]
+  const HARMONY =
+    Taro.getEnv() === Taro.ENV_TYPE.HARMONYHYBRID ||
+    Taro.getEnv() === Taro.ENV_TYPE.HARMONY
+
   return (
     <>
       <View style={{ display: 'flex', flexWrap: 'wrap', flexDirection: 'row' }}>
         {modes.map((mode) => {
           return (
             <View
-              style={{ width: pxTransform(90), height: pxTransform(90) }}
+              style={{
+                width: HARMONY ? pxTransform(90) : 90,
+                height: HARMONY ? pxTransform(90) : 90,
+              }}
               key={mode}
             >
               <Image
                 src={src}
                 mode={mode as any}
-                width={pxTransform(80)}
-                height={pxTransform(80)}
+                width={HARMONY ? pxTransform(80) : 80}
+                height={HARMONY ? pxTransform(80) : 80}
               />
             </View>
           )
