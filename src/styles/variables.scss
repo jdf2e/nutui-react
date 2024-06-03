@@ -160,9 +160,9 @@ $font-size-xs: var(--nutui-font-size-1, 10px) !default;
 $font-size-small: var(--nutui-font-size-2, 12px) !default;
 $font-size-base: var(--nutui-font-size-3, 14px) !default;
 $font-size-large: var(--nutui-font-size-4, 16px) !default;
-$font-size-xl: var(--nutui-font-size-5, 18px) !default;
-$font-size-xxl: var(--nutui-font-size-6, 20px) !default;
-$font-size-xxxl: var(--nutui-font-size-8, 24px) !default;
+$font-size-xl: var(--nutui-font-size-6, 20px) !default;
+$font-size-xxl: var(--nutui-font-size-8, 24px) !default;
+$font-size-xxxl: var(--nutui-font-size-10, 28px) !default;
 $font-size-xxxxl: var(--nutui-font-size-11, 32px) !default;
 
 // todo
@@ -440,11 +440,10 @@ $divider-border-color: var(
   $color-border
 ) !default;
 $divider-text-color: var(--nutui-divider-text-color, $color-text) !default;
-$divider-line-height: var(--nutui-divider-line-height, 2px) !default;
+$divider-line-height: var(--nutui-divider-line-height, 1px) !default;
 $divider-spacing: var(--nutui-divider-spacing, 8px) !default;
 $divider-side-width: var(--nutui-divider-side-width, 10%) !default;
 $divider-vertical-height: var(--nutui-divider-vertical-height, 12px) !default;
-$divider-vertical-top: var(--nutui-divider-vertical-top, 2px) !default;
 $divider-vertical-margin: var(--nutui-divider-vertical-margin, 0 8px) !default;
 
 // icon（✅）
@@ -642,7 +641,6 @@ $actionsheet-background-color: var(
   --nutui-actionsheet-background-color,
   $color-background-overlay
 ) !default;
-$actionsheet-padding: var(--nutui-actionsheet-padding, 0 4px) !default;
 $actionsheet-border-color: var(
   --nutui-actionsheet-border-color,
   $color-border
@@ -810,7 +808,7 @@ $switch-open-background-color: var(
 ) !default;
 $switch-close-disabled-background-color: var(
   --nutui-switch-close-disabled-background-color,
-  var(--nutui-black-3)
+  $color-background
 ) !default;
 $switch-open-disabled-background-color: var(
   --nutui-switch-open-disabled-background-color,
@@ -823,18 +821,25 @@ $switch-close-line-background-color: var(
 $switch-width: var(--nutui-switch-width, 40px) !default;
 $switch-height: var(--nutui-switch-height, 24px) !default;
 $switch-line-height: var(--nutui-switch-line-height, 24px) !default;
-$switch-border-radius: var(--nutui-switch-border-radius, 24px) !default;
+$switch-border-radius: var(--nutui-switch-border-radius, 8px) !default;
 $switch-inside-width: var(--nutui-switch-inside-width, 20px) !default;
 $switch-inside-height: var(--nutui-switch-inside-height, 20px) !default;
+$switch-inside-border-radius: var(
+  --nutui-switch-inside-border-radius,
+  $radius-s
+) !default;
 $switch-inside-open-transform: var(
   --nutui-switch-inside-open-transform,
-  translateX(90%)
+  translateX(18px)
 ) !default;
 $switch-inside-close-transform: var(
   --nutui-switch-inside-close-transform,
-  translateX(14%)
+  translateX(2px)
 ) !default;
-$switch-button-box-shadow: var(--nutui-switch-box-shadow, none) !default;
+$switch-button-box-shadow: var(
+  --nutui-switch-box-shadow,
+  0 0 transparent
+) !default;
 
 // toast（✅）
 $toast-inner-text-align: var(--nutui-toast-inner-text-align, center) !default;
@@ -985,7 +990,7 @@ $notify-font-size: var(--nutui-notify-font-size, $font-size-base) !default;
 $notify-height: var(--nutui-notify-height, 40px) !default;
 $notify-base-background-color: var(
   --nutui-notify-base-background-color,
-  $color-primary-gradient-1
+  $color-primary
 ) !default;
 $notify-primary-background-color: var(
   --nutui-notify-primary-background-color,
@@ -1480,7 +1485,7 @@ $tag-success-background-color: var(
 ) !default;
 $tag-danger-background-color: var(
   --nutui-tag-danger-background-color,
-  $color-primary
+  $color-danger
 ) !default;
 $tag-warning-background-color: var(
   --nutui-tag-warning-background-color,
@@ -2310,3 +2315,39 @@ $loading-icon-color: var(--nutui-loading-icon-color, $color-text-help) !default;
 $loading-icon-size: var(--nutui-loading-icon-size, $font-size-small) !default;
 $loading-color: var(--nutui-loading-color, $color-text-help) !default;
 $loading-font-size: var(--nutui-loading-font-size, $font-size-small) !default;
+
+// ResultPage
+$resultpage-width: var(--nutui-resultpage-width, 247px) !default;
+$resultpage-icon-size: var(--nutui-resultpage-icon-size, 48px) !default;
+$resultpage-icon-margin-bottom: var(
+  --nutui-resultpage-icon-margin-bottom,
+  16px
+) !default;
+$resultpage-title-margin-bottom: var(
+  --nutui-resultpage-title-margin-bottom,
+  9px
+) !default;
+$resultpage-title-font-size: var(
+  --nutui-resultpage-title-font-size,
+  $font-size-xl
+) !default;
+$resultpage-title-color: var(
+  --nutui-resultpage-title-color,
+  $color-title
+) !default;
+$resultpage-description-font-size: var(
+  --nutui-resultpage-description-font-size,
+  $font-size-base
+) !default;
+$resultpage-description-color: var(
+  --nutui-resultpage-description-color,
+  $color-text
+) !default;
+$resultpage-description-line-height: var(
+  --nutui-resultpage-description-line-height,
+  20px
+) !default;
+$resultpage-actions-margin-top: var(
+  --nutui-resultpage-actions-margin-top,
+  21px
+) !default;

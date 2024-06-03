@@ -7,6 +7,7 @@ import React, {
 } from 'react'
 import classNames from 'classnames'
 import { View } from '@tarojs/components'
+import { pxTransform } from '@tarojs/taro'
 import { DataContext } from '@/packages/row/context'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 
@@ -16,6 +17,8 @@ export interface ColProps extends BasicComponent {
   span: string | number
   offset: string | number
   gutter: string | number
+  isFirst: boolean
+  isLast: boolean
   onClick: (e: any, type: ColEventType) => void
 }
 
@@ -24,13 +27,16 @@ const defaultProps = {
   span: '24',
   offset: '0',
   gutter: '0',
+  isFirst: false,
+  isLast: false,
 } as ColProps
 
 export const Col: FunctionComponent<Partial<ColProps>> = (props) => {
-  const { className, style, span, offset, children, onClick } = {
-    ...defaultProps,
-    ...props,
-  }
+  const { className, style, span, offset, children, isFirst, isLast, onClick } =
+    {
+      ...defaultProps,
+      ...props,
+    }
   const [colName, setColName] = useState('')
   const [colStyle, setColStyle] = useState({})
   const { gutter } = useContext(DataContext) as any
@@ -40,13 +46,17 @@ export const Col: FunctionComponent<Partial<ColProps>> = (props) => {
     const prefixCls = 'nut-col'
     return `${prefixCls} ${prefixCls}-${span} ${
       gutter ? `${prefixCls}-gutter` : ''
-    } ${prefixCls}-${offset}`
+    } ${prefixCls}-offset-${offset}`
   }
   const getStyle = () => {
     // 定义col的style类
     const style: CSSProperties = {}
-    style.paddingLeft = `${(gutter as number) / 2}px`
-    style.paddingRight = `${(gutter as number) / 2}px`
+    if (!isFirst) {
+      style.paddingLeft = pxTransform((gutter as number) / 2)
+    }
+    if (!isLast) {
+      style.paddingRight = pxTransform((gutter as number) / 2)
+    }
     return style
   }
   useEffect(() => {

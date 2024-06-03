@@ -11,6 +11,7 @@ import Taro, {
   getEnv,
   chooseMedia,
 } from '@tarojs/taro'
+import { View } from '@tarojs/components'
 import { Photograph } from '@nutui/icons-react-taro'
 import Button from '@/packages/button/index.taro'
 import { ERROR, SUCCESS, UploaderTaro, UPLOADING, UploadOptions } from './utils'
@@ -480,20 +481,24 @@ const InternalUploader: ForwardRefRenderFunction<
   }
 
   return (
-    <div className={classes} {...restProps}>
+    <View className={classes} {...restProps}>
       {(children || previewType === 'list') && (
-        <div className="nut-uploader-slot">
+        <View className="nut-uploader-slot">
           <>
             {children || (
-              <Button size="small" type="primary">
+              <Button nativeType="button" size="small" type="primary">
                 上传文件
               </Button>
             )}
             {Number(maxCount) > fileList.length && (
-              <Button className="nut-uploader-input" onClick={_chooseImage} />
+              <Button
+                nativeType="button"
+                className="nut-uploader-input"
+                onClick={_chooseImage}
+              />
             )}
           </>
-        </div>
+        </View>
       )}
 
       <Preview
@@ -511,19 +516,23 @@ const InternalUploader: ForwardRefRenderFunction<
       {Number(maxCount) > fileList.length &&
         previewType === 'picture' &&
         !children && (
-          <div
+          <View
             className={`nut-uploader-upload ${previewType} ${
               disabled ? 'nut-uploader-upload-disabled' : ''
             }`}
           >
-            <div className="nut-uploader-icon">
+            <View className="nut-uploader-icon">
               {uploadIcon}
               <span className="nut-uploader-icon-tip">{uploadLabel}</span>
-            </div>
-            <Button className="nut-uploader-input" onClick={_chooseImage} />
-          </div>
+            </View>
+            <Button
+              nativeType="button"
+              className="nut-uploader-input"
+              onClick={_chooseImage}
+            />
+          </View>
         )}
-    </div>
+    </View>
   )
 }
 

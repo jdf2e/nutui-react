@@ -108,7 +108,7 @@ import { Table } from '@nutui/nutui-react';
 
 :::
 
-### Sticky Rright Column
+### Sticky Right Column
 
 :::demo
 

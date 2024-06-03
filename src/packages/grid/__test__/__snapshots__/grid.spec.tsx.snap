@@ -32,7 +32,7 @@ exports[`render with custom content 1`] = `
           />
         </svg>
         <div
-          class="nut-grid-item-text"
+          class="nut-grid-item-text nut-grid-item-text-horizontal"
         >
           <span>
             More
@@ -48,7 +48,7 @@ exports[`render with custom content 1`] = `
         class="nut-grid-item-content nut-grid-item-content-border nut-grid-item-content-center nut-grid-item-content-horizontal"
       >
         <div
-          class="nut-grid-item-text"
+          class="nut-grid-item-text nut-grid-item-text-horizontal"
         >
           <div
             class="nut-avatar nut-avatar-normal nut-avatar-round demo-avatar"

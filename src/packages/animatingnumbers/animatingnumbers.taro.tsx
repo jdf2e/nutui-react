@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { View } from '@tarojs/components'
 import { CountUp } from './countup.taro'
 
 export interface AnimatingNumbersProps {}
@@ -21,6 +21,6 @@ export class AnimatingNumbers extends Component<
   }
 
   render() {
-    return <div className="nut-animatingnumbers" />
+    return <View className="nut-animatingnumbers" />
   }
 }

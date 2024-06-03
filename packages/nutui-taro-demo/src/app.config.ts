@@ -82,6 +82,7 @@ const subPackages = [
       'pages/skeleton/index',
       'pages/swipe/index',
       'pages/toast/index',
+      'pages/resultpage/index',
     ],
   },
   {

@@ -2,9 +2,17 @@ import React, { FunctionComponent, useEffect, useState, ReactNode } from 'react'
 import classNames from 'classnames'
 import { useConfig } from '@/packages/configprovider'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
-import { EmptyAction } from '@/packages/empty/index'
 
-import Button from '../button'
+import Button, { ButtonFill, ButtonSize, ButtonType } from '../button'
+
+export interface EmptyAction {
+  text: React.ReactNode
+  type?: ButtonType
+  size?: ButtonSize
+  fill?: ButtonFill
+  disabled?: boolean
+  onClick?: () => () => void
+}
 
 type statusOptions = {
   [key: string]: string
@@ -53,6 +61,7 @@ export const Empty: FunctionComponent<
     size,
     status,
     actions,
+    style,
     ...rest
   } = {
     ...defaultProps,
@@ -110,28 +119,18 @@ export const Empty: FunctionComponent<
       ) : (
         description
       )}
-      {actions.length > 0 && (
+      {actions.length ? (
         <div className={`${classPrefix}-actions`}>
-          {actions.map((item, index) => {
+          {actions.map((action, index) => {
+            const { text, ...rest } = action
             return (
-              <Button
-                className={classNames(`${classPrefix}-action`, {
-                  [`${classPrefix}-action-left`]:
-                    actions.length > 1 && index === 0,
-                })}
-                type={`${
-                  actions.length > 1 && index === 0 ? 'default' : 'primary'
-                }`}
-                size="small"
-                fill="outline"
-                key={`action-${index}`}
-              >
-                {item?.text}
-              </Button>
+              <div className={`${classPrefix}-action`} key={index}>
+                <Button {...rest}>{action?.text}</Button>
+              </div>
             )
           })}
         </div>
-      )}
+      ) : null}
       {children}
     </div>
   )

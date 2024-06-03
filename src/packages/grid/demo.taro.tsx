@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -56,31 +57,31 @@ const GridDemo = () => {
   return (
     <>
       <Header />
-      <div
+      <ScrollView
         className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
-        style={{ marginBottom: '100px' }}
+        style={{ paddingBottom: '100px' }}
       >
-        <h2>{translated.basic}</h2>
+        <View className="h2">{translated.basic}</View>
         <Demo1 />
-        <h2>{translated.columns}</h2>
+        <View className="h2">{translated.columns}</View>
         <Demo2 />
-        <h2>{translated.square}</h2>
+        <View className="h2">{translated.square}</View>
         <Demo3 />
-        <h2>{translated.gap}</h2>
+        <View className="h2">{translated.gap}</View>
         <Demo4 />
-        <h2>{translated.reverse}</h2>
+        <View className="h2">{translated.reverse}</View>
         <Demo5 />
-        <h2>{translated.horizontal}</h2>
+        <View className="h2">{translated.horizontal}</View>
         <Demo6 />
-        <h2>{translated.reverseHorizontal}</h2>
+        <View className="h2">{translated.reverseHorizontal}</View>
         <Demo7 />
-        <h2>{translated.iconStyle}</h2>
+        <View className="h2">{translated.iconStyle}</View>
         <Demo8 />
-        <h2>{translated.customContent}</h2>
+        <View className="h2">{translated.customContent}</View>
         <Demo9 />
-        <h2>{translated.event}</h2>
+        <View className="h2">{translated.event}</View>
         <Demo10 />
-      </div>
+      </ScrollView>
     </>
   )
 }

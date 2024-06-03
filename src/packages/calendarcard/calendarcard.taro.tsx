@@ -1,5 +1,6 @@
 import React, { useState, useEffect, ReactNode } from 'react'
 import classNames from 'classnames'
+import { View } from '@tarojs/components'
 import { ArrowLeft, ArrowRight, DoubleLeft, DoubleRight } from './icon.taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import {
@@ -379,27 +380,27 @@ export const CalendarCard = React.forwardRef<
 
   const renderHeader = () => {
     return (
-      <div className={`${prefixCls}-header`}>
-        <div className={`${prefixCls}-header-left`}>
-          <div className="double-left" onClick={() => jump(-12)}>
+      <View className={`${prefixCls}-header`}>
+        <View className={`${prefixCls}-header-left`}>
+          <View className="double-left" onClick={() => jump(-12)}>
             <DoubleLeft />
-          </div>
-          <div className="left" onClick={() => jump(-1)}>
+          </View>
+          <View className="left" onClick={() => jump(-1)}>
             <ArrowLeft />
-          </div>
-        </div>
-        <div className={`${prefixCls}-header-title`}>
+          </View>
+        </View>
+        <View className={`${prefixCls}-header-title`}>
           {monthTitle(month.year, month.month)}
-        </div>
-        <div className={`${prefixCls}-header-right`}>
-          <div className="right" onClick={() => jump(1)}>
+        </View>
+        <View className={`${prefixCls}-header-right`}>
+          <View className="right" onClick={() => jump(1)}>
             <ArrowRight />
-          </div>
-          <div className="double-right" onClick={() => jump(12)}>
+          </View>
+          <View className="double-right" onClick={() => jump(12)}>
             <DoubleRight />
-          </div>
-        </div>
-      </div>
+          </View>
+        </View>
+      </View>
     )
   }
 
@@ -418,24 +419,24 @@ export const CalendarCard = React.forwardRef<
 
   const renderContent = () => {
     return (
-      <div className={`${prefixCls}-content`}>
-        <div className={`${prefixCls}-days`}>
+      <View className={`${prefixCls}-content`}>
+        <View className={`${prefixCls}-days`}>
           {weekHeader.map((day) => {
             return (
-              <div
+              <View
                 className={classNames(`${prefixCls}-day`, 'header', {
                   weekend: day.key === 0 || day.key === 6,
                 })}
                 key={day.key}
               >
                 {day.name}
-              </div>
+              </View>
             )
           })}
-        </div>
-        <div className={`${prefixCls}-days`}>
+        </View>
+        <View className={`${prefixCls}-days`}>
           {days.map((day: CalendarCardDay) => (
-            <div
+            <View
               className={classNames(
                 `${prefixCls}-day`,
                 day.type,
@@ -444,27 +445,27 @@ export const CalendarCard = React.forwardRef<
               key={`${day.year}-${day.month}-${day.date}`}
               onClick={() => handleDayClick(day)}
             >
-              <div className={`${prefixCls}-day-top`}>
+              <View className={`${prefixCls}-day-top`}>
                 {renderDayTop ? renderDayTop(day) : ''}
-              </div>
-              <div className={`${prefixCls}-day-inner`}>
+              </View>
+              <View className={`${prefixCls}-day-inner`}>
                 {renderDay ? renderDay(day) : day.date}
-              </div>
-              <div className={`${prefixCls}-day-bottom`}>
+              </View>
+              <View className={`${prefixCls}-day-bottom`}>
                 {renderDayBottom ? renderDayBottom(day) : ''}
-              </div>
-            </div>
+              </View>
+            </View>
           ))}
-        </div>
-      </div>
+        </View>
+      </View>
     )
   }
 
   return days.length > 0 ? (
-    <div className={classNames(prefixCls, className)} style={style}>
+    <View className={classNames(prefixCls, className)} style={style}>
       {renderHeader()}
       {renderContent()}
-    </div>
+    </View>
   ) : null
 })
 

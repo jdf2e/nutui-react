@@ -28,7 +28,7 @@ export interface InputProps extends BasicComponent {
   name: string
   defaultValue?: string
   value?: string
-  placeholder: string
+  placeholder?: string
   align: InputAlign
   disabled: boolean
   readOnly: boolean
@@ -50,7 +50,7 @@ const defaultProps = {
   ...ComponentDefaults,
   type: 'text',
   name: '',
-  placeholder: '',
+  placeholder: undefined,
   confirmType: 'done',
   align: 'left',
   required: false,
@@ -232,7 +232,9 @@ export const Input = forwardRef(
           type={inputType(type) as any}
           password={type === 'password'}
           maxlength={maxLength}
-          placeholder={placeholder || locale.placeholder}
+          placeholder={
+            placeholder === undefined ? locale.placeholder : placeholder
+          }
           disabled={disabled || readOnly}
           value={value}
           focus={autoFocus}

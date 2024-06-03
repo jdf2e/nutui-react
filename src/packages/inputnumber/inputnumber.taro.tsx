@@ -143,7 +143,6 @@ export const InputNumber: FunctionComponent<
     )
   }
   const update = (negative: boolean, e: ITouchEvent) => {
-    console.log('e', e)
     if (step !== undefined) {
       const shouldOverBoundary = calcNextValue(
         shadowValue,
@@ -221,7 +220,6 @@ export const InputNumber: FunctionComponent<
           className={classNames(`${classPrefix}-icon icon-minus`, {
             [`${classPrefix}-icon-disabled`]: shadowValue === min || disabled,
           })}
-          onClick={handleReduce}
         />
       </View>
       <>
@@ -245,7 +243,6 @@ export const InputNumber: FunctionComponent<
           className={classNames(`${classPrefix}-icon icon-plus`, {
             [`${classPrefix}-icon-disabled`]: shadowValue === max || disabled,
           })}
-          onClick={handlePlus}
         />
       </View>
     </View>

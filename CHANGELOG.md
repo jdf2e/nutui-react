@@ -1,3 +1,51 @@
+# v2.6.8
+`2024-05-31`
+
+
+* :sparkles: feat(button): 新增 button 原始类型属性 (#2195) @Jiankian
+* :sparkles: feat(card): add card hide price and shop usage (#2292) @wick
+* :bug: fix(cascader): onPathChange is not a function (#2308) @oasis-cloud
+* :bug: fix: safearea for ac (#2293) @xiaoyatong
+* :bug: fix(InputNumber): 扩大点击区域 (#2302) @xiaoyatong
+* :bug: fix(picker): 函数调用之前检查 locale 是否已经定义 (#2259) @Alex-huxiyang
+* 🏡 chore(demo): 更新组件引用方式 (#2304) @oasis-cloud
+* 🏡 chore: fix typos (#2300) @Snoppy
+
+
+# v2.6.7
+`2024-05-28`
+
+
+* :sparkles: feat: 签名组件增加当没有签名或已清空的情况下的参数暴露 (#2288) @xiaoyatong
+* :bug: fix: ActionSheet 增加安全区处理 (#2286) @xiaoyatong
+* :bug: fix(actionsheet): 去掉无意义的 padding，popup 已不再暴露 (#2285) @xiaoyatong
+
+
+# v2.6.6
+`2024-05-24`
+
+
+* 🏡 chore(tag): css样式变量修复 (#2279) @Alex-huxiyang
+* 🏡 chore(deps): update dependency eslint-plugin-markdown to v5 (#2218) @renovate[bot]
+* 📖 docs(uploader): update (#2265) @eiinu
+* :bug: fix(input): placeholder 无法设置空字符串 (#2282) @oasis-cloud
+* :bug: fix(imagepreview): 阻止冒泡，防止点击图片关闭 (#2281) @Alex-huxiyang
+* :bug: fix(FormItem): 修复initialValue属性初始化未被正确加入到Formstore中导致的问题 (#2247) @Alex-huxiyang
+
+
+# v2.6.5
+`2024-05-17`
+
+
+*🏡 chore(image): 官网taro的demo显示与h5不一致 (#2244) @Alex.huxiyang
+* :bug: fix(circleprogress): update demo (#2260) @Eiinu
+* :bug: fix: 移除 defaultProps(2) (#2254) @Eiinu
+* :bug: fix: 关于checkbox&tabs的doc与demo修改 (#2253) @Alex.huxiyang
+* :bug: fix(table): 修复部分由于场景下width未生效导致的一些问题 (#2241) @Alex.huxiyang
+* :bug: fix(menu): 选项文字很多时右侧箭头展示异常 (#2252) @Alex.huxiyang
+* :bug: fix(input): 修复特殊场景下自动清除失效问题 (#2240) @Eiinu
+
+
 # v2.6.4
 `2024-05-10`
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import '@/packages/swiper/demo.scss'
+import './demo.scss'
 import { useTranslate } from '../../sites/assets/locale'
 import Demo1 from './demos/h5/demo1'
 import Demo2 from './demos/h5/demo2'

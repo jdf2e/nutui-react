@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -44,28 +45,30 @@ const CollapseDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo full ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.header1}</h2>
+      <ScrollView
+        className={`demo full ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+      >
+        <View className="h2">{translated.header1}</View>
         <Demo1 />
 
-        <h2>{translated.controll}</h2>
+        <View className="h2">{translated.controll}</View>
         <Demo2 />
 
-        <h2>{translated.header2}</h2>
+        <View className="h2">{translated.header2}</View>
         <Demo3 />
 
-        <h2>{translated.header3}</h2>
+        <View className="h2">{translated.header3}</View>
         <Demo4 />
 
-        <h2>{translated.header4}</h2>
+        <View className="h2">{translated.header4}</View>
         <Demo5 />
 
-        <h2>{translated.header5}</h2>
+        <View className="h2">{translated.header5}</View>
         <Demo6 />
 
-        <h2>{translated.header6}</h2>
+        <View className="h2">{translated.header6}</View>
         <Demo7 />
-      </div>
+      </ScrollView>
     </>
   )
 }

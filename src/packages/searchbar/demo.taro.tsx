@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 
@@ -54,22 +55,22 @@ const SearchBarDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.title1}</h2>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View className="h2">{translated.title1}</View>
         <Demo1 />
-        <h2>{translated.title2}</h2>
+        <View className="h2">{translated.title2}</View>
         <Demo2 />
-        <h2>{translated.title3}</h2>
+        <View className="h2">{translated.title3}</View>
         <Demo3 />
-        <h2>{translated.title4}</h2>
+        <View className="h2">{translated.title4}</View>
         <Demo4 />
-        <h2>{translated.title5}</h2>
+        <View className="h2">{translated.title5}</View>
         <Demo5 />
-        <h2>{translated.title7}</h2>
+        <View className="h2">{translated.title7}</View>
         <Demo6 />
-        <h2>{translated.title6}</h2>
+        <View className="h2">{translated.title6}</View>
         <Demo7 />
-      </div>
+      </ScrollView>
     </>
   )
 }
