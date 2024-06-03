@@ -64,25 +64,28 @@ export const Card: FunctionComponent<
         <View className={`${classPrefix}-right-title`}>{title}</View>
         {description}
         <View className={`${classPrefix}-right-price`}>
-          <Price size="normal" price={price} />
-          {priceTag || (
-            <Price
-              size="normal"
-              className={`${classPrefix}-right-price-origin`}
-              price={vipPrice}
-            />
-          )}
+          {price && <Price size="normal" price={price} />}
+          {priceTag ||
+            (vipPrice && (
+              <Price
+                size="normal"
+                className={`${classPrefix}-right-price-origin`}
+                price={vipPrice}
+              />
+            ))}
         </View>
         <View className={`${classPrefix}-right-other`}>
           {tag || (
             <>
-              <Tag type="danger">{shopDescription}</Tag>
-              <Tag plain>{delivery}</Tag>
+              {shopDescription && <Tag type="danger">{shopDescription}</Tag>}
+              {delivery && <Tag plain>{delivery}</Tag>}
             </>
           )}
         </View>
         <View className={`${classPrefix}-right-shop`}>
-          <View className={`${classPrefix}-right-shop-name`}>{shopName}</View>
+          {shopName && (
+            <View className={`${classPrefix}-right-shop-name`}>{shopName}</View>
+          )}
           {extra}
         </View>
       </View>
