@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { View } from '@tarojs/components'
 import { SearchBar } from '@nutui/nutui-react-taro'
 
 const Demo7 = () => {
@@ -14,7 +15,7 @@ const Demo7 = () => {
         }
         maxLength={10}
       />
-      <div
+      <View
         style={{
           height: '40px',
           lineHeight: '40px',
@@ -23,7 +24,7 @@ const Demo7 = () => {
         }}
       >
         {value}
-      </div>
+      </View>
     </>
   )
 }

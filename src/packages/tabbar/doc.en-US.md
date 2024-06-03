@@ -108,7 +108,7 @@ import { Tabbar } from '@nutui/nutui-react';
 | icon | Custom icon | `ReactNode` | `-` |
 | value | value to show in Badge, eg number、charctor and custom content | `ReactNode` | `-` |
 | max | when value is number, it's the max size | `number` | `99` |
-| dot | Whther Bagde is dotted | `boolean` | `false` |
+| dot | Whether Badge is dotted | `boolean` | `false` |
 | top | Up and down offset of Badge, support unit setting, can be set to: 5, etc. | `number` | `0` |
 | right | Left and right offset of Badge, support unit setting, can be set to: 5, etc. | `number` | `0` |
 

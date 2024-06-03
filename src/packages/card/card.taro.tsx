@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import Price from '@/packages/price/index.taro'
 import Tag from '@/packages/tag/index.taro'
@@ -56,35 +57,38 @@ export const Card: FunctionComponent<
   const classPrefix = 'nut-card'
   return (
     <div className={classNames(classPrefix, className)} style={style} {...rest}>
-      <div className={`${classPrefix}-left`}>
+      <View className={`${classPrefix}-left`}>
         <img src={src} alt="" />
-      </div>
-      <div className={`${classPrefix}-right`}>
-        <div className={`${classPrefix}-right-title`}>{title}</div>
+      </View>
+      <View className={`${classPrefix}-right`}>
+        <View className={`${classPrefix}-right-title`}>{title}</View>
         {description}
-        <div className={`${classPrefix}-right-price`}>
-          <Price size="normal" price={price} />
-          {priceTag || (
-            <Price
-              size="normal"
-              className={`${classPrefix}-right-price-origin`}
-              price={vipPrice}
-            />
-          )}
-        </div>
-        <div className={`${classPrefix}-right-other`}>
+        <View className={`${classPrefix}-right-price`}>
+          {price && <Price size="normal" price={price} />}
+          {priceTag ||
+            (vipPrice && (
+              <Price
+                size="normal"
+                className={`${classPrefix}-right-price-origin`}
+                price={vipPrice}
+              />
+            ))}
+        </View>
+        <View className={`${classPrefix}-right-other`}>
           {tag || (
             <>
-              <Tag type="danger">{shopDescription}</Tag>
-              <Tag plain>{delivery}</Tag>
+              {shopDescription && <Tag type="danger">{shopDescription}</Tag>}
+              {delivery && <Tag plain>{delivery}</Tag>}
             </>
           )}
-        </div>
-        <div className={`${classPrefix}-right-shop`}>
-          <div className={`${classPrefix}-right-shop-name`}>{shopName}</div>
+        </View>
+        <View className={`${classPrefix}-right-shop`}>
+          {shopName && (
+            <View className={`${classPrefix}-right-shop-name`}>{shopName}</View>
+          )}
           {extra}
-        </div>
-      </div>
+        </View>
+      </View>
     </div>
   )
 }

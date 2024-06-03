@@ -7,6 +7,7 @@ import React, {
   useRef,
   useMemo,
 } from 'react'
+import { View } from '@tarojs/components'
 import classNames from 'classnames'
 import { createSelectorQuery } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
@@ -148,19 +149,19 @@ export const CollapseItem: FunctionComponent<
 
   return (
     <div className={classNames(classPrefix, className)} style={style} {...rest}>
-      <div
+      <View
         className={classNames(`${classPrefix}-header`, { disabled })}
         onClick={handleClick}
       >
-        <div className={`${classPrefix}-title`}>{title}</div>
-        <div className={`${classPrefix}-extra`}>{extra}</div>
-        <div className={`${classPrefix}-icon-box`}>
-          <div className={`${classPrefix}-icon`} style={iconStyle}>
+        <View className={`${classPrefix}-title`}>{title}</View>
+        <View className={`${classPrefix}-extra`}>{extra}</View>
+        <View className={`${classPrefix}-icon-box`}>
+          <View className={`${classPrefix}-icon`} style={iconStyle}>
             {expandIcon || context.expandIcon}
-          </div>
-        </div>
-      </div>
-      <div
+          </View>
+        </View>
+      </View>
+      <View
         className={`${classPrefix}-content`}
         ref={wrapperRef}
         style={{
@@ -168,14 +169,14 @@ export const CollapseItem: FunctionComponent<
           height: wrapperHeight,
         }}
       >
-        <div
+        <View
           ref={contentRef}
           className={`${classPrefix}-content-text`}
           id={`nut-collapse-content-${refRandomId}`}
         >
           {children}
-        </div>
-      </div>
+        </View>
+      </View>
     </div>
   )
 }

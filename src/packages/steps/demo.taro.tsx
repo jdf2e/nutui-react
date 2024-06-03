@@ -1,5 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -53,34 +54,36 @@ const StepsDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo full bg-w ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.basic}</h2>
+      <ScrollView
+        className={`demo full bg-w ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}
+      >
+        <View className="h2">{translated.basic}</View>
         <Demo1 />
 
-        <h2>{translated.dot}</h2>
+        <View className="h2">{translated.dot}</View>
         <Demo2 />
 
-        <h2>{translated.info}</h2>
+        <View className="h2">{translated.info}</View>
         <Demo3 />
 
-        <h2>{translated.custom}</h2>
+        <View className="h2">{translated.custom}</View>
         <Demo4 />
 
-        <h2>{translated.customDot}</h2>
+        <View className="h2">{translated.customDot}</View>
         <Demo5 />
 
-        <h2>{translated.customBoth}</h2>
+        <View className="h2">{translated.customBoth}</View>
         <Demo6 />
 
-        <h2>{translated.customIcon}</h2>
+        <View className="h2">{translated.customIcon}</View>
         <Demo7 />
 
-        <h2>{translated.vertical}</h2>
+        <View className="h2">{translated.vertical}</View>
         <Demo8 />
 
-        <h2>{translated.verticalDot}</h2>
+        <View className="h2">{translated.verticalDot}</View>
         <Demo9 />
-      </div>
+      </ScrollView>
     </>
   )
 }

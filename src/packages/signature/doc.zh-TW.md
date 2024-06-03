@@ -38,7 +38,7 @@ import { Signature } from '@nutui/nutui-react'
 | strokeStyle | 繪圖筆觸顏色 | `string` | `#000` |
 | type | 圖片格式 | `string` | `png` |
 | unsupported | 不支持 Canvas 情況下的展示文案 | `ReactNode` | `對不起，當前瀏覽器不支持 Canvas，無法使用本控件！` |
-| onConfirm | 點擊確認按鈕觸發事件回調函數 | `onConfirm: (canvas: HTMLCanvasElement, dataurl: string) => void` | `-` |
+| onConfirm | 點擊確認按鈕觸發事件回調函數 | `onConfirm: (canvas: HTMLCanvasElement, dataurl: string, isSigned?: boolean) => void` | `-` |
 | onClear | 點擊重簽按鈕觸發事件回調函數 | `onClear: () => void` | `-` |
 
 ### Ref
