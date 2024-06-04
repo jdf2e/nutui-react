@@ -757,8 +757,44 @@ $numberkeyboard-key-confirm-background-color: var(
 
 // countdown（✅）
 $countdown-display: var(--nutui-countdown-display, flex) !default;
-$countdown-color: var(--nutui-countdown-color, $color-title) !default;
-$countdown-font-size: var(--nutui-countdown-font-size, 14px) !default;
+$countdown-color: var(--nutui-countdown-color, $color-primary) !default;
+$countdown-font-size: var(--nutui-countdown-font-size, 10px) !default;
+$coutdown-font-weight: var(--nutui-countdown-font-weight, 400) !default;
+$countdown-height: var(--nutui-countdown-height, 14px) !default;
+$countdown-width: var(--nutui-countdown-width, 14px) !default;
+$countdown-number-padding: var(
+  --nutui-countdown-number-padding,
+  0 1px
+) !default;
+$countdown-number-border-radius: var(
+  --nutui-countdown-number-border-radius,
+  2px
+) !default;
+$countdown-number-margin: var(--nutui-countdown-number-margin, 0 2px) !default;
+$countdown-number-border-color: var(
+  --nutui-countdown-number-border-color,
+  $color-primary-light
+) !default;
+$countdown-number-color: var(
+  --nutui-countdown-number-color,
+  $color-primary
+) !default;
+$countdown-number-background-color: var(
+  --nutui-countdown-number-background-color,
+  transparent
+) !default;
+$countdown-number-primary-border-color: var(
+  --nutui-countdown-number-primary-border-color,
+  $color-primary
+) !default;
+$countdown-number-primary-color: var(
+  --nutui-countdown-number-primary-color,
+  #ffffff
+) !default;
+$countdown-number-primary-background-color: var(
+  --nutui-countdown-number-primary-background-color,
+  $color-primary
+) !default;
 
 //large price（✅）
 $price-symbol-padding-right: var(

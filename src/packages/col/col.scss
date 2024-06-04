@@ -24,18 +24,18 @@
 
 // RN 不支持 calc
 // dart-sass: math.div -> round & *
-@for $i from 1 through 24 {
-  .nut-col-offset-#{$i} {
-    margin-left: percentage(round($i * 0.04166666666, 0.000000001));
-  }
+// @for $i from 1 through 24 {
+//   .nut-col-offset-#{$i} {
+//     margin-left: percentage(round($i * 0.04166666666, 0.000000001));
+//   }
 
-  [dir='rtl'] .nut-col-offset-#{$i},
-  .nut-rtl .nut-col-offset-#{$i} {
-    margin-left: 0;
-    margin-right: percentage(round($i * 0.04166666666, 0.000000001));
-  }
+//   [dir='rtl'] .nut-col-offset-#{$i},
+//   .nut-rtl .nut-col-offset-#{$i} {
+//     margin-left: 0;
+//     margin-right: percentage(round($i * 0.04166666666, 0.000000001));
+//   }
 
-  .nut-col-#{$i} {
-    width: percentage(round($i * 0.04166666666, 0.000000001));
-  }
-}
+//   .nut-col-#{$i} {
+//     width: percentage(round($i * 0.04166666666, 0.000000001));
+//   }
+// }

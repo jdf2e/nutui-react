@@ -135,5 +135,17 @@ import { CountDown } from '@nutui/nutui-react'
 | 名稱 | 說明 | 默認值 |
 | --- | --- | --- |
 | \--nutui-countdown-display | 倒計時的布局方式 | `flex` |
-| \--nutui-countdown-color | 倒計時的文字顏色 | `$color-title` |
-| \--nutui-countdown-font-size | 倒計時的字體大小 | `14px` |
+| \--nutui-countdown-color | 倒計時的文字顔色 | `$color-primary` |
+| \--nutui-countdown-font-size | 倒計時的字體大小 | `10px` |
+| \--nutui-countdown-font-weight | 倒計時的字體粗細 | `400` |
+| \--nutui-countdown-width | 倒計時的時間區域寬度 | `14px` |
+| \--nutui-countdown-height | 倒計時的時間區域高度 | `14px` |
+| \--nutui-countdown-number-padding | 倒計時的時間區域padding | `0 1px` |
+| \--nutui-countdown-number-margin | 倒計時的時間區域margin | `0 2px` |
+| \countdown-number-border-radius | 倒計時的時間區域圓角大小 | `2px` |
+| \--nutui-countdown-color | 倒計時的時間區域的文字顔色 | `$color-primary-light` |
+| \--nutui-countdown-background-color | 倒計時的時間區域的背景顔色 | `$color-primary` |
+| \--nutui-countdown-border-color | 倒計時的時間區域的邊框顔色顔色 | `$color-primary` |
+| \--nutui-countdown-primary-color | type爲`primary`時，倒計時的時間區域的文字顔色 | `#FFFFFF` |
+| \--nutui-countdown-primary-background-color | type爲`primary`時，倒計時的時間區域的背景顔色 | `$color-primary` |
+| \--nutui-countdown-primary-border-color | type爲`primary`時，倒計時的時間區域的邊框顔色顔色 | `$color-primary` |

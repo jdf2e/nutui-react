@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react'
 import { Cell, CountDown } from '@nutui/nutui-react-taro'
-import { View, Text } from '@tarojs/components'
+import { View } from '@tarojs/components'
 import Taro, { pxTransform } from '@tarojs/taro'
 import '../../demo.scss'
 
@@ -12,26 +12,26 @@ const partItemStyle = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  backgroundColor: '#e8220e',
+  backgroundColor: '#fa2c19',
   color: '#fff',
   ...(HARMONY
     ? {
         width: pxTransform(20),
-        height: pxTransform(25),
-        fontSize: pxTransform(14),
-        borderRadius: pxTransform(6),
+        height: pxTransform(20),
+        fontSize: pxTransform(12),
+        borderRadius: pxTransform(4),
       }
     : {
         width: 20,
-        height: 25,
-        fontSize: 14,
-        borderRadius: 6,
+        height: 20,
+        fontSize: 12,
+        borderRadius: 4,
       }),
 }
 const partItemSymbolStyle = HARMONY
   ? {
-      marginLeft: pxTransform(5),
-      marginRight: pxTransform(5),
+      marginLeft: pxTransform(2),
+      marginRight: pxTransform(2),
     }
   : {
       marginLeft: 5,
@@ -61,9 +61,8 @@ const Demo8 = () => {
             alignItems: 'center',
           }}
         >
-          <View style={partItemSymbolStyle}>
-            <Text>{resetTime.d}天</Text>
-          </View>
+          <View style={partItemStyle}>{resetTime.d}</View>
+          <View style={partItemSymbolStyle}>天</View>
           <View style={partItemStyle}>{resetTime.h}</View>
           <View style={partItemSymbolStyle}>:</View>
           <View style={partItemStyle}>{resetTime.m}</View>

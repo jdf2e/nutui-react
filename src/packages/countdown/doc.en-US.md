@@ -133,6 +133,18 @@ The component provides the following CSS variables, which can be used to customi
 
 | Name | Description | Default |
 | --- | --- | --- |
-| \--nutui-countdown-display | display mode of countdown | `flex` |
-| \--nutui-countdown-color | Countdown text color | `$color-title` |
-| \--nutui-countdown-font-size | The font size of the countdown | `14px` |
+| \--nutui-countdown-display | 倒计时的布局方式 | `flex` |
+| \--nutui-countdown-color | Countdown text color | `$color-primary` |
+| \--nutui-countdown-font-size | Countdown font size | `10px` |
+| \--nutui-countdown-font-weight | Countdown font weight | `400` |
+| \--nutui-countdown-width | Time area width of the countdown | `14px` |
+| \--nutui-countdown-height | Time area height of the countdown | `14px` |
+| \--nutui-countdown-number-padding | Countdown time area padding | `0 1px` |
+| \--nutui-countdown-number-margin | Countdown time area margin | `0 2px` |
+| \countdown-number-border-radius | Countdown time area border radius | `2px` |
+| \--nutui-countdown-color | Countdown time area text color | `$color-primary-light` |
+| \--nutui-countdown-background-color | Countdown time area background color | `$color-primary` |
+| \--nutui-countdown-border-color | Countdown time area border color color | `$color-primary` |
+| \--nutui-countdown-primary-color | When type is primary, the text color of the countdown time area | `#FFFFFF` |
+| \--nutui-countdown-primary-background-color | When type is primary, the background color of the countdown time area | `$color-primary` |
+| \--nutui-countdown-primary-border-color | When type is primary, the border color of the countdown time area is the color | `$color-primary` |

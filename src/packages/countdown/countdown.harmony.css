@@ -1,5 +1,56 @@
 .nut-countdown {
   display: flex;
-  color: #1A1A1A;
-  font-size: 14px;
+  flex-direction: row;
+  align-items: center;
+  color: #ff0f23;
+  font-size: 10px;
+}
+.nut-countdown-number-primary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 14px;
+  font-weight: 400;
+  font-size: 10px;
+}
+.nut-countdown-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 14px;
+  font-weight: 400;
+  font-size: 10px;
+}
+.nut-countdown-unit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 14px;
+  font-weight: 400;
+  font-size: 10px;
+}
+.nut-countdown-number {
+  min-width: 14px;
+  padding: 0 1px;
+  border-radius: 2px;
+  margin: 0 2px;
+}
+.nut-countdown-number-primary {
+  min-width: 14px;
+  padding: 0 1px;
+  border-radius: 2px;
+  margin: 0 2px;
+}
+.nut-countdown-number {
+  border: 1px solid #ffebf1;
+  background-color: transparent;
+  color: #ff0f23;
+}
+.nut-countdown-number-primary {
+  border: 1px solid #ff0f23;
+  background-color: #ff0f23;
+  color: #FFFFFF;
+}
+.nut-countdown-unit {
+  color: #ff0f23;
 }

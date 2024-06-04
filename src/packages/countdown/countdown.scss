@@ -1,5 +1,37 @@
 .nut-countdown {
   display: $countdown-display;
+  flex-direction: row;
+  align-items: center;
   color: $countdown-color;
   font-size: $countdown-font-size;
+  &-number-primary,
+  &-number,
+  &-unit {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: $countdown-height;
+    font-weight: $coutdown-font-weight;
+    font-size: $countdown-font-size;
+  }
+  &-number,
+  &-number-primary {
+    min-width: $countdown-width;
+    padding: $countdown-number-padding;
+    border-radius: $countdown-number-border-radius;
+    margin: $countdown-number-margin;
+  }
+  &-number {
+    border: 1px solid $countdown-number-border-color;
+    background-color: $countdown-number-background-color;
+    color: $countdown-number-color;
+  }
+  &-number-primary {
+    border: 1px solid $countdown-number-primary-border-color;
+    background-color: $countdown-number-primary-background-color;
+    color: $countdown-number-primary-color;
+  }
+  &-unit {
+    color: $color-primary;
+  }
 }
