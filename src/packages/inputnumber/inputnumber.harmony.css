@@ -11,7 +11,7 @@
   height: 24px;
   background-color: transparent;
   border-radius: 16px;
-  background-color: #000000;
+  background-color: pink;
 }
 .nut-inputnumber-add {
   display: flex;
@@ -21,7 +21,7 @@
   height: 24px;
   background-color: transparent;
   border-radius: 16px;
-  background-color: #000000;
+  background-color: pink;
 }
 .nut-inputnumber-icon {
   color: #505259;
