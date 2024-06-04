@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
-import { Progress, Cell, Button, Toast } from '@nutui/nutui-react-taro'
+import { Cell, Button, Toast, Progress } from '@nutui/nutui-react-taro'
+import { View, Text } from '@tarojs/components'
+import { pxTransform } from '@tarojs/taro'
 
 const Demo7 = () => {
   const [value, setValue] = useState(0)
@@ -16,8 +18,10 @@ const Demo7 = () => {
         }}
       />
       <Cell align="center">
-        <Progress percent={value} />
-        <span style={{ margin: '0 5px' }}>{value}%</span>
+        <View style={{ width: '90%', marginRight: pxTransform(5) }}>
+          <Progress percent={value} />
+        </View>
+        <Text>{value}%</Text>
       </Cell>
       <Cell align="center">
         <Button

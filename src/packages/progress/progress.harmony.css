@@ -34,35 +34,21 @@
   align-items: center;
   position: absolute;
   top: -4px;
-  bottom: -4px;
   transition: all 0.4s;
   transform: translate(-50%);
+  margin-top: -8px;
 }
 .nut-progress-text-inner {
   display: flex;
   align-items: center;
   height: 100%;
-  width: 100%;
+  /* width: 100%; */
   color: #ffffff;
   padding: 0 5px;
   border-radius: 5px;
   font-size: 9px;
   line-height: 1;
   background: linear-gradient(135deg, #FF0F23 0%, #FF0F23 100%);
-}
-@keyframes progressActive {
-  0% {
-    background: rgba(255, 255, 255, 0.1);
-    width: 0;
-  }
-  20% {
-    background: rgba(255, 255, 255, 0.5);
-    width: 0;
-  }
-  to {
-    background: rgba(255, 255, 255, 0);
-    width: 100%;
-  }
 }
 
 [dir=rtl] .nut-progress-text,

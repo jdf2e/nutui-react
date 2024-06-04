@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import classNames from 'classnames'
-import Taro, { PageInstance } from '@tarojs/taro'
+import Taro, { PageInstance, pxTransform } from '@tarojs/taro'
+import { View, Text } from '@tarojs/components'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '../configprovider/index.taro'
 import useUuid from '@/utils/use-uuid'
@@ -54,7 +55,6 @@ export const Progress: FunctionComponent<
   })
 
   const stylesOuter: React.CSSProperties = {
-    height: `${strokeWidth}px`,
     background,
   }
 
@@ -63,6 +63,10 @@ export const Progress: FunctionComponent<
   const stylesInner: React.CSSProperties = {
     width: `${displayPercent}%`,
     background: color,
+  }
+  if (strokeWidth) {
+    stylesOuter.height = pxTransform(Number(strokeWidth))
+    stylesInner.height = pxTransform(Number(strokeWidth))
   }
   const handlePercent = () => {
     let timer: any = null
@@ -152,39 +156,42 @@ export const Progress: FunctionComponent<
   }, [])
 
   return (
-    <div
-      ref={progressRef}
-      id={selector}
-      className={classNames(classPrefix, className)}
-      style={style}
-      {...rest}
-    >
-      <div className={`${classPrefix}-outer`} style={stylesOuter}>
-        <div className={classesInner} style={stylesInner}>
-          {showText && (
-            <div
-              className={`${classPrefix}-text`}
-              style={
-                rtl
-                  ? { right: `${displayPercent}%` }
-                  : { left: `${displayPercent}%` }
-              }
-            >
-              {children || (
-                <div
-                  className={`${classPrefix}-text-inner`}
-                  style={{
-                    background: color,
-                  }}
-                >
-                  {percent}%
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      </div>
-    </div>
+    <>
+      <View
+        ref={progressRef}
+        id={selector}
+        className={classNames(classPrefix, className)}
+        style={style}
+        {...rest}
+      >
+        <View className={`${classPrefix}-outer`} style={stylesOuter}>
+          <View className={classesInner} style={stylesInner}>
+            {showText && (
+              <View
+                className={`${classPrefix}-text`}
+                style={
+                  { left: '100%' }
+                  // rtl
+                  //   ? { right: `${displayPercent}%` }
+                  //   : { left: `${displayPercent}%` }
+                }
+              >
+                {children || (
+                  <Text
+                    className={`${classPrefix}-text-inner`}
+                    style={{
+                      background: color,
+                    }}
+                  >
+                    {percent}%
+                  </Text>
+                )}
+              </View>
+            )}
+          </View>
+        </View>
+      </View>
+    </>
   )
 }
 
