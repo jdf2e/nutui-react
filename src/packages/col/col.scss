@@ -1,5 +1,4 @@
 .nut-col {
-  //float: left;
   box-sizing: border-box;
   word-break: break-all;
   margin-bottom: $col-default-margin-bottom;
@@ -26,16 +25,16 @@
 // dart-sass: math.div -> round & *
 @for $i from 1 through 24 {
   .nut-col-offset-#{$i} {
-    margin-left: percentage(round($i * 0.04166666666, 0.000000001));
+    margin-left: #{$i * 4.166666666} + '%';
   }
 
   [dir='rtl'] .nut-col-offset-#{$i},
   .nut-rtl .nut-col-offset-#{$i} {
     margin-left: 0;
-    margin-right: percentage(round($i * 0.04166666666, 0.000000001));
+    margin-right: #{$i * 4.166666666} + '%';
   }
 
   .nut-col-#{$i} {
-    width: percentage(round($i * 0.04166666666, 0.000000001));
+    width: #{$i * 4.166666666} + '%';
   }
 }

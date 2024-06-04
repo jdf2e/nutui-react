@@ -1,33 +1,49 @@
 {
-  app: {
-    signingConfigs: [],
-    products: [
+  "app": {
+    "signingConfigs": [
       {
-        name: 'default',
-        signingConfig: 'default',
-        compatibleSdkVersion: '4.1.0(11)',
-        runtimeOS: 'HarmonyOS',
-      },
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "certpath": "/Users/wangbei6/.ohos/config/default_nutui-harmony_f0UCYb9l4-DjvuK2ss9fRVyU4vCLhIuqZE9O-PrHTXU=.cer",
+          "storePassword": "00000019C84EEC230E53C008362EFA148B54691B65C4D6771B16ABFA8253B80C55881FDD7D1C9A6C48",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001912C268235EB1BD87111500B5453B8715CDA6EE37FF6438DBCD35F5E0BE846A5F9D24F3FB82",
+          "profile": "/Users/wangbei6/.ohos/config/default_nutui-harmony_f0UCYb9l4-DjvuK2ss9fRVyU4vCLhIuqZE9O-PrHTXU=.p7b",
+          "signAlg": "SHA256withECDSA",
+          "storeFile": "/Users/wangbei6/.ohos/config/default_nutui-harmony_f0UCYb9l4-DjvuK2ss9fRVyU4vCLhIuqZE9O-PrHTXU=.p12"
+        }
+      }
     ],
-    buildModeSet: [
+    "products": [
       {
-        name: 'debug',
-      },
-      {
-        name: 'release',
-      },
+        "name": "default",
+        "signingConfig": "default",
+        "compatibleSdkVersion": "4.1.0(11)",
+        "runtimeOS": "HarmonyOS"
+      }
     ],
+    "buildModeSet": [
+      {
+        "name": "debug"
+      },
+      {
+        "name": "release"
+      }
+    ]
   },
-  modules: [
+  "modules": [
     {
-      name: 'default',
-      srcPath: './entry',
-      targets: [
+      "name": "default",
+      "srcPath": "./entry",
+      "targets": [
         {
-          name: 'default',
-          applyToProducts: ['default'],
-        },
-      ],
-    },
-  ],
+          "name": "default",
+          "applyToProducts": [
+            "default"
+          ]
+        }
+      ]
+    }
+  ]
 }
