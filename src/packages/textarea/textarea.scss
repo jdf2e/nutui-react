@@ -25,7 +25,7 @@
     display: block;
     box-sizing: border-box;
     width: 100%;
-    height: auto;
+    height: 40px;
     min-width: 0;
     margin: 0;
     padding: 0;
@@ -47,7 +47,6 @@
       color: $textarea-disabled-color;
     }
   }
-
   .cpoyText {
     position: absolute;
     top: -999999px;
@@ -65,4 +64,9 @@
       right: -999999px;
     }
   }
+}
+
+.taro-textarea {
+  background-color: transparent;
+  resize: none;
 }

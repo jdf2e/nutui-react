@@ -24,7 +24,7 @@
   display: block;
   box-sizing: border-box;
   width: 100%;
-  height: auto;
+  height: 40px;
   min-width: 0;
   margin: 0;
   padding: 0;
@@ -56,4 +56,9 @@
 .nut-textarea.nut-textarea-rtl .cpoyText {
   left: auto;
   right: -999999px;
+}
+
+.taro-textarea {
+  background-color: transparent;
+  resize: none;
 }
