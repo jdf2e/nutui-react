@@ -45,7 +45,7 @@ const copyFile = async (from, to, success, isSingle = false) => {
 
     adapted.map((item) => {
       if (item) {
-        if (!['cellgroup', 'row', 'col', 'griditem'].includes(item)) {
+        if (!['cellgroup', 'row', 'col', 'griditem', 'hoverbuttonitem'].includes(item)) {
           modify(
             `${targetBaseUrl}/packages/${item}/demo.taro.tsx`,
             `import '../../../styles/demo.scss';\n`

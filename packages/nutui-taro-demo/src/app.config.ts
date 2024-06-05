@@ -32,6 +32,7 @@ const subPackages = [
       'pages/sidenavbar/index',
       'pages/tabbar/index',
       'pages/tabs/index',
+      'pages/hoverbutton/index',
     ],
   },
   {
