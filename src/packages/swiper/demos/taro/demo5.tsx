@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
 import { Swiper } from '@nutui/nutui-react-taro'
-import { Text, View, Image } from '@tarojs/components'
+import { Image, Text, View } from '@tarojs/components'
+import { ArrowLeft, ArrowRight } from '@nutui/icons-react-taro'
+import Taro from '@tarojs/taro'
 import pxTransform from '@/utils/px-transform'
-
-// import { ArrowLeft, ArrowRight } from '@nutui/icons-react-taro'
 
 function Demo5() {
   const swiperRef = React.useRef<any>(null)
@@ -62,8 +62,18 @@ function Demo5() {
         })}
       </Swiper>
       <View style={btnsStyle as any}>
-        <View style={spanStyle} onClick={(e) => swiperRef.current?.prev()} />
-        <View style={spanStyle} onClick={(e) => swiperRef.current?.next()} />
+        <View style={spanStyle} onClick={(e) => swiperRef.current?.prev()}>
+          {Taro.getEnv() !== Taro.ENV_TYPE.HARMONY &&
+          Taro.getEnv() !== Taro.ENV_TYPE.RN ? (
+            <ArrowLeft />
+          ) : null}
+        </View>
+        <View style={spanStyle} onClick={(e) => swiperRef.current?.next()}>
+          {Taro.getEnv() !== Taro.ENV_TYPE.HARMONY &&
+          Taro.getEnv() !== Taro.ENV_TYPE.RN ? (
+            <ArrowRight />
+          ) : null}
+        </View>
       </View>
     </View>
   )
