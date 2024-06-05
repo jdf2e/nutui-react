@@ -26,16 +26,16 @@
 // dart-sass: math.div -> round & *
 @for $i from 1 through 24 {
   .nut-col-offset-#{$i} {
-    margin-left: percentage($i * 0.04166666666);
+    margin-left: #{$i * 4.166666666} + '%';
   }
 
   [dir='rtl'] .nut-col-offset-#{$i},
   .nut-rtl .nut-col-offset-#{$i} {
     margin-left: 0;
-    margin-right: percentage($i * 0.04166666666);
+    margin-right: #{$i * 4.166666666} + '%';
   }
 
   .nut-col-#{$i} {
-    width: percentage($i * 0.04166666666);
+    width: #{$i * 4.166666666} + '%';
   }
 }
