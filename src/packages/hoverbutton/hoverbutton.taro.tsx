@@ -4,11 +4,10 @@ import { View } from '@tarojs/components'
 import Taro, { pxTransform } from '@tarojs/taro'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index.taro'
-import {
-  HoverButtonItem,
+import HoverButtonItem, {
   HoverButtonItemProps,
-} from '../hoverbuttonitem/hoverbuttonitem.taro'
-import { SafeArea } from '../nutui.react.taro'
+} from '@/packages/hoverbuttonitem/index.taro'
+import SafeArea from '@/packages/safearea/index.taro'
 
 export interface HoverButtonProps extends BasicComponent, HoverButtonItemProps {
   zIndex: number
@@ -69,5 +68,5 @@ export const HoverButton: FunctionComponent<
   )
 }
 
-HoverButton.displayName = 'NutCell'
+HoverButton.displayName = 'NutHoverButton'
 HoverButton.Item = HoverButtonItem

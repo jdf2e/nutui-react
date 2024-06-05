@@ -2,7 +2,6 @@
   &-container {
     width: 40px;
     height: 40px;
-    padding: 9px;
     border-radius: 20px;
     border: 1px solid $hoverbutton-item-border-color;
     background-color: $hoverbutton-item-background;
@@ -15,6 +14,7 @@
   &-icon {
     width: 20px;
     height: 20px;
+    margin: 9px;
     color: $hoverbutton-item-icon-color;
     fill: $hoverbutton-item-icon-color;
 

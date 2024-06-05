@@ -10,7 +10,7 @@ const Demo1 = () => {
   const testClick = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent> | ITouchEvent
   ) => {
-    alert('点击事件')
+    console.log('点击事件')
   }
 
   return (

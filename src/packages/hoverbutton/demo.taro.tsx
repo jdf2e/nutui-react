@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Taro from '@tarojs/taro'
-import { ScrollView, View } from '@tarojs/components'
+import { ScrollView, View, Text } from '@tarojs/components'
 import { Button } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
@@ -43,7 +43,7 @@ const HoverDemo = () => {
     <View>
       <Header />
       <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <View className="h2">{translated.basic}</View>
+        <Text className="h2">{translated.basic}</Text>
         <Button
           block
           onClick={() => {
@@ -54,7 +54,7 @@ const HoverDemo = () => {
         </Button>
         {curDemo === 'basic' && <Demo1 />}
 
-        <View className="h2">{translated.multiButtons}</View>
+        <Text className="h2">{translated.multiButtons}</Text>
         <Button
           block
           onClick={() => {
@@ -65,7 +65,7 @@ const HoverDemo = () => {
         </Button>
         {curDemo === 'multiButtons' && <Demo2 />}
 
-        <View className="h2">{translated.hasTabbar}</View>
+        <Text className="h2">{translated.hasTabbar}</Text>
         <Button
           block
           onClick={() => {
@@ -76,7 +76,7 @@ const HoverDemo = () => {
         </Button>
         {curDemo === 'hasTabbar' && <Demo3 />}
 
-        <View className="h2">{translated.customZIndex}</View>
+        <Text className="h2">{translated.customZIndex}</Text>
         <Button
           block
           onClick={() => {

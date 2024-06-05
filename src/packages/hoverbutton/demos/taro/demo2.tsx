@@ -6,9 +6,15 @@ import { HoverButton } from '@nutui/nutui-react-taro'
 import { Cart } from '@nutui/icons-react-taro'
 
 const Demo2 = () => {
-  const testClick1 = () => alert('点击了第 1 个按钮')
-  const testClick2 = () => alert('点击了第 2 个按钮')
-  const testClick3 = () => alert('点击了第 3 个按钮')
+  const testClick1 = () => {
+    console.log('点击了第 1 个按钮')
+  }
+  const testClick2 = () => {
+    console.log('点击了第 2 个按钮')
+  }
+  const testClick3 = () => {
+    console.log('点击了第 3 个按钮')
+  }
 
   return (
     <HoverButton>

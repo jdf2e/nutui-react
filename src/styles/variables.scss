@@ -946,9 +946,12 @@ $hoverbutton-spacing: var(
   --nutui-hoverbutton-spacing,
   var(--nutui-spacing-16, 16px)
 ) !default;
-$hoverbutton-position-bottom: var(--nutui-position-bottom, 48px) !default;
+$hoverbutton-position-bottom: var(
+  --nutui-hoverbutton-position-bottom,
+  48px
+) !default;
 $hoverbutton-position-right: var(
-  --nutui-position-right,
+  --nutui-hoverbutton-position-right,
   var(--nutui-spacing-16, 16px)
 ) !default;
 $hoverbutton-item-border-color: var(

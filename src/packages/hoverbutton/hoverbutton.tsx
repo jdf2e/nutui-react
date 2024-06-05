@@ -2,11 +2,10 @@ import React, { FunctionComponent } from 'react'
 import classNames from 'classnames'
 import { BasicComponent, ComponentDefaults } from '@/utils/typings'
 import { useRtl } from '@/packages/configprovider/index'
-import {
-  HoverButtonItem,
+import HoverButtonItem, {
   HoverButtonItemProps,
-} from '../hoverbuttonitem/hoverbuttonitem'
-import { SafeArea } from '../nutui.react'
+} from '@/packages/hoverbuttonitem/index'
+import SafeArea from '@/packages/safearea/index'
 
 export interface HoverButtonProps extends BasicComponent, HoverButtonItemProps {
   zIndex: number
