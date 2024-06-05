@@ -1,17 +1,10 @@
 import React, { useRef, useState } from 'react'
 import Taro, { pxTransform } from '@tarojs/taro'
-import { View, Text } from '@tarojs/components'
-import { Del } from '@nutui/icons-react-taro'
-import {
-  Button,
-  Cell,
-  // Toast,
-  // Dialog,
-  // InputNumber,
-  Swipe,
-} from '@nutui/nutui-react-taro'
+import { ScrollView, Text, View } from '@tarojs/components'
+// import { Del } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
+import Demo1 from './demos/taro/demo1'
 
 type TSwipeDemo = {
   title1: string
@@ -178,7 +171,7 @@ const SwipeDemo = () => {
           ...style,
         }}
       >
-        {hasIcon ? <Del style={{ marginBottom: '8px' }} /> : null}
+        {/* {hasIcon ? <Del style={{ marginBottom: '8px' }} /> : null} */}
         <Text
           style={{
             width: pxTransform(60),
@@ -194,29 +187,13 @@ const SwipeDemo = () => {
   return (
     <>
       <Header />
-      <div className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <h2>{translated.title1}</h2>
-        <Swipe
-          rightAction={
-            <Button
-              type="primary"
-              shape="square"
-              style={{ alignSelf: 'stretch' }}
-            >
-              {translated.del}
-            </Button>
-          }
-        >
-          <Cell
-            title={translated.leftDel}
-            radius={0}
-            style={{ margin: 0, alignSelf: 'stretch' }}
-          />
-        </Swipe>
+      <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
+        <View>{translated.title1}</View>
+        <Demo1 />
 
         <View className="test-height" />
 
-        {/* <h2>{translated.title9}</h2> */}
+        {/* <View>{translated.title9}</View> */}
         {/* <Swipe */}
         {/*  style={{ */}
         {/*    height: pxTransform(104), */}
@@ -319,7 +296,7 @@ const SwipeDemo = () => {
         {/*  /> */}
         {/* </Swipe> */}
 
-        {/* <h2>{translated.title8}</h2> */}
+        {/* <View>{translated.title8}</View> */}
         {/* <View catchMove={shouldCatchMove}> */}
         {/*  <Swipe */}
         {/*    rightAction={ */}
@@ -346,7 +323,7 @@ const SwipeDemo = () => {
         {/*  </Swipe> */}
         {/* </View> */}
 
-        {/* <h2>{translated.title6}</h2> */}
+        {/* <View>{translated.title6}</View> */}
         {/* <Swipe */}
         {/*  ref={openRef} */}
         {/*  rightAction={ */}
@@ -383,7 +360,7 @@ const SwipeDemo = () => {
         {/*    {translated.close} */}
         {/*  </Button> */}
         {/* </div> */}
-        {/* <h2>{translated.title7}</h2> */}
+        {/* <View>{translated.title7}</View> */}
         {/* <Swipe */}
         {/*  ref={closeRef} */}
         {/*  rightAction={ */}
@@ -405,7 +382,7 @@ const SwipeDemo = () => {
         {/*    style={{ margin: 0, alignSelf: 'stretch' }} */}
         {/*  /> */}
         {/* </Swipe> */}
-        {/* <h2>{translated.title2}</h2> */}
+        {/* <View>{translated.title2}</View> */}
         {/* <Swipe */}
         {/*  rightAction={ */}
         {/*    <Button */}
@@ -424,7 +401,7 @@ const SwipeDemo = () => {
         {/*    style={{ margin: 0, alignSelf: 'stretch' }} */}
         {/*  /> */}
         {/* </Swipe> */}
-        {/* <h2>{translated.title3}</h2> */}
+        {/* <View>{translated.title3}</View> */}
         {/* <Swipe */}
         {/*  leftAction={ */}
         {/*    <Button */}
@@ -465,7 +442,7 @@ const SwipeDemo = () => {
         {/*    style={{ margin: 0, alignSelf: 'stretch' }} */}
         {/*  /> */}
         {/* </Swipe> */}
-        {/* <h2>{translated.title4}</h2> */}
+        {/* <View>{translated.title4}</View> */}
         {/* <Swipe */}
         {/*  ref={refDom} */}
         {/*  beforeClose={beforeClose} */}
@@ -495,7 +472,7 @@ const SwipeDemo = () => {
         {/*    style={{ background: '#f0f0f0', margin: 0, alignSelf: 'stretch' }} */}
         {/*  /> */}
         {/* </Swipe> */}
-        {/* <h2>{translated.title5}</h2> */}
+        {/* <View>{translated.title5}</View> */}
         {/* <Swipe */}
         {/*  rightAction={ */}
         {/*    <> */}
@@ -548,7 +525,7 @@ const SwipeDemo = () => {
         {/*    ? translated.chooseTips */}
         {/*    : translated.deleteTips} */}
         {/* </Dialog> */}
-      </div>
+      </ScrollView>
     </>
   )
 }

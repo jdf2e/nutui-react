@@ -1,78 +1,45 @@
-.test-swipe {
+.nut-swipe {
   display: flex;
-  flex-direction: row;
-  background: #00abcc;
-}
-
-.test-swipe-wrap {
-  display: flex;
-  flex-direction: row;
   position: relative;
-  background: #1A1A1A;
+  flex-direction: row;
+  cursor: grab;
+  background-color: #ffffff;
+  overflow: hidden;
 }
 
-.test-swipe-left {
+.nut-swipe-wrapper {
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  transition-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1);
+  transition-property: transform;
+  background: #00bc14;
+}
+
+.nut-swipe-wrapper .nut-button {
+  align-self: stretch;
+}
+
+.nut-swipe-wrapper .nut-cell {
+  margin: 0;
+  align-self: stretch;
+}
+
+.nut-swipe-left, .nut-swipe-right {
+  display: flex;
+  position: absolute;
+  top: 0;
+  height: 100%;
   flex-direction: row;
   align-self: stretch;
-  position: absolute;
-  background: #00bc14;
-  height: 100%;
+  align-items: stretch;
 }
 
-.test-swipe-left-c {
-  font-size: 14px;
+.nut-swipe-left {
+  left: 0;
+  transform: translate(-100%, 0);
 }
 
-.test-swipe-content {
-  font-size: 14px;
-  padding: 14px;
+.nut-swipe-right {
+  left: 100%;
 }
-
-.test-height {
-  height: 1000px;
-}
-
-/*.nut-swipe {*/
-/*  display: flex;*/
-/*  flex-direction: row;*/
-/*  overflow: hidden;*/
-/*  cursor: grab;*/
-/*  background-color: #ffffff;*/
-/*}*/
-
-/*.nut-swipe-wrapper {*/
-/*  display: flex;*/
-/*  flex-direction: row;*/
-/*  justify-content: flex-start;*/
-/*  position: relative;*/
-/*  background: green;*/
-/*  transition-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1);*/
-/*  transition-property: transform;*/
-/*}*/
-
-/*.nut-swipe-wrapper .nut-button {*/
-/*  align-self: stretch;*/
-/*}*/
-
-/*.nut-swipe-wrapper .nut-cell {*/
-/*  margin: 0;*/
-/*  align-self: stretch;*/
-/*}*/
-
-/*.nut-swipe-left, .nut-swipe-right {*/
-/*  display: flex;*/
-/*  flex-direction: row;*/
-/*  align-self: stretch;*/
-/*}*/
-
-/*.nut-swipe-left {*/
-/*  display: block;*/
-/*  position: absolute;*/
-/*  left: 0;*/
-/*  transform: translate(-100%, 0);*/
-/*}*/
-
-/*.nut-swipe-right {*/
-/*  left: 100%;*/
-/*}*/
