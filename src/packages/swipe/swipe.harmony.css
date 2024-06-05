@@ -1,45 +1,32 @@
 .nut-swipe {
   display: flex;
-  position: relative;
   flex-direction: row;
+  position: relative;
+  overflow: hidden;
   cursor: grab;
   background-color: #ffffff;
-  overflow: hidden;
 }
-
 .nut-swipe-wrapper {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  align-self: stretch;
+  width: 100%;
+  background: green;
   transition-timing-function: cubic-bezier(0.18, 0.89, 0.32, 1);
   transition-property: transform;
-  background: #00bc14;
 }
-
-.nut-swipe-wrapper .nut-button {
-  align-self: stretch;
-}
-
-.nut-swipe-wrapper .nut-cell {
-  margin: 0;
-  align-self: stretch;
-}
-
 .nut-swipe-left, .nut-swipe-right {
-  display: flex;
   position: absolute;
   top: 0;
-  height: 100%;
+  display: flex;
   flex-direction: row;
   align-self: stretch;
   align-items: stretch;
 }
-
 .nut-swipe-left {
   left: 0;
-  transform: translate(-100%, 0);
 }
-
 .nut-swipe-right {
-  left: 100%;
+  right: 0;
 }

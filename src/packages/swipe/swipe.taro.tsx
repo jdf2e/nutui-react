@@ -1,14 +1,8 @@
-import React, {
-  useRef,
-  forwardRef,
-  useState,
-  useImperativeHandle,
-  useEffect,
-} from 'react'
 import type { MouseEvent } from 'react'
+import React, { forwardRef, useImperativeHandle, useRef, useState } from 'react'
 import classNames from 'classnames'
-import { View, ITouchEvent } from '@tarojs/components'
-import { nextTick, useReady } from '@tarojs/taro'
+import { ITouchEvent, View } from '@tarojs/components'
+import { useReady } from '@tarojs/taro'
 import { BaseEventOrig } from '@tarojs/components/types/common'
 import { useTouch } from '@/utils/use-touch'
 import { getRectByTaro } from '@/utils/get-rect-by-taro'
@@ -74,6 +68,7 @@ export const Swipe = forwardRef<
 >((props, instanceRef) => {
   const classPrefix = 'nut-swipe'
   const touch: any = useTouch()
+  const [rootWidth, setRootWidth] = useState(0)
 
   // 获取元素的时候要在页面 onReady 后，需要参考小程序的事件周期
   useReady(() => {
@@ -88,8 +83,13 @@ export const Swipe = forwardRef<
         rightRect &&
           setActionWidth((v: any) => ({ ...v, right: rightRect.width }))
       }
+      if (root.current) {
+        const rootRect = await getRectByTaro(rightWrapper.current)
+        console.log('rootRect', rootRect.width)
+        rootRect && setRootWidth(rootRect.width)
+      }
     }
-    nextTick(() => getWidth())
+    setTimeout(() => getWidth())
   })
 
   const { children, className, style } = { ...defaultProps, ...props }
@@ -237,6 +237,9 @@ export const Swipe = forwardRef<
         <View
           ref={side === 'left' ? leftWrapper : rightWrapper}
           className={`${classPrefix}-${side}`}
+          style={{
+            transform: `${side === 'left' ? `translateX(-${rootWidth})` : `translateX(${rootWidth})`}`,
+          }}
           onClick={(e) => handleOperate(e, side)}
         >
           {props[`${side}Action`]}
@@ -262,26 +265,26 @@ export const Swipe = forwardRef<
     close: () => close(),
   }))
 
-  useEffect(() => {
-    const handler: any = (event: { target: Node | null }) => {
-      const targets = [root]
-      if (
-        targets.some((targetItem) => {
-          const targetElement = targetItem.current || targetItem
-          return !targetElement || targetElement?.contains(event.target)
-        })
-      ) {
-        return
-      }
-      close()
-    }
-
-    document.addEventListener('touchstart', handler)
-
-    return () => {
-      document.removeEventListener('touchstart', handler)
-    }
-  }, [])
+  // useEffect(() => {
+  //   const handler: any = (event: { target: Node | null }) => {
+  //     const targets = [root]
+  //     if (
+  //       targets.some((targetItem) => {
+  //         const targetElement = targetItem.current || targetItem
+  //         return !targetElement || targetElement?.contains(event.target)
+  //       })
+  //     ) {
+  //       return
+  //     }
+  //     close()
+  //   }
+  //
+  //   document.addEventListener('touchstart', handler)
+  //
+  //   return () => {
+  //     document.removeEventListener('touchstart', handler)
+  //   }
+  // }, [])
 
   return (
     <View

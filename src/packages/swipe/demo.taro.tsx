@@ -1,197 +1,78 @@
-import React, { useRef, useState } from 'react'
-import Taro, { pxTransform } from '@tarojs/taro'
-import { ScrollView, Text, View } from '@tarojs/components'
+import React from 'react'
+import Taro from '@tarojs/taro'
+import { ScrollView, View } from '@tarojs/components'
 // import { Del } from '@nutui/icons-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
-
-type TSwipeDemo = {
-  title1: string
-  title2: string
-  title3: string
-  title4: string
-  title5: string
-  title6: string
-  title7: string
-  openOrClose: string
-  title8: string
-  title9: string
-  click: string
-  sure: string
-  del: string
-  alwaysbuy: string
-  liked: string
-  choose: string
-  event: string
-  goods: string
-  collect: string
-  open: string
-  close: string
-  closeLeft: string
-  tips: string
-  cart: string
-  leftDel: string
-  disabled: string
-  chooseTips: string
-  deleteTips: string
-}
+import Demo2 from './demos/taro/demo2'
+import Demo3 from './demos/taro/demo3'
+import Demo4 from './demos/taro/demo4'
+import Demo5 from './demos/taro/demo5'
+import Demo6 from './demos/taro/demo6'
+import Demo7 from './demos/taro/demo7'
+import Demo8 from './demos/taro/demo8'
+// import Demo9 from './demos/taro/demo9'
 
 const SwipeDemo = () => {
-  const [translated] = useTranslate<TSwipeDemo>({
+  const [translated] = useTranslate({
     'zh-CN': {
-      title1: '基础用法',
-      title2: '禁用滑动',
-      title3: '事件监听',
-      title4: '非同步控制',
-      title5: '自定义內容',
-      title6: '通过实例方法控制',
-      openOrClose: '点击下方按钮打开或关闭',
-      title7: '点击关闭',
-      title8: '阻止父元素滚动',
-      title9: '卡片场景',
-      click: '点击',
-      sure: '确定',
-      del: '删除',
-      alwaysbuy: '设置常购',
-      liked: '看相似',
-      choose: '选择',
-      event: '事件',
-      goods: '商品',
-      collect: '移入收藏',
-      open: '打开',
-      close: '关闭',
-      closeLeft: '点击右侧按钮关闭',
-      tips: '提示',
-      cart: '加入购物车',
-      leftDel: '左滑',
+      base: '基础用法',
+      card: '卡片场景',
+      catchMove: '阻止父元素滚动',
+      byRef: '通过实例方法控制',
+      close: '点击关闭',
       disabled: '禁用滑动',
-      chooseTips: '确定选择吗？',
-      deleteTips: '确定删除吗？',
+      event: '事件监听',
+      async: '异步控制',
+      custom: '自定义内容',
     },
     'zh-TW': {
-      title1: '基礎用法',
-      title2: '禁用滑動',
-      title3: '事件監聽',
-      title4: '非同步控制',
-      title5: '自定義內容',
-      title6: '通過實例方法控制',
-      openOrClose: '點擊下方按鈕打開或關閉',
-      title7: '点击关闭',
-      title8: '阻止父元素滾動',
-      title9: '卡片場景',
-      click: '點擊',
-      sure: '確定',
-      del: '刪除',
-      alwaysbuy: '设置常购',
-      liked: '看相似',
-      choose: '選擇',
-      event: '事件',
-      goods: '商品',
-      collect: '收藏',
-      open: '打開',
-      close: '關閉',
-      closeLeft: '點擊右側按鈕關閉',
-      tips: '提示',
-      cart: '加入購物車',
-      leftDel: '左滑',
+      base: '基礎用法',
+      card: '卡片場景',
+      catchMove: '阻止父元素滾動',
+      byRef: '通過實例方法控制',
+      close: '點擊關閉',
       disabled: '禁用滑動',
-      chooseTips: '確定選擇嗎？ ',
-      deleteTips: '確定刪除嗎？ ',
+      event: '事件監聽',
+      async: '異步控制',
+      custom: '自定義內容',
     },
     'en-US': {
-      title1: 'Basic usage',
-      title2: 'Disable sliding',
-      title3: 'Event monitoring',
-      title4: 'Asynchronous control',
-      title5: 'Custom content',
-      title6: 'Control via instance method',
-      openOrClose: 'Click the button below',
-      title7: 'Click to close',
-      title8: 'Prevent parent scrolling',
-      title9: 'Card mode',
-      click: 'click',
-      sure: 'ok',
-      del: 'delete',
-      alwaysbuy: 'always buy',
-      liked: 'liked',
-      choose: 'select',
-      event: 'event',
-      goods: 'goods',
-      collect: 'collect',
-      open: 'open',
-      close: 'close',
-      closeLeft: 'Click the right button to close',
-      tips: 'tips',
-      cart: 'add to shopping cart',
-      leftDel: 'left slide',
-      disabled: 'Disable sliding',
-      chooseTips: 'are you sure to choose?',
-      deleteTips: 'are you sure to delete?',
+      base: 'Basic Usage',
+      card: 'Card Scenario',
+      catchMove: 'Prevent Parent Element Scrolling',
+      byRef: 'Control via Instance Methods',
+      close: 'Click to Close',
+      disabled: 'Disable Sliding',
+      event: 'Event Listener',
+      async: 'Asynchronous Control',
+      custom: 'Custom Content',
     },
   })
-  const [show, SetShow] = useState(false)
-  const [toastMsg, SetToastMsg] = useState('')
-  const [showDialog, setShowDialog] = useState(false)
-  const toastShow = (msg: any) => {
-    SetToastMsg(msg)
-    SetShow(true)
-  }
 
-  const refDom = useRef<any>(null)
-  const handleChange = () => {
-    toastShow(translated.click)
-  }
-  const pRef = useRef('left')
-  const beforeClose = (postion: string) => {
-    pRef.current = postion
-    setShowDialog(true)
-  }
-
-  const handleClose = () => {
-    toastShow('close')
-  }
-
-  const closeRef = useRef(null)
-  const openRef = useRef(null)
-  const [shouldCatchMove, setShouldCatchMove] = useState(false)
-
-  const divNode = (text: string, style: any, hasIcon: boolean = true) => {
-    return (
-      <div
-        style={{
-          width: pxTransform(60),
-          height: pxTransform(104),
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          fontSize: pxTransform(14),
-          alignSelf: 'stretch',
-          alignItems: 'center',
-          ...style,
-        }}
-      >
-        {/* {hasIcon ? <Del style={{ marginBottom: '8px' }} /> : null} */}
-        <Text
-          style={{
-            width: pxTransform(60),
-            textAlign: 'center',
-            fontSize: pxTransform(14),
-          }}
-        >
-          {text}
-        </Text>
-      </div>
-    )
-  }
   return (
     <>
       <Header />
       <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
-        <View>{translated.title1}</View>
+        <View className="h2">{translated.base}</View>
         <Demo1 />
-
-        <View className="test-height" />
+        <View className="h2">{translated.card}</View>
+        <Demo2 />
+        <View className="h2">{translated.catchMove}</View>
+        <Demo3 />
+        <View className="h2">{translated.byRef}</View>
+        <Demo4 />
+        <View className="h2">{translated.close}</View>
+        <Demo5 />
+        <View className="h2">{translated.disabled}</View>
+        <Demo6 />
+        <View className="h2">{translated.event}</View>
+        <Demo7 />
+        <View className="h2">{translated.async}</View>
+        <Demo8 />
+        {/* <View className="h2">{translated.custom}</View> */}
+        {/* <Demo9 /> */}
 
         {/* <View>{translated.title9}</View> */}
         {/* <Swipe */}
