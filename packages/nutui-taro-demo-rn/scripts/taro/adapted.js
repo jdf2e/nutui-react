@@ -21,4 +21,5 @@ exports = module.exports = [
   'pagination',
   'swiper',
   'textarea',
+  'indicator',
 ]
