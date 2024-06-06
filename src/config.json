@@ -999,7 +999,7 @@
           "author": "liukun"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Pagination",
           "type": "component",
           "cName": "分页",
@@ -1054,7 +1054,7 @@
           "author": "swag~jun"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "Swiper",
           "type": "component",
           "cName": "轮播",
@@ -1065,7 +1065,7 @@
           "author": "liukun"
         },
         {
-          "version": "2.0.0",
+          "version": "3.0.0",
           "name": "SwiperItem",
           "type": "component",
           "cName": "轮播子组件",
