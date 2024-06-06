@@ -12,11 +12,15 @@ let tasks = []
 const componentsScss = glob.sync('./src/packages/**/*.scss', { dotRelative: true })
 componentsScss.map((cs) => {
   if (cs.indexOf('demo.scss') > -1) return
+
+  let destDir = path.normalize(cs);
+  destDir = destDir.replace(path.normalize('.\\src\\'), '')
+
   tasks.push(
     fs
       .copy(
         path.resolve(__dirname, `.${cs}`),
-        path.resolve(__dirname, `../dist`, `${cs.replace('./src/', '')}`)
+        path.resolve(__dirname, `../dist`, destDir)
       )
       .catch((error) => { })
   )
