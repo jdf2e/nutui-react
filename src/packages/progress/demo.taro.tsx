@@ -1,7 +1,6 @@
 import React from 'react'
 import Taro from '@tarojs/taro'
 import { ScrollView, View } from '@tarojs/components'
-import { Cell } from '@nutui/nutui-react-taro'
 import { useTranslate } from '@/sites/assets/locale/taro'
 import Header from '@/sites/components/header'
 import Demo1 from './demos/taro/demo1'
@@ -52,23 +51,15 @@ const ProgressDemo = () => {
       <Header />
       <ScrollView className={`demo ${Taro.getEnv() === 'WEB' ? 'web' : ''}`}>
         <View className="h2">{translated.basic}</View>
-        <Cell>
-          <Demo1 />
-        </Cell>
+        <Demo1 />
         <View className="h2">{translated.customStyle}</View>
-        <Cell>
-          <Demo2 />
-        </Cell>
+        <Demo2 />
         <View className="h2">{translated.noShowPercentage}</View>
-        <Cell>
-          <Demo3 />
-        </Cell>
+        <Demo3 />
         {!['HARMONY', 'RN'].includes(Taro.getEnv()) && (
           <>
             <View className="h2">{translated.customContent}</View>
-            <Cell>
-              <Demo4 />
-            </Cell>
+            <Demo4 />
           </>
         )}
         <View className="h2">{translated.customSize}</View>
@@ -81,9 +72,7 @@ const ProgressDemo = () => {
         {!['HARMONY', 'RN'].includes(Taro.getEnv()) && (
           <>
             <View className="h2">{translated.lazy}</View>
-            <Cell>
-              <Demo8 />
-            </Cell>
+            <Demo8 />
           </>
         )}
       </ScrollView>
